@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 845B0102E5
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 00:55:05 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44804102EA
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 00:55:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3AA1186937;
-	Tue, 30 Apr 2019 22:55:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EC66844C3;
+	Tue, 30 Apr 2019 22:55:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pdOHAX1fsUX8; Tue, 30 Apr 2019 22:55:04 +0000 (UTC)
+	with ESMTP id JS6dWAZ2HG3I; Tue, 30 Apr 2019 22:55:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 935EE86A1E;
-	Tue, 30 Apr 2019 22:55:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E220B8453B;
+	Tue, 30 Apr 2019 22:55:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 94FEF1BF295
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:55:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 231D31BF357
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:55:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 914CC838BF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:55:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1D670838BF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:55:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ec0uZCir3nij for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Apr 2019 22:54:59 +0000 (UTC)
+ with ESMTP id gzNduYpFwv0z for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Apr 2019 22:55:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B8CE382BFC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:54:59 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2C5A282BFC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:55:38 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2019 15:54:58 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Apr 2019 15:55:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,415,1549958400"; d="scan'208";a="140227851"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by orsmga006.jf.intel.com with ESMTP; 30 Apr 2019 15:54:59 -0700
-Received: from orsmsx162.amr.corp.intel.com (10.22.240.85) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Tue, 30 Apr 2019 15:54:58 -0700
+X-IronPort-AV: E=Sophos;i="5.60,415,1549958400"; d="scan'208";a="342258808"
+Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
+ by fmsmga005.fm.intel.com with ESMTP; 30 Apr 2019 15:55:37 -0700
+Received: from orsmsx112.amr.corp.intel.com (10.22.240.13) by
+ ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Tue, 30 Apr 2019 15:55:37 -0700
 Received: from orsmsx106.amr.corp.intel.com ([169.254.1.121]) by
- ORSMSX162.amr.corp.intel.com ([169.254.3.253]) with mapi id 14.03.0415.000;
- Tue, 30 Apr 2019 15:54:59 -0700
+ ORSMSX112.amr.corp.intel.com ([169.254.3.109]) with mapi id 14.03.0415.000;
+ Tue, 30 Apr 2019 15:55:37 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S21 08/14] ice: Use continue instead
- of an else block
-Thread-Index: AQHU9HrdNFJFYjDgikKraLs/IO5fQqZVZm1g
-Date: Tue, 30 Apr 2019 22:54:57 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39AFBD@ORSMSX106.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S21 09/14] ice: Align to updated AQ
+ command formats
+Thread-Index: AQHU9HrVaZQRyVIfwE6+J/9tC4pL7qZVZpiQ
+Date: Tue, 30 Apr 2019 22:55:36 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39AFCD@ORSMSX106.amr.corp.intel.com>
 References: <20190416173503.29847-1-anirudh.venkataramanan@intel.com>
- <20190416173503.29847-9-anirudh.venkataramanan@intel.com>
-In-Reply-To: <20190416173503.29847-9-anirudh.venkataramanan@intel.com>
+ <20190416173503.29847-10-anirudh.venkataramanan@intel.com>
+In-Reply-To: <20190416173503.29847-10-anirudh.venkataramanan@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDk5Yzg0OWEtMDgwZi00NDY2LTg4ZjItNGQ0ZDNlZjk4YWYyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUUVxWXNMeUNuOVRZaStkUk1xXC9GSkVBU3FkMGJkNkw5K1dtQmRMb0VjR1hOZmJ4eklpc2hLQ1FQdXd3d25ldCsifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjZiOTk3MTctNTc4Mi00OTE1LWI4OTgtNjlhMmM0ZTNjZmRkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUTJPdXFcL3JrWXZxclNZUUpscUpNK0xvcXF0em9FRGcwVEZlRzl2R0tDTUN3aDV3XC9LbjFwVmVnM1JwXC9iZGdPciJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S21 08/14] ice: Use continue instead
- of an else block
+Subject: Re: [Intel-wired-lan] [PATCH S21 09/14] ice: Align to updated AQ
+ command formats
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,17 +91,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Anirudh Venkataramanan
 > Sent: Tuesday, April 16, 2019 10:35 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S21 08/14] ice: Use continue instead of an
-> else block
+> Subject: [Intel-wired-lan] [PATCH S21 09/14] ice: Align to updated AQ
+> command formats
 > 
-> For style consistency, use continue instead of an else block in
-> ice_pf_dcb_recfg.
+> The current specification has updates to the command formats for manage
+> MAC opcodes (opcodes 0x0107 and 0x0108) and get PHY caps (opcode
+> 0x0600). Update the code to reflect this.
 > 
 > Signed-off-by: Anirudh Venkataramanan
 > <anirudh.venkataramanan@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+> [Anirudh Venkataramanan <anirudh.venkataramanan@intel.com> squashed
+> multiple commits]
+> ---
+>  drivers/net/ethernet/intel/ice/ice_adminq_cmd.h | 15 ++++++++-------
+>  1 file changed, 8 insertions(+), 7 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
