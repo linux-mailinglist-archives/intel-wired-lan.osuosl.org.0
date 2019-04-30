@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F13A102D4
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 00:53:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BDE4E102D9
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 00:53:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 90BCE84C5F;
-	Tue, 30 Apr 2019 22:53:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7421987A5A;
+	Tue, 30 Apr 2019 22:53:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9BQPE-iUk5fN; Tue, 30 Apr 2019 22:53:03 +0000 (UTC)
+	with ESMTP id GFftHJ1hsiwB; Tue, 30 Apr 2019 22:53:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D609485930;
-	Tue, 30 Apr 2019 22:53:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 255DB82BFC;
+	Tue, 30 Apr 2019 22:53:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 22DC11BF295
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:52:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DD2F61BF295
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:53:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9D1A78228B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:52:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3BAAB84480
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:53:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v8PGsqTExX8W for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Apr 2019 22:52:31 +0000 (UTC)
+ with ESMTP id ycLNpvj9jAnG for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Apr 2019 22:53:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AF60987823
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:52:24 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 633B985FD0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2019 22:53:06 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2019 15:52:24 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Apr 2019 15:53:05 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,415,1549958400"; d="scan'208";a="135807778"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by orsmga007.jf.intel.com with ESMTP; 30 Apr 2019 15:52:24 -0700
-Received: from orsmsx160.amr.corp.intel.com (10.22.226.43) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Tue, 30 Apr 2019 15:52:23 -0700
+X-IronPort-AV: E=Sophos;i="5.60,415,1549958400"; d="scan'208";a="144994212"
+Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
+ by fmsmga008.fm.intel.com with ESMTP; 30 Apr 2019 15:53:05 -0700
+Received: from orsmsx156.amr.corp.intel.com (10.22.240.22) by
+ ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Tue, 30 Apr 2019 15:53:05 -0700
 Received: from orsmsx106.amr.corp.intel.com ([169.254.1.121]) by
- ORSMSX160.amr.corp.intel.com ([169.254.13.110]) with mapi id 14.03.0415.000;
- Tue, 30 Apr 2019 15:52:23 -0700
+ ORSMSX156.amr.corp.intel.com ([169.254.8.17]) with mapi id 14.03.0415.000;
+ Tue, 30 Apr 2019 15:53:05 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S21 05/14] ice: Cleanup
- ice_update_link_info
-Thread-Index: AQHU9HrZ1bhtk6gMOEytMReAEntUUaZVZbXA
-Date: Tue, 30 Apr 2019 22:52:23 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39AF8D@ORSMSX106.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S21 06/14] ice: Add switch rules to
+ handle LLDP packets
+Thread-Index: AQHU9HrjjnJQu3ba702ohNPImnaSE6ZVZeiQ
+Date: Tue, 30 Apr 2019 22:53:04 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39AF99@ORSMSX106.amr.corp.intel.com>
 References: <20190416173503.29847-1-anirudh.venkataramanan@intel.com>
- <20190416173503.29847-6-anirudh.venkataramanan@intel.com>
-In-Reply-To: <20190416173503.29847-6-anirudh.venkataramanan@intel.com>
+ <20190416173503.29847-7-anirudh.venkataramanan@intel.com>
+In-Reply-To: <20190416173503.29847-7-anirudh.venkataramanan@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZGZiNDZlZmMtNWM2OC00N2Y0LTkxMjgtYzQ2NzJhMjBlNWM4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiR1hsRkNCSHpNZFdYYnNITGNHQXk1RSswanNTY2hNZFZTNngreklOaE1UdmxcL2t1V1VPSmdvbGdid0MrTkhxd00ifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMTI5YzhjN2EtMGUwMC00N2M2LTgxNmUtYTQwOWRhNDY5Y2Y0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTkVuV3dJaUgzUGRVN2FreFFDR3g1dGRWODRuRFNxWFBxa0xoS0lqN1FJOVp0Y3ZwYUlkUnJhZlM5WU1scTRzSyJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S21 05/14] ice: Cleanup
- ice_update_link_info
+Subject: Re: [Intel-wired-lan] [PATCH S21 06/14] ice: Add switch rules to
+ handle LLDP packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,26 +91,40 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Anirudh Venkataramanan
 > Sent: Tuesday, April 16, 2019 10:35 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S21 05/14] ice: Cleanup
-> ice_update_link_info
+> Subject: [Intel-wired-lan] [PATCH S21 06/14] ice: Add switch rules to handle
+> LLDP packets
 > 
-> From: Bruce Allan <bruce.w.allan@intel.com>
+> From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> Do not allocate memory for the Get PHY Abilities command data buffer when
-> it is not necessary, change one local variable to another to reduce the
-> number of de-references, reduce the scope of some local variables, and
-> reorder the code and change exit points to get rid of an unnecessary goto
-> label.
+> Add call to configure dropping egress LLDP packets in ice_vsi_setup and
+> remove the rule in ice_vsi_release.
 > 
-> Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+> Add calls to add/remove rule to route LLDP packets to default VSI when FW
+> LLDP engine is disabled/enabled and remove rule if applied during
+> ice_vsi_release.
+> 
+> In the function ice_add_eth_mac(), there is a line that hardcodes the filter
+> info flag to TX. This is incorrect as this flag will be set by the calling function
+> that built the list of filters to add. So remove the hardcoded value.
+> 
+> This patch also contains a fix to stop treating the DCBx state of "Not Started"
+> as an error state that kicks DCB in SW mode. This will address having non-
+> cabled interfaces automatically go into SW mode with the FW engine
+> running.
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 > Signed-off-by: Anirudh Venkataramanan
 > <anirudh.venkataramanan@intel.com>
 > ---
 > [Anirudh Venkataramanan <anirudh.venkataramanan@intel.com> cleaned
 > up commit message]
 > ---
->  drivers/net/ethernet/intel/ice/ice_common.c | 35 +++++++++++----------
->  1 file changed, 18 insertions(+), 17 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  4 +-
+> drivers/net/ethernet/intel/ice/ice_ethtool.c | 11 +++
+>  drivers/net/ethernet/intel/ice/ice_lib.c     | 70 +++++++++++++++++++-
+>  drivers/net/ethernet/intel/ice/ice_lib.h     |  2 +
+>  drivers/net/ethernet/intel/ice/ice_switch.c  |  5 +-
+>  5 files changed, 86 insertions(+), 6 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
