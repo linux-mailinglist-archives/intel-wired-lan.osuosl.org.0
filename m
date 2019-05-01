@@ -2,47 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D47A010E5C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 23:03:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 50B4E10E4D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 22:56:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8D52285FA5;
-	Wed,  1 May 2019 21:03:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 01B5C86432;
+	Wed,  1 May 2019 20:56:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0lrdbqyk2Z4q; Wed,  1 May 2019 21:03:40 +0000 (UTC)
+	with ESMTP id AyXuUYUqAnU2; Wed,  1 May 2019 20:56:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 695E285F9C;
-	Wed,  1 May 2019 21:03:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EFBB8643D;
+	Wed,  1 May 2019 20:56:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 396991BF4DA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:03:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D8A711BF947
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 20:56:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 35464871C5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:03:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D42452E10C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 20:56:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0taQDCN9LVln for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 May 2019 21:03:36 +0000 (UTC)
-X-Greylist: delayed 00:11:14 by SQLgrey-1.7.6
-Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
- [129.97.134.17])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0C793871D1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:03:34 +0000 (UTC)
-Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
- id 2E52D461D3A; Wed,  1 May 2019 16:52:16 -0400 (EDT)
-Date: Wed, 1 May 2019 16:52:16 -0400
-To: linux-kernel@vger.kernel.org
-Message-ID: <20190501205215.ptoi2czhklte5jbm@csclub.uwaterloo.ca>
+ with ESMTP id zahWVkC2YQfs for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 May 2019 20:56:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from gateway20.websitewelcome.com (gateway20.websitewelcome.com
+ [192.185.47.18])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0FE0C26CAB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 20:56:20 +0000 (UTC)
+Received: from cm11.websitewelcome.com (cm11.websitewelcome.com [100.42.49.5])
+ by gateway20.websitewelcome.com (Postfix) with ESMTP id 52442400C527A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 15:56:19 -0500 (CDT)
+Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
+ id LwH5hrSqPdnCeLwH5hbX2k; Wed, 01 May 2019 15:56:19 -0500
+X-Authority-Reason: nr=8
+Received: from [189.250.119.203] (port=53920 helo=embeddedor)
+ by gator4166.hostgator.com with esmtpa (Exim 4.91)
+ (envelope-from <gustavo@embeddedor.com>)
+ id 1hLwGU-0045wh-6U; Wed, 01 May 2019 15:56:18 -0500
+Date: Wed, 1 May 2019 15:55:41 -0500
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "David S. Miller" <davem@davemloft.net>
+Message-ID: <20190501205541.GA17995@embeddedor>
 MIME-Version: 1.0
 Content-Disposition: inline
-User-Agent: NeoMutt/20170113 (1.7.2)
-From: lsorense@csclub.uwaterloo.ca (Lennart Sorensen)
-Subject: [Intel-wired-lan] i40e X722 RSS problem with NAT-Traversal IPsec
- packets
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 189.250.119.203
+X-Source-L: No
+X-Exim-ID: 1hLwGU-0045wh-6U
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: (embeddedor) [189.250.119.203]:53920
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 24
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+Subject: [Intel-wired-lan] [PATCH][next] i40e: mark expected switch
+ fall-through
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,73 +83,36 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Len Sorensen <lsorense@csclub.uwaterloo.ca>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-kernel@vger.kernel.org, Kees Cook <keescook@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We have hit a strange problem with RSS on the X722 on our new servers
-(S2600WFT based).
-
-The RSS hash is distributing most packets across cores quite nicely, with
-one exception.  ESP encapsulated in UDP is always going to queue 0 no
-matter what the hash key is set to or how many cores have queues assigned.
-So if terminating IPsec tunnels that are using NAT-Traversal, all packets
-arrive on the same core, which clearly isn't good for scalability.
-Other UDP packets are fine, TCP is fine, ICMP, ESP, etc have no problem
-that we have seen, only the ESP in UDP packets.
-
-Given the packets are UDP packets I would have hoped they would just
-be distributed using the source and destination ip and port values as
-other UDP packets seem to be, but they are not.  I vaguely suspect the
-UDP tunnel handling support the card has for this since it claims to
-use the internal packet's values for RSS rather than the UDP packet
-itself for certain supported types of UDP encapsulated IP traffic, but
-not ESP in UDP, so perhaps it sees an IP packet inside a UDP packet,
-and decides to try and parse it instead, doesn't know how to handle it
-and stops without assigning any RSS value to the packet at all rather
-than falling back to treating it as a plain UDP packet.  But that's just
-guessing based on the documentation of the hardware capabilities.
-
-Here is an example of a packet that always hits queue 0:
-
-14:48:09.014360 54:ee:75:30:f1:e1 > a4:bf:01:4e:0c:87, ethertype IPv4 (0x0800), length 174: (tos 0x0, ttl 64, id 3312, offset 0, flags [DF], proto UDP (17), length 160)
-    1.99.99.2.4500 > 1.99.99.1.4500: [no cksum] UDP-encap: ESP(spi=0xac11cadf,seq=0x480), length 132
-        0x0000:  4500 00a0 0cf0 4000 4011 6494 0163 6302  E.....@.@.d..cc.
-        0x0010:  0163 6301 1194 1194 008c 0000 ac11 cadf  .cc.............
-        0x0020:  0000 0480 901d 3b39 e884 0616 fed4 3e37  ......;9......>7
-        0x0030:  bb67 bca2 adac e519 c7a9 ced9 00bf 263e  .g............&>
-        0x0040:  28a6 ba38 1e8c e6e3 bbf9 e093 1c49 8154  (..8.........I.T
-        0x0050:  0d66 c1d5 2416 f4d2 26ec f5a1 773f 4ae2  .f..$...&...w?J.
-        0x0060:  8e26 0ed8 0e5f daab 06b2 aa51 2f2f e16e  .&..._.....Q//.n
-        0x0070:  22ca dd94 f499 027b 11d0 de7b 4d9d 7af1  "......{...{M.z.
-        0x0080:  f468 ae0d ad41 5c96 577d 7b44 1cc4 0ba3  .h...A\.W}{D....
-        0x0090:  9ff7 142f b159 c9d0 38e1 c460 120f f4bb  .../.Y..8..`....
-14:48:09.014439 a4:bf:01:4e:0c:87 > 54:ee:75:30:f1:e1, ethertype IPv4 (0x0800), length 174: (tos 0x0, ttl 64, id 43796, offset 0, flags [none], proto UDP (17), length 160)
-    1.99.99.1.4500 > 1.99.99.2.4500: [no cksum] UDP-encap: ESP(spi=0x47f5919c,seq=0x480), length 132
-        0x0000:  4500 00a0 ab14 0000 4011 0670 0163 6301  E.......@..p.cc.
-        0x0010:  0163 6302 1194 1194 008c 0000 47f5 919c  .cc.........G...
-        0x0020:  0000 0480 106b cafb 14ee f75b 3533 16fb  .....k.....[53..
-        0x0030:  87f5 9d90 a73b 8daf 481f 22b7 2b30 b482  .....;..H.".+0..
-        0x0040:  a330 1fe4 59da a394 b48b ac77 5a96 dfac  .0..Y......wZ...
-        0x0050:  4798 793a ca7e 1af2 a9a8 2f7b 9327 d5b9  G.y:.~..../{.'..
-        0x0060:  f8d0 e761 c7b3 a85c c843 ec25 62b2 e083  ...a...\.C.%b...
-        0x0070:  f0d5 1097 736b 051a b15d e7de 7f0e b5b7  ....sk...]......
-        0x0080:  209b 4d1d af37 c1a1 09a0 a6c9 71cf 7d54  ..M..7......q.}T
-        0x0090:  55c3 2797 e622 581f 09cf 9483 2ba5 e64a  U.'.."X.....+..J
-
-This was done on 4.19.28 kernel with the i40e driver in that kernel with
-libreswan for IPsec using netkey in the kernel and nat-traversal in use.
-The packets are a ping echo and reply pair.  NVM version 3.49 and 4.00
-tried so far.
-
-No other network interfaces we have used have had this problem.  RSS has
-always just worked until now.
-
--- 
-Len Sorensen
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SW4gcHJlcGFyYXRpb24gdG8gZW5hYmxpbmcgLVdpbXBsaWNpdC1mYWxsdGhyb3VnaCwgbWFyayBz
+d2l0Y2ggY2FzZXMKd2hlcmUgd2UgYXJlIGV4cGVjdGluZyB0byBmYWxsIHRocm91Z2guCgpUaGlz
+IHBhdGNoIGZpeGVzIHRoZSBmb2xsb3dpbmcgd2FybmluZzoKCmRyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2k0MGUvaTQwZV94c2suYzogSW4gZnVuY3Rpb24g4oCYaTQwZV9ydW5feGRwX3pj4oCZ
+Ogpkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmM6MjE3OjM6IHdhcm5p
+bmc6IHRoaXMgc3RhdGVtZW50IG1heSBmYWxsIHRocm91Z2ggWy1XaW1wbGljaXQtZmFsbHRocm91
+Z2g9XQogICBicGZfd2Fybl9pbnZhbGlkX3hkcF9hY3Rpb24oYWN0KTsKICAgXn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+fn5+fn5+fn4KZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBl
+X3hzay5jOjIxODoyOiBub3RlOiBoZXJlCiAgY2FzZSBYRFBfQUJPUlRFRDoKICBefn5+CgpJbiBw
+cmVwYXJhdGlvbiB0byBlbmFibGluZyAtV2ltcGxpY2l0LWZhbGx0aHJvdWdoLCBtYXJrIHN3aXRj
+aCBjYXNlcwp3aGVyZSB3ZSBhcmUgZXhwZWN0aW5nIHRvIGZhbGwgdGhyb3VnaC4KClRoaXMgcGF0
+Y2ggZml4ZXMgdGhlIGZvbGxvd2luZyB3YXJuaW5nOgoKU2lnbmVkLW9mZi1ieTogR3VzdGF2byBB
+LiBSLiBTaWx2YSA8Z3VzdGF2b0BlbWJlZGRlZG9yLmNvbT4KLS0tCiBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
+dGlvbigrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
+ZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwppbmRl
+eCAxYjE3NDg2NTQzYWMuLjU1N2M1NjVjMjZmYyAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
+dGVsL2k0MGUvaTQwZV94c2suYwpAQCAtMjE1LDYgKzIxNSw3IEBAIHN0YXRpYyBpbnQgaTQwZV9y
+dW5feGRwX3pjKHN0cnVjdCBpNDBlX3JpbmcgKnJ4X3JpbmcsIHN0cnVjdCB4ZHBfYnVmZiAqeGRw
+KQogCQlicmVhazsKIAlkZWZhdWx0OgogCQlicGZfd2Fybl9pbnZhbGlkX3hkcF9hY3Rpb24oYWN0
+KTsKKwkJLyogZmFsbCB0aHJvdWdoICovCiAJY2FzZSBYRFBfQUJPUlRFRDoKIAkJdHJhY2VfeGRw
+X2V4Y2VwdGlvbihyeF9yaW5nLT5uZXRkZXYsIHhkcF9wcm9nLCBhY3QpOwogCQkvKiBmYWxsdGhy
+b3VnaCAtLSBoYW5kbGUgYWJvcnRzIGJ5IGRyb3BwaW5nIHBhY2tldCAqLwotLSAKMi4yMS4wCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
+ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
+dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
