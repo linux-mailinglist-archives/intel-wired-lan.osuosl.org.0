@@ -1,59 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5D7810E61
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 23:07:31 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B968310E60
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 May 2019 23:07:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1804B85FFC;
-	Wed,  1 May 2019 21:07:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 553D787F45;
+	Wed,  1 May 2019 21:07:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8peeQTLzgzbE; Wed,  1 May 2019 21:07:29 +0000 (UTC)
+	with ESMTP id P2m0ua9o4qXr; Wed,  1 May 2019 21:07:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 585D286447;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0A59987F50;
 	Wed,  1 May 2019 21:07:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 603B01BF947
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:07:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 860B01BF947
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:07:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5CB8C87F45
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:07:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8220087F45
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:07:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Oy5vGI0qk4sO for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id JHyJtYC2r-R7 for <intel-wired-lan@lists.osuosl.org>;
  Wed,  1 May 2019 21:07:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5291A87F48
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 353D687F47
  for <intel-wired-lan@lists.osuosl.org>; Wed,  1 May 2019 21:07:26 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  01 May 2019 14:07:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,419,1549958400"; d="scan'208";a="342586118"
+X-IronPort-AV: E=Sophos;i="5.60,419,1549958400"; d="scan'208";a="320641636"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 01 May 2019 14:07:24 -0700
+ by orsmga005.jf.intel.com with ESMTP; 01 May 2019 14:07:24 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1hLwRo-0002F3-5x; Thu, 02 May 2019 05:07:24 +0800
-Date: Thu, 2 May 2019 05:06:35 +0800
+ id 1hLwRo-0002DT-4o; Thu, 02 May 2019 05:07:24 +0800
+Date: Thu, 2 May 2019 05:06:36 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Nikita Danilov <ndanilov@aquantia.com>
-Message-ID: <201905020544.AMb7YA2G%lkp@intel.com>
+Message-ID: <20190501210635.GA61401@lkp-kbuild09>
+References: <201905020544.AMb7YA2G%lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <201905020544.AMb7YA2G%lkp@intel.com>
 X-Patchwork-Hint: ignore
 User-Agent: Mutt/1.5.23 (2014-03-12)
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 1397/1564]
- drivers/net/ethernet/aquantia/atlantic/aq_main.c:26:12: sparse: sparse:
- symbol 'aq_ndev_driver_name' was not declared. Should it be static?
+Subject: [Intel-wired-lan] [RFC PATCH jkirsher-next-queue] net: aquantia:
+ aq_ndev_driver_name[] can be static
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,28 +75,26 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
-head:   27b3ae8c760033d085ce5a45020983fdabd2a7c9
-commit: 58608082e66ddf9643cf6b98fe81c216a410ced1 [1397/1564] net: aquantia: create global service workqueue
-reproduce:
-        # apt-get install sparse
-        git checkout 58608082e66ddf9643cf6b98fe81c216a410ced1
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
 
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-sparse warnings: (new ones prefixed by >>)
-
->> drivers/net/ethernet/aquantia/atlantic/aq_main.c:26:12: sparse: sparse: symbol 'aq_ndev_driver_name' was not declared. Should it be static?
-
-Please review and possibly fold the followup patch.
-
+Fixes: 58608082e66d ("net: aquantia: create global service workqueue")
+Signed-off-by: kbuild test robot <lkp@intel.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ aq_main.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/aquantia/atlantic/aq_main.c b/drivers/net/ethernet/aquantia/atlantic/aq_main.c
+index 7f45e99..1ea8b77 100644
+--- a/drivers/net/ethernet/aquantia/atlantic/aq_main.c
++++ b/drivers/net/ethernet/aquantia/atlantic/aq_main.c
+@@ -23,7 +23,7 @@ MODULE_VERSION(AQ_CFG_DRV_VERSION);
+ MODULE_AUTHOR(AQ_CFG_DRV_AUTHOR);
+ MODULE_DESCRIPTION(AQ_CFG_DRV_DESC);
+ 
+-const char aq_ndev_driver_name[] = AQ_CFG_DRV_NAME;
++static const char aq_ndev_driver_name[] = AQ_CFG_DRV_NAME;
+ 
+ static const struct net_device_ops aq_ndev_ops;
+ 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
