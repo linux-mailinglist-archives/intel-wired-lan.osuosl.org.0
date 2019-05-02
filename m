@@ -1,71 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB4AE1244D
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 May 2019 23:46:51 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43EA31244E
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 May 2019 23:47:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5C4A82261A;
-	Thu,  2 May 2019 21:46:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D92CD87A20;
+	Thu,  2 May 2019 21:47:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jkh1KI98RL5Z; Thu,  2 May 2019 21:46:50 +0000 (UTC)
+	with ESMTP id kfPQWZbQzoRg; Thu,  2 May 2019 21:47:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DC9D030F07;
-	Thu,  2 May 2019 21:46:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C18887A43;
+	Thu,  2 May 2019 21:47:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 296A41BF968
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 May 2019 21:46:44 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CBE4C1BF968
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 May 2019 21:47:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 261088680B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 May 2019 21:46:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C87B088278
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 May 2019 21:47:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NNs6Uw4_TGyl for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 May 2019 21:46:43 +0000 (UTC)
+ with ESMTP id FWXaOJYx5XX7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 May 2019 21:47:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AEFE886802
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 May 2019 21:46:43 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4FDD988288
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 May 2019 21:47:08 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 May 2019 14:46:43 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 May 2019 14:47:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,423,1549958400"; d="scan'208";a="342943952"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by fmsmga006.fm.intel.com with ESMTP; 02 May 2019 14:46:43 -0700
+X-IronPort-AV: E=Sophos;i="5.60,423,1549958400"; d="scan'208";a="147693291"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga003.jf.intel.com with ESMTP; 02 May 2019 14:47:07 -0700
+Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
+ ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Thu, 2 May 2019 14:47:07 -0700
 Received: from orsmsx106.amr.corp.intel.com ([169.254.1.121]) by
- ORSMSX107.amr.corp.intel.com ([169.254.1.17]) with mapi id 14.03.0415.000;
- Thu, 2 May 2019 14:46:42 -0700
+ ORSMSX125.amr.corp.intel.com ([169.254.3.172]) with mapi id 14.03.0415.000;
+ Thu, 2 May 2019 14:47:07 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S4 iavf 7/9] iavf: change
- remaining i40e defines to be iavf
-Thread-Index: AQHU9WuzyZTLBmz420+kqmVxH/WtcaZYdidA
-Date: Thu, 2 May 2019 21:46:42 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39C4CD@ORSMSX106.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S4 iavf 8/9] iavf: rename
+ i40e_device to iavf_device
+Thread-Index: AQHU9WuyIb9SMuFlUUuJkneHDLJUB6ZYdkeQ
+Date: Thu, 2 May 2019 21:47:07 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39C4DE@ORSMSX106.amr.corp.intel.com>
 References: <20190417221737.11460-1-alice.michael@intel.com>
- <20190417221737.11460-7-alice.michael@intel.com>
-In-Reply-To: <20190417221737.11460-7-alice.michael@intel.com>
+ <20190417221737.11460-8-alice.michael@intel.com>
+In-Reply-To: <20190417221737.11460-8-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYTEzZDIxYjktYTdlNS00ZDZkLTg2MGItMWQ0YzgxZjgxY2FjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZ2RjSFNoXC9jNWtmRmlWZnVZOHJrR0V4Yk5cL3hPYnFuMmVrUytvMjBvNmNwb3hlR3dWQzhVdStlYk1VQWdCQnA1In0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYWRmZWU4ZGYtOWE4MC00NWQzLTk3NjctNTMxMWQ2OGM3YjFkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoidWVCS056WlE1Z1VldEtWbVpHMTloZ1oySlRLd0lwV25hVzVIR2lnTmpmQnh0WFA0a1RLdldhNHF6Tm1JZ2U1VSJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S4 iavf 7/9] iavf: change
- remaining i40e defines to be iavf
+Subject: Re: [Intel-wired-lan] [next PATCH S4 iavf 8/9] iavf: rename
+ i40e_device to iavf_device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,19 +92,16 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Wednesday, April 17, 2019 3:18 PM
 > To: Michael, Alice <alice.michael@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [next PATCH S4 iavf 7/9] iavf: change remaining
-> i40e defines to be iavf
+> Subject: [Intel-wired-lan] [next PATCH S4 iavf 8/9] iavf: rename i40e_device
+> to iavf_device
 > 
-> There were a couple of eroneously missed i40e names to update to iavf left
-> after the larger chunks.  Updated them seperately so now they should all be
-> aligned as iavf.
+> Renaming remaining defines from i40e to iavf
 > 
 > Signed-off-by: Alice Michael <alice.michael@intel.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_adminq.c | 96 +++++++++----------
-> drivers/net/ethernet/intel/iavf/iavf_adminq.h |  4 +-
->  drivers/net/ethernet/intel/iavf/iavf_type.h   |  2 +-
->  3 files changed, 51 insertions(+), 51 deletions(-)
+>  drivers/net/ethernet/intel/iavf/iavf.h        |  4 ++--
+>  drivers/net/ethernet/intel/iavf/iavf_client.c | 20 +++++++++----------
+>  2 files changed, 12 insertions(+), 12 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
