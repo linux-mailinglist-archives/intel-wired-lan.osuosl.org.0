@@ -1,74 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3990C1363C
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 May 2019 01:39:05 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF82C1363D
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 May 2019 01:39:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D2B9E8843D;
-	Fri,  3 May 2019 23:39:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7F9BD87A9F;
+	Fri,  3 May 2019 23:39:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ebn27cra0kp5; Fri,  3 May 2019 23:39:03 +0000 (UTC)
+	with ESMTP id lypx+X69uLMe; Fri,  3 May 2019 23:39:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 791188858C;
-	Fri,  3 May 2019 23:39:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D714F87B0C;
+	Fri,  3 May 2019 23:39:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2A0DC1BF31B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2019 23:39:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 84EB31BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2019 23:39:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2654788555
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2019 23:39:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7FDF587A9F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2019 23:39:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7sjcBZJqt7q3 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 May 2019 23:39:01 +0000 (UTC)
+ with ESMTP id iim4fQtRckWw for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 May 2019 23:39:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DB2AC8843D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2019 23:39:00 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E6B7587896
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2019 23:39:28 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 May 2019 16:39:00 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 03 May 2019 16:39:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.60,427,1549958400"; d="scan'208";a="139726252"
-Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
- by orsmga008.jf.intel.com with ESMTP; 03 May 2019 16:39:00 -0700
-Received: from orsmsx115.amr.corp.intel.com (10.22.240.11) by
- ORSMSX108.amr.corp.intel.com (10.22.240.6) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Fri, 3 May 2019 16:39:00 -0700
+X-IronPort-AV: E=Sophos;i="5.60,427,1549958400"; d="scan'208";a="296842699"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga004.jf.intel.com with ESMTP; 03 May 2019 16:39:28 -0700
 Received: from orsmsx106.amr.corp.intel.com ([169.254.1.121]) by
- ORSMSX115.amr.corp.intel.com ([169.254.4.162]) with mapi id 14.03.0415.000;
- Fri, 3 May 2019 16:39:00 -0700
+ ORSMSX103.amr.corp.intel.com ([169.254.5.76]) with mapi id 14.03.0415.000;
+ Fri, 3 May 2019 16:39:28 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S5 07/10] i40e: Missing response
- checks in driver when starting/stopping FW LLDP
-Thread-Index: AQHU+t1+OPlE0QiT00K5Awf0oGk0XaZaHPlQ
-Date: Fri, 3 May 2019 23:38:59 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39C6DB@ORSMSX106.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S5 08/10] i40e: Check if the BAR
+ size is large enough before writing to registers
+Thread-Index: AQHU+t19OKrTbcOOJ06lZoRMBT/bCKZaHRmA
+Date: Fri, 3 May 2019 23:39:28 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D39C6EE@ORSMSX106.amr.corp.intel.com>
 References: <20190424122055.27896-1-alice.michael@intel.com>
- <20190424122055.27896-7-alice.michael@intel.com>
-In-Reply-To: <20190424122055.27896-7-alice.michael@intel.com>
+ <20190424122055.27896-8-alice.michael@intel.com>
+In-Reply-To: <20190424122055.27896-8-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzFiZDYzMmUtOGY1YS00NTAwLWEyM2ItZGEyYzQ2YjczZTYzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUlp1dkNtUnZ5bkxPb2tvR1ltSHVwYjBPQmZ5ZWtoejlcL2pSUzhleHJFbzFJRFA5MmFOT2tsVThYYW13TFJvcWQifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDVlYzYwNjMtYzBlOC00ZGZjLWEzYjctMTUwOTdkMzZkYjVlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVlhMRFBrc0VSVUx0UXZvOHZRXC9zRWwzanRVRTRkVnNsOTJkVG5zOFRZVjZ3cVZcL2NKR2x6S2ZscEJRZlBoN1E3In0=
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S5 07/10] i40e: Missing response
- checks in driver when starting/stopping FW LLDP
+Subject: Re: [Intel-wired-lan] [next PATCH S5 08/10] i40e: Check if the BAR
+ size is large enough before writing to registers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,22 +89,20 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Wednesday, April 24, 2019 5:21 AM
 > To: Michael, Alice <alice.michael@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Cc: Marczak, Piotr <piotr.marczak@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S5 07/10] i40e: Missing response
-> checks in driver when starting/stopping FW LLDP
+> Cc: Ludkiewicz, Adam <adam.ludkiewicz@intel.com>
+> Subject: [Intel-wired-lan] [next PATCH S5 08/10] i40e: Check if the BAR size is
+> large enough before writing to registers
 > 
-> From: Piotr Marczak <piotr.marczak@intel.com>
+> From: Adam Ludkiewicz <adam.ludkiewicz@intel.com>
 > 
-> Driver did not check response on LLDP flag change and always returned
-> SUCCESS.
+> This patch fixes the problem with a kernel panic occurring when trying to bind
+> the i40e driver to a non-i40e port. The problem is fixed by checking if the BAR
+> size in the device is large enough by reading the highest register.
 > 
-> This patch now checks for an error and returns an error code and has
-> additional information in the log.
-> 
-> Signed-off-by: Piotr Marczak <piotr.marczak@intel.com>
+> Signed-off-by: Adam Ludkiewicz <adam.ludkiewicz@intel.com>
 > ---
->  .../net/ethernet/intel/i40e/i40e_ethtool.c    | 27 +++++++++++++++++--
->  1 file changed, 25 insertions(+), 2 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
