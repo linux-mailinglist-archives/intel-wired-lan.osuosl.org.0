@@ -1,89 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1B7F1882E
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 May 2019 12:11:13 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81BA81BBB9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 May 2019 19:20:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B52A087430;
-	Thu,  9 May 2019 10:11:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 337DD85A78;
+	Mon, 13 May 2019 17:20:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wwzafaxpkKto; Thu,  9 May 2019 10:11:08 +0000 (UTC)
+	with ESMTP id nX3V0DLdWFuT; Mon, 13 May 2019 17:20:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C635F8741D;
-	Thu,  9 May 2019 10:11:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ED124858B6;
+	Mon, 13 May 2019 17:20:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8C56E1BF82B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:11:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CC3851BF286
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:42:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8796787528
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:11:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C83D58804A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:42:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gmjEpzvqKDIn for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 May 2019 10:11:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AC566873B1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:11:00 +0000 (UTC)
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x49A3vVQ169330;
- Thu, 9 May 2019 10:10:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2018-07-02;
- bh=qupKCE1+9NLgvlLFD55x9x37iyyxp1hRx7TkBzJRv64=;
- b=cur0yw0xXOixscpXpojSdVFeqrb9W3jEx1XMHwlmLc9ySINPEKJs5ZPNZcG9q0jxya0Y
- rObtgn5HRwEY6vtRMn4zgnyFd91EYlbNcM3V+RzKtADa3o+r/OF7lzGJeIgU2Q5Vhrw6
- F3C40aiw/ItXNBnTy1MF8cniUARnGE4Qn9jVgX9VR7+EHl81d1m3LvSXwmz8wXNvA+ed
- mNY9dSPjQcOvhyvgLY7LKH810tEz+lEnxWZWYMl7gdm0P8TFF0UQspCk/15+Oz+SxLeQ
- JaB9q8IkvkfcA6VbVo9PMMSOVAj6DjCqXNuxUJMf0OpMY8xRL+eJc18Y9AUUv7+NBJz5 bQ== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by userp2120.oracle.com with ESMTP id 2s94b11rp4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 May 2019 10:10:58 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x49A9w4J185529;
- Thu, 9 May 2019 10:10:58 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by userp3030.oracle.com with ESMTP id 2sagyv5jsn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 09 May 2019 10:10:58 +0000
-Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x49AAvGK015241;
- Thu, 9 May 2019 10:10:57 GMT
-Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 09 May 2019 03:10:56 -0700
-Date: Thu, 9 May 2019 13:10:51 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Message-ID: <20190509101051.GB7024@mwanda>
+ with ESMTP id W1BxaBp09yjR for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 May 2019 10:42:28 +0000 (UTC)
+X-Greylist: delayed 00:07:37 by SQLgrey-1.7.6
+Received: from rp02.intra2net.com (rp02.intra2net.com [62.75.181.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 73FF78803E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:42:28 +0000 (UTC)
+Received: from mail.m.i2n (unknown [172.17.128.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by rp02.intra2net.com (Postfix) with ESMTPS id 98316100140;
+ Thu,  9 May 2019 12:34:48 +0200 (CEST)
+Received: from localhost (mail.m.i2n [127.0.0.1])
+ by localhost (Postfix) with ESMTP id 6C4D97A8;
+ Thu,  9 May 2019 12:34:48 +0200 (CEST)
+X-Virus-Scanned: by Intra2net Mail Security (AVE=8.3.54.26,VDF=8.16.14.118)
+Received: from rocinante.m.i2n (rocinante.m.i2n [172.16.1.86])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ (Authenticated sender: smtp-auth-user)
+ by mail.m.i2n (Postfix) with ESMTPSA id 7513D760;
+ Thu,  9 May 2019 12:34:46 +0200 (CEST)
+From: Juliana Rodrigueiro <juliana.rodrigueiro@intra2net.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 09 May 2019 12:34:46 +0200
+Message-ID: <1623942.pXzBnfQ100@rocinante.m.i2n>
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9251
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1905090062
-X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9251
- signatures=668686
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1905090062
-Subject: [Intel-wired-lan] [PATCH] i40e/i40evf: cleanup
- i40e_update_nvm_checksum()
+X-Mailman-Approved-At: Mon, 13 May 2019 17:20:32 +0000
+Subject: [Intel-wired-lan] [PATCH] e1000e: Work around hardware unit hang by
+ disabling TSO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,47 +66,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: thomas.jarosch@intra2net.com, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Smatch complains that we use 'checksum' when it's uninitialized.
+When forwarding traffic to a client behind NAT, some e1000e devices
+become unstable, hanging and then being reset by the watchdog.
 
-    drivers/net/ethernet/intel/i40e/i40e_nvm.c:581 i40e_update_nvm_checksum()
-    error: uninitialized symbol 'checksum'.
+Output from syslog:
 
-This is true, but it harmless because we don't use it again.
+kernel: e1000e 0000:00:19.0 eth0: Detected Hardware Unit Hang:
+kernel:  TDH                  <5f>
+kernel:  TDT                  <8d>
+kernel:  next_to_use          <8d>
+kernel:  next_to_clean        <5c>
+kernel: buffer_info[next_to_clean]:
+kernel:  time_stamp           <6bd7b>
+kernel:  next_to_watch        <5f>
+kernel:  jiffies              <6c180>
+kernel:  next_to_watch.status <0>
+kernel: MAC Status             <40080083>
+kernel: PHY Status             <796d>
+kernel: PHY 1000BASE-T Status  <7800>
+kernel: PHY Extended Status    <3000>
+kernel: PCI Status             <10>
+kernel: e1000e 0000:00:19.0 eth0: Reset adapter unexpectedly
 
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+This repeats several times and never recovers.
+
+Disabling TCP segmentation offload (TSO) seems to be the only way to
+work around this problem on the affected devices.
+
+This issue was first reported in 14.01.2015:
+https://marc.info/?l=linux-netdev&m=142124954120315
+
+Signed-off-by: Juliana Rodrigueiro <juliana.rodrigueiro@intra2net.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_nvm.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/e1000e/netdev.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_nvm.c b/drivers/net/ethernet/intel/i40e/i40e_nvm.c
-index c508b75c3c09..a60ab9d48065 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_nvm.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_nvm.c
-@@ -578,12 +578,11 @@ i40e_status i40e_update_nvm_checksum(struct i40e_hw *hw)
- 	__le16 le_sum;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 8b11682ebba2..4781a45c1047 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -6936,6 +6936,12 @@ static netdev_features_t e1000_fix_features(struct net_device *netdev,
+ 	if ((hw->mac.type >= e1000_pch2lan) && (netdev->mtu > ETH_DATA_LEN))
+ 		features &= ~NETIF_F_RXFCS;
  
- 	ret_code = i40e_calc_nvm_checksum(hw, &checksum);
-+	if (ret_code)
-+		return ret_code;
- 	le_sum = cpu_to_le16(checksum);
--	if (!ret_code)
--		ret_code = i40e_write_nvm_aq(hw, 0x00, I40E_SR_SW_CHECKSUM_WORD,
--					     1, &le_sum, true);
--
--	return ret_code;
-+	return i40e_write_nvm_aq(hw, 0x00, I40E_SR_SW_CHECKSUM_WORD, 1,
-+				 &le_sum, true);
- }
- 
- /**
++	if (adapter->pdev->device == E1000_DEV_ID_PCH2_LV_V) {
++		e_info("Disabling TSO on problematic device to avoid hardware unit hang.\n");
++		features &= ~NETIF_F_TSO;
++		features &= ~NETIF_F_TSO6;
++	}
++
+ 	/* Since there is no support for separate Rx/Tx vlan accel
+ 	 * enable/disable make sure Tx flag is always in same state as Rx.
+ 	 */
 -- 
-2.18.0
+2.20.1
+
+
+
 
 _______________________________________________
 Intel-wired-lan mailing list
