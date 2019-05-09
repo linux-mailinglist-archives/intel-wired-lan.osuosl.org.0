@@ -1,67 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8A831BBB8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 May 2019 19:20:35 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1B7F1882E
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 May 2019 12:11:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 638328778F;
-	Mon, 13 May 2019 17:20:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B52A087430;
+	Thu,  9 May 2019 10:11:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l9to0pXCuGTe; Mon, 13 May 2019 17:20:34 +0000 (UTC)
+	with ESMTP id wwzafaxpkKto; Thu,  9 May 2019 10:11:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A48728777B;
-	Mon, 13 May 2019 17:20:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C635F8741D;
+	Thu,  9 May 2019 10:11:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 428A11BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2019 23:22:03 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C56E1BF82B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:11:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3E70D865BB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2019 23:22:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8796787528
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:11:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V0LSyz2KjZqE for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 May 2019 23:22:02 +0000 (UTC)
-X-Greylist: delayed 00:07:05 by SQLgrey-1.7.6
-Received: from alln-iport-2.cisco.com (alln-iport-2.cisco.com [173.37.142.89])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F2879865AE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2019 23:22:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=cisco.com; i=@cisco.com; l=1960; q=dns/txt; s=iport;
- t=1557357722; x=1558567322;
- h=from:to:cc:subject:date:message-id;
- bh=xFoLKN7z00P1NlIEUkNeHdy5RdIl62U+exCN+0sxos0=;
- b=M/wNISpTzgwVltSy2r4Fy+mLJDOTGft4AVKA9Zo7iDm35+6rai6gYT8l
- lhn4jIW9dNRl677f3TElGaEaK7uRAOe8NXu1Z/6V1M+Qywke2AkQbYA4d
- 2Aho39+b30fVgW5NmU2hyRufXd5Nj8xb6rEjEniWwn/vLL5n+EzbA6A8v o=;
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A0AnAACFYtNc/5pdJa1kHAEBAQQBAQc?=
- =?us-ascii?q?EAQGBUQcBAQsBghCBOgEyKIwtpVSBewkJL4Q/ggojNAkOAQMBAQQBAQIBBG0?=
- =?us-ascii?q?ohXhSgT4TgyKCC655M4hmgUYUgR4BhneEVheBQD+EYYomBJJDlH8JgguSTwI?=
- =?us-ascii?q?ZlVYBoUKBTziBVjMaCBsVgyeQUT8DMI14K4IlAQE?=
-X-IronPort-AV: E=Sophos;i="5.60,447,1549929600"; d="scan'208";a="271168730"
-Received: from rcdn-core-3.cisco.com ([173.37.93.154])
- by alln-iport-2.cisco.com with ESMTP/TLS/DHE-RSA-SEED-SHA;
- 08 May 2019 23:14:30 +0000
-Received: from sjc-ads-4850.cisco.com (sjc-ads-4850.cisco.com [10.28.39.114])
- by rcdn-core-3.cisco.com (8.15.2/8.15.2) with ESMTP id
- x48NEUx3009602; Wed, 8 May 2019 23:14:30 GMT
-From: Nikunj Kela <nkela@cisco.com>
+ with ESMTP id gmjEpzvqKDIn for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 May 2019 10:11:00 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AC566873B1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2019 10:11:00 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x49A3vVQ169330;
+ Thu, 9 May 2019 10:10:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2018-07-02;
+ bh=qupKCE1+9NLgvlLFD55x9x37iyyxp1hRx7TkBzJRv64=;
+ b=cur0yw0xXOixscpXpojSdVFeqrb9W3jEx1XMHwlmLc9ySINPEKJs5ZPNZcG9q0jxya0Y
+ rObtgn5HRwEY6vtRMn4zgnyFd91EYlbNcM3V+RzKtADa3o+r/OF7lzGJeIgU2Q5Vhrw6
+ F3C40aiw/ItXNBnTy1MF8cniUARnGE4Qn9jVgX9VR7+EHl81d1m3LvSXwmz8wXNvA+ed
+ mNY9dSPjQcOvhyvgLY7LKH810tEz+lEnxWZWYMl7gdm0P8TFF0UQspCk/15+Oz+SxLeQ
+ JaB9q8IkvkfcA6VbVo9PMMSOVAj6DjCqXNuxUJMf0OpMY8xRL+eJc18Y9AUUv7+NBJz5 bQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 2s94b11rp4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 09 May 2019 10:10:58 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x49A9w4J185529;
+ Thu, 9 May 2019 10:10:58 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3030.oracle.com with ESMTP id 2sagyv5jsn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 09 May 2019 10:10:58 +0000
+Received: from abhmp0006.oracle.com (abhmp0006.oracle.com [141.146.116.12])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x49AAvGK015241;
+ Thu, 9 May 2019 10:10:57 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 09 May 2019 03:10:56 -0700
+Date: Thu, 9 May 2019 13:10:51 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Date: Wed,  8 May 2019 23:14:29 +0000
-Message-Id: <1557357269-9498-1-git-send-email-nkela@cisco.com>
-X-Mailer: git-send-email 2.5.0
-X-Auto-Response-Suppress: DR, OOF, AutoReply
-X-Outbound-SMTP-Client: 10.28.39.114, sjc-ads-4850.cisco.com
-X-Outbound-Node: rcdn-core-3.cisco.com
-X-Mailman-Approved-At: Mon, 13 May 2019 17:20:32 +0000
-Subject: [Intel-wired-lan] [PATCH] igb: add parameter to ignore nvm checksum
- validation
+Message-ID: <20190509101051.GB7024@mwanda>
+MIME-Version: 1.0
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9251
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1905090062
+X-Proofpoint-Virus-Version: vendor=nai engine=5900 definitions=9251
+ signatures=668686
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1905090062
+Subject: [Intel-wired-lan] [PATCH] i40e/i40evf: cleanup
+ i40e_update_nvm_checksum()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,79 +96,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org,
- xe-linux-external@cisco.com
-MIME-Version: 1.0
+Cc: kernel-janitors@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Some of the broken NICs don't have EEPROM programmed correctly. It results
-in probe to fail. This change adds a module parameter that can be used to
-ignore nvm checksum validation.
+Smatch complains that we use 'checksum' when it's uninitialized.
 
-Cc: xe-linux-external@cisco.com
-Signed-off-by: Nikunj Kela <nkela@cisco.com>
+    drivers/net/ethernet/intel/i40e/i40e_nvm.c:581 i40e_update_nvm_checksum()
+    error: uninitialized symbol 'checksum'.
+
+This is true, but it harmless because we don't use it again.
+
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 28 ++++++++++++++++++++++------
- 1 file changed, 22 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_nvm.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 39f33af..0ae1324 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -247,6 +247,11 @@ static int debug = -1;
- module_param(debug, int, 0);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_nvm.c b/drivers/net/ethernet/intel/i40e/i40e_nvm.c
+index c508b75c3c09..a60ab9d48065 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_nvm.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_nvm.c
+@@ -578,12 +578,11 @@ i40e_status i40e_update_nvm_checksum(struct i40e_hw *hw)
+ 	__le16 le_sum;
  
-+static bool ignore_nvm_checksum;
-+module_param(ignore_nvm_checksum, bool, 0);
-+MODULE_PARM_DESC(ignore_nvm_checksum,
-+		"Set to ignore nvm checksum validation (defaults N)");
-+
- struct igb_reg_info {
- 	u32 ofs;
- 	char *name;
-@@ -3191,18 +3196,29 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	case e1000_i211:
- 		if (igb_get_flash_presence_i210(hw)) {
- 			if (hw->nvm.ops.validate(hw) < 0) {
--				dev_err(&pdev->dev,
-+				if (ignore_nvm_checksum) {
-+					dev_warn(&pdev->dev,
- 					"The NVM Checksum Is Not Valid\n");
--				err = -EIO;
--				goto err_eeprom;
-+				} else {
-+					dev_err(&pdev->dev,
-+					"The NVM Checksum Is Not Valid\n");
-+					err = -EIO;
-+					goto err_eeprom;
-+				}
- 			}
- 		}
- 		break;
- 	default:
- 		if (hw->nvm.ops.validate(hw) < 0) {
--			dev_err(&pdev->dev, "The NVM Checksum Is Not Valid\n");
--			err = -EIO;
--			goto err_eeprom;
-+			if (ignore_nvm_checksum) {
-+				dev_warn(&pdev->dev,
-+					"The NVM Checksum Is Not Valid\n");
-+			} else {
-+				dev_err(&pdev->dev,
-+					"The NVM Checksum Is Not Valid\n");
-+				err = -EIO;
-+				goto err_eeprom;
-+			}
- 		}
- 		break;
- 	}
+ 	ret_code = i40e_calc_nvm_checksum(hw, &checksum);
++	if (ret_code)
++		return ret_code;
+ 	le_sum = cpu_to_le16(checksum);
+-	if (!ret_code)
+-		ret_code = i40e_write_nvm_aq(hw, 0x00, I40E_SR_SW_CHECKSUM_WORD,
+-					     1, &le_sum, true);
+-
+-	return ret_code;
++	return i40e_write_nvm_aq(hw, 0x00, I40E_SR_SW_CHECKSUM_WORD, 1,
++				 &le_sum, true);
+ }
+ 
+ /**
 -- 
-2.5.0
+2.18.0
 
 _______________________________________________
 Intel-wired-lan mailing list
