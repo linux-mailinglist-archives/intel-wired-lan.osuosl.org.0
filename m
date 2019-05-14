@@ -2,35 +2,35 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3233C1CE1F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 May 2019 19:37:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F1581CE19
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 May 2019 19:37:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D37678542B;
-	Tue, 14 May 2019 17:37:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D41EC85465;
+	Tue, 14 May 2019 17:37:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PDW-MOh2vSSl; Tue, 14 May 2019 17:37:39 +0000 (UTC)
+	with ESMTP id 4LOGGCDQtWWq; Tue, 14 May 2019 17:37:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 93DD586DA8;
-	Tue, 14 May 2019 17:37:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AC11B86D2F;
+	Tue, 14 May 2019 17:37:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2E8E11BF3FF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E4E3B1BF3FF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2BD258607D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E1FDC860B2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NqrcNvzvE8pA for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 68OJeExKFVTT for <intel-wired-lan@lists.osuosl.org>;
  Tue, 14 May 2019 17:37:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DE7A2860BE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:31 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 108EA860C0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:32 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
@@ -42,14 +42,14 @@ Received: from alicemic-2.jf.intel.com ([10.166.16.121])
 From: Alice Michael <alice.michael@intel.com>
 To: alice.michael@intel.com,
 	intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 May 2019 10:37:02 -0700
-Message-Id: <20190514173709.62431-4-alice.michael@intel.com>
+Date: Tue, 14 May 2019 10:37:03 -0700
+Message-Id: <20190514173709.62431-5-alice.michael@intel.com>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20190514173709.62431-1-alice.michael@intel.com>
 References: <20190514173709.62431-1-alice.michael@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next PATCH S5 iavf 04/11] iavf: Change
- GFP_KERNEL to GFP_ATOMIC in kzalloc()
+Subject: [Intel-wired-lan] [next PATCH S5 iavf 05/11] iavf: Fix the math for
+ valid length for ADq enable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,35 +62,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+From: Avinash Dayanand <avinash.dayanand@intel.com>
 
-iavf_add_vlan() is being called in atomic context
-so kzalloc() needs GFP_ATOMIC. This patch fixes it.
+There was a calculation error in virtchnl regarding the valid
+length which was fixed recently and a corresponding change needs
+to go into the code while we enable ADq.
 
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Avinash Dayanand <avinash.dayanand@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 9ce04a8c0d0f..8a37b9f604e2 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -659,7 +659,7 @@ iavf_vlan_filter *iavf_add_vlan(struct iavf_adapter *adapter, u16 vlan)
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 3eea35cee25a..dd97509e2da1 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -983,7 +983,7 @@ void iavf_enable_channels(struct iavf_adapter *adapter)
+ 		return;
+ 	}
  
- 	f = iavf_find_vlan(adapter, vlan);
- 	if (!f) {
--		f = kzalloc(sizeof(*f), GFP_KERNEL);
-+		f = kzalloc(sizeof(*f), GFP_ATOMIC);
- 		if (!f)
- 			goto clearout;
+-	len = (adapter->num_tc * sizeof(struct virtchnl_channel_info)) +
++	len = ((adapter->num_tc - 1) * sizeof(struct virtchnl_channel_info)) +
+ 	       sizeof(struct virtchnl_tc_info);
  
+ 	vti = kzalloc(len, GFP_KERNEL);
 -- 
 2.19.2
 
