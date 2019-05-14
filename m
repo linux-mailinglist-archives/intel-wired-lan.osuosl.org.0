@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F049C1CE18
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 May 2019 19:37:37 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 897B41CE1D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 May 2019 19:37:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A352B3015B;
-	Tue, 14 May 2019 17:37:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4279F84EAD;
+	Tue, 14 May 2019 17:37:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 55EGthXlsA0a; Tue, 14 May 2019 17:37:35 +0000 (UTC)
+	with ESMTP id bUIvIicGTEws; Tue, 14 May 2019 17:37:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5DCB330A41;
-	Tue, 14 May 2019 17:37:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5894386D78;
+	Tue, 14 May 2019 17:37:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C08EC1BF3FF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 252B41BF982
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BCAF8860CB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:32 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 222CC86088
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZD1PxLwbhrQB for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id It02NXB9ejpF for <intel-wired-lan@lists.osuosl.org>;
  Tue, 14 May 2019 17:37:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C3A55860B2
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 902F98607D
  for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:37:31 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -42,14 +42,14 @@ Received: from alicemic-2.jf.intel.com ([10.166.16.121])
 From: Alice Michael <alice.michael@intel.com>
 To: alice.michael@intel.com,
 	intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 May 2019 10:37:00 -0700
-Message-Id: <20190514173709.62431-2-alice.michael@intel.com>
+Date: Tue, 14 May 2019 10:37:01 -0700
+Message-Id: <20190514173709.62431-3-alice.michael@intel.com>
 X-Mailer: git-send-email 2.19.2
 In-Reply-To: <20190514173709.62431-1-alice.michael@intel.com>
 References: <20190514173709.62431-1-alice.michael@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next PATCH S5 iavf 02/11] iavf: use signed
- variable
+Subject: [Intel-wired-lan] [next PATCH S5 iavf 03/11] iavf: wait longer for
+ close to complete
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,31 +69,30 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Mitch Williams <mitch.a.williams@intel.com>
 
-The counter variable in iavf_clean_tx_irq starts out negative and climbs
-to 0. So allocating it as u16 is actually a really bad idea that just
-happens to work because the value underflows and overflows consistently
-on most architectures.
+On some hardware/driver/architecture combinations, it may take longer
+than 200msec for all close operations to be completed, causing a
+spurious error message to be logged.
 
-Replace the u16 with an int so signed math works as expected.
+Increase the timeout value to 500msec to avoid this erroneous error.
 
 Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_txrx.c | 2 +-
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 6d43cbe29c49..d28b57937245 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -190,7 +190,7 @@ void iavf_detect_recover_hung(struct iavf_vsi *vsi)
- static bool iavf_clean_tx_irq(struct iavf_vsi *vsi,
- 			      struct iavf_ring *tx_ring, int napi_budget)
- {
--	u16 i = tx_ring->next_to_clean;
-+	int i = tx_ring->next_to_clean;
- 	struct iavf_tx_buffer *tx_buf;
- 	struct iavf_tx_desc *tx_desc;
- 	unsigned int total_bytes = 0, total_packets = 0;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 36f17d0c7a2e..9ce04a8c0d0f 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -3021,7 +3021,7 @@ static int iavf_close(struct net_device *netdev)
+ 
+ 	status = wait_event_timeout(adapter->down_waitqueue,
+ 				    adapter->state == __IAVF_DOWN,
+-				    msecs_to_jiffies(200));
++				    msecs_to_jiffies(500));
+ 	if (!status)
+ 		netdev_warn(netdev, "Device resources not yet released\n");
+ 	return 0;
 -- 
 2.19.2
 
