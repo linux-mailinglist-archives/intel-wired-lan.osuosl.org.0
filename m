@@ -1,74 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08BFD1CE54
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 May 2019 19:52:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B260186B9E;
-	Tue, 14 May 2019 17:52:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zhuXLKQGdfW0; Tue, 14 May 2019 17:52:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8CA3E86BBD;
-	Tue, 14 May 2019 17:52:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BAC771BF5F5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:52:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 892741E7FD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 May 2019 07:39:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B515287C3F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:52:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 03B1A87E3F;
+	Wed, 15 May 2019 05:39:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Vw1KmSwPgcwd; Wed, 15 May 2019 05:39:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6F9C987E3C;
+	Wed, 15 May 2019 05:39:52 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 93DF71BF2A3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 May 2019 05:39:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8DFBB86F9F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 May 2019 05:39:50 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e+DhyqD4oT5V for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 May 2019 17:52:16 +0000 (UTC)
+ with ESMTP id z5HH9vZKPwZz for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 May 2019 05:39:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C5FA8870AD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 May 2019 17:52:16 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7A39486F98
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 May 2019 05:39:49 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 May 2019 10:52:16 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 May 2019 22:39:48 -0700
 X-ExtLoop1: 1
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by fmsmga005.fm.intel.com with ESMTP; 14 May 2019 10:52:13 -0700
-Received: from orsmsx158.amr.corp.intel.com (10.22.240.20) by
- ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Tue, 14 May 2019 10:52:15 -0700
-Received: from orsmsx121.amr.corp.intel.com ([169.254.10.47]) by
- ORSMSX158.amr.corp.intel.com ([169.254.10.135]) with mapi id 14.03.0415.000;
- Tue, 14 May 2019 10:52:15 -0700
-From: "Greenwalt, Paul" <paul.greenwalt@intel.com>
-To: "Michael, Alice" <alice.michael@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [next PATCH S5 iavf 10/11] iavf: add call to
- iavf_[add|del]_cloud_filter
-Thread-Index: AQHVCnu4m82lCalC8U+n8QSw2YoRxaZq5oDQ
-Date: Tue, 14 May 2019 17:52:14 +0000
-Message-ID: <9A83C569D64F2541B0B591F2CBA3CC01E9666F53@ORSMSX121.amr.corp.intel.com>
-References: <20190514173709.62431-1-alice.michael@intel.com>
- <20190514173709.62431-10-alice.michael@intel.com>
-In-Reply-To: <20190514173709.62431-10-alice.michael@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTI1N2EzYjYtZGUyNi00ZTM3LThhNDEtMzQwZGEzYmI5ZDNlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNzZtMHNaY1lXQ2VmSzVIUzNEWUVCUHBmNVZuZXZJWXJDZjJUWUU1THdcLzlldDNTZkJDQjhLa25sWjh6bEl0ME4ifQ==
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.0.600.7
-x-originating-ip: [10.22.254.140]
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
+ ([10.185.23.132])
+ by orsmga001.jf.intel.com with ESMTP; 14 May 2019 22:39:47 -0700
+To: Juliana Rodrigueiro <juliana.rodrigueiro@intra2net.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <1623942.pXzBnfQ100@rocinante.m.i2n>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <d308eb17-98ab-13e7-6c74-d701288e43b5@intel.com>
+Date: Wed, 15 May 2019 08:39:46 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.5.3
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
- iavf_[add|del]_cloud_filter
+In-Reply-To: <1623942.pXzBnfQ100@rocinante.m.i2n>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Work around hardware unit
+ hang by disabling TSO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,61 +65,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: thomas.jarosch@intra2net.com, netdev@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ACK
-
+On 5/9/2019 13:34, Juliana Rodrigueiro wrote:
+> When forwarding traffic to a client behind NAT, some e1000e devices
+> become unstable, hanging and then being reset by the watchdog.
+> 
+> Output from syslog:
+> 
+> kernel: e1000e 0000:00:19.0 eth0: Detected Hardware Unit Hang:
+> kernel:  TDH                  <5f>
+> kernel:  TDT                  <8d>
+> kernel:  next_to_use          <8d>
+> kernel:  next_to_clean        <5c>
+> kernel: buffer_info[next_to_clean]:
+> kernel:  time_stamp           <6bd7b>
+> kernel:  next_to_watch        <5f>
+> kernel:  jiffies              <6c180>
+> kernel:  next_to_watch.status <0>
+> kernel: MAC Status             <40080083>
+> kernel: PHY Status             <796d>
+> kernel: PHY 1000BASE-T Status  <7800>
+> kernel: PHY Extended Status    <3000>
+> kernel: PCI Status             <10>
+> kernel: e1000e 0000:00:19.0 eth0: Reset adapter unexpectedly
+> 
+> This repeats several times and never recovers.
+> 
+> Disabling TCP segmentation offload (TSO) seems to be the only way to
+> work around this problem on the affected devices.
+> 
+> This issue was first reported in 14.01.2015:
+> https://marc.info/?l=linux-netdev&m=142124954120315
+> 
+> Signed-off-by: Juliana Rodrigueiro <juliana.rodrigueiro@intra2net.com>
+> ---
+>   drivers/net/ethernet/intel/e1000e/netdev.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index 8b11682ebba2..4781a45c1047 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -6936,6 +6936,12 @@ static netdev_features_t e1000_fix_features(struct net_device *netdev,
+>   	if ((hw->mac.type >= e1000_pch2lan) && (netdev->mtu > ETH_DATA_LEN))
+>   		features &= ~NETIF_F_RXFCS;
+>   
+> +	if (adapter->pdev->device == E1000_DEV_ID_PCH2_LV_V) {
+> +		e_info("Disabling TSO on problematic device to avoid hardware unit hang.\n");
+> +		features &= ~NETIF_F_TSO;
+> +		features &= ~NETIF_F_TSO6;
+> +	}
+> +
+>   	/* Since there is no support for separate Rx/Tx vlan accel
+>   	 * enable/disable make sure Tx flag is always in same state as Rx.
+>   	 */
+> 
+You are right, in some particular configurations e1000e devices stuck at 
+Tx hang while TCP segmentation offload is on. But for all other users we 
+should keep the TCP segmentation option is enabled as default. I suggest 
+to use 'ethtool' command: ethtool -K <adapter> tso on/off to workaround 
+Tx hang in your situation.
 Thanks,
-Paul
-
------Original Message-----
-From: Michael, Alice 
-Sent: Tuesday, May 14, 2019 10:37 AM
-To: Michael, Alice <alice.michael@intel.com>; intel-wired-lan@lists.osuosl.org
-Cc: Greenwalt, Paul <paul.greenwalt@intel.com>
-Subject: [next PATCH S5 iavf 10/11] iavf: add call to iavf_[add|del]_cloud_filter
-
-From: Paul Greenwalt <paul.greenwalt@intel.com>
-
-Add call to iavf_add_cloud_filter and iavf_del_cloud_filter from iavf_process_aq_command to clear aq_required IAVF_FLAG_AQ_ADD_CLOUD_FILTER and IAVF_FLAG_AQ_DEL_CLOUD_FILTER bits.
-
-aq_required IAVF_FLAG_AQ_DEL_CLOUD_FILTER bit is being set in iavf_down and iavf_delete_clsflower, and are never cleared.
-
-aq_required IAVF_FLAG_AQ_ADD_CLOUD_FILTER bit is being set in iavf_handle_reset and iavf_configure_clsflower, and are never cleared.
-
-Since the aq_required is not zero, iavf_watchdog_task is setting the queue_delayed_work to 20 msec instead of the longer delay.
-
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 8763486ff2b2..a833219c62d0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1658,7 +1658,14 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
- 		iavf_del_cloud_filter(adapter);
- 		return 0;
- 	}
--
-+	if (adapter->aq_required & IAVF_FLAG_AQ_DEL_CLOUD_FILTER) {
-+		iavf_del_cloud_filter(adapter);
-+		return 0;
-+	}
-+	if (adapter->aq_required & IAVF_FLAG_AQ_ADD_CLOUD_FILTER) {
-+		iavf_add_cloud_filter(adapter);
-+		return 0;
-+	}
- 	return -EAGAIN;
- }
- 
---
-2.19.2
-
+Sasha
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
