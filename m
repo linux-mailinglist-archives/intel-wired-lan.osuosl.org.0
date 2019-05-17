@@ -1,87 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03722211D6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 May 2019 03:48:53 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02CEE21A43
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 May 2019 17:04:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A8C5185B97;
-	Fri, 17 May 2019 01:48:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ADDEC31539;
+	Fri, 17 May 2019 15:04:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OWgTrtcI5za0; Fri, 17 May 2019 01:48:51 +0000 (UTC)
+	with ESMTP id q3R+nBAHFcno; Fri, 17 May 2019 15:04:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D47AE8678B;
-	Fri, 17 May 2019 01:48:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 63E043176E;
+	Fri, 17 May 2019 15:04:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 071A21C162A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 01:48:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4A7B91BF31E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 15:04:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0306485B4D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 01:48:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 46F3286AD2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 15:04:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cSXen4IdkfUS for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 May 2019 01:48:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5F62085B09
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 01:48:49 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id c6so2793148pfa.10
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2019 18:48:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wuDXc+IXQGay7e3fD99hwMFa7JXXaUv+8T7wwPWp5iw=;
- b=UEhjmF6eiDf58glo5/r876Y/ZolFULRbkk4VMEerl0DrtWonfVbR+RTc96v+okNHcj
- 7wamKkA+9HKjOp+wrsYIJz2wySZqlYdMp+5HDJcjl36bwS02ua8+99qAb1SgQ+ZgatTm
- sQOEdsXswqGj8Fpub9rZdEo9cGvJZ4tucFK3KsMgQe7ABts5tjh73KpInbj0/0SzlCfp
- qhrmPOshGBnOHTHaCYBmcOF3MW+pfEIMZsy9vBqi6C0mXow/FgJfAcVd7ZMvtQdExY+h
- osqj9vqt/LjXLi6CuAy/oszppueVG5zZreArQcxPZQcc57UPrRxxmOTya6YaQn75cWAL
- QZ4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wuDXc+IXQGay7e3fD99hwMFa7JXXaUv+8T7wwPWp5iw=;
- b=kFzFx7JQq03dDHpmMGuZAbGPC7j/zw7N/2x7NbyxePUbwPpHiRmfJ5IvdvCcJS/4Yw
- HR8FfZkyJI1chuRTNzwCkftl3YIg2Y4ayD1Y4I6svGoXtRrL9jYgsolINZ4OOQ9r6KI0
- ojANx4xY6An1qlARYyZkVl1Ys0AX6ovxSMSaTjoZaEs+A9UYN1eE3TyD8f83tRXfkP7f
- ZHi4nE8hpnpWg0YjmlnEchvSBWogzM2FVtepyT/gVzDakzJfoYxgk5139JQts3xlBR56
- VynmSFP1lKjh3hkhv3I32TBgvQ4CloJ4h9JJksJ0I7YdVoCmpbsKfyhzp/eogPAuKopB
- 9BAw==
-X-Gm-Message-State: APjAAAVandenVgBzO6xGo45oZeJRIjeACzTqVRY/OYtbtaOn3yupyctJ
- w+QkbfcinK2/MmLIJ6dV1fg=
-X-Google-Smtp-Source: APXvYqzemz/xV7mTxS06IPnyybDyeoue+wEcoMxhSLWRmNonKjhneN4QQeH2TlSUMZp4+19UN8DTrg==
-X-Received: by 2002:aa7:8186:: with SMTP id g6mr58368552pfi.126.1558057728807; 
- Thu, 16 May 2019 18:48:48 -0700 (PDT)
-Received: from [10.230.28.107] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id j19sm8403874pfr.155.2019.05.16.18.48.44
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 16 May 2019 18:48:47 -0700 (PDT)
-To: Daniel Walker <danielwa@cisco.com>
-References: <1557357269-9498-1-git-send-email-nkela@cisco.com>
- <9be117dc6e818ab83376cd8e0f79dbfaaf193aa9.camel@intel.com>
- <76B41175-0CEE-466C-91BF-89A1CA857061@cisco.com>
- <4469196a-0705-5459-8aca-3f08e9889d61@gmail.com>
- <20190517010330.2wynopuhsqycqzuq@zorba>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Openpgp: preference=signencrypt
-Message-ID: <bd9e6a93-c8e8-a90e-25b0-26ccbf65b7c4@gmail.com>
-Date: Thu, 16 May 2019 18:48:43 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ with ESMTP id 7ELxuSL8LzGR for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 May 2019 15:04:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 259D386AE1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 15:04:34 +0000 (UTC)
+Received: from [192.168.0.13] (ip5f5bd2a4.dynamic.kabel-deutschland.de
+ [95.91.210.164])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id E391A2000BFDE;
+ Fri, 17 May 2019 16:55:00 +0200 (CEST)
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <8ef1b846-caf6-45de-33aa-a46406548167@molgen.mpg.de>
+Date: Fri, 17 May 2019 16:55:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20190517010330.2wynopuhsqycqzuq@zorba>
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igb: add parameter to ignore nvm
- checksum validation
+Subject: [Intel-wired-lan] [PATCH] Reduce e1000e boot time by tightening
+ sleep ranges
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,67 +59,359 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Nikunj Kela \(nkela\)" <nkela@cisco.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "xe-linux-external\(mailer list\)" <xe-linux-external@cisco.com>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Arjan van de Ven <arjan@linux.intel.com>, intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+ From 6ce17ba6e04802462425ee9d38084523fc1a7ab6 Mon Sep 17 00:00:00 2001
+From: Arjan van de Ven <arjan@linux.intel.com>
+Date: Mon, 25 Jul 2016 06:44:34 -0500
 
+The e1000e driver is a great user of the usleep_range() API,
+and has nice ranges that in principle help power management.
 
-On 5/16/2019 6:03 PM, Daniel Walker wrote:
-> On Thu, May 16, 2019 at 03:02:18PM -0700, Florian Fainelli wrote:
->> On 5/16/19 12:55 PM, Nikunj Kela (nkela) wrote:
->>>
->>>
->>> On 5/16/19, 12:35 PM, "Jeff Kirsher" <jeffrey.t.kirsher@intel.com> wrote:
->>>
->>>     On Wed, 2019-05-08 at 23:14 +0000, Nikunj Kela wrote:
->>>    >> Some of the broken NICs don't have EEPROM programmed correctly. It
->>>    >> results
->>>    >> in probe to fail. This change adds a module parameter that can be
->>>    >> used to
->>>    >> ignore nvm checksum validation.
->>>    >> 
->>>    >> Cc: xe-linux-external@cisco.com
->>>    >> Signed-off-by: Nikunj Kela <nkela@cisco.com>
->>>    >> ---
->>>    >>  drivers/net/ethernet/intel/igb/igb_main.c | 28
->>>    >> ++++++++++++++++++++++------
->>>    >>  1 file changed, 22 insertions(+), 6 deletions(-)
->>>     
->>>     >NAK for two reasons.  First, module parameters are not desirable
->>>     >because their individual to one driver and a global solution should be
->>>     >found so that all networking device drivers can use the solution.  This
->>>     >will keep the interface to change/setup/modify networking drivers
->>>     >consistent for all drivers.
->>>
->>>     
->>>     >Second and more importantly, if your NIC is broken, fix it.  Do not try
->>>     >and create a software workaround so that you can continue to use a
->>>     >broken NIC.  There are methods/tools available to properly reprogram
->>>     >the EEPROM on a NIC, which is the right solution for your issue.
->>>
->>> I am proposing this as a debug parameter. Obviously, we need to fix EEPROM but this helps us continuing the development while manufacturing fixes NIC.
->>
->> Then why even bother with sending this upstream?
-> 
-> It seems rather drastic to disable the entire driver because the checksum
-> doesn't match. It really should be a warning, even a big warning, to let people
-> know something is wrong, but disabling the whole driver doesn't make sense.
+However the ranges that are used only during system startup are
+very long (and can add easily 100 msec to the boot time) while
+the power savings of such long ranges is irrelevant due to the
+one-off, boot only, nature of these functions.
 
-You could generate a random Ethernet MAC address if you don't have a
-valid one, a lot of drivers do that, and that's a fairly reasonable
-behavior. At some point in your product development someone will
-certainly verify that the provisioned MAC address matches the network
-interface's MAC address.
+This patch shrinks some of the longest ranges to be shorter
+(while still using a power friendly 1 msec range); this saves
+100msec+ of boot time on my BDW NUCs
+
+Signed-off-by: Arjan van de Ven <arjan@linux.intel.com>
+Signed-off-by: Paul Menzel <pmenzel@molgen.mpg.de>
+---
+
+This upstreams a patch carried by the Clear Linux project [1].
+
+[1]: 
+https://github.com/clearlinux-pkgs/linux/blob/master/0111-reduce-e1000e-boot-time-by-tightening-sleep-ranges.patch
+
+  .../net/ethernet/intel/e1000e/80003es2lan.c   |  2 +-
+  drivers/net/ethernet/intel/e1000e/82571.c     |  2 +-
+  drivers/net/ethernet/intel/e1000e/ethtool.c   | 14 ++++++-------
+  drivers/net/ethernet/intel/e1000e/ich8lan.c   | 20 +++++++++----------
+  drivers/net/ethernet/intel/e1000e/mac.c       |  2 +-
+  drivers/net/ethernet/intel/e1000e/netdev.c    | 14 ++++++-------
+  drivers/net/ethernet/intel/e1000e/nvm.c       |  2 +-
+  7 files changed, 28 insertions(+), 28 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/80003es2lan.c 
+b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
+index 257bd59bc9c6..94bce9823336 100644
+--- a/drivers/net/ethernet/intel/e1000e/80003es2lan.c
++++ b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
+@@ -680,7 +680,7 @@ static s32 e1000_reset_hw_80003es2lan(struct 
+e1000_hw *hw)
+  	ew32(TCTL, E1000_TCTL_PSP);
+  	e1e_flush();
+
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	ctrl = er32(CTRL);
+
+diff --git a/drivers/net/ethernet/intel/e1000e/82571.c 
+b/drivers/net/ethernet/intel/e1000e/82571.c
+index b9309302c29e..2c1bab377b2a 100644
+--- a/drivers/net/ethernet/intel/e1000e/82571.c
++++ b/drivers/net/ethernet/intel/e1000e/82571.c
+@@ -959,7 +959,7 @@ static s32 e1000_reset_hw_82571(struct e1000_hw *hw)
+  	ew32(TCTL, tctl);
+  	e1e_flush();
+
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	/* Must acquire the MDIO ownership before MAC reset.
+  	 * Ownership defaults to firmware after a reset.
+diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c 
+b/drivers/net/ethernet/intel/e1000e/ethtool.c
+index 02ebf208f48b..08342698386d 100644
+--- a/drivers/net/ethernet/intel/e1000e/ethtool.c
++++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+@@ -1014,7 +1014,7 @@ static int e1000_intr_test(struct e1000_adapter 
+*adapter, u64 *data)
+  	/* Disable all the interrupts */
+  	ew32(IMC, 0xFFFFFFFF);
+  	e1e_flush();
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	/* Test each interrupt */
+  	for (i = 0; i < 10; i++) {
+@@ -1046,7 +1046,7 @@ static int e1000_intr_test(struct e1000_adapter 
+*adapter, u64 *data)
+  			ew32(IMC, mask);
+  			ew32(ICS, mask);
+  			e1e_flush();
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+
+  			if (adapter->test_icr & mask) {
+  				*data = 3;
+@@ -1064,7 +1064,7 @@ static int e1000_intr_test(struct e1000_adapter 
+*adapter, u64 *data)
+  		ew32(IMS, mask);
+  		ew32(ICS, mask);
+  		e1e_flush();
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+
+  		if (!(adapter->test_icr & mask)) {
+  			*data = 4;
+@@ -1082,7 +1082,7 @@ static int e1000_intr_test(struct e1000_adapter 
+*adapter, u64 *data)
+  			ew32(IMC, ~mask & 0x00007FFF);
+  			ew32(ICS, ~mask & 0x00007FFF);
+  			e1e_flush();
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+
+  			if (adapter->test_icr) {
+  				*data = 5;
+@@ -1094,7 +1094,7 @@ static int e1000_intr_test(struct e1000_adapter 
+*adapter, u64 *data)
+  	/* Disable all the interrupts */
+  	ew32(IMC, 0xFFFFFFFF);
+  	e1e_flush();
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	/* Unhook test interrupt handler */
+  	free_irq(irq, netdev);
+@@ -1470,7 +1470,7 @@ static int e1000_set_82571_fiber_loopback(struct 
+e1000_adapter *adapter)
+  	 */
+  	ew32(SCTL, E1000_SCTL_ENABLE_SERDES_LOOPBACK);
+  	e1e_flush();
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	return 0;
+  }
+@@ -1584,7 +1584,7 @@ static void e1000_loopback_cleanup(struct 
+e1000_adapter *adapter)
+  		    hw->phy.media_type == e1000_media_type_internal_serdes) {
+  			ew32(SCTL, E1000_SCTL_DISABLE_SERDES_LOOPBACK);
+  			e1e_flush();
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+  			break;
+  		}
+  		/* Fall Through */
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c 
+b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index cdae0efde8e6..395b05701480 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -271,7 +271,7 @@ static void e1000_toggle_lanphypc_pch_lpt(struct 
+e1000_hw *hw)
+  		u16 count = 20;
+
+  		do {
+-			usleep_range(5000, 10000);
++			usleep_range(5000, 6000);
+  		} while (!(er32(CTRL_EXT) & E1000_CTRL_EXT_LPCD) && count--);
+
+  		msleep(30);
+@@ -405,7 +405,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct 
+e1000_hw *hw)
+  	/* Ungate automatic PHY configuration on non-managed 82579 */
+  	if ((hw->mac.type == e1000_pch2lan) &&
+  	    !(fwsm & E1000_ICH_FWSM_FW_VALID)) {
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+  		e1000_gate_hw_phy_config_ich8lan(hw, false);
+  	}
+
+@@ -531,7 +531,7 @@ static s32 e1000_init_phy_params_ich8lan(struct 
+e1000_hw *hw)
+  	phy->id = 0;
+  	while ((e1000_phy_unknown == e1000e_get_phy_type_from_id(phy->id)) &&
+  	       (i++ < 100)) {
+-		usleep_range(1000, 2000);
++		usleep_range(1000, 1100);
+  		ret_val = e1000e_get_phy_id(hw);
+  		if (ret_val)
+  			return ret_val;
+@@ -1244,7 +1244,7 @@ static s32 e1000_disable_ulp_lpt_lp(struct 
+e1000_hw *hw, bool force)
+  				goto out;
+  			}
+
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+  		}
+  		e_dbg("ULP_CONFIG_DONE cleared after %dmsec\n", i * 10);
+
+@@ -1999,7 +1999,7 @@ static s32 e1000_check_reset_block_ich8lan(struct 
+e1000_hw *hw)
+
+  	while ((blocked = !(er32(FWSM) & E1000_ICH_FWSM_RSPCIPHY)) &&
+  	       (i++ < 30))
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+  	return blocked ? E1000_BLK_PHY_RESET : 0;
+  }
+
+@@ -2818,7 +2818,7 @@ static s32 e1000_post_phy_reset_ich8lan(struct 
+e1000_hw *hw)
+  		return 0;
+
+  	/* Allow time for h/w to get to quiescent state after reset */
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	/* Perform any necessary post-reset workarounds */
+  	switch (hw->mac.type) {
+@@ -2854,7 +2854,7 @@ static s32 e1000_post_phy_reset_ich8lan(struct 
+e1000_hw *hw)
+  	if (hw->mac.type == e1000_pch2lan) {
+  		/* Ungate automatic PHY configuration on non-managed 82579 */
+  		if (!(er32(FWSM) & E1000_ICH_FWSM_FW_VALID)) {
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+  			e1000_gate_hw_phy_config_ich8lan(hw, false);
+  		}
+
+@@ -3875,7 +3875,7 @@ static s32 e1000_update_nvm_checksum_spt(struct 
+e1000_hw *hw)
+  	 */
+  	if (!ret_val) {
+  		nvm->ops.reload(hw);
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+  	}
+
+  out:
+@@ -4026,7 +4026,7 @@ static s32 
+e1000_update_nvm_checksum_ich8lan(struct e1000_hw *hw)
+  	 */
+  	if (!ret_val) {
+  		nvm->ops.reload(hw);
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+  	}
+
+  out:
+@@ -4650,7 +4650,7 @@ static s32 e1000_reset_hw_ich8lan(struct e1000_hw *hw)
+  	ew32(TCTL, E1000_TCTL_PSP);
+  	e1e_flush();
+
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	/* Workaround for ICH8 bit corruption issue in FIFO memory */
+  	if (hw->mac.type == e1000_ich8lan) {
+diff --git a/drivers/net/ethernet/intel/e1000e/mac.c 
+b/drivers/net/ethernet/intel/e1000e/mac.c
+index 4abd55d646c5..e531976f8a67 100644
+--- a/drivers/net/ethernet/intel/e1000e/mac.c
++++ b/drivers/net/ethernet/intel/e1000e/mac.c
+@@ -797,7 +797,7 @@ static s32 
+e1000_poll_fiber_serdes_link_generic(struct e1000_hw *hw)
+  	 * milliseconds even if the other end is doing it in SW).
+  	 */
+  	for (i = 0; i < FIBER_LINK_UP_LIMIT; i++) {
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+  		status = er32(STATUS);
+  		if (status & E1000_STATUS_LU)
+  			break;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c 
+b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 189f231075c2..ce4aaa9f2163 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3208,7 +3208,7 @@ static void e1000_configure_rx(struct 
+e1000_adapter *adapter)
+  	if (!(adapter->flags2 & FLAG2_NO_DISABLE_RX))
+  		ew32(RCTL, rctl & ~E1000_RCTL_EN);
+  	e1e_flush();
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	if (adapter->flags2 & FLAG2_DMA_BURST) {
+  		/* set the writeback threshold (only takes effect if the RDTR
+@@ -4273,7 +4273,7 @@ void e1000e_down(struct e1000_adapter *adapter, 
+bool reset)
+
+  	/* flush both disables and wait for them to finish */
+  	e1e_flush();
+-	usleep_range(10000, 20000);
++	usleep_range(10000, 11000);
+
+  	e1000_irq_disable(adapter);
+
+@@ -4311,7 +4311,7 @@ void e1000e_reinit_locked(struct e1000_adapter 
+*adapter)
+  {
+  	might_sleep();
+  	while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
+-		usleep_range(1000, 2000);
++		usleep_range(1000, 1100);
+  	e1000e_down(adapter, true);
+  	e1000e_up(adapter);
+  	clear_bit(__E1000_RESETTING, &adapter->state);
+@@ -4708,7 +4708,7 @@ int e1000e_close(struct net_device *netdev)
+  	int count = E1000_CHECK_RESET_COUNT;
+
+  	while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+
+  	WARN_ON(test_bit(__E1000_RESETTING, &adapter->state));
+
+@@ -6026,7 +6026,7 @@ static int e1000_change_mtu(struct net_device 
+*netdev, int new_mtu)
+  	}
+
+  	while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
+-		usleep_range(1000, 2000);
++		usleep_range(1000, 1100);
+  	/* e1000e_down -> e1000e_reset dependent on max_frame_size & mtu */
+  	adapter->max_frame_size = max_frame;
+  	e_info("changing MTU from %d to %d\n", netdev->mtu, new_mtu);
+@@ -6306,7 +6306,7 @@ static int e1000e_pm_freeze(struct device *dev)
+  		int count = E1000_CHECK_RESET_COUNT;
+
+  		while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+
+  		WARN_ON(test_bit(__E1000_RESETTING, &adapter->state));
+
+@@ -6721,7 +6721,7 @@ static int e1000e_pm_runtime_suspend(struct device 
+*dev)
+  		int count = E1000_CHECK_RESET_COUNT;
+
+  		while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
+-			usleep_range(10000, 20000);
++			usleep_range(10000, 11000);
+
+  		WARN_ON(test_bit(__E1000_RESETTING, &adapter->state));
+
+diff --git a/drivers/net/ethernet/intel/e1000e/nvm.c 
+b/drivers/net/ethernet/intel/e1000e/nvm.c
+index 937f9af22d26..e609f4df86f4 100644
+--- a/drivers/net/ethernet/intel/e1000e/nvm.c
++++ b/drivers/net/ethernet/intel/e1000e/nvm.c
+@@ -392,7 +392,7 @@ s32 e1000e_write_nvm_spi(struct e1000_hw *hw, u16 
+offset, u16 words, u16 *data)
+  				break;
+  			}
+  		}
+-		usleep_range(10000, 20000);
++		usleep_range(10000, 11000);
+  		nvm->ops.release(hw);
+  	}
+
 -- 
-Florian
+2.20.1
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
