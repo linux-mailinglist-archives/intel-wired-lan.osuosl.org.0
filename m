@@ -1,70 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67A5022048
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:28:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79F0522049
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:29:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 243EE883CF;
-	Fri, 17 May 2019 22:28:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 037C786B08;
+	Fri, 17 May 2019 22:29:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PRHK2Y22Ptp3; Fri, 17 May 2019 22:28:49 +0000 (UTC)
+	with ESMTP id qwD0PH5GCJEq; Fri, 17 May 2019 22:29:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4F9E0883E6;
-	Fri, 17 May 2019 22:28:47 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A4C0186B2D;
+	Fri, 17 May 2019 22:29:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7B1A61BF997
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A0E7E1BF997
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:29:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 86997883CF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A2F2086B08
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:29:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KmhW3MdJLDAH for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 May 2019 22:28:45 +0000 (UTC)
+ with ESMTP id oD8lhW7Ji5aT for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 May 2019 22:29:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1F439883CE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:45 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C498686AFB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:29:08 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 May 2019 15:28:44 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 May 2019 15:29:08 -0700
 X-ExtLoop1: 1
-Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
- by FMSMGA003.fm.intel.com with ESMTP; 17 May 2019 15:28:44 -0700
+X-IronPort-AV: E=Sophos;i="5.60,481,1549958400"; d="scan'208";a="172955218"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by fmsmga002.fm.intel.com with ESMTP; 17 May 2019 15:29:07 -0700
+Received: from orsmsx163.amr.corp.intel.com (10.22.240.88) by
+ ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Fri, 17 May 2019 15:29:07 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.200]) by
- ORSMSX108.amr.corp.intel.com ([169.254.2.171]) with mapi id 14.03.0415.000;
- Fri, 17 May 2019 15:28:43 -0700
+ ORSMSX163.amr.corp.intel.com ([169.254.9.150]) with mapi id 14.03.0415.000;
+ Fri, 17 May 2019 15:29:07 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
- iavf_[add|del]_cloud_filter
-Thread-Index: AQHVCnvE00P4BbAKL0CrgV00SSiguaZv6rhw
-Date: Fri, 17 May 2019 22:28:42 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DB787@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S5 iavf 11/11] iavf: allow null
+ RX descriptors
+Thread-Index: AQHVCnvEbwWuh1FOnEqxPizgH8qCFaZv6tlw
+Date: Fri, 17 May 2019 22:29:06 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DB797@ORSMSX104.amr.corp.intel.com>
 References: <20190514173709.62431-1-alice.michael@intel.com>
- <20190514173709.62431-10-alice.michael@intel.com>
-In-Reply-To: <20190514173709.62431-10-alice.michael@intel.com>
+ <20190514173709.62431-11-alice.michael@intel.com>
+In-Reply-To: <20190514173709.62431-11-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMGZhMWIyMDQtZmFiOS00Y2RiLWJmODgtNmYzOTJiODdiNTJiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZkdBdmpxczlMMzE1MEFKK1o1c3daWitZSkQzM3l0UjF0eWRMOWF0WFlpdlhhQmtYSlpBOXlhS0Q0Yk9PcDZHOCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzk0YTY2NTMtYTBhZS00ODRiLThlM2ItNDU5N2Y3OWE2NGJlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZ2tIcW9hZ0UwVElOWDFrNnFYRlR5eWE4QWpKRExGUFpwdm12QTNid2lEYXVGN0IwWThiRU1EbzRzUVp0Q05tSiJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
- iavf_[add|del]_cloud_filter
+Subject: Re: [Intel-wired-lan] [next PATCH S5 iavf 11/11] iavf: allow null
+ RX descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,29 +92,24 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Tuesday, May 14, 2019 10:37 AM
 > To: Michael, Alice <alice.michael@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
-> iavf_[add|del]_cloud_filter
+> Subject: [Intel-wired-lan] [next PATCH S5 iavf 11/11] iavf: allow null RX
+> descriptors
 > 
-> From: Paul Greenwalt <paul.greenwalt@intel.com>
+> From: Mitch Williams <mitch.a.williams@intel.com>
 > 
-> Add call to iavf_add_cloud_filter and iavf_del_cloud_filter from
-> iavf_process_aq_command to clear aq_required
-> IAVF_FLAG_AQ_ADD_CLOUD_FILTER and
-> IAVF_FLAG_AQ_DEL_CLOUD_FILTER bits.
+> In some circumstances, the hardware can hand us a null receive descriptor,
+> with no data attached but otherwise valid. Unfortunately, the driver was ill-
+> equipped to handle such an event, and would stop processing packets at that
+> point.
 > 
-> aq_required IAVF_FLAG_AQ_DEL_CLOUD_FILTER bit is being set in
-> iavf_down and iavf_delete_clsflower, and are never cleared.
+> To fix this, use the Descriptor Done bit instead of the size to determine
+> whether or not a descriptor is ready to be processed. Add some checks to
+> allow for unused buffers.
 > 
-> aq_required IAVF_FLAG_AQ_ADD_CLOUD_FILTER bit is being set in
-> iavf_handle_reset and iavf_configure_clsflower, and are never cleared.
-> 
-> Since the aq_required is not zero, iavf_watchdog_task is setting the
-> queue_delayed_work to 20 msec instead of the longer delay.
-> 
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.c | 21 ++++++++++++++++++---
+>  1 file changed, 18 insertions(+), 3 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
