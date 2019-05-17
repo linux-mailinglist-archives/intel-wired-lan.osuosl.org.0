@@ -1,83 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 802882202F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:20:19 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49B2C2203A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:24:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 213C686A32;
-	Fri, 17 May 2019 22:20:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E6D40866A3;
+	Fri, 17 May 2019 22:24:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dk5_W0648KiT; Fri, 17 May 2019 22:20:17 +0000 (UTC)
+	with ESMTP id APPKdzyBYDA4; Fri, 17 May 2019 22:24:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D959986AE3;
-	Fri, 17 May 2019 22:20:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2164B846D3;
+	Fri, 17 May 2019 22:24:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0C1041BF318
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:20:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9AE131BF318
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:24:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0E72A86A2B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:20:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9D2982284A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:24:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CZNfy9wLODvt for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 May 2019 22:20:14 +0000 (UTC)
+ with ESMTP id nlp6NTurKE8b for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 May 2019 22:24:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-it1-f179.google.com (mail-it1-f179.google.com
- [209.85.166.179])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CA8E5869BC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:20:14 +0000 (UTC)
-Received: by mail-it1-f179.google.com with SMTP id q65so14378459itg.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 15:20:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wj0pD51ojgB5zVKiIq4Es3I5B8O4yozAvKeClJ57Lic=;
- b=OV3qTZHWTA7Svs9DXhVorI3K9ivGPAgm8NeczpZfM3McIt3WOC0zvYyIV5UF6Dl2wb
- NF068qvC+MUkCFrY8C7i/5bEL6nbXSdBaZMF3HOzVx2VEx6Rd+KX9X9WxC3aXwVei1U2
- QovDihWeJRsI6/ghHjVatOJXwrvn1GVuXtbyL3uCJUL91h0/r07CNGOsPlvP0aC2ppYg
- G240Vw1KTD6wVlKHCIo0oWCsDHHoc8NyAT8xGCpqiZXPiPh8nlZyn0I4eEHeRgtMH+DQ
- val/OZAlzwYoCgMLyMh/2mGJFzkmagSWFlIoWc3CITUbGRD2IShP7tKVXC3P1fvaN+Na
- GvsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wj0pD51ojgB5zVKiIq4Es3I5B8O4yozAvKeClJ57Lic=;
- b=KCJVbFDBiBcYaoyGNgr2RRb67vxJ6q3ri1yHuvi/XWnHw7hi1dt/1zJU47x7q6hn4s
- H2gHfXkPSD/KXMZZ15kmu2H2WLwB/ZSozHuZlhgVVUQcbqSDdjmhXc26E2HryzB5Z3yS
- Pj0a3MuYnXiTQ1Eu3dYFaaEyrzNNFP2LedxXlHQlESHp6nUgeoZXLk+LHYXjLy1sLF1h
- LbOuQ5qXLyVCa3aKYdBRfsaff2Vj8NMegh5hnZt5enNe4KkQlfkfeU+luwhUl6bXRBi1
- 80ud7fArDEMvp0BK8OVYzVSpgEpLgr2WP5gtCXq9D5l/KO/EsuboqUfxSKA9OMUU3NL3
- bFlw==
-X-Gm-Message-State: APjAAAUi/mPzaXZDmgLO9U0SfYt+4fr2wxSy2oF8TrJ8aVO8Hq7SmoQi
- y1YyJRk0VaDlHqOjRqgQR+UXhosBVp3Gdix12hU=
-X-Google-Smtp-Source: APXvYqzdiUl1n0BS7rw5BYLSIIDeslgMl7J0ljwWyt9VIVdxHw+yq2Y+DCOWbQnsASDGm4sYISAToRlqjN7Fp/11Kz8=
-X-Received: by 2002:a02:1049:: with SMTP id 70mr36520228jay.114.1558131613863; 
- Fri, 17 May 2019 15:20:13 -0700 (PDT)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id D9AEA22270
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:24:35 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 May 2019 15:24:35 -0700
+X-ExtLoop1: 1
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by orsmga006.jf.intel.com with ESMTP; 17 May 2019 15:24:35 -0700
+Received: from orsmsx160.amr.corp.intel.com (10.22.226.43) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Fri, 17 May 2019 15:24:34 -0700
+Received: from orsmsx104.amr.corp.intel.com ([169.254.4.200]) by
+ ORSMSX160.amr.corp.intel.com ([169.254.13.155]) with mapi id 14.03.0415.000;
+ Fri, 17 May 2019 15:24:34 -0700
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [next PATCH S5 iavf 01/11] iavf: Create VLAN
+ tag elements starting from the first element
+Thread-Index: AQHVCnu9hrwx9pcn/U291zDs+XD1rKZv6ZFA
+Date: Fri, 17 May 2019 22:24:34 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DB6F9@ORSMSX104.amr.corp.intel.com>
+References: <20190514173709.62431-1-alice.michael@intel.com>
+In-Reply-To: <20190514173709.62431-1-alice.michael@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzE1NDE2ZjMtNGNlYS00YzBkLThmYzYtYzMyYzBhZjEyY2U4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoicVlnWEhMM2xYSTF6b0dONGxRMm5kcmVsU0duemxDcTlnK1RnZkxSZ3I1OUNud09MZnpSaVwvN29rckZ0bzVpODkifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.400.15
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-References: <CAKgT0UcV2wCr6iUYktZ+Bju_GNpXKzR=M+NLfKhUsw4bsJSiyA@mail.gmail.com>
- <20190503205935.bg45rsso5jjj3gnx@csclub.uwaterloo.ca>
- <20190513165547.alkkgcsdelaznw6v@csclub.uwaterloo.ca>
- <CAKgT0Uf_nqZtCnHmC=-oDFz-3PuSM6=30BvJSDiAgzK062OY6w@mail.gmail.com>
- <20190514163443.glfjva3ofqcy7lbg@csclub.uwaterloo.ca>
- <CAKgT0UdPDyCBsShQVwwE5C8fBKkMcfS6_S5m3T7JP-So9fzVgA@mail.gmail.com>
- <20190516183407.qswotwyjwtjqfdqm@csclub.uwaterloo.ca>
- <20190516183705.e4zflbli7oujlbek@csclub.uwaterloo.ca>
- <CAKgT0UfSa-dM2+7xntK9tB7Zw5N8nDd3U1n4OSK0gbWbkNSKJQ@mail.gmail.com>
- <CAKgT0Ucd0s_0F5_nwqXknRngwROyuecUt+4bYzWvp1-2cNSg7g@mail.gmail.com>
- <20190517172317.amopafirjfizlgej@csclub.uwaterloo.ca>
-In-Reply-To: <20190517172317.amopafirjfizlgej@csclub.uwaterloo.ca>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Fri, 17 May 2019 15:20:02 -0700
-Message-ID: <CAKgT0UdM28pSTCsaT=TWqmQwCO44NswS0PqFLAzgs9pmn41VeQ@mail.gmail.com>
-To: Lennart Sorensen <lsorense@csclub.uwaterloo.ca>
-Subject: Re: [Intel-wired-lan] i40e X722 RSS problem with NAT-Traversal
- IPsec packets
+Subject: Re: [Intel-wired-lan] [next PATCH S5 iavf 01/11] iavf: Create VLAN
+ tag elements starting from the first element
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,75 +79,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, May 17, 2019 at 10:23 AM Lennart Sorensen
-<lsorense@csclub.uwaterloo.ca> wrote:
-> OK I applied that and see this:
->
-> i40e: Intel(R) Ethernet Connection XL710 Network Driver - version 2.1.7-k
-> i40e: Copyright (c) 2013 - 2014 Intel Corporation.
-> i40e 0000:3d:00.0: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 1.1767.0
-> i40e 0000:3d:00.0: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
-> i40e 0000:3d:00.0: MAC address: a4:bf:01:4e:0c:87
-> i40e 0000:3d:00.0: flow type: 36 update input mask from:0x0006060000000000, to:0x0001801800000000
-> i40e 0000:3d:00.0: flow type: 35 update input mask from:0x0006060000000000, to:0x0001801800000000
-> i40e 0000:3d:00.0: flow type: 34 update input mask from:0x0006060780000000, to:0x0001801f80000000
-> i40e 0000:3d:00.0: flow type: 33 update input mask from:0x0006060600000000, to:0x0001801e00000000
-> i40e 0000:3d:00.0: flow type: 32 update input mask from:0x0006060600000000, to:0x0001801e00000000
-> i40e 0000:3d:00.0: flow type: 31 update input mask from:0x0006060600000000, to:0x0001801e00000000
-> i40e 0000:3d:00.0: flow type: 30 update input mask from:0x0006060600000000, to:0x0001801e00000000
-> i40e 0000:3d:00.0: flow type: 29 update input mask from:0x0006060600000000, to:0x0001801e00000000
-> i40e 0000:3d:00.0: Features: PF-id[0] VSIs: 34 QP: 12 TXQ: 13 RSS VxLAN Geneve VEPA
-> i40e 0000:3d:00.1: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 1.1767.0
-> i40e 0000:3d:00.1: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
-> i40e 0000:3d:00.1: MAC address: a4:bf:01:4e:0c:88
-> i40e 0000:3d:00.1: Features: PF-id[1] VSIs: 34 QP: 12 TXQ: 13 RSS VxLAN Geneve VEPA
-> i40e 0000:3d:00.1 eth2: NIC Link is Up, 1000 Mbps Full Duplex, Flow Control: None
->
-> Unfortunately (much to my disappointment, I hoped it would work) I see
-> no change in behaviour.
->
-> --
-> Len Sorensen
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Alice Michael
+> Sent: Tuesday, May 14, 2019 10:37 AM
+> To: Michael, Alice <alice.michael@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Cc: Abodunrin, Akeem G <akeem.g.abodunrin@intel.com>
+> Subject: [Intel-wired-lan] [next PATCH S5 iavf 01/11] iavf: Create VLAN tag
+> elements starting from the first element
+> 
+> From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> 
+> This patch changes how VLAN tag are being populated and programmed into
+> the HW - Instead of start adding VF VLAN tag from the last member of the
+> element list, start from the first member of the list, until number of allowed
+> VLAN tags is exhausted in the HW.
+> 
+> Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-I was hoping it would work too. It seemed like it should have been the
-answer since it definitely didn't seem right. Now it has me wondering
-about some of the other code in the driver.
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-By any chance have you run anything like DPDK on any of the X722
-interfaces on this system recently? I ask because it occurs to me that
-if you had and it loaded something like a custom parsing profile it
-could cause issues similar to this.
 
-A debugging step you might try would be to revert back to my earlier
-patch that only displayed the input mask instead of changing it. Once
-you have done that you could look at doing a full power cycle on the
-system by either physically disconnecting the power, or using the
-power switch on the power supply itself if one is available. It is
-necessary to disconnect the motherboard/NIC from power in order to
-fully clear the global state stored in the device as it is retained
-when the system is in standby.
-
-What I want to verify is if the input mask that we have ran into is
-the natural power-on input mask of if that is something that was
-overridden by something else. The mask change I made should be reset
-if the system loses power, and then it will either default back to the
-value with the 6's if that is it's natural state, or it will match
-what I had if it was not.
-
-Other than that I really can't think up too much else. I suppose there
-is the possibility of the NVM either setting up a DCB setting or
-HREGION register causing an override that is limiting the queues to 1.
-However, the likelihood of that should be really low.
-
-- Alex
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
