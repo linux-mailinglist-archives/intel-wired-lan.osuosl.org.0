@@ -1,73 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83ED522047
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:28:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67A5022048
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:28:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3C2492286C;
-	Fri, 17 May 2019 22:28:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 243EE883CF;
+	Fri, 17 May 2019 22:28:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O9mm6XXvthd3; Fri, 17 May 2019 22:28:17 +0000 (UTC)
+	with ESMTP id PRHK2Y22Ptp3; Fri, 17 May 2019 22:28:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EF95622B20;
-	Fri, 17 May 2019 22:28:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4F9E0883E6;
+	Fri, 17 May 2019 22:28:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 962531BF997
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7B1A61BF997
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A17BA883A5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 86997883CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rTsV+XKCuWV8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 May 2019 22:28:13 +0000 (UTC)
+ with ESMTP id KmhW3MdJLDAH for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 May 2019 22:28:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6DBD888352
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:13 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1F439883CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:28:45 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 May 2019 15:28:13 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 May 2019 15:28:44 -0700
 X-ExtLoop1: 1
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by fmsmga008.fm.intel.com with ESMTP; 17 May 2019 15:28:13 -0700
-Received: from orsmsx155.amr.corp.intel.com (10.22.240.21) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Fri, 17 May 2019 15:28:12 -0700
+Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
+ by FMSMGA003.fm.intel.com with ESMTP; 17 May 2019 15:28:44 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.200]) by
- ORSMSX155.amr.corp.intel.com ([169.254.7.142]) with mapi id 14.03.0415.000;
- Fri, 17 May 2019 15:28:12 -0700
+ ORSMSX108.amr.corp.intel.com ([169.254.2.171]) with mapi id 14.03.0415.000;
+ Fri, 17 May 2019 15:28:43 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S5 iavf 09/11] iavf: Refactor
- init state machine
-Thread-Index: AQHVCnvCGEAxzaxkuEe0rolVsCik8qZv6piQ
-Date: Fri, 17 May 2019 22:28:12 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DB777@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
+ iavf_[add|del]_cloud_filter
+Thread-Index: AQHVCnvE00P4BbAKL0CrgV00SSiguaZv6rhw
+Date: Fri, 17 May 2019 22:28:42 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DB787@ORSMSX104.amr.corp.intel.com>
 References: <20190514173709.62431-1-alice.michael@intel.com>
- <20190514173709.62431-9-alice.michael@intel.com>
-In-Reply-To: <20190514173709.62431-9-alice.michael@intel.com>
+ <20190514173709.62431-10-alice.michael@intel.com>
+In-Reply-To: <20190514173709.62431-10-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOGI3MjExYzAtNWI2MS00YTg5LThkNjMtYjg3NjgxNzdiYTZiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiam9EQUt3VG52ZTJYU3hvc1BEYUdDQlZTeDNiQmRHek84cVwvUW1Tb2szRkZybzA4ZEIwMHZlTFlMQVAySGNabXYifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMGZhMWIyMDQtZmFiOS00Y2RiLWJmODgtNmYzOTJiODdiNTJiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZkdBdmpxczlMMzE1MEFKK1o1c3daWitZSkQzM3l0UjF0eWRMOWF0WFlpdlhhQmtYSlpBOXlhS0Q0Yk9PcDZHOCJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S5 iavf 09/11] iavf: Refactor
- init state machine
+Subject: Re: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
+ iavf_[add|del]_cloud_filter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,20 +88,29 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Tuesday, May 14, 2019 10:37 AM
 > To: Michael, Alice <alice.michael@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Cc: Pawlak, Jakub <jakub.pawlak@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S5 iavf 09/11] iavf: Refactor init state
-> machine
+> Subject: [Intel-wired-lan] [next PATCH S5 iavf 10/11] iavf: add call to
+> iavf_[add|del]_cloud_filter
 > 
-> From: Jakub Pawlak <jakub.pawlak@intel.com>
+> From: Paul Greenwalt <paul.greenwalt@intel.com>
 > 
-> Cleanup of init state machine, move state specific code to separate functions
-> and rewrite the
-> iavf_init_task() function.
+> Add call to iavf_add_cloud_filter and iavf_del_cloud_filter from
+> iavf_process_aq_command to clear aq_required
+> IAVF_FLAG_AQ_ADD_CLOUD_FILTER and
+> IAVF_FLAG_AQ_DEL_CLOUD_FILTER bits.
 > 
-> Signed-off-by: Jakub Pawlak <jakub.pawlak@intel.com>
+> aq_required IAVF_FLAG_AQ_DEL_CLOUD_FILTER bit is being set in
+> iavf_down and iavf_delete_clsflower, and are never cleared.
+> 
+> aq_required IAVF_FLAG_AQ_ADD_CLOUD_FILTER bit is being set in
+> iavf_handle_reset and iavf_configure_clsflower, and are never cleared.
+> 
+> Since the aq_required is not zero, iavf_watchdog_task is setting the
+> queue_delayed_work to 20 msec instead of the longer delay.
+> 
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 447 ++++++++++++--------
->  1 file changed, 259 insertions(+), 188 deletions(-)
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
