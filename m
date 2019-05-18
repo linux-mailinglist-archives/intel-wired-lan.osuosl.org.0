@@ -1,71 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36D222205C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 00:36:53 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1D6122427
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 May 2019 18:56:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CFE2286B81;
-	Fri, 17 May 2019 22:36:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 14FE48654D;
+	Sat, 18 May 2019 16:56:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8XLYlvh--VsQ; Fri, 17 May 2019 22:36:50 +0000 (UTC)
+	with ESMTP id Pn8ZYpv0tZ+2; Sat, 18 May 2019 16:56:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4723B86B85;
-	Fri, 17 May 2019 22:36:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A286863DE;
+	Sat, 18 May 2019 16:56:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0C2F01BF997
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:36:49 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E32F81BF3E3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 May 2019 16:56:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0D19A86B2D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:36:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DE8FC85D5C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 May 2019 16:56:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BDYR3nHKIQ29 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 May 2019 22:36:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5801486B2C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2019 22:36:48 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 May 2019 15:36:48 -0700
-X-ExtLoop1: 1
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga001.jf.intel.com with ESMTP; 17 May 2019 15:36:47 -0700
-Received: from orsmsx104.amr.corp.intel.com ([169.254.4.200]) by
- ORSMSX107.amr.corp.intel.com ([169.254.1.194]) with mapi id 14.03.0415.000;
- Fri, 17 May 2019 15:36:47 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH][next] i40e: mark expected switch
- fall-through
-Thread-Index: AQHVAGBkv65pMyI0KkarzT0dRkZJ76ZwASjQ
-Date: Fri, 17 May 2019 22:36:47 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DB7B9@ORSMSX104.amr.corp.intel.com>
-References: <20190501205541.GA17995@embeddedor>
-In-Reply-To: <20190501205541.GA17995@embeddedor>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMzdlNDk2ZGQtODAyMS00MTYwLTlhMTktODBjYTI2MGM0ZmNmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoid3RIMGdTUzB1M1FMd3NSNDBsc1hsc2JzOVlTb1BSYVZvZEs3WVlCOTY4bEVQVjFNcU9cL2R2QlV4WmlZd2NVU3EifQ==
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.400.15
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+ with ESMTP id OIRJti9qqZWC for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 18 May 2019 16:56:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 43E3885CD5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 May 2019 16:56:37 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5bd392.dynamic.kabel-deutschland.de
+ [95.91.211.146])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 164662000BFDE;
+ Sat, 18 May 2019 18:56:34 +0200 (CEST)
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+References: <8ef1b846-caf6-45de-33aa-a46406548167@molgen.mpg.de>
+Message-ID: <1fb0c7c6-f687-f492-0f8e-487ada0b2542@molgen.mpg.de>
+Date: Sat, 18 May 2019 18:56:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH][next] i40e: mark expected switch
- fall-through
+In-Reply-To: <8ef1b846-caf6-45de-33aa-a46406548167@molgen.mpg.de>
+Content-Language: de-DE
+Subject: Re: [Intel-wired-lan] [PATCH] Reduce e1000e boot time by tightening
+ sleep ranges
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,36 +61,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Arjan van de Ven <arjan@linux.intel.com>, intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBJbnRlbC13aXJlZC1sYW4gW21h
-aWx0bzppbnRlbC13aXJlZC1sYW4tYm91bmNlc0Bvc3Vvc2wub3JnXSBPbg0KPiBCZWhhbGYgT2Yg
-R3VzdGF2byBBLiBSLiBTaWx2YQ0KPiBTZW50OiBXZWRuZXNkYXksIE1heSAxLCAyMDE5IDE6NTYg
-UE0NCj4gVG86IEtpcnNoZXIsIEplZmZyZXkgVCA8amVmZnJleS50LmtpcnNoZXJAaW50ZWwuY29t
-PjsgRGF2aWQgUy4gTWlsbGVyDQo+IDxkYXZlbUBkYXZlbWxvZnQubmV0Pg0KPiBDYzogbmV0ZGV2
-QHZnZXIua2VybmVsLm9yZzsgaW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc7IGxpbnV4
-LQ0KPiBrZXJuZWxAdmdlci5rZXJuZWwub3JnOyBLZWVzIENvb2sgPGtlZXNjb29rQGNocm9taXVt
-Lm9yZz4NCj4gU3ViamVjdDogW0ludGVsLXdpcmVkLWxhbl0gW1BBVENIXVtuZXh0XSBpNDBlOiBt
-YXJrIGV4cGVjdGVkIHN3aXRjaCBmYWxsLQ0KPiB0aHJvdWdoDQo+IA0KPiBJbiBwcmVwYXJhdGlv
-biB0byBlbmFibGluZyAtV2ltcGxpY2l0LWZhbGx0aHJvdWdoLCBtYXJrIHN3aXRjaCBjYXNlcyB3
-aGVyZQ0KPiB3ZSBhcmUgZXhwZWN0aW5nIHRvIGZhbGwgdGhyb3VnaC4NCj4gDQo+IFRoaXMgcGF0
-Y2ggZml4ZXMgdGhlIGZvbGxvd2luZyB3YXJuaW5nOg0KPiANCj4gZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jOiBJbiBmdW5jdGlvbiDigJhpNDBlX3J1bl94ZHBfemPi
-gJk6DQo+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYzoyMTc6Mzog
-d2FybmluZzogdGhpcyBzdGF0ZW1lbnQNCj4gbWF5IGZhbGwgdGhyb3VnaCBbLVdpbXBsaWNpdC1m
-YWxsdGhyb3VnaD1dDQo+ICAgIGJwZl93YXJuX2ludmFsaWRfeGRwX2FjdGlvbihhY3QpOw0KPiAg
-ICBefn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fg0KPiBkcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pNDBlL2k0MGVfeHNrLmM6MjE4OjI6IG5vdGU6IGhlcmUNCj4gICBjYXNlIFhEUF9B
-Qk9SVEVEOg0KPiAgIF5+fn4NCj4gDQo+IEluIHByZXBhcmF0aW9uIHRvIGVuYWJsaW5nIC1XaW1w
-bGljaXQtZmFsbHRocm91Z2gsIG1hcmsgc3dpdGNoIGNhc2VzIHdoZXJlDQo+IHdlIGFyZSBleHBl
-Y3RpbmcgdG8gZmFsbCB0aHJvdWdoLg0KPiANCj4gVGhpcyBwYXRjaCBmaXhlcyB0aGUgZm9sbG93
-aW5nIHdhcm5pbmc6DQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBHdXN0YXZvIEEuIFIuIFNpbHZhIDxn
-dXN0YXZvQGVtYmVkZGVkb3IuY29tPg0KPiAtLS0NCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2k0MGUvaTQwZV94c2suYyB8IDEgKw0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
-KCspDQoNClRlc3RlZC1ieTogQW5kcmV3IEJvd2VycyA8YW5kcmV3eC5ib3dlcnNAaW50ZWwuY29t
-Pg0KDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCklu
-dGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0
-cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Dear Linux folks,
+
+
+On 17.05.19 16:55, Paul Menzel wrote:
+>  From 6ce17ba6e04802462425ee9d38084523fc1a7ab6 Mon Sep 17 00:00:00 2001
+> From: Arjan van de Ven <arjan@linux.intel.com>
+> Date: Mon, 25 Jul 2016 06:44:34 -0500
+> 
+> The e1000e driver is a great user of the usleep_range() API,
+> and has nice ranges that in principle help power management.
+> 
+> However the ranges that are used only during system startup are
+> very long (and can add easily 100 msec to the boot time) while
+> the power savings of such long ranges is irrelevant due to the
+> one-off, boot only, nature of these functions.
+> 
+> This patch shrinks some of the longest ranges to be shorter
+> (while still using a power friendly 1 msec range); this saves
+> 100msec+ of boot time on my BDW NUCs
+
+On the Dell Latitude E7250 with Linux 5.0.1 from Debian experimental 
+(without this patch), the module e1000e takes quite long too initialize.
+
+> [   68.449925] calling  e1000_init_module+0x0/0x1000 [e1000e] @ 315
+> [   68.449926] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+> [   68.449926] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+> [   68.449949] e1000e 0000:00:19.0: enabling device (0000 -> 0002)
+> [   68.451074] e1000e 0000:00:19.0: Interrupt Throttling Rate (ints/sec) set to dynamic conservative mode
+> [   68.767735] e1000e 0000:00:19.0 0000:00:19.0 (uninitialized): registered PHC clock
+> [   68.864427] e1000e 0000:00:19.0 eth0: (PCI Express:2.5GT/s:Width x1) 34:e6:d7:6a:72:f4
+> [   68.864429] e1000e 0000:00:19.0 eth0: Intel(R) PRO/1000 Network Connection
+> [   68.864454] e1000e 0000:00:19.0 eth0: MAC: 11, PHY: 12, PBA No: FFFFFF-0FF
+> [   68.864498] initcall e1000_init_module+0x0/0x1000 [e1000e] returned 0 after 40406 usecs
+> [   68.868506] e1000e 0000:00:19.0 eno1: renamed from eth0
+> [   73.932930] e1000e: eno1 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
+
+I have no idea, why the `initcall_debug` time of 40.4 ms deviates from 
+the Linux message time stamps (414 ms).
+
+
+Kind regards,
+
+Paul
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
