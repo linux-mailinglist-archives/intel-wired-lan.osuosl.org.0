@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5F3A23BD5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 May 2019 17:17:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0307525398
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 May 2019 17:15:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8DF3320656;
-	Mon, 20 May 2019 15:17:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AE1CB87B5D;
+	Tue, 21 May 2019 15:15:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i33JvEa3ef0k; Mon, 20 May 2019 15:17:34 +0000 (UTC)
+	with ESMTP id zAJtGXkK9Q65; Tue, 21 May 2019 15:15:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8EF4A2333F;
-	Mon, 20 May 2019 15:17:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D438087B84;
+	Tue, 21 May 2019 15:15:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 68DC71BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2019 15:17:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 48A201BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 May 2019 15:15:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 64B0B85A88
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2019 15:17:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4105985FD7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 May 2019 15:15:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tF-na_ClN8lc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 May 2019 15:17:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7EC4A859BA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2019 15:17:29 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 May 2019 08:17:29 -0700
-X-ExtLoop1: 1
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
- ([10.185.23.132])
- by orsmga006.jf.intel.com with ESMTP; 20 May 2019 08:17:26 -0700
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <d185164e-d09f-39ab-74f0-0c483ab52e67@molgen.mpg.de>
- <5507809f-b2f1-429a-64a7-e59d60c76a4a@intel.com>
-Message-ID: <91202837-19cf-21c8-eadf-a1e2e90849c4@intel.com>
-Date: Mon, 20 May 2019 18:17:26 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.5.3
+ with ESMTP id 6FxihGJ4CxOY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 May 2019 15:15:43 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
+ [129.97.134.17])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E53C985B99
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 May 2019 15:15:42 +0000 (UTC)
+Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
+ id C7A46460279; Tue, 21 May 2019 11:15:37 -0400 (EDT)
+Date: Tue, 21 May 2019 11:15:37 -0400
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Message-ID: <20190521151537.xga4aiq3gjtiif4j@csclub.uwaterloo.ca>
+References: <20190513165547.alkkgcsdelaznw6v@csclub.uwaterloo.ca>
+ <CAKgT0Uf_nqZtCnHmC=-oDFz-3PuSM6=30BvJSDiAgzK062OY6w@mail.gmail.com>
+ <20190514163443.glfjva3ofqcy7lbg@csclub.uwaterloo.ca>
+ <CAKgT0UdPDyCBsShQVwwE5C8fBKkMcfS6_S5m3T7JP-So9fzVgA@mail.gmail.com>
+ <20190516183407.qswotwyjwtjqfdqm@csclub.uwaterloo.ca>
+ <20190516183705.e4zflbli7oujlbek@csclub.uwaterloo.ca>
+ <CAKgT0UfSa-dM2+7xntK9tB7Zw5N8nDd3U1n4OSK0gbWbkNSKJQ@mail.gmail.com>
+ <CAKgT0Ucd0s_0F5_nwqXknRngwROyuecUt+4bYzWvp1-2cNSg7g@mail.gmail.com>
+ <20190517172317.amopafirjfizlgej@csclub.uwaterloo.ca>
+ <CAKgT0UdM28pSTCsaT=TWqmQwCO44NswS0PqFLAzgs9pmn41VeQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <5507809f-b2f1-429a-64a7-e59d60c76a4a@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Increase pause and refresh
- time
+Content-Disposition: inline
+In-Reply-To: <CAKgT0UdM28pSTCsaT=TWqmQwCO44NswS0PqFLAzgs9pmn41VeQ@mail.gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+From: lsorense@csclub.uwaterloo.ca (Lennart Sorensen)
+Subject: Re: [Intel-wired-lan] i40e X722 RSS problem with NAT-Traversal
+ IPsec packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,47 +66,157 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, Arjan van de Ven <arjan@linux.intel.com>,
- Tim Pepper <timothy.c.pepper@linux.intel.com>,
- Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Netdev <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ LKML <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gNS8yMC8yMDE5IDA5OjA4LCBOZWZ0aW4sIFNhc2hhIHdyb3RlOgo+IE9uIDUvMTcvMjAxOSAx
-ODowMSwgUGF1bCBNZW56ZWwgd3JvdGU6Cj4+IEZyb206IE1pZ3VlbCBCZXJuYWwgTWFyaW4gPG1p
-Z3VlbC5iZXJuYWwubWFyaW5AbGludXguaW50ZWwuY29tPgo+PiBEYXRlOiBNb24sIDI3IE1hciAy
-MDE3IDE2OjAxOjU2IC0wNjAwCj4+Cj4+IFN1Z2dlc3RlZC1ieTogVGltIFBlcHBlciA8dGltb3Ro
-eS5jLnBlcHBlckBsaW51eC5pbnRlbC5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6IE1pZ3VlbCBCZXJu
-YWwgTWFyaW4gPG1pZ3VlbC5iZXJuYWwubWFyaW5AbGludXguaW50ZWwuY29tPgo+PiBTaWduZWQt
-b2ZmLWJ5OiBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBnLmRlPgo+PiAtLS0KPj4gTWln
-dWVsLCBpdOKAmWQgYmUgZ3JlYXQsIGlmIHlvdSBjb3VsZCB3cml0ZSBhIGNvbW1pdCBtZXNzYWdl
-IHN0YXRpbmcgdGhlIAo+PiBtb3RpdmF0aW9uIGZvciB0aGF0IGNoYW5nZSwgdGhhdCBtZWFucywg
-d2h5IGlzIGl0IHByZWZlcmFibGUgdG8gCj4+IGluY3JlYXNlIHRoZXNlIHZhbHVlcywgYW5kIHNl
-dCB0aGUgcGF1c2UgdGltZSB1bmNvbmRpdGlvbmFsbHkuCj4+Cj4+IMKgwqBkcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMgfCA0ICsrLS0KPj4gwqDCoDEgZmlsZSBjaGFu
-Z2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMgCj4+IGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4+IGluZGV4IGNlNGFhYTlmMjE2My4u
-NTk3ZDNjYTE5NTU1IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9l
-MTAwMGUvbmV0ZGV2LmMKPj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBl
-L25ldGRldi5jCj4+IEBAIC00MDQ3LDEyICs0MDQ3LDEyIEBAIHZvaWQgZTEwMDBlX3Jlc2V0KHN0
-cnVjdCBlMTAwMF9hZGFwdGVyICphZGFwdGVyKQo+PiDCoMKgwqDCoMKgIGNhc2UgZTEwMDBfcGNo
-X2xwdDoKPj4gwqDCoMKgwqDCoCBjYXNlIGUxMDAwX3BjaF9zcHQ6Cj4+IMKgwqDCoMKgwqAgY2Fz
-ZSBlMTAwMF9wY2hfY25wOgo+PiAtwqDCoMKgwqDCoMKgwqAgZmMtPnJlZnJlc2hfdGltZSA9IDB4
-MDQwMDsKPj4gK8KgwqDCoMKgwqDCoMKgIGZjLT5yZWZyZXNoX3RpbWUgPSAweEZGRkY7Cj4+ICvC
-oMKgwqDCoMKgwqDCoCBmYy0+cGF1c2VfdGltZSA9IDB4RkZGRjsKPj4KPj4gwqDCoMKgwqDCoMKg
-wqDCoMKgIGlmIChhZGFwdGVyLT5uZXRkZXYtPm10dSA8PSBFVEhfREFUQV9MRU4pIHsKPj4gwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZmMtPmhpZ2hfd2F0ZXIgPSAweDA1QzIwOwo+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBmYy0+bG93X3dhdGVyID0gMHgwNTA0ODsKPj4gLcKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgZmMtPnBhdXNlX3RpbWUgPSAweDA2NTA7Cj4+IMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+Pgo+IEkgYW0g
-Z29vZCB3aXRoIHRoaXMgcGF0Y2guCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwtd2ly
-ZWQtbGFuQG9zdW9zbC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9pbnRlbC13aXJlZC1sYW4KQWNrZWQtYnk6IFNhc2hhIE5lZnRpbiA8c2FzaGEubmVmdGlu
-QGludGVsLmNvbT4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9y
-ZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1s
-YW4K
+On Fri, May 17, 2019 at 03:20:02PM -0700, Alexander Duyck wrote:
+> I was hoping it would work too. It seemed like it should have been the
+> answer since it definitely didn't seem right. Now it has me wondering
+> about some of the other code in the driver.
+> 
+> By any chance have you run anything like DPDK on any of the X722
+> interfaces on this system recently? I ask because it occurs to me that
+> if you had and it loaded something like a custom parsing profile it
+> could cause issues similar to this.
+
+I have never used DPDK on anything.  I was hoping never to do so. :)
+
+This system has so far booted Debian (with a 4.19 kernel) and our own OS
+(which has a 4.9 kernel).
+
+> A debugging step you might try would be to revert back to my earlier
+> patch that only displayed the input mask instead of changing it. Once
+> you have done that you could look at doing a full power cycle on the
+> system by either physically disconnecting the power, or using the
+> power switch on the power supply itself if one is available. It is
+> necessary to disconnect the motherboard/NIC from power in order to
+> fully clear the global state stored in the device as it is retained
+> when the system is in standby.
+> 
+> What I want to verify is if the input mask that we have ran into is
+> the natural power-on input mask of if that is something that was
+> overridden by something else. The mask change I made should be reset
+> if the system loses power, and then it will either default back to the
+> value with the 6's if that is it's natural state, or it will match
+> what I had if it was not.
+> 
+> Other than that I really can't think up too much else. I suppose there
+> is the possibility of the NVM either setting up a DCB setting or
+> HREGION register causing an override that is limiting the queues to 1.
+> However, the likelihood of that should be really low.
+
+Here is the register dump after a full power off:
+
+40e: Intel(R) Ethernet Connection XL710 Network Driver - version 2.1.7-k
+i40e: Copyright (c) 2013 - 2014 Intel Corporation.
+i40e 0000:3d:00.0: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 1.1767.0
+i40e 0000:3d:00.0: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
+i40e 0000:3d:00.0: MAC address: a4:bf:01:4e:0c:87
+i40e 0000:3d:00.0: flow_type: 63 input_mask:0x0000000000004000
+i40e 0000:3d:00.0: flow_type: 46 input_mask:0x0007fff800000000
+i40e 0000:3d:00.0: flow_type: 45 input_mask:0x0007fff800000000
+i40e 0000:3d:00.0: flow_type: 44 input_mask:0x0007ffff80000000
+i40e 0000:3d:00.0: flow_type: 43 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 42 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 41 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 40 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 39 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 36 input_mask:0x0006060000000000
+i40e 0000:3d:00.0: flow_type: 35 input_mask:0x0006060000000000
+i40e 0000:3d:00.0: flow_type: 34 input_mask:0x0006060780000000
+i40e 0000:3d:00.0: flow_type: 33 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 32 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 31 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 30 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 29 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: Features: PF-id[0] VSIs: 34 QP: 12 TXQ: 13 RSS VxLAN Geneve VEPA
+i40e 0000:3d:00.1: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 1.1767.0
+i40e 0000:3d:00.1: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
+i40e 0000:3d:00.1: MAC address: a4:bf:01:4e:0c:88
+i40e 0000:3d:00.1: flow_type: 63 input_mask:0x0000000000004000
+i40e 0000:3d:00.1: flow_type: 46 input_mask:0x0007fff800000000
+i40e 0000:3d:00.1: flow_type: 45 input_mask:0x0007fff800000000
+i40e 0000:3d:00.1: flow_type: 44 input_mask:0x0007ffff80000000
+i40e 0000:3d:00.1: flow_type: 43 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.1: flow_type: 42 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.1: flow_type: 41 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.1: flow_type: 40 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.1: flow_type: 39 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.1: flow_type: 36 input_mask:0x0006060000000000
+i40e 0000:3d:00.1: flow_type: 35 input_mask:0x0006060000000000
+i40e 0000:3d:00.1: flow_type: 34 input_mask:0x0006060780000000
+i40e 0000:3d:00.1: flow_type: 33 input_mask:0x0006060600000000
+i40e 0000:3d:00.1: flow_type: 32 input_mask:0x0006060600000000
+i40e 0000:3d:00.1: flow_type: 31 input_mask:0x0006060600000000
+i40e 0000:3d:00.1: flow_type: 30 input_mask:0x0006060600000000
+i40e 0000:3d:00.1: flow_type: 29 input_mask:0x0006060600000000
+i40e 0000:3d:00.1: Features: PF-id[1] VSIs: 34 QP: 12 TXQ: 13 RSS VxLAN Geneve VEPA
+i40e 0000:3d:00.1 eth2: NIC Link is Up, 1000 Mbps Full Duplex, Flow Control: None
+
+Pretty sure that is identical to before.
+
+If I dump the registers after doing the update I see this (just did a
+reboot this time, not a power cycle):
+
+i40e: Intel(R) Ethernet Connection XL710 Network Driver - version 2.1.7-k
+i40e: Copyright (c) 2013 - 2014 Intel Corporation.
+i40e 0000:3d:00.0: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 1.1767.0
+i40e 0000:3d:00.0: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
+i40e 0000:3d:00.0: MAC address: a4:bf:01:4e:0c:87
+i40e 0000:3d:00.0: flow_type: 63 input_mask:0x0000000000004000
+i40e 0000:3d:00.0: flow_type: 46 input_mask:0x0007fff800000000
+i40e 0000:3d:00.0: flow_type: 45 input_mask:0x0007fff800000000
+i40e 0000:3d:00.0: flow_type: 44 input_mask:0x0007ffff80000000
+i40e 0000:3d:00.0: flow_type: 43 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 42 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 41 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 40 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 39 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type: 36 input_mask:0x0006060000000000
+i40e 0000:3d:00.0: flow_type: 35 input_mask:0x0006060000000000
+i40e 0000:3d:00.0: flow_type: 34 input_mask:0x0006060780000000
+i40e 0000:3d:00.0: flow_type: 33 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 32 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 31 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 30 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow_type: 29 input_mask:0x0006060600000000
+i40e 0000:3d:00.0: flow type: 36 update input mask from:0x0006060000000000, to:0x0001801800000000
+i40e 0000:3d:00.0: flow type: 35 update input mask from:0x0006060000000000, to:0x0001801800000000
+i40e 0000:3d:00.0: flow type: 34 update input mask from:0x0006060780000000, to:0x0001801f80000000
+i40e 0000:3d:00.0: flow type: 33 update input mask from:0x0006060600000000, to:0x0001801e00000000
+i40e 0000:3d:00.0: flow type: 32 update input mask from:0x0006060600000000, to:0x0001801e00000000
+i40e 0000:3d:00.0: flow type: 31 update input mask from:0x0006060600000000, to:0x0001801e00000000
+i40e 0000:3d:00.0: flow type: 30 update input mask from:0x0006060600000000, to:0x0001801e00000000
+i40e 0000:3d:00.0: flow type: 29 update input mask from:0x0006060600000000, to:0x0001801e00000000
+i40e 0000:3d:00.0: flow_type after update: 63 input_mask:0x0000000000004000
+i40e 0000:3d:00.0: flow_type after update: 46 input_mask:0x0007fff800000000
+i40e 0000:3d:00.0: flow_type after update: 45 input_mask:0x0007fff800000000
+i40e 0000:3d:00.0: flow_type after update: 44 input_mask:0x0007ffff80000000
+i40e 0000:3d:00.0: flow_type after update: 43 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type after update: 42 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type after update: 41 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type after update: 40 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type after update: 39 input_mask:0x0007fffe00000000
+i40e 0000:3d:00.0: flow_type after update: 36 input_mask:0x0001801800000000
+i40e 0000:3d:00.0: flow_type after update: 35 input_mask:0x0001801800000000
+i40e 0000:3d:00.0: flow_type after update: 34 input_mask:0x0001801f80000000
+i40e 0000:3d:00.0: flow_type after update: 33 input_mask:0x0001801e00000000
+i40e 0000:3d:00.0: flow_type after update: 32 input_mask:0x0001801e00000000
+i40e 0000:3d:00.0: flow_type after update: 31 input_mask:0x0001801e00000000
+i40e 0000:3d:00.0: flow_type after update: 30 input_mask:0x0001801e00000000
+i40e 0000:3d:00.0: flow_type after update: 29 input_mask:0x0001801e00000000
+i40e 0000:3d:00.0: Features: PF-id[0] VSIs: 34 QP: 12 TXQ: 13 RSS VxLAN Geneve VEPA
+
+So at least it appears the update did apply.
+
+-- 
+Len Sorensen
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
