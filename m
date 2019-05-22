@@ -1,59 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8AB7F26612
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 May 2019 16:40:06 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9602926863
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 May 2019 18:35:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3578684974;
-	Wed, 22 May 2019 14:40:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4F13687E36;
+	Wed, 22 May 2019 16:35:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jo6YHp6ZTruR; Wed, 22 May 2019 14:40:04 +0000 (UTC)
+	with ESMTP id e4I2+mfUCyWh; Wed, 22 May 2019 16:35:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BCEB28499E;
-	Wed, 22 May 2019 14:40:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 07E3E87E40;
+	Wed, 22 May 2019 16:35:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 12B181BF408
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2019 14:40:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 831891BF3EF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2019 16:35:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0E2C684973
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2019 14:40:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7F81F87E38
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2019 16:35:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xmHLISNOEQKp for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 May 2019 14:40:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
- [129.97.134.17])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 15EA384A5F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2019 14:40:01 +0000 (UTC)
-Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
- id 76006460279; Wed, 22 May 2019 10:39:56 -0400 (EDT)
-Date: Wed, 22 May 2019 10:39:56 -0400
-To: Alexander Duyck <alexander.duyck@gmail.com>
-Message-ID: <20190522143956.quskqh33ko2wuf47@csclub.uwaterloo.ca>
-References: <20190516183407.qswotwyjwtjqfdqm@csclub.uwaterloo.ca>
- <20190516183705.e4zflbli7oujlbek@csclub.uwaterloo.ca>
- <CAKgT0UfSa-dM2+7xntK9tB7Zw5N8nDd3U1n4OSK0gbWbkNSKJQ@mail.gmail.com>
- <CAKgT0Ucd0s_0F5_nwqXknRngwROyuecUt+4bYzWvp1-2cNSg7g@mail.gmail.com>
- <20190517172317.amopafirjfizlgej@csclub.uwaterloo.ca>
- <CAKgT0UdM28pSTCsaT=TWqmQwCO44NswS0PqFLAzgs9pmn41VeQ@mail.gmail.com>
- <20190521151537.xga4aiq3gjtiif4j@csclub.uwaterloo.ca>
- <CAKgT0UfpZ-ve3Hx26gDkb+YTDHvN3=MJ7NZd2NE7ewF5g=kHHw@mail.gmail.com>
- <20190521175456.zlkiiov5hry2l4q2@csclub.uwaterloo.ca>
- <CAKgT0UcR3q1maBmJz7xj_i+_oux_6FQxua9DOjXQSZzyq6FhkQ@mail.gmail.com>
+ with ESMTP id oHyEZ6d-nrBC for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 May 2019 16:35:20 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0944D87E36
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2019 16:35:19 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 May 2019 09:35:19 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.60,499,1549958400"; d="scan'208";a="174451673"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 22 May 2019 09:35:18 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hTUCz-0003hk-HB; Thu, 23 May 2019 00:35:17 +0800
+Date: Thu, 23 May 2019 00:34:47 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ce57a27.KTT+JLDgPFDaN3Fx%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAKgT0UcR3q1maBmJz7xj_i+_oux_6FQxua9DOjXQSZzyq6FhkQ@mail.gmail.com>
-User-Agent: NeoMutt/20170113 (1.7.2)
-From: lsorense@csclub.uwaterloo.ca (Lennart Sorensen)
-Subject: Re: [Intel-wired-lan] i40e X722 RSS problem with NAT-Traversal
- IPsec packets
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ eab7befee6ae3227684fb12511957c12cc56a155
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,89 +63,173 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: e1000-devel@lists.sourceforge.net, Netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- LKML <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 21, 2019 at 04:22:17PM -0700, Alexander Duyck wrote:
-> So we are either using 0 bits of the LUT or we are just not performing
-> hashing because this is somehow being parsed into a type that doesn't
-> support it.
-> 
-> I have attached 2 more patches we can test. The first enables hashing
-> on what are called "OAM" packets, The thing is we shouldn't be
-> identifying these packets as "OAM", Operations Administration &
-> Management, as normally it would have to be recognized as a tunnel
-> first and then have a specific flag set in either the GENEVE or
-> VXLAN-GPE header. The second patch will dump the contents of the
-> HREGION registers. They should all be 0, however I thought it best to
-> dump the contents and verify that since I know that these registers
-> can be used to change the traffic class of a given packet type and if
-> we are encountering that it might be moving it to an uninitialized TC
-> which would be using queue offset 0 with 0 bits of the LUT.
-> 
-> These last 2 patches would pretty much eliminate the entire RSS
-> subsystem. If we don't see HREGION values set and the OAM flags have
-> no effect I can only assume there is something going on with the
-> parser in the NIC since it isn't recognizing the packet type.
-> 
-> Thanks.
-> 
-> - Alex
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: eab7befee6ae3227684fb12511957c12cc56a155  iavf: allow null RX descriptors
 
-OK I applied those two patches and get this:
+elapsed time: 103m
 
-i40e: Intel(R) Ethernet Connection XL710 Network Driver - version 2.1.7-k
-i40e: Copyright (c) 2013 - 2014 Intel Corporation.
-i40e 0000:3d:00.0: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 1.1767.0
-i40e 0000:3d:00.0: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
-i40e 0000:3d:00.0: MAC address: a4:bf:01:4e:0c:87
-i40e 0000:3d:00.0: PFQF_HREGION[7]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[6]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[5]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[4]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[3]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[2]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[1]: 0x00000000
-i40e 0000:3d:00.0: PFQF_HREGION[0]: 0x00000000
-i40e 0000:3d:00.0: flow_type: 63 input_mask:0x0000000000004000
-i40e 0000:3d:00.0: flow_type: 46 input_mask:0x0007fff800000000
-i40e 0000:3d:00.0: flow_type: 45 input_mask:0x0007fff800000000
-i40e 0000:3d:00.0: flow_type: 44 input_mask:0x0007ffff80000000
-i40e 0000:3d:00.0: flow_type: 43 input_mask:0x0007fffe00000000
-i40e 0000:3d:00.0: flow_type: 42 input_mask:0x0007fffe00000000
-i40e 0000:3d:00.0: flow_type: 41 input_mask:0x0007fffe00000000
-i40e 0000:3d:00.0: flow_type: 40 input_mask:0x0007fffe00000000
-i40e 0000:3d:00.0: flow_type: 39 input_mask:0x0007fffe00000000
-i40e 0000:3d:00.0: flow_type: 36 input_mask:0x0006060000000000
-i40e 0000:3d:00.0: flow_type: 35 input_mask:0x0006060000000000
-i40e 0000:3d:00.0: flow_type: 34 input_mask:0x0006060780000000
-i40e 0000:3d:00.0: flow_type: 33 input_mask:0x0006060600000000
-i40e 0000:3d:00.0: flow_type: 32 input_mask:0x0006060600000000
-i40e 0000:3d:00.0: flow_type: 31 input_mask:0x0006060600000000
-i40e 0000:3d:00.0: flow_type: 30 input_mask:0x0006060600000000
-i40e 0000:3d:00.0: flow_type: 29 input_mask:0x0006060600000000
-i40e 0000:3d:00.0: flow_type: 27 input_mask:0x00000000002c0000
-i40e 0000:3d:00.0: flow_type: 26 input_mask:0x00000000002c0000
-i40e 0000:3d:00.0: flow type: 36 update input mask from:0x0006060000000000, to:0x0001801800000000
-i40e 0000:3d:00.0: flow type: 35 update input mask from:0x0006060000000000, to:0x0001801800000000
-i40e 0000:3d:00.0: flow type: 34 update input mask from:0x0006060780000000, to:0x0001801f80000000
-i40e 0000:3d:00.0: flow type: 33 update input mask from:0x0006060600000000, to:0x0001801e00000000
-i40e 0000:3d:00.0: flow type: 32 update input mask from:0x0006060600000000, to:0x0001801e00000000
-i40e 0000:3d:00.0: flow type: 31 update input mask from:0x0006060600000000, to:0x0001801e00000000
-i40e 0000:3d:00.0: flow type: 30 update input mask from:0x0006060600000000, to:0x0001801e00000000
-i40e 0000:3d:00.0: flow type: 29 update input mask from:0x0006060600000000, to:0x0001801e00000000
+configs tested: 148
 
-So seems the regions are all 0.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-All ipsec packets still hitting queue 0.
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+x86_64                           allmodconfig
+i386                             alldefconfig
+openrisc                    or1ksim_defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+c6x                        evmc6678_defconfig
+h8300                    h8300h-sim_defconfig
+nios2                         10m50_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                              fedora-25
+i386                     randconfig-m3-201920
+x86_64                   randconfig-m3-201920
+x86_64                   randconfig-m2-201920
+x86_64                   randconfig-m1-201920
+x86_64                   randconfig-m0-201920
+i386                     randconfig-m0-201920
+i386                     randconfig-m1-201920
+i386                     randconfig-m2-201920
+riscv                             allnoconfig
+riscv                               defconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+i386                   randconfig-l1-05220501
+i386                   randconfig-l2-05220501
+i386                   randconfig-l3-05220501
+x86_64                 randconfig-l2-05220501
+x86_64                 randconfig-l1-05220501
+x86_64                 randconfig-l3-05220501
+x86_64                 randconfig-l0-05220501
+i386                   randconfig-l0-05220501
+x86_64                           allyesconfig
+i386                             allmodconfig
+nds32                               defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+i386                              allnoconfig
+i386                                defconfig
+x86_64                 randconfig-x006-201920
+x86_64                 randconfig-x003-201920
+x86_64                 randconfig-x001-201920
+x86_64                 randconfig-x007-201920
+x86_64                 randconfig-x004-201920
+x86_64                 randconfig-x005-201920
+x86_64                 randconfig-x009-201920
+x86_64                 randconfig-x002-201920
+x86_64                 randconfig-x008-201920
+x86_64                 randconfig-x000-201920
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+x86_64               randconfig-x010-05222102
+x86_64               randconfig-x011-05222102
+x86_64               randconfig-x018-05222102
+x86_64               randconfig-x012-05222102
+x86_64               randconfig-x017-05222102
+x86_64               randconfig-x013-05222102
+x86_64               randconfig-x015-05222102
+x86_64               randconfig-x016-05222102
+x86_64               randconfig-x019-05222102
+x86_64               randconfig-x014-05222102
+i386                   randconfig-a3-05222102
+i386                   randconfig-a2-05222102
+i386                   randconfig-a0-05222102
+i386                   randconfig-a1-05222102
+i386                   randconfig-x011-201920
+i386                   randconfig-x013-201920
+i386                   randconfig-x018-201920
+i386                   randconfig-x012-201920
+i386                   randconfig-x016-201920
+i386                   randconfig-x017-201920
+i386                   randconfig-x010-201920
+i386                   randconfig-x014-201920
+i386                   randconfig-x015-201920
+i386                   randconfig-x019-201920
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+nds32                             allnoconfig
+i386                     randconfig-i0-201920
+i386                     randconfig-i2-201920
+i386                     randconfig-i1-201920
+i386                     randconfig-i3-201920
+i386                   randconfig-x009-201920
+i386                   randconfig-x008-201920
+i386                   randconfig-x006-201920
+i386                   randconfig-x004-201920
+i386                   randconfig-x005-201920
+i386                   randconfig-x001-201920
+i386                   randconfig-x000-201920
+i386                   randconfig-x007-201920
+i386                   randconfig-x003-201920
+i386                   randconfig-x002-201920
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+alpha                               defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+um                                  defconfig
+riscv                              tinyconfig
+i386                               tinyconfig
+i386                   randconfig-x073-201920
+i386                   randconfig-x071-201920
+i386                   randconfig-x070-201920
+i386                   randconfig-x074-201920
+i386                   randconfig-x078-201920
+i386                   randconfig-x075-201920
+i386                   randconfig-x072-201920
+i386                   randconfig-x076-201920
+i386                   randconfig-x077-201920
+i386                   randconfig-x079-201920
 
--- 
-Len Sorensen
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
