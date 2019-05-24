@@ -1,55 +1,126 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD76428FD8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 May 2019 06:09:08 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC25529A13
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 May 2019 16:29:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0D98987F59;
-	Fri, 24 May 2019 04:09:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 812DF88C40;
+	Fri, 24 May 2019 14:29:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3stQWgptNDdH; Fri, 24 May 2019 04:09:06 +0000 (UTC)
+	with ESMTP id PnCH05uexG-4; Fri, 24 May 2019 14:29:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 66D1587F40;
-	Fri, 24 May 2019 04:09:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DE77E88C3A;
+	Fri, 24 May 2019 14:29:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 927D21BF3C6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 04:09:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 263961BF311
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 14:29:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8239886A5B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 04:09:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 21BFA86ACA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 14:29:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sdn2U2dqTahf for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 May 2019 04:09:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 920118678F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 04:09:02 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 May 2019 21:09:01 -0700
-X-ExtLoop1: 1
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 23 May 2019 21:09:00 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hU1Vs-000Aqk-1I; Fri, 24 May 2019 12:09:00 +0800
-Date: Fri, 24 May 2019 12:08:17 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5ce76e31.pp5y2rqpqGYmaWk4%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id pRltJK-YJ_Eh for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 May 2019 14:29:21 +0000 (UTC)
+X-Greylist: delayed 00:25:00 by SQLgrey-1.7.6
+Received: from gateway36.websitewelcome.com (gateway36.websitewelcome.com
+ [50.116.124.69])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 477D2869FD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 14:29:21 +0000 (UTC)
+Received: from cm13.websitewelcome.com (cm13.websitewelcome.com [100.42.49.6])
+ by gateway36.websitewelcome.com (Postfix) with ESMTP id 970D2400C8B69
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2019 08:00:20 -0500 (CDT)
+Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
+ id UAQdhko77YTGMUAQdhlDze; Fri, 24 May 2019 08:40:11 -0500
+X-Authority-Reason: nr=8
+Received: from [189.250.47.159] (port=34810 helo=[192.168.1.76])
+ by gator4166.hostgator.com with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.91)
+ (envelope-from <gustavo@embeddedor.com>)
+ id 1hUAQc-000A50-Pe; Fri, 24 May 2019 08:40:10 -0500
+To: jeffrey.t.kirsher@intel.com, intel-wired-lan@lists.osuosl.org,
+ Kees Cook <keescook@chromium.org>
+References: <20190329233850.29630-1-jeffrey.t.kirsher@intel.com>
+ <b5f1f0c0-e27b-f861-c36e-35e493f45dff@embeddedor.com>
+ <dd2974a0-b559-cfd1-c3d8-0839594ef03c@embeddedor.com>
+ <4fd1c087e5a19eea44521abc6b8d1213bca3ec22.camel@intel.com>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=gustavo@embeddedor.com; keydata=
+ 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
+ VtSixD1uOgytAP7RWS474w==
+Message-ID: <0485c47e-b444-27e2-5634-77d1a0db65ca@embeddedor.com>
+Date: Fri, 24 May 2019 08:40:05 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS
- feee3cb3064ac1a67349a524a5d541cc73b4fe32
+In-Reply-To: <4fd1c087e5a19eea44521abc6b8d1213bca3ec22.camel@intel.com>
+Content-Language: en-US
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 189.250.47.159
+X-Source-L: No
+X-Exim-ID: 1hUAQc-000A50-Pe
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: ([192.168.1.76]) [189.250.47.159]:34810
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 2
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+Subject: Re: [Intel-wired-lan] [PATCH 1/6] igb: mark expected switch
+ fall-through
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,185 +138,36 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
-branch HEAD: feee3cb3064ac1a67349a524a5d541cc73b4fe32  ice: Silence semantic parser warnings
+Jeff,
 
-elapsed time: 333m
+On 5/16/19 2:17 PM, Jeff Kirsher wrote:
+> On Wed, 2019-05-08 at 12:59 -0500, Gustavo A. R. Silva wrote:
+>> Hi Jeff,
+>>
+>> I wonder if there is any chance for this series to be queued up for
+>> 5.2-rc1.
+> 
+> Possibly, but since the nature of your patch is to just modify a code
+> comment because the tools used to check are not sophisticated enough to
+> realize the code comment already clearly states "Fall through ...", I
+> do not feel this is *really* necessary to get into 'net'.  If I have
+> other 'fixes' in my queue that need to get pushed, I may add this
+> change to the series.  I have not decided yet whether it warrants being
+> in 'net' or could wait till 'net-next'.
+> 
 
-configs tested: 165
+I get it, net-next is fine. However, I noticed this series is still in
+net-next/dev-queue.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+There are only 6 of these fall-through warnings left in linux-next. Half
+of them are fixed by this series. We want to add -Wimplicit-fallthrough
+to the Makefile and start testing it in linux-next. And it'd be of great
+help if you can move this series to your net-next/master, so it can be
+merged into linux-next and be part of the test. :)
 
-arm                              allmodconfig
-arm64                            allmodconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-i386                   randconfig-k1-05231733
-x86_64                 randconfig-k3-05231733
-x86_64                 randconfig-k2-05231733
-x86_64                 randconfig-k1-05231733
-i386                   randconfig-k2-05231733
-i386                   randconfig-k3-05231733
-i386                   randconfig-k0-05231733
-x86_64                 randconfig-k0-05231733
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                                nfsroot
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                           allnoconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-openrisc                    or1ksim_defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-c6x                        evmc6678_defconfig
-h8300                    h8300h-sim_defconfig
-nios2                         10m50_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-i386                   randconfig-m2-05231733
-x86_64                 randconfig-m1-05231733
-x86_64                 randconfig-m0-05231733
-x86_64                 randconfig-m3-05231733
-i386                   randconfig-m3-05231733
-i386                   randconfig-m0-05231733
-x86_64                 randconfig-m2-05231733
-i386                   randconfig-m1-05231733
-riscv                             allnoconfig
-riscv                               defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-i386                   randconfig-l2-05231733
-i386                   randconfig-l1-05231733
-x86_64                 randconfig-l1-05231733
-i386                   randconfig-l0-05231733
-i386                   randconfig-l3-05231733
-x86_64                 randconfig-l2-05231733
-x86_64                 randconfig-l3-05231733
-x86_64                 randconfig-l0-05231733
-alpha                               defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-um                                  defconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-x86_64                           allmodconfig
-i386                             alldefconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-s390                             allmodconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                   randconfig-x011-201920
-i386                   randconfig-x013-201920
-i386                   randconfig-x018-201920
-i386                   randconfig-x012-201920
-i386                   randconfig-x016-201920
-i386                   randconfig-x017-201920
-i386                   randconfig-x010-201920
-i386                   randconfig-x014-201920
-i386                   randconfig-x015-201920
-i386                   randconfig-x019-201920
-x86_64                           allyesconfig
-i386                             allmodconfig
-i386                   randconfig-x009-201920
-i386                   randconfig-x008-201920
-i386                   randconfig-x006-201920
-i386                   randconfig-x004-201920
-i386                   randconfig-x005-201920
-i386                   randconfig-x001-201920
-i386                   randconfig-x000-201920
-i386                   randconfig-x007-201920
-i386                   randconfig-x003-201920
-i386                   randconfig-x002-201920
-x86_64               randconfig-x011-05232035
-x86_64               randconfig-x013-05232035
-x86_64               randconfig-x012-05232035
-x86_64               randconfig-x015-05232035
-x86_64               randconfig-x010-05232035
-x86_64               randconfig-x018-05232035
-x86_64               randconfig-x014-05232035
-x86_64               randconfig-x016-05232035
-x86_64               randconfig-x019-05232035
-x86_64               randconfig-x017-05232035
-i386                   randconfig-a3-05232035
-i386                   randconfig-a1-05232035
-i386                   randconfig-a0-05232035
-i386                   randconfig-a2-05232035
-riscv                              tinyconfig
-i386                               tinyconfig
-i386                   randconfig-n1-05232030
-i386                   randconfig-n3-05232030
-i386                   randconfig-n2-05232030
-i386                   randconfig-n0-05232030
-x86_64               randconfig-x001-05232029
-x86_64               randconfig-x008-05232029
-x86_64               randconfig-x004-05232029
-x86_64               randconfig-x003-05232029
-x86_64               randconfig-x009-05232029
-x86_64               randconfig-x007-05232029
-x86_64               randconfig-x006-05232029
-x86_64               randconfig-x002-05232029
-x86_64               randconfig-x000-05232029
-x86_64               randconfig-x005-05232029
-s390                          debug_defconfig
-i386                   randconfig-i1-05232029
-i386                   randconfig-i0-05232029
-i386                   randconfig-i2-05232029
-i386                   randconfig-i3-05232029
-i386                   randconfig-x073-201920
-i386                   randconfig-x071-201920
-i386                   randconfig-x070-201920
-i386                   randconfig-x074-201920
-i386                   randconfig-x078-201920
-i386                   randconfig-x075-201920
-i386                   randconfig-x072-201920
-i386                   randconfig-x076-201920
-i386                   randconfig-x077-201920
-i386                   randconfig-x079-201920
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+Thanks!
+--
+Gustavo
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
