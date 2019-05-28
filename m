@@ -2,84 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D5062CD79
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2019 19:19:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5F022D8B2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 May 2019 11:10:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C395854DB;
-	Tue, 28 May 2019 17:19:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2FD2B860CF;
+	Wed, 29 May 2019 09:10:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vchca8Mi1BCU; Tue, 28 May 2019 17:19:06 +0000 (UTC)
+	with ESMTP id iuif-_JLZEF3; Wed, 29 May 2019 09:10:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1CCB4854C9;
-	Tue, 28 May 2019 17:19:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D61C0860CB;
+	Wed, 29 May 2019 09:10:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 67F2B1BF2A1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 17:19:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 41E681BF2A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 17:46:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6329D22FC6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 17:19:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3E3AC2278C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 17:46:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q7w1lNchaIaK for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 May 2019 17:19:01 +0000 (UTC)
+ with ESMTP id D7jIrL4BaVBq for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 May 2019 17:46:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
- [209.85.214.194])
- by silver.osuosl.org (Postfix) with ESMTPS id D8C7922621
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 17:19:01 +0000 (UTC)
-Received: by mail-pl1-f194.google.com with SMTP id d14so3078844pls.8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 10:19:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vgUukrIUAW33rXBEBk4q8j6YDX0VbSNRvM27fcNOQus=;
- b=qiIXD97ZvDql70kTKKS9X4xm3xxDOG35kgByIN/usE5C3DHxjZMHhJv+DHBHl8KBdO
- TCi0KVHo0oAQmtuu2Q8mD+pxDqAedfY6fUZywhgSHmzXR842hjutueEa/WhwBXsssThC
- RSIY/VZq60PYW4sXqtc/8hC4HBx0MSTEa2aMRAPKCommtvAjdsjGZXVFlsYZ+YGPMURz
- Sqy0X5PZO01U2T1Ydgy03yJNavka7E36iFy2jMGqHE/dNdRJRYo4fyo3rdDXShyYCJAw
- SC2jQcfbcKlGjyjc91nk9GvoooSsdOmkghKOAm+pqxYt/I5rUtWuhEC5Bn+Njhs4O/Fm
- MYIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vgUukrIUAW33rXBEBk4q8j6YDX0VbSNRvM27fcNOQus=;
- b=TFm2lZP/Rr3iFNZ4EZ814BoG6+OwqyO/OukIX4qDnNmRp+s7z434qBL7rodzVoumGx
- cpwN0SRmaLDqeRwT33/L88JwS8vllQi902tbv7SL8AnETwq3lCeF2QutLa3tuQZrA/yJ
- 0iBnmhlSSNccsYDAvMdaCs2vrD3/gFKhjoQ+B2FkZPoZGBlJmpzQTrlonTPbAAvVN9so
- fYACgWq3a0LUe5CBaIsnouyHVlKdTcS8vKkOLeKYT5S7VXl+KUwDhmJsm0Gu/u8qjOlx
- HzAQwL9G/9JM6G/F47QndQnDJiGt2YcNAVC6PQ3vQtzRyonY8o4TdAYqd79LpATGXZlJ
- 9lbg==
-X-Gm-Message-State: APjAAAVB5KHfnpaKDawlqfnJLH1p2VVpRXHIVZmPDVMYzs++aZuNLvHF
- WwEcxJaRj7PSxmlQIZwvDcU=
-X-Google-Smtp-Source: APXvYqzA7CK7i0ADM4IDLYfQh8F06vK2xmlmKmhowjBNF8rKaCXnzMAhLikVyJirLNZmlN2o+bWiyw==
-X-Received: by 2002:a17:902:27a8:: with SMTP id
- d37mr27735710plb.150.1559063941574; 
- Tue, 28 May 2019 10:19:01 -0700 (PDT)
-Received: from ?IPv6:2620:15c:2c1:200:55c7:81e6:c7d8:94b?
- ([2620:15c:2c1:200:55c7:81e6:c7d8:94b])
- by smtp.gmail.com with ESMTPSA id s27sm19253690pfd.18.2019.05.28.10.18.59
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Tue, 28 May 2019 10:19:00 -0700 (PDT)
-To: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <e070e241-fb65-a5b0-3155-7380a9203bcf@molgen.mpg.de>
-From: Eric Dumazet <eric.dumazet@gmail.com>
-Message-ID: <8627ea1e-8e51-c425-97f6-aeb57176e11a@gmail.com>
-Date: Tue, 28 May 2019 10:18:59 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <e070e241-fb65-a5b0-3155-7380a9203bcf@molgen.mpg.de>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] Driver has suspect GRO implementation,
- TCP performance may be compromised.
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3BBB322654
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2019 17:46:58 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 May 2019 10:46:57 -0700
+X-ExtLoop1: 1
+Received: from vpatel-desk.jf.intel.com (HELO localhost.localdomain)
+ ([10.7.159.52])
+ by orsmga002.jf.intel.com with ESMTP; 28 May 2019 10:46:57 -0700
+From: Vedang Patel <vedang.patel@intel.com>
+To: netdev@vger.kernel.org
+Date: Tue, 28 May 2019 10:46:41 -0700
+Message-Id: <1559065608-27888-1-git-send-email-vedang.patel@intel.com>
+X-Mailer: git-send-email 2.7.3
+X-Mailman-Approved-At: Wed, 29 May 2019 09:10:29 +0000
+Subject: [Intel-wired-lan] [PATCH net-next v1 0/7] net/sched: Add txtime
+ assist support for taprio
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,66 +60,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Cc: jiri@resnulli.us, l@dorileo.org, jhs@mojatatu.com,
+ intel-wired-lan@lists.osuosl.org, xiyou.wangcong@gmail.com,
+ davem@davemloft.net
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Currently, we are seeing packets being transmitted outside their timeslices. We
+can confirm that the packets are being dequeued at the right time. So, the
+delay is induced after the packet is dequeued, because taprio, without any
+offloading, has no control of when a packet is actually transmitted.
+
+In order to solve this, we are making use of the txtime feature provided by ETF
+qdisc. Hardware offloading needs to be supported by the ETF qdisc in order to
+take advantage of this feature. The taprio qdisc will assign txtime (in
+skb->tstamp) for all the packets which do not have the txtime allocated via the
+SO_TXTIME socket option. For the packets which already have SO_TXTIME set,
+taprio will validate whether the packet will be transmitted in the correct
+interval.
+
+In order to support this, the following parameters have been added:
+- offload (taprio): This is added in order to support different offloading
+  modes which will be added in the future.
+- txtime-delay (taprio): this is the time the packet takes to traverse through
+  the kernel to adapter card.
+- skip_sock_check (etf): etf qdisc currently drops any packet which does not
+  have the SO_TXTIME socket option set. This check can be skipped by specifying
+  this option.
+
+Following is an example configuration:
+
+$ tc qdisc replace dev $IFACE parent root handle 100 taprio \\
+      num_tc 3 \\
+      map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \\
+      queues 1@0 1@0 1@0 \\
+      base-time $BASE_TIME \\
+      sched-entry S 01 300000 \\
+      sched-entry S 02 300000 \\
+      sched-entry S 04 400000 \\
+      offload 2 \\
+      txtime-delay 40000 \\
+      clockid CLOCK_TAI
+
+$ tc qdisc replace dev $IFACE parent 100:1 etf \\
+      offload delta 200000 clockid CLOCK_TAI skip_sock_check
+
+Here, the "offload" parameter is indicating that the TXTIME_OFFLOAD mode is
+enabled. Also, that all the traffic classes have been assigned the same queue.
+This is to prevent the traffic classes in the lower priority queues from
+getting starved. Note that this configuration is specific to the i210 ethernet
+card. Other network cards where the hardware queues are given the same
+priority, might be able to utilize more than one queue.
+
+Following are some of the other highlights of the series:
+- Fix a bug where hardware timestamping and SO_TXTIME options cannot be used
+  together. (Patch 1)
+- Introduce hardware offloading. This patch introduces offload parameter which
+  can be used to enable the txtime offload mode. It will also support enabling
+  full offload when the support is available in drivers. (Patch 3)
+- Make TxTime assist mode work with TCP packets. (Patch 6 & 7)
 
 
-On 5/28/19 8:42 AM, Paul Menzel wrote:
-> Dear Linux folks,
-> 
-> 
-> Occasionally, Linux outputs the message below on the workstation Dell
-> OptiPlex 5040 MT.
-> 
->     TCP: net00: Driver has suspect GRO implementation, TCP performance may be compromised.
-> 
-> Linux 4.14.55 and Linux 5.2-rc2 show the message, and the WWW also
-> gives some hits [1][2].
-> 
-> ```
-> $ sudo ethtool -i net00
-> driver: e1000e
-> version: 3.2.6-k
-> firmware-version: 0.8-4
-> expansion-rom-version: 
-> bus-info: 0000:00:1f.6
-> supports-statistics: yes
-> supports-test: yes
-> supports-eeprom-access: yes
-> supports-register-dump: yes
-> supports-priv-flags: no
-> ```
-> 
-> Can the driver e1000e be improved?
-> 
-> Any idea, what triggers this, as I do not see it every boot? Download
-> of big files?
->
-Maybe the driver/NIC can receive frames bigger than MTU, although this would be strange.
+The following changes are recommended to be done in order to get the best
+performance from taprio in this mode:
+# ip link set dev enp1s0 mtu 1514
+# ethtool -K eth0 gso off
+# ethtool -K eth0 tso off
+# ethtool --set-eee eth0 eee off
 
-diff --git a/net/ipv4/tcp_input.c b/net/ipv4/tcp_input.c
-index c61edd023b352123e2a77465782e0d32689e96b0..cb0194f66125bcba427e6e7e3cacf0c93040ef61 100644
---- a/net/ipv4/tcp_input.c
-+++ b/net/ipv4/tcp_input.c
-@@ -150,8 +150,10 @@ static void tcp_gro_dev_warn(struct sock *sk, const struct sk_buff *skb,
-                rcu_read_lock();
-                dev = dev_get_by_index_rcu(sock_net(sk), skb->skb_iif);
-                if (!dev || len >= dev->mtu)
--                       pr_warn("%s: Driver has suspect GRO implementation, TCP performance may be compromised.\n",
--                               dev ? dev->name : "Unknown driver");
-+                       pr_warn("%s: Driver has suspect GRO implementation, TCP performance may be compromised."
-+                               " len %u mtu %u\n",
-+                               dev ? dev->name : "Unknown driver",
-+                               len, dev ? dev->mtu : 0);
-                rcu_read_unlock();
-        }
- }
+Thanks,
+Vedang Patel
+
+Vedang Patel (6):
+  igb: clear out tstamp after sending the packet.
+  etf: Add skip_sock_check
+  taprio: calculate cycle_time when schedule is installed
+  taprio: Add support for txtime offload mode.
+  taprio: make clock reference conversions easier
+  taprio: Adjust timestamps for TCP packets.
+
+Vinicius Costa Gomes (1):
+  taprio: Add the skeleton to enable hardware offloading
+
+ drivers/net/ethernet/intel/igb/igb_main.c |   1 +
+ include/uapi/linux/pkt_sched.h            |   6 +
+ net/sched/sch_etf.c                       |  10 +
+ net/sched/sch_taprio.c                    | 548 ++++++++++++++++++++--
+ 4 files changed, 532 insertions(+), 33 deletions(-)
+
+-- 
+2.17.0
 
 _______________________________________________
 Intel-wired-lan mailing list
