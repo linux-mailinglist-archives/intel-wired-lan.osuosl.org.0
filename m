@@ -2,54 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59C662FF77
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 May 2019 17:31:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 76DB83038C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 May 2019 22:48:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 02D43883A8;
-	Thu, 30 May 2019 15:31:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2FE0D88411;
+	Thu, 30 May 2019 20:48:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2qr85ba+j+s5; Thu, 30 May 2019 15:31:53 +0000 (UTC)
+	with ESMTP id SN0PyEOJo889; Thu, 30 May 2019 20:48:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 693CD883B6;
-	Thu, 30 May 2019 15:31:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 78B7A8841A;
+	Thu, 30 May 2019 20:48:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 94C591BF3DD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 15:31:51 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B4AF11BF867
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 20:48:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 90BA987698
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 15:31:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A945A203CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 20:48:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wosp9VgpuGhg for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 May 2019 15:31:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DC4B187645
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 15:31:49 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 May 2019 08:31:49 -0700
-X-ExtLoop1: 1
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 30 May 2019 08:31:48 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hWN1v-00096O-Oe; Thu, 30 May 2019 23:31:47 +0800
-Date: Thu, 30 May 2019 23:30:54 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5ceff72e.U0SRcGWDhe0V6KdA%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id JVqMu9heEURM for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 May 2019 20:48:17 +0000 (UTC)
+X-Greylist: delayed 00:06:55 by SQLgrey-1.7.6
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 97FD7203B4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 20:48:17 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id l128so4874830qke.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2019 13:48:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=netronome-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=f5E0mA5EJgN67XjHcWSoimcwtGSg4IIi6lDpuHoTf3A=;
+ b=VnKcVxjYZkufLSXo1mQwurs8pn/4FCkyQ0vGBFkGv1IZrARf5Jm9s0v6giq65h8/x6
+ 5pbSNgiRsEYkGbuxQSNjs+JnFABotZ3P+QESihl7yx5J4mn9wm7ugjS90dyXzdGUmigd
+ +ick3x8X/c3HpUrZx9ogoTOYK35ZZk6s9kK+qWu8+SLtz70WL3qRV8X8ED5ieIXHga2r
+ 0nONmLMtCBZi267IWB6AOyXJa7hCO2Mrd0xtqU4TpOVlIrfWU+Pts79BPRYpEoVVtrKQ
+ /fyZ+bK6HVy0bLS+hIX2Ac2lZx7L1OFSC0iXanWx0dffcJkV1Zo3sA44E/j8226OA0dp
+ XS8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=f5E0mA5EJgN67XjHcWSoimcwtGSg4IIi6lDpuHoTf3A=;
+ b=NOULQ9lIUP0Zm4585V40oY2aiZ+KRR0Hk7Z0K4p9+2vbtTn2F5KJKDZeHAHmYNiCuc
+ z+e1i7BK6Jl/ufTgIaMllYHCq5tknnHdNNVGIpad1HbMN58PIhRtVlItXdtziznDcd1D
+ 1fLYIGFreay3sHqe/hH9gmflheqYOWBwvcLJwrl7JDtsc0A5SPJgyPaS6IizpYVby8hi
+ PyWV3TyTwLCIuFG3VwTxSxqTNi/mrnFWmftpNe2jp3QonLKYV1Y4xyPbAZMs6EJonn3O
+ JZoGEsZ6FLbAfGZrFtR6klwSE6woHwn068iYQfS/k6mUHri7x2CkgRaKA8mscjfFE6TE
+ P/hg==
+X-Gm-Message-State: APjAAAVdwNpC0A53InrFeitSEgEUByCl0oQsQgDEbaASnepgqpE9+Azn
+ MM520+zq4ww7wm4kC+oCUgE/mg==
+X-Google-Smtp-Source: APXvYqzxEUVPph26eeKVeACUsWd/jmLha5zO0+5SbjUPvatAIj8u4pwF7Ljv8oB1l7zJefBKZ/MoNQ==
+X-Received: by 2002:a37:640f:: with SMTP id y15mr5025019qkb.79.1559248881371; 
+ Thu, 30 May 2019 13:41:21 -0700 (PDT)
+Received: from cakuba.netronome.com ([66.60.152.14])
+ by smtp.gmail.com with ESMTPSA id a64sm1712514qkd.73.2019.05.30.13.41.19
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 30 May 2019 13:41:20 -0700 (PDT)
+Date: Thu, 30 May 2019 13:41:15 -0700
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
+To: "Patel, Vedang" <vedang.patel@intel.com>
+Message-ID: <20190530134115.36f13bb5@cakuba.netronome.com>
+In-Reply-To: <861F87D1-6A0B-438D-BBD5-6A15BDA398F7@intel.com>
+References: <1559065608-27888-1-git-send-email-vedang.patel@intel.com>
+ <1559065608-27888-4-git-send-email-vedang.patel@intel.com>
+ <20190528154510.41b50723@cakuba.netronome.com>
+ <62E2DD49-AC21-46DE-8E5B-EBC67230FA7D@intel.com>
+ <20190529121440.46c40967@cakuba.netronome.com>
+ <A9D05E0B-FC24-4904-B3E5-1E069C92A3DA@intel.com>
+ <20190529140620.68fa8e64@cakuba.netronome.com>
+ <861F87D1-6A0B-438D-BBD5-6A15BDA398F7@intel.com>
+Organization: Netronome Systems, Ltd.
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
- 6dce892a0c2d7a20114421a807544cdc458161f2
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 3/7] taprio: Add the
+ skeleton to enable hardware offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,247 +94,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "jiri@resnulli.us" <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Jamal Hadi Salim <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Cong Wang <xiyou.wangcong@gmail.com>, "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 6dce892a0c2d7a20114421a807544cdc458161f2  i40e: update copyright string
-
-TIMEOUT after 520m
-
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 202
-
-alpha                            allmodconfig
-alpha                            allyesconfig
-alpha                               defconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-c6x                        evmc6678_defconfig
-h8300                    h8300h-sim_defconfig
-i386                             alldefconfig
-i386                             allmodconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                          randconfig-n001
-i386                          randconfig-n002
-i386                          randconfig-n003
-i386                          randconfig-n004
-i386                          randconfig-n005
-i386                          randconfig-n006
-i386                          randconfig-n007
-i386                          randconfig-n008
-i386                          randconfig-n009
-i386                          randconfig-n010
-i386                          randconfig-n011
-i386                          randconfig-n012
-i386                          randconfig-n013
-i386                          randconfig-n014
-i386                          randconfig-n015
-i386                          randconfig-n016
-i386                          randconfig-n017
-i386                          randconfig-n018
-i386                          randconfig-n019
-i386                          randconfig-n020
-i386                          randconfig-n021
-i386                          randconfig-n022
-i386                          randconfig-n023
-i386                          randconfig-n024
-i386                          randconfig-n025
-i386                          randconfig-n026
-i386                          randconfig-n027
-i386                          randconfig-n028
-i386                          randconfig-n029
-i386                          randconfig-n030
-i386                          randconfig-n031
-i386                          randconfig-n032
-i386                          randconfig-x000
-i386                          randconfig-x001
-i386                          randconfig-x002
-i386                          randconfig-x003
-i386                          randconfig-x004
-i386                          randconfig-x005
-i386                          randconfig-x006
-i386                          randconfig-x007
-i386                          randconfig-x008
-i386                          randconfig-x009
-i386                          randconfig-x010
-i386                          randconfig-x011
-i386                          randconfig-x012
-i386                          randconfig-x013
-i386                          randconfig-x014
-i386                          randconfig-x015
-i386                          randconfig-x016
-i386                          randconfig-x017
-i386                          randconfig-x018
-i386                          randconfig-x019
-i386                          randconfig-x070
-i386                          randconfig-x071
-i386                          randconfig-x072
-i386                          randconfig-x073
-i386                          randconfig-x074
-i386                          randconfig-x075
-i386                          randconfig-x076
-i386                          randconfig-x077
-i386                          randconfig-x078
-i386                          randconfig-x079
-i386                               tinyconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-mips                             allyesconfig
-nds32                            allmodconfig
-nds32                             allnoconfig
-nds32                            allyesconfig
-nds32                               defconfig
-nios2                         10m50_defconfig
-openrisc                    or1ksim_defconfig
-parisc                           allmodconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-powerpc                          allyesconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                              tinyconfig
-s390                             allmodconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                               allyesconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                            allmodconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                             acpi-redef
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-x86_64                           allyesdebian
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                nfsroot
-x86_64                        randconfig-n001
-x86_64                        randconfig-n002
-x86_64                        randconfig-n003
-x86_64                        randconfig-n004
-x86_64                        randconfig-n005
-x86_64                        randconfig-n006
-x86_64                        randconfig-n007
-x86_64                        randconfig-n008
-x86_64                        randconfig-n009
-x86_64                        randconfig-n010
-x86_64                        randconfig-n011
-x86_64                        randconfig-n012
-x86_64                        randconfig-n013
-x86_64                        randconfig-n014
-x86_64                        randconfig-n015
-x86_64                        randconfig-n016
-x86_64                        randconfig-n017
-x86_64                        randconfig-n018
-x86_64                        randconfig-n019
-x86_64                        randconfig-n020
-x86_64                        randconfig-n021
-x86_64                        randconfig-n022
-x86_64                        randconfig-n023
-x86_64                        randconfig-n024
-x86_64                        randconfig-n025
-x86_64                        randconfig-n026
-x86_64                        randconfig-n027
-x86_64                        randconfig-n028
-x86_64                        randconfig-n029
-x86_64                        randconfig-n030
-x86_64                        randconfig-n031
-x86_64                        randconfig-n032
-x86_64                        randconfig-x000
-x86_64                        randconfig-x001
-x86_64                        randconfig-x002
-x86_64                        randconfig-x003
-x86_64                        randconfig-x004
-x86_64                        randconfig-x005
-x86_64                        randconfig-x006
-x86_64                        randconfig-x007
-x86_64                        randconfig-x008
-x86_64                        randconfig-x009
-x86_64                        randconfig-x010
-x86_64                        randconfig-x011
-x86_64                        randconfig-x012
-x86_64                        randconfig-x013
-x86_64                        randconfig-x014
-x86_64                        randconfig-x015
-x86_64                        randconfig-x016
-x86_64                        randconfig-x017
-x86_64                        randconfig-x018
-x86_64                        randconfig-x019
-x86_64                                   rhel
-x86_64                               rhel-7.6
-xtensa                           allmodconfig
-xtensa                           allyesconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-
-configs tested: 11
-
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVGh1LCAzMCBNYXkgMjAxOSAwMDoyMTozOSArMDAwMCwgUGF0ZWwsIFZlZGFuZyB3cm90ZToK
+PiA+IE9uIE1heSAyOSwgMjAxOSwgYXQgMjowNiBQTSwgSmFrdWIgS2ljaW5za2kgPGpha3ViLmtp
+Y2luc2tpQG5ldHJvbm9tZS5jb20+IHdyb3RlOgo+ID4gT24gV2VkLCAyOSBNYXkgMjAxOSAyMDow
+NToxNiArMDAwMCwgUGF0ZWwsIFZlZGFuZyB3cm90ZTogIAo+ID4+IFtTZW5kaW5nIHRoZSBlbWFp
+bCBhZ2FpbiBzaW5jZSB0aGUgbGFzdCBvbmUgd2FzIHJlamVjdGVkIGJ5IG5ldGRldiBiZWNhdXNl
+IGl0IHdhcyBodG1sLl0KPiA+PiAgIAo+ID4+PiBPbiBNYXkgMjksIDIwMTksIGF0IDEyOjE0IFBN
+LCBKYWt1YiBLaWNpbnNraSA8amFrdWIua2ljaW5za2lAbmV0cm9ub21lLmNvbT4gd3JvdGU6Cj4g
+Pj4+IAo+ID4+PiBPbiBXZWQsIDI5IE1heSAyMDE5IDE3OjA2OjQ5ICswMDAwLCBQYXRlbCwgVmVk
+YW5nIHdyb3RlOiAgICAKPiA+Pj4+PiBPbiBNYXkgMjgsIDIwMTksIGF0IDM6NDUgUE0sIEpha3Vi
+IEtpY2luc2tpIDxqYWt1Yi5raWNpbnNraUBuZXRyb25vbWUuY29tPiB3cm90ZToKPiA+Pj4+PiBP
+biBUdWUsIDI4IE1heSAyMDE5IDEwOjQ2OjQ0IC0wNzAwLCBWZWRhbmcgUGF0ZWwgd3JvdGU6ICAg
+ICAgCj4gPj4+Pj4+IEZyb206IFZpbmljaXVzIENvc3RhIEdvbWVzIDx2aW5pY2l1cy5nb21lc0Bp
+bnRlbC5jb20+Cj4gPj4+Pj4+IAo+ID4+Pj4+PiBUaGlzIGFkZHMgdGhlIFVBUEkgYW5kIHRoZSBj
+b3JlIGJpdHMgbmVjZXNzYXJ5IGZvciB1c2Vyc3BhY2UgdG8KPiA+Pj4+Pj4gcmVxdWVzdCBoYXJk
+d2FyZSBvZmZsb2FkaW5nIHRvIGJlIGVuYWJsZWQuCj4gPj4+Pj4+IAo+ID4+Pj4+PiBUaGUgZnV0
+dXJlIGNvbW1pdHMgd2lsbCBlbmFibGUgaHlicmlkIG9yIGZ1bGwgb2ZmbG9hZGluZyBmb3IgdGFw
+cmlvLiBUaGlzCj4gPj4+Pj4+IGNvbW1pdCBzZXRzIHVwIHRoZSBpbmZyYXN0cnVjdHVyZSB0byBl
+bmFibGUgaXQgdmlhIHRoZSBuZXRsaW5rIGludGVyZmFjZS4KPiA+Pj4+Pj4gCj4gPj4+Pj4+IFNp
+Z25lZC1vZmYtYnk6IFZpbmljaXVzIENvc3RhIEdvbWVzIDx2aW5pY2l1cy5nb21lc0BpbnRlbC5j
+b20+Cj4gPj4+Pj4+IFNpZ25lZC1vZmYtYnk6IFZlZGFuZyBQYXRlbCA8dmVkYW5nLnBhdGVsQGlu
+dGVsLmNvbT4gICAgICAKPiA+Pj4+PiAKPiA+Pj4+PiBPdGhlciBxZGlzY3Mgb2ZmbG9hZCBieSBk
+ZWZhdWx0LCB0aGlzIG9mZmxvYWQtbGV2ZWwgc2VsZWN0aW9uIGhlcmUgaXMgYQo+ID4+Pj4+IGxp
+dHRsZSBiaXQgaW5jb25zaXN0ZW50IHdpdGggdGhhdCA6KAo+ID4+Pj4+ICAgCj4gPj4+PiBUaGVy
+ZSBhcmUgMiBkaWZmZXJlbnQgb2ZmbG9hZCBtb2RlcyBpbnRyb2R1Y2VkIGluIHRoaXMgcGF0Y2gu
+Cj4gPj4+PiAKPiA+Pj4+IDEuIFR4dGltZSBvZmZsb2FkIG1vZGU6IFRoaXMgbW9kZSBkZXBlbmRz
+IG9uIHNraXBfc29ja19jaGVjayBmbGFnIGJlaW5nIHNldCBpbiB0aGUgZXRmIHFkaXNjLiBBbHNv
+LCBpdCByZXF1aXJlcyBzb21lIG1hbnVhbCBjb25maWd1cmF0aW9uIHdoaWNoIG1pZ2h0IGJlIHNw
+ZWNpZmljIHRvIHRoZSBuZXR3b3JrIGFkYXB0ZXIgY2FyZC4gRm9yIGV4YW1wbGUsIGZvciB0aGUg
+aTIxMCBjYXJkLCB0aGUgdXNlciB3aWxsIGhhdmUgdG8gcm91dGUgYWxsIHRoZSB0cmFmZmljIHRv
+IHRoZSBoaWdoZXN0IHByaW9yaXR5IHF1ZXVlIGFuZCBpbnN0YWxsIGV0ZiBxZGlzYyB3aXRoIG9m
+ZmxvYWQgZW5hYmxlZCBvbiB0aGF0IHF1ZXVlLiBTbywgSSBkb27igJl0IHRoaW5rIHRoaXMgbW9k
+ZSBzaG91bGQgYmUgZW5hYmxlZCBieSBkZWZhdWx0LiAgICAKPiA+Pj4gCj4gPj4+IEV4Y2VsbGVu
+dCwgaXQgbG9va3MgbGlrZSB0aGVyZSB3aWxsIGJlIGRyaXZlciBwYXRjaGVzIG5lY2Vzc2FyeSBm
+b3IKPiA+Pj4gdGhpcyBvZmZsb2FkIHRvIGZ1bmN0aW9uLCBhbHNvIGl0IHNlZW1zIHlvdXIgb2Zm
+bG9hZCBlbmFibGUgZnVuY3Rpb24KPiA+Pj4gc3RpbGwgY29udGFpbnMgdGhpcyBhZnRlciB0aGUg
+c2VyaWVzOgo+ID4+PiAKPiA+Pj4gCS8qIEZJWE1FOiBlbmFibGUgb2ZmbG9hZGluZyAqLwo+ID4+
+PiAKPiA+Pj4gUGxlYXNlIG9ubHkgcG9zdCBvZmZsb2FkIGluZnJhc3RydWN0dXJlIHdoZW4gZnVs
+bHkgZmxlc2hlZCBvdXQgYW5kIHdpdGgKPiA+Pj4gZHJpdmVyIHBhdGNoZXMgbWFraW5nIHVzZSBv
+ZiBpdC4gIAo+ID4+IAo+ID4+IFRoZSBhYm92ZSBjb21tZW50IHJlZmVycyB0byB0aGUgZnVsbCBv
+ZmZsb2FkIG1vZGUgZGVzY3JpYmVkIGJlbG93LiBJdAo+ID4+IGlzIG5vdCBuZWVkZWQgZm9yIHR4
+dGltZSBvZmZsb2FkIG1vZGUuIFR4dGltZSBvZmZsb2FkIG1vZGUgaXMKPiA+PiBlc3NlbnRpYWxs
+eSBzZXR0aW5nIHRoZSB0cmFuc21pdCB0aW1lIGZvciBlYWNoIHBhY2tldCAgZGVwZW5kaW5nIG9u
+Cj4gPj4gd2hhdCBpbnRlcnZhbCBpdCBpcyBnb2luZyB0byBiZSB0cmFuc21pdHRlZCBpbnN0ZWFk
+IG9mIHJlbHlpbmcgb24gdGhlCj4gPj4gaHJ0aW1lcnMgdG8gb3BlbiBnYXRlcyBhbmQgc2VuZCBw
+YWNrZXRzLiBNb3JlIGRldGFpbHMgYWJvdXQgd2h5Cj4gPj4gZXhhY3RseSB0aGlzIGlzIGRvbmUg
+aXMgbWVudGlvbmVkIGluIHBhdGNoICM1WzFdIG9mIHRoaXMgc2VyaWVzLiAgCj4gPiAKPiA+IEZy
+b20gbG9va2luZyBhdCB0aGlzIHNldCBpdCBsb29rcyBsaWtlIEkgY2FuIGFkZCB0aGF0IHFkaXNj
+IHRvIGFueQo+ID4gbmV0ZGV2IG5vdyAqd2l0aCogb2ZmbG9hZCwgYW5kIGFzIGxvbmcgYXMgdGhl
+IGRyaXZlciBoYXMgX2FueV8KPiA+IG5kb19zZXR1cF90YyBpbXBsZW1lbnRhdGlvbiB0YXByaW8g
+d2lsbCBub3QgcmV0dXJuIGFuIGVycm9yLiAKPiA+IAo+ID4gUGVyaGFwcyB0aGlzIG1vZGUgb2Yg
+b3BlcmF0aW9uIHNob3VsZCBub3QgYmUgY2FsbGVkIG9mZmxvYWQ/ICBDYW4ndCAKPiA+IHRoZSBF
+VEYgcWRpc2MgdW5kZXJuZWF0aCBydW4gaW4gc29mdHdhcmUgbW9kZT8KPiA+ICAgCj4gWWVhaCwg
+aXQgZG9lc27igJl0IG1ha2UgbXVjaCBzZW5zZSB0byBydW4gRVRGIGluIHNvZnR3YXJlIG1vZGUg
+YnV0IGl0Cj4gY2FuIGJlIGRvbmUuIFdoYXQgYWJvdXQgbmFtaW5nIGl0IHR4dGltZS1hc3Npc3Qg
+aW5zdGVhZD8KClNvdW5kcyBnb29kISAgdHh0aW1lLiogd29ya3MgZm9yIG1lLgoKPiA+PiBXaGF0
+IHdlIGNhbiBkbyBpcyBqdXN0IGFkZCB0aGUgdHh0aW1lIG9mZmxvYWQgcmVsYXRlZCBmbGFnIGFu
+ZCBhZGQKPiA+PiB0aGUgZnVsbCBvZmZsb2FkIGZsYWcgd2hlbmV2ZXIgdGhlIGRyaXZlciBiaXRz
+IGFyZSByZWFkeS4gRG9lcyB0aGF0Cj4gPj4gYWRkcmVzcyB5b3VyIGNvbmNlcm4/ICAKPiA+IAo+
+ID4gVGhhdCB3b3VsZCBiZSBhIHN0ZXAgaW4gdGhlIHJpZ2h0IGRpcmVjdGlvbi4gIEFuZCBwbGVh
+c2UgcmVtb3ZlIGFsbCB0aGUKPiA+IG90aGVyIHVudXNlZCBjb2RlIGZyb20gdGhlIHNlcmllcy4g
+IEFGQUlDVCB0aGlzIGlzIHdoYXQgdGhlIGVuYWJsZQo+ID4gb2ZmbG9hZCBmdW5jdGlvbiBsb29r
+cyBsaWtlIGFmdGVyIHlvdXIgc2V0IC0gd2hhdCdzIHRoZSBwb2ludCBvZiB0aGUKPiA+ICdlcnIn
+IHZhcmlhYmxlPwo+ID4gICAKPiBZZXMuIFRoaXMgcGF0Y2ggc2VlbXMgdG8gaGF2ZSBhIGZldyBy
+ZWFsbHkgc2lsbHkgbWlzdGFrZXMuIEkKPiBhcG9sb2dpemUgZm9yIHRoYXQuIEkgd2lsbGwgY2xl
+YW4gaXQgdXAgYW5kIHNlbmQgYW5vdGhlciB2ZXJzaW9uIG9mCj4gdGhlIHNlcmllcy4gVGhlcmUg
+aXMgbm8gdW51c2VkIGNvZGUgYW55d2hlcmUgZWxzZSBpbiB0aGUgc2VyaWVzLgoKVGhhbmtzIQpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
+ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
+dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
