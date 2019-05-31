@@ -1,52 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A62830EBD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2019 15:19:29 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 25E2D3109B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2019 16:51:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9EA442043B;
-	Fri, 31 May 2019 13:19:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BCE0886A8C;
+	Fri, 31 May 2019 14:51:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yf0D64Ko-i1F; Fri, 31 May 2019 13:19:27 +0000 (UTC)
+	with ESMTP id gCQ4y_1G-Tou; Fri, 31 May 2019 14:51:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 639FD20430;
-	Fri, 31 May 2019 13:19:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9505384EC1;
+	Fri, 31 May 2019 14:51:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B04E31BF23C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 13:19:25 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 75AA01BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 14:51:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id ABCB620427
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 13:19:25 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 71B0C841AC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 14:51:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LAZaN64Fv3Bs for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2019 13:19:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by silver.osuosl.org (Postfix) with ESMTPS id B19D920424
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 13:19:23 +0000 (UTC)
-Received: from rabammel.molgen.mpg.de (rabammel.molgen.mpg.de [141.14.30.220])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128
- bits)) (No client certificate requested)
- (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3673E202254E7;
- Fri, 31 May 2019 15:19:20 +0200 (CEST)
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Realtek linux nic maintainers <nic_swsd@realtek.com>
-Message-ID: <87cb341b-1c32-04be-9309-489354ef8065@molgen.mpg.de>
-Date: Fri, 31 May 2019 15:19:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ with ESMTP id jOyAmYOntTbG for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2019 14:51:27 +0000 (UTC)
+X-Greylist: delayed 00:35:48 by SQLgrey-1.7.6
+Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 64D4284155
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 14:50:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=lQ/kbfhYvDZZPBwmLwZieU5H7NxDWSHEMyqN5A9/ir0=; b=sDh0Te3JJY58duHLHfjcHd6tYB
+ x91CLNMhNV866aKk1fwqb2vadMt5bnFloCs0wURWTxTnX9F91uj1k4ZGjRbXnSov42pTZr6qJ4MBe
+ dkwb8lBCwoirtD3XKfy0lxLRbuUvN2z//HCVfW+IP7sLpMxuKGiJ+h+o91bZyB0zNrh0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.89)
+ (envelope-from <andrew@lunn.ch>)
+ id 1hWiIN-0006Mk-Qx; Fri, 31 May 2019 16:14:11 +0200
+Date: Fri, 31 May 2019 16:14:11 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <20190531141411.GA23821@lunn.ch>
+References: <87cb341b-1c32-04be-9309-489354ef8065@molgen.mpg.de>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] Decreasing time to get link up to below 3 s
+Content-Disposition: inline
+In-Reply-To: <87cb341b-1c32-04be-9309-489354ef8065@molgen.mpg.de>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+Subject: Re: [Intel-wired-lan] Decreasing time to get link up to below 3 s
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,218 +65,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Content-Type: multipart/mixed; boundary="===============7582067095273007503=="
+Cc: Realtek linux nic maintainers <nic_swsd@realtek.com>,
+ netdev@vger.kernel.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a cryptographically signed message in MIME format.
-
---===============7582067095273007503==
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms010205000800030903050806"
-
-This is a cryptographically signed message in MIME format.
-
---------------ms010205000800030903050806
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Dear Linux folks,
-
-
-On several systems with different network devices and drivers (e1000e, r8=
-169, tg3)
-it looks like getting the link up takes over three seconds.
-
-### e1000e ###
-
-[    1.999678] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
-[    2.000374] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-[    2.001206] e1000e 0000:00:1f.6: Interrupt Throttling Rate (ints/sec) =
-set to dynamic conservative mode
-[    2.412096] e1000e 0000:00:1f.6 0000:00:1f.6 (uninitialized): register=
-ed PHC clock
-[    2.495295] e1000e 0000:00:1f.6 eth0: (PCI Express:2.5GT/s:Width x1) 6=
-4:00:6a:2c:10:c1
-[    2.496204] e1000e 0000:00:1f.6 eth0: Intel(R) PRO/1000 Network Connec=
-tion
-[    2.497024] e1000e 0000:00:1f.6 eth0: MAC: 12, PHY: 12, PBA No: FFFFFF=
--0FF
-[   15.614031] e1000e 0000:00:1f.6 net00: renamed from eth0
-[   18.679325] e1000e: net00 NIC Link is Up 1000 Mbps Full Duplex, Flow C=
-ontrol: None
-
-### r8169 ###
-
-[   33.433103] r8169 0000:18:00.0: enabling device (0000 -> 0003)
-[   33.453834] libphy: r8169: probed
-[   33.456629] r8169 0000:18:00.0 eth0: RTL8168h/8111h, 30:9c:23:04:d6:98=
-, XID 541, IRQ 52
-[   33.456631] r8169 0000:18:00.0 eth0: jumbo features [frames: 9200 byte=
-s, tx checksumming: ko]
-[   33.607384] r8169 0000:18:00.0 enp24s0: renamed from eth0
-[   34.134035] Generic Realtek PHY r8169-1800:00: attached PHY driver [Ge=
-neric Realtek PHY] (mii_bus:phy_addr=3Dr8169-1800:00, irq=3DIGNORE)
-[   34.215244] r8169 0000:18:00.0 enp24s0: Link is Down
-[   37.822536] r8169 0000:18:00.0 enp24s0: Link is Up - 1Gbps/Full - flow=
- control rx/tx
-
-### tg3 ###
-
-[    2.015604] tg3.c:v3.137 (May 11, 2014)
-[    2.025613] tg3 0000:04:00.0 eth0: Tigon3 [partno(BCM95762) rev 576210=
-0] (PCI Express) MAC address 54:bf:64:70:a5:f9
-[    2.026955] tg3 0000:04:00.0 eth0: attached PHY is 5762C (10/100/1000B=
-ase-T Ethernet) (WireSpeed[1], EEE[1])
-[    2.028252] tg3 0000:04:00.0 eth0: RXcsums[1] LinkChgREG[0] MIirq[0] A=
-SF[1] TSOcap[1]
-[    2.029462] tg3 0000:04:00.0 eth0: dma_rwctrl[00000001] dma_mask[64-bi=
-t]
-[    6.376904] tg3 0000:04:00.0 net00: renamed from eth0
-[   10.240411] tg3 0000:04:00.0 net00: Link is up at 1000 Mbps, full dupl=
-ex
-[   10.240412] tg3 0000:04:00.0 net00: Flow control is on for TX and on f=
-or RX
-[   10.240413] tg3 0000:04:00.0 net00: EEE is disabled
-
-
-Can you verify, that it takes that long on your systems too?
-
-Can this be improved? According to the thread *Ethernet auto-negotiate ti=
-me* [1]
-it should take not more that half a second.
-
-If the time cannot be decreased, are there alternative strategies to get =
-a link
-up as fast as possible? For fast boot systems, it=E2=80=99d be interestin=
-g if first
-a slower speed could be negotiated and later it would be changed.
-
-
-Kind regards,
-
-Paul
-
-
-[1]: https://forums.tomshardware.com/threads/ethernet-auto-negotiate-time=
-=2E954333/
-
-
---------------ms010205000800030903050806
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCC
-EFowggUSMIID+qADAgECAgkA4wvV+K8l2YEwDQYJKoZIhvcNAQELBQAwgYIxCzAJBgNVBAYT
-AkRFMSswKQYDVQQKDCJULVN5c3RlbXMgRW50ZXJwcmlzZSBTZXJ2aWNlcyBHbWJIMR8wHQYD
-VQQLDBZULVN5c3RlbXMgVHJ1c3QgQ2VudGVyMSUwIwYDVQQDDBxULVRlbGVTZWMgR2xvYmFs
-Um9vdCBDbGFzcyAyMB4XDTE2MDIyMjEzMzgyMloXDTMxMDIyMjIzNTk1OVowgZUxCzAJBgNV
-BAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVu
-IEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNVBAMTJERG
-Ti1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjCCASIwDQYJKoZIhvcNAQEBBQAD
-ggEPADCCAQoCggEBAMtg1/9moUHN0vqHl4pzq5lN6mc5WqFggEcVToyVsuXPztNXS43O+FZs
-FVV2B+pG/cgDRWM+cNSrVICxI5y+NyipCf8FXRgPxJiZN7Mg9mZ4F4fCnQ7MSjLnFp2uDo0p
-eQcAIFTcFV9Kltd4tjTTwXS1nem/wHdN6r1ZB+BaL2w8pQDcNb1lDY9/Mm3yWmpLYgHurDg0
-WUU2SQXaeMpqbVvAgWsRzNI8qIv4cRrKO+KA3Ra0Z3qLNupOkSk9s1FcragMvp0049ENF4N1
-xDkesJQLEvHVaY4l9Lg9K7/AjsMeO6W/VRCrKq4Xl14zzsjz9AkH4wKGMUZrAcUQDBHHWekC
-AwEAAaOCAXQwggFwMA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUk+PYMiba1fFKpZFK4OpL
-4qIMz+EwHwYDVR0jBBgwFoAUv1kgNgB5oKAia4zV8mHSuCzLgkowEgYDVR0TAQH/BAgwBgEB
-/wIBAjAzBgNVHSAELDAqMA8GDSsGAQQBga0hgiwBAQQwDQYLKwYBBAGBrSGCLB4wCAYGZ4EM
-AQICMEwGA1UdHwRFMEMwQaA/oD2GO2h0dHA6Ly9wa2kwMzM2LnRlbGVzZWMuZGUvcmwvVGVs
-ZVNlY19HbG9iYWxSb290X0NsYXNzXzIuY3JsMIGGBggrBgEFBQcBAQR6MHgwLAYIKwYBBQUH
-MAGGIGh0dHA6Ly9vY3NwMDMzNi50ZWxlc2VjLmRlL29jc3ByMEgGCCsGAQUFBzAChjxodHRw
-Oi8vcGtpMDMzNi50ZWxlc2VjLmRlL2NydC9UZWxlU2VjX0dsb2JhbFJvb3RfQ2xhc3NfMi5j
-ZXIwDQYJKoZIhvcNAQELBQADggEBAIcL/z4Cm2XIVi3WO5qYi3FP2ropqiH5Ri71sqQPrhE4
-eTizDnS6dl2e6BiClmLbTDPo3flq3zK9LExHYFV/53RrtCyD2HlrtrdNUAtmB7Xts5et6u5/
-MOaZ/SLick0+hFvu+c+Z6n/XUjkurJgARH5pO7917tALOxrN5fcPImxHhPalR6D90Bo0fa3S
-PXez7vTXTf/D6OWST1k+kEcQSrCFWMBvf/iu7QhCnh7U3xQuTY+8npTD5+32GPg8SecmqKc2
-2CzeIs2LgtjZeOJVEqM7h0S2EQvVDFKvaYwPBt/QolOLV5h7z/0HJPT8vcP9SpIClxvyt7bP
-ZYoaorVyGTkwggWNMIIEdaADAgECAgwcOtRQhH7u81j4jncwDQYJKoZIhvcNAQELBQAwgZUx
-CzAJBgNVBAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1
-dHNjaGVuIEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNV
-BAMTJERGTi1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjAeFw0xNjExMDMxNTI0
-NDhaFw0zMTAyMjIyMzU5NTlaMGoxCzAJBgNVBAYTAkRFMQ8wDQYDVQQIDAZCYXllcm4xETAP
-BgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxhbmNrLUdlc2VsbHNjaGFmdDEVMBMG
-A1UEAwwMTVBHIENBIC0gRzAyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnhx4
-59Lh4WqgOs/Md04XxU2yFtfM15ZuJV0PZP7BmqSJKLLPyqmOrADfNdJ5PIGBto2JBhtRRBHd
-G0GROOvTRHjzOga95WOTeura79T21FWwwAwa29OFnD3ZplQs6HgdwQrZWNi1WHNJxn/4mA19
-rNEBUc5urSIpZPvZi5XmlF3v3JHOlx3KWV7mUteB4pwEEfGTg4npPAJbp2o7arxQdoIq+Pu2
-OsvqhD7Rk4QeaX+EM1QS4lqd1otW4hE70h/ODPy1xffgbZiuotWQLC6nIwa65Qv6byqlIX0q
-Zuu99Vsu+r3sWYsL5SBkgecNI7fMJ5tfHrjoxfrKl/ErTAt8GQIDAQABo4ICBTCCAgEwEgYD
-VR0TAQH/BAgwBgEB/wIBATAOBgNVHQ8BAf8EBAMCAQYwKQYDVR0gBCIwIDANBgsrBgEEAYGt
-IYIsHjAPBg0rBgEEAYGtIYIsAQEEMB0GA1UdDgQWBBTEiKUH7rh7qgwTv9opdGNSG0lwFjAf
-BgNVHSMEGDAWgBST49gyJtrV8UqlkUrg6kviogzP4TCBjwYDVR0fBIGHMIGEMECgPqA8hjpo
-dHRwOi8vY2RwMS5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1Yi9jcmwvY2Fjcmwu
-Y3JsMECgPqA8hjpodHRwOi8vY2RwMi5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1
-Yi9jcmwvY2FjcmwuY3JsMIHdBggrBgEFBQcBAQSB0DCBzTAzBggrBgEFBQcwAYYnaHR0cDov
-L29jc3AucGNhLmRmbi5kZS9PQ1NQLVNlcnZlci9PQ1NQMEoGCCsGAQUFBzAChj5odHRwOi8v
-Y2RwMS5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1Yi9jYWNlcnQvY2FjZXJ0LmNy
-dDBKBggrBgEFBQcwAoY+aHR0cDovL2NkcDIucGNhLmRmbi5kZS9nbG9iYWwtcm9vdC1nMi1j
-YS9wdWIvY2FjZXJ0L2NhY2VydC5jcnQwDQYJKoZIhvcNAQELBQADggEBABLpeD5FygzqOjj+
-/lAOy20UQOGWlx0RMuPcI4nuyFT8SGmK9lD7QCg/HoaJlfU/r78ex+SEide326evlFAoJXIF
-jVyzNltDhpMKrPIDuh2N12zyn1EtagqPL6hu4pVRzcBpl/F2HCvtmMx5K4WN1L1fmHWLcSap
-dhXLvAZ9RG/B3rqyULLSNN8xHXYXpmtvG0VGJAndZ+lj+BH7uvd3nHWnXEHC2q7iQlDUqg0a
-wIqWJgdLlx1Q8Dg/sodv0m+LN0kOzGvVDRCmowBdWGhhusD+duKV66pBl+qhC+4LipariWaM
-qK5ppMQROATjYeNRvwI+nDcEXr2vDaKmdbxgDVwwggWvMIIEl6ADAgECAgweKlJIhfynPMVG
-/KIwDQYJKoZIhvcNAQELBQAwajELMAkGA1UEBhMCREUxDzANBgNVBAgMBkJheWVybjERMA8G
-A1UEBwwITXVlbmNoZW4xIDAeBgNVBAoMF01heC1QbGFuY2stR2VzZWxsc2NoYWZ0MRUwEwYD
-VQQDDAxNUEcgQ0EgLSBHMDIwHhcNMTcxMTE0MTEzNDE2WhcNMjAxMTEzMTEzNDE2WjCBizEL
-MAkGA1UEBhMCREUxIDAeBgNVBAoMF01heC1QbGFuY2stR2VzZWxsc2NoYWZ0MTQwMgYDVQQL
-DCtNYXgtUGxhbmNrLUluc3RpdHV0IGZ1ZXIgbW9sZWt1bGFyZSBHZW5ldGlrMQ4wDAYDVQQL
-DAVNUElNRzEUMBIGA1UEAwwLUGF1bCBNZW56ZWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
-ggEKAoIBAQDIh/UR/AX/YQ48VWWDMLTYtXjYJyhRHMc81ZHMMoaoG66lWB9MtKRTnB5lovLZ
-enTIUyPsCrMhTqV9CWzDf6v9gOTWVxHEYqrUwK5H1gx4XoK81nfV8oGV4EKuVmmikTXiztGz
-peyDmOY8o/EFNWP7YuRkY/lPQJQBeBHYq9AYIgX4StuXu83nusq4MDydygVOeZC15ts0tv3/
-6WmibmZd1OZRqxDOkoBbY3Djx6lERohs3IKS6RKiI7e90rCSy9rtidJBOvaQS9wvtOSKPx0a
-+2pAgJEVzZFjOAfBcXydXtqXhcpOi2VCyl+7+LnnTz016JJLsCBuWEcB3kP9nJYNAgMBAAGj
-ggIxMIICLTAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUEFjAUBggrBgEFBQcD
-AgYIKwYBBQUHAwQwHQYDVR0OBBYEFHM0Mc3XjMLlhWpp4JufRELL4A/qMB8GA1UdIwQYMBaA
-FMSIpQfuuHuqDBO/2il0Y1IbSXAWMCAGA1UdEQQZMBeBFXBtZW56ZWxAbW9sZ2VuLm1wZy5k
-ZTB9BgNVHR8EdjB0MDigNqA0hjJodHRwOi8vY2RwMS5wY2EuZGZuLmRlL21wZy1nMi1jYS9w
-dWIvY3JsL2NhY3JsLmNybDA4oDagNIYyaHR0cDovL2NkcDIucGNhLmRmbi5kZS9tcGctZzIt
-Y2EvcHViL2NybC9jYWNybC5jcmwwgc0GCCsGAQUFBwEBBIHAMIG9MDMGCCsGAQUFBzABhido
-dHRwOi8vb2NzcC5wY2EuZGZuLmRlL09DU1AtU2VydmVyL09DU1AwQgYIKwYBBQUHMAKGNmh0
-dHA6Ly9jZHAxLnBjYS5kZm4uZGUvbXBnLWcyLWNhL3B1Yi9jYWNlcnQvY2FjZXJ0LmNydDBC
-BggrBgEFBQcwAoY2aHR0cDovL2NkcDIucGNhLmRmbi5kZS9tcGctZzItY2EvcHViL2NhY2Vy
-dC9jYWNlcnQuY3J0MEAGA1UdIAQ5MDcwDwYNKwYBBAGBrSGCLAEBBDARBg8rBgEEAYGtIYIs
-AQEEAwYwEQYPKwYBBAGBrSGCLAIBBAMGMA0GCSqGSIb3DQEBCwUAA4IBAQCQs6bUDROpFO2F
-Qz2FMgrdb39VEo8P3DhmpqkaIMC5ZurGbbAL/tAR6lpe4af682nEOJ7VW86ilsIJgm1j0ueY
-aOuL8jrN4X7IF/8KdZnnNnImW3QVni6TCcc+7+ggci9JHtt0IDCj5vPJBpP/dKXLCN4M+exl
-GXYpfHgxh8gclJPY1rquhQrihCzHfKB01w9h9tWZDVMtSoy9EUJFhCXw7mYUsvBeJwZesN2B
-fndPkrXx6XWDdU3S1LyKgHlLIFtarLFm2Hb5zAUR33h+26cN6ohcGqGEEzgIG8tXS8gztEaj
-1s2RyzmKd4SXTkKR3GhkZNVWy+gM68J7jP6zzN+cMYIDmjCCA5YCAQEwejBqMQswCQYDVQQG
-EwJERTEPMA0GA1UECAwGQmF5ZXJuMREwDwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4
-LVBsYW5jay1HZXNlbGxzY2hhZnQxFTATBgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzF
-RvyiMA0GCWCGSAFlAwQCAQUAoIIB8TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqG
-SIb3DQEJBTEPFw0xOTA1MzExMzE5MjBaMC8GCSqGSIb3DQEJBDEiBCDLwtOlpJgnw7Z7eFnK
-1vfO2qP+xg2dP5Qh2N8gfHlXTTBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
-hkgBZQMEAQIwCgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcG
-BSsOAwIHMA0GCCqGSIb3DQMCAgEoMIGJBgkrBgEEAYI3EAQxfDB6MGoxCzAJBgNVBAYTAkRF
-MQ8wDQYDVQQIDAZCYXllcm4xETAPBgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxh
-bmNrLUdlc2VsbHNjaGFmdDEVMBMGA1UEAwwMTVBHIENBIC0gRzAyAgweKlJIhfynPMVG/KIw
-gYsGCyqGSIb3DQEJEAILMXygejBqMQswCQYDVQQGEwJERTEPMA0GA1UECAwGQmF5ZXJuMREw
-DwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4LVBsYW5jay1HZXNlbGxzY2hhZnQxFTAT
-BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBAHti
-HMJ66MDE4KaUdxxGwl+1XNrGwP4V46jMxXf9HrrLDeGHqKUBXVwv6ZEtX0LnhnS7/ve9lVay
-Kbthnaukg5ConoIpgxRDTd2beziZRHdDqeKixdRDOmj9CTxZYG4b+mt985/lIkepSKH1JP9h
-OMe40loo4YhSBCNehzRKfU8VKnCpP/ulP2Imhe9PJuSOoTaEJCRbys3BDIYmMgaXYLHzjOEB
-Sv/EFAVmq6JqXojd73uASS7O5ceUovF+/arEjYWpvAK0T4gyGOQba4HrKmdkoinjezHbC3vJ
-qfqz189jpWaNnglQTmuMn7lhUWABWdQQ2a7l60vclMc8h+mmUzIAAAAAAAA=
---------------ms010205000800030903050806--
-
---===============7582067095273007503==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7582067095273007503==--
+T24gRnJpLCBNYXkgMzEsIDIwMTkgYXQgMDM6MTk6MjBQTSArMDIwMCwgUGF1bCBNZW56ZWwgd3Jv
+dGU6Cj4gRGVhciBMaW51eCBmb2xrcywKPiAKPiAKPiBPbiBzZXZlcmFsIHN5c3RlbXMgd2l0aCBk
+aWZmZXJlbnQgbmV0d29yayBkZXZpY2VzIGFuZCBkcml2ZXJzIChlMTAwMGUsIHI4MTY5LCB0ZzMp
+Cj4gaXQgbG9va3MgbGlrZSBnZXR0aW5nIHRoZSBsaW5rIHVwIHRha2VzIG92ZXIgdGhyZWUgc2Vj
+b25kcy4KPiAKPiAjIyMgZTEwMDBlICMjIwo+IAo+IFsgICAgMS45OTk2NzhdIGUxMDAwZTogSW50
+ZWwoUikgUFJPLzEwMDAgTmV0d29yayBEcml2ZXIgLSAzLjIuNi1rCj4gWyAgICAyLjAwMDM3NF0g
+ZTEwMDBlOiBDb3B5cmlnaHQoYykgMTk5OSAtIDIwMTUgSW50ZWwgQ29ycG9yYXRpb24uCj4gWyAg
+ICAyLjAwMTIwNl0gZTEwMDBlIDAwMDA6MDA6MWYuNjogSW50ZXJydXB0IFRocm90dGxpbmcgUmF0
+ZSAoaW50cy9zZWMpIHNldCB0byBkeW5hbWljIGNvbnNlcnZhdGl2ZSBtb2RlCj4gWyAgICAyLjQx
+MjA5Nl0gZTEwMDBlIDAwMDA6MDA6MWYuNiAwMDAwOjAwOjFmLjYgKHVuaW5pdGlhbGl6ZWQpOiBy
+ZWdpc3RlcmVkIFBIQyBjbG9jawo+IFsgICAgMi40OTUyOTVdIGUxMDAwZSAwMDAwOjAwOjFmLjYg
+ZXRoMDogKFBDSSBFeHByZXNzOjIuNUdUL3M6V2lkdGggeDEpIDY0OjAwOjZhOjJjOjEwOmMxCj4g
+WyAgICAyLjQ5NjIwNF0gZTEwMDBlIDAwMDA6MDA6MWYuNiBldGgwOiBJbnRlbChSKSBQUk8vMTAw
+MCBOZXR3b3JrIENvbm5lY3Rpb24KPiBbICAgIDIuNDk3MDI0XSBlMTAwMGUgMDAwMDowMDoxZi42
+IGV0aDA6IE1BQzogMTIsIFBIWTogMTIsIFBCQSBObzogRkZGRkZGLTBGRgo+IFsgICAxNS42MTQw
+MzFdIGUxMDAwZSAwMDAwOjAwOjFmLjYgbmV0MDA6IHJlbmFtZWQgZnJvbSBldGgwCj4gWyAgIDE4
+LjY3OTMyNV0gZTEwMDBlOiBuZXQwMCBOSUMgTGluayBpcyBVcCAxMDAwIE1icHMgRnVsbCBEdXBs
+ZXgsIEZsb3cgQ29udHJvbDogTm9uZQoKSGkgUGF1bAoKQWxsIHRoZSBJbnRlbCBkcml2ZXJzIGRv
+IHRoZXJlIG93biBQSFkgaGFuZGxpbmcsIHNvIGkgY2Fubm90IHNwZWFrIGZvciB0aGVtLgoKPiAK
+PiAjIyMgcjgxNjkgIyMjCj4gCj4gWyAgIDMzLjQzMzEwM10gcjgxNjkgMDAwMDoxODowMC4wOiBl
+bmFibGluZyBkZXZpY2UgKDAwMDAgLT4gMDAwMykKPiBbICAgMzMuNDUzODM0XSBsaWJwaHk6IHI4
+MTY5OiBwcm9iZWQKPiBbICAgMzMuNDU2NjI5XSByODE2OSAwMDAwOjE4OjAwLjAgZXRoMDogUlRM
+ODE2OGgvODExMWgsIDMwOjljOjIzOjA0OmQ2Ojk4LCBYSUQgNTQxLCBJUlEgNTIKPiBbICAgMzMu
+NDU2NjMxXSByODE2OSAwMDAwOjE4OjAwLjAgZXRoMDoganVtYm8gZmVhdHVyZXMgW2ZyYW1lczog
+OTIwMCBieXRlcywgdHggY2hlY2tzdW1taW5nOiBrb10KPiBbICAgMzMuNjA3Mzg0XSByODE2OSAw
+MDAwOjE4OjAwLjAgZW5wMjRzMDogcmVuYW1lZCBmcm9tIGV0aDAKPiBbICAgMzQuMTM0MDM1XSBH
+ZW5lcmljIFJlYWx0ZWsgUEhZIHI4MTY5LTE4MDA6MDA6IGF0dGFjaGVkIFBIWSBkcml2ZXIgW0dl
+bmVyaWMgUmVhbHRlayBQSFldIChtaWlfYnVzOnBoeV9hZGRyPXI4MTY5LTE4MDA6MDAsIGlycT1J
+R05PUkUpCj4gWyAgIDM0LjIxNTI0NF0gcjgxNjkgMDAwMDoxODowMC4wIGVucDI0czA6IExpbmsg
+aXMgRG93bgo+IFsgICAzNy44MjI1MzZdIHI4MTY5IDAwMDA6MTg6MDAuMCBlbnAyNHMwOiBMaW5r
+IGlzIFVwIC0gMUdicHMvRnVsbCAtIGZsb3cgY29udHJvbCByeC90eAoKVGhpcyBpcyB1c2luZyB0
+aGUgZ2VuZXJpYyBQSFkgZnJhbWV3b3JrIGFuZCBkcml2ZXJzLgoKWW91IGNhbiBzZWUgaGVyZSBp
+cnE9SUdOT1JFLiBUaGlzIGltcGxpZXMgaW50ZXJydXB0cyBhcmUgbm90IGJlaW5nCnVzZWQuIFNv
+IGl0IHdpbGwgcG9sbCB0aGUgUEhZIG9uY2UgcGVyIHNlY29uZC4gSWYgeW91IGNhbiBnZXQKaW50
+ZXJydXB0cyB3b3JraW5nLCB5b3UgY2FuIHNhdmUgMS8yIHNlY29uZCBvbiBhdmVyYWdlLgoKCj4g
+IyMjIHRnMyAjIyMKPiAKPiBbICAgIDIuMDE1NjA0XSB0ZzMuYzp2My4xMzcgKE1heSAxMSwgMjAx
+NCkKPiBbICAgIDIuMDI1NjEzXSB0ZzMgMDAwMDowNDowMC4wIGV0aDA6IFRpZ29uMyBbcGFydG5v
+KEJDTTk1NzYyKSByZXYgNTc2MjEwMF0gKFBDSSBFeHByZXNzKSBNQUMgYWRkcmVzcyA1NDpiZjo2
+NDo3MDphNTpmOQo+IFsgICAgMi4wMjY5NTVdIHRnMyAwMDAwOjA0OjAwLjAgZXRoMDogYXR0YWNo
+ZWQgUEhZIGlzIDU3NjJDICgxMC8xMDAvMTAwMEJhc2UtVCBFdGhlcm5ldCkgKFdpcmVTcGVlZFsx
+XSwgRUVFWzFdKQo+IFsgICAgMi4wMjgyNTJdIHRnMyAwMDAwOjA0OjAwLjAgZXRoMDogUlhjc3Vt
+c1sxXSBMaW5rQ2hnUkVHWzBdIE1JaXJxWzBdIEFTRlsxXSBUU09jYXBbMV0KPiBbICAgIDIuMDI5
+NDYyXSB0ZzMgMDAwMDowNDowMC4wIGV0aDA6IGRtYV9yd2N0cmxbMDAwMDAwMDFdIGRtYV9tYXNr
+WzY0LWJpdF0KPiBbICAgIDYuMzc2OTA0XSB0ZzMgMDAwMDowNDowMC4wIG5ldDAwOiByZW5hbWVk
+IGZyb20gZXRoMAo+IFsgICAxMC4yNDA0MTFdIHRnMyAwMDAwOjA0OjAwLjAgbmV0MDA6IExpbmsg
+aXMgdXAgYXQgMTAwMCBNYnBzLCBmdWxsIGR1cGxleAo+IFsgICAxMC4yNDA0MTJdIHRnMyAwMDAw
+OjA0OjAwLjAgbmV0MDA6IEZsb3cgY29udHJvbCBpcyBvbiBmb3IgVFggYW5kIG9uIGZvciBSWAo+
+IFsgICAxMC4yNDA0MTNdIHRnMyAwMDAwOjA0OjAwLjAgbmV0MDA6IEVFRSBpcyBkaXNhYmxlZAo+
+IAoKQW5vdGhlciBNQUMgZHJpdmVyIHdoaWNoIGRvZXMgbm90IHVzZSB0aGUgZ2VuZXJpYyBmcmFt
+ZXdvcmsuCgo+IElmIHRoZSB0aW1lIGNhbm5vdCBiZSBkZWNyZWFzZWQsIGFyZSB0aGVyZSBhbHRl
+cm5hdGl2ZSBzdHJhdGVnaWVzIHRvIGdldCBhIGxpbmsKPiB1cCBhcyBmYXN0IGFzIHBvc3NpYmxl
+PyBGb3IgZmFzdCBib290IHN5c3RlbXMsIGl04oCZZCBiZSBpbnRlcmVzdGluZyBpZiBmaXJzdAo+
+IGEgc2xvd2VyIHNwZWVkIGNvdWxkIGJlIG5lZ290aWF0ZWQgYW5kIGxhdGVyIGl0IHdvdWxkIGJl
+IGNoYW5nZWQuCgpZb3UgY2FuIHVzZSBldGh0b29sIHRvIHNldCB0aGUgbW9kZXMgaXQgd2lsbCBv
+ZmZlciBmb3IgYXV0by1uZWcuIFNvCnlvdSBjb3VsZCBvZmZlciAxMC9oYWxmIGFuZCBzZWUgaWYg
+dGhhdCBjb21lcyB1cCBmYXN0ZXIuCgpldGh0b29sIC1zIGV0aDAgYWR2ZXJ0aXNlIDB4MDAxCgpC
+dXQgeW91IGFyZSBzdGlsbCBnb2luZyB0byBoYXZlIHRvIHdhaXQgdGhlIGxvbmdlciB0aW1lIHdo
+ZW4geW91CmRlY2lkZSBpdCBpcyB0aW1lIHRvIHN3YXAgdG8gdGhlIGZ1bGwgYmFuZHdpZHRoLgoK
+ICAgICAgIEFuZHJldwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wu
+b3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVk
+LWxhbgo=
