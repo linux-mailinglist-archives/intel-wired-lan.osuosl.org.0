@@ -1,73 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67D8F31455
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2019 20:00:15 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47C8E31457
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2019 20:00:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1384F2033F;
-	Fri, 31 May 2019 18:00:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C6309876BE;
+	Fri, 31 May 2019 18:00:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MN67L2tFr3Im; Fri, 31 May 2019 18:00:13 +0000 (UTC)
+	with ESMTP id ThWjy0SK+323; Fri, 31 May 2019 18:00:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 484192047D;
-	Fri, 31 May 2019 18:00:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 819718748E;
+	Fri, 31 May 2019 18:00:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D79431BF616
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 18:00:11 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4059C1BF616
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 18:00:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D428F2047C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 18:00:11 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3DC7C884DE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 18:00:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0GUd8pXQfiqg for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2019 18:00:11 +0000 (UTC)
+ with ESMTP id ea0iZrG+wgQN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2019 18:00:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id 4A41A2033F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 18:00:11 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0A463884DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 18:00:37 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 May 2019 11:00:09 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 May 2019 11:00:36 -0700
 X-ExtLoop1: 1
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga005.jf.intel.com with ESMTP; 31 May 2019 11:00:10 -0700
-Received: from orsmsx116.amr.corp.intel.com (10.22.240.14) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Fri, 31 May 2019 11:00:10 -0700
+X-IronPort-AV: E=Sophos;i="5.60,535,1549958400"; d="scan'208";a="180411265"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by fmsmga002.fm.intel.com with ESMTP; 31 May 2019 11:00:36 -0700
+Received: from orsmsx161.amr.corp.intel.com (10.22.240.84) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Fri, 31 May 2019 11:00:35 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.200]) by
- ORSMSX116.amr.corp.intel.com ([169.254.7.165]) with mapi id 14.03.0415.000;
- Fri, 31 May 2019 11:00:10 -0700
+ ORSMSX161.amr.corp.intel.com ([169.254.4.187]) with mapi id 14.03.0415.000;
+ Fri, 31 May 2019 11:00:35 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S6 5/7] i40e: missing priorities
- for any QoS traffic
-Thread-Index: AQHVFX9AFucfeXV3s0+KzNFL5ZjmBaaFik9A
-Date: Fri, 31 May 2019 18:00:09 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DD5D0@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S6 6/7] i40e: Fix descriptor
+ count manipulation
+Thread-Index: AQHVFX82hlpJjXHxZE24rRkkDexBpqaFim2Q
+Date: Fri, 31 May 2019 18:00:35 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DD5DF@ORSMSX104.amr.corp.intel.com>
 References: <20190528175921.30534-1-alice.michael@intel.com>
- <20190528175921.30534-5-alice.michael@intel.com>
-In-Reply-To: <20190528175921.30534-5-alice.michael@intel.com>
+ <20190528175921.30534-6-alice.michael@intel.com>
+In-Reply-To: <20190528175921.30534-6-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTMxMGEyYWQtYTM4Ny00ZjRhLWJjMGEtZDJlZWI1YTI5MjYyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYmJ3MExKQ05DbWw0ODAxQm9OWGo5V1VJSUVcLzc2UlZuSEdFS2JSdkMwdTA5RnBuaGJmN1dqY3JmaHdwY0ZjeVUifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDhlODYxZTQtNTc2NS00MzE2LWJiZjAtNTc4NjBkZjRjMjBhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZWs4Mlg2TyszY25BXC9VdklDUllNVE1GY01nUmtXMFFTQ2Y4VSt4WGdDUXA0b3N6U3ZJTTFKaDhNZ3pHd3M1Z2sifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S6 5/7] i40e: missing priorities
- for any QoS traffic
+Subject: Re: [Intel-wired-lan] [next PATCH S6 6/7] i40e: Fix descriptor
+ count manipulation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,27 +91,33 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Alice Michael
 > Sent: Tuesday, May 28, 2019 10:59 AM
 > To: alice.micheal@intel.com; intel-wired-lan@lists.osuosl.org
-> Cc: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S6 5/7] i40e: missing priorities for any
-> QoS traffic
+> Cc: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
+> Subject: [Intel-wired-lan] [next PATCH S6 6/7] i40e: Fix descriptor count
+> manipulation
 > 
-> From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > 
-> This patch fixes reading f/w lldp agent status at dcb init time.
-> It's done by removing direct nvm reading in i40e_update_dcb_config() and
-> checking whether f/w lldp agent is disabled via
-> I40E_FLAG_DISABLE_FW_LLDP flag in i40e_init_pf_dcb(). The function
-> i40e_update_dcb_config() in i40e_main.c is a temporary solution which will
-> be later renamed to i40e_init_dcb() in the i40e_dcb module. Also logging was
-> extended to make visible if f/w lldp agent is running or not and always log a
-> message when dcb was not initialized. Without this patch for new f/w
-> versions f/w lldp agent status was always read from nvm as disabled and dcb
-> initialization failed without clear reason in logs.
+> Changing descriptor count via 'ethtool -G' is not persistent across resets.
+> When PF reset occurs, we roll back to the default value of vsi->num_desc,
+> which is used then in i40e_alloc_rings to set descriptor count. XDP does a PF
+> reset so when user has changed the descriptor count and load XDP program,
+> the default count will be back there.
 > 
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> To fix this:
+>   * introduce new VSI members - num_tx_desc and num_rx_desc in favour
+> of
+>     num_desc
+>   * set them in i40e_set_ringparam to user's values
+>   * set them to default values in i40e_set_num_rings_in_vsi only when they
+>     don't have previous values
+> 
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 57 +++++++++++++++++++--
->  1 file changed, 54 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e.h        |  3 +-
+>  .../net/ethernet/intel/i40e/i40e_debugfs.c    |  5 +--
+>  .../net/ethernet/intel/i40e/i40e_ethtool.c    |  4 +++
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   | 36 +++++++++++++------
+>  4 files changed, 34 insertions(+), 14 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
