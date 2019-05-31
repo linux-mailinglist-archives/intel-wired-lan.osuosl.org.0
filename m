@@ -1,72 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D6F631450
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2019 19:58:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1EA931451
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2019 19:58:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2776E884DC;
-	Fri, 31 May 2019 17:58:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0A62C2047F;
+	Fri, 31 May 2019 17:58:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SY8AcE3SwhsO; Fri, 31 May 2019 17:58:22 +0000 (UTC)
+	with ESMTP id GodeaqTDpPyK; Fri, 31 May 2019 17:58:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD9FC884E9;
-	Fri, 31 May 2019 17:58:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3FBFB20479;
+	Fri, 31 May 2019 17:58:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EAE981BF616
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 17:58:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B6CA01BF616
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 17:58:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E5A7B884DE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 17:58:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B1691884DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 17:58:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vgf5JITRoVdf for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2019 17:58:17 +0000 (UTC)
+ with ESMTP id Z1HIV1JtqUWa for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2019 17:58:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D50C4884DC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 17:58:17 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 43D0B884DE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2019 17:58:46 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 May 2019 10:58:17 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 May 2019 10:58:45 -0700
 X-ExtLoop1: 1
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by orsmga007.jf.intel.com with ESMTP; 31 May 2019 10:58:16 -0700
-Received: from orsmsx160.amr.corp.intel.com (10.22.226.43) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.408.0; Fri, 31 May 2019 10:58:16 -0700
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by fmsmga005.fm.intel.com with ESMTP; 31 May 2019 10:58:45 -0700
+Received: from orsmsx157.amr.corp.intel.com (10.22.240.23) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Fri, 31 May 2019 10:58:44 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.200]) by
- ORSMSX160.amr.corp.intel.com ([169.254.13.155]) with mapi id 14.03.0415.000;
- Fri, 31 May 2019 10:58:16 -0700
+ ORSMSX157.amr.corp.intel.com ([169.254.9.37]) with mapi id 14.03.0415.000;
+ Fri, 31 May 2019 10:58:44 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S6 1/7] i40e: fix 'Unknown bps'
- in dmesg for 2.5Gb/5Gb speeds
-Thread-Index: AQHVFX8zljIEf3QmNEG6iGNuNNN6zaaFicKw
-Date: Fri, 31 May 2019 17:58:16 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DD58F@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S6 2/7] i40e: Fix for missing
+ "link modes" info in ethtool
+Thread-Index: AQHVFX8xFe+6+3aQHUe+WGnbLIo7iqaFiezA
+Date: Fri, 31 May 2019 17:58:44 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3DD59F@ORSMSX104.amr.corp.intel.com>
 References: <20190528175921.30534-1-alice.michael@intel.com>
-In-Reply-To: <20190528175921.30534-1-alice.michael@intel.com>
+ <20190528175921.30534-2-alice.michael@intel.com>
+In-Reply-To: <20190528175921.30534-2-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMmQ2OTZkYjktZDVjOS00ZjM5LTk0NDItZDI4Yjk4MzgwYjI4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiM0JDRzUzRWJFUzJUeXFhTGU4SFo4MW5hak5mTlNnQ2FQNys5ZnRNT1RJZ1ZJR1NZb29Nd01JZk1JNWNxR1pmVCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMTM3NDNkYTAtNTAwNC00YWZhLWE0ZTktNDQzMjU5ZTlmZTYxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTTJkQWozN1wvUjJ3NmhSdTVHNm01cWNWdHhMSTdrWGhYeXlMOTYrczU5T3pNR1MwbXd4UEswcWZSNzlmcEt0T3AifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S6 1/7] i40e: fix 'Unknown bps'
- in dmesg for 2.5Gb/5Gb speeds
+Subject: Re: [Intel-wired-lan] [next PATCH S6 2/7] i40e: Fix for missing
+ "link modes" info in ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,22 +90,23 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Alice Michael
 > Sent: Tuesday, May 28, 2019 10:59 AM
 > To: alice.micheal@intel.com; intel-wired-lan@lists.osuosl.org
-> Cc: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S6 1/7] i40e: fix 'Unknown bps' in
-> dmesg for 2.5Gb/5Gb speeds
+> Cc: Szapar, Martyna <martyna.szapar@intel.com>
+> Subject: [Intel-wired-lan] [next PATCH S6 2/7] i40e: Fix for missing "link
+> modes" info in ethtool
 > 
-> From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> From: Martyna Szapar <martyna.szapar@intel.com>
 > 
-> This patch fixes 'NIC Link is Up, Unknown bps' message in dmesg for
-> 2.5Gb/5Gb speeds. This problem is fixed by adding constants for
-> VIRTCHNL_LINK_SPEED_2_5GB and VIRTCHNL_LINK_SPEED_5GB cases in the
-> i40e_virtchnl_link_speed() function.
+> Fix for missing "Supported link modes" and "Advertised link modes"
+> info in ethtool after changed speed on X722 devices with BASE-T PHY with
+> FW API version >= 1.7.
+> The same FW API version on X710 and X722 does not mean the same feature
+> set so the change was needed as mac type of the device should also be
+> checked instead of FW API version only.
 > 
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Martyna Szapar <martyna.szapar@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_prototype.h | 4 ++++
->  include/linux/avf/virtchnl.h                     | 4 ++++
->  2 files changed, 8 insertions(+)
+>  drivers/net/ethernet/intel/i40e/i40e_common.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
