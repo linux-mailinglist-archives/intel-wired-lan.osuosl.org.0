@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F53833715
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jun 2019 19:47:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D4C533716
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jun 2019 19:47:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3CAB185EA4;
-	Mon,  3 Jun 2019 17:47:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4245D22686;
+	Mon,  3 Jun 2019 17:47:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xw83gE8q60Wv; Mon,  3 Jun 2019 17:47:09 +0000 (UTC)
+	with ESMTP id nj9ePQB6lmf8; Mon,  3 Jun 2019 17:47:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A239C85C9D;
+	by silver.osuosl.org (Postfix) with ESMTP id 60CBB226A0;
 	Mon,  3 Jun 2019 17:47:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B73281BF285
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:54:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DDA441BF285
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:11:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B2669220C1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:54:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D7E37221AF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:11:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E6egtJa35B8v for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Jun 2019 14:54:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+ with ESMTP id OaFTn9Vjge4I for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  3 Jun 2019 14:11:34 +0000 (UTC)
+X-Greylist: delayed 00:20:41 by SQLgrey-1.7.6
 Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com [198.47.19.141])
- by silver.osuosl.org (Postfix) with ESMTPS id 5B0C321FF6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:54:05 +0000 (UTC)
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x53DokHU081801;
- Mon, 3 Jun 2019 08:50:46 -0500
+ by silver.osuosl.org (Postfix) with ESMTPS id 631D3204B0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:11:34 +0000 (UTC)
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x53EBUUZ087080;
+ Mon, 3 Jun 2019 09:11:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1559569846;
- bh=NdovAWZTPscVD4sa6lqUt3AjBE008dxgbM7KZYjTAQ4=;
+ s=ti-com-17Q1; t=1559571090;
+ bh=F9ovSNJ8pDqF9kA6NVwjoTkBocL8Rs5YT81yp+BPz2s=;
  h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=hb4bNjmPBde10Nq+b2N7lJjFt3f19MAAsxWeNw8vgPAGV/zKxncfKcW38yw/AKxF3
- zHHQjdBaIevyu1/M3zhRWtI1R4wi7lIBj53MwGSit5+vIowvD3Rm+WKrludOrZ3Txt
- DMA08Gi7mQpnulmHqlrW9lW2mLt/4cUHa4Xok1hg=
-Received: from DFLE105.ent.ti.com (dfle105.ent.ti.com [10.64.6.26])
- by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x53DokXu095906
+ b=k6oFIlFqQgX7nGFYOs1BIV5kKgBeWSN/x3spaAL5cJrvhcAfz4icbQ51rpnpvQPWh
+ 9CtGdzGXaWfO0xPEpbcZ4/89vdXu+qujKWL1UKKSPMbXutaEUUIvNTO1REnEjChoxA
+ k2j2DxL3Yrb6ZpJZ5gkdmuD7Jd6scObf7+HVhMaE=
+Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
+ by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x53EBUGs087600
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 3 Jun 2019 08:50:46 -0500
-Received: from DFLE109.ent.ti.com (10.64.6.30) by DFLE105.ent.ti.com
- (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
+ Mon, 3 Jun 2019 09:11:30 -0500
+Received: from DLEE113.ent.ti.com (157.170.170.24) by DLEE114.ent.ti.com
+ (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Mon, 3 Jun
- 2019 08:50:45 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE109.ent.ti.com
- (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
+ 2019 09:11:30 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE113.ent.ti.com
+ (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Mon, 3 Jun 2019 08:50:45 -0500
+ Frontend Transport; Mon, 3 Jun 2019 09:11:30 -0500
 Received: from [158.218.117.39] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id x53DojxA009754;
- Mon, 3 Jun 2019 08:50:45 -0500
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id x53EBTZ3054818;
+ Mon, 3 Jun 2019 09:11:29 -0500
 To: Vedang Patel <vedang.patel@intel.com>, <netdev@vger.kernel.org>
 References: <1559065608-27888-1-git-send-email-vedang.patel@intel.com>
- <007b6a78-48e7-e667-d84b-dec745f84603@ti.com>
+ <1559065608-27888-6-git-send-email-vedang.patel@intel.com>
 From: Murali Karicheri <m-karicheri2@ti.com>
-Message-ID: <4c4ec746-4282-ad3a-351c-1c7a355d093d@ti.com>
-Date: Mon, 3 Jun 2019 09:54:56 -0400
+Message-ID: <55c2daae-c69b-4847-f995-4df85c4ee8b8@ti.com>
+Date: Mon, 3 Jun 2019 10:15:40 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
  Thunderbird/52.7.0
 MIME-Version: 1.0
-In-Reply-To: <007b6a78-48e7-e667-d84b-dec745f84603@ti.com>
+In-Reply-To: <1559065608-27888-6-git-send-email-vedang.patel@intel.com>
 Content-Language: en-US
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Mailman-Approved-At: Mon, 03 Jun 2019 17:47:06 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 0/7] net/sched: Add txtime
- assist support for taprio
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 5/7] taprio: Add support
+ for txtime offload mode.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,120 +86,551 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: jiri@resnulli.us, l@dorileo.org, jhs@mojatatu.com,
  intel-wired-lan@lists.osuosl.org, xiyou.wangcong@gmail.com,
  davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMDYvMDMvMjAxOSAwOTo1MCBBTSwgTXVyYWxpIEthcmljaGVyaSB3cm90ZToKPiBIaSBWZWRh
-bmcsCj4gCj4gT24gMDUvMjgvMjAxOSAwMTo0NiBQTSwgVmVkYW5nIFBhdGVsIHdyb3RlOgo+PiBD
-dXJyZW50bHksIHdlIGFyZSBzZWVpbmcgcGFja2V0cyBiZWluZyB0cmFuc21pdHRlZCBvdXRzaWRl
-IHRoZWlyIAo+PiB0aW1lc2xpY2VzLiBXZQo+PiBjYW4gY29uZmlybSB0aGF0IHRoZSBwYWNrZXRz
-IGFyZSBiZWluZyBkZXF1ZXVlZCBhdCB0aGUgcmlnaHQgdGltZS4gU28sIAo+PiB0aGUKPj4gZGVs
-YXkgaXMgaW5kdWNlZCBhZnRlciB0aGUgcGFja2V0IGlzIGRlcXVldWVkLCBiZWNhdXNlIHRhcHJp
-bywgd2l0aG91dCAKPj4gYW55Cj4+IG9mZmxvYWRpbmcsIGhhcyBubyBjb250cm9sIG9mIHdoZW4g
-YSBwYWNrZXQgaXMgYWN0dWFsbHkgdHJhbnNtaXR0ZWQuCj4+Cj4+IEluIG9yZGVyIHRvIHNvbHZl
-IHRoaXMsIHdlIGFyZSBtYWtpbmcgdXNlIG9mIHRoZSB0eHRpbWUgZmVhdHVyZSAKPj4gcHJvdmlk
-ZWQgYnkgRVRGCj4+IHFkaXNjLiBIYXJkd2FyZSBvZmZsb2FkaW5nIG5lZWRzIHRvIGJlIHN1cHBv
-cnRlZCBieSB0aGUgRVRGIHFkaXNjIGluIAo+PiBvcmRlciB0bwo+PiB0YWtlIGFkdmFudGFnZSBv
-ZiB0aGlzIGZlYXR1cmUuIFRoZSB0YXByaW8gcWRpc2Mgd2lsbCBhc3NpZ24gdHh0aW1lIChpbgo+
-PiBza2ItPnRzdGFtcCkgZm9yIGFsbCB0aGUgcGFja2V0cyB3aGljaCBkbyBub3QgaGF2ZSB0aGUg
-dHh0aW1lIAo+PiBhbGxvY2F0ZWQgdmlhIHRoZQo+PiBTT19UWFRJTUUgc29ja2V0IG9wdGlvbi4g
-Rm9yIHRoZSBwYWNrZXRzIHdoaWNoIGFscmVhZHkgaGF2ZSBTT19UWFRJTUUgCj4+IHNldCwKPj4g
-dGFwcmlvIHdpbGwgdmFsaWRhdGUgd2hldGhlciB0aGUgcGFja2V0IHdpbGwgYmUgdHJhbnNtaXR0
-ZWQgaW4gdGhlIAo+PiBjb3JyZWN0Cj4+IGludGVydmFsLgo+Pgo+PiBJbiBvcmRlciB0byBzdXBw
-b3J0IHRoaXMsIHRoZSBmb2xsb3dpbmcgcGFyYW1ldGVycyBoYXZlIGJlZW4gYWRkZWQ6Cj4+IC0g
-b2ZmbG9hZCAodGFwcmlvKTogVGhpcyBpcyBhZGRlZCBpbiBvcmRlciB0byBzdXBwb3J0IGRpZmZl
-cmVudCAKPj4gb2ZmbG9hZGluZwo+PiDCoMKgIG1vZGVzIHdoaWNoIHdpbGwgYmUgYWRkZWQgaW4g
-dGhlIGZ1dHVyZS4KPj4gLSB0eHRpbWUtZGVsYXkgKHRhcHJpbyk6IHRoaXMgaXMgdGhlIHRpbWUg
-dGhlIHBhY2tldCB0YWtlcyB0byB0cmF2ZXJzZSAKPj4gdGhyb3VnaAo+PiDCoMKgIHRoZSBrZXJu
-ZWwgdG8gYWRhcHRlciBjYXJkLgo+IAo+IEkgYW0gdmVyeSBuZXcgdG8gdGhpcyBUQyBhbmQgUW9T
-IGhhbmRsaW5nIG9mIExpbnV4IGtlcm5lbCBhbmQgVFNOLiBTbyAKPiBzb3JyeSBzb21lIG9mIHRo
-ZcKgIHF1ZXN0aW9ucyBiZWxvdyBhcmUgdmVyeSBiYXNpYyBpbiBuYXR1cmUuIEkgd291bGQgCj4g
-c29vbiB3b3VsZCBiZSB3b3JraW5nIHRvIGFkZCB0aGlzIHN1cHBvcnQgaW4gb3VyIHBsYXRmb3Jt
-IGJhc2VkIG9uIHRoaXMuCj4gU28gcGxlYXNlIGFuc3dlci4KPiAKPiBJcyB0eHRpbWUtZGVsYXkg
-ZnJvbSB0aGUgaW5zdGFuY2UgcWRpc2MgZGUtcXVldWUgdGhlIHBhY2tldCB0byB0aGUgdGltZQo+
-IHBhY2tldHMgZ2V0IG9udG8gdGhlIHdpcmU/IEkgYW0gd29uZGVyaW5nIGlmIHRoaXMgdGltZSBp
-cyBkZXRlcm1pbmlzdGljCj4gb3Igd2UgaGF2ZSBzb21lIHdheSB0byBlbnN1cmUgdGhpcyBjYW4g
-YmUgdHVuZWQgdG8gbWVldCBhIG1heCB2YWx1ZT8KPiBBbHNvIGhvdyB3b3VsZCBvbmUgY2FsY3Vs
-YXRlIHRoaXMgdmFsdWUgb3IgaGF2ZSB0byBtZWFzdXJlIGl0Pwo+IAo+PiAtIHNraXBfc29ja19j
-aGVjayAoZXRmKTogZXRmIHFkaXNjIGN1cnJlbnRseSBkcm9wcyBhbnkgcGFja2V0IHdoaWNoIAo+
-PiBkb2VzIG5vdAo+PiDCoMKgIGhhdmUgdGhlIFNPX1RYVElNRSBzb2NrZXQgb3B0aW9uIHNldC4g
-VGhpcyBjaGVjayBjYW4gYmUgc2tpcHBlZCBieSAKPj4gc3BlY2lmeWluZwo+PiDCoMKgIHRoaXMg
-b3B0aW9uLgo+Pgo+PiBGb2xsb3dpbmcgaXMgYW4gZXhhbXBsZSBjb25maWd1cmF0aW9uOgo+Pgo+
-PiAkIHRjIHFkaXNjIHJlcGxhY2UgZGV2ICRJRkFDRSBwYXJlbnQgcm9vdCBoYW5kbGUgMTAwIHRh
-cHJpbyBcXAo+PiDCoMKgwqDCoMKgwqAgbnVtX3RjIDMgXFwKPj4gwqDCoMKgwqDCoMKgIG1hcCAy
-IDIgMSAwIDIgMiAyIDIgMiAyIDIgMiAyIDIgMiAyIFxcCj4+IMKgwqDCoMKgwqDCoCBxdWV1ZXMg
-MUAwIDFAMCAxQDAgXFwKPj4gwqDCoMKgwqDCoMKgIGJhc2UtdGltZSAkQkFTRV9USU1FIFxcCj4+
-IMKgwqDCoMKgwqDCoCBzY2hlZC1lbnRyeSBTIDAxIDMwMDAwMCBcXAo+PiDCoMKgwqDCoMKgwqAg
-c2NoZWQtZW50cnkgUyAwMiAzMDAwMDAgXFwKPj4gwqDCoMKgwqDCoMKgIHNjaGVkLWVudHJ5IFMg
-MDQgNDAwMDAwIFxcCj4+IMKgwqDCoMKgwqDCoCBvZmZsb2FkIDIgXFwKPj4gwqDCoMKgwqDCoMKg
-IHR4dGltZS1kZWxheSA0MDAwMCBcXAo+PiDCoMKgwqDCoMKgwqAgY2xvY2tpZCBDTE9DS19UQUkK
-Pj4KPiAKPiBDb3VsZCB5b3UgdGVsbCBtZSB3aGF0IGlzIENMT0NLX1RBST8/IEkgc2VlIGJlbG93
-IGluIHRoZSBzb3VyY2UgY29kZSBmb3IKPiB0aGUgZGVmaW5pdGlvbiBpbiBpbmNsdWRlL3VhcGkv
-bGludXgvdGltZS5oCj4gCj4gLyoKPiAgwqAqIFRoZSBkcml2ZXIgaW1wbGVtZW50aW5nIHRoaXMg
-Z290IHJlbW92ZWQuIFRoZSBjbG9jayBJRCBpcyBrZXB0IGFzIGEKPiAgwqAqIHBsYWNlIGhvbGRl
-ci4gRG8gbm90IHJldXNlIQo+ICDCoCovCj4gI2RlZmluZSBDTE9DS19TR0lfQ1lDTEXCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIDEwCj4gI2RlZmluZSBDTE9DS19UQUnCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIDExCj4gCj4gU28gd2h5IGRvIEkgc2VlIHN1Y2ggZGVmaW5lcyBiZWluZyB1c2VkIGluIHRo
-ZSBleGFtcGxlIHRoYXQgaXMgYmVpbmcKPiByZW1vdmVkPwo+IAo+IEFGQUlLLCBGcm9tIHRoZSB1
-c2FnZSBwb2ludCBvZiB2aWV3LCBUU04gcmVxdWlyZXMgdGhlIG5ldHdvcmsgYmVpbmcKPiBzeW5j
-aHJvbml6ZWQgdGhyb3VnaCBsaW51eCBQVFAuIEZvciBzeW5jaHJvbml6YXRpb24gcGhjMnN5cyBp
-cyB1c2VkIHRvCj4gc3luY2hyb25pemUgc3lzdGVtIHRpbWUgdG8gdGhlIFBIQy4gU28gd2h5IGRv
-bid0IG9uZSB1c2Ugc3lzdGVtIHRpbWUgZm9yCj4gdGhpcz8KPiAKPiBTbyBhcHBsaWNhdGlvbiB3
-aWxsIHVzZSBjbG9ja19nZXR0aW1lKCkgdG8ga25vdyBjdXJyZW50IHRpbWUgYW5kCj4gc2NoZWR1
-bGUgdGhlIHBhY2tldCBmb3IgdHJhbnNtaXNzaW9uIGFzIHdlbGwgYXMgdXNlciB3b3VsZCB1c2Ug
-c2NyaXB0cwo+IG9yIHN1Y2ggdG8gY2hlY2sgY3VycmVudCBzeXN0ZW0gdGltZSBhbmQgaXNzdWUg
-dGMgY29tbWFuZCBhYm92ZS4gU28gdGhlCj4gY29tbWFuZCBzaG91bGQgdXNlIENMT0NLX1JFQUxU
-SU1FIGluIHRoYXQgY2FzZS4gU28gYWxsIGgvdyBhbmQgc29mdHdhcmUKPiBhcmUgYWxpZ25lZCB0
-byB0aGUgc2FtZSB0aW1lIHNvdXJjZS4gT3IgSGF2ZSBJIHVuZGVyc3Rvb2QgaXQgd3Jvbmc/IEkg
-YW0KPiBhc3N1bWluZyB0aGF0IGZvciB0aGUgb2ZmbG9hZGVkIGNhc2UsIGgvdyBzY2hlZHVsZSBH
-YXRlIG9wZW4sIHNlbmQKPiBwYWNrZXQgZXRjIGFyZSBzeW5jaHJvbml6ZWQgdG8gdGhlIFBIQyBv
-ciB1c2UgYSB0cmFuc2xhdGVkIHRpbWUgdy5yLnQgCj4gdGhlIGNvbW1vbiB0aW1lIChuZXR3b3Jr
-IHRpbWUuIEFzc3VtaW5nIFBIQyB0cmFja3MgdGhpcykuCj4gCj4gVGhhbmtzIGluIGFkdmFuY2Ug
-Zm9yIGNsYXJpZnlpbmcgdGhpcy4KPiAKPj4gJCB0YyBxZGlzYyByZXBsYWNlIGRldiAkSUZBQ0Ug
-cGFyZW50IDEwMDoxIGV0ZiBcXAo+PiDCoMKgwqDCoMKgwqAgb2ZmbG9hZCBkZWx0YSAyMDAwMDAg
-Y2xvY2tpZCBDTE9DS19UQUkgc2tpcF9zb2NrX2NoZWNrCj4+Cj4+IEhlcmUsIHRoZSAib2ZmbG9h
-ZCIgcGFyYW1ldGVyIGlzIGluZGljYXRpbmcgdGhhdCB0aGUgVFhUSU1FX09GRkxPQUQgCj4+IG1v
-ZGUgaXMKPj4gZW5hYmxlZC4gQWxzbywgdGhhdCBhbGwgdGhlIHRyYWZmaWMgY2xhc3NlcyBoYXZl
-IGJlZW4gYXNzaWduZWQgdGhlIAo+PiBzYW1lIHF1ZXVlLgoKQWN0dWFsbHkgdGhlIHRjIGNsYXNz
-IGlzIG1hcHBlZCB0byB0aGUgc2FtZSBxdWV1ZSBpbiB0aGUgcHJldmlvdXMKY29tbWFuZCwgbm90
-IHRoaXMgb25lLCByaWdodD8KCk11cmFsaQo+PiBUaGlzIGlzIHRvIHByZXZlbnQgdGhlIHRyYWZm
-aWMgY2xhc3NlcyBpbiB0aGUgbG93ZXIgcHJpb3JpdHkgcXVldWVzIGZyb20KPj4gZ2V0dGluZyBz
-dGFydmVkLiBOb3RlIHRoYXQgdGhpcyBjb25maWd1cmF0aW9uIGlzIHNwZWNpZmljIHRvIHRoZSBp
-MjEwIAo+PiBldGhlcm5ldAo+PiBjYXJkLiBPdGhlciBuZXR3b3JrIGNhcmRzIHdoZXJlIHRoZSBo
-YXJkd2FyZSBxdWV1ZXMgYXJlIGdpdmVuIHRoZSBzYW1lCj4+IHByaW9yaXR5LCBtaWdodCBiZSBh
-YmxlIHRvIHV0aWxpemUgbW9yZSB0aGFuIG9uZSBxdWV1ZS4KPj4KPj4gRm9sbG93aW5nIGFyZSBz
-b21lIG9mIHRoZSBvdGhlciBoaWdobGlnaHRzIG9mIHRoZSBzZXJpZXM6Cj4+IC0gRml4IGEgYnVn
-IHdoZXJlIGhhcmR3YXJlIHRpbWVzdGFtcGluZyBhbmQgU09fVFhUSU1FIG9wdGlvbnMgY2Fubm90
-IAo+PiBiZSB1c2VkCj4+IMKgwqAgdG9nZXRoZXIuIChQYXRjaCAxKQo+PiAtIEludHJvZHVjZSBo
-YXJkd2FyZSBvZmZsb2FkaW5nLiBUaGlzIHBhdGNoIGludHJvZHVjZXMgb2ZmbG9hZCAKPj4gcGFy
-YW1ldGVyIHdoaWNoCj4+IMKgwqAgY2FuIGJlIHVzZWQgdG8gZW5hYmxlIHRoZSB0eHRpbWUgb2Zm
-bG9hZCBtb2RlLiBJdCB3aWxsIGFsc28gc3VwcG9ydCAKPj4gZW5hYmxpbmcKPj4gwqDCoCBmdWxs
-IG9mZmxvYWQgd2hlbiB0aGUgc3VwcG9ydCBpcyBhdmFpbGFibGUgaW4gZHJpdmVycy4gKFBhdGNo
-IDMpCj4+IC0gTWFrZSBUeFRpbWUgYXNzaXN0IG1vZGUgd29yayB3aXRoIFRDUCBwYWNrZXRzLiAo
-UGF0Y2ggNiAmIDcpCj4+Cj4+Cj4+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBhcmUgcmVjb21tZW5k
-ZWQgdG8gYmUgZG9uZSBpbiBvcmRlciB0byBnZXQgdGhlIGJlc3QKPj4gcGVyZm9ybWFuY2UgZnJv
-bSB0YXByaW8gaW4gdGhpcyBtb2RlOgo+PiAjIGlwIGxpbmsgc2V0IGRldiBlbnAxczAgbXR1IDE1
-MTQKPiAKPiBNYXkgSSBrbm93IHdoeSBNVFUgaXMgY2hhbmdlZCB0byAxNTE0IHRvIGluY2x1ZGUg
-dGhlIEV0aGVybmV0IGhlYWRlcj8KPiAKPj4gIyBldGh0b29sIC1LIGV0aDAgZ3NvIG9mZgo+PiAj
-IGV0aHRvb2wgLUsgZXRoMCB0c28gb2ZmCj4+ICMgZXRodG9vbCAtLXNldC1lZWUgZXRoMCBlZWUg
-b2ZmCj4gCj4gQ291bGQgeW91IHBsZWFzZSBleHBsYWluIHdoeSB0aGVzZSBhcmUgbmVlZGVkPwo+
-IAo+IFRoYW5rcwo+IAo+IE11cmFsaQo+Pgo+PiBUaGFua3MsCj4+IFZlZGFuZyBQYXRlbAo+Pgo+
-PiBWZWRhbmcgUGF0ZWwgKDYpOgo+PiDCoMKgIGlnYjogY2xlYXIgb3V0IHRzdGFtcCBhZnRlciBz
-ZW5kaW5nIHRoZSBwYWNrZXQuCj4+IMKgwqAgZXRmOiBBZGQgc2tpcF9zb2NrX2NoZWNrCj4+IMKg
-wqAgdGFwcmlvOiBjYWxjdWxhdGUgY3ljbGVfdGltZSB3aGVuIHNjaGVkdWxlIGlzIGluc3RhbGxl
-ZAo+PiDCoMKgIHRhcHJpbzogQWRkIHN1cHBvcnQgZm9yIHR4dGltZSBvZmZsb2FkIG1vZGUuCj4+
-IMKgwqAgdGFwcmlvOiBtYWtlIGNsb2NrIHJlZmVyZW5jZSBjb252ZXJzaW9ucyBlYXNpZXIKPj4g
-wqDCoCB0YXByaW86IEFkanVzdCB0aW1lc3RhbXBzIGZvciBUQ1AgcGFja2V0cy4KPj4KPj4gVmlu
-aWNpdXMgQ29zdGEgR29tZXMgKDEpOgo+PiDCoMKgIHRhcHJpbzogQWRkIHRoZSBza2VsZXRvbiB0
-byBlbmFibGUgaGFyZHdhcmUgb2ZmbG9hZGluZwo+Pgo+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9pZ2IvaWdiX21haW4uYyB8wqDCoCAxICsKPj4gwqAgaW5jbHVkZS91YXBpL2xpbnV4
-L3BrdF9zY2hlZC5owqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoCA2ICsKPj4gwqAgbmV0L3Nj
-aGVkL3NjaF9ldGYuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHzCoCAxMCArCj4+IMKgIG5ldC9zY2hlZC9zY2hfdGFwcmlvLmPCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8IDU0OCArKysrKysrKysrKysrKysrKysrKy0tCj4+IMKgIDQg
-ZmlsZXMgY2hhbmdlZCwgNTMyIGluc2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQo+Pgo+IAo+
-IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwt
-d2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczov
-L2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+Hi Vedang,
+
+On 05/28/2019 01:46 PM, Vedang Patel wrote:
+> Currently, we are seeing non-critical packets being transmitted outside
+> of their timeslice. We can confirm that the packets are being dequeued
+> at the right time. So, the delay is induced in the hardware side.  The
+> most likely reason is the hardware queues are starving the lower
+> priority queues.
+> 
+> In order to improve the performance of taprio, we will be making use of the
+> txtime feature provided by the ETF qdisc. For all the packets which do not have
+> the SO_TXTIME option set, taprio will set the transmit timestamp (set in
+> skb->tstamp) in this mode. TAPrio Qdisc will ensure that the transmit time for
+> the packet is set to when the gate is open. If SO_TXTIME is set, the TAPrio
+> qdisc will validate whether the timestamp (in skb->tstamp) occurs when the gate
+> corresponding to skb's traffic class is open.
+> 
+> Following is the example configuration for enabling txtime offload:
+> 
+> tc qdisc replace dev eth0 parent root handle 100 taprio \\
+>        num_tc 3 \\
+>        map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \\
+>        queues 1@0 1@0 1@0 \\
+>        base-time 1558653424279842568 \\
+>        sched-entry S 01 300000 \\
+>        sched-entry S 02 300000 \\
+>        sched-entry S 04 400000 \\
+>        offload 2 \\
+>        txtime-delay 40000 \\
+>        clockid CLOCK_TAI
+> 
+> tc qdisc replace dev $IFACE parent 100:1 etf skip_sock_check \\
+>        offload delta 200000 clockid CLOCK_TAI
+> 
+> Here, the "offload" parameter is indicating that the TXTIME_OFFLOAD mode is
+> enabled. Also, all the traffic classes are mapped to the same queue.  This is
+> only possible in taprio when txtime offload is enabled. Also note that the ETF
+> Qdisc is enabled with offload mode set.
+> 
+> In this mode, if the packet's traffic class is open and the complete packet can
+> be transmitted, taprio will try to transmit the packet immediately. This will
+> be done by setting skb->tstamp to current_time + the time delta indicated in
+> the txtime_delay parameter. This parameter indicates the time taken (in
+> software) for packet to reach the network adapter.
+
+In TSN Time aware shaper, packets are sent when gate for a specific
+traffic class is open. So packets that are available in the queues are
+sent by the scheduler. So the ETF is not strictly required for this
+function. I understand if the application needs to send packets with
+some latency expectation should use ETF to schedule the packet in sync
+with the next gate open time. So txtime_delay is used to account for
+the delay for packets to travel from user space to nic. So it is ETF
+that need to inspect the skb->tstamp and allow or if time match or
+discard if late. Is this the case?
+
+For offload case, the h/w that offload ETF needs to send a trigger to
+software to get packet for transmission ahead of the Gate open event?
+
+Thanks
+
+Murali
+> 
+> If the packet cannot be transmitted in the current interval or if the packet's
+> traffic is not currently transmitting, the skb->tstamp is set to the next
+> available timestamp value. This is tracked in the next_launchtime parameter in
+> the struct sched_entry.
+> 
+> The behaviour w.r.t admin and oper schedules is not changed from what is
+> present in software mode.
+> 
+> The transmit time is already known in advance. So, we do not need the HR timers
+> to advance the schedule and wakeup the dequeue side of taprio.  So, HR timer
+> won't be run when this mode is enabled.
+> 
+> Signed-off-by: Vedang Patel <vedang.patel@intel.com>
+> ---
+>   include/uapi/linux/pkt_sched.h |   1 +
+>   net/sched/sch_taprio.c         | 326 ++++++++++++++++++++++++++++++---
+>   2 files changed, 306 insertions(+), 21 deletions(-)
+> 
+> diff --git a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
+> index 3319255ffa25..afffda24e055 100644
+> --- a/include/uapi/linux/pkt_sched.h
+> +++ b/include/uapi/linux/pkt_sched.h
+> @@ -1174,6 +1174,7 @@ enum {
+>   	TCA_TAPRIO_ATTR_SCHED_CYCLE_TIME, /* s64 */
+>   	TCA_TAPRIO_ATTR_SCHED_CYCLE_TIME_EXTENSION, /* s64 */
+>   	TCA_TAPRIO_ATTR_OFFLOAD_FLAGS, /* u32 */
+> +	TCA_TAPRIO_ATTR_TXTIME_DELAY, /* s32 */
+>   	__TCA_TAPRIO_ATTR_MAX,
+>   };
+>   
+> diff --git a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c
+> index 8d87ba099130..1cd19eabc53b 100644
+> --- a/net/sched/sch_taprio.c
+> +++ b/net/sched/sch_taprio.c
+> @@ -21,6 +21,7 @@
+>   #include <net/pkt_sched.h>
+>   #include <net/pkt_cls.h>
+>   #include <net/sch_generic.h>
+> +#include <net/sock.h>
+>   
+>   static LIST_HEAD(taprio_list);
+>   static DEFINE_SPINLOCK(taprio_list_lock);
+> @@ -40,6 +41,7 @@ struct sched_entry {
+>   	 * packet leaves after this time.
+>   	 */
+>   	ktime_t close_time;
+> +	ktime_t next_txtime;
+>   	atomic_t budget;
+>   	int index;
+>   	u32 gate_mask;
+> @@ -76,6 +78,7 @@ struct taprio_sched {
+>   	struct sk_buff *(*peek)(struct Qdisc *sch);
+>   	struct hrtimer advance_timer;
+>   	struct list_head taprio_list;
+> +	int txtime_delay;
+>   };
+>   
+>   static ktime_t sched_base_time(const struct sched_gate_list *sched)
+> @@ -116,6 +119,235 @@ static void switch_schedules(struct taprio_sched *q,
+>   	*admin = NULL;
+>   }
+>   
+> +/* Get how much time has been already elapsed in the current cycle. */
+> +static inline s32 get_cycle_time_elapsed(struct sched_gate_list *sched, ktime_t time)
+> +{
+> +	ktime_t time_since_sched_start;
+> +	s32 time_elapsed;
+> +
+> +	time_since_sched_start = ktime_sub(time, sched->base_time);
+> +	div_s64_rem(time_since_sched_start, sched->cycle_time, &time_elapsed);
+> +
+> +	return time_elapsed;
+> +}
+> +
+> +static ktime_t get_interval_end_time(struct sched_gate_list *sched,
+> +				     struct sched_gate_list *admin,
+> +				     struct sched_entry *entry,
+> +				     ktime_t intv_start)
+> +{
+> +	s32 cycle_elapsed = get_cycle_time_elapsed(sched, intv_start);
+> +	ktime_t intv_end, cycle_ext_end, cycle_end;
+> +
+> +	cycle_end = ktime_add_ns(intv_start, sched->cycle_time - cycle_elapsed);
+> +	intv_end = ktime_add_ns(intv_start, entry->interval);
+> +	cycle_ext_end = ktime_add(cycle_end, sched->cycle_time_extension);
+> +
+> +	if (ktime_before(intv_end, cycle_end))
+> +		return intv_end;
+> +	else if (admin && admin != sched &&
+> +		 ktime_after(admin->base_time, cycle_end) &&
+> +		 ktime_before(admin->base_time, cycle_ext_end))
+> +		return admin->base_time;
+> +	else
+> +		return cycle_end;
+> +}
+> +
+> +static inline int length_to_duration(struct taprio_sched *q, int len)
+> +{
+> +	return (len * atomic64_read(&q->picos_per_byte)) / 1000;
+> +}
+> +
+> +/* Returns the entry corresponding to next available interval. If
+> + * validate_interval is set, it only validates whether the timestamp occurs
+> + * when the gate corresponding to the skb's traffic class is open.
+> + */
+> +static struct sched_entry *find_entry_to_transmit(struct sk_buff *skb,
+> +						  struct Qdisc *sch,
+> +						  struct sched_gate_list *sched,
+> +						  struct sched_gate_list *admin,
+> +						  ktime_t time,
+> +						  ktime_t *interval_start,
+> +						  ktime_t *interval_end,
+> +						  bool validate_interval)
+> +{
+> +	ktime_t curr_intv_start, curr_intv_end, cycle_end, packet_transmit_time;
+> +	ktime_t earliest_txtime = KTIME_MAX, txtime, cycle, transmit_end_time;
+> +	struct sched_entry *entry = NULL, *entry_found = NULL;
+> +	struct taprio_sched *q = qdisc_priv(sch);
+> +	struct net_device *dev = qdisc_dev(sch);
+> +	int tc, entry_available = 0, n;
+> +	s32 cycle_elapsed;
+> +
+> +	tc = netdev_get_prio_tc_map(dev, skb->priority);
+> +	packet_transmit_time = length_to_duration(q, qdisc_pkt_len(skb));
+> +
+> +	*interval_start = 0;
+> +	*interval_end = 0;
+> +
+> +	if (!sched)
+> +		return NULL;
+> +
+> +	cycle = sched->cycle_time;
+> +	cycle_elapsed = get_cycle_time_elapsed(sched, time);
+> +	curr_intv_end = ktime_sub_ns(time, cycle_elapsed);
+> +	cycle_end = ktime_add_ns(curr_intv_end, cycle);
+> +
+> +	list_for_each_entry(entry, &sched->entries, list) {
+> +		curr_intv_start = curr_intv_end;
+> +		curr_intv_end = get_interval_end_time(sched, admin, entry,
+> +						      curr_intv_start);
+> +
+> +		if (ktime_after(curr_intv_start, cycle_end))
+> +			break;
+> +
+> +		if (!(entry->gate_mask & BIT(tc)) ||
+> +		    packet_transmit_time > entry->interval)
+> +			continue;
+> +
+> +		txtime = entry->next_txtime;
+> +
+> +		if (ktime_before(txtime, time) || validate_interval) {
+> +			transmit_end_time = ktime_add_ns(time, packet_transmit_time);
+> +			if ((ktime_before(curr_intv_start, time) &&
+> +			     ktime_before(transmit_end_time, curr_intv_end)) ||
+> +			    (ktime_after(curr_intv_start, time) && !validate_interval)) {
+> +				entry_found = entry;
+> +				*interval_start = curr_intv_start;
+> +				*interval_end = curr_intv_end;
+> +				break;
+> +			} else if (!entry_available && !validate_interval) {
+> +				/* Here, we are just trying to find out the
+> +				 * first available interval in the next cycle.
+> +				 */
+> +				entry_available = 1;
+> +				entry_found = entry;
+> +				*interval_start = ktime_add_ns(curr_intv_start, cycle);
+> +				*interval_end = ktime_add_ns(curr_intv_end, cycle);
+> +			}
+> +		} else if (ktime_before(txtime, earliest_txtime) &&
+> +			   !entry_available) {
+> +			earliest_txtime = txtime;
+> +			entry_found = entry;
+> +			n = div_s64(ktime_sub(txtime, curr_intv_start), cycle);
+> +			*interval_start = ktime_add(curr_intv_start, n * cycle);
+> +			*interval_end = ktime_add(curr_intv_end, n * cycle);
+> +		}
+> +	}
+> +
+> +	return entry_found;
+> +}
+> +
+> +static bool is_valid_interval(struct sk_buff *skb, struct Qdisc *sch)
+> +{
+> +	struct taprio_sched *q = qdisc_priv(sch);
+> +	struct sched_gate_list *sched, *admin;
+> +	ktime_t interval_start, interval_end;
+> +	struct sched_entry *entry;
+> +
+> +	rcu_read_lock();
+> +	sched = rcu_dereference(q->oper_sched);
+> +	admin = rcu_dereference(q->admin_sched);
+> +
+> +	entry = find_entry_to_transmit(skb, sch, sched, admin, skb->tstamp,
+> +				       &interval_start, &interval_end, true);
+> +	rcu_read_unlock();
+> +
+> +	return entry;
+> +}
+> +
+> +static inline ktime_t get_cycle_start(struct sched_gate_list *sched,
+> +				      ktime_t time)
+> +{
+> +	ktime_t cycle_elapsed;
+> +
+> +	cycle_elapsed = get_cycle_time_elapsed(sched, time);
+> +
+> +	return ktime_sub(time, cycle_elapsed);
+> +}
+> +
+> +/* There are a few scenarios where we will have to modify the txtime from
+> + * what is read from next_txtime in sched_entry. They are:
+> + * 1. If txtime is in the past,
+> + *    a. The gate for the traffic class is currently open and packet can be
+> + *       transmitted before it closes, schedule the packet right away.
+> + *    b. If the gate corresponding to the traffic class is going to open later
+> + *       in the cycle, set the txtime of packet to the interval start.
+> + * 2. If txtime is in the future, there are packets corresponding to the
+> + *    current traffic class waiting to be transmitted. So, the following
+> + *    possibilities exist:
+> + *    a. We can transmit the packet before the window containing the txtime
+> + *       closes.
+> + *    b. The window might close before the transmission can be completed
+> + *       successfully. So, schedule the packet in the next open window.
+> + */
+> +static long get_packet_txtime(struct sk_buff *skb, struct Qdisc *sch)
+> +{
+> +	ktime_t transmit_end_time, interval_end, interval_start;
+> +	int len, packet_transmit_time, sched_changed;
+> +	struct taprio_sched *q = qdisc_priv(sch);
+> +	ktime_t minimum_time, now, txtime;
+> +	struct sched_gate_list *sched, *admin;
+> +	struct sched_entry *entry;
+> +
+> +	now = q->get_time();
+> +	minimum_time = ktime_add_ns(now, q->txtime_delay);
+> +
+> +	rcu_read_lock();
+> +	admin = rcu_dereference(q->admin_sched);
+> +	sched = rcu_dereference(q->oper_sched);
+> +	if (admin && ktime_after(minimum_time, admin->base_time))
+> +		switch_schedules(q, &admin, &sched);
+> +
+> +	/* Until the schedule starts, all the queues are open */
+> +	if (!sched || ktime_before(minimum_time, sched->base_time)) {
+> +		txtime = minimum_time;
+> +		goto done;
+> +	}
+> +
+> +	len = qdisc_pkt_len(skb);
+> +	packet_transmit_time = length_to_duration(q, len);
+> +
+> +	do {
+> +		sched_changed = 0;
+> +
+> +		entry = find_entry_to_transmit(skb, sch, sched, admin,
+> +					       minimum_time,
+> +					       &interval_start, &interval_end,
+> +					       false);
+> +		if (!entry) {
+> +			txtime = 0;
+> +			goto done;
+> +		}
+> +
+> +		txtime = entry->next_txtime;
+> +		txtime = max_t(ktime_t, txtime, minimum_time);
+> +		txtime = max_t(ktime_t, txtime, interval_start);
+> +
+> +		if (admin && admin != sched &&
+> +		    ktime_after(txtime, admin->base_time)) {
+> +			sched = admin;
+> +			sched_changed = 1;
+> +			continue;
+> +		}
+> +
+> +		transmit_end_time = ktime_add(txtime, packet_transmit_time);
+> +		minimum_time = transmit_end_time;
+> +
+> +		/* Update the txtime of current entry to the next time it's
+> +		 * interval starts.
+> +		 */
+> +		if (ktime_after(transmit_end_time, interval_end))
+> +			entry->next_txtime = ktime_add(interval_start, sched->cycle_time);
+> +	} while (sched_changed || ktime_after(transmit_end_time, interval_end));
+> +
+> +	entry->next_txtime = transmit_end_time;
+> +
+> +done:
+> +	rcu_read_unlock();
+> +	return txtime;
+> +}
+> +
+>   static int taprio_enqueue(struct sk_buff *skb, struct Qdisc *sch,
+>   			  struct sk_buff **to_free)
+>   {
+> @@ -129,6 +361,15 @@ static int taprio_enqueue(struct sk_buff *skb, struct Qdisc *sch,
+>   	if (unlikely(!child))
+>   		return qdisc_drop(skb, sch, to_free);
+>   
+> +	if (skb->sk && sock_flag(skb->sk, SOCK_TXTIME)) {
+> +		if (!is_valid_interval(skb, sch))
+> +			return qdisc_drop(skb, sch, to_free);
+> +	} else if (TXTIME_OFFLOAD_IS_ON(q->offload_flags)) {
+> +		skb->tstamp = get_packet_txtime(skb, sch);
+> +		if (!skb->tstamp)
+> +			return qdisc_drop(skb, sch, to_free);
+> +	}
+> +
+>   	qdisc_qstats_backlog_inc(sch, skb);
+>   	sch->q.qlen++;
+>   
+> @@ -206,11 +447,6 @@ static struct sk_buff *taprio_peek(struct Qdisc *sch)
+>   	return q->peek(sch);
+>   }
+>   
+> -static inline int length_to_duration(struct taprio_sched *q, int len)
+> -{
+> -	return div_u64(len * atomic64_read(&q->picos_per_byte), 1000);
+> -}
+> -
+>   static void taprio_set_budget(struct taprio_sched *q, struct sched_entry *entry)
+>   {
+>   	atomic_set(&entry->budget,
+> @@ -594,7 +830,8 @@ static int parse_taprio_schedule(struct nlattr **tb,
+>   
+>   static int taprio_parse_mqprio_opt(struct net_device *dev,
+>   				   struct tc_mqprio_qopt *qopt,
+> -				   struct netlink_ext_ack *extack)
+> +				   struct netlink_ext_ack *extack,
+> +				   u32 offload_flags)
+>   {
+>   	int i, j;
+>   
+> @@ -642,6 +879,9 @@ static int taprio_parse_mqprio_opt(struct net_device *dev,
+>   			return -EINVAL;
+>   		}
+>   
+> +		if (TXTIME_OFFLOAD_IS_ON(offload_flags))
+> +			continue;
+> +
+>   		/* Verify that the offset and counts do not overlap */
+>   		for (j = i + 1; j < qopt->num_tc; j++) {
+>   			if (last > qopt->offset[j]) {
+> @@ -804,6 +1044,9 @@ static int taprio_enable_offload(struct net_device *dev,
+>   	const struct net_device_ops *ops = dev->netdev_ops;
+>   	int err = 0;
+>   
+> +	if (TXTIME_OFFLOAD_IS_ON(offload_flags))
+> +		goto done;
+> +
+>   	if (!FULL_OFFLOAD_IS_ON(offload_flags)) {
+>   		NL_SET_ERR_MSG(extack, "Offload mode is not supported");
+>   		return -EOPNOTSUPP;
+> @@ -816,15 +1059,28 @@ static int taprio_enable_offload(struct net_device *dev,
+>   
+>   	/* FIXME: enable offloading */
+>   
+> -	q->dequeue = taprio_dequeue_offload;
+> -	q->peek = taprio_peek_offload;
+> -
+> -	if (err == 0)
+> +done:
+> +	if (err == 0) {
+> +		q->dequeue = taprio_dequeue_offload;
+> +		q->peek = taprio_peek_offload;
+>   		q->offload_flags = offload_flags;
+> +	}
+>   
+>   	return err;
+>   }
+>   
+> +static void setup_txtime(struct taprio_sched *q,
+> +			 struct sched_gate_list *sched, ktime_t base)
+> +{
+> +	struct sched_entry *entry;
+> +	u32 interval = 0;
+> +
+> +	list_for_each_entry(entry, &sched->entries, list) {
+> +		entry->next_txtime = ktime_add_ns(base, interval);
+> +		interval += entry->interval;
+> +	}
+> +}
+> +
+>   static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
+>   			 struct netlink_ext_ack *extack)
+>   {
+> @@ -846,7 +1102,10 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
+>   	if (tb[TCA_TAPRIO_ATTR_PRIOMAP])
+>   		mqprio = nla_data(tb[TCA_TAPRIO_ATTR_PRIOMAP]);
+>   
+> -	err = taprio_parse_mqprio_opt(dev, mqprio, extack);
+> +	if (tb[TCA_TAPRIO_ATTR_OFFLOAD_FLAGS])
+> +		offload_flags = nla_get_u32(tb[TCA_TAPRIO_ATTR_OFFLOAD_FLAGS]);
+> +
+> +	err = taprio_parse_mqprio_opt(dev, mqprio, extack, offload_flags);
+>   	if (err < 0)
+>   		return err;
+>   
+> @@ -887,6 +1146,10 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
+>   		goto free_sched;
+>   	}
+>   
+> +	/* preserve offload flags when changing the schedule. */
+> +	if (q->offload_flags)
+> +		offload_flags = q->offload_flags;
+> +
+>   	if (tb[TCA_TAPRIO_ATTR_SCHED_CLOCKID]) {
+>   		clockid = nla_get_s32(tb[TCA_TAPRIO_ATTR_SCHED_CLOCKID]);
+>   
+> @@ -914,7 +1177,10 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
+>   	/* Protects against enqueue()/dequeue() */
+>   	spin_lock_bh(qdisc_lock(sch));
+>   
+> -	if (!hrtimer_active(&q->advance_timer)) {
+> +	if (tb[TCA_TAPRIO_ATTR_TXTIME_DELAY])
+> +		q->txtime_delay = nla_get_s32(tb[TCA_TAPRIO_ATTR_TXTIME_DELAY]);
+> +
+> +	if (!TXTIME_OFFLOAD_IS_ON(offload_flags) && !hrtimer_active(&q->advance_timer)) {
+>   		hrtimer_init(&q->advance_timer, q->clockid, HRTIMER_MODE_ABS);
+>   		q->advance_timer.function = advance_sched;
+>   	}
+> @@ -966,20 +1232,35 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
+>   		goto unlock;
+>   	}
+>   
+> -	setup_first_close_time(q, new_admin, start);
+> +	if (TXTIME_OFFLOAD_IS_ON(offload_flags)) {
+> +		setup_txtime(q, new_admin, start);
+> +
+> +		if (!oper) {
+> +			rcu_assign_pointer(q->oper_sched, new_admin);
+> +			err = 0;
+> +			new_admin = NULL;
+> +			goto unlock;
+> +		}
+> +
+> +		rcu_assign_pointer(q->admin_sched, new_admin);
+> +		if (admin)
+> +			call_rcu(&admin->rcu, taprio_free_sched_cb);
+> +	} else {
+> +		setup_first_close_time(q, new_admin, start);
+>   
+> -	/* Protects against advance_sched() */
+> -	spin_lock_irqsave(&q->current_entry_lock, flags);
+> +		/* Protects against advance_sched() */
+> +		spin_lock_irqsave(&q->current_entry_lock, flags);
+>   
+> -	taprio_start_sched(sch, start, new_admin);
+> +		taprio_start_sched(sch, start, new_admin);
+>   
+> -	rcu_assign_pointer(q->admin_sched, new_admin);
+> -	if (admin)
+> -		call_rcu(&admin->rcu, taprio_free_sched_cb);
+> -	new_admin = NULL;
+> +		rcu_assign_pointer(q->admin_sched, new_admin);
+> +		if (admin)
+> +			call_rcu(&admin->rcu, taprio_free_sched_cb);
+>   
+> -	spin_unlock_irqrestore(&q->current_entry_lock, flags);
+> +		spin_unlock_irqrestore(&q->current_entry_lock, flags);
+> +	}
+>   
+> +	new_admin = NULL;
+>   	err = 0;
+>   
+>   unlock:
+> @@ -1225,6 +1506,9 @@ static int taprio_dump(struct Qdisc *sch, struct sk_buff *skb)
+>   	if (nla_put_u32(skb, TCA_TAPRIO_ATTR_OFFLOAD_FLAGS, q->offload_flags))
+>   		goto options_error;
+>   
+> +	if (nla_put_s32(skb, TCA_TAPRIO_ATTR_TXTIME_DELAY, q->txtime_delay))
+> +		goto options_error;
+> +
+>   	if (oper && dump_schedule(skb, oper))
+>   		goto options_error;
+>   
+> 
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
