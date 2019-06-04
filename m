@@ -1,76 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D4C533716
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jun 2019 19:47:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7B423411B
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Jun 2019 10:04:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4245D22686;
-	Mon,  3 Jun 2019 17:47:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6A89688BE5;
+	Tue,  4 Jun 2019 08:04:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nj9ePQB6lmf8; Mon,  3 Jun 2019 17:47:11 +0000 (UTC)
+	with ESMTP id 5gwoQNXTdMxZ; Tue,  4 Jun 2019 08:04:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 60CBB226A0;
-	Mon,  3 Jun 2019 17:47:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD28088A69;
+	Tue,  4 Jun 2019 08:04:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DDA441BF285
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:11:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C2E0C1BF359
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jun 2019 08:04:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D7E37221AF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:11:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BABC9876EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jun 2019 08:04:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OaFTn9Vjge4I for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Jun 2019 14:11:34 +0000 (UTC)
-X-Greylist: delayed 00:20:41 by SQLgrey-1.7.6
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com [198.47.19.141])
- by silver.osuosl.org (Postfix) with ESMTPS id 631D3204B0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2019 14:11:34 +0000 (UTC)
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
- by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x53EBUUZ087080;
- Mon, 3 Jun 2019 09:11:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1559571090;
- bh=F9ovSNJ8pDqF9kA6NVwjoTkBocL8Rs5YT81yp+BPz2s=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=k6oFIlFqQgX7nGFYOs1BIV5kKgBeWSN/x3spaAL5cJrvhcAfz4icbQ51rpnpvQPWh
- 9CtGdzGXaWfO0xPEpbcZ4/89vdXu+qujKWL1UKKSPMbXutaEUUIvNTO1REnEjChoxA
- k2j2DxL3Yrb6ZpJZ5gkdmuD7Jd6scObf7+HVhMaE=
-Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
- by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x53EBUGs087600
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 3 Jun 2019 09:11:30 -0500
-Received: from DLEE113.ent.ti.com (157.170.170.24) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Mon, 3 Jun
- 2019 09:11:30 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE113.ent.ti.com
- (157.170.170.24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Mon, 3 Jun 2019 09:11:30 -0500
-Received: from [158.218.117.39] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id x53EBTZ3054818;
- Mon, 3 Jun 2019 09:11:29 -0500
-To: Vedang Patel <vedang.patel@intel.com>, <netdev@vger.kernel.org>
-References: <1559065608-27888-1-git-send-email-vedang.patel@intel.com>
- <1559065608-27888-6-git-send-email-vedang.patel@intel.com>
-From: Murali Karicheri <m-karicheri2@ti.com>
-Message-ID: <55c2daae-c69b-4847-f995-4df85c4ee8b8@ti.com>
-Date: Mon, 3 Jun 2019 10:15:40 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.7.0
+ with ESMTP id OR1P4E1RywQS for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Jun 2019 08:04:29 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7FBD3876E9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jun 2019 08:04:29 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2019 01:04:28 -0700
+X-ExtLoop1: 1
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 04 Jun 2019 01:04:27 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hY4Ql-0005Lp-3T; Tue, 04 Jun 2019 16:04:27 +0800
+Date: Tue, 04 Jun 2019 16:03:53 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5cf625e9./5UZ9CgHWPuNo29i%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <1559065608-27888-6-git-send-email-vedang.patel@intel.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Mailman-Approved-At: Mon, 03 Jun 2019 17:47:06 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 5/7] taprio: Add support
- for txtime offload mode.
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
+ 6868fae5870a44ff52ec7f254fef1c8d3905cf35
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,553 +62,246 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, l@dorileo.org, jhs@mojatatu.com,
- intel-wired-lan@lists.osuosl.org, xiyou.wangcong@gmail.com,
- davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vedang,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 6868fae5870a44ff52ec7f254fef1c8d3905cf35  i40e: Check and set the PF driver state first in i40e_ndo_set_vf_mac
 
-On 05/28/2019 01:46 PM, Vedang Patel wrote:
-> Currently, we are seeing non-critical packets being transmitted outside
-> of their timeslice. We can confirm that the packets are being dequeued
-> at the right time. So, the delay is induced in the hardware side.  The
-> most likely reason is the hardware queues are starving the lower
-> priority queues.
-> 
-> In order to improve the performance of taprio, we will be making use of the
-> txtime feature provided by the ETF qdisc. For all the packets which do not have
-> the SO_TXTIME option set, taprio will set the transmit timestamp (set in
-> skb->tstamp) in this mode. TAPrio Qdisc will ensure that the transmit time for
-> the packet is set to when the gate is open. If SO_TXTIME is set, the TAPrio
-> qdisc will validate whether the timestamp (in skb->tstamp) occurs when the gate
-> corresponding to skb's traffic class is open.
-> 
-> Following is the example configuration for enabling txtime offload:
-> 
-> tc qdisc replace dev eth0 parent root handle 100 taprio \\
->        num_tc 3 \\
->        map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \\
->        queues 1@0 1@0 1@0 \\
->        base-time 1558653424279842568 \\
->        sched-entry S 01 300000 \\
->        sched-entry S 02 300000 \\
->        sched-entry S 04 400000 \\
->        offload 2 \\
->        txtime-delay 40000 \\
->        clockid CLOCK_TAI
-> 
-> tc qdisc replace dev $IFACE parent 100:1 etf skip_sock_check \\
->        offload delta 200000 clockid CLOCK_TAI
-> 
-> Here, the "offload" parameter is indicating that the TXTIME_OFFLOAD mode is
-> enabled. Also, all the traffic classes are mapped to the same queue.  This is
-> only possible in taprio when txtime offload is enabled. Also note that the ETF
-> Qdisc is enabled with offload mode set.
-> 
-> In this mode, if the packet's traffic class is open and the complete packet can
-> be transmitted, taprio will try to transmit the packet immediately. This will
-> be done by setting skb->tstamp to current_time + the time delta indicated in
-> the txtime_delay parameter. This parameter indicates the time taken (in
-> software) for packet to reach the network adapter.
+TIMEOUT after 604m
 
-In TSN Time aware shaper, packets are sent when gate for a specific
-traffic class is open. So packets that are available in the queues are
-sent by the scheduler. So the ETF is not strictly required for this
-function. I understand if the application needs to send packets with
-some latency expectation should use ETF to schedule the packet in sync
-with the next gate open time. So txtime_delay is used to account for
-the delay for packets to travel from user space to nic. So it is ETF
-that need to inspect the skb->tstamp and allow or if time match or
-discard if late. Is this the case?
 
-For offload case, the h/w that offload ETF needs to send a trigger to
-software to get packet for transmission ahead of the Gate open event?
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
 
-Thanks
+configs timed out: 136
 
-Murali
-> 
-> If the packet cannot be transmitted in the current interval or if the packet's
-> traffic is not currently transmitting, the skb->tstamp is set to the next
-> available timestamp value. This is tracked in the next_launchtime parameter in
-> the struct sched_entry.
-> 
-> The behaviour w.r.t admin and oper schedules is not changed from what is
-> present in software mode.
-> 
-> The transmit time is already known in advance. So, we do not need the HR timers
-> to advance the schedule and wakeup the dequeue side of taprio.  So, HR timer
-> won't be run when this mode is enabled.
-> 
-> Signed-off-by: Vedang Patel <vedang.patel@intel.com>
-> ---
->   include/uapi/linux/pkt_sched.h |   1 +
->   net/sched/sch_taprio.c         | 326 ++++++++++++++++++++++++++++++---
->   2 files changed, 306 insertions(+), 21 deletions(-)
-> 
-> diff --git a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
-> index 3319255ffa25..afffda24e055 100644
-> --- a/include/uapi/linux/pkt_sched.h
-> +++ b/include/uapi/linux/pkt_sched.h
-> @@ -1174,6 +1174,7 @@ enum {
->   	TCA_TAPRIO_ATTR_SCHED_CYCLE_TIME, /* s64 */
->   	TCA_TAPRIO_ATTR_SCHED_CYCLE_TIME_EXTENSION, /* s64 */
->   	TCA_TAPRIO_ATTR_OFFLOAD_FLAGS, /* u32 */
-> +	TCA_TAPRIO_ATTR_TXTIME_DELAY, /* s32 */
->   	__TCA_TAPRIO_ATTR_MAX,
->   };
->   
-> diff --git a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c
-> index 8d87ba099130..1cd19eabc53b 100644
-> --- a/net/sched/sch_taprio.c
-> +++ b/net/sched/sch_taprio.c
-> @@ -21,6 +21,7 @@
->   #include <net/pkt_sched.h>
->   #include <net/pkt_cls.h>
->   #include <net/sch_generic.h>
-> +#include <net/sock.h>
->   
->   static LIST_HEAD(taprio_list);
->   static DEFINE_SPINLOCK(taprio_list_lock);
-> @@ -40,6 +41,7 @@ struct sched_entry {
->   	 * packet leaves after this time.
->   	 */
->   	ktime_t close_time;
-> +	ktime_t next_txtime;
->   	atomic_t budget;
->   	int index;
->   	u32 gate_mask;
-> @@ -76,6 +78,7 @@ struct taprio_sched {
->   	struct sk_buff *(*peek)(struct Qdisc *sch);
->   	struct hrtimer advance_timer;
->   	struct list_head taprio_list;
-> +	int txtime_delay;
->   };
->   
->   static ktime_t sched_base_time(const struct sched_gate_list *sched)
-> @@ -116,6 +119,235 @@ static void switch_schedules(struct taprio_sched *q,
->   	*admin = NULL;
->   }
->   
-> +/* Get how much time has been already elapsed in the current cycle. */
-> +static inline s32 get_cycle_time_elapsed(struct sched_gate_list *sched, ktime_t time)
-> +{
-> +	ktime_t time_since_sched_start;
-> +	s32 time_elapsed;
-> +
-> +	time_since_sched_start = ktime_sub(time, sched->base_time);
-> +	div_s64_rem(time_since_sched_start, sched->cycle_time, &time_elapsed);
-> +
-> +	return time_elapsed;
-> +}
-> +
-> +static ktime_t get_interval_end_time(struct sched_gate_list *sched,
-> +				     struct sched_gate_list *admin,
-> +				     struct sched_entry *entry,
-> +				     ktime_t intv_start)
-> +{
-> +	s32 cycle_elapsed = get_cycle_time_elapsed(sched, intv_start);
-> +	ktime_t intv_end, cycle_ext_end, cycle_end;
-> +
-> +	cycle_end = ktime_add_ns(intv_start, sched->cycle_time - cycle_elapsed);
-> +	intv_end = ktime_add_ns(intv_start, entry->interval);
-> +	cycle_ext_end = ktime_add(cycle_end, sched->cycle_time_extension);
-> +
-> +	if (ktime_before(intv_end, cycle_end))
-> +		return intv_end;
-> +	else if (admin && admin != sched &&
-> +		 ktime_after(admin->base_time, cycle_end) &&
-> +		 ktime_before(admin->base_time, cycle_ext_end))
-> +		return admin->base_time;
-> +	else
-> +		return cycle_end;
-> +}
-> +
-> +static inline int length_to_duration(struct taprio_sched *q, int len)
-> +{
-> +	return (len * atomic64_read(&q->picos_per_byte)) / 1000;
-> +}
-> +
-> +/* Returns the entry corresponding to next available interval. If
-> + * validate_interval is set, it only validates whether the timestamp occurs
-> + * when the gate corresponding to the skb's traffic class is open.
-> + */
-> +static struct sched_entry *find_entry_to_transmit(struct sk_buff *skb,
-> +						  struct Qdisc *sch,
-> +						  struct sched_gate_list *sched,
-> +						  struct sched_gate_list *admin,
-> +						  ktime_t time,
-> +						  ktime_t *interval_start,
-> +						  ktime_t *interval_end,
-> +						  bool validate_interval)
-> +{
-> +	ktime_t curr_intv_start, curr_intv_end, cycle_end, packet_transmit_time;
-> +	ktime_t earliest_txtime = KTIME_MAX, txtime, cycle, transmit_end_time;
-> +	struct sched_entry *entry = NULL, *entry_found = NULL;
-> +	struct taprio_sched *q = qdisc_priv(sch);
-> +	struct net_device *dev = qdisc_dev(sch);
-> +	int tc, entry_available = 0, n;
-> +	s32 cycle_elapsed;
-> +
-> +	tc = netdev_get_prio_tc_map(dev, skb->priority);
-> +	packet_transmit_time = length_to_duration(q, qdisc_pkt_len(skb));
-> +
-> +	*interval_start = 0;
-> +	*interval_end = 0;
-> +
-> +	if (!sched)
-> +		return NULL;
-> +
-> +	cycle = sched->cycle_time;
-> +	cycle_elapsed = get_cycle_time_elapsed(sched, time);
-> +	curr_intv_end = ktime_sub_ns(time, cycle_elapsed);
-> +	cycle_end = ktime_add_ns(curr_intv_end, cycle);
-> +
-> +	list_for_each_entry(entry, &sched->entries, list) {
-> +		curr_intv_start = curr_intv_end;
-> +		curr_intv_end = get_interval_end_time(sched, admin, entry,
-> +						      curr_intv_start);
-> +
-> +		if (ktime_after(curr_intv_start, cycle_end))
-> +			break;
-> +
-> +		if (!(entry->gate_mask & BIT(tc)) ||
-> +		    packet_transmit_time > entry->interval)
-> +			continue;
-> +
-> +		txtime = entry->next_txtime;
-> +
-> +		if (ktime_before(txtime, time) || validate_interval) {
-> +			transmit_end_time = ktime_add_ns(time, packet_transmit_time);
-> +			if ((ktime_before(curr_intv_start, time) &&
-> +			     ktime_before(transmit_end_time, curr_intv_end)) ||
-> +			    (ktime_after(curr_intv_start, time) && !validate_interval)) {
-> +				entry_found = entry;
-> +				*interval_start = curr_intv_start;
-> +				*interval_end = curr_intv_end;
-> +				break;
-> +			} else if (!entry_available && !validate_interval) {
-> +				/* Here, we are just trying to find out the
-> +				 * first available interval in the next cycle.
-> +				 */
-> +				entry_available = 1;
-> +				entry_found = entry;
-> +				*interval_start = ktime_add_ns(curr_intv_start, cycle);
-> +				*interval_end = ktime_add_ns(curr_intv_end, cycle);
-> +			}
-> +		} else if (ktime_before(txtime, earliest_txtime) &&
-> +			   !entry_available) {
-> +			earliest_txtime = txtime;
-> +			entry_found = entry;
-> +			n = div_s64(ktime_sub(txtime, curr_intv_start), cycle);
-> +			*interval_start = ktime_add(curr_intv_start, n * cycle);
-> +			*interval_end = ktime_add(curr_intv_end, n * cycle);
-> +		}
-> +	}
-> +
-> +	return entry_found;
-> +}
-> +
-> +static bool is_valid_interval(struct sk_buff *skb, struct Qdisc *sch)
-> +{
-> +	struct taprio_sched *q = qdisc_priv(sch);
-> +	struct sched_gate_list *sched, *admin;
-> +	ktime_t interval_start, interval_end;
-> +	struct sched_entry *entry;
-> +
-> +	rcu_read_lock();
-> +	sched = rcu_dereference(q->oper_sched);
-> +	admin = rcu_dereference(q->admin_sched);
-> +
-> +	entry = find_entry_to_transmit(skb, sch, sched, admin, skb->tstamp,
-> +				       &interval_start, &interval_end, true);
-> +	rcu_read_unlock();
-> +
-> +	return entry;
-> +}
-> +
-> +static inline ktime_t get_cycle_start(struct sched_gate_list *sched,
-> +				      ktime_t time)
-> +{
-> +	ktime_t cycle_elapsed;
-> +
-> +	cycle_elapsed = get_cycle_time_elapsed(sched, time);
-> +
-> +	return ktime_sub(time, cycle_elapsed);
-> +}
-> +
-> +/* There are a few scenarios where we will have to modify the txtime from
-> + * what is read from next_txtime in sched_entry. They are:
-> + * 1. If txtime is in the past,
-> + *    a. The gate for the traffic class is currently open and packet can be
-> + *       transmitted before it closes, schedule the packet right away.
-> + *    b. If the gate corresponding to the traffic class is going to open later
-> + *       in the cycle, set the txtime of packet to the interval start.
-> + * 2. If txtime is in the future, there are packets corresponding to the
-> + *    current traffic class waiting to be transmitted. So, the following
-> + *    possibilities exist:
-> + *    a. We can transmit the packet before the window containing the txtime
-> + *       closes.
-> + *    b. The window might close before the transmission can be completed
-> + *       successfully. So, schedule the packet in the next open window.
-> + */
-> +static long get_packet_txtime(struct sk_buff *skb, struct Qdisc *sch)
-> +{
-> +	ktime_t transmit_end_time, interval_end, interval_start;
-> +	int len, packet_transmit_time, sched_changed;
-> +	struct taprio_sched *q = qdisc_priv(sch);
-> +	ktime_t minimum_time, now, txtime;
-> +	struct sched_gate_list *sched, *admin;
-> +	struct sched_entry *entry;
-> +
-> +	now = q->get_time();
-> +	minimum_time = ktime_add_ns(now, q->txtime_delay);
-> +
-> +	rcu_read_lock();
-> +	admin = rcu_dereference(q->admin_sched);
-> +	sched = rcu_dereference(q->oper_sched);
-> +	if (admin && ktime_after(minimum_time, admin->base_time))
-> +		switch_schedules(q, &admin, &sched);
-> +
-> +	/* Until the schedule starts, all the queues are open */
-> +	if (!sched || ktime_before(minimum_time, sched->base_time)) {
-> +		txtime = minimum_time;
-> +		goto done;
-> +	}
-> +
-> +	len = qdisc_pkt_len(skb);
-> +	packet_transmit_time = length_to_duration(q, len);
-> +
-> +	do {
-> +		sched_changed = 0;
-> +
-> +		entry = find_entry_to_transmit(skb, sch, sched, admin,
-> +					       minimum_time,
-> +					       &interval_start, &interval_end,
-> +					       false);
-> +		if (!entry) {
-> +			txtime = 0;
-> +			goto done;
-> +		}
-> +
-> +		txtime = entry->next_txtime;
-> +		txtime = max_t(ktime_t, txtime, minimum_time);
-> +		txtime = max_t(ktime_t, txtime, interval_start);
-> +
-> +		if (admin && admin != sched &&
-> +		    ktime_after(txtime, admin->base_time)) {
-> +			sched = admin;
-> +			sched_changed = 1;
-> +			continue;
-> +		}
-> +
-> +		transmit_end_time = ktime_add(txtime, packet_transmit_time);
-> +		minimum_time = transmit_end_time;
-> +
-> +		/* Update the txtime of current entry to the next time it's
-> +		 * interval starts.
-> +		 */
-> +		if (ktime_after(transmit_end_time, interval_end))
-> +			entry->next_txtime = ktime_add(interval_start, sched->cycle_time);
-> +	} while (sched_changed || ktime_after(transmit_end_time, interval_end));
-> +
-> +	entry->next_txtime = transmit_end_time;
-> +
-> +done:
-> +	rcu_read_unlock();
-> +	return txtime;
-> +}
-> +
->   static int taprio_enqueue(struct sk_buff *skb, struct Qdisc *sch,
->   			  struct sk_buff **to_free)
->   {
-> @@ -129,6 +361,15 @@ static int taprio_enqueue(struct sk_buff *skb, struct Qdisc *sch,
->   	if (unlikely(!child))
->   		return qdisc_drop(skb, sch, to_free);
->   
-> +	if (skb->sk && sock_flag(skb->sk, SOCK_TXTIME)) {
-> +		if (!is_valid_interval(skb, sch))
-> +			return qdisc_drop(skb, sch, to_free);
-> +	} else if (TXTIME_OFFLOAD_IS_ON(q->offload_flags)) {
-> +		skb->tstamp = get_packet_txtime(skb, sch);
-> +		if (!skb->tstamp)
-> +			return qdisc_drop(skb, sch, to_free);
-> +	}
-> +
->   	qdisc_qstats_backlog_inc(sch, skb);
->   	sch->q.qlen++;
->   
-> @@ -206,11 +447,6 @@ static struct sk_buff *taprio_peek(struct Qdisc *sch)
->   	return q->peek(sch);
->   }
->   
-> -static inline int length_to_duration(struct taprio_sched *q, int len)
-> -{
-> -	return div_u64(len * atomic64_read(&q->picos_per_byte), 1000);
-> -}
-> -
->   static void taprio_set_budget(struct taprio_sched *q, struct sched_entry *entry)
->   {
->   	atomic_set(&entry->budget,
-> @@ -594,7 +830,8 @@ static int parse_taprio_schedule(struct nlattr **tb,
->   
->   static int taprio_parse_mqprio_opt(struct net_device *dev,
->   				   struct tc_mqprio_qopt *qopt,
-> -				   struct netlink_ext_ack *extack)
-> +				   struct netlink_ext_ack *extack,
-> +				   u32 offload_flags)
->   {
->   	int i, j;
->   
-> @@ -642,6 +879,9 @@ static int taprio_parse_mqprio_opt(struct net_device *dev,
->   			return -EINVAL;
->   		}
->   
-> +		if (TXTIME_OFFLOAD_IS_ON(offload_flags))
-> +			continue;
-> +
->   		/* Verify that the offset and counts do not overlap */
->   		for (j = i + 1; j < qopt->num_tc; j++) {
->   			if (last > qopt->offset[j]) {
-> @@ -804,6 +1044,9 @@ static int taprio_enable_offload(struct net_device *dev,
->   	const struct net_device_ops *ops = dev->netdev_ops;
->   	int err = 0;
->   
-> +	if (TXTIME_OFFLOAD_IS_ON(offload_flags))
-> +		goto done;
-> +
->   	if (!FULL_OFFLOAD_IS_ON(offload_flags)) {
->   		NL_SET_ERR_MSG(extack, "Offload mode is not supported");
->   		return -EOPNOTSUPP;
-> @@ -816,15 +1059,28 @@ static int taprio_enable_offload(struct net_device *dev,
->   
->   	/* FIXME: enable offloading */
->   
-> -	q->dequeue = taprio_dequeue_offload;
-> -	q->peek = taprio_peek_offload;
-> -
-> -	if (err == 0)
-> +done:
-> +	if (err == 0) {
-> +		q->dequeue = taprio_dequeue_offload;
-> +		q->peek = taprio_peek_offload;
->   		q->offload_flags = offload_flags;
-> +	}
->   
->   	return err;
->   }
->   
-> +static void setup_txtime(struct taprio_sched *q,
-> +			 struct sched_gate_list *sched, ktime_t base)
-> +{
-> +	struct sched_entry *entry;
-> +	u32 interval = 0;
-> +
-> +	list_for_each_entry(entry, &sched->entries, list) {
-> +		entry->next_txtime = ktime_add_ns(base, interval);
-> +		interval += entry->interval;
-> +	}
-> +}
-> +
->   static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
->   			 struct netlink_ext_ack *extack)
->   {
-> @@ -846,7 +1102,10 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
->   	if (tb[TCA_TAPRIO_ATTR_PRIOMAP])
->   		mqprio = nla_data(tb[TCA_TAPRIO_ATTR_PRIOMAP]);
->   
-> -	err = taprio_parse_mqprio_opt(dev, mqprio, extack);
-> +	if (tb[TCA_TAPRIO_ATTR_OFFLOAD_FLAGS])
-> +		offload_flags = nla_get_u32(tb[TCA_TAPRIO_ATTR_OFFLOAD_FLAGS]);
-> +
-> +	err = taprio_parse_mqprio_opt(dev, mqprio, extack, offload_flags);
->   	if (err < 0)
->   		return err;
->   
-> @@ -887,6 +1146,10 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
->   		goto free_sched;
->   	}
->   
-> +	/* preserve offload flags when changing the schedule. */
-> +	if (q->offload_flags)
-> +		offload_flags = q->offload_flags;
-> +
->   	if (tb[TCA_TAPRIO_ATTR_SCHED_CLOCKID]) {
->   		clockid = nla_get_s32(tb[TCA_TAPRIO_ATTR_SCHED_CLOCKID]);
->   
-> @@ -914,7 +1177,10 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
->   	/* Protects against enqueue()/dequeue() */
->   	spin_lock_bh(qdisc_lock(sch));
->   
-> -	if (!hrtimer_active(&q->advance_timer)) {
-> +	if (tb[TCA_TAPRIO_ATTR_TXTIME_DELAY])
-> +		q->txtime_delay = nla_get_s32(tb[TCA_TAPRIO_ATTR_TXTIME_DELAY]);
-> +
-> +	if (!TXTIME_OFFLOAD_IS_ON(offload_flags) && !hrtimer_active(&q->advance_timer)) {
->   		hrtimer_init(&q->advance_timer, q->clockid, HRTIMER_MODE_ABS);
->   		q->advance_timer.function = advance_sched;
->   	}
-> @@ -966,20 +1232,35 @@ static int taprio_change(struct Qdisc *sch, struct nlattr *opt,
->   		goto unlock;
->   	}
->   
-> -	setup_first_close_time(q, new_admin, start);
-> +	if (TXTIME_OFFLOAD_IS_ON(offload_flags)) {
-> +		setup_txtime(q, new_admin, start);
-> +
-> +		if (!oper) {
-> +			rcu_assign_pointer(q->oper_sched, new_admin);
-> +			err = 0;
-> +			new_admin = NULL;
-> +			goto unlock;
-> +		}
-> +
-> +		rcu_assign_pointer(q->admin_sched, new_admin);
-> +		if (admin)
-> +			call_rcu(&admin->rcu, taprio_free_sched_cb);
-> +	} else {
-> +		setup_first_close_time(q, new_admin, start);
->   
-> -	/* Protects against advance_sched() */
-> -	spin_lock_irqsave(&q->current_entry_lock, flags);
-> +		/* Protects against advance_sched() */
-> +		spin_lock_irqsave(&q->current_entry_lock, flags);
->   
-> -	taprio_start_sched(sch, start, new_admin);
-> +		taprio_start_sched(sch, start, new_admin);
->   
-> -	rcu_assign_pointer(q->admin_sched, new_admin);
-> -	if (admin)
-> -		call_rcu(&admin->rcu, taprio_free_sched_cb);
-> -	new_admin = NULL;
-> +		rcu_assign_pointer(q->admin_sched, new_admin);
-> +		if (admin)
-> +			call_rcu(&admin->rcu, taprio_free_sched_cb);
->   
-> -	spin_unlock_irqrestore(&q->current_entry_lock, flags);
-> +		spin_unlock_irqrestore(&q->current_entry_lock, flags);
-> +	}
->   
-> +	new_admin = NULL;
->   	err = 0;
->   
->   unlock:
-> @@ -1225,6 +1506,9 @@ static int taprio_dump(struct Qdisc *sch, struct sk_buff *skb)
->   	if (nla_put_u32(skb, TCA_TAPRIO_ATTR_OFFLOAD_FLAGS, q->offload_flags))
->   		goto options_error;
->   
-> +	if (nla_put_s32(skb, TCA_TAPRIO_ATTR_TXTIME_DELAY, q->txtime_delay))
-> +		goto options_error;
-> +
->   	if (oper && dump_schedule(skb, oper))
->   		goto options_error;
->   
-> 
+alpha                            allmodconfig
+alpha                            allyesconfig
+i386                             allmodconfig
+i386                          randconfig-n001
+i386                          randconfig-n002
+i386                          randconfig-n003
+i386                          randconfig-n004
+i386                          randconfig-n005
+i386                          randconfig-n006
+i386                          randconfig-n007
+i386                          randconfig-n008
+i386                          randconfig-n009
+i386                          randconfig-n010
+i386                          randconfig-n011
+i386                          randconfig-n012
+i386                          randconfig-n013
+i386                          randconfig-n014
+i386                          randconfig-n015
+i386                          randconfig-n016
+i386                          randconfig-n017
+i386                          randconfig-n018
+i386                          randconfig-n019
+i386                          randconfig-n020
+i386                          randconfig-n021
+i386                          randconfig-n022
+i386                          randconfig-n023
+i386                          randconfig-n024
+i386                          randconfig-n025
+i386                          randconfig-n026
+i386                          randconfig-n027
+i386                          randconfig-n028
+i386                          randconfig-n029
+i386                          randconfig-n030
+i386                          randconfig-n031
+i386                          randconfig-n032
+i386                          randconfig-x000
+i386                          randconfig-x001
+i386                          randconfig-x002
+i386                          randconfig-x003
+i386                          randconfig-x004
+i386                          randconfig-x005
+i386                          randconfig-x006
+i386                          randconfig-x007
+i386                          randconfig-x008
+i386                          randconfig-x009
+i386                          randconfig-x010
+i386                          randconfig-x011
+i386                          randconfig-x012
+i386                          randconfig-x013
+i386                          randconfig-x014
+i386                          randconfig-x015
+i386                          randconfig-x016
+i386                          randconfig-x017
+i386                          randconfig-x018
+i386                          randconfig-x019
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+nds32                            allmodconfig
+nds32                            allyesconfig
+parisc                           allmodconfig
+parisc                           allyesconfig
+powerpc                          allmodconfig
+powerpc                          allyesconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+s390                             allmodconfig
+s390                             allyesconfig
+sh                               allyesconfig
+sparc                            allmodconfig
+sparc                            allyesconfig
+sparc64                          allyesconfig
+x86_64                             acpi-redef
+x86_64                           allyesconfig
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                nfsroot
+x86_64                        randconfig-n001
+x86_64                        randconfig-n002
+x86_64                        randconfig-n003
+x86_64                        randconfig-n004
+x86_64                        randconfig-n005
+x86_64                        randconfig-n006
+x86_64                        randconfig-n007
+x86_64                        randconfig-n008
+x86_64                        randconfig-n009
+x86_64                        randconfig-n010
+x86_64                        randconfig-n011
+x86_64                        randconfig-n012
+x86_64                        randconfig-n013
+x86_64                        randconfig-n014
+x86_64                        randconfig-n015
+x86_64                        randconfig-n016
+x86_64                        randconfig-n017
+x86_64                        randconfig-n018
+x86_64                        randconfig-n019
+x86_64                        randconfig-n020
+x86_64                        randconfig-n021
+x86_64                        randconfig-n022
+x86_64                        randconfig-n023
+x86_64                        randconfig-n024
+x86_64                        randconfig-n025
+x86_64                        randconfig-n026
+x86_64                        randconfig-n027
+x86_64                        randconfig-n028
+x86_64                        randconfig-n029
+x86_64                        randconfig-n030
+x86_64                        randconfig-n031
+x86_64                        randconfig-n032
+x86_64                        randconfig-x010
+x86_64                        randconfig-x011
+x86_64                        randconfig-x012
+x86_64                        randconfig-x013
+x86_64                        randconfig-x014
+x86_64                        randconfig-x015
+x86_64                        randconfig-x016
+x86_64                        randconfig-x017
+x86_64                        randconfig-x018
+x86_64                        randconfig-x019
+xtensa                           allmodconfig
+xtensa                           allyesconfig
 
+configs tested: 77
+
+openrisc                    or1ksim_defconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+h8300                    h8300h-sim_defconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                           allnoconfig
+s390                          debug_defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+x86_64                           allmodconfig
+i386                             alldefconfig
+nds32                             allnoconfig
+nds32                               defconfig
+sparc64                          allmodconfig
+sparc                               defconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+riscv                              tinyconfig
+i386                               tinyconfig
+arm                              allmodconfig
+arm64                            allyesconfig
+arm                         at91_dt_defconfig
+arm                               allnoconfig
+arm                           efm32_defconfig
+arm64                               defconfig
+arm                        multi_v5_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allmodconfig
+arm                          exynos_defconfig
+arm                        shmobile_defconfig
+arm                        multi_v7_defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                   randconfig-x073-201922
+i386                   randconfig-x070-201922
+i386                   randconfig-x071-201922
+i386                   randconfig-x074-201922
+i386                   randconfig-x078-201922
+i386                   randconfig-x075-201922
+i386                   randconfig-x072-201922
+i386                   randconfig-x076-201922
+i386                   randconfig-x077-201922
+i386                   randconfig-x079-201922
+x86_64                 randconfig-x003-201922
+x86_64                 randconfig-x006-201922
+x86_64                 randconfig-x007-201922
+x86_64                 randconfig-x001-201922
+x86_64                 randconfig-x004-201922
+x86_64                 randconfig-x005-201922
+x86_64                 randconfig-x008-201922
+x86_64                 randconfig-x009-201922
+x86_64                 randconfig-x002-201922
+x86_64                 randconfig-x000-201922
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+ia64                             alldefconfig
+parisc                        c3000_defconfig
+um                                  defconfig
+parisc                         b180_defconfig
+parisc                              defconfig
+alpha                               defconfig
+parisc                            allnoconfig
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
