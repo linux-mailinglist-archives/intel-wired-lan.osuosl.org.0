@@ -2,53 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0393A37B79
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2019 19:51:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CAA6437EDC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2019 22:33:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 905AA866AB;
-	Thu,  6 Jun 2019 17:51:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4BEB587680;
+	Thu,  6 Jun 2019 20:33:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KYtX5QbRpHv0; Thu,  6 Jun 2019 17:51:21 +0000 (UTC)
+	with ESMTP id 0Y3PzE5-9BQZ; Thu,  6 Jun 2019 20:33:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D3DCD8583C;
-	Thu,  6 Jun 2019 17:51:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 87E2387681;
+	Thu,  6 Jun 2019 20:33:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 66A311BF35B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 604181BF330
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 20:33:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6414384887
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5680986702
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 20:33:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X0EUq5t6K_YI for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jun 2019 17:51:15 +0000 (UTC)
+ with ESMTP id z9BdK9eNmCmn for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2019 20:33:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9C228845D9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:15 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9CD87866F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 20:33:28 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2019 10:51:15 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Jun 2019 13:33:27 -0700
 X-ExtLoop1: 1
-Received: from vpatel-desk.jf.intel.com (HELO localhost.localdomain)
- ([10.7.159.52])
- by orsmga003.jf.intel.com with ESMTP; 06 Jun 2019 10:51:15 -0700
-From: Vedang Patel <vedang.patel@intel.com>
-To: netdev@vger.kernel.org
-Date: Thu,  6 Jun 2019 10:50:58 -0700
-Message-Id: <1559843458-12517-7-git-send-email-vedang.patel@intel.com>
-X-Mailer: git-send-email 2.7.3
-In-Reply-To: <1559843458-12517-1-git-send-email-vedang.patel@intel.com>
-References: <1559843458-12517-1-git-send-email-vedang.patel@intel.com>
-Subject: [Intel-wired-lan] [PATCH net-next v2 6/6] taprio: Adjust timestamps
- for TCP packets.
+Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
+ by FMSMGA003.fm.intel.com with ESMTP; 06 Jun 2019 13:33:27 -0700
+Received: from orsmsx160.amr.corp.intel.com (10.22.226.43) by
+ ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Thu, 6 Jun 2019 13:33:27 -0700
+Received: from orsmsx121.amr.corp.intel.com ([169.254.10.133]) by
+ ORSMSX160.amr.corp.intel.com ([169.254.13.124]) with mapi id 14.03.0415.000;
+ Thu, 6 Jun 2019 13:33:27 -0700
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Colin King <colin.king@canonical.com>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>, "David S . Miller" <davem@davemloft.net>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [PATCH][next] ixgbe: fix potential u32 overflow on shift
+Thread-Index: AQHVHGlIFzjSo2T24EekWjY0GDeFv6aPFTkQ
+Date: Thu, 6 Jun 2019 20:33:26 +0000
+Message-ID: <02874ECE860811409154E81DA85FBB5896745DEE@ORSMSX121.amr.corp.intel.com>
+References: <20190606131053.25103-1-colin.king@canonical.com>
+In-Reply-To: <20190606131053.25103-1-colin.king@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNmMwMjZiNzItNjY5ZS00ZjI4LWE3ZTktODlhNzVjN2FkZDViIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiS2l5ZlhmeUtkUG9kYUNhZFJlZEU0K1ArK2N4aEIzQTFvc3ZCc3hOMmlTVzBCbitDWHVsUnd3TjNcL2t2VnBJMWMifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.600.7
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH][next] ixgbe: fix potential u32
+ overflow on shift
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,105 +81,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, l@dorileo.org, jakub.kicinski@netronome.com,
- jhs@mojatatu.com, m-karicheri2@ti.com, intel-wired-lan@lists.osuosl.org,
- xiyou.wangcong@gmail.com, davem@davemloft.net
-MIME-Version: 1.0
+Cc: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When the taprio qdisc is running in "txtime offload" mode, it will
-set the launchtime value (in skb->tstamp) for all the packets which do
-not have the SO_TXTIME socket option. But, the TCP packets already have
-this value set and it indicates the earliest departure time represented
-in CLOCK_MONOTONIC clock.
+> -----Original Message-----
+> From: Colin King [mailto:colin.king@canonical.com]
+> Sent: Thursday, June 06, 2019 6:11 AM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>; Kirsher, Jeffrey T
+> <jeffrey.t.kirsher@intel.com>; David S . Miller <davem@davemloft.net>; intel-wired-
+> lan@lists.osuosl.org; netdev@vger.kernel.org
+> Cc: kernel-janitors@vger.kernel.org; linux-kernel@vger.kernel.org
+> Subject: [PATCH][next] ixgbe: fix potential u32 overflow on shift
+> 
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> The u32 variable rem is being shifted using u32 arithmetic however
+> it is being passed to div_u64 that expects the expression to be a u64.
+> The 32 bit shift may potentially overflow, so cast rem to a u64 before
+> shifting to avoid this.
+> 
 
-We need to respect the timestamp set by the TCP subsystem. So, convert
-this time to the clock which taprio is using and ensure that the packet
-is not transmitted before the deadline set by TCP.
+Ah, yep. Thanks for the fix!
 
-Signed-off-by: Vedang Patel <vedang.patel@intel.com>
----
- net/sched/sch_taprio.c | 41 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 40 insertions(+), 1 deletion(-)
+> Addresses-Coverity: ("Unintentional integer overflow")
+> Fixes: cd4583206990 ("ixgbe: implement support for SDP/PPS output on X550
+> hardware")
+> Fixes: 68d9676fc04e ("ixgbe: fix PTP SDP pin setup on X540 hardware")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
+> b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
+> index 2c4d327fcc2e..ff229d0e9146 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
+> @@ -209,7 +209,7 @@ static void ixgbe_ptp_setup_sdp_X540(struct ixgbe_adapter
+> *adapter)
+>  	 * assumes that the cycle counter shift is small enough to avoid
+>  	 * overflowing when shifting the remainder.
+>  	 */
+> -	clock_edge += div_u64((rem << cc->shift), cc->mult);
+> +	clock_edge += div_u64(((u64)rem << cc->shift), cc->mult);
+>  	trgttiml = (u32)clock_edge;
+>  	trgttimh = (u32)(clock_edge >> 32);
+> 
 
-diff --git a/net/sched/sch_taprio.c b/net/sched/sch_taprio.c
-index 9f621e6c2503..5dba9e0bac1a 100644
---- a/net/sched/sch_taprio.c
-+++ b/net/sched/sch_taprio.c
-@@ -22,6 +22,7 @@
- #include <net/pkt_cls.h>
- #include <net/sch_generic.h>
- #include <net/sock.h>
-+#include <net/tcp.h>
- 
- static LIST_HEAD(taprio_list);
- static DEFINE_SPINLOCK(taprio_list_lock);
-@@ -278,6 +279,41 @@ static inline ktime_t get_cycle_start(struct sched_gate_list *sched,
- 	return ktime_sub(time, cycle_elapsed);
- }
- 
-+/* This returns the tstamp value set by TCP in terms of the set clock. */
-+static ktime_t get_tcp_tstamp(struct taprio_sched *q, struct sk_buff *skb)
-+{
-+	unsigned int offset = skb_network_offset(skb);
-+	const struct ipv6hdr *ipv6h;
-+	const struct iphdr *iph;
-+	struct ipv6hdr _ipv6h;
-+
-+	ipv6h = skb_header_pointer(skb, offset, sizeof(_ipv6h), &_ipv6h);
-+	if (!ipv6h)
-+		return 0;
-+
-+	if (ipv6h->version == 4) {
-+		iph = (struct iphdr *)ipv6h;
-+		offset += iph->ihl * 4;
-+
-+		/* special-case 6in4 tunnelling, as that is a common way to get
-+		 * v6 connectivity in the home
-+		 */
-+		if (iph->protocol == IPPROTO_IPV6) {
-+			ipv6h = skb_header_pointer(skb, offset,
-+						   sizeof(_ipv6h), &_ipv6h);
-+
-+			if (!ipv6h || ipv6h->nexthdr != IPPROTO_TCP)
-+				return 0;
-+		} else if (iph->protocol != IPPROTO_TCP) {
-+			return 0;
-+		}
-+	} else if (ipv6h->version == 6 && ipv6h->nexthdr != IPPROTO_TCP) {
-+		return 0;
-+	}
-+
-+	return ktime_mono_to_any(skb->skb_mstamp_ns, q->tk_offset);
-+}
-+
- /* There are a few scenarios where we will have to modify the txtime from
-  * what is read from next_txtime in sched_entry. They are:
-  * 1. If txtime is in the past,
-@@ -295,7 +331,7 @@ static inline ktime_t get_cycle_start(struct sched_gate_list *sched,
-  */
- static long get_packet_txtime(struct sk_buff *skb, struct Qdisc *sch)
- {
--	ktime_t transmit_end_time, interval_end, interval_start;
-+	ktime_t transmit_end_time, interval_end, interval_start, tcp_tstamp;
- 	struct taprio_sched *q = qdisc_priv(sch);
- 	struct sched_gate_list *sched, *admin;
- 	ktime_t minimum_time, now, txtime;
-@@ -306,6 +342,9 @@ static long get_packet_txtime(struct sk_buff *skb, struct Qdisc *sch)
- 	now = taprio_get_time(q);
- 	minimum_time = ktime_add_ns(now, q->txtime_delay);
- 
-+	tcp_tstamp = get_tcp_tstamp(q, skb);
-+	minimum_time = max_t(ktime_t, minimum_time, tcp_tstamp);
-+
- 	rcu_read_lock();
- 	admin = rcu_dereference(q->admin_sched);
- 	sched = rcu_dereference(q->oper_sched);
--- 
-2.7.3
+This makes sense to me.
+
+Regards,
+Jake
+
+> @@ -295,7 +295,7 @@ static void ixgbe_ptp_setup_sdp_X550(struct ixgbe_adapter
+> *adapter)
+>  	 * assumes that the cycle counter shift is small enough to avoid
+>  	 * overflowing when shifting the remainder.
+>  	 */
+> -	clock_edge += div_u64((rem << cc->shift), cc->mult);
+> +	clock_edge += div_u64(((u64)rem << cc->shift), cc->mult);
+> 
+>  	/* X550 hardware stores the time in 32bits of 'billions of cycles' and
+>  	 * 32bits of 'cycles'. There's no guarantee that cycles represents
+> --
+> 2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
