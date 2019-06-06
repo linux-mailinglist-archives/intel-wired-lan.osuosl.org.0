@@ -2,53 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CEF337B6D
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2019 19:51:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 181A437B6F
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2019 19:51:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BA87188159;
-	Thu,  6 Jun 2019 17:51:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 77D0888163;
+	Thu,  6 Jun 2019 17:51:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l+TFXwey9f-l; Thu,  6 Jun 2019 17:51:12 +0000 (UTC)
+	with ESMTP id Pm1PKIiYc28b; Thu,  6 Jun 2019 17:51:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 67C4387EA2;
+	by hemlock.osuosl.org (Postfix) with ESMTP id A3E4687E8E;
 	Thu,  6 Jun 2019 17:51:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 192C91BF35B
+ by ash.osuosl.org (Postfix) with ESMTP id D36561BF35B
  for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 16098845D9
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D0880845D9
  for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PPH8MYY1zbT5 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jun 2019 17:51:10 +0000 (UTC)
+ with ESMTP id g6t801IcyUSa for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2019 17:51:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 90000845CB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 606DD845CB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 17:51:11 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2019 10:51:10 -0700
+ 06 Jun 2019 10:51:11 -0700
 X-ExtLoop1: 1
 Received: from vpatel-desk.jf.intel.com (HELO localhost.localdomain)
  ([10.7.159.52])
- by orsmga003.jf.intel.com with ESMTP; 06 Jun 2019 10:51:10 -0700
+ by orsmga003.jf.intel.com with ESMTP; 06 Jun 2019 10:51:11 -0700
 From: Vedang Patel <vedang.patel@intel.com>
 To: netdev@vger.kernel.org
-Date: Thu,  6 Jun 2019 10:50:53 -0700
-Message-Id: <1559843458-12517-2-git-send-email-vedang.patel@intel.com>
+Date: Thu,  6 Jun 2019 10:50:54 -0700
+Message-Id: <1559843458-12517-3-git-send-email-vedang.patel@intel.com>
 X-Mailer: git-send-email 2.7.3
 In-Reply-To: <1559843458-12517-1-git-send-email-vedang.patel@intel.com>
 References: <1559843458-12517-1-git-send-email-vedang.patel@intel.com>
-Subject: [Intel-wired-lan] [PATCH net-next v2 1/6] igb: clear out tstamp
- after sending the packet.
+Subject: [Intel-wired-lan] [PATCH net-next v2 2/6] etf: Add skip_sock_check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,30 +69,87 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-skb->tstamp is being used at multiple places. On the transmit side, it
-is used to determine the launchtime of the packet. It is also used to
-determine the software timestamp after the packet has been transmitted.
+Currently, etf expects a socket with SO_TXTIME option set for each packet
+it encounters. So, it will drop all other packets. But, in the future
+commits we are planning to add functionality which where tstamp value will
+be set by another qdisc. Also, some packets which are generated from within
+the kernel (e.g. ICMP packets) do not have any socket associated with them.
 
-So, clear out the tstamp value after it has been read so that we do not
-report false software timestamp on the receive side.
+So, this commit adds support for skip_sock_check. When this option is set,
+etf will skip checking for a socket and other associated options for all
+skbs.
 
 Signed-off-by: Vedang Patel <vedang.patel@intel.com>
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/uapi/linux/pkt_sched.h |  1 +
+ net/sched/sch_etf.c            | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index fc925adbd9fa..f66dae72fe37 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -5688,6 +5688,7 @@ static void igb_tx_ctxtdesc(struct igb_ring *tx_ring,
- 	 */
- 	if (tx_ring->launchtime_enable) {
- 		ts = ns_to_timespec64(first->skb->tstamp);
-+		first->skb->tstamp = 0;
- 		context_desc->seqnum_seed = cpu_to_le32(ts.tv_nsec / 32);
- 	} else {
- 		context_desc->seqnum_seed = 0;
+diff --git a/include/uapi/linux/pkt_sched.h b/include/uapi/linux/pkt_sched.h
+index 8b2f993cbb77..69fc52e4d6bd 100644
+--- a/include/uapi/linux/pkt_sched.h
++++ b/include/uapi/linux/pkt_sched.h
+@@ -990,6 +990,7 @@ struct tc_etf_qopt {
+ 	__u32 flags;
+ #define TC_ETF_DEADLINE_MODE_ON	BIT(0)
+ #define TC_ETF_OFFLOAD_ON	BIT(1)
++#define TC_ETF_SKIP_SOCK_CHECK  BIT(2)
+ };
+ 
+ enum {
+diff --git a/net/sched/sch_etf.c b/net/sched/sch_etf.c
+index db0c2ba1d156..cebfb65d8556 100644
+--- a/net/sched/sch_etf.c
++++ b/net/sched/sch_etf.c
+@@ -22,10 +22,12 @@
+ 
+ #define DEADLINE_MODE_IS_ON(x) ((x)->flags & TC_ETF_DEADLINE_MODE_ON)
+ #define OFFLOAD_IS_ON(x) ((x)->flags & TC_ETF_OFFLOAD_ON)
++#define SKIP_SOCK_CHECK_IS_SET(x) ((x)->flags & TC_ETF_SKIP_SOCK_CHECK)
+ 
+ struct etf_sched_data {
+ 	bool offload;
+ 	bool deadline_mode;
++	bool skip_sock_check;
+ 	int clockid;
+ 	int queue;
+ 	s32 delta; /* in ns */
+@@ -77,6 +79,9 @@ static bool is_packet_valid(struct Qdisc *sch, struct sk_buff *nskb)
+ 	struct sock *sk = nskb->sk;
+ 	ktime_t now;
+ 
++	if (q->skip_sock_check)
++		goto skip;
++
+ 	if (!sk)
+ 		return false;
+ 
+@@ -92,6 +97,7 @@ static bool is_packet_valid(struct Qdisc *sch, struct sk_buff *nskb)
+ 	if (sk->sk_txtime_deadline_mode != q->deadline_mode)
+ 		return false;
+ 
++skip:
+ 	now = q->get_time();
+ 	if (ktime_before(txtime, now) || ktime_before(txtime, q->last))
+ 		return false;
+@@ -385,6 +391,7 @@ static int etf_init(struct Qdisc *sch, struct nlattr *opt,
+ 	q->clockid = qopt->clockid;
+ 	q->offload = OFFLOAD_IS_ON(qopt);
+ 	q->deadline_mode = DEADLINE_MODE_IS_ON(qopt);
++	q->skip_sock_check = SKIP_SOCK_CHECK_IS_SET(qopt);
+ 
+ 	switch (q->clockid) {
+ 	case CLOCK_REALTIME:
+@@ -473,6 +480,9 @@ static int etf_dump(struct Qdisc *sch, struct sk_buff *skb)
+ 	if (q->deadline_mode)
+ 		opt.flags |= TC_ETF_DEADLINE_MODE_ON;
+ 
++	if (q->skip_sock_check)
++		opt.flags |= TC_ETF_SKIP_SOCK_CHECK;
++
+ 	if (nla_put(skb, TCA_ETF_PARMS, sizeof(opt), &opt))
+ 		goto nla_put_failure;
+ 
 -- 
 2.7.3
 
