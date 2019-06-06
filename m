@@ -1,56 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D841B36838
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2019 01:42:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 41C4336BEB
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2019 07:52:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 905D886203;
-	Wed,  5 Jun 2019 23:42:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B102187E37;
+	Thu,  6 Jun 2019 05:52:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c6RPIAqv7u79; Wed,  5 Jun 2019 23:42:30 +0000 (UTC)
+	with ESMTP id YINl51SczMXz; Thu,  6 Jun 2019 05:52:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E6C7861F4;
-	Wed,  5 Jun 2019 23:42:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A697D87E2E;
+	Thu,  6 Jun 2019 05:52:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 955F11BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jun 2019 23:42:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 15AB01BF2A2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 05:52:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 89E782047D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jun 2019 23:42:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0E25B20440
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 05:52:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4d+08X6iCBs3 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Jun 2019 23:42:26 +0000 (UTC)
+ with ESMTP id QpdUMImUHYiB for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2019 05:52:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id DB43520476
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Jun 2019 23:42:25 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2019 16:42:24 -0700
-X-ExtLoop1: 1
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 05 Jun 2019 16:42:23 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hYfXz-0008qP-13; Thu, 06 Jun 2019 07:42:23 +0800
-Date: Thu, 6 Jun 2019 07:41:28 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Message-ID: <201906060718.W0btEpe4%lkp@intel.com>
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0329A20017
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2019 05:52:30 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id c6so1035512wml.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Jun 2019 22:52:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=VYyjwRWgRvyDrDi4lID2HmFVSoCEbb8f5ydf4glyijE=;
+ b=reNoLKUIShFmjEXWkSUFluIBtjYt1DZQC/6hlTvW2sh57Skh8IV2RT+dwvxDPAVjcv
+ SHwZJyLPoMZDrvsbqG27RVidIuco58RN6YWTHdsTW7724D0IA6Y31oMXPXLBQ04JC+vU
+ 5CrGyBxG36ouVsgaScQrQ35LecNGSKz7+wsLuYthii9DcTnGD5x6RbI7wUq7TKqYHi4p
+ SsQnOexXk7DxWsy16LOfX01SPEsMndr+ktPkHqC7NKrBC5S+MY6z/gfQyVxPak+W9lUO
+ mPTMC+Ml51QvpnnWX8jzjDZEqG1/dg/CED9ToHWVZlQCVh78GpJfGU1hW4eqBmNcWjPe
+ ERJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VYyjwRWgRvyDrDi4lID2HmFVSoCEbb8f5ydf4glyijE=;
+ b=itp44c5Sgrf/fHOzBGNMLS3OJ/8wI62SbMwuQ14eOZlw0ewSKL6P+b+pdFfY/p7Dv5
+ Gm2L8MXYkL53zmJ8yqSwhrsBaRJiUkSFIVk/BwRZhRl+IeIeK0CChvwWrKC1FVFS+dga
+ sSAEWeyODvB+bPGeVqaZlvf5qn9pnOE2s2Jz+4EA2Fd5f/vIRxcBkuTulBX1sO7DfZf8
+ fv123IfffJlFHM7GKthaxNWt3iqc6s/G6XbsYNKkif/yZAnQxIhseoUfiOiHhV/akPeH
+ KMe3Ydv6oRDrDRLhRWlZhYmfo2newuoy7oIWzQEGB9s+v/UuZ1kx1l0aP8gest4NlNIV
+ HPiQ==
+X-Gm-Message-State: APjAAAUdaEn/4saNvW3SjBaNLuUloIGUTKg52Mg7HxfPPLbXun6eVOlj
+ A0FL7lW9uonOJU+kftVIdnjux9Db
+X-Google-Smtp-Source: APXvYqykRoVM9hYqWSKH/hrgztrI+CiYUWFSRsLxOrXiqWb0MeAVLqRY378Va07OGF9YYOkesaIx7g==
+X-Received: by 2002:a1c:9906:: with SMTP id b6mr12949474wme.117.1559800348277; 
+ Wed, 05 Jun 2019 22:52:28 -0700 (PDT)
+Received: from ?IPv6:2003:ea:8bf3:bd00:4dec:a307:3343:e701?
+ (p200300EA8BF3BD004DECA3073343E701.dip0.t-ipconnect.de.
+ [2003:ea:8bf3:bd00:4dec:a307:3343:e701])
+ by smtp.googlemail.com with ESMTPSA id u19sm787841wmu.41.2019.06.05.22.52.27
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 05 Jun 2019 22:52:27 -0700 (PDT)
+To: kbuild test robot <lkp@intel.com>
+References: <201906060718.W0btEpe4%lkp@intel.com>
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Message-ID: <5f79bb27-6c18-f534-8b0e-798541280969@gmail.com>
+Date: Thu, 6 Jun 2019 07:52:20 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Patchwork-Hint: ignore
-User-Agent: Mutt/1.5.23 (2014-03-12)
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 579/633]
+In-Reply-To: <201906060718.W0btEpe4%lkp@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 579/633]
  drivers/net/ethernet/realtek/r8169_main.c:5861:17: sparse: sparse:
  incorrect type in assignment (different base types)
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -66,288 +93,244 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: intel-wired-lan@lists.osuosl.org, kbuild-all@01.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Heiner,
-
-First bad commit (maybe !=3D root cause):
-
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue=
-.git dev-queue
-head:   a879fe85e4b103e65a85527bbaeaa51a15ce9d8c
-commit: 25e992a4603cd5284127e2a6fda6b05bd58d12ed [579/633] r8169: rename r8=
-169.c to r8169_main.c
-reproduce:
-        # apt-get install sparse
-        # sparse version: v0.6.1-rc1-7-g2b96cd8-dirty
-        git checkout 25e992a4603cd5284127e2a6fda6b05bd58d12ed
-        make ARCH=3Dx86_64 allmodconfig
-        make C=3D1 CF=3D'-fdiagnostic-prefix -D__CHECK_ENDIAN__'
-
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-sparse warnings: (new ones prefixed by >>)
-
->> drivers/net/ethernet/realtek/r8169_main.c:5861:17: sparse: sparse: incor=
-rect type in assignment (different base types) @@    expected unsigned int =
-@@    got restricted __le32unsigned int @@
->> drivers/net/ethernet/realtek/r8169_main.c:5861:17: sparse:    expected u=
-nsigned int
->> drivers/net/ethernet/realtek/r8169_main.c:5861:17: sparse:    got restri=
-cted __le32 [usertype]
-   include/linux/netdevice.h:3889:20: sparse: sparse: shift count is negati=
-ve (-1)
-
-vim +5861 drivers/net/ethernet/realtek/r8169_main.c
-
-87945b6d8 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-05-31=
-  5841  =
-
-61357325f drivers/net/r8169.c                  Stephen Hemminger 2009-08-31=
-  5842  static netdev_tx_t rtl8169_start_xmit(struct sk_buff *skb,
-61357325f drivers/net/r8169.c                  Stephen Hemminger 2009-08-31=
-  5843  				      struct net_device *dev)
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5844  {
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5845  	struct rtl8169_private *tp =3D netdev_priv(dev);
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5846  	unsigned int entry =3D tp->cur_tx % NUM_TX_DESC;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5847  	struct TxDesc *txd =3D tp->TxDescArray + entry;
-1e1205b7d drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2018-03-20=
-  5848  	struct device *d =3D tp_to_dev(tp);
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5849  	dma_addr_t mapping;
-734c14098 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2018-11-22=
-  5850  	u32 opts[2], len;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5851  	int frags;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5852  =
-
-76085c9e7 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2018-11-22=
-  5853  	if (unlikely(!rtl_tx_slots_avail(tp, skb_shinfo(skb)->nr_frags))) {
-bf82c189a drivers/net/r8169.c                  Joe Perches       2010-02-09=
-  5854  		netif_err(tp, drv, dev, "BUG! Tx Ring full when queue awake!\n");
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5855  		goto err_stop_0;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5856  	}
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5857  =
-
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5858  	if (unlikely(le32_to_cpu(txd->opts1) & DescOwn))
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5859  		goto err_stop_0;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5860  =
-
-b423e9ae4 drivers/net/ethernet/realtek/r8169.c fran=E7ois romieu   2013-05-=
-18 @5861  	opts[1] =3D cpu_to_le32(rtl8169_tx_vlan_tag(skb));
-b423e9ae4 drivers/net/ethernet/realtek/r8169.c fran=E7ois romieu   2013-05-=
-18  5862  	opts[0] =3D DescOwn;
-b423e9ae4 drivers/net/ethernet/realtek/r8169.c fran=E7ois romieu   2013-05-=
-18  5863  =
-
-87945b6d8 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-05-31=
-  5864  	if (rtl_chip_supports_csum_v2(tp)) {
-87945b6d8 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-05-31=
-  5865  		if (!rtl8169_tso_csum_v2(tp, skb, opts)) {
-e974604b4 drivers/net/ethernet/realtek/r8169.c hayeswang         2014-07-11=
-  5866  			r8169_csum_workaround(tp, skb);
-e974604b4 drivers/net/ethernet/realtek/r8169.c hayeswang         2014-07-11=
-  5867  			return NETDEV_TX_OK;
-e974604b4 drivers/net/ethernet/realtek/r8169.c hayeswang         2014-07-11=
-  5868  		}
-87945b6d8 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-05-31=
-  5869  	} else {
-87945b6d8 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-05-31=
-  5870  		rtl8169_tso_csum_v1(skb, opts);
-87945b6d8 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-05-31=
-  5871  	}
-b423e9ae4 drivers/net/ethernet/realtek/r8169.c fran=E7ois romieu   2013-05-=
-18  5872  =
-
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5873  	len =3D skb_headlen(skb);
-48addcc9e drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5874  	mapping =3D dma_map_single(d, skb->data, len, DMA_TO_DEVICE);
-d827d86b6 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5875  	if (unlikely(dma_mapping_error(d, mapping))) {
-d827d86b6 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5876  		if (net_ratelimit())
-d827d86b6 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5877  			netif_err(tp, drv, dev, "Failed to map TX DMA!\n");
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5878  		goto err_dma_0;
-d827d86b6 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5879  	}
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5880  =
-
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5881  	tp->tx_skb[entry].len =3D len;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5882  	txd->addr =3D cpu_to_le64(mapping);
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5883  =
-
-2b7b43185 drivers/net/r8169.c                  Francois Romieu   2011-04-18=
-  5884  	frags =3D rtl8169_xmit_frags(tp, skb, opts);
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5885  	if (frags < 0)
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5886  		goto err_dma_1;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5887  	else if (frags)
-2b7b43185 drivers/net/r8169.c                  Francois Romieu   2011-04-18=
-  5888  		opts[0] |=3D FirstFrag;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5889  	else {
-2b7b43185 drivers/net/r8169.c                  Francois Romieu   2011-04-18=
-  5890  		opts[0] |=3D FirstFrag | LastFrag;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5891  		tp->tx_skb[entry].skb =3D skb;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5892  	}
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5893  =
-
-2b7b43185 drivers/net/r8169.c                  Francois Romieu   2011-04-18=
-  5894  	txd->opts2 =3D cpu_to_le32(opts[1]);
-2b7b43185 drivers/net/r8169.c                  Francois Romieu   2011-04-18=
-  5895  =
-
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5896  	netdev_sent_queue(dev, skb->len);
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5897  =
-
-5047fb5d1 drivers/net/ethernet/realtek/r8169.c Richard Cochran   2012-03-10=
-  5898  	skb_tx_timestamp(skb);
-5047fb5d1 drivers/net/ethernet/realtek/r8169.c Richard Cochran   2012-03-10=
-  5899  =
-
-a07501387 drivers/net/ethernet/realtek/r8169.c Alexander Duyck   2014-12-11=
-  5900  	/* Force memory writes to complete before releasing descriptor */
-a07501387 drivers/net/ethernet/realtek/r8169.c Alexander Duyck   2014-12-11=
-  5901  	dma_wmb();
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5902  =
-
-734c14098 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2018-11-22=
-  5903  	txd->opts1 =3D rtl8169_get_txd_opts1(opts[0], len, entry);
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5904  =
-
-a07501387 drivers/net/ethernet/realtek/r8169.c Alexander Duyck   2014-12-11=
-  5905  	/* Force all memory writes to complete before notifying device */
-4c020a961 drivers/net/r8169.c                  David Dillow      2010-03-03=
-  5906  	wmb();
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5907  =
-
-a07501387 drivers/net/ethernet/realtek/r8169.c Alexander Duyck   2014-12-11=
-  5908  	tp->cur_tx +=3D frags + 1;
-a07501387 drivers/net/ethernet/realtek/r8169.c Alexander Duyck   2014-12-11=
-  5909  =
-
-2e6eedb48 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2018-11-25=
-  5910  	RTL_W8(tp, TxPoll, NPQ);
-da78dbff2 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-26=
-  5911  =
-
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5912  	if (!rtl_tx_slots_avail(tp, MAX_SKB_FRAGS)) {
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5913  		/* Avoid wrongly optimistic queue wake-up: rtl_tx thread must
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5914  		 * not miss a ring update when it notices a stopped queue.
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5915  		 */
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5916  		smp_wmb();
-0255d5927 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-02-10=
-  5917  		netif_stop_queue(dev);
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5918  		/* Sync with rtl_tx:
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5919  		 * - publish queue status and cur_tx ring index (write barrier)
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5920  		 * - refresh dirty_tx ring index (read barrier).
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5921  		 * May the current thread have a pessimistic view of the ring
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5922  		 * status and forget to wake up queue, a racing rtl_tx thread
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5923  		 * can't.
-ae1f23fb4 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-31=
-  5924  		 */
-1e874e041 drivers/net/ethernet/realtek/r8169.c Francois Romieu   2012-01-27=
-  5925  		smp_mb();
-76085c9e7 drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2018-11-22=
-  5926  		if (rtl_tx_slots_avail(tp, MAX_SKB_FRAGS))
-601ed4d6d drivers/net/ethernet/realtek/r8169.c Heiner Kallweit   2019-03-21=
-  5927  			netif_start_queue(dev);
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5928  	}
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5929  =
-
-61357325f drivers/net/r8169.c                  Stephen Hemminger 2009-08-31=
-  5930  	return NETDEV_TX_OK;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5931  =
-
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5932  err_dma_1:
-48addcc9e drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5933  	rtl8169_unmap_tx_skb(d, tp->tx_skb + entry, txd);
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5934  err_dma_0:
-989c9ba10 drivers/net/ethernet/realtek/r8169.c Eric W. Biederman 2014-03-11=
-  5935  	dev_kfree_skb_any(skb);
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5936  	dev->stats.tx_dropped++;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5937  	return NETDEV_TX_OK;
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5938  =
-
-3eafe5070 drivers/net/r8169.c                  Stanislaw Gruszka 2010-10-20=
-  5939  err_stop_0:
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5940  	netif_stop_queue(dev);
-cebf8cc79 drivers/net/r8169.c                  Francois Romieu   2007-10-18=
-  5941  	dev->stats.tx_dropped++;
-61357325f drivers/net/r8169.c                  Stephen Hemminger 2009-08-31=
-  5942  	return NETDEV_TX_BUSY;
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5943  }
-^1da177e4 drivers/net/r8169.c                  Linus Torvalds    2005-04-16=
-  5944  =
-
-
-:::::: The code at line 5861 was first introduced by commit
-:::::: b423e9ae49d78ea3f53b131c8d5a6087aed16fd6 r8169: fix offloaded tx che=
-cksum for small packets.
-
-:::::: TO: fran=E7ois romieu <romieu@fr.zoreil.com>
-:::::: CC: David S. Miller <davem@davemloft.net>
-
----
-0-DAY kernel test infrastructure                Open Source Technology Cent=
-er
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporati=
-on
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMDYuMDYuMjAxOSAwMTo0MSwga2J1aWxkIHRlc3Qgcm9ib3Qgd3JvdGU6Cj4gSGkgSGVpbmVy
+LAo+IAo+IEZpcnN0IGJhZCBjb21taXQgKG1heWJlICE9IHJvb3QgY2F1c2UpOgo+IAo+IHRyZWU6
+ICAgaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvamtpcnNo
+ZXIvbmV4dC1xdWV1ZS5naXQgZGV2LXF1ZXVlCj4gaGVhZDogICBhODc5ZmU4NWU0YjEwM2U2NWE4
+NTUyN2JiYWVhYTUxYTE1Y2U5ZDhjCj4gY29tbWl0OiAyNWU5OTJhNDYwM2NkNTI4NDEyN2UyYTZm
+ZGE2YjA1YmQ1OGQxMmVkIFs1NzkvNjMzXSByODE2OTogcmVuYW1lIHI4MTY5LmMgdG8gcjgxNjlf
+bWFpbi5jCj4gcmVwcm9kdWNlOgo+ICAgICAgICAgIyBhcHQtZ2V0IGluc3RhbGwgc3BhcnNlCj4g
+ICAgICAgICAjIHNwYXJzZSB2ZXJzaW9uOiB2MC42LjEtcmMxLTctZzJiOTZjZDgtZGlydHkKPiAg
+ICAgICAgIGdpdCBjaGVja291dCAyNWU5OTJhNDYwM2NkNTI4NDEyN2UyYTZmZGE2YjA1YmQ1OGQx
+MmVkCj4gICAgICAgICBtYWtlIEFSQ0g9eDg2XzY0IGFsbG1vZGNvbmZpZwo+ICAgICAgICAgbWFr
+ZSBDPTEgQ0Y9Jy1mZGlhZ25vc3RpYy1wcmVmaXggLURfX0NIRUNLX0VORElBTl9fJwo+IAo+IElm
+IHlvdSBmaXggdGhlIGlzc3VlLCBraW5kbHkgYWRkIGZvbGxvd2luZyB0YWcKPiBSZXBvcnRlZC1i
+eToga2J1aWxkIHRlc3Qgcm9ib3QgPGxrcEBpbnRlbC5jb20+Cj4gClRoYW5rcyBmb3IgcmVwb3J0
+aW5nLiBUaGUgaXNzdWUgaXRzZWxmIGlzbid0IG5ldywgc2VlbXMgbGlrZSByZW5hbWluZyB0aGUg
+c291cmNlIGNvZGUgZmlsZQp0cmlnZ2VyZWQgc29tZSBtb3JlIHRob3JvdWdoIGNoZWNraW5nLiBJ
+IHN1Ym1pdHRlZCBhIGZpeC4KCj4gCj4gc3BhcnNlIHdhcm5pbmdzOiAobmV3IG9uZXMgcHJlZml4
+ZWQgYnkgPj4pCj4gCj4+PiBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5X21haW4u
+Yzo1ODYxOjE3OiBzcGFyc2U6IHNwYXJzZTogaW5jb3JyZWN0IHR5cGUgaW4gYXNzaWdubWVudCAo
+ZGlmZmVyZW50IGJhc2UgdHlwZXMpIEBAICAgIGV4cGVjdGVkIHVuc2lnbmVkIGludCBAQCAgICBn
+b3QgcmVzdHJpY3RlZCBfX2xlMzJ1bnNpZ25lZCBpbnQgQEAKPj4+IGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L3JlYWx0ZWsvcjgxNjlfbWFpbi5jOjU4NjE6MTc6IHNwYXJzZTogICAgZXhwZWN0ZWQgdW5z
+aWduZWQgaW50Cj4+PiBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5X21haW4uYzo1
+ODYxOjE3OiBzcGFyc2U6ICAgIGdvdCByZXN0cmljdGVkIF9fbGUzMiBbdXNlcnR5cGVdCj4gICAg
+aW5jbHVkZS9saW51eC9uZXRkZXZpY2UuaDozODg5OjIwOiBzcGFyc2U6IHNwYXJzZTogc2hpZnQg
+Y291bnQgaXMgbmVnYXRpdmUgKC0xKQo+IAo+IHZpbSArNTg2MSBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9yZWFsdGVrL3I4MTY5X21haW4uYwo+IAo+IDg3OTQ1YjZkOCBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9yZWFsdGVrL3I4MTY5LmMgSGVpbmVyIEthbGx3ZWl0ICAgMjAxOS0wNS0zMSAgNTg0MSAgCj4g
+NjEzNTczMjVmIGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBTdGVwaGVuIEhl
+bW1pbmdlciAyMDA5LTA4LTMxICA1ODQyICBzdGF0aWMgbmV0ZGV2X3R4X3QgcnRsODE2OV9zdGFy
+dF94bWl0KHN0cnVjdCBza19idWZmICpza2IsCj4gNjEzNTczMjVmIGRyaXZlcnMvbmV0L3I4MTY5
+LmMgICAgICAgICAgICAgICAgICBTdGVwaGVuIEhlbW1pbmdlciAyMDA5LTA4LTMxICA1ODQzICAJ
+CQkJICAgICAgc3RydWN0IG5ldF9kZXZpY2UgKmRldikKPiBeMWRhMTc3ZTQgZHJpdmVycy9uZXQv
+cjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVzIFRvcnZhbGRzICAgIDIwMDUtMDQtMTYgIDU4
+NDQgIHsKPiBeMWRhMTc3ZTQgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIExp
+bnVzIFRvcnZhbGRzICAgIDIwMDUtMDQtMTYgIDU4NDUgIAlzdHJ1Y3QgcnRsODE2OV9wcml2YXRl
+ICp0cCA9IG5ldGRldl9wcml2KGRldik7Cj4gM2VhZmU1MDcwIGRyaXZlcnMvbmV0L3I4MTY5LmMg
+ICAgICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1ODQ2ICAJdW5z
+aWduZWQgaW50IGVudHJ5ID0gdHAtPmN1cl90eCAlIE5VTV9UWF9ERVNDOwo+IF4xZGExNzdlNCBk
+cml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAw
+NS0wNC0xNiAgNTg0NyAgCXN0cnVjdCBUeERlc2MgKnR4ZCA9IHRwLT5UeERlc2NBcnJheSArIGVu
+dHJ5Owo+IDFlMTIwNWI3ZCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVp
+bmVyIEthbGx3ZWl0ICAgMjAxOC0wMy0yMCAgNTg0OCAgCXN0cnVjdCBkZXZpY2UgKmQgPSB0cF90
+b19kZXYodHApOwo+IF4xZGExNzdlNCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAg
+ICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0xNiAgNTg0OSAgCWRtYV9hZGRyX3QgbWFwcGlu
+ZzsKPiA3MzRjMTQwOTggZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9yODE2OS5jIEhlaW5l
+ciBLYWxsd2VpdCAgIDIwMTgtMTEtMjIgIDU4NTAgIAl1MzIgb3B0c1syXSwgbGVuOwo+IDNlYWZl
+NTA3MCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgU3RhbmlzbGF3IEdydXN6
+a2EgMjAxMC0xMC0yMCAgNTg1MSAgCWludCBmcmFnczsKPiBeMWRhMTc3ZTQgZHJpdmVycy9uZXQv
+cjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVzIFRvcnZhbGRzICAgIDIwMDUtMDQtMTYgIDU4
+NTIgIAo+IDc2MDg1YzllNyBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVp
+bmVyIEthbGx3ZWl0ICAgMjAxOC0xMS0yMiAgNTg1MyAgCWlmICh1bmxpa2VseSghcnRsX3R4X3Ns
+b3RzX2F2YWlsKHRwLCBza2Jfc2hpbmZvKHNrYiktPm5yX2ZyYWdzKSkpIHsKPiBiZjgyYzE4OWEg
+ZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIEpvZSBQZXJjaGVzICAgICAgIDIw
+MTAtMDItMDkgIDU4NTQgIAkJbmV0aWZfZXJyKHRwLCBkcnYsIGRldiwgIkJVRyEgVHggUmluZyBm
+dWxsIHdoZW4gcXVldWUgYXdha2UhXG4iKTsKPiAzZWFmZTUwNzAgZHJpdmVycy9uZXQvcjgxNjku
+YyAgICAgICAgICAgICAgICAgIFN0YW5pc2xhdyBHcnVzemthIDIwMTAtMTAtMjAgIDU4NTUgIAkJ
+Z290byBlcnJfc3RvcF8wOwo+IF4xZGExNzdlNCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAg
+ICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0xNiAgNTg1NiAgCX0KPiBeMWRhMTc3
+ZTQgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVzIFRvcnZhbGRzICAg
+IDIwMDUtMDQtMTYgIDU4NTcgIAo+IF4xZGExNzdlNCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAg
+ICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0xNiAgNTg1OCAgCWlmICh1bmxp
+a2VseShsZTMyX3RvX2NwdSh0eGQtPm9wdHMxKSAmIERlc2NPd24pKQo+IDNlYWZlNTA3MCBkcml2
+ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0x
+MC0yMCAgNTg1OSAgCQlnb3RvIGVycl9zdG9wXzA7Cj4gXjFkYTE3N2U0IGRyaXZlcnMvbmV0L3I4
+MTY5LmMgICAgICAgICAgICAgICAgICBMaW51cyBUb3J2YWxkcyAgICAyMDA1LTA0LTE2ICA1ODYw
+ICAKPiBiNDIzZTlhZTQgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9yODE2OS5jIGZyYW7D
+p29pcyByb21pZXUgICAyMDEzLTA1LTE4IEA1ODYxICAJb3B0c1sxXSA9IGNwdV90b19sZTMyKHJ0
+bDgxNjlfdHhfdmxhbl90YWcoc2tiKSk7Cj4gYjQyM2U5YWU0IGRyaXZlcnMvbmV0L2V0aGVybmV0
+L3JlYWx0ZWsvcjgxNjkuYyBmcmFuw6dvaXMgcm9taWV1ICAgMjAxMy0wNS0xOCAgNTg2MiAgCW9w
+dHNbMF0gPSBEZXNjT3duOwo+IGI0MjNlOWFlNCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVr
+L3I4MTY5LmMgZnJhbsOnb2lzIHJvbWlldSAgIDIwMTMtMDUtMTggIDU4NjMgIAo+IDg3OTQ1YjZk
+OCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVpbmVyIEthbGx3ZWl0ICAg
+MjAxOS0wNS0zMSAgNTg2NCAgCWlmIChydGxfY2hpcF9zdXBwb3J0c19jc3VtX3YyKHRwKSkgewo+
+IDg3OTQ1YjZkOCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVpbmVyIEth
+bGx3ZWl0ICAgMjAxOS0wNS0zMSAgNTg2NSAgCQlpZiAoIXJ0bDgxNjlfdHNvX2NzdW1fdjIodHAs
+IHNrYiwgb3B0cykpIHsKPiBlOTc0NjA0YjQgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9y
+ODE2OS5jIGhheWVzd2FuZyAgICAgICAgIDIwMTQtMDctMTEgIDU4NjYgIAkJCXI4MTY5X2NzdW1f
+d29ya2Fyb3VuZCh0cCwgc2tiKTsKPiBlOTc0NjA0YjQgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVh
+bHRlay9yODE2OS5jIGhheWVzd2FuZyAgICAgICAgIDIwMTQtMDctMTEgIDU4NjcgIAkJCXJldHVy
+biBORVRERVZfVFhfT0s7Cj4gZTk3NDYwNGI0IGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsv
+cjgxNjkuYyBoYXllc3dhbmcgICAgICAgICAyMDE0LTA3LTExICA1ODY4ICAJCX0KPiA4Nzk0NWI2
+ZDggZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9yODE2OS5jIEhlaW5lciBLYWxsd2VpdCAg
+IDIwMTktMDUtMzEgIDU4NjkgIAl9IGVsc2Ugewo+IDg3OTQ1YjZkOCBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVpbmVyIEthbGx3ZWl0ICAgMjAxOS0wNS0zMSAgNTg3MCAg
+CQlydGw4MTY5X3Rzb19jc3VtX3YxKHNrYiwgb3B0cyk7Cj4gODc5NDViNmQ4IGRyaXZlcnMvbmV0
+L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBIZWluZXIgS2FsbHdlaXQgICAyMDE5LTA1LTMxICA1
+ODcxICAJfQo+IGI0MjNlOWFlNCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMg
+ZnJhbsOnb2lzIHJvbWlldSAgIDIwMTMtMDUtMTggIDU4NzIgIAo+IF4xZGExNzdlNCBkcml2ZXJz
+L25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0x
+NiAgNTg3MyAgCWxlbiA9IHNrYl9oZWFkbGVuKHNrYik7Cj4gNDhhZGRjYzllIGRyaXZlcnMvbmV0
+L3I4MTY5LmMgICAgICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1
+ODc0ICAJbWFwcGluZyA9IGRtYV9tYXBfc2luZ2xlKGQsIHNrYi0+ZGF0YSwgbGVuLCBETUFfVE9f
+REVWSUNFKTsKPiBkODI3ZDg2YjYgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAg
+IFN0YW5pc2xhdyBHcnVzemthIDIwMTAtMTAtMjAgIDU4NzUgIAlpZiAodW5saWtlbHkoZG1hX21h
+cHBpbmdfZXJyb3IoZCwgbWFwcGluZykpKSB7Cj4gZDgyN2Q4NmI2IGRyaXZlcnMvbmV0L3I4MTY5
+LmMgICAgICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1ODc2ICAJ
+CWlmIChuZXRfcmF0ZWxpbWl0KCkpCj4gZDgyN2Q4NmI2IGRyaXZlcnMvbmV0L3I4MTY5LmMgICAg
+ICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1ODc3ICAJCQluZXRp
+Zl9lcnIodHAsIGRydiwgZGV2LCAiRmFpbGVkIHRvIG1hcCBUWCBETUEhXG4iKTsKPiAzZWFmZTUw
+NzAgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIFN0YW5pc2xhdyBHcnVzemth
+IDIwMTAtMTAtMjAgIDU4NzggIAkJZ290byBlcnJfZG1hXzA7Cj4gZDgyN2Q4NmI2IGRyaXZlcnMv
+bmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIw
+ICA1ODc5ICAJfQo+IF4xZGExNzdlNCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAg
+ICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0xNiAgNTg4MCAgCj4gXjFkYTE3N2U0IGRyaXZl
+cnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBMaW51cyBUb3J2YWxkcyAgICAyMDA1LTA0
+LTE2ICA1ODgxICAJdHAtPnR4X3NrYltlbnRyeV0ubGVuID0gbGVuOwo+IF4xZGExNzdlNCBkcml2
+ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0w
+NC0xNiAgNTg4MiAgCXR4ZC0+YWRkciA9IGNwdV90b19sZTY0KG1hcHBpbmcpOwo+IF4xZGExNzdl
+NCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAg
+MjAwNS0wNC0xNiAgNTg4MyAgCj4gMmI3YjQzMTg1IGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAg
+ICAgICAgICAgICBGcmFuY29pcyBSb21pZXUgICAyMDExLTA0LTE4ICA1ODg0ICAJZnJhZ3MgPSBy
+dGw4MTY5X3htaXRfZnJhZ3ModHAsIHNrYiwgb3B0cyk7Cj4gM2VhZmU1MDcwIGRyaXZlcnMvbmV0
+L3I4MTY5LmMgICAgICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1
+ODg1ICAJaWYgKGZyYWdzIDwgMCkKPiAzZWFmZTUwNzAgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAg
+ICAgICAgICAgICAgIFN0YW5pc2xhdyBHcnVzemthIDIwMTAtMTAtMjAgIDU4ODYgIAkJZ290byBl
+cnJfZG1hXzE7Cj4gM2VhZmU1MDcwIGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAg
+ICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1ODg3ICAJZWxzZSBpZiAoZnJhZ3MpCj4g
+MmI3YjQzMTg1IGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBGcmFuY29pcyBS
+b21pZXUgICAyMDExLTA0LTE4ICA1ODg4ICAJCW9wdHNbMF0gfD0gRmlyc3RGcmFnOwo+IDNlYWZl
+NTA3MCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgU3RhbmlzbGF3IEdydXN6
+a2EgMjAxMC0xMC0yMCAgNTg4OSAgCWVsc2Ugewo+IDJiN2I0MzE4NSBkcml2ZXJzL25ldC9yODE2
+OS5jICAgICAgICAgICAgICAgICAgRnJhbmNvaXMgUm9taWV1ICAgMjAxMS0wNC0xOCAgNTg5MCAg
+CQlvcHRzWzBdIHw9IEZpcnN0RnJhZyB8IExhc3RGcmFnOwo+IDNlYWZlNTA3MCBkcml2ZXJzL25l
+dC9yODE2OS5jICAgICAgICAgICAgICAgICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0xMC0yMCAg
+NTg5MSAgCQl0cC0+dHhfc2tiW2VudHJ5XS5za2IgPSBza2I7Cj4gM2VhZmU1MDcwIGRyaXZlcnMv
+bmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBTdGFuaXNsYXcgR3J1c3prYSAyMDEwLTEwLTIw
+ICA1ODkyICAJfQo+IDNlYWZlNTA3MCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAg
+ICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0xMC0yMCAgNTg5MyAgCj4gMmI3YjQzMTg1IGRyaXZl
+cnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBGcmFuY29pcyBSb21pZXUgICAyMDExLTA0
+LTE4ICA1ODk0ICAJdHhkLT5vcHRzMiA9IGNwdV90b19sZTMyKG9wdHNbMV0pOwo+IDJiN2I0MzE4
+NSBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgRnJhbmNvaXMgUm9taWV1ICAg
+MjAxMS0wNC0xOCAgNTg5NSAgCj4gMDI1NWQ1OTI3IGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0
+ZWsvcjgxNjkuYyBIZWluZXIgS2FsbHdlaXQgICAyMDE5LTAyLTEwICA1ODk2ICAJbmV0ZGV2X3Nl
+bnRfcXVldWUoZGV2LCBza2ItPmxlbik7Cj4gMDI1NWQ1OTI3IGRyaXZlcnMvbmV0L2V0aGVybmV0
+L3JlYWx0ZWsvcjgxNjkuYyBIZWluZXIgS2FsbHdlaXQgICAyMDE5LTAyLTEwICA1ODk3ICAKPiA1
+MDQ3ZmI1ZDEgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9yODE2OS5jIFJpY2hhcmQgQ29j
+aHJhbiAgIDIwMTItMDMtMTAgIDU4OTggIAlza2JfdHhfdGltZXN0YW1wKHNrYik7Cj4gNTA0N2Zi
+NWQxIGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBSaWNoYXJkIENvY2hyYW4g
+ICAyMDEyLTAzLTEwICA1ODk5ICAKPiBhMDc1MDEzODcgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVh
+bHRlay9yODE2OS5jIEFsZXhhbmRlciBEdXljayAgIDIwMTQtMTItMTEgIDU5MDAgIAkvKiBGb3Jj
+ZSBtZW1vcnkgd3JpdGVzIHRvIGNvbXBsZXRlIGJlZm9yZSByZWxlYXNpbmcgZGVzY3JpcHRvciAq
+Lwo+IGEwNzUwMTM4NyBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgQWxleGFu
+ZGVyIER1eWNrICAgMjAxNC0xMi0xMSAgNTkwMSAgCWRtYV93bWIoKTsKPiBeMWRhMTc3ZTQgZHJp
+dmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVzIFRvcnZhbGRzICAgIDIwMDUt
+MDQtMTYgIDU5MDIgIAo+IDczNGMxNDA5OCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4
+MTY5LmMgSGVpbmVyIEthbGx3ZWl0ICAgMjAxOC0xMS0yMiAgNTkwMyAgCXR4ZC0+b3B0czEgPSBy
+dGw4MTY5X2dldF90eGRfb3B0czEob3B0c1swXSwgbGVuLCBlbnRyeSk7Cj4gXjFkYTE3N2U0IGRy
+aXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBMaW51cyBUb3J2YWxkcyAgICAyMDA1
+LTA0LTE2ICA1OTA0ICAKPiBhMDc1MDEzODcgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9y
+ODE2OS5jIEFsZXhhbmRlciBEdXljayAgIDIwMTQtMTItMTEgIDU5MDUgIAkvKiBGb3JjZSBhbGwg
+bWVtb3J5IHdyaXRlcyB0byBjb21wbGV0ZSBiZWZvcmUgbm90aWZ5aW5nIGRldmljZSAqLwo+IDRj
+MDIwYTk2MSBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgRGF2aWQgRGlsbG93
+ICAgICAgMjAxMC0wMy0wMyAgNTkwNiAgCXdtYigpOwo+IF4xZGExNzdlNCBkcml2ZXJzL25ldC9y
+ODE2OS5jICAgICAgICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0xNiAgNTkw
+NyAgCj4gYTA3NTAxMzg3IGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBBbGV4
+YW5kZXIgRHV5Y2sgICAyMDE0LTEyLTExICA1OTA4ICAJdHAtPmN1cl90eCArPSBmcmFncyArIDE7
+Cj4gYTA3NTAxMzg3IGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBBbGV4YW5k
+ZXIgRHV5Y2sgICAyMDE0LTEyLTExICA1OTA5ICAKPiAyZTZlZWRiNDggZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvcmVhbHRlay9yODE2OS5jIEhlaW5lciBLYWxsd2VpdCAgIDIwMTgtMTEtMjUgIDU5MTAg
+IAlSVExfVzgodHAsIFR4UG9sbCwgTlBRKTsKPiBkYTc4ZGJmZjIgZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvcmVhbHRlay9yODE2OS5jIEZyYW5jb2lzIFJvbWlldSAgIDIwMTItMDEtMjYgIDU5MTEgIAo+
+IDAyNTVkNTkyNyBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVpbmVyIEth
+bGx3ZWl0ICAgMjAxOS0wMi0xMCAgNTkxMiAgCWlmICghcnRsX3R4X3Nsb3RzX2F2YWlsKHRwLCBN
+QVhfU0tCX0ZSQUdTKSkgewo+IDAyNTVkNTkyNyBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVr
+L3I4MTY5LmMgSGVpbmVyIEthbGx3ZWl0ICAgMjAxOS0wMi0xMCAgNTkxMyAgCQkvKiBBdm9pZCB3
+cm9uZ2x5IG9wdGltaXN0aWMgcXVldWUgd2FrZS11cDogcnRsX3R4IHRocmVhZCBtdXN0Cj4gMDI1
+NWQ1OTI3IGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBIZWluZXIgS2FsbHdl
+aXQgICAyMDE5LTAyLTEwICA1OTE0ICAJCSAqIG5vdCBtaXNzIGEgcmluZyB1cGRhdGUgd2hlbiBp
+dCBub3RpY2VzIGEgc3RvcHBlZCBxdWV1ZS4KPiAwMjU1ZDU5MjcgZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvcmVhbHRlay9yODE2OS5jIEhlaW5lciBLYWxsd2VpdCAgIDIwMTktMDItMTAgIDU5MTUgIAkJ
+ICovCj4gMDI1NWQ1OTI3IGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBIZWlu
+ZXIgS2FsbHdlaXQgICAyMDE5LTAyLTEwICA1OTE2ICAJCXNtcF93bWIoKTsKPiAwMjU1ZDU5Mjcg
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9yODE2OS5jIEhlaW5lciBLYWxsd2VpdCAgIDIw
+MTktMDItMTAgIDU5MTcgIAkJbmV0aWZfc3RvcF9xdWV1ZShkZXYpOwo+IGFlMWYyM2ZiNCBkcml2
+ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgRnJhbmNvaXMgUm9taWV1ICAgMjAxMi0w
+MS0zMSAgNTkxOCAgCQkvKiBTeW5jIHdpdGggcnRsX3R4Ogo+IGFlMWYyM2ZiNCBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgRnJhbmNvaXMgUm9taWV1ICAgMjAxMi0wMS0zMSAg
+NTkxOSAgCQkgKiAtIHB1Ymxpc2ggcXVldWUgc3RhdHVzIGFuZCBjdXJfdHggcmluZyBpbmRleCAo
+d3JpdGUgYmFycmllcikKPiBhZTFmMjNmYjQgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9y
+ODE2OS5jIEZyYW5jb2lzIFJvbWlldSAgIDIwMTItMDEtMzEgIDU5MjAgIAkJICogLSByZWZyZXNo
+IGRpcnR5X3R4IHJpbmcgaW5kZXggKHJlYWQgYmFycmllcikuCj4gYWUxZjIzZmI0IGRyaXZlcnMv
+bmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjkuYyBGcmFuY29pcyBSb21pZXUgICAyMDEyLTAxLTMx
+ICA1OTIxICAJCSAqIE1heSB0aGUgY3VycmVudCB0aHJlYWQgaGF2ZSBhIHBlc3NpbWlzdGljIHZp
+ZXcgb2YgdGhlIHJpbmcKPiBhZTFmMjNmYjQgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9y
+ODE2OS5jIEZyYW5jb2lzIFJvbWlldSAgIDIwMTItMDEtMzEgIDU5MjIgIAkJICogc3RhdHVzIGFu
+ZCBmb3JnZXQgdG8gd2FrZSB1cCBxdWV1ZSwgYSByYWNpbmcgcnRsX3R4IHRocmVhZAo+IGFlMWYy
+M2ZiNCBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgRnJhbmNvaXMgUm9taWV1
+ICAgMjAxMi0wMS0zMSAgNTkyMyAgCQkgKiBjYW4ndC4KPiBhZTFmMjNmYjQgZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvcmVhbHRlay9yODE2OS5jIEZyYW5jb2lzIFJvbWlldSAgIDIwMTItMDEtMzEgIDU5
+MjQgIAkJICovCj4gMWU4NzRlMDQxIGRyaXZlcnMvbmV0L2V0aGVybmV0L3JlYWx0ZWsvcjgxNjku
+YyBGcmFuY29pcyBSb21pZXUgICAyMDEyLTAxLTI3ICA1OTI1ICAJCXNtcF9tYigpOwo+IDc2MDg1
+YzllNyBkcml2ZXJzL25ldC9ldGhlcm5ldC9yZWFsdGVrL3I4MTY5LmMgSGVpbmVyIEthbGx3ZWl0
+ICAgMjAxOC0xMS0yMiAgNTkyNiAgCQlpZiAocnRsX3R4X3Nsb3RzX2F2YWlsKHRwLCBNQVhfU0tC
+X0ZSQUdTKSkKPiA2MDFlZDRkNmQgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRlay9yODE2OS5j
+IEhlaW5lciBLYWxsd2VpdCAgIDIwMTktMDMtMjEgIDU5MjcgIAkJCW5ldGlmX3N0YXJ0X3F1ZXVl
+KGRldik7Cj4gXjFkYTE3N2U0IGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBM
+aW51cyBUb3J2YWxkcyAgICAyMDA1LTA0LTE2ICA1OTI4ICAJfQo+IF4xZGExNzdlNCBkcml2ZXJz
+L25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAgTGludXMgVG9ydmFsZHMgICAgMjAwNS0wNC0x
+NiAgNTkyOSAgCj4gNjEzNTczMjVmIGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAg
+ICBTdGVwaGVuIEhlbW1pbmdlciAyMDA5LTA4LTMxICA1OTMwICAJcmV0dXJuIE5FVERFVl9UWF9P
+SzsKPiBeMWRhMTc3ZTQgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVz
+IFRvcnZhbGRzICAgIDIwMDUtMDQtMTYgIDU5MzEgIAo+IDNlYWZlNTA3MCBkcml2ZXJzL25ldC9y
+ODE2OS5jICAgICAgICAgICAgICAgICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0xMC0yMCAgNTkz
+MiAgZXJyX2RtYV8xOgo+IDQ4YWRkY2M5ZSBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAg
+ICAgICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0xMC0yMCAgNTkzMyAgCXJ0bDgxNjlfdW5tYXBf
+dHhfc2tiKGQsIHRwLT50eF9za2IgKyBlbnRyeSwgdHhkKTsKPiAzZWFmZTUwNzAgZHJpdmVycy9u
+ZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIFN0YW5pc2xhdyBHcnVzemthIDIwMTAtMTAtMjAg
+IDU5MzQgIGVycl9kbWFfMDoKPiA5ODljOWJhMTAgZHJpdmVycy9uZXQvZXRoZXJuZXQvcmVhbHRl
+ay9yODE2OS5jIEVyaWMgVy4gQmllZGVybWFuIDIwMTQtMDMtMTEgIDU5MzUgIAlkZXZfa2ZyZWVf
+c2tiX2FueShza2IpOwo+IDNlYWZlNTA3MCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAg
+ICAgICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0xMC0yMCAgNTkzNiAgCWRldi0+c3RhdHMudHhf
+ZHJvcHBlZCsrOwo+IDNlYWZlNTA3MCBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAg
+ICAgU3RhbmlzbGF3IEdydXN6a2EgMjAxMC0xMC0yMCAgNTkzNyAgCXJldHVybiBORVRERVZfVFhf
+T0s7Cj4gM2VhZmU1MDcwIGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAgICAgICAgICBTdGFu
+aXNsYXcgR3J1c3prYSAyMDEwLTEwLTIwICA1OTM4ICAKPiAzZWFmZTUwNzAgZHJpdmVycy9uZXQv
+cjgxNjkuYyAgICAgICAgICAgICAgICAgIFN0YW5pc2xhdyBHcnVzemthIDIwMTAtMTAtMjAgIDU5
+MzkgIGVycl9zdG9wXzA6Cj4gXjFkYTE3N2U0IGRyaXZlcnMvbmV0L3I4MTY5LmMgICAgICAgICAg
+ICAgICAgICBMaW51cyBUb3J2YWxkcyAgICAyMDA1LTA0LTE2ICA1OTQwICAJbmV0aWZfc3RvcF9x
+dWV1ZShkZXYpOwo+IGNlYmY4Y2M3OSBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAg
+ICAgRnJhbmNvaXMgUm9taWV1ICAgMjAwNy0xMC0xOCAgNTk0MSAgCWRldi0+c3RhdHMudHhfZHJv
+cHBlZCsrOwo+IDYxMzU3MzI1ZiBkcml2ZXJzL25ldC9yODE2OS5jICAgICAgICAgICAgICAgICAg
+U3RlcGhlbiBIZW1taW5nZXIgMjAwOS0wOC0zMSAgNTk0MiAgCXJldHVybiBORVRERVZfVFhfQlVT
+WTsKPiBeMWRhMTc3ZTQgZHJpdmVycy9uZXQvcjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVz
+IFRvcnZhbGRzICAgIDIwMDUtMDQtMTYgIDU5NDMgIH0KPiBeMWRhMTc3ZTQgZHJpdmVycy9uZXQv
+cjgxNjkuYyAgICAgICAgICAgICAgICAgIExpbnVzIFRvcnZhbGRzICAgIDIwMDUtMDQtMTYgIDU5
+NDQgIAo+IAo+IDo6Ojo6OiBUaGUgY29kZSBhdCBsaW5lIDU4NjEgd2FzIGZpcnN0IGludHJvZHVj
+ZWQgYnkgY29tbWl0Cj4gOjo6Ojo6IGI0MjNlOWFlNDlkNzhlYTNmNTNiMTMxYzhkNWE2MDg3YWVk
+MTZmZDYgcjgxNjk6IGZpeCBvZmZsb2FkZWQgdHggY2hlY2tzdW0gZm9yIHNtYWxsIHBhY2tldHMu
+Cj4gCj4gOjo6Ojo6IFRPOiBmcmFuw6dvaXMgcm9taWV1IDxyb21pZXVAZnIuem9yZWlsLmNvbT4K
+PiA6Ojo6OjogQ0M6IERhdmlkIFMuIE1pbGxlciA8ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldD4KPiAKPiAt
+LS0KPiAwLURBWSBrZXJuZWwgdGVzdCBpbmZyYXN0cnVjdHVyZSAgICAgICAgICAgICAgICBPcGVu
+IFNvdXJjZSBUZWNobm9sb2d5IENlbnRlcgo+IGh0dHBzOi8vbGlzdHMuMDEub3JnL3BpcGVybWFp
+bC9rYnVpbGQtYWxsICAgICAgICAgICAgICAgICAgIEludGVsIENvcnBvcmF0aW9uCj4gCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
+YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
+b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
