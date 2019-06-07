@@ -2,83 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28D0B39846
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Jun 2019 00:10:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C65383983E
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Jun 2019 00:08:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2F8AD85930;
-	Fri,  7 Jun 2019 22:10:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4598B882A9;
+	Fri,  7 Jun 2019 22:08:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HwnUeUgYgaI6; Fri,  7 Jun 2019 22:10:18 +0000 (UTC)
+	with ESMTP id IBkkaEFs2fNI; Fri,  7 Jun 2019 22:08:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 794FC8826A;
-	Fri,  7 Jun 2019 22:10:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3ED99882A4;
+	Fri,  7 Jun 2019 22:08:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 452591BF40D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:10:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 903E41BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:08:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 40F6B2094C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:10:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8CA862094C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:08:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VYm7EQf7q-XX for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Jun 2019 22:10:09 +0000 (UTC)
-X-Greylist: delayed 00:07:20 by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 9B73220798
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:10:09 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id k187so1347275pga.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Jun 2019 15:10:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=netronome-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :organization:mime-version:content-transfer-encoding;
- bh=MkdX1ByPuyyhMx7KgR9Las+8lYde8+TrNn+WFHUY5oA=;
- b=Np0FvSQCXoUcQB/aECH6jnG668iDsuwcUJMnC7GTrGLlxMFHTjAZGwpXYEkzb7h8HL
- K0ol0H621yvFSEi6beo0XqdAcJlVIALl8avTlb6mbS0V8qdV632P//ABtKK0IOSc1Dr4
- JkTOm60PvI8PrORLgcZqWI/CmpxkOdF5ZDmcEnfsTkhXyYwwkKePmt2KtUQSJfsd8P2h
- BFCZuGH6xvY+xd6ToMyncr3eu1hXJM0BiPwoDHTv0h7JA9X6B7spcsDHLITsI+WM/X+B
- J1TJUGzEIgg3biGmH/DVBB2gX88Ru7j7DyRMDVp2O2OJkib8B6ldtXl4x04OGoz657bR
- UDhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=MkdX1ByPuyyhMx7KgR9Las+8lYde8+TrNn+WFHUY5oA=;
- b=aqj5MsdE0n4Ublvw8hGH3DI4n8I9YJNWUcvXEe0d1TaUICJJ8W/pfawHZLfcmm2kRP
- kPSS+K73bIJBfKXbk0LxP632ruYqvXhtgHJN1rRYDtzsylZeSJYtw7IMTF8Q2YY9UXOp
- QjgycE+atDejW/jMjYih8VeT65ycx5kxlXVLeMrsdjpJnUnsN9tDFLUvQtL29ac7eO6i
- NLLEPpqbp/ME9PoJbXiubHJ2iH9jtmqggpghWoVp130vlmYGuqgQFpcOPHhtYYXtNma5
- IDLZTS/oWbjwIyTCyaCzwt8OJBeW+dvUDPrLIjKeRLKDy8YG0b4jC7N7GuBJj6CvAaL5
- fzFw==
-X-Gm-Message-State: APjAAAVNJzobZAwnG9Q1P94TZ1ZaHl38+eU7YtGJXUFRK3gYN5hHWuYA
- lY1alX8NVkoQdr+gG5x6Wze7bQ==
-X-Google-Smtp-Source: APXvYqziT/57xaFqWXj1gqNNaW6lk1L1hsuclKTrQv7CVHbfe52j9M0GLbVRXvAZGNzRQEJhsEsz1g==
-X-Received: by 2002:a62:b517:: with SMTP id y23mr63478584pfe.182.1559944968778; 
- Fri, 07 Jun 2019 15:02:48 -0700 (PDT)
-Received: from cakuba.netronome.com (wsip-98-171-133-120.sd.sd.cox.net.
- [98.171.133.120])
- by smtp.gmail.com with ESMTPSA id s17sm2308866pfm.74.2019.06.07.15.02.47
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 07 Jun 2019 15:02:48 -0700 (PDT)
-Date: Fri, 7 Jun 2019 15:02:43 -0700
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-To: "Patel, Vedang" <vedang.patel@intel.com>
-Message-ID: <20190607150243.369f6e2c@cakuba.netronome.com>
-In-Reply-To: <FF3C8B8E-421E-4C93-8895-C21A38BB55EE@intel.com>
-References: <1559843458-12517-1-git-send-email-vedang.patel@intel.com>
- <1559843458-12517-5-git-send-email-vedang.patel@intel.com>
- <20190606162132.0591cc37@cakuba.netronome.com>
- <FF3C8B8E-421E-4C93-8895-C21A38BB55EE@intel.com>
-Organization: Netronome Systems, Ltd.
+ with ESMTP id 8Gno4UKc+6Nh for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Jun 2019 22:08:33 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 31A3620798
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:08:33 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2019 15:08:32 -0700
+X-ExtLoop1: 1
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga005.jf.intel.com with ESMTP; 07 Jun 2019 15:08:32 -0700
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.13]) by
+ ORSMSX103.amr.corp.intel.com ([169.254.5.232]) with mapi id 14.03.0415.000;
+ Fri, 7 Jun 2019 15:08:32 -0700
+From: "Fujinaka, Todd" <todd.fujinaka@intel.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Thread-Topic: [E1000-devel] [Intel-wired-lan] i40e X722 RSS problem with
+ NAT-Traversal IPsec packets
+Thread-Index: AQHVAGFrUp79tfxVUUm4svS7p3lcbqZXVdKAgAERcwCAAB83gIAAA7EAgAADSgCAAAeAgIAAEBkAgAAjdwCAATHTgIAAIwyAgAA9aYCAD3MygIAAI9MAgAFooQCAAy7FgIAAF0AAgAAA04CAAFKIAIABH72AgAALcoCAAFLpAIAF0r+AgAAazYCAABG2AIAAW3aAgAEAYwCAGSUSAIAAUhKAgAAVdAD//58hAA==
+Date: Fri, 7 Jun 2019 22:08:31 +0000
+Message-ID: <9B4A1B1917080E46B64F07F2989DADD69AFBF090@ORSMSX115.amr.corp.intel.com>
+References: <20190516183705.e4zflbli7oujlbek@csclub.uwaterloo.ca>
+ <CAKgT0UfSa-dM2+7xntK9tB7Zw5N8nDd3U1n4OSK0gbWbkNSKJQ@mail.gmail.com>
+ <CAKgT0Ucd0s_0F5_nwqXknRngwROyuecUt+4bYzWvp1-2cNSg7g@mail.gmail.com>
+ <20190517172317.amopafirjfizlgej@csclub.uwaterloo.ca>
+ <CAKgT0UdM28pSTCsaT=TWqmQwCO44NswS0PqFLAzgs9pmn41VeQ@mail.gmail.com>
+ <20190521151537.xga4aiq3gjtiif4j@csclub.uwaterloo.ca>
+ <CAKgT0UfpZ-ve3Hx26gDkb+YTDHvN3=MJ7NZd2NE7ewF5g=kHHw@mail.gmail.com>
+ <20190521175456.zlkiiov5hry2l4q2@csclub.uwaterloo.ca>
+ <CAKgT0UcR3q1maBmJz7xj_i+_oux_6FQxua9DOjXQSZzyq6FhkQ@mail.gmail.com>
+ <20190522143956.quskqh33ko2wuf47@csclub.uwaterloo.ca>
+ <20190607143906.wgi344jcc77qvh24@csclub.uwaterloo.ca>
+ <CAKgT0Ue1M8_30PVPmoJy_EGo2mjM26ecz32Myx-hpnuq_6wdjw@mail.gmail.com>
+ <alpine.NEB.2.21.9999.1906071343460.809@chris.i8u.org>
+In-Reply-To: <alpine.NEB.2.21.9999.1906071343460.809@chris.i8u.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWE0MWE5MTEtNjM2ZC00ZjQxLWEyM2QtMGQ0YzY5OWZkZTBlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiSU5BYTNcL2VSSTVyNTQ2YmRaR0dWM1VIWGVpT3ZINUR5d3NibjJIUVhYR1ZQREZnMUtcL3NCbFdoK3l4MFhnWTVCIn0=
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 4/6] taprio: Add support
- for txtime-assist mode.
+Subject: Re: [Intel-wired-lan] [E1000-devel] i40e X722 RSS problem with
+ NAT-Traversal IPsec packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,37 +88,144 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Jamal Hadi Salim <jhs@mojatatu.com>, Murali Karicheri <m-karicheri2@ti.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Cong Wang <xiyou.wangcong@gmail.com>, "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "e1000-devel@lists.sourceforge.net" <e1000-devel@lists.sourceforge.net>,
+ Netdev <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ Lennart Sorensen <lsorense@csclub.uwaterloo.ca>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gRnJpLCA3IEp1biAyMDE5IDIwOjQyOjU1ICswMDAwLCBQYXRlbCwgVmVkYW5nIHdyb3RlOgo+
-ID4gVGhhbmtzIGZvciB0aGUgY2hhbmdlcywgc2luY2UgeW91IG5vdyB2YWxpZGF0ZSBubyB1bmtu
-b3duIGZsYWdzIGFyZQo+ID4gcGFzc2VkLCBwZXJoYXBzIHRoZXJlIGlzIG5vIG5lZWQgdG8gY2hl
-Y2sgaWYgZmxhZ3MgYXJlID09IH4wPwo+ID4gCj4gPiBJU19FTkFCTEVEKCkgY291bGQganVzdCBk
-bzogKGZsYWdzKSAmIFRDQV9UQVBSSU9fQVRUUl9GTEFHX1RYVElNRV9BU1NJU1QKPiA+IE5vPwo+
-ID4gICAKPiBUaGlzIGlzIHNwZWNpZmljYWxseSBkb25lIHNvIHRoYXQgdXNlciBkb2VzIG5vdCBo
-YXZlIHRvIHNwZWNpZnkgdGhlCj4gb2ZmbG9hZCBmbGFncyB3aGVuIHRyeWluZyB0byBpbnN0YWxs
-IHRoZSBhbm90aGVyIHNjaGVkdWxlIHdoaWNoIHdpbGwKPiBiZSBzd2l0Y2hlZCB0byBhdCBhIGxh
-dGVyIHBvaW50IG9mIHRpbWUgKGkuZS4gdGhlIGFkbWluIHNjaGVkdWxlCj4gaW50cm9kdWNlZCBp
-biBWaW5pY2l1c+KAmSBsYXN0IHNlcmllcykuIFNldHRpbmcgdGFwcmlvX2ZsYWdzIHRvIH4wCj4g
-d2lsbCBoZWxwIHVzIGRpc3Rpbmd1aXNoIGJldHdlZW4gdGhlIGZsYWdzIHBhcmFtZXRlciBub3Qg
-c3BlY2lmaWVkCj4gYW5kIGZsYWdzIHNldCB0byAwLgoKSSdtIG5vdCBzdXBlciBjbGVhciBvbiB0
-aGlzLCBiZWNhdXNlIG9mIGJhY2t3YXJkIGNvbXBhdCB5b3UgaGF2ZSB0bwp0cmVhdCBhdHRyIG5v
-dCBwcmVzZW50IGFzIHVuc2V0LiAgTGV0J3Mgc2VlOgoKbmV3IHFkaXNjOgogLSBmbGFncyBhdHRy
-ID0gMCAtPiB0eHRpbWUgbm90IHVzZWQKIC0gZmxhZ3MgYXR0ciA9IDEgLT4gdHh0aW1lIHVzZWQK
-IC0+IG5vIGZsYWdzIGF0dHIgLT4gdHh0aW1lIG5vdCB1c2VkCmNoYW5nZSBxZGlzYzoKIC0gZmxh
-Z3MgYXR0ciA9IG9sZCBmbGFncyBhdHRyIC0+IGxlYXZlIHVuY2hhbmdlZAogLSBmbGFncyBhdHRy
-ICE9IG9sZCBmbGFncyBhdHRyIC0+IGVycm9yCiAtIG5vIGZsYWdzIGF0dHIgLT4gbGVhdmUgdHh0
-aW1lIHVuY2hhbmdlZAoKRG9lc24ndCB0aGF0IGNvdmVyIHRoZSBjYXNlcz8gIFdlcmUgeW91IHBs
-YW5uaW5nIHRvIGhhdmUgbm8gZmxhZyBhdHRyCm9uIGNoYW5nZSBtZWFuIGRpc2FibGVkIHJhdGhl
-ciB0aGFuIG5vIGNoYW5nZT8KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1
-b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13
-aXJlZC1sYW4K
+Just a quick update with the response I got and I'll make sure this is in our internal bug database.
+
+Here's what I got back, and it looks like you guys have tried this already:
+
+Have they tried these steps to configure RSS:
+
+RSS Hash Flow
+-------------
+
+Allows you to set the hash bytes per flow type and any combination of one or
+more options for Receive Side Scaling (RSS) hash byte configuration.
+
+#ethtool -N <dev> rx-flow-hash <type> <option>
+
+Where <type> is:
+  tcp4  signifying TCP over IPv4
+  udp4  signifying UDP over IPv4
+  tcp6  signifying TCP over IPv6
+  udp6  signifying UDP over IPv6
+And <option> is one or more of:
+  s Hash on the IP source address of the rx packet.
+  d Hash on the IP destination address of the rx packet.
+  f Hash on bytes 0 and 1 of the Layer 4 header of the rx packet.
+  n Hash on bytes 2 and 3 of the Layer 4 header of the rx packet.
+
+Also, looks like the driver needs to be updated to latest version:
+>>> 1.1767.0 i40e 0000:3d:00.0: The driver for the device detected a
+>>> newer version of the NVM image than expected. Please install the
+>>> most recent version of the network driver.
+
+Out of tree: https://sourceforge.net/projects/e1000/files/i40e%20stable/
+
+Todd Fujinaka
+Software Application Engineer
+Datacenter Engineering Group
+Intel Corporation
+todd.fujinaka@intel.com
+
+
+-----Original Message-----
+From: Hisashi T Fujinaka [mailto:htodd@twofifty.com] 
+Sent: Friday, June 7, 2019 1:50 PM
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Cc: e1000-devel@lists.sourceforge.net; Netdev <netdev@vger.kernel.org>; intel-wired-lan <intel-wired-lan@lists.osuosl.org>; LKML <linux-kernel@vger.kernel.org>; Lennart Sorensen <lsorense@csclub.uwaterloo.ca>
+Subject: Re: [E1000-devel] [Intel-wired-lan] i40e X722 RSS problem with NAT-Traversal IPsec packets
+
+On Fri, 7 Jun 2019, Alexander Duyck wrote:
+
+> On Fri, Jun 7, 2019 at 7:39 AM Lennart Sorensen 
+> <lsorense@csclub.uwaterloo.ca> wrote:
+>>
+>> On Wed, May 22, 2019 at 10:39:56AM -0400, Lennart Sorensen wrote:
+>>> OK I applied those two patches and get this:
+>>>
+>>> i40e: Intel(R) Ethernet Connection XL710 Network Driver - version 
+>>> 2.1.7-k
+>>> i40e: Copyright (c) 2013 - 2014 Intel Corporation.
+>>> i40e 0000:3d:00.0: fw 3.10.52896 api 1.6 nvm 4.00 0x80001577 
+>>> 1.1767.0 i40e 0000:3d:00.0: The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.
+>>> i40e 0000:3d:00.0: MAC address: a4:bf:01:4e:0c:87 i40e 0000:3d:00.0: 
+>>> PFQF_HREGION[7]: 0x00000000 i40e 0000:3d:00.0: PFQF_HREGION[6]: 
+>>> 0x00000000 i40e 0000:3d:00.0: PFQF_HREGION[5]: 0x00000000 i40e 
+>>> 0000:3d:00.0: PFQF_HREGION[4]: 0x00000000 i40e 0000:3d:00.0: 
+>>> PFQF_HREGION[3]: 0x00000000 i40e 0000:3d:00.0: PFQF_HREGION[2]: 
+>>> 0x00000000 i40e 0000:3d:00.0: PFQF_HREGION[1]: 0x00000000 i40e 
+>>> 0000:3d:00.0: PFQF_HREGION[0]: 0x00000000 i40e 0000:3d:00.0: 
+>>> flow_type: 63 input_mask:0x0000000000004000 i40e 0000:3d:00.0: 
+>>> flow_type: 46 input_mask:0x0007fff800000000 i40e 0000:3d:00.0: 
+>>> flow_type: 45 input_mask:0x0007fff800000000 i40e 0000:3d:00.0: 
+>>> flow_type: 44 input_mask:0x0007ffff80000000 i40e 0000:3d:00.0: 
+>>> flow_type: 43 input_mask:0x0007fffe00000000 i40e 0000:3d:00.0: 
+>>> flow_type: 42 input_mask:0x0007fffe00000000 i40e 0000:3d:00.0: 
+>>> flow_type: 41 input_mask:0x0007fffe00000000 i40e 0000:3d:00.0: 
+>>> flow_type: 40 input_mask:0x0007fffe00000000 i40e 0000:3d:00.0: 
+>>> flow_type: 39 input_mask:0x0007fffe00000000 i40e 0000:3d:00.0: 
+>>> flow_type: 36 input_mask:0x0006060000000000 i40e 0000:3d:00.0: 
+>>> flow_type: 35 input_mask:0x0006060000000000 i40e 0000:3d:00.0: 
+>>> flow_type: 34 input_mask:0x0006060780000000 i40e 0000:3d:00.0: 
+>>> flow_type: 33 input_mask:0x0006060600000000 i40e 0000:3d:00.0: 
+>>> flow_type: 32 input_mask:0x0006060600000000 i40e 0000:3d:00.0: 
+>>> flow_type: 31 input_mask:0x0006060600000000 i40e 0000:3d:00.0: 
+>>> flow_type: 30 input_mask:0x0006060600000000 i40e 0000:3d:00.0: 
+>>> flow_type: 29 input_mask:0x0006060600000000 i40e 0000:3d:00.0: 
+>>> flow_type: 27 input_mask:0x00000000002c0000 i40e 0000:3d:00.0: 
+>>> flow_type: 26 input_mask:0x00000000002c0000 i40e 0000:3d:00.0: flow 
+>>> type: 36 update input mask from:0x0006060000000000, 
+>>> to:0x0001801800000000 i40e 0000:3d:00.0: flow type: 35 update input 
+>>> mask from:0x0006060000000000, to:0x0001801800000000 i40e 
+>>> 0000:3d:00.0: flow type: 34 update input mask 
+>>> from:0x0006060780000000, to:0x0001801f80000000 i40e 0000:3d:00.0: 
+>>> flow type: 33 update input mask from:0x0006060600000000, 
+>>> to:0x0001801e00000000 i40e 0000:3d:00.0: flow type: 32 update input 
+>>> mask from:0x0006060600000000, to:0x0001801e00000000 i40e 
+>>> 0000:3d:00.0: flow type: 31 update input mask 
+>>> from:0x0006060600000000, to:0x0001801e00000000 i40e 0000:3d:00.0: 
+>>> flow type: 30 update input mask from:0x0006060600000000, 
+>>> to:0x0001801e00000000 i40e 0000:3d:00.0: flow type: 29 update input 
+>>> mask from:0x0006060600000000, to:0x0001801e00000000
+>>>
+>>> So seems the regions are all 0.
+>>>
+>>> All ipsec packets still hitting queue 0.
+>>
+>> So any news or more ideas to try or are we stuck hoping someone can 
+>> fix the firmware?
+>
+> I had reached out to some folks over in the networking division hoping 
+> that they can get a reproduction as I don't have the hardware that you 
+> are seeing the issue on so I have no way to reproduce it.
+>
+> Maybe someone from that group can reply and tell us where they are on that?
+>
+> Thanks.
+>
+> - Alex
+
+For some reason this isn't showing up in my work email. We had an internal conference this week and I think people are away. I'll see if I can chase some people down if they're still here and not on the way home.
+
+--
+Hisashi T Fujinaka - htodd@twofifty.com
+
+
+_______________________________________________
+E1000-devel mailing list
+E1000-devel@lists.sourceforge.net
+https://lists.sourceforge.net/lists/listinfo/e1000-devel
+To learn more about Intel&#174; Ethernet, visit http://communities.intel.com/community/wired
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
