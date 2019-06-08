@@ -1,86 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7093F398D2
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Jun 2019 00:35:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 640FF399F0
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Jun 2019 02:27:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D3BDE876E7;
-	Fri,  7 Jun 2019 22:35:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6E36287629;
+	Sat,  8 Jun 2019 00:27:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FFGHnHt6JpIB; Fri,  7 Jun 2019 22:35:00 +0000 (UTC)
+	with ESMTP id ebgOi+F655Qc; Sat,  8 Jun 2019 00:27:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CAF2E876B6;
-	Fri,  7 Jun 2019 22:35:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 19584877FF;
+	Sat,  8 Jun 2019 00:27:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1361B1BF40D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:34:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 30A861BF9B4
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2019 00:06:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0A045876BF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:34:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2C939865C1
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2019 00:06:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ueFZ4uIKVbY8 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Jun 2019 22:34:57 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DD2B1876B6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2019 22:34:57 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id d30so1859422pgm.7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Jun 2019 15:34:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=netronome-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :organization:mime-version:content-transfer-encoding;
- bh=LLvzHistUvG3tFIz6f+WFhmAnRXmHuTQs0YG9JoKNNc=;
- b=b2GA7FeKu504lfwSTtY+Hzk6I9cS1bTN3cNZbLMyc9J57Oz4pC3d9fdBaVtf56cFPB
- lxtzxDAc4P7sct0rcsb/a6zWuy9lEXyOH9YyxkiYB5tZqQ70b2IdhyLpryQ8L/HX4MNu
- L/8LVgACGeYj8XaLgdKBWVxpYDhB4fGgPD3yqe0nV7SC4OfD6w3RFrpnVr0Zvw05Jttw
- JjpshwuDTgqHGV4wlD8ZdvltM8u0bQycC79J/mAd0kLPXbyhkQiXfz08QlWrx0EemjTe
- UOP1gQKwDPvee0Lpv+1BPpbIe7Z9G5tdF/lCeDqDhrK7SETRp42AZ2mywg16UbnrgX+Q
- hUhg==
+ with ESMTP id VSEwh1K8ZedE for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  8 Jun 2019 00:06:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-io1-f44.google.com (mail-io1-f44.google.com
+ [209.85.166.44])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1239C8651A
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2019 00:06:01 +0000 (UTC)
+Received: by mail-io1-f44.google.com with SMTP id e3so2732574ioc.12
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Jun 2019 17:06:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=XcdHncspNoe337oc/GpXYYj/h5Nj0Cb3fyN8afCSf4k=;
+ b=gpWcS/cPF8xUqTAC2X65sNwol3qeVt9LnjX0zHyPs/wrk3u9StFdI8eNU7piqayk4f
+ eO7vSjXNHJq6O5v18zV8zSpMivZg6pR5kjvBLybHtVtPGM23kve0vpKmseJXt2aOXRW2
+ dXKrg1cS9cay+45waYWecWBH0M1i7c4Srkd3abAnRa8RFnot+6ChQeky6fqPbI9G6mPE
+ WDHGAkwzHyBHAZ/IEBruJS0ehCcy3WeEewVHukjC8duoTFe3DWzbEzvzW9phE1eFTztS
+ e2AmoA4wgR212GbteQaqfAgK5/jlNYfZc4chjLmOosfEeFqBNfBEOtYvVf+gLS6ZV3hK
+ XptQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=LLvzHistUvG3tFIz6f+WFhmAnRXmHuTQs0YG9JoKNNc=;
- b=Ga6N2J2c3PjiU6qWuc98MYx/P74lxQE2aGrG9ArHLfjzbMf0QdXweXg+2i6nxidmbV
- E6FcYIodQMpHF9ZqQXKGNQPj0s68LQ6DfkKGQcHgMAwkHzpPD0hN+5bL6s73uaEwexQi
- 6XJFRTfXQY8uSCZFlNEnHiFBAlJV49vmd3K8MDe5K+fewjuVJUdj9/BZKhX9jNb9TPiT
- vmbIQELzA6MlSsDCJ+6n0eUxCGkgVOa7jBnJ6rYkhtb+lzQcJ/Bf9+D9dMOmjqT0N1Yj
- q2W2XHavQWttF3lIDtYg8ln2v9iNFTGHgucytJ2WQFDmFgFmQmeyUmuBYhAS3T7jjM3L
- 56FQ==
-X-Gm-Message-State: APjAAAX/PcAKTbfQTnJn/JS94DO0aI50p7ofKYMXdBEjLup8wLpiMYE4
- 1CQhOuTrwv+inmL4FL/O4/uY5A==
-X-Google-Smtp-Source: APXvYqyF7j+Lr9Yvi3WvNYmTTdm0OCuF4PPqzAE/3N1Ldnu2toX8LFTn6cpgf4lj/3PyMhG8hs9zsw==
-X-Received: by 2002:a65:6210:: with SMTP id d16mr3709222pgv.180.1559946897341; 
- Fri, 07 Jun 2019 15:34:57 -0700 (PDT)
-Received: from cakuba.netronome.com (wsip-98-171-133-120.sd.sd.cox.net.
- [98.171.133.120])
- by smtp.gmail.com with ESMTPSA id i22sm3022508pfa.127.2019.06.07.15.34.56
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 07 Jun 2019 15:34:57 -0700 (PDT)
-Date: Fri, 7 Jun 2019 15:34:52 -0700
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-To: "Patel, Vedang" <vedang.patel@intel.com>
-Message-ID: <20190607153452.53885f87@cakuba.netronome.com>
-In-Reply-To: <0ED5E88B-E95A-4899-975D-00912685CEEF@intel.com>
-References: <1559843458-12517-1-git-send-email-vedang.patel@intel.com>
- <1559843458-12517-5-git-send-email-vedang.patel@intel.com>
- <20190606162132.0591cc37@cakuba.netronome.com>
- <FF3C8B8E-421E-4C93-8895-C21A38BB55EE@intel.com>
- <20190607150243.369f6e2c@cakuba.netronome.com>
- <0ED5E88B-E95A-4899-975D-00912685CEEF@intel.com>
-Organization: Netronome Systems, Ltd.
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=XcdHncspNoe337oc/GpXYYj/h5Nj0Cb3fyN8afCSf4k=;
+ b=ty/Oeey9DVJFu2xpnR5twQSY0uNLhtXWf2pfTIN+Hb0k3befYIyCtHYUbEuFj4r2hA
+ WRGHr0Tldy6D+6UXT5NxvAIIwmAfhU90+/jCnEqNcXLIRWo1kWl+8T+7k5NLL0dlTXPU
+ gpElrQMtJjhHtMSHoyFl9VbFbdr3UCK+OS9igrEhp1zDTPVMTq0z/Sx854ziDXPSpJX1
+ +7oX8CiLVa5xpubVydXP+nHnHb3BL2dkpLd3c+hAsAwv5X9cYcyi41gh83loqOlQa+l4
+ vPP4irisBhskJ8aGfKIyZYAXpBoZdyxm612KJtGws0O6H+FpwlNxz6+k2BQmprs8fV0w
+ DlDg==
+X-Gm-Message-State: APjAAAWSTd0N0F1+A4V4jg2hbttt540D9qSt23XORipvu67ISyAYUn6+
+ pldqjjNtTRuvGEkjG+QXgbH5QPHo5BD4bkutLJA=
+X-Google-Smtp-Source: APXvYqw5WtGd+2PGb+TRuxAhz7RsArrDLDbobij4c2F7ac1n2MiYFTWru1Q6uaL29fN7KdceqSztkupEyojW5FzxJfQ=
+X-Received: by 2002:a5d:87da:: with SMTP id q26mr10855768ios.193.1559952360401; 
+ Fri, 07 Jun 2019 17:06:00 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 4/6] taprio: Add support
- for txtime-assist mode.
+From: Anuprita Duggal <www.anuprita804@gmail.com>
+Date: Sat, 8 Jun 2019 05:35:41 +0530
+Message-ID: <CAL-ge-q30QL1HPRovAJYjuohR5TgrSX2nPORALmh4fvJTuP=0Q@mail.gmail.com>
+To: linux-kernel@vger.kernel.org
+X-Mailman-Approved-At: Sat, 08 Jun 2019 00:27:51 +0000
+Subject: [Intel-wired-lan] E1000 network bug in 5.2-rc3
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,50 +77,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Jamal Hadi Salim <jhs@mojatatu.com>, Murali Karicheri <m-karicheri2@ti.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Cong Wang <xiyou.wangcong@gmail.com>, "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net
+Content-Type: multipart/mixed; boundary="===============6765870481063365766=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gRnJpLCA3IEp1biAyMDE5IDIyOjI3OjA3ICswMDAwLCBQYXRlbCwgVmVkYW5nIHdyb3RlOgo+
-IEhpIEphY3ViLCAKPiAKPiA+IE9uIEp1biA3LCAyMDE5LCBhdCAzOjAyIFBNLCBKYWt1YiBLaWNp
-bnNraSA8amFrdWIua2ljaW5za2lAbmV0cm9ub21lLmNvbT4gd3JvdGU6Cj4gPiAKPiA+IE9uIEZy
-aSwgNyBKdW4gMjAxOSAyMDo0Mjo1NSArMDAwMCwgUGF0ZWwsIFZlZGFuZyB3cm90ZTogIAo+ID4+
-PiBUaGFua3MgZm9yIHRoZSBjaGFuZ2VzLCBzaW5jZSB5b3Ugbm93IHZhbGlkYXRlIG5vIHVua25v
-d24gZmxhZ3MgYXJlCj4gPj4+IHBhc3NlZCwgcGVyaGFwcyB0aGVyZSBpcyBubyBuZWVkIHRvIGNo
-ZWNrIGlmIGZsYWdzIGFyZSA9PSB+MD8KPiA+Pj4gCj4gPj4+IElTX0VOQUJMRUQoKSBjb3VsZCBq
-dXN0IGRvOiAoZmxhZ3MpICYgVENBX1RBUFJJT19BVFRSX0ZMQUdfVFhUSU1FX0FTU0lTVAo+ID4+
-PiBObz8KPiA+Pj4gICAKPiA+PiBUaGlzIGlzIHNwZWNpZmljYWxseSBkb25lIHNvIHRoYXQgdXNl
-ciBkb2VzIG5vdCBoYXZlIHRvIHNwZWNpZnkgdGhlCj4gPj4gb2ZmbG9hZCBmbGFncyB3aGVuIHRy
-eWluZyB0byBpbnN0YWxsIHRoZSBhbm90aGVyIHNjaGVkdWxlIHdoaWNoIHdpbGwKPiA+PiBiZSBz
-d2l0Y2hlZCB0byBhdCBhIGxhdGVyIHBvaW50IG9mIHRpbWUgKGkuZS4gdGhlIGFkbWluIHNjaGVk
-dWxlCj4gPj4gaW50cm9kdWNlZCBpbiBWaW5pY2l1c+KAmSBsYXN0IHNlcmllcykuIFNldHRpbmcg
-dGFwcmlvX2ZsYWdzIHRvIH4wCj4gPj4gd2lsbCBoZWxwIHVzIGRpc3Rpbmd1aXNoIGJldHdlZW4g
-dGhlIGZsYWdzIHBhcmFtZXRlciBub3Qgc3BlY2lmaWVkCj4gPj4gYW5kIGZsYWdzIHNldCB0byAw
-LiAgCj4gPiAKPiA+IEknbSBub3Qgc3VwZXIgY2xlYXIgb24gdGhpcywgYmVjYXVzZSBvZiBiYWNr
-d2FyZCBjb21wYXQgeW91IGhhdmUgdG8KPiA+IHRyZWF0IGF0dHIgbm90IHByZXNlbnQgYXMgdW5z
-ZXQuICBMZXQncyBzZWU6Cj4gPiAKPiA+IG5ldyBxZGlzYzoKPiA+IC0gZmxhZ3MgYXR0ciA9IDAg
-LT4gdHh0aW1lIG5vdCB1c2VkCj4gPiAtIGZsYWdzIGF0dHIgPSAxIC0+IHR4dGltZSB1c2VkICAK
-PiA+IC0+IG5vIGZsYWdzIGF0dHIgLT4gdHh0aW1lIG5vdCB1c2VkICAKPiA+IGNoYW5nZSBxZGlz
-YzoKPiA+IC0gZmxhZ3MgYXR0ciA9IG9sZCBmbGFncyBhdHRyIC0+IGxlYXZlIHVuY2hhbmdlZAo+
-ID4gLSBmbGFncyBhdHRyICE9IG9sZCBmbGFncyBhdHRyIC0+IGVycm9yCj4gPiAtIG5vIGZsYWdz
-IGF0dHIgLT4gbGVhdmUgdHh0aW1lIHVuY2hhbmdlZAo+ID4gCj4gPiBEb2Vzbid0IHRoYXQgY292
-ZXIgdGhlIGNhc2VzPyAgV2VyZSB5b3UgcGxhbm5pbmcgdG8gaGF2ZSBubyBmbGFnIGF0dHIKPiA+
-IG9uIGNoYW5nZSBtZWFuIGRpc2FibGVkIHJhdGhlciB0aGFuIG5vIGNoYW5nZT8gIAo+IAo+IFlv
-dSBjb3ZlcmVkIGFsbCB0aGUgY2FzZXMgYWJvdmUuCj4gCj4gVGhpbmtpbmcgYSBiaXQgbW9yZSBh
-Ym91dCBpdCwgeWVzIHlvdSBhcmUgcmlnaHQuIEluaXRpaWFsaXppbmcgZmxhZ3MKPiB0byAwIHdp
-bGwgd29yay4gIEkgd2lsbCBpbmNvcnBvcmF0ZSB0aGlzIGNoYW5nZSBpbiB0aGUgbmV4dCB2ZXJz
-aW9uLgoKQ29vbCwgdGhhbmtzISAgCgpGV0lXIEkgdGhpbmsgaGlzdG9yaWNhbGx5IFRDIHVzZWQg
-dG8gcmVxdWlyZSBhbGwgcGFyYW1ldGVycyBzcGVjaWZpZWQKYW5kIGFzc3VtZWQgMCByYXRoZXIg
-dGhhbiBub3QgY2hhbmdlZCwgYnV0IEkgdGhpbmsgdGhhdCB3YXMgYmVjYXVzZSBDCnN0cnVjdHMg
-d2VyZSBwYXNzZWQgYXMgYmxvYnMgaW5zdGVhZCBvZiBicmVha2luZyB0aGluZ3Mgb3V0IHBlciBh
-dHRyLgpTbyB0b2RheSBJIHRoaW5rIGl0cyBiZXR0ZXIgdG8gbWFrZSBmdWxsIHVzZSBvZiBhdHRy
-cyBhbmQgYXNzdW1lIG5vdApwcmVzZW50IHRvIG1lYW4gbm90IGNoYW5nZWQg8J+RjQpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4g
-bWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1
-b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+--===============6765870481063365766==
+Content-Type: multipart/alternative; boundary="0000000000004eef34058ac4b67b"
+
+--0000000000004eef34058ac4b67b
+Content-Type: text/plain; charset="UTF-8"
+
+Upgraded to 5.2-rc3 from 5.2-rc2 on a virtual server using the e1000 driver
+for internet access and the connection doesn't work at all
+
+For further details please refer to the bugzilla link
+https://bugzilla.kernel.org/show_bug.cgi?id=203847
+
+--0000000000004eef34058ac4b67b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Upgraded to 5.2-rc3 from 5.2-rc2 on a virtual server usin=
+g the e1000 driver for internet access and the connection doesn&#39;t work =
+at all<div dir=3D"auto"><br></div><div dir=3D"auto">For further details ple=
+ase refer to the bugzilla link <a href=3D"https://bugzilla.kernel.org/show_=
+bug.cgi?id=3D203847">https://bugzilla.kernel.org/show_bug.cgi?id=3D203847</=
+a></div></div>
+
+--0000000000004eef34058ac4b67b--
+
+--===============6765870481063365766==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============6765870481063365766==--
