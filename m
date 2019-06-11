@@ -1,64 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F145416A9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jun 2019 23:09:24 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 001D34168B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jun 2019 23:04:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C1D2084DD1;
-	Tue, 11 Jun 2019 21:09:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7720A86F9E;
+	Tue, 11 Jun 2019 21:04:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xK7tnMDnQ+gd; Tue, 11 Jun 2019 21:04:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6744A86D6F;
+	Tue, 11 Jun 2019 21:03:59 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 33A991BF37A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2019 21:03:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1DE5883524
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2019 21:03:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sXz9rewVbApW; Tue, 11 Jun 2019 21:09:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 47DAB85F35;
-	Tue, 11 Jun 2019 21:09:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 202791BF33F
- for <intel-wired-lan@osuosl.org>; Tue, 11 Jun 2019 21:09:07 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 199B487D41
- for <intel-wired-lan@osuosl.org>; Tue, 11 Jun 2019 21:09:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id snE9kFjD6AU5 for <intel-wired-lan@osuosl.org>;
- Tue, 11 Jun 2019 21:09:05 +0000 (UTC)
-X-Greylist: delayed 00:07:09 by SQLgrey-1.7.6
-Received: from forward105p.mail.yandex.net (forward105p.mail.yandex.net
- [77.88.28.108])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F359587D56
- for <intel-wired-lan@osuosl.org>; Tue, 11 Jun 2019 21:09:04 +0000 (UTC)
-Received: from mxback10o.mail.yandex.net (mxback10o.mail.yandex.net
- [IPv6:2a02:6b8:0:1a2d::24])
- by forward105p.mail.yandex.net (Yandex) with ESMTP id DEC444D402AF
- for <intel-wired-lan@osuosl.org>; Wed, 12 Jun 2019 00:01:50 +0300 (MSK)
-Received: from smtp3o.mail.yandex.net (smtp3o.mail.yandex.net
- [2a02:6b8:0:1a2d::27])
- by mxback10o.mail.yandex.net (nwsmtp/Yandex) with ESMTP id gBfcyfE0Is-1oqSF7T2;
- Wed, 12 Jun 2019 00:01:50 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flussonic.com; s=mail;
- t=1560286910; bh=ScEtiGFK8HgtkjAg87CkNhrrrJA0WXgq7sqLTUlTLZQ=;
- h=To:Subject:From:Date:Message-Id;
- b=HKpSMmVOo7jXMCutzQoQYea5NEMS92JRixzMJQm9VxQeVgOpaqBY7J7rE9GBA4z3q
- pBCnm5908GZhYpOUu5z+A5sT6K+lQVuEO9FsdqqaRZj+fYTu8byEktPjSfCLb7HBQR
- yeLuGNcuGWDAQMDKdDIDC6dAz0dSExhO4hZA5yyY=
-Authentication-Results: mxback10o.mail.yandex.net;
- dkim=pass header.i=@flussonic.com
-Received: by smtp3o.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
- FGvn0smOnA-1nK0hYxR; Wed, 12 Jun 2019 00:01:49 +0300
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (Client certificate not present)
-From: Max Lapshin <max@flussonic.com>
-Mime-Version: 1.0 (Mac OS X Mail 12.1 \(3445.101.1\))
-Message-Id: <C0C7FF38-286F-46CA-909D-1A02EFDBBF0C@flussonic.com>
-Date: Wed, 12 Jun 2019 00:01:49 +0300
-To: intel-wired-lan@osuosl.org
-X-Mailer: Apple Mail (2.3445.101.1)
-Subject: [Intel-wired-lan] i350 software defined pins sysfs access
+ with ESMTP id 5Tcd1UVOkCNs for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Jun 2019 21:03:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E0DEC8248B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2019 21:03:55 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Jun 2019 14:03:55 -0700
+X-ExtLoop1: 1
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by FMSMGA003.fm.intel.com with ESMTP; 11 Jun 2019 14:03:55 -0700
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.13]) by
+ ORSMSX105.amr.corp.intel.com ([169.254.2.111]) with mapi id 14.03.0415.000;
+ Tue, 11 Jun 2019 14:03:54 -0700
+From: "Patel, Vedang" <vedang.patel@intel.com>
+To: Murali Karicheri <m-karicheri2@ti.com>
+Thread-Topic: [PATCH net-next v1 5/7] taprio: Add support for txtime offload
+ mode.
+Thread-Index: AQHVFX1jB+iNR+raHE+empHywwSrKaaKeAIAgAH0TACABKJOgIAAJzGAgARF74CAAgDhgA==
+Date: Tue, 11 Jun 2019 21:03:53 +0000
+Message-ID: <A8C0B7C0-BEA0-412E-9B3E-F3050E008D96@intel.com>
+References: <1559065608-27888-1-git-send-email-vedang.patel@intel.com>
+ <1559065608-27888-6-git-send-email-vedang.patel@intel.com>
+ <55c2daae-c69b-4847-f995-4df85c4ee8b8@ti.com>
+ <E6AB74F1-C942-4167-97EF-329831D73F6C@intel.com>
+ <7a8f56c5-69aa-52ed-3889-810466f80137@ti.com>
+ <7F0484D6-80AA-454B-B179-9FAC20D633FD@intel.com>
+ <89d1cea2-ae1c-bc1c-0327-29a3334cba49@ti.com>
+In-Reply-To: <89d1cea2-ae1c-bc1c-0327-29a3334cba49@ti.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.24.14.186]
+Content-ID: <10E1911AAFA3364E9AD28A070B173284@intel.com>
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 5/7] taprio: Add support
+ for txtime offload mode.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,588 +78,143 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3832054402045192319=="
+Cc: "jiri@resnulli.us" <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Jamal Hadi Salim <jhs@mojatatu.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "xiyou.wangcong@gmail.com" <xiyou.wangcong@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
---===============3832054402045192319==
-Content-Type: multipart/alternative;
-	boundary="Apple-Mail=_B96D4C2E-E3A4-495F-85DA-0AD917823FD2"
-
-
---Apple-Mail=_B96D4C2E-E3A4-495F-85DA-0AD917823FD2
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
-
-Hi.
-
-Intel i350 nic has software defined pins.  I have a custom hardware =
-where these pins are connected to
-some peripheral and I need to enable/disable them.
-
-Here is patch that enables access to them. I can turn off peripheral =
-device by:
-
-echo 0 > /sys/class/net/eth1/device/pin2
-
-and turn on by:
-
-echo 1 > /sys/class/net/eth1/device/pin2
-
-Please, give any corrections and advices if this patch requires any =
-changes.
-It is made again  =
-git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git =
-<git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git>  =
-dev-queue
-
-
-
-Subject: [PATCH] i350: Add support for Intel i350 software defined pins
-
-NIC i350 with igb driver has software defined pins.
-Allow to access them via sysfs files.
----
- drivers/net/ethernet/intel/igb/igb.h      |  28 +++++
- drivers/net/ethernet/intel/igb/igb_main.c | 127 +++++++++++++++++++++-
- 2 files changed, 154 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb.h =
-b/drivers/net/ethernet/intel/igb/igb.h
-index ca54e268d157..2453674464fa 100644
---- a/drivers/net/ethernet/intel/igb/igb.h
-+++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -79,6 +79,20 @@ struct igb_adapter;
- #define IGB_I210_RX_LATENCY_100		2213
- #define IGB_I210_RX_LATENCY_1000	448
-=20
-+
-+/* Software defined pins 0-1 */
-+#define IGB_CTRL_SDP0_DATA 0x00040000 /* Value of SW Defineable Pin 0 =
-*/
-+#define IGB_CTRL_SDP1_DATA 0x00080000 /* Value of SW Defineable Pin 1 =
-*/
-+#define IGB_CTRL_SDP0_DIR  0x00400000 /* SDP0 Data direction */
-+#define IGB_CTRL_SDP1_DIR  0x00800000 /* SDP1 Data direction */
-+
-+/* Software defined pins 2-3 */
-+#define IGB_CTRL_EXT_SDP2_DATA E1000_CTRL_EXT_SDP2_DATA /* Value of SW =
-Defineable Pin 2 */
-+#define IGB_CTRL_EXT_SDP3_DATA E1000_CTRL_EXT_SDP3_DATA /* Value of SW =
-Defineable Pin 3 */
-+#define IGB_CTRL_EXT_SDP2_DIR  E1000_CTRL_EXT_SDP2_DIR  /* SDP2 Data =
-direction */
-+#define IGB_CTRL_EXT_SDP3_DIR  E1000_CTRL_EXT_SDP3_DIR  /* SDP3 Data =
-direction */
-+
-+
- struct vf_data_storage {
- 	unsigned char vf_mac_addresses[ETH_ALEN];
- 	u16 vf_mc_hashes[IGB_MAX_VF_MC_ENTRIES];
-@@ -380,6 +394,16 @@ static inline int igb_desc_unused(struct igb_ring =
-*ring)
- 	return ring->count + ring->next_to_clean - ring->next_to_use - =
-1;
- }
-=20
-+#define IGB_SDP_COUNT 4
-+#define IGB_MAX_SDPS 4
-+// Software defined pins
-+struct sdp_attr {
-+	struct device_attribute dev_attr;
-+	u32 pin;
-+	struct igb_adapter *adapter;
-+	char name[12];
-+};
-+
- #ifdef CONFIG_IGB_HWMON
-=20
- #define IGB_HWMON_TYPE_LOC	0
-@@ -568,6 +592,10 @@ struct igb_adapter {
- 	} perout[IGB_N_PEROUT];
-=20
- 	char fw_version[32];
-+
-+	u32 n_sdp;
-+	struct sdp_attr sdp_attrs[IGB_MAX_SDPS];
-+
- #ifdef CONFIG_IGB_HWMON
- 	struct hwmon_buff *igb_hwmon_buff;
- 	bool ets;
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c =
-b/drivers/net/ethernet/intel/igb/igb_main.c
-index fc925adbd9fa..447417fb4d3f 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -40,7 +40,7 @@
-=20
- #define MAJ 5
- #define MIN 6
--#define BUILD 0
-+#define BUILD 1
- #define DRV_VERSION __stringify(MAJ) "." __stringify(MIN) "." \
- __stringify(BUILD) "-k"
-=20
-@@ -2484,6 +2484,129 @@ static int igb_set_features(struct net_device =
-*netdev,
- 	return 1;
- }
-=20
-+static u32 igb_sdp_direction_bit(u32 pin)
-+{
-+        return pin =3D=3D 0 ? IGB_CTRL_SDP0_DIR :
-+          pin =3D=3D 1 ? IGB_CTRL_SDP1_DIR :
-+          pin =3D=3D 2 ? IGB_CTRL_EXT_SDP2_DIR :
-+          pin =3D=3D 3 ? IGB_CTRL_EXT_SDP3_DIR : 0xFFFFFFFF;
-+}
-+
-+static u32 igb_sdp_value_bit(u32 pin)
-+{
-+        return pin =3D=3D IGB_CTRL_SDP0_DIR ? 18 :
-+          pin =3D=3D 1 ? IGB_CTRL_SDP1_DIR :
-+          pin =3D=3D 2 ? IGB_CTRL_EXT_SDP2_DIR :
-+          pin =3D=3D 3 ? IGB_CTRL_EXT_SDP3_DIR : 0xFFFFFFFF;
-+}
-+
-+static u32 igb_sdp_register(u32 pin)
-+{
-+        return pin <=3D 1 ? E1000_CTRL : E1000_CTRL_EXT;
-+}
-+
-+static ssize_t igb_sdp_get(struct device *dev,
-+                                     struct device_attribute *attr,
-+                                     char *buf)
-+{
-+        volatile u32 ctrl_value;
-+        struct sdp_attr *igb_attr =3D container_of(attr, struct =
-sdp_attr,
-+                                                     dev_attr);
-+        struct e1000_hw *hw =3D &igb_attr->adapter->hw;
-+        u32 reg_number;
-+
-+        reg_number =3D igb_sdp_register(igb_attr->pin);
-+        ctrl_value =3D rd32(reg_number);
-+        wr32(reg_number, ctrl_value & ~(1 << =
-igb_sdp_direction_bit(igb_attr->pin)));
-+        ctrl_value =3D rd32(reg_number);
-+
-+        return sprintf(buf, "%d\n", (ctrl_value >> =
-igb_sdp_value_bit(igb_attr->pin)) & 1);
-+}
-+
-+static ssize_t igb_sdp_set(struct device *dev,
-+                                     struct device_attribute *attr,
-+                                     const char *buf, size_t count)
-+{
-+        struct sdp_attr *igb_attr =3D container_of(attr, struct =
-sdp_attr,
-+                                                     dev_attr);
-+        struct e1000_hw *hw =3D &igb_attr->adapter->hw;
-+        int on =3D -1;
-+        volatile u32 ctrl_value;
-+        u32 reg_number;
-+        u32 value_bit;
-+
-+
-+        sscanf(buf, "%d", &on);
-+        on =3D on =3D=3D 0 ? 0 : 1;
-+
-+        //Software defined pins live on different registers:
-+        //0 and 1 live on CTRL, 2 and 3 live on CTRL_EXT
-+        reg_number =3D igb_sdp_register(igb_attr->pin);
-+
-+        ctrl_value =3D rd32(reg_number);
-+        ctrl_value |=3D (1 << igb_sdp_direction_bit(igb_attr->pin));
-+
-+        value_bit =3D igb_sdp_value_bit(igb_attr->pin);
-+        if(on) {
-+                ctrl_value |=3D 1 << value_bit;
-+        } else {
-+                ctrl_value &=3D ~(1 << value_bit);
-+        }
-+
-+        wr32(reg_number, ctrl_value);
-+        return count;
-+}
-+
-+
-+static int igb_add_sdp_attr(struct igb_adapter *adapter, u32 pin)
-+{
-+
-+        struct sdp_attr *igb_attr;
-+
-+        u32 n_sdp;
-+        n_sdp =3D adapter->n_sdp;
-+        if(n_sdp > IGB_MAX_SDPS) {
-+                return ENOMEM;
-+        }
-+
-+        igb_attr =3D &adapter->sdp_attrs[n_sdp];
-+        igb_attr->adapter =3D adapter;
-+        igb_attr->pin =3D pin;
-+        snprintf(igb_attr->name, sizeof(igb_attr->name), "pin%d", pin);
-+
-+        igb_attr->dev_attr.show =3D igb_sdp_get;
-+        igb_attr->dev_attr.store =3D igb_sdp_set;
-+        igb_attr->dev_attr.attr.mode =3D 0660;
-+        igb_attr->dev_attr.attr.name =3D igb_attr->name;
-+        sysfs_attr_init(&igb_attr->dev_attr.attr);
-+
-+        adapter->n_sdp++;
-+        return device_create_file(&adapter->pdev->dev,
-+                                &igb_attr->dev_attr);
-+}
-+
-+
-+static void igb_sdp_del(struct igb_adapter *adapter)
-+{
-+        u32 i;
-+        for(i =3D 0; i < adapter->n_sdp; i++) {
-+                device_remove_file(&adapter->pdev->dev, =
-&adapter->sdp_attrs[i].dev_attr);
-+        }
-+}
-+
-+static int igb_sdp_init(struct igb_adapter *adapter)
-+{
-+	u32 i;
-+	int rc =3D 0;
-+        for(i =3D 0; i < IGB_SDP_COUNT; i++) {
-+                rc =3D igb_add_sdp_attr(adapter, i);
-+                if (rc)
-+			return rc;
-+        }
-+	return 0;
-+}
-+
-+
- static int igb_ndo_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- 			   struct net_device *dev,
- 			   const unsigned char *addr, u16 vid,
-@@ -3383,6 +3506,7 @@ static int igb_probe(struct pci_dev *pdev, const =
-struct pci_device_id *ent)
- 		adapter->ets =3D false;
- 	}
- #endif
-+	igb_sdp_init(adapter);
- 	/* Check if Media Autosense is enabled */
- 	adapter->ei =3D *ei;
- 	if (hw->dev_spec._82575.mas_capable)
-@@ -3642,6 +3766,7 @@ static void igb_remove(struct pci_dev *pdev)
- #ifdef CONFIG_IGB_HWMON
- 	igb_sysfs_exit(adapter);
- #endif
-+	igb_sdp_del(adapter);
- 	igb_remove_i2c(adapter);
- 	igb_ptp_stop(adapter);
- 	/* The watchdog timer may be rescheduled, so explicitly
---=20
-2.17.1
-
-
---Apple-Mail=_B96D4C2E-E3A4-495F-85DA-0AD917823FD2
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=us-ascii
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
-charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
--webkit-nbsp-mode: space; line-break: after-white-space;" =
-class=3D"">Hi.<div class=3D""><br class=3D""></div><div class=3D"">Intel =
-i350 nic has software defined pins. &nbsp;I have a custom hardware where =
-these pins are connected to</div><div class=3D"">some peripheral and I =
-need to enable/disable them.</div><div class=3D""><br =
-class=3D""></div><div class=3D"">Here is patch that enables access to =
-them. I can turn off peripheral device by:</div><div class=3D""><br =
-class=3D""></div><div class=3D"">echo 0 &gt; =
-/sys/class/net/eth1/device/pin2</div><div class=3D""><br =
-class=3D""></div><div class=3D"">and turn on by:</div><div class=3D""><br =
-class=3D""></div><div class=3D""><div class=3D"">echo 1 &gt; =
-/sys/class/net/eth1/device/pin2</div></div><div class=3D""><br =
-class=3D""></div><div class=3D"">Please, give any corrections and =
-advices if this patch requires any changes.</div><div class=3D"">It is =
-made again &nbsp;<a =
-href=3D"git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.=
-git" =
-class=3D"">git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-que=
-ue.git</a>&nbsp; dev-queue</div><div class=3D""><br class=3D""></div><div =
-class=3D""><br class=3D""></div><div class=3D""><br class=3D""></div><div =
-class=3D""><div class=3D"">Subject: [PATCH] i350: Add support for Intel =
-i350 software defined pins</div><div class=3D""><br class=3D""></div><div =
-class=3D"">NIC i350 with igb driver has software defined pins.</div><div =
-class=3D"">Allow to access them via sysfs files.</div><div =
-class=3D"">---</div><div =
-class=3D"">&nbsp;drivers/net/ethernet/intel/igb/igb.h &nbsp; &nbsp; =
-&nbsp;| &nbsp;28 +++++</div><div =
-class=3D"">&nbsp;drivers/net/ethernet/intel/igb/igb_main.c | 127 =
-+++++++++++++++++++++-</div><div class=3D"">&nbsp;2 files changed, 154 =
-insertions(+), 1 deletion(-)</div><div class=3D""><br =
-class=3D""></div><div class=3D"">diff --git =
-a/drivers/net/ethernet/intel/igb/igb.h =
-b/drivers/net/ethernet/intel/igb/igb.h</div><div class=3D"">index =
-ca54e268d157..2453674464fa 100644</div><div class=3D"">--- =
-a/drivers/net/ethernet/intel/igb/igb.h</div><div class=3D"">+++ =
-b/drivers/net/ethernet/intel/igb/igb.h</div><div class=3D"">@@ -79,6 =
-+79,20 @@ struct igb_adapter;</div><div class=3D"">&nbsp;#define =
-IGB_I210_RX_LATENCY_100<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">		</span>2213</div><div =
-class=3D"">&nbsp;#define IGB_I210_RX_LATENCY_1000<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>448</div><div class=3D"">&nbsp;</div><div class=3D"">+</div><div =
-class=3D"">+/* Software defined pins 0-1 */</div><div class=3D"">+#define =
-IGB_CTRL_SDP0_DATA 0x00040000 /* Value of SW Defineable Pin 0 =
-*/</div><div class=3D"">+#define IGB_CTRL_SDP1_DATA 0x00080000 /* Value =
-of SW Defineable Pin 1 */</div><div class=3D"">+#define =
-IGB_CTRL_SDP0_DIR &nbsp;0x00400000 /* SDP0 Data direction */</div><div =
-class=3D"">+#define IGB_CTRL_SDP1_DIR &nbsp;0x00800000 /* SDP1 Data =
-direction */</div><div class=3D"">+</div><div class=3D"">+/* Software =
-defined pins 2-3 */</div><div class=3D"">+#define IGB_CTRL_EXT_SDP2_DATA =
-E1000_CTRL_EXT_SDP2_DATA /* Value of SW Defineable Pin 2 */</div><div =
-class=3D"">+#define IGB_CTRL_EXT_SDP3_DATA E1000_CTRL_EXT_SDP3_DATA /* =
-Value of SW Defineable Pin 3 */</div><div class=3D"">+#define =
-IGB_CTRL_EXT_SDP2_DIR &nbsp;E1000_CTRL_EXT_SDP2_DIR &nbsp;/* SDP2 Data =
-direction */</div><div class=3D"">+#define IGB_CTRL_EXT_SDP3_DIR =
-&nbsp;E1000_CTRL_EXT_SDP3_DIR &nbsp;/* SDP3 Data direction */</div><div =
-class=3D"">+</div><div class=3D"">+</div><div class=3D"">&nbsp;struct =
-vf_data_storage {</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>unsigned =
-char vf_mac_addresses[ETH_ALEN];</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>u16 =
-vf_mc_hashes[IGB_MAX_VF_MC_ENTRIES];</div><div class=3D"">@@ -380,6 =
-+394,16 @@ static inline int igb_desc_unused(struct igb_ring =
-*ring)</div><div class=3D"">&nbsp;<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>return ring-&gt;count + =
-ring-&gt;next_to_clean - ring-&gt;next_to_use - 1;</div><div =
-class=3D"">&nbsp;}</div><div class=3D"">&nbsp;</div><div =
-class=3D"">+#define IGB_SDP_COUNT 4</div><div class=3D"">+#define =
-IGB_MAX_SDPS 4</div><div class=3D"">+// Software defined pins</div><div =
-class=3D"">+struct sdp_attr {</div><div class=3D"">+<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>struct =
-device_attribute dev_attr;</div><div class=3D"">+<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>u32 =
-pin;</div><div class=3D"">+<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>struct igb_adapter =
-*adapter;</div><div class=3D"">+<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>char name[12];</div><div =
-class=3D"">+};</div><div class=3D"">+</div><div class=3D"">&nbsp;#ifdef =
-CONFIG_IGB_HWMON</div><div class=3D"">&nbsp;</div><div =
-class=3D"">&nbsp;#define IGB_HWMON_TYPE_LOC<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>0</div><div class=3D"">@@ -568,6 =
-+592,10 @@ struct igb_adapter {</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>} =
-perout[IGB_N_PEROUT];</div><div class=3D"">&nbsp;</div><div =
-class=3D"">&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre">=
-	</span>char fw_version[32];</div><div class=3D"">+</div><div =
-class=3D"">+<span class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>u32 n_sdp;</div><div class=3D"">+<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>struct sdp_attr =
-sdp_attrs[IGB_MAX_SDPS];</div><div class=3D"">+</div><div =
-class=3D"">&nbsp;#ifdef CONFIG_IGB_HWMON</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>struct =
-hwmon_buff *igb_hwmon_buff;</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>bool =
-ets;</div><div class=3D"">diff --git =
-a/drivers/net/ethernet/intel/igb/igb_main.c =
-b/drivers/net/ethernet/intel/igb/igb_main.c</div><div class=3D"">index =
-fc925adbd9fa..447417fb4d3f 100644</div><div class=3D"">--- =
-a/drivers/net/ethernet/intel/igb/igb_main.c</div><div class=3D"">+++ =
-b/drivers/net/ethernet/intel/igb/igb_main.c</div><div class=3D"">@@ =
--40,7 +40,7 @@</div><div class=3D"">&nbsp;</div><div =
-class=3D"">&nbsp;#define MAJ 5</div><div class=3D"">&nbsp;#define MIN =
-6</div><div class=3D"">-#define BUILD 0</div><div class=3D"">+#define =
-BUILD 1</div><div class=3D"">&nbsp;#define DRV_VERSION __stringify(MAJ) =
-"." __stringify(MIN) "." \</div><div class=3D"">&nbsp;__stringify(BUILD) =
-"-k"</div><div class=3D"">&nbsp;</div><div class=3D"">@@ -2484,6 =
-+2484,129 @@ static int igb_set_features(struct net_device =
-*netdev,</div><div class=3D"">&nbsp;<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>return 1;</div><div =
-class=3D"">&nbsp;}</div><div class=3D"">&nbsp;</div><div =
-class=3D"">+static u32 igb_sdp_direction_bit(u32 pin)</div><div =
-class=3D"">+{</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;return =
-pin =3D=3D 0 ? IGB_CTRL_SDP0_DIR :</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp;pin =3D=3D 1 ? IGB_CTRL_SDP1_DIR :</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pin =3D=3D 2 ? =
-IGB_CTRL_EXT_SDP2_DIR :</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp;pin =3D=3D 3 ? IGB_CTRL_EXT_SDP3_DIR : =
-0xFFFFFFFF;</div><div class=3D"">+}</div><div class=3D"">+</div><div =
-class=3D"">+static u32 igb_sdp_value_bit(u32 pin)</div><div =
-class=3D"">+{</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;return =
-pin =3D=3D IGB_CTRL_SDP0_DIR ? 18 :</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp;pin =3D=3D 1 ? IGB_CTRL_SDP1_DIR :</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pin =3D=3D 2 ? =
-IGB_CTRL_EXT_SDP2_DIR :</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp;pin =3D=3D 3 ? IGB_CTRL_EXT_SDP3_DIR : =
-0xFFFFFFFF;</div><div class=3D"">+}</div><div class=3D"">+</div><div =
-class=3D"">+static u32 igb_sdp_register(u32 pin)</div><div =
-class=3D"">+{</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;return =
-pin &lt;=3D 1 ? E1000_CTRL : E1000_CTRL_EXT;</div><div =
-class=3D"">+}</div><div class=3D"">+</div><div class=3D"">+static =
-ssize_t igb_sdp_get(struct device *dev,</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; struct device_attribute =
-*attr,</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; char *buf)</div><div class=3D"">+{</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;volatile u32 ctrl_value;</div><div class=3D"">+=
- &nbsp; &nbsp; &nbsp; &nbsp;struct sdp_attr *igb_attr =3D =
-container_of(attr, struct sdp_attr,</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; dev_attr);</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;struct e1000_hw *hw =3D =
-&amp;igb_attr-&gt;adapter-&gt;hw;</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp;u32 reg_number;</div><div class=3D"">+</div><div class=3D"">+=
- &nbsp; &nbsp; &nbsp; &nbsp;reg_number =3D =
-igb_sdp_register(igb_attr-&gt;pin);</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp;ctrl_value =3D rd32(reg_number);</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;wr32(reg_number, ctrl_value &amp; ~(1 =
-&lt;&lt; igb_sdp_direction_bit(igb_attr-&gt;pin)));</div><div class=3D"">+=
- &nbsp; &nbsp; &nbsp; &nbsp;ctrl_value =3D rd32(reg_number);</div><div =
-class=3D"">+</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;return =
-sprintf(buf, "%d\n", (ctrl_value &gt;&gt; =
-igb_sdp_value_bit(igb_attr-&gt;pin)) &amp; 1);</div><div =
-class=3D"">+}</div><div class=3D"">+</div><div class=3D"">+static =
-ssize_t igb_sdp_set(struct device *dev,</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; struct device_attribute =
-*attr,</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; const char *buf, size_t count)</div><div =
-class=3D"">+{</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;struct =
-sdp_attr *igb_attr =3D container_of(attr, struct sdp_attr,</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-dev_attr);</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;struct =
-e1000_hw *hw =3D &amp;igb_attr-&gt;adapter-&gt;hw;</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;int on =3D -1;</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;volatile u32 ctrl_value;</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;u32 reg_number;</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;u32 value_bit;</div><div class=3D"">+</div><div =
-class=3D"">+</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;sscanf(buf, "%d", &amp;on);</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp;on =3D on =3D=3D 0 ? 0 : 1;</div><div class=3D"">+</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;//Software defined pins live on =
-different registers:</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;//0 and 1 live on CTRL, 2 and 3 live on CTRL_EXT</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;reg_number =3D =
-igb_sdp_register(igb_attr-&gt;pin);</div><div class=3D"">+</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;ctrl_value =3D =
-rd32(reg_number);</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;ctrl_value |=3D (1 &lt;&lt; =
-igb_sdp_direction_bit(igb_attr-&gt;pin));</div><div class=3D"">+</div><div=
- class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;value_bit =3D =
-igb_sdp_value_bit(igb_attr-&gt;pin);</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;if(on) {</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ctrl_value |=3D 1 &lt;&lt; =
-value_bit;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;} else =
-{</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp;ctrl_value &amp;=3D ~(1 &lt;&lt; value_bit);</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;}</div><div class=3D"">+</div><div=
- class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;wr32(reg_number, =
-ctrl_value);</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;return =
-count;</div><div class=3D"">+}</div><div class=3D"">+</div><div =
-class=3D"">+</div><div class=3D"">+static int igb_add_sdp_attr(struct =
-igb_adapter *adapter, u32 pin)</div><div class=3D"">+{</div><div =
-class=3D"">+</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;struct =
-sdp_attr *igb_attr;</div><div class=3D"">+</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;u32 n_sdp;</div><div class=3D"">+ &nbsp; &nbsp; =
-&nbsp; &nbsp;n_sdp =3D adapter-&gt;n_sdp;</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;if(n_sdp &gt; IGB_MAX_SDPS) {</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return =
-ENOMEM;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;}</div><div =
-class=3D"">+</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;igb_attr =
-=3D &amp;adapter-&gt;sdp_attrs[n_sdp];</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;igb_attr-&gt;adapter =3D adapter;</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;igb_attr-&gt;pin =3D =
-pin;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;snprintf(igb_attr-&gt;name, sizeof(igb_attr-&gt;name), "pin%d", =
-pin);</div><div class=3D"">+</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;igb_attr-&gt;dev_attr.show =3D igb_sdp_get;</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;igb_attr-&gt;dev_attr.store =3D =
-igb_sdp_set;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;igb_attr-&gt;dev_attr.attr.mode =3D 0660;</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;igb_attr-&gt;dev_attr.attr.name =3D =
-igb_attr-&gt;name;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;sysfs_attr_init(&amp;igb_attr-&gt;dev_attr.attr);</div><div =
-class=3D"">+</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;adapter-&gt;n_sdp++;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; =
-&nbsp;return device_create_file(&amp;adapter-&gt;pdev-&gt;dev,</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp;&amp;igb_attr-&gt;dev_attr);</div><div class=3D"">+}</div><div =
-class=3D"">+</div><div class=3D"">+</div><div class=3D"">+static void =
-igb_sdp_del(struct igb_adapter *adapter)</div><div class=3D"">+{</div><div=
- class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;u32 i;</div><div class=3D"">+ =
-&nbsp; &nbsp; &nbsp; &nbsp;for(i =3D 0; i &lt; adapter-&gt;n_sdp; i++) =
-{</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp;device_remove_file(&amp;adapter-&gt;pdev-&gt;dev, =
-&amp;adapter-&gt;sdp_attrs[i].dev_attr);</div><div class=3D"">+ &nbsp; =
-&nbsp; &nbsp; &nbsp;}</div><div class=3D"">+}</div><div =
-class=3D"">+</div><div class=3D"">+static int igb_sdp_init(struct =
-igb_adapter *adapter)</div><div class=3D"">+{</div><div class=3D"">+<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>u32 =
-i;</div><div class=3D"">+<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>int rc =3D 0;</div><div =
-class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;for(i =3D 0; i &lt; =
-IGB_SDP_COUNT; i++) {</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp;rc =3D igb_add_sdp_attr(adapter, =
-i);</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp;if (rc)</div><div class=3D"">+<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">			</span>return =
-rc;</div><div class=3D"">+ &nbsp; &nbsp; &nbsp; &nbsp;}</div><div =
-class=3D"">+<span class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>return 0;</div><div class=3D"">+}</div><div class=3D"">+</div><div =
-class=3D"">+</div><div class=3D"">&nbsp;static int =
-igb_ndo_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],</div><div =
-class=3D"">&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre">=
-			</span> &nbsp; struct net_device *dev,</div><div =
-class=3D"">&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre">=
-			</span> &nbsp; const unsigned char *addr, u16 =
-vid,</div><div class=3D"">@@ -3383,6 +3506,7 @@ static int =
-igb_probe(struct pci_dev *pdev, const struct pci_device_id =
-*ent)</div><div class=3D"">&nbsp;<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">		</span>adapter-&gt;ets =3D =
-false;</div><div class=3D"">&nbsp;<span class=3D"Apple-tab-span" =
-style=3D"white-space:pre">	</span>}</div><div =
-class=3D"">&nbsp;#endif</div><div class=3D"">+<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>igb_sdp_init(adapter);</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>/* Check =
-if Media Autosense is enabled */</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>adapter-&gt;ei =3D *ei;</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>if =
-(hw-&gt;dev_spec._82575.mas_capable)</div><div class=3D"">@@ -3642,6 =
-+3766,7 @@ static void igb_remove(struct pci_dev *pdev)</div><div =
-class=3D"">&nbsp;#ifdef CONFIG_IGB_HWMON</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>igb_sysfs_exit(adapter);</div><div =
-class=3D"">&nbsp;#endif</div><div class=3D"">+<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>igb_sdp_del(adapter);</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>igb_remove_i2c(adapter);</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	=
-</span>igb_ptp_stop(adapter);</div><div class=3D"">&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space:pre">	</span>/* The =
-watchdog timer may be rescheduled, so explicitly</div><div =
-class=3D"">--&nbsp;</div><div class=3D"">2.17.1</div><div class=3D""><br =
-class=3D""></div></div></body></html>=
-
---Apple-Mail=_B96D4C2E-E3A4-495F-85DA-0AD917823FD2--
-
---===============3832054402045192319==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============3832054402045192319==--
+DQoNCj4gT24gSnVuIDEwLCAyMDE5LCBhdCA3OjI3IEFNLCBNdXJhbGkgS2FyaWNoZXJpIDxtLWth
+cmljaGVyaTJAdGkuY29tPiB3cm90ZToNCj4gDQo+IFZlZGFuZywNCj4gDQo+IE9uIDA2LzA3LzIw
+MTkgMDU6MTIgUE0sIFBhdGVsLCBWZWRhbmcgd3JvdGU6DQo+PiBIaSBNdXJhbGksDQo+Pj4gT24g
+SnVuIDcsIDIwMTksIGF0IDExOjUyIEFNLCBNdXJhbGkgS2FyaWNoZXJpIDxtLWthcmljaGVyaTJA
+dGkuY29tPiB3cm90ZToNCj4+PiANCj4+PiBPbiAwNi8wNC8yMDE5IDA0OjA2IFBNLCBQYXRlbCwg
+VmVkYW5nIHdyb3RlOg0KPj4+PiBIaSBNdXJhbGksDQo+Pj4+PiBPbiBKdW4gMywgMjAxOSwgYXQg
+NzoxNSBBTSwgTXVyYWxpIEthcmljaGVyaSA8bS1rYXJpY2hlcmkyQHRpLmNvbT4gd3JvdGU6DQo+
+Pj4+PiANCj4+Pj4+IEhpIFZlZGFuZywNCj4+Pj4+IA0KPj4+Pj4gT24gMDUvMjgvMjAxOSAwMTo0
+NiBQTSwgVmVkYW5nIFBhdGVsIHdyb3RlOg0KPj4+Pj4+IEN1cnJlbnRseSwgd2UgYXJlIHNlZWlu
+ZyBub24tY3JpdGljYWwgcGFja2V0cyBiZWluZyB0cmFuc21pdHRlZCBvdXRzaWRlDQo+Pj4+Pj4g
+b2YgdGhlaXIgdGltZXNsaWNlLiBXZSBjYW4gY29uZmlybSB0aGF0IHRoZSBwYWNrZXRzIGFyZSBi
+ZWluZyBkZXF1ZXVlZA0KPj4+Pj4+IGF0IHRoZSByaWdodCB0aW1lLiBTbywgdGhlIGRlbGF5IGlz
+IGluZHVjZWQgaW4gdGhlIGhhcmR3YXJlIHNpZGUuICBUaGUNCj4+Pj4+PiBtb3N0IGxpa2VseSBy
+ZWFzb24gaXMgdGhlIGhhcmR3YXJlIHF1ZXVlcyBhcmUgc3RhcnZpbmcgdGhlIGxvd2VyDQo+Pj4+
+Pj4gcHJpb3JpdHkgcXVldWVzLg0KPj4+Pj4+IEluIG9yZGVyIHRvIGltcHJvdmUgdGhlIHBlcmZv
+cm1hbmNlIG9mIHRhcHJpbywgd2Ugd2lsbCBiZSBtYWtpbmcgdXNlIG9mIHRoZQ0KPj4+Pj4+IHR4
+dGltZSBmZWF0dXJlIHByb3ZpZGVkIGJ5IHRoZSBFVEYgcWRpc2MuIEZvciBhbGwgdGhlIHBhY2tl
+dHMgd2hpY2ggZG8gbm90IGhhdmUNCj4+Pj4+PiB0aGUgU09fVFhUSU1FIG9wdGlvbiBzZXQsIHRh
+cHJpbyB3aWxsIHNldCB0aGUgdHJhbnNtaXQgdGltZXN0YW1wIChzZXQgaW4NCj4+Pj4+PiBza2It
+PnRzdGFtcCkgaW4gdGhpcyBtb2RlLiBUQVByaW8gUWRpc2Mgd2lsbCBlbnN1cmUgdGhhdCB0aGUg
+dHJhbnNtaXQgdGltZSBmb3INCj4+Pj4+PiB0aGUgcGFja2V0IGlzIHNldCB0byB3aGVuIHRoZSBn
+YXRlIGlzIG9wZW4uIElmIFNPX1RYVElNRSBpcyBzZXQsIHRoZSBUQVByaW8NCj4+Pj4+PiBxZGlz
+YyB3aWxsIHZhbGlkYXRlIHdoZXRoZXIgdGhlIHRpbWVzdGFtcCAoaW4gc2tiLT50c3RhbXApIG9j
+Y3VycyB3aGVuIHRoZSBnYXRlDQo+Pj4+Pj4gY29ycmVzcG9uZGluZyB0byBza2IncyB0cmFmZmlj
+IGNsYXNzIGlzIG9wZW4uDQo+Pj4+Pj4gRm9sbG93aW5nIGlzIHRoZSBleGFtcGxlIGNvbmZpZ3Vy
+YXRpb24gZm9yIGVuYWJsaW5nIHR4dGltZSBvZmZsb2FkOg0KPj4+Pj4+IHRjIHFkaXNjIHJlcGxh
+Y2UgZGV2IGV0aDAgcGFyZW50IHJvb3QgaGFuZGxlIDEwMCB0YXByaW8gXFwNCj4+Pj4+PiAgICAg
+ICBudW1fdGMgMyBcXA0KPj4+Pj4+ICAgICAgIG1hcCAyIDIgMSAwIDIgMiAyIDIgMiAyIDIgMiAy
+IDIgMiAyIFxcDQo+Pj4+Pj4gICAgICAgcXVldWVzIDFAMCAxQDAgMUAwIFxcDQo+Pj4+Pj4gICAg
+ICAgYmFzZS10aW1lIDE1NTg2NTM0MjQyNzk4NDI1NjggXFwNCj4+Pj4+PiAgICAgICBzY2hlZC1l
+bnRyeSBTIDAxIDMwMDAwMCBcXA0KPj4+Pj4+ICAgICAgIHNjaGVkLWVudHJ5IFMgMDIgMzAwMDAw
+IFxcDQo+Pj4+Pj4gICAgICAgc2NoZWQtZW50cnkgUyAwNCA0MDAwMDAgXFwNCj4+Pj4+PiAgICAg
+ICBvZmZsb2FkIDIgXFwNCj4+Pj4+PiAgICAgICB0eHRpbWUtZGVsYXkgNDAwMDAgXFwNCj4+Pj4+
+PiAgICAgICBjbG9ja2lkIENMT0NLX1RBSQ0KPj4+Pj4+IHRjIHFkaXNjIHJlcGxhY2UgZGV2ICRJ
+RkFDRSBwYXJlbnQgMTAwOjEgZXRmIHNraXBfc29ja19jaGVjayBcXA0KPj4+Pj4+ICAgICAgIG9m
+ZmxvYWQgZGVsdGEgMjAwMDAwIGNsb2NraWQgQ0xPQ0tfVEFJDQo+Pj4+Pj4gSGVyZSwgdGhlICJv
+ZmZsb2FkIiBwYXJhbWV0ZXIgaXMgaW5kaWNhdGluZyB0aGF0IHRoZSBUWFRJTUVfT0ZGTE9BRCBt
+b2RlIGlzDQo+Pj4+Pj4gZW5hYmxlZC4gQWxzbywgYWxsIHRoZSB0cmFmZmljIGNsYXNzZXMgYXJl
+IG1hcHBlZCB0byB0aGUgc2FtZSBxdWV1ZS4gIFRoaXMgaXMNCj4+Pj4+PiBvbmx5IHBvc3NpYmxl
+IGluIHRhcHJpbyB3aGVuIHR4dGltZSBvZmZsb2FkIGlzIGVuYWJsZWQuIEFsc28gbm90ZSB0aGF0
+IHRoZSBFVEYNCj4+Pj4+PiBRZGlzYyBpcyBlbmFibGVkIHdpdGggb2ZmbG9hZCBtb2RlIHNldC4N
+Cj4+Pj4+PiBJbiB0aGlzIG1vZGUsIGlmIHRoZSBwYWNrZXQncyB0cmFmZmljIGNsYXNzIGlzIG9w
+ZW4gYW5kIHRoZSBjb21wbGV0ZSBwYWNrZXQgY2FuDQo+Pj4+Pj4gYmUgdHJhbnNtaXR0ZWQsIHRh
+cHJpbyB3aWxsIHRyeSB0byB0cmFuc21pdCB0aGUgcGFja2V0IGltbWVkaWF0ZWx5LiBUaGlzIHdp
+bGwNCj4+Pj4+PiBiZSBkb25lIGJ5IHNldHRpbmcgc2tiLT50c3RhbXAgdG8gY3VycmVudF90aW1l
+ICsgdGhlIHRpbWUgZGVsdGEgaW5kaWNhdGVkIGluDQo+Pj4+Pj4gdGhlIHR4dGltZV9kZWxheSBw
+YXJhbWV0ZXIuIFRoaXMgcGFyYW1ldGVyIGluZGljYXRlcyB0aGUgdGltZSB0YWtlbiAoaW4NCj4+
+Pj4+PiBzb2Z0d2FyZSkgZm9yIHBhY2tldCB0byByZWFjaCB0aGUgbmV0d29yayBhZGFwdGVyLg0K
+Pj4+Pj4gDQo+Pj4+PiBJbiBUU04gVGltZSBhd2FyZSBzaGFwZXIsIHBhY2tldHMgYXJlIHNlbnQg
+d2hlbiBnYXRlIGZvciBhIHNwZWNpZmljDQo+Pj4+PiB0cmFmZmljIGNsYXNzIGlzIG9wZW4uIFNv
+IHBhY2tldHMgdGhhdCBhcmUgYXZhaWxhYmxlIGluIHRoZSBxdWV1ZXMgYXJlDQo+Pj4+PiBzZW50
+IGJ5IHRoZSBzY2hlZHVsZXIuIFNvIHRoZSBFVEYgaXMgbm90IHN0cmljdGx5IHJlcXVpcmVkIGZv
+ciB0aGlzDQo+Pj4+PiBmdW5jdGlvbi4NCj4+Pj4+IEkgdW5kZXJzdGFuZCBpZiB0aGUgYXBwbGlj
+YXRpb24gbmVlZHMgdG8gc2VuZCBwYWNrZXRzIHdpdGgNCj4+Pj4+IHNvbWUgbGF0ZW5jeSBleHBl
+Y3RhdGlvbiBzaG91bGQgdXNlIEVURiB0byBzY2hlZHVsZSB0aGUgcGFja2V0IGluIHN5bmMNCj4+
+Pj4+IHdpdGggdGhlIG5leHQgZ2F0ZSBvcGVuIHRpbWUuIFNvIHR4dGltZV9kZWxheSBpcyB1c2Vk
+IHRvIGFjY291bnQgZm9yDQo+Pj4+PiB0aGUgZGVsYXkgZm9yIHBhY2tldHMgdG8gdHJhdmVsIGZy
+b20gdXNlciBzcGFjZSB0byBuaWMuDQo+Pj4+IFRoaXMgaXMgbm90IHRydWUuIEFzIGV4cGxhaW5l
+ZCBpbiB0aGUgb3RoZXIgZW1haWwsIHR4dGltZS1kZWxheSBpcyB0aGUgbWF4aW11bSB0aW1lIGEg
+cGFja2V0IG1pZ2h0IHRha2UgYWZ0ZXIgcmVhY2hpbmcgdGFwcmlvX2VucXVldWUoKSBhc3N1bWlu
+ZyB0aGUgZ2F0ZSBjb3JyZXNwb25kaW5nIHRvIHRoYXQgcGFja2V0IHdhcyBhbHJlYWR5IG9wZW4u
+DQo+Pj4+PiBTbyBpdCBpcyBFVEYNCj4+Pj4+IHRoYXQgbmVlZCB0byBpbnNwZWN0IHRoZSBza2It
+PnRzdGFtcCBhbmQgYWxsb3cgb3IgaWYgdGltZSBtYXRjaCBvcg0KPj4+Pj4gZGlzY2FyZCBpZiBs
+YXRlLiBJcyB0aGlzIHRoZSBjYXNlPw0KPj4+Pj4gDQo+Pj4+IFRoZSByb2xlIG9mIEVURiBpcyBq
+dXN0IHRvIHNvcnQgcGFja2V0cyBhY2NvcmRpbmcgdG8gdGhlaXIgdHJhbnNtaXQgdGltZXN0YW1w
+IGFuZCBzZW5kIHRoZW0gdG8gdGhlIGhhcmR3YXJlIHF1ZXVlcyB0byB0cmFuc21pdCB3aGVuZXZl
+ciB0aGVpciB0aW1lIGNvbWVzLiBUaGlzIGlzIG5lZWRlZCBiZWNhdXNlIHRoZSBpMjEwIGhhcmR3
+YXJlIGRvZXMgbm90IGhhdmUgYW55IHNvcnQgZmVhdHVyZSB3aXRoaW4gaXRzIHF1ZXVlLiBJZiAy
+IHBhY2tldHMgYXJyaXZlIGFuZCB0aGUgZmlyc3QgcGFja2V0IGhhcyBhIHRyYW5zbWl0IHRpbWVz
+dGFtcCBsYXRlciB0aGFuIHRoZSBzZWNvbmQgcGFja2V0LCB0aGUgc2Vjb25kIHBhY2tldCB3b27i
+gJl0IGJlIHRyYW5zbWl0dGVkIG9uIHRpbWUuDQo+Pj4+IFRhcHJpbyBpbiB0aGUgdHh0aW1lIG9m
+ZmxvYWQgbW9kZSAoYnR3LCB0aGlzIHdpbGwgc29vbiBiZSByZW5hbWVkIHRvIHR4dGltZS1hc3Np
+c3QpIHdpbGwgc2V0IHRoZSB0cmFuc21pdCB0aW1lc3RhbXAgb2YgZWFjaCBwYWNrZXQgKGluIHNr
+Yi0+dHN0YW1wKSBhbmQgdGhlbiBzZW5kIGl0IHRvIEVURiBzbyB0aGF0IGl0IGNhbiBiZSBzb3J0
+ZWQgd2l0aCB0aGUgb3RoZXIgcGFja2V0cyBhbmQgc2VudCB0byBoYXJkd2FyZSB3aGVuZXZlciB0
+aGUgdGltZSBjb21lcy4gRVRGIHdpbGwgZGlzY2FyZCB0aGUgcGFja2V0IGlmIHRoZSB0cmFuc21p
+dCB0aW1lIGlzIGluIHRoZSBwYXN0IG9yIGJlZm9yZSB0aGUgdHJhbnNtaXQgdGltZSBvZiB0aGUg
+cGFja2V0IHdoaWNoIGlzIGFscmVhZHkgYmVlbiBzZW50IHRvIHRoZSBoYXJkd2FyZS4NCj4+Pj4g
+TGV0IG1lIGtub3cgaWYgeW91IGhhdmUgbW9yZSBxdWVzdGlvbnMgYWJvdXQgdGhpcy4NCj4+PiAN
+Cj4+PiBJdCBpcyBiaXQgY29uZnVzaW5nIHRvIGhhdmUgdGhpcyBtb2RlIGluIHRhcHJpby4gTXkg
+YXNzdW1wdGlvbiBpcw0KPj4+IHRoYXQgdGFwcmlvIGltcGxlbWVudHMgVFNOIHN0YW5kYXJkIDgw
+Mi4xUWJ2IHNjaGVkdWxlciB0aGF0IGlzDQo+Pj4gcmVzcG9uc2libGUgZm9yIG1hbmFnaW5nIHRo
+ZSBHYXRlIG9wZW4vY2xvc2UgYW5kIHNlbmRpbmcgZnJhbWVzDQo+Pj4gZm9yIHNwZWNpZmljIHRy
+YWZmaWMgY2xhc3MgZHVyaW5nIHRoZSBHYXRlIG9wZW4uIEFGQUlLLCB0aGlzDQo+Pj4gc2NoZWR1
+bGVyIGRvZXNuJ3QgaW5zcGVjdCB0aGUgcGFja2V0J3MgbWV0YWRhdGEgc3VjaCBhcyB0aW1lIHRv
+DQo+Pj4gc2VuZCBvciBzdWNoLiBTbyB3aHkgaXMgdHh0aW1lIG9mZmxvYWQgbW9kZSBpcyBhZGRl
+ZCB0byB0YXByaW8/DQo+Pj4gQ291bGQgeW91IHBsZWFzZSBleHBsYWluPw0KPj4+IA0KPj4+IE11
+cmFsaQ0KPj4+IA0KPj4gU2hvcnQgYW5zd2VyOiBUYXByaW8gc3RpbGwgaW1wbGVtZW50cyBhIDgw
+Mi4xUWJ2IGxpa2Ugc2NoZWR1bGUuIEJ1dCwgaXQgbGV2ZXJhZ2VzIHRoZSBmdW5jdGlvbmFsaXR5
+IGZyb20gRVRGIHRvIGRvIHNvLg0KPj4gTG9uZyBhbnN3ZXI6DQo+PiBUaGUgc29mdHdhcmUtb25s
+eSBpbXBsZW1lbnRhdGlvbiBvZiA4MDIuMVFidiBoYXMgcXVpdGUgYSBmZXcgbG93IHByaW9yaXR5
+IHBhY2tldHMgYmVpbmcgdHJhbnNtaXR0ZWQgb3V0c2lkZSB0aGVpciB0aW1lc2xpY2UuIFRoaXMg
+aXMgYmVjYXVzZSB0aGUgaGlnaGVyIHByaW9yaXR5IHF1ZXVlcyBpbiBpMjEwIGFyZSBzdGFydmlu
+ZyB0aGUgbG93ZXIgcHJpb3JpdHkgcXVldWVzLiBTbywgd2hhdCB0aGUgdHh0aW1lLWFzc2lzdCBt
+b2RlIGRvZXMgaXMgdG8gYXNzaWduIGFuIGV4cGxpY2l0IHR4IHRpbWVzdGFtcCBhbmQgdXNlIHRo
+ZSBsYXVuY2h0aW1lIGZlYXR1cmUgb2YgdGhlIGkyMTAgYWRhcHRlciBjYXJkIHRvIHRyYW5zbWl0
+IHRoZSBwYWNrZXRzIG9uIHRpbWUuIEl0IGlzIHN0aWxsIHNlbmRpbmcgZnJhbWVzIGZvciBhIHBh
+cnRpY3VsYXIgdHJhZmZpYyBjbGFzcyBvbmx5IHdoZW4gdGhlaXIgZ2F0ZSBpcyBvcGVuLiBBbHNv
+LCBpdCBpcyBub3QgbW9kaWZ5aW5nIGFueSBkYXRhIGluIHRoZSBwYWNrZXQgd2hpY2ggaXMgdHJh
+bnNtaXR0ZWQuIEp1c3Qgbm90aWZ5aW5nIHRoZSBOSUMgd2hlbiB0byB0cmFuc21pdCB0aGUgcGFj
+a2V0LiBJZiB0aGVyZSBpcyBhIHR4IHRpbWVzdGFtcCBhbHJlYWR5IGFzc2lnbmVkIHRvIGEgcGFj
+a2V0LCBpdCBkb2VzIG5vdCBjaGFuZ2UgaXQuIFNpbmNlIHdlIGFyZSBhc3NpZ25pbmcgdGhlIHR4
+IHRpbWVzdGFtcCwgd2UgaGF2ZSB0byByb3V0ZSB0aGUgcGFja2V0IHRocm91Z2ggdGhlIEVURiBx
+dWV1ZSBkaXNjIGZvciBzb3J0aW5nIHRoZSBwYWNrZXRzIGFjY29yZGluZyB0byB0aGVpciB0aW1l
+c3RhbXBzIGFuZCBzZW5kaW5nIGl0IHRvIHRoZSBOSUMuDQo+PiBXZSBoYXZlIHRvIGltcGxlbWVu
+dCB0aGUgYWJvdmUgbWVjaGFuaXNtIGJlY2F1c2UsIGN1cnJlbnRseSwgd2UgZG8gbm90IGhhdmUg
+dGhlIGNhcGFiaWxpdHkgdG8gb2ZmbG9hZCB0aGUgdGFwcmlvIHNjaGVkdWxlIHRvIHRoZSBoYXJk
+d2FyZS4NCj4gT2ssIFRoYW5rcyBmb3IgdGhlIHBhdGllbmNlIGFuZCBleHBsYW5hdGlvbi4gWWVz
+LCBpdCBoZWxwcy4NCj4gDQo+IE9uZSBsYXN0IHF1ZXN0aW9uLiBJZiB5b3VyIGhhcmR3YXJlIGky
+MTAgY2hlY2tzIHRoZSB0aW1lIGluIGEgcGFja2V0DQo+IGFuZCBmaW5kcyBpdCBpcyAgbGF0ZSwg
+ZG9lcyBpdCBkcm9wIHRoZSBwYWNrZXQ/IEkgdW5kZXJzdGFuZCB0aGF0DQo+IHR4dGltZS1kZWxh
+eSBpcyBmb3IgdHVuaW5nIHRoaXMgc3VjaCB0aGF0IGhhcmR3YXJlIHNlZSB0aGUgcGFja2V0IG9u
+DQo+IHRpbWUgYW5kIHRyYW5zbWl0LiBJIGFsc28gdW5kZXJzdGFuZCB0aGF0IHBhY2tldHMgZ2V0
+IGRyb3BwZWQNCj4gYXQgdGhlIEVURiBxZGlzYyBpZiBsYXRlLg0KPiANCj4gTXVyYWxpDQoNClRo
+ZSBpMjEwIGhhcmR3YXJlIGRvZXMgbm90IGRyb3AgcGFja2V0cyBpZiB0aGV5IGFyZSBsYXRlLiAN
+Cg0KSW4gaTIxMCBOSUMsIHRoZSBsYXVuY2h0aW1lIGZpZWxkIGlzIG9ubHkgMjUgYml0cyBsb25n
+IHdpdGggMzIgbnMgdW5pdHMuIFNvLCBpdCB3aWxsIGNvbXBhcmUgbGF1bmNodGltZSozMiB0byB0
+aGUgU1lTVElNTCByZWdpc3RlciAoaXQgc3RvcmVzIHRoZSBuYW5vc2Vjb25kIHBhcnQgb2YgdGhl
+IFBUUCB0aW1lKS4gSXQgd2lsbCBzZW5kIHRoZSBwYWNrZXQgaWYgdGhlIHRpbWUgaXMgZXhhY3Rs
+eSBzYW1lIGFzIGFib3ZlLiBJdCBpcyB0aGUgam9iIG9mIEVURiB0byBlbnN1cmUgdGhhdCB0aGUg
+cGFja2V0IGlzIG5vdCBzZW50IHRvbyBlYXJseSBieSBzZWxlY3RpbmcgdGhlIGRlbHRhIHdoaWNo
+IGlzIGxlc3MgdGhhbiAwLjUgc2VjLg0KDQpGb3IgbW9yZSBpbmZvcm1hdGlvbiwgeW91IGNhbiBs
+b29rIGF0IFNlY3Rpb24gNy4yLjIuMi4zIGFuZCBTZWN0aW9uIDcuMi43LjUuMyBvZiB0aGUgaTIx
+MCBkYXRhIHNoZWV0WzFdLiANCg0KVGhhbmtzLA0KVmVkYW5nDQoNClsxXSAtIGh0dHBzOi8vd3d3
+LmludGVsLmNvbS9jb250ZW50L2RhbS93d3cvcHVibGljL3VzL2VuL2RvY3VtZW50cy9kYXRhc2hl
+ZXRzL2kyMTAtZXRoZXJuZXQtY29udHJvbGxlci1kYXRhc2hlZXQucGRmDQoNCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWls
+aW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wu
+b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
