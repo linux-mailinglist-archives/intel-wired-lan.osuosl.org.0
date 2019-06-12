@@ -2,69 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2377842E29
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jun 2019 19:57:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C30B42E7E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jun 2019 20:21:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BEB6F865D6;
-	Wed, 12 Jun 2019 17:57:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AF44887675;
+	Wed, 12 Jun 2019 18:21:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ivempu-IXPlV; Wed, 12 Jun 2019 17:57:55 +0000 (UTC)
+	with ESMTP id s5M8xAz1VLrC; Wed, 12 Jun 2019 18:21:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2308C86704;
-	Wed, 12 Jun 2019 17:57:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 892CD8765A;
+	Wed, 12 Jun 2019 18:21:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E33EA1BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 17:57:53 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A39A41BF307
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 18:21:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF552865D6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 17:57:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9C0C18817B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 18:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oRk3OFedbE5X for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Jun 2019 17:57:52 +0000 (UTC)
+ with ESMTP id 0p2n3qCAJ3Qc for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Jun 2019 18:21:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D7EC686356
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 17:57:51 +0000 (UTC)
-Received: from mail-wr1-f70.google.com ([209.85.221.70])
- by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.76) (envelope-from <guilherme.piccoli@canonical.com>)
- id 1hb7VN-0004r7-O0
- for intel-wired-lan@lists.osuosl.org; Wed, 12 Jun 2019 17:57:49 +0000
-Received: by mail-wr1-f70.google.com with SMTP id b4so5991997wrw.4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 10:57:49 -0700 (PDT)
+Received: from mail-it1-f193.google.com (mail-it1-f193.google.com
+ [209.85.166.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E399A88158
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 18:21:26 +0000 (UTC)
+Received: by mail-it1-f193.google.com with SMTP id q14so12123697itc.5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 11:21:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LFgJjceVLK8bRVhgpl+PZ1cTjGNsIyo1uQboFFyMgXs=;
+ b=BMR0f/Q/QoYMK8ZnM0TkY74Wg6BQ6zOVdI8mFAzi9oEPnUSWzwvn1EysqICHzebvUR
+ Gvgr7w/xsGTu71iv9Y6F90f+sHX8kL+96ucMp91i5QTJV99PRNR5PTXIORrUN7fUT0DW
+ DRclwP88+nV0EQWEPYUI+TfjThp9Vd3wqJ/jw8k03PromyHmp3Ay5XIvIOUw1HZCQhKY
+ 9+6QaKHXamVn/k+x2r9Q/3uyrmWIkqcekjD3237faFPlxahkKfNFoQ1T5upuv9m0Q4SD
+ nvfRqGSoDtvZg7ZIGuuxQsG5NiRvE6GaCm+EQXy8sQHm49N0TAemabaLfwRgbrVtxxaX
+ 0QCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=s4IUnSSiIpl2lMpVYyoQTR+kVth6pxzLIVONQTtwkog=;
- b=KeGUMTU7ljL5LU5WCx/NqIGppiTfxe2HwXVf+wkyGdHo71K5hWDgQkl9zyM5nB+q7u
- yxW1ki04X/2h6fyXJvY1FUmXXVKBJgJMC0sAfINgMsW/eyJ7KYWSHoB/ebPB6kI4hm7+
- bzDNPXYq4RZ+OMzIomPMNoeqmuYhwkAC0bJ7NBfo2sWDeFk4CohmZus4LwjnRHMO5iIt
- RnQ1uO4yMfrFYXmd4YZMd3pihsfPvpF54KVGw378Ko3fQJFR1QqTRUsl8uyl2FJSyddE
- gO6M4pC0rcHoB3t7c51XTr3yTDsFx01Wi2IEY8OoRJkDv/98eADf0pN614fYter4oWh5
- ZIZg==
-X-Gm-Message-State: APjAAAX3euahzwZZqFh7t1E+4ukkgFzTbOcvJg2v8FJ1p4ynFJr9zkBw
- lN1BMcSZK+y8LYdfzs61pevBppxuunpGcrjXa4mYGy/gqiicpgCj+GHmVtH6iOScbZWzK3AQl/a
- 7jxDP3cW1fbYx2khaBfH7gzwa0VADPS5kK3Ii9JiDAOtk8cwAx6/JFK83+4AhL8c=
-X-Received: by 2002:a7b:c34b:: with SMTP id l11mr304391wmj.69.1560362269484;
- Wed, 12 Jun 2019 10:57:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyfsU8/1Yl9d30npTOqffOU7eY2Uv697hht2WnzTiwrWzFGiOV1ik3USp0TfuK7O1oeWw3Gn/qHFPMlfaHCyck=
-X-Received: by 2002:a7b:c34b:: with SMTP id l11mr304377wmj.69.1560362269256;
- Wed, 12 Jun 2019 10:57:49 -0700 (PDT)
+ bh=LFgJjceVLK8bRVhgpl+PZ1cTjGNsIyo1uQboFFyMgXs=;
+ b=aiTyJK5803NyGbf8x7wrT2uZZ79czkRzLsK53n27BtxSeFN38TJBZs7Hi1tE3WboVO
+ syzD2Eb+351Ul30sKWI9CuBQuVePkvVDqTXQoCFo7R17L6Hv/vGlcjiyVFSWgG0MMj//
+ APK8LmP1f2hVGZgQWL1rInnkWwA6L9bmrf0GeFZzZVDKnNWjvmajVss7098386OnLQPR
+ E91RdWx8fR/KfTQRUWj59pzLqCe5o6zrdIHEGC13TtfSURpsNhyrqiUjDpc1qG14sskr
+ FsYSezzWuwTqWCwF2I8TjZW+7wrQd+6QSK7vLnDNx2+tdXzwzKLEljMa6YwfFgbVk+0M
+ 52vg==
+X-Gm-Message-State: APjAAAXOuu+ep/GOf2BOSKT+PzQ3IDDbAAqbGLdtEHeP2hb+4EedixC+
+ uKaph44LzbcQS1GhjFgi1IVTpdXrAWgm1UxM/AI=
+X-Google-Smtp-Source: APXvYqwF23jC/VMbmrEAxTl1KyTb/waP+hsbIFM4MUgGw3eZctb/Ad7pv5DyxuXq25YHlO2iUj9LdtCiB9Y5/OKvfg8=
+X-Received: by 2002:a24:d145:: with SMTP id w66mr339905itg.71.1560363685910;
+ Wed, 12 Jun 2019 11:21:25 -0700 (PDT)
 MIME-Version: 1.0
 References: <B6CB929FEBC10D4FAC4BCA7EF2298E259DD2F265@FMSMSX110.amr.corp.intel.com>
- <CAHD1Q_zp_F0CMp-Z72R774-tPm3Vs+96m5DvKtmZbCTz6wAVjA@mail.gmail.com>
-In-Reply-To: <CAHD1Q_zp_F0CMp-Z72R774-tPm3Vs+96m5DvKtmZbCTz6wAVjA@mail.gmail.com>
-From: Guilherme Piccoli <gpiccoli@canonical.com>
-Date: Wed, 12 Jun 2019 14:57:12 -0300
-Message-ID: <CAHD1Q_zP2fiVmbL4gkubWO-AaU6n0CgR81RfihhhTjB4wTyKVA@mail.gmail.com>
+In-Reply-To: <B6CB929FEBC10D4FAC4BCA7EF2298E259DD2F265@FMSMSX110.amr.corp.intel.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Wed, 12 Jun 2019 11:21:14 -0700
+Message-ID: <CAKgT0UdRcMr6Lsm4cf3rGUt9a2SutU=VGO3miAOKiYbikQsL7g@mail.gmail.com>
 To: "Wang, Liang-min" <liang-min.wang@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH] ixgbevf: add control of skipping PF
  link-status check
@@ -80,29 +80,117 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Guilherme Piccoli <gpiccoli@canonical.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Oh, I can see the messages in the archive page now!
---
+On Wed, Jun 12, 2019 at 9:28 AM Wang, Liang-min
+<liang-min.wang@intel.com> wrote:
+>
+> ixgbevf: add control of skipping PF link-status check
+>
+>
+>
+> The ixgbevf link status check always triggers an interrupt on Physical Function (PF) driver because
+>
+> it uses mailbox read to check PF link-status. For any Virtual Network Function (VNF) implementation
+>
+> where periodical link-status check is needed, this interrupt per request becomes a significant
+>
+> performance overhead. Therefore, this change uses the input parameter, autoneg_wait_to_complete, to
+>
+> conditionally skip the PF link-status check. For scenarios where only quick Virtual Function (VF)
+>
+> link status check is required, application could skip the PF interrupt by setting autoneg_wait_to_complete
+>
+> to "0". For cases where deep link status check (include both PF and VF link status check) is required,
+>
+> the application can set the autoneg_wait_to_complete to "1".
+>
+>
+>
+> Signed-off-by: Liang-Min Wang<liang-min.wang@intel.com>
+>
+> Reviewed-by: Jeffrey T Kirsher<jeffrey.t.kirsher@intel.com>
+>
+> ---
+>
+> drivers/net/ethernet/intel/ixgbevf/vf.c | 10 ++++++++++
+>
+> 1 file changed, 10 insertions(+)
+>
+>
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbevf/vf.c b/drivers/net/ethernet/intel/ixgbevf/vf.c
+>
+> index d5ce496..951d8aa 100644
+>
+> --- a/drivers/net/ethernet/intel/ixgbevf/vf.c
+>
+> +++ b/drivers/net/ethernet/intel/ixgbevf/vf.c
+>
+> @@ -694,8 +694,18 @@ static s32 ixgbevf_check_mac_link_vf(struct ixgbe_hw *hw,
+>
+>       case IXGBE_LINKS_SPEED_100_82599:
+>
+>              *speed = IXGBE_LINK_SPEED_100_FULL;
+>
+>              break;
+>
+> +      default:
+>
+> +             *speed = IXGBE_LINK_SPEED_UNKNOWN;
+>
+>       }
+>
+> +      if (!autoneg_wait_to_complete) {
+>
+> +             if (*speed == IXGBE_LINK_SPEED_UNKNOWN)
+>
+> +                    mac->get_link_status = true;
+>
+> +             else
+>
+> +                    mac->get_link_status = false;
+>
+> +
+>
+> +             goto out;
+>
+> +      }
+>
+>       /* if the read failed it could just be a mailbox collision, best wait
+>
+>        * until we are called again and don't report an error
+>
+>        */
+>
+> --
+>
+> 2.4.11
 
-About the patch: I cannot build mainline with that due to
-IXGBE_LINK_SPEED_UNKNOWN,
-which is only defined as 0 in ixgbe_types.h, in ixgbe/ folder. The
-ixgbevf driver has no visibility to it.
+NAK.
 
-To circumvent that, I've added this define to ixgbevf/defines.h and it worked.
-Other than that, patch looks good.
+This seems completely wrong to me. I am pretty sure it will result in
+false link up messages and result in the VF reporting Tx hangs under
+several possible circumstances.
 
-Feel free to add:
-Reviewed-by: Guilherme G. Piccoli <gpiccoli@canonical.com>
+The only thing that should trigger a link status check request is
+ether resetting the interface, or if a mailbox message comes in. In
+either case we should be reading the mailbox anyway since we have to
+wait for the PF to say it is okay for us to proceed.
 
-cheers,
+I think a better fix would be to look at removing the lines that are
+setting get_link_status and calling check link from
+ixgbevf_get_link_ksettings if that is the issue. It doesn't make any
+sense to be calling down into the PF to get the status in that case.
+It should already be stored in the adapter struct in adapter->link_up
+and adapter->link_speed.
 
-Guilherme
+- Alex
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
