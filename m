@@ -1,52 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1BB34430F5
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jun 2019 22:24:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 147AA430F9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Jun 2019 22:26:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B6B220336;
-	Wed, 12 Jun 2019 20:24:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C03F787FDE;
+	Wed, 12 Jun 2019 20:26:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PAW9wDaBiId6; Wed, 12 Jun 2019 20:24:34 +0000 (UTC)
+	with ESMTP id x8eNccsYWJjY; Wed, 12 Jun 2019 20:26:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AD0B3204EC;
-	Wed, 12 Jun 2019 20:24:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6ACC187FFF;
+	Wed, 12 Jun 2019 20:26:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BAA431BF3E5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 20:24:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C6DD71BF3E5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 20:26:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B7194824BE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 20:24:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C18BF203F1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 20:26:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SWwjPpGuK5JR for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Jun 2019 20:24:31 +0000 (UTC)
+ with ESMTP id gbpAXYHefrpo for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Jun 2019 20:26:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 17EE081110
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 20:24:31 +0000 (UTC)
-X-Amp-Result: UNSCANNABLE
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id B550020336
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Jun 2019 20:26:19 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Jun 2019 13:24:30 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Jun 2019 13:26:19 -0700
 X-ExtLoop1: 1
-Received: from lcarlos-mobl.amr.corp.intel.com ([10.252.140.234])
- by fmsmga004.fm.intel.com with ESMTP; 12 Jun 2019 13:24:30 -0700
-Message-ID: <d96a913951ec3649171e9d5f1cf7ee8be9d41727.camel@intel.com>
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: "Wang, Liang-min" <liang-min.wang@intel.com>, 
+Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
+ by orsmga002.jf.intel.com with ESMTP; 12 Jun 2019 13:26:18 -0700
+Received: from FMSMSX110.amr.corp.intel.com ([169.254.14.89]) by
+ fmsmsx104.amr.corp.intel.com ([169.254.3.137]) with mapi id 14.03.0415.000;
+ Wed, 12 Jun 2019 13:26:16 -0700
+From: "Wang, Liang-min" <liang-min.wang@intel.com>
+To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 12 Jun 2019 13:24:29 -0700
-In-Reply-To: <B6CB929FEBC10D4FAC4BCA7EF2298E259DD2F265@FMSMSX110.amr.corp.intel.com>
+Thread-Topic: [PATCH] ixgbevf: add control of skipping PF link-status check
+Thread-Index: AdUguRPM3NrCemJIQiGy1Z4d033i6wA3m6uAAA6g6MA=
+Date: Wed, 12 Jun 2019 20:26:15 +0000
+Message-ID: <B6CB929FEBC10D4FAC4BCA7EF2298E259DD2F83C@FMSMSX110.amr.corp.intel.com>
 References: <B6CB929FEBC10D4FAC4BCA7EF2298E259DD2F265@FMSMSX110.amr.corp.intel.com>
-User-Agent: Evolution 3.32.2 (3.32.2-1.fc30) 
+ <d96a913951ec3649171e9d5f1cf7ee8be9d41727.camel@intel.com>
+In-Reply-To: <d96a913951ec3649171e9d5f1cf7ee8be9d41727.camel@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiODFlZGQ2NmEtZjJkZS00YjkzLTk1NzctM2U4MTRjZjQ3OGQxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNURJQVZDXC9SMmE5UUc3MnRiK2p4QU4razZLN0tMT0JETmlZamZuNFJrd2t1Mmp5YmgxajVaZlRHYVdiTURqaWIifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.600.7
+dlp-reaction: no-action
+x-originating-ip: [10.1.200.107]
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH] ixgbevf: add control of skipping PF
  link-status check
@@ -63,86 +78,54 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Guilherme Piccoli <gpiccoli@canonical.com>
-Content-Type: multipart/mixed; boundary="===============0546763292838872014=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+You ACK the patch, and that's why I manually added reviewed-by. 
 
---===============0546763292838872014==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Me0SVeYh0qqGUO1hYE5R"
+Larry
 
-
---=-Me0SVeYh0qqGUO1hYE5R
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, 2019-06-11 at 17:55 -0700, Wang, Liang-min wrote:
-> ixgbevf: add control of skipping PF link-status check
-> =20
-> The ixgbevf link status check always triggers an interrupt on Physical
-> Function (PF) driver because
-> it uses mailbox read to check PF link-status. For any Virtual Network
-> Function (VNF) implementation
-> where periodical link-status check is needed, this interrupt per request
-> becomes a significant
-> performance overhead. Therefore, this change uses the input parameter,
-> autoneg_wait_to_complete, to
-> conditionally skip the PF link-status check. For scenarios where only
-> quick Virtual Function (VF)
-> link status check is required, application could skip the PF interrupt by
-> setting autoneg_wait_to_complete
-> to "0". For cases where deep link status check (include both PF and VF
-> link status check) is required,
-> the application can set the autoneg_wait_to_complete to "1".
-> =20
-> Signed-off-by: Liang-Min Wang<liang-min.wang@intel.com>
-> Reviewed-by: Jeffrey T Kirsher<jeffrey.t.kirsher@intel.com>
-
-Interesting, I know I did an initial review, but I do not remember adding
-my reviewed-by to this patch yet.  FYI, I never use my full legal name when
-signing any patch, which tells me you forged my Reviewed-by.
-
-> ---
-> drivers/net/ethernet/intel/ixgbevf/vf.c | 10 ++++++++++
-> 1 file changed, 10 insertions(+)
-
-
---=-Me0SVeYh0qqGUO1hYE5R
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl0BX30ACgkQ5W/vlVpL
-7c46eQ/+Npcc4UWvUrswY/y4qgMsHJvHLtIhBR/hRYKVEPoP4wgQjdvm7ZAkmBe3
-ifjSCjCzzxaU50AsvGpXQkmY2B7MHxNqFmS1KVQicxq23HdlLwG1ZD6xa7kdyC9L
-xt+/76UfQLkwgyWKD5BksFeutzvoHDAVKnATym5hyaJgTXPOG5nwox+GP/2pbFpE
-nYS5fboLb6oS7duNotiK9rV2hKu2a72n6kDi5YLKbbb1ZwZWcGH8xvHDR9tWIuZf
-4jb/+nckud0H30muPEjtsdXEeQeIaQCUIRY7dN5LIoP32YCh/lVjyfpPkII4owAN
-Pkm3L3SgrGqfUY2J+dLTOgt4+Vj2v4zvgtP3ZC5PK2cghDkWY+7ojxNClHpaGgwe
-3V46Lo1rkC6y1xRi42wLvo4YPDKV61u948IpvK8MKLKlAtjhZk2d5ZOYqMOPdzlu
-WGWtD5vL0gU0R3rmkLbAV7pUEIQJNYFSRlORAd22mPxZN2XTvZybHWIS+zajRr5/
-3j0hogG2vf7g7v988YVdE3BxpOpjnX8BqthGCmKC3av8BENZtQ0Tfx6I18Rj4iR4
-BPY46na3xCvNSY577uBSGa+UaJCq10srrBQJTvJdpmJ68t+/75ITxZtvow900Gmf
-xWAlgMgnrrJm4cGjdYY09EoeUjxcpgS+hXsY4uENYkrx37iu7CE=
-=2fx0
------END PGP SIGNATURE-----
-
---=-Me0SVeYh0qqGUO1hYE5R--
-
-
---===============0546763292838872014==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> -----Original Message-----
+> From: Kirsher, Jeffrey T
+> Sent: Wednesday, June 12, 2019 4:24 PM
+> To: Wang, Liang-min <liang-min.wang@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Cc: Guilherme Piccoli <gpiccoli@canonical.com>
+> Subject: Re: [PATCH] ixgbevf: add control of skipping PF link-status check
+> 
+> On Tue, 2019-06-11 at 17:55 -0700, Wang, Liang-min wrote:
+> > ixgbevf: add control of skipping PF link-status check
+> >
+> > The ixgbevf link status check always triggers an interrupt on Physical
+> > Function (PF) driver because
+> > it uses mailbox read to check PF link-status. For any Virtual Network
+> > Function (VNF) implementation
+> > where periodical link-status check is needed, this interrupt per request
+> > becomes a significant
+> > performance overhead. Therefore, this change uses the input parameter,
+> > autoneg_wait_to_complete, to
+> > conditionally skip the PF link-status check. For scenarios where only
+> > quick Virtual Function (VF)
+> > link status check is required, application could skip the PF interrupt by
+> > setting autoneg_wait_to_complete
+> > to "0". For cases where deep link status check (include both PF and VF
+> > link status check) is required,
+> > the application can set the autoneg_wait_to_complete to "1".
+> >
+> > Signed-off-by: Liang-Min Wang<liang-min.wang@intel.com>
+> > Reviewed-by: Jeffrey T Kirsher<jeffrey.t.kirsher@intel.com>
+> 
+> Interesting, I know I did an initial review, but I do not remember adding
+> my reviewed-by to this patch yet.  FYI, I never use my full legal name when
+> signing any patch, which tells me you forged my Reviewed-by.
+> 
+> > ---
+> > drivers/net/ethernet/intel/ixgbevf/vf.c | 10 ++++++++++
+> > 1 file changed, 10 insertions(+)
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0546763292838872014==--
-
