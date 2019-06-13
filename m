@@ -1,50 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B65F432B7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 07:07:03 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE91B43305
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 08:57:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AD86D21503;
-	Thu, 13 Jun 2019 05:07:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9A9E987E9D;
+	Thu, 13 Jun 2019 06:57:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3npLEcSqgVtE; Thu, 13 Jun 2019 05:07:01 +0000 (UTC)
+	with ESMTP id D1sOd9PeuLsP; Thu, 13 Jun 2019 06:57:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A5AF42107F;
-	Thu, 13 Jun 2019 05:07:00 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6BB101BF373
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 05:06:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7D4E388159;
+	Thu, 13 Jun 2019 06:57:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E69E1BF23B
+ for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2019 06:57:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 67FCE86243
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 05:06:59 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 17E9B87FC9
+ for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2019 06:57:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eREEWjEdQ6Lu for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Jun 2019 05:06:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B252586228
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 05:06:58 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Jun 2019 22:06:58 -0700
-X-ExtLoop1: 1
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga008.fm.intel.com with ESMTP; 12 Jun 2019 22:06:57 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 13 Jun 2019 08:06:49 +0300
-Message-Id: <20190613050649.41402-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v2] e1000e: PCIm function state support
+ with ESMTP id 6R2AEBm5dMlr for <intel-wired-lan@osuosl.org>;
+ Thu, 13 Jun 2019 06:57:10 +0000 (UTC)
+X-Greylist: delayed 00:05:30 by SQLgrey-1.7.6
+Received: from forward103o.mail.yandex.net (forward103o.mail.yandex.net
+ [37.140.190.177])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C390D87E9D
+ for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2019 06:57:09 +0000 (UTC)
+Received: from mxback12o.mail.yandex.net (mxback12o.mail.yandex.net
+ [IPv6:2a02:6b8:0:1a2d::63])
+ by forward103o.mail.yandex.net (Yandex) with ESMTP id 8F8555F81ECA;
+ Thu, 13 Jun 2019 09:51:35 +0300 (MSK)
+Received: from smtp3p.mail.yandex.net (smtp3p.mail.yandex.net
+ [2a02:6b8:0:1472:2741:0:8b6:8])
+ by mxback12o.mail.yandex.net (nwsmtp/Yandex) with ESMTP id mSivkswPgc-pZXGYUTE;
+ Thu, 13 Jun 2019 09:51:35 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flussonic.com; s=mail;
+ t=1560408695; bh=Lf2EdQdZoRaxnZyoSsYxpwnmYSMNkb59dZga/5GUEFM=;
+ h=To:In-Reply-To:Subject:Cc:From:References:Date:Message-Id;
+ b=hnmmCbpXJrKl/85EacXNJPaYJbuKBdhLZxhGh7iEfgQGCjrx5cxeIoo7nvsXqwdoT
+ oh2Y++BjzO6oDS9OfOUc6Iip5NvzWcithw0S9VE4VWehC2tc4r5vloToX0OknuthZF
+ 0Mqa4kz7IPu1aYyNu9xnKvS8DtMKvDuRnnRFSz0E=
+Authentication-Results: mxback12o.mail.yandex.net;
+ dkim=pass header.i=@flussonic.com
+Received: by smtp3p.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
+ H0KmNBfxgB-pYJ4tnPa; Thu, 13 Jun 2019 09:51:34 +0300
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Client certificate not present)
+From: Max Lapshin <max@flussonic.com>
+Message-Id: <640C4F07-20AB-4D98-8A6D-770F0CE1C412@flussonic.com>
+Mime-Version: 1.0 (Mac OS X Mail 12.1 \(3445.101.1\))
+Date: Thu, 13 Jun 2019 09:51:34 +0300
+In-Reply-To: <3827f4b8-506d-f55a-3279-f8a17699ee5e@silicom-usa.com>
+To: Stephen Douthit <stephend@silicom-usa.com>
+References: <C0C7FF38-286F-46CA-909D-1A02EFDBBF0C@flussonic.com>
+ <3827f4b8-506d-f55a-3279-f8a17699ee5e@silicom-usa.com>
+X-Mailer: Apple Mail (2.3445.101.1)
+Subject: Re: [Intel-wired-lan] i350 software defined pins sysfs access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,86 +74,215 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
+Content-Type: multipart/mixed; boundary="===============9082945433002050463=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Due to commit: 5d8682588605 ("[misc] mei: me: allow runtime
-			pm for platform with D0i3")
-When disconnecting the cable and reconnecting it the NIC
-enters DMoff state. This caused wrong link indication
-and duplex mismatch. This bug is described in:
-https://bugzilla.redhat.com/show_bug.cgi?id=1689436
 
-Checking PCIm function state and performing PHY reset after a
-timeout in watchdog task solves this issue.
+--===============9082945433002050463==
+Content-Type: multipart/alternative;
+	boundary="Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5"
 
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
 
-V2: Fixed typos in commit massage
----
- drivers/net/ethernet/intel/e1000e/defines.h |  3 +++
- drivers/net/ethernet/intel/e1000e/netdev.c  | 18 +++++++++++++++++-
- 2 files changed, 20 insertions(+), 1 deletion(-)
+--Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
 
-diff --git a/drivers/net/ethernet/intel/e1000e/defines.h b/drivers/net/ethernet/intel/e1000e/defines.h
-index fd550dee4982..13877fe300f1 100644
---- a/drivers/net/ethernet/intel/e1000e/defines.h
-+++ b/drivers/net/ethernet/intel/e1000e/defines.h
-@@ -222,6 +222,9 @@
- #define E1000_STATUS_PHYRA      0x00000400      /* PHY Reset Asserted */
- #define E1000_STATUS_GIO_MASTER_ENABLE	0x00080000	/* Master Req status */
- 
-+/* PCIm function state */
-+#define E1000_STATUS_PCIM_STATE         0x40000000
-+
- #define HALF_DUPLEX 1
- #define FULL_DUPLEX 2
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index b081a1ef6859..c6a10fd30e4e 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -5173,8 +5173,9 @@ static void e1000_watchdog_task(struct work_struct *work)
- 	struct e1000_mac_info *mac = &adapter->hw.mac;
- 	struct e1000_phy_info *phy = &adapter->hw.phy;
- 	struct e1000_ring *tx_ring = adapter->tx_ring;
-+	u32 dmoff_exit_timeout = 100, tries = 0;
- 	struct e1000_hw *hw = &adapter->hw;
--	u32 link, tctl;
-+	u32 link, tctl, pcim_state;
- 
- 	if (test_bit(__E1000_DOWN, &adapter->state))
- 		return;
-@@ -5199,6 +5200,21 @@ static void e1000_watchdog_task(struct work_struct *work)
- 			/* Cancel scheduled suspend requests. */
- 			pm_runtime_resume(netdev->dev.parent);
- 
-+			/* Checking if MAC is in DMoff state*/
-+			pcim_state = er32(STATUS);
-+			while (pcim_state & E1000_STATUS_PCIM_STATE) {
-+				if (tries++ == dmoff_exit_timeout) {
-+					e_dbg("Error in exiting dmoff\n");
-+					break;
-+				}
-+				usleep_range(10000, 20000);
-+				pcim_state = er32(STATUS);
-+
-+				/* Checking if MAC exited DMoff state */
-+				if (!(pcim_state & E1000_STATUS_PCIM_STATE))
-+					e1000_phy_hw_reset(&adapter->hw);
-+			}
-+
- 			/* update snapshot of PHY registers on LSC */
- 			e1000_phy_read_status(adapter);
- 			mac->ops.get_link_up_info(&adapter->hw,
--- 
-2.11.0
+
+>=20
+> The igb driver already uses these pins for PTP if that's configured =
+and
+> the 82575 uses SDP3 as a power enable for SFP cages, sgmii PHYs, etc.
+> You'll need to avoid letting userspace poke at SDPs that the driver is
+> already using.
+
+I should write code to avoid touching these registers for these cases?
+
+>=20
+> Assuming this can coexist with the existing usage, why not register =
+this
+> as a gpio_chip with the gpiolib framework?
+
+Ok, I will  take a look at it.
+
+
+>=20
+>> Subject: [PATCH] i350: Add support for Intel i350 software defined =
+pins
+>>=20
+>> +
+>> +/* Software defined pins 2-3 */
+>> +#define IGB_CTRL_EXT_SDP2_DATA E1000_CTRL_EXT_SDP2_DATA /* Value of =
+SW Defineable Pin 2 */
+>> +#define IGB_CTRL_EXT_SDP3_DATA E1000_CTRL_EXT_SDP3_DATA /* Value of =
+SW Defineable Pin 3 */
+>> +#define IGB_CTRL_EXT_SDP2_DIR  E1000_CTRL_EXT_SDP2_DIR  /* SDP2 Data =
+direction */
+>> +#define IGB_CTRL_EXT_SDP3_DIR  E1000_CTRL_EXT_SDP3_DIR  /* SDP3 Data =
+direction */
+>=20
+> Looks like e1000_defines.h already has this info.
+>=20
+
+Only partially, so I decided to copy it to avoid situtation then I have =
+in one code  IGB_ and E1000_  defines.
+
+It is not good?=
+
+--Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; line-break: after-white-space;" class=3D""><br =
+class=3D""><div><blockquote type=3D"cite" class=3D""><div class=3D""><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;" class=3D"">The igb driver already uses =
+these pins for PTP if that's configured and</span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;" class=3D"">the 82575 uses SDP3 as a power =
+enable for SFP cages, sgmii PHYs, etc.</span><br style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: normal; letter-spacing: =
+normal; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none;" class=3D""><span style=3D"caret-color: rgb(0, 0, =
+0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none; float: none; display: inline !important;" =
+class=3D"">You'll need to avoid letting userspace poke at SDPs that the =
+driver is</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none;" class=3D""><span style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none; float: none; display: inline !important;" class=3D"">already =
+using.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none;" class=3D""></div></blockquote><div><br class=3D""></div><div>I =
+should write code to avoid touching these registers for these =
+cases?</div><br class=3D""><blockquote type=3D"cite" class=3D""><div =
+class=3D""><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none;" class=3D""><span style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none; float: none; display: inline !important;" class=3D"">Assuming this =
+can coexist with the existing usage, why not register this</span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;" class=3D"">as a gpio_chip with the gpiolib =
+framework?</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: normal; letter-spacing: normal; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
+none;" class=3D""></div></blockquote><div><br class=3D""></div><div>Ok, =
+I will &nbsp;take a look at it.</div><div><br class=3D""></div><br =
+class=3D""><blockquote type=3D"cite" class=3D""><div class=3D""><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" =
+class=3D""><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: normal; letter-spacing: normal; orphans: auto; text-align: =
+start; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" =
+class=3D"">Subject: [PATCH] i350: Add support for Intel i350 software =
+defined pins<br class=3D""><br class=3D"">+<br class=3D"">+/* Software =
+defined pins 2-3 */<br class=3D"">+#define IGB_CTRL_EXT_SDP2_DATA =
+E1000_CTRL_EXT_SDP2_DATA /* Value of SW Defineable Pin 2 */<br =
+class=3D"">+#define IGB_CTRL_EXT_SDP3_DATA E1000_CTRL_EXT_SDP3_DATA /* =
+Value of SW Defineable Pin 3 */<br class=3D"">+#define =
+IGB_CTRL_EXT_SDP2_DIR &nbsp;E1000_CTRL_EXT_SDP2_DIR &nbsp;/* SDP2 Data =
+direction */<br class=3D"">+#define IGB_CTRL_EXT_SDP3_DIR =
+&nbsp;E1000_CTRL_EXT_SDP3_DIR &nbsp;/* SDP3 Data direction */<br =
+class=3D""></blockquote><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none;" class=3D""><span style=3D"caret-color: rgb(0, 0, =
+0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration: none; float: none; display: inline !important;" =
+class=3D"">Looks like e1000_defines.h already has this info.</span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: =
+normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none;" =
+class=3D""></div></blockquote><div><br class=3D""></div></div>Only =
+partially, so I decided to copy it to avoid situtation then I have in =
+one code &nbsp;IGB_ and E1000_ &nbsp;defines.<div class=3D""><br =
+class=3D""></div><div class=3D"">It is not good?</div></body></html>=
+
+--Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5--
+
+--===============9082945433002050463==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============9082945433002050463==--
