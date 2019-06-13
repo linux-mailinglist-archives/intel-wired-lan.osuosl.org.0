@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29D4E4499A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 19:23:52 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E00C644999
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 19:23:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3101887801;
-	Thu, 13 Jun 2019 17:23:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A965685DF2;
+	Thu, 13 Jun 2019 17:23:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5zTcsNzdmx3D; Thu, 13 Jun 2019 17:23:47 +0000 (UTC)
+	with ESMTP id jEuVvgQLw5CK; Thu, 13 Jun 2019 17:23:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E473C87841;
-	Thu, 13 Jun 2019 17:23:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 51A0C866AD;
+	Thu, 13 Jun 2019 17:23:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4E2D71BF363
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 72CBE1BF363
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:38:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4B8E187E81
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:55 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7012787E81
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C93CRQc0-Cmm for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Jun 2019 07:37:54 +0000 (UTC)
+ with ESMTP id Th-vbn5AGETO for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Jun 2019 07:37:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DB09485EE8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DD03585EE8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:59 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2019 00:37:54 -0700
+ 13 Jun 2019 00:37:59 -0700
 X-ExtLoop1: 1
 Received: from mkarlsso-mobl.ger.corp.intel.com (HELO VM.ger.corp.intel.com)
  ([10.103.211.41])
- by orsmga004.jf.intel.com with ESMTP; 13 Jun 2019 00:37:49 -0700
+ by orsmga004.jf.intel.com with ESMTP; 13 Jun 2019 00:37:54 -0700
 From: Magnus Karlsson <magnus.karlsson@intel.com>
 To: magnus.karlsson@intel.com, bjorn.topel@intel.com, ast@kernel.org,
  daniel@iogearbox.net, netdev@vger.kernel.org, brouer@redhat.com
-Date: Thu, 13 Jun 2019 09:37:27 +0200
-Message-Id: <1560411450-29121-4-git-send-email-magnus.karlsson@intel.com>
+Date: Thu, 13 Jun 2019 09:37:28 +0200
+Message-Id: <1560411450-29121-5-git-send-email-magnus.karlsson@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1560411450-29121-1-git-send-email-magnus.karlsson@intel.com>
 References: <1560411450-29121-1-git-send-email-magnus.karlsson@intel.com>
 X-Mailman-Approved-At: Thu, 13 Jun 2019 17:23:43 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next 3/6] i40e: add support for AF_XDP
- need_wakup feature
+Subject: [Intel-wired-lan] [PATCH bpf-next 4/6] ixgbe: add support for
+ AF_XDP need_wakup feature
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,18 +84,17 @@ interrupts and return to the application.
 
 Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 16 ++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 16 ++++++++++++++++
  1 file changed, 16 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index 32be3dd..1863974 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -625,6 +625,15 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index 1a1add8..a4bb50d 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -597,6 +597,14 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 	q_vector->rx.total_packets += total_rx_packets;
+ 	q_vector->rx.total_bytes += total_rx_bytes;
  
- 	i40e_finalize_xdp_rx(rx_ring, xdp_xmit);
- 	i40e_update_rx_stats(rx_ring, total_rx_bytes, total_rx_packets);
-+
 +	if (xsk_umem_uses_might_sleep(rx_ring->xsk_umem)) {
 +		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
 +			xsk_set_rx_need_wakeup(rx_ring->xsk_umem);
@@ -107,10 +106,11 @@ index 32be3dd..1863974 100644
  	return failure ? budget : (int)total_rx_packets;
  }
  
-@@ -758,6 +767,13 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
- out_xmit:
- 	xmit_done = i40e_xmit_zc(tx_ring, budget);
+@@ -736,6 +744,14 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+ 		xsk_umem_complete_tx(umem, xsk_frames);
  
+ 	xmit_done = ixgbe_xmit_zc(tx_ring, q_vector->tx.work_limit);
++
 +	if (xsk_umem_uses_might_sleep(tx_ring->xsk_umem)) {
 +		if (tx_ring->next_to_clean == tx_ring->next_to_use)
 +			xsk_set_tx_need_wakeup(tx_ring->xsk_umem);
@@ -118,7 +118,7 @@ index 32be3dd..1863974 100644
 +			xsk_clear_tx_need_wakeup(tx_ring->xsk_umem);
 +	}
 +
- 	return work_done && xmit_done;
+ 	return budget > 0 && xmit_done;
  }
  
 -- 
