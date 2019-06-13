@@ -2,66 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE91B43305
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 08:57:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4615644995
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 19:23:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9A9E987E9D;
-	Thu, 13 Jun 2019 06:57:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AEB23882BE;
+	Thu, 13 Jun 2019 17:23:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D1sOd9PeuLsP; Thu, 13 Jun 2019 06:57:12 +0000 (UTC)
+	with ESMTP id oL0ai1tuHqKK; Thu, 13 Jun 2019 17:23:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7D4E388159;
-	Thu, 13 Jun 2019 06:57:12 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1E69E1BF23B
- for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2019 06:57:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 09200882BA;
+	Thu, 13 Jun 2019 17:23:44 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 71BF31BF363
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 17E9B87FC9
- for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2019 06:57:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6919B2107D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6R2AEBm5dMlr for <intel-wired-lan@osuosl.org>;
- Thu, 13 Jun 2019 06:57:10 +0000 (UTC)
-X-Greylist: delayed 00:05:30 by SQLgrey-1.7.6
-Received: from forward103o.mail.yandex.net (forward103o.mail.yandex.net
- [37.140.190.177])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C390D87E9D
- for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2019 06:57:09 +0000 (UTC)
-Received: from mxback12o.mail.yandex.net (mxback12o.mail.yandex.net
- [IPv6:2a02:6b8:0:1a2d::63])
- by forward103o.mail.yandex.net (Yandex) with ESMTP id 8F8555F81ECA;
- Thu, 13 Jun 2019 09:51:35 +0300 (MSK)
-Received: from smtp3p.mail.yandex.net (smtp3p.mail.yandex.net
- [2a02:6b8:0:1472:2741:0:8b6:8])
- by mxback12o.mail.yandex.net (nwsmtp/Yandex) with ESMTP id mSivkswPgc-pZXGYUTE;
- Thu, 13 Jun 2019 09:51:35 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flussonic.com; s=mail;
- t=1560408695; bh=Lf2EdQdZoRaxnZyoSsYxpwnmYSMNkb59dZga/5GUEFM=;
- h=To:In-Reply-To:Subject:Cc:From:References:Date:Message-Id;
- b=hnmmCbpXJrKl/85EacXNJPaYJbuKBdhLZxhGh7iEfgQGCjrx5cxeIoo7nvsXqwdoT
- oh2Y++BjzO6oDS9OfOUc6Iip5NvzWcithw0S9VE4VWehC2tc4r5vloToX0OknuthZF
- 0Mqa4kz7IPu1aYyNu9xnKvS8DtMKvDuRnnRFSz0E=
-Authentication-Results: mxback12o.mail.yandex.net;
- dkim=pass header.i=@flussonic.com
-Received: by smtp3p.mail.yandex.net (nwsmtp/Yandex) with ESMTPSA id
- H0KmNBfxgB-pYJ4tnPa; Thu, 13 Jun 2019 09:51:34 +0300
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (Client certificate not present)
-From: Max Lapshin <max@flussonic.com>
-Message-Id: <640C4F07-20AB-4D98-8A6D-770F0CE1C412@flussonic.com>
-Mime-Version: 1.0 (Mac OS X Mail 12.1 \(3445.101.1\))
-Date: Thu, 13 Jun 2019 09:51:34 +0300
-In-Reply-To: <3827f4b8-506d-f55a-3279-f8a17699ee5e@silicom-usa.com>
-To: Stephen Douthit <stephend@silicom-usa.com>
-References: <C0C7FF38-286F-46CA-909D-1A02EFDBBF0C@flussonic.com>
- <3827f4b8-506d-f55a-3279-f8a17699ee5e@silicom-usa.com>
-X-Mailer: Apple Mail (2.3445.101.1)
-Subject: Re: [Intel-wired-lan] i350 software defined pins sysfs access
+ with ESMTP id KQMU03b3ExWT for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Jun 2019 07:37:40 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1D1C120345
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 07:37:40 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2019 00:37:39 -0700
+X-ExtLoop1: 1
+Received: from mkarlsso-mobl.ger.corp.intel.com (HELO VM.ger.corp.intel.com)
+ ([10.103.211.41])
+ by orsmga004.jf.intel.com with ESMTP; 13 Jun 2019 00:37:34 -0700
+From: Magnus Karlsson <magnus.karlsson@intel.com>
+To: magnus.karlsson@intel.com, bjorn.topel@intel.com, ast@kernel.org,
+ daniel@iogearbox.net, netdev@vger.kernel.org, brouer@redhat.com
+Date: Thu, 13 Jun 2019 09:37:24 +0200
+Message-Id: <1560411450-29121-1-git-send-email-magnus.karlsson@intel.com>
+X-Mailer: git-send-email 2.7.4
+MIME-Version: 1.0
+X-Mailman-Approved-At: Thu, 13 Jun 2019 17:23:42 +0000
+Subject: [Intel-wired-lan] [PATCH bpf-next 0/6] add need_wakeup flag to the
+ AF_XDP rings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,215 +62,132 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Content-Type: multipart/mixed; boundary="===============9082945433002050463=="
+Cc: axboe@kernel.dk, maximmi@mellanox.com, kevin.laatz@intel.com,
+ jakub.kicinski@netronome.com, maciejromanfijalkowski@gmail.com,
+ bruce.richardson@intel.com, ciara.loftus@intel.com,
+ ilias.apalodimas@linaro.org, xiaolong.ye@intel.com,
+ intel-wired-lan@lists.osuosl.org, qi.z.zhang@intel.com,
+ maciej.fijalkowski@intel.com, bpf@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
---===============9082945433002050463==
-Content-Type: multipart/alternative;
-	boundary="Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5"
-
-
---Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
-
-
->=20
-> The igb driver already uses these pins for PTP if that's configured =
-and
-> the 82575 uses SDP3 as a power enable for SFP cages, sgmii PHYs, etc.
-> You'll need to avoid letting userspace poke at SDPs that the driver is
-> already using.
-
-I should write code to avoid touching these registers for these cases?
-
->=20
-> Assuming this can coexist with the existing usage, why not register =
-this
-> as a gpio_chip with the gpiolib framework?
-
-Ok, I will  take a look at it.
-
-
->=20
->> Subject: [PATCH] i350: Add support for Intel i350 software defined =
-pins
->>=20
->> +
->> +/* Software defined pins 2-3 */
->> +#define IGB_CTRL_EXT_SDP2_DATA E1000_CTRL_EXT_SDP2_DATA /* Value of =
-SW Defineable Pin 2 */
->> +#define IGB_CTRL_EXT_SDP3_DATA E1000_CTRL_EXT_SDP3_DATA /* Value of =
-SW Defineable Pin 3 */
->> +#define IGB_CTRL_EXT_SDP2_DIR  E1000_CTRL_EXT_SDP2_DIR  /* SDP2 Data =
-direction */
->> +#define IGB_CTRL_EXT_SDP3_DIR  E1000_CTRL_EXT_SDP3_DIR  /* SDP3 Data =
-direction */
->=20
-> Looks like e1000_defines.h already has this info.
->=20
-
-Only partially, so I decided to copy it to avoid situtation then I have =
-in one code  IGB_ and E1000_  defines.
-
-It is not good?=
-
---Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=us-ascii
-
-<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; =
-charset=3Dus-ascii"></head><body style=3D"word-wrap: break-word; =
--webkit-nbsp-mode: space; line-break: after-white-space;" class=3D""><br =
-class=3D""><div><blockquote type=3D"cite" class=3D""><div class=3D""><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;" class=3D"">The igb driver already uses =
-these pins for PTP if that's configured and</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;" class=3D"">the 82575 uses SDP3 as a power =
-enable for SFP cages, sgmii PHYs, etc.</span><br style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: normal; letter-spacing: =
-normal; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;" class=3D""><span style=3D"caret-color: rgb(0, 0, =
-0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline !important;" =
-class=3D"">You'll need to avoid letting userspace poke at SDPs that the =
-driver is</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;" class=3D""><span style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none; float: none; display: inline !important;" class=3D"">already =
-using.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;" class=3D""></div></blockquote><div><br class=3D""></div><div>I =
-should write code to avoid touching these registers for these =
-cases?</div><br class=3D""><blockquote type=3D"cite" class=3D""><div =
-class=3D""><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;" class=3D""><span style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none; float: none; display: inline !important;" class=3D"">Assuming this =
-can coexist with the existing usage, why not register this</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;" class=3D"">as a gpio_chip with the gpiolib =
-framework?</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: normal; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;" class=3D""></div></blockquote><div><br class=3D""></div><div>Ok, =
-I will &nbsp;take a look at it.</div><div><br class=3D""></div><br =
-class=3D""><blockquote type=3D"cite" class=3D""><div class=3D""><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;" =
-class=3D""><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: normal; letter-spacing: normal; orphans: auto; text-align: =
-start; text-indent: 0px; text-transform: none; white-space: normal; =
-widows: auto; word-spacing: 0px; -webkit-text-size-adjust: auto; =
--webkit-text-stroke-width: 0px; text-decoration: none;" =
-class=3D"">Subject: [PATCH] i350: Add support for Intel i350 software =
-defined pins<br class=3D""><br class=3D"">+<br class=3D"">+/* Software =
-defined pins 2-3 */<br class=3D"">+#define IGB_CTRL_EXT_SDP2_DATA =
-E1000_CTRL_EXT_SDP2_DATA /* Value of SW Defineable Pin 2 */<br =
-class=3D"">+#define IGB_CTRL_EXT_SDP3_DATA E1000_CTRL_EXT_SDP3_DATA /* =
-Value of SW Defineable Pin 3 */<br class=3D"">+#define =
-IGB_CTRL_EXT_SDP2_DIR &nbsp;E1000_CTRL_EXT_SDP2_DIR &nbsp;/* SDP2 Data =
-direction */<br class=3D"">+#define IGB_CTRL_EXT_SDP3_DIR =
-&nbsp;E1000_CTRL_EXT_SDP3_DIR &nbsp;/* SDP3 Data direction */<br =
-class=3D""></blockquote><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;" class=3D""><span style=3D"caret-color: rgb(0, 0, =
-0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: normal; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline !important;" =
-class=3D"">Looks like e1000_defines.h already has this info.</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;" class=3D""><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: =
-normal; letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;" =
-class=3D""></div></blockquote><div><br class=3D""></div></div>Only =
-partially, so I decided to copy it to avoid situtation then I have in =
-one code &nbsp;IGB_ and E1000_ &nbsp;defines.<div class=3D""><br =
-class=3D""></div><div class=3D"">It is not good?</div></body></html>=
-
---Apple-Mail=_AC8511BE-96BE-4A08-A0E1-18E74E7097C5--
-
---===============9082945433002050463==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============9082945433002050463==--
+ClRoaXMgcGF0Y2ggc2V0IGFkZHMgc3VwcG9ydCBmb3IgYSBuZXcgZmxhZyBjYWxsZWQgbmVlZF93
+YWtldXAgaW4gdGhlCkFGX1hEUCBUeCBhbmQgZmlsbCByaW5ncy4gV2hlbiB0aGlzIGZsYWcgaXMg
+c2V0IGJ5IHRoZSBkcml2ZXIsIGl0Cm1lYW5zIHRoYXQgdGhlIGFwcGxpY2F0aW9uIGhhcyB0byBl
+eHBsaWNpdGx5IHdha2UgdXAgdGhlIGtlcm5lbCBSeAooZm9yIHRoZSBiaXQgaW4gdGhlIGZpbGwg
+cmluZykgb3Iga2VybmVsIFR4IChmb3IgYml0IGluIHRoZSBUeCByaW5nKQpwcm9jZXNzaW5nIGJ5
+IGlzc3VpbmcgYSBzeXNjYWxsLiBQb2xsKCkgY2FuIHdha2UgdXAgYm90aCBhbmQgc2VuZHRvKCkK
+d2lsbCB3YWtlIHVwIFR4IHByb2Nlc3Npbmcgb25seS4KClRoZSBtYWluIHJlYXNvbiBmb3IgaW50
+cm9kdWNpbmcgdGhpcyBuZXcgZmxhZyBpcyB0byBiZSBhYmxlIHRvCmVmZmljaWVudGx5IHN1cHBv
+cnQgdGhlIGNhc2Ugd2hlbiBhcHBsaWNhdGlvbiBhbmQgZHJpdmVyIGlzIGV4ZWN1dGluZwpvbiB0
+aGUgc2FtZSBjb3JlLiBQcmV2aW91c2x5LCB0aGUgZHJpdmVyIHdhcyBqdXN0IGJ1c3ktc3Bpbm5p
+bmcgb24gdGhlCmZpbGwgcmluZyBpZiBpdCByYW4gb3V0IG9mIGJ1ZmZlcnMgaW4gdGhlIEhXIGFu
+ZCB0aGVyZSB3ZXJlIG5vbmUgdG8KZ2V0IGZyb20gdGhlIGZpbGwgcmluZy4gVGhpcyBhcHByb2Fj
+aCB3b3JrcyB3aGVuIHRoZSBhcHBsaWNhdGlvbiBhbmQKZHJpdmVyIGlzIHJ1bm5pbmcgb24gZGlm
+ZmVyZW50IGNvcmVzIGFzIHRoZSBhcHBsaWNhdGlvbiBjYW4gcmVwbGVuaXNoCnRoZSBmaWxsIHJp
+bmcgd2hpbGUgdGhlIGRyaXZlciBpcyBidXN5LXNwaW5uaW5nLiBUaG91Z2gsIHRoaXMgaXMgYQps
+b3VzeSBhcHByb2FjaCBpZiBib3RoIG9mIHRoZW0gYXJlIHJ1bm5pbmcgb24gdGhlIHNhbWUgY29y
+ZSBhcyB0aGUKcHJvYmFiaWxpdHkgb2YgdGhlIGZpbGwgcmluZyBnZXR0aW5nIG1vcmUgZW50cmll
+cyB3aGVuIHRoZSBkcml2ZXIgaXMKYnVzeS1zcGlubmluZyBpcyB6ZXJvLiBXaXRoIHRoaXMgbmV3
+IGZlYXR1cmUgdGhlIGRyaXZlciBub3cgc2V0cyB0aGUKbmVlZF93YWtldXAgZmxhZyBhbmQgcmV0
+dXJucyB0byB0aGUgYXBwbGljYXRpb24uIFRoZSBhcHBsaWNhdGlvbiBjYW4KdGhlbiByZXBsZW5p
+c2ggdGhlIGZpbGwgcXVldWUgYW5kIHRoZW4gZXhwbGljaXRseSB3YWtlIHVwIHRoZSBSeApwcm9j
+ZXNzaW5nIGluIHRoZSBrZXJuZWwgdXNpbmcgdGhlIHN5c2NhbGwgcG9sbCgpLiBGb3IgVHgsIHRo
+ZSBmbGFnIGlzCm9ubHkgc2V0IHRvIG9uZSBpZiB0aGUgZHJpdmVyIGhhcyBubyBvdXRzdGFuZGlu
+ZyBUeCBjb21wbGV0aW9uCmludGVycnVwdHMuIElmIGl0IGhhcyBzb21lLCB0aGUgZmxhZyBpcyB6
+ZXJvIGFzIGl0IHdpbGwgYmUgd29rZW4gdXAgYnkKYSBjb21wbGV0aW9uIGludGVycnVwdCBhbnl3
+YXkuIFRoaXMgZmxhZyBjYW4gYWxzbyBiZSB1c2VkIGluIG90aGVyCnNpdHVhdGlvbnMgd2hlcmUg
+dGhlIGRyaXZlciBuZWVkcyB0byBiZSB3b2tlbiB1cCBleHBsaWNpdGx5LgoKQXMgYSBuaWNlIHNp
+ZGUgZWZmZWN0LCB0aGlzIG5ldyBmbGFnIGFsc28gaW1wcm92ZXMgdGhlIFR4IHBlcmZvcm1hbmNl
+Cm9mIHRoZSBjYXNlIHdoZXJlIGFwcGxpY2F0aW9uIGFuZCBkcml2ZXIgYXJlIHJ1bm5pbmcgb24g
+dHdvIGRpZmZlcmVudApjb3JlcyBhcyBpdCByZWR1Y2VzIHRoZSBudW1iZXIgb2Ygc3lzY2FsbHMg
+dG8gdGhlIGtlcm5lbC4gVGhlIGtlcm5lbAp0ZWxscyB1c2VyIHNwYWNlIGlmIGl0IG5lZWRzIHRv
+IGJlIHdva2VuIHVwIGJ5IGEgc3lzY2FsbCwgYW5kIHRoaXMKZWxpbWluYXRlcyBtYW55IG9mIHRo
+ZSBzeXNjYWxscy4gVGhlIFJ4IHBlcmZvcm1hbmNlIG9mIHRoZSAyLWNvcmUgY2FzZQppcyBvbiB0
+aGUgb3RoZXIgaGFuZCBzbGlnaHRseSB3b3JzZSwgc2luY2UgdGhlcmUgaXMgYSBuZWVkIHRvIHVz
+ZSBhCnN5c2NhbGwgbm93IHRvIHdha2UgdXAgdGhlIGRyaXZlciwgaW5zdGVhZCBvZiB0aGUgZHJp
+dmVyCmJ1c3ktc3Bpbm5pbmcuIEl0IGRvZXMgd2FzdGUgbGVzcyBDUFUgY3ljbGVzIHRob3VnaCwg
+d2hpY2ggbWlnaHQgbGVhZAp0byBiZXR0ZXIgb3ZlcmFsbCBzeXN0ZW0gcGVyZm9ybWFuY2UuCgpU
+aGlzIG5ldyBmbGFnIG5lZWRzIHNvbWUgc2ltcGxlIGRyaXZlciBzdXBwb3J0LiBJZiB0aGUgZHJp
+dmVyIGRvZXMgbm90CnN1cHBvcnQgaXQsIHRoZSBSeCBmbGFnIGlzIGFsd2F5cyB6ZXJvIGFuZCB0
+aGUgVHggZmxhZyBpcyBhbHdheXMKb25lLiBUaGlzIG1ha2VzIGFueSBhcHBsaWNhdGlvbiByZWx5
+aW5nIG9uIHRoaXMgZmVhdHVyZSBkZWZhdWx0IHRvIHRoZQpvbGQgYmVoYXZpb3Igb2Ygbm90IHJl
+cXVpcmluZyBhbnkgc3lzY2FsbHMgaW4gdGhlIFJ4IHBhdGggYW5kIGFsd2F5cwpoYXZpbmcgdG8g
+Y2FsbCBzZW5kdG8oKSBpbiB0aGUgVHggcGF0aC4KCkZvciBiYWNrd2FyZHMgY29tcGF0aWJpbGl0
+eSByZWFzb25zLCB0aGlzIGZlYXR1cmUgaGFzIHRvIGJlIGV4cGxpY2l0bHkKdHVybmVkIG9uIHVz
+aW5nIGEgbmV3IGJpbmQgZmxhZyAoWERQX1VTRV9ORUVEX1dBS0VVUCkuIEkgcmVjb21tZW5kCnRo
+YXQgeW91IGFsd2F5cyB0dXJuIGl0IG9uIGFzIGl0IGhhcyBhIGxhcmdlIHBvc2l0aXZlIHBlcmZv
+cm1hbmNlCmltcGFjdCBmb3IgdGhlIG9uZSBjb3JlIGNhc2UgYW5kIGRvZXMgbm90IGRlZ3JhZGUg
+MiBjb3JlIHBlcmZvcm1hbmNlCmFuZCBhY3R1YWxseSBpbXByb3ZlcyBpdCBmb3IgVHggaGVhdnkg
+d29ya2xvYWRzLgoKSGVyZSBhcmUgc29tZSBwZXJmb3JtYW5jZSBudW1iZXJzIG1lYXN1cmVkIG9u
+IG15IGxvY2FsLApub24tcGVyZm9ybWFuY2Ugb3B0aW1pemVkIGRldmVsb3BtZW50IHN5c3RlbS4g
+VGhhdCBpcyB3aHkgeW91IGFyZQpzZWVpbmcgbnVtYmVycyBsb3dlciB0aGFuIHRoZSBvbmVzIGZy
+b20gQmrDtnJuIGFuZCBKZXNwZXIuIDY0IGJ5dGUKcGFja2V0cyBhdCA0MEdiaXQvcyBsaW5lIHJh
+dGUuIEFsbCByZXN1bHRzIGluIE1wcHMuIENvcmVzID09IDEgbWVhbnMKdGhhdCBib3RoIGFwcGxp
+Y2F0aW9uIGFuZCBkcml2ZXIgaXMgZXhlY3V0aW5nIG9uIHRoZSBzYW1lIGNvcmUuIENvcmVzCj09
+IDIgdGhhdCB0aGV5IGFyZSBvbiBkaWZmZXJlbnQgY29yZXMuCgogICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICBBcHBsaWNhdGlvbnMKbmVlZF93YWtldXAgIGNvcmVzICAgIHR4cHVzaCAgICBy
+eGRyb3AgICAgICBsMmZ3ZAotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KICAgICBuICAgICAgICAgMSAgICAgICAwLjA3ICAgICAg
+MC4wNiAgICAgICAgMC4wMwogICAgIHkgICAgICAgICAxICAgICAgIDIxLjYgICAgICA4LjIgICAg
+ICAgICA2LjUKICAgICBuICAgICAgICAgMiAgICAgICAzMi4zICAgICAgMTEuNyAgICAgICAgOC43
+CiAgICAgeSAgICAgICAgIDIgICAgICAgMzMuMSAgICAgIDExLjcgICAgICAgIDguNwoKT3ZlcmFs
+bCwgdGhlIG5lZWRfd2FrZXVwIGZsYWcgcHJvdmlkZXMgdGhlIHNhbWUgb3IgYmV0dGVyIHBlcmZv
+cm1hbmNlCmluIGFsbCB0aGUgbWljcm8tYmVuY2htYXJrcy4gVGhlIHJlZHVjdGlvbiBvZiBzZW5k
+dG8oKSBjYWxscyBpbiB0eHB1c2gKaXMgbGFyZ2UuIE9ubHkgYSBmZXcgcGVyIHNlY29uZCBpcyBu
+ZWVkZWQuIEZvciBsMmZ3ZCwgdGhlIGRyb3AgaXMgNTAlCmZvciB0aGUgMSBjb3JlIGNhc2UgYW5k
+IG1vcmUgdGhhbiA5OS45JSBmb3IgdGhlIDIgY29yZSBjYXNlLiBEbyBub3QKa25vdyB3aHkgSSBh
+bSBub3Qgc2VlaW5nIHRoZSBzYW1lIGRyb3AgZm9yIHRoZSAxIGNvcmUgY2FzZSB5ZXQuCgpUaGUg
+bmFtZSBhbmQgaW5zcGlyYXRpb24gb2YgdGhlIGZsYWcgaGFzIGJlZW4gdGFrZW4gZnJvbSBpb191
+cmluZyBieQpKZW5zIEF4Ym9lLiBEZXRhaWxzIGFib3V0IHRoaXMgZmVhdHVyZSBpbiBpb191cmlu
+ZyBjYW4gYmUgZm91bmQgaW4KaHR0cDovL2tlcm5lbC5kay9pb191cmluZy5wZGYsIHNlY3Rpb24g
+OC4zLiBJdCBhbHNvIGFkZHJlc3NlcyBtb3N0IG9mCnRoZSBkZW5pYWwgb2Ygc2VydmljZSBhbmQg
+c2VuZHRvKCkgY29uY2VybnMgcmFpc2VkIGJ5IE1heGltCk1pa2l0eWFuc2tpeSBpbiBodHRwczov
+L3d3dy5zcGluaWNzLm5ldC9saXN0cy9uZXRkZXYvbXNnNTU0NjU3Lmh0bWwuCgpUaGUgdHlwaWNh
+bCBUeCBwYXJ0IG9mIGFuIGFwcGxpY2F0aW9uIHdpbGwgaGF2ZSB0byBjaGFuZ2UgZnJvbToKCnJl
+dCA9IHNlbmR0byhmZCwuLi4uKQoKdG86CgppZiAoeHNrX3JpbmdfcHJvZF9fbmVlZHNfd2FrZXVw
+KCZ4c2stPnR4KSkKICAgICAgIHJldCA9IHNlbmR0byhmZCwuLi4uKQoKYW5kIHRoIFJ4IHBhcnQg
+ZnJvbToKCnJjdmQgPSB4c2tfcmluZ19jb25zX19wZWVrKCZ4c2stPnJ4LCBCQVRDSF9TSVpFLCAm
+aWR4X3J4KTsKaWYgKCFyY3ZkKQogICAgICAgcmV0dXJuOwoKdG86CgpyY3ZkID0geHNrX3Jpbmdf
+Y29uc19fcGVlaygmeHNrLT5yeCwgQkFUQ0hfU0laRSwgJmlkeF9yeCk7CmlmICghcmN2ZCkgewog
+ICAgICAgaWYgKHhza19yaW5nX3Byb2RfX25lZWRzX3dha2V1cCgmeHNrLT51bWVtLT5mcSkpCiAg
+ICAgICAgICAgICAgcmV0ID0gcG9sbChmZCwuLi4uLik7CiAgICAgICByZXR1cm47Cn0KClRoaXMg
+cGF0Y2ggaGFzIGJlZW4gYXBwbGllZCBhZ2FpbnN0IGNvbW1pdCBhZWU0NTBjYmU0ODIgKCJicGY6
+IHNpbGVuY2Ugd2FybmluZyBtZXNzYWdlcyBpbiBjb3JlIikKClN0cnVjdHVyZSBvZiB0aGUgcGF0
+Y2ggc2V0OgoKUGF0Y2ggMTogUmVwbGFjZXMgdGhlIG5kb194c2tfYXN5bmNfeG1pdCB3aXRoIG5k
+b194c2tfd2FrZXVwIHRvCiAgICAgICAgIHN1cHBvcnQgd2FraW5nIHVwIGJvdGggUnggYW5kIFR4
+IHByb2Nlc3NpbmcKUGF0Y2ggMjogSW1wbGVtZW50cyB0aGUgbmVlZF93YWtldXAgZnVuY3Rpb25h
+bGl0eSBpbiBjb21tb24gY29kZQpQYXRjaCAzLTQ6IEFkZCBuZWVkX3dha2V1cCBzdXBwb3J0IHRv
+IHRoZSBpNDBlIGFuZCBpeGdiZSBkcml2ZXJzClBhdGNoIDU6IEFkZCBuZWVkX3dha2V1cCBzdXBw
+b3J0IHRvIGxpYmJwZgpQYXRjaCA2OiBBZGQgbmVlZF93YWtldXAgc3VwcG9ydCB0byB0aGUgeGRw
+c29jayBzYW1wbGUgYXBwbGljYXRpb24KClRoYW5rczogTWFnbnVzCgpNYWdudXMgS2FybHNzb24g
+KDYpOgogIHhzazogcmVwbGFjZSBuZG9feHNrX2FzeW5jX3htaXQgd2l0aCBuZG9feHNrX3dha2V1
+cAogIHhzazogYWRkIHN1cHBvcnQgZm9yIG5lZWRfd2FrZXVwIGZsYWcgaW4gQUZfWERQIHJpbmdz
+CiAgaTQwZTogYWRkIHN1cHBvcnQgZm9yIEFGX1hEUCBuZWVkX3dha3VwIGZlYXR1cmUKICBpeGdi
+ZTogYWRkIHN1cHBvcnQgZm9yIEFGX1hEUCBuZWVkX3dha3VwIGZlYXR1cmUKICBsaWJicGY6IGFk
+ZCBzdXBwb3J0IGZvciBuZWVkX3dha2V1cCBmbGFnIGluIEFGX1hEUCBwYXJ0CiAgc2FtcGxlcy9i
+cGY6IGFkZCB1c2Ugb2YgbmVlZF9zbGVlcCBmbGFnIGluIHhkcHNvY2sKCiBkcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jICAgICAgICB8ICAgNSArLQogZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jICAgICAgICAgfCAgMjMgKystCiBkcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmggICAgICAgICB8ICAgMiArLQog
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jICAgICAgfCAgIDUg
+Ky0KIC4uLi9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfdHhyeF9jb21tb24uaCAgIHwg
+ICAyICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYyAgICAg
+ICB8ICAyMCArKy0KIGluY2x1ZGUvbGludXgvbmV0ZGV2aWNlLmggICAgICAgICAgICAgICAgICAg
+ICAgICAgIHwgIDE4ICstCiBpbmNsdWRlL25ldC94ZHBfc29jay5oICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8ICAzMyArKystCiBpbmNsdWRlL3VhcGkvbGludXgvaWZfeGRwLmggICAgICAg
+ICAgICAgICAgICAgICAgICB8ICAxMyArKwogbmV0L3hkcC94ZHBfdW1lbS5jICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgIDYgKy0KIG5ldC94ZHAveHNrLmMgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDkzICsrKysrKysrKy0KIG5ldC94ZHAveHNrX3F1
+ZXVlLmggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIHNhbXBsZXMvYnBm
+L3hkcHNvY2tfdXNlci5jICAgICAgICAgICAgICAgICAgICAgICAgIHwgMTkxICsrKysrKysrKysr
+KystLS0tLS0tLQogdG9vbHMvaW5jbHVkZS91YXBpL2xpbnV4L2lmX3hkcC5oICAgICAgICAgICAg
+ICAgICAgfCAgMTMgKysKIHRvb2xzL2xpYi9icGYveHNrLmMgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwgICA0ICsKIHRvb2xzL2xpYi9icGYveHNrLmggICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgICA2ICsKIDE2IGZpbGVzIGNoYW5nZWQsIDM0MyBpbnNlcnRpb25zKCsp
+LCA5MiBkZWxldGlvbnMoLSkKCi0tCjIuNy40Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
+ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
+Zm8vaW50ZWwtd2lyZWQtbGFuCg==
