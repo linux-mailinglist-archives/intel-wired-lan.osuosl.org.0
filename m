@@ -1,76 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D3DA44BD2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 21:12:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE15D44E3F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2019 23:18:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 10951876FD;
-	Thu, 13 Jun 2019 19:12:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A281D21568;
+	Thu, 13 Jun 2019 21:18:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7Z0hKcy4UqYx; Thu, 13 Jun 2019 19:12:01 +0000 (UTC)
+	with ESMTP id v7GgsumoYlVs; Thu, 13 Jun 2019 21:18:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 07EFD87727;
-	Thu, 13 Jun 2019 19:12:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B235D228A0;
+	Thu, 13 Jun 2019 21:17:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 296D51BF3FB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 19:07:39 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E1641BF844
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 21:17:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 22A3386302
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 19:07:39 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 05FC18785E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 21:17:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G9rlJaB8Gn4l for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Jun 2019 19:07:38 +0000 (UTC)
+ with ESMTP id 2sYlPcsf-gRN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Jun 2019 21:17:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 75AD4862EC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 19:07:38 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id v186so167394oie.5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 12:07:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gVMzjQLQqpf/QZtbz+QWdOL32d3AtsR0Mk6m6bcVxhQ=;
- b=oeDYYEnQD8BtRsIpw+UxvqdqjdOMmpi5OKZg2EWOiM77g1i/l9yeqSb9fQEav6Bpa3
- +A7ie7n+seZpkDZK+YCOS3lT+BhYVflmKL/IYQbkpg5kdUekiW1kSYxm1pxSwbzMI3/Q
- WwNvvtwHNzJPK5z6kYGAQKnH1X3XUrFiyAb1U9dP7DmvAu6+UmOweaQzzB1FJWymCcih
- 5/+ZYECskmztALMGrsFnYQn9AA9fRdqXmisilQqd8uLJYSqLYj6vTjbVV8HTMGFLEQ5t
- lF4QDDFEV+zRmGjxoTVhPylms34sc/Azog/7IL7EGnobpzSQndcbus5sYwa4BCNvWnP2
- z2eQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gVMzjQLQqpf/QZtbz+QWdOL32d3AtsR0Mk6m6bcVxhQ=;
- b=P6hRyuoQMynjWwXXBTYkwWWVZ/v+b7VfzNpGP9KLnQrK9b4eD7WhKw16nTUMiLGTEO
- XOXEz1z/wwvejQ+E8ykiYnQEXwdik49NEh7jY9WLdz7VuqeVTPL426Ec2bVLotVWpiya
- Tz9wvqUQ10w41oGqbh/ArYz5HJ8PSQEB+tRHZN54ajHwlYVx0pMctPW45m67fvW3Di+X
- GhVDkfdBS3cHnAFMFSsVbsi5//76zWIlWjWrS6EJv2MkkzvwxbP7fiJFQH66ZbarHRE4
- /xosoSFZ++1JSYZgwX4sifixMFD+74ffGwOA0j3K9UQTH/R0BvBXddP88Nl3Sk0fi6t0
- PX6g==
-X-Gm-Message-State: APjAAAWFbwpHzNeFr5sNDUecoA555kjsA27r35OFj3+eamW+kmsie1BJ
- XB97XXQCTS5ipUN8t3FZrdmKbAxq44M/Q4EQ63E=
-X-Google-Smtp-Source: APXvYqy7vf8KcrIRKPQuYh0e3GDnawVO2IByKOIxBiJs/qCE03bNbJljPJ1izbCdDJlEfQW8Yf9YVdKaFWMGG7JEe1c=
-X-Received: by 2002:aca:cdd3:: with SMTP id d202mr3819686oig.115.1560452857649; 
- Thu, 13 Jun 2019 12:07:37 -0700 (PDT)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0582587857
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2019 21:17:56 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2019 14:17:56 -0700
+X-ExtLoop1: 1
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by orsmga003.jf.intel.com with ESMTP; 13 Jun 2019 14:17:56 -0700
+Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.408.0; Thu, 13 Jun 2019 14:17:55 -0700
+Received: from orsmsx104.amr.corp.intel.com ([169.254.4.84]) by
+ ORSMSX153.amr.corp.intel.com ([169.254.12.125]) with mapi id 14.03.0415.000;
+ Thu, 13 Jun 2019 14:17:55 -0700
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH][next] ixgbe: fix potential u32
+ overflow on shift
+Thread-Index: AQHVHGlXeNde2QC2RkO3vXKBp913h6aaIfLA
+Date: Thu, 13 Jun 2019 21:17:55 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3ED66D@ORSMSX104.amr.corp.intel.com>
+References: <20190606131053.25103-1-colin.king@canonical.com>
+In-Reply-To: <20190606131053.25103-1-colin.king@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOGEyYTkwNjQtMDBhYi00ZTdmLTk3MTUtNjMyNjI5NjA3NWU2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZEMwc3NYdjBLRzhScytHdUx0dklDWnRkT1JhK3Q2Y3NJbHJBS0VMU0hTZnB0VnQ0RHF0ZDNpXC8xbEtUNzhCUXYifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.400.15
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-References: <1560411450-29121-1-git-send-email-magnus.karlsson@intel.com>
- <1560411450-29121-3-git-send-email-magnus.karlsson@intel.com>
- <20190613120411.35ef3c52@cakuba.netronome.com>
-In-Reply-To: <20190613120411.35ef3c52@cakuba.netronome.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Thu, 13 Jun 2019 21:07:26 +0200
-Message-ID: <CAJ8uoz0jXyVt8OPOq+B8L7gEm8bbd8cE5vdf3-KAhaVK871k8w@mail.gmail.com>
-To: Jakub Kicinski <jakub.kicinski@netronome.com>
-X-Mailman-Approved-At: Thu, 13 Jun 2019 19:11:59 +0000
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 2/6] xsk: add support for
- need_wakeup flag in AF_XDP rings
+Subject: Re: [Intel-wired-lan] [PATCH][next] ixgbe: fix potential u32
+ overflow on shift
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,51 +80,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: axboe@kernel.dk, Maxim Mikityanskiy <maximmi@mellanox.com>,
- kevin.laatz@intel.com, "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
- Network Development <netdev@vger.kernel.org>, ciara.loftus@intel.com, "Zhang,
- Qi Z" <qi.z.zhang@intel.com>, Alexei Starovoitov <ast@kernel.org>,
- Ye Xiaolong <xiaolong.ye@intel.com>, ilias.apalodimas@linaro.org,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Jesper Dangaard Brouer <brouer@redhat.com>, bruce.richardson@intel.com,
- bpf@vger.kernel.org, =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+Cc: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jun 13, 2019 at 9:05 PM Jakub Kicinski
-<jakub.kicinski@netronome.com> wrote:
->
-> On Thu, 13 Jun 2019 09:37:26 +0200, Magnus Karlsson wrote:
-> >
-> > -     if (!dev->netdev_ops->ndo_bpf ||
-> > -         !dev->netdev_ops->ndo_xsk_async_xmit) {
-> > +     if (!dev->netdev_ops->ndo_bpf || !dev->netdev_ops->ndo_xsk_wakeup) {
-> >               err = -EOPNOTSUPP;
-> >               goto err_unreg_umem;
-> >       }
->
-> > @@ -198,7 +258,8 @@ static int xsk_zc_xmit(struct sock *sk)
-> >       struct xdp_sock *xs = xdp_sk(sk);
-> >       struct net_device *dev = xs->dev;
-> >
-> > -     return dev->netdev_ops->ndo_xsk_async_xmit(dev, xs->queue_id);
-> > +     return dev->netdev_ops->ndo_xsk_wakeup(dev, xs->queue_id,
-> > +                                            XDP_WAKEUP_TX);
-> >  }
-> >
-> >  static void xsk_destruct_skb(struct sk_buff *skb)
->
-> Those two look like they should be in the previous patch?  Won't it
-> break build?
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Colin King
+> Sent: Thursday, June 6, 2019 6:11 AM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>; Kirsher, Jeffrey T
+> <jeffrey.t.kirsher@intel.com>; David S . Miller <davem@davemloft.net>;
+> intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org
+> Cc: kernel-janitors@vger.kernel.org; linux-kernel@vger.kernel.org
+> Subject: [Intel-wired-lan] [PATCH][next] ixgbe: fix potential u32 overflow on
+> shift
+> 
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> The u32 variable rem is being shifted using u32 arithmetic however it is being
+> passed to div_u64 that expects the expression to be a u64.
+> The 32 bit shift may potentially overflow, so cast rem to a u64 before shifting
+> to avoid this.
+> 
+> Addresses-Coverity: ("Unintentional integer overflow")
+> Fixes: cd4583206990 ("ixgbe: implement support for SDP/PPS output on X550
+> hardware")
+> Fixes: 68d9676fc04e ("ixgbe: fix PTP SDP pin setup on X540 hardware")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-You are correct. That should have been in patch 1. Will fix that in the v2.
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-Thanks: Magnus
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
