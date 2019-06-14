@@ -2,101 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F0BA46865
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jun 2019 21:55:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 41A6E46864
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jun 2019 21:55:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0B5EA2042F;
-	Fri, 14 Jun 2019 19:55:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AA4B1203A2;
+	Fri, 14 Jun 2019 19:55:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SJu2UGHjlPhy; Fri, 14 Jun 2019 19:55:24 +0000 (UTC)
+	with ESMTP id xb+RNrA43vfG; Fri, 14 Jun 2019 19:55:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 09D18204BD;
-	Fri, 14 Jun 2019 19:55:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B004C203A4;
+	Fri, 14 Jun 2019 19:55:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 31F0C1BF59F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 16:13:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9456B1BF318
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 14:18:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2D9DF884BB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 16:13:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8E71B881DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 14:18:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FEafybcWFpuL for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Jun 2019 16:13:03 +0000 (UTC)
-X-Greylist: delayed 00:59:23 by SQLgrey-1.7.6
-Received: from EUR01-HE1-obe.outbound.protection.outlook.com
- (mail-eopbgr130077.outbound.protection.outlook.com [40.107.13.77])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3776C884B9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 16:13:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qlJXSOT/rsVlbpCfsF9K5y78r3RgmWjUbBZnYANU0Gs=;
- b=rb2BYGSzkk+Ym5e7MAOD4HYzKvlvzfuDKojmsq7vOTn7Ga+TN+dtMMnJHq/ye4hblrTnJdq+akJkt1zWBSPt1tMrAwGQpcNe5hBMbjlVdNl+7hLRhL2Kl67VOzBlk0yGvWJHT7LFbOWDiD5LbnRORK1Qv7ON3e6q9Tn7iR+cO6Q=
-Received: from AM6PR05MB5879.eurprd05.prod.outlook.com (20.179.0.76) by
- AM6PR05MB6389.eurprd05.prod.outlook.com (20.179.6.18) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1987.10; Fri, 14 Jun 2019 13:38:04 +0000
-Received: from AM6PR05MB5879.eurprd05.prod.outlook.com
- ([fe80::9527:fe9d:2a02:41d5]) by AM6PR05MB5879.eurprd05.prod.outlook.com
- ([fe80::9527:fe9d:2a02:41d5%5]) with mapi id 15.20.1987.010; Fri, 14 Jun 2019
- 13:38:04 +0000
-From: Maxim Mikityanskiy <maximmi@mellanox.com>
-To: Magnus Karlsson <magnus.karlsson@intel.com>, "bjorn.topel@intel.com"
- <bjorn.topel@intel.com>, "ast@kernel.org" <ast@kernel.org>,
- "daniel@iogearbox.net" <daniel@iogearbox.net>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "brouer@redhat.com" <brouer@redhat.com>
-Thread-Topic: [PATCH bpf-next 0/6] add need_wakeup flag to the AF_XDP rings
-Thread-Index: AQHVIbrjdEzhYlYHsEebC95X2ngPYqabKT6A
-Date: Fri, 14 Jun 2019 13:38:04 +0000
-Message-ID: <b84b2128-da38-3f0e-35fe-7d1466005dca@mellanox.com>
+ with ESMTP id NWiyrlqFClq4 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Jun 2019 14:18:10 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9B89988347
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 14:18:10 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id n2so1624654pgp.11
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2019 07:18:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=tq2E9BaMBW8aSF1f5kHaKuSm/qfkPHS5HXGl0qPPcFw=;
+ b=DxpxUC8lcRD4PyxDEUfU/eby1s+AVG3cNIJEjbQSBMFkoIqB0TxIN6o4YLEIMQDq72
+ XOCTyAlv0NeDlG1219jQJDENaj6ig6zHxnl/OQAVHbIh/zlLV2ZIHFUJMkhW9Aoa3UiP
+ jCr5gRVO+iJYMxIkeIMDEKtP3h6/UqlDfcc2wfcFpAgQWfcCaJA2Rqis6eqK2NZ/6ROi
+ 54aL8p6+jj04kOUXabQidHVBhFCrVSiRtscHJEdb5sEAbPOM5q1+EwJ1E7Zvzx/yzy9t
+ Z3D2uN8FAlxfepIPreEPrkWu6tGGuhUoQxKfoNzOK+AIcZVjv8GzXwJgowraiT9PhJ+U
+ kukQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=tq2E9BaMBW8aSF1f5kHaKuSm/qfkPHS5HXGl0qPPcFw=;
+ b=gu273qDTduSmvwgl2Wrlfc1P9Xw/d0N7LtJMVZwVaQepAHpUVnfYnAEeoVcd6kgX7f
+ VBHX0qhc3ltN2jfl2jm9Kci0tNMegJg45rQ040t8NOYAZKqgPb7r14pV1qxVIcfiv7u1
+ QPO9hJcadYrLqZp/Pue8ABwaIOHrHyO7jKHx3K8bC/Ws6qH9Es6vgw3D2BvCnzlgImpY
+ UjhH2joR8n68TAPF6Zs4t5zwPdjJDKTC6vbakN5XpNQuLclT2CHA3pgMTum2MhfY5uz1
+ n6/v0p+hojk3i12bBqfA0szQZZlYVD6gzKlM1OO9aSOXId6WnNxH03kldvMcoAucxK3X
+ p91g==
+X-Gm-Message-State: APjAAAUTC+UWJIixLokhfAjBBhC1wVHZuB/7yciCFt2Fd41OCzzVoNoT
+ 8yWy/7hyuhQlFjJ93Aanqus=
+X-Google-Smtp-Source: APXvYqxzTYmH+IIhQb8HZJ2cexLAai0xTnPn8j+b9OOEBpPknUOScLoYj6idws9tz9tor/0Pss5veg==
+X-Received: by 2002:aa7:92d2:: with SMTP id k18mr74356pfa.153.1560521890003;
+ Fri, 14 Jun 2019 07:18:10 -0700 (PDT)
+Received: from localhost ([192.55.54.45])
+ by smtp.gmail.com with ESMTPSA id k11sm3163533pfi.168.2019.06.14.07.18.05
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 14 Jun 2019 07:18:09 -0700 (PDT)
+Date: Fri, 14 Jun 2019 16:17:20 +0200
+From: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>
+To: Maxim Mikityanskiy <maximmi@mellanox.com>
+Message-ID: <20190614161720.00002da5@gmail.com>
+In-Reply-To: <b84b2128-da38-3f0e-35fe-7d1466005dca@mellanox.com>
 References: <1560411450-29121-1-git-send-email-magnus.karlsson@intel.com>
-In-Reply-To: <1560411450-29121-1-git-send-email-magnus.karlsson@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: BYAPR01CA0026.prod.exchangelabs.com (2603:10b6:a02:80::39)
- To AM6PR05MB5879.eurprd05.prod.outlook.com
- (2603:10a6:20b:a2::12)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=maximmi@mellanox.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [159.224.90.213]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 67f56fd0-5e71-40d1-1cd8-08d6f0cd86a2
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:AM6PR05MB6389; 
-x-ms-traffictypediagnostic: AM6PR05MB6389:
-x-ms-exchange-purlcount: 2
-x-microsoft-antispam-prvs: <AM6PR05MB63890988974828B8DDCBB6EBD1EE0@AM6PR05MB6389.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 0068C7E410
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(396003)(366004)(136003)(376002)(346002)(39860400002)(199004)(189003)(7736002)(305945005)(2616005)(446003)(36756003)(66066001)(486006)(11346002)(2501003)(73956011)(64756008)(66446008)(5660300002)(68736007)(476003)(66556008)(8676002)(8936002)(14454004)(66476007)(66946007)(81166006)(6116002)(3846002)(81156014)(71200400001)(26005)(6246003)(76176011)(53936002)(4326008)(478600001)(6506007)(2201001)(966005)(53546011)(55236004)(386003)(14444005)(6486002)(229853002)(53376002)(86362001)(102836004)(66574012)(2906002)(54906003)(52116002)(6512007)(316002)(71190400001)(6306002)(99286004)(186003)(256004)(7416002)(6436002)(31686004)(110136005)(25786009)(31696002)(48284002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR05MB6389;
- H:AM6PR05MB5879.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: ZUPFcABagxTgpYu1tN45O0SdEALsDKqEBw2tSXxQuzMbUDjrq2dpB1nGxOUjscSzOl5bSY0KSqTsSxWlflH3J3vUzJfgkNG6zReNvkldB+bKDUdM8en2romqwoFeP6sKq3Q/P7E+zHU53sJLmuD7U9aZxjhAQscThAV9FvoL3AxGkdyfjwDeKV0wU7um0eOhORdPTppTrPocWKo5DRhrLqmWnR7Q4dpYPHuQwLvS+DCKmnyyEfB7ow8AdoAjNQ9sEFkr3lwNkHXJTPmn+/Q8pgHdmB9aQ2sAH+K6KpNpEOP4YTuBPnNYEZXj4ajwKtrn5Bh9MKwhLFXGua1aJ9lxwQTm/4b6wk6cH0BhGMR3jWcrJN8C2AHtQ0dLbVUJa+Z0a6l/IJpuwua5gDBTTbgiaVo2qJSLYj/ARLgGB4eWxtQ=
-Content-ID: <1C73F767DEF6D246BCE8948B031B4BF5@eurprd05.prod.outlook.com>
+ <b84b2128-da38-3f0e-35fe-7d1466005dca@mellanox.com>
+X-Mailer: Claws Mail 3.17.1 (GTK+ 2.24.32; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 67f56fd0-5e71-40d1-1cd8-08d6f0cd86a2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jun 2019 13:38:04.3603 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: maximmi@mellanox.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB6389
 X-Mailman-Approved-At: Fri, 14 Jun 2019 19:55:19 +0000
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next 0/6] add need_wakeup flag to
  the AF_XDP rings
@@ -113,154 +89,237 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "axboe@kernel.dk" <axboe@kernel.dk>,
- "maciejromanfijalkowski@gmail.com" <maciejromanfijalkowski@gmail.com>,
  "kevin.laatz@intel.com" <kevin.laatz@intel.com>,
  "jakub.kicinski@netronome.com" <jakub.kicinski@netronome.com>,
- "bruce.richardson@intel.com" <bruce.richardson@intel.com>,
+ "daniel@iogearbox.net" <daniel@iogearbox.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "ciara.loftus@intel.com" <ciara.loftus@intel.com>,
- "ilias.apalodimas@linaro.org" <ilias.apalodimas@linaro.org>,
- "xiaolong.ye@intel.com" <xiaolong.ye@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
  "qi.z.zhang@intel.com" <qi.z.zhang@intel.com>,
+ "ast@kernel.org" <ast@kernel.org>,
+ "xiaolong.ye@intel.com" <xiaolong.ye@intel.com>,
+ "ilias.apalodimas@linaro.org" <ilias.apalodimas@linaro.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "brouer@redhat.com" <brouer@redhat.com>,
+ "bruce.richardson@intel.com" <bruce.richardson@intel.com>,
  "maciej.fijalkowski@intel.com" <maciej.fijalkowski@intel.com>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "bjorn.topel@intel.com" <bjorn.topel@intel.com>,
+ Magnus Karlsson <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMjAxOS0wNi0xMyAxMDozNywgTWFnbnVzIEthcmxzc29uIHdyb3RlOg0KPiANCj4gVGhpcyBw
-YXRjaCBzZXQgYWRkcyBzdXBwb3J0IGZvciBhIG5ldyBmbGFnIGNhbGxlZCBuZWVkX3dha2V1cCBp
-biB0aGUNCj4gQUZfWERQIFR4IGFuZCBmaWxsIHJpbmdzLiBXaGVuIHRoaXMgZmxhZyBpcyBzZXQg
-YnkgdGhlIGRyaXZlciwgaXQNCj4gbWVhbnMgdGhhdCB0aGUgYXBwbGljYXRpb24gaGFzIHRvIGV4
-cGxpY2l0bHkgd2FrZSB1cCB0aGUga2VybmVsIFJ4DQo+IChmb3IgdGhlIGJpdCBpbiB0aGUgZmls
-bCByaW5nKSBvciBrZXJuZWwgVHggKGZvciBiaXQgaW4gdGhlIFR4IHJpbmcpDQo+IHByb2Nlc3Np
-bmcgYnkgaXNzdWluZyBhIHN5c2NhbGwuIFBvbGwoKSBjYW4gd2FrZSB1cCBib3RoIGFuZCBzZW5k
-dG8oKQ0KPiB3aWxsIHdha2UgdXAgVHggcHJvY2Vzc2luZyBvbmx5Lg0KDQpBdCBmaXJzdCBzaWdo
-dCwgc291bmRzIHVzZWZ1bCEgKEkgZGlkbid0IGhhdmUgdGltZSB0byBoYXZlIGEgZGVlcGVyIGxv
-b2sgDQphdCB0aGUgc2VyaWVzIHlldC4pDQoNCkkgc2VlIHlvdSBhcmUgcmVwbGFjaW5nIG5kb194
-c2tfYXN5bmNfeG1pdCB3aXRoIGFub3RoZXIgZnVuY3Rpb24gdG8gDQpzdXBwb3J0IHlvdXIgZXh0
-ZW5zaW9uLCBhbmQgc29tZSBkcml2ZXIgY2hhbmdlcyBhcmUgbWFkZS4gRG9lcyBpdCBtZWFuIA0K
-dGhhdCBldmVyeSBkcml2ZXIgbXVzdCBzdXBwb3J0IHRoZSBuZXcgZXh0ZW5zaW9uPyBIb3cgYWJv
-dXQgbWFraW5nIGl0IA0Kb3B0aW9uYWw/IEkuZS4gdGhlIGtlcm5lbCBjYW4gY2hlY2sgd2hldGhl
-ciB0aGUgbmV3IE5ETyBpcyBpbXBsZW1lbnRlZCANCm9yIG5vdCwgYW5kIHVzZSB0aGUgbmV3IGZl
-YXR1cmUgd2l0aCBkcml2ZXJzIHRoYXQgc3VwcG9ydCBpdC4NCg0KVGhhbmtzLA0KTWF4DQoNCj4g
-VGhlIG1haW4gcmVhc29uIGZvciBpbnRyb2R1Y2luZyB0aGlzIG5ldyBmbGFnIGlzIHRvIGJlIGFi
-bGUgdG8NCj4gZWZmaWNpZW50bHkgc3VwcG9ydCB0aGUgY2FzZSB3aGVuIGFwcGxpY2F0aW9uIGFu
-ZCBkcml2ZXIgaXMgZXhlY3V0aW5nDQo+IG9uIHRoZSBzYW1lIGNvcmUuIFByZXZpb3VzbHksIHRo
-ZSBkcml2ZXIgd2FzIGp1c3QgYnVzeS1zcGlubmluZyBvbiB0aGUNCj4gZmlsbCByaW5nIGlmIGl0
-IHJhbiBvdXQgb2YgYnVmZmVycyBpbiB0aGUgSFcgYW5kIHRoZXJlIHdlcmUgbm9uZSB0bw0KPiBn
-ZXQgZnJvbSB0aGUgZmlsbCByaW5nLiBUaGlzIGFwcHJvYWNoIHdvcmtzIHdoZW4gdGhlIGFwcGxp
-Y2F0aW9uIGFuZA0KPiBkcml2ZXIgaXMgcnVubmluZyBvbiBkaWZmZXJlbnQgY29yZXMgYXMgdGhl
-IGFwcGxpY2F0aW9uIGNhbiByZXBsZW5pc2gNCj4gdGhlIGZpbGwgcmluZyB3aGlsZSB0aGUgZHJp
-dmVyIGlzIGJ1c3ktc3Bpbm5pbmcuIFRob3VnaCwgdGhpcyBpcyBhDQo+IGxvdXN5IGFwcHJvYWNo
-IGlmIGJvdGggb2YgdGhlbSBhcmUgcnVubmluZyBvbiB0aGUgc2FtZSBjb3JlIGFzIHRoZQ0KPiBw
-cm9iYWJpbGl0eSBvZiB0aGUgZmlsbCByaW5nIGdldHRpbmcgbW9yZSBlbnRyaWVzIHdoZW4gdGhl
-IGRyaXZlciBpcw0KPiBidXN5LXNwaW5uaW5nIGlzIHplcm8uIFdpdGggdGhpcyBuZXcgZmVhdHVy
-ZSB0aGUgZHJpdmVyIG5vdyBzZXRzIHRoZQ0KPiBuZWVkX3dha2V1cCBmbGFnIGFuZCByZXR1cm5z
-IHRvIHRoZSBhcHBsaWNhdGlvbi4gVGhlIGFwcGxpY2F0aW9uIGNhbg0KPiB0aGVuIHJlcGxlbmlz
-aCB0aGUgZmlsbCBxdWV1ZSBhbmQgdGhlbiBleHBsaWNpdGx5IHdha2UgdXAgdGhlIFJ4DQo+IHBy
-b2Nlc3NpbmcgaW4gdGhlIGtlcm5lbCB1c2luZyB0aGUgc3lzY2FsbCBwb2xsKCkuIEZvciBUeCwg
-dGhlIGZsYWcgaXMNCj4gb25seSBzZXQgdG8gb25lIGlmIHRoZSBkcml2ZXIgaGFzIG5vIG91dHN0
-YW5kaW5nIFR4IGNvbXBsZXRpb24NCj4gaW50ZXJydXB0cy4gSWYgaXQgaGFzIHNvbWUsIHRoZSBm
-bGFnIGlzIHplcm8gYXMgaXQgd2lsbCBiZSB3b2tlbiB1cCBieQ0KPiBhIGNvbXBsZXRpb24gaW50
-ZXJydXB0IGFueXdheS4gVGhpcyBmbGFnIGNhbiBhbHNvIGJlIHVzZWQgaW4gb3RoZXINCj4gc2l0
-dWF0aW9ucyB3aGVyZSB0aGUgZHJpdmVyIG5lZWRzIHRvIGJlIHdva2VuIHVwIGV4cGxpY2l0bHku
-DQo+IA0KPiBBcyBhIG5pY2Ugc2lkZSBlZmZlY3QsIHRoaXMgbmV3IGZsYWcgYWxzbyBpbXByb3Zl
-cyB0aGUgVHggcGVyZm9ybWFuY2UNCj4gb2YgdGhlIGNhc2Ugd2hlcmUgYXBwbGljYXRpb24gYW5k
-IGRyaXZlciBhcmUgcnVubmluZyBvbiB0d28gZGlmZmVyZW50DQo+IGNvcmVzIGFzIGl0IHJlZHVj
-ZXMgdGhlIG51bWJlciBvZiBzeXNjYWxscyB0byB0aGUga2VybmVsLiBUaGUga2VybmVsDQo+IHRl
-bGxzIHVzZXIgc3BhY2UgaWYgaXQgbmVlZHMgdG8gYmUgd29rZW4gdXAgYnkgYSBzeXNjYWxsLCBh
-bmQgdGhpcw0KPiBlbGltaW5hdGVzIG1hbnkgb2YgdGhlIHN5c2NhbGxzLiBUaGUgUnggcGVyZm9y
-bWFuY2Ugb2YgdGhlIDItY29yZSBjYXNlDQo+IGlzIG9uIHRoZSBvdGhlciBoYW5kIHNsaWdodGx5
-IHdvcnNlLCBzaW5jZSB0aGVyZSBpcyBhIG5lZWQgdG8gdXNlIGENCj4gc3lzY2FsbCBub3cgdG8g
-d2FrZSB1cCB0aGUgZHJpdmVyLCBpbnN0ZWFkIG9mIHRoZSBkcml2ZXINCj4gYnVzeS1zcGlubmlu
-Zy4gSXQgZG9lcyB3YXN0ZSBsZXNzIENQVSBjeWNsZXMgdGhvdWdoLCB3aGljaCBtaWdodCBsZWFk
-DQo+IHRvIGJldHRlciBvdmVyYWxsIHN5c3RlbSBwZXJmb3JtYW5jZS4NCj4gDQo+IFRoaXMgbmV3
-IGZsYWcgbmVlZHMgc29tZSBzaW1wbGUgZHJpdmVyIHN1cHBvcnQuIElmIHRoZSBkcml2ZXIgZG9l
-cyBub3QNCj4gc3VwcG9ydCBpdCwgdGhlIFJ4IGZsYWcgaXMgYWx3YXlzIHplcm8gYW5kIHRoZSBU
-eCBmbGFnIGlzIGFsd2F5cw0KPiBvbmUuIFRoaXMgbWFrZXMgYW55IGFwcGxpY2F0aW9uIHJlbHlp
-bmcgb24gdGhpcyBmZWF0dXJlIGRlZmF1bHQgdG8gdGhlDQo+IG9sZCBiZWhhdmlvciBvZiBub3Qg
-cmVxdWlyaW5nIGFueSBzeXNjYWxscyBpbiB0aGUgUnggcGF0aCBhbmQgYWx3YXlzDQo+IGhhdmlu
-ZyB0byBjYWxsIHNlbmR0bygpIGluIHRoZSBUeCBwYXRoLg0KPiANCj4gRm9yIGJhY2t3YXJkcyBj
-b21wYXRpYmlsaXR5IHJlYXNvbnMsIHRoaXMgZmVhdHVyZSBoYXMgdG8gYmUgZXhwbGljaXRseQ0K
-PiB0dXJuZWQgb24gdXNpbmcgYSBuZXcgYmluZCBmbGFnIChYRFBfVVNFX05FRURfV0FLRVVQKS4g
-SSByZWNvbW1lbmQNCj4gdGhhdCB5b3UgYWx3YXlzIHR1cm4gaXQgb24gYXMgaXQgaGFzIGEgbGFy
-Z2UgcG9zaXRpdmUgcGVyZm9ybWFuY2UNCj4gaW1wYWN0IGZvciB0aGUgb25lIGNvcmUgY2FzZSBh
-bmQgZG9lcyBub3QgZGVncmFkZSAyIGNvcmUgcGVyZm9ybWFuY2UNCj4gYW5kIGFjdHVhbGx5IGlt
-cHJvdmVzIGl0IGZvciBUeCBoZWF2eSB3b3JrbG9hZHMuDQo+IA0KPiBIZXJlIGFyZSBzb21lIHBl
-cmZvcm1hbmNlIG51bWJlcnMgbWVhc3VyZWQgb24gbXkgbG9jYWwsDQo+IG5vbi1wZXJmb3JtYW5j
-ZSBvcHRpbWl6ZWQgZGV2ZWxvcG1lbnQgc3lzdGVtLiBUaGF0IGlzIHdoeSB5b3UgYXJlDQo+IHNl
-ZWluZyBudW1iZXJzIGxvd2VyIHRoYW4gdGhlIG9uZXMgZnJvbSBCasO2cm4gYW5kIEplc3Blci4g
-NjQgYnl0ZQ0KPiBwYWNrZXRzIGF0IDQwR2JpdC9zIGxpbmUgcmF0ZS4gQWxsIHJlc3VsdHMgaW4g
-TXBwcy4gQ29yZXMgPT0gMSBtZWFucw0KPiB0aGF0IGJvdGggYXBwbGljYXRpb24gYW5kIGRyaXZl
-ciBpcyBleGVjdXRpbmcgb24gdGhlIHNhbWUgY29yZS4gQ29yZXMNCj4gPT0gMiB0aGF0IHRoZXkg
-YXJlIG9uIGRpZmZlcmVudCBjb3Jlcy4NCj4gDQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBBcHBsaWNhdGlvbnMNCj4gbmVlZF93YWtldXAgIGNvcmVzICAgIHR4cHVzaCAgICByeGRy
-b3AgICAgICBsMmZ3ZA0KPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4gICAgICAgbiAgICAgICAgIDEgICAgICAgMC4wNyAg
-ICAgIDAuMDYgICAgICAgIDAuMDMNCj4gICAgICAgeSAgICAgICAgIDEgICAgICAgMjEuNiAgICAg
-IDguMiAgICAgICAgIDYuNQ0KPiAgICAgICBuICAgICAgICAgMiAgICAgICAzMi4zICAgICAgMTEu
-NyAgICAgICAgOC43DQo+ICAgICAgIHkgICAgICAgICAyICAgICAgIDMzLjEgICAgICAxMS43ICAg
-ICAgICA4LjcNCj4gDQo+IE92ZXJhbGwsIHRoZSBuZWVkX3dha2V1cCBmbGFnIHByb3ZpZGVzIHRo
-ZSBzYW1lIG9yIGJldHRlciBwZXJmb3JtYW5jZQ0KPiBpbiBhbGwgdGhlIG1pY3JvLWJlbmNobWFy
-a3MuIFRoZSByZWR1Y3Rpb24gb2Ygc2VuZHRvKCkgY2FsbHMgaW4gdHhwdXNoDQo+IGlzIGxhcmdl
-LiBPbmx5IGEgZmV3IHBlciBzZWNvbmQgaXMgbmVlZGVkLiBGb3IgbDJmd2QsIHRoZSBkcm9wIGlz
-IDUwJQ0KPiBmb3IgdGhlIDEgY29yZSBjYXNlIGFuZCBtb3JlIHRoYW4gOTkuOSUgZm9yIHRoZSAy
-IGNvcmUgY2FzZS4gRG8gbm90DQo+IGtub3cgd2h5IEkgYW0gbm90IHNlZWluZyB0aGUgc2FtZSBk
-cm9wIGZvciB0aGUgMSBjb3JlIGNhc2UgeWV0Lg0KPiANCj4gVGhlIG5hbWUgYW5kIGluc3BpcmF0
-aW9uIG9mIHRoZSBmbGFnIGhhcyBiZWVuIHRha2VuIGZyb20gaW9fdXJpbmcgYnkNCj4gSmVucyBB
-eGJvZS4gRGV0YWlscyBhYm91dCB0aGlzIGZlYXR1cmUgaW4gaW9fdXJpbmcgY2FuIGJlIGZvdW5k
-IGluDQo+IGh0dHA6Ly9rZXJuZWwuZGsvaW9fdXJpbmcucGRmLCBzZWN0aW9uIDguMy4gSXQgYWxz
-byBhZGRyZXNzZXMgbW9zdCBvZg0KPiB0aGUgZGVuaWFsIG9mIHNlcnZpY2UgYW5kIHNlbmR0bygp
-IGNvbmNlcm5zIHJhaXNlZCBieSBNYXhpbQ0KPiBNaWtpdHlhbnNraXkgaW4gaHR0cHM6Ly93d3cu
-c3Bpbmljcy5uZXQvbGlzdHMvbmV0ZGV2L21zZzU1NDY1Ny5odG1sLg0KPiANCj4gVGhlIHR5cGlj
-YWwgVHggcGFydCBvZiBhbiBhcHBsaWNhdGlvbiB3aWxsIGhhdmUgdG8gY2hhbmdlIGZyb206DQo+
-IA0KPiByZXQgPSBzZW5kdG8oZmQsLi4uLikNCj4gDQo+IHRvOg0KPiANCj4gaWYgKHhza19yaW5n
-X3Byb2RfX25lZWRzX3dha2V1cCgmeHNrLT50eCkpDQo+ICAgICAgICAgcmV0ID0gc2VuZHRvKGZk
-LC4uLi4pDQo+IA0KPiBhbmQgdGggUnggcGFydCBmcm9tOg0KPiANCj4gcmN2ZCA9IHhza19yaW5n
-X2NvbnNfX3BlZWsoJnhzay0+cngsIEJBVENIX1NJWkUsICZpZHhfcngpOw0KPiBpZiAoIXJjdmQp
-DQo+ICAgICAgICAgcmV0dXJuOw0KPiANCj4gdG86DQo+IA0KPiByY3ZkID0geHNrX3JpbmdfY29u
-c19fcGVlaygmeHNrLT5yeCwgQkFUQ0hfU0laRSwgJmlkeF9yeCk7DQo+IGlmICghcmN2ZCkgew0K
-PiAgICAgICAgIGlmICh4c2tfcmluZ19wcm9kX19uZWVkc193YWtldXAoJnhzay0+dW1lbS0+ZnEp
-KQ0KPiAgICAgICAgICAgICAgICByZXQgPSBwb2xsKGZkLC4uLi4uKTsNCj4gICAgICAgICByZXR1
-cm47DQo+IH0NCj4gDQo+IFRoaXMgcGF0Y2ggaGFzIGJlZW4gYXBwbGllZCBhZ2FpbnN0IGNvbW1p
-dCBhZWU0NTBjYmU0ODIgKCJicGY6IHNpbGVuY2Ugd2FybmluZyBtZXNzYWdlcyBpbiBjb3JlIikN
-Cj4gDQo+IFN0cnVjdHVyZSBvZiB0aGUgcGF0Y2ggc2V0Og0KPiANCj4gUGF0Y2ggMTogUmVwbGFj
-ZXMgdGhlIG5kb194c2tfYXN5bmNfeG1pdCB3aXRoIG5kb194c2tfd2FrZXVwIHRvDQo+ICAgICAg
-ICAgICBzdXBwb3J0IHdha2luZyB1cCBib3RoIFJ4IGFuZCBUeCBwcm9jZXNzaW5nDQo+IFBhdGNo
-IDI6IEltcGxlbWVudHMgdGhlIG5lZWRfd2FrZXVwIGZ1bmN0aW9uYWxpdHkgaW4gY29tbW9uIGNv
-ZGUNCj4gUGF0Y2ggMy00OiBBZGQgbmVlZF93YWtldXAgc3VwcG9ydCB0byB0aGUgaTQwZSBhbmQg
-aXhnYmUgZHJpdmVycw0KPiBQYXRjaCA1OiBBZGQgbmVlZF93YWtldXAgc3VwcG9ydCB0byBsaWJi
-cGYNCj4gUGF0Y2ggNjogQWRkIG5lZWRfd2FrZXVwIHN1cHBvcnQgdG8gdGhlIHhkcHNvY2sgc2Ft
-cGxlIGFwcGxpY2F0aW9uDQo+IA0KPiBUaGFua3M6IE1hZ251cw0KPiANCj4gTWFnbnVzIEthcmxz
-c29uICg2KToNCj4gICAgeHNrOiByZXBsYWNlIG5kb194c2tfYXN5bmNfeG1pdCB3aXRoIG5kb194
-c2tfd2FrZXVwDQo+ICAgIHhzazogYWRkIHN1cHBvcnQgZm9yIG5lZWRfd2FrZXVwIGZsYWcgaW4g
-QUZfWERQIHJpbmdzDQo+ICAgIGk0MGU6IGFkZCBzdXBwb3J0IGZvciBBRl9YRFAgbmVlZF93YWt1
-cCBmZWF0dXJlDQo+ICAgIGl4Z2JlOiBhZGQgc3VwcG9ydCBmb3IgQUZfWERQIG5lZWRfd2FrdXAg
-ZmVhdHVyZQ0KPiAgICBsaWJicGY6IGFkZCBzdXBwb3J0IGZvciBuZWVkX3dha2V1cCBmbGFnIGlu
-IEFGX1hEUCBwYXJ0DQo+ICAgIHNhbXBsZXMvYnBmOiBhZGQgdXNlIG9mIG5lZWRfc2xlZXAgZmxh
-ZyBpbiB4ZHBzb2NrDQo+IA0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
-ZV9tYWluLmMgICAgICAgIHwgICA1ICstDQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aTQwZS9pNDBlX3hzay5jICAgICAgICAgfCAgMjMgKystDQo+ICAgZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5oICAgICAgICAgfCAgIDIgKy0NCj4gICBkcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMgICAgICB8ICAgNSArLQ0KPiAgIC4u
-Li9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfdHhyeF9jb21tb24uaCAgIHwgICAyICst
-DQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMgICAgICAg
-fCAgMjAgKystDQo+ICAgaW5jbHVkZS9saW51eC9uZXRkZXZpY2UuaCAgICAgICAgICAgICAgICAg
-ICAgICAgICAgfCAgMTggKy0NCj4gICBpbmNsdWRlL25ldC94ZHBfc29jay5oICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB8ICAzMyArKystDQo+ICAgaW5jbHVkZS91YXBpL2xpbnV4L2lmX3hk
-cC5oICAgICAgICAgICAgICAgICAgICAgICAgfCAgMTMgKysNCj4gICBuZXQveGRwL3hkcF91bWVt
-LmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgNiArLQ0KPiAgIG5ldC94ZHAv
-eHNrLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDkzICsrKysrKysr
-Ky0NCj4gICBuZXQveGRwL3hza19xdWV1ZS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAgMSArDQo+ICAgc2FtcGxlcy9icGYveGRwc29ja191c2VyLmMgICAgICAgICAgICAgICAg
-ICAgICAgICAgfCAxOTEgKysrKysrKysrKysrKy0tLS0tLS0tDQo+ICAgdG9vbHMvaW5jbHVkZS91
-YXBpL2xpbnV4L2lmX3hkcC5oICAgICAgICAgICAgICAgICAgfCAgMTMgKysNCj4gICB0b29scy9s
-aWIvYnBmL3hzay5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgNCArDQo+ICAg
-dG9vbHMvbGliL2JwZi94c2suaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDYg
-Kw0KPiAgIDE2IGZpbGVzIGNoYW5nZWQsIDM0MyBpbnNlcnRpb25zKCspLCA5MiBkZWxldGlvbnMo
-LSkNCj4gDQo+IC0tDQo+IDIuNy40DQo+IA0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
-cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2ludGVsLXdpcmVkLWxhbgo=
+On Fri, 14 Jun 2019 13:38:04 +0000
+Maxim Mikityanskiy <maximmi@mellanox.com> wrote:
+
+> On 2019-06-13 10:37, Magnus Karlsson wrote:
+> > =
+
+> > This patch set adds support for a new flag called need_wakeup in the
+> > AF_XDP Tx and fill rings. When this flag is set by the driver, it
+> > means that the application has to explicitly wake up the kernel Rx
+> > (for the bit in the fill ring) or kernel Tx (for bit in the Tx ring)
+> > processing by issuing a syscall. Poll() can wake up both and sendto()
+> > will wake up Tx processing only.  =
+
+> =
+
+> At first sight, sounds useful! (I didn't have time to have a deeper look =
+
+> at the series yet.)
+> =
+
+> I see you are replacing ndo_xsk_async_xmit with another function to =
+
+> support your extension, and some driver changes are made. Does it mean =
+
+> that every driver must support the new extension? How about making it =
+
+> optional? I.e. the kernel can check whether the new NDO is implemented =
+
+> or not, and use the new feature with drivers that support it.
+
+I think I can speak up for Magnus.
+That NDO was just renamed in order to better reflect cases where it is
+currently being used, e.g. having ndo_xsk_async_xmit() called in order to g=
+et
+into NAPI and take the buffers from fill queue was misleading a bit, as you
+were waking up the Rx side.
+
+The functionality of that NDO stays the same. Magnus also provided explanat=
+ions
+in commit messages, which I suppose will clarify it more once you go through
+the series.
+
+> =
+
+> Thanks,
+> Max
+> =
+
+> > The main reason for introducing this new flag is to be able to
+> > efficiently support the case when application and driver is executing
+> > on the same core. Previously, the driver was just busy-spinning on the
+> > fill ring if it ran out of buffers in the HW and there were none to
+> > get from the fill ring. This approach works when the application and
+> > driver is running on different cores as the application can replenish
+> > the fill ring while the driver is busy-spinning. Though, this is a
+> > lousy approach if both of them are running on the same core as the
+> > probability of the fill ring getting more entries when the driver is
+> > busy-spinning is zero. With this new feature the driver now sets the
+> > need_wakeup flag and returns to the application. The application can
+> > then replenish the fill queue and then explicitly wake up the Rx
+> > processing in the kernel using the syscall poll(). For Tx, the flag is
+> > only set to one if the driver has no outstanding Tx completion
+> > interrupts. If it has some, the flag is zero as it will be woken up by
+> > a completion interrupt anyway. This flag can also be used in other
+> > situations where the driver needs to be woken up explicitly.
+> > =
+
+> > As a nice side effect, this new flag also improves the Tx performance
+> > of the case where application and driver are running on two different
+> > cores as it reduces the number of syscalls to the kernel. The kernel
+> > tells user space if it needs to be woken up by a syscall, and this
+> > eliminates many of the syscalls. The Rx performance of the 2-core case
+> > is on the other hand slightly worse, since there is a need to use a
+> > syscall now to wake up the driver, instead of the driver
+> > busy-spinning. It does waste less CPU cycles though, which might lead
+> > to better overall system performance.
+> > =
+
+> > This new flag needs some simple driver support. If the driver does not
+> > support it, the Rx flag is always zero and the Tx flag is always
+> > one. This makes any application relying on this feature default to the
+> > old behavior of not requiring any syscalls in the Rx path and always
+> > having to call sendto() in the Tx path.
+> > =
+
+> > For backwards compatibility reasons, this feature has to be explicitly
+> > turned on using a new bind flag (XDP_USE_NEED_WAKEUP). I recommend
+> > that you always turn it on as it has a large positive performance
+> > impact for the one core case and does not degrade 2 core performance
+> > and actually improves it for Tx heavy workloads.
+> > =
+
+> > Here are some performance numbers measured on my local,
+> > non-performance optimized development system. That is why you are
+> > seeing numbers lower than the ones from Bj=F6rn and Jesper. 64 byte
+> > packets at 40Gbit/s line rate. All results in Mpps. Cores =3D=3D 1 means
+> > that both application and driver is executing on the same core. Cores
+> > =3D=3D 2 that they are on different cores.
+> > =
+
+> >                                Applications
+> > need_wakeup  cores    txpush    rxdrop      l2fwd
+> > ---------------------------------------------------------------
+> >       n         1       0.07      0.06        0.03
+> >       y         1       21.6      8.2         6.5
+> >       n         2       32.3      11.7        8.7
+> >       y         2       33.1      11.7        8.7
+> > =
+
+> > Overall, the need_wakeup flag provides the same or better performance
+> > in all the micro-benchmarks. The reduction of sendto() calls in txpush
+> > is large. Only a few per second is needed. For l2fwd, the drop is 50%
+> > for the 1 core case and more than 99.9% for the 2 core case. Do not
+> > know why I am not seeing the same drop for the 1 core case yet.
+> > =
+
+> > The name and inspiration of the flag has been taken from io_uring by
+> > Jens Axboe. Details about this feature in io_uring can be found in
+> > http://kernel.dk/io_uring.pdf, section 8.3. It also addresses most of
+> > the denial of service and sendto() concerns raised by Maxim
+> > Mikityanskiy in https://www.spinics.net/lists/netdev/msg554657.html.
+> > =
+
+> > The typical Tx part of an application will have to change from:
+> > =
+
+> > ret =3D sendto(fd,....)
+> > =
+
+> > to:
+> > =
+
+> > if (xsk_ring_prod__needs_wakeup(&xsk->tx))
+> >         ret =3D sendto(fd,....)
+> > =
+
+> > and th Rx part from:
+> > =
+
+> > rcvd =3D xsk_ring_cons__peek(&xsk->rx, BATCH_SIZE, &idx_rx);
+> > if (!rcvd)
+> >         return;
+> > =
+
+> > to:
+> > =
+
+> > rcvd =3D xsk_ring_cons__peek(&xsk->rx, BATCH_SIZE, &idx_rx);
+> > if (!rcvd) {
+> >         if (xsk_ring_prod__needs_wakeup(&xsk->umem->fq))
+> >                ret =3D poll(fd,.....);
+> >         return;
+> > }
+> > =
+
+> > This patch has been applied against commit aee450cbe482 ("bpf: silence =
+warning messages in core")
+> > =
+
+> > Structure of the patch set:
+> > =
+
+> > Patch 1: Replaces the ndo_xsk_async_xmit with ndo_xsk_wakeup to
+> >           support waking up both Rx and Tx processing
+> > Patch 2: Implements the need_wakeup functionality in common code
+> > Patch 3-4: Add need_wakeup support to the i40e and ixgbe drivers
+> > Patch 5: Add need_wakeup support to libbpf
+> > Patch 6: Add need_wakeup support to the xdpsock sample application
+> > =
+
+> > Thanks: Magnus
+> > =
+
+> > Magnus Karlsson (6):
+> >    xsk: replace ndo_xsk_async_xmit with ndo_xsk_wakeup
+> >    xsk: add support for need_wakeup flag in AF_XDP rings
+> >    i40e: add support for AF_XDP need_wakup feature
+> >    ixgbe: add support for AF_XDP need_wakup feature
+> >    libbpf: add support for need_wakeup flag in AF_XDP part
+> >    samples/bpf: add use of need_sleep flag in xdpsock
+> > =
+
+> >   drivers/net/ethernet/intel/i40e/i40e_main.c        |   5 +-
+> >   drivers/net/ethernet/intel/i40e/i40e_xsk.c         |  23 ++-
+> >   drivers/net/ethernet/intel/i40e/i40e_xsk.h         |   2 +-
+> >   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      |   5 +-
+> >   .../net/ethernet/intel/ixgbe/ixgbe_txrx_common.h   |   2 +-
+> >   drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c       |  20 ++-
+> >   include/linux/netdevice.h                          |  18 +-
+> >   include/net/xdp_sock.h                             |  33 +++-
+> >   include/uapi/linux/if_xdp.h                        |  13 ++
+> >   net/xdp/xdp_umem.c                                 |   6 +-
+> >   net/xdp/xsk.c                                      |  93 +++++++++-
+> >   net/xdp/xsk_queue.h                                |   1 +
+> >   samples/bpf/xdpsock_user.c                         | 191 ++++++++++++=
++--------
+> >   tools/include/uapi/linux/if_xdp.h                  |  13 ++
+> >   tools/lib/bpf/xsk.c                                |   4 +
+> >   tools/lib/bpf/xsk.h                                |   6 +
+> >   16 files changed, 343 insertions(+), 92 deletions(-)
+> > =
+
+> > --
+> > 2.7.4
+> >   =
+
+> =
+
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
