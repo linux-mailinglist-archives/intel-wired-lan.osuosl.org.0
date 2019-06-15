@@ -1,52 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C93E46D2E
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Jun 2019 02:29:26 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48C2946E97
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Jun 2019 08:26:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 275682039D;
-	Sat, 15 Jun 2019 00:29:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ED60D869E4;
+	Sat, 15 Jun 2019 06:26:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ULjkRBv3v5T9; Sat, 15 Jun 2019 00:29:25 +0000 (UTC)
+	with ESMTP id Us0-a6gY8-hL; Sat, 15 Jun 2019 06:26:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B629D203AA;
-	Sat, 15 Jun 2019 00:29:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B860869C8;
+	Sat, 15 Jun 2019 06:26:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 535211BF82D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2019 00:29:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 166B31BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2019 06:26:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4FF8B884D5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2019 00:29:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 12DD686935
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2019 06:26:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qI+H2BV5-BJU for <intel-wired-lan@lists.osuosl.org>;
- Sat, 15 Jun 2019 00:29:20 +0000 (UTC)
+ with ESMTP id SvXAS6phirMD for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 15 Jun 2019 06:26:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 59C36884CD
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2019 00:29:20 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B4780868C9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2019 06:26:00 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2019 17:29:19 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2019 23:26:00 -0700
 X-ExtLoop1: 1
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
- by orsmga001.jf.intel.com with ESMTP; 14 Jun 2019 17:29:19 -0700
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 14 Jun 2019 17:29:35 -0700
-Message-Id: <20190615002935.16397-1-jeffrey.t.kirsher@intel.com>
-X-Mailer: git-send-email 2.21.0
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 14 Jun 2019 23:25:59 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hc28U-000Ipp-UT; Sat, 15 Jun 2019 14:25:58 +0800
+Date: Sat, 15 Jun 2019 14:25:04 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d048f40.s+LenqEzQDow5Tcw%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next v2] e1000e: Reduce boot time by tightening
- sleep ranges
+Subject: [Intel-wired-lan] [jkirsher-next-queue:40GbE] BUILD INCOMPLETE
+ 514af5f0995219da7f18d73ecece6e7d1fec8c4e
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,324 +62,246 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Arjan van de Ven <arjan@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Arjan van de Ven <arjan@linux.intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  40GbE
+branch HEAD: 514af5f0995219da7f18d73ecece6e7d1fec8c4e  i40e: mark expected switch fall-through
 
-The e1000e driver is a great user of the usleep_range() API,
-and has nice ranges that in principle help power management.
+TIMEOUT after 609m
 
-However the ranges that are used only during system startup are
-very long (and can add easily 100 msec to the boot time) while
-the power savings of such long ranges is irrelevant due to the
-one-off, boot only, nature of these functions.
 
-This patch shrinks some of the longest ranges to be shorter
-(while still using a power friendly 1 msec range); this saves
-100msec+ of boot time on my BDW NUCs
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
 
-Signed-off-by: Arjan van de Ven <arjan@linux.intel.com>
-Signed-off-by: Paul Menzel <pmenzel@molgen.mpg.de>
+configs timed out: 41
+
+alpha                            allmodconfig
+alpha                            allyesconfig
+i386                          randconfig-x000
+i386                          randconfig-x001
+i386                          randconfig-x002
+i386                          randconfig-x003
+i386                          randconfig-x004
+i386                          randconfig-x005
+i386                          randconfig-x006
+i386                          randconfig-x007
+i386                          randconfig-x008
+i386                          randconfig-x009
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+mips                             allyesconfig
+nds32                            allmodconfig
+nds32                            allyesconfig
+parisc                           allmodconfig
+parisc                           allyesconfig
+powerpc                          allmodconfig
+powerpc                          allyesconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+s390                             allmodconfig
+s390                             allyesconfig
+sparc                            allmodconfig
+sparc                            allyesconfig
+sparc64                          allyesconfig
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                                nfsroot
+xtensa                           allmodconfig
+xtensa                           allyesconfig
+
+configs tested: 172
+
+arm                              allmodconfig
+arm64                            allmodconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                 randconfig-n001-201923
+x86_64                 randconfig-n002-201923
+x86_64                 randconfig-n003-201923
+x86_64                 randconfig-n004-201923
+x86_64                 randconfig-n005-201923
+x86_64                 randconfig-n006-201923
+x86_64                 randconfig-n007-201923
+x86_64                 randconfig-n008-201923
+x86_64                 randconfig-n009-201923
+x86_64                 randconfig-n010-201923
+x86_64                 randconfig-n011-201923
+x86_64                 randconfig-n012-201923
+x86_64                 randconfig-n013-201923
+x86_64                 randconfig-n014-201923
+x86_64                 randconfig-n015-201923
+x86_64                 randconfig-n016-201923
+x86_64                 randconfig-n017-201923
+x86_64                 randconfig-n018-201923
+x86_64                 randconfig-n019-201923
+x86_64                 randconfig-n020-201923
+x86_64                 randconfig-n021-201923
+x86_64                 randconfig-n022-201923
+x86_64                 randconfig-n023-201923
+x86_64                 randconfig-n024-201923
+x86_64                 randconfig-n025-201923
+x86_64                 randconfig-n026-201923
+x86_64                 randconfig-n027-201923
+x86_64                 randconfig-n028-201923
+x86_64                 randconfig-n029-201923
+x86_64                 randconfig-n030-201923
+x86_64                 randconfig-n031-201923
+x86_64                 randconfig-n032-201923
+i386                   randconfig-n001-201923
+i386                   randconfig-n002-201923
+i386                   randconfig-n003-201923
+i386                   randconfig-n004-201923
+i386                   randconfig-n005-201923
+i386                   randconfig-n006-201923
+i386                   randconfig-n007-201923
+i386                   randconfig-n008-201923
+i386                   randconfig-n009-201923
+i386                   randconfig-n010-201923
+i386                   randconfig-n011-201923
+i386                   randconfig-n012-201923
+i386                   randconfig-n013-201923
+i386                   randconfig-n014-201923
+i386                   randconfig-n015-201923
+i386                   randconfig-n016-201923
+i386                   randconfig-n017-201923
+i386                   randconfig-n018-201923
+i386                   randconfig-n019-201923
+i386                   randconfig-n020-201923
+i386                   randconfig-n021-201923
+i386                   randconfig-n022-201923
+i386                   randconfig-n023-201923
+i386                   randconfig-n024-201923
+i386                   randconfig-n025-201923
+i386                   randconfig-n026-201923
+i386                   randconfig-n027-201923
+i386                   randconfig-n028-201923
+i386                   randconfig-n029-201923
+i386                   randconfig-n030-201923
+i386                   randconfig-n031-201923
+i386                   randconfig-n032-201923
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+s390                          debug_defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+x86_64                           allmodconfig
+x86_64                           allyesconfig
+i386                             alldefconfig
+openrisc                    or1ksim_defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+c6x                        evmc6678_defconfig
+h8300                    h8300h-sim_defconfig
+nios2                         10m50_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+alpha                               defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+um                                  defconfig
+ia64                             alldefconfig
+i386                             allmodconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+i386                              allnoconfig
+i386                                defconfig
+sh                               allyesconfig
+m68k                             allyesconfig
+x86_64                 randconfig-x010-201923
+x86_64                 randconfig-x011-201923
+x86_64                 randconfig-x012-201923
+x86_64                 randconfig-x013-201923
+x86_64                 randconfig-x014-201923
+x86_64                 randconfig-x015-201923
+x86_64                 randconfig-x016-201923
+x86_64                 randconfig-x017-201923
+x86_64                 randconfig-x018-201923
+x86_64                 randconfig-x019-201923
+i386                   randconfig-x073-201923
+i386                   randconfig-x070-201923
+i386                   randconfig-x071-201923
+i386                   randconfig-x074-201923
+i386                   randconfig-x078-201923
+i386                   randconfig-x075-201923
+i386                   randconfig-x072-201923
+i386                   randconfig-x076-201923
+i386                   randconfig-x077-201923
+i386                   randconfig-x079-201923
+i386                   randconfig-x010-201923
+i386                   randconfig-x011-201923
+i386                   randconfig-x012-201923
+i386                   randconfig-x013-201923
+i386                   randconfig-x014-201923
+i386                   randconfig-x015-201923
+i386                   randconfig-x016-201923
+i386                   randconfig-x017-201923
+i386                   randconfig-x018-201923
+i386                   randconfig-x019-201923
+x86_64                 randconfig-x000-201923
+x86_64                 randconfig-x001-201923
+x86_64                 randconfig-x002-201923
+x86_64                 randconfig-x003-201923
+x86_64                 randconfig-x004-201923
+x86_64                 randconfig-x005-201923
+x86_64                 randconfig-x006-201923
+x86_64                 randconfig-x007-201923
+x86_64                 randconfig-x008-201923
+x86_64                 randconfig-x009-201923
+mips                             allmodconfig
+mips                      malta_kvm_defconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                                   jz4740
+mips                                     txx9
+riscv                              tinyconfig
+i386                               tinyconfig
+
 ---
-v2: fixed up patch to apply cleanly to the upstream e1000e driver
-
- .../net/ethernet/intel/e1000e/80003es2lan.c   |  2 +-
- drivers/net/ethernet/intel/e1000e/82571.c     |  2 +-
- drivers/net/ethernet/intel/e1000e/ethtool.c   | 14 ++++++-------
- drivers/net/ethernet/intel/e1000e/ich8lan.c   | 20 +++++++++----------
- drivers/net/ethernet/intel/e1000e/mac.c       |  2 +-
- drivers/net/ethernet/intel/e1000e/netdev.c    | 14 ++++++-------
- drivers/net/ethernet/intel/e1000e/nvm.c       |  2 +-
- 7 files changed, 28 insertions(+), 28 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/80003es2lan.c b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
-index f86d55657959..4b103cca8a39 100644
---- a/drivers/net/ethernet/intel/e1000e/80003es2lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
-@@ -680,7 +680,7 @@ static s32 e1000_reset_hw_80003es2lan(struct e1000_hw *hw)
- 	ew32(TCTL, E1000_TCTL_PSP);
- 	e1e_flush();
- 
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	ctrl = er32(CTRL);
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/82571.c b/drivers/net/ethernet/intel/e1000e/82571.c
-index b9309302c29e..2c1bab377b2a 100644
---- a/drivers/net/ethernet/intel/e1000e/82571.c
-+++ b/drivers/net/ethernet/intel/e1000e/82571.c
-@@ -959,7 +959,7 @@ static s32 e1000_reset_hw_82571(struct e1000_hw *hw)
- 	ew32(TCTL, tctl);
- 	e1e_flush();
- 
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	/* Must acquire the MDIO ownership before MAC reset.
- 	 * Ownership defaults to firmware after a reset.
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index 02ebf208f48b..08342698386d 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -1014,7 +1014,7 @@ static int e1000_intr_test(struct e1000_adapter *adapter, u64 *data)
- 	/* Disable all the interrupts */
- 	ew32(IMC, 0xFFFFFFFF);
- 	e1e_flush();
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	/* Test each interrupt */
- 	for (i = 0; i < 10; i++) {
-@@ -1046,7 +1046,7 @@ static int e1000_intr_test(struct e1000_adapter *adapter, u64 *data)
- 			ew32(IMC, mask);
- 			ew32(ICS, mask);
- 			e1e_flush();
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 
- 			if (adapter->test_icr & mask) {
- 				*data = 3;
-@@ -1064,7 +1064,7 @@ static int e1000_intr_test(struct e1000_adapter *adapter, u64 *data)
- 		ew32(IMS, mask);
- 		ew32(ICS, mask);
- 		e1e_flush();
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 
- 		if (!(adapter->test_icr & mask)) {
- 			*data = 4;
-@@ -1082,7 +1082,7 @@ static int e1000_intr_test(struct e1000_adapter *adapter, u64 *data)
- 			ew32(IMC, ~mask & 0x00007FFF);
- 			ew32(ICS, ~mask & 0x00007FFF);
- 			e1e_flush();
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 
- 			if (adapter->test_icr) {
- 				*data = 5;
-@@ -1094,7 +1094,7 @@ static int e1000_intr_test(struct e1000_adapter *adapter, u64 *data)
- 	/* Disable all the interrupts */
- 	ew32(IMC, 0xFFFFFFFF);
- 	e1e_flush();
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	/* Unhook test interrupt handler */
- 	free_irq(irq, netdev);
-@@ -1470,7 +1470,7 @@ static int e1000_set_82571_fiber_loopback(struct e1000_adapter *adapter)
- 	 */
- 	ew32(SCTL, E1000_SCTL_ENABLE_SERDES_LOOPBACK);
- 	e1e_flush();
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	return 0;
- }
-@@ -1584,7 +1584,7 @@ static void e1000_loopback_cleanup(struct e1000_adapter *adapter)
- 		    hw->phy.media_type == e1000_media_type_internal_serdes) {
- 			ew32(SCTL, E1000_SCTL_DISABLE_SERDES_LOOPBACK);
- 			e1e_flush();
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 			break;
- 		}
- 		/* Fall Through */
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index cdae0efde8e6..395b05701480 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -271,7 +271,7 @@ static void e1000_toggle_lanphypc_pch_lpt(struct e1000_hw *hw)
- 		u16 count = 20;
- 
- 		do {
--			usleep_range(5000, 10000);
-+			usleep_range(5000, 6000);
- 		} while (!(er32(CTRL_EXT) & E1000_CTRL_EXT_LPCD) && count--);
- 
- 		msleep(30);
-@@ -405,7 +405,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 	/* Ungate automatic PHY configuration on non-managed 82579 */
- 	if ((hw->mac.type == e1000_pch2lan) &&
- 	    !(fwsm & E1000_ICH_FWSM_FW_VALID)) {
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 		e1000_gate_hw_phy_config_ich8lan(hw, false);
- 	}
- 
-@@ -531,7 +531,7 @@ static s32 e1000_init_phy_params_ich8lan(struct e1000_hw *hw)
- 	phy->id = 0;
- 	while ((e1000_phy_unknown == e1000e_get_phy_type_from_id(phy->id)) &&
- 	       (i++ < 100)) {
--		usleep_range(1000, 2000);
-+		usleep_range(1000, 1100);
- 		ret_val = e1000e_get_phy_id(hw);
- 		if (ret_val)
- 			return ret_val;
-@@ -1244,7 +1244,7 @@ static s32 e1000_disable_ulp_lpt_lp(struct e1000_hw *hw, bool force)
- 				goto out;
- 			}
- 
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 		}
- 		e_dbg("ULP_CONFIG_DONE cleared after %dmsec\n", i * 10);
- 
-@@ -1999,7 +1999,7 @@ static s32 e1000_check_reset_block_ich8lan(struct e1000_hw *hw)
- 
- 	while ((blocked = !(er32(FWSM) & E1000_ICH_FWSM_RSPCIPHY)) &&
- 	       (i++ < 30))
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 	return blocked ? E1000_BLK_PHY_RESET : 0;
- }
- 
-@@ -2818,7 +2818,7 @@ static s32 e1000_post_phy_reset_ich8lan(struct e1000_hw *hw)
- 		return 0;
- 
- 	/* Allow time for h/w to get to quiescent state after reset */
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	/* Perform any necessary post-reset workarounds */
- 	switch (hw->mac.type) {
-@@ -2854,7 +2854,7 @@ static s32 e1000_post_phy_reset_ich8lan(struct e1000_hw *hw)
- 	if (hw->mac.type == e1000_pch2lan) {
- 		/* Ungate automatic PHY configuration on non-managed 82579 */
- 		if (!(er32(FWSM) & E1000_ICH_FWSM_FW_VALID)) {
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 			e1000_gate_hw_phy_config_ich8lan(hw, false);
- 		}
- 
-@@ -3875,7 +3875,7 @@ static s32 e1000_update_nvm_checksum_spt(struct e1000_hw *hw)
- 	 */
- 	if (!ret_val) {
- 		nvm->ops.reload(hw);
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 	}
- 
- out:
-@@ -4026,7 +4026,7 @@ static s32 e1000_update_nvm_checksum_ich8lan(struct e1000_hw *hw)
- 	 */
- 	if (!ret_val) {
- 		nvm->ops.reload(hw);
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 	}
- 
- out:
-@@ -4650,7 +4650,7 @@ static s32 e1000_reset_hw_ich8lan(struct e1000_hw *hw)
- 	ew32(TCTL, E1000_TCTL_PSP);
- 	e1e_flush();
- 
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	/* Workaround for ICH8 bit corruption issue in FIFO memory */
- 	if (hw->mac.type == e1000_ich8lan) {
-diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
-index 4abd55d646c5..e531976f8a67 100644
---- a/drivers/net/ethernet/intel/e1000e/mac.c
-+++ b/drivers/net/ethernet/intel/e1000e/mac.c
-@@ -797,7 +797,7 @@ static s32 e1000_poll_fiber_serdes_link_generic(struct e1000_hw *hw)
- 	 * milliseconds even if the other end is doing it in SW).
- 	 */
- 	for (i = 0; i < FIBER_LINK_UP_LIMIT; i++) {
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 		status = er32(STATUS);
- 		if (status & E1000_STATUS_LU)
- 			break;
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 298e03e213be..bc743d77f20a 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -3208,7 +3208,7 @@ static void e1000_configure_rx(struct e1000_adapter *adapter)
- 	if (!(adapter->flags2 & FLAG2_NO_DISABLE_RX))
- 		ew32(RCTL, rctl & ~E1000_RCTL_EN);
- 	e1e_flush();
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	if (adapter->flags2 & FLAG2_DMA_BURST) {
- 		/* set the writeback threshold (only takes effect if the RDTR
-@@ -4272,7 +4272,7 @@ void e1000e_down(struct e1000_adapter *adapter, bool reset)
- 
- 	/* flush both disables and wait for them to finish */
- 	e1e_flush();
--	usleep_range(10000, 20000);
-+	usleep_range(10000, 11000);
- 
- 	e1000_irq_disable(adapter);
- 
-@@ -4310,7 +4310,7 @@ void e1000e_reinit_locked(struct e1000_adapter *adapter)
- {
- 	might_sleep();
- 	while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
--		usleep_range(1000, 2000);
-+		usleep_range(1000, 1100);
- 	e1000e_down(adapter, true);
- 	e1000e_up(adapter);
- 	clear_bit(__E1000_RESETTING, &adapter->state);
-@@ -4707,7 +4707,7 @@ int e1000e_close(struct net_device *netdev)
- 	int count = E1000_CHECK_RESET_COUNT;
- 
- 	while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 
- 	WARN_ON(test_bit(__E1000_RESETTING, &adapter->state));
- 
-@@ -6037,7 +6037,7 @@ static int e1000_change_mtu(struct net_device *netdev, int new_mtu)
- 	}
- 
- 	while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
--		usleep_range(1000, 2000);
-+		usleep_range(1000, 1100);
- 	/* e1000e_down -> e1000e_reset dependent on max_frame_size & mtu */
- 	adapter->max_frame_size = max_frame;
- 	e_info("changing MTU from %d to %d\n", netdev->mtu, new_mtu);
-@@ -6317,7 +6317,7 @@ static int e1000e_pm_freeze(struct device *dev)
- 		int count = E1000_CHECK_RESET_COUNT;
- 
- 		while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 
- 		WARN_ON(test_bit(__E1000_RESETTING, &adapter->state));
- 
-@@ -6732,7 +6732,7 @@ static int e1000e_pm_runtime_suspend(struct device *dev)
- 		int count = E1000_CHECK_RESET_COUNT;
- 
- 		while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
--			usleep_range(10000, 20000);
-+			usleep_range(10000, 11000);
- 
- 		WARN_ON(test_bit(__E1000_RESETTING, &adapter->state));
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/nvm.c b/drivers/net/ethernet/intel/e1000e/nvm.c
-index 937f9af22d26..e609f4df86f4 100644
---- a/drivers/net/ethernet/intel/e1000e/nvm.c
-+++ b/drivers/net/ethernet/intel/e1000e/nvm.c
-@@ -392,7 +392,7 @@ s32 e1000e_write_nvm_spi(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
- 				break;
- 			}
- 		}
--		usleep_range(10000, 20000);
-+		usleep_range(10000, 11000);
- 		nvm->ops.release(hw);
- 	}
- 
--- 
-2.21.0
-
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
