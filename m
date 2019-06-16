@@ -1,55 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6F8847387
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Jun 2019 09:07:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62DFC4879B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Jun 2019 17:41:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5C82C2002C;
-	Sun, 16 Jun 2019 07:07:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C350B8475F;
+	Mon, 17 Jun 2019 15:41:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3blvB6u2DXyT; Sun, 16 Jun 2019 07:07:39 +0000 (UTC)
+	with ESMTP id pibA2+gg2oLq; Mon, 17 Jun 2019 15:41:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D38D2203FF;
-	Sun, 16 Jun 2019 07:07:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 473E181F3F;
+	Mon, 17 Jun 2019 15:41:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C8DDC1BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 07:07:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A72D11BF568
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 14:54:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BF50285B3D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 07:07:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A2AF7203A5
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 14:54:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dDWuS4nbSoLw for <intel-wired-lan@lists.osuosl.org>;
- Sun, 16 Jun 2019 07:07:35 +0000 (UTC)
+ with ESMTP id vFMpqCXyqMMz for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 16 Jun 2019 14:54:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CD11E85B0D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 07:07:35 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Jun 2019 00:07:35 -0700
-X-ExtLoop1: 1
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 16 Jun 2019 00:07:34 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hcPGH-0006S2-JR; Sun, 16 Jun 2019 15:07:33 +0800
-Date: Sun, 16 Jun 2019 15:06:53 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d05ea8d.AfFidUMYJw9lmFaj%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-qt1-f195.google.com (mail-qt1-f195.google.com
+ [209.85.160.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5F67A203A4
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 14:54:56 +0000 (UTC)
+Received: by mail-qt1-f195.google.com with SMTP id p15so8003753qtl.3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Jun 2019 07:54:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a0e8a6kjw3Ld7aXlSsYEgWWio9r9Ou3iyyWaG+o4QfU=;
+ b=FHAkksUfoBaCYpa/aL7oHlQ5GOpVEn3+NugfpQKWcxi34Wq0vgTvXb75JsfnZdfArn
+ UY0Iu2ARgpvztEBbLNooDhbuJKlVbSUrTu8ZJ/eCcE2YLU5bER04EkDOxIIccJ2eBmpU
+ r/rwCq8wVTXCgPCa1tRe/+Z9lylmp1qfATbN9AjtYzD30kTLxzMfvz/tRYgD2ACz7Hz/
+ us2wJWiYdO7+zu9GOG0JJJSLlZQ+I8qdO9m+w4LY20hCIlju9/XO24Tr2D604OiaGbF4
+ EbXASi3XzRwOKVOcxeleBbUbzYnPSo3UqhUtydfbotdjIYKm7MikCsf1/hdFMBq0OmWN
+ e6jA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a0e8a6kjw3Ld7aXlSsYEgWWio9r9Ou3iyyWaG+o4QfU=;
+ b=NzE2WOxvxRwpfo2N6/7vTE/31zgQLfdxVOXfvkPC8CpWqPDtfNavBvMdf61aF696YL
+ F7p3X2w3SeLC5aHhEerTPzHhvdemdvNfWVNb85HLK4X4bxGOfPGC7C1zEHrAThwm81sH
+ OUMH5mEPTY8AcSa0VTS85uJ1UosTKjU1yy/t+6m8QoJCSO56cWXUqelqY1Nl7jms936h
+ AfvPXR7j6gk9O2E3DeMvRcFtPJRzE9tpTbcVOd7oKmZP00mzINWyMtqzggyRzAyQYLfS
+ hSM+ao/MnwHWi2b0z+FhpXtXl+skqwnKrlzj4mDcO+AG4AB6prGSEWaV/bNiYL/OWFJD
+ ZJwA==
+X-Gm-Message-State: APjAAAWwduZb7umqu1Z4t+8YA/26z2Gvk3eKI8iK2DNPATM5AtdnGb5S
+ /DlTwnR76lSjX6Gmue6gYtU=
+X-Google-Smtp-Source: APXvYqwJrBMj7BcFgAs1dJ8RVIMje2XA6B1DOm/NsRpRoOn+3BaTme4iQB1kcDSa35fyZ6JEAOkO4w==
+X-Received: by 2002:ac8:6958:: with SMTP id n24mr50908481qtr.360.1560696895363; 
+ Sun, 16 Jun 2019 07:54:55 -0700 (PDT)
+Received: from localhost.localdomain
+ (mtrlpq02hsy-lp140-01-174-93-144-21.dsl.bell.ca. [174.93.144.21])
+ by smtp.gmail.com with ESMTPSA id f26sm7146109qtf.44.2019.06.16.07.54.54
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sun, 16 Jun 2019 07:54:54 -0700 (PDT)
+From: Detlev Casanova <detlev.casanova@gmail.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Date: Sun, 16 Jun 2019 10:54:45 -0400
+Message-Id: <20190616145445.9637-1-detlev.casanova@gmail.com>
+X-Mailer: git-send-email 2.22.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
- 83bc44c38067589ced020002792e784407f7927b
+X-Mailman-Approved-At: Mon, 17 Jun 2019 15:41:33 +0000
+Subject: [Intel-wired-lan] [PATCH] e1000e: Make watchdog use delayed work
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,241 +92,178 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 83bc44c38067589ced020002792e784407f7927b  e1000e: Reduce boot time by tightening sleep ranges
+Use delayed work instead of timers to run the watchdog of the e1000e
+driver.
 
-TIMEOUT after 609m
+Simplify the code with one less middle function.
 
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 129
-
-alpha                            allmodconfig
-alpha                            allyesconfig
-i386                             allmodconfig
-i386                          randconfig-n001
-i386                          randconfig-n002
-i386                          randconfig-n003
-i386                          randconfig-n004
-i386                          randconfig-n005
-i386                          randconfig-n006
-i386                          randconfig-n007
-i386                          randconfig-n008
-i386                          randconfig-n009
-i386                          randconfig-n010
-i386                          randconfig-n011
-i386                          randconfig-n012
-i386                          randconfig-n013
-i386                          randconfig-n014
-i386                          randconfig-n015
-i386                          randconfig-n016
-i386                          randconfig-n017
-i386                          randconfig-n018
-i386                          randconfig-n019
-i386                          randconfig-n020
-i386                          randconfig-n021
-i386                          randconfig-n022
-i386                          randconfig-n023
-i386                          randconfig-n024
-i386                          randconfig-n025
-i386                          randconfig-n026
-i386                          randconfig-n027
-i386                          randconfig-n028
-i386                          randconfig-n029
-i386                          randconfig-n030
-i386                          randconfig-n031
-i386                          randconfig-n032
-i386                          randconfig-x000
-i386                          randconfig-x001
-i386                          randconfig-x002
-i386                          randconfig-x003
-i386                          randconfig-x004
-i386                          randconfig-x005
-i386                          randconfig-x006
-i386                          randconfig-x007
-i386                          randconfig-x008
-i386                          randconfig-x009
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-nds32                            allmodconfig
-nds32                             allnoconfig
-nds32                            allyesconfig
-nds32                               defconfig
-parisc                           allmodconfig
-parisc                           allyesconfig
-powerpc                          allmodconfig
-powerpc                          allyesconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-s390                             allmodconfig
-s390                             allyesconfig
-sh                               allyesconfig
-sparc                            allmodconfig
-sparc                            allyesconfig
-sparc64                          allyesconfig
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                                nfsroot
-x86_64                        randconfig-n001
-x86_64                        randconfig-n002
-x86_64                        randconfig-n003
-x86_64                        randconfig-n004
-x86_64                        randconfig-n005
-x86_64                        randconfig-n006
-x86_64                        randconfig-n007
-x86_64                        randconfig-n008
-x86_64                        randconfig-n009
-x86_64                        randconfig-n010
-x86_64                        randconfig-n011
-x86_64                        randconfig-n012
-x86_64                        randconfig-n013
-x86_64                        randconfig-n014
-x86_64                        randconfig-n015
-x86_64                        randconfig-n016
-x86_64                        randconfig-n017
-x86_64                        randconfig-n018
-x86_64                        randconfig-n019
-x86_64                        randconfig-n020
-x86_64                        randconfig-n021
-x86_64                        randconfig-n022
-x86_64                        randconfig-n023
-x86_64                        randconfig-n024
-x86_64                        randconfig-n025
-x86_64                        randconfig-n026
-x86_64                        randconfig-n027
-x86_64                        randconfig-n028
-x86_64                        randconfig-n029
-x86_64                        randconfig-n030
-x86_64                        randconfig-n031
-x86_64                        randconfig-n032
-x86_64                        randconfig-x000
-x86_64                        randconfig-x001
-x86_64                        randconfig-x002
-x86_64                        randconfig-x003
-x86_64                        randconfig-x004
-x86_64                        randconfig-x005
-x86_64                        randconfig-x006
-x86_64                        randconfig-x007
-x86_64                        randconfig-x008
-x86_64                        randconfig-x009
-xtensa                           allmodconfig
-xtensa                           allyesconfig
-
-configs tested: 84
-
-openrisc                    or1ksim_defconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-h8300                    h8300h-sim_defconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-arm                              allmodconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm64                               defconfig
-arm                        multi_v5_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allmodconfig
-arm                          exynos_defconfig
-arm                        shmobile_defconfig
-arm                        multi_v7_defconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                           allnoconfig
-s390                          debug_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-x86_64                 randconfig-x019-201924
-x86_64                 randconfig-x012-201924
-x86_64                 randconfig-x014-201924
-x86_64                 randconfig-x015-201924
-x86_64                 randconfig-x010-201924
-x86_64                 randconfig-x017-201924
-x86_64                 randconfig-x011-201924
-x86_64                 randconfig-x016-201924
-x86_64                 randconfig-x018-201924
-x86_64                 randconfig-x013-201924
-i386                   randconfig-x071-201924
-i386                   randconfig-x070-201924
-i386                   randconfig-x073-201924
-i386                   randconfig-x078-201924
-i386                   randconfig-x074-201924
-i386                   randconfig-x072-201924
-i386                   randconfig-x075-201924
-i386                   randconfig-x077-201924
-i386                   randconfig-x076-201924
-i386                   randconfig-x079-201924
-parisc                        c3000_defconfig
-um                                  defconfig
-parisc                         b180_defconfig
-parisc                              defconfig
-alpha                               defconfig
-parisc                            allnoconfig
-i386                   randconfig-x013-201924
-i386                   randconfig-x018-201924
-i386                   randconfig-x012-201924
-i386                   randconfig-x011-201924
-i386                   randconfig-x016-201924
-i386                   randconfig-x010-201924
-i386                   randconfig-x017-201924
-i386                   randconfig-x015-201924
-i386                   randconfig-x014-201924
-i386                   randconfig-x019-201924
-riscv                              tinyconfig
-i386                               tinyconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-
+Signed-off-by: Detlev Casanova <detlev.casanova@gmail.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ drivers/net/ethernet/intel/e1000e/e1000.h  |  3 +-
+ drivers/net/ethernet/intel/e1000e/netdev.c | 52 +++++++++++-----------
+ 2 files changed, 28 insertions(+), 27 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
+index be13227f1697..942ab74030ca 100644
+--- a/drivers/net/ethernet/intel/e1000e/e1000.h
++++ b/drivers/net/ethernet/intel/e1000e/e1000.h
+@@ -186,12 +186,11 @@ struct e1000_phy_regs {
+ 
+ /* board specific private data structure */
+ struct e1000_adapter {
+-	struct timer_list watchdog_timer;
+ 	struct timer_list phy_info_timer;
+ 	struct timer_list blink_timer;
+ 
+ 	struct work_struct reset_task;
+-	struct work_struct watchdog_task;
++	struct delayed_work watchdog_task;
+ 
+ 	const struct e1000_info *ei;
+ 
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 0e09bede42a2..d101671cdb9b 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -39,6 +39,8 @@ static int debug = -1;
+ module_param(debug, int, 0);
+ MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+ 
++struct workqueue_struct *e1000_workqueue;
++
+ static const struct e1000_info *e1000_info_tbl[] = {
+ 	[board_82571]		= &e1000_82571_info,
+ 	[board_82572]		= &e1000_82572_info,
+@@ -1780,7 +1782,7 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
+ 		}
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			mod_timer(&adapter->watchdog_timer, jiffies + 1);
++			queue_delayed_work(e1000_workqueue, &adapter->watchdog_task, 1);
+ 	}
+ 
+ 	/* Reset on uncorrectable ECC error */
+@@ -1860,7 +1862,7 @@ static irqreturn_t e1000_intr(int __always_unused irq, void *data)
+ 		}
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			mod_timer(&adapter->watchdog_timer, jiffies + 1);
++			queue_delayed_work(e1000_workqueue, &adapter->watchdog_task, 1);
+ 	}
+ 
+ 	/* Reset on uncorrectable ECC error */
+@@ -1905,7 +1907,7 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
+ 		hw->mac.get_link_status = true;
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			mod_timer(&adapter->watchdog_timer, jiffies + 1);
++			queue_delayed_work(e1000_workqueue, &adapter->watchdog_task, 0);
+ 	}
+ 
+ 	if (!test_bit(__E1000_DOWN, &adapter->state))
+@@ -4278,7 +4280,6 @@ void e1000e_down(struct e1000_adapter *adapter, bool reset)
+ 
+ 	napi_synchronize(&adapter->napi);
+ 
+-	del_timer_sync(&adapter->watchdog_timer);
+ 	del_timer_sync(&adapter->phy_info_timer);
+ 
+ 	spin_lock(&adapter->stats64_lock);
+@@ -5150,25 +5151,11 @@ static void e1000e_check_82574_phy_workaround(struct e1000_adapter *adapter)
+ 	}
+ }
+ 
+-/**
+- * e1000_watchdog - Timer Call-back
+- * @data: pointer to adapter cast into an unsigned long
+- **/
+-static void e1000_watchdog(struct timer_list *t)
+-{
+-	struct e1000_adapter *adapter = from_timer(adapter, t, watchdog_timer);
+-
+-	/* Do the rest outside of interrupt context */
+-	schedule_work(&adapter->watchdog_task);
+-
+-	/* TODO: make this use queue_delayed_work() */
+-}
+-
+ static void e1000_watchdog_task(struct work_struct *work)
+ {
+ 	struct e1000_adapter *adapter = container_of(work,
+ 						     struct e1000_adapter,
+-						     watchdog_task);
++						     watchdog_task.work);
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct e1000_mac_info *mac = &adapter->hw.mac;
+ 	struct e1000_phy_info *phy = &adapter->hw.phy;
+@@ -5395,8 +5382,8 @@ static void e1000_watchdog_task(struct work_struct *work)
+ 
+ 	/* Reset the timer */
+ 	if (!test_bit(__E1000_DOWN, &adapter->state))
+-		mod_timer(&adapter->watchdog_timer,
+-			  round_jiffies(jiffies + 2 * HZ));
++		queue_delayed_work(e1000_workqueue, &adapter->watchdog_task,
++				   round_jiffies(2 * HZ));
+ }
+ 
+ #define E1000_TX_FLAGS_CSUM		0x00000001
+@@ -7251,11 +7238,21 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		goto err_eeprom;
+ 	}
+ 
+-	timer_setup(&adapter->watchdog_timer, e1000_watchdog, 0);
++	e1000_workqueue = alloc_workqueue("%s", WQ_MEM_RECLAIM, 0,
++			                  e1000e_driver_name);
++
++	if (!e1000_workqueue)
++	{
++		err = -ENOMEM;
++		goto err_workqueue;
++	}
++
++	INIT_DELAYED_WORK(&adapter->watchdog_task, e1000_watchdog_task);
++	queue_delayed_work(e1000_workqueue, &adapter->watchdog_task, 0);
++
+ 	timer_setup(&adapter->phy_info_timer, e1000_update_phy_info, 0);
+ 
+ 	INIT_WORK(&adapter->reset_task, e1000_reset_task);
+-	INIT_WORK(&adapter->watchdog_task, e1000_watchdog_task);
+ 	INIT_WORK(&adapter->downshift_task, e1000e_downshift_workaround);
+ 	INIT_WORK(&adapter->update_phy_task, e1000e_update_phy_task);
+ 	INIT_WORK(&adapter->print_hang_task, e1000_print_hw_hang);
+@@ -7349,6 +7346,9 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	return 0;
+ 
+ err_register:
++	flush_workqueue(e1000_workqueue);
++	destroy_workqueue(e1000_workqueue);
++err_workqueue:
+ 	if (!(adapter->flags & FLAG_HAS_AMT))
+ 		e1000e_release_hw_control(adapter);
+ err_eeprom:
+@@ -7395,15 +7395,17 @@ static void e1000_remove(struct pci_dev *pdev)
+ 	 */
+ 	if (!down)
+ 		set_bit(__E1000_DOWN, &adapter->state);
+-	del_timer_sync(&adapter->watchdog_timer);
+ 	del_timer_sync(&adapter->phy_info_timer);
+ 
+ 	cancel_work_sync(&adapter->reset_task);
+-	cancel_work_sync(&adapter->watchdog_task);
+ 	cancel_work_sync(&adapter->downshift_task);
+ 	cancel_work_sync(&adapter->update_phy_task);
+ 	cancel_work_sync(&adapter->print_hang_task);
+ 
++	cancel_delayed_work(&adapter->watchdog_task);
++	flush_workqueue(e1000_workqueue);
++	destroy_workqueue(e1000_workqueue);
++
+ 	if (adapter->flags & FLAG_HAS_HW_TIMESTAMP) {
+ 		cancel_work_sync(&adapter->tx_hwtstamp_work);
+ 		if (adapter->tx_hwtstamp_skb) {
+-- 
+2.22.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
