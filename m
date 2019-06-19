@@ -1,56 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F87D4B02C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jun 2019 04:34:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C5EB4BB82
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jun 2019 16:30:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DAF2720513;
-	Wed, 19 Jun 2019 02:34:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8F1D687B0E;
+	Wed, 19 Jun 2019 14:30:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K7tCpnlGGknN; Wed, 19 Jun 2019 02:34:25 +0000 (UTC)
+	with ESMTP id 3KXyIHQUWQBX; Wed, 19 Jun 2019 14:30:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 18C832050F;
-	Wed, 19 Jun 2019 02:34:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4098287B20;
+	Wed, 19 Jun 2019 14:30:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C94101BF357
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2019 02:34:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 16AB51BF3BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2019 14:30:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C0C4181133
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2019 02:34:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 128E8811DD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2019 14:30:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gnkj+ILMTGhp for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Jun 2019 02:34:20 +0000 (UTC)
+ with ESMTP id eLESM9EuHbJW for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Jun 2019 14:30:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BC37A81091
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2019 02:34:20 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2019 19:34:20 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,391,1557212400"; d="scan'208";a="182602665"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 18 Jun 2019 19:34:19 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hdQQU-0008k6-Pb; Wed, 19 Jun 2019 10:34:18 +0800
-Date: Wed, 19 Jun 2019 10:33:36 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d099f00.UlMh+Kb7dOjGqxd4%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 16D01811D3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2019 14:30:50 +0000 (UTC)
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <colin.king@canonical.com>)
+ id 1hdbbp-0005sO-5S; Wed, 19 Jun 2019 14:30:45 +0000
+From: Colin King <colin.king@canonical.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "David S . Miller" <davem@davemloft.net>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+Date: Wed, 19 Jun 2019 15:30:44 +0100
+Message-Id: <20190619143044.10259-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- 42879b20c35fbc77963d6816e7bce7f1e0c3f4b9
+Subject: [Intel-wired-lan] [PATCH][net-next] iavf: fix dereference of null
+ rx_buffer pointer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,171 +58,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-dHJlZS9icmFuY2g6IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwv
-Z2l0L2praXJzaGVyL25leHQtcXVldWUuZ2l0ICBkZXYtcXVldWUKYnJhbmNoIEhFQUQ6IDQyODc5
-YjIwYzM1ZmJjNzc5NjNkNjgxNmU3YmNlN2YxZTBjM2Y0YjkgIGUxMDAwZTogTWFrZSB3YXRjaGRv
-ZyB1c2UgZGVsYXllZCB3b3JrCgpSZWdyZXNzaW9ucyBpbiBjdXJyZW50IGJyYW5jaDoKCmRyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9tYWluLmM6MTUxOjY6IHNwYXJzZTogc3Bh
-cnNlOiBzeW1ib2wgJ2lhdmZfZGVidWdfZCcgd2FzIG5vdCBkZWNsYXJlZC4gU2hvdWxkIGl0IGJl
-IHN0YXRpYz8KCkVycm9yIGlkcyBncm91cGVkIGJ5IGtjb25maWdzOgoKcmVjZW50X2Vycm9ycwri
-lJzilIDilIAgeDg2XzY0LWFsbG1vZGNvbmZpZwrilILCoMKgIOKUlOKUgOKUgCBkcml2ZXJzLW5l
-dC1ldGhlcm5ldC1pbnRlbC1pYXZmLWlhdmZfbWFpbi5jOnNwYXJzZTpzcGFyc2U6c3ltYm9sLWlh
-dmZfZGVidWdfZC13YXMtbm90LWRlY2xhcmVkLi1TaG91bGQtaXQtYmUtc3RhdGljCuKUlOKUgOKU
-gCB4ODZfNjQtYWxseWVzY29uZmlnCiAgICDilJTilIDilIAgZHJpdmVycy1uZXQtZXRoZXJuZXQt
-aW50ZWwtaWF2Zi1pYXZmX21haW4uYzpzcGFyc2U6c3BhcnNlOnN5bWJvbC1pYXZmX2RlYnVnX2Qt
-d2FzLW5vdC1kZWNsYXJlZC4tU2hvdWxkLWl0LWJlLXN0YXRpYwoKZWxhcHNlZCB0aW1lOiAzNjJt
-Cgpjb25maWdzIHRlc3RlZDogMTc4CgpvcGVucmlzYyAgICAgICAgICAgICAgICAgICAgb3Ixa3Np
-bV9kZWZjb25maWcKdW0gICAgICAgICAgICAgICAgICAgICAgICAgICAgIGkzODZfZGVmY29uZmln
-CnVtICAgICAgICAgICAgICAgICAgICAgICAgICAgeDg2XzY0X2RlZmNvbmZpZwpzaCAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBhbGxtb2Rjb25maWcKc2ggICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGFsbG5vY29uZmlnCnNoICAgICAgICAgICAgICAgICAgICAgICAgICByc2s3
-MjY5X2RlZmNvbmZpZwpzaCAgICAgICAgICAgICAgICAgIHNoNzc4NWxjcl8zMmJpdF9kZWZjb25m
-aWcKc2ggICAgICAgICAgICAgICAgICAgICAgICAgICAgdGl0YW5fZGVmY29uZmlnCmFybSAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwphcm02NCAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBhbGxtb2Rjb25maWcKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLW4wMDQtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDIzLTIw
-MTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwNS0yMDE5MjQKeDg2XzY0
-ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjItMjAxOTI0CmkzODYgICAgICAgICAgICAg
-ICAgICAgcmFuZGNvbmZpZy1uMDI1LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRj
-b25maWctbjAwNi0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTQt
-MjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDEyLTIwMTkyNAp4ODZf
-NjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAzMi0yMDE5MjQKeDg2XzY0ICAgICAgICAg
-ICAgICAgICByYW5kY29uZmlnLW4wMTMtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFu
-ZGNvbmZpZy1uMDA4LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAx
-Ni0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjgtMjAxOTI0Cmkz
-ODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDExLTIwMTkyNAppMzg2ICAgICAgICAg
-ICAgICAgICAgIHJhbmRjb25maWctbjAyMy0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICBy
-YW5kY29uZmlnLW4wMzEtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1u
-MDMwLTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyOS0yMDE5MjQK
-aTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTAtMjAxOTI0CmkzODYgICAgICAg
-ICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDI0LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAg
-IHJhbmRjb25maWctbjAwNy0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmln
-LW4wMzAtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDMxLTIwMTky
-NAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAxMy0yMDE5MjQKeDg2XzY0ICAg
-ICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDktMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAg
-ICAgcmFuZGNvbmZpZy1uMDI4LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25m
-aWctbjAxMS0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjEtMjAx
-OTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE4LTIwMTkyNAp4ODZfNjQg
-ICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwMi0yMDE5MjQKaTM4NiAgICAgICAgICAgICAg
-ICAgICByYW5kY29uZmlnLW4wMTQtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNv
-bmZpZy1uMDAyLTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyNS0y
-MDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDktMjAxOTI0Cng4Nl82
-NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE3LTIwMTkyNAppMzg2ICAgICAgICAgICAg
-ICAgICAgIHJhbmRjb25maWctbjAwMy0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5k
-Y29uZmlnLW4wMjQtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDI5
-LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAxMC0yMDE5MjQKeDg2
-XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjctMjAxOTI0CmkzODYgICAgICAgICAg
-ICAgICAgICAgcmFuZGNvbmZpZy1uMDEyLTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJh
-bmRjb25maWctbjAwOC0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4w
-MTUtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE1LTIwMTkyNApp
-Mzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwNy0yMDE5MjQKeDg2XzY0ICAgICAg
-ICAgICAgICAgICByYW5kY29uZmlnLW4wMjAtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAg
-cmFuZGNvbmZpZy1uMDE5LTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-bjAxNy0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTYtMjAxOTI0
-CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDIwLTIwMTkyNAppMzg2ICAgICAg
-ICAgICAgICAgICAgIHJhbmRjb25maWctbjAxOS0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLW4wMDMtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy1uMDAxLTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyNi0yMDE5
-MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjYtMjAxOTI0Cng4Nl82NCAg
-ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDA1LTIwMTkyNAppMzg2ICAgICAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctbjAwNi0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLW4wMjEtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE4LTIw
-MTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyNy0yMDE5MjQKeDg2XzY0
-ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDQtMjAxOTI0CmkzODYgICAgICAgICAgICAg
-ICAgICAgcmFuZGNvbmZpZy1uMDIyLTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRj
-b25maWctbjAwMS0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMzIt
-MjAxOTI0CmFybSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwphcm0g
-ICAgICAgICAgICAgICAgICAgICAgICAgYXQ5MV9kdF9kZWZjb25maWcKYXJtICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgZWZtMzJfZGVmY29uZmlnCmFybSAgICAgICAgICAgICAgICAgICAgICAg
-ICAgZXh5bm9zX2RlZmNvbmZpZwphcm0gICAgICAgICAgICAgICAgICAgICAgICBtdWx0aV92NV9k
-ZWZjb25maWcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgbXVsdGlfdjdfZGVmY29uZmlnCmFy
-bSAgICAgICAgICAgICAgICAgICAgICAgIHNobW9iaWxlX2RlZmNvbmZpZwphcm0gICAgICAgICAg
-ICAgICAgICAgICAgICAgICBzdW54aV9kZWZjb25maWcKYXJtNjQgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGFsbG5vY29uZmlnCmFybTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFs
-bHllc2NvbmZpZwphcm02NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcK
-cG93ZXJwYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCnBvd2VycGMgICAg
-ICAgICAgICAgICAgICAgICAgIHBwYzY0X2RlZmNvbmZpZwpwb3dlcnBjICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgYWxsbm9jb25maWcKczM5MCAgICAgICAgICAgICAgICAgICAgICAgICAgZGVi
-dWdfZGVmY29uZmlnCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZp
-Zwp4ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGx5ZXNjb25maWcKbmRzMzIgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCm5kczMyICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpzcGFyYyAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBkZWZjb25maWcKc3BhcmM2NCAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9kY29u
-ZmlnCnNwYXJjNjQgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwpzcGFyYzY0
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKeDg2XzY0ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBhY3BpLXJlZGVmCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIGFsbHllc2RlYmlhbgp4ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBsa3AKeDg2XzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuZnNyb290Cng4Nl82
-NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmhlbAp4ODZfNjQgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgcmhlbC03LjYKYzZ4ICAgICAgICAgICAgICAgICAgICAgICAg
-ZXZtYzY2NzhfZGVmY29uZmlnCmg4MzAwICAgICAgICAgICAgICAgICAgICBoODMwMGgtc2ltX2Rl
-ZmNvbmZpZwpuaW9zMiAgICAgICAgICAgICAgICAgICAgICAgICAxMG01MF9kZWZjb25maWcKeHRl
-bnNhICAgICAgICAgICAgICAgICAgICAgICBjb21tb25fZGVmY29uZmlnCnh0ZW5zYSAgICAgICAg
-ICAgICAgICAgICAgICAgICAgaXNzX2RlZmNvbmZpZwp4ODZfNjQgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAga2V4ZWMKeDg2XzY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ZmVkb3JhLTI1Cm1pcHMgICAgICAgICAgICAgICAgICAgICAgICAgICAzMnIyX2RlZmNvbmZpZwpt
-aXBzICAgICAgICAgICAgICAgICAgICAgICAgIDY0cjZlbF9kZWZjb25maWcKbWlwcyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgYWxsbW9kY29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBhbGxub2NvbmZpZwptaXBzICAgICAgICAgICAgICAgICAgICAgIGZ1bG9vbmcy
-ZV9kZWZjb25maWcKbWlwcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgano0NzQw
-Cm1pcHMgICAgICAgICAgICAgICAgICAgICAgbWFsdGFfa3ZtX2RlZmNvbmZpZwptaXBzICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR4eDkKcmlzY3YgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIGFsbG5vY29uZmlnCnJpc2N2ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIGRlZmNvbmZpZwppYTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxkZWZjb25m
-aWcKaWE2NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9kY29uZmlnCmlhNjQgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwppYTY0ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBkZWZjb25maWcKcmlzY3YgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICB0aW55Y29uZmlnCmkzODYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGlueWNv
-bmZpZwptaWNyb2JsYXplICAgICAgICAgICAgICAgICAgICAgIG1tdV9kZWZjb25maWcKbWljcm9i
-bGF6ZSAgICAgICAgICAgICAgICAgICAgbm9tbXVfZGVmY29uZmlnCmkzODYgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwppMzg2ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBkZWZjb25maWcKaTM4NiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsZGVm
-Y29uZmlnCnNwYXJjICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbHllc2NvbmZpZwp4ODZf
-NjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxOS0yMDE5MjQKeDg2XzY0ICAgICAgICAg
-ICAgICAgICByYW5kY29uZmlnLXgwMTItMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFu
-ZGNvbmZpZy14MDE0LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAx
-NS0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMTAtMjAxOTI0Cng4
-Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDE3LTIwMTkyNAp4ODZfNjQgICAgICAg
-ICAgICAgICAgIHJhbmRjb25maWcteDAxMS0yMDE5MjQKeDg2XzY0ICAgICAgICAgICAgICAgICBy
-YW5kY29uZmlnLXgwMTYtMjAxOTI0Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14
-MDE4LTIwMTkyNAp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxMy0yMDE5MjQK
-aTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwNzAtMjAxOTI0CmkzODYgICAgICAg
-ICAgICAgICAgICAgcmFuZGNvbmZpZy14MDcxLTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAg
-IHJhbmRjb25maWcteDA3Mi0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmln
-LXgwNzMtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDc0LTIwMTky
-NAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDA3NS0yMDE5MjQKaTM4NiAgICAg
-ICAgICAgICAgICAgICByYW5kY29uZmlnLXgwNzYtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAg
-ICAgcmFuZGNvbmZpZy14MDc3LTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25m
-aWcteDA3OC0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwNzktMjAx
-OTI0CmFscGhhICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpwYXJpc2Mg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKcGFyaXNjICAgICAgICAgICAg
-ICAgICAgICAgICAgIGIxODBfZGVmY29uZmlnCnBhcmlzYyAgICAgICAgICAgICAgICAgICAgICAg
-IGMzMDAwX2RlZmNvbmZpZwpwYXJpc2MgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZj
-b25maWcKdW0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCmkzODYg
-ICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDEzLTIwMTkyNAppMzg2ICAgICAgICAgICAg
-ICAgICAgIHJhbmRjb25maWcteDAxOC0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5k
-Y29uZmlnLXgwMTItMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDEx
-LTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxNi0yMDE5MjQKaTM4
-NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMTAtMjAxOTI0CmkzODYgICAgICAgICAg
-ICAgICAgICAgcmFuZGNvbmZpZy14MDE3LTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJh
-bmRjb25maWcteDAxNS0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgw
-MTQtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDE5LTIwMTkyNApp
-Mzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAwOS0yMDE5MjQKaTM4NiAgICAgICAg
-ICAgICAgICAgICByYW5kY29uZmlnLXgwMDQtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAg
-cmFuZGNvbmZpZy14MDA1LTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-eDAwOC0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMDYtMjAxOTI0
-CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDAxLTIwMTkyNAppMzg2ICAgICAg
-ICAgICAgICAgICAgIHJhbmRjb25maWcteDAwNy0yMDE5MjQKaTM4NiAgICAgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLXgwMDAtMjAxOTI0CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy14MDAyLTIwMTkyNAppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAwMy0yMDE5
-MjQKCi0tLQowLURBWSBrZXJuZWwgdGVzdCBpbmZyYXN0cnVjdHVyZSAgICAgICAgICAgICAgICBP
-cGVuIFNvdXJjZSBUZWNobm9sb2d5IENlbnRlcgpodHRwczovL2xpc3RzLjAxLm9yZy9waXBlcm1h
-aWwva2J1aWxkLWFsbCAgICAgICAgICAgICAgICAgICBJbnRlbCBDb3Jwb3JhdGlvbgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4g
-bWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1
-b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Colin Ian King <colin.king@canonical.com>
+
+A recent commit efa14c3985828d ("iavf: allow null RX descriptors") added
+a null pointer sanity check on rx_buffer, however, rx_buffer is being
+dereferenced before that check, which implies a null pointer dereference
+bug can potentially occur.  Fix this by only dereferencing rx_buffer
+until after the null pointer check.
+
+Addresses-Coverity: ("Dereference before null check")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+index 1cde1601bc32..0cca1b589b56 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+@@ -1296,7 +1296,7 @@ static struct sk_buff *iavf_construct_skb(struct iavf_ring *rx_ring,
+ 					  struct iavf_rx_buffer *rx_buffer,
+ 					  unsigned int size)
+ {
+-	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset;
++	void *va;
+ #if (PAGE_SIZE < 8192)
+ 	unsigned int truesize = iavf_rx_pg_size(rx_ring) / 2;
+ #else
+@@ -1308,6 +1308,7 @@ static struct sk_buff *iavf_construct_skb(struct iavf_ring *rx_ring,
+ 	if (!rx_buffer)
+ 		return NULL;
+ 	/* prefetch first cache line of first page */
++	va = page_address(rx_buffer->page) + rx_buffer->page_offset;
+ 	prefetch(va);
+ #if L1_CACHE_BYTES < 128
+ 	prefetch(va + L1_CACHE_BYTES);
+@@ -1362,7 +1363,7 @@ static struct sk_buff *iavf_build_skb(struct iavf_ring *rx_ring,
+ 				      struct iavf_rx_buffer *rx_buffer,
+ 				      unsigned int size)
+ {
+-	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset;
++	void *va;
+ #if (PAGE_SIZE < 8192)
+ 	unsigned int truesize = iavf_rx_pg_size(rx_ring) / 2;
+ #else
+@@ -1374,6 +1375,7 @@ static struct sk_buff *iavf_build_skb(struct iavf_ring *rx_ring,
+ 	if (!rx_buffer)
+ 		return NULL;
+ 	/* prefetch first cache line of first page */
++	va = page_address(rx_buffer->page) + rx_buffer->page_offset;
+ 	prefetch(va);
+ #if L1_CACHE_BYTES < 128
+ 	prefetch(va + L1_CACHE_BYTES);
+-- 
+2.20.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
