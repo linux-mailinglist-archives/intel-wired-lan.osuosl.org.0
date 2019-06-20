@@ -1,84 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3AABB4D489
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2019 19:07:28 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AB804DB46
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2019 22:32:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E3D7887E1D;
-	Thu, 20 Jun 2019 17:07:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3265D86D05;
+	Thu, 20 Jun 2019 20:32:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kyqlPa5ZrOel; Thu, 20 Jun 2019 17:07:26 +0000 (UTC)
+	with ESMTP id pZ+k0N22AmP2; Thu, 20 Jun 2019 20:32:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 76E9487E0A;
-	Thu, 20 Jun 2019 17:07:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E14EB86DAE;
+	Thu, 20 Jun 2019 20:32:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1728B1BF38A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 17:07:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 646E61BF285
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 20:32:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 124CC203CD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 17:07:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5868C22053
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 20:32:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MsxyLCLuLOEs for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jun 2019 17:07:23 +0000 (UTC)
+ with ESMTP id PkNf2wWJKwav for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2019 20:32:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 7BC76203C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 17:07:23 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id y57so3952659qtk.4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 10:07:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PmGxDTvsnf0wiDDnvBb94eyhG78DMALvgC9UTaOZKRg=;
- b=SpwIZPvA5iu/kofN1hoIfZkccjqW9o+MQmTCesIkzdSngkhvvaM0j5p9/bNeEbVSOr
- mKfOZGPsY9KFWb4yT+hCcU+8RV+fnzMYxtMCW9rnLbR9+nf/5ZIlM0UP5utdgz6Xwlxt
- w6TsxK2wWjbOINCMbdzHPUFMh1TsMKGHMYtnye43PPuqOGC4ugSFRhi87l+TLdiA3unT
- tqjv4uL20ZExJS186hNv9i4jeK1GVrLvDFWPzV5w2xSza2kVWlxQjOefKRHS3eJ76Vio
- LongcpQZYS88HdCeFNR9LNf6XCl+KQtvGIKOu5tQFJYi/ltOa2/M2wqTYWNQnjbxzvBw
- aPAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PmGxDTvsnf0wiDDnvBb94eyhG78DMALvgC9UTaOZKRg=;
- b=l+JDxBcO/C724cwfNOHCY8vVUs/foDaHYnFGLiJNG0OI8at8RmvgJ+myJ8GOaaeNEp
- LNsONANw1FkXJss1iPe84Ly0R5DC/Kyyz1+nrkDn1FdeiSP0OFk9zBrNv64PkXzHV+dr
- g0hQuCiW2kh7YkctxWo0CV55szsj4VZbMDYFurZ98VMVP1bWrHOwG7mqyjdJiXKaoxLF
- mDUIdIdx6R9EGZiMK1a6vPR+KNizUOV226faGPgMEC6WtUZXzv28kJkfQqrlvHhJLqoS
- iZKJjdW8b/KOMK5wM3FgyjTQ/uNuLtusSYHKjqppeW2Rug4lphWyjKwy/AAM5D3daOWw
- 2+ig==
-X-Gm-Message-State: APjAAAUUTIO7X7qNujaqexhlRxp9LPVLNDhqjbYwGp+Id2QZZ4Dzo6hv
- TVaQzpXr7z/AR43cwyiNGYE=
-X-Google-Smtp-Source: APXvYqzAfpPbvHo+KK/zW6sRTus5Kt9dQHHtl2u82Wm8mgZptCwIXzzaqPuCxqyuLrnQtkOGg2oPrQ==
-X-Received: by 2002:a0c:887c:: with SMTP id 57mr39349919qvm.192.1561050442489; 
- Thu, 20 Jun 2019 10:07:22 -0700 (PDT)
-Received: from [10.195.149.182] ([144.121.20.163])
- by smtp.gmail.com with ESMTPSA id r40sm122772qtr.57.2019.06.20.10.07.21
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 20 Jun 2019 10:07:21 -0700 (PDT)
-To: "Patel, Vedang" <vedang.patel@intel.com>,
- Eric Dumazet <eric.dumazet@gmail.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id DF15820770
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 20:32:27 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2019 13:32:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,398,1557212400"; d="scan'208";a="162651450"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga003.jf.intel.com with ESMTP; 20 Jun 2019 13:32:26 -0700
+Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 20 Jun 2019 13:32:26 -0700
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.248]) by
+ ORSMSX125.amr.corp.intel.com ([169.254.3.149]) with mapi id 14.03.0439.000;
+ Thu, 20 Jun 2019 13:32:26 -0700
+From: "Patel, Vedang" <vedang.patel@intel.com>
+To: Eric Dumazet <eric.dumazet@gmail.com>
+Thread-Topic: [PATCH net-next v4 1/7] igb: clear out tstamp after sending
+ the packet
+Thread-Index: AQHVJsYWP6DikpavGkiqH8wEAgHHrKak0uSAgABk7YCAAAU5AIAAOU4A
+Date: Thu, 20 Jun 2019 20:32:26 +0000
+Message-ID: <D1A9515C-D317-40F3-81A2-451F7228A853@intel.com>
 References: <1560966016-28254-1-git-send-email-vedang.patel@intel.com>
  <1560966016-28254-2-git-send-email-vedang.patel@intel.com>
  <d6655497-5246-c24e-de35-fc6acdad0bf1@gmail.com>
  <A1A5CF42-A7D4-4DC4-9D57-ED0340B04A6F@intel.com>
-From: Eric Dumazet <eric.dumazet@gmail.com>
-Message-ID: <99e834ed-1c78-d35c-84dc-511d377284a1@gmail.com>
-Date: Thu, 20 Jun 2019 13:07:20 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
-In-Reply-To: <A1A5CF42-A7D4-4DC4-9D57-ED0340B04A6F@intel.com>
+ <99e834ed-1c78-d35c-84dc-511d377284a1@gmail.com>
+In-Reply-To: <99e834ed-1c78-d35c-84dc-511d377284a1@gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.24.14.150]
+Content-ID: <4A5961846A0290428DFDAA605BBA63F8@intel.com>
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/7] igb: clear out tstamp
  after sending the packet
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -96,75 +83,83 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: Jiri Pirko <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
  Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Jakub Kicinski <jakub.kicinski@netronome.com>,
- Jamal Hadi Salim <jhs@mojatatu.com>, Murali Karicheri <m-karicheri2@ti.com>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>, Jamal
+ Hadi Salim <jhs@mojatatu.com>, Murali Karicheri <m-karicheri2@ti.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
  Cong Wang <xiyou.wangcong@gmail.com>, David Miller <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 6/20/19 9:49 AM, Patel, Vedang wrote:
-> 
-> 
->> On Jun 20, 2019, at 3:47 AM, Eric Dumazet <eric.dumazet@gmail.com> wrote:
->>
->>
->>
->> On 6/19/19 10:40 AM, Vedang Patel wrote:
->>> skb->tstamp is being used at multiple places. On the transmit side, it
->>> is used to determine the launchtime of the packet. It is also used to
->>> determine the software timestamp after the packet has been transmitted.
->>>
->>> So, clear out the tstamp value after it has been read so that we do not
->>> report false software timestamp on the receive side.
->>>
->>> Signed-off-by: Vedang Patel <vedang.patel@intel.com>
->>> ---
->>> drivers/net/ethernet/intel/igb/igb_main.c | 1 +
->>> 1 file changed, 1 insertion(+)
->>>
->>> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
->>> index fc925adbd9fa..f66dae72fe37 100644
->>> --- a/drivers/net/ethernet/intel/igb/igb_main.c
->>> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
->>> @@ -5688,6 +5688,7 @@ static void igb_tx_ctxtdesc(struct igb_ring *tx_ring,
->>> 	 */
->>> 	if (tx_ring->launchtime_enable) {
->>> 		ts = ns_to_timespec64(first->skb->tstamp);
->>> +		first->skb->tstamp = 0;
->>
->> Please provide more explanations.
->>
->> Why only this driver would need this ?
->>
-> Currently, igb is the only driver which uses the skb->tstamp option on the transmit side (to set the hardware transmit timestamp). All the other drivers only use it on the receive side (to collect and send the hardware transmit timestamp to the userspace after packet has been sent).
-> 
-> So, any driver which supports the hardware txtime in the future will have to clear skb->tstamp to make sure that hardware tx transmit and tx timestamping can be done on the same packet.
-
-The changelog is rather confusing :
-
-"So, clear out the tstamp value after it has been read so that we do not
- report false software timestamp on the receive side."
-
-I have hard time understanding why sending an skb through this driver
-could cause a problem on receive side ?
-
-I suggest to rephrase it to clear the confusion.
-
-> 
-> Thanks,
-> Vedang
->>
->>> 		context_desc->seqnum_seed = cpu_to_le32(ts.tv_nsec / 32);
->>> 	} else {
->>> 		context_desc->seqnum_seed = 0;
->>>
-> 
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+DQoNCj4gT24gSnVuIDIwLCAyMDE5LCBhdCAxMDowNyBBTSwgRXJpYyBEdW1hemV0IDxlcmljLmR1
+bWF6ZXRAZ21haWwuY29tPiB3cm90ZToNCj4gDQo+IA0KPiANCj4gT24gNi8yMC8xOSA5OjQ5IEFN
+LCBQYXRlbCwgVmVkYW5nIHdyb3RlOg0KPj4gDQo+PiANCj4+PiBPbiBKdW4gMjAsIDIwMTksIGF0
+IDM6NDcgQU0sIEVyaWMgRHVtYXpldCA8ZXJpYy5kdW1hemV0QGdtYWlsLmNvbT4gd3JvdGU6DQo+
+Pj4gDQo+Pj4gDQo+Pj4gDQo+Pj4gT24gNi8xOS8xOSAxMDo0MCBBTSwgVmVkYW5nIFBhdGVsIHdy
+b3RlOg0KPj4+PiBza2ItPnRzdGFtcCBpcyBiZWluZyB1c2VkIGF0IG11bHRpcGxlIHBsYWNlcy4g
+T24gdGhlIHRyYW5zbWl0IHNpZGUsIGl0DQo+Pj4+IGlzIHVzZWQgdG8gZGV0ZXJtaW5lIHRoZSBs
+YXVuY2h0aW1lIG9mIHRoZSBwYWNrZXQuIEl0IGlzIGFsc28gdXNlZCB0bw0KPj4+PiBkZXRlcm1p
+bmUgdGhlIHNvZnR3YXJlIHRpbWVzdGFtcCBhZnRlciB0aGUgcGFja2V0IGhhcyBiZWVuIHRyYW5z
+bWl0dGVkLg0KPj4+PiANCj4+Pj4gU28sIGNsZWFyIG91dCB0aGUgdHN0YW1wIHZhbHVlIGFmdGVy
+IGl0IGhhcyBiZWVuIHJlYWQgc28gdGhhdCB3ZSBkbyBub3QNCj4+Pj4gcmVwb3J0IGZhbHNlIHNv
+ZnR3YXJlIHRpbWVzdGFtcCBvbiB0aGUgcmVjZWl2ZSBzaWRlLg0KPj4+PiANCj4+Pj4gU2lnbmVk
+LW9mZi1ieTogVmVkYW5nIFBhdGVsIDx2ZWRhbmcucGF0ZWxAaW50ZWwuY29tPg0KPj4+PiAtLS0N
+Cj4+Pj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgfCAxICsNCj4+
+Pj4gMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspDQo+Pj4+IA0KPj4+PiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgYi9kcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9pZ2IvaWdiX21haW4uYw0KPj4+PiBpbmRleCBmYzkyNWFkYmQ5ZmEu
+LmY2NmRhZTcyZmUzNyAxMDA2NDQNCj4+Pj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvaWdiL2lnYl9tYWluLmMNCj4+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWdiL2lnYl9tYWluLmMNCj4+Pj4gQEAgLTU2ODgsNiArNTY4OCw3IEBAIHN0YXRpYyB2b2lkIGln
+Yl90eF9jdHh0ZGVzYyhzdHJ1Y3QgaWdiX3JpbmcgKnR4X3JpbmcsDQo+Pj4+IAkgKi8NCj4+Pj4g
+CWlmICh0eF9yaW5nLT5sYXVuY2h0aW1lX2VuYWJsZSkgew0KPj4+PiAJCXRzID0gbnNfdG9fdGlt
+ZXNwZWM2NChmaXJzdC0+c2tiLT50c3RhbXApOw0KPj4+PiArCQlmaXJzdC0+c2tiLT50c3RhbXAg
+PSAwOw0KPj4+IA0KPj4+IFBsZWFzZSBwcm92aWRlIG1vcmUgZXhwbGFuYXRpb25zLg0KPj4+IA0K
+Pj4+IFdoeSBvbmx5IHRoaXMgZHJpdmVyIHdvdWxkIG5lZWQgdGhpcyA/DQo+Pj4gDQo+PiBDdXJy
+ZW50bHksIGlnYiBpcyB0aGUgb25seSBkcml2ZXIgd2hpY2ggdXNlcyB0aGUgc2tiLT50c3RhbXAg
+b3B0aW9uIG9uIHRoZSB0cmFuc21pdCBzaWRlICh0byBzZXQgdGhlIGhhcmR3YXJlIHRyYW5zbWl0
+IHRpbWVzdGFtcCkuIEFsbCB0aGUgb3RoZXIgZHJpdmVycyBvbmx5IHVzZSBpdCBvbiB0aGUgcmVj
+ZWl2ZSBzaWRlICh0byBjb2xsZWN0IGFuZCBzZW5kIHRoZSBoYXJkd2FyZSB0cmFuc21pdCB0aW1l
+c3RhbXAgdG8gdGhlIHVzZXJzcGFjZSBhZnRlciBwYWNrZXQgaGFzIGJlZW4gc2VudCkuDQo+PiAN
+Cj4+IFNvLCBhbnkgZHJpdmVyIHdoaWNoIHN1cHBvcnRzIHRoZSBoYXJkd2FyZSB0eHRpbWUgaW4g
+dGhlIGZ1dHVyZSB3aWxsIGhhdmUgdG8gY2xlYXIgc2tiLT50c3RhbXAgdG8gbWFrZSBzdXJlIHRo
+YXQgaGFyZHdhcmUgdHggdHJhbnNtaXQgYW5kIHR4IHRpbWVzdGFtcGluZyBjYW4gYmUgZG9uZSBv
+biB0aGUgc2FtZSBwYWNrZXQuDQo+IA0KPiBUaGUgY2hhbmdlbG9nIGlzIHJhdGhlciBjb25mdXNp
+bmcgOg0KPiANCj4gIlNvLCBjbGVhciBvdXQgdGhlIHRzdGFtcCB2YWx1ZSBhZnRlciBpdCBoYXMg
+YmVlbiByZWFkIHNvIHRoYXQgd2UgZG8gbm90DQo+IHJlcG9ydCBmYWxzZSBzb2Z0d2FyZSB0aW1l
+c3RhbXAgb24gdGhlIHJlY2VpdmUgc2lkZS4iDQo+IA0KPiBJIGhhdmUgaGFyZCB0aW1lIHVuZGVy
+c3RhbmRpbmcgd2h5IHNlbmRpbmcgYW4gc2tiIHRocm91Z2ggdGhpcyBkcml2ZXINCj4gY291bGQg
+Y2F1c2UgYSBwcm9ibGVtIG9uIHJlY2VpdmUgc2lkZSA/DQo+IA0KQWhoLi4gdGhhdOKAmXMgY2xl
+YXJseSBhIGZhbHNlIHN0YXRlbWVudC4gU2tiLT50c3RhbXAgaXMgY2xlYXJlZCBzbyB0aGF0IGl0
+IGlzIG5vdCBpbnRlcnByZXRlZCBhcyBhIHNvZnR3YXJlIHRpbWVzdGFtcCB3aGVuIHRyeWluZyB0
+byBzZW5kIHRoZSBIYXJkd2FyZSBUWCB0aW1lc3RhbXAgdG8gdGhlIHVzZXJzcGFjZS4gSSB3aWxs
+IHJlcGhyYXNlIHRoZSBjb21taXQgbWVzc2FnZSBpbiB0aGUgbmV4dCB2ZXJzaW9uLg0KDQpTb21l
+IG1vcmUgZGV0YWlsczoNClRoZSBwcm9ibGVtIG9jY3VycyB3aGVuIHVzaW5nIHRoZSB0eHRpbWUt
+YXNzaXN0IG1vZGUgb2YgdGFwcmlvIHdpdGggcGFja2V0cyB3aGljaCBhbHNvIHJlcXVlc3QgdGhl
+IGhhcmR3YXJlIHRyYW5zbWl0IHRpbWVzdGFtcCAoZS5nLiBQVFAgcGFja2V0cykuIFdoZW5ldmVy
+IHR4dGltZS1hc3Npc3QgbW9kZSBpcyBzZXQsIHRhcHJpbyB3aWxsIGFzc2lnbiBhIGhhcmR3YXJl
+IHRyYW5zbWl0IHRpbWVzdGFtcCB0byBhbGwgdGhlIHBhY2tldHMgKGluIHNrYi0+dHN0YW1wKS4g
+UFRQIHBhY2tldHMgd2lsbCBhbHNvIHJlcXVlc3QgdGhlIGhhcmR3YXJlIHRyYW5zbWl0IHRpbWVz
+dGFtcCBiZSBzZW50IHRvIHRoZSB1c2Vyc3BhY2UgYWZ0ZXIgcGFja2V0IGlzIHRyYW5zbWl0dGVk
+Lg0KDQpXaGVuZXZlciBhIG5ldyB0aW1lc3RhbXAgaXMgZGV0ZWN0ZWQgYnkgdGhlIGRyaXZlciAo
+dGhpcyB3b3JrIGlzIGRvbmUgaW4gaWdiX3B0cF90eF93b3JrKCkgd2hpY2ggY2FsbHMgaWdiX3B0
+cF90eF9od3RzdGFtcHMoKSBpbiBpZ2JfcHRwLmNbMV0pLCBpdCB3aWxsIHF1ZXVlIHRoZSB0aW1l
+c3RhbXAgaW4gdGhlIEVSUl9RVUVVRSBmb3IgdGhlIHVzZXJzcGFjZSB0byByZWFkLiBXaGVuIHRo
+ZSB1c2Vyc3BhY2UgaXMgcmVhZHksIGl0IHdpbGwgaXNzdWUgYSByZWN2bXNnKCkgY2FsbCB0byBj
+b2xsZWN0IHRoaXMgdGltZXN0YW1wLiBUaGUgcHJvYmxlbSBpcyBpbiB0aGlzIHJlY3Ztc2coKSBj
+YWxsLiBJZiB0aGUgc2tiLT50c3RhbXAgaXMgbm90IGNsZWFyZWQgb3V0LCBpdCB3aWxsIGJlIGlu
+dGVycHJldGVkIGFzIGEgc29mdHdhcmUgdGltZXN0YW1wIGFuZCB0aGUgaGFyZHdhcmUgdHggdGlt
+ZXN0YW1wIHdpbGwgbm90IGJlIHN1Y2Nlc3NmdWxseSBzZW50IHRvIHRoZSB1c2Vyc3BhY2UuIExv
+b2sgYXQgc2tiX2lzX3N3dHhfdHN0YW1wKCkgYW5kIHRoZSBjYWxsZWUgZnVuY3Rpb24gX19zb2Nr
+X3JlY3ZfdGltZXN0YW1wKCkgaW4gbmV0L3NvY2tldC5jIGZvciBtb3JlIGRldGFpbHMuIA0KDQpU
+aGFua3MsIA0KVmVkYW5nDQoNClsxXSAtIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9s
+aW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xpbnV4LmdpdC90cmVlL2RyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2lnYi9pZ2JfcHRwLmM/aD12NS4yLXJjNSNuNjY2DQoNCj4gSSBzdWdnZXN0IHRv
+IHJlcGhyYXNlIGl0IHRvIGNsZWFyIHRoZSBjb25mdXNpb24uDQo+IA0KPj4gDQo+PiBUaGFua3Ms
+DQo+PiBWZWRhbmcNCj4+PiANCj4+Pj4gCQljb250ZXh0X2Rlc2MtPnNlcW51bV9zZWVkID0gY3B1
+X3RvX2xlMzIodHMudHZfbnNlYyAvIDMyKTsNCj4+Pj4gCX0gZWxzZSB7DQo+Pj4+IAkJY29udGV4
+dF9kZXNjLT5zZXFudW1fc2VlZCA9IDA7DQo+Pj4+IA0KPj4gDQoNCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxp
+c3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21h
+aWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
