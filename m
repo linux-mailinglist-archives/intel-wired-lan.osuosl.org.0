@@ -1,57 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5F4E4DD8C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2019 00:52:42 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 89B814DD7F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2019 00:52:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7DA7486C1A;
-	Thu, 20 Jun 2019 22:52:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3E6C387E6D;
+	Thu, 20 Jun 2019 22:52:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iw2czZdnXM5p; Thu, 20 Jun 2019 22:52:37 +0000 (UTC)
+	with ESMTP id a+iXRwJc4rbb; Thu, 20 Jun 2019 22:52:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9262086ADB;
+	by hemlock.osuosl.org (Postfix) with ESMTP id DB46F87E81;
 	Thu, 20 Jun 2019 22:52:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 939131BF5E9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 16:54:11 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 612261BF38A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 17:24:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8CE8F20770
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 16:54:11 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5AB7B87E1D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 17:24:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VAd3+raB68R7 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jun 2019 16:54:11 +0000 (UTC)
+ with ESMTP id zYaNlMlRBL-Q for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2019 17:24:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 0363620389
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 16:54:10 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9E97387E19
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 17:24:35 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2019 09:54:10 -0700
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2019 10:24:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,397,1557212400"; d="scan'208";a="183135206"
+X-IronPort-AV: E=Sophos;i="5.63,397,1557212400"; d="scan'208";a="359020306"
 Received: from silpixa00399838.ir.intel.com (HELO
  silpixa00399838.ger.corp.intel.com) ([10.237.223.110])
- by fmsmga004.fm.intel.com with ESMTP; 20 Jun 2019 09:54:08 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 20 Jun 2019 10:24:32 -0700
 From: Kevin Laatz <kevin.laatz@intel.com>
 To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
  bjorn.topel@intel.com, magnus.karlsson@intel.com
-Date: Thu, 20 Jun 2019 08:39:24 +0000
-Message-Id: <20190620083924.1996-12-kevin.laatz@intel.com>
+Date: Thu, 20 Jun 2019 09:09:47 +0000
+Message-Id: <20190620090958.2135-1-kevin.laatz@intel.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190620083924.1996-1-kevin.laatz@intel.com>
-References: <20190620083924.1996-1-kevin.laatz@intel.com>
 X-Mailman-Approved-At: Thu, 20 Jun 2019 22:52:28 +0000
-Subject: [Intel-wired-lan] [PATCH 11/11] doc/af_xdp: include unaligned chunk
- case
+Subject: [Intel-wired-lan] [PATCH 00/11] XDP unaligned chunk placement
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,47 +62,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bruce.richardson@intel.com, ciara.loftus@intel.com,
- Kevin Laatz <kevin.laatz@intel.com>, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.com
+Cc: bruce.richardson@intel.com, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, ciara.loftus@intel.com,
+ Kevin Laatz <kevin.laatz@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The addition of unaligned chunks mode, the documentation needs to be
-updated to indicate that the incoming addr to the fill ring will only be
-masked if the user application is run in the aligned chunk mode. This patch
-also adds a line to explicitly indicate that the incoming addr will not be
-masked if running the user application in the unaligned chunk mode.
+This patchset adds the ability to use unaligned chunks in the XDP umem.
 
-Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
----
- Documentation/networking/af_xdp.rst | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+Currently, all chunk addresses passed to the umem are masked to be chunk
+size aligned (default is 2k, max is PAGE_SIZE). This limits where we can
+place chunks within the umem as well as limiting the packet sizes that are
+supported.
 
-diff --git a/Documentation/networking/af_xdp.rst b/Documentation/networking/af_xdp.rst
-index e14d7d40fc75..16fbc68cac50 100644
---- a/Documentation/networking/af_xdp.rst
-+++ b/Documentation/networking/af_xdp.rst
-@@ -153,10 +153,12 @@ an example, if the UMEM is 64k and each chunk is 4k, then the UMEM has
- 
- Frames passed to the kernel are used for the ingress path (RX rings).
- 
--The user application produces UMEM addrs to this ring. Note that the
--kernel will mask the incoming addr. E.g. for a chunk size of 2k, the
--log2(2048) LSB of the addr will be masked off, meaning that 2048, 2050
--and 3000 refers to the same chunk.
-+The user application produces UMEM addrs to this ring. Note that, if
-+running the application with aligned chunk mode, the kernel will mask
-+the incoming addr.  E.g. for a chunk size of 2k, the log2(2048) LSB of
-+the addr will be masked off, meaning that 2048, 2050 and 3000 refers
-+to the same chunk. If the user application is run in the unaligned
-+chunks mode, then the incoming addr will be left untouched.
- 
- 
- UMEM Completion Ring
+The changes in this patchset removes these restrictions, allowing XDP to be
+more flexible in where it can place a chunk within a umem. By relaxing where
+the chunks can be placed, it allows us to use an arbitrary buffer size and
+place that wherever we have a free address in the umem. These changes add the
+ability to support jumboframes and make it easy to integrate with other
+existing frameworks that have their own memory management systems, such as
+DPDK.
+
+Structure of the patchset:
+Patch 1:
+  - Remove unnecessary masking and headroom addition during zero-copy Rx
+    buffer recycling in i40e. This change is required in order for the
+    buffer recycling to work in the unaligned chunk mode.
+
+Patch 2:
+  - Remove unnecessary masking and headroom addition during
+    zero-copy Rx buffer recycling in ixgbe. This change is required in
+    order for the  buffer recycling to work in the unaligned chunk mode.
+
+Patch 3:
+  - Adds an offset parameter to zero_copy_allocator. This change will
+    enable us to calculate the original handle in zca_free. This will be
+    required for unaligned chunk mode since we can't easily mask back to
+    the original handle.
+
+Patch 4:
+  - Adds the offset parameter to i40e_zca_free. This change is needed for
+    calculating the handle since we can't easily mask back to the original
+    handle like we can in the aligned case.
+
+Patch 5:
+  - Adds the offset parameter to ixgbe_zca_free. This change is needed for
+    calculating the handle since we can't easily mask back to the original
+    handle like we can in the aligned case.
+
+
+Patch 6:
+  - Add infrastructure for unaligned chunks. Since we are dealing
+    with unaligned chunks that could potentially cross a physical page
+    boundary, we add checks to keep track of that information. We can
+    later use this information to correctly handle buffers that are
+    placed at an address where they cross a page boundary.
+
+Patch 7:
+  - Add flags for umem configuration to libbpf
+
+Patch 8:
+  - Modify xdpsock application to add a command line option for
+    unaligned chunks
+
+Patch 9:
+  - Addition of command line argument to pass in a desired buffer size
+    and buffer recycling for unaligned mode. Passing in a buffer size will
+    allow the application to use unaligned chunks with the unaligned chunk
+    mode. Since we are now using unaligned chunks, we need to recycle our
+    buffers in a slightly different way.
+
+Patch 10:
+  - Adds hugepage support to the xdpsock application
+
+Patch 11:
+  - Documentation update to include the unaligned chunk scenario. We need
+    to explicitly state that the incoming addresses are only masked in the
+    aligned chunk mode and not the unaligned chunk mode.
+
+Kevin Laatz (11):
+  i40e: simplify Rx buffer recycle
+  ixgbe: simplify Rx buffer recycle
+  xdp: add offset param to zero_copy_allocator
+  i40e: add offset to zca_free
+  ixgbe: add offset to zca_free
+  xsk: add support to allow unaligned chunk placement
+  libbpf: add flags to umem config
+  samples/bpf: add unaligned chunks mode support to xdpsock
+  samples/bpf: add buffer recycling for unaligned chunks to xdpsock
+  samples/bpf: use hugepages in xdpsock app
+  doc/af_xdp: include unaligned chunk case
+
+ Documentation/networking/af_xdp.rst           | 10 +-
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c    | 21 ++--
+ drivers/net/ethernet/intel/i40e/i40e_xsk.h    |  3 +-
+ .../ethernet/intel/ixgbe/ixgbe_txrx_common.h  |  3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 21 ++--
+ include/net/xdp.h                             |  3 +-
+ include/net/xdp_sock.h                        |  2 +
+ include/uapi/linux/if_xdp.h                   |  4 +
+ net/core/xdp.c                                | 11 ++-
+ net/xdp/xdp_umem.c                            | 17 ++--
+ net/xdp/xsk.c                                 | 60 +++++++++--
+ net/xdp/xsk_queue.h                           | 60 +++++++++--
+ samples/bpf/xdpsock_user.c                    | 99 ++++++++++++++-----
+ tools/include/uapi/linux/if_xdp.h             |  4 +
+ tools/lib/bpf/xsk.c                           |  7 ++
+ tools/lib/bpf/xsk.h                           |  2 +
+ 16 files changed, 241 insertions(+), 86 deletions(-)
+
 -- 
 2.17.1
 
