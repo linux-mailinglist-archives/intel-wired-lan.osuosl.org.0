@@ -1,56 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81CFE4D1C8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2019 17:12:38 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 911AD86C1A;
-	Thu, 20 Jun 2019 15:12:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6LY1EsME7avi; Thu, 20 Jun 2019 15:12:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 96E058323C;
-	Thu, 20 Jun 2019 15:12:34 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A0EEC1BF2B4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 15:12:32 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 909244D423
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2019 18:49:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 96AC785FC9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 15:12:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 35C3886027;
+	Thu, 20 Jun 2019 16:49:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4mr3zNaj1u1I; Thu, 20 Jun 2019 16:49:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0613C85F92;
+	Thu, 20 Jun 2019 16:49:15 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 80AFF1BF5E9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 16:49:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7C0F321FA9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 16:49:13 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AcxWtxpUqqwv for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jun 2019 15:12:31 +0000 (UTC)
+ with ESMTP id NQshxXNQ6LKj for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2019 16:49:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C321585F88
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 15:12:31 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7ED9620770
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 16:49:12 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2019 08:12:31 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2019 09:49:12 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,397,1557212400"; d="scan'208";a="243659106"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 20 Jun 2019 08:12:29 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hdyjl-000IT6-A1; Thu, 20 Jun 2019 23:12:29 +0800
-Date: Thu, 20 Jun 2019 23:11:47 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d0ba233.UoXqirFiUmKGBxs0%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.63,397,1557212400"; d="scan'208";a="154181740"
+Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
+ by orsmga008.jf.intel.com with ESMTP; 20 Jun 2019 09:49:10 -0700
+Received: from orsmsx163.amr.corp.intel.com (10.22.240.88) by
+ ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 20 Jun 2019 09:49:10 -0700
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.248]) by
+ ORSMSX163.amr.corp.intel.com ([169.254.9.84]) with mapi id 14.03.0439.000;
+ Thu, 20 Jun 2019 09:49:09 -0700
+From: "Patel, Vedang" <vedang.patel@intel.com>
+To: Eric Dumazet <eric.dumazet@gmail.com>
+Thread-Topic: [PATCH net-next v4 1/7] igb: clear out tstamp after sending
+ the packet
+Thread-Index: AQHVJsYWP6DikpavGkiqH8wEAgHHrKak0uSAgABk7YA=
+Date: Thu, 20 Jun 2019 16:49:05 +0000
+Message-ID: <A1A5CF42-A7D4-4DC4-9D57-ED0340B04A6F@intel.com>
+References: <1560966016-28254-1-git-send-email-vedang.patel@intel.com>
+ <1560966016-28254-2-git-send-email-vedang.patel@intel.com>
+ <d6655497-5246-c24e-de35-fc6acdad0bf1@gmail.com>
+In-Reply-To: <d6655497-5246-c24e-de35-fc6acdad0bf1@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.24.14.150]
+Content-ID: <240ADF7AD22D274989F89AB520E5E961@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- 15bf1c7414b1772b87f534ce5287fd47ec077ddc
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/7] igb: clear out tstamp
+ after sending the packet
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,209 +78,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jiri Pirko <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
+ Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>, Jamal
+ Hadi Salim <jhs@mojatatu.com>, Murali Karicheri <m-karicheri2@ti.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Cong Wang <xiyou.wangcong@gmail.com>, David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 15bf1c7414b1772b87f534ce5287fd47ec077ddc  e1000e: Make watchdog use delayed work
 
-elapsed time: 439m
 
-configs tested: 184
+> On Jun 20, 2019, at 3:47 AM, Eric Dumazet <eric.dumazet@gmail.com> wrote:
+> 
+> 
+> 
+> On 6/19/19 10:40 AM, Vedang Patel wrote:
+>> skb->tstamp is being used at multiple places. On the transmit side, it
+>> is used to determine the launchtime of the packet. It is also used to
+>> determine the software timestamp after the packet has been transmitted.
+>> 
+>> So, clear out the tstamp value after it has been read so that we do not
+>> report false software timestamp on the receive side.
+>> 
+>> Signed-off-by: Vedang Patel <vedang.patel@intel.com>
+>> ---
+>> drivers/net/ethernet/intel/igb/igb_main.c | 1 +
+>> 1 file changed, 1 insertion(+)
+>> 
+>> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+>> index fc925adbd9fa..f66dae72fe37 100644
+>> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+>> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+>> @@ -5688,6 +5688,7 @@ static void igb_tx_ctxtdesc(struct igb_ring *tx_ring,
+>> 	 */
+>> 	if (tx_ring->launchtime_enable) {
+>> 		ts = ns_to_timespec64(first->skb->tstamp);
+>> +		first->skb->tstamp = 0;
+> 
+> Please provide more explanations.
+> 
+> Why only this driver would need this ?
+> 
+Currently, igb is the only driver which uses the skb->tstamp option on the transmit side (to set the hardware transmit timestamp). All the other drivers only use it on the receive side (to collect and send the hardware transmit timestamp to the userspace after packet has been sent).
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+So, any driver which supports the hardware txtime in the future will have to clear skb->tstamp to make sure that hardware tx transmit and tx timestamping can be done on the same packet.
 
-x86_64                 randconfig-x012-201924
-x86_64                 randconfig-x014-201924
-x86_64                 randconfig-x011-201924
-x86_64                 randconfig-x013-201924
-x86_64                 randconfig-x019-201924
-x86_64                 randconfig-x015-201924
-x86_64                 randconfig-x010-201924
-x86_64                 randconfig-x017-201924
-x86_64                 randconfig-x016-201924
-x86_64                 randconfig-x018-201924
-openrisc                    or1ksim_defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arm                              allmodconfig
-arm64                            allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-s390                          debug_defconfig
-sh                               allmodconfig
-sh                            titan_defconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-i386                             alldefconfig
-nds32                             allnoconfig
-nds32                               defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                                    lkp
-x86_64                                nfsroot
-x86_64                                   rhel
-x86_64                               rhel-7.6
-c6x                        evmc6678_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-nios2                         10m50_defconfig
-h8300                    h8300h-sim_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-i386                   randconfig-n004-201924
-x86_64                 randconfig-n023-201924
-i386                   randconfig-n005-201924
-x86_64                 randconfig-n022-201924
-i386                   randconfig-n025-201924
-x86_64                 randconfig-n006-201924
-x86_64                 randconfig-n014-201924
-x86_64                 randconfig-n012-201924
-x86_64                 randconfig-n032-201924
-x86_64                 randconfig-n013-201924
-i386                   randconfig-n008-201924
-x86_64                 randconfig-n016-201924
-i386                   randconfig-n028-201924
-i386                   randconfig-n011-201924
-i386                   randconfig-n023-201924
-i386                   randconfig-n031-201924
-x86_64                 randconfig-n030-201924
-i386                   randconfig-n029-201924
-i386                   randconfig-n010-201924
-i386                   randconfig-n024-201924
-x86_64                 randconfig-n007-201924
-i386                   randconfig-n030-201924
-x86_64                 randconfig-n031-201924
-i386                   randconfig-n013-201924
-x86_64                 randconfig-n009-201924
-x86_64                 randconfig-n028-201924
-x86_64                 randconfig-n011-201924
-i386                   randconfig-n021-201924
-i386                   randconfig-n018-201924
-x86_64                 randconfig-n002-201924
-i386                   randconfig-n014-201924
-i386                   randconfig-n002-201924
-x86_64                 randconfig-n025-201924
-i386                   randconfig-n009-201924
-x86_64                 randconfig-n017-201924
-i386                   randconfig-n003-201924
-x86_64                 randconfig-n024-201924
-x86_64                 randconfig-n029-201924
-x86_64                 randconfig-n010-201924
-x86_64                 randconfig-n027-201924
-i386                   randconfig-n012-201924
-x86_64                 randconfig-n008-201924
-x86_64                 randconfig-n015-201924
-i386                   randconfig-n015-201924
-i386                   randconfig-n007-201924
-x86_64                 randconfig-n020-201924
-x86_64                 randconfig-n019-201924
-i386                   randconfig-n017-201924
-i386                   randconfig-n016-201924
-i386                   randconfig-n020-201924
-i386                   randconfig-n019-201924
-x86_64                 randconfig-n003-201924
-i386                   randconfig-n001-201924
-x86_64                 randconfig-n026-201924
-i386                   randconfig-n026-201924
-x86_64                 randconfig-n005-201924
-i386                   randconfig-n006-201924
-x86_64                 randconfig-n021-201924
-x86_64                 randconfig-n018-201924
-i386                   randconfig-n027-201924
-x86_64                 randconfig-n004-201924
-i386                   randconfig-n022-201924
-x86_64                 randconfig-n001-201924
-i386                   randconfig-n032-201924
-riscv                             allnoconfig
-riscv                               defconfig
-parisc                        c3000_defconfig
-um                                  defconfig
-parisc                         b180_defconfig
-parisc                              defconfig
-alpha                               defconfig
-parisc                            allnoconfig
-alpha                            allyesconfig
-riscv                              tinyconfig
-i386                               tinyconfig
-sparc64                          allyesconfig
-i386                             allmodconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-x86_64                 randconfig-x000-201924
-x86_64                 randconfig-x001-201924
-x86_64                 randconfig-x002-201924
-x86_64                 randconfig-x003-201924
-x86_64                 randconfig-x004-201924
-x86_64                 randconfig-x005-201924
-x86_64                 randconfig-x006-201924
-x86_64                 randconfig-x007-201924
-x86_64                 randconfig-x008-201924
-x86_64                 randconfig-x009-201924
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-i386                   randconfig-x009-201924
-i386                   randconfig-x004-201924
-i386                   randconfig-x005-201924
-i386                   randconfig-x008-201924
-i386                   randconfig-x006-201924
-i386                   randconfig-x001-201924
-i386                   randconfig-x007-201924
-i386                   randconfig-x000-201924
-i386                   randconfig-x002-201924
-i386                   randconfig-x003-201924
-i386                   randconfig-x071-201924
-i386                   randconfig-x070-201924
-i386                   randconfig-x073-201924
-i386                   randconfig-x078-201924
-i386                   randconfig-x074-201924
-i386                   randconfig-x072-201924
-i386                   randconfig-x075-201924
-i386                   randconfig-x077-201924
-i386                   randconfig-x076-201924
-i386                   randconfig-x079-201924
-i386                              allnoconfig
-i386                                defconfig
+Thanks,
+Vedang
+> 
+>> 		context_desc->seqnum_seed = cpu_to_le32(ts.tv_nsec / 32);
+>> 	} else {
+>> 		context_desc->seqnum_seed = 0;
+>> 
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
