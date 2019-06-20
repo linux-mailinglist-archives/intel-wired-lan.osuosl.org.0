@@ -1,56 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1076D4C647
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2019 06:38:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD6ED4C89E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2019 09:46:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 80CF485F81;
-	Thu, 20 Jun 2019 04:38:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2BE4B86773;
+	Thu, 20 Jun 2019 07:46:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yyk6ANuFUNbr; Thu, 20 Jun 2019 04:38:11 +0000 (UTC)
+	with ESMTP id YjECDwNsMVFA; Thu, 20 Jun 2019 07:46:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3318D85F80;
-	Thu, 20 Jun 2019 04:38:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5E24986959;
+	Thu, 20 Jun 2019 07:46:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 65E4F1BF3C1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 04:38:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3766E1BF584
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 07:46:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 61C63868B2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 04:38:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 29A8386773
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 07:46:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id K6yNiJtmtBe5 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jun 2019 04:38:08 +0000 (UTC)
+ with ESMTP id 7iHIem21SdU6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2019 07:46:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 48F6686651
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 04:38:08 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jun 2019 21:38:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,395,1557212400"; d="scan'208";a="358827226"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 19 Jun 2019 21:38:06 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hdopp-000CS5-Ja; Thu, 20 Jun 2019 12:38:05 +0800
-Date: Thu, 20 Jun 2019 12:37:17 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d0b0d7d.FGlEGj+GlE1m6ebr%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 83B8885606
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2019 07:46:24 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5K7iEg5106287;
+ Thu, 20 Jun 2019 07:46:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2018-07-02;
+ bh=HeDvOiHTlIzrzy+0pchL+wla87Ud5RbdxU4a4YmC+QY=;
+ b=mPUBrfwj+jL6UupTstk8/onXFOCjt1/7+L7mTVwzNJIP+59ELUwv7KC45rB+7/2Hf8wu
+ vPHRJGomfgvH3uGEOlWt1aGlaGA7qmfcC3uaNW+ez7H1ZYLZDmatomZ4ZtkPrVVK8Kli
+ gfN2C6EleamX+JB2uxJkq6LDQnc8V/h0amWqdcKMAgzw2C0cp/3KAh9/UgstHVIrU4HG
+ MRPK56f5DvDhWObOLs7sp8bmTVMcHVNn9/zpSAqhGJYjMAXT2OPKQ/dQK02f7LXZIh2i
+ CP1FzfpYjPiV2zL/8xXULer/I6x64hvwIsdpZHpXz2AEnAFZEi2WvJYSnktretM9nVYl Rg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2120.oracle.com with ESMTP id 2t7809ffev-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 20 Jun 2019 07:46:21 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5K7ju2P138441;
+ Thu, 20 Jun 2019 07:46:20 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2t77yng31n-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 20 Jun 2019 07:46:20 +0000
+Received: from abhmp0007.oracle.com (abhmp0007.oracle.com [141.146.116.13])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5K7kJTQ002911;
+ Thu, 20 Jun 2019 07:46:19 GMT
+Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 20 Jun 2019 00:45:22 -0700
+Date: Thu, 20 Jun 2019 10:45:16 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: mitch.a.williams@intel.com
+Message-ID: <20190620074516.GA12233@mwanda>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
- b4289a0577de71d61108c6561caf61cd835c99a9
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9293
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=841
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906200059
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9293
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=879 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906200059
+Subject: [Intel-wired-lan] [bug report] iavf: allow null RX descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,215 +94,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
-branch HEAD: b4289a0577de71d61108c6561caf61cd835c99a9  ixgbevf: Use cached link state instead of re-reading the value for ethtool
+Hello Mitch Williams,
 
-elapsed time: 536m
+This is a semi-automatic email about new static checker warnings.
 
-configs tested: 190
+The patch efa14c398582: "iavf: allow null RX descriptors" from May
+14, 2019, leads to the following Smatch complaint:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+    drivers/net/ethernet/intel/iavf/iavf_txrx.c:1533 iavf_clean_rx_irq()
+    warn: variable dereferenced before check 'rx_buffer' (see line 1526)
 
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-arm                              allmodconfig
-arm64                            allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-riscv                              tinyconfig
-i386                               tinyconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                           allnoconfig
-s390                          debug_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-i386                             alldefconfig
-openrisc                    or1ksim_defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-c6x                        evmc6678_defconfig
-h8300                    h8300h-sim_defconfig
-nios2                         10m50_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-x86_64                                  kexec
-x86_64                              fedora-25
-x86_64                 randconfig-n001-201924
-x86_64                 randconfig-n002-201924
-x86_64                 randconfig-n003-201924
-x86_64                 randconfig-n004-201924
-x86_64                 randconfig-n005-201924
-x86_64                 randconfig-n006-201924
-x86_64                 randconfig-n007-201924
-x86_64                 randconfig-n008-201924
-x86_64                 randconfig-n009-201924
-x86_64                 randconfig-n010-201924
-x86_64                 randconfig-n011-201924
-x86_64                 randconfig-n012-201924
-x86_64                 randconfig-n013-201924
-x86_64                 randconfig-n014-201924
-x86_64                 randconfig-n015-201924
-x86_64                 randconfig-n016-201924
-x86_64                 randconfig-n017-201924
-x86_64                 randconfig-n018-201924
-x86_64                 randconfig-n019-201924
-x86_64                 randconfig-n020-201924
-x86_64                 randconfig-n021-201924
-x86_64                 randconfig-n023-201924
-x86_64                 randconfig-n024-201924
-x86_64                 randconfig-n025-201924
-x86_64                 randconfig-n026-201924
-x86_64                 randconfig-n027-201924
-x86_64                 randconfig-n028-201924
-x86_64                 randconfig-n029-201924
-x86_64                 randconfig-n030-201924
-x86_64                 randconfig-n031-201924
-x86_64                 randconfig-n032-201924
-i386                   randconfig-n002-201924
-i386                   randconfig-n003-201924
-i386                   randconfig-n004-201924
-i386                   randconfig-n005-201924
-i386                   randconfig-n006-201924
-i386                   randconfig-n007-201924
-i386                   randconfig-n008-201924
-i386                   randconfig-n009-201924
-i386                   randconfig-n010-201924
-i386                   randconfig-n012-201924
-i386                   randconfig-n013-201924
-i386                   randconfig-n014-201924
-i386                   randconfig-n015-201924
-i386                   randconfig-n016-201924
-i386                   randconfig-n017-201924
-i386                   randconfig-n018-201924
-i386                   randconfig-n019-201924
-i386                   randconfig-n020-201924
-i386                   randconfig-n021-201924
-i386                   randconfig-n022-201924
-i386                   randconfig-n023-201924
-i386                   randconfig-n024-201924
-i386                   randconfig-n025-201924
-i386                   randconfig-n026-201924
-i386                   randconfig-n028-201924
-i386                   randconfig-n029-201924
-i386                   randconfig-n030-201924
-i386                   randconfig-n031-201924
-i386                   randconfig-n032-201924
-x86_64                 randconfig-n022-201924
-i386                   randconfig-n001-201924
-i386                   randconfig-n011-201924
-i386                   randconfig-n027-201924
-riscv                             allnoconfig
-riscv                               defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-sh                               allyesconfig
-i386                             allmodconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-x86_64                 randconfig-x019-201924
-x86_64                 randconfig-x012-201924
-x86_64                 randconfig-x014-201924
-x86_64                 randconfig-x015-201924
-x86_64                 randconfig-x010-201924
-x86_64                 randconfig-x017-201924
-x86_64                 randconfig-x011-201924
-x86_64                 randconfig-x016-201924
-x86_64                 randconfig-x018-201924
-x86_64                 randconfig-x013-201924
-i386                   randconfig-x071-201924
-i386                   randconfig-x070-201924
-i386                   randconfig-x073-201924
-i386                   randconfig-x078-201924
-i386                   randconfig-x074-201924
-i386                   randconfig-x072-201924
-i386                   randconfig-x075-201924
-i386                   randconfig-x077-201924
-i386                   randconfig-x076-201924
-i386                   randconfig-x079-201924
-i386                              allnoconfig
-i386                                defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-i386                   randconfig-x013-201924
-i386                   randconfig-x018-201924
-i386                   randconfig-x012-201924
-i386                   randconfig-x011-201924
-i386                   randconfig-x016-201924
-i386                   randconfig-x010-201924
-i386                   randconfig-x017-201924
-i386                   randconfig-x015-201924
-i386                   randconfig-x014-201924
-i386                   randconfig-x019-201924
-x86_64                 randconfig-x001-201924
-x86_64                 randconfig-x007-201924
-x86_64                 randconfig-x006-201924
-x86_64                 randconfig-x003-201924
-x86_64                 randconfig-x004-201924
-x86_64                 randconfig-x009-201924
-x86_64                 randconfig-x002-201924
-x86_64                 randconfig-x008-201924
-x86_64                 randconfig-x005-201924
-x86_64                 randconfig-x000-201924
-i386                   randconfig-x009-201924
-i386                   randconfig-x004-201924
-i386                   randconfig-x005-201924
-i386                   randconfig-x008-201924
-i386                   randconfig-x006-201924
-i386                   randconfig-x001-201924
-i386                   randconfig-x007-201924
-i386                   randconfig-x000-201924
-i386                   randconfig-x002-201924
-i386                   randconfig-x003-201924
-alpha                               defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-um                                  defconfig
+drivers/net/ethernet/intel/iavf/iavf_txrx.c
+  1515  
+  1516                  size = (qword & IAVF_RXD_QW1_LENGTH_PBUF_MASK) >>
+  1517                         IAVF_RXD_QW1_LENGTH_PBUF_SHIFT;
+  1518  
+  1519                  iavf_trace(clean_rx_irq, rx_ring, rx_desc, skb);
+  1520                  rx_buffer = iavf_get_rx_buffer(rx_ring, size);
+  1521  
+  1522                  /* retrieve a buffer from the ring */
+  1523                  if (skb)
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+skb is non-NULL so ignore this path.
+
+  1524                          iavf_add_rx_frag(rx_ring, rx_buffer, skb, size);
+  1525			else if (ring_uses_build_skb(rx_ring))
+  1526				skb = iavf_build_skb(rx_ring, rx_buffer, size);
+                                                              ^^^^^^^^^
+  1527			else
+  1528				skb = iavf_construct_skb(rx_ring, rx_buffer, size);
+                                                                  ^^^^^^^^^
+These functions both dereference "rx_buffer" and might set skb to NULL.
+
+  1529	
+  1530			/* exit if we failed to retrieve a buffer */
+  1531			if (!skb) {
+  1532				rx_ring->rx_stats.alloc_buff_failed++;
+  1533				if (rx_buffer)
+                                ^^^^^^^^^^^^^
+If "rx_buffer" is NULL then we would already have crashed.
+
+  1534					rx_buffer->pagecnt_bias++;
+  1535				break;
+
+regards,
+dan carpenter
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
