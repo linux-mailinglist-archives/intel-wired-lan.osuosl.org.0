@@ -1,62 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 574F24F025
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 958B14F026
 	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2019 22:52:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F323D22668;
-	Fri, 21 Jun 2019 20:52:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3EDA288127;
+	Fri, 21 Jun 2019 20:52:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fotiPy-XAr-n; Fri, 21 Jun 2019 20:52:52 +0000 (UTC)
+	with ESMTP id oqgyaRRIBvUr; Fri, 21 Jun 2019 20:52:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0BD352264A;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6364A880CA;
 	Fri, 21 Jun 2019 20:52:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CEB2D1BF359
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2019 13:47:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 59AAC1BF473
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2019 17:28:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C9E85221BB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2019 13:47:43 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5260C203F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2019 17:28:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A3k5ohmEezrV for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Jun 2019 13:47:42 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id ABDFE20378
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2019 13:47:42 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F07E2206B7;
- Fri, 21 Jun 2019 13:47:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1561124862;
- bh=pNldUrqmJvya/Uwu9bDRmh68i2HgU65QwS4iKeIec5c=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=oCKJQsAxHNH+eZZtSWdAK01ZD+7IvrRz9N0tstd1wnfuSwvYFeU40smNuMdeKIVTq
- DH83XTjHwc5jLQEnTUBzj5OGl7VYS4dga6Adwzlz0s+q2BAxCGZrUvQGe0EuRQJofj
- ZmoAtS0rnjTz1nWMkoe70INYL2oQmlD9uyy3Fql8=
-Date: Fri, 21 Jun 2019 15:47:40 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Message-ID: <20190621134740.GA26549@kroah.com>
-References: <cover.1560890800.git.mchehab+samsung@kernel.org>
- <0ac41c7d682452cdbd867c4ae7729b6b34d79c0b.1560890800.git.mchehab+samsung@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <0ac41c7d682452cdbd867c4ae7729b6b34d79c0b.1560890800.git.mchehab+samsung@kernel.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+ with ESMTP id v0cpbOVje6Qr for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Jun 2019 17:28:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2C915203C9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2019 17:28:47 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 Jun 2019 10:28:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,401,1557212400"; d="scan'208";a="171282951"
+Received: from vpatel-desk.jf.intel.com (HELO localhost.localdomain)
+ ([10.7.159.52])
+ by orsmga002.jf.intel.com with ESMTP; 21 Jun 2019 10:28:46 -0700
+From: Vedang Patel <vedang.patel@intel.com>
+To: netdev@vger.kernel.org
+Date: Fri, 21 Jun 2019 10:28:21 -0700
+Message-Id: <1561138108-12943-1-git-send-email-vedang.patel@intel.com>
+X-Mailer: git-send-email 2.7.3
 X-Mailman-Approved-At: Fri, 21 Jun 2019 20:52:49 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v2 09/29] docs: driver-model: convert
- docs to ReST and rename to *.rst
+Subject: [Intel-wired-lan] [PATCH net-next v5 0/7] net/sched: Add
+ txtime-assist support for taprio.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,43 +61,127 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hwmon@vger.kernel.org, Julia Lawall <Julia.Lawall@lip6.fr>,
- Jean Delvare <jdelvare@suse.com>, Gilles Muller <Gilles.Muller@lip6.fr>,
- Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Nicolas Palix <nicolas.palix@imag.fr>, linux-kernel@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@infradead.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Michal Marek <michal.lkml@markovi.net>, intel-wired-lan@lists.osuosl.org,
- linux-gpio@vger.kernel.org, "Rafael J. Wysocki" <rafael@kernel.org>,
- cocci@systeme.lip6.fr, "David S. Miller" <davem@davemloft.net>,
- Guenter Roeck <linux@roeck-us.net>
+Cc: jiri@resnulli.us, l@dorileo.org, sergei.shtylyov@cogentembedded.com,
+ jakub.kicinski@netronome.com, jhs@mojatatu.com, m-karicheri2@ti.com,
+ intel-wired-lan@lists.osuosl.org, xiyou.wangcong@gmail.com,
+ eric.dumazet@gmail.com, davem@davemloft.net
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 18, 2019 at 05:53:27PM -0300, Mauro Carvalho Chehab wrote:
-> Convert the various documents at the driver-model, preparing
-> them to be part of the driver-api book.
-> 
-> The conversion is actually:
->   - add blank lines and identation in order to identify paragraphs;
->   - fix tables markups;
->   - add some lists markups;
->   - mark literal blocks;
->   - adjust title markups.
-> 
-> At its new index.rst, let's add a :orphan: while this is not linked to
-> the main index.rst file, in order to avoid build warnings.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-> Acked-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com> # ice
+Changes in v5:
+- Commit message improved for the igb patch (patch #1).
+- Fixed typo in commit message for etf patch (patch #2).
 
-Now applied, thanks.
+Changes in v4:
+- Remove inline directive from functions in foo.c.
+- Fix spacing in pkt_sched.h (for etf patch).
 
-greg k-h
+Changes in v3:
+- Simplify implementation for taprio flags. 
+- txtime_delay can only be set if txtime-assist mode is enabled.
+- txtime_delay and flags will only be visible in tc output if set by user.
+- Minor changes in error reporting.
+
+Changes in v2:
+- Txtime-offload has now been renamed to txtime-assist mode.
+- Renamed the offload parameter to flags.
+- Removed the code which introduced the hardware offloading functionality.
+
+Original Cover letter (with above changes included)
+--------------------------------------------------
+
+Currently, we are seeing packets being transmitted outside their
+timeslices. We can confirm that the packets are being dequeued at the right
+time. So, the delay is induced after the packet is dequeued, because
+taprio, without any offloading, has no control of when a packet is actually
+transmitted.
+
+In order to solve this, we are making use of the txtime feature provided by
+ETF qdisc. Hardware offloading needs to be supported by the ETF qdisc in
+order to take advantage of this feature. The taprio qdisc will assign
+txtime (in skb->tstamp) for all the packets which do not have the txtime
+allocated via the SO_TXTIME socket option. For the packets which already
+have SO_TXTIME set, taprio will validate whether the packet will be
+transmitted in the correct interval.
+
+In order to support this, the following parameters have been added:
+- flags (taprio): This is added in order to support different offloading
+  modes which will be added in the future.
+- txtime-delay (taprio): This indicates the minimum time it will take for
+  the packet to hit the wire after it reaches taprio_enqueue(). This is
+  useful in determining whether we can transmit the packet in the remaining
+  time if the gate corresponding to the packet is currently open.
+- skip_skb_check (ETF): ETF currently drops any packet which does not have
+  the SO_TXTIME socket option set. This check can be skipped by specifying
+  this option.
+
+Following is an example configuration:
+
+tc qdisc replace dev $IFACE parent root handle 100 taprio \\
+    num_tc 3 \\
+    map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \\
+    queues 1@0 1@0 1@0 \\
+    base-time $BASE_TIME \\
+    sched-entry S 01 300000 \\
+    sched-entry S 02 300000 \\
+    sched-entry S 04 400000 \\
+    flags 0x1 \\
+    txtime-delay 200000 \\
+    clockid CLOCK_TAI
+
+tc qdisc replace dev $IFACE parent 100:1 etf \\
+    offload delta 200000 clockid CLOCK_TAI skip_skb_check
+
+Here, the "flags" parameter is indicating that the txtime-assist mode is
+enabled. Also, all the traffic classes have been assigned the same queue.
+This is to prevent the traffic classes in the lower priority queues from
+getting starved. Note that this configuration is specific to the i210
+ethernet card. Other network cards where the hardware queues are given the
+same priority, might be able to utilize more than one queue.
+
+Following are some of the other highlights of the series:
+- Fix a bug where hardware timestamping and SO_TXTIME options cannot be
+  used together. (Patch 1)
+- Introduces the skip_skb_check option.  (Patch 2)
+- Make TxTime assist mode work with TCP packets (Patch 7).
+
+The following changes are recommended to be done in order to get the best
+performance from taprio in this mode:
+# TSN in general does not allow Jumbo frames.
+ip link set dev enp1s0 mtu 1514
+# Disable segmentation offload. This is to prevent NIC from sending packets
+# after the gate for a traffic class has closed.
+ethtool -K eth0 gso off 
+ethtool -K eth0 tso off
+# Disable energy efficient ethernet to make sure there are no latency
+# spikes when NIC is trying to wake up when the packet is supposed to be
+# sent.
+ethtool --set-eee eth0 eee off
+
+Thanks,
+Vedang Patel
+
+Vedang Patel (7):
+  igb: clear out skb->tstamp after reading the txtime
+  etf: Add skip_sock_check
+  taprio: calculate cycle_time when schedule is installed
+  taprio: Remove inline directive
+  taprio: Add support for txtime-assist mode
+  taprio: make clock reference conversions easier
+  taprio: Adjust timestamps for TCP packets
+
+ drivers/net/ethernet/intel/igb/igb_main.c |   1 +
+ include/uapi/linux/pkt_sched.h            |   5 +
+ net/sched/sch_etf.c                       |  10 +
+ net/sched/sch_taprio.c                    | 431 +++++++++++++++++++++++++++---
+ 4 files changed, 413 insertions(+), 34 deletions(-)
+
+-- 
+2.7.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
