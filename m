@@ -1,59 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FFB950A41
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jun 2019 13:57:06 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37FF850A94
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jun 2019 14:19:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AB1D185797;
-	Mon, 24 Jun 2019 11:57:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B82C581ECF;
+	Mon, 24 Jun 2019 12:19:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LgMJV9Ig-ZlL; Mon, 24 Jun 2019 11:57:04 +0000 (UTC)
+	with ESMTP id Z0SZfD0Dp9rN; Mon, 24 Jun 2019 12:19:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 690B785785;
-	Mon, 24 Jun 2019 11:57:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 16D9585540;
+	Mon, 24 Jun 2019 12:19:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AEB511BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 11:57:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1A6DC1BF387
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 12:19:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A967D84EB9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 11:57:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0FC7081ECF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 12:19:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lk5KZlSRmeYo for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Jun 2019 11:57:02 +0000 (UTC)
+ with ESMTP id rmBeYCjwrWMy for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Jun 2019 12:19:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D841484BF1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 11:57:01 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2019 04:57:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,412,1557212400"; d="scan'208";a="161598821"
-Received: from eyasman-mobl.ger.corp.intel.com (HELO [10.249.90.21])
- ([10.249.90.21])
- by fmsmga008.fm.intel.com with ESMTP; 24 Jun 2019 04:56:59 -0700
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>, jeffrey.t.kirsher@intel.com
-References: <074E1145-A512-4835-9A6D-8FB6634DBD3C@canonical.com>
- <E2D5225B-D683-4895-AC4F-EE01C339262B@canonical.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <95f88f45-fd6c-52e4-de8c-2db1b4c6c04e@intel.com>
-Date: Mon, 24 Jun 2019 14:56:58 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B393784B88
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 12:19:27 +0000 (UTC)
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5OC8rdF098408;
+ Mon, 24 Jun 2019 12:19:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2018-07-02;
+ bh=bsMzORvMI7u79mx74ebyi9TlcjT0LZlf+Ftj9C2RUws=;
+ b=Lrra/iiwYpPx/vg6Vw8Fu55yE2Ulg6gqSWaDKh6oRz8vyICtCWFAIeS3I8JLeNn6wAS5
+ NhoMR+HT1osqr5RdCm35SFila7ZTcQYj7AY6kVklKFeuHCmxqSokiIRo2EI+qmRaVT9Y
+ pMiGgXQ0Uk9zMxCzC6pOwYoxJduhVJJx/3T8MoM1jtfh2u8M/RmTpJOWhRXf2tD2lB4I
+ h+02imgiqVYz6/8sySpgQ9Qo6z/2nsUqs/wOEEQZJgPZDd3tofuztSvXGxapVF2vGXIx
+ xQV7UY7d404MnoJoeXD5Tq3CW0/cNOwnIASsIhQNX616jdn/WCt9Gxa0r6IjBmEDd9Tg PA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2130.oracle.com with ESMTP id 2t9brsx322-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 24 Jun 2019 12:19:11 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5OCHUJf150906;
+ Mon, 24 Jun 2019 12:19:10 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3030.oracle.com with ESMTP id 2t9acbfp9k-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 24 Jun 2019 12:19:10 +0000
+Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5OCJ8F3006014;
+ Mon, 24 Jun 2019 12:19:09 GMT
+Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 24 Jun 2019 05:19:08 -0700
+Date: Mon, 24 Jun 2019 15:19:02 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: mitch.a.williams@intel.com
+Message-ID: <20190624121902.GR18776@kadam>
+References: <20190620074516.GA12233@mwanda>
 MIME-Version: 1.0
-In-Reply-To: <E2D5225B-D683-4895-AC4F-EE01C339262B@canonical.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] Opportunistic S0ix blocked by e1000e when
- ethernet is in use
+Content-Disposition: inline
+In-Reply-To: <20190620074516.GA12233@mwanda>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9297
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=987
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906240101
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9297
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906240101
+Subject: Re: [Intel-wired-lan] [bug report] iavf: allow null RX descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,59 +97,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, Anthony Wong <anthony.wong@canonical.com>,
- linux-kernel <linux-kernel@vger.kernel.org>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gNi8yNC8yMDE5IDEwOjAzLCBLYWktSGVuZyBGZW5nIHdyb3RlOgo+IEhpIEplZmZyZXksCj4g
-Cj4gYXQgMTk6MDgsIEthaS1IZW5nIEZlbmcgPGthaS5oZW5nLmZlbmdAY2Fub25pY2FsLmNvbT4g
-d3JvdGU6Cj4gCj4+IEhpIEplZmZyZXksCj4+Cj4+IFRoZXJlIGFyZSBzZXZlcmFsIHBsYXRmb3Jt
-cyB0aGF0IHVzZXMgZTEwMDBlIGNhbuKAmXQgZW50ZXIgT3Bwb3J0dW5pc3RpYyAKPj4gUzBpeCAo
-UEMxMCkgd2hlbiB0aGUgZXRoZXJuZXQgaGFzIGEgbGluayBwYXJ0bmVyLgo+Pgo+PiBUaGlzIGJl
-aGF2aW9yIGFsc28gZXhpdHMgaW4gb3V0LW9mLXRyZWUgZTEwMDBlIGRyaXZlciAzLjQuMi4xLCBi
-dXQgCj4+IHNlZW1zIGxpa2UgMy40LjIuMyBmaXhlcyB0aGUgaXNzdWUuCj4+Cj4+IEEgcXVpY2sg
-ZGlmZiBiZXR3ZWVuIHRoZSB0d28gdmVyc2lvbnMgc2hvd3MgdGhhdCB0aGlzIGNvZGUgc2VjdGlv
-biBtYXkgCj4+IGJlIG91ciBzb2x1dGlvbjoKPj4KPj4gwqDCoMKgwqDCoMKgwqAgLyogUmVhZCBm
-cm9tIEVYVENORl9DVFJMIGluIGUxMDAwX2FjcXVpcmVfc3dmbGFnX2ljaDhsYW4gZnVuY3Rpb24K
-Pj4gwqDCoMKgwqDCoMKgwqDCoCAqIG1heSBvY2N1ciBkdXJpbmcgZ2xvYmFsIHJlc2V0IGFuZCBj
-YXVzZSBzeXN0ZW0gaGFuZy4KPj4gwqDCoMKgwqDCoMKgwqDCoCAqIENvbmZpZ3VyYXRpb24gc3Bh
-Y2UgYWNjZXNzIGNyZWF0ZXMgdGhlIG5lZWRlZCBkZWxheS4KPj4gwqDCoMKgwqDCoMKgwqDCoCAq
-IFdyaXRlIHRvIEUxMDAwX1NUUkFQIFJPIHJlZ2lzdGVyIAo+PiBFMTAwMF9QQ0lfVkVORE9SX0lE
-X1JFR0lTVEVSIHZhbHVlCj4+IMKgwqDCoMKgwqDCoMKgwqAgKiBpbnN1cmVzIGNvbmZpZ3VyYXRp
-b24gc3BhY2UgcmVhZCBpcyBkb25lIGJlZm9yZSBnbG9iYWwgcmVzZXQuCj4+IMKgwqDCoMKgwqDC
-oMKgwqAgKi8KPj4gwqDCoMKgwqDCoMKgwqAgcGNpX3JlYWRfY29uZmlnX3dvcmQoaHctPmFkYXB0
-ZXItPnBkZXYsIAo+PiBFMTAwMF9QQ0lfVkVORE9SX0lEX1JFR0lTVEVSLAo+PiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAmcGNpX2NmZyk7
-Cj4+IMKgwqDCoMKgwqDCoMKgIGV3MzIoU1RSQVAsIHBjaV9jZmcpOwo+PiDCoMKgwqDCoMKgwqDC
-oCBlX2RiZygiSXNzdWluZyBhIGdsb2JhbCByZXNldCB0byBpY2g4bGFuXG4iKTsKPj4gwqDCoMKg
-wqDCoMKgwqAgZXczMihDVFJMLCAoY3RybCB8IEUxMDAwX0NUUkxfUlNUKSk7Cj4+IMKgwqDCoMKg
-wqDCoMKgIC8qIGNhbm5vdCBpc3N1ZSBhIGZsdXNoIGhlcmUgYmVjYXVzZSBpdCBoYW5ncyB0aGUg
-aGFyZHdhcmUgKi8KPj4gwqDCoMKgwqDCoMKgwqAgbXNsZWVwKDIwKTsKPj4KPj4gwqDCoMKgwqDC
-oMKgwqAgLyogQ29uZmlndXJhdGlvbiBzcGFjZSBhY2Nlc3MgaW1wcm92ZSBIVyBsZXZlbCB0aW1l
-IHN5bmMgCj4+IG1lY2hhbmlzbS4KPj4gwqDCoMKgwqDCoMKgwqDCoCAqIFdyaXRlIHRvIEUxMDAw
-X1NUUkFQIFJPIHJlZ2lzdGVyIEUxMDAwX1BDSV9WRU5ET1JfSURfUkVHSVNURVIKPj4gwqDCoMKg
-wqDCoMKgwqDCoCAqIHZhbHVlIHRvIGluc3VyZSBjb25maWd1cmF0aW9uIHNwYWNlIHJlYWQgaXMg
-ZG9uZQo+PiDCoMKgwqDCoMKgwqDCoMKgICogYmVmb3JlIGFueSBhY2Nlc3MgdG8gbWFjIHJlZ2lz
-dGVyLgo+PiDCoMKgwqDCoMKgwqDCoMKgICovCj4+IMKgwqDCoMKgwqDCoMKgIHBjaV9yZWFkX2Nv
-bmZpZ193b3JkKGh3LT5hZGFwdGVyLT5wZGV2LCAKPj4gRTEwMDBfUENJX1ZFTkRPUl9JRF9SRUdJ
-U1RFUiwKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgJnBjaV9jZmcpOwo+PiDCoMKgwqDCoMKgwqDCoCBldzMyKFNUUkFQLCBwY2lfY2Zn
-KTsKPiAKPiBUdXJucyBvdXQgdGhlICJleHRyYSBzYXVjZeKAnSBpcyBub3QgdGhpcyBwYXJ0LCBp
-dOKAmXMgY2FsbGVkIOKAnER5bmFtaWMgTFRSIAo+IHN1cHBvcnTigJ0uCj4gPj4KPj4gSXMgdGhl
-cmUgYW55IHBsYW4gdG8gc3VwcG9ydCB0aGlzIGluIHRoZSB1cHN0cmVhbSBrZXJuZWw/Cj4gCj4g
-SXMgdGhlcmUgYW55IHBsYW4gdG8gc3VwcG9ydCBEeW5hbWljIExUUiBpbiB1cHN0cmVhbSBlMTAw
-MGU/Cj4gCkR5bmFtaWMgTFRSIGlzIG5vdCBzdGFibGUgc29sdXRpb24uIFNvLCB3ZSBjYW4gbm90
-IHB1dCB0aGlzIHNvbHV0aW9uIHRvIAp1cHN0cmVhbS4gSSBob3BlIHdlIHdpbGwgYmUgYWJsZSB0
-byBmaXggdGhpcyBpbiBIVyBmb3IgYSBmdXR1cmUgcHJvamVjdHMuClMwaXggc3VwcG9ydCBpcyB1
-bmRlciBkaXNjdXNzaW9uIHdpdGggb3VyIGFyY2hpdGVjdHVyZS4gV2Ugd2lsbCB0cnkgCmVuYWJs
-ZSBTMGl4IGluIG91ciBlMTAwMGUgT09UIGRyaXZlciBhcyBmaXJzdCBzdGVwLgo+IEthaS1IZW5n
-Cj4gCj4+Cj4+IEthaS1IZW5nCj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwt
-d2lyZWQtbGFuQG9zdW9zbC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9pbnRlbC13aXJlZC1sYW4KClRoYW5rcwpTYXNoYQpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0
-CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+On Thu, Jun 20, 2019 at 10:45:16AM +0300, Dan Carpenter wrote:
+> Hello Mitch Williams,
+> 
+> This is a semi-automatic email about new static checker warnings.
+> 
+> The patch efa14c398582: "iavf: allow null RX descriptors" from May
+> 14, 2019, leads to the following Smatch complaint:
+> 
+>     drivers/net/ethernet/intel/iavf/iavf_txrx.c:1533 iavf_clean_rx_irq()
+>     warn: variable dereferenced before check 'rx_buffer' (see line 1526)
+> 
+> drivers/net/ethernet/intel/iavf/iavf_txrx.c
+>   1515  
+>   1516                  size = (qword & IAVF_RXD_QW1_LENGTH_PBUF_MASK) >>
+>   1517                         IAVF_RXD_QW1_LENGTH_PBUF_SHIFT;
+>   1518  
+>   1519                  iavf_trace(clean_rx_irq, rx_ring, rx_desc, skb);
+>   1520                  rx_buffer = iavf_get_rx_buffer(rx_ring, size);
+>   1521  
+>   1522                  /* retrieve a buffer from the ring */
+>   1523                  if (skb)
+> 
+> skb is non-NULL so ignore this path.
+> 
+>   1524                          iavf_add_rx_frag(rx_ring, rx_buffer, skb, size);
+>   1525			else if (ring_uses_build_skb(rx_ring))
+>   1526				skb = iavf_build_skb(rx_ring, rx_buffer, size);
+>                                                               ^^^^^^^^^
+>   1527			else
+>   1528				skb = iavf_construct_skb(rx_ring, rx_buffer, size);
+>                                                                   ^^^^^^^^^
+> These functions both dereference "rx_buffer" and might set skb to NULL.
+
+Oh...  Huh.  They aren't *supposed* to dereference rx_buffer, but the
+NULL checks are too late.
+
+regards,
+dan carpenter
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
