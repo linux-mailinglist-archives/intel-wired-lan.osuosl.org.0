@@ -2,89 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37FF850A94
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jun 2019 14:19:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EA1A50E05
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jun 2019 16:30:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B82C581ECF;
-	Mon, 24 Jun 2019 12:19:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ACDFE85BCE;
+	Mon, 24 Jun 2019 14:30:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z0SZfD0Dp9rN; Mon, 24 Jun 2019 12:19:31 +0000 (UTC)
+	with ESMTP id XpsIverfJOOk; Mon, 24 Jun 2019 14:30:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 16D9585540;
-	Mon, 24 Jun 2019 12:19:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7FADC84BCF;
+	Mon, 24 Jun 2019 14:30:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A6DC1BF387
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 12:19:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 462DF1BF2B1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 14:29:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0FC7081ECF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 12:19:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 418D084525
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 14:29:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rmBeYCjwrWMy for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Jun 2019 12:19:27 +0000 (UTC)
+ with ESMTP id Ci2ATzO4xv30 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Jun 2019 14:29:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B393784B88
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 12:19:27 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5OC8rdF098408;
- Mon, 24 Jun 2019 12:19:11 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2018-07-02;
- bh=bsMzORvMI7u79mx74ebyi9TlcjT0LZlf+Ftj9C2RUws=;
- b=Lrra/iiwYpPx/vg6Vw8Fu55yE2Ulg6gqSWaDKh6oRz8vyICtCWFAIeS3I8JLeNn6wAS5
- NhoMR+HT1osqr5RdCm35SFila7ZTcQYj7AY6kVklKFeuHCmxqSokiIRo2EI+qmRaVT9Y
- pMiGgXQ0Uk9zMxCzC6pOwYoxJduhVJJx/3T8MoM1jtfh2u8M/RmTpJOWhRXf2tD2lB4I
- h+02imgiqVYz6/8sySpgQ9Qo6z/2nsUqs/wOEEQZJgPZDd3tofuztSvXGxapVF2vGXIx
- xQV7UY7d404MnoJoeXD5Tq3CW0/cNOwnIASsIhQNX616jdn/WCt9Gxa0r6IjBmEDd9Tg PA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by userp2130.oracle.com with ESMTP id 2t9brsx322-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 24 Jun 2019 12:19:11 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5OCHUJf150906;
- Mon, 24 Jun 2019 12:19:10 GMT
-Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by aserp3030.oracle.com with ESMTP id 2t9acbfp9k-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 24 Jun 2019 12:19:10 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id x5OCJ8F3006014;
- Mon, 24 Jun 2019 12:19:09 GMT
-Received: from kadam (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 24 Jun 2019 05:19:08 -0700
-Date: Mon, 24 Jun 2019 15:19:02 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: mitch.a.williams@intel.com
-Message-ID: <20190624121902.GR18776@kadam>
-References: <20190620074516.GA12233@mwanda>
+Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
+ [209.85.160.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7F33C84415
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 14:29:57 +0000 (UTC)
+Received: by mail-qt1-f196.google.com with SMTP id j19so14629601qtr.12
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 07:29:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=6aelL0MYmoOsC39DEdXgcWsMn76iOSdVzTtBRnix9CY=;
+ b=bPD9fJzSQhKHGsiTuI4l9fH1CJtHQoMunWWiZarqS9+JnriIG67gcEDTjK0s3yJKEf
+ 4DFsz1e8l947ZNusMXVQcz0HS6YGDpKdarjDw74b3E8Pk8qBjp0H2u+FWSVtH2qEHYew
+ 5IqrIrT5wb8uSiD1YpC05+PmxDfL1lEJcTKIKlYPANKtdgcMUK5WViPRKquEP0rcg6U1
+ Be4tz+M+P/a6lruSQZPThuc1vBwEPL3OEeyeqFIOJDMu/qrT1EQgteK+I1jwodMnxiBe
+ N0G+uQRcseLvebe3Nq5xQn6eH85RpZKD7YhEdHfYyS4pWQpsi/WPFqYC2vDKqVk13kRE
+ MIMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=6aelL0MYmoOsC39DEdXgcWsMn76iOSdVzTtBRnix9CY=;
+ b=RJrsF/UOUGCtckA1625QnUphrhHuj1Vv57qmqqaScdp2STG/UzwspaFuyTSm7PZMth
+ vopMFHrLx67nVO5XTUlCY1LGchLGEj8xqQvrKJCT/Mv2Wh78X1i4HvHM3i9G6rjwKAnI
+ jXv6HveIzIl8ZLnanYYnCDIUPiHsJf0scz1XVB9ZEifDj9DmJ6ulhLqADnOsDE8rYjMf
+ Icr2KUFRtggtwNk1zFUDgF7gi5qWiBK8LpPHpuj4EgJJy+eS4oJEFTWFUzDmOwgU4pda
+ GvVFoKssC/YubP2rwZmIMkB3xMNNPWpFc2zpsSqndAZ797f6zkrO6K5AxdyvgY+EOnDq
+ T4QQ==
+X-Gm-Message-State: APjAAAXrzJje+nukbw++ERT1NENMVIMKG1pJsFGCLjr5INy4x6Q7+FBB
+ F1Wipp+AHEOrk4yNihPgeJejetL6sXv3tIdNpVE=
+X-Google-Smtp-Source: APXvYqwG7TgKreWxn+atApq7FFCeEtjit9RsVISUqPHmI/gF0Gc11UM2Oz0soeGxLwq8FLZIaRRvWwc3Xzuxz5BKY2M=
+X-Received: by 2002:ac8:25b1:: with SMTP id e46mr110318908qte.36.1561386596482; 
+ Mon, 24 Jun 2019 07:29:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190620074516.GA12233@mwanda>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9297
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=987
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1810050000 definitions=main-1906240101
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9297
- signatures=668687
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
- definitions=main-1906240101
-Subject: Re: [Intel-wired-lan] [bug report] iavf: allow null RX descriptors
+References: <20190620090958.2135-1-kevin.laatz@intel.com>
+ <20190620090958.2135-2-kevin.laatz@intel.com>
+In-Reply-To: <20190620090958.2135-2-kevin.laatz@intel.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Mon, 24 Jun 2019 16:29:45 +0200
+Message-ID: <CAJ+HfNh5bqmjXFQ5r0h-K10H+ZaSEYoi0Xx5j+2VJ_rq+Ktu-g@mail.gmail.com>
+To: Kevin Laatz <kevin.laatz@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH 01/11] i40e: simplify Rx buffer recycle
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,52 +81,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
+ ciara.loftus@intel.com, Alexei Starovoitov <ast@kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Bruce Richardson <bruce.richardson@intel.com>, bpf <bpf@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jun 20, 2019 at 10:45:16AM +0300, Dan Carpenter wrote:
-> Hello Mitch Williams,
-> 
-> This is a semi-automatic email about new static checker warnings.
-> 
-> The patch efa14c398582: "iavf: allow null RX descriptors" from May
-> 14, 2019, leads to the following Smatch complaint:
-> 
->     drivers/net/ethernet/intel/iavf/iavf_txrx.c:1533 iavf_clean_rx_irq()
->     warn: variable dereferenced before check 'rx_buffer' (see line 1526)
-> 
-> drivers/net/ethernet/intel/iavf/iavf_txrx.c
->   1515  
->   1516                  size = (qword & IAVF_RXD_QW1_LENGTH_PBUF_MASK) >>
->   1517                         IAVF_RXD_QW1_LENGTH_PBUF_SHIFT;
->   1518  
->   1519                  iavf_trace(clean_rx_irq, rx_ring, rx_desc, skb);
->   1520                  rx_buffer = iavf_get_rx_buffer(rx_ring, size);
->   1521  
->   1522                  /* retrieve a buffer from the ring */
->   1523                  if (skb)
-> 
-> skb is non-NULL so ignore this path.
-> 
->   1524                          iavf_add_rx_frag(rx_ring, rx_buffer, skb, size);
->   1525			else if (ring_uses_build_skb(rx_ring))
->   1526				skb = iavf_build_skb(rx_ring, rx_buffer, size);
->                                                               ^^^^^^^^^
->   1527			else
->   1528				skb = iavf_construct_skb(rx_ring, rx_buffer, size);
->                                                                   ^^^^^^^^^
-> These functions both dereference "rx_buffer" and might set skb to NULL.
-
-Oh...  Huh.  They aren't *supposed* to dereference rx_buffer, but the
-NULL checks are too late.
-
-regards,
-dan carpenter
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVGh1LCAyMCBKdW4gMjAxOSBhdCAxOToyNSwgS2V2aW4gTGFhdHogPGtldmluLmxhYXR6QGlu
+dGVsLmNvbT4gd3JvdGU6Cj4KPiBDdXJyZW50bHksIHRoZSBkbWEsIGFkZHIgYW5kIGhhbmRsZSBh
+cmUgbW9kaWZpZWQgd2hlbiB3ZSByZXVzZSBSeCBidWZmZXJzCj4gaW4gemVyby1jb3B5IG1vZGUu
+IEhvd2V2ZXIsIHRoaXMgaXMgbm90IHJlcXVpcmVkIGFzIHRoZSBpbnB1dHMgdG8gdGhlCj4gZnVu
+Y3Rpb24gYXJlIGNvcGllcywgbm90IHRoZSBvcmlnaW5hbCB2YWx1ZXMgdGhlbXNlbHZlcy4gQXMg
+d2UgdXNlIHRoZQo+IGNvcGllcyB3aXRoaW4gdGhlIGZ1bmN0aW9uLCB3ZSBjYW4gdXNlIHRoZSBv
+cmlnaW5hbCAnb2xkX2JpJyB2YWx1ZXMKPiBkaXJlY3RseSB3aXRob3V0IGhhdmluZyB0byBtYXNr
+IGFuZCBhZGQgdGhlIGhlYWRyb29tLgo+CgpJIGxpa2UgdGhhdCB0aGUgcmVxdWlyZWQgY2hhbmdl
+IHdhcyB0dXJuZWQgaW50byBhIGNsZWFudXAhIE5pY2UhCgpBY2tlZC1ieTogQmrDtnJuIFTDtnBl
+bCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgoKPiBTaWduZWQtb2ZmLWJ5OiBLZXZpbiBMYWF0eiA8
+a2V2aW4ubGFhdHpAaW50ZWwuY29tPgo+IC0tLQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pNDBlL2k0MGVfeHNrLmMgfCAxMyArKystLS0tLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAz
+IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2k0MGUvaTQwZV94c2suYwo+IGluZGV4IDFiMTc0ODY1NDNhYy4uYzg5ZTY5MmU4NjYz
+IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2su
+Ywo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwo+IEBA
+IC00MTksOCArNDE5LDYgQEAgc3RhdGljIHZvaWQgaTQwZV9yZXVzZV9yeF9idWZmZXJfemMoc3Ry
+dWN0IGk0MGVfcmluZyAqcnhfcmluZywKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBzdHJ1Y3QgaTQwZV9yeF9idWZmZXIgKm9sZF9iaSkKPiAgewo+ICAgICAgICAgc3RydWN0
+IGk0MGVfcnhfYnVmZmVyICpuZXdfYmkgPSAmcnhfcmluZy0+cnhfYmlbcnhfcmluZy0+bmV4dF90
+b19hbGxvY107Cj4gLSAgICAgICB1bnNpZ25lZCBsb25nIG1hc2sgPSAodW5zaWduZWQgbG9uZyly
+eF9yaW5nLT54c2tfdW1lbS0+Y2h1bmtfbWFzazsKPiAtICAgICAgIHU2NCBociA9IHJ4X3Jpbmct
+Pnhza191bWVtLT5oZWFkcm9vbSArIFhEUF9QQUNLRVRfSEVBRFJPT007Cj4gICAgICAgICB1MTYg
+bnRhID0gcnhfcmluZy0+bmV4dF90b19hbGxvYzsKPgo+ICAgICAgICAgLyogdXBkYXRlLCBhbmQg
+c3RvcmUgbmV4dCB0byBhbGxvYyAqLwo+IEBAIC00MjgsMTQgKzQyNiw5IEBAIHN0YXRpYyB2b2lk
+IGk0MGVfcmV1c2VfcnhfYnVmZmVyX3pjKHN0cnVjdCBpNDBlX3JpbmcgKnJ4X3JpbmcsCj4gICAg
+ICAgICByeF9yaW5nLT5uZXh0X3RvX2FsbG9jID0gKG50YSA8IHJ4X3JpbmctPmNvdW50KSA/IG50
+YSA6IDA7Cj4KPiAgICAgICAgIC8qIHRyYW5zZmVyIHBhZ2UgZnJvbSBvbGQgYnVmZmVyIHRvIG5l
+dyBidWZmZXIgKi8KPiAtICAgICAgIG5ld19iaS0+ZG1hID0gb2xkX2JpLT5kbWEgJiBtYXNrOwo+
+IC0gICAgICAgbmV3X2JpLT5kbWEgKz0gaHI7Cj4gLQo+IC0gICAgICAgbmV3X2JpLT5hZGRyID0g
+KHZvaWQgKikoKHVuc2lnbmVkIGxvbmcpb2xkX2JpLT5hZGRyICYgbWFzayk7Cj4gLSAgICAgICBu
+ZXdfYmktPmFkZHIgKz0gaHI7Cj4gLQo+IC0gICAgICAgbmV3X2JpLT5oYW5kbGUgPSBvbGRfYmkt
+PmhhbmRsZSAmIG1hc2s7Cj4gLSAgICAgICBuZXdfYmktPmhhbmRsZSArPSByeF9yaW5nLT54c2tf
+dW1lbS0+aGVhZHJvb207Cj4gKyAgICAgICBuZXdfYmktPmRtYSA9IG9sZF9iaS0+ZG1hOwo+ICsg
+ICAgICAgbmV3X2JpLT5hZGRyID0gb2xkX2JpLT5hZGRyOwo+ICsgICAgICAgbmV3X2JpLT5oYW5k
+bGUgPSBvbGRfYmktPmhhbmRsZTsKPgo+ICAgICAgICAgb2xkX2JpLT5hZGRyID0gTlVMTDsKPiAg
+fQo+IC0tCj4gMi4xNy4xCj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1
+b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13
+aXJlZC1sYW4K
