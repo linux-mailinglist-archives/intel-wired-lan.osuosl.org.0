@@ -1,73 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 188035107D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jun 2019 17:30:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F60951089
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Jun 2019 17:31:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C339A857D8;
-	Mon, 24 Jun 2019 15:30:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DB38084ADE;
+	Mon, 24 Jun 2019 15:31:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZQVkKllCHKWh; Mon, 24 Jun 2019 15:30:38 +0000 (UTC)
+	with ESMTP id SCDpq2JSWIsP; Mon, 24 Jun 2019 15:31:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DC675857E2;
-	Mon, 24 Jun 2019 15:30:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4B95F84D29;
+	Mon, 24 Jun 2019 15:31:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8D9241BF232
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 15:30:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DA6811BF232
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 15:31:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8878A857D1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 15:30:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D631185736
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 15:31:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id smSVJd9s3X1Z for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Jun 2019 15:30:35 +0000 (UTC)
+ with ESMTP id N1gKWsiV25Cg for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Jun 2019 15:31:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C1423848AB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 15:30:35 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id h21so14857425qtn.13
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 08:30:35 -0700 (PDT)
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 000E484415
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 15:31:30 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id c70so10059490qkg.7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Jun 2019 08:31:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uO8h/FxgnyTvba83hS63h/+pbp5njycXsHdBYpaJQgs=;
- b=UFWodPqbRC0KE4NdEPT2o5CQbkgCC6WBymgDEu9V9GQDx+RWoTMYGK7P2raA/2UOTf
- 2au5U+iZbdNsJ7PTA71aH0ktHjurCYLlRLQGD8cqILGlF1e69nGWG2UF8XKXJiLGgQkx
- PA1zFx1+6TqBhBbjk3jp0MFMOebBL7E9mu+K7206BFortLXYR1UePiM2Dut6Unbe0Wl5
- SRlmt1105IrDdraYxaGEW9x5Ew/kEZ36u3+/IOTE40dEPQt5DTdeHOMi0vIcKX0u5nOK
- Qybk2WjK37Ro18y2vIQLotaVrE5sUnHaDEQmFlfyW1UBHmXX5xOQcHxr62UGOd5cGDlv
- /Cew==
+ :cc:content-transfer-encoding;
+ bh=rw7Ix2QAqLxTiUw5AmV1AKBnYuLcc6WLLs23EmfkFCk=;
+ b=WD8QA4tGbiHfidk/A4VQDka4j6W/lOjOh+MlD1a+QSUpY6l3wk6XAnmOij3UFXbR4/
+ FR5NFLouGvkeC1aNGg21mKhYWJitJuI9TcvHfoseeqadTk2YAiwdvoMab7NNtNbSX98v
+ OvmUQ2O9m63lcHXCyJjUyxiVVp4hUWG+uQa2vQt8a1gS2yy58T170jCPrAnocOzgxVWI
+ axtDjwPwGbHYQ8PPdw/jffxGytlmV9alC8ARNeTbkKrkG98GoDWZEk+qURvWfit7zp8+
+ Vp9HQ4OM8zw7bFU9Y6geUIUcNP/nK7JCmewKnO9DAzwqG9ampk9kORFJX88D/tiTXmMQ
+ MQ0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uO8h/FxgnyTvba83hS63h/+pbp5njycXsHdBYpaJQgs=;
- b=pB77o9VTRZkghAYQpuSwpiPM23ksLKxeIgj7TTlGoZ6gJuw9HocJWI45pPk7IBvTEJ
- nuiHkAHtilddgAxp7ltiisO6dtYe2+9aFFqKTIvuenFoc+uc6EIw57sDCelikECfbvC6
- 0Tr3+iPl5T/EadeMtii9SY3KaE/oJEmLctQmZSJrPjA7m+PTEizL329aRGTAScCHrbPz
- JDScYtKdnOrtzc9XIQMYzQcuFlFWWeYCO4hbH8qzSl+69fmvCWBHDE8HdWLb8EY3iF5Y
- CUETQXwct0LS8NQ2OHFjrerhJo9zCiwBfmWJphEgvy4AiWQjCOUgFMN83+OtE6n46FEk
- OLIA==
-X-Gm-Message-State: APjAAAWDxcQ4s1x0AOHCN+NXQ9TdfX410a74AVpo4WvedNtL4vptIvz+
- bPyo6YrSCXqOlrUPxwSkQ8RsfYpjj7g8ZLy1HKA=
-X-Google-Smtp-Source: APXvYqzlSrEM2D9kNi0B0f4/2yLu29pfkiVe7Zz9poO72Tdgi2OEa1K9LrFdv8akj1yfUQGMnSFA6gKbzyJuR30WaZ0=
-X-Received: by 2002:ac8:2f07:: with SMTP id j7mr118883469qta.359.1561390234918; 
- Mon, 24 Jun 2019 08:30:34 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=rw7Ix2QAqLxTiUw5AmV1AKBnYuLcc6WLLs23EmfkFCk=;
+ b=O7t/97qp/dmnMcOEs7Mj5wNH8LuATSb+FzuvRGTholynyAnyv3iZmc1Aa9s55WIknu
+ ARf0vrl8bsJJrJBJatuAnyDEh3NI8EQl9IvOA9kZBLCNyQnCkuqtn2DxcKbxXvdIjGaQ
+ aS3xEOCD3HlYj5KhZN7Z358pg64qOhpeOUzBZtyR3M9LiB+eALV2jGufCAzz1/iXljdN
+ i284cprDAHOeEoQP3uQRf3P/hrt4P/9CsK255MOGpnZFneTsRlHC2QQC5cXYY2aOnbY4
+ SInQiero2Ja77De+xAT0Ldg3JPbvqz6Ym6nEZU3hs3R8KmaxQYj0zHV4GBS4l8A7APM2
+ ygCQ==
+X-Gm-Message-State: APjAAAXgWcR/d3OgpgyvPg8Oqv3dtvoN6E76SYQA363kdHDGlmjIP2Z0
+ AFuE4iN/5C50RK7vq4kEgx9iMrMelWlPoJzLDOU=
+X-Google-Smtp-Source: APXvYqx4V4RU9M+lFiMybe2PmHblR9vuN7NRlzY0nhX947XJwvuX07AHd6CaqhhB02e2GXNZE59rumVxnW+sjlR+MBw=
+X-Received: by 2002:a37:9e4b:: with SMTP id
+ h72mr120267915qke.297.1561390290029; 
+ Mon, 24 Jun 2019 08:31:30 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190620090958.2135-1-kevin.laatz@intel.com>
- <20190620090958.2135-8-kevin.laatz@intel.com>
-In-Reply-To: <20190620090958.2135-8-kevin.laatz@intel.com>
+ <20190620090958.2135-9-kevin.laatz@intel.com>
+In-Reply-To: <20190620090958.2135-9-kevin.laatz@intel.com>
 From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Mon, 24 Jun 2019 17:30:24 +0200
-Message-ID: <CAJ+HfNjzXpOQPjPS4Pg6iAmOG=2H=nku-1Rt8YXN5oZf06Uefw@mail.gmail.com>
+Date: Mon, 24 Jun 2019 17:31:19 +0200
+Message-ID: <CAJ+HfNi=QtGEGq=4PaxEMUrBxsSg8JsJcQHik_8WGVdAawJHKA@mail.gmail.com>
 To: Kevin Laatz <kevin.laatz@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH 07/11] libbpf: add flags to umem config
+Subject: Re: [Intel-wired-lan] [PATCH 08/11] samples/bpf: add unaligned
+ chunks mode support to xdpsock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,107 +89,77 @@ Cc: Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
  Bruce Richardson <bruce.richardson@intel.com>, bpf <bpf@vger.kernel.org>,
  =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
  Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 20 Jun 2019 at 19:26, Kevin Laatz <kevin.laatz@intel.com> wrote:
->
-> This patch adds a 'flags' field to the umem_config and umem_reg structs.
-> This will allow for more options to be added for configuring umems.
->
-> The first use for the flags field is to add a flag for unaligned chunks
-> mode. These flags can either be user-provided or filled with a default.
->
-> Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
-> Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
-> ---
->  tools/include/uapi/linux/if_xdp.h | 4 ++++
->  tools/lib/bpf/xsk.c               | 7 +++++++
->  tools/lib/bpf/xsk.h               | 2 ++
->  3 files changed, 13 insertions(+)
->
-> diff --git a/tools/include/uapi/linux/if_xdp.h b/tools/include/uapi/linux/if_xdp.h
-> index caed8b1614ff..8548f2110a77 100644
-> --- a/tools/include/uapi/linux/if_xdp.h
-> +++ b/tools/include/uapi/linux/if_xdp.h
-> @@ -17,6 +17,9 @@
->  #define XDP_COPY       (1 << 1) /* Force copy-mode */
->  #define XDP_ZEROCOPY   (1 << 2) /* Force zero-copy mode */
->
-> +/* Flags for xsk_umem_config flags */
-> +#define XDP_UMEM_UNALIGNED_CHUNKS (1 << 0)
-> +
->  struct sockaddr_xdp {
->         __u16 sxdp_family;
->         __u16 sxdp_flags;
-> @@ -52,6 +55,7 @@ struct xdp_umem_reg {
->         __u64 len; /* Length of packet data area */
->         __u32 chunk_size;
->         __u32 headroom;
-> +       __u32 flags;
->  };
->
->  struct xdp_statistics {
-> diff --git a/tools/lib/bpf/xsk.c b/tools/lib/bpf/xsk.c
-> index 7ef6293b4fd7..df4207d4ff4a 100644
-> --- a/tools/lib/bpf/xsk.c
-> +++ b/tools/lib/bpf/xsk.c
-> @@ -115,6 +115,7 @@ static void xsk_set_umem_config(struct xsk_umem_config *cfg,
->                 cfg->comp_size = XSK_RING_CONS__DEFAULT_NUM_DESCS;
->                 cfg->frame_size = XSK_UMEM__DEFAULT_FRAME_SIZE;
->                 cfg->frame_headroom = XSK_UMEM__DEFAULT_FRAME_HEADROOM;
-> +               cfg->flags = XSK_UMEM__DEFAULT_FLAGS;
->                 return;
->         }
->
-> @@ -122,6 +123,7 @@ static void xsk_set_umem_config(struct xsk_umem_config *cfg,
->         cfg->comp_size = usr_cfg->comp_size;
->         cfg->frame_size = usr_cfg->frame_size;
->         cfg->frame_headroom = usr_cfg->frame_headroom;
-> +       cfg->flags = usr_cfg->flags;
->  }
->
->  static int xsk_set_xdp_socket_config(struct xsk_socket_config *cfg,
-> @@ -181,6 +183,11 @@ int xsk_umem__create(struct xsk_umem **umem_ptr, void *umem_area, __u64 size,
->         mr.len = size;
->         mr.chunk_size = umem->config.frame_size;
->         mr.headroom = umem->config.frame_headroom;
-> +       mr.flags = umem->config.flags;
-> +
-> +       /* Headroom must be 0 for unaligned chunks */
-> +       if ((mr.flags & XDP_UMEM_UNALIGNED_CHUNKS) && mr.headroom != 0)
-> +               return -EINVAL;
-
-Ah. :-) I'd prefer that this is done in the bind syscall.
-
->
->         err = setsockopt(umem->fd, SOL_XDP, XDP_UMEM_REG, &mr, sizeof(mr));
->         if (err) {
-> diff --git a/tools/lib/bpf/xsk.h b/tools/lib/bpf/xsk.h
-> index 82ea71a0f3ec..8d393873b70f 100644
-> --- a/tools/lib/bpf/xsk.h
-> +++ b/tools/lib/bpf/xsk.h
-> @@ -170,12 +170,14 @@ LIBBPF_API int xsk_socket__fd(const struct xsk_socket *xsk);
->  #define XSK_UMEM__DEFAULT_FRAME_SHIFT    11 /* 2048 bytes */
->  #define XSK_UMEM__DEFAULT_FRAME_SIZE     (1 << XSK_UMEM__DEFAULT_FRAME_SHIFT)
->  #define XSK_UMEM__DEFAULT_FRAME_HEADROOM 0
-> +#define XSK_UMEM__DEFAULT_FLAGS 0
->
->  struct xsk_umem_config {
->         __u32 fill_size;
->         __u32 comp_size;
->         __u32 frame_size;
->         __u32 frame_headroom;
-> +       __u32 flags;
->  };
->
->  /* Flags for the libbpf_flags field. */
-> --
-> 2.17.1
->
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVGh1LCAyMCBKdW4gMjAxOSBhdCAxOToyNSwgS2V2aW4gTGFhdHogPGtldmluLmxhYXR6QGlu
+dGVsLmNvbT4gd3JvdGU6Cj4KPiBUaGlzIHBhdGNoIGFkZHMgc3VwcG9ydCBmb3IgdGhlIHVuYWxp
+Z25lZCBjaHVua3MgbW9kZS4gVGhlIGFkZGl0aW9uIG9mIHRoZQo+IHVuYWxpZ25lZCBjaHVua3Mg
+b3B0aW9uIHdpbGwgYWxsb3cgdXNlcnMgdG8gcnVuIHRoZSBhcHBsaWNhdGlvbiB3aXRoIG1vcmUK
+PiByZWxheGVkIGNodW5rIHBsYWNlbWVudCBpbiB0aGUgWERQIHVtZW0uCj4KPiBVbmFsaWduZWQg
+Y2h1bmtzIG1vZGUgY2FuIGJlIHVzZWQgd2l0aCB0aGUgJy11JyBvciAnLS11bmFsaWduZWQnIGNv
+bW1hbmQKPiBsaW5lIG9wdGlvbnMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBLZXZpbiBMYWF0eiA8a2V2
+aW4ubGFhdHpAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IENpYXJhIExvZnR1cyA8Y2lhcmEu
+bG9mdHVzQGludGVsLmNvbT4KCkFja2VkLWJ5OiBCasO2cm4gVMO2cGVsIDxiam9ybi50b3BlbEBp
+bnRlbC5jb20+Cgo+IC0tLQo+ICBzYW1wbGVzL2JwZi94ZHBzb2NrX3VzZXIuYyB8IDIwICsrKysr
+KysrKysrKysrKysrKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCAyIGRl
+bGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL3NhbXBsZXMvYnBmL3hkcHNvY2tfdXNlci5jIGIv
+c2FtcGxlcy9icGYveGRwc29ja191c2VyLmMKPiBpbmRleCBkMDhlZTFhYjdiYjQuLmUyNmY0MzM4
+MmQwMSAxMDA2NDQKPiAtLS0gYS9zYW1wbGVzL2JwZi94ZHBzb2NrX3VzZXIuYwo+ICsrKyBiL3Nh
+bXBsZXMvYnBmL3hkcHNvY2tfdXNlci5jCj4gQEAgLTY3LDYgKzY3LDggQEAgc3RhdGljIGludCBv
+cHRfaWZpbmRleDsKPiAgc3RhdGljIGludCBvcHRfcXVldWU7Cj4gIHN0YXRpYyBpbnQgb3B0X3Bv
+bGw7Cj4gIHN0YXRpYyBpbnQgb3B0X2ludGVydmFsID0gMTsKPiArc3RhdGljIHUzMiBvcHRfdW1l
+bV9mbGFnczsKPiArc3RhdGljIGludCBvcHRfdW5hbGlnbmVkX2NodW5rczsKPiAgc3RhdGljIHUz
+MiBvcHRfeGRwX2JpbmRfZmxhZ3M7Cj4gIHN0YXRpYyBfX3UzMiBwcm9nX2lkOwo+Cj4gQEAgLTI3
+NiwxNCArMjc4LDIxIEBAIHN0YXRpYyBzaXplX3QgZ2VuX2V0aF9mcmFtZShzdHJ1Y3QgeHNrX3Vt
+ZW1faW5mbyAqdW1lbSwgdTY0IGFkZHIpCj4gIHN0YXRpYyBzdHJ1Y3QgeHNrX3VtZW1faW5mbyAq
+eHNrX2NvbmZpZ3VyZV91bWVtKHZvaWQgKmJ1ZmZlciwgdTY0IHNpemUpCj4gIHsKPiAgICAgICAg
+IHN0cnVjdCB4c2tfdW1lbV9pbmZvICp1bWVtOwo+ICsgICAgICAgc3RydWN0IHhza191bWVtX2Nv
+bmZpZyB1bWVtX2NmZzsKPiAgICAgICAgIGludCByZXQ7Cj4KPiAgICAgICAgIHVtZW0gPSBjYWxs
+b2MoMSwgc2l6ZW9mKCp1bWVtKSk7Cj4gICAgICAgICBpZiAoIXVtZW0pCj4gICAgICAgICAgICAg
+ICAgIGV4aXRfd2l0aF9lcnJvcihlcnJubyk7Cj4KPiArICAgICAgIHVtZW1fY2ZnLmZpbGxfc2l6
+ZSA9IFhTS19SSU5HX1BST0RfX0RFRkFVTFRfTlVNX0RFU0NTOwo+ICsgICAgICAgdW1lbV9jZmcu
+Y29tcF9zaXplID0gWFNLX1JJTkdfQ09OU19fREVGQVVMVF9OVU1fREVTQ1M7Cj4gKyAgICAgICB1
+bWVtX2NmZy5mcmFtZV9zaXplID0gWFNLX1VNRU1fX0RFRkFVTFRfRlJBTUVfU0laRTsKPiArICAg
+ICAgIHVtZW1fY2ZnLmZyYW1lX2hlYWRyb29tID0gWFNLX1VNRU1fX0RFRkFVTFRfRlJBTUVfSEVB
+RFJPT007Cj4gKyAgICAgICB1bWVtX2NmZy5mbGFncyA9IG9wdF91bWVtX2ZsYWdzOwo+ICsKPiAg
+ICAgICAgIHJldCA9IHhza191bWVtX19jcmVhdGUoJnVtZW0tPnVtZW0sIGJ1ZmZlciwgc2l6ZSwg
+JnVtZW0tPmZxLCAmdW1lbS0+Y3EsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE5V
+TEwpOwo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmdW1lbV9jZmcpOwo+ICAgICAg
+ICAgaWYgKHJldCkKPiAgICAgICAgICAgICAgICAgZXhpdF93aXRoX2Vycm9yKC1yZXQpOwo+Cj4g
+QEAgLTM0Niw2ICszNTUsNyBAQCBzdGF0aWMgc3RydWN0IG9wdGlvbiBsb25nX29wdGlvbnNbXSA9
+IHsKPiAgICAgICAgIHsiaW50ZXJ2YWwiLCByZXF1aXJlZF9hcmd1bWVudCwgMCwgJ24nfSwKPiAg
+ICAgICAgIHsiemVyby1jb3B5Iiwgbm9fYXJndW1lbnQsIDAsICd6J30sCj4gICAgICAgICB7ImNv
+cHkiLCBub19hcmd1bWVudCwgMCwgJ2MnfSwKPiArICAgICAgIHsidW5hbGlnbmVkIiwgbm9fYXJn
+dW1lbnQsIDAsICd1J30sCj4gICAgICAgICB7MCwgMCwgMCwgMH0KPiAgfTsKPgo+IEBAIC0zNjUs
+NiArMzc1LDcgQEAgc3RhdGljIHZvaWQgdXNhZ2UoY29uc3QgY2hhciAqcHJvZykKPiAgICAgICAg
+ICAgICAgICAgIiAgLW4sIC0taW50ZXJ2YWw9biAgICAgU3BlY2lmeSBzdGF0aXN0aWNzIHVwZGF0
+ZSBpbnRlcnZhbCAoZGVmYXVsdCAxIHNlYykuXG4iCj4gICAgICAgICAgICAgICAgICIgIC16LCAt
+LXplcm8tY29weSAgICAgIEZvcmNlIHplcm8tY29weSBtb2RlLlxuIgo+ICAgICAgICAgICAgICAg
+ICAiICAtYywgLS1jb3B5ICAgICAgICAgICBGb3JjZSBjb3B5IG1vZGUuXG4iCj4gKyAgICAgICAg
+ICAgICAgICIgIC11LCAtLXVuYWxpZ25lZCAgICAgIEVuYWJsZSB1bmFsaWduZWQgY2h1bmsgcGxh
+Y2VtZW50XG4iCj4gICAgICAgICAgICAgICAgICJcbiI7Cj4gICAgICAgICBmcHJpbnRmKHN0ZGVy
+ciwgc3RyLCBwcm9nKTsKPiAgICAgICAgIGV4aXQoRVhJVF9GQUlMVVJFKTsKPiBAQCAtMzc3LDcg
+KzM4OCw3IEBAIHN0YXRpYyB2b2lkIHBhcnNlX2NvbW1hbmRfbGluZShpbnQgYXJnYywgY2hhciAq
+KmFyZ3YpCj4gICAgICAgICBvcHRlcnIgPSAwOwo+Cj4gICAgICAgICBmb3IgKDs7KSB7Cj4gLSAg
+ICAgICAgICAgICAgIGMgPSBnZXRvcHRfbG9uZyhhcmdjLCBhcmd2LCAiRnJ0bGk6cTpwc1NObjpj
+eiIsIGxvbmdfb3B0aW9ucywKPiArICAgICAgICAgICAgICAgYyA9IGdldG9wdF9sb25nKGFyZ2Ms
+IGFyZ3YsICJGcnRsaTpxOnBzU05uOmN6dSIsIGxvbmdfb3B0aW9ucywKPiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICZvcHRpb25faW5kZXgpOwo+ICAgICAgICAgICAgICAgICBpZiAo
+YyA9PSAtMSkKPiAgICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKPiBAQCAtNDE3LDkgKzQy
+OCwxNCBAQCBzdGF0aWMgdm9pZCBwYXJzZV9jb21tYW5kX2xpbmUoaW50IGFyZ2MsIGNoYXIgKiph
+cmd2KQo+ICAgICAgICAgICAgICAgICBjYXNlICdjJzoKPiAgICAgICAgICAgICAgICAgICAgICAg
+ICBvcHRfeGRwX2JpbmRfZmxhZ3MgfD0gWERQX0NPUFk7Cj4gICAgICAgICAgICAgICAgICAgICAg
+ICAgYnJlYWs7Cj4gKyAgICAgICAgICAgICAgIGNhc2UgJ3UnOgo+ICsgICAgICAgICAgICAgICAg
+ICAgICAgIG9wdF91bWVtX2ZsYWdzIHw9IFhEUF9VTUVNX1VOQUxJR05FRF9DSFVOS1M7Cj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgb3B0X3VuYWxpZ25lZF9jaHVua3MgPSAxOwo+ICsgICAgICAg
+ICAgICAgICAgICAgICAgIGJyZWFrOwo+ICAgICAgICAgICAgICAgICBjYXNlICdGJzoKPiAgICAg
+ICAgICAgICAgICAgICAgICAgICBvcHRfeGRwX2ZsYWdzICY9IH5YRFBfRkxBR1NfVVBEQVRFX0lG
+X05PRVhJU1Q7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgYnJlYWs7Cj4gKwo+ICAgICAgICAg
+ICAgICAgICBkZWZhdWx0Ogo+ICAgICAgICAgICAgICAgICAgICAgICAgIHVzYWdlKGJhc2VuYW1l
+KGFyZ3ZbMF0pKTsKPiAgICAgICAgICAgICAgICAgfQo+IC0tCj4gMi4xNy4xCj4KX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1h
+aWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9z
+bC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
