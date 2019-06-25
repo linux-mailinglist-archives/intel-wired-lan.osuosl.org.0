@@ -2,60 +2,50 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43A13559B8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Jun 2019 23:12:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CEE955224
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Jun 2019 16:39:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 224F385EB8;
-	Tue, 25 Jun 2019 21:12:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0666F85DF6;
+	Tue, 25 Jun 2019 14:39:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DJvtSooFQGgD; Tue, 25 Jun 2019 21:12:40 +0000 (UTC)
+	with ESMTP id wtLNR31-0C2c; Tue, 25 Jun 2019 14:39:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 759B785E79;
-	Tue, 25 Jun 2019 21:12:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9537485F49;
+	Tue, 25 Jun 2019 14:39:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A4C3C1BF417
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 13:15:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E90811BF333
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 14:39:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A0D2D8140D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 13:15:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E383386483
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 14:39:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bc9cWXO5Uo-X for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Jun 2019 13:15:12 +0000 (UTC)
+ with ESMTP id 8xxGmKtmZKV6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Jun 2019 14:39:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 87AAA816FA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 13:15:12 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3A716818B2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 14:39:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2019 06:15:02 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Jun 2019 07:39:17 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,416,1557212400"; d="scan'208";a="166673508"
-Received: from klaatz-mobl1.ger.corp.intel.com (HELO [10.237.221.70])
- ([10.237.221.70])
- by orsmga006.jf.intel.com with ESMTP; 25 Jun 2019 06:14:59 -0700
-To: Jakub Kicinski <jakub.kicinski@netronome.com>
-References: <20190620090958.2135-1-kevin.laatz@intel.com>
- <20190620090958.2135-4-kevin.laatz@intel.com>
- <20190624122342.26c6a9b4@cakuba.netronome.com>
-From: "Laatz, Kevin" <kevin.laatz@intel.com>
-Message-ID: <bf3e67de-b23a-fa69-4cbc-c53e9cc5e055@intel.com>
-Date: Tue, 25 Jun 2019 14:14:59 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
-MIME-Version: 1.0
-In-Reply-To: <20190624122342.26c6a9b4@cakuba.netronome.com>
-Content-Language: en-US
-X-Mailman-Approved-At: Tue, 25 Jun 2019 21:12:38 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 03/11] xdp: add offset param to
- zero_copy_allocator
+X-IronPort-AV: E=Sophos;i="5.63,416,1557212400"; d="scan'208";a="359972936"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
+ by fmsmga005.fm.intel.com with ESMTP; 25 Jun 2019 07:39:16 -0700
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 25 Jun 2019 17:39:11 +0300
+Message-Id: <20190625143911.37284-1-vitaly.lifshits@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v3] e1000e: PCIm function state support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,30 +58,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: daniel@iogearbox.net, netdev@vger.kernel.org, ciara.loftus@intel.com,
- ast@kernel.org, intel-wired-lan@lists.osuosl.org, bruce.richardson@intel.com,
- bpf@vger.kernel.org, bjorn.topel@intel.com, magnus.karlsson@intel.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ck9uIDI0LzA2LzIwMTkgMjA6MjMsIEpha3ViIEtpY2luc2tpIHdyb3RlOgo+IE9uIFRodSwgMjAg
-SnVuIDIwMTkgMDk6MDk6NTAgKzAwMDAsIEtldmluIExhYXR6IHdyb3RlOgo+PiBkaWZmIC0tZ2l0
-IGEvaW5jbHVkZS9uZXQveGRwLmggYi9pbmNsdWRlL25ldC94ZHAuaAo+PiBpbmRleCAwZjI1YjM2
-NzVjNWMuLmVhODAxZmQyYmY5OCAxMDA2NDQKPj4gLS0tIGEvaW5jbHVkZS9uZXQveGRwLmgKPj4g
-KysrIGIvaW5jbHVkZS9uZXQveGRwLmgKPj4gQEAgLTUzLDcgKzUzLDggQEAgc3RydWN0IHhkcF9t
-ZW1faW5mbyB7Cj4+IMKgc3RydWN0IHBhZ2VfcG9vbDsKPj4KPj4gwqBzdHJ1Y3QgemVyb19jb3B5
-X2FsbG9jYXRvciB7Cj4+IC3CoMKgwqAgdm9pZCAoKmZyZWUpKHN0cnVjdCB6ZXJvX2NvcHlfYWxs
-b2NhdG9yICp6Y2EsIHVuc2lnbmVkIGxvbmcgCj4+IGhhbmRsZSk7Cj4+ICvCoMKgwqAgdm9pZCAo
-KmZyZWUpKHN0cnVjdCB6ZXJvX2NvcHlfYWxsb2NhdG9yICp6Y2EsIHVuc2lnbmVkIGxvbmcgaGFu
-ZGxlLAo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBvZmZfdCBvZmYpOwo+PiDCoH07Cj4KPiBQ
-bGVhc2UgcnVuIGNoZWNrcGF0Y2ggLS1zdHJpY3Qgb24gYWxsIHlvdXIgY2hhbmdlcy7CoCBUaGUg
-Y29kZQo+IGZvcm1hdHRpbmcgaXMgaW5jb3JyZWN0IGluIG1hbnkgd2F5cyBpbiB0aGlzIHNlcmll
-cy4KPgpUaGFua3MsIHdpbGwgZml4IGluIHRoZSB2Mi4KCgo+IFBsZWFzZSBpbmNsdWRlIHBlcmZv
-cm1hbmNlIG1lYXN1cmVtZW50cyBwcm92aW5nIHRoZSBzbG93IGRvd24KPiBpcyBuZWdsaWdpYmxl
-IGluIHRoZSBjb3ZlciBsZXR0ZXIuCj4KR29vZCBzdWdnZXN0aW9uLiBXaWxsIGFkZCB0byB0aGUg
-Y292ZXIgbGV0dGVyIGluIHRoZSB2MiEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
-YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
-bnRlbC13aXJlZC1sYW4K
+Due to commit: 5d8682588605 ("[misc] mei: me: allow runtime
+			pm for platform with D0i3")
+When disconnecting the cable and reconnecting it the NIC
+enters DMoff state. This caused wrong link indication
+and duplex mismatch. This bug is described in:
+https://bugzilla.redhat.com/show_bug.cgi?id=1689436
+
+Checking PCIm function state and performing PHY reset after a
+timeout in watchdog task solves this issue.
+
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+---
+
+V2: Fixed typos in commit massage
+V3: Fixed minor typo
+---
+ drivers/net/ethernet/intel/e1000e/defines.h |  3 +++
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 18 +++++++++++++++++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/defines.h b/drivers/net/ethernet/intel/e1000e/defines.h
+index fd550dee4982..13877fe300f1 100644
+--- a/drivers/net/ethernet/intel/e1000e/defines.h
++++ b/drivers/net/ethernet/intel/e1000e/defines.h
+@@ -222,6 +222,9 @@
+ #define E1000_STATUS_PHYRA      0x00000400      /* PHY Reset Asserted */
+ #define E1000_STATUS_GIO_MASTER_ENABLE	0x00080000	/* Master Req status */
+ 
++/* PCIm function state */
++#define E1000_STATUS_PCIM_STATE         0x40000000
++
+ #define HALF_DUPLEX 1
+ #define FULL_DUPLEX 2
+ 
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index b081a1ef6859..c6a10fd30e4e 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -5173,8 +5173,9 @@ static void e1000_watchdog_task(struct work_struct *work)
+ 	struct e1000_mac_info *mac = &adapter->hw.mac;
+ 	struct e1000_phy_info *phy = &adapter->hw.phy;
+ 	struct e1000_ring *tx_ring = adapter->tx_ring;
++	u32 dmoff_exit_timeout = 100, tries = 0;
+ 	struct e1000_hw *hw = &adapter->hw;
+-	u32 link, tctl;
++	u32 link, tctl, pcim_state;
+ 
+ 	if (test_bit(__E1000_DOWN, &adapter->state))
+ 		return;
+@@ -5199,6 +5200,21 @@ static void e1000_watchdog_task(struct work_struct *work)
+ 			/* Cancel scheduled suspend requests. */
+ 			pm_runtime_resume(netdev->dev.parent);
+ 
++			/* Checking if MAC is in DMoff state*/
++			pcim_state = er32(STATUS);
++			while (pcim_state & E1000_STATUS_PCIM_STATE) {
++				if (tries++ == dmoff_exit_timeout) {
++					e_dbg("Error in exiting dmoff\n");
++					break;
++				}
++				usleep_range(10000, 20000);
++				pcim_state = er32(STATUS);
++
++				/* Checking if MAC exited DMoff state */
++				if (!(pcim_state & E1000_STATUS_PCIM_STATE))
++					e1000_phy_hw_reset(&adapter->hw);
++			}
++
+ 			/* update snapshot of PHY registers on LSC */
+ 			e1000_phy_read_status(adapter);
+ 			mac->ops.get_link_up_info(&adapter->hw,
+-- 
+2.11.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
