@@ -1,56 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 985D655BB7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jun 2019 00:54:31 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC63055CA8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jun 2019 01:55:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 311DD85F7B;
-	Tue, 25 Jun 2019 22:54:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 71BEB87A5E;
+	Tue, 25 Jun 2019 23:55:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kcy6vpHvMMi2; Tue, 25 Jun 2019 22:54:29 +0000 (UTC)
+	with ESMTP id 2Y3dxRz9isrk; Tue, 25 Jun 2019 23:55:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EA29C85F85;
-	Tue, 25 Jun 2019 22:54:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2BAF81BF38E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 22:54:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6A99C87A4F;
+	Tue, 25 Jun 2019 23:55:55 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 019451BF30F
+ for <intel-wired-lan@osuosl.org>; Tue, 25 Jun 2019 23:54:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2845585F7B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 22:54:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F16C62107A
+ for <intel-wired-lan@osuosl.org>; Tue, 25 Jun 2019 23:54:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k6JGzM-wkl_e for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Jun 2019 22:54:16 +0000 (UTC)
+ with ESMTP id j9KfaUGBNrhF for <intel-wired-lan@osuosl.org>;
+ Tue, 25 Jun 2019 23:54:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E7D5581E57
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 22:54:15 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3A7CB2083F
+ for <intel-wired-lan@osuosl.org>; Tue, 25 Jun 2019 23:54:32 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2019 15:54:09 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Jun 2019 16:54:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,417,1557212400"; d="scan'208";a="337004822"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 25 Jun 2019 15:54:08 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hfuKF-0007fw-VV; Wed, 26 Jun 2019 06:54:07 +0800
-Date: Wed, 26 Jun 2019 06:53:29 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d12a5e9.em/q+b+EbzwxI1Vc%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.63,417,1557212400"; d="scan'208";a="313244182"
+Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
+ by orsmga004.jf.intel.com with ESMTP; 25 Jun 2019 16:54:31 -0700
+Received: from orsmsx121.amr.corp.intel.com (10.22.225.226) by
+ ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 25 Jun 2019 16:54:31 -0700
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.135]) by
+ ORSMSX121.amr.corp.intel.com ([169.254.10.250]) with mapi id 14.03.0439.000;
+ Tue, 25 Jun 2019 16:54:31 -0700
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: Venkatesh Srinivas <venkateshs@google.com>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH] e1000: Use dma_wmb() instead of
+ wmb() before doorbell writes
+Thread-Index: AQHVH9eV1/bpOvo/R0+uL8N5oNwnS6atHJnA
+Date: Tue, 25 Jun 2019 23:54:30 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B970B387B@ORSMSX103.amr.corp.intel.com>
+References: <20190610212750.173711-1-venkateshs@google.com>
+In-Reply-To: <20190610212750.173711-1-venkateshs@google.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzU5MTk3OWItZjNiMS00ZGUwLTlmNzUtZTM4YTY1NDNlODRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiS2ltNk5tejRGbStpUDlLSzY3dUVHQVdCc0J0YmxLczhxc2tcL0ZPRVJpaFp2U3JVU2o4cEJ2NzdWQVZLNXdwRHEifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.600.7
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- a399182229401e8cf5607d788ede40988428384c
+Subject: Re: [Intel-wired-lan] [PATCH] e1000: Use dma_wmb() instead of wmb()
+ before doorbell writes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,187 +81,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>,
+ "vsrinivas@ops101.org" <vsrinivas@ops101.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-dHJlZS9icmFuY2g6IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwv
-Z2l0L2praXJzaGVyL25leHQtcXVldWUuZ2l0ICBkZXYtcXVldWUKYnJhbmNoIEhFQUQ6IGEzOTkx
-ODIyMjk0MDFlOGNmNTYwN2Q3ODhlZGU0MDk4ODQyODM4NGMgIGUxMDAwZTogUENJbSBmdW5jdGlv
-biBzdGF0ZSBzdXBwb3J0CgpSZWdyZXNzaW9ucyBpbiBjdXJyZW50IGJyYW5jaDoKCmRyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9tYWluLmM6MTUxOjY6IHNwYXJzZTogc3BhcnNl
-OiBzeW1ib2wgJ2lhdmZfZGVidWdfZCcgd2FzIG5vdCBkZWNsYXJlZC4gU2hvdWxkIGl0IGJlIHN0
-YXRpYz8KZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV94c2suYzo0ODc6MTg6IHdh
-cm5pbmc6IGNhc3QgdG8gcG9pbnRlciBmcm9tIGludGVnZXIgb2YgZGlmZmVyZW50IHNpemUgWy1X
-aW50LXRvLXBvaW50ZXItY2FzdF0KCkVycm9yIGlkcyBncm91cGVkIGJ5IGtjb25maWdzOgoKcmVj
-ZW50X2Vycm9ycwrilJzilIDilIAgaTM4Ni1yYW5kY29uZmlnLXgwNzMtMjAxOTI1CuKUgsKgwqAg
-4pSU4pSA4pSAIGRyaXZlcnMtbmV0LWV0aGVybmV0LWludGVsLWljZS1pY2VfeHNrLmM6d2Fybmlu
-ZzpjYXN0LXRvLXBvaW50ZXItZnJvbS1pbnRlZ2VyLW9mLWRpZmZlcmVudC1zaXplCuKUnOKUgOKU
-gCBtaXBzLWFsbHllc2NvbmZpZwrilILCoMKgIOKUlOKUgOKUgCBkcml2ZXJzLW5ldC1ldGhlcm5l
-dC1pbnRlbC1pY2UtaWNlX3hzay5jOndhcm5pbmc6Y2FzdC10by1wb2ludGVyLWZyb20taW50ZWdl
-ci1vZi1kaWZmZXJlbnQtc2l6ZQrilJzilIDilIAgcGFyaXNjLWFsbHllc2NvbmZpZwrilILCoMKg
-IOKUlOKUgOKUgCBkcml2ZXJzLW5ldC1ldGhlcm5ldC1pbnRlbC1pY2UtaWNlX3hzay5jOndhcm5p
-bmc6Y2FzdC10by1wb2ludGVyLWZyb20taW50ZWdlci1vZi1kaWZmZXJlbnQtc2l6ZQrilJzilIDi
-lIAgeDg2XzY0LWFsbG1vZGNvbmZpZwrilILCoMKgIOKUlOKUgOKUgCBkcml2ZXJzLW5ldC1ldGhl
-cm5ldC1pbnRlbC1pYXZmLWlhdmZfbWFpbi5jOnNwYXJzZTpzcGFyc2U6c3ltYm9sLWlhdmZfZGVi
-dWdfZC13YXMtbm90LWRlY2xhcmVkLi1TaG91bGQtaXQtYmUtc3RhdGljCuKUnOKUgOKUgCB4ODZf
-NjQtYWxseWVzY29uZmlnCuKUgsKgwqAg4pSU4pSA4pSAIGRyaXZlcnMtbmV0LWV0aGVybmV0LWlu
-dGVsLWlhdmYtaWF2Zl9tYWluLmM6c3BhcnNlOnNwYXJzZTpzeW1ib2wtaWF2Zl9kZWJ1Z19kLXdh
-cy1ub3QtZGVjbGFyZWQuLVNob3VsZC1pdC1iZS1zdGF0aWMK4pSU4pSA4pSAIHh0ZW5zYS1hbGx5
-ZXNjb25maWcKICAgIOKUlOKUgOKUgCBkcml2ZXJzLW5ldC1ldGhlcm5ldC1pbnRlbC1pY2UtaWNl
-X3hzay5jOndhcm5pbmc6Y2FzdC10by1wb2ludGVyLWZyb20taW50ZWdlci1vZi1kaWZmZXJlbnQt
-c2l6ZQoKZWxhcHNlZCB0aW1lOiAxOThtCgpjb25maWdzIHRlc3RlZDogMTgyCgpvcGVucmlzYyAg
-ICAgICAgICAgICAgICAgICAgb3Ixa3NpbV9kZWZjb25maWcKdW0gICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGkzODZfZGVmY29uZmlnCnVtICAgICAgICAgICAgICAgICAgICAgICAgICAgeDg2
-XzY0X2RlZmNvbmZpZwptNjhrICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxtb2Rjb25m
-aWcKbTY4ayAgICAgICAgICAgICAgICAgICAgICAgbTU0NzVldmJfZGVmY29uZmlnCm02OGsgICAg
-ICAgICAgICAgICAgICAgICAgICAgIG11bHRpX2RlZmNvbmZpZwptNjhrICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgc3VuM19kZWZjb25maWcKeDg2XzY0ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBhY3BpLXJlZGVmCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbHllc2Rl
-Ymlhbgp4ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsa3AKeDg2XzY0
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuZnNyb290Cng4Nl82NCAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgcmhlbAphcm0gICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBhbGxtb2Rjb25maWcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5v
-Y29uZmlnCmFybSAgICAgICAgICAgICAgICAgICAgICAgICBhdDkxX2R0X2RlZmNvbmZpZwphcm0g
-ICAgICAgICAgICAgICAgICAgICAgICAgICBlZm0zMl9kZWZjb25maWcKYXJtICAgICAgICAgICAg
-ICAgICAgICAgICAgICBleHlub3NfZGVmY29uZmlnCmFybSAgICAgICAgICAgICAgICAgICAgICAg
-IG11bHRpX3Y1X2RlZmNvbmZpZwphcm0gICAgICAgICAgICAgICAgICAgICAgICBtdWx0aV92N19k
-ZWZjb25maWcKYXJtICAgICAgICAgICAgICAgICAgICAgICAgc2htb2JpbGVfZGVmY29uZmlnCmFy
-bSAgICAgICAgICAgICAgICAgICAgICAgICAgIHN1bnhpX2RlZmNvbmZpZwphcm02NCAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBhbGxtb2Rjb25maWcKYXJtNjQgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGFsbG5vY29uZmlnCmFybTY0ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFs
-bHllc2NvbmZpZwphcm02NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcK
-cmlzY3YgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aW55Y29uZmlnCmkzODYgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgdGlueWNvbmZpZwpuZHMzMiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgYWxsbm9jb25maWcKbmRzMzIgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgZGVmY29uZmlnCnBvd2VycGMgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZp
-Zwpwb3dlcnBjICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKcG93ZXJwYyAg
-ICAgICAgICAgICAgICAgICAgICAgcHBjNjRfZGVmY29uZmlnCnMzOTAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGRlYnVnX2RlZmNvbmZpZwpzaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBhbGxtb2Rjb25maWcKc2ggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29u
-ZmlnCnNoICAgICAgICAgICAgICAgICAgICAgICAgICByc2s3MjY5X2RlZmNvbmZpZwpzaCAgICAg
-ICAgICAgICAgICAgIHNoNzc4NWxjcl8zMmJpdF9kZWZjb25maWcKc2ggICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgdGl0YW5fZGVmY29uZmlnCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIGFsbHllc2NvbmZpZwppMzg2ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxtb2Rj
-b25maWcKc3BhcmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCnNwYXJj
-NjQgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG1vZGNvbmZpZwpzcGFyYzY0ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgYWxsbm9jb25maWcKc3BhcmM2NCAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgZGVmY29uZmlnCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBy
-aGVsLTcuNgpjNnggICAgICAgICAgICAgICAgICAgICAgICBldm1jNjY3OF9kZWZjb25maWcKaDgz
-MDAgICAgICAgICAgICAgICAgICAgIGg4MzAwaC1zaW1fZGVmY29uZmlnCm5pb3MyICAgICAgICAg
-ICAgICAgICAgICAgICAgIDEwbTUwX2RlZmNvbmZpZwp4dGVuc2EgICAgICAgICAgICAgICAgICAg
-ICAgIGNvbW1vbl9kZWZjb25maWcKeHRlbnNhICAgICAgICAgICAgICAgICAgICAgICAgICBpc3Nf
-ZGVmY29uZmlnCng4Nl82NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZlZG9yYS0yNQp4
-ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAga2V4ZWMKbWlwcyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIDMycjJfZGVmY29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAg
-ICAgICAgNjRyNmVsX2RlZmNvbmZpZwptaXBzICAgICAgICAgICAgICAgICAgICAgICAgICAgICBh
-bGxtb2Rjb25maWcKbWlwcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmln
-Cm1pcHMgICAgICAgICAgICAgICAgICAgICAgZnVsb29uZzJlX2RlZmNvbmZpZwptaXBzICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBqejQ3NDAKbWlwcyAgICAgICAgICAgICAgICAg
-ICAgICBtYWx0YV9rdm1fZGVmY29uZmlnCm1pcHMgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgdHh4OQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwNC0yMDE5
-MjUKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjMtMjAxOTI1CmkzODYgICAg
-ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDA1LTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctbjAyMi0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLW4wMjUtMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDA2LTIw
-MTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAxNC0yMDE5MjUKeDg2XzY0
-ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTItMjAxOTI1Cng4Nl82NCAgICAgICAgICAg
-ICAgICAgcmFuZGNvbmZpZy1uMDEzLTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRj
-b25maWctbjAzMi0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDgt
-MjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE2LTIwMTkyNQppMzg2
-ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyMy0yMDE5MjUKaTM4NiAgICAgICAgICAg
-ICAgICAgICByYW5kY29uZmlnLW4wMjgtMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFu
-ZGNvbmZpZy1uMDExLTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAy
-OS0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTAtMjAxOTI1Cmkz
-ODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDMxLTIwMTkyNQp4ODZfNjQgICAgICAg
-ICAgICAgICAgIHJhbmRjb25maWctbjAzMC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICBy
-YW5kY29uZmlnLW4wMzAtMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1u
-MDMxLTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyNC0yMDE5MjUK
-eDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDctMjAxOTI1Cng4Nl82NCAgICAg
-ICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDI4LTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAg
-IHJhbmRjb25maWctbjAxMS0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmln
-LW4wMTMtMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDA5LTIwMTky
-NQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyMS0yMDE5MjUKaTM4NiAgICAg
-ICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTgtMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAg
-ICAgcmFuZGNvbmZpZy1uMDAyLTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25m
-aWctbjAxNC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDktMjAx
-OTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE3LTIwMTkyNQppMzg2ICAg
-ICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwMi0yMDE5MjUKeDg2XzY0ICAgICAgICAgICAg
-ICAgICByYW5kY29uZmlnLW4wMjUtMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNv
-bmZpZy1uMDAzLTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAyNC0y
-MDE5MjUKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMjktMjAxOTI1Cng4Nl82
-NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDEwLTIwMTkyNQp4ODZfNjQgICAgICAgICAg
-ICAgICAgIHJhbmRjb25maWctbjAyNy0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5k
-Y29uZmlnLW4wMTItMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDA4
-LTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAxNS0yMDE5MjUKaTM4
-NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTUtMjAxOTI1CmkzODYgICAgICAgICAg
-ICAgICAgICAgcmFuZGNvbmZpZy1uMDA3LTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJh
-bmRjb25maWctbjAyMC0yMDE5MjUKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4w
-MTktMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDE3LTIwMTkyNQpp
-Mzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAxNi0yMDE5MjUKaTM4NiAgICAgICAg
-ICAgICAgICAgICByYW5kY29uZmlnLW4wMDEtMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAg
-cmFuZGNvbmZpZy1uMDI2LTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-bjAyMC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMTktMjAxOTI1
-Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDAzLTIwMTkyNQppMzg2ICAgICAg
-ICAgICAgICAgICAgIHJhbmRjb25maWctbjAyNi0yMDE5MjUKeDg2XzY0ICAgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLW4wMDUtMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy1uMDI3LTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwNC0yMDE5
-MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLW4wMDYtMjAxOTI1Cng4Nl82NCAg
-ICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDIxLTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAg
-ICAgIHJhbmRjb25maWctbjAxOC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29u
-ZmlnLW4wMzItMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy1uMDIyLTIw
-MTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWctbjAwMS0yMDE5MjUKcmlzY3Yg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCnJpc2N2ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwppYTY0ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBhbGxkZWZjb25maWcKaWE2NCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxsbW9k
-Y29uZmlnCmlhNjQgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxub2NvbmZpZwppYTY0
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKbWljcm9ibGF6ZSAgICAg
-ICAgICAgICAgICAgICAgICBtbXVfZGVmY29uZmlnCm1pY3JvYmxhemUgICAgICAgICAgICAgICAg
-ICAgIG5vbW11X2RlZmNvbmZpZwp4ODZfNjQgICAgICAgICAgICAgICAgICAgICAgICAgICBhbGxt
-b2Rjb25maWcKaTM4NiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFsbG5vY29uZmlnCmkz
-ODYgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwppMzg2ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBhbGxkZWZjb25maWcKeDg2XzY0ICAgICAgICAgICAgICAgICBy
-YW5kY29uZmlnLXgwMTktMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14
-MDEyLTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxNC0yMDE5MjUK
-eDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMTUtMjAxOTI1Cng4Nl82NCAgICAg
-ICAgICAgICAgICAgcmFuZGNvbmZpZy14MDEwLTIwMTkyNQp4ODZfNjQgICAgICAgICAgICAgICAg
-IHJhbmRjb25maWcteDAxNy0yMDE5MjUKeDg2XzY0ICAgICAgICAgICAgICAgICByYW5kY29uZmln
-LXgwMTEtMjAxOTI1Cng4Nl82NCAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDE2LTIwMTky
-NQp4ODZfNjQgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxOC0yMDE5MjUKeDg2XzY0ICAg
-ICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMTMtMjAxOTI1CmkzODYgICAgICAgICAgICAgICAg
-ICAgcmFuZGNvbmZpZy14MDcxLTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25m
-aWcteDA3MC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwNzMtMjAx
-OTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDc4LTIwMTkyNQppMzg2ICAg
-ICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDA3NC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAg
-ICAgICByYW5kY29uZmlnLXgwNzItMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNv
-bmZpZy14MDc1LTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDA3Ny0y
-MDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwNzYtMjAxOTI1CmkzODYg
-ICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDc5LTIwMTkyNQppMzg2ICAgICAgICAgICAg
-ICAgICAgIHJhbmRjb25maWcteDAxOC0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5k
-Y29uZmlnLXgwMTMtMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDEy
-LTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxMS0yMDE5MjUKaTM4
-NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMTYtMjAxOTI1CmkzODYgICAgICAgICAg
-ICAgICAgICAgcmFuZGNvbmZpZy14MDEwLTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJh
-bmRjb25maWcteDAxNy0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgw
-MTUtMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDE0LTIwMTkyNQpp
-Mzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAxOS0yMDE5MjUKaTM4NiAgICAgICAg
-ICAgICAgICAgICByYW5kY29uZmlnLXgwMDktMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAg
-cmFuZGNvbmZpZy14MDA0LTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWct
-eDAwNS0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMDgtMjAxOTI1
-CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZpZy14MDA2LTIwMTkyNQppMzg2ICAgICAg
-ICAgICAgICAgICAgIHJhbmRjb25maWcteDAwMS0yMDE5MjUKaTM4NiAgICAgICAgICAgICAgICAg
-ICByYW5kY29uZmlnLXgwMDctMjAxOTI1CmkzODYgICAgICAgICAgICAgICAgICAgcmFuZGNvbmZp
-Zy14MDAwLTIwMTkyNQppMzg2ICAgICAgICAgICAgICAgICAgIHJhbmRjb25maWcteDAwMi0yMDE5
-MjUKaTM4NiAgICAgICAgICAgICAgICAgICByYW5kY29uZmlnLXgwMDMtMjAxOTI1CmFscGhhICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlZmNvbmZpZwpwYXJpc2MgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgYWxsbm9jb25maWcKcGFyaXNjICAgICAgICAgICAgICAgICAgICAgICAg
-IGIxODBfZGVmY29uZmlnCnBhcmlzYyAgICAgICAgICAgICAgICAgICAgICAgIGMzMDAwX2RlZmNv
-bmZpZwpwYXJpc2MgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZWZjb25maWcKdW0gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVmY29uZmlnCgotLS0KMC1EQVkga2VybmVs
-IHRlc3QgaW5mcmFzdHJ1Y3R1cmUgICAgICAgICAgICAgICAgT3BlbiBTb3VyY2UgVGVjaG5vbG9n
-eSBDZW50ZXIKaHR0cHM6Ly9saXN0cy4wMS5vcmcvcGlwZXJtYWlsL2tidWlsZC1hbGwgICAgICAg
-ICAgICAgICAgICAgSW50ZWwgQ29ycG9yYXRpb24KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13
-aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9pbnRlbC13aXJlZC1sYW4K
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Venkatesh Srinivas
+> Sent: Monday, June 10, 2019 2:28 PM
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
+> Cc: intel-wired-lan@osuosl.org; vsrinivas@ops101.org
+> Subject: [Intel-wired-lan] [PATCH] e1000: Use dma_wmb() instead of wmb()
+> before doorbell writes
+> 
+> e1000 writes to doorbells to post transmit descriptors and fill the
+> receive ring. After writing descriptors to memory but before
+> writing to doorbells, use dma_wmb() rather than wmb(). wmb() is more
+> heavyweight than necessary for a device to see descriptor writes.
+> 
+> On x86, this avoids SFENCEs before doorbell writes in both the
+> tx and rx paths. On ARM, this converts DSB ST -> DMB OSHST.
+> 
+> Tested: 82576EB / x86; QEMU (qemu emulates an 8257x)
+> 
+> Signed-off-by: Venkatesh Srinivas <venkateshs@google.com>
+> ---
+>  drivers/net/ethernet/intel/e1000/e1000_main.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+Tested with a handful of physical parts that I still have laying around just for this purpose, 82540EM, multiple 82541PI, 82541GI, 82543GC, multiple 82544GC, ...
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
