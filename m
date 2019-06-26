@@ -2,73 +2,83 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC63055CA8
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jun 2019 01:55:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAAEB561DD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jun 2019 07:49:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 71BEB87A5E;
-	Tue, 25 Jun 2019 23:55:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3905887B08;
+	Wed, 26 Jun 2019 05:49:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2Y3dxRz9isrk; Tue, 25 Jun 2019 23:55:58 +0000 (UTC)
+	with ESMTP id 4zV-R5s5NumW; Wed, 26 Jun 2019 05:49:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6A99C87A4F;
-	Tue, 25 Jun 2019 23:55:55 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id AEA0487ADB;
+	Wed, 26 Jun 2019 05:49:23 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 019451BF30F
- for <intel-wired-lan@osuosl.org>; Tue, 25 Jun 2019 23:54:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A36931BF424
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jun 2019 05:49:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F16C62107A
- for <intel-wired-lan@osuosl.org>; Tue, 25 Jun 2019 23:54:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9F57C21505
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jun 2019 05:49:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j9KfaUGBNrhF for <intel-wired-lan@osuosl.org>;
- Tue, 25 Jun 2019 23:54:32 +0000 (UTC)
+ with ESMTP id xgUYmN7E4kR3 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 Jun 2019 05:49:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id 3A7CB2083F
- for <intel-wired-lan@osuosl.org>; Tue, 25 Jun 2019 23:54:32 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2019 16:54:31 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,417,1557212400"; d="scan'208";a="313244182"
-Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
- by orsmga004.jf.intel.com with ESMTP; 25 Jun 2019 16:54:31 -0700
-Received: from orsmsx121.amr.corp.intel.com (10.22.225.226) by
- ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 25 Jun 2019 16:54:31 -0700
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.135]) by
- ORSMSX121.amr.corp.intel.com ([169.254.10.250]) with mapi id 14.03.0439.000;
- Tue, 25 Jun 2019 16:54:31 -0700
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Venkatesh Srinivas <venkateshs@google.com>, "Kirsher, Jeffrey T"
- <jeffrey.t.kirsher@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] e1000: Use dma_wmb() instead of
- wmb() before doorbell writes
-Thread-Index: AQHVH9eV1/bpOvo/R0+uL8N5oNwnS6atHJnA
-Date: Tue, 25 Jun 2019 23:54:30 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B970B387B@ORSMSX103.amr.corp.intel.com>
-References: <20190610212750.173711-1-venkateshs@google.com>
-In-Reply-To: <20190610212750.173711-1-venkateshs@google.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzU5MTk3OWItZjNiMS00ZGUwLTlmNzUtZTM4YTY1NDNlODRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiS2ltNk5tejRGbStpUDlLSzY3dUVHQVdCc0J0YmxLczhxc2tcL0ZPRVJpaFp2U3JVU2o4cEJ2NzdWQVZLNXdwRHEifQ==
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.600.7
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] e1000: Use dma_wmb() instead of wmb()
- before doorbell writes
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id BB503214FD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jun 2019 05:49:20 +0000 (UTC)
+Received: from mail-pl1-f199.google.com ([209.85.214.199])
+ by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1hg0o2-0007jG-4k
+ for intel-wired-lan@lists.osuosl.org; Wed, 26 Jun 2019 05:49:18 +0000
+Received: by mail-pl1-f199.google.com with SMTP id d2so746139pla.18
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Jun 2019 22:49:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=12ANf5jkxiue7axL1Y5xhLlkcaf3kHXDuZtfoS2gzUA=;
+ b=g4U5K4M9a/fwxwzCxayui+y/Z+7XGbvwTSOmtCGWXRp5FKoYw4Ow0cv8VnP5Ucc/JM
+ eidLU1N5BWnWJqTYTNabwcw+mUmh5J4fD+LSSuNLXTdRhnIua2ac7CgF2DKb+PBn3/J5
+ c+C4dAvMdHMtjJC1V7VmYIIL1FXH7HhObh2yRYY5w/WvaILpolVlH1xnsRF4nc4hpGLc
+ w5dkQ3ijTfXyUlxkQuBWKhjS2bfQXAo5isNSsA29v9GveL4YwenGKvRlLCmUvgpTnCqM
+ HKayMbAD/KM1iBR4D38cw6yRdtGZ95m6a99f5gitq8FVONc/zH93xflcOFRtVLxLiMiv
+ as4A==
+X-Gm-Message-State: APjAAAWO83JLD4ZXsnGaKKLMXErl1odi1WS7F8AJ7R6ndXwnWuzw97im
+ vcLmiNtdxVxeuTMkrJdWGr3s4ke3NCKDmwIQcgbE/tJwY1vZiYnZQNSpf+NCkMMlIhx6/zESxBU
+ 5VE5ZHhNcotHaQY5DlRTwOcJSfEinDdBpC/NDLN/YP4KwwBk=
+X-Received: by 2002:a17:902:9688:: with SMTP id
+ n8mr3116871plp.227.1561528156893; 
+ Tue, 25 Jun 2019 22:49:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwee9bWoCIWpnXOMY7SxZkgP4ELM68w+FNl6jhugNxsK+602xd1wI/6pPbktKeAaH3SPdhALQ==
+X-Received: by 2002:a17:902:9688:: with SMTP id
+ n8mr3116854plp.227.1561528156633; 
+ Tue, 25 Jun 2019 22:49:16 -0700 (PDT)
+Received: from [10.101.46.178] (61-220-137-37.HINET-IP.hinet.net.
+ [61.220.137.37])
+ by smtp.gmail.com with ESMTPSA id r15sm19728330pfh.121.2019.06.25.22.49.15
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 25 Jun 2019 22:49:16 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+From: Kai Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <dfd57ef4-08bd-53cf-1f0a-86edc5bc0a67@intel.com>
+Date: Wed, 26 Jun 2019 13:49:13 +0800
+Message-Id: <8C7BCE85-D027-4C0C-BD46-619FAD0E6AB8@canonical.com>
+References: <074E1145-A512-4835-9A6D-8FB6634DBD3C@canonical.com>
+ <E2D5225B-D683-4895-AC4F-EE01C339262B@canonical.com>
+ <95f88f45-fd6c-52e4-de8c-2db1b4c6c04e@intel.com>
+ <E8C45269-819C-41E0-A3D3-AA98710DBA4C@canonical.com>
+ <dfd57ef4-08bd-53cf-1f0a-86edc5bc0a67@intel.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
+X-Mailer: Apple Mail (2.3445.104.11)
+Subject: Re: [Intel-wired-lan] Opportunistic S0ix blocked by e1000e when
+ ethernet is in use
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,40 +91,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>,
- "vsrinivas@ops101.org" <vsrinivas@ops101.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-kernel <linux-kernel@vger.kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Anthony Wong <anthony.wong@canonical.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="yes"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Venkatesh Srinivas
-> Sent: Monday, June 10, 2019 2:28 PM
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> Cc: intel-wired-lan@osuosl.org; vsrinivas@ops101.org
-> Subject: [Intel-wired-lan] [PATCH] e1000: Use dma_wmb() instead of wmb()
-> before doorbell writes
-> 
-> e1000 writes to doorbells to post transmit descriptors and fill the
-> receive ring. After writing descriptors to memory but before
-> writing to doorbells, use dma_wmb() rather than wmb(). wmb() is more
-> heavyweight than necessary for a device to see descriptor writes.
-> 
-> On x86, this avoids SFENCEs before doorbell writes in both the
-> tx and rx paths. On ARM, this converts DSB ST -> DMB OSHST.
-> 
-> Tested: 82576EB / x86; QEMU (qemu emulates an 8257x)
-> 
-> Signed-off-by: Venkatesh Srinivas <venkateshs@google.com>
-> ---
->  drivers/net/ethernet/intel/e1000/e1000_main.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-Tested with a handful of physical parts that I still have laying around just for this purpose, 82540EM, multiple 82541PI, 82541GI, 82543GC, multiple 82544GC, ...
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+YXQgNjoyNSBQTSwgTmVmdGluLCBTYXNoYSA8c2FzaGEubmVmdGluQGludGVsLmNvbT4gd3JvdGU6
+Cgo+IE9uIDYvMjQvMjAxOSAxODowNiwgS2FpLUhlbmcgRmVuZyB3cm90ZToKPj4gYXQgMTk6NTYs
+IE5lZnRpbiwgU2FzaGEgPHNhc2hhLm5lZnRpbkBpbnRlbC5jb20+IHdyb3RlOgpbU25pcHBlZF0K
+PiBDdXJyZW50IEhXIGhhdmUgYSBsaW1pdGF0aW9uLiBQbGVhc2UsIHRyeSBmb2xsb3cgd29ya2Fy
+b3VuZCBvbiB5b3VyICAKPiBwbGF0Zm9ybTogZWNobyAzID4gL3N5cy9rZXJuZWwvZGVidWcvcG1j
+X2NvcmUvbHRyX2lnbm9yZQoKWWVzLCB0aGlzIGRvZXMgdGhlIHRyaWNrLgoKT24gNC4xNSBiYXNl
+ZCBrZXJuZWwgSSBjYW4gc2VlIHRoZSBTb0MgZW50ZXJzIFBDMTAgYnV0IFNMUF9TMCBpcyBub3Qg
+IAphc3NlcnRlZC4KCk9uIG1haW5saW5lIGtlcm5lbCB0aGUgU29DLCBQQzEwIGlzIGhpdCBhbmQg
+U0xQX1MwIGlzIGFzc2VydGVkLiBPbmNlIFNMUF9TMCAgCmlzIGFzc2VydGVkIHRoZSBTU0ggY29u
+bmVjdGlvbiBiZWNvbWVzIHJlYWxseSBzbHVnZ2lzaC4KCj4+ID4+IFMwaXggc3VwcG9ydCBpcyB1
+bmRlciBkaXNjdXNzaW9uIHdpdGggb3VyIGFyY2hpdGVjdHVyZS4gV2Ugd2lsbCB0cnkKPj4+IGVu
+YWJsZSBTMGl4IGluIG91ciBlMTAwMGUgT09UIGRyaXZlciBhcyBmaXJzdCBzdGVwLgo+PiBJcyBp
+dCBwb3NzaWJsZSB0byBhZGQgRHluYW1pYyBMVFIgYXMgYW4gb3B0aW9uIHNvIHVzZXJzIGFuZCBk
+b3duc3RyZWFtICAKPj4gZGlzdHJvcyBjYW4gc3RpbGwgYmVuZWZpdCBmcm9tIGl0Pwo+IEFzIEkg
+c2FpZCBiZWZvcmUsIHRoaXMgaXMgbm90IGEgc3RhYmxlIHNvbHV0aW9uLiBObyBndWFyYW50ZWUg
+dGhhdCBIVyAgCj4gd2lsbCB3b3JrIGFzIHByb3Blcmx5LgoKQ2FuIHlvdSBkZXNjcmliZSB0aGUg
+c3ltcHRvbSBvZiAiSFcgd2lsbCB3b3JrIGFzIHByb3Blcmx54oCdPyBJcyB0aGlzIHRoZSAgCnNs
+dWdnaXNoIGNvbm5lY3Rpb24gSSBvYnNlcnZlZD8KCkthaS1IZW5nCgo+PiBLYWktSGVuZwo+Pj4+
+IEthaS1IZW5nCj4+Pj4+IEthaS1IZW5nCj4+Pj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KPj4+PiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4+
+Pj4gSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKPj4+PiBodHRwczovL2xpc3RzLm9zdW9zbC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4KPj4+Cj4+PiBUaGFua3MKPj4+IFNh
+c2hhCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
+ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
+czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
