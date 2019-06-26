@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C42E556FDE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jun 2019 19:48:09 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3021156FD5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Jun 2019 19:48:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 42A9B86A7C;
-	Wed, 26 Jun 2019 17:48:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C5C55861BC;
+	Wed, 26 Jun 2019 17:48:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LI3bdiUYxjk8; Wed, 26 Jun 2019 17:48:00 +0000 (UTC)
+	with ESMTP id LxQ0Llvjk7OA; Wed, 26 Jun 2019 17:47:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AAEC786AA1;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6B7D886194;
 	Wed, 26 Jun 2019 17:47:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D93A01BF326
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B47531BF326
  for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jun 2019 17:47:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D1E34843BB
+ by fraxinus.osuosl.org (Postfix) with ESMTP id ABBBB8618F
  for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jun 2019 17:47:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cWbu8XqYmGI3 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id ie1-nVlZElWj for <intel-wired-lan@lists.osuosl.org>;
  Wed, 26 Jun 2019 17:47:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5630086A0B
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 327A886132
  for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Jun 2019 17:47:53 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  26 Jun 2019 10:47:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,420,1557212400"; d="scan'208";a="183218120"
+X-IronPort-AV: E=Sophos;i="5.63,420,1557212400"; d="scan'208";a="183218123"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by fmsmga001.fm.intel.com with ESMTP; 26 Jun 2019 10:47:51 -0700
+ by fmsmga001.fm.intel.com with ESMTP; 26 Jun 2019 10:47:52 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 26 Jun 2019 02:20:16 -0700
-Message-Id: <20190626092027.52845-5-anthony.l.nguyen@intel.com>
+Date: Wed, 26 Jun 2019 02:20:17 -0700
+Message-Id: <20190626092027.52845-6-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190626092027.52845-1-anthony.l.nguyen@intel.com>
 References: <20190626092027.52845-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S22 05/16] ice: separate out control queue
- lock creation
+Subject: [Intel-wired-lan] [PATCH S22 06/16] ice: Do not configure port with
+ no media
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,314 +67,320 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+The firmware reports an error when trying to configure a port with no
+media. Instead of always configuring the port, check for media before
+attempting to configure it. In the absence of media, turn off link and
+poll for media to become available before re-enabling link.
 
-The ice_init_all_ctrlq and ice_shutdown_all_ctrlq functions create and
-destroy the locks used to protect the send and receive process of each
-control queue.
+Move ice_force_phys_link_state() up to avoid forward declaration.
 
-This is problematic, as the driver may use these functions to shutdown
-and re-initialize the control queues at run time. For example, it may do
-this in response to a device reset.
-
-If the driver failed to recover from a reset, it might leave the control
-queues offline. In this case, the locks will no longer be initialized.
-A later call to ice_sq_send_cmd will then attempt to acquire a lock that
-has been destroyed.
-
-It is incorrect behavior to access a lock that has been destroyed.
-
-Indeed, ice_aq_send_cmd already tries to avoid accessing an offline
-control queue, but the check occurs inside the lock.
-
-The root of the problem is that the locks are destroyed at run time.
-
-Modify ice_init_all_ctrlq and ice_shutdown_all_ctrlq such that they no
-longer create or destroy the locks.
-
-Introduce new functions, ice_create_all_ctrlq and ice_destroy_all_ctrlq.
-Call these functions in ice_init_hw and ice_deinit_hw.
-
-Now, the control queue locks will remain valid for the life of the
-driver, and will not be destroyed until the driver unloads.
-
-This also allows removing a duplicate check of the sq.count and
-rq.count values when shutting down the controlqs. The ice_shutdown_ctrlq
-function already checks this value under the lock. Previously
-commit dec64ff10ed9 ("ice: use [sr]q.count when checking if queue is
-initialized") needed this check to happen outside the lock, because it
-prevented duplicate attempts at destroying the locks.
-
-The driver may now safely use ice_init_all_ctrlq and
-ice_shutdown_all_ctrlq while handling reset events, without causing the
-locks to be invalid.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c   |   6 +-
- drivers/net/ethernet/intel/ice/ice_common.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_controlq.c | 112 ++++++++++++++----
- 3 files changed, 91 insertions(+), 29 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h      |   1 +
+ drivers/net/ethernet/intel/ice/ice_main.c | 239 ++++++++++++++--------
+ 2 files changed, 158 insertions(+), 82 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 01e5ecaaa322..5f9dc76699d2 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -740,7 +740,7 @@ enum ice_status ice_init_hw(struct ice_hw *hw)
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 3639cf8c75ac..ff750c23cb75 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -349,6 +349,7 @@ enum ice_pf_flags {
+ 	ICE_FLAG_DCB_CAPABLE,
+ 	ICE_FLAG_DCB_ENA,
+ 	ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA,
++	ICE_FLAG_NO_MEDIA,
+ 	ICE_FLAG_ENABLE_FW_LLDP,
+ 	ICE_FLAG_ETHTOOL_CTXT,		/* set when ethtool holds RTNL lock */
+ 	ICE_PF_FLAGS_NBITS		/* must be last */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 40df672befe4..4e5a92dbbf32 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -810,6 +810,20 @@ ice_link_event(struct ice_pf *pf, struct ice_port_info *pi, bool link_up,
+ 	if (!vsi || !vsi->port_info)
+ 		return -EINVAL;
  
- 	ice_get_itr_intrl_gran(hw);
++	/* turn off PHY if media was removed */
++	if (!test_bit(ICE_FLAG_NO_MEDIA, pf->flags) &&
++	    !(pi->phy.link_info.link_info & ICE_AQ_MEDIA_AVAILABLE)) {
++		set_bit(ICE_FLAG_NO_MEDIA, pf->flags);
++
++		result = ice_aq_set_link_restart_an(pi, false, NULL);
++		if (result) {
++			dev_dbg(&pf->pdev->dev,
++				"Failed to set link down, VSI %d error %d\n",
++			       vsi->vsi_num, result);
++			return result;
++		}
++	}
++
+ 	ice_vsi_link_event(vsi, link_up);
+ 	ice_print_link_msg(vsi, link_up);
  
--	status = ice_init_all_ctrlq(hw);
-+	status = ice_create_all_ctrlq(hw);
- 	if (status)
- 		goto err_unroll_cqinit;
- 
-@@ -855,7 +855,7 @@ enum ice_status ice_init_hw(struct ice_hw *hw)
- err_unroll_alloc:
- 	devm_kfree(ice_hw_to_dev(hw), hw->port_info);
- err_unroll_cqinit:
--	ice_shutdown_all_ctrlq(hw);
-+	ice_destroy_all_ctrlq(hw);
- 	return status;
- }
- 
-@@ -881,7 +881,7 @@ void ice_deinit_hw(struct ice_hw *hw)
- 
- 	/* Attempt to disable FW logging before shutting down control queues */
- 	ice_cfg_fw_log(hw, false);
--	ice_shutdown_all_ctrlq(hw);
-+	ice_destroy_all_ctrlq(hw);
- 
- 	/* Clear VSI contexts if not already cleared */
- 	ice_clear_all_vsi_ctx(hw);
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index 68218e63afc2..e376d1eadba4 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -17,8 +17,10 @@ enum ice_status ice_init_hw(struct ice_hw *hw);
- void ice_deinit_hw(struct ice_hw *hw);
- enum ice_status ice_check_reset(struct ice_hw *hw);
- enum ice_status ice_reset(struct ice_hw *hw, enum ice_reset_req req);
-+enum ice_status ice_create_all_ctrlq(struct ice_hw *hw);
- enum ice_status ice_init_all_ctrlq(struct ice_hw *hw);
- void ice_shutdown_all_ctrlq(struct ice_hw *hw);
-+void ice_destroy_all_ctrlq(struct ice_hw *hw);
- enum ice_status
- ice_clean_rq_elem(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 		  struct ice_rq_event_info *e, u16 *pending);
-diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
-index e91ac4df0242..2353166c654e 100644
---- a/drivers/net/ethernet/intel/ice/ice_controlq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
-@@ -310,7 +310,7 @@ ice_cfg_rq_regs(struct ice_hw *hw, struct ice_ctl_q_info *cq)
-  * @cq: pointer to the specific Control queue
-  *
-  * This is the main initialization routine for the Control Send Queue
-- * Prior to calling this function, drivers *MUST* set the following fields
-+ * Prior to calling this function, the driver *MUST* set the following fields
-  * in the cq->structure:
-  *     - cq->num_sq_entries
-  *     - cq->sq_buf_size
-@@ -369,7 +369,7 @@ static enum ice_status ice_init_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
-  * @cq: pointer to the specific Control queue
-  *
-  * The main initialization routine for the Admin Receive (Event) Queue.
-- * Prior to calling this function, drivers *MUST* set the following fields
-+ * Prior to calling this function, the driver *MUST* set the following fields
-  * in the cq->structure:
-  *     - cq->num_rq_entries
-  *     - cq->rq_buf_size
-@@ -569,14 +569,8 @@ static enum ice_status ice_init_check_adminq(struct ice_hw *hw)
- 	return 0;
- 
- init_ctrlq_free_rq:
--	if (cq->rq.count) {
--		ice_shutdown_rq(hw, cq);
--		mutex_destroy(&cq->rq_lock);
--	}
--	if (cq->sq.count) {
--		ice_shutdown_sq(hw, cq);
--		mutex_destroy(&cq->sq_lock);
--	}
-+	ice_shutdown_rq(hw, cq);
-+	ice_shutdown_sq(hw, cq);
- 	return status;
- }
- 
-@@ -585,12 +579,14 @@ static enum ice_status ice_init_check_adminq(struct ice_hw *hw)
-  * @hw: pointer to the hardware structure
-  * @q_type: specific Control queue type
-  *
-- * Prior to calling this function, drivers *MUST* set the following fields
-+ * Prior to calling this function, the driver *MUST* set the following fields
-  * in the cq->structure:
-  *     - cq->num_sq_entries
-  *     - cq->num_rq_entries
-  *     - cq->rq_buf_size
-  *     - cq->sq_buf_size
-+ *
-+ * NOTE: this function does not initialize the controlq locks
-  */
- static enum ice_status ice_init_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
- {
-@@ -616,8 +612,6 @@ static enum ice_status ice_init_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
- 	    !cq->rq_buf_size || !cq->sq_buf_size) {
- 		return ICE_ERR_CFG;
+@@ -1314,6 +1328,124 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
  	}
--	mutex_init(&cq->sq_lock);
--	mutex_init(&cq->rq_lock);
- 
- 	/* setup SQ command write back timeout */
- 	cq->sq_cmd_timeout = ICE_CTL_Q_SQ_CMD_TIMEOUT;
-@@ -625,7 +619,7 @@ static enum ice_status ice_init_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
- 	/* allocate the ATQ */
- 	ret_code = ice_init_sq(hw, cq);
- 	if (ret_code)
--		goto init_ctrlq_destroy_locks;
-+		return ret_code;
- 
- 	/* allocate the ARQ */
- 	ret_code = ice_init_rq(hw, cq);
-@@ -637,9 +631,6 @@ static enum ice_status ice_init_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
- 
- init_ctrlq_free_sq:
- 	ice_shutdown_sq(hw, cq);
--init_ctrlq_destroy_locks:
--	mutex_destroy(&cq->sq_lock);
--	mutex_destroy(&cq->rq_lock);
- 	return ret_code;
- }
- 
-@@ -647,12 +638,14 @@ static enum ice_status ice_init_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
-  * ice_init_all_ctrlq - main initialization routine for all control queues
-  * @hw: pointer to the hardware structure
-  *
-- * Prior to calling this function, drivers *MUST* set the following fields
-+ * Prior to calling this function, the driver MUST* set the following fields
-  * in the cq->structure for all control queues:
-  *     - cq->num_sq_entries
-  *     - cq->num_rq_entries
-  *     - cq->rq_buf_size
-  *     - cq->sq_buf_size
-+ *
-+ * NOTE: this function does not initialize the controlq locks.
-  */
- enum ice_status ice_init_all_ctrlq(struct ice_hw *hw)
- {
-@@ -671,10 +664,48 @@ enum ice_status ice_init_all_ctrlq(struct ice_hw *hw)
- 	return ice_init_ctrlq(hw, ICE_CTL_Q_MAILBOX);
  }
  
 +/**
-+ * ice_init_ctrlq_locks - Initialize locks for a control queue
-+ * @cq: pointer to the control queue
++ * ice_force_phys_link_state - Force the physical link state
++ * @vsi: VSI to force the physical link state to up/down
++ * @link_up: true/false indicates to set the physical link to up/down
 + *
-+ * Initializes the send and receive queue locks for a given control queue.
++ * Force the physical link state by getting the current PHY capabilities from
++ * hardware and setting the PHY config based on the determined capabilities. If
++ * link changes a link event will be triggered because both the Enable Automatic
++ * Link Update and LESM Enable bits are set when setting the PHY capabilities.
++ *
++ * Returns 0 on success, negative on failure
 + */
-+static void ice_init_ctrlq_locks(struct ice_ctl_q_info *cq)
++static int ice_force_phys_link_state(struct ice_vsi *vsi, bool link_up)
 +{
-+	mutex_init(&cq->sq_lock);
-+	mutex_init(&cq->rq_lock);
++	struct ice_aqc_get_phy_caps_data *pcaps;
++	struct ice_aqc_set_phy_cfg_data *cfg;
++	struct ice_port_info *pi;
++	struct device *dev;
++	int retcode;
++
++	if (!vsi || !vsi->port_info || !vsi->back)
++		return -EINVAL;
++	if (vsi->type != ICE_VSI_PF)
++		return 0;
++
++	dev = &vsi->back->pdev->dev;
++
++	pi = vsi->port_info;
++
++	pcaps = devm_kzalloc(dev, sizeof(*pcaps), GFP_KERNEL);
++	if (!pcaps)
++		return -ENOMEM;
++
++	retcode = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_SW_CFG, pcaps,
++				      NULL);
++	if (retcode) {
++		dev_err(dev,
++			"Failed to get phy capabilities, VSI %d error %d\n",
++			vsi->vsi_num, retcode);
++		retcode = -EIO;
++		goto out;
++	}
++
++	/* No change in link */
++	if (link_up == !!(pcaps->caps & ICE_AQC_PHY_EN_LINK) &&
++	    link_up == !!(pi->phy.link_info.link_info & ICE_AQ_LINK_UP))
++		goto out;
++
++	cfg = devm_kzalloc(dev, sizeof(*cfg), GFP_KERNEL);
++	if (!cfg) {
++		retcode = -ENOMEM;
++		goto out;
++	}
++
++	cfg->phy_type_low = pcaps->phy_type_low;
++	cfg->phy_type_high = pcaps->phy_type_high;
++	cfg->caps = pcaps->caps | ICE_AQ_PHY_ENA_AUTO_LINK_UPDT;
++	cfg->low_power_ctrl = pcaps->low_power_ctrl;
++	cfg->eee_cap = pcaps->eee_cap;
++	cfg->eeer_value = pcaps->eeer_value;
++	cfg->link_fec_opt = pcaps->link_fec_options;
++	if (link_up)
++		cfg->caps |= ICE_AQ_PHY_ENA_LINK;
++	else
++		cfg->caps &= ~ICE_AQ_PHY_ENA_LINK;
++
++	retcode = ice_aq_set_phy_cfg(&vsi->back->hw, pi->lport, cfg, NULL);
++	if (retcode) {
++		dev_err(dev, "Failed to set phy config, VSI %d error %d\n",
++			vsi->vsi_num, retcode);
++		retcode = -EIO;
++	}
++
++	devm_kfree(dev, cfg);
++out:
++	devm_kfree(dev, pcaps);
++	return retcode;
 +}
 +
 +/**
-+ * ice_create_all_ctrlq - main initialization routine for all control queues
-+ * @hw: pointer to the hardware structure
-+ *
-+ * Prior to calling this function, the driver *MUST* set the following fields
-+ * in the cq->structure for all control queues:
-+ *     - cq->num_sq_entries
-+ *     - cq->num_rq_entries
-+ *     - cq->rq_buf_size
-+ *     - cq->sq_buf_size
-+ *
-+ * This function creates all the control queue locks and then calls
-+ * ice_init_all_ctrlq. It should be called once during driver load. If the
-+ * driver needs to re-initialize control queues at run time it should call
-+ * ice_init_all_ctrlq instead.
++ * ice_check_media_subtask - Check for media; bring link up if detected.
++ * @pf: pointer to PF struct
 + */
-+enum ice_status ice_create_all_ctrlq(struct ice_hw *hw)
++static void ice_check_media_subtask(struct ice_pf *pf)
 +{
-+	ice_init_ctrlq_locks(&hw->adminq);
-+	ice_init_ctrlq_locks(&hw->mailboxq);
++	struct ice_port_info *pi;
++	struct ice_vsi *vsi;
++	int err;
 +
-+	return ice_init_all_ctrlq(hw);
++	vsi = ice_find_vsi_by_type(pf, ICE_VSI_PF);
++	if (!vsi)
++		return;
++
++	/* No need to check for media if it's already present or the interface
++	 * is down
++	 */
++	if (!test_bit(ICE_FLAG_NO_MEDIA, pf->flags) ||
++	    test_bit(__ICE_DOWN, vsi->state))
++		return;
++
++	/* Refresh link info and check if media is present */
++	pi = vsi->port_info;
++	err = ice_update_link_info(pi);
++	if (err)
++		return;
++
++	if (pi->phy.link_info.link_info & ICE_AQ_MEDIA_AVAILABLE) {
++		err = ice_force_phys_link_state(vsi, true);
++		if (err)
++			return;
++		clear_bit(ICE_FLAG_NO_MEDIA, pf->flags);
++
++		/* A Link Status Event will be generated; the event handler
++		 * will complete bringing the interface up
++		 */
++	}
 +}
 +
  /**
-  * ice_shutdown_ctrlq - shutdown routine for any control queue
-  * @hw: pointer to the hardware structure
-  * @q_type: specific Control queue type
-+ *
-+ * NOTE: this function does not destroy the control queue locks.
-  */
- static void ice_shutdown_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
- {
-@@ -693,19 +724,17 @@ static void ice_shutdown_ctrlq(struct ice_hw *hw, enum ice_ctl_q q_type)
+  * ice_service_task - manage and run subtasks
+  * @work: pointer to work_struct contained by the PF struct
+@@ -1336,6 +1468,7 @@ static void ice_service_task(struct work_struct *work)
  		return;
  	}
  
--	if (cq->sq.count) {
--		ice_shutdown_sq(hw, cq);
--		mutex_destroy(&cq->sq_lock);
--	}
--	if (cq->rq.count) {
--		ice_shutdown_rq(hw, cq);
--		mutex_destroy(&cq->rq_lock);
--	}
-+	ice_shutdown_sq(hw, cq);
-+	ice_shutdown_rq(hw, cq);
++	ice_check_media_subtask(pf);
+ 	ice_check_for_hang_subtask(pf);
+ 	ice_sync_fltr_subtask(pf);
+ 	ice_handle_mdd_event(pf);
+@@ -3669,85 +3802,6 @@ static void ice_napi_disable_all(struct ice_vsi *vsi)
+ 	}
  }
  
+-/**
+- * ice_force_phys_link_state - Force the physical link state
+- * @vsi: VSI to force the physical link state to up/down
+- * @link_up: true/false indicates to set the physical link to up/down
+- *
+- * Force the physical link state by getting the current PHY capabilities from
+- * hardware and setting the PHY config based on the determined capabilities. If
+- * link changes a link event will be triggered because both the Enable Automatic
+- * Link Update and LESM Enable bits are set when setting the PHY capabilities.
+- *
+- * Returns 0 on success, negative on failure
+- */
+-static int ice_force_phys_link_state(struct ice_vsi *vsi, bool link_up)
+-{
+-	struct ice_aqc_get_phy_caps_data *pcaps;
+-	struct ice_aqc_set_phy_cfg_data *cfg;
+-	struct ice_port_info *pi;
+-	struct device *dev;
+-	int retcode;
+-
+-	if (!vsi || !vsi->port_info || !vsi->back)
+-		return -EINVAL;
+-	if (vsi->type != ICE_VSI_PF)
+-		return 0;
+-
+-	dev = &vsi->back->pdev->dev;
+-
+-	pi = vsi->port_info;
+-
+-	pcaps = devm_kzalloc(dev, sizeof(*pcaps), GFP_KERNEL);
+-	if (!pcaps)
+-		return -ENOMEM;
+-
+-	retcode = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_SW_CFG, pcaps,
+-				      NULL);
+-	if (retcode) {
+-		dev_err(dev,
+-			"Failed to get phy capabilities, VSI %d error %d\n",
+-			vsi->vsi_num, retcode);
+-		retcode = -EIO;
+-		goto out;
+-	}
+-
+-	/* No change in link */
+-	if (link_up == !!(pcaps->caps & ICE_AQC_PHY_EN_LINK) &&
+-	    link_up == !!(pi->phy.link_info.link_info & ICE_AQ_LINK_UP))
+-		goto out;
+-
+-	cfg = devm_kzalloc(dev, sizeof(*cfg), GFP_KERNEL);
+-	if (!cfg) {
+-		retcode = -ENOMEM;
+-		goto out;
+-	}
+-
+-	cfg->phy_type_low = pcaps->phy_type_low;
+-	cfg->phy_type_high = pcaps->phy_type_high;
+-	cfg->caps = pcaps->caps | ICE_AQ_PHY_ENA_AUTO_LINK_UPDT;
+-	cfg->low_power_ctrl = pcaps->low_power_ctrl;
+-	cfg->eee_cap = pcaps->eee_cap;
+-	cfg->eeer_value = pcaps->eeer_value;
+-	cfg->link_fec_opt = pcaps->link_fec_options;
+-	if (link_up)
+-		cfg->caps |= ICE_AQ_PHY_ENA_LINK;
+-	else
+-		cfg->caps &= ~ICE_AQ_PHY_ENA_LINK;
+-
+-	retcode = ice_aq_set_phy_cfg(&vsi->back->hw, pi->lport, cfg, NULL);
+-	if (retcode) {
+-		dev_err(dev, "Failed to set phy config, VSI %d error %d\n",
+-			vsi->vsi_num, retcode);
+-		retcode = -EIO;
+-	}
+-
+-	devm_kfree(dev, cfg);
+-out:
+-	devm_kfree(dev, pcaps);
+-	return retcode;
+-}
+-
  /**
-  * ice_shutdown_all_ctrlq - shutdown routine for all control queues
-  * @hw: pointer to the hardware structure
-+ *
-+ * NOTE: this function does not destroy the control queue locks. The driver
-+ * may call this at runtime to shutdown and later restart control queues, such
-+ * as in response to a reset event.
-  */
- void ice_shutdown_all_ctrlq(struct ice_hw *hw)
+  * ice_down - Shutdown the connection
+  * @vsi: The VSI being stopped
+@@ -4610,6 +4664,7 @@ int ice_open(struct net_device *netdev)
  {
-@@ -715,6 +744,37 @@ void ice_shutdown_all_ctrlq(struct ice_hw *hw)
- 	ice_shutdown_ctrlq(hw, ICE_CTL_Q_MAILBOX);
- }
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+ 	struct ice_vsi *vsi = np->vsi;
++	struct ice_port_info *pi;
+ 	int err;
  
-+/**
-+ * ice_destroy_ctrlq_locks - Destroy locks for a control queue
-+ * @cq: pointer to the control queue
-+ *
-+ * Destroys the send and receive queue locks for a given control queue.
-+ */
-+static void
-+ice_destroy_ctrlq_locks(struct ice_ctl_q_info *cq)
-+{
-+	mutex_destroy(&cq->sq_lock);
-+	mutex_destroy(&cq->rq_lock);
-+}
+ 	if (test_bit(__ICE_NEEDS_RESTART, vsi->back->state)) {
+@@ -4619,13 +4674,33 @@ int ice_open(struct net_device *netdev)
+ 
+ 	netif_carrier_off(netdev);
+ 
+-	err = ice_force_phys_link_state(vsi, true);
++	pi = vsi->port_info;
++	err = ice_update_link_info(pi);
+ 	if (err) {
+-		netdev_err(netdev,
+-			   "Failed to set physical link up, error %d\n", err);
++		netdev_err(netdev, "Failed to get link info, error %d\n",
++			   err);
+ 		return err;
+ 	}
+ 
++	/* Set PHY if there is media, otherwise, turn off PHY */
++	if (pi->phy.link_info.link_info & ICE_AQ_MEDIA_AVAILABLE) {
++		err = ice_force_phys_link_state(vsi, true);
++		if (err) {
++			netdev_err(netdev,
++				   "Failed to set physical link up, error %d\n",
++				   err);
++			return err;
++		}
++	} else {
++		err = ice_aq_set_link_restart_an(pi, false, NULL);
++		if (err) {
++			netdev_err(netdev, "Failed to set PHY state, VSI %d error %d\n",
++				   vsi->vsi_num, err);
++			return err;
++		}
++		set_bit(ICE_FLAG_NO_MEDIA, vsi->back->flags);
++	}
 +
-+/**
-+ * ice_destroy_all_ctrlq - exit routine for all control queues
-+ * @hw: pointer to the hardware structure
-+ *
-+ * This function shuts down all the control queues and then destroys the
-+ * control queue locks. It should be called once during driver unload. The
-+ * driver should call ice_shutdown_all_ctrlq if it needs to shut down and
-+ * reinitialize control queues, such as in response to a reset event.
-+ */
-+void ice_destroy_all_ctrlq(struct ice_hw *hw)
-+{
-+	/* shut down all the control queues first */
-+	ice_shutdown_all_ctrlq(hw);
-+
-+	ice_destroy_ctrlq_locks(&hw->adminq);
-+	ice_destroy_ctrlq_locks(&hw->mailboxq);
-+}
-+
- /**
-  * ice_clean_sq - cleans Admin send queue (ATQ)
-  * @hw: pointer to the hardware structure
+ 	err = ice_vsi_open(vsi);
+ 	if (err)
+ 		netdev_err(netdev, "Failed to open VSI 0x%04X on switch 0x%04X\n",
 -- 
 2.20.1
 
