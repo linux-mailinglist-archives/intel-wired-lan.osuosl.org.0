@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7C1458E4C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2019 01:08:36 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5039158E4E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2019 01:08:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 87CE2880D4;
-	Thu, 27 Jun 2019 23:08:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 07E092045D;
+	Thu, 27 Jun 2019 23:08:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TgDES39ObKif; Thu, 27 Jun 2019 23:08:35 +0000 (UTC)
+	with ESMTP id 2ZkQyNGdrn8J; Thu, 27 Jun 2019 23:08:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1DFBF880F5;
+	by silver.osuosl.org (Postfix) with ESMTP id 88781226D0;
 	Thu, 27 Jun 2019 23:08:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6D1321BF859
+ by ash.osuosl.org (Postfix) with ESMTP id D81F31BF859
  for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2019 23:08:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6286184376
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B93DE84376
  for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2019 23:08:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BHhiPWq2MxcB for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Jun 2019 23:08:26 +0000 (UTC)
+ with ESMTP id S0QJcRPvdzri for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Jun 2019 23:08:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8BA4B86457
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D3435863A4
  for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2019 23:08:26 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,18 @@ Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  27 Jun 2019 16:08:26 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,425,1557212400"; d="scan'208";a="156396175"
+X-IronPort-AV: E=Sophos;i="5.63,425,1557212400"; d="scan'208";a="156396176"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga008.jf.intel.com with ESMTP; 27 Jun 2019 16:08:25 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 27 Jun 2019 07:40:53 -0700
-Message-Id: <20190627144101.24280-7-anthony.l.nguyen@intel.com>
+Date: Thu, 27 Jun 2019 07:40:54 -0700
+Message-Id: <20190627144101.24280-8-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190627144101.24280-1-anthony.l.nguyen@intel.com>
 References: <20190627144101.24280-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S23 07/15] ice: Fix kernel hang with DCB
- reset in CEE mode
+Subject: [Intel-wired-lan] [PATCH S23 08/15] ice: allow empty rx descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,227 +66,82 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Usha Ketineni <usha.k.ketineni@intel.com>
+From: Mitch Williams <mitch.a.williams@intel.com>
 
-This patch fixes the set local MIB AQ call failures in the DCB rebuild path
-by setting the defaults for the ETS recommended DCB configuration. Also,
-willing bits for the DCB configuration needs to be set correctly. Resets
-works fine in IEEE mode as the ETS recommended DCB configuration is
-populated but not in CEE mode.
-Without this patch, PFR causes the kernel hang in CEE mode.
+In some circumstances, the hardware will hand us a receive descriptor
+which has no data attached, but is otherwise valid. The receive code was
+improperly ignoring these descriptors, which result in an infinite loop.
 
-Signed-off-by: Usha Ketineni <usha.k.ketineni@intel.com>
+To fix this, change the receive code to process all descriptors,
+regardless of the size of the associated data. Add checks to the
+memory-handling functions to allow for zero size.
+
+Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 149 +++++++++++--------
- 1 file changed, 88 insertions(+), 61 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index f80628a13f2a..d285aba3fea7 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -208,16 +208,87 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
- 	return ret;
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 1085ab920155..309207de1e86 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -859,6 +859,8 @@ ice_add_rx_frag(struct ice_rx_buf *rx_buf, struct sk_buff *skb,
+ 	unsigned int truesize = ICE_RXBUF_2048;
+ #endif
  
-+/**
-+ * ice_cfg_etsrec_defaults - Set default ETS recommended DCB config
-+ * @pi: port information structure
-+ */
-+static void ice_cfg_etsrec_defaults(struct ice_port_info *pi)
-+{
-+	struct ice_dcbx_cfg *dcbcfg = &pi->local_dcbx_cfg;
-+	u8 i;
-+
-+	/* Ensure ETS recommended DCB configuration is not already set */
-+	if (dcbcfg->etsrec.maxtcs)
++	if (!size)
++		return;
+ 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
+ 			rx_buf->page_offset, size, truesize);
+ 
+@@ -914,6 +916,8 @@ ice_get_rx_buf(struct ice_ring *rx_ring, struct sk_buff **skb,
+ 	prefetchw(rx_buf->page);
+ 	*skb = rx_buf->skb;
+ 
++	if (!size)
++		return rx_buf;
+ 	/* we are reusing so sync this buffer for CPU use */
+ 	dma_sync_single_range_for_cpu(rx_ring->dev, rx_buf->dma,
+ 				      rx_buf->page_offset, size,
+@@ -1005,6 +1009,9 @@ static void ice_put_rx_buf(struct ice_ring *rx_ring, struct ice_rx_buf *rx_buf)
+ 	ntc = (ntc < rx_ring->count) ? ntc : 0;
+ 	rx_ring->next_to_clean = ntc;
+ 
++	if (!rx_buf)
 +		return;
 +
-+	/* In CEE mode, set the default to 1 TC */
-+	dcbcfg->etsrec.maxtcs = 1;
-+	for (i = 0; i < ICE_MAX_TRAFFIC_CLASS; i++) {
-+		dcbcfg->etsrec.tcbwtable[i] = i ? 0 : 100;
-+		dcbcfg->etsrec.tsatable[i] = i ? ICE_IEEE_TSA_STRICT :
-+						 ICE_IEEE_TSA_ETS;
-+	}
-+}
-+
-+/**
-+ * ice_dcb_need_recfg - Check if DCB needs reconfig
-+ * @pf: board private structure
-+ * @old_cfg: current DCB config
-+ * @new_cfg: new DCB config
-+ */
-+static bool
-+ice_dcb_need_recfg(struct ice_pf *pf, struct ice_dcbx_cfg *old_cfg,
-+		   struct ice_dcbx_cfg *new_cfg)
-+{
-+	bool need_reconfig = false;
-+
-+	/* Check if ETS configuration has changed */
-+	if (memcmp(&new_cfg->etscfg, &old_cfg->etscfg,
-+		   sizeof(new_cfg->etscfg))) {
-+		/* If Priority Table has changed reconfig is needed */
-+		if (memcmp(&new_cfg->etscfg.prio_table,
-+			   &old_cfg->etscfg.prio_table,
-+			   sizeof(new_cfg->etscfg.prio_table))) {
-+			need_reconfig = true;
-+			dev_dbg(&pf->pdev->dev, "ETS UP2TC changed.\n");
+ 	if (ice_can_reuse_rx_page(rx_buf)) {
+ 		/* hand second half of page back to the ring */
+ 		ice_reuse_rx_page(rx_ring, rx_buf);
+@@ -1298,12 +1305,15 @@ static int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
+ 		size = le16_to_cpu(rx_desc->wb.pkt_len) &
+ 			ICE_RX_FLX_DESC_PKT_LEN_M;
+ 
+-		if (!size)
+-			break;
+-
+ 		/* retrieve a buffer from the ring */
+ 		rx_buf = ice_get_rx_buf(rx_ring, &skb, size);
+ 
++		if (!size) {
++			xdp.data = NULL;
++			xdp.data_end = NULL;
++			goto construct_skb;
 +		}
 +
-+		if (memcmp(&new_cfg->etscfg.tcbwtable,
-+			   &old_cfg->etscfg.tcbwtable,
-+			   sizeof(new_cfg->etscfg.tcbwtable)))
-+			dev_dbg(&pf->pdev->dev, "ETS TC BW Table changed.\n");
-+
-+		if (memcmp(&new_cfg->etscfg.tsatable,
-+			   &old_cfg->etscfg.tsatable,
-+			   sizeof(new_cfg->etscfg.tsatable)))
-+			dev_dbg(&pf->pdev->dev, "ETS TSA Table changed.\n");
-+	}
-+
-+	/* Check if PFC configuration has changed */
-+	if (memcmp(&new_cfg->pfc, &old_cfg->pfc, sizeof(new_cfg->pfc))) {
-+		need_reconfig = true;
-+		dev_dbg(&pf->pdev->dev, "PFC config change detected.\n");
-+	}
-+
-+	/* Check if APP Table has changed */
-+	if (memcmp(&new_cfg->app, &old_cfg->app, sizeof(new_cfg->app))) {
-+		need_reconfig = true;
-+		dev_dbg(&pf->pdev->dev, "APP Table change detected.\n");
-+	}
-+
-+	dev_dbg(&pf->pdev->dev, "dcb need_reconfig=%d\n", need_reconfig);
-+	return need_reconfig;
-+}
-+
- /**
-  * ice_dcb_rebuild - rebuild DCB post reset
-  * @pf: physical function instance
-  */
- void ice_dcb_rebuild(struct ice_pf *pf)
- {
-+	struct ice_dcbx_cfg *local_dcbx_cfg, *desired_dcbx_cfg, *prev_cfg;
- 	struct ice_aqc_port_ets_elem buf = { 0 };
--	struct ice_dcbx_cfg *prev_cfg;
- 	enum ice_status ret;
--	u8 willing;
+ 		xdp.data = page_address(rx_buf->page) + rx_buf->page_offset;
+ 		xdp.data_hard_start = xdp.data - ice_rx_offset(rx_ring);
+ 		xdp.data_end = xdp.data + size;
+@@ -1342,7 +1352,8 @@ static int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
+ 		/* exit if we failed to retrieve a buffer */
+ 		if (!skb) {
+ 			rx_ring->rx_stats.alloc_buf_failed++;
+-			rx_buf->pagecnt_bias++;
++			if (rx_buf)
++				rx_buf->pagecnt_bias++;
+ 			break;
+ 		}
  
- 	ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
- 	if (ret) {
-@@ -229,9 +300,15 @@ void ice_dcb_rebuild(struct ice_pf *pf)
- 	if (!test_bit(ICE_FLAG_DCB_ENA, pf->flags))
- 		return;
- 
-+	local_dcbx_cfg = &pf->hw.port_info->local_dcbx_cfg;
-+	desired_dcbx_cfg = &pf->hw.port_info->desired_dcbx_cfg;
-+
- 	/* Save current willing state and force FW to unwilling */
--	willing = pf->hw.port_info->local_dcbx_cfg.etscfg.willing;
--	pf->hw.port_info->local_dcbx_cfg.etscfg.willing = 0x0;
-+	local_dcbx_cfg->etscfg.willing = 0x0;
-+	local_dcbx_cfg->pfc.willing = 0x0;
-+	local_dcbx_cfg->app_mode = ICE_DCBX_APPS_NON_WILLING;
-+
-+	ice_cfg_etsrec_defaults(pf->hw.port_info);
- 	ret = ice_set_dcb_cfg(pf->hw.port_info);
- 	if (ret) {
- 		dev_err(&pf->pdev->dev, "Failed to set DCB to unwilling\n");
-@@ -239,8 +316,7 @@ void ice_dcb_rebuild(struct ice_pf *pf)
- 	}
- 
- 	/* Retrieve DCB config and ensure same as current in SW */
--	prev_cfg = devm_kmemdup(&pf->pdev->dev,
--				&pf->hw.port_info->local_dcbx_cfg,
-+	prev_cfg = devm_kmemdup(&pf->pdev->dev, local_dcbx_cfg,
- 				sizeof(*prev_cfg), GFP_KERNEL);
- 	if (!prev_cfg) {
- 		dev_err(&pf->pdev->dev, "Failed to alloc space for DCB cfg\n");
-@@ -248,22 +324,22 @@ void ice_dcb_rebuild(struct ice_pf *pf)
- 	}
- 
- 	ice_init_dcb(&pf->hw);
--	if (memcmp(prev_cfg, &pf->hw.port_info->local_dcbx_cfg,
--		   sizeof(*prev_cfg))) {
-+	if (ice_dcb_need_recfg(pf, prev_cfg, local_dcbx_cfg)) {
- 		/* difference in cfg detected - disable DCB till next MIB */
- 		dev_err(&pf->pdev->dev, "Set local MIB not accurate\n");
--		devm_kfree(&pf->pdev->dev, prev_cfg);
- 		goto dcb_error;
- 	}
- 
- 	/* fetched config congruent to previous configuration */
- 	devm_kfree(&pf->pdev->dev, prev_cfg);
- 
--	/* Configuration replayed - reset willing state to previous */
--	pf->hw.port_info->local_dcbx_cfg.etscfg.willing = willing;
-+	/* Set the local desired config */
-+	memset(&pf->hw.port_info->local_dcbx_cfg, 0, sizeof(*local_dcbx_cfg));
-+	memcpy(local_dcbx_cfg, desired_dcbx_cfg, sizeof(*local_dcbx_cfg));
-+	ice_cfg_etsrec_defaults(pf->hw.port_info);
- 	ret = ice_set_dcb_cfg(pf->hw.port_info);
- 	if (ret) {
--		dev_err(&pf->pdev->dev, "Fail restoring prev willing state\n");
-+		dev_err(&pf->pdev->dev, "Failed to set desired config\n");
- 		goto dcb_error;
- 	}
- 	dev_info(&pf->pdev->dev, "DCB restored after reset\n");
-@@ -506,55 +582,6 @@ ice_tx_prepare_vlan_flags_dcb(struct ice_ring *tx_ring,
- 	return 0;
- }
- 
--/**
-- * ice_dcb_need_recfg - Check if DCB needs reconfig
-- * @pf: board private structure
-- * @old_cfg: current DCB config
-- * @new_cfg: new DCB config
-- */
--static bool ice_dcb_need_recfg(struct ice_pf *pf, struct ice_dcbx_cfg *old_cfg,
--			       struct ice_dcbx_cfg *new_cfg)
--{
--	bool need_reconfig = false;
--
--	/* Check if ETS configuration has changed */
--	if (memcmp(&new_cfg->etscfg, &old_cfg->etscfg,
--		   sizeof(new_cfg->etscfg))) {
--		/* If Priority Table has changed reconfig is needed */
--		if (memcmp(&new_cfg->etscfg.prio_table,
--			   &old_cfg->etscfg.prio_table,
--			   sizeof(new_cfg->etscfg.prio_table))) {
--			need_reconfig = true;
--			dev_dbg(&pf->pdev->dev, "ETS UP2TC changed.\n");
--		}
--
--		if (memcmp(&new_cfg->etscfg.tcbwtable,
--			   &old_cfg->etscfg.tcbwtable,
--			   sizeof(new_cfg->etscfg.tcbwtable)))
--			dev_dbg(&pf->pdev->dev, "ETS TC BW Table changed.\n");
--
--		if (memcmp(&new_cfg->etscfg.tsatable,
--			   &old_cfg->etscfg.tsatable,
--			   sizeof(new_cfg->etscfg.tsatable)))
--			dev_dbg(&pf->pdev->dev, "ETS TSA Table changed.\n");
--	}
--
--	/* Check if PFC configuration has changed */
--	if (memcmp(&new_cfg->pfc, &old_cfg->pfc, sizeof(new_cfg->pfc))) {
--		need_reconfig = true;
--		dev_dbg(&pf->pdev->dev, "PFC config change detected.\n");
--	}
--
--	/* Check if APP Table has changed */
--	if (memcmp(&new_cfg->app, &old_cfg->app, sizeof(new_cfg->app))) {
--		need_reconfig = true;
--		dev_dbg(&pf->pdev->dev, "APP Table change detected.\n");
--	}
--
--	dev_dbg(&pf->pdev->dev, "dcb need_reconfig=%d\n", need_reconfig);
--	return need_reconfig;
--}
--
- /**
-  * ice_dcb_process_lldp_set_mib_change - Process MIB change
-  * @pf: ptr to ice_pf
 -- 
 2.20.1
 
