@@ -2,54 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A19D95A7A0
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 Jun 2019 01:31:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C40675A793
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 Jun 2019 01:31:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4488522882;
-	Fri, 28 Jun 2019 23:31:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 583E9226CF;
+	Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uEemSZmgvyM4; Fri, 28 Jun 2019 23:31:17 +0000 (UTC)
+	with ESMTP id lBBHAti1lcso; Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D841522B20;
-	Fri, 28 Jun 2019 23:31:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 16E8722850;
+	Fri, 28 Jun 2019 23:31:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5A02C1BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DF4791BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:30:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 57846882AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DBE3F22844
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:30:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SQFgdnBqpEEx for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
+ with ESMTP id gpw0IfU0Nnc4 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jun 2019 23:30:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 37CD188266
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id CE4CB22850
  for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:30:58 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  28 Jun 2019 16:30:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,429,1557212400"; d="scan'208";a="164803445"
+X-IronPort-AV: E=Sophos;i="5.63,429,1557212400"; d="scan'208";a="164803446"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by fmsmga007.fm.intel.com with ESMTP; 28 Jun 2019 16:30:57 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 28 Jun 2019 08:03:29 -0700
-Message-Id: <20190628150332.59155-11-anthony.l.nguyen@intel.com>
+Date: Fri, 28 Jun 2019 08:03:30 -0700
+Message-Id: <20190628150332.59155-12-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
 References: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S23 v2 11/15] ice: Reduce wait times
- during VF bringup/reset
+Subject: [Intel-wired-lan] [PATCH S23 v2 12/15] ice: Increase size of
+ Mailbox receive queue for many VFs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,113 +69,55 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Brett Creeley <brett.creeley@intel.com>
 
-Currently there are a couple places where the VF is waiting too long when
-checking the status of registers. This is causing the AVF driver to
-spin for longer than necessary in the __IAVF_STARTUP state. Sometimes
-it causes the AVF to go into the __IAVF_COMM_FAILED, which may retrigger
-the __IAVF_STARTUP state. Try to reduce the chance of this happening by
-removing unnecessary wait times in VF bringup/resets.
+Currently we use the ICE_MBXQ_LEN for both the Mailbox send and receive
+queues that are used to communicate with VFs. This is fine for the send
+queue because the PF driver will lock the queue for every single send,
+but for the Mailbox receive queue every VF is posting to its Mailbox
+send queue and the hardware is then handing the message to the PF on its
+Mailbox receive queue. This becomes a problem with many VFs because it
+seems to overburden the Mailbox receive queue on the PF. Fix this by
+increasing the Mailbox receive queue for the PF to 512 entries.
+
+The number 512 was determined based on the number of VFs supported by
+the device. We can have a total of 256 VFs so in the worst case this
+allows the VFs to put 2 messages in the PFs Mailbox receive queue at the
+same time.
 
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 26 +++++++++++--------
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  4 +++
- 2 files changed, 19 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h      | 3 ++-
+ drivers/net/ethernet/intel/ice/ice_main.c | 4 ++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index b1972c39c232..f2ebbe83ae4c 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -382,12 +382,15 @@ static void ice_trigger_vf_reset(struct ice_vf *vf, bool is_vflr)
- 
- 	wr32(hw, PF_PCI_CIAA,
- 	     VF_DEVICE_STATUS | (vf_abs_id << PF_PCI_CIAA_VF_NUM_S));
--	for (i = 0; i < 100; i++) {
-+	for (i = 0; i < ICE_PCI_CIAD_WAIT_COUNT; i++) {
- 		reg = rd32(hw, PF_PCI_CIAD);
--		if ((reg & VF_TRANS_PENDING_M) != 0)
--			dev_err(&pf->pdev->dev,
--				"VF %d PCI transactions stuck\n", vf->vf_id);
--		udelay(1);
-+		/* no transactions pending so stop polling */
-+		if ((reg & VF_TRANS_PENDING_M) == 0)
-+			break;
-+
-+		dev_err(&pf->pdev->dev,
-+			"VF %d PCI transactions stuck\n", vf->vf_id);
-+		udelay(ICE_PCI_CIAD_WAIT_DELAY_US);
- 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 1a438245f4bf..261714ff2553 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -74,7 +74,8 @@ extern const char ice_drv_ver[];
+ #define ICE_INT_NAME_STR_LEN	(IFNAMSIZ + 16)
+ #define ICE_ETHTOOL_FWVER_LEN	32
+ #define ICE_AQ_LEN		64
+-#define ICE_MBXQ_LEN		64
++#define ICE_MBXSQ_LEN		64
++#define ICE_MBXRQ_LEN		512
+ #define ICE_MIN_MSIX		2
+ #define ICE_NO_VSI		0xffff
+ #define ICE_MAX_TXQS		2048
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index e4dfde18e78d..1b00e7bec21b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1507,8 +1507,8 @@ static void ice_set_ctrlq_len(struct ice_hw *hw)
+ 	hw->adminq.num_sq_entries = ICE_AQ_LEN;
+ 	hw->adminq.rq_buf_size = ICE_AQ_MAX_BUF_LEN;
+ 	hw->adminq.sq_buf_size = ICE_AQ_MAX_BUF_LEN;
+-	hw->mailboxq.num_rq_entries = ICE_MBXQ_LEN;
+-	hw->mailboxq.num_sq_entries = ICE_MBXQ_LEN;
++	hw->mailboxq.num_rq_entries = ICE_MBXRQ_LEN;
++	hw->mailboxq.num_sq_entries = ICE_MBXSQ_LEN;
+ 	hw->mailboxq.rq_buf_size = ICE_MBXQ_MAX_BUF_LEN;
+ 	hw->mailboxq.sq_buf_size = ICE_MBXQ_MAX_BUF_LEN;
  }
- 
-@@ -1069,7 +1072,6 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	 * finished resetting.
- 	 */
- 	for (i = 0, v = 0; i < 10 && v < pf->num_alloc_vfs; i++) {
--		usleep_range(10000, 20000);
- 
- 		/* Check each VF in sequence */
- 		while (v < pf->num_alloc_vfs) {
-@@ -1077,8 +1079,11 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 
- 			vf = &pf->vf[v];
- 			reg = rd32(hw, VPGEN_VFRSTAT(vf->vf_id));
--			if (!(reg & VPGEN_VFRSTAT_VFRD_M))
-+			if (!(reg & VPGEN_VFRSTAT_VFRD_M)) {
-+				/* only delay if the check failed */
-+				usleep_range(10, 20);
- 				break;
-+			}
- 
- 			/* If the current VF has finished resetting, move on
- 			 * to the next VF in sequence.
-@@ -1092,7 +1097,6 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	 */
- 	if (v < pf->num_alloc_vfs)
- 		dev_warn(&pf->pdev->dev, "VF reset check timeout\n");
--	usleep_range(10000, 20000);
- 
- 	/* free VF resources to begin resetting the VSI state */
- 	for (v = 0; v < pf->num_alloc_vfs; v++) {
-@@ -1166,12 +1170,14 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
- 		 * poll the status register to make sure that the reset
- 		 * completed successfully.
- 		 */
--		usleep_range(10000, 20000);
- 		reg = rd32(hw, VPGEN_VFRSTAT(vf->vf_id));
- 		if (reg & VPGEN_VFRSTAT_VFRD_M) {
- 			rsd = true;
- 			break;
- 		}
-+
-+		/* only sleep if the reset is not done */
-+		usleep_range(10, 20);
- 	}
- 
- 	/* Display a warning if VF didn't manage to reset in time, but need to
-@@ -1181,8 +1187,6 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
- 		dev_warn(&pf->pdev->dev, "VF reset check timeout on VF %d\n",
- 			 vf->vf_id);
- 
--	usleep_range(10000, 20000);
--
- 	/* disable promiscuous modes in case they were enabled
- 	 * ignore any error if disabling process failed
- 	 */
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 424bc0538956..79bb47f73879 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -22,6 +22,10 @@
- #define VF_DEVICE_STATUS		0xAA
- #define VF_TRANS_PENDING_M		0x20
- 
-+/* wait defines for polling PF_PCI_CIAD register status */
-+#define ICE_PCI_CIAD_WAIT_COUNT		100
-+#define ICE_PCI_CIAD_WAIT_DELAY_US	1
-+
- /* Specific VF states */
- enum ice_vf_states {
- 	ICE_VF_STATE_INIT = 0,
 -- 
 2.20.1
 
