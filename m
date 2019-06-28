@@ -1,55 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E5CBD5A799
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 Jun 2019 01:31:09 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B01B5A7A1
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 Jun 2019 01:31:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 95A60882BA;
-	Fri, 28 Jun 2019 23:31:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CB13E8688F;
+	Fri, 28 Jun 2019 23:31:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NlGhm7JN0Nj2; Fri, 28 Jun 2019 23:31:08 +0000 (UTC)
+	with ESMTP id Lt6xXx2j4REP; Fri, 28 Jun 2019 23:31:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 05E698822A;
-	Fri, 28 Jun 2019 23:31:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 40684867C6;
+	Fri, 28 Jun 2019 23:31:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E11F71BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7862F1BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DEC0B881EC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 74DAD22851
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EQL7NO10M+fi for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
+ with ESMTP id 26aLxdpsNtAH for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jun 2019 23:31:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 59E6E8826A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:30:58 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id E88EF22854
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:16 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Jun 2019 16:30:57 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Jun 2019 16:31:16 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,429,1557212400"; d="scan'208";a="164803448"
+X-IronPort-AV: E=Sophos;i="5.63,429,1557212400"; d="scan'208";a="246314741"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by fmsmga007.fm.intel.com with ESMTP; 28 Jun 2019 16:30:57 -0700
+ by orsmga001.jf.intel.com with ESMTP; 28 Jun 2019 16:31:15 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 28 Jun 2019 08:03:32 -0700
-Message-Id: <20190628150332.59155-14-anthony.l.nguyen@intel.com>
+Date: Fri, 28 Jun 2019 08:03:48 -0700
+Message-Id: <20190628150348.59202-1-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
-References: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S23 v2 15/15] ice: improve print for VF's
- when adding/deleting MAC filters
+Subject: [Intel-wired-lan] [PATCH S23 v2 14/15] ice: Change type for queue
+ counts
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,37 +60,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: pmenzel@molgen.mpg.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Pawel Kaminski <pawel.kaminski@intel.com>
 
-When we fail to add/delete MAC filters in the VF, the print doesn't
-distinguish between the two. Fix that by printing whether or not we
-failed to add/delete the MAC filter respectively.
+A negative queue count should never exist, change the type to unsigned
+to convey that.
 
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Pawel Kaminski <pawel.kaminski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+v2: Change type from u16 to unsigned int
+    Reword commit message
+
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index b8fc08c1d365..1d162146dcee 100644
+index f2ebbe83ae4c..b8fc08c1d365 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -2285,8 +2285,8 @@ ice_vc_handle_mac_addr_msg(struct ice_vf *vf, u8 *msg, bool set)
+@@ -2339,11 +2339,11 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
+ 	struct virtchnl_vf_res_request *vfres =
+ 		(struct virtchnl_vf_res_request *)msg;
+-	int req_queues = vfres->num_queue_pairs;
++	unsigned int req_queues = vfres->num_queue_pairs;
++	unsigned int max_allowed_vf_queues;
++	unsigned int tx_rx_queue_left;
+ 	struct ice_pf *pf = vf->pf;
+-	int max_allowed_vf_queues;
+-	int tx_rx_queue_left;
+-	int cur_queues;
++	unsigned int cur_queues;
  
- 	if (v_ret) {
+ 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
+ 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+@@ -2353,10 +2353,10 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	cur_queues = vf->num_vf_qs;
+ 	tx_rx_queue_left = min_t(int, pf->q_left_tx, pf->q_left_rx);
+ 	max_allowed_vf_queues = tx_rx_queue_left + cur_queues;
+-	if (req_queues <= 0) {
++	if (!req_queues) {
  		dev_err(&pf->pdev->dev,
--			"can't update MAC filters for VF %d, error %d\n",
--			vf->vf_id, v_ret);
-+			"can't %s MAC filters for VF %d, error %d\n",
-+			set ? "add" : "remove", vf->vf_id, v_ret);
- 	} else {
- 		if (set)
- 			vf->num_mac += mac_count;
+-			"VF %d tried to request %d queues. Ignoring.\n",
+-			vf->vf_id, req_queues);
++			"VF %d tried to request 0 queues. Ignoring.\n",
++			vf->vf_id);
+ 	} else if (req_queues > ICE_MAX_BASE_QS_PER_VF) {
+ 		dev_err(&pf->pdev->dev,
+ 			"VF %d tried to request more than %d queues.\n",
 -- 
 2.20.1
 
