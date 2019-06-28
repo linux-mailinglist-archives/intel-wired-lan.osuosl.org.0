@@ -2,65 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DD7F5A47F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2019 20:48:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A7C45A79B
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 Jun 2019 01:31:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E7F748823B;
-	Fri, 28 Jun 2019 18:48:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1DF408820F;
+	Fri, 28 Jun 2019 23:31:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dtbrd3hPMDwy; Fri, 28 Jun 2019 18:48:12 +0000 (UTC)
+	with ESMTP id CVyYbmvR3HJH; Fri, 28 Jun 2019 23:31:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 07C0D8822B;
-	Fri, 28 Jun 2019 18:48:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 494E9882A0;
+	Fri, 28 Jun 2019 23:31:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D58DA1BF976
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 12:31:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C0771BF2E3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D01B486BE0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 12:31:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 69157881EC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:31:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4HPOfxz6ZEvD; Fri, 28 Jun 2019 12:31:26 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7398586BC9;
- Fri, 28 Jun 2019 12:31:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Sender:Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
- To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nBpd8Fk+s8d+aaTmt6oIoDeIRX/XWEtS+DQSzNWScpE=; b=N0KdyA00b5X6Q9uq0E7P8iEVj0
- jmtzOc60PXzPDbTpOiHwPGFSerA7yVyIsHiuoV9FKQWBUg3EVKU+nx7FGUkOaW9IqUjqn7qmlqaN3
- fQ/SLtDQbhu1afpCxlO2B4FGpywbna5rirN+7t/10MOszesghvpHy3FIsb11K20hXFO6nMzMd5VrX
- HcHOkC/7j7VGDOT4lIyRkw12U2ZKMy1i3Na41PVYyyYNotO9+mknrUKGK71dVEhVjDo00BtNxlpz9
- RYQpgLrvrP7BY7noSrWtrpRKzCzImQmGTL+phwQ1enhJrgm6YKedXnZsQNedOVzcJPR3JxG225beu
- HuixlYTA==;
-Received: from [186.213.242.156] (helo=bombadil.infradead.org)
- by bombadil.infradead.org with esmtpsa (Exim 4.92 #3 (Red Hat Linux))
- id 1hgq1U-00055Y-Jg; Fri, 28 Jun 2019 12:30:37 +0000
-Received: from mchehab by bombadil.infradead.org with local (Exim 4.92)
- (envelope-from <mchehab@bombadil.infradead.org>)
- id 1hgq1S-0005Sq-IY; Fri, 28 Jun 2019 09:30:34 -0300
-From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Date: Fri, 28 Jun 2019 09:30:17 -0300
-Message-Id: <920ff36c66233113b1825ab504fe675ed5a5bd7b.1561724493.git.mchehab+samsung@kernel.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <cover.1561724493.git.mchehab+samsung@kernel.org>
-References: <cover.1561724493.git.mchehab+samsung@kernel.org>
+ with ESMTP id 4BiWhUWuTMNh for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jun 2019 23:30:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2E011881DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 23:30:57 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Jun 2019 16:30:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,429,1557212400"; d="scan'208";a="164803429"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by fmsmga007.fm.intel.com with ESMTP; 28 Jun 2019 16:30:55 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 28 Jun 2019 08:03:19 -0700
+Message-Id: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Mailman-Approved-At: Fri, 28 Jun 2019 18:48:08 +0000
-Subject: [Intel-wired-lan] [PATCH 24/39] docs: driver-model: move it to the
- driver-api book
+Subject: [Intel-wired-lan] [PATCH S23 v2 01/15] ice: Implement ethtool ops
+ for channels
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,281 +60,497 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Gilles Muller <Gilles.Muller@lip6.fr>,
- Linus Walleij <linus.walleij@linaro.org>, Harry Wei <harryxiyou@gmail.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Alex Shi <alex.shi@linux.alibaba.com>, cocci@systeme.lip6.fr,
- devel@driverdev.osuosl.org, Jonathan Corbet <corbet@lwn.net>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- intel-wired-lan@lists.osuosl.org, David Kershner <david.kershner@unisys.com>,
- Guenter Roeck <linux@roeck-us.net>, Jean Delvare <jdelvare@suse.com>,
- sparmaintainer@unisys.com, Nicolas Palix <nicolas.palix@imag.fr>,
- Mauro Carvalho Chehab <mchehab@infradead.org>,
- Julia Lawall <Julia.Lawall@lip6.fr>, linux-hwmon@vger.kernel.org,
- Michal Marek <michal.lkml@markovi.net>, linux-gpio@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VGhlIGF1ZGllbmNlIGZvciB0aGUgS2VybmVsIGRyaXZlci1tb2RlbCBpcyBjbGVhcmx5IEtlcm5l
-bCBoYWNrZXJzLgoKU2lnbmVkLW9mZi1ieTogTWF1cm8gQ2FydmFsaG8gQ2hlaGFiIDxtY2hlaGFi
-K3NhbXN1bmdAa2VybmVsLm9yZz4KLS0tCiBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0v
-ZHJpdmVyLW1vZGVsL2JpbmRpbmcucnN0ICAgICAgIHwgMAogRG9jdW1lbnRhdGlvbi97ID0+IGRy
-aXZlci1hcGl9L2RyaXZlci1tb2RlbC9idXMucnN0ICAgICAgICAgICB8IDAKIERvY3VtZW50YXRp
-b24veyA9PiBkcml2ZXItYXBpfS9kcml2ZXItbW9kZWwvY2xhc3MucnN0ICAgICAgICAgfCAwCiAu
-Li4veyA9PiBkcml2ZXItYXBpfS9kcml2ZXItbW9kZWwvZGVzaWduLXBhdHRlcm5zLnJzdCAgICAg
-ICAgIHwgMAogRG9jdW1lbnRhdGlvbi97ID0+IGRyaXZlci1hcGl9L2RyaXZlci1tb2RlbC9kZXZp
-Y2UucnN0ICAgICAgICB8IDAKIERvY3VtZW50YXRpb24veyA9PiBkcml2ZXItYXBpfS9kcml2ZXIt
-bW9kZWwvZGV2cmVzLnJzdCAgICAgICAgfCAwCiBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFw
-aX0vZHJpdmVyLW1vZGVsL2RyaXZlci5yc3QgICAgICAgIHwgMAogRG9jdW1lbnRhdGlvbi97ID0+
-IGRyaXZlci1hcGl9L2RyaXZlci1tb2RlbC9pbmRleC5yc3QgICAgICAgICB8IDIgLS0KIERvY3Vt
-ZW50YXRpb24veyA9PiBkcml2ZXItYXBpfS9kcml2ZXItbW9kZWwvb3ZlcnZpZXcucnN0ICAgICAg
-fCAwCiBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0vZHJpdmVyLW1vZGVsL3BsYXRmb3Jt
-LnJzdCAgICAgIHwgMAogRG9jdW1lbnRhdGlvbi97ID0+IGRyaXZlci1hcGl9L2RyaXZlci1tb2Rl
-bC9wb3J0aW5nLnJzdCAgICAgICB8IDIgKy0KIERvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9ncGlv
-L2RyaXZlci5yc3QgICAgICAgICAgICAgICAgICAgICAgfCAyICstCiBEb2N1bWVudGF0aW9uL2Ry
-aXZlci1hcGkvaW5kZXgucnN0ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMSArCiBEb2N1
-bWVudGF0aW9uL2Vpc2EudHh0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgNCArKy0tCiBEb2N1bWVudGF0aW9uL2ZpbGVzeXN0ZW1zL3N5c2ZzLnR4dCAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgMiArLQogRG9jdW1lbnRhdGlvbi9od21vbi9zdWJtaXR0aW5nLXBh
-dGNoZXMucnN0ICAgICAgICAgICAgICAgICAgICB8IDIgKy0KIERvY3VtZW50YXRpb24vdHJhbnNs
-YXRpb25zL3poX0NOL2ZpbGVzeXN0ZW1zL3N5c2ZzLnR4dCAgICAgICAgfCAyICstCiBkcml2ZXJz
-L2Jhc2UvcGxhdGZvcm0uYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
-MiArLQogZHJpdmVycy9ncGlvL2dwaW8tY3M1NTM1LmMgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB8IDIgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbWFp
-bi5jICAgICAgICAgICAgICAgICAgICAgfCAyICstCiBkcml2ZXJzL3N0YWdpbmcvdW5pc3lzL0Rv
-Y3VtZW50YXRpb24vb3ZlcnZpZXcudHh0ICAgICAgICAgICAgIHwgNCArKy0tCiBpbmNsdWRlL2xp
-bnV4L2RldmljZS5oICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMiAr
-LQogaW5jbHVkZS9saW51eC9wbGF0Zm9ybV9kZXZpY2UuaCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICB8IDIgKy0KIHNjcmlwdHMvY29jY2luZWxsZS9mcmVlL2Rldm1fZnJlZS5jb2NjaSAg
-ICAgICAgICAgICAgICAgICAgICAgfCAyICstCiAyNCBmaWxlcyBjaGFuZ2VkLCAxNiBpbnNlcnRp
-b25zKCspLCAxNyBkZWxldGlvbnMoLSkKIHJlbmFtZSBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVy
-LWFwaX0vZHJpdmVyLW1vZGVsL2JpbmRpbmcucnN0ICgxMDAlKQogcmVuYW1lIERvY3VtZW50YXRp
-b24veyA9PiBkcml2ZXItYXBpfS9kcml2ZXItbW9kZWwvYnVzLnJzdCAoMTAwJSkKIHJlbmFtZSBE
-b2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0vZHJpdmVyLW1vZGVsL2NsYXNzLnJzdCAoMTAw
-JSkKIHJlbmFtZSBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0vZHJpdmVyLW1vZGVsL2Rl
-c2lnbi1wYXR0ZXJucy5yc3QgKDEwMCUpCiByZW5hbWUgRG9jdW1lbnRhdGlvbi97ID0+IGRyaXZl
-ci1hcGl9L2RyaXZlci1tb2RlbC9kZXZpY2UucnN0ICgxMDAlKQogcmVuYW1lIERvY3VtZW50YXRp
-b24veyA9PiBkcml2ZXItYXBpfS9kcml2ZXItbW9kZWwvZGV2cmVzLnJzdCAoMTAwJSkKIHJlbmFt
-ZSBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0vZHJpdmVyLW1vZGVsL2RyaXZlci5yc3Qg
-KDEwMCUpCiByZW5hbWUgRG9jdW1lbnRhdGlvbi97ID0+IGRyaXZlci1hcGl9L2RyaXZlci1tb2Rl
-bC9pbmRleC5yc3QgKDk2JSkKIHJlbmFtZSBEb2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0v
-ZHJpdmVyLW1vZGVsL292ZXJ2aWV3LnJzdCAoMTAwJSkKIHJlbmFtZSBEb2N1bWVudGF0aW9uL3sg
-PT4gZHJpdmVyLWFwaX0vZHJpdmVyLW1vZGVsL3BsYXRmb3JtLnJzdCAoMTAwJSkKIHJlbmFtZSBE
-b2N1bWVudGF0aW9uL3sgPT4gZHJpdmVyLWFwaX0vZHJpdmVyLW1vZGVsL3BvcnRpbmcucnN0ICg5
-OSUpCgpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvYmluZGluZy5yc3Qg
-Yi9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2JpbmRpbmcucnN0CnNpbWls
-YXJpdHkgaW5kZXggMTAwJQpyZW5hbWUgZnJvbSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9i
-aW5kaW5nLnJzdApyZW5hbWUgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2Rl
-bC9iaW5kaW5nLnJzdApkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvYnVz
-LnJzdCBiL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvYnVzLnJzdApzaW1p
-bGFyaXR5IGluZGV4IDEwMCUKcmVuYW1lIGZyb20gRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwv
-YnVzLnJzdApyZW5hbWUgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9i
-dXMucnN0CmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9jbGFzcy5yc3Qg
-Yi9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2NsYXNzLnJzdApzaW1pbGFy
-aXR5IGluZGV4IDEwMCUKcmVuYW1lIGZyb20gRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvY2xh
-c3MucnN0CnJlbmFtZSB0byBEb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2Ns
-YXNzLnJzdApkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvZGVzaWduLXBh
-dHRlcm5zLnJzdCBiL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvZGVzaWdu
-LXBhdHRlcm5zLnJzdApzaW1pbGFyaXR5IGluZGV4IDEwMCUKcmVuYW1lIGZyb20gRG9jdW1lbnRh
-dGlvbi9kcml2ZXItbW9kZWwvZGVzaWduLXBhdHRlcm5zLnJzdApyZW5hbWUgdG8gRG9jdW1lbnRh
-dGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9kZXNpZ24tcGF0dGVybnMucnN0CmRpZmYgLS1n
-aXQgYS9Eb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9kZXZpY2UucnN0IGIvRG9jdW1lbnRhdGlv
-bi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9kZXZpY2UucnN0CnNpbWlsYXJpdHkgaW5kZXggMTAw
-JQpyZW5hbWUgZnJvbSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9kZXZpY2UucnN0CnJlbmFt
-ZSB0byBEb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2RldmljZS5yc3QKZGlm
-ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsL2RldnJlcy5yc3QgYi9Eb2N1bWVu
-dGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2RldnJlcy5yc3QKc2ltaWxhcml0eSBpbmRl
-eCAxMDAlCnJlbmFtZSBmcm9tIERvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsL2RldnJlcy5yc3QK
-cmVuYW1lIHRvIERvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvZGV2cmVzLnJz
-dApkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvZHJpdmVyLnJzdCBiL0Rv
-Y3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvZHJpdmVyLnJzdApzaW1pbGFyaXR5
-IGluZGV4IDEwMCUKcmVuYW1lIGZyb20gRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvZHJpdmVy
-LnJzdApyZW5hbWUgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9kcml2
-ZXIucnN0CmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9pbmRleC5yc3Qg
-Yi9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2luZGV4LnJzdApzaW1pbGFy
-aXR5IGluZGV4IDk2JQpyZW5hbWUgZnJvbSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9pbmRl
-eC5yc3QKcmVuYW1lIHRvIERvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvaW5k
-ZXgucnN0CmluZGV4IDlmODVkNTc5Y2U1Ni4uNzU1MDE2NDIyMjY5IDEwMDY0NAotLS0gYS9Eb2N1
-bWVudGF0aW9uL2RyaXZlci1tb2RlbC9pbmRleC5yc3QKKysrIGIvRG9jdW1lbnRhdGlvbi9kcml2
-ZXItYXBpL2RyaXZlci1tb2RlbC9pbmRleC5yc3QKQEAgLTEsNSArMSwzIEBACi06b3JwaGFuOgot
-CiA9PT09PT09PT09PT0KIERyaXZlciBNb2RlbAogPT09PT09PT09PT09CmRpZmYgLS1naXQgYS9E
-b2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9vdmVydmlldy5yc3QgYi9Eb2N1bWVudGF0aW9uL2Ry
-aXZlci1hcGkvZHJpdmVyLW1vZGVsL292ZXJ2aWV3LnJzdApzaW1pbGFyaXR5IGluZGV4IDEwMCUK
-cmVuYW1lIGZyb20gRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvb3ZlcnZpZXcucnN0CnJlbmFt
-ZSB0byBEb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL292ZXJ2aWV3LnJzdApk
-aWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvcGxhdGZvcm0ucnN0IGIvRG9j
-dW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9wbGF0Zm9ybS5yc3QKc2ltaWxhcml0
-eSBpbmRleCAxMDAlCnJlbmFtZSBmcm9tIERvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsL3BsYXRm
-b3JtLnJzdApyZW5hbWUgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9w
-bGF0Zm9ybS5yc3QKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsL3BvcnRp
-bmcucnN0IGIvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9wb3J0aW5nLnJz
-dApzaW1pbGFyaXR5IGluZGV4IDk5JQpyZW5hbWUgZnJvbSBEb2N1bWVudGF0aW9uL2RyaXZlci1t
-b2RlbC9wb3J0aW5nLnJzdApyZW5hbWUgdG8gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZl
-ci1tb2RlbC9wb3J0aW5nLnJzdAppbmRleCBhZTRiZjg0M2MxZDYuLjkzMWVhODc5YWYzZiAxMDA2
-NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvcG9ydGluZy5yc3QKKysrIGIvRG9j
-dW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9wb3J0aW5nLnJzdApAQCAtOSw3ICs5
-LDcgQEAgUGF0cmljayBNb2NoZWwKIAogT3ZlcnZpZXcKIAotUGxlYXNlIHJlZmVyIHRvIGBEb2N1
-bWVudGF0aW9uL2RyaXZlci1tb2RlbC8qLnJzdGAgZm9yIGRlZmluaXRpb25zIG9mCitQbGVhc2Ug
-cmVmZXIgdG8gYERvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvKi5yc3RgIGZv
-ciBkZWZpbml0aW9ucyBvZgogdmFyaW91cyBkcml2ZXIgdHlwZXMgYW5kIGNvbmNlcHRzLgogCiBN
-b3N0IG9mIHRoZSB3b3JrIG9mIHBvcnRpbmcgZGV2aWNlcyBkcml2ZXJzIHRvIHRoZSBuZXcgbW9k
-ZWwgaGFwcGVucwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2dwaW8vZHJp
-dmVyLnJzdCBiL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9ncGlvL2RyaXZlci5yc3QKaW5kZXgg
-MzQ5ZjJkYzMzMDI5Li45MjFjNzFhM2Q2ODMgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZHJp
-dmVyLWFwaS9ncGlvL2RyaXZlci5yc3QKKysrIGIvRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2dw
-aW8vZHJpdmVyLnJzdApAQCAtMzk5LDcgKzM5OSw3IEBAIHN5bWJvbDoKICAgd2lsbCBwYXNzIHRo
-ZSBzdHJ1Y3QgZ3Bpb19jaGlwKiBmb3IgdGhlIGNoaXAgdG8gYWxsIElSUSBjYWxsYmFja3MsIHNv
-IHRoZQogICBjYWxsYmFja3MgbmVlZCB0byBlbWJlZCB0aGUgZ3Bpb19jaGlwIGluIGl0cyBzdGF0
-ZSBjb250YWluZXIgYW5kIG9idGFpbiBhCiAgIHBvaW50ZXIgdG8gdGhlIGNvbnRhaW5lciB1c2lu
-ZyBjb250YWluZXJfb2YoKS4KLSAgKFNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9kZXNp
-Z24tcGF0dGVybnMucnN0KQorICAoU2VlIERvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXIt
-bW9kZWwvZGVzaWduLXBhdHRlcm5zLnJzdCkKIAogLSBncGlvY2hpcF9pcnFjaGlwX2FkZF9uZXN0
-ZWQoKTogYWRkcyBhIG5lc3RlZCBjYXNjYWRlZCBpcnFjaGlwIHRvIGEgZ3Bpb2NoaXAsCiAgIGFz
-IGRpc2N1c3NlZCBhYm92ZSByZWdhcmRpbmcgZGlmZmVyZW50IHR5cGVzIG9mIGNhc2NhZGVkIGly
-cWNoaXBzLiBUaGUKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9pbmRleC5y
-c3QgYi9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvaW5kZXgucnN0CmluZGV4IGZlYTAwMzRhZmE1
-Ni4uOTNkMTg3YmY0ODUzIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvaW5k
-ZXgucnN0CisrKyBiL0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9pbmRleC5yc3QKQEAgLTE0LDYg
-KzE0LDcgQEAgYXZhaWxhYmxlIHN1YnNlY3Rpb25zIGNhbiBiZSBzZWVuIGJlbG93LgogLi4gdG9j
-dHJlZTo6CiAgICA6bWF4ZGVwdGg6IDIKIAorICAgZHJpdmVyLW1vZGVsL2luZGV4CiAgICBiYXNp
-Y3MKICAgIGluZnJhc3RydWN0dXJlCiAgICBlYXJseS11c2Vyc3BhY2UvaW5kZXgKZGlmZiAtLWdp
-dCBhL0RvY3VtZW50YXRpb24vZWlzYS50eHQgYi9Eb2N1bWVudGF0aW9uL2Vpc2EudHh0CmluZGV4
-IGYzODg1NDVhODVhNy4uYzA3NTY1YmE1N2RhIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2Vp
-c2EudHh0CisrKyBiL0RvY3VtZW50YXRpb24vZWlzYS50eHQKQEAgLTEwMyw3ICsxMDMsNyBAQCBp
-ZF90YWJsZQlhbiBhcnJheSBvZiBOVUxMIHRlcm1pbmF0ZWQgRUlTQSBpZCBzdHJpbmdzLAogCQko
-ZHJpdmVyX2RhdGEpLgogCiBkcml2ZXIJCWEgZ2VuZXJpYyBkcml2ZXIsIHN1Y2ggYXMgZGVzY3Jp
-YmVkIGluCi0JCURvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsL2RyaXZlci5yc3QuIE9ubHkgLm5h
-bWUsCisJCURvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvZHJpdmVyLnJzdC4g
-T25seSAubmFtZSwKIAkJLnByb2JlIGFuZCAucmVtb3ZlIG1lbWJlcnMgYXJlIG1hbmRhdG9yeS4K
-ID09PT09PT09PT09PT09PSA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09CiAKQEAgLTE1Miw3ICsxNTIsNyBAQCBzdGF0ZSAgICBzZXQgb2YgZmxhZ3Mg
-aW5kaWNhdGluZyB0aGUgc3RhdGUgb2YgdGhlIGRldmljZS4gQ3VycmVudAogCSBmbGFncyBhcmUg
-RUlTQV9DT05GSUdfRU5BQkxFRCBhbmQgRUlTQV9DT05GSUdfRk9SQ0VELgogcmVzCSBzZXQgb2Yg
-Zm91ciAyNTYgYnl0ZXMgSS9PIHJlZ2lvbnMgYWxsb2NhdGVkIHRvIHRoaXMgZGV2aWNlCiBkbWFf
-bWFzayBETUEgbWFzayBzZXQgZnJvbSB0aGUgcGFyZW50IGRldmljZS4KLWRldgkgZ2VuZXJpYyBk
-ZXZpY2UgKHNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9kZXZpY2UucnN0KQorZGV2CSBn
-ZW5lcmljIGRldmljZSAoc2VlIERvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwv
-ZGV2aWNlLnJzdCkKID09PT09PT09ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PQogCiBZb3UgY2FuIGdldCB0aGUgJ3N0cnVjdCBlaXNh
-X2RldmljZScgZnJvbSAnc3RydWN0IGRldmljZScgdXNpbmcgdGhlCmRpZmYgLS1naXQgYS9Eb2N1
-bWVudGF0aW9uL2ZpbGVzeXN0ZW1zL3N5c2ZzLnR4dCBiL0RvY3VtZW50YXRpb24vZmlsZXN5c3Rl
-bXMvc3lzZnMudHh0CmluZGV4IDViNTMxMWY5MzU4ZC4uZGRmMTViMWIwZDVhIDEwMDY0NAotLS0g
-YS9Eb2N1bWVudGF0aW9uL2ZpbGVzeXN0ZW1zL3N5c2ZzLnR4dAorKysgYi9Eb2N1bWVudGF0aW9u
-L2ZpbGVzeXN0ZW1zL3N5c2ZzLnR4dApAQCAtMzE5LDcgKzMxOSw3IEBAIHF1aWNrIHdheSB0byBs
-b29rdXAgdGhlIHN5c2ZzIGludGVyZmFjZSBmb3IgYSBkZXZpY2UgZnJvbSB0aGUgcmVzdWx0IG9m
-CiBhIHN0YXQoMikgb3BlcmF0aW9uLgogCiBNb3JlIGluZm9ybWF0aW9uIGNhbiBkcml2ZXItbW9k
-ZWwgc3BlY2lmaWMgZmVhdHVyZXMgY2FuIGJlIGZvdW5kIGluCi1Eb2N1bWVudGF0aW9uL2RyaXZl
-ci1tb2RlbC8uIAorRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC8uCiAKIAog
-VE9ETzogRmluaXNoIHRoaXMgc2VjdGlvbi4KZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vaHdt
-b24vc3VibWl0dGluZy1wYXRjaGVzLnJzdCBiL0RvY3VtZW50YXRpb24vaHdtb24vc3VibWl0dGlu
-Zy1wYXRjaGVzLnJzdAppbmRleCBkNWIwNWQzZTU0YmEuLjQ1MmZjMjhkOGUwYiAxMDA2NDQKLS0t
-IGEvRG9jdW1lbnRhdGlvbi9od21vbi9zdWJtaXR0aW5nLXBhdGNoZXMucnN0CisrKyBiL0RvY3Vt
-ZW50YXRpb24vaHdtb24vc3VibWl0dGluZy1wYXRjaGVzLnJzdApAQCAtODksNyArODksNyBAQCBp
-bmNyZWFzZSB0aGUgY2hhbmNlcyBvZiB5b3VyIGNoYW5nZSBiZWluZyBhY2NlcHRlZC4KICAgY29u
-c29sZS4gRXhjZXNzaXZlIGxvZ2dpbmcgY2FuIHNlcmlvdXNseSBhZmZlY3Qgc3lzdGVtIHBlcmZv
-cm1hbmNlLgogCiAqIFVzZSBkZXZyZXMgZnVuY3Rpb25zIHdoZW5ldmVyIHBvc3NpYmxlIHRvIGFs
-bG9jYXRlIHJlc291cmNlcy4gRm9yIHJhdGlvbmFsZQotICBhbmQgc3VwcG9ydGVkIGZ1bmN0aW9u
-cywgcGxlYXNlIHNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC9kZXZyZXMucnN0LgorICBh
-bmQgc3VwcG9ydGVkIGZ1bmN0aW9ucywgcGxlYXNlIHNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1h
-cGkvZHJpdmVyLW1vZGVsL2RldnJlcy5yc3QuCiAgIElmIGEgZnVuY3Rpb24gaXMgbm90IHN1cHBv
-cnRlZCBieSBkZXZyZXMsIGNvbnNpZGVyIHVzaW5nIGRldm1fYWRkX2FjdGlvbigpLgogCiAqIElm
-IHRoZSBkcml2ZXIgaGFzIGEgZGV0ZWN0IGZ1bmN0aW9uLCBtYWtlIHN1cmUgaXQgaXMgc2lsZW50
-LiBEZWJ1ZyBtZXNzYWdlcwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi90cmFuc2xhdGlvbnMv
-emhfQ04vZmlsZXN5c3RlbXMvc3lzZnMudHh0IGIvRG9jdW1lbnRhdGlvbi90cmFuc2xhdGlvbnMv
-emhfQ04vZmlsZXN5c3RlbXMvc3lzZnMudHh0CmluZGV4IDQ1MjI3MWRkYTE0MS4uZWUxZjM3ZGE1
-YjIzIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL3RyYW5zbGF0aW9ucy96aF9DTi9maWxlc3lz
-dGVtcy9zeXNmcy50eHQKKysrIGIvRG9jdW1lbnRhdGlvbi90cmFuc2xhdGlvbnMvemhfQ04vZmls
-ZXN5c3RlbXMvc3lzZnMudHh0CkBAIC0yODgsNyArMjg4LDcgQEAgZGV2LyDljIXlkKvkuKTkuKrl
-rZDnm67lvZXvvJogY2hhci8g5ZKMIGJsb2NrL+OAguWcqOi/meS4pOS4quWtkOebruW9leS4re+8
-jOaciQog5Lit55u45bqU55qE6K6+5aSH44CCL3N5cy9kZXYg5o+Q5L6b5LiA5Liq6YCa6L+H5LiA
-5LiqIHN0YXQoMikg5pON5L2c57uT5p6c77yM5p+l5om+CiDorr7lpIcgc3lzZnMg5o6l5Y+j5b+r
-5o2355qE5pa55rOV44CCCiAKLeabtOWkmuacieWFsyBkcml2ZXItbW9kZWwg55qE54m55oCn5L+h
-5oGv5Y+v5Lul5ZyoIERvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsLwor5pu05aSa5pyJ5YWzIGRy
-aXZlci1tb2RlbCDnmoTnibnmgKfkv6Hmga/lj6/ku6XlnKggRG9jdW1lbnRhdGlvbi9kcml2ZXIt
-YXBpL2RyaXZlci1tb2RlbC8KIOS4reaJvuWIsOOAggogCiAKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-YmFzZS9wbGF0Zm9ybS5jIGIvZHJpdmVycy9iYXNlL3BsYXRmb3JtLmMKaW5kZXggNzEzOTAzMjkw
-Mzg1Li41MDZhMDE3NWE1YTcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvYmFzZS9wbGF0Zm9ybS5jCisr
-KyBiL2RyaXZlcnMvYmFzZS9wbGF0Zm9ybS5jCkBAIC01LDcgKzUsNyBAQAogICogQ29weXJpZ2h0
-IChjKSAyMDAyLTMgUGF0cmljayBNb2NoZWwKICAqIENvcHlyaWdodCAoYykgMjAwMi0zIE9wZW4g
-U291cmNlIERldmVsb3BtZW50IExhYnMKICAqCi0gKiBQbGVhc2Ugc2VlIERvY3VtZW50YXRpb24v
-ZHJpdmVyLW1vZGVsL3BsYXRmb3JtLnJzdCBmb3IgbW9yZQorICogUGxlYXNlIHNlZSBEb2N1bWVu
-dGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL3BsYXRmb3JtLnJzdCBmb3IgbW9yZQogICog
-aW5mb3JtYXRpb24uCiAgKi8KIApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8tY3M1NTM1
-LmMgYi9kcml2ZXJzL2dwaW8vZ3Bpby1jczU1MzUuYwppbmRleCAzNjExYTA1NzE2NjcuLjUzYjI0
-ZTNhZTdkZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tY3M1NTM1LmMKKysrIGIvZHJp
-dmVycy9ncGlvL2dwaW8tY3M1NTM1LmMKQEAgLTQxLDcgKzQxLDcgQEAgTU9EVUxFX1BBUk1fREVT
-QyhtYXNrLCAiR1BJTyBjaGFubmVsIG1hc2suIik7CiAKIC8qCiAgKiBGSVhNRTogY29udmVydCB0
-aGlzIHNpbmdsZXRvbiBkcml2ZXIgdG8gdXNlIHRoZSBzdGF0ZSBjb250YWluZXIKLSAqIGRlc2ln
-biBwYXR0ZXJuLCBzZWUgRG9jdW1lbnRhdGlvbi9kcml2ZXItbW9kZWwvZGVzaWduLXBhdHRlcm5z
-LnJzdAorICogZGVzaWduIHBhdHRlcm4sIHNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJp
-dmVyLW1vZGVsL2Rlc2lnbi1wYXR0ZXJucy5yc3QKICAqLwogc3RhdGljIHN0cnVjdCBjczU1MzVf
-Z3Bpb19jaGlwIHsKIAlzdHJ1Y3QgZ3Bpb19jaGlwIGNoaXA7CmRpZmYgLS1naXQgYS9kcml2ZXJz
-L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbWFpbi5jCmluZGV4IDQxYzkwZjJkZGIzMS4uNjNkYjA4ZDliYWZhIDEw
-MDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYworKysg
-Yi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYwpAQCAtMjI4Niw3ICsy
-Mjg2LDcgQEAgaWNlX3Byb2JlKHN0cnVjdCBwY2lfZGV2ICpwZGV2LCBjb25zdCBzdHJ1Y3QgcGNp
-X2RldmljZV9pZCBfX2Fsd2F5c191bnVzZWQgKmVudCkKIAlzdHJ1Y3QgaWNlX2h3ICpodzsKIAlp
-bnQgZXJyOwogCi0JLyogdGhpcyBkcml2ZXIgdXNlcyBkZXZyZXMsIHNlZSBEb2N1bWVudGF0aW9u
-L2RyaXZlci1tb2RlbC9kZXZyZXMucnN0ICovCisJLyogdGhpcyBkcml2ZXIgdXNlcyBkZXZyZXMs
-IHNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1hcGkvZHJpdmVyLW1vZGVsL2RldnJlcy5yc3QgKi8K
-IAllcnIgPSBwY2ltX2VuYWJsZV9kZXZpY2UocGRldik7CiAJaWYgKGVycikKIAkJcmV0dXJuIGVy
-cjsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy91bmlzeXMvRG9jdW1lbnRhdGlvbi9vdmVy
-dmlldy50eHQgYi9kcml2ZXJzL3N0YWdpbmcvdW5pc3lzL0RvY3VtZW50YXRpb24vb3ZlcnZpZXcu
-dHh0CmluZGV4IDlhYjMwYWYyNjVhNS4uZjhhNDE0NGIyMzljIDEwMDY0NAotLS0gYS9kcml2ZXJz
-L3N0YWdpbmcvdW5pc3lzL0RvY3VtZW50YXRpb24vb3ZlcnZpZXcudHh0CisrKyBiL2RyaXZlcnMv
-c3RhZ2luZy91bmlzeXMvRG9jdW1lbnRhdGlvbi9vdmVydmlldy50eHQKQEAgLTE1LDcgKzE1LDcg
-QEAgbm9ybWFsbHkgYmUgdW5zaGFyYWJsZSwgc3BlY2lmaWNhbGx5OgogKiB2aXNvcmlucHV0IC0g
-a2V5Ym9hcmQgYW5kIG1vdXNlCiAKIFRoZXNlIGRyaXZlcnMgY29uZm9ybSB0byB0aGUgc3RhbmRh
-cmQgTGludXggYnVzL2RldmljZSBtb2RlbCBkZXNjcmliZWQKLXdpdGhpbiBEb2N1bWVudGF0aW9u
-L2RyaXZlci1tb2RlbC8sIGFuZCB1dGlsaXplIGEgZHJpdmVyIG5hbWVkIHZpc29yYnVzIHRvCit3
-aXRoaW4gRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC8sIGFuZCB1dGlsaXpl
-IGEgZHJpdmVyIG5hbWVkIHZpc29yYnVzIHRvCiBwcmVzZW50IHRoZSB2aXJ0dWFsIGJ1c3NlcyBp
-bnZvbHZlZC4gRHJpdmVycyBpbiB0aGUgJ3Zpc29yKicgZHJpdmVyIHNldCBhcmUKIGNvbW1vbmx5
-IHJlZmVycmVkIHRvIGFzICJndWVzdCBkcml2ZXJzIiBvciAiY2xpZW50IGRyaXZlcnMiLiAgQWxs
-IGRyaXZlcnMKIGV4Y2VwdCB2aXNvcmJ1cyBleHBvc2UgYSBkZXZpY2Ugb2YgYSBzcGVjaWZpYyB1
-c2FibGUgY2xhc3MgdG8gdGhlIExpbnV4IGd1ZXN0CkBAIC0xNDEsNyArMTQxLDcgQEAgY2FsbGVk
-IGF1dG9tYXRpY2FsbHkgYnkgdGhlIHZpc29yYnVzIGRyaXZlciBhdCBhcHByb3ByaWF0ZSB0aW1l
-czoKIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiAKIEJlY2F1c2Ugdmlzb3Ji
-dXMgaXMgYSBzdGFuZGFyZCBMaW51eCBidXMgZHJpdmVyIGluIHRoZSBtb2RlbCBkZXNjcmliZWQg
-aW4KLURvY3VtZW50YXRpb24vZHJpdmVyLW1vZGVsLywgdGhlIGhpZXJhcmNoeSBvZiBzLVBhciB2
-aXJ0dWFsIGRldmljZXMgaXMKK0RvY3VtZW50YXRpb24vZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwv
-LCB0aGUgaGllcmFyY2h5IG9mIHMtUGFyIHZpcnR1YWwgZGV2aWNlcyBpcwogcHVibGlzaGVkIGlu
-IHRoZSBzeXNmcyB0cmVlIGJlbmVhdGggL2J1cy92aXNvcmJ1cy8sIGUuZy4sCiAvc3lzL2J1cy92
-aXNvcmJ1cy9kZXZpY2VzLyBtaWdodCBsb29rIGxpa2U6CiAKZGlmZiAtLWdpdCBhL2luY2x1ZGUv
-bGludXgvZGV2aWNlLmggYi9pbmNsdWRlL2xpbnV4L2RldmljZS5oCmluZGV4IDRmNjVjNDI0ZTVm
-ZC4uOTNiMTJhZWM5YmZmIDEwMDY0NAotLS0gYS9pbmNsdWRlL2xpbnV4L2RldmljZS5oCisrKyBi
-L2luY2x1ZGUvbGludXgvZGV2aWNlLmgKQEAgLTYsNyArNiw3IEBACiAgKiBDb3B5cmlnaHQgKGMp
-IDIwMDQtMjAwOSBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBzdXNlLmRlPgogICogQ29weXJp
-Z2h0IChjKSAyMDA4LTIwMDkgTm92ZWxsIEluYy4KICAqCi0gKiBTZWUgRG9jdW1lbnRhdGlvbi9k
-cml2ZXItbW9kZWwvIGZvciBtb3JlIGluZm9ybWF0aW9uLgorICogU2VlIERvY3VtZW50YXRpb24v
-ZHJpdmVyLWFwaS9kcml2ZXItbW9kZWwvIGZvciBtb3JlIGluZm9ybWF0aW9uLgogICovCiAKICNp
-Zm5kZWYgX0RFVklDRV9IXwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9wbGF0Zm9ybV9kZXZp
-Y2UuaCBiL2luY2x1ZGUvbGludXgvcGxhdGZvcm1fZGV2aWNlLmgKaW5kZXggYmViMjVmMjc3ODg5
-Li45YmMzNmI1ODk4MjcgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvbGludXgvcGxhdGZvcm1fZGV2aWNl
-LmgKKysrIGIvaW5jbHVkZS9saW51eC9wbGF0Zm9ybV9kZXZpY2UuaApAQCAtNCw3ICs0LDcgQEAK
-ICAqCiAgKiBDb3B5cmlnaHQgKGMpIDIwMDEtMjAwMyBQYXRyaWNrIE1vY2hlbCA8bW9jaGVsQG9z
-ZGwub3JnPgogICoKLSAqIFNlZSBEb2N1bWVudGF0aW9uL2RyaXZlci1tb2RlbC8gZm9yIG1vcmUg
-aW5mb3JtYXRpb24uCisgKiBTZWUgRG9jdW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2Rl
-bC8gZm9yIG1vcmUgaW5mb3JtYXRpb24uCiAgKi8KIAogI2lmbmRlZiBfUExBVEZPUk1fREVWSUNF
-X0hfCmRpZmYgLS1naXQgYS9zY3JpcHRzL2NvY2NpbmVsbGUvZnJlZS9kZXZtX2ZyZWUuY29jY2kg
-Yi9zY3JpcHRzL2NvY2NpbmVsbGUvZnJlZS9kZXZtX2ZyZWUuY29jY2kKaW5kZXggZmVmZDAzMzFh
-MmRlLi40NDE3OTliNTM1OWIgMTAwNjQ0Ci0tLSBhL3NjcmlwdHMvY29jY2luZWxsZS9mcmVlL2Rl
-dm1fZnJlZS5jb2NjaQorKysgYi9zY3JpcHRzL2NvY2NpbmVsbGUvZnJlZS9kZXZtX2ZyZWUuY29j
-Y2kKQEAgLTMsNyArMyw3IEBACiAvLy8gZnVuY3Rpb25zLiAgVmFsdWVzIGFsbG9jYXRlZCB1c2lu
-ZyB0aGUgZGV2bV9mdW5jdGlvbnMgYXJlIGZyZWVkIHdoZW4KIC8vLyB0aGUgZGV2aWNlIGlzIGRl
-dGFjaGVkLCBhbmQgdGh1cyB0aGUgdXNlIG9mIHRoZSBzdGFuZGFyZCBmcmVlaW5nCiAvLy8gZnVu
-Y3Rpb24gd291bGQgY2F1c2UgYSBkb3VibGUgZnJlZS4KLS8vLyBTZWUgRG9jdW1lbnRhdGlvbi9k
-cml2ZXItbW9kZWwvZGV2cmVzLnJzdCBmb3IgbW9yZSBpbmZvcm1hdGlvbi4KKy8vLyBTZWUgRG9j
-dW1lbnRhdGlvbi9kcml2ZXItYXBpL2RyaXZlci1tb2RlbC9kZXZyZXMucnN0IGZvciBtb3JlIGlu
-Zm9ybWF0aW9uLgogLy8vCiAvLy8gQSBkaWZmaWN1bHR5IG9mIGRldGVjdGluZyB0aGlzIHByb2Js
-ZW0gaXMgdGhhdCB0aGUgc3RhbmRhcmQgZnJlZWluZwogLy8vIGZ1bmN0aW9uIG1pZ2h0IGJlIGNh
-bGxlZCBmcm9tIGEgZGlmZmVyZW50IGZ1bmN0aW9uIHRoYW4gdGhlIG9uZQotLSAKMi4yMS4wCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
-ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
-dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+From: Henry Tieman <henry.w.tieman@intel.com>
+
+Add code to query and set the number of queues on the primary
+VSI for a PF. This is accessed from the 'ethtool -l' and 'ethtool -L'
+commands, respectively.
+
+Signed-off-by: Henry Tieman <henry.w.tieman@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h         |   4 +
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c |   9 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.h |   2 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c |  85 ++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lib.c     |  52 ++++++++--
+ drivers/net/ethernet/intel/ice/ice_lib.h     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_main.c    | 102 ++++++++++++++++++-
+ 7 files changed, 237 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 0638cbdd495a..72b5d641e9b8 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -303,6 +303,8 @@ struct ice_vsi {
+ 	u16 num_txq;			 /* Used Tx queues */
+ 	u16 alloc_rxq;			 /* Allocated Rx queues */
+ 	u16 num_rxq;			 /* Used Rx queues */
++	u16 req_txq;			 /* User requested Tx queues */
++	u16 req_rxq;			 /* User requested Rx queues */
+ 	u16 num_rx_desc;
+ 	u16 num_tx_desc;
+ 	struct ice_tc_cfg tc_cfg;
+@@ -498,6 +500,7 @@ ice_find_vsi_by_type(struct ice_pf *pf, enum ice_vsi_type type)
+ int ice_vsi_setup_tx_rings(struct ice_vsi *vsi);
+ int ice_vsi_setup_rx_rings(struct ice_vsi *vsi);
+ void ice_set_ethtool_ops(struct net_device *netdev);
++int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx);
+ int ice_up(struct ice_vsi *vsi);
+ int ice_down(struct ice_vsi *vsi);
+ int ice_vsi_cfg(struct ice_vsi *vsi);
+@@ -509,6 +512,7 @@ int ice_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
+ int ice_set_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size);
+ int ice_get_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size);
+ void ice_fill_rss_lut(u8 *lut, u16 rss_table_size, u16 rss_size);
++int ice_schedule_reset(struct ice_pf *pf, enum ice_reset_req reset);
+ void ice_print_link_msg(struct ice_vsi *vsi, bool isup);
+ #ifdef CONFIG_DCB
+ int ice_pf_ena_all_vsi(struct ice_pf *pf, bool locked);
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index fe88b127ca42..f80628a13f2a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -85,11 +85,16 @@ void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi)
+ 			break;
+ 
+ 		qoffset = vsi->tc_cfg.tc_info[n].qoffset;
++
+ 		qcount = vsi->tc_cfg.tc_info[n].qcount_tx;
+ 		for (i = qoffset; i < (qoffset + qcount); i++) {
+ 			tx_ring = vsi->tx_rings[i];
+-			rx_ring = vsi->rx_rings[i];
+ 			tx_ring->dcb_tc = n;
++		}
++
++		qcount = vsi->tc_cfg.tc_info[n].qcount_rx;
++		for (i = qoffset; i < (qoffset + qcount); i++) {
++			rx_ring = vsi->rx_rings[i];
+ 			rx_ring->dcb_tc = n;
+ 		}
+ 	}
+@@ -103,7 +108,7 @@ void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi)
+  * calling this function. Reconfiguring DCB based on
+  * local_dcbx_cfg.
+  */
+-static void ice_pf_dcb_recfg(struct ice_pf *pf)
++void ice_pf_dcb_recfg(struct ice_pf *pf)
+ {
+ 	struct ice_dcbx_cfg *dcbcfg = &pf->hw.port_info->local_dcbx_cfg;
+ 	u8 tc_map = 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
+index 819081053ff5..be2ab6f20b21 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
+@@ -13,6 +13,7 @@
+ void ice_dcb_rebuild(struct ice_pf *pf);
+ u8 ice_dcb_get_ena_tc(struct ice_dcbx_cfg *dcbcfg);
+ u8 ice_dcb_get_num_tc(struct ice_dcbx_cfg *dcbcfg);
++void ice_pf_dcb_recfg(struct ice_pf *pf);
+ void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi);
+ int ice_init_pf_dcb(struct ice_pf *pf, bool locked);
+ void ice_update_dcb_stats(struct ice_pf *pf);
+@@ -55,6 +56,7 @@ ice_tx_prepare_vlan_flags_dcb(struct ice_ring __always_unused *tx_ring,
+ }
+ 
+ #define ice_update_dcb_stats(pf) do {} while (0)
++#define ice_pf_dcb_recfg(pf) do {} while (0)
+ #define ice_vsi_cfg_dcb_rings(vsi) do {} while (0)
+ #define ice_dcb_process_lldp_set_mib_change(pf, event) do {} while (0)
+ #define ice_set_cgd_num(tlan_ctx, ring) do {} while (0)
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index cfe5469b6f17..5d540609390b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3137,6 +3137,89 @@ ice_set_rxfh(struct net_device *netdev, const u32 *indir, const u8 *key,
+ 	return 0;
+ }
+ 
++/**
++ * ice_get_max_txq - return the maximum number of Tx queues for in a PF
++ * @pf: PF structure
++ */
++static int ice_get_max_txq(struct ice_pf *pf)
++{
++	return min_t(int, num_online_cpus(),
++		     pf->hw.func_caps.common_cap.num_txq);
++}
++
++/**
++ * ice_get_max_rxq - return the maximum number of Rx queues for in a PF
++ * @pf: PF structure
++ */
++static int ice_get_max_rxq(struct ice_pf *pf)
++{
++	return min_t(int, num_online_cpus(),
++		     pf->hw.func_caps.common_cap.num_rxq);
++}
++
++/**
++ * ice_get_channels - get the current and max supported channels
++ * @dev: network interface device structure
++ * @ch: ethtool channel data structure
++ */
++static void
++ice_get_channels(struct net_device *dev, struct ethtool_channels *ch)
++{
++	struct ice_netdev_priv *np = netdev_priv(dev);
++	struct ice_vsi *vsi = np->vsi;
++	struct ice_pf *pf = vsi->back;
++
++	/* check to see if VSI is active */
++	if (test_bit(__ICE_DOWN, vsi->state))
++		return;
++
++	/* report maximum channels */
++	ch->max_rx = ice_get_max_rxq(pf);
++	ch->max_tx = ice_get_max_txq(pf);
++
++	/* report current channels */
++	ch->rx_count = vsi->num_rxq;
++	ch->tx_count = vsi->num_txq;
++}
++
++/**
++ * ice_set_channels - set the number channels
++ * @dev: network interface device structure
++ * @ch: ethtool channel data structure
++ */
++static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
++{
++	struct ice_netdev_priv *np = netdev_priv(dev);
++	struct ice_vsi *vsi = np->vsi;
++	struct ice_pf *pf = vsi->back;
++	int new_rx = 0, new_tx = 0;
++
++	/* do not support changing other_count */
++	if (ch->other_count)
++		return -EINVAL;
++
++	/* verify request for a valid number of channels */
++	if (ch->rx_count > ice_get_max_rxq(pf) ||
++	    ch->tx_count > ice_get_max_txq(pf))
++		return -EINVAL;
++
++	/* Use new Rx value only if changed */
++	if (ch->rx_count != vsi->num_rxq)
++		new_rx = ch->rx_count;
++
++	/* Use new Tx value only if changed */
++	if (ch->tx_count != vsi->num_txq)
++		new_tx = ch->tx_count;
++
++	/* verify that we have a valid request */
++	if (!new_rx && !new_tx)
++		return -EINVAL;
++
++	ice_vsi_recfg_qs(vsi, new_rx, new_tx);
++
++	return 0;
++}
++
+ enum ice_container_type {
+ 	ICE_RX_CONTAINER,
+ 	ICE_TX_CONTAINER,
+@@ -3483,6 +3566,8 @@ static const struct ethtool_ops ice_ethtool_ops = {
+ 	.get_rxfh_indir_size	= ice_get_rxfh_indir_size,
+ 	.get_rxfh		= ice_get_rxfh,
+ 	.set_rxfh		= ice_set_rxfh,
++	.get_channels		= ice_get_channels,
++	.set_channels		= ice_set_channels,
+ 	.get_ts_info		= ethtool_op_get_ts_info,
+ 	.get_per_queue_coalesce = ice_get_per_q_coalesce,
+ 	.set_per_queue_coalesce = ice_set_per_q_coalesce,
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index ee8a67b1797d..ab7925c15f8e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -368,6 +368,14 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi, u16 vf_id)
+ 	case ICE_VSI_PF:
+ 		vsi->alloc_txq = pf->num_lan_tx;
+ 		vsi->alloc_rxq = pf->num_lan_rx;
++		if (vsi->req_txq) {
++			vsi->alloc_txq = vsi->req_txq;
++			vsi->num_txq = vsi->req_txq;
++		}
++		if (vsi->req_rxq) {
++			vsi->alloc_rxq = vsi->req_rxq;
++			vsi->num_rxq = vsi->req_rxq;
++		}
+ 		vsi->num_q_vectors = max_t(int, pf->num_lan_rx, pf->num_lan_tx);
+ 		break;
+ 	case ICE_VSI_VF:
+@@ -910,7 +918,9 @@ static void ice_vsi_setup_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctxt)
+ 			else
+ 				max_rss = ICE_MAX_SMALL_RSS_QS;
+ 			qcount_rx = min_t(int, rx_numq_tc, max_rss);
+-			qcount_rx = min_t(int, qcount_rx, vsi->rss_size);
++			if (!vsi->req_rxq)
++				qcount_rx = min_t(int, qcount_rx,
++						  vsi->rss_size);
+ 		}
+ 	}
+ 
+@@ -1014,11 +1024,12 @@ static void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+ /**
+  * ice_vsi_init - Create and initialize a VSI
+  * @vsi: the VSI being configured
++ * @init_vsi: is this call creating a VSI
+  *
+  * This initializes a VSI context depending on the VSI type to be added and
+  * passes it down to the add_vsi aq command to create a new VSI.
+  */
+-static int ice_vsi_init(struct ice_vsi *vsi)
++static int ice_vsi_init(struct ice_vsi *vsi, bool init_vsi)
+ {
+ 	struct ice_pf *pf = vsi->back;
+ 	struct ice_hw *hw = &pf->hw;
+@@ -1065,11 +1076,20 @@ static int ice_vsi_init(struct ice_vsi *vsi)
+ 			ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF;
+ 	}
+ 
+-	ret = ice_add_vsi(hw, vsi->idx, ctxt, NULL);
+-	if (ret) {
+-		dev_err(&pf->pdev->dev,
+-			"Add VSI failed, err %d\n", ret);
+-		return -EIO;
++	if (init_vsi) {
++		ret = ice_add_vsi(hw, vsi->idx, ctxt, NULL);
++		if (ret) {
++			dev_err(&pf->pdev->dev,
++				"Add VSI failed, err %d\n", ret);
++			return -EIO;
++		}
++	} else {
++		ret = ice_update_vsi(hw, vsi->idx, ctxt, NULL);
++		if (ret) {
++			dev_err(&pf->pdev->dev,
++				"Update VSI failed, err %d\n", ret);
++			return -EIO;
++		}
+ 	}
+ 
+ 	/* keep context for update VSI operations */
+@@ -2529,7 +2549,7 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
+ 	ice_vsi_set_tc_cfg(vsi);
+ 
+ 	/* create the VSI */
+-	ret = ice_vsi_init(vsi);
++	ret = ice_vsi_init(vsi, true);
+ 	if (ret)
+ 		goto unroll_get_qs;
+ 
+@@ -3010,10 +3030,11 @@ int ice_vsi_release(struct ice_vsi *vsi)
+ /**
+  * ice_vsi_rebuild - Rebuild VSI after reset
+  * @vsi: VSI to be rebuild
++ * @init_vsi: is this an initialization or a reconfigure of the VSI
+  *
+  * Returns 0 on success and negative value on failure
+  */
+-int ice_vsi_rebuild(struct ice_vsi *vsi)
++int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi)
+ {
+ 	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] = { 0 };
+ 	struct ice_vf *vf = NULL;
+@@ -3051,14 +3072,18 @@ int ice_vsi_rebuild(struct ice_vsi *vsi)
+ 	ice_vsi_clear_rings(vsi);
+ 	ice_vsi_free_arrays(vsi);
+ 	ice_dev_onetime_setup(&pf->hw);
++	if (vsi->req_txq || vsi->req_rxq)
++		ice_vsi_put_qs(vsi);
+ 	if (vsi->type == ICE_VSI_VF)
+ 		ice_vsi_set_num_qs(vsi, vf->vf_id);
+ 	else
+ 		ice_vsi_set_num_qs(vsi, ICE_INVAL_VFID);
++	if (vsi->req_txq || vsi->req_rxq)
++		ice_vsi_get_qs(vsi);
+ 	ice_vsi_set_tc_cfg(vsi);
+ 
+ 	/* Initialize VSI struct elements and create VSI in FW */
+-	ret = ice_vsi_init(vsi);
++	ret = ice_vsi_init(vsi, init_vsi);
+ 	if (ret < 0)
+ 		goto err_vsi;
+ 
+@@ -3133,7 +3158,12 @@ int ice_vsi_rebuild(struct ice_vsi *vsi)
+ 		dev_err(&pf->pdev->dev,
+ 			"VSI %d failed lan queue config, error %d\n",
+ 			vsi->vsi_num, status);
+-		goto err_vectors;
++		if (init_vsi) {
++			ret = -EIO;
++			goto err_vectors;
++		} else {
++			return ice_schedule_reset(pf, ICE_RESET_PFR);
++		}
+ 	}
+ 	return 0;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index c4c6eca05757..a0a01f733984 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -74,7 +74,7 @@ int ice_free_res(struct ice_res_tracker *res, u16 index, u16 id);
+ int
+ ice_get_res(struct ice_pf *pf, struct ice_res_tracker *res, u16 needed, u16 id);
+ 
+-int ice_vsi_rebuild(struct ice_vsi *vsi);
++int ice_vsi_rebuild(struct ice_vsi *vsi, bool init_vsi);
+ 
+ bool ice_is_reset_in_progress(unsigned long *state);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 45d608dfef44..cbcbd00cb21b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1513,6 +1513,42 @@ static void ice_set_ctrlq_len(struct ice_hw *hw)
+ 	hw->mailboxq.sq_buf_size = ICE_MBXQ_MAX_BUF_LEN;
+ }
+ 
++/**
++ * ice_schedule_reset - schedule a reset
++ * @pf: board private structure
++ * @reset: reset being requested
++ */
++int ice_schedule_reset(struct ice_pf *pf, enum ice_reset_req reset)
++{
++	/* bail out if earlier reset has failed */
++	if (test_bit(__ICE_RESET_FAILED, pf->state)) {
++		dev_dbg(&pf->pdev->dev, "earlier reset has failed\n");
++		return -EIO;
++	}
++	/* bail if reset/recovery already in progress */
++	if (ice_is_reset_in_progress(pf->state)) {
++		dev_dbg(&pf->pdev->dev, "Reset already in progress\n");
++		return -EBUSY;
++	}
++
++	switch (reset) {
++	case ICE_RESET_PFR:
++		set_bit(__ICE_PFR_REQ, pf->state);
++		break;
++	case ICE_RESET_CORER:
++		set_bit(__ICE_CORER_REQ, pf->state);
++		break;
++	case ICE_RESET_GLOBR:
++		set_bit(__ICE_GLOBR_REQ, pf->state);
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	ice_service_task_schedule(pf);
++	return 0;
++}
++
+ /**
+  * ice_irq_affinity_notify - Callback for affinity changes
+  * @notify: context as to what irq was changed
+@@ -1778,10 +1814,13 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi)
+ 	struct ice_pf *pf = vsi->back;
+ 	int i, v_idx;
+ 
+-	/* q_vectors are freed in reset path so there's no point in
+-	 * detaching rings
++	/* q_vectors are freed in reset path so there's no point in detaching
++	 * rings; in case of rebuild being triggered not from reset (for
++	 * example when changing the ring count via ethtool -L) reset bits in
++	 * pf->state won't be set, so additionally check first q_vector against
++	 * NULL;
+ 	 */
+-	if (ice_is_reset_in_progress(pf->state))
++	if (ice_is_reset_in_progress(pf->state) || !vsi->q_vectors[0])
+ 		goto free_qmap;
+ 
+ 	ice_for_each_q_vector(vsi, v_idx) {
+@@ -1816,7 +1855,7 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi)
+ 	vsi->xdp_rings = NULL;
+ 	pf->q_left_tx += vsi->num_xdp_txq;
+ 
+-	if (ice_is_reset_in_progress(pf->state))
++	if (ice_is_reset_in_progress(pf->state) || !vsi->q_vectors[0])
+ 		return 0;
+ 
+ 	/* notify Tx scheduler that we destroyed XDP queues and bring
+@@ -4064,7 +4103,7 @@ static int ice_vsi_rebuild_all(struct ice_pf *pf)
+ 		if (!pf->vsi[i])
+ 			continue;
+ 
+-		err = ice_vsi_rebuild(pf->vsi[i]);
++		err = ice_vsi_rebuild(pf->vsi[i], true);
+ 		if (err) {
+ 			dev_err(&pf->pdev->dev,
+ 				"VSI at index %d rebuild failed\n",
+@@ -4226,6 +4265,59 @@ static void ice_rebuild(struct ice_pf *pf)
+ 	dev_err(dev, "Rebuild failed, unload and reload driver\n");
+ }
+ 
++/**
++ * ice_vsi_recfg_qs - Change the number of queues on a VSI
++ * @vsi: VSI being changed
++ * @new_rx: new number of Rx queues
++ * @new_tx: new number of Tx queues
++ *
++ * Only change the number of queues if new_tx, or new_rx is non-0.
++ *
++ * Returns 0 on success.
++ */
++int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx)
++{
++	struct ice_pf *pf = vsi->back;
++	int err = 0, timeout = 50;
++
++	if (!new_rx && !new_tx)
++		return -EINVAL;
++
++	while (test_and_set_bit(__ICE_CFG_BUSY, pf->state)) {
++		timeout--;
++		if (!timeout)
++			return -EBUSY;
++		usleep_range(1000, 2000);
++	}
++
++	/* set for the next time the netdev is started */
++	if (!netif_running(vsi->netdev)) {
++		if (new_tx)
++			vsi->req_txq = new_tx;
++		if (new_rx)
++			vsi->req_rxq = new_rx;
++
++		dev_dbg(&pf->pdev->dev, "Link is down, queue count change happens when link is brought up\n");
++		goto done;
++	}
++
++	ice_vsi_close(vsi);
++
++	if (new_tx)
++		vsi->req_txq = new_tx;
++
++	if (new_rx)
++		vsi->req_rxq = new_rx;
++
++	ice_vsi_rebuild(vsi, false);
++	ice_pf_dcb_recfg(pf);
++
++	ice_vsi_open(vsi);
++done:
++	clear_bit(__ICE_CFG_BUSY, pf->state);
++	return err;
++}
++
+ /**
+  * ice_change_mtu - NDO callback to change the MTU
+  * @netdev: network interface device structure
+-- 
+2.20.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
