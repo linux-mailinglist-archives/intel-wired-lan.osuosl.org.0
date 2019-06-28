@@ -1,71 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41F295A218
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2019 19:17:31 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 068B25A496
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2019 20:53:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EDF8E87666;
-	Fri, 28 Jun 2019 17:17:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A6BE88252;
+	Fri, 28 Jun 2019 18:53:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GL4uyP-Gpm9w; Fri, 28 Jun 2019 17:17:29 +0000 (UTC)
+	with ESMTP id cUiuAYMlpCyh; Fri, 28 Jun 2019 18:53:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2F34887697;
-	Fri, 28 Jun 2019 17:17:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E2641881BF;
+	Fri, 28 Jun 2019 18:53:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F1AE11BF844
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 17:17:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C40611BF352
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 18:53:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ED6D486637
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 17:17:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BF55E875C7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 18:53:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RWeZvNV4kQ_v for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jun 2019 17:17:26 +0000 (UTC)
+ with ESMTP id ERlV7ayHpt57 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jun 2019 18:53:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 50070865A5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 17:17:26 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DC18F85DB1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2019 18:53:06 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Jun 2019 10:17:17 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Jun 2019 11:53:06 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.63,428,1557212400"; 
- d="p7s'?scan'208";a="173536320"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by orsmga002.jf.intel.com with ESMTP; 28 Jun 2019 10:17:17 -0700
-Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 28 Jun 2019 10:17:16 -0700
-Received: from orsmsx116.amr.corp.intel.com ([169.254.7.97]) by
- ORSMSX151.amr.corp.intel.com ([169.254.7.71]) with mapi id 14.03.0439.000;
- Fri, 28 Jun 2019 10:17:16 -0700
-From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-To: "shannon.lee.nelson@gmail.com" <shannon.lee.nelson@gmail.com>
-Thread-Topic: [Intel-wired-lan] [PATCH S23 01/15] ice: Implement ethtool ops
- for channels
-Thread-Index: AQHVLT1BuTEJwjmXPUmCsKpGYqH/iqaxqeGAgAAbpQA=
-Date: Fri, 28 Jun 2019 17:17:16 +0000
-Message-ID: <6f9c96b00f2d3bdfe49deb18492fb2c5478293ed.camel@intel.com>
-References: <20190627144101.24280-1-anthony.l.nguyen@intel.com>
- <CAP-MU4NnHyFNfV08MpZkO200sYekvrNRhcENh-oB3e7DvKTSrg@mail.gmail.com>
-In-Reply-To: <CAP-MU4NnHyFNfV08MpZkO200sYekvrNRhcENh-oB3e7DvKTSrg@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: yes
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.166.244.155]
+ d="asc'?scan'208";a="314213610"
+Received: from rarober1-mobl.amr.corp.intel.com ([10.251.157.137])
+ by orsmga004.jf.intel.com with ESMTP; 28 Jun 2019 11:53:03 -0700
+Message-ID: <fee5dd422d88806ee0b5a6b84f14cd6d50351343.camel@intel.com>
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>, Linux Doc Mailing
+ List <linux-doc@vger.kernel.org>
+Date: Fri, 28 Jun 2019 11:53:03 -0700
+In-Reply-To: <920ff36c66233113b1825ab504fe675ed5a5bd7b.1561724493.git.mchehab+samsung@kernel.org>
+References: <cover.1561724493.git.mchehab+samsung@kernel.org>
+ <920ff36c66233113b1825ab504fe675ed5a5bd7b.1561724493.git.mchehab+samsung@kernel.org>
+User-Agent: Evolution 3.32.3 (3.32.3-1.fc30) 
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S23 01/15] ice: Implement ethtool ops
- for channels
+X-Mailman-Approved-At: Fri, 28 Jun 2019 18:53:32 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 24/39] docs: driver-model: move it to
+ the driver-api book
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,120 +67,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============7468291433323107331=="
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Harry Wei <harryxiyou@gmail.com>,
+ Alex Shi <alex.shi@linux.alibaba.com>, cocci@systeme.lip6.fr,
+ devel@driverdev.osuosl.org, Jonathan Corbet <corbet@lwn.net>,
+ Gilles Muller <Gilles.Muller@lip6.fr>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ intel-wired-lan@lists.osuosl.org, David Kershner <david.kershner@unisys.com>,
+ Guenter Roeck <linux@roeck-us.net>, Jean Delvare <jdelvare@suse.com>,
+ sparmaintainer@unisys.com, Nicolas Palix <nicolas.palix@imag.fr>,
+ Mauro Carvalho Chehab <mchehab@infradead.org>,
+ Julia Lawall <Julia.Lawall@lip6.fr>, linux-hwmon@vger.kernel.org,
+ Michal Marek <michal.lkml@markovi.net>, linux-gpio@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============2287526080970060195=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============7468291433323107331==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=sha-1;
-	protocol="application/x-pkcs7-signature"; boundary="=-RrEg4yv9P5823Myaa7ZD"
 
---=-RrEg4yv9P5823Myaa7ZD
+--===============2287526080970060195==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-K11StWmkFkExVL88vQz+"
+
+
+--=-K11StWmkFkExVL88vQz+
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, 2019-06-28 at 08:38 -0700, Shannon Nelson wrote:
-> On Thu, Jun 27, 2019 at 4:08 PM Tony Nguyen <
-> anthony.l.nguyen@intel.com> wrote:
-> >=20
-> > +static int ice_set_channels(struct net_device *dev, struct
-> > ethtool_channels *ch)
-> > +{
-> > +       struct ice_netdev_priv *np =3D netdev_priv(dev);
-> > +       struct ice_vsi *vsi =3D np->vsi;
-> > +       struct ice_pf *pf =3D vsi->back;
-> > +       int new_rx =3D 0, new_tx =3D 0;
-> > +
-> > +       /* do not support changing other_count */
-> > +       if (ch->other_count)
-> > +               return -EINVAL;
-> > +
-> > +       /* verify request for a valid number of channels */
-> > +       if (ch->rx_count > ice_get_max_rxq(pf) ||
-> > +           ch->tx_count > ice_get_max_txq(pf))
-> > +               return -EINVAL;
+On Fri, 2019-06-28 at 09:30 -0300, Mauro Carvalho Chehab wrote:
+> The audience for the Kernel driver-model is clearly Kernel hackers.
 >=20
-> It was recently pointed out to me that these are checked by ethtool
-> before calling into here, so this is unnecessary code.
->=20
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 
-Thanks for the feedback.  I will remove this and submit a v2.
+Acked-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 
-Thanks,
-Tony
+For the 'ice' driver changes.
 
-> sln
-
---=-RrEg4yv9P5823Myaa7ZD
-Content-Type: application/x-pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-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
-UDSWFPJn1IonMumCuP0DYWGYiGS8dKTJMMh2WA2XVewXVn0JQTWQDpckAOkmi+A0RwpZzYJ0Y3gT
-AgMBAAGjggI2MIICMjAdBgNVHQ4EFgQUydTU8+nnPeJE0ndEkV7rlhV6p30wHwYDVR0jBBgwFoAU
-HmkqtNwo/kcYTiELP7ysES/wmPUwZQYDVR0fBF4wXDBaoFigVoZUaHR0cDovL3d3dy5pbnRlbC5j
-b20vcmVwb3NpdG9yeS9DUkwvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIwSXNzdWluZyUyMENB
-JTIwNEEuY3JsMIGeBggrBgEFBQcBAQSBkTCBjjBpBggrBgEFBQcwAoZdaHR0cDovL3d3dy5pbnRl
-bC5jb20vcmVwb3NpdG9yeS9jZXJ0aWZpY2F0ZXMvSW50ZWwlMjBFeHRlcm5hbCUyMEJhc2ljJTIw
-SXNzdWluZyUyMENBJTIwNEEuY3J0MCEGCCsGAQUFBzABhhVodHRwOi8vb2NzcC5pbnRlbC5jb20w
-CwYDVR0PBAQDAgeAMDwGCSsGAQQBgjcVBwQvMC0GJSsGAQQBgjcVCIbDjHWEmeVRg/2BKIWOn1OC
-kcAJZ4HevTmV8EMCAWQCAQkwHwYDVR0lBBgwFgYIKwYBBQUHAwQGCisGAQQBgjcKAwwwKQYJKwYB
-BAGCNxUKBBwwGjAKBggrBgEFBQcDBDAMBgorBgEEAYI3CgMMMFEGA1UdEQRKMEigKgYKKwYBBAGC
-NxQCA6AcDBphbnRob255Lmwubmd1eWVuQGludGVsLmNvbYEaYW50aG9ueS5sLm5ndXllbkBpbnRl
-bC5jb20wDQYJKoZIhvcNAQEFBQADggEBALLF5b7PLd6kEWuQRkEq6eZpohKWRkfC9DyLiwS+HaeH
-9euNcIqpV4xrMXM6mPqs3AHRb9ibqUPo3wQMtHph35RRsmY7ENk9FxF/W8Ov5ZVPyW0rFiRsnr1C
-QVc08YqXp1dlbQGf8nvJn8ryCwjNpw0CTQcGHXrL/YnboLu8+R9RdBue/HIlP4g0pyAC/8YOie04
-PVo4flU2CGMYilm1euQ6OV8WRA2CKgvRVp/DZEzTqnmDvy12efG74bmMzXAvDv2I53TR5ltDpx5X
-B8uO1XlhOrj+Z3mSi85eblWWhJlq6+TQH/hZWSiyZH2lo3J49oHClTlk86GUEIUp/sf5v5cxggIX
-MIICEwIBATCBkDB5MQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFDASBgNVBAcTC1NhbnRhIENs
-YXJhMRowGAYDVQQKExFJbnRlbCBDb3Jwb3JhdGlvbjErMCkGA1UEAxMiSW50ZWwgRXh0ZXJuYWwg
-QmFzaWMgSXNzdWluZyBDQSA0QQITMwAA0J5PWjT/SLEH2wAAAADQnjAJBgUrDgMCGgUAoF0wGAYJ
-KoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTkwNjI4MTcxNzE0WjAjBgkq
-hkiG9w0BCQQxFgQU/3wLD7nu9fXpEwVVuX5Qw75fbFcwDQYJKoZIhvcNAQEBBQAEggEAPcwEBzem
-NTmQpEOk9qsn88M49wpGECWRqLDSZwOLaqV2pHShUuPnusrVmTRzREHkSLfzBIAS+AEXzibked0C
-4m6+Vbn5HRuzsv0lqSTeKiEoNKLL2dCnn4nypV+r2U42pX4kneWmnfF49/etZy9h7y/ELHnNkQtE
-uVZzG+kmq38JK1rYuNP/cHY0je7WQcev6lLdNkm50sLlQwMI4VycjpvO3zWCEpExoPkvfbjI70Uh
-75skEq4iTR6EvdIBQUoqcA6lr289QIsaOC6DrzGRZxQF+Q1jMK6xDgDsqCNH6qJAkJvdvMyVTIHV
-Q+j1SZxy2YGJDBFeFjj/sLorITRckAAAAAAAAA==
+> ---
+>  Documentation/{ =3D> driver-api}/driver-model/binding.rst       | 0
+>  Documentation/{ =3D> driver-api}/driver-model/bus.rst           | 0
+>  Documentation/{ =3D> driver-api}/driver-model/class.rst         | 0
+>  .../{ =3D> driver-api}/driver-model/design-patterns.rst         | 0
+>  Documentation/{ =3D> driver-api}/driver-model/device.rst        | 0
+>  Documentation/{ =3D> driver-api}/driver-model/devres.rst        | 0
+>  Documentation/{ =3D> driver-api}/driver-model/driver.rst        | 0
+>  Documentation/{ =3D> driver-api}/driver-model/index.rst         | 2 --
+>  Documentation/{ =3D> driver-api}/driver-model/overview.rst      | 0
+>  Documentation/{ =3D> driver-api}/driver-model/platform.rst      | 0
+>  Documentation/{ =3D> driver-api}/driver-model/porting.rst       | 2 +-
+>  Documentation/driver-api/gpio/driver.rst                      | 2 +-
+>  Documentation/driver-api/index.rst                            | 1 +
+>  Documentation/eisa.txt                                        | 4 ++--
+>  Documentation/filesystems/sysfs.txt                           | 2 +-
+>  Documentation/hwmon/submitting-patches.rst                    | 2 +-
+>  Documentation/translations/zh_CN/filesystems/sysfs.txt        | 2 +-
+>  drivers/base/platform.c                                       | 2 +-
+>  drivers/gpio/gpio-cs5535.c                                    | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_main.c                     | 2 +-
+>  drivers/staging/unisys/Documentation/overview.txt             | 4 ++--
+>  include/linux/device.h                                        | 2 +-
+>  include/linux/platform_device.h                               | 2 +-
+>  scripts/coccinelle/free/devm_free.cocci                       | 2 +-
+>  24 files changed, 16 insertions(+), 17 deletions(-)
+>  rename Documentation/{ =3D> driver-api}/driver-model/binding.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/bus.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/class.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/design-patterns.rst
+> (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/device.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/devres.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/driver.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/index.rst (96%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/overview.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/platform.rst (100%)
+>  rename Documentation/{ =3D> driver-api}/driver-model/porting.rst (99%)
 
 
---=-RrEg4yv9P5823Myaa7ZD--
+--=-K11StWmkFkExVL88vQz+
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
---===============7468291433323107331==
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl0WYg8ACgkQ5W/vlVpL
+7c71FA//aLp3imbzpY3ovZhJWfkCedgU23P55ANWPX+9LogGHwK/qtSXQlpOFKet
+AKb3TrRqbgzziAdpNGCgC9phQ5qo56UwhI6PAf+WweUQV0Q1y5VX9Uvis12Zut4i
+CiScVqBx3+Fgaj1KRXxoZKTmpdqsGCgQAr4BsqQUxYBWYk9al+iBz4YlqS2kQtyr
+HClWQ4taQ6T6xaVHnCkIZA5NaSvOnaQClg33sPyvWTXrXbnlcBnJ3pXttlOKpXRA
+ImO2jo16IYZFDpqCzlQpC1WjXz6vvFrHb2ukosXmYvNPBj33a//vD5PTvn6WUPkX
+euZ5dRMaHjCY6XA9lZ5/KgHgckHO7TuzNzOP1VNCfit1lszA5M4p74nAFeL4XfYy
+EKvosns0N5hrxl0M3VqtLfi4vqyC0S52SHeGzQ9Jugfi3Ey4f+RfGU1bqRlWu1SI
+4g/JtpDavi2dT/jer5JSX55XMnSPpHEGl5I7M8osiMSqUx1wsnubuT4StxBu5U5y
+MY11YSpOWwq1ufPph3M6Bd05gJxQxfY9mbQojyHl+gQm88PlF6tSvgKRyvFChfK1
+eBb+uyphD9mFl06ZVtimDSW8C/X7uCylET5CPahyh6Cb/Z2QfRuh07V1t7Jr0nox
+KZLcjeAWq2BLZnk+TBikfnYQZ+/29kyml3N+Dm/cP7JByhm53bo=
+=wwuU
+-----END PGP SIGNATURE-----
+
+--=-K11StWmkFkExVL88vQz+--
+
+
+--===============2287526080970060195==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -202,4 +180,5 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============7468291433323107331==--
+--===============2287526080970060195==--
+
