@@ -1,54 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B43D75C062
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Jul 2019 17:36:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D2925C4EB
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Jul 2019 23:20:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4432385EBB;
-	Mon,  1 Jul 2019 15:36:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1CA75868F7;
+	Mon,  1 Jul 2019 21:20:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bfJr3XtsJuWc; Mon,  1 Jul 2019 15:36:38 +0000 (UTC)
+	with ESMTP id m6gQM41INhpM; Mon,  1 Jul 2019 21:20:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9DA7E85F0E;
-	Mon,  1 Jul 2019 15:36:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A9B386758;
+	Mon,  1 Jul 2019 21:20:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A399E1BF2BC
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2019 15:36:35 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 365971BF32C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2019 21:20:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9EF5685E07
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2019 15:36:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 31E992000D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2019 21:20:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kSZ4M7AOmXpr for <intel-wired-lan@lists.osuosl.org>;
- Mon,  1 Jul 2019 15:36:34 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 773A285B18
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2019 15:36:34 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2019 08:36:33 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,439,1557212400"; d="scan'208";a="314920890"
-Received: from alicemic-1.jf.intel.com ([10.166.17.62])
- by orsmga004.jf.intel.com with ESMTP; 01 Jul 2019 08:36:33 -0700
-From: Alice Michael <alice.michael@intel.com>
-To: alice.michael@intel.com,
-	intel-wired-lan@lists.osuosl.org
-Date: Mon,  1 Jul 2019 03:16:13 -0400
-Message-Id: <20190701071613.2315-1-alice.michael@intel.com>
-X-Mailer: git-send-email 2.21.0
+ with ESMTP id aIstxZbUEVei for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  1 Jul 2019 21:20:08 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
+ [209.85.222.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5F0221FD16
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2019 21:20:08 +0000 (UTC)
+Received: by mail-qk1-f196.google.com with SMTP id m14so12245843qka.10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 01 Jul 2019 14:20:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=netronome-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=TWsp+Ci3cG3EdUPzHwmfsrPWgFxsFW/NIRYtp0vKG3U=;
+ b=RiaOTsErZ8KcpskY5SXl3c3TcBuY7EwdEWSu6UOS7bLuPpKXnSaNyw4YciJKziq+K/
+ hxQ36KSdmRd9vsE9+6MAtKt8Ca83dYFRP3VsCyIQfZ0VFT7Y7uHJ7hdniMzVVrfcfF+A
+ ADtI7pHo25Dq+tjdSUqE7nBymQ3lRvFGHqnmK3/E5DPF4MG9bDYyJjKgvsmzhwZRA9aP
+ EiwwC4+kSva3Q7bLUT1zGvfbq0azHIUXfyYv+2JbceQyrRg43nMB/GeK48oC5I66xsWP
+ uwGz+b1w/iaOW6ulrIASlcVGqybVPIHf5wcWnKyzwp5tywehakQecCO4xtfdjyXUdGBc
+ /R3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=TWsp+Ci3cG3EdUPzHwmfsrPWgFxsFW/NIRYtp0vKG3U=;
+ b=RX1X9EaemKwGwdXf1qlfCEC/2T2WHs4zoqlDz2gcAamVCbpdVQ6VMOComDPkeDUF5D
+ SRhRk54Hb35blNSoDrLOiRytdAm8lu39byRjOYxgN3oJrzdgOMgjhM2fTyHN7HWDU6xe
+ fCobXEo1VaxwbMAlaBMggvHuR4qFs5W77ibHwgjldIi4zRwkW5o1OMw9o3Sn2X3oYnHZ
+ AaG/UYanhHc0xheV+l3rl3bHYknuNmRUjxFVhj2kr6/feXtyhVNBzJfNatJUzO6sOxJH
+ FageKaaqzKN1qQ/DkUZbbyn48Fkr7gbSIyAOwma7zN/HM81+KatmPGFKa1eSaH6ZKGmP
+ J0Bw==
+X-Gm-Message-State: APjAAAUypzX1xb+wIL8A6uFBK2VXGDmIZrgKnlDWhvpQ3XRj3dkqTTvw
+ LtIJn9a2543wBjEepvtnAmRmFA==
+X-Google-Smtp-Source: APXvYqxNT9WoAy1VbQKKLaHtJEHrWiC2xU1PxjaTtlvDwBOTIhiNpzI7sTH6WlBksIE11DhFh+oXHA==
+X-Received: by 2002:a37:c248:: with SMTP id j8mr12648978qkm.494.1562016007461; 
+ Mon, 01 Jul 2019 14:20:07 -0700 (PDT)
+Received: from cakuba.netronome.com ([66.60.152.14])
+ by smtp.gmail.com with ESMTPSA id x35sm6256872qta.11.2019.07.01.14.20.06
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 01 Jul 2019 14:20:07 -0700 (PDT)
+Date: Mon, 1 Jul 2019 14:20:02 -0700
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
+To: "Laatz, Kevin" <kevin.laatz@intel.com>
+Message-ID: <20190701142002.1b17cc0b@cakuba.netronome.com>
+In-Reply-To: <07e404eb-f712-b15a-4884-315aff3f7c7d@intel.com>
+References: <20190620083924.1996-1-kevin.laatz@intel.com>
+ <FA8389B9-F89C-4BFF-95EE-56F702BBCC6D@gmail.com>
+ <ef7e9469-e7be-647b-8bb1-da29bc01fa2e@intel.com>
+ <20190627142534.4f4b8995@cakuba.netronome.com>
+ <f0ca817a-02b4-df22-d01b-7bc07171a4dc@intel.com>
+ <BAE24CBF-416D-4665-B2C9-CE1F5EAE28FF@gmail.com>
+ <07e404eb-f712-b15a-4884-315aff3f7c7d@intel.com>
+Organization: Netronome Systems, Ltd.
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next PATCH] i40e: Register RDMA client devices
- to the virtual platform bus
+Subject: Re: [Intel-wired-lan] [PATCH 00/11] XDP unaligned chunk placement
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,298 +93,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Saleem@osuosl.org, Shiraz Saleem <shiraz.saleem@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: daniel@iogearbox.net, netdev@vger.kernel.org, ciara.loftus@intel.com,
+ ast@kernel.org, intel-wired-lan@lists.osuosl.org,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, bruce.richardson@intel.com,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, magnus.karlsson@intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Shiraz Saleem <shiraz.saleem@intel.com>
-
-Register RDMA client devices to the virtual platform bus. The
-unified RDMA driver 'irdma' registers as a platform driver and
-will bind to these devices. This model is inspired by the discussion
-in [1]. It realizes a single RDMA driver capable of working with
-multiple LAN drivers over multi-generation Intel HW supporting RDMA.
-There is also no load ordering dependencies between i40e and irdma.
-
-Summary of changes:
-* Register a platform client device per PF and unregister the platform
-  device when PF goes away.
-* Add 2 new client ops.
-	* i40e_client_device_register() which is called during RDMA
-	  probe() per PF. Validate client drv OPs and schedule service
-	  task to call open()
-	* i40e_client_device_unregister() called during RDMA remove()
-	  per PF. Call client close() and release_qvlist.
-* The global register/unregister calls exported for i40iw are retained until i40iw is
-   removed from the kernel.
-
-[1] https://patchwork.kernel.org/patch/10815567/
-
-Signed-off-by: Saleem, Shiraz <shiraz.saleem@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_client.c | 116 ++++++++++++++----
- drivers/net/ethernet/intel/i40e/i40e_client.h |   8 ++
- 2 files changed, 102 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
-index e81530ca08d0..133950d190a6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_client.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
-@@ -30,11 +30,17 @@ static int i40e_client_update_vsi_ctxt(struct i40e_info *ldev,
- 				       bool is_vf, u32 vf_id,
- 				       u32 flag, u32 valid_flag);
- 
-+static int i40e_client_device_register(struct i40e_info *ldev);
-+
-+static void i40e_client_device_unregister(struct i40e_info *ldev);
-+
- static struct i40e_ops i40e_lan_ops = {
- 	.virtchnl_send = i40e_client_virtchnl_send,
- 	.setup_qvlist = i40e_client_setup_qvlist,
- 	.request_reset = i40e_client_request_reset,
- 	.update_vsi_ctxt = i40e_client_update_vsi_ctxt,
-+	.client_device_register = i40e_client_device_register,
-+	.client_device_unregister = i40e_client_device_unregister,
- };
- 
- /**
-@@ -71,6 +77,10 @@ int i40e_client_get_params(struct i40e_vsi *vsi, struct i40e_params *params)
- 	return 0;
- }
- 
-+static void i40e_client_device_release(struct device *dev)
-+{
-+}
-+
- /**
-  * i40e_notify_client_of_vf_msg - call the client vf message callback
-  * @vsi: the VSI with the message
-@@ -287,9 +297,7 @@ static void i40e_client_add_instance(struct i40e_pf *pf)
- 	struct i40e_client_instance *cdev = NULL;
- 	struct netdev_hw_addr *mac = NULL;
- 	struct i40e_vsi *vsi = pf->vsi[pf->lan_vsi];
--
--	if (!registered_client || pf->cinst)
--		return;
-+	struct platform_device *platform_dev;
- 
- 	cdev = kzalloc(sizeof(*cdev), GFP_KERNEL);
- 	if (!cdev)
-@@ -308,6 +316,12 @@ static void i40e_client_add_instance(struct i40e_pf *pf)
- 	cdev->lan_info.fw_maj_ver = pf->hw.aq.fw_maj_ver;
- 	cdev->lan_info.fw_min_ver = pf->hw.aq.fw_min_ver;
- 	cdev->lan_info.fw_build = pf->hw.aq.fw_build;
-+	platform_dev = &cdev->lan_info.platform_dev;
-+	platform_dev->name = "i40e_rdma";
-+	platform_dev->id = PLATFORM_DEVID_AUTO;
-+	platform_dev->id_auto = true;
-+	platform_dev->dev.release = i40e_client_device_release;
-+	platform_dev->dev.parent = &pf->pdev->dev;
- 	set_bit(__I40E_CLIENT_INSTANCE_NONE, &cdev->state);
- 
- 	if (i40e_client_get_params(vsi, &cdev->lan_info.params)) {
-@@ -323,10 +337,12 @@ static void i40e_client_add_instance(struct i40e_pf *pf)
- 	else
- 		dev_err(&pf->pdev->dev, "MAC address list is empty!\n");
- 
--	cdev->client = registered_client;
-+	cdev->client = NULL;
- 	pf->cinst = cdev;
- 
--	i40e_client_update_msix_info(pf);
-+	cdev->lan_info.msix_count = pf->num_iwarp_msix;
-+	cdev->lan_info.msix_entries = &pf->msix_entries[pf->iwarp_base_vector];
-+	platform_device_register(platform_dev);
- }
- 
- /**
-@@ -347,7 +363,7 @@ void i40e_client_del_instance(struct i40e_pf *pf)
-  **/
- void i40e_client_subtask(struct i40e_pf *pf)
- {
--	struct i40e_client *client = registered_client;
-+	struct i40e_client *client;
- 	struct i40e_client_instance *cdev;
- 	struct i40e_vsi *vsi = pf->vsi[pf->lan_vsi];
- 	int ret = 0;
-@@ -361,9 +377,11 @@ void i40e_client_subtask(struct i40e_pf *pf)
- 	    test_bit(__I40E_CONFIG_BUSY, pf->state))
- 		return;
- 
--	if (!client || !cdev)
-+	if (!cdev || !cdev->client)
- 		return;
- 
-+	client = cdev->client;
-+
- 	/* Here we handle client opens. If the client is down, and
- 	 * the netdev is registered, then open the client.
- 	 */
-@@ -424,16 +442,7 @@ int i40e_lan_add_device(struct i40e_pf *pf)
- 		 pf->hw.pf_id, pf->hw.bus.bus_id,
- 		 pf->hw.bus.device, pf->hw.bus.func);
- 
--	/* If a client has already been registered, we need to add an instance
--	 * of it to our new LAN device.
--	 */
--	if (registered_client)
--		i40e_client_add_instance(pf);
--
--	/* Since in some cases register may have happened before a device gets
--	 * added, we can schedule a subtask to go initiate the clients if
--	 * they can be launched at probe time.
--	 */
-+	i40e_client_add_instance(pf);
- 	set_bit(__I40E_CLIENT_SERVICE_REQUESTED, pf->state);
- 	i40e_service_event_schedule(pf);
- 
-@@ -453,6 +462,8 @@ int i40e_lan_del_device(struct i40e_pf *pf)
- 	struct i40e_device *ldev, *tmp;
- 	int ret = -ENODEV;
- 
-+	platform_device_unregister(&pf->cinst->lan_info.platform_dev);
-+
- 	/* First, remove any client instance. */
- 	i40e_client_del_instance(pf);
- 
-@@ -505,10 +516,7 @@ static void i40e_client_release(struct i40e_client *client)
- 				 "Client %s instance for PF id %d closed\n",
- 				 client->name, pf->hw.pf_id);
- 		}
--		/* delete the client instance */
--		i40e_client_del_instance(pf);
--		dev_info(&pf->pdev->dev, "Deleted client instance of Client %s\n",
--			 client->name);
-+		cdev->client = NULL;
- 		clear_bit(__I40E_SERVICE_SCHED, pf->state);
- 	}
- 	mutex_unlock(&i40e_device_mutex);
-@@ -527,7 +535,7 @@ static void i40e_client_prepare(struct i40e_client *client)
- 	mutex_lock(&i40e_device_mutex);
- 	list_for_each_entry(ldev, &i40e_devices, list) {
- 		pf = ldev->pf;
--		i40e_client_add_instance(pf);
-+		pf->cinst->client = registered_client;
- 		/* Start the client subtask */
- 		set_bit(__I40E_CLIENT_SERVICE_REQUESTED, pf->state);
- 		i40e_service_event_schedule(pf);
-@@ -733,6 +741,70 @@ static int i40e_client_update_vsi_ctxt(struct i40e_info *ldev,
- 	return err;
- }
- 
-+static int i40e_client_device_register(struct i40e_info *ldev)
-+{
-+	struct i40e_client *client;
-+	struct i40e_pf *pf;
-+
-+	if (!ldev) {
-+		pr_err("Failed to reg client dev: ldev ptr NULL\n");
-+		return -EINVAL;
-+	}
-+
-+	client = ldev->client;
-+	pf = ldev->pf;
-+	if (!client) {
-+		pr_err("Failed to reg client dev: client ptr NULL\n");
-+		return -EINVAL;
-+	}
-+
-+	if (!ldev->ops || !client->ops) {
-+		pr_err("Failed to reg client dev: client dev peer_ops/ops NULL\n");
-+		return -EINVAL;
-+	}
-+
-+	if (client->version.major != I40E_CLIENT_VERSION_MAJOR ||
-+	    client->version.minor != I40E_CLIENT_VERSION_MINOR) {
-+		pr_err("i40e: Failed to register client %s due to mismatched client interface version\n",
-+		       client->name);
-+		pr_err("Client is using version: %02d.%02d.%02d while LAN driver supports %s\n",
-+		       client->version.major, client->version.minor,
-+		       client->version.build,
-+		       i40e_client_interface_version_str);
-+		return -EINVAL;
-+	}
-+
-+	pf->cinst->client = ldev->client;
-+	set_bit(__I40E_CLIENT_SERVICE_REQUESTED, pf->state);
-+	i40e_service_event_schedule(pf);
-+
-+	return 0;
-+}
-+
-+static void i40e_client_device_unregister(struct i40e_info *ldev)
-+{
-+	struct i40e_pf *pf = ldev->pf;
-+	struct i40e_client_instance *cdev = pf->cinst;
-+
-+	while (test_and_set_bit(__I40E_SERVICE_SCHED, pf->state))
-+		usleep_range(500, 1000);
-+
-+	if (!cdev || !cdev->client || !cdev->client->ops ||
-+	    !cdev->client->ops->close) {
-+		dev_err(&pf->pdev->dev, "Cannot close client device\n");
-+		return;
-+	}
-+	cdev->client->ops->close(&cdev->lan_info, cdev->client, false);
-+	clear_bit(__I40E_CLIENT_INSTANCE_OPENED, &cdev->state);
-+	i40e_client_release_qvlist(&cdev->lan_info);
-+	pf->cinst->client = NULL;
-+	clear_bit(__I40E_SERVICE_SCHED, pf->state);
-+}
-+
-+/* Retain legacy global registration/unregistration calls till i40iw is
-+ * deprecated from the kernel. The irdma unified driver does not use these
-+ * exported symbols.
-+ */
- /**
-  * i40e_register_client - Register a i40e client driver with the L2 driver
-  * @client: pointer to the i40e_client struct
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.h b/drivers/net/ethernet/intel/i40e/i40e_client.h
-index 72994baf4941..0cfdb35e93d6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_client.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_client.h
-@@ -4,6 +4,8 @@
- #ifndef _I40E_CLIENT_H_
- #define _I40E_CLIENT_H_
- 
-+#include <linux/platform_device.h>
-+
- #define I40E_CLIENT_STR_LENGTH 10
- 
- /* Client interface version should be updated anytime there is a change in the
-@@ -80,6 +82,7 @@ struct i40e_params {
- 
- /* Structure to hold Lan device info for a client device */
- struct i40e_info {
-+	struct platform_device platform_dev;
- 	struct i40e_client_version version;
- 	u8 lanmac[6];
- 	struct net_device *netdev;
-@@ -97,6 +100,7 @@ struct i40e_info {
- 	struct i40e_qvlist_info *qvlist_info;
- 	struct i40e_params params;
- 	struct i40e_ops *ops;
-+	struct i40e_client *client;
- 
- 	u16 msix_count;	 /* number of msix vectors*/
- 	/* Array down below will be dynamically allocated based on msix_count */
-@@ -132,6 +136,10 @@ struct i40e_ops {
- 			       struct i40e_client *client,
- 			       bool is_vf, u32 vf_id,
- 			       u32 flag, u32 valid_flag);
-+
-+	int (*client_device_register)(struct i40e_info *ldev);
-+
-+	void (*client_device_unregister)(struct i40e_info *ldev);
- };
- 
- struct i40e_client_ops {
--- 
-2.21.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gTW9uLCAxIEp1bCAyMDE5IDE1OjQ0OjI5ICswMTAwLCBMYWF0eiwgS2V2aW4gd3JvdGU6Cj4g
+T24gMjgvMDYvMjAxOSAyMToyOSwgSm9uYXRoYW4gTGVtb24gd3JvdGU6Cj4gPiBPbiAyOCBKdW4g
+MjAxOSwgYXQgOToxOSwgTGFhdHosIEtldmluIHdyb3RlOiAgCj4gPj4gT24gMjcvMDYvMjAxOSAy
+MjoyNSwgSmFrdWIgS2ljaW5za2kgd3JvdGU6ICAKPiA+Pj4gSSB0aGluayB0aGF0J3MgdmVyeSBs
+aW1pdGluZy7CoCBXaGF0IGlzIHRoZSBjaGFsbGVuZ2UgaW4gcHJvdmlkaW5nCj4gPj4+IGFsaWdu
+ZWQgYWRkcmVzc2VzLCBleGFjdGx5PyAgCj4gPj4gVGhlIGNoYWxsZW5nZXMgYXJlIHR3by1mb2xk
+Ogo+ID4+IDEpIGl0IHByZXZlbnRzIHVzaW5nIGFyYml0cmFyeSBidWZmZXIgc2l6ZXMsIHdoaWNo
+IHdpbGwgYmUgYW4gaXNzdWUgCj4gPj4gc3VwcG9ydGluZyBlLmcuIGp1bWJvIGZyYW1lcyBpbiBm
+dXR1cmUuCj4gPj4gMikgaGlnaGVyIGxldmVsIHVzZXItc3BhY2UgZnJhbWV3b3JrcyB3aGljaCBt
+YXkgd2FudCB0byB1c2UgQUZfWERQLCAKPiA+PiBzdWNoIGFzIERQREssIGRvIG5vdCBjdXJyZW50
+bHkgc3VwcG9ydCBoYXZpbmcgYnVmZmVycyB3aXRoICdmaXhlZCcgCj4gPj4gYWxpZ25tZW50Lgo+
+ID4+IMKgwqDCoCBUaGUgcmVhc29uIHRoYXQgRFBESyB1c2VzIGFyYml0cmFyeSBwbGFjZW1lbnQg
+aXMgdGhhdDoKPiA+PiDCoMKgwqAgwqDCoMKgIC0gaXQgd291bGQgc3RvcCB0aGluZ3Mgd29ya2lu
+ZyBvbiBjZXJ0YWluIE5JQ3Mgd2hpY2ggbmVlZCB0aGUgCj4gPj4gYWN0dWFsIHdyaXRhYmxlIHNw
+YWNlIHNwZWNpZmllZCBpbiB1bml0cyBvZiAxayAtIHRoZXJlZm9yZSB3ZSBuZWVkIDJrIAo+ID4+
+ICsgbWV0YWRhdGEgc3BhY2UuCj4gPj4gwqDCoMKgIMKgwqDCoCAtIHdlIHBsYWNlIHBhZGRpbmcg
+YmV0d2VlbiBidWZmZXJzIHRvIGF2b2lkIGNvbnN0YW50bHkgCj4gPj4gaGl0dGluZyB0aGUgc2Ft
+ZSBtZW1vcnkgY2hhbm5lbHMgd2hlbiBhY2Nlc3NpbmcgbWVtb3J5Lgo+ID4+IMKgwqDCoCDCoMKg
+wqAgLSBpdCBhbGxvd3MgdGhlIGFwcGxpY2F0aW9uIHRvIGNob29zZSB0aGUgYWN0dWFsIGJ1ZmZl
+ciBzaXplIAo+ID4+IGl0IHdhbnRzIHRvIHVzZS4KPiA+PiDCoMKgwqAgV2UgbWFrZSB1c2Ugb2Yg
+dGhlIGFib3ZlIHRvIGFsbG93IHVzIHRvIHNwZWVkIHVwIHByb2Nlc3NpbmcgCj4gPj4gc2lnbmlm
+aWNhbnRseSBhbmQgYWxzbyByZWR1Y2UgdGhlIHBhY2tldCBidWZmZXIgbWVtb3J5IHNpemUuCj4g
+Pj4KPiA+PiDCoMKgwqAgTm90IGhhdmluZyBhcmJpdHJhcnkgYnVmZmVyIGFsaWdubWVudCBhbHNv
+IG1lYW5zIGFuIEFGX1hEUCBkcml2ZXIgCj4gPj4gZm9yIERQREsgY2Fubm90IGJlIGEgZHJvcC1p
+biByZXBsYWNlbWVudCBmb3IgZXhpc3RpbmcgZHJpdmVycyBpbiAKPiA+PiB0aG9zZSBmcmFtZXdv
+cmtzLiBFdmVuIHdpdGggYSBuZXcgY2FwYWJpbGl0eSB0byBhbGxvdyBhbiBhcmJpdHJhcnkgCj4g
+Pj4gYnVmZmVyIGFsaWdubWVudCwgZXhpc3RpbmcgYXBwcyB3aWxsIG5lZWQgdG8gYmUgbW9kaWZp
+ZWQgdG8gdXNlIHRoYXQgCj4gPj4gbmV3IGNhcGFiaWxpdHkuICAKPiA+Cj4gPiBTaW5jZSBhbGwg
+YnVmZmVycyBpbiB0aGUgdW1lbSBhcmUgdGhlIHNhbWUgY2h1bmsgc2l6ZSwgdGhlIG9yaWdpbmFs
+IAo+ID4gYnVmZmVyCj4gPiBhZGRyZXNzIGNhbiBiZSByZWNhbGN1bGF0ZWQgd2l0aCBzb21lIG11
+bHRpcGx5L3NoaWZ0IG1hdGguIEhvd2V2ZXIsIAo+ID4gdGhpcyBpcwo+ID4gbW9yZSBleHBlbnNp
+dmUgdGhhbiBqdXN0IGEgbWFzayBvcGVyYXRpb24uICAKPiAKPiBZZXMsIHdlIGNhbiBkbyB0aGlz
+LgoKVGhhdCdkIGJlIGJlc3QsIGNhbiBEUERLIHJlYXNvbmFibHkgZ3VhcmFudGVlIHRoZSBzbGlj
+aW5nIGlzIHVuaWZvcm0/CkUuZy4gaXQncyBub3QgZGVzcGVyYXRlIGJ1ZmZlciBwb29scyB3aXRo
+IGRpZmZlcmVudCBiYXNlcz8KCj4gQW5vdGhlciBvcHRpb24gd2UgaGF2ZSBpcyB0byBhZGQgYSBz
+b2NrZXQgb3B0aW9uIGZvciBxdWVyeWluZyB0aGUgCj4gbWV0YWRhdGEgbGVuZ3RoIGZyb20gdGhl
+IGRyaXZlciAoYXNzdW1pbmcgaXQgZG9lc24ndCB2YXJ5IHBlciBwYWNrZXQpLiAKPiBXZSBjYW4g
+dXNlIHRoYXQgaW5mb3JtYXRpb24gdG8gZ2V0IGJhY2sgdG8gdGhlIG9yaWdpbmFsIGFkZHJlc3Mg
+dXNpbmcgCj4gc3VidHJhY3Rpb24uCgpVbmZvcnR1bmF0ZWx5IHRoZSBtZXRhZGF0YSBkZXBlbmRz
+IG9uIHRoZSBwYWNrZXQgYW5kIGhvdyBtdWNoIGluZm8gCnRoZSBkZXZpY2Ugd2FzIGFibGUgdG8g
+ZXh0cmFjdC4gIFNvIGl0J3MgdmFyaWFibGUgbGVuZ3RoLgoKPiBBbHRlcm5hdGl2ZWx5LCB3ZSBj
+YW4gY2hhbmdlIHRoZSBSeCBkZXNjcmlwdG9yIGZvcm1hdCB0byBpbmNsdWRlIHRoZSAKPiBtZXRh
+ZGF0YSBsZW5ndGguIFdlIGNvdWxkIGRvIHRoaXMgaW4gYSBjb3VwbGUgb2Ygd2F5cywgZm9yIGV4
+YW1wbGUsIAo+IHJhdGhlciB0aGFuIHJldHVybmluZyB0aGUgYWRkcmVzcyBhcyB0aGUgc3RhcnQg
+b2YgdGhlIHBhY2tldCwgaW5zdGVhZCAKPiByZXR1cm4gdGhlIGJ1ZmZlciBhZGRyZXNzIHRoYXQg
+d2FzIHBhc3NlZCBpbiwgYW5kIGFkZGluZyBhbm90aGVyIDE2LWJpdCAKPiBmaWVsZCB0byBzcGVj
+aWZ5IHRoZSBzdGFydCBvZiBwYWNrZXQgb2Zmc2V0IHdpdGggdGhhdCBidWZmZXIuIElmIHVzaW5n
+IAo+IGFub3RoZXIgMTYtYml0cyBvZiB0aGUgZGVzY3JpcHRvciBzcGFjZSBpcyBub3QgZGVzaXJh
+YmxlLCBhbiBhbHRlcm5hdGl2ZSAKPiBjb3VsZCBiZSB0byBsaW1pdCB1bWVtIHNpemVzIHRvIGUu
+Zy4gMl40OCBiaXRzICgyNTYgdGVyYWJ5dGVzIHNob3VsZCBiZSAKPiBlbm91Z2gsIHJpZ2h0IDot
+KSApIGFuZCB1c2UgdGhlIHJlbWFpbmluZyAxNiBiaXRzIG9mIHRoZSBhZGRyZXNzIGFzIGEgCj4g
+cGFja2V0IG9mZnNldC4gT3RoZXIgdmFyaWF0aW9ucyBvbiB0aGVzZSBhcHByb2FjaCBhcmUgb2J2
+aW91c2x5IHBvc3NpYmxlIAo+IHRvby4KClNlZW1zIHJlYXNvbmFibGUgdG8gbWUuLgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4g
+bWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1
+b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
