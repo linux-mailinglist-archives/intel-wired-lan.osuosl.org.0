@@ -1,70 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68F955D823
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 00:45:56 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 10340865E2;
-	Tue,  2 Jul 2019 22:45:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dSRzZAIIbs7i; Tue,  2 Jul 2019 22:45:54 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D7B79864F3;
-	Tue,  2 Jul 2019 22:45:53 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AF40B1BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:45:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E58B5D825
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 00:47:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AB39684F90
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:45:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9CF3F84F58;
+	Tue,  2 Jul 2019 22:47:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ubKlR5dfeqiP; Tue,  2 Jul 2019 22:47:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 607B784FA5;
+	Tue,  2 Jul 2019 22:47:00 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A5CBC1BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:46:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id A117320442
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:46:58 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vGiYOjzUvvq8 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2019 22:45:51 +0000 (UTC)
+ with ESMTP id 3VKHsSbhnApZ for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2019 22:46:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1429784F58
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:45:51 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7FA9A2010A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:46:57 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2019 15:45:50 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jul 2019 15:46:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,444,1557212400"; d="scan'208";a="184603677"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga001.fm.intel.com with ESMTP; 02 Jul 2019 15:45:49 -0700
+X-IronPort-AV: E=Sophos;i="5.63,444,1557212400"; d="scan'208";a="164163133"
+Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
+ by fmsmga008.fm.intel.com with ESMTP; 02 Jul 2019 15:46:57 -0700
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 2 Jul 2019 15:46:56 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.70]) by
- ORSMSX103.amr.corp.intel.com ([169.254.5.135]) with mapi id 14.03.0439.000;
- Tue, 2 Jul 2019 15:45:49 -0700
+ ORSMSX151.amr.corp.intel.com ([169.254.7.71]) with mapi id 14.03.0439.000;
+ Tue, 2 Jul 2019 15:46:56 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S22 01/16] ice: add lp_advertising
- flow control support
-Thread-Index: AQHVLEdqfdFUHPSbGUKpRx8+13+Tlaa39yfg
-Date: Tue, 2 Jul 2019 22:45:49 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FBDAB@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S22 02/16] ice: track hardware stat
+ registers past rollover
+Thread-Index: AQHVLEdpYjMOIXqxi0KEen22BAzffqa393Yw
+Date: Tue, 2 Jul 2019 22:46:55 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FBDC0@ORSMSX104.amr.corp.intel.com>
 References: <20190626092027.52845-1-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190626092027.52845-1-anthony.l.nguyen@intel.com>
+ <20190626092027.52845-2-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190626092027.52845-2-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDUzNzMyMDItMTEzNC00MTU3LWE4N2ItYWEwZjg5ZTNmMTZmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiSDJqcXRcLzVFTUpLdVYrbm1WVkhleW85XC81aEtDOGI3c3FMWnJlRTlGWG9sbStRczU0RG9QUlpSSHVcL3F6T1ZjVSJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjYzM2Y1ZjQtODE0ZC00MGE3LWIzYmQtYmM1ZWM2ZjNiMGVkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoicEordUN5Y1R6RVNxMStEbXdEbCs3bzd2RlVqTGVsVVlYaTRoeklnY2RsTG1iNERxcjliXC9qdnFpQkdkTkx4NHYifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S22 01/16] ice: add lp_advertising
- flow control support
+Subject: Re: [Intel-wired-lan] [PATCH S22 02/16] ice: track hardware stat
+ registers past rollover
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,59 +91,45 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Wednesday, June 26, 2019 2:20 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S22 01/16] ice: add lp_advertising flow
-> control support
+> Subject: [Intel-wired-lan] [PATCH S22 02/16] ice: track hardware stat registers
+> past rollover
 > 
-> From: Paul Greenwalt <paul.greenwalt@intel.com>
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Add support for reporting link partner advertising when
-> ETHTOOL_GLINKSETTINGS defined. Get pause param reports the Tx/Rx
-> pause configured, and then ethtool issues ETHTOOL_GSET ioctl and
-> ice_get_settings_link_up reports the negotiated Tx/Rx pause. Negotiated
-> pause frame report per IEEE 802.3-2005 table 288-3.
+> Currently, ice_stat_update32 and ice_stat_update40 will limit the value of
+> the software statistic to 32 or 40 bits wide, depending on which register is
+> being read.
 > 
-> $ ethtool --show-pause ens6f0
-> Pause parameters for ens6f0:
-> Autonegotiate:  on
-> RX:             on
-> TX:             on
-> RX negotiated:  on
-> TX negotiated:  on
+> This means that if a driver is running for a long time, the displayed software
+> register values will roll over to zero at 40 bits or 32 bits.
 > 
-> $ ethtool ens6f0
-> Settings for ens6f0:
->         Supported ports: [ FIBRE ]
->         Supported link modes:   25000baseCR/Full
->         Supported pause frame use: Symmetric
->         Supports auto-negotiation: Yes
->         Supported FEC modes: None BaseR RS
->         Advertised link modes:  25000baseCR/Full
->         Advertised pause frame use: Symmetric Receive-only
->         Advertised auto-negotiation: Yes
->         Advertised FEC modes: None BaseR RS
->         Link partner advertised link modes:  Not reported
->         Link partner advertised pause frame use: Symmetric
->         Link partner advertised auto-negotiation: Yes
->         Link partner advertised FEC modes: Not reported
->         Speed: 25000Mb/s
->         Duplex: Full
->         Port: Direct Attach Copper
->         PHYAD: 0
->         Transceiver: internal
->         Auto-negotiation: on
->         Supports Wake-on: g
->         Wake-on: g
->         Current message level: 0x00000007 (7)
->                                drv probe link
->         Link detected: yes
+> This occurs because the functions directly assign the difference between the
+> previous value and current value of the hardware statistic.
 > 
-> When ETHTOOL_GLINKSETTINGS is not defined, get pause param reports the
-> negotiated Tx/Rx pause.
+> Instead, add this value to the current software statistic, and then update the
+> previous value.
 > 
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> In this way, each time ice_stat_update40 or ice_stat_update32 are called,
+> they will increment the software tracking value by the difference of the
+> hardware register from its last read. The software tracking value will correctly
+> count up until it overflows a u64.
+> 
+> The only requirement is that the ice_stat_update functions be called at least
+> once each time the hardware register overflows.
+> 
+> While we're fixing ice_stat_update40, modify it to use rd64 instead of two
+> calls to rd32. Additionally, drop the now unnecessary hireg function
+> parameter.
+> 
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_ethtool.c | 104 +++++++++++++------
->  1 file changed, 72 insertions(+), 32 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_common.c   | 57 +++++++-----
+>  drivers/net/ethernet/intel/ice/ice_common.h   |  4 +-
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   | 30 -------
+>  drivers/net/ethernet/intel/ice/ice_lib.c      | 40 ++++-----
+>  drivers/net/ethernet/intel/ice/ice_main.c     | 90 ++++++++-----------
+>  5 files changed, 91 insertions(+), 130 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
