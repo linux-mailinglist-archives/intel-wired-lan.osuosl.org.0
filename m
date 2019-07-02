@@ -1,76 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 538C85D52D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2019 19:26:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 197A05D240
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2019 17:01:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F41341FE0A;
-	Tue,  2 Jul 2019 17:26:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BDA8B87B0E;
+	Tue,  2 Jul 2019 15:01:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pAfkZC2FaivP; Tue,  2 Jul 2019 17:26:04 +0000 (UTC)
+	with ESMTP id buzfVqrGwg5b; Tue,  2 Jul 2019 15:01:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D58A221526;
-	Tue,  2 Jul 2019 17:25:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 418F987ACB;
+	Tue,  2 Jul 2019 15:01:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CA4E81BF97E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 13:58:51 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EFA5D1BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 15:01:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C276285F7C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 13:58:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EBEDF207A2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 15:01:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QRV5DLYJ5T5j for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2019 13:58:51 +0000 (UTC)
+ with ESMTP id 5wJ9N4JeXrG8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2019 15:01:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com
- [209.85.167.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 16B2E85F57
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 13:58:51 +0000 (UTC)
-Received: by mail-oi1-f193.google.com with SMTP id u15so12977076oiv.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 02 Jul 2019 06:58:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BsQb0987y7DGJiCbM+1oRL5bU8C7dXL+HPdc6nvVup8=;
- b=BCjN6TDckKE5YwlGwOhJycynO81a7qTVY0qR/emABsFXko0iCkjX15mFts+Yoj7tnF
- LGe5ZEBwT/YSOiXukqNuRtrFIjSHNS2dKomSABWgUKrZqEFQdftHc2s+nEeLBDVNmOvG
- YJgC+t0yCbyTesZMNC45yauuRu8d4Hq/tbAPfd0DMzj8CWvXyw1JHAC0DUZ3vENbGLMg
- pB4zE96mo9QopN8oKZfr5f7k5izKsm8w4oc7Q2D9Xx8LthVwwzLArBkqCc65CGfmeIJn
- CoB2+CNytDOOv0dj9PN4Wb/u5ff5vnw9baPTjxOXsPWJSAdgdqD6q5YKC2UnQETtkP1o
- BIhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BsQb0987y7DGJiCbM+1oRL5bU8C7dXL+HPdc6nvVup8=;
- b=qUo6/sEGQUKM+Zzj8iQXYhTo0SXW/jcKM4r60xVba2A8OJqqsxXNv6AXFFXFkJ1JZx
- 3M8fcF2NlvYvh/1k1XNUdeR0S8DOE843mPLJgsiUoZz+dRJQrpBFaLGhqgRLiI0gk7j4
- lB5mLNVsDw/us811UVF1NanWFjMcoN6GHzNhhJrHyXr9m127XRxGtnu62nIk+A1eNupl
- +EnrDnACimG0T7mnVasJb6bbfvoH2Rg6EXuCcO3/ZeVCTOpEoEvVCU1fiXPr9sjyEj6p
- 10yY8GNxwZU7DUd446B05IjuvRvZdQw8EH7bm5gI2fHo0nl4FPIwAQsfvRShoR/e4rGz
- 1x2w==
-X-Gm-Message-State: APjAAAVaFg/DIIq7NaYnRnKSeJJShu11lc5Jayjx+xIzGROHka3QDoP4
- +C18m8ojUzgLVlit9HYZpoSuqYE2XhW4RM2s0uU=
-X-Google-Smtp-Source: APXvYqxN5xda1GqazGPAFddIWqo5p+zXSgrM8ZaqJVN2w4UvmWOrV5+NVonOsYljFi7ERJFMUVlcNFxhO/OmBpuZwtw=
-X-Received: by 2002:aca:4306:: with SMTP id q6mr3114545oia.39.1562075930038;
- Tue, 02 Jul 2019 06:58:50 -0700 (PDT)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id B453A20113
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 15:01:01 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jul 2019 08:01:00 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,443,1557212400"; d="scan'208";a="315262926"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga004.jf.intel.com with ESMTP; 02 Jul 2019 08:00:58 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hiKHC-0000PU-Bd; Tue, 02 Jul 2019 23:00:58 +0800
+Date: Tue, 02 Jul 2019 23:00:11 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d1b717b.8QbieZ1wxcua0X+T%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <1562059288-26773-1-git-send-email-magnus.karlsson@intel.com>
- <1562059288-26773-3-git-send-email-magnus.karlsson@intel.com>
- <d4318783-18a4-d5c1-1044-691aaebb2b0a@mellanox.com>
-In-Reply-To: <d4318783-18a4-d5c1-1044-691aaebb2b0a@mellanox.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Tue, 2 Jul 2019 15:58:38 +0200
-Message-ID: <CAJ8uoz0jnR99iVCK+f3U5=Xo7JQ1SRM=Os7A0J9cTb_=8bL_Mg@mail.gmail.com>
-To: Maxim Mikityanskiy <maximmi@mellanox.com>
-X-Mailman-Approved-At: Tue, 02 Jul 2019 17:25:57 +0000
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v2 2/6] xsk: add support for
- need_wakeup flag in AF_XDP rings
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ abfc9e5eee45f0c0835c6aa90c248586382bcb34
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,100 +63,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "axboe@kernel.dk" <axboe@kernel.dk>,
- "maciejromanfijalkowski@gmail.com" <maciejromanfijalkowski@gmail.com>,
- "kevin.laatz@intel.com" <kevin.laatz@intel.com>,
- "jakub.kicinski@netronome.com" <jakub.kicinski@netronome.com>,
- "daniel@iogearbox.net" <daniel@iogearbox.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "ciara.loftus@intel.com" <ciara.loftus@intel.com>,
- "qi.z.zhang@intel.com" <qi.z.zhang@intel.com>,
- "ast@kernel.org" <ast@kernel.org>,
- "xiaolong.ye@intel.com" <xiaolong.ye@intel.com>,
- "ilias.apalodimas@linaro.org" <ilias.apalodimas@linaro.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "brouer@redhat.com" <brouer@redhat.com>,
- "bruce.richardson@intel.com" <bruce.richardson@intel.com>,
- "maciej.fijalkowski@intel.com" <maciej.fijalkowski@intel.com>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "bjorn.topel@intel.com" <bjorn.topel@intel.com>,
- Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jul 2, 2019 at 3:47 PM Maxim Mikityanskiy <maximmi@mellanox.com> wrote:
->
-> On 2019-07-02 12:21, Magnus Karlsson wrote:
-> >
-> > +/* XDP_RING flags */
-> > +#define XDP_RING_NEED_WAKEUP (1 << 0)
-> > +
-> >   struct xdp_ring_offset {
-> >       __u64 producer;
-> >       __u64 consumer;
-> >       __u64 desc;
-> > +     __u64 flags;
-> >   };
-> >
-> >   struct xdp_mmap_offsets {
->
-> <snip>
->
-> > @@ -621,9 +692,12 @@ static int xsk_getsockopt(struct socket *sock, int level, int optname,
-> >       case XDP_MMAP_OFFSETS:
-> >       {
-> >               struct xdp_mmap_offsets off;
-> > +             bool flags_supported = true;
-> >
-> > -             if (len < sizeof(off))
-> > +             if (len < sizeof(off) - sizeof(off.rx.flags))
-> >                       return -EINVAL;
-> > +             else if (len < sizeof(off))
-> > +                     flags_supported = false;
-> >
-> >               off.rx.producer = offsetof(struct xdp_rxtx_ring, ptrs.producer);
-> >               off.rx.consumer = offsetof(struct xdp_rxtx_ring, ptrs.consumer);
-> > @@ -638,6 +712,16 @@ static int xsk_getsockopt(struct socket *sock, int level, int optname,
-> >               off.cr.producer = offsetof(struct xdp_umem_ring, ptrs.producer);
-> >               off.cr.consumer = offsetof(struct xdp_umem_ring, ptrs.consumer);
-> >               off.cr.desc     = offsetof(struct xdp_umem_ring, desc);
-> > +             if (flags_supported) {
-> > +                     off.rx.flags = offsetof(struct xdp_rxtx_ring,
-> > +                                             ptrs.flags);
-> > +                     off.tx.flags = offsetof(struct xdp_rxtx_ring,
-> > +                                             ptrs.flags);
-> > +                     off.fr.flags = offsetof(struct xdp_umem_ring,
-> > +                                             ptrs.flags);
-> > +                     off.cr.flags = offsetof(struct xdp_umem_ring,
-> > +                                             ptrs.flags);
-> > +             }
->
-> As far as I understood (correct me if I'm wrong), you are trying to
-> preserve backward compatibility, so that if userspace doesn't support
-> the flags field, you will determine that by looking at len and fall back
-> to the old format.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: abfc9e5eee45f0c0835c6aa90c248586382bcb34  ice: improve print for VF's when adding/deleting MAC filters
 
-That was the intention yes.
+elapsed time: 458m
 
-> However, two things are broken here:
->
-> 1. The check `len < sizeof(off) - sizeof(off.rx.flags)` should be `len <
-> sizeof(off) - 4 * sizeof(flags)`, because struct xdp_mmap_offsets
-> consists of 4 structs xdp_ring_offset.
->
-> 2. The old and new formats are not binary compatible, as flags are
-> inserted in the middle of struct xdp_mmap_offsets.
+configs tested: 57
 
-You are correct. Since there are four copies of the xdp_ring_offset
-this simple scheme will not work. I will instead create an internal
-version 1 of the struct that I fill in and pass to user space if I
-detect that user space is asking for the v1 size.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Thanks for catching Maxim. Keep'em coming.
+c6x                        evmc6678_defconfig
+h8300                    h8300h-sim_defconfig
+nios2                         10m50_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+openrisc                    or1ksim_defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+i386                   randconfig-x010-201926
+i386                   randconfig-x011-201926
+i386                   randconfig-x012-201926
+i386                   randconfig-x013-201926
+i386                   randconfig-x014-201926
+i386                   randconfig-x015-201926
+i386                   randconfig-x016-201926
+i386                   randconfig-x017-201926
+i386                   randconfig-x018-201926
+i386                   randconfig-x019-201926
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+x86_64                           allyesconfig
+i386                             allmodconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                                nfsroot
 
-/Magnus
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
