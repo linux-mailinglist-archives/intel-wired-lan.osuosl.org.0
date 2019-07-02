@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDFCE5D842
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 00:59:01 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E76B75D845
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 00:59:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 61F3D20016;
-	Tue,  2 Jul 2019 22:59:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9BA288651F;
+	Tue,  2 Jul 2019 22:59:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vASlwZpifmEL; Tue,  2 Jul 2019 22:59:00 +0000 (UTC)
+	with ESMTP id 8DNLT-h5GYAZ; Tue,  2 Jul 2019 22:59:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0E1AD20781;
-	Tue,  2 Jul 2019 22:58:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 70EB8811DD;
+	Tue,  2 Jul 2019 22:59:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 708501BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:58:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EF2F91BF25F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:59:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5F534873DA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:58:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EA7B284B82
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:59:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L1Qg9kGD2U+A for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2019 22:58:56 +0000 (UTC)
+ with ESMTP id 0jrIctY7VynT for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2019 22:59:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6BE5B86FCD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:58:55 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 35FA7811DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2019 22:59:29 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2019 15:58:55 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jul 2019 15:59:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,444,1557212400"; d="scan'208";a="164165890"
-Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
- by fmsmga008.fm.intel.com with ESMTP; 02 Jul 2019 15:58:55 -0700
-Received: from orsmsx156.amr.corp.intel.com (10.22.240.22) by
- ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 2 Jul 2019 15:58:54 -0700
+X-IronPort-AV: E=Sophos;i="5.63,444,1557212400"; d="scan'208";a="165806064"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by fmsmga007.fm.intel.com with ESMTP; 02 Jul 2019 15:59:28 -0700
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 2 Jul 2019 15:59:27 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.70]) by
- ORSMSX156.amr.corp.intel.com ([169.254.8.198]) with mapi id 14.03.0439.000;
- Tue, 2 Jul 2019 15:58:54 -0700
+ ORSMSX151.amr.corp.intel.com ([169.254.7.71]) with mapi id 14.03.0439.000;
+ Tue, 2 Jul 2019 15:59:28 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S22 13/16] ice: Don't return error
- for disabling LAN Tx queue that does exist
-Thread-Index: AQHVLEdbURVlJOuIvEWePKPt8kKVKqa3+tJw
-Date: Tue, 2 Jul 2019 22:58:53 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FBE74@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S22 14/16] ice: Remove unnecessary
+ flag ICE_FLAG_MSIX_ENA
+Thread-Index: AQHVLEdi54hx6W+ZzkiE7VM9Al30Nqa3+vcw
+Date: Tue, 2 Jul 2019 22:59:26 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FBE84@ORSMSX104.amr.corp.intel.com>
 References: <20190626092027.52845-1-anthony.l.nguyen@intel.com>
- <20190626092027.52845-13-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190626092027.52845-13-anthony.l.nguyen@intel.com>
+ <20190626092027.52845-14-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190626092027.52845-14-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTZlNDNiNmEtN2EyYS00ZTNlLWI0OTktMTI3YjAxZDM3NjYxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTThJekI0bzZCZUpvTndcL0pWMmg4bUJNTnpKNXgwWWhvcWU4THZpMEpucVRNZDNcL3pjY1ZHYjhOQ1dVRzhIZWtkIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjY2Njg1YzUtMjUwNS00MDE3LWJkNDgtNTQ2ODIyNTk0ZGMxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiakd5amlPRHRRTXFBMm8xQkYrYkh0dFVva2Y4dkFBOFZTQXdJMnNlcTZzVktGc0c2Tk53STNacWtRbWpZTFBsSCJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S22 13/16] ice: Don't return error for
- disabling LAN Tx queue that does exist
+Subject: Re: [Intel-wired-lan] [PATCH S22 14/16] ice: Remove unnecessary
+ flag ICE_FLAG_MSIX_ENA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,21 +91,24 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Wednesday, June 26, 2019 2:20 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Cc: Abodunrin, Akeem G <akeem.g.abodunrin@intel.com>
-> Subject: [Intel-wired-lan] [PATCH S22 13/16] ice: Don't return error for
-> disabling LAN Tx queue that does exist
+> Cc: Creeley, Brett <brett.creeley@intel.com>
+> Subject: [Intel-wired-lan] [PATCH S22 14/16] ice: Remove unnecessary flag
+> ICE_FLAG_MSIX_ENA
 > 
-> From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> From: Brett Creeley <brett.creeley@intel.com>
 > 
-> Since Tx rings are being managed by FW/NVM, Tx rings might have not been
-> set up or driver had already wiped them off - In that case, call to disable LAN
-> Tx queue is being returned as not in existence. This patch makes sure we
-> don't return unnecessary error for such scenario.
+> This flag is not needed and is called every time we re-enable interrupts in the
+> hotpath so remove it. Also remove ice_vsi_req_irq() because it was a
+> wrapper function for ice_vsi_req_irq_msix() whose sole purpose was
+> checking the ICE_FLAG_MSIX_ENA flag.
 > 
-> Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_lib.c | 3 +++
->  1 file changed, 3 insertions(+)
+>  drivers/net/ethernet/intel/ice/ice.h      |  1 -
+>  drivers/net/ethernet/intel/ice/ice_lib.c  | 71 +++++++++-------------
+> drivers/net/ethernet/intel/ice/ice_main.c | 74 ++++++-----------------
+> drivers/net/ethernet/intel/ice/ice_txrx.c |  4 +-
+>  4 files changed, 48 insertions(+), 102 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
