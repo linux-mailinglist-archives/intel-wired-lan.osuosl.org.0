@@ -2,73 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CADDC5EB47
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 20:12:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EB7C5EB4E
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 20:13:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8138D87B69;
-	Wed,  3 Jul 2019 18:12:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CEFE887C8C;
+	Wed,  3 Jul 2019 18:13:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TtV25EbfLifH; Wed,  3 Jul 2019 18:12:42 +0000 (UTC)
+	with ESMTP id jUEnhPfRI96d; Wed,  3 Jul 2019 18:13:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 37D6A87C2C;
-	Wed,  3 Jul 2019 18:12:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8D8B87C2C;
+	Wed,  3 Jul 2019 18:13:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C0B751BF321
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:12:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 663FF1BF321
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:13:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BD10D87B69
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:12:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 62C0987B69
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:13:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JdEYXlfNVlKk for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Jul 2019 18:12:40 +0000 (UTC)
+ with ESMTP id Z3ZpNX8VYkFr for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Jul 2019 18:13:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 110B086D78
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:12:40 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0054C86D78
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:13:19 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Jul 2019 11:12:39 -0700
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 03 Jul 2019 11:13:19 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,446,1557212400"; d="scan'208";a="339385438"
-Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
- by orsmga005.jf.intel.com with ESMTP; 03 Jul 2019 11:12:39 -0700
-Received: from orsmsx124.amr.corp.intel.com (10.22.240.120) by
- ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 3 Jul 2019 11:12:39 -0700
+X-IronPort-AV: E=Sophos;i="5.63,446,1557212400"; d="scan'208";a="363120445"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by fmsmga006.fm.intel.com with ESMTP; 03 Jul 2019 11:13:18 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.70]) by
- ORSMSX124.amr.corp.intel.com ([169.254.2.150]) with mapi id 14.03.0439.000;
- Wed, 3 Jul 2019 11:12:38 -0700
+ ORSMSX105.amr.corp.intel.com ([169.254.2.207]) with mapi id 14.03.0439.000;
+ Wed, 3 Jul 2019 11:13:18 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S23 v2 04/15] ice: Restructure VFs
- initialization flows
-Thread-Index: AQHVLgmUqofiIhAet0yplxxnqZp53qa5Oaig
-Date: Wed, 3 Jul 2019 18:12:37 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FD113@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S23 v2 05/15] ice: fix set pause
+ param autoneg check
+Thread-Index: AQHVLgmU9i1y6xeZykeZpey7EdRmdKa5Odhw
+Date: Wed, 3 Jul 2019 18:13:17 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FD123@ORSMSX104.amr.corp.intel.com>
 References: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
- <20190628150332.59155-4-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190628150332.59155-4-anthony.l.nguyen@intel.com>
+ <20190628150332.59155-5-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190628150332.59155-5-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDQ4NzA3MjUtMmNjZS00NjhkLWExNDAtYTUyYWY5MDI5ODM3IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWVd1bjMwaTR5eGYzZzdtT3dkdGtrR0hNTDllaWhsd21uRVVZTG9ISFhsRjhmMXA1d2NZR3VwcDFZUzErVVJ4TSJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTkyZmJlMWMtMWY5Ni00MmU4LTllMzgtODU5ZDMxOWFiMWM4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoieE80UE03NHN2RVdoSVB3eTVIeTU5TlBxbDhvelA1dGVhS0V5WUsxYU02bnRDQTVyNVwvNm5vajNvd0V4ZmtKTGUifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S23 v2 04/15] ice: Restructure VFs
- initialization flows
+Subject: Re: [Intel-wired-lan] [PATCH S23 v2 05/15] ice: fix set pause param
+ autoneg check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,27 +88,24 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Friday, June 28, 2019 8:03 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S23 v2 04/15] ice: Restructure VFs
-> initialization flows
+> Subject: [Intel-wired-lan] [PATCH S23 v2 05/15] ice: fix set pause param
+> autoneg check
 > 
-> From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> From: Paul Greenwalt <paul.greenwalt@intel.com>
 > 
-> This patch restructures how VFs are configured, and resources allocated.
-> Instead of freeing resources that were never allocated, and resetting empty
-> VFs that have never been created - the new flow will just allocate resources
-> for number of requested VFs based on the availability.
+> When ETHTOOL_GLINKSETTINGS is defined get pause param pause-
+> >autoneg reports SW configured setting, however when not defined get
+> pause param
+> pause->autoneg reports the link status. Set pause param needs to compare
+> pause->autoneg with the same source as get pause param to block the user
+> from changing autoneg with the set pause param option, or the user may be
+> incorrectly blocked from changing Rx|Tx pause settings.
 > 
-> During VFs initialization process, global interrupt is disabled, and rearmed
-> after getting MSIX vectors for VFs. This allows immediate mailbox
-> communications, instead of delaying it till later and VFs.
-> PF communications resulted to using polling instead of actual interrupt.
-> The issue manifested when creating higher number of VFs (128 VFs) per PF.
-> 
-> Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h          |  1 +
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 70 +++++++++++++------
->  2 files changed, 49 insertions(+), 22 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c | 28 +++++++++++++++++++-
+>  1 file changed, 27 insertions(+), 1 deletion(-)
+
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
