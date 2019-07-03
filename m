@@ -1,71 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB6CF5EEB2
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 23:42:20 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A8D36203CA;
-	Wed,  3 Jul 2019 21:42:19 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s9QbxssaBjvz; Wed,  3 Jul 2019 21:42:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C0D4D22005;
-	Wed,  3 Jul 2019 21:42:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8020A1BF488
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 21:42:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 414AB5EEB5
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 23:42:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7C3C785C10
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 21:42:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EB29B85B68;
+	Wed,  3 Jul 2019 21:42:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hCMS51hYPKNL; Wed,  3 Jul 2019 21:42:49 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2E9CE85C77;
+	Wed,  3 Jul 2019 21:42:49 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 01CAF1BF488
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 21:42:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id F31F121567
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 21:42:46 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0kqumaGem0Hm for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Jul 2019 21:42:15 +0000 (UTC)
+ with ESMTP id AjlJoZeI1H+z for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Jul 2019 21:42:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 42FBC85B68
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 21:42:15 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6B9A7203E1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 21:42:46 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Jul 2019 14:42:14 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 03 Jul 2019 14:42:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,448,1557212400"; d="scan'208";a="164468573"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by fmsmga008.fm.intel.com with ESMTP; 03 Jul 2019 14:42:14 -0700
+X-IronPort-AV: E=Sophos;i="5.63,448,1557212400"; d="scan'208";a="339429187"
+Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
+ by orsmga005.jf.intel.com with ESMTP; 03 Jul 2019 14:42:45 -0700
+Received: from orsmsx124.amr.corp.intel.com (10.22.240.120) by
+ ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 3 Jul 2019 14:42:45 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.70]) by
- ORSMSX106.amr.corp.intel.com ([169.254.1.113]) with mapi id 14.03.0439.000;
- Wed, 3 Jul 2019 14:42:14 -0700
+ ORSMSX124.amr.corp.intel.com ([169.254.2.150]) with mapi id 14.03.0439.000;
+ Wed, 3 Jul 2019 14:42:45 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S7 7/9] i40e: Log info when PF
- is entering and leaving Allmulti mode.
-Thread-Index: AQHVMRcjliGzUnt5UkaQ0dnBVFM6raa5bhjA
-Date: Wed, 3 Jul 2019 21:42:13 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FD280@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S7 8/9] i40e: verify string
+ count matches even on early return
+Thread-Index: AQHVMReEDXVfr4vZnUu8pB+PoxlpjKa5bkAQ
+Date: Wed, 3 Jul 2019 21:42:45 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FD290@ORSMSX104.amr.corp.intel.com>
 References: <20190702122259.79070-1-alice.michael@intel.com>
- <20190702122259.79070-7-alice.michael@intel.com>
-In-Reply-To: <20190702122259.79070-7-alice.michael@intel.com>
+ <20190702122259.79070-8-alice.michael@intel.com>
+In-Reply-To: <20190702122259.79070-8-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDA0NTYwODUtNWMwOS00OTExLWE1YjUtMjYzOWEyZTgyNzY0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTkhFUktoNzlQcWNuT1dvUURvWHczRGplMW9qd0ZQMStlaUw3d3NUN3A0c0dcL3QyMVUzSjB2aWhPbExKbTBJYVgifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNDdkNmVjOTEtMzIyMS00ODcwLTk4ZWQtN2EzZDA1Njk0MDVhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNThxNmxMaDlrVHJFdUdjV1pyaFBtaENySDVOOGxWbFwvTDVTc1I5YU1uQ1ZLZVZrWVwveWhZQjF0WnBtODRaN09NIn0=
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S7 7/9] i40e: Log info when PF is
- entering and leaving Allmulti mode.
+Subject: Re: [Intel-wired-lan] [next PATCH S7 8/9] i40e: verify string count
+ matches even on early return
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,20 +92,19 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Tuesday, July 2, 2019 5:23 AM
 > To: Michael, Alice <alice.michael@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Cc: Zagorski, CzeslawX <czeslawx.zagorski@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S7 7/9] i40e: Log info when PF is
-> entering and leaving Allmulti mode.
+> Subject: [Intel-wired-lan] [next PATCH S7 8/9] i40e: verify string count
+> matches even on early return
 > 
-> From: Czeslaw Zagorski <czeslawx.zagorski@intel.com>
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Add log when PF is entering and leaving Allmulti mode. The change of PF
-> state is visible in dmesg now. Without this commit, entering and leaving
-> Allmulti mode is not logged in dmesg.
+> Similar to i40e_get_ethtool_stats, add a goto to verify that the data pointer
+> for the strings lines up with the expected stats count. This helps ensure that
+> bugs are not introduced when adding stats.
 > 
-> Signed-off-by: Czeslaw Zagorski <czeslawx.zagorski@intel.com>
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
