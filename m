@@ -1,71 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61EFA5EB71
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 20:19:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 471195EB72
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2019 20:19:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D0BEA86E5C;
-	Wed,  3 Jul 2019 18:19:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E721784331;
+	Wed,  3 Jul 2019 18:19:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rtgfGJWcz0Pa; Wed,  3 Jul 2019 18:19:12 +0000 (UTC)
+	with ESMTP id kau87LvKdXqL; Wed,  3 Jul 2019 18:19:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5A78087C20;
-	Wed,  3 Jul 2019 18:19:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B4EE184417;
+	Wed,  3 Jul 2019 18:19:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 673141BF321
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:19:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 30AAD1BF321
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:19:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6377C84331
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:19:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2D10684331
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:19:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1kH3GVlh4KOk for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Jul 2019 18:19:10 +0000 (UTC)
+ with ESMTP id 2eyi8suYQoyJ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Jul 2019 18:19:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EFDAA836D6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:19:09 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C129B836D6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2019 18:19:39 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Jul 2019 11:19:09 -0700
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 03 Jul 2019 11:19:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,446,1557212400"; d="scan'208";a="166057138"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by fmsmga007.fm.intel.com with ESMTP; 03 Jul 2019 11:19:09 -0700
+X-IronPort-AV: E=Sophos;i="5.63,446,1557212400"; d="scan'208";a="154836425"
+Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
+ by orsmga007.jf.intel.com with ESMTP; 03 Jul 2019 11:19:39 -0700
+Received: from orsmsx124.amr.corp.intel.com (10.22.240.120) by
+ ORSMSX108.amr.corp.intel.com (10.22.240.6) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 3 Jul 2019 11:19:38 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.70]) by
- ORSMSX101.amr.corp.intel.com ([169.254.8.95]) with mapi id 14.03.0439.000;
- Wed, 3 Jul 2019 11:19:09 -0700
+ ORSMSX124.amr.corp.intel.com ([169.254.2.150]) with mapi id 14.03.0439.000;
+ Wed, 3 Jul 2019 11:19:38 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S23 v2 12/15] ice: Increase size of
- Mailbox receive queue for many VFs
-Thread-Index: AQHVLgmSo7+/cfj/SkejZxrgJS+my6a5O3qA
-Date: Wed, 3 Jul 2019 18:19:08 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FD193@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S23 v2 13/15] ice: Move VF resources
+ definition to SR-IOV specific file
+Thread-Index: AQHVLgmQN2NvxfkyJk+rVfzvbewpW6a5O57A
+Date: Wed, 3 Jul 2019 18:19:38 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D3FD1A3@ORSMSX104.amr.corp.intel.com>
 References: <20190628150332.59155-1-anthony.l.nguyen@intel.com>
- <20190628150332.59155-12-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190628150332.59155-12-anthony.l.nguyen@intel.com>
+ <20190628150332.59155-13-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190628150332.59155-13-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWEzZTcxOWEtYTEwOS00NGZmLWExOTYtODZkMGI2NjBiOGRhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiOXBBVlczQWxObzRpXC9DaklTWnphYmdyeXdvYW5TOERGY1RpVGFvUWZWb1dPcWNmYlVNWmxpV0JDaXNpeEpJT2cifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMjk2MWE4NjEtNGIwNi00M2FlLWFkZjMtMzZiM2YxODY2NTlhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQm9hM2dmeWtWRWk3NUNmRXZtemZNYUFtRFBkTDc3bWNMY0loWjVLajA4cEl4aHJrTDdwak1GYnkxU2lmMkEweSJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S23 v2 12/15] ice: Increase size of
- Mailbox receive queue for many VFs
+Subject: Re: [Intel-wired-lan] [PATCH S23 v2 13/15] ice: Move VF resources
+ definition to SR-IOV specific file
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,29 +91,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Friday, June 28, 2019 8:04 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S23 v2 12/15] ice: Increase size of Mailbox
-> receive queue for many VFs
+> Subject: [Intel-wired-lan] [PATCH S23 v2 13/15] ice: Move VF resources
+> definition to SR-IOV specific file
 > 
-> From: Brett Creeley <brett.creeley@intel.com>
+> From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 > 
-> Currently we use the ICE_MBXQ_LEN for both the Mailbox send and receive
-> queues that are used to communicate with VFs. This is fine for the send
-> queue because the PF driver will lock the queue for every single send, but
-> for the Mailbox receive queue every VF is posting to its Mailbox send queue
-> and the hardware is then handing the message to the PF on its Mailbox
-> receive queue. This becomes a problem with many VFs because it seems to
-> overburden the Mailbox receive queue on the PF. Fix this by increasing the
-> Mailbox receive queue for the PF to 512 entries.
+> In order to use some of the VF resources definition in the SR-IOV specific
+> virtchnl header file, this patch moves applicable code to ice_virtchnl_pf.h file
+> accordingly... and they should have been defined in the destination file
+> originally.
 > 
-> The number 512 was determined based on the number of VFs supported by
-> the device. We can have a total of 256 VFs so in the worst case this allows the
-> VFs to put 2 messages in the PFs Mailbox receive queue at the same time.
-> 
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+> Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h      | 3 ++-
->  drivers/net/ethernet/intel/ice/ice_main.c | 4 ++--
->  2 files changed, 4 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice.h             | 10 ----------
+>  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h | 13 +++++++++++++
+>  2 files changed, 13 insertions(+), 10 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
