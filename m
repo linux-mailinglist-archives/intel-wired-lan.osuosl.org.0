@@ -1,74 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADB67627A7
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jul 2019 19:51:07 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19C3562C57
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jul 2019 01:12:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 579832076E;
-	Mon,  8 Jul 2019 17:51:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 759CD85B3D;
+	Mon,  8 Jul 2019 23:12:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c75XkSoRXm9o; Mon,  8 Jul 2019 17:51:06 +0000 (UTC)
+	with ESMTP id WHGKyOl7v6Zi; Mon,  8 Jul 2019 23:12:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 82C5E20767;
-	Mon,  8 Jul 2019 17:51:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1F01285AF1;
+	Mon,  8 Jul 2019 23:12:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CA5371BF371
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2019 17:51:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8FFC41BF46A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2019 23:12:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C669F85149
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2019 17:51:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8D733214EB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2019 23:12:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id du2iTJQB9ODe for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Jul 2019 17:51:03 +0000 (UTC)
+ with ESMTP id l-pcYuA0whQM for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Jul 2019 23:12:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 36B1381726
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2019 17:51:03 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id CED0E20356
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2019 23:12:39 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2019 10:51:02 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Jul 2019 16:12:39 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,466,1557212400"; d="scan'208";a="155929845"
-Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
- by orsmga007.jf.intel.com with ESMTP; 08 Jul 2019 10:51:02 -0700
-Received: from orsmsx115.amr.corp.intel.com (10.22.240.11) by
- ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 8 Jul 2019 10:51:02 -0700
-Received: from orsmsx104.amr.corp.intel.com ([169.254.4.232]) by
- ORSMSX115.amr.corp.intel.com ([169.254.4.240]) with mapi id 14.03.0439.000;
- Mon, 8 Jul 2019 10:51:02 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH rdma-next 17/17] RDMA/i40iw: Mark
- i40iw as deprecated
-Thread-Index: AQHVLqwYMj+OR6PV1km1Hkhf8/KgSabBDgPg
-Date: Mon, 8 Jul 2019 17:51:01 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D405702@ORSMSX104.amr.corp.intel.com>
-References: <20190629185405.1601-1-shiraz.saleem@intel.com>
- <20190629185405.1601-18-shiraz.saleem@intel.com>
-In-Reply-To: <20190629185405.1601-18-shiraz.saleem@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTE3MzQ5ZDEtN2ZlZS00MzRiLTg1ZWYtNTQwYmQwYWUzODNkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVFptVVpTMGtwK3o5elNnXC9YUTRvaTFKcGhuTFVRSEp0eUtEdjJcL3g0QTZJNHNcL2o2dlE3VnFqQjdPaEhBVncyWiJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.400.15
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.140]
+X-IronPort-AV: E=Sophos;i="5.63,468,1557212400"; d="scan'208";a="192484769"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.172])
+ by fmsmga002.fm.intel.com with ESMTP; 08 Jul 2019 16:12:39 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Mon,  8 Jul 2019 16:12:17 -0700
+Message-Id: <20190708231236.20516-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.22.0.214.g8dca754b1e87
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH rdma-next 17/17] RDMA/i40iw: Mark
- i40iw as deprecated
+Subject: [Intel-wired-lan] [PATCH 00/19] cleanup cppcheck warnings for fm10k
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,26 +65,74 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Shiraz Saleem
-> Sent: Saturday, June 29, 2019 11:54 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Saleem, Shiraz <shiraz.saleem@intel.com>
-> Subject: [Intel-wired-lan] [PATCH rdma-next 17/17] RDMA/i40iw: Mark i40iw
-> as deprecated
-> 
-> Mark i40iw as deprecated/obsolete.
-> 
-> irdma is the replacement driver that supports X722.
-> 
-> Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
-> ---
->  drivers/infiniband/hw/i40iw/Kconfig | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+This series contains several patches which resolve various warnings
+generated by using the cppcheck tool on the fm10k driver source code.
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+The most comment fix is to reduce the scope of local variables where
+possible, and the first 10 patches fix issues like this.
 
+The remaining 9 patches fix other issues found by the tool. Only one of the
+patches contains what is likely a bug fix. Specifically, the last patch in
+the series fixes a 64-bit register read issue where we failed to bitwise or
+the high and low registers together. As this is only in the reporting flow
+for fault detection, it is relatively minor.
+
+This series does not fix all of the cppcheck warnings:
+
+[fm10k_ethtool.c:332]: (style) Argument 'idx!=29' to function BUG_ON is always 0
+
+This warning is due to the fact that we can't use BUILD_BUG_ON. cppcheck is
+smart enough to realize that the index will always be 29, and thus that
+BUG_ON will never be triggered.
+
+[fm10k_mbx.c:335] -> [fm10k_mbx.c:356]: (style) Variable 'head' is reassigned a value before the old one has been used.
+[fm10k_mbx.c:350] -> [fm10k_mbx.c:356]: (style) Variable 'head' is reassigned a value before the old one has been used.
+[fm10k_mbx.c:428] -> [fm10k_mbx.c:442]: (style) Variable 'tail' is reassigned a value before the old one has been used.
+[fm10k_mbx.c:439] -> [fm10k_mbx.c:442]: (style) Variable 'tail' is reassigned a value before the old one has been used.
+
+These are almost certainly due to a bug in cppcheck analysis. The head and
+tail values are assigned initially outside the loop. Then, they're updated
+in the for loop. However, they aren't updated until the end of the *first*
+for-loop iteration. I think cppcheck doesn't understand this and thus
+assumes that the value will be overwritten before its first use.
+
+Jacob Keller (19):
+  fm10k: reduce scope of the err variable
+  fm10k: reduce scope of *p local variable
+  fm10k: reduce the scope of qv local variable
+  fm10k: reduce the scope of local err variable
+  fm10k: reduce the scope of the q_idx local variable
+  fm10k: reduce the scope of the tx_buffer variable
+  fm10k: reduce the scope of the err variable
+  fm10k: reduce the scope of the local i variable
+  fm10k: reduce the scope of the local msg variable
+  fm10k: reduce the scope of the result local variable
+  fm10k: reduce scope of the ring variable
+  fm10k: remove unnecessary variable initializer
+  fm10k: remove needless assignment of err local variable
+  fm10k: remove needless initialization of size local variable
+  fm10k: explicitly return 0 on success path in function
+  fm10k: cast page_addr to u8 * when incrementing it
+  fm10k: mark unused parameters with __always_unused
+  fm10k: convert NON_Q_VECTORS(hw) into NON_Q_VECTORS
+  fm10k: fix fm10k_get_fault_pf to read correct address
+
+ drivers/net/ethernet/intel/fm10k/fm10k.h      | 10 +++-----
+ .../net/ethernet/intel/fm10k/fm10k_dcbnl.c    |  6 ++---
+ .../net/ethernet/intel/fm10k/fm10k_ethtool.c  | 15 +++++------
+ drivers/net/ethernet/intel/fm10k/fm10k_iov.c  |  5 ++--
+ drivers/net/ethernet/intel/fm10k/fm10k_main.c | 15 +++++------
+ drivers/net/ethernet/intel/fm10k/fm10k_mbx.c  | 11 +++++---
+ .../net/ethernet/intel/fm10k/fm10k_netdev.c   | 20 +++++++--------
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c  | 20 +++++++--------
+ drivers/net/ethernet/intel/fm10k/fm10k_pf.c   | 15 ++++++-----
+ drivers/net/ethernet/intel/fm10k/fm10k_tlv.c  |  9 ++++---
+ drivers/net/ethernet/intel/fm10k/fm10k_type.h |  2 +-
+ drivers/net/ethernet/intel/fm10k/fm10k_vf.c   | 25 +++++++++++--------
+ 12 files changed, 78 insertions(+), 75 deletions(-)
+
+-- 
+2.22.0.214.g8dca754b1e87
 
 _______________________________________________
 Intel-wired-lan mailing list
