@@ -1,57 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71C6A64AAD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Jul 2019 18:22:56 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEE426461F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Jul 2019 14:22:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F13E85F2B;
-	Wed, 10 Jul 2019 16:22:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5D51387DDE;
+	Wed, 10 Jul 2019 12:22:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uX2Hz4wJtVev; Wed, 10 Jul 2019 16:22:54 +0000 (UTC)
+	with ESMTP id 5Kq7XzFBoMAk; Wed, 10 Jul 2019 12:22:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 672AF85CAA;
-	Wed, 10 Jul 2019 16:22:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5318287DD4;
+	Wed, 10 Jul 2019 12:22:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 84DAE1BF41A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2019 04:13:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C6E0E1BF335
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2019 12:21:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7E1AD204C5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2019 04:13:44 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C37C82039E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2019 12:21:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0qe2frlSJmQh for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Jul 2019 04:13:41 +0000 (UTC)
-X-Greylist: delayed 00:05:22 by SQLgrey-1.7.6
-Received: from mail3-163.sinamail.sina.com.cn (mail3-163.sinamail.sina.com.cn
- [202.108.3.163])
- by silver.osuosl.org (Postfix) with SMTP id 72C80204C1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2019 04:13:39 +0000 (UTC)
-Received: from unknown (HELO localhost.localdomain)([221.219.5.31])
- by sina.com with ESMTP
- id 5D2564AB00006DDE; Wed, 10 Jul 2019 12:08:13 +0800 (CST)
-X-Sender: hdanton@sina.com
-X-Auth-ID: hdanton@sina.com
-X-SMAIL-MID: 32331430409233
-From: Hillf Danton <hdanton@sina.com>
-To: syzbot <syzbot+f21251a7468cd46efc60@syzkaller.appspotmail.com>
-Date: Wed, 10 Jul 2019 12:08:02 +0800
-Message-Id: <000000000000a94981058d37f1a4@google.com>
-In-Reply-To: <CAEf4BzaUEWwGL3k0VeiFYFqyJexQU9cDZWN69jSDpBjP1ZEcpw@mail.gmail.com>
-References: 
+ with ESMTP id xRq2PJJwbH81 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Jul 2019 12:21:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 8144A20019
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2019 12:21:56 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2019 05:21:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.63,474,1557212400"; d="scan'208";a="159750666"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 10 Jul 2019 05:21:54 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hlBbd-00031g-Sd; Wed, 10 Jul 2019 20:21:53 +0800
+Date: Wed, 10 Jul 2019 20:21:23 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d25d843.LB+KqCC+n28GOzec%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-Archived-At: <https://lore.kernel.org/lkml/000000000000a94981058d37f1a4@google.com/>
-X-Mailman-Approved-At: Wed, 10 Jul 2019 16:22:52 +0000
-Subject: Re: [Intel-wired-lan] WARNING in mark_chain_precision
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
+ 021a39c59a7be7a2756b80a79e0f7df20b4f0c44
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: Intel Wired Ethernet Linux Kernel Driver Development
  <intel-wired-lan.osuosl.org>
 List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>, 
@@ -61,117 +63,255 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: xdp-newbies@vger.kernel.org, songliubraving@fb.com,
- andrii.nakryiko@gmail.com, jakub.kicinski@netronome.com, hawk@kernel.org,
- daniel@iogearbox.net, linux-kernel@vger.kernel.org, ast@kernel.org,
- kafai@fb.com, syzkaller-bugs@googlegroups.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, yhs@fb.com,
- bpf@vger.kernel.org, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="yes"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 021a39c59a7be7a2756b80a79e0f7df20b4f0c44  fm10k: fix fm10k_get_fault_pf to read correct address
 
-Mon, 08 Jul 2019 21:25:00 -0700 (PDT)
-> Hello,
-> 
-> syzbot has tested the proposed patch but the reproducer still triggered  
-> crash:
-> WARNING in bpf_jit_free
-> 
-> WARNING: CPU: 0 PID: 9077 at kernel/bpf/core.c:851 bpf_jit_free+0x157/0x1b0
-> Kernel panic - not syncing: panic_on_warn set ...
-> CPU: 0 PID: 9077 Comm: kworker/0:3 Not tainted 5.2.0-rc6+ #1
-> Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS  
-> Google 01/01/2011
-> Workqueue: events bpf_prog_free_deferred
-> Call Trace:
->   __dump_stack lib/dump_stack.c:77 [inline]
->   dump_stack+0x172/0x1f0 lib/dump_stack.c:113
->   panic+0x2cb/0x744 kernel/panic.c:219
->   __warn.cold+0x20/0x4d kernel/panic.c:576
->   report_bug+0x263/0x2b0 lib/bug.c:186
->   fixup_bug arch/x86/kernel/traps.c:179 [inline]
->   fixup_bug arch/x86/kernel/traps.c:174 [inline]
->   do_error_trap+0x11b/0x200 arch/x86/kernel/traps.c:272
->   do_invalid_op+0x37/0x50 arch/x86/kernel/traps.c:291
->   invalid_op+0x14/0x20 arch/x86/entry/entry_64.S:986
-> RIP: 0010:bpf_jit_free+0x157/0x1b0
-> Code: 00 fc ff df 48 89 fa 48 c1 ea 03 80 3c 02 00 75 5d 48 b8 00 02 00 00  
-> 00 00 ad de 48 39 43 70 0f 84 05 ff ff ff e8 09 7f f4 ff <0f> 0b e9 f9 fe  
-> ff ff e8 2d 02 2e 00 e9 d9 fe ff ff 48 89 7d e0 e8
-> RSP: 0018:ffff888084affcb0 EFLAGS: 00010293
-> RAX: ffff88808a622100 RBX: ffff88809639d580 RCX: ffffffff817b0b0d
-> RDX: 0000000000000000 RSI: ffffffff817c4557 RDI: ffff88809639d5f0
-> RBP: ffff888084affcd0 R08: 1ffffffff150daa8 R09: fffffbfff150daa9
-> R10: fffffbfff150daa8 R11: ffffffff8a86d547 R12: ffffc90001921000
-> R13: ffff88809639d5e8 R14: ffff8880a0589800 R15: ffff8880ae834d40
->   bpf_prog_free_deferred+0x27a/0x350 kernel/bpf/core.c:1982
->   process_one_work+0x989/0x1790 kernel/workqueue.c:2269
->   worker_thread+0x98/0xe40 kernel/workqueue.c:2415
->   kthread+0x354/0x420 kernel/kthread.c:255
->   ret_from_fork+0x24/0x30 arch/x86/entry/entry_64.S:352
-> Kernel Offset: disabled
-> Rebooting in 86400 seconds..
-> 
-> 
-> Tested on:
-> 
-> commit:         b9321614 bpf: fix precision bit propagation for BPF_ST ins..
-> git tree:       https://github.com/anakryiko/linux bpf-fix-precise-bpf_st
-> console output: https://syzkaller.appspot.com/x/log.txt?x=112f0dfda00000
-> kernel config:  https://syzkaller.appspot.com/x/.config?x=6bb3e6e7997c14f9
-> compiler:       gcc (GCC) 9.0.0 20181231 (experimental)
-> 
+TIMEOUT after 724m
 
-1, currently, bpf_prog_put(), the put helper, deletes all kallsyms before
-invoking the free helper, bpf_prog_free(); the latter complains if kallsyms
-are detected not all off.
 
-2, before commit 538950a1b752 ("soreuseport: setsockopt
-SO_ATTACH_REUSEPORT_[CE]BPF"), __bpf_prog_release() already called the put
-helper or the free one for a given prog depending on its type: put for
-BPF_PROG_TYPE_SOCKET_FILTER.
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
 
-In the commit we can see bpf_prog_destroy(), __bpf_prog_free(),
-bpf_prog_put(), here and then; Note in __get_bpf() the put for
-!BPF_PROG_TYPE_SOCKET_FILTER.
+configs timed out: 214
 
-3, in commit 113214be7f6c ("bpf: refactor bpf_prog_get and type check into
-helper") bpf_prog_get_type() was added and put in __get_bpf().
+alpha                            allmodconfig
+alpha                            allyesconfig
+alpha                               defconfig
+arc                              allyesconfig
+arc                                 defconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+i386                             alldefconfig
+i386                             allmodconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                          randconfig-n001
+i386                          randconfig-n002
+i386                          randconfig-n003
+i386                          randconfig-n004
+i386                          randconfig-n005
+i386                          randconfig-n006
+i386                          randconfig-n007
+i386                          randconfig-n008
+i386                          randconfig-n009
+i386                          randconfig-n010
+i386                          randconfig-n011
+i386                          randconfig-n012
+i386                          randconfig-n013
+i386                          randconfig-n014
+i386                          randconfig-n015
+i386                          randconfig-n016
+i386                          randconfig-n017
+i386                          randconfig-n018
+i386                          randconfig-n019
+i386                          randconfig-n020
+i386                          randconfig-n021
+i386                          randconfig-n022
+i386                          randconfig-n023
+i386                          randconfig-n024
+i386                          randconfig-n025
+i386                          randconfig-n026
+i386                          randconfig-n027
+i386                          randconfig-n028
+i386                          randconfig-n029
+i386                          randconfig-n030
+i386                          randconfig-n031
+i386                          randconfig-n032
+i386                          randconfig-x000
+i386                          randconfig-x001
+i386                          randconfig-x002
+i386                          randconfig-x003
+i386                          randconfig-x004
+i386                          randconfig-x005
+i386                          randconfig-x006
+i386                          randconfig-x007
+i386                          randconfig-x008
+i386                          randconfig-x009
+i386                          randconfig-x010
+i386                          randconfig-x011
+i386                          randconfig-x012
+i386                          randconfig-x013
+i386                          randconfig-x014
+i386                          randconfig-x015
+i386                          randconfig-x016
+i386                          randconfig-x017
+i386                          randconfig-x018
+i386                          randconfig-x019
+i386                          randconfig-x070
+i386                          randconfig-x071
+i386                          randconfig-x072
+i386                          randconfig-x073
+i386                          randconfig-x074
+i386                          randconfig-x075
+i386                          randconfig-x076
+i386                          randconfig-x077
+i386                          randconfig-x078
+i386                          randconfig-x079
+i386                               tinyconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+nds32                            allmodconfig
+nds32                            allyesconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+parisc                           allmodconfig
+parisc                            allnoconfig
+parisc                           allyesconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                          allyesconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+riscv                              tinyconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                          debug_defconfig
+s390                                defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                               allyesconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+sparc                            allmodconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                             acpi-redef
+x86_64                           allmodconfig
+x86_64                           allyesconfig
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                        randconfig-n001
+x86_64                        randconfig-n002
+x86_64                        randconfig-n003
+x86_64                        randconfig-n004
+x86_64                        randconfig-n005
+x86_64                        randconfig-n006
+x86_64                        randconfig-n007
+x86_64                        randconfig-n008
+x86_64                        randconfig-n009
+x86_64                        randconfig-n010
+x86_64                        randconfig-n011
+x86_64                        randconfig-n012
+x86_64                        randconfig-n013
+x86_64                        randconfig-n014
+x86_64                        randconfig-n015
+x86_64                        randconfig-n016
+x86_64                        randconfig-n017
+x86_64                        randconfig-n018
+x86_64                        randconfig-n019
+x86_64                        randconfig-n020
+x86_64                        randconfig-n021
+x86_64                        randconfig-n022
+x86_64                        randconfig-n023
+x86_64                        randconfig-n024
+x86_64                        randconfig-n025
+x86_64                        randconfig-n026
+x86_64                        randconfig-n027
+x86_64                        randconfig-n028
+x86_64                        randconfig-n029
+x86_64                        randconfig-n030
+x86_64                        randconfig-n031
+x86_64                        randconfig-n032
+x86_64                        randconfig-x000
+x86_64                        randconfig-x001
+x86_64                        randconfig-x002
+x86_64                        randconfig-x003
+x86_64                        randconfig-x004
+x86_64                        randconfig-x005
+x86_64                        randconfig-x006
+x86_64                        randconfig-x007
+x86_64                        randconfig-x008
+x86_64                        randconfig-x009
+x86_64                        randconfig-x010
+x86_64                        randconfig-x011
+x86_64                        randconfig-x012
+x86_64                        randconfig-x013
+x86_64                        randconfig-x014
+x86_64                        randconfig-x015
+x86_64                        randconfig-x016
+x86_64                        randconfig-x017
+x86_64                        randconfig-x018
+x86_64                        randconfig-x019
+x86_64                                   rhel
+x86_64                               rhel-7.6
+xtensa                           allmodconfig
+xtensa                           allyesconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
 
-In the commit we can see other types like BPF_PROG_TYPE_SCHED_ACT and
-BPF_PROG_TYPE_SCHED_CLS.
+configs tested: 8
 
-4, in commit 8217ca653ec6 ("bpf: Enable BPF_PROG_TYPE_SK_REUSEPORT bpf prog
-in reuseport selection") sk_reuseport_prog_free() was added without a word
-in the log for it.
+nds32                             allnoconfig
+nds32                               defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+arm                              allmodconfig
+arm64                            allmodconfig
 
-5, enrich prog type in __bpf_prog_release().
-
---- a/net/core/filter.c
-+++ b/net/core/filter.c
-@@ -1142,11 +1142,15 @@ static void bpf_release_orig_filter(stru
- 
- static void __bpf_prog_release(struct bpf_prog *prog)
- {
--	if (prog->type == BPF_PROG_TYPE_SOCKET_FILTER) {
-+	switch (prog->type) {
-+	case BPF_PROG_TYPE_SOCKET_FILTER:
-+	case BPF_PROG_TYPE_SK_REUSEPORT:
- 		bpf_prog_put(prog);
--	} else {
-+		break;
-+	default:
- 		bpf_release_orig_filter(prog);
- 		bpf_prog_free(prog);
-+		break;
- 	}
- }
- 
---
-
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
