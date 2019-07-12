@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A0DD674F2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Jul 2019 20:05:09 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11913674F3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Jul 2019 20:05:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 467CA86813;
-	Fri, 12 Jul 2019 18:05:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B37832000E;
+	Fri, 12 Jul 2019 18:05:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IaC2NnNd5HzD; Fri, 12 Jul 2019 18:05:07 +0000 (UTC)
+	with ESMTP id B6ZkQ8pnqR+O; Fri, 12 Jul 2019 18:05:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A23F28679E;
-	Fri, 12 Jul 2019 18:05:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 38D1222850;
+	Fri, 12 Jul 2019 18:05:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1AC3C1BF41E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:05:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F2F51BF41E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:05:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 17B5586670
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:05:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 069A322817
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:05:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zZihmmdK1Ibo for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Jul 2019 18:05:04 +0000 (UTC)
+ with ESMTP id 6z3CgP2SbCqB for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Jul 2019 18:05:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C363C8679B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:05:04 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id 656992000E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:05:34 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Jul 2019 11:05:04 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Jul 2019 11:05:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,483,1557212400"; d="scan'208";a="186643592"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by fmsmga001.fm.intel.com with ESMTP; 12 Jul 2019 11:05:04 -0700
-Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 12 Jul 2019 11:05:03 -0700
+X-IronPort-AV: E=Sophos;i="5.63,483,1557212400"; d="scan'208";a="177573607"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by orsmga002.jf.intel.com with ESMTP; 12 Jul 2019 11:05:33 -0700
+Received: from orsmsx158.amr.corp.intel.com (10.22.240.20) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 12 Jul 2019 11:05:33 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.232]) by
- ORSMSX153.amr.corp.intel.com ([169.254.12.99]) with mapi id 14.03.0439.000;
- Fri, 12 Jul 2019 11:05:03 -0700
+ ORSMSX158.amr.corp.intel.com ([169.254.10.82]) with mapi id 14.03.0439.000;
+ Fri, 12 Jul 2019 11:05:33 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 12/19] fm10k: remove unnecessary
- variable initializer
-Thread-Index: AQHVNeKtpL6q5TANF0Swn4JTU/rdcqbHTNMQ
-Date: Fri, 12 Jul 2019 18:05:03 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40AC3F@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 13/19] fm10k: remove needless
+ assignment of err local variable
+Thread-Index: AQHVNeKwjADbXS0xmEeCp06ZnfafXabHTPbw
+Date: Fri, 12 Jul 2019 18:05:33 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40AC4E@ORSMSX104.amr.corp.intel.com>
 References: <20190708231236.20516-1-jacob.e.keller@intel.com>
- <20190708231236.20516-13-jacob.e.keller@intel.com>
-In-Reply-To: <20190708231236.20516-13-jacob.e.keller@intel.com>
+ <20190708231236.20516-14-jacob.e.keller@intel.com>
+In-Reply-To: <20190708231236.20516-14-jacob.e.keller@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTQ5YWExZmUtMGY1Mi00ZDkxLTgwOTItNDhhMjMwOTIzMjc1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMTU4cHdvS3FlclJiWk56R2ptVld2YlRKQ3lDY3c2UDNRVmhBS2k1VHlcLzVkRHYwQ2pMQThlcjlCcHlRSDhnekIifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzViN2FmMWYtMTE1Yi00MDZmLTg5YTMtYzgxM2ZhYTA1YjMzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiV012WFlpNWN3NXhJc1BHZktvUzloXC8yTkkySHkrOFR1UlVSVzhBUUtwelV1UEZlUUNiMDk1N1AwR05yNW9PZXkifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 12/19] fm10k: remove unnecessary
- variable initializer
+Subject: Re: [Intel-wired-lan] [PATCH 13/19] fm10k: remove needless
+ assignment of err local variable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,24 +89,35 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
 > Behalf Of Jacob Keller
-> Sent: Monday, July 8, 2019 4:12 PM
+> Sent: Monday, July 8, 2019 4:13 PM
 > To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-> Subject: [Intel-wired-lan] [PATCH 12/19] fm10k: remove unnecessary
-> variable initializer
+> Subject: [Intel-wired-lan] [PATCH 13/19] fm10k: remove needless
+> assignment of err local variable
 > 
-> The err variable in the fm10k_tlv_attr_parse function is initialized with zero.
-> However, the function never reads err without first assigning it from a
-> function call. Remove this unnecessary initialization.
+> The local variable err in several functions in the fm10k_netdev.c file is
+> initialized with a value that is never used. The err value is immediately re-
+> assigned in all cases where it will be checked. Remove the unnecessary
+> initializers.
 > 
-> This was detected by cppcheck and resolves the following warning produced
-> by that tool:
+> This was detected by cppcheck and resolves the following warnings
+> produced by that tool:
 > 
-> [fm10k_tlv.c:498]: (style) Variable 'err' is assigned a value that is never used.
+> [fm10k_netdev.c:999] -> [fm10k_netdev.c:1004]: (style) Variable 'err' is
+> reassigned a value before the old one has been used.
+> 
+> [fm10k_netdev.c:1019] -> [fm10k_netdev.c:1024]: (style) Variable 'err'
+> is reassigned a value before the old one has been used.
+> 
+> [fm10k_netdev.c:64]: (style) Variable 'err' is assigned a value that is never
+> used.
+> 
+> [fm10k_netdev.c:131]: (style) Variable 'err' is assigned a value that is never
+> used.
 > 
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > ---
->  drivers/net/ethernet/intel/fm10k/fm10k_tlv.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/fm10k/fm10k_netdev.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
