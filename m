@@ -1,74 +1,49 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15FF067506
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Jul 2019 20:11:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6254D685AC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2019 10:44:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58E19869D8;
-	Fri, 12 Jul 2019 18:11:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA416811BB;
+	Mon, 15 Jul 2019 08:44:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 21Y2EHcDc+oU; Fri, 12 Jul 2019 18:11:12 +0000 (UTC)
+	with ESMTP id UGjnCpVzFVtm; Mon, 15 Jul 2019 08:44:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BEC5585AE2;
-	Fri, 12 Jul 2019 18:11:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E09298125A;
+	Mon, 15 Jul 2019 08:44:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BD81A1BF41E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:11:09 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C99CB1BF407
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 08:44:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B996F83597
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:11:09 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AFB782043E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 08:44:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eyDzY4h-vCMW for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Jul 2019 18:11:08 +0000 (UTC)
+ with ESMTP id VbHKb6zQQPSz for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jul 2019 08:44:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7602783167
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jul 2019 18:11:08 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Jul 2019 11:08:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,483,1557212400"; d="scan'208";a="341767788"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by orsmga005.jf.intel.com with ESMTP; 12 Jul 2019 11:08:02 -0700
-Received: from orsmsx154.amr.corp.intel.com (10.22.226.12) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 12 Jul 2019 11:08:02 -0700
-Received: from orsmsx104.amr.corp.intel.com ([169.254.4.232]) by
- ORSMSX154.amr.corp.intel.com ([169.254.11.96]) with mapi id 14.03.0439.000;
- Fri, 12 Jul 2019 11:08:02 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 18/19] fm10k: convert
- NON_Q_VECTORS(hw) into NON_Q_VECTORS
-Thread-Index: AQHVNeKznlPikbAbwk2nlnA0Q05HdqbHTagQ
-Date: Fri, 12 Jul 2019 18:08:01 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40AC9B@ORSMSX104.amr.corp.intel.com>
-References: <20190708231236.20516-1-jacob.e.keller@intel.com>
- <20190708231236.20516-19-jacob.e.keller@intel.com>
-In-Reply-To: <20190708231236.20516-19-jacob.e.keller@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNTRhNDYzYWMtZWNjYi00MWZjLWJhM2EtM2U4NjUwODRmY2NhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYlgxOEtIbnRDOFpSXC91NTdLYlFOXC9OczVPWWFQMFVLXC9ka2V5N1YwUEt0dDJ3NEdxVjd6aitoVlwvVENocEF4NGgifQ==
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.400.15
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 18/19] fm10k: convert
- NON_Q_VECTORS(hw) into NON_Q_VECTORS
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id 232D72001A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 08:44:03 +0000 (UTC)
+Received: from 61-220-137-37.hinet-ip.hinet.net ([61.220.137.37]
+ helo=localhost)
+ by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1hmwaW-0005iC-10; Mon, 15 Jul 2019 08:44:00 +0000
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+To: jeffrey.t.kirsher@intel.com
+Date: Mon, 15 Jul 2019 16:43:55 +0800
+Message-Id: <20190715084355.9962-1-kai.heng.feng@canonical.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH] e1000e: Make speed detection on
+ hotplugging cable more reliable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,66 +56,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Kai-Heng Feng <kai.heng.feng@canonical.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Jacob Keller
-> Sent: Monday, July 8, 2019 4:13 PM
-> To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-> Subject: [Intel-wired-lan] [PATCH 18/19] fm10k: convert
-> NON_Q_VECTORS(hw) into NON_Q_VECTORS
-> 
-> The driver currently uses a macro to decide whether we should use
-> NON_Q_VECTORS_PF or NON_Q_VECTORS_VF.
-> 
-> However, we also define NON_Q_VECTORS_VF to the same value as
-> NON_Q_VECTORS_PF. This means that the macro NON_Q_VECTORS(hw) will
-> always return the same value.
-> 
-> Let's just remove this macro, and replace it directly with an enum value on
-> the enum non_q_vectors.
-> 
-> This was detected by cppcheck and fixes the following warnings when
-> building with BUILD=KERNEL
-> 
-> [fm10k_ethtool.c:1123]: (style) Same value in both branches of ternary
-> operator.
-> 
-> [fm10k_ethtool.c:1142]: (style) Same value in both branches of ternary
-> operator.
-> 
-> [fm10k_main.c:1826]: (style) Same value in both branches of ternary
-> operator.
-> 
-> [fm10k_main.c:1849]: (style) Same value in both branches of ternary
-> operator.
-> 
-> [fm10k_main.c:1858]: (style) Same value in both branches of ternary
-> operator.
-> 
-> [fm10k_pci.c:901]: (style) Same value in both branches of ternary operator.
-> 
-> [fm10k_pci.c:1040]: (style) Same value in both branches of ternary operator.
-> 
-> [fm10k_pci.c:1726]: (style) Same value in both branches of ternary operator.
-> 
-> [fm10k_pci.c:1763]: (style) Same value in both branches of ternary operator.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> ---
->  drivers/net/ethernet/intel/fm10k/fm10k.h         | 10 +++-------
->  drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c |  6 ++----
->  drivers/net/ethernet/intel/fm10k/fm10k_main.c    |  4 ++--
->  drivers/net/ethernet/intel/fm10k/fm10k_pci.c     |  9 ++++-----
->  4 files changed, 11 insertions(+), 18 deletions(-)
+After hotplugging an 1Gbps ethernet cable with 1Gbps link partner, the
+MII_BMSR may reports 10Mbps, renders the network rather slow.
 
+The issue has much lower fail rate after commit 59653e6497d1 ("e1000e:
+Make watchdog use delayed work"), which esssentially introduces some
+delay before running the watchdog task.
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+But there's still a chance that the hotplugging event and the queued
+watchdog task gets run at the same time, then the original issue can be
+observed once again.
 
+So let's use mod_delayed_work() to add a deterministic 1 second delay
+before running watchdog task, after an interrupt.
+
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index e4baa13b3cda..c83bf5349d53 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -1780,8 +1780,8 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
+ 		}
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			queue_delayed_work(adapter->e1000_workqueue,
+-					   &adapter->watchdog_task, 1);
++			mod_delayed_work(adapter->e1000_workqueue,
++					 &adapter->watchdog_task, HZ);
+ 	}
+ 
+ 	/* Reset on uncorrectable ECC error */
+@@ -1861,8 +1861,8 @@ static irqreturn_t e1000_intr(int __always_unused irq, void *data)
+ 		}
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			queue_delayed_work(adapter->e1000_workqueue,
+-					   &adapter->watchdog_task, 1);
++			mod_delayed_work(adapter->e1000_workqueue,
++					 &adapter->watchdog_task, HZ);
+ 	}
+ 
+ 	/* Reset on uncorrectable ECC error */
+@@ -1907,8 +1907,8 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
+ 		hw->mac.get_link_status = true;
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			queue_delayed_work(adapter->e1000_workqueue,
+-					   &adapter->watchdog_task, 1);
++			mod_delayed_work(adapter->e1000_workqueue,
++					 &adapter->watchdog_task, HZ);
+ 	}
+ 
+ 	if (!test_bit(__E1000_DOWN, &adapter->state))
+-- 
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
