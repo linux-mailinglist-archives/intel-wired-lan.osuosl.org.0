@@ -1,63 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DB1B688F1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2019 14:35:49 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ED9569993
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2019 19:11:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E2CB38682A;
-	Mon, 15 Jul 2019 12:35:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA70120371;
+	Mon, 15 Jul 2019 17:11:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lArKpaVe5ZsT; Mon, 15 Jul 2019 12:35:47 +0000 (UTC)
+	with ESMTP id xYFWM1UeYq+0; Mon, 15 Jul 2019 17:11:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9192486833;
-	Mon, 15 Jul 2019 12:35:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6930A21507;
+	Mon, 15 Jul 2019 17:11:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C51A11BF3DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 12:35:44 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D5A4D1BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 04:57:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BFD928682A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 12:35:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D1B1085817
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 04:57:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hgUPoeqdBMTB for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jul 2019 12:35:43 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.17.10])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 50732866A3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 12:35:43 +0000 (UTC)
-Received: from threadripper.lan ([149.172.19.189]) by mrelayeu.kundenserver.de
- (mreue107 [212.227.15.145]) with ESMTPA (Nemesis) id
- 1Mw8gc-1iclyK33WG-00s2DM; Mon, 15 Jul 2019 14:35:24 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "David S. Miller" <davem@davemloft.net>
-Date: Mon, 15 Jul 2019 14:35:07 +0200
-Message-Id: <20190715123518.3510791-1-arnd@arndb.de>
-X-Mailer: git-send-email 2.20.0
-MIME-Version: 1.0
-X-Provags-ID: V03:K1:51h6XA6Bl7Ot/Uvt6DUGZkDIrFXg806s4a58fRPDph6XbOA1o/L
- WbrLnPSeHtrhEkUKGOVrm5zUllrmDXlbf9sY1i7UrNwWXggoPcaEA5UD4UGKnUoTTFo4dpm
- 0TRgYhqp7cK6Ie2JTDQgnYJaHFmkPGATyMsIU6zlwwf+XYBlKpTln4rDUhPPfmMznJ5h5ld
- c4g9OyyEza1nG+nfJfpDg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:w3445uxjZ9Q=:IVjWnMlU8v6q1ppXkoEDOr
- TcwYXO5MhadeyYS0gcqKDbQzsIE7gvrpPKyLCD/n7BdFt1BF/1gJJeX55JuLAZFzqLCx14P4S
- KyME68RN9pQFkXfD20FJ8UdFfcd4BHXwAXpoqEsBuZlVOzCFLmy+Vp842jwKVKFYvjBrOg/Xa
- sMlCPyZBlMEgVVO6egSgygkv1fwdKXOJARUAT8Ry1ejRBzPQbvpjuev73yHSzESmEjlYT9mwU
- qCmmawfcrTGFGKUuCrDxDe37+9KJmClLRO1TOeh8L5wsUkmid/ot2n3hArbTuyk914HUJvwbf
- +ealJyZMF57ToycZtuxBwt+KlDoEFM/i9M2yXInOiBbx5qHnUeuu9A7V9kb3SfiO2ogD83C0y
- vo+GXtQxGzVXRRRxF0+89+goT5Vl2oaMVygnBZAhr4JH5q2N40Fxn9XBNymFt3lwdP0vHVVXn
- DndWovInEB2xr7t9Pt1qu4pu/pNli0KVkzRQWIJUjuxYIuMNdTU9Su1kkmpast8RPUbQOh+75
- sXpvevqf7VFXOQX9z2cE1sJVoS8i3RMCAxTGV2Z27eoI9bVIarF8KciTm+ugaZWHCaot8JjAI
- Gdwo6uf0ZUOe6tLfIK1dQ74gjtNywzvLW2Py1tmx6TrgazEA3ZxxfPGClKihSv9qgbgODVY8J
- wfg+piibOONRRTt1OqC4aVuj/lGoUZYBWPucGB+kB06SgwL+HQDShpWn6p6BsiRxisRHw8He+
- UH2n4lg37ZTxT7uNUIe7hFtppe2/G7B+q8lCjw==
-Subject: [Intel-wired-lan] [PATCH] i40e: reduce stack usage in i40e_set_fc
+ with ESMTP id kBLM131YsNfL for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jul 2019 04:57:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 717C48453B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 04:57:53 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id t132so7087174pgb.9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Jul 2019 21:57:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id;
+ bh=hMKYnCG1MovC2e0NthlYTwADIbhywb3Mf8OKx2c0Q88=;
+ b=oFJbqO7FFhbMh2PePtZO8L1DEUSn/seuPNZp+G02tB0DnB3l2dzcoiDGm5WFCK3C+E
+ yuoah+Azp/0YMv4WSDKUYrgoLVLCO0gtxO978paE/ZnKRtsH4qk4Z1bMbWzW7IGi5Vlr
+ Dy5gWWTB/SlSxNwecS/XTxE/iKDOGEr+YLZe8kHNCT9TXYCyYZ1b4VbSx8OJAAcaGpbm
+ /9g63tKvL8qHIpDHSUl9FYouXbgvETvsZNo9uoln5Mx0Kz2L22do5DYyGkRmj1zqHUt+
+ d1w78Q9MGTNd9xrvT2ps4qrnwdtUkIKHXqrUq4nSiudmQ0IjJZs6bS0mBT5oqMtcauAM
+ RWVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id;
+ bh=hMKYnCG1MovC2e0NthlYTwADIbhywb3Mf8OKx2c0Q88=;
+ b=mDNSKFemiCNgvw9mAoyqg9RLJfDKSJW9R2cQfMYwx/wiDz/P8sLGjHFcfBPVqGBbkj
+ asA3lQSNYhbbsIl3lEraGG4QAqykH2fgrkpyi3uMEzkiDMlrLTsB6LC66+tCFFc1j8hV
+ jKdgVcDeOfMp7Phb/QPXrhxxujpriTZ112sn9a1ExhF040qcS3diwQuc6cHR6QdiUGI9
+ qnw3AUe4RX3q2hV8n2mb56lDiXGcVWq/k/GcxR7cuG/KUD3QH2bfly2VRtr155h+JjjU
+ 85Z2x66yOZxk+uVBqvbbcpMpqxN4qI5XxAubSUMsfS+4Zeo72tQPH54YHwwWymISFvWb
+ BwAg==
+X-Gm-Message-State: APjAAAU1Qh+ArLG2hHHUVsG7jy9ic2TSmGkYXZTkNwqFhWp4dcjbcaLA
+ Tfs6sg/hywoHFHp9jaOiQ64=
+X-Google-Smtp-Source: APXvYqzuibIepvUCVkUQ34EWOnD4iCLGzvl0Crytvk1X7CKNy5IZ7NVm8R/4IwjRaDaBeqNwoDzZqg==
+X-Received: by 2002:a17:90a:32ec:: with SMTP id
+ l99mr27356363pjb.44.1563166672931; 
+ Sun, 14 Jul 2019 21:57:52 -0700 (PDT)
+Received: from localhost.localdomain ([211.196.191.92])
+ by smtp.gmail.com with ESMTPSA id x25sm16838955pfa.90.2019.07.14.21.57.50
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sun, 14 Jul 2019 21:57:51 -0700 (PDT)
+From: Taehee Yoo <ap420073@gmail.com>
+To: jeffrey.t.kirsher@intel.com, intel-wired-lan@lists.osuosl.org,
+ ap420073@gmail.com
+Date: Mon, 15 Jul 2019 13:57:06 +0900
+Message-Id: <20190715045706.6140-1-ap420073@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-Mailman-Approved-At: Mon, 15 Jul 2019 17:11:34 +0000
+Subject: [Intel-wired-lan] [PATCH net] ixgbe: fix possible deadlock in
+ ixgbe_service_task()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,172 +84,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Catherine Sullivan <catherine.sullivan@intel.com>,
- Doug Dziggel <douglas.a.dziggel@intel.com>, Arnd Bergmann <arnd@arndb.de>,
- netdev@vger.kernel.org,
- =?UTF-8?q?Patryk=20Ma=C5=82ek?= <patryk.malek@intel.com>,
- linux-kernel@vger.kernel.org, Piotr Azarewicz <piotr.azarewicz@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- clang-built-linux@googlegroups.com, intel-wired-lan@lists.osuosl.org,
- Piotr Marczak <piotr.marczak@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The functions i40e_aq_get_phy_abilities_resp() and i40e_set_fc() both
-have giant structure on the stack, which makes each one use stack frames
-larger than 500 bytes.
+ixgbe_service_task() calls unregister_netdev() under rtnl_lock().
+But unregister_netdev() internally calls rtnl_lock().
+So deadlock would occur.
 
-As clang decides one function into the other, we get a warning for
-exceeding the frame size limit on 32-bit architectures:
-
-drivers/net/ethernet/intel/i40e/i40e_common.c:1654:23: error: stack frame size of 1116 bytes in function 'i40e_set_fc' [-Werror,-Wframe-larger-than=]
-
-When building with gcc, the inlining does not happen, but i40e_set_fc()
-calls i40e_aq_get_phy_abilities_resp() anyway, so they add up on the
-kernel stack just as much.
-
-The parts that actually use large stacks don't overlap, so make sure
-each one is a separate function, and mark them as noinline_for_stack to
-prevent the compilers from combining them again.
-
-Fixes: 0a862b43acc6 ("i40e/i40evf: Add module_types and update_link_info")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Fixes: 59dd45d550c5 ("ixgbe: firmware recovery mode")
+Signed-off-by: Taehee Yoo <ap420073@gmail.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_common.c | 91 +++++++++++--------
- 1 file changed, 51 insertions(+), 40 deletions(-)
+I did only compile test because I don't have the hardware.
+Could anyone test this patch?
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index 906cf68d3453..7af1b7477140 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -1643,25 +1643,15 @@ enum i40e_status_code i40e_aq_set_phy_config(struct i40e_hw *hw,
- 	return status;
- }
- 
--/**
-- * i40e_set_fc
-- * @hw: pointer to the hw struct
-- * @aq_failures: buffer to return AdminQ failure information
-- * @atomic_restart: whether to enable atomic link restart
-- *
-- * Set the requested flow control mode using set_phy_config.
-- **/
--enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
--				  bool atomic_restart)
-+static noinline_for_stack enum i40e_status_code
-+i40e_set_fc_status(struct i40e_hw *hw,
-+		   struct i40e_aq_get_phy_abilities_resp *abilities,
-+		   bool atomic_restart)
- {
--	enum i40e_fc_mode fc_mode = hw->fc.requested_mode;
--	struct i40e_aq_get_phy_abilities_resp abilities;
- 	struct i40e_aq_set_phy_config config;
--	enum i40e_status_code status;
-+	enum i40e_fc_mode fc_mode = hw->fc.requested_mode;
- 	u8 pause_mask = 0x0;
- 
--	*aq_failures = 0x0;
--
- 	switch (fc_mode) {
- 	case I40E_FC_FULL:
- 		pause_mask |= I40E_AQ_PHY_FLAG_PAUSE_TX;
-@@ -1677,6 +1667,48 @@ enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
- 		break;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 57fd9ee6de66..b4888be94dfb 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -7894,9 +7894,7 @@ static void ixgbe_service_task(struct work_struct *work)
  	}
- 
-+	memset(&config, 0, sizeof(struct i40e_aq_set_phy_config));
-+	/* clear the old pause settings */
-+	config.abilities = abilities->abilities & ~(I40E_AQ_PHY_FLAG_PAUSE_TX) &
-+			   ~(I40E_AQ_PHY_FLAG_PAUSE_RX);
-+	/* set the new abilities */
-+	config.abilities |= pause_mask;
-+	/* If the abilities have changed, then set the new config */
-+	if (config.abilities == abilities->abilities)
-+		return 0;
-+
-+	/* Auto restart link so settings take effect */
-+	if (atomic_restart)
-+		config.abilities |= I40E_AQ_PHY_ENABLE_ATOMIC_LINK;
-+	/* Copy over all the old settings */
-+	config.phy_type = abilities->phy_type;
-+	config.phy_type_ext = abilities->phy_type_ext;
-+	config.link_speed = abilities->link_speed;
-+	config.eee_capability = abilities->eee_capability;
-+	config.eeer = abilities->eeer_val;
-+	config.low_power_ctrl = abilities->d3_lpan;
-+	config.fec_config = abilities->fec_cfg_curr_mod_ext_info &
-+			    I40E_AQ_PHY_FEC_CONFIG_MASK;
-+
-+	return i40e_aq_set_phy_config(hw, &config, NULL);
-+}
-+
-+/**
-+ * i40e_set_fc
-+ * @hw: pointer to the hw struct
-+ * @aq_failures: buffer to return AdminQ failure information
-+ * @atomic_restart: whether to enable atomic link restart
-+ *
-+ * Set the requested flow control mode using set_phy_config.
-+ **/
-+enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
-+				  bool atomic_restart)
-+{
-+	struct i40e_aq_get_phy_abilities_resp abilities;
-+	enum i40e_status_code status;
-+
-+	*aq_failures = 0x0;
-+
- 	/* Get the current phy config */
- 	status = i40e_aq_get_phy_capabilities(hw, false, false, &abilities,
- 					      NULL);
-@@ -1685,31 +1717,10 @@ enum i40e_status_code i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
- 		return status;
- 	}
- 
--	memset(&config, 0, sizeof(struct i40e_aq_set_phy_config));
--	/* clear the old pause settings */
--	config.abilities = abilities.abilities & ~(I40E_AQ_PHY_FLAG_PAUSE_TX) &
--			   ~(I40E_AQ_PHY_FLAG_PAUSE_RX);
--	/* set the new abilities */
--	config.abilities |= pause_mask;
--	/* If the abilities have changed, then set the new config */
--	if (config.abilities != abilities.abilities) {
--		/* Auto restart link so settings take effect */
--		if (atomic_restart)
--			config.abilities |= I40E_AQ_PHY_ENABLE_ATOMIC_LINK;
--		/* Copy over all the old settings */
--		config.phy_type = abilities.phy_type;
--		config.phy_type_ext = abilities.phy_type_ext;
--		config.link_speed = abilities.link_speed;
--		config.eee_capability = abilities.eee_capability;
--		config.eeer = abilities.eeer_val;
--		config.low_power_ctrl = abilities.d3_lpan;
--		config.fec_config = abilities.fec_cfg_curr_mod_ext_info &
--				    I40E_AQ_PHY_FEC_CONFIG_MASK;
--		status = i40e_aq_set_phy_config(hw, &config, NULL);
-+	status = i40e_set_fc_status(hw, &abilities, atomic_restart);
-+	if (status)
-+		*aq_failures |= I40E_SET_FC_AQ_FAIL_SET;
- 
--		if (status)
--			*aq_failures |= I40E_SET_FC_AQ_FAIL_SET;
--	}
- 	/* Update the link info */
- 	status = i40e_update_link_info(hw);
- 	if (status) {
-@@ -2537,7 +2548,7 @@ i40e_status i40e_get_link_status(struct i40e_hw *hw, bool *link_up)
-  * i40e_updatelink_status - update status of the HW network link
-  * @hw: pointer to the hw struct
-  **/
--i40e_status i40e_update_link_info(struct i40e_hw *hw)
-+noinline_for_stack i40e_status i40e_update_link_info(struct i40e_hw *hw)
- {
- 	struct i40e_aq_get_phy_abilities_resp abilities;
- 	i40e_status status = 0;
+ 	if (ixgbe_check_fw_error(adapter)) {
+ 		if (!test_bit(__IXGBE_DOWN, &adapter->state)) {
+-			rtnl_lock();
+ 			unregister_netdev(adapter->netdev);
+-			rtnl_unlock();
+ 		}
+ 		ixgbe_service_event_complete(adapter);
+ 		return;
 -- 
-2.20.0
+2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
