@@ -1,53 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D18A685F4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2019 11:06:14 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E2C768633
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2019 11:21:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7C44284042;
-	Mon, 15 Jul 2019 09:06:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2E89B203E6;
+	Mon, 15 Jul 2019 09:21:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ef6Rfl2TpZe4; Mon, 15 Jul 2019 09:06:12 +0000 (UTC)
+	with ESMTP id UIsmMhSXZk60; Mon, 15 Jul 2019 09:21:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9F65A86745;
-	Mon, 15 Jul 2019 09:06:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B64EB2076E;
+	Mon, 15 Jul 2019 09:21:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B6AD81BF30F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 09:06:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8314E1BF30F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 09:21:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B21CC866F0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 09:06:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7D3FC825A6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 09:21:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zHeMUwSVQtTj for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jul 2019 09:06:08 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 19E3B84042
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 09:06:08 +0000 (UTC)
-Received: from rabammel.molgen.mpg.de (rabammel.molgen.mpg.de [141.14.30.220])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128
- bits)) (No client certificate requested)
- (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 0D15A206695A3;
- Mon, 15 Jul 2019 11:06:06 +0200 (CEST)
-To: Kai Heng Feng <kai.heng.feng@canonical.com>
+ with ESMTP id DfzVHiiw7AKU for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jul 2019 09:21:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B341A81DFD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 09:21:11 +0000 (UTC)
+Received: from mail-pg1-f197.google.com ([209.85.215.197])
+ by youngberry.canonical.com with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.76) (envelope-from <kai.heng.feng@canonical.com>)
+ id 1hmxAT-0008Rk-Gw
+ for intel-wired-lan@lists.osuosl.org; Mon, 15 Jul 2019 09:21:09 +0000
+Received: by mail-pg1-f197.google.com with SMTP id d187so10157851pga.7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2019 02:21:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=K7sR63lDZ6+bfE96HoDVWneUYi62vGyC0+ZoJVjOpqo=;
+ b=aWCEpMZDMOh7TYS5GGr4ozoycNYPJRGiZ4GF9q+we4OU2BFWmswGn7dHc8+EYRKFk3
+ ++azc4mAWcy3JHpkwVLIgEL1cfjr4AoiWKAKMGxHpFArG2c7RNNFYlYpZL2HSC8oLXWF
+ BirpiaP2BGkl0ylYp2a6TxrJ6flXS9DQxgj6IoKQxEr+TsJ030qn6Pqn6wH4oxXQpBjy
+ 7ZrcCItL/D7JnNMNG8YdohN9gqBDxO9OZM6Ao5jhgQXpMosFfMUdFTXWoBdcYdIZ0dER
+ s+40jnmEFsG0eqtCxgi/YcxLDX85qR3msBcdgHpfzXEk9xbpxtDORTRmUEFZjH1rwdJj
+ R+OA==
+X-Gm-Message-State: APjAAAXkx/1McYCrPFP1LIXACjQwaMBccreO8x6AQCZzbm7PLEkSpmWe
+ lrRn1/Oun/Arl3U47qlB/46xr8GIPXIfqzZ5EHCp/5fcxWRiE5TuqMhE5ywSUsXbQLqgrqWOGy4
+ KabrnSF48zyXterhyugpr2+cf2wzSUhkGwJoydhesWzRcBRU=
+X-Received: by 2002:a17:90a:601:: with SMTP id
+ j1mr27617740pjj.96.1563182468249; 
+ Mon, 15 Jul 2019 02:21:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzHwAWIe0k8hTqh9iJGtpYLSTUNN/uaDfo3XVoAz1JGLpmxyFRzJG7TI40AZpQ93ZnK+ynB3A==
+X-Received: by 2002:a17:90a:601:: with SMTP id
+ j1mr27617713pjj.96.1563182467961; 
+ Mon, 15 Jul 2019 02:21:07 -0700 (PDT)
+Received: from [10.101.46.105] (61-220-137-37.HINET-IP.hinet.net.
+ [61.220.137.37])
+ by smtp.gmail.com with ESMTPSA id u3sm14656829pjn.5.2019.07.15.02.21.06
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 15 Jul 2019 02:21:07 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+From: Kai Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <37a1e2af-64c6-4515-5dcc-6051e1192636@molgen.mpg.de>
+Date: Mon, 15 Jul 2019 17:21:04 +0800
+Message-Id: <1BD6D413-E22A-40A3-B8E8-B9B56B9B5232@canonical.com>
 References: <20190715084355.9962-1-kai.heng.feng@canonical.com>
  <017771d5-f168-493a-46a1-88e513941ba1@molgen.mpg.de>
  <F9859C57-4F6D-4685-B4B6-D1D7DCB50D27@canonical.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <37a1e2af-64c6-4515-5dcc-6051e1192636@molgen.mpg.de>
-Date: Mon, 15 Jul 2019 11:06:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <F9859C57-4F6D-4685-B4B6-D1D7DCB50D27@canonical.com>
+ <37a1e2af-64c6-4515-5dcc-6051e1192636@molgen.mpg.de>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+X-Mailer: Apple Mail (2.3445.104.11)
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Make speed detection on
  hotplugging cable more reliable
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -64,202 +92,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0920014932009797649=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="yes"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a cryptographically signed message in MIME format.
-
---===============0920014932009797649==
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms050609000102000806080105"
-
-This is a cryptographically signed message in MIME format.
-
---------------ms050609000102000806080105
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Dear Kai Heng,
-
-
-(with or without hyphen?)
-
-On 7/15/19 11:00 AM, Kai Heng Feng wrote:
-> at 4:52 PM, Paul Menzel <pmenzel@molgen.mpg.de> wrote:
-
->> On 7/15/19 10:43 AM, Kai-Heng Feng wrote:
->>> After hotplugging an 1Gbps ethernet cable with 1Gbps link partner, th=
-e
->>> MII_BMSR may reports 10Mbps, renders the network rather slow.
->>
->> s/may reports/may report/
->> s/renders/rendering/
->=20
-> Apparently English isn=E2=80=99t my mother tongue ;)
-
-No problem. Mine neither.
-
->>> The issue has much lower fail rate after commit 59653e6497d1 ("e1000e=
-:
->>> Make watchdog use delayed work"), which esssentially introduces some
->>
->> essentially
->=20
-> Ok.
->=20
->>> delay before running the watchdog task.
->>>
->>> But there's still a chance that the hotplugging event and the queued
->>> watchdog task gets run at the same time, then the original issue can =
-be
->>> observed once again.
->>>
->>> So let's use mod_delayed_work() to add a deterministic 1 second delay=
-
->>> before running watchdog task, after an interrupt.
->>
->> I am not clear about the effects for the user. Could you elaborate
->> please? Does the link now come up up to one second later?
->=20
-> Yes, the link will be up on a fixed one second later.
->=20
-> The delay varies between 0 to 2 seconds without this patch.
-
-Is there no other fix? Regarding booting a system fast (less than six
-seconds), a fixed one second delay is quite a regression on systems where=
-
-it worked before.
-
->>> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
->>
->> Any bug URL?
->=20
-> If maintainers think it=E2=80=99s necessary then I=E2=80=99ll file one.=
-
-
-Not necessary, if there is none. I thought you had one in Launchpad or so=
-=2E
-
-
-Kind regards,
-
-Paul
-
-
---------------ms050609000102000806080105
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCC
-EFowggUSMIID+qADAgECAgkA4wvV+K8l2YEwDQYJKoZIhvcNAQELBQAwgYIxCzAJBgNVBAYT
-AkRFMSswKQYDVQQKDCJULVN5c3RlbXMgRW50ZXJwcmlzZSBTZXJ2aWNlcyBHbWJIMR8wHQYD
-VQQLDBZULVN5c3RlbXMgVHJ1c3QgQ2VudGVyMSUwIwYDVQQDDBxULVRlbGVTZWMgR2xvYmFs
-Um9vdCBDbGFzcyAyMB4XDTE2MDIyMjEzMzgyMloXDTMxMDIyMjIzNTk1OVowgZUxCzAJBgNV
-BAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVu
-IEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNVBAMTJERG
-Ti1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjCCASIwDQYJKoZIhvcNAQEBBQAD
-ggEPADCCAQoCggEBAMtg1/9moUHN0vqHl4pzq5lN6mc5WqFggEcVToyVsuXPztNXS43O+FZs
-FVV2B+pG/cgDRWM+cNSrVICxI5y+NyipCf8FXRgPxJiZN7Mg9mZ4F4fCnQ7MSjLnFp2uDo0p
-eQcAIFTcFV9Kltd4tjTTwXS1nem/wHdN6r1ZB+BaL2w8pQDcNb1lDY9/Mm3yWmpLYgHurDg0
-WUU2SQXaeMpqbVvAgWsRzNI8qIv4cRrKO+KA3Ra0Z3qLNupOkSk9s1FcragMvp0049ENF4N1
-xDkesJQLEvHVaY4l9Lg9K7/AjsMeO6W/VRCrKq4Xl14zzsjz9AkH4wKGMUZrAcUQDBHHWekC
-AwEAAaOCAXQwggFwMA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUk+PYMiba1fFKpZFK4OpL
-4qIMz+EwHwYDVR0jBBgwFoAUv1kgNgB5oKAia4zV8mHSuCzLgkowEgYDVR0TAQH/BAgwBgEB
-/wIBAjAzBgNVHSAELDAqMA8GDSsGAQQBga0hgiwBAQQwDQYLKwYBBAGBrSGCLB4wCAYGZ4EM
-AQICMEwGA1UdHwRFMEMwQaA/oD2GO2h0dHA6Ly9wa2kwMzM2LnRlbGVzZWMuZGUvcmwvVGVs
-ZVNlY19HbG9iYWxSb290X0NsYXNzXzIuY3JsMIGGBggrBgEFBQcBAQR6MHgwLAYIKwYBBQUH
-MAGGIGh0dHA6Ly9vY3NwMDMzNi50ZWxlc2VjLmRlL29jc3ByMEgGCCsGAQUFBzAChjxodHRw
-Oi8vcGtpMDMzNi50ZWxlc2VjLmRlL2NydC9UZWxlU2VjX0dsb2JhbFJvb3RfQ2xhc3NfMi5j
-ZXIwDQYJKoZIhvcNAQELBQADggEBAIcL/z4Cm2XIVi3WO5qYi3FP2ropqiH5Ri71sqQPrhE4
-eTizDnS6dl2e6BiClmLbTDPo3flq3zK9LExHYFV/53RrtCyD2HlrtrdNUAtmB7Xts5et6u5/
-MOaZ/SLick0+hFvu+c+Z6n/XUjkurJgARH5pO7917tALOxrN5fcPImxHhPalR6D90Bo0fa3S
-PXez7vTXTf/D6OWST1k+kEcQSrCFWMBvf/iu7QhCnh7U3xQuTY+8npTD5+32GPg8SecmqKc2
-2CzeIs2LgtjZeOJVEqM7h0S2EQvVDFKvaYwPBt/QolOLV5h7z/0HJPT8vcP9SpIClxvyt7bP
-ZYoaorVyGTkwggWNMIIEdaADAgECAgwcOtRQhH7u81j4jncwDQYJKoZIhvcNAQELBQAwgZUx
-CzAJBgNVBAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1
-dHNjaGVuIEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNV
-BAMTJERGTi1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjAeFw0xNjExMDMxNTI0
-NDhaFw0zMTAyMjIyMzU5NTlaMGoxCzAJBgNVBAYTAkRFMQ8wDQYDVQQIDAZCYXllcm4xETAP
-BgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxhbmNrLUdlc2VsbHNjaGFmdDEVMBMG
-A1UEAwwMTVBHIENBIC0gRzAyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnhx4
-59Lh4WqgOs/Md04XxU2yFtfM15ZuJV0PZP7BmqSJKLLPyqmOrADfNdJ5PIGBto2JBhtRRBHd
-G0GROOvTRHjzOga95WOTeura79T21FWwwAwa29OFnD3ZplQs6HgdwQrZWNi1WHNJxn/4mA19
-rNEBUc5urSIpZPvZi5XmlF3v3JHOlx3KWV7mUteB4pwEEfGTg4npPAJbp2o7arxQdoIq+Pu2
-OsvqhD7Rk4QeaX+EM1QS4lqd1otW4hE70h/ODPy1xffgbZiuotWQLC6nIwa65Qv6byqlIX0q
-Zuu99Vsu+r3sWYsL5SBkgecNI7fMJ5tfHrjoxfrKl/ErTAt8GQIDAQABo4ICBTCCAgEwEgYD
-VR0TAQH/BAgwBgEB/wIBATAOBgNVHQ8BAf8EBAMCAQYwKQYDVR0gBCIwIDANBgsrBgEEAYGt
-IYIsHjAPBg0rBgEEAYGtIYIsAQEEMB0GA1UdDgQWBBTEiKUH7rh7qgwTv9opdGNSG0lwFjAf
-BgNVHSMEGDAWgBST49gyJtrV8UqlkUrg6kviogzP4TCBjwYDVR0fBIGHMIGEMECgPqA8hjpo
-dHRwOi8vY2RwMS5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1Yi9jcmwvY2Fjcmwu
-Y3JsMECgPqA8hjpodHRwOi8vY2RwMi5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1
-Yi9jcmwvY2FjcmwuY3JsMIHdBggrBgEFBQcBAQSB0DCBzTAzBggrBgEFBQcwAYYnaHR0cDov
-L29jc3AucGNhLmRmbi5kZS9PQ1NQLVNlcnZlci9PQ1NQMEoGCCsGAQUFBzAChj5odHRwOi8v
-Y2RwMS5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1Yi9jYWNlcnQvY2FjZXJ0LmNy
-dDBKBggrBgEFBQcwAoY+aHR0cDovL2NkcDIucGNhLmRmbi5kZS9nbG9iYWwtcm9vdC1nMi1j
-YS9wdWIvY2FjZXJ0L2NhY2VydC5jcnQwDQYJKoZIhvcNAQELBQADggEBABLpeD5FygzqOjj+
-/lAOy20UQOGWlx0RMuPcI4nuyFT8SGmK9lD7QCg/HoaJlfU/r78ex+SEide326evlFAoJXIF
-jVyzNltDhpMKrPIDuh2N12zyn1EtagqPL6hu4pVRzcBpl/F2HCvtmMx5K4WN1L1fmHWLcSap
-dhXLvAZ9RG/B3rqyULLSNN8xHXYXpmtvG0VGJAndZ+lj+BH7uvd3nHWnXEHC2q7iQlDUqg0a
-wIqWJgdLlx1Q8Dg/sodv0m+LN0kOzGvVDRCmowBdWGhhusD+duKV66pBl+qhC+4LipariWaM
-qK5ppMQROATjYeNRvwI+nDcEXr2vDaKmdbxgDVwwggWvMIIEl6ADAgECAgweKlJIhfynPMVG
-/KIwDQYJKoZIhvcNAQELBQAwajELMAkGA1UEBhMCREUxDzANBgNVBAgMBkJheWVybjERMA8G
-A1UEBwwITXVlbmNoZW4xIDAeBgNVBAoMF01heC1QbGFuY2stR2VzZWxsc2NoYWZ0MRUwEwYD
-VQQDDAxNUEcgQ0EgLSBHMDIwHhcNMTcxMTE0MTEzNDE2WhcNMjAxMTEzMTEzNDE2WjCBizEL
-MAkGA1UEBhMCREUxIDAeBgNVBAoMF01heC1QbGFuY2stR2VzZWxsc2NoYWZ0MTQwMgYDVQQL
-DCtNYXgtUGxhbmNrLUluc3RpdHV0IGZ1ZXIgbW9sZWt1bGFyZSBHZW5ldGlrMQ4wDAYDVQQL
-DAVNUElNRzEUMBIGA1UEAwwLUGF1bCBNZW56ZWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
-ggEKAoIBAQDIh/UR/AX/YQ48VWWDMLTYtXjYJyhRHMc81ZHMMoaoG66lWB9MtKRTnB5lovLZ
-enTIUyPsCrMhTqV9CWzDf6v9gOTWVxHEYqrUwK5H1gx4XoK81nfV8oGV4EKuVmmikTXiztGz
-peyDmOY8o/EFNWP7YuRkY/lPQJQBeBHYq9AYIgX4StuXu83nusq4MDydygVOeZC15ts0tv3/
-6WmibmZd1OZRqxDOkoBbY3Djx6lERohs3IKS6RKiI7e90rCSy9rtidJBOvaQS9wvtOSKPx0a
-+2pAgJEVzZFjOAfBcXydXtqXhcpOi2VCyl+7+LnnTz016JJLsCBuWEcB3kP9nJYNAgMBAAGj
-ggIxMIICLTAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUEFjAUBggrBgEFBQcD
-AgYIKwYBBQUHAwQwHQYDVR0OBBYEFHM0Mc3XjMLlhWpp4JufRELL4A/qMB8GA1UdIwQYMBaA
-FMSIpQfuuHuqDBO/2il0Y1IbSXAWMCAGA1UdEQQZMBeBFXBtZW56ZWxAbW9sZ2VuLm1wZy5k
-ZTB9BgNVHR8EdjB0MDigNqA0hjJodHRwOi8vY2RwMS5wY2EuZGZuLmRlL21wZy1nMi1jYS9w
-dWIvY3JsL2NhY3JsLmNybDA4oDagNIYyaHR0cDovL2NkcDIucGNhLmRmbi5kZS9tcGctZzIt
-Y2EvcHViL2NybC9jYWNybC5jcmwwgc0GCCsGAQUFBwEBBIHAMIG9MDMGCCsGAQUFBzABhido
-dHRwOi8vb2NzcC5wY2EuZGZuLmRlL09DU1AtU2VydmVyL09DU1AwQgYIKwYBBQUHMAKGNmh0
-dHA6Ly9jZHAxLnBjYS5kZm4uZGUvbXBnLWcyLWNhL3B1Yi9jYWNlcnQvY2FjZXJ0LmNydDBC
-BggrBgEFBQcwAoY2aHR0cDovL2NkcDIucGNhLmRmbi5kZS9tcGctZzItY2EvcHViL2NhY2Vy
-dC9jYWNlcnQuY3J0MEAGA1UdIAQ5MDcwDwYNKwYBBAGBrSGCLAEBBDARBg8rBgEEAYGtIYIs
-AQEEAwYwEQYPKwYBBAGBrSGCLAIBBAMGMA0GCSqGSIb3DQEBCwUAA4IBAQCQs6bUDROpFO2F
-Qz2FMgrdb39VEo8P3DhmpqkaIMC5ZurGbbAL/tAR6lpe4af682nEOJ7VW86ilsIJgm1j0ueY
-aOuL8jrN4X7IF/8KdZnnNnImW3QVni6TCcc+7+ggci9JHtt0IDCj5vPJBpP/dKXLCN4M+exl
-GXYpfHgxh8gclJPY1rquhQrihCzHfKB01w9h9tWZDVMtSoy9EUJFhCXw7mYUsvBeJwZesN2B
-fndPkrXx6XWDdU3S1LyKgHlLIFtarLFm2Hb5zAUR33h+26cN6ohcGqGEEzgIG8tXS8gztEaj
-1s2RyzmKd4SXTkKR3GhkZNVWy+gM68J7jP6zzN+cMYIDmjCCA5YCAQEwejBqMQswCQYDVQQG
-EwJERTEPMA0GA1UECAwGQmF5ZXJuMREwDwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4
-LVBsYW5jay1HZXNlbGxzY2hhZnQxFTATBgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzF
-RvyiMA0GCWCGSAFlAwQCAQUAoIIB8TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqG
-SIb3DQEJBTEPFw0xOTA3MTUwOTA2MDVaMC8GCSqGSIb3DQEJBDEiBCDfq6MTrITKWIuYs8aj
-+Ury9HpFpDhyglYUd9PZIM+scDBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
-hkgBZQMEAQIwCgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcG
-BSsOAwIHMA0GCCqGSIb3DQMCAgEoMIGJBgkrBgEEAYI3EAQxfDB6MGoxCzAJBgNVBAYTAkRF
-MQ8wDQYDVQQIDAZCYXllcm4xETAPBgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxh
-bmNrLUdlc2VsbHNjaGFmdDEVMBMGA1UEAwwMTVBHIENBIC0gRzAyAgweKlJIhfynPMVG/KIw
-gYsGCyqGSIb3DQEJEAILMXygejBqMQswCQYDVQQGEwJERTEPMA0GA1UECAwGQmF5ZXJuMREw
-DwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4LVBsYW5jay1HZXNlbGxzY2hhZnQxFTAT
-BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBAKiv
-dr4oLRG2dibJf3nvyO16ZA+aEktQ4lwyHUDL9BychmrWFtfkYxnWp0VPtboJ9n6M8T/HA/ib
-IcaCugT8Dqs6jzhB9gWRyVumzj62/CjyTzmZrcE7OnzpbMryUy9/8HwLONhdLZvdXAKulOHm
-ewBmsnDUHAf0Fi40Wwr3A2G6xct7OSELMaDuiOcHF5uhLFGXmZX18CjKlVsiCivxM0wCOzKl
-Bd3z0F5Jt3zz0BXvc789e/VBW8sCdAh5wBer4pAenH+a1pOo70vRpb7gKqvcgThEbCq4Yk3e
-nZG+p0unqeW/6KyCr7cpmrMckx1dMW93WJ39m0a/wAtHhuSMB/MAAAAAAAA=
---------------ms050609000102000806080105--
-
---===============0920014932009797649==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0920014932009797649==--
+YXQgNTowNiBQTSwgUGF1bCBNZW56ZWwgPHBtZW56ZWxAbW9sZ2VuLm1wZy5kZT4gd3JvdGU6Cgo+
+IERlYXIgS2FpIEhlbmcsCj4KPgo+ICh3aXRoIG9yIHdpdGhvdXQgaHlwaGVuPykKPgo+IE9uIDcv
+MTUvMTkgMTE6MDAgQU0sIEthaSBIZW5nIEZlbmcgd3JvdGU6Cj4+IGF0IDQ6NTIgUE0sIFBhdWwg
+TWVuemVsIDxwbWVuemVsQG1vbGdlbi5tcGcuZGU+IHdyb3RlOgo+Cj4+PiBPbiA3LzE1LzE5IDEw
+OjQzIEFNLCBLYWktSGVuZyBGZW5nIHdyb3RlOgo+Pj4+IEFmdGVyIGhvdHBsdWdnaW5nIGFuIDFH
+YnBzIGV0aGVybmV0IGNhYmxlIHdpdGggMUdicHMgbGluayBwYXJ0bmVyLCB0aGUKPj4+PiBNSUlf
+Qk1TUiBtYXkgcmVwb3J0cyAxME1icHMsIHJlbmRlcnMgdGhlIG5ldHdvcmsgcmF0aGVyIHNsb3cu
+Cj4+Pgo+Pj4gcy9tYXkgcmVwb3J0cy9tYXkgcmVwb3J0Lwo+Pj4gcy9yZW5kZXJzL3JlbmRlcmlu
+Zy8KPj4KPj4gQXBwYXJlbnRseSBFbmdsaXNoIGlzbuKAmXQgbXkgbW90aGVyIHRvbmd1ZSA7KQo+
+Cj4gTm8gcHJvYmxlbS4gTWluZSBuZWl0aGVyLgo+Cj4+Pj4gVGhlIGlzc3VlIGhhcyBtdWNoIGxv
+d2VyIGZhaWwgcmF0ZSBhZnRlciBjb21taXQgNTk2NTNlNjQ5N2QxICgiZTEwMDBlOgo+Pj4+IE1h
+a2Ugd2F0Y2hkb2cgdXNlIGRlbGF5ZWQgd29yayIpLCB3aGljaCBlc3NzZW50aWFsbHkgaW50cm9k
+dWNlcyBzb21lCj4+Pgo+Pj4gZXNzZW50aWFsbHkKPj4KPj4gT2suCj4+Cj4+Pj4gZGVsYXkgYmVm
+b3JlIHJ1bm5pbmcgdGhlIHdhdGNoZG9nIHRhc2suCj4+Pj4KPj4+PiBCdXQgdGhlcmUncyBzdGls
+bCBhIGNoYW5jZSB0aGF0IHRoZSBob3RwbHVnZ2luZyBldmVudCBhbmQgdGhlIHF1ZXVlZAo+Pj4+
+IHdhdGNoZG9nIHRhc2sgZ2V0cyBydW4gYXQgdGhlIHNhbWUgdGltZSwgdGhlbiB0aGUgb3JpZ2lu
+YWwgaXNzdWUgY2FuIGJlCj4+Pj4gb2JzZXJ2ZWQgb25jZSBhZ2Fpbi4KPj4+Pgo+Pj4+IFNvIGxl
+dCdzIHVzZSBtb2RfZGVsYXllZF93b3JrKCkgdG8gYWRkIGEgZGV0ZXJtaW5pc3RpYyAxIHNlY29u
+ZCBkZWxheQo+Pj4+IGJlZm9yZSBydW5uaW5nIHdhdGNoZG9nIHRhc2ssIGFmdGVyIGFuIGludGVy
+cnVwdC4KPj4+Cj4+PiBJIGFtIG5vdCBjbGVhciBhYm91dCB0aGUgZWZmZWN0cyBmb3IgdGhlIHVz
+ZXIuIENvdWxkIHlvdSBlbGFib3JhdGUKPj4+IHBsZWFzZT8gRG9lcyB0aGUgbGluayBub3cgY29t
+ZSB1cCB1cCB0byBvbmUgc2Vjb25kIGxhdGVyPwo+Pgo+PiBZZXMsIHRoZSBsaW5rIHdpbGwgYmUg
+dXAgb24gYSBmaXhlZCBvbmUgc2Vjb25kIGxhdGVyLgo+Pgo+PiBUaGUgZGVsYXkgdmFyaWVzIGJl
+dHdlZW4gMCB0byAyIHNlY29uZHMgd2l0aG91dCB0aGlzIHBhdGNoLgo+Cj4gSXMgdGhlcmUgbm8g
+b3RoZXIgZml4PyBSZWdhcmRpbmcgYm9vdGluZyBhIHN5c3RlbSBmYXN0IChsZXNzIHRoYW4gc2l4
+Cj4gc2Vjb25kcyksIGEgZml4ZWQgb25lIHNlY29uZCBkZWxheSBpcyBxdWl0ZSBhIHJlZ3Jlc3Np
+b24gb24gc3lzdGVtcyB3aGVyZQo+IGl0IHdvcmtlZCBiZWZvcmUuCgpUaGlzIG9ubHkgYWZmZWN0
+cyB3aGVuIGV0aGVybmV0IGNhYmxlIGlzIGhvdCBwbHVnZ2VkLgoKS2FpLUhlbmcKCj4KPj4+PiBT
+aWduZWQtb2ZmLWJ5OiBLYWktSGVuZyBGZW5nIDxrYWkuaGVuZy5mZW5nQGNhbm9uaWNhbC5jb20+
+Cj4+Pgo+Pj4gQW55IGJ1ZyBVUkw/Cj4+Cj4+IElmIG1haW50YWluZXJzIHRoaW5rIGl04oCZcyBu
+ZWNlc3NhcnkgdGhlbiBJ4oCZbGwgZmlsZSBvbmUuCj4KPiBOb3QgbmVjZXNzYXJ5LCBpZiB0aGVy
+ZSBpcyBub25lLiBJIHRob3VnaHQgeW91IGhhZCBvbmUgaW4gTGF1bmNocGFkIG9yIHNvLgo+Cj4K
+PiBLaW5kIHJlZ2FyZHMsCj4KPiBQYXVsCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJl
+ZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9pbnRlbC13aXJlZC1sYW4K
