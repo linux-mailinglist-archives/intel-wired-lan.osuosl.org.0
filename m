@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 278FD6A23E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jul 2019 08:30:39 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F081F6A23D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jul 2019 08:30:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D88F021537;
-	Tue, 16 Jul 2019 06:30:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B3B3187C9C;
+	Tue, 16 Jul 2019 06:30:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QSn7yefxeLYm; Tue, 16 Jul 2019 06:30:35 +0000 (UTC)
+	with ESMTP id yqK4FNsgW0PK; Tue, 16 Jul 2019 06:30:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 62BF020475;
+	by hemlock.osuosl.org (Postfix) with ESMTP id F3E5687D48;
 	Tue, 16 Jul 2019 06:30:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 917341BF331
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jul 2019 06:30:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E9DDA1BF331
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jul 2019 06:30:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8C64F85FA5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jul 2019 06:30:29 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E6D0A85F82
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jul 2019 06:30:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YduqVa1fy1_q for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 8BTC87B_YPIW for <intel-wired-lan@lists.osuosl.org>;
  Tue, 16 Jul 2019 06:30:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C263585F82
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C399785FA3
  for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jul 2019 06:30:28 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2019 23:30:27 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2019 23:30:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.63,496,1557212400"; d="scan'208";a="187274121"
+X-IronPort-AV: E=Sophos;i="5.63,496,1557212400"; d="scan'208";a="318900489"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 15 Jul 2019 23:30:26 -0700
+ by orsmga004.jf.intel.com with ESMTP; 15 Jul 2019 23:30:26 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1hnGyo-0001TQ-1D; Tue, 16 Jul 2019 14:30:26 +0800
-Date: Tue, 16 Jul 2019 14:30:00 +0800
+ id 1hnGyo-0001Wb-56; Tue, 16 Jul 2019 14:30:26 +0800
+Date: Tue, 16 Jul 2019 14:30:06 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d2d6ee8.uC0ew+zLOIyHr7ka%lkp@intel.com>
+Message-ID: <5d2d6eee.NQO09EtQ/go7X7UL%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:master] BUILD INCOMPLETE
- 071c37983d99da07797294ea78e9da1a6e287144
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD INCOMPLETE
+ aa5bb866e707b059b3b13f363cfdf52250882bc8
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,10 +68,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/net-queue.git  master
-branch HEAD: 071c37983d99da07797294ea78e9da1a6e287144  net: neigh: fix multiple neigh timer scheduling
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: aa5bb866e707b059b3b13f363cfdf52250882bc8  checkpatch.pl: seed camelcase from the provided kernel tree root
 
-TIMEOUT after 738m
+TIMEOUT after 720m
 
 
 Sorry we cannot finish the testset for your branch within a reasonable time.
