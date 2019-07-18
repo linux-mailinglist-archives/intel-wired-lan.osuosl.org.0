@@ -1,71 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A85316C361
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2019 01:02:25 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83F496CA9C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2019 10:07:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B96BF876A4;
-	Wed, 17 Jul 2019 23:02:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2C844204EE;
+	Thu, 18 Jul 2019 08:07:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NcdQ3iDjNiL3; Wed, 17 Jul 2019 23:02:23 +0000 (UTC)
+	with ESMTP id B9X9YjrKbLvP; Thu, 18 Jul 2019 08:07:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B398087695;
-	Wed, 17 Jul 2019 23:02:22 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5B4A21BF2A2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2019 17:32:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 89CCC204E7;
+	Thu, 18 Jul 2019 08:07:00 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D4371BF5A1
+ for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:06:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5379482383
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2019 17:32:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 89800868CB
+ for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:06:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z49HZFO8iKaX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Jul 2019 17:32:16 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 378C7831F5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2019 17:32:16 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2019 10:32:15 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,275,1559545200"; d="scan'208";a="178968431"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by orsmga002.jf.intel.com with ESMTP; 17 Jul 2019 10:32:15 -0700
-Received: from orsmsx159.amr.corp.intel.com (10.22.240.24) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 17 Jul 2019 10:32:15 -0700
-Received: from orsmsx115.amr.corp.intel.com ([169.254.4.240]) by
- ORSMSX159.amr.corp.intel.com ([169.254.11.26]) with mapi id 14.03.0439.000;
- Wed, 17 Jul 2019 10:32:14 -0700
-From: "Patel, Vedang" <vedang.patel@intel.com>
-To: David Miller <davem@davemloft.net>
-Thread-Topic: [PATCH net-next v1] fix: taprio: Change type of txtime-delay
- parameter to u32
-Thread-Index: AQHVPBAH2Iab5gicXE2VxFW40gJB96bONWkAgAFS4wA=
-Date: Wed, 17 Jul 2019 17:32:10 +0000
-Message-ID: <D18998A5-4B08-4F27-897F-A34B7C15684F@intel.com>
-References: <1563306738-2779-1-git-send-email-vedang.patel@intel.com>
- <20190716.141904.308520366333461345.davem@davemloft.net>
-In-Reply-To: <20190716.141904.308520366333461345.davem@davemloft.net>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.24.14.140]
-Content-ID: <25F096A2937A7A4CA810742E06D34141@intel.com>
+ with ESMTP id gKo7IKu1ENqA for <intel-wired-lan@osuosl.org>;
+ Thu, 18 Jul 2019 08:06:57 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from geminitest.hmdnsgroup.com (geminitest.hmdnsgroup.com
+ [63.247.140.108])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 34179868AB
+ for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:06:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=mirality.co.nz; s=default; h=Message-ID:References:In-Reply-To:Subject:To:
+ From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Reply-To
+ :Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=35JzKX38BCbRs8VlW0JRgOnh1qO2Fy46dXebAeVfkgM=; b=P2rY9J3vkYbjNrDMJk0zdtenoe
+ Y5Jqa0JauZjZhu4UQbuKtKHnjhLVNjhJReV+fs1YMIbLihs+NNRzvg4p4qvwbvIc7PwCR1oHz1+K6
+ Hh2+TlaM/++wEWLK/z/yXPAex0nbniREyX44qXi/+4lgreJFBHP/JyuGNysXRVglwbSbT0lbHuO8Y
+ DkCVs48LqB6f9sdfEN/NVIk4xEinK0iJCTt4QnShxXtB37NRT5qHEJsGufE9nzZNa/VwOkmKyOJUx
+ XmyxALmGSFwN1+nYc8wAg2jcsKSrHQwK4UzXkKPKE03NMEEHpzapLFDHYbs3beGOmoFnpCwM/G+by
+ v98fBNZQ==;
+Received: from [::1] (port=55978 helo=mirality.co.nz)
+ by gemini.hmdnsgroup.com with esmtpa (Exim 4.87)
+ (envelope-from <intel@mirality.co.nz>) id 1ho1RK-0008Vz-Ig
+ for intel-wired-lan@osuosl.org; Thu, 18 Jul 2019 04:06:58 -0400
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 17 Jul 2019 23:02:21 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] fix: taprio: Change type
- of txtime-delay parameter to u32
+Date: Thu, 18 Jul 2019 20:06:58 +1200
+From: Gavin Lambert <intel@mirality.co.nz>
+To: intel-wired-lan@osuosl.org
+In-Reply-To: <bec9f546d5a5a46586af0ac93d36f84f@mirality.co.nz>
+References: <3acf459ddbbd30687cda0a79523afe04@mirality.co.nz>
+ <bec9f546d5a5a46586af0ac93d36f84f@mirality.co.nz>
+Message-ID: <000661bda5687541e895a949c76712fb@mirality.co.nz>
+X-Sender: intel@mirality.co.nz
+User-Agent: Roundcube Webmail/1.1.4
+X-HMDNSGroup-MailScanner-Information: Please contact the ISP for more
+ information
+X-HMDNSGroup-MailScanner-ID: 1ho1RK-0008Vz-Ig
+X-HMDNSGroup-MailScanner: Found to be clean
+X-HMDNSGroup-MailScanner-SpamCheck: 
+X-HMDNSGroup-MailScanner-From: intel@mirality.co.nz
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gemini.hmdnsgroup.com
+X-AntiAbuse: Original Domain - osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - mirality.co.nz
+X-Get-Message-Sender-Via: gemini.hmdnsgroup.com: authenticated_id:
+ uecasm/from_h
+X-Authenticated-Sender: gemini.hmdnsgroup.com: intel@mirality.co.nz
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+Subject: Re: [Intel-wired-lan] [e1000e] Linux 4.9: unable to send packets
+ after link recovery with patched driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,46 +90,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, "l@dorileo.org" <l@dorileo.org>,
- Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Jakub Kicinski <jakub.kicinski@netronome.com>,
- Jamal Hadi Salim <jhs@mojatatu.com>,
- Stephen Hemminger <stephen@networkplumber.org>, Murali
- Karicheri <m-karicheri2@ti.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Cong Wang <xiyou.wangcong@gmail.com>, Eric Dumazet <eric.dumazet@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-> On Jul 16, 2019, at 2:19 PM, David Miller <davem@davemloft.net> wrote:
-> 
-> From: Vedang Patel <vedang.patel@intel.com>
-> Date: Tue, 16 Jul 2019 12:52:18 -0700
-> 
->> During the review of the iproute2 patches for txtime-assist mode, it was
->> pointed out that it does not make sense for the txtime-delay parameter to
->> be negative. So, change the type of the parameter from s32 to u32.
+On 2019-07-12 15:23, I wrote:
+> On 2019-07-11 18:50, I wrote:
+>> On a Debian system with kernel linux-image-4.9.0-4-rt-amd64 (4.9.65)
+>> installed, this works perfectly.  It also works perfectly with
+>> linux-image-4.9.0-8-rt-amd64 (4.9.110).
 >> 
->> Fixes: 4cfd5779bd6e ("taprio: Add support for txtime-assist mode")
->> Reported-by: Stephen Hemminger <stephen@networkplumber.org>
->> Signed-off-by: Vedang Patel <vedang.patel@intel.com>
-> 
-> You should have targetted this at 'net' as that's the only tree open
-> right now.
-> 
-> I'll apply this.
+>> However, with kernel linux-image-4.9.0-9-rt-amd64 (4.9.168) installed
+>> (and no other changes to the system other than building the patched
+>> e1000e module against this kernel's headers), something weird happens
+>> when the driver is running in its alternate "ecdev" mode.
+[...]
+> Since this was mostly just a rebase error (you can see a similar
+> change in the old location of this code), I'm not sure if this helps
+> narrow down the source of the problem between 4.9.110 and 4.9.168 or
+> not.  I'm still looking for ideas for that.
 
-Sorry about that.
+Using this kernel tree:
+   
+https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git/log/?h=v4.9-rt&ofs=3120
 
-I will keep this in mind from next time. 
+I've identified that the code at tag v4.9.126 is "good" and the code at 
+tag v4.9.127 is "bad".
 
-Thanks,
-Vedang
+I've done a bisect (twice, from different starting points) and both 
+times settled on this commit as the one which introduced the problem I'm 
+experiencing:
+
+commit c0b809985a7a418fcc3361c239ae79250245282d (refs/bisect/bad)
+Author: Tomas Winkler <tomas.winkler@intel.com>
+Date:   Tue Jan 2 12:01:41 2018 +0200
+
+     mei: me: allow runtime pm for platform with D0i3
+
+     commit cc365dcf0e56271bedf3de95f88922abe248e951 upstream.
+
+     >From the pci power documentation:
+     "The driver itself should not call pm_runtime_allow(), though. 
+Instead,
+     it should let user space or some platform-specific code do that 
+(user space
+     can do it via sysfs as stated above)..."
+
+     However, the S0ix residency cannot be reached without MEI device 
+getting
+     into low power state. Hence, for mei devices that support D0i3, it's 
+better
+     to make runtime power management mandatory and not rely on the 
+system
+     integration such as udev rules.
+     This policy cannot be applied globally as some older platforms
+     were found to have broken power management.
+
+     Cc: <stable@vger.kernel.org> v4.13+
+     Cc: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+     Signed-off-by: Tomas Winkler <tomas.winkler@intel.com>
+     Reviewed-by: Alexander Usyskin <alexander.usyskin@intel.com>
+     Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+It is reproducible every time; if I build at the parent commit 
+(3d3432580911) then the driver works, and if I add the commit above then 
+it fails.
+
+However it's unclear to me how this is affecting my modified e1000e 
+driver in this way, except that it is perhaps power management related?
+
+Since it appears to be a pm_runtime-related thing, just as an experiment 
+I did try commenting out every single call to pm_runtime* functions in 
+netdev.c, but this did not resolve the problem.  Ditto for anything with 
+the word "suspend" in it.  I also tried adding e_info() logging calls to 
+most places that used pm_ calls other than pm_runtime_get/put (and in 
+particular, in all of the pm_ops callbacks), and none of them were hit 
+during the problem events.
+
+And even when it's not working, if I `cat` various things in 
+`/sys/bus/pci/.../power/` on the adapter device, it appears to all be 
+non-suspended, which makes me doubt that it really is a PM issue, unless 
+I'm just looking in the wrong places.
+
+Any ideas?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
