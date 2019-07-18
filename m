@@ -1,81 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83F496CA9C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2019 10:07:04 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D4D66CADB
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2019 10:22:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2C844204EE;
-	Thu, 18 Jul 2019 08:07:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2614086A14;
+	Thu, 18 Jul 2019 08:22:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B9X9YjrKbLvP; Thu, 18 Jul 2019 08:07:03 +0000 (UTC)
+	with ESMTP id 5J506Ioue0Tm; Thu, 18 Jul 2019 08:22:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 89CCC204E7;
-	Thu, 18 Jul 2019 08:07:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D37C86A1D;
+	Thu, 18 Jul 2019 08:22:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8D4371BF5A1
- for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:06:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8D9C51BF5A1
+ for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:22:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 89800868CB
- for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:06:58 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8A2B286A11
+ for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:22:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gKo7IKu1ENqA for <intel-wired-lan@osuosl.org>;
- Thu, 18 Jul 2019 08:06:57 +0000 (UTC)
+ with ESMTP id e5BTLVHlqRbi for <intel-wired-lan@osuosl.org>;
+ Thu, 18 Jul 2019 08:22:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from geminitest.hmdnsgroup.com (geminitest.hmdnsgroup.com
- [63.247.140.108])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 34179868AB
- for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:06:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=mirality.co.nz; s=default; h=Message-ID:References:In-Reply-To:Subject:To:
- From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:Reply-To
- :Cc:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=35JzKX38BCbRs8VlW0JRgOnh1qO2Fy46dXebAeVfkgM=; b=P2rY9J3vkYbjNrDMJk0zdtenoe
- Y5Jqa0JauZjZhu4UQbuKtKHnjhLVNjhJReV+fs1YMIbLihs+NNRzvg4p4qvwbvIc7PwCR1oHz1+K6
- Hh2+TlaM/++wEWLK/z/yXPAex0nbniREyX44qXi/+4lgreJFBHP/JyuGNysXRVglwbSbT0lbHuO8Y
- DkCVs48LqB6f9sdfEN/NVIk4xEinK0iJCTt4QnShxXtB37NRT5qHEJsGufE9nzZNa/VwOkmKyOJUx
- XmyxALmGSFwN1+nYc8wAg2jcsKSrHQwK4UzXkKPKE03NMEEHpzapLFDHYbs3beGOmoFnpCwM/G+by
- v98fBNZQ==;
-Received: from [::1] (port=55978 helo=mirality.co.nz)
- by gemini.hmdnsgroup.com with esmtpa (Exim 4.87)
- (envelope-from <intel@mirality.co.nz>) id 1ho1RK-0008Vz-Ig
- for intel-wired-lan@osuosl.org; Thu, 18 Jul 2019 04:06:58 -0400
-MIME-Version: 1.0
-Date: Thu, 18 Jul 2019 20:06:58 +1200
-From: Gavin Lambert <intel@mirality.co.nz>
-To: intel-wired-lan@osuosl.org
-In-Reply-To: <bec9f546d5a5a46586af0ac93d36f84f@mirality.co.nz>
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CA03C86A10
+ for <intel-wired-lan@osuosl.org>; Thu, 18 Jul 2019 08:22:07 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5bd1a9.dynamic.kabel-deutschland.de
+ [95.91.209.169])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id CAF05201A3C2B;
+ Thu, 18 Jul 2019 10:22:04 +0200 (CEST)
+To: Gavin Lambert <intel@mirality.co.nz>
 References: <3acf459ddbbd30687cda0a79523afe04@mirality.co.nz>
  <bec9f546d5a5a46586af0ac93d36f84f@mirality.co.nz>
-Message-ID: <000661bda5687541e895a949c76712fb@mirality.co.nz>
-X-Sender: intel@mirality.co.nz
-User-Agent: Roundcube Webmail/1.1.4
-X-HMDNSGroup-MailScanner-Information: Please contact the ISP for more
- information
-X-HMDNSGroup-MailScanner-ID: 1ho1RK-0008Vz-Ig
-X-HMDNSGroup-MailScanner: Found to be clean
-X-HMDNSGroup-MailScanner-SpamCheck: 
-X-HMDNSGroup-MailScanner-From: intel@mirality.co.nz
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gemini.hmdnsgroup.com
-X-AntiAbuse: Original Domain - osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - mirality.co.nz
-X-Get-Message-Sender-Via: gemini.hmdnsgroup.com: authenticated_id:
- uecasm/from_h
-X-Authenticated-Sender: gemini.hmdnsgroup.com: intel@mirality.co.nz
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+ <000661bda5687541e895a949c76712fb@mirality.co.nz>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <9ce1ba83-6603-6278-4658-52b941aa85ba@molgen.mpg.de>
+Date: Thu, 18 Jul 2019 10:22:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <000661bda5687541e895a949c76712fb@mirality.co.nz>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [e1000e] Linux 4.9: unable to send packets
  after link recovery with patched driver
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -90,91 +63,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: intel-wired-lan@osuosl.org,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+ Alexander Usyskin <alexander.usyskin@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Tomas Winkler <tomas.winkler@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2019-07-12 15:23, I wrote:
-> On 2019-07-11 18:50, I wrote:
->> On a Debian system with kernel linux-image-4.9.0-4-rt-amd64 (4.9.65)
->> installed, this works perfectly.  It also works perfectly with
->> linux-image-4.9.0-8-rt-amd64 (4.9.110).
->> 
->> However, with kernel linux-image-4.9.0-9-rt-amd64 (4.9.168) installed
->> (and no other changes to the system other than building the patched
->> e1000e module against this kernel's headers), something weird happens
->> when the driver is running in its alternate "ecdev" mode.
-[...]
-> Since this was mostly just a rebase error (you can see a similar
-> change in the old location of this code), I'm not sure if this helps
-> narrow down the source of the problem between 4.9.110 and 4.9.168 or
-> not.  I'm still looking for ideas for that.
-
-Using this kernel tree:
-   
-https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git/log/?h=v4.9-rt&ofs=3120
-
-I've identified that the code at tag v4.9.126 is "good" and the code at 
-tag v4.9.127 is "bad".
-
-I've done a bisect (twice, from different starting points) and both 
-times settled on this commit as the one which introduced the problem I'm 
-experiencing:
-
-commit c0b809985a7a418fcc3361c239ae79250245282d (refs/bisect/bad)
-Author: Tomas Winkler <tomas.winkler@intel.com>
-Date:   Tue Jan 2 12:01:41 2018 +0200
-
-     mei: me: allow runtime pm for platform with D0i3
-
-     commit cc365dcf0e56271bedf3de95f88922abe248e951 upstream.
-
-     >From the pci power documentation:
-     "The driver itself should not call pm_runtime_allow(), though. 
-Instead,
-     it should let user space or some platform-specific code do that 
-(user space
-     can do it via sysfs as stated above)..."
-
-     However, the S0ix residency cannot be reached without MEI device 
-getting
-     into low power state. Hence, for mei devices that support D0i3, it's 
-better
-     to make runtime power management mandatory and not rely on the 
-system
-     integration such as udev rules.
-     This policy cannot be applied globally as some older platforms
-     were found to have broken power management.
-
-     Cc: <stable@vger.kernel.org> v4.13+
-     Cc: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-     Signed-off-by: Tomas Winkler <tomas.winkler@intel.com>
-     Reviewed-by: Alexander Usyskin <alexander.usyskin@intel.com>
-     Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-It is reproducible every time; if I build at the parent commit 
-(3d3432580911) then the driver works, and if I add the commit above then 
-it fails.
-
-However it's unclear to me how this is affecting my modified e1000e 
-driver in this way, except that it is perhaps power management related?
-
-Since it appears to be a pm_runtime-related thing, just as an experiment 
-I did try commenting out every single call to pm_runtime* functions in 
-netdev.c, but this did not resolve the problem.  Ditto for anything with 
-the word "suspend" in it.  I also tried adding e_info() logging calls to 
-most places that used pm_ calls other than pm_runtime_get/put (and in 
-particular, in all of the pm_ops callbacks), and none of them were hit 
-during the problem events.
-
-And even when it's not working, if I `cat` various things in 
-`/sys/bus/pci/.../power/` on the adapter device, it appears to all be 
-non-suspended, which makes me doubt that it really is a PM issue, unless 
-I'm just looking in the wrong places.
-
-Any ideas?
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+W3ByaXZhdGUgYW5zd2VyXQoKRGVhciBHYXZpbiwKCgpZb3VyIG1lc3NhZ2VzIHdlcmUgZGVsaXZl
+cmVkIHRvIHRoZSBsaXN0IHN1YnNjcmliZXJzLgoKT24gMTguMDcuMTkgMTA6MDYsIEdhdmluIExh
+bWJlcnQgd3JvdGU6Cj4gT24gMjAxOS0wNy0xMiAxNToyMywgSSB3cm90ZToKPj4gT24gMjAxOS0w
+Ny0xMSAxODo1MCwgSSB3cm90ZToKPj4+IE9uIGEgRGViaWFuIHN5c3RlbSB3aXRoIGtlcm5lbCBs
+aW51eC1pbWFnZS00LjkuMC00LXJ0LWFtZDY0ICg0LjkuNjUpCj4+PiBpbnN0YWxsZWQsIHRoaXMg
+d29ya3MgcGVyZmVjdGx5LsKgIEl0IGFsc28gd29ya3MgcGVyZmVjdGx5IHdpdGgKPj4+IGxpbnV4
+LWltYWdlLTQuOS4wLTgtcnQtYW1kNjQgKDQuOS4xMTApLgo+Pj4KPj4+IEhvd2V2ZXIsIHdpdGgg
+a2VybmVsIGxpbnV4LWltYWdlLTQuOS4wLTktcnQtYW1kNjQgKDQuOS4xNjgpIGluc3RhbGxlZAo+
+Pj4gKGFuZCBubyBvdGhlciBjaGFuZ2VzIHRvIHRoZSBzeXN0ZW0gb3RoZXIgdGhhbiBidWlsZGlu
+ZyB0aGUgcGF0Y2hlZAo+Pj4gZTEwMDBlIG1vZHVsZSBhZ2FpbnN0IHRoaXMga2VybmVsJ3MgaGVh
+ZGVycyksIHNvbWV0aGluZyB3ZWlyZCBoYXBwZW5zCj4+PiB3aGVuIHRoZSBkcml2ZXIgaXMgcnVu
+bmluZyBpbiBpdHMgYWx0ZXJuYXRlICJlY2RldiIgbW9kZS4KPiBbLi4uXQo+PiBTaW5jZSB0aGlz
+IHdhcyBtb3N0bHkganVzdCBhIHJlYmFzZSBlcnJvciAoeW91IGNhbiBzZWUgYSBzaW1pbGFyCj4+
+IGNoYW5nZSBpbiB0aGUgb2xkIGxvY2F0aW9uIG9mIHRoaXMgY29kZSksIEknbSBub3Qgc3VyZSBp
+ZiB0aGlzIGhlbHBzCj4+IG5hcnJvdyBkb3duIHRoZSBzb3VyY2Ugb2YgdGhlIHByb2JsZW0gYmV0
+d2VlbiA0LjkuMTEwIGFuZCA0LjkuMTY4IG9yCj4+IG5vdC7CoCBJJ20gc3RpbGwgbG9va2luZyBm
+b3IgaWRlYXMgZm9yIHRoYXQuCj4gCj4gVXNpbmcgdGhpcyBrZXJuZWwgdHJlZToKPiBodHRwczov
+L2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9ydC9saW51eC1zdGFibGUt
+cnQuZ2l0L2xvZy8/aD12NC45LXJ0Jm9mcz0zMTIwIAo+IAo+IEkndmUgaWRlbnRpZmllZCB0aGF0
+IHRoZSBjb2RlIGF0IHRhZyB2NC45LjEyNiBpcyAiZ29vZCIgYW5kIHRoZSBjb2RlIGF0IAo+IHRh
+ZyB2NC45LjEyNyBpcyAiYmFkIi4KPiAKPiBJJ3ZlIGRvbmUgYSBiaXNlY3QgKHR3aWNlLCBmcm9t
+IGRpZmZlcmVudCBzdGFydGluZyBwb2ludHMpIGFuZCBib3RoIAo+IHRpbWVzIHNldHRsZWQgb24g
+dGhpcyBjb21taXQgYXMgdGhlIG9uZSB3aGljaCBpbnRyb2R1Y2VkIHRoZSBwcm9ibGVtIEknbSAK
+PiBleHBlcmllbmNpbmc6Cj4gCj4gY29tbWl0IGMwYjgwOTk4NWE3YTQxOGZjYzMzNjFjMjM5YWU3
+OTI1MDI0NTI4MmQgKHJlZnMvYmlzZWN0L2JhZCkKPiBBdXRob3I6IFRvbWFzIFdpbmtsZXIgPHRv
+bWFzLndpbmtsZXJAaW50ZWwuY29tPgo+IERhdGU6wqDCoCBUdWUgSmFuIDIgMTI6MDE6NDEgMjAx
+OCArMDIwMAo+IAo+ICDCoMKgwqAgbWVpOiBtZTogYWxsb3cgcnVudGltZSBwbSBmb3IgcGxhdGZv
+cm0gd2l0aCBEMGkzCj4gCj4gIMKgwqDCoCBjb21taXQgY2MzNjVkY2YwZTU2MjcxYmVkZjNkZTk1
+Zjg4OTIyYWJlMjQ4ZTk1MSB1cHN0cmVhbS4KPiAKPiAgwqDCoMKgID5Gcm9tIHRoZSBwY2kgcG93
+ZXIgZG9jdW1lbnRhdGlvbjoKPiAgwqDCoMKgICJUaGUgZHJpdmVyIGl0c2VsZiBzaG91bGQgbm90
+IGNhbGwgcG1fcnVudGltZV9hbGxvdygpLCB0aG91Z2guIAo+IEluc3RlYWQsCj4gIMKgwqDCoCBp
+dCBzaG91bGQgbGV0IHVzZXIgc3BhY2Ugb3Igc29tZSBwbGF0Zm9ybS1zcGVjaWZpYyBjb2RlIGRv
+IHRoYXQgCj4gKHVzZXIgc3BhY2UKPiAgwqDCoMKgIGNhbiBkbyBpdCB2aWEgc3lzZnMgYXMgc3Rh
+dGVkIGFib3ZlKS4uLiIKPiAKPiAgwqDCoMKgIEhvd2V2ZXIsIHRoZSBTMGl4IHJlc2lkZW5jeSBj
+YW5ub3QgYmUgcmVhY2hlZCB3aXRob3V0IE1FSSBkZXZpY2UgCj4gZ2V0dGluZwo+ICDCoMKgwqAg
+aW50byBsb3cgcG93ZXIgc3RhdGUuIEhlbmNlLCBmb3IgbWVpIGRldmljZXMgdGhhdCBzdXBwb3J0
+IEQwaTMsIAo+IGl0J3MgYmV0dGVyCj4gIMKgwqDCoCB0byBtYWtlIHJ1bnRpbWUgcG93ZXIgbWFu
+YWdlbWVudCBtYW5kYXRvcnkgYW5kIG5vdCByZWx5IG9uIHRoZSBzeXN0ZW0KPiAgwqDCoMKgIGlu
+dGVncmF0aW9uIHN1Y2ggYXMgdWRldiBydWxlcy4KPiAgwqDCoMKgIFRoaXMgcG9saWN5IGNhbm5v
+dCBiZSBhcHBsaWVkIGdsb2JhbGx5IGFzIHNvbWUgb2xkZXIgcGxhdGZvcm1zCj4gIMKgwqDCoCB3
+ZXJlIGZvdW5kIHRvIGhhdmUgYnJva2VuIHBvd2VyIG1hbmFnZW1lbnQuCj4gCj4gIMKgwqDCoCBD
+YzogPHN0YWJsZUB2Z2VyLmtlcm5lbC5vcmc+IHY0LjEzKwo+ICDCoMKgwqAgQ2M6IFJhZmFlbCBK
+LiBXeXNvY2tpIDxyYWZhZWwuai53eXNvY2tpQGludGVsLmNvbT4KPiAgwqDCoMKgIFNpZ25lZC1v
+ZmYtYnk6IFRvbWFzIFdpbmtsZXIgPHRvbWFzLndpbmtsZXJAaW50ZWwuY29tPgo+ICDCoMKgwqAg
+UmV2aWV3ZWQtYnk6IEFsZXhhbmRlciBVc3lza2luIDxhbGV4YW5kZXIudXN5c2tpbkBpbnRlbC5j
+b20+Cj4gIMKgwqDCoCBTaWduZWQtb2ZmLWJ5OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBs
+aW51eGZvdW5kYXRpb24ub3JnPgoKVGhpcyBjb21taXQgd2FzIGFkZGVkIGluIHY0LjE2LXJjMS4K
+Cj4gSXQgaXMgcmVwcm9kdWNpYmxlIGV2ZXJ5IHRpbWU7IGlmIEkgYnVpbGQgYXQgdGhlIHBhcmVu
+dCBjb21taXQgCj4gKDNkMzQzMjU4MDkxMSkgdGhlbiB0aGUgZHJpdmVyIHdvcmtzLCBhbmQgaWYg
+SSBhZGQgdGhlIGNvbW1pdCBhYm92ZSB0aGVuIAo+IGl0IGZhaWxzLgo+IAo+IEhvd2V2ZXIgaXQn
+cyB1bmNsZWFyIHRvIG1lIGhvdyB0aGlzIGlzIGFmZmVjdGluZyBteSBtb2RpZmllZCBlMTAwMGUg
+Cj4gZHJpdmVyIGluIHRoaXMgd2F5LCBleGNlcHQgdGhhdCBpdCBpcyBwZXJoYXBzIHBvd2VyIG1h
+bmFnZW1lbnQgcmVsYXRlZD8KPiAKPiBTaW5jZSBpdCBhcHBlYXJzIHRvIGJlIGEgcG1fcnVudGlt
+ZS1yZWxhdGVkIHRoaW5nLCBqdXN0IGFzIGFuIGV4cGVyaW1lbnQgCj4gSSBkaWQgdHJ5IGNvbW1l
+bnRpbmcgb3V0IGV2ZXJ5IHNpbmdsZSBjYWxsIHRvIHBtX3J1bnRpbWUqIGZ1bmN0aW9ucyBpbiAK
+PiBuZXRkZXYuYywgYnV0IHRoaXMgZGlkIG5vdCByZXNvbHZlIHRoZSBwcm9ibGVtLsKgIERpdHRv
+IGZvciBhbnl0aGluZyB3aXRoIAo+IHRoZSB3b3JkICJzdXNwZW5kIiBpbiBpdC7CoCBJIGFsc28g
+dHJpZWQgYWRkaW5nIGVfaW5mbygpIGxvZ2dpbmcgY2FsbHMgdG8gCj4gbW9zdCBwbGFjZXMgdGhh
+dCB1c2VkIHBtXyBjYWxscyBvdGhlciB0aGFuIHBtX3J1bnRpbWVfZ2V0L3B1dCAoYW5kIGluIAo+
+IHBhcnRpY3VsYXIsIGluIGFsbCBvZiB0aGUgcG1fb3BzIGNhbGxiYWNrcyksIGFuZCBub25lIG9m
+IHRoZW0gd2VyZSBoaXQgCj4gZHVyaW5nIHRoZSBwcm9ibGVtIGV2ZW50cy4KPiAKPiBBbmQgZXZl
+biB3aGVuIGl0J3Mgbm90IHdvcmtpbmcsIGlmIEkgYGNhdGAgdmFyaW91cyB0aGluZ3MgaW4gCj4g
+YC9zeXMvYnVzL3BjaS8uLi4vcG93ZXIvYCBvbiB0aGUgYWRhcHRlciBkZXZpY2UsIGl0IGFwcGVh
+cnMgdG8gYWxsIGJlIAo+IG5vbi1zdXNwZW5kZWQsIHdoaWNoIG1ha2VzIG1lIGRvdWJ0IHRoYXQg
+aXQgcmVhbGx5IGlzIGEgUE0gaXNzdWUsIHVubGVzcyAKPiBJJ20ganVzdCBsb29raW5nIGluIHRo
+ZSB3cm9uZyBwbGFjZXMuCgpJZiB5b3UgZm91bmQgYSBmYXVsdHkgY29tbWl0LCBwbGVhc2UgQ0Mg
+dGhlIGNvbW1pdCBhdXRob3JzLCByZXZpZXdlcnMsIAphbmQgc3Vic3lzdGVtIG1haW50YWluZXJz
+IGFuZCBtYXliZSBldmVuIHRoZSByZWdyZXNzaW9uIGFkZHJlc3MuCgpJZiB5b3UgaGF2ZSB0aW1l
+LCBwbGVhc2UgY2hlY2sgd2l0aCBMaW51eCBtYXN0ZXIgdHJlZSB0byBzZWUgaWYgYSBjb21taXQg
+CmZpeGluZyB0aGlzIGhhcyBiZWVuIGFkZGVkIG9yIHlvdSBzdGlsbCBuZWVkIHRvIHJldmVydCBp
+dC4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQt
+bGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8v
+aW50ZWwtd2lyZWQtbGFuCg==
