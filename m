@@ -1,79 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CE636D259
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2019 18:50:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B5776D337
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2019 19:52:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 08D608787C;
-	Thu, 18 Jul 2019 16:50:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FCD188277;
+	Thu, 18 Jul 2019 17:52:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id La2ub2yYty96; Thu, 18 Jul 2019 16:50:15 +0000 (UTC)
+	with ESMTP id P3dcdyrzw0QB; Thu, 18 Jul 2019 17:52:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3BDEE87880;
-	Thu, 18 Jul 2019 16:50:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2F71D8832D;
+	Thu, 18 Jul 2019 17:52:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 06E4A1BF308
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2019 02:17:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5ED4C1BF841
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2019 17:52:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0355820403
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2019 02:17:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5AEB8227B1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2019 17:52:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UHBnuHdSBDFi for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Jul 2019 02:17:00 +0000 (UTC)
-X-Greylist: delayed 00:08:09 by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by silver.osuosl.org (Postfix) with ESMTPS id C2F5A2279E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2019 02:17:00 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id e189so20163314oib.11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2019 19:17:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fredlawl-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=pYIGokAnHiTaXGPTQHk0GqCr5VmgXxhysOu7yDy4mE8=;
- b=mTXnqU5jjT+d2PiAwqfS+oHZeBwddIfIzbgwJr5HJVj8OZu3Ejhi+A9hQAi3E1QXSB
- p6yso+LASKDHoVMvrSZNUJW8Qr/lVybvydLGLZG3dAWCnsQe9rQVN9QPaP7cXSOOm7xG
- WeqBJrZ7jJE0djFZh+4thTZM1/E0H6ZFc4+kAD5x48/AIdMh8SWZL9dZtCJBm9OVm3eH
- hJBKA/kvNzNJnG5RfU9oPb10jIKyI3UyWzoAX2uJ9/ndXvbz/1w5O7at+bEgY29vT8Un
- cx5tgXraKzGDqNnRvqxLNfVGtKJDyu6t+DvKjYCl0HBdgLrZT/IlUcw4u2gwiB4nTnZ7
- vcMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=pYIGokAnHiTaXGPTQHk0GqCr5VmgXxhysOu7yDy4mE8=;
- b=TRR9NWKTQfrGys/EEXEaHOkci4e7ehhlOV3bPT8OWCs/h1wpWA/Ka8YARfvSx5EM9Y
- F404Jau1tw61WPSMEtBa8d+3SWwdYLbTy/YLeZnV9PSW8hVb9LdFNsjQpSi/uoLdZuTN
- NipOoilIabrqcv8smBfjJVMizy5XcFeW1TUY5NC9s/LgICgTceR8ic85Uv/BzG3mD3F0
- WlNw/8tfN/bOHZruAxn2/gfd2I2t/a32giRqL5lMqT6Wg2txEewQx9VXDtCM3mmgTORe
- KSMMmt0HJoWt/eP+S7iX0EOH28eKf1ChZVGXijRwXbmOlBodZQRsBx8LDyHxbSfxqs3D
- vOcQ==
-X-Gm-Message-State: APjAAAX8iBl2gW3eWPty9IERof5Yf2PAs/ljDY3yDeBzCwCczoSfhlBS
- K6Z0ayaUtmnJp2raryAw7ANnz3Z/gJPinQ==
-X-Google-Smtp-Source: APXvYqyU0Pfb/5vUCO66TmKbYlCzgLlHqd41g6a+kdgNWxNg9gHANJ35Dgn3P91SIentrM9mHXMU4w==
-X-Received: by 2002:aca:382:: with SMTP id 124mr19829874oid.80.1563415730827; 
- Wed, 17 Jul 2019 19:08:50 -0700 (PDT)
-Received: from linux.fredlawl.com ([2600:1700:18a0:11d0:18af:e893:6cb0:139a])
- by smtp.gmail.com with ESMTPSA id
- 93sm9102146ota.77.2019.07.17.19.08.49
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Wed, 17 Jul 2019 19:08:50 -0700 (PDT)
-From: Frederick Lawler <fred@fredlawl.com>
-To: jeffrey.t.kirsher@intel.com
-Date: Wed, 17 Jul 2019 21:07:39 -0500
-Message-Id: <20190718020745.8867-4-fred@fredlawl.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190718020745.8867-1-fred@fredlawl.com>
-References: <20190718020745.8867-1-fred@fredlawl.com>
-X-Mailman-Approved-At: Thu, 18 Jul 2019 16:50:11 +0000
-Subject: [Intel-wired-lan] [PATCH] igc: Prefer pcie_capability_read_word()
+ with ESMTP id 3KTNCVgDEakz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Jul 2019 17:52:17 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9F16B20113
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2019 17:52:17 +0000 (UTC)
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x6IHlpiU028992; Thu, 18 Jul 2019 13:52:11 -0400
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2ttvbbu0g6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 18 Jul 2019 13:52:11 -0400
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x6IHpMSd009559;
+ Thu, 18 Jul 2019 17:52:10 GMT
+Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com
+ [9.57.198.29]) by ppma03dal.us.ibm.com with ESMTP id 2tq6x7s3w8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 18 Jul 2019 17:52:10 +0000
+Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
+ [9.57.199.110])
+ by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x6IHqA2K55443760
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 18 Jul 2019 17:52:10 GMT
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2110BAE05F;
+ Thu, 18 Jul 2019 17:52:10 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E8CA9AE060;
+ Thu, 18 Jul 2019 17:52:09 +0000 (GMT)
+Received: from localhost (unknown [9.18.239.187])
+ by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
+ Thu, 18 Jul 2019 17:52:09 +0000 (GMT)
+From: "Mauro S. M. Rodrigues" <maurosr@linux.vnet.ibm.com>
+To: intel-wired-lan@lists.osuosl.org,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Date: Thu, 18 Jul 2019 14:52:02 -0300
+Message-Id: <20190718175202.14909-1-maurosr@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.21.0
+MIME-Version: 1.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-07-18_08:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1907180185
+Subject: [Intel-wired-lan] [PATCH] i40e: Check if transceiver implements DDM
+ before access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,66 +92,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bhelgaas@google.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Frederick Lawler <fred@fredlawl.com>
-MIME-Version: 1.0
+Cc: wangyugui@e16-tech.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 8c0d3a02c130 ("PCI: Add accessors for PCI Express Capability")
-added accessors for the PCI Express Capability so that drivers didn't
-need to be aware of differences between v1 and v2 of the PCI
-Express Capability.
+Similar to the ixgbe issue fixed in:
+655c91414579 ("ixgbe: Check DDM existence in transceiver before access)
 
-Replace pci_read_config_word() and pci_write_config_word() calls with
-pcie_capability_read_word() and pcie_capability_write_word().
+i40e has the same issue when reading eeprom from SFP's module that comply
+with SFF-8472 but not implement the Digital Diagnostic Monitoring (DDM)
+interface described in it. The existence of such area is specified by bit
+6 of byte 92, set to 1 if implemented.
 
-Signed-off-by: Frederick Lawler <fred@fredlawl.com>
+Without this patch, due to not checking this bit i40e fails to read SFP
+module's eeprom with the follow message:
+
+ethtool -m enP51p1s0f0
+Cannot get Module EEPROM data: Input/output error
+
+Because it fails to read the additional 256 bytes in which it was assumed
+to exist the DDM data.
+
+Signed-off-by: "Mauro S. M. Rodrigues" <maurosr@linux.vnet.ibm.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 6 ++++++
+ drivers/net/ethernet/intel/i40e/i40e_type.h    | 1 +
+ 2 files changed, 7 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 34fa0e60a780..8e8ad07a5776 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -3891,13 +3891,11 @@ void igc_write_pci_cfg(struct igc_hw *hw, u32 reg, u16 *value)
- s32 igc_read_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value)
- {
- 	struct igc_adapter *adapter = hw->back;
--	u16 cap_offset;
- 
--	cap_offset = pci_find_capability(adapter->pdev, PCI_CAP_ID_EXP);
--	if (!cap_offset)
-+	if (!pci_is_pcie(adapter->pdev))
- 		return -IGC_ERR_CONFIG;
- 
--	pci_read_config_word(adapter->pdev, cap_offset + reg, value);
-+	pcie_capability_read_word(adapter->pdev, reg, value);
- 
- 	return IGC_SUCCESS;
- }
-@@ -3905,13 +3903,11 @@ s32 igc_read_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value)
- s32 igc_write_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value)
- {
- 	struct igc_adapter *adapter = hw->back;
--	u16 cap_offset;
- 
--	cap_offset = pci_find_capability(adapter->pdev, PCI_CAP_ID_EXP);
--	if (!cap_offset)
-+	if (!pci_is_pcie(adapter->pdev))
- 		return -IGC_ERR_CONFIG;
- 
--	pci_write_config_word(adapter->pdev, cap_offset + reg, *value);
-+	pcie_capability_write_word(adapter->pdev, reg, *value);
- 
- 	return IGC_SUCCESS;
- }
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 527eb52c5401..e456e2122fea 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -5123,6 +5123,12 @@ static int i40e_get_module_info(struct net_device *netdev,
+ 			/* Module is not SFF-8472 compliant */
+ 			modinfo->type = ETH_MODULE_SFF_8079;
+ 			modinfo->eeprom_len = ETH_MODULE_SFF_8079_LEN;
++		} else if (!(sff8472_swap & I40E_MODULE_SFF_DDM_IMPLEMENTED)) {
++			/* Module is SFF-8472 compliant but doesn't implemend Digital Diagnostic
++			 * Monitoring (DDM).
++			 */
++			modinfo->type = ETH_MODULE_SFF_8079;
++			modinfo->eeprom_len = ETH_MODULE_SFF_8079_LEN;
+ 		} else {
+ 			modinfo->type = ETH_MODULE_SFF_8472;
+ 			modinfo->eeprom_len = ETH_MODULE_SFF_8472_LEN;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+index 8f43aa47c263..2a6219d66771 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_type.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+@@ -443,6 +443,7 @@ struct i40e_nvm_access {
+ #define I40E_MODULE_SFF_8472_COMP	0x5E
+ #define I40E_MODULE_SFF_8472_SWAP	0x5C
+ #define I40E_MODULE_SFF_ADDR_MODE	0x04
++#define I40E_MODULE_SFF_DDM_IMPLEMENTED 0x40
+ #define I40E_MODULE_TYPE_QSFP_PLUS	0x0D
+ #define I40E_MODULE_TYPE_QSFP28		0x11
+ #define I40E_MODULE_QSFP_MAX_LEN	640
 -- 
-2.17.1
+2.21.0
 
 _______________________________________________
 Intel-wired-lan mailing list
