@@ -1,87 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E80306D81B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 03:02:18 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08DCE6D888
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 03:47:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DC01D20000;
-	Fri, 19 Jul 2019 01:02:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 85F4D864AB;
+	Fri, 19 Jul 2019 01:47:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w+A1etNg1JsD; Fri, 19 Jul 2019 01:02:16 +0000 (UTC)
+	with ESMTP id POTJpHkoxG0g; Fri, 19 Jul 2019 01:47:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C6D44228D5;
-	Fri, 19 Jul 2019 01:02:13 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D6158690E;
+	Fri, 19 Jul 2019 01:47:16 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C624F1BF9B9
- for <intel-wired-lan@osuosl.org>; Fri, 19 Jul 2019 01:02:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EF1B51BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 01:47:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BEDE58791F
- for <intel-wired-lan@osuosl.org>; Fri, 19 Jul 2019 01:02:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E569F877E1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 01:47:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6++OT87VLK26 for <intel-wired-lan@osuosl.org>;
- Fri, 19 Jul 2019 01:02:12 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from geminitest.hmdnsgroup.com (geminitest.hmdnsgroup.com
- [63.247.140.108])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DA33B878FE
- for <intel-wired-lan@osuosl.org>; Fri, 19 Jul 2019 01:02:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=mirality.co.nz; s=default; h=Message-ID:References:In-Reply-To:Subject:Cc:
- To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=TxP2qqO0d5GOOU0TSHoiDVvWPw27SJJfvXK44lOSxxI=; b=sJ2QpNXUhhNEnXGdDMBYqCFYm5
- 1YE4IPAA0/sCHBiUy5Am5iIqOho3yYqNjlzDqhB6JjDpUXQIGsgGb9v+zTGa/+RH+aUxN+aZcB4zE
- M496pIKm9rGrWn8MQ42h29fRblCS7XLwlotFl4XhPx5v3aeECJacsTeBXH93XNjQ7HFgND3oppqPf
- xWw0vSDkXmmj4fIa5yL+3KKaiGQRq+pxamWeVZXrOn8Zmx3oy2tDNJikih3k4WZckGIwYStHRLx5G
- /SOYePCyhOsicY45w6G0lcpohQcGj9mbB1zh7RUC+/u++2C6LY9wMbPA6K4v3tP5q0G3if5NX8/Ks
- NzjMlGpw==;
-Received: from [::1] (port=47862 helo=mirality.co.nz)
- by gemini.hmdnsgroup.com with esmtpa (Exim 4.87)
- (envelope-from <intel@mirality.co.nz>)
- id 1hoHHk-0000DR-7s; Thu, 18 Jul 2019 21:02:08 -0400
+ with ESMTP id yeCW9KA8opEU for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Jul 2019 01:47:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 32C90876DA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 01:47:14 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2019 18:47:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,280,1559545200"; d="scan'208";a="158968965"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by orsmga007.jf.intel.com with ESMTP; 18 Jul 2019 18:47:12 -0700
+Received: from orsmsx159.amr.corp.intel.com (10.22.240.24) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 18 Jul 2019 18:47:11 -0700
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.44]) by
+ ORSMSX159.amr.corp.intel.com ([169.254.11.26]) with mapi id 14.03.0439.000;
+ Thu, 18 Jul 2019 18:47:11 -0700
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, Kai-Heng Feng
+ <kai.heng.feng@canonical.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 1/2] e1000e: add workaround for
+ possible stalled packet
+Thread-Index: AQHVPdPhmp9sws8O4UaUAixIR40qew==
+Date: Fri, 19 Jul 2019 01:47:11 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B970D36A9@ORSMSX103.amr.corp.intel.com>
+References: <20190708045546.30160-1-kai.heng.feng@canonical.com>
+In-Reply-To: <20190708045546.30160-1-kai.heng.feng@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Date: Fri, 19 Jul 2019 13:02:08 +1200
-From: Gavin Lambert <intel@mirality.co.nz>
-To: "Neftin, Sasha" <sasha.neftin@intel.com>, Vitaly Lifshits
- <vitaly.lifshits@intel.com>
-In-Reply-To: <3a63201c552a9cb6a9737fec92bc1264@mirality.co.nz>
-References: <3acf459ddbbd30687cda0a79523afe04@mirality.co.nz>
- <bec9f546d5a5a46586af0ac93d36f84f@mirality.co.nz>
- <000661bda5687541e895a949c76712fb@mirality.co.nz>
- <d3118220-e599-44cd-5ed6-43259c5fc2c2@intel.com>
- <3a63201c552a9cb6a9737fec92bc1264@mirality.co.nz>
-Message-ID: <f4a18bf808e6f30e9691e127722f851b@mirality.co.nz>
-X-Sender: intel@mirality.co.nz
-User-Agent: Roundcube Webmail/1.1.4
-X-HMDNSGroup-MailScanner-Information: Please contact the ISP for more
- information
-X-HMDNSGroup-MailScanner-ID: 1hoHHk-0000DR-7s
-X-HMDNSGroup-MailScanner: Found to be clean
-X-HMDNSGroup-MailScanner-SpamCheck: 
-X-HMDNSGroup-MailScanner-From: intel@mirality.co.nz
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gemini.hmdnsgroup.com
-X-AntiAbuse: Original Domain - osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - mirality.co.nz
-X-Get-Message-Sender-Via: gemini.hmdnsgroup.com: authenticated_id:
- uecasm/from_h
-X-Authenticated-Sender: gemini.hmdnsgroup.com: intel@mirality.co.nz
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-Subject: Re: [Intel-wired-lan] [e1000e] Linux 4.9: unable to send packets
- after link recovery with patched driver
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] e1000e: add workaround for
+ possible stalled packet
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,101 +76,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2019-07-19 12:40, I wrote:
-> FWIW, I added some extra logging around the new code.  I can confirm
-> that it does execute on link regain but doesn't actually enter the
-> loop in my problem case.  The pcim_state is 0x00080083 at the time.
-> So the e1000_phy_hw_reset is never actually called.  If I try changing
-> it to call that unconditionally, then it can't successfully establish
-> a link in the first place.
+On Mon, 2019-07-08 at 12:55 +0800, Kai-Heng Feng wrote:
+> Forwardport from http://mails.dpdk.org/archives/dev/2016-November/050657.html
+> 
+> This works around a possible stalled packet issue, which may occur due to
+> clock recovery from the PCH being too slow, when the LAN is transitioning
+> from K1 at 1G link speed.
+> 
+> Bugzilla: https://bugzilla.kernel.org/show_bug.cgi?id=204057
+> 
+> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/ich8lan.c | 10 ++++++++++
+>  drivers/net/ethernet/intel/e1000e/ich8lan.h |  2 +-
+>  2 files changed, 11 insertions(+), 1 deletion(-)
 
-I added a call to e1000e_dump at the point of link regain, in hopes that 
-it might shed more light.
-
-On startup, when it does successfully link and send/receive packets:
-
-     0000:00:1f.6: Register Dump
-       Register Name   Value
-      CTRL            58180240
-      STATUS          00080083
-      CTRL_EXT        995a1027
-      ICR             00000000
-      RCTL            04008002
-      RDLEN           00001000
-      RDH             00000000
-      RDT             000000f0
-      RDTR            00000000
-      RXDCTL[0-1]     00010000 00010000
-      ERT             00000000
-      RDBAL           6061c000
-      RDBAH           00000002
-      RDFH            00000000
-      RDFT            00000000
-      RDFHS           00000000
-      RDFTS           00000000
-      RDFPC           00000000
-      TCTL            3103f0f8
-      TDBAL           5e8a0000
-      TDBAH           00000002
-      TDLEN           00001000
-      TDH             00000000
-      TDT             00000000
-      TIDV            00000008
-      TXDCTL[0-1]     0141001f 0141001f
-      TADV            00000020
-      TARC[0-1]       3d800403 45000403
-      TDFH            00000d00
-      TDFT            00000d00
-      TDFHS           00000d00
-      TDFTS           00000d00
-      TDFPC           00000000
-      ecm0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
-
-On disconnecting and reconnecting the cable, when it does get link but 
-then can't actually send any packets:
-
-     0000:00:1f.6: Register Dump
-       Register Name   Value
-      CTRL            58180240
-      STATUS          00080083
-      CTRL_EXT        995a1027
-      ICR             00000000
-      RCTL            04008002
-      RDLEN           00001000
-      RDH             000000d1
-      RDT             000000c0
-      RDTR            00000000
-      RXDCTL[0-1]     00010000 00010000
-      ERT             00000000
-      RDBAL           6061c000
-      RDBAH           00000002
-      RDFH            00000582
-      RDFT            00000582
-      RDFHS           00000582
-      RDFTS           00000582
-      RDFPC           00000000
-      TCTL            3103f0fa
-      TDBAL           5e8a0000
-      TDBAH           00000002
-      TDLEN           00001000
-      TDH             00000050
-      TDT             0000003d
-      TIDV            00000008
-      TXDCTL[0-1]     0141001f 0141001f
-      TADV            00000020
-      TARC[0-1]       3d800403 45000403
-      TDFH            00000f0a
-      TDFT            00000f1c
-      TDFHS           00000f0a
-      TDFTS           00000f0a
-      TDFPC           00000000
-      ecm0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
