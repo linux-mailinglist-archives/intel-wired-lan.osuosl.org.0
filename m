@@ -1,58 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB1276EB8E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 22:26:59 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 800E66EBCF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 23:00:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9783D86BA7;
-	Fri, 19 Jul 2019 20:26:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2F98987ACE;
+	Fri, 19 Jul 2019 21:00:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LNREjYbmzQ1F; Fri, 19 Jul 2019 20:26:57 +0000 (UTC)
+	with ESMTP id dtcVmmYI52sg; Fri, 19 Jul 2019 21:00:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D26AA86C2C;
-	Fri, 19 Jul 2019 20:26:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ED17D87AEF;
+	Fri, 19 Jul 2019 21:00:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ABE811BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 20:26:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A3FE71BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 21:00:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A5C6A2052B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 20:26:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9971220656
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 21:00:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9KtsxP6kN3OC for <intel-wired-lan@lists.osuosl.org>;
- Fri, 19 Jul 2019 20:26:54 +0000 (UTC)
+ with ESMTP id 9fxkCtH1iwHO for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Jul 2019 21:00:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 7AE3B20018
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 20:26:54 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4D04E20380
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 21:00:18 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jul 2019 13:26:54 -0700
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2019 14:00:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,283,1559545200"; 
- d="asc'?scan'208";a="170239785"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
- by fmsmga007.fm.intel.com with ESMTP; 19 Jul 2019 13:26:54 -0700
-Message-ID: <a805afc41bb56d2e041946886d9aaae8ca0f5188.camel@intel.com>
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>, 
- intel-wired-lan@lists.osuosl.org
-Date: Fri, 19 Jul 2019 13:26:50 -0700
-In-Reply-To: <bc092433-86ee-cf10-9a1a-63fe5ff7bb4c@intel.com>
+X-IronPort-AV: E=Sophos;i="5.64,283,1559545200"; d="scan'208";a="173610108"
+Received: from unknown (HELO [10.241.228.181]) ([10.241.228.181])
+ by orsmga006.jf.intel.com with ESMTP; 19 Jul 2019 14:00:16 -0700
+To: jeffrey.t.kirsher@intel.com, intel-wired-lan@lists.osuosl.org
 References: <20190719200723.27851-1-jeffrey.t.kirsher@intel.com>
  <bc092433-86ee-cf10-9a1a-63fe5ff7bb4c@intel.com>
-Organization: Intel
-User-Agent: Evolution 3.32.3 (3.32.3-1.fc30) 
+ <a805afc41bb56d2e041946886d9aaae8ca0f5188.camel@intel.com>
+From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
+Message-ID: <e56eb092-1fa8-5169-60ea-00ccf0eca6e3@intel.com>
+Date: Fri, 19 Jul 2019 14:00:17 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <a805afc41bb56d2e041946886d9aaae8ca0f5188.camel@intel.com>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH v2] Documentation: iavf: Update the
  Intel LAN driver doc for iavf
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -67,334 +66,186 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: jeffrey.t.kirsher@intel.com
-Content-Type: multipart/mixed; boundary="===============7558961234220742434=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
---===============7558961234220742434==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-pP4/kqMLyOYUVq/DKt7f"
-
-
---=-pP4/kqMLyOYUVq/DKt7f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, 2019-07-19 at 13:18 -0700, Samudrala, Sridhar wrote:
->=20
-> On 7/19/2019 1:07 PM, Jeff Kirsher wrote:
-> > Update the LAN driver documentation to include the latest feature
-> > implementation and driver capabilities.
-> >=20
-> > Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> > ---
-> > v2: fixed SOB and cleaned up the trailing whitespace
-> >=20
-> >   .../networking/device_drivers/intel/iavf.rst  | 331
-> > ++++++++++++++++--
-> >   1 file changed, 298 insertions(+), 33 deletions(-)
-> >=20
-> > diff --git a/Documentation/networking/device_drivers/intel/iavf.rst
-> > b/Documentation/networking/device_drivers/intel/iavf.rst
-> > index 2d0c3baa1752..fd3d045ca6d1 100644
-> > --- a/Documentation/networking/device_drivers/intel/iavf.rst
-> > +++ b/Documentation/networking/device_drivers/intel/iavf.rst
-> > @@ -10,11 +10,15 @@ Copyright(c) 2013-2018 Intel Corporation.
-> >   Contents
-> >   =3D=3D=3D=3D=3D=3D=3D=3D
-> >  =20
-> > +- Overview
-> >   - Identifying Your Adapter
-> >   - Additional Configurations
-> >   - Known Issues/Troubleshooting
-> >   - Support
-> >  =20
-> > +Overview
-> > +=3D=3D=3D=3D=3D=3D=3D=3D
-> > +
-> >   This file describes the iavf Linux* Base Driver. This driver was
-> > formerly
-> >   called i40evf.
-> >  =20
-> > @@ -27,6 +31,7 @@ The guest OS loading the iavf driver must support
-> > MSI-X interrupts.
-> >  =20
-> >   Identifying Your Adapter
-> >   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D
-> > +
-> >   The driver in this kernel is compatible with devices based on the
-> > following:
-> >    * Intel(R) XL710 X710 Virtual Function
-> >    * Intel(R) X722 Virtual Function
-> > @@ -50,9 +55,10 @@ Link messages will not be displayed to the
-> > console if the distribution is
-> >   restricting system messages. In order to see network driver link
-> > messages on
-> >   your console, set dmesg to eight by entering the following::
-> >  =20
-> > -  dmesg -n 8
-> > +    # dmesg -n 8
-> >  =20
-> > -NOTE: This setting is not saved across reboots.
-> > +NOTE:
-> > +  This setting is not saved across reboots.
-> >  =20
-> >   ethtool
-> >   -------
-> > @@ -72,11 +78,11 @@ then requests from that VF to set VLAN tag
-> > stripping will be ignored.
-> >   To enable/disable VLAN tag stripping for a VF, issue the
-> > following command
-> >   from inside the VM in which you are running the VF::
-> >  =20
-> > -  ethtool -K <if_name> rxvlan on/off
-> > +    # ethtool -K <if_name> rxvlan on/off
-> >  =20
-> >   or alternatively::
-> >  =20
-> > -  ethtool --offload <if_name> rxvlan on/off
-> > +    # ethtool --offload <if_name> rxvlan on/off
-> >  =20
-> >   Adaptive Virtual Function
-> >   -------------------------
-> > @@ -91,21 +97,21 @@ additional features depending on what features
-> > are available in the PF with
-> >   which the AVF is associated. The following are base mode
-> > features:
-> >  =20
-> >   - 4 Queue Pairs (QP) and associated Configuration Status
-> > Registers (CSRs)
-> > -  for Tx/Rx.
-> > -- i40e descriptors and ring format.
-> > -- Descriptor write-back completion.
-> > -- 1 control queue, with i40e descriptors, CSRs and ring format.
-> > -- 5 MSI-X interrupt vectors and corresponding i40e CSRs.
-> > -- 1 Interrupt Throttle Rate (ITR) index.
-> > -- 1 Virtual Station Interface (VSI) per VF.
-> > +  for Tx/Rx
-> > +- i40e descriptors and ring format
-> > +- Descriptor write-back completion
-> > +- 1 control queue, with i40e descriptors, CSRs and ring format
-> > +- 5 MSI-X interrupt vectors and corresponding i40e CSRs
-> > +- 1 Interrupt Throttle Rate (ITR) index
-> > +- 1 Virtual Station Interface (VSI) per VF
-> >   - 1 Traffic Class (TC), TC0
-> >   - Receive Side Scaling (RSS) with 64 entry indirection table and
-> > key,
-> > -  configured through the PF.
-> > -- 1 unicast MAC address reserved per VF.
-> > -- 16 MAC address filters for each VF.
-> > -- Stateless offloads - non-tunneled checksums.
-> > -- AVF device ID.
-> > -- HW mailbox is used for VF to PF communications (including on
-> > Windows).
-> > +  configured through the PF
-> > +- 1 unicast MAC address reserved per VF
-> > +- 16 MAC address filters for each VF
-> > +- Stateless offloads - non-tunneled checksums
-> > +- AVF device ID
-> > +- HW mailbox is used for VF to PF communications (including on
-> > Windows)
-> >  =20
-> >   IEEE 802.1ad (QinQ) Support
-> >   ---------------------------
-> > @@ -117,8 +123,8 @@ VLAN ID, among other uses.
-> >  =20
-> >   The following are examples of how to configure 802.1ad (QinQ)::
-> >  =20
-> > -  ip link add link eth0 eth0.24 type vlan proto 802.1ad id 24
-> > -  ip link add link eth0.24 eth0.24.371 type vlan proto 802.1Q id
-> > 371
-> > +    # ip link add link eth0 eth0.24 type vlan proto 802.1ad id 24
-> > +    # ip link add link eth0.24 eth0.24.371 type vlan proto 802.1Q
-> > id 371
-> >  =20
-> >   Where "24" and "371" are example VLAN IDs.
-> >  =20
-> > @@ -133,6 +139,19 @@ specific application. This can reduce latency
-> > for the specified application,
-> >   and allow Tx traffic to be rate limited per application. Follow
-> > the steps below
-> >   to set ADq.
-> >  =20
-> > +Requirements:
-> > +
-> > +- The sch_mqprio, act_mirred and cls_flower modules must be loaded
-> > +- The latest version of iproute2
-> > +- If another driver (for example, DPDK) has set cloud filters, you
-> > cannot
-> > +  enable ADQ
-> > +- Depending on the underlying PF device, ADQ cannot be enabled
-> > when the
-> > +  following features are enabled:
-> > +
-> > +  + Data Center Bridging (DCB)
-> > +  + Multiple Functions per Port (MFP)
-> > +  + Sideband Filters
-> > +
-> >   1. Create traffic classes (TCs). Maximum of 8 TCs can be created
-> > per interface.
-> >   The shaper bw_rlimit parameter is optional.
-> >  =20
-> > @@ -141,9 +160,9 @@ to 1Gbit for tc0 and 3Gbit for tc1.
-> >  =20
-> >   ::
-> >  =20
-> > -  # tc qdisc add dev <interface> root mqprio num_tc 2 map 0 0 0 0
-> > 1 1 1 1
-> > -  queues 16@0 16@16 hw 1 mode channel shaper bw_rlimit min_rate
-> > 1Gbit 2Gbit
-> > -  max_rate 1Gbit 3Gbit
-> > +    tc qdisc add dev <interface> root mqprio num_tc 2 map 0 0 0 0
-> > 1 1 1 1
-> > +    queues 16@0 16@16 hw 1 mode channel shaper bw_rlimit min_rate
-> > 1Gbit 2Gbit
-> > +    max_rate 1Gbit 3Gbit
-> >  =20
-> >   map: priority mapping for up to 16 priorities to tcs (e.g. map 0
-> > 0 0 0 1 1 1 1
-> >   sets priorities 0-3 to use tc0 and 4-7 to use tc1)
-> > @@ -162,6 +181,10 @@ Totals must be equal or less than port speed.
-> >   For example: min_rate 1Gbit 3Gbit: Verify bandwidth limit using
-> > network
-> >   monitoring tools such as ifstat or sar =E2=80=93n DEV [interval] [num=
-ber
-> > of samples]
-> >  =20
-> > +NOTE:
-> > +  Setting up channels via ethtool (ethtool -L) is not supported
-> > when the
-> > +  TCs are configured using mqprio.
-> > +
-> >   2. Enable HW TC offload on interface::
-> >  =20
-> >       # ethtool -K <interface> hw-tc-offload on
-> > @@ -171,16 +194,16 @@ monitoring tools such as ifstat or sar =E2=80=93n=
- DEV
-> > [interval] [number of samples]
-> >       # tc qdisc add dev <interface> ingress
-> >  =20
-> >   NOTES:
-> > - - Run all tc commands from the iproute2 <pathtoiproute2>/tc/
-> > directory.
-> > - - ADq is not compatible with cloud filters.
-> > + - Run all tc commands from the iproute2 <pathtoiproute2>/tc/
-> > directory
-> > + - ADq is not compatible with cloud filters
-> >    - Setting up channels via ethtool (ethtool -L) is not supported
-> > when the TCs
-> > -   are configured using mqprio.
-> > +   are configured using mqprio
-> >    - You must have iproute2 latest version
-> > - - NVM version 6.01 or later is required.
-> > + - NVM version 6.01 or later is required
-> >    - ADq cannot be enabled when any the following features are
-> > enabled: Data
-> > -   Center Bridging (DCB), Multiple Functions per Port (MFP), or
-> > Sideband Filters.
-> > +   Center Bridging (DCB), Multiple Functions per Port (MFP), or
-> > Sideband Filters
-> >    - If another driver (for example, DPDK) has set cloud filters,
-> > you cannot
-> > -   enable ADq.
-> > +   enable ADq
-> >    - Tunnel filters are not supported in ADq. If encapsulated
-> > packets do arrive
-> >      in non-tunnel mode, filtering will be done on the inner
-> > headers.  For example,
-> >      for VXLAN traffic in non-tunnel mode, PCTYPE is identified as
-> > a VXLAN
-> > @@ -194,10 +217,236 @@ NOTES:
-> >      traffic will be duplicated and sent to all matching TC
-> > queues.  The hardware
-> >      switch mirrors the packet to a VSI list when multiple filters
-> > are matched.
-> >  =20
-> > +SR-IOV Hypervisor Management Interface
-> > +--------------------------------------
-> > +The sysfs file structure below supports the SR-IOV hypervisor
-> > management
-> > +interface.
-> > +
-> > +| /sys/class/net/<interface-name>/device/sriov (see [1]_)
-> > +| +-- [VF-id, 0 .. 127] (see [2]_)
-> > +| | +-- trunk
-> > +| | +-- vlan_mirror
-> > +| | +-- engress_mirror
-> > +| | +-- ingress_mirror
-> > +| | +-- mac_anti_spoof
-> > +| | +-- vlan_anti_spoof
-> > +| | +-- loopback
-> > +| | +-- mac
-> > +| | +-- mac_list
-> > +| | +-- promisc
-> > +| | +-- vlan_strip
-> > +| | +-- stats
-> > +| | +-- link_state
-> > +| | +-- max_tx_rate
-> > +| | +-- min_tx_rate
-> > +| | +-- spoofcheck
-> > +| | +-- trust
-> > +| | +-- vlan
-> > +
-> > +.. [1] kobject started from =E2=80=9Csriov=E2=80=9D is not available f=
-rom existing
-> > kernel
-> > +   sysfs, and it requires device driver to implement this
-> > interface.
-> > +.. [2] assume maximum # of VF supported by a PF is 128. To support
-> > a device
-> > +   that supports more than 128 SR-IOV instances, a =E2=80=9Cvfx=E2=80=
-=9D is added
-> > to 0..127.
-> > +   With =E2=80=9Cvfx=E2=80=9D kboject, users need to add vf index as t=
-he first
-> > parameter and
-> > +   followed by =E2=80=9C:=E2=80=9D.
->=20
-> Is this sysfs mgmt interface and patch targeted for upstream iavf?
-
-I confirmed with validation that the sysfs mgmt interface was already
-upstream in the kernel before adding the existing documentation.
-
---=-pP4/kqMLyOYUVq/DKt7f
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl0yJ4oACgkQ5W/vlVpL
-7c4TrA/+LqDYDswdy/o2Ps2p6O7a5gYgEUdtMNA9kBkGmysxfVjQSueaHIQlCcd1
-kk8clDKBkQRTKbuapw3KDj4LOAkE5VzpQL2yrkMvE2WVSJo7d6qsuHFYWlc1EV+W
-oGsKs6ypuAxLljAuxq+nzwplbH4+yydqniMWm8L5wX2LMHnxdNPHOFjueFUWsknL
-MoK2bySPIQWgak8fszLOBEYoAQrvHf0DfyR/vEvia2d9LGekPhy64+9D+yRT+nmo
-sN7gkcO9hWnzkZLreCyRkY8Ehppd9SYLKbOcH1kEe+x4+k8LWm2DCjy0mLhfRekD
-RZ6dJHg60gZAPLbqfACMlreNxHiPk4NWOU4QojNh8vIXnG6z22YFB0vTMs7BeGxf
-1PBlHh4R8P52d/JHucxY0UzRp+quyd4S1C19BAKdoUnFNMnU3cuBkmCyUVOAJbsu
-xg+SLajuaX2UAZnwA6mrDY+3EH4H0SCnju+CKKsE92Cz1CVRbL1/ig85hDGwN1Hw
-ZxNGvotNMOObkyh7bnm0QSuQ7Tw1l+IEsXJ5cf66BniOGNCBbRQX52pWqshNNlFI
-eJFUIUtCwNJyLiVCCodWFfOYWXYL4+AkinzXnOxMZees6FWRjMyr1UggfmMqpmAI
-zjCcbgr6iTZ6I6K9onQtpXrDn4bAZj97CzCAPND7NHcW4Lnkuxo=
-=jTRA
------END PGP SIGNATURE-----
-
---=-pP4/kqMLyOYUVq/DKt7f--
-
-
---===============7558961234220742434==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7558961234220742434==--
-
+T24gNy8xOS8yMDE5IDE6MjYgUE0sIEplZmYgS2lyc2hlciB3cm90ZToKPiBPbiBGcmksIDIwMTkt
+MDctMTkgYXQgMTM6MTggLTA3MDAsIFNhbXVkcmFsYSwgU3JpZGhhciB3cm90ZToKPj4KPj4gT24g
+Ny8xOS8yMDE5IDE6MDcgUE0sIEplZmYgS2lyc2hlciB3cm90ZToKPj4+IFVwZGF0ZSB0aGUgTEFO
+IGRyaXZlciBkb2N1bWVudGF0aW9uIHRvIGluY2x1ZGUgdGhlIGxhdGVzdCBmZWF0dXJlCj4+PiBp
+bXBsZW1lbnRhdGlvbiBhbmQgZHJpdmVyIGNhcGFiaWxpdGllcy4KPj4+Cj4+PiBTaWduZWQtb2Zm
+LWJ5OiBKZWZmIEtpcnNoZXIgPGplZmZyZXkudC5raXJzaGVyQGludGVsLmNvbT4KPj4+IC0tLQo+
+Pj4gdjI6IGZpeGVkIFNPQiBhbmQgY2xlYW5lZCB1cCB0aGUgdHJhaWxpbmcgd2hpdGVzcGFjZQo+
+Pj4KPj4+ICAgIC4uLi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2ludGVsL2lhdmYucnN0ICB8
+IDMzMQo+Pj4gKysrKysrKysrKysrKysrKy0tCj4+PiAgICAxIGZpbGUgY2hhbmdlZCwgMjk4IGlu
+c2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
+dGF0aW9uL25ldHdvcmtpbmcvZGV2aWNlX2RyaXZlcnMvaW50ZWwvaWF2Zi5yc3QKPj4+IGIvRG9j
+dW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2ludGVsL2lhdmYucnN0Cj4+PiBp
+bmRleCAyZDBjM2JhYTE3NTIuLmZkM2QwNDVjYTZkMSAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50
+YXRpb24vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9pbnRlbC9pYXZmLnJzdAo+Pj4gKysrIGIv
+RG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2ludGVsL2lhdmYucnN0Cj4+
+PiBAQCAtMTAsMTEgKzEwLDE1IEBAIENvcHlyaWdodChjKSAyMDEzLTIwMTggSW50ZWwgQ29ycG9y
+YXRpb24uCj4+PiAgICBDb250ZW50cwo+Pj4gICAgPT09PT09PT0KPj4+ICAgIAo+Pj4gKy0gT3Zl
+cnZpZXcKPj4+ICAgIC0gSWRlbnRpZnlpbmcgWW91ciBBZGFwdGVyCj4+PiAgICAtIEFkZGl0aW9u
+YWwgQ29uZmlndXJhdGlvbnMKPj4+ICAgIC0gS25vd24gSXNzdWVzL1Ryb3VibGVzaG9vdGluZwo+
+Pj4gICAgLSBTdXBwb3J0Cj4+PiAgICAKPj4+ICtPdmVydmlldwo+Pj4gKz09PT09PT09Cj4+PiAr
+Cj4+PiAgICBUaGlzIGZpbGUgZGVzY3JpYmVzIHRoZSBpYXZmIExpbnV4KiBCYXNlIERyaXZlci4g
+VGhpcyBkcml2ZXIgd2FzCj4+PiBmb3JtZXJseQo+Pj4gICAgY2FsbGVkIGk0MGV2Zi4KPj4+ICAg
+IAo+Pj4gQEAgLTI3LDYgKzMxLDcgQEAgVGhlIGd1ZXN0IE9TIGxvYWRpbmcgdGhlIGlhdmYgZHJp
+dmVyIG11c3Qgc3VwcG9ydAo+Pj4gTVNJLVggaW50ZXJydXB0cy4KPj4+ICAgIAo+Pj4gICAgSWRl
+bnRpZnlpbmcgWW91ciBBZGFwdGVyCj4+PiAgICA9PT09PT09PT09PT09PT09PT09PT09PT0KPj4+
+ICsKPj4+ICAgIFRoZSBkcml2ZXIgaW4gdGhpcyBrZXJuZWwgaXMgY29tcGF0aWJsZSB3aXRoIGRl
+dmljZXMgYmFzZWQgb24gdGhlCj4+PiBmb2xsb3dpbmc6Cj4+PiAgICAgKiBJbnRlbChSKSBYTDcx
+MCBYNzEwIFZpcnR1YWwgRnVuY3Rpb24KPj4+ICAgICAqIEludGVsKFIpIFg3MjIgVmlydHVhbCBG
+dW5jdGlvbgo+Pj4gQEAgLTUwLDkgKzU1LDEwIEBAIExpbmsgbWVzc2FnZXMgd2lsbCBub3QgYmUg
+ZGlzcGxheWVkIHRvIHRoZQo+Pj4gY29uc29sZSBpZiB0aGUgZGlzdHJpYnV0aW9uIGlzCj4+PiAg
+ICByZXN0cmljdGluZyBzeXN0ZW0gbWVzc2FnZXMuIEluIG9yZGVyIHRvIHNlZSBuZXR3b3JrIGRy
+aXZlciBsaW5rCj4+PiBtZXNzYWdlcyBvbgo+Pj4gICAgeW91ciBjb25zb2xlLCBzZXQgZG1lc2cg
+dG8gZWlnaHQgYnkgZW50ZXJpbmcgdGhlIGZvbGxvd2luZzo6Cj4+PiAgICAKPj4+IC0gIGRtZXNn
+IC1uIDgKPj4+ICsgICAgIyBkbWVzZyAtbiA4Cj4+PiAgICAKPj4+IC1OT1RFOiBUaGlzIHNldHRp
+bmcgaXMgbm90IHNhdmVkIGFjcm9zcyByZWJvb3RzLgo+Pj4gK05PVEU6Cj4+PiArICBUaGlzIHNl
+dHRpbmcgaXMgbm90IHNhdmVkIGFjcm9zcyByZWJvb3RzLgo+Pj4gICAgCj4+PiAgICBldGh0b29s
+Cj4+PiAgICAtLS0tLS0tCj4+PiBAQCAtNzIsMTEgKzc4LDExIEBAIHRoZW4gcmVxdWVzdHMgZnJv
+bSB0aGF0IFZGIHRvIHNldCBWTEFOIHRhZwo+Pj4gc3RyaXBwaW5nIHdpbGwgYmUgaWdub3JlZC4K
+Pj4+ICAgIFRvIGVuYWJsZS9kaXNhYmxlIFZMQU4gdGFnIHN0cmlwcGluZyBmb3IgYSBWRiwgaXNz
+dWUgdGhlCj4+PiBmb2xsb3dpbmcgY29tbWFuZAo+Pj4gICAgZnJvbSBpbnNpZGUgdGhlIFZNIGlu
+IHdoaWNoIHlvdSBhcmUgcnVubmluZyB0aGUgVkY6Ogo+Pj4gICAgCj4+PiAtICBldGh0b29sIC1L
+IDxpZl9uYW1lPiByeHZsYW4gb24vb2ZmCj4+PiArICAgICMgZXRodG9vbCAtSyA8aWZfbmFtZT4g
+cnh2bGFuIG9uL29mZgo+Pj4gICAgCj4+PiAgICBvciBhbHRlcm5hdGl2ZWx5OjoKPj4+ICAgIAo+
+Pj4gLSAgZXRodG9vbCAtLW9mZmxvYWQgPGlmX25hbWU+IHJ4dmxhbiBvbi9vZmYKPj4+ICsgICAg
+IyBldGh0b29sIC0tb2ZmbG9hZCA8aWZfbmFtZT4gcnh2bGFuIG9uL29mZgo+Pj4gICAgCj4+PiAg
+ICBBZGFwdGl2ZSBWaXJ0dWFsIEZ1bmN0aW9uCj4+PiAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tCj4+PiBAQCAtOTEsMjEgKzk3LDIxIEBAIGFkZGl0aW9uYWwgZmVhdHVyZXMgZGVwZW5kaW5n
+IG9uIHdoYXQgZmVhdHVyZXMKPj4+IGFyZSBhdmFpbGFibGUgaW4gdGhlIFBGIHdpdGgKPj4+ICAg
+IHdoaWNoIHRoZSBBVkYgaXMgYXNzb2NpYXRlZC4gVGhlIGZvbGxvd2luZyBhcmUgYmFzZSBtb2Rl
+Cj4+PiBmZWF0dXJlczoKPj4+ICAgIAo+Pj4gICAgLSA0IFF1ZXVlIFBhaXJzIChRUCkgYW5kIGFz
+c29jaWF0ZWQgQ29uZmlndXJhdGlvbiBTdGF0dXMKPj4+IFJlZ2lzdGVycyAoQ1NScykKPj4+IC0g
+IGZvciBUeC9SeC4KPj4+IC0tIGk0MGUgZGVzY3JpcHRvcnMgYW5kIHJpbmcgZm9ybWF0Lgo+Pj4g
+LS0gRGVzY3JpcHRvciB3cml0ZS1iYWNrIGNvbXBsZXRpb24uCj4+PiAtLSAxIGNvbnRyb2wgcXVl
+dWUsIHdpdGggaTQwZSBkZXNjcmlwdG9ycywgQ1NScyBhbmQgcmluZyBmb3JtYXQuCj4+PiAtLSA1
+IE1TSS1YIGludGVycnVwdCB2ZWN0b3JzIGFuZCBjb3JyZXNwb25kaW5nIGk0MGUgQ1NScy4KPj4+
+IC0tIDEgSW50ZXJydXB0IFRocm90dGxlIFJhdGUgKElUUikgaW5kZXguCj4+PiAtLSAxIFZpcnR1
+YWwgU3RhdGlvbiBJbnRlcmZhY2UgKFZTSSkgcGVyIFZGLgo+Pj4gKyAgZm9yIFR4L1J4Cj4+PiAr
+LSBpNDBlIGRlc2NyaXB0b3JzIGFuZCByaW5nIGZvcm1hdAo+Pj4gKy0gRGVzY3JpcHRvciB3cml0
+ZS1iYWNrIGNvbXBsZXRpb24KPj4+ICstIDEgY29udHJvbCBxdWV1ZSwgd2l0aCBpNDBlIGRlc2Ny
+aXB0b3JzLCBDU1JzIGFuZCByaW5nIGZvcm1hdAo+Pj4gKy0gNSBNU0ktWCBpbnRlcnJ1cHQgdmVj
+dG9ycyBhbmQgY29ycmVzcG9uZGluZyBpNDBlIENTUnMKPj4+ICstIDEgSW50ZXJydXB0IFRocm90
+dGxlIFJhdGUgKElUUikgaW5kZXgKPj4+ICstIDEgVmlydHVhbCBTdGF0aW9uIEludGVyZmFjZSAo
+VlNJKSBwZXIgVkYKPj4+ICAgIC0gMSBUcmFmZmljIENsYXNzIChUQyksIFRDMAo+Pj4gICAgLSBS
+ZWNlaXZlIFNpZGUgU2NhbGluZyAoUlNTKSB3aXRoIDY0IGVudHJ5IGluZGlyZWN0aW9uIHRhYmxl
+IGFuZAo+Pj4ga2V5LAo+Pj4gLSAgY29uZmlndXJlZCB0aHJvdWdoIHRoZSBQRi4KPj4+IC0tIDEg
+dW5pY2FzdCBNQUMgYWRkcmVzcyByZXNlcnZlZCBwZXIgVkYuCj4+PiAtLSAxNiBNQUMgYWRkcmVz
+cyBmaWx0ZXJzIGZvciBlYWNoIFZGLgo+Pj4gLS0gU3RhdGVsZXNzIG9mZmxvYWRzIC0gbm9uLXR1
+bm5lbGVkIGNoZWNrc3Vtcy4KPj4+IC0tIEFWRiBkZXZpY2UgSUQuCj4+PiAtLSBIVyBtYWlsYm94
+IGlzIHVzZWQgZm9yIFZGIHRvIFBGIGNvbW11bmljYXRpb25zIChpbmNsdWRpbmcgb24KPj4+IFdp
+bmRvd3MpLgo+Pj4gKyAgY29uZmlndXJlZCB0aHJvdWdoIHRoZSBQRgo+Pj4gKy0gMSB1bmljYXN0
+IE1BQyBhZGRyZXNzIHJlc2VydmVkIHBlciBWRgo+Pj4gKy0gMTYgTUFDIGFkZHJlc3MgZmlsdGVy
+cyBmb3IgZWFjaCBWRgo+Pj4gKy0gU3RhdGVsZXNzIG9mZmxvYWRzIC0gbm9uLXR1bm5lbGVkIGNo
+ZWNrc3Vtcwo+Pj4gKy0gQVZGIGRldmljZSBJRAo+Pj4gKy0gSFcgbWFpbGJveCBpcyB1c2VkIGZv
+ciBWRiB0byBQRiBjb21tdW5pY2F0aW9ucyAoaW5jbHVkaW5nIG9uCj4+PiBXaW5kb3dzKQo+Pj4g
+ICAgCj4+PiAgICBJRUVFIDgwMi4xYWQgKFFpblEpIFN1cHBvcnQKPj4+ICAgIC0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQo+Pj4gQEAgLTExNyw4ICsxMjMsOCBAQCBWTEFOIElELCBhbW9uZyBv
+dGhlciB1c2VzLgo+Pj4gICAgCj4+PiAgICBUaGUgZm9sbG93aW5nIGFyZSBleGFtcGxlcyBvZiBo
+b3cgdG8gY29uZmlndXJlIDgwMi4xYWQgKFFpblEpOjoKPj4+ICAgIAo+Pj4gLSAgaXAgbGluayBh
+ZGQgbGluayBldGgwIGV0aDAuMjQgdHlwZSB2bGFuIHByb3RvIDgwMi4xYWQgaWQgMjQKPj4+IC0g
+IGlwIGxpbmsgYWRkIGxpbmsgZXRoMC4yNCBldGgwLjI0LjM3MSB0eXBlIHZsYW4gcHJvdG8gODAy
+LjFRIGlkCj4+PiAzNzEKPj4+ICsgICAgIyBpcCBsaW5rIGFkZCBsaW5rIGV0aDAgZXRoMC4yNCB0
+eXBlIHZsYW4gcHJvdG8gODAyLjFhZCBpZCAyNAo+Pj4gKyAgICAjIGlwIGxpbmsgYWRkIGxpbmsg
+ZXRoMC4yNCBldGgwLjI0LjM3MSB0eXBlIHZsYW4gcHJvdG8gODAyLjFRCj4+PiBpZCAzNzEKPj4+
+ICAgIAo+Pj4gICAgV2hlcmUgIjI0IiBhbmQgIjM3MSIgYXJlIGV4YW1wbGUgVkxBTiBJRHMuCj4+
+PiAgICAKPj4+IEBAIC0xMzMsNiArMTM5LDE5IEBAIHNwZWNpZmljIGFwcGxpY2F0aW9uLiBUaGlz
+IGNhbiByZWR1Y2UgbGF0ZW5jeQo+Pj4gZm9yIHRoZSBzcGVjaWZpZWQgYXBwbGljYXRpb24sCj4+
+PiAgICBhbmQgYWxsb3cgVHggdHJhZmZpYyB0byBiZSByYXRlIGxpbWl0ZWQgcGVyIGFwcGxpY2F0
+aW9uLiBGb2xsb3cKPj4+IHRoZSBzdGVwcyBiZWxvdwo+Pj4gICAgdG8gc2V0IEFEcS4KPj4+ICAg
+IAo+Pj4gK1JlcXVpcmVtZW50czoKPj4+ICsKPj4+ICstIFRoZSBzY2hfbXFwcmlvLCBhY3RfbWly
+cmVkIGFuZCBjbHNfZmxvd2VyIG1vZHVsZXMgbXVzdCBiZSBsb2FkZWQKPj4+ICstIFRoZSBsYXRl
+c3QgdmVyc2lvbiBvZiBpcHJvdXRlMgo+Pj4gKy0gSWYgYW5vdGhlciBkcml2ZXIgKGZvciBleGFt
+cGxlLCBEUERLKSBoYXMgc2V0IGNsb3VkIGZpbHRlcnMsIHlvdQo+Pj4gY2Fubm90Cj4+PiArICBl
+bmFibGUgQURRCj4+PiArLSBEZXBlbmRpbmcgb24gdGhlIHVuZGVybHlpbmcgUEYgZGV2aWNlLCBB
+RFEgY2Fubm90IGJlIGVuYWJsZWQKPj4+IHdoZW4gdGhlCj4+PiArICBmb2xsb3dpbmcgZmVhdHVy
+ZXMgYXJlIGVuYWJsZWQ6Cj4+PiArCj4+PiArICArIERhdGEgQ2VudGVyIEJyaWRnaW5nIChEQ0Ip
+Cj4+PiArICArIE11bHRpcGxlIEZ1bmN0aW9ucyBwZXIgUG9ydCAoTUZQKQo+Pj4gKyAgKyBTaWRl
+YmFuZCBGaWx0ZXJzCj4+PiArCj4+PiAgICAxLiBDcmVhdGUgdHJhZmZpYyBjbGFzc2VzIChUQ3Mp
+LiBNYXhpbXVtIG9mIDggVENzIGNhbiBiZSBjcmVhdGVkCj4+PiBwZXIgaW50ZXJmYWNlLgo+Pj4g
+ICAgVGhlIHNoYXBlciBid19ybGltaXQgcGFyYW1ldGVyIGlzIG9wdGlvbmFsLgo+Pj4gICAgCj4+
+PiBAQCAtMTQxLDkgKzE2MCw5IEBAIHRvIDFHYml0IGZvciB0YzAgYW5kIDNHYml0IGZvciB0YzEu
+Cj4+PiAgICAKPj4+ICAgIDo6Cj4+PiAgICAKPj4+IC0gICMgdGMgcWRpc2MgYWRkIGRldiA8aW50
+ZXJmYWNlPiByb290IG1xcHJpbyBudW1fdGMgMiBtYXAgMCAwIDAgMAo+Pj4gMSAxIDEgMQo+Pj4g
+LSAgcXVldWVzIDE2QDAgMTZAMTYgaHcgMSBtb2RlIGNoYW5uZWwgc2hhcGVyIGJ3X3JsaW1pdCBt
+aW5fcmF0ZQo+Pj4gMUdiaXQgMkdiaXQKPj4+IC0gIG1heF9yYXRlIDFHYml0IDNHYml0Cj4+PiAr
+ICAgIHRjIHFkaXNjIGFkZCBkZXYgPGludGVyZmFjZT4gcm9vdCBtcXByaW8gbnVtX3RjIDIgbWFw
+IDAgMCAwIDAKPj4+IDEgMSAxIDEKPj4+ICsgICAgcXVldWVzIDE2QDAgMTZAMTYgaHcgMSBtb2Rl
+IGNoYW5uZWwgc2hhcGVyIGJ3X3JsaW1pdCBtaW5fcmF0ZQo+Pj4gMUdiaXQgMkdiaXQKPj4+ICsg
+ICAgbWF4X3JhdGUgMUdiaXQgM0diaXQKPj4+ICAgIAo+Pj4gICAgbWFwOiBwcmlvcml0eSBtYXBw
+aW5nIGZvciB1cCB0byAxNiBwcmlvcml0aWVzIHRvIHRjcyAoZS5nLiBtYXAgMAo+Pj4gMCAwIDAg
+MSAxIDEgMQo+Pj4gICAgc2V0cyBwcmlvcml0aWVzIDAtMyB0byB1c2UgdGMwIGFuZCA0LTcgdG8g
+dXNlIHRjMSkKPj4+IEBAIC0xNjIsNiArMTgxLDEwIEBAIFRvdGFscyBtdXN0IGJlIGVxdWFsIG9y
+IGxlc3MgdGhhbiBwb3J0IHNwZWVkLgo+Pj4gICAgRm9yIGV4YW1wbGU6IG1pbl9yYXRlIDFHYml0
+IDNHYml0OiBWZXJpZnkgYmFuZHdpZHRoIGxpbWl0IHVzaW5nCj4+PiBuZXR3b3JrCj4+PiAgICBt
+b25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgaWZzdGF0IG9yIHNhciDigJNuIERFViBbaW50ZXJ2YWxd
+IFtudW1iZXIKPj4+IG9mIHNhbXBsZXNdCj4+PiAgICAKPj4+ICtOT1RFOgo+Pj4gKyAgU2V0dGlu
+ZyB1cCBjaGFubmVscyB2aWEgZXRodG9vbCAoZXRodG9vbCAtTCkgaXMgbm90IHN1cHBvcnRlZAo+
+Pj4gd2hlbiB0aGUKPj4+ICsgIFRDcyBhcmUgY29uZmlndXJlZCB1c2luZyBtcXByaW8uCj4+PiAr
+Cj4+PiAgICAyLiBFbmFibGUgSFcgVEMgb2ZmbG9hZCBvbiBpbnRlcmZhY2U6Ogo+Pj4gICAgCj4+
+PiAgICAgICAgIyBldGh0b29sIC1LIDxpbnRlcmZhY2U+IGh3LXRjLW9mZmxvYWQgb24KPj4+IEBA
+IC0xNzEsMTYgKzE5NCwxNiBAQCBtb25pdG9yaW5nIHRvb2xzIHN1Y2ggYXMgaWZzdGF0IG9yIHNh
+ciDigJNuIERFVgo+Pj4gW2ludGVydmFsXSBbbnVtYmVyIG9mIHNhbXBsZXNdCj4+PiAgICAgICAg
+IyB0YyBxZGlzYyBhZGQgZGV2IDxpbnRlcmZhY2U+IGluZ3Jlc3MKPj4+ICAgIAo+Pj4gICAgTk9U
+RVM6Cj4+PiAtIC0gUnVuIGFsbCB0YyBjb21tYW5kcyBmcm9tIHRoZSBpcHJvdXRlMiA8cGF0aHRv
+aXByb3V0ZTI+L3RjLwo+Pj4gZGlyZWN0b3J5Lgo+Pj4gLSAtIEFEcSBpcyBub3QgY29tcGF0aWJs
+ZSB3aXRoIGNsb3VkIGZpbHRlcnMuCj4+PiArIC0gUnVuIGFsbCB0YyBjb21tYW5kcyBmcm9tIHRo
+ZSBpcHJvdXRlMiA8cGF0aHRvaXByb3V0ZTI+L3RjLwo+Pj4gZGlyZWN0b3J5Cj4+PiArIC0gQURx
+IGlzIG5vdCBjb21wYXRpYmxlIHdpdGggY2xvdWQgZmlsdGVycwo+Pj4gICAgIC0gU2V0dGluZyB1
+cCBjaGFubmVscyB2aWEgZXRodG9vbCAoZXRodG9vbCAtTCkgaXMgbm90IHN1cHBvcnRlZAo+Pj4g
+d2hlbiB0aGUgVENzCj4+PiAtICAgYXJlIGNvbmZpZ3VyZWQgdXNpbmcgbXFwcmlvLgo+Pj4gKyAg
+IGFyZSBjb25maWd1cmVkIHVzaW5nIG1xcHJpbwo+Pj4gICAgIC0gWW91IG11c3QgaGF2ZSBpcHJv
+dXRlMiBsYXRlc3QgdmVyc2lvbgo+Pj4gLSAtIE5WTSB2ZXJzaW9uIDYuMDEgb3IgbGF0ZXIgaXMg
+cmVxdWlyZWQuCj4+PiArIC0gTlZNIHZlcnNpb24gNi4wMSBvciBsYXRlciBpcyByZXF1aXJlZAo+
+Pj4gICAgIC0gQURxIGNhbm5vdCBiZSBlbmFibGVkIHdoZW4gYW55IHRoZSBmb2xsb3dpbmcgZmVh
+dHVyZXMgYXJlCj4+PiBlbmFibGVkOiBEYXRhCj4+PiAtICAgQ2VudGVyIEJyaWRnaW5nIChEQ0Ip
+LCBNdWx0aXBsZSBGdW5jdGlvbnMgcGVyIFBvcnQgKE1GUCksIG9yCj4+PiBTaWRlYmFuZCBGaWx0
+ZXJzLgo+Pj4gKyAgIENlbnRlciBCcmlkZ2luZyAoRENCKSwgTXVsdGlwbGUgRnVuY3Rpb25zIHBl
+ciBQb3J0IChNRlApLCBvcgo+Pj4gU2lkZWJhbmQgRmlsdGVycwo+Pj4gICAgIC0gSWYgYW5vdGhl
+ciBkcml2ZXIgKGZvciBleGFtcGxlLCBEUERLKSBoYXMgc2V0IGNsb3VkIGZpbHRlcnMsCj4+PiB5
+b3UgY2Fubm90Cj4+PiAtICAgZW5hYmxlIEFEcS4KPj4+ICsgICBlbmFibGUgQURxCj4+PiAgICAg
+LSBUdW5uZWwgZmlsdGVycyBhcmUgbm90IHN1cHBvcnRlZCBpbiBBRHEuIElmIGVuY2Fwc3VsYXRl
+ZAo+Pj4gcGFja2V0cyBkbyBhcnJpdmUKPj4+ICAgICAgIGluIG5vbi10dW5uZWwgbW9kZSwgZmls
+dGVyaW5nIHdpbGwgYmUgZG9uZSBvbiB0aGUgaW5uZXIKPj4+IGhlYWRlcnMuICBGb3IgZXhhbXBs
+ZSwKPj4+ICAgICAgIGZvciBWWExBTiB0cmFmZmljIGluIG5vbi10dW5uZWwgbW9kZSwgUENUWVBF
+IGlzIGlkZW50aWZpZWQgYXMKPj4+IGEgVlhMQU4KPj4+IEBAIC0xOTQsMTAgKzIxNywyMzYgQEAg
+Tk9URVM6Cj4+PiAgICAgICB0cmFmZmljIHdpbGwgYmUgZHVwbGljYXRlZCBhbmQgc2VudCB0byBh
+bGwgbWF0Y2hpbmcgVEMKPj4+IHF1ZXVlcy4gIFRoZSBoYXJkd2FyZQo+Pj4gICAgICAgc3dpdGNo
+IG1pcnJvcnMgdGhlIHBhY2tldCB0byBhIFZTSSBsaXN0IHdoZW4gbXVsdGlwbGUgZmlsdGVycwo+
+Pj4gYXJlIG1hdGNoZWQuCj4+PiAgICAKPj4+ICtTUi1JT1YgSHlwZXJ2aXNvciBNYW5hZ2VtZW50
+IEludGVyZmFjZQo+Pj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4+
+PiArVGhlIHN5c2ZzIGZpbGUgc3RydWN0dXJlIGJlbG93IHN1cHBvcnRzIHRoZSBTUi1JT1YgaHlw
+ZXJ2aXNvcgo+Pj4gbWFuYWdlbWVudAo+Pj4gK2ludGVyZmFjZS4KPj4+ICsKPj4+ICt8IC9zeXMv
+Y2xhc3MvbmV0LzxpbnRlcmZhY2UtbmFtZT4vZGV2aWNlL3NyaW92IChzZWUgWzFdXykKPj4+ICt8
+ICstLSBbVkYtaWQsIDAgLi4gMTI3XSAoc2VlIFsyXV8pCj4+PiArfCB8ICstLSB0cnVuawo+Pj4g
+K3wgfCArLS0gdmxhbl9taXJyb3IKPj4+ICt8IHwgKy0tIGVuZ3Jlc3NfbWlycm9yCj4+PiArfCB8
+ICstLSBpbmdyZXNzX21pcnJvcgo+Pj4gK3wgfCArLS0gbWFjX2FudGlfc3Bvb2YKPj4+ICt8IHwg
+Ky0tIHZsYW5fYW50aV9zcG9vZgo+Pj4gK3wgfCArLS0gbG9vcGJhY2sKPj4+ICt8IHwgKy0tIG1h
+Ywo+Pj4gK3wgfCArLS0gbWFjX2xpc3QKPj4+ICt8IHwgKy0tIHByb21pc2MKPj4+ICt8IHwgKy0t
+IHZsYW5fc3RyaXAKPj4+ICt8IHwgKy0tIHN0YXRzCj4+PiArfCB8ICstLSBsaW5rX3N0YXRlCj4+
+PiArfCB8ICstLSBtYXhfdHhfcmF0ZQo+Pj4gK3wgfCArLS0gbWluX3R4X3JhdGUKPj4+ICt8IHwg
+Ky0tIHNwb29mY2hlY2sKPj4+ICt8IHwgKy0tIHRydXN0Cj4+PiArfCB8ICstLSB2bGFuCj4+PiAr
+Cj4+PiArLi4gWzFdIGtvYmplY3Qgc3RhcnRlZCBmcm9tIOKAnHNyaW924oCdIGlzIG5vdCBhdmFp
+bGFibGUgZnJvbSBleGlzdGluZwo+Pj4ga2VybmVsCj4+PiArICAgc3lzZnMsIGFuZCBpdCByZXF1
+aXJlcyBkZXZpY2UgZHJpdmVyIHRvIGltcGxlbWVudCB0aGlzCj4+PiBpbnRlcmZhY2UuCj4+PiAr
+Li4gWzJdIGFzc3VtZSBtYXhpbXVtICMgb2YgVkYgc3VwcG9ydGVkIGJ5IGEgUEYgaXMgMTI4LiBU
+byBzdXBwb3J0Cj4+PiBhIGRldmljZQo+Pj4gKyAgIHRoYXQgc3VwcG9ydHMgbW9yZSB0aGFuIDEy
+OCBTUi1JT1YgaW5zdGFuY2VzLCBhIOKAnHZmeOKAnSBpcyBhZGRlZAo+Pj4gdG8gMC4uMTI3Lgo+
+Pj4gKyAgIFdpdGgg4oCcdmZ44oCdIGtib2plY3QsIHVzZXJzIG5lZWQgdG8gYWRkIHZmIGluZGV4
+IGFzIHRoZSBmaXJzdAo+Pj4gcGFyYW1ldGVyIGFuZAo+Pj4gKyAgIGZvbGxvd2VkIGJ5IOKAnDri
+gJ0uCj4+Cj4+IElzIHRoaXMgc3lzZnMgbWdtdCBpbnRlcmZhY2UgYW5kIHBhdGNoIHRhcmdldGVk
+IGZvciB1cHN0cmVhbSBpYXZmPwo+IAo+IEkgY29uZmlybWVkIHdpdGggdmFsaWRhdGlvbiB0aGF0
+IHRoZSBzeXNmcyBtZ210IGludGVyZmFjZSB3YXMgYWxyZWFkeQo+IHVwc3RyZWFtIGluIHRoZSBr
+ZXJuZWwgYmVmb3JlIGFkZGluZyB0aGUgZXhpc3RpbmcgZG9jdW1lbnRhdGlvbi4KCklzbid0IHRo
+aXMgdGhlIFZGIGRhZW1vbiBpbnRlcmZhY2UgdGhhdCBpcyBzdXBwb3NlZCB0byBiZSBvbmx5IGFu
+IG91dCBvZiAKdHJlZSBzb2x1dGlvbj8KSSBkb24ndCBzZWUgdGhpcyBzeXNmcyBzdXBwb3J0IGF0
+bGVhc3QgaW4gdGhlIGk0MGUgUEYgZHJpdmVyIHVwc3RyZWFtLgoKLVNyaWRoYXIKCj4gCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxh
+biBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5v
+c3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
