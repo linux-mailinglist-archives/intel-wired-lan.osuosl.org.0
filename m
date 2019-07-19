@@ -1,73 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 777C26E9FB
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 19:21:12 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 601146EA08
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 19:22:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0400B86B9A;
-	Fri, 19 Jul 2019 17:21:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DBCD787669;
+	Fri, 19 Jul 2019 17:22:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SwJF1vcq7jcp; Fri, 19 Jul 2019 17:21:10 +0000 (UTC)
+	with ESMTP id 6xlwpl5qgxb0; Fri, 19 Jul 2019 17:22:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B0F6186BA0;
-	Fri, 19 Jul 2019 17:21:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 25592879E1;
+	Fri, 19 Jul 2019 17:22:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1AAE51BF82B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:21:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5ACC01BF82B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:22:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 16AA68832C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:21:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 569722048A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:22:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nTeJXAFrvLco for <intel-wired-lan@lists.osuosl.org>;
- Fri, 19 Jul 2019 17:21:06 +0000 (UTC)
+ with ESMTP id FoA-9I5Cg3FI for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Jul 2019 17:22:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5DA0B88312
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:21:06 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2BCA320477
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:22:03 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jul 2019 10:21:05 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2019 10:22:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,283,1559545200"; d="scan'208";a="188040530"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga001.fm.intel.com with ESMTP; 19 Jul 2019 10:21:05 -0700
+X-IronPort-AV: E=Sophos;i="5.64,283,1559545200"; d="scan'208";a="170191140"
+Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
+ by fmsmga007.fm.intel.com with ESMTP; 19 Jul 2019 10:22:03 -0700
+Received: from orsmsx111.amr.corp.intel.com (10.22.240.12) by
+ ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 19 Jul 2019 10:22:02 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.232]) by
- ORSMSX103.amr.corp.intel.com ([169.254.5.44]) with mapi id 14.03.0439.000;
- Fri, 19 Jul 2019 10:21:05 -0700
+ ORSMSX111.amr.corp.intel.com ([169.254.12.226]) with mapi id 14.03.0439.000;
+ Fri, 19 Jul 2019 10:22:02 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "ast@kernel.org"
  <ast@kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v2 03/10] xsk: add support to allow
- unaligned chunk placement
-Thread-Index: AQHVO8i8c3wKUR6Q/U2iq7Xsontky6bSNOqQ
-Date: Fri, 19 Jul 2019 17:21:04 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40C31D@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v2 04/10] i40e: modify driver for
+ handling offsets
+Thread-Index: AQHVO8i3OlSrkNfIIky1YfC/b1eLNKbSNS6g
+Date: Fri, 19 Jul 2019 17:22:01 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40C32D@ORSMSX104.amr.corp.intel.com>
 References: <20190620090958.2135-1-kevin.laatz@intel.com>
  <20190716030637.5634-1-kevin.laatz@intel.com>
- <20190716030637.5634-4-kevin.laatz@intel.com>
-In-Reply-To: <20190716030637.5634-4-kevin.laatz@intel.com>
+ <20190716030637.5634-5-kevin.laatz@intel.com>
+In-Reply-To: <20190716030637.5634-5-kevin.laatz@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjhkMjExZDktNzhmNS00NzYyLTgwNmQtNjQzNjgyNDI3NzdkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoib2pvYnd2S0lXNk5MSFdnUjBmbCszNk9sa0pSWWVIWUlcL001aG1yTWF3TTNiSHEyUGpoK1NGU0diUVFRdnAzajIifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNmU4ZWNiM2MtOTgzMi00ZDNmLTkxMWYtMjZjMzk5MjViNzFlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiREdHVlFhc1BYNTRqdjZ1bkJoVmlQN3NIRVZZZ2I3MVBYc0hGYzhJXC9ickY5T29mYTdtejM4dUNuWjVZUm10R3EifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2 03/10] xsk: add support to allow
- unaligned chunk placement
+Subject: Re: [Intel-wired-lan] [PATCH v2 04/10] i40e: modify driver for
+ handling offsets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,40 +101,19 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Cc: Richardson, Bruce <bruce.richardson@intel.com>; Loftus, Ciara
 > <ciara.loftus@intel.com>; intel-wired-lan@lists.osuosl.org;
 > bpf@vger.kernel.org; Laatz, Kevin <kevin.laatz@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v2 03/10] xsk: add support to allow
-> unaligned chunk placement
+> Subject: [Intel-wired-lan] [PATCH v2 04/10] i40e: modify driver for handling
+> offsets
 > 
-> Currently, addresses are chunk size aligned. This means, we are very
-> restricted in terms of where we can place chunk within the umem. For
-> example, if we have a chunk size of 2k, then our chunks can only be placed at
-> 0,2k,4k,6k,8k... and so on (ie. every 2k starting from 0).
+> With the addition of the unaligned chunks option, we need to make sure we
+> handle the offsets accordingly based on the mode we are currently running
+> in. This patch modifies the driver to appropriately mask the address for each
+> case.
 > 
-> This patch introduces the ability to use unaligned chunks. With these
-> changes, we are no longer bound to having to place chunks at a 2k (or
-> whatever your chunk size is) interval. Since we are no longer dealing with
-> aligned chunks, they can now cross page boundaries. Checks for page
-> contiguity have been added in order to keep track of which pages are
-> followed by a physically contiguous page.
-> 
-> Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
-> Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
 > Signed-off-by: Bruce Richardson <bruce.richardson@intel.com>
-> 
+> Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
 > ---
-> v2:
->   - Add checks for the flags coming from userspace
->   - Fix how we get chunk_size in xsk_diag.c
->   - Add defines for masking the new descriptor format
->   - Modified the rx functions to use new descriptor format
->   - Modified the tx functions to use new descriptor format
-> ---
->  include/net/xdp_sock.h      |  2 +
->  include/uapi/linux/if_xdp.h |  9 ++++
->  net/xdp/xdp_umem.c          | 17 ++++---
->  net/xdp/xsk.c               | 89 ++++++++++++++++++++++++++++++-------
->  net/xdp/xsk_diag.c          |  2 +-
->  net/xdp/xsk_queue.h         | 70 +++++++++++++++++++++++++----
->  6 files changed, 159 insertions(+), 30 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 26 +++++++++++++++++-----
+>  1 file changed, 21 insertions(+), 5 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
