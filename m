@@ -2,73 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00DAC6E9F4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 19:20:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 157436E9F5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jul 2019 19:20:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8A53788312;
-	Fri, 19 Jul 2019 17:20:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 624A7883C8;
+	Fri, 19 Jul 2019 17:20:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j+1WCqnMNfWs; Fri, 19 Jul 2019 17:20:17 +0000 (UTC)
+	with ESMTP id 5Fu3kic4hadi; Fri, 19 Jul 2019 17:20:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 105EB883C0;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 559A0883D2;
 	Fri, 19 Jul 2019 17:20:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B9D5E1BF82B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:19:13 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 482701BF82B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:20:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B666484EE9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:19:13 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4453A8832C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:20:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lShkdg-UYzTU for <intel-wired-lan@lists.osuosl.org>;
- Fri, 19 Jul 2019 17:19:12 +0000 (UTC)
+ with ESMTP id 383EjQlRqMlt for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Jul 2019 17:20:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DE90D84E10
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:19:12 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0F0AB88312
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jul 2019 17:20:10 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jul 2019 10:19:12 -0700
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Jul 2019 10:20:09 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,283,1559545200"; d="scan'208";a="188039930"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga001.fm.intel.com with ESMTP; 19 Jul 2019 10:19:12 -0700
-Received: from orsmsx161.amr.corp.intel.com (10.22.240.84) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 19 Jul 2019 10:19:11 -0700
+X-IronPort-AV: E=Sophos;i="5.64,283,1559545200"; d="scan'208";a="188040346"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by fmsmga001.fm.intel.com with ESMTP; 19 Jul 2019 10:20:08 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.232]) by
- ORSMSX161.amr.corp.intel.com ([169.254.4.246]) with mapi id 14.03.0439.000;
- Fri, 19 Jul 2019 10:19:11 -0700
+ ORSMSX107.amr.corp.intel.com ([169.254.1.186]) with mapi id 14.03.0439.000;
+ Fri, 19 Jul 2019 10:20:08 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v2 01/10] i40e: simplify Rx buffer
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "ast@kernel.org"
+ <ast@kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v2 02/10] ixgbe: simplify Rx buffer
  recycle
-Thread-Index: AQHVO8isPSN96BFiCUm00MdT0dQEY6bSNFwA
-Date: Fri, 19 Jul 2019 17:19:11 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40C2FD@ORSMSX104.amr.corp.intel.com>
+Thread-Index: AQHVO8i4Y105cb4ZyU2vB7EM9kMFDKbSNKNg
+Date: Fri, 19 Jul 2019 17:20:07 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40C309@ORSMSX104.amr.corp.intel.com>
 References: <20190620090958.2135-1-kevin.laatz@intel.com>
  <20190716030637.5634-1-kevin.laatz@intel.com>
- <20190716030637.5634-2-kevin.laatz@intel.com>
-In-Reply-To: <20190716030637.5634-2-kevin.laatz@intel.com>
+ <20190716030637.5634-3-kevin.laatz@intel.com>
+In-Reply-To: <20190716030637.5634-3-kevin.laatz@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTViYTFlZWQtODk3MC00ZTlhLWI4ZmItN2FjMWE5ZjczOGZmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVmVkR1ZROVVDV3YrZDE3N1NlRkkwSm00WUhYZkVRVDdsSlZ6NzFJcGZEVkoxZXZWRldhaUFqOEZHM1NBbFdRcCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDdmYWJlYWMtYjczNi00NDI5LThhYmUtZDAwYmRjYTZkZjQ4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoieWV6RlZPdzhXd1hGaDhmbThwUVMrRFwvbW4zWENLSWRzTzJtSzNRVnVnUWZnVFY4WTRcL0NCMVBEdzhra2twdEtKIn0=
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2 01/10] i40e: simplify Rx buffer
+Subject: Re: [Intel-wired-lan] [PATCH v2 02/10] ixgbe: simplify Rx buffer
  recycle
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -100,17 +98,17 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Cc: Richardson, Bruce <bruce.richardson@intel.com>; Loftus, Ciara
 > <ciara.loftus@intel.com>; intel-wired-lan@lists.osuosl.org;
 > bpf@vger.kernel.org; Laatz, Kevin <kevin.laatz@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v2 01/10] i40e: simplify Rx buffer recycle
+> Subject: [Intel-wired-lan] [PATCH v2 02/10] ixgbe: simplify Rx buffer recycle
 > 
 > Currently, the dma, addr and handle are modified when we reuse Rx buffers
 > in zero-copy mode. However, this is not required as the inputs to the
 > function are copies, not the original values themselves. As we use the copies
-> within the function, we can use the original 'old_bi' values directly without
+> within the function, we can use the original 'obi' values directly without
 > having to mask and add the headroom.
 > 
 > Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 13 +++----------
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 13 +++----------
 >  1 file changed, 3 insertions(+), 10 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
