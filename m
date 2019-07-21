@@ -2,53 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8CE06F0FE
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Jul 2019 01:11:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 640106F593
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Jul 2019 22:30:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5AD19204B0;
-	Sat, 20 Jul 2019 23:11:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E2A9E203B6;
+	Sun, 21 Jul 2019 20:30:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LDhvg9Ga7IAl; Sat, 20 Jul 2019 23:11:27 +0000 (UTC)
+	with ESMTP id 4BZ6si2dNrhP; Sun, 21 Jul 2019 20:30:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 04F2020484;
-	Sat, 20 Jul 2019 23:11:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AB392203C7;
+	Sun, 21 Jul 2019 20:30:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CF2E11BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Jul 2019 23:11:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D1EA1BF573
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jul 2019 20:30:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CA0D985582
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Jul 2019 23:11:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6742187327
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jul 2019 20:30:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kvEZ-a7FshyL for <intel-wired-lan@lists.osuosl.org>;
- Sat, 20 Jul 2019 23:11:23 +0000 (UTC)
+ with ESMTP id Q8GfuhZS6w0S for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 21 Jul 2019 20:30:11 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7C75D85580
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Jul 2019 23:11:23 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5bd179.dynamic.kabel-deutschland.de
- [95.91.209.121])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 17F05201A3C0F;
- Sun, 21 Jul 2019 01:11:20 +0200 (CEST)
-To: Todd Fujinaka <todd.fujinaka@intel.com>
-References: <f16c92b9-61bf-6ea8-afc9-28e778c2b625@molgen.mpg.de>
- <9B4A1B1917080E46B64F07F2989DADD69AFF0A1B@ORSMSX115.amr.corp.intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <14c67f8e-b345-4aae-169f-4b7c9eba5d89@molgen.mpg.de>
-Date: Sun, 21 Jul 2019 01:11:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <9B4A1B1917080E46B64F07F2989DADD69AFF0A1B@ORSMSX115.amr.corp.intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] How to update firmware?
+Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 97C748731E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jul 2019 20:30:11 +0000 (UTC)
+Received: from localhost (unknown [IPv6:2601:601:9f80:35cd::d71])
+ (using TLSv1 with cipher AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: davem-davemloft)
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id 800D115265E02;
+ Sun, 21 Jul 2019 13:30:10 -0700 (PDT)
+Date: Sun, 21 Jul 2019 13:30:10 -0700 (PDT)
+Message-Id: <20190721.133010.561994148836125357.davem@davemloft.net>
+To: fred@fredlawl.com
+From: David Miller <davem@davemloft.net>
+In-Reply-To: <20190718020745.8867-4-fred@fredlawl.com>
+References: <20190718020745.8867-1-fred@fredlawl.com>
+ <20190718020745.8867-4-fred@fredlawl.com>
+X-Mailer: Mew version 6.8 on Emacs 26.1
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
+ (shards.monkeyblade.net [149.20.54.216]);
+ Sun, 21 Jul 2019 13:30:10 -0700 (PDT)
+Subject: Re: [Intel-wired-lan] [PATCH] igc: Prefer
+ pcie_capability_read_word()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,31 +63,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: bhelgaas@google.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBUb2RkLAoKClRoYW5rIHlvdSBmb3IgeW91ciBhbnN3ZXIuIFBsZWFzZSBmaW5kIG15IGFu
-c3dlcnMgYmVsb3cgKGludGVybGVhdmVkIHN0eWxlKS4KCgpPbiAyMC4wNy4xOSAxODoxMSwgRnVq
-aW5ha2EsIFRvZGQgd3JvdGU6Cj4gV2hhdCBwYXJ0PyBUaGUgMUcgcGFydHMgZGlkbid0IGhhdmUg
-bXVjaCBmaXJtd2FyZSAob25seSBvbmUgaGFkIGEKPiBsaXR0bGUpIGFuZCBzb21lIG9mIHRoZSAx
-MEcgcGFydHMgZGlkbid0LCBlaXRoZXIuCgpTb3JyeSwgSSBkbyBub3QgdW5kZXJzdGFuZC4gVGhl
-cmUgaXMgYSBmaXJtd2FyZSBsaW5lIGluIHRoZSBvdXRwdXQgb2YKYGV0aHRvb2xgIGFuZCBpdCB3
-YXMgaW5kZWVkIHVwZGF0ZWQgdG8gMTguOC45IGJ5IHJ1bm5pZyB0aGUKKHByb3ByaWV0YXJ5KSBE
-ZWxsIHVwZGF0ZSBwcmFncmFtLgoKPiBXZSBkb24ndCByZWxlYXNlIHRoZSBzb3VyY2UgdG8gdGhl
-IGZpcm13YXJlIHVwZGF0ZXIgYW5kIHRoZXJlIG1pZ2h0Cj4gbm90IGJlIGFuIHVwZGF0ZSBmb3Ig
-eW91IGFueXdheS4KCkFzIHdyaXR0ZW4sIERlbGwgb2ZmZXJzIGFuIHVwZGF0ZS4KClNvLCB3aHkg
-ZG9u4oCZdCB5b3UgcmVsZWFzZSB0aGUgc291cmNlIGZvciB0aGUgZmlybXdhcmUgdXBkYXRlciB1
-bmRlciBhIApmcmVlIGxpY2VuY2U/IFdlIHJlYWxseSBsaWtlIHRvIGF1ZGl0IGFsbCB0aGUgcHJv
-Z3JhbXMsIHdlIHJ1biwgYW5kIApyZXZpZXcgKGJ5IG91cnNlbHZlcyBvciBvdGhlcnMpIHRoZW0u
-CgpTbyBtYWluIGdvYWwgd291bGQgYmUgdG8gaGF2ZSBqdXN0IG9uZSB1cGRhdGUgaW50ZXJmYWNl
-LCBmb3IgZXhhbXBsZSAKYGZ3dXBkbWdyYCwgdG8gb25seSBkZWFsIHdpdGggb25lIHRvb2wuIEFu
-ZCBJbnRlbCB3b3VsZCBoYXZlIG9uZSBwbGFjZSAKdG8gdXBsb2FkIHRoZSBmaXJtd2FyZSB1cGRh
-dGUgZmlsZXMgdG8gKHdpdGggc2VjdXJpdHkgaXNzdWVzIGFkZHJlc3NlZCAKbGlrZSBzaWduYXR1
-cmVzLCBhbmQgZ29vZCByZWxlYXNlIHByYWN0aWNlcyBsaWtlIHJlbGVhc2Ugbm90ZXMgYW5kIHNv
-IG9uKS4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
-ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
-Zm8vaW50ZWwtd2lyZWQtbGFuCg==
+From: Frederick Lawler <fred@fredlawl.com>
+Date: Wed, 17 Jul 2019 21:07:39 -0500
+
+> Commit 8c0d3a02c130 ("PCI: Add accessors for PCI Express Capability")
+> added accessors for the PCI Express Capability so that drivers didn't
+> need to be aware of differences between v1 and v2 of the PCI
+> Express Capability.
+> 
+> Replace pci_read_config_word() and pci_write_config_word() calls with
+> pcie_capability_read_word() and pcie_capability_write_word().
+> 
+> Signed-off-by: Frederick Lawler <fred@fredlawl.com>
+
+Applied.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
