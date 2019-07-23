@@ -2,34 +2,34 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CF9071E0A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:54:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 20FAA71E0D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:54:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2163320504;
-	Tue, 23 Jul 2019 17:54:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F39720449;
+	Tue, 23 Jul 2019 17:54:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B9gdMx1BnSzu; Tue, 23 Jul 2019 17:54:09 +0000 (UTC)
+	with ESMTP id q6lQ69--fO05; Tue, 23 Jul 2019 17:54:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 17E3C20449;
-	Tue, 23 Jul 2019 17:54:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 831E920505;
+	Tue, 23 Jul 2019 17:54:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9B9ED1BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A1E71BF95A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 92B4286038
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8637084B36
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zRuyC3PmCjdM for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id k8JTk4oj+zhQ for <intel-wired-lan@lists.osuosl.org>;
  Tue, 23 Jul 2019 17:54:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 271458666D
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3075781F99
  for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:01 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  23 Jul 2019 10:53:58 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="344813725"
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="344813728"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga005.jf.intel.com with ESMTP; 23 Jul 2019 10:53:58 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 02:24:48 -0700
-Message-Id: <20190723092454.3508-8-anthony.l.nguyen@intel.com>
+Date: Tue, 23 Jul 2019 02:24:49 -0700
+Message-Id: <20190723092454.3508-9-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190723092454.3508-1-anthony.l.nguyen@intel.com>
 References: <20190723092454.3508-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S23 v3 08/15] ice: allow empty rx
- descriptors
+Subject: [Intel-wired-lan] [PATCH S23 v3 09/15] ice: Do not always bring up
+ PF VSI in ice_ena_vsi()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,76 +67,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mitch Williams <mitch.a.williams@intel.com>
+During rebuild ice_ena_vsi() is called to recover the VSI state.
+This function assumes the PF VSI is always to be enabled, however,
+it's possible that during reset/rebuild the interface can be
+brought down.  If this occurs, we can attempt to bring up the PF
+VSI on a downed interface which can lead to various crashes. If
+the interface is not running, do not bring up the associated VSI.
 
-In some circumstances, the hardware will hand us a receive descriptor
-which has no data attached, but is otherwise valid. The receive code was
-improperly ignoring these descriptors, which result in an infinite loop.
-
-To fix this, change the receive code to process all descriptors,
-regardless of the size of the associated data. Add checks to the
-memory-handling functions to allow for zero size.
-
-Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index a78c68fe190a..f612f1f53c67 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -607,6 +607,8 @@ ice_add_rx_frag(struct ice_rx_buf *rx_buf, struct sk_buff *skb,
- 	unsigned int truesize = ICE_RXBUF_2048;
- #endif
- 
-+	if (!size)
-+		return;
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
- 			rx_buf->page_offset, size, truesize);
- 
-@@ -662,6 +664,8 @@ ice_get_rx_buf(struct ice_ring *rx_ring, struct sk_buff **skb,
- 	prefetchw(rx_buf->page);
- 	*skb = rx_buf->skb;
- 
-+	if (!size)
-+		return rx_buf;
- 	/* we are reusing so sync this buffer for CPU use */
- 	dma_sync_single_range_for_cpu(rx_ring->dev, rx_buf->dma,
- 				      rx_buf->page_offset, size,
-@@ -745,8 +749,11 @@ ice_construct_skb(struct ice_ring *rx_ring, struct ice_rx_buf *rx_buf,
-  */
- static void ice_put_rx_buf(struct ice_ring *rx_ring, struct ice_rx_buf *rx_buf)
- {
--		/* hand second half of page back to the ring */
-+	if (!rx_buf)
-+		return;
-+
- 	if (ice_can_reuse_rx_page(rx_buf)) {
-+		/* hand second half of page back to the ring */
- 		ice_reuse_rx_page(rx_ring, rx_buf);
- 		rx_ring->rx_stats.page_reuse_count++;
- 	} else {
-@@ -1032,8 +1039,9 @@ static int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		size = le16_to_cpu(rx_desc->wb.pkt_len) &
- 			ICE_RX_FLX_DESC_PKT_LEN_M;
- 
-+		/* retrieve a buffer from the ring */
- 		rx_buf = ice_get_rx_buf(rx_ring, &skb, size);
--		/* allocate (if needed) and populate skb */
-+
- 		if (skb)
- 			ice_add_rx_frag(rx_buf, skb, size);
- 		else
-@@ -1042,7 +1050,8 @@ static int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		/* exit if we failed to retrieve a buffer */
- 		if (!skb) {
- 			rx_ring->rx_stats.alloc_buf_failed++;
--			rx_buf->pagecnt_bias++;
-+			if (rx_buf)
-+				rx_buf->pagecnt_bias++;
- 			break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index d75bfa832332..846cd79240d0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3737,8 +3737,6 @@ static int ice_ena_vsi(struct ice_vsi *vsi, bool locked)
+ 				err = netd->netdev_ops->ndo_open(netd);
+ 				rtnl_unlock();
+ 			}
+-		} else {
+-			err = ice_vsi_open(vsi);
  		}
+ 	}
  
 -- 
 2.20.1
