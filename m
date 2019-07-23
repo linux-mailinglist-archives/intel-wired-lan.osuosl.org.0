@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0CA371E0E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:54:16 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04F7171E00
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:54:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CF499204F7;
-	Tue, 23 Jul 2019 17:54:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4598A87364;
+	Tue, 23 Jul 2019 17:54:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2tTr6YGfJCF8; Tue, 23 Jul 2019 17:54:10 +0000 (UTC)
+	with ESMTP id SVO8o2hMCzDb; Tue, 23 Jul 2019 17:54:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E8391204DA;
-	Tue, 23 Jul 2019 17:54:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 82DEA86554;
+	Tue, 23 Jul 2019 17:54:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E0B661BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9C06B1BF95A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D734E86038
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3AB9286981
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bXN4IdS-1jNL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jul 2019 17:54:00 +0000 (UTC)
+ with ESMTP id B-6hMZ0uaO9x for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jul 2019 17:53:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0A182861D1
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A331786542
  for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:53:59 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  23 Jul 2019 10:53:58 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="344813740"
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="344813743"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga005.jf.intel.com with ESMTP; 23 Jul 2019 10:53:58 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 02:24:53 -0700
-Message-Id: <20190723092454.3508-13-anthony.l.nguyen@intel.com>
+Date: Tue, 23 Jul 2019 02:24:54 -0700
+Message-Id: <20190723092454.3508-14-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190723092454.3508-1-anthony.l.nguyen@intel.com>
 References: <20190723092454.3508-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S23 v3 13/15] ice: Move VF resources
- definition to SR-IOV specific file
+Subject: [Intel-wired-lan] [PATCH S23 v3 15/15] ice: improve print for VF's
+ when adding/deleting MAC filters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,70 +62,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+Cc: Brett Creeley <brett.creeley@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-In order to use some of the VF resources definition in the SR-IOV specific
-virtchnl header file, this patch moves applicable code to
-ice_virtchnl_pf.h file accordingly... and they should have been defined in
-the destination file originally.
+When we fail to add/delete MAC filters in the VF, the print doesn't
+distinguish between the two. Fix that by printing whether or not we
+failed to add/delete the MAC filter respectively.
 
-Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h             | 10 ----------
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h | 13 +++++++++++++
- 2 files changed, 13 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 36a8ee873ae1..8398dd45a8a2 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -87,16 +87,6 @@ extern const char ice_drv_ver[];
- #define ICE_RES_MISC_VEC_ID	(ICE_RES_VALID_BIT - 1)
- #define ICE_INVAL_Q_INDEX	0xffff
- #define ICE_INVAL_VFID		256
--#define ICE_MAX_VF_COUNT	256
--#define ICE_MAX_QS_PER_VF		256
--#define ICE_MIN_QS_PER_VF		1
--#define ICE_DFLT_QS_PER_VF		4
--#define ICE_NONQ_VECS_VF		1
--#define ICE_MAX_SCATTER_QS_PER_VF	16
--#define ICE_MAX_BASE_QS_PER_VF		16
--#define ICE_MAX_INTR_PER_VF		65
--#define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
--#define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 0254b945d576..d2a6736441c3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -2284,8 +2284,8 @@ ice_vc_handle_mac_addr_msg(struct ice_vf *vf, u8 *msg, bool set)
  
- #define ICE_MAX_RESET_WAIT		20
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 79bb47f73879..4d94853f119a 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -26,6 +26,19 @@
- #define ICE_PCI_CIAD_WAIT_COUNT		100
- #define ICE_PCI_CIAD_WAIT_DELAY_US	1
- 
-+/* VF resources default values and limitation */
-+#define ICE_MAX_VF_COUNT		256
-+#define ICE_MAX_QS_PER_VF		256
-+#define ICE_MIN_QS_PER_VF		1
-+#define ICE_DFLT_QS_PER_VF		4
-+#define ICE_NONQ_VECS_VF		1
-+#define ICE_MAX_SCATTER_QS_PER_VF	16
-+#define ICE_MAX_BASE_QS_PER_VF		16
-+#define ICE_MAX_INTR_PER_VF		65
-+#define ICE_MAX_POLICY_INTR_PER_VF	33
-+#define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
-+#define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
-+
- /* Specific VF states */
- enum ice_vf_states {
- 	ICE_VF_STATE_INIT = 0,
+ 	if (v_ret) {
+ 		dev_err(&pf->pdev->dev,
+-			"can't update MAC filters for VF %d, error %d\n",
+-			vf->vf_id, v_ret);
++			"can't %s MAC filters for VF %d, error %d\n",
++			set ? "add" : "remove", vf->vf_id, v_ret);
+ 	} else {
+ 		if (set)
+ 			vf->num_mac += mac_count;
 -- 
 2.20.1
 
