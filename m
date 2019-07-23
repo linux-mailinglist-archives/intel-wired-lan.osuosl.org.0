@@ -1,55 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9CC9371E1A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:56:20 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2689871F11
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 20:22:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F02778520A;
-	Tue, 23 Jul 2019 17:56:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C8531204E2;
+	Tue, 23 Jul 2019 18:22:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dxr1lEsai-i2; Tue, 23 Jul 2019 17:56:18 +0000 (UTC)
+	with ESMTP id TlLGIZ22nVu2; Tue, 23 Jul 2019 18:22:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA84E84848;
-	Tue, 23 Jul 2019 17:56:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BF19E203F0;
+	Tue, 23 Jul 2019 18:22:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F1EBE1BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0BE2A1BF2A5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EBA1084D16
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 091B485AE9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DwAf4sCCHj49 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+ with ESMTP id 8wMCnDJub50X for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jul 2019 18:22:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 23C3781B89
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 37701857D8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:39 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2019 10:56:14 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 Jul 2019 11:22:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="180816352"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga002.jf.intel.com with ESMTP; 23 Jul 2019 10:56:13 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 02:27:59 -0700
-Message-Id: <20190723092759.3614-12-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190723092759.3614-1-anthony.l.nguyen@intel.com>
-References: <20190723092759.3614-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="172037669"
+Received: from alicemic-1.jf.intel.com ([10.166.17.62])
+ by orsmga003.jf.intel.com with ESMTP; 23 Jul 2019 11:22:35 -0700
+From: Alice Michael <alice.michael@intel.com>
+To: alice.michael@intel.com,
+	intel-wired-lan@lists.osuosl.org
+Date: Tue, 23 Jul 2019 06:01:33 -0400
+Message-Id: <20190723100144.57435-1-alice.michael@intel.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S24 12/12] ice: Add input handlers for
- virtual channel handlers
+Subject: [Intel-wired-lan] [next PATCH S8 01/12] i40e: fix shifts of signed
+ values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,174 +61,135 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Beilei Xing <beilei.xing@intel.com>, Ferruh Yigit <ferruh.yigit@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: "Amruth G.P" <amruth.gouda.parameshwarappa@intel.com>
+From: Beilei Xing <beilei.xing@intel.com>
 
-Move the assignment to local variables after validation.
+This patch fixes following error reported by cppcheck:
+(error) Shifting signed 32-bit value by 31 bits is undefined behaviour
 
-Remove unnecessary checks in ice_vc_process_vf_msg() as the respective
-functions are now performing the checks.
-
-Signed-off-by: Amruth G.P <amruth.gouda.parameshwarappa@intel.com>
-Signed-off-by: Nitesh B Venkatesh <nitesh.b.venkatesh@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Ferruh Yigit <ferruh.yigit@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 64 +++++++++----------
- 1 file changed, 32 insertions(+), 32 deletions(-)
+ .../net/ethernet/intel/i40e/i40e_register.h   | 24 +++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 20def6d0f087..f86c26d0e426 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1735,18 +1735,18 @@ static int ice_vc_config_rss_key(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
--	vsi = pf->vsi[vf->lan_vsi_idx];
--	if (!vsi) {
-+	if (vrk->key_len != ICE_VSIQF_HKEY_ARRAY_SIZE) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
- 
--	if (vrk->key_len != ICE_VSIQF_HKEY_ARRAY_SIZE) {
-+	if (!test_bit(ICE_FLAG_RSS_ENA, vf->pf->flags)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
- 
--	if (!test_bit(ICE_FLAG_RSS_ENA, vf->pf->flags)) {
-+	vsi = pf->vsi[vf->lan_vsi_idx];
-+	if (!vsi) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
-@@ -1782,18 +1782,18 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
--	vsi = pf->vsi[vf->lan_vsi_idx];
--	if (!vsi) {
-+	if (vrl->lut_entries != ICE_VSIQF_HLUT_ARRAY_SIZE) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
- 
--	if (vrl->lut_entries != ICE_VSIQF_HLUT_ARRAY_SIZE) {
-+	if (!test_bit(ICE_FLAG_RSS_ENA, vf->pf->flags)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
- 
--	if (!test_bit(ICE_FLAG_RSS_ENA, vf->pf->flags)) {
-+	vsi = pf->vsi[vf->lan_vsi_idx];
-+	if (!vsi) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto error_param;
- 	}
-@@ -1831,6 +1831,12 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
-+	if (vqs->rx_queues > ICE_MAX_BASE_QS_PER_VF ||
-+	    vqs->tx_queues > ICE_MAX_BASE_QS_PER_VF) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 	if (!vsi) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-@@ -1933,6 +1939,12 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
-+	if (vqs->rx_queues > ICE_MAX_BASE_QS_PER_VF ||
-+	    vqs->tx_queues > ICE_MAX_BASE_QS_PER_VF) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 	if (!vsi) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-@@ -1985,12 +1997,6 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
- 	irqmap_info = (struct virtchnl_irq_map_info *)msg;
- 	num_q_vectors_mapped = irqmap_info->num_vectors;
- 
--	vsi = pf->vsi[vf->lan_vsi_idx];
--	if (!vsi) {
--		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
--		goto error_param;
--	}
--
- 	/* Check to make sure number of VF vectors mapped is not greater than
- 	 * number of VF vectors originally allocated, and check that
- 	 * there is actually at least a single VF queue vector mapped
-@@ -2002,6 +2008,12 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
-+	vsi = pf->vsi[vf->lan_vsi_idx];
-+	if (!vsi) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
- 	for (i = 0; i < num_q_vectors_mapped; i++) {
- 		struct ice_q_vector *q_vector;
- 
-@@ -2093,10 +2105,6 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
--	vsi = pf->vsi[vf->lan_vsi_idx];
--	if (!vsi)
--		goto error_param;
--
- 	if (qci->num_queue_pairs > ICE_MAX_BASE_QS_PER_VF) {
- 		dev_err(&pf->pdev->dev,
- 			"VF-%d requesting more than supported number of queues: %d\n",
-@@ -2105,6 +2113,12 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
- 
-+	vsi = pf->vsi[vf->lan_vsi_idx];
-+	if (!vsi) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
- 	for (i = 0; i < qci->num_queue_pairs; i++) {
- 		qpi = &qci->qpair[i];
- 		if (qpi->txq.vsi_id != qci->vsi_id ||
-@@ -2756,20 +2770,6 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- 			err = -EPERM;
- 		else
- 			err = -EINVAL;
--		goto error_handler;
--	}
--
--	/* Perform additional checks specific to RSS and Virtchnl */
--	if (v_opcode == VIRTCHNL_OP_CONFIG_RSS_KEY) {
--		struct virtchnl_rss_key *vrk = (struct virtchnl_rss_key *)msg;
--
--		if (vrk->key_len != ICE_VSIQF_HKEY_ARRAY_SIZE)
--			err = -EINVAL;
--	} else if (v_opcode == VIRTCHNL_OP_CONFIG_RSS_LUT) {
--		struct virtchnl_rss_lut *vrl = (struct virtchnl_rss_lut *)msg;
--
--		if (vrl->lut_entries != ICE_VSIQF_HLUT_ARRAY_SIZE)
--			err = -EINVAL;
- 	}
- 
- error_handler:
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index 52e3680c57f8..330ac19a5dae 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -58,7 +58,7 @@
+ #define I40E_PF_ARQLEN_ARQCRIT_SHIFT 30
+ #define I40E_PF_ARQLEN_ARQCRIT_MASK I40E_MASK(0x1, I40E_PF_ARQLEN_ARQCRIT_SHIFT)
+ #define I40E_PF_ARQLEN_ARQENABLE_SHIFT 31
+-#define I40E_PF_ARQLEN_ARQENABLE_MASK I40E_MASK(0x1, I40E_PF_ARQLEN_ARQENABLE_SHIFT)
++#define I40E_PF_ARQLEN_ARQENABLE_MASK I40E_MASK(0x1u, I40E_PF_ARQLEN_ARQENABLE_SHIFT)
+ #define I40E_PF_ARQT 0x00080480 /* Reset: EMPR */
+ #define I40E_PF_ARQT_ARQT_SHIFT 0
+ #define I40E_PF_ARQT_ARQT_MASK I40E_MASK(0x3FF, I40E_PF_ARQT_ARQT_SHIFT)
+@@ -81,7 +81,7 @@
+ #define I40E_PF_ATQLEN_ATQCRIT_SHIFT 30
+ #define I40E_PF_ATQLEN_ATQCRIT_MASK I40E_MASK(0x1, I40E_PF_ATQLEN_ATQCRIT_SHIFT)
+ #define I40E_PF_ATQLEN_ATQENABLE_SHIFT 31
+-#define I40E_PF_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1, I40E_PF_ATQLEN_ATQENABLE_SHIFT)
++#define I40E_PF_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1u, I40E_PF_ATQLEN_ATQENABLE_SHIFT)
+ #define I40E_PF_ATQT 0x00080400 /* Reset: EMPR */
+ #define I40E_PF_ATQT_ATQT_SHIFT 0
+ #define I40E_PF_ATQT_ATQT_MASK I40E_MASK(0x3FF, I40E_PF_ATQT_ATQT_SHIFT)
+@@ -108,7 +108,7 @@
+ #define I40E_VF_ARQLEN_ARQCRIT_SHIFT 30
+ #define I40E_VF_ARQLEN_ARQCRIT_MASK I40E_MASK(0x1, I40E_VF_ARQLEN_ARQCRIT_SHIFT)
+ #define I40E_VF_ARQLEN_ARQENABLE_SHIFT 31
+-#define I40E_VF_ARQLEN_ARQENABLE_MASK I40E_MASK(0x1, I40E_VF_ARQLEN_ARQENABLE_SHIFT)
++#define I40E_VF_ARQLEN_ARQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ARQLEN_ARQENABLE_SHIFT)
+ #define I40E_VF_ARQT(_VF) (0x00082C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+ #define I40E_VF_ARQT_MAX_INDEX 127
+ #define I40E_VF_ARQT_ARQT_SHIFT 0
+@@ -136,7 +136,7 @@
+ #define I40E_VF_ATQLEN_ATQCRIT_SHIFT 30
+ #define I40E_VF_ATQLEN_ATQCRIT_MASK I40E_MASK(0x1, I40E_VF_ATQLEN_ATQCRIT_SHIFT)
+ #define I40E_VF_ATQLEN_ATQENABLE_SHIFT 31
+-#define I40E_VF_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1, I40E_VF_ATQLEN_ATQENABLE_SHIFT)
++#define I40E_VF_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ATQLEN_ATQENABLE_SHIFT)
+ #define I40E_VF_ATQT(_VF) (0x00082800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+ #define I40E_VF_ATQT_MAX_INDEX 127
+ #define I40E_VF_ATQT_ATQT_SHIFT 0
+@@ -259,7 +259,7 @@
+ #define I40E_PRTDCB_RETSTCC_UPINTC_MODE_SHIFT 30
+ #define I40E_PRTDCB_RETSTCC_UPINTC_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_RETSTCC_UPINTC_MODE_SHIFT)
+ #define I40E_PRTDCB_RETSTCC_ETSTC_SHIFT 31
+-#define I40E_PRTDCB_RETSTCC_ETSTC_MASK I40E_MASK(0x1, I40E_PRTDCB_RETSTCC_ETSTC_SHIFT)
++#define I40E_PRTDCB_RETSTCC_ETSTC_MASK I40E_MASK(0x1u, I40E_PRTDCB_RETSTCC_ETSTC_SHIFT)
+ #define I40E_PRTDCB_RPPMC 0x001223A0 /* Reset: CORER */
+ #define I40E_PRTDCB_RPPMC_LANRPPM_SHIFT 0
+ #define I40E_PRTDCB_RPPMC_LANRPPM_MASK I40E_MASK(0xFF, I40E_PRTDCB_RPPMC_LANRPPM_SHIFT)
+@@ -503,7 +503,7 @@
+ #define I40E_GLGEN_MSCA_MDICMD_SHIFT 30
+ #define I40E_GLGEN_MSCA_MDICMD_MASK I40E_MASK(0x1, I40E_GLGEN_MSCA_MDICMD_SHIFT)
+ #define I40E_GLGEN_MSCA_MDIINPROGEN_SHIFT 31
+-#define I40E_GLGEN_MSCA_MDIINPROGEN_MASK I40E_MASK(0x1, I40E_GLGEN_MSCA_MDIINPROGEN_SHIFT)
++#define I40E_GLGEN_MSCA_MDIINPROGEN_MASK I40E_MASK(0x1u, I40E_GLGEN_MSCA_MDIINPROGEN_SHIFT)
+ #define I40E_GLGEN_MSRWD(_i) (0x0008819C + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+ #define I40E_GLGEN_MSRWD_MAX_INDEX 3
+ #define I40E_GLGEN_MSRWD_MDIWRDATA_SHIFT 0
+@@ -1242,14 +1242,14 @@
+ #define I40E_GLLAN_TXPRE_QDIS_SET_QDIS_SHIFT 30
+ #define I40E_GLLAN_TXPRE_QDIS_SET_QDIS_MASK I40E_MASK(0x1, I40E_GLLAN_TXPRE_QDIS_SET_QDIS_SHIFT)
+ #define I40E_GLLAN_TXPRE_QDIS_CLEAR_QDIS_SHIFT 31
+-#define I40E_GLLAN_TXPRE_QDIS_CLEAR_QDIS_MASK I40E_MASK(0x1, I40E_GLLAN_TXPRE_QDIS_CLEAR_QDIS_SHIFT)
++#define I40E_GLLAN_TXPRE_QDIS_CLEAR_QDIS_MASK I40E_MASK(0x1u, I40E_GLLAN_TXPRE_QDIS_CLEAR_QDIS_SHIFT)
+ #define I40E_PFLAN_QALLOC 0x001C0400 /* Reset: CORER */
+ #define I40E_PFLAN_QALLOC_FIRSTQ_SHIFT 0
+ #define I40E_PFLAN_QALLOC_FIRSTQ_MASK I40E_MASK(0x7FF, I40E_PFLAN_QALLOC_FIRSTQ_SHIFT)
+ #define I40E_PFLAN_QALLOC_LASTQ_SHIFT 16
+ #define I40E_PFLAN_QALLOC_LASTQ_MASK I40E_MASK(0x7FF, I40E_PFLAN_QALLOC_LASTQ_SHIFT)
+ #define I40E_PFLAN_QALLOC_VALID_SHIFT 31
+-#define I40E_PFLAN_QALLOC_VALID_MASK I40E_MASK(0x1, I40E_PFLAN_QALLOC_VALID_SHIFT)
++#define I40E_PFLAN_QALLOC_VALID_MASK I40E_MASK(0x1u, I40E_PFLAN_QALLOC_VALID_SHIFT)
+ #define I40E_QRX_ENA(_Q) (0x00120000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: PFR */
+ #define I40E_QRX_ENA_MAX_INDEX 1535
+ #define I40E_QRX_ENA_QENA_REQ_SHIFT 0
+@@ -1658,7 +1658,7 @@
+ #define I40E_GLNVM_SRCTL_START_SHIFT 30
+ #define I40E_GLNVM_SRCTL_START_MASK I40E_MASK(0x1, I40E_GLNVM_SRCTL_START_SHIFT)
+ #define I40E_GLNVM_SRCTL_DONE_SHIFT 31
+-#define I40E_GLNVM_SRCTL_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_SRCTL_DONE_SHIFT)
++#define I40E_GLNVM_SRCTL_DONE_MASK I40E_MASK(0x1u, I40E_GLNVM_SRCTL_DONE_SHIFT)
+ #define I40E_GLNVM_SRDATA 0x000B6114 /* Reset: POR */
+ #define I40E_GLNVM_SRDATA_WRDATA_SHIFT 0
+ #define I40E_GLNVM_SRDATA_WRDATA_MASK I40E_MASK(0xFFFF, I40E_GLNVM_SRDATA_WRDATA_SHIFT)
+@@ -3025,7 +3025,7 @@
+ #define I40E_PF_VT_PFALLOC_LASTVF_SHIFT 8
+ #define I40E_PF_VT_PFALLOC_LASTVF_MASK I40E_MASK(0xFF, I40E_PF_VT_PFALLOC_LASTVF_SHIFT)
+ #define I40E_PF_VT_PFALLOC_VALID_SHIFT 31
+-#define I40E_PF_VT_PFALLOC_VALID_MASK I40E_MASK(0x1, I40E_PF_VT_PFALLOC_VALID_SHIFT)
++#define I40E_PF_VT_PFALLOC_VALID_MASK I40E_MASK(0x1u, I40E_PF_VT_PFALLOC_VALID_SHIFT)
+ #define I40E_VP_MDET_RX(_VF) (0x0012A000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+ #define I40E_VP_MDET_RX_MAX_INDEX 127
+ #define I40E_VP_MDET_RX_VALID_SHIFT 0
+@@ -3161,7 +3161,7 @@
+ #define I40E_VF_ARQLEN1_ARQCRIT_SHIFT 30
+ #define I40E_VF_ARQLEN1_ARQCRIT_MASK I40E_MASK(0x1, I40E_VF_ARQLEN1_ARQCRIT_SHIFT)
+ #define I40E_VF_ARQLEN1_ARQENABLE_SHIFT 31
+-#define I40E_VF_ARQLEN1_ARQENABLE_MASK I40E_MASK(0x1, I40E_VF_ARQLEN1_ARQENABLE_SHIFT)
++#define I40E_VF_ARQLEN1_ARQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ARQLEN1_ARQENABLE_SHIFT)
+ #define I40E_VF_ARQT1 0x00007000 /* Reset: EMPR */
+ #define I40E_VF_ARQT1_ARQT_SHIFT 0
+ #define I40E_VF_ARQT1_ARQT_MASK I40E_MASK(0x3FF, I40E_VF_ARQT1_ARQT_SHIFT)
+@@ -3184,7 +3184,7 @@
+ #define I40E_VF_ATQLEN1_ATQCRIT_SHIFT 30
+ #define I40E_VF_ATQLEN1_ATQCRIT_MASK I40E_MASK(0x1, I40E_VF_ATQLEN1_ATQCRIT_SHIFT)
+ #define I40E_VF_ATQLEN1_ATQENABLE_SHIFT 31
+-#define I40E_VF_ATQLEN1_ATQENABLE_MASK I40E_MASK(0x1, I40E_VF_ATQLEN1_ATQENABLE_SHIFT)
++#define I40E_VF_ATQLEN1_ATQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ATQLEN1_ATQENABLE_SHIFT)
+ #define I40E_VF_ATQT1 0x00008400 /* Reset: EMPR */
+ #define I40E_VF_ATQT1_ATQT_SHIFT 0
+ #define I40E_VF_ATQT1_ATQT_MASK I40E_MASK(0x3FF, I40E_VF_ATQT1_ATQT_SHIFT)
 -- 
-2.20.1
+2.21.0
 
 _______________________________________________
 Intel-wired-lan mailing list
