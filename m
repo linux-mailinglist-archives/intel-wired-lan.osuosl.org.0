@@ -1,78 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5491671A55
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 660C371A56
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 16:28:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CBE2785DF5;
-	Tue, 23 Jul 2019 14:28:19 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fSHf8vblWtdG; Tue, 23 Jul 2019 14:28:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D8EF883E0F;
-	Tue, 23 Jul 2019 14:28:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4722A1BF2B5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 14:15:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3CEE9844B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 14:15:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0C3B98516A;
+	Tue, 23 Jul 2019 14:28:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ldO5rqMXCDml; Tue, 23 Jul 2019 14:28:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2CE7D84E34;
+	Tue, 23 Jul 2019 14:28:19 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 77A1F1BF2B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 14:15:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6D98286F8D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 14:15:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LqvfsHidDcCl for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jul 2019 14:15:21 +0000 (UTC)
+ with ESMTP id 4iNjW8OwLZL1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jul 2019 14:15:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
- [209.85.215.193])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 883E6836CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 14:15:21 +0000 (UTC)
-Received: by mail-pg1-f193.google.com with SMTP id n9so13285087pgc.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 07:15:21 -0700 (PDT)
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D743786F74
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 14:15:38 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id g2so19228880pfq.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 07:15:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=0BVMTUlp2bfNRSz5dz/R36KBXDX+K7L4DCHaXHFSPt8=;
- b=rT8A+1VGxtNVUW8o8mxCW/NcaATjGkEd9EatcSBS5FLLGzx+Qz+YiTn9i2sFqD0/Qd
- BzLZVW3Qg+WCegTSu9Yt9i3UOJlHSP06RinE5r1jIYZX0c+6cuuajA40G+2geW54IL9t
- j9/ZPdwL1i4lND6Spz01YfoiAJxTU7eQB0UdtrgNPMv9L2dj4eJfn50gK2JmHruLQXPc
- 4Su2iSG0w+6RJPNzuzEesd5TATN+zbo7iuTbExnfpfZoBS/jKCi8RMHAZfedni4mr7uz
- sWMBRJ4ZswBMrP2DCneVyhcbDHQJey8wkhWefM5+T6cLzyzOIxl9Z/FlVxf9F2c2FGvo
- JZ+Q==
+ bh=t8/tYNsVxDLiBnfPm14iuWNmhM56kmPj2n/HRk6yks8=;
+ b=N1YENDNLsN8BAjvWh4jHBgqIidbRRnVoIi6SYOXw+vTl2GHO2Ocurbufia/6kbMdlP
+ xhKzKjfaAUuslQdmPNX+0QwHiFzyggi3HQuAwzL0eNUcKj8tIJpjNs3CcNorPsp8uLOX
+ MpBJsmTFo7gTDEmZA5Pt/1FFG4KAelDUyTxtl5RTdOt0jEoRgosuNx8TlpGU+6Pvpw9q
+ YWGX16b7eMyOHOTdvsHZ2bS8yOvsTwUhe1EQhEYUvGPBFL7q/8dz6Hp+rKSFYDR3ObPT
+ ouvLHqXEgInfSVwt3abO9YgrWR/db0rpjlKhvICNbYt6exk5r3UrAWdipm5l38s0bYl7
+ ANVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=0BVMTUlp2bfNRSz5dz/R36KBXDX+K7L4DCHaXHFSPt8=;
- b=hvR6k1yEOoR3Kq0yOsv6Qju0pnw0WRfqgqAaA76UG118PvfA8Sl0if5eUwJwEZleYr
- Qx5zqXdu/gj00vMAbn8Q9dH4nVauk6uU+PYyPaeXdIlGZ0TkqwOOfur7iU/T8Y9Uhp1H
- INmeb0rNrWa0MDmntqvgtSe9hBevhK5wi92TxIS6GVKl2n5OXGVGO8SlGVF4s05vvrqw
- cdEurFgr9GXcyhUBhMRG03CJv54ayRHL4VelrrOyVA00x6VI4SfZRcADede1uQENBFen
- 9m/Qu7ePGWQcltsDaIF5PfUD3CV1OUsz7NbTvxS1Eh3R9UEenBT/tEZCwQ0vKJfVCqdb
- sStg==
-X-Gm-Message-State: APjAAAWE2ChsJ/Eo4Lv6NSqrZY/fJU+sI0sJ8zwglG79Jb5iX0fhVDfD
- L8R170PML2nnBTE2RvbVyKAzpfTTnRw=
-X-Google-Smtp-Source: APXvYqzC27mCAEmKlo9WKJde4cIOGMtKbosyOsAzkOawPbrvyYJwreSVs7qNA6HSigDFyqSXBiw3Pw==
-X-Received: by 2002:a17:90a:214e:: with SMTP id
- a72mr41119575pje.0.1563891321169; 
- Tue, 23 Jul 2019 07:15:21 -0700 (PDT)
+ bh=t8/tYNsVxDLiBnfPm14iuWNmhM56kmPj2n/HRk6yks8=;
+ b=bLw0AYhwieOtNHYkR+8u89eyTd09LVvTMOyMoBpCf44YZw+DVyeISaQZHJtTzVbMR/
+ ucoR+ysDSbR93sq1otGzVQIvkkI+bQvSKj+gfHC+624oMQ5HmyQf9WzViutP7Hg4CQr/
+ wHwLzlnYeyvYflDRWfLmA0wISuttJHtPN6jE0kn+CdLj2ocXiJOMhZrxlybGIEbGHarD
+ GSaqEpO8c1b0MpKljxhurK90YBWJ3mim0tg/OUH6I9miZViqMdy36+osk5SbV7ZW0ulJ
+ q79DpInxS3XBlnpjoOw4JgZyKWu1Htieq87AKmLNihHluOeUL/A3eW4djaFvYKldX6l1
+ NQXQ==
+X-Gm-Message-State: APjAAAXCqzJc28mfzo19voA5M+X8Rm4uI1aBn1MBbqcqgjE2Fq+n55O4
+ PfcD/Igfv5202z5lflVcr9c=
+X-Google-Smtp-Source: APXvYqyjee5FJxFzNGCVsaawUAzdmeQOTwBPSjj0kU5hpEjsEX3E5SwZSYWIU/L2KabkoYR+fyfJbw==
+X-Received: by 2002:a63:e54f:: with SMTP id z15mr76552521pgj.4.1563891338414; 
+ Tue, 23 Jul 2019 07:15:38 -0700 (PDT)
 Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
- by smtp.gmail.com with ESMTPSA id q63sm56749233pfb.81.2019.07.23.07.15.18
+ by smtp.gmail.com with ESMTPSA id bg3sm39370448pjb.9.2019.07.23.07.15.36
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 23 Jul 2019 07:15:20 -0700 (PDT)
+ Tue, 23 Jul 2019 07:15:37 -0700 (PDT)
 From: Chuhong Yuan <hslester96@gmail.com>
 To: 
-Date: Tue, 23 Jul 2019 22:15:13 +0800
-Message-Id: <20190723141513.5749-1-hslester96@gmail.com>
+Date: Tue, 23 Jul 2019 22:15:33 +0800
+Message-Id: <20190723141533.5803-1-hslester96@gmail.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 23 Jul 2019 14:28:17 +0000
-Subject: [Intel-wired-lan] [PATCH] e1000e: Use dev_get_drvdata where possible
+Subject: [Intel-wired-lan] [PATCH] fm10k: Use dev_get_drvdata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,41 +97,31 @@ use dev_get_drvdata to make code simpler.
 
 Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index e4baa13b3cda..fa2755849c54 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6297,7 +6297,7 @@ static void e1000e_flush_lpic(struct pci_dev *pdev)
- 
- static int e1000e_pm_freeze(struct device *dev)
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+index e49fb51d3613..7bfc8a5b6f55 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+@@ -2352,7 +2352,7 @@ static int fm10k_handle_resume(struct fm10k_intfc *interface)
+  **/
+ static int __maybe_unused fm10k_resume(struct device *dev)
  {
--	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
-+	struct net_device *netdev = dev_get_drvdata(dev);
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
+-	struct fm10k_intfc *interface = pci_get_drvdata(to_pci_dev(dev));
++	struct fm10k_intfc *interface = dev_get_drvdata(dev);
+ 	struct net_device *netdev = interface->netdev;
+ 	struct fm10k_hw *hw = &interface->hw;
+ 	int err;
+@@ -2379,7 +2379,7 @@ static int __maybe_unused fm10k_resume(struct device *dev)
+  **/
+ static int __maybe_unused fm10k_suspend(struct device *dev)
+ {
+-	struct fm10k_intfc *interface = pci_get_drvdata(to_pci_dev(dev));
++	struct fm10k_intfc *interface = dev_get_drvdata(dev);
+ 	struct net_device *netdev = interface->netdev;
  
  	netif_device_detach(netdev);
-@@ -6630,7 +6630,7 @@ static int __e1000_resume(struct pci_dev *pdev)
- #ifdef CONFIG_PM_SLEEP
- static int e1000e_pm_thaw(struct device *dev)
- {
--	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
-+	struct net_device *netdev = dev_get_drvdata(dev);
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
- 
- 	e1000e_set_interrupt_capability(adapter);
-@@ -6679,8 +6679,7 @@ static int e1000e_pm_resume(struct device *dev)
- 
- static int e1000e_pm_runtime_idle(struct device *dev)
- {
--	struct pci_dev *pdev = to_pci_dev(dev);
--	struct net_device *netdev = pci_get_drvdata(pdev);
-+	struct net_device *netdev = dev_get_drvdata(dev);
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
- 	u16 eee_lp;
- 
 -- 
 2.20.1
 
