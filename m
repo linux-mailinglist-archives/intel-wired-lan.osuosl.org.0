@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F25C471E20
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 495D971E1E
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:56:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 93CEB85BB5;
-	Tue, 23 Jul 2019 17:56:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E221884D9F;
+	Tue, 23 Jul 2019 17:56:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qSdIgJhTob37; Tue, 23 Jul 2019 17:56:21 +0000 (UTC)
+	with ESMTP id nCSROwN0IR0M; Tue, 23 Jul 2019 17:56:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C436185B73;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26AED84D49;
 	Tue, 23 Jul 2019 17:56:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4939B1BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 062581BF95A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 408F381FAA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 030BA81E24
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kcwmBJXUtmXL for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id fT6wKtfPBERh for <intel-wired-lan@lists.osuosl.org>;
  Tue, 23 Jul 2019 17:56:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D96E084D49
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 184D681B89
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:16 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  23 Jul 2019 10:56:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="180816348"
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="180816349"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga002.jf.intel.com with ESMTP; 23 Jul 2019 10:56:13 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 02:27:55 -0700
-Message-Id: <20190723092759.3614-8-anthony.l.nguyen@intel.com>
+Date: Tue, 23 Jul 2019 02:27:56 -0700
+Message-Id: <20190723092759.3614-9-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190723092759.3614-1-anthony.l.nguyen@intel.com>
 References: <20190723092759.3614-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S24 08/12] ice: Rename ethtool private
- flag for lldp
+Subject: [Intel-wired-lan] [PATCH S24 09/12] ice: silence some bogus error
+ messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,100 +67,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dave Ertman <david.m.ertman@intel.com>
+From: Mitch Williams <mitch.a.williams@intel.com>
 
-The current flag name of "enable-fw-lldp" is a bit cumbersome.
+In some circumstances, VF devices can be deactivated while a message is
+in-flight. In that case, a series of  scary error message will be
+printed in the log. Since these are actually harmless, check for this
+case and suppress them. No harm, no foul.
 
-Change priv-flag name to "fw-lldp-agent" with a value of on or
-off.  This is more straight-forward in meaning.
-
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h         | 2 +-
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 4 ++--
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 6 +++---
- drivers/net/ethernet/intel/ice/ice_lib.c     | 4 ++--
- 4 files changed, 8 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h  | 1 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 6 +++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 8398dd45a8a2..0e233b7c40bc 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -331,7 +331,7 @@ enum ice_pf_flags {
- 	ICE_FLAG_DCB_ENA,
- 	ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA,
- 	ICE_FLAG_NO_MEDIA,
--	ICE_FLAG_ENABLE_FW_LLDP,
-+	ICE_FLAG_FW_LLDP_AGENT,
- 	ICE_FLAG_ETHTOOL_CTXT,		/* set when ethtool holds RTNL lock */
- 	ICE_PF_FLAGS_NBITS		/* must be last */
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 765e3c2ed045..01ef2f290c5e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1610,6 +1610,7 @@ enum ice_aq_err {
+ 	ICE_AQ_RC_EBUSY		= 12, /* Device or resource busy */
+ 	ICE_AQ_RC_EEXIST	= 13, /* Object already exists */
+ 	ICE_AQ_RC_ENOSPC	= 16, /* No space left or allocation failure */
++	ICE_AQ_RC_ENOSYS        = 17, /* Function not implemented */
  };
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 2a868eea2a37..21405958aa63 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -462,7 +462,7 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
+ 
+ /* Admin Queue command opcodes */
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 6bcb16bd5c7b..20def6d0f087 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1513,10 +1513,10 @@ ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
+ 
+ 	aq_ret = ice_aq_send_msg_to_vf(&pf->hw, vf->vf_id, v_opcode, v_retval,
+ 				       msg, msglen, NULL);
+-	if (aq_ret) {
++	if (aq_ret && pf->hw.mailboxq.sq_last_status != ICE_AQ_RC_ENOSYS) {
  		dev_info(&pf->pdev->dev,
- 			 "FW LLDP is disabled, DCBx/LLDP in SW mode.\n");
- 		port_info->is_sw_lldp = true;
--		clear_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags);
-+		clear_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags);
- 		err = ice_dcb_sw_dflt_cfg(pf, locked);
- 		if (err) {
- 			dev_err(&pf->pdev->dev,
-@@ -478,7 +478,7 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 	}
- 
- 	port_info->is_sw_lldp = false;
--	set_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags);
-+	set_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags);
- 
- 	/* DCBX in FW and LLDP enabled in FW */
- 	pf->dcbx_cap = DCB_CAP_DCBX_LLD_MANAGED | DCB_CAP_DCBX_VER_IEEE;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 35aa4a3f59df..b60bcbcf9bf2 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -155,7 +155,7 @@ struct ice_priv_flag {
- 
- static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
- 	ICE_PRIV_FLAG("link-down-on-close", ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA),
--	ICE_PRIV_FLAG("enable-fw-lldp", ICE_FLAG_ENABLE_FW_LLDP),
-+	ICE_PRIV_FLAG("fw-lldp-agent", ICE_FLAG_FW_LLDP_AGENT),
- };
- 
- #define ICE_PRIV_FLAG_ARRAY_SIZE	ARRAY_SIZE(ice_gstrings_priv_flags)
-@@ -1201,8 +1201,8 @@ static int ice_set_priv_flags(struct net_device *netdev, u32 flags)
- 
- 	bitmap_xor(change_flags, pf->flags, orig_flags, ICE_PF_FLAGS_NBITS);
- 
--	if (test_bit(ICE_FLAG_ENABLE_FW_LLDP, change_flags)) {
--		if (!test_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags)) {
-+	if (test_bit(ICE_FLAG_FW_LLDP_AGENT, change_flags)) {
-+		if (!test_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags)) {
- 			enum ice_status status;
- 
- 			/* Disable FW LLDP engine */
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 42645c074691..aff65333c302 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -2561,7 +2561,7 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
- 		ice_cfg_sw_lldp(vsi, true, true);
- 
- 		/* Rx LLDP packets */
--		if (!test_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags))
-+		if (!test_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags))
- 			ice_cfg_sw_lldp(vsi, false, true);
- 	}
- 
-@@ -2908,7 +2908,7 @@ int ice_vsi_release(struct ice_vsi *vsi)
- 		/* The Rx rule will only exist to remove if the LLDP FW
- 		 * engine is currently stopped
- 		 */
--		if (!test_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags))
-+		if (!test_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags))
- 			ice_cfg_sw_lldp(vsi, false, false);
+-			 "Unable to send the message to VF %d aq_err %d\n",
+-			 vf->vf_id, pf->hw.mailboxq.sq_last_status);
++			 "Unable to send the message to VF %d ret %d aq_err %d\n",
++			 vf->vf_id, aq_ret, pf->hw.mailboxq.sq_last_status);
+ 		return -EIO;
  	}
  
 -- 
