@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0278671F1C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 20:22:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6D03B84E10;
-	Tue, 23 Jul 2019 18:22:50 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id keFjHw-A6jhR; Tue, 23 Jul 2019 18:22:47 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F420384F57;
-	Tue, 23 Jul 2019 18:22:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C7F561BF2A5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A350C71F18
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 20:22:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C551D857D8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3106E85B81;
+	Tue, 23 Jul 2019 18:22:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Arv6o2DXJDTA; Tue, 23 Jul 2019 18:22:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 541DD85B73;
+	Tue, 23 Jul 2019 18:22:47 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 503AF1BF97A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3F21C8475A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:43 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jyl8x9dSP55E for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jul 2019 18:22:39 +0000 (UTC)
+ with ESMTP id O+Ip7cMgTwKn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jul 2019 18:22:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 918B885ABB
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DC3C48472A
  for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:22:39 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,20 +37,20 @@ Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  23 Jul 2019 11:22:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="172037677"
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="172037678"
 Received: from alicemic-1.jf.intel.com ([10.166.17.62])
  by orsmga003.jf.intel.com with ESMTP; 23 Jul 2019 11:22:35 -0700
 From: Alice Michael <alice.michael@intel.com>
 To: alice.michael@intel.com,
 	intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 06:01:41 -0400
-Message-Id: <20190723100144.57435-9-alice.michael@intel.com>
+Date: Tue, 23 Jul 2019 06:01:42 -0400
+Message-Id: <20190723100144.57435-10-alice.michael@intel.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190723100144.57435-1-alice.michael@intel.com>
 References: <20190723100144.57435-1-alice.michael@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next PATCH S8 09/12] i40e: make
- i40e_set_mac_type() public
+Subject: [Intel-wired-lan] [next PATCH S8 10/12] i40e: allow reset in
+ recovery mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,42 +71,102 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 
-Make i40e_set_mac_type() public. i40e driver requires i40e_set_mac_type()
-to be public. It is required for recovery mode handling. Without this patch
-recovery mode could not be detected in i40e_probe().
+Driver waits after issuing a reset. When a reset takes too long a driver
+gives up. Implemented by invoking PF reset in a loop. After defined
+number of unsuccessful PF reset trials it returns error.
+Without this patch PF reset fails when NIC is in recovery mode.
 
 Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_common.c    | 2 +-
- drivers/net/ethernet/intel/i40e/i40e_prototype.h | 2 ++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 67 ++++++++++++++++++---
+ 1 file changed, 60 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index 7af1b7477140..de996a80013e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -13,7 +13,7 @@
-  * This function sets the mac type of the adapter based on the
-  * vendor ID and device ID stored in the hw structure.
-  **/
--static i40e_status i40e_set_mac_type(struct i40e_hw *hw)
-+i40e_status i40e_set_mac_type(struct i40e_hw *hw)
- {
- 	i40e_status status = 0;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 8d6b9515b595..fdf43d87e983 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -14564,6 +14564,51 @@ static bool i40e_check_recovery_mode(struct i40e_pf *pf)
+ 	return false;
+ }
  
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-index eac88bcc6c06..9c810d54df1c 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-@@ -326,6 +326,8 @@ void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode,
- void i40e_nvmupd_clear_wait_state(struct i40e_hw *hw);
- void i40e_set_pci_config_data(struct i40e_hw *hw, u16 link_status);
- 
-+i40e_status i40e_set_mac_type(struct i40e_hw *hw);
++/**
++ * i40e_pf_loop_reset - perform reset in a loop.
++ * @pf: board private structure
++ *
++ * This function is useful when a NIC is about to enter recovery mode.
++ * When a NIC's internal data structures are corrupted the NIC's
++ * firmware is going to enter recovery mode.
++ * Right after a POR it takes about 7 minutes for firmware to enter
++ * recovery mode. Until that time a NIC is in some kind of intermediate
++ * state. After that time period the NIC almost surely enters
++ * recovery mode. The only way for a driver to detect intermediate
++ * state is to issue a series of pf-resets and check a return value.
++ * If a PF reset returns success then the firmware could be in recovery
++ * mode so the caller of this code needs to check for recovery mode
++ * if this function returns success. There is a little chance that
++ * firmware will hang in intermediate state forever.
++ * Since waiting 7 minutes is quite a lot of time this function waits
++ * 10 seconds and then gives up by returning an error.
++ *
++ * Return 0 on success, negative on failure.
++ **/
++static i40e_status i40e_pf_loop_reset(struct i40e_pf *pf)
++{
++	const unsigned short MAX_CNT = 1000;
++	const unsigned short MSECS = 10;
++	struct i40e_hw *hw = &pf->hw;
++	i40e_status ret;
++	int cnt;
 +
- extern struct i40e_rx_ptype_decoded i40e_ptype_lookup[];
++	for (cnt = 0; cnt < MAX_CNT; ++cnt) {
++		ret = i40e_pf_reset(hw);
++		if (!ret)
++			break;
++		msleep(MSECS);
++	}
++
++	if (cnt == MAX_CNT) {
++		dev_info(&pf->pdev->dev, "PF reset failed: %d\n", ret);
++		return ret;
++	}
++
++	pf->pfr_count++;
++	return ret;
++}
++
+ /**
+  * i40e_init_recovery_mode - initialize subsystems needed in recovery mode
+  * @pf: board private structure
+@@ -14792,14 +14837,22 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  
- static inline struct i40e_rx_ptype_decoded decode_rx_desc_ptype(u8 ptype)
+ 	/* Reset here to make sure all is clean and to define PF 'n' */
+ 	i40e_clear_hw(hw);
+-	if (!i40e_check_recovery_mode(pf)) {
+-		err = i40e_pf_reset(hw);
+-		if (err) {
+-			dev_info(&pdev->dev, "Initial pf_reset failed: %d\n", err);
+-			goto err_pf_reset;
+-		}
+-		pf->pfr_count++;
++
++	err = i40e_set_mac_type(hw);
++	if (err) {
++		dev_warn(&pdev->dev, "unidentified MAC or BLANK NVM: %d\n",
++			 err);
++		goto err_pf_reset;
+ 	}
++
++	err = i40e_pf_loop_reset(pf);
++	if (err) {
++		dev_info(&pdev->dev, "Initial pf_reset failed: %d\n", err);
++		goto err_pf_reset;
++	}
++
++	i40e_check_recovery_mode(pf);
++
+ 	hw->aq.num_arq_entries = I40E_AQ_LEN;
+ 	hw->aq.num_asq_entries = I40E_AQ_LEN;
+ 	hw->aq.arq_buf_size = I40E_MAX_AQ_BUF_SIZE;
 -- 
 2.21.0
 
