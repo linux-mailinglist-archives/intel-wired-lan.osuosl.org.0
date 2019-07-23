@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 702E471F3B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 20:24:47 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DCD0871F34
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 20:24:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A55A85B18;
-	Tue, 23 Jul 2019 18:24:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 655F52035E;
+	Tue, 23 Jul 2019 18:24:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pttLNRM6BPK7; Tue, 23 Jul 2019 18:24:45 +0000 (UTC)
+	with ESMTP id g9XWCpy00xFv; Tue, 23 Jul 2019 18:24:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F2C33857D8;
-	Tue, 23 Jul 2019 18:24:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1128A20449;
+	Tue, 23 Jul 2019 18:24:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B74081BF2A5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:24:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6DDD91BF2A5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:24:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B43E8832A3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:24:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6A2AA83F31
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:24:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gG0IQXiH5HwI for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 7n0R_NJXQzxo for <intel-wired-lan@lists.osuosl.org>;
  Tue, 23 Jul 2019 18:24:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1D5918249B
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7FA1A832C6
  for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 18:24:36 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,20 +37,20 @@ Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  23 Jul 2019 11:24:35 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="253311794"
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="253311797"
 Received: from alicemic-1.jf.intel.com ([10.166.17.62])
  by orsmga001.jf.intel.com with ESMTP; 23 Jul 2019 11:24:35 -0700
 From: Alice Michael <alice.michael@intel.com>
 To: alice.michael@intel.com,
 	intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 06:03:41 -0400
-Message-Id: <20190723100345.57522-8-alice.michael@intel.com>
+Date: Tue, 23 Jul 2019 06:03:42 -0400
+Message-Id: <20190723100345.57522-9-alice.michael@intel.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190723100345.57522-1-alice.michael@intel.com>
 References: <20190723100345.57522-1-alice.michael@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next PATCH S8 08/12] i40e: Remove function
- i40e_update_dcb_config()
+Subject: [Intel-wired-lan] [next PATCH S8 09/12] i40e: make
+ i40e_set_mac_type() public
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,87 +63,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Grzegorz Siwik <grzegorz.siwik@intel.com>
+Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Grzegorz Siwik <grzegorz.siwik@intel.com>
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 
-This patch removes function i40e_update_dcb_config(). Instead of
-i40e_update_dcb_config() we use i40e_init_dcb(), which implements the
-correct nvm read.
+Make i40e_set_mac_type() public. i40e driver requires i40e_set_mac_type()
+to be public. It is required for recovery mode handling. Without this patch
+recovery mode could not be detected in i40e_probe().
 
-Signed-off-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 46 +--------------------
- 1 file changed, 1 insertion(+), 45 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_common.c    | 2 +-
+ drivers/net/ethernet/intel/i40e/i40e_prototype.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 5c280c025085..8d6b9515b595 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -6419,50 +6419,6 @@ static int i40e_resume_port_tx(struct i40e_pf *pf)
- 	return ret;
- }
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+index 7af1b7477140..de996a80013e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_common.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+@@ -13,7 +13,7 @@
+  * This function sets the mac type of the adapter based on the
+  * vendor ID and device ID stored in the hw structure.
+  **/
+-static i40e_status i40e_set_mac_type(struct i40e_hw *hw)
++i40e_status i40e_set_mac_type(struct i40e_hw *hw)
+ {
+ 	i40e_status status = 0;
  
--/**
-- * i40e_update_dcb_config
-- * @hw: pointer to the HW struct
-- * @enable_mib_change: enable MIB change event
-- *
-- * Update DCB configuration from the firmware
-- **/
--static enum i40e_status_code
--i40e_update_dcb_config(struct i40e_hw *hw, bool enable_mib_change)
--{
--	struct i40e_lldp_variables lldp_cfg;
--	i40e_status ret;
--
--	if (!hw->func_caps.dcb)
--		return I40E_NOT_SUPPORTED;
--
--	/* Read LLDP NVM area */
--	ret = i40e_read_lldp_cfg(hw, &lldp_cfg);
--	if (ret)
--		return I40E_ERR_NOT_READY;
--
--	/* Get DCBX status */
--	ret = i40e_get_dcbx_status(hw, &hw->dcbx_status);
--	if (ret)
--		return ret;
--
--	/* Check the DCBX Status */
--	if (hw->dcbx_status == I40E_DCBX_STATUS_DONE ||
--	    hw->dcbx_status == I40E_DCBX_STATUS_IN_PROGRESS) {
--		/* Get current DCBX configuration */
--		ret = i40e_get_dcb_config(hw);
--		if (ret)
--			return ret;
--	} else if (hw->dcbx_status == I40E_DCBX_STATUS_DISABLED) {
--		return I40E_ERR_NOT_READY;
--	}
--
--	/* Configure the LLDP MIB change event */
--	if (enable_mib_change)
--		ret = i40e_aq_cfg_lldp_mib_change_event(hw, true, NULL);
--
--	return ret;
--}
--
- /**
-  * i40e_init_pf_dcb - Initialize DCB configuration
-  * @pf: PF being configured
-@@ -6485,7 +6441,7 @@ static int i40e_init_pf_dcb(struct i40e_pf *pf)
- 		goto out;
- 	}
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+index eac88bcc6c06..9c810d54df1c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+@@ -326,6 +326,8 @@ void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode,
+ void i40e_nvmupd_clear_wait_state(struct i40e_hw *hw);
+ void i40e_set_pci_config_data(struct i40e_hw *hw, u16 link_status);
  
--	err = i40e_update_dcb_config(hw, true);
-+	err = i40e_init_dcb(hw, true);
- 	if (!err) {
- 		/* Device/Function is not DCBX capable */
- 		if ((!hw->func_caps.dcb) ||
++i40e_status i40e_set_mac_type(struct i40e_hw *hw);
++
+ extern struct i40e_rx_ptype_decoded i40e_ptype_lookup[];
+ 
+ static inline struct i40e_rx_ptype_decoded decode_rx_desc_ptype(u8 ptype)
 -- 
 2.21.0
 
