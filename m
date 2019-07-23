@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9144171E22
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:56:26 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE08A71E19
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jul 2019 19:56:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 50A7120446;
-	Tue, 23 Jul 2019 17:56:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 52B4585ACD;
+	Tue, 23 Jul 2019 17:56:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BM9KeFskMg42; Tue, 23 Jul 2019 17:56:22 +0000 (UTC)
+	with ESMTP id PPJMb4y7xzOB; Tue, 23 Jul 2019 17:56:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CE07B204F2;
-	Tue, 23 Jul 2019 17:56:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1783D85B25;
+	Tue, 23 Jul 2019 17:56:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4216B1BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3F6A584CE1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AJvASqR9XJn1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 51F9681E24
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E5081BF97A
  for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 96EDA20133
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:15 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id m-3G55YhEq-c for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jul 2019 17:56:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id 87D4920360
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 17:56:14 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  23 Jul 2019 10:56:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="180816342"
+X-IronPort-AV: E=Sophos;i="5.64,299,1559545200"; d="scan'208";a="180816343"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga002.jf.intel.com with ESMTP; 23 Jul 2019 10:56:13 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jul 2019 02:27:49 -0700
-Message-Id: <20190723092759.3614-2-anthony.l.nguyen@intel.com>
+Date: Tue, 23 Jul 2019 02:27:50 -0700
+Message-Id: <20190723092759.3614-3-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190723092759.3614-1-anthony.l.nguyen@intel.com>
 References: <20190723092759.3614-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S24 02/12] ice: Account for all states of
- FW DCBx and LLDP
+Subject: [Intel-wired-lan] [PATCH S24 03/12] ice: Don't call
+ synchronize_irq() for VF's from the host
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,90 +67,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dave Ertman <david.m.ertman@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-Currently, only the DCBx status is taken into account to
-determine if FW LLDP is possible.  But there are NVM version
-coming out with DCBx enabled, and FW LLDP disabled.  This
-is causing errors where the driver sees that DCBx is not
-disabled, and then tries to register for LLDP MIB change
-events, and fails.
+Currently we will call synchronize_irq() from the host for VF's. This is
+not correct, so don't allow it.
 
-Change the logic to detect both DCBx and LLDP states in the
-FW engine.
-
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 34 +++++++-------------
- 1 file changed, 12 insertions(+), 22 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index d285aba3fea7..9ab9ec1ce19e 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -324,6 +324,11 @@ void ice_dcb_rebuild(struct ice_pf *pf)
- 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 6b5882c49004..42645c074691 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -2837,6 +2837,10 @@ void ice_vsi_dis_irq(struct ice_vsi *vsi)
  
- 	ice_init_dcb(&pf->hw);
-+	if (pf->hw.port_info->dcbx_status == ICE_DCBX_STATUS_DIS)
-+		pf->hw.port_info->is_sw_lldp = true;
-+	else
-+		pf->hw.port_info->is_sw_lldp = false;
+ 	ice_flush(hw);
+ 
++	/* don't call synchronize_irq() for VF's from the host */
++	if (vsi->type == ICE_VSI_VF)
++		return;
 +
- 	if (ice_dcb_need_recfg(pf, prev_cfg, local_dcbx_cfg)) {
- 		/* difference in cfg detected - disable DCB till next MIB */
- 		dev_err(&pf->pdev->dev, "Set local MIB not accurate\n");
-@@ -445,35 +450,17 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 	struct device *dev = &pf->pdev->dev;
- 	struct ice_port_info *port_info;
- 	struct ice_hw *hw = &pf->hw;
--	int sw_default = 0;
- 	int err;
- 
- 	port_info = hw->port_info;
- 
- 	err = ice_init_dcb(hw);
- 	if (err) {
--		/* FW LLDP is not active, default to SW DCBX/LLDP */
--		dev_info(&pf->pdev->dev, "FW LLDP is not active\n");
--		hw->port_info->dcbx_status = ICE_DCBX_STATUS_NOT_STARTED;
--		hw->port_info->is_sw_lldp = true;
--	}
--
--	if (port_info->dcbx_status == ICE_DCBX_STATUS_DIS)
--		dev_info(&pf->pdev->dev, "DCBX disabled\n");
--
--	/* LLDP disabled in FW */
--	if (port_info->is_sw_lldp) {
--		sw_default = 1;
--		dev_info(&pf->pdev->dev, "DCBx/LLDP in SW mode.\n");
-+		/* FW LLDP is disabled, activate SW DCBX/LLDP mode */
-+		dev_info(&pf->pdev->dev,
-+			 "FW LLDP is disabled, DCBx/LLDP in SW mode.\n");
-+		port_info->is_sw_lldp = true;
- 		clear_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags);
--	} else {
--		set_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags);
--	}
--
--	if (port_info->dcbx_status == ICE_DCBX_STATUS_NOT_STARTED)
--		dev_info(&pf->pdev->dev, "DCBX not started\n");
--
--	if (sw_default) {
- 		err = ice_dcb_sw_dflt_cfg(pf, locked);
- 		if (err) {
- 			dev_err(&pf->pdev->dev,
-@@ -488,6 +475,9 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 		return 0;
- 	}
- 
-+	port_info->is_sw_lldp = false;
-+	set_bit(ICE_FLAG_ENABLE_FW_LLDP, pf->flags);
-+
- 	/* DCBX in FW and LLDP enabled in FW */
- 	pf->dcbx_cap = DCB_CAP_DCBX_LLD_MANAGED | DCB_CAP_DCBX_VER_IEEE;
- 
+ 	ice_for_each_q_vector(vsi, i)
+ 		synchronize_irq(pf->msix_entries[i + base].vector);
+ }
 -- 
 2.20.1
 
