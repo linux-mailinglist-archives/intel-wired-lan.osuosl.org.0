@@ -2,55 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB9C3727EA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jul 2019 08:06:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F9E6727DB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jul 2019 08:06:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6254C86661;
-	Wed, 24 Jul 2019 06:06:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 34D6186133;
+	Wed, 24 Jul 2019 06:06:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id na9p4o1zUJWk; Wed, 24 Jul 2019 06:06:54 +0000 (UTC)
+	with ESMTP id XjzEbsoUZBTL; Wed, 24 Jul 2019 06:06:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 76ADB865A1;
-	Wed, 24 Jul 2019 06:06:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7C34F86566;
+	Wed, 24 Jul 2019 06:06:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 52C291BF5A9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:06:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AFDFB1BF5A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:06:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4F41920509
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:06:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8336986133
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:06:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xEOT-kiOvgQb for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jul 2019 06:06:50 +0000 (UTC)
+ with ESMTP id TeFnIvys9638 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jul 2019 06:06:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id C6CBA20025
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:06:50 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2019 23:06:50 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,300,1559545200"; d="scan'208";a="344997902"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 23 Jul 2019 23:06:48 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hqAQK-0000Ke-7T; Wed, 24 Jul 2019 14:06:48 +0800
-Date: Wed, 24 Jul 2019 14:05:53 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d37f541.7/z376mvOAxI+hKK%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-pl1-f194.google.com (mail-pl1-f194.google.com
+ [209.85.214.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E54EA8610F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:06:14 +0000 (UTC)
+Received: by mail-pl1-f194.google.com with SMTP id az7so21541928plb.5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 23:06:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=guFxv22S4JOArjEKN9Dxhy2TAljfranssf7R2KMuN5E=;
+ b=ZTKmSpvvsEXCKpAARDgWNlQPMnESR+iob7CQxD1+ohydGxdFzikNctwCkFA2oVR7tl
+ vhWkS87ZiFhQzjGAF6sIlX4Vvp74szDJbXg14WXjKIT8jdu5cXZaVfPFKD7KsG1jWtib
+ E+YPjwVfnEDnPfRFPQngmzIEIJgm/+2pJxRfNI6VCeGXZPnjVo1xozXyxqzC1gYeTviK
+ kRg1eKPKxK7VYfjBHtZIfyKWfQADzb2Uwn1esGUrWaBHyhLqehZ43IEW+ohqKhUegEcn
+ jklne6LVA08suiBLtsqrFvUCwV+Ox9XtdBwZd1E1/OQtdTqKfav+6pRBV59ECgmrXaYR
+ ctQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=guFxv22S4JOArjEKN9Dxhy2TAljfranssf7R2KMuN5E=;
+ b=l9851zJp5g0HQ3hgMm/ITaeYUOlBQcctrX5r9KsQeW9CohrEUGik8lgGvoBxh7X1Fi
+ vcWWNa2bsAI0JPIvWZwNphU8EGsjfdEBiP7/H71takiR3Pb1JWcnoInU4kOz6FC8eIeN
+ bCY1FMnntY4F4CDq9ME7LVvP5GnIrKE/XGVrbGks67Z5elgHrnGQSe2TVmVF9OJR1XSu
+ /k8fMIDtmQnsplCd5+rAETRkmR6/Ow+yubFpW5YY+07BA5UJ2bzBtdTy+QtSbkTQEnwh
+ pAykK+JRdck6oVKvxapLucceLlGEl9bpd+k5X/0m+ArWKCxAZjegZ5nPJipKqhTnVF3p
+ KiTQ==
+X-Gm-Message-State: APjAAAVb+0LPeTUoAGjX0M6zDmPR0oHqUCjl+JL9usD+Y79C7CHtpxLj
+ /YBcDoCfuwC2k9F/R33P7Lg=
+X-Google-Smtp-Source: APXvYqy/1q7UpsiiVNicCAmywrdgkmPJes/B8K5Uqe0sjcw3wKWzW8+klY0U35P3+v9l1Eh16zs62w==
+X-Received: by 2002:a17:902:110b:: with SMTP id
+ d11mr87862606pla.213.1563948374625; 
+ Tue, 23 Jul 2019 23:06:14 -0700 (PDT)
+Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
+ by smtp.gmail.com with ESMTPSA id a3sm46434953pfo.49.2019.07.23.23.06.12
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 23 Jul 2019 23:06:14 -0700 (PDT)
+From: Chuhong Yuan <hslester96@gmail.com>
+To: 
+Date: Wed, 24 Jul 2019 14:06:09 +0800
+Message-Id: <20190724060609.24116-1-hslester96@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD INCOMPLETE
- 7f06fcab9acc1efa3557cf3ec70e19c09d7b0d8c
+Subject: [Intel-wired-lan] [PATCH net-next v2 4/8] e1000e: Use
+ dev_get_drvdata where possible
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,139 +85,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Chuhong Yuan <hslester96@gmail.com>,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
-branch HEAD: 7f06fcab9acc1efa3557cf3ec70e19c09d7b0d8c  e1000e: disable force K1-off feature
+Instead of using to_pci_dev + pci_get_drvdata,
+use dev_get_drvdata to make code simpler.
 
-TIMEOUT after 724m
-
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 51
-
-alpha                            allmodconfig
-alpha                            allyesconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-m68k                       m5475evb_defconfig
-m68k                           sun3_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allyesconfig
-mips                                   jz4740
-mips                                     txx9
-nds32                            allmodconfig
-nds32                            allyesconfig
-parisc                           allmodconfig
-parisc                           allyesconfig
-powerpc                          allmodconfig
-powerpc                          allyesconfig
-riscv                            allmodconfig
-riscv                            allyesconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                               allyesconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                            allmodconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-x86_64                             acpi-redef
-x86_64                           allmodconfig
-x86_64                           allyesdebian
-x86_64                                nfsroot
-xtensa                           allmodconfig
-xtensa                           allyesconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-
-configs tested: 55
-
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                           allnoconfig
-x86_64                           allyesconfig
-i386                             allmodconfig
-riscv                             allnoconfig
-riscv                               defconfig
-nds32                               defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-arc                              allyesconfig
-microblaze                    nommu_defconfig
-microblaze                      mmu_defconfig
-arc                                 defconfig
-parisc                        c3000_defconfig
-parisc                         b180_defconfig
-parisc                              defconfig
-parisc                            allnoconfig
-arm                              allmodconfig
-arm                         at91_dt_defconfig
-arm64                               defconfig
-arm                        multi_v5_defconfig
-arm64                            allyesconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allmodconfig
-arm                          exynos_defconfig
-arm                        shmobile_defconfig
-arm                        multi_v7_defconfig
-mips                             allmodconfig
-mips                      malta_kvm_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-riscv                              tinyconfig
-i386                               tinyconfig
-openrisc                    or1ksim_defconfig
-nios2                         3c120_defconfig
-c6x                        evmc6678_defconfig
-c6x                              allyesconfig
-nios2                         10m50_defconfig
-openrisc                 simple_smp_defconfig
-m68k                          multi_defconfig
-
+Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+Changes in v2:
+  - Change pci_set_drvdata to dev_set_drvdata
+    to keep consistency.
+
+ drivers/net/ethernet/intel/e1000e/netdev.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index e4baa13b3cda..ad203a2a64c4 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -6297,7 +6297,7 @@ static void e1000e_flush_lpic(struct pci_dev *pdev)
+ 
+ static int e1000e_pm_freeze(struct device *dev)
+ {
+-	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
++	struct net_device *netdev = dev_get_drvdata(dev);
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 
+ 	netif_device_detach(netdev);
+@@ -6630,7 +6630,7 @@ static int __e1000_resume(struct pci_dev *pdev)
+ #ifdef CONFIG_PM_SLEEP
+ static int e1000e_pm_thaw(struct device *dev)
+ {
+-	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
++	struct net_device *netdev = dev_get_drvdata(dev);
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 
+ 	e1000e_set_interrupt_capability(adapter);
+@@ -6679,8 +6679,7 @@ static int e1000e_pm_resume(struct device *dev)
+ 
+ static int e1000e_pm_runtime_idle(struct device *dev)
+ {
+-	struct pci_dev *pdev = to_pci_dev(dev);
+-	struct net_device *netdev = pci_get_drvdata(pdev);
++	struct net_device *netdev = dev_get_drvdata(dev);
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 	u16 eee_lp;
+ 
+@@ -7105,7 +7104,7 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	netdev->irq = pdev->irq;
+ 
+-	pci_set_drvdata(pdev, netdev);
++	dev_set_drvdata(&pdev->dev, netdev);
+ 	adapter = netdev_priv(netdev);
+ 	hw = &adapter->hw;
+ 	adapter->netdev = netdev;
+-- 
+2.20.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
