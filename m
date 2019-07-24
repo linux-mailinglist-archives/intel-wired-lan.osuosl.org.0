@@ -2,59 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1DD073284
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jul 2019 17:11:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DEB1373278
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jul 2019 17:11:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBD9A86879;
-	Wed, 24 Jul 2019 15:11:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6B2D886852;
+	Wed, 24 Jul 2019 15:11:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NpXfbljJrRvq; Wed, 24 Jul 2019 15:11:21 +0000 (UTC)
+	with ESMTP id 5kQN3pFN6Ihk; Wed, 24 Jul 2019 15:11:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DF7388693D;
-	Wed, 24 Jul 2019 15:11:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1BCA38685D;
+	Wed, 24 Jul 2019 15:11:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 272BB1BF357
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 13:26:48 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 13CDE1BF5A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:05:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 237A18683C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 13:26:48 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F366485D55
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:05:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oCEXHG-0LJ2u for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jul 2019 13:26:47 +0000 (UTC)
+ with ESMTP id vavhQMSFR0dx for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jul 2019 06:05:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9E2F584977
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 13:26:47 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2019 06:26:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,303,1559545200"; d="scan'208";a="369295236"
-Received: from silpixa00399838.ir.intel.com (HELO
- silpixa00399838.ger.corp.intel.com) ([10.237.223.140])
- by fmsmga006.fm.intel.com with ESMTP; 24 Jul 2019 06:26:44 -0700
-From: Kevin Laatz <kevin.laatz@intel.com>
-To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
- bjorn.topel@intel.com, magnus.karlsson@intel.com,
- jakub.kicinski@netronome.com, jonathan.lemon@gmail.com,
- saeedm@mellanox.com, maximmi@mellanox.com, stephen@networkplumber.org
-Date: Wed, 24 Jul 2019 05:10:43 +0000
-Message-Id: <20190724051043.14348-12-kevin.laatz@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190724051043.14348-1-kevin.laatz@intel.com>
-References: <20190716030637.5634-1-kevin.laatz@intel.com>
- <20190724051043.14348-1-kevin.laatz@intel.com>
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EB1BA85B11
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2019 06:05:21 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id i18so20638408pgl.11
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jul 2019 23:05:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kEit7lAB1Ue2Pj5oh+Mlb7ShDCe+fsz5zjPxqobMIKg=;
+ b=LOZBVGQxyAGRUFVP8mPfnlKQD07SIGGlVfHqkFTEab3aa0FHzBfOCDb58AWG2QNF11
+ KT0/Q5L2+y3O8rh914AlOqnBcMckN/0ycwl1E/FhHjHhxV2wsgtluQ9amIthLTXIZ6KI
+ QVczTYnvho5/2SufK7VAhoSU8moWT1GL6DvExtCg7Lrsdc1SHpVZwkLjiB5eWwS5whNu
+ kcFm5zVqBELbsneoH3jM4hjpxAOvrtK2WlyOrptwVEbr6W1vFe8nIK5Yy/36E2LXxg0k
+ zqShovDJzgsBZsQbU6ER2hMs5AJGkNOEhhKPM1P5aGHDoNZ9thbjTArNYZ0eU6WOP1pG
+ GpSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kEit7lAB1Ue2Pj5oh+Mlb7ShDCe+fsz5zjPxqobMIKg=;
+ b=S0ZCI6tppDjO8FOXvI92P9EC3ogpeH/vxFtYAPcKtDiX38Cs7kAP3VoGkp+9VHv4m2
+ C8LbvFWu0vU0yJPrjNzEYtZKaogLTNuAyA+a74buym8aRnQ86YuxYr2/fMzHFzLyUABx
+ ADEzdLu6cnrhXiL5cB2jvO7+vSs72Visb/jg/rEZxBea/BOtDrqDLwLLssXS8H8jBqVf
+ q4MQrRvyb6SXrxBJi8+kFkAPBtfV/Yip2ukPBV19gYbpSmBicr3o1jh4BRsuYcEF1FIr
+ wxzsV9ZHlSKgDXzxXYdpQta4HOycO/aY8B/72kVb1cSJpZZB4laTbx8vIF0dcUdsx7gf
+ YMYA==
+X-Gm-Message-State: APjAAAWrPB6UuH2zkKe5IUqczseI1EopByR+YUl9CSBqF7ZUttVUlN37
+ v2GL8ckVE1PYJkCvhdifFUM=
+X-Google-Smtp-Source: APXvYqzgXdUAYYOPzIp2tCoOz/dnsYdNYa9oDXaK677WPWN4WX5+xa+IElSv4CWN2p4eSe3FBrKanA==
+X-Received: by 2002:a17:90a:220a:: with SMTP id
+ c10mr87503028pje.33.1563948321586; 
+ Tue, 23 Jul 2019 23:05:21 -0700 (PDT)
+Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
+ by smtp.gmail.com with ESMTPSA id y8sm42498752pfn.52.2019.07.23.23.05.17
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 23 Jul 2019 23:05:20 -0700 (PDT)
+From: Chuhong Yuan <hslester96@gmail.com>
+To: 
+Date: Wed, 24 Jul 2019 14:05:12 +0800
+Message-Id: <20190724060512.23899-1-hslester96@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-Mailman-Approved-At: Wed, 24 Jul 2019 15:10:50 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next v3 11/11] doc/af_xdp: include
- unaligned chunk case
+Subject: [Intel-wired-lan] [PATCH net-next v2 0/8] Use dev_get_drvdata where
+ possible
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,49 +86,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bruce.richardson@intel.com, ciara.loftus@intel.com,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- Kevin Laatz <kevin.laatz@intel.com>
-MIME-Version: 1.0
+Cc: Jay Cliburn <jcliburn@gmail.com>, GR-Linux-NIC-Dev@marvell.com,
+ Rasesh Mody <rmody@marvell.com>, Chris Snook <chris.snook@gmail.com>,
+ Chuhong Yuan <hslester96@gmail.com>, Guo-Fu Tseng <cooldavid@cooldavid.org>,
+ Prashant Sreedharan <prashant@broadcom.com>, linux-kernel@vger.kernel.org,
+ "David S . Miller" <davem@davemloft.net>,
+ Siva Reddy Kallam <siva.kallam@broadcom.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, Michael Chan <michael.chan@broadcom.com>,
+ Steffen Klassert <klassert@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The addition of unaligned chunks mode, the documentation needs to be
-updated to indicate that the incoming addr to the fill ring will only be
-masked if the user application is run in the aligned chunk mode. This patch
-also adds a line to explicitly indicate that the incoming addr will not be
-masked if running the user application in the unaligned chunk mode.
+These patches use dev_get_drvdata instead of
+using to_pci_dev + pci_get_drvdata to make
+code simpler where possible.
 
-Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
----
- Documentation/networking/af_xdp.rst | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+Changelog:
 
-diff --git a/Documentation/networking/af_xdp.rst b/Documentation/networking/af_xdp.rst
-index eeedc2e826aa..83f7ae5fc045 100644
---- a/Documentation/networking/af_xdp.rst
-+++ b/Documentation/networking/af_xdp.rst
-@@ -153,10 +153,12 @@ an example, if the UMEM is 64k and each chunk is 4k, then the UMEM has
- 
- Frames passed to the kernel are used for the ingress path (RX rings).
- 
--The user application produces UMEM addrs to this ring. Note that the
--kernel will mask the incoming addr. E.g. for a chunk size of 2k, the
--log2(2048) LSB of the addr will be masked off, meaning that 2048, 2050
--and 3000 refers to the same chunk.
-+The user application produces UMEM addrs to this ring. Note that, if
-+running the application with aligned chunk mode, the kernel will mask
-+the incoming addr.  E.g. for a chunk size of 2k, the log2(2048) LSB of
-+the addr will be masked off, meaning that 2048, 2050 and 3000 refers
-+to the same chunk. If the user application is run in the unaligned
-+chunks mode, then the incoming addr will be left untouched.
- 
- 
- UMEM Completion Ring
+v1 -> v2:
+- Change pci_set_drvdata to dev_set_drvdata
+  to keep consistency.
+
+Chuhong Yuan (8):
+  net: 3com: 3c59x: Use dev_get_drvdata
+  net: atheros: Use dev_get_drvdata
+  net: broadcom: Use dev_get_drvdata
+  e1000e: Use dev_get_drvdata where possible
+  fm10k: Use dev_get_drvdata
+  i40e: Use dev_get_drvdata
+  igb: Use dev_get_drvdata where possible
+  net: jme: Use dev_get_drvdata
+
+ drivers/net/ethernet/3com/3c59x.c               |  8 +++-----
+ drivers/net/ethernet/atheros/alx/main.c         |  8 +++-----
+ drivers/net/ethernet/atheros/atl1c/atl1c_main.c | 10 ++++------
+ drivers/net/ethernet/atheros/atlx/atl1.c        |  8 +++-----
+ drivers/net/ethernet/broadcom/bnx2.c            |  8 +++-----
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c       |  8 +++-----
+ drivers/net/ethernet/broadcom/tg3.c             |  8 +++-----
+ drivers/net/ethernet/intel/e1000e/netdev.c      |  9 ++++-----
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c    |  6 +++---
+ drivers/net/ethernet/intel/i40e/i40e_main.c     | 10 ++++------
+ drivers/net/ethernet/intel/igb/igb_main.c       |  5 ++---
+ drivers/net/ethernet/jme.c                      |  8 +++-----
+ 12 files changed, 38 insertions(+), 58 deletions(-)
+
 -- 
-2.17.1
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
