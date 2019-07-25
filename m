@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E054F74851
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jul 2019 09:41:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 956A18664E;
-	Thu, 25 Jul 2019 07:41:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X+YdECMQL-FG; Thu, 25 Jul 2019 07:41:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 956E787FE3;
-	Thu, 25 Jul 2019 07:41:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 333FD1BF4D6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 07:41:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6A8D74A21
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jul 2019 11:41:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 29FF8861F2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 07:41:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 36DCD86257;
+	Thu, 25 Jul 2019 09:41:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EpeUHIM2r8fq; Thu, 25 Jul 2019 09:41:03 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BC4658625B;
+	Thu, 25 Jul 2019 09:41:02 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B63731BF577
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 09:41:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id B1CEB87BB6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 09:41:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 85kSPSb2pVRz for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jul 2019 07:41:06 +0000 (UTC)
+ with ESMTP id 1vf+vE4ve2q0 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Jul 2019 09:41:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DD6E861F1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 07:41:06 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0994787B62
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 09:41:00 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Jul 2019 00:41:06 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Jul 2019 02:40:58 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,306,1559545200"; d="scan'208";a="177895723"
+X-IronPort-AV: E=Sophos;i="5.64,306,1559545200"; d="scan'208";a="181409835"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 25 Jul 2019 00:41:05 -0700
+ by orsmga002.jf.intel.com with ESMTP; 25 Jul 2019 02:40:58 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1hqYN6-0001mF-Vn; Thu, 25 Jul 2019 15:41:04 +0800
-Date: Thu, 25 Jul 2019 15:40:21 +0800
+ id 1hqaF7-0007HY-Mf; Thu, 25 Jul 2019 17:40:57 +0800
+Date: Thu, 25 Jul 2019 17:40:34 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d395ce5.Zw0vJlICCgtGhzMd%lkp@intel.com>
+Message-ID: <5d397912.fYBE9UpHbyNtIfrt%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
- d92c1d8568eee2b34a3ec7f1d1b9cb6ff7bea58d
+Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD INCOMPLETE
+ e5e9a2ecfe780975820e157b922edee715710b66
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,10 +68,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: d92c1d8568eee2b34a3ec7f1d1b9cb6ff7bea58d  ixgbevf: fix a compilation error of skb_frag_t
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
+branch HEAD: e5e9a2ecfe780975820e157b922edee715710b66  e1000e: add workaround for possible stalled packet
 
-TIMEOUT after 725m
+TIMEOUT after 729m
 
 
 Sorry we cannot finish the testset for your branch within a reasonable time.
@@ -81,7 +81,7 @@ possible error reports when our build infrastructure is restored or catches up.
 There will be no more build success notification for this branch head, but you
 can expect reasonably good test coverage after waiting for 1 day.
 
-configs timed out: 68
+configs timed out: 71
 
 alpha                            allmodconfig
 alpha                            allyesconfig
@@ -146,50 +146,50 @@ sparc64                          allmodconfig
 sparc64                           allnoconfig
 sparc64                          allyesconfig
 sparc64                             defconfig
+x86_64                             acpi-redef
 x86_64                           allmodconfig
+x86_64                           allyesdebian
+x86_64                                nfsroot
 xtensa                           allmodconfig
 xtensa                           allyesconfig
 xtensa                       common_defconfig
 xtensa                          iss_defconfig
 
-configs tested: 38
+configs tested: 35
 
 powerpc                             defconfig
 powerpc                       ppc64_defconfig
 powerpc                           allnoconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
 parisc                        c3000_defconfig
+parisc                         b180_defconfig
 parisc                              defconfig
-x86_64                           allyesconfig
-i386                             allmodconfig
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                              fedora-25
-x86_64                                  kexec
+parisc                            allnoconfig
 x86_64                                    lkp
-x86_64                                nfsroot
 x86_64                                   rhel
 x86_64                               rhel-7.6
-mips                             allmodconfig
-mips                      malta_kvm_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
 arc                              allyesconfig
 microblaze                    nommu_defconfig
 microblaze                      mmu_defconfig
 arc                                 defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
+x86_64                           allyesconfig
+i386                             allmodconfig
 riscv                             allnoconfig
 riscv                               defconfig
+nds32                               defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+mips                             allmodconfig
+mips                      malta_kvm_defconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                             alldefconfig
 arm                              allmodconfig
 arm64                            allmodconfig
 
