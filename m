@@ -1,113 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96A9774B56
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jul 2019 12:16:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE500752EF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jul 2019 17:39:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3FB8C86D95;
-	Thu, 25 Jul 2019 10:16:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 02077880E2;
+	Thu, 25 Jul 2019 15:39:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6zeEvvjEC9J5; Thu, 25 Jul 2019 10:16:03 +0000 (UTC)
+	with ESMTP id 6i19x5b+AfVv; Thu, 25 Jul 2019 15:39:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2873786DAD;
-	Thu, 25 Jul 2019 10:16:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D7A6888162;
+	Thu, 25 Jul 2019 15:39:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D9B0B1BF337
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:16:00 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 962D41BF2CA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 15:39:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D50B686276
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:16:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9253D2221F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 15:39:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q-rvnYhQyq_0 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jul 2019 10:16:00 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR01-HE1-obe.outbound.protection.outlook.com
- (mail-eopbgr130084.outbound.protection.outlook.com [40.107.13.84])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8A04986103
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:15:59 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CZp8e0fl3aKh+FjjndT5zetGUeCjstL/V1pitrga//27BSvaM+0r+RsqCmicMEEpYxSRi7eg/y5TMJ1CLaBjWFNHyKCYV1K4h8yyOmvlhUiYTIbmP0+cFr0zep8VSpPm5kqTrYtryETf6+rYG3/Z480LPEEHrbPkueWxjctv2XiIiQCDYggUzsqAcP4dcgTFGC1r4jvMTRBRd+cMHWsHH1gAnxCgWJuDZwa9LTttHnz07TI9l9ZFpX5QOk56H2vXmlV6KOU6je7DrG/Nk6ah1FoMtskVVVO9HEO5OyjT+wFE6TGghtD6yMqnWVpt7aPOS+OBlZxRMH7L76d+ksl7lA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=N/brvssYKSJS40X2+pU1aG+EFGGTg5Vve8WdNVhkjc8=;
- b=BjNH82Fa3PSC+Li4So9kUiWAB9A88q4iLMTXHY/NaTXTBTvQORLZXxmqJVt+ewmuD5ZD60Uvk0GFSxXGT5IYyrvtb9SccBPvF/3Fe8+F5aXx+gMZV/qd8ME83o+irzSwPpvDCCSr4AJGLRInC43mUhyEti+PY1oMsySZuwIhOoYJRMqXcK0rBDIuJAPWJURZQTok7FIRqGTUZ7n+FHWvuipNwSYUV5wfkdycbg+r2HTvGqTqqSubvo86yRFrgsMY7Za4nigb49ynvDROYEWzQ0PwXuTqum3dzNaOQYZHt796/rxsUkZ0+iDymmwi7etGvkJR3hMTU6Rb7x2spd+yDQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
- smtp.mailfrom=mellanox.com;dmarc=pass action=none
- header.from=mellanox.com;dkim=pass header.d=mellanox.com;arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=N/brvssYKSJS40X2+pU1aG+EFGGTg5Vve8WdNVhkjc8=;
- b=OwYgjceELSTKs1WHQUuiZuE2AHVBEqLdJF/aazH+A9Kb7X5XSj3X0xbdqKHfZfwfCtCEHxhpcLNncKkWBQSQxn7vEDGRzg3AKUjY5z3e5QG99HyM8jtfxX26zk8uM2/IBx53RBCmNnsX/yuuS5bagnHUDJP+xnBq7hk1YR7mlr8=
-Received: from AM6PR05MB5879.eurprd05.prod.outlook.com (20.179.0.76) by
- AM6PR05MB5191.eurprd05.prod.outlook.com (20.177.196.161) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2094.15; Thu, 25 Jul 2019 10:15:56 +0000
-Received: from AM6PR05MB5879.eurprd05.prod.outlook.com
- ([fe80::f9d8:38bc:4a18:f7a7]) by AM6PR05MB5879.eurprd05.prod.outlook.com
- ([fe80::f9d8:38bc:4a18:f7a7%5]) with mapi id 15.20.2115.005; Thu, 25 Jul 2019
- 10:15:55 +0000
-From: Maxim Mikityanskiy <maximmi@mellanox.com>
-To: Kevin Laatz <kevin.laatz@intel.com>
-Thread-Topic: [PATCH bpf-next v3 06/11] mlx5e: modify driver for handling
- offsets
-Thread-Index: AQHVQiNpB87vkdrGIUKaz1R1Zy1BQ6bbH5iA
-Date: Thu, 25 Jul 2019 10:15:55 +0000
-Message-ID: <c5704b74-8efe-af2a-68e6-716fa89a5665@mellanox.com>
+ with ESMTP id 6UoXT09ziX7h for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Jul 2019 15:39:03 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
+ [209.85.210.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id CD18420460
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 15:39:03 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id 19so22951659pfa.4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 08:39:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version; bh=v/kxyE2A6Hzq4IW82IR6/A1CQmOHHC14Hx0JRZ6U23A=;
+ b=uSBYSB3+aKRS0Fne1g4ggLCLwZjxdBSvRdJRr4xwrNpkhdHp8pTigtw573rYZXiKWM
+ IU2dlNjH6VaHh7yo2RvReEMS4/M6opYS0X4uf6yNSIM5S9foXlnyhBtYDs/fmUBX28DK
+ FTUGb1RiI6gLxN68o5g9MlEB/jQJ9k5EwJfNk4Jawiy5Z+5i0CdJejXUj48rslBts+RN
+ wuDBxqWWbulTdVOi/xeTsK1Q/O0Sk6Z0+fvuGBSPfsb2O9Zu4ZZUPUst4d/Zh9a5JdQ3
+ KZqmdRgF/PAF6ixPughktNJL0N6ZBfycV2+wEhakjn+fiaaq9v5Ev1uEGhk58HM/Yupz
+ MIpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version;
+ bh=v/kxyE2A6Hzq4IW82IR6/A1CQmOHHC14Hx0JRZ6U23A=;
+ b=ddpz1fAKrIXrtlzHL2uD2hXN6LraKGlGz1sNI2d9YuZmsim2Ms/QOKhjYDWu7YBouZ
+ B+LwzqgxwJS6fjU/qrqdRZWqrD+cxQ21r/hBfOWcxid/xVcwhrNrVtkBN0A4xfclxQZR
+ m0qitucBGn9j7GlfWFYd7xtAPBNEHVyK9FyrAQfbrmd1dyS64xWckuMRWi/Aqr5Gy0hc
+ M1L6Z46wnt6lJ0IHWGZQffciAFiywhrfoQ3b7BmrIjOx5GM6duhs46oj7E4USI31gyl+
+ HyCr+9wI+VMEYbkFaWjzBzbnySP50/t7ARq1a7NWZm/OMY6zSVTzRTIBCuUPs8Kfa1Qc
+ 4U+A==
+X-Gm-Message-State: APjAAAUEfCsxqoB/Y3pbDtLkJGBCveA7qJM3qROIJHrcbZ5/I1pr3gyV
+ qCEMzahmAJmrQEHvt0r8ALc=
+X-Google-Smtp-Source: APXvYqz1U4LT/cMm9qR3fxtSvlxosoPhEpgOHIfOICTo/YQbO7uw2KUJBMVGbkvc7e5xLL4Q12Oa+g==
+X-Received: by 2002:a62:b515:: with SMTP id y21mr17620211pfe.213.1564069143337; 
+ Thu, 25 Jul 2019 08:39:03 -0700 (PDT)
+Received: from [172.20.174.128] ([2620:10d:c090:180::1:622f])
+ by smtp.gmail.com with ESMTPSA id f6sm52701201pga.50.2019.07.25.08.39.01
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 25 Jul 2019 08:39:02 -0700 (PDT)
+From: "Jonathan Lemon" <jonathan.lemon@gmail.com>
+To: "Kevin Laatz" <kevin.laatz@intel.com>
+Date: Thu, 25 Jul 2019 08:39:00 -0700
+X-Mailer: MailMate (1.12.5r5635)
+Message-ID: <E0F8C5B9-A4CD-47CD-8C72-F840161D178E@gmail.com>
+In-Reply-To: <20190724051043.14348-4-kevin.laatz@intel.com>
 References: <20190716030637.5634-1-kevin.laatz@intel.com>
  <20190724051043.14348-1-kevin.laatz@intel.com>
- <20190724051043.14348-7-kevin.laatz@intel.com>
-In-Reply-To: <20190724051043.14348-7-kevin.laatz@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1P189CA0004.EURP189.PROD.OUTLOOK.COM (2603:10a6:7:53::17)
- To AM6PR05MB5879.eurprd05.prod.outlook.com
- (2603:10a6:20b:a2::12)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=maximmi@mellanox.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [159.224.90.213]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ab5aaa9c-343d-406d-27da-08d710e914b7
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:AM6PR05MB5191; 
-x-ms-traffictypediagnostic: AM6PR05MB5191:
-x-microsoft-antispam-prvs: <AM6PR05MB51913C1E0A62B849330914B2D1C10@AM6PR05MB5191.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 0109D382B0
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(366004)(396003)(376002)(346002)(39860400002)(136003)(52314003)(199004)(189003)(7416002)(66946007)(256004)(86362001)(26005)(6436002)(53936002)(5660300002)(8676002)(305945005)(8936002)(316002)(31696002)(6486002)(36756003)(66556008)(81166006)(71200400001)(186003)(66446008)(81156014)(6506007)(54906003)(6246003)(64756008)(7736002)(6512007)(71190400001)(66476007)(446003)(2906002)(6116002)(99286004)(476003)(386003)(2616005)(11346002)(6916009)(25786009)(66066001)(3846002)(52116002)(486006)(31686004)(14454004)(76176011)(229853002)(53546011)(102836004)(478600001)(4326008)(68736007)(55236004)(32563001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR05MB5191;
- H:AM6PR05MB5879.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: /psVHyfL59O9TjnudVRAj/WjsNqE0hzKOw7c44tgNHaKWN7c+TqMk3F0602MvW81JK0i4WRk6/A0dClkEq6kXor4FSxnaIANsipkHndSFOie0R9uUe9WJE7BV45qpx//Typ7n2Ut8T31RnNkRjfkTtblKW3qFNmP9Xh5gGYFhHoJq/WfR2F7udaPXjoSRt+UAJpT7yQMFDTDebcLB8xMKox2rtZdeaEF3y2r5NuKknCSZjJH695ZHKnquAKt8bnknI+tcnkGsTWc1t856CGpruF08BlKJg72IIdsbTfGjgBfYIIE4cJk/Px58df5cT0kYZFyeHCfbyeBy9btw79z/Ph6rJNKr0ZEE+nvCunzk40lUOvdbSpVJK7fJ+hra0YT0i31t6l1fw/+Jjlb1hgQaVk4Y04jkoKANihb6IXlmhk=
-Content-ID: <018B6117E075A04BBABDA2A59FFD189B@eurprd05.prod.outlook.com>
+ <20190724051043.14348-4-kevin.laatz@intel.com>
 MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ab5aaa9c-343d-406d-27da-08d710e914b7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 10:15:55.8135 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: maximmi@mellanox.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB5191
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 06/11] mlx5e: modify
- driver for handling offsets
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 03/11] xsk: add support to
+ allow unaligned chunk placement
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,111 +87,592 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "jakub.kicinski@netronome.com" <jakub.kicinski@netronome.com>,
- "daniel@iogearbox.net" <daniel@iogearbox.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "ciara.loftus@intel.com" <ciara.loftus@intel.com>,
- "ast@kernel.org" <ast@kernel.org>,
- "stephen@networkplumber.org" <stephen@networkplumber.org>,
- Saeed Mahameed <saeedm@mellanox.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>,
- "bruce.richardson@intel.com" <bruce.richardson@intel.com>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "bjorn.topel@intel.com" <bjorn.topel@intel.com>,
- "magnus.karlsson@intel.com" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: maximmi@mellanox.com, jakub.kicinski@netronome.com, daniel@iogearbox.net,
+ netdev@vger.kernel.org, ciara.loftus@intel.com, ast@kernel.org,
+ stephen@networkplumber.org, saeedm@mellanox.com,
+ intel-wired-lan@lists.osuosl.org, bruce.richardson@intel.com,
+ bpf@vger.kernel.org, bjorn.topel@intel.com, magnus.karlsson@intel.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2019-07-24 08:10, Kevin Laatz wrote:
-> With the addition of the unaligned chunks option, we need to make sure we
-> handle the offsets accordingly based on the mode we are currently running
-> in. This patch modifies the driver to appropriately mask the address for
-> each case.
-> 
+
+
+On 23 Jul 2019, at 22:10, Kevin Laatz wrote:
+
+> Currently, addresses are chunk size aligned. This means, we are very
+> restricted in terms of where we can place chunk within the umem. For
+> example, if we have a chunk size of 2k, then our chunks can only be 
+> placed
+> at 0,2k,4k,6k,8k... and so on (ie. every 2k starting from 0).
+>
+> This patch introduces the ability to use unaligned chunks. With these
+> changes, we are no longer bound to having to place chunks at a 2k (or
+> whatever your chunk size is) interval. Since we are no longer dealing 
+> with
+> aligned chunks, they can now cross page boundaries. Checks for page
+> contiguity have been added in order to keep track of which pages are
+> followed by a physically contiguous page.
+>
 > Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
-> 
+> Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
+> Signed-off-by: Bruce Richardson <bruce.richardson@intel.com>
+>
 > ---
+> v2:
+>   - Add checks for the flags coming from userspace
+>   - Fix how we get chunk_size in xsk_diag.c
+>   - Add defines for masking the new descriptor format
+>   - Modified the rx functions to use new descriptor format
+>   - Modified the tx functions to use new descriptor format
+>
 > v3:
->    - Use new helper function to handle offset
+>   - Add helper function to do address/offset masking/addition
 > ---
->   drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c    | 8 ++++++--
->   drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c | 9 +++++++--
->   2 files changed, 13 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> index b0b982cf69bb..d5245893d2c8 100644
-> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> @@ -122,6 +122,7 @@ bool mlx5e_xdp_handle(struct mlx5e_rq *rq, struct mlx5e_dma_info *di,
->   		      void *va, u16 *rx_headroom, u32 *len, bool xsk)
->   {
->   	struct bpf_prog *prog = READ_ONCE(rq->xdp_prog);
-> +	struct xdp_umem *umem = rq->umem;
->   	struct xdp_buff xdp;
->   	u32 act;
->   	int err;
-> @@ -138,8 +139,11 @@ bool mlx5e_xdp_handle(struct mlx5e_rq *rq, struct mlx5e_dma_info *di,
->   	xdp.rxq = &rq->xdp_rxq;
->   
->   	act = bpf_prog_run_xdp(prog, &xdp);
-> -	if (xsk)
-> -		xdp.handle += xdp.data - xdp.data_hard_start;
-> +	if (xsk) {
-> +		u64 off = xdp.data - xdp.data_hard_start;
+>  include/net/xdp_sock.h      | 17 ++++++++
+>  include/uapi/linux/if_xdp.h |  9 ++++
+>  net/xdp/xdp_umem.c          | 18 +++++---
+>  net/xdp/xsk.c               | 86 
+> ++++++++++++++++++++++++++++++-------
+>  net/xdp/xsk_diag.c          |  2 +-
+>  net/xdp/xsk_queue.h         | 68 +++++++++++++++++++++++++----
+>  6 files changed, 170 insertions(+), 30 deletions(-)
+>
+> diff --git a/include/net/xdp_sock.h b/include/net/xdp_sock.h
+> index 69796d264f06..738996c0f995 100644
+> --- a/include/net/xdp_sock.h
+> +++ b/include/net/xdp_sock.h
+> @@ -19,6 +19,7 @@ struct xsk_queue;
+>  struct xdp_umem_page {
+>  	void *addr;
+>  	dma_addr_t dma;
+> +	bool next_pg_contig;
+>  };
+>
+>  struct xdp_umem_fq_reuse {
+> @@ -48,6 +49,7 @@ struct xdp_umem {
+>  	bool zc;
+>  	spinlock_t xsk_list_lock;
+>  	struct list_head xsk_list;
+> +	u32 flags;
+>  };
+>
+>  struct xdp_sock {
+> @@ -144,6 +146,15 @@ static inline void xsk_umem_fq_reuse(struct 
+> xdp_umem *umem, u64 addr)
+>
+>  	rq->handles[rq->length++] = addr;
+>  }
 > +
-> +		xdp.handle = xsk_umem_handle_offset(umem, xdp.handle, off);
+> +static inline u64 xsk_umem_handle_offset(struct xdp_umem *umem, u64 
+> handle,
+> +					 u64 offset)
+> +{
+> +	if (umem->flags & XDP_UMEM_UNALIGNED_CHUNKS)
+> +		return handle |= (offset << XSK_UNALIGNED_BUF_OFFSET_SHIFT);
+> +	else
+> +		return handle += offset;
+> +}
+
+This should be something like 'xsk_umem_adjust_offset()', and use "+=" 
+for both cases.
+
+
+>  #else
+>  static inline int xsk_generic_rcv(struct xdp_sock *xs, struct 
+> xdp_buff *xdp)
+>  {
+> @@ -241,6 +252,12 @@ static inline void xsk_umem_fq_reuse(struct 
+> xdp_umem *umem, u64 addr)
+>  {
+>  }
+>
+> +static inline u64 xsk_umem_handle_offset(struct xdp_umem *umem, u64 
+> handle,
+> +					 u64 offset)
+> +{
+> +	return NULL;
+> +}
+> +
+>  #endif /* CONFIG_XDP_SOCKETS */
+>
+>  #endif /* _LINUX_XDP_SOCK_H */
+> diff --git a/include/uapi/linux/if_xdp.h b/include/uapi/linux/if_xdp.h
+> index faaa5ca2a117..f8dc68fcdf78 100644
+> --- a/include/uapi/linux/if_xdp.h
+> +++ b/include/uapi/linux/if_xdp.h
+> @@ -17,6 +17,9 @@
+>  #define XDP_COPY	(1 << 1) /* Force copy-mode */
+>  #define XDP_ZEROCOPY	(1 << 2) /* Force zero-copy mode */
+>
+> +/* Flags for xsk_umem_config flags */
+> +#define XDP_UMEM_UNALIGNED_CHUNKS (1 << 0)
+> +
+>  struct sockaddr_xdp {
+>  	__u16 sxdp_family;
+>  	__u16 sxdp_flags;
+> @@ -53,6 +56,7 @@ struct xdp_umem_reg {
+>  	__u64 len; /* Length of packet data area */
+>  	__u32 chunk_size;
+>  	__u32 headroom;
+> +	__u32 flags;
+>  };
+>
+>  struct xdp_statistics {
+> @@ -74,6 +78,11 @@ struct xdp_options {
+>  #define XDP_UMEM_PGOFF_FILL_RING	0x100000000ULL
+>  #define XDP_UMEM_PGOFF_COMPLETION_RING	0x180000000ULL
+>
+> +/* Masks for unaligned chunks mode */
+> +#define XSK_UNALIGNED_BUF_OFFSET_SHIFT 48
+> +#define XSK_UNALIGNED_BUF_ADDR_MASK \
+> +	((1ULL << XSK_UNALIGNED_BUF_OFFSET_SHIFT) - 1)
+> +
+>  /* Rx/Tx descriptor */
+>  struct xdp_desc {
+>  	__u64 addr;
+> diff --git a/net/xdp/xdp_umem.c b/net/xdp/xdp_umem.c
+> index 83de74ca729a..952ca22103e9 100644
+> --- a/net/xdp/xdp_umem.c
+> +++ b/net/xdp/xdp_umem.c
+> @@ -299,6 +299,7 @@ static int xdp_umem_account_pages(struct xdp_umem 
+> *umem)
+>
+>  static int xdp_umem_reg(struct xdp_umem *umem, struct xdp_umem_reg 
+> *mr)
+>  {
+> +	bool unaligned_chunks = mr->flags & XDP_UMEM_UNALIGNED_CHUNKS;
+>  	u32 chunk_size = mr->chunk_size, headroom = mr->headroom;
+>  	unsigned int chunks, chunks_per_page;
+>  	u64 addr = mr->addr, size = mr->len;
+> @@ -314,7 +315,10 @@ static int xdp_umem_reg(struct xdp_umem *umem, 
+> struct xdp_umem_reg *mr)
+>  		return -EINVAL;
+>  	}
+>
+> -	if (!is_power_of_2(chunk_size))
+> +	if (mr->flags & ~(XDP_UMEM_UNALIGNED_CHUNKS))
+> +		return -EINVAL;
+> +
+> +	if (!unaligned_chunks && !is_power_of_2(chunk_size))
+>  		return -EINVAL;
+>
+>  	if (!PAGE_ALIGNED(addr)) {
+> @@ -331,9 +335,11 @@ static int xdp_umem_reg(struct xdp_umem *umem, 
+> struct xdp_umem_reg *mr)
+>  	if (chunks == 0)
+>  		return -EINVAL;
+>
+> -	chunks_per_page = PAGE_SIZE / chunk_size;
+> -	if (chunks < chunks_per_page || chunks % chunks_per_page)
+> -		return -EINVAL;
+> +	if (!unaligned_chunks) {
+> +		chunks_per_page = PAGE_SIZE / chunk_size;
+> +		if (chunks < chunks_per_page || chunks % chunks_per_page)
+> +			return -EINVAL;
 > +	}
+>
+>  	headroom = ALIGN(headroom, 64);
+>
+> @@ -342,13 +348,15 @@ static int xdp_umem_reg(struct xdp_umem *umem, 
+> struct xdp_umem_reg *mr)
+>  		return -EINVAL;
+>
+>  	umem->address = (unsigned long)addr;
+> -	umem->chunk_mask = ~((u64)chunk_size - 1);
+> +	umem->chunk_mask = unaligned_chunks ? XSK_UNALIGNED_BUF_ADDR_MASK
+> +					    : ~((u64)chunk_size - 1);
 
-What's missed is that umem_headroom is added to handle directly in 
-mlx5e_xsk_page_alloc_umem. In my understanding umem_headroom should go 
-to the offset part (high 16 bits) of the handle, to 
-xsk_umem_handle_offset has to support increasing the offset.
+The handle needs to be cleaned (reset to base address) when removed
+from the fill queue or recycle stack.  This will not provide the correct
+semantics for unaligned mode.
 
->   	switch (act) {
->   	case XDP_PASS:
->   		*rx_headroom = xdp.data - xdp.data_hard_start;
-> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
-> index 35e188cf4ea4..f596e63cba00 100644
-> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
-> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
-> @@ -61,6 +61,7 @@ bool mlx5e_xsk_tx(struct mlx5e_xdpsq *sq, unsigned int budget)
->   	struct mlx5e_xdp_xmit_data xdptxd;
->   	bool work_done = true;
->   	bool flush = false;
-> +	u64 addr, offset;
->   
->   	xdpi.mode = MLX5E_XDP_XMIT_MODE_XSK;
->   
-> @@ -82,8 +83,12 @@ bool mlx5e_xsk_tx(struct mlx5e_xdpsq *sq, unsigned int budget)
->   			break;
->   		}
->   
-> -		xdptxd.dma_addr = xdp_umem_get_dma(umem, desc.addr);
-> -		xdptxd.data = xdp_umem_get_data(umem, desc.addr);
-> +		/* for unaligned chunks need to take offset from upper bits */
-> +		offset = (desc.addr >> XSK_UNALIGNED_BUF_OFFSET_SHIFT);
-> +		addr = (desc.addr & XSK_UNALIGNED_BUF_ADDR_MASK);
+
+>  	umem->size = size;
+>  	umem->headroom = headroom;
+>  	umem->chunk_size_nohr = chunk_size - headroom;
+>  	umem->npgs = size / PAGE_SIZE;
+>  	umem->pgs = NULL;
+>  	umem->user = NULL;
+> +	umem->flags = mr->flags;
+>  	INIT_LIST_HEAD(&umem->xsk_list);
+>  	spin_lock_init(&umem->xsk_list_lock);
+>
+> diff --git a/net/xdp/xsk.c b/net/xdp/xsk.c
+> index 59b57d708697..b3ab653091c4 100644
+> --- a/net/xdp/xsk.c
+> +++ b/net/xdp/xsk.c
+> @@ -45,7 +45,7 @@ EXPORT_SYMBOL(xsk_umem_has_addrs);
+>
+>  u64 *xsk_umem_peek_addr(struct xdp_umem *umem, u64 *addr)
+>  {
+> -	return xskq_peek_addr(umem->fq, addr);
+> +	return xskq_peek_addr(umem->fq, addr, umem);
+>  }
+>  EXPORT_SYMBOL(xsk_umem_peek_addr);
+>
+> @@ -55,21 +55,42 @@ void xsk_umem_discard_addr(struct xdp_umem *umem)
+>  }
+>  EXPORT_SYMBOL(xsk_umem_discard_addr);
+>
+> +/* If a buffer crosses a page boundary, we need to do 2 memcpy's, one 
+> for
+> + * each page. This is only required in copy mode.
+> + */
+> +static void __xsk_rcv_memcpy(struct xdp_umem *umem, u64 addr, void 
+> *from_buf,
+> +			     u32 len, u32 metalen)
+> +{
+> +	void *to_buf = xdp_umem_get_data(umem, addr);
 > +
-> +		xdptxd.dma_addr = xdp_umem_get_dma(umem, addr + offset);
-> +		xdptxd.data = xdp_umem_get_data(umem, addr + offset);
+> +	if (xskq_crosses_non_contig_pg(umem, addr, len + metalen)) {
+> +		void *next_pg_addr = umem->pages[(addr >> PAGE_SHIFT) + 1].addr;
+> +		u64 page_start = addr & (PAGE_SIZE - 1);
+> +		u64 first_len = PAGE_SIZE - (addr - page_start);
+> +
+> +		memcpy(to_buf, from_buf, first_len + metalen);
+> +		memcpy(next_pg_addr, from_buf + first_len, len - first_len);
+> +
+> +		return;
+> +	}
+> +
+> +	memcpy(to_buf, from_buf, len + metalen);
+> +}
+> +
+>  static int __xsk_rcv(struct xdp_sock *xs, struct xdp_buff *xdp, u32 
+> len)
+>  {
+> -	void *to_buf, *from_buf;
+> +	u64 offset = xs->umem->headroom;
+> +	void *from_buf;
+>  	u32 metalen;
+>  	u64 addr;
+>  	int err;
+>
+> -	if (!xskq_peek_addr(xs->umem->fq, &addr) ||
+> +	if (!xskq_peek_addr(xs->umem->fq, &addr, xs->umem) ||
+>  	    len > xs->umem->chunk_size_nohr - XDP_PACKET_HEADROOM) {
+>  		xs->rx_dropped++;
+>  		return -ENOSPC;
+>  	}
+>
+> -	addr += xs->umem->headroom;
+> -
+>  	if (unlikely(xdp_data_meta_unsupported(xdp))) {
+>  		from_buf = xdp->data;
+>  		metalen = 0;
+> @@ -78,9 +99,13 @@ static int __xsk_rcv(struct xdp_sock *xs, struct 
+> xdp_buff *xdp, u32 len)
+>  		metalen = xdp->data - xdp->data_meta;
+>  	}
+>
+> -	to_buf = xdp_umem_get_data(xs->umem, addr);
+> -	memcpy(to_buf, from_buf, len + metalen);
+> -	addr += metalen;
+> +	__xsk_rcv_memcpy(xs->umem, addr + offset, from_buf, len, metalen);
+> +
+> +	offset += metalen;
+> +	if (xs->umem->flags & XDP_UMEM_UNALIGNED_CHUNKS)
+> +		addr |= offset << XSK_UNALIGNED_BUF_OFFSET_SHIFT;
+> +	else
+> +		addr += offset;
+>  	err = xskq_produce_batch_desc(xs->rx, addr, len);
+>  	if (!err) {
+>  		xskq_discard_addr(xs->umem->fq);
+> @@ -127,6 +152,7 @@ int xsk_generic_rcv(struct xdp_sock *xs, struct 
+> xdp_buff *xdp)
+>  	u32 len = xdp->data_end - xdp->data;
+>  	void *buffer;
+>  	u64 addr;
+> +	u64 offset = xs->umem->headroom;
+>  	int err;
+>
+>  	spin_lock_bh(&xs->rx_lock);
+> @@ -136,17 +162,17 @@ int xsk_generic_rcv(struct xdp_sock *xs, struct 
+> xdp_buff *xdp)
+>  		goto out_unlock;
+>  	}
+>
+> -	if (!xskq_peek_addr(xs->umem->fq, &addr) ||
+> +	if (!xskq_peek_addr(xs->umem->fq, &addr, xs->umem) ||
+>  	    len > xs->umem->chunk_size_nohr - XDP_PACKET_HEADROOM) {
+>  		err = -ENOSPC;
+>  		goto out_drop;
+>  	}
+>
+> -	addr += xs->umem->headroom;
+> -
+> -	buffer = xdp_umem_get_data(xs->umem, addr);
+> +	buffer = xdp_umem_get_data(xs->umem, addr + offset);
+>  	memcpy(buffer, xdp->data_meta, len + metalen);
+> -	addr += metalen;
+> +	offset += metalen;
+> +
+> +	addr = xsk_umem_handle_offset(xs->umem, addr, offset);
+>  	err = xskq_produce_batch_desc(xs->rx, addr, len);
+>  	if (err)
+>  		goto out_drop;
+> @@ -190,7 +216,7 @@ bool xsk_umem_consume_tx(struct xdp_umem *umem, 
+> struct xdp_desc *desc)
+>
+>  	rcu_read_lock();
+>  	list_for_each_entry_rcu(xs, &umem->xsk_list, list) {
+> -		if (!xskq_peek_desc(xs->tx, desc))
+> +		if (!xskq_peek_desc(xs->tx, desc, umem))
+>  			continue;
+>
+>  		if (xskq_produce_addr_lazy(umem->cq, desc->addr))
+> @@ -243,7 +269,7 @@ static int xsk_generic_xmit(struct sock *sk, 
+> struct msghdr *m,
+>  	if (xs->queue_id >= xs->dev->real_num_tx_queues)
+>  		goto out;
+>
+> -	while (xskq_peek_desc(xs->tx, &desc)) {
+> +	while (xskq_peek_desc(xs->tx, &desc, xs->umem)) {
+>  		char *buffer;
+>  		u64 addr;
+>  		u32 len;
+> @@ -262,6 +288,10 @@ static int xsk_generic_xmit(struct sock *sk, 
+> struct msghdr *m,
+>
+>  		skb_put(skb, len);
+>  		addr = desc.addr;
+> +		if (xs->umem->flags & XDP_UMEM_UNALIGNED_CHUNKS)
+> +			addr = (addr & XSK_UNALIGNED_BUF_ADDR_MASK) |
+> +				(addr >> XSK_UNALIGNED_BUF_OFFSET_SHIFT);
 
-Why can't these calculations be encapsulated into 
-xdp_umem_get_{dma,data}? I think they are common for all drivers, aren't 
-they?
+This doesn't look right to me.  Shouldn't it be "(addr & mask) + (addr 
+ >> shift)"?
+I'd also prefer to see this type of logic in an inline/macro
 
-Even if there is some reason not to put this bitshifting stuff into 
-xdp_umem_get_* functions, I suggest to encapsulate it into a function 
-anyway, because it's a good idea to keep those calculations in a single 
-place.
-
->   		xdptxd.len = desc.len;
->   
->   		dma_sync_single_for_device(sq->pdev, xdptxd.dma_addr,
-> 
-
+> +
+>  		buffer = xdp_umem_get_data(xs->umem, addr);
+>  		err = skb_store_bits(skb, 0, buffer, len);
+>  		if (unlikely(err) || xskq_reserve_addr(xs->umem->cq)) {
+> @@ -272,7 +302,7 @@ static int xsk_generic_xmit(struct sock *sk, 
+> struct msghdr *m,
+>  		skb->dev = xs->dev;
+>  		skb->priority = sk->sk_priority;
+>  		skb->mark = sk->sk_mark;
+> -		skb_shinfo(skb)->destructor_arg = (void *)(long)addr;
+> +		skb_shinfo(skb)->destructor_arg = (void *)(long)desc.addr;
+>  		skb->destructor = xsk_destruct_skb;
+>
+>  		err = dev_direct_xmit(skb, xs->queue_id);
+> @@ -412,6 +442,28 @@ static struct socket *xsk_lookup_xsk_from_fd(int 
+> fd)
+>  	return sock;
+>  }
+>
+> +/* Check if umem pages are contiguous.
+> + * If zero-copy mode, use the DMA address to do the page contiguity 
+> check
+> + * For all other modes we use addr (kernel virtual address)
+> + */
+> +static void xsk_check_page_contiguity(struct xdp_umem *umem, u32 
+> flags)
+> +{
+> +	int i;
+> +
+> +	if (flags & XDP_ZEROCOPY) {
+> +		for (i = 0; i < umem->npgs - 1; i++)
+> +			umem->pages[i].next_pg_contig =
+> +					(umem->pages[i].dma + PAGE_SIZE ==
+> +						umem->pages[i + 1].dma);
+> +		return;
+> +	}
+> +
+> +	for (i = 0; i < umem->npgs - 1; i++)
+> +		umem->pages[i].next_pg_contig =
+> +				(umem->pages[i].addr + PAGE_SIZE ==
+> +					umem->pages[i + 1].addr);
+> +}
+> +
+>  static int xsk_bind(struct socket *sock, struct sockaddr *addr, int 
+> addr_len)
+>  {
+>  	struct sockaddr_xdp *sxdp = (struct sockaddr_xdp *)addr;
+> @@ -500,6 +552,8 @@ static int xsk_bind(struct socket *sock, struct 
+> sockaddr *addr, int addr_len)
+>  		err = xdp_umem_assign_dev(xs->umem, dev, qid, flags);
+>  		if (err)
+>  			goto out_unlock;
+> +
+> +		xsk_check_page_contiguity(xs->umem, flags);
+>  	}
+>
+>  	xs->dev = dev;
+> diff --git a/net/xdp/xsk_diag.c b/net/xdp/xsk_diag.c
+> index d5e06c8e0cbf..9986a759fe06 100644
+> --- a/net/xdp/xsk_diag.c
+> +++ b/net/xdp/xsk_diag.c
+> @@ -56,7 +56,7 @@ static int xsk_diag_put_umem(const struct xdp_sock 
+> *xs, struct sk_buff *nlskb)
+>  	du.id = umem->id;
+>  	du.size = umem->size;
+>  	du.num_pages = umem->npgs;
+> -	du.chunk_size = (__u32)(~umem->chunk_mask + 1);
+> +	du.chunk_size = umem->chunk_size_nohr + umem->headroom;
+>  	du.headroom = umem->headroom;
+>  	du.ifindex = umem->dev ? umem->dev->ifindex : 0;
+>  	du.queue_id = umem->queue_id;
+> diff --git a/net/xdp/xsk_queue.h b/net/xdp/xsk_queue.h
+> index 909c5168ed0f..0d77212367f0 100644
+> --- a/net/xdp/xsk_queue.h
+> +++ b/net/xdp/xsk_queue.h
+> @@ -133,6 +133,16 @@ static inline bool xskq_has_addrs(struct 
+> xsk_queue *q, u32 cnt)
+>
+>  /* UMEM queue */
+>
+> +static inline bool xskq_crosses_non_contig_pg(struct xdp_umem *umem, 
+> u64 addr,
+> +					      u64 length)
+> +{
+> +	bool cross_pg = (addr & (PAGE_SIZE - 1)) + length > PAGE_SIZE;
+> +	bool next_pg_contig =
+> +		umem->pages[(addr >> PAGE_SHIFT) + 1].next_pg_contig;
+> +
+> +	return cross_pg && !next_pg_contig;
+> +}
+> +
+>  static inline bool xskq_is_valid_addr(struct xsk_queue *q, u64 addr)
+>  {
+>  	if (addr >= q->size) {
+> @@ -143,23 +153,50 @@ static inline bool xskq_is_valid_addr(struct 
+> xsk_queue *q, u64 addr)
+>  	return true;
+>  }
+>
+> -static inline u64 *xskq_validate_addr(struct xsk_queue *q, u64 *addr)
+> +static inline bool xskq_is_valid_addr_unaligned(struct xsk_queue *q, 
+> u64 addr,
+> +						u64 length,
+> +						struct xdp_umem *umem)
+> +{
+> +	addr += addr >> XSK_UNALIGNED_BUF_OFFSET_SHIFT;
+> +	addr &= XSK_UNALIGNED_BUF_ADDR_MASK;
+> +	if (addr >= q->size ||
+> +	    xskq_crosses_non_contig_pg(umem, addr, length)) {
+> +		q->invalid_descs++;
+> +		return false;
+> +	}
+> +
+> +	return true;
+> +}
+> +
+> +static inline u64 *xskq_validate_addr(struct xsk_queue *q, u64 *addr,
+> +				      struct xdp_umem *umem)
+>  {
+>  	while (q->cons_tail != q->cons_head) {
+>  		struct xdp_umem_ring *ring = (struct xdp_umem_ring *)q->ring;
+>  		unsigned int idx = q->cons_tail & q->ring_mask;
+>
+>  		*addr = READ_ONCE(ring->desc[idx]) & q->chunk_mask> +
+> +		if (umem->flags & XDP_UMEM_UNALIGNED_CHUNKS) {
+> +			if (xskq_is_valid_addr_unaligned(q, *addr,
+> +							 umem->chunk_size_nohr,
+> +							 umem))
+> +				return addr;
+> +			goto out;
+> +		}
+> +
+>  		if (xskq_is_valid_addr(q, *addr))
+>  			return addr;
+>
+> +out:
+>  		q->cons_tail++;
+>  	}
+>
+>  	return NULL;
+>  }
+>
+> -static inline u64 *xskq_peek_addr(struct xsk_queue *q, u64 *addr)
+> +static inline u64 *xskq_peek_addr(struct xsk_queue *q, u64 *addr,
+> +				  struct xdp_umem *umem)
+>  {
+>  	if (q->cons_tail == q->cons_head) {
+>  		smp_mb(); /* D, matches A */
+> @@ -170,7 +207,7 @@ static inline u64 *xskq_peek_addr(struct xsk_queue 
+> *q, u64 *addr)
+>  		smp_rmb();
+>  	}
+>
+> -	return xskq_validate_addr(q, addr);
+> +	return xskq_validate_addr(q, addr, umem);
+>  }
+>
+>  static inline void xskq_discard_addr(struct xsk_queue *q)
+> @@ -229,8 +266,21 @@ static inline int xskq_reserve_addr(struct 
+> xsk_queue *q)
+>
+>  /* Rx/Tx queue */
+>
+> -static inline bool xskq_is_valid_desc(struct xsk_queue *q, struct 
+> xdp_desc *d)
+> +static inline bool xskq_is_valid_desc(struct xsk_queue *q, struct 
+> xdp_desc *d,
+> +				      struct xdp_umem *umem)
+>  {
+> +	if (umem->flags & XDP_UMEM_UNALIGNED_CHUNKS) {
+> +		if (!xskq_is_valid_addr_unaligned(q, d->addr, d->len, umem))
+> +			return false;
+> +
+> +		if (d->len > umem->chunk_size_nohr || d->options) {
+> +			q->invalid_descs++;
+> +			return false;
+> +		}
+> +
+> +		return true;
+> +	}
+> +
+>  	if (!xskq_is_valid_addr(q, d->addr))
+>  		return false;
+>
+> @@ -244,14 +294,15 @@ static inline bool xskq_is_valid_desc(struct 
+> xsk_queue *q, struct xdp_desc *d)
+>  }
+>
+>  static inline struct xdp_desc *xskq_validate_desc(struct xsk_queue 
+> *q,
+> -						  struct xdp_desc *desc)
+> +						  struct xdp_desc *desc,
+> +						  struct xdp_umem *umem)
+>  {
+>  	while (q->cons_tail != q->cons_head) {
+>  		struct xdp_rxtx_ring *ring = (struct xdp_rxtx_ring *)q->ring;
+>  		unsigned int idx = q->cons_tail & q->ring_mask;
+>
+>  		*desc = READ_ONCE(ring->desc[idx]);
+> -		if (xskq_is_valid_desc(q, desc))
+> +		if (xskq_is_valid_desc(q, desc, umem))
+>  			return desc;
+>
+>  		q->cons_tail++;
+> @@ -261,7 +312,8 @@ static inline struct xdp_desc 
+> *xskq_validate_desc(struct xsk_queue *q,
+>  }
+>
+>  static inline struct xdp_desc *xskq_peek_desc(struct xsk_queue *q,
+> -					      struct xdp_desc *desc)
+> +					      struct xdp_desc *desc,
+> +					      struct xdp_umem *umem)
+>  {
+>  	if (q->cons_tail == q->cons_head) {
+>  		smp_mb(); /* D, matches A */
+> @@ -272,7 +324,7 @@ static inline struct xdp_desc 
+> *xskq_peek_desc(struct xsk_queue *q,
+>  		smp_rmb(); /* C, matches B */
+>  	}
+>
+> -	return xskq_validate_desc(q, desc);
+> +	return xskq_validate_desc(q, desc, umem);
+>  }
+>
+>  static inline void xskq_discard_desc(struct xsk_queue *q)
+> -- 
+> 2.17.1
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
