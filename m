@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0C9674B00
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jul 2019 12:01:19 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7655A74B34
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jul 2019 12:08:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 01EAE86DB4;
-	Thu, 25 Jul 2019 10:01:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 24FCC2042B;
+	Thu, 25 Jul 2019 10:08:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id igcyB8v9lDOG; Thu, 25 Jul 2019 10:01:17 +0000 (UTC)
+	with ESMTP id FrDxFJws2yT0; Thu, 25 Jul 2019 10:08:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 97F3686C4D;
-	Thu, 25 Jul 2019 10:01:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 18EBA220B2;
+	Thu, 25 Jul 2019 10:08:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8B2781BF577
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:01:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C92C71BF337
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:08:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8672F86267
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:01:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B8F8086274
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:08:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Dg-FI0KKJ_DR for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jul 2019 10:01:14 +0000 (UTC)
-X-Greylist: delayed 00:18:56 by SQLgrey-1.7.6
-Received: from EUR02-AM5-obe.outbound.protection.outlook.com
- (mail-eopbgr00076.outbound.protection.outlook.com [40.107.0.76])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 01A548625F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:01:13 +0000 (UTC)
+ with ESMTP id lPOGYCTrYR9V for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Jul 2019 10:08:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from EUR04-DB3-obe.outbound.protection.outlook.com
+ (mail-eopbgr60061.outbound.protection.outlook.com [40.107.6.61])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 373908626E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 10:08:28 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SilBkdzf0V/rK87jk6apEsoiqROZplAF726e1DW1KhnpIvYU/YJWM12+7qgq69m4f8E4pvtn26l6nV2a1ZJ8atPkazK5qdKA0c5BMUPdVE/Evs1W0jYZj3Hw8H4EdxTWmHOo3SMx8gWny/eNE05lihFjKqAilS2QMc+9tHsQDQCNjp8FY1Zd6pkkPfx0vd4jYj69U/6jLwywRJsqhkr4pFecH6kA1rZJdw+kCvKftCyO0d4MO+sIsQGBelJuTqFJ+Eok+zB2v2MmpMZtXyV1LMV3NeMOd+lrzLEToP8X/cUKlA+OS3QxD5cQvJ38nrzcqNta7Oi/WTUN/BuTBjoC5w==
+ b=VtXVItcQHfbVhL5Wi7hdtnHzA4zkn6PLVx5GKgix+YvWloCo1vAKsWvCOOMFGNqV6UjtjQ/yWq0DaM9dhMNSNJwixsxdS4iWyeJLP4wZZER8WuAgDP6OKyrK38hYtEYQbEelzfyIXzS3cjjKR4dtIZ5G9s3cxH7ehYTG5Bd6kf6ow615qSfD9Jm2H6GMlzcoHJFPxW/ucop+/74MbzbZc08ijszsvwrCUqWLH5IXs5gNfWWobeFMO/fxyLKORZBZ//Y7gpKr+r26XUEnLxJVb6oOvyvmjGTpZc9LA69erGyYXDTX7rJjodhLAnqUIB/NmxLldgAEXZx3iyUHE1J+2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oa4BL+pcH746unMKbd8VaveHRzvluUZVech+tPJYXCw=;
- b=CNl7uGwvEmioRe6AzSJUV0dJ70Pd29DvLAzLLCzle5Z63Nte2B0eGCfGPlBD90VvSZYtOSMaKxeYWiXUuIcN2Hn/6S9hjA6+nEfT07g+/VXixiuYy6Ls1xw+w3a87xgT7UnYN9cE/tRGOQQbsYg19Zu9C3KFhmHDMoIwqmILpy56KD3YrGpFRZhfBKjq9Q6FJHeK+h5w9eaC3WMnnv2KB+Y7KHyZ7g+OPxsPwYD2xiRy0pPT0Hon6yIPtj8bw9zg6vdCtiXf6bUpLWNEr+nqjNSYFN5Pq/CxmdkcHOZpTVGp7zgKMPzJuKKsQ5QdTkxtb6G32YBg+CWj8w89aNci+Q==
+ bh=PTNhFr9dJLIlK/cGncRUaE7IGVacxqUNqPuR8QQUIAs=;
+ b=CADPglpcSYBjlL6hmjj+wXXlv1p/bujtlNu3eub9maYBHQ+B93EzfFDaMvsUo8ZvPRNS254gesFxNHYos0gCp9GKfnGPLJlEL/TlusJJJPAzefJOjJIWlTdIWglnIcyx4Et3XaN1/zWE+2a+jTnBVaGvGqdsuxNUmnz9V2EAY1Vijhao1VfS6S2uqa4aI6RGzgjCspXYeIvR12A5U3pVsDpYDLdurVPt0GgI2Wcp7dF0YPAVQ5S+NR0UXShdMPVTcsd2JqtDt4ucs3Y/qwdBkCmFoN+p5AgR/a6XHlATFrRgko5UFYZivXoRu5DlmGQ0RqXrpnRAq9TxqYCgq/EYIg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
  smtp.mailfrom=mellanox.com;dmarc=pass action=none
  header.from=mellanox.com;dkim=pass header.d=mellanox.com;arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oa4BL+pcH746unMKbd8VaveHRzvluUZVech+tPJYXCw=;
- b=qwY2ZKM1UGxRjEdVDWrg/GgvwqQEaGSyjOSL3h8bGVENdN4aFDOpy2nXu7DN4QwO6dx5on4EMeS3F1taiamq23OWCcYps2EznFhiTOiTh5fBhFHhHBC0X71QIpKx1e/ScufNgkWxRqffvuIzafTcGONr4dSmUmt+Q66w3hifSsU=
+ bh=PTNhFr9dJLIlK/cGncRUaE7IGVacxqUNqPuR8QQUIAs=;
+ b=j5FgmVVxBhKEXT/6aSdcrMh+gA3zs42vPBe+HWjSWS4rUzriXt2AMQt0zcLdVdvS6tFngq4oT/hulw1aGeF03fuzA0HKG+KQVkfEVI2jdGFA316nAN360O1Ra5agu0wyIESb+nuuM/m+EGrOVTACbZILvfK0Hkp4WxViHR40RJU=
 Received: from AM6PR05MB5879.eurprd05.prod.outlook.com (20.179.0.76) by
- AM6PR05MB6485.eurprd05.prod.outlook.com (20.179.7.84) with Microsoft SMTP
+ AM6PR05MB6006.eurprd05.prod.outlook.com (20.179.1.220) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2115.10; Thu, 25 Jul 2019 09:27:05 +0000
+ 15.20.2094.16; Thu, 25 Jul 2019 10:08:25 +0000
 Received: from AM6PR05MB5879.eurprd05.prod.outlook.com
  ([fe80::f9d8:38bc:4a18:f7a7]) by AM6PR05MB5879.eurprd05.prod.outlook.com
  ([fe80::f9d8:38bc:4a18:f7a7%5]) with mapi id 15.20.2115.005; Thu, 25 Jul 2019
- 09:27:04 +0000
+ 10:08:25 +0000
 From: Maxim Mikityanskiy <maximmi@mellanox.com>
 To: Kevin Laatz <kevin.laatz@intel.com>
 Thread-Topic: [PATCH bpf-next v3 03/11] xsk: add support to allow unaligned
  chunk placement
-Thread-Index: AQHVQiNkTVSHyKuk+0Kz8FHigNGopqbbEeCA
-Date: Thu, 25 Jul 2019 09:27:04 +0000
-Message-ID: <3af74e26-8899-cf1e-6fd4-5ea0bd349fc3@mellanox.com>
+Thread-Index: AQHVQiNkTVSHyKuk+0Kz8FHigNGopqbbHX4A
+Date: Thu, 25 Jul 2019 10:08:25 +0000
+Message-ID: <c3159739-2483-b2d8-541f-6f6611a782e1@mellanox.com>
 References: <20190716030637.5634-1-kevin.laatz@intel.com>
  <20190724051043.14348-1-kevin.laatz@intel.com>
  <20190724051043.14348-4-kevin.laatz@intel.com>
@@ -70,42 +70,42 @@ Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-clientproxiedby: MWHPR02CA0046.namprd02.prod.outlook.com
- (2603:10b6:301:60::35) To AM6PR05MB5879.eurprd05.prod.outlook.com
+x-clientproxiedby: HE1PR0902CA0005.eurprd09.prod.outlook.com
+ (2603:10a6:3:e5::15) To AM6PR05MB5879.eurprd05.prod.outlook.com
  (2603:10a6:20b:a2::12)
 authentication-results: spf=none (sender IP is )
  smtp.mailfrom=maximmi@mellanox.com; 
 x-ms-exchange-messagesentrepresentingtype: 1
 x-originating-ip: [159.224.90.213]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5936d91e-7ae0-438a-856f-08d710e241b9
+x-ms-office365-filtering-correlation-id: 7cd98e16-b59d-475e-0ed9-08d710e8083f
 x-ms-office365-filtering-ht: Tenant
 x-microsoft-antispam: BCL:0; PCL:0;
  RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
- SRVR:AM6PR05MB6485; 
-x-ms-traffictypediagnostic: AM6PR05MB6485:
-x-microsoft-antispam-prvs: <AM6PR05MB64852181B6C4872E85F89838D1C10@AM6PR05MB6485.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
+ SRVR:AM6PR05MB6006; 
+x-ms-traffictypediagnostic: AM6PR05MB6006:
+x-microsoft-antispam-prvs: <AM6PR05MB6006477F5FE4D67595A3AF61D1C10@AM6PR05MB6006.eurprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-forefront-prvs: 0109D382B0
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(366004)(346002)(39860400002)(396003)(376002)(136003)(199004)(189003)(86362001)(81166006)(31696002)(8936002)(81156014)(31686004)(53546011)(476003)(8676002)(5660300002)(71200400001)(71190400001)(305945005)(7736002)(25786009)(186003)(6506007)(6512007)(102836004)(26005)(6486002)(6436002)(446003)(486006)(7416002)(11346002)(2616005)(36756003)(68736007)(229853002)(6916009)(386003)(14454004)(316002)(54906003)(64756008)(66946007)(66446008)(478600001)(4326008)(76176011)(52116002)(53936002)(66556008)(66476007)(3846002)(2906002)(66066001)(6246003)(256004)(6116002)(14444005)(99286004)(55236004);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR05MB6485;
+ SFS:(10009020)(4636009)(366004)(39860400002)(346002)(396003)(376002)(136003)(199004)(189003)(36756003)(7736002)(11346002)(81166006)(31686004)(6116002)(446003)(2616005)(71190400001)(476003)(53936002)(71200400001)(3846002)(25786009)(26005)(6436002)(478600001)(81156014)(8676002)(186003)(6916009)(305945005)(6512007)(66556008)(7416002)(102836004)(55236004)(53546011)(8936002)(76176011)(52116002)(386003)(66066001)(99286004)(6486002)(486006)(256004)(14444005)(2906002)(31696002)(14454004)(4326008)(66446008)(66476007)(64756008)(229853002)(6246003)(66946007)(5660300002)(68736007)(316002)(6506007)(54906003)(86362001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:AM6PR05MB6006;
  H:AM6PR05MB5879.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; A:1; MX:1; 
 received-spf: None (protection.outlook.com: mellanox.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: trrKJJwlLZ6u7pnk6a1f+OWk48aUOhYX3MA1L+6bPMKHCXrgJzuU238I0VKuqN4B8y3VelNfRYBtK0aR0fb0NWQAYkCZqJ6CQIrpERkOYwb5O4qBR1HoRENvKLpOyQPhMiqfV7l/JVG/WrgNw5fzZoPh7O9yzp4UFvaYOH3NuSlznbulup3vDgPHqrx1HO1DeJNDLSwYD//zwMG5RfwiqNN/67zafJ7GU0Ilm5+BcCzB+9knBOl5vqzFsJ08lKoQEecl5XqDA2JaPmGvGJRTrjQxQQK23DI3AABdeOSQaop+XFMLNUmp6udt04iSDv1GnlraN4IkjfrpdT2cbGgdwP95zw2oDn+dT0+TgeTFoPsx9o9ui0yOhk8xaliS3vvzGEOC+cLpeqGnabhbfgVPkKxqrIHYayM30PA79st8H34=
-Content-ID: <B955B27B48288945A8CFA897782DE75C@eurprd05.prod.outlook.com>
+x-microsoft-antispam-message-info: Uxv2PolQVAnSC1eU03jCxlJoT+bggboP6Gvpkz2JRhqmqpw6xaRgPrDB6EdEOrs7OSRjMwmzmmTI0ILc5Bb8O7NBjAwuR7Y5eVLlpQRLrI55qz7Zxt7opoLAGhE8AaljxLP4Bsb8RivX4K55xwD+cWNvLOfGEXKoOwRMa6SDwlV/QcUiQaCJGBuXG5vRMYl028DxkmRYaTlNGCCED66yOC4g6rvMAnPO+oZv94mBomu0RjlFPy+Dd2Ty8kGY4OPMAzDW93gbj0HezXaNG4fOZ2Ni9WWH1Pr3gYJ+3OG7GYhSyyKOGxIjvMbRbbfsOwP373PgLOOsOnC3vogx86GFuXnGuwoUIjfO4TQ0g19kyZGRL4Svhf1UlVvbwJyIcOJQOV9pJlIV4SRB03YDxLNPisVCOY3icLnX8gcYciQIWMo=
+Content-ID: <91C4EAA889185746BE1F5CC56DC7F481@eurprd05.prod.outlook.com>
 MIME-Version: 1.0
 X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5936d91e-7ae0-438a-856f-08d710e241b9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 09:27:04.8544 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7cd98e16-b59d-475e-0ed9-08d710e8083f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2019 10:08:25.3901 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
 X-MS-Exchange-CrossTenant-userprincipalname: maximmi@mellanox.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB6485
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB6006
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 03/11] xsk: add support to
  allow unaligned chunk placement
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -173,69 +173,26 @@ On 2019-07-24 08:10, Kevin Laatz wrote:
 >   net/xdp/xsk_diag.c          |  2 +-
 >   net/xdp/xsk_queue.h         | 68 +++++++++++++++++++++++++----
 >   6 files changed, 170 insertions(+), 30 deletions(-)
-> 
 
 <...>
 
-> +/* If a buffer crosses a page boundary, we need to do 2 memcpy's, one for
-> + * each page. This is only required in copy mode.
-> + */
-> +static void __xsk_rcv_memcpy(struct xdp_umem *umem, u64 addr, void *from_buf,
-> +			     u32 len, u32 metalen)
+> +
+> +static inline u64 xsk_umem_handle_offset(struct xdp_umem *umem, u64 handle,
+> +					 u64 offset)
 > +{
-> +	void *to_buf = xdp_umem_get_data(umem, addr);
-> +
-> +	if (xskq_crosses_non_contig_pg(umem, addr, len + metalen)) {
-> +		void *next_pg_addr = umem->pages[(addr >> PAGE_SHIFT) + 1].addr;
-> +		u64 page_start = addr & (PAGE_SIZE - 1);
-> +		u64 first_len = PAGE_SIZE - (addr - page_start);
-
-Let addr = 0x12345, PAGE_SIZE = 0x1000, len = 0x1000. Your calculations 
-lead to page_start = 0x345, first_len = 0x1000 - 0x12000, which is 
-negative. I think page_start is calculated incorrectly (is ~ missing?).
-
-> +
-> +		memcpy(to_buf, from_buf, first_len + metalen);
-> +		memcpy(next_pg_addr, from_buf + first_len, len - first_len);
-> +
-> +		return;
-> +	}
-> +
-> +	memcpy(to_buf, from_buf, len + metalen);
-> +}
-> +
-
-<...>
-
-> +static inline bool xskq_is_valid_addr_unaligned(struct xsk_queue *q, u64 addr,
-> +						u64 length,
-> +						struct xdp_umem *umem)
-> +{
-> +	addr += addr >> XSK_UNALIGNED_BUF_OFFSET_SHIFT;
-> +	addr &= XSK_UNALIGNED_BUF_ADDR_MASK;
-> +	if (addr >= q->size ||
-
-Addresses like 0x00aaffffffffffff will pass the validation (0xaa + 
-0xffffffffffff will overflow mod 2^48 and become a small number), 
-whereas such addresses don't look valid for me.
-
-> +	    xskq_crosses_non_contig_pg(umem, addr, length)) {
-
-If the region is not contiguous, we cant RX into it - that's clear. 
-However, how can the userspace determine whether these two pages of UMEM 
-are mapped contiguously in the DMA space? Are we going to silently drop 
-descriptors to non-contiguous frames and leak them? Please explain how 
-to use it correctly from the application side.
-
-> +		q->invalid_descs++;
-> +		return false;
-> +	}
-> +
-> +	return true;
+> +	if (umem->flags & XDP_UMEM_UNALIGNED_CHUNKS)
+> +		return handle |= (offset << XSK_UNALIGNED_BUF_OFFSET_SHIFT);
+> +	else
+> +		return handle += offset;
 > +}
 
-<...>
+|= and += are not necessary here, | and + are enough.
 
+In the unaligned mode, it's not supported to run xsk_umem_handle_offset 
+multiple times, and it's assumed that offset is zero. I'll explain the 
+need in my following comment to patch 6.
+
+<...>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
