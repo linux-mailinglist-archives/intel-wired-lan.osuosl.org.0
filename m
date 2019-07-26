@@ -2,62 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6ABAE75F2B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 08:41:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACDD075F2C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 08:42:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DB3F48919E;
-	Fri, 26 Jul 2019 06:41:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60E25891B1;
+	Fri, 26 Jul 2019 06:42:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4eu3-L2N+Q8E; Fri, 26 Jul 2019 06:41:47 +0000 (UTC)
+	with ESMTP id 0saFmvcnHu6p; Fri, 26 Jul 2019 06:42:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A82FF891AD;
-	Fri, 26 Jul 2019 06:41:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 13FF6891AD;
+	Fri, 26 Jul 2019 06:42:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0D8A61BF36C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:41:45 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D39321BF36C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:41:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 00232891A5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:41:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D0072883C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:41:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3RTyoSO8G4y4 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jul 2019 06:41:44 +0000 (UTC)
+ with ESMTP id MPxnmtlt4uc1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jul 2019 06:41:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EA2B2891AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:41:43 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0DC37883BE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:41:59 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Jul 2019 23:41:42 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Jul 2019 23:41:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,309,1559545200"; d="scan'208";a="189547248"
-Received: from irsmsx105.ger.corp.intel.com ([163.33.3.28])
- by fmsmga001.fm.intel.com with ESMTP; 25 Jul 2019 23:41:41 -0700
+X-IronPort-AV: E=Sophos;i="5.64,309,1559545200"; d="scan'208";a="164482081"
+Received: from irsmsx109.ger.corp.intel.com ([163.33.3.23])
+ by orsmga008.jf.intel.com with ESMTP; 25 Jul 2019 23:41:56 -0700
 Received: from irsmsx104.ger.corp.intel.com ([169.254.5.40]) by
- irsmsx105.ger.corp.intel.com ([169.254.7.164]) with mapi id 14.03.0439.000;
- Fri, 26 Jul 2019 07:41:40 +0100
+ IRSMSX109.ger.corp.intel.com ([169.254.13.29]) with mapi id 14.03.0439.000;
+ Fri, 26 Jul 2019 07:41:55 +0100
 From: "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
 To: "Michael, Alice" <alice.michael@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Thread-Topic: [next PATCH S8 10/12] i40e: allow reset in recovery mode
-Thread-Index: AQHVQYPD+h8o/7UjLUWq8ZEpCvdT26bcdy5Q
-Date: Fri, 26 Jul 2019 06:41:40 +0000
-Message-ID: <D4D6338F2E4CB34CB91C5312C72AAC810D6E99@IRSMSX104.ger.corp.intel.com>
-References: <20190723100144.57435-1-alice.michael@intel.com>
- <20190723100144.57435-10-alice.michael@intel.com>
-In-Reply-To: <20190723100144.57435-10-alice.michael@intel.com>
+Thread-Index: AQHVQYPmRNuqkeixC0uvwj6CQ4I62qbcd12w
+Date: Fri, 26 Jul 2019 06:41:55 +0000
+Message-ID: <D4D6338F2E4CB34CB91C5312C72AAC810D6EA0@IRSMSX104.ger.corp.intel.com>
+References: <20190723100345.57522-1-alice.michael@intel.com>
+ <20190723100345.57522-10-alice.michael@intel.com>
+In-Reply-To: <20190723100345.57522-10-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWYxMjQ2MmMtZjA0Yy00NWM1LTg5YmEtYmI2ZTg3OGRlMDZiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRm1xQUJYT3gxc1lONXdSVGJCSjJHQmhhbnlcLzlMVmFTem9ycXgyajFTdFo3dCtMZzNNXC9IczVta2lIRWJ2enVRIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmQzZmZkMDQtYzljNy00MTgzLWFmYjctM2MwNzRiODkyZWVjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoialR6ampGaTVqQkJHQSt2SE1ybTNxTWdXS1B3NWpEak81U1puckFsd3paQXlXNjRtU0UzZGVpcjc5ZlV5elNzZSJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.600.7
@@ -87,7 +87,7 @@ ACK
 
 -----Original Message-----
 From: Michael, Alice 
-Sent: Tuesday, July 23, 2019 12:02 PM
+Sent: Tuesday, July 23, 2019 12:04 PM
 To: Michael, Alice <alice.michael@intel.com>; intel-wired-lan@lists.osuosl.org
 Cc: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>
 Subject: [next PATCH S8 10/12] i40e: allow reset in recovery mode
