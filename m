@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AEC777398
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 23:45:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BCC447739A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 23:45:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4FA7087CB3;
-	Fri, 26 Jul 2019 21:45:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 668A987C28;
+	Fri, 26 Jul 2019 21:45:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zpgBfo5xvpOj; Fri, 26 Jul 2019 21:45:20 +0000 (UTC)
+	with ESMTP id ofBZWTnFB4dy; Fri, 26 Jul 2019 21:45:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C22C187C41;
-	Fri, 26 Jul 2019 21:45:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F7FA87C41;
+	Fri, 26 Jul 2019 21:45:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0C5941BF361
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:45:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D470C1BF361
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:45:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 04554898ED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:45:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CEC1120018
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:45:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P6cuWbB6hIbv for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jul 2019 21:45:17 +0000 (UTC)
+ with ESMTP id 7SVJ6I0AoXcv for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jul 2019 21:45:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1CC02898D6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:45:17 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id 39CAD1FF11
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:45:47 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2019 14:45:16 -0700
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Jul 2019 14:45:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,312,1559545200"; d="scan'208";a="164723313"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga008.jf.intel.com with ESMTP; 26 Jul 2019 14:45:16 -0700
-Received: from orsmsx124.amr.corp.intel.com (10.22.240.120) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 26 Jul 2019 14:45:16 -0700
+X-IronPort-AV: E=Sophos;i="5.64,312,1559545200"; d="scan'208";a="322170341"
+Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
+ by orsmga004.jf.intel.com with ESMTP; 26 Jul 2019 14:45:46 -0700
+Received: from orsmsx159.amr.corp.intel.com (10.22.240.24) by
+ ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 26 Jul 2019 14:45:45 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX124.amr.corp.intel.com ([169.254.2.63]) with mapi id 14.03.0439.000;
- Fri, 26 Jul 2019 14:45:15 -0700
+ ORSMSX159.amr.corp.intel.com ([169.254.11.26]) with mapi id 14.03.0439.000;
+ Fri, 26 Jul 2019 14:45:44 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S8 03/12] i40e:
- check_recovery_mode had wrong if statement
-Thread-Index: AQHVQYOkNzwMAsHFjUCOS3NPkytzZKbdc7pg
-Date: Fri, 26 Jul 2019 21:45:16 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40CE78@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next PATCH S8 04/12] i40e: Update FVL FW
+ API version to 1.9
+Thread-Index: AQHVQYO3xo2ldM6N502SS1h2R5dPcqbdc91A
+Date: Fri, 26 Jul 2019 21:45:44 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40CE88@ORSMSX104.amr.corp.intel.com>
 References: <20190723100144.57435-1-alice.michael@intel.com>
- <20190723100144.57435-3-alice.michael@intel.com>
-In-Reply-To: <20190723100144.57435-3-alice.michael@intel.com>
+ <20190723100144.57435-4-alice.michael@intel.com>
+In-Reply-To: <20190723100144.57435-4-alice.michael@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiY2RkODM2MWMtYjdjYS00ZGMwLTkyZTAtYmMwNDU5YTY5NjFkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWHYrRFRWZDFxTWpEMVFTY242NExiMjVFS0FIRkZWK3NvOUQ3YjRHdXYyam1BSG9LWkEySStoRjdjVzZCZCtjaSJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiM2UwMWZkNjItNjc4ZS00OTIwLTgwOWItODY3MDhlNDc3ZTc2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVHRqVCtkOUFhM2t4M1RteG1wZEEyUmdWMUpneGk4ckVjTFg0V2RLNG1ZTnZVZTFCZ0lCelJiQzFBZ0lrd2t2bCJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S8 03/12] i40e:
- check_recovery_mode had wrong if statement
+Subject: Re: [Intel-wired-lan] [next PATCH S8 04/12] i40e: Update FVL FW API
+ version to 1.9
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,24 +92,19 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Tuesday, July 23, 2019 3:02 AM
 > To: Michael, Alice <alice.michael@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Cc: Podlawski, Adrian <adrian.podlawski@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S8 03/12] i40e: check_recovery_mode
-> had wrong if statement
+> Cc: Azarewicz, Piotr <piotr.azarewicz@intel.com>
+> Subject: [Intel-wired-lan] [next PATCH S8 04/12] i40e: Update FVL FW API
+> version to 1.9
 > 
-> From: Adrian Podlawski <adrian.podlawski@intel.com>
+> From: Piotr Azarewicz <piotr.azarewicz@intel.com>
 > 
-> Function check_recovery_mode had wrong if statement.
-> Now we check proper FWS1B register values, which are responsible for the
-> recovery mode. Recovery mode has 4 values for FVL and 2 for FPK.
-> That's why we need 6 different flags which are defined in shared code.
-> Now in if statement we recognize type of mac address and register value.
-> Without those changes driver could show wrong state.
+> Upcoming FVL FW increment API version to 1.9 due to Extend PHY access AQ
+> command support. SW is ready for that support as well.
 > 
-> Signed-off-by: Adrian Podlawski <adrian.podlawski@intel.com>
+> Signed-off-by: Piotr Azarewicz <piotr.azarewicz@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c     | 17 ++++++++++++++---
->  drivers/net/ethernet/intel/i40e/i40e_register.h |  6 ++++++
->  2 files changed, 20 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
