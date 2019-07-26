@@ -1,67 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1533A75A7A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 00:17:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A03F975F32
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 08:45:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4927A874DA;
-	Thu, 25 Jul 2019 22:17:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6024488391;
+	Fri, 26 Jul 2019 06:45:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CpfXNrtpkJM4; Thu, 25 Jul 2019 22:17:12 +0000 (UTC)
+	with ESMTP id gKerKmmYGWhs; Fri, 26 Jul 2019 06:45:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BD025874F7;
-	Thu, 25 Jul 2019 22:17:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5CD9488393;
+	Fri, 26 Jul 2019 06:45:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 763AA1BF420
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 21:12:02 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 494A31BF36C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:45:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 71F1387487
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 21:12:02 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 41DD92E2BC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:45:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zRI12UR5kljV for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jul 2019 21:12:01 +0000 (UTC)
-X-Greylist: delayed 00:05:16 by SQLgrey-1.7.6
-Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com
- [209.85.221.47])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6A19F87482
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 21:12:01 +0000 (UTC)
-Received: by mail-wr1-f47.google.com with SMTP id n4so52255210wrs.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2019 14:12:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mozilla.com; s=google;
- h=mime-version:from:date:message-id:subject:to;
- bh=NFDVoJqWhDirnH8E/pgkfOasK9dW4PbEYiK9caiy5Co=;
- b=fgTgev7Zs0K4igWPL7W4A3oLgmrElLU9Ktxr3cM0DKK1eqYkRqSrXUkOR4KMuLPMpe
- +KTcQWBDQOci65UoCzi5+MUztGaGv8qAE9VBZUxxYIFqVdFxMZ4rbRT5lcoU2B/A4NHl
- k+05ky5h6zErfi2/WF/zp7j0d1jmXvm51Y57M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=NFDVoJqWhDirnH8E/pgkfOasK9dW4PbEYiK9caiy5Co=;
- b=Ej3T2KG9AQF4Tn3Z8yvUB0i2JiZ4d7HVrF8aq+Lb0bzIWKqGRGTQVOcbDGsANSNmLT
- OQyMi13SclYGzaEptVXI4UBPRjCK91lzJXpOMefAoa9WEO0tLHZoQ9lPJ0WL8lqkAQ42
- TCrrE7uNY+dCNW9m2xrRMj1A6utip/Ikz/QJBRbuCzDp6tvjo3LUyOIIR7Ig6X482+RS
- XJ+gJWCrxrbLt5CvloXVJY0KrxUN3UiUdCHHbFD0jCDTE5TnOqQMM3Kc8GQeXa+VbG9z
- XCf2dZKq2jXeiLmJgYXgJx27/sw4XJsuc4umka2YLkVscHocqrZgIIO0ASMsU8qY93+K
- v2oQ==
-X-Gm-Message-State: APjAAAVBO0uz1F21razaCTVDiAk6IpCTLz0dgh1qSeO/6Bv8A2lus44b
- K5NJqAlb1poXuZNrrzffBted5hdvpG4dzo2N0V1bdaX/bT9qHw==
-X-Google-Smtp-Source: APXvYqxq2nBMQjAlXo2pQ5JNkkyH2hasMaCZys5O07DX3TNapNnP85/jj65/qwy7qxyqOKiNxwNeVQvt1YlGzkuyN+Q=
-X-Received: by 2002:a5d:668e:: with SMTP id l14mr39638493wru.156.1564088802865; 
- Thu, 25 Jul 2019 14:06:42 -0700 (PDT)
+ with ESMTP id Nvm-S+Qe4bbT for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jul 2019 06:45:23 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2A1CC2E2B2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 06:45:23 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Jul 2019 23:45:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,309,1559545200"; d="scan'208";a="198202090"
+Received: from irsmsx107.ger.corp.intel.com ([163.33.3.99])
+ by fmsmga002.fm.intel.com with ESMTP; 25 Jul 2019 23:45:16 -0700
+Received: from irsmsx104.ger.corp.intel.com ([169.254.5.40]) by
+ IRSMSX107.ger.corp.intel.com ([169.254.10.251]) with mapi id 14.03.0439.000;
+ Fri, 26 Jul 2019 07:41:03 +0100
+From: "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
+To: "Michael, Alice" <alice.michael@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [next PATCH S8 09/12] i40e: make i40e_set_mac_type() public
+Thread-Index: AQHVQYOxhwwXqTlAu0y8BfPsYesQ+6bcdx4Q
+Date: Fri, 26 Jul 2019 06:41:02 +0000
+Message-ID: <D4D6338F2E4CB34CB91C5312C72AAC810D6E86@IRSMSX104.ger.corp.intel.com>
+References: <20190723100144.57435-1-alice.michael@intel.com>
+ <20190723100144.57435-9-alice.michael@intel.com>
+In-Reply-To: <20190723100144.57435-9-alice.michael@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWM0OTAwOTctZjllNi00MzE3LTg4YmYtNDEyZjIzZThkZDJiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNFFIUTRsODNvalJJUERjK2x1emd5bGpcLytZWFdKUXdzVTArK3E3QUduazMyUW8wcEJPZXJZN3hmUVFxb2lFN3UifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.0.600.7
+dlp-reaction: no-action
+x-originating-ip: [163.33.239.181]
 MIME-Version: 1.0
-From: Michal Purzynski <michal@mozilla.com>
-Date: Thu, 25 Jul 2019 14:06:06 -0700
-Message-ID: <CADL_+2hTEZ5pyQ4LeiiMY-5BAH=-2Fay_-X8oAy=W4YrN040Wg@mail.gmail.com>
-To: intel-wired-lan@lists.osuosl.org
-X-Mailman-Approved-At: Thu, 25 Jul 2019 22:17:09 +0000
-Subject: [Intel-wired-lan] (no subject)
+Subject: Re: [Intel-wired-lan] [next PATCH S8 09/12] i40e: make
+ i40e_set_mac_type() public
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,131 +78,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7063012435766239094=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============7063012435766239094==
-Content-Type: multipart/alternative; boundary="0000000000007e1cc5058e87cd8f"
+ACK
 
---0000000000007e1cc5058e87cd8f
-Content-Type: text/plain; charset="UTF-8"
+-----Original Message-----
+From: Michael, Alice 
+Sent: Tuesday, July 23, 2019 12:02 PM
+To: Michael, Alice <alice.michael@intel.com>; intel-wired-lan@lists.osuosl.org
+Cc: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>
+Subject: [next PATCH S8 09/12] i40e: make i40e_set_mac_type() public
 
-Hey, I found some behavior of the flow-director that looks like a bug and
-wanted to share.
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 
-When trying to drop some GRE traffic with a rule like this (where
-10.251.0.194 is the source of the traffic)
+Make i40e_set_mac_type() public. i40e driver requires i40e_set_mac_type() to be public. It is required for recovery mode handling. Without this patch recovery mode could not be detected in i40e_probe().
 
-ethtool -N enp17s0f0 flow-type ip4 src-ip 10.251.0.194 action -1
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_common.c    | 2 +-
+ drivers/net/ethernet/intel/i40e/i40e_prototype.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-The following rule has been created
-
-root@nsm1~ # ethtool -u enp17s0f0
-4 RX rings available
-Total 1 rules
-
-Filter: 7679
-Rule Type: Raw IPv4
-Src IP addr: 10.251.0.194 mask: 0.0.0.0
-Dest IP addr: 0.0.0.0 mask: 255.255.255.255
-TOS: 0x0 mask: 0xff
-Protocol: 0 mask: 0xff
-L4 bytes: 0x0 mask: 0xffffffff
-Action: Drop
-
-Traffic from 10.251.0.194 is not being dropped at all - I can see it with
-tcpdump.
-
-20:27:46.579094 00:0b:86:b5:69:17 > 70:3a:0e:c9:f2:ea, ethertype 802.1Q
-(0x8100), length 106: vlan 206, p 0, ethertype IPv4, (tos 0x0, ttl 63, id
-51921, offset 0, flags [DF], proto GRE (47), length 88)
-    10.251.0.194 > 10.251.1.136: GREv0, Flags [none], proto Loopback
-(0x9000), length 68
-gre-proto-0x9000
-
-ntuple filters are enabled (and so is RSS with a low-entropy hash key)
-
-ntuple-filters: on
-receive-hashing: on
-
-The fdir_sb_match counter keeps increasing, but at a much slower rate than
-expected. It goes up by like 1 packets every N seconds - and I have a
-steady flow of those GRE packets (over 100/sec).
-
-port.fdir_sb_match: 295983
-port.fdir_sb_status: 1
-
-I also tried including the Vlan ID, but the documentation says it's ignored
-- and indeed, trying to insert it when a non-vlan rule exists already,
-results in a message
-
-root@nsm1~ # ethtool -N enp17s0f0 flow-type ip4 src-ip 10.251.0.194 vlan
-206 action -1
-rmgr: Cannot insert RX class rule: Invalid argument
-
-The exact same filter works on cards from different vendors, like Mellanox.
-Could it be that I'm running into some FD limits here? If you need a pcap,
-let me know and I'll share - off the list.
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+index 7af1b7477140..de996a80013e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_common.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+@@ -13,7 +13,7 @@
+  * This function sets the mac type of the adapter based on the
+  * vendor ID and device ID stored in the hw structure.
+  **/
+-static i40e_status i40e_set_mac_type(struct i40e_hw *hw)
++i40e_status i40e_set_mac_type(struct i40e_hw *hw)
+ {
+ 	i40e_status status = 0;
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+index eac88bcc6c06..9c810d54df1c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+@@ -326,6 +326,8 @@ void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode,  void i40e_nvmupd_clear_wait_state(struct i40e_hw *hw);  void i40e_set_pci_config_data(struct i40e_hw *hw, u16 link_status);
+ 
++i40e_status i40e_set_mac_type(struct i40e_hw *hw);
++
+ extern struct i40e_rx_ptype_decoded i40e_ptype_lookup[];
+ 
+ static inline struct i40e_rx_ptype_decoded decode_rx_desc_ptype(u8 ptype)
 --
-Michal Purzynski
-Threat Management
-Mozilla Corporation
+2.21.0
 
---0000000000007e1cc5058e87cd8f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+--------------------------------------------------------------------
 
-<div dir=3D"ltr"><div><div>Hey, I found some behavior of the flow-director =
-that looks=20
-like a bug and wanted to share.</div><div><br></div><div>When trying to dro=
-p some GRE traffic with a rule like this (where 10.251.0.194 is the source =
-of the traffic)<br></div><div><br></div><div>ethtool -N enp17s0f0 flow-type=
- ip4 src-ip 10.251.0.194 action -1</div><div><br></div><div>The following r=
-ule has been created<br></div><div><br></div></div><div>root@nsm1~ # ethtoo=
-l -u enp17s0f0</div>4 RX rings available<br>Total 1 rules<br><br>Filter: 76=
-79<br>	Rule Type: Raw IPv4<br>	Src IP addr: 10.251.0.194 mask: 0.0.0.0<br>	=
-Dest IP addr: 0.0.0.0 mask: 255.255.255.255<br>	TOS: 0x0 mask: 0xff<br>	Pro=
-tocol: 0 mask: 0xff<br>	L4 bytes: 0x0 mask: 0xffffffff<br><div>	Action: Dro=
-p</div><div><br></div><div>Traffic from 10.251.0.194 is not being dropped a=
-t all - I can see it with tcpdump.</div><div><br></div><div>20:27:46.579094=
- 00:0b:86:b5:69:17 &gt; 70:3a:0e:c9:f2:ea, ethertype=20
-802.1Q (0x8100), length 106: vlan 206, p 0, ethertype IPv4, (tos 0x0,=20
-ttl 63, id 51921, offset 0, flags [DF], proto GRE (47), length 88)<br>=C2=
-=A0 =C2=A0 10.251.0.194 &gt; <a href=3D"http://10.251.1.136" target=3D"_bla=
-nk">10.251.1.136</a>: GREv0, Flags [none], proto Loopback (0x9000), length =
-68<br>	gre-proto-0x9000</div><div><br></div><div>ntuple filters are enabled=
- (and so is RSS with a low-entropy hash key)<br></div><div><br></div><div>n=
-tuple-filters: on<br>receive-hashing: on</div><div><br></div><div>The
- fdir_sb_match counter keeps increasing, but at a much slower rate than=20
-expected. It goes up by like 1 packets every N seconds - and I have a=20
-steady flow of those GRE packets (over 100/sec).<br></div><div><br></div><d=
-iv>port.fdir_sb_match: 295983<br>port.fdir_sb_status: 1</div><div><br></div=
-><div>I
- also tried including the Vlan ID, but the documentation says it&#39;s=20
-ignored - and indeed, trying to insert it when a non-vlan rule exists=20
-already, results in a message<br></div><div><br></div>root@nsm1~ # ethtool =
--N enp17s0f0 flow-type ip4 src-ip 10.251.0.194 vlan 206 action -1<br><div>r=
-mgr: Cannot insert RX class rule: Invalid argument</div><div><br></div><div=
->The
- exact same filter works on cards from different vendors, like Mellanox.
- Could it be that I&#39;m running into some FD limits here? If you need a p=
-cap, let me know and I&#39;ll share - off the list.<br></div><div><br></div=
-><div>--</div><div>Michal Purzynski</div><div>Threat Management</div><div>M=
-ozilla Corporation</div></div>
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
 
---0000000000007e1cc5058e87cd8f--
-
---===============7063012435766239094==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek
+przegladanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by
+others is strictly prohibited.
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7063012435766239094==--
