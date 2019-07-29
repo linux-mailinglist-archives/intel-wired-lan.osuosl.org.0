@@ -2,72 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB1B7773C7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2019 23:56:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C8A979229
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Jul 2019 19:33:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 11D1288CF7;
-	Fri, 26 Jul 2019 21:56:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B7362866F6;
+	Mon, 29 Jul 2019 17:33:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MDRjv4pmUTbC; Fri, 26 Jul 2019 21:56:08 +0000 (UTC)
+	with ESMTP id NfSa-3Rfo4Wx; Mon, 29 Jul 2019 17:33:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5B1A188CD6;
-	Fri, 26 Jul 2019 21:56:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 91D538671B;
+	Mon, 29 Jul 2019 17:33:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 218241BF361
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:56:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A66A81BF2EC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jul 2019 17:33:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1B200898E2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:56:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9E1EC2048D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jul 2019 17:33:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lu2mUifXfrtU for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jul 2019 21:56:06 +0000 (UTC)
+ with ESMTP id M7ytYGbX01xK for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 29 Jul 2019 17:33:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id ABBDD898D9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2019 21:56:06 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 301432002D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jul 2019 17:33:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2019 14:56:06 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Jul 2019 10:33:17 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,312,1559545200"; d="scan'208";a="189775966"
-Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
- by fmsmga001.fm.intel.com with ESMTP; 26 Jul 2019 14:56:06 -0700
-Received: from orsmsx154.amr.corp.intel.com (10.22.226.12) by
- ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 26 Jul 2019 14:56:05 -0700
-Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX154.amr.corp.intel.com ([169.254.11.96]) with mapi id 14.03.0439.000;
- Fri, 26 Jul 2019 14:56:05 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next PATCH S8 01/12] i40e: fix shifts of
- signed values
-Thread-Index: AQHVQYOh48DtDTA6TESk2CCpmVpInqbddrxg
-Date: Fri, 26 Jul 2019 21:56:05 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40CF26@ORSMSX104.amr.corp.intel.com>
-References: <20190723100144.57435-1-alice.michael@intel.com>
-In-Reply-To: <20190723100144.57435-1-alice.michael@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjIyMmJhNWEtNDI3My00MzJkLWFjNGMtODJlMmEzYzVkZjUwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoic0VpTkRwQkVENVkzWjhvY1JUSXBkbVRLYnh5cDRuSTZOYnpDSkJkTExoVDUwNUFjdkgyYTZlOWJWZUlocHZsNCJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.400.15
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
+X-IronPort-AV: E=Sophos;i="5.64,323,1559545200"; d="scan'208";a="179447234"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by FMSMGA003.fm.intel.com with ESMTP; 29 Jul 2019 10:33:16 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 29 Jul 2019 02:04:43 -0700
+Message-Id: <20190729090454.5501-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S8 01/12] i40e: fix shifts of
- signed values
+Subject: [Intel-wired-lan] [PATCH S24 v2 01/12] ice: Allow egress control
+ packets from PF_VSI
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,29 +65,73 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Alice Michael
-> Sent: Tuesday, July 23, 2019 3:02 AM
-> To: Michael, Alice <alice.michael@intel.com>; intel-wired-
-> lan@lists.osuosl.org
-> Cc: Xing, Beilei <beilei.xing@intel.com>; Yigit, Ferruh
-> <ferruh.yigit@intel.com>
-> Subject: [Intel-wired-lan] [next PATCH S8 01/12] i40e: fix shifts of signed
-> values
-> 
-> From: Beilei Xing <beilei.xing@intel.com>
-> 
-> This patch fixes following error reported by cppcheck:
-> (error) Shifting signed 32-bit value by 31 bits is undefined behaviour
-> 
-> Signed-off-by: Ferruh Yigit <ferruh.yigit@intel.com>
-> ---
->  .../net/ethernet/intel/i40e/i40e_register.h   | 24 +++++++++----------
->  1 file changed, 12 insertions(+), 12 deletions(-)
+From: Dave Ertman <david.m.ertman@intel.com>
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+For control packets (i.e. LLDP packets) to be able to egress
+from the main VSI, a bit has to be set in the TX_descriptor.
+This should only be done for the main VSI and only if the
+FW LLDP agent is disabled.  A bit to allow this also has to
+be set in the VSI context.
 
+Add the logic to add the necessary bits in the VSI context
+for the PF_VSI and the TX_descriptors for control packets
+egressing the PF_VSI.
+
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lib.c  |  7 +++++++
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 11 ++++++++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index a62496a74a69..6b5882c49004 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1021,6 +1021,13 @@ static int ice_vsi_init(struct ice_vsi *vsi, bool init_vsi)
+ 			ICE_AQ_VSI_SEC_FLAG_ENA_MAC_ANTI_SPOOF;
+ 	}
+ 
++	/* Allow control frames out of main VSI */
++	if (vsi->type == ICE_VSI_PF) {
++		ctxt->info.sec_flags |= ICE_AQ_VSI_SEC_FLAG_ALLOW_DEST_OVRD;
++		ctxt->info.valid_sections |=
++			cpu_to_le16(ICE_AQ_VSI_PROP_SECURITY_VALID);
++	}
++
+ 	if (init_vsi) {
+ 		ret = ice_add_vsi(hw, vsi->idx, ctxt, NULL);
+ 		if (ret) {
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 75b0afe02015..190871b59c54 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -2107,6 +2107,7 @@ static netdev_tx_t
+ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
+ {
+ 	struct ice_tx_offload_params offload = { 0 };
++	struct ice_vsi *vsi = tx_ring->vsi;
+ 	struct ice_tx_buf *first;
+ 	unsigned int count;
+ 	int tso, csum;
+@@ -2154,7 +2155,15 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_ring *tx_ring)
+ 	if (csum < 0)
+ 		goto out_drop;
+ 
+-	if (tso || offload.cd_tunnel_params) {
++	/* allow CONTROL frames egress from main VSI if FW LLDP disabled */
++	if (unlikely(skb->priority == TC_PRIO_CONTROL &&
++		     vsi->type == ICE_VSI_PF &&
++		     vsi->port_info->is_sw_lldp))
++		offload.cd_qw1 |= (u64)(ICE_TX_DESC_DTYPE_CTX |
++					ICE_TX_CTX_DESC_SWTCH_UPLINK <<
++					ICE_TXD_CTX_QW1_CMD_S);
++
++	if (offload.cd_qw1 & ICE_TX_DESC_DTYPE_CTX) {
+ 		struct ice_tx_ctx_desc *cdesc;
+ 		int i = tx_ring->next_to_use;
+ 
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
