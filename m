@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFC777B068
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2019 19:43:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E193A7B069
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2019 19:43:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D5CB87BEE;
-	Tue, 30 Jul 2019 17:43:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7672D85C97;
+	Tue, 30 Jul 2019 17:43:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cxfHz0r3c9Ug; Tue, 30 Jul 2019 17:43:40 +0000 (UTC)
+	with ESMTP id DertWJ8DVbSx; Tue, 30 Jul 2019 17:43:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B684B87BF5;
-	Tue, 30 Jul 2019 17:43:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C488285CA3;
+	Tue, 30 Jul 2019 17:43:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 793991BF255
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:09:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 530901BF255
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:09:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 76078844A7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:09:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4F698844A7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:09:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3DD_QNdvhKks for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jul 2019 17:09:40 +0000 (UTC)
+ with ESMTP id R7zNtlhdxPJf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jul 2019 17:09:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1362B8449A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:09:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AE12B8449A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:09:43 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2019 10:09:39 -0700
+ 30 Jul 2019 10:09:43 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="183192485"
+X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="183192503"
 Received: from silpixa00399838.ir.intel.com (HELO
  silpixa00399838.ger.corp.intel.com) ([10.237.223.140])
- by orsmga002.jf.intel.com with ESMTP; 30 Jul 2019 10:09:36 -0700
+ by orsmga002.jf.intel.com with ESMTP; 30 Jul 2019 10:09:40 -0700
 From: Kevin Laatz <kevin.laatz@intel.com>
 To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
  bjorn.topel@intel.com, magnus.karlsson@intel.com,
  jakub.kicinski@netronome.com, jonathan.lemon@gmail.com,
  saeedm@mellanox.com, maximmi@mellanox.com, stephen@networkplumber.org
-Date: Tue, 30 Jul 2019 08:53:51 +0000
-Message-Id: <20190730085400.10376-3-kevin.laatz@intel.com>
+Date: Tue, 30 Jul 2019 08:53:52 +0000
+Message-Id: <20190730085400.10376-4-kevin.laatz@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190730085400.10376-1-kevin.laatz@intel.com>
 References: <20190724051043.14348-1-kevin.laatz@intel.com>
  <20190730085400.10376-1-kevin.laatz@intel.com>
 X-Mailman-Approved-At: Tue, 30 Jul 2019 17:43:31 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next v4 02/11] ixgbe: simplify Rx
- buffer recycle
+Subject: [Intel-wired-lan] [PATCH bpf-next v4 03/11] libbpf: add flags to
+ umem config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,48 +76,102 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently, the dma, addr and handle are modified when we reuse Rx buffers
-in zero-copy mode. However, this is not required as the inputs to the
-function are copies, not the original values themselves. As we use the
-copies within the function, we can use the original 'obi' values
-directly without having to mask and add the headroom.
+This patch adds a 'flags' field to the umem_config and umem_reg structs.
+This will allow for more options to be added for configuring umems.
+
+The first use for the flags field is to add a flag for unaligned chunks
+mode. These flags can either be user-provided or filled with a default.
 
 Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 13 +++----------
- 1 file changed, 3 insertions(+), 10 deletions(-)
+Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index 6b609553329f..bc86057628c8 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -201,8 +201,6 @@ ixgbe_rx_buffer *ixgbe_get_rx_buffer_zc(struct ixgbe_ring *rx_ring,
- static void ixgbe_reuse_rx_buffer_zc(struct ixgbe_ring *rx_ring,
- 				     struct ixgbe_rx_buffer *obi)
- {
--	unsigned long mask = (unsigned long)rx_ring->xsk_umem->chunk_mask;
--	u64 hr = rx_ring->xsk_umem->headroom + XDP_PACKET_HEADROOM;
- 	u16 nta = rx_ring->next_to_alloc;
- 	struct ixgbe_rx_buffer *nbi;
+---
+v2:
+  - Removed the headroom check from this patch. It has moved to the
+    previous patch.
+
+v4:
+  - modified chunk flag define
+---
+ tools/include/uapi/linux/if_xdp.h | 9 +++++++--
+ tools/lib/bpf/xsk.c               | 3 +++
+ tools/lib/bpf/xsk.h               | 2 ++
+ 3 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/tools/include/uapi/linux/if_xdp.h b/tools/include/uapi/linux/if_xdp.h
+index faaa5ca2a117..a691802d7915 100644
+--- a/tools/include/uapi/linux/if_xdp.h
++++ b/tools/include/uapi/linux/if_xdp.h
+@@ -17,6 +17,10 @@
+ #define XDP_COPY	(1 << 1) /* Force copy-mode */
+ #define XDP_ZEROCOPY	(1 << 2) /* Force zero-copy mode */
  
-@@ -212,14 +210,9 @@ static void ixgbe_reuse_rx_buffer_zc(struct ixgbe_ring *rx_ring,
- 	rx_ring->next_to_alloc = (nta < rx_ring->count) ? nta : 0;
++/* Flags for xsk_umem_config flags */
++#define XDP_UMEM_UNALIGNED_CHUNK_FLAG_SHIFT 15
++#define XDP_UMEM_UNALIGNED_CHUNK_FLAG (1 << XDP_UMEM_UNALIGNED_CHUNK_FLAG_SHIFT)
++
+ struct sockaddr_xdp {
+ 	__u16 sxdp_family;
+ 	__u16 sxdp_flags;
+@@ -49,8 +53,9 @@ struct xdp_mmap_offsets {
+ #define XDP_OPTIONS			8
  
- 	/* transfer page from old buffer to new buffer */
--	nbi->dma = obi->dma & mask;
--	nbi->dma += hr;
--
--	nbi->addr = (void *)((unsigned long)obi->addr & mask);
--	nbi->addr += hr;
--
--	nbi->handle = obi->handle & mask;
--	nbi->handle += rx_ring->xsk_umem->headroom;
-+	nbi->dma = obi->dma;
-+	nbi->addr = obi->addr;
-+	nbi->handle = obi->handle;
+ struct xdp_umem_reg {
+-	__u64 addr; /* Start of packet data area */
+-	__u64 len; /* Length of packet data area */
++	__u64 addr;     /* Start of packet data area */
++	__u64 len:48;   /* Length of packet data area */
++	__u64 flags:16; /* Flags for umem */
+ 	__u32 chunk_size;
+ 	__u32 headroom;
+ };
+diff --git a/tools/lib/bpf/xsk.c b/tools/lib/bpf/xsk.c
+index 5007b5d4fd2c..5e7e4d420ee0 100644
+--- a/tools/lib/bpf/xsk.c
++++ b/tools/lib/bpf/xsk.c
+@@ -116,6 +116,7 @@ static void xsk_set_umem_config(struct xsk_umem_config *cfg,
+ 		cfg->comp_size = XSK_RING_CONS__DEFAULT_NUM_DESCS;
+ 		cfg->frame_size = XSK_UMEM__DEFAULT_FRAME_SIZE;
+ 		cfg->frame_headroom = XSK_UMEM__DEFAULT_FRAME_HEADROOM;
++		cfg->flags = XSK_UMEM__DEFAULT_FLAGS;
+ 		return;
+ 	}
  
- 	obi->addr = NULL;
- 	obi->skb = NULL;
+@@ -123,6 +124,7 @@ static void xsk_set_umem_config(struct xsk_umem_config *cfg,
+ 	cfg->comp_size = usr_cfg->comp_size;
+ 	cfg->frame_size = usr_cfg->frame_size;
+ 	cfg->frame_headroom = usr_cfg->frame_headroom;
++	cfg->flags = usr_cfg->flags;
+ }
+ 
+ static int xsk_set_xdp_socket_config(struct xsk_socket_config *cfg,
+@@ -182,6 +184,7 @@ int xsk_umem__create(struct xsk_umem **umem_ptr, void *umem_area, __u64 size,
+ 	mr.len = size;
+ 	mr.chunk_size = umem->config.frame_size;
+ 	mr.headroom = umem->config.frame_headroom;
++	mr.flags = umem->config.flags;
+ 
+ 	err = setsockopt(umem->fd, SOL_XDP, XDP_UMEM_REG, &mr, sizeof(mr));
+ 	if (err) {
+diff --git a/tools/lib/bpf/xsk.h b/tools/lib/bpf/xsk.h
+index 833a6e60d065..44a03d8c34b9 100644
+--- a/tools/lib/bpf/xsk.h
++++ b/tools/lib/bpf/xsk.h
+@@ -170,12 +170,14 @@ LIBBPF_API int xsk_socket__fd(const struct xsk_socket *xsk);
+ #define XSK_UMEM__DEFAULT_FRAME_SHIFT    12 /* 4096 bytes */
+ #define XSK_UMEM__DEFAULT_FRAME_SIZE     (1 << XSK_UMEM__DEFAULT_FRAME_SHIFT)
+ #define XSK_UMEM__DEFAULT_FRAME_HEADROOM 0
++#define XSK_UMEM__DEFAULT_FLAGS 0
+ 
+ struct xsk_umem_config {
+ 	__u32 fill_size;
+ 	__u32 comp_size;
+ 	__u32 frame_size;
+ 	__u32 frame_headroom;
++	__u32 flags;
+ };
+ 
+ /* Flags for the libbpf_flags field. */
 -- 
 2.17.1
 
