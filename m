@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2D447B074
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2019 19:43:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 024EA7B076
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2019 19:44:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 55BB120796;
-	Tue, 30 Jul 2019 17:43:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A51B920785;
+	Tue, 30 Jul 2019 17:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P4QxIqCC9B49; Tue, 30 Jul 2019 17:43:49 +0000 (UTC)
+	with ESMTP id fuiLs7OJ9IXw; Tue, 30 Jul 2019 17:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 86FCF2079A;
+	by silver.osuosl.org (Postfix) with ESMTP id DBF40207A8;
 	Tue, 30 Jul 2019 17:43:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 385AD1BF255
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:10:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EF2971BF255
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:10:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 349C185D56
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:10:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EBFBA85D59
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:10:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E56ajWXy4sy9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jul 2019 17:10:02 +0000 (UTC)
+ with ESMTP id SEXLHiM1zMPb for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jul 2019 17:10:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A54C885D45
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:10:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 68A1B85D45
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 17:10:06 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2019 10:10:02 -0700
+ 30 Jul 2019 10:10:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="183192660"
+X-IronPort-AV: E=Sophos;i="5.64,327,1559545200"; d="scan'208";a="183192698"
 Received: from silpixa00399838.ir.intel.com (HELO
  silpixa00399838.ger.corp.intel.com) ([10.237.223.140])
- by orsmga002.jf.intel.com with ESMTP; 30 Jul 2019 10:09:59 -0700
+ by orsmga002.jf.intel.com with ESMTP; 30 Jul 2019 10:10:02 -0700
 From: Kevin Laatz <kevin.laatz@intel.com>
 To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
  bjorn.topel@intel.com, magnus.karlsson@intel.com,
  jakub.kicinski@netronome.com, jonathan.lemon@gmail.com,
  saeedm@mellanox.com, maximmi@mellanox.com, stephen@networkplumber.org
-Date: Tue, 30 Jul 2019 08:53:57 +0000
-Message-Id: <20190730085400.10376-9-kevin.laatz@intel.com>
+Date: Tue, 30 Jul 2019 08:53:58 +0000
+Message-Id: <20190730085400.10376-10-kevin.laatz@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190730085400.10376-1-kevin.laatz@intel.com>
 References: <20190724051043.14348-1-kevin.laatz@intel.com>
  <20190730085400.10376-1-kevin.laatz@intel.com>
 X-Mailman-Approved-At: Tue, 30 Jul 2019 17:43:32 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next v4 08/11] samples/bpf: add
- unaligned chunks mode support to xdpsock
+Subject: [Intel-wired-lan] [PATCH bpf-next v4 09/11] samples/bpf: add buffer
+ recycling for unaligned chunks to xdpsock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,118 +76,94 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch adds support for the unaligned chunks mode. The addition of the
-unaligned chunks option will allow users to run the application with more
-relaxed chunk placement in the XDP umem.
-
-Unaligned chunks mode can be used with the '-u' or '--unaligned' command
-line options.
+This patch adds buffer recycling support for unaligned buffers. Since we
+don't mask the addr to 2k at umem_reg in unaligned mode, we need to make
+sure we give back the correct (original) addr to the fill queue. We achieve
+this using the new descriptor format and associated masks. The new format
+uses the upper 16-bits for the offset and the lower 48-bits for the addr.
+Since we have a field for the offset, we no longer need to modify the
+actual address. As such, all we have to do to get back the original address
+is mask for the lower 48 bits (i.e. strip the offset and we get the address
+on it's own).
 
 Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
-Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
+Signed-off-by: Bruce Richardson <bruce.richardson@intel.com>
 
 ---
-v4:
-  - updated help text for -f
-  - use new chunk flag define
+v2:
+  - Removed unused defines
+  - Fix buffer recycling for unaligned case
+  - Remove --buf-size (--frame-size merged before this)
+  - Modifications to use the new descriptor format for buffer recycling
 ---
- samples/bpf/xdpsock_user.c | 20 +++++++++++++++++---
- 1 file changed, 17 insertions(+), 3 deletions(-)
+ samples/bpf/xdpsock_user.c | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
 
 diff --git a/samples/bpf/xdpsock_user.c b/samples/bpf/xdpsock_user.c
-index 93eaaf7239b2..756b00eb1afe 100644
+index 756b00eb1afe..62b2059cd0e3 100644
 --- a/samples/bpf/xdpsock_user.c
 +++ b/samples/bpf/xdpsock_user.c
-@@ -51,6 +51,7 @@
+@@ -475,6 +475,7 @@ static void kick_tx(struct xsk_socket_info *xsk)
  
- typedef __u64 u64;
- typedef __u32 u32;
-+typedef __u16 u16;
+ static inline void complete_tx_l2fwd(struct xsk_socket_info *xsk)
+ {
++	struct xsk_umem_info *umem = xsk->umem;
+ 	u32 idx_cq = 0, idx_fq = 0;
+ 	unsigned int rcvd;
+ 	size_t ndescs;
+@@ -487,22 +488,21 @@ static inline void complete_tx_l2fwd(struct xsk_socket_info *xsk)
+ 		xsk->outstanding_tx;
  
- static unsigned long prev_time;
+ 	/* re-add completed Tx buffers */
+-	rcvd = xsk_ring_cons__peek(&xsk->umem->cq, ndescs, &idx_cq);
++	rcvd = xsk_ring_cons__peek(&umem->cq, ndescs, &idx_cq);
+ 	if (rcvd > 0) {
+ 		unsigned int i;
+ 		int ret;
  
-@@ -67,6 +68,8 @@ static int opt_ifindex;
- static int opt_queue;
- static int opt_poll;
- static int opt_interval = 1;
-+static u16 opt_umem_flags;
-+static int opt_unaligned_chunks;
- static u32 opt_xdp_bind_flags;
- static int opt_xsk_frame_size = XSK_UMEM__DEFAULT_FRAME_SIZE;
- static __u32 prog_id;
-@@ -282,7 +285,9 @@ static struct xsk_umem_info *xsk_configure_umem(void *buffer, u64 size)
- 		.comp_size = XSK_RING_CONS__DEFAULT_NUM_DESCS,
- 		.frame_size = opt_xsk_frame_size,
- 		.frame_headroom = XSK_UMEM__DEFAULT_FRAME_HEADROOM,
-+		.flags = opt_umem_flags
- 	};
-+
- 	int ret;
- 
- 	umem = calloc(1, sizeof(*umem));
-@@ -291,6 +296,7 @@ static struct xsk_umem_info *xsk_configure_umem(void *buffer, u64 size)
- 
- 	ret = xsk_umem__create(&umem->umem, buffer, size, &umem->fq, &umem->cq,
- 			       &cfg);
-+
- 	if (ret)
- 		exit_with_error(-ret);
- 
-@@ -352,6 +358,7 @@ static struct option long_options[] = {
- 	{"zero-copy", no_argument, 0, 'z'},
- 	{"copy", no_argument, 0, 'c'},
- 	{"frame-size", required_argument, 0, 'f'},
-+	{"unaligned", no_argument, 0, 'u'},
- 	{0, 0, 0, 0}
- };
- 
-@@ -371,7 +378,8 @@ static void usage(const char *prog)
- 		"  -n, --interval=n	Specify statistics update interval (default 1 sec).\n"
- 		"  -z, --zero-copy      Force zero-copy mode.\n"
- 		"  -c, --copy           Force copy mode.\n"
--		"  -f, --frame-size=n   Set the frame size (must be a power of two, default is %d).\n"
-+		"  -f, --frame-size=n   Set the frame size (must be a power of two in aligned mode, default is %d).\n"
-+		"  -u, --unaligned	Enable unaligned chunk placement\n"
- 		"\n";
- 	fprintf(stderr, str, prog, XSK_UMEM__DEFAULT_FRAME_SIZE);
- 	exit(EXIT_FAILURE);
-@@ -384,7 +392,7 @@ static void parse_command_line(int argc, char **argv)
- 	opterr = 0;
- 
- 	for (;;) {
--		c = getopt_long(argc, argv, "Frtli:q:psSNn:czf:", long_options,
-+		c = getopt_long(argc, argv, "Frtli:q:psSNn:czf:u", long_options,
- 				&option_index);
- 		if (c == -1)
- 			break;
-@@ -424,12 +432,17 @@ static void parse_command_line(int argc, char **argv)
- 		case 'c':
- 			opt_xdp_bind_flags |= XDP_COPY;
- 			break;
-+		case 'u':
-+			opt_umem_flags |= XDP_UMEM_UNALIGNED_CHUNK_FLAG;
-+			opt_unaligned_chunks = 1;
-+			break;
- 		case 'F':
- 			opt_xdp_flags &= ~XDP_FLAGS_UPDATE_IF_NOEXIST;
- 			break;
- 		case 'f':
- 			opt_xsk_frame_size = atoi(optarg);
- 			break;
-+
- 		default:
- 			usage(basename(argv[0]));
+-		ret = xsk_ring_prod__reserve(&xsk->umem->fq, rcvd, &idx_fq);
++		ret = xsk_ring_prod__reserve(&umem->fq, rcvd, &idx_fq);
+ 		while (ret != rcvd) {
+ 			if (ret < 0)
+ 				exit_with_error(-ret);
+-			ret = xsk_ring_prod__reserve(&xsk->umem->fq, rcvd,
+-						     &idx_fq);
++			ret = xsk_ring_prod__reserve(&umem->fq, rcvd, &idx_fq);
  		}
-@@ -442,7 +455,8 @@ static void parse_command_line(int argc, char **argv)
- 		usage(basename(argv[0]));
- 	}
++
+ 		for (i = 0; i < rcvd; i++)
+-			*xsk_ring_prod__fill_addr(&xsk->umem->fq, idx_fq++) =
+-				*xsk_ring_cons__comp_addr(&xsk->umem->cq,
+-							  idx_cq++);
++			*xsk_ring_prod__fill_addr(&umem->fq, idx_fq++) =
++				*xsk_ring_cons__comp_addr(&umem->cq, idx_cq++);
  
--	if (opt_xsk_frame_size & (opt_xsk_frame_size - 1)) {
-+	if ((opt_xsk_frame_size & (opt_xsk_frame_size - 1)) &&
-+	    !opt_unaligned_chunks) {
- 		fprintf(stderr, "--frame-size=%d is not a power of two\n",
- 			opt_xsk_frame_size);
- 		usage(basename(argv[0]));
+ 		xsk_ring_prod__submit(&xsk->umem->fq, rcvd);
+ 		xsk_ring_cons__release(&xsk->umem->cq, rcvd);
+@@ -549,7 +549,11 @@ static void rx_drop(struct xsk_socket_info *xsk)
+ 	for (i = 0; i < rcvd; i++) {
+ 		u64 addr = xsk_ring_cons__rx_desc(&xsk->rx, idx_rx)->addr;
+ 		u32 len = xsk_ring_cons__rx_desc(&xsk->rx, idx_rx++)->len;
+-		char *pkt = xsk_umem__get_data(xsk->umem->buffer, addr);
++		u64 offset = addr >> XSK_UNALIGNED_BUF_OFFSET_SHIFT;
++
++		addr &= XSK_UNALIGNED_BUF_ADDR_MASK;
++		char *pkt = xsk_umem__get_data(xsk->umem->buffer,
++				addr + offset);
+ 
+ 		hex_dump(pkt, len, addr);
+ 		*xsk_ring_prod__fill_addr(&xsk->umem->fq, idx_fq++) = addr;
+@@ -655,7 +659,9 @@ static void l2fwd(struct xsk_socket_info *xsk)
+ 							  idx_rx)->addr;
+ 			u32 len = xsk_ring_cons__rx_desc(&xsk->rx,
+ 							 idx_rx++)->len;
+-			char *pkt = xsk_umem__get_data(xsk->umem->buffer, addr);
++			u64 offset = addr >> XSK_UNALIGNED_BUF_OFFSET_SHIFT;
++			char *pkt = xsk_umem__get_data(xsk->umem->buffer,
++				(addr & XSK_UNALIGNED_BUF_ADDR_MASK) + offset);
+ 
+ 			swap_mac_addresses(pkt);
+ 
 -- 
 2.17.1
 
