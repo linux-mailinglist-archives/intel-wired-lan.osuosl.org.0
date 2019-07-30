@@ -1,56 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EDA97A179
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2019 08:52:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C9747A210
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2019 09:18:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E33A0203E4;
-	Tue, 30 Jul 2019 06:52:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5DA19811CD;
+	Tue, 30 Jul 2019 07:18:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wmkUAFRw6Fac; Tue, 30 Jul 2019 06:52:12 +0000 (UTC)
+	with ESMTP id o4txzX9Xydj2; Tue, 30 Jul 2019 07:18:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4A07120493;
-	Tue, 30 Jul 2019 06:52:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5374080CF4;
+	Tue, 30 Jul 2019 07:18:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EC7E61BF30B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 06:52:09 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 926F51BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 07:18:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E812587765
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 06:52:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 81B5F84836
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 07:18:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uRlzaYmohS1g for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jul 2019 06:52:09 +0000 (UTC)
+ with ESMTP id oJc-2MVqjcj1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jul 2019 07:18:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 21DEE874BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 06:52:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 12756844FB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2019 07:18:50 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 29 Jul 2019 23:52:08 -0700
+ 30 Jul 2019 00:18:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,325,1559545200"; d="scan'208";a="371440279"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 29 Jul 2019 23:52:07 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1hsLzS-0007YW-Rg; Tue, 30 Jul 2019 14:52:06 +0800
-Date: Tue, 30 Jul 2019 14:51:15 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d3fe8e3.nTJcqpFoxRLcUknm%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- b79fe76949055a06904ed47d2c747007c2a39fa8
+X-IronPort-AV: E=Sophos;i="5.64,325,1559545200"; d="scan'208";a="173563658"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
+ by fmsmga007.fm.intel.com with ESMTP; 30 Jul 2019 00:18:48 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 30 Jul 2019 10:18:48 +0300
+Message-Id: <20190730071848.7978-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1] igc: Remove unneeded PCI bus defines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,110 +58,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: b79fe76949055a06904ed47d2c747007c2a39fa8  igc: Add NVM checksum validation
+PCIe device control 2 defines does not use internally.
+This patch comes to clean up those.
 
-elapsed time: 262m
-
-configs tested: 85
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                              allmodconfig
-arm64                            allmodconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-x86_64                           allyesconfig
-x86_64                           allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-powerpc                             defconfig
-ia64                                defconfig
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                                nfsroot
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                       ppc64_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ drivers/net/ethernet/intel/igc/igc_defines.h | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 11b99acf4abe..549134ecd105 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -10,10 +10,6 @@
+ 
+ #define IGC_CTRL_EXT_DRV_LOAD	0x10000000 /* Drv loaded bit for FW */
+ 
+-/* PCI Bus Info */
+-#define PCIE_DEVICE_CONTROL2		0x28
+-#define PCIE_DEVICE_CONTROL2_16ms	0x0005
+-
+ /* Physical Func Reset Done Indication */
+ #define IGC_CTRL_EXT_LINK_MODE_MASK	0x00C00000
+ 
+-- 
+2.11.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
