@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A5667CA00
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 19:11:22 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D07007CA02
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 19:11:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AB04B22115;
-	Wed, 31 Jul 2019 17:11:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6BD6E8697D;
+	Wed, 31 Jul 2019 17:11:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5vQw9F6J8OkU; Wed, 31 Jul 2019 17:11:20 +0000 (UTC)
+	with ESMTP id mM7cM1jLC4el; Wed, 31 Jul 2019 17:11:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5162E221B7;
-	Wed, 31 Jul 2019 17:11:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A486E86988;
+	Wed, 31 Jul 2019 17:11:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 460B91BF23F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:11:18 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E90A91BF23F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:11:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 428E7856E4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:11:18 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E643B85F3D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:11:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n4QndEeyMRVp for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jul 2019 17:11:17 +0000 (UTC)
+ with ESMTP id LWX4_lNPALBR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jul 2019 17:11:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id BA84D85344
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:11:17 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7DB7785F37
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:11:41 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2019 10:11:17 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 10:11:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,330,1559545200"; d="scan'208";a="191296691"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by fmsmga001.fm.intel.com with ESMTP; 31 Jul 2019 10:11:16 -0700
-Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 31 Jul 2019 10:11:16 -0700
+X-IronPort-AV: E=Sophos;i="5.64,330,1559545200"; d="scan'208";a="200830820"
+Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
+ by fmsmga002.fm.intel.com with ESMTP; 31 Jul 2019 10:11:41 -0700
+Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
+ ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 31 Jul 2019 10:11:40 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX125.amr.corp.intel.com ([169.254.3.92]) with mapi id 14.03.0439.000;
- Wed, 31 Jul 2019 10:11:16 -0700
+ ORSMSX153.amr.corp.intel.com ([169.254.12.99]) with mapi id 14.03.0439.000;
+ Wed, 31 Jul 2019 10:11:40 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S24 v2 07/12] ice: reject VF attempts
- to enable head writeback
-Thread-Index: AQHVRjO+Tkbeny/Bb0m1kHq53edC4qbk+XWQ
-Date: Wed, 31 Jul 2019 17:11:16 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40E8AD@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S24 v2 08/12] ice: Rename ethtool
+ private flag for lldp
+Thread-Index: AQHVRjO/BlwC8bDYj028ikhswcdvIKbk+ZBw
+Date: Wed, 31 Jul 2019 17:11:40 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40E8BD@ORSMSX104.amr.corp.intel.com>
 References: <20190729090454.5501-1-anthony.l.nguyen@intel.com>
- <20190729090454.5501-7-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190729090454.5501-7-anthony.l.nguyen@intel.com>
+ <20190729090454.5501-8-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190729090454.5501-8-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYWYyNTAzNDgtODlhNC00ODIxLWEwMWQtYTU0Y2E3MzRlNDExIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoid29UQlZTWkJQaVR3N3FaTTFJN2RCOFpOSWNmVmdLVHVZNG9YOGM4N05GbmFLbW9oSG5ZazBpWHRPQ1VzWjRJcCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmExNTdkYjgtZmI2OS00NDdmLTliOGUtYjIzM2ExYzk2YjU4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMzh5TEZaSm9iR0N1eVZmKzBBeXlMN1J5M3IyK21SbUhGd0ZIeW01WWVLakZIRHJiV0ZtWTNtU0ZNajBCNE9VNCJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S24 v2 07/12] ice: reject VF attempts
- to enable head writeback
+Subject: Re: [Intel-wired-lan] [PATCH S24 v2 08/12] ice: Rename ethtool
+ private flag for lldp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,32 +91,23 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Monday, July 29, 2019 2:05 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S24 v2 07/12] ice: reject VF attempts to
-> enable head writeback
+> Subject: [Intel-wired-lan] [PATCH S24 v2 08/12] ice: Rename ethtool private
+> flag for lldp
 > 
-> From: Jacob Keller <jacob.e.keller@intel.com>
+> From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> The virtchnl interface provides a mechanism for a VF driver to request head
-> writeback support. This feature is deprecated as of AVF 1.0, but older
-> versions of a VF driver may still attempt to request the mode.
+> The current flag name of "enable-fw-lldp" is a bit cumbersome.
 > 
-> Since the ice hardware does not support head writeback, we should not
-> accept Tx queue configuration which attempts to enable it.
+> Change priv-flag name to "fw-lldp-agent" with a value of on or off.  This is
+> more straight-forward in meaning.
 > 
-> Currently, the driver simply assumes that the headwb_enabled bit will never
-> be set.
-> 
-> If a VF driver does request head writeback, the configuration will return
-> successfully, even though head writeback is not enabled. This leaves the VF
-> driver in a non functional state since it is assuming to be operating in head
-> writeback mode.
-> 
-> Fix the PF driver to reject any attempt to setup headwb_enabled.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/net/ethernet/intel/ice/ice.h         | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 4 ++--
+> drivers/net/ethernet/intel/ice/ice_ethtool.c | 6 +++---
+>  drivers/net/ethernet/intel/ice/ice_lib.c     | 4 ++--
+>  4 files changed, 8 insertions(+), 8 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
