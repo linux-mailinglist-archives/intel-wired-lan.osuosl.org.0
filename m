@@ -1,71 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0639A7CA89
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 19:34:17 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01CEA7CA90
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 19:34:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A550E85BCF;
-	Wed, 31 Jul 2019 17:34:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A2D8C84E2E;
+	Wed, 31 Jul 2019 17:34:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hhW6r7h3P_A8; Wed, 31 Jul 2019 17:34:15 +0000 (UTC)
+	with ESMTP id YAwWmXLJd58I; Wed, 31 Jul 2019 17:34:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 89F7C85EC4;
-	Wed, 31 Jul 2019 17:34:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0E51D85BBA;
+	Wed, 31 Jul 2019 17:34:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CC1091BF23F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:34:12 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A11621BF23F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:34:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BF46886D5A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:34:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9D3FA835E0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:34:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1XvK0uF+qBvu for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jul 2019 17:34:12 +0000 (UTC)
+ with ESMTP id wt1lJauKiY2m for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jul 2019 17:34:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 10B9586632
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:34:12 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1FC118356D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:34:50 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2019 10:34:11 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 10:34:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,330,1559545200"; d="scan'208";a="191303282"
-Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
- by fmsmga001.fm.intel.com with ESMTP; 31 Jul 2019 10:34:11 -0700
+X-IronPort-AV: E=Sophos;i="5.64,330,1559545200"; d="scan'208";a="196442300"
+Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
+ by fmsmga004.fm.intel.com with ESMTP; 31 Jul 2019 10:34:49 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX108.amr.corp.intel.com ([169.254.2.65]) with mapi id 14.03.0439.000;
- Wed, 31 Jul 2019 10:34:11 -0700
+ ORSMSX101.amr.corp.intel.com ([169.254.8.157]) with mapi id 14.03.0439.000;
+ Wed, 31 Jul 2019 10:34:48 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S23 v4 03/15] ice: Assume that more
- than one Rx queue is rare in ice_napi_poll
-Thread-Index: AQHVQw3KmiH4dAU580iFJ5QSpRgihKblBilg
-Date: Wed, 31 Jul 2019 17:34:11 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40E92A@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S23 v4 04/15] ice: Restructure VFs
+ initialization flows
+Thread-Index: AQHVQw3OrqdEuOtjH0ya3GHU8g2jfablBlDA
+Date: Wed, 31 Jul 2019 17:34:47 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40E93F@ORSMSX104.amr.corp.intel.com>
 References: <20190725085541.55104-1-anthony.l.nguyen@intel.com>
- <20190725085541.55104-3-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190725085541.55104-3-anthony.l.nguyen@intel.com>
+ <20190725085541.55104-4-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190725085541.55104-4-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNDkwZTBlODctMjA3Yi00OWU2LWEzYzgtMGI1ODFmNGNiNmRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZlZ0TlErVmkrelwvVW50MkZWZjdHT2lrOWJBZjE0blBrSlkxZVhOSTI1aUpVTjMraUJqRW5pZHFVSlZKd2F4ZjcifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMzg0ODBmZjEtMjJlMy00YzIwLWIzN2ItMzA3NDVjZWE2ZDA5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYmRnNUMzcUl0dFQyRE9DcFYrT01vRytmellIdWlYRytEa2VvRGxuNFcwelwvM05ZSklSYzRTajJ2S3pkXC9MaVRyIn0=
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S23 v4 03/15] ice: Assume that more
- than one Rx queue is rare in ice_napi_poll
+Subject: Re: [Intel-wired-lan] [PATCH S23 v4 04/15] ice: Restructure VFs
+ initialization flows
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,25 +86,31 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
 > Behalf Of Tony Nguyen
-> Sent: Thursday, July 25, 2019 1:55 AM
+> Sent: Thursday, July 25, 2019 1:56 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S23 v4 03/15] ice: Assume that more than
-> one Rx queue is rare in ice_napi_poll
+> Subject: [Intel-wired-lan] [PATCH S23 v4 04/15] ice: Restructure VFs
+> initialization flows
 > 
-> From: Brett Creeley <brett.creeley@intel.com>
+> From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 > 
-> Currently we divide budget by the number of Rx queues per Rx ring
-> container in ice_napi_poll even if there is only 1. This is an unnecessary divide
-> for the normal case of 1 Rx ring per Rx ring container. Fix this by using an
-> unlikely() call in the case where we actually need to divide.
+> This patch restructures how VFs are configured, and resources allocated.
+> Instead of freeing resources that were never allocated, and resetting empty
+> VFs that have never been created - the new flow will just allocate resources
+> for number of requested VFs based on the availability.
 > 
-> Also, we will always set budget_per_ring even if there are no Rx rings in the
-> Rx ring container so we don't need to initialize it to 0.
+> During VFs initialization process, global interrupt is disabled, and rearmed
+> after getting MSIX vectors for VFs. This allows immediate mailbox
+> communications, instead of delaying it till later and VFs.
+> PF communications resulted to using polling instead of actual interrupt.
+> The issue manifested when creating higher number of VFs (128 VFs) per PF.
 > 
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+> Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_txrx.c | 15 ++++++++++-----
->  1 file changed, 10 insertions(+), 5 deletions(-)
+> v4: Reduce scope of vf in ice_config_res_vfs()
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h          |  1 +
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 69 +++++++++++++------
+>  2 files changed, 48 insertions(+), 22 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
