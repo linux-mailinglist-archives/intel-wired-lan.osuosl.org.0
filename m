@@ -1,70 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 786177CB8F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 20:11:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB2537CB93
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 20:11:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6CD8787108;
-	Wed, 31 Jul 2019 18:11:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 839BC85BA3;
+	Wed, 31 Jul 2019 18:11:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PRbkiE+2dabr; Wed, 31 Jul 2019 18:11:11 +0000 (UTC)
+	with ESMTP id dodvfZHjdv2w; Wed, 31 Jul 2019 18:11:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 172DF87118;
-	Wed, 31 Jul 2019 18:11:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 831C085810;
+	Wed, 31 Jul 2019 18:11:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C6E1D1BF2EA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:08 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 18FA41BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C384485521
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 163BF85948
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yfjTGzJBVnSd for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jul 2019 18:11:08 +0000 (UTC)
+ with ESMTP id x-jRl1PyEtrb for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jul 2019 18:11:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 537CF84640
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:08 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0E0B7856B8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:36 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP; 31 Jul 2019 11:11:07 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 11:11:35 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="372205255"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga006.fm.intel.com with ESMTP; 31 Jul 2019 11:11:07 -0700
+X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="347638189"
+Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
+ by orsmga005.jf.intel.com with ESMTP; 31 Jul 2019 11:11:35 -0700
+Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
+ ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 31 Jul 2019 11:11:35 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX103.amr.corp.intel.com ([169.254.5.44]) with mapi id 14.03.0439.000;
- Wed, 31 Jul 2019 11:11:07 -0700
+ ORSMSX125.amr.corp.intel.com ([169.254.3.92]) with mapi id 14.03.0439.000;
+ Wed, 31 Jul 2019 11:11:34 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S25 03/12] ice: Don't allow VSI to
- remove unassociated ucast filter
-Thread-Index: AQHVQxXuTcNFlz3mIkiQyMy7G/PR0KblEGnQ
-Date: Wed, 31 Jul 2019 18:11:07 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40EA70@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S25 04/12] ice: Fix ethtool port and
+ PFC stats for 4x25G cards
+Thread-Index: AQHVQxXyqODYhsHD6E+C4KNJqRe5GqblEIyA
+Date: Wed, 31 Jul 2019 18:11:35 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40EA8A@ORSMSX104.amr.corp.intel.com>
 References: <20190725095401.24590-1-anthony.l.nguyen@intel.com>
- <20190725095401.24590-3-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190725095401.24590-3-anthony.l.nguyen@intel.com>
+ <20190725095401.24590-4-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190725095401.24590-4-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDE0MDk5ODUtYTkwMi00MzkzLThjODYtOWYwMDBkNDhiOTIwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQ0plbFdMdXA0aWRXQVZkNFZ2blpCaHo4UU54a0VLS1dZMXhpY2UzaWhXY0tvVEZSSElSTzgyK0I2bE9hYXR1TyJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYTRlY2ZlOGUtZTk2OC00NjdiLTg3YzEtYjY2ZWI0YWMwODMwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoic1p5MHBOdWk2elRCRlJORDF0XC95TUdnZG1BbE5CWGtWOTBLbkFZZjk2TFR3SmFhd2FUYjFjUENVdGhEcU1ITkMifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S25 03/12] ice: Don't allow VSI to
- remove unassociated ucast filter
+Subject: Re: [Intel-wired-lan] [PATCH S25 04/12] ice: Fix ethtool port and
+ PFC stats for 4x25G cards
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,18 +91,23 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, July 25, 2019 2:54 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S25 03/12] ice: Don't allow VSI to remove
-> unassociated ucast filter
+> Subject: [Intel-wired-lan] [PATCH S25 04/12] ice: Fix ethtool port and PFC
+> stats for 4x25G cards
 > 
-> From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> From: Usha Ketineni <usha.k.ketineni@intel.com>
 > 
-> If a VSI is not using a unicast filter or did not configure that particular unicast
-> filter, driver should not allow it to be removed by the rogue VSI.
+> This patch fixes the issue where port and PFC statistics counters are
+> incrementing at the wrong port with 4x25G cards.
+> Read the GLPRT port registers using lport parameter instead of pf_id to
+> update the statistics otherwise the pf_ids are flipped for ports 2 and 3 when
+> read from the HW register PF_FUNC_RID and this is expected as per
+> hardware specification.
 > 
-> Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+> Signed-off-by: Usha Ketineni <usha.k.ketineni@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_switch.c | 56 +++++++++++++++++++++
->  1 file changed, 56 insertions(+)
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 13 ++--
+>  drivers/net/ethernet/intel/ice/ice_main.c    | 76 ++++++++++----------
+>  2 files changed, 45 insertions(+), 44 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
