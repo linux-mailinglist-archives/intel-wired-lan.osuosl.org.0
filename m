@@ -1,71 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 704997CB95
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 20:12:02 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04F6A7CB9A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 20:12:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1FC9520008;
-	Wed, 31 Jul 2019 18:12:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9549287155;
+	Wed, 31 Jul 2019 18:12:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VImDgiNSmWbb; Wed, 31 Jul 2019 18:12:00 +0000 (UTC)
+	with ESMTP id AzJ1V-8kQ2Ue; Wed, 31 Jul 2019 18:12:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D6FB9203AD;
-	Wed, 31 Jul 2019 18:11:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 323748712D;
+	Wed, 31 Jul 2019 18:12:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 54A011BF2EA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 56F091BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:12:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 512708569B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4DFAC8569B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:12:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vslBBITtvZii for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jul 2019 18:11:57 +0000 (UTC)
+ with ESMTP id cLxfLmRZILfR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jul 2019 18:12:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B2C1085682
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:11:57 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3EC2785682
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 18:12:23 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2019 11:11:57 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 11:12:23 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="191315809"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by fmsmga001.fm.intel.com with ESMTP; 31 Jul 2019 11:11:57 -0700
+X-IronPort-AV: E=Sophos;i="5.64,331,1559545200"; d="scan'208";a="196455492"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by fmsmga004.fm.intel.com with ESMTP; 31 Jul 2019 11:12:22 -0700
+Received: from orsmsx155.amr.corp.intel.com (10.22.240.21) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 31 Jul 2019 11:12:22 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX101.amr.corp.intel.com ([169.254.8.157]) with mapi id 14.03.0439.000;
- Wed, 31 Jul 2019 11:11:57 -0700
+ ORSMSX155.amr.corp.intel.com ([169.254.7.34]) with mapi id 14.03.0439.000;
+ Wed, 31 Jul 2019 11:12:22 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S25 05/12] ice: added sibling head to
- parse nodes
-Thread-Index: AQHVQxX0DFqD6vOsJ0ieJTAFBu9ZT6blEKcQ
-Date: Wed, 31 Jul 2019 18:11:57 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40EA9B@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S25 06/12] ice: Sanitize ice_ena_vsi
+ and ice_dis_vsi
+Thread-Index: AQHVQxX9c2TIkl/FUEq0SRTV0c3pLqblEMPQ
+Date: Wed, 31 Jul 2019 18:12:22 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40EAAB@ORSMSX104.amr.corp.intel.com>
 References: <20190725095401.24590-1-anthony.l.nguyen@intel.com>
- <20190725095401.24590-5-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190725095401.24590-5-anthony.l.nguyen@intel.com>
+ <20190725095401.24590-6-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190725095401.24590-6-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzcxMjJmNzEtMmRkYS00OWJjLWI0MDItYmU4MzI0ZWZkYzJhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZ3E4NGJqS0JjZTdscFBxVzhhcFhBS1wveEVCYVN3KzMrOE0zSmtJcEJQcnJPUXZUekJ2cTQ4QkZQTWpPQ0N5dWEifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNmM0YTE1NzQtYzg5YS00NmFlLWJlNDEtODk3ZTBjOTI3ZmQ2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRTFERXFaakdaOVYyanM3dWVBcVFtN0ZxTVhaalpvVzZscHF4T3l1cDBqUVU4cFhaNlBsVjl0TnRwbW5cLzlhWUIifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S25 05/12] ice: added sibling head to
- parse nodes
+Subject: Re: [Intel-wired-lan] [PATCH S25 06/12] ice: Sanitize ice_ena_vsi
+ and ice_dis_vsi
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,22 +91,25 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, July 25, 2019 2:54 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S25 05/12] ice: added sibling head to parse
-> nodes
+> Subject: [Intel-wired-lan] [PATCH S25 06/12] ice: Sanitize ice_ena_vsi and
+> ice_dis_vsi
 > 
-> From: Victor Raj <victor.raj@intel.com>
+> From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 > 
-> There was a bug in the previous code which never traverses all the children
-> to get the first node of the requested layer. Add a sibling head pointer to
-> point the first node of each layer per TC. This helps traverse easier and
-> quicker and also removes the recursion.
+> 1. ndo_open and ndo_stop are implemented by ice_open and ice_stop
+>    respectively. When enabling/disabling VSIs, just call
+>    ice_open/ice_stop instead of ndo_open/ndo_stop.
 > 
-> Signed-off-by: Victor Raj <victor.raj@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> 2. Rework logic around rtnl_lock/rtnl_unlock
+> 
+> 3. In ice_ena_vsi, remove an unnecessary stack variable and return
+>    0 instead of err when __ICE_NEEDS_RESTART is not set.
+> 
+> Signed-off-by: Anirudh Venkataramanan
+> <anirudh.venkataramanan@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_sched.c | 57 ++++++++--------------
-> drivers/net/ethernet/intel/ice/ice_type.h  |  2 +
->  2 files changed, 23 insertions(+), 36 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_main.c | 24 +++++++++++------------
+>  1 file changed, 11 insertions(+), 13 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
