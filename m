@@ -1,74 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA7517CA96
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 19:36:56 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 727767CAA0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2019 19:37:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 73CC78754B;
-	Wed, 31 Jul 2019 17:36:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E94C285D44;
+	Wed, 31 Jul 2019 17:37:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FCmffPaJOXSQ; Wed, 31 Jul 2019 17:36:55 +0000 (UTC)
+	with ESMTP id kY4a3giOqMOy; Wed, 31 Jul 2019 17:37:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C03BD87524;
-	Wed, 31 Jul 2019 17:36:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2361584EA7;
+	Wed, 31 Jul 2019 17:37:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 549071BF23F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:36:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 57E791BF23F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:37:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5114220005
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:36:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5512320005
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:37:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gQsdZiZ-9fRR for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jul 2019 17:36:52 +0000 (UTC)
+ with ESMTP id 6tk70qTUackS for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jul 2019 17:37:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id CC2321FF11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:36:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id CD5F41FF11
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2019 17:37:20 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2019 10:36:52 -0700
+ 31 Jul 2019 10:37:20 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,330,1559545200"; d="scan'208";a="196442948"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by fmsmga004.fm.intel.com with ESMTP; 31 Jul 2019 10:36:52 -0700
-Received: from orsmsx123.amr.corp.intel.com (10.22.240.116) by
- ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 31 Jul 2019 10:36:51 -0700
+X-IronPort-AV: E=Sophos;i="5.64,330,1559545200"; d="scan'208";a="196443052"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by fmsmga004.fm.intel.com with ESMTP; 31 Jul 2019 10:37:20 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX123.amr.corp.intel.com ([169.254.1.245]) with mapi id 14.03.0439.000;
- Wed, 31 Jul 2019 10:36:51 -0700
+ ORSMSX105.amr.corp.intel.com ([169.254.2.226]) with mapi id 14.03.0439.000;
+ Wed, 31 Jul 2019 10:37:20 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S23 v4 08/15] ice: allow empty rx
- descriptors
-Thread-Index: AQHVQw3IJpnQpxT4JkG0KwxyMoZ8XKblBueQ
-Date: Wed, 31 Jul 2019 17:36:51 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40E97F@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S23 v4 09/15] ice: Do not always
+ bring up PF VSI in ice_ena_vsi()
+Thread-Index: AQHVQw3MERBiuVfOp06hFMcNuyBqzqblBwkA
+Date: Wed, 31 Jul 2019 17:37:19 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40E98B@ORSMSX104.amr.corp.intel.com>
 References: <20190725085541.55104-1-anthony.l.nguyen@intel.com>
- <20190725085541.55104-8-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190725085541.55104-8-anthony.l.nguyen@intel.com>
+ <20190725085541.55104-9-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190725085541.55104-9-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMzViNDFlMTAtYmVmOS00NTM1LWFlMzMtNzUxMmY3NGIxOTY4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiN1Iyc1lpVFVMeUZVM1RSM0lJWDQ2Y05KUTJUek5XdnFPMFhiWmZiNDA5UFZqdlo4TXRZelY5a1g4bjlZeTJhdyJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjQxMmZiMjktMDM4Yi00ODkyLWFhODMtZGMwNjZmNDViZTBiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZ0F1ZDVNdjFtNGtzUkcxZjVjK21DeERyK0JNSVdiSFVZRDVnaFlQWXd3dmJyUkQwTXdlSFhuUlNoZnhYYnBQRSJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S23 v4 08/15] ice: allow empty rx
- descriptors
+Subject: Re: [Intel-wired-lan] [PATCH S23 v4 09/15] ice: Do not always bring
+ up PF VSI in ice_ena_vsi()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,23 +88,20 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, July 25, 2019 1:56 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S23 v4 08/15] ice: allow empty rx
-> descriptors
+> Subject: [Intel-wired-lan] [PATCH S23 v4 09/15] ice: Do not always bring up PF
+> VSI in ice_ena_vsi()
 > 
-> From: Mitch Williams <mitch.a.williams@intel.com>
+> During rebuild ice_ena_vsi() is called to recover the VSI state.
+> This function assumes the PF VSI is always to be enabled, however, it's
+> possible that during reset/rebuild the interface can be brought down.  If this
+> occurs, we can attempt to bring up the PF VSI on a downed interface which
+> can lead to various crashes. If the interface is not running, do not bring up the
+> associated VSI.
 > 
-> In some circumstances, the hardware will hand us a receive descriptor which
-> has no data attached, but is otherwise valid. The receive code was
-> improperly ignoring these descriptors, which result in an infinite loop.
-> 
-> To fix this, change the receive code to process all descriptors, regardless of
-> the size of the associated data. Add checks to the memory-handling
-> functions to allow for zero size.
-> 
-> Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_txrx.c | 15 ++++++++++++---
->  1 file changed, 12 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_main.c | 2 --
+>  1 file changed, 2 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
