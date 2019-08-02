@@ -1,71 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEEBC7EA70
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Aug 2019 04:41:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 577437F589
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Aug 2019 12:55:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 59214869AB;
-	Fri,  2 Aug 2019 02:41:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D5FF820455;
+	Fri,  2 Aug 2019 10:55:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TvW7195KNHyR; Fri,  2 Aug 2019 02:41:06 +0000 (UTC)
+	with ESMTP id bsdiNxHtgZ3b; Fri,  2 Aug 2019 10:55:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AB212869BB;
-	Fri,  2 Aug 2019 02:41:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B5105204DB;
+	Fri,  2 Aug 2019 10:55:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8D9921BF29C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2019 02:41:05 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 52BDB1BF356
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2019 10:55:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 898F5869A9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2019 02:41:05 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4C4BA87B05
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2019 10:55:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8RR68W_MZKBc for <intel-wired-lan@lists.osuosl.org>;
- Fri,  2 Aug 2019 02:41:04 +0000 (UTC)
+ with ESMTP id 2ZjEuMFLnEBF for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  2 Aug 2019 10:55:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 447ED869A5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2019 02:41:04 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2019 19:41:03 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,336,1559545200"; d="scan'208";a="201513891"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by fmsmga002.fm.intel.com with ESMTP; 01 Aug 2019 19:41:03 -0700
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.29]) by
- ORSMSX107.amr.corp.intel.com ([169.254.1.186]) with mapi id 14.03.0439.000;
- Thu, 1 Aug 2019 19:41:03 -0700
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v3] Documentation: iavf: Update the
- Intel LAN driver doc for iavf
-Thread-Index: AQHVPnuKrV4vImnQzkyg/ELKjCF4C6bnOkSw
-Date: Fri, 2 Aug 2019 02:41:03 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B970DB6DC@ORSMSX103.amr.corp.intel.com>
-References: <20190719214701.17722-1-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20190719214701.17722-1-jeffrey.t.kirsher@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTRlOGQxMTctY2NmMy00YWIyLWIxNWItMDFhMjdlZDFmMWQ4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoic3VoMG13RW9lT2R4bmxJbGdXZ2plUjA2MEVEbnhhS0ZHd1c2MnZXY3o0MDQwVVpFUzRJbDB3d0M3V3VudmNqdCJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AAFEA87A2F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2019 10:55:06 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id p184so35851483pfp.7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 02 Aug 2019 03:55:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DIqOI2KhnovE2Wnn/sL/EUNF3A52jl9llVbTYD86JMc=;
+ b=srMJDRVV8ygDsohT0GoVuEcKCpACjwtqHx6wxeRhf8dlMqfZgWenGwR3OhfdebtaPn
+ 7KxUDWtnLUEjat1S8i1wsaYqGkjsrj7IWyhKZIGULZ/jnwjvLkhBk26tdtqCyYyZa89y
+ cWRKBS2/4Soe06tTBS0S93QKwqcgm4ECGKhzpNLxGGBnSyfwe4TOtp35XknKVbTjjVSI
+ pmMurfmHTPw37WouScJHwO65WdJmWZ5Lr3Zi9f0eIU9L2SHkrSGRMVSVG3+WFcZHeP+U
+ Q9TF4i/8l7KWsIoQLSolkikbA13CHToGCC9S6MNnN+0X0dYBBxzu6uPISFglsMMc2B4A
+ /5ng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DIqOI2KhnovE2Wnn/sL/EUNF3A52jl9llVbTYD86JMc=;
+ b=JEvinX9gQn2Y0ApCsEs5mshBP0xvkQVugHxg23IX1Au443IHoieL8rASqGKC/Ds9SH
+ EGpuOCRo2oS/MaeJTARJCB6hR5hcCMeFPESIU4nNwfqsygUZAT8wHH7e6PZJme0c9YPW
+ wZ40TIy1mUUqCCoY7xSkOJCRu3FmeLekYbMvUsRK6fji+0fTW+3ywQKq3PparfcnGy6z
+ Y5woeX/+pBKInUiUyutwe5jC4YqBKJpYfXUKwVhRtz8gnuPVLumwnVeQMhRaS/fBK9fW
+ BBMl789Mklbfyvf/FJkb8EVEAaEcgaH7zZV8IMuospyBRLBQFN1/ZdrVeiVG08QA3jiN
+ rqHg==
+X-Gm-Message-State: APjAAAVCazwNk91ClmeRgx7wfSFFPpnaiLP7U/vFzdwEXiGLfAlHaHuP
+ 4Hc611h4l+lx9XH+MXlG/yI=
+X-Google-Smtp-Source: APXvYqwMFjm28/XJVWXgLOL7J4uLlnk5tcztUOTOT97vTba5XRvZcyegYR38vqyrRvSWGSOFZ8sPeQ==
+X-Received: by 2002:a63:b555:: with SMTP id
+ u21mr125832838pgo.222.1564743306326; 
+ Fri, 02 Aug 2019 03:55:06 -0700 (PDT)
+Received: from suzukaze.ipads-lab.se.sjtu.edu.cn ([89.31.126.54])
+ by smtp.gmail.com with ESMTPSA id q69sm10647674pjb.0.2019.08.02.03.55.03
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Fri, 02 Aug 2019 03:55:05 -0700 (PDT)
+From: Chuhong Yuan <hslester96@gmail.com>
+To: 
+Date: Fri,  2 Aug 2019 18:54:57 +0800
+Message-Id: <20190802105457.16596-1-hslester96@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3] Documentation: iavf: Update the
- Intel LAN driver doc for iavf
+Subject: [Intel-wired-lan] [PATCH 1/2] ixgbe: Explicitly initialize
+ reference count to 0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,31 +85,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Chuhong Yuan <hslester96@gmail.com>,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Jeff Kirsher
-> Sent: Friday, July 19, 2019 2:47 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v3] Documentation: iavf: Update the Intel
-> LAN driver doc for iavf
-> 
-> Update the LAN driver documentation to include the latest feature
-> implementation and driver capabilities.
-> 
-> Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> ---
-> v2: fixed SOB and cleaned up the trailing whitespace
-> v3: drop the SR-IOV Hypervisor Management Interface since it was for OOT
->     only
-> 
->  .../networking/device_drivers/intel/iavf.rst  | 115 +++++++++++++-----
->  1 file changed, 82 insertions(+), 33 deletions(-)
+The driver does not explicitly call atomic_set to initialize
+refcount to 0.
+Add the call so that it will be more straight forward to
+convert refcount from atomic_t to refcount_t.
 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c
+index ccd852ad62a4..00710f43cfd2 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c
+@@ -773,6 +773,7 @@ int ixgbe_setup_fcoe_ddp_resources(struct ixgbe_adapter *adapter)
+ 
+ 	fcoe->extra_ddp_buffer = buffer;
+ 	fcoe->extra_ddp_buffer_dma = dma;
++	atomic_set(&fcoe->refcnt, 0);
+ 
+ 	/* allocate pci pool for each cpu */
+ 	for_each_possible_cpu(cpu) {
+-- 
+2.20.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
