@@ -1,73 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76489826F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2019 23:32:56 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F4DF826FA
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2019 23:33:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D80E85CE3;
-	Mon,  5 Aug 2019 21:32:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DE7FC81DD2;
+	Mon,  5 Aug 2019 21:33:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NdfUbdhm4mG4; Mon,  5 Aug 2019 21:32:54 +0000 (UTC)
+	with ESMTP id HZUwhXbzrbLZ; Mon,  5 Aug 2019 21:33:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AC88E85F38;
-	Mon,  5 Aug 2019 21:32:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4855181E90;
+	Mon,  5 Aug 2019 21:33:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 904CA1BF392
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:32:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5A2DB1BF392
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:33:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8C58B85CE3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:32:53 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5084285F29
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:33:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2cirnyVeNpM1 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Aug 2019 21:32:52 +0000 (UTC)
+ with ESMTP id H6M4z5u5jpws for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Aug 2019 21:33:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9119385B97
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:32:52 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5169F85B97
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:33:29 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Aug 2019 14:32:51 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2019 14:33:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,350,1559545200"; d="scan'208";a="192505915"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by fmsmga001.fm.intel.com with ESMTP; 05 Aug 2019 14:32:51 -0700
-Received: from orsmsx152.amr.corp.intel.com (10.22.226.39) by
- ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 5 Aug 2019 14:32:51 -0700
+X-IronPort-AV: E=Sophos;i="5.64,350,1559545200"; d="scan'208";a="257836728"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga001.jf.intel.com with ESMTP; 05 Aug 2019 14:33:28 -0700
+Received: from orsmsx159.amr.corp.intel.com (10.22.240.24) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 5 Aug 2019 14:33:28 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX152.amr.corp.intel.com ([169.254.8.114]) with mapi id 14.03.0439.000;
- Mon, 5 Aug 2019 14:32:50 -0700
+ ORSMSX159.amr.corp.intel.com ([169.254.11.26]) with mapi id 14.03.0439.000;
+ Mon, 5 Aug 2019 14:33:28 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S26 01/15] ice: add support for
- enabling/disabling single queues
-Thread-Index: AQHVSVLz3dpOKlJ82kS/+SPV6gwcDabtF/NQ
-Date: Mon, 5 Aug 2019 21:32:50 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40F064@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S26 02/15] ice: add support for
+ virtchnl_queue_select.[tx|rx]_queues bitmap
+Thread-Index: AQHVSVLylV9xnF9EN0KVf/me6/onH6btGCIg
+Date: Mon, 5 Aug 2019 21:33:28 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40F077@ORSMSX104.amr.corp.intel.com>
 References: <20190802082533.23083-1-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190802082533.23083-1-anthony.l.nguyen@intel.com>
+ <20190802082533.23083-2-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190802082533.23083-2-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZjA2ZWIzOWItZTliYi00YTNlLWI2MTctODk3M2JhOWNlMjJmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQ1Z5QVVQMjNCa0J0aVFUaVJmaTJwd2hwTHgyT3V5N0NpRUxpQUJGbDVZcGtSN0VxVFM2aGlnMUZ2R1ptbzR6cSJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYTg2ODA5NDctN2FhMS00MjIyLThkNTQtYzY3MWE5OGU0MDk0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiekVYRytzWXBMK3FSVVloTFBpWDBZVGU1eG04c2tlSkZcL3dyd1hhd0VcL0ZaTERDUGlOOVUzXC9rS1Jid2RoQjNLUyJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S26 01/15] ice: add support for
- enabling/disabling single queues
+Subject: Re: [Intel-wired-lan] [PATCH S26 02/15] ice: add support for
+ virtchnl_queue_select.[tx|rx]_queues bitmap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,30 +91,29 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Friday, August 2, 2019 1:25 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S26 01/15] ice: add support for
-> enabling/disabling single queues
+> Subject: [Intel-wired-lan] [PATCH S26 02/15] ice: add support for
+> virtchnl_queue_select.[tx|rx]_queues bitmap
 > 
-> From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> From: Paul Greenwalt <paul.greenwalt@intel.com>
 > 
-> Refactor the queue handling functions that are going through queue arrays in
-> a way that the logic done for a single queue is pulled out and it will be called
-> for each ring when traversing ring array. This implies that when disabling Tx
-> rings we won't fill up q_ids, q_teids and q_handles arrays.  Drop also 'offset'
-> parameter; the value from vsi's txq_map is stored in ring->reg_idx and that
-> drops the need for mentioned parameter. Introduce the ice_vsi_cfg_txq,
-> ice_vsi_stop_tx_ring and ice_vsi_ctrl_rx_ring that are the functions with
-> pulled out logic.
+> The VF driver can call VIRTCHNL_OP_[ENABLE|DISABLE]_QUEUES separately
+> for each queue. Add support for virtchnl_queue_select.[tx|rx]_queues
+> bitmap which is used to indicate which queues to enable and disable.
 > 
-> There's several Tx queue meta data (q_id, q_handle, q_teid and other) that
-> need to be set up during Tx queue disablement, so let's as well add a helper
-> structure that wraps it up and a function that will be filling it up.
+> Add tracing of VF Tx/Rx per queue enable state to avoid enabling enabled
+> queues and disabling disabled queues. Add total queues enabled count and
+> clear ICE_VF_STATE_QS_ENA when count is zero.
 > 
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Peng Huang <peng.huang@intel.com>
 > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_lib.c | 340 +++++++++++++----------
-> drivers/net/ethernet/intel/ice/ice_lib.h |  18 +-
->  2 files changed, 213 insertions(+), 145 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |  15 +-
+>  drivers/net/ethernet/intel/ice/ice_lib.h      |  10 +
+>  drivers/net/ethernet/intel/ice/ice_main.c     |   2 +-
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 243 +++++++++++++-----
+> .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  12 +-
+>  5 files changed, 207 insertions(+), 75 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
