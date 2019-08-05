@@ -1,75 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA7D682712
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2019 23:42:41 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB94882716
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2019 23:43:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7BFDE849E2;
-	Mon,  5 Aug 2019 21:42:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8D7588733F;
+	Mon,  5 Aug 2019 21:43:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H+fdMF60Wshb; Mon,  5 Aug 2019 21:42:40 +0000 (UTC)
+	with ESMTP id s1tyGjidH9-y; Mon,  5 Aug 2019 21:43:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A1D6784CCE;
-	Mon,  5 Aug 2019 21:42:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 12E5C87113;
+	Mon,  5 Aug 2019 21:43:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4A9A61BF392
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:42:38 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D750F1BF392
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:43:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 45185203C6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:42:38 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D3C7584E5E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:43:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E8vJuH8LnD29 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Aug 2019 21:42:36 +0000 (UTC)
+ with ESMTP id WCzh4Uj2BtP7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Aug 2019 21:43:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id C3F7220373
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:42:36 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E2A36834BE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 21:43:07 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Aug 2019 14:42:36 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2019 14:43:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,350,1559545200"; d="scan'208";a="257838415"
+X-IronPort-AV: E=Sophos;i="5.64,350,1559545200"; d="scan'208";a="198107284"
 Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by orsmga001.jf.intel.com with ESMTP; 05 Aug 2019 14:42:36 -0700
-Received: from orsmsx155.amr.corp.intel.com (10.22.240.21) by
+ by fmsmga004.fm.intel.com with ESMTP; 05 Aug 2019 14:43:07 -0700
+Received: from orsmsx154.amr.corp.intel.com (10.22.226.12) by
  ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 5 Aug 2019 14:42:36 -0700
+ id 14.3.439.0; Mon, 5 Aug 2019 14:43:06 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX155.amr.corp.intel.com ([169.254.7.34]) with mapi id 14.03.0439.000;
- Mon, 5 Aug 2019 14:42:36 -0700
+ ORSMSX154.amr.corp.intel.com ([169.254.11.96]) with mapi id 14.03.0439.000;
+ Mon, 5 Aug 2019 14:43:06 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 1/2] ixgbe: Explicitly initialize
- reference count to 0
-Thread-Index: AQHVSSDDoE9fR5KaZUKecUISPt1qS6btGweA
-Date: Mon, 5 Aug 2019 21:42:36 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40F162@ORSMSX104.amr.corp.intel.com>
-References: <20190802105457.16596-1-hslester96@gmail.com>
-In-Reply-To: <20190802105457.16596-1-hslester96@gmail.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 2/2] ixgbe: Use refcount_t for refcount
+Thread-Index: AQHVSSDGlTwuGHWtMECrsXmtZFTBhabtGzOA
+Date: Mon, 5 Aug 2019 21:43:06 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40F174@ORSMSX104.amr.corp.intel.com>
+References: <20190802105507.16650-1-hslester96@gmail.com>
+In-Reply-To: <20190802105507.16650-1-hslester96@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZjU1NjUwYzYtNmNhNy00OTc4LThlMjMtNzQyMzlhYTI4NmUxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMElwSmlCWldlK290OTlrRVRtNGlTTkhSc1pjMGIxSzlLSDBZUGlVRnhleXdtRitXaTR1azRKVXpXaXEzWk05UiJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYWVjMjMwYWUtMmNmZC00NDE5LTk4ZWItNDc1YmUyMGIwNTA3IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiOUNxUUI3a0V4RmYyVWtSaUIzMkFpMlBreWJ0UVROQ1RaNjFyQkZBZUkyOEdNRU5cL3JVZ0kwZnFRVkZWWmJkMWkifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] ixgbe: Explicitly initialize
- reference count to 0
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] ixgbe: Use refcount_t for refcount
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,17 +92,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Cc: netdev@vger.kernel.org; Chuhong Yuan <hslester96@gmail.com>; linux-
 > kernel@vger.kernel.org; intel-wired-lan@lists.osuosl.org; David S . Miller
 > <davem@davemloft.net>
-> Subject: [Intel-wired-lan] [PATCH 1/2] ixgbe: Explicitly initialize reference
-> count to 0
+> Subject: [Intel-wired-lan] [PATCH 2/2] ixgbe: Use refcount_t for refcount
 > 
-> The driver does not explicitly call atomic_set to initialize refcount to 0.
-> Add the call so that it will be more straight forward to convert refcount from
-> atomic_t to refcount_t.
+> refcount_t is better for reference counters since its implementation can
+> prevent overflows.
+> So convert atomic_t ref counters to refcount_t.
+> 
+> Also convert refcount from 0-based to 1-based.
+> 
+> This patch depends on PATCH 1/2.
 > 
 > Signed-off-by: Chuhong Yuan <hslester96@gmail.com>
 > ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c | 1 +
->  1 file changed, 1 insertion(+)
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c | 6 +++---
+> drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.h | 2 +-
+>  2 files changed, 4 insertions(+), 4 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
