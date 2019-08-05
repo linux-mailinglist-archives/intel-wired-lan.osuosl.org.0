@@ -1,52 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E980580B32
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  4 Aug 2019 15:45:04 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C948817C6
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2019 13:03:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 531472042B;
-	Sun,  4 Aug 2019 13:45:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B18F784B62;
+	Mon,  5 Aug 2019 11:03:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eUKzRiGjwFpM; Sun,  4 Aug 2019 13:45:03 +0000 (UTC)
+	with ESMTP id BncHn349X1CP; Mon,  5 Aug 2019 11:03:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0D4F420406;
-	Sun,  4 Aug 2019 13:45:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 45F1184495;
+	Mon,  5 Aug 2019 11:03:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D472F1BF616
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Aug 2019 13:44:59 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E8ECB1BF3F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 11:03:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D05F587A5E
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Aug 2019 13:44:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E534C83F35
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 11:03:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7nsAt49rOouc for <intel-wired-lan@lists.osuosl.org>;
- Sun,  4 Aug 2019 13:44:58 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2984C87A4F
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Aug 2019 13:44:57 +0000 (UTC)
-Received: from [10.0.101.109] (unknown [62.214.191.65])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id DD3F8201A3C22;
- Sun,  4 Aug 2019 15:44:54 +0200 (CEST)
-To: Vitaly Lifshits <vitaly.lifshits@intel.com>
-References: <20190804074026.25198-1-vitaly.lifshits@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <8829b684-518d-2233-d618-4f1367c2dbbd@molgen.mpg.de>
-Date: Sun, 4 Aug 2019 15:44:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ with ESMTP id OuiQqlhu2HyS for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Aug 2019 11:03:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A9DA283F22
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Aug 2019 11:03:21 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Aug 2019 04:03:21 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,349,1559545200"; d="scan'208";a="202423325"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 05 Aug 2019 04:03:20 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hualr-000HdE-Pk; Mon, 05 Aug 2019 19:03:19 +0800
+Date: Mon, 05 Aug 2019 19:02:29 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d480cc5.6NxPacm11XRN5IrE%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20190804074026.25198-1-vitaly.lifshits@intel.com>
-Content-Language: de-DE
-Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: PCIm function state support
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
+ 1b0a6afc660c76205e92df5acb533fbc1e8667da
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,108 +63,204 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Vitaly,
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 1b0a6afc660c76205e92df5acb533fbc1e8667da  ice: fix potential infinite loop
+
+TIMEOUT after 1440m
 
 
-Thank you for the updated version.
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
 
-On 04.08.19 09:40, Vitaly Lifshits wrote:
-> Due to commit: 5d8682588605 ("[misc] mei: me: allow runtime
-> pm for platform with D0i3")
-> when disconnecting the cable and reconnecting it the NIC
-> enters DMoff state. This caused wrong link indication
-> and duplex mismatch.
+configs timed out: 31
 
-*and* should fit on the line above.
+alpha                            allmodconfig
+alpha                            allyesconfig
+ia64                             allyesconfig
+m68k                             allyesconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allyesconfig
+mips                                   jz4740
+mips                                     txx9
+nds32                            allmodconfig
+nds32                            allyesconfig
+parisc                           allmodconfig
+parisc                           allyesconfig
+powerpc                          allmodconfig
+powerpc                          allyesconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+s390                             allyesconfig
+sh                               allyesconfig
+sparc                            allmodconfig
+sparc64                          allyesconfig
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                                   rhel
+x86_64                               rhel-7.6
+xtensa                           allmodconfig
+xtensa                           allyesconfig
 
-> Checking PCIm function state and performing PHY reset after
-> exiting DMoff state in watchdog task, solves this issue.
-> 
-> Link: https://bugzilla.redhat.com/show_bug.cgi?id=1689436
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> ---
-> 
-> V2: Fix typos in commit message
-> V3: Fix minor typo
-> V4: Address community comments
-> ---
->   drivers/net/ethernet/intel/e1000e/defines.h |  4 ++++
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 20 +++++++++++++++++++-
->   2 files changed, 23 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/defines.h b/drivers/net/ethernet/intel/e1000e/defines.h
-> index fd550dee4982..4cff73cbd032 100644
-> --- a/drivers/net/ethernet/intel/e1000e/defines.h
-> +++ b/drivers/net/ethernet/intel/e1000e/defines.h
-> @@ -222,6 +222,10 @@
->   #define E1000_STATUS_PHYRA      0x00000400      /* PHY Reset Asserted */
->   #define E1000_STATUS_GIO_MASTER_ENABLE	0x00080000	/* Master Req status */
->   
-> +/* PCIm function state */
-> +#define E1000_STATUS_PCIM_STATE	0x40000000
-> +#define PCIM_DMOFF_EXIT_TIMEOUT 100
+configs tested: 140
 
-Align the values?
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                 randconfig-a004-201931
+i386                   randconfig-a003-201931
+x86_64                 randconfig-a002-201931
+i386                   randconfig-a004-201931
+i386                   randconfig-a002-201931
+x86_64                 randconfig-a001-201931
+i386                   randconfig-a001-201931
+x86_64                 randconfig-a003-201931
+x86_64                 randconfig-e001-201931
+x86_64                 randconfig-e002-201931
+x86_64                 randconfig-e003-201931
+x86_64                 randconfig-e004-201931
+i386                   randconfig-e001-201931
+i386                   randconfig-e002-201931
+i386                   randconfig-e003-201931
+i386                   randconfig-e004-201931
+x86_64                 randconfig-h002-201931
+x86_64                 randconfig-h003-201931
+i386                   randconfig-h002-201931
+i386                   randconfig-h001-201931
+x86_64                 randconfig-h004-201931
+i386                   randconfig-h004-201931
+x86_64                 randconfig-h001-201931
+i386                   randconfig-h003-201931
+ia64                                defconfig
+powerpc                             defconfig
+arc                              allyesconfig
+microblaze                    nommu_defconfig
+powerpc                       ppc64_defconfig
+microblaze                      mmu_defconfig
+arc                                 defconfig
+powerpc                           allnoconfig
+riscv                             allnoconfig
+riscv                               defconfig
+nds32                               defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+riscv                              tinyconfig
+i386                               tinyconfig
+m68k                          multi_defconfig
+m68k                       m5475evb_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                           sun3_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+sparc64                          allmodconfig
+sparc                               defconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+x86_64                 randconfig-c001-201931
+x86_64                 randconfig-c002-201931
+x86_64                 randconfig-c003-201931
+x86_64                 randconfig-c004-201931
+i386                   randconfig-c001-201931
+i386                   randconfig-c002-201931
+i386                   randconfig-c003-201931
+i386                   randconfig-c004-201931
+sh                               allmodconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sh                            titan_defconfig
+x86_64                 randconfig-g001-201931
+x86_64                 randconfig-g002-201931
+x86_64                 randconfig-g003-201931
+x86_64                 randconfig-g004-201931
+i386                   randconfig-g001-201931
+i386                   randconfig-g002-201931
+i386                   randconfig-g003-201931
+i386                   randconfig-g004-201931
+x86_64                 randconfig-b001-201931
+x86_64                 randconfig-b002-201931
+x86_64                 randconfig-b003-201931
+x86_64                 randconfig-b004-201931
+i386                   randconfig-b001-201931
+i386                   randconfig-b002-201931
+i386                   randconfig-b003-201931
+i386                   randconfig-b004-201931
+i386                   randconfig-f004-201931
+x86_64                 randconfig-f004-201931
+i386                   randconfig-f001-201931
+x86_64                 randconfig-f002-201931
+i386                   randconfig-f003-201931
+i386                   randconfig-f002-201931
+x86_64                 randconfig-f001-201931
+x86_64                 randconfig-f003-201931
+x86_64                           allyesconfig
+i386                             allmodconfig
+parisc                        c3000_defconfig
+parisc                         b180_defconfig
+parisc                              defconfig
+parisc                            allnoconfig
+arm                              allmodconfig
+arm                         at91_dt_defconfig
+arm64                               defconfig
+arm                        multi_v5_defconfig
+arm64                            allyesconfig
+arm                               allnoconfig
+arm                           efm32_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allmodconfig
+arm                          exynos_defconfig
+arm                        shmobile_defconfig
+arm                        multi_v7_defconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             alldefconfig
+mips                             allmodconfig
+mips                      malta_kvm_defconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                             allmodconfig
+s390                                defconfig
+x86_64                           allmodconfig
+xtensa                       common_defconfig
+openrisc                    or1ksim_defconfig
+nios2                         3c120_defconfig
+xtensa                          iss_defconfig
+c6x                        evmc6678_defconfig
+c6x                              allyesconfig
+nios2                         10m50_defconfig
+openrisc                 simple_smp_defconfig
+x86_64                 randconfig-d001-201931
+x86_64                 randconfig-d002-201931
+x86_64                 randconfig-d003-201931
+x86_64                 randconfig-d004-201931
+i386                   randconfig-d001-201931
+i386                   randconfig-d002-201931
+i386                   randconfig-d003-201931
+i386                   randconfig-d004-201931
+i386                              allnoconfig
+i386                                defconfig
+i386                             alldefconfig
 
-> +
->   #define HALF_DUPLEX 1
->   #define FULL_DUPLEX 2
->   
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index b5fed6177ad6..2d29c0d0be1b 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -5162,7 +5162,7 @@ static void e1000_watchdog_task(struct work_struct *work)
->   	struct e1000_phy_info *phy = &adapter->hw.phy;
->   	struct e1000_ring *tx_ring = adapter->tx_ring;
->   	struct e1000_hw *hw = &adapter->hw;
-> -	u32 link, tctl;
-> +	u32 link, tctl, pcim_state, tries = 0;
->   
->   	if (test_bit(__E1000_DOWN, &adapter->state))
->   		return;
-> @@ -5187,6 +5187,24 @@ static void e1000_watchdog_task(struct work_struct *work)
->   			/* Cancel scheduled suspend requests. */
->   			pm_runtime_resume(netdev->dev.parent);
->   
-> +			/* Checking if MAC is in DMoff state*/
-
-s/Checking/Check/
-
-> +			pcim_state = er32(STATUS);
-> +			while (pcim_state & E1000_STATUS_PCIM_STATE) {
-> +				if (tries++ == PCIM_DMOFF_EXIT_TIMEOUT) {
-> +					e_dbg("Error in exiting dmoff\n");
-> +					e_err("PCIm DMoff timeout expired\n");
-> +					break;
-> +				}
-> +				usleep_range(10000, 20000);
-> +				pcim_state = er32(STATUS);
-> +
-> +				/* If MAC entered DMoff state, PHY reset is
-> +				 * needed after exiting it
-> +				 */
-> +				if (!(pcim_state & E1000_STATUS_PCIM_STATE))
-> +					e1000_phy_hw_reset(&adapter->hw);
-
-I still believe, the if statement should be moved *outside* the loop.
-
-> +			}
-> +
->   			/* update snapshot of PHY registers on LSC */
->   			e1000_phy_read_status(adapter);
->   			mac->ops.get_link_up_info(&adapter->hw,
-
-
-Kind regards,
-
-Paul
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
