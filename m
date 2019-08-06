@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C3C78366E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2019 18:11:57 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A74A481424;
-	Tue,  6 Aug 2019 16:11:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GU-99DtGlZKA; Tue,  6 Aug 2019 16:11:55 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BDAA1813EE;
-	Tue,  6 Aug 2019 16:11:54 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1E6AF1BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 16:11:53 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B7BCC83681
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2019 18:12:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1A5B482BFC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 16:11:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6F0B9852A3;
+	Tue,  6 Aug 2019 16:12:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HChwfeUU8prU; Tue,  6 Aug 2019 16:12:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 734D585191;
+	Tue,  6 Aug 2019 16:12:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1901E1BF5B3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 16:11:56 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id C4E5281389
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 16:11:56 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aYvuqltrzEu3 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Aug 2019 16:11:51 +0000 (UTC)
+ with ESMTP id DOP-tym6Us24 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Aug 2019 16:11:54 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E5929828B5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 16:11:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9913981394
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 16:11:54 +0000 (UTC)
 Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
  [83.86.89.107])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3F52D20679;
- Tue,  6 Aug 2019 16:11:51 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D066B20679;
+ Tue,  6 Aug 2019 16:11:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565107911;
- bh=dsEU41ZjboX8wiCrbr7wPmTyqRM39fWwxhY2724+fZY=;
+ s=default; t=1565107914;
+ bh=umuTiq5eKXtMZ+yj06jUD2SoWujiGAXU2OudWD/g9e0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=t8SBXLiYPNjeN/jbvQWhQ5d3VQuxxMoBrNy3ZT3Wwv1IqK8dAetYijEmSqd1EoyLW
- LJ3zXPSld5sA+wWuS6fd5v4mE/zKvm9h43wSfElwtf97fxx4C+0dhXTxDyScrnjYsH
- GBdlqbAlDwS5tpU4haovoTIZJNa8uhW0hKQBCw+k=
+ b=bycdcAWROi+X5bmXap8z1xqEqgOgmmTlzUDLFVuqTb4gyHnyZf0whcpAnurLp9HkP
+ zh2vNZxlMPjr2fNMmdVSod8T3MB5tY2OHfHjMo1ZRB1ooAtdhQ0h9RgqOInNC466Wd
+ 8xxNf15SQRWR/TPeit54XGsuphmVTY5bk07Ky1UE=
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: netdev@vger.kernel.org
-Date: Tue,  6 Aug 2019 18:11:25 +0200
-Message-Id: <20190806161128.31232-15-gregkh@linuxfoundation.org>
+Date: Tue,  6 Aug 2019 18:11:26 +0200
+Message-Id: <20190806161128.31232-16-gregkh@linuxfoundation.org>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190806161128.31232-1-gregkh@linuxfoundation.org>
 References: <20190806161128.31232-1-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 14/17] fm10k: no need to check return
- value of debugfs_create functions
+Subject: [Intel-wired-lan] [PATCH 15/17] i40e: no need to check return value
+ of debugfs_create functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,22 +83,47 @@ Cc: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org
 Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c | 2 --
- 1 file changed, 2 deletions(-)
+ .../net/ethernet/intel/i40e/i40e_debugfs.c    | 21 ++++---------------
+ 1 file changed, 4 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c b/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c
-index dca104121c05..1d27b2fb23af 100644
---- a/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c
-+++ b/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c
-@@ -160,8 +160,6 @@ void fm10k_dbg_q_vector_init(struct fm10k_q_vector *q_vector)
- 	snprintf(name, sizeof(name), "q_vector.%03d", q_vector->v_idx);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index 55d20acfcf70..0df9454b3315 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -1732,29 +1732,16 @@ static const struct file_operations i40e_dbg_netdev_ops_fops = {
+  **/
+ void i40e_dbg_pf_init(struct i40e_pf *pf)
+ {
+-	struct dentry *pfile;
+ 	const char *name = pci_name(pf->pdev);
+ 	const struct device *dev = &pf->pdev->dev;
  
- 	q_vector->dbg_q_vector = debugfs_create_dir(name, interface->dbg_intfc);
--	if (!q_vector->dbg_q_vector)
+ 	pf->i40e_dbg_pf = debugfs_create_dir(name, i40e_dbg_root);
+-	if (!pf->i40e_dbg_pf)
 -		return;
+-
+-	pfile = debugfs_create_file("command", 0600, pf->i40e_dbg_pf, pf,
+-				    &i40e_dbg_command_fops);
+-	if (!pfile)
+-		goto create_failed;
  
- 	/* Generate a file for each rx ring in the q_vector */
- 	for (i = 0; i < q_vector->tx.count; i++) {
+-	pfile = debugfs_create_file("netdev_ops", 0600, pf->i40e_dbg_pf, pf,
+-				    &i40e_dbg_netdev_ops_fops);
+-	if (!pfile)
+-		goto create_failed;
++	debugfs_create_file("command", 0600, pf->i40e_dbg_pf, pf,
++			    &i40e_dbg_command_fops);
+ 
+-	return;
+-
+-create_failed:
+-	dev_info(dev, "debugfs dir/file for %s failed\n", name);
+-	debugfs_remove_recursive(pf->i40e_dbg_pf);
++	debugfs_create_file("netdev_ops", 0600, pf->i40e_dbg_pf, pf,
++			    &i40e_dbg_netdev_ops_fops);
+ }
+ 
+ /**
 -- 
 2.22.0
 
