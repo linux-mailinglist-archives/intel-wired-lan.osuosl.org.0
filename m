@@ -1,72 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87DBE839E1
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2019 21:53:11 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC565839F5
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2019 22:01:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2A34E22049;
-	Tue,  6 Aug 2019 19:53:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 48B3D86101;
+	Tue,  6 Aug 2019 20:01:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iPoABENw5z07; Tue,  6 Aug 2019 19:53:08 +0000 (UTC)
+	with ESMTP id 9gr6I3cDrex2; Tue,  6 Aug 2019 20:01:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 551BC22056;
-	Tue,  6 Aug 2019 19:53:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 606648612B;
+	Tue,  6 Aug 2019 20:00:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 241071BF39F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 19:53:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 529A21BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 20:00:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1F3EF869D7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 19:53:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4EB2787DA6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 20:00:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y9EHs5EHgJ3r for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Aug 2019 19:53:03 +0000 (UTC)
+ with ESMTP id TI-d-62yRFCn for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Aug 2019 20:00:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5BCFA869C9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 19:53:03 +0000 (UTC)
-Received: by mail-oi1-f195.google.com with SMTP id t76so68435032oih.4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Aug 2019 12:53:03 -0700 (PDT)
+Received: from mail-ot1-f67.google.com (mail-ot1-f67.google.com
+ [209.85.210.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 893718700E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2019 20:00:57 +0000 (UTC)
+Received: by mail-ot1-f67.google.com with SMTP id d17so95688374oth.5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Aug 2019 13:00:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KmU4HJB87X8xhCUfLfjkNelVmkZzhKKTTRnmGP3cf9U=;
- b=BVtj3Pifd5xr8+HJJFf4aJmYb9qybfaNXVqzIbEG9IIKBACsE97O8oil++vm+WDz3f
- nwOXAtDNiBE7kkTXWbyXNkrR+vUtboSqYBexi4cmkHKKx7Y21RHWf/TsIXh3OBqiyIn8
- kgEQgTkoUh/m6QVIPewlvTNVT86h2iU2w+1lZdEgSBVTfAwvY//38uEdGIsb4WBXzu8E
- RtebHHU2dCD/UM/5K4RmeMlAuyvypIJ+aMUFGDELhsZ/gBs2lRUspxTgyblGARaakmS/
- jYdNYkRuTEeqR5OiWTKp1kL44ROEmsy+3efPL++mXO8wtBHa7t8tiqTJYwKg+5X01RXs
- HRXg==
+ :cc; bh=VaOMR+SUZElYH0Eetic8a/+Hs8jgmt9NIHaGtBcxFPM=;
+ b=TngasMsK4VNmxfirXQoozUrNZixTJrh5h2kC3Fa/ZBpmNydnUMizu+QaNDXrbPORqA
+ LUcxKGR2kGLPUVCAG+ujMbZlMdv+IqWR9ra+m7iTJ+AfMC++Y8R1xruk5J8HBma3OVeD
+ 271cMVDklGhu0DXNyPhReNS4Glv9BEMFIaN627Isa45aEM8M/7FYQLApxbPd9oAnUBsi
+ +jSt8X2b5XtoADey3XpzbHQ8I/uqgwx1UQszsKkhViGmHE+noAbMvXvgz0Hlxq3sflXD
+ a5q/tYKeEbtB+ocWno6jFcyYfWsM3YCcfNsKZjEyssRSg0lno7aji39ysG0kykKk8pNV
+ foHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=KmU4HJB87X8xhCUfLfjkNelVmkZzhKKTTRnmGP3cf9U=;
- b=Y+PD619DE1OVBz1w874h6ZQpEC3bYHK8xSMQsHFpBnYGHn/ovNSenLOI3XQxre9hv3
- jGl19Zm8yAYduhcS8PTzUsxkeHS0YYE5nR70eADLH8Nq2Sfs9VoyqmwL81fZNjy2q0Kb
- nGir2R2Kva0EQ+HRcWkpt4sdM2gRZVIkCUE+ET18NMt/fQ+D9c2S3CVS6K43b4c4Bwxc
- 0aivhI8QjuAbMbSmuIL9fwnplf2wxbOdJgY/gedpOVxXRjO0789EJm7EHIio3+UvOqGe
- aNMxn2wLDYuHZd6jDQu5aBQKWDS1bc17F2HgC7mlO6UFZzvH2TnvgvlI3EmWukg26/KU
- 54EQ==
-X-Gm-Message-State: APjAAAVHcPHDeraaicXY9Sr19X1ucdbFqPgiGvwYsI18fe1mp3/ipSlp
- koJTX38/bMO6OZQHbtDKHrCDsuyZL9PvFKH4NvY=
-X-Google-Smtp-Source: APXvYqx+q743nGPHX6aJH/9jIqgTQd8k5xwXFPshKqY+NszZolvWwtyutRRUfJ99Fcu5s3o7aw9Mdlg1WTzTh9OMidI=
-X-Received: by 2002:a02:cd82:: with SMTP id l2mr5991247jap.96.1565121182404;
- Tue, 06 Aug 2019 12:53:02 -0700 (PDT)
+ bh=VaOMR+SUZElYH0Eetic8a/+Hs8jgmt9NIHaGtBcxFPM=;
+ b=deiOKHRLWmZ7zXD23uCrV2iZ1fxcEPquneXfvHwjywvDnkscgeyfR75GZisZIZfFNh
+ tiOCnfePYN7xyH8cUVXAhINNQp5HRc7+uQOKIqcmErUZRh6jJb1010sDFoCvCtlNhbIY
+ tpew6NU85bUHAAKHzg3zD/xRYD0nU+tKSQiRG2VL+Wz8awPCJHCmnkeGKNZNNUkYc3ry
+ +zNPq39/ykje4dL0T6dLSF0tbV2mwsD8rh9RwHUbHbEKBIDrC3OQpaIh+ys2U7exqw1n
+ 2rBep8w9Hin1u6ZXrNowzaMOC/UbHQP7rvSNMBBftRl+53bxl43WfwIaWmRjSDUj8y2o
+ waIA==
+X-Gm-Message-State: APjAAAUdMovcFXeEJM+pspjNwUdoykWAd1SnPjV83jAO0RPWv72Q6mIH
+ 8rWnW6e0f+ygzIFDU6PYcMfpc8hNgwaZkwDFvls=
+X-Google-Smtp-Source: APXvYqx+MC/6Cl1pEL3O2XLiSNXCdL35U9JI3kpbwQNG/AkZ6DUYfCMIFGJfMWultA7dg8cGYp72TdjyMGK15LDUL3o=
+X-Received: by 2002:a6b:dd18:: with SMTP id f24mr5102882ioc.97.1565121656651; 
+ Tue, 06 Aug 2019 13:00:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190806092919.13211-1-firo.yang@suse.com>
- <20190806.113640.171591509807004446.davem@davemloft.net>
-In-Reply-To: <20190806.113640.171591509807004446.davem@davemloft.net>
+In-Reply-To: <20190806092919.13211-1-firo.yang@suse.com>
 From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 6 Aug 2019 12:52:51 -0700
-Message-ID: <CAKgT0UctiHjKxGXHJEiJX4_aEJt1swBAxMOKPT9huXBOcf+2VQ@mail.gmail.com>
-To: David Miller <davem@davemloft.net>
+Date: Tue, 6 Aug 2019 13:00:45 -0700
+Message-ID: <CAKgT0UdFky-tnyhn_oXGefex=9FN5ckAJ0YYd2Z7STZg1V48Hg@mail.gmail.com>
+To: Firo Yang <firo.yang@suse.com>
 Subject: Re: [Intel-wired-lan] [PATCH 1/1] ixgbe: sync the first fragment
  unconditionally
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -81,40 +80,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- LKML <linux-kernel@vger.kernel.org>, firo.yang@suse.com
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 6, 2019 at 11:36 AM David Miller <davem@davemloft.net> wrote:
+On Tue, Aug 6, 2019 at 2:38 AM Firo Yang <firo.yang@suse.com> wrote:
 >
-> From: Firo Yang <firo.yang@suse.com>
-> Date: Tue, 6 Aug 2019 09:29:51 +0000
+> In Xen environment, if Xen-swiotlb is enabled, ixgbe driver
+> could possibly allocate a page, DMA memory buffer, for the first
+> fragment which is not suitable for Xen-swiotlb to do DMA operations.
+> Xen-swiotlb will internally allocate another page for doing DMA
+> operations. It requires syncing between those two pages. Otherwise,
+> we may get an incomplete skb. To fix this problem, sync the first
+> fragment no matter the first fargment is makred as "page_released"
+> or not.
 >
-> > In Xen environment, if Xen-swiotlb is enabled, ixgbe driver
-> > could possibly allocate a page, DMA memory buffer, for the first
-> > fragment which is not suitable for Xen-swiotlb to do DMA operations.
-> > Xen-swiotlb will internally allocate another page for doing DMA
-> > operations. It requires syncing between those two pages. Otherwise,
-> > we may get an incomplete skb. To fix this problem, sync the first
-> > fragment no matter the first fargment is makred as "page_released"
-> > or not.
-> >
-> > Signed-off-by: Firo Yang <firo.yang@suse.com>
->
-> I don't understand, an unmap operation implies a sync operation.
+> Signed-off-by: Firo Yang <firo.yang@suse.com>
 
-Actually it doesn't because ixgbe is mapping and unmapping with
-DMA_ATTR_SKIP_CPU_SYNC.
+From what I can tell the code below is fine. However the patch
+description isn't very clear about the issue.
 
-The patch description isn't very good. The issue is that the sync in
-this case is being skipped in ixgbe_get_rx_buffer for a frame where
-the buffer spans more then a single page. As such we need to do both
-the sync and the unmap call on the last frame when we encounter the
-End Of Packet.
+Specifically since we are mapping the frame with
+DMA_ATTR_SKIP_CPU_SYNC we have to unmap with that as well. As a result
+a sync is not performed on an unmap and must be done manually as we
+skipped it for the first frag. As such we need to always sync before
+possibly performing a page unmap operation.
+
+Also you can probably add the following to your patch description"
+Fixes: f3213d932173 ("ixgbe: Update driver to make use of DMA
+attributes in Rx path")
+Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 +++++++++-------
+>  1 file changed, 9 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index cbaf712d6529..200de9838096 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -1825,13 +1825,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
+>  static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
+>                                 struct sk_buff *skb)
+>  {
+> -       /* if the page was released unmap it, else just sync our portion */
+> -       if (unlikely(IXGBE_CB(skb)->page_released)) {
+> -               dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
+> -                                    ixgbe_rx_pg_size(rx_ring),
+> -                                    DMA_FROM_DEVICE,
+> -                                    IXGBE_RX_DMA_ATTR);
+> -       } else if (ring_uses_build_skb(rx_ring)) {
+> +       if (ring_uses_build_skb(rx_ring)) {
+>                 unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
+>
+>                 dma_sync_single_range_for_cpu(rx_ring->dev,
+> @@ -1848,6 +1842,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
+>                                               skb_frag_size(frag),
+>                                               DMA_FROM_DEVICE);
+>         }
+> +
+> +       /* If the page was released, just unmap it. */
+> +       if (unlikely(IXGBE_CB(skb)->page_released)) {
+> +               dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
+> +                                    ixgbe_rx_pg_size(rx_ring),
+> +                                    DMA_FROM_DEVICE,
+> +                                    IXGBE_RX_DMA_ATTR);
+> +       }
+>  }
+>
+>  /**
+> --
+> 2.16.4
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
