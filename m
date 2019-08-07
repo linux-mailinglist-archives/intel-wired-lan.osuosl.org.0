@@ -1,51 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE2A784611
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Aug 2019 09:36:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB37484623
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Aug 2019 09:47:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C9B2221B1;
-	Wed,  7 Aug 2019 07:36:20 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4DADA8746E;
+	Wed,  7 Aug 2019 07:47:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sPP2BtJnHqwk; Wed,  7 Aug 2019 07:36:20 +0000 (UTC)
+	with ESMTP id s+nz9CynPnoT; Wed,  7 Aug 2019 07:47:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 625782262B;
-	Wed,  7 Aug 2019 07:36:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26D2D8745D;
+	Wed,  7 Aug 2019 07:47:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 810DC1BF568
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:36:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 07F071BF568
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:47:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7D3BD86472
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:36:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 002688648C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:47:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HIwjyYV6B2cX for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Aug 2019 07:36:15 +0000 (UTC)
+ with ESMTP id IX-fJYuAGn4z for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Aug 2019 07:47:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B729B86469
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:36:15 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 61A148652A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:47:09 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2019 00:36:14 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2019 00:47:09 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,356,1559545200"; d="scan'208";a="192847716"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga001.fm.intel.com with ESMTP; 07 Aug 2019 00:36:13 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  7 Aug 2019 10:36:11 +0300
-Message-Id: <20190807073611.21733-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v5] e1000e: PCIm function state support
+X-IronPort-AV: E=Sophos;i="5.64,356,1559545200"; d="scan'208";a="176885382"
+Received: from vlifsht-mobl1.ger.corp.intel.com (HELO [10.185.169.50])
+ ([10.185.169.50])
+ by orsmga003.jf.intel.com with ESMTP; 07 Aug 2019 00:47:07 -0700
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+References: <20190804074026.25198-1-vitaly.lifshits@intel.com>
+ <8829b684-518d-2233-d618-4f1367c2dbbd@molgen.mpg.de>
+From: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
+Message-ID: <bc5fbdcb-6afe-dac0-b498-c5e26d539d6d@intel.com>
+Date: Wed, 7 Aug 2019 10:47:06 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <8829b684-518d-2233-d618-4f1367c2dbbd@molgen.mpg.de>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: PCIm function state support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,91 +65,85 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Due to commit: 5d8682588605 ("[misc] mei: me: allow runtime pm for
-platform with D0i3"), when the cable is disconnect and reconnected,
-the NIC can enter a DMoff state.  The DMoff state will cause incorrect
-link indication and duplex setting mismatch.
-
-To resolve this, we need to check the PCIm function state and perform
-a PHY reset after exiting the DMoff state in our watchdog service task.
-
-Fixes: 5d8682588605 ("[misc] mei: me: allow runtime pm for platform with D0i3")
-Link: https://bugzilla.redhat.com/show_bug.cgi?id=1689436
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
-
-V2: Fix typos in commit message
-V3: Fix minor typo
-V4: Address community comments
-V5: Address community comments 
----
- drivers/net/ethernet/intel/e1000e/defines.h |  4 ++++
- drivers/net/ethernet/intel/e1000e/netdev.c  | 20 +++++++++++++++++++-
- 2 files changed, 23 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/defines.h b/drivers/net/ethernet/intel/e1000e/defines.h
-index fd550dee4982..11452eaac233 100644
---- a/drivers/net/ethernet/intel/e1000e/defines.h
-+++ b/drivers/net/ethernet/intel/e1000e/defines.h
-@@ -222,6 +222,10 @@
- #define E1000_STATUS_PHYRA      0x00000400      /* PHY Reset Asserted */
- #define E1000_STATUS_GIO_MASTER_ENABLE	0x00080000	/* Master Req status */
- 
-+/* PCIm function state */
-+#define E1000_STATUS_PCIM_STATE	0x40000000
-+#define PCIM_DMOFF_EXIT_TIMEOUT	100
-+
- #define HALF_DUPLEX 1
- #define FULL_DUPLEX 2
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index b5fed6177ad6..639266485c15 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -5162,7 +5162,7 @@ static void e1000_watchdog_task(struct work_struct *work)
- 	struct e1000_phy_info *phy = &adapter->hw.phy;
- 	struct e1000_ring *tx_ring = adapter->tx_ring;
- 	struct e1000_hw *hw = &adapter->hw;
--	u32 link, tctl;
-+	u32 link, tctl, pcim_state, tries = 0;
- 
- 	if (test_bit(__E1000_DOWN, &adapter->state))
- 		return;
-@@ -5187,6 +5187,24 @@ static void e1000_watchdog_task(struct work_struct *work)
- 			/* Cancel scheduled suspend requests. */
- 			pm_runtime_resume(netdev->dev.parent);
- 
-+			/* Check if MAC is in DMoff state */
-+			pcim_state = er32(STATUS);
-+			while (pcim_state & E1000_STATUS_PCIM_STATE) {
-+				if (tries++ == PCIM_DMOFF_EXIT_TIMEOUT) {
-+					e_dbg("Error in exiting dmoff\n");
-+					e_err("PCIm DMoff timeout expired\n");
-+					break;
-+				}
-+				usleep_range(10000, 20000);
-+				pcim_state = er32(STATUS);
-+
-+				/* If MAC entered DMoff state, PHY reset is
-+				 * needed after exiting it
-+				 */
-+				if (!(pcim_state & E1000_STATUS_PCIM_STATE))
-+					e1000_phy_hw_reset(&adapter->hw);
-+			}
-+
- 			/* update snapshot of PHY registers on LSC */
- 			e1000_phy_read_status(adapter);
- 			mac->ops.get_link_up_info(&adapter->hw,
--- 
-2.11.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBQYXVsLAoKVGhhbmsgeW91IGFnYWluIGZvciB5b3VyIGNvbW1lbnRzLgpJIHNlbnQgYSBu
+ZXcgdmVyc2lvbiBmb3IgbXkgcGF0Y2ggKFY1KS4KCk9uIDgvNC8yMDE5IDE2OjQ0LCBQYXVsIE1l
+bnplbCB3cm90ZToKPiBEZWFyIFZpdGFseSwKPgo+Cj4gVGhhbmsgeW91IGZvciB0aGUgdXBkYXRl
+ZCB2ZXJzaW9uLgo+Cj4gT24gMDQuMDguMTkgMDk6NDAsIFZpdGFseSBMaWZzaGl0cyB3cm90ZToK
+Pj4gRHVlIHRvIGNvbW1pdDogNWQ4NjgyNTg4NjA1ICgiW21pc2NdIG1laTogbWU6IGFsbG93IHJ1
+bnRpbWUKPj4gcG0gZm9yIHBsYXRmb3JtIHdpdGggRDBpMyIpCj4+IHdoZW4gZGlzY29ubmVjdGlu
+ZyB0aGUgY2FibGUgYW5kIHJlY29ubmVjdGluZyBpdCB0aGUgTklDCj4+IGVudGVycyBETW9mZiBz
+dGF0ZS4gVGhpcyBjYXVzZWQgd3JvbmcgbGluayBpbmRpY2F0aW9uCj4+IGFuZCBkdXBsZXggbWlz
+bWF0Y2guCj4KPiAqYW5kKiBzaG91bGQgZml0IG9uIHRoZSBsaW5lIGFib3ZlLgo+Cj4+IENoZWNr
+aW5nIFBDSW0gZnVuY3Rpb24gc3RhdGUgYW5kIHBlcmZvcm1pbmcgUEhZIHJlc2V0IGFmdGVyCj4+
+IGV4aXRpbmcgRE1vZmYgc3RhdGUgaW4gd2F0Y2hkb2cgdGFzaywgc29sdmVzIHRoaXMgaXNzdWUu
+Cj4+Cj4+IExpbms6IGh0dHBzOi8vYnVnemlsbGEucmVkaGF0LmNvbS9zaG93X2J1Zy5jZ2k/aWQ9
+MTY4OTQzNgo+PiBTaWduZWQtb2ZmLWJ5OiBWaXRhbHkgTGlmc2hpdHMgPHZpdGFseS5saWZzaGl0
+c0BpbnRlbC5jb20+Cj4+IC0tLQo+Pgo+PiBWMjogRml4IHR5cG9zIGluIGNvbW1pdCBtZXNzYWdl
+Cj4+IFYzOiBGaXggbWlub3IgdHlwbwo+PiBWNDogQWRkcmVzcyBjb21tdW5pdHkgY29tbWVudHMK
+Pj4gLS0tCj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9kZWZpbmVzLmgg
+fMKgIDQgKysrKwo+PiDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2
+LmPCoCB8IDIwICsrKysrKysrKysrKysrKysrKystCj4+IMKgIDIgZmlsZXMgY2hhbmdlZCwgMjMg
+aW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2RlZmluZXMuaCAKPj4gYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9lMTAwMGUvZGVmaW5lcy5oCj4+IGluZGV4IGZkNTUwZGVlNDk4Mi4uNGNmZjcz
+Y2JkMDMyIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUv
+ZGVmaW5lcy5oCj4+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9kZWZp
+bmVzLmgKPj4gQEAgLTIyMiw2ICsyMjIsMTAgQEAKPj4gwqAgI2RlZmluZSBFMTAwMF9TVEFUVVNf
+UEhZUkHCoMKgwqDCoMKgIDB4MDAwMDA0MDDCoMKgwqDCoMKgIC8qIFBIWSBSZXNldCAKPj4gQXNz
+ZXJ0ZWQgKi8KPj4gwqAgI2RlZmluZSBFMTAwMF9TVEFUVVNfR0lPX01BU1RFUl9FTkFCTEXCoMKg
+wqAgMHgwMDA4MDAwMMKgwqDCoCAvKiBNYXN0ZXIgCj4+IFJlcSBzdGF0dXMgKi8KPj4gwqAgKy8q
+IFBDSW0gZnVuY3Rpb24gc3RhdGUgKi8KPj4gKyNkZWZpbmUgRTEwMDBfU1RBVFVTX1BDSU1fU1RB
+VEXCoMKgwqAgMHg0MDAwMDAwMAo+PiArI2RlZmluZSBQQ0lNX0RNT0ZGX0VYSVRfVElNRU9VVCAx
+MDAKPgo+IEFsaWduIHRoZSB2YWx1ZXM/Cj4KPj4gKwo+PiDCoCAjZGVmaW5lIEhBTEZfRFVQTEVY
+IDEKPj4gwqAgI2RlZmluZSBGVUxMX0RVUExFWCAyCj4+IMKgIGRpZmYgLS1naXQgYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMgCj4+IGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4+IGluZGV4IGI1ZmVkNjE3N2FkNi4uMmQyOWMw
+ZDBiZTFiIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUv
+bmV0ZGV2LmMKPj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRl
+di5jCj4+IEBAIC01MTYyLDcgKzUxNjIsNyBAQCBzdGF0aWMgdm9pZCBlMTAwMF93YXRjaGRvZ190
+YXNrKHN0cnVjdCAKPj4gd29ya19zdHJ1Y3QgKndvcmspCj4+IMKgwqDCoMKgwqAgc3RydWN0IGUx
+MDAwX3BoeV9pbmZvICpwaHkgPSAmYWRhcHRlci0+aHcucGh5Owo+PiDCoMKgwqDCoMKgIHN0cnVj
+dCBlMTAwMF9yaW5nICp0eF9yaW5nID0gYWRhcHRlci0+dHhfcmluZzsKPj4gwqDCoMKgwqDCoCBz
+dHJ1Y3QgZTEwMDBfaHcgKmh3ID0gJmFkYXB0ZXItPmh3Owo+PiAtwqDCoMKgIHUzMiBsaW5rLCB0
+Y3RsOwo+PiArwqDCoMKgIHUzMiBsaW5rLCB0Y3RsLCBwY2ltX3N0YXRlLCB0cmllcyA9IDA7Cj4+
+IMKgIMKgwqDCoMKgwqAgaWYgKHRlc3RfYml0KF9fRTEwMDBfRE9XTiwgJmFkYXB0ZXItPnN0YXRl
+KSkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybjsKPj4gQEAgLTUxODcsNiArNTE4NywyNCBA
+QCBzdGF0aWMgdm9pZCBlMTAwMF93YXRjaGRvZ190YXNrKHN0cnVjdCAKPj4gd29ya19zdHJ1Y3Qg
+KndvcmspCj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC8qIENhbmNlbCBzY2hlZHVsZWQg
+c3VzcGVuZCByZXF1ZXN0cy4gKi8KPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcG1fcnVu
+dGltZV9yZXN1bWUobmV0ZGV2LT5kZXYucGFyZW50KTsKPj4gwqAgK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgLyogQ2hlY2tpbmcgaWYgTUFDIGlzIGluIERNb2ZmIHN0YXRlKi8KPgo+IHMvQ2hlY2tp
+bmcvQ2hlY2svCj4KPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcGNpbV9zdGF0ZSA9IGVyMzIo
+U1RBVFVTKTsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgd2hpbGUgKHBjaW1fc3RhdGUgJiBF
+MTAwMF9TVEFUVVNfUENJTV9TVEFURSkgewo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIGlmICh0cmllcysrID09IFBDSU1fRE1PRkZfRVhJVF9USU1FT1VUKSB7Cj4+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBlX2RiZygiRXJyb3IgaW4gZXhpdGluZyBk
+bW9mZlxuIik7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBlX2Vy
+cigiUENJbSBETW9mZiB0aW1lb3V0IGV4cGlyZWRcbiIpOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgfQo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHVzbGVlcF9yYW5nZSgx
+MDAwMCwgMjAwMDApOwo+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHBjaW1fc3Rh
+dGUgPSBlcjMyKFNUQVRVUyk7Cj4+ICsKPj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCAvKiBJZiBNQUMgZW50ZXJlZCBETW9mZiBzdGF0ZSwgUEhZIHJlc2V0IGlzCj4+ICvCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqIG5lZWRlZCBhZnRlciBleGl0aW5nIGl0Cj4+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAqLwo+PiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIGlmICghKHBjaW1fc3RhdGUgJiBFMTAwMF9TVEFUVVNfUENJTV9TVEFURSkp
+Cj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBlMTAwMF9waHlfaHdf
+cmVzZXQoJmFkYXB0ZXItPmh3KTsKPgo+IEkgc3RpbGwgYmVsaWV2ZSwgdGhlIGlmIHN0YXRlbWVu
+dCBzaG91bGQgYmUgbW92ZWQgKm91dHNpZGUqIHRoZSBsb29wLgoKVGhlIGlmIHN0YXRlbWVudCBo
+YXMgdG8gc3RheSBpbiB0aGUgbG9vcCBzaW5jZSB0aGUgUEhZIHJlc2V0IGlzIG5lZWRlZCAKb25s
+eSBpZiB0aGUgTUFDIGVudGVyZWQgRE1vZmYgc3RhdGUuCgo+Cj4+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIH0KPj4gKwo+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAvKiB1cGRhdGUgc25h
+cHNob3Qgb2YgUEhZIHJlZ2lzdGVycyBvbiBMU0MgKi8KPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgZTEwMDBfcGh5X3JlYWRfc3RhdHVzKGFkYXB0ZXIpOwo+PiDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoCBtYWMtPm9wcy5nZXRfbGlua191cF9pbmZvKCZhZGFwdGVyLT5odywKPgo+Cj4g
+S2luZCByZWdhcmRzLAo+Cj4gUGF1bAoKVGhhbmtzLAoKVml0YWx5CgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBs
+aXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
