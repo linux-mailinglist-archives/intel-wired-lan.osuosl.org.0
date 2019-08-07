@@ -1,87 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36311867A7
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 19:07:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CA0E867AB
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 19:07:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA2D2882B5;
-	Thu,  8 Aug 2019 17:07:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EEBB4204DD;
+	Thu,  8 Aug 2019 17:07:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u1XKWZHuwDML; Thu,  8 Aug 2019 17:07:06 +0000 (UTC)
+	with ESMTP id IQzX+ruBN5dy; Thu,  8 Aug 2019 17:07:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3027D882A9;
-	Thu,  8 Aug 2019 17:07:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 935A4204BC;
+	Thu,  8 Aug 2019 17:07:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 738891BF568
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:41:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4DF681BF568
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:56:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6F90E860F4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:41:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4973E83CBF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:56:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vDir1H4IBkWD for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Aug 2019 07:41:26 +0000 (UTC)
-X-Greylist: delayed 00:06:52 by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5C67C85797
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:41:26 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id v15so80754166wml.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 07 Aug 2019 00:41:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernelci-org.20150623.gappssmtp.com; s=20150623;
- h=message-id:date:mime-version:content-transfer-encoding:subject:to
- :from:cc; bh=FZrUQH33y44Ytw4iJLLaq3ZcMTl1mI3uSlJR/j+IYIA=;
- b=sm33IYA6YCZXfStWQ2VxSkjKlqC6Pc49HxVe5SFTOVZhHqE4v/mQWVzH8A8t9QXGf1
- MZio94ryosMuUEyzoLF9A/9ZbHvZMRkXvwuoMEhDSTLqABdT45gyFfcm+vi/XY0NWzfX
- THUmMpBdZkqb55o9sEHSpbShnr+XMEUziry7S1aUi3q4APB+e2DcQ7A37XAaHeqpFkmP
- WDt9acG91X+y2w2BX9IhvXr1WtCR5ZYdoHgCDfYP3h1Tr5urOXUUtTzJiTdsEh4jFL1K
- zwxf1jq0f7jJhGDCZvh8f4M9acWpPg6VvRMAhd2q6wUsl+JwQufNZP47i9mjvwB/P5Fz
- tbZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:date:mime-version
- :content-transfer-encoding:subject:to:from:cc;
- bh=FZrUQH33y44Ytw4iJLLaq3ZcMTl1mI3uSlJR/j+IYIA=;
- b=uVK4yvxHodz3C8BMkVW6szfYxDWMu3Jne5g3ZXdU4wkirNtVEgx2ceJ9rxAH/LOcwR
- trs5crYxev35zySefcCrmFu3xy63xiI21Dn7/kEv42HminLS0ThP6f3hhIeLrac1bBVL
- C2/Y+wu9gZ72XhKQfqEWfu9fCX1qRAFB2YkzvFnl49sNwbPcJVSIN2/27R0CIfqmRN3F
- BjIbQZ/ZiGnz2gu1kG2Cq/JN4XNccM4z3Pf2MGx1ZJBXNvKszwCDSK4TETe21dC67ecj
- ZivcQ8Mpd5V51M8TZ4xlwgqlonfHMe3mJuZAxauA3yY+nudpPNDXs+CKumIIndfO+9dy
- Edbw==
-X-Gm-Message-State: APjAAAUI3oUolGVwk5bYJNB1PMzmFZaG0FOHDfFbMKM0KbCrslUvkw7w
- lnHgf8+R6sS5SevL04Y++ReTdA==
-X-Google-Smtp-Source: APXvYqzDJy8goZnkK981FtKvLP4ltt5j12SyCQo15xhOCqUOj4ur0/SSjmlX9lG53vtJrI5qznaTjA==
-X-Received: by 2002:a05:600c:114f:: with SMTP id
- z15mr8983631wmz.131.1565163272906; 
- Wed, 07 Aug 2019 00:34:32 -0700 (PDT)
-Received: from [148.251.42.114] ([2a01:4f8:201:9271::2])
- by smtp.gmail.com with ESMTPSA id y2sm79688035wrl.4.2019.08.07.00.34.31
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 07 Aug 2019 00:34:32 -0700 (PDT)
-Message-ID: <5d4a7f08.1c69fb81.5cc82.1018@mx.google.com>
-Date: Wed, 07 Aug 2019 00:34:32 -0700 (PDT)
+ with ESMTP id KRPb9FJiZTcQ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Aug 2019 07:56:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from aserp2120.oracle.com (aserp2120.oracle.com [141.146.126.78])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0927982586
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 07:56:20 +0000 (UTC)
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x777sVrp042116;
+ Wed, 7 Aug 2019 07:56:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2018-07-02;
+ bh=vb94Xu/WRdFxAZR3eQGfCToyPrjki8zHPtft8A3HtDI=;
+ b=Wh70IRXxx4ZxP4r2wEFpWJx5eB0HIE3YqCkGEcmEBs1hMlRjDxwAyc0ViDxpxJaddqkQ
+ iicMxYAuK1i+FUlrVeBdydzSZMbB7ABmO0VXqkuqRMqvGTYe6xIgyA+kSA83/LTbRiwE
+ 8c4Sh0FkT2zRg0Jzd4iO3wASvjO2UfbjER4q4tUCXOw8Y4f65V9Jae3B1xqRtSre6asb
+ tqHQRDrIgJnwtVo9hrTpQruobh52IwCG3LHLZrvQ8i+3IjIQyXoBCwMs2ci9S+ZEhFrK
+ efAHUYIwWdZ9VGrDMHVstAr8Y5z+3AFKoEvPQbuGUSZ8V9lnBaxprl4+e+8ivOcM4Rst sA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 2u527ptk8p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 07 Aug 2019 07:56:12 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x777qf6X126164;
+ Wed, 7 Aug 2019 07:56:11 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3030.oracle.com with ESMTP id 2u75bw6j0q-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 07 Aug 2019 07:56:11 +0000
+Received: from abhmp0001.oracle.com (abhmp0001.oracle.com [141.146.116.7])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x777uApC001488;
+ Wed, 7 Aug 2019 07:56:11 GMT
+Received: from [10.191.27.28] (/10.191.27.28)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Wed, 07 Aug 2019 00:56:10 -0700
+To: Firo Yang <firo.yang@suse.com>, "davem@davemloft.net" <davem@davemloft.net>
+References: <20190807024917.27682-1-firo.yang@suse.com>
+From: Jacob Wen <jian.w.wen@oracle.com>
+Message-ID: <85aaefdf-d454-1823-5840-d9e2f71ffb19@oracle.com>
+Date: Wed, 7 Aug 2019 15:56:07 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-Kernelci-Tree: net-next
-X-Kernelci-Kernel: v5.3-rc1-460-g05bb520376af
-X-Kernelci-Lab-Name: lab-baylibre
-X-Kernelci-Branch: master
-X-Kernelci-Report-Type: bisect
-To: Andrew Bowers <andrewx.bowers@intel.com>, tomeu.vizoso@collabora.com,
- guillaume.tucker@collabora.com, mgalka@collabora.com,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, broonie@kernel.org,
- matthew.hart@linaro.org, khilman@baylibre.com, enric.balletbo@collabora.com,
- Jacob Keller <jacob.e.keller@intel.com>
-From: "kernelci.org bot" <bot@kernelci.org>
-X-Mailman-Approved-At: Thu, 08 Aug 2019 17:07:04 +0000
-Subject: [Intel-wired-lan] net-next/master boot bisection:
- v5.3-rc1-460-g05bb520376af on meson-gxm-khadas-vim2
+In-Reply-To: <20190807024917.27682-1-firo.yang@suse.com>
+Content-Language: en-US
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9341
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1906280000 definitions=main-1908070085
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9341
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
+ definitions=main-1908070085
+X-Mailman-Approved-At: Thu, 08 Aug 2019 17:07:05 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] ixgbe: sync the first fragment
+ unconditionally
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,112 +101,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "alexander.h.duyck@linux.intel.com" <alexander.h.duyck@linux.intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-* This automated bisection report was sent to you on the basis  *
-* that you may be involved with the breaking commit it has      *
-* found.  No manual investigation has been done to verify it,   *
-* and the root cause of the problem may be somewhere else.      *
-*                                                               *
-* If you do send a fix, please include this trailer:            *
-*   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
-*                                                               *
-* Hope this helps!                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-net-next/master boot bisection: v5.3-rc1-460-g05bb520376af on meson-gxm-khadas-vim2
-
-Summary:
-  Start:      05bb520376af Merge branch '40GbE' of git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue
-  Details:    https://kernelci.org/boot/id/5d4a3a6759b51422d431b28d
-  Plain log:  https://storage.kernelci.org//net-next/master/v5.3-rc1-460-g05bb520376af/arm64/defconfig/gcc-8/lab-baylibre/boot-meson-gxm-khadas-vim2.txt
-  HTML log:   https://storage.kernelci.org//net-next/master/v5.3-rc1-460-g05bb520376af/arm64/defconfig/gcc-8/lab-baylibre/boot-meson-gxm-khadas-vim2.html
-  Result:     b27223591606 i40e: verify string count matches even on early return
-
-Checks:
-  revert:     PASS
-  verify:     PASS
-
-Parameters:
-  Tree:       net-next
-  URL:        git://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git
-  Branch:     master
-  Target:     meson-gxm-khadas-vim2
-  CPU arch:   arm64
-  Lab:        lab-baylibre
-  Compiler:   gcc-8
-  Config:     defconfig
-  Test suite: boot
-
-Breaking commit found:
-
--------------------------------------------------------------------------------
-commit b27223591606f59c1f7c042b8e3dc74affadf492
-Author: Jacob Keller <jacob.e.keller@intel.com>
-Date:   Tue Jul 2 08:22:58 2019 -0400
-
-    i40e: verify string count matches even on early return
-    
-    Similar to i40e_get_ethtool_stats, add a goto to verify that the data
-    pointer for the strings lines up with the expected stats count. This
-    helps ensure that bugs are not introduced when adding stats.
-    
-    Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-    Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-    Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index ceca57a261dc..01e4615b1b4b 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -2342,7 +2342,7 @@ static void i40e_get_stat_strings(struct net_device *netdev, u8 *data)
- 	}
- 
- 	if (vsi != pf->vsi[pf->lan_vsi] || pf->hw.partition_id != 1)
--		return;
-+		goto check_data_pointer;
- 
- 	i40e_add_stat_strings(&data, i40e_gstrings_veb_stats);
- 
-@@ -2354,6 +2354,7 @@ static void i40e_get_stat_strings(struct net_device *netdev, u8 *data)
- 	for (i = 0; i < I40E_MAX_USER_PRIORITY; i++)
- 		i40e_add_stat_strings(&data, i40e_gstrings_pfc_stats, i);
- 
-+check_data_pointer:
- 	WARN_ONCE(data - p != i40e_get_stats_count(netdev) * ETH_GSTRING_LEN,
- 		  "stat strings count mismatch!");
- }
--------------------------------------------------------------------------------
+I think the description is not correct. Consider using something like below.
 
 
-Git bisection log:
+In Xen environment, due to memory fragmentation ixgbe may allocate a 
+'DMA' buffer with pages that are not physically contiguous.
 
--------------------------------------------------------------------------------
-git bisect start
-# good: [9e8fb25254f76cb483303d8e9a97ed80a65418fe] Merge branch 'net-l3-l4-functional-tests'
-git bisect good 9e8fb25254f76cb483303d8e9a97ed80a65418fe
-# bad: [05bb520376af2c5146d3c44832c22ec3bb54d778] Merge branch '40GbE' of git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue
-git bisect bad 05bb520376af2c5146d3c44832c22ec3bb54d778
-# good: [c4ed52538cd012bd9dfe97beda6802454d367e70] Merge branch 'drop_monitor-Various-improvements-and-cleanups'
-git bisect good c4ed52538cd012bd9dfe97beda6802454d367e70
-# good: [fb1b775a247ee8d846152841f780eba6cb71bcfc] net: sched: add skbedit of ptype action to hardware IR
-git bisect good fb1b775a247ee8d846152841f780eba6cb71bcfc
-# good: [ef68de56c7ad6f708bee8db5e08b83013083e757] Merge branch 'Support-tunnels-over-VLAN-in-NFP'
-git bisect good ef68de56c7ad6f708bee8db5e08b83013083e757
-# good: [0969402fd5dd57268bb7547d7e5ece8fcd81157d] i40e: Update visual effect for advertised FEC mode.
-git bisect good 0969402fd5dd57268bb7547d7e5ece8fcd81157d
-# bad: [b27223591606f59c1f7c042b8e3dc74affadf492] i40e: verify string count matches even on early return
-git bisect bad b27223591606f59c1f7c042b8e3dc74affadf492
-# good: [b603f9dc20afed5e4666642c8713cafb94a23058] i40e: Log info when PF is entering and leaving Allmulti mode.
-git bisect good b603f9dc20afed5e4666642c8713cafb94a23058
-# first bad commit: [b27223591606f59c1f7c042b8e3dc74affadf492] i40e: verify string count matches even on early return
--------------------------------------------------------------------------------
+A NIC doesn't support directly write such buffer. So xen-swiotlb would 
+use the pages, which are physically contiguous, from the swiotlb buffer 
+for the NIC.
+
+The unmap operation is used to copy the swiotlb buffer to the pages that 
+are allocated by ixgbe.
+
+On 8/7/19 10:49 AM, Firo Yang wrote:
+> In Xen environment, if Xen-swiotlb is enabled, ixgbe driver
+> could possibly allocate a page, DMA memory buffer, for the first
+> fragment which is not suitable for Xen-swiotlb to do DMA operations.
+> Xen-swiotlb have to internally allocate another page for doing DMA
+> operations. It requires syncing between those two pages. However,
+> since commit f3213d932173 ("ixgbe: Update driver to make use of DMA
+> attributes in Rx path"), the unmap operation is performed with
+> DMA_ATTR_SKIP_CPU_SYNC. As a result, the sync is not performed.
+>
+> To fix this problem, always sync before possibly performing a page
+> unmap operation.
+>
+> Fixes: f3213d932173 ("ixgbe: Update driver to make use of DMA
+> attributes in Rx path")
+> Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+> Signed-off-by: Firo Yang <firo.yang@suse.com>
+> ---
+>
+> Changes from v1:
+>   * Imporved the patch description.
+>   * Added Reviewed-by: and Fixes: as suggested by Alexander Duyck
+>
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 +++++++++-------
+>   1 file changed, 9 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index cbaf712d6529..200de9838096 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -1825,13 +1825,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
+>   static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
+>   				struct sk_buff *skb)
+>   {
+> -	/* if the page was released unmap it, else just sync our portion */
+> -	if (unlikely(IXGBE_CB(skb)->page_released)) {
+> -		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
+> -				     ixgbe_rx_pg_size(rx_ring),
+> -				     DMA_FROM_DEVICE,
+> -				     IXGBE_RX_DMA_ATTR);
+> -	} else if (ring_uses_build_skb(rx_ring)) {
+> +	if (ring_uses_build_skb(rx_ring)) {
+>   		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
+>   
+>   		dma_sync_single_range_for_cpu(rx_ring->dev,
+> @@ -1848,6 +1842,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
+>   					      skb_frag_size(frag),
+>   					      DMA_FROM_DEVICE);
+>   	}
+> +
+> +	/* If the page was released, just unmap it. */
+> +	if (unlikely(IXGBE_CB(skb)->page_released)) {
+> +		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
+> +				     ixgbe_rx_pg_size(rx_ring),
+> +				     DMA_FROM_DEVICE,
+> +				     IXGBE_RX_DMA_ATTR);
+> +	}
+>   }
+>   
+>   /**
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
