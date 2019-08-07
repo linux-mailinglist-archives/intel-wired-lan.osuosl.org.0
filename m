@@ -2,53 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 139C684F2A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Aug 2019 16:52:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E41484F37
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Aug 2019 16:55:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BCD3288299;
-	Wed,  7 Aug 2019 14:52:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AD0DF883D7;
+	Wed,  7 Aug 2019 14:55:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wvMorvQCPzuF; Wed,  7 Aug 2019 14:52:00 +0000 (UTC)
+	with ESMTP id UaFtv9c1g8m0; Wed,  7 Aug 2019 14:55:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4DB768836C;
-	Wed,  7 Aug 2019 14:52:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0E8D9883A3;
+	Wed,  7 Aug 2019 14:55:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9881C1BF2F5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:51:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DF1111BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:55:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9397E8834D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:51:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DB6ED8838E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:55:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cXTP9I4Uot8i for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Aug 2019 14:51:56 +0000 (UTC)
+ with ESMTP id BrBhdFCKTkqI for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Aug 2019 14:55:50 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5E35088299
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:51:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 555618837F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:55:50 +0000 (UTC)
 Received: from rabammel.molgen.mpg.de (rabammel.molgen.mpg.de [141.14.30.220])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128
  bits)) (No client certificate requested)
  (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 610502000BFEC;
- Wed,  7 Aug 2019 16:51:53 +0200 (CEST)
-To: Vitaly Lifshits <vitaly.lifshits@intel.com>
-References: <20190804074026.25198-1-vitaly.lifshits@intel.com>
- <8829b684-518d-2233-d618-4f1367c2dbbd@molgen.mpg.de>
- <bc5fbdcb-6afe-dac0-b498-c5e26d539d6d@intel.com>
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7CA71201A3C2E;
+ Wed,  7 Aug 2019 16:55:48 +0200 (CEST)
+To: Sasha Neftin <sasha.neftin@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+References: <81004059-6d91-d8be-c80e-70c52359350d@molgen.mpg.de>
+ <2277f25bc44c4aebaac59942de2e24bb@AUSX13MPC105.AMER.DELL.COM>
+ <d0aaa0f8-b94c-be65-7a4e-f5592aa65647@intel.com>
 From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <a5a0b21c-5df3-809b-fc7a-022f2432676c@molgen.mpg.de>
-Date: Wed, 7 Aug 2019 16:51:52 +0200
+Message-ID: <47977dc7-d53a-427c-bbaa-9c665287cb47@molgen.mpg.de>
+Date: Wed, 7 Aug 2019 16:55:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <bc5fbdcb-6afe-dac0-b498-c5e26d539d6d@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: PCIm function state support
+In-Reply-To: <d0aaa0f8-b94c-be65-7a4e-f5592aa65647@intel.com>
+Subject: Re: [Intel-wired-lan] MDI errors during resume from ACPI S3
+ (suspend to ram)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,128 +63,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: multipart/mixed; boundary="===============7516579250611782706=="
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Mario Limonciello <mario.limonciello@dell.com>
+Content-Type: multipart/mixed; boundary="===============7027906788796732308=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 This is a cryptographically signed message in MIME format.
 
---===============7516579250611782706==
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms040909000501040503060808"
+--===============7027906788796732308==
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms020308070601050204010402"
 
 This is a cryptographically signed message in MIME format.
 
---------------ms040909000501040503060808
+--------------ms020308070601050204010402
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-Dear Vitaly,
+
+Dear Sasha,
 
 
-On 07.08.19 09:47, Lifshits, Vitaly wrote:
+On 07.08.19 09:23, Neftin, Sasha wrote:
+> On 8/6/2019 18:53, Mario.Limonciello@dell.com wrote:
+>>> -----Original Message-----
+>>> From: Paul Menzel <pmenzel@molgen.mpg.de>
+>>> Sent: Tuesday, August 6, 2019 10:36 AM
+>>> To: Jeff Kirsher
+>>> Cc: intel-wired-lan@lists.osuosl.org; Linux Kernel Mailing List; Limo=
+nciello, Mario
+>>> Subject: MDI errors during resume from ACPI S3 (suspend to ram)
+>>>
+>>> Dear Linux folks,
+>>>
+>>>
+>>> Trying to decrease the resume time of Linux 5.3-rc3 on the Dell OptiP=
+lex
+>>> 5040 with the device below
+>>>
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 $ lspci -nn -s 00:1f.6
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 00:1f.6 Ethernet controller [0200]: Intel Co=
+rporation Ethernet Connection (2)
+>>> I219-V [8086:15b8] (rev 31)
+>>>
+>>> pm-graph=E2=80=99s script `sleepgraph.py` shows, that the driver *e10=
+00e* takes
+>>> around 400 ms, which is quite a lot. The call graph trace shows that
+>>> `e1000e_read_phy_reg_mdic()` is responsible for a lot of those. From
+>>> `drivers/net/ethernet/intel/e1000e/phy.c` [1]:
+>>>
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < (E=
+1000_GEN_POLL_TIMEOUT * 3); i++) {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 udelay(50);
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 mdic =3D er32(MDIC);
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (mdic & E1000_MDIC_READY)
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ break;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!(mdic & E1000_M=
+DIC_READY)) {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 e_dbg("MDI Read did not complete\n");
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -E1000_ERR_PHY;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (mdic & E1000_MDI=
+C_ERROR) {
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 e_dbg("MDI Error\n");
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -E1000_ERR_PHY;
+>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>>>
+>>> Unfortunately, errors are not logged if dynamic debug is disabled,
+>>> so rebuilding the Linux kernel with `CONFIG_DYNAMIC_DEBUG`, and
+>>>
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 echo "file drivers/net/ethernet/* +p" | sudo=
+ tee
+>>> /sys/kernel/debug/dynamic_debug/control
+>>>
+>>> I got the messages below.
+>>>
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 [ 4159.204192] e1000e 0000:00:1f.6 net00: MD=
+I Error
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 [ 4160.267950] e1000e 0000:00:1f.6 net00: MD=
+I Write did not complete
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 [ 4160.359855] e1000e 0000:00:1f.6 net00: MD=
+I Error
+>>>
+>>> Can you please shed a little more light into these errors? Please
+>>> find the full log attached.
 
-> Thank you again for your comments.
-> I sent a new version for my patch (V5).
-
-Thank you very much for incorporating them.
-
-> On 8/4/2019 16:44, Paul Menzel wrote:
-
->> On 04.08.19 09:40, Vitaly Lifshits wrote:
-
-[=E2=80=A6]
-
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 p=
-cim_state =3D er32(STATUS);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 w=
-hile (pcim_state & E1000_STATUS_PCIM_STATE) {
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 if (tries++ =3D=3D PCIM_DMOFF_EXIT_TIMEOUT) {
-
-By the way, can=E2=80=99t there be the unit appended to the macro name
-`PCIM_DMOFF_EXIT_TIMEOUT`?
-
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 e_dbg("Error in exiting dmo=
-ff\n");
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 e_err("PCIm DMoff timeout e=
-xpired\n");
-
-It=E2=80=99s not a hold-up, but why do you print two messages? I=E2=80=99=
-d just print the
-error message.
-
-    e_err("Failed to exit PCIm DMoff: Time-out (%i iterations) expired", =
-PCIM_DMOFF_EXIT_TIMEOUT);
-
-Or: e_err("Exiting PCIm DMoff timed out after %i iterations.", PCIM_DMOFF=
-_EXIT_TIMEOUT);
-
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 }
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 usleep_range(10000, 20000);
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 pcim_state =3D er32(STATUS);
->>> +
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 /* If MAC entered DMoff state, PHY reset is
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 * needed after exiting it
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 if (!(pcim_state & E1000_STATUS_PCIM_STATE))
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 e1000_phy_hw_reset(&adapter=
-->hw);
+>>> [1]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.g=
+it/tree/drivers/net/ethernet/intel/e1000e/phy.c#n206
 >>
->> I still believe, the if statement should be moved *outside* the loop.
->=20
-> The if statement has to stay in the loop since the PHY reset is
-> needed only if the MAC entered DMoff state.
+>> Strictly as a reference point you may consider trying the out-of-tree =
+driver to see if these
+>> behaviors persist.
+>>
+>> https://sourceforge.net/projects/e1000/
 
-Thank you. Now I finally saw it. It=E2=80=99s about, when the loop is nev=
-er
-entered. I associated a while loop in my head normally with the assumptio=
-n,
-that the condition is true in the beginning.
+I can try that in the next days.
 
-For the record, the code below is more intuitive for me.
+> We are using external PHY. Required ~200 ms to complete MDIC
+> transaction (depended on the project).
 
-```
-if (pcim_state & E1000_STATUS_PCIM_STATE) {
-/* MAC in DMoff state */
-	do {
-		if (tries++ =3D=3D PCIM_DMOFF_EXIT_TIMEOUT) {
-			e_dbg("Error in exiting dmoff\n");
-			e_err("PCIm DMoff timeout expired\n");
-			break;
-		}
-		usleep_range(10000, 20000);
-		pcim_state =3D er32(STATUS);
-	} while (pcim_state & E1000_STATUS_PCIM_STATE);
+Are you referring to the out-of-tree driver?
 
-	e1000_phy_hw_reset(&adapter->hw);
-}
-```
-
->>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }=
-
->>> +
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 /* update snapshot of PHY registers on LSC */
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 e1000_phy_read_status(adapter);
->>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 mac->ops.get_link_up_info(&adapter->hw,
-
-Anyway, I do not want to hold up anything.
+> You need to take to consider this time before access to the PHY. I do
+> not recommend decrease timer in a 'e1000e_read_phy_reg_mdic()'
+> method. We could hit on wrong MDI access.
+My point was more, if you know that more time is needed, before the MDI
+setting(?) will succeed, why try it anyway and go into the error paths?
+Isn=E2=80=99t there some polling possible to find out, when MDI can be se=
+t up?
 
 
 Kind regards,
@@ -190,7 +189,7 @@ Kind regards,
 Paul
 
 
---------------ms040909000501040503060808
+--------------ms020308070601050204010402
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -278,23 +277,23 @@ fndPkrXx6XWDdU3S1LyKgHlLIFtarLFm2Hb5zAUR33h+26cN6ohcGqGEEzgIG8tXS8gztEaj
 EwJERTEPMA0GA1UECAwGQmF5ZXJuMREwDwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4
 LVBsYW5jay1HZXNlbGxzY2hhZnQxFTATBgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzF
 RvyiMA0GCWCGSAFlAwQCAQUAoIIB8TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqG
-SIb3DQEJBTEPFw0xOTA4MDcxNDUxNTNaMC8GCSqGSIb3DQEJBDEiBCBuGQVBP5M7F4rT+fNY
-BdpHFVcg8HM0nH9WGZb7yOxqkTBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
+SIb3DQEJBTEPFw0xOTA4MDcxNDU1NDhaMC8GCSqGSIb3DQEJBDEiBCDUQ0oeRvkeSolMrMHf
+BkgHvyDqr7ETt2sduu17lsA5TDBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
 hkgBZQMEAQIwCgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcG
 BSsOAwIHMA0GCCqGSIb3DQMCAgEoMIGJBgkrBgEEAYI3EAQxfDB6MGoxCzAJBgNVBAYTAkRF
 MQ8wDQYDVQQIDAZCYXllcm4xETAPBgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxh
 bmNrLUdlc2VsbHNjaGFmdDEVMBMGA1UEAwwMTVBHIENBIC0gRzAyAgweKlJIhfynPMVG/KIw
 gYsGCyqGSIb3DQEJEAILMXygejBqMQswCQYDVQQGEwJERTEPMA0GA1UECAwGQmF5ZXJuMREw
 DwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4LVBsYW5jay1HZXNlbGxzY2hhZnQxFTAT
-BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBALA2
-7ykU7RoN+3AKC/VyTa21zIfSB4GimFo+8/RQ9h69T///eKMyAqyY9+fIJjLOIk15H0C696xX
-Cu+kiezt7QCIN3MMGFJbml3RHRa+Zdi/5iRoGYZXh/xc8LzykQa8f3oyglhcA3mfsfa3fov2
-oNoliyz1AkbpmK8UZ340AV2/WxONwxI7SO04ATBXdX2EX8npo/7zZwYlO7ZAtT5qyk2pG8Sa
-DRSwNccIBdqwXr8BTR+HUHjRJC0iU7aGBjH8hBSbUSqjw3fKJCpF0rOFAzpK9gV5RCUzVmJF
-BcpWAgQFZ2E8PkGjYPVaDsGFHf+rcUW+xSj7MN9GWmzA+HxzkhUAAAAAAAA=
---------------ms040909000501040503060808--
+BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBAMc4
+63ZiIHyInLa280W5+XYwdgTBrE8tJJIDwo/mZXY/P70DLOxnscAQIsFJ7ZuD/OJNhBTWk6/c
+M8Qsg5bmOkDu9xRhc9GKBzZjX7khggD2NUvPJkxSUUSHmBtHlXDKAG1riAdAVe7nH4399zH7
+u4hWXoO8efv7RL7FW8iLmDBHDLPOmK3MeRsJZbSDf/cnC0vR6SDV8vqDtY099n1CtTcROMQp
+65QS/88SsETAil0jBI0ZhvyTPuowbIN0yKP1VJFUOXK+aqMR+rliDZq4fBcA+XAKh1vwM2Bz
+KMtXQ5LDIJZ5S+U4MlkIBgP0pKk/mRUpDjZBA7u/Xs8GcCdGmb8AAAAAAAA=
+--------------ms020308070601050204010402--
 
---===============7516579250611782706==
+--===============7027906788796732308==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -305,4 +304,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============7516579250611782706==--
+--===============7027906788796732308==--
