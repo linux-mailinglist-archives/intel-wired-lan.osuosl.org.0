@@ -2,80 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DBF584E44
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Aug 2019 16:09:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8811384F0C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Aug 2019 16:46:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A111848FA;
-	Wed,  7 Aug 2019 14:09:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EBB1986955;
+	Wed,  7 Aug 2019 14:46:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oCH28Yr1enSC; Wed,  7 Aug 2019 14:09:05 +0000 (UTC)
+	with ESMTP id WEG2TBQbES1s; Wed,  7 Aug 2019 14:46:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D861F869E2;
-	Wed,  7 Aug 2019 14:09:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1736A86936;
+	Wed,  7 Aug 2019 14:46:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5E05C1BF2F5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:09:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6DD901BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:46:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5423D82404
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:09:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 68E62876AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:46:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DqinTfq9b2KQ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Aug 2019 14:09:02 +0000 (UTC)
+ with ESMTP id Fistcbk3DvH4 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Aug 2019 14:46:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 721718214C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:09:02 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id m9so40861223pls.8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 07 Aug 2019 07:09:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=RHmn9mfN9Ho5+JueelIGD+C+QT8BlT+9YzaJxqkb8rU=;
- b=cVOMwCoBg5/OHadih51SVdOUk2I/WyOTRrKY5s96431M7mEd3bLfTXIpMle6b9PPbE
- u7tCXb//3s4+Y6OTKL7EsMF/nphKGSVZMF2htHkg6CuFwHAkc5fEimclbwXsSSXquxwt
- ZkREmfuLKaGXN3HBKxukvWbj1DiEnX2aAe8OjibAEg1kzp3LVc94Sd1Kd1ujwpeQPU4v
- SAmbGJAbg9Ge/AvFzcMtDrDz4IrR2uy48pNCQzxR5pmfe0v1tQJTILqmKMqANLFvTTqW
- 496A1zqussxB3dUOQE45TcaGEu0dC7VW02oAPC1o7hepqXfnbaukM/QBQL8zHrXtn//s
- JsDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=RHmn9mfN9Ho5+JueelIGD+C+QT8BlT+9YzaJxqkb8rU=;
- b=A+LJVoFfyRov2PFCN0ef3Lz92qCKKo+fV9D6PdLZtHh7B2qElm34VrqdoS6GYe2xPN
- RVO91PW6EMzR02SzkE/bFY6cIkXvnnpRU1sUcfWV81nrY51nYZ7n0GHUNzBfrtsFtPtE
- iFA8xx90B9Vk0iSnoEs7fYmqR2nHF4XXfcnBlH3I44rdRoJFA17cwVwrFUrUiyjq/Lsy
- YgTCrjYOCDq7BJY6sNcdn/bXlg+updRXdHuS61VDY2+36k0aVUuNFVtx4ztqJxnfsEN9
- Ele/YD3Gft+vXRAlJdEg3eLXExCPNF9Of5XZUl2ccmGGfK8KtSdqIG7CH6fUFrF4+zQ9
- KTnA==
-X-Gm-Message-State: APjAAAVoBLzuOXQOOFvLKVPg3UXuoYvhtUGr9j/cmQKS/KxljdKR5YIf
- ggQsczMIcCFs5HNfq7/Z+ag=
-X-Google-Smtp-Source: APXvYqz+Nq5SLVZCJZSOg4EweEDSH7G7KPosSHNFxo8T/mIklsEKXG0fpLBTchRzYPdLOS3wyAa6OQ==
-X-Received: by 2002:a65:68d9:: with SMTP id k25mr7949726pgt.337.1565186941860; 
- Wed, 07 Aug 2019 07:09:01 -0700 (PDT)
-Received: from localhost ([192.55.54.45])
- by smtp.gmail.com with ESMTPSA id f20sm105778095pgg.56.2019.08.07.07.08.59
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 07 Aug 2019 07:09:01 -0700 (PDT)
-Date: Wed, 7 Aug 2019 16:08:53 +0200
-From: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>
-To: Firo Yang <firo.yang@suse.com>
-Message-ID: <20190807160853.00001d71@gmail.com>
-In-Reply-To: <20190807083831.GA6811@linux-6qg8>
-References: <20190807024917.27682-1-firo.yang@suse.com>
- <85aaefdf-d454-1823-5840-d9e2f71ffb19@oracle.com>
- <20190807083831.GA6811@linux-6qg8>
-X-Mailer: Claws Mail 3.17.1 (GTK+ 2.24.32; x86_64-w64-mingw32)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 746E3876A6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Aug 2019 14:46:22 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2019 07:45:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,357,1559545200"; d="scan'208";a="374433756"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 07 Aug 2019 07:45:48 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hvNCG-0007JO-1h; Wed, 07 Aug 2019 22:45:48 +0800
+Date: Wed, 07 Aug 2019 22:44:56 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d4ae3e8.NILVJi2uUAR8zn4d%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] ixgbe: sync the first fragment
- unconditionally
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 6c8073237349b14a847529b1c11c769ed0d33031
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,135 +63,175 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "  <linux-kernel@vger.kernel.org>, "@osuosl.org,
- "  <intel-wired-lan@lists.osuosl.org>, "@osuosl.org,
- "  <netdev@vger.kernel.org>"@osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jacob Wen <jian.w.wen@oracle.com>,
- "alexander.h.duyck@linux.intel.com\" <alexander.h.duyck@linux.intel.com>,
- "@osuosl.org, "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 7 Aug 2019 08:38:43 +0000
-Firo Yang <firo.yang@suse.com> wrote:
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 6c8073237349b14a847529b1c11c769ed0d33031  ice: fix potential infinite loop
 
-> The 08/07/2019 15:56, Jacob Wen wrote:
-> > I think the description is not correct. Consider using something like below.  
-> Thank you for comments. 
-> 
-> > 
-> > In Xen environment, due to memory fragmentation ixgbe may allocate a 'DMA'
-> > buffer with pages that are not physically contiguous.  
-> Actually, I didn't look into the reason why ixgbe got a DMA buffer which
-> was mapped to Xen-swiotlb area.
+elapsed time: 908m
 
-I think that neither of these descriptions are telling us what was truly
-broken. They lack what Alexander wrote on v1 thread of this patch.
+configs tested: 150
 
-ixgbe_dma_sync_frag is called only on case when the current descriptor has EOP
-bit set, skb was already allocated and you'll be adding a current buffer as a
-frag. DMA unmapping for the first frag was intentionally skipped and we will be
-unmapping it here, in ixgbe_dma_sync_frag. As Alex said, we're using the
-DMA_ATTR_SKIP_CPU_SYNC attribute which obliges us to perform a sync manually
-and it was missing.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-So IMHO the commit description should include descriptions from both xen and
-ixgbe worlds, the v2 lacks info about ixgbe case.
+x86_64                 randconfig-f001-201931
+x86_64                 randconfig-f002-201931
+x86_64                 randconfig-f003-201931
+x86_64                 randconfig-f004-201931
+i386                   randconfig-f001-201931
+i386                   randconfig-f002-201931
+i386                   randconfig-f003-201931
+i386                   randconfig-f004-201931
+arm                              allmodconfig
+arm64                            allmodconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+x86_64                 randconfig-d001-201931
+x86_64                 randconfig-d002-201931
+x86_64                 randconfig-d003-201931
+x86_64                 randconfig-d004-201931
+i386                   randconfig-d001-201931
+i386                   randconfig-d002-201931
+i386                   randconfig-d003-201931
+i386                   randconfig-d004-201931
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+x86_64                 randconfig-a001-201931
+x86_64                 randconfig-a002-201931
+x86_64                 randconfig-a003-201931
+x86_64                 randconfig-a004-201931
+i386                   randconfig-a001-201931
+i386                   randconfig-a002-201931
+i386                   randconfig-a003-201931
+i386                   randconfig-a004-201931
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                           allyesconfig
+i386                             allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+x86_64                 randconfig-g001-201931
+x86_64                 randconfig-g002-201931
+x86_64                 randconfig-g003-201931
+x86_64                 randconfig-g004-201931
+i386                   randconfig-g001-201931
+i386                   randconfig-g002-201931
+i386                   randconfig-g003-201931
+i386                   randconfig-g004-201931
+x86_64                 randconfig-c001-201931
+x86_64                 randconfig-c002-201931
+x86_64                 randconfig-c003-201931
+x86_64                 randconfig-c004-201931
+i386                   randconfig-c001-201931
+i386                   randconfig-c002-201931
+i386                   randconfig-c003-201931
+i386                   randconfig-c004-201931
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+x86_64                 randconfig-e001-201931
+x86_64                 randconfig-e002-201931
+x86_64                 randconfig-e003-201931
+x86_64                 randconfig-e004-201931
+i386                   randconfig-e001-201931
+i386                   randconfig-e002-201931
+i386                   randconfig-e003-201931
+i386                   randconfig-e004-201931
+x86_64                           allmodconfig
+x86_64                 randconfig-b001-201931
+x86_64                 randconfig-b002-201931
+x86_64                 randconfig-b003-201931
+x86_64                 randconfig-b004-201931
+i386                   randconfig-b001-201931
+i386                   randconfig-b002-201931
+i386                   randconfig-b003-201931
+i386                   randconfig-b004-201931
+x86_64                 randconfig-h001-201931
+x86_64                 randconfig-h002-201931
+x86_64                 randconfig-h003-201931
+x86_64                 randconfig-h004-201931
+i386                   randconfig-h001-201931
+i386                   randconfig-h002-201931
+i386                   randconfig-h003-201931
+i386                   randconfig-h004-201931
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                                   rhel
+x86_64                               rhel-7.6
 
-BTW Alex, what was the initial reason for holding off with unmapping the first
-buffer? Asking because IIRC the i40e and ice behave a bit different here. We
-don't look there for EOP at all when building/constructing skb and not delaying
-the unmap of non-eop buffers.
-
-Thanks,
-Maciej
-
-> 
-> But I don't think this issue relates to phsical memory contiguity because, in
-> our case, one ixgbe_rx_buffer only associates at most one page.
-> 
-> If you take a look at the related code, you will find there are several reasons
-> for mapping a DMA buffer to Xen-swiotlb area:
-> static dma_addr_t xen_swiotlb_map_page(struct device *dev, struct page *page,
->          */
->         if (dma_capable(dev, dev_addr, size) &&
->             !range_straddles_page_boundary(phys, size) &&
->                 !xen_arch_need_swiotlb(dev, phys, dev_addr) &&
->                 swiotlb_force != SWIOTLB_FORCE)
->                 goto done;
-> 
-> // Firo
-> > 
-> > A NIC doesn't support directly write such buffer. So xen-swiotlb would use
-> > the pages, which are physically contiguous, from the swiotlb buffer for the
-> > NIC.
-> > 
-> > The unmap operation is used to copy the swiotlb buffer to the pages that are
-> > allocated by ixgbe.
-> > 
-> > On 8/7/19 10:49 AM, Firo Yang wrote:  
-> > > In Xen environment, if Xen-swiotlb is enabled, ixgbe driver
-> > > could possibly allocate a page, DMA memory buffer, for the first
-> > > fragment which is not suitable for Xen-swiotlb to do DMA operations.
-> > > Xen-swiotlb have to internally allocate another page for doing DMA
-> > > operations. It requires syncing between those two pages. However,
-> > > since commit f3213d932173 ("ixgbe: Update driver to make use of DMA
-> > > attributes in Rx path"), the unmap operation is performed with
-> > > DMA_ATTR_SKIP_CPU_SYNC. As a result, the sync is not performed.
-> > > 
-> > > To fix this problem, always sync before possibly performing a page
-> > > unmap operation.
-> > > 
-> > > Fixes: f3213d932173 ("ixgbe: Update driver to make use of DMA
-> > > attributes in Rx path")
-> > > Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> > > Signed-off-by: Firo Yang <firo.yang@suse.com>
-> > > ---
-> > > 
-> > > Changes from v1:
-> > >   * Imporved the patch description.
-> > >   * Added Reviewed-by: and Fixes: as suggested by Alexander Duyck
-> > > 
-> > >   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 +++++++++-------
-> > >   1 file changed, 9 insertions(+), 7 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > index cbaf712d6529..200de9838096 100644
-> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > @@ -1825,13 +1825,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
-> > >   static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
-> > >   				struct sk_buff *skb)
-> > >   {
-> > > -	/* if the page was released unmap it, else just sync our portion */
-> > > -	if (unlikely(IXGBE_CB(skb)->page_released)) {
-> > > -		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
-> > > -				     ixgbe_rx_pg_size(rx_ring),
-> > > -				     DMA_FROM_DEVICE,
-> > > -				     IXGBE_RX_DMA_ATTR);
-> > > -	} else if (ring_uses_build_skb(rx_ring)) {
-> > > +	if (ring_uses_build_skb(rx_ring)) {
-> > >   		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
-> > >   		dma_sync_single_range_for_cpu(rx_ring->dev,
-> > > @@ -1848,6 +1842,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
-> > >   					      skb_frag_size(frag),
-> > >   					      DMA_FROM_DEVICE);
-> > >   	}
-> > > +
-> > > +	/* If the page was released, just unmap it. */
-> > > +	if (unlikely(IXGBE_CB(skb)->page_released)) {
-> > > +		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
-> > > +				     ixgbe_rx_pg_size(rx_ring),
-> > > +				     DMA_FROM_DEVICE,
-> > > +				     IXGBE_RX_DMA_ATTR);
-> > > +	}
-> > >   }
-> > >   /**  
-> >   
-
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
