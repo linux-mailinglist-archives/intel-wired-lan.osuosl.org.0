@@ -2,61 +2,50 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1135985A46
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 08:10:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 74F2085A4C
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 08:12:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BCBB386B47;
-	Thu,  8 Aug 2019 06:10:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2421686E1D;
+	Thu,  8 Aug 2019 06:12:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n3Gr5cJSb9Mj; Thu,  8 Aug 2019 06:10:52 +0000 (UTC)
+	with ESMTP id mg-EBVbuCxB0; Thu,  8 Aug 2019 06:12:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0B5A486C02;
-	Thu,  8 Aug 2019 06:10:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7A15786C02;
+	Thu,  8 Aug 2019 06:12:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2B2451BF83A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:10:48 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A15391BF83A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:12:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1460E20442
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:10:48 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 99DC785A96
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:12:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8A27G5F59Ktc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Aug 2019 06:10:47 +0000 (UTC)
+ with ESMTP id qTzMDIOHjn3o for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Aug 2019 06:12:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id E1EA020441
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:10:46 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A2BC8851A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:12:25 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2019 23:10:46 -0700
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2019 23:12:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,360,1559545200"; d="scan'208";a="186248110"
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
- ([10.185.23.132])
- by orsmga002.jf.intel.com with ESMTP; 07 Aug 2019 23:10:43 -0700
-To: Paul Menzel <pmenzel@molgen.mpg.de>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <81004059-6d91-d8be-c80e-70c52359350d@molgen.mpg.de>
- <2277f25bc44c4aebaac59942de2e24bb@AUSX13MPC105.AMER.DELL.COM>
- <d0aaa0f8-b94c-be65-7a4e-f5592aa65647@intel.com>
- <47977dc7-d53a-427c-bbaa-9c665287cb47@molgen.mpg.de>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <ac9ed79f-2789-4dde-6826-9227bd3113ec@intel.com>
-Date: Thu, 8 Aug 2019 09:10:43 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <47977dc7-d53a-427c-bbaa-9c665287cb47@molgen.mpg.de>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] MDI errors during resume from ACPI S3
- (suspend to ram)
+X-IronPort-AV: E=Sophos;i="5.64,360,1559545200"; d="scan'208";a="179741423"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
+ by orsmga006.jf.intel.com with ESMTP; 07 Aug 2019 23:12:24 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  8 Aug 2019 09:12:23 +0300
+Message-Id: <20190808061223.42725-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1] igc: Add tx_csum offload functionality
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,79 +58,212 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Mario Limonciello <mario.limonciello@dell.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gOC83LzIwMTkgMTc6NTUsIFBhdWwgTWVuemVsIHdyb3RlOgo+IAo+IERlYXIgU2FzaGEsCj4g
-Cj4gCj4gT24gMDcuMDguMTkgMDk6MjMsIE5lZnRpbiwgU2FzaGEgd3JvdGU6Cj4+IE9uIDgvNi8y
-MDE5IDE4OjUzLCBNYXJpby5MaW1vbmNpZWxsb0BkZWxsLmNvbSB3cm90ZToKPj4+PiAtLS0tLU9y
-aWdpbmFsIE1lc3NhZ2UtLS0tLQo+Pj4+IEZyb206IFBhdWwgTWVuemVsIDxwbWVuemVsQG1vbGdl
-bi5tcGcuZGU+Cj4+Pj4gU2VudDogVHVlc2RheSwgQXVndXN0IDYsIDIwMTkgMTA6MzYgQU0KPj4+
-PiBUbzogSmVmZiBLaXJzaGVyCj4+Pj4gQ2M6IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wu
-b3JnOyBMaW51eCBLZXJuZWwgTWFpbGluZyBMaXN0OyBMaW1vbmNpZWxsbywgTWFyaW8KPj4+PiBT
-dWJqZWN0OiBNREkgZXJyb3JzIGR1cmluZyByZXN1bWUgZnJvbSBBQ1BJIFMzIChzdXNwZW5kIHRv
-IHJhbSkKPj4+Pgo+Pj4+IERlYXIgTGludXggZm9sa3MsCj4+Pj4KPj4+Pgo+Pj4+IFRyeWluZyB0
-byBkZWNyZWFzZSB0aGUgcmVzdW1lIHRpbWUgb2YgTGludXggNS4zLXJjMyBvbiB0aGUgRGVsbCBP
-cHRpUGxleAo+Pj4+IDUwNDAgd2l0aCB0aGUgZGV2aWNlIGJlbG93Cj4+Pj4KPj4+PiAgwqDCoMKg
-wqAgJCBsc3BjaSAtbm4gLXMgMDA6MWYuNgo+Pj4+ICDCoMKgwqDCoCAwMDoxZi42IEV0aGVybmV0
-IGNvbnRyb2xsZXIgWzAyMDBdOiBJbnRlbCBDb3Jwb3JhdGlvbiBFdGhlcm5ldCBDb25uZWN0aW9u
-ICgyKQo+Pj4+IEkyMTktViBbODA4NjoxNWI4XSAocmV2IDMxKQo+Pj4+Cj4+Pj4gcG0tZ3JhcGji
-gJlzIHNjcmlwdCBgc2xlZXBncmFwaC5weWAgc2hvd3MsIHRoYXQgdGhlIGRyaXZlciAqZTEwMDBl
-KiB0YWtlcwo+Pj4+IGFyb3VuZCA0MDAgbXMsIHdoaWNoIGlzIHF1aXRlIGEgbG90LiBUaGUgY2Fs
-bCBncmFwaCB0cmFjZSBzaG93cyB0aGF0Cj4+Pj4gYGUxMDAwZV9yZWFkX3BoeV9yZWdfbWRpYygp
-YCBpcyByZXNwb25zaWJsZSBmb3IgYSBsb3Qgb2YgdGhvc2UuIEZyb20KPj4+PiBgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL3BoeS5jYCBbMV06Cj4+Pj4KPj4+PiAgwqDCoMKgwqDC
-oMKgwqDCoCBmb3IgKGkgPSAwOyBpIDwgKEUxMDAwX0dFTl9QT0xMX1RJTUVPVVQgKiAzKTsgaSsr
-KSB7Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHVkZWxheSg1MCk7Cj4+
-Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG1kaWMgPSBlcjMyKE1ESUMpOwo+
-Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAobWRpYyAmIEUxMDAwX01E
-SUNfUkVBRFkpCj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCBicmVhazsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoCB9Cj4+Pj4gIMKgwqDCoMKgwqDC
-oMKgwqAgaWYgKCEobWRpYyAmIEUxMDAwX01ESUNfUkVBRFkpKSB7Cj4+Pj4gIMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGVfZGJnKCJNREkgUmVhZCBkaWQgbm90IGNvbXBsZXRlXG4i
-KTsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FMTAwMF9F
-UlJfUEhZOwo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+PiAgwqDCoMKgwqDCoMKgwqDCoCBp
-ZiAobWRpYyAmIEUxMDAwX01ESUNfRVJST1IpIHsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgZV9kYmcoIk1ESSBFcnJvclxuIik7Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgIHJldHVybiAtRTEwMDBfRVJSX1BIWTsKPj4+PiAgwqDCoMKgwqDCoMKg
-wqDCoCB9Cj4+Pj4KPj4+PiBVbmZvcnR1bmF0ZWx5LCBlcnJvcnMgYXJlIG5vdCBsb2dnZWQgaWYg
-ZHluYW1pYyBkZWJ1ZyBpcyBkaXNhYmxlZCwKPj4+PiBzbyByZWJ1aWxkaW5nIHRoZSBMaW51eCBr
-ZXJuZWwgd2l0aCBgQ09ORklHX0RZTkFNSUNfREVCVUdgLCBhbmQKPj4+Pgo+Pj4+ICDCoMKgwqDC
-oCBlY2hvICJmaWxlIGRyaXZlcnMvbmV0L2V0aGVybmV0LyogK3AiIHwgc3VkbyB0ZWUKPj4+PiAv
-c3lzL2tlcm5lbC9kZWJ1Zy9keW5hbWljX2RlYnVnL2NvbnRyb2wKPj4+Pgo+Pj4+IEkgZ290IHRo
-ZSBtZXNzYWdlcyBiZWxvdy4KPj4+Pgo+Pj4+ICDCoMKgwqDCoCBbIDQxNTkuMjA0MTkyXSBlMTAw
-MGUgMDAwMDowMDoxZi42IG5ldDAwOiBNREkgRXJyb3IKPj4+PiAgwqDCoMKgwqAgWyA0MTYwLjI2
-Nzk1MF0gZTEwMDBlIDAwMDA6MDA6MWYuNiBuZXQwMDogTURJIFdyaXRlIGRpZCBub3QgY29tcGxl
-dGUKPj4+PiAgwqDCoMKgwqAgWyA0MTYwLjM1OTg1NV0gZTEwMDBlIDAwMDA6MDA6MWYuNiBuZXQw
-MDogTURJIEVycm9yCj4+Pj4KPj4+PiBDYW4geW91IHBsZWFzZSBzaGVkIGEgbGl0dGxlIG1vcmUg
-bGlnaHQgaW50byB0aGVzZSBlcnJvcnM/IFBsZWFzZQo+Pj4+IGZpbmQgdGhlIGZ1bGwgbG9nIGF0
-dGFjaGVkLgo+IAo+Pj4+IFsxXTogaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4
-L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L3RyZWUvZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvZTEwMDBlL3BoeS5jI24yMDYKPj4+Cj4+PiBTdHJpY3RseSBhcyBhIHJlZmVyZW5jZSBw
-b2ludCB5b3UgbWF5IGNvbnNpZGVyIHRyeWluZyB0aGUgb3V0LW9mLXRyZWUgZHJpdmVyIHRvIHNl
-ZSBpZiB0aGVzZQo+Pj4gYmVoYXZpb3JzIHBlcnNpc3QuCj4+Pgo+Pj4gaHR0cHM6Ly9zb3VyY2Vm
-b3JnZS5uZXQvcHJvamVjdHMvZTEwMDAvCj4gCj4gSSBjYW4gdHJ5IHRoYXQgaW4gdGhlIG5leHQg
-ZGF5cy4KPiAKPj4gV2UgYXJlIHVzaW5nIGV4dGVybmFsIFBIWS4gUmVxdWlyZWQgfjIwMCBtcyB0
-byBjb21wbGV0ZSBNRElDCj4+IHRyYW5zYWN0aW9uIChkZXBlbmRlZCBvbiB0aGUgcHJvamVjdCku
-Cj4gCj4gQXJlIHlvdSByZWZlcnJpbmcgdG8gdGhlIG91dC1vZi10cmVlIGRyaXZlcj8KPiAKSSBi
-ZWxpZXZlIHRoZSBvdXQgb2YgdHJlZSBkcml2ZXIgaGF2ZSBhIHNhbWUgYXBwcm9hY2ggdG8gTURJ
-QyBhY2Nlc3MuCj4+IFlvdSBuZWVkIHRvIHRha2UgdG8gY29uc2lkZXIgdGhpcyB0aW1lIGJlZm9y
-ZSBhY2Nlc3MgdG8gdGhlIFBIWS4gSSBkbwo+PiBub3QgcmVjb21tZW5kIGRlY3JlYXNlIHRpbWVy
-IGluIGEgJ2UxMDAwZV9yZWFkX3BoeV9yZWdfbWRpYygpJwo+PiBtZXRob2QuIFdlIGNvdWxkIGhp
-dCBvbiB3cm9uZyBNREkgYWNjZXNzLgo+IE15IHBvaW50IHdhcyBtb3JlLCBpZiB5b3Uga25vdyB0
-aGF0IG1vcmUgdGltZSBpcyBuZWVkZWQsIGJlZm9yZSB0aGUgTURJCj4gc2V0dGluZyg/KSB3aWxs
-IHN1Y2NlZWQsIHdoeSB0cnkgaXQgYW55d2F5IGFuZCBnbyBpbnRvIHRoZSBlcnJvciBwYXRocz8K
-PiBJc27igJl0IHRoZXJlIHNvbWUgcG9sbGluZyBwb3NzaWJsZSB0byBmaW5kIG91dCwgd2hlbiBN
-REkgY2FuIGJlIHNldCB1cD8KPiAKZTEwMDBlIGlzIHZlcnkgb2xkIGRyaXZlciBhbmQgc2VydmUg
-cHJldHR5IGxvdCBvZiAxRyBjbGllbnRzLiBFYWNoIDFHYmUgCk1BQy9QSFkgY29udHJvbGxlciBo
-YXZlIGEgZGlmZmVyZW50IGNvbmZpZ3VyYXRpb24gZGVwZW5kIHBsYXRmb3JtLgo+IAo+IEtpbmQg
-cmVnYXJkcywKPiAKPiBQYXVsCj4gCkhlbGxvIFBhdWwsCkxldCBtZSBiYWNrIGxhdGVyIHdpdGgg
-bW9yZSBpbmZvcm1hdGlvbiBzcGVjaWZpYyB5b3VyIGRldmljZS4gSSB3aWxsIHRyeSAKZmluZCBv
-dXQgbW9yZSBkZXRhaWxzIHdpdGggZGVzaWduIHRlYW0uCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50
-ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4v
-bGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Add ip generic TX checksum offload functionality.
+
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h         |  4 ++
+ drivers/net/ethernet/intel/igc/igc_base.h    |  8 +++
+ drivers/net/ethernet/intel/igc/igc_defines.h |  5 ++
+ drivers/net/ethernet/intel/igc/igc_main.c    | 97 ++++++++++++++++++++++++++++
+ 4 files changed, 114 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 0f5534ce27b0..7e16345d836e 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -135,6 +135,9 @@ extern char igc_driver_version[];
+ /* How many Rx Buffers do we bundle into one write to the hardware ? */
+ #define IGC_RX_BUFFER_WRITE	16 /* Must be power of 2 */
+ 
++/* VLAN info */
++#define IGC_TX_FLAGS_VLAN_MASK	0xffff0000
++
+ /* igc_test_staterr - tests bits within Rx descriptor status and error fields */
+ static inline __le32 igc_test_staterr(union igc_adv_rx_desc *rx_desc,
+ 				      const u32 stat_err_bits)
+@@ -254,6 +257,7 @@ struct igc_ring {
+ 	u16 count;                      /* number of desc. in the ring */
+ 	u8 queue_index;                 /* logical index of the ring*/
+ 	u8 reg_idx;                     /* physical index of the ring */
++	bool launchtime_enable;		/* true if LaunchTime is enabled */
+ 
+ 	/* everything past this point are written often */
+ 	u16 next_to_clean;
+diff --git a/drivers/net/ethernet/intel/igc/igc_base.h b/drivers/net/ethernet/intel/igc/igc_base.h
+index 58d1109d7f3f..ea627ce52525 100644
+--- a/drivers/net/ethernet/intel/igc/igc_base.h
++++ b/drivers/net/ethernet/intel/igc/igc_base.h
+@@ -22,6 +22,14 @@ union igc_adv_tx_desc {
+ 	} wb;
+ };
+ 
++/* Context descriptors */
++struct igc_adv_tx_context_desc {
++	__le32 vlan_macip_lens;
++	__le32 launch_time;
++	__le32 type_tucmd_mlhl;
++	__le32 mss_l4len_idx;
++};
++
+ /* Adv Transmit Descriptor Config Masks */
+ #define IGC_ADVTXD_MAC_TSTAMP	0x00080000 /* IEEE1588 Timestamp packet */
+ #define IGC_ADVTXD_DTYP_CTXT	0x00200000 /* Advanced Context Descriptor */
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 549134ecd105..f3f2325fe567 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -397,4 +397,9 @@
+ #define IGC_VLAPQF_P_VALID(_n)	(0x1 << (3 + (_n) * 4))
+ #define IGC_VLAPQF_QUEUE_MASK	0x03
+ 
++#define IGC_ADVTXD_MACLEN_SHIFT		9  /* Adv ctxt desc mac len shift */
++#define IGC_ADVTXD_TUCMD_IPV4		0x00000400  /* IP Packet Type:1=IPv4 */
++#define IGC_ADVTXD_TUCMD_L4T_TCP	0x00000800  /* L4 Packet Type of TCP */
++#define IGC_ADVTXD_TUCMD_L4T_SCTP	0x00001000 /* L4 packet TYPE of SCTP */
++
+ #endif /* _IGC_DEFINES_H_ */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index c855d9cbe431..c5b62991284d 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -5,6 +5,11 @@
+ #include <linux/types.h>
+ #include <linux/if_vlan.h>
+ #include <linux/aer.h>
++#include <linux/tcp.h>
++#include <linux/udp.h>
++#include <linux/ip.h>
++
++#include <net/ipv6.h>
+ 
+ #include "igc.h"
+ #include "igc_hw.h"
+@@ -791,8 +796,96 @@ static int igc_set_mac(struct net_device *netdev, void *p)
+ 	return 0;
+ }
+ 
++static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
++			    struct igc_tx_buffer *first,
++			    u32 vlan_macip_lens, u32 type_tucmd,
++			    u32 mss_l4len_idx)
++{
++	struct igc_adv_tx_context_desc *context_desc;
++	u16 i = tx_ring->next_to_use;
++	struct timespec64 ts;
++
++	context_desc = IGC_TX_CTXTDESC(tx_ring, i);
++
++	i++;
++	tx_ring->next_to_use = (i < tx_ring->count) ? i : 0;
++
++	/* set bits to identify this as an advanced context descriptor */
++	type_tucmd |= IGC_TXD_CMD_DEXT | IGC_ADVTXD_DTYP_CTXT;
++
++	/* For 82575, context index must be unique per ring. */
++	if (test_bit(IGC_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
++		mss_l4len_idx |= tx_ring->reg_idx << 4;
++
++	context_desc->vlan_macip_lens	= cpu_to_le32(vlan_macip_lens);
++	context_desc->type_tucmd_mlhl	= cpu_to_le32(type_tucmd);
++	context_desc->mss_l4len_idx	= cpu_to_le32(mss_l4len_idx);
++
++	/* We assume there is always a valid tx time available. Invalid times
++	 * should have been handled by the upper layers.
++	 */
++	if (tx_ring->launchtime_enable) {
++		ts = ns_to_timespec64(first->skb->tstamp);
++		first->skb->tstamp = 0;
++		context_desc->launch_time = cpu_to_le32(ts.tv_nsec / 32);
++	} else {
++		context_desc->launch_time = 0;
++	}
++}
++
++static inline bool igc_ipv6_csum_is_sctp(struct sk_buff *skb)
++{
++	unsigned int offset = 0;
++
++	ipv6_find_hdr(skb, &offset, IPPROTO_SCTP, NULL, NULL);
++
++	return offset == skb_checksum_start_offset(skb);
++}
++
+ static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
+ {
++	struct sk_buff *skb = first->skb;
++	u32 vlan_macip_lens = 0;
++	u32 type_tucmd = 0;
++
++	if (skb->ip_summed != CHECKSUM_PARTIAL) {
++csum_failed:
++		if (!(first->tx_flags & IGC_TX_FLAGS_VLAN) &&
++		    !tx_ring->launchtime_enable)
++			return;
++		goto no_csum;
++	}
++
++	switch (skb->csum_offset) {
++	case offsetof(struct tcphdr, check):
++		type_tucmd = IGC_ADVTXD_TUCMD_L4T_TCP;
++		/* fall through */
++	case offsetof(struct udphdr, check):
++		break;
++	case offsetof(struct sctphdr, checksum):
++		/* validate that this is actually an SCTP request */
++		if ((first->protocol == htons(ETH_P_IP) &&
++		     (ip_hdr(skb)->protocol == IPPROTO_SCTP)) ||
++		    (first->protocol == htons(ETH_P_IPV6) &&
++		     igc_ipv6_csum_is_sctp(skb))) {
++			type_tucmd = IGC_ADVTXD_TUCMD_L4T_SCTP;
++			break;
++		}
++		/* fall through */
++	default:
++		skb_checksum_help(skb);
++		goto csum_failed;
++	}
++
++	/* update TX checksum flag */
++	first->tx_flags |= IGC_TX_FLAGS_CSUM;
++	vlan_macip_lens = skb_checksum_start_offset(skb) -
++			  skb_network_offset(skb);
++no_csum:
++	vlan_macip_lens |= skb_network_offset(skb) << IGC_ADVTXD_MACLEN_SHIFT;
++	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
++
++	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens, type_tucmd, 0);
+ }
+ 
+ static int __igc_maybe_stop_tx(struct igc_ring *tx_ring, const u16 size)
+@@ -4117,6 +4210,9 @@ static int igc_probe(struct pci_dev *pdev,
+ 	if (err)
+ 		goto err_sw_init;
+ 
++	/* Add supported features to the features list*/
++	netdev->features |= NETIF_F_HW_CSUM;
++
+ 	/* setup the private structure */
+ 	err = igc_sw_init(adapter);
+ 	if (err)
+@@ -4124,6 +4220,7 @@ static int igc_probe(struct pci_dev *pdev,
+ 
+ 	/* copy netdev features into list of user selectable features */
+ 	netdev->hw_features |= NETIF_F_NTUPLE;
++	netdev->hw_features |= netdev->features;
+ 
+ 	/* MTU range: 68 - 9216 */
+ 	netdev->min_mtu = ETH_MIN_MTU;
+-- 
+2.11.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
