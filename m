@@ -1,51 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74F2085A4C
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 08:12:31 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28F7F85DC2
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 11:03:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2421686E1D;
-	Thu,  8 Aug 2019 06:12:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CB8292038A;
+	Thu,  8 Aug 2019 09:03:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mg-EBVbuCxB0; Thu,  8 Aug 2019 06:12:29 +0000 (UTC)
+	with ESMTP id T2FuKddLtnMu; Thu,  8 Aug 2019 09:03:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7A15786C02;
-	Thu,  8 Aug 2019 06:12:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 907D520437;
+	Thu,  8 Aug 2019 09:03:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A15391BF83A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:12:26 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 309781BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 09:03:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 99DC785A96
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:12:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2A66B86C18
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 09:03:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qTzMDIOHjn3o for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Aug 2019 06:12:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A2BC8851A4
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:12:25 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 Aug 2019 23:12:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,360,1559545200"; d="scan'208";a="179741423"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by orsmga006.jf.intel.com with ESMTP; 07 Aug 2019 23:12:24 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Aug 2019 09:12:23 +0300
-Message-Id: <20190808061223.42725-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: Add tx_csum offload functionality
+ with ESMTP id zCWLGbSJCIzr for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Aug 2019 09:03:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 674D285CD5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 09:03:11 +0000 (UTC)
+Received: from rabammel.molgen.mpg.de (rabammel.molgen.mpg.de [141.14.30.220])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128
+ bits)) (No client certificate requested)
+ (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 1DE7D201A3C34;
+ Thu,  8 Aug 2019 11:03:08 +0200 (CEST)
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>
+References: <20190804074026.25198-1-vitaly.lifshits@intel.com>
+ <8829b684-518d-2233-d618-4f1367c2dbbd@molgen.mpg.de>
+ <bc5fbdcb-6afe-dac0-b498-c5e26d539d6d@intel.com>
+ <a5a0b21c-5df3-809b-fc7a-022f2432676c@molgen.mpg.de>
+Message-ID: <32148441-7876-903c-c43a-d1783e4bf7ae@molgen.mpg.de>
+Date: Thu, 8 Aug 2019 11:03:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <a5a0b21c-5df3-809b-fc7a-022f2432676c@molgen.mpg.de>
+Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: PCIm function state support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,212 +62,273 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: multipart/mixed; boundary="===============1220029243016631799=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add ip generic TX checksum offload functionality.
+This is a cryptographically signed message in MIME format.
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h         |  4 ++
- drivers/net/ethernet/intel/igc/igc_base.h    |  8 +++
- drivers/net/ethernet/intel/igc/igc_defines.h |  5 ++
- drivers/net/ethernet/intel/igc/igc_main.c    | 97 ++++++++++++++++++++++++++++
- 4 files changed, 114 insertions(+)
+--===============1220029243016631799==
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms090703040007090205050004"
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 0f5534ce27b0..7e16345d836e 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -135,6 +135,9 @@ extern char igc_driver_version[];
- /* How many Rx Buffers do we bundle into one write to the hardware ? */
- #define IGC_RX_BUFFER_WRITE	16 /* Must be power of 2 */
- 
-+/* VLAN info */
-+#define IGC_TX_FLAGS_VLAN_MASK	0xffff0000
-+
- /* igc_test_staterr - tests bits within Rx descriptor status and error fields */
- static inline __le32 igc_test_staterr(union igc_adv_rx_desc *rx_desc,
- 				      const u32 stat_err_bits)
-@@ -254,6 +257,7 @@ struct igc_ring {
- 	u16 count;                      /* number of desc. in the ring */
- 	u8 queue_index;                 /* logical index of the ring*/
- 	u8 reg_idx;                     /* physical index of the ring */
-+	bool launchtime_enable;		/* true if LaunchTime is enabled */
- 
- 	/* everything past this point are written often */
- 	u16 next_to_clean;
-diff --git a/drivers/net/ethernet/intel/igc/igc_base.h b/drivers/net/ethernet/intel/igc/igc_base.h
-index 58d1109d7f3f..ea627ce52525 100644
---- a/drivers/net/ethernet/intel/igc/igc_base.h
-+++ b/drivers/net/ethernet/intel/igc/igc_base.h
-@@ -22,6 +22,14 @@ union igc_adv_tx_desc {
- 	} wb;
- };
- 
-+/* Context descriptors */
-+struct igc_adv_tx_context_desc {
-+	__le32 vlan_macip_lens;
-+	__le32 launch_time;
-+	__le32 type_tucmd_mlhl;
-+	__le32 mss_l4len_idx;
-+};
-+
- /* Adv Transmit Descriptor Config Masks */
- #define IGC_ADVTXD_MAC_TSTAMP	0x00080000 /* IEEE1588 Timestamp packet */
- #define IGC_ADVTXD_DTYP_CTXT	0x00200000 /* Advanced Context Descriptor */
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 549134ecd105..f3f2325fe567 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -397,4 +397,9 @@
- #define IGC_VLAPQF_P_VALID(_n)	(0x1 << (3 + (_n) * 4))
- #define IGC_VLAPQF_QUEUE_MASK	0x03
- 
-+#define IGC_ADVTXD_MACLEN_SHIFT		9  /* Adv ctxt desc mac len shift */
-+#define IGC_ADVTXD_TUCMD_IPV4		0x00000400  /* IP Packet Type:1=IPv4 */
-+#define IGC_ADVTXD_TUCMD_L4T_TCP	0x00000800  /* L4 Packet Type of TCP */
-+#define IGC_ADVTXD_TUCMD_L4T_SCTP	0x00001000 /* L4 packet TYPE of SCTP */
-+
- #endif /* _IGC_DEFINES_H_ */
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index c855d9cbe431..c5b62991284d 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -5,6 +5,11 @@
- #include <linux/types.h>
- #include <linux/if_vlan.h>
- #include <linux/aer.h>
-+#include <linux/tcp.h>
-+#include <linux/udp.h>
-+#include <linux/ip.h>
-+
-+#include <net/ipv6.h>
- 
- #include "igc.h"
- #include "igc_hw.h"
-@@ -791,8 +796,96 @@ static int igc_set_mac(struct net_device *netdev, void *p)
- 	return 0;
- }
- 
-+static void igc_tx_ctxtdesc(struct igc_ring *tx_ring,
-+			    struct igc_tx_buffer *first,
-+			    u32 vlan_macip_lens, u32 type_tucmd,
-+			    u32 mss_l4len_idx)
-+{
-+	struct igc_adv_tx_context_desc *context_desc;
-+	u16 i = tx_ring->next_to_use;
-+	struct timespec64 ts;
-+
-+	context_desc = IGC_TX_CTXTDESC(tx_ring, i);
-+
-+	i++;
-+	tx_ring->next_to_use = (i < tx_ring->count) ? i : 0;
-+
-+	/* set bits to identify this as an advanced context descriptor */
-+	type_tucmd |= IGC_TXD_CMD_DEXT | IGC_ADVTXD_DTYP_CTXT;
-+
-+	/* For 82575, context index must be unique per ring. */
-+	if (test_bit(IGC_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
-+		mss_l4len_idx |= tx_ring->reg_idx << 4;
-+
-+	context_desc->vlan_macip_lens	= cpu_to_le32(vlan_macip_lens);
-+	context_desc->type_tucmd_mlhl	= cpu_to_le32(type_tucmd);
-+	context_desc->mss_l4len_idx	= cpu_to_le32(mss_l4len_idx);
-+
-+	/* We assume there is always a valid tx time available. Invalid times
-+	 * should have been handled by the upper layers.
-+	 */
-+	if (tx_ring->launchtime_enable) {
-+		ts = ns_to_timespec64(first->skb->tstamp);
-+		first->skb->tstamp = 0;
-+		context_desc->launch_time = cpu_to_le32(ts.tv_nsec / 32);
-+	} else {
-+		context_desc->launch_time = 0;
-+	}
-+}
-+
-+static inline bool igc_ipv6_csum_is_sctp(struct sk_buff *skb)
-+{
-+	unsigned int offset = 0;
-+
-+	ipv6_find_hdr(skb, &offset, IPPROTO_SCTP, NULL, NULL);
-+
-+	return offset == skb_checksum_start_offset(skb);
-+}
-+
- static void igc_tx_csum(struct igc_ring *tx_ring, struct igc_tx_buffer *first)
- {
-+	struct sk_buff *skb = first->skb;
-+	u32 vlan_macip_lens = 0;
-+	u32 type_tucmd = 0;
-+
-+	if (skb->ip_summed != CHECKSUM_PARTIAL) {
-+csum_failed:
-+		if (!(first->tx_flags & IGC_TX_FLAGS_VLAN) &&
-+		    !tx_ring->launchtime_enable)
-+			return;
-+		goto no_csum;
-+	}
-+
-+	switch (skb->csum_offset) {
-+	case offsetof(struct tcphdr, check):
-+		type_tucmd = IGC_ADVTXD_TUCMD_L4T_TCP;
-+		/* fall through */
-+	case offsetof(struct udphdr, check):
-+		break;
-+	case offsetof(struct sctphdr, checksum):
-+		/* validate that this is actually an SCTP request */
-+		if ((first->protocol == htons(ETH_P_IP) &&
-+		     (ip_hdr(skb)->protocol == IPPROTO_SCTP)) ||
-+		    (first->protocol == htons(ETH_P_IPV6) &&
-+		     igc_ipv6_csum_is_sctp(skb))) {
-+			type_tucmd = IGC_ADVTXD_TUCMD_L4T_SCTP;
-+			break;
-+		}
-+		/* fall through */
-+	default:
-+		skb_checksum_help(skb);
-+		goto csum_failed;
-+	}
-+
-+	/* update TX checksum flag */
-+	first->tx_flags |= IGC_TX_FLAGS_CSUM;
-+	vlan_macip_lens = skb_checksum_start_offset(skb) -
-+			  skb_network_offset(skb);
-+no_csum:
-+	vlan_macip_lens |= skb_network_offset(skb) << IGC_ADVTXD_MACLEN_SHIFT;
-+	vlan_macip_lens |= first->tx_flags & IGC_TX_FLAGS_VLAN_MASK;
-+
-+	igc_tx_ctxtdesc(tx_ring, first, vlan_macip_lens, type_tucmd, 0);
- }
- 
- static int __igc_maybe_stop_tx(struct igc_ring *tx_ring, const u16 size)
-@@ -4117,6 +4210,9 @@ static int igc_probe(struct pci_dev *pdev,
- 	if (err)
- 		goto err_sw_init;
- 
-+	/* Add supported features to the features list*/
-+	netdev->features |= NETIF_F_HW_CSUM;
-+
- 	/* setup the private structure */
- 	err = igc_sw_init(adapter);
- 	if (err)
-@@ -4124,6 +4220,7 @@ static int igc_probe(struct pci_dev *pdev,
- 
- 	/* copy netdev features into list of user selectable features */
- 	netdev->hw_features |= NETIF_F_NTUPLE;
-+	netdev->hw_features |= netdev->features;
- 
- 	/* MTU range: 68 - 9216 */
- 	netdev->min_mtu = ETH_MIN_MTU;
--- 
-2.11.0
+This is a cryptographically signed message in MIME format.
+
+--------------ms090703040007090205050004
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Dear Vitaly,
+
+
+On 07.08.19 16:51, Paul Menzel wrote:
+
+> On 07.08.19 09:47, Lifshits, Vitaly wrote:
+
+>> On 8/4/2019 16:44, Paul Menzel wrote:
+>=20
+>>> On 04.08.19 09:40, Vitaly Lifshits wrote:
+>=20
+> [=E2=80=A6]
+>=20
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+pcim_state =3D er32(STATUS);
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+while (pcim_state & E1000_STATUS_PCIM_STATE) {
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 if (tries++ =3D=3D PCIM_DMOFF_EXIT_TIMEOUT) {
+>=20
+> By the way, can=E2=80=99t there be the unit appended to the macro name
+> `PCIM_DMOFF_EXIT_TIMEOUT`?
+>=20
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 e_dbg("Error in exiting dmo=
+ff\n");
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 e_err("PCIm DMoff timeout e=
+xpired\n");
+>=20
+> It=E2=80=99s not a hold-up, but why do you print two messages? I=E2=80=99=
+d just print the
+> error message.
+>=20
+>     e_err("Failed to exit PCIm DMoff: Time-out (%i iterations) expired"=
+, PCIM_DMOFF_EXIT_TIMEOUT);
+>=20
+> Or: e_err("Exiting PCIm DMoff timed out after %i iterations.", PCIM_DMO=
+FF_EXIT_TIMEOUT);
+>=20
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 }
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 usleep_range(10000, 20000);
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 pcim_state =3D er32(STATUS);
+>>>> +
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 /* If MAC entered DMoff state, PHY reset is
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 * needed after exiting it
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 if (!(pcim_state & E1000_STATUS_PCIM_STATE))
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 e1000_phy_hw_reset(&adapter=
+->hw);
+>>>
+>>> I still believe, the if statement should be moved *outside* the loop.=
+
+>>
+>> The if statement has to stay in the loop since the PHY reset is
+>> needed only if the MAC entered DMoff state.
+>=20
+> Thank you. Now I finally saw it. It=E2=80=99s about, when the loop is n=
+ever
+> entered. I associated a while loop in my head normally with the assumpt=
+ion,
+> that the condition is true in the beginning.
+>=20
+> For the record, the code below is more intuitive for me.
+>=20
+> ```
+> if (pcim_state & E1000_STATUS_PCIM_STATE) {
+> /* MAC in DMoff state */
+> 	do {
+> 		if (tries++ =3D=3D PCIM_DMOFF_EXIT_TIMEOUT) {
+> 			e_dbg("Error in exiting dmoff\n");
+> 			e_err("PCIm DMoff timeout expired\n");
+> 			break;
+> 		}
+> 		usleep_range(10000, 20000);
+> 		pcim_state =3D er32(STATUS);
+> 	} while (pcim_state & E1000_STATUS_PCIM_STATE);
+>=20
+> 	e1000_phy_hw_reset(&adapter->hw);
+> }
+> ```
+
+Sleeping a night over this, this is still not equivalent to your code, as=
+
+this would reset after timing out, which your code does not. So, the if
+condition has to be added for that call.
+
+
+```
+[=E2=80=A6]
+unsigned int tries =3D 0; /* u32 not needed */
+[=E2=80=A6]
+
+if (pcim_state & E1000_STATUS_PCIM_STATE) {
+/* MAC in DMoff state */
+	do {
+		usleep_range(10000, 20000);
+		pcim_state =3D er32(STATUS);
+	} while ((pcim_state & E1000_STATUS_PCIM_STATE) && (++tries < PCIM_DMOFF=
+_EXIT_TIMEOUT));
+
+	if (tries =3D=3D PCIM_DMOFF_EXIT_TIMEOUT)
+		e_err("Exiting PCIm DMoff timed out after %i iterations.", PCIM_DMOFF_E=
+XIT_TIMEOUT);
+	else
+		e1000_phy_hw_reset(&adapter->hw);
+}
+```
+
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+}
+>>>> +
+>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 /* update snapshot of PHY registers on LSC */
+>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 e1000_phy_read_status(adapter);
+>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 mac->ops.get_link_up_info(&adapter->hw,
+>=20
+> Anyway, I do not want to hold up anything.
+
+
+Kind regards,
+
+Paul
+
+
+--------------ms090703040007090205050004
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
+
+MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCC
+EFowggUSMIID+qADAgECAgkA4wvV+K8l2YEwDQYJKoZIhvcNAQELBQAwgYIxCzAJBgNVBAYT
+AkRFMSswKQYDVQQKDCJULVN5c3RlbXMgRW50ZXJwcmlzZSBTZXJ2aWNlcyBHbWJIMR8wHQYD
+VQQLDBZULVN5c3RlbXMgVHJ1c3QgQ2VudGVyMSUwIwYDVQQDDBxULVRlbGVTZWMgR2xvYmFs
+Um9vdCBDbGFzcyAyMB4XDTE2MDIyMjEzMzgyMloXDTMxMDIyMjIzNTk1OVowgZUxCzAJBgNV
+BAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1dHNjaGVu
+IEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNVBAMTJERG
+Ti1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjCCASIwDQYJKoZIhvcNAQEBBQAD
+ggEPADCCAQoCggEBAMtg1/9moUHN0vqHl4pzq5lN6mc5WqFggEcVToyVsuXPztNXS43O+FZs
+FVV2B+pG/cgDRWM+cNSrVICxI5y+NyipCf8FXRgPxJiZN7Mg9mZ4F4fCnQ7MSjLnFp2uDo0p
+eQcAIFTcFV9Kltd4tjTTwXS1nem/wHdN6r1ZB+BaL2w8pQDcNb1lDY9/Mm3yWmpLYgHurDg0
+WUU2SQXaeMpqbVvAgWsRzNI8qIv4cRrKO+KA3Ra0Z3qLNupOkSk9s1FcragMvp0049ENF4N1
+xDkesJQLEvHVaY4l9Lg9K7/AjsMeO6W/VRCrKq4Xl14zzsjz9AkH4wKGMUZrAcUQDBHHWekC
+AwEAAaOCAXQwggFwMA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUk+PYMiba1fFKpZFK4OpL
+4qIMz+EwHwYDVR0jBBgwFoAUv1kgNgB5oKAia4zV8mHSuCzLgkowEgYDVR0TAQH/BAgwBgEB
+/wIBAjAzBgNVHSAELDAqMA8GDSsGAQQBga0hgiwBAQQwDQYLKwYBBAGBrSGCLB4wCAYGZ4EM
+AQICMEwGA1UdHwRFMEMwQaA/oD2GO2h0dHA6Ly9wa2kwMzM2LnRlbGVzZWMuZGUvcmwvVGVs
+ZVNlY19HbG9iYWxSb290X0NsYXNzXzIuY3JsMIGGBggrBgEFBQcBAQR6MHgwLAYIKwYBBQUH
+MAGGIGh0dHA6Ly9vY3NwMDMzNi50ZWxlc2VjLmRlL29jc3ByMEgGCCsGAQUFBzAChjxodHRw
+Oi8vcGtpMDMzNi50ZWxlc2VjLmRlL2NydC9UZWxlU2VjX0dsb2JhbFJvb3RfQ2xhc3NfMi5j
+ZXIwDQYJKoZIhvcNAQELBQADggEBAIcL/z4Cm2XIVi3WO5qYi3FP2ropqiH5Ri71sqQPrhE4
+eTizDnS6dl2e6BiClmLbTDPo3flq3zK9LExHYFV/53RrtCyD2HlrtrdNUAtmB7Xts5et6u5/
+MOaZ/SLick0+hFvu+c+Z6n/XUjkurJgARH5pO7917tALOxrN5fcPImxHhPalR6D90Bo0fa3S
+PXez7vTXTf/D6OWST1k+kEcQSrCFWMBvf/iu7QhCnh7U3xQuTY+8npTD5+32GPg8SecmqKc2
+2CzeIs2LgtjZeOJVEqM7h0S2EQvVDFKvaYwPBt/QolOLV5h7z/0HJPT8vcP9SpIClxvyt7bP
+ZYoaorVyGTkwggWNMIIEdaADAgECAgwcOtRQhH7u81j4jncwDQYJKoZIhvcNAQELBQAwgZUx
+CzAJBgNVBAYTAkRFMUUwQwYDVQQKEzxWZXJlaW4genVyIEZvZXJkZXJ1bmcgZWluZXMgRGV1
+dHNjaGVuIEZvcnNjaHVuZ3NuZXR6ZXMgZS4gVi4xEDAOBgNVBAsTB0RGTi1QS0kxLTArBgNV
+BAMTJERGTi1WZXJlaW4gQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgMjAeFw0xNjExMDMxNTI0
+NDhaFw0zMTAyMjIyMzU5NTlaMGoxCzAJBgNVBAYTAkRFMQ8wDQYDVQQIDAZCYXllcm4xETAP
+BgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxhbmNrLUdlc2VsbHNjaGFmdDEVMBMG
+A1UEAwwMTVBHIENBIC0gRzAyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnhx4
+59Lh4WqgOs/Md04XxU2yFtfM15ZuJV0PZP7BmqSJKLLPyqmOrADfNdJ5PIGBto2JBhtRRBHd
+G0GROOvTRHjzOga95WOTeura79T21FWwwAwa29OFnD3ZplQs6HgdwQrZWNi1WHNJxn/4mA19
+rNEBUc5urSIpZPvZi5XmlF3v3JHOlx3KWV7mUteB4pwEEfGTg4npPAJbp2o7arxQdoIq+Pu2
+OsvqhD7Rk4QeaX+EM1QS4lqd1otW4hE70h/ODPy1xffgbZiuotWQLC6nIwa65Qv6byqlIX0q
+Zuu99Vsu+r3sWYsL5SBkgecNI7fMJ5tfHrjoxfrKl/ErTAt8GQIDAQABo4ICBTCCAgEwEgYD
+VR0TAQH/BAgwBgEB/wIBATAOBgNVHQ8BAf8EBAMCAQYwKQYDVR0gBCIwIDANBgsrBgEEAYGt
+IYIsHjAPBg0rBgEEAYGtIYIsAQEEMB0GA1UdDgQWBBTEiKUH7rh7qgwTv9opdGNSG0lwFjAf
+BgNVHSMEGDAWgBST49gyJtrV8UqlkUrg6kviogzP4TCBjwYDVR0fBIGHMIGEMECgPqA8hjpo
+dHRwOi8vY2RwMS5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1Yi9jcmwvY2Fjcmwu
+Y3JsMECgPqA8hjpodHRwOi8vY2RwMi5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1
+Yi9jcmwvY2FjcmwuY3JsMIHdBggrBgEFBQcBAQSB0DCBzTAzBggrBgEFBQcwAYYnaHR0cDov
+L29jc3AucGNhLmRmbi5kZS9PQ1NQLVNlcnZlci9PQ1NQMEoGCCsGAQUFBzAChj5odHRwOi8v
+Y2RwMS5wY2EuZGZuLmRlL2dsb2JhbC1yb290LWcyLWNhL3B1Yi9jYWNlcnQvY2FjZXJ0LmNy
+dDBKBggrBgEFBQcwAoY+aHR0cDovL2NkcDIucGNhLmRmbi5kZS9nbG9iYWwtcm9vdC1nMi1j
+YS9wdWIvY2FjZXJ0L2NhY2VydC5jcnQwDQYJKoZIhvcNAQELBQADggEBABLpeD5FygzqOjj+
+/lAOy20UQOGWlx0RMuPcI4nuyFT8SGmK9lD7QCg/HoaJlfU/r78ex+SEide326evlFAoJXIF
+jVyzNltDhpMKrPIDuh2N12zyn1EtagqPL6hu4pVRzcBpl/F2HCvtmMx5K4WN1L1fmHWLcSap
+dhXLvAZ9RG/B3rqyULLSNN8xHXYXpmtvG0VGJAndZ+lj+BH7uvd3nHWnXEHC2q7iQlDUqg0a
+wIqWJgdLlx1Q8Dg/sodv0m+LN0kOzGvVDRCmowBdWGhhusD+duKV66pBl+qhC+4LipariWaM
+qK5ppMQROATjYeNRvwI+nDcEXr2vDaKmdbxgDVwwggWvMIIEl6ADAgECAgweKlJIhfynPMVG
+/KIwDQYJKoZIhvcNAQELBQAwajELMAkGA1UEBhMCREUxDzANBgNVBAgMBkJheWVybjERMA8G
+A1UEBwwITXVlbmNoZW4xIDAeBgNVBAoMF01heC1QbGFuY2stR2VzZWxsc2NoYWZ0MRUwEwYD
+VQQDDAxNUEcgQ0EgLSBHMDIwHhcNMTcxMTE0MTEzNDE2WhcNMjAxMTEzMTEzNDE2WjCBizEL
+MAkGA1UEBhMCREUxIDAeBgNVBAoMF01heC1QbGFuY2stR2VzZWxsc2NoYWZ0MTQwMgYDVQQL
+DCtNYXgtUGxhbmNrLUluc3RpdHV0IGZ1ZXIgbW9sZWt1bGFyZSBHZW5ldGlrMQ4wDAYDVQQL
+DAVNUElNRzEUMBIGA1UEAwwLUGF1bCBNZW56ZWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQDIh/UR/AX/YQ48VWWDMLTYtXjYJyhRHMc81ZHMMoaoG66lWB9MtKRTnB5lovLZ
+enTIUyPsCrMhTqV9CWzDf6v9gOTWVxHEYqrUwK5H1gx4XoK81nfV8oGV4EKuVmmikTXiztGz
+peyDmOY8o/EFNWP7YuRkY/lPQJQBeBHYq9AYIgX4StuXu83nusq4MDydygVOeZC15ts0tv3/
+6WmibmZd1OZRqxDOkoBbY3Djx6lERohs3IKS6RKiI7e90rCSy9rtidJBOvaQS9wvtOSKPx0a
++2pAgJEVzZFjOAfBcXydXtqXhcpOi2VCyl+7+LnnTz016JJLsCBuWEcB3kP9nJYNAgMBAAGj
+ggIxMIICLTAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIF4DAdBgNVHSUEFjAUBggrBgEFBQcD
+AgYIKwYBBQUHAwQwHQYDVR0OBBYEFHM0Mc3XjMLlhWpp4JufRELL4A/qMB8GA1UdIwQYMBaA
+FMSIpQfuuHuqDBO/2il0Y1IbSXAWMCAGA1UdEQQZMBeBFXBtZW56ZWxAbW9sZ2VuLm1wZy5k
+ZTB9BgNVHR8EdjB0MDigNqA0hjJodHRwOi8vY2RwMS5wY2EuZGZuLmRlL21wZy1nMi1jYS9w
+dWIvY3JsL2NhY3JsLmNybDA4oDagNIYyaHR0cDovL2NkcDIucGNhLmRmbi5kZS9tcGctZzIt
+Y2EvcHViL2NybC9jYWNybC5jcmwwgc0GCCsGAQUFBwEBBIHAMIG9MDMGCCsGAQUFBzABhido
+dHRwOi8vb2NzcC5wY2EuZGZuLmRlL09DU1AtU2VydmVyL09DU1AwQgYIKwYBBQUHMAKGNmh0
+dHA6Ly9jZHAxLnBjYS5kZm4uZGUvbXBnLWcyLWNhL3B1Yi9jYWNlcnQvY2FjZXJ0LmNydDBC
+BggrBgEFBQcwAoY2aHR0cDovL2NkcDIucGNhLmRmbi5kZS9tcGctZzItY2EvcHViL2NhY2Vy
+dC9jYWNlcnQuY3J0MEAGA1UdIAQ5MDcwDwYNKwYBBAGBrSGCLAEBBDARBg8rBgEEAYGtIYIs
+AQEEAwYwEQYPKwYBBAGBrSGCLAIBBAMGMA0GCSqGSIb3DQEBCwUAA4IBAQCQs6bUDROpFO2F
+Qz2FMgrdb39VEo8P3DhmpqkaIMC5ZurGbbAL/tAR6lpe4af682nEOJ7VW86ilsIJgm1j0ueY
+aOuL8jrN4X7IF/8KdZnnNnImW3QVni6TCcc+7+ggci9JHtt0IDCj5vPJBpP/dKXLCN4M+exl
+GXYpfHgxh8gclJPY1rquhQrihCzHfKB01w9h9tWZDVMtSoy9EUJFhCXw7mYUsvBeJwZesN2B
+fndPkrXx6XWDdU3S1LyKgHlLIFtarLFm2Hb5zAUR33h+26cN6ohcGqGEEzgIG8tXS8gztEaj
+1s2RyzmKd4SXTkKR3GhkZNVWy+gM68J7jP6zzN+cMYIDmjCCA5YCAQEwejBqMQswCQYDVQQG
+EwJERTEPMA0GA1UECAwGQmF5ZXJuMREwDwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4
+LVBsYW5jay1HZXNlbGxzY2hhZnQxFTATBgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzF
+RvyiMA0GCWCGSAFlAwQCAQUAoIIB8TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqG
+SIb3DQEJBTEPFw0xOTA4MDgwOTAzMDdaMC8GCSqGSIb3DQEJBDEiBCBSXXGEIwDzoVKUId1q
+F4ttxMcLuVx5R5LXXuY6siNOwjBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
+hkgBZQMEAQIwCgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcG
+BSsOAwIHMA0GCCqGSIb3DQMCAgEoMIGJBgkrBgEEAYI3EAQxfDB6MGoxCzAJBgNVBAYTAkRF
+MQ8wDQYDVQQIDAZCYXllcm4xETAPBgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxh
+bmNrLUdlc2VsbHNjaGFmdDEVMBMGA1UEAwwMTVBHIENBIC0gRzAyAgweKlJIhfynPMVG/KIw
+gYsGCyqGSIb3DQEJEAILMXygejBqMQswCQYDVQQGEwJERTEPMA0GA1UECAwGQmF5ZXJuMREw
+DwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4LVBsYW5jay1HZXNlbGxzY2hhZnQxFTAT
+BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBAIVG
+7ui1nZ/rFevQVYE+7pPRGNkm0E4YAmEvF/WJe+/ejtPZWj2spc3AoLulf3EDu9i8cCh+4hym
+ceRNk1NBGvqVRy6MuGhy44TEVvsurRGn7PpucHGdtW94l0XdTNYAQw7c0B9Y73mYXZqajbUt
+OK20lSNRgCPVtdccABzRRmEbhpALNn1RAFM661LHe73tC/COn0qQSa2A6B6G4fo6BZ/oidfC
+y86L36nEiNthSGu/wMmXtHUC86yC27XVfa1f066DBwaJSxld2UddV8FFE8nERzjoPsU0hkQK
+ijcSWg3xuzWInZImC1yzJnZyygKQ1InSMp6Qp6B9JsyKcWs0pyoAAAAAAAA=
+--------------ms090703040007090205050004--
+
+--===============1220029243016631799==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============1220029243016631799==--
