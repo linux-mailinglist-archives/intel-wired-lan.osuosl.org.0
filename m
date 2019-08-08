@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A19F86DA7
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:26 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D33A86DA1
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D106D204C7;
-	Thu,  8 Aug 2019 23:08:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 915638836A;
+	Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a9JNPN2k4EcY; Thu,  8 Aug 2019 23:08:24 +0000 (UTC)
+	with ESMTP id Y-b6CalHIeCF; Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AD77E204FC;
-	Thu,  8 Aug 2019 23:08:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 49BF188355;
+	Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 86E971BF383
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E1DB81BF383
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7C32D8831B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id DE03B88343
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ctCzLs8J1v6Y for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id TAvfqgn7jbyy for <intel-wired-lan@lists.osuosl.org>;
  Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4A94788320
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3270B8831F
  for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  08 Aug 2019 16:08:16 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141828"
+X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141829"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga008.jf.intel.com with ESMTP; 08 Aug 2019 16:08:16 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Aug 2019 07:39:26 -0700
-Message-Id: <20190808143938.4968-3-anthony.l.nguyen@intel.com>
+Date: Thu,  8 Aug 2019 07:39:27 -0700
+Message-Id: <20190808143938.4968-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
 References: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S27 03/15] ice: Always notify FW of VF
- reset
+Subject: [Intel-wired-lan] [PATCH S27 04/15] ice: Rebuild VSI while changing
+ queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,64 +67,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mitch Williams <mitch.a.williams@intel.com>
+From: Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>
 
-The call to ice_dis_vsi_txq() acts as the notification to the firmware
-that the VF is being reset. Because of this, we need to make this call
-every time we reset, regardless of whatever else we do to stop the tx
-queues.
+Currently, while the queues are being changed, the driver rebuilds
+the VSI only when the netdev is running. However, the driver needs
+to rebuild the VSI irrespective of the state of netdev. In this way,
+alloc_txq / alloc_rxq fields of the VSI would be updated correctly.
 
-Without this change, VF resets would fail to complete on interfaces that
-were up and running.
-
-Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
+Signed-off-by: Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 25 ++++++++++++-------
- 1 file changed, 16 insertions(+), 9 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index b93324e9f4bc..c58e3e3212df 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1074,9 +1074,16 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	for (v = 0; v < pf->num_alloc_vfs; v++)
- 		ice_trigger_vf_reset(&pf->vf[v], is_vflr);
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index ca5175774f41..e0aa34064283 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4002,28 +4002,21 @@ int ice_vsi_recfg_qs(struct ice_vsi *vsi, int new_rx, int new_tx)
+ 		usleep_range(1000, 2000);
+ 	}
  
--	for (v = 0; v < pf->num_alloc_vfs; v++)
--		if (test_bit(ICE_VF_STATE_QS_ENA, pf->vf[v].vf_states))
--			ice_dis_vf_qs(&pf->vf[v]);
-+	for (v = 0; v < pf->num_alloc_vfs; v++) {
-+		struct ice_vsi *vsi;
++	if (new_tx)
++		vsi->req_txq = new_tx;
++	if (new_rx)
++		vsi->req_rxq = new_rx;
 +
-+		vf = &pf->vf[v];
-+		vsi = pf->vsi[vf->lan_vsi_idx];
-+		if (test_bit(ICE_VF_STATE_QS_ENA, vf->vf_states))
-+			ice_dis_vf_qs(vf);
-+		ice_dis_vsi_txq(vsi->port_info, vsi->idx, 0, 0, NULL, NULL,
-+				NULL, ICE_VF_RESET, vf->vf_id, NULL);
-+	}
+ 	/* set for the next time the netdev is started */
+ 	if (!netif_running(vsi->netdev)) {
+-		if (new_tx)
+-			vsi->req_txq = new_tx;
+-		if (new_rx)
+-			vsi->req_rxq = new_rx;
+-
++		ice_vsi_rebuild(vsi, false);
+ 		dev_dbg(&pf->pdev->dev, "Link is down, queue count change happens when link is brought up\n");
+ 		goto done;
+ 	}
  
- 	/* HW requires some time to make sure it can flush the FIFO for a VF
- 	 * when it resets it. Poll the VPGEN_VFRSTAT register for each VF in
-@@ -1171,12 +1178,12 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
- 
- 	if (test_bit(ICE_VF_STATE_QS_ENA, vf->vf_states))
- 		ice_dis_vf_qs(vf);
--	else
--		/* Call Disable LAN Tx queue AQ call even when queues are not
--		 * enabled. This is needed for successful completion of VFR
--		 */
--		ice_dis_vsi_txq(vsi->port_info, vsi->idx, 0, 0, NULL, NULL,
--				NULL, ICE_VF_RESET, vf->vf_id, NULL);
-+
-+	/* Call Disable LAN Tx queue AQ whether or not queues are
-+	 * enabled. This is needed for successful completion of VFR.
-+	 */
-+	ice_dis_vsi_txq(vsi->port_info, vsi->idx, 0, 0, NULL, NULL,
-+			NULL, ICE_VF_RESET, vf->vf_id, NULL);
- 
- 	hw = &pf->hw;
- 	/* poll VPGEN_VFRSTAT reg to make sure
+ 	ice_vsi_close(vsi);
+-
+-	if (new_tx)
+-		vsi->req_txq = new_tx;
+-
+-	if (new_rx)
+-		vsi->req_rxq = new_rx;
+-
+ 	ice_vsi_rebuild(vsi, false);
+ 	ice_pf_dcb_recfg(pf);
+-
+ 	ice_vsi_open(vsi);
+ done:
+ 	clear_bit(__ICE_CFG_BUSY, pf->state);
 -- 
 2.20.1
 
