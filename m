@@ -2,113 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6337858D7
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 06:04:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1135985A46
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 08:10:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 765E386704;
-	Thu,  8 Aug 2019 04:04:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BCBB386B47;
+	Thu,  8 Aug 2019 06:10:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zsjv0PKhqUKU; Thu,  8 Aug 2019 04:04:28 +0000 (UTC)
+	with ESMTP id n3Gr5cJSb9Mj; Thu,  8 Aug 2019 06:10:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F032386B47;
-	Thu,  8 Aug 2019 04:04:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0B5A486C02;
+	Thu,  8 Aug 2019 06:10:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A5FEB1BF295
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 04:04:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B2451BF83A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:10:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 89F5C203E6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 04:04:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1460E20442
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:10:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DxabIsYLhx38 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Aug 2019 04:04:24 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from m9a0001g.houston.softwaregrp.com
- (m9a0001g.houston.softwaregrp.com [15.124.64.66])
- by silver.osuosl.org (Postfix) with ESMTPS id 176862001C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 04:04:23 +0000 (UTC)
-Received: FROM m9a0001g.houston.softwaregrp.com (15.121.0.191) BY
- m9a0001g.houston.softwaregrp.com WITH ESMTP; 
- Thu,  8 Aug 2019 04:04:11 +0000
-Received: from M9W0068.microfocus.com (2002:f79:bf::f79:bf) by
- M9W0068.microfocus.com (2002:f79:bf::f79:bf) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Thu, 8 Aug 2019 04:03:51 +0000
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com (15.124.72.13) by
- M9W0068.microfocus.com (15.121.0.191) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10 via Frontend Transport; Thu, 8 Aug 2019 04:03:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mn2RNm87rChHMaGS6Bw15fzuMXdP0bD6CW4/cazTQBmQEOJw7WcktRvikZZHJgIbuqJn5cMcI8OnM+BvzfcmEUrrNvLrvfiKhvtXEFQVBvvV2lqenhGK7gt1mijUQahGSVnvY5r+FYWZ8cfEgenDEA4DlQvNR4UrYb8tEH8htTqIYUqL7VvNv21jiyUyVl+0hzlVEUVT5JMuWg0jEF7iMm5Xoum4Uf/cgrx/bdf6IJOvjX8vWV/Nz5LRgKKZyAFP0wgnULGHe6IiHXPUNfI23AteRcvoO9TVIsbBhHpJv+3L3lGue1vBrcQjHmIrgVsFIbgOgRr1wdcbs2FzOqQA0g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=X5jJ4FAwXdNpYOZep35e6eOMfLUlDHQV5HsZDLk4t0A=;
- b=LnO4c6fRbo/emkRHbrSFLUixJ7SreeKK0+TQzbdyRUqf4IvX/Hye1dHA7YdYDXS3pTj3QB58jetiuceuu1qOp75wi0lum9IP/8cfS89Zpt7yN2kWNr2unOxRxB/6SOQbgn8h3DMkcciJ6RFa6rAUKPs0dBi1MN3BzttJlBzlz12ONW8ymZZhSqjsGAU9zPAdG17plAvHR5Egz3iFQzQlDdI4A60ZOGw9e6qTbM4KFlOmqN2sA9AetV8IYcwtb7jpELbhj+hEKp3WOG7dr/TrqmeuSCVaIMn6Q5Bi+mwnPkKfRQ5akJfjuoZ9ZsczrqXcDYCJwFNKFxUjF6Lw+bDeKw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Received: from BY5PR18MB3187.namprd18.prod.outlook.com (10.255.139.221) by
- BY5PR18MB3121.namprd18.prod.outlook.com (10.255.136.150) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.14; Thu, 8 Aug 2019 04:03:50 +0000
-Received: from BY5PR18MB3187.namprd18.prod.outlook.com
- ([fe80::103a:94a8:b58d:3eac]) by BY5PR18MB3187.namprd18.prod.outlook.com
- ([fe80::103a:94a8:b58d:3eac%4]) with mapi id 15.20.2157.015; Thu, 8 Aug 2019
- 04:03:49 +0000
-From: Firo Yang <firo.yang@suse.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [PATCH v3 1/1] ixgbe: sync the first fragment unconditionally
-Thread-Index: AQHVTZ5IOEeUaPwZuEuqOf/M8/vBig==
-Date: Thu, 8 Aug 2019 04:03:49 +0000
-Message-ID: <20190808040312.21719-1-firo.yang@suse.com>
-Accept-Language: en-US, en-GB, zh-CN
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: MA1PR01CA0148.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:71::18) To BY5PR18MB3187.namprd18.prod.outlook.com
- (2603:10b6:a03:196::29)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=firo.yang@suse.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.16.4
-x-originating-ip: [45.122.156.254]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 10597ca8-ca5e-4448-299d-08d71bb56b05
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:BY5PR18MB3121; 
-x-ms-traffictypediagnostic: BY5PR18MB3121:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <BY5PR18MB31216BCE628A437990EFF5C788D70@BY5PR18MB3121.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1468;
-x-forefront-prvs: 012349AD1C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(396003)(366004)(136003)(39860400002)(346002)(189003)(199004)(86362001)(5660300002)(478600001)(2501003)(54906003)(7736002)(316002)(1076003)(50226002)(81166006)(81156014)(53936002)(305945005)(3846002)(8936002)(6116002)(66476007)(8676002)(14454004)(64756008)(66446008)(1730700003)(66946007)(66556008)(52116002)(4326008)(99286004)(486006)(26005)(386003)(102836004)(6506007)(2351001)(2616005)(44832011)(476003)(25786009)(256004)(14444005)(107886003)(6916009)(5640700003)(71200400001)(6512007)(186003)(71190400001)(6486002)(2906002)(36756003)(6436002)(66066001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:BY5PR18MB3121;
- H:BY5PR18MB3187.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: suse.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: tdjIGv1cEHaQ3jOgiuyHhi8vjgzlkxwpjXxz3X36ykrnTi4X8UVWUU8E2rXDV9m2qsDDACNVR5Z3DBtjYC1CEgHduPPOIUw9XLrK4S2dWUcS/FCH/tJIBbPOlAiuN/ffkLJalcgNVVBDPAalD/XlZJkT7xwbX0CSpdAzgpjj2cD5SpVthkkYBEY7kzQ/O9PEv3i+qMh6ov2nrRNhWP+Tb0qL3A4ZDKGXIuuaAkydjbbUZGqtt/EdGvEPzOPXtMK+IgJmZ7KoCMUULXB5asduyVnPMkTIQQg7MnVEHYHdTEmO1msrfXfUwVUkRfI4j/v+Br74qdbuvdPIWoBB99BB/rLB8F+8EXehtEDnOvOH2vMuS5IPyjWQhahxzHGskbXofL0wnJfGUtyd9E5FBFwcM6U2UGnxUOIWZo4chgYBknU=
+ with ESMTP id 8A27G5F59Ktc for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Aug 2019 06:10:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id E1EA020441
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 06:10:46 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Aug 2019 23:10:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,360,1559545200"; d="scan'208";a="186248110"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
+ ([10.185.23.132])
+ by orsmga002.jf.intel.com with ESMTP; 07 Aug 2019 23:10:43 -0700
+To: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+References: <81004059-6d91-d8be-c80e-70c52359350d@molgen.mpg.de>
+ <2277f25bc44c4aebaac59942de2e24bb@AUSX13MPC105.AMER.DELL.COM>
+ <d0aaa0f8-b94c-be65-7a4e-f5592aa65647@intel.com>
+ <47977dc7-d53a-427c-bbaa-9c665287cb47@molgen.mpg.de>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <ac9ed79f-2789-4dde-6826-9227bd3113ec@intel.com>
+Date: Thu, 8 Aug 2019 09:10:43 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 10597ca8-ca5e-4448-299d-08d71bb56b05
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Aug 2019 04:03:49.8613 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 856b813c-16e5-49a5-85ec-6f081e13b527
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: GUMzrQGjKdsSItmluoQ/QLUJBptLOPq7+FmrN5k40THRK7C2/ihYKjgjJyaxnvqv8b1zk3wtnBZLGf2mKPVZEg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR18MB3121
-X-OriginatorOrg: suse.com
-Subject: [Intel-wired-lan] [PATCH v3 1/1] ixgbe: sync the first fragment
- unconditionally
+In-Reply-To: <47977dc7-d53a-427c-bbaa-9c665287cb47@molgen.mpg.de>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] MDI errors during resume from ACPI S3
+ (suspend to ram)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,94 +69,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "maciejromanfijalkowski@gmail.com" <maciejromanfijalkowski@gmail.com>,
- Firo Yang <firo.yang@suse.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "jian.w.wen@oracle.com" <jian.w.wen@oracle.com>,
- "alexander.h.duyck@linux.intel.com" <alexander.h.duyck@linux.intel.com>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Mario Limonciello <mario.limonciello@dell.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In Xen environment, if Xen-swiotlb is enabled, ixgbe driver
-could possibly allocate a page, DMA memory buffer, for the first
-fragment which is not suitable for Xen-swiotlb to do DMA operations.
-Xen-swiotlb have to internally allocate another page for doing DMA
-operations. This mechanism requires syncing the data from the internal
-page to the page which ixgbe sends to upper network stack. However,
-since commit f3213d932173 ("ixgbe: Update driver to make use of DMA
-attributes in Rx path"), the unmap operation is performed with
-DMA_ATTR_SKIP_CPU_SYNC. As a result, the sync is not performed.
-Since the sync isn't performed, the upper network stack could receive
-a incomplete network packet. By incomplete, it means the linear data
-on the first fragment(between skb->head and skb->end) is invalid. So 
-we have to copy the data from the internal xen-swiotlb page to the page 
-which ixgbe sends to upper network stack through the sync operation.
-
-More details from Alexander Duyck:
-Specifically since we are mapping the frame with
-DMA_ATTR_SKIP_CPU_SYNC we have to unmap with that as well. As a result
-a sync is not performed on an unmap and must be done manually as we
-skipped it for the first frag. As such we need to always sync before
-possibly performing a page unmap operation.
-
-Fixes: f3213d932173 ("ixgbe: Update driver to make use of DMA
-attributes in Rx path")
-Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-Signed-off-by: Firo Yang <firo.yang@suse.com>
----
-Changes from v2:
- * Added details on the problem caused by skipping the sync.
- * Added more explanation from Alexander Duyck.
-
-Changes from v1:
- * Imporved the patch description.
- * Added Reviewed-by: and Fixes: as suggested by Alexander Duyck.
-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index cbaf712d6529..200de9838096 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -1825,13 +1825,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
- static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
- 				struct sk_buff *skb)
- {
--	/* if the page was released unmap it, else just sync our portion */
--	if (unlikely(IXGBE_CB(skb)->page_released)) {
--		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
--				     ixgbe_rx_pg_size(rx_ring),
--				     DMA_FROM_DEVICE,
--				     IXGBE_RX_DMA_ATTR);
--	} else if (ring_uses_build_skb(rx_ring)) {
-+	if (ring_uses_build_skb(rx_ring)) {
- 		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
- 
- 		dma_sync_single_range_for_cpu(rx_ring->dev,
-@@ -1848,6 +1842,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
- 					      skb_frag_size(frag),
- 					      DMA_FROM_DEVICE);
- 	}
-+
-+	/* If the page was released, just unmap it. */
-+	if (unlikely(IXGBE_CB(skb)->page_released)) {
-+		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
-+				     ixgbe_rx_pg_size(rx_ring),
-+				     DMA_FROM_DEVICE,
-+				     IXGBE_RX_DMA_ATTR);
-+	}
- }
- 
- /**
--- 
-2.16.4
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gOC83LzIwMTkgMTc6NTUsIFBhdWwgTWVuemVsIHdyb3RlOgo+IAo+IERlYXIgU2FzaGEsCj4g
+Cj4gCj4gT24gMDcuMDguMTkgMDk6MjMsIE5lZnRpbiwgU2FzaGEgd3JvdGU6Cj4+IE9uIDgvNi8y
+MDE5IDE4OjUzLCBNYXJpby5MaW1vbmNpZWxsb0BkZWxsLmNvbSB3cm90ZToKPj4+PiAtLS0tLU9y
+aWdpbmFsIE1lc3NhZ2UtLS0tLQo+Pj4+IEZyb206IFBhdWwgTWVuemVsIDxwbWVuemVsQG1vbGdl
+bi5tcGcuZGU+Cj4+Pj4gU2VudDogVHVlc2RheSwgQXVndXN0IDYsIDIwMTkgMTA6MzYgQU0KPj4+
+PiBUbzogSmVmZiBLaXJzaGVyCj4+Pj4gQ2M6IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wu
+b3JnOyBMaW51eCBLZXJuZWwgTWFpbGluZyBMaXN0OyBMaW1vbmNpZWxsbywgTWFyaW8KPj4+PiBT
+dWJqZWN0OiBNREkgZXJyb3JzIGR1cmluZyByZXN1bWUgZnJvbSBBQ1BJIFMzIChzdXNwZW5kIHRv
+IHJhbSkKPj4+Pgo+Pj4+IERlYXIgTGludXggZm9sa3MsCj4+Pj4KPj4+Pgo+Pj4+IFRyeWluZyB0
+byBkZWNyZWFzZSB0aGUgcmVzdW1lIHRpbWUgb2YgTGludXggNS4zLXJjMyBvbiB0aGUgRGVsbCBP
+cHRpUGxleAo+Pj4+IDUwNDAgd2l0aCB0aGUgZGV2aWNlIGJlbG93Cj4+Pj4KPj4+PiAgwqDCoMKg
+wqAgJCBsc3BjaSAtbm4gLXMgMDA6MWYuNgo+Pj4+ICDCoMKgwqDCoCAwMDoxZi42IEV0aGVybmV0
+IGNvbnRyb2xsZXIgWzAyMDBdOiBJbnRlbCBDb3Jwb3JhdGlvbiBFdGhlcm5ldCBDb25uZWN0aW9u
+ICgyKQo+Pj4+IEkyMTktViBbODA4NjoxNWI4XSAocmV2IDMxKQo+Pj4+Cj4+Pj4gcG0tZ3JhcGji
+gJlzIHNjcmlwdCBgc2xlZXBncmFwaC5weWAgc2hvd3MsIHRoYXQgdGhlIGRyaXZlciAqZTEwMDBl
+KiB0YWtlcwo+Pj4+IGFyb3VuZCA0MDAgbXMsIHdoaWNoIGlzIHF1aXRlIGEgbG90LiBUaGUgY2Fs
+bCBncmFwaCB0cmFjZSBzaG93cyB0aGF0Cj4+Pj4gYGUxMDAwZV9yZWFkX3BoeV9yZWdfbWRpYygp
+YCBpcyByZXNwb25zaWJsZSBmb3IgYSBsb3Qgb2YgdGhvc2UuIEZyb20KPj4+PiBgZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL3BoeS5jYCBbMV06Cj4+Pj4KPj4+PiAgwqDCoMKgwqDC
+oMKgwqDCoCBmb3IgKGkgPSAwOyBpIDwgKEUxMDAwX0dFTl9QT0xMX1RJTUVPVVQgKiAzKTsgaSsr
+KSB7Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHVkZWxheSg1MCk7Cj4+
+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG1kaWMgPSBlcjMyKE1ESUMpOwo+
+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAobWRpYyAmIEUxMDAwX01E
+SUNfUkVBRFkpCj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCBicmVhazsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoCB9Cj4+Pj4gIMKgwqDCoMKgwqDC
+oMKgwqAgaWYgKCEobWRpYyAmIEUxMDAwX01ESUNfUkVBRFkpKSB7Cj4+Pj4gIMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGVfZGJnKCJNREkgUmVhZCBkaWQgbm90IGNvbXBsZXRlXG4i
+KTsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FMTAwMF9F
+UlJfUEhZOwo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+PiAgwqDCoMKgwqDCoMKgwqDCoCBp
+ZiAobWRpYyAmIEUxMDAwX01ESUNfRVJST1IpIHsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgZV9kYmcoIk1ESSBFcnJvclxuIik7Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgIHJldHVybiAtRTEwMDBfRVJSX1BIWTsKPj4+PiAgwqDCoMKgwqDCoMKg
+wqDCoCB9Cj4+Pj4KPj4+PiBVbmZvcnR1bmF0ZWx5LCBlcnJvcnMgYXJlIG5vdCBsb2dnZWQgaWYg
+ZHluYW1pYyBkZWJ1ZyBpcyBkaXNhYmxlZCwKPj4+PiBzbyByZWJ1aWxkaW5nIHRoZSBMaW51eCBr
+ZXJuZWwgd2l0aCBgQ09ORklHX0RZTkFNSUNfREVCVUdgLCBhbmQKPj4+Pgo+Pj4+ICDCoMKgwqDC
+oCBlY2hvICJmaWxlIGRyaXZlcnMvbmV0L2V0aGVybmV0LyogK3AiIHwgc3VkbyB0ZWUKPj4+PiAv
+c3lzL2tlcm5lbC9kZWJ1Zy9keW5hbWljX2RlYnVnL2NvbnRyb2wKPj4+Pgo+Pj4+IEkgZ290IHRo
+ZSBtZXNzYWdlcyBiZWxvdy4KPj4+Pgo+Pj4+ICDCoMKgwqDCoCBbIDQxNTkuMjA0MTkyXSBlMTAw
+MGUgMDAwMDowMDoxZi42IG5ldDAwOiBNREkgRXJyb3IKPj4+PiAgwqDCoMKgwqAgWyA0MTYwLjI2
+Nzk1MF0gZTEwMDBlIDAwMDA6MDA6MWYuNiBuZXQwMDogTURJIFdyaXRlIGRpZCBub3QgY29tcGxl
+dGUKPj4+PiAgwqDCoMKgwqAgWyA0MTYwLjM1OTg1NV0gZTEwMDBlIDAwMDA6MDA6MWYuNiBuZXQw
+MDogTURJIEVycm9yCj4+Pj4KPj4+PiBDYW4geW91IHBsZWFzZSBzaGVkIGEgbGl0dGxlIG1vcmUg
+bGlnaHQgaW50byB0aGVzZSBlcnJvcnM/IFBsZWFzZQo+Pj4+IGZpbmQgdGhlIGZ1bGwgbG9nIGF0
+dGFjaGVkLgo+IAo+Pj4+IFsxXTogaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4
+L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L3RyZWUvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvZTEwMDBlL3BoeS5jI24yMDYKPj4+Cj4+PiBTdHJpY3RseSBhcyBhIHJlZmVyZW5jZSBw
+b2ludCB5b3UgbWF5IGNvbnNpZGVyIHRyeWluZyB0aGUgb3V0LW9mLXRyZWUgZHJpdmVyIHRvIHNl
+ZSBpZiB0aGVzZQo+Pj4gYmVoYXZpb3JzIHBlcnNpc3QuCj4+Pgo+Pj4gaHR0cHM6Ly9zb3VyY2Vm
+b3JnZS5uZXQvcHJvamVjdHMvZTEwMDAvCj4gCj4gSSBjYW4gdHJ5IHRoYXQgaW4gdGhlIG5leHQg
+ZGF5cy4KPiAKPj4gV2UgYXJlIHVzaW5nIGV4dGVybmFsIFBIWS4gUmVxdWlyZWQgfjIwMCBtcyB0
+byBjb21wbGV0ZSBNRElDCj4+IHRyYW5zYWN0aW9uIChkZXBlbmRlZCBvbiB0aGUgcHJvamVjdCku
+Cj4gCj4gQXJlIHlvdSByZWZlcnJpbmcgdG8gdGhlIG91dC1vZi10cmVlIGRyaXZlcj8KPiAKSSBi
+ZWxpZXZlIHRoZSBvdXQgb2YgdHJlZSBkcml2ZXIgaGF2ZSBhIHNhbWUgYXBwcm9hY2ggdG8gTURJ
+QyBhY2Nlc3MuCj4+IFlvdSBuZWVkIHRvIHRha2UgdG8gY29uc2lkZXIgdGhpcyB0aW1lIGJlZm9y
+ZSBhY2Nlc3MgdG8gdGhlIFBIWS4gSSBkbwo+PiBub3QgcmVjb21tZW5kIGRlY3JlYXNlIHRpbWVy
+IGluIGEgJ2UxMDAwZV9yZWFkX3BoeV9yZWdfbWRpYygpJwo+PiBtZXRob2QuIFdlIGNvdWxkIGhp
+dCBvbiB3cm9uZyBNREkgYWNjZXNzLgo+IE15IHBvaW50IHdhcyBtb3JlLCBpZiB5b3Uga25vdyB0
+aGF0IG1vcmUgdGltZSBpcyBuZWVkZWQsIGJlZm9yZSB0aGUgTURJCj4gc2V0dGluZyg/KSB3aWxs
+IHN1Y2NlZWQsIHdoeSB0cnkgaXQgYW55d2F5IGFuZCBnbyBpbnRvIHRoZSBlcnJvciBwYXRocz8K
+PiBJc27igJl0IHRoZXJlIHNvbWUgcG9sbGluZyBwb3NzaWJsZSB0byBmaW5kIG91dCwgd2hlbiBN
+REkgY2FuIGJlIHNldCB1cD8KPiAKZTEwMDBlIGlzIHZlcnkgb2xkIGRyaXZlciBhbmQgc2VydmUg
+cHJldHR5IGxvdCBvZiAxRyBjbGllbnRzLiBFYWNoIDFHYmUgCk1BQy9QSFkgY29udHJvbGxlciBo
+YXZlIGEgZGlmZmVyZW50IGNvbmZpZ3VyYXRpb24gZGVwZW5kIHBsYXRmb3JtLgo+IAo+IEtpbmQg
+cmVnYXJkcywKPiAKPiBQYXVsCj4gCkhlbGxvIFBhdWwsCkxldCBtZSBiYWNrIGxhdGVyIHdpdGgg
+bW9yZSBpbmZvcm1hdGlvbiBzcGVjaWZpYyB5b3VyIGRldmljZS4gSSB3aWxsIHRyeSAKZmluZCBv
+dXQgbW9yZSBkZXRhaWxzIHdpdGggZGVzaWduIHRlYW0uCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50
+ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4v
+bGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
