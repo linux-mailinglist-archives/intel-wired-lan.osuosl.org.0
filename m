@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CEB486DA4
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:24 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A19F86DA7
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D4A7C87695;
-	Thu,  8 Aug 2019 23:08:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D106D204C7;
+	Thu,  8 Aug 2019 23:08:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V2XqAtkt6+fJ; Thu,  8 Aug 2019 23:08:22 +0000 (UTC)
+	with ESMTP id a9JNPN2k4EcY; Thu,  8 Aug 2019 23:08:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B538487620;
-	Thu,  8 Aug 2019 23:08:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AD77E204FC;
+	Thu,  8 Aug 2019 23:08:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1411E1BF383
+ by ash.osuosl.org (Postfix) with ESMTP id 86E971BF383
  for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0F0AE88353
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7C32D8831B
  for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PaimIAbkHn4k for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id ctCzLs8J1v6Y for <intel-wired-lan@lists.osuosl.org>;
  Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6DEC088338
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4A94788320
  for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  08 Aug 2019 16:08:16 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141827"
+X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141828"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga008.jf.intel.com with ESMTP; 08 Aug 2019 16:08:16 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Aug 2019 07:39:25 -0700
-Message-Id: <20190808143938.4968-2-anthony.l.nguyen@intel.com>
+Date: Thu,  8 Aug 2019 07:39:26 -0700
+Message-Id: <20190808143938.4968-3-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
 References: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S27 02/15] ice: Correctly handle return
- values for init DCB
+Subject: [Intel-wired-lan] [PATCH S27 03/15] ice: Always notify FW of VF
+ reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,68 +67,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dave Ertman <david.m.ertman@intel.com>
+From: Mitch Williams <mitch.a.williams@intel.com>
 
-In the init path for DCB, the call to ice_init_dcb()
-can return a non-zero value for either an actual
-error, or due to the FW lldp engine being stopped.
+The call to ice_dis_vsi_txq() acts as the notification to the firmware
+that the VF is being reset. Because of this, we need to make this call
+every time we reset, regardless of whatever else we do to stop the tx
+queues.
 
-We are currently treating all non-zero values only as
-an indication that the FW LLDP engine is stopped.
+Without this change, VF resets would fail to complete on interfaces that
+were up and running.
 
-Check for an actual error in the DCB init flow.
-
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 25 ++++++++++++-------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index e65b87f26828..eb1077450e5b 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -457,14 +457,18 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 	port_info = hw->port_info;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index b93324e9f4bc..c58e3e3212df 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1074,9 +1074,16 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
+ 	for (v = 0; v < pf->num_alloc_vfs; v++)
+ 		ice_trigger_vf_reset(&pf->vf[v], is_vflr);
  
- 	err = ice_init_dcb(hw);
-+	if (err && !port_info->is_sw_lldp) {
-+		dev_err(&pf->pdev->dev, "Error initializing DCB %d\n", err);
-+		goto dcb_init_err;
-+	}
+-	for (v = 0; v < pf->num_alloc_vfs; v++)
+-		if (test_bit(ICE_VF_STATE_QS_ENA, pf->vf[v].vf_states))
+-			ice_dis_vf_qs(&pf->vf[v]);
++	for (v = 0; v < pf->num_alloc_vfs; v++) {
++		struct ice_vsi *vsi;
 +
-+	dev_info(&pf->pdev->dev,
-+		 "DCB is enabled in the hardware, max number of TCs supported on this port are %d\n",
-+		 pf->hw.func_caps.common_cap.maxtc);
- 	if (err) {
- 		/* FW LLDP is disabled, activate SW DCBX/LLDP mode */
--		dev_info(&pf->pdev->dev,
--			 "DCB is enabled in the hardware, max number of TCs supported on this port are %d\n",
--			 pf->hw.func_caps.common_cap.maxtc);
- 		dev_info(&pf->pdev->dev,
- 			 "FW LLDP is disabled, DCBx/LLDP in SW mode.\n");
--		port_info->is_sw_lldp = true;
- 		clear_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags);
- 		err = ice_dcb_sw_dflt_cfg(pf, locked);
- 		if (err) {
-@@ -480,7 +484,6 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 		return 0;
- 	}
++		vf = &pf->vf[v];
++		vsi = pf->vsi[vf->lan_vsi_idx];
++		if (test_bit(ICE_VF_STATE_QS_ENA, vf->vf_states))
++			ice_dis_vf_qs(vf);
++		ice_dis_vsi_txq(vsi->port_info, vsi->idx, 0, 0, NULL, NULL,
++				NULL, ICE_VF_RESET, vf->vf_id, NULL);
++	}
  
--	port_info->is_sw_lldp = false;
- 	set_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags);
+ 	/* HW requires some time to make sure it can flush the FIFO for a VF
+ 	 * when it resets it. Poll the VPGEN_VFRSTAT register for each VF in
+@@ -1171,12 +1178,12 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
  
- 	/* DCBX in FW and LLDP enabled in FW */
-@@ -492,10 +495,6 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 	if (err)
- 		goto dcb_init_err;
+ 	if (test_bit(ICE_VF_STATE_QS_ENA, vf->vf_states))
+ 		ice_dis_vf_qs(vf);
+-	else
+-		/* Call Disable LAN Tx queue AQ call even when queues are not
+-		 * enabled. This is needed for successful completion of VFR
+-		 */
+-		ice_dis_vsi_txq(vsi->port_info, vsi->idx, 0, 0, NULL, NULL,
+-				NULL, ICE_VF_RESET, vf->vf_id, NULL);
++
++	/* Call Disable LAN Tx queue AQ whether or not queues are
++	 * enabled. This is needed for successful completion of VFR.
++	 */
++	ice_dis_vsi_txq(vsi->port_info, vsi->idx, 0, 0, NULL, NULL,
++			NULL, ICE_VF_RESET, vf->vf_id, NULL);
  
--	dev_info(&pf->pdev->dev,
--		 "DCB is enabled in the hardware, max number of TCs supported on this port are %d\n",
--		 pf->hw.func_caps.common_cap.maxtc);
--	dev_info(&pf->pdev->dev, "DCBX offload supported\n");
- 	return err;
- 
- dcb_init_err:
+ 	hw = &pf->hw;
+ 	/* poll VPGEN_VFRSTAT reg to make sure
 -- 
 2.20.1
 
