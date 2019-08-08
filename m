@@ -2,71 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66272868F7
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Aug 2019 20:43:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B18486DAF
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A0D0B87659;
-	Thu,  8 Aug 2019 18:43:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2916E87697;
+	Thu,  8 Aug 2019 23:08:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JEvLSdveEZtf; Thu,  8 Aug 2019 18:43:04 +0000 (UTC)
+	with ESMTP id P+cKQUGLiRvt; Thu,  8 Aug 2019 23:08:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7288987589;
-	Thu,  8 Aug 2019 18:43:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5954C8761F;
+	Thu,  8 Aug 2019 23:08:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4622F1BF38B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 18:43:02 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6C9071BF9B6
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4208E87F38
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 18:43:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 67E938833E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9kvuh3CYbJZG for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Aug 2019 18:43:01 +0000 (UTC)
+ with ESMTP id ilhMIsKU3Gtb for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Aug 2019 23:08:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2A91F87EE8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 18:43:01 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E6B42882FD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:16 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Aug 2019 11:42:56 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Aug 2019 16:08:16 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,362,1559545200"; d="scan'208";a="258799512"
-Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
- by orsmga001.jf.intel.com with ESMTP; 08 Aug 2019 11:42:55 -0700
-Received: from orsmsx158.amr.corp.intel.com (10.22.240.20) by
- ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 8 Aug 2019 11:42:55 -0700
-Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX158.amr.corp.intel.com ([169.254.10.82]) with mapi id 14.03.0439.000;
- Thu, 8 Aug 2019 11:42:55 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [PATCH v3 1/1] ixgbe: sync the first fragment unconditionally
-Thread-Index: AQHVTZ5IOEeUaPwZuEuqOf/M8/vBiqbxltMw
-Date: Thu, 8 Aug 2019 18:42:55 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D40F4D7@ORSMSX104.amr.corp.intel.com>
-References: <20190808040312.21719-1-firo.yang@suse.com>
-In-Reply-To: <20190808040312.21719-1-firo.yang@suse.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjMxNGEyYWUtMjc4OS00ZjU5LWE4ZjItOTg5ODZhOWFmMDliIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVzZYTVhFdGh0TktPY1laeUpoRDR6QTRxcU5WYmFGTzFXUTZsZ2pkdUhxaFcwdlE4WVA3bkNXSVlNQ2FNbnU4RyJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.0.400.15
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141826"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by orsmga008.jf.intel.com with ESMTP; 08 Aug 2019 16:08:16 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  8 Aug 2019 07:39:24 -0700
+Message-Id: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 1/1] ixgbe: sync the first fragment
- unconditionally
+Subject: [Intel-wired-lan] [PATCH S27 01/15] ice: Limit Max TCs on devices
+ with more than 4 ports
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,65 +60,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Firo Yang
-> Sent: Wednesday, August 7, 2019 9:04 PM
-> To: netdev@vger.kernel.org
-> Cc: maciejromanfijalkowski@gmail.com; Firo Yang <firo.yang@suse.com>;
-> linux-kernel@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
-> jian.w.wen@oracle.com; alexander.h.duyck@linux.intel.com;
-> davem@davemloft.net
-> Subject: [Intel-wired-lan] [PATCH v3 1/1] ixgbe: sync the first fragment
-> unconditionally
-> 
-> In Xen environment, if Xen-swiotlb is enabled, ixgbe driver could possibly
-> allocate a page, DMA memory buffer, for the first fragment which is not
-> suitable for Xen-swiotlb to do DMA operations.
-> Xen-swiotlb have to internally allocate another page for doing DMA
-> operations. This mechanism requires syncing the data from the internal page
-> to the page which ixgbe sends to upper network stack. However, since
-> commit f3213d932173 ("ixgbe: Update driver to make use of DMA attributes
-> in Rx path"), the unmap operation is performed with
-> DMA_ATTR_SKIP_CPU_SYNC. As a result, the sync is not performed.
-> Since the sync isn't performed, the upper network stack could receive a
-> incomplete network packet. By incomplete, it means the linear data on the
-> first fragment(between skb->head and skb->end) is invalid. So we have to
-> copy the data from the internal xen-swiotlb page to the page which ixgbe
-> sends to upper network stack through the sync operation.
-> 
-> More details from Alexander Duyck:
-> Specifically since we are mapping the frame with
-> DMA_ATTR_SKIP_CPU_SYNC we have to unmap with that as well. As a result
-> a sync is not performed on an unmap and must be done manually as we
-> skipped it for the first frag. As such we need to always sync before possibly
-> performing a page unmap operation.
-> 
-> Fixes: f3213d932173 ("ixgbe: Update driver to make use of DMA attributes in
-> Rx path")
-> Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> Signed-off-by: Firo Yang <firo.yang@suse.com>
-> ---
-> Changes from v2:
->  * Added details on the problem caused by skipping the sync.
->  * Added more explanation from Alexander Duyck.
-> 
-> Changes from v1:
->  * Imporved the patch description.
->  * Added Reviewed-by: and Fixes: as suggested by Alexander Duyck.
-> 
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 +++++++++-------
->  1 file changed, 9 insertions(+), 7 deletions(-)
+From: Usha Ketineni <usha.k.ketineni@intel.com>
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+This patch limits the max TCs set by the driver to the value provided by
+the firmware as per the capabilities of the device. Otherwise, hardcoding
+to 8 TC max would fail the device configurations with more than 4 ports.
 
+Signed-off-by: Usha Ketineni <usha.k.ketineni@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h |  1 +
+ drivers/net/ethernet/intel/ice/ice_common.c     | 12 ++++++++++++
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c    | 10 ++++++++--
+ drivers/net/ethernet/intel/ice/ice_type.h       |  3 +++
+ 4 files changed, 24 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 8ebc695171b6..4da0cde9695b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -91,6 +91,7 @@ struct ice_aqc_list_caps_elem {
+ #define ICE_AQC_CAPS_SRIOV				0x0012
+ #define ICE_AQC_CAPS_VF					0x0013
+ #define ICE_AQC_CAPS_VSI				0x0017
++#define ICE_AQC_CAPS_DCB				0x0018
+ #define ICE_AQC_CAPS_RSS				0x0040
+ #define ICE_AQC_CAPS_RXQS				0x0041
+ #define ICE_AQC_CAPS_TXQS				0x0042
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 0471698d9499..0d191716f97d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1578,6 +1578,18 @@ ice_parse_caps(struct ice_hw *hw, void *buf, u32 cap_count,
+ 					  prefix, func_p->guar_num_vsi);
+ 			}
+ 			break;
++		case ICE_AQC_CAPS_DCB:
++			caps->dcb = (number == 1);
++			caps->active_tc_bitmap = logical_id;
++			caps->maxtc = phys_id;
++			ice_debug(hw, ICE_DBG_INIT,
++				  "%s: DCB = %d\n", prefix, caps->dcb);
++			ice_debug(hw, ICE_DBG_INIT,
++				  "%s: active TC bitmap = %d\n", prefix,
++				  caps->active_tc_bitmap);
++			ice_debug(hw, ICE_DBG_INIT,
++				  "%s: TC max = %d\n", prefix, caps->maxtc);
++			break;
+ 		case ICE_AQC_CAPS_RSS:
+ 			caps->rss_table_size = number;
+ 			caps->rss_table_entry_width = logical_id;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index 34c9d1e01529..e65b87f26828 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -418,7 +418,7 @@ static int ice_dcb_sw_dflt_cfg(struct ice_pf *pf, bool locked)
+ 	memset(&pi->local_dcbx_cfg, 0, sizeof(*dcbcfg));
+ 
+ 	dcbcfg->etscfg.willing = 1;
+-	dcbcfg->etscfg.maxtcs = 8;
++	dcbcfg->etscfg.maxtcs = hw->func_caps.common_cap.maxtc;
+ 	dcbcfg->etscfg.tcbwtable[0] = 100;
+ 	dcbcfg->etscfg.tsatable[0] = ICE_IEEE_TSA_ETS;
+ 
+@@ -427,7 +427,7 @@ static int ice_dcb_sw_dflt_cfg(struct ice_pf *pf, bool locked)
+ 	dcbcfg->etsrec.willing = 0;
+ 
+ 	dcbcfg->pfc.willing = 1;
+-	dcbcfg->pfc.pfccap = IEEE_8021QAZ_MAX_TCS;
++	dcbcfg->pfc.pfccap = hw->func_caps.common_cap.maxtc;
+ 
+ 	dcbcfg->numapps = 1;
+ 	dcbcfg->app[0].selector = ICE_APP_SEL_ETHTYPE;
+@@ -459,6 +459,9 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
+ 	err = ice_init_dcb(hw);
+ 	if (err) {
+ 		/* FW LLDP is disabled, activate SW DCBX/LLDP mode */
++		dev_info(&pf->pdev->dev,
++			 "DCB is enabled in the hardware, max number of TCs supported on this port are %d\n",
++			 pf->hw.func_caps.common_cap.maxtc);
+ 		dev_info(&pf->pdev->dev,
+ 			 "FW LLDP is disabled, DCBx/LLDP in SW mode.\n");
+ 		port_info->is_sw_lldp = true;
+@@ -489,6 +492,9 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
+ 	if (err)
+ 		goto dcb_init_err;
+ 
++	dev_info(&pf->pdev->dev,
++		 "DCB is enabled in the hardware, max number of TCs supported on this port are %d\n",
++		 pf->hw.func_caps.common_cap.maxtc);
+ 	dev_info(&pf->pdev->dev, "DCBX offload supported\n");
+ 	return err;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 40b028e73234..4501d50a7dcc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -139,6 +139,9 @@ struct ice_phy_info {
+ /* Common HW capabilities for SW use */
+ struct ice_hw_common_caps {
+ 	u32 valid_functions;
++	/* DCB capabilities */
++	u32 active_tc_bitmap;
++	u32 maxtc;
+ 
+ 	/* Tx/Rx queues */
+ 	u16 num_rxq;		/* Number/Total Rx queues */
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
