@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A57486DAD
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F127086DAB
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EE1A7204AF;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 91F49876A0;
 	Thu,  8 Aug 2019 23:08:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zHMjhsZFtTnS; Thu,  8 Aug 2019 23:08:25 +0000 (UTC)
+	with ESMTP id nxPRp4Wvn5Fq; Thu,  8 Aug 2019 23:08:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9D2FB21551;
-	Thu,  8 Aug 2019 23:08:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E566A87635;
+	Thu,  8 Aug 2019 23:08:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D9BC21BF383
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 525B21BF383
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9DF0C88355
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4D07A88343
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v+E5Dc8M0vl4 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id FaQwkajeuYh8 for <intel-wired-lan@lists.osuosl.org>;
  Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 39B118835D
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5D1B18833E
  for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,18 +37,18 @@ Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  08 Aug 2019 16:08:17 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141838"
+X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141839"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga008.jf.intel.com with ESMTP; 08 Aug 2019 16:08:16 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Aug 2019 07:39:36 -0700
-Message-Id: <20190808143938.4968-13-anthony.l.nguyen@intel.com>
+Date: Thu,  8 Aug 2019 07:39:37 -0700
+Message-Id: <20190808143938.4968-14-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
 References: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S27 13/15] ice: move code closer together
+Subject: [Intel-wired-lan] [PATCH S27 14/15] ice: small efficiency fixes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +68,40 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-This is a simple patch to move the assignment to a local variable
-closer to the site where the local variable is used.  This
-can help readability and also maybe performance, although the
-performance enhancement is really dependent upon the compiler.
+Add a small bit of efficiency to the code by adding a
+prefetch of the port_info structure in order to help
+avoid a cache miss a little later on in execution.
 
-No functional change.
+Also add an unlikely statement to a branch which
+generally will never happen in normal operation.
 
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 4fe1b332e67e..ec581b1f0fcb 100644
+index ec581b1f0fcb..33dd103035dc 100644
 --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
 +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1068,9 +1068,6 @@ static int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 			continue;
- 		}
+@@ -1226,6 +1226,8 @@ ice_update_itr(struct ice_q_vector *q_vector, struct ice_ring_container *rc)
+ 	if (time_after(next_update, rc->next_update))
+ 		goto clear_counts;
  
--		rx_ptype = le16_to_cpu(rx_desc->wb.ptype_flex_flags0) &
--			ICE_RX_FLEX_DESC_PTYPE_M;
--
- 		stat_err_bits = BIT(ICE_RX_FLEX_DESC_STATUS0_L2TAG1P_S);
- 		if (ice_test_staterr(rx_desc, stat_err_bits))
- 			vlan_tag = le16_to_cpu(rx_desc->wb.l2tag1);
-@@ -1087,6 +1084,9 @@ static int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		total_rx_bytes += skb->len;
- 
- 		/* populate checksum, VLAN, and protocol */
-+		rx_ptype = le16_to_cpu(rx_desc->wb.ptype_flex_flags0) &
-+			ICE_RX_FLEX_DESC_PTYPE_M;
++	prefetch(q_vector->vsi->port_info);
 +
- 		ice_process_skb_fields(rx_ring, rx_desc, skb, rx_ptype);
+ 	packets = rc->total_pkts;
+ 	bytes = rc->total_bytes;
  
- 		/* send completed skb up the stack */
+@@ -1486,7 +1488,7 @@ int ice_napi_poll(struct napi_struct *napi, int budget)
+ 			clean_complete = false;
+ 
+ 	/* Handle case where we are called by netpoll with a budget of 0 */
+-	if (budget <= 0)
++	if (unlikely(budget <= 0))
+ 		return budget;
+ 
+ 	/* normally we have 1 Rx ring per q_vector */
 -- 
 2.20.1
 
