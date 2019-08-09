@@ -1,59 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7214287A03
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 14:31:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E975087DFB
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 17:26:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ABA5586C82;
-	Fri,  9 Aug 2019 12:31:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A601B877D4;
+	Fri,  9 Aug 2019 15:26:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aylrFcuQ8j4M; Fri,  9 Aug 2019 12:31:40 +0000 (UTC)
+	with ESMTP id f4AM3mFC+awe; Fri,  9 Aug 2019 15:26:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1617285E93;
-	Fri,  9 Aug 2019 12:31:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 78C2E877BA;
+	Fri,  9 Aug 2019 15:26:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EE94F1BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 12:31:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BAB641BF293
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 15:26:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EBD86226A2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 12:31:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B69FF88402
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 15:26:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iaJpY5VhezyA for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Aug 2019 12:31:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 383C4203B7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 12:31:38 +0000 (UTC)
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9390F21783;
- Fri,  9 Aug 2019 12:31:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1565353898;
- bh=L2KXkheRoHKjYKV85GvatHU+MtUf78ksKzsQO2I9arA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Aol/JY1p/cJuCmH7NCrufOwJ8wRP6jO4IcLrPra8RxN/gAL1Q4FCQ0nqSH4Epv1r6
- AxwPKcVMhtzLPA9uDXeROcX7FzV7ruAWobz90F0A21Xl7OqRrF0MaWs8RHf8yoywlu
- kOMcPIBD/8NXQsI9XOUwt+vMnwu8H0m9FvZX9DxE=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: netdev@vger.kernel.org
-Date: Fri,  9 Aug 2019 14:31:07 +0200
-Message-Id: <20190809123108.27065-17-gregkh@linuxfoundation.org>
-X-Mailer: git-send-email 2.22.0
-In-Reply-To: <20190809123108.27065-1-gregkh@linuxfoundation.org>
-References: <20190809123108.27065-1-gregkh@linuxfoundation.org>
+ with ESMTP id wZHW0pOsiZLe for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Aug 2019 15:26:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 920C688287
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 15:26:52 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2019 08:26:52 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,364,1559545200"; d="scan'208";a="180167237"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 09 Aug 2019 08:26:50 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1hw6n4-000G18-5e; Fri, 09 Aug 2019 23:26:50 +0800
+Date: Fri, 09 Aug 2019 23:26:32 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d4d90a8.m9oMxHKuxOTtRYMa%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 16/17] ixgbe: no need to check return
- value of debugfs_create functions
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD INCOMPLETE
+ fe9c9130bd52d1ea1dbffe533fec324751ec6f04
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,70 +63,156 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When calling debugfs functions, there is no need to ever check the
-return value.  The function can work or not, but the code logic should
-never do something different based on this.
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: fe9c9130bd52d1ea1dbffe533fec324751ec6f04  checkpatch.pl: seed camelcase from the provided kernel tree root
 
-Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+TIMEOUT after 1445m
+
+
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
+
+configs timed out: 27
+
+alpha                            allmodconfig
+alpha                            allyesconfig
+ia64                             allyesconfig
+m68k                             allyesconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allyesconfig
+mips                                   jz4740
+mips                                     txx9
+nds32                            allmodconfig
+nds32                            allyesconfig
+parisc                           allmodconfig
+parisc                           allyesconfig
+powerpc                          allmodconfig
+powerpc                          allyesconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+s390                             allyesconfig
+sh                               allyesconfig
+sparc                            allmodconfig
+sparc64                          allyesconfig
+x86_64                             acpi-redef
+x86_64                           allmodconfig
+x86_64                           allyesdebian
+x86_64                                nfsroot
+xtensa                           allmodconfig
+xtensa                           allyesconfig
+
+configs tested: 96
+
+riscv                              tinyconfig
+i386                               tinyconfig
+i386                   randconfig-d002-201931
+i386                   randconfig-d004-201931
+x86_64                 randconfig-d004-201931
+x86_64                 randconfig-d001-201931
+x86_64                 randconfig-d002-201931
+x86_64                 randconfig-d003-201931
+i386                   randconfig-d001-201931
+i386                   randconfig-d003-201931
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+powerpc                             defconfig
+ia64                                defconfig
+x86_64                           allyesconfig
+i386                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                             allmodconfig
+s390                                defconfig
+arm                              allmodconfig
+arm64                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+arm                         at91_dt_defconfig
+arm64                               defconfig
+arm                        multi_v5_defconfig
+arm64                            allyesconfig
+arm                               allnoconfig
+arm                           efm32_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm                          exynos_defconfig
+arm                        shmobile_defconfig
+arm                        multi_v7_defconfig
+sh                               allmodconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sh                            titan_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+nds32                               defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+xtensa                       common_defconfig
+openrisc                    or1ksim_defconfig
+nios2                         3c120_defconfig
+xtensa                          iss_defconfig
+c6x                        evmc6678_defconfig
+c6x                              allyesconfig
+nios2                         10m50_defconfig
+openrisc                 simple_smp_defconfig
+x86_64                 randconfig-g003-201931
+i386                   randconfig-g004-201931
+x86_64                 randconfig-g002-201931
+x86_64                 randconfig-g001-201931
+i386                   randconfig-g001-201931
+x86_64                 randconfig-g004-201931
+i386                   randconfig-g002-201931
+i386                   randconfig-g003-201931
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             alldefconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+sparc64                          allmodconfig
+sparc                               defconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                              fedora-25
+x86_64                                  kexec
+mips                             allmodconfig
+mips                      malta_kvm_defconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+arc                              allyesconfig
+microblaze                    nommu_defconfig
+powerpc                       ppc64_defconfig
+microblaze                      mmu_defconfig
+arc                                 defconfig
+powerpc                           allnoconfig
+
 ---
- .../net/ethernet/intel/ixgbe/ixgbe_debugfs.c  | 22 +++++--------------
- 1 file changed, 5 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c
-index 50dfb02fa34c..171cdc552961 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c
-@@ -190,22 +190,12 @@ static const struct file_operations ixgbe_dbg_netdev_ops_fops = {
- void ixgbe_dbg_adapter_init(struct ixgbe_adapter *adapter)
- {
- 	const char *name = pci_name(adapter->pdev);
--	struct dentry *pfile;
-+
- 	adapter->ixgbe_dbg_adapter = debugfs_create_dir(name, ixgbe_dbg_root);
--	if (adapter->ixgbe_dbg_adapter) {
--		pfile = debugfs_create_file("reg_ops", 0600,
--					    adapter->ixgbe_dbg_adapter, adapter,
--					    &ixgbe_dbg_reg_ops_fops);
--		if (!pfile)
--			e_dev_err("debugfs reg_ops for %s failed\n", name);
--		pfile = debugfs_create_file("netdev_ops", 0600,
--					    adapter->ixgbe_dbg_adapter, adapter,
--					    &ixgbe_dbg_netdev_ops_fops);
--		if (!pfile)
--			e_dev_err("debugfs netdev_ops for %s failed\n", name);
--	} else {
--		e_dev_err("debugfs entry for %s failed\n", name);
--	}
-+	debugfs_create_file("reg_ops", 0600, adapter->ixgbe_dbg_adapter,
-+			    adapter, &ixgbe_dbg_reg_ops_fops);
-+	debugfs_create_file("netdev_ops", 0600, adapter->ixgbe_dbg_adapter,
-+			    adapter, &ixgbe_dbg_netdev_ops_fops);
- }
- 
- /**
-@@ -224,8 +214,6 @@ void ixgbe_dbg_adapter_exit(struct ixgbe_adapter *adapter)
- void ixgbe_dbg_init(void)
- {
- 	ixgbe_dbg_root = debugfs_create_dir(ixgbe_driver_name, NULL);
--	if (ixgbe_dbg_root == NULL)
--		pr_err("init of debugfs failed\n");
- }
- 
- /**
--- 
-2.22.0
-
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
