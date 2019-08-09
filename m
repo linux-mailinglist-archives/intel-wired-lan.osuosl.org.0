@@ -1,55 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2983286DA5
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 01:08:25 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEEDE87A01
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2019 14:31:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D5388685B;
-	Thu,  8 Aug 2019 23:08:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 44F8F876F6;
+	Fri,  9 Aug 2019 12:31:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A3aKxfvdVXGq; Thu,  8 Aug 2019 23:08:23 +0000 (UTC)
+	with ESMTP id rrC4sodvEPiB; Fri,  9 Aug 2019 12:31:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 048DE8685A;
-	Thu,  8 Aug 2019 23:08:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7325B876F8;
+	Fri,  9 Aug 2019 12:31:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2A5BE1BF383
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C2D071BF2CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 12:31:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 27C1A86781
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id BB4D4876F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 12:31:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fEXGxSyTh5Si for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5868486745
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Aug 2019 23:08:18 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Aug 2019 16:08:17 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,363,1559545200"; d="scan'208";a="169141840"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga008.jf.intel.com with ESMTP; 08 Aug 2019 16:08:16 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Aug 2019 07:39:38 -0700
-Message-Id: <20190808143938.4968-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
-References: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
+ with ESMTP id sCZfyJ0vi80k for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Aug 2019 12:31:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1162B86D69
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2019 12:31:33 +0000 (UTC)
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8829C217F5;
+ Fri,  9 Aug 2019 12:31:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1565353892;
+ bh=dsEU41ZjboX8wiCrbr7wPmTyqRM39fWwxhY2724+fZY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Bl3vgSmoKi9r2wrC3ViVDbNebdWSj0nOUdV/z79fpjz7qUj1woqXC2GoIJRMKbmrP
+ o04g/bcESOTFQUX/Wy/8Fbdl4HL3LHp34Dclp5yD+1QrSWlA1VZ5tsynayMwI2gXiu
+ E0ct3ckr1GXd50nEb4AVbd94JK4u6J4CHd5+ghf0=
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: netdev@vger.kernel.org
+Date: Fri,  9 Aug 2019 14:31:05 +0200
+Message-Id: <20190809123108.27065-15-gregkh@linuxfoundation.org>
+X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190809123108.27065-1-gregkh@linuxfoundation.org>
+References: <20190809123108.27065-1-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S27 15/15] ice: change work limit to a
- constant
+Subject: [Intel-wired-lan] [PATCH v2 14/17] fm10k: no need to check return
+ value of debugfs_create functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,101 +66,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+When calling debugfs functions, there is no need to ever check the
+return value.  The function can work or not, but the code logic should
+never do something different based on this.
 
-The driver has supported a transmit work limit
-that was configurable from ethtool for a long time, but
-there are no good use cases for having it be a variable
-that can be changed at run time.  In addition, this
-variable was noted to be causing performance overhead
-due to cache misses.
-
-Just remove the variable and let the code use a constant
-so that the functionality is maintained (a limit on the
-number of transmits that will be cleaned in any one call
-to the clean routines) without the cache miss.
-
-Removes code, removes a variable, removes testing surface. Yay.
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/net/ethernet/intel/ice/ice.h         |  3 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 14 ++------------
- drivers/net/ethernet/intel/ice/ice_lib.c     |  2 +-
- 3 files changed, 3 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 681224c1de0e..f05e43693c95 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -247,9 +247,6 @@ struct ice_vsi {
- 	u16 vsi_num;			/* HW (absolute) index of this VSI */
- 	u16 idx;			/* software index in pf->vsi[] */
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c b/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c
+index dca104121c05..1d27b2fb23af 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c
+@@ -160,8 +160,6 @@ void fm10k_dbg_q_vector_init(struct fm10k_q_vector *q_vector)
+ 	snprintf(name, sizeof(name), "q_vector.%03d", q_vector->v_idx);
  
--	/* Interrupt thresholds */
--	u16 work_lmt;
--
- 	s16 vf_id;			/* VF ID for SR-IOV VSIs */
+ 	q_vector->dbg_q_vector = debugfs_create_dir(name, interface->dbg_intfc);
+-	if (!q_vector->dbg_q_vector)
+-		return;
  
- 	u16 ethtype;			/* Ethernet protocol for pause frame */
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index dadcf4324f56..68dd5ec392ce 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3361,12 +3361,6 @@ __ice_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec,
- 	if (ice_get_q_coalesce(vsi, ec, q_num))
- 		return -EINVAL;
- 
--	if (q_num < vsi->num_txq)
--		ec->tx_max_coalesced_frames_irq = vsi->work_lmt;
--
--	if (q_num < vsi->num_rxq)
--		ec->rx_max_coalesced_frames_irq = vsi->work_lmt;
--
- 	return 0;
- }
- 
-@@ -3546,17 +3540,13 @@ __ice_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec,
- 			if (ice_set_q_coalesce(vsi, ec, i))
- 				return -EINVAL;
- 		}
--		goto set_work_lmt;
-+		goto set_complete;
- 	}
- 
- 	if (ice_set_q_coalesce(vsi, ec, q_num))
- 		return -EINVAL;
- 
--set_work_lmt:
--
--	if (ec->tx_max_coalesced_frames_irq || ec->rx_max_coalesced_frames_irq)
--		vsi->work_lmt = max(ec->tx_max_coalesced_frames_irq,
--				    ec->rx_max_coalesced_frames_irq);
-+set_complete:
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 46cca842eea9..541c480d27e4 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -574,8 +574,8 @@ ice_vsi_alloc(struct ice_pf *pf, enum ice_vsi_type type, u16 vf_id)
- 	vsi->type = type;
- 	vsi->back = pf;
- 	set_bit(__ICE_DOWN, vsi->state);
-+
- 	vsi->idx = pf->next_vsi;
--	vsi->work_lmt = ICE_DFLT_IRQ_WORK;
- 
- 	if (type == ICE_VSI_VF)
- 		ice_vsi_set_num_qs(vsi, vf_id);
+ 	/* Generate a file for each rx ring in the q_vector */
+ 	for (i = 0; i < q_vector->tx.count; i++) {
 -- 
-2.20.1
+2.22.0
 
 _______________________________________________
 Intel-wired-lan mailing list
