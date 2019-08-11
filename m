@@ -1,72 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25B9B8939C
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 11 Aug 2019 22:23:01 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12B628A18E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2019 16:52:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A220987A96;
-	Sun, 11 Aug 2019 20:22:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BC2AB203CA;
+	Mon, 12 Aug 2019 14:52:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hHT9kUCAPDYR; Sun, 11 Aug 2019 20:22:54 +0000 (UTC)
+	with ESMTP id X3lA0K5sfwUf; Mon, 12 Aug 2019 14:52:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D955D8798F;
-	Sun, 11 Aug 2019 20:22:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 46DBD214E6;
+	Mon, 12 Aug 2019 14:52:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AF9C51BF322
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 20:22:52 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9160D1BF322
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 20:07:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A67E0863F1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 20:22:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8A824203B3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 20:07:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7vFOyEmkBDTY for <intel-wired-lan@lists.osuosl.org>;
- Sun, 11 Aug 2019 20:22:51 +0000 (UTC)
+ with ESMTP id sL5ci6qNStQI for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 11 Aug 2019 20:07:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com
- [209.85.210.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6D3D784C20
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 20:22:51 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id f17so16549920otq.4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 13:22:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LhCZsWxZ9N0cFWIcf2zFmzJDaTFv5khYxxXFoiFHFWc=;
- b=FmE07a+nY1HAiO1rZnpjtzbLGzfO6KldQ2bZDNtWHZSNJRnyWc2I/38EyigtGOYOw0
- IPbM6A5H333mRQrrA+lr4GYpR31LAKYRzEwuTOTqu52E+cDVQQp2rwhoc75LG/zje7bS
- 2Fc/0PZa4y7COtYss1r79TGXFY7meEJuIPuaZZ3Kkrj23//Bqbi/VF2ia4XO2fqXmXC/
- VeblU1cEJY6iMkIQ+3YpiMCIxqr0XDX4VLlO8U7qaRGoTFruw3JQIt5/cQdPlvxNV6P7
- EE18/3a/p79DDBPHNbqzTci3O+XlfBZFJ4u/ZeP0epTf7sf2DFO1dwGeKsE+EDVRqL5H
- Rc1g==
+Received: from mail-yw1-f67.google.com (mail-yw1-f67.google.com
+ [209.85.161.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id C4EB420130
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 20:07:55 +0000 (UTC)
+Received: by mail-yw1-f67.google.com with SMTP id z63so38057716ywz.9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 13:07:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LhCZsWxZ9N0cFWIcf2zFmzJDaTFv5khYxxXFoiFHFWc=;
- b=U4rHLivZ4JFSUy4XG1pgEZ5Vl5AhLs1oLmunx3l4CqtU8VJ6zz5ISbM804z0oROM2N
- F2NItefTDnmcWdXU19/pVfOytsQDmkPrMmU3iiAtaLjLDPH6kUoS/x+sK1uWIeTW99qC
- Ij6J4+x/QqxJ+EIlDl/w1ERj7oOE2Lr5IHuFDpcl/f5A0cs53euBd4okmMGVo1GtpZqU
- UyIXPIq1pvc91tG3FYv1bM9dnmYnwyQ5DfvKBZ0J52rw93wpB+8lcpn7zoqRgj0WXP0o
- 9B9pmfQR+PboRpjrDKn7pCpr31MEbEqwH+v+cyZfG+AFHTzWUsnHajQmc2pC9AuO3LaO
- 3r7A==
-X-Gm-Message-State: APjAAAWLUB7FL0ggSIy/aaPKmtttK0b4D3cikKYfENVN74T4NGicYrnJ
- PA99zsT6eBjPX79upZcXi8+F4f0UILjHyQHEIHg=
-X-Google-Smtp-Source: APXvYqzN0e1ldEXQab16Pz+xVPTk//ZiZ63CKAj2OIYrK3ALilgswuz+hP1rq+AcMw7tJZFuiH5gXBCnPHjj9ZSrmtw=
-X-Received: by 2002:a02:6d24:: with SMTP id m36mr34626709jac.87.1565554970465; 
- Sun, 11 Aug 2019 13:22:50 -0700 (PDT)
-MIME-Version: 1.0
-References: <1565554067-4994-1-git-send-email-wenwen@cs.uga.edu>
-In-Reply-To: <1565554067-4994-1-git-send-email-wenwen@cs.uga.edu>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Sun, 11 Aug 2019 13:22:39 -0700
-Message-ID: <CAKgT0Ue_cSVDd6Tf9ji5zUCNEseAAzUtDG3BS6TEhR8Xh83xQQ@mail.gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=I/wDFVoI+mYQ74OtLuR5i4v0k0nbe35K0FGp9EAyx0w=;
+ b=pIXlDgVcOEm/EIgI/2RsUPv++Y6y5rpBhX8wvg64pEbHHu/o9/bzbLKX5cF/QI7um5
+ iD8Kfq6ZQ1vep/VD7KldkfcOQY+deSy0lleliv8eFV+jUr606VXykf5oLf8pWW+iSe7v
+ ZZkacw8hs4DocrcMyNXXKXJsJqU62Eojj4dRqSA4RShXo6kJ3LmNu/X04Ci25MyNJToM
+ lMHSr7+mjfTqSfJ2bNZtRit7rhmVYmeEdF2KQesjtAtQyXh3I8IyOZwOZr1/ECqFGK/M
+ JuVnxG5oJlv/hlWil6jkTfcpOnSeePFmHmIAMDWyamWKOI1VVyUl5gamyloQtBA7/FZN
+ Lowg==
+X-Gm-Message-State: APjAAAWKXKyogSjXwpFla2/oWbDOcT1vN9s/GRnej4chADh1OJjXNUiA
+ pgNQYMUBMGn8gpxlui2Zjk8=
+X-Google-Smtp-Source: APXvYqyoSDYPWu4RUOvnDARGMo8pOuQZ3RGQOV1HGXtNwNsBcsmUEeugZgXKGibzzlthU+3xSqElvw==
+X-Received: by 2002:a0d:f0c7:: with SMTP id z190mr2409714ywe.317.1565554074798; 
+ Sun, 11 Aug 2019 13:07:54 -0700 (PDT)
+Received: from localhost.localdomain (24-158-240-219.dhcp.smyr.ga.charter.com.
+ [24.158.240.219])
+ by smtp.gmail.com with ESMTPSA id x138sm23418950ywg.4.2019.08.11.13.07.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+ Sun, 11 Aug 2019 13:07:54 -0700 (PDT)
+From: Wenwen Wang <wenwen@cs.uga.edu>
 To: Wenwen Wang <wenwen@cs.uga.edu>
-Subject: Re: [Intel-wired-lan] [PATCH] net: ixgbe: fix memory leaks
+Date: Sun, 11 Aug 2019 15:07:47 -0500
+Message-Id: <1565554067-4994-1-git-send-email-wenwen@cs.uga.edu>
+X-Mailer: git-send-email 2.7.4
+X-Mailman-Approved-At: Mon, 12 Aug 2019 14:52:11 +0000
+Subject: [Intel-wired-lan] [PATCH] net: ixgbe: fix memory leaks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,52 +74,45 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ open list <linux-kernel@vger.kernel.org>,
  "David S. Miller" <davem@davemloft.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Aug 11, 2019 at 1:08 PM Wenwen Wang <wenwen@cs.uga.edu> wrote:
->
-> In ixgbe_configure_clsu32(), 'jump', 'input', and 'mask' are allocated
-> through kzalloc() respectively in a for loop body. Then,
-> ixgbe_clsu32_build_input() is invoked to build the input. If this process
-> fails, next iteration of the for loop will be executed. However, the
-> allocated 'jump', 'input', and 'mask' are not deallocated on this execution
-> path, leading to memory leaks.
->
-> Signed-off-by: Wenwen Wang <wenwen@cs.uga.edu>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index cbaf712..6b7ea87 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -9490,6 +9490,10 @@ static int ixgbe_configure_clsu32(struct ixgbe_adapter *adapter,
->                                 jump->mat = nexthdr[i].jump;
->                                 adapter->jump_tables[link_uhtid] = jump;
->                                 break;
-> +                       } else {
-> +                               kfree(mask);
-> +                               kfree(input);
-> +                               kfree(jump);
->                         }
->                 }
->                 return 0;
+In ixgbe_configure_clsu32(), 'jump', 'input', and 'mask' are allocated
+through kzalloc() respectively in a for loop body. Then,
+ixgbe_clsu32_build_input() is invoked to build the input. If this process
+fails, next iteration of the for loop will be executed. However, the
+allocated 'jump', 'input', and 'mask' are not deallocated on this execution
+path, leading to memory leaks.
 
-So I think this fix is still missing a good chunk of the exception
-handling it should have. Specifically we will end up failing and then
-trying to allocate for the next rule. It seems like we should probably
-stop trying to program rules and unwind the work we have already done.
+Signed-off-by: Wenwen Wang <wenwen@cs.uga.edu>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Also it would probably make sense to return an error if we are unable
-to program one of the rules into the hardware. Otherwise things will
-fail and the user will never know why.
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index cbaf712..6b7ea87 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -9490,6 +9490,10 @@ static int ixgbe_configure_clsu32(struct ixgbe_adapter *adapter,
+ 				jump->mat = nexthdr[i].jump;
+ 				adapter->jump_tables[link_uhtid] = jump;
+ 				break;
++			} else {
++				kfree(mask);
++				kfree(input);
++				kfree(jump);
+ 			}
+ 		}
+ 		return 0;
+-- 
+2.7.4
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
