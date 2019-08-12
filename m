@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9ECBE8A2A3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2019 17:49:51 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D1928A2AE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2019 17:53:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3740E83FF4;
-	Mon, 12 Aug 2019 15:49:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 84C86868E5;
+	Mon, 12 Aug 2019 15:52:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sDQv1tgdgo9e; Mon, 12 Aug 2019 15:49:49 +0000 (UTC)
+	with ESMTP id vqfL74pTQCub; Mon, 12 Aug 2019 15:52:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 52A0C83F06;
-	Mon, 12 Aug 2019 15:49:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 835958689B;
+	Mon, 12 Aug 2019 15:52:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9052C1BF2C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:49:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E673B1BF2C1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:52:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8C32B220E5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:49:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DEE4585EC2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:52:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aVdjgpjfN6n9 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Aug 2019 15:49:46 +0000 (UTC)
+ with ESMTP id d5-DExTiJ51S for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Aug 2019 15:52:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 4E0D31FD90
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:49:46 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 27CD585EAC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:52:55 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2019 08:48:54 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Aug 2019 08:49:36 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,377,1559545200"; 
- d="asc'?scan'208";a="327390767"
+X-IronPort-AV: E=Sophos;i="5.64,378,1559545200"; 
+ d="asc'?scan'208";a="200178298"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
- by orsmga004.jf.intel.com with ESMTP; 12 Aug 2019 08:48:53 -0700
-Message-ID: <016fd56f6128723b6112f1dfe938c9c641e422dc.camel@intel.com>
+ by fmsmga004.fm.intel.com with ESMTP; 12 Aug 2019 08:49:35 -0700
+Message-ID: <1ddf059408158e6a1819f222127b353476110ba4.camel@intel.com>
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, netdev@vger.kernel.org
-Date: Mon, 12 Aug 2019 08:48:53 -0700
-In-Reply-To: <20190810101732.26612-16-gregkh@linuxfoundation.org>
+Date: Mon, 12 Aug 2019 08:49:35 -0700
+In-Reply-To: <20190810101732.26612-17-gregkh@linuxfoundation.org>
 References: <20190810101732.26612-1-gregkh@linuxfoundation.org>
- <20190810101732.26612-16-gregkh@linuxfoundation.org>
+ <20190810101732.26612-17-gregkh@linuxfoundation.org>
 Organization: Intel
 User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 15/17] i40e: no need to check
+Subject: Re: [Intel-wired-lan] [PATCH v3 16/17] ixgbe: no need to check
  return value of debugfs_create functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -68,17 +68,17 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Reply-To: jeffrey.t.kirsher@intel.com
 Cc: intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
-Content-Type: multipart/mixed; boundary="===============8933921366190763020=="
+Content-Type: multipart/mixed; boundary="===============3206570442256787721=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---===============8933921366190763020==
+--===============3206570442256787721==
 Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-gpvAGt0BDOe1HuoxIctz"
+	protocol="application/pgp-signature"; boundary="=-EOUtTASVq+viiz5NfBUM"
 
 
---=-gpvAGt0BDOe1HuoxIctz
+--=-EOUtTASVq+viiz5NfBUM
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -97,37 +97,37 @@ On Sat, 2019-08-10 at 12:17 +0200, Greg Kroah-Hartman wrote:
 Acked-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 
 > ---
->  .../net/ethernet/intel/i40e/i40e_debugfs.c    | 22 ++++-------------
-> --
->  1 file changed, 4 insertions(+), 18 deletions(-)
+>  .../net/ethernet/intel/ixgbe/ixgbe_debugfs.c  | 22 +++++----------
+> ----
+>  1 file changed, 5 insertions(+), 17 deletions(-)
 
 
---=-gpvAGt0BDOe1HuoxIctz
+--=-EOUtTASVq+viiz5NfBUM
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl1RimUACgkQ5W/vlVpL
-7c763Q/+OSDQpuPnOE7cSF2ADx/seyiELQQz1zWAMcP/cBXw05nyrDVp6OVnhzJt
-eUQo902CfmFi2aLJwr4nv2V01/iiXPQigtq7zRXfAti6xcwq9o3bil7o9nsiIX9I
-J+CzUySEe+8o2vnb9DmxncwKcwTamJ4Bm60sKO2IZ4L26kZWLk8IzExou6D9p01a
-KCMnb/EkZOufqnB68mOe5Yss4hxqtPJIqY+UzjvmAoLEHmTASI8mNZ+dOjTOmpAE
-4b/qg9T4LInDdUYjGHIQCpnh61vJLiU0R+VtAtLQwGDS9Q+Oxtndo4wsiAxYnfRR
-GSjqbAFsIfy432PQG30EwFgGb7Vq9REPMHOMJYXViKuUeluVbF9voSMC9HVaJ/xg
-7yDssWwIDb9ylkpjpiVAdoo5jCZ+NAqLUMCAnLcr5/u82O+A/hq8QCUfGZMYN10e
-HVO7ZlUtJA1la81MU3ZxYcNprhcWtZK63Tvbg2h5TMmGJyolTVBlk1U4SFdsmDrl
-9BPj5wjLDvcZymAIdBPK+oNUj4R7vyK3yoCqAsC7q4735L2tkcljkw38+BtTerRO
-xWya/3J97ezf2U6fp61VfSbThI0Msqi2eVySxVDqUjiK3Kc+Ml1Ou0LsJa6nt9D/
-h75LaxXiK1YIiSi7m6cJwrkcKt7JyZtr+XeiyCRJcmp9bpPEYbg=
-=EyOA
+iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl1Rio8ACgkQ5W/vlVpL
+7c73CQ/+MRQwSGF5f4EP5Z5xB+mOP5Ik7hfozeweg8oRT1+81W3b6rUlHc7Lm/0p
+tMHpLpGkZj/+Mis6IF07QCWZCszCf6ViCt1TWBzF200tbbcXZGQMfy2jr0ng5/vH
+oftOvfvKR2UdzYwXNENsn6/unL4Drx7HM1Tfgd+qK1t1WpRWy4JS4p/6EP3gaqxy
+yyoLFK4g8gI9AQBokCH4QWgifONAoy9Uq5djlh3nl9p409M12Y2JN4Gb2cbzZ6Aw
+pxK6nEfz8FiwRIlNstL20Hb2GSb6yY14SnvQipGwfwJL/KOZB2HCsgo7rrjzTFPd
+KHUvFDN1uiX7A14j33Nyosr5J7cr13ZdgsSQf30rZQ7AWMRbqZVBIdgYUA6EGalT
+6r4cF2RwCHiVLxrVDXLilNIGJju0g2A6op6huTdYn6sSmnuN8rZstrgWWkKqUVWB
+VnhqVQNDJ/zD9J9PWKgyEqiWXvQf3MmfwCn2kefdxzB17Oliu5d14XAhqvjjW9pr
+cX2mX7HNATe+Fk1Q5zpOIULXxjnNSdv4kItuvZjiONZM7yoUMMHzajAckOj4HnDA
++Q746vqjwwA77xOl+dVLiU7FIGOQ57nDaWRbyutxH9OkhQz1JI7Qht7uotwt68Sm
+BeQfnnVGK+at578k+vCoaAhWMAB+XNsKqyMyOWMkgd/wG+RCy0E=
+=mVRo
 -----END PGP SIGNATURE-----
 
---=-gpvAGt0BDOe1HuoxIctz--
+--=-EOUtTASVq+viiz5NfBUM--
 
 
---===============8933921366190763020==
+--===============3206570442256787721==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -138,5 +138,5 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============8933921366190763020==--
+--===============3206570442256787721==--
 
