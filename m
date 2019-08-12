@@ -1,66 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27C3C8A18F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2019 16:52:18 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF87C8A294
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2019 17:47:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D2E9E2152F;
-	Mon, 12 Aug 2019 14:52:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D6CE875AD;
+	Mon, 12 Aug 2019 15:46:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l+wV8sXRZkvo; Mon, 12 Aug 2019 14:52:15 +0000 (UTC)
+	with ESMTP id dEHPnxkia-8i; Mon, 12 Aug 2019 15:46:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9019E21544;
-	Mon, 12 Aug 2019 14:52:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A23D487594;
+	Mon, 12 Aug 2019 15:46:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7A8D61BF29F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 05:59:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A8E1F1BF2C1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:46:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6C455854E8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 05:59:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A51748682A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:46:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nf8VdivBB3bJ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Aug 2019 05:59:28 +0000 (UTC)
+ with ESMTP id rJImjLexJRLa for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Aug 2019 15:46:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-yb1-f194.google.com (mail-yb1-f194.google.com
- [209.85.219.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 88219854E3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 05:59:28 +0000 (UTC)
-Received: by mail-yb1-f194.google.com with SMTP id b16so6918996ybq.0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 11 Aug 2019 22:59:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=N6oSMRPpHGkQ7E+kK6e4vXB5ZZOBX+MrIVovGvsXigg=;
- b=UudQMvinKPFXE55tLONrW5T/sib3WWzTwe6yEKcjsqi9iVjt5cMD8XBQ5QH9U995Fa
- wnpq9UWLPJoJxFjGUVe9Xqjw0KlwpkIsGql68vxeQbIhg3u42V1qcIFodXEcfJT++Syv
- hDgVSLKFDGC2cN3EXHB2dEDhdN/PGfEqVr1YVaPVvzadyPPhfNWktY21dPjfufbbYwAd
- P5ljjaHHg/5T4YJqZbqxA0Pbq6808+Jjtl+GFuWXODmQl7F64LJLR4n47xpwx/+yCaTR
- YF4IZQ8eG3f2DSkLbJM1quBoKcdiphERmv69anm/jAp4ovaPLdmKFLpQbbCdlAfr/yOl
- H62w==
-X-Gm-Message-State: APjAAAXeXqfa0wqmrRQwJ2Ceid6HRkF1qhaZw+oHZMsdo48rdBMmB6Pc
- fqNqHBpiTGbFNB07pTsnv9I=
-X-Google-Smtp-Source: APXvYqyH7bGaVBWLSU8sEzfL/N45LAWNBbDKUHxF98WHxf0lYev6I/BUIG/ZR/mT8bKm9nE2BGn1Zw==
-X-Received: by 2002:a25:d794:: with SMTP id o142mr9107179ybg.384.1565589567579; 
- Sun, 11 Aug 2019 22:59:27 -0700 (PDT)
-Received: from localhost.localdomain (24-158-240-219.dhcp.smyr.ga.charter.com.
- [24.158.240.219])
- by smtp.gmail.com with ESMTPSA id e12sm24721471ywe.85.2019.08.11.22.59.26
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Sun, 11 Aug 2019 22:59:26 -0700 (PDT)
-From: Wenwen Wang <wenwen@cs.uga.edu>
-To: Wenwen Wang <wenwen@cs.uga.edu>
-Date: Mon, 12 Aug 2019 00:59:21 -0500
-Message-Id: <1565589561-5910-1-git-send-email-wenwen@cs.uga.edu>
-X-Mailer: git-send-email 2.7.4
-X-Mailman-Approved-At: Mon, 12 Aug 2019 14:52:11 +0000
-Subject: [Intel-wired-lan] [PATCH] e1000: fix memory leaks
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D48DC8680D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2019 15:46:56 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Aug 2019 08:46:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,377,1559545200"; 
+ d="asc'?scan'208";a="178379626"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
+ by orsmga003.jf.intel.com with ESMTP; 12 Aug 2019 08:46:55 -0700
+Message-ID: <96c726571a7372a763db5ac7a6aa447911cb894b.camel@intel.com>
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, netdev@vger.kernel.org
+Date: Mon, 12 Aug 2019 08:46:55 -0700
+In-Reply-To: <20190810101732.26612-15-gregkh@linuxfoundation.org>
+References: <20190810101732.26612-1-gregkh@linuxfoundation.org>
+ <20190810101732.26612-15-gregkh@linuxfoundation.org>
+Organization: Intel
+User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH v3 14/17] fm10k: no need to check
+ return value of debugfs_create functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,66 +65,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: jeffrey.t.kirsher@intel.com
+Cc: intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============5105501147189462697=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In e1000_set_ringparam(), 'tx_old' and 'rx_old' are not deallocated if
-e1000_up() fails, leading to memory leaks. Refactor the code to fix this
-issue.
 
-Signed-off-by: Wenwen Wang <wenwen@cs.uga.edu>
----
- drivers/net/ethernet/intel/e1000/e1000_ethtool.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+--===============5105501147189462697==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-TP5enwrva10FVHjMa2s9"
 
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
-index a410085..2e07ffa 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
-@@ -607,6 +607,7 @@ static int e1000_set_ringparam(struct net_device *netdev,
- 	for (i = 0; i < adapter->num_rx_queues; i++)
- 		rxdr[i].count = rxdr->count;
- 
-+	err = 0;
- 	if (netif_running(adapter->netdev)) {
- 		/* Try to get new resources before deleting old */
- 		err = e1000_setup_all_rx_resources(adapter);
-@@ -627,14 +628,13 @@ static int e1000_set_ringparam(struct net_device *netdev,
- 		adapter->rx_ring = rxdr;
- 		adapter->tx_ring = txdr;
- 		err = e1000_up(adapter);
--		if (err)
--			goto err_setup;
- 	}
- 	kfree(tx_old);
- 	kfree(rx_old);
- 
- 	clear_bit(__E1000_RESETTING, &adapter->flags);
--	return 0;
-+	return err;
-+
- err_setup_tx:
- 	e1000_free_all_rx_resources(adapter);
- err_setup_rx:
-@@ -646,7 +646,6 @@ static int e1000_set_ringparam(struct net_device *netdev,
- err_alloc_tx:
- 	if (netif_running(adapter->netdev))
- 		e1000_up(adapter);
--err_setup:
- 	clear_bit(__E1000_RESETTING, &adapter->flags);
- 	return err;
- }
--- 
-2.7.4
+
+--=-TP5enwrva10FVHjMa2s9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, 2019-08-10 at 12:17 +0200, Greg Kroah-Hartman wrote:
+> When calling debugfs functions, there is no need to ever check the
+> return value.  The function can work or not, but the code logic
+> should
+> never do something different based on this.
+>=20
+> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+> Cc: "David S. Miller" <davem@davemloft.net>
+> Cc: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org
+> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+Acked-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+
+> ---
+>  drivers/net/ethernet/intel/fm10k/fm10k_debugfs.c | 2 --
+>  1 file changed, 2 deletions(-)
+
+
+--=-TP5enwrva10FVHjMa2s9
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl1Rie8ACgkQ5W/vlVpL
+7c6bPg/7BF9EYDdpaiAlL4I8rUBAtfVu37dFgSjiXWwI3QrWhNmVPwWz/jFBnMhO
+CruByStXZ6WX41QmixQtCdhC1KTvDeJZ8vklVCVvrcdnbjOp5klWd/p8Dy5Z6qEO
+U7r/tXI+UlLfCOqYVhL54NWxPoqPQSFQk71w7qCpljOWOKRBWsg2xuFz/IsynD9l
+F4hju6mHAPM+VGj6Q3g1VJFq1ZII954iV2lMqBGCEkQ5k3FSAtwjxqBoeEE4LaSH
+Ku+x6m/VdWy3ffMd7og4Lfqyx90zlda2xMiXIgC1fgAWZexqw8PwnEFD0Z754+4Y
+xhMmZmfchAkHyXbiAme3xGmgHnqwVFl9frJriW3/Adcx6c6a2aqEPjTdklDYv+G9
+zOvdRDdVP+o8hheycYz9kcP0CJb/vwTpbaL521Tz03op8Vxdx9IrvEJdScT3hlI7
+h6s5sQ09FtzZdQYWOcp+8FdH2ELP6tqnfqWUXBLhGLAnUHtdk0eo1NhRNhr3VuuQ
+itruAkQZ5Em3X8vNivC/UMJT6o/z0YsSTZojMbjc6sDOYuPPI5pby16bpgmSZxio
+KWtZv31RGg6Zl2ljw/IW4OWgAO3ifskpUwBHzgHO9aOHF5yaJ/VxPLxTB+wnvBqL
+iCjmI4O6PR3CWo/heNlULWmQl46p5hwylBKOvtSNhhpKcCb5ZNA=
+=FAT3
+-----END PGP SIGNATURE-----
+
+--=-TP5enwrva10FVHjMa2s9--
+
+
+--===============5105501147189462697==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============5105501147189462697==--
+
