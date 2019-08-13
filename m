@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A01F8BF6F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2019 19:11:30 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 637F78BF73
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2019 19:12:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C4FA285E93;
-	Tue, 13 Aug 2019 17:11:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 23153204EF;
+	Tue, 13 Aug 2019 17:12:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y+R+4oXkJ42y; Tue, 13 Aug 2019 17:11:28 +0000 (UTC)
+	with ESMTP id k-zmSBGH8Ca7; Tue, 13 Aug 2019 17:12:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 881398659B;
-	Tue, 13 Aug 2019 17:11:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D2F70204F6;
+	Tue, 13 Aug 2019 17:11:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BE6B71BF41A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:11:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 04BE21BF41A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:11:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B6D728760D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:11:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0209388379
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:11:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SbH5r8TPzpyf for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Aug 2019 17:11:27 +0000 (UTC)
+ with ESMTP id PPsC8wa6wi8v for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Aug 2019 17:11:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 25C93875DC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:11:27 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 94C9985E93
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:11:57 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2019 10:11:26 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2019 10:11:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,382,1559545200"; d="scan'208";a="170459865"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by orsmga008.jf.intel.com with ESMTP; 13 Aug 2019 10:11:26 -0700
-Received: from orsmsx161.amr.corp.intel.com (10.22.240.84) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 13 Aug 2019 10:11:26 -0700
+X-IronPort-AV: E=Sophos;i="5.64,382,1559545200"; d="scan'208";a="176261704"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by fmsmga008.fm.intel.com with ESMTP; 13 Aug 2019 10:11:57 -0700
+Received: from orsmsx159.amr.corp.intel.com (10.22.240.24) by
+ ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 13 Aug 2019 10:11:57 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX161.amr.corp.intel.com ([169.254.4.172]) with mapi id 14.03.0439.000;
- Tue, 13 Aug 2019 10:11:26 -0700
+ ORSMSX159.amr.corp.intel.com ([169.254.11.78]) with mapi id 14.03.0439.000;
+ Tue, 13 Aug 2019 10:11:56 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S27 07/15] ice: Only disable VLAN
- pruning for the VF when all VLANs are removed
-Thread-Index: AQHVTj496k5G4Wkew0KH479Fp69YCab5V7zg
-Date: Tue, 13 Aug 2019 17:11:25 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D41164A@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S27 08/15] ice: Update fields in
+ ice_vsi_set_num_qs when reconfiguring
+Thread-Index: AQHVTj4zHOLgUGoca0u8fbNE4hl6W6b5V+Aw
+Date: Tue, 13 Aug 2019 17:11:56 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D41165A@ORSMSX104.amr.corp.intel.com>
 References: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
- <20190808143938.4968-7-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190808143938.4968-7-anthony.l.nguyen@intel.com>
+ <20190808143938.4968-8-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190808143938.4968-8-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZGQ5MGU2ODAtNDkwZi00OWY3LWE0YTQtZmQ0YTdiODViY2Q5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMTFmdEFHUXJWUCtENzJ4Z1hIOUIxeWtVZDlmcHEwSmhLT0RJeTVoU09kSHlFM2RHb2ZEZTQ0d2lvQkU5K3l6NSJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNTg4MDAzYTYtMTMxYi00ODcxLWJjMGQtM2E3YmJiZWRlOGQyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiY2RCZlFiM2JEUVN3WVNFTlg1aWhtUlwvRnBcL2RVdVwvQkQySFhqcWNOVkxhQUNsTXFhNXkwd0xhUk1CNmJBM2VMRCJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S27 07/15] ice: Only disable VLAN
- pruning for the VF when all VLANs are removed
+Subject: Re: [Intel-wired-lan] [PATCH S27 08/15] ice: Update fields in
+ ice_vsi_set_num_qs when reconfiguring
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,20 +91,20 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, August 8, 2019 7:40 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S27 07/15] ice: Only disable VLAN pruning
-> for the VF when all VLANs are removed
+> Subject: [Intel-wired-lan] [PATCH S27 08/15] ice: Update fields in
+> ice_vsi_set_num_qs when reconfiguring
 > 
 > From: Brett Creeley <brett.creeley@intel.com>
 > 
-> Currently if the VF adds a VLAN, VLAN pruning will be enabled for that VSI.
-> Also, when a VLAN gets deleted it will disable VLAN pruning even if other
-> VLAN(s) exists for the VF. Fix this by only disabling VLAN pruning on the VF
-> VSI when removing the last VF (i.e. vf->num_vlan == 0).
+> Currently when vsi->req_txqs or vsi->req_rxqs are set we don't correctly set
+> the number of vsi->num_q_vectors. Fix this by setting the the number of
+> queue vectors based on the max between the vsi->alloc_txqs and vsi-
+> >alloc_rxqs.
 > 
 > Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_lib.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
