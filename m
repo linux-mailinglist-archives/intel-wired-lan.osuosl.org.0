@@ -1,71 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E97F8BF57
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2019 19:08:29 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CE138BF5D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2019 19:09:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A60438658A;
-	Tue, 13 Aug 2019 17:08:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 45AC5228B3;
+	Tue, 13 Aug 2019 17:09:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QDOl54AP5UKP; Tue, 13 Aug 2019 17:08:27 +0000 (UTC)
+	with ESMTP id XAypWprAJ8aF; Tue, 13 Aug 2019 17:09:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A6BC86610;
-	Tue, 13 Aug 2019 17:08:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7FC7C22DE3;
+	Tue, 13 Aug 2019 17:09:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C66551BF41A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:08:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B1091BF41A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:09:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C27798655C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:08:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 64E9888368
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:09:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hSKAxthsYoZA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Aug 2019 17:08:25 +0000 (UTC)
+ with ESMTP id ncUbp-1ex-zi for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Aug 2019 17:08:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4B62786529
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:08:25 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C0B0588356
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2019 17:08:59 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2019 10:08:22 -0700
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2019 10:08:47 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,382,1559545200"; d="scan'208";a="187837354"
+X-IronPort-AV: E=Sophos;i="5.64,382,1559545200"; d="scan'208";a="187837431"
 Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by orsmga002.jf.intel.com with ESMTP; 13 Aug 2019 10:08:21 -0700
+ by orsmga002.jf.intel.com with ESMTP; 13 Aug 2019 10:08:47 -0700
+Received: from orsmsx121.amr.corp.intel.com (10.22.225.226) by
+ ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 13 Aug 2019 10:08:47 -0700
 Received: from orsmsx104.amr.corp.intel.com ([169.254.4.30]) by
- ORSMSX101.amr.corp.intel.com ([169.254.8.157]) with mapi id 14.03.0439.000;
- Tue, 13 Aug 2019 10:08:21 -0700
+ ORSMSX121.amr.corp.intel.com ([169.254.10.173]) with mapi id 14.03.0439.000;
+ Tue, 13 Aug 2019 10:08:47 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S27 04/15] ice: Rebuild VSI while
- changing queues
-Thread-Index: AQHVTj4t1OSWnXnxEEipQ6egyZqOJab5Vt8g
-Date: Tue, 13 Aug 2019 17:08:21 +0000
-Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D411612@ORSMSX104.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S27 05/15] ice: Report stats when VSI
+ is down
+Thread-Index: AQHVTj4tLXwavtjMjUucy4GjzEGFoqb5Vv5Q
+Date: Tue, 13 Aug 2019 17:08:46 +0000
+Message-ID: <26D9FDECA4FBDD4AADA65D8E2FC68A4A1D411625@ORSMSX104.amr.corp.intel.com>
 References: <20190808143938.4968-1-anthony.l.nguyen@intel.com>
- <20190808143938.4968-4-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190808143938.4968-4-anthony.l.nguyen@intel.com>
+ <20190808143938.4968-5-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190808143938.4968-5-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjdhNmY5ZGYtYjcyNS00Y2IzLThmN2QtNDNkYWI5ZWQyNWIyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiSUlXYUp3STVjc2hCVElHZzlBeFBqblwvUHRpVzJzYTlXRDZcLzlxa3EwcXlsMHExU3VkSnVTRVYwTjNFZWlJcWNwIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTk1YmY5OWYtMWM3NC00ZTUxLWI4Y2UtZmEyYjhhN2JjYmI3IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoia0VmNlNIYjY5TTI3Qk1kSnFcL3JXWUZidWZBeXRQdWdtSHBDcERveUFRM2FVNHlMQmtya2hjZXp0S0pkbnB1QzYifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.0.400.15
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S27 04/15] ice: Rebuild VSI while
- changing queues
+Subject: Re: [Intel-wired-lan] [PATCH S27 05/15] ice: Report stats when VSI
+ is down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,20 +91,22 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, August 8, 2019 7:39 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S27 04/15] ice: Rebuild VSI while changing
-> queues
+> Subject: [Intel-wired-lan] [PATCH S27 05/15] ice: Report stats when VSI is
+> down
 > 
-> From: Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>
+> From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> Currently, while the queues are being changed, the driver rebuilds the VSI
-> only when the netdev is running. However, the driver needs to rebuild the
-> VSI irrespective of the state of netdev. In this way, alloc_txq / alloc_rxq fields
-> of the VSI would be updated correctly.
+> There is currently a check in get_ndo_stats that returns before updating stats
+> if the VSI is down or there are no Tx or Rx queues.  This causes the netdev to
+> report zero stats with the netdev is down.
 > 
-> Signed-off-by: Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>
+> Remove the check so that the behavior of reporting stats is the same as it
+> was in IXGBE.
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 19 ++++++-------------
->  1 file changed, 6 insertions(+), 13 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_main.c | 8 ++++++--
+>  1 file changed, 6 insertions(+), 2 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
