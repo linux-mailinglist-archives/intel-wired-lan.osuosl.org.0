@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 028F78E0B7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 00:31:10 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1419C8E0C2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 00:31:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B016886937;
-	Wed, 14 Aug 2019 22:31:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AFA4C2265B;
+	Wed, 14 Aug 2019 22:31:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7aajitt8wg0L; Wed, 14 Aug 2019 22:31:08 +0000 (UTC)
+	with ESMTP id qwcMgS8+ZdhG; Wed, 14 Aug 2019 22:31:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D652E86936;
-	Wed, 14 Aug 2019 22:31:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3AE792266C;
+	Wed, 14 Aug 2019 22:31:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5EA871BF96B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 47D1F1BF96B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5636885B6F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 44A0985682
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xhr+c+djiHxA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2019 07:28:24 +0000 (UTC)
+ with ESMTP id FCnmzm5wNZoO for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2019 07:28:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C37C485682
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:24 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9B8F98503D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:31 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2019 00:28:24 -0700
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2019 00:28:31 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,384,1559545200"; d="scan'208";a="327923067"
+X-IronPort-AV: E=Sophos;i="5.64,384,1559545200"; d="scan'208";a="327923089"
 Received: from mkarlsso-mobl.ger.corp.intel.com (HELO localhost.localdomain)
  ([10.252.52.109])
- by orsmga004.jf.intel.com with ESMTP; 14 Aug 2019 00:28:18 -0700
+ by orsmga004.jf.intel.com with ESMTP; 14 Aug 2019 00:28:24 -0700
 From: Magnus Karlsson <magnus.karlsson@intel.com>
 To: magnus.karlsson@intel.com, bjorn.topel@intel.com, ast@kernel.org,
  daniel@iogearbox.net, netdev@vger.kernel.org, brouer@redhat.com,
  maximmi@mellanox.com
-Date: Wed, 14 Aug 2019 09:27:19 +0200
-Message-Id: <1565767643-4908-5-git-send-email-magnus.karlsson@intel.com>
+Date: Wed, 14 Aug 2019 09:27:20 +0200
+Message-Id: <1565767643-4908-6-git-send-email-magnus.karlsson@intel.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1565767643-4908-1-git-send-email-magnus.karlsson@intel.com>
 References: <1565767643-4908-1-git-send-email-magnus.karlsson@intel.com>
 X-Mailman-Approved-At: Wed, 14 Aug 2019 22:31:03 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next v4 4/8] ixgbe: add support for
- AF_XDP need_wakeup feature
+Subject: [Intel-wired-lan] [PATCH bpf-next v4 5/8] libbpf: add support for
+ need_wakeup flag in AF_XDP part
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,62 +76,114 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch adds support for the need_wakeup feature of AF_XDP. If the
-application has told the kernel that it might sleep using the new bind
-flag XDP_USE_NEED_WAKEUP, the driver will then set this flag if it has
-no more buffers on the NIC Rx ring and yield to the application. For
-Tx, it will set the flag if it has no outstanding Tx completion
-interrupts and return to the application.
+This commit adds support for the new need_wakeup flag in AF_XDP. The
+xsk_socket__create function is updated to handle this and a new
+function is introduced called xsk_ring_prod__needs_wakeup(). This
+function can be used by the application to check if Rx and/or Tx
+processing needs to be explicitly woken up.
 
 Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ tools/include/uapi/linux/if_xdp.h | 13 +++++++++++++
+ tools/lib/bpf/xsk.c               |  4 ++++
+ tools/lib/bpf/xsk.h               |  6 ++++++
+ 3 files changed, 23 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index e598af9..9a28d98 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -547,6 +547,14 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
- 	q_vector->rx.total_packets += total_rx_packets;
- 	q_vector->rx.total_bytes += total_rx_bytes;
+diff --git a/tools/include/uapi/linux/if_xdp.h b/tools/include/uapi/linux/if_xdp.h
+index faaa5ca..62b80d5 100644
+--- a/tools/include/uapi/linux/if_xdp.h
++++ b/tools/include/uapi/linux/if_xdp.h
+@@ -16,6 +16,15 @@
+ #define XDP_SHARED_UMEM	(1 << 0)
+ #define XDP_COPY	(1 << 1) /* Force copy-mode */
+ #define XDP_ZEROCOPY	(1 << 2) /* Force zero-copy mode */
++/* If this option is set, the driver might go sleep and in that case
++ * the XDP_RING_NEED_WAKEUP flag in the fill and/or Tx rings will be
++ * set. If it is set, the application need to explicitly wake up the
++ * driver with a poll() (Rx and Tx) or sendto() (Tx only). If you are
++ * running the driver and the application on the same core, you should
++ * use this option so that the kernel will yield to the user space
++ * application.
++ */
++#define XDP_USE_NEED_WAKEUP (1 << 3)
  
-+	if (xsk_umem_uses_need_wakeup(rx_ring->xsk_umem)) {
-+		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
-+			xsk_set_rx_need_wakeup(rx_ring->xsk_umem);
-+		else
-+			xsk_clear_rx_need_wakeup(rx_ring->xsk_umem);
+ struct sockaddr_xdp {
+ 	__u16 sxdp_family;
+@@ -25,10 +34,14 @@ struct sockaddr_xdp {
+ 	__u32 sxdp_shared_umem_fd;
+ };
+ 
++/* XDP_RING flags */
++#define XDP_RING_NEED_WAKEUP (1 << 0)
 +
-+		return (int)total_rx_packets;
-+	}
- 	return failure ? budget : (int)total_rx_packets;
- }
+ struct xdp_ring_offset {
+ 	__u64 producer;
+ 	__u64 consumer;
+ 	__u64 desc;
++	__u64 flags;
+ };
  
-@@ -615,6 +623,8 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
- 	if (tx_desc) {
- 		ixgbe_xdp_ring_update_tail(xdp_ring);
- 		xsk_umem_consume_tx_done(xdp_ring->xsk_umem);
-+		if (xsk_umem_uses_need_wakeup(xdp_ring->xsk_umem))
-+			xsk_clear_tx_need_wakeup(xdp_ring->xsk_umem);
+ struct xdp_mmap_offsets {
+diff --git a/tools/lib/bpf/xsk.c b/tools/lib/bpf/xsk.c
+index 680e630..17e8d79 100644
+--- a/tools/lib/bpf/xsk.c
++++ b/tools/lib/bpf/xsk.c
+@@ -224,6 +224,7 @@ int xsk_umem__create(struct xsk_umem **umem_ptr, void *umem_area, __u64 size,
+ 	fill->size = umem->config.fill_size;
+ 	fill->producer = map + off.fr.producer;
+ 	fill->consumer = map + off.fr.consumer;
++	fill->flags = map + off.fr.flags;
+ 	fill->ring = map + off.fr.desc;
+ 	fill->cached_cons = umem->config.fill_size;
+ 
+@@ -241,6 +242,7 @@ int xsk_umem__create(struct xsk_umem **umem_ptr, void *umem_area, __u64 size,
+ 	comp->size = umem->config.comp_size;
+ 	comp->producer = map + off.cr.producer;
+ 	comp->consumer = map + off.cr.consumer;
++	comp->flags = map + off.cr.flags;
+ 	comp->ring = map + off.cr.desc;
+ 
+ 	*umem_ptr = umem;
+@@ -564,6 +566,7 @@ int xsk_socket__create(struct xsk_socket **xsk_ptr, const char *ifname,
+ 		rx->size = xsk->config.rx_size;
+ 		rx->producer = rx_map + off.rx.producer;
+ 		rx->consumer = rx_map + off.rx.consumer;
++		rx->flags = rx_map + off.rx.flags;
+ 		rx->ring = rx_map + off.rx.desc;
  	}
- 
- 	return !!budget && work_done;
-@@ -688,7 +698,15 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
- 	if (xsk_frames)
- 		xsk_umem_complete_tx(umem, xsk_frames);
- 
-+	if (xsk_umem_uses_need_wakeup(tx_ring->xsk_umem)) {
-+		if (tx_ring->next_to_clean == tx_ring->next_to_use)
-+			xsk_set_tx_need_wakeup(tx_ring->xsk_umem);
-+		else
-+			xsk_clear_tx_need_wakeup(tx_ring->xsk_umem);
-+	}
-+
- 	xmit_done = ixgbe_xmit_zc(tx_ring, q_vector->tx.work_limit);
-+
- 	return budget > 0 && xmit_done;
+ 	xsk->rx = rx;
+@@ -583,6 +586,7 @@ int xsk_socket__create(struct xsk_socket **xsk_ptr, const char *ifname,
+ 		tx->size = xsk->config.tx_size;
+ 		tx->producer = tx_map + off.tx.producer;
+ 		tx->consumer = tx_map + off.tx.consumer;
++		tx->flags = tx_map + off.tx.flags;
+ 		tx->ring = tx_map + off.tx.desc;
+ 		tx->cached_cons = xsk->config.tx_size;
+ 	}
+diff --git a/tools/lib/bpf/xsk.h b/tools/lib/bpf/xsk.h
+index 833a6e6..aa1d612 100644
+--- a/tools/lib/bpf/xsk.h
++++ b/tools/lib/bpf/xsk.h
+@@ -32,6 +32,7 @@ struct name { \
+ 	__u32 *producer; \
+ 	__u32 *consumer; \
+ 	void *ring; \
++	__u32 *flags; \
  }
  
+ DEFINE_XSK_RING(xsk_ring_prod);
+@@ -76,6 +77,11 @@ xsk_ring_cons__rx_desc(const struct xsk_ring_cons *rx, __u32 idx)
+ 	return &descs[idx & rx->mask];
+ }
+ 
++static inline int xsk_ring_prod__needs_wakeup(const struct xsk_ring_prod *r)
++{
++	return *r->flags & XDP_RING_NEED_WAKEUP;
++}
++
+ static inline __u32 xsk_prod_nb_free(struct xsk_ring_prod *r, __u32 nb)
+ {
+ 	__u32 free_entries = r->cached_cons - r->cached_prod;
 -- 
 2.7.4
 
