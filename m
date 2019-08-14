@@ -1,80 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31D6B8E0C6
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 00:31:27 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29FDB8E0BB
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 00:31:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D193D2278C;
-	Wed, 14 Aug 2019 22:31:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DBFBB86940;
+	Wed, 14 Aug 2019 22:31:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DYs83G1xaa4z; Wed, 14 Aug 2019 22:31:20 +0000 (UTC)
+	with ESMTP id jp3d7_8Ynebi; Wed, 14 Aug 2019 22:31:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9C03922785;
-	Wed, 14 Aug 2019 22:31:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0AB0786930;
+	Wed, 14 Aug 2019 22:31:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 65E441BF28F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 14:47:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 306BF1BF28F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 14:48:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5F71A87698
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 14:47:30 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 283DD8768A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 14:48:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KnZ5xI9O7A3D for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2019 14:47:29 +0000 (UTC)
+ with ESMTP id G32fwwynv5Uw for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2019 14:48:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 24A848764F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 14:47:29 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id d85so3216129pfd.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:47:29 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8CE688764F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 14:48:30 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id d1so20381574pgp.4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:48:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version; bh=+bfgMzTl7z9Y6DJNVLvjkdqFQ1VmcHfYDw/wszdBB/0=;
- b=X2XwwVDGzuGz6/0z5RsERMw2Ub9WInmFP03LEyT2f8JNPHLqSZkC1LZvgm/52+af65
- O8fZq+T9yx7pplCSHbbzYR8+nx7xz+jYnjtof69KPBkSWaIee+/dS99xQBGyS/Ow2S1v
- ov3ysC1qBNgzPaXlG0a83V6+Vz64OQODczPMlli9/EsaA7SZLREx7nPmD5GawP4MUk8B
- CfMtIuusoNyg+pfMZ7RR/KYwkrjygerAj8MJvBwd+YPOg2lWLeHgl+yQPMru89I6qX9W
- o9gRuz9eJkkcaB3t1uuj+IJCh+yyg1T/iJDO6Qu9tiRo3rZ/eRM5F1vWOGMqIE+w5DyM
- LZxA==
+ :mime-version; bh=S0PKkzS+u3LtwRK0AR6XUJMj1yqa0xdQ2uanteb5fC0=;
+ b=sQM4VfFLvn25TVYXiWOtcjotvAhyTEXVeLfR5u3JjOMA2hJ54Q09fdaIrSCoqwh+LA
+ 07piD3dPQQshVizY5Lon6hvSoABAGnKmiYEIGja0QpGMwN08qZY/i6nPqUTLUDxOGB0S
+ GYNZqYuLrPpQKIkDkzQF6EHQRq2TUm9LQzh3n+MmBo3A4H1w8z/yMgmZHdx+k5AXu71W
+ dEN9ewXfAUXiBZSu4rACdoWk+PXdVU1B3y8yvPYSrfu+p2PrRwabYkDNp7aPs71JDXG8
+ qZjPizmt7qjQxj/6oAmQdDu1p/U6kwQmnYOJd5yh1GrCLH7IGR+ef+nafNiDPdOyB1hw
+ 55aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version;
- bh=+bfgMzTl7z9Y6DJNVLvjkdqFQ1VmcHfYDw/wszdBB/0=;
- b=mua5Bo1RfKO4r8CUXPXYTquoVnKMOLUyKUNNmzz8igonQto+ZlmVmqkv9HiZbe7Vpa
- 6Oee6w5unj543mm4kIJtkdkJl1yJajk/X12CwDAZNRlrjbSnl0AuuaQGNh5X1cUL3Sf2
- JB6TeM7Bdy5KhvePqRU/66Gu+xIas7W8xzrBwK823bIvB07/mBIIlEuAATDX3XeuNOyG
- loBXmiJiursi1pXcFqX6ekVkvci+C3g2qG3pPcullQTJWZFqnJcTvqPbBAy8g9475G8a
- XqpA0LvJFFeZbdH/l8fx0y5abY+3BNy/ML5NYa1KfIrUo74nGtmBW00llDuYhrLZbQwv
- FrUQ==
-X-Gm-Message-State: APjAAAWBRntG538t4+ncbtW4mpI4SgCOCGHVzn3/B2Je6kBk1HPWsU8u
- m4U/tSGRD4B8oA4zLlNLBNA=
-X-Google-Smtp-Source: APXvYqw0WB3o+N7IJOrL257UyMoZNcm9pS+lgtDN+iApwhFzkLAQqG9TZG01NXjoXJ/ZmuPBjD/kOQ==
-X-Received: by 2002:a63:2a08:: with SMTP id q8mr38941051pgq.415.1565794048667; 
- Wed, 14 Aug 2019 07:47:28 -0700 (PDT)
+ bh=S0PKkzS+u3LtwRK0AR6XUJMj1yqa0xdQ2uanteb5fC0=;
+ b=BcaORJGBOm29tEfpABKrHrXHuXFn4yQ9I/qfSGwMUwrOOCbETyhw8pxcE71J0aO203
+ tcsW+0axd2Xvsh1vFf1GfVLlKQ/mWJ1uqNG5xHzpdWvSDLQXRCt4M5CtMZKhmeUX2efo
+ HvWvV4yXH/Ht2CEecOt8VwFqh6CU/z683r9iqApFGFAtFX6uz5xzFOp4XIsyVeuzQARR
+ /Q4ZucC9wOi8FMDpk1/Pbp3HLrfpXYpI8pRPIltyV30nf7vEI9GtlTj8MrVLHE94SFIS
+ FB5FkykslIf+2PLuDTVUzMg6WVt6V7nQFFBZAZhIca//jcR3TpCbUqSUNc6CkC3RMD+s
+ Lbmg==
+X-Gm-Message-State: APjAAAUiHnPnZS15/9Ndvx5cGL7zyv6EZc+mdWIa5mT3Gj35+y83uZOo
+ P2SjCNwsly+XbXS1FVj8kHc=
+X-Google-Smtp-Source: APXvYqwru1vkZWwlBfz7B/06Y+bnrjh88s8RNYiJ5/2hO9wsYeiA2OtcSsBxgwgVwGCzTrUoKgi32Q==
+X-Received: by 2002:a63:6ec1:: with SMTP id
+ j184mr18477470pgc.232.1565794110139; 
+ Wed, 14 Aug 2019 07:48:30 -0700 (PDT)
 Received: from [172.26.122.72] ([2620:10d:c090:180::6327])
- by smtp.gmail.com with ESMTPSA id v184sm12995pfb.82.2019.08.14.07.47.27
+ by smtp.gmail.com with ESMTPSA id 124sm5861pfw.142.2019.08.14.07.48.28
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 14 Aug 2019 07:47:28 -0700 (PDT)
+ Wed, 14 Aug 2019 07:48:29 -0700 (PDT)
 From: "Jonathan Lemon" <jonathan.lemon@gmail.com>
 To: "Magnus Karlsson" <magnus.karlsson@intel.com>
-Date: Wed, 14 Aug 2019 07:47:26 -0700
+Date: Wed, 14 Aug 2019 07:48:28 -0700
 X-Mailer: MailMate (1.12.5r5635)
-Message-ID: <238E96EC-0BE7-461C-8FF8-509997EEBA31@gmail.com>
-In-Reply-To: <1565767643-4908-3-git-send-email-magnus.karlsson@intel.com>
+Message-ID: <3B2C7C21-4AAC-4126-A31D-58A61D941709@gmail.com>
+In-Reply-To: <1565767643-4908-4-git-send-email-magnus.karlsson@intel.com>
 References: <1565767643-4908-1-git-send-email-magnus.karlsson@intel.com>
- <1565767643-4908-3-git-send-email-magnus.karlsson@intel.com>
+ <1565767643-4908-4-git-send-email-magnus.karlsson@intel.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Wed, 14 Aug 2019 22:31:03 +0000
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 2/8] xsk: add support for
- need_wakeup flag in AF_XDP rings
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 3/8] i40e: add support for
+ AF_XDP need_wakeup feature
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,60 +96,51 @@ Cc: axboe@kernel.dk, maximmi@mellanox.com, kevin.laatz@intel.com,
  intel-wired-lan@lists.osuosl.org, brouer@redhat.com,
  bruce.richardson@intel.com, maciej.fijalkowski@intel.com, bpf@vger.kernel.org,
  bjorn.topel@intel.com
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+
+
 On 14 Aug 2019, at 0:27, Magnus Karlsson wrote:
 
-> This commit adds support for a new flag called need_wakeup in the
-> AF_XDP Tx and fill rings. When this flag is set, it means that the
-> application has to explicitly wake up the kernel Rx (for the bit in
-> the fill ring) or kernel Tx (for bit in the Tx ring) processing by
-> issuing a syscall. Poll() can wake up both depending on the flags
-> submitted and sendto() will wake up tx processing only.
->
-> The main reason for introducing this new flag is to be able to
-> efficiently support the case when application and driver is executing
-> on the same core. Previously, the driver was just busy-spinning on the
-> fill ring if it ran out of buffers in the HW and there were none on
-> the fill ring. This approach works when the application is running on
-> another core as it can replenish the fill ring while the driver is
-> busy-spinning. Though, this is a lousy approach if both of them are
-> running on the same core as the probability of the fill ring getting
-> more entries when the driver is busy-spinning is zero. With this new
-> feature the driver now sets the need_wakeup flag and returns to the
-> application. The application can then replenish the fill queue and
-> then explicitly wake up the Rx processing in the kernel using the
-> syscall poll(). For Tx, the flag is only set to one if the driver has
-> no outstanding Tx completion interrupts. If it has some, the flag is
-> zero as it will be woken up by a completion interrupt anyway.
->
-> As a nice side effect, this new flag also improves the performance of
-> the case where application and driver are running on two different
-> cores as it reduces the number of syscalls to the kernel. The kernel
-> tells user space if it needs to be woken up by a syscall, and this
-> eliminates many of the syscalls.
->
-> This flag needs some simple driver support. If the driver does not
-> support this, the Rx flag is always zero and the Tx flag is always
-> one. This makes any application relying on this feature default to the
-> old behaviour of not requiring any syscalls in the Rx path and always
-> having to call sendto() in the Tx path.
->
-> For backwards compatibility reasons, this feature has to be explicitly
-> turned on using a new bind flag (XDP_USE_NEED_WAKEUP). I recommend
-> that you always turn it on as it so far always have had a positive
-> performance impact.
->
-> The name and inspiration of the flag has been taken from io_uring by
-> Jens Axboe. Details about this feature in io_uring can be found in
-> http://kernel.dk/io_uring.pdf, section 8.3.
+> This patch adds support for the need_wakeup feature of AF_XDP. If the
+> application has told the kernel that it might sleep using the new bind
+> flag XDP_USE_NEED_WAKEUP, the driver will then set this flag if it has
+> no more buffers on the NIC Rx ring and yield to the application. For
+> Tx, it will set the flag if it has no outstanding Tx completion
+> interrupts and return to the application.
 >
 > Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c 
+> b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> index d0ff5d8..42c9012 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> @@ -626,6 +626,15 @@ int i40e_clean_rx_irq_zc(struct i40e_ring 
+> *rx_ring, int budget)
+>
+>  	i40e_finalize_xdp_rx(rx_ring, xdp_xmit);
+>  	i40e_update_rx_stats(rx_ring, total_rx_bytes, total_rx_packets);
+> +
+> +	if (xsk_umem_uses_need_wakeup(rx_ring->xsk_umem)) {
+> +		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
+> +			xsk_set_rx_need_wakeup(rx_ring->xsk_umem);
+> +		else
+> +			xsk_clear_rx_need_wakeup(rx_ring->xsk_umem);
+> +
+> +		return (int)total_rx_packets;
+> +	}
+>  	return failure ? budget : (int)total_rx_packets;
 
-Acked-by: Jonathan Lemon <jonathan.lemon@gmail.com>
+Can you elaborate why we're not returning the total budget on failure
+for the wakeup case?
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
