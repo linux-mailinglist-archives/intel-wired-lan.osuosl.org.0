@@ -1,57 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D0778E0B5
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 787A98E0B6
 	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 00:31:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B579D877E0;
-	Wed, 14 Aug 2019 22:31:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 24341854D0;
+	Wed, 14 Aug 2019 22:31:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e37pWQekny0N; Wed, 14 Aug 2019 22:31:07 +0000 (UTC)
+	with ESMTP id RjmhAGNDbQJr; Wed, 14 Aug 2019 22:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B0607877D0;
-	Wed, 14 Aug 2019 22:31:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 013C086930;
+	Wed, 14 Aug 2019 22:31:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 060831BF96B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:27:59 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C07F1BF96B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E7C0287FCF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:27:59 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 08A1D204CD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cumehrPrI7Rl for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2019 07:27:59 +0000 (UTC)
+ with ESMTP id cmMsZAnNWZNR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2019 07:28:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D7B0F87FB2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:27:58 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5032C204AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2019 07:28:05 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2019 00:27:58 -0700
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2019 00:28:04 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,384,1559545200"; d="scan'208";a="327922945"
+X-IronPort-AV: E=Sophos;i="5.64,384,1559545200"; d="scan'208";a="327922995"
 Received: from mkarlsso-mobl.ger.corp.intel.com (HELO localhost.localdomain)
  ([10.252.52.109])
- by orsmga004.jf.intel.com with ESMTP; 14 Aug 2019 00:27:51 -0700
+ by orsmga004.jf.intel.com with ESMTP; 14 Aug 2019 00:27:57 -0700
 From: Magnus Karlsson <magnus.karlsson@intel.com>
 To: magnus.karlsson@intel.com, bjorn.topel@intel.com, ast@kernel.org,
  daniel@iogearbox.net, netdev@vger.kernel.org, brouer@redhat.com,
  maximmi@mellanox.com
-Date: Wed, 14 Aug 2019 09:27:15 +0200
-Message-Id: <1565767643-4908-1-git-send-email-magnus.karlsson@intel.com>
+Date: Wed, 14 Aug 2019 09:27:16 +0200
+Message-Id: <1565767643-4908-2-git-send-email-magnus.karlsson@intel.com>
 X-Mailer: git-send-email 2.7.4
-MIME-Version: 1.0
+In-Reply-To: <1565767643-4908-1-git-send-email-magnus.karlsson@intel.com>
+References: <1565767643-4908-1-git-send-email-magnus.karlsson@intel.com>
 X-Mailman-Approved-At: Wed, 14 Aug 2019 22:31:03 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next v4 0/8] add need_wakeup flag to
- the AF_XDP rings
+Subject: [Intel-wired-lan] [PATCH bpf-next v4 1/8] xsk: replace
+ ndo_xsk_async_xmit with ndo_xsk_wakeup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,152 +70,272 @@ Cc: axboe@kernel.dk, maciejromanfijalkowski@gmail.com, kevin.laatz@intel.com,
  ciara.loftus@intel.com, ilias.apalodimas@linaro.org, xiaolong.ye@intel.com,
  jonathan.lemon@gmail.com, qi.z.zhang@intel.com, maciej.fijalkowski@intel.com,
  bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VGhpcyBwYXRjaCBzZXQgYWRkcyBzdXBwb3J0IGZvciBhIG5ldyBmbGFnIGNhbGxlZCBuZWVkX3dh
-a2V1cCBpbiB0aGUKQUZfWERQIFR4IGFuZCBmaWxsIHJpbmdzLiBXaGVuIHRoaXMgZmxhZyBpcyBz
-ZXQgYnkgdGhlIGRyaXZlciwgaXQKbWVhbnMgdGhhdCB0aGUgYXBwbGljYXRpb24gaGFzIHRvIGV4
-cGxpY2l0bHkgd2FrZSB1cCB0aGUga2VybmVsIFJ4Cihmb3IgdGhlIGJpdCBpbiB0aGUgZmlsbCBy
-aW5nKSBvciBrZXJuZWwgVHggKGZvciBiaXQgaW4gdGhlIFR4IHJpbmcpCnByb2Nlc3NpbmcgYnkg
-aXNzdWluZyBhIHN5c2NhbGwuIFBvbGwoKSBjYW4gd2FrZSB1cCBib3RoIGFuZCBzZW5kdG8oKQp3
-aWxsIHdha2UgdXAgVHggcHJvY2Vzc2luZyBvbmx5LgoKVGhlIG1haW4gcmVhc29uIGZvciBpbnRy
-b2R1Y2luZyB0aGlzIG5ldyBmbGFnIGlzIHRvIGJlIGFibGUgdG8KZWZmaWNpZW50bHkgc3VwcG9y
-dCB0aGUgY2FzZSB3aGVuIGFwcGxpY2F0aW9uIGFuZCBkcml2ZXIgaXMgZXhlY3V0aW5nCm9uIHRo
-ZSBzYW1lIGNvcmUuIFByZXZpb3VzbHksIHRoZSBkcml2ZXIgd2FzIGp1c3QgYnVzeS1zcGlubmlu
-ZyBvbiB0aGUKZmlsbCByaW5nIGlmIGl0IHJhbiBvdXQgb2YgYnVmZmVycyBpbiB0aGUgSFcgYW5k
-IHRoZXJlIHdlcmUgbm9uZSB0bwpnZXQgZnJvbSB0aGUgZmlsbCByaW5nLiBUaGlzIGFwcHJvYWNo
-IHdvcmtzIHdoZW4gdGhlIGFwcGxpY2F0aW9uIGFuZApkcml2ZXIgaXMgcnVubmluZyBvbiBkaWZm
-ZXJlbnQgY29yZXMgYXMgdGhlIGFwcGxpY2F0aW9uIGNhbiByZXBsZW5pc2gKdGhlIGZpbGwgcmlu
-ZyB3aGlsZSB0aGUgZHJpdmVyIGlzIGJ1c3ktc3Bpbm5pbmcuIFRob3VnaCwgdGhpcyBpcyBhCmxv
-dXN5IGFwcHJvYWNoIGlmIGJvdGggb2YgdGhlbSBhcmUgcnVubmluZyBvbiB0aGUgc2FtZSBjb3Jl
-IGFzIHRoZQpwcm9iYWJpbGl0eSBvZiB0aGUgZmlsbCByaW5nIGdldHRpbmcgbW9yZSBlbnRyaWVz
-IHdoZW4gdGhlIGRyaXZlciBpcwpidXN5LXNwaW5uaW5nIGlzIHplcm8uIFdpdGggdGhpcyBuZXcg
-ZmVhdHVyZSB0aGUgZHJpdmVyIG5vdyBzZXRzIHRoZQpuZWVkX3dha2V1cCBmbGFnIGFuZCByZXR1
-cm5zIHRvIHRoZSBhcHBsaWNhdGlvbi4gVGhlIGFwcGxpY2F0aW9uIGNhbgp0aGVuIHJlcGxlbmlz
-aCB0aGUgZmlsbCBxdWV1ZSBhbmQgdGhlbiBleHBsaWNpdGx5IHdha2UgdXAgdGhlIFJ4CnByb2Nl
-c3NpbmcgaW4gdGhlIGtlcm5lbCB1c2luZyB0aGUgc3lzY2FsbCBwb2xsKCkuIEZvciBUeCwgdGhl
-IGZsYWcgaXMKb25seSBzZXQgdG8gb25lIGlmIHRoZSBkcml2ZXIgaGFzIG5vIG91dHN0YW5kaW5n
-IFR4IGNvbXBsZXRpb24KaW50ZXJydXB0cy4gSWYgaXQgaGFzIHNvbWUsIHRoZSBmbGFnIGlzIHpl
-cm8gYXMgaXQgd2lsbCBiZSB3b2tlbiB1cCBieQphIGNvbXBsZXRpb24gaW50ZXJydXB0IGFueXdh
-eS4gVGhpcyBmbGFnIGNhbiBhbHNvIGJlIHVzZWQgaW4gb3RoZXIKc2l0dWF0aW9ucyB3aGVyZSB0
-aGUgZHJpdmVyIG5lZWRzIHRvIGJlIHdva2VuIHVwIGV4cGxpY2l0bHkuCgpBcyBhIG5pY2Ugc2lk
-ZSBlZmZlY3QsIHRoaXMgbmV3IGZsYWcgYWxzbyBpbXByb3ZlcyB0aGUgVHggcGVyZm9ybWFuY2UK
-b2YgdGhlIGNhc2Ugd2hlcmUgYXBwbGljYXRpb24gYW5kIGRyaXZlciBhcmUgcnVubmluZyBvbiB0
-d28gZGlmZmVyZW50CmNvcmVzIGFzIGl0IHJlZHVjZXMgdGhlIG51bWJlciBvZiBzeXNjYWxscyB0
-byB0aGUga2VybmVsLiBUaGUga2VybmVsCnRlbGxzIHVzZXIgc3BhY2UgaWYgaXQgbmVlZHMgdG8g
-YmUgd29rZW4gdXAgYnkgYSBzeXNjYWxsLCBhbmQgdGhpcwplbGltaW5hdGVzIG1hbnkgb2YgdGhl
-IHN5c2NhbGxzLiBUaGUgUnggcGVyZm9ybWFuY2Ugb2YgdGhlIDItY29yZSBjYXNlCmlzIG9uIHRo
-ZSBvdGhlciBoYW5kIHNsaWdodGx5IHdvcnNlLCBzaW5jZSB0aGVyZSBpcyBhIG5lZWQgdG8gdXNl
-IGEKc3lzY2FsbCBub3cgdG8gd2FrZSB1cCB0aGUgZHJpdmVyLCBpbnN0ZWFkIG9mIHRoZSBkcml2
-ZXIKYnVzeS1zcGlubmluZy4gSXQgZG9lcyB3YXN0ZSBsZXNzIENQVSBjeWNsZXMgdGhvdWdoLCB3
-aGljaCBtaWdodCBsZWFkCnRvIGJldHRlciBvdmVyYWxsIHN5c3RlbSBwZXJmb3JtYW5jZS4KClRo
-aXMgbmV3IGZsYWcgbmVlZHMgc29tZSBzaW1wbGUgZHJpdmVyIHN1cHBvcnQuIElmIHRoZSBkcml2
-ZXIgZG9lcyBub3QKc3VwcG9ydCBpdCwgdGhlIFJ4IGZsYWcgaXMgYWx3YXlzIHplcm8gYW5kIHRo
-ZSBUeCBmbGFnIGlzIGFsd2F5cwpvbmUuIFRoaXMgbWFrZXMgYW55IGFwcGxpY2F0aW9uIHJlbHlp
-bmcgb24gdGhpcyBmZWF0dXJlIGRlZmF1bHQgdG8gdGhlCm9sZCBiZWhhdmlvciBvZiBub3QgcmVx
-dWlyaW5nIGFueSBzeXNjYWxscyBpbiB0aGUgUnggcGF0aCBhbmQgYWx3YXlzCmhhdmluZyB0byBj
-YWxsIHNlbmR0bygpIGluIHRoZSBUeCBwYXRoLgoKRm9yIGJhY2t3YXJkcyBjb21wYXRpYmlsaXR5
-IHJlYXNvbnMsIHRoaXMgZmVhdHVyZSBoYXMgdG8gYmUgZXhwbGljaXRseQp0dXJuZWQgb24gdXNp
-bmcgYSBuZXcgYmluZCBmbGFnIChYRFBfVVNFX05FRURfV0FLRVVQKS4gSSByZWNvbW1lbmQKdGhh
-dCB5b3UgYWx3YXlzIHR1cm4gaXQgb24gYXMgaXQgaGFzIGEgbGFyZ2UgcG9zaXRpdmUgcGVyZm9y
-bWFuY2UKaW1wYWN0IGZvciB0aGUgb25lIGNvcmUgY2FzZSBhbmQgZG9lcyBub3QgZGVncmFkZSAy
-IGNvcmUgcGVyZm9ybWFuY2UKYW5kIGFjdHVhbGx5IGltcHJvdmVzIGl0IGZvciBUeCBoZWF2eSB3
-b3JrbG9hZHMuCgpIZXJlIGFyZSBzb21lIHBlcmZvcm1hbmNlIG51bWJlcnMgbWVhc3VyZWQgb24g
-bXkgbG9jYWwsCm5vbi1wZXJmb3JtYW5jZSBvcHRpbWl6ZWQgZGV2ZWxvcG1lbnQgc3lzdGVtLiBU
-aGF0IGlzIHdoeSB5b3UgYXJlCnNlZWluZyBudW1iZXJzIGxvd2VyIHRoYW4gdGhlIG9uZXMgZnJv
-bSBCasO2cm4gYW5kIEplc3Blci4gNjQgYnl0ZQpwYWNrZXRzIGF0IDQwR2JpdC9zIGxpbmUgcmF0
-ZS4gQWxsIHJlc3VsdHMgaW4gTXBwcy4gQ29yZXMgPT0gMSBtZWFucwp0aGF0IGJvdGggYXBwbGlj
-YXRpb24gYW5kIGRyaXZlciBpcyBleGVjdXRpbmcgb24gdGhlIHNhbWUgY29yZS4gQ29yZXMKPT0g
-MiB0aGF0IHRoZXkgYXJlIG9uIGRpZmZlcmVudCBjb3Jlcy4KCiAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIEFwcGxpY2F0aW9ucwpuZWVkX3dha2V1cCAgY29yZXMgICAgdHhwdXNoICAgIHJ4
-ZHJvcCAgICAgIGwyZndkCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogICAgIG4gICAgICAgICAxICAgICAgIDAuMDcgICAgICAw
-LjA2ICAgICAgICAwLjAzCiAgICAgeSAgICAgICAgIDEgICAgICAgMjEuNiAgICAgIDguMiAgICAg
-ICAgIDYuNQogICAgIG4gICAgICAgICAyICAgICAgIDMyLjMgICAgICAxMS43ICAgICAgICA4LjcK
-ICAgICB5ICAgICAgICAgMiAgICAgICAzMy4xICAgICAgMTEuNyAgICAgICAgOC43CgpPdmVyYWxs
-LCB0aGUgbmVlZF93YWtldXAgZmxhZyBwcm92aWRlcyB0aGUgc2FtZSBvciBiZXR0ZXIgcGVyZm9y
-bWFuY2UKaW4gYWxsIHRoZSBtaWNyby1iZW5jaG1hcmtzLiBUaGUgcmVkdWN0aW9uIG9mIHNlbmR0
-bygpIGNhbGxzIGluIHR4cHVzaAppcyBsYXJnZS4gT25seSBhIGZldyBwZXIgc2Vjb25kIGlzIG5l
-ZWRlZC4gRm9yIGwyZndkLCB0aGUgZHJvcCBpcyA1MCUKZm9yIHRoZSAxIGNvcmUgY2FzZSBhbmQg
-bW9yZSB0aGFuIDk5LjklIGZvciB0aGUgMiBjb3JlIGNhc2UuIERvIG5vdAprbm93IHdoeSBJIGFt
-IG5vdCBzZWVpbmcgdGhlIHNhbWUgZHJvcCBmb3IgdGhlIDEgY29yZSBjYXNlIHlldC4KClRoZSBu
-YW1lIGFuZCBpbnNwaXJhdGlvbiBvZiB0aGUgZmxhZyBoYXMgYmVlbiB0YWtlbiBmcm9tIGlvX3Vy
-aW5nIGJ5CkplbnMgQXhib2UuIERldGFpbHMgYWJvdXQgdGhpcyBmZWF0dXJlIGluIGlvX3VyaW5n
-IGNhbiBiZSBmb3VuZCBpbgpodHRwOi8va2VybmVsLmRrL2lvX3VyaW5nLnBkZiwgc2VjdGlvbiA4
-LjMuIEl0IGFsc28gYWRkcmVzc2VzIG1vc3Qgb2YKdGhlIGRlbmlhbCBvZiBzZXJ2aWNlIGFuZCBz
-ZW5kdG8oKSBjb25jZXJucyByYWlzZWQgYnkgTWF4aW0KTWlraXR5YW5za2l5IGluIGh0dHBzOi8v
-d3d3LnNwaW5pY3MubmV0L2xpc3RzL25ldGRldi9tc2c1NTQ2NTcuaHRtbC4KClRoZSB0eXBpY2Fs
-IFR4IHBhcnQgb2YgYW4gYXBwbGljYXRpb24gd2lsbCBoYXZlIHRvIGNoYW5nZSBmcm9tOgoKcmV0
-ID0gc2VuZHRvKGZkLC4uLi4pCgp0bzoKCmlmICh4c2tfcmluZ19wcm9kX19uZWVkc193YWtldXAo
-Jnhzay0+dHgpKQogICAgICAgcmV0ID0gc2VuZHRvKGZkLC4uLi4pCgphbmQgdGggUnggcGFydCBm
-cm9tOgoKcmN2ZCA9IHhza19yaW5nX2NvbnNfX3BlZWsoJnhzay0+cngsIEJBVENIX1NJWkUsICZp
-ZHhfcngpOwppZiAoIXJjdmQpCiAgICAgICByZXR1cm47Cgp0bzoKCnJjdmQgPSB4c2tfcmluZ19j
-b25zX19wZWVrKCZ4c2stPnJ4LCBCQVRDSF9TSVpFLCAmaWR4X3J4KTsKaWYgKCFyY3ZkKSB7CiAg
-ICAgICBpZiAoeHNrX3JpbmdfcHJvZF9fbmVlZHNfd2FrZXVwKCZ4c2stPnVtZW0tPmZxKSkKICAg
-ICAgICAgICAgICByZXQgPSBwb2xsKGZkLC4uLi4uKTsKICAgICAgIHJldHVybjsKfQoKdjMgLT4g
-djQ6CiogTWF4aW0gZm91bmQgYSBwb3NzaWJsZSByYWNlIGluIHRoZSBUeCBwYXJ0IG9mIHRoZSBk
-cml2ZXIuIFRoZQogIHNldHRpbmcgb2YgdGhlIGZsYWcgbmVlZHMgdG8gaGFwcGVuIGJlZm9yZSB0
-aGUgc2VuZGluZywgb3RoZXJ3aXNlIGl0CiAgbWlnaHQgdHJpZ2dlciB0aGlzIHJhY2UuIEZpeGVk
-IGluIGl4Z2JlIGFuZCBpNDBlIGRyaXZlci4KKiBNZWxsYW5veCBzdXBwb3J0IGNvbnRyaWJ1dGVk
-IGJ5IE1heGltCiogUmVtb3ZlZCB0aGUgWFNLX0RSVl9DQU5fU0xFRVAgZmxhZyBhcyBpdCB3YXMg
-bm90IHVzZWQKICBhbnltb3JlLiBUaGFua3MgdG8gU3JpZGhhciBmb3IgZGlzY292ZXJpbmcgdGhp
-cy4KKiBGb3IgY29uc2lzdGVuY3kgdGhlIGZlYXR1cmUgaXMgbm93IGFsd2F5cyBjYWxsZWQgbmVl
-ZF93YWtldXAuIFRoZXJlCiAgd2VyZSBzb21lIHBsYWNlcyB3aGVyZSBpdCB3YXMgcmVmZXJyZWQg
-dG8gYXMgbWlnaHRfc2xlZXAsIGJ1dCB0aGV5CiAgaGF2ZSBiZWVuIHJlbW92ZWQuIFRoYW5rcyB0
-byBTcmlkaGFyIGZvciBzcG90dGluZy4KKiBGaXhlZCBzb21lIHR5cG9zIGluIHRoZSBjb21taXQg
-bWVzc2FnZXMKCnYyIC0+IHYzOgoqIENvbnZlcnRlZCB0aGUgTWVsbGFub3ggZHJpdmVyIHRvIHRo
-ZSBuZXcgbmRvIGluIHBhdGNoIDEgYXMgcG9pbnRlZCBvdXQKICBieSBNYXhpbQoqIEZpeGVkIHRo
-ZSBjb21wYXRpYmlsaXR5IGNvZGUgb2YgWERQX01NQVBfT0ZGU0VUUyBzbyBpdCBub3cgd29ya3Mu
-Cgp2MSAtPiB2MjoKKiBGaXhlZCBiaXNlY3RhYmlsaXR5IHByb2JsZW0gcG9pbnRlZCBvdXQgYnkg
-SmFrdWIKKiBBZGRlZCBtaXNzaW5nIGluaXRpbGl6dGlvbiBvZiB0aGUgVHggbmVlZF93YWtldXAg
-ZmxhZyB0byAxCgpUaGlzIHBhdGNoIGhhcyBiZWVuIGFwcGxpZWQgYWdhaW5zdCBjb21taXQgYjc1
-M2M1YTdmOTlmICgiTWVyZ2UgYnJhbmNoICdyODE1Mi1SWC1pbXByb3ZlJyIpCgpTdHJ1Y3R1cmUg
-b2YgdGhlIHBhdGNoIHNldDoKClBhdGNoIDE6IFJlcGxhY2VzIHRoZSBuZG9feHNrX2FzeW5jX3ht
-aXQgd2l0aCBuZG9feHNrX3dha2V1cCB0bwogICAgICAgICBzdXBwb3J0IHdha2luZyB1cCBib3Ro
-IFJ4IGFuZCBUeCBwcm9jZXNzaW5nClBhdGNoIDI6IEltcGxlbWVudHMgdGhlIG5lZWRfd2FrZXVw
-IGZ1bmN0aW9uYWxpdHkgaW4gY29tbW9uIGNvZGUKUGF0Y2ggMy00OiBBZGQgbmVlZF93YWtldXAg
-c3VwcG9ydCB0byB0aGUgaTQwZSBhbmQgaXhnYmUgZHJpdmVycwpQYXRjaCA1OiBBZGQgbmVlZF93
-YWtldXAgc3VwcG9ydCB0byBsaWJicGYKUGF0Y2ggNjogQWRkIG5lZWRfd2FrZXVwIHN1cHBvcnQg
-dG8gdGhlIHhkcHNvY2sgc2FtcGxlIGFwcGxpY2F0aW9uClBhdGNoIDctODogQWRkIG5lZWRfd2Fr
-ZXVwIHN1cHBvcnQgdG8gdGhlIE1lbGxhbm94IG1seDUgZHJpdmVyCgpUaGFua3M6IE1hZ251cwoK
-TWFnbnVzIEthcmxzc29uICg2KToKICB4c2s6IHJlcGxhY2UgbmRvX3hza19hc3luY194bWl0IHdp
-dGggbmRvX3hza193YWtldXAKICB4c2s6IGFkZCBzdXBwb3J0IGZvciBuZWVkX3dha2V1cCBmbGFn
-IGluIEFGX1hEUCByaW5ncwogIGk0MGU6IGFkZCBzdXBwb3J0IGZvciBBRl9YRFAgbmVlZF93YWtl
-dXAgZmVhdHVyZQogIGl4Z2JlOiBhZGQgc3VwcG9ydCBmb3IgQUZfWERQIG5lZWRfd2FrZXVwIGZl
-YXR1cmUKICBsaWJicGY6IGFkZCBzdXBwb3J0IGZvciBuZWVkX3dha2V1cCBmbGFnIGluIEFGX1hE
-UCBwYXJ0CiAgc2FtcGxlcy9icGY6IGFkZCB1c2Ugb2YgbmVlZF93YWtldXAgZmxhZyBpbiB4ZHBz
-b2NrCgpNYXhpbSBNaWtpdHlhbnNraXkgKDIpOgogIG5ldC9tbHg1ZTogTW92ZSB0aGUgU1cgWFNL
-IGNvZGUgZnJvbSBOQVBJIHBvbGwgdG8gYSBzZXBhcmF0ZSBmdW5jdGlvbgogIG5ldC9tbHg1ZTog
-QWRkIEFGX1hEUCBuZWVkX3dha2V1cCBzdXBwb3J0CgogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaTQwZS9pNDBlX21haW4uYyAgICAgICAgfCAgIDUgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2k0MGUvaTQwZV94c2suYyAgICAgICAgIHwgIDI1ICsrLQogZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5oICAgICAgICAgfCAgIDIgKy0KIGRyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYyAgICAgIHwgICA1ICstCiAuLi4vbmV0
-L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3R4cnhfY29tbW9uLmggICB8ICAgMiArLQogZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMgICAgICAgfCAgMjIgKyst
-CiAuLi4vbmV0L2V0aGVybmV0L21lbGxhbm94L21seDUvY29yZS9lbi94c2svcnguaCAgICB8ICAx
-NCArKwogLi4uL25ldC9ldGhlcm5ldC9tZWxsYW5veC9tbHg1L2NvcmUvZW4veHNrL3R4LmMgICAg
-fCAgIDIgKy0KIC4uLi9uZXQvZXRoZXJuZXQvbWVsbGFub3gvbWx4NS9jb3JlL2VuL3hzay90eC5o
-ICAgIHwgIDE0ICstCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWxsYW5veC9tbHg1L2NvcmUvZW5f
-bWFpbi5jICB8ICAgMiArLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVsbGFub3gvbWx4NS9jb3Jl
-L2VuX3J4LmMgICAgfCAgIDcgKy0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L21lbGxhbm94L21seDUv
-Y29yZS9lbl90eHJ4LmMgIHwgIDI3ICsrLQogaW5jbHVkZS9saW51eC9uZXRkZXZpY2UuaCAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgMTQgKy0KIGluY2x1ZGUvbmV0L3hkcF9zb2NrLmggICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDMzICsrKy0KIGluY2x1ZGUvdWFwaS9saW51eC9p
-Zl94ZHAuaCAgICAgICAgICAgICAgICAgICAgICAgIHwgIDEzICsrCiBuZXQveGRwL3hkcF91bWVt
-LmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAxMiArLQogbmV0L3hkcC94c2su
-YyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAxNDkgKysrKysrKysrKysr
-Ky0tLQogbmV0L3hkcC94c2suaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-fCAgMTMgKysKIG5ldC94ZHAveHNrX3F1ZXVlLmggICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIHwgICAxICsKIHNhbXBsZXMvYnBmL3hkcHNvY2tfdXNlci5jICAgICAgICAgICAgICAgICAg
-ICAgICAgIHwgMTkyICsrKysrKysrKysrKystLS0tLS0tLQogdG9vbHMvaW5jbHVkZS91YXBpL2xp
-bnV4L2lmX3hkcC5oICAgICAgICAgICAgICAgICAgfCAgMTMgKysKIHRvb2xzL2xpYi9icGYveHNr
-LmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0ICsKIHRvb2xzL2xpYi9icGYv
-eHNrLmggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA2ICsKIDIzIGZpbGVzIGNo
-YW5nZWQsIDQ2MiBpbnNlcnRpb25zKCspLCAxMTUgZGVsZXRpb25zKC0pCgotLQoyLjcuNApfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
-YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
-b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+This commit replaces ndo_xsk_async_xmit with ndo_xsk_wakeup. This new
+ndo provides the same functionality as before but with the addition of
+a new flags field that is used to specifiy if Rx, Tx or both should be
+woken up. The previous ndo only woke up Tx, as implied by the
+name. The i40e and ixgbe drivers (which are all the supported ones)
+are updated with this new interface.
+
+This new ndo will be used by the new need_wakeup functionality of XDP
+sockets that need to be able to wake up both Rx and Tx driver
+processing.
+
+Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c          |  5 +++--
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c           |  7 ++++---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.h           |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c        |  5 +++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c         |  4 ++--
+ drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c  |  2 +-
+ drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.h  |  2 +-
+ drivers/net/ethernet/mellanox/mlx5/core/en_main.c    |  2 +-
+ include/linux/netdevice.h                            | 14 ++++++++++++--
+ net/xdp/xdp_umem.c                                   |  3 +--
+ net/xdp/xsk.c                                        |  3 ++-
+ 12 files changed, 32 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 6d456e5..a75c66c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -12570,7 +12570,8 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi,
+ 	if (need_reset && prog)
+ 		for (i = 0; i < vsi->num_queue_pairs; i++)
+ 			if (vsi->xdp_rings[i]->xsk_umem)
+-				(void)i40e_xsk_async_xmit(vsi->netdev, i);
++				(void)i40e_xsk_wakeup(vsi->netdev, i,
++						      XDP_WAKEUP_RX);
+ 
+ 	return 0;
+ }
+@@ -12892,7 +12893,7 @@ static const struct net_device_ops i40e_netdev_ops = {
+ 	.ndo_bridge_setlink	= i40e_ndo_bridge_setlink,
+ 	.ndo_bpf		= i40e_xdp,
+ 	.ndo_xdp_xmit		= i40e_xdp_xmit,
+-	.ndo_xsk_async_xmit	= i40e_xsk_async_xmit,
++	.ndo_xsk_wakeup	        = i40e_xsk_wakeup,
+ 	.ndo_dfwd_add_station	= i40e_fwd_add,
+ 	.ndo_dfwd_del_station	= i40e_fwd_del,
+ };
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 32bad01..d0ff5d8 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -116,7 +116,7 @@ static int i40e_xsk_umem_enable(struct i40e_vsi *vsi, struct xdp_umem *umem,
+ 			return err;
+ 
+ 		/* Kick start the NAPI context so that receiving will start */
+-		err = i40e_xsk_async_xmit(vsi->netdev, qid);
++		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
+ 		if (err)
+ 			return err;
+ 	}
+@@ -765,13 +765,14 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
+ }
+ 
+ /**
+- * i40e_xsk_async_xmit - Implements the ndo_xsk_async_xmit
++ * i40e_xsk_wakeup - Implements the ndo_xsk_wakeup
+  * @dev: the netdevice
+  * @queue_id: queue id to wake up
++ * @flags: ignored in our case since we have Rx and Tx in the same NAPI.
+  *
+  * Returns <0 for errors, 0 otherwise.
+  **/
+-int i40e_xsk_async_xmit(struct net_device *dev, u32 queue_id)
++int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
+ {
+ 	struct i40e_netdev_priv *np = netdev_priv(dev);
+ 	struct i40e_vsi *vsi = np->vsi;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.h b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
+index 8cc0a2e..9ed59c1 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
+@@ -18,6 +18,6 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget);
+ 
+ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
+ 			   struct i40e_ring *tx_ring, int napi_budget);
+-int i40e_xsk_async_xmit(struct net_device *dev, u32 queue_id);
++int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
+ 
+ #endif /* _I40E_XSK_H_ */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index dc7b128..05729b4 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -10263,7 +10263,8 @@ static int ixgbe_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
+ 	if (need_reset && prog)
+ 		for (i = 0; i < adapter->num_rx_queues; i++)
+ 			if (adapter->xdp_ring[i]->xsk_umem)
+-				(void)ixgbe_xsk_async_xmit(adapter->netdev, i);
++				(void)ixgbe_xsk_wakeup(adapter->netdev, i,
++						       XDP_WAKEUP_RX);
+ 
+ 	return 0;
+ }
+@@ -10382,7 +10383,7 @@ static const struct net_device_ops ixgbe_netdev_ops = {
+ 	.ndo_features_check	= ixgbe_features_check,
+ 	.ndo_bpf		= ixgbe_xdp,
+ 	.ndo_xdp_xmit		= ixgbe_xdp_xmit,
+-	.ndo_xsk_async_xmit	= ixgbe_xsk_async_xmit,
++	.ndo_xsk_wakeup         = ixgbe_xsk_wakeup,
+ };
+ 
+ static void ixgbe_disable_txr_hw(struct ixgbe_adapter *adapter,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+index d93a690..6d01700 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+@@ -42,7 +42,7 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ void ixgbe_xsk_clean_rx_ring(struct ixgbe_ring *rx_ring);
+ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+ 			    struct ixgbe_ring *tx_ring, int napi_budget);
+-int ixgbe_xsk_async_xmit(struct net_device *dev, u32 queue_id);
++int ixgbe_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
+ void ixgbe_xsk_clean_tx_ring(struct ixgbe_ring *tx_ring);
+ 
+ #endif /* #define _IXGBE_TXRX_COMMON_H_ */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index 6b60955..e598af9 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -100,7 +100,7 @@ static int ixgbe_xsk_umem_enable(struct ixgbe_adapter *adapter,
+ 		ixgbe_txrx_ring_enable(adapter, qid);
+ 
+ 		/* Kick start the NAPI context so that receiving will start */
+-		err = ixgbe_xsk_async_xmit(adapter->netdev, qid);
++		err = ixgbe_xsk_wakeup(adapter->netdev, qid, XDP_WAKEUP_RX);
+ 		if (err)
+ 			return err;
+ 	}
+@@ -692,7 +692,7 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+ 	return budget > 0 && xmit_done;
+ }
+ 
+-int ixgbe_xsk_async_xmit(struct net_device *dev, u32 qid)
++int ixgbe_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+ {
+ 	struct ixgbe_adapter *adapter = netdev_priv(dev);
+ 	struct ixgbe_ring *ring;
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
+index 35e188cf..9704634 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
+@@ -7,7 +7,7 @@
+ #include "en/params.h"
+ #include <net/xdp_sock.h>
+ 
+-int mlx5e_xsk_async_xmit(struct net_device *dev, u32 qid)
++int mlx5e_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+ {
+ 	struct mlx5e_priv *priv = netdev_priv(dev);
+ 	struct mlx5e_params *params = &priv->channels.params;
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.h b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.h
+index 7add18b..9c50515 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.h
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.h
+@@ -8,7 +8,7 @@
+ 
+ /* TX data path */
+ 
+-int mlx5e_xsk_async_xmit(struct net_device *dev, u32 qid);
++int mlx5e_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags);
+ 
+ bool mlx5e_xsk_tx(struct mlx5e_xdpsq *sq, unsigned int budget);
+ 
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+index 9a2fcef..9df7e5c 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+@@ -4540,7 +4540,7 @@ const struct net_device_ops mlx5e_netdev_ops = {
+ 	.ndo_tx_timeout          = mlx5e_tx_timeout,
+ 	.ndo_bpf		 = mlx5e_xdp,
+ 	.ndo_xdp_xmit            = mlx5e_xdp_xmit,
+-	.ndo_xsk_async_xmit      = mlx5e_xsk_async_xmit,
++	.ndo_xsk_wakeup          = mlx5e_xsk_wakeup,
+ #ifdef CONFIG_MLX5_EN_ARFS
+ 	.ndo_rx_flow_steer	 = mlx5e_rx_flow_steer,
+ #endif
+diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+index 55ac223..0ef0570 100644
+--- a/include/linux/netdevice.h
++++ b/include/linux/netdevice.h
+@@ -901,6 +901,10 @@ struct netdev_bpf {
+ 	};
+ };
+ 
++/* Flags for ndo_xsk_wakeup. */
++#define XDP_WAKEUP_RX (1 << 0)
++#define XDP_WAKEUP_TX (1 << 1)
++
+ #ifdef CONFIG_XFRM_OFFLOAD
+ struct xfrmdev_ops {
+ 	int	(*xdo_dev_state_add) (struct xfrm_state *x);
+@@ -1227,6 +1231,12 @@ struct tlsdev_ops;
+  *	that got dropped are freed/returned via xdp_return_frame().
+  *	Returns negative number, means general error invoking ndo, meaning
+  *	no frames were xmit'ed and core-caller will free all frames.
++ * int (*ndo_xsk_wakeup)(struct net_device *dev, u32 queue_id, u32 flags);
++ *      This function is used to wake up the softirq, ksoftirqd or kthread
++ *	responsible for sending and/or receiving packets on a specific
++ *	queue id bound to an AF_XDP socket. The flags field specifies if
++ *	only RX, only Tx, or both should be woken up using the flags
++ *	XDP_WAKEUP_RX and XDP_WAKEUP_TX.
+  * struct devlink_port *(*ndo_get_devlink_port)(struct net_device *dev);
+  *	Get devlink port instance associated with a given netdev.
+  *	Called with a reference on the netdevice and devlink locks only,
+@@ -1426,8 +1436,8 @@ struct net_device_ops {
+ 	int			(*ndo_xdp_xmit)(struct net_device *dev, int n,
+ 						struct xdp_frame **xdp,
+ 						u32 flags);
+-	int			(*ndo_xsk_async_xmit)(struct net_device *dev,
+-						      u32 queue_id);
++	int			(*ndo_xsk_wakeup)(struct net_device *dev,
++						  u32 queue_id, u32 flags);
+ 	struct devlink_port *	(*ndo_get_devlink_port)(struct net_device *dev);
+ };
+ 
+diff --git a/net/xdp/xdp_umem.c b/net/xdp/xdp_umem.c
+index a060796..6e2d4da 100644
+--- a/net/xdp/xdp_umem.c
++++ b/net/xdp/xdp_umem.c
+@@ -112,8 +112,7 @@ int xdp_umem_assign_dev(struct xdp_umem *umem, struct net_device *dev,
+ 		/* For copy-mode, we are done. */
+ 		return 0;
+ 
+-	if (!dev->netdev_ops->ndo_bpf ||
+-	    !dev->netdev_ops->ndo_xsk_async_xmit) {
++	if (!dev->netdev_ops->ndo_bpf || !dev->netdev_ops->ndo_xsk_wakeup) {
+ 		err = -EOPNOTSUPP;
+ 		goto err_unreg_umem;
+ 	}
+diff --git a/net/xdp/xsk.c b/net/xdp/xsk.c
+index 59b57d7..1fe40a9 100644
+--- a/net/xdp/xsk.c
++++ b/net/xdp/xsk.c
+@@ -212,7 +212,8 @@ static int xsk_zc_xmit(struct sock *sk)
+ 	struct xdp_sock *xs = xdp_sk(sk);
+ 	struct net_device *dev = xs->dev;
+ 
+-	return dev->netdev_ops->ndo_xsk_async_xmit(dev, xs->queue_id);
++	return dev->netdev_ops->ndo_xsk_wakeup(dev, xs->queue_id,
++					       XDP_WAKEUP_TX);
+ }
+ 
+ static void xsk_destruct_skb(struct sk_buff *skb)
+-- 
+2.7.4
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
