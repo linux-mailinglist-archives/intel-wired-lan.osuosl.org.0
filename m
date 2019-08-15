@@ -1,55 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36E408F609
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 22:55:31 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F05F8F67E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 23:35:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E22A785FC1;
-	Thu, 15 Aug 2019 20:55:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CFD1388457;
+	Thu, 15 Aug 2019 21:34:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GLFE8rGeodKq; Thu, 15 Aug 2019 20:55:28 +0000 (UTC)
+	with ESMTP id kj9W72XAAqGj; Thu, 15 Aug 2019 21:34:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 18F7C85F8F;
-	Thu, 15 Aug 2019 20:55:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 37BA28846E;
+	Thu, 15 Aug 2019 21:34:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 067581BF39E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 20:55:26 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B3DA81BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 21:34:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0131B87851
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 20:55:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AF68E2051E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 21:34:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fo0LlxnYfxyp for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Aug 2019 20:55:25 +0000 (UTC)
+ with ESMTP id IHr4WVTTryCK for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Aug 2019 21:34:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7B45787863
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 20:55:25 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2019 13:55:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,389,1559545200"; d="scan'208";a="188609492"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
- by orsmga002.jf.intel.com with ESMTP; 15 Aug 2019 13:55:25 -0700
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 15 Aug 2019 13:55:20 -0700
-Message-Id: <20190815205520.22475-2-jeffrey.t.kirsher@intel.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190815205520.22475-1-jeffrey.t.kirsher@intel.com>
-References: <20190815205520.22475-1-jeffrey.t.kirsher@intel.com>
+Received: from mail-ua1-f52.google.com (mail-ua1-f52.google.com
+ [209.85.222.52])
+ by silver.osuosl.org (Postfix) with ESMTPS id E5C6D2051A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 21:34:55 +0000 (UTC)
+Received: by mail-ua1-f52.google.com with SMTP id g11so1347586uak.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 14:34:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=GSrmtpipVQCQo4aigHFLsAEob0HLAgYS/CBZYjde7fk=;
+ b=nZEyxNZdsDXDTGV6I6TnbX59atcWXnTC9oUUA5Wtya98duJyBPU1KEA5JQGApOC2s3
+ g+lHy71TBxy3Bp3JkJQYktib0HX7dXdLUaRlY8o231k8zMmbuSj+5D1qNWxbmYtlcapE
+ AYekW+cvK8aZus8yFY+rIgALYolovj2k89Su7teWATayElWBCPFvfJsSdE9GBukXoUra
+ DeUFTuqJoF95hboAFokBJgnJVFGCeGyIrUTk05YHfKj1A599UR4pPqTkmt7kQvCe8E4C
+ yiZPfLyTfvt7zHMi5vNYF1ygIthAlsih4Ivzm4hJXpLSWJBWn7zAAmtZBcgEKmS3kc1U
+ qqQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=GSrmtpipVQCQo4aigHFLsAEob0HLAgYS/CBZYjde7fk=;
+ b=dfOijHPv1rYQNT0lqeoY74crSaVt4T4q4da2E5KJcW9eLvugwTzwICYxKYnU0Vk34g
+ VItpwOkeMutjM+4kHxrR85KZTKgGyQsQaCBvFcxQSOnJ/D8UCCAyEtPbzz/XfmNFn3Aa
+ te02rjNNRqXO/PQqKtKpdK06XgLdZ2mqjGYJYzmL0CkercZrKNo2m1ozQjb5yd5EoCwr
+ RdIdeLZ26mLXCi18mOXCXg8XbpuMaSrcuYktknQYLNB2DWQ15OcRCxLzOr4PUyqOap59
+ Dpq4DDCPIVs6dZAaSflBTmiOQr6QQ1zBE/VN26YykcazA09AUVEH872ni9UVcjVMPmOz
+ k/wA==
+X-Gm-Message-State: APjAAAUcez+RH/VW2W15GwCjpOjAQA/uElulad2NE647evydvjPl37Nf
+ ZUJf0Y2kTWENfEcEZ6YmYDMva1lWlSbLA+W9P5HhkOdf
+X-Google-Smtp-Source: APXvYqy1icVx/1UFQOOvAZdiifOxxjtbxiVrlFXwGX5FHyQaUkxiBL0DkezDmujPobCm7/XmzjdpjOVgM7M0mCM3i1M=
+X-Received: by 2002:ab0:63c3:: with SMTP id i3mr2352677uap.7.1565904894765;
+ Thu, 15 Aug 2019 14:34:54 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 2/2] igb: Fix constant media auto
- sense switching when no cable is connected.
+From: Shannon Nelson <shannon.lee.nelson@gmail.com>
+Date: Thu, 15 Aug 2019 14:34:44 -0700
+Message-ID: <CAP-MU4MAwQd5bOGpJ=tu4iVB4j4FO6UWbkXg6ox34i7pb5DjQA@mail.gmail.com>
+To: intel-wired-lan@lists.osuosl.org
+Subject: [Intel-wired-lan] x
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,46 +76,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
+We've been occasionally seeing some of these messages recently on some
+of our machines after reboots.  Usually a powercycle clears it up.
+Any hints as to what might be going on?
 
-At least on the i350 there is an annoying behavior that is maybe also
-present on 82580 devices, but was probably not noticed yet as MAS is not
-widely used.
+[    2.570012] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver -
+version 5.1.0-k-rh7.5
+[    2.570016] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[    4.883541] ixgbe 0000:65:00.0 (unregistered net_device): eeprom
+read at offset 40 failed
+[    7.112885] ixgbe 0000:65:00.0 (unregistered net_device): eeprom
+read at offset 39 failed
+[   11.571710] ixgbe 0000:65:00.0: The EEPROM Checksum Is Not Valid
+[   11.571916] ixgbe: probe of 0000:65:00.0 failed with error -5
+[   13.922688] ixgbe 0000:65:00.1 (unregistered net_device): eeprom
+read at offset 40 failed
+[   16.152080] ixgbe 0000:65:00.1 (unregistered net_device): eeprom
+read at offset 39 failed
+[   20.617460] ixgbe 0000:65:00.1: The EEPROM Checksum Is Not Valid
+[   20.617639] ixgbe: probe of 0000:65:00.1 failed with error -5
 
-If no cable is connected on both fiber/copper ports the media auto sense
-code will constantly swap between them as part of the watchdog task and
-produce many unnecessary kernel log messages.
 
-The swap code responsible for this behavior (switching to fiber) should
-not be executed if the current media type is copper and there is no signal
-detected on the fiber port. In this case we can safely wait until the
-AUTOSENSE_EN bit is cleared.
+Thanks,
+sln
 
-Signed-off-by: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
----
- drivers/net/ethernet/intel/igb/igb_main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 95fc1a178ff3..891cd072d4dd 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -2064,7 +2064,8 @@ static void igb_check_swap_media(struct igb_adapter *adapter)
- 	if ((hw->phy.media_type == e1000_media_type_copper) &&
- 	    (!(connsw & E1000_CONNSW_AUTOSENSE_EN))) {
- 		swap_now = true;
--	} else if (!(connsw & E1000_CONNSW_SERDESD)) {
-+	} else if ((hw->phy.media_type != e1000_media_type_copper) &&
-+	    !(connsw & E1000_CONNSW_SERDESD)) {
- 		/* copper signal takes time to appear */
- 		if (adapter->copper_tries < 4) {
- 			adapter->copper_tries++;
+-- 
+==============================================
+Mr. Shannon Nelson         Parents can't afford to be squeamish.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
