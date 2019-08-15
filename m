@@ -1,79 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A7178F488
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 21:29:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BCBD28F5D6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 22:38:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6D9102051C;
-	Thu, 15 Aug 2019 19:29:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CB4D185F6E;
+	Thu, 15 Aug 2019 20:38:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L259Mlg42I89; Thu, 15 Aug 2019 19:29:03 +0000 (UTC)
+	with ESMTP id 1yVZRJhNodlm; Thu, 15 Aug 2019 20:38:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A0C3820507;
-	Thu, 15 Aug 2019 19:29:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 694FC86155;
+	Thu, 15 Aug 2019 20:38:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1864C1BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 19:29:00 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BD4551BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 11:12:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 055BC87F8E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 19:29:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B5B4520465
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 11:12:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ss2YKc0OrhQP for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Aug 2019 19:28:59 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
- [209.85.222.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5DF1387F78
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 19:28:59 +0000 (UTC)
-Received: by mail-qk1-f193.google.com with SMTP id d23so2831011qko.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 12:28:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=netronome-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :organization:mime-version:content-transfer-encoding;
- bh=qnb1kJVM+ye3vGOEYAiSOgWaI3eqtlq3N9qsMgSh97Q=;
- b=JaxEwRb54HjwKuEneJpNZxQXixF0DRverv10uYcg0cKMh+ECh1y3PYBIoVR8Ow63CY
- /WKKphuy/0ciV1fNmih3/+fh1ESfjqrk8yHo0doVrzNTOxcJMsagAdyXMS8N/hUKLJPO
- ys+xqkbDGaAu2an70dXBKE7/dX6r7CD1hTWHgLBbP8r7EYoOkBUlQbeN2jIMyj9Dysla
- wDX7CxJU3y8ZMIq76PCJUoS7kW/AF751fzeef3qiIS7S2cYClSK9dT24i7ZuQPd5uFoz
- f6s3KOUMGs1sEJvIxWN86ubo0VVUcfS6hyOVGtopxRcSTT/nWToBiiYmv8ZNyyHvpMvH
- Y0DQ==
+ with ESMTP id kqNsCZBeTMas for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 Aug 2019 11:12:41 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ed1-f67.google.com (mail-ed1-f67.google.com
+ [209.85.208.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id CE42420450
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 11:12:40 +0000 (UTC)
+Received: by mail-ed1-f67.google.com with SMTP id w20so1827846edd.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 04:12:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=qnb1kJVM+ye3vGOEYAiSOgWaI3eqtlq3N9qsMgSh97Q=;
- b=Gh+Uxnoq+daCKzoWrescajqdH+5fYjBy2s8nFfAkb4brbAl1sktpCukl1JAGsKggUo
- Ml1+XDAhXykunZawnUF42I2kxbvYEuwdsel92CFIgPAWZ/mTeHKt62XtHi1SMC2BCjZ3
- lAhwZDgYdzns0tJUP3Y6TW3wuNE0QEYxVaPgEYv2RBCtVwB41r9fggxxb077wTJVc9bp
- mME0NVNHq2dfvvrRi4Zmn7/EJl57Nzo54Nug6us+kbPUPA5laPyNL/vM15nM/NcavgCb
- OG7XDVnnBjK2Tl42T0mwVFckT19mNcGQiYDsDEfVAqk0v7WjZJY7kT/Ccq75AnkcFQqS
- zvEQ==
-X-Gm-Message-State: APjAAAUVIi+PZT7c7f8+SCJgUXgXsrsDWbVXvgb89XXdeKoyAKBEnmxM
- +uTDGVXnlPZD9ZdvY3Freg0q4w==
-X-Google-Smtp-Source: APXvYqwkPh8ov3QUSzCWMxSKt+ziOPYpJfoCxehX3GtP2xT/V0Zjj4WnEp5aVw6Y7vkICXjTGBM3Aw==
-X-Received: by 2002:a05:620a:100c:: with SMTP id
- z12mr5528461qkj.279.1565897338446; 
- Thu, 15 Aug 2019 12:28:58 -0700 (PDT)
-Received: from cakuba.netronome.com ([66.60.152.14])
- by smtp.gmail.com with ESMTPSA id x3sm1885999qkl.71.2019.08.15.12.28.57
+ h=x-gm-message-state:from:to:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=ntIsD69DO/hO6b75AtxLAE4j1t2W0/fwbe66EmMsreM=;
+ b=C76qkDd6rf/iuSuV7HUpviPpENgm/ld4b/iJvLtJ3R0Q9pUOWkPwSlmF9TSdWaAWeM
+ VeBgpMgQLyKlWsDrmGV33TCjvxNpPb09kgx3wGmn2aMeuXR1DcSIdFxXn3tpdUfRPSsH
+ i3IMhOJwwh4EyEUlhth5CuHJ29dFEmt2pnFAcdQxBy3eUmSon68Yno9bWjFEj8cm520Z
+ TY9Pa4g8C2lzRjB9uR61rdPv08Ud1wbZ0WS75WKoDQvYOpNqZrws+zulx1nBZMqDq1wo
+ Td0dhuKBwWFh5E1xCYawhknTenzr/HHA/LiO8rw9i9srv+HPmo6ebPj8tH09US+li/wm
+ AKtw==
+X-Gm-Message-State: APjAAAW7fbFWUEsNtY2ZPWhcQ9LX0K31OxDnRloswYm4iurl1H2FlhZo
+ pSZv3nxcz2tIm39UuuT4wHZaXg==
+X-Google-Smtp-Source: APXvYqySmryfwFB28Qyo1faZoMqbuRI9iUKmVaJDkDfpefaX3OWKGu+Vwl+P/M8P9UMOyLYn7wa1rA==
+X-Received: by 2002:aa7:d755:: with SMTP id a21mr4711292eds.295.1565867559112; 
+ Thu, 15 Aug 2019 04:12:39 -0700 (PDT)
+Received: from alrua-x1.borgediget.toke.dk (borgediget.toke.dk.
+ [85.204.121.218])
+ by smtp.gmail.com with ESMTPSA id c15sm505684edf.37.2019.08.15.04.12.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Aug 2019 12:28:58 -0700 (PDT)
-Date: Thu, 15 Aug 2019 12:28:44 -0700
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-To: Sridhar Samudrala <sridhar.samudrala@intel.com>
-Message-ID: <20190815122844.52eeda08@cakuba.netronome.com>
+ Thu, 15 Aug 2019 04:12:38 -0700 (PDT)
+Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
+ id 00332181C2E; Thu, 15 Aug 2019 13:12:37 +0200 (CEST)
+From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+To: Sridhar Samudrala <sridhar.samudrala@intel.com>, magnus.karlsson@intel.com,
+ bjorn.topel@intel.com, netdev@vger.kernel.org, bpf@vger.kernel.org,
+ sridhar.samudrala@intel.com, intel-wired-lan@lists.osuosl.org,
+ maciej.fijalkowski@intel.com, tom.herbert@intel.com
 In-Reply-To: <1565840783-8269-1-git-send-email-sridhar.samudrala@intel.com>
 References: <1565840783-8269-1-git-send-email-sridhar.samudrala@intel.com>
-Organization: Netronome Systems, Ltd.
+X-Clacks-Overhead: GNU Terry Pratchett
+Date: Thu, 15 Aug 2019 13:12:37 +0200
+Message-ID: <87ftm2adi2.fsf@toke.dk>
 MIME-Version: 1.0
+X-Mailman-Approved-At: Thu, 15 Aug 2019 20:38:54 +0000
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next 0/5] Add support for SKIP_BPF
  flag for AF_XDP sockets
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -88,30 +83,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, tom.herbert@intel.com, bpf@vger.kernel.org,
- bjorn.topel@intel.com, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 14 Aug 2019 20:46:18 -0700, Sridhar Samudrala wrote:
+Sridhar Samudrala <sridhar.samudrala@intel.com> writes:
+
 > This patch series introduces XDP_SKIP_BPF flag that can be specified
 > during the bind() call of an AF_XDP socket to skip calling the BPF 
 > program in the receive path and pass the buffer directly to the socket.
-> 
+>
 > When a single AF_XDP socket is associated with a queue and a HW
 > filter is used to redirect the packets and the app is interested in
 > receiving all the packets on that queue, we don't need an additional 
 > BPF program to do further filtering or lookup/redirect to a socket.
-> 
+>
 > Here are some performance numbers collected on 
 >   - 2 socket 28 core Intel(R) Xeon(R) Platinum 8180 CPU @ 2.50GHz
 >   - Intel 40Gb Ethernet NIC (i40e)
-> 
+>
 > All tests use 2 cores and the results are in Mpps.
-> 
+>
 > turbo on (default)
 > ---------------------------------------------	
 >                       no-skip-bpf    skip-bpf
@@ -120,7 +113,7 @@ On Wed, 14 Aug 2019 20:46:18 -0700, Sridhar Samudrala wrote:
 > l2fwd  zerocopy           17.0         20.5
 > rxdrop copy               11.1         13.3
 > l2fwd  copy                1.9          2.0
-> 
+>
 > no turbo :  echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
 > ---------------------------------------------	
 >                       no-skip-bpf    skip-bpf
@@ -129,14 +122,18 @@ On Wed, 14 Aug 2019 20:46:18 -0700, Sridhar Samudrala wrote:
 > l2fwd  zerocopy           11.8         18.2
 > rxdrop copy                8.2         10.5
 > l2fwd  copy                1.7          1.7
-> ---------------------------------------------	
+> ---------------------------------------------
 
-Could you include a third column here - namely the in-XDP performance?
-AFAIU the way to achieve better performance with AF_XDP is to move the
-fast path into the kernel's XDP program..
+You're getting this performance boost by adding more code in the fast
+path for every XDP program; so what's the performance impact of that for
+cases where we do run an eBPF program?
 
-Maciej's work on batching XDP program's execution should lower the
-retpoline overhead, without leaning close to the bypass model.
+Also, this is basically a special-casing of a particular deployment
+scenario. Without a way to control RX queue assignment and traffic
+steering, you're basically hard-coding a particular app's takeover of
+the network interface; I'm not sure that is such a good idea...
+
+-Toke
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
