@@ -1,69 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F05F8F67E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 Aug 2019 23:35:00 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDC7B8F890
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2019 03:46:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CFD1388457;
-	Thu, 15 Aug 2019 21:34:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 893D886016;
+	Fri, 16 Aug 2019 01:46:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kj9W72XAAqGj; Thu, 15 Aug 2019 21:34:58 +0000 (UTC)
+	with ESMTP id 5q-rP6Xg+k4B; Fri, 16 Aug 2019 01:46:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 37BA28846E;
-	Thu, 15 Aug 2019 21:34:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7FC0F84D49;
+	Fri, 16 Aug 2019 01:46:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B3DA81BF37F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 21:34:56 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C3D51BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 01:46:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AF68E2051E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 21:34:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 588BC85F80
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 01:46:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IHr4WVTTryCK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 Aug 2019 21:34:56 +0000 (UTC)
+ with ESMTP id K5LY8-GAY3Wf for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Aug 2019 01:46:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ua1-f52.google.com (mail-ua1-f52.google.com
- [209.85.222.52])
- by silver.osuosl.org (Postfix) with ESMTPS id E5C6D2051A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 21:34:55 +0000 (UTC)
-Received: by mail-ua1-f52.google.com with SMTP id g11so1347586uak.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 Aug 2019 14:34:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=GSrmtpipVQCQo4aigHFLsAEob0HLAgYS/CBZYjde7fk=;
- b=nZEyxNZdsDXDTGV6I6TnbX59atcWXnTC9oUUA5Wtya98duJyBPU1KEA5JQGApOC2s3
- g+lHy71TBxy3Bp3JkJQYktib0HX7dXdLUaRlY8o231k8zMmbuSj+5D1qNWxbmYtlcapE
- AYekW+cvK8aZus8yFY+rIgALYolovj2k89Su7teWATayElWBCPFvfJsSdE9GBukXoUra
- DeUFTuqJoF95hboAFokBJgnJVFGCeGyIrUTk05YHfKj1A599UR4pPqTkmt7kQvCe8E4C
- yiZPfLyTfvt7zHMi5vNYF1ygIthAlsih4Ivzm4hJXpLSWJBWn7zAAmtZBcgEKmS3kc1U
- qqQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=GSrmtpipVQCQo4aigHFLsAEob0HLAgYS/CBZYjde7fk=;
- b=dfOijHPv1rYQNT0lqeoY74crSaVt4T4q4da2E5KJcW9eLvugwTzwICYxKYnU0Vk34g
- VItpwOkeMutjM+4kHxrR85KZTKgGyQsQaCBvFcxQSOnJ/D8UCCAyEtPbzz/XfmNFn3Aa
- te02rjNNRqXO/PQqKtKpdK06XgLdZ2mqjGYJYzmL0CkercZrKNo2m1ozQjb5yd5EoCwr
- RdIdeLZ26mLXCi18mOXCXg8XbpuMaSrcuYktknQYLNB2DWQ15OcRCxLzOr4PUyqOap59
- Dpq4DDCPIVs6dZAaSflBTmiOQr6QQ1zBE/VN26YykcazA09AUVEH872ni9UVcjVMPmOz
- k/wA==
-X-Gm-Message-State: APjAAAUcez+RH/VW2W15GwCjpOjAQA/uElulad2NE647evydvjPl37Nf
- ZUJf0Y2kTWENfEcEZ6YmYDMva1lWlSbLA+W9P5HhkOdf
-X-Google-Smtp-Source: APXvYqy1icVx/1UFQOOvAZdiifOxxjtbxiVrlFXwGX5FHyQaUkxiBL0DkezDmujPobCm7/XmzjdpjOVgM7M0mCM3i1M=
-X-Received: by 2002:ab0:63c3:: with SMTP id i3mr2352677uap.7.1565904894765;
- Thu, 15 Aug 2019 14:34:54 -0700 (PDT)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BAA9285F71
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 01:46:05 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Aug 2019 18:46:05 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="194888459"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by fmsmga001.fm.intel.com with ESMTP; 15 Aug 2019 18:46:05 -0700
+Received: from orsmsx124.amr.corp.intel.com (10.22.240.120) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 15 Aug 2019 18:46:04 -0700
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.6]) by
+ ORSMSX124.amr.corp.intel.com ([169.254.2.63]) with mapi id 14.03.0439.000;
+ Thu, 15 Aug 2019 18:46:04 -0700
+From: "Fujinaka, Todd" <todd.fujinaka@intel.com>
+To: Shannon Nelson <shannon.lee.nelson@gmail.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] x
+Thread-Index: AQHVU7FjE+tC98aWVkCb/rANHu2iBab9AKTA
+Date: Fri, 16 Aug 2019 01:46:04 +0000
+Message-ID: <9B4A1B1917080E46B64F07F2989DADD69AFFB063@ORSMSX115.amr.corp.intel.com>
+References: <CAP-MU4MAwQd5bOGpJ=tu4iVB4j4FO6UWbkXg6ox34i7pb5DjQA@mail.gmail.com>
+In-Reply-To: <CAP-MU4MAwQd5bOGpJ=tu4iVB4j4FO6UWbkXg6ox34i7pb5DjQA@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOWNkZmJhNTYtYWI2Zi00NjAzLTg0MWItZjlmZGIyMDliMzc0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZ21qa3ZmWCtMYVRcL0tJVHFhM1hrT01RTkpuVytDYmdrSE04NEJCTHNtelc2T3UrWVFHMUpPYjhRcUE5YUVWc1IifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-From: Shannon Nelson <shannon.lee.nelson@gmail.com>
-Date: Thu, 15 Aug 2019 14:34:44 -0700
-Message-ID: <CAP-MU4MAwQd5bOGpJ=tu4iVB4j4FO6UWbkXg6ox34i7pb5DjQA@mail.gmail.com>
-To: intel-wired-lan@lists.osuosl.org
-Subject: [Intel-wired-lan] x
+Subject: Re: [Intel-wired-lan] x
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,8 +84,23 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We've been occasionally seeing some of these messages recently on some
-of our machines after reboots.  Usually a powercycle clears it up.
+x722? x550? Or is it a different part?
+
+I've seen something like this lately, but I'll need to know which Ethernet controller it is before I can narrow it down.
+
+Todd Fujinaka
+Software Application Engineer
+Datacenter Engineering Group
+Intel Corporation
+todd.fujinaka@intel.com
+
+-----Original Message-----
+From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On Behalf Of Shannon Nelson
+Sent: Thursday, August 15, 2019 2:35 PM
+To: intel-wired-lan@lists.osuosl.org
+Subject: [Intel-wired-lan] x
+
+We've been occasionally seeing some of these messages recently on some of our machines after reboots.  Usually a powercycle clears it up.
 Any hints as to what might be going on?
 
 [    2.570012] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver -
@@ -106,9 +124,13 @@ Thanks,
 sln
 
 
--- 
+--
 ==============================================
 Mr. Shannon Nelson         Parents can't afford to be squeamish.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
