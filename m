@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 274FC8FAA6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2019 08:12:44 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71DD78FAE4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2019 08:26:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9F89D869EA;
-	Fri, 16 Aug 2019 06:12:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1B1D7884EA;
+	Fri, 16 Aug 2019 06:26:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EhO8MYjcUKw6; Fri, 16 Aug 2019 06:12:42 +0000 (UTC)
+	with ESMTP id 3bIPY81h7ru9; Fri, 16 Aug 2019 06:26:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0520B862C1;
-	Fri, 16 Aug 2019 06:12:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 90403884E7;
+	Fri, 16 Aug 2019 06:26:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 440EF1BF842
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 06:12:41 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D13931BF842
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 06:26:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3C1FA84442
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 06:12:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CAABF884E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 06:26:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ok36w3eK4TyY for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Aug 2019 06:12:38 +0000 (UTC)
+ with ESMTP id zjGzKpJzlKvr for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Aug 2019 06:26:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BB808878FE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 06:12:37 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2B279884E1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2019 06:26:04 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2019 23:12:37 -0700
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Aug 2019 23:25:56 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="182093084"
+X-IronPort-AV: E=Sophos;i="5.64,391,1559545200"; d="scan'208";a="182095397"
 Received: from samudral-mobl1.amr.corp.intel.com (HELO [10.251.21.3])
  ([10.251.21.3])
- by orsmga006.jf.intel.com with ESMTP; 15 Aug 2019 23:12:36 -0700
-To: =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>,
- magnus.karlsson@intel.com, bjorn.topel@intel.com, netdev@vger.kernel.org,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- maciej.fijalkowski@intel.com, tom.herbert@intel.com
+ by orsmga006.jf.intel.com with ESMTP; 15 Aug 2019 23:25:55 -0700
+To: Jakub Kicinski <jakub.kicinski@netronome.com>
 References: <1565840783-8269-1-git-send-email-sridhar.samudrala@intel.com>
- <87ftm2adi2.fsf@toke.dk> <b9423054-247e-8b57-ea59-42368f60ea1e@intel.com>
- <87ftm2wdzk.fsf@toke.dk>
+ <20190815122844.52eeda08@cakuba.netronome.com>
 From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
-Message-ID: <3b85138e-97a7-e59c-194d-54301b482689@intel.com>
-Date: Thu, 15 Aug 2019 23:12:36 -0700
+Message-ID: <f9df4d0e-c5f2-036d-994c-3162274820ea@intel.com>
+Date: Thu, 15 Aug 2019 23:25:55 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <87ftm2wdzk.fsf@toke.dk>
+In-Reply-To: <20190815122844.52eeda08@cakuba.netronome.com>
 Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next 0/5] Add support for SKIP_BPF
  flag for AF_XDP sockets
@@ -70,55 +66,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: maciej.fijalkowski@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, tom.herbert@intel.com, bpf@vger.kernel.org,
+ bjorn.topel@intel.com, magnus.karlsson@intel.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CgpPbiA4LzE1LzIwMTkgMTA6MTEgQU0sIFRva2UgSMO4aWxhbmQtSsO4cmdlbnNlbiB3cm90ZToK
-PiAiU2FtdWRyYWxhLCBTcmlkaGFyIiA8c3JpZGhhci5zYW11ZHJhbGFAaW50ZWwuY29tPiB3cml0
-ZXM6Cj4gCj4+IE9uIDgvMTUvMjAxOSA0OjEyIEFNLCBUb2tlIEjDuGlsYW5kLUrDuHJnZW5zZW4g
-d3JvdGU6Cj4+PiBTcmlkaGFyIFNhbXVkcmFsYSA8c3JpZGhhci5zYW11ZHJhbGFAaW50ZWwuY29t
-PiB3cml0ZXM6Cj4+Pgo+Pj4+IFRoaXMgcGF0Y2ggc2VyaWVzIGludHJvZHVjZXMgWERQX1NLSVBf
-QlBGIGZsYWcgdGhhdCBjYW4gYmUgc3BlY2lmaWVkCj4+Pj4gZHVyaW5nIHRoZSBiaW5kKCkgY2Fs
-bCBvZiBhbiBBRl9YRFAgc29ja2V0IHRvIHNraXAgY2FsbGluZyB0aGUgQlBGCj4+Pj4gcHJvZ3Jh
-bSBpbiB0aGUgcmVjZWl2ZSBwYXRoIGFuZCBwYXNzIHRoZSBidWZmZXIgZGlyZWN0bHkgdG8gdGhl
-IHNvY2tldC4KPj4+Pgo+Pj4+IFdoZW4gYSBzaW5nbGUgQUZfWERQIHNvY2tldCBpcyBhc3NvY2lh
-dGVkIHdpdGggYSBxdWV1ZSBhbmQgYSBIVwo+Pj4+IGZpbHRlciBpcyB1c2VkIHRvIHJlZGlyZWN0
-IHRoZSBwYWNrZXRzIGFuZCB0aGUgYXBwIGlzIGludGVyZXN0ZWQgaW4KPj4+PiByZWNlaXZpbmcg
-YWxsIHRoZSBwYWNrZXRzIG9uIHRoYXQgcXVldWUsIHdlIGRvbid0IG5lZWQgYW4gYWRkaXRpb25h
-bAo+Pj4+IEJQRiBwcm9ncmFtIHRvIGRvIGZ1cnRoZXIgZmlsdGVyaW5nIG9yIGxvb2t1cC9yZWRp
-cmVjdCB0byBhIHNvY2tldC4KPj4+Pgo+Pj4+IEhlcmUgYXJlIHNvbWUgcGVyZm9ybWFuY2UgbnVt
-YmVycyBjb2xsZWN0ZWQgb24KPj4+PiAgICAgLSAyIHNvY2tldCAyOCBjb3JlIEludGVsKFIpIFhl
-b24oUikgUGxhdGludW0gODE4MCBDUFUgQCAyLjUwR0h6Cj4+Pj4gICAgIC0gSW50ZWwgNDBHYiBF
-dGhlcm5ldCBOSUMgKGk0MGUpCj4+Pj4KPj4+PiBBbGwgdGVzdHMgdXNlIDIgY29yZXMgYW5kIHRo
-ZSByZXN1bHRzIGFyZSBpbiBNcHBzLgo+Pj4+Cj4+Pj4gdHVyYm8gb24gKGRlZmF1bHQpCj4+Pj4g
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCQo+Pj4+ICAgICAg
-ICAgICAgICAgICAgICAgICAgIG5vLXNraXAtYnBmICAgIHNraXAtYnBmCj4+Pj4gLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCQo+Pj4+IHJ4ZHJvcCB6ZXJvY29w
-eSAgICAgICAgICAgMjEuOSAgICAgICAgIDM4LjUKPj4+PiBsMmZ3ZCAgemVyb2NvcHkgICAgICAg
-ICAgIDE3LjAgICAgICAgICAyMC41Cj4+Pj4gcnhkcm9wIGNvcHkgICAgICAgICAgICAgICAxMS4x
-ICAgICAgICAgMTMuMwo+Pj4+IGwyZndkICBjb3B5ICAgICAgICAgICAgICAgIDEuOSAgICAgICAg
-ICAyLjAKPj4+Pgo+Pj4+IG5vIHR1cmJvIDogIGVjaG8gMSA+IC9zeXMvZGV2aWNlcy9zeXN0ZW0v
-Y3B1L2ludGVsX3BzdGF0ZS9ub190dXJibwo+Pj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLQkKPj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBuby1za2lw
-LWJwZiAgICBza2lwLWJwZgo+Pj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQkKPj4+PiByeGRyb3AgemVyb2NvcHkgICAgICAgICAgIDE1LjQgICAgICAgICAy
-OS4wCj4+Pj4gbDJmd2QgIHplcm9jb3B5ICAgICAgICAgICAxMS44ICAgICAgICAgMTguMgo+Pj4+
-IHJ4ZHJvcCBjb3B5ICAgICAgICAgICAgICAgIDguMiAgICAgICAgIDEwLjUKPj4+PiBsMmZ3ZCAg
-Y29weSAgICAgICAgICAgICAgICAxLjcgICAgICAgICAgMS43Cj4+Pj4gLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4+Pgo+Pj4gWW91J3JlIGdldHRpbmcgdGhp
-cyBwZXJmb3JtYW5jZSBib29zdCBieSBhZGRpbmcgbW9yZSBjb2RlIGluIHRoZSBmYXN0Cj4+PiBw
-YXRoIGZvciBldmVyeSBYRFAgcHJvZ3JhbTsgc28gd2hhdCdzIHRoZSBwZXJmb3JtYW5jZSBpbXBh
-Y3Qgb2YgdGhhdCBmb3IKPj4+IGNhc2VzIHdoZXJlIHdlIGRvIHJ1biBhbiBlQlBGIHByb2dyYW0/
-Cj4+Cj4+IFRoZSBuby1za2lwLWJwZiByZXN1bHRzIGFyZSBwcmV0dHkgY2xvc2UgdG8gd2hhdCBp
-IHNlZSBiZWZvcmUgdGhlCj4+IHBhdGNoZXMgYXJlIGFwcGxpZWQuIEFzIHVtZW0gaXMgY2FjaGVk
-IGluIHJ4X3JpbmcgZm9yIHplcm9jb3B5IHRoZQo+PiBvdmVyaGVhZCBpcyBtdWNoIHNtYWxsZXIg
-Y29tcGFyZWQgdG8gdGhlIGNvcHkgc2NlbmFyaW8gd2hlcmUgaSBhbQo+PiBjdXJyZW50bHkgY2Fs
-bGluZyB4ZHBfZ2V0X3VtZW1fZnJvbV9xaWQoKS4KPiAKPiBJIG1lYW50IG1vcmUgZm9yIG90aGVy
-IFhEUCBwcm9ncmFtczsgd2hhdCBpcyB0aGUgcGVyZm9ybWFuY2UgaW1wYWN0IG9mCj4gWERQX0RS
-T1AsIGZvciBpbnN0YW5jZT8KCldpbGwgcnVuIHhkcDEgd2l0aCBhbmQgd2l0aG91dCB0aGUgcGF0
-Y2hlcyBhbmQgaW5jbHVkZSB0aGF0IGRhdGEgd2l0aCAKdGhlIG5leHQgcmV2aXNpb24uCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
-YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
-b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+
+
+On 8/15/2019 12:28 PM, Jakub Kicinski wrote:
+> On Wed, 14 Aug 2019 20:46:18 -0700, Sridhar Samudrala wrote:
+>> This patch series introduces XDP_SKIP_BPF flag that can be specified
+>> during the bind() call of an AF_XDP socket to skip calling the BPF
+>> program in the receive path and pass the buffer directly to the socket.
+>>
+>> When a single AF_XDP socket is associated with a queue and a HW
+>> filter is used to redirect the packets and the app is interested in
+>> receiving all the packets on that queue, we don't need an additional
+>> BPF program to do further filtering or lookup/redirect to a socket.
+>>
+>> Here are some performance numbers collected on
+>>    - 2 socket 28 core Intel(R) Xeon(R) Platinum 8180 CPU @ 2.50GHz
+>>    - Intel 40Gb Ethernet NIC (i40e)
+>>
+>> All tests use 2 cores and the results are in Mpps.
+>>
+>> turbo on (default)
+>> ---------------------------------------------	
+>>                        no-skip-bpf    skip-bpf
+>> ---------------------------------------------	
+>> rxdrop zerocopy           21.9         38.5
+>> l2fwd  zerocopy           17.0         20.5
+>> rxdrop copy               11.1         13.3
+>> l2fwd  copy                1.9          2.0
+>>
+>> no turbo :  echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
+>> ---------------------------------------------	
+>>                        no-skip-bpf    skip-bpf
+>> ---------------------------------------------	
+>> rxdrop zerocopy           15.4         29.0
+>> l2fwd  zerocopy           11.8         18.2
+>> rxdrop copy                8.2         10.5
+>> l2fwd  copy                1.7          1.7
+>> ---------------------------------------------	
+> 
+> Could you include a third column here - namely the in-XDP performance?
+> AFAIU the way to achieve better performance with AF_XDP is to move the
+> fast path into the kernel's XDP program..
+
+The in-xdp drop that can be measured with xdp1 is lower than rxdrop
+zerocopy with skip-bpf although in-xdp drop uses only 1 core. af-xdp 
+1-core performance would improve with need-wakeup or busypoll patches 
+and based on early experiments so far af-xdp with need-wakeup/busypoll + 
+skip-bpf perf is higher than in-xdp drop.
+
+Will include in-xdp drop data too in the next revision.
+
+> 
+> Maciej's work on batching XDP program's execution should lower the
+> retpoline overhead, without leaning close to the bypass model.
+> 
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
