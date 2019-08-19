@@ -1,80 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 738859510B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2019 00:44:55 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D342B95111
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2019 00:45:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C54BF87FD2;
-	Mon, 19 Aug 2019 22:44:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7828F22643;
+	Mon, 19 Aug 2019 22:45:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CVS9c65UuJyM; Mon, 19 Aug 2019 22:44:51 +0000 (UTC)
+	with ESMTP id VPYSTHOZ3Huh; Mon, 19 Aug 2019 22:44:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5870187FEA;
-	Mon, 19 Aug 2019 22:44:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ECB7422264;
+	Mon, 19 Aug 2019 22:44:52 +0000 (UTC)
 X-Original-To: Intel-wired-lan@lists.osuosl.org
 Delivered-To: Intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C76751BF2AB
- for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 22:44:49 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BE7381BF2AB
+ for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 22:44:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C09AA86457
- for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 22:44:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B96FF204EF
+ for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 22:44:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IcIS4vsTEIrm for <Intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Aug 2019 22:44:48 +0000 (UTC)
+ with ESMTP id EM4lnt5jjnU5 for <Intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Aug 2019 22:44:50 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 71E128642E
- for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 22:44:48 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id n9so2022718pgc.1
- for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 15:44:48 -0700 (PDT)
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id 340D22044F
+ for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 22:44:50 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id c81so2045510pfc.11
+ for <Intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 15:44:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=herbertland-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=3MC7MfjmHAobcgVJcsrKJPgmxz70rgP3fOTy0lPNUDs=;
- b=G+NOiwKQjGlfM0S2Nw8TGpumDnf/3C601qL4+fvTvrI0lcm9slRQiFdFLpfNCwPkdc
- c9yjcXRQnwnVWG8fOWQjH5D/NDmiIZEZXgFBVgYg0BwL2mjOd3osPehy9RTBqXvPgDPv
- OVd8SeIU9hgXOgsYPkTjOwS7v9as6OVpS++OaMsxZVGqX5N7iyBnl6kPY2gjxF6EoA3X
- DL+uguxJyL87PNX0lu6sbn/lCodXfNp82u1NqmMiwqzN4PhlLLiJKflGEJfoy7c1OwC3
- kFYPLA+WNXerUYu4K7YjPHc9HlHd7LwSZ1fB4cqFt5dGr7IUvp0opi6cCbgnfRpR8gdw
- mk0Q==
+ bh=QoCudMp48sktQwlg+aTSvDx9S70OYlgR9oU5S/TpSs0=;
+ b=1uhoUndSMVTvpPnt9HFCqpO54urADkEaF0Q1kgD0YgYvTYYLSpLCG0lFuozCUiKaUo
+ JK3qQJDCHMxMllZ+YNuYE3mJOf4DI61edgT3aDgbUCMkJ4bRoD6RTg0y5VRlQcyGDsyZ
+ JM8NxpRtE/SVEScvcTTJTLfjzmH7jbZPuvaT/53Ys04kLpVErUKa1Oqt4gMlCY/SRBfh
+ plxyYZZigzCn7TIXEp6NDGHKAMgm1KHzk+kYyStOCZBNizxXgvk+U0Rcut4QFzf7JssQ
+ bkUan/bm2d5sTECCiWTsOtH3ILWGfaAyahllaKp8dNeHOVyE6E0J1hZQTcYolE+7438i
+ aHXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=3MC7MfjmHAobcgVJcsrKJPgmxz70rgP3fOTy0lPNUDs=;
- b=rsTuKeQR9txLVTskO8jzy3CEYhTCCpYILwQmLv9ZEQlKc+/EA7VnZrAT2uEAa0KjYM
- dRugPVj5Uis/hvjSSY8Abz5MdGNlV7REquvfnZxVvlxYp1+s8hWl1jAYGKC6rc5IP9Jf
- HsTndkA9NugLKjypPC+d28Zk+tg8azlpeNjf7LJrxO6WIDI0LYRAz75WRw3IaALseiE1
- 3ZOZqdHWpHcowLeM5dIVrslRvNwDvowQ9kjr0LTbh/CQ06O/nULumr3LIjQ6ts4MijTy
- LL06rJyKD/E5UDcn1JTUPdbqth5TWr5M4pZGrhfAUoyllh3uS6SGlIlK4SVJH9qASE71
- H0Jg==
-X-Gm-Message-State: APjAAAUb5BziZRICcV4nXSg8qhoah5CmfLKsbB7MhNI8x5lJa/ce3cYX
- 4e9qCNLUk8FAXgKgVZyvY0sd8F/Ta4I=
-X-Google-Smtp-Source: APXvYqzXzIvAcBiGMk2BFqy4Ulg/MJpTcvzi0c8Qx00COaGg+k7HUQyE7WgIVDmyiVATVh7Zvi1IoA==
-X-Received: by 2002:a17:90a:d793:: with SMTP id
- z19mr22721184pju.36.1566254687236; 
- Mon, 19 Aug 2019 15:44:47 -0700 (PDT)
+ bh=QoCudMp48sktQwlg+aTSvDx9S70OYlgR9oU5S/TpSs0=;
+ b=BD/cKWnkGIBiY2NF83TdYANdFVv6/JSYOH8yBK3KM09Bi/35qzxdslOwNFohRtIFYe
+ CSSeOLT0d4+xyHYhLlD3qK/O1NX63LFJBiYYSZUxDbgwfLP7ww62fJoOIquwwNFX5jEm
+ tiTSqsoylEMeKiW8oKs2mSv4ByGx6D8Px/WqeAy0Wn/oKtiKgvOgCm0x25jwyvyCz7s0
+ iiuFOoGeNmB1utm27UVB+5zh6uP3CfF15Ge+aKT+c8LTrDPK0nCZ179Iisyncpg1XKvd
+ rJcUYzsAGcCKx+jCsEIZJCrRSfmXOXnHGW/d3j+3m6r2BXRo1s40c3zIRfOJO324laSW
+ 73dw==
+X-Gm-Message-State: APjAAAUr+vn7t9B5WyBknwUv339AfavEwv4EJoefkJ+OA5mgxH+S9r25
+ svOOHU01GmStMc2ZvsfqJXAj7M+cAro=
+X-Google-Smtp-Source: APXvYqw1nHDTl0oQiqG+jx4C2UVWxIxv4FNgx4kNCuoORm84tCD41et4GDIPb2opnej6zq2N/PFh8Q==
+X-Received: by 2002:a17:90a:ae15:: with SMTP id
+ t21mr22952205pjq.50.1566254689130; 
+ Mon, 19 Aug 2019 15:44:49 -0700 (PDT)
 Received: from localhost.localdomain (c-73-202-182-113.hsd1.ca.comcast.net.
  [73.202.182.113])
- by smtp.gmail.com with ESMTPSA id x10sm14676947pjo.4.2019.08.19.15.44.45
+ by smtp.gmail.com with ESMTPSA id x10sm14676947pjo.4.2019.08.19.15.44.47
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
- Mon, 19 Aug 2019 15:44:46 -0700 (PDT)
+ Mon, 19 Aug 2019 15:44:48 -0700 (PDT)
 From: Tom Herbert <tom@herbertland.com>
 To: Intel-wired-lan@lists.osuosl.org
-Date: Mon, 19 Aug 2019 15:44:19 -0700
-Message-Id: <1566254665-5200-2-git-send-email-tom@herbertland.com>
+Date: Mon, 19 Aug 2019 15:44:20 -0700
+Message-Id: <1566254665-5200-3-git-send-email-tom@herbertland.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1566254665-5200-1-git-send-email-tom@herbertland.com>
 References: <1566254665-5200-1-git-send-email-tom@herbertland.com>
-Subject: [Intel-wired-lan] [PATCH v3 net-next 1/7] ipeh: Create
- exthdrs_options.c and ipeh.h
+Subject: [Intel-wired-lan] [PATCH v3 net-next 2/7] ipeh: Move generic EH
+ functions to exthdrs_common.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,520 +96,526 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Tom Herbert <tom@quantonium.net>
 
-Create exthdrs_options.c to hold code related to specific Hop-by-Hop
-and Destination extension header options. Move related functions in
-exthdrs.c to the new file.
+Move generic functions in exthdrs.c to new exthdrs_common.c so that
+exthdrs.c only contains functions that are specific to IPv6 processing,
+and exthdrs_common.c contains functions that are generic. These
+functions include those that will be used with IPv4 extension headers.
+Generic extension header related functions are prefixed by ipeh_.
 
-Create include net/ipeh.h to contain common definitions for IP extension
-headers.
+Fix kbuild issue.
 
+Reported-by: kbuild test robot <lkp@intel.com>
 Signed-off-by: Tom Herbert <tom@herbertland.com>
 ---
- include/net/ipeh.h         |  22 +++++
- include/net/ipv6.h         |   1 +
- net/ipv6/Makefile          |   2 +-
- net/ipv6/exthdrs.c         | 204 ---------------------------------------------
- net/ipv6/exthdrs_options.c | 201 ++++++++++++++++++++++++++++++++++++++++++++
- 5 files changed, 225 insertions(+), 205 deletions(-)
- create mode 100644 include/net/ipeh.h
- create mode 100644 net/ipv6/exthdrs_options.c
+ include/net/ipeh.h        |  12 ++++
+ include/net/ipv6.h        |   9 ---
+ net/dccp/ipv6.c           |   2 +-
+ net/ipv6/Kconfig          |   4 ++
+ net/ipv6/Makefile         |   1 +
+ net/ipv6/calipso.c        |   6 +-
+ net/ipv6/exthdrs.c        | 138 --------------------------------------------
+ net/ipv6/exthdrs_common.c | 144 ++++++++++++++++++++++++++++++++++++++++++++++
+ net/ipv6/ipv6_sockglue.c  |   2 +-
+ net/ipv6/raw.c            |   2 +-
+ net/ipv6/tcp_ipv6.c       |   2 +-
+ net/ipv6/udp.c            |   2 +-
+ net/l2tp/l2tp_ip6.c       |   2 +-
+ net/sctp/ipv6.c           |   2 +-
+ 14 files changed, 171 insertions(+), 157 deletions(-)
+ create mode 100644 net/ipv6/exthdrs_common.c
 
 diff --git a/include/net/ipeh.h b/include/net/ipeh.h
-new file mode 100644
-index 0000000..ec2d186
---- /dev/null
+index ec2d186..3b24831 100644
+--- a/include/net/ipeh.h
 +++ b/include/net/ipeh.h
-@@ -0,0 +1,22 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+#ifndef _NET_IPEH_H
-+#define _NET_IPEH_H
+@@ -19,4 +19,16 @@ struct tlvtype_proc {
+ extern const struct tlvtype_proc tlvprocdestopt_lst[];
+ extern const struct tlvtype_proc tlvprochopopt_lst[];
+ 
++struct ipv6_txoptions;
++struct ipv6_opt_hdr;
 +
-+#include <linux/skbuff.h>
++struct ipv6_txoptions *ipeh_dup_options(struct sock *sk,
++					struct ipv6_txoptions *opt);
++struct ipv6_txoptions *ipeh_renew_options(struct sock *sk,
++					  struct ipv6_txoptions *opt,
++					  int newtype,
++					  struct ipv6_opt_hdr *newopt);
++struct ipv6_txoptions *ipeh_fixup_options(struct ipv6_txoptions *opt_space,
++					  struct ipv6_txoptions *opt);
 +
-+/*
-+ *     Parsing tlv encoded headers.
-+ *
-+ *     Parsing function "func" returns true, if parsing succeed
-+ *     and false, if it failed.
-+ *     It MUST NOT touch skb->h.
-+ */
-+struct tlvtype_proc {
-+	int	type;
-+	bool	(*func)(struct sk_buff *skb, int offset);
-+};
-+
-+extern const struct tlvtype_proc tlvprocdestopt_lst[];
-+extern const struct tlvtype_proc tlvprochopopt_lst[];
-+
-+#endif /* _NET_IPEH_H */
+ #endif /* _NET_IPEH_H */
 diff --git a/include/net/ipv6.h b/include/net/ipv6.h
-index 8dfc656..ec10fca 100644
+index ec10fca..1c6878b 100644
 --- a/include/net/ipv6.h
 +++ b/include/net/ipv6.h
-@@ -20,6 +20,7 @@
- #include <net/flow_dissector.h>
- #include <net/snmp.h>
- #include <net/netns/hash.h>
-+#include <net/ipeh.h>
+@@ -429,15 +429,6 @@ int ip6_ra_control(struct sock *sk, int sel);
  
- #define SIN6_LEN_RFC2133	24
+ int ipv6_parse_hopopts(struct sk_buff *skb);
  
+-struct ipv6_txoptions *ipv6_dup_options(struct sock *sk,
+-					struct ipv6_txoptions *opt);
+-struct ipv6_txoptions *ipv6_renew_options(struct sock *sk,
+-					  struct ipv6_txoptions *opt,
+-					  int newtype,
+-					  struct ipv6_opt_hdr *newopt);
+-struct ipv6_txoptions *ipv6_fixup_options(struct ipv6_txoptions *opt_space,
+-					  struct ipv6_txoptions *opt);
+-
+ bool ipv6_opt_accepted(const struct sock *sk, const struct sk_buff *skb,
+ 		       const struct inet6_skb_parm *opt);
+ struct ipv6_txoptions *ipv6_update_options(struct sock *sk,
+diff --git a/net/dccp/ipv6.c b/net/dccp/ipv6.c
+index 1b7381f..0b83a04 100644
+--- a/net/dccp/ipv6.c
++++ b/net/dccp/ipv6.c
+@@ -514,7 +514,7 @@ static struct sock *dccp_v6_request_recv_sock(const struct sock *sk,
+ 	if (!opt)
+ 		opt = rcu_dereference(np->opt);
+ 	if (opt) {
+-		opt = ipv6_dup_options(newsk, opt);
++		opt = ipeh_dup_options(newsk, opt);
+ 		RCU_INIT_POINTER(newnp->opt, opt);
+ 	}
+ 	inet_csk(newsk)->icsk_ext_hdr_len = 0;
+diff --git a/net/ipv6/Kconfig b/net/ipv6/Kconfig
+index ae1344e..700fcea 100644
+--- a/net/ipv6/Kconfig
++++ b/net/ipv6/Kconfig
+@@ -3,9 +3,13 @@
+ # IPv6 configuration
+ #
+ 
++config EXTHDRS
++	bool
++
+ #   IPv6 as module will cause a CRASH if you try to unload it
+ menuconfig IPV6
+ 	tristate "The IPv6 protocol"
++	select EXTHDRS
+ 	default y
+ 	---help---
+ 	  Support for IP version 6 (IPv6).
 diff --git a/net/ipv6/Makefile b/net/ipv6/Makefile
-index 8ccf355..df3919b 100644
+index df3919b..0bcab81 100644
 --- a/net/ipv6/Makefile
 +++ b/net/ipv6/Makefile
-@@ -10,7 +10,7 @@ ipv6-objs :=	af_inet6.o anycast.o ip6_output.o ip6_input.o addrconf.o \
- 		route.o ip6_fib.o ipv6_sockglue.o ndisc.o udp.o udplite.o \
- 		raw.o icmp.o mcast.o reassembly.o tcp_ipv6.o ping.o \
- 		exthdrs.o datagram.o ip6_flowlabel.o inet6_connection_sock.o \
--		udp_offload.o seg6.o fib6_notifier.o
-+		udp_offload.o seg6.o fib6_notifier.o exthdrs_options.o
+@@ -44,6 +44,7 @@ obj-$(CONFIG_IPV6_SIT) += sit.o
+ obj-$(CONFIG_IPV6_TUNNEL) += ip6_tunnel.o
+ obj-$(CONFIG_IPV6_GRE) += ip6_gre.o
+ obj-$(CONFIG_IPV6_FOU) += fou6.o
++obj-$(CONFIG_EXTHDRS) += exthdrs_common.o
  
- ipv6-offload :=	ip6_offload.o tcpv6_offload.o exthdrs_offload.o
+ obj-y += addrconf_core.o exthdrs_core.o ip6_checksum.o ip6_icmp.o
+ obj-$(CONFIG_INET) += output_core.o protocol.o $(ipv6-offload)
+diff --git a/net/ipv6/calipso.c b/net/ipv6/calipso.c
+index 221c81f..9c84848 100644
+--- a/net/ipv6/calipso.c
++++ b/net/ipv6/calipso.c
+@@ -785,7 +785,7 @@ static int calipso_opt_update(struct sock *sk, struct ipv6_opt_hdr *hop)
+ {
+ 	struct ipv6_txoptions *old = txopt_get(inet6_sk(sk)), *txopts;
  
+-	txopts = ipv6_renew_options(sk, old, IPV6_HOPOPTS, hop);
++	txopts = ipeh_renew_options(sk, old, IPV6_HOPOPTS, hop);
+ 	txopt_put(old);
+ 	if (IS_ERR(txopts))
+ 		return PTR_ERR(txopts);
+@@ -1207,7 +1207,7 @@ static int calipso_req_setattr(struct request_sock *req,
+ 	if (IS_ERR(new))
+ 		return PTR_ERR(new);
+ 
+-	txopts = ipv6_renew_options(sk, req_inet->ipv6_opt, IPV6_HOPOPTS, new);
++	txopts = ipeh_renew_options(sk, req_inet->ipv6_opt, IPV6_HOPOPTS, new);
+ 
+ 	kfree(new);
+ 
+@@ -1244,7 +1244,7 @@ static void calipso_req_delattr(struct request_sock *req)
+ 	if (calipso_opt_del(req_inet->ipv6_opt->hopopt, &new))
+ 		return; /* Nothing to do */
+ 
+-	txopts = ipv6_renew_options(sk, req_inet->ipv6_opt, IPV6_HOPOPTS, new);
++	txopts = ipeh_renew_options(sk, req_inet->ipv6_opt, IPV6_HOPOPTS, new);
+ 
+ 	if (!IS_ERR(txopts)) {
+ 		txopts = xchg(&req_inet->ipv6_opt, txopts);
 diff --git a/net/ipv6/exthdrs.c b/net/ipv6/exthdrs.c
-index ab5add0..664491e 100644
+index 664491e..e12d3a5 100644
 --- a/net/ipv6/exthdrs.c
 +++ b/net/ipv6/exthdrs.c
-@@ -39,7 +39,6 @@
- #include <net/ndisc.h>
- #include <net/ip6_route.h>
- #include <net/addrconf.h>
--#include <net/calipso.h>
- #if IS_ENABLED(CONFIG_IPV6_MIP6)
- #include <net/xfrm.h>
- #endif
-@@ -51,19 +50,6 @@
+@@ -784,144 +784,6 @@ void ipv6_push_frag_opts(struct sk_buff *skb, struct ipv6_txoptions *opt, u8 *pr
+ }
+ EXPORT_SYMBOL(ipv6_push_frag_opts);
  
- #include <linux/uaccess.h>
- 
--/*
-- *	Parsing tlv encoded headers.
+-struct ipv6_txoptions *
+-ipv6_dup_options(struct sock *sk, struct ipv6_txoptions *opt)
+-{
+-	struct ipv6_txoptions *opt2;
+-
+-	opt2 = sock_kmalloc(sk, opt->tot_len, GFP_ATOMIC);
+-	if (opt2) {
+-		long dif = (char *)opt2 - (char *)opt;
+-		memcpy(opt2, opt, opt->tot_len);
+-		if (opt2->hopopt)
+-			*((char **)&opt2->hopopt) += dif;
+-		if (opt2->dst0opt)
+-			*((char **)&opt2->dst0opt) += dif;
+-		if (opt2->dst1opt)
+-			*((char **)&opt2->dst1opt) += dif;
+-		if (opt2->srcrt)
+-			*((char **)&opt2->srcrt) += dif;
+-		refcount_set(&opt2->refcnt, 1);
+-	}
+-	return opt2;
+-}
+-EXPORT_SYMBOL_GPL(ipv6_dup_options);
+-
+-static void ipv6_renew_option(int renewtype,
+-			      struct ipv6_opt_hdr **dest,
+-			      struct ipv6_opt_hdr *old,
+-			      struct ipv6_opt_hdr *new,
+-			      int newtype, char **p)
+-{
+-	struct ipv6_opt_hdr *src;
+-
+-	src = (renewtype == newtype ? new : old);
+-	if (!src)
+-		return;
+-
+-	memcpy(*p, src, ipv6_optlen(src));
+-	*dest = (struct ipv6_opt_hdr *)*p;
+-	*p += CMSG_ALIGN(ipv6_optlen(*dest));
+-}
+-
+-/**
+- * ipv6_renew_options - replace a specific ext hdr with a new one.
 - *
-- *	Parsing function "func" returns true, if parsing succeed
-- *	and false, if it failed.
-- *	It MUST NOT touch skb->h.
+- * @sk: sock from which to allocate memory
+- * @opt: original options
+- * @newtype: option type to replace in @opt
+- * @newopt: new option of type @newtype to replace (user-mem)
+- * @newoptlen: length of @newopt
+- *
+- * Returns a new set of options which is a copy of @opt with the
+- * option type @newtype replaced with @newopt.
+- *
+- * @opt may be NULL, in which case a new set of options is returned
+- * containing just @newopt.
+- *
+- * @newopt may be NULL, in which case the specified option type is
+- * not copied into the new set of options.
+- *
+- * The new set of options is allocated from the socket option memory
+- * buffer of @sk.
 - */
--
--struct tlvtype_proc {
--	int	type;
--	bool	(*func)(struct sk_buff *skb, int offset);
--};
--
- /*********************
-   Generic functions
-  *********************/
-@@ -200,80 +186,6 @@ static bool ip6_parse_tlv(const struct tlvtype_proc *procs,
- 	return false;
- }
- 
--/*****************************
--  Destination options header.
-- *****************************/
--
--#if IS_ENABLED(CONFIG_IPV6_MIP6)
--static bool ipv6_dest_hao(struct sk_buff *skb, int optoff)
+-struct ipv6_txoptions *
+-ipv6_renew_options(struct sock *sk, struct ipv6_txoptions *opt,
+-		   int newtype, struct ipv6_opt_hdr *newopt)
 -{
--	struct ipv6_destopt_hao *hao;
--	struct inet6_skb_parm *opt = IP6CB(skb);
--	struct ipv6hdr *ipv6h = ipv6_hdr(skb);
--	int ret;
+-	int tot_len = 0;
+-	char *p;
+-	struct ipv6_txoptions *opt2;
 -
--	if (opt->dsthao) {
--		net_dbg_ratelimited("hao duplicated\n");
--		goto discard;
--	}
--	opt->dsthao = opt->dst1;
--	opt->dst1 = 0;
--
--	hao = (struct ipv6_destopt_hao *)(skb_network_header(skb) + optoff);
--
--	if (hao->length != 16) {
--		net_dbg_ratelimited("hao invalid option length = %d\n",
--				    hao->length);
--		goto discard;
+-	if (opt) {
+-		if (newtype != IPV6_HOPOPTS && opt->hopopt)
+-			tot_len += CMSG_ALIGN(ipv6_optlen(opt->hopopt));
+-		if (newtype != IPV6_RTHDRDSTOPTS && opt->dst0opt)
+-			tot_len += CMSG_ALIGN(ipv6_optlen(opt->dst0opt));
+-		if (newtype != IPV6_RTHDR && opt->srcrt)
+-			tot_len += CMSG_ALIGN(ipv6_optlen(opt->srcrt));
+-		if (newtype != IPV6_DSTOPTS && opt->dst1opt)
+-			tot_len += CMSG_ALIGN(ipv6_optlen(opt->dst1opt));
 -	}
 -
--	if (!(ipv6_addr_type(&hao->addr) & IPV6_ADDR_UNICAST)) {
--		net_dbg_ratelimited("hao is not an unicast addr: %pI6\n",
--				    &hao->addr);
--		goto discard;
--	}
+-	if (newopt)
+-		tot_len += CMSG_ALIGN(ipv6_optlen(newopt));
 -
--	ret = xfrm6_input_addr(skb, (xfrm_address_t *)&ipv6h->daddr,
--			       (xfrm_address_t *)&hao->addr, IPPROTO_DSTOPTS);
--	if (unlikely(ret < 0))
--		goto discard;
+-	if (!tot_len)
+-		return NULL;
 -
--	if (skb_cloned(skb)) {
--		if (pskb_expand_head(skb, 0, 0, GFP_ATOMIC))
--			goto discard;
+-	tot_len += sizeof(*opt2);
+-	opt2 = sock_kmalloc(sk, tot_len, GFP_ATOMIC);
+-	if (!opt2)
+-		return ERR_PTR(-ENOBUFS);
 -
--		/* update all variable using below by copied skbuff */
--		hao = (struct ipv6_destopt_hao *)(skb_network_header(skb) +
--						  optoff);
--		ipv6h = ipv6_hdr(skb);
--	}
+-	memset(opt2, 0, tot_len);
+-	refcount_set(&opt2->refcnt, 1);
+-	opt2->tot_len = tot_len;
+-	p = (char *)(opt2 + 1);
 -
--	if (skb->ip_summed == CHECKSUM_COMPLETE)
--		skb->ip_summed = CHECKSUM_NONE;
+-	ipv6_renew_option(IPV6_HOPOPTS, &opt2->hopopt,
+-			  (opt ? opt->hopopt : NULL),
+-			  newopt, newtype, &p);
+-	ipv6_renew_option(IPV6_RTHDRDSTOPTS, &opt2->dst0opt,
+-			  (opt ? opt->dst0opt : NULL),
+-			  newopt, newtype, &p);
+-	ipv6_renew_option(IPV6_RTHDR,
+-			  (struct ipv6_opt_hdr **)&opt2->srcrt,
+-			  (opt ? (struct ipv6_opt_hdr *)opt->srcrt : NULL),
+-			  newopt, newtype, &p);
+-	ipv6_renew_option(IPV6_DSTOPTS, &opt2->dst1opt,
+-			  (opt ? opt->dst1opt : NULL),
+-			  newopt, newtype, &p);
 -
--	swap(ipv6h->saddr, hao->addr);
+-	opt2->opt_nflen = (opt2->hopopt ? ipv6_optlen(opt2->hopopt) : 0) +
+-			  (opt2->dst0opt ? ipv6_optlen(opt2->dst0opt) : 0) +
+-			  (opt2->srcrt ? ipv6_optlen(opt2->srcrt) : 0);
+-	opt2->opt_flen = (opt2->dst1opt ? ipv6_optlen(opt2->dst1opt) : 0);
 -
--	if (skb->tstamp == 0)
--		__net_timestamp(skb);
--
--	return true;
--
-- discard:
--	kfree_skb(skb);
--	return false;
--}
--#endif
--
--static const struct tlvtype_proc tlvprocdestopt_lst[] = {
--#if IS_ENABLED(CONFIG_IPV6_MIP6)
--	{
--		.type	= IPV6_TLV_HAO,
--		.func	= ipv6_dest_hao,
--	},
--#endif
--	{-1,			NULL}
--};
--
- static int ipv6_destopt_rcv(struct sk_buff *skb)
- {
- 	struct inet6_dev *idev = __in6_dev_get(skb->dev);
-@@ -702,122 +614,6 @@ void ipv6_exthdrs_exit(void)
- 	inet6_del_protocol(&rthdr_protocol, IPPROTO_ROUTING);
- }
- 
--/**********************************
--  Hop-by-hop options.
-- **********************************/
--
--/*
-- * Note: we cannot rely on skb_dst(skb) before we assign it in ip6_route_input().
-- */
--static inline struct inet6_dev *ipv6_skb_idev(struct sk_buff *skb)
--{
--	return skb_dst(skb) ? ip6_dst_idev(skb_dst(skb)) : __in6_dev_get(skb->dev);
+-	return opt2;
 -}
 -
--static inline struct net *ipv6_skb_net(struct sk_buff *skb)
+-struct ipv6_txoptions *ipv6_fixup_options(struct ipv6_txoptions *opt_space,
+-					  struct ipv6_txoptions *opt)
 -{
--	return skb_dst(skb) ? dev_net(skb_dst(skb)->dev) : dev_net(skb->dev);
+-	/*
+-	 * ignore the dest before srcrt unless srcrt is being included.
+-	 * --yoshfuji
+-	 */
+-	if (opt && opt->dst0opt && !opt->srcrt) {
+-		if (opt_space != opt) {
+-			memcpy(opt_space, opt, sizeof(*opt_space));
+-			opt = opt_space;
+-		}
+-		opt->opt_nflen -= ipv6_optlen(opt->dst0opt);
+-		opt->dst0opt = NULL;
+-	}
+-
+-	return opt;
 -}
+-EXPORT_SYMBOL_GPL(ipv6_fixup_options);
 -
--/* Router Alert as of RFC 2711 */
--
--static bool ipv6_hop_ra(struct sk_buff *skb, int optoff)
--{
--	const unsigned char *nh = skb_network_header(skb);
--
--	if (nh[optoff + 1] == 2) {
--		IP6CB(skb)->flags |= IP6SKB_ROUTERALERT;
--		memcpy(&IP6CB(skb)->ra, nh + optoff + 2, sizeof(IP6CB(skb)->ra));
--		return true;
--	}
--	net_dbg_ratelimited("ipv6_hop_ra: wrong RA length %d\n",
--			    nh[optoff + 1]);
--	kfree_skb(skb);
--	return false;
--}
--
--/* Jumbo payload */
--
--static bool ipv6_hop_jumbo(struct sk_buff *skb, int optoff)
--{
--	const unsigned char *nh = skb_network_header(skb);
--	struct inet6_dev *idev = __in6_dev_get_safely(skb->dev);
--	struct net *net = ipv6_skb_net(skb);
--	u32 pkt_len;
--
--	if (nh[optoff + 1] != 4 || (optoff & 3) != 2) {
--		net_dbg_ratelimited("ipv6_hop_jumbo: wrong jumbo opt length/alignment %d\n",
--				    nh[optoff+1]);
--		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INHDRERRORS);
--		goto drop;
--	}
--
--	pkt_len = ntohl(*(__be32 *)(nh + optoff + 2));
--	if (pkt_len <= IPV6_MAXPLEN) {
--		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INHDRERRORS);
--		icmpv6_param_prob(skb, ICMPV6_HDR_FIELD, optoff+2);
--		return false;
--	}
--	if (ipv6_hdr(skb)->payload_len) {
--		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INHDRERRORS);
--		icmpv6_param_prob(skb, ICMPV6_HDR_FIELD, optoff);
--		return false;
--	}
--
--	if (pkt_len > skb->len - sizeof(struct ipv6hdr)) {
--		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INTRUNCATEDPKTS);
--		goto drop;
--	}
--
--	if (pskb_trim_rcsum(skb, pkt_len + sizeof(struct ipv6hdr)))
--		goto drop;
--
--	IP6CB(skb)->flags |= IP6SKB_JUMBOGRAM;
--	return true;
--
--drop:
--	kfree_skb(skb);
--	return false;
--}
--
--/* CALIPSO RFC 5570 */
--
--static bool ipv6_hop_calipso(struct sk_buff *skb, int optoff)
--{
--	const unsigned char *nh = skb_network_header(skb);
--
--	if (nh[optoff + 1] < 8)
--		goto drop;
--
--	if (nh[optoff + 6] * 4 + 8 > nh[optoff + 1])
--		goto drop;
--
--	if (!calipso_validate(skb, nh + optoff))
--		goto drop;
--
--	return true;
--
--drop:
--	kfree_skb(skb);
--	return false;
--}
--
--static const struct tlvtype_proc tlvprochopopt_lst[] = {
--	{
--		.type	= IPV6_TLV_ROUTERALERT,
--		.func	= ipv6_hop_ra,
--	},
--	{
--		.type	= IPV6_TLV_JUMBO,
--		.func	= ipv6_hop_jumbo,
--	},
--	{
--		.type	= IPV6_TLV_CALIPSO,
--		.func	= ipv6_hop_calipso,
--	},
--	{ -1, }
--};
--
- int ipv6_parse_hopopts(struct sk_buff *skb)
- {
- 	struct inet6_skb_parm *opt = IP6CB(skb);
-diff --git a/net/ipv6/exthdrs_options.c b/net/ipv6/exthdrs_options.c
+ /**
+  * fl6_update_dst - update flowi destination address with info given
+  *                  by srcrt option, if any.
+diff --git a/net/ipv6/exthdrs_common.c b/net/ipv6/exthdrs_common.c
 new file mode 100644
-index 0000000..032e072
+index 0000000..2c68184
 --- /dev/null
-+++ b/net/ipv6/exthdrs_options.c
-@@ -0,0 +1,201 @@
++++ b/net/ipv6/exthdrs_common.c
+@@ -0,0 +1,144 @@
 +// SPDX-License-Identifier: GPL-2.0
-+#include <linux/errno.h>
-+#include <linux/in6.h>
-+#include <linux/net.h>
-+#include <linux/netdevice.h>
-+#include <linux/socket.h>
-+#include <linux/types.h>
-+#include <net/calipso.h>
++
++/* Extension header and TLV library code that is not specific to IPv6. */
++#include <linux/export.h>
 +#include <net/ipv6.h>
-+#include <net/ip6_route.h>
-+#if IS_ENABLED(CONFIG_IPV6_MIP6)
-+#include <net/xfrm.h>
-+#endif
 +
-+/* Destination options header */
-+
-+#if IS_ENABLED(CONFIG_IPV6_MIP6)
-+static bool ipv6_dest_hao(struct sk_buff *skb, int optoff)
++struct ipv6_txoptions *
++ipeh_dup_options(struct sock *sk, struct ipv6_txoptions *opt)
 +{
-+	struct ipv6_destopt_hao *hao;
-+	struct inet6_skb_parm *opt = IP6CB(skb);
-+	struct ipv6hdr *ipv6h = ipv6_hdr(skb);
-+	int ret;
++	struct ipv6_txoptions *opt2;
 +
-+	if (opt->dsthao) {
-+		net_dbg_ratelimited("hao duplicated\n");
-+		goto discard;
++	opt2 = sock_kmalloc(sk, opt->tot_len, GFP_ATOMIC);
++	if (opt2) {
++		long dif = (char *)opt2 - (char *)opt;
++
++		memcpy(opt2, opt, opt->tot_len);
++		if (opt2->hopopt)
++			*((char **)&opt2->hopopt) += dif;
++		if (opt2->dst0opt)
++			*((char **)&opt2->dst0opt) += dif;
++		if (opt2->dst1opt)
++			*((char **)&opt2->dst1opt) += dif;
++		if (opt2->srcrt)
++			*((char **)&opt2->srcrt) += dif;
++		refcount_set(&opt2->refcnt, 1);
 +	}
-+	opt->dsthao = opt->dst1;
-+	opt->dst1 = 0;
-+
-+	hao = (struct ipv6_destopt_hao *)(skb_network_header(skb) + optoff);
-+
-+	if (hao->length != 16) {
-+		net_dbg_ratelimited("hao invalid option length = %d\n",
-+				    hao->length);
-+		goto discard;
-+	}
-+
-+	if (!(ipv6_addr_type(&hao->addr) & IPV6_ADDR_UNICAST)) {
-+		net_dbg_ratelimited("hao is not an unicast addr: %pI6\n",
-+				    &hao->addr);
-+		goto discard;
-+	}
-+
-+	ret = xfrm6_input_addr(skb, (xfrm_address_t *)&ipv6h->daddr,
-+			       (xfrm_address_t *)&hao->addr, IPPROTO_DSTOPTS);
-+	if (unlikely(ret < 0))
-+		goto discard;
-+
-+	if (skb_cloned(skb)) {
-+		if (pskb_expand_head(skb, 0, 0, GFP_ATOMIC))
-+			goto discard;
-+
-+		/* update all variable using below by copied skbuff */
-+		hao = (struct ipv6_destopt_hao *)(skb_network_header(skb) +
-+						  optoff);
-+		ipv6h = ipv6_hdr(skb);
-+	}
-+
-+	if (skb->ip_summed == CHECKSUM_COMPLETE)
-+		skb->ip_summed = CHECKSUM_NONE;
-+
-+	swap(ipv6h->saddr, hao->addr);
-+
-+	if (skb->tstamp == 0)
-+		__net_timestamp(skb);
-+
-+	return true;
-+
-+ discard:
-+	kfree_skb(skb);
-+	return false;
++	return opt2;
 +}
-+#endif
++EXPORT_SYMBOL_GPL(ipeh_dup_options);
 +
-+const struct tlvtype_proc tlvprocdestopt_lst[] = {
-+#if IS_ENABLED(CONFIG_IPV6_MIP6)
-+	{
-+		.type	= IPV6_TLV_HAO,
-+		.func	= ipv6_dest_hao,
-+	},
-+#endif
-+	{-1,			NULL}
-+};
++static void ipeh_renew_option(int renewtype,
++			      struct ipv6_opt_hdr **dest,
++			      struct ipv6_opt_hdr *old,
++			      struct ipv6_opt_hdr *new,
++			      int newtype, char **p)
++{
++	struct ipv6_opt_hdr *src;
 +
-+/* Hop-by-hop options */
++	src = (renewtype == newtype ? new : old);
++	if (!src)
++		return;
 +
-+/* Note: we cannot rely on skb_dst(skb) before we assign it in
-+ * ip6_route_input().
++	memcpy(*p, src, ipv6_optlen(src));
++	*dest = (struct ipv6_opt_hdr *)*p;
++	*p += CMSG_ALIGN(ipv6_optlen(*dest));
++}
++
++/**
++ * ipeh_renew_options - replace a specific ext hdr with a new one.
++ *
++ * @sk: sock from which to allocate memory
++ * @opt: original options
++ * @newtype: option type to replace in @opt
++ * @newopt: new option of type @newtype to replace (user-mem)
++ * @newoptlen: length of @newopt
++ *
++ * Returns a new set of options which is a copy of @opt with the
++ * option type @newtype replaced with @newopt.
++ *
++ * @opt may be NULL, in which case a new set of options is returned
++ * containing just @newopt.
++ *
++ * @newopt may be NULL, in which case the specified option type is
++ * not copied into the new set of options.
++ *
++ * The new set of options is allocated from the socket option memory
++ * buffer of @sk.
 + */
-+static inline struct inet6_dev *ipv6_skb_idev(struct sk_buff *skb)
++struct ipv6_txoptions *
++ipeh_renew_options(struct sock *sk, struct ipv6_txoptions *opt,
++		   int newtype, struct ipv6_opt_hdr *newopt)
 +{
-+	return skb_dst(skb) ? ip6_dst_idev(skb_dst(skb)) :
-+	    __in6_dev_get(skb->dev);
-+}
++	int tot_len = 0;
++	char *p;
++	struct ipv6_txoptions *opt2;
 +
-+static inline struct net *ipv6_skb_net(struct sk_buff *skb)
-+{
-+	return skb_dst(skb) ? dev_net(skb_dst(skb)->dev) : dev_net(skb->dev);
-+}
-+
-+/* Router Alert as of RFC 2711 */
-+
-+static bool ipv6_hop_ra(struct sk_buff *skb, int optoff)
-+{
-+	const unsigned char *nh = skb_network_header(skb);
-+
-+	if (nh[optoff + 1] == 2) {
-+		IP6CB(skb)->flags |= IP6SKB_ROUTERALERT;
-+		memcpy(&IP6CB(skb)->ra, nh + optoff + 2,
-+		       sizeof(IP6CB(skb)->ra));
-+		return true;
-+	}
-+	net_dbg_ratelimited("%s: wrong RA length %d\n",
-+			    __func__, nh[optoff + 1]);
-+	kfree_skb(skb);
-+	return false;
-+}
-+
-+/* Jumbo payload */
-+
-+static bool ipv6_hop_jumbo(struct sk_buff *skb, int optoff)
-+{
-+	const unsigned char *nh = skb_network_header(skb);
-+	struct inet6_dev *idev = __in6_dev_get_safely(skb->dev);
-+	struct net *net = ipv6_skb_net(skb);
-+	u32 pkt_len;
-+
-+	if (nh[optoff + 1] != 4 || (optoff & 3) != 2) {
-+		net_dbg_ratelimited("%s: wrong jumbo opt length/alignment %d\n",
-+				    __func__, nh[optoff + 1]);
-+		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INHDRERRORS);
-+		goto drop;
++	if (opt) {
++		if (newtype != IPV6_HOPOPTS && opt->hopopt)
++			tot_len += CMSG_ALIGN(ipv6_optlen(opt->hopopt));
++		if (newtype != IPV6_RTHDRDSTOPTS && opt->dst0opt)
++			tot_len += CMSG_ALIGN(ipv6_optlen(opt->dst0opt));
++		if (newtype != IPV6_RTHDR && opt->srcrt)
++			tot_len += CMSG_ALIGN(ipv6_optlen(opt->srcrt));
++		if (newtype != IPV6_DSTOPTS && opt->dst1opt)
++			tot_len += CMSG_ALIGN(ipv6_optlen(opt->dst1opt));
 +	}
 +
-+	pkt_len = ntohl(*(__be32 *)(nh + optoff + 2));
-+	if (pkt_len <= IPV6_MAXPLEN) {
-+		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INHDRERRORS);
-+		icmpv6_param_prob(skb, ICMPV6_HDR_FIELD, optoff + 2);
-+		return false;
-+	}
-+	if (ipv6_hdr(skb)->payload_len) {
-+		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INHDRERRORS);
-+		icmpv6_param_prob(skb, ICMPV6_HDR_FIELD, optoff);
-+		return false;
-+	}
++	if (newopt)
++		tot_len += CMSG_ALIGN(ipv6_optlen(newopt));
 +
-+	if (pkt_len > skb->len - sizeof(struct ipv6hdr)) {
-+		__IP6_INC_STATS(net, idev, IPSTATS_MIB_INTRUNCATEDPKTS);
-+		goto drop;
-+	}
++	if (!tot_len)
++		return NULL;
 +
-+	if (pskb_trim_rcsum(skb, pkt_len + sizeof(struct ipv6hdr)))
-+		goto drop;
++	tot_len += sizeof(*opt2);
++	opt2 = sock_kmalloc(sk, tot_len, GFP_ATOMIC);
++	if (!opt2)
++		return ERR_PTR(-ENOBUFS);
 +
-+	IP6CB(skb)->flags |= IP6SKB_JUMBOGRAM;
-+	return true;
++	memset(opt2, 0, tot_len);
++	refcount_set(&opt2->refcnt, 1);
++	opt2->tot_len = tot_len;
++	p = (char *)(opt2 + 1);
 +
-+drop:
-+	kfree_skb(skb);
-+	return false;
++	ipeh_renew_option(IPV6_HOPOPTS, &opt2->hopopt,
++			  (opt ? opt->hopopt : NULL),
++			  newopt, newtype, &p);
++	ipeh_renew_option(IPV6_RTHDRDSTOPTS, &opt2->dst0opt,
++			  (opt ? opt->dst0opt : NULL),
++			  newopt, newtype, &p);
++	ipeh_renew_option(IPV6_RTHDR,
++			  (struct ipv6_opt_hdr **)&opt2->srcrt,
++			  (opt ? (struct ipv6_opt_hdr *)opt->srcrt : NULL),
++			  newopt, newtype, &p);
++	ipeh_renew_option(IPV6_DSTOPTS, &opt2->dst1opt,
++			  (opt ? opt->dst1opt : NULL),
++			  newopt, newtype, &p);
++
++	opt2->opt_nflen = (opt2->hopopt ? ipv6_optlen(opt2->hopopt) : 0) +
++			  (opt2->dst0opt ? ipv6_optlen(opt2->dst0opt) : 0) +
++			  (opt2->srcrt ? ipv6_optlen(opt2->srcrt) : 0);
++	opt2->opt_flen = (opt2->dst1opt ? ipv6_optlen(opt2->dst1opt) : 0);
++
++	return opt2;
 +}
++EXPORT_SYMBOL(ipeh_renew_options);
 +
-+/* CALIPSO RFC 5570 */
-+
-+static bool ipv6_hop_calipso(struct sk_buff *skb, int optoff)
++struct ipv6_txoptions *ipeh_fixup_options(struct ipv6_txoptions *opt_space,
++					  struct ipv6_txoptions *opt)
 +{
-+	const unsigned char *nh = skb_network_header(skb);
++	/* ignore the dest before srcrt unless srcrt is being included.
++	 * --yoshfuji
++	 */
++	if (opt && opt->dst0opt && !opt->srcrt) {
++		if (opt_space != opt) {
++			memcpy(opt_space, opt, sizeof(*opt_space));
++			opt = opt_space;
++		}
++		opt->opt_nflen -= ipv6_optlen(opt->dst0opt);
++		opt->dst0opt = NULL;
++	}
 +
-+	if (nh[optoff + 1] < 8)
-+		goto drop;
-+
-+	if (nh[optoff + 6] * 4 + 8 > nh[optoff + 1])
-+		goto drop;
-+
-+	if (!calipso_validate(skb, nh + optoff))
-+		goto drop;
-+
-+	return true;
-+
-+drop:
-+	kfree_skb(skb);
-+	return false;
++	return opt;
 +}
-+
-+const struct tlvtype_proc tlvprochopopt_lst[] = {
-+	{
-+		.type	= IPV6_TLV_ROUTERALERT,
-+		.func	= ipv6_hop_ra,
-+	},
-+	{
-+		.type	= IPV6_TLV_JUMBO,
-+		.func	= ipv6_hop_jumbo,
-+	},
-+	{
-+		.type	= IPV6_TLV_CALIPSO,
-+		.func	= ipv6_hop_calipso,
-+	},
-+	{ -1, }
-+};
++EXPORT_SYMBOL_GPL(ipeh_fixup_options);
+diff --git a/net/ipv6/ipv6_sockglue.c b/net/ipv6/ipv6_sockglue.c
+index 264c292..8755ecc 100644
+--- a/net/ipv6/ipv6_sockglue.c
++++ b/net/ipv6/ipv6_sockglue.c
+@@ -427,7 +427,7 @@ static int do_ipv6_setsockopt(struct sock *sk, int level, int optname,
+ 
+ 		opt = rcu_dereference_protected(np->opt,
+ 						lockdep_sock_is_held(sk));
+-		opt = ipv6_renew_options(sk, opt, optname, new);
++		opt = ipeh_renew_options(sk, opt, optname, new);
+ 		kfree(new);
+ 		if (IS_ERR(opt)) {
+ 			retv = PTR_ERR(opt);
+diff --git a/net/ipv6/raw.c b/net/ipv6/raw.c
+index 8a61319..5834ca4 100644
+--- a/net/ipv6/raw.c
++++ b/net/ipv6/raw.c
+@@ -888,7 +888,7 @@ static int rawv6_sendmsg(struct sock *sk, struct msghdr *msg, size_t len)
+ 	}
+ 	if (flowlabel)
+ 		opt = fl6_merge_options(&opt_space, flowlabel, opt);
+-	opt = ipv6_fixup_options(&opt_space, opt);
++	opt = ipeh_fixup_options(&opt_space, opt);
+ 
+ 	fl6.flowi6_proto = proto;
+ 
+diff --git a/net/ipv6/tcp_ipv6.c b/net/ipv6/tcp_ipv6.c
+index 87f44d3..6bbf24f 100644
+--- a/net/ipv6/tcp_ipv6.c
++++ b/net/ipv6/tcp_ipv6.c
+@@ -1243,7 +1243,7 @@ static struct sock *tcp_v6_syn_recv_sock(const struct sock *sk, struct sk_buff *
+ 	if (!opt)
+ 		opt = rcu_dereference(np->opt);
+ 	if (opt) {
+-		opt = ipv6_dup_options(newsk, opt);
++		opt = ipeh_dup_options(newsk, opt);
+ 		RCU_INIT_POINTER(newnp->opt, opt);
+ 	}
+ 	inet_csk(newsk)->icsk_ext_hdr_len = 0;
+diff --git a/net/ipv6/udp.c b/net/ipv6/udp.c
+index 827fe73..02ab20e 100644
+--- a/net/ipv6/udp.c
++++ b/net/ipv6/udp.c
+@@ -1384,7 +1384,7 @@ int udpv6_sendmsg(struct sock *sk, struct msghdr *msg, size_t len)
+ 	}
+ 	if (flowlabel)
+ 		opt = fl6_merge_options(&opt_space, flowlabel, opt);
+-	opt = ipv6_fixup_options(&opt_space, opt);
++	opt = ipeh_fixup_options(&opt_space, opt);
+ 	ipc6.opt = opt;
+ 
+ 	fl6.flowi6_proto = sk->sk_protocol;
+diff --git a/net/l2tp/l2tp_ip6.c b/net/l2tp/l2tp_ip6.c
+index 687e23a..bc4925c 100644
+--- a/net/l2tp/l2tp_ip6.c
++++ b/net/l2tp/l2tp_ip6.c
+@@ -590,7 +590,7 @@ static int l2tp_ip6_sendmsg(struct sock *sk, struct msghdr *msg, size_t len)
+ 	}
+ 	if (flowlabel)
+ 		opt = fl6_merge_options(&opt_space, flowlabel, opt);
+-	opt = ipv6_fixup_options(&opt_space, opt);
++	opt = ipeh_fixup_options(&opt_space, opt);
+ 	ipc6.opt = opt;
+ 
+ 	fl6.flowi6_proto = sk->sk_protocol;
+diff --git a/net/sctp/ipv6.c b/net/sctp/ipv6.c
+index e5f2fc7..b5b1349 100644
+--- a/net/sctp/ipv6.c
++++ b/net/sctp/ipv6.c
+@@ -441,7 +441,7 @@ static void sctp_v6_copy_ip_options(struct sock *sk, struct sock *newsk)
+ 	rcu_read_lock();
+ 	opt = rcu_dereference(np->opt);
+ 	if (opt) {
+-		opt = ipv6_dup_options(newsk, opt);
++		opt = ipeh_dup_options(newsk, opt);
+ 		if (!opt)
+ 			pr_err("%s: Failed to copy ip options\n", __func__);
+ 	}
 -- 
 2.7.4
 
