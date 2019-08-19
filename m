@@ -1,88 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DAFE922F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2019 14:02:46 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A2F092766
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2019 16:48:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BE8D7204DC;
-	Mon, 19 Aug 2019 12:02:44 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D70F887D36;
+	Mon, 19 Aug 2019 14:47:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gmhwhI8omCNw; Mon, 19 Aug 2019 12:02:44 +0000 (UTC)
+	with ESMTP id 54Y-xvhkDMUb; Mon, 19 Aug 2019 14:47:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3D063204F6;
-	Mon, 19 Aug 2019 12:02:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F8E187DD4;
+	Mon, 19 Aug 2019 14:47:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D1BBB1BF358
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 12:02:40 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9611D1BF36B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 14:47:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C6060204E8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 12:02:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 91C5C87DCC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 14:47:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9YRULh2wQil1 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Aug 2019 12:02:38 +0000 (UTC)
+ with ESMTP id d9iRLcSqAvos for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Aug 2019 14:47:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from userp2130.oracle.com (userp2130.oracle.com [156.151.31.86])
- by silver.osuosl.org (Postfix) with ESMTPS id BE87E204DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 12:02:38 +0000 (UTC)
-Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
- by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7JBxPqe004860;
- Mon, 19 Aug 2019 12:02:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2019-08-05;
- bh=8cn6hZdHa3AqYIQsotWH6MoMMp4n4HsHlra+JK8qZEA=;
- b=K+FlKY+SCTRMn6F3wj01O0K1WSx4GXyrw8A4fA3wrhSpdR/jwn57ODGkIIS6bvoyYIgz
- TkjDRyYDLcudQkCe7j9rK1vWlcKtMgYJpsOssz8vP/gPKrhyfHnDIGXN8sLzWUtmGzm2
- WZCD2dr2qaj4WdweBYE0r74q99pGjTjb4lM7/4y2f3IW9u28t/RhS0wxfUltZA8keqmx
- GhPMxkQl7WTFV1d6awR5rbkP+VjnB0mojNPUZJZxrp5pdOnubySqWR0lfNey30UDYZRZ
- wqVQ2xEOnvNlG8ttFT99pIftxIndChwzR3azgY5G4U+YtTg8oPulHFz8gKOmLHDkVxJh Lw== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2130.oracle.com with ESMTP id 2ue90t72tx-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 19 Aug 2019 12:02:36 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x7JBwwwA055426;
- Mon, 19 Aug 2019 12:02:36 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 2uejxe33fv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 19 Aug 2019 12:02:35 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x7JC2X4R031651;
- Mon, 19 Aug 2019 12:02:35 GMT
-Received: from mwanda (/41.57.98.10) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 19 Aug 2019 05:02:33 -0700
-Date: Mon, 19 Aug 2019 15:02:28 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: czeslawx.zagorski@intel.com
-Message-ID: <20190819120228.GA27099@mwanda>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A8FA087DB2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2019 14:47:56 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Aug 2019 07:47:56 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,405,1559545200"; d="scan'208";a="180382468"
+Received: from klaatz-mobl1.ger.corp.intel.com (HELO [10.237.221.61])
+ ([10.237.221.61])
+ by orsmga003.jf.intel.com with ESMTP; 19 Aug 2019 07:47:52 -0700
+To: Maxim Mikityanskiy <maximmi@mellanox.com>
+References: <20190724051043.14348-1-kevin.laatz@intel.com>
+ <20190730085400.10376-1-kevin.laatz@intel.com>
+ <20190730085400.10376-8-kevin.laatz@intel.com>
+ <bc0c966f-4cda-4d48-566f-f5bff376210a@mellanox.com>
+ <390f80fc-3f8a-a9ed-6ac7-8a1a41621559@mellanox.com>
+From: "Laatz, Kevin" <kevin.laatz@intel.com>
+Message-ID: <68cc44b5-7846-ec0b-4cb1-99dbe7faabcc@intel.com>
+Date: Mon, 19 Aug 2019 15:47:52 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9353
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- malwarescore=0
- phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=664
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1906280000 definitions=main-1908190138
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9353
- signatures=668684
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- priorityscore=1501 malwarescore=0
- suspectscore=1 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
- lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=727 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1906280000
- definitions=main-1908190138
-Subject: [Intel-wired-lan] [bug report] i40e: Log info when PF is entering
- and leaving Allmulti mode.
+In-Reply-To: <390f80fc-3f8a-a9ed-6ac7-8a1a41621559@mellanox.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 07/11] mlx5e: modify
+ driver for handling offsets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,95 +69,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "jakub.kicinski@netronome.com" <jakub.kicinski@netronome.com>,
+ "daniel@iogearbox.net" <daniel@iogearbox.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "ciara.loftus@intel.com" <ciara.loftus@intel.com>,
+ "ast@kernel.org" <ast@kernel.org>,
+ "stephen@networkplumber.org" <stephen@networkplumber.org>,
+ Saeed Mahameed <saeedm@mellanox.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>,
+ "bruce.richardson@intel.com" <bruce.richardson@intel.com>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "bjorn.topel@intel.com" <bjorn.topel@intel.com>,
+ "magnus.karlsson@intel.com" <magnus.karlsson@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Czeslaw Zagorski,
-
-The patch b603f9dc20af: "i40e: Log info when PF is entering and
-leaving Allmulti mode." from Jul 2, 2019, leads to the following
-static checker warning:
-
-	drivers/net/ethernet/intel/i40e/i40e_main.c:2534 i40e_sync_vsi_filters()
-	error: we previously assumed 'vsi->netdev' could be null (see line 2286)
-
-drivers/net/ethernet/intel/i40e/i40e_main.c
-  2254  int i40e_sync_vsi_filters(struct i40e_vsi *vsi)
-  2255  {
-  2256          struct hlist_head tmp_add_list, tmp_del_list;
-  2257          struct i40e_mac_filter *f;
-  2258          struct i40e_new_mac_filter *new, *add_head = NULL;
-  2259          struct i40e_hw *hw = &vsi->back->hw;
-  2260          bool old_overflow, new_overflow;
-  2261          unsigned int failed_filters = 0;
-  2262          unsigned int vlan_filters = 0;
-  2263          char vsi_name[16] = "PF";
-  2264          int filter_list_len = 0;
-  2265          i40e_status aq_ret = 0;
-  2266          u32 changed_flags = 0;
-  2267          struct hlist_node *h;
-  2268          struct i40e_pf *pf;
-  2269          int num_add = 0;
-  2270          int num_del = 0;
-  2271          int retval = 0;
-  2272          u16 cmd_flags;
-  2273          int list_size;
-  2274          int bkt;
-  2275  
-  2276          /* empty array typed pointers, kcalloc later */
-  2277          struct i40e_aqc_add_macvlan_element_data *add_list;
-  2278          struct i40e_aqc_remove_macvlan_element_data *del_list;
-  2279  
-  2280          while (test_and_set_bit(__I40E_VSI_SYNCING_FILTERS, vsi->state))
-  2281                  usleep_range(1000, 2000);
-  2282          pf = vsi->back;
-  2283  
-  2284          old_overflow = test_bit(__I40E_VSI_OVERFLOW_PROMISC, vsi->state);
-  2285  
-  2286          if (vsi->netdev) {
-                    ^^^^^^^^^^^
-The existing code assumes that this can be NULL.
-
-  2287                  changed_flags = vsi->current_netdev_flags ^ vsi->netdev->flags;
-  2288                  vsi->current_netdev_flags = vsi->netdev->flags;
-  2289          }
-  2290  
-
-[ snip ]
-
-  2516          /* check for changes in promiscuous modes */
-  2517          if (changed_flags & IFF_ALLMULTI) {
-  2518                  bool cur_multipromisc;
-  2519  
-  2520                  cur_multipromisc = !!(vsi->current_netdev_flags & IFF_ALLMULTI);
-  2521                  aq_ret = i40e_aq_set_vsi_multicast_promiscuous(&vsi->back->hw,
-  2522                                                                 vsi->seid,
-  2523                                                                 cur_multipromisc,
-  2524                                                                 NULL);
-  2525                  if (aq_ret) {
-  2526                          retval = i40e_aq_rc_to_posix(aq_ret,
-  2527                                                       hw->aq.asq_last_status);
-  2528                          dev_info(&pf->pdev->dev,
-  2529                                   "set multi promisc failed on %s, err %s aq_err %s\n",
-  2530                                   vsi_name,
-  2531                                   i40e_stat_str(hw, aq_ret),
-  2532                                   i40e_aq_str(hw, hw->aq.asq_last_status));
-  2533                  } else {
-  2534                          dev_info(&pf->pdev->dev, "%s is %s allmulti mode.\n",
-  2535                                   vsi->netdev->name,
-                                         ^^^^^^^^^^^^^^^^^
-Unchecked dereference.  Do you want to use vsi_name instead?
-
-  2536                                   cur_multipromisc ? "entering" : "leaving");
-  2537                  }
-  2538          }
-
-regards,
-dan carpenter
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTkvMDgvMjAxOSAxNTozNiwgTWF4aW0gTWlraXR5YW5za2l5IHdyb3RlOgo+IE9uIDIwMTkt
+MDgtMDEgMTM6MDUsIE1heGltIE1pa2l0eWFuc2tpeSB3cm90ZToKPj4gT24gMjAxOS0wNy0zMCAx
+MTo1MywgS2V2aW4gTGFhdHogd3JvdGU6Cj4+PiBXaXRoIHRoZSBhZGRpdGlvbiBvZiB0aGUgdW5h
+bGlnbmVkIGNodW5rcyBvcHRpb24sIHdlIG5lZWQgdG8gbWFrZSBzdXJlIHdlCj4+PiBoYW5kbGUg
+dGhlIG9mZnNldHMgYWNjb3JkaW5nbHkgYmFzZWQgb24gdGhlIG1vZGUgd2UgYXJlIGN1cnJlbnRs
+eSBydW5uaW5nCj4+PiBpbi4gVGhpcyBwYXRjaCBtb2RpZmllcyB0aGUgZHJpdmVyIHRvIGFwcHJv
+cHJpYXRlbHkgbWFzayB0aGUgYWRkcmVzcyBmb3IKPj4+IGVhY2ggY2FzZS4KPj4+Cj4+PiBTaWdu
+ZWQtb2ZmLWJ5OiBLZXZpbiBMYWF0eiA8a2V2aW4ubGFhdHpAaW50ZWwuY29tPgo+PiBQbGVhc2Ug
+bm90ZSB0aGF0IHRoaXMgcGF0Y2ggZG9lc24ndCBhY3R1YWxseSBhZGQgdGhlIHN1cHBvcnQgZm9y
+IHRoZSBuZXcKPj4gZmVhdHVyZSwgYmVjYXVzZSB0aGUgdmFsaWRhdGlvbiBjaGVja3MgaW4gbWx4
+NWVfcnhfZ2V0X2xpbmVhcl9mcmFnX3N6Cj4+IGFuZCBtbHg1ZV92YWxpZGF0ZV94c2tfcGFyYW0g
+bmVlZCB0byBiZSByZWxheGVkLiBDdXJyZW50bHkgdGhlIGZyYW1lCj4+IHNpemUgb2YgUEFHRV9T
+SVpFIGlzIGZvcmNlZCwgYW5kIHRoZSBmcmFnbWVudCBzaXplIGlzIGluY3JlYXNlZCB0bwo+PiBQ
+QUdFX1NJWkUgaW4gY2FzZSBvZiBYRFAgKGluY2x1ZGluZyBYU0spLgo+Pgo+PiBBZnRlciBtYWtp
+bmcgdGhlIGNoYW5nZXMgcmVxdWlyZWQgdG8gcGVybWl0IGZyYW1lIHNpemVzIHNtYWxsZXIgdGhh
+bgo+PiBQQUdFX1NJWkUsIG91ciBTdHJpZGluZyBSUSBmZWF0dXJlIHdpbGwgYmUgdXNlZCBpbiBh
+IHdheSB3ZSBoYXZlbid0IHVzZWQKPj4gaXQgYmVmb3JlLCBzbyB3ZSBuZWVkIHRvIHZlcmlmeSB3
+aXRoIHRoZSBoYXJkd2FyZSB0ZWFtIHRoYXQgdGhpcyB1c2FnZQo+PiBpcyBsZWdpdGltYXRlLgo+
+IEFmdGVyIGRpc2N1c3NpbmcgaXQgaW50ZXJuYWxseSwgd2UgZm91bmQgYSB3YXkgdG8gc3VwcG9y
+dCB1bmFsaWduZWQgWFNLCj4gd2l0aCBTdHJpZGluZyBSUSwgYW5kIHRoZSBoYXJkd2FyZSBpcyBj
+b21wYXRpYmxlIHdpdGggdGhpcyB3YXkuIEkgaGF2ZQo+IHBlcmZvcm1lZCBzb21lIHRlc3Rpbmcs
+IGFuZCBpdCBsb29rcyB3b3JraW5nLgpHcmVhdCBuZXdzISA6LSkKPgo+IFlvdXIgcGF0Y2ggb25s
+eSBhZGRzIHN1cHBvcnQgZm9yIHRoZSBuZXcgaGFuZGxlIGZvcm1hdCB0byBvdXIgZHJpdmVyLAo+
+IGFuZCBJJ3ZlIG1hZGUgYW5vdGhlciBwYXRjaCB0aGF0IGFjdHVhbGx5IGVuYWJsZXMgdGhlIG5l
+dyBmZWF0dXJlIChtYWtlcwo+IG1seDVlIGFjY2VwdCBmcmFtZSBzaXplcyBkaWZmZXJlbnQgZnJv
+bSBQQUdFX1NJWkUpLiBJdCdzIGN1cnJlbnRseSBvbgo+IGludGVybmFsIHJldmlldy4KVGhhbmtz
+IGZvciB0YWtpbmcgdGhlIHRpbWUgdG8gcHJlcGFyZSB0aGUgcGF0Y2ghCj4KPiBQbGVhc2UgYWxz
+byBkb24ndCBmb3JnZXQgdG8gZml4IHRoZSBzL19oYW5kbGVfL19hZGp1c3RfLyB0eXBvLgoKSSBo
+YXZlIGZpeGVkIGl0IGluIHRoZSBuZXh0IHZlcnNpb24gKGFsc28gY3VycmVudGx5IG9uIGludGVy
+bmFsIHJldmlldykuCgpSZWdhcmRzLAoKS2V2aW4KCj4KPj4+IC0tLQo+Pj4gdjM6Cj4+PiAgwqDC
+oCAtIFVzZSBuZXcgaGVscGVyIGZ1bmN0aW9uIHRvIGhhbmRsZSBvZmZzZXQKPj4+Cj4+PiB2NDoK
+Pj4+ICDCoMKgIC0gZml4ZWQgaGVhZHJvb20gYWRkaXRpb24gdG8gaGFuZGxlLiBVc2luZyB4c2tf
+dW1lbV9hZGp1c3RfaGVhZHJvb20oKQo+Pj4gIMKgwqDCoMKgIG5vdy4KPj4+IC0tLQo+Pj4gIMKg
+IGRyaXZlcnMvbmV0L2V0aGVybmV0L21lbGxhbm94L21seDUvY29yZS9lbi94ZHAuY8KgwqDCoCB8
+IDggKysrKysrLS0KPj4+ICDCoCBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWxsYW5veC9tbHg1L2Nv
+cmUvZW4veHNrL3J4LmMgfCAzICsrLQo+Pj4gIMKgIDIgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRp
+b25zKCspLCAzIGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9tZWxsYW5veC9tbHg1L2NvcmUvZW4veGRwLmMKPj4+IGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvbWVsbGFub3gvbWx4NS9jb3JlL2VuL3hkcC5jCj4+PiBpbmRleCBiMGI5ODJjZjY5YmIu
+LmQ1MjQ1ODkzZDJjOCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L21lbGxh
+bm94L21seDUvY29yZS9lbi94ZHAuYwo+Pj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVs
+bGFub3gvbWx4NS9jb3JlL2VuL3hkcC5jCj4+PiBAQCAtMTIyLDYgKzEyMiw3IEBAIGJvb2wgbWx4
+NWVfeGRwX2hhbmRsZShzdHJ1Y3QgbWx4NWVfcnEgKnJxLCBzdHJ1Y3QKPj4+IG1seDVlX2RtYV9p
+bmZvICpkaSwKPj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdm9pZCAqdmEsIHUx
+NiAqcnhfaGVhZHJvb20sIHUzMiAqbGVuLCBib29sIHhzaykKPj4+ICDCoCB7Cj4+PiAgwqDCoMKg
+wqDCoCBzdHJ1Y3QgYnBmX3Byb2cgKnByb2cgPSBSRUFEX09OQ0UocnEtPnhkcF9wcm9nKTsKPj4+
+ICvCoMKgwqAgc3RydWN0IHhkcF91bWVtICp1bWVtID0gcnEtPnVtZW07Cj4+PiAgwqDCoMKgwqDC
+oCBzdHJ1Y3QgeGRwX2J1ZmYgeGRwOwo+Pj4gIMKgwqDCoMKgwqAgdTMyIGFjdDsKPj4+ICDCoMKg
+wqDCoMKgIGludCBlcnI7Cj4+PiBAQCAtMTM4LDggKzEzOSwxMSBAQCBib29sIG1seDVlX3hkcF9o
+YW5kbGUoc3RydWN0IG1seDVlX3JxICpycSwgc3RydWN0Cj4+PiBtbHg1ZV9kbWFfaW5mbyAqZGks
+Cj4+PiAgwqDCoMKgwqDCoCB4ZHAucnhxID0gJnJxLT54ZHBfcnhxOwo+Pj4gIMKgwqDCoMKgwqAg
+YWN0ID0gYnBmX3Byb2dfcnVuX3hkcChwcm9nLCAmeGRwKTsKPj4+IC3CoMKgwqAgaWYgKHhzaykK
+Pj4+IC3CoMKgwqDCoMKgwqDCoCB4ZHAuaGFuZGxlICs9IHhkcC5kYXRhIC0geGRwLmRhdGFfaGFy
+ZF9zdGFydDsKPj4+ICvCoMKgwqAgaWYgKHhzaykgewo+Pj4gK8KgwqDCoMKgwqDCoMKgIHU2NCBv
+ZmYgPSB4ZHAuZGF0YSAtIHhkcC5kYXRhX2hhcmRfc3RhcnQ7Cj4+PiArCj4+PiArwqDCoMKgwqDC
+oMKgwqAgeGRwLmhhbmRsZSA9IHhza191bWVtX2hhbmRsZV9vZmZzZXQodW1lbSwgeGRwLmhhbmRs
+ZSwgb2ZmKTsKPj4+ICvCoMKgwqAgfQo+Pj4gIMKgwqDCoMKgwqAgc3dpdGNoIChhY3QpIHsKPj4+
+ICDCoMKgwqDCoMKgIGNhc2UgWERQX1BBU1M6Cj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgICpyeF9o
+ZWFkcm9vbSA9IHhkcC5kYXRhIC0geGRwLmRhdGFfaGFyZF9zdGFydDsKPj4+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWxsYW5veC9tbHg1L2NvcmUvZW4veHNrL3J4LmMKPj4+
+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVsbGFub3gvbWx4NS9jb3JlL2VuL3hzay9yeC5jCj4+
+PiBpbmRleCA2YTU1NTczZWM4ZjIuLjdjNDlhNjZkMjhjOSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L21lbGxhbm94L21seDUvY29yZS9lbi94c2svcnguYwo+Pj4gKysrIGIv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVsbGFub3gvbWx4NS9jb3JlL2VuL3hzay9yeC5jCj4+PiBA
+QCAtMjQsNyArMjQsOCBAQCBpbnQgbWx4NWVfeHNrX3BhZ2VfYWxsb2NfdW1lbShzdHJ1Y3QgbWx4
+NWVfcnEgKnJxLAo+Pj4gIMKgwqDCoMKgwqAgaWYgKCF4c2tfdW1lbV9wZWVrX2FkZHJfcnEodW1l
+bSwgJmhhbmRsZSkpCj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiAtRU5PTUVNOwo+Pj4g
+LcKgwqDCoCBkbWFfaW5mby0+eHNrLmhhbmRsZSA9IGhhbmRsZSArIHJxLT5idWZmLnVtZW1faGVh
+ZHJvb207Cj4+PiArwqDCoMKgIGRtYV9pbmZvLT54c2suaGFuZGxlID0geHNrX3VtZW1fYWRqdXN0
+X29mZnNldCh1bWVtLCBoYW5kbGUsCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBycS0+YnVmZi51bWVtX2hlYWRyb29tKTsKPj4+
+ICDCoMKgwqDCoMKgIGRtYV9pbmZvLT54c2suZGF0YSA9IHhkcF91bWVtX2dldF9kYXRhKHVtZW0s
+IGRtYV9pbmZvLT54c2suaGFuZGxlKTsKPj4+ICDCoMKgwqDCoMKgIC8qIE5vIG5lZWQgdG8gYWRk
+IGhlYWRyb29tIHRvIHRoZSBETUEgYWRkcmVzcy4gSW4gc3RyaWRpbmcgUlEKPj4+IGNhc2UsIHdl
+Cj4+PgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRl
+bC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBz
+Oi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
