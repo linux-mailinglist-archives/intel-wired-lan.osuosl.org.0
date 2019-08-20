@@ -1,53 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2ED7096756
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2019 19:21:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B60C096822
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2019 19:57:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AAEF62287D;
-	Tue, 20 Aug 2019 17:21:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4375186B18;
+	Tue, 20 Aug 2019 17:57:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gwwmrLzqiA6Z; Tue, 20 Aug 2019 17:21:34 +0000 (UTC)
+	with ESMTP id xKe-2EBFNCnz; Tue, 20 Aug 2019 17:57:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E61BE228B4;
-	Tue, 20 Aug 2019 17:21:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B382386972;
+	Tue, 20 Aug 2019 17:57:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 66CD11BF681
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 17:21:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C19611BF681
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 17:57:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6351B2287D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 17:21:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BD06788354
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 17:57:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sh6PPoDC-Hn4 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Aug 2019 17:21:27 +0000 (UTC)
+ with ESMTP id fw-mrB1xQjc6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Aug 2019 17:57:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id 7DFF622855
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 17:21:27 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7123C8832D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 17:57:33 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2019 10:21:17 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Aug 2019 10:57:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,408,1559545200"; d="scan'208";a="189928437"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga002.jf.intel.com with ESMTP; 20 Aug 2019 10:21:17 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Aug 2019 01:52:37 -0700
-Message-Id: <20190820085237.35579-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
+X-IronPort-AV: E=Sophos;i="5.64,408,1559545200"; d="scan'208";a="207451967"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.172])
+ by fmsmga002.fm.intel.com with ESMTP; 20 Aug 2019 10:57:33 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Tue, 20 Aug 2019 10:57:31 -0700
+Message-Id: <20190820175731.32609-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.23.0.245.gf157bbb9169d
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next v3 04/14] ice: fix set pause param
- autoneg check
+Subject: [Intel-wired-lan] [PATCH] fm10k: add support for ndo_get_vf_stats
+ operation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,82 +60,150 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "nosbuild \(Code Review\)" <nosbuild@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul Greenwalt <paul.greenwalt@intel.com>
+From: "nosbuild (Code Review)" <nosbuild@intel.com>
 
-When ETHTOOL_GLINKSETTINGS is defined get pause param pause->autoneg
-reports SW configured setting, however when not defined get pause param
-pause->autoneg reports the link status. Set pause param needs to compare
-pause->autoneg with the same source as get pause param to block the user
-from changing autoneg with the set pause param option, or the user
-may be incorrectly blocked from changing Rx|Tx pause settings.
+Support capturing and reporting statistics for all of the VFs associated
+with a given PF device via the ndo_get_vf_stats callback.
 
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 27 +++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
----
-v3:
- - Use kzalloc/kfree instead of devm_kzalloc/devm_kzfree
+ drivers/net/ethernet/intel/fm10k/fm10k.h      |  3 ++
+ drivers/net/ethernet/intel/fm10k/fm10k_iov.c  | 48 +++++++++++++++++++
+ .../net/ethernet/intel/fm10k/fm10k_netdev.c   |  1 +
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c  |  3 ++
+ drivers/net/ethernet/intel/fm10k/fm10k_type.h |  1 +
+ 5 files changed, 56 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 1fe048cfb737..0099cfb21860 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2856,6 +2856,7 @@ static int
- ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
- {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_aqc_get_phy_caps_data *pcaps;
- 	struct ice_link_status *hw_link_info;
- 	struct ice_pf *pf = np->vsi->back;
- 	struct ice_dcbx_cfg *dcbx_cfg;
-@@ -2866,6 +2867,7 @@ ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
- 	u8 aq_failures;
- 	bool link_up;
- 	int err = 0;
-+	u32 is_an;
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k.h b/drivers/net/ethernet/intel/fm10k/fm10k.h
+index b14441944b4b..f306084ca12c 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k.h
++++ b/drivers/net/ethernet/intel/fm10k/fm10k.h
+@@ -534,6 +534,7 @@ void fm10k_iov_suspend(struct pci_dev *pdev);
+ int fm10k_iov_resume(struct pci_dev *pdev);
+ void fm10k_iov_disable(struct pci_dev *pdev);
+ int fm10k_iov_configure(struct pci_dev *pdev, int num_vfs);
++void fm10k_iov_update_stats(struct fm10k_intfc *interface);
+ s32 fm10k_iov_update_pvid(struct fm10k_intfc *interface, u16 glort, u16 pvid);
+ int fm10k_ndo_set_vf_mac(struct net_device *netdev, int vf_idx, u8 *mac);
+ int fm10k_ndo_set_vf_vlan(struct net_device *netdev,
+@@ -542,6 +543,8 @@ int fm10k_ndo_set_vf_bw(struct net_device *netdev, int vf_idx,
+ 			int __always_unused min_rate, int max_rate);
+ int fm10k_ndo_get_vf_config(struct net_device *netdev,
+ 			    int vf_idx, struct ifla_vf_info *ivi);
++int fm10k_ndo_get_vf_stats(struct net_device *netdev,
++			   int vf_idx, struct ifla_vf_stats *stats);
  
- 	pi = vsi->port_info;
- 	hw_link_info = &pi->phy.link_info;
-@@ -2880,7 +2882,30 @@ ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
- 		return -EOPNOTSUPP;
- 	}
+ /* DebugFS */
+ #ifdef CONFIG_DEBUG_FS
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_iov.c b/drivers/net/ethernet/intel/fm10k/fm10k_iov.c
+index afe1fafd2447..8c50a128df29 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_iov.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_iov.c
+@@ -520,6 +520,27 @@ int fm10k_iov_configure(struct pci_dev *pdev, int num_vfs)
+ 	return num_vfs;
+ }
  
--	if (pause->autoneg != (hw_link_info->an_info & ICE_AQ_AN_COMPLETED)) {
-+	/* Get pause param reports configured and negotiated flow control pause
-+	 * when ETHTOOL_GLINKSETTINGS is defined. Since ETHTOOL_GLINKSETTINGS is
-+	 * defined get pause param pause->autoneg reports SW configured setting,
-+	 * so compare pause->autoneg with SW configured to prevent the user from
-+	 * using set pause param to chance autoneg.
-+	 */
-+	pcaps = kzalloc(sizeof(*pcaps), GFP_KERNEL);
-+	if (!pcaps)
-+		return -ENOMEM;
++/**
++ * fm10k_iov_update_stats - Update stats for all VFs
++ * @interface: device private structure
++ *
++ * Updates the VF statistics for all enabled VFs. Expects to be called by
++ * fm10k_update_stats and assumes that locking via the __FM10K_UPDATING_STATS
++ * bit is already handled.
++ */
++void fm10k_iov_update_stats(struct fm10k_intfc *interface)
++{
++	struct fm10k_iov_data *iov_data = interface->iov_data;
++	struct fm10k_hw *hw = &interface->hw;
++	int i;
 +
-+	/* Get current PHY config */
-+	status = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_SW_CFG, pcaps,
-+				     NULL);
-+	if (status) {
-+		kfree(pcaps);
-+		return -EIO;
++	if (!iov_data)
++		return;
++
++	for (i = 0; i < iov_data->num_vfs; i++)
++		hw->iov.ops.update_stats(hw, iov_data->vf_info[i].stats, i);
++}
++
+ static inline void fm10k_reset_vf_info(struct fm10k_intfc *interface,
+ 				       struct fm10k_vf_info *vf_info)
+ {
+@@ -650,3 +671,30 @@ int fm10k_ndo_get_vf_config(struct net_device *netdev,
+ 
+ 	return 0;
+ }
++
++int fm10k_ndo_get_vf_stats(struct net_device *netdev,
++			   int vf_idx, struct ifla_vf_stats *stats)
++{
++	struct fm10k_intfc *interface = netdev_priv(netdev);
++	struct fm10k_iov_data *iov_data = interface->iov_data;
++	struct fm10k_hw *hw = &interface->hw;
++	struct fm10k_hw_stats_q *hw_stats;
++	u32 idx, qpp;
++
++	/* verify SR-IOV is active and that vf idx is valid */
++	if (!iov_data || vf_idx >= iov_data->num_vfs)
++		return -EINVAL;
++
++	qpp = fm10k_queues_per_pool(hw);
++	hw_stats = iov_data->vf_info[vf_idx].stats;
++
++	for (idx = 0; idx < qpp; idx++) {
++		stats->rx_packets += hw_stats[idx].rx_packets.count;
++		stats->tx_packets += hw_stats[idx].tx_packets.count;
++		stats->rx_bytes += hw_stats[idx].rx_bytes.count;
++		stats->tx_bytes += hw_stats[idx].tx_bytes.count;
++		stats->rx_dropped += hw_stats[idx].rx_drops.count;
 +	}
 +
-+	is_an = ((pcaps->caps & ICE_AQC_PHY_AN_MODE) ?
-+			AUTONEG_ENABLE : AUTONEG_DISABLE);
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_netdev.c b/drivers/net/ethernet/intel/fm10k/fm10k_netdev.c
+index d3e85480f46d..2873e8283192 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_netdev.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_netdev.c
+@@ -1644,6 +1644,7 @@ static const struct net_device_ops fm10k_netdev_ops = {
+ 	.ndo_set_vf_vlan	= fm10k_ndo_set_vf_vlan,
+ 	.ndo_set_vf_rate	= fm10k_ndo_set_vf_bw,
+ 	.ndo_get_vf_config	= fm10k_ndo_get_vf_config,
++	.ndo_get_vf_stats	= fm10k_ndo_get_vf_stats,
+ 	.ndo_udp_tunnel_add	= fm10k_udp_tunnel_add,
+ 	.ndo_udp_tunnel_del	= fm10k_udp_tunnel_del,
+ 	.ndo_dfwd_add_station	= fm10k_dfwd_add_station,
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+index bb236fa44048..d122d0087191 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+@@ -630,6 +630,9 @@ void fm10k_update_stats(struct fm10k_intfc *interface)
+ 	net_stats->rx_errors = rx_errors;
+ 	net_stats->rx_dropped = interface->stats.nodesc_drop.count;
+ 
++	/* Update VF statistics */
++	fm10k_iov_update_stats(interface);
 +
-+	kfree(pcaps);
-+
-+	if (pause->autoneg != is_an) {
- 		netdev_info(netdev, "To change autoneg please use: ethtool -s <dev> autoneg <on|off>\n");
- 		return -EOPNOTSUPP;
- 	}
+ 	clear_bit(__FM10K_UPDATING_STATS, interface->state);
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_type.h b/drivers/net/ethernet/intel/fm10k/fm10k_type.h
+index 15ac1c7885bc..63968c5d7c5d 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_type.h
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_type.h
+@@ -581,6 +581,7 @@ struct fm10k_vf_info {
+ 	 * at the same offset as the mailbox
+ 	 */
+ 	struct fm10k_mbx_info	mbx;		/* PF side of VF mailbox */
++	struct fm10k_hw_stats_q	stats[FM10K_MAX_QUEUES_POOL];
+ 	int			rate;		/* Tx BW cap as defined by OS */
+ 	u16			glort;		/* resource tag for this VF */
+ 	u16			sw_vid;		/* Switch API assigned VLAN */
 -- 
-2.20.1
+2.23.0.245.gf157bbb9169d
 
 _______________________________________________
 Intel-wired-lan mailing list
