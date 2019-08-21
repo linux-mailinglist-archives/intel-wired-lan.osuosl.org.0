@@ -1,56 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FBA798164
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Aug 2019 19:36:18 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B4D9B20008;
-	Wed, 21 Aug 2019 17:36:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pr-ToTEf2MlM; Wed, 21 Aug 2019 17:36:16 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E64AF20461;
-	Wed, 21 Aug 2019 17:36:13 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F031F1BF308
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 17:36:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B947798223
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Aug 2019 19:59:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id EC5D3861DE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 17:36:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FF7F863E2;
+	Wed, 21 Aug 2019 17:59:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6jE0jrImsRLd; Wed, 21 Aug 2019 17:59:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 27684863DD;
+	Wed, 21 Aug 2019 17:59:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AAA61BF314
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 10:09:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 050E986762
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 10:09:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zzXWX3Sb7nL3 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Aug 2019 17:36:11 +0000 (UTC)
+ with ESMTP id qFopYOl7g0hE for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Aug 2019 10:09:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 46D68861A1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 17:36:11 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2019 10:36:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,412,1559545200"; d="scan'208";a="354002588"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 21 Aug 2019 10:36:09 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1i0UWm-000GwK-Pr; Thu, 22 Aug 2019 01:36:08 +0800
-Date: Thu, 22 Aug 2019 01:35:59 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d5d80ff.cg5y6BLrPz6LQrwB%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CD50986506
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 10:09:11 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id F05063003185;
+ Wed, 21 Aug 2019 10:09:10 +0000 (UTC)
+Received: from [10.36.116.152] (ovpn-116-152.ams2.redhat.com [10.36.116.152])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 433F75B807;
+ Wed, 21 Aug 2019 10:09:07 +0000 (UTC)
+From: "Eelco Chaudron" <echaudro@redhat.com>
+To: "Ilya Maximets" <i.maximets@samsung.com>
+Date: Wed, 21 Aug 2019 12:09:06 +0200
+Message-ID: <9EFD9B47-2CD0-4D7A-BA22-D87018894E91@redhat.com>
+In-Reply-To: <20190820151611.10727-1-i.maximets@samsung.com>
+References: <CGME20190820151644eucas1p179d6d1da42bb6be0aad8f58ac46624ce@eucas1p1.samsung.com>
+ <20190820151611.10727-1-i.maximets@samsung.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS
- be6f7ef69cf0d8cfeb6af5ad62c558fe35e13cce
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.40]); Wed, 21 Aug 2019 10:09:11 +0000 (UTC)
+X-Mailman-Approved-At: Wed, 21 Aug 2019 17:59:20 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: fix double clean of tx
+ descriptors with xdp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,175 +66,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Alexei Starovoitov <ast@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ =?utf-8?b?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Magnus Karlsson <magnus.karlsson@intel.com>, William Tu <u9012063@gmail.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
-branch HEAD: be6f7ef69cf0d8cfeb6af5ad62c558fe35e13cce  ice: improve print for VF's when adding/deleting MAC filters
 
-elapsed time: 1157m
 
-configs tested: 150
+On 20 Aug 2019, at 17:16, Ilya Maximets wrote:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> Tx code doesn't clear the descriptor status after cleaning.
+> So, if the budget is larger than number of used elems in a ring, some
+> descriptors will be accounted twice and xsk_umem_complete_tx will move
+> prod_tail far beyond the prod_head breaking the comletion queue ring.
+>
+> Fix that by limiting the number of descriptors to clean by the number
+> of used descriptors in the tx ring.
+>
+> Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
+> Signed-off-by: Ilya Maximets <i.maximets@samsung.com>
+> ---
+>
+> Not tested yet because of lack of available hardware.
+> So, testing is very welcome.
+>
+Hi Ilya, this patch fixes the issue I reported earlier on the Open 
+vSwitch mailing list regarding complete queue overrun.
 
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             alldefconfig
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-i386                             alldefconfig
-i386                             allmodconfig
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-x86_64                 randconfig-e001-201933
-x86_64                 randconfig-e002-201933
-x86_64                 randconfig-e003-201933
-x86_64                 randconfig-e004-201933
-i386                   randconfig-e001-201933
-i386                   randconfig-e002-201933
-i386                   randconfig-e003-201933
-i386                   randconfig-e004-201933
-ia64                                defconfig
-powerpc                             defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                       ppc64_defconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-x86_64                 randconfig-b001-201933
-x86_64                 randconfig-b002-201933
-x86_64                 randconfig-b003-201933
-x86_64                 randconfig-b004-201933
-i386                   randconfig-b001-201933
-i386                   randconfig-b002-201933
-i386                   randconfig-b003-201933
-i386                   randconfig-b004-201933
-i386                              allnoconfig
-i386                                defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-arm                              allmodconfig
-arm64                            allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64                 randconfig-c001-201933
-x86_64                 randconfig-c002-201933
-x86_64                 randconfig-c003-201933
-x86_64                 randconfig-c004-201933
-i386                   randconfig-c001-201933
-i386                   randconfig-c002-201933
-i386                   randconfig-c003-201933
-i386                   randconfig-c004-201933
-m68k                          multi_defconfig
-m68k                       m5475evb_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                           sun3_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                                nfsroot
-i386                   randconfig-d002-201933
-i386                   randconfig-d004-201933
-x86_64                 randconfig-d004-201933
-x86_64                 randconfig-d001-201933
-x86_64                 randconfig-d002-201933
-x86_64                 randconfig-d003-201933
-i386                   randconfig-d001-201933
-i386                   randconfig-d003-201933
-x86_64                 randconfig-a004-201933
-i386                   randconfig-a003-201933
-x86_64                 randconfig-a002-201933
-i386                   randconfig-a004-201933
-i386                   randconfig-a002-201933
-x86_64                 randconfig-a001-201933
-i386                   randconfig-a001-201933
-x86_64                 randconfig-a003-201933
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                 randconfig-g001-201933
-x86_64                 randconfig-g002-201933
-x86_64                 randconfig-g003-201933
-x86_64                 randconfig-g004-201933
-i386                   randconfig-g001-201933
-i386                   randconfig-g002-201933
-i386                   randconfig-g003-201933
-i386                   randconfig-g004-201933
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-i386                   randconfig-f004-201933
-x86_64                 randconfig-f004-201933
-i386                   randconfig-f001-201933
-x86_64                 randconfig-f002-201933
-i386                   randconfig-f002-201933
-i386                   randconfig-f003-201933
-x86_64                 randconfig-f003-201933
-x86_64                 randconfig-f001-201933
-x86_64                 randconfig-h001-201933
-x86_64                 randconfig-h002-201933
-x86_64                 randconfig-h003-201933
-x86_64                 randconfig-h004-201933
-i386                   randconfig-h001-201933
-i386                   randconfig-h002-201933
-i386                   randconfig-h003-201933
-i386                   randconfig-h004-201933
+Tested-by: Eelco Chaudron <echaudro@redhat.com>
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+<SNIP>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
