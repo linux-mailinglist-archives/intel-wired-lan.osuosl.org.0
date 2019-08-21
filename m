@@ -1,76 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9ADF596EBF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Aug 2019 03:17:18 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 258F597C61
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Aug 2019 16:19:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1F35F234B3;
-	Wed, 21 Aug 2019 01:17:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CB5D986DE6;
+	Wed, 21 Aug 2019 14:19:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mbq6HmiLJubv; Wed, 21 Aug 2019 01:17:16 +0000 (UTC)
+	with ESMTP id gw_piJJgYMMe; Wed, 21 Aug 2019 14:19:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 245D5231A1;
-	Wed, 21 Aug 2019 01:17:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EAD5786D33;
+	Wed, 21 Aug 2019 14:19:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9089D1BF31B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 01:17:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 327321BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 14:19:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8BAEB230A1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 01:17:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2D6D48543A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 14:19:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vXUjmjx7hEnE for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Aug 2019 01:17:12 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by silver.osuosl.org (Postfix) with ESMTPS id A6DC422FF0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 01:17:12 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id z3so1351840iog.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2019 18:17:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kZWHrTprV1/7KUdKW3G6OHYWGjOaGD0IoU996R//irc=;
- b=PW/FNmKOjoHqHBgeKuzcejPrWtquvNRR8hFw19cBinEnE7gl0RdKyYw2XhZFsMK5l8
- jSWcbl+meQnv7sxj8jqKKU3UIX3V+6MXUy8oV7zb9opsXDeeAi4xDzQRHCGUp6E7iFrN
- 8bWY7qXYx+av2KfejCyBNsCYm3VxnL7YaA6eajUZ3RFxY6mAR/YLmt003MKqW0/tIbX1
- qcLZKcc7MA7q9HnC9CmAv6ZQxtd3J9rVvcvNdIWPW4hm+wlvNikXZqVM4e7cOCiD4/vZ
- DnA2tCTB5rUV7i43BoOjjvGGEWYorK7nKtvSlDicQz7tL3nrLpg8pa1gaUgFwVF2TwCF
- nYdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kZWHrTprV1/7KUdKW3G6OHYWGjOaGD0IoU996R//irc=;
- b=hAcoXpSUSQydKrjHigfTYR+dh1G4DgMFSCCCtXA1h93ubOwFwCLj9QjZlP8iBfW09n
- wYK5KndWzyrBhfENPQNUBgiShGiwLV1FQMvyYJU5jDhz8qN++QXA6m0SVmebFU2Gp30+
- 3ht+aycJjn5txO6O7HpPGD2gtY4HlW2F6a6p2EejSluw5RP/vACQZobXW96eZjyveRNJ
- OUXN7tCYjpPSf6mnW6cyhHBQuAVz1avSLx3d7oar6p10t3bcxYKE3Om5fFre7z+3cnVv
- Mrt186PaycHANozLUOXnhvYICu4s7Cq57zqsbDwbt0ufnfUjIpexB5/3ofLvtnawZ+X/
- Ioug==
-X-Gm-Message-State: APjAAAVP4YkaDHW7qF08W+3PFR3dDHSqVjsM8mSnx4mB5ZBWT4r6z5AC
- XQcnLNZ2lNMQV16n63U/AXk7aB4A2CnIJT0LFHo=
-X-Google-Smtp-Source: APXvYqwKPD7A/87E2z38qYXby7iIyyIj1fffBmYKZ1eCq5AuMAqrR+2V+Rth31D1/5dIoKoaLHfgabFG9o2gT1w9NOY=
-X-Received: by 2002:a5d:8b47:: with SMTP id c7mr24228155iot.42.1566350231784; 
- Tue, 20 Aug 2019 18:17:11 -0700 (PDT)
+ with ESMTP id vTPOd2---KiE for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Aug 2019 14:19:17 +0000 (UTC)
+X-Greylist: delayed 00:09:28 by SQLgrey-1.7.6
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8595E84F75
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 14:19:17 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 4622E3083391;
+ Wed, 21 Aug 2019 14:09:48 +0000 (UTC)
+Received: from p50.redhat.com (ovpn-117-124.ams2.redhat.com [10.36.117.124])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C83F810013A1;
+ Wed, 21 Aug 2019 14:09:46 +0000 (UTC)
+From: Stefan Assmann <sassmann@kpanic.de>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 21 Aug 2019 16:09:29 +0200
+Message-Id: <20190821140929.26985-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-References: <CGME20190820151644eucas1p179d6d1da42bb6be0aad8f58ac46624ce@eucas1p1.samsung.com>
- <20190820151611.10727-1-i.maximets@samsung.com>
- <CAKgT0Udn0D0_f=SOH2wpBRWV_u4rb1Qe2h7gguXnRNzJ_VkRzg@mail.gmail.com>
- <625791af-c656-1e42-b60e-b3a5cedcb4c4@samsung.com>
-In-Reply-To: <625791af-c656-1e42-b60e-b3a5cedcb4c4@samsung.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 20 Aug 2019 18:17:00 -0700
-Message-ID: <CAKgT0Uc27+ucd=a_sgTmv5g7_+ZTg1zK4isYJ0H7YWQj3d=Ejg@mail.gmail.com>
-To: Ilya Maximets <i.maximets@samsung.com>
-Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: fix double clean of tx
- descriptors with xdp
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Wed, 21 Aug 2019 14:09:48 +0000 (UTC)
+Subject: [Intel-wired-lan] [PATCH] i40e: check __I40E_VF_DISABLE bit in
+ i40e_sync_filters_subtask
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,73 +62,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
- Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
- William Tu <u9012063@gmail.com>, LKML <linux-kernel@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, bpf@vger.kernel.org,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>,
- Eelco Chaudron <echaudro@redhat.com>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 20, 2019 at 8:58 AM Ilya Maximets <i.maximets@samsung.com> wrote:
->
-> On 20.08.2019 18:35, Alexander Duyck wrote:
-> > On Tue, Aug 20, 2019 at 8:18 AM Ilya Maximets <i.maximets@samsung.com> wrote:
-> >>
-> >> Tx code doesn't clear the descriptor status after cleaning.
-> >> So, if the budget is larger than number of used elems in a ring, some
-> >> descriptors will be accounted twice and xsk_umem_complete_tx will move
-> >> prod_tail far beyond the prod_head breaking the comletion queue ring.
-> >>
-> >> Fix that by limiting the number of descriptors to clean by the number
-> >> of used descriptors in the tx ring.
-> >>
-> >> Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
-> >> Signed-off-by: Ilya Maximets <i.maximets@samsung.com>
-> >
-> > I'm not sure this is the best way to go. My preference would be to
-> > have something in the ring that would prevent us from racing which I
-> > don't think this really addresses. I am pretty sure this code is safe
-> > on x86 but I would be worried about weak ordered systems such as
-> > PowerPC.
-> >
-> > It might make sense to look at adding the eop_desc logic like we have
-> > in the regular path with a proper barrier before we write it and after
-> > we read it. So for example we could hold of on writing the bytecount
-> > value until the end of an iteration and call smp_wmb before we write
-> > it. Then on the cleanup we could read it and if it is non-zero we take
-> > an smp_rmb before proceeding further to process the Tx descriptor and
-> > clearing the value. Otherwise this code is going to just keep popping
-> > up with issues.
->
-> But, unlike regular case, xdp zero-copy xmit and clean for particular
-> tx ring always happens in the same NAPI context and even on the same
-> CPU core.
->
-> I saw the 'eop_desc' manipulations in regular case and yes, we could
-> use 'next_to_watch' field just as a flag of descriptor existence,
-> but it seems unnecessarily complicated. Am I missing something?
->
+While testing VF spawn/destroy the following panic occured.
 
-So is it always in the same NAPI context?. I forgot, I was thinking
-that somehow the socket could possibly make use of XDP for transmit.
+BUG: unable to handle kernel NULL pointer dereference at 0000000000000029
+[...]
+Workqueue: i40e i40e_service_task [i40e]
+RIP: 0010:i40e_sync_vsi_filters+0x6fd/0xc60 [i40e]
+[...]
+Call Trace:
+ ? __switch_to_asm+0x35/0x70
+ ? __switch_to_asm+0x41/0x70
+ ? __switch_to_asm+0x35/0x70
+ ? _cond_resched+0x15/0x30
+ i40e_sync_filters_subtask+0x56/0x70 [i40e]
+ i40e_service_task+0x382/0x11b0 [i40e]
+ ? __switch_to_asm+0x41/0x70
+ ? __switch_to_asm+0x41/0x70
+ process_one_work+0x1a7/0x3b0
+ worker_thread+0x30/0x390
+ ? create_worker+0x1a0/0x1a0
+ kthread+0x112/0x130
+ ? kthread_bind+0x30/0x30
+ ret_from_fork+0x35/0x40
 
-As far as the logic to use I would be good with just using a value you
-are already setting such as the bytecount value. All that would need
-to happen is to guarantee that the value is cleared in the Tx path. So
-if you clear the bytecount in ixgbe_clean_xdp_tx_irq you could
-theoretically just use that as well to flag that a descriptor has been
-populated and is ready to be cleaned. Assuming the logic about this
-all being in the same NAPI context anyway you wouldn't need to mess
-with the barrier stuff I mentioned before.
+Investigation revealed a race where pf->vf[vsi->vf_id].trusted may get
+accessed by the watchdog via i40e_sync_filters_subtask() although
+i40e_free_vfs() already free'd pf->vf.
+To avoid this the call to i40e_sync_vsi_filters() in
+i40e_sync_filters_subtask() needs to be guarded by __I40E_VF_DISABLE,
+which is also used by i40e_free_vfs().
 
-- Alex
+Note: put the __I40E_VF_DISABLE check after the
+__I40E_MACVLAN_SYNC_PENDING check as the latter is more likely to
+trigger.
+
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 6d456e579314..f25c7da59b2b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -2587,6 +2587,10 @@ static void i40e_sync_filters_subtask(struct i40e_pf *pf)
+ 		return;
+ 	if (!test_and_clear_bit(__I40E_MACVLAN_SYNC_PENDING, pf->state))
+ 		return;
++	if (test_and_set_bit(__I40E_VF_DISABLE, pf->state)) {
++		set_bit(__I40E_MACVLAN_SYNC_PENDING, pf->state);
++		return;
++	}
+ 
+ 	for (v = 0; v < pf->num_alloc_vsi; v++) {
+ 		if (pf->vsi[v] &&
+@@ -2601,6 +2605,7 @@ static void i40e_sync_filters_subtask(struct i40e_pf *pf)
+ 			}
+ 		}
+ 	}
++	clear_bit(__I40E_VF_DISABLE, pf->state);
+ }
+ 
+ /**
+-- 
+2.21.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
