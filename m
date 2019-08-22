@@ -1,81 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFFCB99E9A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Aug 2019 20:22:00 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8725399E9C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Aug 2019 20:22:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 750A186AEC;
-	Thu, 22 Aug 2019 18:21:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3F76B2010A;
+	Thu, 22 Aug 2019 18:22:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I_kXPiMkJFtv; Thu, 22 Aug 2019 18:21:58 +0000 (UTC)
+	with ESMTP id LjAzv0aLA8x0; Thu, 22 Aug 2019 18:22:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2308486B04;
+	by silver.osuosl.org (Postfix) with ESMTP id 6E31920791;
 	Thu, 22 Aug 2019 18:21:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0B7391BF425
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 21:39:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 828EC1BF414
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2019 10:00:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 074BB863DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 21:39:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7E4F0204FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2019 10:00:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XBWZ9gqXByoD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Aug 2019 21:39:06 +0000 (UTC)
+ with ESMTP id 7BZvpG8ZUowd for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Aug 2019 10:00:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com
- [209.85.160.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 37ACC86356
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 21:39:06 +0000 (UTC)
-Received: by mail-qt1-f196.google.com with SMTP id 44so4930384qtg.11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2019 14:39:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=DUnGPgYSlYELq8snkCH3/ogLmFH6bABIvcNtaNXTSVc=;
- b=AXDHQob5IyMllJJoCx7ZMR8TK3SJN0l7qIATQtWf6ngixz26/p+Sey60awnPqojOTU
- ECTbzza4sfLN2MZNGWAPC5aO0a/n+iDaEPCfzPGJF911kaP0oySCyhDQenhRqoGE/46f
- SNLMK3otufWhvREna0kxOFS7STmbaaVnCSswUJsIxkc+s50sZi3CxY3Se6mco3tFynew
- 5pFuHfoV0v9VCYiMjGnz4d3zyUnuTg5tAPIb9HAxcnHQZxyrEQekItEFl8cKP3TY0Kh0
- uleYqDjSSbn/nF5glEFEJye/1xrV8Du+6FWcXn0h5IoikXVIaQ5kMZ2Ddrb6jckdzwUU
- iJ3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=DUnGPgYSlYELq8snkCH3/ogLmFH6bABIvcNtaNXTSVc=;
- b=soqZ8ZsRAVLANslv4OD7sTPk++8ydCHpD5RJvhRIjKfqki1rgZ0+gG75mogoApoLwY
- 7bg4dlFl45fqZEHAbIPCuZEdDJTY+MkWC5FIN3IVVQEuZhW7D0UQjAHP34wEKkH+42Ql
- LYH/7zrG6ea5Hz9GNfEV0uwd3pDK1vVbvgfCmrLzY0jjLonwsuJtsO6i/Tc48T2Zn/YX
- vZ6B1nVhQdTzeDHy/W7PSXDZZMWMNL3ttC2nbwWzC0fE2r3zSEAqVCh8GCPxfpsztlrg
- Oh2RjOyREPqtvtCSWf/pk/OQuLW46alyLox8DWo4DX/4B7OfYsjSVqmMaZnFZR+bu53R
- FBoQ==
-X-Gm-Message-State: APjAAAUj1cscZ3+u3Zd5nE1mnOL0AeYgeL81U94K8NINERvU4+Q7v/D4
- TFD5pUPNtafR9W1lWkh6f4Zx7QcoV8E7bK6m12g=
-X-Google-Smtp-Source: APXvYqyy0hvvRHykzg7i0XuhNgycH/ll14e3xUl/E4u+m0BQJBHvXmJ9XL1xul4O3FjgxkcePIYvjvZNX2y+J4rwF4w=
-X-Received: by 2002:a0c:db12:: with SMTP id d18mr19832519qvk.199.1566423544935; 
- Wed, 21 Aug 2019 14:39:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <CGME20190820151644eucas1p179d6d1da42bb6be0aad8f58ac46624ce@eucas1p1.samsung.com>
- <20190820151611.10727-1-i.maximets@samsung.com>
- <CAKgT0Udn0D0_f=SOH2wpBRWV_u4rb1Qe2h7gguXnRNzJ_VkRzg@mail.gmail.com>
- <625791af-c656-1e42-b60e-b3a5cedcb4c4@samsung.com>
- <CAKgT0Uc27+ucd=a_sgTmv5g7_+ZTg1zK4isYJ0H7YWQj3d=Ejg@mail.gmail.com>
- <f7d0f7a5-e664-8b72-99c7-63275aff4c18@samsung.com>
- <CAKgT0UcCKiM1Ys=vWxctprN7fzWcBCk-PCuKB-8=RThM=CqLSQ@mail.gmail.com>
-In-Reply-To: <CAKgT0UcCKiM1Ys=vWxctprN7fzWcBCk-PCuKB-8=RThM=CqLSQ@mail.gmail.com>
-From: William Tu <u9012063@gmail.com>
-Date: Wed, 21 Aug 2019 14:38:28 -0700
-Message-ID: <CALDO+SZCbxEEwCS6MyHk-Cp_LJ33N=QFqwZ8uRm0e-PBRgxRYw@mail.gmail.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id 557A1204DA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2019 10:00:17 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2019 03:00:16 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,416,1559545200"; d="scan'208";a="180336566"
+Received: from silpixa00399838.ir.intel.com (HELO
+ silpixa00399838.ger.corp.intel.com) ([10.237.223.140])
+ by fmsmga007.fm.intel.com with ESMTP; 22 Aug 2019 03:00:12 -0700
+From: Kevin Laatz <kevin.laatz@intel.com>
+To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
+ bjorn.topel@intel.com, magnus.karlsson@intel.com,
+ jakub.kicinski@netronome.com, jonathan.lemon@gmail.com,
+ saeedm@mellanox.com, maximmi@mellanox.com, stephen@networkplumber.org
+Date: Thu, 22 Aug 2019 01:44:16 +0000
+Message-Id: <20190822014427.49800-1-kevin.laatz@intel.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190730085400.10376-1-kevin.laatz@intel.com>
+References: <20190730085400.10376-1-kevin.laatz@intel.com>
 X-Mailman-Approved-At: Thu, 22 Aug 2019 18:21:56 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: fix double clean of tx
- descriptors with xdp
+Subject: [Intel-wired-lan] [PATCH bpf-next v5 00/11] XDP unaligned chunk
+ placement support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,115 +66,209 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
- Daniel Borkmann <daniel@iogearbox.net>, Netdev <netdev@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, Alexei Starovoitov <ast@kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Ilya Maximets <i.maximets@samsung.com>, bpf <bpf@vger.kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>,
- Eelco Chaudron <echaudro@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: bruce.richardson@intel.com, ciara.loftus@intel.com,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ Kevin Laatz <kevin.laatz@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gV2VkLCBBdWcgMjEsIDIwMTkgYXQgOTo1NyBBTSBBbGV4YW5kZXIgRHV5Y2sKPGFsZXhhbmRl
-ci5kdXlja0BnbWFpbC5jb20+IHdyb3RlOgo+Cj4gT24gV2VkLCBBdWcgMjEsIDIwMTkgYXQgOToy
-MiBBTSBJbHlhIE1heGltZXRzIDxpLm1heGltZXRzQHNhbXN1bmcuY29tPiB3cm90ZToKPiA+Cj4g
-PiBPbiAyMS4wOC4yMDE5IDQ6MTcsIEFsZXhhbmRlciBEdXljayB3cm90ZToKPiA+ID4gT24gVHVl
-LCBBdWcgMjAsIDIwMTkgYXQgODo1OCBBTSBJbHlhIE1heGltZXRzIDxpLm1heGltZXRzQHNhbXN1
-bmcuY29tPiB3cm90ZToKPiA+ID4+Cj4gPiA+PiBPbiAyMC4wOC4yMDE5IDE4OjM1LCBBbGV4YW5k
-ZXIgRHV5Y2sgd3JvdGU6Cj4gPiA+Pj4gT24gVHVlLCBBdWcgMjAsIDIwMTkgYXQgODoxOCBBTSBJ
-bHlhIE1heGltZXRzIDxpLm1heGltZXRzQHNhbXN1bmcuY29tPiB3cm90ZToKPiA+ID4+Pj4KPiA+
-ID4+Pj4gVHggY29kZSBkb2Vzbid0IGNsZWFyIHRoZSBkZXNjcmlwdG9yIHN0YXR1cyBhZnRlciBj
-bGVhbmluZy4KPiA+ID4+Pj4gU28sIGlmIHRoZSBidWRnZXQgaXMgbGFyZ2VyIHRoYW4gbnVtYmVy
-IG9mIHVzZWQgZWxlbXMgaW4gYSByaW5nLCBzb21lCj4gPiA+Pj4+IGRlc2NyaXB0b3JzIHdpbGwg
-YmUgYWNjb3VudGVkIHR3aWNlIGFuZCB4c2tfdW1lbV9jb21wbGV0ZV90eCB3aWxsIG1vdmUKPiA+
-ID4+Pj4gcHJvZF90YWlsIGZhciBiZXlvbmQgdGhlIHByb2RfaGVhZCBicmVha2luZyB0aGUgY29t
-bGV0aW9uIHF1ZXVlIHJpbmcuCj4gPiA+Pj4+Cj4gPiA+Pj4+IEZpeCB0aGF0IGJ5IGxpbWl0aW5n
-IHRoZSBudW1iZXIgb2YgZGVzY3JpcHRvcnMgdG8gY2xlYW4gYnkgdGhlIG51bWJlcgo+ID4gPj4+
-PiBvZiB1c2VkIGRlc2NyaXB0b3JzIGluIHRoZSB0eCByaW5nLgo+ID4gPj4+Pgo+ID4gPj4+PiBG
-aXhlczogODIyMWM1ZWJhOGMxICgiaXhnYmU6IGFkZCBBRl9YRFAgemVyby1jb3B5IFR4IHN1cHBv
-cnQiKQo+ID4gPj4+PiBTaWduZWQtb2ZmLWJ5OiBJbHlhIE1heGltZXRzIDxpLm1heGltZXRzQHNh
-bXN1bmcuY29tPgo+ID4gPj4+Cj4gPiA+Pj4gSSdtIG5vdCBzdXJlIHRoaXMgaXMgdGhlIGJlc3Qg
-d2F5IHRvIGdvLiBNeSBwcmVmZXJlbmNlIHdvdWxkIGJlIHRvCj4gPiA+Pj4gaGF2ZSBzb21ldGhp
-bmcgaW4gdGhlIHJpbmcgdGhhdCB3b3VsZCBwcmV2ZW50IHVzIGZyb20gcmFjaW5nIHdoaWNoIEkK
-PiA+ID4+PiBkb24ndCB0aGluayB0aGlzIHJlYWxseSBhZGRyZXNzZXMuIEkgYW0gcHJldHR5IHN1
-cmUgdGhpcyBjb2RlIGlzIHNhZmUKPiA+ID4+PiBvbiB4ODYgYnV0IEkgd291bGQgYmUgd29ycmll
-ZCBhYm91dCB3ZWFrIG9yZGVyZWQgc3lzdGVtcyBzdWNoIGFzCj4gPiA+Pj4gUG93ZXJQQy4KPiA+
-ID4+Pgo+ID4gPj4+IEl0IG1pZ2h0IG1ha2Ugc2Vuc2UgdG8gbG9vayBhdCBhZGRpbmcgdGhlIGVv
-cF9kZXNjIGxvZ2ljIGxpa2Ugd2UgaGF2ZQo+ID4gPj4+IGluIHRoZSByZWd1bGFyIHBhdGggd2l0
-aCBhIHByb3BlciBiYXJyaWVyIGJlZm9yZSB3ZSB3cml0ZSBpdCBhbmQgYWZ0ZXIKPiA+ID4+PiB3
-ZSByZWFkIGl0LiBTbyBmb3IgZXhhbXBsZSB3ZSBjb3VsZCBob2xkIG9mIG9uIHdyaXRpbmcgdGhl
-IGJ5dGVjb3VudAo+ID4gPj4+IHZhbHVlIHVudGlsIHRoZSBlbmQgb2YgYW4gaXRlcmF0aW9uIGFu
-ZCBjYWxsIHNtcF93bWIgYmVmb3JlIHdlIHdyaXRlCj4gPiA+Pj4gaXQuIFRoZW4gb24gdGhlIGNs
-ZWFudXAgd2UgY291bGQgcmVhZCBpdCBhbmQgaWYgaXQgaXMgbm9uLXplcm8gd2UgdGFrZQo+ID4g
-Pj4+IGFuIHNtcF9ybWIgYmVmb3JlIHByb2NlZWRpbmcgZnVydGhlciB0byBwcm9jZXNzIHRoZSBU
-eCBkZXNjcmlwdG9yIGFuZAo+ID4gPj4+IGNsZWFyaW5nIHRoZSB2YWx1ZS4gT3RoZXJ3aXNlIHRo
-aXMgY29kZSBpcyBnb2luZyB0byBqdXN0IGtlZXAgcG9wcGluZwo+ID4gPj4+IHVwIHdpdGggaXNz
-dWVzLgo+ID4gPj4KPiA+ID4+IEJ1dCwgdW5saWtlIHJlZ3VsYXIgY2FzZSwgeGRwIHplcm8tY29w
-eSB4bWl0IGFuZCBjbGVhbiBmb3IgcGFydGljdWxhcgo+ID4gPj4gdHggcmluZyBhbHdheXMgaGFw
-cGVucyBpbiB0aGUgc2FtZSBOQVBJIGNvbnRleHQgYW5kIGV2ZW4gb24gdGhlIHNhbWUKPiA+ID4+
-IENQVSBjb3JlLgo+ID4gPj4KPiA+ID4+IEkgc2F3IHRoZSAnZW9wX2Rlc2MnIG1hbmlwdWxhdGlv
-bnMgaW4gcmVndWxhciBjYXNlIGFuZCB5ZXMsIHdlIGNvdWxkCj4gPiA+PiB1c2UgJ25leHRfdG9f
-d2F0Y2gnIGZpZWxkIGp1c3QgYXMgYSBmbGFnIG9mIGRlc2NyaXB0b3IgZXhpc3RlbmNlLAo+ID4g
-Pj4gYnV0IGl0IHNlZW1zIHVubmVjZXNzYXJpbHkgY29tcGxpY2F0ZWQuIEFtIEkgbWlzc2luZyBz
-b21ldGhpbmc/Cj4gPiA+Pgo+ID4gPgo+ID4gPiBTbyBpcyBpdCBhbHdheXMgaW4gdGhlIHNhbWUg
-TkFQSSBjb250ZXh0Py4gSSBmb3Jnb3QsIEkgd2FzIHRoaW5raW5nCj4gPiA+IHRoYXQgc29tZWhv
-dyB0aGUgc29ja2V0IGNvdWxkIHBvc3NpYmx5IG1ha2UgdXNlIG9mIFhEUCBmb3IgdHJhbnNtaXQu
-Cj4gPgo+ID4gQUZfWERQIHNvY2tldCBvbmx5IHRyaWdnZXJzIHR4IGludGVycnVwdCBvbiBuZG9f
-eHNrX2FzeW5jX3htaXQoKSB3aGljaAo+ID4gaXMgdXNlZCBpbiB6ZXJvLWNvcHkgbW9kZS4gUmVh
-bCB4bWl0IGhhcHBlbnMgaW5zaWRlCj4gPiBpeGdiZV9wb2xsKCkKPiA+ICAtPiBpeGdiZV9jbGVh
-bl94ZHBfdHhfaXJxKCkKPiA+ICAgICAtPiBpeGdiZV94bWl0X3pjKCkKPiA+Cj4gPiBUaGlzIHNo
-b3VsZCBiZSBub3QgcG9zc2libGUgdG8gYm91bmQgYW5vdGhlciBYRFAgc29ja2V0IHRvIHRoZSBz
-YW1lIG5ldGRldgo+ID4gcXVldWUuCj4gPgo+ID4gSXQgYWxzbyBwb3NzaWJsZSB0byB4bWl0IGZy
-YW1lcyBpbiB4ZHBfcmluZyB3aGlsZSBwZXJmb3JtaW5nIFhEUF9UWC9SRURJUkVDVAo+ID4gYWN0
-aW9ucy4gUkVESVJFQ1QgY291bGQgaGFwcGVuIGZyb20gZGlmZmVyZW50IG5ldGRldiB3aXRoIGRp
-ZmZlcmVudCBOQVBJCj4gPiBjb250ZXh0LCBidXQgdGhpcyBvcGVyYXRpb24gaXMgYm91bmQgdG8g
-c3BlY2lmaWMgQ1BVIGNvcmUgYW5kIGVhY2ggY29yZSBoYXMKPiA+IGl0cyBvd24geGRwX3Jpbmcu
-Cj4gPgo+ID4gSG93ZXZlciwgSSdtIG5vdCBhbiBleHBlcnQgaGVyZS4KPiA+IEJqw7ZybiwgbWF5
-YmUgeW91IGNvdWxkIGNvbW1lbnQgb24gdGhpcz8KPiA+Cj4gPiA+Cj4gPiA+IEFzIGZhciBhcyB0
-aGUgbG9naWMgdG8gdXNlIEkgd291bGQgYmUgZ29vZCB3aXRoIGp1c3QgdXNpbmcgYSB2YWx1ZSB5
-b3UKPiA+ID4gYXJlIGFscmVhZHkgc2V0dGluZyBzdWNoIGFzIHRoZSBieXRlY291bnQgdmFsdWUu
-IEFsbCB0aGF0IHdvdWxkIG5lZWQKPiA+ID4gdG8gaGFwcGVuIGlzIHRvIGd1YXJhbnRlZSB0aGF0
-IHRoZSB2YWx1ZSBpcyBjbGVhcmVkIGluIHRoZSBUeCBwYXRoLiBTbwo+ID4gPiBpZiB5b3UgY2xl
-YXIgdGhlIGJ5dGVjb3VudCBpbiBpeGdiZV9jbGVhbl94ZHBfdHhfaXJxIHlvdSBjb3VsZAo+ID4g
-PiB0aGVvcmV0aWNhbGx5IGp1c3QgdXNlIHRoYXQgYXMgd2VsbCB0byBmbGFnIHRoYXQgYSBkZXNj
-cmlwdG9yIGhhcyBiZWVuCj4gPiA+IHBvcHVsYXRlZCBhbmQgaXMgcmVhZHkgdG8gYmUgY2xlYW5l
-ZC4gQXNzdW1pbmcgdGhlIGxvZ2ljIGFib3V0IHRoaXMKPiA+ID4gYWxsIGJlaW5nIGluIHRoZSBz
-YW1lIE5BUEkgY29udGV4dCBhbnl3YXkgeW91IHdvdWxkbid0IG5lZWQgdG8gbWVzcwo+ID4gPiB3
-aXRoIHRoZSBiYXJyaWVyIHN0dWZmIEkgbWVudGlvbmVkIGJlZm9yZS4KPiA+Cj4gPiBDaGVja2lu
-ZyB0aGUgbnVtYmVyIG9mIHVzZWQgZGVzY3MsIGkuZS4gbmV4dF90b191c2UgLSBuZXh0X3RvX2Ns
-ZWFuLAo+ID4gbWFrZXMgaXRlcmF0aW9uIGluIHRoaXMgZnVuY3Rpb24gbG9naWNhbGx5IGVxdWFs
-IHRvIHRoZSBpdGVyYXRpb24gaW5zaWRlCj4gPiAnaXhnYmVfeHNrX2NsZWFuX3R4X3JpbmcoKScu
-IERvIHlvdSB0aGluayB3ZSBuZWVkIHRvIGNoYW5nZSB0aGUgbGF0ZXIKPiA+IGZ1bmN0aW9uIHRv
-byB0byBmb2xsb3cgc2FtZSAnYnl0ZWNvdW50JyBhcHByb2FjaD8gSSBkb24ndCBsaWtlIGhhdmlu
-Zwo+ID4gdHdvIGRpZmZlcmVudCB3YXlzIHRvIGRldGVybWluZSBudW1iZXIgb2YgdXNlZCBkZXNj
-cmlwdG9ycyBpbiB0aGUgc2FtZSBmaWxlLgo+ID4KPiA+IEJlc3QgcmVnYXJkcywgSWx5YSBNYXhp
-bWV0cy4KPgo+IEFzIGZhciBhcyBpeGdiZV9jbGVhbl94ZHBfdHhfaXJxKCkgdnMgaXhnYmVfeHNr
-X2NsZWFuX3R4X3JpbmcoKSwgSQo+IHdvdWxkIHNheSB0aGF0IGlmIHlvdSBnb3QgcmlkIG9mIGJ1
-ZGdldCBhbmQgZnJhbWVkIHRoaW5ncyBtb3JlIGxpa2UKPiBob3cgaXhnYmVfeHNrX2NsZWFuX3R4
-X3Jpbmcgd2FzIGZyYW1lZCB3aXRoIHRoZSBudGMgIT0gbnR1IGJlaW5nCj4gb2J2aW91cyBJIHdv
-dWxkIHByZWZlciB0byBzZWUgdXMgZ28gdGhhdCByb3V0ZS4KPgo+IFJlYWxseSB0aGVyZSBpcyBu
-byBuZWVkIGZvciBidWRnZXQgaW4gaXhnYmVfY2xlYW5feGRwX3R4X2lycSgpIGlmIHlvdQo+IGFy
-ZSBnb2luZyB0byBiZSB3b3JraW5nIHdpdGggYSBzdGF0aWMgbnR1IHZhbHVlIHNpbmNlIHlvdSB3
-aWxsIG9ubHkKPiBldmVyIHByb2Nlc3Mgb25lIGl0ZXJhdGlvbiB0aHJvdWdoIHRoZSByaW5nIGFu
-eXdheS4gSXQgbWlnaHQgbWFrZSBtb3JlCj4gc2Vuc2UgaWYgeW91IGp1c3Qgd2VudCB0aHJvdWdo
-IGFuZCBnb3QgcmlkIG9mIGJ1ZGdldCBhbmQgaSwgYW5kCj4gaW5zdGVhZCB1c2VkIG50YyBhbmQg
-bnR1IGxpa2Ugd2hhdCB3YXMgZG9uZSBpbgo+IGl4Z2JlX3hza19jbGVhbl90eF9yaW5nKCkuCj4K
-PiBUaGFua3MuCj4KPiAtIEFsZXgKCk5vdCBmYW1pbGlhciB3aXRoIHRoZSBkcml2ZXIgZGV0YWls
-cy4KSSB0ZXN0ZWQgdGhpcyBwYXRjaCBhbmQgdGhlIGlzc3VlIG1lbnRpb25lZCBpbiBPVlMgbWFp
-bGluZyBsaXN0LgpodHRwczovL3d3dy5tYWlsLWFyY2hpdmUuY29tL292cy1kZXZAb3BlbnZzd2l0
-Y2gub3JnL21zZzM1MzYyLmh0bWwKYW5kIGluZGVlZCB0aGUgcHJvYmxlbSBnb2VzIGF3YXkuIEJ1
-dCBJIHNhdyBhIGh1Z2UgcGVyZm9ybWFuY2UgZHJvcCwKbXkgQUZfWERQIHR4IHBlcmZvcm1hbmNl
-IGRyb3BzIGZyb20gPjlNcHBzIHRvIDw1TXBwcy4KClRlc3RlZCB1c2luZyBrZXJuZWwgNS4zLjAt
-cmMzKwowMzowMC4wIEV0aGVybmV0IGNvbnRyb2xsZXI6IEludGVsIENvcnBvcmF0aW9uIEV0aGVy
-bmV0IENvbnRyb2xsZXIKMTAtR2lnYWJpdCBYNTQwLUFUMiAocmV2IDAxKQpTdWJzeXN0ZW06IElu
-dGVsIENvcnBvcmF0aW9uIEV0aGVybmV0IDEwRyAyUCBYNTQwLXQgQWRhcHRlcgpDb250cm9sOiBJ
-L08tIE1lbSsgQnVzTWFzdGVyKyBTcGVjQ3ljbGUtIE1lbVdJTlYtIFZHQVNub29wLSBQYXJFcnIt
-ClN0ZXBwaW5nLSBTRVJSLSBGYXN0QjJCLSBEaXNJTlR4KwoKUmVnYXJkcywKV2lsbGlhbQpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
-YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
-b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+This patch set adds the ability to use unaligned chunks in the XDP umem.
+
+Currently, all chunk addresses passed to the umem are masked to be chunk
+size aligned (max is PAGE_SIZE). This limits where we can place chunks
+within the umem as well as limiting the packet sizes that are supported.
+
+The changes in this patch set removes these restrictions, allowing XDP to
+be more flexible in where it can place a chunk within a umem. By relaxing
+where the chunks can be placed, it allows us to use an arbitrary buffer
+size and place that wherever we have a free address in the umem. These
+changes add the ability to support arbitrary frame sizes up to 4k
+(PAGE_SIZE) and make it easy to integrate with other existing frameworks
+that have their own memory management systems, such as DPDK.
+In DPDK, for example, there is already support for AF_XDP with zero-copy.
+However, with this patch set the integration will be much more seamless.
+You can find the DPDK AF_XDP driver at:
+https://git.dpdk.org/dpdk/tree/drivers/net/af_xdp
+
+Since we are now dealing with arbitrary frame sizes, we need also need to
+update how we pass around addresses. Currently, the addresses can simply be
+masked to 2k to get back to the original address. This becomes less trivial
+when using frame sizes that are not a 'power of 2' size. This patch set
+modifies the Rx/Tx descriptor format to use the upper 16-bits of the addr
+field for an offset value, leaving the lower 48-bits for the address (this
+leaves us with 256 Terabytes, which should be enough!). We only need to use
+the upper 16-bits to store the offset when running in unaligned mode.
+Rather than adding the offset (headroom etc) to the address, we will store
+it in the upper 16-bits of the address field. This way, we can easily add
+the offset to the address where we need it, using some bit manipulation and
+addition, and we can also easily get the original address wherever we need
+it (for example in i40e_zca_free) by simply masking to get the lower
+48-bits of the address field.
+
+Note: The mlx5e patch only adds support for the new offset handling. Maxim
+Mikityanski <maximmi@mellanox.com> is working on an additional patch that
+enables the unaligned chunks feature (makes mlx5e accept arbitrary frame
+sizes) which will be added later and applies on top of this patch.
+
+The numbers below were recorded with the following set up:
+  - Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz
+  - Intel Corporation Ethernet Controller XXV710 for 25GbE SFP28 (rev 02)
+  - Driver: i40e
+  - Application: xdpsock with l2fwd (single interface)
+  - Turbo disabled in BIOS
+
+These are solely for comparing performance with and without the patches.
+The largest drop was ~1.5% (in zero-copy mode).
+
++-------------------------+-------------+-----------------+-------------+
+| Buffer size: 2048       | SKB mode    | Zero-copy       | Copy        |
++-------------------------+-------------+-----------------+-------------+
+| Aligned (baseline)      | 1.25 Mpps   | 10.0 Mpps       | 1.66 Mpps   |
++-------------------------+-------------+-----------------+-------------+
+| Aligned (with patches)  | 1.25 Mpps   | 9.85 Mpps       | 1.66 Mpps   |
++-------------------------+-------------+-----------------+-------------+
+| Unaligned               | 1.25 Mpps   | 9.65 Mpps       | 1.66 Mpps   |
++-------------------------+-------------+-----------------+-------------+
+
+This patch set has been applied against
+commit 0bb52b0dfc88 ("tools: bpftool: add 'bpftool map freeze' subcommand")
+
+Structure of the patch set:
+Patch 1:
+  - Remove unnecessary masking and headroom addition during zero-copy Rx
+    buffer recycling in i40e. This change is required in order for the
+    buffer recycling to work in the unaligned chunk mode.
+
+Patch 2:
+  - Remove unnecessary masking and headroom addition during
+    zero-copy Rx buffer recycling in ixgbe. This change is required in
+    order for the  buffer recycling to work in the unaligned chunk mode.
+
+Patch 3:
+  - Add infrastructure for unaligned chunks. Since we are dealing with
+    unaligned chunks that could potentially cross a physical page boundary,
+    we add checks to keep track of that information. We can later use this
+    information to correctly handle buffers that are placed at an address
+    where they cross a page boundary.  This patch also modifies the
+    existing Rx and Tx functions to use the new descriptor format. To
+    handle addresses correctly, we need to mask appropriately based on
+    whether we are in aligned or unaligned mode.
+
+Patch 4:
+  - This patch updates the i40e driver to make use of the new descriptor
+    format.
+
+Patch 5:
+  - This patch updates the ixgbe driver to make use of the new descriptor
+    format.
+
+Patch 6:
+  - This patch updates the mlx5e driver to make use of the new descriptor
+    format. These changes are required to handle the new descriptor format
+    and for unaligned chunks support.
+
+Patch 7:
+  - Add flags for umem configuration to libbpf. Since we increase the size
+    of the struct by adding flags, we also need to add the ABI versioning
+    in this patch.
+
+Patch 8:
+  - Modify xdpsock application to add a command line option for
+    unaligned chunks
+
+Patch 9:
+  - Since we can now run the application in unaligned chunk mode, we need
+    to make sure we recycle the buffers appropriately.
+
+Patch 10:
+  - Adds hugepage support to the xdpsock application
+
+Patch 11:
+  - Documentation update to include the unaligned chunk scenario. We need
+    to explicitly state that the incoming addresses are only masked in the
+    aligned chunk mode and not the unaligned chunk mode.
+
+---
+v2:
+  - fixed checkpatch issues
+  - fixed Rx buffer recycling for unaligned chunks in xdpsock
+  - removed unused defines
+  - fixed how chunk_size is calculated in xsk_diag.c
+  - added some performance numbers to cover letter
+  - modified descriptor format to make it easier to retrieve original
+    address
+  - removed patch adding off_t off to the zero copy allocator. This is no
+    longer needed with the new descriptor format.
+
+v3:
+  - added patch for mlx5 driver changes needed for unaligned chunks
+  - moved offset handling to new helper function
+  - changed value used for the umem chunk_mask. Now using the new
+    descriptor format to save us doing the calculations in a number of
+    places meaning more of the code is left unchanged while adding
+    unaligned chunk support.
+
+v4:
+  - reworked the next_pg_contig field in the xdp_umem_page struct. We now
+    use the low 12 bits of the addr for flags rather than adding an extra
+    field in the struct.
+  - modified unaligned chunks flag define
+  - fixed page_start calculation in __xsk_rcv_memcpy().
+  - move offset handling to the xdp_umem_get_* functions
+  - modified the len field in xdp_umem_reg struct. We now use 16 bits from
+    this for the flags field.
+  - fixed headroom addition to handle in the mlx5e driver
+  - other minor changes based on review comments
+
+v5:
+  - Added ABI versioning in the libbpf patch
+  - Removed bitfields in the xdp_umem_reg struct. Adding new flags field.
+  - Added accessors for getting addr and offset.
+  - Added helper function for adding the offset to the addr.
+  - Fixed conflicts with 'bpf-af-xdp-wakeup' which was merged recently.
+  - Fixed typo in mlx driver patch.
+  - Moved libbpf patch to later in the set (7/11, just before the sample
+    app changes)
+
+Kevin Laatz (11):
+  i40e: simplify Rx buffer recycle
+  ixgbe: simplify Rx buffer recycle
+  xsk: add support to allow unaligned chunk placement
+  i40e: modify driver for handling offsets
+  ixgbe: modify driver for handling offsets
+  mlx5e: modify driver for handling offsets
+  libbpf: add flags to umem config
+  samples/bpf: add unaligned chunks mode support to xdpsock
+  samples/bpf: add buffer recycling for unaligned chunks to xdpsock
+  samples/bpf: use hugepages in xdpsock app
+  doc/af_xdp: include unaligned chunk case
+
+ Documentation/networking/af_xdp.rst           | 10 +-
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c    | 26 +++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 26 +++--
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |  8 +-
+ .../ethernet/mellanox/mlx5/core/en/xsk/rx.c   |  3 +-
+ include/net/xdp_sock.h                        | 75 ++++++++++++++-
+ include/uapi/linux/if_xdp.h                   |  9 ++
+ net/xdp/xdp_umem.c                            | 19 +++-
+ net/xdp/xsk.c                                 | 96 +++++++++++++++----
+ net/xdp/xsk_diag.c                            |  2 +-
+ net/xdp/xsk_queue.h                           | 68 +++++++++++--
+ samples/bpf/xdpsock_user.c                    | 61 ++++++++----
+ tools/include/uapi/linux/if_xdp.h             |  9 ++
+ tools/lib/bpf/Makefile                        |  5 +-
+ tools/lib/bpf/libbpf.map                      |  1 +
+ tools/lib/bpf/xsk.c                           | 33 ++++++-
+ tools/lib/bpf/xsk.h                           | 27 ++++++
+ 17 files changed, 384 insertions(+), 94 deletions(-)
+
+-- 
+2.17.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
