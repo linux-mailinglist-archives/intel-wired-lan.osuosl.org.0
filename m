@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 149A29B809
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Aug 2019 23:09:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0D58F85CA8;
-	Fri, 23 Aug 2019 21:09:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7ZaOnCINzgot; Fri, 23 Aug 2019 21:09:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E8C1084E4E;
-	Fri, 23 Aug 2019 21:09:20 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CD9431BF5DF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 21:09:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D0219B8BD
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 24 Aug 2019 01:09:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 42BD4886AB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 21:09:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 66AAB887A4;
+	Fri, 23 Aug 2019 23:09:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8ou7E5VRRK3s; Fri, 23 Aug 2019 23:09:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 776A188799;
+	Fri, 23 Aug 2019 23:09:31 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A255C1BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 23:09:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 9CEBF24AF5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 23:09:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id seJsmafOaJ0g for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Aug 2019 21:09:13 +0000 (UTC)
+ with ESMTP id o1mi9oLchSWL for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Aug 2019 23:09:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1FBFD886AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 21:09:12 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6669320426
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 23:09:28 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Aug 2019 14:09:11 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 Aug 2019 16:09:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,422,1559545200"; d="scan'208";a="208662269"
+X-IronPort-AV: E=Sophos;i="5.64,422,1559545200"; d="scan'208";a="263321172"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 23 Aug 2019 14:09:10 -0700
+ by orsmga001.jf.intel.com with ESMTP; 23 Aug 2019 16:09:26 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1i1Go2-0003B1-1z; Sat, 24 Aug 2019 05:09:10 +0800
-Date: Sat, 24 Aug 2019 05:08:13 +0800
+ id 1i1IgP-0004dY-LX; Sat, 24 Aug 2019 07:09:25 +0800
+Date: Sat, 24 Aug 2019 07:08:47 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d6055bd.n8aSHfg+tPaZNYWI%lkp@intel.com>
+Message-ID: <5d6071ff.hK14yEH5JJRqlCpW%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:40GbE] BUILD INCOMPLETE
- 1b5f5d388b2b4fcb3324914bc90b3956e50ac2b0
+Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD INCOMPLETE
+ 88213a172114ad563d60bc4effd41850ef252135
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,8 +68,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  40GbE
-branch HEAD: 1b5f5d388b2b4fcb3324914bc90b3956e50ac2b0  i40e: fix retrying in i40e_aq_get_phy_capabilities
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
+branch HEAD: 88213a172114ad563d60bc4effd41850ef252135  ip6tlvs: Validation of TX Destination and Hop-by-Hop options
 
 TIMEOUT after 1448m
 
@@ -172,6 +172,8 @@ s390                             allmodconfig
 s390                              allnoconfig
 s390                          debug_defconfig
 s390                                defconfig
+i386                              allnoconfig
+i386                                defconfig
 x86_64                 randconfig-b001-201933
 x86_64                 randconfig-b002-201933
 x86_64                 randconfig-b003-201933
@@ -204,8 +206,6 @@ x86_64                                nfsroot
 x86_64                                   rhel
 x86_64                               rhel-7.6
 i386                             allmodconfig
-i386                              allnoconfig
-i386                                defconfig
 ia64                             alldefconfig
 ia64                             allmodconfig
 ia64                              allnoconfig
