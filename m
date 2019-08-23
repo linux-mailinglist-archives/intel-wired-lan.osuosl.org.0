@@ -1,59 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9EA79BE44
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 24 Aug 2019 16:40:56 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50A269C689
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2019 01:31:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 43BBC86AE5;
-	Sat, 24 Aug 2019 14:40:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A71C020427;
+	Sun, 25 Aug 2019 23:31:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rUy8niIuj2Fj; Sat, 24 Aug 2019 14:40:55 +0000 (UTC)
+	with ESMTP id 9nP2N47Ky0dW; Sun, 25 Aug 2019 23:31:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0AACF86AEE;
-	Sat, 24 Aug 2019 14:40:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 513AE20408;
+	Sun, 25 Aug 2019 23:31:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 41ACA1BF362
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2019 14:40:52 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B44641BF28A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 19:14:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3D8CA86AE5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2019 14:40:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id ACE4A886B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 19:14:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id twiVbHZ2FTnA for <intel-wired-lan@lists.osuosl.org>;
- Sat, 24 Aug 2019 14:40:51 +0000 (UTC)
+ with ESMTP id z0MBDGefh5WF for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Aug 2019 19:14:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4107186ACE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2019 14:40:51 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 24 Aug 2019 07:40:50 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,425,1559545200"; d="scan'208";a="379164198"
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.249.93.120])
- ([10.249.93.120])
- by fmsmga005.fm.intel.com with ESMTP; 24 Aug 2019 07:40:47 -0700
-To: Lyude Paul <lyude@redhat.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-References: <20190822183318.27634-1-lyude@redhat.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <0e601456-58c3-b6ed-3be2-3eb5eec12eb4@intel.com>
-Date: Sat, 24 Aug 2019 17:40:45 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <20190822183318.27634-1-lyude@redhat.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igb/igc: Don't warn on fatal read
- failures when the device is removed
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 020FB886B4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 19:14:37 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id c2so6067933plz.13
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 12:14:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=KfyCvX/wLd+xBmfJHt9z6f1mRRr5A8kveHSdf9q4hGs=;
+ b=M8S8yGC7LZgC1vErDOoHct/w8T0Ps0GwHoxdt7XCW/IfGlv+EVwtweMFpwIQFAE4SD
+ zVFIw0jNxfwQSqcSdGv7cN+S4s+iFP4Sb2vQbcC1TyP4fYa+0yaGs3YTCeHH2M4If8yW
+ gXSxWTSeyXU54BisNezLnafFi1zDnev2HfUu8PAP4YLu7GkleyOEeaG0SRglUWQEmTzC
+ D4FtgMwDXQ+8RKtyx04LwGz0XZ2VE+ntrggi+3qGwweHUQr8tH+knrFCt78IrSZoRr2J
+ AUOt/k3rAB0FB/3geWDUNDkkJrIFYxMs5WUIvJycEFu/O68BpG3BwnkPYGPAa/gn/NN9
+ fJ5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=KfyCvX/wLd+xBmfJHt9z6f1mRRr5A8kveHSdf9q4hGs=;
+ b=s4I4KGSjC4mfTDeDpKoB2z+7K0vVUfaK7ljsUOayWpBwKnW8smqIwJL0xSa6I3oCyE
+ /MiHPNL5nafQMOvsb67XfI00vV/S6cA2ib4twzaU+PqKCRy8SiqzGjI1UIBKSGheeNcE
+ nizd04UUXBCdXL4hf5/dt1ubWKBU4fWlPoI0oBzeVyv9CDP5tMUC0bmUmmotf/0JzuxO
+ WPF9AeTIlQ1T31VfYbHQrknB+y86bLAHyv4vNbpL6lqkYoefFf07YNwJmJ3kFrHi4ECi
+ kQWOmTd0MnjWggE8eJHh2sHCM2c86rEg2hgcLo5mCXZ2mXglL1Us5PDI3Z9n54YV6GOJ
+ hLHA==
+X-Gm-Message-State: APjAAAXIVD8ZzLUFHgvup9PRaaIiDicho+SaWYQ0SHjY55xjeJ51eyyD
+ 10mMqoYes+GlHCNOMnGxE2g=
+X-Google-Smtp-Source: APXvYqy+0eDy7inwc30A38gZ65ippwvVtu3pIyFRgieb00b8trbyEm9Bnp8DP8TU36jggEXda6+rkA==
+X-Received: by 2002:a17:902:3:: with SMTP id 3mr6767876pla.41.1566587677471;
+ Fri, 23 Aug 2019 12:14:37 -0700 (PDT)
+Received: from vm ([104.133.9.111])
+ by smtp.gmail.com with ESMTPSA id h17sm4685829pfo.24.2019.08.23.12.14.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Aug 2019 12:14:37 -0700 (PDT)
+From: Forrest Fleming <ffleming@gmail.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Date: Fri, 23 Aug 2019 19:14:21 +0000
+Message-Id: <20190823191421.3318-1-ffleming@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-Mailman-Approved-At: Sun, 25 Aug 2019 23:31:31 +0000
+Subject: [Intel-wired-lan] [PATCH] net: intel: Cleanup e1000 - add space
+ between }}
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,126 +82,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org,
+ Forrest Fleming <ffleming@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 8/22/2019 21:33, Lyude Paul wrote:
-> Fatal read errors are worth warning about, unless of course the device
-> was just unplugged from the machine - something that's a rather normal
-> occurence when the igb/igc adapter is located on a Thunderbolt dock. So,
-> let's only WARN() if there's a fatal read error while the device is
-> still present.
-> 
-> This fixes the following WARN splat that's been appearing whenever I
-> unplug my Caldigit TS3 Thunderbolt dock from my laptop:
-> 
->    igb 0000:09:00.0 enp9s0: PCIe link lost
->    ------------[ cut here ]------------
->    igb: Failed to read reg 0x18!
->    WARNING: CPU: 7 PID: 516 at
->    drivers/net/ethernet/intel/igb/igb_main.c:756 igb_rd32+0x57/0x6a [igb]
->    Modules linked in: igb dca thunderbolt fuse vfat fat elan_i2c mei_wdt
->    mei_hdcp i915 wmi_bmof intel_wmi_thunderbolt iTCO_wdt
->    iTCO_vendor_support x86_pkg_temp_thermal intel_powerclamp joydev
->    coretemp crct10dif_pclmul crc32_pclmul i2c_algo_bit ghash_clmulni_intel
->    intel_cstate drm_kms_helper intel_uncore syscopyarea sysfillrect
->    sysimgblt fb_sys_fops intel_rapl_perf intel_xhci_usb_role_switch mei_me
->    drm roles idma64 i2c_i801 ucsi_acpi typec_ucsi mei intel_lpss_pci
->    processor_thermal_device typec intel_pch_thermal intel_soc_dts_iosf
->    intel_lpss int3403_thermal thinkpad_acpi wmi int340x_thermal_zone
->    ledtrig_audio int3400_thermal acpi_thermal_rel acpi_pad video
->    pcc_cpufreq ip_tables serio_raw nvme nvme_core crc32c_intel uas
->    usb_storage e1000e i2c_dev
->    CPU: 7 PID: 516 Comm: kworker/u16:3 Not tainted 5.2.0-rc1Lyude-Test+ #14
->    Hardware name: LENOVO 20L8S2N800/20L8S2N800, BIOS N22ET35W (1.12 ) 04/09/2018
->    Workqueue: kacpi_hotplug acpi_hotplug_work_fn
->    RIP: 0010:igb_rd32+0x57/0x6a [igb]
->    Code: 87 b8 fc ff ff 48 c7 47 08 00 00 00 00 48 c7 c6 33 42 9b c0 4c 89
->    c7 e8 47 45 cd dc 89 ee 48 c7 c7 43 42 9b c0 e8 c1 94 71 dc <0f> 0b eb
->    08 8b 00 ff c0 75 b0 eb c8 44 89 e0 5d 41 5c c3 0f 1f 44
->    RSP: 0018:ffffba5801cf7c48 EFLAGS: 00010286
->    RAX: 0000000000000000 RBX: ffff9e7956608840 RCX: 0000000000000007
->    RDX: 0000000000000000 RSI: ffffba5801cf7b24 RDI: ffff9e795e3d6a00
->    RBP: 0000000000000018 R08: 000000009dec4a01 R09: ffffffff9e61018f
->    R10: 0000000000000000 R11: ffffba5801cf7ae5 R12: 00000000ffffffff
->    R13: ffff9e7956608840 R14: ffff9e795a6f10b0 R15: 0000000000000000
->    FS:  0000000000000000(0000) GS:ffff9e795e3c0000(0000) knlGS:0000000000000000
->    CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
->    CR2: 0000564317bc4088 CR3: 000000010e00a006 CR4: 00000000003606e0
->    DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
->    DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
->    Call Trace:
->     igb_release_hw_control+0x1a/0x30 [igb]
->     igb_remove+0xc5/0x14b [igb]
->     pci_device_remove+0x3b/0x93
->     device_release_driver_internal+0xd7/0x17e
->     pci_stop_bus_device+0x36/0x75
->     pci_stop_bus_device+0x66/0x75
->     pci_stop_bus_device+0x66/0x75
->     pci_stop_and_remove_bus_device+0xf/0x19
->     trim_stale_devices+0xc5/0x13a
->     ? __pm_runtime_resume+0x6e/0x7b
->     trim_stale_devices+0x103/0x13a
->     ? __pm_runtime_resume+0x6e/0x7b
->     trim_stale_devices+0x103/0x13a
->     acpiphp_check_bridge+0xd8/0xf5
->     acpiphp_hotplug_notify+0xf7/0x14b
->     ? acpiphp_check_bridge+0xf5/0xf5
->     acpi_device_hotplug+0x357/0x3b5
->     acpi_hotplug_work_fn+0x1a/0x23
->     process_one_work+0x1a7/0x296
->     worker_thread+0x1a8/0x24c
->     ? process_scheduled_works+0x2c/0x2c
->     kthread+0xe9/0xee
->     ? kthread_destroy_worker+0x41/0x41
->     ret_from_fork+0x35/0x40
->    ---[ end trace 252bf10352c63d22 ]---
-> 
-> Signed-off-by: Lyude Paul <lyude@redhat.com>
-> Fixes: 47e16692b26b ("igb/igc: warn when fatal read failure happens")
-> Cc: Feng Tang <feng.tang@intel.com>
-> Cc: Sasha Neftin <sasha.neftin@intel.com>
-> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> Cc: intel-wired-lan@lists.osuosl.org
-> ---
->   drivers/net/ethernet/intel/igb/igb_main.c | 3 ++-
->   drivers/net/ethernet/intel/igc/igc_main.c | 3 ++-
->   2 files changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index e5b7e638df28..1a7f7cd28df9 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -753,7 +753,8 @@ u32 igb_rd32(struct e1000_hw *hw, u32 reg)
->   		struct net_device *netdev = igb->netdev;
->   		hw->hw_addr = NULL;
->   		netdev_err(netdev, "PCIe link lost\n");
-> -		WARN(1, "igb: Failed to read reg 0x%x!\n", reg);
-> +		WARN(pci_device_is_present(igb->pdev),
-> +		     "igb: Failed to read reg 0x%x!\n", reg);
->   	}
->   
->   	return value;
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 28072b9aa932..f873a4b35eaf 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -3934,7 +3934,8 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
->   		hw->hw_addr = NULL;
->   		netif_device_detach(netdev);
->   		netdev_err(netdev, "PCIe link lost, device now detached\n");
-> -		WARN(1, "igc: Failed to read reg 0x%x!\n", reg);
-> +		WARN(pci_device_is_present(igc->pdev),
-> +		     "igc: Failed to read reg 0x%x!\n", reg);
->   	}
->   
->   	return value;
-> 
-Thanks, for igc
-Acked-by: Sasha Neftin <sasha.neftin@intel.com>
+suggested by checkpatch
+
+Signed-off-by: Forrest Fleming <ffleming@gmail.com>
+---
+ .../net/ethernet/intel/e1000/e1000_param.c    | 28 +++++++++----------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_param.c b/drivers/net/ethernet/intel/e1000/e1000_param.c
+index d3f29ffe1e47..1a1f2f0237f9 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_param.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_param.c
+@@ -266,7 +266,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.arg  = { .r = {
+ 				.min = E1000_MIN_TXD,
+ 				.max = mac_type < e1000_82544 ? E1000_MAX_TXD : E1000_MAX_82544_TXD
+-				}}
++				} }
+ 		};
+ 
+ 		if (num_TxDescriptors > bd) {
+@@ -295,7 +295,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 				.min = E1000_MIN_RXD,
+ 				.max = mac_type < e1000_82544 ? E1000_MAX_RXD :
+ 				       E1000_MAX_82544_RXD
+-			}}
++			} }
+ 		};
+ 
+ 		if (num_RxDescriptors > bd) {
+@@ -341,7 +341,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.err  = "reading default settings from EEPROM",
+ 			.def  = E1000_FC_DEFAULT,
+ 			.arg  = { .l = { .nr = ARRAY_SIZE(fc_list),
+-					 .p = fc_list }}
++					 .p = fc_list } }
+ 		};
+ 
+ 		if (num_FlowControl > bd) {
+@@ -359,7 +359,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.err  = "using default of " __MODULE_STRING(DEFAULT_TIDV),
+ 			.def  = DEFAULT_TIDV,
+ 			.arg  = { .r = { .min = MIN_TXDELAY,
+-					 .max = MAX_TXDELAY }}
++					 .max = MAX_TXDELAY } }
+ 		};
+ 
+ 		if (num_TxIntDelay > bd) {
+@@ -377,7 +377,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.err  = "using default of " __MODULE_STRING(DEFAULT_TADV),
+ 			.def  = DEFAULT_TADV,
+ 			.arg  = { .r = { .min = MIN_TXABSDELAY,
+-					 .max = MAX_TXABSDELAY }}
++					 .max = MAX_TXABSDELAY } }
+ 		};
+ 
+ 		if (num_TxAbsIntDelay > bd) {
+@@ -395,7 +395,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.err  = "using default of " __MODULE_STRING(DEFAULT_RDTR),
+ 			.def  = DEFAULT_RDTR,
+ 			.arg  = { .r = { .min = MIN_RXDELAY,
+-					 .max = MAX_RXDELAY }}
++					 .max = MAX_RXDELAY } }
+ 		};
+ 
+ 		if (num_RxIntDelay > bd) {
+@@ -413,7 +413,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.err  = "using default of " __MODULE_STRING(DEFAULT_RADV),
+ 			.def  = DEFAULT_RADV,
+ 			.arg  = { .r = { .min = MIN_RXABSDELAY,
+-					 .max = MAX_RXABSDELAY }}
++					 .max = MAX_RXABSDELAY } }
+ 		};
+ 
+ 		if (num_RxAbsIntDelay > bd) {
+@@ -431,7 +431,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
+ 			.err  = "using default of " __MODULE_STRING(DEFAULT_ITR),
+ 			.def  = DEFAULT_ITR,
+ 			.arg  = { .r = { .min = MIN_ITR,
+-					 .max = MAX_ITR }}
++					 .max = MAX_ITR } }
+ 		};
+ 
+ 		if (num_InterruptThrottleRate > bd) {
+@@ -545,7 +545,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
+ 			{          0, "" },
+ 			{   SPEED_10, "" },
+ 			{  SPEED_100, "" },
+-			{ SPEED_1000, "" }};
++			{ SPEED_1000, "" } };
+ 
+ 		opt = (struct e1000_option) {
+ 			.type = list_option,
+@@ -553,7 +553,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
+ 			.err  = "parameter ignored",
+ 			.def  = 0,
+ 			.arg  = { .l = { .nr = ARRAY_SIZE(speed_list),
+-					 .p = speed_list }}
++					 .p = speed_list } }
+ 		};
+ 
+ 		if (num_Speed > bd) {
+@@ -567,7 +567,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
+ 		static const struct e1000_opt_list dplx_list[] = {
+ 			{           0, "" },
+ 			{ HALF_DUPLEX, "" },
+-			{ FULL_DUPLEX, "" }};
++			{ FULL_DUPLEX, "" } };
+ 
+ 		opt = (struct e1000_option) {
+ 			.type = list_option,
+@@ -575,7 +575,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
+ 			.err  = "parameter ignored",
+ 			.def  = 0,
+ 			.arg  = { .l = { .nr = ARRAY_SIZE(dplx_list),
+-					 .p = dplx_list }}
++					 .p = dplx_list } }
+ 		};
+ 
+ 		if (num_Duplex > bd) {
+@@ -623,7 +623,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
+ 			 { 0x2c, AA "1000/FD, 100/FD, 100/HD" },
+ 			 { 0x2d, AA "1000/FD, 100/FD, 100/HD, 10/HD" },
+ 			 { 0x2e, AA "1000/FD, 100/FD, 100/HD, 10/FD" },
+-			 { 0x2f, AA "1000/FD, 100/FD, 100/HD, 10/FD, 10/HD" }};
++			 { 0x2f, AA "1000/FD, 100/FD, 100/HD, 10/FD, 10/HD" } };
+ 
+ 		opt = (struct e1000_option) {
+ 			.type = list_option,
+@@ -631,7 +631,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
+ 			.err  = "parameter ignored",
+ 			.def  = AUTONEG_ADV_DEFAULT,
+ 			.arg  = { .l = { .nr = ARRAY_SIZE(an_list),
+-					 .p = an_list }}
++					 .p = an_list } }
+ 		};
+ 
+ 		if (num_AutoNeg > bd) {
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
