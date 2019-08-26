@@ -1,75 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50A269C689
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2019 01:31:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A196D9C6DF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2019 02:43:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A71C020427;
-	Sun, 25 Aug 2019 23:31:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 40DAA85BCA;
+	Mon, 26 Aug 2019 00:43:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9nP2N47Ky0dW; Sun, 25 Aug 2019 23:31:34 +0000 (UTC)
+	with ESMTP id K_0iqBhgPTyG; Mon, 26 Aug 2019 00:43:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 513AE20408;
-	Sun, 25 Aug 2019 23:31:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1426D85C19;
+	Mon, 26 Aug 2019 00:43:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B44641BF28A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 19:14:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AF6971BF38B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 00:43:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ACE4A886B5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 19:14:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A623A87B5E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 00:43:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id z0MBDGefh5WF for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Aug 2019 19:14:38 +0000 (UTC)
+ with ESMTP id kd9Q9DTGO81I for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Aug 2019 00:43:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
- [209.85.214.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 020FB886B4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 19:14:37 +0000 (UTC)
-Received: by mail-pl1-f195.google.com with SMTP id c2so6067933plz.13
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Aug 2019 12:14:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=KfyCvX/wLd+xBmfJHt9z6f1mRRr5A8kveHSdf9q4hGs=;
- b=M8S8yGC7LZgC1vErDOoHct/w8T0Ps0GwHoxdt7XCW/IfGlv+EVwtweMFpwIQFAE4SD
- zVFIw0jNxfwQSqcSdGv7cN+S4s+iFP4Sb2vQbcC1TyP4fYa+0yaGs3YTCeHH2M4If8yW
- gXSxWTSeyXU54BisNezLnafFi1zDnev2HfUu8PAP4YLu7GkleyOEeaG0SRglUWQEmTzC
- D4FtgMwDXQ+8RKtyx04LwGz0XZ2VE+ntrggi+3qGwweHUQr8tH+knrFCt78IrSZoRr2J
- AUOt/k3rAB0FB/3geWDUNDkkJrIFYxMs5WUIvJycEFu/O68BpG3BwnkPYGPAa/gn/NN9
- fJ5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=KfyCvX/wLd+xBmfJHt9z6f1mRRr5A8kveHSdf9q4hGs=;
- b=s4I4KGSjC4mfTDeDpKoB2z+7K0vVUfaK7ljsUOayWpBwKnW8smqIwJL0xSa6I3oCyE
- /MiHPNL5nafQMOvsb67XfI00vV/S6cA2ib4twzaU+PqKCRy8SiqzGjI1UIBKSGheeNcE
- nizd04UUXBCdXL4hf5/dt1ubWKBU4fWlPoI0oBzeVyv9CDP5tMUC0bmUmmotf/0JzuxO
- WPF9AeTIlQ1T31VfYbHQrknB+y86bLAHyv4vNbpL6lqkYoefFf07YNwJmJ3kFrHi4ECi
- kQWOmTd0MnjWggE8eJHh2sHCM2c86rEg2hgcLo5mCXZ2mXglL1Us5PDI3Z9n54YV6GOJ
- hLHA==
-X-Gm-Message-State: APjAAAXIVD8ZzLUFHgvup9PRaaIiDicho+SaWYQ0SHjY55xjeJ51eyyD
- 10mMqoYes+GlHCNOMnGxE2g=
-X-Google-Smtp-Source: APXvYqy+0eDy7inwc30A38gZ65ippwvVtu3pIyFRgieb00b8trbyEm9Bnp8DP8TU36jggEXda6+rkA==
-X-Received: by 2002:a17:902:3:: with SMTP id 3mr6767876pla.41.1566587677471;
- Fri, 23 Aug 2019 12:14:37 -0700 (PDT)
-Received: from vm ([104.133.9.111])
- by smtp.gmail.com with ESMTPSA id h17sm4685829pfo.24.2019.08.23.12.14.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Aug 2019 12:14:37 -0700 (PDT)
-From: Forrest Fleming <ffleming@gmail.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Date: Fri, 23 Aug 2019 19:14:21 +0000
-Message-Id: <20190823191421.3318-1-ffleming@gmail.com>
-X-Mailer: git-send-email 2.17.1
-X-Mailman-Approved-At: Sun, 25 Aug 2019 23:31:31 +0000
-Subject: [Intel-wired-lan] [PATCH] net: intel: Cleanup e1000 - add space
- between }}
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DAA0F87B47
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 00:43:51 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Aug 2019 17:43:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,431,1559545200"; d="scan'208";a="174046080"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 25 Aug 2019 17:43:49 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1i236r-00033A-BA; Mon, 26 Aug 2019 08:43:49 +0800
+Date: Mon, 26 Aug 2019 08:43:38 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d632b3a.sAqQzAH5ukF4H3iq%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 360b438bdf889d148ed7d99a37b37c611406ee53
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,155 +63,167 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org,
- Forrest Fleming <ffleming@gmail.com>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-suggested by checkpatch
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 360b438bdf889d148ed7d99a37b37c611406ee53  fm10k: add support for ndo_get_vf_stats operation
 
-Signed-off-by: Forrest Fleming <ffleming@gmail.com>
+elapsed time: 74m
+
+configs tested: 142
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+x86_64                 randconfig-a001-201934
+x86_64                 randconfig-a002-201934
+x86_64                 randconfig-a003-201934
+x86_64                 randconfig-a004-201934
+i386                   randconfig-a001-201934
+i386                   randconfig-a002-201934
+i386                   randconfig-a003-201934
+i386                   randconfig-a004-201934
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+x86_64                           allmodconfig
+x86_64                           allyesconfig
+i386                             alldefconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+x86_64                 randconfig-g001-201934
+x86_64                 randconfig-g002-201934
+x86_64                 randconfig-g003-201934
+x86_64                 randconfig-g004-201934
+i386                   randconfig-g001-201934
+i386                   randconfig-g002-201934
+i386                   randconfig-g003-201934
+i386                   randconfig-g004-201934
+x86_64                 randconfig-c001-201934
+x86_64                 randconfig-c002-201934
+x86_64                 randconfig-c003-201934
+x86_64                 randconfig-c004-201934
+i386                   randconfig-c001-201934
+i386                   randconfig-c002-201934
+i386                   randconfig-c003-201934
+i386                   randconfig-c004-201934
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+arm                              allmodconfig
+arm64                            allmodconfig
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                                   rhel
+x86_64                               rhel-7.6
+i386                              allnoconfig
+i386                                defconfig
+x86_64                 randconfig-f001-201934
+x86_64                 randconfig-f002-201934
+x86_64                 randconfig-f003-201934
+x86_64                 randconfig-f004-201934
+i386                   randconfig-f001-201934
+i386                   randconfig-f002-201934
+i386                   randconfig-f003-201934
+i386                   randconfig-f004-201934
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                 randconfig-h001-201934
+x86_64                 randconfig-h002-201934
+x86_64                 randconfig-h003-201934
+x86_64                 randconfig-h004-201934
+i386                   randconfig-h001-201934
+i386                   randconfig-h002-201934
+i386                   randconfig-h003-201934
+i386                   randconfig-h004-201934
+i386                             allmodconfig
+x86_64                 randconfig-b001-201934
+x86_64                 randconfig-b002-201934
+x86_64                 randconfig-b003-201934
+x86_64                 randconfig-b004-201934
+i386                   randconfig-b001-201934
+i386                   randconfig-b002-201934
+i386                   randconfig-b003-201934
+i386                   randconfig-b004-201934
+x86_64                 randconfig-d001-201934
+x86_64                 randconfig-d002-201934
+x86_64                 randconfig-d003-201934
+x86_64                 randconfig-d004-201934
+i386                   randconfig-d001-201934
+i386                   randconfig-d002-201934
+i386                   randconfig-d003-201934
+i386                   randconfig-d004-201934
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+
 ---
- .../net/ethernet/intel/e1000/e1000_param.c    | 28 +++++++++----------
- 1 file changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_param.c b/drivers/net/ethernet/intel/e1000/e1000_param.c
-index d3f29ffe1e47..1a1f2f0237f9 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_param.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_param.c
-@@ -266,7 +266,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.arg  = { .r = {
- 				.min = E1000_MIN_TXD,
- 				.max = mac_type < e1000_82544 ? E1000_MAX_TXD : E1000_MAX_82544_TXD
--				}}
-+				} }
- 		};
- 
- 		if (num_TxDescriptors > bd) {
-@@ -295,7 +295,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 				.min = E1000_MIN_RXD,
- 				.max = mac_type < e1000_82544 ? E1000_MAX_RXD :
- 				       E1000_MAX_82544_RXD
--			}}
-+			} }
- 		};
- 
- 		if (num_RxDescriptors > bd) {
-@@ -341,7 +341,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.err  = "reading default settings from EEPROM",
- 			.def  = E1000_FC_DEFAULT,
- 			.arg  = { .l = { .nr = ARRAY_SIZE(fc_list),
--					 .p = fc_list }}
-+					 .p = fc_list } }
- 		};
- 
- 		if (num_FlowControl > bd) {
-@@ -359,7 +359,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.err  = "using default of " __MODULE_STRING(DEFAULT_TIDV),
- 			.def  = DEFAULT_TIDV,
- 			.arg  = { .r = { .min = MIN_TXDELAY,
--					 .max = MAX_TXDELAY }}
-+					 .max = MAX_TXDELAY } }
- 		};
- 
- 		if (num_TxIntDelay > bd) {
-@@ -377,7 +377,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.err  = "using default of " __MODULE_STRING(DEFAULT_TADV),
- 			.def  = DEFAULT_TADV,
- 			.arg  = { .r = { .min = MIN_TXABSDELAY,
--					 .max = MAX_TXABSDELAY }}
-+					 .max = MAX_TXABSDELAY } }
- 		};
- 
- 		if (num_TxAbsIntDelay > bd) {
-@@ -395,7 +395,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.err  = "using default of " __MODULE_STRING(DEFAULT_RDTR),
- 			.def  = DEFAULT_RDTR,
- 			.arg  = { .r = { .min = MIN_RXDELAY,
--					 .max = MAX_RXDELAY }}
-+					 .max = MAX_RXDELAY } }
- 		};
- 
- 		if (num_RxIntDelay > bd) {
-@@ -413,7 +413,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.err  = "using default of " __MODULE_STRING(DEFAULT_RADV),
- 			.def  = DEFAULT_RADV,
- 			.arg  = { .r = { .min = MIN_RXABSDELAY,
--					 .max = MAX_RXABSDELAY }}
-+					 .max = MAX_RXABSDELAY } }
- 		};
- 
- 		if (num_RxAbsIntDelay > bd) {
-@@ -431,7 +431,7 @@ void e1000_check_options(struct e1000_adapter *adapter)
- 			.err  = "using default of " __MODULE_STRING(DEFAULT_ITR),
- 			.def  = DEFAULT_ITR,
- 			.arg  = { .r = { .min = MIN_ITR,
--					 .max = MAX_ITR }}
-+					 .max = MAX_ITR } }
- 		};
- 
- 		if (num_InterruptThrottleRate > bd) {
-@@ -545,7 +545,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
- 			{          0, "" },
- 			{   SPEED_10, "" },
- 			{  SPEED_100, "" },
--			{ SPEED_1000, "" }};
-+			{ SPEED_1000, "" } };
- 
- 		opt = (struct e1000_option) {
- 			.type = list_option,
-@@ -553,7 +553,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
- 			.err  = "parameter ignored",
- 			.def  = 0,
- 			.arg  = { .l = { .nr = ARRAY_SIZE(speed_list),
--					 .p = speed_list }}
-+					 .p = speed_list } }
- 		};
- 
- 		if (num_Speed > bd) {
-@@ -567,7 +567,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
- 		static const struct e1000_opt_list dplx_list[] = {
- 			{           0, "" },
- 			{ HALF_DUPLEX, "" },
--			{ FULL_DUPLEX, "" }};
-+			{ FULL_DUPLEX, "" } };
- 
- 		opt = (struct e1000_option) {
- 			.type = list_option,
-@@ -575,7 +575,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
- 			.err  = "parameter ignored",
- 			.def  = 0,
- 			.arg  = { .l = { .nr = ARRAY_SIZE(dplx_list),
--					 .p = dplx_list }}
-+					 .p = dplx_list } }
- 		};
- 
- 		if (num_Duplex > bd) {
-@@ -623,7 +623,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
- 			 { 0x2c, AA "1000/FD, 100/FD, 100/HD" },
- 			 { 0x2d, AA "1000/FD, 100/FD, 100/HD, 10/HD" },
- 			 { 0x2e, AA "1000/FD, 100/FD, 100/HD, 10/FD" },
--			 { 0x2f, AA "1000/FD, 100/FD, 100/HD, 10/FD, 10/HD" }};
-+			 { 0x2f, AA "1000/FD, 100/FD, 100/HD, 10/FD, 10/HD" } };
- 
- 		opt = (struct e1000_option) {
- 			.type = list_option,
-@@ -631,7 +631,7 @@ static void e1000_check_copper_options(struct e1000_adapter *adapter)
- 			.err  = "parameter ignored",
- 			.def  = AUTONEG_ADV_DEFAULT,
- 			.arg  = { .l = { .nr = ARRAY_SIZE(an_list),
--					 .p = an_list }}
-+					 .p = an_list } }
- 		};
- 
- 		if (num_AutoNeg > bd) {
--- 
-2.17.1
-
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
