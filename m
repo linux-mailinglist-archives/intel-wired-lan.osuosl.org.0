@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A196D9C6DF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2019 02:43:57 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DD139CB36
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2019 10:03:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 40DAA85BCA;
-	Mon, 26 Aug 2019 00:43:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 726D487938;
+	Mon, 26 Aug 2019 08:03:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K_0iqBhgPTyG; Mon, 26 Aug 2019 00:43:55 +0000 (UTC)
+	with ESMTP id oKYQAgI3MYpA; Mon, 26 Aug 2019 08:03:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1426D85C19;
-	Mon, 26 Aug 2019 00:43:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 445C5878FE;
+	Mon, 26 Aug 2019 08:03:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AF6971BF38B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 00:43:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7279A1BF356
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 08:03:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A623A87B5E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 00:43:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5EA9E878FE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 08:03:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kd9Q9DTGO81I for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Aug 2019 00:43:52 +0000 (UTC)
+ with ESMTP id 12BhBv-DKoYT for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Aug 2019 08:03:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DAA0F87B47
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 00:43:51 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 885C187877
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2019 08:03:35 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Aug 2019 17:43:51 -0700
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Aug 2019 01:03:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,431,1559545200"; d="scan'208";a="174046080"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 25 Aug 2019 17:43:49 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1i236r-00033A-BA; Mon, 26 Aug 2019 08:43:49 +0800
-Date: Mon, 26 Aug 2019 08:43:38 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d632b3a.sAqQzAH5ukF4H3iq%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.64,431,1559545200"; 
+ d="asc'?scan'208";a="196998739"
+Received: from sjolley-mobl.amr.corp.intel.com ([10.254.178.147])
+ by fmsmga001.fm.intel.com with ESMTP; 26 Aug 2019 01:03:34 -0700
+Message-ID: <c2279a78904b581924894b712403299903eacbfc.camel@intel.com>
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: Forrest Fleming <ffleming@gmail.com>
+Date: Mon, 26 Aug 2019 01:03:33 -0700
+In-Reply-To: <20190823191421.3318-1-ffleming@gmail.com>
+References: <20190823191421.3318-1-ffleming@gmail.com>
+User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- 360b438bdf889d148ed7d99a37b37c611406ee53
+Subject: Re: [Intel-wired-lan] [PATCH] net: intel: Cleanup e1000 - add space
+ between }}
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,168 +63,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0112823548859350770=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 360b438bdf889d148ed7d99a37b37c611406ee53  fm10k: add support for ndo_get_vf_stats operation
 
-elapsed time: 74m
+--===============0112823548859350770==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-+SaW8iJuTsbssO2+QFx8"
 
-configs tested: 142
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--=-+SaW8iJuTsbssO2+QFx8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-x86_64                 randconfig-a001-201934
-x86_64                 randconfig-a002-201934
-x86_64                 randconfig-a003-201934
-x86_64                 randconfig-a004-201934
-i386                   randconfig-a001-201934
-i386                   randconfig-a002-201934
-i386                   randconfig-a003-201934
-i386                   randconfig-a004-201934
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                                   jz4740
-mips                      malta_kvm_defconfig
-mips                                     txx9
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-i386                             alldefconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64                 randconfig-g001-201934
-x86_64                 randconfig-g002-201934
-x86_64                 randconfig-g003-201934
-x86_64                 randconfig-g004-201934
-i386                   randconfig-g001-201934
-i386                   randconfig-g002-201934
-i386                   randconfig-g003-201934
-i386                   randconfig-g004-201934
-x86_64                 randconfig-c001-201934
-x86_64                 randconfig-c002-201934
-x86_64                 randconfig-c003-201934
-x86_64                 randconfig-c004-201934
-i386                   randconfig-c001-201934
-i386                   randconfig-c002-201934
-i386                   randconfig-c003-201934
-i386                   randconfig-c004-201934
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-arm                              allmodconfig
-arm64                            allmodconfig
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                nfsroot
-x86_64                                   rhel
-x86_64                               rhel-7.6
-i386                              allnoconfig
-i386                                defconfig
-x86_64                 randconfig-f001-201934
-x86_64                 randconfig-f002-201934
-x86_64                 randconfig-f003-201934
-x86_64                 randconfig-f004-201934
-i386                   randconfig-f001-201934
-i386                   randconfig-f002-201934
-i386                   randconfig-f003-201934
-i386                   randconfig-f004-201934
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                 randconfig-h001-201934
-x86_64                 randconfig-h002-201934
-x86_64                 randconfig-h003-201934
-x86_64                 randconfig-h004-201934
-i386                   randconfig-h001-201934
-i386                   randconfig-h002-201934
-i386                   randconfig-h003-201934
-i386                   randconfig-h004-201934
-i386                             allmodconfig
-x86_64                 randconfig-b001-201934
-x86_64                 randconfig-b002-201934
-x86_64                 randconfig-b003-201934
-x86_64                 randconfig-b004-201934
-i386                   randconfig-b001-201934
-i386                   randconfig-b002-201934
-i386                   randconfig-b003-201934
-i386                   randconfig-b004-201934
-x86_64                 randconfig-d001-201934
-x86_64                 randconfig-d002-201934
-x86_64                 randconfig-d003-201934
-x86_64                 randconfig-d004-201934
-i386                   randconfig-d001-201934
-i386                   randconfig-d002-201934
-i386                   randconfig-d003-201934
-i386                   randconfig-d004-201934
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
+On Fri, 2019-08-23 at 19:14 +0000, Forrest Fleming wrote:
+> suggested by checkpatch
+>=20
+> Signed-off-by: Forrest Fleming <ffleming@gmail.com>
+> ---
+>  .../net/ethernet/intel/e1000/e1000_param.c    | 28 +++++++++----------
+>  1 file changed, 14 insertions(+), 14 deletions(-)
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+While I do not see an issue with this change, I wonder how important it is
+to make such a change.  Especially since most of the hardware supported by
+this driver is not available for testing.  In addition, this is one
+suggested change by checkpatch.pl that I personally do not agree with.
+
+This is not a hard NAK, but you have to explain how this change makes the
+code more readable before I consider it.
+
+--=-+SaW8iJuTsbssO2+QFx8
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl1jklUACgkQ5W/vlVpL
+7c7hHg/+NAXAeuMjDZxOZq/wxvvj915GMyFGhtxIHKvbyYMLDU1m2AMHXzvBamyb
+qhYKGFYjTD5OsbqvHCKaZ4KxjMgiNGxfrDnLD3JPgyrEGKMICpU87Ec49tfRhLo7
+Jj7+IetakkcwLGnNoi2ZeumsfybLvjrtJGZS+QC66QRXqD8TeIuoEDleRDSs9sMp
+6CVb5m0ZGQAbEk0Kpso1CwdoEqQ0LdN27dQbTi8ix5wCcQ1HJnOjBUDvTzsfp2cS
+L5TlNViQ4GhfJkkR2PDsI2Svh1XJd1w4U3PMDRHx4Bu6MajAFcKxGoFgfbizpP5C
+CtGGiCN91RuI87eUfpWvpFsIOM4wm4EULYMSEgPn7TuUBB3CweNafpGJnDmtiqGD
+dj2+AOYtmKoKFbatNBhl9zIEMU76vW54gshX5CaWToCFJeFAqagrgoWdrOM4vWIM
+rMcz/hgTvxU40ad3ZJ0kCcSy+j/JTF8JRG9sBYaymoJnxMCT6jeFI6R9fIhRqMA3
+QEpuEElGSnpvD7Up7z1Sd7oE4wJlLYbAEwZqn/+rwGIk6d0PZmHH3ZixFI/HYemt
+qji8KltUM/QHM0jaXeLiPBq3RJlt/4qs6x8LV9k1zuLRL0GuXQs1Wu1PX2pNDLZU
+jataaHMp0uFKLkWwR2metAyY9mwHKdJgV7pO2/MAb2AKVJF2HqA=
+=pzql
+-----END PGP SIGNATURE-----
+
+--=-+SaW8iJuTsbssO2+QFx8--
+
+
+--===============0112823548859350770==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0112823548859350770==--
+
