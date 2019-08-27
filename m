@@ -1,58 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67B2F9F2C9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2019 20:58:33 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 912299F2D7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2019 21:02:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D3FAF876CF;
-	Tue, 27 Aug 2019 18:58:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 35B3422720;
+	Tue, 27 Aug 2019 19:02:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s6xyBCcPpsJU; Tue, 27 Aug 2019 18:58:31 +0000 (UTC)
+	with ESMTP id OVVG5RLOFORj; Tue, 27 Aug 2019 19:02:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E7A70876C2;
-	Tue, 27 Aug 2019 18:58:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 87D3E226F3;
+	Tue, 27 Aug 2019 19:02:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D0CE91BF29E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 18:58:29 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7E4101BF29E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 19:02:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CCA6F86A9A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 18:58:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 7A74488373
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 19:02:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WIjO6gk8iUbC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Aug 2019 18:58:29 +0000 (UTC)
+ with ESMTP id aXtQ8-NMv8XG for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2019 19:02:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 48D9E86A85
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 18:58:29 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4AD5E8852F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 19:02:25 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2019 11:58:28 -0700
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2019 12:02:24 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.64,438,1559545200"; 
- d="asc'?scan'208";a="264390517"
+ d="asc'?scan'208";a="182883162"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
- by orsmga001.jf.intel.com with ESMTP; 27 Aug 2019 11:58:28 -0700
-Message-ID: <92972e00895820ebefa9c2b1b582db0adaf801db.camel@intel.com>
+ by orsmga003.jf.intel.com with ESMTP; 27 Aug 2019 12:02:23 -0700
+Message-ID: <c40b4043424055fc4dae97771bb46c8ab15c6230.camel@intel.com>
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: Alice Michael <alice.michael@intel.com>, intel-wired-lan@lists.osuosl.org
-Date: Tue, 27 Aug 2019 11:58:28 -0700
-In-Reply-To: <20190826181655.15106-1-alice.michael@intel.com>
-References: <20190826181655.15106-1-alice.michael@intel.com>
+To: Joe Perches <joe@perches.com>, Forrest Fleming <ffleming@gmail.com>, 
+ Andrew Morton <akpm@linux-foundation.org>
+Date: Tue, 27 Aug 2019 12:02:23 -0700
+In-Reply-To: <877726fc009ee5ffde50e589d332db90c9695f06.camel@perches.com>
+References: <20190823191421.3318-1-ffleming@gmail.com>
+ <c2279a78904b581924894b712403299903eacbfc.camel@intel.com>
+ <877726fc009ee5ffde50e589d332db90c9695f06.camel@perches.com>
 Organization: Intel
 User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next PATCH S9 1/7] i40e: Allow updating OROM
- when a NIC is in recovery mode
+Subject: Re: [Intel-wired-lan] [PATCH] net: intel: Cleanup e1000 - add space
+ between }}
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,95 +69,94 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Reply-To: jeffrey.t.kirsher@intel.com
-Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-Content-Type: multipart/mixed; boundary="===============0175093883159265442=="
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============5051163739747250122=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---===============0175093883159265442==
+--===============5051163739747250122==
 Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-k1tc9H8IARu2iMhsBbaL"
+	protocol="application/pgp-signature"; boundary="=-PzZZlzhczhl8y9zxLvXV"
 
 
---=-k1tc9H8IARu2iMhsBbaL
+--=-PzZZlzhczhl8y9zxLvXV
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, 2019-08-26 at 11:16 -0700, Alice Michael wrote:
-> From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+On Mon, 2019-08-26 at 20:41 -0700, Joe Perches wrote:
+> On Mon, 2019-08-26 at 01:03 -0700, Jeff Kirsher wrote:
+> > On Fri, 2019-08-23 at 19:14 +0000, Forrest Fleming wrote:
+> > > suggested by checkpatch
+> > >=20
+> > > Signed-off-by: Forrest Fleming <ffleming@gmail.com>
+> > > ---
+> > >  .../net/ethernet/intel/e1000/e1000_param.c    | 28 +++++++++--
+> > > --------
+> > >  1 file changed, 14 insertions(+), 14 deletions(-)
+> >=20
+> > While I do not see an issue with this change, I wonder how
+> > important it is
+> > to make such a change.  Especially since most of the hardware
+> > supported by
+> > this driver is not available for testing.  In addition, this is one
+> > suggested change by checkpatch.pl that I personally do not agree
+> > with.
 >=20
-> Allow OROM update with nvmupdate tool when a NIC is in recovery mode.
-> Implemented by not exiting a recovery mode after firmware EMP reset
-> and before actual OROM update.
-> Previously it was not possible to do the OROM update with nvmupdate
-> tool.
+> I think checkpatch should allow consecutive }}.
 
-Should we be referencing our nvmupdate tool?  Is there a plan to
-integrate this functionality into the existing ethtool interface to
-update EEPROM's?
+Agreed, have you already submitted a formal patch Joe with the
+suggested change below?  If so, I will ACK it.
 
 >=20
-> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> Maybe:
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index 287fe73688f0..ac5e0f06e1af 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -4687,7 +4687,7 @@ sub process {
+> =20
+>  # closing brace should have a space following it when it has
+> anything
+>  # on the line
+> -		if ($line =3D~ /}(?!(?:,|;|\)))\S/) {
+> +		if ($line =3D~ /}(?!(?:,|;|\)|\}))\S/) {
+>  			if (ERROR("SPACING",
+>  				  "space required after that close
+> brace '}'\n" . $herecurr) &&
+>  			    $fix) {
 >=20
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index a71369546c23..ed8e62cb5417 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -14559,8 +14559,8 @@ static bool i40e_check_recovery_mode(struct
-> i40e_pf *pf)
-> =20
->  		return true;
->  	}
-> -	if (test_and_clear_bit(__I40E_RECOVERY_MODE, pf->state))
-> -		dev_info(&pf->pdev->dev, "Reinitializing in normal mode
-> with full functionality.\n");
-> +	if (test_bit(__I40E_RECOVERY_MODE, pf->state))
-> +		dev_info(&pf->pdev->dev, "Please do POR to initialize
-> adapter in normal mode with full functionality.\n");
-
-POR?  What does that stand for?  Is there is a reason we are using a
-cryptic acronym in what is supposed to be a useful debug message to the
-end-user?
-
-FYI, common definitions for POR are "Plan of Record" or "Provided on
-Request", but neither of those make much sense in this debug message.
-
-> =20
->  	return false;
->  }
+>=20
 
 
---=-k1tc9H8IARu2iMhsBbaL
+--=-PzZZlzhczhl8y9zxLvXV
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl1lfVQACgkQ5W/vlVpL
-7c7POQ//bdloUpsIWC7WP6Avj3WfX0eQ9I4NghL615RVdSyO6b7nJASrpAUR2Jjy
-nQ+iIHJGkfe1OE8LRWnNLHX9WjkcD9Bn1cOXtXjTAzthnusgJI6Bwl0iS8V/E41y
-MJTQ5KqIQRPMG7kGCOmzr+apGYhKmqhdKgpHC37XKlP3dPGkSWeoAp5tPdTWRl3K
-inr3Pk4ztKKaQJlpoUB9KtiN0qfhcZBNv/LsUbN8J+oKtI2OXni50qUct3ZTZBt+
-aoQEt3neUGwuncbZGwverCj0f6LJ37Kj8F+qZ1HaKKaThECLHID8vbqSGgQa7XTb
-zjC404mOHAk2kTCqde/2RKnd0BL4RD+BWnc6Mbd7niKJ1/1NKHVWC/1U7Wr4OTzx
-aHaB6kbAqQyzxaz5WHVrOse99ACZt1QDv7inSqBjytzzkyhKzBnYXTRvKbaGbPEy
-SOvyMimJtp4f2Xq30fk3cvcljcHSEvTBGBflqNPSpXPw1+P/7rI0fkflswwagZ02
-KSZtb2jijhRVEnTj+BiS1DTsJCgU99AAd02+zZqVq+C4WuDS/aEZ2FvhuLq8+cW1
-yCosqTMSSSzalGq0ZJOvne4h8yysahdmcdmKxYISGIDuIeM9WbLJz/r+Yqx8W3XZ
-/1jja4VFORVFq92TAkGhmx97O30uXEmC8ZOWgX+1oLXwI2e58Mo=
-=t4by
+iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl1lfj8ACgkQ5W/vlVpL
+7c42BA//Z9SlWegHrA18nOZaU+Swr64eNrhWPo/WZ7Gm0zFEVzWcLNtltCqD9Jtl
+CfJUYiVbQpQRrJFUqAQkqo43yDNwykuwY8ephV6SYYC2aIdFZY+1XOWgfaFbMHA3
+fdK06+voblQ3BpvqLnJqkEyxd+F2mkJe8EqKwcPXOqC7dusUxtn102tJzmoafSsS
+gSicmyu+U0eUmZcntnshQrpLIwIFA6QkTyRr/tPXQ9vMYjdnTd+suskSAdK7KTvv
+IS6IZg0csmaeyzqu9crXeSUgYcy2clM+Izogg83fyDOAB0VTg5dE/HWqp47osQEd
+Xphj+7sYBuTjtW6zFUfydNUuHNQZw7gVj4+7W3LF7axLcusAanbJD8xrM/J4v7Rr
+vHDnr04u9RTklkgVn0M2OskGqpHR4g4xwbkpYvQzU5yVPz7NrZDjpPQSJf02neBx
+P2HW//gQL1+s7u2a9XWyJew3tbGrKbGsSH/xccUSSS/GoFEL5O4SK3fV1fQEwDGI
+HGXsFQ1XEPndPix7srpRJRCMMOT/J3PmoOywkvEnNFr6xmhrdyyCkCAFDkCy6Db5
+fNb6ypzROM0gXyiiBWUf/E42fLpL4t6t8R9k42XKAZtb39Uo5DIIWnfVmtw/1I9e
+zaEr8EJ6pQ7qCgCYH8uzjnezC97IF8QluOaO+LYlyoVSj/G1MXk=
+=Jk5o
 -----END PGP SIGNATURE-----
 
---=-k1tc9H8IARu2iMhsBbaL--
+--=-PzZZlzhczhl8y9zxLvXV--
 
 
---===============0175093883159265442==
+--===============5051163739747250122==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -165,5 +167,5 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============0175093883159265442==--
+--===============5051163739747250122==--
 
