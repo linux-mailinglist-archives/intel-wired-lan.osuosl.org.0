@@ -1,55 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 837169F562
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2019 23:43:07 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FB9C9F5EB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Aug 2019 00:19:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id F080D88613;
-	Tue, 27 Aug 2019 21:43:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D48512039B;
+	Tue, 27 Aug 2019 22:19:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iO8Hwwz2-0ab; Tue, 27 Aug 2019 21:43:05 +0000 (UTC)
+	with ESMTP id mFrw+NLuVbsk; Tue, 27 Aug 2019 22:19:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 36ABD88630;
-	Tue, 27 Aug 2019 21:43:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C6C612274A;
+	Tue, 27 Aug 2019 22:19:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 727941BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 21:43:01 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C05831BF575
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 22:19:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6FF6686B05
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 21:43:01 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B70328858A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 22:19:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CbwqasGlAe0V for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Aug 2019 21:43:00 +0000 (UTC)
+ with ESMTP id Ro+LgpKQgehO for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2019 22:19:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2420186AB5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 21:43:00 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7E35188543
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 22:19:37 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2019 14:42:59 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2019 15:19:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,438,1559545200"; d="scan'208";a="174703669"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga008.jf.intel.com with ESMTP; 27 Aug 2019 14:42:59 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 27 Aug 2019 06:13:54 -0700
-Message-Id: <20190827131354.12703-9-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190827131354.12703-1-anthony.l.nguyen@intel.com>
-References: <20190827131354.12703-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.64,438,1559545200"; d="scan'208";a="180358098"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 27 Aug 2019 15:19:35 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1i2joN-000E8W-4d; Wed, 28 Aug 2019 06:19:35 +0800
+Date: Wed, 28 Aug 2019 06:19:17 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d65ac65.ROSJC+hBQ3vigEQB%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S28 9/9] ice: Rework around
- device/function capabilities
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 7951973e990892daccc1abace0d7af34a9e59d51
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,152 +68,154 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 7951973e990892daccc1abace0d7af34a9e59d51  i40e: Fix message for other card without FEC
 
-ice_parse_caps is printing capabilities in a different way when
-compared to the variable names. This makes it difficult to search for
-the right strings in the debug logs. So this patch updates the
-print strings to be exactly the same as the fields' name in the
-structure.
+elapsed time: 108m
 
-Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+configs tested: 134
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+x86_64                 randconfig-f001-201934
+x86_64                 randconfig-f002-201934
+x86_64                 randconfig-f003-201934
+x86_64                 randconfig-f004-201934
+i386                   randconfig-f001-201934
+i386                   randconfig-f002-201934
+i386                   randconfig-f003-201934
+i386                   randconfig-f004-201934
+x86_64                 randconfig-e001-201934
+x86_64                 randconfig-e002-201934
+x86_64                 randconfig-e003-201934
+x86_64                 randconfig-e004-201934
+i386                   randconfig-e001-201934
+i386                   randconfig-e002-201934
+i386                   randconfig-e003-201934
+i386                   randconfig-e004-201934
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+x86_64                           allmodconfig
+x86_64                           allyesconfig
+i386                             alldefconfig
+x86_64                 randconfig-c001-201934
+x86_64                 randconfig-c002-201934
+x86_64                 randconfig-c003-201934
+x86_64                 randconfig-c004-201934
+i386                   randconfig-c001-201934
+i386                   randconfig-c002-201934
+i386                   randconfig-c003-201934
+i386                   randconfig-c004-201934
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                                   rhel
+x86_64                               rhel-7.6
+i386                             allmodconfig
+x86_64                 randconfig-d001-201934
+x86_64                 randconfig-d002-201934
+x86_64                 randconfig-d003-201934
+x86_64                 randconfig-d004-201934
+i386                   randconfig-d001-201934
+i386                   randconfig-d002-201934
+i386                   randconfig-d003-201934
+i386                   randconfig-d004-201934
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+x86_64                 randconfig-h002-201934
+x86_64                 randconfig-h003-201934
+i386                   randconfig-h001-201934
+i386                   randconfig-h002-201934
+i386                   randconfig-h004-201934
+x86_64                 randconfig-h004-201934
+i386                   randconfig-h003-201934
+x86_64                 randconfig-h001-201934
+x86_64                 randconfig-b001-201934
+x86_64                 randconfig-b002-201934
+x86_64                 randconfig-b003-201934
+x86_64                 randconfig-b004-201934
+i386                   randconfig-b001-201934
+i386                   randconfig-b002-201934
+i386                   randconfig-b003-201934
+i386                   randconfig-b004-201934
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+i386                              allnoconfig
+i386                                defconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+
 ---
- drivers/net/ethernet/intel/ice/ice_common.c | 40 ++++++++++-----------
- 1 file changed, 20 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index e8397e5b6267..8b2c46615834 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1551,29 +1551,29 @@ ice_parse_caps(struct ice_hw *hw, void *buf, u32 cap_count,
- 		case ICE_AQC_CAPS_VALID_FUNCTIONS:
- 			caps->valid_functions = number;
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: valid functions = %d\n", prefix,
-+				  "%s: valid_functions (bitmap) = %d\n", prefix,
- 				  caps->valid_functions);
- 			break;
- 		case ICE_AQC_CAPS_SRIOV:
- 			caps->sr_iov_1_1 = (number == 1);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: SR-IOV = %d\n", prefix,
-+				  "%s: sr_iov_1_1 = %d\n", prefix,
- 				  caps->sr_iov_1_1);
- 			break;
- 		case ICE_AQC_CAPS_VF:
- 			if (dev_p) {
- 				dev_p->num_vfs_exposed = number;
- 				ice_debug(hw, ICE_DBG_INIT,
--					  "%s: VFs exposed = %d\n", prefix,
-+					  "%s: num_vfs_exposed = %d\n", prefix,
- 					  dev_p->num_vfs_exposed);
- 			} else if (func_p) {
- 				func_p->num_allocd_vfs = number;
- 				func_p->vf_base_id = logical_id;
- 				ice_debug(hw, ICE_DBG_INIT,
--					  "%s: VFs allocated = %d\n", prefix,
-+					  "%s: num_allocd_vfs = %d\n", prefix,
- 					  func_p->num_allocd_vfs);
- 				ice_debug(hw, ICE_DBG_INIT,
--					  "%s: VF base_id = %d\n", prefix,
-+					  "%s: vf_base_id = %d\n", prefix,
- 					  func_p->vf_base_id);
- 			}
- 			break;
-@@ -1581,17 +1581,17 @@ ice_parse_caps(struct ice_hw *hw, void *buf, u32 cap_count,
- 			if (dev_p) {
- 				dev_p->num_vsi_allocd_to_host = number;
- 				ice_debug(hw, ICE_DBG_INIT,
--					  "%s: num VSI alloc to host = %d\n",
-+					  "%s: num_vsi_allocd_to_host = %d\n",
- 					  prefix,
- 					  dev_p->num_vsi_allocd_to_host);
- 			} else if (func_p) {
- 				func_p->guar_num_vsi =
- 					ice_get_num_per_func(hw, ICE_MAX_VSI);
- 				ice_debug(hw, ICE_DBG_INIT,
--					  "%s: num guaranteed VSI (fw) = %d\n",
-+					  "%s: guar_num_vsi (fw) = %d\n",
- 					  prefix, number);
- 				ice_debug(hw, ICE_DBG_INIT,
--					  "%s: num guaranteed VSI = %d\n",
-+					  "%s: guar_num_vsi = %d\n",
- 					  prefix, func_p->guar_num_vsi);
- 			}
- 			break;
-@@ -1600,56 +1600,56 @@ ice_parse_caps(struct ice_hw *hw, void *buf, u32 cap_count,
- 			caps->active_tc_bitmap = logical_id;
- 			caps->maxtc = phys_id;
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: DCB = %d\n", prefix, caps->dcb);
-+				  "%s: dcb = %d\n", prefix, caps->dcb);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: active TC bitmap = %d\n", prefix,
-+				  "%s: active_tc_bitmap = %d\n", prefix,
- 				  caps->active_tc_bitmap);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: TC max = %d\n", prefix, caps->maxtc);
-+				  "%s: maxtc = %d\n", prefix, caps->maxtc);
- 			break;
- 		case ICE_AQC_CAPS_RSS:
- 			caps->rss_table_size = number;
- 			caps->rss_table_entry_width = logical_id;
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: RSS table size = %d\n", prefix,
-+				  "%s: rss_table_size = %d\n", prefix,
- 				  caps->rss_table_size);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: RSS table width = %d\n", prefix,
-+				  "%s: rss_table_entry_width = %d\n", prefix,
- 				  caps->rss_table_entry_width);
- 			break;
- 		case ICE_AQC_CAPS_RXQS:
- 			caps->num_rxq = number;
- 			caps->rxq_first_id = phys_id;
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: num Rx queues = %d\n", prefix,
-+				  "%s: num_rxq = %d\n", prefix,
- 				  caps->num_rxq);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: Rx first queue ID = %d\n", prefix,
-+				  "%s: rxq_first_id = %d\n", prefix,
- 				  caps->rxq_first_id);
- 			break;
- 		case ICE_AQC_CAPS_TXQS:
- 			caps->num_txq = number;
- 			caps->txq_first_id = phys_id;
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: num Tx queues = %d\n", prefix,
-+				  "%s: num_txq = %d\n", prefix,
- 				  caps->num_txq);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: Tx first queue ID = %d\n", prefix,
-+				  "%s: txq_first_id = %d\n", prefix,
- 				  caps->txq_first_id);
- 			break;
- 		case ICE_AQC_CAPS_MSIX:
- 			caps->num_msix_vectors = number;
- 			caps->msix_vector_first_id = phys_id;
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: MSIX vector count = %d\n", prefix,
-+				  "%s: num_msix_vectors = %d\n", prefix,
- 				  caps->num_msix_vectors);
- 			ice_debug(hw, ICE_DBG_INIT,
--				  "%s: MSIX first vector index = %d\n", prefix,
-+				  "%s: msix_vector_first_id = %d\n", prefix,
- 				  caps->msix_vector_first_id);
- 			break;
- 		case ICE_AQC_CAPS_MAX_MTU:
- 			caps->max_mtu = number;
--			ice_debug(hw, ICE_DBG_INIT, "%s: max MTU = %d\n",
-+			ice_debug(hw, ICE_DBG_INIT, "%s: max_mtu = %d\n",
- 				  prefix, caps->max_mtu);
- 			break;
- 		default:
--- 
-2.20.1
-
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
