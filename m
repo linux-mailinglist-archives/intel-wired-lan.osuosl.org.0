@@ -1,72 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 534CE9E3CA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2019 11:17:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C5C79E5D8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2019 12:41:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 131A28613E;
-	Tue, 27 Aug 2019 09:17:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DCEA28704A;
+	Tue, 27 Aug 2019 10:41:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id st5aTgM0EWZS; Tue, 27 Aug 2019 09:17:31 +0000 (UTC)
+	with ESMTP id jkwY8lB8th06; Tue, 27 Aug 2019 10:41:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C7FB98695E;
-	Tue, 27 Aug 2019 09:17:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5298686E5B;
+	Tue, 27 Aug 2019 10:41:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A668F1BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 09:17:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0FD951BF3E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 10:41:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 96A9421FA9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 09:17:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0D07C86C3A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 10:41:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i2LAMycovFvQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Aug 2019 09:17:21 +0000 (UTC)
+ with ESMTP id rBgNFOY7Px02 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2019 10:41:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id 5C97320500
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 09:17:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3ADF9868F7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2019 10:41:41 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2019 02:17:18 -0700
+ 27 Aug 2019 03:41:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,436,1559545200"; d="scan'208";a="209679018"
-Received: from irsmsx152.ger.corp.intel.com ([163.33.192.66])
- by fmsmga002.fm.intel.com with ESMTP; 27 Aug 2019 02:17:17 -0700
-Received: from irsmsx111.ger.corp.intel.com (10.108.20.4) by
- IRSMSX152.ger.corp.intel.com (163.33.192.66) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 27 Aug 2019 10:17:17 +0100
-Received: from irsmsx105.ger.corp.intel.com ([169.254.7.73]) by
- irsmsx111.ger.corp.intel.com ([169.254.2.94]) with mapi id 14.03.0439.000;
- Tue, 27 Aug 2019 10:17:16 +0100
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] igb: read flash with iomem=strict
-Thread-Index: AdVcN7s826NWkNHTQfuOXgKtGASDIgAB6vgAAB1G8uA=
-Date: Tue, 27 Aug 2019 09:17:15 +0000
-Message-ID: <0EF347314CF65544BA015993979A29CD8D2CB5E1@irsmsx105.ger.corp.intel.com>
-References: <0EF347314CF65544BA015993979A29CD8D2CAE01@irsmsx105.ger.corp.intel.com>
- <CAKgT0UezbXFg2nVoyqgzsNq0x2jaDJBeZSnn6ZZbHE3b63ywvg@mail.gmail.com>
-In-Reply-To: <CAKgT0UezbXFg2nVoyqgzsNq0x2jaDJBeZSnn6ZZbHE3b63ywvg@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYTkyNGYzYjgtNmFkYi00Mzg2LTkyMTgtNWNjMjgxNTYxODIwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYkhha3lkSkJ0TjdCNUFZTFVGUEJWcXpHTFlqcEZuT2VHZFMwU2JnM3B1SVZpMENaa1o4Y3lcL1UyelQ2djAxMzYifQ==
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [163.33.239.181]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] igb: read flash with iomem=strict
+X-IronPort-AV: E=Sophos;i="5.64,436,1559545200"; d="scan'208";a="174509621"
+Received: from silpixa00399838.ir.intel.com (HELO
+ silpixa00399838.ger.corp.intel.com) ([10.237.223.140])
+ by orsmga008.jf.intel.com with ESMTP; 27 Aug 2019 03:41:37 -0700
+From: Kevin Laatz <kevin.laatz@intel.com>
+To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
+ bjorn.topel@intel.com, magnus.karlsson@intel.com,
+ jakub.kicinski@netronome.com, jonathan.lemon@gmail.com,
+ saeedm@mellanox.com, maximmi@mellanox.com, stephen@networkplumber.org
+Date: Tue, 27 Aug 2019 02:25:26 +0000
+Message-Id: <20190827022531.15060-8-kevin.laatz@intel.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190827022531.15060-1-kevin.laatz@intel.com>
+References: <20190822014427.49800-1-kevin.laatz@intel.com>
+ <20190827022531.15060-1-kevin.laatz@intel.com>
+Subject: [Intel-wired-lan] [PATCH bpf-next v6 07/12] net/mlx5e: Allow XSK
+ frames smaller than a page
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,636 +66,148 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Ludkiewicz, Adam" <adam.ludkiewicz@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: bruce.richardson@intel.com, ciara.loftus@intel.com,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Good day Alexander
+From: Maxim Mikityanskiy <maximmi@mellanox.com>
 
-This patch is port of OOT driver interface for NVM tools nvmupdate and so on.
-It was implemented this way for 1G and 10G drivers.
+Relax the requirements to the XSK frame size to allow it to be smaller
+than a page and even not a power of two. The current implementation can
+work in this mode, both with Striding RQ and without it.
 
-Can we discuss it offline?
-Thank you
+The code that checks `mtu + headroom <= XSK frame size` is modified
+accordingly. Any frame size between 2048 and PAGE_SIZE is accepted.
 
------Original Message-----
-From: Alexander Duyck [mailto:alexander.duyck@gmail.com] 
-Sent: Monday, August 26, 2019 9:52 PM
-To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org; Ludkiewicz, Adam <adam.ludkiewicz@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH] igb: read flash with iomem=strict
+Functions that worked with pages only now work with XSK frames, even if
+their size is different from PAGE_SIZE.
 
-On Mon, Aug 26, 2019 at 11:02 AM Loktionov, Aleksandr <aleksandr.loktionov@intel.com> wrote:
->
-> From: Adam Ludkeiwicz <adam.ludkiewicz@intel.com>
->
-> When Secure Boot is enabled access to the /dev/mem is forbidden for 
-> user-space applications and clients are reporting inability to use 
-> tools in Secure Boot Mode. The way to perform NVM update is to use igb driver.
-> Currently 1G Linux Base Driver has API which allows only EEPROM access.
-> There is a need to extend IOCTL API to allow NVM and registers access.
->
-> Signed-off-by: Adam Ludkiewicz <adam.ludkiewicz@intel.com>
+With XSK queues, regardless of the frame size, Striding RQ uses the
+stride size of PAGE_SIZE, and UMR MTTs are posted using starting
+addresses of frames, but PAGE_SIZE as page size. MTU guarantees that no
+packet data will overlap with other frames. UMR MTT size is made equal
+to the stride size of the RQ, because UMEM frames may come in random
+order, and we need to handle them one by one. PAGE_SIZE is just a power
+of two that is bigger than any allowed XSK frame size, and also it
+doesn't require making additional changes to the code.
 
-This patch is doing way too much for a single patch. If I am understanding correctly this is granting both flash access AND register access to tools through the NVM interface. That is generally a big no-no. There is already an interface for providing register read access. I would recommend going through that if you need to read device registers. If some are missing you can extend that interface.
-Also there is already an ethtool interface for writing a flash image.
-You might be better off looking into that.
+Signed-off-by: Maxim Mikityanskiy <maximmi@mellanox.com>
+Reviewed-by: Saeed Mahameed <saeedm@mellanox.com>
+---
+ .../ethernet/mellanox/mlx5/core/en/params.c   | 23 +++++++++++++++----
+ .../ethernet/mellanox/mlx5/core/en/params.h   |  2 ++
+ .../ethernet/mellanox/mlx5/core/en/xsk/rx.c   |  2 +-
+ .../mellanox/mlx5/core/en/xsk/setup.c         | 15 ++++++++----
+ 4 files changed, 32 insertions(+), 10 deletions(-)
 
-> ---
->
-> diff --git a/drivers/net/ethernet/intel/igb/e1000_defines.h 
-> b/drivers/net/ethernet/intel/igb/e1000_defines.h
-> index d2e2c50..68dee6a 100644
-> --- a/drivers/net/ethernet/intel/igb/e1000_defines.h
-> +++ b/drivers/net/ethernet/intel/igb/e1000_defines.h
-> @@ -481,6 +481,7 @@
-> #define E1000_RAH_POOL_1 0x00040000
->
->  /* Error Codes */
-> +#define E1000_SUCCESS      0
-> #define E1000_ERR_NVM      1
-> #define E1000_ERR_PHY      2
-> #define E1000_ERR_CONFIG   3
-> @@ -800,6 +801,37 @@
-> #define NVM_ETS_DATA_INDEX_SHIFT   8
-> #define NVM_ETS_DATA_HTHRESH_MASK            0x00FF
->
-> +#define E1000_REGISTER_SET_SIZE                       0x20000 /* CSR Size */
-> +#define E1000_FLA        0x0001C  /* Flash Access - RW */
-> +#define E1000_FLOP     0x0103C  /* FLASH Opcode Register */
-> +#define E1000_I350_BARCTRL                  0x5BFC /* BAR ctrl reg */
-> +#define E1000_I350_DTXMXPKTSZ                         0x355C /* Maximum sent packet size reg*/
-> +
-> +#define E1000_SRWR                   0x12018
-> +#define E1000_EEC_REG                            0x12010
-> +
-> +#define E1000_SHADOWINF                     0x12068
-> +#define E1000_FLFWUPDATE     0x12108
-> +
-> +/* os dep */
-> +#define E1000_READ_FLASH_REG(a, reg) (readl((a)->flash_address + 
-> +(reg)))
-> +
-> +#define E1000_READ_FLASH_REG8(a, reg) ( \
-> +             readb(READ_ONCE((a)->flash_address) + (reg)))
-> +
-> +#define E1000_WRITE_FLASH_REG(a, reg, value) ( \
-> +             writel((value), ((a)->flash_address + (reg))))
-> +
-> +#define E1000_READ_REG(x, y) igb_rd32(x, y) #define 
-> +E1000_READ_REG8(h, r) readb(READ_ONCE((h)->hw_addr) + (r))
-> +
-> +#define E1000_WRITE_REG(hw, reg, val) \ do { \
-> +             u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
-> +             if (!E1000_REMOVED(hw_addr)) \
-> +                            writel((val), &hw_addr[(reg)]); \ } while 
-> +(0)
-> +
-> #define E1000_NVM_CFG_DONE_PORT_0  0x040000 /* MNG config cycle done 
-> */ #define E1000_NVM_CFG_DONE_PORT_1  0x080000 /* ...for second port 
-> */ #define E1000_NVM_CFG_DONE_PORT_2  0x100000 /* ...for third port */ 
-> diff --git a/drivers/net/ethernet/intel/igb/e1000_hw.h 
-> b/drivers/net/ethernet/intel/igb/e1000_hw.h
-> index 5d87957..ff034d2 100644
-> --- a/drivers/net/ethernet/intel/igb/e1000_hw.h
-> +++ b/drivers/net/ethernet/intel/igb/e1000_hw.h
-> @@ -50,6 +50,19 @@
-> #define E1000_DEV_ID_I354_SGMII                                       0x1F41
-> #define E1000_DEV_ID_I354_BACKPLANE_2_5GBPS         0x1F45
->
-> +/* NVM Update commands */
-> +#define E1000_NVMUPD_CMD_REG_READ         0x0000000B
-> +#define E1000_NVMUPD_CMD_REG_WRITE       0x0000000C
-> +
-> +/* NVM Update features API */
-> +#define E1000_NVMUPD_FEATURES_API_VER_MAJOR                  0
-> +#define E1000_NVMUPD_FEATURES_API_VER_MINOR                  0
-> +#define E1000_NVMUPD_FEATURES_API_FEATURES_ARRAY_LEN             12
-> +#define E1000_NVMUPD_EXEC_FEATURES                                        0xE
-> +#define E1000_NVMUPD_FEATURE_FLAT_NVM_SUPPORT                          BIT(0)
-> +#define E1000_NVMUPD_FEATURE_REGISTER_ACCESS_SUPPORT             BIT(1)
-> +#define E1000_NVMUPD_MOD_PNT_MASK                                      0xFF
-> +
-> #define E1000_REVISION_2 2
-> #define E1000_REVISION_4 4
->
-> @@ -514,6 +527,21 @@
->               bool mas_capable;
-> };
->
-> +struct e1000_nvm_access {
-> +             u32 command;
-> +             u32 config;
-> +             u32 offset;          /* in bytes */
-> +             u32 data_size;    /* in bytes */
-> +             u8 data[1];
-> +};
-> +
-> +struct e1000_nvm_features {
-> +             u8 major;
-> +             u8 minor;
-> +             u16 size;
-> +             u8 
-> +features[E1000_NVMUPD_FEATURES_API_FEATURES_ARRAY_LEN];
-> +};
-> +
-> struct e1000_hw {
->               void *back;
->
-> @@ -539,6 +567,8 @@
->               u16 vendor_id;
->
->                u8  revision_id;
-> +                            /* NVM Update features */
-> +             struct e1000_nvm_features nvmupd_features;
-> };
->
->  struct net_device *igb_get_hw_dev(struct e1000_hw *hw); diff --git 
-> a/drivers/net/ethernet/intel/igb/e1000_nvm.c 
-> b/drivers/net/ethernet/intel/igb/e1000_nvm.c
-> index 09f4dcb..0522e04 100644
-> --- a/drivers/net/ethernet/intel/igb/e1000_nvm.c
-> +++ b/drivers/net/ethernet/intel/igb/e1000_nvm.c
-> @@ -780,3 +780,17 @@
->                                             | eeprom_verl;
->               }
-> }
-> +
-> +/* NVM Update features structure initialization */ void 
-> +e1000_init_nvmupdate_features(struct e1000_hw *hw) {
-> +             hw->nvmupd_features.major = E1000_NVMUPD_FEATURES_API_VER_MAJOR;
-> +             hw->nvmupd_features.minor = E1000_NVMUPD_FEATURES_API_VER_MINOR;
-> +             hw->nvmupd_features.size = sizeof(hw->nvmupd_features);
-> +             memset(hw->nvmupd_features.features, 0x0,
-> +                    E1000_NVMUPD_FEATURES_API_FEATURES_ARRAY_LEN *
-> +                    sizeof(*hw->nvmupd_features.features));
-> +
-> +             hw->nvmupd_features.features[0] =
-> +                            
-> +E1000_NVMUPD_FEATURE_REGISTER_ACCESS_SUPPORT;
-> +}
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/params.c b/drivers/net/ethernet/mellanox/mlx5/core/en/params.c
+index 79301d116667..eb2e1f2138e4 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/params.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/params.c
+@@ -25,18 +25,33 @@ u16 mlx5e_get_linear_rq_headroom(struct mlx5e_params *params,
+ 	return headroom;
+ }
+ 
+-u32 mlx5e_rx_get_linear_frag_sz(struct mlx5e_params *params,
+-				struct mlx5e_xsk_param *xsk)
++u32 mlx5e_rx_get_min_frag_sz(struct mlx5e_params *params,
++			     struct mlx5e_xsk_param *xsk)
+ {
+ 	u32 hw_mtu = MLX5E_SW2HW_MTU(params, params->sw_mtu);
+ 	u16 linear_rq_headroom = mlx5e_get_linear_rq_headroom(params, xsk);
+-	u32 frag_sz = linear_rq_headroom + hw_mtu;
++
++	return linear_rq_headroom + hw_mtu;
++}
++
++u32 mlx5e_rx_get_linear_frag_sz(struct mlx5e_params *params,
++				struct mlx5e_xsk_param *xsk)
++{
++	u32 frag_sz = mlx5e_rx_get_min_frag_sz(params, xsk);
+ 
+ 	/* AF_XDP doesn't build SKBs in place. */
+ 	if (!xsk)
+ 		frag_sz = MLX5_SKB_FRAG_SZ(frag_sz);
+ 
+-	/* XDP in mlx5e doesn't support multiple packets per page. */
++	/* XDP in mlx5e doesn't support multiple packets per page. AF_XDP is a
++	 * special case. It can run with frames smaller than a page, as it
++	 * doesn't allocate pages dynamically. However, here we pretend that
++	 * fragments are page-sized: it allows to treat XSK frames like pages
++	 * by redirecting alloc and free operations to XSK rings and by using
++	 * the fact there are no multiple packets per "page" (which is a frame).
++	 * The latter is important, because frames may come in a random order,
++	 * and we will have trouble assemblying a real page of multiple frames.
++	 */
+ 	if (mlx5e_rx_is_xdp(params, xsk))
+ 		frag_sz = max_t(u32, frag_sz, PAGE_SIZE);
+ 
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/params.h b/drivers/net/ethernet/mellanox/mlx5/core/en/params.h
+index 3a615d663d84..989d8f429438 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/params.h
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/params.h
+@@ -76,6 +76,8 @@ static inline bool mlx5e_qid_validate(const struct mlx5e_profile *profile,
+ 
+ u16 mlx5e_get_linear_rq_headroom(struct mlx5e_params *params,
+ 				 struct mlx5e_xsk_param *xsk);
++u32 mlx5e_rx_get_min_frag_sz(struct mlx5e_params *params,
++			     struct mlx5e_xsk_param *xsk);
+ u32 mlx5e_rx_get_linear_frag_sz(struct mlx5e_params *params,
+ 				struct mlx5e_xsk_param *xsk);
+ u8 mlx5e_mpwqe_log_pkts_per_wqe(struct mlx5e_params *params,
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/rx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/rx.c
+index 7c49a66d28c9..475b6bd5d29b 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/rx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/rx.c
+@@ -105,7 +105,7 @@ struct sk_buff *mlx5e_xsk_skb_from_cqe_mpwrq_linear(struct mlx5e_rq *rq,
+ 
+ 	/* head_offset is not used in this function, because di->xsk.data and
+ 	 * di->addr point directly to the necessary place. Furthermore, in the
+-	 * current implementation, one page = one packet = one frame, so
++	 * current implementation, UMR pages are mapped to XSK frames, so
+ 	 * head_offset should always be 0.
+ 	 */
+ 	WARN_ON_ONCE(head_offset);
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c
+index f701e4f3c076..d549f770cb4f 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c
+@@ -4,18 +4,23 @@
+ #include "setup.h"
+ #include "en/params.h"
+ 
++/* It matches XDP_UMEM_MIN_CHUNK_SIZE, but as this constant is private and may
++ * change unexpectedly, and mlx5e has a minimum valid stride size for striding
++ * RQ, keep this check in the driver.
++ */
++#define MLX5E_MIN_XSK_CHUNK_SIZE 2048
++
+ bool mlx5e_validate_xsk_param(struct mlx5e_params *params,
+ 			      struct mlx5e_xsk_param *xsk,
+ 			      struct mlx5_core_dev *mdev)
+ {
+-	/* AF_XDP doesn't support frames larger than PAGE_SIZE, and the current
+-	 * mlx5e XDP implementation doesn't support multiple packets per page.
+-	 */
+-	if (xsk->chunk_size != PAGE_SIZE)
++	/* AF_XDP doesn't support frames larger than PAGE_SIZE. */
++	if (xsk->chunk_size > PAGE_SIZE ||
++			xsk->chunk_size < MLX5E_MIN_XSK_CHUNK_SIZE)
+ 		return false;
+ 
+ 	/* Current MTU and XSK headroom don't allow packets to fit the frames. */
+-	if (mlx5e_rx_get_linear_frag_sz(params, xsk) > xsk->chunk_size)
++	if (mlx5e_rx_get_min_frag_sz(params, xsk) > xsk->chunk_size)
+ 		return false;
+ 
+ 	/* frag_sz is different for regular and XSK RQs, so ensure that linear
+-- 
+2.17.1
 
-This is ugly. So you are adding a new protocol to allow register access through the NVM update interface?
-
-> diff --git a/drivers/net/ethernet/intel/igb/e1000_nvm.h 
-> b/drivers/net/ethernet/intel/igb/e1000_nvm.h
-> index 091cddf..2f89b0b 100644
-> --- a/drivers/net/ethernet/intel/igb/e1000_nvm.h
-> +++ b/drivers/net/ethernet/intel/igb/e1000_nvm.h
-> @@ -32,5 +32,6 @@
->               u16 or_patch;
-> };
-> void igb_get_fw_version(struct e1000_hw *hw, struct e1000_fw_version 
-> *fw_vers);
-> +void e1000_init_nvmupdate_features(struct e1000_hw *hw);
->
->  #endif
-> diff --git a/drivers/net/ethernet/intel/igb/e1000_regs.h 
-> b/drivers/net/ethernet/intel/igb/e1000_regs.h
-> index 0ad737d..7d2ea56 100644
-> --- a/drivers/net/ethernet/intel/igb/e1000_regs.h
-> +++ b/drivers/net/ethernet/intel/igb/e1000_regs.h
-> @@ -390,6 +390,7 @@
-> #define E1000_O2BGPTC             0x08FE4 /* OS2BMC packets received by BMC */
-> #define E1000_O2BSPC 0x0415C /* OS2BMC packets transmitted by host */
->
-> +#define E1000_EEC_REG                            0x12010
-> #define E1000_SRWR                    0x12018  /* Shadow Ram Write Register - RW */
-> #define E1000_I210_FLMNGCTL 0x12038
-> #define E1000_I210_FLMNGDATA            0x1203C
-> @@ -398,6 +399,8 @@
-> #define E1000_I210_FLSWCTL    0x12048
-> #define E1000_I210_FLSWDATA 0x1204C
-> #define E1000_I210_FLSWCNT   0x12050
-> +#define E1000_SHADOWINF                     0x12068
-> +#define E1000_FLFWUPDATE     0x12108
->
->  #define E1000_I210_FLA                             0x1201C
->
-> diff --git a/drivers/net/ethernet/intel/igb/igb.h 
-> b/drivers/net/ethernet/intel/igb/igb.h
-> index ca54e26..6a425c9 100644
-> --- a/drivers/net/ethernet/intel/igb/igb.h
-> +++ b/drivers/net/ethernet/intel/igb/igb.h
-> @@ -504,6 +504,7 @@
->               u16 link_duplex;
->
->                u8 __iomem *io_addr; /* Mainly for iounmap use */
-> +             u8 __iomem *flash_addr;
->
->                struct work_struct reset_task;
->               struct work_struct watchdog_task; diff --git 
-> a/drivers/net/ethernet/intel/igb/igb_ethtool.c 
-> b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> index c645d9e..0a82cf5 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> @@ -712,10 +712,181 @@
->                              regs_buff[727 + i] = rd32(E1000_TDWBAH(i 
-> + 4)); }
->
-> +static u8 igb_nvmupd_get_module(u32 val) {
-> +             return (u8)(val & E1000_NVMUPD_MOD_PNT_MASK); }
-> +
-> +static int igb_nvmupd_validate_offset(struct igb_adapter *adapter, 
-> +u32 offset) {
-> +             if (offset >= E1000_REGISTER_SET_SIZE)
-> +                            return 0;
-> +
-> +             switch (offset) {
-> +             case E1000_CTRL:
-> +             case E1000_STATUS:
-> +             case E1000_EECD:
-> +             case E1000_EERD:
-> +             case E1000_CTRL_EXT:
-> +             case E1000_FLA:
-> +             case E1000_FLOP:
-> +             case E1000_SWSM:
-> +             case E1000_FWSM:
-> +             case E1000_SW_FW_SYNC:
-> +             case E1000_IOVTCL:
-> +             case E1000_I350_BARCTRL:
-> +             case E1000_THSTAT:
-> +             case E1000_EEC_REG:
-> +             case E1000_SRWR:
-> +             case E1000_I210_FLA:
-> +             case E1000_I210_FLSWCTL:
-> +             case E1000_I210_FLSWDATA:
-> +             case E1000_I210_FLSWCNT:
-> +             case E1000_SHADOWINF:
-> +             case E1000_FLFWUPDATE:
-> +             case E1000_RAL(0):
-> +             case E1000_RAL(1):
-> +             case E1000_RAL(2):
-> +             case E1000_RAL(3):
-> +             case E1000_RAL(4):
-> +             case E1000_RAL(5):
-> +             case E1000_RAL(6):
-> +             case E1000_RAL(7):
-> +             case E1000_RAL(8):
-> +             case E1000_RAL(9):
-> +             case E1000_RAL(10):
-> +             case E1000_RAL(11):
-> +             case E1000_RAL(12):
-> +             case E1000_RAL(13):
-> +             case E1000_RAL(14):
-> +             case E1000_RAL(15):
-> +             case E1000_RAH(0):
-> +             case E1000_RAH(1):
-> +             case E1000_RAH(2):
-> +             case E1000_RAH(3):
-> +             case E1000_RAH(4):
-> +             case E1000_RAH(5):
-> +             case E1000_RAH(6):
-> +             case E1000_RAH(7):
-> +             case E1000_RAH(8):
-> +             case E1000_RAH(9):
-> +             case E1000_RAH(10):
-> +             case E1000_RAH(11):
-> +             case E1000_RAH(12):
-> +             case E1000_RAH(13):
-> +             case E1000_RAH(14):
-> +             case E1000_RAH(15):
-> +                            return 0;
-> +             default:
-> +                            dev_warn(&adapter->pdev->dev, "Bad offset: %x\n", offset);
-> +                            return -ENOTTY;
-> +             }
-> +}
-> +
-
-This is just ugly. It makes not effort to distinguish between valid registers for different silicon.
-
-> +static int igb_nvmupd_command(struct e1000_hw *hw,
-> +                                                 struct e1000_nvm_access *nvm,
-> +                                                 u8 *bytes) {
-> +             struct igb_adapter *adapter = hw->back;
-> +             resource_size_t bar0_len;
-> +             int ret_val = 0;
-> +             u32 command;
-> +             u8 module;
-> +
-> +             bar0_len = pci_resource_len(adapter->pdev, 0);
-> +             command = nvm->command;
-> +             module = igb_nvmupd_get_module(nvm->config);
-> +
-> +             switch (command) {
-> +             case E1000_NVMUPD_CMD_REG_READ:
-> +                            switch (module) {
-> +                            case E1000_NVMUPD_EXEC_FEATURES:
-> +                                           if (nvm->data_size == hw->nvmupd_features.size)
-> +                                                          memcpy(bytes, &hw->nvmupd_features,
-> +                                                                 hw->nvmupd_features.size);
-> +                                           else
-> +                                                          ret_val = -ENOMEM;
-> +                            break;
-> +                            default:
-> +                                           if (igb_nvmupd_validate_offset(adapter, nvm->offset))
-> +                                                          return -ENOTTY;
-> +                                           if (nvm->offset >= bar0_len) {
-> +                                                          if (hw->mac.type == e1000_82576 &&
-> +                                                              hw->flash_address) {
-> +                                                                         
-> + u16 offset = nvm->offset - bar0_len;
-> +
-> +                                                                         if (nvm->data_size == 1)
-> +                                                                                        *bytes =
-> +                                                                                        E1000_READ_FLASH_REG8(hw,
-> +                                                                                                                            offset);
-> +                                                                         else
-> +                                                                                        *((u32 *)bytes) =
-> +                                                                                        E1000_READ_FLASH_REG(hw,
-> +                                                                                                                           offset);
-> +                                                          } else {
-> +                                                                         ret_val = -EFAULT;
-> +                                                          }
-> +                                           } else if (nvm->data_size == 1) {
-> +                                                          *bytes = E1000_READ_REG8(hw, nvm->offset);
-> +                                           } else {
-> +                                                          *((u32 *)bytes) = E1000_READ_REG(hw,
-> +                                                                                                                      nvm->offset);
-> +                                           }
-> +                            break;
-> +                            }
-> +             break;
-> +             case E1000_NVMUPD_CMD_REG_WRITE:
-> +                            if (igb_nvmupd_validate_offset(adapter, nvm->offset))
-> +                                           return -ENOTTY;
-> +                            if (nvm->offset >= bar0_len) {
-> +                                           if (hw->mac.type == e1000_82576 && hw->flash_address)
-> +                                                          E1000_WRITE_FLASH_REG(hw,
-> +                                                                                              nvm->offset - bar0_len,
-> +                                                                                              *((u32 *)bytes));
-> +                                           else
-> +                                                          ret_val = -EFAULT;
-> +                            } else {
-> +                                           E1000_WRITE_REG(hw, nvm->offset, *((u32 *)bytes));
-> +                            }
-
-Okay, so this is an obvious backdoor interface to get into the device.
-I really don't think you should be doing this.
-
-> +             break;
-> +             }
-> +
-> +             return ret_val;
-> +}
-> +
-> static int igb_get_eeprom_len(struct net_device *netdev) {
->               struct igb_adapter *adapter = netdev_priv(netdev);
-> -              return adapter->hw.nvm.word_size * 2;
-> +             struct pci_dev *pdev = adapter->pdev;
-> +
-> +             if (adapter->hw.mac.type == e1000_82576)
-> +                            return pci_resource_len(pdev, 0) + pci_resource_len(pdev, 1);
-> +             else
-> +                            return pci_resource_len(pdev, 0); }
-
-This isn't returning the EEPROM length. This seems to be returning the size of your MMIO register space.
-
-> +
-> +s32 e1000_read_nvm(struct e1000_hw *hw, u16 offset, u16 words, u16 
-> +*data) {
-> +             if (hw->nvm.ops.read)
-> +                            return hw->nvm.ops.read(hw, offset, 
-> +words, data);
-> +
-> +             return -E1000_ERR_CONFIG; }
-> +
-> +s32 e1000_write_nvm(struct e1000_hw *hw, u16 offset, u16 words, u16 
-> +*data) {
-> +             if (hw->nvm.ops.write)
-> +                            return hw->nvm.ops.write(hw, offset, 
-> +words, data);
-> +
-> +             return E1000_SUCCESS;
-> +}
-> +
-> +s32 e1000_update_nvm_checksum(struct e1000_hw *hw) {
-> +             if (hw->nvm.ops.update)
-> +                            return hw->nvm.ops.update(hw);
-> +
-> +             return -E1000_ERR_CONFIG;
-> }
-
-Do you really need all of these? It seems like this is something where it will either exist or not so you could probably have one check at the start of the function to see if the NVM functions are present or not and then make use of these calls.
-
->
->  static int igb_get_eeprom(struct net_device *netdev, @@ -726,11 
-> +897,21 @@
->               u16 *eeprom_buff;
->               int first_word, last_word;
->               int ret_val = 0;
-> +             struct e1000_nvm_access *nvm;
-> +             u32 magic;
->               u16 i;
->
->                if (eeprom->len == 0)
->                              return -EINVAL;
->
-> +             magic = hw->vendor_id | (hw->device_id << 16);
-> +             if (eeprom->magic && eeprom->magic != magic) {
-> +                            nvm = (struct e1000_nvm_access *)eeprom;
-> +                            ret_val = igb_nvmupd_command(hw, nvm, bytes);
-> +                            return ret_val;
-> +             }
-> +
-> +             /* normal ethtool get_eeprom support */
->               eeprom->magic = hw->vendor_id | (hw->device_id << 16);
->
->                first_word = eeprom->offset >> 1; @@ -742,13 +923,13 @@
->                              return -ENOMEM;
->
->                if (hw->nvm.type == e1000_nvm_eeprom_spi)
-> -                             ret_val = hw->nvm.ops.read(hw, first_word,
-> -                                                                             last_word - first_word + 1,
-> -                                                                             eeprom_buff);
-> +                            ret_val = e1000_read_nvm(hw, first_word,
-> +                                                                         last_word - first_word + 1,
-> +                                                                         
-> + eeprom_buff);
->               else {
->                              for (i = 0; i < last_word - first_word + 1; i++) {
-> -                                            ret_val = hw->nvm.ops.read(hw, first_word + i, 1,
-> -                                                                                            &eeprom_buff[i]);
-> +                                           ret_val = e1000_read_nvm(hw, first_word + i, 1,
-> +                                                                                        
-> + &eeprom_buff[i]);
->                                             if (ret_val)
->                                                            break;
->                              }
-
-Do you really need to replace these functions? It seems like this is an unnecessary change to force this into using a new interface that isn't needed.
-
-> @@ -773,6 +954,8 @@
->               u16 *eeprom_buff;
->               void *ptr;
->               int max_len, first_word, last_word, ret_val = 0;
-> +             struct e1000_nvm_access *nvm;
-> +             u32 magic;
->               u16 i;
->
->                if (eeprom->len == 0)
-> @@ -783,6 +966,14 @@
->                              return -EOPNOTSUPP;
->               }
->
-> +             magic = hw->vendor_id | (hw->device_id << 16);
-> +             if (eeprom->magic && eeprom->magic != magic) {
-> +                            nvm = (struct e1000_nvm_access *)eeprom;
-> +                            ret_val = igb_nvmupd_command(hw, nvm, bytes);
-> +                            return ret_val;
-> +             }
-> +
-> +             /* normal ethtool get_eeprom support */
->               if (eeprom->magic != (hw->vendor_id | (hw->device_id << 16)))
->                              return -EFAULT;
->
-> @@ -800,16 +991,16 @@
->                              /* need read/modify/write of first changed EEPROM word
->                               * only the second byte of the word is being modified
->                               */
-> -                             ret_val = hw->nvm.ops.read(hw, first_word, 1,
-> -                                                                              &eeprom_buff[0]);
-> +                            ret_val = e1000_read_nvm(hw, first_word, 1,
-> +                                                                         
-> + &eeprom_buff[0]);
->                              ptr++;
->               }
->               if (((eeprom->offset + eeprom->len) & 1) && (ret_val == 0)) {
->                              /* need read/modify/write of last changed EEPROM word
->                               * only the first byte of the word is being modified
->                               */
-> -                             ret_val = hw->nvm.ops.read(hw, last_word, 1,
-> -                                                              &eeprom_buff[last_word - first_word]);
-> +                            ret_val = e1000_read_nvm(hw, last_word, 1,
-> +                                                                         
-> + &eeprom_buff[last_word - first_word]);
->               }
->
->                /* Device's eeprom is always little-endian, word 
-> addressable */ @@ -821,12 +1012,14 @@
->               for (i = 0; i < last_word - first_word + 1; i++)
->                              eeprom_buff[i] = 
-> cpu_to_le16(eeprom_buff[i]);
->
-> -              ret_val = hw->nvm.ops.write(hw, first_word,
-> -                                                               last_word - first_word + 1, eeprom_buff);
-> +             ret_val = e1000_write_nvm(hw, first_word,
-> +                                                            last_word 
-> + - first_word + 1, eeprom_buff);
-
-More unnecessary replacement. If it worked before why add unnecessary checks for a NULL pointer?
-
-> -              /* Update the checksum if nvm write succeeded */
-> +             /* Update the checksum if write succeeded.
-> +             * and flush shadow RAM for 82573 controllers
-> +             */
->               if (ret_val == 0)
-> -                             hw->nvm.ops.update(hw);
-> +                            e1000_update_nvm_checksum(hw);
->
->                igb_set_fw_version(adapter);
->               kfree(eeprom_buff);
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c 
-> b/drivers/net/ethernet/intel/igb/igb_main.c
-> index 39f33af..dbbcda3 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -3095,6 +3095,7 @@
->               memcpy(&hw->mac.ops, ei->mac_ops, sizeof(hw->mac.ops));
->               memcpy(&hw->phy.ops, ei->phy_ops, sizeof(hw->phy.ops));
->               memcpy(&hw->nvm.ops, ei->nvm_ops, sizeof(hw->nvm.ops));
-> +             e1000_init_nvmupdate_features(hw);
->               /* Initialize skew-specific constants */
->               err = ei->get_invariants(hw);
->               if (err)
-
-You might want to wait on calling your nvmupdate function until after you have dealt with any skew-specific values that need to be populated.
-
-> @@ -3106,6 +3107,15 @@
->                              goto err_sw_init;
->
->                igb_get_bus_info_pcie(hw);
-> +
-> +             /* 82576 accesses flash differently */
-> +             if (adapter->hw.mac.type == e1000_82576) {
-> +                            adapter->flash_addr = ioremap(pci_resource_start(pdev, 1),
-> +                                                                               pci_resource_len(pdev, 1));
-> +                            if (!adapter->flash_addr)
-> +                                           dev_warn(&pdev->dev, "Flash address mapping failed.");
-> +                            hw->flash_address = adapter->flash_addr;
-> +             }
-
-From what I can tell this is the only path that sets flash_address in the driver. Why add a new variable to store it in the adapter struct, why not just stick with the hw->flash_address value?
-
-hw->flash_address may be modified by  hw module.
-
->                hw->phy.autoneg_wait_to_complete = false;
->
-> @@ -3475,6 +3485,8 @@
->               igb_disable_sriov(pdev); #endif
->               pci_iounmap(pdev, adapter->io_addr);
-> +             if (adapter->flash_addr)
-> +                            pci_iounmap(pdev, adapter->flash_addr);
-> err_ioremap:
->               free_netdev(netdev);
-> err_alloc_etherdev:
-> @@ -3674,10 +3686,12 @@
->               unregister_netdev(netdev);
->
->                igb_clear_interrupt_scheme(adapter);
-> -
-> -              pci_iounmap(pdev, adapter->io_addr);
-> -              if (hw->flash_address)
-> -                             iounmap(hw->flash_address);
-> +             if (adapter->io_addr)
-> +                            pci_iounmap(pdev, adapter->io_addr);
-
-You shouldn't need this check. It was either mapped or it wasn't. If it wasn't you shouldn't be able to get here since the driver probe should have failed.
-
-> +             if (adapter->flash_addr)
-> +                            pci_iounmap(pdev, adapter->flash_addr);
-> +             if (hw->flash_address && hw->flash_address != adapter->flash_addr)
-> +                            pci_iounmap(pdev, hw->flash_address);
-
-What is the liklihood of these two values ever being different? You could probably just leave this code as is assuming that
-hw->flash_address is essentially the same as it was before.
-
-hw->flash_address could be mapped inside hw module.
-
->               pci_release_mem_regions(pdev);
->
->                kfree(adapter->mac_table);
->
-> --------------------------------------------------------------------
->
-> Intel Technology Poland sp. z o.o.
-> ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
->
-> Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego 
-> adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek przegladanie lub rozpowszechnianie jest zabronione.
-> This e-mail and any attachments may contain confidential material for 
-> the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
->
->
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
->
---------------------------------------------------------------------
-
-Intel Technology Poland sp. z o.o.
-ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
-
-Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek
-przegladanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by
-others is strictly prohibited.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
