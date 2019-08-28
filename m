@@ -1,78 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EBB5A0817
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Aug 2019 19:06:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 25AC9A097C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Aug 2019 20:32:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4377F25397;
-	Wed, 28 Aug 2019 17:06:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A4AAA86DEE;
+	Wed, 28 Aug 2019 18:32:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jq3EvHldKANW; Wed, 28 Aug 2019 17:06:03 +0000 (UTC)
+	with ESMTP id JOFG2OdCV3FE; Wed, 28 Aug 2019 18:32:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 71FE1204D1;
-	Wed, 28 Aug 2019 17:06:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3042D86E92;
+	Wed, 28 Aug 2019 18:32:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2B8F51BF300
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 17:06:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2DF861BF4E5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 18:32:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 287D1888C4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 17:06:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 25FC687D25
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 18:32:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dVrGnp7ZX2Fw for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Aug 2019 17:06:01 +0000 (UTC)
+ with ESMTP id CmUQEjtOcUrZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Aug 2019 18:32:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7D25F8879B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 17:06:01 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Aug 2019 10:06:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,441,1559545200"; d="scan'208";a="185691018"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by orsmga006.jf.intel.com with ESMTP; 28 Aug 2019 10:06:00 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 28 Aug 2019 10:06:00 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 28 Aug 2019 10:05:59 -0700
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 28 Aug 2019 10:05:59 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S28 9/9] ice: Rework around
- device/function capabilities
-Thread-Index: AQHVXSBrMCy2Lf/PJkuLDPHJFQ+mkacQy2rg
-Date: Wed, 28 Aug 2019 17:05:59 +0000
-Message-ID: <9b6fceb208524d6ab0b7003ff9fd11d7@intel.com>
-References: <20190827131354.12703-1-anthony.l.nguyen@intel.com>
- <20190827131354.12703-9-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190827131354.12703-9-anthony.l.nguyen@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjAxMmE5NTMtYjRiMi00NTcyLWEwYTQtNmIxYjg3YzFjNjkwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoidTJQT09GdnRIbkFZWEJcL1J2aUJHa2lLNmZjeGtDV1ZjOTV1bXNXWGFmZEFKVkZEOWMxZlhSYlROWDdzWGxBbU8ifQ==
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C594E87D24
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 18:32:37 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id t6so1529472ios.7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 11:32:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BQp41Plpp9rXk68mL9tjFcokYswNi2jbS5GvNm+mTfA=;
+ b=fRpNX5k76HwcOWlUk+P3HZzQLe22IDkKoPnhRK3r9YtaheMh6HPvJUYIhDClTyJRMO
+ pcXB32YzkPdDEsFKVTF9MfihF7UcwksyR95KewnJbzU1Kl3mHNR/WmRHKbw6B5gaLbcA
+ 4fcSOiVE9irOzBmhuxa56BOI17kD4dSYLuxd5gdLZI3iiVDXFhfzbIFuRiRHQbALoHog
+ FbSAWUIDUVZVNThlKY8KVADqI2cuvcVqeNHmt7L3IVriiJXlufrQkUnofLCVvxNDUAeI
+ kvxGnjuflv33aXY9Iv8UMTLNc7V7gf6w/fJ2PsgzZ+cP5A1E8ebXZLn2CaIxBdqwsgXN
+ dFaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BQp41Plpp9rXk68mL9tjFcokYswNi2jbS5GvNm+mTfA=;
+ b=qDl3iKMJG+CUmSuUM0GxhDdb8DbJrRxBSc24PzRjDoG2t4+eFcWTEia9XCZnajyN2w
+ byrQTO+m3UTZG3lAmSFO9plBniGxjhy9S66o4jtRxiE0Md4aOu6VX4Pag8NP+jMj3gN+
+ t/WDyAuDdReirZsXQ2NX7GXXRdmaEiB53lndAHPOCxd0ukKr9jLX5w0KE8dm5sWrD3Xq
+ 2hSl6hV5i+z6ovgx/sk8aR1rWp6FHQ06+bwHa/qESr4rkaABLJTo50FUYp6NRvmEj8hy
+ 7Uhtqc+8YWau9RM5d4BCX2C1Lc8HujPtSV6kZY5bjUQBc0u+UcElMuR6ASudyZWnt3z/
+ s1wQ==
+X-Gm-Message-State: APjAAAXPIgMNoivZN3ZY58zxP5JGJqwspA+nHKTjvN/4ssM6HC3ChQb+
+ MvBrXnlZlxY63zQ/aWqufV4UHQEXZdDvxtG6HPs=
+X-Google-Smtp-Source: APXvYqwUMrjWE91MPS5vCLYmXRDkItZ7vYbIMkvnDkVwGaGDyRe9RCD8SFaWL+9sOTRUI9h/R2UGdymn5+eKFcyothI=
+X-Received: by 2002:a5e:8c11:: with SMTP id n17mr6120654ioj.64.1567017156782; 
+ Wed, 28 Aug 2019 11:32:36 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S28 9/9] ice: Rework around
- device/function capabilities
+References: <20190828173912.29293-1-bob.beckett@collabora.com>
+In-Reply-To: <20190828173912.29293-1-bob.beckett@collabora.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Wed, 28 Aug 2019 11:32:14 -0700
+Message-ID: <CAKgT0UfeAgS-Jh69AdRNUzG2qt_gcHrLP1DP1v-5bxpY8UwpZg@mail.gmail.com>
+To: Robert Beckett <bob.beckett@collabora.com>
+Subject: Re: [Intel-wired-lan] [PATCH] igb: add rx drop enable attribute
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,36 +79,162 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Netdev <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Tony Nguyen
-> Sent: Tuesday, August 27, 2019 6:14 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S28 9/9] ice: Rework around
-> device/function capabilities
-> 
-> From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-> 
-> ice_parse_caps is printing capabilities in a different way when compared to
-> the variable names. This makes it difficult to search for the right strings in the
-> debug logs. So this patch updates the print strings to be exactly the same as
-> the fields' name in the structure.
-> 
-> Signed-off-by: Anirudh Venkataramanan
-> <anirudh.venkataramanan@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+On Wed, Aug 28, 2019 at 10:40 AM Robert Beckett
+<bob.beckett@collabora.com> wrote:
+>
+> To allow userland to enable or disable dropping packets when descriptor
+> ring is exhausted, add an adapter rx_drop_en attribute.
+>
+> This can be used in conjunction with flow control to mitigate packet storms
+> (e.g. due to network loop or DoS) by forcing the network adapter to send
+> pause frames whenever the ring is close to exhaustion.
+>
+> By default this will maintain previous behaviour of enabling dropping of
+> packets during ring buffer exhaustion.
+> Some use cases prefer to not drop packets upon exhaustion, but instead
+> use flow control to limit ingress rates and ensure no dropped packets.
+> This is useful when the host CPU cannot keep up with packet delivery,
+> but data delivery is more important than throughput via multiple queues.
+>
+> Userland can write 0 to rx_drop_en to disable packet dropping via udev.
+>
+> Signed-off-by: Robert Beckett <bob.beckett@collabora.com>
+
+Instead of doing this as a sysfs file it might be better to just do
+this as an ethtool private flag like what I did for "legacy-rx".
+
 > ---
->  drivers/net/ethernet/intel/ice/ice_common.c | 40 ++++++++++-----------
->  1 file changed, 20 insertions(+), 20 deletions(-)
+>  drivers/net/ethernet/intel/igb/igb.h      |  1 +
+>  drivers/net/ethernet/intel/igb/igb_main.c | 60 ++++++++++++++++++++++-
+>  2 files changed, 60 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+> index ca54e268d157..efada57a05e1 100644
+> --- a/drivers/net/ethernet/intel/igb/igb.h
+> +++ b/drivers/net/ethernet/intel/igb/igb.h
+> @@ -594,6 +594,7 @@ struct igb_adapter {
+>         struct igb_mac_addr *mac_table;
+>         struct vf_mac_filter vf_macs;
+>         struct vf_mac_filter *vf_mac_list;
+> +       bool rx_drop_enable; /* drop packets when descriptor ring exhausted */
+>  };
+>
+>  /* flags controlling PTP/1588 function */
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 105b0624081a..5b499130c3f5 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -2982,6 +2982,54 @@ static s32 igb_init_i2c(struct igb_adapter *adapter)
+>         return status;
+>  }
+>
+> +static ssize_t rx_drop_en_show(struct device *dev,
+> +                              struct device_attribute *attr,
+> +                              char *buf)
+> +
+> +{
+> +       struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
+> +       struct igb_adapter *adapter = netdev_priv(netdev);
+> +
+> +       if (adapter->rx_drop_enable)
+> +               return sprintf(buf, "1\n");
+> +       else
+> +               return sprintf(buf, "0\n");
+> +}
+> +
+> +static ssize_t rx_drop_en_store(struct device *dev,
+> +                               struct device_attribute *attr,
+> +                               const char *buf, size_t count)
+> +{
+> +       struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
+> +       struct igb_adapter *adapter = netdev_priv(netdev);
+> +       struct e1000_hw *hw = &adapter->hw;
+> +       int queue_idx, reg_idx;
+> +       bool val;
+> +       u32 srrctl;
+> +       int ret;
+> +
+> +       ret = kstrtobool(buf, &val);
+> +       if (ret < 0)
+> +               return ret;
+> +
+> +       adapter->rx_drop_enable = val;
+> +
+> +       /* set for each currently active ring */
+> +       for (queue_idx = 0; queue_idx < adapter->num_rx_queues; queue_idx++) {
+> +               reg_idx = adapter->rx_ring[queue_idx]->reg_idx;
+> +               srrctl = rd32(E1000_SRRCTL(reg_idx));
+> +               if (val == 0)
+> +                       srrctl &= ~E1000_SRRCTL_DROP_EN;
+> +               else
+> +                       srrctl |= E1000_SRRCTL_DROP_EN;
+> +               wr32(E1000_SRRCTL(reg_idx), srrctl);
+> +       }
+> +
+> +       return count;
+> +}
+> +
+> +static DEVICE_ATTR_RW(rx_drop_en);
+> +
+>  /**
+>   *  igb_probe - Device Initialization Routine
+>   *  @pdev: PCI device information struct
+> @@ -3329,6 +3377,9 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>                 goto err_eeprom;
+>         }
+>
+> +       /* Add adapter attributes */
+> +       device_create_file(&pdev->dev, &dev_attr_rx_drop_en);
+> +
+>         /* let the f/w know that the h/w is now under the control of the
+>          * driver.
+>          */
+> @@ -3655,6 +3706,9 @@ static void igb_remove(struct pci_dev *pdev)
+>          */
+>         igb_release_hw_control(adapter);
+>
+> +       /* Remove addapter attributes */
+> +       device_remove_file(&pdev->dev, &dev_attr_rx_drop_en);
+> +
+>  #ifdef CONFIG_PCI_IOV
+>         igb_disable_sriov(pdev);
+>  #endif
+> @@ -3753,6 +3807,9 @@ static void igb_init_queue_configuration(struct igb_adapter *adapter)
+>         max_rss_queues = igb_get_max_rss_queues(adapter);
+>         adapter->rss_queues = min_t(u32, max_rss_queues, num_online_cpus());
+>
+> +       if (adapter->vfs_allocated_count || adapter->rss_queues > 1)
+> +               adapter->rx_drop_enable = true;
+> +
+>         igb_set_flag_queue_pairs(adapter, max_rss_queues);
+>  }
+>
+> @@ -4504,7 +4561,8 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+>         if (hw->mac.type >= e1000_82580)
+>                 srrctl |= E1000_SRRCTL_TIMESTAMP;
+>         /* Only set Drop Enable if we are supporting multiple queues */
+> -       if (adapter->vfs_allocated_count || adapter->num_rx_queues > 1)
+> +       if (adapter->rx_drop_enable &&
+> +               (adapter->vfs_allocated_count || adapter->num_rx_queues > 1))
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Isn't this redundant due to the code above where you were overriding
+the value and setting it to true based on the vfs_allocated_count and
+num_rx_queues? You could probably just use rx_drop_enable by itself.
 
-
+>                 srrctl |= E1000_SRRCTL_DROP_EN;
+>
+>         wr32(E1000_SRRCTL(reg_idx), srrctl);
+> --
+> 2.18.0
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
