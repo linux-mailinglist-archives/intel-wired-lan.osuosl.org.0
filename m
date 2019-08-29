@@ -1,45 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B56DA0EF7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2019 03:41:42 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBAE7A1BCF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2019 15:49:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 851D88553C;
-	Thu, 29 Aug 2019 01:41:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 89FD287FFB;
+	Thu, 29 Aug 2019 13:49:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sMsLWH8P35Ts; Thu, 29 Aug 2019 01:41:40 +0000 (UTC)
+	with ESMTP id YSv8WNdLG9IX; Thu, 29 Aug 2019 13:49:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 871A68857E;
-	Thu, 29 Aug 2019 01:41:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 767DE881A0;
+	Thu, 29 Aug 2019 13:49:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 129CB1BF300
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 17:39:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AAE831BF299
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2019 13:49:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0EFD186AFB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 17:39:48 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A681E835D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2019 13:49:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GlpZgZSb4gS7 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Aug 2019 17:39:47 +0000 (UTC)
+ with ESMTP id Km_JV0GZB1Oz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Aug 2019 13:49:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CEEC686AE4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Aug 2019 17:39:46 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: bbeckett) with ESMTPSA id C60CE263947
-From: Robert Beckett <bob.beckett@collabora.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 28 Aug 2019 18:38:54 +0100
-Message-Id: <20190828173912.29293-1-bob.beckett@collabora.com>
-X-Mailer: git-send-email 2.18.0
-X-Mailman-Approved-At: Thu, 29 Aug 2019 01:41:36 +0000
-Subject: [Intel-wired-lan] [PATCH] igb: add rx drop enable attribute
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C1AE7835CD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2019 13:49:42 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2019 06:49:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,443,1559545200"; d="scan'208";a="185975334"
+Received: from irsmsx152.ger.corp.intel.com ([163.33.192.66])
+ by orsmga006.jf.intel.com with ESMTP; 29 Aug 2019 06:49:41 -0700
+Received: from irsmsx104.ger.corp.intel.com ([169.254.5.21]) by
+ IRSMSX152.ger.corp.intel.com ([169.254.6.191]) with mapi id 14.03.0439.000;
+ Thu, 29 Aug 2019 14:49:40 +0100
+From: "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
+To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, "Michael, Alice"
+ <alice.michael@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [next PATCH S9 1/7] i40e: Allow updating
+ OROM when a NIC is in recovery mode
+Thread-Index: AQHVXDpzq/PVKxXJe0mLjttKOfNCHacPSZoAgALdnzA=
+Date: Thu, 29 Aug 2019 13:49:39 +0000
+Message-ID: <D4D6338F2E4CB34CB91C5312C72AAC810F0C9A@IRSMSX104.ger.corp.intel.com>
+References: <20190826181655.15106-1-alice.michael@intel.com>
+ <92972e00895820ebefa9c2b1b582db0adaf801db.camel@intel.com>
+In-Reply-To: <92972e00895820ebefa9c2b1b582db0adaf801db.camel@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzg1NjM4NTItMjk3Mi00ODc2LWIxZDUtN2Y2NmU1NjBiMjVmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoicllkVnJPaHNndCtaZUZVVms0RGF2Q1pONk5EZUNFVDBrMUJic0kxYjFMUmR1VktwMHZlSDFSMXRiemkwNFwvVSsifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [163.33.239.180]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [next PATCH S9 1/7] i40e: Allow updating OROM
+ when a NIC is in recovery mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,150 +80,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Robert Beckett <bob.beckett@collabora.com>, netdev@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To allow userland to enable or disable dropping packets when descriptor
-ring is exhausted, add an adapter rx_drop_en attribute.
 
-This can be used in conjunction with flow control to mitigate packet storms
-(e.g. due to network loop or DoS) by forcing the network adapter to send
-pause frames whenever the ring is close to exhaustion.
+-----Original Message-----
+> From: Kirsher, Jeffrey T 
+> Sent: Tuesday, August 27, 2019 8:58 PM
+> To: Michael, Alice <alice.michael@intel.com>; intel-wired-lan@lists.osuosl.org
+> Cc: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>
+> Subject: Re: [Intel-wired-lan] [next PATCH S9 1/7] i40e: Allow updating OROM when a NIC is in recovery mode
+>
+> On Mon, 2019-08-26 at 11:16 -0700, Alice Michael wrote:
+> > From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> > 
+> > Allow OROM update with nvmupdate tool when a NIC is in recovery mode.
+> > Implemented by not exiting a recovery mode after firmware EMP reset 
+> > and before actual OROM update.
+> > Previously it was not possible to do the OROM update with nvmupdate 
+> > tool.
+>
+> Should we be referencing our nvmupdate tool?  Is there a plan to integrate this functionality into the existing ethtool interface to update EEPROM's?
 
-By default this will maintain previous behaviour of enabling dropping of
-packets during ring buffer exhaustion.
-Some use cases prefer to not drop packets upon exhaustion, but instead
-use flow control to limit ingress rates and ensure no dropped packets.
-This is useful when the host CPU cannot keep up with packet delivery,
-but data delivery is more important than throughput via multiple queues.
+Right, we should not reference it and there is no integration plan. I'll change it.
 
-Userland can write 0 to rx_drop_en to disable packet dropping via udev.
+> > 
+> > Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > index a71369546c23..ed8e62cb5417 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > @@ -14559,8 +14559,8 @@ static bool i40e_check_recovery_mode(struct 
+> > i40e_pf *pf)
+> >  
+> >  		return true;
+> >  	}
+> > -	if (test_and_clear_bit(__I40E_RECOVERY_MODE, pf->state))
+> > -		dev_info(&pf->pdev->dev, "Reinitializing in normal mode
+> > with full functionality.\n");
+> > +	if (test_bit(__I40E_RECOVERY_MODE, pf->state))
+> > +		dev_info(&pf->pdev->dev, "Please do POR to initialize
+> > adapter in normal mode with full functionality.\n");
+>
+> POR?  What does that stand for?  Is there is a reason we are using a cryptic acronym in what is supposed to be a useful debug message to the end-user?
+>
+> FYI, common definitions for POR are "Plan of Record" or "Provided on Request", but neither of those make much sense in this debug message.
 
-Signed-off-by: Robert Beckett <bob.beckett@collabora.com>
----
- drivers/net/ethernet/intel/igb/igb.h      |  1 +
- drivers/net/ethernet/intel/igb/igb_main.c | 60 ++++++++++++++++++++++-
- 2 files changed, 60 insertions(+), 1 deletion(-)
+I'll also fix this message.
 
-diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-index ca54e268d157..efada57a05e1 100644
---- a/drivers/net/ethernet/intel/igb/igb.h
-+++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -594,6 +594,7 @@ struct igb_adapter {
- 	struct igb_mac_addr *mac_table;
- 	struct vf_mac_filter vf_macs;
- 	struct vf_mac_filter *vf_mac_list;
-+	bool rx_drop_enable; /* drop packets when descriptor ring exhausted */
- };
- 
- /* flags controlling PTP/1588 function */
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 105b0624081a..5b499130c3f5 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -2982,6 +2982,54 @@ static s32 igb_init_i2c(struct igb_adapter *adapter)
- 	return status;
- }
- 
-+static ssize_t rx_drop_en_show(struct device *dev,
-+			       struct device_attribute *attr,
-+			       char *buf)
-+
-+{
-+	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
-+	struct igb_adapter *adapter = netdev_priv(netdev);
-+
-+	if (adapter->rx_drop_enable)
-+		return sprintf(buf, "1\n");
-+	else
-+		return sprintf(buf, "0\n");
-+}
-+
-+static ssize_t rx_drop_en_store(struct device *dev,
-+				struct device_attribute *attr,
-+				const char *buf, size_t count)
-+{
-+	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
-+	struct igb_adapter *adapter = netdev_priv(netdev);
-+	struct e1000_hw *hw = &adapter->hw;
-+	int queue_idx, reg_idx;
-+	bool val;
-+	u32 srrctl;
-+	int ret;
-+
-+	ret = kstrtobool(buf, &val);
-+	if (ret < 0)
-+		return ret;
-+
-+	adapter->rx_drop_enable = val;
-+
-+	/* set for each currently active ring */
-+	for (queue_idx = 0; queue_idx < adapter->num_rx_queues; queue_idx++) {
-+		reg_idx = adapter->rx_ring[queue_idx]->reg_idx;
-+		srrctl = rd32(E1000_SRRCTL(reg_idx));
-+		if (val == 0)
-+			srrctl &= ~E1000_SRRCTL_DROP_EN;
-+		else
-+			srrctl |= E1000_SRRCTL_DROP_EN;
-+		wr32(E1000_SRRCTL(reg_idx), srrctl);
-+	}
-+
-+	return count;
-+}
-+
-+static DEVICE_ATTR_RW(rx_drop_en);
-+
- /**
-  *  igb_probe - Device Initialization Routine
-  *  @pdev: PCI device information struct
-@@ -3329,6 +3377,9 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_eeprom;
- 	}
- 
-+	/* Add adapter attributes */
-+	device_create_file(&pdev->dev, &dev_attr_rx_drop_en);
-+
- 	/* let the f/w know that the h/w is now under the control of the
- 	 * driver.
- 	 */
-@@ -3655,6 +3706,9 @@ static void igb_remove(struct pci_dev *pdev)
- 	 */
- 	igb_release_hw_control(adapter);
- 
-+	/* Remove addapter attributes */
-+	device_remove_file(&pdev->dev, &dev_attr_rx_drop_en);
-+
- #ifdef CONFIG_PCI_IOV
- 	igb_disable_sriov(pdev);
- #endif
-@@ -3753,6 +3807,9 @@ static void igb_init_queue_configuration(struct igb_adapter *adapter)
- 	max_rss_queues = igb_get_max_rss_queues(adapter);
- 	adapter->rss_queues = min_t(u32, max_rss_queues, num_online_cpus());
- 
-+	if (adapter->vfs_allocated_count || adapter->rss_queues > 1)
-+		adapter->rx_drop_enable = true;
-+
- 	igb_set_flag_queue_pairs(adapter, max_rss_queues);
- }
- 
-@@ -4504,7 +4561,8 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
- 	if (hw->mac.type >= e1000_82580)
- 		srrctl |= E1000_SRRCTL_TIMESTAMP;
- 	/* Only set Drop Enable if we are supporting multiple queues */
--	if (adapter->vfs_allocated_count || adapter->num_rx_queues > 1)
-+	if (adapter->rx_drop_enable &&
-+		(adapter->vfs_allocated_count || adapter->num_rx_queues > 1))
- 		srrctl |= E1000_SRRCTL_DROP_EN;
- 
- 	wr32(E1000_SRRCTL(reg_idx), srrctl);
--- 
-2.18.0
+> >  
+> >  	return false;
+> >  }
 
+--------------------------------------------------------------------
+
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
+
+Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek
+przegladanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by
+others is strictly prohibited.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
