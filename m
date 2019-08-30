@@ -1,80 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8754EA3AFF
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Aug 2019 17:51:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A966CA3B01
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Aug 2019 17:51:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 48000873C9;
-	Fri, 30 Aug 2019 15:51:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 679E488183;
+	Fri, 30 Aug 2019 15:51:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0HSADNbpdjCN; Fri, 30 Aug 2019 15:51:19 +0000 (UTC)
+	with ESMTP id XuZ1Xk8y6YDK; Fri, 30 Aug 2019 15:51:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 961DF873B5;
-	Fri, 30 Aug 2019 15:51:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 005FF88158;
+	Fri, 30 Aug 2019 15:51:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B10171BF284
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:51:17 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2F40B1BF284
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:51:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id ABF4A25DFC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:51:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2C566880F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:51:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nik5oiJ9YE+P for <intel-wired-lan@lists.osuosl.org>;
- Fri, 30 Aug 2019 15:51:14 +0000 (UTC)
+ with ESMTP id m+rKOiqGA20z for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 30 Aug 2019 15:51:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
  [209.85.215.194])
- by silver.osuosl.org (Postfix) with ESMTPS id C1BB125D72
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:51:14 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id m3so3726453pgv.13
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 08:51:14 -0700 (PDT)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B2B19880C5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:51:40 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id m3so3726951pgv.13
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 08:51:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version; bh=qh9JMIOA6DKpPhCLXrMjeRQ/Yu9ZjBiM5utlR/Cj6uc=;
- b=qdTI7Rxa8bA7zDyC9FTroHXftoktZ3lJz1pyQDM7p4Rn2bUQFsEwGZJ0rfzzPK0gxJ
- BJWwVx5B6Yl42LJa7WyqX+7ykYYL+MxmE4cUI0DAF0RUleeaiCELdH8SaPnx42bFvqBp
- NTdXhNtJjPH0qRI1bIN1RM/jK88UUp+gfVgLzhCPHDo1hqLxhEJcuD5/myWOSB0bAXPc
- 6XnvglnfEntJcP31gi21D21SB5ZnLBnTgsySn1BMnUsarf50G1JSPkT/f4U863IW/MIb
- DTI6FhxcwjgLRw6WOPFEbMwWb1cBCP2l9GUxTc08tZVtV+ZQvNB+agc5gUDiPq4UFygj
- 7CMg==
+ :mime-version; bh=BLlV5SfFFdT/9adoJ3oAD9C/bDn8ekH/hdHHGvhN3VE=;
+ b=DrpcBviwKCKjU0RkRteMpfFfg/ylbw304Alc89Kvw+yHA9YPES0o32EbK6NSSBAETt
+ gVGQ9aUZYCTaE69GY5nEdgoxWgtVJ3fXlSEJ89yG37qZRIkxztE4eQmXGnwsUMnHmFQc
+ 2T6WpnT/dRqrdy2dn5tCej9AqeT58ISO/rXBPv9Aa2rvfes01wL4B7KuYI04xxmuTbDG
+ UIAIsN0Dwj0MtFLUtDCignNlpbMBTD2Rz4xLhuRbxDchNLjSEaGX5MG5bi4jy7NL6iP7
+ K5XrBrzan3dDTlBObZwTXDLF1q1xzDb8yqnFpJ8WCTZTMxRQESum8d7qJjPTpxrGQOXo
+ nu5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version;
- bh=qh9JMIOA6DKpPhCLXrMjeRQ/Yu9ZjBiM5utlR/Cj6uc=;
- b=iGnXP0DKA85crH4dZgDe3lM78Zfx5oSwTP9uvbuHwCJC0vGOmgLk8jnmhYkzAcJcCJ
- M811lLrTHWpAnctE2zL6vBr2T8JYfWtR8n3eMa+HdNLQUh8rMZ2w5fu3Dkf+g0dm0Qu9
- +nIz5cQDeh4pJOYwHXVTqkpER2+khz/N8lKoQtkRahXFenm8vMNSwHap0QYc/TkAQY8y
- 2dyb0wJWtw6UpKuoLQ19uitDegPHGNyR00uAr1yDjih0W/nBQClKk6xyqLAbyC3Cb9sD
- 2k2kiV7NiqaH9bPvv3VcrMfQRDccV1XqRcGdJiaEvN8LYQCpBxpPkezJrKdv9kyYXfGu
- PIhQ==
-X-Gm-Message-State: APjAAAVYCCoiPSA0T1tetXifK9XCO5TY5BpaEn7agSOK+sio+lReYwhe
- 742/6T5bRJkof1fACxhgKNc=
-X-Google-Smtp-Source: APXvYqxIH4BI/e4zt9lk20BW0P9HQaA9UZQnQj8IVrIOLOp/FA92JAuYZYcs56FcEFTv/PE0Gi7TWA==
-X-Received: by 2002:aa7:8a83:: with SMTP id a3mr18843130pfc.115.1567180274559; 
- Fri, 30 Aug 2019 08:51:14 -0700 (PDT)
+ bh=BLlV5SfFFdT/9adoJ3oAD9C/bDn8ekH/hdHHGvhN3VE=;
+ b=gekBNGr5pu8JUDJ/j0UKeoji/sTheyTKyC7QoUibsjOOG7ppDqkTeynnYT+UddVQcL
+ XMfOt5xHadBPUO0Xz1ypaicq3CDyM+Y4uNxQYG3cLG94M5oIUHjBiQZR/Ls2hbmrkaZS
+ r+WVm3UAsk1y/uEfANQlhFmeKdXb51bFQ0tZDFTcXzA4gYabHB9bLiJB1RZDfBL5nZHe
+ wYBhB/oSD9QgK/LakkqNJY9SCOgAxoZVv3NkgmXLss8WV75zzjm3AuPSBnj4w98QtAu/
+ x+QECj7YWpAqlrIKBiaAEFx1IRJCrcrN4Rtu2T6JQu1Wz6bKr7PywlC7pxNKtsT6lP2N
+ ckkw==
+X-Gm-Message-State: APjAAAUj2PB92G5Hu6EicR3RSKDiY6/0OaLjbGP0bKan7zhfBX5gMmFa
+ 0TJiJ0Ge+78Ab2pyNGgV+jc=
+X-Google-Smtp-Source: APXvYqy+IflP5czhCS1gShYkQQIIGxIyv6VyyEdAnRS5D3GUB4FquNzgaDRoo0hgMt5VJlVFnTZINw==
+X-Received: by 2002:a63:4c5c:: with SMTP id m28mr14308963pgl.333.1567180300361; 
+ Fri, 30 Aug 2019 08:51:40 -0700 (PDT)
 Received: from [172.26.108.102] ([2620:10d:c090:180::7594])
- by smtp.gmail.com with ESMTPSA id j1sm6763972pfh.174.2019.08.30.08.51.13
+ by smtp.gmail.com with ESMTPSA id j1sm6763972pfh.174.2019.08.30.08.51.39
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 30 Aug 2019 08:51:14 -0700 (PDT)
+ Fri, 30 Aug 2019 08:51:39 -0700 (PDT)
 From: "Jonathan Lemon" <jonathan.lemon@gmail.com>
 To: "Kevin Laatz" <kevin.laatz@intel.com>
-Date: Fri, 30 Aug 2019 08:51:12 -0700
+Date: Fri, 30 Aug 2019 08:51:38 -0700
 X-Mailer: MailMate (1.12.5r5635)
-Message-ID: <359B63E6-49B0-4AA2-96F3-D139AF0AEA33@gmail.com>
-In-Reply-To: <20190827022531.15060-12-kevin.laatz@intel.com>
+Message-ID: <320E20FD-E042-48AC-B52C-2E34FEA6A68E@gmail.com>
+In-Reply-To: <20190827022531.15060-13-kevin.laatz@intel.com>
 References: <20190822014427.49800-1-kevin.laatz@intel.com>
  <20190827022531.15060-1-kevin.laatz@intel.com>
- <20190827022531.15060-12-kevin.laatz@intel.com>
+ <20190827022531.15060-13-kevin.laatz@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 11/12] samples/bpf: use
- hugepages in xdpsock app
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 12/12] doc/af_xdp: include
+ unaligned chunk case
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,10 +101,11 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 26 Aug 2019, at 19:25, Kevin Laatz wrote:
 
-> This patch modifies xdpsock to use mmap instead of posix_memalign. With
-> this change, we can use hugepages when running the application in unaligned
-> chunks mode. Using hugepages makes it more likely that we have physically
-> contiguous memory, which supports the unaligned chunk mode better.
+> The addition of unaligned chunks mode, the documentation needs to be
+> updated to indicate that the incoming addr to the fill ring will only be
+> masked if the user application is run in the aligned chunk mode. This patch
+> also adds a line to explicitly indicate that the incoming addr will not be
+> masked if running the user application in the unaligned chunk mode.
 >
 > Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
 Acked-by: Jonathan Lemon <jonathan.lemon@gmail.com>
