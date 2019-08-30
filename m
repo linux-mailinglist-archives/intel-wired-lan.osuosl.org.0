@@ -2,79 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F51BA3AAD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Aug 2019 17:43:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD7B0A3AC2
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Aug 2019 17:45:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BDE0584317;
-	Fri, 30 Aug 2019 15:43:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 811A887D77;
+	Fri, 30 Aug 2019 15:45:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qIvs8Gr3O-0k; Fri, 30 Aug 2019 15:43:53 +0000 (UTC)
+	with ESMTP id 6spBQMZrl4vp; Fri, 30 Aug 2019 15:45:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 38FA387E93;
-	Fri, 30 Aug 2019 15:43:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E7A4E87E9C;
+	Fri, 30 Aug 2019 15:45:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BC9EC1BF284
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:43:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C4B61BF284
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:45:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ADA9588870
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:43:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 965B587E3E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:45:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dVvHo8uI9SIS for <intel-wired-lan@lists.osuosl.org>;
- Fri, 30 Aug 2019 15:43:51 +0000 (UTC)
+ with ESMTP id Mjv1ogGJfEF8 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 30 Aug 2019 15:45:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
  [209.85.210.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 39857887FC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:43:51 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id v12so4875482pfn.10
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 08:43:51 -0700 (PDT)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F0EB887D77
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 15:45:37 +0000 (UTC)
+Received: by mail-pf1-f195.google.com with SMTP id o70so4895527pfg.5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 08:45:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version; bh=IZK133rvLPFOXdT1nth00dyTGLOoSKiaU2rUxXtqO8Q=;
- b=t45Zb8MpRU4zl0yeD8VsoHrfDmDVKjnG1Vt0+zrLAFSEhHgvyTi3EA5JmQuo+h+UCZ
- HYlSYCz3636k8rhcABU/AwV6BB87hxv0Xm4Dpg8iZTDLR6Iew5JtbWfkxNWPL/gmlYZf
- B4DVGNgaTO2PBHtpqu5JGL2UjxLRqkGmG1jeAuIwOOllcV54IvFBm/tRqfCF6cFlA3w9
- Js9zj1NocQkVzxWyBc8HPzj7FhNX9Hxz3ytZPxoWkDhWP5FnCtKV8+drhJ7g3AhhILox
- 80ujVW8YqnLyOrbXcVZYn5nHohKNL38RDBrGTITM7RIyBBcYszbqD3sBf+b01YBUl5By
- bZ/w==
+ :mime-version; bh=AQcszAxJMGmzr9mcXZyzTqKFncOjDmo3mtAAwMQbfK0=;
+ b=AFjjIfia0spTV6b4E9ZloJREqJlMRAGat+xANwqw8sWD6RbrfWq1uOVmZOqNWc7aNR
+ aNotby77LKePdQECAx6xTE9dXfASNAqCQuJRUW6q+BqQViRPsNy9uPuvz1R4mU0k2nBo
+ xh8FsNTZ7oC3rTr2O069gxAb2WDijZhNjzBMZXQ43g1epzZod4Dz4BTIxEVWCo60JuxO
+ gMHvddyxBJjreD2fJXnhTWxiwnSCUBcoFlfJISfZcRR/T3SghTFOnJGwvQgbvIt6OWeZ
+ UmY1QBRSAlhXB/ANdRfizXKmmfTc+wPeOnWtziXzWw92dOTYnVEYig+fNiGb7oYDFBdW
+ oJTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version;
- bh=IZK133rvLPFOXdT1nth00dyTGLOoSKiaU2rUxXtqO8Q=;
- b=NOasDEkoc4aGTt1p5hql726czqc5gBRKq1sRkXNlKlh7FlFAHh5WMP5+FsiU5cJXpj
- a/zf4POcYae8+SEmjlSi58dTw1QEnNZCXTkN5DtEArqbT+FRSPcdLV4g4iCDL3gWWxtH
- ABPBjk8eMmNRoZekblkAJlC7OcVjChgGQLyiEatizVlUUaTKh9hi9KxrYp1jJRc02OvW
- dVuH+i7yo85xb/B6JCZypscDzo60y6K5WLSq5NjHVtVnd2esG5JIFjPOvq3pT92lBMo7
- /epPcp3w2UENUeMJtCc/+OtqKo5AOJWg3DfwoW2mcm73hyAFVPldd/MpMXsqz66daibw
- P0Fw==
-X-Gm-Message-State: APjAAAXCjtt4T1mLyEgkSB/VG08IRe2eWf3nChpStvk1suBuQyJWGkFE
- Zi0BuwKlds8FqVx7bj6nXJY=
-X-Google-Smtp-Source: APXvYqxsYGqcl9EsgZCqgSTKDVc8tStadrHPrGQVw2ILBQsdE6ZrKfTHvjq9qNPYym29KJVDyvCgqQ==
-X-Received: by 2002:aa7:87d8:: with SMTP id i24mr18668241pfo.88.1567179830889; 
- Fri, 30 Aug 2019 08:43:50 -0700 (PDT)
+ bh=AQcszAxJMGmzr9mcXZyzTqKFncOjDmo3mtAAwMQbfK0=;
+ b=Kz+DVEdAyAOx/hcn90warWFc+70U5N63comUs/GeSkd3sMA6En/JBLwJaDl5qpYSW4
+ HUXG+boNwYQRU6PcYdthJUxFK2DVbflf8YYYtpC+BWH9zMrRI1myd79sqNBIG4fWzeLu
+ SHntJaxNSRxCzK9chitTxBh76UZp/qwBZ/mj+3+jzz15wGFmmEq0lXAqOKNbYpNaMFwZ
+ FJbIKgXHOT4TRupX67nNiWmjcYMyHTG9Nv738xE7aSwN59BaiLt0ciprPxyYokb6CGDL
+ XeD+TaAA8PwFj17vAx6ayRdghM2VOuilF++v6nME4ooXF+rggoeP0JfW4qCHSMLc8d2i
+ Hs9A==
+X-Gm-Message-State: APjAAAXIAv79U1tBIPD1jmMwX+9DEa0xyyW6RyPMnvsDrFhV07vFnev5
+ 8feUBwf3aAUWO1x+EN6GsBo=
+X-Google-Smtp-Source: APXvYqztZbEcpjjL+pO9jnW+VurgE/+k1BJo2dvvu4XMbmkpdKaLXzDKOtW5gTMEu1j9ffQfGnhYlQ==
+X-Received: by 2002:a17:90a:f986:: with SMTP id
+ cq6mr5023902pjb.48.1567179937659; 
+ Fri, 30 Aug 2019 08:45:37 -0700 (PDT)
 Received: from [172.26.108.102] ([2620:10d:c090:180::7594])
- by smtp.gmail.com with ESMTPSA id r28sm3303447pfg.62.2019.08.30.08.43.49
+ by smtp.gmail.com with ESMTPSA id i9sm4920390pgg.38.2019.08.30.08.45.36
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 30 Aug 2019 08:43:50 -0700 (PDT)
+ Fri, 30 Aug 2019 08:45:36 -0700 (PDT)
 From: "Jonathan Lemon" <jonathan.lemon@gmail.com>
 To: "Kevin Laatz" <kevin.laatz@intel.com>
-Date: Fri, 30 Aug 2019 08:43:48 -0700
+Date: Fri, 30 Aug 2019 08:45:35 -0700
 X-Mailer: MailMate (1.12.5r5635)
-Message-ID: <E540DA62-B004-40B0-8FF0-7B6B44D500C4@gmail.com>
-In-Reply-To: <20190827022531.15060-7-kevin.laatz@intel.com>
+Message-ID: <C5FEBF55-CC52-4489-955E-1202BB4FF193@gmail.com>
+In-Reply-To: <20190827022531.15060-8-kevin.laatz@intel.com>
 References: <20190822014427.49800-1-kevin.laatz@intel.com>
  <20190827022531.15060-1-kevin.laatz@intel.com>
- <20190827022531.15060-7-kevin.laatz@intel.com>
+ <20190827022531.15060-8-kevin.laatz@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 06/12] mlx5e: modify
- driver for handling offsets
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 07/12] net/mlx5e: Allow
+ XSK frames smaller than a page
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,12 +102,29 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 26 Aug 2019, at 19:25, Kevin Laatz wrote:
 
-> With the addition of the unaligned chunks option, we need to make sure we
-> handle the offsets accordingly based on the mode we are currently running
-> in. This patch modifies the driver to appropriately mask the address for
-> each case.
+> From: Maxim Mikityanskiy <maximmi@mellanox.com>
 >
-> Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
+> Relax the requirements to the XSK frame size to allow it to be smaller
+> than a page and even not a power of two. The current implementation can
+> work in this mode, both with Striding RQ and without it.
+>
+> The code that checks `mtu + headroom <= XSK frame size` is modified
+> accordingly. Any frame size between 2048 and PAGE_SIZE is accepted.
+>
+> Functions that worked with pages only now work with XSK frames, even if
+> their size is different from PAGE_SIZE.
+>
+> With XSK queues, regardless of the frame size, Striding RQ uses the
+> stride size of PAGE_SIZE, and UMR MTTs are posted using starting
+> addresses of frames, but PAGE_SIZE as page size. MTU guarantees that no
+> packet data will overlap with other frames. UMR MTT size is made equal
+> to the stride size of the RQ, because UMEM frames may come in random
+> order, and we need to handle them one by one. PAGE_SIZE is just a power
+> of two that is bigger than any allowed XSK frame size, and also it
+> doesn't require making additional changes to the code.
+>
+> Signed-off-by: Maxim Mikityanskiy <maximmi@mellanox.com>
+> Reviewed-by: Saeed Mahameed <saeedm@mellanox.com>
 Acked-by: Jonathan Lemon <jonathan.lemon@gmail.com>
 _______________________________________________
 Intel-wired-lan mailing list
