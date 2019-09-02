@@ -1,63 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23FA8A410A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Aug 2019 01:29:54 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50DC9A54AA
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Sep 2019 13:16:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CFD6284FDE;
-	Fri, 30 Aug 2019 23:29:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 09F85864F3;
+	Mon,  2 Sep 2019 11:16:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z54EE80zTA5s; Fri, 30 Aug 2019 23:29:51 +0000 (UTC)
+	with ESMTP id InCKmDlubqmK; Mon,  2 Sep 2019 11:16:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 14B1C8508A;
-	Fri, 30 Aug 2019 23:29:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 821668651C;
+	Mon,  2 Sep 2019 11:16:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 350681BF37C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 23:29:50 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 243FD1BF42C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2019 11:15:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2AE4A84DB2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 23:29:50 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1FAA786506
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2019 11:15:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VoMW4EZmEtZO for <intel-wired-lan@lists.osuosl.org>;
- Fri, 30 Aug 2019 23:29:48 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3267684E0A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2019 23:29:48 +0000 (UTC)
-Received: from sslproxy05.your-server.de ([78.46.172.2])
- by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
- id 1i3qKp-0004bm-2Q; Sat, 31 Aug 2019 01:29:39 +0200
-Received: from [178.197.249.19] (helo=pc-63.home)
- by sslproxy05.your-server.de with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.89)
- (envelope-from <daniel@iogearbox.net>)
- id 1i3qKo-000KDR-QF; Sat, 31 Aug 2019 01:29:38 +0200
-To: Kevin Laatz <kevin.laatz@intel.com>, netdev@vger.kernel.org,
- ast@kernel.org, bjorn.topel@intel.com, magnus.karlsson@intel.com,
- jakub.kicinski@netronome.com, jonathan.lemon@gmail.com, saeedm@mellanox.com,
- maximmi@mellanox.com, stephen@networkplumber.org
-References: <20190822014427.49800-1-kevin.laatz@intel.com>
- <20190827022531.15060-1-kevin.laatz@intel.com>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <4b3f1e4c-7db6-d658-aba1-40237b9aa053@iogearbox.net>
-Date: Sat, 31 Aug 2019 01:29:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ with ESMTP id T-DRkjQNHhPt for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Sep 2019 11:15:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3785D864F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2019 11:15:43 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2019 04:15:42 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,459,1559545200"; d="scan'208";a="184472476"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga003.jf.intel.com with ESMTP; 02 Sep 2019 04:15:40 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1i4kJA-0006gD-Aj; Mon, 02 Sep 2019 19:15:40 +0800
+Date: Mon, 02 Sep 2019 19:15:13 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d6cf9c1.trgHydjoU1sWy8Rt%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20190827022531.15060-1-kevin.laatz@intel.com>
-Content-Language: en-US
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.100.3/25557/Fri Aug 30 10:30:29 2019)
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 00/12] XDP unaligned chunk
- placement support
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
+ ed1634c77b53aabc0cb384d1df6daf59470e716c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,210 +63,183 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bruce.richardson@intel.com, ciara.loftus@intel.com,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 8/27/19 4:25 AM, Kevin Laatz wrote:
-> This patch set adds the ability to use unaligned chunks in the XDP umem.
-> 
-> Currently, all chunk addresses passed to the umem are masked to be chunk
-> size aligned (max is PAGE_SIZE). This limits where we can place chunks
-> within the umem as well as limiting the packet sizes that are supported.
-> 
-> The changes in this patch set removes these restrictions, allowing XDP to
-> be more flexible in where it can place a chunk within a umem. By relaxing
-> where the chunks can be placed, it allows us to use an arbitrary buffer
-> size and place that wherever we have a free address in the umem. These
-> changes add the ability to support arbitrary frame sizes up to 4k
-> (PAGE_SIZE) and make it easy to integrate with other existing frameworks
-> that have their own memory management systems, such as DPDK.
-> In DPDK, for example, there is already support for AF_XDP with zero-copy.
-> However, with this patch set the integration will be much more seamless.
-> You can find the DPDK AF_XDP driver at:
-> https://git.dpdk.org/dpdk/tree/drivers/net/af_xdp
-> 
-> Since we are now dealing with arbitrary frame sizes, we need also need to
-> update how we pass around addresses. Currently, the addresses can simply be
-> masked to 2k to get back to the original address. This becomes less trivial
-> when using frame sizes that are not a 'power of 2' size. This patch set
-> modifies the Rx/Tx descriptor format to use the upper 16-bits of the addr
-> field for an offset value, leaving the lower 48-bits for the address (this
-> leaves us with 256 Terabytes, which should be enough!). We only need to use
-> the upper 16-bits to store the offset when running in unaligned mode.
-> Rather than adding the offset (headroom etc) to the address, we will store
-> it in the upper 16-bits of the address field. This way, we can easily add
-> the offset to the address where we need it, using some bit manipulation and
-> addition, and we can also easily get the original address wherever we need
-> it (for example in i40e_zca_free) by simply masking to get the lower
-> 48-bits of the address field.
-> 
-> The patch set was tested with the following set up:
->    - Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz
->    - Intel Corporation Ethernet Controller XXV710 for 25GbE SFP28 (rev 02)
->    - Driver: i40e
->    - Application: xdpsock with l2fwd (single interface)
->    - Turbo disabled in BIOS
-> 
-> There are no changes to performance before and after these patches for SKB
-> mode and Copy mode. Zero-copy mode saw a performance degradation of ~1.5%.
-> 
-> This patch set has been applied against
-> commit 0bb52b0dfc88 ("tools: bpftool: add 'bpftool map freeze' subcommand")
-> 
-> Structure of the patch set:
-> Patch 1:
->    - Remove unnecessary masking and headroom addition during zero-copy Rx
->      buffer recycling in i40e. This change is required in order for the
->      buffer recycling to work in the unaligned chunk mode.
-> 
-> Patch 2:
->    - Remove unnecessary masking and headroom addition during
->      zero-copy Rx buffer recycling in ixgbe. This change is required in
->      order for the  buffer recycling to work in the unaligned chunk mode.
-> 
-> Patch 3:
->    - Add infrastructure for unaligned chunks. Since we are dealing with
->      unaligned chunks that could potentially cross a physical page boundary,
->      we add checks to keep track of that information. We can later use this
->      information to correctly handle buffers that are placed at an address
->      where they cross a page boundary.  This patch also modifies the
->      existing Rx and Tx functions to use the new descriptor format. To
->      handle addresses correctly, we need to mask appropriately based on
->      whether we are in aligned or unaligned mode.
-> 
-> Patch 4:
->    - This patch updates the i40e driver to make use of the new descriptor
->      format.
-> 
-> Patch 5:
->    - This patch updates the ixgbe driver to make use of the new descriptor
->      format.
-> 
-> Patch 6:
->    - This patch updates the mlx5e driver to make use of the new descriptor
->      format. These changes are required to handle the new descriptor format
->      and for unaligned chunks support.
-> 
-> Patch 7:
->    - This patch allows XSK frames smaller than page size in the mlx5e
->      driver. Relax the requirements to the XSK frame size to allow it to be
->      smaller than a page and even not a power of two. The current
->      implementation can work in this mode, both with Striding RQ and without
->      it.
-> 
-> Patch 8:
->    - Add flags for umem configuration to libbpf. Since we increase the size
->      of the struct by adding flags, we also need to add the ABI versioning
->      in this patch.
-> 
-> Patch 9:
->    - Modify xdpsock application to add a command line option for
->      unaligned chunks
-> 
-> Patch 10:
->    - Since we can now run the application in unaligned chunk mode, we need
->      to make sure we recycle the buffers appropriately.
-> 
-> Patch 11:
->    - Adds hugepage support to the xdpsock application
-> 
-> Patch 12:
->    - Documentation update to include the unaligned chunk scenario. We need
->      to explicitly state that the incoming addresses are only masked in the
->      aligned chunk mode and not the unaligned chunk mode.
-> 
-> ---
-> v2:
->    - fixed checkpatch issues
->    - fixed Rx buffer recycling for unaligned chunks in xdpsock
->    - removed unused defines
->    - fixed how chunk_size is calculated in xsk_diag.c
->    - added some performance numbers to cover letter
->    - modified descriptor format to make it easier to retrieve original
->      address
->    - removed patch adding off_t off to the zero copy allocator. This is no
->      longer needed with the new descriptor format.
-> 
-> v3:
->    - added patch for mlx5 driver changes needed for unaligned chunks
->    - moved offset handling to new helper function
->    - changed value used for the umem chunk_mask. Now using the new
->      descriptor format to save us doing the calculations in a number of
->      places meaning more of the code is left unchanged while adding
->      unaligned chunk support.
-> 
-> v4:
->    - reworked the next_pg_contig field in the xdp_umem_page struct. We now
->      use the low 12 bits of the addr for flags rather than adding an extra
->      field in the struct.
->    - modified unaligned chunks flag define
->    - fixed page_start calculation in __xsk_rcv_memcpy().
->    - move offset handling to the xdp_umem_get_* functions
->    - modified the len field in xdp_umem_reg struct. We now use 16 bits from
->      this for the flags field.
->    - fixed headroom addition to handle in the mlx5e driver
->    - other minor changes based on review comments
-> 
-> v5:
->    - Added ABI versioning in the libbpf patch
->    - Removed bitfields in the xdp_umem_reg struct. Adding new flags field.
->    - Added accessors for getting addr and offset.
->    - Added helper function for adding the offset to the addr.
->    - Fixed conflicts with 'bpf-af-xdp-wakeup' which was merged recently.
->    - Fixed typo in mlx driver patch.
->    - Moved libbpf patch to later in the set (7/11, just before the sample
->      app changes)
-> 
-> v6:
->    - Added support for XSK frames smaller than page in mlx5e driver (Maxim
->      Mikityanskiy <maximmi@mellanox.com).
->    - Fixed offset handling in xsk_generic_rcv.
->    - Added check for base address in xskq_is_valid_addr_unaligned.
-> 
-> Kevin Laatz (11):
->    i40e: simplify Rx buffer recycle
->    ixgbe: simplify Rx buffer recycle
->    xsk: add support to allow unaligned chunk placement
->    i40e: modify driver for handling offsets
->    ixgbe: modify driver for handling offsets
->    mlx5e: modify driver for handling offsets
->    libbpf: add flags to umem config
->    samples/bpf: add unaligned chunks mode support to xdpsock
->    samples/bpf: add buffer recycling for unaligned chunks to xdpsock
->    samples/bpf: use hugepages in xdpsock app
->    doc/af_xdp: include unaligned chunk case
-> 
-> Maxim Mikityanskiy (1):
->    net/mlx5e: Allow XSK frames smaller than a page
-> 
->   Documentation/networking/af_xdp.rst           | 10 +-
->   drivers/net/ethernet/intel/i40e/i40e_xsk.c    | 26 +++--
->   drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 26 +++--
->   .../ethernet/mellanox/mlx5/core/en/params.c   | 23 ++++-
->   .../ethernet/mellanox/mlx5/core/en/params.h   |  2 +
->   .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |  8 +-
->   .../ethernet/mellanox/mlx5/core/en/xsk/rx.c   |  5 +-
->   .../mellanox/mlx5/core/en/xsk/setup.c         | 15 ++-
->   include/net/xdp_sock.h                        | 75 ++++++++++++++-
->   include/uapi/linux/if_xdp.h                   |  9 ++
->   net/xdp/xdp_umem.c                            | 19 +++-
->   net/xdp/xsk.c                                 | 94 +++++++++++++++----
->   net/xdp/xsk_diag.c                            |  2 +-
->   net/xdp/xsk_queue.h                           | 70 ++++++++++++--
->   samples/bpf/xdpsock_user.c                    | 61 ++++++++----
->   tools/include/uapi/linux/if_xdp.h             |  9 ++
->   tools/lib/bpf/Makefile                        |  5 +-
->   tools/lib/bpf/libbpf.map                      |  1 +
->   tools/lib/bpf/xsk.c                           | 33 ++++++-
->   tools/lib/bpf/xsk.h                           | 27 ++++++
->   20 files changed, 417 insertions(+), 103 deletions(-)
-> 
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: ed1634c77b53aabc0cb384d1df6daf59470e716c  ice: Rework around device/function capabilities
 
-Applied, thanks!
+TIMEOUT after 1440m
+
+
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
+
+configs timed out: 18
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+
+configs tested: 132
+
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                 randconfig-c001-201935
+x86_64                 randconfig-c002-201935
+x86_64                 randconfig-c003-201935
+x86_64                 randconfig-c004-201935
+i386                   randconfig-c001-201935
+i386                   randconfig-c002-201935
+i386                   randconfig-c003-201935
+i386                   randconfig-c004-201935
+x86_64                 randconfig-f001-201935
+x86_64                 randconfig-f002-201935
+x86_64                 randconfig-f003-201935
+x86_64                 randconfig-f004-201935
+i386                   randconfig-f001-201935
+i386                   randconfig-f002-201935
+i386                   randconfig-f003-201935
+i386                   randconfig-f004-201935
+x86_64                           allmodconfig
+x86_64                           allyesconfig
+mips                             allmodconfig
+mips                      malta_kvm_defconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                                   jz4740
+mips                                     txx9
+x86_64                 randconfig-g001-201935
+x86_64                 randconfig-g002-201935
+x86_64                 randconfig-g003-201935
+x86_64                 randconfig-g004-201935
+i386                   randconfig-g001-201935
+i386                   randconfig-g002-201935
+i386                   randconfig-g003-201935
+i386                   randconfig-g004-201935
+i386                             allmodconfig
+sparc64                          allmodconfig
+sparc                               defconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+x86_64                 randconfig-h002-201935
+x86_64                 randconfig-h003-201935
+i386                   randconfig-h002-201935
+i386                   randconfig-h001-201935
+i386                   randconfig-h004-201935
+x86_64                 randconfig-h004-201935
+x86_64                 randconfig-h001-201935
+i386                   randconfig-h003-201935
+x86_64                 randconfig-a001-201935
+x86_64                 randconfig-a002-201935
+x86_64                 randconfig-a003-201935
+x86_64                 randconfig-a004-201935
+i386                   randconfig-a001-201935
+i386                   randconfig-a002-201935
+i386                   randconfig-a003-201935
+i386                   randconfig-a004-201935
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                 randconfig-e001-201935
+x86_64                 randconfig-e002-201935
+x86_64                 randconfig-e003-201935
+x86_64                 randconfig-e004-201935
+i386                   randconfig-e001-201935
+i386                   randconfig-e002-201935
+i386                   randconfig-e003-201935
+i386                   randconfig-e004-201935
+riscv                             allnoconfig
+riscv                               defconfig
+nds32                               defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+powerpc                             defconfig
+x86_64                 randconfig-b001-201935
+x86_64                 randconfig-b002-201935
+x86_64                 randconfig-b003-201935
+x86_64                 randconfig-b004-201935
+i386                   randconfig-b001-201935
+i386                   randconfig-b002-201935
+i386                   randconfig-b003-201935
+i386                   randconfig-b004-201935
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                       ppc64_defconfig
+x86_64                 randconfig-d001-201935
+x86_64                 randconfig-d002-201935
+x86_64                 randconfig-d003-201935
+x86_64                 randconfig-d004-201935
+i386                   randconfig-d001-201935
+i386                   randconfig-d002-201935
+i386                   randconfig-d003-201935
+i386                   randconfig-d004-201935
+parisc                        c3000_defconfig
+parisc                         b180_defconfig
+parisc                              defconfig
+parisc                            allnoconfig
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
