@@ -1,92 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49C8FA7195
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2019 19:21:36 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 377EDA738D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2019 21:20:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D99F886935;
-	Tue,  3 Sep 2019 17:21:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ABC6B875C7;
+	Tue,  3 Sep 2019 19:20:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xYMCenHkWPu0; Tue,  3 Sep 2019 17:21:33 +0000 (UTC)
+	with ESMTP id zUWkpBlRLtSe; Tue,  3 Sep 2019 19:20:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1EA0086934;
-	Tue,  3 Sep 2019 17:21:33 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5CA751BF28E
- for <intel-wired-lan@osuosl.org>; Tue,  3 Sep 2019 09:28:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id ACAC9876E4;
+	Tue,  3 Sep 2019 19:20:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D3DD1BF5A2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 19:20:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 587B886364
- for <intel-wired-lan@osuosl.org>; Tue,  3 Sep 2019 09:28:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 28388875C7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 19:20:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WLYOAS3YGJJF for <intel-wired-lan@osuosl.org>;
- Tue,  3 Sep 2019 09:28:39 +0000 (UTC)
+ with ESMTP id nkHuC0-4gxi0 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Sep 2019 19:20:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5CE4786341
- for <intel-wired-lan@osuosl.org>; Tue,  3 Sep 2019 09:28:39 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Sep 2019 02:28:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,462,1559545200"; d="scan'208";a="383012973"
-Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
- by fmsmga006.fm.intel.com with ESMTP; 03 Sep 2019 02:28:39 -0700
-Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
- FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 3 Sep 2019 02:28:36 -0700
-Received: from fmsmsx604.amr.corp.intel.com (10.18.126.84) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 3 Sep 2019 02:28:32 -0700
-Received: from lcsmsx156.ger.corp.intel.com (10.186.165.234) by
- fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Tue, 3 Sep 2019 02:28:32 -0700
-Received: from hasmsx108.ger.corp.intel.com ([169.254.9.203]) by
- LCSMSX156.ger.corp.intel.com ([169.254.15.31]) with mapi id 14.03.0439.000;
- Tue, 3 Sep 2019 12:28:30 +0300
-From: "Winkler, Tomas" <tomas.winkler@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Paul Menzel
- <pmenzel@molgen.mpg.de>, "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Thread-Topic: [Intel-wired-lan] [e1000e] Linux 4.9: unable to send packets
- after link recovery with patched driver
-Thread-Index: AQHVYi0fI9LijLnctE2pOUn9uy+EG6cZbnEAgAAMpgCAADP+8A==
-Date: Tue, 3 Sep 2019 09:28:30 +0000
-Message-ID: <5B8DA87D05A7694D9FA63FD143655C1B9DCAC1FF@hasmsx108.ger.corp.intel.com>
-References: <3acf459ddbbd30687cda0a79523afe04@mirality.co.nz>
- <bec9f546d5a5a46586af0ac93d36f84f@mirality.co.nz>
- <000661bda5687541e895a949c76712fb@mirality.co.nz>
- <d3118220-e599-44cd-5ed6-43259c5fc2c2@intel.com>
- <3a63201c552a9cb6a9737fec92bc1264@mirality.co.nz>
- <f4a18bf808e6f30e9691e127722f851b@mirality.co.nz>
- <f6b7b539ece1ba352c60c6dc976a3ce2@mirality.co.nz>
- <0300439f389950a9f9baaaaf5e3ea697@mirality.co.nz>
- <aafb4ac9-6825-300c-6dee-1b603c09e373@molgen.mpg.de>
- <20190903092046.GB12325@kroah.com>
-In-Reply-To: <20190903092046.GB12325@kroah.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzZkYTRhMWYtMTRiNS00YmZjLTkyZDYtMWZiNzE3OTYzMTQxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiS2I2ZEs1V1NJcU1URk93TmRnZ0VldXVzMkVLMHc1ZERMaFNvd1dMWVNtVXBodTAxbnA5Rk1UZXhYUDFXR0RmdyJ9
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.184.70.10]
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7C2E48758C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 19:20:39 +0000 (UTC)
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x83JHjO2025350; Tue, 3 Sep 2019 15:20:33 -0400
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com
+ [169.63.214.131])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 2usuxj4e23-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 03 Sep 2019 15:20:32 -0400
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+ by ppma01dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x83JJfTj008333;
+ Tue, 3 Sep 2019 19:20:31 GMT
+Received: from b03cxnp07029.gho.boulder.ibm.com
+ (b03cxnp07029.gho.boulder.ibm.com [9.17.130.16])
+ by ppma01dal.us.ibm.com with ESMTP id 2uqgh71m9e-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 03 Sep 2019 19:20:31 +0000
+Received: from b03ledav006.gho.boulder.ibm.com
+ (b03ledav006.gho.boulder.ibm.com [9.17.130.237])
+ by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x83JKU6m51642688
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 3 Sep 2019 19:20:30 GMT
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 52826C6061;
+ Tue,  3 Sep 2019 19:20:30 +0000 (GMT)
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 1D233C605A;
+ Tue,  3 Sep 2019 19:20:30 +0000 (GMT)
+Received: from localhost (unknown [9.18.235.139])
+ by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Tue,  3 Sep 2019 19:20:29 +0000 (GMT)
+From: "Mauro S. M. Rodrigues" <maurosr@linux.vnet.ibm.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Date: Tue,  3 Sep 2019 16:20:20 -0300
+Message-Id: <20190903192021.25789-1-maurosr@linux.vnet.ibm.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 03 Sep 2019 17:21:32 +0000
-Subject: Re: [Intel-wired-lan] [e1000e] Linux 4.9: unable to send packets
- after link recovery with patched driver
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-09-03_04:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1909030191
+Subject: [Intel-wired-lan] [PATCH v2 net-next 1/2] i40e: fix hw_dbg usage in
+ i40e_hmc_get_object_va
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,161 +92,107 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>, "Usyskin,
- Alexander" <alexander.usyskin@intel.com>, "Wysocki,
- Rafael J" <rafael.j.wysocki@intel.com>, Gavin Lambert <intel@mirality.co.nz>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jakub Kicinski <jakub.kicinski@netronome.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-DQoNCj4gT24gVHVlLCBTZXAgMDMsIDIwMTkgYXQgMTA6MzU6MzBBTSArMDIwMCwgUGF1bCBNZW56
-ZWwgd3JvdGU6DQo+ID4gRGVhciBHYXZpbiwNCj4gPg0KPiA+DQo+ID4gVGhhbmsgeW91IGZvciBm
-b2xsb3dpbmcgdXAgb24gdGhpcy4NCj4gPg0KPiA+IE9uIDAzLjA5LjE5IDA5OjU2LCBHYXZpbiBM
-YW1iZXJ0IHdyb3RlOg0KPiA+ID4gT24gMjAxOS0wOC0yMCAxNDoxNSwgSSB3cm90ZToNCj4gPiA+
-ID4gRG9lcyBhbnlvbmUgaGF2ZSBhbnkgaWRlYXMgYWJvdXQgdGhpcz/CoCBFaXRoZXIgdG93YXJk
-cyBmdXJ0aGVyDQo+ID4gPiA+IGludmVzdGlnYXRpb24gb3IgdG8gYSBwb3NzaWJsZSByZXNvbHV0
-aW9uPw0KPiA+ID4gPg0KPiA+ID4gPiBUaGlzIGlzIGF0IHRoZSBwb2ludCBvZiBoYXJkd2FyZSBp
-bnRlcm5hbHMgbm93LCBzbyBJIGhhdmUgbm8gaWRlYQ0KPiA+ID4gPiBob3cgdG8gcHJvY2VlZCBp
-biBlaXRoZXIgYXJlYS4NCj4gPiA+DQo+ID4gPiBUbyByZWNhcCAocGx1cyBzb21lIG5ldyBpbmZv
-KToNCj4gPiA+DQo+ID4gPiAxLiBJIGFtIHVzaW5nIGEga2VybmVsIG1vZHVsZSB3aGljaCB1c2Vz
-IHRoZSBjb2RlIGZyb20gdGhlIGUxMDAwZQ0KPiA+ID4gZHJpdmVyIHRvIGNvbW11bmljYXRlIHdp
-dGggdGhlIGhhcmR3YXJlIHdpdGhvdXQgYWN0dWFsbHkgcmVnaXN0ZXJpbmcNCj4gPiA+IGl0IGFz
-IGEgTGludXggbmV0ZGV2LsKgIChUaGlzIGlzIHBhcnRseSBiZWNhdXNlIGl0IGNhbiBnZXQgdXNl
-ZCBpbiBhDQo+ID4gPiBYZW5vbWFpIGNvbnRleHQgb3V0c2lkZSBvZiBMaW51eCBpdHNlbGYsIGFs
-dGhvdWdoIEknbSBub3QgZG9pbmcgdGhhdA0KPiA+ID4gbXlzZWxmLikgVGhpcyBoaXN0b3JpY2Fs
-bHkgd29ya3MgZmluZS4NCj4gPiA+DQo+ID4gPiAyLiBPbiBjZXJ0YWluIExpbnV4IHZlcnNpb25z
-LCBJIGVuY291bnRlcmVkIGFuIGlzc3VlIHdoZXJlDQo+ID4gPiBkaXNjb25uZWN0aW5nIHRoZSBu
-ZXR3b3JrIGNhYmxlIGFuZCByZWNvbm5lY3RpbmcgaXQgYWxtb3N0IGFsd2F5cw0KPiA+ID4gcmVz
-dWx0cyBpbiBub3QgYmVpbmcgYWJsZSB0byBzZW5kIGFueSBwYWNrZXRzLsKgIChJIGNhbm5vdCBk
-ZXRlcm1pbmUNCj4gPiA+IGlmIHJlY2VpdmluZyBwYWNrZXRzIHdvcmtzIGluIHRoaXMgY2FzZSwg
-YXMgdGhlIG5ldHdvcmsgZGVzaWduIHdpbGwNCj4gPiA+IG5vdCByZWNlaXZlIHBhY2tldHMgdW5s
-ZXNzIHNvbWUgYXJlIHNlbnQgZmlyc3QuKcKgIFJlc3RhcnRpbmcgdGhlDQo+ID4gPiBkcml2ZXIg
-KHJtbW9kK21vZHByb2JlKSBkb2VzIHJlY292ZXIgZnJvbSB0aGlzIGNhc2UgKHVudGlsIHRoZSBu
-ZXh0DQo+ID4gPiBsaW5rIGxvc3MpLCBidXQgc2ltcGx5IHJlcGx1Z2dpbmcgdGhlIGNhYmxlIG5l
-dmVyIGRvZXMuDQo+ID4gPg0KPiA+ID4gMy4gVGhlIHByb2JsZW0gd2FzIG9ic2VydmVkIHdpdGgg
-Ym90aCBJMjE5LVYgYW5kIEkyMTktTE0gKG9uDQo+ID4gPiBtb3RoZXJib2FyZCksIGJ1dCB3YXMg
-Km5vdCogb2JzZXJ2ZWQgd2l0aCA4MjU3MUVCIChQQ0lFKS7CoCBUaGUNCj4gPiA+IHByb2JsZW0g
-d2FzIG5vdCBvYnNlcnZlZCB3aXRoIGEgbW90aGVyYm9hcmQgaWdiLWJhc2VkIEkyMTEuwqAgSQ0K
-PiA+ID4gc3VzcGVjdCB0aGUgaXNzdWUgaXMgbGltaXRlZCB0byBtb3RoZXJib2FyZC1iYXNlZCBl
-MTAwMGUgYWRhcHRlcnMuDQo+ID4gPiAoT3IgcGVyaGFwcyB0aGVyZSdzIHNvbWV0aGluZyBkaWZm
-ZXJlbnQgYWJvdXQgaG93IHRoZSBJR0JzIGFyZQ0KPiA+ID4gaW50ZXJuYWxseSBjb25uZWN0ZWQu
-KQ0KPiA+ID4NCj4gPiA+IDQuIFRoZSBwcm9ibGVtIGRvZXMgbm90IG9jY3VyIHdoZW4gdGhlIGUx
-MDAwZSBkcml2ZXIgaXMgcmVnaXN0ZXJlZA0KPiA+ID4gIm5vcm1hbGx5IiBhcyBhIExpbnV4IG5l
-dGRldi4NCj4gPiA+DQo+ID4gPiA1LiBUaGUgcHJvYmxlbSB3YXMgaW50cm9kdWNlZCBieSAibWVp
-OiBtZTogYWxsb3cgcnVudGltZSBwbSBmb3INCj4gPiA+IHBsYXRmb3JtIHdpdGggRDBpMyIgKHdo
-aWNoIGhhcyBiZWVuIGJhY2twb3J0ZWQgdG8gNC40KywgYXMgZmFyIGFzIEkgY2FuDQo+IHRlbGwp
-Lg0KPiA+ID4gRXhjbHVkaW5nIHRoaXMgY29tbWl0IHJlbGlhYmx5IHJlc29sdmVzIHRoZSBpc3N1
-ZSBhbmQgaW5jbHVkaW5nIGl0DQo+ID4gPiByZWxpYWJseSBicmVha3MgaXQuDQo+ID4NCj4gPiBU
-aGUgY29tbWl0IGhhc2ggaW4gdGhlIG1hc3RlciBicmFuY2ggaXMNCj4gPiBjYzM2NWRjZjBlNTYy
-NzFiZWRmM2RlOTVmODg5MjJhYmUyNDhlOTUxIGFuZCBpcyB0aGVyZSBzaW5jZSB2NC4xNi1yYzEu
-DQo+ID4NCj4gPiBTdHJhbmdlLCB0aGF0IGl0IGlzIGluIDQuNCBhbmQgNC45LCBhcyBpdCB3YXMg
-b25seSB0YWdnZWQgZm9yIHY0LjEzKy4NCj4gPg0KPiA+ID4gNi4gQXBwbHlpbmcgdGhlIHByZXZp
-b3VzbHkgc3VnZ2VzdGVkIHBhdGNoDQo+ID4gPiBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9z
-Y20vbGludXgva2VybmVsL2dpdC9qa2lyc2hlci9uZXh0LXF1ZXVlLg0KPiA+ID4gZ2l0L2NvbW1p
-dC9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGU/aWQ9ZGVmNGVjNmRjZTM5M2UyMTM2
-YjYNCj4gPiA+IDJhMDU3MTJmMzVhN2ZhNWY1ZTU2IGhhcyBubyBlZmZlY3Q7IHRoZSBFMTAwMF9T
-VEFUVVNfUENJTV9TVEFURSBiaXQNCj4gPiA+IGlzIG5vdCBzZXQgd2hlbiB0aGUgaXNzdWUgb2Nj
-dXJzLg0KPiA+ID4NCj4gPiA+IDcuIEdpdmVuIHRoZSBjb250ZW50IG9mIHRoZSBjaGFuZ2UgaW4g
-IzUsIEkgYXNzdW1lZCB0aGF0IHRoZSBwcm9ibGVtDQo+ID4gPiB3YXMgcG93ZXItbWFuYWdlbWVu
-dCByZWxhdGVkLCBwZXJoYXBzIGEgc2lkZSBlZmZlY3Qgb2YgdGhlIGUxMDAwZQ0KPiA+ID4gZHJp
-dmVyIG5vdCBiZWluZyByZWdpc3RlcmVkIGFzIGEgbmV0ZGV2LsKgIChTbyBwZXJoYXBzIHNvbWV0
-aGluZw0KPiA+ID4gdGhpbmtzIHRoYXQgbm8gZGV2aWNlcyBhcmUgaW4gdXNlIGFuZCB0dXJucyBz
-b21ldGhpbmcgb2ZmPykNCj4gPiA+DQo+ID4gPiA4LiBJJ3ZlIHByZXZpb3VzbHkgcG9zdGVkIHJl
-Z2lzdGVyIGR1bXBzIGZyb20gYW4gZTEwMDBlIGluIGJvdGggdGhlDQo+ID4gPiAibm9ybWFsIiBh
-bmQgImxpbmsgdXAgYnV0IG5vdCB0cmFuc21pdHRpbmciIHN0YXRlcy7CoCBUaGV5IHNlZW1lZA0K
-PiA+ID4gdmVyeSBzaW1pbGFyLCBidXQgYXMgSSdtIG5vdCBmYW1pbGlhciB3aXRoIHRoZSByZWdp
-c3RlciBtZWFuaW5ncyBJDQo+ID4gPiBtYXkgaGF2ZSBvdmVybG9va2VkIHNvbWV0aGluZyBzaWdu
-aWZpY2FudC7CoCAoTm90ZSB0aGF0IHRoZSBkdW1wcw0KPiA+ID4gd2VyZSBjYXB0dXJlZCBpbnNp
-ZGUgdGhlIHdhdGNoZG9nIHRhc2ssIHdoZW4gaXQgZGV0ZWN0cyBsaW5rIHVwIGJ1dA0KPiA+ID4g
-YmVmb3JlIGl0IHNldHMNCj4gPiA+IEUxMDAwX1RDVExfRU4uKQ0KPiA+ID4NCj4gPiA+IDkuIEkg
-ZW5hYmxlZCBkZWJ1ZyBsb2dnaW5nIGluIHRoZSBtZWkgZHJpdmVyOyBpdCBsb2dzIGEgY291cGxl
-IG9mDQo+ID4gPiBydW50aW1lX2lkbGVzIGFuZCB0aGVuIGEgcnVudGltZV9zdXNwZW5kIGR1cmlu
-ZyBzeXN0ZW0gc3RhcnR1cC7CoCAoSQ0KPiA+ID4gYWRkZWQgYSBsb2cgdG8gcnVudGltZV9yZXN1
-bWUgdGhhdCBpcyBtaXNzaW5nIGluIHRoZSBkcml2ZXIgc291cmNlLA0KPiA+ID4gYnV0IGl0IGFw
-cGVhcnMgdGhpcyBkb2VzIG5vdCBnZXQgY2FsbGVkIGluIG15IHNjZW5hcmlvLinCoCBOb3RlIHRo
-YXQNCj4gPiA+IHRoZSBlMTAwMGUgZHJpdmVyIGlzIHN0aWxsIHdvcmtpbmcgb2sgYWZ0ZXIgdGhp
-cy4uIGF0IGxlYXN0IGF0IGZpcnN0Lg0KPiA+ID4NCj4gPiA+IDEwLiAiY2F0IC9zeXMvYnVzL2Rl
-dmljZXMvcGNpMDAwMDowMC8wMDAwOjAwOjE2LjAvcG93ZXIvcnVudGltZV9zdGF0dXMiDQo+ID4g
-PiA9PiAic3VzcGVuZGVkIg0KPiA+ID4gIMKgwqDCoCAiY2F0DQo+ID4gPg0KPiAvc3lzL2J1cy9k
-ZXZpY2VzL3BjaTAwMDA6MDAvMDAwMDowMDoxNi4wL21laS9tZWkwL3Bvd2VyL3J1bnRpbWVfc3Rh
-dHVzIg0KPiA+ID4gPT4gInVuc3VwcG9ydGVkIg0KPiA+ID4gIMKgwqDCoCAiY2F0IC9zeXMvYnVz
-L2RldmljZXMvcGNpMDAwMDowMC8wMDAwOjAwOjFmLjAvcG93ZXIvcnVudGltZV9zdGF0dXMiDQo+
-ID4gPiA9PiAiYWN0aXZlIg0KPiA+ID4gIMKgwqDCoCAiY2F0IC9zeXMvYnVzL2RldmljZXMvcGNp
-MDAwMDowMC8wMDAwOjAwOjFmLjYvcG93ZXIvcnVudGltZV9zdGF0dXMiDQo+ID4gPiA9PiAiYWN0
-aXZlIiAodGhpcyBpcyB0aGUgYWN0dWFsIE5JQykNCj4gPiA+ICDCoMKgwqAgVGhlc2UgZG9uJ3Qg
-Y2hhbmdlIGJldHdlZW4gdGhlIHdvcmtpbmcgYW5kIG5vbi13b3JraW5nIHN0YXRlcy4NCj4gPiA+
-IChJdCdzIHBvc3NpYmxlIHRoYXQgc29tZSBvdGhlciBkZXZpY2UgZG9lcywgYnV0IEkgaGF2ZW4n
-dCBmb3VuZCBpdA0KPiA+ID4geWV0LikNCj4gPiA+DQo+ID4gPiAxMS4gSSBkaWQgdHJ5IGZvcmNp
-bmcgdGhlIGFib3ZlIHRvIHVuc3VzcGVuZCwgYnV0IHRoaXMgZGlkIG5vdA0KPiA+ID4gcmVjb3Zl
-ciBmcm9tIHRoZSBlMTAwMGUgaXNzdWUuDQo+ID4gPg0KPiA+ID4gMTIuIEkgYWxzbyB0cmllZCBj
-YWxsaW5nIGUxMDAwZV9yZXNldCBvbiBsaW5rLWRvd24uwqAgVGhpcyBwcm9kdWNlcw0KPiA+ID4g
-ZGlmZmVyZW50IHJlZ2lzdGVyIG91dHB1dCBvbiBsaW5rLXVwLCBidXQgZG9lc24ndCByZWNvdmVy
-IGZyb20gdGhlDQo+ID4gPiBpc3N1ZS4NCj4gPiA+DQo+ID4gPiAxMy4gSSBhbHNvIHRyaWVkIHJl
-Y29tcGlsaW5nIHRoZSBrZXJuZWwgd2l0aCBDT05GSUdfUE0gZGlzYWJsZWQgKG5vDQo+ID4gPiBw
-b3dlciBtYW5hZ2VtZW50KS7CoCBUaGlzICpkb2VzKiByZXNvbHZlIHRoZSBwcm9ibGVtIChidXQg
-aXMgYSB2ZXJ5DQo+ID4gPiBiaWcgaGFtbWVyKS4NCj4gPiA+DQo+ID4gPiAxNC4gUG9zc2libHkg
-YWxzbyBvZiBpbnRlcmVzdCBpcyB0aGF0IGlmIEkgZG8gKmJvdGgqICMxMiBhbmQgIzEzLA0KPiA+
-ID4gdGhlIHByb2JsZW0gcmVtYWlucyAoc3VnZ2VzdGluZyAjMTIgd2FzIGNvdW50ZXItcHJvZHVj
-dGl2ZSkuDQo+ID4gPg0KPiA+ID4gRllJIHRoZSBoYXJkd2FyZSBvbiBvbmUgb2YgdGhlIHRlc3Qg
-bWFjaGluZXMgaXMgYXMgZm9sbG93czoNCj4gPiA+ICDCoMKgwqAgMDA6MDAuMCBIb3N0IGJyaWRn
-ZTogSW50ZWwgQ29ycG9yYXRpb24gRGV2aWNlIDU5MWYgKHJldiAwNSkNCj4gPiA+ICDCoMKgwqAg
-MDA6MDEuMCBQQ0kgYnJpZGdlOiBJbnRlbCBDb3Jwb3JhdGlvbiBTa3lsYWtlIFBDSWUgQ29udHJv
-bGxlcg0KPiA+ID4gKHgxNikgKHJldiAwNSkNCj4gPiA+ICDCoMKgwqAgMDA6MDIuMCBWR0EgY29t
-cGF0aWJsZSBjb250cm9sbGVyOiBJbnRlbCBDb3Jwb3JhdGlvbiBEZXZpY2UNCj4gPiA+IDU5MTIg
-KHJldiAwNCkNCj4gPiA+ICDCoMKgwqAgMDA6MDguMCBTeXN0ZW0gcGVyaXBoZXJhbDogSW50ZWwg
-Q29ycG9yYXRpb24gU2t5bGFrZSBHYXVzc2lhbg0KPiA+ID4gTWl4dHVyZSBNb2RlbA0KPiA+ID4g
-IMKgwqDCoCAwMDoxNC4wIFVTQiBjb250cm9sbGVyOiBJbnRlbCBDb3Jwb3JhdGlvbiBTdW5yaXNl
-IFBvaW50LUggVVNCDQo+ID4gPiAzLjAgIHhIQ0kgQ29udHJvbGxlciAocmV2IDMxKQ0KPiA+ID4g
-IMKgwqDCoCAwMDoxNC4yIFNpZ25hbCBwcm9jZXNzaW5nIGNvbnRyb2xsZXI6IEludGVsIENvcnBv
-cmF0aW9uIFN1bnJpc2UNCj4gPiA+IFBvaW50LUggVGhlcm1hbCBzdWJzeXN0ZW0gKHJldiAzMSkN
-Cj4gPiA+ICDCoMKgwqAgMDA6MTUuMCBTaWduYWwgcHJvY2Vzc2luZyBjb250cm9sbGVyOiBJbnRl
-bCBDb3Jwb3JhdGlvbiBTdW5yaXNlDQo+ID4gPiBQb2ludC1IIFNlcmlhbCBJTyBJMkMgQ29udHJv
-bGxlciAjMCAocmV2IDMxKQ0KPiA+ID4gIMKgwqDCoCAwMDoxNS4xIFNpZ25hbCBwcm9jZXNzaW5n
-IGNvbnRyb2xsZXI6IEludGVsIENvcnBvcmF0aW9uIFN1bnJpc2UNCj4gPiA+IFBvaW50LUggU2Vy
-aWFsIElPIEkyQyBDb250cm9sbGVyICMxIChyZXYgMzEpDQo+ID4gPiAgwqDCoMKgIDAwOjE2LjAg
-Q29tbXVuaWNhdGlvbiBjb250cm9sbGVyOiBJbnRlbCBDb3Jwb3JhdGlvbiBTdW5yaXNlDQo+ID4g
-PiBQb2ludC1IIENTTUUgSEVDSSAjMSAocmV2IDMxKQ0KPiA+ID4gIMKgwqDCoCAwMDoxNy4wIFNB
-VEEgY29udHJvbGxlcjogSW50ZWwgQ29ycG9yYXRpb24gU3VucmlzZSBQb2ludC1IIFNBVEENCj4g
-PiA+IGNvbnRyb2xsZXIgW0FIQ0kgbW9kZV0gKHJldiAzMSkNCj4gPiA+ICDCoMKgwqAgMDA6MWIu
-MCBQQ0kgYnJpZGdlOiBJbnRlbCBDb3Jwb3JhdGlvbiBTdW5yaXNlIFBvaW50LUggUENJIFJvb3QN
-Cj4gPiA+IFBvcnQgIzE5IChyZXYgZjEpDQo+ID4gPiAgwqDCoMKgIDAwOjFiLjMgUENJIGJyaWRn
-ZTogSW50ZWwgQ29ycG9yYXRpb24gU3VucmlzZSBQb2ludC1IIFBDSSBSb290DQo+ID4gPiBQb3J0
-ICMyMCAocmV2IGYxKQ0KPiA+ID4gIMKgwqDCoCAwMDoxYy4wIFBDSSBicmlkZ2U6IEludGVsIENv
-cnBvcmF0aW9uIFN1bnJpc2UgUG9pbnQtSCBQQ0kNCj4gPiA+IEV4cHJlc3MgUm9vdCBQb3J0ICM1
-IChyZXYgZjEpDQo+ID4gPiAgwqDCoMKgIDAwOjFkLjAgUENJIGJyaWRnZTogSW50ZWwgQ29ycG9y
-YXRpb24gU3VucmlzZSBQb2ludC1IIFBDSQ0KPiA+ID4gRXhwcmVzcyBSb290IFBvcnQgIzExIChy
-ZXYgZjEpDQo+ID4gPiAgwqDCoMKgIDAwOjFlLjAgU2lnbmFsIHByb2Nlc3NpbmcgY29udHJvbGxl
-cjogSW50ZWwgQ29ycG9yYXRpb24gU3VucmlzZQ0KPiA+ID4gUG9pbnQtSCBTZXJpYWwgSU8gVUFS
-VCAjMCAocmV2IDMxKQ0KPiA+ID4gIMKgwqDCoCAwMDoxZi4wIElTQSBicmlkZ2U6IEludGVsIENv
-cnBvcmF0aW9uIFN1bnJpc2UgUG9pbnQtSCBMUEMNCj4gPiA+IENvbnRyb2xsZXIgKHJldiAzMSkN
-Cj4gPiA+ICDCoMKgwqAgMDA6MWYuMiBNZW1vcnkgY29udHJvbGxlcjogSW50ZWwgQ29ycG9yYXRp
-b24gU3VucmlzZSBQb2ludC1IDQo+ID4gPiBQTUMgKHJldiAzMSkNCj4gPiA+ICDCoMKgwqAgMDA6
-MWYuNCBTTUJ1czogSW50ZWwgQ29ycG9yYXRpb24gU3VucmlzZSBQb2ludC1IIFNNQnVzIChyZXYg
-MzEpDQo+ID4gPiAgwqDCoMKgIDAwOjFmLjYgRXRoZXJuZXQgY29udHJvbGxlcjogSW50ZWwgQ29y
-cG9yYXRpb24gRXRoZXJuZXQNCj4gPiA+IENvbm5lY3Rpb24gKDIpIEkyMTktTE0gKHJldiAzMSkN
-Cj4gPiA+ICDCoMKgwqAgMDI6MDAuMCBFdGhlcm5ldCBjb250cm9sbGVyOiBJbnRlbCBDb3Jwb3Jh
-dGlvbiBJMjExIEdpZ2FiaXQNCj4gPiA+IE5ldHdvcmsgQ29ubmVjdGlvbiAocmV2IDAzKQ0KPiA+
-ID4gIMKgwqDCoCAwMzowMC4wIEV0aGVybmV0IGNvbnRyb2xsZXI6IEludGVsIENvcnBvcmF0aW9u
-IEkyMTEgR2lnYWJpdA0KPiA+ID4gTmV0d29yayBDb25uZWN0aW9uIChyZXYgMDMpDQo+ID4gPiAg
-wqDCoMKgIDA1OjAwLjAgRXRoZXJuZXQgY29udHJvbGxlcjogSW50ZWwgQ29ycG9yYXRpb24gSTIx
-MSBHaWdhYml0DQo+ID4gPiBOZXR3b3JrIENvbm5lY3Rpb24gKHJldiAwMykNCj4gPiA+DQo+ID4g
-PiBJJ20gaGFwcHkgdG8gYWRkIGFueSBjb2RlIGluc3RydW1lbnRhdGlvbiBvciBtYWtlIGFueSBv
-dGhlciBjaGFuZ2VzDQo+ID4gPiBuZWVkZWQgdG8gbG9jYXRlIGFuZCByZXNvbHZlIHRoZSBwcm9i
-bGVtLCBhbmQgSSBjYW4gcmVhZGlseQ0KPiA+ID4gcmVwcm9kdWNlIGl0DQo+ID4gPiAtLSBJJ20g
-anVzdCBhdCBhIGNvbXBsZXRlIGxvc3MgYXMgdG8gd2hlcmUgdG8gc3RhcnQgbG9va2luZywgYW5k
-IGFtDQo+ID4gPiBzdGlsbCBob3BpbmcgZm9yIHNvbWUgc3VnZ2VzdGlvbnMgaW4gdGhhdCByZWdh
-cmQuDQo+ID4gPg0KPiA+ID4gSWYgdGhlcmUncyBhbnl3aGVyZSAob3IgYW55b25lKSBlbHNlIGJl
-dHRlciBmb3IgbWUgdG8gdGFsayB0byBhYm91dA0KPiA+ID4gdGhpcyBpc3N1ZSwgcGxlYXNlIGxl
-dCBtZSBrbm93IHRoYXQgdG9vLg0KPiA+DQo+ID4gSXQgaXMgbm90IGNsZWFyIHRvIG1lLCBpZiB0
-aGlzIGlzIHN0aWxsIHJlcHJvZHVjaWJsZSBvbiBMaW51eCA1LjMtcmM3DQo+ID4gKG9yIExpbnVz
-4oCZIG1hc3RlciBicmFuY2gpLg0KPiA+DQo+ID4gSWYgaXQgaXMsIHRoaXMgaXMgYSBkZWZpbml0
-ZWx5IHJlZ3Jlc3Npb24sIGFuZCB0aGUgY29tbWl0cyBuZWVkIHRvIGJlDQo+ID4gcmV2ZXJ0ZWQg
-ZHVlIHRvIExpbnV44oCZIG5vIHJlZ3Jlc3Npb24gcG9saWN5Lg0KPiANCj4gU28gSSBzaG91bGQg
-cmV2ZXJ0IHRoaXMgZnJvbSA0LjQueSBhbmQgNC45Lnk/DQoNClRoZSBpc3N1ZSBpcyBub3QgaW4g
-bWVpIGRyaXZlciwgIGl0IGlzIGluIGUxMDAwIGRyaXZlciwgSSBteSBiZXN0IGtub3dsZWRnZSB0
-aGVyZSBzaG91bGQgYmUgZml4LCBwbGVhc2UgVml0YWx5IGNhbiBpdCBiZSBiYWNrcG9ydGVkIHRv
-IG9sZGVyIGtlcm5lbHM/DQpUaGFua3MNClRvbWFzDQoNCg0KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
-bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+The mentioned function references a i40e_hw attribute, as parameter for
+hw_dbg, but it doesn't exist in the function scope.
+Fixes it by changing  parameters from i40e_hmc_info to i40e_hw which can
+retrieve the necessary i40e_hmc_info.
+
+v2:
+ - Fixed reverse xmas tree code style issue as suggested by Jakub Kicinski
+
+Signed-off-by: Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_lan_hmc.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_lan_hmc.c b/drivers/net/ethernet/intel/i40e/i40e_lan_hmc.c
+index 994011c38fb4..fd987f7ae6e5 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_lan_hmc.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_lan_hmc.c
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /* Copyright(c) 2013 - 2018 Intel Corporation. */
+ 
++#include "i40e.h"
+ #include "i40e_osdep.h"
+ #include "i40e_register.h"
+ #include "i40e_type.h"
+@@ -963,7 +964,7 @@ static i40e_status i40e_set_hmc_context(u8 *context_bytes,
+ 
+ /**
+  * i40e_hmc_get_object_va - retrieves an object's virtual address
+- * @hmc_info: pointer to i40e_hmc_info struct
++ * @hw: the hardware struct, from which we obtain the i40e_hmc_info pointer
+  * @object_base: pointer to u64 to get the va
+  * @rsrc_type: the hmc resource type
+  * @obj_idx: hmc object index
+@@ -972,16 +973,17 @@ static i40e_status i40e_set_hmc_context(u8 *context_bytes,
+  * base pointer.  This function is used for LAN Queue contexts.
+  **/
+ static
+-i40e_status i40e_hmc_get_object_va(struct i40e_hmc_info *hmc_info,
++i40e_status i40e_hmc_get_object_va(struct i40e_hw *hw,
+ 					u8 **object_base,
+ 					enum i40e_hmc_lan_rsrc_type rsrc_type,
+ 					u32 obj_idx)
+ {
++	struct i40e_hmc_info *hmc_info = &hw->hmc;
+ 	u32 obj_offset_in_sd, obj_offset_in_pd;
+-	i40e_status ret_code = 0;
+ 	struct i40e_hmc_sd_entry *sd_entry;
+ 	struct i40e_hmc_pd_entry *pd_entry;
+ 	u32 pd_idx, pd_lmt, rel_pd_idx;
++	i40e_status ret_code = 0;
+ 	u64 obj_offset_in_fpm;
+ 	u32 sd_idx, sd_lmt;
+ 
+@@ -1047,7 +1049,7 @@ i40e_status i40e_clear_lan_tx_queue_context(struct i40e_hw *hw,
+ 	i40e_status err;
+ 	u8 *context_bytes;
+ 
+-	err = i40e_hmc_get_object_va(&hw->hmc, &context_bytes,
++	err = i40e_hmc_get_object_va(hw, &context_bytes,
+ 				     I40E_HMC_LAN_TX, queue);
+ 	if (err < 0)
+ 		return err;
+@@ -1068,7 +1070,7 @@ i40e_status i40e_set_lan_tx_queue_context(struct i40e_hw *hw,
+ 	i40e_status err;
+ 	u8 *context_bytes;
+ 
+-	err = i40e_hmc_get_object_va(&hw->hmc, &context_bytes,
++	err = i40e_hmc_get_object_va(hw, &context_bytes,
+ 				     I40E_HMC_LAN_TX, queue);
+ 	if (err < 0)
+ 		return err;
+@@ -1088,7 +1090,7 @@ i40e_status i40e_clear_lan_rx_queue_context(struct i40e_hw *hw,
+ 	i40e_status err;
+ 	u8 *context_bytes;
+ 
+-	err = i40e_hmc_get_object_va(&hw->hmc, &context_bytes,
++	err = i40e_hmc_get_object_va(hw, &context_bytes,
+ 				     I40E_HMC_LAN_RX, queue);
+ 	if (err < 0)
+ 		return err;
+@@ -1109,7 +1111,7 @@ i40e_status i40e_set_lan_rx_queue_context(struct i40e_hw *hw,
+ 	i40e_status err;
+ 	u8 *context_bytes;
+ 
+-	err = i40e_hmc_get_object_va(&hw->hmc, &context_bytes,
++	err = i40e_hmc_get_object_va(hw, &context_bytes,
+ 				     I40E_HMC_LAN_RX, queue);
+ 	if (err < 0)
+ 		return err;
+-- 
+2.21.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
