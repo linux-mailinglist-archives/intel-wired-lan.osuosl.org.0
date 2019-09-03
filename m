@@ -1,56 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50DC9A54AA
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Sep 2019 13:16:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CE0DA6109
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2019 08:08:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 09F85864F3;
-	Mon,  2 Sep 2019 11:16:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B1FCA862EC;
+	Tue,  3 Sep 2019 06:08:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id InCKmDlubqmK; Mon,  2 Sep 2019 11:16:12 +0000 (UTC)
+	with ESMTP id Sd2lIYefurOH; Tue,  3 Sep 2019 06:08:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 821668651C;
-	Mon,  2 Sep 2019 11:16:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 062DD86303;
+	Tue,  3 Sep 2019 06:08:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 243FD1BF42C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2019 11:15:44 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E08171BF36A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 06:08:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1FAA786506
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2019 11:15:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DBE18862DB
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 06:08:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T-DRkjQNHhPt for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Sep 2019 11:15:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3785D864F3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2019 11:15:43 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2019 04:15:42 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,459,1559545200"; d="scan'208";a="184472476"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 02 Sep 2019 04:15:40 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1i4kJA-0006gD-Aj; Mon, 02 Sep 2019 19:15:40 +0800
-Date: Mon, 02 Sep 2019 19:15:13 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d6cf9c1.trgHydjoU1sWy8Rt%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id indEQjOp-usC for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Sep 2019 06:08:15 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5DF7286149
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 06:08:15 +0000 (UTC)
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6DCA8A707;
+ Tue,  3 Sep 2019 06:08:14 +0000 (UTC)
+Received: from p50.redhat.com (ovpn-117-136.ams2.redhat.com [10.36.117.136])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0CC0160BE0;
+ Tue,  3 Sep 2019 06:08:12 +0000 (UTC)
+From: Stefan Assmann <sassmann@kpanic.de>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  3 Sep 2019 08:08:10 +0200
+Message-Id: <20190903060810.30775-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
- ed1634c77b53aabc0cb384d1df6daf59470e716c
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.29]); Tue, 03 Sep 2019 06:08:14 +0000 (UTC)
+Subject: [Intel-wired-lan] [PATCH] i40e: clear __I40E_VIRTCHNL_OP_PENDING on
+ invalid min tx rate
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,183 +62,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: ed1634c77b53aabc0cb384d1df6daf59470e716c  ice: Rework around device/function capabilities
+In the case of an invalid min tx rate being requested
+i40e_ndo_set_vf_bw() immediately returns -EINVAL instead of releasing
+__I40E_VIRTCHNL_OP_PENDING first.
 
-TIMEOUT after 1440m
-
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 18
-
-arm                              allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-
-configs tested: 132
-
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                 randconfig-c001-201935
-x86_64                 randconfig-c002-201935
-x86_64                 randconfig-c003-201935
-x86_64                 randconfig-c004-201935
-i386                   randconfig-c001-201935
-i386                   randconfig-c002-201935
-i386                   randconfig-c003-201935
-i386                   randconfig-c004-201935
-x86_64                 randconfig-f001-201935
-x86_64                 randconfig-f002-201935
-x86_64                 randconfig-f003-201935
-x86_64                 randconfig-f004-201935
-i386                   randconfig-f001-201935
-i386                   randconfig-f002-201935
-i386                   randconfig-f003-201935
-i386                   randconfig-f004-201935
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-mips                             allmodconfig
-mips                      malta_kvm_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                                   jz4740
-mips                                     txx9
-x86_64                 randconfig-g001-201935
-x86_64                 randconfig-g002-201935
-x86_64                 randconfig-g003-201935
-x86_64                 randconfig-g004-201935
-i386                   randconfig-g001-201935
-i386                   randconfig-g002-201935
-i386                   randconfig-g003-201935
-i386                   randconfig-g004-201935
-i386                             allmodconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-x86_64                 randconfig-h002-201935
-x86_64                 randconfig-h003-201935
-i386                   randconfig-h002-201935
-i386                   randconfig-h001-201935
-i386                   randconfig-h004-201935
-x86_64                 randconfig-h004-201935
-x86_64                 randconfig-h001-201935
-i386                   randconfig-h003-201935
-x86_64                 randconfig-a001-201935
-x86_64                 randconfig-a002-201935
-x86_64                 randconfig-a003-201935
-x86_64                 randconfig-a004-201935
-i386                   randconfig-a001-201935
-i386                   randconfig-a002-201935
-i386                   randconfig-a003-201935
-i386                   randconfig-a004-201935
-x86_64                             acpi-redef
-x86_64                           allyesdebian
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                nfsroot
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                 randconfig-e001-201935
-x86_64                 randconfig-e002-201935
-x86_64                 randconfig-e003-201935
-x86_64                 randconfig-e004-201935
-i386                   randconfig-e001-201935
-i386                   randconfig-e002-201935
-i386                   randconfig-e003-201935
-i386                   randconfig-e004-201935
-riscv                             allnoconfig
-riscv                               defconfig
-nds32                               defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-powerpc                             defconfig
-x86_64                 randconfig-b001-201935
-x86_64                 randconfig-b002-201935
-x86_64                 randconfig-b003-201935
-x86_64                 randconfig-b004-201935
-i386                   randconfig-b001-201935
-i386                   randconfig-b002-201935
-i386                   randconfig-b003-201935
-i386                   randconfig-b004-201935
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                       ppc64_defconfig
-x86_64                 randconfig-d001-201935
-x86_64                 randconfig-d002-201935
-x86_64                 randconfig-d003-201935
-x86_64                 randconfig-d004-201935
-i386                   randconfig-d001-201935
-i386                   randconfig-d002-201935
-i386                   randconfig-d003-201935
-i386                   randconfig-d004-201935
-parisc                        c3000_defconfig
-parisc                         b180_defconfig
-parisc                              defconfig
-parisc                            allnoconfig
-
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index f8aa4deceb5e..3d2440838822 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -4263,7 +4263,8 @@ int i40e_ndo_set_vf_bw(struct net_device *netdev, int vf_id, int min_tx_rate,
+ 	if (min_tx_rate) {
+ 		dev_err(&pf->pdev->dev, "Invalid min tx rate (%d) (greater than 0) specified for VF %d.\n",
+ 			min_tx_rate, vf_id);
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto error;
+ 	}
+ 
+ 	vf = &pf->vf[vf_id];
+-- 
+2.21.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
