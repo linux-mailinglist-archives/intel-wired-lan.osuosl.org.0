@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECE8EA7139
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2019 19:00:24 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B401FA713E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2019 19:00:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8F56F86341;
-	Tue,  3 Sep 2019 17:00:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 15BC122803;
+	Tue,  3 Sep 2019 17:00:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uyKRHl_BpoQT; Tue,  3 Sep 2019 17:00:23 +0000 (UTC)
+	with ESMTP id 6DQMcOsENEmw; Tue,  3 Sep 2019 17:00:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 44CD3868F3;
-	Tue,  3 Sep 2019 17:00:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DF337228A0;
+	Tue,  3 Sep 2019 17:00:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1236E1BF27F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 17:00:18 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E79C71BF973
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 17:00:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0C72787E3C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 17:00:18 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E53D722795
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 17:00:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aU4OAOO3jYxf for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 7mkOIdSv94-a for <intel-wired-lan@lists.osuosl.org>;
  Tue,  3 Sep 2019 17:00:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 688F287E75
+ by silver.osuosl.org (Postfix) with ESMTPS id B491120462
  for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2019 17:00:15 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,16 +37,19 @@ Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  03 Sep 2019 10:00:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,463,1559545200"; d="scan'208";a="187320657"
+X-IronPort-AV: E=Sophos;i="5.64,463,1559545200"; d="scan'208";a="187320658"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga006.jf.intel.com with ESMTP; 03 Sep 2019 10:00:13 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  3 Sep 2019 01:31:00 -0700
-Message-Id: <20190903083108.19593-1-anthony.l.nguyen@intel.com>
+Date: Tue,  3 Sep 2019 01:31:01 -0700
+Message-Id: <20190903083108.19593-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190903083108.19593-1-anthony.l.nguyen@intel.com>
+References: <20190903083108.19593-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S28 v2 1/9] ice: Reliably reset VFs
+Subject: [Intel-wired-lan] [PATCH S28 v2 2/9] ice: report link down for VF
+ when PF's queues are not enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,82 +67,43 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mitch Williams <mitch.a.williams@intel.com>
+From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 
-When a PFR (or bigger reset) occurs, the device clears the VF_MBX_ARQLEN
-register for all VFs. But if a VFR is triggered by a VF, the device does
-NOT clear this register, and the VF driver will never see the reset.
+This is port of a fix from i40e commit 2ad1274fa35a ("i40e: don't
+report link up for a VF who hasn't enabled queues")
 
-When this happens, the VF driver will eventually timeout and attempt
-recovery, and usually it will be successful. But this makes resets take
-a long time and there are occasional failures.
+Older VF drivers do not respond well to receiving a link
+up notification before queues are enabled. This can cause their state
+machine to think that it is safe to send traffic. This results in a Tx
+hang on the VF.
 
-We cannot just blithely clear this register on every reset; this has
-been shown to cause synchronization problems when a PFR is triggered
-with a large number of VFs.
+Record whether the PF has actually enabled queues for the VF. When
+reporting link status, always report link down if the queues aren't
+enabled. In this way, the VF driver will never receive a link up
+notification until after its queues are enabled.
 
-Fix this by clearing VF_MBX_ARQLEN when the reset source is not PFR.
-GlobR will trigger PFR, so this test catches that occurrence as well.
-
-Signed-off-by: Mitch Williams <mitch.a.williams@intel.com>
+Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index c38939b1d496..3ba6613048ef 100644
+index 3ba6613048ef..1ec2a037a369 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -353,12 +353,13 @@ void ice_free_vfs(struct ice_pf *pf)
-  * ice_trigger_vf_reset - Reset a VF on HW
-  * @vf: pointer to the VF structure
-  * @is_vflr: true if VFLR was issued, false if not
-+ * @is_pfr: true if the reset was triggered due to a previous PFR
-  *
-  * Trigger hardware to start a reset for a particular VF. Expects the caller
-  * to wait the proper amount of time to allow hardware to reset the VF before
-  * it cleans up and restores VF functionality.
-  */
--static void ice_trigger_vf_reset(struct ice_vf *vf, bool is_vflr)
-+static void ice_trigger_vf_reset(struct ice_vf *vf, bool is_vflr, bool is_pfr)
- {
- 	struct ice_pf *pf = vf->pf;
- 	u32 reg, reg_idx, bit_idx;
-@@ -379,10 +380,13 @@ static void ice_trigger_vf_reset(struct ice_vf *vf, bool is_vflr)
- 	 */
- 	clear_bit(ICE_VF_STATE_INIT, vf->vf_states);
+@@ -129,7 +129,10 @@ static void ice_vc_notify_vf_link_state(struct ice_vf *vf)
+ 	pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
+ 	pfe.severity = PF_EVENT_SEVERITY_INFO;
  
--	/* Clear the VF's ARQLEN register. This is how the VF detects reset,
--	 * since the VFGEN_RSTAT register doesn't stick at 0 after reset.
-+	/* VF_MBX_ARQLEN is cleared by PFR, so the driver needs to clear it
-+	 * in the case of VFR. If this is done for PFR, it can mess up VF
-+	 * resets because the VF driver may already have started cleanup
-+	 * by the time we get here.
- 	 */
--	wr32(hw, VF_MBX_ARQLEN(vf_abs_id), 0);
-+	if (!is_pfr)
-+		wr32(hw, VF_MBX_ARQLEN(vf_abs_id), 0);
- 
- 	/* In the case of a VFLR, the HW has already reset the VF and we
- 	 * just need to clean up, so don't hit the VFRTRIG register.
-@@ -1072,7 +1076,7 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 
- 	/* Begin reset on all VFs at once */
- 	for (v = 0; v < pf->num_alloc_vfs; v++)
--		ice_trigger_vf_reset(&pf->vf[v], is_vflr);
-+		ice_trigger_vf_reset(&pf->vf[v], is_vflr, true);
- 
- 	for (v = 0; v < pf->num_alloc_vfs; v++) {
- 		struct ice_vsi *vsi;
-@@ -1172,7 +1176,7 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
- 	if (test_and_set_bit(ICE_VF_STATE_DIS, vf->vf_states))
- 		return false;
- 
--	ice_trigger_vf_reset(vf, is_vflr);
-+	ice_trigger_vf_reset(vf, is_vflr, false);
- 
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 
+-	if (vf->link_forced)
++	/* Always report link is down if the VF queues aren't enabled */
++	if (!vf->num_qs_ena)
++		ice_set_pfe_link(vf, &pfe, ICE_AQ_LINK_SPEED_UNKNOWN, false);
++	else if (vf->link_forced)
+ 		ice_set_pfe_link_forced(vf, &pfe, vf->link_up);
+ 	else
+ 		ice_set_pfe_link(vf, &pfe, ls->link_speed, ls->link_info &
 -- 
 2.20.1
 
