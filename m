@@ -1,53 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DEA0A9E53
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Sep 2019 11:27:42 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12D9CA9E57
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Sep 2019 11:28:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6E2C088574;
-	Thu,  5 Sep 2019 09:27:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8CA2287C8A;
+	Thu,  5 Sep 2019 09:28:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l5hYKzgLz9Jv; Thu,  5 Sep 2019 09:27:40 +0000 (UTC)
+	with ESMTP id NnCcrZTZaLjq; Thu,  5 Sep 2019 09:28:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 053CF8857C;
-	Thu,  5 Sep 2019 09:27:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5A9CC87C7E;
+	Thu,  5 Sep 2019 09:28:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 869371BF3BB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2019 09:27:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 37B901BF3BB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2019 09:28:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 81D3986B1A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2019 09:27:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3250F203DB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2019 09:28:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HeJMiLJ0nMhu for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Sep 2019 09:27:33 +0000 (UTC)
+ with ESMTP id 92h5PDHYhFx5 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Sep 2019 09:28:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 727D686B16
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2019 09:27:33 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 4196020369
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2019 09:28:01 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2019 02:27:32 -0700
+ 05 Sep 2019 02:28:00 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,470,1559545200"; d="scan'208";a="177249564"
+X-IronPort-AV: E=Sophos;i="5.64,470,1559545200"; d="scan'208";a="212720546"
 Received: from silpixa00399838.ir.intel.com (HELO
  silpixa00399838.ger.corp.intel.com) ([10.237.223.140])
- by orsmga008.jf.intel.com with ESMTP; 05 Sep 2019 02:27:30 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 05 Sep 2019 02:27:57 -0700
 From: Kevin Laatz <kevin.laatz@intel.com>
 To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
  bjorn.topel@intel.com, magnus.karlsson@intel.com, jonathan.lemon@gmail.com
-Date: Thu,  5 Sep 2019 01:11:44 +0000
-Message-Id: <20190905011144.3513-1-kevin.laatz@intel.com>
+Date: Thu,  5 Sep 2019 01:12:17 +0000
+Message-Id: <20190905011217.3567-1-kevin.laatz@intel.com>
 X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH bpf-next] i40e: fix xdp handle calculations
+Subject: [Intel-wired-lan] [PATCH bpf-next] ixgbe: fix xdp handle
+ calculations
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,43 +70,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently, we don't add headroom to the handle in i40e_zca_free,
-i40e_alloc_buffer_slow_zc and i40e_alloc_buffer_zc. The addition of the
+Currently, we don't add headroom to the handle in ixgbe_zca_free,
+ixgbe_alloc_buffer_slow_zc and ixgbe_alloc_buffer_zc. The addition of the
 headroom to the handle was removed in
-commit 2f86c806a8a8 ("i40e: modify driver for handling offsets"), which
-will break things when headroom is non-zero. This patch fixes this and uses
+commit d8c3061e5edd ("ixgbe: modify driver for handling offsets"), which
+will break things when headroom isvnon-zero. This patch fixes this and uses
 xsk_umem_adjust_offset to add it appropritely based on the mode being run.
 
-Fixes: 2f86c806a8a8 ("i40e: modify driver for handling offsets")
+Fixes: d8c3061e5edd ("ixgbe: modify driver for handling offsets")
 Reported-by: Bjorn Topel <bjorn.topel@intel.com>
 Signed-off-by: Kevin Laatz <kevin.laatz@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 7 ++++---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 7 ++++---
  1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index eaca6162a6e6..0373bc6c7e61 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -267,7 +267,7 @@ static bool i40e_alloc_buffer_zc(struct i40e_ring *rx_ring,
- 	bi->addr = xdp_umem_get_data(umem, handle);
- 	bi->addr += hr;
- 
--	bi->handle = handle;
-+	bi->handle = xsk_umem_adjust_offset(umem, handle, umem->headroom);
- 
- 	xsk_umem_discard_addr(umem);
- 	return true;
-@@ -304,7 +304,7 @@ static bool i40e_alloc_buffer_slow_zc(struct i40e_ring *rx_ring,
- 	bi->addr = xdp_umem_get_data(umem, handle);
- 	bi->addr += hr;
- 
--	bi->handle = handle;
-+	bi->handle = xsk_umem_adjust_offset(umem, handle, umem->headroom);
- 
- 	xsk_umem_discard_addr_rq(umem);
- 	return true;
-@@ -469,7 +469,8 @@ void i40e_zca_free(struct zero_copy_allocator *alloc, unsigned long handle)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index 17061c799f72..ad802a8909e0 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -248,7 +248,8 @@ void ixgbe_zca_free(struct zero_copy_allocator *alloc, unsigned long handle)
  	bi->addr = xdp_umem_get_data(rx_ring->xsk_umem, handle);
  	bi->addr += hr;
  
@@ -114,7 +97,25 @@ index eaca6162a6e6..0373bc6c7e61 100644
 +					    rx_ring->xsk_umem->headroom);
  }
  
- /**
+ static bool ixgbe_alloc_buffer_zc(struct ixgbe_ring *rx_ring,
+@@ -274,7 +275,7 @@ static bool ixgbe_alloc_buffer_zc(struct ixgbe_ring *rx_ring,
+ 	bi->addr = xdp_umem_get_data(umem, handle);
+ 	bi->addr += hr;
+ 
+-	bi->handle = handle;
++	bi->handle = xsk_umem_adjust_offset(umem, handle, umem->headroom);
+ 
+ 	xsk_umem_discard_addr(umem);
+ 	return true;
+@@ -301,7 +302,7 @@ static bool ixgbe_alloc_buffer_slow_zc(struct ixgbe_ring *rx_ring,
+ 	bi->addr = xdp_umem_get_data(umem, handle);
+ 	bi->addr += hr;
+ 
+-	bi->handle = handle;
++	bi->handle = xsk_umem_adjust_offset(umem, handle, umem->headroom);
+ 
+ 	xsk_umem_discard_addr_rq(umem);
+ 	return true;
 -- 
 2.17.1
 
