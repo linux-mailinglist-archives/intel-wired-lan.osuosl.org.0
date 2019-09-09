@@ -1,45 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2672EADB55
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 16:39:21 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D03B8ADD99
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 18:55:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CAC4720459;
-	Mon,  9 Sep 2019 14:39:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2798085886;
+	Mon,  9 Sep 2019 16:55:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XydDe5r3Ru-3; Mon,  9 Sep 2019 14:39:19 +0000 (UTC)
+	with ESMTP id XNQro-UvPngQ; Mon,  9 Sep 2019 16:55:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C384E204E3;
-	Mon,  9 Sep 2019 14:39:17 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E4D83858B3;
+	Mon,  9 Sep 2019 16:55:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CCF021BF3AD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 14:21:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B72751BF3A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C8EFD86FE7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 14:21:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AF3D285886
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ow62IvFlsjs3 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2019 14:21:49 +0000 (UTC)
+ with ESMTP id XZhQU8Cjka5m for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9251C861E6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 14:21:49 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: bbeckett) with ESMTPSA id 2856728BB4D
-From: Robert Beckett <bob.beckett@collabora.com>
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 314B885876
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2019 09:55:39 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,486,1559545200"; d="scan'208";a="178406141"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
+ by orsmga008.jf.intel.com with ESMTP; 09 Sep 2019 09:55:39 -0700
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  9 Sep 2019 15:21:01 +0100
-Message-Id: <20190909142117.20186-1-bob.beckett@collabora.com>
-X-Mailer: git-send-email 2.18.0
-X-Mailman-Approved-At: Mon, 09 Sep 2019 14:39:15 +0000
-Subject: [Intel-wired-lan] [PATCH v2] igb: add rx drop enable attribute
+Date: Mon,  9 Sep 2019 09:55:38 -0700
+Message-Id: <20190909165538.8125-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.21.0
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH v2] i40e: fix potential RX buffer
+ starvation for AF_XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -52,117 +60,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Robert Beckett <bob.beckett@collabora.com>, netdev@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>
-MIME-Version: 1.0
+Cc: Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To allow userland to enable or disable dropping packets when descriptor
-ring is exhausted, add RX_DROP_EN private flag.
+From: Magnus Karlsson <magnus.karlsson@intel.com>
 
-This can be used in conjunction with flow control to mitigate packet storms
-(e.g. due to network loop or DoS) by forcing the network adapter to send
-pause frames whenever the ring is close to exhaustion.
+When the RX rings are created they are also populated with buffers
+so that packets can be received. Usually these are kernel buffers,
+but for AF_XDP in zero-copy mode, these are user-space buffers and
+in this case the application might not have sent down any buffers
+to the driver at this point. And if no buffers are allocated at ring
+creation time, no packets can be received and no interrupts will be
+generated so the NAPI poll function that allocates buffers to the
+rings will never get executed.
 
-By default this will maintain previous behaviour of enabling dropping of
-packets during ring buffer exhaustion.
-Some use cases prefer to not drop packets upon exhaustion, but instead
-use flow control to limit ingress rates and ensure no dropped packets.
-This is useful when the host CPU cannot keep up with packet delivery,
-but data delivery is more important than throughput via multiple queues.
+To rectify this, we kick the NAPI context of any queue with an
+attached AF_XDP zero-copy socket in two places in the code. Once
+after an XDP program has loaded and once after the umem is registered.
+This take care of both cases: XDP program gets loaded first then AF_XDP
+socket is created, and the reverse, AF_XDP socket is created first,
+then XDP program is loaded.
 
-Userland can set this flag to 0 via ethtool to disable packet dropping.
-
-Signed-off-by: Robert Beckett <bob.beckett@collabora.com>
+Fixes: 0a714186d3c0 ("i40e: add AF_XDP zero-copy Rx support")
+Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 ---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Notes:
-    Changes since v1: re-written to use ethtool priv flags instead of sysfs attribute
-
- drivers/net/ethernet/intel/igb/igb.h         |  1 +
- drivers/net/ethernet/intel/igb/igb_ethtool.c |  8 ++++++++
- drivers/net/ethernet/intel/igb/igb_main.c    | 11 +++++++++--
- 3 files changed, 18 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-index ca54e268d157..ff4a61218e3e 100644
---- a/drivers/net/ethernet/intel/igb/igb.h
-+++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -617,6 +617,7 @@ struct igb_adapter {
- #define IGB_FLAG_VLAN_PROMISC		BIT(15)
- #define IGB_FLAG_RX_LEGACY		BIT(16)
- #define IGB_FLAG_FQTSS			BIT(17)
-+#define IGB_FLAG_RX_DROP_EN		BIT(18)
- 
- /* Media Auto Sense */
- #define IGB_MAS_ENABLE_0		0X0001
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 3182b059bf55..b584fa1f0e14 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -128,6 +128,8 @@ static const char igb_gstrings_test[][ETH_GSTRING_LEN] = {
- static const char igb_priv_flags_strings[][ETH_GSTRING_LEN] = {
- #define IGB_PRIV_FLAGS_LEGACY_RX	BIT(0)
- 	"legacy-rx",
-+#define IGB_PRIV_FLAGS_RX_DROP_EN	BIT(1)
-+	"rx-drop-en",
- };
- 
- #define IGB_PRIV_FLAGS_STR_LEN ARRAY_SIZE(igb_priv_flags_strings)
-@@ -3444,6 +3446,8 @@ static u32 igb_get_priv_flags(struct net_device *netdev)
- 
- 	if (adapter->flags & IGB_FLAG_RX_LEGACY)
- 		priv_flags |= IGB_PRIV_FLAGS_LEGACY_RX;
-+	if (adapter->flags & IGB_FLAG_RX_DROP_EN)
-+		priv_flags |= IGB_PRIV_FLAGS_RX_DROP_EN;
- 
- 	return priv_flags;
- }
-@@ -3457,6 +3461,10 @@ static int igb_set_priv_flags(struct net_device *netdev, u32 priv_flags)
- 	if (priv_flags & IGB_PRIV_FLAGS_LEGACY_RX)
- 		flags |= IGB_FLAG_RX_LEGACY;
- 
-+	flags &= ~IGB_FLAG_RX_DROP_EN;
-+	if (priv_flags & IGB_PRIV_FLAGS_RX_DROP_EN)
-+		flags |= IGB_FLAG_RX_DROP_EN;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 0373bc6c7e61..feb5bd54d840 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -157,6 +157,11 @@ static int i40e_xsk_umem_disable(struct i40e_vsi *vsi, u16 qid)
+ 		err = i40e_queue_pair_enable(vsi, qid);
+ 		if (err)
+ 			return err;
 +
- 	if (flags != adapter->flags) {
- 		adapter->flags = flags;
++		/* Kick start the NAPI context so that receiving will start */
++		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
++		if (err)
++			return err;
+ 	}
  
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 105b0624081a..51a8010dbe59 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3236,6 +3236,9 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	igb_validate_mdi_setting(hw);
- 
-+	/* By default, support dropping packets due to ring exhaustion */
-+	adapter->flags |= IGB_FLAG_RX_DROP_EN;
-+
- 	/* By default, support wake on port A */
- 	if (hw->bus.func == 0)
- 		adapter->flags |= IGB_FLAG_WOL_SUPPORTED;
-@@ -4503,8 +4506,12 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
- 	srrctl |= E1000_SRRCTL_DESCTYPE_ADV_ONEBUF;
- 	if (hw->mac.type >= e1000_82580)
- 		srrctl |= E1000_SRRCTL_TIMESTAMP;
--	/* Only set Drop Enable if we are supporting multiple queues */
--	if (adapter->vfs_allocated_count || adapter->num_rx_queues > 1)
-+	/*
-+	 * Only set Drop Enable if we are supporting multiple queues and
-+	 * allowed by flags
-+	 */
-+	if ((adapter->flags & IGB_FLAG_RX_DROP_EN) &&
-+		(adapter->vfs_allocated_count || adapter->num_rx_queues > 1))
- 		srrctl |= E1000_SRRCTL_DROP_EN;
- 
- 	wr32(E1000_SRRCTL(reg_idx), srrctl);
+ 	return 0;
 -- 
-2.18.0
+2.21.0
 
 _______________________________________________
 Intel-wired-lan mailing list
