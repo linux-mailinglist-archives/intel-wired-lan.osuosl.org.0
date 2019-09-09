@@ -2,52 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66BD5AE094
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2019 00:17:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AC03AE095
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2019 00:17:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EBB698788E;
-	Mon,  9 Sep 2019 22:17:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B2CA5878EA;
+	Mon,  9 Sep 2019 22:17:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mLA+WNCm51ce; Mon,  9 Sep 2019 22:17:06 +0000 (UTC)
+	with ESMTP id w2q93j7yNYiC; Mon,  9 Sep 2019 22:17:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0AAAF878B3;
-	Mon,  9 Sep 2019 22:17:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B270C878BB;
+	Mon,  9 Sep 2019 22:17:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9EB851BF375
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7D16A1BF375
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9AE64878A5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 758FA8790D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T2bdxxnc4jJi for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id ZGh8PkRJJTcP for <intel-wired-lan@lists.osuosl.org>;
  Mon,  9 Sep 2019 22:17:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9826A877E1
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CEEC4877E4
  for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:03 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2019 15:17:02 -0700
+ 09 Sep 2019 15:17:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="191631112"
+X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="191631113"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by FMSMGA003.fm.intel.com with ESMTP; 09 Sep 2019 15:17:02 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  9 Sep 2019 06:47:42 -0700
-Message-Id: <20190909134747.10415-1-anthony.l.nguyen@intel.com>
+Date: Mon,  9 Sep 2019 06:47:43 -0700
+Message-Id: <20190909134747.10415-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190909134747.10415-1-anthony.l.nguyen@intel.com>
+References: <20190909134747.10415-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S29 v3 1/6] ice: send driver version to
- firmware
+Subject: [Intel-wired-lan] [PATCH S29 v3 2/6] ice: Fix FW version formatting
+ in dmesg
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,218 +67,196 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 
-The driver is required to send a version to the firmware
-to indicate that the driver is up. If the driver doesn't
-do this the firmware doesn't behave properly.
+The FW build id is currently being displayed as an int which doesn't make
+sense. Instead display FW build id as a hex value. Also add other useful
+information to the output such as NVM version, api patch info, and FW
+build hash.
 
-Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
-v2:
-- Modified error message when ice_send_version() fails
----
- drivers/net/ethernet/intel/ice/ice.h          |  1 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 13 +++++++
- drivers/net/ethernet/intel/ice/ice_common.c   | 37 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_common.h   |  3 ++
- drivers/net/ethernet/intel/ice/ice_main.c     | 36 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_type.h     |  8 ++++
- 6 files changed, 97 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice.h         |  1 -
+ drivers/net/ethernet/intel/ice/ice_common.c  | 23 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h  |  3 +++
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 25 --------------------
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 19 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lib.h     |  2 ++
+ drivers/net/ethernet/intel/ice/ice_main.c    |  7 +++---
+ drivers/net/ethernet/intel/ice/ice_type.h    |  2 ++
+ 8 files changed, 53 insertions(+), 29 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index b36e1cf0e461..4cdedcebb163 100644
+index 4cdedcebb163..3a3e69a2bc5a 100644
 --- a/drivers/net/ethernet/intel/ice/ice.h
 +++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -29,6 +29,7 @@
- #include <linux/sctp.h>
- #include <linux/ipv6.h>
- #include <linux/if_bridge.h>
-+#include <linux/ctype.h>
- #include <linux/avf/virtchnl.h>
- #include <net/ipv6.h>
- #include "ice_devids.h"
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 4da0cde9695b..9c9791788610 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -33,6 +33,17 @@ struct ice_aqc_get_ver {
- 	u8 api_patch;
- };
+@@ -53,7 +53,6 @@ extern const char ice_drv_ver[];
  
-+/* Send driver version (indirect 0x0002) */
-+struct ice_aqc_driver_ver {
-+	u8 major_ver;
-+	u8 minor_ver;
-+	u8 build_ver;
-+	u8 subbuild_ver;
-+	u8 reserved[4];
-+	__le32 addr_high;
-+	__le32 addr_low;
-+};
-+
- /* Queue Shutdown (direct 0x0003) */
- struct ice_aqc_q_shutdown {
- 	u8 driver_unloading;
-@@ -1547,6 +1558,7 @@ struct ice_aq_desc {
- 		u8 raw[16];
- 		struct ice_aqc_generic generic;
- 		struct ice_aqc_get_ver get_ver;
-+		struct ice_aqc_driver_ver driver_ver;
- 		struct ice_aqc_q_shutdown q_shutdown;
- 		struct ice_aqc_req_res res_owner;
- 		struct ice_aqc_manage_mac_read mac_read;
-@@ -1618,6 +1630,7 @@ enum ice_aq_err {
- enum ice_adminq_opc {
- 	/* AQ commands */
- 	ice_aqc_opc_get_ver				= 0x0001,
-+	ice_aqc_opc_driver_ver				= 0x0002,
- 	ice_aqc_opc_q_shutdown				= 0x0003,
- 
- 	/* resource ownership */
+ #define ICE_DFLT_TRAFFIC_CLASS	BIT(0)
+ #define ICE_INT_NAME_STR_LEN	(IFNAMSIZ + 16)
+-#define ICE_ETHTOOL_FWVER_LEN	32
+ #define ICE_AQ_LEN		64
+ #define ICE_MBXSQ_LEN		64
+ #define ICE_MBXRQ_LEN		512
 diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 8b2c46615834..db62cc748544 100644
+index db62cc748544..22d2a11ef41f 100644
 --- a/drivers/net/ethernet/intel/ice/ice_common.c
 +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1258,6 +1258,43 @@ enum ice_status ice_aq_get_fw_ver(struct ice_hw *hw, struct ice_sq_cd *cd)
- 	return status;
+@@ -728,6 +728,29 @@ static void ice_get_itr_intrl_gran(struct ice_hw *hw)
+ 	}
  }
  
 +/**
-+ * ice_aq_send_driver_ver
-+ * @hw: pointer to the HW struct
-+ * @dv: driver's major, minor version
-+ * @cd: pointer to command details structure or NULL
-+ *
-+ * Send the driver version (0x0002) to the firmware
++ * ice_get_nvm_version - get cached NVM version data
++ * @hw: pointer to the hardware structure
++ * @oem_ver: 8 bit NVM version
++ * @oem_build: 16 bit NVM build number
++ * @oem_patch: 8 NVM patch number
++ * @ver_hi: high 16 bits of the NVM version
++ * @ver_lo: low 16 bits of the NVM version
 + */
-+enum ice_status
-+ice_aq_send_driver_ver(struct ice_hw *hw, struct ice_driver_ver *dv,
-+		       struct ice_sq_cd *cd)
++void
++ice_get_nvm_version(struct ice_hw *hw, u8 *oem_ver, u16 *oem_build,
++		    u8 *oem_patch, u8 *ver_hi, u8 *ver_lo)
 +{
-+	struct ice_aqc_driver_ver *cmd;
-+	struct ice_aq_desc desc;
-+	u16 len;
++	struct ice_nvm_info *nvm = &hw->nvm;
 +
-+	cmd = &desc.params.driver_ver;
-+
-+	if (!dv)
-+		return ICE_ERR_PARAM;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_driver_ver);
-+
-+	desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
-+	cmd->major_ver = dv->major_ver;
-+	cmd->minor_ver = dv->minor_ver;
-+	cmd->build_ver = dv->build_ver;
-+	cmd->subbuild_ver = dv->subbuild_ver;
-+
-+	len = 0;
-+	while (len < sizeof(dv->driver_string) &&
-+	       isascii(dv->driver_string[len]) && dv->driver_string[len])
-+		len++;
-+
-+	return ice_aq_send_cmd(hw, &desc, dv->driver_string, len, cd);
++	*oem_ver = (u8)((nvm->oem_ver & ICE_OEM_VER_MASK) >> ICE_OEM_VER_SHIFT);
++	*oem_patch = (u8)(nvm->oem_ver & ICE_OEM_VER_PATCH_MASK);
++	*oem_build = (u16)((nvm->oem_ver & ICE_OEM_VER_BUILD_MASK) >>
++			   ICE_OEM_VER_BUILD_SHIFT);
++	*ver_hi = (nvm->ver & ICE_NVM_VER_HI_MASK) >> ICE_NVM_VER_HI_SHIFT;
++	*ver_lo = (nvm->ver & ICE_NVM_VER_LO_MASK) >> ICE_NVM_VER_LO_SHIFT;
 +}
 +
  /**
-  * ice_aq_q_shutdown
-  * @hw: pointer to the HW struct
+  * ice_init_hw - main hardware initialization routine
+  * @hw: pointer to the hardware structure
 diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index e376d1eadba4..e9d77370a17c 100644
+index e9d77370a17c..0525a051e05b 100644
 --- a/drivers/net/ethernet/intel/ice/ice_common.h
 +++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -71,6 +71,9 @@ ice_aq_send_cmd(struct ice_hw *hw, struct ice_aq_desc *desc,
- 		void *buf, u16 buf_size, struct ice_sq_cd *cd);
- enum ice_status ice_aq_get_fw_ver(struct ice_hw *hw, struct ice_sq_cd *cd);
- 
-+enum ice_status
-+ice_aq_send_driver_ver(struct ice_hw *hw, struct ice_driver_ver *dv,
-+		       struct ice_sq_cd *cd);
+@@ -133,6 +133,9 @@ ice_stat_update40(struct ice_hw *hw, u32 reg, bool prev_stat_loaded,
+ void
+ ice_stat_update32(struct ice_hw *hw, u32 reg, bool prev_stat_loaded,
+ 		  u64 *prev_stat, u64 *cur_stat);
++void
++ice_get_nvm_version(struct ice_hw *hw, u8 *oem_ver, u16 *oem_build,
++		    u8 *oem_patch, u8 *ver_hi, u8 *ver_lo);
  enum ice_status
- ice_aq_get_phy_caps(struct ice_port_info *pi, bool qual_mods, u8 report_mode,
- 		    struct ice_aqc_get_phy_caps_data *caps,
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index f8be9ada2447..c0988b74f007 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -9,7 +9,13 @@
- #include "ice_lib.h"
- #include "ice_dcb_lib.h"
+ ice_sched_query_elem(struct ice_hw *hw, u32 node_teid,
+ 		     struct ice_aqc_get_elem *buf);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index d5db1426d484..a16b461b46bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -160,31 +160,6 @@ static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
  
--#define DRV_VERSION	"0.7.5-k"
-+#define DRV_VERSION_MAJOR 0
-+#define DRV_VERSION_MINOR 7
-+#define DRV_VERSION_BUILD 5
-+
-+#define DRV_VERSION	__stringify(DRV_VERSION_MAJOR) "." \
-+			__stringify(DRV_VERSION_MINOR) "." \
-+			__stringify(DRV_VERSION_BUILD) "-k"
- #define DRV_SUMMARY	"Intel(R) Ethernet Connection E800 Series Linux Driver"
- const char ice_drv_ver[] = DRV_VERSION;
- static const char ice_driver_string[] = DRV_SUMMARY;
-@@ -2459,6 +2465,25 @@ static void ice_verify_cacheline_size(struct ice_pf *pf)
- 			 ICE_CACHE_LINE_BYTES);
+ #define ICE_PRIV_FLAG_ARRAY_SIZE	ARRAY_SIZE(ice_gstrings_priv_flags)
+ 
+-/**
+- * ice_nvm_version_str - format the NVM version strings
+- * @hw: ptr to the hardware info
+- */
+-static char *ice_nvm_version_str(struct ice_hw *hw)
+-{
+-	static char buf[ICE_ETHTOOL_FWVER_LEN];
+-	u8 ver, patch;
+-	u32 full_ver;
+-	u16 build;
+-
+-	full_ver = hw->nvm.oem_ver;
+-	ver = (u8)((full_ver & ICE_OEM_VER_MASK) >> ICE_OEM_VER_SHIFT);
+-	build = (u16)((full_ver & ICE_OEM_VER_BUILD_MASK) >>
+-		      ICE_OEM_VER_BUILD_SHIFT);
+-	patch = (u8)(full_ver & ICE_OEM_VER_PATCH_MASK);
+-
+-	snprintf(buf, sizeof(buf), "%x.%02x 0x%x %d.%d.%d",
+-		 (hw->nvm.ver & ICE_NVM_VER_HI_MASK) >> ICE_NVM_VER_HI_SHIFT,
+-		 (hw->nvm.ver & ICE_NVM_VER_LO_MASK) >> ICE_NVM_VER_LO_SHIFT,
+-		 hw->nvm.eetrack, ver, build, patch);
+-
+-	return buf;
+-}
+-
+ static void
+ ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
+ {
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 7cd8c5d13bcc..9680692bf27c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3275,6 +3275,25 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
  }
+ #endif /* CONFIG_DCB */
  
 +/**
-+ * ice_send_version - update firmware with driver version
-+ * @pf: PF struct
-+ *
-+ * Returns ICE_SUCCESS on success, else error code
++ * ice_nvm_version_str - format the NVM version strings
++ * @hw: ptr to the hardware info
 + */
-+static enum ice_status ice_send_version(struct ice_pf *pf)
++char *ice_nvm_version_str(struct ice_hw *hw)
 +{
-+	struct ice_driver_ver dv;
++	u8 oem_ver, oem_patch, ver_hi, ver_lo;
++	static char buf[ICE_NVM_VER_LEN];
++	u16 oem_build;
 +
-+	dv.major_ver = DRV_VERSION_MAJOR;
-+	dv.minor_ver = DRV_VERSION_MINOR;
-+	dv.build_ver = DRV_VERSION_BUILD;
-+	dv.subbuild_ver = 0;
-+	strscpy((char *)dv.driver_string, DRV_VERSION,
-+		sizeof(dv.driver_string));
-+	return ice_aq_send_driver_ver(&pf->hw, &dv, NULL);
++	ice_get_nvm_version(hw, &oem_ver, &oem_build, &oem_patch, &ver_hi,
++			    &ver_lo);
++
++	snprintf(buf, sizeof(buf), "%x.%02x 0x%x %d.%d.%d", ver_hi, ver_lo,
++		 hw->nvm.eetrack, oem_ver, oem_build, oem_patch);
++
++	return buf;
 +}
 +
  /**
-  * ice_probe - Device initialization routine
-  * @pdev: PCI device information struct
-@@ -2612,6 +2637,15 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+  * ice_vsi_cfg_mac_fltr - Add or remove a MAC address filter for a VSI
+  * @vsi: the VSI being configured MAC filter
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 7faf8db844f6..87f7f5422b46 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -120,6 +120,8 @@ int ice_vsi_manage_rss_lut(struct ice_vsi *vsi, bool ena);
  
- 	clear_bit(__ICE_SERVICE_DIS, pf->state);
+ u32 ice_intrl_usec_to_reg(u8 intrl, u8 gran);
  
-+	/* tell the firmware we are up */
-+	err = ice_send_version(pf);
-+	if (err) {
-+		dev_err(dev,
-+			"probe failed sending driver version %s. error: %d\n",
-+			ice_drv_ver, err);
-+		goto err_alloc_sw_unroll;
-+	}
++char *ice_nvm_version_str(struct ice_hw *hw);
 +
- 	/* since everything is good, start the service timer */
- 	mod_timer(&pf->serv_tmr, round_jiffies(jiffies + pf->serv_tmr_period));
+ enum ice_status
+ ice_vsi_cfg_mac_fltr(struct ice_vsi *vsi, const u8 *macaddr, bool set);
  
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index c0988b74f007..ff295cb54cfd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2558,9 +2558,10 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 		goto err_exit_unroll;
+ 	}
+ 
+-	dev_info(dev, "firmware %d.%d.%05d api %d.%d\n",
+-		 hw->fw_maj_ver, hw->fw_min_ver, hw->fw_build,
+-		 hw->api_maj_ver, hw->api_min_ver);
++	dev_info(dev, "firmware %d.%d.%d api %d.%d.%d nvm %s build 0x%08x\n",
++		 hw->fw_maj_ver, hw->fw_min_ver, hw->fw_patch,
++		 hw->api_maj_ver, hw->api_min_ver, hw->api_patch,
++		 ice_nvm_version_str(hw), hw->fw_build);
+ 
+ 	err = ice_init_pf(pf);
+ 	if (err) {
 diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 4501d50a7dcc..a2676003275a 100644
+index a2676003275a..7ec8a529b5cf 100644
 --- a/drivers/net/ethernet/intel/ice/ice_type.h
 +++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -53,6 +53,14 @@ enum ice_aq_res_access_type {
- 	ICE_RES_WRITE
+@@ -230,6 +230,8 @@ struct ice_nvm_info {
+ 	u8 blank_nvm_mode;        /* is NVM empty (no FW present) */
  };
  
-+struct ice_driver_ver {
-+	u8 major_ver;
-+	u8 minor_ver;
-+	u8 build_ver;
-+	u8 subbuild_ver;
-+	u8 driver_string[32];
-+};
++#define ICE_NVM_VER_LEN	32
 +
- enum ice_fc_mode {
- 	ICE_FC_NONE = 0,
- 	ICE_FC_RX_PAUSE,
+ /* Max number of port to queue branches w.r.t topology */
+ #define ICE_MAX_TRAFFIC_CLASS 8
+ #define ICE_TXSCHED_MAX_BRANCHES ICE_MAX_TRAFFIC_CLASS
 -- 
 2.20.1
 
