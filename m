@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E72EDAE035
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 23:16:53 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B91D7AE037
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 23:17:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 54EB5207A9;
-	Mon,  9 Sep 2019 21:16:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5E3B482575;
+	Mon,  9 Sep 2019 21:17:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YXxtuRQZ9A7I; Mon,  9 Sep 2019 21:16:52 +0000 (UTC)
+	with ESMTP id GeV1hkth1vED; Mon,  9 Sep 2019 21:17:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5ADE62083F;
-	Mon,  9 Sep 2019 21:16:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B09AE85BB1;
+	Mon,  9 Sep 2019 21:17:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E4C211BF271
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:16:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 43A821BF271
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:17:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E13B8859CC
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:16:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3EE1185629
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:17:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9MsX9ScbqF3X for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2019 21:16:48 +0000 (UTC)
+ with ESMTP id jXenBBZrQNRr for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2019 21:17:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 306A384E88
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:16:48 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8124F83204
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:17:16 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2019 14:16:47 -0700
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2019 14:17:16 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="191618076"
+X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="191618214"
 Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by FMSMGA003.fm.intel.com with ESMTP; 09 Sep 2019 14:16:47 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Sep 2019 14:17:16 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
  FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 9 Sep 2019 14:16:46 -0700
+ id 14.3.439.0; Mon, 9 Sep 2019 14:17:13 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 9 Sep 2019 14:16:46 -0700
+ 15.1.1713.5; Mon, 9 Sep 2019 14:17:12 -0700
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 9 Sep 2019 14:16:46 -0700
+ Mon, 9 Sep 2019 14:17:12 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S29 v2 2/6] ice: Fix FW version
- formatting in dmesg
-Thread-Index: AQHVZQCsMDaNzGl6s0mAKpAnOzQ8kKcj3bKQ
-Date: Mon, 9 Sep 2019 21:16:46 +0000
-Message-ID: <3d46d2d164d04816b4a423127e4861d0@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S29 v2 3/6] ice: Implement Dynamic
+ Device Personalization (DDP) download
+Thread-Index: AQHVZQC2CmWdaa5FfE6FDAx8NCzVHKcj3dOQ
+Date: Mon, 9 Sep 2019 21:17:12 +0000
+Message-ID: <f61537adc3884eeaa4d449ffc6a3efdb@intel.com>
 References: <20190906134626.37344-1-anthony.l.nguyen@intel.com>
- <20190906134626.37344-2-anthony.l.nguyen@intel.com>
-In-Reply-To: <20190906134626.37344-2-anthony.l.nguyen@intel.com>
+ <20190906134626.37344-3-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190906134626.37344-3-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNTQ3MDFlYjAtOGMwMC00N2M4LWEyZWQtN2MxZjJkYzFjYjk5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVFJERTRicXV1b2I5aUkrdUJnXC9uMXVPTFIxamtGTHE0aFdcLzB0Y1ZVUW1oaFM3MDF2RHk2akp1eWR4eUtnNFBnIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOGE4YTRlZDItODg3Ni00MjU4LTgwYzYtNzExMGZlNDlkOTdkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoibUZzV2swemJ2WjFPMUlqVkhINUhyaVVuQTdQZmJ3bEpPYldVbzBnOHMrMjhrUmhcL1ZabXpYVUpRK1pUYzZxWEIifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S29 v2 2/6] ice: Fix FW version
- formatting in dmesg
+Subject: Re: [Intel-wired-lan] [PATCH S29 v2 3/6] ice: Implement Dynamic
+ Device Personalization (DDP) download
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,28 +95,31 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Friday, September 6, 2019 6:46 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S29 v2 2/6] ice: Fix FW version formatting in
-> dmesg
+> Subject: [Intel-wired-lan] [PATCH S29 v2 3/6] ice: Implement Dynamic Device
+> Personalization (DDP) download
 > 
-> From: Lukasz Czapnik <lukasz.czapnik@intel.com>
+> Add the required defines, structures, and functions to enable downloading a
+> DDP package.  Before download, checks are performed to ensure the
+> package is valid and compatible.
 > 
-> The FW build id is currently being displayed as an int which doesn't make
-> sense. Instead display FW build id as a hex value. Also add other useful
-> information to the output such as NVM version, api patch info, and FW build
-> hash.
+> Note that package download is not yet requested by the driver as further
+> initialization is required to utilize the package.
 > 
-> Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
 > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h         |  1 -
->  drivers/net/ethernet/intel/ice/ice_common.c  | 23 ++++++++++++++++++
-> drivers/net/ethernet/intel/ice/ice_common.h  |  3 +++
-> drivers/net/ethernet/intel/ice/ice_ethtool.c | 25 --------------------
->  drivers/net/ethernet/intel/ice/ice_lib.c     | 19 +++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_lib.h     |  2 ++
->  drivers/net/ethernet/intel/ice/ice_main.c    |  7 +++---
->  drivers/net/ethernet/intel/ice/ice_type.h    |  2 ++
->  8 files changed, 53 insertions(+), 29 deletions(-)
+>  drivers/net/ethernet/intel/ice/Makefile       |   1 +
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  60 ++
+>  drivers/net/ethernet/intel/ice/ice_common.c   |  40 +-
+>  drivers/net/ethernet/intel/ice/ice_common.h   |   4 +
+>  .../net/ethernet/intel/ice/ice_flex_pipe.c    | 607 ++++++++++++++++++
+>  .../net/ethernet/intel/ice/ice_flex_pipe.h    |  25 +
+>  .../net/ethernet/intel/ice/ice_flex_type.h    | 372 +++++++++++
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   |   2 +
+>  drivers/net/ethernet/intel/ice/ice_type.h     |  26 +
+>  9 files changed, 1136 insertions(+), 1 deletion(-)  create mode 100644
+> drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_flex_type.h
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
