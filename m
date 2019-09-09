@@ -1,77 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16168AE03A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 23:19:23 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66BD5AE094
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2019 00:17:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B6C8182BCE;
-	Mon,  9 Sep 2019 21:19:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EBB698788E;
+	Mon,  9 Sep 2019 22:17:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5jVEsurs1CNk; Mon,  9 Sep 2019 21:19:21 +0000 (UTC)
+	with ESMTP id mLA+WNCm51ce; Mon,  9 Sep 2019 22:17:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D021B85B00;
-	Mon,  9 Sep 2019 21:19:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0AAAF878B3;
+	Mon,  9 Sep 2019 22:17:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 85A2E1BF271
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:19:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EB851BF375
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8147785629
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:19:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9AE64878A5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G4t1WDaCndAn for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2019 21:19:18 +0000 (UTC)
+ with ESMTP id T2bdxxnc4jJi for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2019 22:17:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EB28782BCE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 21:19:17 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9826A877E1
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 22:17:03 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2019 14:19:17 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2019 15:17:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="214058315"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga002.fm.intel.com with ESMTP; 09 Sep 2019 14:19:17 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 9 Sep 2019 14:19:17 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 9 Sep 2019 14:19:17 -0700
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 9 Sep 2019 14:19:17 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v2] i40e: fix potential RX buffer
- starvation for AF_XDP
-Thread-Index: AQHVZy9ywyEivxHG3UCcC1v9ij8Hpqcj2f1g
-Date: Mon, 9 Sep 2019 21:19:17 +0000
-Message-ID: <f8652db1a7654dc6940cb0ebc194278a@intel.com>
-References: <20190909165538.8125-1-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20190909165538.8125-1-jeffrey.t.kirsher@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzAyN2EwNjUtNzAwYS00ZDg2LTk0YzItZmMzNTNmZGIxN2I2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWFlWNFZZYnFkbGpDd2RQRlAxVHBZVG5pMURwRHdhYWlHMjQ3V2cyXC9vZGtQa08rSEJrN3BwdGhNOHFoM3FMTFoifQ==
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+X-IronPort-AV: E=Sophos;i="5.64,487,1559545200"; d="scan'208";a="191631112"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Sep 2019 15:17:02 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  9 Sep 2019 06:47:42 -0700
+Message-Id: <20190909134747.10415-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2] i40e: fix potential RX buffer
- starvation for AF_XDP
+Subject: [Intel-wired-lan] [PATCH S29 v3 1/6] ice: send driver version to
+ firmware
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,40 +65,220 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Jeff Kirsher
-> Sent: Monday, September 9, 2019 9:56 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Karlsson, Magnus <magnus.karlsson@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v2] i40e: fix potential RX buffer starvation
-> for AF_XDP
-> 
-> From: Magnus Karlsson <magnus.karlsson@intel.com>
-> 
-> When the RX rings are created they are also populated with buffers so that
-> packets can be received. Usually these are kernel buffers, but for AF_XDP in
-> zero-copy mode, these are user-space buffers and in this case the
-> application might not have sent down any buffers to the driver at this point.
-> And if no buffers are allocated at ring creation time, no packets can be
-> received and no interrupts will be generated so the NAPI poll function that
-> allocates buffers to the rings will never get executed.
-> 
-> To rectify this, we kick the NAPI context of any queue with an attached
-> AF_XDP zero-copy socket in two places in the code. Once after an XDP
-> program has loaded and once after the umem is registered.
-> This take care of both cases: XDP program gets loaded first then AF_XDP
-> socket is created, and the reverse, AF_XDP socket is created first, then XDP
-> program is loaded.
-> 
-> Fixes: 0a714186d3c0 ("i40e: add AF_XDP zero-copy Rx support")
-> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 +++++
->  1 file changed, 5 insertions(+)
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+The driver is required to send a version to the firmware
+to indicate that the driver is up. If the driver doesn't
+do this the firmware doesn't behave properly.
 
+Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+v2:
+- Modified error message when ice_send_version() fails
+---
+ drivers/net/ethernet/intel/ice/ice.h          |  1 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 13 +++++++
+ drivers/net/ethernet/intel/ice/ice_common.c   | 37 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  3 ++
+ drivers/net/ethernet/intel/ice/ice_main.c     | 36 +++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  8 ++++
+ 6 files changed, 97 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index b36e1cf0e461..4cdedcebb163 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -29,6 +29,7 @@
+ #include <linux/sctp.h>
+ #include <linux/ipv6.h>
+ #include <linux/if_bridge.h>
++#include <linux/ctype.h>
+ #include <linux/avf/virtchnl.h>
+ #include <net/ipv6.h>
+ #include "ice_devids.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 4da0cde9695b..9c9791788610 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -33,6 +33,17 @@ struct ice_aqc_get_ver {
+ 	u8 api_patch;
+ };
+ 
++/* Send driver version (indirect 0x0002) */
++struct ice_aqc_driver_ver {
++	u8 major_ver;
++	u8 minor_ver;
++	u8 build_ver;
++	u8 subbuild_ver;
++	u8 reserved[4];
++	__le32 addr_high;
++	__le32 addr_low;
++};
++
+ /* Queue Shutdown (direct 0x0003) */
+ struct ice_aqc_q_shutdown {
+ 	u8 driver_unloading;
+@@ -1547,6 +1558,7 @@ struct ice_aq_desc {
+ 		u8 raw[16];
+ 		struct ice_aqc_generic generic;
+ 		struct ice_aqc_get_ver get_ver;
++		struct ice_aqc_driver_ver driver_ver;
+ 		struct ice_aqc_q_shutdown q_shutdown;
+ 		struct ice_aqc_req_res res_owner;
+ 		struct ice_aqc_manage_mac_read mac_read;
+@@ -1618,6 +1630,7 @@ enum ice_aq_err {
+ enum ice_adminq_opc {
+ 	/* AQ commands */
+ 	ice_aqc_opc_get_ver				= 0x0001,
++	ice_aqc_opc_driver_ver				= 0x0002,
+ 	ice_aqc_opc_q_shutdown				= 0x0003,
+ 
+ 	/* resource ownership */
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 8b2c46615834..db62cc748544 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1258,6 +1258,43 @@ enum ice_status ice_aq_get_fw_ver(struct ice_hw *hw, struct ice_sq_cd *cd)
+ 	return status;
+ }
+ 
++/**
++ * ice_aq_send_driver_ver
++ * @hw: pointer to the HW struct
++ * @dv: driver's major, minor version
++ * @cd: pointer to command details structure or NULL
++ *
++ * Send the driver version (0x0002) to the firmware
++ */
++enum ice_status
++ice_aq_send_driver_ver(struct ice_hw *hw, struct ice_driver_ver *dv,
++		       struct ice_sq_cd *cd)
++{
++	struct ice_aqc_driver_ver *cmd;
++	struct ice_aq_desc desc;
++	u16 len;
++
++	cmd = &desc.params.driver_ver;
++
++	if (!dv)
++		return ICE_ERR_PARAM;
++
++	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_driver_ver);
++
++	desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
++	cmd->major_ver = dv->major_ver;
++	cmd->minor_ver = dv->minor_ver;
++	cmd->build_ver = dv->build_ver;
++	cmd->subbuild_ver = dv->subbuild_ver;
++
++	len = 0;
++	while (len < sizeof(dv->driver_string) &&
++	       isascii(dv->driver_string[len]) && dv->driver_string[len])
++		len++;
++
++	return ice_aq_send_cmd(hw, &desc, dv->driver_string, len, cd);
++}
++
+ /**
+  * ice_aq_q_shutdown
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index e376d1eadba4..e9d77370a17c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -71,6 +71,9 @@ ice_aq_send_cmd(struct ice_hw *hw, struct ice_aq_desc *desc,
+ 		void *buf, u16 buf_size, struct ice_sq_cd *cd);
+ enum ice_status ice_aq_get_fw_ver(struct ice_hw *hw, struct ice_sq_cd *cd);
+ 
++enum ice_status
++ice_aq_send_driver_ver(struct ice_hw *hw, struct ice_driver_ver *dv,
++		       struct ice_sq_cd *cd);
+ enum ice_status
+ ice_aq_get_phy_caps(struct ice_port_info *pi, bool qual_mods, u8 report_mode,
+ 		    struct ice_aqc_get_phy_caps_data *caps,
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index f8be9ada2447..c0988b74f007 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -9,7 +9,13 @@
+ #include "ice_lib.h"
+ #include "ice_dcb_lib.h"
+ 
+-#define DRV_VERSION	"0.7.5-k"
++#define DRV_VERSION_MAJOR 0
++#define DRV_VERSION_MINOR 7
++#define DRV_VERSION_BUILD 5
++
++#define DRV_VERSION	__stringify(DRV_VERSION_MAJOR) "." \
++			__stringify(DRV_VERSION_MINOR) "." \
++			__stringify(DRV_VERSION_BUILD) "-k"
+ #define DRV_SUMMARY	"Intel(R) Ethernet Connection E800 Series Linux Driver"
+ const char ice_drv_ver[] = DRV_VERSION;
+ static const char ice_driver_string[] = DRV_SUMMARY;
+@@ -2459,6 +2465,25 @@ static void ice_verify_cacheline_size(struct ice_pf *pf)
+ 			 ICE_CACHE_LINE_BYTES);
+ }
+ 
++/**
++ * ice_send_version - update firmware with driver version
++ * @pf: PF struct
++ *
++ * Returns ICE_SUCCESS on success, else error code
++ */
++static enum ice_status ice_send_version(struct ice_pf *pf)
++{
++	struct ice_driver_ver dv;
++
++	dv.major_ver = DRV_VERSION_MAJOR;
++	dv.minor_ver = DRV_VERSION_MINOR;
++	dv.build_ver = DRV_VERSION_BUILD;
++	dv.subbuild_ver = 0;
++	strscpy((char *)dv.driver_string, DRV_VERSION,
++		sizeof(dv.driver_string));
++	return ice_aq_send_driver_ver(&pf->hw, &dv, NULL);
++}
++
+ /**
+  * ice_probe - Device initialization routine
+  * @pdev: PCI device information struct
+@@ -2612,6 +2637,15 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 
+ 	clear_bit(__ICE_SERVICE_DIS, pf->state);
+ 
++	/* tell the firmware we are up */
++	err = ice_send_version(pf);
++	if (err) {
++		dev_err(dev,
++			"probe failed sending driver version %s. error: %d\n",
++			ice_drv_ver, err);
++		goto err_alloc_sw_unroll;
++	}
++
+ 	/* since everything is good, start the service timer */
+ 	mod_timer(&pf->serv_tmr, round_jiffies(jiffies + pf->serv_tmr_period));
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 4501d50a7dcc..a2676003275a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -53,6 +53,14 @@ enum ice_aq_res_access_type {
+ 	ICE_RES_WRITE
+ };
+ 
++struct ice_driver_ver {
++	u8 major_ver;
++	u8 minor_ver;
++	u8 build_ver;
++	u8 subbuild_ver;
++	u8 driver_string[32];
++};
++
+ enum ice_fc_mode {
+ 	ICE_FC_NONE = 0,
+ 	ICE_FC_RX_PAUSE,
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
