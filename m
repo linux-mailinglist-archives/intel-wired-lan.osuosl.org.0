@@ -2,52 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D03B8ADD99
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 18:55:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3217EADEFB
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Sep 2019 20:32:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2798085886;
-	Mon,  9 Sep 2019 16:55:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A49278593F;
+	Mon,  9 Sep 2019 18:32:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XNQro-UvPngQ; Mon,  9 Sep 2019 16:55:42 +0000 (UTC)
+	with ESMTP id CI0zN_yZ4n-P; Mon,  9 Sep 2019 18:32:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E4D83858B3;
-	Mon,  9 Sep 2019 16:55:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CAE6A8594B;
+	Mon,  9 Sep 2019 18:32:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B72751BF3A7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2A8AB1BF86B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 18:32:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AF3D285886
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2676F85932
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 18:32:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XZhQU8Cjka5m for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
+ with ESMTP id qKvYCAYb2Vv6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2019 18:32:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 314B885876
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 16:55:40 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 790578592F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2019 18:32:14 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2019 09:55:39 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2019 11:32:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,486,1559545200"; d="scan'208";a="178406141"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
- by orsmga008.jf.intel.com with ESMTP; 09 Sep 2019 09:55:39 -0700
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  9 Sep 2019 09:55:38 -0700
-Message-Id: <20190909165538.8125-1-jeffrey.t.kirsher@intel.com>
-X-Mailer: git-send-email 2.21.0
+X-IronPort-AV: E=Sophos;i="5.64,486,1559545200"; d="scan'208";a="185270914"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 09 Sep 2019 11:32:13 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1i7OSS-000FyE-Ez; Tue, 10 Sep 2019 02:32:12 +0800
+Date: Tue, 10 Sep 2019 02:32:10 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d769aaa.6uK9DX2X7iCTkV6p%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2] i40e: fix potential RX buffer
- starvation for AF_XDP
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 3e78f673f3dc18374ce18b0440185e91a5b6d0a1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,55 +63,136 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Magnus Karlsson <magnus.karlsson@intel.com>
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 3e78f673f3dc18374ce18b0440185e91a5b6d0a1  i40e: fix potential RX buffer starvation for AF_XDP
 
-When the RX rings are created they are also populated with buffers
-so that packets can be received. Usually these are kernel buffers,
-but for AF_XDP in zero-copy mode, these are user-space buffers and
-in this case the application might not have sent down any buffers
-to the driver at this point. And if no buffers are allocated at ring
-creation time, no packets can be received and no interrupts will be
-generated so the NAPI poll function that allocates buffers to the
-rings will never get executed.
+elapsed time: 57m
 
-To rectify this, we kick the NAPI context of any queue with an
-attached AF_XDP zero-copy socket in two places in the code. Once
-after an XDP program has loaded and once after the umem is registered.
-This take care of both cases: XDP program gets loaded first then AF_XDP
-socket is created, and the reverse, AF_XDP socket is created first,
-then XDP program is loaded.
+configs tested: 111
 
-Fixes: 0a714186d3c0 ("i40e: add AF_XDP zero-copy Rx support")
-Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+x86_64                           allyesconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+x86_64                 randconfig-b002-201936
+i386                   randconfig-b003-201936
+i386                   randconfig-b004-201936
+i386                   randconfig-b001-201936
+i386                   randconfig-b002-201936
+x86_64                 randconfig-b001-201936
+x86_64                 randconfig-b004-201936
+x86_64                 randconfig-b003-201936
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                 randconfig-c003-201936
+x86_64                 randconfig-c002-201936
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+i386                             allmodconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+x86_64                 randconfig-a004-201936
+i386                   randconfig-a003-201936
+x86_64                 randconfig-a002-201936
+i386                   randconfig-a004-201936
+i386                   randconfig-a002-201936
+i386                   randconfig-a001-201936
+x86_64                 randconfig-a001-201936
+x86_64                 randconfig-a003-201936
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+x86_64                 randconfig-e004-201936
+i386                   randconfig-e004-201936
+x86_64                 randconfig-e002-201936
+i386                   randconfig-e003-201936
+x86_64                 randconfig-e003-201936
+x86_64                 randconfig-e001-201936
+i386                   randconfig-e002-201936
+i386                   randconfig-e001-201936
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                                   jz4740
+mips                      malta_kvm_defconfig
+mips                                     txx9
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                nfsroot
+x86_64                                   rhel
+x86_64                               rhel-7.6
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+
 ---
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index 0373bc6c7e61..feb5bd54d840 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -157,6 +157,11 @@ static int i40e_xsk_umem_disable(struct i40e_vsi *vsi, u16 qid)
- 		err = i40e_queue_pair_enable(vsi, qid);
- 		if (err)
- 			return err;
-+
-+		/* Kick start the NAPI context so that receiving will start */
-+		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
-+		if (err)
-+			return err;
- 	}
- 
- 	return 0;
--- 
-2.21.0
-
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
