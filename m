@@ -2,54 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 222F8AF3FB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2019 03:30:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EBD9EAF401
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2019 03:30:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D3E9C85F37;
-	Wed, 11 Sep 2019 01:30:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id ABA1B85F33;
+	Wed, 11 Sep 2019 01:30:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EYlfz9R55Pkc; Wed, 11 Sep 2019 01:30:43 +0000 (UTC)
+	with ESMTP id YnPSramXT6SC; Wed, 11 Sep 2019 01:30:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E42985F49;
-	Wed, 11 Sep 2019 01:30:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B3A585F3A;
+	Wed, 11 Sep 2019 01:30:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 389511BF2F5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 01:30:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 002081BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 01:30:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1BDDE22225
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 01:30:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D7FB5221DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 01:30:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XolZDDyoZdCK for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Sep 2019 01:30:30 +0000 (UTC)
+ with ESMTP id K1AYmYk5Q-dH for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Sep 2019 01:30:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 04B10221CC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 01:30:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 87B92221D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 01:30:28 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2019 18:30:26 -0700
+ 10 Sep 2019 18:30:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,491,1559545200"; d="scan'208";a="184343678"
+X-IronPort-AV: E=Sophos;i="5.64,491,1559545200"; d="scan'208";a="184343687"
 Received: from ssaleem-mobl.amr.corp.intel.com ([10.255.81.181])
- by fmsmga008.fm.intel.com with ESMTP; 10 Sep 2019 18:30:26 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 10 Sep 2019 18:30:27 -0700
 From: Shiraz Saleem <shiraz.saleem@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 10 Sep 2019 20:30:03 -0500
-Message-Id: <20190911013012.710-9-shiraz.saleem@intel.com>
+Date: Tue, 10 Sep 2019 20:30:05 -0500
+Message-Id: <20190911013012.710-11-shiraz.saleem@intel.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190911013012.710-1-shiraz.saleem@intel.com>
 References: <20190911013012.710-1-shiraz.saleem@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC rdma-next 08/17] RDMA/irdma: Add PBLE
- resource manager
+Subject: [Intel-wired-lan] [RFC rdma-next 10/17] RDMA/irdma: Add RoCEv2 UD
+ OP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,24 +71,27 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Mustafa Ismail <mustafa.ismail@intel.com>
 
-Implement a Physical Buffer List Entry (PBLE) resource manager
-to manage a pool of PBLE HMC resource objects.
+Add the header, data structures and functions
+to populate the WQE descriptors and issue the
+Control QP commands that support RoCEv2 UD operations.
 
 Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
 Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
 ---
- drivers/infiniband/hw/irdma/pble.c | 511 +++++++++++++++++++++++++++++++++++++
- drivers/infiniband/hw/irdma/pble.h | 136 ++++++++++
- 2 files changed, 647 insertions(+)
- create mode 100644 drivers/infiniband/hw/irdma/pble.c
- create mode 100644 drivers/infiniband/hw/irdma/pble.h
+ drivers/infiniband/hw/irdma/uda.c   | 391 ++++++++++++++++++++++++++++++++++++
+ drivers/infiniband/hw/irdma/uda.h   |  65 ++++++
+ drivers/infiniband/hw/irdma/uda_d.h | 383 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 839 insertions(+)
+ create mode 100644 drivers/infiniband/hw/irdma/uda.c
+ create mode 100644 drivers/infiniband/hw/irdma/uda.h
+ create mode 100644 drivers/infiniband/hw/irdma/uda_d.h
 
-diff --git a/drivers/infiniband/hw/irdma/pble.c b/drivers/infiniband/hw/irdma/pble.c
+diff --git a/drivers/infiniband/hw/irdma/uda.c b/drivers/infiniband/hw/irdma/uda.c
 new file mode 100644
-index 0000000..7237651
+index 0000000..2bcb3c4
 --- /dev/null
-+++ b/drivers/infiniband/hw/irdma/pble.c
-@@ -0,0 +1,511 @@
++++ b/drivers/infiniband/hw/irdma/uda.c
+@@ -0,0 +1,391 @@
 +// SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB
 +/* Copyright (c) 2019, Intel Corporation. */
 +
@@ -98,650 +101,848 @@ index 0000000..7237651
 +#include "defs.h"
 +#include "type.h"
 +#include "protos.h"
-+#include "pble.h"
-+
-+static enum irdma_status_code
-+add_pble_prm(struct irdma_hmc_pble_rsrc *pble_rsrc);
++#include "uda.h"
++#include "uda_d.h"
 +
 +/**
-+ * irdma_destroy_pble_prm - destroy prm during module unload
-+ * @pble_rsrc: pble resources
++ * irdma_sc_ah_init - initialize sc ah struct
++ * @dev: sc device struct
++ * @ah: sc ah ptr
 + */
-+void irdma_destroy_pble_prm(struct irdma_hmc_pble_rsrc *pble_rsrc)
++static void irdma_sc_init_ah(struct irdma_sc_dev *dev, struct irdma_sc_ah *ah)
 +{
-+	struct irdma_chunk *chunk;
-+	struct irdma_pble_prm *pinfo = &pble_rsrc->pinfo;
-+
-+	while (!list_empty(&pinfo->clist)) {
-+		chunk = (struct irdma_chunk *) pinfo->clist.next;
-+		list_del(&chunk->list);
-+		if (chunk->type == PBLE_SD_PAGED)
-+			irdma_pble_free_paged_mem(chunk);
-+		if (chunk->bitmapbuf)
-+			kfree(chunk->bitmapmem.va);
-+		kfree(chunk->chunkmem.va);
-+	}
++	ah->dev = dev;
 +}
 +
 +/**
-+ * irdma_hmc_init_pble - Initialize pble resources during module load
-+ * @dev: irdma_sc_dev struct
-+ * @pble_rsrc: pble resources
++ * irdma_sc_access_ah() - Create, modify or delete AH
++ * @cqp: struct for cqp hw
++ * @info: ah information
++ * @op: Operation
++ * @scratch: u64 saved to be used during cqp completion
 + */
-+enum irdma_status_code
-+irdma_hmc_init_pble(struct irdma_sc_dev *dev,
-+		    struct irdma_hmc_pble_rsrc *pble_rsrc)
++static enum irdma_status_code irdma_sc_access_ah(struct irdma_sc_cqp *cqp,
++						 struct irdma_ah_info *info,
++						 u32 op, u64 scratch)
 +{
-+	struct irdma_hmc_info *hmc_info;
-+	u32 fpm_idx = 0;
-+	enum irdma_status_code status = 0;
++	__le64 *wqe;
++	u64 qw1, qw2;
 +
-+	hmc_info = dev->hmc_info;
-+	pble_rsrc->dev = dev;
-+	pble_rsrc->fpm_base_addr = hmc_info->hmc_obj[IRDMA_HMC_IW_PBLE].base;
-+	/* Start pble' on 4k boundary */
-+	if (pble_rsrc->fpm_base_addr & 0xfff)
-+		fpm_idx = (4096 - (pble_rsrc->fpm_base_addr & 0xfff)) >> 3;
-+	pble_rsrc->unallocated_pble =
-+		hmc_info->hmc_obj[IRDMA_HMC_IW_PBLE].cnt - fpm_idx;
-+	pble_rsrc->next_fpm_addr = pble_rsrc->fpm_base_addr + (fpm_idx << 3);
-+	pble_rsrc->pinfo.pble_shift = PBLE_SHIFT;
++	wqe = irdma_sc_cqp_get_next_send_wqe(cqp, scratch);
++	if (!wqe)
++		return IRDMA_ERR_RING_FULL;
 +
-+	spin_lock_init(&pble_rsrc->pinfo.prm_lock);
-+	INIT_LIST_HEAD(&pble_rsrc->pinfo.clist);
-+	if (add_pble_prm(pble_rsrc)) {
-+		irdma_destroy_pble_prm(pble_rsrc);
-+		status = IRDMA_ERR_NO_MEMORY;
++	set_64bit_val(wqe, 0, LS_64_1(info->mac_addr[5], 16) |
++					 LS_64_1(info->mac_addr[4], 24) |
++					 LS_64_1(info->mac_addr[3], 32) |
++					 LS_64_1(info->mac_addr[2], 40) |
++					 LS_64_1(info->mac_addr[1], 48) |
++					 LS_64_1(info->mac_addr[0], 56));
++
++	qw1 = LS_64(info->pd_idx, IRDMA_UDA_CQPSQ_MAV_PDINDEXLO) |
++	      LS_64(info->tc_tos, IRDMA_UDA_CQPSQ_MAV_TC) |
++	      LS_64(info->vlan_tag, IRDMA_UDAQPC_VLANTAG);
++
++	qw2 = LS_64(info->dst_arpindex, IRDMA_UDA_CQPSQ_MAV_ARPINDEX) |
++	      LS_64(info->flow_label, IRDMA_UDA_CQPSQ_MAV_FLOWLABEL) |
++	      LS_64(info->hop_ttl, IRDMA_UDA_CQPSQ_MAV_HOPLIMIT) |
++	      LS_64(info->pd_idx >> 16, IRDMA_UDA_CQPSQ_MAV_PDINDEXHI);
++
++	if (!info->ipv4_valid) {
++		set_64bit_val(wqe, 40,
++			      LS_64(info->dest_ip_addr[0], IRDMA_UDA_CQPSQ_MAV_ADDR0) |
++			      LS_64(info->dest_ip_addr[1], IRDMA_UDA_CQPSQ_MAV_ADDR1));
++		set_64bit_val(wqe, 32,
++			      LS_64(info->dest_ip_addr[2], IRDMA_UDA_CQPSQ_MAV_ADDR2) |
++			      LS_64(info->dest_ip_addr[3], IRDMA_UDA_CQPSQ_MAV_ADDR3));
++
++		set_64bit_val(wqe, 56,
++			      LS_64(info->src_ip_addr[0], IRDMA_UDA_CQPSQ_MAV_ADDR0) |
++			      LS_64(info->src_ip_addr[1], IRDMA_UDA_CQPSQ_MAV_ADDR1));
++		set_64bit_val(wqe, 48,
++			      LS_64(info->src_ip_addr[2], IRDMA_UDA_CQPSQ_MAV_ADDR2) |
++			      LS_64(info->src_ip_addr[3], IRDMA_UDA_CQPSQ_MAV_ADDR3));
++	} else {
++		set_64bit_val(wqe, 32,
++			      LS_64(info->dest_ip_addr[0], IRDMA_UDA_CQPSQ_MAV_ADDR3));
++
++		set_64bit_val(wqe, 48,
++			      LS_64(info->src_ip_addr[0], IRDMA_UDA_CQPSQ_MAV_ADDR3));
 +	}
 +
-+	return status;
-+}
++	set_64bit_val(wqe, 8, qw1);
++	set_64bit_val(wqe, 16, qw2);
 +
-+/**
-+ * get_sd_pd_idx -  Returns sd index, pd index and rel_pd_idx from fpm address
-+ * @pble_rsrc: structure containing fpm address
-+ * @idx: where to return indexes
-+ */
-+static void get_sd_pd_idx(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+			  struct sd_pd_idx *idx)
-+{
-+	idx->sd_idx = (u32)pble_rsrc->next_fpm_addr / IRDMA_HMC_DIRECT_BP_SIZE;
-+	idx->pd_idx = (u32)(pble_rsrc->next_fpm_addr / IRDMA_HMC_PAGED_BP_SIZE);
-+	idx->rel_pd_idx = (idx->pd_idx % IRDMA_HMC_PD_CNT_IN_SD);
-+}
++	dma_wmb(); /* need write block before writing WQE header */
 +
-+/**
-+ * add_sd_direct - add sd direct for pble
-+ * @pble_rsrc: pble resource ptr
-+ * @info: page info for sd
-+ */
-+static enum irdma_status_code
-+add_sd_direct(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+	      struct irdma_add_page_info *info)
-+{
-+	struct irdma_sc_dev *dev = pble_rsrc->dev;
-+	enum irdma_status_code ret_code = 0;
-+	struct sd_pd_idx *idx = &info->idx;
-+	struct irdma_chunk *chunk = info->chunk;
-+	struct irdma_hmc_info *hmc_info = info->hmc_info;
-+	struct irdma_hmc_sd_entry *sd_entry = info->sd_entry;
-+	u32 offset = 0;
++	set_64bit_val(
++		wqe, 24,
++		LS_64(cqp->polarity, IRDMA_UDA_CQPSQ_MAV_WQEVALID) |
++		LS_64(op, IRDMA_UDA_CQPSQ_MAV_OPCODE) |
++		LS_64(info->do_lpbk, IRDMA_UDA_CQPSQ_MAV_DOLOOPBACKK) |
++		LS_64(info->ipv4_valid, IRDMA_UDA_CQPSQ_MAV_IPV4VALID) |
++		LS_64(info->ah_idx, IRDMA_UDA_CQPSQ_MAV_AVIDX) |
++		LS_64(info->insert_vlan_tag,
++		      IRDMA_UDA_CQPSQ_MAV_INSERTVLANTAG));
 +
-+	if (!sd_entry->valid) {
-+		ret_code = irdma_add_sd_table_entry(dev->hw, hmc_info,
-+						    info->idx.sd_idx,
-+						    IRDMA_SD_TYPE_DIRECT,
-+						    IRDMA_HMC_DIRECT_BP_SIZE);
-+		if (ret_code)
-+			return ret_code;
-+
-+		chunk->type = PBLE_SD_CONTIGOUS;
-+	}
-+
-+	offset = idx->rel_pd_idx << HMC_PAGED_BP_SHIFT;
-+	chunk->size = info->pages << HMC_PAGED_BP_SHIFT;
-+	chunk->vaddr = (uintptr_t)(sd_entry->u.bp.addr.va + offset);
-+	chunk->fpm_addr = pble_rsrc->next_fpm_addr;
-+	dev_dbg(rfdev_to_dev(dev),
-+		"PBLE: chunk_size[%lld] = 0x%llx vaddr=0x%llx fpm_addr = %llx\n",
-+		chunk->size, chunk->size, chunk->vaddr, chunk->fpm_addr);
++	irdma_debug_buf(cqp->dev, IRDMA_DEBUG_WQE, "MANAGE_AH WQE", wqe,
++			IRDMA_CQP_WQE_SIZE * 8);
++	irdma_sc_cqp_post_sq(cqp);
 +
 +	return 0;
 +}
 +
 +/**
-+ * fpm_to_idx - given fpm address, get pble index
-+ * @pble_rsrc: pble resource management
-+ * @addr: fpm address for index
++ * irdma_sc_create_ah() - Create AH
++ * @cqp: struct for cqp hw
++ * @info: ah information
++ * @scratch: u64 saved to be used during cqp completion
 + */
-+static u32 fpm_to_idx(struct irdma_hmc_pble_rsrc *pble_rsrc, u64 addr)
++static enum irdma_status_code irdma_sc_create_ah(struct irdma_sc_cqp *cqp,
++						 struct irdma_ah_info *info,
++						 u64 scratch)
 +{
-+	u64 idx;
-+
-+	idx = (addr - (pble_rsrc->fpm_base_addr)) >> 3;
-+
-+	return (u32)idx;
++	return irdma_sc_access_ah(cqp, info, IRDMA_CQP_OP_CREATE_ADDR_HANDLE,
++				  scratch);
 +}
 +
 +/**
-+ * add_bp_pages - add backing pages for sd
-+ * @pble_rsrc: pble resource management
-+ * @info: page info for sd
++ * irdma_sc_modify_ah() - Modify AH
++ * @cqp: struct for cqp hw
++ * @info: ah information
++ * @scratch: u64 saved to be used during cqp completion
++ */
++static enum irdma_status_code irdma_sc_modify_ah(struct irdma_sc_cqp *cqp,
++						 struct irdma_ah_info *info,
++						 u64 scratch)
++{
++	return irdma_sc_access_ah(cqp, info, IRDMA_CQP_OP_MODIFY_ADDR_HANDLE,
++				  scratch);
++}
++
++/**
++ * irdma_sc_destroy_ah() - Delete AH
++ * @cqp: struct for cqp hw
++ * @info: ah information
++ * @scratch: u64 saved to be used during cqp completion
++ */
++static enum irdma_status_code irdma_sc_destroy_ah(struct irdma_sc_cqp *cqp,
++						  struct irdma_ah_info *info,
++						  u64 scratch)
++{
++	return irdma_sc_access_ah(cqp, info, IRDMA_CQP_OP_DESTROY_ADDR_HANDLE,
++				  scratch);
++}
++
++/**
++ * create_mg_ctx() - create a mcg context
++ * @info: multicast group context info
 + */
 +static enum irdma_status_code
-+add_bp_pages(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+	     struct irdma_add_page_info *info)
++irdma_create_mg_ctx(struct irdma_mcast_grp_info *info)
 +{
-+	struct irdma_sc_dev *dev = pble_rsrc->dev;
-+	u8 *addr;
-+	struct irdma_dma_mem mem;
-+	struct irdma_hmc_pd_entry *pd_entry;
-+	struct irdma_hmc_sd_entry *sd_entry = info->sd_entry;
-+	struct irdma_hmc_info *hmc_info = info->hmc_info;
-+	struct irdma_chunk *chunk = info->chunk;
-+	enum irdma_status_code status = 0;
-+	u32 rel_pd_idx = info->idx.rel_pd_idx;
-+	u32 pd_idx = info->idx.pd_idx;
-+	u32 i;
++	struct irdma_mcast_grp_ctx_entry_info *entry_info = NULL;
++	u8 idx = 0; /* index in the array */
++	u8 ctx_idx = 0; /* index in the MG context */
 +
-+	if (irdma_pble_get_paged_mem(chunk, info->pages))
-+		return IRDMA_ERR_NO_MEMORY;
++	memset(info->dma_mem_mc.va, 0, IRDMA_MAX_MGS_PER_CTX * sizeof(u64));
 +
-+	status = irdma_add_sd_table_entry(dev->hw, hmc_info, info->idx.sd_idx,
-+					  IRDMA_SD_TYPE_PAGED,
-+					  IRDMA_HMC_DIRECT_BP_SIZE);
-+
-+	if (status)
-+		goto error;
-+
-+	addr = (u8 *)(uintptr_t)chunk->vaddr;
-+	for (i = 0; i < info->pages; i++) {
-+		mem.pa = (u64)chunk->dmainfo.dmaaddrs[i];
-+		mem.size = 4096;
-+		mem.va = addr;
-+		pd_entry = &sd_entry->u.pd_table.pd_entry[rel_pd_idx++];
-+		if (!pd_entry->valid) {
-+			status = irdma_add_pd_table_entry(dev, hmc_info,
-+							  pd_idx++, &mem);
-+			if (status)
-+				goto error;
-+
-+			addr += 4096;
++	for (idx = 0; idx < IRDMA_MAX_MGS_PER_CTX; idx++) {
++		entry_info = &info->mg_ctx_info[idx];
++		if (entry_info->valid_entry) {
++			set_64bit_val((__le64 *)info->dma_mem_mc.va,
++				      ctx_idx * sizeof(u64),
++				      LS_64(entry_info->dest_port, IRDMA_UDA_MGCTX_DESTPORT) |
++				      LS_64(entry_info->valid_entry, IRDMA_UDA_MGCTX_VALIDENT) |
++				      LS_64(entry_info->qp_id, IRDMA_UDA_MGCTX_QPID));
++			ctx_idx++;
 +		}
 +	}
 +
-+	chunk->fpm_addr = pble_rsrc->next_fpm_addr;
 +	return 0;
-+
-+error:
-+	irdma_pble_free_paged_mem(chunk);
-+
-+	return status;
 +}
 +
 +/**
-+ * add_pble_prm - add a sd entry for pble resoure
-+ * @pble_rsrc: pble resource management
++ * irdma_access_mcast_grp() - Access mcast group based on op
++ * @cqp: Control QP
++ * @info: multicast group context info
++ * @op: operation to perform
++ * @scratch: u64 saved to be used during cqp completion
 + */
 +static enum irdma_status_code
-+add_pble_prm(struct irdma_hmc_pble_rsrc *pble_rsrc)
++irdma_access_mcast_grp(struct irdma_sc_cqp *cqp,
++		       struct irdma_mcast_grp_info *info, u32 op, u64 scratch)
 +{
-+	struct irdma_sc_dev *dev = pble_rsrc->dev;
-+	struct irdma_hmc_sd_entry *sd_entry;
-+	struct irdma_hmc_info *hmc_info;
-+	struct irdma_chunk *chunk;
-+	struct irdma_add_page_info info;
-+	struct sd_pd_idx *idx = &info.idx;
++	__le64 *wqe;
 +	enum irdma_status_code ret_code = 0;
-+	enum irdma_sd_entry_type sd_entry_type;
-+	u64 sd_reg_val = 0;
-+	struct irdma_virt_mem chunkmem;
-+	u32 pages;
 +
-+	if (pble_rsrc->unallocated_pble < PBLE_PER_PAGE)
-+		return IRDMA_ERR_NO_MEMORY;
-+
-+	if (pble_rsrc->next_fpm_addr & 0xfff)
-+		return IRDMA_ERR_INVALID_PAGE_DESC_INDEX;
-+
-+	chunkmem.size = sizeof(*chunk);
-+	chunkmem.va = kzalloc(chunkmem.size, GFP_ATOMIC);
-+	if (!chunkmem.va)
-+		return IRDMA_ERR_NO_MEMORY;
-+
-+	chunk = chunkmem.va;
-+	chunk->chunkmem = chunkmem;
-+	hmc_info = dev->hmc_info;
-+	chunk->dev = dev;
-+	chunk->fpm_addr = pble_rsrc->next_fpm_addr;
-+	get_sd_pd_idx(pble_rsrc, idx);
-+	sd_entry = &hmc_info->sd_table.sd_entry[idx->sd_idx];
-+	pages = (idx->rel_pd_idx) ? (IRDMA_HMC_PD_CNT_IN_SD - idx->rel_pd_idx) :
-+				    IRDMA_HMC_PD_CNT_IN_SD;
-+	pages = min(pages, pble_rsrc->unallocated_pble >> PBLE_512_SHIFT);
-+	info.chunk = chunk;
-+	info.hmc_info = hmc_info;
-+	info.pages = pages;
-+	info.sd_entry = sd_entry;
-+	if (!sd_entry->valid)
-+		sd_entry_type = (!idx->rel_pd_idx &&
-+				 (pages == IRDMA_HMC_PD_CNT_IN_SD) &&
-+				 dev->is_pf) ?
-+				 IRDMA_SD_TYPE_DIRECT : IRDMA_SD_TYPE_PAGED;
-+	else
-+		sd_entry_type = sd_entry->entry_type;
-+
-+	dev_dbg(rfdev_to_dev(dev),
-+		"PBLE: pages = %d, unallocated_pble[%d] current_fpm_addr = %llx\n",
-+		pages, pble_rsrc->unallocated_pble, pble_rsrc->next_fpm_addr);
-+	dev_dbg(rfdev_to_dev(dev), "PBLE: sd_entry_type = %d\n",
-+		sd_entry_type);
-+	if (sd_entry_type == IRDMA_SD_TYPE_DIRECT)
-+		ret_code = add_sd_direct(pble_rsrc, &info);
-+
-+	if (ret_code)
-+		sd_entry_type = IRDMA_SD_TYPE_PAGED;
-+	else
-+		pble_rsrc->stats_direct_sds++;
-+
-+	if (sd_entry_type == IRDMA_SD_TYPE_PAGED) {
-+		ret_code = add_bp_pages(pble_rsrc, &info);
-+		if (ret_code)
-+			goto error;
-+		else
-+			pble_rsrc->stats_paged_sds++;
++	if (info->mg_id >= IRDMA_UDA_MAX_FSI_MGS) {
++		dev_dbg(rfdev_to_dev(cqp->dev), "WQE: mg_id out of range\n");
++		return IRDMA_ERR_PARAM;
 +	}
 +
-+	ret_code = irdma_prm_add_pble_mem(&pble_rsrc->pinfo, chunk);
-+	if (ret_code)
-+		goto error;
-+
-+	pble_rsrc->next_fpm_addr += chunk->size;
-+	dev_dbg(rfdev_to_dev(dev),
-+		"PBLE: next_fpm_addr = %llx chunk_size[%llu] = 0x%llx\n",
-+		pble_rsrc->next_fpm_addr, chunk->size, chunk->size);
-+	pble_rsrc->unallocated_pble -= (u32)(chunk->size >> 3);
-+	list_add(&chunk->list, &pble_rsrc->pinfo.clist);
-+	sd_reg_val = (sd_entry_type == IRDMA_SD_TYPE_PAGED) ?
-+			     sd_entry->u.pd_table.pd_page_addr.pa :
-+			     sd_entry->u.bp.addr.pa;
-+	if (sd_entry->valid)
-+		return 0;
-+
-+	if (dev->is_pf) {
-+		ret_code = irdma_hmc_sd_one(dev, hmc_info->hmc_fn_id,
-+					    sd_reg_val, idx->sd_idx,
-+					    sd_entry->entry_type, true);
-+		if (ret_code)
-+			goto error;
++	wqe = irdma_sc_cqp_get_next_send_wqe(cqp, scratch);
++	if (!wqe) {
++		dev_dbg(rfdev_to_dev(cqp->dev), "WQE: ring full\n");
++		return IRDMA_ERR_RING_FULL;
 +	}
 +
-+	sd_entry->valid = true;
++	ret_code = irdma_create_mg_ctx(info);
++	if (ret_code)
++		return ret_code;
++
++	set_64bit_val(wqe, 32, info->dma_mem_mc.pa);
++	set_64bit_val(wqe, 16,
++		      LS_64(info->vlan_id, IRDMA_UDA_CQPSQ_MG_VLANID) |
++		      LS_64(info->qs_handle, IRDMA_UDA_CQPSQ_QS_HANDLE));
++	set_64bit_val(wqe, 0, LS_64_1(info->dest_mac_addr[5], 0) |
++					 LS_64_1(info->dest_mac_addr[4], 8) |
++					 LS_64_1(info->dest_mac_addr[3], 16) |
++					 LS_64_1(info->dest_mac_addr[2], 24) |
++					 LS_64_1(info->dest_mac_addr[1], 32) |
++					 LS_64_1(info->dest_mac_addr[0], 40));
++	set_64bit_val(wqe, 8,
++		      LS_64(info->hmc_fcn_id, IRDMA_UDA_CQPSQ_MG_HMC_FCN_ID));
++
++	if (!info->ipv4_valid) {
++		set_64bit_val(wqe, 56,
++			      LS_64(info->dest_ip_addr[0], IRDMA_UDA_CQPSQ_MAV_ADDR0) |
++			      LS_64(info->dest_ip_addr[1], IRDMA_UDA_CQPSQ_MAV_ADDR1));
++		set_64bit_val(wqe, 48,
++			      LS_64(info->dest_ip_addr[2], IRDMA_UDA_CQPSQ_MAV_ADDR2) |
++			      LS_64(info->dest_ip_addr[3], IRDMA_UDA_CQPSQ_MAV_ADDR3));
++	} else {
++		set_64bit_val(wqe, 48,
++			      LS_64(info->dest_ip_addr[0], IRDMA_UDA_CQPSQ_MAV_ADDR3));
++	}
++
++	dma_wmb(); /* need write memory block before writing the WQE header. */
++
++	set_64bit_val(wqe, 24,
++		      LS_64(cqp->polarity, IRDMA_UDA_CQPSQ_MG_WQEVALID) |
++		      LS_64(op, IRDMA_UDA_CQPSQ_MG_OPCODE) |
++		      LS_64(info->mg_id, IRDMA_UDA_CQPSQ_MG_MGIDX) |
++		      LS_64(info->vlan_valid, IRDMA_UDA_CQPSQ_MG_VLANVALID) |
++		      LS_64(info->ipv4_valid, IRDMA_UDA_CQPSQ_MG_IPV4VALID));
++
++	irdma_debug_buf(cqp->dev, IRDMA_DEBUG_WQE, "MANAGE_MCG WQE", wqe,
++			IRDMA_CQP_WQE_SIZE * 8);
++	irdma_debug_buf(cqp->dev, IRDMA_DEBUG_WQE, "MCG_HOST CTX WQE",
++			info->dma_mem_mc.va, IRDMA_MAX_MGS_PER_CTX * 8);
++	irdma_sc_cqp_post_sq(cqp);
++
 +	return 0;
-+
-+error:
-+	if (chunk->bitmapbuf)
-+		kfree(chunk->bitmapmem.va);
-+
-+	kfree(chunk->chunkmem.va);
-+
-+	return ret_code;
 +}
 +
 +/**
-+ * free_lvl2 - fee level 2 pble
-+ * @pble_rsrc: pble resource management
-+ * @palloc: level 2 pble allocation
-+ */
-+static void free_lvl2(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+		      struct irdma_pble_alloc *palloc)
-+{
-+	u32 i;
-+	struct irdma_pble_level2 *lvl2 = &palloc->level2;
-+	struct irdma_pble_info *root = &lvl2->root;
-+	struct irdma_pble_info *leaf = lvl2->leaf;
-+
-+	for (i = 0; i < lvl2->leaf_cnt; i++, leaf++) {
-+		if (leaf->addr)
-+			irdma_prm_return_pbles(&pble_rsrc->pinfo,
-+					       &leaf->chunkinfo);
-+		else
-+			break;
-+	}
-+
-+	if (root->addr)
-+		irdma_prm_return_pbles(&pble_rsrc->pinfo, &root->chunkinfo);
-+
-+	kfree(lvl2->leafmem.va);
-+	lvl2->leaf = NULL;
-+}
-+
-+/**
-+ * get_lvl2_pble - get level 2 pble resource
-+ * @pble_rsrc: pble resource management
-+ * @palloc: level 2 pble allocation
++ * irdma_sc_create_mcast_grp() - Create mcast group.
++ * @cqp: Control QP
++ * @info: multicast group context info
++ * @scratch: u64 saved to be used during cqp completion
 + */
 +static enum irdma_status_code
-+get_lvl2_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+	      struct irdma_pble_alloc *palloc)
++irdma_sc_create_mcast_grp(struct irdma_sc_cqp *cqp,
++			  struct irdma_mcast_grp_info *info, u64 scratch)
 +{
-+	u32 lf4k, lflast, total, i;
-+	u32 pblcnt = PBLE_PER_PAGE;
-+	u64 *addr;
-+	struct irdma_pble_level2 *lvl2 = &palloc->level2;
-+	struct irdma_pble_info *root = &lvl2->root;
-+	struct irdma_pble_info *leaf;
-+	enum irdma_status_code ret_code;
-+	u64 fpm_addr;
++	return irdma_access_mcast_grp(cqp, info, IRDMA_CQP_OP_CREATE_MCAST_GRP,
++				      scratch);
++}
 +
-+	/* number of full 512 (4K) leafs) */
-+	lf4k = palloc->total_cnt >> 9;
-+	lflast = palloc->total_cnt % PBLE_PER_PAGE;
-+	total = (lflast == 0) ? lf4k : lf4k + 1;
-+	lvl2->leaf_cnt = total;
++/**
++ * irdma_sc_modify_mcast_grp() - Modify mcast group
++ * @cqp: Control QP
++ * @info: multicast group context info
++ * @scratch: u64 saved to be used during cqp completion
++ */
++static enum irdma_status_code
++irdma_sc_modify_mcast_grp(struct irdma_sc_cqp *cqp,
++			  struct irdma_mcast_grp_info *info, u64 scratch)
++{
++	return irdma_access_mcast_grp(cqp, info, IRDMA_CQP_OP_MODIFY_MCAST_GRP,
++				      scratch);
++}
 +
-+	lvl2->leafmem.size = (sizeof(*leaf) * total);
-+	lvl2->leafmem.va = kzalloc(lvl2->leafmem.size, GFP_ATOMIC);
-+	if (!lvl2->leafmem.va)
-+		return IRDMA_ERR_NO_MEMORY;
++/**
++ * irdma_sc_destroy_mcast_grp() - Destroys mcast group
++ * @cqp: Control QP
++ * @info: multicast group context info
++ * @scratch: u64 saved to be used during cqp completion
++ */
++static enum irdma_status_code
++irdma_sc_destroy_mcast_grp(struct irdma_sc_cqp *cqp,
++			   struct irdma_mcast_grp_info *info, u64 scratch)
++{
++	return irdma_access_mcast_grp(cqp, info, IRDMA_CQP_OP_DESTROY_MCAST_GRP,
++				      scratch);
++}
 +
-+	lvl2->leaf = lvl2->leafmem.va;
-+	leaf = lvl2->leaf;
-+	ret_code = irdma_prm_get_pbles(&pble_rsrc->pinfo, &root->chunkinfo,
-+				       total << 3, &root->addr, &fpm_addr);
-+	if (ret_code) {
-+		kfree(lvl2->leafmem.va);
-+		lvl2->leaf = NULL;
-+		return IRDMA_ERR_NO_MEMORY;
++/**
++ * irdma_compare_mgs - Compares two multicast group structures
++ * @entry1: Multcast group info
++ * @entry2: Multcast group info in context
++ */
++static bool irdma_compare_mgs(struct irdma_mcast_grp_ctx_entry_info *entry1,
++			      struct irdma_mcast_grp_ctx_entry_info *entry2)
++{
++	if (entry1->dest_port == entry2->dest_port &&
++	    entry1->qp_id == entry2->qp_id)
++		return true;
++
++	return false;
++}
++
++/**
++ * irdma_sc_add_mcast_grp - Allocates mcast group entry in ctx
++ * @ctx: Multcast group context
++ * @mg: Multcast group info
++ */
++static enum irdma_status_code
++irdma_sc_add_mcast_grp(struct irdma_mcast_grp_info *ctx,
++		       struct irdma_mcast_grp_ctx_entry_info *mg)
++{
++	u32 idx;
++	bool free_entry_found = false;
++	u32 free_entry_idx = 0;
++
++	/* find either an identical or a free entry for a multicast group */
++	for (idx = 0; idx < IRDMA_MAX_MGS_PER_CTX; idx++) {
++		if (ctx->mg_ctx_info[idx].valid_entry) {
++			if (irdma_compare_mgs(&ctx->mg_ctx_info[idx], mg)) {
++				ctx->mg_ctx_info[idx].use_cnt++;
++				return 0;
++			}
++			continue;
++		}
++		if (!free_entry_found) {
++			free_entry_found = true;
++			free_entry_idx = idx;
++		}
 +	}
 +
-+	root->idx = fpm_to_idx(pble_rsrc, fpm_addr);
-+	root->cnt = total;
-+	addr = (u64 *)(uintptr_t)root->addr;
-+	for (i = 0; i < total; i++, leaf++) {
-+		pblcnt = (lflast && ((i + 1) == total)) ?
-+				lflast : PBLE_PER_PAGE;
-+		ret_code = irdma_prm_get_pbles(&pble_rsrc->pinfo,
-+					       &leaf->chunkinfo, pblcnt << 3,
-+					       &leaf->addr, &fpm_addr);
-+		if (ret_code)
-+			goto error;
-+
-+		leaf->idx = fpm_to_idx(pble_rsrc, fpm_addr);
-+
-+		leaf->cnt = pblcnt;
-+		*addr = (u64)leaf->idx;
-+		addr++;
++	if (free_entry_found) {
++		ctx->mg_ctx_info[free_entry_idx] = *mg;
++		ctx->mg_ctx_info[free_entry_idx].valid_entry = true;
++		ctx->mg_ctx_info[free_entry_idx].use_cnt = 1;
++		ctx->no_of_mgs++;
++		return 0;
 +	}
-+
-+	palloc->level = PBLE_LEVEL_2;
-+	pble_rsrc->stats_lvl2++;
-+	return 0;
-+
-+error:
-+	free_lvl2(pble_rsrc, palloc);
 +
 +	return IRDMA_ERR_NO_MEMORY;
 +}
 +
 +/**
-+ * get_lvl1_pble - get level 1 pble resource
-+ * @pble_rsrc: pble resource management
-+ * @palloc: level 1 pble allocation
++ * irdma_sc_del_mcast_grp - Delete mcast group
++ * @ctx: Multcast group context
++ * @mg: Multcast group info
++ *
++ * Finds and removes a specific mulicast group from context, all
++ * parameters must match to remove a multicast group.
 + */
 +static enum irdma_status_code
-+get_lvl1_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+	      struct irdma_pble_alloc *palloc)
++irdma_sc_del_mcast_grp(struct irdma_mcast_grp_info *ctx,
++		       struct irdma_mcast_grp_ctx_entry_info *mg)
 +{
-+	enum irdma_status_code ret_code;
-+	u64 fpm_addr, vaddr;
-+	struct irdma_pble_info *lvl1 = &palloc->level1;
++	u32 idx;
 +
-+	ret_code = irdma_prm_get_pbles(&pble_rsrc->pinfo, &lvl1->chunkinfo,
-+				       palloc->total_cnt << 3, &vaddr,
-+				       &fpm_addr);
-+	if (ret_code)
-+		return IRDMA_ERR_NO_MEMORY;
++	/* find an entry in multicast group context */
++	for (idx = 0; idx < IRDMA_MAX_MGS_PER_CTX; idx++) {
++		if (!ctx->mg_ctx_info[idx].valid_entry)
++			continue;
 +
-+	lvl1->addr = vaddr;
-+	palloc->level = PBLE_LEVEL_1;
-+	lvl1->idx = fpm_to_idx(pble_rsrc, fpm_addr);
-+	lvl1->cnt = palloc->total_cnt;
-+	pble_rsrc->stats_lvl1++;
++		if (irdma_compare_mgs(mg, &ctx->mg_ctx_info[idx])) {
++			ctx->mg_ctx_info[idx].use_cnt--;
 +
-+	return 0;
-+}
++			if (!ctx->mg_ctx_info[idx].use_cnt) {
++				ctx->mg_ctx_info[idx].valid_entry = false;
++				ctx->no_of_mgs--;
++				/* Remove gap if element was not the last */
++				if (idx != ctx->no_of_mgs &&
++				    ctx->no_of_mgs > 0) {
++					memcpy(&ctx->mg_ctx_info[idx],
++					       &ctx->mg_ctx_info[ctx->no_of_mgs - 1],
++					       sizeof(ctx->mg_ctx_info[idx]));
++					ctx->mg_ctx_info[ctx->no_of_mgs - 1].valid_entry = false;
++				}
++			}
 +
-+/**
-+ * get_lvl1_lvl2_pble - calls get_lvl1 and get_lvl2 pble routine
-+ * @pble_rsrc: pble resources
-+ * @palloc: contains all inforamtion regarding pble (idx + pble addr)
-+ * @level1_only: flag for a level 1 PBLE
-+ */
-+static enum irdma_status_code
-+get_lvl1_lvl2_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+		   struct irdma_pble_alloc *palloc, bool level1_only)
-+{
-+	enum irdma_status_code status = 0;
-+
-+	status = get_lvl1_pble(pble_rsrc, palloc);
-+	if (!status || level1_only || palloc->total_cnt <= PBLE_PER_PAGE)
-+		return status;
-+
-+	status = get_lvl2_pble(pble_rsrc, palloc);
-+
-+	return status;
-+}
-+
-+/**
-+ * irdma_get_pble - allocate pbles from the prm
-+ * @pble_rsrc: pble resources
-+ * @palloc: contains all inforamtion regarding pble (idx + pble addr)
-+ * @pble_cnt: #of pbles requested
-+ * @level1_only: true if only pble level 1 to acquire
-+ */
-+enum irdma_status_code irdma_get_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+				      struct irdma_pble_alloc *palloc,
-+				      u32 pble_cnt, bool level1_only)
-+{
-+	enum irdma_status_code status = 0;
-+	unsigned long flags;
-+	int max_sds = 0;
-+	int i;
-+
-+	palloc->total_cnt = pble_cnt;
-+	palloc->level = PBLE_LEVEL_0;
-+	spin_lock_irqsave(&pble_rsrc->pble_lock, flags);
-+	/*check first to see if we can get pble's without acquiring
-+	 * additional sd's
-+	 */
-+	status = get_lvl1_lvl2_pble(pble_rsrc, palloc, level1_only);
-+	if (!status)
-+		goto exit;
-+
-+	max_sds = (palloc->total_cnt >> 18) + 1;
-+	for (i = 0; i < max_sds; i++) {
-+		status = add_pble_prm(pble_rsrc);
-+		if (status)
-+			break;
-+
-+		status = get_lvl1_lvl2_pble(pble_rsrc, palloc, level1_only);
-+		/* if level1_only, only go through it once */
-+		if (!status || level1_only)
-+			break;
++			return 0;
++		}
 +	}
 +
-+exit:
-+	if (!status) {
-+		pble_rsrc->allocdpbles += pble_cnt;
-+		pble_rsrc->stats_alloc_ok++;
-+	} else {
-+		pble_rsrc->stats_alloc_fail++;
-+	}
-+	spin_unlock_irqrestore(&pble_rsrc->pble_lock, flags);
-+
-+	return status;
++	return IRDMA_ERR_PARAM;
 +}
 +
-+/**
-+ * irdma_free_pble - put pbles back into prm
-+ * @pble_rsrc: pble resources
-+ * @palloc: contains all information regarding pble resource being freed
-+ */
-+void irdma_free_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+		     struct irdma_pble_alloc *palloc)
-+{
-+	pble_rsrc->freedpbles += palloc->total_cnt;
-+
-+	if (palloc->level == PBLE_LEVEL_2)
-+		free_lvl2(pble_rsrc, palloc);
-+	else
-+		irdma_prm_return_pbles(&pble_rsrc->pinfo,
-+				       &palloc->level1.chunkinfo);
-+	pble_rsrc->stats_alloc_freed++;
-+}
-diff --git a/drivers/infiniband/hw/irdma/pble.h b/drivers/infiniband/hw/irdma/pble.h
++struct irdma_uda_ops irdma_uda_ops = {
++	.create_ah = irdma_sc_create_ah,
++	.destroy_ah = irdma_sc_destroy_ah,
++	.init_ah = irdma_sc_init_ah,
++	.mcast_grp_add = irdma_sc_add_mcast_grp,
++	.mcast_grp_create = irdma_sc_create_mcast_grp,
++	.mcast_grp_del = irdma_sc_del_mcast_grp,
++	.mcast_grp_destroy = irdma_sc_destroy_mcast_grp,
++	.mcast_grp_modify = irdma_sc_modify_mcast_grp,
++	.modify_ah = irdma_sc_modify_ah,
++};
+diff --git a/drivers/infiniband/hw/irdma/uda.h b/drivers/infiniband/hw/irdma/uda.h
 new file mode 100644
-index 0000000..6f54ea4
+index 0000000..f51e613
 --- /dev/null
-+++ b/drivers/infiniband/hw/irdma/pble.h
-@@ -0,0 +1,136 @@
++++ b/drivers/infiniband/hw/irdma/uda.h
+@@ -0,0 +1,65 @@
 +/* SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB */
 +/* Copyright (c) 2019, Intel Corporation. */
 +
-+#ifndef IRDMA_PBLE_H
-+#define IRDMA_PBLE_H
++#ifndef IRDMA_UDA_H
++#define IRDMA_UDA_H
 +
-+#define PBLE_SHIFT		6
-+#define PBLE_PER_PAGE		512
-+#define HMC_PAGED_BP_SHIFT	12
-+#define PBLE_512_SHIFT		9
-+#define PBLE_INVALID_IDX	0xffffffff
++extern struct irdma_uda_ops irdma_uda_ops;
 +
-+enum irdma_pble_level {
-+	PBLE_LEVEL_0 = 0,
-+	PBLE_LEVEL_1 = 1,
-+	PBLE_LEVEL_2 = 2,
-+};
++#define IRDMA_UDA_MAX_FSI_MGS	4096
++#define IRDMA_UDA_MAX_PFS	16
++#define IRDMA_UDA_MAX_VFS	128
 +
-+enum irdma_alloc_type {
-+	PBLE_NO_ALLOC	  = 0,
-+	PBLE_SD_CONTIGOUS = 1,
-+	PBLE_SD_PAGED	  = 2,
-+};
++struct irdma_sc_cqp;
 +
-+struct irdma_chunk;
-+
-+struct irdma_pble_chunkinfo {
-+	struct irdma_chunk *pchunk;
-+	u64 bit_idx;
-+	u64 bits_used;
-+};
-+
-+struct irdma_pble_info {
-+	u64 addr;
-+	u32 idx;
-+	u32 cnt;
-+	struct irdma_pble_chunkinfo chunkinfo;
-+};
-+
-+struct irdma_pble_level2 {
-+	struct irdma_pble_info root;
-+	struct irdma_pble_info *leaf;
-+	struct irdma_virt_mem leafmem;
-+	u32 leaf_cnt;
-+};
-+
-+struct irdma_pble_alloc {
-+	u32 total_cnt;
-+	enum irdma_pble_level level;
-+	union {
-+		struct irdma_pble_info level1;
-+		struct irdma_pble_level2 level2;
-+	};
-+};
-+
-+struct sd_pd_idx {
-+	u32 sd_idx;
++struct irdma_ah_info {
++	struct irdma_sc_ah *ah;
++	struct irdma_sc_vsi *vsi;
 +	u32 pd_idx;
-+	u32 rel_pd_idx;
++	u32 dst_arpindex;
++	u32 dest_ip_addr[4];
++	u32 src_ip_addr[4];
++	u32 flow_label;
++	u32 ah_idx;
++	bool ipv4_valid;
++	bool do_lpbk;
++	u16 vlan_tag;
++	u8 insert_vlan_tag;
++	u8 tc_tos;
++	u8 hop_ttl;
++	u8 mac_addr[ETH_ALEN];
++	bool ah_valid;
 +};
 +
-+struct irdma_add_page_info {
-+	struct irdma_chunk *chunk;
-+	struct irdma_hmc_sd_entry *sd_entry;
-+	struct irdma_hmc_info *hmc_info;
-+	struct sd_pd_idx idx;
-+	u32 pages;
-+};
-+
-+struct irdma_chunk {
-+	struct list_head list;
-+	struct irdma_dma_info dmainfo;
-+	void *bitmapbuf;
-+
-+	u32 sizeofbitmap;
-+	u64 size;
-+	u64 vaddr;
-+	u64 fpm_addr;
-+	u32 pg_cnt;
-+	enum irdma_alloc_type type;
++struct irdma_sc_ah {
 +	struct irdma_sc_dev *dev;
-+	struct irdma_virt_mem bitmapmem;
-+	struct irdma_virt_mem chunkmem;
++	struct irdma_ah_info ah_info;
 +};
 +
-+struct irdma_pble_prm {
-+	struct list_head clist;
-+	spinlock_t prm_lock; /* protect prm bitmap */
-+	u64 total_pble_alloc;
-+	u64 free_pble_cnt;
-+	u8 pble_shift;
++struct irdma_uda_ops {
++	void (*init_ah)(struct irdma_sc_dev *dev, struct irdma_sc_ah *ah);
++	enum irdma_status_code (*create_ah)(struct irdma_sc_cqp *cqp,
++					    struct irdma_ah_info *info,
++					    u64 scratch);
++	enum irdma_status_code (*modify_ah)(struct irdma_sc_cqp *cqp,
++					    struct irdma_ah_info *info,
++					    u64 scratch);
++	enum irdma_status_code (*destroy_ah)(struct irdma_sc_cqp *cqp,
++					     struct irdma_ah_info *info,
++					     u64 scratch);
++	/* multicast */
++	enum irdma_status_code (*mcast_grp_create)(struct irdma_sc_cqp *cqp,
++						   struct irdma_mcast_grp_info *info,
++						   u64 scratch);
++	enum irdma_status_code (*mcast_grp_modify)(struct irdma_sc_cqp *cqp,
++						   struct irdma_mcast_grp_info *info,
++						   u64 scratch);
++	enum irdma_status_code (*mcast_grp_destroy)(struct irdma_sc_cqp *cqp,
++						    struct irdma_mcast_grp_info *info,
++						    u64 scratch);
++	enum irdma_status_code (*mcast_grp_add)(struct irdma_mcast_grp_info *ctx,
++						struct irdma_mcast_grp_ctx_entry_info *mg);
++	enum irdma_status_code (*mcast_grp_del)(struct irdma_mcast_grp_info *ctx,
++						struct irdma_mcast_grp_ctx_entry_info *mg);
 +};
++#endif /* IRDMA_UDA_H */
+diff --git a/drivers/infiniband/hw/irdma/uda_d.h b/drivers/infiniband/hw/irdma/uda_d.h
+new file mode 100644
+index 0000000..6d94270
+--- /dev/null
++++ b/drivers/infiniband/hw/irdma/uda_d.h
+@@ -0,0 +1,383 @@
++/* SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB */
++/* Copyright (c) 2019, Intel Corporation. */
 +
-+struct irdma_hmc_pble_rsrc {
-+	u32 unallocated_pble;
-+	spinlock_t pble_lock; /* to serialize PBLE resource acquisition */
-+	struct irdma_sc_dev *dev;
-+	u64 fpm_base_addr;
-+	u64 next_fpm_addr;
-+	struct irdma_pble_prm pinfo;
-+	u64 allocdpbles;
-+	u64 freedpbles;
-+	u32 stats_direct_sds;
-+	u32 stats_paged_sds;
-+	u64 stats_alloc_ok;
-+	u64 stats_alloc_fail;
-+	u64 stats_alloc_freed;
-+	u64 stats_lvl1;
-+	u64 stats_lvl2;
-+};
++#ifndef IRDMA_UDA_D_H
++#define IRDMA_UDA_D_H
 +
-+void irdma_destroy_pble_prm(struct irdma_hmc_pble_rsrc *pble_rsrc);
-+enum irdma_status_code
-+irdma_hmc_init_pble(struct irdma_sc_dev *dev,
-+		    struct irdma_hmc_pble_rsrc *pble_rsrc);
-+void irdma_free_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+		     struct irdma_pble_alloc *palloc);
-+enum irdma_status_code irdma_get_pble(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+				      struct irdma_pble_alloc *palloc,
-+				      u32 pble_cnt, bool level1_only);
-+enum irdma_status_code irdma_prm_add_pble_mem(struct irdma_pble_prm *pprm,
-+					      struct irdma_chunk *pchunk);
-+enum irdma_status_code
-+irdma_prm_get_pbles(struct irdma_pble_prm *pprm,
-+		    struct irdma_pble_chunkinfo *chunkinfo, u32 mem_size,
-+		    u64 *vaddr, u64 *fpm_addr);
-+void irdma_prm_return_pbles(struct irdma_pble_prm *pprm,
-+			    struct irdma_pble_chunkinfo *chunkinfo);
-+void irdma_pble_acquire_lock(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+			     unsigned long *flags);
-+void irdma_pble_release_lock(struct irdma_hmc_pble_rsrc *pble_rsrc,
-+			     unsigned long *flags);
-+void irdma_pble_free_paged_mem(struct irdma_chunk *chunk);
-+enum irdma_status_code irdma_pble_get_paged_mem(struct irdma_chunk *chunk,
-+						int pg_cnt);
-+#endif /* IRDMA_PBLE_H */
++/* L4 packet type */
++#define IRDMA_E_UDA_SQ_L4T_UNKNOWN	0
++#define IRDMA_E_UDA_SQ_L4T_TCP		1
++#define IRDMA_E_UDA_SQ_L4T_SCTP		2
++#define IRDMA_E_UDA_SQ_L4T_UDP		3
++
++/* Inner IP header type */
++#define IRDMA_E_UDA_SQ_IIPT_UNKNOWN		0
++#define IRDMA_E_UDA_SQ_IIPT_IPV6		1
++#define IRDMA_E_UDA_SQ_IIPT_IPV4_NO_CSUM	2
++#define IRDMA_E_UDA_SQ_IIPT_IPV4_CSUM		3
++
++/* UDA defined fields for transmit descriptors */
++#define IRDMA_UDA_QPSQ_PUSHWQE_S 56
++#define IRDMA_UDA_QPSQ_PUSHWQE_M BIT_ULL(IRDMA_UDA_QPSQ_PUSHWQE_S)
++
++#define IRDMA_UDA_QPSQ_INLINEDATAFLAG_S 57
++#define IRDMA_UDA_QPSQ_INLINEDATAFLAG_M \
++	BIT_ULL(IRDMA_UDA_QPSQ_INLINEDATAFLAG_S)
++
++#define IRDMA_UDA_QPSQ_INLINEDATALEN_S 48
++#define IRDMA_UDA_QPSQ_INLINEDATALEN_M \
++	((u64)0xff << IRDMA_UDA_QPSQ_INLINEDATALEN_S)
++
++#define IRDMA_UDA_QPSQ_ADDFRAGCNT_S 38
++#define IRDMA_UDA_QPSQ_ADDFRAGCNT_M \
++	((u64)0x0F << IRDMA_UDA_QPSQ_ADDFRAGCNT_S)
++
++#define IRDMA_UDA_QPSQ_IPFRAGFLAGS_S 42
++#define IRDMA_UDA_QPSQ_IPFRAGFLAGS_M \
++	((u64)0x3 << IRDMA_UDA_QPSQ_IPFRAGFLAGS_S)
++
++#define IRDMA_UDA_QPSQ_NOCHECKSUM_S 45
++#define IRDMA_UDA_QPSQ_NOCHECKSUM_M \
++	BIT_ULL(IRDMA_UDA_QPSQ_NOCHECKSUM_S)
++
++#define IRDMA_UDA_QPSQ_AHIDXVALID_S 46
++#define IRDMA_UDA_QPSQ_AHIDXVALID_M \
++	BIT_ULL(IRDMA_UDA_QPSQ_AHIDXVALID_S)
++
++#define IRDMA_UDA_QPSQ_LOCAL_FENCE_S 61
++#define IRDMA_UDA_QPSQ_LOCAL_FENCE_M \
++	BIT_ULL(IRDMA_UDA_QPSQ_LOCAL_FENCE_S)
++
++#define IRDMA_UDA_QPSQ_AHIDX_S 0
++#define IRDMA_UDA_QPSQ_AHIDX_M ((u64)0x1ffff << IRDMA_UDA_QPSQ_AHIDX_S)
++
++#define IRDMA_UDA_QPSQ_PROTOCOL_S 16
++#define IRDMA_UDA_QPSQ_PROTOCOL_M \
++	((u64)0xff << IRDMA_UDA_QPSQ_PROTOCOL_S)
++
++#define IRDMA_UDA_QPSQ_EXTHDRLEN_S 32
++#define IRDMA_UDA_QPSQ_EXTHDRLEN_M \
++	((u64)0x1ff << IRDMA_UDA_QPSQ_EXTHDRLEN_S)
++
++#define IRDMA_UDA_QPSQ_MULTICAST_S 63
++#define IRDMA_UDA_QPSQ_MULTICAST_M \
++	BIT_ULL(IRDMA_UDA_QPSQ_MULTICAST_S)
++
++#define IRDMA_UDA_QPSQ_MACLEN_S 56
++#define IRDMA_UDA_QPSQ_MACLEN_M \
++	((u64)0x7f << IRDMA_UDA_QPSQ_MACLEN_S)
++#define IRDMA_UDA_QPSQ_MACLEN_LINE 2
++
++#define IRDMA_UDA_QPSQ_IPLEN_S 48
++#define IRDMA_UDA_QPSQ_IPLEN_M \
++	((u64)0x7f << IRDMA_UDA_QPSQ_IPLEN_S)
++#define IRDMA_UDA_QPSQ_IPLEN_LINE 2
++
++#define IRDMA_UDA_QPSQ_L4T_S 30
++#define IRDMA_UDA_QPSQ_L4T_M ((u64)0x3 << IRDMA_UDA_QPSQ_L4T_S)
++#define IRDMA_UDA_QPSQ_L4T_LINE 2
++
++#define IRDMA_UDA_QPSQ_IIPT_S 28
++#define IRDMA_UDA_QPSQ_IIPT_M ((u64)0x3 << IRDMA_UDA_QPSQ_IIPT_S)
++#define IRDMA_UDA_QPSQ_IIPT_LINE 2
++
++#define IRDMA_UDA_QPSQ_DO_LPB_LINE 3
++
++#define IRDMA_UDA_QPSQ_FWD_PROG_CONFIRM_S 45
++#define IRDMA_UDA_QPSQ_FWD_PROG_CONFIRM_M \
++	BIT_ULL(IRDMA_UDA_QPSQ_FWD_PROG_CONFIRM_S)
++#define IRDMA_UDA_QPSQ_FWD_PROG_CONFIRM_LINE 3
++
++#define IRDMA_UDA_QPSQ_IMMDATA_S 0
++#define IRDMA_UDA_QPSQ_IMMDATA_M \
++	((u64)0xffffffffffffffff << IRDMA_UDA_QPSQ_IMMDATA_S)
++
++/* Byte Offset 0 */
++#define IRDMA_UDAQPC_IPV4_S 3
++#define IRDMA_UDAQPC_IPV4_M BIT_ULL(IRDMAQPC_IPV4_S)
++
++#define IRDMA_UDAQPC_INSERTVLANTAG_S 5
++#define IRDMA_UDAQPC_INSERTVLANTAG_M BIT_ULL(IRDMA_UDAQPC_INSERTVLANTAG_S)
++
++#define IRDMA_UDAQPC_ISQP1_S 6
++#define IRDMA_UDAQPC_ISQP1_M BIT_ULL(IRDMA_UDAQPC_ISQP1_S)
++
++#define IRDMA_UDAQPC_RQWQESIZE_S IRDMAQPC_RQWQESIZE_S
++#define IRDMA_UDAQPC_RQWQESIZE_M IRDMAQPC_RQWQESIZE_M
++
++#define IRDMA_UDAQPC_ECNENABLE_S 14
++#define IRDMA_UDAQPC_ECNENABLE_M BIT_ULL(IRDMA_UDAQPC_ECNENABLE_S)
++
++#define IRDMA_UDAQPC_PDINDEXHI_S 20
++#define IRDMA_UDAQPC_PDINDEXHI_M ((u64)3 << IRDMA_UDAQPC_PDINDEXHI_S)
++
++#define IRDMA_UDAQPC_DCTCPENABLE_S 25
++#define IRDMA_UDAQPC_DCTCPENABLE_M BIT_ULL(IRDMA_UDAQPC_DCTCPENABLE_S)
++
++#define IRDMA_UDAQPC_RCVTPHEN_S IRDMAQPC_RCVTPHEN_S
++#define IRDMA_UDAQPC_RCVTPHEN_M IRDMAQPC_RCVTPHEN_M
++
++#define IRDMA_UDAQPC_XMITTPHEN_S IRDMAQPC_XMITTPHEN_S
++#define IRDMA_UDAQPC_XMITTPHEN_M IRDMAQPC_XMITTPHEN_M
++
++#define IRDMA_UDAQPC_RQTPHEN_S IRDMAQPC_RQTPHEN_S
++#define IRDMA_UDAQPC_RQTPHEN_M IRDMAQPC_RQTPHEN_M
++
++#define IRDMA_UDAQPC_SQTPHEN_S IRDMAQPC_SQTPHEN_S
++#define IRDMA_UDAQPC_SQTPHEN_M IRDMAQPC_SQTPHEN_M
++
++#define IRDMA_UDAQPC_PPIDX_S IRDMAQPC_PPIDX_S
++#define IRDMA_UDAQPC_PPIDX_M IRDMAQPC_PPIDX_M
++
++#define IRDMA_UDAQPC_PMENA_S IRDMAQPC_PMENA_S
++#define IRDMA_UDAQPC_PMENA_M IRDMAQPC_PMENA_M
++
++#define IRDMA_UDAQPC_INSERTTAG2_S 11
++#define IRDMA_UDAQPC_INSERTTAG2_M BIT_ULL(IRDMA_UDAQPC_INSERTTAG2_S)
++
++#define IRDMA_UDAQPC_INSERTTAG3_S 14
++#define IRDMA_UDAQPC_INSERTTAG3_M BIT_ULL(IRDMA_UDAQPC_INSERTTAG3_S)
++
++#define IRDMA_UDAQPC_RQSIZE_S IRDMAQPC_RQSIZE_S
++#define IRDMA_UDAQPC_RQSIZE_M IRDMAQPC_RQSIZE_M
++
++#define IRDMA_UDAQPC_SQSIZE_S IRDMAQPC_SQSIZE_S
++#define IRDMA_UDAQPC_SQSIZE_M IRDMAQPC_SQSIZE_M
++
++#define IRDMA_UDAQPC_TXCQNUM_S IRDMAQPC_TXCQNUM_S
++#define IRDMA_UDAQPC_TXCQNUM_M IRDMAQPC_TXCQNUM_M
++
++#define IRDMA_UDAQPC_RXCQNUM_S IRDMAQPC_RXCQNUM_S
++#define IRDMA_UDAQPC_RXCQNUM_M IRDMAQPC_RXCQNUM_M
++
++#define IRDMA_UDAQPC_QPCOMPCTX_S IRDMAQPC_QPCOMPCTX_S
++#define IRDMA_UDAQPC_QPCOMPCTX_M IRDMAQPC_QPCOMPCTX_M
++
++#define IRDMA_UDAQPC_SQTPHVAL_S IRDMAQPC_SQTPHVAL_S
++#define IRDMA_UDAQPC_SQTPHVAL_M IRDMAQPC_SQTPHVAL_M
++
++#define IRDMA_UDAQPC_RQTPHVAL_S IRDMAQPC_RQTPHVAL_S
++#define IRDMA_UDAQPC_RQTPHVAL_M IRDMAQPC_RQTPHVAL_M
++
++#define IRDMA_UDAQPC_QSHANDLE_S IRDMAQPC_QSHANDLE_S
++#define IRDMA_UDAQPC_QSHANDLE_M IRDMAQPC_QSHANDLE_M
++
++#define IRDMA_UDAQPC_RQHDRRINGBUFSIZE_S 48
++#define IRDMA_UDAQPC_RQHDRRINGBUFSIZE_M \
++	((u64)0x3 << IRDMA_UDAQPC_RQHDRRINGBUFSIZE_S)
++
++#define IRDMA_UDAQPC_SQHDRRINGBUFSIZE_S 32
++#define IRDMA_UDAQPC_SQHDRRINGBUFSIZE_M \
++	((u64)0x3 << IRDMA_UDAQPC_SQHDRRINGBUFSIZE_S)
++
++#define IRDMA_UDAQPC_PRIVILEGEENABLE_S 25
++#define IRDMA_UDAQPC_PRIVILEGEENABLE_M \
++	BIT_ULL(IRDMA_UDAQPC_PRIVILEGEENABLE_S)
++
++#define IRDMA_UDAQPC_USE_STATISTICS_INSTANCE_S 26
++#define IRDMA_UDAQPC_USE_STATISTICS_INSTANCE_M \
++	BIT_ULL(IRDMA_UDAQPC_USE_STATISTICS_INSTANCE_S)
++
++#define IRDMA_UDAQPC_STATISTICS_INSTANCE_INDEX_S 0
++#define IRDMA_UDAQPC_STATISTICS_INSTANCE_INDEX_M \
++	((u64)0x7F << IRDMA_UDAQPC_STATISTICS_INSTANCE_INDEX_S)
++
++#define IRDMA_UDAQPC_PRIVHDRGENENABLE_S 0
++#define IRDMA_UDAQPC_PRIVHDRGENENABLE_M \
++	BIT_ULL(IRDMA_UDAQPC_PRIVHDRGENENABLE_S)
++
++#define IRDMA_UDAQPC_RQHDRSPLITENABLE_S 3
++#define IRDMA_UDAQPC_RQHDRSPLITENABLE_M \
++	BIT_ULL(IRDMA_UDAQPC_RQHDRSPLITENABLE_S)
++
++#define IRDMA_UDAQPC_RQHDRRINGBUFENABLE_S 2
++#define IRDMA_UDAQPC_RQHDRRINGBUFENABLE_M \
++	BIT_ULL(IRDMA_UDAQPC_RQHDRRINGBUFENABLE_S)
++
++#define IRDMA_UDAQPC_SQHDRRINGBUFENABLE_S 1
++#define IRDMA_UDAQPC_SQHDRRINGBUFENABLE_M \
++	BIT_ULL(IRDMA_UDAQPC_SQHDRRINGBUFENABLE_S)
++
++#define IRDMA_UDAQPC_IPID_S 32
++#define IRDMA_UDAQPC_IPID_M ((u64)0xffff << IRDMA_UDAQPC_IPID_S)
++
++#define IRDMA_UDAQPC_SNDMSS_S 16
++#define IRDMA_UDAQPC_SNDMSS_M ((u64)0x3fff << IRDMA_UDAQPC_SNDMSS_S)
++
++#define IRDMA_UDAQPC_VLANTAG_S 0
++#define IRDMA_UDAQPC_VLANTAG_M  ((u64)0xffff << IRDMA_UDAQPC_VLANTAG_S)
++
++/* Address Handle */
++#define IRDMA_UDA_CQPSQ_MAV_PDINDEXHI_S 20
++#define IRDMA_UDA_CQPSQ_MAV_PDINDEXHI_M \
++	((u64)0x3 << IRDMA_UDA_CQPSQ_MAV_PDINDEXHI_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_PDINDEXLO_S 48
++#define IRDMA_UDA_CQPSQ_MAV_PDINDEXLO_M \
++	((u64)0xffff << IRDMA_UDA_CQPSQ_MAV_PDINDEXLO_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_SRCMACADDRINDEX_S 24
++#define IRDMA_UDA_CQPSQ_MAV_SRCMACADDRINDEX_M \
++	((u64)0x3f << IRDMA_UDA_CQPSQ_MAV_SRCMACADDRINDEX_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_ARPINDEX_S 48
++#define IRDMA_UDA_CQPSQ_MAV_ARPINDEX_M \
++	((u64)0xffff << IRDMA_UDA_CQPSQ_MAV_ARPINDEX_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_TC_S 32
++#define IRDMA_UDA_CQPSQ_MAV_TC_M ((u64)0xff << IRDMA_UDA_CQPSQ_MAV_TC_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_HOPLIMIT_S 32
++#define IRDMA_UDA_CQPSQ_MAV_HOPLIMIT_M \
++	((u64)0xff << IRDMA_UDA_CQPSQ_MAV_HOPLIMIT_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_FLOWLABEL_S 0
++#define IRDMA_UDA_CQPSQ_MAV_FLOWLABEL_M \
++	((u64)0xfffff << IRDMA_UDA_CQPSQ_MAV_FLOWLABEL_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_ADDR0_S 32
++#define IRDMA_UDA_CQPSQ_MAV_ADDR0_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_MAV_ADDR0_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_ADDR1_S 0
++#define IRDMA_UDA_CQPSQ_MAV_ADDR1_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_MAV_ADDR1_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_ADDR2_S 32
++#define IRDMA_UDA_CQPSQ_MAV_ADDR2_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_MAV_ADDR2_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_ADDR3_S 0
++#define IRDMA_UDA_CQPSQ_MAV_ADDR3_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_MAV_ADDR3_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_WQEVALID_S 63
++#define IRDMA_UDA_CQPSQ_MAV_WQEVALID_M \
++	BIT_ULL(IRDMA_UDA_CQPSQ_MAV_WQEVALID_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_OPCODE_S 32
++#define IRDMA_UDA_CQPSQ_MAV_OPCODE_M \
++	((u64)0x3f << IRDMA_UDA_CQPSQ_MAV_OPCODE_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_DOLOOPBACKK_S 62
++#define IRDMA_UDA_CQPSQ_MAV_DOLOOPBACKK_M \
++	BIT_ULL(IRDMA_UDA_CQPSQ_MAV_DOLOOPBACKK_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_IPV4VALID_S 59
++#define IRDMA_UDA_CQPSQ_MAV_IPV4VALID_M \
++	BIT_ULL(IRDMA_UDA_CQPSQ_MAV_IPV4VALID_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_AVIDX_S 0
++#define IRDMA_UDA_CQPSQ_MAV_AVIDX_M \
++	((u64)0x1ffff << IRDMA_UDA_CQPSQ_MAV_AVIDX_S)
++
++#define IRDMA_UDA_CQPSQ_MAV_INSERTVLANTAG_S 60
++#define IRDMA_UDA_CQPSQ_MAV_INSERTVLANTAG_M BIT_ULL(IRDMA_UDA_CQPSQ_MAV_INSERTVLANTAG_S)
++
++/* UDA multicast group */
++
++#define IRDMA_UDA_MGCTX_VFFLAG_S 29
++#define IRDMA_UDA_MGCTX_VFFLAG_M BIT_ULL(IRDMA_UDA_MGCTX_VFFLAG_S)
++
++#define IRDMA_UDA_MGCTX_DESTPORT_S 32
++#define IRDMA_UDA_MGCTX_DESTPORT_M ((u64)0xffff << IRDMA_UDA_MGCTX_DESTPORT_S)
++
++#define IRDMA_UDA_MGCTX_VFID_S 22
++#define IRDMA_UDA_MGCTX_VFID_M ((u64)0x7f << IRDMA_UDA_MGCTX_VFID_S)
++
++#define IRDMA_UDA_MGCTX_VALIDENT_S 31
++#define IRDMA_UDA_MGCTX_VALIDENT_M BIT_ULL(IRDMA_UDA_MGCTX_VALIDENT_S)
++
++#define IRDMA_UDA_MGCTX_PFID_S 18
++#define IRDMA_UDA_MGCTX_PFID_M ((u64)0xf << IRDMA_UDA_MGCTX_PFID_S)
++
++#define IRDMA_UDA_MGCTX_FLAGIGNOREDPORT_S 30
++#define IRDMA_UDA_MGCTX_FLAGIGNOREDPORT_M \
++	BIT_ULL(IRDMA_UDA_MGCTX_FLAGIGNOREDPORT_S)
++
++#define IRDMA_UDA_MGCTX_QPID_S 0
++#define IRDMA_UDA_MGCTX_QPID_M ((u64)0x3ffff << IRDMA_UDA_MGCTX_QPID_S)
++
++/* multicast group create CQP command */
++
++#define IRDMA_UDA_CQPSQ_MG_WQEVALID_S 63
++#define IRDMA_UDA_CQPSQ_MG_WQEVALID_M \
++	BIT_ULL(IRDMA_UDA_CQPSQ_MG_WQEVALID_S)
++
++#define IRDMA_UDA_CQPSQ_MG_OPCODE_S 32
++#define IRDMA_UDA_CQPSQ_MG_OPCODE_M ((u64)0x3f << IRDMA_UDA_CQPSQ_MG_OPCODE_S)
++
++#define IRDMA_UDA_CQPSQ_MG_MGIDX_S 0
++#define IRDMA_UDA_CQPSQ_MG_MGIDX_M ((u64)0x1fff << IRDMA_UDA_CQPSQ_MG_MGIDX_S)
++
++#define IRDMA_UDA_CQPSQ_MG_IPV4VALID_S 60
++#define IRDMA_UDA_CQPSQ_MG_IPV4VALID_M BIT_ULL(IRDMA_UDA_CQPSQ_MG_IPV4VALID_S)
++
++#define IRDMA_UDA_CQPSQ_MG_VLANVALID_S 59
++#define IRDMA_UDA_CQPSQ_MG_VLANVALID_M BIT_ULL(IRDMA_UDA_CQPSQ_MG_VLANVALID_S)
++
++#define IRDMA_UDA_CQPSQ_MG_HMC_FCN_ID_S 0
++#define IRDMA_UDA_CQPSQ_MG_HMC_FCN_ID_M ((u64)0x3F << IRDMA_UDA_CQPSQ_MG_HMC_FCN_ID_S)
++
++#define IRDMA_UDA_CQPSQ_MG_VLANID_S 32
++#define IRDMA_UDA_CQPSQ_MG_VLANID_M ((u64)0xFFF << IRDMA_UDA_CQPSQ_MG_VLANID_S)
++
++#define IRDMA_UDA_CQPSQ_QS_HANDLE_S 0
++#define IRDMA_UDA_CQPSQ_QS_HANDLE_M ((u64)0x3FF << IRDMA_UDA_CQPSQ_QS_HANDLE_S)
++
++/* Quad hash table */
++#define IRDMA_UDA_CQPSQ_QHASH_QPN_S 32
++#define IRDMA_UDA_CQPSQ_QHASH_QPN_M \
++	((u64)0x3ffff << IRDMA_UDA_CQPSQ_QHASH_QPN_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH__S 0
++#define IRDMA_UDA_CQPSQ_QHASH__M BIT_ULL(IRDMA_UDA_CQPSQ_QHASH__S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_SRC_PORT_S 16
++#define IRDMA_UDA_CQPSQ_QHASH_SRC_PORT_M \
++	((u64)0xffff << IRDMA_UDA_CQPSQ_QHASH_SRC_PORT_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_DEST_PORT_S 0
++#define IRDMA_UDA_CQPSQ_QHASH_DEST_PORT_M \
++	((u64)0xffff << IRDMA_UDA_CQPSQ_QHASH_DEST_PORT_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR0_S 32
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR0_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_QHASH_ADDR0_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR1_S 0
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR1_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_QHASH_ADDR1_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR2_S 32
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR2_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_QHASH_ADDR2_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR3_S 0
++#define IRDMA_UDA_CQPSQ_QHASH_ADDR3_M \
++	((u64)0xffffffff << IRDMA_UDA_CQPSQ_QHASH_ADDR3_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_WQEVALID_S 63
++#define IRDMA_UDA_CQPSQ_QHASH_WQEVALID_M \
++	BIT_ULL(IRDMA_UDA_CQPSQ_QHASH_WQEVALID_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_OPCODE_S 32
++#define IRDMA_UDA_CQPSQ_QHASH_OPCODE_M \
++	((u64)0x3f << IRDMA_UDA_CQPSQ_QHASH_OPCODE_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_MANAGE_S 61
++#define IRDMA_UDA_CQPSQ_QHASH_MANAGE_M \
++	((u64)0x3 << IRDMA_UDA_CQPSQ_QHASH_MANAGE_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_IPV4VALID_S 60
++#define IRDMA_UDA_CQPSQ_QHASH_IPV4VALID_M \
++	((u64)0x1 << IRDMA_UDA_CQPSQ_QHASH_IPV4VALID_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_LANFWD_S 59
++#define IRDMA_UDA_CQPSQ_QHASH_LANFWD_M \
++	((u64)0x1 << IRDMA_UDA_CQPSQ_QHASH_LANFWD_S)
++
++#define IRDMA_UDA_CQPSQ_QHASH_ENTRYTYPE_S 42
++#define IRDMA_UDA_CQPSQ_QHASH_ENTRYTYPE_M \
++	((u64)0x7 << IRDMA_UDA_CQPSQ_QHASH_ENTRYTYPE_S)
++#endif /* IRDMA_UDA_D_H */
 -- 
 1.8.3.1
 
