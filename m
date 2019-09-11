@@ -2,56 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 789D1B0361
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2019 20:10:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E35F3B044F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2019 20:57:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1069685F8F;
-	Wed, 11 Sep 2019 18:10:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7323E8561E;
+	Wed, 11 Sep 2019 18:57:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1cwWVxZjAR0W; Wed, 11 Sep 2019 18:10:11 +0000 (UTC)
+	with ESMTP id gP99kskU5KEm; Wed, 11 Sep 2019 18:57:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 56C6282346;
-	Wed, 11 Sep 2019 18:10:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 995058563A;
+	Wed, 11 Sep 2019 18:57:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2CED91BF59B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 17:26:46 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C4E631BF59A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 18:57:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 29804860D6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 17:26:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BC863204C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 18:57:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mXgyjljp645g for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Sep 2019 17:26:44 +0000 (UTC)
+ with ESMTP id wOp0giZ+ADw3 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Sep 2019 18:57:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 27608815E3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 17:26:44 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 27FFB203BB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 18:57:53 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Sep 2019 10:26:43 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2019 11:57:52 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,489,1559545200"; d="scan'208";a="384772712"
-Received: from silpixa00399839.ir.intel.com (HELO localhost.localdomain)
- ([10.237.223.65])
- by fmsmga005.fm.intel.com with ESMTP; 11 Sep 2019 10:26:41 -0700
-From: Ciara Loftus <ciara.loftus@intel.com>
-To: netdev@vger.kernel.org, ast@kernel.org, daniel@iogearbox.net,
- bjorn.topel@intel.com, magnus.karlsson@intel.com, jonathan.lemon@gmail.com
-Date: Wed, 11 Sep 2019 17:24:34 +0000
-Message-Id: <20190911172435.21042-2-ciara.loftus@intel.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190911172435.21042-1-ciara.loftus@intel.com>
-References: <20190911172435.21042-1-ciara.loftus@intel.com>
-X-Mailman-Approved-At: Wed, 11 Sep 2019 18:09:15 +0000
-Subject: [Intel-wired-lan] [PATCH bpf-next 2/3] ixgbe: fix xdp handle
- calculations
+X-IronPort-AV: E=Sophos;i="5.64,494,1559545200"; d="scan'208";a="184570027"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga008.fm.intel.com with ESMTP; 11 Sep 2019 11:57:50 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 11 Sep 2019 11:57:51 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 11 Sep 2019 11:57:51 -0700
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Wed, 11 Sep 2019 11:57:51 -0700
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S29 v3 1/6] ice: send driver version to
+ firmware
+Thread-Index: AQHVZ1xbcIISKzd8qEiRmQj7ZBlLAacm1sew
+Date: Wed, 11 Sep 2019 18:57:51 +0000
+Message-ID: <ee4a1d8fe3364fc1908a65cf3f7835d9@intel.com>
+References: <20190909134747.10415-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20190909134747.10415-1-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWIzZGYzMzctMjljMi00YmUyLTg5ZDItZDkzN2YyYjEwNDY5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiOUtnMTlleU9NS0V4b3R3Skd6UWhlSXFcL2huZWpwQTk3VWZ1YVdGZXBVNEJhcE5KbEkwRkxXSVwvTjZXU2dFWlg2In0=
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH S29 v3 1/6] ice: send driver version
+ to firmware
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,52 +84,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bruce.richardson@intel.com, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Ciara Loftus <ciara.loftus@intel.com>,
- kevin.laatz@intel.com
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 7cbbf9f1fa23 ("ixgbe: fix xdp handle calculations") reintroduced
-the addition of the umem headroom to the xdp handle in the ixgbe_zca_free,
-ixgbe_alloc_buffer_slow_zc and ixgbe_alloc_buffer_zc functions. However,
-the headroom is already added to the handle in the function
-ixgbe_run_xdp_zc. This commit removes the latter addition and fixes the
-case where the headroom is non-zero.
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Tony Nguyen
+> Sent: Monday, September 9, 2019 6:48 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S29 v3 1/6] ice: send driver version to
+> firmware
+> 
+> From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+> 
+> The driver is required to send a version to the firmware to indicate that the
+> driver is up. If the driver doesn't do this the firmware doesn't behave
+> properly.
+> 
+> Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> ---
+> v2:
+> - Modified error message when ice_send_version() fails
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h          |  1 +
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 13 +++++++
+>  drivers/net/ethernet/intel/ice/ice_common.c   | 37
+> +++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_common.h   |  3 ++
+>  drivers/net/ethernet/intel/ice/ice_main.c     | 36 +++++++++++++++++-
+>  drivers/net/ethernet/intel/ice/ice_type.h     |  8 ++++
+>  6 files changed, 97 insertions(+), 1 deletion(-)
 
-Fixes: 7cbbf9f1fa23 ("ixgbe: fix xdp handle calculations")
-Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index ad802a8909e0..5ed8b5a257cf 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -145,7 +145,7 @@ static int ixgbe_run_xdp_zc(struct ixgbe_adapter *adapter,
- {
- 	struct xdp_umem *umem = rx_ring->xsk_umem;
- 	int err, result = IXGBE_XDP_PASS;
--	u64 offset = umem->headroom;
-+	u64 offset;
- 	struct bpf_prog *xdp_prog;
- 	struct xdp_frame *xdpf;
- 	u32 act;
-@@ -153,7 +153,7 @@ static int ixgbe_run_xdp_zc(struct ixgbe_adapter *adapter,
- 	rcu_read_lock();
- 	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
- 	act = bpf_prog_run_xdp(xdp_prog, xdp);
--	offset += xdp->data - xdp->data_hard_start;
-+	offset = xdp->data - xdp->data_hard_start;
- 
- 	xdp->handle = xsk_umem_adjust_offset(umem, xdp->handle, offset);
- 
--- 
-2.17.1
 
 _______________________________________________
 Intel-wired-lan mailing list
