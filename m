@@ -1,80 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 912F5B12C7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 18:28:16 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9ED1AB1372
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 19:25:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4CB8A22785;
-	Thu, 12 Sep 2019 16:28:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5741C86329;
+	Thu, 12 Sep 2019 17:25:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s7zkvHwv14Hv; Thu, 12 Sep 2019 16:28:15 +0000 (UTC)
+	with ESMTP id 3IFvyg_cBjp6; Thu, 12 Sep 2019 17:25:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 62B2722767;
-	Thu, 12 Sep 2019 16:28:13 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 68AA51BF2A7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 16:28:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 346908634C;
+	Thu, 12 Sep 2019 17:25:50 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6EBD51BF44C
+ for <intel-wired-lan@osuosl.org>; Thu, 12 Sep 2019 10:16:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 648B085A25
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 16:28:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6AF0B861AF
+ for <intel-wired-lan@osuosl.org>; Thu, 12 Sep 2019 10:16:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nywtW9HKyj+M for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Sep 2019 16:28:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DEDC7858EE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 16:28:10 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 12 Sep 2019 09:28:10 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,492,1559545200"; d="scan'208";a="269134479"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by orsmga001.jf.intel.com with ESMTP; 12 Sep 2019 09:28:09 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 12 Sep 2019 09:28:09 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 12 Sep 2019 09:28:09 -0700
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Thu, 12 Sep 2019 09:28:09 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "bpf@vger.kernel.org"
- <bpf@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH bpf-next 2/3] ixgbe: fix xdp handle
- calculations
-Thread-Index: AQHVaMws/RmUsUOPPkiAyCDyL0vP3KcoPEcA
-Date: Thu, 12 Sep 2019 16:28:08 +0000
-Message-ID: <5bda2f9461624c7a8a82e8eea25b7de5@intel.com>
-References: <20190911172435.21042-1-ciara.loftus@intel.com>
- <20190911172435.21042-2-ciara.loftus@intel.com>
-In-Reply-To: <20190911172435.21042-2-ciara.loftus@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzBmYWNmMzEtNmFjMS00NTU2LWFjMTUtOTdkNjkwNzhmYzA1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRk5FV2ppamtLdEFtRk1wTjNWWGpoQWlyQjlkRkl5dGwwZUFYUjlkRmhRS3RzNHF3TmVoYXRXXC9cL2RHVFZsbEJDIn0=
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+ with ESMTP id gpbZ6fJACkSz for <intel-wired-lan@osuosl.org>;
+ Thu, 12 Sep 2019 10:16:02 +0000 (UTC)
+X-Greylist: delayed 00:07:39 by SQLgrey-1.7.6
+Received: from smark.slackware.pl (smark.slackware.pl [88.198.48.135])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CBF72861AA
+ for <intel-wired-lan@osuosl.org>; Thu, 12 Sep 2019 10:16:01 +0000 (UTC)
+Received: from bek.lan.toxcorp.com (unknown [213.156.230.59])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: shasta@toxcorp.com)
+ by smark.slackware.pl (Postfix) with ESMTPSA id 01C0B20D3D;
+ Thu, 12 Sep 2019 12:08:19 +0200 (CEST)
+To: intel-wired-lan@osuosl.org, e1000-devel@lists.sourceforge.net
+From: Jakub Jankowski <shasta@toxcorp.com>
+In-Reply-To: <20190610190141.77k6gbrefm2mr6lb@csclub.uwaterloo.ca>
+References: 
+Message-ID: <77e940d7-552b-7724-0971-828bdb28add7@toxcorp.com>
+Date: Thu, 12 Sep 2019 12:09:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 2/3] ixgbe: fix xdp handle
- calculations
+Content-Language: en-US
+X-Mailman-Approved-At: Thu, 12 Sep 2019 17:25:48 +0000
+Subject: Re: [Intel-wired-lan] [E1000-devel] i40e X722 RSS problem with
+ NAT-Traversal IPsec packets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,41 +62,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: rschwammberger@open-systems.com, alexander.h.duyck@linux.intel.com,
+ lsorense@csclub.uwaterloo.ca
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Ciara Loftus
-> Sent: Wednesday, September 11, 2019 10:25 AM
-> To: netdev@vger.kernel.org; ast@kernel.org; daniel@iogearbox.net; Topel,
-> Bjorn <bjorn.topel@intel.com>; Karlsson, Magnus
-> <magnus.karlsson@intel.com>; jonathan.lemon@gmail.com
-> Cc: Richardson, Bruce <bruce.richardson@intel.com>; bpf@vger.kernel.org;
-> intel-wired-lan@lists.osuosl.org; Loftus, Ciara <ciara.loftus@intel.com>;
-> Laatz, Kevin <kevin.laatz@intel.com>
-> Subject: [Intel-wired-lan] [PATCH bpf-next 2/3] ixgbe: fix xdp handle
-> calculations
-> 
-> Commit 7cbbf9f1fa23 ("ixgbe: fix xdp handle calculations") reintroduced the
-> addition of the umem headroom to the xdp handle in the ixgbe_zca_free,
-> ixgbe_alloc_buffer_slow_zc and ixgbe_alloc_buffer_zc functions. However,
-> the headroom is already added to the handle in the function
-> ixgbe_run_xdp_zc. This commit removes the latter addition and fixes the
-> case where the headroom is non-zero.
-> 
-> Fixes: 7cbbf9f1fa23 ("ixgbe: fix xdp handle calculations")
-> Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGksCgpbSSdtIHJlcGx5aW5nIHRvIGFuIG9sZCB0aHJlYWQsIGhvcGluZyBteSBlbWFpbCBjbGll
+bnQgd29uJ3Qgc2NyZXcgdXAgCnJlZmVyZW5jZXMgdG9vIG11Y2ggLSBzb3JyeSBpbiBhZHZhbmNl
+IGlmIGl0IGRvZXNdCgogPk9uIE1vbiwgMTAgSnVuIDIwMTksIExlbm5hcnQgU29yZW5zZW4gd3Jv
+dGU6CiA+Pk9uIEZyaSwgSnVuIDA3LCAyMDE5IGF0IDEwOjA4OjMxUE0gKzAwMDAsIEZ1amluYWth
+LCBUb2RkIHdyb3RlOgogPj4gSnVzdCBhIHF1aWNrIHVwZGF0ZSB3aXRoIHRoZSByZXNwb25zZSBJ
+IGdvdCBhbmQgSSdsbCBtYWtlIHN1cmUgdGhpcyAKaXMgaW4gb3VyIGludGVybmFsIGJ1ZyBkYXRh
+YmFzZS4KID4+CiA+PiBIZXJlJ3Mgd2hhdCBJIGdvdCBiYWNrLCBhbmQgaXQgbG9va3MgbGlrZSB5
+b3UgZ3V5cyBoYXZlIHRyaWVkIHRoaXMgCmFscmVhZHk6CiA+PgogPj4gSGF2ZSB0aGV5IHRyaWVk
+IHRoZXNlIHN0ZXBzIHRvIGNvbmZpZ3VyZSBSU1M6ClsuLi5dCiA+IFdpdGggcG90ZW50aWFsbHkg
+MTAwMDAgaXBzZWMgY29ubmVjdGlvbnMsIHdlIGRvbid0IGV2ZW4gd2FudCB0byBsb29rIGF0CiA+
+IGNyZWF0aW5nIG1hbnVhbCBmbG93IGVudHJpZXMuwqAgVGhlcmUgaXNuJ3QgZW5vdWdoIHJvb20g
+Zm9yIHRoYXQuwqAgV2UganVzdAogPiB3YW50ZWQgUlNTIHRvIGRvIGl0cyBqb2IgdGhlIHdheSBp
+dCBkb2VzIG9uIGV2ZXJ5IG90aGVyIE5JQyBpbiB0aGUgcGFzdC4KID4gQWZ0ZXIgeWVhcnMgb2Yg
+dXNpbmcgbW9zdGx5IGludGVsIE5JQ3MgdGhhdCBqdXN0IHdvcmtlZCwgdGhpcyBvbmUgaGFzCiA+
+IGJlZW4gcXVpdGUgdGhlIHN1cnByaXNlLgogPgpbLi4uXQogPiBBbHJlYWR5IHRyaWVkIHdpdGgg
+NC4xOSBrZXJuZWwgd2hpY2ggaXMgZXNzZW50aWFsbHkgaWRlbnRpY2FsIHRvIHRoZQogPiBsYXRl
+c3Qgb3V0IG9mIHRyZWUgZHJpdmVyIChJIGRpZmZlZCB0aGVtIGFuZCBmb3VuZCBubyBmdW5jdGlv
+bmFsCiA+IGRpZmZlcmVuY2VzIGF0IGFsbCkgYW5kIGl0IGRpZG4ndCBoZWxwLsKgIFdlbGwgaXQg
+d2FzIGVzc2VudGlhbGx5IAppZGVudGljYWwKID4gdG8gdGhlIGxhdGVzdCBvdXQgb2YgdHJlZSBh
+IGZldyB3ZWVrcyBhZ28uwqAgSXQgc2VlbXMgdGhlcmUgaXMgbm93IGEKID4gbmV3ZXIgb25lIHdp
+dGggc29tZSBjaGFuZ2VzIGFsdGhvdWdoIG5vdGhpbmcgaW4gdGhlIGxpc3Qgb2YgY2hhbmdlcwog
+PiBzb3VuZCByZWxldmFudC4KID4KID4gV2UgZG8gbm90IHdhbnQgdG8gdXNlIHRoZSBvdXQgb2Yg
+dHJlZSBkcml2ZXIgYW5kIGV2ZW4gdHJ5aW5nIGl0IG91dCBpcwogPiBhIGxvdCBvZiB3b3JrLsKg
+IFdlIHVzZWQgdG8gdXNlIGl0IGluIHRoZSBwYXN0IGZvciBzb21lIE5JQyB0eXBlcyBidXQKID4g
+c3RvcHBlZCBkdWUgdG8gdGhlIGhhc3NsZSBvZiBtYWludGFpbmluZyB0aGUgaW50ZWdyYXRpb24u
+wqAgSWYgYW55IApwcm9ibGVtcwogPiBleGlzdCBpbiB0aGUgaW4ga2VybmVsIGRyaXZlciB3ZSB3
+aWxsIHBhdGNoIGl0LCBidXQgc28gZmFyIHRoYXQgZG9lcyBub3QKID4gYXBwZWFyIHRvIGJlIHRo
+ZSBwcm9ibGVtLsKgIFRoZSB0ZXN0cyB3ZSBkaWQgc28gZmFyIGluZGljYXRlIHRoZSBmaXJtd2Fy
+ZQogPiBpc24ndCBhcHBseWluZyBhbiBSU1MgdmFsdWUgdG8gY2VydGFpbiBwYWNrZXQgdHlwZXMu
+wqAgRXZlbiBtYXBwaW5nIGV2ZXJ5CiA+IFJTUyB2YWx1ZSB0byBxdWV1ZSA3IHN0aWxsIHNhdyB0
+aGVzZSBwYWNrZXRzIGFycml2ZSBvbiBxdWV1ZSAwIHdoaWNoCiA+IHNob3VsZCBvZiBjb3Vyc2Ug
+YmUgaW1wb3NzaWJsZSBpZiB0aGUgZmlybXdhcmUgd2FzIHdvcmtpbmcuIE5vdyBpZgogPiB0aGVy
+ZSBpcyBhbnl0aGluZyBpbiB0aGUgb3V0IG9mIHRyZWUgZHJpdmVyIHRoYXQgeW91IHRoaW5rIGNh
+biBleHBsYWluCiA+IHRoaXMgcHJvYmxlbSwgSSB3aWxsIGxvb2sgYXQgaXQgYW5kIGNvbnNpZGVy
+IHRyeWluZyBpdCwgYnV0IHNvIGZhciBJCiA+IHNlZSBub3RoaW5nIHRoYXQgbWFrZXMgdGhhdCB3
+b3J0aCB0aGUgZWZmb3J0LsKgIEl0IGp1c3QgZG9lc24ndCBsb29rIGxpa2UKID4gYSBkcml2ZXIg
+cHJvYmxlbS7CoCBJZiBzb21lb25lIGhhcyBhY2Nlc3MgdG8gYSBTMjYwMFdGVCBib2FyZCAob3Ig
+c29tZQogPiBvdGhlciBDNjEyIGJhc2VkIGJvYXJkKSBpdCBzaG91bGQgYmUgc2ltcGxlIGVub3Vn
+aCB0byB0cnkgcmVwbGF5aW5nCiA+IHRoZSBjYXB0dXJlZCBwYWNrZXQgYW5kIHNlZSB3aGF0IFJT
+UyBxdWV1ZSBpdCBoaXRzICh3aXRoIEFUUiBkaXNhYmxlZAogPiBvZiBjb3Vyc2UpLgoKV2FzIHRo
+ZXJlIGFueSBwcm9ncmVzcyBoZXJlPwoKQXMgWDcyMiBpcyBnZXR0aW5nIG1vcmUgYW5kIG1vcmUg
+dWJpcXVpdG91cywgaXQncyBnZXR0aW5nIGhhcmRlciBhbmQgCmhhcmRlciB0byBhdm9pZCBpdC4g
+UHJvYmxlbXMgbGlrZSB0aGlzLCBTRlAgRUVQUk9NIHJlYWRvdXQgSSByZXBvcnRlZCAKWzFdLCBv
+ciB0aGUgcmVjZW50bHkgYW5ub3VuY2VkIE5ldENBVCBpc3N1ZSBbMl0gKFg3MjIgc2VlbXMgdG8g
+c3VwcG9ydCAKaVdBUlAvUkRNQSkgbWFrZSBpdCByZWFsbHkgaGFyZCB0byByZWNvbW1lbmQgWDcy
+MiBmb3IgcHJvZHVjdGlvbiB1c2UuCgpbMV0gCmh0dHBzOi8vd3d3Lm1haWwtYXJjaGl2ZS5jb20v
+ZTEwMDAtZGV2ZWxAbGlzdHMuc291cmNlZm9yZ2UubmV0L21zZzEyNTUwLmh0bWwKWzJdIGh0dHBz
+Oi8vd3d3LnZ1c2VjLm5ldC9wcm9qZWN0cy9uZXRjYXQvCgpSZWdhcmRzLAogwqBKYWt1Yi4KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVk
+LWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0
+cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
