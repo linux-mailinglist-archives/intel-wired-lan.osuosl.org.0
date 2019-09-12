@@ -2,55 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2540DB06DC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 04:51:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F23A9B0D92
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 13:08:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4157987F50;
-	Thu, 12 Sep 2019 02:51:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7CBC98815D;
+	Thu, 12 Sep 2019 11:08:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id in2n1rHV0JNt; Thu, 12 Sep 2019 02:51:17 +0000 (UTC)
+	with ESMTP id JJGGUS2CP1fO; Thu, 12 Sep 2019 11:08:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7550187F44;
-	Thu, 12 Sep 2019 02:51:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F3ECE88163;
+	Thu, 12 Sep 2019 11:08:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 900B51BF302
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 02:51:15 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0624C1BF42D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 11:08:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8C24B84A43
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 02:51:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 025BE226E9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 11:08:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jfXZAk9AUMdQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Sep 2019 02:51:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 454358609D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 02:51:14 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Sep 2019 19:51:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,489,1559545200"; d="scan'208";a="384913920"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 11 Sep 2019 19:51:12 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1i8FCR-00052w-Vg; Thu, 12 Sep 2019 10:51:11 +0800
-Date: Thu, 12 Sep 2019 10:50:30 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d79b276.uey5IpQKBQKFeIbZ%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id t59mwxtuiCVz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Sep 2019 11:08:28 +0000 (UTC)
+X-Greylist: delayed 00:06:40 by SQLgrey-1.7.6
+Received: from a.mx.secunet.com (a.mx.secunet.com [62.96.220.36])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7B29720516
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 11:08:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by a.mx.secunet.com (Postfix) with ESMTP id 97E8420547;
+ Thu, 12 Sep 2019 13:01:45 +0200 (CEST)
+X-Virus-Scanned: by secunet
+Received: from a.mx.secunet.com ([127.0.0.1])
+ by localhost (a.mx.secunet.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7v5Q3AiaYgAd; Thu, 12 Sep 2019 13:01:45 +0200 (CEST)
+Received: from mail-essen-01.secunet.de (mail-essen-01.secunet.de
+ [10.53.40.204])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by a.mx.secunet.com (Postfix) with ESMTPS id 1698220422;
+ Thu, 12 Sep 2019 13:01:45 +0200 (CEST)
+Received: from gauss2.secunet.de (10.182.7.193) by mail-essen-01.secunet.de
+ (10.53.40.204) with Microsoft SMTP Server id 14.3.439.0; Thu, 12 Sep 2019
+ 13:01:45 +0200
+Received: by gauss2.secunet.de (Postfix, from userid 1000)	id AD5863180394;
+ Thu, 12 Sep 2019 13:01:44 +0200 (CEST)
+Date: Thu, 12 Sep 2019 13:01:44 +0200
+From: Steffen Klassert <steffen.klassert@secunet.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+Message-ID: <20190912110144.GS2879@gauss3.secunet.de>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- a6aba5d17ed2b8dff8a5caa74dcf4267af299265
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-EXCLAIMER-MD-CONFIG: 2c86f778-e09b-4440-8b15-867914633a10
+Subject: [Intel-wired-lan] [PATCH] ixgbe: Fix secpath usage for IPsec TX
+ offload.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,137 +72,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Shannon Nelson <snelson@pensando.io>,
+ Michael Marley <michael@michaelmarley.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: a6aba5d17ed2b8dff8a5caa74dcf4267af299265  ixgbe: fix xdp handle calculations
+The ixgbe driver currently does IPsec TX offloading
+based on an existing secpath. However, the secpath
+can also come from the RX side, in this case it is
+misinterpreted for TX offload and the packets are
+dropped with a "bad sa_idx" error. Fix this by using
+the xfrm_offload() function to test for TX offload.
 
-elapsed time: 248m
-
-configs tested: 112
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-parisc                        c3000_defconfig
-parisc                         b180_defconfig
-parisc                              defconfig
-parisc                            allnoconfig
-x86_64                 randconfig-g003-201936
-i386                   randconfig-g004-201936
-x86_64                 randconfig-g001-201936
-x86_64                 randconfig-g002-201936
-i386                   randconfig-g001-201936
-x86_64                 randconfig-g004-201936
-i386                   randconfig-g002-201936
-i386                   randconfig-g003-201936
-sh                               allmodconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sh                            titan_defconfig
-arc                              allyesconfig
-powerpc                             defconfig
-microblaze                    nommu_defconfig
-powerpc                       ppc64_defconfig
-microblaze                      mmu_defconfig
-arc                                 defconfig
-powerpc                           allnoconfig
-x86_64                 randconfig-h002-201936
-x86_64                 randconfig-h003-201936
-i386                   randconfig-h001-201936
-i386                   randconfig-h002-201936
-i386                   randconfig-h004-201936
-x86_64                 randconfig-h004-201936
-i386                   randconfig-h003-201936
-x86_64                 randconfig-h001-201936
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-xtensa                       common_defconfig
-openrisc                    or1ksim_defconfig
-nios2                         3c120_defconfig
-xtensa                          iss_defconfig
-c6x                        evmc6678_defconfig
-c6x                              allyesconfig
-nios2                         10m50_defconfig
-openrisc                 simple_smp_defconfig
-x86_64                 randconfig-e004-201936
-i386                   randconfig-e004-201936
-x86_64                 randconfig-e002-201936
-i386                   randconfig-e003-201936
-x86_64                 randconfig-e003-201936
-x86_64                 randconfig-e001-201936
-i386                   randconfig-e002-201936
-i386                   randconfig-e001-201936
-i386                   randconfig-f004-201936
-x86_64                 randconfig-f004-201936
-x86_64                 randconfig-f002-201936
-i386                   randconfig-f001-201936
-i386                   randconfig-f002-201936
-i386                   randconfig-f003-201936
-x86_64                 randconfig-f003-201936
-x86_64                 randconfig-f001-201936
-x86_64                           allyesconfig
-i386                             allmodconfig
-riscv                             allnoconfig
-riscv                               defconfig
-nds32                               defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-ia64                             alldefconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                             allmodconfig
-s390                                defconfig
-mips                             allmodconfig
-mips                      malta_kvm_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-x86_64                           allmodconfig
-arm                              allmodconfig
-arm                         at91_dt_defconfig
-arm64                               defconfig
-arm                        multi_v5_defconfig
-arm64                            allyesconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allmodconfig
-arm                          exynos_defconfig
-arm                        shmobile_defconfig
-arm                        multi_v7_defconfig
-x86_64                 randconfig-b002-201936
-i386                   randconfig-b003-201936
-i386                   randconfig-b004-201936
-i386                   randconfig-b001-201936
-i386                   randconfig-b002-201936
-x86_64                 randconfig-b001-201936
-x86_64                 randconfig-b004-201936
-x86_64                 randconfig-b003-201936
-
+Fixes: 592594704761 ("ixgbe: process the Tx ipsec offload")
+Reported-by: Michael Marley <michael@michaelmarley.com>
+Signed-off-by: Steffen Klassert <steffen.klassert@secunet.com>
 ---
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 9bcae44e9883..ae31bd57127c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -36,6 +36,7 @@
+ #include <net/vxlan.h>
+ #include <net/mpls.h>
+ #include <net/xdp_sock.h>
++#include <net/xfrm.h>
+ 
+ #include "ixgbe.h"
+ #include "ixgbe_common.h"
+@@ -8696,7 +8697,7 @@ netdev_tx_t ixgbe_xmit_frame_ring(struct sk_buff *skb,
+ #endif /* IXGBE_FCOE */
+ 
+ #ifdef CONFIG_IXGBE_IPSEC
+-	if (secpath_exists(skb) &&
++	if (xfrm_offload(skb) &&
+ 	    !ixgbe_ipsec_tx(tx_ring, first, &ipsec_tx))
+ 		goto out_drop;
+ #endif
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
