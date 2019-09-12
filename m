@@ -1,75 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D3CFB0545
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2019 23:36:54 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EA2AB066E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 03:26:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2A1DC86AF2;
-	Wed, 11 Sep 2019 21:36:52 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5776C87F34;
+	Thu, 12 Sep 2019 01:25:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IHQV1d8AG3V3; Wed, 11 Sep 2019 21:36:52 +0000 (UTC)
+	with ESMTP id vw3otn9vmtE9; Thu, 12 Sep 2019 01:25:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3888586B78;
-	Wed, 11 Sep 2019 21:36:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E1B0A87F44;
+	Thu, 12 Sep 2019 01:25:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6B81A1BF386
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 21:36:50 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C58301BF57B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 01:25:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 68D5420481
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 21:36:50 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id C256E8607A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 01:25:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZIoIoigY6Z1Q for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Sep 2019 21:36:49 +0000 (UTC)
+ with ESMTP id lBJcqpoCWQaq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Sep 2019 01:25:51 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id A287D20456
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2019 21:36:49 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B444085FE4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 01:25:51 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Sep 2019 14:36:49 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2019 18:25:51 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,489,1559545200"; d="scan'208";a="360259447"
-Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
- by orsmga005.jf.intel.com with ESMTP; 11 Sep 2019 14:36:48 -0700
-Received: from orsmsx159.amr.corp.intel.com (10.22.240.24) by
- ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 11 Sep 2019 14:36:48 -0700
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.221]) by
- ORSMSX159.amr.corp.intel.com ([169.254.11.209]) with mapi id 14.03.0439.000;
- Wed, 11 Sep 2019 14:36:48 -0700
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net 2/2] igb: Fix constant media auto
- sense switching when no cable is connected.
-Thread-Index: AQHVU6vUQjwCEXG6bkCuSanmopauAacnKpxA
-Date: Wed, 11 Sep 2019 21:36:47 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971174D4@ORSMSX103.amr.corp.intel.com>
-References: <20190815205520.22475-1-jeffrey.t.kirsher@intel.com>
- <20190815205520.22475-2-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20190815205520.22475-2-jeffrey.t.kirsher@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMmQwZjhhZDItOTU1Ni00OWE3LWE4MWMtNWQ0ZTc0MDczODVkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUzArOFJIZG50ZnZXMXdOZTRpN09ZQzUxK0pjK2xhS3B3YkJBMnFmaUNlemFTTk1zMWdIMnlPSG1lSU9zZkV0ZiJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+X-IronPort-AV: E=Sophos;i="5.64,492,1559545200"; d="scan'208";a="268928540"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga001.jf.intel.com with ESMTP; 11 Sep 2019 18:25:49 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1i8Drp-000AWh-5s; Thu, 12 Sep 2019 09:25:49 +0800
+Date: Thu, 12 Sep 2019 09:25:20 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5d799e80.+Wc7moAYFZ9V8fWK%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net 2/2] igb: Fix constant media auto
- sense switching when no cable is connected.
+Subject: [Intel-wired-lan] [jkirsher-net-queue:10GbE] BUILD SUCCESS
+ bf280c0387ebbf8eebad1036fca8f7b85ebfde32
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,42 +63,141 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Jeff Kirsher
-> Sent: Thursday, August 15, 2019 1:55 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
-> Subject: [Intel-wired-lan] [PATCH net 2/2] igb: Fix constant media auto sense
-> switching when no cable is connected.
-> 
-> From: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
-> 
-> At least on the i350 there is an annoying behavior that is maybe also
-> present on 82580 devices, but was probably not noticed yet as MAS is not
-> widely used.
-> 
-> If no cable is connected on both fiber/copper ports the media auto sense
-> code will constantly swap between them as part of the watchdog task and
-> produce many unnecessary kernel log messages.
-> 
-> The swap code responsible for this behavior (switching to fiber) should
-> not be executed if the current media type is copper and there is no signal
-> detected on the fiber port. In this case we can safely wait until the
-> AUTOSENSE_EN bit is cleared.
-> 
-> Signed-off-by: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
+tree/branch: https://kernel.googlesource.com/pub/scm/linux/kernel/git/jkirsher/net-queue.git  10GbE
+branch HEAD: bf280c0387ebbf8eebad1036fca8f7b85ebfde32  ixgbe: fix double clean of Tx descriptors with xdp
 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+elapsed time: 487m
+
+configs tested: 116
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+c6x                        evmc6678_defconfig
+mips                             allmodconfig
+mips                      malta_kvm_defconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                                   jz4740
+mips                                     txx9
+nds32                               defconfig
+sparc                            allyesconfig
+x86_64                 randconfig-a001-201936
+x86_64                 randconfig-a002-201936
+x86_64                 randconfig-a003-201936
+x86_64                 randconfig-a004-201936
+i386                   randconfig-a001-201936
+i386                   randconfig-a002-201936
+i386                   randconfig-a003-201936
+i386                   randconfig-a004-201936
+xtensa                       common_defconfig
+openrisc                    or1ksim_defconfig
+nios2                         3c120_defconfig
+xtensa                          iss_defconfig
+c6x                              allyesconfig
+nios2                         10m50_defconfig
+openrisc                 simple_smp_defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+x86_64                           allyesconfig
+i386                             allmodconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+x86_64                 randconfig-g003-201936
+i386                   randconfig-g004-201936
+x86_64                 randconfig-g001-201936
+x86_64                 randconfig-g002-201936
+i386                   randconfig-g001-201936
+x86_64                 randconfig-g004-201936
+i386                   randconfig-g002-201936
+i386                   randconfig-g003-201936
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                              fedora-25
+x86_64                                  kexec
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+x86_64                 randconfig-b001-201936
+x86_64                 randconfig-b002-201936
+x86_64                 randconfig-b003-201936
+x86_64                 randconfig-b004-201936
+i386                   randconfig-b001-201936
+i386                   randconfig-b002-201936
+i386                   randconfig-b003-201936
+i386                   randconfig-b004-201936
+x86_64                 randconfig-f001-201936
+x86_64                 randconfig-f002-201936
+x86_64                 randconfig-f003-201936
+x86_64                 randconfig-f004-201936
+i386                   randconfig-f001-201936
+i386                   randconfig-f002-201936
+i386                   randconfig-f003-201936
+i386                   randconfig-f004-201936
+i386                              allnoconfig
+i386                                defconfig
+i386                             alldefconfig
+x86_64                 randconfig-e001-201936
+x86_64                 randconfig-e002-201936
+x86_64                 randconfig-e003-201936
+x86_64                 randconfig-e004-201936
+i386                   randconfig-e001-201936
+i386                   randconfig-e002-201936
+i386                   randconfig-e003-201936
+i386                   randconfig-e004-201936
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+x86_64                             acpi-redef
+x86_64                           allyesdebian
+x86_64                                nfsroot
+x86_64                           allmodconfig
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
