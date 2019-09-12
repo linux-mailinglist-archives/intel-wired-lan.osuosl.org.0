@@ -2,59 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6ACF9B1476
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 20:33:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A338DB1477
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Sep 2019 20:33:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2AA8681F70;
+	by hemlock.osuosl.org (Postfix) with ESMTP id D2DE385A81;
 	Thu, 12 Sep 2019 18:33:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ya2fpI3t21MU; Thu, 12 Sep 2019 18:33:05 +0000 (UTC)
+	with ESMTP id h7yGaAlzxVis; Thu, 12 Sep 2019 18:33:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6D81183070;
+	by hemlock.osuosl.org (Postfix) with ESMTP id A6A3A859AE;
 	Thu, 12 Sep 2019 18:33:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EE8891BF847
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 17:56:05 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 19F431BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 17:59:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EA31B8758B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 17:56:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 16B562051E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 17:59:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v8lpSog86Jlm for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Sep 2019 17:56:05 +0000 (UTC)
-X-Greylist: delayed 00:05:17 by SQLgrey-1.7.6
-Received: from pilot.trilug.org (2098.x.rootbsd.net [208.79.82.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EE2168758A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 17:56:04 +0000 (UTC)
-Received: by pilot.trilug.org (Postfix, from userid 8)
- id 500A8169825; Thu, 12 Sep 2019 13:50:46 -0400 (EDT)
-Received: from michaelmarley.com
- (cpe-2606-A000-BFC0-90-509-B1D3-C76D-19C7.dyn6.twc.com
- [IPv6:2606:a000:bfc0:90:509:b1d3:c76d:19c7])
- (using TLSv1.2 with cipher ADH-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by pilot.trilug.org (Postfix) with ESMTPSA id 8CED01697EC;
- Thu, 12 Sep 2019 13:50:44 -0400 (EDT)
-Received: from michaelmarley.com (localhost [127.0.0.1])
- by michaelmarley.com (Postfix) with ESMTP id 18E69180170;
- Thu, 12 Sep 2019 13:50:43 -0400 (EDT)
-Received: from michaelmarley.com ([::1]) by michaelmarley.com with ESMTPA
- id ndTdBXOFel1wLAIAnAHMIA
- (envelope-from <michael@michaelmarley.com>); Thu, 12 Sep 2019 13:50:43 -0400
-MIME-Version: 1.0
-Date: Thu, 12 Sep 2019 13:50:43 -0400
-From: Michael Marley <michael@michaelmarley.com>
-To: Steffen Klassert <steffen.klassert@secunet.com>
-In-Reply-To: <20190912110144.GS2879@gauss3.secunet.de>
+ with ESMTP id xkLeuH1JhPop for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Sep 2019 17:59:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f193.google.com (mail-pg1-f193.google.com
+ [209.85.215.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9838320461
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 17:59:16 +0000 (UTC)
+Received: by mail-pg1-f193.google.com with SMTP id i18so13849724pgl.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Sep 2019 10:59:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=fU94P9hwVGyhG8ICrisnAfDeINw9lHggTBZKjaGwp4M=;
+ b=mon7n7py1ymEe/kHzdHl7vQdeMmp4tt1UkwgH9mB+9XfrGdcV8Alx7awVyqwFyv6hA
+ mnXXobrFe+LBqVhGyB9APBeJPV9b6tw0jA1ZEEbO7B8zZvG1t977RGVfP5423dwo3+qk
+ 5Nt/eQ068MXvfs0xnKI/qoxqA3YTDZ9p07zTL6zz4SziaehufgEqlhI3d/VQr6D5cu/V
+ AqodTJ+Xwn6ZF8ze+YhMFoN11dTAxSKw2Jqv5QxyhCyUg9mtHgkml1WD1RH8ykCyrCUB
+ c6nadyxVxKlFwsOpsHY3As3eUZsAHWxyCGhF+EMWkPP0s2undNsxrJy6PruLOAUV78ow
+ UXCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=fU94P9hwVGyhG8ICrisnAfDeINw9lHggTBZKjaGwp4M=;
+ b=je8AFsdEVIIRYGIM4fmNt/jCf9AmiAvfuicBhHs+o2Iq7H9rzpB4M29KeNZaZmU0MC
+ OZpavMkBooKklD6DJAObhyHrjT2oOPnxVoGv6YgFqAVSM1nj9TcypwIv2jNDDqUzji8B
+ EtC7GW3bi+cBz8WQ+WxJ12AFeGbkoJyConeKprF5vwODeJHjRVv2TmqGHNTpv3hyA4Gk
+ geov7pKdJb47IN88CbeH2TibIx9N3TSnt/i+pDgEdUxwAzPcsHWeTYSRYlYzNWEiX2Fc
+ lQ9I+Q9r4SeUTRbJ22WDaN7ESH8T0/fhZ9W3TsSBFXHq3MVbi7vn+Z8k8w3Kj272YYl9
+ ju5w==
+X-Gm-Message-State: APjAAAX6BqgNbScpNwxJgVSHNbOqAdkZZE3z2zPpQKHI2hxy9UijMgFf
+ NUsJTAvLodzInYddWe/55unkOQ==
+X-Google-Smtp-Source: APXvYqzXy64H/Klv1ecPnfnSaxipUAH/IWTQxFWZ238j8JeZTwU17ePi6h3Q3jSp081YMznW2xr1Nw==
+X-Received: by 2002:a62:e216:: with SMTP id a22mr34828884pfi.249.1568310854411; 
+ Thu, 12 Sep 2019 10:54:14 -0700 (PDT)
+Received: from Shannons-MacBook-Pro.local ([12.1.37.26])
+ by smtp.gmail.com with ESMTPSA id b185sm31875932pfg.14.2019.09.12.10.54.11
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 12 Sep 2019 10:54:13 -0700 (PDT)
+To: Jonathan Tooker <jonathan@reliablehosting.com>,
+ Steffen Klassert <steffen.klassert@secunet.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, intel-wired-lan@lists.osuosl.org
 References: <20190912110144.GS2879@gauss3.secunet.de>
-User-Agent: Roundcube Webmail/1.4-rc1
-Message-ID: <10aeb092a51c85563b37622417de51e3@michaelmarley.com>
-X-Sender: michael@michaelmarley.com
+ <9d94bd04-c6fa-d275-97bc-5d589304f038@reliablehosting.com>
+From: Shannon Nelson <snelson@pensando.io>
+Message-ID: <21ead3ce-25d8-8be8-d7e6-46450fcd38b8@pensando.io>
+Date: Thu, 12 Sep 2019 18:54:10 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
+ Gecko/20100101 Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <9d94bd04-c6fa-d275-97bc-5d589304f038@reliablehosting.com>
+Content-Language: en-US
 X-Mailman-Approved-At: Thu, 12 Sep 2019 18:33:01 +0000
 Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Fix secpath usage for IPsec TX
  offload.
@@ -70,55 +93,23 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Shannon Nelson <snelson@pensando.io>,
- intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: netdev@vger.kernel.org, Michael Marley <michael@michaelmarley.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2019-09-12 07:01, Steffen Klassert wrote:
-> The ixgbe driver currently does IPsec TX offloading
-> based on an existing secpath. However, the secpath
-> can also come from the RX side, in this case it is
-> misinterpreted for TX offload and the packets are
-> dropped with a "bad sa_idx" error. Fix this by using
-> the xfrm_offload() function to test for TX offload.
-> 
-> Fixes: 592594704761 ("ixgbe: process the Tx ipsec offload")
-> Reported-by: Michael Marley <michael@michaelmarley.com>
-> Signed-off-by: Steffen Klassert <steffen.klassert@secunet.com>
-
-Tested-by: Michael Marley <michael@michaelmarley.com>
-
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index 9bcae44e9883..ae31bd57127c 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -36,6 +36,7 @@
->  #include <net/vxlan.h>
->  #include <net/mpls.h>
->  #include <net/xdp_sock.h>
-> +#include <net/xfrm.h>
-> 
->  #include "ixgbe.h"
->  #include "ixgbe_common.h"
-> @@ -8696,7 +8697,7 @@ netdev_tx_t ixgbe_xmit_frame_ring(struct sk_buff 
-> *skb,
->  #endif /* IXGBE_FCOE */
-> 
->  #ifdef CONFIG_IXGBE_IPSEC
-> -	if (secpath_exists(skb) &&
-> +	if (xfrm_offload(skb) &&
->  	    !ixgbe_ipsec_tx(tx_ring, first, &ipsec_tx))
->  		goto out_drop;
->  #endif
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gOS8xMi8xOSA1OjMzIFBNLCBKb25hdGhhbiBUb29rZXIgd3JvdGU6Cj4gT24gOS8xMi8yMDE5
+IDY6MDEgQU0sIFN0ZWZmZW4gS2xhc3NlcnQgd3JvdGU6Cj4+IFRoZSBpeGdiZSBkcml2ZXIgY3Vy
+cmVudGx5IGRvZXMgSVBzZWMgVFggb2ZmbG9hZGluZwo+PiBiYXNlZCBvbiBhbiBleGlzdGluZyBz
+ZWNwYXRoLiBIb3dldmVyLCB0aGUgc2VjcGF0aAo+PiBjYW4gYWxzbyBjb21lIGZyb20gdGhlIFJY
+IHNpZGUsIGluIHRoaXMgY2FzZSBpdCBpcwo+PiBtaXNpbnRlcnByZXRlZCBmb3IgVFggb2ZmbG9h
+ZCBhbmQgdGhlIHBhY2tldHMgYXJlCj4+IGRyb3BwZWQgd2l0aCBhICJiYWQgc2FfaWR4IiBlcnJv
+ci4gRml4IHRoaXMgYnkgdXNpbmcKPj4gdGhlIHhmcm1fb2ZmbG9hZCgpIGZ1bmN0aW9uIHRvIHRl
+c3QgZm9yIFRYIG9mZmxvYWQuCj4+Cj4gRG9lcyB0aGlzIHBhdGNoIGFsc28gbmVlZCB0byBiZSBw
+b3J0ZWQgdG8gdGhlIGl4Z2JldmYgZHJpdmVyPyBJIGNhbiAKPiByZXBsaWNhdGUgdGhlIGJhZCBz
+YV9pZHggZXJyb3IgdXNpbmcgYSBWTSB0aGF0J3MgdXNpbmcgYSBWRiAmIHRoZSAKPiBpeGdlYnZm
+wqAgZHJpdmVyLgo+CgpZZXMuCnNsbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
+bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
+dGVsLXdpcmVkLWxhbgo=
