@@ -1,66 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C232BB293E
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Sep 2019 03:15:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0CFDB2944
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Sep 2019 03:20:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7D4A6882F0;
-	Sat, 14 Sep 2019 01:15:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 283628665E;
+	Sat, 14 Sep 2019 01:20:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xunug0f5YY1i; Sat, 14 Sep 2019 01:15:45 +0000 (UTC)
+	with ESMTP id RX6Wtchf-s2E; Sat, 14 Sep 2019 01:20:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 414368838F;
-	Sat, 14 Sep 2019 01:15:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 52D0C8665F;
+	Sat, 14 Sep 2019 01:20:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 37D811BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Sep 2019 01:15:43 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 80C5E1BF4E3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Sep 2019 01:20:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2EAB588334
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Sep 2019 01:15:43 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7B36F86500
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Sep 2019 01:20:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WC3Ttecs6ze6 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Sep 2019 01:15:41 +0000 (UTC)
+ with ESMTP id 2l9yFXeiujZ9 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Sep 2019 01:20:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 906AE882F0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Sep 2019 01:15:41 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2644E864EA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Sep 2019 01:20:34 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Sep 2019 18:15:40 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Sep 2019 18:20:33 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,503,1559545200"; d="scan'208";a="185279529"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by fmsmga008.fm.intel.com with ESMTP; 13 Sep 2019 18:15:40 -0700
-Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 13 Sep 2019 18:15:39 -0700
+X-IronPort-AV: E=Sophos;i="5.64,492,1559545200"; d="scan'208";a="179856878"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga008.jf.intel.com with ESMTP; 13 Sep 2019 18:20:33 -0700
+Received: from orsmsx112.amr.corp.intel.com (10.22.240.13) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 13 Sep 2019 18:20:33 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.221]) by
- ORSMSX151.amr.corp.intel.com ([169.254.7.201]) with mapi id 14.03.0439.000;
- Fri, 13 Sep 2019 18:15:39 -0700
+ ORSMSX112.amr.corp.intel.com ([169.254.3.89]) with mapi id 14.03.0439.000;
+ Fri, 13 Sep 2019 18:20:32 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Wenwen Wang <wenwen@cs.uga.edu>
-Thread-Topic: [PATCH] e1000: fix memory leaks
-Thread-Index: AQHVapnrDYrnlrBttEqplt4FS5pEXg==
-Date: Sat, 14 Sep 2019 01:15:38 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971184F9@ORSMSX103.amr.corp.intel.com>
-References: <1565589561-5910-1-git-send-email-wenwen@cs.uga.edu>
-In-Reply-To: <1565589561-5910-1-git-send-email-wenwen@cs.uga.edu>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v1] igc: Add SCTP CRC checksumming
+ functionality
+Thread-Index: AQHVapqa83VhlhjRrE+GrWUtmrzgiA==
+Date: Sat, 14 Sep 2019 01:20:32 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B97118509@ORSMSX103.amr.corp.intel.com>
+References: <20190911081758.42233-1-sasha.neftin@intel.com>
+In-Reply-To: <20190911081758.42233-1-sasha.neftin@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] e1000: fix memory leaks
+Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Add SCTP CRC checksumming
+ functionality
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,24 +76,18 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 2019-08-12 at 00:59 -0500, Wenwen Wang wrote:
-> In e1000_set_ringparam(), 'tx_old' and 'rx_old' are not deallocated if
-> e1000_up() fails, leading to memory leaks. Refactor the code to fix this
-> issue.
+On Wed, 2019-09-11 at 11:17 +0300, Sasha Neftin wrote:
+> Add stream control transmission protocol CRC checksum.
 > 
-> Signed-off-by: Wenwen Wang <wenwen@cs.uga.edu>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->  drivers/net/ethernet/intel/e1000/e1000_ethtool.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc_main.c | 1 +
+>  1 file changed, 1 insertion(+)
 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
