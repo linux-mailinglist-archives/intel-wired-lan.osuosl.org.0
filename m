@@ -2,71 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A13DB6DAF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Sep 2019 22:30:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E8215B72D9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Sep 2019 07:48:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BD10687D48;
-	Wed, 18 Sep 2019 20:30:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B9C7187D6A;
+	Thu, 19 Sep 2019 05:48:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uEtB9QPMCxR0; Wed, 18 Sep 2019 20:30:14 +0000 (UTC)
+	with ESMTP id itmqRagQHSr0; Thu, 19 Sep 2019 05:48:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6A41087D7C;
-	Wed, 18 Sep 2019 20:30:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 76C4A86A2E;
+	Thu, 19 Sep 2019 05:48:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1BB341BF311
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Sep 2019 20:30:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A881A1BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Sep 2019 05:48:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 16356867ED
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Sep 2019 20:30:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 96E388605E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Sep 2019 05:48:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wgEMpl28-RdC for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Sep 2019 20:30:12 +0000 (UTC)
+ with ESMTP id FzrUafxB7dyD for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Sep 2019 05:48:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5AD3D8347D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Sep 2019 20:30:12 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id a1so2338909ioc.6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Sep 2019 13:30:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CkL04XTfdSBz7OxOcTxfIsjy+ZftzKx8BMGRuP5s8gg=;
- b=NlHb6CUQzZPz+mkbQxY4kFFYZMEAn4/+iq7d9GfK/79fOfamHmVstKhktDlW+XYt9V
- RNzYtNTySb9tLUjgV78sPtVJBrirt/jBP4cGGLbjRABzvnPcUjbNpmW6DnAWfm61R4jR
- /FxoGZnTFFAX7SUIS78ctL2PP0Z1fHuuef18Utxzffmr+J2AvVMqFodtc0YC9n7xG+Lg
- 8ugPT9z/y3dNdKGmxCno2wGMdLAEYzynFbY1NBwBvDzpnT2YdRmwwEFFgqp6G+aFYfeo
- Mk8vO5Eiger1lXYzJ4R2be7i346NDQO9j2423jikXy308j1Q9eJ/JwwPzJdDEgkCwO1p
- Noog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CkL04XTfdSBz7OxOcTxfIsjy+ZftzKx8BMGRuP5s8gg=;
- b=hRa5SPeJ/ABmtqTshH3ehnyJUx+EloM3PoPlCv4Pl+zc3xLW93Ifx1iWkwtFNwEsoX
- PK1+Igfui8gN/NcBZtbrFq8GhqbbQ28MiaCIP5P28/zcK0q+koGSi3ltKhC+d0rkyA52
- GXhmavmGbvq093Aotl24oDrOUsfr47wnqA2U2T/yBdxMPDvLx5WD9DG8o81fBC0i2hO5
- 3Byt01PCNWk4CViAL8UBQ76dykndpxy3f91/QyxUO18/Ojk5eaaPjKlmPIEsS6sCUy7p
- ccjB2gX37/ovd1CGoh0lslkezEDamuGkRVRWMm0OLHfIBoFSM/IUUf9Na2v8kHfbiiAu
- /Baw==
-X-Gm-Message-State: APjAAAVKi4zondJ1NwcSjHBG7MyFhLpNPclMls4MQGa3AOLrXM0+zSj2
- lVDfnv4LI6E0Z1waEusE1QZkP9b2P+6/O4HYtw4=
-X-Google-Smtp-Source: APXvYqzv8tYh25u0Z466hhSLLuCX7LNEsyDtE0GaYazbzY3B/3Xjhn6qy9IUJQfG5f5kKSvQRuycZLKaRuM7rcnhFS8=
-X-Received: by 2002:a6b:720a:: with SMTP id n10mr3491629ioc.64.1568838610198; 
- Wed, 18 Sep 2019 13:30:10 -0700 (PDT)
-MIME-Version: 1.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E3A1585FEF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Sep 2019 05:48:27 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2019 22:48:26 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,522,1559545200"; d="scan'208";a="187986001"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
+ ([10.185.23.132])
+ by fmsmga007.fm.intel.com with ESMTP; 18 Sep 2019 22:48:25 -0700
+To: Alexander Duyck <alexander.duyck@gmail.com>,
+ David Arcari <darcari@redhat.com>
 References: <20190910070512.31391-1-sasha.neftin@intel.com>
  <d0ecf9ed-f12f-f204-5223-6f845150a56d@redhat.com>
-In-Reply-To: <d0ecf9ed-f12f-f204-5223-6f845150a56d@redhat.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Wed, 18 Sep 2019 13:29:58 -0700
-Message-ID: <CAKgT0Ue2rti-T1F9N02ejv2qgQuu7pM6aFCh7QJSys-B2MiNBw@mail.gmail.com>
-To: David Arcari <darcari@redhat.com>
+ <CAKgT0Ue2rti-T1F9N02ejv2qgQuu7pM6aFCh7QJSys-B2MiNBw@mail.gmail.com>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <6c527dc7-e4f4-0cee-657e-e35af31c91fd@intel.com>
+Date: Thu, 19 Sep 2019 08:48:24 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <CAKgT0Ue2rti-T1F9N02ejv2qgQuu7pM6aFCh7QJSys-B2MiNBw@mail.gmail.com>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Add set_rx_mode support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -81,32 +68,55 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 18, 2019 at 12:29 PM David Arcari <darcari@redhat.com> wrote:
->
-> Hi,
->
-> On 09/10/2019 03:05 AM, Sasha Neftin wrote:
-> > Add multicast addresses list to the MTA table.
-> > Implement promiscious mode and add basic rx mode support.
-> > Add option for ipv6 address settings.
-> >
-> > Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
->
-> This seems to break ipv4 communication over vlans:
+On 9/18/2019 23:29, Alexander Duyck wrote:
+> On Wed, Sep 18, 2019 at 12:29 PM David Arcari <darcari@redhat.com> wrote:
+>>
+>> Hi,
+>>
+>> On 09/10/2019 03:05 AM, Sasha Neftin wrote:
+>>> Add multicast addresses list to the MTA table.
+>>> Implement promiscious mode and add basic rx mode support.
+>>> Add option for ipv6 address settings.
+>>>
+>>> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+>>
+>> This seems to break ipv4 communication over vlans:
+> 
+Please, use follow commands for ipv6:
+ip -6 addr add <ipv6address>/<prefixlength> dev <interface>
 
-Why is this code messing with the VLANs? The patch description says it
-is enabling multicast and the MTA but it is messing with the VFTA
-table as well. That is probably what broke the VLANs.
+Example:
+sudo ip -6 addr add fe80::2a0:c9ff:fe00:2/64 dev enp5s0
 
-I don't see the bits to support ndo_vlan_rx_[add|kill]_vid and without
-that it will break VLANs since the driver is filtering them unless
-promiscuous filtering is enabled. The VLAN changes should be moved
-into a separate patch.
+Remove ipv6 address:
+sudo ip -6 addr del fe80::2a0:c9ff:fe00:2/64 dev enp5s0
+
+ping -6 -I <interface> <address>
+Example:
+ping -6 -I enp4s0 fe80::2a0:c9ff:fe00:1
+I've checked it on my side and looks ipv4 and ipv6 works.
+Let me not agree with you in regards to break ipv4 communication over 
+vlan. Since vlan not supported yet it can not be broken.
+I am working to add VLAN support in my next patches.
+
+> Why is this code messing with the VLANs? The patch description says it
+> is enabling multicast and the MTA but it is messing with the VFTA
+> table as well. That is probably what broke the VLANs.
+> 
+> I don't see the bits to support ndo_vlan_rx_[add|kill]_vid and without
+> that it will break VLANs since the driver is filtering them unless
+> promiscuous filtering is enabled. The VLAN changes should be moved
+> into a separate patch.
+> 
+You are right. Few lines related to VFTA present here. Sorry about that. 
+I did not mention add support for VLAN tagged frames in this patch. I 
+plan to add VLAN support in my next patches.
+Sasha
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
