@@ -1,55 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FAA1BF8E8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Sep 2019 20:11:33 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A889CBFAEC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Sep 2019 23:29:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E2C0487EA0;
-	Thu, 26 Sep 2019 18:11:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3C2E081E21;
+	Thu, 26 Sep 2019 21:29:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6-KvryXYHTsH; Thu, 26 Sep 2019 18:11:31 +0000 (UTC)
+	with ESMTP id w4Cz2tTl6464; Thu, 26 Sep 2019 21:29:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6FD8787E81;
-	Thu, 26 Sep 2019 18:11:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1E157827CC;
+	Thu, 26 Sep 2019 21:29:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1A0671BF336
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 56FE41BF3A7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 21:29:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 16E208625F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4A79020337
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 21:29:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3Jleo64xRJl3 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Sep 2019 18:11:29 +0000 (UTC)
+ with ESMTP id PVp5IsJb0KbG for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Sep 2019 21:29:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A333D861CE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:29 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 53F272037E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 21:29:08 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Sep 2019 11:11:29 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Sep 2019 14:29:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,552,1559545200"; d="scan'208";a="364882919"
+X-IronPort-AV: E=Sophos;i="5.64,553,1559545200"; d="scan'208";a="389758884"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.172])
- by orsmga005.jf.intel.com with ESMTP; 26 Sep 2019 11:11:29 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 26 Sep 2019 14:29:07 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-To: netdev@vger.kernel.org
-Date: Thu, 26 Sep 2019 11:11:09 -0700
-Message-Id: <20190926181109.4871-8-jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Jeffrey Kirsher <jeffrey.t.kirsher@intel.com>
+Date: Thu, 26 Sep 2019 14:29:04 -0700
+Message-Id: <20190926212904.27184-1-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.23.0.245.gf157bbb9169d
-In-Reply-To: <20190926181109.4871-1-jacob.e.keller@intel.com>
-References: <20190926181109.4871-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next v3 7/7] renesas: reject unsupported
- external timestamp flags
+Subject: [Intel-wired-lan] [PATCH] fm10k: update driver version to match
+ out-of-tree
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,44 +61,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix the renesas PTP support to explicitly reject any future flags that
-get added to the external timestamp request ioctl.
+An upcoming out-of-tree release will be occurring which will include the
+recent functionality to support virtual function statistics. Update the
+kernel driver version to match this.
 
-In order to maintain currently functioning code, this patch accepts all
-three current flags. This is because the PTP_RISING_EDGE and
-PTP_FALLING_EDGE flags have unclear semantics and each driver seems to
-have interpreted them slightly differently.
-
-Cc: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/renesas/ravb_ptp.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/net/ethernet/intel/fm10k/fm10k_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/renesas/ravb_ptp.c b/drivers/net/ethernet/renesas/ravb_ptp.c
-index 638f1fc2166f..666dbee48097 100644
---- a/drivers/net/ethernet/renesas/ravb_ptp.c
-+++ b/drivers/net/ethernet/renesas/ravb_ptp.c
-@@ -182,6 +182,12 @@ static int ravb_ptp_extts(struct ptp_clock_info *ptp,
- 	struct net_device *ndev = priv->ndev;
- 	unsigned long flags;
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_main.c b/drivers/net/ethernet/intel/fm10k/fm10k_main.c
+index 2be9222510e7..17738b0a9873 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_main.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_main.c
+@@ -11,7 +11,7 @@
  
-+	/* Reject requests with unsupported flags */
-+	if (req->flags & ~(PTP_ENABLE_FEATURE |
-+			   PTP_RISING_EDGE |
-+			   PTP_FALLING_EDGE))
-+		return -EOPNOTSUPP;
-+
- 	if (req->index)
- 		return -EINVAL;
+ #include "fm10k.h"
  
+-#define DRV_VERSION	"0.26.1-k"
++#define DRV_VERSION	"0.27.1-k"
+ #define DRV_SUMMARY	"Intel(R) Ethernet Switch Host Interface Driver"
+ const char fm10k_driver_version[] = DRV_VERSION;
+ char fm10k_driver_name[] = "fm10k";
 -- 
 2.23.0.245.gf157bbb9169d
 
