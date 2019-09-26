@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23F71BF8DF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Sep 2019 20:11:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C47BBF8E0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Sep 2019 20:11:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D153A87E9C;
-	Thu, 26 Sep 2019 18:11:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E2DC086200;
+	Thu, 26 Sep 2019 18:11:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V0Yy4PorFEAd; Thu, 26 Sep 2019 18:11:22 +0000 (UTC)
+	with ESMTP id TGK9Wwup7thG; Thu, 26 Sep 2019 18:11:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 39CD887E99;
-	Thu, 26 Sep 2019 18:11:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7E0A5861F4;
+	Thu, 26 Sep 2019 18:11:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5B4E91BF336
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4F4841BF336
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 58221861B2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4BF00861B2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id btrMo9owl4zt for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Sep 2019 18:11:19 +0000 (UTC)
+ with ESMTP id DA5yDr_tS_kF for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Sep 2019 18:11:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A006881A2B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9D3AB81A2B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Sep 2019 18:11:22 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Sep 2019 11:11:19 -0700
+ 26 Sep 2019 11:11:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,552,1559545200"; d="scan'208";a="364882879"
+X-IronPort-AV: E=Sophos;i="5.64,552,1559545200"; d="scan'208";a="364882885"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.172])
- by orsmga005.jf.intel.com with ESMTP; 26 Sep 2019 11:11:19 -0700
+ by orsmga005.jf.intel.com with ESMTP; 26 Sep 2019 11:11:22 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: netdev@vger.kernel.org
-Date: Thu, 26 Sep 2019 11:11:03 -0700
-Message-Id: <20190926181109.4871-2-jacob.e.keller@intel.com>
+Date: Thu, 26 Sep 2019 11:11:04 -0700
+Message-Id: <20190926181109.4871-3-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.23.0.245.gf157bbb9169d
 In-Reply-To: <20190926181109.4871-1-jacob.e.keller@intel.com>
 References: <20190926181109.4871-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-next v3 1/7] ptp: correctly disable flags on
- old ioctls
+Subject: [Intel-wired-lan] [net-next v3 2/7] net: reject PTP periodic output
+ requests with unsupported flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,36 +72,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 415606588c61 ("PTP: introduce new versions of IOCTLs",
-2019-09-13) introduced new versions of the PTP ioctls which actually
-validate that the flags are acceptable values.
+Commit 823eb2a3c4c7 ("PTP: add support for one-shot output") introduced
+a new flag for the PTP periodic output request ioctl. This flag is not
+currently supported by any driver.
 
-As part of this, it cleared the flags value using a bitwise
-and+negation, in an attempt to prevent the old ioctl from accidentally
-enabling new features.
+Fix all drivers which implement the periodic output request ioctl to
+explicitly reject any request with flags they do not understand. This
+ensures that the driver does not accidentally misinterpret the
+PTP_PEROUT_ONE_SHOT flag, or any new flag introduced in the future.
 
-This is incorrect for a couple of reasons. First, it results in
-accidentally preventing previously working flags on the request ioctl.
-By clearing the "valid" flags, we now no longer allow setting the
-enable, rising edge, or falling edge flags.
-
-Second, if we add new additional flags in the future, they must not be
-set by the old ioctl. (Since the flag wasn't checked before, we could
-potentially break userspace programs which sent garbage flag data.
-
-The correct way to resolve this is to check for and clear all but the
-originally valid flags.
-
-Create defines indicating which flags are correctly checked and
-interpreted by the original ioctls. Use these to clear any bits which
-will not be correctly interpreted by the original ioctls.
-
-In the future, new flags must be added to the VALID_FLAGS macros, but
-*not* to the V1_VALID_FLAGS macros. In this way, new features may be
-exposed over the v2 ioctls, but without breaking previous userspace
-which happened to not clear the flags value properly. The old ioctl will
-continue to behave the same way, while the new ioctl gains the benefit
-of using the flags fields.
+This is important for forward compatibility: if a new flag is
+introduced, the driver should reject requests to enable the flag until
+the driver has actually been modified to support the flag in question.
 
 Cc: Richard Cochran <richardcochran@gmail.com>
 Cc: Felipe Balbi <felipe.balbi@linux.intel.com>
@@ -109,74 +91,119 @@ Cc: David S. Miller <davem@davemloft.net>
 Cc: Christopher Hall <christopher.s.hall@intel.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/ptp/ptp_chardev.c      |  4 ++--
- include/uapi/linux/ptp_clock.h | 22 ++++++++++++++++++++++
- 2 files changed, 24 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/broadcom/tg3.c                 | 4 ++++
+ drivers/net/ethernet/intel/igb/igb_ptp.c            | 4 ++++
+ drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c | 4 ++++
+ drivers/net/ethernet/microchip/lan743x_ptp.c        | 4 ++++
+ drivers/net/ethernet/renesas/ravb_ptp.c             | 4 ++++
+ drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c    | 4 ++++
+ drivers/net/phy/dp83640.c                           | 3 +++
+ 7 files changed, 27 insertions(+)
 
-diff --git a/drivers/ptp/ptp_chardev.c b/drivers/ptp/ptp_chardev.c
-index 9c18476d8d10..67d0199840fd 100644
---- a/drivers/ptp/ptp_chardev.c
-+++ b/drivers/ptp/ptp_chardev.c
-@@ -155,7 +155,7 @@ long ptp_ioctl(struct posix_clock *pc, unsigned int cmd, unsigned long arg)
- 			err = -EINVAL;
- 			break;
- 		} else if (cmd == PTP_EXTTS_REQUEST) {
--			req.extts.flags &= ~PTP_EXTTS_VALID_FLAGS;
-+			req.extts.flags &= PTP_EXTTS_V1_VALID_FLAGS;
- 			req.extts.rsv[0] = 0;
- 			req.extts.rsv[1] = 0;
- 		}
-@@ -184,7 +184,7 @@ long ptp_ioctl(struct posix_clock *pc, unsigned int cmd, unsigned long arg)
- 			err = -EINVAL;
- 			break;
- 		} else if (cmd == PTP_PEROUT_REQUEST) {
--			req.perout.flags &= ~PTP_PEROUT_VALID_FLAGS;
-+			req.perout.flags &= PTP_PEROUT_V1_VALID_FLAGS;
- 			req.perout.rsv[0] = 0;
- 			req.perout.rsv[1] = 0;
- 			req.perout.rsv[2] = 0;
-diff --git a/include/uapi/linux/ptp_clock.h b/include/uapi/linux/ptp_clock.h
-index f16301015949..59e89a1bc3bb 100644
---- a/include/uapi/linux/ptp_clock.h
-+++ b/include/uapi/linux/ptp_clock.h
-@@ -31,15 +31,37 @@
- #define PTP_ENABLE_FEATURE (1<<0)
- #define PTP_RISING_EDGE    (1<<1)
- #define PTP_FALLING_EDGE   (1<<2)
-+
-+/*
-+ * flag fields valid for the new PTP_EXTTS_REQUEST2 ioctl.
-+ */
- #define PTP_EXTTS_VALID_FLAGS	(PTP_ENABLE_FEATURE |	\
- 				 PTP_RISING_EDGE |	\
- 				 PTP_FALLING_EDGE)
+diff --git a/drivers/net/ethernet/broadcom/tg3.c b/drivers/net/ethernet/broadcom/tg3.c
+index 77f3511b97de..ca3aa1250dd1 100644
+--- a/drivers/net/ethernet/broadcom/tg3.c
++++ b/drivers/net/ethernet/broadcom/tg3.c
+@@ -6280,6 +6280,10 @@ static int tg3_ptp_enable(struct ptp_clock_info *ptp,
  
-+/*
-+ * flag fields valid for the original PTP_EXTTS_REQUEST ioctl.
-+ * DO NOT ADD NEW FLAGS HERE.
-+ */
-+#define PTP_EXTTS_V1_VALID_FLAGS	(PTP_ENABLE_FEATURE |	\
-+					 PTP_RISING_EDGE |	\
-+					 PTP_FALLING_EDGE)
+ 	switch (rq->type) {
+ 	case PTP_CLK_REQ_PEROUT:
++		/* Reject requests with unsupported flags */
++		if (rq->perout.flags)
++			return -EOPNOTSUPP;
 +
- /*
-  * Bits of the ptp_perout_request.flags field:
-  */
- #define PTP_PEROUT_ONE_SHOT (1<<0)
+ 		if (rq->perout.index != 0)
+ 			return -EINVAL;
+ 
+diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
+index fd3071f55bd3..4997963149f6 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ptp.c
++++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+@@ -551,6 +551,10 @@ static int igb_ptp_feature_enable_i210(struct ptp_clock_info *ptp,
+ 		return 0;
+ 
+ 	case PTP_CLK_REQ_PEROUT:
++		/* Reject requests with unsupported flags */
++		if (rq->perout.flags)
++			return -EOPNOTSUPP;
 +
-+/*
-+ * flag fields valid for the new PTP_PEROUT_REQUEST2 ioctl.
-+ */
- #define PTP_PEROUT_VALID_FLAGS	(PTP_PEROUT_ONE_SHOT)
+ 		if (on) {
+ 			pin = ptp_find_pin(igb->ptp_clock, PTP_PF_PEROUT,
+ 					   rq->perout.index);
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c b/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c
+index 0059b290e095..cff6b60de304 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c
+@@ -290,6 +290,10 @@ static int mlx5_perout_configure(struct ptp_clock_info *ptp,
+ 	if (!MLX5_PPS_CAP(mdev))
+ 		return -EOPNOTSUPP;
+ 
++	/* Reject requests with unsupported flags */
++	if (rq->perout.flags)
++		return -EOPNOTSUPP;
 +
-+/*
-+ * No flags are valid for the original PTP_PEROUT_REQUEST ioctl
-+ */
-+#define PTP_PEROUT_V1_VALID_FLAGS	(0)
+ 	if (rq->perout.index >= clock->ptp_info.n_pins)
+ 		return -EINVAL;
+ 
+diff --git a/drivers/net/ethernet/microchip/lan743x_ptp.c b/drivers/net/ethernet/microchip/lan743x_ptp.c
+index 57b26c2acf87..e8fe9a90fe4f 100644
+--- a/drivers/net/ethernet/microchip/lan743x_ptp.c
++++ b/drivers/net/ethernet/microchip/lan743x_ptp.c
+@@ -429,6 +429,10 @@ static int lan743x_ptp_perout(struct lan743x_adapter *adapter, int on,
+ 	int pulse_width = 0;
+ 	int perout_bit = 0;
+ 
++	/* Reject requests with unsupported flags */
++	if (perout->flags)
++		return -EOPNOTSUPP;
 +
- /*
-  * struct ptp_clock_time - represents a time value
-  *
+ 	if (!on) {
+ 		lan743x_ptp_perout_off(adapter);
+ 		return 0;
+diff --git a/drivers/net/ethernet/renesas/ravb_ptp.c b/drivers/net/ethernet/renesas/ravb_ptp.c
+index 9a42580693cb..638f1fc2166f 100644
+--- a/drivers/net/ethernet/renesas/ravb_ptp.c
++++ b/drivers/net/ethernet/renesas/ravb_ptp.c
+@@ -211,6 +211,10 @@ static int ravb_ptp_perout(struct ptp_clock_info *ptp,
+ 	unsigned long flags;
+ 	int error = 0;
+ 
++	/* Reject requests with unsupported flags */
++	if (req->flags)
++		return -EOPNOTSUPP;
++
+ 	if (req->index)
+ 		return -EINVAL;
+ 
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c
+index 173493db038c..352dc4c68625 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c
+@@ -140,6 +140,10 @@ static int stmmac_enable(struct ptp_clock_info *ptp,
+ 
+ 	switch (rq->type) {
+ 	case PTP_CLK_REQ_PEROUT:
++		/* Reject requests with unsupported flags */
++		if (rq->perout.flags)
++			return -EOPNOTSUPP;
++
+ 		cfg = &priv->pps[rq->perout.index];
+ 
+ 		cfg->start.tv_sec = rq->perout.start.sec;
+diff --git a/drivers/net/phy/dp83640.c b/drivers/net/phy/dp83640.c
+index 6580094161a9..04ad77758920 100644
+--- a/drivers/net/phy/dp83640.c
++++ b/drivers/net/phy/dp83640.c
+@@ -491,6 +491,9 @@ static int ptp_dp83640_enable(struct ptp_clock_info *ptp,
+ 		return 0;
+ 
+ 	case PTP_CLK_REQ_PEROUT:
++		/* Reject requests with unsupported flags */
++		if (rq->perout.flags)
++			return -EOPNOTSUPP;
+ 		if (rq->perout.index >= N_PER_OUT)
+ 			return -EINVAL;
+ 		return periodic_output(clock, rq, on, rq->perout.index);
 -- 
 2.23.0.245.gf157bbb9169d
 
