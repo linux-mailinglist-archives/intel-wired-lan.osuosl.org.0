@@ -1,56 +1,126 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10574C03D7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2019 13:08:22 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BAC8786DD6;
-	Fri, 27 Sep 2019 11:08:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8bbC3j7-DfyX; Fri, 27 Sep 2019 11:08:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5B5AD86E00;
-	Fri, 27 Sep 2019 11:08:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D19141BF30E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 11:08:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F259C0849
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2019 17:05:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C785787FD2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 11:08:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3D7F588049;
+	Fri, 27 Sep 2019 15:05:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zgvx8oH3QVek; Fri, 27 Sep 2019 15:05:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 47AC988076;
+	Fri, 27 Sep 2019 15:05:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5660C1BF846
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 15:05:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 51F3D83BE0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 15:05:12 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DvvmqmokJhdO for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Sep 2019 11:08:16 +0000 (UTC)
+ with ESMTP id cHUGtRxPTkZV for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Sep 2019 15:05:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6EBFE87F84
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 11:08:16 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Sep 2019 04:08:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,555,1559545200"; d="scan'208";a="214796414"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 27 Sep 2019 04:08:14 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iDo6g-0002pG-9Z; Fri, 27 Sep 2019 19:08:14 +0800
-Date: Fri, 27 Sep 2019 19:07:15 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d8ded63.xia23y7Ikwty6rrI%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mout.web.de (mout.web.de [212.227.15.4])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8E4058209A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 15:05:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
+ s=dbaedf251592; t=1569596687;
+ bh=7OQDDfbSFacyo7PngsnLCG3ZXjNdxSRA7tH3Dzz4XK0=;
+ h=X-UI-Sender-Class:Cc:References:Subject:To:From:Date:In-Reply-To;
+ b=UWVArCmDua/OYVrTPe/0/vlE5UXAMn/xDkBDfuL7IUyRg9s8U1XIESr4YC8k3kzlP
+ UImA7chO16c1ks/3knpDLl7W1fg/7Qb7Ee8pS6Rkznf2h7K36Kt8K6CubrYHGo9OVb
+ ChWrk0AaKp/eeHcpZtdR+WoAUuKehEekq13WcLcA=
+X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
+Received: from [192.168.1.2] ([93.133.191.8]) by smtp.web.de (mrweb002
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 0Ls9F9-1i1fdo2uH1-013uC5; Fri, 27
+ Sep 2019 17:04:47 +0200
+References: <20190925154831.19044-1-navid.emamdoost@gmail.com>
+To: Navid Emamdoost <navid.emamdoost@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+From: Markus Elfring <Markus.Elfring@web.de>
+Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
+ 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 FEE=
+Message-ID: <8d7d8cf4-c016-d22c-c2cc-dc71ea407cb4@web.de>
+Date: Fri, 27 Sep 2019 17:04:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- 1b7a17eb0d4aff6ac41345f8c8326a714789da1c
+In-Reply-To: <20190925154831.19044-1-navid.emamdoost@gmail.com>
+Content-Language: en-US
+X-Provags-ID: V03:K1:kMweqxyk1Sd+3Q3V4q/NBQ39VnZP6siyyu6Jc1f0n+g2dKaq9NZ
+ g8oYD/c9IDPiCaxNfQ4LLlyFNdI54HN1qwzplSuMv/B6xacuUijdaSsYg+Xy8YUzndrlT5y
+ qEKuXnSGzSeer07BoYybT7Yxhl3BzCmEYkp4xC4elmauHI8NsgtYVJm7ivP9Esz9aIp7NcW
+ ljlat6B1TLlZoDH/5kobQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:BCQ/OYQARfA=:9UOg6doqeiWZVuGRqkohDL
+ u1SitWRTl7sRVaAGbce6qAlmugJDq2SwIc/tKYQa6HK/UDHAr5p8K12gJz/4LLxTyBZ68IkmP
+ IyUyDBZaBhCBKMVW/4mL1A0CWqRMGThwpaFK5NQh+C8oU+c1brlbzRwOMjEEUQXW+MRbNNB5t
+ gCej+eetnA/zxnxc/3sKev2o9h0cs3xfeHFd0dgN8heh2TT1ai8zWOhGt5nSEY9qIBY6l4tl0
+ pvplNhfTbo2n8ohxrgYGW8mkeMzoGMBtrzkTAom9MEo9Wqt/CgLA1YUgcXX5k2TSyxnTym8px
+ KyiaTsD7Hzta7rUAc7MIsYOqtLm3dQfP+qHqO2Jrj9QqdImkMBzf945wXfYqtk2ZfWH99vj9p
+ g1i+jO2SDXPTleWJx4owQUnaSp3xrDdN+z3AxkfOaUH+2twxqLiowxzNcfIuJiYkovgSA1pon
+ +dpHng2pdBKwQt3UhqV+TzctKh+6kuernVO+mdwGh2bb9gjPJKLjKA4RKDidEgtLe6kyo5i9e
+ 5gJ199NFPBqapS8xZX03SK+npP5QOTMymCuJcNkmLRDm2FXrGAaXmZduDQqVyXQ0ER62qlshu
+ ANN2wzSGezblcyToAv/Ut+oIL4w998RvPiwZp/20W06WHiPJpI6uXQzPc87qzhjwTCBKkfJ/U
+ UbJQcWxQpErDNJwMKoDN82jdJG2qEGN5c8eNl7exxNHVaPDA+wtUefAMbIdtIQ4CV4ZdJ4e9E
+ 1vf1/sbpFJXDjP7pymzAT/5NEpMJbhevnsOex4FX+6ul/aZVmGrNm2ekRcbT/UH/roKNYk3/x
+ 9cr1Q3LFcx6s226bn6Dhf/OJhEH64oZF/gVZjH90E1ZXrMSZxyeI0gxtoEX/k/zff9GT51+7I
+ 7HXKg0HsQ/IZTc3mQ9vXJhd1fJywaoro73NrFK+WLl+m/fWZSd8sm0JDaRAB7KzjBm/HQ2OfV
+ YTAGAGSy1k+mw25Gie8yseaUyxRbRAARR9f8S0cf59HP/cCGJI23jEvo6FP7fWs22yVOTtwCt
+ 2fnNZffh4L3IZ/5GhwW74vYm6fh0+isBjWbFNH17JmOTnteHDXBO/2u1XL6coZKgxRF1lig88
+ kd/JBaGVlR5bPHIbl3TpuECEViAFYeErbg4VDXW4+8DM5ywzsW/1YG0bGc8800BjTA4h9BfZo
+ 782biWfpE3VF85DMDPJHCixYuJaUGvIxI49EMW3tJ57pTYwnZq+eZecahYe8GsEJmxhkvZhIa
+ 2N27+HgGT8r0gviOY7dgcqvOlH9lit7AQ7YoM7XGCrK4lH7cQk5FoFrr7P00=
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: prevent memory leak in
+ i40e_setup_macvlans
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,170 +133,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: kernel-janitors@vger.kernel.org, Kangjie Lu <kjlu@umn.edu>,
+ linux-kernel@vger.kernel.org, Navid Emamdoost <emamd001@umn.edu>,
+ Stephen A McCamant <smccaman@umn.edu>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 1b7a17eb0d4aff6ac41345f8c8326a714789da1c  mlx5: reject unsupported external timestamp flags
+> In i40e_setup_macvlans if i40e_setup_channel fails the allocated memory
+> for ch should be released.
 
-elapsed time: 191m
+I suggest to improve also this change description.
 
-configs tested: 145
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -7168,6 +7168,7 @@ static int i40e_setup_macvlans(struct i40e_vsi *vsi, u16 macvlan_cnt, u16 qcnt,
+>  		ch->num_queue_pairs = qcnt;
+>  		if (!i40e_setup_channel(pf, vsi, ch)) {
+>  			ret = -EINVAL;
+> +			kfree(ch);
+>  			goto err_free;
+>  		}
+>  		ch->parent_vsi = vsi;
 
-x86_64                 randconfig-a001-201938
-x86_64                 randconfig-a002-201938
-x86_64                 randconfig-a003-201938
-x86_64                 randconfig-a004-201938
-i386                   randconfig-a001-201938
-i386                   randconfig-a002-201938
-i386                   randconfig-a003-201938
-i386                   randconfig-a004-201938
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                 randconfig-h003-201938
-x86_64                 randconfig-h002-201938
-i386                   randconfig-h001-201938
-i386                   randconfig-h002-201938
-x86_64                 randconfig-h004-201938
-i386                   randconfig-h004-201938
-i386                   randconfig-h003-201938
-x86_64                 randconfig-h001-201938
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-x86_64                 randconfig-d001-201938
-x86_64                 randconfig-d002-201938
-x86_64                 randconfig-d003-201938
-x86_64                 randconfig-d004-201938
-i386                   randconfig-d001-201938
-i386                   randconfig-d002-201938
-i386                   randconfig-d003-201938
-i386                   randconfig-d004-201938
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-x86_64                 randconfig-b001-201938
-x86_64                 randconfig-b002-201938
-x86_64                 randconfig-b003-201938
-x86_64                 randconfig-b004-201938
-i386                   randconfig-b001-201938
-i386                   randconfig-b002-201938
-i386                   randconfig-b003-201938
-i386                   randconfig-b004-201938
-x86_64                           allyesconfig
-i386                             allmodconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-x86_64                 randconfig-e001-201938
-x86_64                 randconfig-e002-201938
-x86_64                 randconfig-e003-201938
-x86_64                 randconfig-e004-201938
-i386                   randconfig-e001-201938
-i386                   randconfig-e002-201938
-i386                   randconfig-e003-201938
-i386                   randconfig-e004-201938
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-x86_64                 randconfig-g001-201938
-x86_64                 randconfig-g002-201938
-x86_64                 randconfig-g003-201938
-x86_64                 randconfig-g004-201938
-i386                   randconfig-g001-201938
-i386                   randconfig-g002-201938
-i386                   randconfig-g003-201938
-i386                   randconfig-g004-201938
-x86_64                 randconfig-f001-201938
-x86_64                 randconfig-f002-201938
-x86_64                 randconfig-f003-201938
-x86_64                 randconfig-f004-201938
-i386                   randconfig-f001-201938
-i386                   randconfig-f002-201938
-i386                   randconfig-f003-201938
-i386                   randconfig-f004-201938
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-x86_64                 randconfig-c001-201938
-x86_64                 randconfig-c002-201938
-x86_64                 randconfig-c003-201938
-x86_64                 randconfig-c004-201938
-i386                   randconfig-c001-201938
-i386                   randconfig-c002-201938
-i386                   randconfig-c003-201938
-i386                   randconfig-c004-201938
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-x86_64                           allmodconfig
+Can it matter to perform the added function call before the error code assignment?
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+Regards,
+Markus
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
