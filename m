@@ -1,126 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F259C0849
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2019 17:05:17 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77A42C099A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2019 18:30:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D7F588049;
-	Fri, 27 Sep 2019 15:05:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3930420478;
+	Fri, 27 Sep 2019 16:30:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zgvx8oH3QVek; Fri, 27 Sep 2019 15:05:14 +0000 (UTC)
+	with ESMTP id fOvIBABqkA8C; Fri, 27 Sep 2019 16:30:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 47AC988076;
-	Fri, 27 Sep 2019 15:05:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DBBDF227E1;
+	Fri, 27 Sep 2019 16:30:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5660C1BF846
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 15:05:12 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E77A21BF9AF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 16:30:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 51F3D83BE0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 15:05:12 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E196788072
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 16:30:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cHUGtRxPTkZV for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Sep 2019 15:05:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.15.4])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8E4058209A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 15:05:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1569596687;
- bh=7OQDDfbSFacyo7PngsnLCG3ZXjNdxSRA7tH3Dzz4XK0=;
- h=X-UI-Sender-Class:Cc:References:Subject:To:From:Date:In-Reply-To;
- b=UWVArCmDua/OYVrTPe/0/vlE5UXAMn/xDkBDfuL7IUyRg9s8U1XIESr4YC8k3kzlP
- UImA7chO16c1ks/3knpDLl7W1fg/7Qb7Ee8pS6Rkznf2h7K36Kt8K6CubrYHGo9OVb
- ChWrk0AaKp/eeHcpZtdR+WoAUuKehEekq13WcLcA=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from [192.168.1.2] ([93.133.191.8]) by smtp.web.de (mrweb002
- [213.165.67.108]) with ESMTPSA (Nemesis) id 0Ls9F9-1i1fdo2uH1-013uC5; Fri, 27
- Sep 2019 17:04:47 +0200
-References: <20190925154831.19044-1-navid.emamdoost@gmail.com>
-To: Navid Emamdoost <navid.emamdoost@gmail.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-From: Markus Elfring <Markus.Elfring@web.de>
-Autocrypt: addr=Markus.Elfring@web.de; prefer-encrypt=mutual; keydata=
- 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 FEE=
-Message-ID: <8d7d8cf4-c016-d22c-c2cc-dc71ea407cb4@web.de>
-Date: Fri, 27 Sep 2019 17:04:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ with ESMTP id gUtOKGkHF+MZ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Sep 2019 16:30:46 +0000 (UTC)
+X-Greylist: delayed 00:07:49 by SQLgrey-1.7.6
+Received: from mail-lf1-f48.google.com (mail-lf1-f48.google.com
+ [209.85.167.48])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E235B8804A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 16:30:45 +0000 (UTC)
+Received: by mail-lf1-f48.google.com with SMTP id r22so2401710lfm.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 09:30:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:organization:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=72Xx/EPPWYiryTjo7oGMmMO60iIhf9Bs3K+zVKrMlYM=;
+ b=K2fYHH5tHgERH2O9gXMlW6xBMHYpjgCDHzDJg63t1VY0HlKK7ffP/WSR1F6YNVYWk9
+ /N3o8ZkQX/gr+uc4HXGLSTVlbfF/zttbKaEQFmOkwtEFm6zOA9OSww7k/X/qriVdp+TL
+ FO69x5K0EF8nO1U/P/OVCJj5B67T2lAde2CWyFrW58MMoA2/kYaE6KKlB5GKRDZH+/Lq
+ 8TOYvh9ukt+2fCjcTF0U+HaXWLA4BL9eK1MG1s+On/3LODKLTxBQmK/5RkSda7b+zMnH
+ LesoiLTEpBSN8Ys9Pf3Ip2pV4hOh3o6/WBHCNR4OUTgGbchs3Ef62e8KpYIY3Cmrd1bP
+ aOoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:organization
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=72Xx/EPPWYiryTjo7oGMmMO60iIhf9Bs3K+zVKrMlYM=;
+ b=NoE8Mlm1N9d4eufNTTZ5F8r4zMfhAV+f4z4WR4AcPN54Zy3KqRQwApMw5my8O6M3b1
+ UHLCpl4KTVvkQlGtr0uvSU42vvX+56S5OvM42A0IPlAqsyAeJ0OW+Hma2r+dB7ot9V1z
+ LApe+BWBeT+q+xDV9R8rp/8ojQUxe4182HUs9nRF/LKX8e7sWo0o1hLywysEA8mNrC7r
+ U4zmZ8GwNBtySZM2vKBdhC81ztt0Fb4AROQSELGFjYWmSWBMY/2OXv42sF6zwX+UMFzy
+ UjSEcVBrfU6tVzAvV+Lg1iWWLyFdc9yn0ChrsqSkZAvr2S5evgsFZXTFhg0MIYDGy0fL
+ Ad1A==
+X-Gm-Message-State: APjAAAWBoRhDC8o+3+/084YPS40QOm0x1SUZS3QLgprSPhVgCUfokLsI
+ 1nJ5A0IeqK39jG2bD8nTngXzXA==
+X-Google-Smtp-Source: APXvYqw/VwjjLJwOtnuav0hbuYBwMD28yqDNG67ORkmJSS8A7GzF3jq+LztNLzWWH7CqXVbB+VkQRw==
+X-Received: by 2002:a19:c14a:: with SMTP id r71mr3349013lff.55.1569601374823; 
+ Fri, 27 Sep 2019 09:22:54 -0700 (PDT)
+Received: from wasted.cogentembedded.com
+ ([2a00:1fa0:8df:57d9:464d:c6f1:f498:da95])
+ by smtp.gmail.com with ESMTPSA id k16sm558137lje.56.2019.09.27.09.22.53
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 27 Sep 2019 09:22:54 -0700 (PDT)
+To: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org
+References: <20190926181109.4871-1-jacob.e.keller@intel.com>
+ <20190926181109.4871-8-jacob.e.keller@intel.com>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Organization: Cogent Embedded
+Message-ID: <a08e6e28-bc98-a103-0577-a0bb45f950d5@cogentembedded.com>
+Date: Fri, 27 Sep 2019 19:22:52 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.1
 MIME-Version: 1.0
-In-Reply-To: <20190925154831.19044-1-navid.emamdoost@gmail.com>
-Content-Language: en-US
-X-Provags-ID: V03:K1:kMweqxyk1Sd+3Q3V4q/NBQ39VnZP6siyyu6Jc1f0n+g2dKaq9NZ
- g8oYD/c9IDPiCaxNfQ4LLlyFNdI54HN1qwzplSuMv/B6xacuUijdaSsYg+Xy8YUzndrlT5y
- qEKuXnSGzSeer07BoYybT7Yxhl3BzCmEYkp4xC4elmauHI8NsgtYVJm7ivP9Esz9aIp7NcW
- ljlat6B1TLlZoDH/5kobQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BCQ/OYQARfA=:9UOg6doqeiWZVuGRqkohDL
- u1SitWRTl7sRVaAGbce6qAlmugJDq2SwIc/tKYQa6HK/UDHAr5p8K12gJz/4LLxTyBZ68IkmP
- IyUyDBZaBhCBKMVW/4mL1A0CWqRMGThwpaFK5NQh+C8oU+c1brlbzRwOMjEEUQXW+MRbNNB5t
- gCej+eetnA/zxnxc/3sKev2o9h0cs3xfeHFd0dgN8heh2TT1ai8zWOhGt5nSEY9qIBY6l4tl0
- pvplNhfTbo2n8ohxrgYGW8mkeMzoGMBtrzkTAom9MEo9Wqt/CgLA1YUgcXX5k2TSyxnTym8px
- KyiaTsD7Hzta7rUAc7MIsYOqtLm3dQfP+qHqO2Jrj9QqdImkMBzf945wXfYqtk2ZfWH99vj9p
- g1i+jO2SDXPTleWJx4owQUnaSp3xrDdN+z3AxkfOaUH+2twxqLiowxzNcfIuJiYkovgSA1pon
- +dpHng2pdBKwQt3UhqV+TzctKh+6kuernVO+mdwGh2bb9gjPJKLjKA4RKDidEgtLe6kyo5i9e
- 5gJ199NFPBqapS8xZX03SK+npP5QOTMymCuJcNkmLRDm2FXrGAaXmZduDQqVyXQ0ER62qlshu
- ANN2wzSGezblcyToAv/Ut+oIL4w998RvPiwZp/20W06WHiPJpI6uXQzPc87qzhjwTCBKkfJ/U
- UbJQcWxQpErDNJwMKoDN82jdJG2qEGN5c8eNl7exxNHVaPDA+wtUefAMbIdtIQ4CV4ZdJ4e9E
- 1vf1/sbpFJXDjP7pymzAT/5NEpMJbhevnsOex4FX+6ul/aZVmGrNm2ekRcbT/UH/roKNYk3/x
- 9cr1Q3LFcx6s226bn6Dhf/OJhEH64oZF/gVZjH90E1ZXrMSZxyeI0gxtoEX/k/zff9GT51+7I
- 7HXKg0HsQ/IZTc3mQ9vXJhd1fJywaoro73NrFK+WLl+m/fWZSd8sm0JDaRAB7KzjBm/HQ2OfV
- YTAGAGSy1k+mw25Gie8yseaUyxRbRAARR9f8S0cf59HP/cCGJI23jEvo6FP7fWs22yVOTtwCt
- 2fnNZffh4L3IZ/5GhwW74vYm6fh0+isBjWbFNH17JmOTnteHDXBO/2u1XL6coZKgxRF1lig88
- kd/JBaGVlR5bPHIbl3TpuECEViAFYeErbg4VDXW4+8DM5ywzsW/1YG0bGc8800BjTA4h9BfZo
- 782biWfpE3VF85DMDPJHCixYuJaUGvIxI49EMW3tJ57pTYwnZq+eZecahYe8GsEJmxhkvZhIa
- 2N27+HgGT8r0gviOY7dgcqvOlH9lit7AQ7YoM7XGCrK4lH7cQk5FoFrr7P00=
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: prevent memory leak in
- i40e_setup_macvlans
+In-Reply-To: <20190926181109.4871-8-jacob.e.keller@intel.com>
+Content-Language: en-MW
+Subject: Re: [Intel-wired-lan] [net-next v3 7/7] renesas: reject unsupported
+ external timestamp flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,34 +94,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, Kangjie Lu <kjlu@umn.edu>,
- linux-kernel@vger.kernel.org, Navid Emamdoost <emamd001@umn.edu>,
- Stephen A McCamant <smccaman@umn.edu>, "David S. Miller" <davem@davemloft.net>
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> In i40e_setup_macvlans if i40e_setup_channel fails the allocated memory
-> for ch should be released.
+On 09/26/2019 09:11 PM, Jacob Keller wrote:
 
-I suggest to improve also this change description.
+> Fix the renesas PTP support to explicitly reject any future flags that
+> get added to the external timestamp request ioctl.
+> 
+> In order to maintain currently functioning code, this patch accepts all
+> three current flags. This is because the PTP_RISING_EDGE and
+> PTP_FALLING_EDGE flags have unclear semantics and each driver seems to
+> have interpreted them slightly differently.
+> 
+> Cc: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 
+Reviewed-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -7168,6 +7168,7 @@ static int i40e_setup_macvlans(struct i40e_vsi *vsi, u16 macvlan_cnt, u16 qcnt,
->  		ch->num_queue_pairs = qcnt;
->  		if (!i40e_setup_channel(pf, vsi, ch)) {
->  			ret = -EINVAL;
-> +			kfree(ch);
->  			goto err_free;
->  		}
->  		ch->parent_vsi = vsi;
+[...]
 
-Can it matter to perform the added function call before the error code assignment?
-
-Regards,
-Markus
+MBR, Sergei
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
