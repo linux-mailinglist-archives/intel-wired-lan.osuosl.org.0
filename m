@@ -1,63 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10BAAC2544
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2019 18:37:04 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D2C4C2652
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2019 21:46:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 90E5321503;
-	Mon, 30 Sep 2019 16:37:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 92E2B8685B;
+	Mon, 30 Sep 2019 19:46:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pv3ZSV5u3J+S; Mon, 30 Sep 2019 16:37:02 +0000 (UTC)
+	with ESMTP id AzB-xt4L-8pY; Mon, 30 Sep 2019 19:46:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 970B52107F;
-	Mon, 30 Sep 2019 16:37:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D22FB86745;
+	Mon, 30 Sep 2019 19:46:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B83C11BF294
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 23:12:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2EC2B1BF2B9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2019 19:46:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B070B86599
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 23:12:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 26A8085F08
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2019 19:46:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gEB75Zie5QvZ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Sep 2019 23:12:18 +0000 (UTC)
+ with ESMTP id jy-hMxEY2zUN for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Sep 2019 19:46:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from bombadil.infradead.org (bombadil.infradead.org
- [198.137.202.133])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 735668654C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2019 23:12:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20170209; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:Subject:References
- :Cc:To:Sender:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From
- :Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=XeCZtUNseW2GHe2ZEi9YJRrHUwhbktgUjULEiuq7uvw=; b=m9WPAvUBB3Qhjsyy3kdy837y2t
- D+VFc85zKmRSz/RMlCSo277bmxSqpdAzDr63oCzAu6yj/b3QeILS6F//hF2YFOwJCKJH+1oBIFOPL
- musHbFATZo6u7ihvLkcXTAcwsmGAviEBre3toEMSzFSnGTqK6HO2iiLYHqIXxG79gXgpHen3oCnzZ
- SVQBIdRjyK1KHQG8czOjn2HNvY8k49BiCq52GPvcREYzVhbl6YVzB2LlipYXdGN6JfYz6pZATKMdn
- ljlskPLzmMnVt3o3rTLlCIQX0TgwwQwgVlgcst+eu6TzpE7JpaBXu9L2FnQXq1sUCc6vnqdQPx3OS
- REERNIRQ==;
-Received: from [2601:1c0:6280:3f0::9a1f]
- by bombadil.infradead.org with esmtpsa (Exim 4.92.2 #3 (Red Hat Linux))
- id 1iDzPM-0003co-1d; Fri, 27 Sep 2019 23:12:16 +0000
-To: jacob.e.keller@intel.com
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6A9428671E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2019 19:46:54 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Sep 2019 12:46:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,568,1559545200"; d="scan'208";a="390945133"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by fmsmga005.fm.intel.com with ESMTP; 30 Sep 2019 12:46:53 -0700
+Received: from orsmsx121.amr.corp.intel.com ([169.254.10.190]) by
+ ORSMSX103.amr.corp.intel.com ([169.254.5.5]) with mapi id 14.03.0439.000;
+ Mon, 30 Sep 2019 12:46:53 -0700
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Thread-Topic: [PATCH] namespace: fix namespace.pl script to support relative
+ paths
+Thread-Index: AQHVdYkISHS3XNGT0kCKyhZHN6EY9KdALBNAgAIVm4CAAmLQsA==
+Date: Mon, 30 Sep 2019 19:46:52 +0000
+Message-ID: <02874ECE860811409154E81DA85FBB58968E1402@ORSMSX121.amr.corp.intel.com>
 References: <20190129204319.15238-1-jacob.e.keller@intel.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <7b26e6cc-10ce-5df2-6375-1f95bc4da04e@infradead.org>
-Date: Fri, 27 Sep 2019 16:12:14 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190129204319.15238-1-jacob.e.keller@intel.com>
+ <7b26e6cc-10ce-5df2-6375-1f95bc4da04e@infradead.org>
+ <02874ECE860811409154E81DA85FBB58968DBE54@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNARyUEakeG_N9TWcO2cjFSzbgY__k_QJm6C+oOz+fW0aeg@mail.gmail.com>
+In-Reply-To: <CAK7LNARyUEakeG_N9TWcO2cjFSzbgY__k_QJm6C+oOz+fW0aeg@mail.gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-Mailman-Approved-At: Mon, 30 Sep 2019 16:36:58 +0000
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTc4YzZmZTMtY2JlMi00YTI0LTg1ZTUtNTE5N2VjYTBkYTU1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNHJQcTI5eXdvXC9oa0J6MUFsYzNpQkpsZ0l0UFRBa3o2cGxMWkRjMHo2RmEweGZranYxRVBrUUFCMnErNjBTUUkifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH] namespace: fix namespace.pl script to
  support relative paths
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -72,32 +80,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+Cc: Randy Dunlap <rdunlap@infradead.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  linux-kbuild <linux-kbuild@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+> -----Original Message-----
+> From: Masahiro Yamada [mailto:yamada.masahiro@socionext.com]
+> Sent: Saturday, September 28, 2019 5:21 PM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>
+> Cc: Randy Dunlap <rdunlap@infradead.org>; intel-wired-lan@lists.osuosl.org; linux-
+> kernel@vger.kernel.org; linux-kbuild <linux-kbuild@vger.kernel.org>
+> Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative paths
+> 
+> On Sat, Sep 28, 2019 at 8:30 AM Keller, Jacob E
+> <jacob.e.keller@intel.com> wrote:
+> >
+> > > -----Original Message-----
+> > > From: Randy Dunlap [mailto:rdunlap@infradead.org]
+> > > Sent: Friday, September 27, 2019 4:12 PM
+> > > To: Keller, Jacob E <jacob.e.keller@intel.com>
+> > > Cc: intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org; linux-kbuild
+> <linux-
+> > > kbuild@vger.kernel.org>; Masahiro Yamada <yamada.masahiro@socionext.com>
+> > > Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative paths
+> > >
+> > >
+> > > re: https://lore.kernel.org/lkml/20190129204319.15238-1-
+> jacob.e.keller@intel.com/
+> > >
+> > > Did anything happen with this patch?
+> > >
+> > > Please send it to linux-kbuild@vger.kernel.org and
+> > > Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+> > >
+> > > You can also add:
+> > > Acked-by: Randy Dunlap <rdunlap@infradead.org>
+> > > Tested-by: Randy Dunlap <rdunlap@infradead.org>
+> > >
+> > >
+> > > I was just about to fix this script but I decided to first see if anyone else
+> > > had already done so.  Thanks.
+> > >
+> > > --
+> > > ~Randy
+> >
+> > Done, thanks.
+> >
+> > Regards,
+> > Jake
+> 
+> 
+> Applied to linux/kbuild. Thanks.
+> 
 
-re: https://lore.kernel.org/lkml/20190129204319.15238-1-jacob.e.keller@intel.com/
+Great, thanks!
 
-Did anything happen with this patch?
-
-Please send it to linux-kbuild@vger.kernel.org and
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-
-You can also add:
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
-Tested-by: Randy Dunlap <rdunlap@infradead.org>
-
-
-I was just about to fix this script but I decided to first see if anyone else
-had already done so.  Thanks.
-
--- 
-~Randy
+> --
+> Best Regards
+> Masahiro Yamada
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
