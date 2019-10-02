@@ -1,56 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D65BC29C2
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Oct 2019 00:40:21 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F3F7C8E27
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2019 18:21:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C004487B45;
-	Mon, 30 Sep 2019 22:40:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9C30086DAB;
+	Wed,  2 Oct 2019 16:21:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y3CDUpOXS4Q0; Mon, 30 Sep 2019 22:40:19 +0000 (UTC)
+	with ESMTP id X+Fa4jeFCw7T; Wed,  2 Oct 2019 16:21:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 99FAA86361;
-	Mon, 30 Sep 2019 22:40:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C74CD86DAE;
+	Wed,  2 Oct 2019 16:21:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 63D801BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2019 22:40:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D5A2C1BF969
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2019 16:21:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5782E877E9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2019 22:40:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D0A0B86216
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2019 16:21:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3d1b6A+R0wHw for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Sep 2019 22:40:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1E1C087A77
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2019 22:40:15 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 30 Sep 2019 15:40:14 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,568,1559545200"; d="scan'208";a="342802008"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 30 Sep 2019 15:40:13 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iF4Ky-0008cC-Kp; Tue, 01 Oct 2019 06:40:12 +0800
-Date: Tue, 01 Oct 2019 06:39:39 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5d92842b.2iaiqRrnxYd96dsg%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id 1SPk8zQFfyVS for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Oct 2019 16:21:20 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
+ [209.85.215.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A6B9D832C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2019 16:21:20 +0000 (UTC)
+Received: by mail-pg1-f194.google.com with SMTP id a24so12137481pgj.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2019 09:21:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=eeyTOg17q9KxMpdnKIdB7cChcxt684Nc0Z/pTXOp8y8=;
+ b=EP1pH7wpiE0TYKvhUm2wWyzT1PRmnrtJW2S9yGvLz+UQS5H6/InXwE+x7vcQn0YkA8
+ FvYrIpIaayfSv4Ts2FZYpj3clWi/NGLG/G3R7XP1QXkQqsFA+p03EIgoGlgNePuVOKte
+ EV2xbhJPg+0sbcZIjH2QWZyQcxkXcsqBDBFBGsAG+au4XuTyaRh7n3OKaPHzKopsBy0D
+ UKEmC1UUp5TnLJB/BzgH+VR7a60BkAmOYCpo8QG8Zz0WcDX/gt+ScP5hZv0bfiIbfid5
+ VtIAGaDfjpZDJsmbs5y6TakZJvKeAeAbclrWPjG2I6CjzEY6C4bLgws3vjG9QhFFf/wO
+ LjJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=eeyTOg17q9KxMpdnKIdB7cChcxt684Nc0Z/pTXOp8y8=;
+ b=JlWjITBTqAcLwNOR3hO96Mz21Y/7QQ+n/haKfNXNZM1LbgHj3Cy+HU8zgbZQv68522
+ eDBOpqweawZjJiNG67nSx6RCnPLDX/AmRziijgv1HLhJeOdL0A/+15aoWbHDs50UCVNj
+ OmLzp2dW80TW6pIFm/lnqqPKPCfx8f3YRChlD6fqxMcdRDRrnJFPqqOPcWlDiG/iu68t
+ h8ZtMtG/pulb/DWXhzsqb/JzmsZmtma239nJxgLdEsc4M8fqvTTCmsF40bYGi8/TB/jX
+ wlP6ceI8Yhvi9ECN7fvv4QDW96ogvUYppUEc+Z9g+2ADUt/mWC3HucvVZX587ZYwO0w1
+ w1xg==
+X-Gm-Message-State: APjAAAXdk4cgYJdODf9ZKeIzF4hnzOnHM9X4G3eOZWpnf4yHKmwsgpUH
+ 1Fvp9mgcl6ndWtgAUXMb7tys6g==
+X-Google-Smtp-Source: APXvYqxrTJaVirNXUIMjjQQYz+vd4XBrvrCFGiFDXmev6sjlsTLcobvsJWUnNNcWVcQJlboCNdrkOA==
+X-Received: by 2002:a62:e817:: with SMTP id c23mr5436656pfi.230.1570032873121; 
+ Wed, 02 Oct 2019 09:14:33 -0700 (PDT)
+Received: from Shannons-MacBook-Pro.local
+ (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
+ by smtp.gmail.com with ESMTPSA id z25sm18095592pfn.7.2019.10.02.09.14.31
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 02 Oct 2019 09:14:32 -0700 (PDT)
+To: =?UTF-8?Q?Jonathan_Neusch=c3=a4fer?= <j.neuschaefer@gmx.net>,
+ linux-doc@vger.kernel.org
+References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
+From: Shannon Nelson <snelson@pensando.io>
+Message-ID: <1fd5d5df-30ea-2545-daf6-575473879cd6@pensando.io>
+Date: Wed, 2 Oct 2019 09:14:31 -0700
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
+ Gecko/20100101 Thunderbird/60.9.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- b15350aed43e8a92d4ea6eeab5d35b4ae86a8e5e
+In-Reply-To: <20191002150956.16234-1-j.neuschaefer@gmx.net>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] Documentation: networking: device
+ drivers: Remove stray asterisks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,99 +91,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Pensando Drivers <drivers@pensando.io>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: b15350aed43e8a92d4ea6eeab5d35b4ae86a8e5e  mlx5: reject unsupported external timestamp flags
-
-elapsed time: 153m
-
-configs tested: 73
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-x86_64                 randconfig-a001-201939
-x86_64                 randconfig-a002-201939
-x86_64                 randconfig-a003-201939
-x86_64                 randconfig-a004-201939
-i386                   randconfig-a001-201939
-i386                   randconfig-a002-201939
-i386                   randconfig-a003-201939
-i386                   randconfig-a004-201939
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTAvMi8xOSA4OjA5IEFNLCBKb25hdGhhbiBOZXVzY2jDpGZlciB3cm90ZToKPiBUaGVzZSBh
+c3Rlcmlza3Mgd2VyZSBvbmNlIHJlZmVyZW5jZXMgdG8gYSBsaW5lIHRoYXQgc2FpZDoKPiAgICAi
+KiBPdGhlciBuYW1lcyBhbmQgYnJhbmRzIG1heSBiZSBjbGFpbWVkIGFzIHRoZSBwcm9wZXJ0eSBv
+ZiBvdGhlcnMuIgo+IEJ1dCBub3csIHRoZXkgc2VydmUgbm8gcHVycG9zZTsgdGhleSBjYW4gb25s
+eSBpcnJpdGF0ZSB0aGUgcmVhZGVyLgo+ClsuLi5dCj4gRml4ZXM6IGRmNjliYTQzMjE3ZCAoImlv
+bmljOiBBZGQgYmFzaWMgZnJhbWV3b3JrIGZvciBJT05JQyBOZXR3b3JrIGRldmljZSBkcml2ZXIi
+KQoKQWNrZWQtYnk6IFNoYW5ub24gTmVsc29uIDxzbmVsc29uQHBlbnNhbmRvLmlvPgoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxh
+biBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5v
+c3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
