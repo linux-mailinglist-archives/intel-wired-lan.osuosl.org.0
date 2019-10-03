@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0BEFEC9DB0
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2019 13:47:12 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5CCACA056
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2019 16:29:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A6AF4805E1;
-	Thu,  3 Oct 2019 11:47:10 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 68441881CC;
+	Thu,  3 Oct 2019 14:29:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sRQCG2Pkgm7o; Thu,  3 Oct 2019 11:47:10 +0000 (UTC)
+	with ESMTP id cAxOApmx0dO1; Thu,  3 Oct 2019 14:29:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2751287722;
-	Thu,  3 Oct 2019 11:47:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2A4B0881B7;
+	Thu,  3 Oct 2019 14:29:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2BA231BF964
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 11:47:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1272B1BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 14:29:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2528E20527
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 11:47:04 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0F440881CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 14:29:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qUm-2Pel+L9n for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Oct 2019 11:47:03 +0000 (UTC)
+ with ESMTP id ZKG4DwLyuHY5 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Oct 2019 14:29:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id 68955203AB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 11:47:03 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 03 Oct 2019 04:47:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,252,1566889200"; d="scan'208";a="191244889"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga008.fm.intel.com with ESMTP; 03 Oct 2019 04:47:01 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  3 Oct 2019 14:47:01 +0300
-Message-Id: <20191003114701.33966-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: Clean up unused shadow_vfta
- pointer
+Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7957B881BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 14:29:55 +0000 (UTC)
+Received: from lwn.net (localhost [127.0.0.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ms.lwn.net (Postfix) with ESMTPSA id 70EFC300;
+ Thu,  3 Oct 2019 14:29:54 +0000 (UTC)
+Date: Thu, 3 Oct 2019 08:29:53 -0600
+From: Jonathan Corbet <corbet@lwn.net>
+To: David Miller <davem@davemloft.net>
+Message-ID: <20191003082953.396ebc1a@lwn.net>
+In-Reply-To: <20191002.172526.1832563406015085740.davem@davemloft.net>
+References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
+ <20191002.172526.1832563406015085740.davem@davemloft.net>
+Organization: LWN.net
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH] Documentation: networking: device
+ drivers: Remove stray asterisks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,48 +59,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: linux-doc@vger.kernel.org, netdev@vger.kernel.org, j.neuschaefer@gmx.net,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ drivers@pensando.io, snelson@pensando.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VLAN filter table array not implemented yet and shadow_vfta pointer
-not used. Clean up the code and remove the unused shadow_vfta pointer.
+On Wed, 02 Oct 2019 17:25:26 -0700 (PDT)
+David Miller <davem@davemloft.net> wrote:
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      | 1 -
- drivers/net/ethernet/intel/igc/igc_main.c | 1 -
- 2 files changed, 2 deletions(-)
+> Jon, how do you want to handle changes like this?
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 7e16345d836e..0868677d43ed 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -411,7 +411,6 @@ struct igc_adapter {
- 	u32 tx_hwtstamp_timeouts;
- 	u32 tx_hwtstamp_skipped;
- 	u32 rx_hwtstamp_cleared;
--	u32 *shadow_vfta;
- 
- 	u32 rss_queues;
- 	u32 rss_indir_tbl_init;
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 52521a0bbf48..0a4bcd2d3b85 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -4574,7 +4574,6 @@ static void igc_remove(struct pci_dev *pdev)
- 	pci_release_mem_regions(pdev);
- 
- 	kfree(adapter->mac_table);
--	kfree(adapter->shadow_vfta);
- 	free_netdev(netdev);
- 
- 	pci_disable_pcie_error_reporting(pdev);
--- 
-2.11.0
+In whatever way works best.  Documentation should make our lives easier,
+not get in the way :)
 
+> I mean, there are unlikely to be conflicts from something like this so it
+> could simply go via the documentation tree.
+> 
+> Acked-by: David S. Miller <davem@davemloft.net>
+
+OK, I'll go ahead and apply it, then.
+
+Thanks,
+
+jon
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
