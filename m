@@ -1,82 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F3F7C8E27
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2019 18:21:33 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBC66C9595
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2019 02:25:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9C30086DAB;
-	Wed,  2 Oct 2019 16:21:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2C9B787F5C;
+	Thu,  3 Oct 2019 00:25:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X+Fa4jeFCw7T; Wed,  2 Oct 2019 16:21:31 +0000 (UTC)
+	with ESMTP id QCUGQrKGFy2W; Thu,  3 Oct 2019 00:25:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C74CD86DAE;
-	Wed,  2 Oct 2019 16:21:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1E5E787F71;
+	Thu,  3 Oct 2019 00:25:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D5A2C1BF969
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2019 16:21:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7DDBB1BF96B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 00:25:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D0A0B86216
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2019 16:21:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7A0B785618
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 00:25:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1SPk8zQFfyVS for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Oct 2019 16:21:20 +0000 (UTC)
+ with ESMTP id B7ThHRAUR8da for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Oct 2019 00:25:28 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A6B9D832C6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2019 16:21:20 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id a24so12137481pgj.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2019 09:21:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=eeyTOg17q9KxMpdnKIdB7cChcxt684Nc0Z/pTXOp8y8=;
- b=EP1pH7wpiE0TYKvhUm2wWyzT1PRmnrtJW2S9yGvLz+UQS5H6/InXwE+x7vcQn0YkA8
- FvYrIpIaayfSv4Ts2FZYpj3clWi/NGLG/G3R7XP1QXkQqsFA+p03EIgoGlgNePuVOKte
- EV2xbhJPg+0sbcZIjH2QWZyQcxkXcsqBDBFBGsAG+au4XuTyaRh7n3OKaPHzKopsBy0D
- UKEmC1UUp5TnLJB/BzgH+VR7a60BkAmOYCpo8QG8Zz0WcDX/gt+ScP5hZv0bfiIbfid5
- VtIAGaDfjpZDJsmbs5y6TakZJvKeAeAbclrWPjG2I6CjzEY6C4bLgws3vjG9QhFFf/wO
- LjJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=eeyTOg17q9KxMpdnKIdB7cChcxt684Nc0Z/pTXOp8y8=;
- b=JlWjITBTqAcLwNOR3hO96Mz21Y/7QQ+n/haKfNXNZM1LbgHj3Cy+HU8zgbZQv68522
- eDBOpqweawZjJiNG67nSx6RCnPLDX/AmRziijgv1HLhJeOdL0A/+15aoWbHDs50UCVNj
- OmLzp2dW80TW6pIFm/lnqqPKPCfx8f3YRChlD6fqxMcdRDRrnJFPqqOPcWlDiG/iu68t
- h8ZtMtG/pulb/DWXhzsqb/JzmsZmtma239nJxgLdEsc4M8fqvTTCmsF40bYGi8/TB/jX
- wlP6ceI8Yhvi9ECN7fvv4QDW96ogvUYppUEc+Z9g+2ADUt/mWC3HucvVZX587ZYwO0w1
- w1xg==
-X-Gm-Message-State: APjAAAXdk4cgYJdODf9ZKeIzF4hnzOnHM9X4G3eOZWpnf4yHKmwsgpUH
- 1Fvp9mgcl6ndWtgAUXMb7tys6g==
-X-Google-Smtp-Source: APXvYqxrTJaVirNXUIMjjQQYz+vd4XBrvrCFGiFDXmev6sjlsTLcobvsJWUnNNcWVcQJlboCNdrkOA==
-X-Received: by 2002:a62:e817:: with SMTP id c23mr5436656pfi.230.1570032873121; 
- Wed, 02 Oct 2019 09:14:33 -0700 (PDT)
-Received: from Shannons-MacBook-Pro.local
- (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
- by smtp.gmail.com with ESMTPSA id z25sm18095592pfn.7.2019.10.02.09.14.31
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 02 Oct 2019 09:14:32 -0700 (PDT)
-To: =?UTF-8?Q?Jonathan_Neusch=c3=a4fer?= <j.neuschaefer@gmx.net>,
- linux-doc@vger.kernel.org
-References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
-From: Shannon Nelson <snelson@pensando.io>
-Message-ID: <1fd5d5df-30ea-2545-daf6-575473879cd6@pensando.io>
-Date: Wed, 2 Oct 2019 09:14:31 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:60.0)
- Gecko/20100101 Thunderbird/60.9.0
-MIME-Version: 1.0
+Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0893080EC2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 00:25:27 +0000 (UTC)
+Received: from localhost (unknown [IPv6:2601:601:9f00:1e2::3d5])
+ (using TLSv1 with cipher AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: davem-davemloft)
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id E3C1B155283C1;
+ Wed,  2 Oct 2019 17:25:26 -0700 (PDT)
+Date: Wed, 02 Oct 2019 17:25:26 -0700 (PDT)
+Message-Id: <20191002.172526.1832563406015085740.davem@davemloft.net>
+To: j.neuschaefer@gmx.net
+From: David Miller <davem@davemloft.net>
 In-Reply-To: <20191002150956.16234-1-j.neuschaefer@gmx.net>
-Content-Language: en-US
+References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
+X-Mailer: Mew version 6.8 on Emacs 26.1
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
+ (shards.monkeyblade.net [149.20.54.216]);
+ Wed, 02 Oct 2019 17:25:27 -0700 (PDT)
 Subject: Re: [Intel-wired-lan] [PATCH] Documentation: networking: device
  drivers: Remove stray asterisks
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -91,22 +62,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
+Cc: corbet@lwn.net, netdev@vger.kernel.org, linux-doc@vger.kernel.org,
  linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Pensando Drivers <drivers@pensando.io>,
- "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+ drivers@pensando.io, snelson@pensando.io
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTAvMi8xOSA4OjA5IEFNLCBKb25hdGhhbiBOZXVzY2jDpGZlciB3cm90ZToKPiBUaGVzZSBh
-c3Rlcmlza3Mgd2VyZSBvbmNlIHJlZmVyZW5jZXMgdG8gYSBsaW5lIHRoYXQgc2FpZDoKPiAgICAi
-KiBPdGhlciBuYW1lcyBhbmQgYnJhbmRzIG1heSBiZSBjbGFpbWVkIGFzIHRoZSBwcm9wZXJ0eSBv
-ZiBvdGhlcnMuIgo+IEJ1dCBub3csIHRoZXkgc2VydmUgbm8gcHVycG9zZTsgdGhleSBjYW4gb25s
-eSBpcnJpdGF0ZSB0aGUgcmVhZGVyLgo+ClsuLi5dCj4gRml4ZXM6IGRmNjliYTQzMjE3ZCAoImlv
-bmljOiBBZGQgYmFzaWMgZnJhbWV3b3JrIGZvciBJT05JQyBOZXR3b3JrIGRldmljZSBkcml2ZXIi
-KQoKQWNrZWQtYnk6IFNoYW5ub24gTmVsc29uIDxzbmVsc29uQHBlbnNhbmRvLmlvPgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxh
-biBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5v
-c3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+From: Jonathan Neusch=E4fer <j.neuschaefer@gmx.net>
+Date: Wed,  2 Oct 2019 17:09:55 +0200
+
+> These asterisks were once references to a line that said:
+>   "* Other names and brands may be claimed as the property of others."
+> But now, they serve no purpose; they can only irritate the reader.
+> =
+
+> Fixes: de3edab4276c ("e1000: update README for e1000")
+> Fixes: a3fb65680f65 ("e100.txt: Cleanup license info in kernel doc")
+> Fixes: da8c01c4502a ("e1000e.txt: Add e1000e documentation")
+> Fixes: f12a84a9f650 ("Documentation: fm10k: Add kernel documentation")
+> Fixes: b55c52b1938c ("igb.txt: Add igb documentation")
+> Fixes: c4e9b56e2442 ("igbvf.txt: Add igbvf Documentation")
+> Fixes: d7064f4c192c ("Documentation/networking/: Update Intel wired LAN d=
+river documentation")
+> Fixes: c4b8c01112a1 ("ixgbevf.txt: Update ixgbevf documentation")
+> Fixes: 1e06edcc2f22 ("Documentation: i40e: Prepare documentation for RST =
+conversion")
+> Fixes: 105bf2fe6b32 ("i40evf: add driver to kernel build system")
+> Fixes: 1fae869bcf3d ("Documentation: ice: Prepare documentation for RST c=
+onversion")
+> Fixes: df69ba43217d ("ionic: Add basic framework for IONIC Network device=
+ driver")
+> Signed-off-by: Jonathan Neusch=E4fer <j.neuschaefer@gmx.net>
+
+Jon, how do you want to handle changes like this?
+
+I mean, there are unlikely to be conflicts from something like this so it
+could simply go via the documentation tree.
+
+Acked-by: David S. Miller <davem@davemloft.net>
+
+I could also take it via net-next, either way is fine with me.
+
+Just let me know.
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
