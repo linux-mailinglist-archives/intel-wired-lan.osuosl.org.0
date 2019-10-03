@@ -1,51 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F4033CA5A5
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2019 18:47:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EE52CAB8A
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2019 19:40:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A9A6D855F7;
-	Thu,  3 Oct 2019 16:47:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C6D30868C8;
+	Thu,  3 Oct 2019 17:40:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nsQEDKkpp7n7; Thu,  3 Oct 2019 16:47:43 +0000 (UTC)
+	with ESMTP id XrSmpIvU6fLU; Thu,  3 Oct 2019 17:40:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 49DFC856B6;
-	Thu,  3 Oct 2019 16:47:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 25F9C86591;
+	Thu,  3 Oct 2019 17:40:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8DD021BF3F0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 16:47:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B3531BF9CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 17:40:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 899B6852A3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 16:47:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 914A885B3B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 17:40:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0eRNI0HN7Jk3 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Oct 2019 16:47:40 +0000 (UTC)
+ with ESMTP id g7kQrfYsahNK for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Oct 2019 17:40:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 724C2855FF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 16:47:39 +0000 (UTC)
-Received: from lwn.net (localhost [127.0.0.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ms.lwn.net (Postfix) with ESMTPSA id 8A6C22D4;
- Thu,  3 Oct 2019 16:47:38 +0000 (UTC)
-Date: Thu, 3 Oct 2019 10:47:37 -0600
-From: Jonathan Corbet <corbet@lwn.net>
-To: Jonathan =?UTF-8?B?TmV1c2Now6RmZXI=?= <j.neuschaefer@gmx.net>
-Message-ID: <20191003104737.3774a00f@lwn.net>
-In-Reply-To: <20191002150956.16234-1-j.neuschaefer@gmx.net>
-References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
-Organization: LWN.net
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D8F9E8626B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2019 17:40:01 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id q203so3244669qke.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Oct 2019 10:40:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=F4BANh4jYufVlD3yr9K5ti4yNN2QxjNsJv2HL10KC7Q=;
+ b=E3CklpvfMzqofh3/d/MYvH+IMRSZL64nyVP7noUQOtvqvLhML7zXDv2JX81PwDTriG
+ Mc1vXfC77IHwsRJhCoTCFZflcR0wWMH28iLEoYxwN6lU8qxBmYd3rou5QhT+lrrQn2Jl
+ 2QNmX3d7XKjYg1dsQjRxDttu8zmPfccNm8dj5UHDsXdn7+6xbyYc0K96CFlKhj2Mp8J3
+ e0cmJ3hwN8RXLG2oZyzkYZlQ0GtbRjlrugDkdSxdsfsZv/H8DuYKZuN62gppYQIl+hub
+ QMvTM6eKjggx5qazaDHGzB86YoVCMLhVMK8ClwNl7fx+W+kb3IGq2j/j7ng3zpcjiVJH
+ WYQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=F4BANh4jYufVlD3yr9K5ti4yNN2QxjNsJv2HL10KC7Q=;
+ b=REiskfxekVoKeobeijxz2M5K0EfrS6bYA7+Iluvzn0Qm6iLM944zl68SjU77IxYA3i
+ UO+43xR5MZ6FnUvf1oboOVkYC42rWz1Ek7QSSEYq0eFstbqGYDmJrE7gs/VhH2n5X/0E
+ KXnGwNXsUh/NZpwUDm2VgHCAqdMTroKybtwZ77/rTNQL3vDl5rURu4jPRsh3Pel+sow1
+ 191qV2IeTKRWDkSRx0z8A/Zzpo5m4DmyrgadhpIJR7XKEfoBlFVkgduiZPDbblbzgmjO
+ HrnEJxk+j0EOwUQmT3L5J2WEVjQXmvypL1SN+376/0keqUH/kSYhB4UgwQ5/EWwbVkJ3
+ LZnQ==
+X-Gm-Message-State: APjAAAVjt3wtuzKJKWzKmHEU7eN9LuXJR3DpwH7ynsLIeC5Hi00Qm8tC
+ t9tDMqRNyacr7AiTykOl1gh+2qb+t788hQtCNDg=
+X-Google-Smtp-Source: APXvYqxcw1iiyKTIaWlMALLu1SIiLnBEhqmQUcvXKh/g7GsD/FPGgDPe2jnhBf9a0lyCI4xaSLzIkbeQMvujiaYmftY=
+X-Received: by 2002:a05:620a:249:: with SMTP id
+ q9mr5601851qkn.491.1570124400731; 
+ Thu, 03 Oct 2019 10:40:00 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] Documentation: networking: device
- drivers: Remove stray asterisks
+References: <1570121672-12172-1-git-send-email-zdai@linux.vnet.ibm.com>
+In-Reply-To: <1570121672-12172-1-git-send-email-zdai@linux.vnet.ibm.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Thu, 3 Oct 2019 10:39:49 -0700
+Message-ID: <CAKgT0Udz7vt5C=+6vpFPbys4sODAZtCjrkSvOdgP80rX7Ww+Ng@mail.gmail.com>
+To: David Dai <zdai@linux.vnet.ibm.com>
+Subject: Re: [Intel-wired-lan] [v1] e1000e: EEH on e1000e adapter detects io
+ perm failure can trigger crash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,42 +81,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Pensando Drivers <drivers@pensando.io>, Shannon Nelson <snelson@pensando.io>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Netdev <netdev@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, zdai@us.ibm.com,
+ David Miller <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gV2VkLCAgMiBPY3QgMjAxOSAxNzowOTo1NSArMDIwMApKb25hdGhhbiBOZXVzY2jDpGZlciA8
-ai5uZXVzY2hhZWZlckBnbXgubmV0PiB3cm90ZToKCj4gVGhlc2UgYXN0ZXJpc2tzIHdlcmUgb25j
-ZSByZWZlcmVuY2VzIHRvIGEgbGluZSB0aGF0IHNhaWQ6Cj4gICAiKiBPdGhlciBuYW1lcyBhbmQg
-YnJhbmRzIG1heSBiZSBjbGFpbWVkIGFzIHRoZSBwcm9wZXJ0eSBvZiBvdGhlcnMuIgo+IEJ1dCBu
-b3csIHRoZXkgc2VydmUgbm8gcHVycG9zZTsgdGhleSBjYW4gb25seSBpcnJpdGF0ZSB0aGUgcmVh
-ZGVyLgo+IAo+IEZpeGVzOiBkZTNlZGFiNDI3NmMgKCJlMTAwMDogdXBkYXRlIFJFQURNRSBmb3Ig
-ZTEwMDAiKQo+IEZpeGVzOiBhM2ZiNjU2ODBmNjUgKCJlMTAwLnR4dDogQ2xlYW51cCBsaWNlbnNl
-IGluZm8gaW4ga2VybmVsIGRvYyIpCj4gRml4ZXM6IGRhOGMwMWM0NTAyYSAoImUxMDAwZS50eHQ6
-IEFkZCBlMTAwMGUgZG9jdW1lbnRhdGlvbiIpCj4gRml4ZXM6IGYxMmE4NGE5ZjY1MCAoIkRvY3Vt
-ZW50YXRpb246IGZtMTBrOiBBZGQga2VybmVsIGRvY3VtZW50YXRpb24iKQo+IEZpeGVzOiBiNTVj
-NTJiMTkzOGMgKCJpZ2IudHh0OiBBZGQgaWdiIGRvY3VtZW50YXRpb24iKQo+IEZpeGVzOiBjNGU5
-YjU2ZTI0NDIgKCJpZ2J2Zi50eHQ6IEFkZCBpZ2J2ZiBEb2N1bWVudGF0aW9uIikKPiBGaXhlczog
-ZDcwNjRmNGMxOTJjICgiRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nLzogVXBkYXRlIEludGVsIHdp
-cmVkIExBTiBkcml2ZXIgZG9jdW1lbnRhdGlvbiIpCj4gRml4ZXM6IGM0YjhjMDExMTJhMSAoIml4
-Z2JldmYudHh0OiBVcGRhdGUgaXhnYmV2ZiBkb2N1bWVudGF0aW9uIikKPiBGaXhlczogMWUwNmVk
-Y2MyZjIyICgiRG9jdW1lbnRhdGlvbjogaTQwZTogUHJlcGFyZSBkb2N1bWVudGF0aW9uIGZvciBS
-U1QgY29udmVyc2lvbiIpCj4gRml4ZXM6IDEwNWJmMmZlNmIzMiAoImk0MGV2ZjogYWRkIGRyaXZl
-ciB0byBrZXJuZWwgYnVpbGQgc3lzdGVtIikKPiBGaXhlczogMWZhZTg2OWJjZjNkICgiRG9jdW1l
-bnRhdGlvbjogaWNlOiBQcmVwYXJlIGRvY3VtZW50YXRpb24gZm9yIFJTVCBjb252ZXJzaW9uIikK
-PiBGaXhlczogZGY2OWJhNDMyMTdkICgiaW9uaWM6IEFkZCBiYXNpYyBmcmFtZXdvcmsgZm9yIElP
-TklDIE5ldHdvcmsgZGV2aWNlIGRyaXZlciIpCj4gU2lnbmVkLW9mZi1ieTogSm9uYXRoYW4gTmV1
-c2Now6RmZXIgPGoubmV1c2NoYWVmZXJAZ214Lm5ldD4KClNvIGp1c3QgRllJOiBhcyBJIGFwcGxp
-ZWQgdGhpcywgSSByZW1vdmVkIG1vc3Qgb2YgdGhlICJGaXhlcyIgdGFncy4gIFRoZQpjaXRlZCBj
-b21taXRzIHdlcmUgYWRkaW5nIGRvY3VtZW50YXRpb24gYXMgcGxhaW4tdGV4dCBmaWxlcywgc28g
-dGhlIGV4dHJhCmFzdGVyaXNrIHdhcyAqbm90KiBhbiBlcnJvciB0byBiZSBmaXhlZCBhdCB0aGF0
-IHBvaW50LiAgVGhlIFJTVC1jb252ZXJzaW9uCnBhdGNoZXMsIGluc3RlYWQsIHNob3VsZCBoYXZl
-IGNhdWdodCB0aGF0Li4uCgpUaGFua3MsCgpqb24KX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13
-aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Thu, Oct 3, 2019 at 9:59 AM David Dai <zdai@linux.vnet.ibm.com> wrote:
+>
+> We see the behavior when EEH e1000e adapter detects io permanent failure,
+> it will crash kernel with this stack:
+> EEH: Beginning: 'error_detected(permanent failure)'
+> EEH: PE#900000 (PCI 0115:90:00.1): Invoking e1000e->error_detected(permanent failure)
+> EEH: PE#900000 (PCI 0115:90:00.1): e1000e driver reports: 'disconnect'
+> EEH: PE#900000 (PCI 0115:90:00.0): Invoking e1000e->error_detected(permanent failure)
+> EEH: PE#900000 (PCI 0115:90:00.0): e1000e driver reports: 'disconnect'
+> EEH: Finished:'error_detected(permanent failure)'
+> Oops: Exception in kernel mode, sig: 5 [#1]
+> NIP [c0000000007b1be0] free_msi_irqs+0xa0/0x280
+>  LR [c0000000007b1bd0] free_msi_irqs+0x90/0x280
+> Call Trace:
+> [c0000004f491ba10] [c0000000007b1bd0] free_msi_irqs+0x90/0x280 (unreliable)
+> [c0000004f491ba70] [c0000000007b260c] pci_disable_msi+0x13c/0x180
+> [c0000004f491bab0] [d0000000046381ac] e1000_remove+0x234/0x2a0 [e1000e]
+> [c0000004f491baf0] [c000000000783cec] pci_device_remove+0x6c/0x120
+> [c0000004f491bb30] [c00000000088da6c] device_release_driver_internal+0x2bc/0x3f0
+> [c0000004f491bb80] [c00000000076f5a8] pci_stop_and_remove_bus_device+0xb8/0x110
+> [c0000004f491bbc0] [c00000000006e890] pci_hp_remove_devices+0x90/0x130
+> [c0000004f491bc50] [c00000000004ad34] eeh_handle_normal_event+0x1d4/0x660
+> [c0000004f491bd10] [c00000000004bf10] eeh_event_handler+0x1c0/0x1e0
+> [c0000004f491bdc0] [c00000000017c4ac] kthread+0x1ac/0x1c0
+> [c0000004f491be30] [c00000000000b75c] ret_from_kernel_thread+0x5c/0x80
+>
+> Basically the e1000e irqs haven't been freed at the time eeh is trying to
+> remove the the e1000e device.
+> Need to make sure when e1000e_close is called to bring down the NIC,
+> if adapter error_state is pci_channel_io_perm_failure, it should also
+> bring down the link and free irqs.
+>
+> Reported-by: Morumuri Srivalli  <smorumu1@in.ibm.com>
+> Signed-off-by: David Dai <zdai@linux.vnet.ibm.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/netdev.c |    3 ++-
+>  1 files changed, 2 insertions(+), 1 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index d7d56e4..cf618e1 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -4715,7 +4715,8 @@ int e1000e_close(struct net_device *netdev)
+>
+>         pm_runtime_get_sync(&pdev->dev);
+>
+> -       if (!test_bit(__E1000_DOWN, &adapter->state)) {
+> +       if (!test_bit(__E1000_DOWN, &adapter->state) ||
+> +           (adapter->pdev->error_state == pci_channel_io_perm_failure)) {
+>                 e1000e_down(adapter, true);
+>                 e1000_free_irq(adapter);
+
+It seems like the issue is the fact that e1000_io_error_detected is
+calling e1000e_down without the e1000_free_irq() bit. Instead of doing
+this couldn't you simply add the following to e1000_is_slot_reset in
+the "result = PCI_ERS_RESULT_DISCONNECT" case:
+    if (netif_running(netdev)
+        e1000_free_irq(adapter);
+
+Alternatively we could look at freeing and reallocating the IRQs in
+the event of an error like we do for the e1000e_pm_freeze and
+e1000e_pm_thaw cases. That might make more sense since we are dealing
+with an error we might want to free and reallocate the IRQ resources
+assigned to the device.
+
+Thanks.
+
+- Alex
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
