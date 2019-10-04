@@ -2,78 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEB8DCBEB1
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2019 17:11:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C6BF9CBEB9
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2019 17:13:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 691F4204F8;
-	Fri,  4 Oct 2019 15:11:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 73FEF2379C;
+	Fri,  4 Oct 2019 15:13:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kqVoxN7g9R7k; Fri,  4 Oct 2019 15:11:55 +0000 (UTC)
+	with ESMTP id O3Mcou-YMyNx; Fri,  4 Oct 2019 15:13:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1332523509;
-	Fri,  4 Oct 2019 15:11:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 53686204F8;
+	Fri,  4 Oct 2019 15:13:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D8AE81BF32C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 06:54:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D29961BF313
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 10:52:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D4A6886B5E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 06:54:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CEEA286A61
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 10:52:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 70rtRH0sZPOe for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Oct 2019 06:54:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 62E7686AE1
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 06:54:56 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id s1so3199792pgv.8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Oct 2019 23:54:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WnrMI7Ok1MNg8xlXWuS34jn9100qvN5R6GtazYrUVB0=;
- b=dus/D1AQrCINQwT2rDgSzxJArLHMMlq+CkJrkX7aVpHddXyK1V2u4Z0XGzDLTpHIV8
- gZmlmLpNFCSbuR/owqVyk4ySYvkumwHu6nIVITOvalusuKMIuQMwYyB+Tcyr6/k+pdAu
- /phkmS5f81VB+sVM3H0gF2Yg/sgrMeLCELi1CIfH5w00SHlDrZ0VM0c0a03Cl5od+mip
- pEc1Uka8pc7pc34P6+//cSNUlWkfJss+yIoZmTElwOE3UZafTtpuBfMloKOvXbIjKOHG
- Nll9LK3ZMYEpa3tNpZPxJhUbNOTB1QixKpi2MI+nMiCBYSHzZkRwIrQnlqd0lQHKT2BO
- aUFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WnrMI7Ok1MNg8xlXWuS34jn9100qvN5R6GtazYrUVB0=;
- b=lygtWJEShqnfQ4zjyv0NotyaoujVZXy1I96KG6Ivu1epHR74mX37D0HdfT0h63MycM
- C5mhMbPVMc1KP5Hnwr3y/UXqMkNzqpkBArfeAe+Z4JZ86OGFLPYGu+qxc0w0vCuw9VTA
- HA0mu7D3LHSnfMG9cVgvhFE5zWTQmj5ylCLzszG4FoyBDuTgzxDWBd3r4mlcS2g0BYlW
- 6tbkxt2Myd9K/cZfW5Pvgse/XkWRvzZ2AaUlWI5h7wJJhnh8yj2+9JDmAvCW5tNMuqyX
- d2slOBe/2TbDJQPEoa2x+ydk3HUTKBz7MrkN+21+svMARlk7PkRQ7+rczc/6zrZUqZgn
- Tjvw==
-X-Gm-Message-State: APjAAAUCv/qgWSWb8i0b5pn3Vq8iQaZ+E3rXRoqS84ZHL/yO8h/72QCZ
- Qc8+QRM61E8NsW7XZW6GHKI=
-X-Google-Smtp-Source: APXvYqxjsddIfU+pGkqhQk4WoiJob9/rK1J5FRh0YtXbbJeZ+AOEVcOiSN6DWv7nl36XOj4RC185/Q==
-X-Received: by 2002:a62:d445:: with SMTP id u5mr15640803pfl.92.1570172095888; 
- Thu, 03 Oct 2019 23:54:55 -0700 (PDT)
-Received: from ip.hsd1.ca.comcast.net
- ([2601:646:8100:a2f0:246f:b102:f969:6b0c])
- by smtp.googlemail.com with ESMTPSA id b9sm4273056pfo.105.2019.10.03.23.54.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2019 23:54:55 -0700 (PDT)
-From: Igor Pylypiv <igor.pylypiv@gmail.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "David S . Miller" <davem@davemloft.net>
-Date: Thu,  3 Oct 2019 23:53:57 -0700
-Message-Id: <20191004065357.19138-1-igor.pylypiv@gmail.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id KhSAyVzrhQP0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Oct 2019 10:52:27 +0000 (UTC)
+X-Greylist: delayed 00:17:48 by SQLgrey-1.7.6
+Received: from mout1.fh-giessen.de (mout1.fh-giessen.de [212.201.18.42])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0DB4186A40
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 10:52:27 +0000 (UTC)
+Received: from mx3.fh-giessen.de ([212.201.18.28])
+ by mout1.fh-giessen.de with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
+ id 1iGKuw-0000Qg-10; Fri, 04 Oct 2019 12:34:34 +0200
+Received: from mailgate-2.its.fh-giessen.de ([212.201.18.14])
+ by mx3.fh-giessen.de with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
+ id 1iGKuv-00F8NC-UG; Fri, 04 Oct 2019 12:34:33 +0200
+Received: from p549d322d.dip0.t-ipconnect.de ([84.157.50.45]
+ helo=zwei.fritz.box) by mailgate-2.its.fh-giessen.de with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
+ id 1iGKuv-0000cY-Om; Fri, 04 Oct 2019 12:34:33 +0200
+To: kai.heng.feng@canonical.com, jeffrey.t.kirsher@intel.com,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+From: Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
+Message-ID: <171f0c61-73a2-81c2-5c8a-7c140f548803@mni.thm.de>
+Date: Fri, 4 Oct 2019 12:34:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101
+ Thunderbird/71.0a1
 MIME-Version: 1.0
-X-Mailman-Approved-At: Fri, 04 Oct 2019 15:11:52 +0000
-Subject: [Intel-wired-lan] [PATCH] ixgbe: Remove duplicate clear_bit() call
+Content-Language: en-US
+X-Mailman-Approved-At: Fri, 04 Oct 2019 15:13:09 +0000
+Subject: [Intel-wired-lan] e1000e regression - 5.4rc1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,36 +67,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Igor Pylypiv <igor.pylypiv@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: tobias.klausmann@freenet.de
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-__IXGBE_RX_BUILD_SKB_ENABLED bit is already cleared.
-
-Signed-off-by: Igor Pylypiv <igor.pylypiv@gmail.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 1ce2397306b9..91b3780ddb04 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -4310,7 +4310,6 @@ static void ixgbe_set_rx_buffer_len(struct ixgbe_adapter *adapter)
- 		if (test_bit(__IXGBE_RX_FCOE, &rx_ring->state))
- 			set_bit(__IXGBE_RX_3K_BUFFER, &rx_ring->state);
- 
--		clear_bit(__IXGBE_RX_BUILD_SKB_ENABLED, &rx_ring->state);
- 		if (adapter->flags2 & IXGBE_FLAG2_RX_LEGACY)
- 			continue;
- 
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGVsbG8gYWxsLAoKV2hpbGUgdGVzdGluZyB0aGUgNS40cmMxIHJlbGVhc2UsIGkgbm90aWNlZCBt
+eSBFdGhlcm5ldCBuZXZlciBjb21pbmcgCmZ1bGx5IHVwLCBzZWVtaW5nbHkgaGF2aW5nIGEgdGlt
+ZW91dCBwcm9ibGVtLiBXaGlsZSBiaXNlY3RpbmcgdGhpcyBpIApsYW5kZWQgYXQgdGhlIGNvbW1p
+dCBkZWUyMzU5NGQ1ODczODZlOWZkYTc2NzMyYWE1ZjVhNDg3NzA5NTEwICgiZTEwMDBlOiAKTWFr
+ZSBzcGVlZCBkZXRlY3Rpb24gb24gaG90cGx1Z2dpbmcgY2FibGUgbW9yZSByZWxpYWJsZSIpIGFz
+IHRoZSBmaXJzdCAKYmFkIGNvbW1pdC4gQW5kIGluZGVlZCBqdXN0IHJldmVydGluZyB0aGUgY29t
+bWl0IG9uIHRvcCBvZiA1LjRyYzEgCnJlc29sdmVzIHRoZSBwcm9ibGVtLiBMZXQgbWUga25vdyBp
+ZiB5b3UgaGF2ZSBmdXJ0aGVyIHF1ZXN0aW9ucywgb3IgCnBhdGNoZXMgdG8gdGVzdCEKCkdyZWV0
+aW5ncywKClRvYmlhcwoKCmxzcGNpOgoKMDA6MTkuMCBFdGhlcm5ldCBjb250cm9sbGVyOiBJbnRl
+bCBDb3Jwb3JhdGlvbiA4MjU3OVYgR2lnYWJpdCBOZXR3b3JrIApDb25uZWN0aW9uIChyZXYgMDYp
+CiDCoMKgwqDCoMKgwqDCoCBEZXZpY2VOYW1lOsKgIE9uYm9hcmQgTEFOCiDCoMKgwqDCoMKgwqDC
+oCBTdWJzeXN0ZW06IEFTVVNUZUsgQ29tcHV0ZXIgSW5jLiBQOFA2NyBEZWx1eGUgTW90aGVyYm9h
+cmQKIMKgwqDCoMKgwqDCoMKgIENvbnRyb2w6IEkvTysgTWVtKyBCdXNNYXN0ZXIrIFNwZWNDeWNs
+ZS0gTWVtV0lOVi0gVkdBU25vb3AtIApQYXJFcnItIFN0ZXBwaW5nLSBTRVJSLSBGYXN0QjJCLSBE
+aXNJTlR4KwogwqDCoMKgwqDCoMKgwqAgU3RhdHVzOiBDYXArIDY2TUh6LSBVREYtIEZhc3RCMkIt
+IFBhckVyci0gREVWU0VMPWZhc3QgPlRBYm9ydC0gCjxUQWJvcnQtIDxNQWJvcnQtID5TRVJSLSA8
+UEVSUi0gSU5UeC0KIMKgwqDCoMKgwqDCoMKgIExhdGVuY3k6IDAKIMKgwqDCoMKgwqDCoMKgIElu
+dGVycnVwdDogcGluIEEgcm91dGVkIHRvIElSUSA1NgogwqDCoMKgwqDCoMKgwqAgUmVnaW9uIDA6
+IE1lbW9yeSBhdCBmYmYwMDAwMCAoMzItYml0LCBub24tcHJlZmV0Y2hhYmxlKSBbc2l6ZT0xMjhL
+XQogwqDCoMKgwqDCoMKgwqAgUmVnaW9uIDE6IE1lbW9yeSBhdCBmYmYyODAwMCAoMzItYml0LCBu
+b24tcHJlZmV0Y2hhYmxlKSBbc2l6ZT00S10KIMKgwqDCoMKgwqDCoMKgIFJlZ2lvbiAyOiBJL08g
+cG9ydHMgYXQgZjA0MCBbc2l6ZT0zMl0KIMKgwqDCoMKgwqDCoMKgIENhcGFiaWxpdGllczogW2M4
+XSBQb3dlciBNYW5hZ2VtZW50IHZlcnNpb24gMgogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIEZsYWdzOiBQTUVDbGstIERTSSsgRDEtIEQyLSBBdXhDdXJyZW50PTBtQSAKUE1FKEQwKyxE
+MS0sRDItLEQzaG90KyxEM2NvbGQrKQogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFN0
+YXR1czogRDAgTm9Tb2Z0UnN0LSBQTUUtRW5hYmxlLSBEU2VsPTAgRFNjYWxlPTEgUE1FLQogwqDC
+oMKgwqDCoMKgwqAgQ2FwYWJpbGl0aWVzOiBbZDBdIE1TSTogRW5hYmxlKyBDb3VudD0xLzEgTWFz
+a2FibGUtIDY0Yml0KwogwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIEFkZHJlc3M6IDAw
+MDAwMDAwZmVlMDA2OTjCoCBEYXRhOiAwMDAwCiDCoMKgwqDCoMKgwqDCoCBDYXBhYmlsaXRpZXM6
+IFtlMF0gUENJIEFkdmFuY2VkIEZlYXR1cmVzCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgQUZDYXA6IFRQKyBGTFIrCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgQUZDdHJs
+OiBGTFItCiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgQUZTdGF0dXM6IFRQLQogwqDC
+oMKgwqDCoMKgwqAgS2VybmVsIGRyaXZlciBpbiB1c2U6IGUxMDAwZQogwqDCoMKgwqDCoMKgwqAg
+S2VybmVsIG1vZHVsZXM6IGUxMDAwZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
+YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
+bnRlbC13aXJlZC1sYW4K
