@@ -1,77 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 449F2CC354
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2019 21:08:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 154EC86CF8;
-	Fri,  4 Oct 2019 19:08:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ta-QOyfKcjOz; Fri,  4 Oct 2019 19:08:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5FFA686CFF;
-	Fri,  4 Oct 2019 19:08:06 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A2761BF3F3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:08:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D8D12CC348
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2019 21:06:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8549E87C93
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:08:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 86D9687DF6;
+	Fri,  4 Oct 2019 19:06:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L18QqsPWTT2G; Fri,  4 Oct 2019 19:06:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7D0F187D91;
+	Fri,  4 Oct 2019 19:06:18 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5070E1BF3F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4C98A867ED
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2C2i6AWsHNjP for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Oct 2019 19:08:04 +0000 (UTC)
+ with ESMTP id X4VVc7kM9n3Z for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Oct 2019 19:06:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A4C1C878CA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:08:04 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A10118692B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:09 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2019 12:08:04 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2019 12:06:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,257,1566889200"; d="scan'208";a="205918488"
-Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
- by fmsmga001.fm.intel.com with ESMTP; 04 Oct 2019 12:08:04 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 4 Oct 2019 12:08:03 -0700
+X-IronPort-AV: E=Sophos;i="5.67,257,1566889200"; d="scan'208";a="192512382"
+Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
+ by fmsmga007.fm.intel.com with ESMTP; 04 Oct 2019 12:06:05 -0700
 Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 4 Oct 2019 12:05:50 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 4 Oct 2019 12:03:01 -0700
+ 15.1.1713.5; Fri, 4 Oct 2019 12:05:50 -0700
 Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81]) by
  fmsmsx601.amr.corp.intel.com ([10.18.126.81]) with mapi id 15.01.1713.004;
- Fri, 4 Oct 2019 12:03:01 -0700
+ Fri, 4 Oct 2019 12:05:50 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] fm10k: update driver version to match
- out-of-tree
-Thread-Index: AQHVdLFz3jRWaj5yckKpvnXCZ2Le76dK4znA
-Date: Fri, 4 Oct 2019 19:03:01 +0000
-Message-ID: <8d756d359c82435cb19aa2e8fb3a5bb3@intel.com>
-References: <20190926212904.27184-1-jacob.e.keller@intel.com>
-In-Reply-To: <20190926212904.27184-1-jacob.e.keller@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH 2/2] ice: Implement peer communications
+Thread-Index: AQHVejyXLpYd8KJANUeHcsYdRHz6KKdK2OyA
+Date: Fri, 4 Oct 2019 19:05:50 +0000
+Message-ID: <0762892933e247458639ee9772c6f73b@intel.com>
+References: <20191003141739.56446-1-anthony.l.nguyen@intel.com>
+ <20191003141739.56446-2-anthony.l.nguyen@intel.com>
+In-Reply-To: <20191003141739.56446-2-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmFmMmI2ZmUtZWEwMy00YTNjLTgxZjEtMzEzYTk3MDA0ZmE2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoidXV3ZTQySE1PK1AxZHlvZ0R1amlVZ3FjcExoanBRMnd4MGdaUHJmSzI1QTdlS0RNSmNhTHd0K3R2RlNjTno1MCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDk0YThmZGYtZjQyNi00YTE5LTkwOTYtYzFhZmJkMjQwN2RjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiV1lPXC9UNlwvUFNvNWxWMk9LTEs2YytGdjRYM0hWZWp3XC9Wcm8xZkNJeUU3SXRJUTlTbW9la1FsdVpNWVZMZlJhNSJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] fm10k: update driver version to match
- out-of-tree
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] ice: Implement peer communications
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,21 +90,34 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Jacob Keller
-> Sent: Thursday, September 26, 2019 2:29 PM
-> To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Kirsher, Jeffrey T
-> <jeffrey.t.kirsher@intel.com>
-> Subject: [Intel-wired-lan] [PATCH] fm10k: update driver version to match
-> out-of-tree
+> Behalf Of Tony Nguyen
+> Sent: Thursday, October 3, 2019 7:18 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH 2/2] ice: Implement peer communications
 > 
-> An upcoming out-of-tree release will be occurring which will include the
-> recent functionality to support virtual function statistics. Update the kernel
-> driver version to match this.
+> Set and implement operations for the peer device and peer driver to
+> communicate with each other, via ice_ops and ice_peer_ops, to request
+> resources and manage event notification.
 > 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/fm10k/fm10k_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/ice/ice.h          |   2 +
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  32 +
+>  drivers/net/ethernet/intel/ice/ice_common.c   | 188 ++++
+>  drivers/net/ethernet/intel/ice/ice_common.h   |   9 +
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |  34 +
+>  drivers/net/ethernet/intel/ice/ice_idc.c      | 884 ++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_idc_int.h  |  38 +
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |  34 +-
+>  drivers/net/ethernet/intel/ice/ice_lib.h      |   2 +
+>  drivers/net/ethernet/intel/ice/ice_main.c     |  63 +-
+>  drivers/net/ethernet/intel/ice/ice_sched.c    |  69 +-
+>  drivers/net/ethernet/intel/ice/ice_switch.c   |  27 +
+>  drivers/net/ethernet/intel/ice/ice_switch.h   |   4 +
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   3 +
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  25 -
+>  15 files changed, 1381 insertions(+), 33 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
