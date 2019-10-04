@@ -1,76 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D8D12CC348
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2019 21:06:20 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AB32CC34B
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2019 21:06:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 86D9687DF6;
-	Fri,  4 Oct 2019 19:06:19 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EA82F23C58;
+	Fri,  4 Oct 2019 19:06:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L18QqsPWTT2G; Fri,  4 Oct 2019 19:06:19 +0000 (UTC)
+	with ESMTP id 05NlaN9V+Euh; Fri,  4 Oct 2019 19:06:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7D0F187D91;
-	Fri,  4 Oct 2019 19:06:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E6350242F3;
+	Fri,  4 Oct 2019 19:06:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5070E1BF3F3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 651D41BF3F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4C98A867ED
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:10 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 60F7E86C32
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X4VVc7kM9n3Z for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Oct 2019 19:06:09 +0000 (UTC)
+ with ESMTP id TS8py_6vtqOq for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Oct 2019 19:06:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A10118692B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:09 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B803D86C1E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2019 19:06:47 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2019 12:06:08 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2019 12:06:47 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,257,1566889200"; d="scan'208";a="192512382"
-Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
- by fmsmga007.fm.intel.com with ESMTP; 04 Oct 2019 12:06:05 -0700
+X-IronPort-AV: E=Sophos;i="5.67,257,1566889200"; d="scan'208";a="392405601"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by fmsmga005.fm.intel.com with ESMTP; 04 Oct 2019 12:06:47 -0700
 Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 4 Oct 2019 12:05:50 -0700
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 4 Oct 2019 12:06:47 -0700
 Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
  fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 4 Oct 2019 12:05:50 -0700
+ 15.1.1713.5; Fri, 4 Oct 2019 12:06:46 -0700
 Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81]) by
  fmsmsx601.amr.corp.intel.com ([10.18.126.81]) with mapi id 15.01.1713.004;
- Fri, 4 Oct 2019 12:05:50 -0700
+ Fri, 4 Oct 2019 12:06:46 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 2/2] ice: Implement peer communications
-Thread-Index: AQHVejyXLpYd8KJANUeHcsYdRHz6KKdK2OyA
-Date: Fri, 4 Oct 2019 19:05:50 +0000
-Message-ID: <0762892933e247458639ee9772c6f73b@intel.com>
-References: <20191003141739.56446-1-anthony.l.nguyen@intel.com>
- <20191003141739.56446-2-anthony.l.nguyen@intel.com>
-In-Reply-To: <20191003141739.56446-2-anthony.l.nguyen@intel.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH] ixgbe: Remove duplicate clear_bit()
+ call
+Thread-Index: AQHVesYaR/tzmwnXTE2yD/ZMH+MKAqdK2BmQ
+Date: Fri, 4 Oct 2019 19:06:46 +0000
+Message-ID: <0c4651b2f0824c4386f4b8e4c3ec5580@intel.com>
+References: <20191004065357.19138-1-igor.pylypiv@gmail.com>
+In-Reply-To: <20191004065357.19138-1-igor.pylypiv@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDk0YThmZGYtZjQyNi00YTE5LTkwOTYtYzFhZmJkMjQwN2RjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiV1lPXC9UNlwvUFNvNWxWMk9LTEs2YytGdjRYM0hWZWp3XC9Wcm8xZkNJeUU3SXRJUTlTbW9la1FsdVpNWVZMZlJhNSJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOGJhOWI3ZTQtZDc2Ni00ODA0LTllOTQtMWNjMzgwNTJhNjAxIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTFd4VXN1YkoweUZpT3ZtZ2N4ZzY1dmxzZDM1WDVjcFFvVXBWM2RXMG8zYkpxYnNxRXMyZ0Z4cHhYM0hFWUtZRyJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] ice: Implement peer communications
+Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Remove duplicate clear_bit()
+ call
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,34 +92,20 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Tony Nguyen
-> Sent: Thursday, October 3, 2019 7:18 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH 2/2] ice: Implement peer communications
+> Behalf Of Igor Pylypiv
+> Sent: Thursday, October 3, 2019 11:54 PM
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David S . Miller
+> <davem@davemloft.net>
+> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; Igor Pylypiv
+> <igor.pylypiv@gmail.com>
+> Subject: [Intel-wired-lan] [PATCH] ixgbe: Remove duplicate clear_bit() call
 > 
-> Set and implement operations for the peer device and peer driver to
-> communicate with each other, via ice_ops and ice_peer_ops, to request
-> resources and manage event notification.
+> __IXGBE_RX_BUILD_SKB_ENABLED bit is already cleared.
 > 
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Signed-off-by: Igor Pylypiv <igor.pylypiv@gmail.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h          |   2 +
->  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  32 +
->  drivers/net/ethernet/intel/ice/ice_common.c   | 188 ++++
->  drivers/net/ethernet/intel/ice/ice_common.h   |   9 +
->  drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |  34 +
->  drivers/net/ethernet/intel/ice/ice_idc.c      | 884 ++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_idc_int.h  |  38 +
->  drivers/net/ethernet/intel/ice/ice_lib.c      |  34 +-
->  drivers/net/ethernet/intel/ice/ice_lib.h      |   2 +
->  drivers/net/ethernet/intel/ice/ice_main.c     |  63 +-
->  drivers/net/ethernet/intel/ice/ice_sched.c    |  69 +-
->  drivers/net/ethernet/intel/ice/ice_switch.c   |  27 +
->  drivers/net/ethernet/intel/ice/ice_switch.h   |   4 +
->  drivers/net/ethernet/intel/ice/ice_type.h     |   3 +
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  25 -
->  15 files changed, 1381 insertions(+), 33 deletions(-)
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 1 -
+>  1 file changed, 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
