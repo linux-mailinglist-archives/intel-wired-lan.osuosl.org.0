@@ -2,79 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50891CEA96
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2019 19:28:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5E42CEDD4
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2019 22:44:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E10DD877ED;
-	Mon,  7 Oct 2019 17:28:00 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3721E87C3F;
+	Mon,  7 Oct 2019 20:44:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JkS2NhYnbNSH; Mon,  7 Oct 2019 17:28:00 +0000 (UTC)
+	with ESMTP id Y+HoOjeWD4UK; Mon,  7 Oct 2019 20:44:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EB204875F9;
-	Mon,  7 Oct 2019 17:27:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 37C2E87BDE;
+	Mon,  7 Oct 2019 20:44:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1C9DD1BF419
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2019 17:27:58 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1BF281BF387
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2019 20:44:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1871E86483
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2019 17:27:58 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0CABE85FA8
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2019 20:44:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 23rZ6meOZCQb for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Oct 2019 17:27:57 +0000 (UTC)
+ with ESMTP id RvSM6b-0FbiR for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Oct 2019 20:44:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
- [209.85.210.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3D3598646F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2019 17:27:57 +0000 (UTC)
-Received: by mail-pf1-f193.google.com with SMTP id q7so9064946pfh.8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Oct 2019 10:27:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:date:message-id:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=rewVBm4IqqEvTaYiuvZUBNZZiDgXMthoGgqbVwwE7fI=;
- b=RVrYNxECPmgNvxSfK06La7b07vRhlukaBBdvvvYhmTRZo+aO+qTFH2ZblgGiJxB9/5
- OvP5MHzQJKg0rzKqupUtvizgdPVhCKRAfrl49yPNVOVlXxRj4npFks9mYqju8oOCAGQA
- dGvcGzd+f++le3NzgBXVDh49kuno995vYdpX8WI3wyUL4iMiYtAfbzX3WrQnWf8RTa93
- oupjUTkdAb3z8UShfYW7aIlM2F3OFyXoVUq5uLaols5fO7kLCvhUr4DbN49+FIN01Lyu
- hBW1an4CIKtF0lcrO6Yfz34VNGvjnv0RBxADmA2g5Paue/HhIaFbgH57xCO8M/TXH8An
- BGcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=rewVBm4IqqEvTaYiuvZUBNZZiDgXMthoGgqbVwwE7fI=;
- b=hJSS6bDxZhSsWZRVAWwtLclJgXhMXs9vX/OV9eJVONFWsuctNO+A1W6FQFHRp2JDUv
- 5lHrI3JrTs+KG9vXbFG0qWLCdtOFPiiKrk8xHIl6S/g+e4r8xxNRxLFyVq4o1B4Msju7
- tVGV26tB5FNfhLbT4Pbz7IfYPp2QGw9uQ2/Uk+cY6exqlloU53sy2GBwkdmc0/eyStRw
- I+eBKtvLKgj8Si0YN9w+5os4LiLs1dKsA89Oez9EeuN1pZXLhvJhtvHco39khiA+lheY
- 8iTDIK5qK4+NZnNfWnjbayvi+jHi6bCTUtKRO7/z3xYhAvhoiZdbIet/xbDDs+drjbhW
- Z6gA==
-X-Gm-Message-State: APjAAAWquQ3T9Dl8r9JQhF52jNLx/IQeacibrY5afKCK+oPCyuF80KTK
- 5L+ejbqWmZhKpbJ8CqP+/fo=
-X-Google-Smtp-Source: APXvYqyBCbO+Qi4CHuA8UQrMr7Jemry4iV0QSvxPw701kJ52QWmD9TrnfhS56eXUMVEYY/OzlknSgg==
-X-Received: by 2002:a17:90a:1aa9:: with SMTP id
- p38mr447244pjp.142.1570469276472; 
- Mon, 07 Oct 2019 10:27:56 -0700 (PDT)
-Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
- by smtp.gmail.com with ESMTPSA id k95sm115110pje.10.2019.10.07.10.27.55
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 07 Oct 2019 10:27:55 -0700 (PDT)
-From: Alexander Duyck <alexander.duyck@gmail.com>
-To: alexander.duyck@gmail.com
-Date: Mon, 07 Oct 2019 10:27:55 -0700
-Message-ID: <20191007172559.11166.29328.stgit@localhost.localdomain>
-In-Reply-To: <CAKgT0UdwqGGKvaSJ+3vd-_d-6t9MB=No+7SpkbOT2PnynRK+2w@mail.gmail.com>
-References: <CAKgT0UdwqGGKvaSJ+3vd-_d-6t9MB=No+7SpkbOT2PnynRK+2w@mail.gmail.com>
-User-Agent: StGit/0.17.1-dirty
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5F50E85E91
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2019 20:44:13 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Oct 2019 13:44:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.67,269,1566889200"; 
+ d="asc'?scan'208";a="394457126"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.96])
+ by fmsmga006.fm.intel.com with ESMTP; 07 Oct 2019 13:44:12 -0700
+Message-ID: <a00c9af7d24ac0dd6af8698c9e545591392720fe.camel@intel.com>
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: Joe Perches <joe@perches.com>, intel-wired-lan@lists.osuosl.org, netdev
+ <netdev@vger.kernel.org>
+Date: Mon, 07 Oct 2019 13:44:11 -0700
+In-Reply-To: <edf91d8284a2a19d956eb8b7e8b6c4984ceaa1ab.camel@perches.com>
+References: <edf91d8284a2a19d956eb8b7e8b6c4984ceaa1ab.camel@perches.com>
+Organization: Intel
+User-Agent: Evolution 3.32.4 (3.32.4-1.fc30) 
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC PATCH v2] e1000e: Use rtnl_lock to prevent
- race conditions between net and pci/pm
+Subject: Re: [Intel-wired-lan] i40e_pto.c: Odd use of strlcpy converted from
+ strncpy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,158 +66,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: zdai@linux.vnet.ibm.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- zdai@us.ibm.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: jeffrey.t.kirsher@intel.com
+Cc: Patryk =?UTF-8?Q?Ma=C5=82ek?= <patryk.malek@intel.com>
+Content-Type: multipart/mixed; boundary="===============7148279198663483581=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
 
-This patch is meant to address possible race conditions that can exist
-between network configuration and power management. A similar issue was
-fixed for igb in commit 9474933caf21 ("igb: close/suspend race in
-netif_device_detach").
+--===============7148279198663483581==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-7z2uVr0ArLU7yfEvLYqf"
 
-In addition it consolidates the code so that the PCI error handling code
-will essentially perform the power management freeze on the device prior to
-attempting a reset, and will thaw the device afterwards if that is what it
-is planning to do. Otherwise when we call close on the interface it should
-see it is detached and not attempt to call the logic to down the interface
-and free the IRQs again.
 
->From what I can tell the check that was adding the check for __E1000_DOWN
-in e1000e_close was added when runtime power management was added. However
-it should not be relevant for us as we perform a call to
-pm_runtime_get_sync before we call e1000_down/free_irq so it should always
-be back up before we call into this anyway.
+--=-7z2uVr0ArLU7yfEvLYqf
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
----
+On Sun, 2019-10-06 at 10:19 -0700, Joe Perches wrote:
+> This got converted from strncpy to strlcpy but it's
+> now not necessary to use one character less than the
+> actual size.
+>=20
+> Perhaps the sizeof() - 1 is now not correct and it
+> should use strscpy and a normal sizeof.
+>=20
+> from:
+>=20
+> commit 7eb74ff891b4e94b8bac48f648a21e4b94ddee64
+> Author: Mitch Williams <mitch.a.williams@intel.com>
+> Date:   Mon Aug 20 08:12:30 2018 -0700
+>=20
+>     i40e: use correct length for strncpy
+>=20
+> and
+>=20
+> commit 4ff2d8540321324e04c1306f85d4fe68a0c2d0ae
+> Author: Patryk Ma=C5=82ek <patryk.malek@intel.com>
+> Date:   Tue Oct 30 10:50:44 2018 -0700
+>=20
+>     i40e: Replace strncpy with strlcpy to ensure null termination
 
-RFC v2: Dropped some unused variables
-	Added logic to check for device present before removing to pm_freeze
-	Fixed misplaced err_irq to before rtnl_unlock()
+Looks like you have a typo in the subject, s/i40e_pto.c/i40e_ptp.c/.
 
- drivers/net/ethernet/intel/e1000e/netdev.c |   40 +++++++++++++++-------------
- 1 file changed, 21 insertions(+), 19 deletions(-)
+You are also missing you signed-off-by: and Fixes:, I can get your
+change under test in the meantime to confirm your fix.
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index d7d56e42a6aa..8b4e589aca36 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -4715,12 +4715,12 @@ int e1000e_close(struct net_device *netdev)
- 
- 	pm_runtime_get_sync(&pdev->dev);
- 
--	if (!test_bit(__E1000_DOWN, &adapter->state)) {
-+	if (netif_device_present(netdev)) {
- 		e1000e_down(adapter, true);
- 		e1000_free_irq(adapter);
- 
- 		/* Link status message must follow this format */
--		pr_info("%s NIC Link is Down\n", adapter->netdev->name);
-+		pr_info("%s NIC Link is Down\n", netdev->name);
- 	}
- 
- 	napi_disable(&adapter->napi);
-@@ -6298,10 +6298,14 @@ static int e1000e_pm_freeze(struct device *dev)
- {
- 	struct net_device *netdev = dev_get_drvdata(dev);
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
-+	bool present;
- 
-+	rtnl_lock();
-+
-+	present = netif_device_present(netdev);
- 	netif_device_detach(netdev);
- 
--	if (netif_running(netdev)) {
-+	if (present && netif_running(netdev)) {
- 		int count = E1000_CHECK_RESET_COUNT;
- 
- 		while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
-@@ -6313,6 +6317,8 @@ static int e1000e_pm_freeze(struct device *dev)
- 		e1000e_down(adapter, false);
- 		e1000_free_irq(adapter);
- 	}
-+	rtnl_unlock();
-+
- 	e1000e_reset_interrupt_capability(adapter);
- 
- 	/* Allow time for pending master requests to run */
-@@ -6626,27 +6632,31 @@ static int __e1000_resume(struct pci_dev *pdev)
- 	return 0;
- }
- 
--#ifdef CONFIG_PM_SLEEP
- static int e1000e_pm_thaw(struct device *dev)
- {
- 	struct net_device *netdev = dev_get_drvdata(dev);
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
-+	int rc = 0;
- 
- 	e1000e_set_interrupt_capability(adapter);
--	if (netif_running(netdev)) {
--		u32 err = e1000_request_irq(adapter);
- 
--		if (err)
--			return err;
-+	rtnl_lock();
-+	if (netif_running(netdev)) {
-+		rc = e1000_request_irq(adapter);
-+		if (rc)
-+			goto err_irq;
- 
- 		e1000e_up(adapter);
- 	}
- 
- 	netif_device_attach(netdev);
-+err_irq:
-+	rtnl_unlock();
- 
--	return 0;
-+	return rc;
- }
- 
-+#ifdef CONFIG_PM_SLEEP
- static int e1000e_pm_suspend(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
-@@ -6818,16 +6828,11 @@ static void e1000_netpoll(struct net_device *netdev)
- static pci_ers_result_t e1000_io_error_detected(struct pci_dev *pdev,
- 						pci_channel_state_t state)
- {
--	struct net_device *netdev = pci_get_drvdata(pdev);
--	struct e1000_adapter *adapter = netdev_priv(netdev);
--
--	netif_device_detach(netdev);
-+	e1000e_pm_freeze(&pdev->dev);
- 
- 	if (state == pci_channel_io_perm_failure)
- 		return PCI_ERS_RESULT_DISCONNECT;
- 
--	if (netif_running(netdev))
--		e1000e_down(adapter, true);
- 	pci_disable_device(pdev);
- 
- 	/* Request a slot slot reset. */
-@@ -6893,10 +6898,7 @@ static void e1000_io_resume(struct pci_dev *pdev)
- 
- 	e1000_init_manageability_pt(adapter);
- 
--	if (netif_running(netdev))
--		e1000e_up(adapter);
--
--	netif_device_attach(netdev);
-+	e1000e_pm_thaw(&pdev->dev);
- 
- 	/* If the controller has AMT, do not set DRV_LOAD until the interface
- 	 * is up.  For all other cases, let the f/w know that the h/w is now
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_ptp.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+> b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+> index 9bf1ad4319f5..627b1c02bb4b 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+> @@ -700,8 +700,8 @@ static long i40e_ptp_create_clock(struct i40e_pf
+> *pf)
+>  	if (!IS_ERR_OR_NULL(pf->ptp_clock))
+>  		return 0;
+> =20
+> -	strlcpy(pf->ptp_caps.name, i40e_driver_name,
+> -		sizeof(pf->ptp_caps.name) - 1);
+> +	strscpy(pf->ptp_caps.name, i40e_driver_name, sizeof(pf-
+> >ptp_caps.name));
+> +
+>  	pf->ptp_caps.owner =3D THIS_MODULE;
+>  	pf->ptp_caps.max_adj =3D 999999999;
+>  	pf->ptp_caps.n_ext_ts =3D 0;
+>=20
+>=20
+
+
+--=-7z2uVr0ArLU7yfEvLYqf
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl2bo5sACgkQ5W/vlVpL
+7c7A/A//TFv2ges65eXffdGEeIeVqNUr6O2L2LlRXuHfmzJXqiVnV2i8U3bV+SMf
+P3yskWbSyiL7BS2fi34rFsyZhImT6MzGwdIC4fRmn+pRgPLTouM4AL6p4A0JeLXn
+KPNt8POTXg8ETlwovOfpY67xDEmgn9C9+GN3/7lYHOCROpY25AEYPk1Bo9u5Iw5Q
+31drnh6M+sSdxWrcT5o3EHzfHPbhxJ4mP0lu+Gd3mKe2boIN0Du3BDkVQtK5ryQn
+gqtp6ns8PA+4Eq15R30/IYF6mMKIz6X/06NWjmK18mFNUs5Z9I0vo613BaOQ3iX5
+Pk7VZ6nlKsUyP2btwjlSFfJjeX2NBlPDyrjsBvWmAeRrD0y08mcN3slv8seEEMeX
+2eyDfZ2l4PY7PmVM2CddLJrpkoNzbHp5eEPlfiy0V3SE9F5XJQtQZ0citWul+p0C
+gaij35pW/B7JK9btdFry93Q22zfsV797J1XLkRkLni0+KGzIJMVbRiwBsNWPxIP4
+K11Pv+fi0SBkeDiChQ/3ED5QJRbV2dPLb7HAIlzPYoB6fsZdTTJJpKAP/cTawEJA
+qAwiO2DVBipJwqP1nHBdQcUJCLo0QgkdfrGONRgSQURxY4Al/9Ra4IJFcoiphq4P
+SH+vQcaQcfYNSwyE7Tdxaa5YGnZPdw7naFJuSy3PpUq1CB9K8Oo=
+=XpGh
+-----END PGP SIGNATURE-----
+
+--=-7z2uVr0ArLU7yfEvLYqf--
+
+
+--===============7148279198663483581==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============7148279198663483581==--
+
