@@ -1,72 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11D3AD03F9
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Oct 2019 01:17:42 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B61DD03FA
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Oct 2019 01:18:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C94F785C98;
-	Tue,  8 Oct 2019 23:17:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4F8E722902;
+	Tue,  8 Oct 2019 23:18:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OJ-hyF3EAtJ2; Tue,  8 Oct 2019 23:17:39 +0000 (UTC)
+	with ESMTP id TJw3RIHL5xv7; Tue,  8 Oct 2019 23:18:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0FEAF875BB;
-	Tue,  8 Oct 2019 23:17:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 75AF2228D5;
+	Tue,  8 Oct 2019 23:18:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8E0821BF47F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 23:17:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4A2001BF47F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 23:18:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 89D558818D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 23:17:37 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 46F468818D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 23:18:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tygzZAKxwaYw for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Oct 2019 23:17:37 +0000 (UTC)
+ with ESMTP id hzvmT49W-Scr for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Oct 2019 23:18:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D8B618815C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 23:17:36 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A2ECC8815C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 23:18:07 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Oct 2019 16:17:36 -0700
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Oct 2019 16:18:06 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,273,1566889200"; d="scan'208";a="196747953"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by orsmga003.jf.intel.com with ESMTP; 08 Oct 2019 16:17:35 -0700
-Received: from orsmsx157.amr.corp.intel.com (10.22.240.23) by
- ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 8 Oct 2019 16:17:35 -0700
+X-IronPort-AV: E=Sophos;i="5.67,273,1566889200"; d="scan'208";a="223393142"
+Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
+ by fmsmga002.fm.intel.com with ESMTP; 08 Oct 2019 16:18:06 -0700
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 8 Oct 2019 16:18:06 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.9]) by
- ORSMSX157.amr.corp.intel.com ([169.254.9.232]) with mapi id 14.03.0439.000;
- Tue, 8 Oct 2019 16:17:35 -0700
+ ORSMSX151.amr.corp.intel.com ([169.254.7.36]) with mapi id 14.03.0439.000;
+ Tue, 8 Oct 2019 16:18:05 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: "Neftin, Sasha" <sasha.neftin@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v1] igc: Add rx checksum support
-Thread-Index: AQHVedd1zUvoKmBjCEez1b0LeLaUV6dRaUFw
-Date: Tue, 8 Oct 2019 23:17:34 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9714937B@ORSMSX103.amr.corp.intel.com>
-References: <20191003104305.42463-1-sasha.neftin@intel.com>
-In-Reply-To: <20191003104305.42463-1-sasha.neftin@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v1] igc: Clean up unused shadow_vfta
+ pointer
+Thread-Index: AQHVeeBR5nLPuKLt2UeoCgEyO8F5f6dRaXHg
+Date: Tue, 8 Oct 2019 23:18:05 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9714938E@ORSMSX103.amr.corp.intel.com>
+References: <20191003114701.33966-1-sasha.neftin@intel.com>
+In-Reply-To: <20191003114701.33966-1-sasha.neftin@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiY2E0NmIzODEtOWQxOC00MGIzLWI5MjYtYzE3YmEyMjRmOWJmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoidjcxeVJaU0tDczRDc0c5aUVDT1NGTnV6d1JxSVZpWkZtdExPc0hzdFdnd1NmN2xqY3FVYW5yMjZWR0YyUkh2cCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTI1MjA2ZjMtYTMyZC00ZTgyLWI2YTAtM2U4YTA2NWE0MWFlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWGp2QXRVc28rRDh1QTdiRE0ySDRNU2NZUkRENmhtZlY1eE5lSERYdzdxV2hhV3ZGMVliN2ZrUUttbXZ4TURETSJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Add rx checksum support
+Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Clean up unused shadow_vfta
+ pointer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,19 +88,19 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On Behalf Of
 > Sasha Neftin
-> Sent: Thursday, October 3, 2019 3:43 AM
+> Sent: Thursday, October 3, 2019 4:47 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v1] igc: Add rx checksum support
+> Subject: [Intel-wired-lan] [PATCH v1] igc: Clean up unused shadow_vfta pointer
 > 
-> Extend the socket buffer field process and add rx checksum functionality
-> Minor: fix indentation with tab instead of spaces.
+> VLAN filter table array not implemented yet and shadow_vfta pointer
+> not used. Clean up the code and remove the unused shadow_vfta pointer.
 > 
 > Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_defines.h |  5 +++-
->  drivers/net/ethernet/intel/igc/igc_main.c    | 43
-> ++++++++++++++++++++++++++++
->  2 files changed, 47 insertions(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/igc/igc.h      | 1 -
+>  drivers/net/ethernet/intel/igc/igc_main.c | 1 -
+>  2 files changed, 2 deletions(-)
+> 
 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
