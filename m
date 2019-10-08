@@ -1,77 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 606E6CFF58
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2019 18:54:59 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FF15D00B2
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2019 20:28:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BF46685579;
-	Tue,  8 Oct 2019 16:54:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EBB78227B1;
+	Tue,  8 Oct 2019 18:28:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BS0gTI7vkYa3; Tue,  8 Oct 2019 16:54:55 +0000 (UTC)
+	with ESMTP id Dvhrdzkgv2Z6; Tue,  8 Oct 2019 18:28:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2827C861F9;
-	Tue,  8 Oct 2019 16:54:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id E282A2280D;
+	Tue,  8 Oct 2019 18:28:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B019E1BF3F4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 16:54:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5BEAF1BF5A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 18:28:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AC87B85579
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 16:54:53 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 57C168613E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 18:28:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 03UF9eh4h51f for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Oct 2019 16:54:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 34E8684BDF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 16:54:53 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Oct 2019 09:54:52 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,270,1566889200"; d="scan'208";a="394735573"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga006.fm.intel.com with ESMTP; 08 Oct 2019 09:54:52 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 8 Oct 2019 09:54:51 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 8 Oct 2019 09:54:51 -0700
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81]) by
- fmsmsx601.amr.corp.intel.com ([10.18.126.81]) with mapi id 15.01.1713.004;
- Tue, 8 Oct 2019 09:54:51 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for
- AF_XDP
-Thread-Index: AQHVfVujnrukQQyEFUKsnxNU/QXf4KdQ92tg
-Date: Tue, 8 Oct 2019 16:54:51 +0000
-Message-ID: <74c9afb9236b42cc8b3015d77522b692@intel.com>
-References: <20191007220724.16279-1-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20191007220724.16279-1-jeffrey.t.kirsher@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZGYwZGJlMzUtZWQ2MS00NGE3LWI2ZGYtYjBhMmZhZTNlZWVmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiSjY1TmlVZGZZMFlcL3BWZkp2V1Z0TzNXQnA3OVwvZ0xlQzQ0U2RtVG5ma1JiN0lcL1RybTVMY0loSzJNSEZqamdNRyJ9
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+ with ESMTP id nqmSZIzxW_yM for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Oct 2019 18:28:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mout2.fh-giessen.de (mout2.fh-giessen.de [212.201.18.46])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8769086101
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 18:28:06 +0000 (UTC)
+Received: from mx1.fh-giessen.de ([212.201.18.40])
+ by mout2.fh-giessen.de with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
+ id 1iHuDK-0000Kj-EC; Tue, 08 Oct 2019 20:28:02 +0200
+Received: from mailgate-3.its.fh-giessen.de ([212.201.18.34])
+ by mx1.fh-giessen.de with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
+ id 1iHuDK-004ZxS-BA; Tue, 08 Oct 2019 20:28:02 +0200
+Received: from p4fed2d78.dip0.t-ipconnect.de ([79.237.45.120]
+ helo=zwei.fritz.box) by mailgate-3.its.fh-giessen.de with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
+ id 1iHuDK-0008nX-5S; Tue, 08 Oct 2019 20:28:02 +0200
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>
+References: <171f0c61-73a2-81c2-5c8a-7c140f548803@mni.thm.de>
+ <56242322-D549-4E23-97AB-153CC392B107@canonical.com>
+ <76fc2204-0786-03b3-773d-110912d48168@mni.thm.de>
+ <2994F2A2-D844-40B0-9971-C002E5EC49CD@canonical.com>
+From: Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
+Message-ID: <940da657-a8af-ccde-34ca-7a93fad94567@mni.thm.de>
+Date: Tue, 8 Oct 2019 20:28:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101
+ Thunderbird/71.0a1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for
- AF_XDP
+In-Reply-To: <2994F2A2-D844-40B0-9971-C002E5EC49CD@canonical.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] e1000e regression - 5.4rc1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,34 +70,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Cc: tobias.klausmann@freenet.de, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Jeff Kirsher
-> Sent: Monday, October 7, 2019 3:07 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Karlsson, Magnus <magnus.karlsson@intel.com>
-> Subject: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for AF_XDP
-> 
-> Magnus's fix to resolve a potential receive buffer starvation for AF_XDP got
-> applied to both the i40e_xsk_umem_enable/disable() functions, when it
-> should have only been applied to the "enable".  So clean up the undesired
-> code in the disable function.
-> 
-> CC: Magnus Karlsson <magnus.karlsson@intel.com>
-> Fixes: 1f459bdc2007 ("i40e: fix potential RX buffer starvation for AF_XDP")
-> Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 -----
->  1 file changed, 5 deletions(-)
+Hi,
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+On 08.10.19 09:46, Kai-Heng Feng wrote:
+> Hi Tobias,
+>
+>> On Oct 5, 2019, at 03:52, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
+>>
+>> Hello,
+>>
+>> On 04.10.19 19:36, Kai-Heng Feng wrote:
+>>> Hi Tobias
+>>>
+>>>> On Oct 4, 2019, at 18:34, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
+>>>>
+>>>> Hello all,
+>>>>
+>>>> While testing the 5.4rc1 release, i noticed my Ethernet never coming fully up, seemingly having a timeout problem. While bisecting this i landed at the commit dee23594d587386e9fda76732aa5f5a487709510 ("e1000e: Make speed detection on hotplugging cable more reliable") as the first bad commit. And indeed just reverting the commit on top of 5.4rc1 resolves the problem. Let me know if you have further questions, or patches to test!
+>>> Is runtime PM enabled (i.e. "power/control" = auto)?
+>>
+>> Yes it is set to auto.
+> Is something like TLP or `powertop --auto-tune` is in use?
+>
+> Do you still see the issue when "power/control" keeps at "on"?
 
 
+With "power/control" set to "on" it does still cycle between up and 
+down. But yes i have upower and powerdevil running. After killing them 
+the connection comes up with "power/control" set to "on", yet not with 
+"auto".
+
+
+Greetings,
+
+Tobias
+
+
+>
+> Kai-Heng
+>
+>>
+>>> Also please attach full dmesg, thanks!
+>> Attached,
+>>
+>> Tobias
+>>
+>>> Kai-Heng
+>>>
+>>>> Greetings,
+>>>>
+>>>> Tobias
+>>>>
+>>>>
+>>>> lspci:
+>>>>
+>>>> 00:19.0 Ethernet controller: Intel Corporation 82579V Gigabit Network Connection (rev 06)
+>>>>          DeviceName:  Onboard LAN
+>>>>          Subsystem: ASUSTeK Computer Inc. P8P67 Deluxe Motherboard
+>>>>          Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+>>>>          Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+>>>>          Latency: 0
+>>>>          Interrupt: pin A routed to IRQ 56
+>>>>          Region 0: Memory at fbf00000 (32-bit, non-prefetchable) [size=128K]
+>>>>          Region 1: Memory at fbf28000 (32-bit, non-prefetchable) [size=4K]
+>>>>          Region 2: I/O ports at f040 [size=32]
+>>>>          Capabilities: [c8] Power Management version 2
+>>>>                  Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+>>>>                  Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=1 PME-
+>>>>          Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+>>>>                  Address: 00000000fee00698  Data: 0000
+>>>>          Capabilities: [e0] PCI Advanced Features
+>>>>                  AFCap: TP+ FLR+
+>>>>                  AFCtrl: FLR-
+>>>>                  AFStatus: TP-
+>>>>          Kernel driver in use: e1000e
+>>>>          Kernel modules: e1000e
+>>>>
+>> <dmesg.txt>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
