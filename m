@@ -1,94 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F863D027E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2019 22:50:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E2D8864AA;
-	Tue,  8 Oct 2019 20:50:01 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dy_fWKlN66lp; Tue,  8 Oct 2019 20:50:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CA62986432;
-	Tue,  8 Oct 2019 20:49:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9A8A61BF429
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 20:49:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 28760D02AE
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2019 23:16:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 6615820028
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 20:49:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CA6C922849;
+	Tue,  8 Oct 2019 21:16:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s7NvrOAOpSg9; Tue,  8 Oct 2019 21:16:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id AD0A8228CA;
+	Tue,  8 Oct 2019 21:16:36 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B11C21BF28E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 21:16:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A892B864AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 21:16:35 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FHWZQT8MjKlE for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Oct 2019 20:49:56 +0000 (UTC)
+ with ESMTP id MwvMjcTATrrx for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Oct 2019 21:16:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by silver.osuosl.org (Postfix) with ESMTPS id 348D420022
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 20:49:56 +0000 (UTC)
-Received: from pps.filterd (m0127361.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x98KWluk121271; Tue, 8 Oct 2019 16:49:48 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2vf98j073a-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 08 Oct 2019 16:49:48 -0400
-Received: from m0127361.ppops.net (m0127361.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.27/8.16.0.27) with SMTP id x98KWpYE121438;
- Tue, 8 Oct 2019 16:49:47 -0400
-Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
- [169.63.121.186])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2vf98j0733-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 08 Oct 2019 16:49:47 -0400
-Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
- by ppma03wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x98KUpCc030366;
- Tue, 8 Oct 2019 20:49:47 GMT
-Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
- [9.57.198.28]) by ppma03wdc.us.ibm.com with ESMTP id 2vejt6v6ne-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 08 Oct 2019 20:49:46 +0000
-Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com
- [9.57.199.111])
- by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x98KnkuR7274896
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 8 Oct 2019 20:49:46 GMT
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6EEF3AC05B;
- Tue,  8 Oct 2019 20:49:46 +0000 (GMT)
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DF5C6AC059;
- Tue,  8 Oct 2019 20:49:45 +0000 (GMT)
-Received: from [9.53.179.215] (unknown [9.53.179.215])
- by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
- Tue,  8 Oct 2019 20:49:45 +0000 (GMT)
-From: "David Z. Dai" <zdai@linux.vnet.ibm.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
-In-Reply-To: <20191007172559.11166.29328.stgit@localhost.localdomain>
-References: <CAKgT0UdwqGGKvaSJ+3vd-_d-6t9MB=No+7SpkbOT2PnynRK+2w@mail.gmail.com>
- <20191007172559.11166.29328.stgit@localhost.localdomain>
-Date: Tue, 08 Oct 2019 15:49:45 -0500
-Message-ID: <1570567785.1510.12.camel@oc5348122405>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.32.3 (2.32.3-36.el6) 
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-10-08_08:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=2 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1908290000 definitions=main-1910080160
-Subject: Re: [Intel-wired-lan] [RFC PATCH v2] e1000e: Use rtnl_lock to
- prevent race conditions between net and pci/pm
+Received: from mail-pl1-f196.google.com (mail-pl1-f196.google.com
+ [209.85.214.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 84CED862D4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 21:16:34 +0000 (UTC)
+Received: by mail-pl1-f196.google.com with SMTP id c3so7549592plo.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Oct 2019 14:16:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:from:to:cc:date:message-id:user-agent:mime-version
+ :content-transfer-encoding;
+ bh=ym7Po/ipIr5qsZP6Wss4YgBN/Fdm72GjN294jAaAbXM=;
+ b=BtKrJlf9z/iIQeSybJI790Nc8Ch0XBlYX7hUUYU2k5P1NSzuCbhvLuQ9Fasj8c/RLV
+ 7T9QSQgP592on+stFymuyY7HFtJYHHmaQUld1uHY4mDzn9QBKe5aNWMNF3+4DT8w1kc9
+ oq2QFLB9RxUoq7mkv+UsOinrHBJVOoDETFv/nMlzdP9AWvscwIStfHxPOcf16FYFRrkf
+ i/IMHnflmMNpPgwv19O3DHEJEGpmCbrEad859AEJVEOzmrQBr4UvxvV2eWEp8u0isxTD
+ pOorsK0jbEjry86XHen7qyBzn9t1ValfktI0AxGsnD5jHia/qvfYeWWlbLOgDqjUOfzj
+ loOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:date:message-id:user-agent
+ :mime-version:content-transfer-encoding;
+ bh=ym7Po/ipIr5qsZP6Wss4YgBN/Fdm72GjN294jAaAbXM=;
+ b=fcSiZqYlwLhjWj5zKskq3FbWs3aKlprl34ubCJW2Z4q40J6+y2XSx/M3BgauFuHdl5
+ h86d7cHYaYEA3+JT2ipfMhPexexQwywNj5jL8UZKwjg+8B4GspsQ6GvkCJd65uwlA+21
+ jZJO+gNOfSIQbikLxHzzpHZxIsbbcplYGyiq1Fi3bOk/Y5lA2F5hC4979eDlKd2K59kZ
+ AzyvtoYIB3QRxWa13GlbUAN4tCH4AQq9tu9/vL/adqqE5MSg9uAQFBxFLbfDkwNdRS/j
+ m1KP+wVVcrIp3KzCfn5m2F8j5bFjSjojwYu997chr2Hd5RUZ6CC+wMApyYf5B7N09alQ
+ nFUA==
+X-Gm-Message-State: APjAAAVllCZjCd43WT0l3TjNp2QHC86yJLz8rYknjG5cikel1zhH+hxr
+ uY+9QQTRF3why2MW3wDMFc0=
+X-Google-Smtp-Source: APXvYqwOsqx/h8V4j7TZDE3vB8YZXnJjOfzNJPlCEl5sUI5/OhZG4vNUhrhz/+y7QMNteEibu8WPhA==
+X-Received: by 2002:a17:902:aa07:: with SMTP id
+ be7mr6106318plb.172.1570569393783; 
+ Tue, 08 Oct 2019 14:16:33 -0700 (PDT)
+Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
+ by smtp.gmail.com with ESMTPSA id l24sm55274pff.151.2019.10.08.14.16.32
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 08 Oct 2019 14:16:33 -0700 (PDT)
+From: Alexander Duyck <alexander.duyck@gmail.com>
+To: alexander.h.duyck@linux.intel.com, intel-wired-lan@lists.osuosl.org,
+ jeffrey.t.kirsher@intel.com
+Date: Tue, 08 Oct 2019 14:16:32 -0700
+Message-ID: <20191008210639.4575.44144.stgit@localhost.localdomain>
+User-Agent: StGit/0.17.1-dirty
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [next-queue PATCH 0/2] Address IRQ related crash
+ seen due to io_perm_failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,163 +86,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, zdai@us.ibm.com, davem@davemloft.net
+Cc: netdev@vger.kernel.org, zdai@us.ibm.com, zdai@linux.vnet.ibm.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 2019-10-07 at 10:27 -0700, Alexander Duyck wrote:
-> From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> 
-> This patch is meant to address possible race conditions that can exist
-> between network configuration and power management. A similar issue was
-> fixed for igb in commit 9474933caf21 ("igb: close/suspend race in
-> netif_device_detach").
-> 
-> In addition it consolidates the code so that the PCI error handling code
-> will essentially perform the power management freeze on the device prior to
-> attempting a reset, and will thaw the device afterwards if that is what it
-> is planning to do. Otherwise when we call close on the interface it should
-> see it is detached and not attempt to call the logic to down the interface
-> and free the IRQs again.
-> 
-> >From what I can tell the check that was adding the check for __E1000_DOWN
-> in e1000e_close was added when runtime power management was added. However
-> it should not be relevant for us as we perform a call to
-> pm_runtime_get_sync before we call e1000_down/free_irq so it should always
-> be back up before we call into this anyway.
-> 
-> Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> ---
-> 
-> RFC v2: Dropped some unused variables
-> 	Added logic to check for device present before removing to pm_freeze
-> 	Fixed misplaced err_irq to before rtnl_unlock()
-> 
->  drivers/net/ethernet/intel/e1000e/netdev.c |   40 +++++++++++++++-------------
->  1 file changed, 21 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index d7d56e42a6aa..8b4e589aca36 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -4715,12 +4715,12 @@ int e1000e_close(struct net_device *netdev)
-> 
->  	pm_runtime_get_sync(&pdev->dev);
-> 
-> -	if (!test_bit(__E1000_DOWN, &adapter->state)) {
-> +	if (netif_device_present(netdev)) {
->  		e1000e_down(adapter, true);
->  		e1000_free_irq(adapter);
-> 
->  		/* Link status message must follow this format */
-> -		pr_info("%s NIC Link is Down\n", adapter->netdev->name);
-> +		pr_info("%s NIC Link is Down\n", netdev->name);
->  	}
-> 
->  	napi_disable(&adapter->napi);
-> @@ -6298,10 +6298,14 @@ static int e1000e_pm_freeze(struct device *dev)
->  {
->  	struct net_device *netdev = dev_get_drvdata(dev);
->  	struct e1000_adapter *adapter = netdev_priv(netdev);
-> +	bool present;
-> 
-> +	rtnl_lock();
-> +
-> +	present = netif_device_present(netdev);
->  	netif_device_detach(netdev);
-> 
-> -	if (netif_running(netdev)) {
-> +	if (present && netif_running(netdev)) {
->  		int count = E1000_CHECK_RESET_COUNT;
-> 
->  		while (test_bit(__E1000_RESETTING, &adapter->state) && count--)
-> @@ -6313,6 +6317,8 @@ static int e1000e_pm_freeze(struct device *dev)
->  		e1000e_down(adapter, false);
->  		e1000_free_irq(adapter);
->  	}
-> +	rtnl_unlock();
-> +
->  	e1000e_reset_interrupt_capability(adapter);
-> 
->  	/* Allow time for pending master requests to run */
-> @@ -6626,27 +6632,31 @@ static int __e1000_resume(struct pci_dev *pdev)
->  	return 0;
->  }
-> 
-> -#ifdef CONFIG_PM_SLEEP
->  static int e1000e_pm_thaw(struct device *dev)
->  {
->  	struct net_device *netdev = dev_get_drvdata(dev);
->  	struct e1000_adapter *adapter = netdev_priv(netdev);
-> +	int rc = 0;
-> 
->  	e1000e_set_interrupt_capability(adapter);
-> -	if (netif_running(netdev)) {
-> -		u32 err = e1000_request_irq(adapter);
-> 
-> -		if (err)
-> -			return err;
-> +	rtnl_lock();
-> +	if (netif_running(netdev)) {
-> +		rc = e1000_request_irq(adapter);
-> +		if (rc)
-> +			goto err_irq;
-> 
->  		e1000e_up(adapter);
->  	}
-> 
->  	netif_device_attach(netdev);
-> +err_irq:
-> +	rtnl_unlock();
-> 
-> -	return 0;
-> +	return rc;
->  }
-> 
-> +#ifdef CONFIG_PM_SLEEP
->  static int e1000e_pm_suspend(struct device *dev)
->  {
->  	struct pci_dev *pdev = to_pci_dev(dev);
-> @@ -6818,16 +6828,11 @@ static void e1000_netpoll(struct net_device *netdev)
->  static pci_ers_result_t e1000_io_error_detected(struct pci_dev *pdev,
->  						pci_channel_state_t state)
->  {
-> -	struct net_device *netdev = pci_get_drvdata(pdev);
-> -	struct e1000_adapter *adapter = netdev_priv(netdev);
-> -
-> -	netif_device_detach(netdev);
-> +	e1000e_pm_freeze(&pdev->dev);
-> 
->  	if (state == pci_channel_io_perm_failure)
->  		return PCI_ERS_RESULT_DISCONNECT;
-> 
-> -	if (netif_running(netdev))
-> -		e1000e_down(adapter, true);
->  	pci_disable_device(pdev);
-> 
->  	/* Request a slot slot reset. */
-> @@ -6893,10 +6898,7 @@ static void e1000_io_resume(struct pci_dev *pdev)
-> 
->  	e1000_init_manageability_pt(adapter);
-> 
-> -	if (netif_running(netdev))
-> -		e1000e_up(adapter);
-> -
-> -	netif_device_attach(netdev);
-> +	e1000e_pm_thaw(&pdev->dev);
-> 
->  	/* If the controller has AMT, do not set DRV_LOAD until the interface
->  	 * is up.  For all other cases, let the f/w know that the h/w is now
-> 
-Tested this v2 version patch. There is no more crash, which is good.
-And It also eliminates the double free warning message.
-This patch is good to go.
+David Dai had submitted a patch[1] to address a reported issue with e1000e
+calling pci_disable_msi without first freeing the interrupts. Looking over
+the issue it seems the problem was the fact that e1000e_down was being
+called in e1000_io_error_detected without calling e1000_free_irq, and this
+was resulting in e1000e_close skipping over the call to e1000e_down and
+e1000_free_irq.
 
-Thanks! - David
+The use of the __E1000_DOWN flag for the close test seems to have come from
+the runtime power management changes that were made some time ago. From
+what I can tell in the close path we should be disabling runtime power
+management via a call to pm_runtime_get_sync. As such we can remove the
+test for the __E1000_DOWN bit. However in comparing this with other drivers
+we do need to avoid freeing the IRQs more than once. So in order to address
+that I have copied the approach taken in igb and taken it a bit further so
+that we will always detach the interface and if the interface is up we will
+bring it down and free the IRQs. In addition we are able to reuse some of
+the power management code so I have taken the opportunity to merge those
+bits.
 
+[1]: https://lore.kernel.org/lkml/1570121672-12172-1-git-send-email-zdai@linux.vnet.ibm.com/
+
+---
+
+Alexander Duyck (2):
+      e1000e: Use rtnl_lock to prevent race conditions between net and pci/pm
+      e1000e: Drop unnecessary __E1000_DOWN bit twiddling
+
+
+ drivers/net/ethernet/intel/e1000e/netdev.c |   47 +++++++++++++---------------
+ 1 file changed, 22 insertions(+), 25 deletions(-)
+
+--
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
