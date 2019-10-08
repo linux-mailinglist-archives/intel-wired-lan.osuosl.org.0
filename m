@@ -2,92 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45162CF32D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2019 09:05:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2A13CF425
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2019 09:46:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E7FEC84F4C;
-	Tue,  8 Oct 2019 07:05:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60AFF875F0;
+	Tue,  8 Oct 2019 07:46:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gNzoaj2QJv35; Tue,  8 Oct 2019 07:05:15 +0000 (UTC)
+	with ESMTP id eSWRDEO5joAx; Tue,  8 Oct 2019 07:46:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 49C1585540;
-	Tue,  8 Oct 2019 07:05:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4030587606;
+	Tue,  8 Oct 2019 07:46:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F21A1BF287
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 07:05:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2854F1BF287
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 07:46:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7985B84F4C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 07:05:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 240DA8562D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 07:46:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ppWtpphKAG3f for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Oct 2019 07:05:11 +0000 (UTC)
-X-Greylist: delayed 00:06:48 by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5ACAA84F5A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 07:05:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1570518310;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BjiVfnfo3B219hJevj+nUA5nd9HYypooTjDbpxlfu2E=;
- b=TlmC/tdHZ2VZO6WcS8fPgdvPGIR4A3nJoDKHygPSX8rab7koNljnxYlPHl+vJfnUEbtHJE
- ATmn0nxabhX/YIN5ARs+e9hqVAlq7TNwW7kq4Vay7ofAmY27dHw+UnBVGqRh4X58kmZuNe
- 7Wksj/GCgBQgRjsYaPU4IaVWOVlVUq4=
-Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
- [209.85.208.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-72-2GN7ZnrFOTOWPHlhyuwK_Q-1; Tue, 08 Oct 2019 02:58:20 -0400
-Received: by mail-lj1-f199.google.com with SMTP id m22so4047450ljj.6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Oct 2019 23:58:20 -0700 (PDT)
+ with ESMTP id WhO7ZwsF3Oz3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Oct 2019 07:46:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 24662855A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2019 07:46:19 +0000 (UTC)
+Received: from mail-pl1-f198.google.com ([209.85.214.198])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>) id 1iHkCH-0003Xs-4l
+ for intel-wired-lan@lists.osuosl.org; Tue, 08 Oct 2019 07:46:17 +0000
+Received: by mail-pl1-f198.google.com with SMTP id f8so10308485plj.10
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Oct 2019 00:46:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=S9PjHaofBE8WvE/gCT9+Hpu5GwookQh45Bj4/FXFqOI=;
- b=DHXwyQhvlRMHXVzq3W10UjsD7+Xy9G9DR0PpZWUQAZnpx+xHYo9OVtKBJA0xza2UFc
- iFOCJmvUmaEuSRSFVLMkJA3IrCwdgkISbnjWNyft7OZMQ2E4tt8Extz8uXGNkE0X17Y+
- f0STVSB269yKNnXVL+FtmOnTvjw8/DC6ZEsb7pogoUf/6954sceVl8nj/9A3NYdteQXA
- 698k9CQqIxiharHVF2qs3IABlDZwbJT3lHBPp/e5yIgIBCEjFxb/TMuNaBiTiJ2CGFXt
- FQ8rSwag6lIxVYq6HME2HFSNp/R2FLxwQX8Yo6EFJhqDjDqQtw51n8q4AXCkWqXVRc5g
- IeGA==
-X-Gm-Message-State: APjAAAXRZg8w31hvQAQE9cISAvQikypikrpXUnW1fGZXDK/B/Vh+loMx
- seqP5JroaqLW0Cmnmxafv1eWHYp+qHYe8KMCb27xIfBtJ+8VETfRg+R/wZp/cvUc6mBM0ieLEG0
- ajzJecOpNsEt1TuKMuRTTAN9xBQEJ6g==
-X-Received: by 2002:a2e:730a:: with SMTP id o10mr21912320ljc.214.1570517898898; 
- Mon, 07 Oct 2019 23:58:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzcpPsm8E/3M1oXM5bmklENMw0tvOHJJmGog/AgsVSfuHgI1NlUp2BPNtR6+WN3vcVRbtaEPA==
-X-Received: by 2002:a2e:730a:: with SMTP id o10mr21912299ljc.214.1570517898646; 
- Mon, 07 Oct 2019 23:58:18 -0700 (PDT)
-Received: from alrua-x1.borgediget.toke.dk ([2a00:7660:6da:443::2])
- by smtp.gmail.com with ESMTPSA id b6sm3972837lfi.72.2019.10.07.23.58.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Oct 2019 23:58:17 -0700 (PDT)
-Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
- id BF15F18063D; Tue,  8 Oct 2019 08:58:16 +0200 (CEST)
-From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-To: Sridhar Samudrala <sridhar.samudrala@intel.com>, magnus.karlsson@intel.com,
- bjorn.topel@intel.com, netdev@vger.kernel.org, bpf@vger.kernel.org,
- sridhar.samudrala@intel.com, intel-wired-lan@lists.osuosl.org,
- maciej.fijalkowski@intel.com, tom.herbert@intel.com
-In-Reply-To: <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
-References: <1570515415-45593-1-git-send-email-sridhar.samudrala@intel.com>
- <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
-X-Clacks-Overhead: GNU Terry Pratchett
-Date: Tue, 08 Oct 2019 08:58:16 +0200
-Message-ID: <875zkzn2pj.fsf@toke.dk>
-MIME-Version: 1.0
-X-MC-Unique: 2GN7ZnrFOTOWPHlhyuwK_Q-1
-X-Mimecast-Spam-Score: 0
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 2/4] xsk: allow AF_XDP
- sockets to receive packets directly from a queue
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=PjByk3+qcqmoyRROOKSgncBpIurhIbIveg7FM/NtDSE=;
+ b=loPyju5hTnPCxfaBNyeh9eftBAcfQiRLhEWRD9SCaDp1CHiPu/5umVVeaNcXN5eOR6
+ HsiXvi4tDpx7oAN8lBwR3van09BnO/W9VJQwcEWEnBG6VFK/2CgsZEwRzjJb4Q+AYNB5
+ rjXmlFNIdzAw6DrUGbuDZu6mylI0XhMdhwLXUKPLtwL0+x1KzKhkKF5B7IDdMZGffaK4
+ jaWNhO+QJdmMBnLFjOPkx15E3DjuOSiJu2UJr77/OdGLSlN6AAaot+2X8ZF5sZhVobj5
+ Dg0tIPu6JT+xA4dzJelaq6NkmdIR9/Vvx/fOtXSwvgv0djoZMWtiq+Ho/weQQ4M5eWAG
+ GcYg==
+X-Gm-Message-State: APjAAAWI7aePeCnXPYMZL/C/1agJX4YCGZLS2DcOVolvU9NbdW/IBoi6
+ SjDTnyqFmcTBEtadDBIClwj5z2tBEr6gitS6wsMLbE7q/aQrCZa6QnJjS+z8/tyke06x6SktVOK
+ YLIN8EDdZjtT4RVVS3TZTsLmcnOiV6BwzX0BSIsu8xKcrBhI=
+X-Received: by 2002:a17:902:6bc5:: with SMTP id
+ m5mr34613199plt.282.1570520775638; 
+ Tue, 08 Oct 2019 00:46:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxq2z9TPA04cnVKcnWKfwfTy6uh7Pdgkh/eovRcCG7IjF5fS2tihcKdlwsRnNokM3dRcqpmqQ==
+X-Received: by 2002:a17:902:6bc5:: with SMTP id
+ m5mr34613177plt.282.1570520775239; 
+ Tue, 08 Oct 2019 00:46:15 -0700 (PDT)
+Received: from 2001-b011-380f-3c42-1138-6cd0-3dc6-cfa2.dynamic-ip6.hinet.net
+ (2001-b011-380f-3c42-1138-6cd0-3dc6-cfa2.dynamic-ip6.hinet.net.
+ [2001:b011:380f:3c42:1138:6cd0:3dc6:cfa2])
+ by smtp.gmail.com with ESMTPSA id f3sm15041747pgj.62.2019.10.08.00.46.11
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 08 Oct 2019 00:46:14 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3594.4.19\))
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <76fc2204-0786-03b3-773d-110912d48168@mni.thm.de>
+Date: Tue, 8 Oct 2019 15:46:10 +0800
+Message-Id: <2994F2A2-D844-40B0-9971-C002E5EC49CD@canonical.com>
+References: <171f0c61-73a2-81c2-5c8a-7c140f548803@mni.thm.de>
+ <56242322-D549-4E23-97AB-153CC392B107@canonical.com>
+ <76fc2204-0786-03b3-773d-110912d48168@mni.thm.de>
+To: Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
+X-Mailer: Apple Mail (2.3594.4.19)
+Subject: Re: [Intel-wired-lan] e1000e regression - 5.4rc1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,28 +89,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: tobias.klausmann@freenet.de, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Sridhar Samudrala <sridhar.samudrala@intel.com> writes:
+Hi Tobias,
 
->  int xdp_do_redirect(struct net_device *dev, struct xdp_buff *xdp,
->  		    struct bpf_prog *xdp_prog)
->  {
->  	struct bpf_redirect_info *ri = this_cpu_ptr(&bpf_redirect_info);
->  	struct bpf_map *map = READ_ONCE(ri->map);
-> +	struct xdp_sock *xsk;
-> +
-> +	xsk = xdp_get_direct_xsk(ri);
-> +	if (xsk)
-> +		return xsk_rcv(xsk, xdp);
+> On Oct 5, 2019, at 03:52, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
+> 
+> Hello,
+> 
+> On 04.10.19 19:36, Kai-Heng Feng wrote:
+>> Hi Tobias
+>> 
+>>> On Oct 4, 2019, at 18:34, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
+>>> 
+>>> Hello all,
+>>> 
+>>> While testing the 5.4rc1 release, i noticed my Ethernet never coming fully up, seemingly having a timeout problem. While bisecting this i landed at the commit dee23594d587386e9fda76732aa5f5a487709510 ("e1000e: Make speed detection on hotplugging cable more reliable") as the first bad commit. And indeed just reverting the commit on top of 5.4rc1 resolves the problem. Let me know if you have further questions, or patches to test!
+>> Is runtime PM enabled (i.e. "power/control" = auto)?
+> 
+> 
+> Yes it is set to auto.
 
-This is a new branch and a read barrier in the XDP_REDIRECT fast path.
-What's the performance impact of that for non-XSK redirect?
+Is something like TLP or `powertop --auto-tune` is in use?
 
--Toke
+Do you still see the issue when "power/control" keeps at "on"?
+
+Kai-Heng
+
+> 
+> 
+>> Also please attach full dmesg, thanks!
+> 
+> Attached,
+> 
+> Tobias
+> 
+>> 
+>> Kai-Heng
+>> 
+>>> Greetings,
+>>> 
+>>> Tobias
+>>> 
+>>> 
+>>> lspci:
+>>> 
+>>> 00:19.0 Ethernet controller: Intel Corporation 82579V Gigabit Network Connection (rev 06)
+>>>         DeviceName:  Onboard LAN
+>>>         Subsystem: ASUSTeK Computer Inc. P8P67 Deluxe Motherboard
+>>>         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+>>>         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+>>>         Latency: 0
+>>>         Interrupt: pin A routed to IRQ 56
+>>>         Region 0: Memory at fbf00000 (32-bit, non-prefetchable) [size=128K]
+>>>         Region 1: Memory at fbf28000 (32-bit, non-prefetchable) [size=4K]
+>>>         Region 2: I/O ports at f040 [size=32]
+>>>         Capabilities: [c8] Power Management version 2
+>>>                 Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+>>>                 Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=1 PME-
+>>>         Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+>>>                 Address: 00000000fee00698  Data: 0000
+>>>         Capabilities: [e0] PCI Advanced Features
+>>>                 AFCap: TP+ FLR+
+>>>                 AFCtrl: FLR-
+>>>                 AFStatus: TP-
+>>>         Kernel driver in use: e1000e
+>>>         Kernel modules: e1000e
+>>> 
+> <dmesg.txt>
 
 _______________________________________________
 Intel-wired-lan mailing list
