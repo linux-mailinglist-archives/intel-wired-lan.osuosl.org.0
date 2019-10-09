@@ -1,54 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DC88D1BD0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2019 00:39:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 382FFD1BE4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2019 00:40:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3E3A1883A1;
-	Wed,  9 Oct 2019 22:39:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DBC6323735;
+	Wed,  9 Oct 2019 22:40:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ImFPhw+Q16hu; Wed,  9 Oct 2019 22:39:45 +0000 (UTC)
+	with ESMTP id JWbyENIGlg2i; Wed,  9 Oct 2019 22:40:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DAC1A88431;
-	Wed,  9 Oct 2019 22:39:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3135723756;
+	Wed,  9 Oct 2019 22:40:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1F6691BF3CC
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Oct 2019 22:39:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BA0AC1BF9B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Oct 2019 22:40:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EF9258837F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Oct 2019 22:39:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B510188305
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Oct 2019 22:40:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5R6LjioT6RMg for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Oct 2019 22:39:39 +0000 (UTC)
+ with ESMTP id 6rk1Iw3uEeOl for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Oct 2019 22:40:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3E3D8883B8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Oct 2019 22:39:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D2904882F3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Oct 2019 22:40:00 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2019 15:39:34 -0700
+ 09 Oct 2019 15:40:00 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,277,1566889200"; d="scan'208";a="184218362"
+X-IronPort-AV: E=Sophos;i="5.67,277,1566889200"; d="scan'208";a="197052250"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga007.jf.intel.com with ESMTP; 09 Oct 2019 15:39:33 -0700
+ by orsmga003.jf.intel.com with ESMTP; 09 Oct 2019 15:40:00 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  9 Oct 2019 07:09:25 -0700
-Message-Id: <20191009140925.13997-9-anthony.l.nguyen@intel.com>
+Date: Wed,  9 Oct 2019 07:09:39 -0700
+Message-Id: <20191009140953.14087-1-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191009140925.13997-1-anthony.l.nguyen@intel.com>
-References: <20191009140925.13997-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S30 9/9] ice: allow 3k MTU for XDP
+Subject: [Intel-wired-lan] [PATCH S31 01/15] ice: implement set_eeprom
+ functionality
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,55 +65,816 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-At this point ice driver is able to work on order 1 pages that are split
-onto two 3k buffers. Let's reflect that when user is setting new mtu
-size and XDP is present on interface.
+The driver needs set_eeprom to work so that it can
+program the onboard NVM using our update application.
 
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Add functions that are necessary to enable reading the
+NVM image.  They implement basic functionality to lock,
+read, unlock during an NVM read.  Also remove shadow ram
+functionality since it is no longer used. In addition
+move a few function declarations into ice_nvm.h.
+
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Co-developed-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   3 +
+ drivers/net/ethernet/intel/ice/ice_common.h   |   4 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  | 125 ++++++-
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |   2 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  24 ++
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   2 +
+ drivers/net/ethernet/intel/ice/ice_nvm.c      | 341 +++++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |  79 ++++
+ 8 files changed, 468 insertions(+), 112 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_nvm.h
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 66e3b983d94a..88b5941ecf5c 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4765,6 +4765,18 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	dev_err(dev, "Rebuild failed, unload and reload driver\n");
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index dad9a9efadfa..73c189a794bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1171,6 +1171,8 @@ struct ice_aqc_nvm {
+ 	__le32 addr_low;
+ };
+ 
++#define ICE_AQC_NVM_START_POINT			0
++
+ /* NVM Checksum Command (direct, 0x0706) */
+ struct ice_aqc_nvm_checksum {
+ 	u8 flags;
+@@ -1705,6 +1707,7 @@ enum ice_aq_err {
+ 	ICE_AQ_RC_ENOMEM	= 9,  /* Out of memory */
+ 	ICE_AQ_RC_EBUSY		= 12, /* Device or resource busy */
+ 	ICE_AQ_RC_EEXIST	= 13, /* Object already exists */
++	ICE_AQ_RC_EINVAL	= 14, /* Invalid argument */
+ 	ICE_AQ_RC_ENOSPC	= 16, /* No space left or allocation failure */
+ 	ICE_AQ_RC_ENOSYS	= 17, /* Function not implemented */
+ 	ICE_AQ_RC_ENOSEC	= 24, /* Missing security manifest */
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 347077bf8a36..c066f4000582 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -6,6 +6,7 @@
+ 
+ #include "ice.h"
+ #include "ice_type.h"
++#include "ice_nvm.h"
+ #include "ice_flex_pipe.h"
+ #include "ice_switch.h"
+ #include <linux/avf/virtchnl.h>
+@@ -32,9 +33,6 @@ enum ice_status
+ ice_acquire_res(struct ice_hw *hw, enum ice_aq_res_ids res,
+ 		enum ice_aq_res_access_type access, u32 timeout);
+ void ice_release_res(struct ice_hw *hw, enum ice_aq_res_ids res);
+-enum ice_status ice_init_nvm(struct ice_hw *hw);
+-enum ice_status
+-ice_read_sr_buf(struct ice_hw *hw, u16 offset, u16 *words, u16 *data);
+ enum ice_status
+ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 		struct ice_aq_desc *desc, void *buf, u16 buf_size,
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 7e779060069c..c270fbbc25bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -226,12 +226,12 @@ static void ice_set_msglevel(struct net_device *netdev, u32 data)
+ #endif /* !CONFIG_DYNAMIC_DEBUG */
  }
  
-+/**
-+ * ice_max_xdp_frame_size - returns the maximum allowed frame size for XDP
-+ * @vsi: Pointer to VSI structure
-+ */
-+static int ice_max_xdp_frame_size(struct ice_vsi *vsi)
+-static int ice_get_eeprom_len(struct net_device *netdev)
++static int ice_get_eeprom_len(struct net_device __always_unused *netdev)
+ {
+-	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	struct ice_pf *pf = np->vsi->back;
+-
+-	return (int)(pf->hw.nvm.sr_words * sizeof(u16));
++	/* currently using a magic number of 0xFFFFFF to allow
++	 * reads within the 16MB range of the NVM
++	 */
++	return 0xFFFFFF;
+ }
+ 
+ static int
+@@ -239,42 +239,127 @@ ice_get_eeprom(struct net_device *netdev, struct ethtool_eeprom *eeprom,
+ 	       u8 *bytes)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	u16 first_word, last_word, nwords;
+ 	struct ice_vsi *vsi = np->vsi;
+ 	struct ice_pf *pf = vsi->back;
+ 	struct ice_hw *hw = &pf->hw;
+ 	enum ice_status status;
+-	struct device *dev;
+ 	int ret = 0;
+-	u16 *buf;
++	u32 magic;
++	u8 *buf;
++
++	if (!eeprom->len || eeprom->len > ice_get_eeprom_len(netdev))
++		return -EINVAL;
++
++	magic = hw->vendor_id | (hw->device_id << 16);
++	if (eeprom->magic && eeprom->magic != magic) {
++		struct ice_nvm_access_cmd *nvm;
++		union ice_nvm_access_data *data;
++
++		nvm = (struct ice_nvm_access_cmd *)eeprom;
++		data = (union ice_nvm_access_data *)bytes;
++
++		netdev_dbg(netdev, "GEEPROM cmd 0x%08x, config 0x%08x, offset 0x%08x, data_size 0x%08x\n",
++			   nvm->command, nvm->config, nvm->offset,
++			   nvm->data_size);
++
++		status = ice_handle_nvm_access(hw, nvm, data);
+ 
+-	dev = &pf->pdev->dev;
++		ice_debug_array(hw, ICE_DBG_NVM, 16, 1, (u8 *)data,
++				nvm->data_size);
+ 
+-	eeprom->magic = hw->vendor_id | (hw->device_id << 16);
++		if (status) {
++			int err = ice_status_to_errno(status);
+ 
+-	first_word = eeprom->offset >> 1;
+-	last_word = (eeprom->offset + eeprom->len - 1) >> 1;
+-	nwords = last_word - first_word + 1;
++			netdev_info(netdev, "NVM read failed with status %d, error %d\n",
++				    status, err);
+ 
+-	buf = devm_kcalloc(dev, nwords, sizeof(u16), GFP_KERNEL);
++			return err;
++		}
++
++		return 0;
++	}
++
++	eeprom->magic = magic;
++	netdev_dbg(netdev, "GEEPROM cmd 0x%08x, offset 0x%08x, len 0x%08x\n",
++		   eeprom->cmd, eeprom->offset, eeprom->len);
++
++	buf = kzalloc(eeprom->len, GFP_KERNEL);
+ 	if (!buf)
+ 		return -ENOMEM;
+ 
+-	status = ice_read_sr_buf(hw, first_word, &nwords, buf);
++	status = ice_acquire_nvm(hw, ICE_RES_READ);
+ 	if (status) {
+-		dev_err(dev, "ice_read_sr_buf failed, err %d aq_err %d\n",
++		dev_err(&pf->pdev->dev, "ice_acquire_nvm failed: %d %d\n",
+ 			status, hw->adminq.sq_last_status);
+-		eeprom->len = sizeof(u16) * nwords;
+ 		ret = -EIO;
+ 		goto out;
+ 	}
+ 
+-	memcpy(bytes, (u8 *)buf + (eeprom->offset & 1), eeprom->len);
++	/* kernel only issues 4kB reads so we are good to read 4KB at a time */
++	status = ice_aq_read_nvm(hw, ICE_AQC_NVM_START_POINT, eeprom->offset,
++				 eeprom->len, buf, true, false, NULL);
++	if (status == ICE_ERR_AQ_ERROR &&
++	    hw->adminq.sq_last_status == ICE_AQ_RC_EINVAL) {
++		/* do nothing, we reached the end */
++		ice_release_nvm(hw);
++		goto out;
++	} else if (status) {
++		dev_err(&pf->pdev->dev, "ice_aq_read_nvm failed: %d %d\n",
++			status, hw->adminq.sq_last_status);
++		ret = -EIO;
++		ice_release_nvm(hw);
++		goto out;
++	}
++
++	ice_release_nvm(hw);
++
++	memcpy(bytes, buf + eeprom->offset, eeprom->len);
+ out:
+-	devm_kfree(dev, buf);
++	kfree(buf);
+ 	return ret;
+ }
+ 
++static int
++ice_set_eeprom(struct net_device *netdev, struct ethtool_eeprom *eeprom,
++	       u8 *bytes)
 +{
-+	if (PAGE_SIZE >= 8192 || test_bit(ICE_FLAG_LEGACY_RX, vsi->back->flags))
-+		return ICE_RXBUF_2048 - XDP_PACKET_HEADROOM;
++	struct ice_netdev_priv *np = netdev_priv(netdev);
++	struct ice_hw *hw = &np->vsi->back->hw;
++	struct ice_pf *pf = np->vsi->back;
++	union ice_nvm_access_data *data;
++	struct ice_nvm_access_cmd *nvm;
++	enum ice_status status = 0;
++	int err = 0;
++	u32 magic;
++
++	/* normal ethtool set_eeprom is not supported */
++	nvm = (struct ice_nvm_access_cmd *)eeprom;
++	data = (union ice_nvm_access_data *)bytes;
++	magic = hw->vendor_id | (hw->device_id << 16);
++
++	netdev_dbg(netdev, "SEEPROM cmd 0x%08x, config 0x%08x, offset 0x%08x, data_size 0x%08x\n",
++		   nvm->command, nvm->config, nvm->offset, nvm->data_size);
++	ice_debug_array(hw, ICE_DBG_NVM, 16, 1, (u8 *)data, nvm->data_size);
++
++	if (eeprom->magic == magic)
++		err = -EOPNOTSUPP;
++	/* check for NVM access method */
++	else if (!eeprom->magic || (eeprom->magic >> 16) != hw->device_id)
++		err = -EINVAL;
++	else if (ice_is_reset_in_progress(pf->state))
++		err = -EBUSY;
 +	else
-+		return ICE_RXBUF_3072;
++		status = ice_handle_nvm_access(hw, nvm, data);
++
++	if (status) {
++		err = ice_status_to_errno(status);
++		netdev_info(netdev, "NVM write failed with status %d, error %d\n",
++			    status, err);
++	}
++
++	return err;
 +}
 +
  /**
-  * ice_change_mtu - NDO callback to change the MTU
-  * @netdev: network interface device structure
-@@ -4786,11 +4798,11 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
- 	}
+  * ice_active_vfs - check if there are any active VFs
+  * @pf: board private structure
+@@ -3467,6 +3552,7 @@ static const struct ethtool_ops ice_ethtool_ops = {
+ 	.get_link		= ethtool_op_get_link,
+ 	.get_eeprom_len		= ice_get_eeprom_len,
+ 	.get_eeprom		= ice_get_eeprom,
++	.set_eeprom		= ice_set_eeprom,
+ 	.get_coalesce		= ice_get_coalesce,
+ 	.set_coalesce		= ice_set_coalesce,
+ 	.get_strings		= ice_get_strings,
+@@ -3502,6 +3588,7 @@ static const struct ethtool_ops ice_ethtool_safe_mode_ops = {
+ 	.set_msglevel		= ice_set_msglevel,
+ 	.get_eeprom_len		= ice_get_eeprom_len,
+ 	.get_eeprom		= ice_get_eeprom,
++	.set_eeprom		= ice_set_eeprom,
+ 	.get_strings		= ice_get_strings,
+ 	.get_ethtool_stats	= ice_get_ethtool_stats,
+ 	.get_sset_count		= ice_get_sset_count,
+diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+index 05a71f223c5d..d541815230de 100644
+--- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
++++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+@@ -92,6 +92,7 @@
+ #define QRXFLXP_CNTXT_RXDID_IDX_M		ICE_M(0x3F, 0)
+ #define QRXFLXP_CNTXT_RXDID_PRIO_S		8
+ #define QRXFLXP_CNTXT_RXDID_PRIO_M		ICE_M(0x7, 8)
++#define GL_FWSTS				0x00083048
+ #define GLGEN_RSTAT				0x000B8188
+ #define GLGEN_RSTAT_DEVSTATE_M			ICE_M(0x3, 0)
+ #define GLGEN_RSTCTL				0x000B8180
+@@ -268,6 +269,7 @@
+ #define VP_MDET_TX_TCLAN_VALID_M		BIT(0)
+ #define VP_MDET_TX_TDPU(_VF)			(0x00040000 + ((_VF) * 4))
+ #define VP_MDET_TX_TDPU_VALID_M			BIT(0)
++#define GL_MNG_FWSM				0x000B6134
+ #define GLNVM_FLA				0x000B6108
+ #define GLNVM_FLA_LOCKED_M			BIT(6)
+ #define GLNVM_GENS				0x000B6100
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index f69a1a59d70e..7a55449d8b87 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -2653,3 +2653,27 @@ ice_vsi_cfg_mac_fltr(struct ice_vsi *vsi, const u8 *macaddr, bool set)
+ 	ice_free_fltr_list(&vsi->back->pdev->dev, &tmp_add_list);
+ 	return status;
+ }
++
++/**
++ * ice_status_to_errno - convert from enum ice_status to Linux errno
++ * @err: ice_status value to convert
++ */
++int ice_status_to_errno(enum ice_status err)
++{
++	switch (err) {
++	case ICE_SUCCESS:
++		return 0;
++	case ICE_ERR_DOES_NOT_EXIST:
++		return -ENOENT;
++	case ICE_ERR_OUT_OF_RANGE:
++		return -ENOTTY;
++	case ICE_ERR_PARAM:
++		return -EINVAL;
++	case ICE_ERR_NO_MEMORY:
++		return -ENOMEM;
++	case ICE_ERR_MAX_LIMIT:
++		return -EAGAIN;
++	default:
++		return -EINVAL;
++	}
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 12cb89e28631..dc33d98cfded 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -91,6 +91,8 @@ void ice_update_rx_ring_stats(struct ice_ring *ring, u64 pkts, u64 bytes);
  
- 	if (ice_is_xdp_ena_vsi(vsi)) {
--		int frame_size = ICE_RXBUF_2048 - XDP_PACKET_HEADROOM;
-+		int frame_size = ice_max_xdp_frame_size(vsi);
+ void ice_vsi_cfg_frame_size(struct ice_vsi *vsi);
  
- 		if (new_mtu + ICE_ETH_PKT_HDR_PAD > frame_size) {
- 			netdev_err(netdev, "max MTU for XDP usage is %d\n",
--				   frame_size);
-+				   frame_size - ICE_ETH_PKT_HDR_PAD);
- 			return -EINVAL;
- 		}
- 	}
++int ice_status_to_errno(enum ice_status err);
++
+ u32 ice_intrl_usec_to_reg(u8 intrl, u8 gran);
+ 
+ char *ice_nvm_version_str(struct ice_hw *hw);
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index bcb431f1bd92..bd19ce9b5bfd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -11,13 +11,15 @@
+  * @length: length of the section to be read (in bytes from the offset)
+  * @data: command buffer (size [bytes] = length)
+  * @last_command: tells if this is the last command in a series
++ * @read_shadow_ram: tell if this is a shadow RAM read
+  * @cd: pointer to command details structure or NULL
+  *
+  * Read the NVM using the admin queue commands (0x0701)
+  */
+-static enum ice_status
++enum ice_status
+ ice_aq_read_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset, u16 length,
+-		void *data, bool last_command, struct ice_sq_cd *cd)
++		void *data, bool last_command, bool read_shadow_ram,
++		struct ice_sq_cd *cd)
+ {
+ 	struct ice_aq_desc desc;
+ 	struct ice_aqc_nvm *cmd;
+@@ -30,6 +32,9 @@ ice_aq_read_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset, u16 length,
+ 
+ 	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_nvm_read);
+ 
++	if (!read_shadow_ram && module_typeid == ICE_AQC_NVM_START_POINT)
++		cmd->cmd_flags |= ICE_AQC_NVM_FLASH_ONLY;
++
+ 	/* If this is the last command in a series, set the proper flag. */
+ 	if (last_command)
+ 		cmd->cmd_flags |= ICE_AQC_NVM_LAST_CMD;
+@@ -98,8 +103,9 @@ ice_read_sr_aq(struct ice_hw *hw, u32 offset, u16 words, u16 *data,
+ 	 * So do this conversion while calling ice_aq_read_nvm.
+ 	 */
+ 	if (!status)
+-		status = ice_aq_read_nvm(hw, 0, 2 * offset, 2 * words, data,
+-					 last_command, NULL);
++		status = ice_aq_read_nvm(hw, ICE_AQC_NVM_START_POINT,
++					 2 * offset, 2 * words, data,
++					 last_command, true, NULL);
+ 
+ 	return status;
+ }
+@@ -124,63 +130,6 @@ ice_read_sr_word_aq(struct ice_hw *hw, u16 offset, u16 *data)
+ 	return status;
+ }
+ 
+-/**
+- * ice_read_sr_buf_aq - Reads Shadow RAM buf via AQ
+- * @hw: pointer to the HW structure
+- * @offset: offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+- * @words: (in) number of words to read; (out) number of words actually read
+- * @data: words read from the Shadow RAM
+- *
+- * Reads 16 bit words (data buf) from the SR using the ice_read_sr_aq
+- * method. Ownership of the NVM is taken before reading the buffer and later
+- * released.
+- */
+-static enum ice_status
+-ice_read_sr_buf_aq(struct ice_hw *hw, u16 offset, u16 *words, u16 *data)
+-{
+-	enum ice_status status;
+-	bool last_cmd = false;
+-	u16 words_read = 0;
+-	u16 i = 0;
+-
+-	do {
+-		u16 read_size, off_w;
+-
+-		/* Calculate number of bytes we should read in this step.
+-		 * It's not allowed to read more than one page at a time or
+-		 * to cross page boundaries.
+-		 */
+-		off_w = offset % ICE_SR_SECTOR_SIZE_IN_WORDS;
+-		read_size = off_w ?
+-			min_t(u16, *words,
+-			      (ICE_SR_SECTOR_SIZE_IN_WORDS - off_w)) :
+-			min_t(u16, (*words - words_read),
+-			      ICE_SR_SECTOR_SIZE_IN_WORDS);
+-
+-		/* Check if this is last command, if so set proper flag */
+-		if ((words_read + read_size) >= *words)
+-			last_cmd = true;
+-
+-		status = ice_read_sr_aq(hw, offset, read_size,
+-					data + words_read, last_cmd);
+-		if (status)
+-			goto read_nvm_buf_aq_exit;
+-
+-		/* Increment counter for words already read and move offset to
+-		 * new read location
+-		 */
+-		words_read += read_size;
+-		offset += read_size;
+-	} while (words_read < *words);
+-
+-	for (i = 0; i < *words; i++)
+-		data[i] = le16_to_cpu(((__force __le16 *)data)[i]);
+-
+-read_nvm_buf_aq_exit:
+-	*words = words_read;
+-	return status;
+-}
+-
+ /**
+  * ice_acquire_nvm - Generic request for acquiring the NVM ownership
+  * @hw: pointer to the HW structure
+@@ -188,7 +137,7 @@ ice_read_sr_buf_aq(struct ice_hw *hw, u16 offset, u16 *words, u16 *data)
+  *
+  * This function will request NVM ownership.
+  */
+-static enum ice_status
++enum ice_status
+ ice_acquire_nvm(struct ice_hw *hw, enum ice_aq_res_access_type access)
+ {
+ 	if (hw->nvm.blank_nvm_mode)
+@@ -203,7 +152,7 @@ ice_acquire_nvm(struct ice_hw *hw, enum ice_aq_res_access_type access)
+  *
+  * This function will release NVM ownership.
+  */
+-static void ice_release_nvm(struct ice_hw *hw)
++void ice_release_nvm(struct ice_hw *hw)
+ {
+ 	if (hw->nvm.blank_nvm_mode)
+ 		return;
+@@ -219,8 +168,8 @@ static void ice_release_nvm(struct ice_hw *hw)
+  *
+  * Reads one 16 bit word from the Shadow RAM using the ice_read_sr_word_aq.
+  */
+-static enum ice_status
+-ice_read_sr_word(struct ice_hw *hw, u16 offset, u16 *data)
++static enum
++ice_status ice_read_sr_word(struct ice_hw *hw, u16 offset, u16 *data)
+ {
+ 	enum ice_status status;
+ 
+@@ -292,31 +241,6 @@ enum ice_status ice_init_nvm(struct ice_hw *hw)
+ 	return status;
+ }
+ 
+-/**
+- * ice_read_sr_buf - Reads Shadow RAM buf and acquire lock if necessary
+- * @hw: pointer to the HW structure
+- * @offset: offset of the Shadow RAM word to read (0x000000 - 0x001FFF)
+- * @words: (in) number of words to read; (out) number of words actually read
+- * @data: words read from the Shadow RAM
+- *
+- * Reads 16 bit words (data buf) from the SR using the ice_read_nvm_buf_aq
+- * method. The buf read is preceded by the NVM ownership take
+- * and followed by the release.
+- */
+-enum ice_status
+-ice_read_sr_buf(struct ice_hw *hw, u16 offset, u16 *words, u16 *data)
+-{
+-	enum ice_status status;
+-
+-	status = ice_acquire_nvm(hw, ICE_RES_READ);
+-	if (!status) {
+-		status = ice_read_sr_buf_aq(hw, offset, words, data);
+-		ice_release_nvm(hw);
+-	}
+-
+-	return status;
+-}
+-
+ /**
+  * ice_nvm_validate_checksum
+  * @hw: pointer to the HW struct
+@@ -347,3 +271,240 @@ enum ice_status ice_nvm_validate_checksum(struct ice_hw *hw)
+ 
+ 	return status;
+ }
++
++/**
++ * ice_nvm_access_get_features - Return the NVM access features structure
++ * @cmd: NVM access command to process
++ * @data: storage for the driver NVM features
++ *
++ * Fill in the data section of the NVM access request with a copy of the NVM
++ * features structure.
++ */
++static enum ice_status
++ice_nvm_access_get_features(struct ice_nvm_access_cmd *cmd,
++			    union ice_nvm_access_data *data)
++{
++	/* The provided data_size must be at least as large as our NVM
++	 * features structure. A larger size should not be treated as an
++	 * error, to allow future extensions to to the features structure to
++	 * work on older drivers.
++	 */
++	if (cmd->data_size < sizeof(struct ice_nvm_features))
++		return ICE_ERR_NO_MEMORY;
++
++	/* Initialize the data buffer to zeros */
++	memset(data, 0, cmd->data_size);
++
++	/* Fill in the features data */
++	data->drv_features.major = ICE_NVM_ACCESS_MAJOR_VER;
++	data->drv_features.minor = ICE_NVM_ACCESS_MINOR_VER;
++	data->drv_features.size = sizeof(struct ice_nvm_features);
++	data->drv_features.features[0] = ICE_NVM_FEATURES_0_REG_ACCESS;
++
++	return 0;
++}
++
++/**
++ * ice_nvm_access_get_module - Helper function to read module value
++ * @cmd: NVM access command structure
++ *
++ * Reads the module value out of the NVM access config field.
++ */
++static u32 ice_nvm_access_get_module(struct ice_nvm_access_cmd *cmd)
++{
++	return ((cmd->config & ICE_NVM_CFG_MODULE_M) >> ICE_NVM_CFG_MODULE_S);
++}
++
++/**
++ * ice_nvm_access_get_flags - Helper function to read flags value
++ * @cmd: NVM access command structure
++ *
++ * Reads the flags value out of the NVM access config field.
++ */
++static u32 ice_nvm_access_get_flags(struct ice_nvm_access_cmd *cmd)
++{
++	return ((cmd->config & ICE_NVM_CFG_FLAGS_M) >> ICE_NVM_CFG_FLAGS_S);
++}
++
++/**
++ * ice_nvm_access_get_adapter - Helper function to read adapter info
++ * @cmd: NVM access command structure
++ *
++ * Read the adapter info value out of the NVM access config field.
++ */
++static u32 ice_nvm_access_get_adapter(struct ice_nvm_access_cmd *cmd)
++{
++	return ((cmd->config & ICE_NVM_CFG_ADAPTER_INFO_M) >>
++		ICE_NVM_CFG_ADAPTER_INFO_S);
++}
++
++/**
++ * ice_validate_nvm_rw_reg - Check than an NVM access request is valid
++ * @cmd: NVM access command structure
++ *
++ * Validates that an NVM access structure is request to read or write a valid
++ * register offset. First validates that the module and flags are correct, and
++ * then ensures that the register offset is one of the accepted registers.
++ */
++static enum ice_status
++ice_validate_nvm_rw_reg(struct ice_nvm_access_cmd *cmd)
++{
++	u32 module, flags, offset;
++	u16 i;
++
++	module = ice_nvm_access_get_module(cmd);
++	flags = ice_nvm_access_get_flags(cmd);
++	offset = cmd->offset;
++
++	/* Make sure the module and flags indicate a read/write request */
++	if (module != ICE_NVM_REG_RW_MODULE ||
++	    flags != ICE_NVM_REG_RW_FLAGS ||
++	    cmd->data_size != FIELD_SIZEOF(union ice_nvm_access_data, regval))
++		return ICE_ERR_PARAM;
++
++	switch (offset) {
++	case GL_HICR:
++	case GL_HICR_EN: /* Note, this register is read only */
++	case GL_FWSTS:
++	case GL_MNG_FWSM:
++	case GLGEN_CSR_DEBUG_C:
++	case GLGEN_RSTAT:
++	case GLPCI_LBARCTRL:
++	case GLNVM_GENS:
++	case GLNVM_FLA:
++	case PF_FUNC_RID:
++		return 0;
++	default:
++		break;
++	}
++
++	for (i = 0; i <= ICE_NVM_ACCESS_GL_HIDA_MAX; i++)
++		if (offset == (u32)GL_HIDA(i))
++			return 0;
++
++	for (i = 0; i <= ICE_NVM_ACCESS_GL_HIBA_MAX; i++)
++		if (offset == (u32)GL_HIBA(i))
++			return 0;
++
++	/* All other register offsets are not valid */
++	return ICE_ERR_OUT_OF_RANGE;
++}
++
++/**
++ * ice_nvm_access_read - Handle an NVM read request
++ * @hw: pointer to the HW struct
++ * @cmd: NVM access command to process
++ * @data: storage for the register value read
++ *
++ * Process an NVM access request to read a register.
++ */
++static enum ice_status
++ice_nvm_access_read(struct ice_hw *hw, struct ice_nvm_access_cmd *cmd,
++		    union ice_nvm_access_data *data)
++{
++	enum ice_status status;
++
++	/* Always initialize the output data, even on failure */
++	memset(data, 0, cmd->data_size);
++
++	/* Make sure this is a valid read/write access request */
++	status = ice_validate_nvm_rw_reg(cmd);
++	if (status)
++		return status;
++
++	ice_debug(hw, ICE_DBG_NVM, "NVM access: reading register %08x\n",
++		  cmd->offset);
++
++	/* Read the register and store the contents in the data field */
++	data->regval = rd32(hw, cmd->offset);
++
++	return 0;
++}
++
++/**
++ * ice_nvm_access_write - Handle an NVM write request
++ * @hw: pointer to the HW struct
++ * @cmd: NVM access command to process
++ * @data: NVM access data to write
++ *
++ * Process an NVM access request to write a register.
++ */
++static enum ice_status
++ice_nvm_access_write(struct ice_hw *hw, struct ice_nvm_access_cmd *cmd,
++		     union ice_nvm_access_data *data)
++{
++	enum ice_status status;
++
++	/* Make sure this is a valid read/write access request */
++	status = ice_validate_nvm_rw_reg(cmd);
++	if (status)
++		return status;
++
++	/* Reject requests to write to read-only registers */
++	switch (cmd->offset) {
++	case GL_HICR_EN:
++	case GLGEN_RSTAT:
++		return ICE_ERR_OUT_OF_RANGE;
++	default:
++		break;
++	}
++
++	ice_debug(hw, ICE_DBG_NVM,
++		  "NVM access: writing register %08x with value %08x\n",
++		  cmd->offset, data->regval);
++
++	/* Write the data field to the specified register */
++	wr32(hw, cmd->offset, data->regval);
++
++	return 0;
++}
++
++/**
++ * ice_handle_nvm_access - Handle an NVM access request
++ * @hw: pointer to the HW struct
++ * @cmd: NVM access command info
++ * @data: pointer to read or return data
++ *
++ * Process an NVM access request. Read the command structure information and
++ * determine if it is valid. If not, report an error indicating the command
++ * was invalid.
++ *
++ * For valid commands, perform the necessary function, copying the data into
++ * the provided data buffer.
++ */
++enum ice_status
++ice_handle_nvm_access(struct ice_hw *hw, struct ice_nvm_access_cmd *cmd,
++		      union ice_nvm_access_data *data)
++{
++	u32 module, flags, adapter_info;
++
++	/* Extended flags are currently reserved and must be zero */
++	if ((cmd->config & ICE_NVM_CFG_EXT_FLAGS_M) != 0)
++		return ICE_ERR_PARAM;
++
++	/* Adapter info must match the HW device ID */
++	adapter_info = ice_nvm_access_get_adapter(cmd);
++	if (adapter_info != hw->device_id)
++		return ICE_ERR_PARAM;
++
++	switch (cmd->command) {
++	case ICE_NVM_CMD_READ:
++		module = ice_nvm_access_get_module(cmd);
++		flags = ice_nvm_access_get_flags(cmd);
++
++		/* Getting the driver's NVM features structure shares the same
++		 * command type as reading a register. Read the config field
++		 * to determine if this is a request to get features.
++		 */
++		if (module == ICE_NVM_GET_FEATURES_MODULE &&
++		    flags == ICE_NVM_GET_FEATURES_FLAGS &&
++		    cmd->offset == 0)
++			return ice_nvm_access_get_features(cmd, data);
++		else
++			return ice_nvm_access_read(hw, cmd, data);
++	case ICE_NVM_CMD_WRITE:
++		return ice_nvm_access_write(hw, cmd, data);
++	default:
++		return ICE_ERR_PARAM;
++	}
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.h b/drivers/net/ethernet/intel/ice/ice_nvm.h
+new file mode 100644
+index 000000000000..75d167b7ebe3
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.h
+@@ -0,0 +1,79 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2019, Intel Corporation. */
++
++#ifndef _ICE_NVM_H_
++#define _ICE_NVM_H_
++
++#define ICE_NVM_CMD_READ		0x0000000B
++#define ICE_NVM_CMD_WRITE		0x0000000C
++
++/* NVM Access config bits */
++#define ICE_NVM_CFG_MODULE_M		ICE_M(0xFF, 0)
++#define ICE_NVM_CFG_MODULE_S		0
++#define ICE_NVM_CFG_FLAGS_M		ICE_M(0xF, 8)
++#define ICE_NVM_CFG_FLAGS_S		8
++#define ICE_NVM_CFG_EXT_FLAGS_M		ICE_M(0xF, 12)
++#define ICE_NVM_CFG_ADAPTER_INFO_M	ICE_M(0xFFFF, 16)
++#define ICE_NVM_CFG_ADAPTER_INFO_S	16
++
++/* NVM Read Get Driver Features */
++#define ICE_NVM_GET_FEATURES_MODULE	0xE
++#define ICE_NVM_GET_FEATURES_FLAGS	0xF
++
++/* NVM Read/Write Mapped Space */
++#define ICE_NVM_REG_RW_MODULE	0x0
++#define ICE_NVM_REG_RW_FLAGS	0x1
++
++#define ICE_NVM_ACCESS_MAJOR_VER	0
++#define ICE_NVM_ACCESS_MINOR_VER	5
++
++/* NVM Access feature flags. Other bits in the features field are reserved and
++ * should be set to zero when reporting the ice_nvm_features structure.
++ */
++#define ICE_NVM_FEATURES_0_REG_ACCESS	BIT(1)
++
++/* NVM Access Features */
++struct ice_nvm_features {
++	u8 major;		/* Major version (informational only) */
++	u8 minor;		/* Minor version (informational only) */
++	u16 size;		/* size of ice_nvm_features structure */
++	u8 features[12];	/* Array of feature bits */
++};
++
++/* NVM Access command */
++struct ice_nvm_access_cmd {
++	u32 command;		/* NVM command: READ or WRITE */
++	u32 config;		/* NVM command configuration */
++	u32 offset;		/* offset to read/write, in bytes */
++	u32 data_size;		/* size of data field, in bytes */
++};
++
++/* NVM Access data */
++union ice_nvm_access_data {
++	u32 regval;	/* Storage for register value */
++	struct ice_nvm_features drv_features; /* NVM features */
++};
++
++/* NVM Access registers */
++#define GL_HIDA(_i)			(0x00082000 + ((_i) * 4))
++#define GL_HIBA(_i)			(0x00081000 + ((_i) * 4))
++#define GL_HICR				0x00082040
++#define GL_HICR_EN			0x00082044
++#define GLGEN_CSR_DEBUG_C		0x00075750
++#define GLPCI_LBARCTRL			0x0009DE74
++
++#define ICE_NVM_ACCESS_GL_HIDA_MAX	15
++#define ICE_NVM_ACCESS_GL_HIBA_MAX	1023
++
++enum ice_status
++ice_handle_nvm_access(struct ice_hw *hw, struct ice_nvm_access_cmd *cmd,
++		      union ice_nvm_access_data *data);
++enum ice_status
++ice_acquire_nvm(struct ice_hw *hw, enum ice_aq_res_access_type access);
++void ice_release_nvm(struct ice_hw *hw);
++enum ice_status
++ice_aq_read_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset, u16 length,
++		void *data, bool last_command, bool read_shadow_ram,
++		struct ice_sq_cd *cd);
++enum ice_status ice_init_nvm(struct ice_hw *hw);
++#endif /* _ICE_NVM_H_ */
 -- 
 2.20.1
 
