@@ -1,51 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B828D2700
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2019 12:15:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EF03D2A19
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2019 14:55:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2127987DD7;
-	Thu, 10 Oct 2019 10:15:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 978CE86B8C;
+	Thu, 10 Oct 2019 12:55:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3WNG-bE2-5jJ; Thu, 10 Oct 2019 10:15:44 +0000 (UTC)
+	with ESMTP id ZX5HlXXGiQDQ; Thu, 10 Oct 2019 12:55:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7FCBD87DDF;
-	Thu, 10 Oct 2019 10:15:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 78C4486BA5;
+	Thu, 10 Oct 2019 12:55:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1A4FA1BF3A1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2019 10:15:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8820E1BF35B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2019 12:55:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F2DBA86B85
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2019 10:15:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8176A86B8C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2019 12:55:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CdlwQdxgOEkx for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Oct 2019 10:15:41 +0000 (UTC)
+ with ESMTP id ocFPYWIdeE69 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Oct 2019 12:55:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BD03386B72
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2019 10:15:41 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 10 Oct 2019 03:15:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,279,1566889200"; d="scan'208";a="193959997"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga007.fm.intel.com with ESMTP; 10 Oct 2019 03:15:39 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 10 Oct 2019 13:15:39 +0300
-Message-Id: <20191010101539.37043-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] e1000e: Add support for Comet Lake
+Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 779F986B88
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2019 12:55:40 +0000 (UTC)
+Received: from lwn.net (localhost [127.0.0.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ms.lwn.net (Postfix) with ESMTPSA id 77A71998;
+ Thu, 10 Oct 2019 12:55:39 +0000 (UTC)
+Date: Thu, 10 Oct 2019 06:55:38 -0600
+From: Jonathan Corbet <corbet@lwn.net>
+To: Jakub Kicinski <jakub.kicinski@netronome.com>
+Message-ID: <20191010065538.62c14aed@lwn.net>
+In-Reply-To: <20191009154803.34e21bae@cakuba.netronome.com>
+References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
+ <20191002.172526.1832563406015085740.davem@davemloft.net>
+ <20191003082953.396ebc1a@lwn.net>
+ <20191009154803.34e21bae@cakuba.netronome.com>
+Organization: LWN.net
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH] Documentation: networking: device
+ drivers: Remove stray asterisks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,59 +61,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: linux-doc@vger.kernel.org, netdev@vger.kernel.org, j.neuschaefer@gmx.net,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ drivers@pensando.io, snelson@pensando.io, David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add devices ID's for the next LOM generations that will be
-available on the next Intel Client platform (Comet Lake)
-This patch provides the initial support for these devices
+On Wed, 9 Oct 2019 15:48:03 -0700
+Jakub Kicinski <jakub.kicinski@netronome.com> wrote:
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/e1000e/hw.h     | 6 ++++++
- drivers/net/ethernet/intel/e1000e/netdev.c | 6 ++++++
- 2 files changed, 12 insertions(+)
+> Hi Jon, I think Dave intended a few more patches to go via the doc
+> tree, in particular:
+> 
+>  docs: networking: devlink-trap: Fix reference to other document
+>  docs: networking: phy: Improve phrasing
+> 
+> Looks like those went missing. Would you mind taking those, or
+> would you prefer for them to land in the networking trees?
 
-diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
-index eff75bd8a8f0..11fdc27faa82 100644
---- a/drivers/net/ethernet/intel/e1000e/hw.h
-+++ b/drivers/net/ethernet/intel/e1000e/hw.h
-@@ -86,6 +86,12 @@ struct e1000_hw;
- #define E1000_DEV_ID_PCH_ICP_I219_V8		0x15E0
- #define E1000_DEV_ID_PCH_ICP_I219_LM9		0x15E1
- #define E1000_DEV_ID_PCH_ICP_I219_V9		0x15E2
-+#define E1000_DEV_ID_PCH_CMP_I219_LM10		0x0D4E
-+#define E1000_DEV_ID_PCH_CMP_I219_V10		0x0D4F
-+#define E1000_DEV_ID_PCH_CMP_I219_LM11		0x0D4C
-+#define E1000_DEV_ID_PCH_CMP_I219_V11		0x0D4D
-+#define E1000_DEV_ID_PCH_CMP_I219_LM12		0x0D53
-+#define E1000_DEV_ID_PCH_CMP_I219_V12		0x0D55
- 
- #define E1000_REVISION_4	4
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index cc4363e67072..2dedeed74cd4 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -7753,6 +7753,12 @@ static const struct pci_device_id e1000_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ICP_I219_V8), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ICP_I219_LM9), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ICP_I219_V9), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_LM10), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V10), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_LM11), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V11), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_LM12), board_pch_spt },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_CMP_I219_V12), board_pch_spt },
- 
- 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
- };
--- 
-2.11.0
+Not missing, just sitting in a folder waiting for me to get back to
+dealing with the queue.  I'll get caught up soon.
 
+jon
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
