@@ -1,74 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB06BD36AA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2019 03:03:14 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C60FD36AF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2019 03:05:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58F92887B4;
-	Fri, 11 Oct 2019 01:03:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0491D203CC;
+	Fri, 11 Oct 2019 01:05:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YrAHnqiDkkAN; Fri, 11 Oct 2019 01:03:13 +0000 (UTC)
+	with ESMTP id NFvgiZOAL9GP; Fri, 11 Oct 2019 01:05:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E068A887B5;
-	Fri, 11 Oct 2019 01:03:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 88E2320461;
+	Fri, 11 Oct 2019 01:05:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 28EB61BF9C1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:03:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 641121BF2A3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:05:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D20E7203BF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:03:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 53E9B203BB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:05:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qk6X3oQxniII for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Oct 2019 01:03:06 +0000 (UTC)
+ with ESMTP id 9OdsS9e1MpTF for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Oct 2019 01:05:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 08F32203BE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:03:05 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4223E203CC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:05:38 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 10 Oct 2019 18:03:05 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Oct 2019 18:05:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,282,1566889200"; d="scan'208";a="345877409"
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by orsmga004.jf.intel.com with ESMTP; 10 Oct 2019 18:03:05 -0700
-Received: from orsmsx114.amr.corp.intel.com (10.22.240.10) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 10 Oct 2019 18:03:05 -0700
+X-IronPort-AV: E=Sophos;i="5.67,282,1566889200"; d="scan'208";a="277965188"
+Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
+ by orsmga001.jf.intel.com with ESMTP; 10 Oct 2019 18:05:37 -0700
+Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
+ ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 10 Oct 2019 18:05:37 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.9]) by
- ORSMSX114.amr.corp.intel.com ([169.254.8.55]) with mapi id 14.03.0439.000;
- Thu, 10 Oct 2019 18:03:05 -0700
+ ORSMSX153.amr.corp.intel.com ([169.254.12.244]) with mapi id 14.03.0439.000;
+ Thu, 10 Oct 2019 18:05:37 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: "Keller, Jacob E" <jacob.e.keller@intel.com>, "netdev@vger.kernel.org"
  <netdev@vger.kernel.org>
-Thread-Topic: [net-next v3 1/7] ptp: correctly disable flags on old ioctls
-Thread-Index: AQHVdJXVvRAbYvf0F0in/5Qw2yurA6dUtffQ
-Date: Fri, 11 Oct 2019 01:03:04 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9714C84E@ORSMSX103.amr.corp.intel.com>
+Thread-Topic: [net-next v3 2/7] net: reject PTP periodic output requests
+ with unsupported flags
+Thread-Index: AQHVdJXdch2ZIrEq/0WYWnhPkQaHZqdUtobw
+Date: Fri, 11 Oct 2019 01:05:36 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9714C866@ORSMSX103.amr.corp.intel.com>
 References: <20190926181109.4871-1-jacob.e.keller@intel.com>
- <20190926181109.4871-2-jacob.e.keller@intel.com>
-In-Reply-To: <20190926181109.4871-2-jacob.e.keller@intel.com>
+ <20190926181109.4871-3-jacob.e.keller@intel.com>
+In-Reply-To: <20190926181109.4871-3-jacob.e.keller@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYWJlMjU1ZTMtNDc1MS00ODdjLTk3N2MtZjY0MmFiYTI5NjUzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoianlTM1NQVmlIVHgxOFdKNWRXZms5ZTlIOVwvVzhTdTFqTStTUjRDWUhDMlZWa05XeDNCd0dHelwvb3hiUEdVNis5In0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYWUxZDE1ZjktYTI0Ni00NmZiLThhZDctNDM1NWUzNDM1ZmQ1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiV013eHdrTjZOenowTXR0K0NrQjV5VHM5RGprcExuSUFVMEJzMnZJWmY0aUIzSjdCSG55WFFNQ1lPKzJ1eDB3USJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-next v3 1/7] ptp: correctly disable
- flags on old ioctls
+Subject: Re: [Intel-wired-lan] [net-next v3 2/7] net: reject PTP periodic
+ output requests with unsupported flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,38 +101,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Richard Cochran <richardcochran@gmail.com>; Felipe Balbi
 > <felipe.balbi@linux.intel.com>; David S . Miller <davem@davemloft.net>; Hall,
 > Christopher S <christopher.s.hall@intel.com>
-> Subject: [net-next v3 1/7] ptp: correctly disable flags on old ioctls
+> Subject: [net-next v3 2/7] net: reject PTP periodic output requests with
+> unsupported flags
 > 
-> Commit 415606588c61 ("PTP: introduce new versions of IOCTLs",
-> 2019-09-13) introduced new versions of the PTP ioctls which actually
-> validate that the flags are acceptable values.
+> Commit 823eb2a3c4c7 ("PTP: add support for one-shot output") introduced
+> a new flag for the PTP periodic output request ioctl. This flag is not
+> currently supported by any driver.
 > 
-> As part of this, it cleared the flags value using a bitwise
-> and+negation, in an attempt to prevent the old ioctl from accidentally
-> enabling new features.
+> Fix all drivers which implement the periodic output request ioctl to
+> explicitly reject any request with flags they do not understand. This
+> ensures that the driver does not accidentally misinterpret the
+> PTP_PEROUT_ONE_SHOT flag, or any new flag introduced in the future.
 > 
-> This is incorrect for a couple of reasons. First, it results in
-> accidentally preventing previously working flags on the request ioctl.
-> By clearing the "valid" flags, we now no longer allow setting the
-> enable, rising edge, or falling edge flags.
-> 
-> Second, if we add new additional flags in the future, they must not be
-> set by the old ioctl. (Since the flag wasn't checked before, we could
-> potentially break userspace programs which sent garbage flag data.
-> 
-> The correct way to resolve this is to check for and clear all but the
-> originally valid flags.
-> 
-> Create defines indicating which flags are correctly checked and
-> interpreted by the original ioctls. Use these to clear any bits which
-> will not be correctly interpreted by the original ioctls.
-> 
-> In the future, new flags must be added to the VALID_FLAGS macros, but
-> *not* to the V1_VALID_FLAGS macros. In this way, new features may be
-> exposed over the v2 ioctls, but without breaking previous userspace
-> which happened to not clear the flags value properly. The old ioctl will
-> continue to behave the same way, while the new ioctl gains the benefit
-> of using the flags fields.
+> This is important for forward compatibility: if a new flag is
+> introduced, the driver should reject requests to enable the flag until
+> the driver has actually been modified to support the flag in question.
 > 
 > Cc: Richard Cochran <richardcochran@gmail.com>
 > Cc: Felipe Balbi <felipe.balbi@linux.intel.com>
@@ -139,10 +123,17 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Cc: Christopher Hall <christopher.s.hall@intel.com>
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > ---
->  drivers/ptp/ptp_chardev.c      |  4 ++--
->  include/uapi/linux/ptp_clock.h | 22 ++++++++++++++++++++++
->  2 files changed, 24 insertions(+), 2 deletions(-)
+>  drivers/net/ethernet/broadcom/tg3.c                 | 4 ++++
+>  drivers/net/ethernet/intel/igb/igb_ptp.c            | 4 ++++
+>  drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c | 4 ++++
+>  drivers/net/ethernet/microchip/lan743x_ptp.c        | 4 ++++
+>  drivers/net/ethernet/renesas/ravb_ptp.c             | 4 ++++
+>  drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c    | 4 ++++
+>  drivers/net/phy/dp83640.c                           | 3 +++
+>  7 files changed, 27 insertions(+)
+> 
 
+For the igb sections...
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 
 _______________________________________________
