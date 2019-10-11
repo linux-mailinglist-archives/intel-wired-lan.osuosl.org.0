@@ -1,95 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1721FD453E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2019 18:20:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB730D45D3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2019 18:53:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4670A259FF;
-	Fri, 11 Oct 2019 16:20:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 91F9B87F49;
+	Fri, 11 Oct 2019 16:53:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bpt0Mtz0lguQ; Fri, 11 Oct 2019 16:20:16 +0000 (UTC)
+	with ESMTP id Qt4BFgQ-EFnO; Fri, 11 Oct 2019 16:53:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EC985204C2;
-	Fri, 11 Oct 2019 16:20:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 94ACA87FE3;
+	Fri, 11 Oct 2019 16:53:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C7E5B1BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 16:19:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9994B1BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 16:53:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BEF4320426
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 16:19:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9060E2034B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 16:53:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1AM494xCb7YI for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Oct 2019 16:19:46 +0000 (UTC)
+ with ESMTP id G2mB3KrNHTeV for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Oct 2019 16:53:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0b-00190b01.pphosted.com (mx0b-00190b01.pphosted.com
- [67.231.157.127])
- by silver.osuosl.org (Postfix) with ESMTPS id 542EE20421
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 16:19:46 +0000 (UTC)
-Received: from pps.filterd (m0050102.ppops.net [127.0.0.1])
- by m0050102.ppops.net-00190b01. (8.16.0.42/8.16.0.42) with SMTP id
- x9BGHduf014150; Fri, 11 Oct 2019 17:18:34 +0100
+Received: from mx0a-00190b01.pphosted.com (mx0a-00190b01.pphosted.com
+ [67.231.149.131])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6F7142034A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 16:53:21 +0000 (UTC)
+Received: from pps.filterd (m0122332.ppops.net [127.0.0.1])
+ by mx0a-00190b01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ x9BGqCUK015053; Fri, 11 Oct 2019 17:53:14 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=akamai.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=jan2016.eng;
- bh=L1ICpoXk7H5dhkeuAtzhSxdm34DamlfO7tWqyE6fQpA=;
- b=dNLoVlsRUaDJIDSpFwkeoxxnParQ7GJjXYWwXEmqbEzRSzoFgNWDYva9f3kjXZqiAJO9
- winlMDuobrrt1qGJgl8FyQVf44vx1bR+64Rxod80NxftcagfKEJNKVs5TpGKmW4zAP0c
- N0FYvL3kd52irI71BBmKzcmx4DyPvEIpg/IXFRToMLvVjItoQHyW76+8xD+R2kDno7J7
- qpaDOBYLFhF4I8GVCdww4qIaEa9draWbSdqfnZqFGlLx0bfUxkBieoIW2uGLkzPciKPA
- g+p59BsPLIYi9t+9svvMje5saQ+ynVL7OkzYwZGtQDS9nxcZzChjlWjB8w21g3Np+VTp 2g== 
-Received: from prod-mail-ppoint3 (prod-mail-ppoint3.akamai.com [96.6.114.86]
+ h=from : to : cc : subject : date : message-id; s=jan2016.eng;
+ bh=8pSEexMQxWPX61135+mphsfh31vay03fJ7VPUmG4u7E=;
+ b=oGT9RA0OekeB6ZE85otLWr6H+JEFLV3FIvr4H9S9qX76R+rzDIQ3slBaIlnYQjv92axx
+ xHaIMFBZClTI/3JgAeBnQ54g/a1bMaub1ER5qTLdGkj99Ce0RXAXLbuWH33SR7XtOPu8
+ TCgL3rH439c9Z7p4u83kDbEo02CBw1O0Np78tATdw8opIuabCa4eP8TIP7efmscLrfKa
+ 2desdQWnwRXOXPx126X37A6KuO5tYAmJh/FvrvJy2Xy0fsTHYMbalaBeSEdE60DynXRx
+ boP0A5XlAB3MgsFyVjGztJePXECkbbPh6NZVobErRzUO44e+f0at7Waeb94kiCPoLlrI +g== 
+Received: from prod-mail-ppoint6 (prod-mail-ppoint6.akamai.com [184.51.33.61]
  (may be forged))
- by m0050102.ppops.net-00190b01. with ESMTP id 2veg8fqrvq-1
+ by mx0a-00190b01.pphosted.com with ESMTP id 2vjt7us38t-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 11 Oct 2019 17:18:34 +0100
-Received: from pps.filterd (prod-mail-ppoint3.akamai.com [127.0.0.1])
- by prod-mail-ppoint3.akamai.com (8.16.0.27/8.16.0.27) with SMTP id
- x9BGHPaJ030946; Fri, 11 Oct 2019 12:18:33 -0400
-Received: from prod-mail-relay15.akamai.com ([172.27.17.40])
- by prod-mail-ppoint3.akamai.com with ESMTP id 2veph1bmp6-1;
- Fri, 11 Oct 2019 12:18:33 -0400
-Received: from [0.0.0.0] (caldecot.sanmateo.corp.akamai.com [172.22.187.166])
- by prod-mail-relay15.akamai.com (Postfix) with ESMTP id 938AF2006B; 
- Fri, 11 Oct 2019 16:18:32 +0000 (GMT)
-To: Alexander Duyck <alexander.h.duyck@linux.intel.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- jeffrey.t.kirsher@intel.com
-References: <1570753502-6014-1-git-send-email-johunt@akamai.com>
- <1570753502-6014-2-git-send-email-johunt@akamai.com>
- <aa9462d4a48a47250d150e0f743bf08635ee9b72.camel@linux.intel.com>
+ Fri, 11 Oct 2019 17:53:14 +0100
+Received: from pps.filterd (prod-mail-ppoint6.akamai.com [127.0.0.1])
+ by prod-mail-ppoint6.akamai.com (8.16.0.27/8.16.0.27) with SMTP id
+ x9BGldL0019539; Fri, 11 Oct 2019 12:53:13 -0400
+Received: from prod-mail-relay10.akamai.com ([172.27.118.251])
+ by prod-mail-ppoint6.akamai.com with ESMTP id 2vepgwg2r1-1;
+ Fri, 11 Oct 2019 12:53:13 -0400
+Received: from bos-lpwg1 (bos-lpwg1.kendall.corp.akamai.com [172.29.171.203])
+ by prod-mail-relay10.akamai.com (Postfix) with ESMTP id 0A5F51FC95; 
+ Fri, 11 Oct 2019 16:53:13 +0000 (GMT)
+Received: from johunt by bos-lpwg1 with local (Exim 4.86_2)
+ (envelope-from <johunt@akamai.com>)
+ id 1iIyAg-0005EM-I7; Fri, 11 Oct 2019 12:53:42 -0400
 From: Josh Hunt <johunt@akamai.com>
-Message-ID: <0ff6df40-d9cc-0b4c-6f1f-df4b39c3f3e3@akamai.com>
-Date: Fri, 11 Oct 2019 09:18:32 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <aa9462d4a48a47250d150e0f743bf08635ee9b72.camel@linux.intel.com>
-Content-Language: en-US
+To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ jeffrey.t.kirsher@intel.com
+Date: Fri, 11 Oct 2019 12:53:37 -0400
+Message-Id: <1570812820-20052-1-git-send-email-johunt@akamai.com>
+X-Mailer: git-send-email 2.7.4
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-10-11_09:, , signatures=0
+ definitions=2019-10-11_10:, , signatures=0
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
  malwarescore=0
  phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
  adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.0.1-1908290000 definitions=main-1910110147
+ engine=8.0.1-1908290000 definitions=main-1910110148
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,1.0.8
- definitions=2019-10-11_09:2019-10-10,2019-10-11 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 malwarescore=0
- impostorscore=0 phishscore=0 priorityscore=1501 clxscore=1015
- mlxlogscore=999 suspectscore=0 bulkscore=0 adultscore=0 mlxscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1908290000 definitions=main-1910110147
-Subject: Re: [Intel-wired-lan] [PATCH v2 1/3] igb: Add UDP segmentation
- offload support
+ definitions=2019-10-11_10:2019-10-10,2019-10-11 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ adultscore=0 mlxscore=0
+ priorityscore=1501 impostorscore=0 bulkscore=0 clxscore=1015 phishscore=0
+ suspectscore=0 mlxlogscore=999 malwarescore=0 lowpriorityscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-1908290000
+ definitions=main-1910110149
+Subject: [Intel-wired-lan] [PATCH v3 0/3] igb, ixgbe,
+ i40e UDP segmentation offload support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,96 +95,127 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: willemb@google.com
+Cc: willemb@google.com, alexander.h.duyck@linux.intel.com,
+ Josh Hunt <johunt@akamai.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Alexander Duyck posted a series in 2018 proposing adding UDP segmentation
+offload support to ixgbe and ixgbevf, but those patches were never
+accepted:
 
+https://lore.kernel.org/netdev/20180504003556.4769.11407.stgit@localhost.localdomain/
 
-On 10/11/19 8:29 AM, Alexander Duyck wrote:
-> On Thu, 2019-10-10 at 20:25 -0400, Josh Hunt wrote:
->> Based on a series from Alexander Duyck this change adds UDP segmentation
->> offload support to the igb driver.
->>
->> CC: Alexander Duyck <alexander.h.duyck@intel.com>
->> CC: Willem de Bruijn <willemb@google.com>
->> Signed-off-by: Josh Hunt <johunt@akamai.com>
->> ---
->>   drivers/net/ethernet/intel/igb/e1000_82575.h |  1 +
->>   drivers/net/ethernet/intel/igb/igb_main.c    | 23 +++++++++++++++++------
->>   2 files changed, 18 insertions(+), 6 deletions(-)
->>
->> diff --git a/drivers/net/ethernet/intel/igb/e1000_82575.h b/drivers/net/ethernet/intel/igb/e1000_82575.h
->> index 6ad775b1a4c5..63ec253ac788 100644
->> --- a/drivers/net/ethernet/intel/igb/e1000_82575.h
->> +++ b/drivers/net/ethernet/intel/igb/e1000_82575.h
->> @@ -127,6 +127,7 @@ struct e1000_adv_tx_context_desc {
->>   };
->>   
->>   #define E1000_ADVTXD_MACLEN_SHIFT    9  /* Adv ctxt desc mac len shift */
->> +#define E1000_ADVTXD_TUCMD_L4T_UDP 0x00000000  /* L4 Packet TYPE of UDP */
->>   #define E1000_ADVTXD_TUCMD_IPV4    0x00000400  /* IP Packet Type: 1=IPv4 */
->>   #define E1000_ADVTXD_TUCMD_L4T_TCP 0x00000800  /* L4 Packet TYPE of TCP */
->>   #define E1000_ADVTXD_TUCMD_L4T_SCTP 0x00001000 /* L4 packet TYPE of SCTP */
->> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
->> index 105b0624081a..4131bc8b079e 100644
->> --- a/drivers/net/ethernet/intel/igb/igb_main.c
->> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
->> @@ -2516,6 +2516,7 @@ igb_features_check(struct sk_buff *skb, struct net_device *dev,
->>   	if (unlikely(mac_hdr_len > IGB_MAX_MAC_HDR_LEN))
->>   		return features & ~(NETIF_F_HW_CSUM |
->>   				    NETIF_F_SCTP_CRC |
->> +				    NETIF_F_GSO_UDP_L4 |
->>   				    NETIF_F_HW_VLAN_CTAG_TX |
->>   				    NETIF_F_TSO |
->>   				    NETIF_F_TSO6);
->> @@ -2524,6 +2525,7 @@ igb_features_check(struct sk_buff *skb, struct net_device *dev,
->>   	if (unlikely(network_hdr_len >  IGB_MAX_NETWORK_HDR_LEN))
->>   		return features & ~(NETIF_F_HW_CSUM |
->>   				    NETIF_F_SCTP_CRC |
->> +				    NETIF_F_GSO_UDP_L4 |
->>   				    NETIF_F_TSO |
->>   				    NETIF_F_TSO6);
->>   
->> @@ -3120,7 +3122,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->>   			    NETIF_F_HW_CSUM;
->>   
->>   	if (hw->mac.type >= e1000_82576)
->> -		netdev->features |= NETIF_F_SCTP_CRC;
->> +		netdev->features |= NETIF_F_SCTP_CRC | NETIF_F_GSO_UDP_L4;
->>   
->>   	if (hw->mac.type >= e1000_i350)
->>   		netdev->features |= NETIF_F_HW_TC;
->> @@ -5694,6 +5696,7 @@ static int igb_tso(struct igb_ring *tx_ring,
->>   	} ip;
->>   	union {
->>   		struct tcphdr *tcp;
->> +		struct udphdr *udp;
->>   		unsigned char *hdr;
->>   	} l4;
->>   	u32 paylen, l4_offset;
->> @@ -5713,7 +5716,8 @@ static int igb_tso(struct igb_ring *tx_ring,
->>   	l4.hdr = skb_checksum_start(skb);
->>   
->>   	/* ADV DTYP TUCMD MKRLOC/ISCSIHEDLEN */
->> -	type_tucmd = E1000_ADVTXD_TUCMD_L4T_TCP;
->> +	type_tucmd = (!(skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4)) ?
->> +		      E1000_ADVTXD_TUCMD_L4T_TCP : E1000_ADVTXD_TUCMD_L4T_UDP;
-> 
-> The logic here seems a bit convoluted. Instead of testing for
-> '!SKB_GSO_UDP_L4' why not just make L4T_UDP the first option and drop the
-> '!'? That will make the TCP offload the default case rather than the UDP
-> offload.
-> 
-> The same applies to the other 2 patches.
+This series is a repost of his ixgbe patch along with a similar
+change to the igb and i40e drivers. Testing using the udpgso_bench_tx
+benchmark shows a noticeable performance improvement with these changes
+applied.
 
-OK sure. I think I was trying to keep the TCP case first for some 
-reason, but agree that I should probably just reverse the order. Will 
-send a v3.
+I've shared the benchmark script I've used to generate the #s in this mail:
+https://lore.kernel.org/netdev/0e0e706c-4ce9-c27a-af55-339b4eb6d524@akamai.com/T/#mfe4c35c57a3860cda5306b63f61068f837242ee5
 
-Josh
+v3 change:
+ * Change gso_type order check, suggested by Alex
+
+v2 changes:
+ * Added Alex's suggested-by tag to ixgbe patch
+ * Checking for gso_type, suggested by Sridhar
+ * Fixed bug in ixgbe patch where I accidentally left the old type_tucmd
+   set to TCP
+ * Updated perf #s below
+   * includes changes above
+   * fixed bad config on my igb machine
+   * added chip used for testing next to driver name
+
+All #s below were run with:
+udpgso_bench_tx -C 1 -4 -D 172.25.43.133 -z -l 30 -S 0 -u -s $pkt_size
+
+igb (i210)::
+SW GSO (ethtool -K eth0 tx-udp-segmentation off):
+$pkt_size	kB/s(sar)	MB/s	Calls/s	Msg/s	CPU	MB2CPU
+========================================================================
+1472		120167.13	114	81278	81278	16.24	7.01
+2944		120166.83	114	40641	40641	12.82	8.89
+5888		120166.42	114	20320	20320	10.14	11.24
+11776		120166.43	114	10160	10160	8.55	13.33
+23552		120167.24	114	5080	5080	7.76	14.69
+47104		120166.83	114	2540	2540	7.07	16.12
+61824		120167.08	114	1935	1935	7.07	16.12
+
+HW GSO offload (ethtool -K eth0 tx-udp-segmentation on):
+$pkt_size	kB/s(sar)	MB/s	Calls/s	Msg/s	CPU	MB2CPU
+========================================================================
+1472		120167.05	114	81276	81276	16.13	7.06
+2944		120166.94	114	40640	40640	8.66	13.16
+5888		120166.84	114	20320	20320	5.34	21.34
+11776		120166.84	114	10160	10160	3.34	34.13
+23552		120167.25	114	5080	5080	2.55	44.70
+47104		120149.30	113	2539	2539	2.14	52.80
+61824		120165.41	114	1935	1935	2.04	55.88
+
+ixgbe (82599ES)::
+SW GSO:
+$pkt_size	kB/s(sar)	MB/s	Calls/s	Msg/s	CPU	MB2CPU
+========================================================================
+1472		1043972.83	990	706122	706122	100	9.90
+2944		1201623.17	1140	406367	406367	95.97	11.87
+5888		1201629.46	1140	203184	203184	56	20.35
+11776		1201631.38	1140	101590	101590	42.72	26.68
+23552		1201633.94	1140	50796	50796	36.31	31.39
+47104		1201631.05	1140	25397	25397	33.91	33.61
+61824		1201629.96	1140	19350	19350	33.38	34.15
+
+HW GSO Offload:
+$pkt_size	kB/s(sar)	MB/s	Calls/s	Msg/s	CPU	MB2CPU
+========================================================================
+1472		1053393.41	999	712679	712679	100	9.99
+2944		1201631.19	1140	406357	406357	57.92	19.68
+5888		1201622.51	1140	203178	203178	30.66	37.18
+11776		1201626.60	1140	101590	101590	16.89	67.49
+23552		1201617.19	1140	50795	50795	10.11	112.75
+47104		1200218.72	1138	25368	25368	6.86	165.88
+61824		1201619.66	1140	19350	19350	5.38	211.89
+
+i40e (x710)::
+SW GSO:
+$pkt_size	kB/s(sar)	MB/s	Calls/s	Msg/s	CPU	MB2CPU
+========================================================================
+1472		642718.15	609	434585	434585	100	6.09
+2944		957988.80	909	324029	324029	100	9.09
+5888		1199207.69	1138	202845	202845	81.51	13.96
+11776		1200767.60	1139	101517	101517	63.93	17.81
+23552		1201197.22	1140	50794	50794	59.14	19.27
+47104		1201410.91	1139	25393	25393	57.15	19.93
+61824		1201609.48	1140	19350	19350	55.12	20.68
+
+HW GSO offload:
+$pkt_size	kB/s(sar)	MB/s	Calls/s	Msg/s	CPU	MB2CPU
+========================================================================
+1472		666626.15	632	450920	450920	100	6.32
+2944		1200831.63	1139	406093	406093	89.68	12.70
+5888		1201603.35	1140	203178	203178	56.38	20.21
+11776		1201597.29	1140	101588	101588	36.9	30.89
+23552		1201596.98	1140	50794	50794	24.23	47.04
+47104		1201491.67	1139	25394	25394	17.14	66.45
+61824		1201598.88	1140	19350	19350	15.11	75.44
+
+Josh Hunt (3):
+  igb: Add UDP segmentation offload support
+  ixgbe: Add UDP segmentation offload support
+  i40e: Add UDP segmentation offload support
+
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  1 +
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 12 +++++++++---
+ drivers/net/ethernet/intel/igb/e1000_82575.h  |  1 +
+ drivers/net/ethernet/intel/igb/igb_main.c     | 23 +++++++++++++++++------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 24 ++++++++++++++++++------
+ 5 files changed, 46 insertions(+), 15 deletions(-)
+
+-- 
+2.7.4
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
