@@ -1,75 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C60FD36AF
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2019 03:05:46 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9934D36DF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2019 03:23:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0491D203CC;
-	Fri, 11 Oct 2019 01:05:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 484FB86D8A;
+	Fri, 11 Oct 2019 01:23:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NFvgiZOAL9GP; Fri, 11 Oct 2019 01:05:43 +0000 (UTC)
+	with ESMTP id 2O2jwqcGu0ZZ; Fri, 11 Oct 2019 01:23:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 88E2320461;
-	Fri, 11 Oct 2019 01:05:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E00C86D8D;
+	Fri, 11 Oct 2019 01:23:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 641121BF2A3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:05:39 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AEE961BF317
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:23:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 53E9B203BB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:05:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9DB3786D84
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:23:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9OdsS9e1MpTF for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Oct 2019 01:05:38 +0000 (UTC)
+ with ESMTP id zeH2xQy5Qk5q for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Oct 2019 01:23:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 4223E203CC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:05:38 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D2A5E86D20
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2019 01:23:27 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 10 Oct 2019 18:05:37 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Oct 2019 18:23:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,282,1566889200"; d="scan'208";a="277965188"
-Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
- by orsmga001.jf.intel.com with ESMTP; 10 Oct 2019 18:05:37 -0700
-Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
- ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 10 Oct 2019 18:05:37 -0700
+X-IronPort-AV: E=Sophos;i="5.67,282,1566889200"; d="scan'208";a="219232766"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by fmsmga004.fm.intel.com with ESMTP; 10 Oct 2019 18:23:26 -0700
+Received: from orsmsx114.amr.corp.intel.com (10.22.240.10) by
+ ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 10 Oct 2019 18:23:26 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.9]) by
- ORSMSX153.amr.corp.intel.com ([169.254.12.244]) with mapi id 14.03.0439.000;
- Thu, 10 Oct 2019 18:05:37 -0700
+ ORSMSX114.amr.corp.intel.com ([169.254.8.55]) with mapi id 14.03.0439.000;
+ Thu, 10 Oct 2019 18:23:25 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [net-next v3 2/7] net: reject PTP periodic output requests
- with unsupported flags
-Thread-Index: AQHVdJXdch2ZIrEq/0WYWnhPkQaHZqdUtobw
-Date: Fri, 11 Oct 2019 01:05:36 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9714C866@ORSMSX103.amr.corp.intel.com>
-References: <20190926181109.4871-1-jacob.e.keller@intel.com>
- <20190926181109.4871-3-jacob.e.keller@intel.com>
-In-Reply-To: <20190926181109.4871-3-jacob.e.keller@intel.com>
+To: =?utf-8?B?Sm9uYXRoYW4gTmV1c2Now6RmZXI=?= <j.neuschaefer@gmx.net>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>
+Thread-Topic: [PATCH] Documentation: networking: device drivers: Remove
+ stray asterisks
+Thread-Index: AQHVeTOVj6HxC0KSAUmxu0Nx3AY1c6dUsk4A
+Date: Fri, 11 Oct 2019 01:23:25 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9714C898@ORSMSX103.amr.corp.intel.com>
+References: <20191002150956.16234-1-j.neuschaefer@gmx.net>
+In-Reply-To: <20191002150956.16234-1-j.neuschaefer@gmx.net>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYWUxZDE1ZjktYTI0Ni00NmZiLThhZDctNDM1NWUzNDM1ZmQ1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiV013eHdrTjZOenowTXR0K0NrQjV5VHM5RGprcExuSUFVMEJzMnZJWmY0aUIzSjdCSG55WFFNQ1lPKzJ1eDB3USJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOGM4OTUyYzQtODQzOC00NGZiLWE2ZjQtN2RkNDc2Y2VjMmZiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoieXVBU1gzaUlDRGFnWHZHQnE2RDA1SkdmYkxFdW96MGVqYUdoMGY2dFhoQlE1V3RPT2hPbFZkd0FLYjN1Y3F0NyJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-next v3 2/7] net: reject PTP periodic
- output requests with unsupported flags
+Subject: Re: [Intel-wired-lan] [PATCH] Documentation: networking: device
+ drivers: Remove stray asterisks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,61 +81,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Hall, Christopher S" <christopher.s.hall@intel.com>,
- Felipe Balbi <felipe.balbi@linux.intel.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jonathan Corbet <corbet@lwn.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Pensando Drivers <drivers@pensando.io>, Shannon Nelson <snelson@pensando.io>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: netdev-owner@vger.kernel.org [mailto:netdev-owner@vger.kernel.org]
-> On Behalf Of Jacob Keller
-> Sent: Thursday, September 26, 2019 11:11 AM
-> To: netdev@vger.kernel.org
-> Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>; Kirsher, Jeffrey T
-> <jeffrey.t.kirsher@intel.com>; Keller, Jacob E <jacob.e.keller@intel.com>;
-> Richard Cochran <richardcochran@gmail.com>; Felipe Balbi
-> <felipe.balbi@linux.intel.com>; David S . Miller <davem@davemloft.net>; Hall,
-> Christopher S <christopher.s.hall@intel.com>
-> Subject: [net-next v3 2/7] net: reject PTP periodic output requests with
-> unsupported flags
-> 
-> Commit 823eb2a3c4c7 ("PTP: add support for one-shot output") introduced
-> a new flag for the PTP periodic output request ioctl. This flag is not
-> currently supported by any driver.
-> 
-> Fix all drivers which implement the periodic output request ioctl to
-> explicitly reject any request with flags they do not understand. This
-> ensures that the driver does not accidentally misinterpret the
-> PTP_PEROUT_ONE_SHOT flag, or any new flag introduced in the future.
-> 
-> This is important for forward compatibility: if a new flag is
-> introduced, the driver should reject requests to enable the flag until
-> the driver has actually been modified to support the flag in question.
-> 
-> Cc: Richard Cochran <richardcochran@gmail.com>
-> Cc: Felipe Balbi <felipe.balbi@linux.intel.com>
-> Cc: David S. Miller <davem@davemloft.net>
-> Cc: Christopher Hall <christopher.s.hall@intel.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> ---
->  drivers/net/ethernet/broadcom/tg3.c                 | 4 ++++
->  drivers/net/ethernet/intel/igb/igb_ptp.c            | 4 ++++
->  drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c | 4 ++++
->  drivers/net/ethernet/microchip/lan743x_ptp.c        | 4 ++++
->  drivers/net/ethernet/renesas/ravb_ptp.c             | 4 ++++
->  drivers/net/ethernet/stmicro/stmmac/stmmac_ptp.c    | 4 ++++
->  drivers/net/phy/dp83640.c                           | 3 +++
->  7 files changed, 27 insertions(+)
-> 
-
-For the igb sections...
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+PiBGcm9tOiBuZXRkZXYtb3duZXJAdmdlci5rZXJuZWwub3JnIFttYWlsdG86bmV0ZGV2LW93bmVy
+QHZnZXIua2VybmVsLm9yZ10NCj4gT24gQmVoYWxmIE9mIEpvbmF0aGFuIE5ldXNjaMOkZmVyDQo+
+IFNlbnQ6IFdlZG5lc2RheSwgT2N0b2JlciAyLCAyMDE5IDg6MTAgQU0NCj4gVG86IGxpbnV4LWRv
+Y0B2Z2VyLmtlcm5lbC5vcmcNCj4gQ2M6IEpvbmF0aGFuIE5ldXNjaMOkZmVyIDxqLm5ldXNjaGFl
+ZmVyQGdteC5uZXQ+OyBLaXJzaGVyLCBKZWZmcmV5IFQNCj4gPGplZmZyZXkudC5raXJzaGVyQGlu
+dGVsLmNvbT47IERhdmlkIFMuIE1pbGxlciA8ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldD47DQo+IEpvbmF0
+aGFuIENvcmJldCA8Y29yYmV0QGx3bi5uZXQ+OyBTaGFubm9uIE5lbHNvbiA8c25lbHNvbkBwZW5z
+YW5kby5pbz47DQo+IFBlbnNhbmRvIERyaXZlcnMgPGRyaXZlcnNAcGVuc2FuZG8uaW8+OyBpbnRl
+bC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZzsNCj4gbmV0ZGV2QHZnZXIua2VybmVsLm9yZzsg
+bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw0KPiBTdWJqZWN0OiBbUEFUQ0hdIERvY3VtZW50
+YXRpb246IG5ldHdvcmtpbmc6IGRldmljZSBkcml2ZXJzOiBSZW1vdmUgc3RyYXkNCj4gYXN0ZXJp
+c2tzDQo+IA0KPiBUaGVzZSBhc3Rlcmlza3Mgd2VyZSBvbmNlIHJlZmVyZW5jZXMgdG8gYSBsaW5l
+IHRoYXQgc2FpZDoNCj4gICAiKiBPdGhlciBuYW1lcyBhbmQgYnJhbmRzIG1heSBiZSBjbGFpbWVk
+IGFzIHRoZSBwcm9wZXJ0eSBvZiBvdGhlcnMuIg0KPiBCdXQgbm93LCB0aGV5IHNlcnZlIG5vIHB1
+cnBvc2U7IHRoZXkgY2FuIG9ubHkgaXJyaXRhdGUgdGhlIHJlYWRlci4NCj4gDQo+IEZpeGVzOiBk
+ZTNlZGFiNDI3NmMgKCJlMTAwMDogdXBkYXRlIFJFQURNRSBmb3IgZTEwMDAiKQ0KPiBGaXhlczog
+YTNmYjY1NjgwZjY1ICgiZTEwMC50eHQ6IENsZWFudXAgbGljZW5zZSBpbmZvIGluIGtlcm5lbCBk
+b2MiKQ0KPiBGaXhlczogZGE4YzAxYzQ1MDJhICgiZTEwMDBlLnR4dDogQWRkIGUxMDAwZSBkb2N1
+bWVudGF0aW9uIikNCj4gRml4ZXM6IGYxMmE4NGE5ZjY1MCAoIkRvY3VtZW50YXRpb246IGZtMTBr
+OiBBZGQga2VybmVsIGRvY3VtZW50YXRpb24iKQ0KPiBGaXhlczogYjU1YzUyYjE5MzhjICgiaWdi
+LnR4dDogQWRkIGlnYiBkb2N1bWVudGF0aW9uIikNCj4gRml4ZXM6IGM0ZTliNTZlMjQ0MiAoImln
+YnZmLnR4dDogQWRkIGlnYnZmIERvY3VtZW50YXRpb24iKQ0KPiBGaXhlczogZDcwNjRmNGMxOTJj
+ICgiRG9jdW1lbnRhdGlvbi9uZXR3b3JraW5nLzogVXBkYXRlIEludGVsIHdpcmVkIExBTg0KPiBk
+cml2ZXIgZG9jdW1lbnRhdGlvbiIpDQo+IEZpeGVzOiBjNGI4YzAxMTEyYTEgKCJpeGdiZXZmLnR4
+dDogVXBkYXRlIGl4Z2JldmYgZG9jdW1lbnRhdGlvbiIpDQo+IEZpeGVzOiAxZTA2ZWRjYzJmMjIg
+KCJEb2N1bWVudGF0aW9uOiBpNDBlOiBQcmVwYXJlIGRvY3VtZW50YXRpb24gZm9yIFJTVA0KPiBj
+b252ZXJzaW9uIikNCj4gRml4ZXM6IDEwNWJmMmZlNmIzMiAoImk0MGV2ZjogYWRkIGRyaXZlciB0
+byBrZXJuZWwgYnVpbGQgc3lzdGVtIikNCj4gRml4ZXM6IDFmYWU4NjliY2YzZCAoIkRvY3VtZW50
+YXRpb246IGljZTogUHJlcGFyZSBkb2N1bWVudGF0aW9uIGZvciBSU1QNCj4gY29udmVyc2lvbiIp
+DQo+IEZpeGVzOiBkZjY5YmE0MzIxN2QgKCJpb25pYzogQWRkIGJhc2ljIGZyYW1ld29yayBmb3Ig
+SU9OSUMgTmV0d29yayBkZXZpY2UNCj4gZHJpdmVyIikNCj4gU2lnbmVkLW9mZi1ieTogSm9uYXRo
+YW4gTmV1c2Now6RmZXIgPGoubmV1c2NoYWVmZXJAZ214Lm5ldD4NCj4gLS0tDQo+ICAuLi4vbmV0
+d29ya2luZy9kZXZpY2VfZHJpdmVycy9pbnRlbC9lMTAwLnJzdCAgICAgICB8IDE0ICsrKysrKyst
+LS0tLS0tDQo+ICAuLi4vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9pbnRlbC9lMTAwMC5yc3Qg
+ICAgICB8IDEyICsrKysrKy0tLS0tLQ0KPiAgLi4uL25ldHdvcmtpbmcvZGV2aWNlX2RyaXZlcnMv
+aW50ZWwvZTEwMDBlLnJzdCAgICAgfCAxNCArKysrKysrLS0tLS0tLQ0KPiAgLi4uL25ldHdvcmtp
+bmcvZGV2aWNlX2RyaXZlcnMvaW50ZWwvZm0xMGsucnN0ICAgICAgfCAxMCArKysrKy0tLS0tDQo+
+ICAuLi4vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9pbnRlbC9pNDBlLnJzdCAgICAgICB8ICA4
+ICsrKystLS0tDQo+ICAuLi4vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9pbnRlbC9pYXZmLnJz
+dCAgICAgICB8ICA4ICsrKystLS0tDQo+ICAuLi4vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9p
+bnRlbC9pY2UucnN0ICAgICAgICB8ICA2ICsrKy0tLQ0KPiAgLi4uL25ldHdvcmtpbmcvZGV2aWNl
+X2RyaXZlcnMvaW50ZWwvaWdiLnJzdCAgICAgICAgfCAxMiArKysrKystLS0tLS0NCj4gIC4uLi9u
+ZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2ludGVsL2lnYnZmLnJzdCAgICAgIHwgIDYgKysrLS0t
+DQo+ICAuLi4vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVycy9pbnRlbC9peGdiZS5yc3QgICAgICB8
+IDEwICsrKysrLS0tLS0NCj4gIC4uLi9uZXR3b3JraW5nL2RldmljZV9kcml2ZXJzL2ludGVsL2l4
+Z2JldmYucnN0ICAgIHwgIDYgKysrLS0tDQo+ICAuLi4vbmV0d29ya2luZy9kZXZpY2VfZHJpdmVy
+cy9wZW5zYW5kby9pb25pYy5yc3QgICB8ICA2ICsrKy0tLQ0KPiAgMTIgZmlsZXMgY2hhbmdlZCwg
+NTYgaW5zZXJ0aW9ucygrKSwgNTYgZGVsZXRpb25zKC0pDQo+IA0KDQpUZXN0ZWQtYnk6IEFhcm9u
+IEJyb3duIDxhYXJvbi5mLmJyb3duQGludGVsLmNvbT4NCg0KX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
+bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
