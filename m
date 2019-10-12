@@ -2,81 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30637D51AE
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Oct 2019 20:38:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 337DFD5239
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Oct 2019 21:36:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D798C86C7B;
-	Sat, 12 Oct 2019 18:38:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4D32F87842;
+	Sat, 12 Oct 2019 19:36:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id O77h4-htxSkE; Sat, 12 Oct 2019 18:38:44 +0000 (UTC)
+	with ESMTP id HJMRKa8guvfm; Sat, 12 Oct 2019 19:36:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4749587618;
-	Sat, 12 Oct 2019 18:38:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5AF487776;
+	Sat, 12 Oct 2019 19:36:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 955F81BF28C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:38:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 959721BF578
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 19:36:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8FBC92047A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:38:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8C91985E9B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 19:36:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J+rPDyV7Ty3Q for <intel-wired-lan@lists.osuosl.org>;
- Sat, 12 Oct 2019 18:38:41 +0000 (UTC)
+ with ESMTP id lcrNAP8Wfv_Q for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 12 Oct 2019 19:36:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f195.google.com (mail-pf1-f195.google.com
- [209.85.210.195])
- by silver.osuosl.org (Postfix) with ESMTPS id E5FE820031
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:38:41 +0000 (UTC)
-Received: by mail-pf1-f195.google.com with SMTP id y5so8018845pfo.4
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 11:38:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=PYJCvQia0pn4Uc7MYvqlTl+JKad8tbHNffACvYNGz9k=;
- b=YbFafwXaQ3e0aSJl0kgMctLeYZPOsrSQjxl56JS30OWHSP1NSxgbiGOrDMiFOwYNuZ
- b1O51nEZwhxzI/m5b/0a4cm8VvNn/XH/v1qM8d2KlXlULmlHli+GXdvIbAXbuwEPOeRP
- LZFuHSujK0UAQUOqRW+CdnMgKoBCoOzxc5uZddQDne1PO73QI6j9kqwPufrR0WHn8BMW
- evBmHUrJzf07RNFa9b1VH+L9pth8y3B7TjlGhpXG+7UAmBj3+AAHG8wqPbvzOaMuf6Gv
- qyZDsr7XE3Jr6m/5a1ym0qytgJlh6U6zWBW3werw5y63Jeff9N1ky+WHocxSkA/XMNp5
- uyrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=PYJCvQia0pn4Uc7MYvqlTl+JKad8tbHNffACvYNGz9k=;
- b=Qh0BJxrN5LJDSOI+LcyEgfclhqO4ZDvcz6iV7MIavGrJd0XJQq3OAdMiuKyVvduSDD
- arqx7iWIr4h/75RsW1QLqlBZt5QGf3BLVmxl8gga7uOysm40yFvTySAEyfriZU38qA2t
- Zf1YmEZLfnfimMJXNQKhOPtGzooP1jcAC5kkOPrSn8Ox/CImZitMnRsdLGgxYqbmN9Bi
- df+GRskdB2nF1YoGlzu9LL2Cy3P8rWfS4K9121MVUOM78Id0XshAn9Iij2ScW5Viz2OS
- EtkDuza6er9loDSPKKjwWFsoZjZbi/fBfVw9atO5WB72RtyBwHAQ/AbLW3BnRU5tx2bX
- RTMA==
-X-Gm-Message-State: APjAAAVXdbVub2TkQRbvgvV3pUQT0iwTUJDY421EM8klTZzrH7I05EuS
- uD6gMinB1gyjI9ufnnvRikFPdNTS
-X-Google-Smtp-Source: APXvYqxNZ5AE78NYtuWPWCUTwQXLUEEZRD3IU/B1BrgDlp+FNfncY4JUODYEU2TuVO9Id2nKGvrIDQ==
-X-Received: by 2002:a63:10d:: with SMTP id 13mr24138034pgb.173.1570905521475; 
- Sat, 12 Oct 2019 11:38:41 -0700 (PDT)
-Received: from localhost (c-73-241-114-122.hsd1.ca.comcast.net.
- [73.241.114.122])
- by smtp.gmail.com with ESMTPSA id z29sm13559880pff.23.2019.10.12.11.38.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Oct 2019 11:38:40 -0700 (PDT)
-Date: Sat, 12 Oct 2019 11:38:38 -0700
-From: Richard Cochran <richardcochran@gmail.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20191012183838.GH3165@localhost>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D4D9E85E71
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 19:36:33 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 12 Oct 2019 12:36:33 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.67,289,1566889200"; d="scan'208";a="369736362"
+Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
+ by orsmga005.jf.intel.com with ESMTP; 12 Oct 2019 12:36:32 -0700
+Received: from orsmsx121.amr.corp.intel.com ([169.254.10.88]) by
+ ORSMSX101.amr.corp.intel.com ([169.254.8.212]) with mapi id 14.03.0439.000;
+ Sat, 12 Oct 2019 12:36:32 -0700
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Richard Cochran <richardcochran@gmail.com>
+Thread-Topic: [net-next v3 3/7] mv88e6xxx: reject unsupported external
+ timestamp flags
+Thread-Index: AQHVdJXUEA6x0/E6e0uxXimj9y2LQqdX4KeA//+eqiA=
+Date: Sat, 12 Oct 2019 19:36:31 +0000
+Message-ID: <02874ECE860811409154E81DA85FBB5896926B0B@ORSMSX121.amr.corp.intel.com>
 References: <20190926181109.4871-1-jacob.e.keller@intel.com>
- <20190926181109.4871-8-jacob.e.keller@intel.com>
+ <20190926181109.4871-4-jacob.e.keller@intel.com>
+ <20191012182409.GD3165@localhost>
+In-Reply-To: <20191012182409.GD3165@localhost>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNDI3Y2JmNmMtOWQyZi00YzEyLWE1M2UtMTA0NWEzMTlmMDNlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZ3VQcUIxY2xnN05lNDRtUDJaZU1od0JcL1hrVm83dGhcL2lEdVZNa2QrY0MrOHgxNENJS0JCWTcrQ0dvbVgwMjdNIn0=
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20190926181109.4871-8-jacob.e.keller@intel.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: Re: [Intel-wired-lan] [net-next v3 7/7] renesas: reject unsupported
- external timestamp flags
+Subject: Re: [Intel-wired-lan] [net-next v3 3/7] mv88e6xxx: reject
+ unsupported external timestamp flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,29 +79,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Brandon Streiff <brandon.streiff@ni.com>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Sep 26, 2019 at 11:11:09AM -0700, Jacob Keller wrote:
-> Fix the renesas PTP support to explicitly reject any future flags that
-> get added to the external timestamp request ioctl.
+> -----Original Message-----
+> From: Richard Cochran <richardcochran@gmail.com>
+> Sent: Saturday, October 12, 2019 11:24 AM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>
+> Cc: netdev@vger.kernel.org; Intel Wired LAN <intel-wired-lan@lists.osuosl.org>;
+> Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; Brandon Streiff
+> <brandon.streiff@ni.com>
+> Subject: Re: [net-next v3 3/7] mv88e6xxx: reject unsupported external
+> timestamp flags
 > 
-> In order to maintain currently functioning code, this patch accepts all
-> three current flags. This is because the PTP_RISING_EDGE and
-> PTP_FALLING_EDGE flags have unclear semantics and each driver seems to
-> have interpreted them slightly differently.
+> On Thu, Sep 26, 2019 at 11:11:05AM -0700, Jacob Keller wrote:
+> > Fix the mv88e6xxx PTP support to explicitly reject any future flags that
+> > get added to the external timestamp request ioctl.
+> >
+> > In order to maintain currently functioning code, this patch accepts all
+> > three current flags. This is because the PTP_RISING_EDGE and
+> > PTP_FALLING_EDGE flags have unclear semantics
+> 
+> For the record, the semantics are (or should be):
+> 
+>   flags                                                 Meaning
+>   ----------------------------------------------------  --------------------------
+>   PTP_ENABLE_FEATURE                                    invalid
+>   PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising edge
+>   PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling edge
+>   PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp
+> both edges
+> 
+> > and each driver seems to
+> > have interpreted them slightly differently.
+> 
+> This driver has:
+> 
+>   flags                                                 Meaning
+>   ----------------------------------------------------  --------------------------
+>   PTP_ENABLE_FEATURE                                    Time stamp falling edge
+>   PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising edge
+>   PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling edge
+>   PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp
+> rising edge
+> 
+> > Cc: Brandon Streiff <brandon.streiff@ni.com>
+> > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> 
+> Reviewed-by: Richard Cochran <richardcochran@gmail.com>
 
-This driver doesn't check the flags. Not knowing this HW, I can't say
-which edges are time stamped.
- 
-> Cc: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Right, so in practice, unless it supports both edges, it should reject setting both RISING and FALLING together.
 
-Reviewed-by: Richard Cochran <richardcochran@gmail.com>
+Thanks,
+Jake
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
