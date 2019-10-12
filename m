@@ -1,83 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25182D519B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Oct 2019 20:24:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35A47D519D
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Oct 2019 20:29:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BF1AB85FB6;
-	Sat, 12 Oct 2019 18:24:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C792C8833C;
+	Sat, 12 Oct 2019 18:29:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LaCREcLS_5vZ; Sat, 12 Oct 2019 18:24:18 +0000 (UTC)
+	with ESMTP id gtyA8O4pBruD; Sat, 12 Oct 2019 18:29:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 67FAF85F49;
-	Sat, 12 Oct 2019 18:24:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 37972884A7;
+	Sat, 12 Oct 2019 18:29:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A76F61BF28C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:24:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A60A31BF28C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:29:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9ED0920119
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:24:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 920422034C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:29:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k2ES7blcmmym for <intel-wired-lan@lists.osuosl.org>;
- Sat, 12 Oct 2019 18:24:12 +0000 (UTC)
+ with ESMTP id zlbhWLKDp-ux for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 12 Oct 2019 18:28:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
- [209.85.210.194])
- by silver.osuosl.org (Postfix) with ESMTPS id 806672000E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:24:12 +0000 (UTC)
-Received: by mail-pf1-f194.google.com with SMTP id b128so8015167pfa.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 11:24:12 -0700 (PDT)
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id D8F4B20119
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 18:28:59 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id d26so7662477pgl.7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 12 Oct 2019 11:28:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=6QaCuB8+ewa1hushkq9gzE3hzCX5Oi/rv+NRbA2RpEc=;
- b=rza6HFcHty6NQZGFhQDs/nk9cAFjOUjkvRvnhUyu3rS0WbRKGWyBCe274zCKZPFWTl
- edSjOlptEh4ZIsEpN+5C8A/jUV2TKfMBsup6JOodPc1YhtQc22lqShSFBv+9BLW6/ae4
- wcdcEfzU/dcuH+8fT/9g10GJjVJWz8smDRUAZ4P7UwEhTVkY0vuUbu7v+N7Lr8cx54nX
- uHQde7QjKpcl+xmPkfRQckJIczKHYh7zDQDbZ1MUY5x0/2ZeKJXkWmoCwZwIyNZmTLOh
- qA11u8plkikjZIZzx4atYfo+YGnOebyap/4lmRqPc3BbzYtbO2zXlWQq71k96hN7nlsx
- eACg==
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=Z4e8uk0IpJRuBvJTEmmHHew7MLg0EsYSSDTpP3A/9+4=;
+ b=iBunLz7JASh89AWFZIk7A5IHq7gsj6GjImlSoTPCT3vOBudn43qAGTACNLrrT5q6dv
+ SJS1eOyqGr3up6VzVDntE219I1IQKZm7yoxtu15mT6/U8rIBxS1Wy6MmWDINzsjYCzPe
+ aRUwZ+hsdLNuqZI70NF+RP2bJtCn3/stnovTf2YWv6hzoHnLYwXbQSb5GRqM8Ca014Lp
+ vPzd0b4h625wXdBUF1ujxR5qZaWRPF2qIAl4PDJuPsS0kqt8AeeoCErGOBoSlk7ng8HY
+ of799EiVo7DrG9PE2vBgnYB6z0/ybj9JCCO9s/Z7eUgfbn5f0krql3ZeaZWI2sl/Xd18
+ Jdtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=6QaCuB8+ewa1hushkq9gzE3hzCX5Oi/rv+NRbA2RpEc=;
- b=DGx/CTBhUQ2EJ6RNfCKe77/y6DwRuM6Qi8Qg7HOJZYTTTXKAfo4KE90JNQKUqfto4i
- 4k/ahbdKdogLjIBLGK9sjwDZ0Bma0pvppuSfS5LzxKJqYQmifVpnRyOxQmDbGEoYWrJr
- G/wJA2NQsjChGeJIIlXr9BC4CrYe+u8n8owk2ZD0qX9XF0iL4Ii480so9O/slXVM8ah2
- rUkff8BMlePhm5KqN0TyB/05ejv73cpjfNHYgq8xprxAmr6vQa2f1FHF45hi3QExgDJF
- TkkoOnewqjCQNBrjapXXmFjXbTvEllDG+liAd1lW+EekfwJbusLWoYzt3Bd85sW50AtX
- BiuA==
-X-Gm-Message-State: APjAAAXeZBR+H8z9nPXFg7uJixPJuSkNrI6jNqk+/i7K7EGHC9OqXc2s
- uJoNga7ag7s3BgViHZWaT/A=
-X-Google-Smtp-Source: APXvYqzcZO+iZEH6yEmVzubjeRTVxudnumFJRFmufyWgxWB6X5zXUdI2ZNg2O3RHNKhtkExqPqt2yA==
-X-Received: by 2002:a17:90a:9416:: with SMTP id
- r22mr25439134pjo.20.1570904652089; 
- Sat, 12 Oct 2019 11:24:12 -0700 (PDT)
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=Z4e8uk0IpJRuBvJTEmmHHew7MLg0EsYSSDTpP3A/9+4=;
+ b=rsNWfAp4K5L44nmJPLlLCS/sisuL82ZjlSl6iu6SGtus5ICz2buKwmkGiaWpbJp22E
+ InxWNQR7L0JDpZWUhcPwz+B+bzjDUMMDRv4Du9mwPjv1pZMEqtdBBoXqr1nizhbhDxc9
+ 8diM9KknWWDst0b9UNjBBYmBRzN/lKeRyTvvllwG6ZNGgcf3w65ir4vYpg9jAs+Ooup/
+ 0ahEA/czw7fydWKGKYZsm0/gbuQBu0W07KbUrQPBuS4gOWhjprWxSp/TQIyICw1AiDl9
+ MzMD4cj6I1Tv0wyopPhi+KloFsuF+ag3mf+Ee8zzEuaS+PcfTK4tLr1SDfytYgDH37Iw
+ M1PA==
+X-Gm-Message-State: APjAAAUooBgV0zPZ/JXKk5smIS2CI8fzYsH9+aPq7KFtNSy6URaUtV3v
+ crvMkdy2Yyf3XMkQ8/sbod3VYkh2
+X-Google-Smtp-Source: APXvYqwgEMPBAKLKkFmQRtfgnKkLQ/Pr0iqazWs7tkIKlVJoQBvtK8C38EfeWfafmOqSL/+dzgE0Vw==
+X-Received: by 2002:aa7:9f47:: with SMTP id h7mr23836748pfr.44.1570904939557; 
+ Sat, 12 Oct 2019 11:28:59 -0700 (PDT)
 Received: from localhost (c-73-241-114-122.hsd1.ca.comcast.net.
  [73.241.114.122])
- by smtp.gmail.com with ESMTPSA id j128sm13686611pfg.51.2019.10.12.11.24.10
+ by smtp.gmail.com with ESMTPSA id b4sm9661956pju.16.2019.10.12.11.28.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Oct 2019 11:24:11 -0700 (PDT)
-Date: Sat, 12 Oct 2019 11:24:09 -0700
+ Sat, 12 Oct 2019 11:28:58 -0700 (PDT)
+Date: Sat, 12 Oct 2019 11:28:56 -0700
 From: Richard Cochran <richardcochran@gmail.com>
 To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20191012182409.GD3165@localhost>
+Message-ID: <20191012182856.GE3165@localhost>
 References: <20190926181109.4871-1-jacob.e.keller@intel.com>
- <20190926181109.4871-4-jacob.e.keller@intel.com>
+ <20190926181109.4871-5-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20190926181109.4871-4-jacob.e.keller@intel.com>
+In-Reply-To: <20190926181109.4871-5-jacob.e.keller@intel.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: Re: [Intel-wired-lan] [net-next v3 3/7] mv88e6xxx: reject
- unsupported external timestamp flags
+Subject: Re: [Intel-wired-lan] [net-next v3 4/7] dp83640: reject unsupported
+ external timestamp flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,43 +90,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Brandon Streiff <brandon.streiff@ni.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Stefan =?iso-8859-1?Q?S=F8rensen?= <stefan.sorensen@spectralink.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Sep 26, 2019 at 11:11:05AM -0700, Jacob Keller wrote:
-> Fix the mv88e6xxx PTP support to explicitly reject any future flags that
+On Thu, Sep 26, 2019 at 11:11:06AM -0700, Jacob Keller wrote:
+> Fix the dp83640 PTP support to explicitly reject any future flags that
 > get added to the external timestamp request ioctl.
-> 
+> =
+
 > In order to maintain currently functioning code, this patch accepts all
 > three current flags. This is because the PTP_RISING_EDGE and
-> PTP_FALLING_EDGE flags have unclear semantics
-
-For the record, the semantics are (or should be):
-
-  flags                                                 Meaning                   
-  ----------------------------------------------------  -------------------------- 
-  PTP_ENABLE_FEATURE                                    invalid                   
-  PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising edge
-  PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling edge
-  PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp both edges   
-
-> and each driver seems to
+> PTP_FALLING_EDGE flags have unclear semantics and each driver seems to
 > have interpreted them slightly differently.
 
 This driver has:
 
-  flags                                                 Meaning                   
-  ----------------------------------------------------  -------------------------- 
-  PTP_ENABLE_FEATURE                                    Time stamp falling edge
-  PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising edge
-  PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling edge
-  PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp rising edge
- 
-> Cc: Brandon Streiff <brandon.streiff@ni.com>
+  flags                                                 Meaning            =
+       =
+
+  ----------------------------------------------------  -------------------=
+------- =
+
+  PTP_ENABLE_FEATURE                                    Time stamp rising e=
+dge
+  PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising e=
+dge
+  PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling =
+edge
+  PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp falling =
+edge
+ =
+
+> Cc: Stefan S=F8rensen <stefan.sorensen@spectralink.com>
+> Cc: Richard Cochran <richardcochran@gmail.com>
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 
 Reviewed-by: Richard Cochran <richardcochran@gmail.com>
