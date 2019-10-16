@@ -1,78 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB488D96FE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Oct 2019 18:20:52 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A7ECD96FF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Oct 2019 18:22:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A85E32043D;
-	Wed, 16 Oct 2019 16:20:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C4F0E86A3D;
+	Wed, 16 Oct 2019 16:22:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XUgsPKvlFUfq; Wed, 16 Oct 2019 16:20:51 +0000 (UTC)
+	with ESMTP id zxi1XRQDa6me; Wed, 16 Oct 2019 16:22:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BE8BE203C7;
-	Wed, 16 Oct 2019 16:20:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3301A86A37;
+	Wed, 16 Oct 2019 16:22:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 385571BF30E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 16:20:49 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 201A01BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 16:21:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 349B387863
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 16:20:49 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1BB4C86A34
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 16:21:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rPfd8iszp-Yl for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Oct 2019 16:20:48 +0000 (UTC)
+ with ESMTP id kW47uv7o1-08 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Oct 2019 16:21:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8A0D8877B3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 16:20:48 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2869186A14
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 16:21:56 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Oct 2019 09:20:47 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Oct 2019 09:21:55 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,304,1566889200"; d="scan'208";a="202114810"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by FMSMGA003.fm.intel.com with ESMTP; 16 Oct 2019 09:20:46 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 16 Oct 2019 09:20:46 -0700
+X-IronPort-AV: E=Sophos;i="5.67,304,1566889200"; d="scan'208";a="194880629"
+Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
+ by fmsmga008.fm.intel.com with ESMTP; 16 Oct 2019 09:21:55 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 16 Oct 2019 09:21:54 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 16 Oct 2019 09:20:45 -0700
+ 15.1.1713.5; Wed, 16 Oct 2019 09:21:54 -0700
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 16 Oct 2019 09:20:45 -0700
+ Wed, 16 Oct 2019 09:21:54 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S31 07/15] ice: Adjust DCB INIT for SW
- mode
-Thread-Index: AQHVfvKDWOq0yNnAsUidaE8+8MgxO6ddfV7Q
-Date: Wed, 16 Oct 2019 16:20:45 +0000
-Message-ID: <120bace6ea894c99884de7b04b7aa6c0@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S31 08/15] ice: save PCI state in probe
+Thread-Index: AQHVfvKIKxJc2wLeHEe8aF8K1W/Jsqddfa4g
+Date: Wed, 16 Oct 2019 16:21:54 +0000
+Message-ID: <00098d439a284356a2a446b5a56a322c@intel.com>
 References: <20191009140953.14087-1-anthony.l.nguyen@intel.com>
- <20191009140953.14087-7-anthony.l.nguyen@intel.com>
-In-Reply-To: <20191009140953.14087-7-anthony.l.nguyen@intel.com>
+ <20191009140953.14087-8-anthony.l.nguyen@intel.com>
+In-Reply-To: <20191009140953.14087-8-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzhkODViYWItMTNmMC00ZjI1LWJjZTgtNzdkNTc0ZWE2ZWM2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiM2QrcHRySFRxSEkwXC9wMzBpckxcL3JLNUJhSm03MlU3VUl2Q1dQbnlURndBT2dvK3Z6QmxPUUtENnU2MHR3VzNHIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzYxNjgxNWQtZWFmMy00OGQzLWE1ZWYtZmM1NjQ4ZDQzM2ZlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiSmlxOUlSODJldHdYRVV2c3RjSmtOWjI4dTcxbUIxeWVQbjRZTUZscE9UNXlzaWN6SW1VbzM3Tk1LNlFhTWpUdiJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S31 07/15] ice: Adjust DCB INIT for SW
- mode
+Subject: Re: [Intel-wired-lan] [PATCH S31 08/15] ice: save PCI state in probe
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,21 +93,17 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Wednesday, October 9, 2019 7:10 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S31 07/15] ice: Adjust DCB INIT for SW
-> mode
+> Subject: [Intel-wired-lan] [PATCH S31 08/15] ice: save PCI state in probe
 > 
-> From: Dave Ertman <david.m.ertman@intel.com>
+> From: Michal Swiatkowski <michal.swiatkowski@intel.com>
 > 
-> Adjust ice_init_dcb to set the is_sw_lldp boolean in the case where the FW
-> has been detected to be in an untenable state such that the driver should
-> forcibly make sure it is off.
+> Save state to correct recovery memory and I/O BARs address after PCI bus
+> reset. Without this after reset kernel can't read device registers.
 > 
-> This will ensure that the FW is in a known state.
-> 
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_dcb.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_main.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
