@@ -1,56 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E35EDDB89C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2019 22:45:16 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B456DB8A0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2019 22:47:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82F5786B46;
-	Thu, 17 Oct 2019 20:45:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 310BF20363;
+	Thu, 17 Oct 2019 20:47:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x9tt8-8h1Im7; Thu, 17 Oct 2019 20:45:15 +0000 (UTC)
+	with ESMTP id KFjxcjKCHwT6; Thu, 17 Oct 2019 20:47:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 92C7486B8C;
-	Thu, 17 Oct 2019 20:45:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3F1902045A;
+	Thu, 17 Oct 2019 20:47:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BC5511BF276
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 20:45:13 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A5161BF276
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 20:47:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B4AA686B31
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 20:45:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 45C5720363
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 20:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ytR7GPtnkal6 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Oct 2019 20:45:12 +0000 (UTC)
+ with ESMTP id mr2rAGYaoSjy for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2019 20:47:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D124C86A9D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 20:45:12 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Oct 2019 13:45:11 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,309,1566889200"; d="scan'208";a="200503296"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 17 Oct 2019 13:45:10 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iLCdx-0001tH-SZ; Fri, 18 Oct 2019 04:45:09 +0800
-Date: Fri, 18 Oct 2019 04:44:30 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5da8d2ae.FXGRIAsEtQdijvEq%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from mail-il1-f177.google.com (mail-il1-f177.google.com
+ [209.85.166.177])
+ by silver.osuosl.org (Postfix) with ESMTPS id 84DA020352
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 20:47:03 +0000 (UTC)
+Received: by mail-il1-f177.google.com with SMTP id t5so3427425ilh.10
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 13:47:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=s8pRsrHj3Ik40xSK8neRTEtg5Uw7d/a7lmUWO0VWl6s=;
+ b=iORF6/cUJbImo4top4uQPxx0isxM4KHA3El1co55TcJTfKzNd7SmwInRm00B5vnnJX
+ XmZmLwhQfxzVH0ZJ/V52bSOoG+2RHynOiBWl8gcBoaYGXTxbOXeJcvVQO9LqLeyITU5K
+ CVFa+Twnzsl2uk6Ji4J6zMDriwEvLPPintOawPoehbyzQgEFP61cjT/76KHbkCQO75uR
+ ujYS1xKqqwlokcRgTkvtQ9oV5nCwGvfWdhUyHgzErdz9Mw66Cc0/RC7TakS1nH48Rd6K
+ WlRAuLd8hNMWHEvlwp8ZAwAtTx3ZBJKkwVVzetWbmGlX4w5YXhzrnWz/M1VK58ctoSCl
+ eZ+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=s8pRsrHj3Ik40xSK8neRTEtg5Uw7d/a7lmUWO0VWl6s=;
+ b=EGqInC9NYDjTzPiiF+PiMvEffwtsHTHmm5XYZrotBjNkiwQWSe5awCulgV+lKNkOEG
+ 1qNQK2vMWSmmJQz/K4bpfBcU/JhmOs1qBkKueWEP1q+6AeNndjU/PWLOF3D5QYGtpNFy
+ aJPStWEU0HD8qwbMtZ29W/6rptzuN5eE/z4CJeRSzKo3nL9ad+E1cvRb3J+voHT/wYgq
+ 3KI9XlMJN9A+IltvIPfo8s32UpmoezjO9UAR+9BAGPbGH/3GChEjsNj4HyAe3Ik2wKNG
+ ZcuvW3yYCmAdIuVnggjCRJXmPza4rq+4MF/RhnR90OZwoNlX92gfQqLzbToXkJh20T3T
+ kmAQ==
+X-Gm-Message-State: APjAAAUctXrRla8t4nAj/r0VjqKBq+P6Fl7K6MvfTgdtBnZFKjRGYP3A
+ 84e0RGeua8w9Q8HwjeF2vYJPiKeW3IoPl1xM7W4=
+X-Google-Smtp-Source: APXvYqywqqIXFPpToctNyqI2ZxHNuoJVy8r97Dxka6jCWQH/RsDrxWDpOCIlRX21pn+bpRZF+gphcJG508Y62QGSM6o=
+X-Received: by 2002:a92:b745:: with SMTP id c5mr5551537ilm.97.1571345222647;
+ Thu, 17 Oct 2019 13:47:02 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- 92f60db982afb18f36f6d65e32c82f1159cb2ffd
+References: <CAMnf+Phw525rfCHVDXz1uWZw4Y=HuyBjnhpqYzjx2dmgpsHMsA@mail.gmail.com>
+In-Reply-To: <CAMnf+Phw525rfCHVDXz1uWZw4Y=HuyBjnhpqYzjx2dmgpsHMsA@mail.gmail.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Thu, 17 Oct 2019 13:46:51 -0700
+Message-ID: <CAKgT0UeDcXSjcXs+V9z+aAkg079Ltt1rEHXxr4Ug-E-GB92=OQ@mail.gmail.com>
+To: JD <jdtxs00@gmail.com>
+Subject: Re: [Intel-wired-lan] VF/SRIOV question
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,162 +79,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 92f60db982afb18f36f6d65e32c82f1159cb2ffd  ice: Introduce ice_base.c
+On Thu, Oct 17, 2019 at 11:06 AM JD <jdtxs00@gmail.com> wrote:
+>
+> Hello,
+>
+> I couldn't find anything in the spec/doc for the Intel 82599 series
+> NIC's regarding performance penalties with a higher number of VF's.
+>
+> Currently I'm using 16 VF's with SR-IOV/QEMU, but the 82599 NIC
+> supports up to 63 VF's. From a driver/NIC perspective, are there any
+> performance considerations or penalties of enabling/using all of the
+> available VF's on a NIC?
+>
+> If there isn't, is this the same case for other models (besides 82599) as well?
+>
+> Thank you!
 
-elapsed time: 143m
+One hardware limitation I am aware of is that as you spread the work
+over more queues, or in this case more VFs you may not be able to
+achieve 64B line rate with small packets. The issue is as you add more
+queues the descriptor fetching becomes more interleaved between the
+queues which will reduce the performance. So instead of being able to
+hit 14.88Mpps you may only see about 10 or 11Mpps. If you are working
+with packets larger than 128B or larger you should see little to no
+impact.
 
-configs tested: 137
+Another limitation I can think of is the number of queues per PF/VF.
+The hardware only has a certain number of queues. For 82599 that
+number is 128. So when you have 31 or fewer VFs you get 4 queues for
+the PF, when you have 32 or more the PF has to drop to 2 queues.
+Depending on your workload this may mean more stress on the CPUs
+handling PF traffic as the number of queues is reduced.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Hope that helps.
 
-x86_64                 randconfig-h002-201941
-x86_64                 randconfig-h001-201941
-i386                   randconfig-h004-201941
-i386                   randconfig-h003-201941
-x86_64                 randconfig-h003-201941
-i386                   randconfig-h002-201941
-i386                   randconfig-h001-201941
-x86_64                 randconfig-h004-201941
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-m68k                          multi_defconfig
-m68k                       m5475evb_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                           sun3_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-i386                   randconfig-f002-201941
-i386                   randconfig-f001-201941
-x86_64                 randconfig-f003-201941
-x86_64                 randconfig-f004-201941
-x86_64                 randconfig-f002-201941
-i386                   randconfig-f003-201941
-x86_64                 randconfig-f001-201941
-i386                   randconfig-f004-201941
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64                 randconfig-g002-201941
-i386                   randconfig-g004-201941
-x86_64                 randconfig-g001-201941
-i386                   randconfig-g002-201941
-x86_64                 randconfig-g004-201941
-x86_64                 randconfig-g003-201941
-i386                   randconfig-g003-201941
-i386                   randconfig-g001-201941
-x86_64                 randconfig-c001-201941
-x86_64                 randconfig-c002-201941
-i386                   randconfig-c001-201941
-i386                   randconfig-c004-201941
-i386                   randconfig-c003-201941
-x86_64                 randconfig-c004-201941
-i386                   randconfig-c002-201941
-x86_64                 randconfig-c003-201941
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-x86_64                 randconfig-b001-201941
-x86_64                 randconfig-b002-201941
-x86_64                 randconfig-b003-201941
-x86_64                 randconfig-b004-201941
-i386                   randconfig-b001-201941
-i386                   randconfig-b002-201941
-i386                   randconfig-b003-201941
-i386                   randconfig-b004-201941
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-x86_64                           allyesconfig
-x86_64                           allmodconfig
-i386                             alldefconfig
-i386                             allmodconfig
-x86_64                 randconfig-d001-201941
-x86_64                 randconfig-d002-201941
-x86_64                 randconfig-d003-201941
-x86_64                 randconfig-d004-201941
-i386                   randconfig-d001-201941
-i386                   randconfig-d002-201941
-i386                   randconfig-d003-201941
-i386                   randconfig-d004-201941
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-i386                              allnoconfig
-i386                                defconfig
-arm                              allmodconfig
-arm                         at91_dt_defconfig
-arm64                               defconfig
-arm                        multi_v5_defconfig
-arm64                            allyesconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allmodconfig
-arm                          exynos_defconfig
-arm                        shmobile_defconfig
-arm                        multi_v7_defconfig
-x86_64                 randconfig-e004-201941
-x86_64                 randconfig-e001-201941
-x86_64                 randconfig-e003-201941
-x86_64                 randconfig-e002-201941
-i386                   randconfig-e003-201941
-i386                   randconfig-e004-201941
-i386                   randconfig-e001-201941
-i386                   randconfig-e002-201941
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+- Alex
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
