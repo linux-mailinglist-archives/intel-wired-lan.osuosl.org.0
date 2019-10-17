@@ -1,54 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36DBFDA22A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2019 01:32:17 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91CCBDA368
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2019 03:49:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id ADEFD8853B;
-	Wed, 16 Oct 2019 23:32:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F0E4820385;
+	Thu, 17 Oct 2019 01:49:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dR1yWobnADSr; Wed, 16 Oct 2019 23:32:15 +0000 (UTC)
+	with ESMTP id Qj6PMvsZq6W0; Thu, 17 Oct 2019 01:49:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2D1FB88525;
-	Wed, 16 Oct 2019 23:32:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5A6A4204F1;
+	Thu, 17 Oct 2019 01:49:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D08961BF5A1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 23:32:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 934061BF97A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 01:49:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B93138786C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 23:32:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8CDE7849B8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 01:49:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZHDRcqV5hTmK for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Oct 2019 23:32:08 +0000 (UTC)
+ with ESMTP id 5QKWgyShAzAY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2019 01:49:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A592B88525
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2019 23:32:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4358D84922
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 01:49:38 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Oct 2019 16:32:07 -0700
+ 16 Oct 2019 18:49:37 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,305,1566889200"; d="scan'208";a="186310801"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga007.jf.intel.com with ESMTP; 16 Oct 2019 16:32:07 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 16 Oct 2019 08:02:01 -0700
-Message-Id: <20191016150201.41597-9-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191016150201.41597-1-anthony.l.nguyen@intel.com>
-References: <20191016150201.41597-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.67,306,1566889200"; d="scan'208";a="225995579"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 16 Oct 2019 18:49:35 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1iKuv1-00055I-5S; Thu, 17 Oct 2019 09:49:35 +0800
+Date: Thu, 17 Oct 2019 09:48:37 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5da7c875.lM0maRq8Ib4pz8TD%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S30 v2 9/9] ice: allow 3k MTU for XDP
+Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
+ 987040a845cd28119188ec44d13643ff60a5c2e5
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,58 +68,131 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
+branch HEAD: 987040a845cd28119188ec44d13643ff60a5c2e5  igc: Clean up unused shadow_vfta pointer
 
-At this point ice driver is able to work on order 1 pages that are split
-onto two 3k buffers. Let's reflect that when user is setting new mtu
-size and XDP is present on interface.
+elapsed time: 120m
 
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+configs tested: 111
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+x86_64                 randconfig-f001-201941
+x86_64                 randconfig-f002-201941
+x86_64                 randconfig-f003-201941
+x86_64                 randconfig-f004-201941
+i386                   randconfig-f001-201941
+i386                   randconfig-f002-201941
+i386                   randconfig-f003-201941
+i386                   randconfig-f004-201941
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                 randconfig-h002-201941
+x86_64                 randconfig-h001-201941
+i386                   randconfig-h004-201941
+i386                   randconfig-h003-201941
+x86_64                 randconfig-h003-201941
+i386                   randconfig-h002-201941
+i386                   randconfig-h001-201941
+x86_64                 randconfig-h004-201941
+x86_64                 randconfig-c001-201941
+x86_64                 randconfig-c002-201941
+i386                   randconfig-c001-201941
+i386                   randconfig-c004-201941
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+x86_64                 randconfig-e004-201941
+x86_64                 randconfig-e001-201941
+x86_64                           allyesconfig
+i386                             allmodconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+x86_64                           allmodconfig
+x86_64                 randconfig-g002-201941
+i386                   randconfig-g004-201941
+x86_64                 randconfig-g001-201941
+i386                   randconfig-g002-201941
+x86_64                 randconfig-g004-201941
+x86_64                 randconfig-g003-201941
+i386                   randconfig-g003-201941
+i386                   randconfig-g001-201941
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 66e3b983d94a..88b5941ecf5c 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4765,6 +4765,18 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	dev_err(dev, "Rebuild failed, unload and reload driver\n");
- }
- 
-+/**
-+ * ice_max_xdp_frame_size - returns the maximum allowed frame size for XDP
-+ * @vsi: Pointer to VSI structure
-+ */
-+static int ice_max_xdp_frame_size(struct ice_vsi *vsi)
-+{
-+	if (PAGE_SIZE >= 8192 || test_bit(ICE_FLAG_LEGACY_RX, vsi->back->flags))
-+		return ICE_RXBUF_2048 - XDP_PACKET_HEADROOM;
-+	else
-+		return ICE_RXBUF_3072;
-+}
-+
- /**
-  * ice_change_mtu - NDO callback to change the MTU
-  * @netdev: network interface device structure
-@@ -4786,11 +4798,11 @@ static int ice_change_mtu(struct net_device *netdev, int new_mtu)
- 	}
- 
- 	if (ice_is_xdp_ena_vsi(vsi)) {
--		int frame_size = ICE_RXBUF_2048 - XDP_PACKET_HEADROOM;
-+		int frame_size = ice_max_xdp_frame_size(vsi);
- 
- 		if (new_mtu + ICE_ETH_PKT_HDR_PAD > frame_size) {
- 			netdev_err(netdev, "max MTU for XDP usage is %d\n",
--				   frame_size);
-+				   frame_size - ICE_ETH_PKT_HDR_PAD);
- 			return -EINVAL;
- 		}
- 	}
--- 
-2.20.1
-
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
