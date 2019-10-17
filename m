@@ -1,69 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 677A8DB57F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2019 20:06:40 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D9D8DB585
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2019 20:07:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 01C8B203EA;
-	Thu, 17 Oct 2019 18:06:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A7F9A86C71;
+	Thu, 17 Oct 2019 18:07:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qy81LMBuVsTc; Thu, 17 Oct 2019 18:06:38 +0000 (UTC)
+	with ESMTP id IkBEM31CZu9Z; Thu, 17 Oct 2019 18:07:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3DCCF20415;
-	Thu, 17 Oct 2019 18:06:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C746386D4C;
+	Thu, 17 Oct 2019 18:07:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 474D21BF3B1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 18:06:35 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D0CFE1BF3B1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 18:07:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4304E20402
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 18:06:35 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B7774885F1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 18:07:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hCZPNFxIDiNk for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Oct 2019 18:06:32 +0000 (UTC)
+ with ESMTP id AaK3jZnvbh3x for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2019 18:07:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-vs1-f50.google.com (mail-vs1-f50.google.com
- [209.85.217.50])
- by silver.osuosl.org (Postfix) with ESMTPS id 2E510203EA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 18:06:32 +0000 (UTC)
-Received: by mail-vs1-f50.google.com with SMTP id s7so2239075vsl.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 11:06:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=4/iLql5ywCzyTzvF79nPPKOAODs+0nFNysNgE5KvDws=;
- b=hE9QcjKoXL56Z05cX9UqBUcZvMYanlz3pMiMJUtkSb13LJH3w7SSnb4h85A/nkwiYF
- DuovDIY4eL0fHhAeLQJtRHg+9fynajcyfwMVxnRH8yIK+UTaUeYxif0qqz0Hy53neM0z
- NafmPhlq+7Zd46c90kmBtqdEwlLZ0qPK4YhWild/04bf/WIthLzes5ynS1b5f2Xswuzd
- QcW4/OLdDg6UFmJhgX2xdapmInOagxR0iZeLdRM42imMobZL2eNm1bByF2NceTHEg82Y
- RANvTfhKHcHvl4JsjXhTrWuxzECmBSSrMneXBed7bbVD8jecZKnrNuDsybz1CtnyYI0B
- RVIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=4/iLql5ywCzyTzvF79nPPKOAODs+0nFNysNgE5KvDws=;
- b=AbMZDecUX4Cf5BEHhCrqPXykfuvwpCmTU2Ql33CQrCsVb8vJMNIw9EvBIjcdKeRd4k
- wG7tJ/Vs93MpTnbHLCADDw6wJ+5QBYYFWgDarZHWwPYWy7+bA/vGIoOcDEGGY+OoJsZo
- tzJGvRb77sEpF+Zde7b0WHXaJSa9O05LbGa8/iJb9lJTo7cKgEGDlpJm3z+c69VPYJDv
- biyYhyNs1EGLjCw1zNOY1kZBL2GoMwonFXr0FY/vyS6fKoXlfAR8DLfWO1T985aNBrvg
- Gavdj9atrQjU1Le05rskYIAlbonuqgRvdDTSI2KSTDaJkTVPryOhRb79ERBjgN12RLb0
- 2jSg==
-X-Gm-Message-State: APjAAAWhyLiospIAKrShMLYJaTnOARYHRtybjNrf/ALN0OnXz9VrniRJ
- hqCpxtV4+rpK1xxaPhN3JVgKtMRqv1o3H8C5o61WD70isII=
-X-Google-Smtp-Source: APXvYqwpeIKWR9m2r814rghoutOREHYLg9Aqo9d3xamG5BQ3qLC+3igBwTt1e8984QtT0awrqF7UiYhGtRLk7NmaTjw=
-X-Received: by 2002:a67:d890:: with SMTP id f16mr2865659vsj.119.1571335590910; 
- Thu, 17 Oct 2019 11:06:30 -0700 (PDT)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CCD4F885EC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2019 18:07:46 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Oct 2019 11:07:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.67,308,1566889200"; d="scan'208";a="221468215"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 17 Oct 2019 11:07:44 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1iLABc-000EBm-BG; Fri, 18 Oct 2019 02:07:44 +0800
+Date: Fri, 18 Oct 2019 02:06:44 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5da8adb4.iSV1Ns6oZDrgCOgd%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-From: JD <jdtxs00@gmail.com>
-Date: Thu, 17 Oct 2019 13:06:20 -0500
-Message-ID: <CAMnf+Phw525rfCHVDXz1uWZw4Y=HuyBjnhpqYzjx2dmgpsHMsA@mail.gmail.com>
-To: intel-wired-lan@lists.osuosl.org
-Subject: [Intel-wired-lan] VF/SRIOV question
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
+ e31c32a05a0f894228f28db77880c62be4453fff
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,19 +68,196 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: e31c32a05a0f894228f28db77880c62be4453fff  ice: Fix return value when SR-IOV is not supported
 
-I couldn't find anything in the spec/doc for the Intel 82599 series
-NIC's regarding performance penalties with a higher number of VF's.
+Regressions in current branch:
 
-Currently I'm using 16 VF's with SR-IOV/QEMU, but the 82599 NIC
-supports up to 63 VF's. From a driver/NIC perspective, are there any
-performance considerations or penalties of enabling/using all of the
-available VF's on a NIC?
+drivers/net/ethernet/intel/ice/ice_txrx.c:1667:5: error: implicit declaration of function 'ice_build_ctob'; did you mean 'ice_build_skb'? [-Werror=implicit-function-declaration]
+drivers/net/ethernet/intel/ice/ice_txrx_lib.c:218:33: error: implicit declaration of function 'ice_build_ctob'; did you mean '__build_skb'? [-Werror=implicit-function-declaration]
+drivers/net/ethernet/intel/ice/ice_xsk.c:980:4: error: implicit declaration of function 'ice_build_ctob'; did you mean 'ice_bump_ntc'? [-Werror=implicit-function-declaration]
 
-If there isn't, is this the same case for other models (besides 82599) as well?
+Error ids grouped by kconfigs:
 
-Thank you!
+recent_errors
+|-- alpha-allmodconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+|-- alpha-allyesconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+|-- ia64-allmodconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+|-- ia64-allyesconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+|-- sparc-allmodconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+|-- sparc-allyesconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+|-- sparc64-allmodconfig
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+|   |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+|   `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+`-- sparc64-allyesconfig
+    |-- drivers-net-ethernet-intel-ice-ice_txrx.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_build_skb
+    |-- drivers-net-ethernet-intel-ice-ice_txrx_lib.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-__build_skb
+    `-- drivers-net-ethernet-intel-ice-ice_xsk.c:error:implicit-declaration-of-function-ice_build_ctob-did-you-mean-ice_bump_ntc
+
+elapsed time: 157m
+
+configs tested: 137
+
+x86_64                 randconfig-f001-201941
+x86_64                 randconfig-f002-201941
+x86_64                 randconfig-f003-201941
+x86_64                 randconfig-f004-201941
+i386                   randconfig-f001-201941
+i386                   randconfig-f002-201941
+i386                   randconfig-f003-201941
+i386                   randconfig-f004-201941
+x86_64                           allyesconfig
+x86_64                           allmodconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                 randconfig-b001-201941
+x86_64                 randconfig-b002-201941
+x86_64                 randconfig-b003-201941
+x86_64                 randconfig-b004-201941
+i386                   randconfig-b001-201941
+i386                   randconfig-b002-201941
+i386                   randconfig-b003-201941
+i386                   randconfig-b004-201941
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+x86_64                 randconfig-d001-201941
+x86_64                 randconfig-d002-201941
+x86_64                 randconfig-d003-201941
+x86_64                 randconfig-d004-201941
+i386                   randconfig-d001-201941
+i386                   randconfig-d002-201941
+i386                   randconfig-d003-201941
+i386                   randconfig-d004-201941
+x86_64                 randconfig-c001-201941
+x86_64                 randconfig-c002-201941
+i386                   randconfig-c001-201941
+i386                   randconfig-c004-201941
+i386                   randconfig-c003-201941
+x86_64                 randconfig-c004-201941
+i386                   randconfig-c002-201941
+x86_64                 randconfig-c003-201941
+i386                             allmodconfig
+x86_64                 randconfig-h002-201941
+x86_64                 randconfig-h001-201941
+i386                   randconfig-h004-201941
+i386                   randconfig-h003-201941
+x86_64                 randconfig-h003-201941
+i386                   randconfig-h002-201941
+i386                   randconfig-h001-201941
+x86_64                 randconfig-h004-201941
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+x86_64                 randconfig-g002-201941
+i386                   randconfig-g004-201941
+x86_64                 randconfig-g001-201941
+i386                   randconfig-g002-201941
+x86_64                 randconfig-g004-201941
+x86_64                 randconfig-g003-201941
+i386                   randconfig-g003-201941
+i386                   randconfig-g001-201941
+x86_64                 randconfig-e004-201941
+x86_64                 randconfig-e001-201941
+x86_64                 randconfig-e003-201941
+x86_64                 randconfig-e002-201941
+i386                   randconfig-e003-201941
+i386                   randconfig-e004-201941
+i386                   randconfig-e001-201941
+i386                   randconfig-e002-201941
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
