@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8848DDD0CE
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Oct 2019 23:03:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 414E486DF0;
-	Fri, 18 Oct 2019 21:03:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GVxJFOga-4ax; Fri, 18 Oct 2019 21:03:43 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 52D8086BBB;
-	Fri, 18 Oct 2019 21:03:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 218A41BF5F6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 21:03:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F20FADD54F
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Oct 2019 01:26:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 16A018794A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 21:03:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3E566878F1;
+	Fri, 18 Oct 2019 23:26:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id w32UeyiVyC0B; Fri, 18 Oct 2019 23:26:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id E6AFD878A4;
+	Fri, 18 Oct 2019 23:26:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DE4D01BF310
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 23:26:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id D1256203FC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 23:26:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iLGgqFlKw26M for <intel-wired-lan@lists.osuosl.org>;
- Fri, 18 Oct 2019 21:03:39 +0000 (UTC)
+ with ESMTP id lSjxLjYVU20i for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Oct 2019 23:26:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B1AE387814
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 21:03:39 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E3792033E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 23:26:42 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2019 14:03:39 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Oct 2019 16:26:42 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,313,1566889200"; d="scan'208";a="348200322"
+X-IronPort-AV: E=Sophos;i="5.67,313,1566889200"; d="scan'208";a="195600931"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 18 Oct 2019 14:03:37 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 18 Oct 2019 16:26:41 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iLZPN-0006TW-4x; Sat, 19 Oct 2019 05:03:37 +0800
-Date: Sat, 19 Oct 2019 05:03:35 +0800
+ id 1iLbdo-0000mI-ID; Sat, 19 Oct 2019 07:26:40 +0800
+Date: Sat, 19 Oct 2019 07:25:47 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5daa28a7.lyqh/W5l1qozzYwm%lkp@intel.com>
+Message-ID: <5daa49fb.++nmD7TQH+Khvbdu%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- a5dc1f5d51661d55f665d3de65378de8db295b27
+Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
+ c0ef4facf4d15fe5578019352851ccef8fa0db74
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,106 +68,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: a5dc1f5d51661d55f665d3de65378de8db295b27  e1000e: Add support for Tiger Lake
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
+branch HEAD: c0ef4facf4d15fe5578019352851ccef8fa0db74  igc: Clean up unused shadow_vfta pointer
 
-elapsed time: 190m
+elapsed time: 130m
 
-configs tested: 137
+configs tested: 133
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
-x86_64                 randconfig-f001-201941
-x86_64                 randconfig-f002-201941
-x86_64                 randconfig-f003-201941
-x86_64                 randconfig-f004-201941
-i386                   randconfig-f001-201941
-i386                   randconfig-f002-201941
-i386                   randconfig-f003-201941
-i386                   randconfig-f004-201941
-x86_64                 randconfig-h002-201941
-x86_64                 randconfig-h001-201941
-i386                   randconfig-h004-201941
-i386                   randconfig-h003-201941
-x86_64                 randconfig-h003-201941
-i386                   randconfig-h002-201941
-i386                   randconfig-h001-201941
-x86_64                 randconfig-h004-201941
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-arm                              allmodconfig
-arm64                            allmodconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-x86_64                           allyesconfig
-i386                             allmodconfig
-x86_64                 randconfig-c001-201941
-x86_64                 randconfig-c002-201941
-i386                   randconfig-c001-201941
-i386                   randconfig-c004-201941
-i386                   randconfig-c003-201941
-x86_64                 randconfig-c004-201941
-i386                   randconfig-c002-201941
-x86_64                 randconfig-c003-201941
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64                 randconfig-g001-201941
-x86_64                 randconfig-g002-201941
-x86_64                 randconfig-g003-201941
-x86_64                 randconfig-g004-201941
-i386                   randconfig-g001-201941
-i386                   randconfig-g002-201941
-i386                   randconfig-g003-201941
-i386                   randconfig-g004-201941
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-i386                   randconfig-b001-201941
-x86_64                 randconfig-b002-201941
-x86_64                 randconfig-b003-201941
-i386                   randconfig-b003-201941
-i386                   randconfig-b004-201941
-x86_64                 randconfig-b004-201941
-x86_64                 randconfig-b001-201941
-i386                   randconfig-b002-201941
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
-x86_64                 randconfig-e001-201941
-x86_64                 randconfig-e002-201941
-x86_64                 randconfig-e003-201941
-x86_64                 randconfig-e004-201941
-i386                   randconfig-e001-201941
-i386                   randconfig-e002-201941
-i386                   randconfig-e003-201941
-i386                   randconfig-e004-201941
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
 c6x                              allyesconfig
 c6x                        evmc6678_defconfig
 nios2                         10m50_defconfig
@@ -176,14 +89,6 @@ openrisc                    or1ksim_defconfig
 openrisc                 simple_smp_defconfig
 xtensa                       common_defconfig
 xtensa                          iss_defconfig
-i386                   randconfig-d002-201941
-x86_64                 randconfig-d002-201941
-x86_64                 randconfig-d004-201941
-i386                   randconfig-d004-201941
-x86_64                 randconfig-d003-201941
-i386                   randconfig-d003-201941
-x86_64                 randconfig-d001-201941
-i386                   randconfig-d001-201941
 h8300                     edosk2674_defconfig
 h8300                    h8300h-sim_defconfig
 h8300                       h8s-sim_defconfig
@@ -191,7 +96,7 @@ m68k                             allmodconfig
 m68k                       m5475evb_defconfig
 m68k                          multi_defconfig
 m68k                           sun3_defconfig
-x86_64                           allmodconfig
+arm                              allmodconfig
 arm                               allnoconfig
 arm                         at91_dt_defconfig
 arm                           efm32_defconfig
@@ -200,21 +105,112 @@ arm                        multi_v5_defconfig
 arm                        multi_v7_defconfig
 arm                        shmobile_defconfig
 arm                           sunxi_defconfig
+arm64                            allmodconfig
 arm64                             allnoconfig
 arm64                            allyesconfig
 arm64                               defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
 ia64                             alldefconfig
 ia64                             allmodconfig
 ia64                              allnoconfig
 ia64                                defconfig
+x86_64                 randconfig-c001-201941
+x86_64                 randconfig-c002-201941
+i386                   randconfig-c001-201941
+i386                   randconfig-c004-201941
+i386                   randconfig-c003-201941
+x86_64                 randconfig-c004-201941
+i386                   randconfig-c002-201941
+x86_64                 randconfig-c003-201941
+i386                   randconfig-f002-201941
+i386                   randconfig-f001-201941
+x86_64                 randconfig-f003-201941
+x86_64                 randconfig-f004-201941
+x86_64                 randconfig-f002-201941
+i386                   randconfig-f003-201941
+x86_64                 randconfig-f001-201941
+i386                   randconfig-f004-201941
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                 randconfig-e004-201941
+x86_64                 randconfig-e001-201941
+x86_64                 randconfig-e003-201941
+x86_64                 randconfig-e002-201941
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+x86_64                 randconfig-g002-201941
+i386                   randconfig-g004-201941
+x86_64                 randconfig-g001-201941
+i386                   randconfig-g002-201941
+x86_64                 randconfig-g004-201941
+x86_64                 randconfig-g003-201941
+i386                   randconfig-g003-201941
+i386                   randconfig-g001-201941
+i386                   randconfig-b001-201941
+x86_64                 randconfig-b002-201941
+x86_64                 randconfig-b003-201941
+i386                   randconfig-b003-201941
+i386                   randconfig-b004-201941
+x86_64                 randconfig-b004-201941
+x86_64                 randconfig-b001-201941
+i386                   randconfig-b002-201941
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+x86_64                           allyesconfig
+x86_64                           allmodconfig
+i386                             alldefconfig
+i386                             allmodconfig
+i386                   randconfig-d002-201941
+x86_64                 randconfig-d002-201941
+x86_64                 randconfig-d004-201941
+i386                   randconfig-d004-201941
+x86_64                 randconfig-d003-201941
+i386                   randconfig-d003-201941
+x86_64                 randconfig-d001-201941
+i386                   randconfig-d001-201941
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+x86_64                 randconfig-h002-201941
+x86_64                 randconfig-h001-201941
+i386                   randconfig-h004-201941
+i386                   randconfig-h003-201941
+x86_64                 randconfig-h003-201941
+i386                   randconfig-h002-201941
+i386                   randconfig-h001-201941
+x86_64                 randconfig-h004-201941
 sh                               allmodconfig
 sh                                allnoconfig
 sh                          rsk7269_defconfig
 sh                  sh7785lcr_32bit_defconfig
 sh                            titan_defconfig
+i386                              allnoconfig
+i386                                defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
