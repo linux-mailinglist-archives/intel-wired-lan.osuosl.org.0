@@ -1,73 +1,48 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5988EDD5B5
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Oct 2019 02:15:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7858F21505;
-	Sat, 19 Oct 2019 00:14:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WlmJ2lpbxOBA; Sat, 19 Oct 2019 00:14:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BC223214E6;
-	Sat, 19 Oct 2019 00:14:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7B2391BF9D2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Oct 2019 00:14:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DF10DD5D1
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Oct 2019 02:45:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7727588794
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Oct 2019 00:14:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0747F887BB;
+	Sat, 19 Oct 2019 00:45:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XiSAbCopb8lM; Sat, 19 Oct 2019 00:45:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9B1F1887B0;
+	Sat, 19 Oct 2019 00:45:32 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BBECC1BF9D2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Oct 2019 00:45:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id B318C87605
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Oct 2019 00:45:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5zsFi7o+ziJw for <intel-wired-lan@lists.osuosl.org>;
- Sat, 19 Oct 2019 00:14:54 +0000 (UTC)
+ with ESMTP id 6HutyRqGSkQW for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 19 Oct 2019 00:45:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D1BD388686
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Oct 2019 00:14:54 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id t3so4202795pga.8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Oct 2019 17:14:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=2p0wvcmy8kPh5h8Q4FHfhvyG+WG0R8zknv0uy5+Q2r8=;
- b=ldTrboT/pTXBFXpp1ihZqV1gJl0NM4BFvcLhy07GTaRLieiACpvUJDQxIvLCTCnHz9
- FLiEXBh8SKxCs17NK1AZm+95rfYJjh9yUGTfwHhvy9/Fz9GtsiDjdSJLgE8514BjXKto
- GunwN62rCDi9XmW6B5a5DtKvh4TabE8KRi4neX0yKriklvvEriqehTQN/wpA5w2RVDQ+
- HSSXa5IOTxJWtaoKeE802g6ZNFCL+W61/ienz0mC8LDuPt1ONkYttXMoC9ubamo3y1Dm
- cvljG+yjZkiiXhwpQMkcx8BE2mtBm0UbEzV7N2bN3QApQdK9fjsngG/p1Ue9vEmPJldQ
- fmgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=2p0wvcmy8kPh5h8Q4FHfhvyG+WG0R8zknv0uy5+Q2r8=;
- b=EBz6MptuL54vGSteunw1GBCT6OfdWZW/kyGCkpzpz6RbNzwyLu1iy9bUNgjPK4ejrq
- dJN8i6bLkiwDJK6ACjcvkW/ll1ZRFSHtPlDEVrwVfHUdCd7Xm3ae8kkvhSeGEB84qpJq
- WwXeFPmh+Ilg3se4a5aFni+zEIXNWGOPQXB5JIosU5qFlEPQHOsHf80WvhuMBrvcx+Km
- 6K/nPSW+kWBF+S4AwktsxH2DUVYGgw15AqqaOlR0la0DD9fCEvSIZk7OfwUuUUFiowGC
- Gi6d7L3g0sEGrLEY/5i0/+HTy0etdIx3EGgnLFgA0FjCnZAxZUNosM2vNxcqPyCHh1Rs
- 9ARg==
-X-Gm-Message-State: APjAAAXkioQCg1cFAYaUp8HM6UzXEW52+aHwd6gLrAKrUacV66gxEF1S
- fr8ZRNJke6JbqNXn1v6nvgo=
-X-Google-Smtp-Source: APXvYqyP/tO+DnGtqdFz3JMfzJ86denwfNQF8BBxtUpp1ADePXxfLuSCv+kPlD8NjS11vD3oc9ZhyQ==
-X-Received: by 2002:a63:1b41:: with SMTP id b1mr12987185pgm.335.1571444094225; 
- Fri, 18 Oct 2019 17:14:54 -0700 (PDT)
-Received: from ast-mbp ([2620:10d:c090:180::6038])
- by smtp.gmail.com with ESMTPSA id l22sm6484749pgj.4.2019.10.18.17.14.52
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 18 Oct 2019 17:14:53 -0700 (PDT)
-Date: Fri, 18 Oct 2019 17:14:51 -0700
-From: Alexei Starovoitov <alexei.starovoitov@gmail.com>
-To: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
-Message-ID: <20191019001449.fk3gnhih4nx724pm@ast-mbp>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6C81B875E9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Oct 2019 00:45:28 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Oct 2019 17:45:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.67,313,1566889200"; d="scan'208";a="209024251"
+Received: from samudral-mobl1.amr.corp.intel.com (HELO [10.241.228.71])
+ ([10.241.228.71])
+ by fmsmga001.fm.intel.com with ESMTP; 18 Oct 2019 17:45:26 -0700
+To: Alexei Starovoitov <alexei.starovoitov@gmail.com>,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>
 References: <1570515415-45593-1-git-send-email-sridhar.samudrala@intel.com>
  <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
  <CAADnVQ+XxmvY0cs8MYriMMd7=2TSEm4zCtB+fs2vkwdUY6UgAQ@mail.gmail.com>
@@ -77,10 +52,15 @@ References: <1570515415-45593-1-git-send-email-sridhar.samudrala@intel.com>
  <2032d58c-916f-d26a-db14-bd5ba6ad92b9@intel.com>
  <CAADnVQ+CH1YM52+LfybLS+NK16414Exrvk1QpYOF=HaT4KRaxg@mail.gmail.com>
  <acf69635-5868-f876-f7da-08954d1f690e@intel.com>
+ <20191019001449.fk3gnhih4nx724pm@ast-mbp>
+From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
+Message-ID: <6f281517-3785-ce46-65de-e2f78576783b@intel.com>
+Date: Fri, 18 Oct 2019 17:45:26 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <acf69635-5868-f876-f7da-08954d1f690e@intel.com>
-User-Agent: NeoMutt/20180223
+In-Reply-To: <20191019001449.fk3gnhih4nx724pm@ast-mbp>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] FW: [PATCH bpf-next 2/4] xsk: allow AF_XDP
  sockets to receive packets directly from a queue
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -101,96 +81,127 @@ Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
  Tom" <tom.herbert@intel.com>, "Fijalkowski,
  Maciej" <maciej.fijalkowski@intel.com>,
  "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
  Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Oct 18, 2019 at 11:40:07AM -0700, Samudrala, Sridhar wrote:
+On 10/18/2019 5:14 PM, Alexei Starovoitov wrote:
+> On Fri, Oct 18, 2019 at 11:40:07AM -0700, Samudrala, Sridhar wrote:
+>>
+>> Perf report for "AF_XDP default rxdrop" with patched kernel - mitigations ON
+>> ==========================================================================
+>> Samples: 44K of event 'cycles', Event count (approx.): 38532389541
+>> Overhead  Command          Shared Object              Symbol
+>>    15.31%  ksoftirqd/28     [i40e]                     [k] i40e_clean_rx_irq_zc
+>>    10.50%  ksoftirqd/28     bpf_prog_80b55d8a76303785  [k] bpf_prog_80b55d8a76303785
+>>     9.48%  xdpsock          [i40e]                     [k] i40e_clean_rx_irq_zc
+>>     8.62%  xdpsock          xdpsock                    [.] main
+>>     7.11%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_rcv
+>>     5.81%  ksoftirqd/28     [kernel.vmlinux]           [k] xdp_do_redirect
+>>     4.46%  xdpsock          bpf_prog_80b55d8a76303785  [k] bpf_prog_80b55d8a76303785
+>>     3.83%  xdpsock          [kernel.vmlinux]           [k] xsk_rcv
 > 
-> Perf report for "AF_XDP default rxdrop" with patched kernel - mitigations ON
-> ==========================================================================
-> Samples: 44K of event 'cycles', Event count (approx.): 38532389541
-> Overhead  Command          Shared Object              Symbol
->   15.31%  ksoftirqd/28     [i40e]                     [k] i40e_clean_rx_irq_zc
->   10.50%  ksoftirqd/28     bpf_prog_80b55d8a76303785  [k] bpf_prog_80b55d8a76303785
->    9.48%  xdpsock          [i40e]                     [k] i40e_clean_rx_irq_zc
->    8.62%  xdpsock          xdpsock                    [.] main
->    7.11%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_rcv
->    5.81%  ksoftirqd/28     [kernel.vmlinux]           [k] xdp_do_redirect
->    4.46%  xdpsock          bpf_prog_80b55d8a76303785  [k] bpf_prog_80b55d8a76303785
->    3.83%  xdpsock          [kernel.vmlinux]           [k] xsk_rcv
+> why everything is duplicated?
+> Same code runs in different tasks ?
 
-why everything is duplicated?
-Same code runs in different tasks ?
+Yes. looks like these functions run from both the app(xdpsock) context and ksoftirqd context.
 
->    2.81%  ksoftirqd/28     [kernel.vmlinux]           [k] bpf_xdp_redirect_map
->    2.78%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_map_lookup_elem
->    2.44%  xdpsock          [kernel.vmlinux]           [k] xdp_do_redirect
->    2.19%  ksoftirqd/28     [kernel.vmlinux]           [k] __xsk_map_redirect
->    1.62%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_umem_peek_addr
->    1.57%  xdpsock          [kernel.vmlinux]           [k] xsk_umem_peek_addr
->    1.32%  ksoftirqd/28     [kernel.vmlinux]           [k] dma_direct_sync_single_for_cpu
->    1.28%  xdpsock          [kernel.vmlinux]           [k] bpf_xdp_redirect_map
->    1.15%  xdpsock          [kernel.vmlinux]           [k] dma_direct_sync_single_for_device
->    1.12%  xdpsock          [kernel.vmlinux]           [k] xsk_map_lookup_elem
->    1.06%  xdpsock          [kernel.vmlinux]           [k] __xsk_map_redirect
->    0.94%  ksoftirqd/28     [kernel.vmlinux]           [k] dma_direct_sync_single_for_device
->    0.75%  ksoftirqd/28     [kernel.vmlinux]           [k] __x86_indirect_thunk_rax
->    0.66%  ksoftirqd/28     [i40e]                     [k] i40e_clean_programming_status
->    0.64%  ksoftirqd/28     [kernel.vmlinux]           [k] net_rx_action
->    0.64%  swapper          [kernel.vmlinux]           [k] intel_idle
->    0.62%  ksoftirqd/28     [i40e]                     [k] i40e_napi_poll
->    0.57%  xdpsock          [kernel.vmlinux]           [k] dma_direct_sync_single_for_cpu
 > 
-> Perf report for "AF_XDP direct rxdrop" with patched kernel - mitigations ON
-> ==========================================================================
-> Samples: 46K of event 'cycles', Event count (approx.): 38387018585
-> Overhead  Command          Shared Object             Symbol
->   21.94%  ksoftirqd/28     [i40e]                    [k] i40e_clean_rx_irq_zc
->   14.36%  xdpsock          xdpsock                   [.] main
->   11.53%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_rcv
->   11.32%  xdpsock          [i40e]                    [k] i40e_clean_rx_irq_zc
->    4.02%  xdpsock          [kernel.vmlinux]          [k] xsk_rcv
->    2.91%  ksoftirqd/28     [kernel.vmlinux]          [k] xdp_do_redirect
->    2.45%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_umem_peek_addr
->    2.19%  xdpsock          [kernel.vmlinux]          [k] xsk_umem_peek_addr
->    2.08%  ksoftirqd/28     [kernel.vmlinux]          [k] bpf_direct_xsk
->    2.07%  ksoftirqd/28     [kernel.vmlinux]          [k] dma_direct_sync_single_for_cpu
->    1.53%  ksoftirqd/28     [kernel.vmlinux]          [k] dma_direct_sync_single_for_device
->    1.39%  xdpsock          [kernel.vmlinux]          [k] dma_direct_sync_single_for_device
->    1.22%  ksoftirqd/28     [kernel.vmlinux]          [k] xdp_get_xsk_from_qid
->    1.12%  ksoftirqd/28     [i40e]                    [k] i40e_clean_programming_status
->    0.96%  ksoftirqd/28     [i40e]                    [k] i40e_napi_poll
->    0.95%  ksoftirqd/28     [kernel.vmlinux]          [k] net_rx_action
->    0.89%  xdpsock          [kernel.vmlinux]          [k] xdp_do_redirect
->    0.83%  swapper          [i40e]                    [k] i40e_clean_rx_irq_zc
->    0.70%  swapper          [kernel.vmlinux]          [k] intel_idle
->    0.66%  xdpsock          [kernel.vmlinux]          [k] dma_direct_sync_single_for_cpu
->    0.60%  xdpsock          [kernel.vmlinux]          [k] bpf_direct_xsk
->    0.50%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_umem_discard_addr
+>>     2.81%  ksoftirqd/28     [kernel.vmlinux]           [k] bpf_xdp_redirect_map
+>>     2.78%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_map_lookup_elem
+>>     2.44%  xdpsock          [kernel.vmlinux]           [k] xdp_do_redirect
+>>     2.19%  ksoftirqd/28     [kernel.vmlinux]           [k] __xsk_map_redirect
+>>     1.62%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_umem_peek_addr
+>>     1.57%  xdpsock          [kernel.vmlinux]           [k] xsk_umem_peek_addr
+>>     1.32%  ksoftirqd/28     [kernel.vmlinux]           [k] dma_direct_sync_single_for_cpu
+>>     1.28%  xdpsock          [kernel.vmlinux]           [k] bpf_xdp_redirect_map
+>>     1.15%  xdpsock          [kernel.vmlinux]           [k] dma_direct_sync_single_for_device
+>>     1.12%  xdpsock          [kernel.vmlinux]           [k] xsk_map_lookup_elem
+>>     1.06%  xdpsock          [kernel.vmlinux]           [k] __xsk_map_redirect
+>>     0.94%  ksoftirqd/28     [kernel.vmlinux]           [k] dma_direct_sync_single_for_device
+>>     0.75%  ksoftirqd/28     [kernel.vmlinux]           [k] __x86_indirect_thunk_rax
+>>     0.66%  ksoftirqd/28     [i40e]                     [k] i40e_clean_programming_status
+>>     0.64%  ksoftirqd/28     [kernel.vmlinux]           [k] net_rx_action
+>>     0.64%  swapper          [kernel.vmlinux]           [k] intel_idle
+>>     0.62%  ksoftirqd/28     [i40e]                     [k] i40e_napi_poll
+>>     0.57%  xdpsock          [kernel.vmlinux]           [k] dma_direct_sync_single_for_cpu
+>>
+>> Perf report for "AF_XDP direct rxdrop" with patched kernel - mitigations ON
+>> ==========================================================================
+>> Samples: 46K of event 'cycles', Event count (approx.): 38387018585
+>> Overhead  Command          Shared Object             Symbol
+>>    21.94%  ksoftirqd/28     [i40e]                    [k] i40e_clean_rx_irq_zc
+>>    14.36%  xdpsock          xdpsock                   [.] main
+>>    11.53%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_rcv
+>>    11.32%  xdpsock          [i40e]                    [k] i40e_clean_rx_irq_zc
+>>     4.02%  xdpsock          [kernel.vmlinux]          [k] xsk_rcv
+>>     2.91%  ksoftirqd/28     [kernel.vmlinux]          [k] xdp_do_redirect
+>>     2.45%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_umem_peek_addr
+>>     2.19%  xdpsock          [kernel.vmlinux]          [k] xsk_umem_peek_addr
+>>     2.08%  ksoftirqd/28     [kernel.vmlinux]          [k] bpf_direct_xsk
+>>     2.07%  ksoftirqd/28     [kernel.vmlinux]          [k] dma_direct_sync_single_for_cpu
+>>     1.53%  ksoftirqd/28     [kernel.vmlinux]          [k] dma_direct_sync_single_for_device
+>>     1.39%  xdpsock          [kernel.vmlinux]          [k] dma_direct_sync_single_for_device
+>>     1.22%  ksoftirqd/28     [kernel.vmlinux]          [k] xdp_get_xsk_from_qid
+>>     1.12%  ksoftirqd/28     [i40e]                    [k] i40e_clean_programming_status
+>>     0.96%  ksoftirqd/28     [i40e]                    [k] i40e_napi_poll
+>>     0.95%  ksoftirqd/28     [kernel.vmlinux]          [k] net_rx_action
+>>     0.89%  xdpsock          [kernel.vmlinux]          [k] xdp_do_redirect
+>>     0.83%  swapper          [i40e]                    [k] i40e_clean_rx_irq_zc
+>>     0.70%  swapper          [kernel.vmlinux]          [k] intel_idle
+>>     0.66%  xdpsock          [kernel.vmlinux]          [k] dma_direct_sync_single_for_cpu
+>>     0.60%  xdpsock          [kernel.vmlinux]          [k] bpf_direct_xsk
+>>     0.50%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_umem_discard_addr
+>>
+>> Based on the perf reports comparing AF_XDP default and direct rxdrop, we can say that
+>> AF_XDP direct rxdrop codepath is avoiding the overhead of going through these functions
+>> 	bpf_prog_xxx
+>>          bpf_xdp_redirect_map
+>> 	xsk_map_lookup_elem
+>>          __xsk_map_redirect
+>> With AF_XDP direct, xsk_rcv() is directly called via bpf_direct_xsk() in xdp_do_redirect()
 > 
-> Based on the perf reports comparing AF_XDP default and direct rxdrop, we can say that
-> AF_XDP direct rxdrop codepath is avoiding the overhead of going through these functions
-> 	bpf_prog_xxx
->         bpf_xdp_redirect_map
-> 	xsk_map_lookup_elem
->         __xsk_map_redirect
-> With AF_XDP direct, xsk_rcv() is directly called via bpf_direct_xsk() in xdp_do_redirect()
+> I don't think you're identifying the overhead correctly.
+> xsk_map_lookup_elem is 1%
+> but bpf_xdp_redirect_map() suppose to call __xsk_map_lookup_elem()
+> which is a different function:
+> ffffffff81493fe0 T __xsk_map_lookup_elem
+> ffffffff81492e80 t xsk_map_lookup_elem
+> 
+> 10% for bpf_prog_80b55d8a76303785 is huge.
+> It's the actual code of the program _without_ any helpers.
+> How does the program actually look?
 
-I don't think you're identifying the overhead correctly.
-xsk_map_lookup_elem is 1%
-but bpf_xdp_redirect_map() suppose to call __xsk_map_lookup_elem()
-which is a different function:
-ffffffff81493fe0 T __xsk_map_lookup_elem
-ffffffff81492e80 t xsk_map_lookup_elem
+It is the xdp program that is loaded via xsk_load_xdp_prog() in tools/lib/bpf/xsk.c
+https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf/xsk.c#n268
 
-10% for bpf_prog_80b55d8a76303785 is huge.
-It's the actual code of the program _without_ any helpers.
-How does the program actually look?
+In the archives, i see that Toke had some comments, but somehow i didn't get his email in
+my inbox.
 
+> Performance Results
+> ===================
+> Only 1 core is used in all these testcases as the app and the queue irq are pinned to the same core.
+>
+> ----------------------------------------------------------------------------------
+>                                 mitigations ON                mitigations OFF
+>    Testcase              ----------------------------------------------------------
+>                          no patches    with patches       no patches   with patches
+> ----------------------------------------------------------------------------------
+> AF_XDP default rxdrop        X             X                   Y            Y
+
+> Is this really exactly the same with and without patches? You're adding
+> an extra check to xdp_do_redirect(); are you really saying that the
+> impact of that is zero?
+
+Yes. I didn't see any impact. The variation is within +/- < 1%
+I could use static_key even for that check in xdp_do_redirect() if required.
+
+-Sridhar
+
+  
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
