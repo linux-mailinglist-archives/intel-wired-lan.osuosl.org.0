@@ -1,81 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E1E3DDE0E
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Oct 2019 12:15:03 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7728ADDFAC
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Oct 2019 19:12:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B51AC8669A;
-	Sun, 20 Oct 2019 10:15:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BEF8F20490;
+	Sun, 20 Oct 2019 17:12:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uoaqC5qjgdES; Sun, 20 Oct 2019 10:15:01 +0000 (UTC)
+	with ESMTP id RdhHV2y4ewNg; Sun, 20 Oct 2019 17:12:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0173B860F9;
-	Sun, 20 Oct 2019 10:15:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 04BDE2044C;
+	Sun, 20 Oct 2019 17:12:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9D4881BF4D8
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 10:14:58 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 88AEC1BF3ED
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 17:12:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9905D8721E
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 10:14:58 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8097885CCF
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 17:12:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SOFCB9Xif6cr for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Oct 2019 10:14:57 +0000 (UTC)
+ with ESMTP id KwltJtxb0lGj for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 20 Oct 2019 17:12:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [207.211.31.81])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4FD8F86FF8
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 10:14:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1571566496;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rBMRx7VKl+U03kBuVO96Nk+z6cMJJlJhVPE1Ji9EtVo=;
- b=I5UDidrZ0LlPj0zGbFNn5xF+JKb+ZV1anFP/E/opzYU/iQgs9B6HFkUyk//A1ynTrty50C
- t/pul5xdQ42UKZ4qAwfph3dTIKaoLdMEWpvpCzTDOwrB9ccdBaiuX+DfkAy1tD3LP646Up
- p/cmbDLFE5ycnmcZ+yA9FFL6azduBr0=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-71-aGXS7PKQP8ekE8bAvyERHg-1; Sun, 20 Oct 2019 06:14:53 -0400
-Received: by mail-lj1-f198.google.com with SMTP id g88so1935223lje.10
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 03:14:53 -0700 (PDT)
+Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
+ [209.85.222.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7BA6885CC3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 17:12:13 +0000 (UTC)
+Received: by mail-qk1-f193.google.com with SMTP id y189so10135453qkc.3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 10:12:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=2Ecj+ZeIjMcfOAEbWP79WcTG1YfBKfhdkoV2tlBJo1E=;
+ b=KTozHMaa+35EIR5XwvZMw+HxT2PHwk7CcsqrROaXUidYHIYzlBwP4Uf9vlTlTdohyh
+ chlNCvVQk2CdcKv1fZU3G7hNWksTyU5h9iw/B6A/MCxSW+FApwAsNyIDxujHZw50eMmP
+ fUwSly17X3lSTfpIzi919UHtZFjIhBZIq781760TGzqjQQHM0z7ukud+zvkByvtnaX53
+ HWBeJJoVCKKsh0dUzY4LzgRsGu3CORW+x03dKeusQ2cXfhSuK8vts03jX6H/MY4zY607
+ gEzvhn6HukYcfZ1uTdI82kO0Yl+0wYlNT3IG1Xf4nYmIvhUyy7bb9koFdFBAZYFnDNaJ
+ nt0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
- :message-id:mime-version;
- bh=lXtTDTE7K2RmqsVX0VCIrU7dqQ+2zlkBv2Zk4TX90ZI=;
- b=joWMKDIlG6jnJFKfV/xluubyCVrjR6yGhXYMadSIX44j8u0j3y8XiTl8JY2JA+FZAB
- tnwjHUOF71a/xTx4bVSIz3HmkYbsVW19QSp3P213RuPRNgpKq6hrut0j8FL34PgMnk13
- 8iIOI8+V1YNYIkGxeG8wnrv08KmRb01hAYQHBWBFbW1FUHAqicyanjsZmgHGR5usjR+v
- e4Pg0ibgo/g3A3gNEysSWCXLgr3WjOrgeBb68VmZLxsWG34Jgki+nrYC7FIwKDEoJ73f
- RPNB2xT5j9sSjuFO6FOy1rRB+YEloFDZDCsxPbGRAF14K3xObO6ltvIzL2mw4d/fJ0ji
- 8VKQ==
-X-Gm-Message-State: APjAAAWC9Qv3fvai/Hm97wKLsYcbrdWB10pOgOHu4DsI4zmQjJ+6Uvyr
- Gn6UbLVZnHI9MYLtBBRI7LbnwEui33IsbCmKg+t/asyStW75hMB2DIiSzEiW3mf+LXdyPG6hGNm
- MxC0Qo+1Yp9XVCgEdbR1P9+IsFq4FBQ==
-X-Received: by 2002:a2e:81cf:: with SMTP id s15mr9829353ljg.99.1571566492339; 
- Sun, 20 Oct 2019 03:14:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwk3PE8wyqtm9E0FO88pbqr/0aL7k1Lp5yiQfGBzgWtbyOMvfKaYdhTmahXXB++Ngh5GJPbgw==
-X-Received: by 2002:a2e:81cf:: with SMTP id s15mr9829335ljg.99.1571566491980; 
- Sun, 20 Oct 2019 03:14:51 -0700 (PDT)
-Received: from alrua-x1.borgediget.toke.dk ([2a00:7660:6da:443::2])
- by smtp.gmail.com with ESMTPSA id x3sm4685598ljm.103.2019.10.20.03.14.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Oct 2019 03:14:50 -0700 (PDT)
-Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
- id BD30C1804C8; Sun, 20 Oct 2019 12:14:49 +0200 (CEST)
-From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-To: Alexei Starovoitov <alexei.starovoitov@gmail.com>, "Samudrala\,
- Sridhar" <sridhar.samudrala@intel.com>
-In-Reply-To: <20191019022525.w5xbwkav2cpqkfwi@ast-mbp>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=2Ecj+ZeIjMcfOAEbWP79WcTG1YfBKfhdkoV2tlBJo1E=;
+ b=B8YTbS8d1t5NHNVHdt+A+XnQ+3JkJ1Ri/t9FLSAj9Gs8NK6B6/8XeeBs/ogbYgRbhc
+ 5k6fGw44WmHdH4Fol4UEo2iq/jpOBjQz6X3YwVG/ba4n4igWn59CvJ39arsC8uYJIEuQ
+ vg6FGs1ZwjchvteF3X1YLJucMbRKv2TMqAEhpsJlfrezqwSsY/RPpxPtq1qsAh5G1OQl
+ rs0EPupynqeuGJO4qkzKBsNJePB2exDqJfMFr7tPDpenZEl4TIdTmhAUdSCgnbP0bnCT
+ V9R+62gUft39rN4VX0rzrqP7f+r5BTtgxh7jbB11S4+j46eIrz3LwYW6Tj+gTDaV2HyO
+ ooUQ==
+X-Gm-Message-State: APjAAAWG8i+MBl5xBb2Ls4f1yzGejkj275PbdXHda/5ROyB+DyzAwIE+
+ UpmRU/wOwJnyTSDJy5soegYcZMU2IITStcZgjL4=
+X-Google-Smtp-Source: APXvYqxCfkppJLJ0//IChvnQN8ymatTMeJGgQLEey36Vm3Kn79me+a9Ns4Z32lYbaBdKZvr6NydxcGoMZs+xg5I2vgI=
+X-Received: by 2002:a05:620a:132b:: with SMTP id
+ p11mr8552225qkj.232.1571591532355; 
+ Sun, 20 Oct 2019 10:12:12 -0700 (PDT)
+MIME-Version: 1.0
 References: <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
  <CAADnVQ+XxmvY0cs8MYriMMd7=2TSEm4zCtB+fs2vkwdUY6UgAQ@mail.gmail.com>
  <3ED8E928C4210A4289A677D2FEB48235140134CE@fmsmsx111.amr.corp.intel.com>
@@ -86,13 +72,12 @@ References: <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
  <acf69635-5868-f876-f7da-08954d1f690e@intel.com>
  <20191019001449.fk3gnhih4nx724pm@ast-mbp>
  <6f281517-3785-ce46-65de-e2f78576783b@intel.com>
- <20191019022525.w5xbwkav2cpqkfwi@ast-mbp>
-X-Clacks-Overhead: GNU Terry Pratchett
-Date: Sun, 20 Oct 2019 12:14:49 +0200
-Message-ID: <877e4zd8py.fsf@toke.dk>
-MIME-Version: 1.0
-X-MC-Unique: aGXS7PKQP8ekE8bAvyERHg-1
-X-Mimecast-Spam-Score: 0
+ <20191019022525.w5xbwkav2cpqkfwi@ast-mbp> <877e4zd8py.fsf@toke.dk>
+In-Reply-To: <877e4zd8py.fsf@toke.dk>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Sun, 20 Oct 2019 19:12:01 +0200
+Message-ID: <CAJ+HfNj07FwmU2GGpUYw56PRwu4pHyHNSkbCOogbMB5zB2QqWA@mail.gmail.com>
+To: =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>
 Subject: Re: [Intel-wired-lan] FW: [PATCH bpf-next 2/4] xsk: allow AF_XDP
  sockets to receive packets directly from a queue
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -108,136 +93,151 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
- Netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Herbert,
- Tom" <tom.herbert@intel.com>, "Fijalkowski,
- Maciej" <maciej.fijalkowski@intel.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>, Netdev <netdev@vger.kernel.org>,
+ "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
  "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ Alexei Starovoitov <alexei.starovoitov@gmail.com>, "Herbert,
+ Tom" <tom.herbert@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Alexei Starovoitov <alexei.starovoitov@gmail.com> writes:
-
-> On Fri, Oct 18, 2019 at 05:45:26PM -0700, Samudrala, Sridhar wrote:
->> On 10/18/2019 5:14 PM, Alexei Starovoitov wrote:
->> > On Fri, Oct 18, 2019 at 11:40:07AM -0700, Samudrala, Sridhar wrote:
->> > > 
->> > > Perf report for "AF_XDP default rxdrop" with patched kernel - mitigations ON
->> > > ==========================================================================
->> > > Samples: 44K of event 'cycles', Event count (approx.): 38532389541
->> > > Overhead  Command          Shared Object              Symbol
->> > >    15.31%  ksoftirqd/28     [i40e]                     [k] i40e_clean_rx_irq_zc
->> > >    10.50%  ksoftirqd/28     bpf_prog_80b55d8a76303785  [k] bpf_prog_80b55d8a76303785
->> > >     9.48%  xdpsock          [i40e]                     [k] i40e_clean_rx_irq_zc
->> > >     8.62%  xdpsock          xdpsock                    [.] main
->> > >     7.11%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_rcv
->> > >     5.81%  ksoftirqd/28     [kernel.vmlinux]           [k] xdp_do_redirect
->> > >     4.46%  xdpsock          bpf_prog_80b55d8a76303785  [k] bpf_prog_80b55d8a76303785
->> > >     3.83%  xdpsock          [kernel.vmlinux]           [k] xsk_rcv
->> > 
->> > why everything is duplicated?
->> > Same code runs in different tasks ?
->> 
->> Yes. looks like these functions run from both the app(xdpsock) context and ksoftirqd context.
->> 
->> > 
->> > >     2.81%  ksoftirqd/28     [kernel.vmlinux]           [k] bpf_xdp_redirect_map
->> > >     2.78%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_map_lookup_elem
->> > >     2.44%  xdpsock          [kernel.vmlinux]           [k] xdp_do_redirect
->> > >     2.19%  ksoftirqd/28     [kernel.vmlinux]           [k] __xsk_map_redirect
->> > >     1.62%  ksoftirqd/28     [kernel.vmlinux]           [k] xsk_umem_peek_addr
->> > >     1.57%  xdpsock          [kernel.vmlinux]           [k] xsk_umem_peek_addr
->> > >     1.32%  ksoftirqd/28     [kernel.vmlinux]           [k] dma_direct_sync_single_for_cpu
->> > >     1.28%  xdpsock          [kernel.vmlinux]           [k] bpf_xdp_redirect_map
->> > >     1.15%  xdpsock          [kernel.vmlinux]           [k] dma_direct_sync_single_for_device
->> > >     1.12%  xdpsock          [kernel.vmlinux]           [k] xsk_map_lookup_elem
->> > >     1.06%  xdpsock          [kernel.vmlinux]           [k] __xsk_map_redirect
->> > >     0.94%  ksoftirqd/28     [kernel.vmlinux]           [k] dma_direct_sync_single_for_device
->> > >     0.75%  ksoftirqd/28     [kernel.vmlinux]           [k] __x86_indirect_thunk_rax
->> > >     0.66%  ksoftirqd/28     [i40e]                     [k] i40e_clean_programming_status
->> > >     0.64%  ksoftirqd/28     [kernel.vmlinux]           [k] net_rx_action
->> > >     0.64%  swapper          [kernel.vmlinux]           [k] intel_idle
->> > >     0.62%  ksoftirqd/28     [i40e]                     [k] i40e_napi_poll
->> > >     0.57%  xdpsock          [kernel.vmlinux]           [k] dma_direct_sync_single_for_cpu
->> > > 
->> > > Perf report for "AF_XDP direct rxdrop" with patched kernel - mitigations ON
->> > > ==========================================================================
->> > > Samples: 46K of event 'cycles', Event count (approx.): 38387018585
->> > > Overhead  Command          Shared Object             Symbol
->> > >    21.94%  ksoftirqd/28     [i40e]                    [k] i40e_clean_rx_irq_zc
->> > >    14.36%  xdpsock          xdpsock                   [.] main
->> > >    11.53%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_rcv
->> > >    11.32%  xdpsock          [i40e]                    [k] i40e_clean_rx_irq_zc
->> > >     4.02%  xdpsock          [kernel.vmlinux]          [k] xsk_rcv
->> > >     2.91%  ksoftirqd/28     [kernel.vmlinux]          [k] xdp_do_redirect
->> > >     2.45%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_umem_peek_addr
->> > >     2.19%  xdpsock          [kernel.vmlinux]          [k] xsk_umem_peek_addr
->> > >     2.08%  ksoftirqd/28     [kernel.vmlinux]          [k] bpf_direct_xsk
->> > >     2.07%  ksoftirqd/28     [kernel.vmlinux]          [k] dma_direct_sync_single_for_cpu
->> > >     1.53%  ksoftirqd/28     [kernel.vmlinux]          [k] dma_direct_sync_single_for_device
->> > >     1.39%  xdpsock          [kernel.vmlinux]          [k] dma_direct_sync_single_for_device
->> > >     1.22%  ksoftirqd/28     [kernel.vmlinux]          [k] xdp_get_xsk_from_qid
->> > >     1.12%  ksoftirqd/28     [i40e]                    [k] i40e_clean_programming_status
->> > >     0.96%  ksoftirqd/28     [i40e]                    [k] i40e_napi_poll
->> > >     0.95%  ksoftirqd/28     [kernel.vmlinux]          [k] net_rx_action
->> > >     0.89%  xdpsock          [kernel.vmlinux]          [k] xdp_do_redirect
->> > >     0.83%  swapper          [i40e]                    [k] i40e_clean_rx_irq_zc
->> > >     0.70%  swapper          [kernel.vmlinux]          [k] intel_idle
->> > >     0.66%  xdpsock          [kernel.vmlinux]          [k] dma_direct_sync_single_for_cpu
->> > >     0.60%  xdpsock          [kernel.vmlinux]          [k] bpf_direct_xsk
->> > >     0.50%  ksoftirqd/28     [kernel.vmlinux]          [k] xsk_umem_discard_addr
->> > > 
->> > > Based on the perf reports comparing AF_XDP default and direct rxdrop, we can say that
->> > > AF_XDP direct rxdrop codepath is avoiding the overhead of going through these functions
->> > > 	bpf_prog_xxx
->> > >          bpf_xdp_redirect_map
->> > > 	xsk_map_lookup_elem
->> > >          __xsk_map_redirect
->> > > With AF_XDP direct, xsk_rcv() is directly called via bpf_direct_xsk() in xdp_do_redirect()
->> > 
->> > I don't think you're identifying the overhead correctly.
->> > xsk_map_lookup_elem is 1%
->> > but bpf_xdp_redirect_map() suppose to call __xsk_map_lookup_elem()
->> > which is a different function:
->> > ffffffff81493fe0 T __xsk_map_lookup_elem
->> > ffffffff81492e80 t xsk_map_lookup_elem
->> > 
->> > 10% for bpf_prog_80b55d8a76303785 is huge.
->> > It's the actual code of the program _without_ any helpers.
->> > How does the program actually look?
->> 
->> It is the xdp program that is loaded via xsk_load_xdp_prog() in tools/lib/bpf/xsk.c
->> https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/tools/lib/bpf/xsk.c#n268
->
-> I see. Looks like map_gen_lookup was never implemented for xskmap.
-> How about adding it first the way array_map_gen_lookup() is implemented?
-> This will easily give 2x perf gain.
-
-I guess we should implement this for devmaps as well now that we allow
-lookups into those.
-
-However, in this particular example, the lookup from BPF is not actually
-needed, since bpf_redirect_map() will return a configurable error value
-when the map lookup fails (for exactly this use case).
-
-So replacing:
-
-if (bpf_map_lookup_elem(&xsks_map, &index))
-    return bpf_redirect_map(&xsks_map, index, 0);
-
-with simply
-
-return bpf_redirect_map(&xsks_map, index, XDP_PASS);
-
-would save the call to xsk_map_lookup_elem().
-
--Toke
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gU3VuLCAyMCBPY3QgMjAxOSBhdCAxMjoxNSwgVG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2VuIDx0
+b2tlQHJlZGhhdC5jb20+IHdyb3RlOgo+Cj4gQWxleGVpIFN0YXJvdm9pdG92IDxhbGV4ZWkuc3Rh
+cm92b2l0b3ZAZ21haWwuY29tPiB3cml0ZXM6Cj4KPiA+IE9uIEZyaSwgT2N0IDE4LCAyMDE5IGF0
+IDA1OjQ1OjI2UE0gLTA3MDAsIFNhbXVkcmFsYSwgU3JpZGhhciB3cm90ZToKPiA+PiBPbiAxMC8x
+OC8yMDE5IDU6MTQgUE0sIEFsZXhlaSBTdGFyb3ZvaXRvdiB3cm90ZToKPiA+PiA+IE9uIEZyaSwg
+T2N0IDE4LCAyMDE5IGF0IDExOjQwOjA3QU0gLTA3MDAsIFNhbXVkcmFsYSwgU3JpZGhhciB3cm90
+ZToKPiA+PiA+ID4KPiA+PiA+ID4gUGVyZiByZXBvcnQgZm9yICJBRl9YRFAgZGVmYXVsdCByeGRy
+b3AiIHdpdGggcGF0Y2hlZCBrZXJuZWwgLSBtaXRpZ2F0aW9ucyBPTgo+ID4+ID4gPiA9PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PQo+ID4+ID4gPiBTYW1wbGVzOiA0NEsgb2YgZXZlbnQgJ2N5Y2xlcycsIEV2ZW50
+IGNvdW50IChhcHByb3guKTogMzg1MzIzODk1NDEKPiA+PiA+ID4gT3ZlcmhlYWQgIENvbW1hbmQg
+ICAgICAgICAgU2hhcmVkIE9iamVjdCAgICAgICAgICAgICAgU3ltYm9sCj4gPj4gPiA+ICAgIDE1
+LjMxJSAga3NvZnRpcnFkLzI4ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQw
+ZV9jbGVhbl9yeF9pcnFfemMKPiA+PiA+ID4gICAgMTAuNTAlICBrc29mdGlycWQvMjggICAgIGJw
+Zl9wcm9nXzgwYjU1ZDhhNzYzMDM3ODUgIFtrXSBicGZfcHJvZ184MGI1NWQ4YTc2MzAzNzg1Cj4g
+Pj4gPiA+ICAgICA5LjQ4JSAgeGRwc29jayAgICAgICAgICBbaTQwZV0gICAgICAgICAgICAgICAg
+ICAgICBba10gaTQwZV9jbGVhbl9yeF9pcnFfemMKPiA+PiA+ID4gICAgIDguNjIlICB4ZHBzb2Nr
+ICAgICAgICAgIHhkcHNvY2sgICAgICAgICAgICAgICAgICAgIFsuXSBtYWluCj4gPj4gPiA+ICAg
+ICA3LjExJSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgICBba10g
+eHNrX3Jjdgo+ID4+ID4gPiAgICAgNS44MSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxp
+bnV4XSAgICAgICAgICAgW2tdIHhkcF9kb19yZWRpcmVjdAo+ID4+ID4gPiAgICAgNC40NiUgIHhk
+cHNvY2sgICAgICAgICAgYnBmX3Byb2dfODBiNTVkOGE3NjMwMzc4NSAgW2tdIGJwZl9wcm9nXzgw
+YjU1ZDhhNzYzMDM3ODUKPiA+PiA+ID4gICAgIDMuODMlICB4ZHBzb2NrICAgICAgICAgIFtrZXJu
+ZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4c2tfcmN2Cj4gPj4gPgo+ID4+ID4gd2h5IGV2ZXJ5
+dGhpbmcgaXMgZHVwbGljYXRlZD8KPiA+PiA+IFNhbWUgY29kZSBydW5zIGluIGRpZmZlcmVudCB0
+YXNrcyA/Cj4gPj4KPiA+PiBZZXMuIGxvb2tzIGxpa2UgdGhlc2UgZnVuY3Rpb25zIHJ1biBmcm9t
+IGJvdGggdGhlIGFwcCh4ZHBzb2NrKSBjb250ZXh0IGFuZCBrc29mdGlycWQgY29udGV4dC4KPiA+
+Pgo+ID4+ID4KPiA+PiA+ID4gICAgIDIuODElICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1s
+aW51eF0gICAgICAgICAgIFtrXSBicGZfeGRwX3JlZGlyZWN0X21hcAo+ID4+ID4gPiAgICAgMi43
+OCUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIHhza19t
+YXBfbG9va3VwX2VsZW0KPiA+PiA+ID4gICAgIDIuNDQlICB4ZHBzb2NrICAgICAgICAgIFtrZXJu
+ZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4ZHBfZG9fcmVkaXJlY3QKPiA+PiA+ID4gICAgIDIu
+MTklICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3hz
+a19tYXBfcmVkaXJlY3QKPiA+PiA+ID4gICAgIDEuNjIlICBrc29mdGlycWQvMjggICAgIFtrZXJu
+ZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4c2tfdW1lbV9wZWVrX2FkZHIKPiA+PiA+ID4gICAg
+IDEuNTclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4
+c2tfdW1lbV9wZWVrX2FkZHIKPiA+PiA+ID4gICAgIDEuMzIlICBrc29mdGlycWQvMjggICAgIFtr
+ZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9j
+cHUKPiA+PiA+ID4gICAgIDEuMjglICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0g
+ICAgICAgICAgIFtrXSBicGZfeGRwX3JlZGlyZWN0X21hcAo+ID4+ID4gPiAgICAgMS4xNSUgIHhk
+cHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIGRtYV9kaXJlY3Rf
+c3luY19zaW5nbGVfZm9yX2RldmljZQo+ID4+ID4gPiAgICAgMS4xMiUgIHhkcHNvY2sgICAgICAg
+ICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIHhza19tYXBfbG9va3VwX2VsZW0KPiA+
+PiA+ID4gICAgIDEuMDYlICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAg
+ICAgIFtrXSBfX3hza19tYXBfcmVkaXJlY3QKPiA+PiA+ID4gICAgIDAuOTQlICBrc29mdGlycWQv
+MjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBkbWFfZGlyZWN0X3N5bmNfc2lu
+Z2xlX2Zvcl9kZXZpY2UKPiA+PiA+ID4gICAgIDAuNzUlICBrc29mdGlycWQvMjggICAgIFtrZXJu
+ZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3g4Nl9pbmRpcmVjdF90aHVua19yYXgKPiA+PiA+
+ID4gICAgIDAuNjYlICBrc29mdGlycWQvMjggICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAg
+IFtrXSBpNDBlX2NsZWFuX3Byb2dyYW1taW5nX3N0YXR1cwo+ID4+ID4gPiAgICAgMC42NCUgIGtz
+b2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIG5ldF9yeF9hY3Rp
+b24KPiA+PiA+ID4gICAgIDAuNjQlICBzd2FwcGVyICAgICAgICAgIFtrZXJuZWwudm1saW51eF0g
+ICAgICAgICAgIFtrXSBpbnRlbF9pZGxlCj4gPj4gPiA+ICAgICAwLjYyJSAga3NvZnRpcnFkLzI4
+ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9uYXBpX3BvbGwKPiA+PiA+
+ID4gICAgIDAuNTclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAg
+IFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9jcHUKPiA+PiA+ID4KPiA+PiA+ID4gUGVy
+ZiByZXBvcnQgZm9yICJBRl9YRFAgZGlyZWN0IHJ4ZHJvcCIgd2l0aCBwYXRjaGVkIGtlcm5lbCAt
+IG1pdGlnYXRpb25zIE9OCj4gPj4gPiA+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gPj4gPiA+IFNhbXBs
+ZXM6IDQ2SyBvZiBldmVudCAnY3ljbGVzJywgRXZlbnQgY291bnQgKGFwcHJveC4pOiAzODM4NzAx
+ODU4NQo+ID4+ID4gPiBPdmVyaGVhZCAgQ29tbWFuZCAgICAgICAgICBTaGFyZWQgT2JqZWN0ICAg
+ICAgICAgICAgIFN5bWJvbAo+ID4+ID4gPiAgICAyMS45NCUgIGtzb2Z0aXJxZC8yOCAgICAgW2k0
+MGVdICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9jbGVhbl9yeF9pcnFfemMKPiA+PiA+ID4g
+ICAgMTQuMzYlICB4ZHBzb2NrICAgICAgICAgIHhkcHNvY2sgICAgICAgICAgICAgICAgICAgWy5d
+IG1haW4KPiA+PiA+ID4gICAgMTEuNTMlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51
+eF0gICAgICAgICAgW2tdIHhza19yY3YKPiA+PiA+ID4gICAgMTEuMzIlICB4ZHBzb2NrICAgICAg
+ICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVfY2xlYW5fcnhfaXJxX3pjCj4g
+Pj4gPiA+ICAgICA0LjAyJSAgeGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAg
+ICAgIFtrXSB4c2tfcmN2Cj4gPj4gPiA+ICAgICAyLjkxJSAga3NvZnRpcnFkLzI4ICAgICBba2Vy
+bmVsLnZtbGludXhdICAgICAgICAgIFtrXSB4ZHBfZG9fcmVkaXJlY3QKPiA+PiA+ID4gICAgIDIu
+NDUlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2tdIHhza191
+bWVtX3BlZWtfYWRkcgo+ID4+ID4gPiAgICAgMi4xOSUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5l
+bC52bWxpbnV4XSAgICAgICAgICBba10geHNrX3VtZW1fcGVla19hZGRyCj4gPj4gPiA+ICAgICAy
+LjA4JSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtrXSBicGZf
+ZGlyZWN0X3hzawo+ID4+ID4gPiAgICAgMi4wNyUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52
+bWxpbnV4XSAgICAgICAgICBba10gZG1hX2RpcmVjdF9zeW5jX3NpbmdsZV9mb3JfY3B1Cj4gPj4g
+PiA+ICAgICAxLjUzJSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAg
+IFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9kZXZpY2UKPiA+PiA+ID4gICAgIDEuMzkl
+ICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2tdIGRtYV9kaXJl
+Y3Rfc3luY19zaW5nbGVfZm9yX2RldmljZQo+ID4+ID4gPiAgICAgMS4yMiUgIGtzb2Z0aXJxZC8y
+OCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10geGRwX2dldF94c2tfZnJvbV9xaWQK
+PiA+PiA+ID4gICAgIDEuMTIlICBrc29mdGlycWQvMjggICAgIFtpNDBlXSAgICAgICAgICAgICAg
+ICAgICAgW2tdIGk0MGVfY2xlYW5fcHJvZ3JhbW1pbmdfc3RhdHVzCj4gPj4gPiA+ICAgICAwLjk2
+JSAga3NvZnRpcnFkLzI4ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgIFtrXSBpNDBlX25h
+cGlfcG9sbAo+ID4+ID4gPiAgICAgMC45NSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxp
+bnV4XSAgICAgICAgICBba10gbmV0X3J4X2FjdGlvbgo+ID4+ID4gPiAgICAgMC44OSUgIHhkcHNv
+Y2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10geGRwX2RvX3JlZGlyZWN0
+Cj4gPj4gPiA+ICAgICAwLjgzJSAgc3dhcHBlciAgICAgICAgICBbaTQwZV0gICAgICAgICAgICAg
+ICAgICAgIFtrXSBpNDBlX2NsZWFuX3J4X2lycV96Ywo+ID4+ID4gPiAgICAgMC43MCUgIHN3YXBw
+ZXIgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10gaW50ZWxfaWRsZQo+ID4+
+ID4gPiAgICAgMC42NiUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAg
+ICBba10gZG1hX2RpcmVjdF9zeW5jX3NpbmdsZV9mb3JfY3B1Cj4gPj4gPiA+ICAgICAwLjYwJSAg
+eGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtrXSBicGZfZGlyZWN0
+X3hzawo+ID4+ID4gPiAgICAgMC41MCUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4
+XSAgICAgICAgICBba10geHNrX3VtZW1fZGlzY2FyZF9hZGRyCj4gPj4gPiA+Cj4gPj4gPiA+IEJh
+c2VkIG9uIHRoZSBwZXJmIHJlcG9ydHMgY29tcGFyaW5nIEFGX1hEUCBkZWZhdWx0IGFuZCBkaXJl
+Y3Qgcnhkcm9wLCB3ZSBjYW4gc2F5IHRoYXQKPiA+PiA+ID4gQUZfWERQIGRpcmVjdCByeGRyb3Ag
+Y29kZXBhdGggaXMgYXZvaWRpbmcgdGhlIG92ZXJoZWFkIG9mIGdvaW5nIHRocm91Z2ggdGhlc2Ug
+ZnVuY3Rpb25zCj4gPj4gPiA+ICBicGZfcHJvZ194eHgKPiA+PiA+ID4gICAgICAgICAgYnBmX3hk
+cF9yZWRpcmVjdF9tYXAKPiA+PiA+ID4gIHhza19tYXBfbG9va3VwX2VsZW0KPiA+PiA+ID4gICAg
+ICAgICAgX194c2tfbWFwX3JlZGlyZWN0Cj4gPj4gPiA+IFdpdGggQUZfWERQIGRpcmVjdCwgeHNr
+X3JjdigpIGlzIGRpcmVjdGx5IGNhbGxlZCB2aWEgYnBmX2RpcmVjdF94c2soKSBpbiB4ZHBfZG9f
+cmVkaXJlY3QoKQo+ID4+ID4KPiA+PiA+IEkgZG9uJ3QgdGhpbmsgeW91J3JlIGlkZW50aWZ5aW5n
+IHRoZSBvdmVyaGVhZCBjb3JyZWN0bHkuCj4gPj4gPiB4c2tfbWFwX2xvb2t1cF9lbGVtIGlzIDEl
+Cj4gPj4gPiBidXQgYnBmX3hkcF9yZWRpcmVjdF9tYXAoKSBzdXBwb3NlIHRvIGNhbGwgX194c2tf
+bWFwX2xvb2t1cF9lbGVtKCkKPiA+PiA+IHdoaWNoIGlzIGEgZGlmZmVyZW50IGZ1bmN0aW9uOgo+
+ID4+ID4gZmZmZmZmZmY4MTQ5M2ZlMCBUIF9feHNrX21hcF9sb29rdXBfZWxlbQo+ID4+ID4gZmZm
+ZmZmZmY4MTQ5MmU4MCB0IHhza19tYXBfbG9va3VwX2VsZW0KPiA+PiA+Cj4gPj4gPiAxMCUgZm9y
+IGJwZl9wcm9nXzgwYjU1ZDhhNzYzMDM3ODUgaXMgaHVnZS4KPiA+PiA+IEl0J3MgdGhlIGFjdHVh
+bCBjb2RlIG9mIHRoZSBwcm9ncmFtIF93aXRob3V0XyBhbnkgaGVscGVycy4KPiA+PiA+IEhvdyBk
+b2VzIHRoZSBwcm9ncmFtIGFjdHVhbGx5IGxvb2s/Cj4gPj4KPiA+PiBJdCBpcyB0aGUgeGRwIHBy
+b2dyYW0gdGhhdCBpcyBsb2FkZWQgdmlhIHhza19sb2FkX3hkcF9wcm9nKCkgaW4gdG9vbHMvbGli
+L2JwZi94c2suYwo+ID4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJu
+ZWwvZ2l0L2JwZi9icGYtbmV4dC5naXQvdHJlZS90b29scy9saWIvYnBmL3hzay5jI24yNjgKPiA+
+Cj4gPiBJIHNlZS4gTG9va3MgbGlrZSBtYXBfZ2VuX2xvb2t1cCB3YXMgbmV2ZXIgaW1wbGVtZW50
+ZWQgZm9yIHhza21hcC4KPiA+IEhvdyBhYm91dCBhZGRpbmcgaXQgZmlyc3QgdGhlIHdheSBhcnJh
+eV9tYXBfZ2VuX2xvb2t1cCgpIGlzIGltcGxlbWVudGVkPwo+ID4gVGhpcyB3aWxsIGVhc2lseSBn
+aXZlIDJ4IHBlcmYgZ2Fpbi4KPgo+IEkgZ3Vlc3Mgd2Ugc2hvdWxkIGltcGxlbWVudCB0aGlzIGZv
+ciBkZXZtYXBzIGFzIHdlbGwgbm93IHRoYXQgd2UgYWxsb3cKPiBsb29rdXBzIGludG8gdGhvc2Uu
+Cj4KPiBIb3dldmVyLCBpbiB0aGlzIHBhcnRpY3VsYXIgZXhhbXBsZSwgdGhlIGxvb2t1cCBmcm9t
+IEJQRiBpcyBub3QgYWN0dWFsbHkKPiBuZWVkZWQsIHNpbmNlIGJwZl9yZWRpcmVjdF9tYXAoKSB3
+aWxsIHJldHVybiBhIGNvbmZpZ3VyYWJsZSBlcnJvciB2YWx1ZQo+IHdoZW4gdGhlIG1hcCBsb29r
+dXAgZmFpbHMgKGZvciBleGFjdGx5IHRoaXMgdXNlIGNhc2UpLgo+Cj4gU28gcmVwbGFjaW5nOgo+
+Cj4gaWYgKGJwZl9tYXBfbG9va3VwX2VsZW0oJnhza3NfbWFwLCAmaW5kZXgpKQo+ICAgICByZXR1
+cm4gYnBmX3JlZGlyZWN0X21hcCgmeHNrc19tYXAsIGluZGV4LCAwKTsKPgo+IHdpdGggc2ltcGx5
+Cj4KPiByZXR1cm4gYnBmX3JlZGlyZWN0X21hcCgmeHNrc19tYXAsIGluZGV4LCBYRFBfUEFTUyk7
+Cj4KPiB3b3VsZCBzYXZlIHRoZSBjYWxsIHRvIHhza19tYXBfbG9va3VwX2VsZW0oKS4KPgoKVGhh
+bmtzIGZvciB0aGUgcmVtaW5kZXIhIEkganVzdCBzdWJtaXR0ZWQgYSBwYXRjaC4gU3RpbGwsIGRv
+aW5nIHRoZQptYXBfZ2VuX2xvb2t1cCgpICBmb3IgeHNrL2Rldm1hcHMgc3RpbGwgbWFrZXMgc2Vu
+c2UhCgoKQmrDtnJuCgoKPiAtVG9rZQo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwt
+d2lyZWQtbGFuQG9zdW9zbC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9pbnRlbC13aXJlZC1sYW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
+YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
+bnRlbC13aXJlZC1sYW4K
