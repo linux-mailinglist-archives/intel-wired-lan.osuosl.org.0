@@ -1,85 +1,46 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7728ADDFAC
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Oct 2019 19:12:19 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3DBADF365
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2019 18:44:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BEF8F20490;
-	Sun, 20 Oct 2019 17:12:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7AA7F878F0;
+	Mon, 21 Oct 2019 16:44:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RdhHV2y4ewNg; Sun, 20 Oct 2019 17:12:17 +0000 (UTC)
+	with ESMTP id dCcBSgH1emlJ; Mon, 21 Oct 2019 16:44:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 04BDE2044C;
-	Sun, 20 Oct 2019 17:12:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B64FF879F5;
+	Mon, 21 Oct 2019 16:44:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 88AEC1BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 17:12:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 121001BF38A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 16:44:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8097885CCF
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 17:12:14 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0E05E84525
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 16:44:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KwltJtxb0lGj for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Oct 2019 17:12:13 +0000 (UTC)
+ with ESMTP id wfaPQJFGz-2L for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Oct 2019 16:44:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f193.google.com (mail-qk1-f193.google.com
- [209.85.222.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7BA6885CC3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 17:12:13 +0000 (UTC)
-Received: by mail-qk1-f193.google.com with SMTP id y189so10135453qkc.3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Oct 2019 10:12:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=2Ecj+ZeIjMcfOAEbWP79WcTG1YfBKfhdkoV2tlBJo1E=;
- b=KTozHMaa+35EIR5XwvZMw+HxT2PHwk7CcsqrROaXUidYHIYzlBwP4Uf9vlTlTdohyh
- chlNCvVQk2CdcKv1fZU3G7hNWksTyU5h9iw/B6A/MCxSW+FApwAsNyIDxujHZw50eMmP
- fUwSly17X3lSTfpIzi919UHtZFjIhBZIq781760TGzqjQQHM0z7ukud+zvkByvtnaX53
- HWBeJJoVCKKsh0dUzY4LzgRsGu3CORW+x03dKeusQ2cXfhSuK8vts03jX6H/MY4zY607
- gEzvhn6HukYcfZ1uTdI82kO0Yl+0wYlNT3IG1Xf4nYmIvhUyy7bb9koFdFBAZYFnDNaJ
- nt0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=2Ecj+ZeIjMcfOAEbWP79WcTG1YfBKfhdkoV2tlBJo1E=;
- b=B8YTbS8d1t5NHNVHdt+A+XnQ+3JkJ1Ri/t9FLSAj9Gs8NK6B6/8XeeBs/ogbYgRbhc
- 5k6fGw44WmHdH4Fol4UEo2iq/jpOBjQz6X3YwVG/ba4n4igWn59CvJ39arsC8uYJIEuQ
- vg6FGs1ZwjchvteF3X1YLJucMbRKv2TMqAEhpsJlfrezqwSsY/RPpxPtq1qsAh5G1OQl
- rs0EPupynqeuGJO4qkzKBsNJePB2exDqJfMFr7tPDpenZEl4TIdTmhAUdSCgnbP0bnCT
- V9R+62gUft39rN4VX0rzrqP7f+r5BTtgxh7jbB11S4+j46eIrz3LwYW6Tj+gTDaV2HyO
- ooUQ==
-X-Gm-Message-State: APjAAAWG8i+MBl5xBb2Ls4f1yzGejkj275PbdXHda/5ROyB+DyzAwIE+
- UpmRU/wOwJnyTSDJy5soegYcZMU2IITStcZgjL4=
-X-Google-Smtp-Source: APXvYqxCfkppJLJ0//IChvnQN8ymatTMeJGgQLEey36Vm3Kn79me+a9Ns4Z32lYbaBdKZvr6NydxcGoMZs+xg5I2vgI=
-X-Received: by 2002:a05:620a:132b:: with SMTP id
- p11mr8552225qkj.232.1571591532355; 
- Sun, 20 Oct 2019 10:12:12 -0700 (PDT)
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AAD6C81B79
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 16:44:05 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: bbeckett) with ESMTPSA id 56EB728AE51
+From: Robert Beckett <bob.beckett@collabora.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 21 Oct 2019 17:39:36 +0100
+Message-Id: <20191021163959.17511-1-bob.beckett@collabora.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
- <CAADnVQ+XxmvY0cs8MYriMMd7=2TSEm4zCtB+fs2vkwdUY6UgAQ@mail.gmail.com>
- <3ED8E928C4210A4289A677D2FEB48235140134CE@fmsmsx111.amr.corp.intel.com>
- <2bc26acd-170d-634e-c066-71557b2b3e4f@intel.com>
- <CAADnVQ+qq6RLMjh5bB1ugXP5p7vYM2F1fLGFQ2pL=2vhCLiBdA@mail.gmail.com>
- <2032d58c-916f-d26a-db14-bd5ba6ad92b9@intel.com>
- <CAADnVQ+CH1YM52+LfybLS+NK16414Exrvk1QpYOF=HaT4KRaxg@mail.gmail.com>
- <acf69635-5868-f876-f7da-08954d1f690e@intel.com>
- <20191019001449.fk3gnhih4nx724pm@ast-mbp>
- <6f281517-3785-ce46-65de-e2f78576783b@intel.com>
- <20191019022525.w5xbwkav2cpqkfwi@ast-mbp> <877e4zd8py.fsf@toke.dk>
-In-Reply-To: <877e4zd8py.fsf@toke.dk>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Sun, 20 Oct 2019 19:12:01 +0200
-Message-ID: <CAJ+HfNj07FwmU2GGpUYw56PRwu4pHyHNSkbCOogbMB5zB2QqWA@mail.gmail.com>
-To: =?UTF-8?B?VG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2Vu?= <toke@redhat.com>
-Subject: Re: [Intel-wired-lan] FW: [PATCH bpf-next 2/4] xsk: allow AF_XDP
- sockets to receive packets directly from a queue
+Subject: [Intel-wired-lan] [PATCH] igb: dont drop packets if rx flow control
+ is enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,152 +53,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>, Netdev <netdev@vger.kernel.org>,
- "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- Alexei Starovoitov <alexei.starovoitov@gmail.com>, "Herbert,
- Tom" <tom.herbert@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Robert Beckett <bob.beckett@collabora.com>, netdev@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gU3VuLCAyMCBPY3QgMjAxOSBhdCAxMjoxNSwgVG9rZSBIw7hpbGFuZC1Kw7hyZ2Vuc2VuIDx0
-b2tlQHJlZGhhdC5jb20+IHdyb3RlOgo+Cj4gQWxleGVpIFN0YXJvdm9pdG92IDxhbGV4ZWkuc3Rh
-cm92b2l0b3ZAZ21haWwuY29tPiB3cml0ZXM6Cj4KPiA+IE9uIEZyaSwgT2N0IDE4LCAyMDE5IGF0
-IDA1OjQ1OjI2UE0gLTA3MDAsIFNhbXVkcmFsYSwgU3JpZGhhciB3cm90ZToKPiA+PiBPbiAxMC8x
-OC8yMDE5IDU6MTQgUE0sIEFsZXhlaSBTdGFyb3ZvaXRvdiB3cm90ZToKPiA+PiA+IE9uIEZyaSwg
-T2N0IDE4LCAyMDE5IGF0IDExOjQwOjA3QU0gLTA3MDAsIFNhbXVkcmFsYSwgU3JpZGhhciB3cm90
-ZToKPiA+PiA+ID4KPiA+PiA+ID4gUGVyZiByZXBvcnQgZm9yICJBRl9YRFAgZGVmYXVsdCByeGRy
-b3AiIHdpdGggcGF0Y2hlZCBrZXJuZWwgLSBtaXRpZ2F0aW9ucyBPTgo+ID4+ID4gPiA9PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PQo+ID4+ID4gPiBTYW1wbGVzOiA0NEsgb2YgZXZlbnQgJ2N5Y2xlcycsIEV2ZW50
-IGNvdW50IChhcHByb3guKTogMzg1MzIzODk1NDEKPiA+PiA+ID4gT3ZlcmhlYWQgIENvbW1hbmQg
-ICAgICAgICAgU2hhcmVkIE9iamVjdCAgICAgICAgICAgICAgU3ltYm9sCj4gPj4gPiA+ICAgIDE1
-LjMxJSAga3NvZnRpcnFkLzI4ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQw
-ZV9jbGVhbl9yeF9pcnFfemMKPiA+PiA+ID4gICAgMTAuNTAlICBrc29mdGlycWQvMjggICAgIGJw
-Zl9wcm9nXzgwYjU1ZDhhNzYzMDM3ODUgIFtrXSBicGZfcHJvZ184MGI1NWQ4YTc2MzAzNzg1Cj4g
-Pj4gPiA+ICAgICA5LjQ4JSAgeGRwc29jayAgICAgICAgICBbaTQwZV0gICAgICAgICAgICAgICAg
-ICAgICBba10gaTQwZV9jbGVhbl9yeF9pcnFfemMKPiA+PiA+ID4gICAgIDguNjIlICB4ZHBzb2Nr
-ICAgICAgICAgIHhkcHNvY2sgICAgICAgICAgICAgICAgICAgIFsuXSBtYWluCj4gPj4gPiA+ICAg
-ICA3LjExJSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgICBba10g
-eHNrX3Jjdgo+ID4+ID4gPiAgICAgNS44MSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxp
-bnV4XSAgICAgICAgICAgW2tdIHhkcF9kb19yZWRpcmVjdAo+ID4+ID4gPiAgICAgNC40NiUgIHhk
-cHNvY2sgICAgICAgICAgYnBmX3Byb2dfODBiNTVkOGE3NjMwMzc4NSAgW2tdIGJwZl9wcm9nXzgw
-YjU1ZDhhNzYzMDM3ODUKPiA+PiA+ID4gICAgIDMuODMlICB4ZHBzb2NrICAgICAgICAgIFtrZXJu
-ZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4c2tfcmN2Cj4gPj4gPgo+ID4+ID4gd2h5IGV2ZXJ5
-dGhpbmcgaXMgZHVwbGljYXRlZD8KPiA+PiA+IFNhbWUgY29kZSBydW5zIGluIGRpZmZlcmVudCB0
-YXNrcyA/Cj4gPj4KPiA+PiBZZXMuIGxvb2tzIGxpa2UgdGhlc2UgZnVuY3Rpb25zIHJ1biBmcm9t
-IGJvdGggdGhlIGFwcCh4ZHBzb2NrKSBjb250ZXh0IGFuZCBrc29mdGlycWQgY29udGV4dC4KPiA+
-Pgo+ID4+ID4KPiA+PiA+ID4gICAgIDIuODElICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1s
-aW51eF0gICAgICAgICAgIFtrXSBicGZfeGRwX3JlZGlyZWN0X21hcAo+ID4+ID4gPiAgICAgMi43
-OCUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIHhza19t
-YXBfbG9va3VwX2VsZW0KPiA+PiA+ID4gICAgIDIuNDQlICB4ZHBzb2NrICAgICAgICAgIFtrZXJu
-ZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4ZHBfZG9fcmVkaXJlY3QKPiA+PiA+ID4gICAgIDIu
-MTklICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3hz
-a19tYXBfcmVkaXJlY3QKPiA+PiA+ID4gICAgIDEuNjIlICBrc29mdGlycWQvMjggICAgIFtrZXJu
-ZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4c2tfdW1lbV9wZWVrX2FkZHIKPiA+PiA+ID4gICAg
-IDEuNTclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4
-c2tfdW1lbV9wZWVrX2FkZHIKPiA+PiA+ID4gICAgIDEuMzIlICBrc29mdGlycWQvMjggICAgIFtr
-ZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9j
-cHUKPiA+PiA+ID4gICAgIDEuMjglICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0g
-ICAgICAgICAgIFtrXSBicGZfeGRwX3JlZGlyZWN0X21hcAo+ID4+ID4gPiAgICAgMS4xNSUgIHhk
-cHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIGRtYV9kaXJlY3Rf
-c3luY19zaW5nbGVfZm9yX2RldmljZQo+ID4+ID4gPiAgICAgMS4xMiUgIHhkcHNvY2sgICAgICAg
-ICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIHhza19tYXBfbG9va3VwX2VsZW0KPiA+
-PiA+ID4gICAgIDEuMDYlICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAg
-ICAgIFtrXSBfX3hza19tYXBfcmVkaXJlY3QKPiA+PiA+ID4gICAgIDAuOTQlICBrc29mdGlycWQv
-MjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBkbWFfZGlyZWN0X3N5bmNfc2lu
-Z2xlX2Zvcl9kZXZpY2UKPiA+PiA+ID4gICAgIDAuNzUlICBrc29mdGlycWQvMjggICAgIFtrZXJu
-ZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3g4Nl9pbmRpcmVjdF90aHVua19yYXgKPiA+PiA+
-ID4gICAgIDAuNjYlICBrc29mdGlycWQvMjggICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAg
-IFtrXSBpNDBlX2NsZWFuX3Byb2dyYW1taW5nX3N0YXR1cwo+ID4+ID4gPiAgICAgMC42NCUgIGtz
-b2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIG5ldF9yeF9hY3Rp
-b24KPiA+PiA+ID4gICAgIDAuNjQlICBzd2FwcGVyICAgICAgICAgIFtrZXJuZWwudm1saW51eF0g
-ICAgICAgICAgIFtrXSBpbnRlbF9pZGxlCj4gPj4gPiA+ICAgICAwLjYyJSAga3NvZnRpcnFkLzI4
-ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9uYXBpX3BvbGwKPiA+PiA+
-ID4gICAgIDAuNTclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAg
-IFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9jcHUKPiA+PiA+ID4KPiA+PiA+ID4gUGVy
-ZiByZXBvcnQgZm9yICJBRl9YRFAgZGlyZWN0IHJ4ZHJvcCIgd2l0aCBwYXRjaGVkIGtlcm5lbCAt
-IG1pdGlnYXRpb25zIE9OCj4gPj4gPiA+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4gPj4gPiA+IFNhbXBs
-ZXM6IDQ2SyBvZiBldmVudCAnY3ljbGVzJywgRXZlbnQgY291bnQgKGFwcHJveC4pOiAzODM4NzAx
-ODU4NQo+ID4+ID4gPiBPdmVyaGVhZCAgQ29tbWFuZCAgICAgICAgICBTaGFyZWQgT2JqZWN0ICAg
-ICAgICAgICAgIFN5bWJvbAo+ID4+ID4gPiAgICAyMS45NCUgIGtzb2Z0aXJxZC8yOCAgICAgW2k0
-MGVdICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9jbGVhbl9yeF9pcnFfemMKPiA+PiA+ID4g
-ICAgMTQuMzYlICB4ZHBzb2NrICAgICAgICAgIHhkcHNvY2sgICAgICAgICAgICAgICAgICAgWy5d
-IG1haW4KPiA+PiA+ID4gICAgMTEuNTMlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51
-eF0gICAgICAgICAgW2tdIHhza19yY3YKPiA+PiA+ID4gICAgMTEuMzIlICB4ZHBzb2NrICAgICAg
-ICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVfY2xlYW5fcnhfaXJxX3pjCj4g
-Pj4gPiA+ICAgICA0LjAyJSAgeGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAg
-ICAgIFtrXSB4c2tfcmN2Cj4gPj4gPiA+ICAgICAyLjkxJSAga3NvZnRpcnFkLzI4ICAgICBba2Vy
-bmVsLnZtbGludXhdICAgICAgICAgIFtrXSB4ZHBfZG9fcmVkaXJlY3QKPiA+PiA+ID4gICAgIDIu
-NDUlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2tdIHhza191
-bWVtX3BlZWtfYWRkcgo+ID4+ID4gPiAgICAgMi4xOSUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5l
-bC52bWxpbnV4XSAgICAgICAgICBba10geHNrX3VtZW1fcGVla19hZGRyCj4gPj4gPiA+ICAgICAy
-LjA4JSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtrXSBicGZf
-ZGlyZWN0X3hzawo+ID4+ID4gPiAgICAgMi4wNyUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52
-bWxpbnV4XSAgICAgICAgICBba10gZG1hX2RpcmVjdF9zeW5jX3NpbmdsZV9mb3JfY3B1Cj4gPj4g
-PiA+ICAgICAxLjUzJSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAg
-IFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9kZXZpY2UKPiA+PiA+ID4gICAgIDEuMzkl
-ICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2tdIGRtYV9kaXJl
-Y3Rfc3luY19zaW5nbGVfZm9yX2RldmljZQo+ID4+ID4gPiAgICAgMS4yMiUgIGtzb2Z0aXJxZC8y
-OCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10geGRwX2dldF94c2tfZnJvbV9xaWQK
-PiA+PiA+ID4gICAgIDEuMTIlICBrc29mdGlycWQvMjggICAgIFtpNDBlXSAgICAgICAgICAgICAg
-ICAgICAgW2tdIGk0MGVfY2xlYW5fcHJvZ3JhbW1pbmdfc3RhdHVzCj4gPj4gPiA+ICAgICAwLjk2
-JSAga3NvZnRpcnFkLzI4ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgIFtrXSBpNDBlX25h
-cGlfcG9sbAo+ID4+ID4gPiAgICAgMC45NSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxp
-bnV4XSAgICAgICAgICBba10gbmV0X3J4X2FjdGlvbgo+ID4+ID4gPiAgICAgMC44OSUgIHhkcHNv
-Y2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10geGRwX2RvX3JlZGlyZWN0
-Cj4gPj4gPiA+ICAgICAwLjgzJSAgc3dhcHBlciAgICAgICAgICBbaTQwZV0gICAgICAgICAgICAg
-ICAgICAgIFtrXSBpNDBlX2NsZWFuX3J4X2lycV96Ywo+ID4+ID4gPiAgICAgMC43MCUgIHN3YXBw
-ZXIgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10gaW50ZWxfaWRsZQo+ID4+
-ID4gPiAgICAgMC42NiUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAg
-ICBba10gZG1hX2RpcmVjdF9zeW5jX3NpbmdsZV9mb3JfY3B1Cj4gPj4gPiA+ICAgICAwLjYwJSAg
-eGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtrXSBicGZfZGlyZWN0
-X3hzawo+ID4+ID4gPiAgICAgMC41MCUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4
-XSAgICAgICAgICBba10geHNrX3VtZW1fZGlzY2FyZF9hZGRyCj4gPj4gPiA+Cj4gPj4gPiA+IEJh
-c2VkIG9uIHRoZSBwZXJmIHJlcG9ydHMgY29tcGFyaW5nIEFGX1hEUCBkZWZhdWx0IGFuZCBkaXJl
-Y3Qgcnhkcm9wLCB3ZSBjYW4gc2F5IHRoYXQKPiA+PiA+ID4gQUZfWERQIGRpcmVjdCByeGRyb3Ag
-Y29kZXBhdGggaXMgYXZvaWRpbmcgdGhlIG92ZXJoZWFkIG9mIGdvaW5nIHRocm91Z2ggdGhlc2Ug
-ZnVuY3Rpb25zCj4gPj4gPiA+ICBicGZfcHJvZ194eHgKPiA+PiA+ID4gICAgICAgICAgYnBmX3hk
-cF9yZWRpcmVjdF9tYXAKPiA+PiA+ID4gIHhza19tYXBfbG9va3VwX2VsZW0KPiA+PiA+ID4gICAg
-ICAgICAgX194c2tfbWFwX3JlZGlyZWN0Cj4gPj4gPiA+IFdpdGggQUZfWERQIGRpcmVjdCwgeHNr
-X3JjdigpIGlzIGRpcmVjdGx5IGNhbGxlZCB2aWEgYnBmX2RpcmVjdF94c2soKSBpbiB4ZHBfZG9f
-cmVkaXJlY3QoKQo+ID4+ID4KPiA+PiA+IEkgZG9uJ3QgdGhpbmsgeW91J3JlIGlkZW50aWZ5aW5n
-IHRoZSBvdmVyaGVhZCBjb3JyZWN0bHkuCj4gPj4gPiB4c2tfbWFwX2xvb2t1cF9lbGVtIGlzIDEl
-Cj4gPj4gPiBidXQgYnBmX3hkcF9yZWRpcmVjdF9tYXAoKSBzdXBwb3NlIHRvIGNhbGwgX194c2tf
-bWFwX2xvb2t1cF9lbGVtKCkKPiA+PiA+IHdoaWNoIGlzIGEgZGlmZmVyZW50IGZ1bmN0aW9uOgo+
-ID4+ID4gZmZmZmZmZmY4MTQ5M2ZlMCBUIF9feHNrX21hcF9sb29rdXBfZWxlbQo+ID4+ID4gZmZm
-ZmZmZmY4MTQ5MmU4MCB0IHhza19tYXBfbG9va3VwX2VsZW0KPiA+PiA+Cj4gPj4gPiAxMCUgZm9y
-IGJwZl9wcm9nXzgwYjU1ZDhhNzYzMDM3ODUgaXMgaHVnZS4KPiA+PiA+IEl0J3MgdGhlIGFjdHVh
-bCBjb2RlIG9mIHRoZSBwcm9ncmFtIF93aXRob3V0XyBhbnkgaGVscGVycy4KPiA+PiA+IEhvdyBk
-b2VzIHRoZSBwcm9ncmFtIGFjdHVhbGx5IGxvb2s/Cj4gPj4KPiA+PiBJdCBpcyB0aGUgeGRwIHBy
-b2dyYW0gdGhhdCBpcyBsb2FkZWQgdmlhIHhza19sb2FkX3hkcF9wcm9nKCkgaW4gdG9vbHMvbGli
-L2JwZi94c2suYwo+ID4+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJu
-ZWwvZ2l0L2JwZi9icGYtbmV4dC5naXQvdHJlZS90b29scy9saWIvYnBmL3hzay5jI24yNjgKPiA+
-Cj4gPiBJIHNlZS4gTG9va3MgbGlrZSBtYXBfZ2VuX2xvb2t1cCB3YXMgbmV2ZXIgaW1wbGVtZW50
-ZWQgZm9yIHhza21hcC4KPiA+IEhvdyBhYm91dCBhZGRpbmcgaXQgZmlyc3QgdGhlIHdheSBhcnJh
-eV9tYXBfZ2VuX2xvb2t1cCgpIGlzIGltcGxlbWVudGVkPwo+ID4gVGhpcyB3aWxsIGVhc2lseSBn
-aXZlIDJ4IHBlcmYgZ2Fpbi4KPgo+IEkgZ3Vlc3Mgd2Ugc2hvdWxkIGltcGxlbWVudCB0aGlzIGZv
-ciBkZXZtYXBzIGFzIHdlbGwgbm93IHRoYXQgd2UgYWxsb3cKPiBsb29rdXBzIGludG8gdGhvc2Uu
-Cj4KPiBIb3dldmVyLCBpbiB0aGlzIHBhcnRpY3VsYXIgZXhhbXBsZSwgdGhlIGxvb2t1cCBmcm9t
-IEJQRiBpcyBub3QgYWN0dWFsbHkKPiBuZWVkZWQsIHNpbmNlIGJwZl9yZWRpcmVjdF9tYXAoKSB3
-aWxsIHJldHVybiBhIGNvbmZpZ3VyYWJsZSBlcnJvciB2YWx1ZQo+IHdoZW4gdGhlIG1hcCBsb29r
-dXAgZmFpbHMgKGZvciBleGFjdGx5IHRoaXMgdXNlIGNhc2UpLgo+Cj4gU28gcmVwbGFjaW5nOgo+
-Cj4gaWYgKGJwZl9tYXBfbG9va3VwX2VsZW0oJnhza3NfbWFwLCAmaW5kZXgpKQo+ICAgICByZXR1
-cm4gYnBmX3JlZGlyZWN0X21hcCgmeHNrc19tYXAsIGluZGV4LCAwKTsKPgo+IHdpdGggc2ltcGx5
-Cj4KPiByZXR1cm4gYnBmX3JlZGlyZWN0X21hcCgmeHNrc19tYXAsIGluZGV4LCBYRFBfUEFTUyk7
-Cj4KPiB3b3VsZCBzYXZlIHRoZSBjYWxsIHRvIHhza19tYXBfbG9va3VwX2VsZW0oKS4KPgoKVGhh
-bmtzIGZvciB0aGUgcmVtaW5kZXIhIEkganVzdCBzdWJtaXR0ZWQgYSBwYXRjaC4gU3RpbGwsIGRv
-aW5nIHRoZQptYXBfZ2VuX2xvb2t1cCgpICBmb3IgeHNrL2Rldm1hcHMgc3RpbGwgbWFrZXMgc2Vu
-c2UhCgoKQmrDtnJuCgoKPiAtVG9rZQo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwt
-d2lyZWQtbGFuQG9zdW9zbC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9pbnRlbC13aXJlZC1sYW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
-YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
-bnRlbC13aXJlZC1sYW4K
+If rx flow control has been enabled (via autoneg or forced), packets
+should not be dropped due to rx descriptor ring exhaustion. Instead
+pause frames should be used to apply back pressure.
+
+Move SRRCTL setup to its own function for easy reuse and only set drop
+enable bit if rx flow control is not enabled.
+
+Signed-off-by: Robert Beckett <bob.beckett@collabora.com>
+---
+ drivers/net/ethernet/intel/igb/igb.h         |  1 +
+ drivers/net/ethernet/intel/igb/igb_ethtool.c |  8 ++++
+ drivers/net/ethernet/intel/igb/igb_main.c    | 46 ++++++++++++++------
+ 3 files changed, 41 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+index ca54e268d157..49b5fa9d4783 100644
+--- a/drivers/net/ethernet/intel/igb/igb.h
++++ b/drivers/net/ethernet/intel/igb/igb.h
+@@ -661,6 +661,7 @@ void igb_configure_tx_ring(struct igb_adapter *, struct igb_ring *);
+ void igb_configure_rx_ring(struct igb_adapter *, struct igb_ring *);
+ void igb_setup_tctl(struct igb_adapter *);
+ void igb_setup_rctl(struct igb_adapter *);
++void igb_setup_srrctl(struct igb_adapter *, struct igb_ring *);
+ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *, struct igb_ring *);
+ void igb_alloc_rx_buffers(struct igb_ring *, u16);
+ void igb_update_stats(struct igb_adapter *);
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 5acf3b743876..3c951f363d0e 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
++++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+@@ -396,6 +396,7 @@ static int igb_set_pauseparam(struct net_device *netdev,
+ 	struct igb_adapter *adapter = netdev_priv(netdev);
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	int retval = 0;
++	int i;
+ 
+ 	/* 100basefx does not support setting link flow control */
+ 	if (hw->dev_spec._82575.eth_flags.e100_base_fx)
+@@ -428,6 +429,13 @@ static int igb_set_pauseparam(struct net_device *netdev,
+ 
+ 		retval = ((hw->phy.media_type == e1000_media_type_copper) ?
+ 			  igb_force_mac_fc(hw) : igb_setup_link(hw));
++
++		/* Make sure SRRCTL considers new fc settings for each ring */
++		for (i = 0; i < adapter->num_rx_queues; i++) {
++			struct igb_ring *ring = adapter->rx_ring[i];
++
++			igb_setup_srrctl(adapter, ring);
++		}
+ 	}
+ 
+ 	clear_bit(__IGB_RESETTING, &adapter->state);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index ffaa6e031632..6b04c961c6e4 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -4488,6 +4488,36 @@ static inline void igb_set_vmolr(struct igb_adapter *adapter,
+ 	wr32(E1000_VMOLR(vfn), vmolr);
+ }
+ 
++/**
++ *  igb_setup_srrctl - configure the split and replication receive control
++ *  		       registers
++ *  @adapter: Board private structure
++ *  @ring: receive ring to be configured
++ **/
++void igb_setup_srrctl(struct igb_adapter *adapter, struct igb_ring *ring)
++{
++	struct e1000_hw *hw = &adapter->hw;
++	int reg_idx = ring->reg_idx;
++	u32 srrctl;
++
++	srrctl = IGB_RX_HDR_LEN << E1000_SRRCTL_BSIZEHDRSIZE_SHIFT;
++	if (ring_uses_large_buffer(ring))
++		srrctl |= IGB_RXBUFFER_3072 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
++	else
++		srrctl |= IGB_RXBUFFER_2048 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
++	srrctl |= E1000_SRRCTL_DESCTYPE_ADV_ONEBUF;
++	if (hw->mac.type >= e1000_82580)
++		srrctl |= E1000_SRRCTL_TIMESTAMP;
++	/* Only set Drop Enable if we are supporting multiple queues
++	 * and rx flow control is disabled
++	 */
++	if (!(hw->fc.current_mode & e1000_fc_rx_pause) &&
++	    (adapter->vfs_allocated_count || adapter->num_rx_queues > 1))
++		srrctl |= E1000_SRRCTL_DROP_EN;
++
++	wr32(E1000_SRRCTL(reg_idx), srrctl);
++}
++
+ /**
+  *  igb_configure_rx_ring - Configure a receive ring after Reset
+  *  @adapter: board private structure
+@@ -4502,7 +4532,7 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+ 	union e1000_adv_rx_desc *rx_desc;
+ 	u64 rdba = ring->dma;
+ 	int reg_idx = ring->reg_idx;
+-	u32 srrctl = 0, rxdctl = 0;
++	u32 rxdctl = 0;
+ 
+ 	/* disable the queue */
+ 	wr32(E1000_RXDCTL(reg_idx), 0);
+@@ -4520,19 +4550,7 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+ 	writel(0, ring->tail);
+ 
+ 	/* set descriptor configuration */
+-	srrctl = IGB_RX_HDR_LEN << E1000_SRRCTL_BSIZEHDRSIZE_SHIFT;
+-	if (ring_uses_large_buffer(ring))
+-		srrctl |= IGB_RXBUFFER_3072 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
+-	else
+-		srrctl |= IGB_RXBUFFER_2048 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
+-	srrctl |= E1000_SRRCTL_DESCTYPE_ADV_ONEBUF;
+-	if (hw->mac.type >= e1000_82580)
+-		srrctl |= E1000_SRRCTL_TIMESTAMP;
+-	/* Only set Drop Enable if we are supporting multiple queues */
+-	if (adapter->vfs_allocated_count || adapter->num_rx_queues > 1)
+-		srrctl |= E1000_SRRCTL_DROP_EN;
+-
+-	wr32(E1000_SRRCTL(reg_idx), srrctl);
++	igb_setup_srrctl(adapter, ring);
+ 
+ 	/* set filtering for VMDQ pools */
+ 	igb_set_vmolr(adapter, reg_idx & 0x7, true);
+-- 
+2.20.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
