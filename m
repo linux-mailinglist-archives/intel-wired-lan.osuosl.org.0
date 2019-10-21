@@ -1,73 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A489DF474
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2019 19:42:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F388DF684
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2019 22:10:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 929D220390;
-	Mon, 21 Oct 2019 17:42:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9090384C1E;
+	Mon, 21 Oct 2019 20:10:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g81UaGUKbylU; Mon, 21 Oct 2019 17:42:34 +0000 (UTC)
+	with ESMTP id 5iGdeBZ817H5; Mon, 21 Oct 2019 20:10:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 1E660221AB;
-	Mon, 21 Oct 2019 17:42:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 666868598E;
+	Mon, 21 Oct 2019 20:10:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 54A801BF38A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 17:42:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 518AA1BF96A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 20:10:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4CE32877ED
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 17:42:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3FF8787E90
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 20:10:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cAhcN9LL6VVa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Oct 2019 17:42:30 +0000 (UTC)
+ with ESMTP id axriN-S+qBrm for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Oct 2019 20:10:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 17CDA877E7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 17:42:30 +0000 (UTC)
-Received: by mail-il1-f196.google.com with SMTP id c12so12850196ilm.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 10:42:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8aAPl0SbuxRa1HUSsK//Fu7r+rsqWWKYDsaYjba2vK8=;
- b=lIzy+xDPEbxOTPgo3uzn7N8Im5K0MhYjg1M0KF0VX6A6n9F0rZSu+5sy9zjyUDiWwh
- jpDDGm8LivA8825EgHHudOHUIqR9p4jrc/ncdFPYkdRu8qshIIJl/xHHCNwNHmNocXRS
- sLF6ceZ0r8CYcZ6OdXIjkrE4tyY+C8LVy9eZFVesEQdBMGUcWkcNBhl14Ij78+9GV3aY
- YlSdG8Jy8Fu1hgs4SiOfwsLadDx76TadnHK3fwERdfeTa4V8wYyPyM+9mdMBPHA05Qaz
- ODOmoid5ajSeIx6epOkmhruhHPKXaXsnjcoTrLKYrs8PqdCD4c0ZzaLJijptmouUHjEz
- /c5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8aAPl0SbuxRa1HUSsK//Fu7r+rsqWWKYDsaYjba2vK8=;
- b=WR9+H1HO7q0yptwz4NwcXGa47m9DPkfZiejRW/dOTR5jMEDzMdht35CnUenFp1j6Rf
- Q4YcO2iBhbNdyfk7v8+5lzDCUrD8D0h+yub2NWrLGqDpvu+xLtGT0Xq6I2BnQ7bx5WDP
- Y7FCVorNN18vm/y9CGhBYngM9Z1kesnZpnf4nOXA/4rdQ+p9WFX4I8TM9DouR5EdljO3
- mPjiE/uqtJfsEwFwnlKQ1q/66KGVj9D9+AAvO47TxOYKJy+2Kl9qUh1VHnoUvqcCS+CG
- qJdAoj93g/02qAl+A2IIJTNMP6iWmUPqXBPbPTyfvgX8IKY9Xj7v55zV/lw8irAJu03y
- /Weg==
-X-Gm-Message-State: APjAAAUp8FS0VMV7zSQXy5GHrmw3wNwkhwTIL7QdW7zrqKZ49XplrW8l
- YNHH5dUlIADqfR55js3ILs4zyZn0phSrpR4MK/8=
-X-Google-Smtp-Source: APXvYqwUMUM8xHyDpVytSJUd5V6/tBpeQ32KQMaiShBwWphdz6dzZgfKC4S9jV0ccAqMBtj65ukvsTSOI8n3l+Z3ook=
-X-Received: by 2002:a92:8c1b:: with SMTP id o27mr27761240ild.42.1571679748980; 
- Mon, 21 Oct 2019 10:42:28 -0700 (PDT)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1223987E8B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2019 20:10:28 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 Oct 2019 13:10:27 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.67,324,1566889200"; d="scan'208";a="201468756"
+Received: from unknown (HELO [10.241.228.144]) ([10.241.228.144])
+ by orsmga006.jf.intel.com with ESMTP; 21 Oct 2019 13:10:26 -0700
+To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>
+References: <1570515415-45593-3-git-send-email-sridhar.samudrala@intel.com>
+ <CAADnVQ+XxmvY0cs8MYriMMd7=2TSEm4zCtB+fs2vkwdUY6UgAQ@mail.gmail.com>
+ <3ED8E928C4210A4289A677D2FEB48235140134CE@fmsmsx111.amr.corp.intel.com>
+ <2bc26acd-170d-634e-c066-71557b2b3e4f@intel.com>
+ <CAADnVQ+qq6RLMjh5bB1ugXP5p7vYM2F1fLGFQ2pL=2vhCLiBdA@mail.gmail.com>
+ <2032d58c-916f-d26a-db14-bd5ba6ad92b9@intel.com>
+ <CAADnVQ+CH1YM52+LfybLS+NK16414Exrvk1QpYOF=HaT4KRaxg@mail.gmail.com>
+ <acf69635-5868-f876-f7da-08954d1f690e@intel.com>
+ <20191019001449.fk3gnhih4nx724pm@ast-mbp>
+ <6f281517-3785-ce46-65de-e2f78576783b@intel.com>
+ <20191019022525.w5xbwkav2cpqkfwi@ast-mbp> <877e4zd8py.fsf@toke.dk>
+ <CAJ+HfNj07FwmU2GGpUYw56PRwu4pHyHNSkbCOogbMB5zB2QqWA@mail.gmail.com>
+From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
+Message-ID: <7642a460-9ba3-d9f7-6cf8-aac45c7eef0d@intel.com>
+Date: Mon, 21 Oct 2019 13:10:26 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <20191021163959.17511-1-bob.beckett@collabora.com>
-In-Reply-To: <20191021163959.17511-1-bob.beckett@collabora.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Mon, 21 Oct 2019 10:42:17 -0700
-Message-ID: <CAKgT0UfKKUnb97Wh7kwBpVsZzF2Ust5vg1SSNOeJtjz0jE8fhA@mail.gmail.com>
-To: Robert Beckett <bob.beckett@collabora.com>
-Subject: Re: [Intel-wired-lan] [PATCH] igb: dont drop packets if rx flow
- control is enabled
+In-Reply-To: <CAJ+HfNj07FwmU2GGpUYw56PRwu4pHyHNSkbCOogbMB5zB2QqWA@mail.gmail.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] FW: [PATCH bpf-next 2/4] xsk: allow AF_XDP
+ sockets to receive packets directly from a queue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,126 +76,196 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
+ Netdev <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ Alexei Starovoitov <alexei.starovoitov@gmail.com>, "Herbert,
+ Tom" <tom.herbert@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 21, 2019 at 9:44 AM Robert Beckett
-<bob.beckett@collabora.com> wrote:
->
-> If rx flow control has been enabled (via autoneg or forced), packets
-> should not be dropped due to rx descriptor ring exhaustion. Instead
-> pause frames should be used to apply back pressure.
->
-> Move SRRCTL setup to its own function for easy reuse and only set drop
-> enable bit if rx flow control is not enabled.
->
-> Signed-off-by: Robert Beckett <bob.beckett@collabora.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb.h         |  1 +
->  drivers/net/ethernet/intel/igb/igb_ethtool.c |  8 ++++
->  drivers/net/ethernet/intel/igb/igb_main.c    | 46 ++++++++++++++------
->  3 files changed, 41 insertions(+), 14 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-> index ca54e268d157..49b5fa9d4783 100644
-> --- a/drivers/net/ethernet/intel/igb/igb.h
-> +++ b/drivers/net/ethernet/intel/igb/igb.h
-> @@ -661,6 +661,7 @@ void igb_configure_tx_ring(struct igb_adapter *, struct igb_ring *);
->  void igb_configure_rx_ring(struct igb_adapter *, struct igb_ring *);
->  void igb_setup_tctl(struct igb_adapter *);
->  void igb_setup_rctl(struct igb_adapter *);
-> +void igb_setup_srrctl(struct igb_adapter *, struct igb_ring *);
->  netdev_tx_t igb_xmit_frame_ring(struct sk_buff *, struct igb_ring *);
->  void igb_alloc_rx_buffers(struct igb_ring *, u16);
->  void igb_update_stats(struct igb_adapter *);
-> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> index 5acf3b743876..3c951f363d0e 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> @@ -396,6 +396,7 @@ static int igb_set_pauseparam(struct net_device *netdev,
->         struct igb_adapter *adapter = netdev_priv(netdev);
->         struct e1000_hw *hw = &adapter->hw;
->         int retval = 0;
-> +       int i;
->
->         /* 100basefx does not support setting link flow control */
->         if (hw->dev_spec._82575.eth_flags.e100_base_fx)
-> @@ -428,6 +429,13 @@ static int igb_set_pauseparam(struct net_device *netdev,
->
->                 retval = ((hw->phy.media_type == e1000_media_type_copper) ?
->                           igb_force_mac_fc(hw) : igb_setup_link(hw));
-> +
-> +               /* Make sure SRRCTL considers new fc settings for each ring */
-> +               for (i = 0; i < adapter->num_rx_queues; i++) {
-> +                       struct igb_ring *ring = adapter->rx_ring[i];
-> +
-> +                       igb_setup_srrctl(adapter, ring);
-> +               }
->         }
-
-So one issue here is that this is going through and toggling things in
-the case that SR-IOV is enabled. We likely should not be doing that.
-If SR-IOV is enabled we should always have the DROP_EN bit set.
-Otherwise we run the risk of soft-locking the part since a single
-stopped Rx ring can cause both Tx and Rx to fail due to internal
-switching of the part.
-
->
->         clear_bit(__IGB_RESETTING, &adapter->state);
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index ffaa6e031632..6b04c961c6e4 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -4488,6 +4488,36 @@ static inline void igb_set_vmolr(struct igb_adapter *adapter,
->         wr32(E1000_VMOLR(vfn), vmolr);
->  }
->
-> +/**
-> + *  igb_setup_srrctl - configure the split and replication receive control
-> + *                    registers
-> + *  @adapter: Board private structure
-> + *  @ring: receive ring to be configured
-> + **/
-> +void igb_setup_srrctl(struct igb_adapter *adapter, struct igb_ring *ring)
-> +{
-> +       struct e1000_hw *hw = &adapter->hw;
-> +       int reg_idx = ring->reg_idx;
-> +       u32 srrctl;
-> +
-> +       srrctl = IGB_RX_HDR_LEN << E1000_SRRCTL_BSIZEHDRSIZE_SHIFT;
-> +       if (ring_uses_large_buffer(ring))
-> +               srrctl |= IGB_RXBUFFER_3072 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
-> +       else
-> +               srrctl |= IGB_RXBUFFER_2048 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
-> +       srrctl |= E1000_SRRCTL_DESCTYPE_ADV_ONEBUF;
-> +       if (hw->mac.type >= e1000_82580)
-> +               srrctl |= E1000_SRRCTL_TIMESTAMP;
-> +       /* Only set Drop Enable if we are supporting multiple queues
-> +        * and rx flow control is disabled
-> +        */
-> +       if (!(hw->fc.current_mode & e1000_fc_rx_pause) &&
-> +           (adapter->vfs_allocated_count || adapter->num_rx_queues > 1))
-> +               srrctl |= E1000_SRRCTL_DROP_EN;
-> +
-> +       wr32(E1000_SRRCTL(reg_idx), srrctl);
-> +}
-
-I would recommend making the criteria that either you have VFs
-allocated or more than one queue and flow control enabled. In the
-SR-IOV case I would never recommend letting any Rx queue not have the
-DROP_EN bit set. The reason being that Tx can be stopped if it is
-waiting on the Rx FIFO to become available for a frame that must be
-switched from Tx to Rx.
-
-Also, from everything I have seen this can negatively impact
-performance as one overused queue can drag down the performance for
-all other queues.
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTAvMjAvMjAxOSAxMDoxMiBBTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToKPiBPbiBTdW4sIDIw
+IE9jdCAyMDE5IGF0IDEyOjE1LCBUb2tlIEjDuGlsYW5kLUrDuHJnZW5zZW4gPHRva2VAcmVkaGF0
+LmNvbT4gd3JvdGU6Cj4+Cj4+IEFsZXhlaSBTdGFyb3ZvaXRvdiA8YWxleGVpLnN0YXJvdm9pdG92
+QGdtYWlsLmNvbT4gd3JpdGVzOgo+Pgo+Pj4gT24gRnJpLCBPY3QgMTgsIDIwMTkgYXQgMDU6NDU6
+MjZQTSAtMDcwMCwgU2FtdWRyYWxhLCBTcmlkaGFyIHdyb3RlOgo+Pj4+IE9uIDEwLzE4LzIwMTkg
+NToxNCBQTSwgQWxleGVpIFN0YXJvdm9pdG92IHdyb3RlOgo+Pj4+PiBPbiBGcmksIE9jdCAxOCwg
+MjAxOSBhdCAxMTo0MDowN0FNIC0wNzAwLCBTYW11ZHJhbGEsIFNyaWRoYXIgd3JvdGU6Cj4+Pj4+
+Pgo+Pj4+Pj4gUGVyZiByZXBvcnQgZm9yICJBRl9YRFAgZGVmYXVsdCByeGRyb3AiIHdpdGggcGF0
+Y2hlZCBrZXJuZWwgLSBtaXRpZ2F0aW9ucyBPTgo+Pj4+Pj4gPT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPj4+
+Pj4+IFNhbXBsZXM6IDQ0SyBvZiBldmVudCAnY3ljbGVzJywgRXZlbnQgY291bnQgKGFwcHJveC4p
+OiAzODUzMjM4OTU0MQo+Pj4+Pj4gT3ZlcmhlYWQgIENvbW1hbmQgICAgICAgICAgU2hhcmVkIE9i
+amVjdCAgICAgICAgICAgICAgU3ltYm9sCj4+Pj4+PiAgICAgMTUuMzElICBrc29mdGlycWQvMjgg
+ICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgIFtrXSBpNDBlX2NsZWFuX3J4X2lycV96Ywo+
+Pj4+Pj4gICAgIDEwLjUwJSAga3NvZnRpcnFkLzI4ICAgICBicGZfcHJvZ184MGI1NWQ4YTc2MzAz
+Nzg1ICBba10gYnBmX3Byb2dfODBiNTVkOGE3NjMwMzc4NQo+Pj4+Pj4gICAgICA5LjQ4JSAgeGRw
+c29jayAgICAgICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9jbGVhbl9y
+eF9pcnFfemMKPj4+Pj4+ICAgICAgOC42MiUgIHhkcHNvY2sgICAgICAgICAgeGRwc29jayAgICAg
+ICAgICAgICAgICAgICAgWy5dIG1haW4KPj4+Pj4+ICAgICAgNy4xMSUgIGtzb2Z0aXJxZC8yOCAg
+ICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIHhza19yY3YKPj4+Pj4+ICAgICAgNS44
+MSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIHhkcF9k
+b19yZWRpcmVjdAo+Pj4+Pj4gICAgICA0LjQ2JSAgeGRwc29jayAgICAgICAgICBicGZfcHJvZ184
+MGI1NWQ4YTc2MzAzNzg1ICBba10gYnBmX3Byb2dfODBiNTVkOGE3NjMwMzc4NQo+Pj4+Pj4gICAg
+ICAzLjgzJSAgeGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgICBba10g
+eHNrX3Jjdgo+Pj4+Pgo+Pj4+PiB3aHkgZXZlcnl0aGluZyBpcyBkdXBsaWNhdGVkPwo+Pj4+PiBT
+YW1lIGNvZGUgcnVucyBpbiBkaWZmZXJlbnQgdGFza3MgPwo+Pj4+Cj4+Pj4gWWVzLiBsb29rcyBs
+aWtlIHRoZXNlIGZ1bmN0aW9ucyBydW4gZnJvbSBib3RoIHRoZSBhcHAoeGRwc29jaykgY29udGV4
+dCBhbmQga3NvZnRpcnFkIGNvbnRleHQuCj4+Pj4KPj4+Pj4KPj4+Pj4+ICAgICAgMi44MSUgIGtz
+b2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIGJwZl94ZHBfcmVk
+aXJlY3RfbWFwCj4+Pj4+PiAgICAgIDIuNzglICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1s
+aW51eF0gICAgICAgICAgIFtrXSB4c2tfbWFwX2xvb2t1cF9lbGVtCj4+Pj4+PiAgICAgIDIuNDQl
+ICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4ZHBfZG9f
+cmVkaXJlY3QKPj4+Pj4+ICAgICAgMi4xOSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxp
+bnV4XSAgICAgICAgICAgW2tdIF9feHNrX21hcF9yZWRpcmVjdAo+Pj4+Pj4gICAgICAxLjYyJSAg
+a3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgICBba10geHNrX3VtZW1f
+cGVla19hZGRyCj4+Pj4+PiAgICAgIDEuNTclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1s
+aW51eF0gICAgICAgICAgIFtrXSB4c2tfdW1lbV9wZWVrX2FkZHIKPj4+Pj4+ICAgICAgMS4zMiUg
+IGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIGRtYV9kaXJl
+Y3Rfc3luY19zaW5nbGVfZm9yX2NwdQo+Pj4+Pj4gICAgICAxLjI4JSAgeGRwc29jayAgICAgICAg
+ICBba2VybmVsLnZtbGludXhdICAgICAgICAgICBba10gYnBmX3hkcF9yZWRpcmVjdF9tYXAKPj4+
+Pj4+ICAgICAgMS4xNSUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAg
+ICAgW2tdIGRtYV9kaXJlY3Rfc3luY19zaW5nbGVfZm9yX2RldmljZQo+Pj4+Pj4gICAgICAxLjEy
+JSAgeGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgICBba10geHNrX21h
+cF9sb29rdXBfZWxlbQo+Pj4+Pj4gICAgICAxLjA2JSAgeGRwc29jayAgICAgICAgICBba2VybmVs
+LnZtbGludXhdICAgICAgICAgICBba10gX194c2tfbWFwX3JlZGlyZWN0Cj4+Pj4+PiAgICAgIDAu
+OTQlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBkbWFf
+ZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9kZXZpY2UKPj4+Pj4+ICAgICAgMC43NSUgIGtzb2Z0aXJx
+ZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIF9feDg2X2luZGlyZWN0X3Ro
+dW5rX3JheAo+Pj4+Pj4gICAgICAwLjY2JSAga3NvZnRpcnFkLzI4ICAgICBbaTQwZV0gICAgICAg
+ICAgICAgICAgICAgICBba10gaTQwZV9jbGVhbl9wcm9ncmFtbWluZ19zdGF0dXMKPj4+Pj4+ICAg
+ICAgMC42NCUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2td
+IG5ldF9yeF9hY3Rpb24KPj4+Pj4+ICAgICAgMC42NCUgIHN3YXBwZXIgICAgICAgICAgW2tlcm5l
+bC52bWxpbnV4XSAgICAgICAgICAgW2tdIGludGVsX2lkbGUKPj4+Pj4+ICAgICAgMC42MiUgIGtz
+b2Z0aXJxZC8yOCAgICAgW2k0MGVdICAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVfbmFwaV9w
+b2xsCj4+Pj4+PiAgICAgIDAuNTclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0g
+ICAgICAgICAgIFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9jcHUKPj4+Pj4+Cj4+Pj4+
+PiBQZXJmIHJlcG9ydCBmb3IgIkFGX1hEUCBkaXJlY3Qgcnhkcm9wIiB3aXRoIHBhdGNoZWQga2Vy
+bmVsIC0gbWl0aWdhdGlvbnMgT04KPj4+Pj4+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4+Pj4+PiBTYW1w
+bGVzOiA0Nksgb2YgZXZlbnQgJ2N5Y2xlcycsIEV2ZW50IGNvdW50IChhcHByb3guKTogMzgzODcw
+MTg1ODUKPj4+Pj4+IE92ZXJoZWFkICBDb21tYW5kICAgICAgICAgIFNoYXJlZCBPYmplY3QgICAg
+ICAgICAgICAgU3ltYm9sCj4+Pj4+PiAgICAgMjEuOTQlICBrc29mdGlycWQvMjggICAgIFtpNDBl
+XSAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVfY2xlYW5fcnhfaXJxX3pjCj4+Pj4+PiAgICAg
+MTQuMzYlICB4ZHBzb2NrICAgICAgICAgIHhkcHNvY2sgICAgICAgICAgICAgICAgICAgWy5dIG1h
+aW4KPj4+Pj4+ICAgICAxMS41MyUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAg
+ICAgICAgICBba10geHNrX3Jjdgo+Pj4+Pj4gICAgIDExLjMyJSAgeGRwc29jayAgICAgICAgICBb
+aTQwZV0gICAgICAgICAgICAgICAgICAgIFtrXSBpNDBlX2NsZWFuX3J4X2lycV96Ywo+Pj4+Pj4g
+ICAgICA0LjAyJSAgeGRwc29jayAgICAgICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtr
+XSB4c2tfcmN2Cj4+Pj4+PiAgICAgIDIuOTElICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1s
+aW51eF0gICAgICAgICAgW2tdIHhkcF9kb19yZWRpcmVjdAo+Pj4+Pj4gICAgICAyLjQ1JSAga3Nv
+ZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtrXSB4c2tfdW1lbV9wZWVr
+X2FkZHIKPj4+Pj4+ICAgICAgMi4xOSUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4
+XSAgICAgICAgICBba10geHNrX3VtZW1fcGVla19hZGRyCj4+Pj4+PiAgICAgIDIuMDglICBrc29m
+dGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2tdIGJwZl9kaXJlY3RfeHNr
+Cj4+Pj4+PiAgICAgIDIuMDclICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAg
+ICAgICAgW2tdIGRtYV9kaXJlY3Rfc3luY19zaW5nbGVfZm9yX2NwdQo+Pj4+Pj4gICAgICAxLjUz
+JSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhdICAgICAgICAgIFtrXSBkbWFfZGly
+ZWN0X3N5bmNfc2luZ2xlX2Zvcl9kZXZpY2UKPj4+Pj4+ICAgICAgMS4zOSUgIHhkcHNvY2sgICAg
+ICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10gZG1hX2RpcmVjdF9zeW5jX3Npbmds
+ZV9mb3JfZGV2aWNlCj4+Pj4+PiAgICAgIDEuMjIlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwu
+dm1saW51eF0gICAgICAgICAgW2tdIHhkcF9nZXRfeHNrX2Zyb21fcWlkCj4+Pj4+PiAgICAgIDEu
+MTIlICBrc29mdGlycWQvMjggICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVf
+Y2xlYW5fcHJvZ3JhbW1pbmdfc3RhdHVzCj4+Pj4+PiAgICAgIDAuOTYlICBrc29mdGlycWQvMjgg
+ICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVfbmFwaV9wb2xsCj4+Pj4+PiAg
+ICAgIDAuOTUlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2td
+IG5ldF9yeF9hY3Rpb24KPj4+Pj4+ICAgICAgMC44OSUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5l
+bC52bWxpbnV4XSAgICAgICAgICBba10geGRwX2RvX3JlZGlyZWN0Cj4+Pj4+PiAgICAgIDAuODMl
+ICBzd2FwcGVyICAgICAgICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgW2tdIGk0MGVfY2xl
+YW5fcnhfaXJxX3pjCj4+Pj4+PiAgICAgIDAuNzAlICBzd2FwcGVyICAgICAgICAgIFtrZXJuZWwu
+dm1saW51eF0gICAgICAgICAgW2tdIGludGVsX2lkbGUKPj4+Pj4+ICAgICAgMC42NiUgIHhkcHNv
+Y2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICBba10gZG1hX2RpcmVjdF9zeW5j
+X3NpbmdsZV9mb3JfY3B1Cj4+Pj4+PiAgICAgIDAuNjAlICB4ZHBzb2NrICAgICAgICAgIFtrZXJu
+ZWwudm1saW51eF0gICAgICAgICAgW2tdIGJwZl9kaXJlY3RfeHNrCj4+Pj4+PiAgICAgIDAuNTAl
+ICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgW2tdIHhza191bWVt
+X2Rpc2NhcmRfYWRkcgo+Pj4+Pj4KPj4+Pj4+IEJhc2VkIG9uIHRoZSBwZXJmIHJlcG9ydHMgY29t
+cGFyaW5nIEFGX1hEUCBkZWZhdWx0IGFuZCBkaXJlY3Qgcnhkcm9wLCB3ZSBjYW4gc2F5IHRoYXQK
+Pj4+Pj4+IEFGX1hEUCBkaXJlY3Qgcnhkcm9wIGNvZGVwYXRoIGlzIGF2b2lkaW5nIHRoZSBvdmVy
+aGVhZCBvZiBnb2luZyB0aHJvdWdoIHRoZXNlIGZ1bmN0aW9ucwo+Pj4+Pj4gICBicGZfcHJvZ194
+eHgKPj4+Pj4+ICAgICAgICAgICBicGZfeGRwX3JlZGlyZWN0X21hcAo+Pj4+Pj4gICB4c2tfbWFw
+X2xvb2t1cF9lbGVtCj4+Pj4+PiAgICAgICAgICAgX194c2tfbWFwX3JlZGlyZWN0Cj4+Pj4+PiBX
+aXRoIEFGX1hEUCBkaXJlY3QsIHhza19yY3YoKSBpcyBkaXJlY3RseSBjYWxsZWQgdmlhIGJwZl9k
+aXJlY3RfeHNrKCkgaW4geGRwX2RvX3JlZGlyZWN0KCkKPj4+Pj4KPj4+Pj4gSSBkb24ndCB0aGlu
+ayB5b3UncmUgaWRlbnRpZnlpbmcgdGhlIG92ZXJoZWFkIGNvcnJlY3RseS4KPj4+Pj4geHNrX21h
+cF9sb29rdXBfZWxlbSBpcyAxJQo+Pj4+PiBidXQgYnBmX3hkcF9yZWRpcmVjdF9tYXAoKSBzdXBw
+b3NlIHRvIGNhbGwgX194c2tfbWFwX2xvb2t1cF9lbGVtKCkKPj4+Pj4gd2hpY2ggaXMgYSBkaWZm
+ZXJlbnQgZnVuY3Rpb246Cj4+Pj4+IGZmZmZmZmZmODE0OTNmZTAgVCBfX3hza19tYXBfbG9va3Vw
+X2VsZW0KPj4+Pj4gZmZmZmZmZmY4MTQ5MmU4MCB0IHhza19tYXBfbG9va3VwX2VsZW0KPj4+Pj4K
+Pj4+Pj4gMTAlIGZvciBicGZfcHJvZ184MGI1NWQ4YTc2MzAzNzg1IGlzIGh1Z2UuCj4+Pj4+IEl0
+J3MgdGhlIGFjdHVhbCBjb2RlIG9mIHRoZSBwcm9ncmFtIF93aXRob3V0XyBhbnkgaGVscGVycy4K
+Pj4+Pj4gSG93IGRvZXMgdGhlIHByb2dyYW0gYWN0dWFsbHkgbG9vaz8KPj4+Pgo+Pj4+IEl0IGlz
+IHRoZSB4ZHAgcHJvZ3JhbSB0aGF0IGlzIGxvYWRlZCB2aWEgeHNrX2xvYWRfeGRwX3Byb2coKSBp
+biB0b29scy9saWIvYnBmL3hzay5jCj4+Pj4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2Nt
+L2xpbnV4L2tlcm5lbC9naXQvYnBmL2JwZi1uZXh0LmdpdC90cmVlL3Rvb2xzL2xpYi9icGYveHNr
+LmMjbjI2OAo+Pj4KPj4+IEkgc2VlLiBMb29rcyBsaWtlIG1hcF9nZW5fbG9va3VwIHdhcyBuZXZl
+ciBpbXBsZW1lbnRlZCBmb3IgeHNrbWFwLgo+Pj4gSG93IGFib3V0IGFkZGluZyBpdCBmaXJzdCB0
+aGUgd2F5IGFycmF5X21hcF9nZW5fbG9va3VwKCkgaXMgaW1wbGVtZW50ZWQ/Cj4+PiBUaGlzIHdp
+bGwgZWFzaWx5IGdpdmUgMnggcGVyZiBnYWluLgo+Pgo+PiBJIGd1ZXNzIHdlIHNob3VsZCBpbXBs
+ZW1lbnQgdGhpcyBmb3IgZGV2bWFwcyBhcyB3ZWxsIG5vdyB0aGF0IHdlIGFsbG93Cj4+IGxvb2t1
+cHMgaW50byB0aG9zZS4KPj4KPj4gSG93ZXZlciwgaW4gdGhpcyBwYXJ0aWN1bGFyIGV4YW1wbGUs
+IHRoZSBsb29rdXAgZnJvbSBCUEYgaXMgbm90IGFjdHVhbGx5Cj4+IG5lZWRlZCwgc2luY2UgYnBm
+X3JlZGlyZWN0X21hcCgpIHdpbGwgcmV0dXJuIGEgY29uZmlndXJhYmxlIGVycm9yIHZhbHVlCj4+
+IHdoZW4gdGhlIG1hcCBsb29rdXAgZmFpbHMgKGZvciBleGFjdGx5IHRoaXMgdXNlIGNhc2UpLgo+
+Pgo+PiBTbyByZXBsYWNpbmc6Cj4+Cj4+IGlmIChicGZfbWFwX2xvb2t1cF9lbGVtKCZ4c2tzX21h
+cCwgJmluZGV4KSkKPj4gICAgICByZXR1cm4gYnBmX3JlZGlyZWN0X21hcCgmeHNrc19tYXAsIGlu
+ZGV4LCAwKTsKPj4KPj4gd2l0aCBzaW1wbHkKPj4KPj4gcmV0dXJuIGJwZl9yZWRpcmVjdF9tYXAo
+Jnhza3NfbWFwLCBpbmRleCwgWERQX1BBU1MpOwo+Pgo+PiB3b3VsZCBzYXZlIHRoZSBjYWxsIHRv
+IHhza19tYXBfbG9va3VwX2VsZW0oKS4KPj4KPiAKPiBUaGFua3MgZm9yIHRoZSByZW1pbmRlciEg
+SSBqdXN0IHN1Ym1pdHRlZCBhIHBhdGNoLiBTdGlsbCwgZG9pbmcgdGhlCj4gbWFwX2dlbl9sb29r
+dXAoKSAgZm9yIHhzay9kZXZtYXBzIHN0aWxsIG1ha2VzIHNlbnNlIQo+IAoKSSB0cmllZCBCam9y
+bidzIHBhdGNoIHRoYXQgYXZvaWRzIHRoZSBsb29rdXBzIGluIHRoZSBCUEYgcHJvZy4KaHR0cHM6
+Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzIwMTkxMDIxMTA1OTM4LjExODIwLTEtYmpvcm4udG9w
+ZWxAZ21haWwuY29tLwoKV2l0aCB0aGlzIHBhdGNoIEkgYW0gYWxzbyBzZWVpbmcgYXJvdW5kIDMt
+NCUgaW5jcmVhc2UgaW4geGRwc29jayByeGRyb3AgcGVyZm9ybWFuY2UgYW5kCnRoZSBwZXJmIHJl
+cG9ydCBsb29rcyBsaWtlIHRoaXMuCgpTYW1wbGVzOiA0NEsgb2YgZXZlbnQgJ2N5Y2xlcycsIEV2
+ZW50IGNvdW50IChhcHByb3guKTogMzg3NDk5NjUyMDQKT3ZlcmhlYWQgIENvbW1hbmQgICAgICAg
+ICAgU2hhcmVkIE9iamVjdCAgICAgICAgICAgICAgU3ltYm9sCiAgIDE2LjA2JSAga3NvZnRpcnFk
+LzI4ICAgICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9jbGVhbl9yeF9pcnFf
+emMKICAgMTAuMTglICBrc29mdGlycWQvMjggICAgIGJwZl9wcm9nXzNjODI1MWM3ZTBmZWY4ZGIg
+IFtrXSBicGZfcHJvZ18zYzgyNTFjN2UwZmVmOGRiCiAgIDEwLjE1JSAgeGRwc29jayAgICAgICAg
+ICBbaTQwZV0gICAgICAgICAgICAgICAgICAgICBba10gaTQwZV9jbGVhbl9yeF9pcnFfemMKICAg
+MTAuMDYlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4
+c2tfcmN2CiAgICA3LjQ1JSAgeGRwc29jayAgICAgICAgICB4ZHBzb2NrICAgICAgICAgICAgICAg
+ICAgICBbLl0gbWFpbgogICAgNS43NiUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4
+XSAgICAgICAgICAgW2tdIHhkcF9kb19yZWRpcmVjdAogICAgNC41MSUgIHhkcHNvY2sgICAgICAg
+ICAgYnBmX3Byb2dfM2M4MjUxYzdlMGZlZjhkYiAgW2tdIGJwZl9wcm9nXzNjODI1MWM3ZTBmZWY4
+ZGIKICAgIDMuNjclICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAg
+IFtrXSB4c2tfcmN2CiAgICAzLjA2JSAga3NvZnRpcnFkLzI4ICAgICBba2VybmVsLnZtbGludXhd
+ICAgICAgICAgICBba10gYnBmX3hkcF9yZWRpcmVjdF9tYXAKICAgIDIuMzQlICBrc29mdGlycWQv
+MjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3hza19tYXBfcmVkaXJlY3QK
+ICAgIDIuMzMlICB4ZHBzb2NrICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtr
+XSB4ZHBfZG9fcmVkaXJlY3QKICAgIDEuNjklICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1s
+aW51eF0gICAgICAgICAgIFtrXSB4c2tfdW1lbV9wZWVrX2FkZHIKICAgIDEuNjklICB4ZHBzb2Nr
+ICAgICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSB4c2tfdW1lbV9wZWVrX2Fk
+ZHIKICAgIDEuNDIlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAg
+IFtrXSBkbWFfZGlyZWN0X3N5bmNfc2luZ2xlX2Zvcl9jcHUKICAgIDEuMTklICB4ZHBzb2NrICAg
+ICAgICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBicGZfeGRwX3JlZGlyZWN0X21h
+cAogICAgMS4xMyUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAg
+W2tdIGRtYV9kaXJlY3Rfc3luY19zaW5nbGVfZm9yX2RldmljZQogICAgMC45NSUgIGtzb2Z0aXJx
+ZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIGRtYV9kaXJlY3Rfc3luY19z
+aW5nbGVfZm9yX2RldmljZQogICAgMC45MiUgIHN3YXBwZXIgICAgICAgICAgW2tlcm5lbC52bWxp
+bnV4XSAgICAgICAgICAgW2tdIGludGVsX2lkbGUKICAgIDAuOTIlICB4ZHBzb2NrICAgICAgICAg
+IFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3hza19tYXBfcmVkaXJlY3QKICAgIDAu
+ODAlICBrc29mdGlycWQvMjggICAgIFtrZXJuZWwudm1saW51eF0gICAgICAgICAgIFtrXSBfX3g4
+Nl9pbmRpcmVjdF90aHVua19yYXgKICAgIDAuNzMlICBrc29mdGlycWQvMjggICAgIFtpNDBlXSAg
+ICAgICAgICAgICAgICAgICAgIFtrXSBpNDBlX2NsZWFuX3Byb2dyYW1taW5nX3N0YXR1cwogICAg
+MC43MSUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIF9f
+eHNrX21hcF9sb29rdXBfZWxlbQogICAgMC42MyUgIGtzb2Z0aXJxZC8yOCAgICAgW2tlcm5lbC52
+bWxpbnV4XSAgICAgICAgICAgW2tdIG5ldF9yeF9hY3Rpb24KICAgIDAuNjIlICBrc29mdGlycWQv
+MjggICAgIFtpNDBlXSAgICAgICAgICAgICAgICAgICAgIFtrXSBpNDBlX25hcGlfcG9sbAogICAg
+MC41OCUgIHhkcHNvY2sgICAgICAgICAgW2tlcm5lbC52bWxpbnV4XSAgICAgICAgICAgW2tdIGRt
+YV9kaXJlY3Rfc3luY19zaW5nbGVfZm9yX2NwdQoKU28gd2l0aCB0aGlzIHBhdGNoIGFwcGxpZWQs
+IGRpcmVjdCByZWNlaXZlIHBlcmZvcm1hbmNlIGltcHJvdmVtZW50IGNvbWVzIGRvd24gZnJvbSA0
+NiUgdG8gNDIlLgpJIHRoaW5rIGl0IGlzIHN0aWxsIHN1YnN0YW50aWFsIGVub3VnaCB0byBwcm92
+aWRlIGFuIG9wdGlvbiB0byBhbGxvdyBkaXJlY3QgcmVjZWl2ZSBmb3IKY2VydGFpbiB1c2UgY2Fz
+ZXMuIElmIGl0IGlzIE9LLCBpIGNhbiByZS1zcGluIGFuZCBzdWJtaXQgdGhlIHBhdGNoZXMgb24g
+dG9wIG9mIHRoZSBsYXRlc3QgYnBmLW5leHQKClRoYW5rcwpTcmlkaGFyCgoKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
+bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
