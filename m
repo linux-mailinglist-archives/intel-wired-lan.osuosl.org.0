@@ -1,72 +1,46 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56EA3DFBAE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2019 04:35:41 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42BCBE077D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2019 17:32:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B45286079;
-	Tue, 22 Oct 2019 02:35:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 755BD227F7;
+	Tue, 22 Oct 2019 15:32:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C1mKQU6Vv6v9; Tue, 22 Oct 2019 02:35:39 +0000 (UTC)
+	with ESMTP id RoH2tWQVnpJM; Tue, 22 Oct 2019 15:32:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 735FD85FC9;
-	Tue, 22 Oct 2019 02:35:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id ECF502274E;
+	Tue, 22 Oct 2019 15:32:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E7C811BF363
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 02:35:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 649EB1BF5DB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 15:32:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF8AB84C23
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 02:35:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 568DE857B0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 15:32:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QIJA6SwabBDC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Oct 2019 02:35:36 +0000 (UTC)
+ with ESMTP id Z0KlJs-tZW7h for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Oct 2019 15:32:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E74B685BBD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 02:35:35 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2019 19:35:35 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,325,1566889200"; d="scan'208";a="227536442"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by fmsmga002.fm.intel.com with ESMTP; 21 Oct 2019 19:35:35 -0700
-Received: from orsmsx116.amr.corp.intel.com (10.22.240.14) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 21 Oct 2019 19:35:34 -0700
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.9]) by
- ORSMSX116.amr.corp.intel.com ([169.254.7.79]) with mapi id 14.03.0439.000;
- Mon, 21 Oct 2019 19:35:34 -0700
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Navid Emamdoost <navid.emamdoost@gmail.com>
-Thread-Topic: [PATCH] ethernet/intel:  release the local packet buffer
-Thread-Index: AQHVbbQoopumek9cY0G4nbDkuqi67admH4Jg
-Date: Tue, 22 Oct 2019 02:35:33 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971541EE@ORSMSX103.amr.corp.intel.com>
-References: <20190918000013.32083-1-navid.emamdoost@gmail.com>
-In-Reply-To: <20190918000013.32083-1-navid.emamdoost@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMTM4YzlmZmUtNThjMi00ZWRiLWE1MDctOTI1ZWRhYmQ4Mzc2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWDQ1cE1KVzVLRjl6VDVFZ1VLQ3pweGJ2SEZKK2dhRE9JZ0xxVWZtbCtCSm1FS3VGbHpwQkFubE85ZU5hSVp6UiJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+Received: from bhuna.collabora.co.uk (bhuna.collabora.co.uk [46.235.227.227])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2725F84FA4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 15:32:23 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: bbeckett) with ESMTPSA id 8F26A28E66D
+From: Robert Beckett <bob.beckett@collabora.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 22 Oct 2019 16:31:41 +0100
+Message-Id: <20191022153155.9008-1-bob.beckett@collabora.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] ethernet/intel: release the local
- packet buffer
+Subject: [Intel-wired-lan] [PATCH v2] igb: dont drop packets if rx flow
+ control is enabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,94 +53,142 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "kjlu@umn.edu" <kjlu@umn.edu>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "emamd001@umn.edu" <emamd001@umn.edu>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "smccaman@umn.edu" <smccaman@umn.edu>, "David S. Miller" <davem@davemloft.net>
+Cc: Robert Beckett <bob.beckett@collabora.com>, netdev@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: netdev-owner@vger.kernel.org [mailto:netdev-
-> owner@vger.kernel.org] On Behalf Of Navid Emamdoost
-> Sent: Tuesday, September 17, 2019 5:00 PM
-> Cc: emamd001@umn.edu; smccaman@umn.edu; kjlu@umn.edu; Navid
-> Emamdoost <navid.emamdoost@gmail.com>; Kirsher, Jeffrey T
-> <jeffrey.t.kirsher@intel.com>; David S. Miller <davem@davemloft.net>;
-> intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
-> kernel@vger.kernel.org
-> Subject: [PATCH] ethernet/intel: release the local packet bufferq
-> 
-> In e100_loopback_test the buffer allocated for the local packet needs to
-> be released.
-> 
-> Signed-off-by: Navid Emamdoost <navid.emamdoost@gmail.com>
-> ---
->  drivers/net/ethernet/intel/e100.c | 1 +
->  1 file changed, 1 insertion(+)
+If rx flow control has been enabled (via autoneg or forced), packets
+should not be dropped due to rx descriptor ring exhaustion. Instead
+pause frames should be used to apply back pressure. This only applies
+if VFs are not in use.
 
-Sorry for the delay getting to this, took me a bit to get the hardware together.
+Move SRRCTL setup to its own function for easy reuse and only set drop
+enable bit if rx flow control is not enabled.
 
-NAK, this patch introduces a trace to my test machines when I run the ethtool diagnostic on an e100 port, the system will sometimes survive a bit after the trace, however if I try to run traffic across the interface after the trace the system panics and locks up with a kernel not syncing message.  I do not have a capture of the lock up panic (I can probably get one via serial port or netconsole if really necessary.)  The trace before the lock up panic is as follows:
----------------------------------------------------------------------------
-[  102.460446] BUG: Bad page state in process ethtool  pfn:78db8
-[  102.460474] page:ffffd5bf41e36e00 refcount:-1 mapcount:0 mapping:0000000000000000 index:0x0
-[  102.460505] flags: 0xfffffc0000000()
-[  102.460523] raw: 000fffffc0000000 dead000000000100 dead000000000122 0000000000000000
-[  102.460553] raw: 0000000000000000 0000000000000000 ffffffffffffffff 0000000000000000
-[  102.460582] page dumped because: nonzero _refcount
-[  102.460602] Modules linked in: snd_hda_codec_realtek snd_hda_codec_generic snd_hda_intel snd_intel_nhlt snd_hda_codec
- snd_hwdep snd_hda_core snd_seq snd_seq_device snd_pcm mei_wdt snd_timer iTCO_wdt mei_me snd iTCO_vendor_support gpio_ic
-h mei coretemp lpc_ich pcspkr sg soundcore i2c_i801 joydev acpi_cpufreq nfsd auth_rpcgss nfs_acl lockd grace sunrpc ip_t
-ables xfs libcrc32c sd_mod sr_mod cdrom i915 video i2c_algo_bit drm_kms_helper syscopyarea sysfillrect sysimgblt fb_sys_
-fops e1000e ata_generic firewire_ohci pata_marvell ata_piix drm pata_acpi serio_raw e100 firewire_core libata ptp pps_co
-re mii crc_itu_t
-[  102.460800] CPU: 3 PID: 1541 Comm: ethtool Not tainted 5.4.0-rc1_next-queue_dev-queue_regress-00576-g16390e0 #3
-[  102.460836] Hardware name:  /DQ35JO, BIOS JOQ3510J.86A.0954.2008.0922.2331 09/22/2008
-[  102.460865] Call Trace:
-[  102.460883]  dump_stack+0x5a/0x73
-[  102.460900]  bad_page+0xf5/0x10f
-[  102.460916]  get_page_from_freelist+0x103e/0x1290
-[  102.460936]  ? __switch_to_asm+0x40/0x70
-[  102.460955]  ? __build_skb+0x20/0x190
-[  102.460972]  __alloc_pages_nodemask+0x17d/0x320
-[  102.460991]  page_frag_alloc+0x87/0x130
-[  102.461008]  __netdev_alloc_skb+0x10b/0x130
-[  102.461029]  e100_rx_alloc_skb+0x20/0x180 [e100]
-[  102.461050]  e100_rx_alloc_list+0x98/0x160 [e100]
-[  102.461070]  e100_up+0x11/0x120 [e100]
-[  102.461088]  e100_diag_test+0x14e/0x157 [e100]
-[  102.461107]  ? _cond_resched+0x15/0x30
-[  102.461125]  ? dev_ethtool+0x1133/0x2c30
-[  102.461143]  dev_ethtool+0x1159/0x2c30
-[  102.461161]  ? inet_ioctl+0x1a0/0x1d0
-[  102.461178]  ? netdev_run_todo+0x5d/0x2d0
-[  102.461196]  dev_ioctl+0xb3/0x4e0
-[  102.461212]  sock_do_ioctl+0xa0/0x140
-[  102.461228]  ? do_anonymous_page+0x361/0x670
-[  102.461247]  sock_ioctl+0x26e/0x380
-[  102.461264]  do_vfs_ioctl+0xa9/0x630
-[  102.461281]  ? handle_mm_fault+0xe2/0x1f0
-[  102.462101]  ? __do_page_fault+0x247/0x490
-[  102.462911]  ksys_ioctl+0x60/0x90
-[  102.463715]  __x64_sys_ioctl+0x16/0x20
-[  102.464519]  do_syscall_64+0x5b/0x1b0
-[  102.465321]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-[  102.466134] RIP: 0033:0x7f03e53f32f7
-[  102.466948] Code: 44 00 00 48 8b 05 79 1b 2d 00 64 c7 00 26 00 00 00 48 c7 c0 ff ff ff ff c3 66 2e 0f 1f 84 00 00 00 00 00 b8 10 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 49 1b 2d 00 f7 d8 64 89 01 48
-[  102.468728] RSP: 002b:00007ffffc72ebf8 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-[  102.469657] RAX: ffffffffffffffda RBX: 00007ffffc72ec50 RCX: 00007f03e53f32f7
-[  102.470595] RDX: 00007ffffc72ec60 RSI: 0000000000008946 RDI: 0000000000000003
-[  102.471532] RBP: 0000000000000001 R08: 0000000000000002 R09: 0000000000000038
-[  102.472453] R10: 00007ffffc72e7c0 R11: 0000000000000246 R12: 0000000000000038
-[  102.473359] R13: 0000000001428010 R14: 00000000014280d0 R15: 00007ffffc72edc8
-[  102.474260] Disabling lock debugging due to kernel taint
-[  104.924447] e100 0000:06:00.0 eth0: NIC Link is Up 100 Mbps Full Duplex
----------------------------------------------------------------------------
+Since v1: always enable dropping of packets if VFs in use.
 
+Signed-off-by: Robert Beckett <bob.beckett@collabora.com>
+---
+ drivers/net/ethernet/intel/igb/igb.h         |  1 +
+ drivers/net/ethernet/intel/igb/igb_ethtool.c |  8 ++++
+ drivers/net/ethernet/intel/igb/igb_main.c    | 47 ++++++++++++++------
+ 3 files changed, 42 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+index ca54e268d157..49b5fa9d4783 100644
+--- a/drivers/net/ethernet/intel/igb/igb.h
++++ b/drivers/net/ethernet/intel/igb/igb.h
+@@ -661,6 +661,7 @@ void igb_configure_tx_ring(struct igb_adapter *, struct igb_ring *);
+ void igb_configure_rx_ring(struct igb_adapter *, struct igb_ring *);
+ void igb_setup_tctl(struct igb_adapter *);
+ void igb_setup_rctl(struct igb_adapter *);
++void igb_setup_srrctl(struct igb_adapter *, struct igb_ring *);
+ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *, struct igb_ring *);
+ void igb_alloc_rx_buffers(struct igb_ring *, u16);
+ void igb_update_stats(struct igb_adapter *);
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 3182b059bf55..1107a1921b43 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
++++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+@@ -396,6 +396,7 @@ static int igb_set_pauseparam(struct net_device *netdev,
+ 	struct igb_adapter *adapter = netdev_priv(netdev);
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	int retval = 0;
++	int i;
+ 
+ 	/* 100basefx does not support setting link flow control */
+ 	if (hw->dev_spec._82575.eth_flags.e100_base_fx)
+@@ -428,6 +429,13 @@ static int igb_set_pauseparam(struct net_device *netdev,
+ 
+ 		retval = ((hw->phy.media_type == e1000_media_type_copper) ?
+ 			  igb_force_mac_fc(hw) : igb_setup_link(hw));
++
++		/* Make sure SRRCTL considers new fc settings for each ring */
++		for (i = 0; i < adapter->num_rx_queues; i++) {
++			struct igb_ring *ring = adapter->rx_ring[i];
++
++			igb_setup_srrctl(adapter, ring);
++		}
+ 	}
+ 
+ 	clear_bit(__IGB_RESETTING, &adapter->state);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 105b0624081a..92c30aac0c28 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -4463,6 +4463,37 @@ static inline void igb_set_vmolr(struct igb_adapter *adapter,
+ 	wr32(E1000_VMOLR(vfn), vmolr);
+ }
+ 
++/**
++ *  igb_setup_srrctl - configure the split and replication receive control
++ *  		       registers
++ *  @adapter: Board private structure
++ *  @ring: receive ring to be configured
++ **/
++void igb_setup_srrctl(struct igb_adapter *adapter, struct igb_ring *ring)
++{
++	struct e1000_hw *hw = &adapter->hw;
++	int reg_idx = ring->reg_idx;
++	u32 srrctl = 0;
++
++	srrctl = IGB_RX_HDR_LEN << E1000_SRRCTL_BSIZEHDRSIZE_SHIFT;
++	if (ring_uses_large_buffer(ring))
++		srrctl |= IGB_RXBUFFER_3072 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
++	else
++		srrctl |= IGB_RXBUFFER_2048 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
++	srrctl |= E1000_SRRCTL_DESCTYPE_ADV_ONEBUF;
++	if (hw->mac.type >= e1000_82580)
++		srrctl |= E1000_SRRCTL_TIMESTAMP;
++	/* Only set Drop Enable if VFs allocated, or we are supporting multiple
++	 * queues and rx flow control is disabled
++	 */
++	if (adapter->vfs_allocated_count ||
++	    (!(hw->fc.current_mode & e1000_fc_rx_pause) &&
++	     adapter->num_rx_queues > 1))
++		srrctl |= E1000_SRRCTL_DROP_EN;
++
++	wr32(E1000_SRRCTL(reg_idx), srrctl);
++}
++
+ /**
+  *  igb_configure_rx_ring - Configure a receive ring after Reset
+  *  @adapter: board private structure
+@@ -4477,7 +4508,7 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+ 	union e1000_adv_rx_desc *rx_desc;
+ 	u64 rdba = ring->dma;
+ 	int reg_idx = ring->reg_idx;
+-	u32 srrctl = 0, rxdctl = 0;
++	u32 rxdctl = 0;
+ 
+ 	/* disable the queue */
+ 	wr32(E1000_RXDCTL(reg_idx), 0);
+@@ -4495,19 +4526,7 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
+ 	writel(0, ring->tail);
+ 
+ 	/* set descriptor configuration */
+-	srrctl = IGB_RX_HDR_LEN << E1000_SRRCTL_BSIZEHDRSIZE_SHIFT;
+-	if (ring_uses_large_buffer(ring))
+-		srrctl |= IGB_RXBUFFER_3072 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
+-	else
+-		srrctl |= IGB_RXBUFFER_2048 >> E1000_SRRCTL_BSIZEPKT_SHIFT;
+-	srrctl |= E1000_SRRCTL_DESCTYPE_ADV_ONEBUF;
+-	if (hw->mac.type >= e1000_82580)
+-		srrctl |= E1000_SRRCTL_TIMESTAMP;
+-	/* Only set Drop Enable if we are supporting multiple queues */
+-	if (adapter->vfs_allocated_count || adapter->num_rx_queues > 1)
+-		srrctl |= E1000_SRRCTL_DROP_EN;
+-
+-	wr32(E1000_SRRCTL(reg_idx), srrctl);
++	igb_setup_srrctl(adapter, ring);
+ 
+ 	/* set filtering for VMDQ pools */
+ 	igb_set_vmolr(adapter, reg_idx & 0x7, true);
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
