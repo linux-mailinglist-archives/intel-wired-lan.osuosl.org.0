@@ -2,55 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12864E108D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 05:29:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B18FAE11C2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 07:41:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AC06A88035;
-	Wed, 23 Oct 2019 03:29:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9888C8609B;
+	Wed, 23 Oct 2019 05:41:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DFruQTzglJOx; Wed, 23 Oct 2019 03:29:03 +0000 (UTC)
+	with ESMTP id d5XqolAGJ7sK; Wed, 23 Oct 2019 05:41:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1F347880C3;
-	Wed, 23 Oct 2019 03:29:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5062A86A07;
+	Wed, 23 Oct 2019 05:41:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ADCA31BF2F7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 03:29:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B43C81BF863
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 05:41:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A5D4488042
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 03:29:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ACE01204B6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 05:41:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OJd7DmH7Pjia for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Oct 2019 03:29:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D453988035
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 03:29:00 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Oct 2019 20:29:00 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,219,1569308400"; d="scan'208";a="399254938"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 22 Oct 2019 20:28:58 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iN7KU-000Huh-Aq; Wed, 23 Oct 2019 11:28:58 +0800
-Date: Wed, 23 Oct 2019 11:28:17 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5dafc8d1.btChllkX89dxn+n5%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id ARRl9+P1yigj for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Oct 2019 05:41:42 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from condef-07.nifty.com (condef-07.nifty.com [202.248.20.72])
+ by silver.osuosl.org (Postfix) with ESMTPS id F02B92040C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 05:41:41 +0000 (UTC)
+Received: from conssluserg-06.nifty.com ([10.126.8.85])by condef-07.nifty.com
+ with ESMTP id x9N5MZLx030010
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 14:22:35 +0900
+Received: from mail-ua1-f45.google.com (mail-ua1-f45.google.com
+ [209.85.222.45]) (authenticated)
+ by conssluserg-06.nifty.com with ESMTP id x9N5MDR5013749
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 14:22:13 +0900
+DKIM-Filter: OpenDKIM Filter v2.10.3 conssluserg-06.nifty.com x9N5MDR5013749
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=dec2015msa; t=1571808134;
+ bh=4uWhQkSgKJyJpi9dgEd8rnoW9JQaybqUylXhhSC0nec=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=AzcLO0MjlBC1/BEeJm9qyRkRgcPAkYv4QxMtxeUo3Re7hVadzJzlkr5g7u8mhf8wL
+ I+FMIbGBt8bkCzOTcIPamlUfqvlNGvtpEsBYRyKfjRIYHYFT4wSiqZzNWOFUEnb15o
+ hWUQlgxEJv3mbTl/jyR4fr/ZdqE8uH/8GN+Fhd4ko8xwKe9gfKUG2g20ZZDWqO0P1s
+ /plJux5tDnUCVn4pFMz+DABNLRK0tD114Ty+lCe15mBfEA3Kb8QH9RQ4GjOb4doMG6
+ DAl4aRfvENZzyWk7XJ0sBdiLQHwbQOS3gTV2ItHPoVXIXamYJsftRc+Hk8VhWOJ9zs
+ 8PZTF/aGNWHVA==
+X-Nifty-SrcIP: [209.85.222.45]
+Received: by mail-ua1-f45.google.com with SMTP id w7so5647000uag.4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2019 22:22:13 -0700 (PDT)
+X-Gm-Message-State: APjAAAWOXMVhXbn35dVM4yNgqTWdvIXzwFg10ryhYYM9zSuB1ZzQeZdr
+ 7U3PJdocFu3ZAGo59lZMcLnShP6MIPQ4a83sFfQ=
+X-Google-Smtp-Source: APXvYqxLqGkSOgIFRyd9PTxHyI25VNUcERzN0x2gYGlStMqZTJ+flp75axCjaZb/WyR7UjkEmRdgV01UzlT91dSwPgk=
+X-Received: by 2002:a9f:3824:: with SMTP id p33mr4091753uad.109.1571808132530; 
+ Tue, 22 Oct 2019 22:22:12 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- 6b5b28ff0357b76531f7c66e18b998c0644fcdf0
+References: <20190129204319.15238-1-jacob.e.keller@intel.com>
+ <7b26e6cc-10ce-5df2-6375-1f95bc4da04e@infradead.org>
+ <02874ECE860811409154E81DA85FBB58968DBE54@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNARyUEakeG_N9TWcO2cjFSzbgY__k_QJm6C+oOz+fW0aeg@mail.gmail.com>
+ <02874ECE860811409154E81DA85FBB58968E1402@ORSMSX121.amr.corp.intel.com>
+In-Reply-To: <02874ECE860811409154E81DA85FBB58968E1402@ORSMSX121.amr.corp.intel.com>
+From: Masahiro Yamada <yamada.masahiro@socionext.com>
+Date: Wed, 23 Oct 2019 14:21:34 +0900
+X-Gmail-Original-Message-ID: <CAK7LNARAhZtzdnS9+mgtamj=pLdV81dudnYVDa8NRxcQPpF0bw@mail.gmail.com>
+Message-ID: <CAK7LNARAhZtzdnS9+mgtamj=pLdV81dudnYVDa8NRxcQPpF0bw@mail.gmail.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ Randy Dunlap <rdunlap@infradead.org>
+Subject: Re: [Intel-wired-lan] [PATCH] namespace: fix namespace.pl script to
+ support relative paths
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,146 +84,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linux-kbuild <linux-kbuild@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 6b5b28ff0357b76531f7c66e18b998c0644fcdf0  e1000e: Add support for Tiger Lake
+On Tue, Oct 1, 2019 at 5:49 AM Keller, Jacob E <jacob.e.keller@intel.com> wrote:
+>
+> > -----Original Message-----
+> > From: Masahiro Yamada [mailto:yamada.masahiro@socionext.com]
+> > Sent: Saturday, September 28, 2019 5:21 PM
+> > To: Keller, Jacob E <jacob.e.keller@intel.com>
+> > Cc: Randy Dunlap <rdunlap@infradead.org>; intel-wired-lan@lists.osuosl.org; linux-
+> > kernel@vger.kernel.org; linux-kbuild <linux-kbuild@vger.kernel.org>
+> > Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative paths
+> >
+> > On Sat, Sep 28, 2019 at 8:30 AM Keller, Jacob E
+> > <jacob.e.keller@intel.com> wrote:
+> > >
+> > > > -----Original Message-----
+> > > > From: Randy Dunlap [mailto:rdunlap@infradead.org]
+> > > > Sent: Friday, September 27, 2019 4:12 PM
+> > > > To: Keller, Jacob E <jacob.e.keller@intel.com>
+> > > > Cc: intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org; linux-kbuild
+> > <linux-
+> > > > kbuild@vger.kernel.org>; Masahiro Yamada <yamada.masahiro@socionext.com>
+> > > > Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative paths
+> > > >
+> > > >
+> > > > re: https://lore.kernel.org/lkml/20190129204319.15238-1-
+> > jacob.e.keller@intel.com/
+> > > >
+> > > > Did anything happen with this patch?
+> > > >
+> > > > Please send it to linux-kbuild@vger.kernel.org and
+> > > > Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+> > > >
+> > > > You can also add:
+> > > > Acked-by: Randy Dunlap <rdunlap@infradead.org>
+> > > > Tested-by: Randy Dunlap <rdunlap@infradead.org>
+> > > >
+> > > >
+> > > > I was just about to fix this script but I decided to first see if anyone else
+> > > > had already done so.  Thanks.
+> > > >
+> > > > --
+> > > > ~Randy
+> > >
+> > > Done, thanks.
+> > >
+> > > Regards,
+> > > Jake
+> >
+> >
+> > Applied to linux/kbuild. Thanks.
+> >
+>
+> Great, thanks!
 
-elapsed time: 381m
 
-configs tested: 121
+This scripts has been 5-year broken,
+and I did not see any complaint except from you.
+So, I wonder how many people are using this.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Nor, do I understand how to use it.
 
-x86_64                 randconfig-a004-201942
-x86_64                 randconfig-a001-201942
-i386                   randconfig-a002-201942
-x86_64                 randconfig-a002-201942
-i386                   randconfig-a001-201942
-i386                   randconfig-a003-201942
-i386                   randconfig-a004-201942
-x86_64                 randconfig-a003-201942
-i386                             alldefconfig
-i386                              allnoconfig
-i386                                defconfig
-i386                   randconfig-d002-201942
-x86_64                 randconfig-d002-201942
-i386                   randconfig-d004-201942
-x86_64                 randconfig-d004-201942
-x86_64                 randconfig-d003-201942
-i386                   randconfig-d003-201942
-x86_64                 randconfig-d001-201942
-i386                   randconfig-d001-201942
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-x86_64                           allyesconfig
-i386                             allmodconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-x86_64                 randconfig-g002-201942
-i386                   randconfig-g004-201942
-x86_64                 randconfig-g001-201942
-i386                   randconfig-g002-201942
-x86_64                 randconfig-g004-201942
-x86_64                 randconfig-g003-201942
-i386                   randconfig-g003-201942
-i386                   randconfig-g001-201942
-arm                              allmodconfig
-arm                         at91_dt_defconfig
-arm64                               defconfig
-arm                        multi_v5_defconfig
-arm64                            allyesconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allmodconfig
-arm                          exynos_defconfig
-arm                        shmobile_defconfig
-arm                        multi_v7_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-i386                   randconfig-b001-201942
-x86_64                 randconfig-b002-201942
-x86_64                 randconfig-b003-201942
-i386                   randconfig-b003-201942
-i386                   randconfig-b004-201942
-x86_64                 randconfig-b004-201942
-x86_64                 randconfig-b001-201942
-i386                   randconfig-b002-201942
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-x86_64                           allmodconfig
-i386                   randconfig-f002-201942
-i386                   randconfig-f001-201942
-x86_64                 randconfig-f003-201942
-x86_64                 randconfig-f004-201942
-x86_64                 randconfig-f002-201942
-i386                   randconfig-f003-201942
-x86_64                 randconfig-f001-201942
-i386                   randconfig-f004-201942
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
+Could you teach me a bit more about this script?
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+
+
+Something might be missing in my mind, but
+I do not know how to use this script in a useful way.
+
+
+
+It provides three checks.
+
+[1] list_multiply_defined()
+
+This warns multiple definition of functions.
+
+The compiler would fail if it saw any multiple definition,
+so the reports from this check are all false-positive.
+
+
+[2] resolve_external_references()
+
+This warns unresolved symbols.
+
+The compiler would fail if it saw any unresolved symbol,
+so the reports from this check are all false-positive, too.
+
+
+
+
+[3] list_extra_externals
+
+This warns symbols with no reference.
+
+This potentially contains lots of false-positives.
+For example, the core framework provides APIs, but if all drivers
+are disabled, there is no user of those APIs.
+
+
+
+
+I built the kernel with x86_64_defconfig,
+and namespacecheck provides
+
+1400 line reports for [1].
+200 line reports for [2].
+6800 line reports for [3].
+
+Most of these seem false-positives.
+
+
+
+How can I use it for the code improvement?
+
+[3] might be still useful to find 'static' candidates,
+but it would be difficult given the amount of the report.
+
+-- 
+Best Regards
+Masahiro Yamada
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
