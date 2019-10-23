@@ -1,55 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EC1CE22B0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 20:48:13 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4296CE256A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 23:34:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DE53222926;
-	Wed, 23 Oct 2019 18:48:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A8E7388263;
+	Wed, 23 Oct 2019 21:34:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RS+8YEzpb3UQ; Wed, 23 Oct 2019 18:48:11 +0000 (UTC)
+	with ESMTP id e2c8pPQeEXWM; Wed, 23 Oct 2019 21:34:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 46D0C22B25;
-	Wed, 23 Oct 2019 18:48:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E6BA988246;
+	Wed, 23 Oct 2019 21:34:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E2CEA1BF48D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 18:48:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BB1F21BF870
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 21:34:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B918785BCC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 18:48:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B690922795
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 21:34:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oWBhxSxC-9QI for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Oct 2019 18:48:06 +0000 (UTC)
+ with ESMTP id 6TuUhqGgYEgg for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Oct 2019 21:34:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1876A85477
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 18:48:05 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id C3A4C2094B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 21:34:07 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Oct 2019 11:48:05 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 Oct 2019 14:34:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,221,1569308400"; d="scan'208";a="228225108"
-Received: from ssaleem-mobl.amr.corp.intel.com ([10.122.128.45])
- by fmsmga002.fm.intel.com with ESMTP; 23 Oct 2019 11:38:02 -0700
-From: Shiraz Saleem <shiraz.saleem@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 23 Oct 2019 13:22:52 -0500
-Message-Id: <20191023182253.1115-17-shiraz.saleem@intel.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191023182253.1115-1-shiraz.saleem@intel.com>
-References: <20191023182253.1115-1-shiraz.saleem@intel.com>
+X-IronPort-AV: E=Sophos;i="5.68,222,1569308400"; d="scan'208";a="281741938"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga001.jf.intel.com with ESMTP; 23 Oct 2019 14:34:07 -0700
+Received: from orsmsx121.amr.corp.intel.com ([169.254.10.88]) by
+ ORSMSX106.amr.corp.intel.com ([169.254.1.210]) with mapi id 14.03.0439.000;
+ Wed, 23 Oct 2019 14:34:07 -0700
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>, Randy Dunlap
+ <rdunlap@infradead.org>
+Thread-Topic: [PATCH] namespace: fix namespace.pl script to support relative
+ paths
+Thread-Index: AQHVdYkISHS3XNGT0kCKyhZHN6EY9KdALBNAgAIVm4CAAmLQsIAjqUEAgACZz9A=
+Date: Wed, 23 Oct 2019 21:34:06 +0000
+Message-ID: <02874ECE860811409154E81DA85FBB589693A38A@ORSMSX121.amr.corp.intel.com>
+References: <20190129204319.15238-1-jacob.e.keller@intel.com>
+ <7b26e6cc-10ce-5df2-6375-1f95bc4da04e@infradead.org>
+ <02874ECE860811409154E81DA85FBB58968DBE54@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNARyUEakeG_N9TWcO2cjFSzbgY__k_QJm6C+oOz+fW0aeg@mail.gmail.com>
+ <02874ECE860811409154E81DA85FBB58968E1402@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNARAhZtzdnS9+mgtamj=pLdV81dudnYVDa8NRxcQPpF0bw@mail.gmail.com>
+In-Reply-To: <CAK7LNARAhZtzdnS9+mgtamj=pLdV81dudnYVDa8NRxcQPpF0bw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNDM0NzM2NjAtY2FkYi00M2RlLWJkMjAtMDRlNjYzZWEwNjVmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiSml3YTNpVGVEakpDSEJyakU2ZFhyaTBMc1F5ZHBmdWYyamJyKzZEWUYxYnRRXC9GOHlINVlWS0poeHQ5TE41aUEifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH rdma-nxt 16/16] RDMA/irdma: Update
- MAINTAINERS file
+Subject: Re: [Intel-wired-lan] [PATCH] namespace: fix namespace.pl script to
+ support relative paths
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,42 +83,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shiraz Saleem <shiraz.saleem@intel.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linux-kbuild <linux-kbuild@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add maintainer entry for irdma driver.
+> -----Original Message-----
+> From: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Sent: Tuesday, October 22, 2019 10:22 PM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>; Randy Dunlap
+> <rdunlap@infradead.org>
+> Cc: intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org; linux-kbuild
+> <linux-kbuild@vger.kernel.org>
+> Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative
+> paths
+> 
+> This scripts has been 5-year broken,
+> and I did not see any complaint except from you.
+> So, I wonder how many people are using this.
+> 
+> Nor, do I understand how to use it.
+> 
+> Could you teach me a bit more about this script?
+> 
+> 
+> 
+> Something might be missing in my mind, but
+> I do not know how to use this script in a useful way.
+> 
+> 
+> 
+> It provides three checks.
+> 
+> [1] list_multiply_defined()
+> 
+> This warns multiple definition of functions.
+> 
+> The compiler would fail if it saw any multiple definition,
+> so the reports from this check are all false-positive.
+> 
+> 
+> [2] resolve_external_references()
+> 
+> This warns unresolved symbols.
+> 
+> The compiler would fail if it saw any unresolved symbol,
+> so the reports from this check are all false-positive, too.
+> 
+> 
 
-Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
-Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
----
- MAINTAINERS | 8 ++++++++
- 1 file changed, 8 insertions(+)
+The compiler won't necessarily fail when building modules, because the symbol might be in another loadable module.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 21961b1..e57d7c1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8416,6 +8416,14 @@ L:	linux-pm@vger.kernel.org
- S:	Supported
- F:	drivers/cpufreq/intel_pstate.c
- 
-+INTEL ETHERNET RDMA DRIVER
-+M:	Mustafa Ismail <mustafa.ismail@intel.com>
-+M:	Shiraz Saleem <shiraz.saleem@intel.com>
-+L:	linux-rdma@vger.kernel.org
-+S:	Supported
-+F:	drivers/infiniband/hw/irdma/
-+F:	include/uapi/rdma/irdma-abi.h
-+
- INTEL SPEED SELECT TECHNOLOGY
- M:	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
- L:	platform-driver-x86@vger.kernel.org
--- 
-1.8.3.1
+> 
+> 
+> [3] list_extra_externals
+> 
+> This warns symbols with no reference.
+> 
+> This potentially contains lots of false-positives.
+> For example, the core framework provides APIs, but if all drivers
+> are disabled, there is no user of those APIs.
+> 
 
+We use this to help verify that driver modules do not expose symbols.
+
+Thanks,
+Jake
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
