@@ -1,70 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2011BE1DAA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 16:05:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9ADA9E1EE2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 17:09:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FF0E8626F;
-	Wed, 23 Oct 2019 14:05:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 02D88846EE;
+	Wed, 23 Oct 2019 15:09:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R2vtdIeqOTM0; Wed, 23 Oct 2019 14:05:29 +0000 (UTC)
+	with ESMTP id jl29iRJ-D8cr; Wed, 23 Oct 2019 15:09:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D33768629C;
-	Wed, 23 Oct 2019 14:05:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 233291BF20D
- for <intel-wired-lan@osuosl.org>; Wed, 23 Oct 2019 14:05:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5EF3884442;
+	Wed, 23 Oct 2019 15:09:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 60E0C1BF366
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 15:09:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0EE1A877E9
- for <intel-wired-lan@osuosl.org>; Wed, 23 Oct 2019 14:05:27 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5CEAA81414
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 15:09:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ib8bm4cDS3dj for <intel-wired-lan@osuosl.org>;
- Wed, 23 Oct 2019 14:05:26 +0000 (UTC)
-X-Greylist: delayed 00:15:16 by SQLgrey-1.7.6
-Received: from smtpgwcipde.elektrobit.com
- (smtpgwcipde.automotive.elektrobit.com [213.95.163.141])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C41CD87762
- for <intel-wired-lan@osuosl.org>; Wed, 23 Oct 2019 14:05:25 +0000 (UTC)
-Received: from denue6es003.localdomain (denue6es003.automotive.elektrobit.com
- [213.95.163.136])
- by smtpgwcipde.elektrobit.com  with ESMTP id x9NDo5QX008330-x9NDo5QZ008330
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA bits=256 verify=OK)
- for <intel-wired-lan@osuosl.org>; Wed, 23 Oct 2019 15:50:05 +0200
-Received: from denue6es003.securemail.local (localhost [127.0.0.1])
- by denue6es003.localdomain (Postfix) with SMTP id 184E12D482
- for <intel-wired-lan@osuosl.org>; Wed, 23 Oct 2019 15:50:05 +0200 (CEST)
-Received: from denue6es010.ebgroup.elektrobit.com
- (denue6es010.ebgroup.elektrobit.com [10.243.160.100])
- by denue6es003.localdomain (Postfix) with ESMTPS
- for <intel-wired-lan@osuosl.org>; Wed, 23 Oct 2019 15:50:04 +0200 (CEST)
-Received: from denue6es011.ebgroup.elektrobit.com (10.243.160.101) by
- denue6es010.ebgroup.elektrobit.com (10.243.160.100) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1779.2; Wed, 23 Oct 2019 15:50:02 +0200
-Received: from denue6es011.ebgroup.elektrobit.com
- ([fe80::b57c:3e51:8716:d126]) by denue6es011.ebgroup.elektrobit.com
- ([fe80::b57c:3e51:8716:d126%6]) with mapi id 15.01.1779.002; Wed, 23 Oct 2019
- 15:50:02 +0200
-From: <Joerg.Hunsche@elektrobit.com>
-To: <intel-wired-lan@osuosl.org>
-Thread-Topic: [Intel-wired-lan][i40e][PLP reording frame]
-Thread-Index: AdWJfpMDtGXFAHHqR3SKMDShiovmtQ==
-Date: Wed, 23 Oct 2019 13:50:02 +0000
-Message-ID: <e16b63bb-72d5-4f8c-b066-00f8611392ae@denue6es010.ebgroup.elektrobit.com>
-Accept-Language: de-DE, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.5.137.27]
+ with ESMTP id YX3ILyX7v+cZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Oct 2019 15:09:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 88B6384442
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 15:09:19 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 23 Oct 2019 08:09:19 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,221,1569308400"; d="scan'208";a="201161738"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
+ by orsmga003.jf.intel.com with ESMTP; 23 Oct 2019 08:09:18 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 23 Oct 2019 18:09:17 +0300
+Message-Id: <20191023150917.26271-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [i40e][PLP reording frame]
+Subject: [Intel-wired-lan] [PATCH v1] e1000e: Fix compiler warning when
+ CONFIG_PM_SLEEP is not set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,198 +60,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: extern.Adam.Prochownik@elektrobit.com
-Content-Type: multipart/mixed; boundary="===============6853603916503622659=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============6853603916503622659==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_e16b63bb72d54f8cb06600f8611392aedenue6es010ebgroupelekt_"
-
---_000_e16b63bb72d54f8cb06600f8611392aedenue6es010ebgroupelekt_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-Hello,
-we use INTEL X710-DA2 with i40e-2.10.19.30.
-Configured socket flags SOCK_RAW and socket option PACKET_QDISC_BYPASS to b=
-ypass queuing, sending single-threaded.
-
-When sending PLP-Ethernet-frames we observe a problem, that after ~2h a PLP=
--Ethernet-frame is send about 250frames later than it should be.
-Our assumption is, that somehow more than one TX-queue is used, what we hav=
-e to avoid.
-
-Is there any configuration of the driver possible configuring a single Tx-q=
-ueue?
-Is there any means to get the driver to a state that only a single Tx-queue=
- is used?
-
-Thank you for your support.
-J=F6rg Hunsche
-
-EB Driving the Future of Software
-Wolfgang-Paul Str. 4, 89081 Ulm
-Phone: +49913177017653
-Joerg.Hunsche@elektrobit.com<mailto:Joerg.Hunsche@elektrobit.com>
-http://automotive.elektrobit.com<http://automotive.elektrobit.com/>
-
-Elektrobit Automotive GmbH, Am Wolfsmantel 46, 91058 Erlangen, Germany
-Managing Directors Alexander Kocher, Gregor Zink
-Register Court F=FCrth HRB 4886
-
-
---_000_e16b63bb72d54f8cb06600f8611392aedenue6es010ebgroupelekt_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-fareast-language:EN-US;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-p.msonormal0, li.msonormal0, div.msonormal0
-	{mso-style-name:msonormal;
-	mso-margin-top-alt:auto;
-	margin-right:0cm;
-	mso-margin-bottom-alt:auto;
-	margin-left:0cm;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-span.EmailStyle18
-	{mso-style-type:personal-compose;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-size:10.0pt;
-	font-family:"Calibri",sans-serif;
-	mso-fareast-language:EN-US;}
-@page WordSection1
-	{size:612.0pt 792.0pt;
-	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"DE" link=3D"#0563C1" vlink=3D"#954F72">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span lang=3D"EN-US">Hello,<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">we use </span><span lang=3D"EN-=
-US" style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif">INT=
-EL X710-DA2 with i40e-2.10.19.30.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
-family:&quot;Arial&quot;,sans-serif">Configured socket flags SOCK_RAW and s=
-ocket option PACKET_QDISC_BYPASS to bypass queuing, sending single-threaded=
-.<br>
-<br>
-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
-family:&quot;Arial&quot;,sans-serif">When sending PLP-Ethernet-frames we ob=
-serve a problem, that after ~2h a PLP-Ethernet-frame is send about 250frame=
-s later than it should be.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
-family:&quot;Arial&quot;,sans-serif">Our assumption is, that somehow more t=
-han one TX-queue is used, what we have to avoid.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
-family:&quot;Arial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
-family:&quot;Arial&quot;,sans-serif">Is there any configuration of the driv=
-er possible configuring a single Tx-queue?<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:10.0pt;font-=
-family:&quot;Arial&quot;,sans-serif">Is there any means to get the driver t=
-o a state that only a single Tx-queue is used?</span><span lang=3D"EN-US"><=
-o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">Thank you for your support.<o:p=
-></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US">J=F6rg Hunsche<o:p></o:p></span=
-></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><b><span lang=3D"EN-US" style=3D"font-size:8.0pt;fon=
-t-family:&quot;Arial&quot;,sans-serif;color:#00B050;mso-fareast-language:DE=
-">EB</span></b><b><span lang=3D"EN-US" style=3D"font-size:8.0pt;font-family=
-:&quot;Arial&quot;,sans-serif;mso-fareast-language:DE">
-</span></b><span lang=3D"EN-US" style=3D"font-size:8.0pt;font-family:&quot;=
-Arial&quot;,sans-serif;mso-fareast-language:DE">Driving the Future of Softw=
-are<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:8.0pt;font-family:&quot;Ari=
-al&quot;,sans-serif;mso-fareast-language:DE">Wolfgang-Paul Str. 4, 89081 Ul=
-m<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:8.0pt;font-family:&quot;Ari=
-al&quot;,sans-serif;mso-fareast-language:DE">Phone: &#43;49913177017653<o:p=
-></o:p></span></p>
-<p class=3D"MsoNormal"><a href=3D"mailto:Joerg.Hunsche@elektrobit.com"><spa=
-n style=3D"font-size:8.0pt;font-family:&quot;Arial&quot;,sans-serif;color:b=
-lue;mso-fareast-language:DE">Joerg.Hunsche@elektrobit.com</span></a><span s=
-tyle=3D"font-size:8.0pt;font-family:&quot;Arial&quot;,sans-serif;color:#00B=
-050;mso-fareast-language:DE"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><a href=3D"http://automotive.elektrobit.com/"><span =
-style=3D"font-size:8.0pt;font-family:&quot;Arial&quot;,sans-serif;color:blu=
-e;mso-fareast-language:DE">http://automotive.elektrobit.com</span></a><span=
- style=3D"font-size:8.0pt;font-family:&quot;Arial&quot;,sans-serif;color:#0=
-0B050;mso-fareast-language:DE"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:8.0pt;font-family:&quot;Ari=
-al&quot;,sans-serif;color:#00B050;mso-fareast-language:DE"><o:p>&nbsp;</o:p=
-></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:8.0pt;font-family:&quot;Ari=
-al&quot;,sans-serif;mso-fareast-language:DE">Elektrobit Automotive GmbH, Am=
- Wolfsmantel 46, 91058 Erlangen, Germany<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span lang=3D"EN-US" style=3D"font-size:8.0pt;font-f=
-amily:&quot;Arial&quot;,sans-serif;mso-fareast-language:DE">Managing Direct=
-ors Alexander Kocher, Gregor Zink<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:8.0pt;font-family:&quot;Ari=
-al&quot;,sans-serif;mso-fareast-language:DE">Register Court F=FCrth HRB 488=
-6<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-</div>
-</body>
-</html>
-
---_000_e16b63bb72d54f8cb06600f8611392aedenue6es010ebgroupelekt_--
-
---===============6853603916503622659==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============6853603916503622659==--
+V2hlbiBDT05GSUdfUE1fU0xFRVAgaXMgbm90IGRlZmluZWQgY29tcGlsZXIgY29tcGxhaW4gYXMg
+Zm9sbG93OgpDQyBbTV0gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYu
+bwpkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmM6NjMwMjoxMjogd2Fy
+bmluZzog4oCYZTEwMDBlX3MwaXhfZW50cnlfZmxvd+KAmSBkZWZpbmVkIGJ1dCBub3QgdXNlZCBb
+LVd1bnVzZWQtZnVuY3Rpb25dCnN0YXRpYyB2b2lkIGUxMDAwZV9zMGl4X2VudHJ5X2Zsb3coc3Ry
+dWN0IGUxMDAwX2FkYXB0ZXIgKmFkYXB0ZXIpCmRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2Ux
+MDAwZS9uZXRkZXYuYzo2NDExOjEyOiB3YXJuaW5nOiDigJhlMTAwMGVfczBpeF9leGl0X2Zsb3fi
+gJkgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1XdW51c2VkLWZ1bmN0aW9uXQpzdGF0aWMgdm9pZCBl
+MTAwMGVfczBpeF9leGl0X2Zsb3coc3RydWN0IGUxMDAwX2FkYXB0ZXIgKmFkYXB0ZXIpCkxEIFtN
+XSAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2UxMDAwZS5vCgpBZGQgd3JhcCB0
+byBmaXggdGhlc2Ugd2FybmluZ3MuCgpSZXBvcnRlZC1ieToga2J1aWxkIHRlc3Qgcm9ib3QgPGxw
+a0BpbnRlbC5jb20+ClNpZ25lZC1vZmYtYnk6IFNhc2hhIE5lZnRpbiA8c2FzaGEubmVmdGluQGlu
+dGVsLmNvbT4KLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMg
+fCAyICsrCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCmluZGV4IDIwOTY1YjVkOTc4MC4uMDMyYjg4NjE5
+MDU0IDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2
+LmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCkBAIC02
+Mjk3LDYgKzYyOTcsNyBAQCBzdGF0aWMgdm9pZCBlMTAwMGVfZmx1c2hfbHBpYyhzdHJ1Y3QgcGNp
+X2RldiAqcGRldikKIAlwbV9ydW50aW1lX3B1dF9zeW5jKG5ldGRldi0+ZGV2LnBhcmVudCk7CiB9
+CiAKKyNpZmRlZiBDT05GSUdfUE1fU0xFRVAKIC8qIFMwaXggaW1wbGVtZW50YXRpb24gKi8KIHN0
+YXRpYyB2b2lkIGUxMDAwZV9zMGl4X2VudHJ5X2Zsb3coc3RydWN0IGUxMDAwX2FkYXB0ZXIgKmFk
+YXB0ZXIpCiB7CkBAIC02NDY0LDYgKzY0NjUsNyBAQCBzdGF0aWMgdm9pZCBlMTAwMGVfczBpeF9l
+eGl0X2Zsb3coc3RydWN0IGUxMDAwX2FkYXB0ZXIgKmFkYXB0ZXIpCiAJbWFjX2RhdGEgJj0gfkUx
+MDAwX0NUUkxfRVhUX0ZPUkNFX1NNQlVTOwogCWV3MzIoQ1RSTF9FWFQsIG1hY19kYXRhKTsKIH0K
+KyNlbmRpZiAvKiBDT05GSUdfUE1fU0xFRVAgKi8KIAogc3RhdGljIGludCBlMTAwMGVfcG1fZnJl
+ZXplKHN0cnVjdCBkZXZpY2UgKmRldikKIHsKLS0gCjIuMTEuMAoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlz
+dApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
