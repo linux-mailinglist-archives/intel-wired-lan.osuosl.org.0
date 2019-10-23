@@ -1,56 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48FF0E0FBC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 03:38:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D41C8E0FEF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2019 04:10:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9BD4D8813E;
-	Wed, 23 Oct 2019 01:38:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 05C638452F;
+	Wed, 23 Oct 2019 02:10:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9iJc70yYx+-n; Wed, 23 Oct 2019 01:38:32 +0000 (UTC)
+	with ESMTP id O7VZIjW9Btn9; Wed, 23 Oct 2019 02:10:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 110D5880E2;
-	Wed, 23 Oct 2019 01:38:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03C9C806F4;
+	Wed, 23 Oct 2019 02:10:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 132A91BF381
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 01:38:28 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E8651BF418
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 02:09:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DF53620530
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 01:38:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2752C880F9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 02:09:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AFPTkZHcUUKk for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Oct 2019 01:38:27 +0000 (UTC)
+ with ESMTP id DoWnrSvUJOjD for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Oct 2019 02:09:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id 1FEAE2051F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 01:38:27 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0F419880F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2019 02:09:43 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Oct 2019 18:38:26 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Oct 2019 19:09:42 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,218,1569308400"; d="scan'208";a="397885966"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 22 Oct 2019 18:38:25 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iN5bV-0003cK-BF; Wed, 23 Oct 2019 09:38:25 +0800
-Date: Wed, 23 Oct 2019 09:37:56 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5dafaef4.cZYQ+cbAAoRx+EuX%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.68,218,1569308400"; d="scan'208";a="191684403"
+Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
+ by orsmga008.jf.intel.com with ESMTP; 22 Oct 2019 19:09:42 -0700
+Received: from orsmsx113.amr.corp.intel.com (10.22.240.9) by
+ ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 22 Oct 2019 19:09:42 -0700
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.9]) by
+ ORSMSX113.amr.corp.intel.com ([169.254.9.28]) with mapi id 14.03.0439.000;
+ Tue, 22 Oct 2019 19:09:41 -0700
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>,
+ "alexander.h.duyck@linux.intel.com" <alexander.h.duyck@linux.intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [next-queue PATCH v2 1/2] e1000e: Use rtnl_lock to prevent
+ race conditions between net and pci/pm
+Thread-Index: AQHVgEl0vjnrdVB+gU+og//4Vqxtw6dnjRqg
+Date: Wed, 23 Oct 2019 02:09:41 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B97154DF9@ORSMSX103.amr.corp.intel.com>
+References: <20191011153219.22313.60179.stgit@localhost.localdomain>
+ <20191011153452.22313.70522.stgit@localhost.localdomain>
+In-Reply-To: <20191011153452.22313.70522.stgit@localhost.localdomain>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMTUxYmQxYTMtODcxOC00MGZjLTljYmMtOWY3YWQ5ZDIxNzc1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTHIyRWRXeGNqNVFVVndSYlB5SG9vVUk1Rm16ZFwvaVFwMjhZMGhHdlBMbnNIT1B6bGxFZDV0STQ4NnhuNzZhOWgifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:master] BUILD SUCCESS
- 685df9c39f70964482a1a5d1742b8cecb2606bb7
+Subject: Re: [Intel-wired-lan] [next-queue PATCH v2 1/2] e1000e: Use
+ rtnl_lock to prevent race conditions between net and pci/pm
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,112 +84,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "zdai@us.ibm.com" <zdai@us.ibm.com>,
+ "zdai@linux.vnet.ibm.com" <zdai@linux.vnet.ibm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  master
-branch HEAD: 685df9c39f70964482a1a5d1742b8cecb2606bb7  Merge branch 'net-dsa-turn-arrays-of-ports-into-a-list'
+> From: netdev-owner@vger.kernel.org <netdev-owner@vger.kernel.org>
+> On Behalf Of Alexander Duyck
+> Sent: Friday, October 11, 2019 8:35 AM
+> To: alexander.h.duyck@linux.intel.com; intel-wired-lan@lists.osuosl.org;
+> Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
+> Cc: netdev@vger.kernel.org; zdai@us.ibm.com; zdai@linux.vnet.ibm.com
+> Subject: [next-queue PATCH v2 1/2] e1000e: Use rtnl_lock to prevent race
+> conditions between net and pci/pm
+> 
+> From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+> 
+> This patch is meant to address possible race conditions that can exist
+> between network configuration and power management. A similar issue was
+> fixed for igb in commit 9474933caf21 ("igb: close/suspend race in
+> netif_device_detach").
+> 
+> In addition it consolidates the code so that the PCI error handling code
+> will essentially perform the power management freeze on the device prior to
+> attempting a reset, and will thaw the device afterwards if that is what it
+> is planning to do. Otherwise when we call close on the interface it should
+> see it is detached and not attempt to call the logic to down the interface
+> and free the IRQs again.
+> 
+> >From what I can tell the check that was adding the check for
+> __E1000_DOWN
+> in e1000e_close was added when runtime power management was added.
+> However
+> it should not be relevant for us as we perform a call to
+> pm_runtime_get_sync before we call e1000_down/free_irq so it should
+> always
+> be back up before we call into this anyway.
+> 
+> Reported-by: Morumuri Srivalli <smorumu1@in.ibm.com>
+> Tested-by: David Dai <zdai@linux.vnet.ibm.com>
+> Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/netdev.c |   68 ++++++++++++++---------
+> -----
+>  1 file changed, 35 insertions(+), 33 deletions(-)
 
-elapsed time: 326m
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 
-configs tested: 87
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-riscv                             allnoconfig
-riscv                               defconfig
-nds32                               defconfig
-alpha                               defconfig
-nds32                             allnoconfig
-i386                   randconfig-d002-201942
-x86_64                 randconfig-d002-201942
-x86_64                 randconfig-d004-201942
-x86_64                 randconfig-d003-201942
-i386                   randconfig-d003-201942
-x86_64                 randconfig-d001-201942
-i386                   randconfig-d001-201942
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-i386                   randconfig-b001-201942
-x86_64                 randconfig-b004-201942
-i386                   randconfig-b002-201942
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-sh                               allmodconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                                allnoconfig
-sh                            titan_defconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                         rhel-7.2-clear
-i386                   randconfig-f002-201942
-i386                   randconfig-f001-201942
-x86_64                 randconfig-f003-201942
-x86_64                 randconfig-f004-201942
-xtensa                       common_defconfig
-openrisc                    or1ksim_defconfig
-nios2                         3c120_defconfig
-xtensa                          iss_defconfig
-c6x                        evmc6678_defconfig
-c6x                              allyesconfig
-nios2                         10m50_defconfig
-openrisc                 simple_smp_defconfig
-parisc                        c3000_defconfig
-parisc                         b180_defconfig
-parisc                              defconfig
-parisc                            allnoconfig
-mips                             allmodconfig
-mips                           32r2_defconfig
-mips                      malta_kvm_defconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                             allmodconfig
-s390                                defconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-ia64                             alldefconfig
-x86_64                           allyesconfig
-i386                             allmodconfig
-m68k                          multi_defconfig
-m68k                       m5475evb_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                           sun3_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-arc                              allyesconfig
-powerpc                             defconfig
-microblaze                    nommu_defconfig
-powerpc                       ppc64_defconfig
-microblaze                      mmu_defconfig
-arc                                 defconfig
-powerpc                           allnoconfig
-arm                              allmodconfig
-arm                         at91_dt_defconfig
-arm64                            allyesconfig
-arm                               allnoconfig
-arm64                             allnoconfig
-
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
