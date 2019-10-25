@@ -1,78 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C84A4E571B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Oct 2019 01:36:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8628E5721
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Oct 2019 01:36:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6B79C2044C;
-	Fri, 25 Oct 2019 23:36:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 558B786727;
+	Fri, 25 Oct 2019 23:36:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PGkqd621wvrw; Fri, 25 Oct 2019 23:36:20 +0000 (UTC)
+	with ESMTP id IU2JzBWYtESD; Fri, 25 Oct 2019 23:36:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 79C0023799;
-	Fri, 25 Oct 2019 23:36:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D0F2486CD3;
+	Fri, 25 Oct 2019 23:36:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 989E51BF333
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:36:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B81DF1BF333
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:36:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8D7B487C72
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:36:17 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B4A1F8633B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:36:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3qU5H1UrE-za for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Oct 2019 23:36:17 +0000 (UTC)
+ with ESMTP id dFDkcXyEBkvQ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Oct 2019 23:36:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D0F8687C70
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:36:16 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3C8888442F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:36:35 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Oct 2019 16:36:16 -0700
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Oct 2019 16:36:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,230,1569308400"; d="scan'208";a="189078180"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by orsmga007.jf.intel.com with ESMTP; 25 Oct 2019 16:36:16 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 25 Oct 2019 16:36:15 -0700
+X-IronPort-AV: E=Sophos;i="5.68,230,1569308400"; d="scan'208";a="398913396"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga005.fm.intel.com with ESMTP; 25 Oct 2019 16:36:34 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 25 Oct 2019 16:36:34 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 25 Oct 2019 16:36:15 -0700
+ 15.1.1713.5; Fri, 25 Oct 2019 16:36:34 -0700
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Fri, 25 Oct 2019 16:36:15 -0700
+ Fri, 25 Oct 2019 16:36:34 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S30 v3 2/9] ice: get rid of per-tc flow
- in Tx queue configuration routines
-Thread-Index: AQHViooSKHUPj2gFMEKVZfuXWZ5amKdsBNgA
-Date: Fri, 25 Oct 2019 23:36:15 +0000
-Message-ID: <a73f4baad81349b881b7525d60c73f27@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S30 v3 3/9] ice: Add support for XDP
+Thread-Index: AQHViooXUKv8SdeiME6N25lPXUQb96dsBOxQ
+Date: Fri, 25 Oct 2019 23:36:33 +0000
+Message-ID: <074fae0773ed4e0eacbe927bb5e4530c@intel.com>
 References: <20191024081125.6711-1-anthony.l.nguyen@intel.com>
- <20191024081125.6711-2-anthony.l.nguyen@intel.com>
-In-Reply-To: <20191024081125.6711-2-anthony.l.nguyen@intel.com>
+ <20191024081125.6711-3-anthony.l.nguyen@intel.com>
+In-Reply-To: <20191024081125.6711-3-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDkyOWFjMzMtMWY5MS00MjNmLWJmZjMtMzViNWFlNWQ5ZTRkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoieUVsbU1ySVFLWWpKUGVmbzVOUHNhSE9cLzhlbmR6M3FXK1Q2c3RSZTF6QVJFQ2Y4andwVkNSREd5eG5hYkRCa3oifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOWJkYWVmYTgtNThiZS00YWYxLThhNWQtNGFjMTVlZjU4NTQ2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoickJNTDdIZ2N0bkEwQUtqclZBaHh3NHlCWnBPRlF0K0NKS2xnRjRadjEyUmEzU0xURVMyVEh1MDlidVNVdlJhVCJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S30 v3 2/9] ice: get rid of per-tc
- flow in Tx queue configuration routines
+Subject: Re: [Intel-wired-lan] [PATCH S30 v3 3/9] ice: Add support for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,22 +93,27 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, October 24, 2019 1:11 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S30 v3 2/9] ice: get rid of per-tc flow in Tx
-> queue configuration routines
+> Subject: [Intel-wired-lan] [PATCH S30 v3 3/9] ice: Add support for XDP
 > 
 > From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > 
-> There's no reason for treating DCB as first class citizen when configuring the
-> Tx queues and going through TCs. Reverse the logic and base the
-> configuration logic on rings, which is the object of interest anyway.
+> Add support for XDP. Implement ndo_bpf and ndo_xdp_xmit.  Upon load of
+> an XDP program, allocate additional Tx rings for dedicated XDP use.
+> The following actions are supported: XDP_TX, XDP_DROP, XDP_REDIRECT,
+> XDP_PASS, and XDP_ABORTED.
 > 
 > Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_base.c | 29 +++++++++--
-> drivers/net/ethernet/intel/ice/ice_base.h |  4 +-
-> drivers/net/ethernet/intel/ice/ice_lib.c  | 63 ++++++++---------------
->  3 files changed, 47 insertions(+), 49 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice.h         |  24 +-
+>  drivers/net/ethernet/intel/ice/ice_base.c    |  28 +-
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c |  50 ++-
+>  drivers/net/ethernet/intel/ice/ice_lib.c     |  69 +++-
+>  drivers/net/ethernet/intel/ice/ice_lib.h     |   6 +
+>  drivers/net/ethernet/intel/ice/ice_main.c    | 319 +++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_txrx.c    | 351 ++++++++++++++++---
+>  drivers/net/ethernet/intel/ice/ice_txrx.h    |  34 +-
+>  8 files changed, 822 insertions(+), 59 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
