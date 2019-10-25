@@ -1,83 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14288E5509
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Oct 2019 22:20:59 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C10F9E56DD
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Oct 2019 01:05:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A3CA486211;
-	Fri, 25 Oct 2019 20:20:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 788F287A2D;
+	Fri, 25 Oct 2019 23:05:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TnJrTX8D43Ps; Fri, 25 Oct 2019 20:20:57 +0000 (UTC)
+	with ESMTP id MaMI002pJ97W; Fri, 25 Oct 2019 23:05:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 50FE085F8D;
-	Fri, 25 Oct 2019 20:20:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0A80C87B27;
+	Fri, 25 Oct 2019 23:05:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CEAF71BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 20:20:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D62881BF333
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:05:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CA218864D8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 20:20:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CC68A87A74
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:05:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d99ZTsk6DX1v for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Oct 2019 20:20:54 +0000 (UTC)
+ with ESMTP id e9heWjjUnzKn for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Oct 2019 23:05:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F194986462
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 20:20:53 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8523D87A05
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 23:05:10 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Oct 2019 13:20:54 -0700
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Oct 2019 16:05:08 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,229,1569308400"; d="scan'208";a="400221917"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by fmsmga006.fm.intel.com with ESMTP; 25 Oct 2019 13:20:53 -0700
-Received: from orsmsx116.amr.corp.intel.com (10.22.240.14) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 25 Oct 2019 13:20:52 -0700
-Received: from orsmsx121.amr.corp.intel.com ([169.254.10.88]) by
- ORSMSX116.amr.corp.intel.com ([169.254.7.79]) with mapi id 14.03.0439.000;
- Fri, 25 Oct 2019 13:20:52 -0700
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Randy Dunlap <rdunlap@infradead.org>, Masahiro Yamada
- <yamada.masahiro@socionext.com>
-Thread-Topic: [PATCH] namespace: fix namespace.pl script to support relative
- paths
-Thread-Index: AQHVdYkISHS3XNGT0kCKyhZHN6EY9KdALBNAgAIVm4CAAmLQsIAjqUEAgACZz9CAALWTgIACLwmwgACTTID//5iEgA==
-Date: Fri, 25 Oct 2019 20:20:51 +0000
-Message-ID: <02874ECE860811409154E81DA85FBB589693DABC@ORSMSX121.amr.corp.intel.com>
-References: <20190129204319.15238-1-jacob.e.keller@intel.com>
- <7b26e6cc-10ce-5df2-6375-1f95bc4da04e@infradead.org>
- <02874ECE860811409154E81DA85FBB58968DBE54@ORSMSX121.amr.corp.intel.com>
- <CAK7LNARyUEakeG_N9TWcO2cjFSzbgY__k_QJm6C+oOz+fW0aeg@mail.gmail.com>
- <02874ECE860811409154E81DA85FBB58968E1402@ORSMSX121.amr.corp.intel.com>
- <CAK7LNARAhZtzdnS9+mgtamj=pLdV81dudnYVDa8NRxcQPpF0bw@mail.gmail.com>
- <02874ECE860811409154E81DA85FBB589693A38A@ORSMSX121.amr.corp.intel.com>
- <CAK7LNAQow8N9a5e_=pu7qDiuvETy1x1P5fxp20zYOZgQhXPJhg@mail.gmail.com>
- <02874ECE860811409154E81DA85FBB589693D053@ORSMSX121.amr.corp.intel.com>
- <6127ec91-ad81-f0d7-576e-22e06e677442@infradead.org>
-In-Reply-To: <6127ec91-ad81-f0d7-576e-22e06e677442@infradead.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOWU4ZmM3ODctNGY1Mi00MTM4LTljMjktNzE1ZDg0ZWE5Y2Y1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiajNuSXhreW1PSlhYaUxBcmh1M1JGQ0lwVEJuSzZWZXV5RUg1cUs0OER1bndVRXJsWVp1K1lWcFlCdGJkWGdBdiJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+X-IronPort-AV: E=Sophos;i="5.68,230,1569308400"; d="scan'208";a="210868736"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by orsmga002.jf.intel.com with ESMTP; 25 Oct 2019 16:05:08 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 25 Oct 2019 07:34:27 -0700
+Message-Id: <20191025143441.50151-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] namespace: fix namespace.pl script to
- support relative paths
+Subject: [Intel-wired-lan] [PATCH S32 01/15] ice: Use ice_ena_vsi and
+ ice_dis_vsi in DCB configuration flow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,61 +60,315 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linux-kbuild <linux-kbuild@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Randy Dunlap <rdunlap@infradead.org>
-> Sent: Friday, October 25, 2019 12:30 PM
-> To: Keller, Jacob E <jacob.e.keller@intel.com>; Masahiro Yamada
-> <yamada.masahiro@socionext.com>
-> Cc: intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org; linux-kbuild
-> <linux-kbuild@vger.kernel.org>
-> Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative
-> paths
-> 
-> On 10/25/19 10:45 AM, Keller, Jacob E wrote:
-> >
-> >> -----Original Message-----
-> >> From: Masahiro Yamada <yamada.masahiro@socionext.com>
-> >> Sent: Wednesday, October 23, 2019 6:22 PM
-> >> To: Keller, Jacob E <jacob.e.keller@intel.com>
-> >> Cc: Randy Dunlap <rdunlap@infradead.org>; intel-wired-lan@lists.osuosl.org;
-> >> linux-kernel@vger.kernel.org; linux-kbuild <linux-kbuild@vger.kernel.org>
-> >> Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative
-> >> paths
-> >>
-> >> If you want to detect missing 'static',
-> >> have you tried 'sparse'?
-> >>
-> >
-> > We've used that as well.
-> >
-> > To be fair, I agree that it covers similar functionality as other tools. I haven't
-> looked directly at namespace.pl output in a while, and the fix here is multiple
-> years old that took a long time to get picked up.
-> >
-> > If it's agreed that the tool has no value, and especially if it results in false
-> indications of a problem, then maybe removing it to prevent someone from mis-
-> reading its output makes sense?
-> 
-> If there is a satisfactory alternative, I expect that namespace.pl is old,
-> unmaintained, and unneeded, and should go away.
-> 
-> --
-> ~Randy
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-Given Yamada's comments and my experience, modpost and sparse are both good at detecting the issues that namespace.pl handles.
+DCB configuration flow needs to disable and enable only the PF (main)
+VSI, so use ice_ena_vsi and ice_dis_vsi. To avoid the use of ifdef to
+control the staticness of these functions, move them to ice_lib.c.
 
-I am not sure if there's any other output that would be valuable from namespace.pl, but if not.. I don't see a reason to keep it compared to the other tools.
+Also change devm* to kzalloc/kfree in ice_pf_dcb_cfg()
 
-Thanks,
-Jake
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h         |  4 -
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 28 +++++--
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 56 ++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lib.h     |  4 +
+ drivers/net/ethernet/intel/ice/ice_main.c    | 79 --------------------
+ 5 files changed, 82 insertions(+), 89 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 7d10b8dc2815..53a4870dd271 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -505,10 +505,6 @@ int ice_set_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size);
+ int ice_get_rss(struct ice_vsi *vsi, u8 *seed, u8 *lut, u16 lut_size);
+ void ice_fill_rss_lut(u8 *lut, u16 rss_table_size, u16 rss_size);
+ void ice_print_link_msg(struct ice_vsi *vsi, bool isup);
+-#ifdef CONFIG_DCB
+-int ice_pf_ena_all_vsi(struct ice_pf *pf, bool locked);
+-void ice_pf_dis_all_vsi(struct ice_pf *pf, bool locked);
+-#endif /* CONFIG_DCB */
+ int ice_open(struct net_device *netdev);
+ int ice_stop(struct net_device *netdev);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index 13da89e22123..afe02e0aecc0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -150,6 +150,7 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
+ {
+ 	struct ice_dcbx_cfg *old_cfg, *curr_cfg;
+ 	struct ice_aqc_port_ets_elem buf = { 0 };
++	struct ice_vsi *pf_vsi;
+ 	int ret = 0;
+ 
+ 	curr_cfg = &pf->hw.port_info->local_dcbx_cfg;
+@@ -169,15 +170,22 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
+ 	}
+ 
+ 	/* Store old config in case FW config fails */
+-	old_cfg = devm_kzalloc(&pf->pdev->dev, sizeof(*old_cfg), GFP_KERNEL);
++	old_cfg = kzalloc(sizeof(*old_cfg), GFP_KERNEL);
+ 	memcpy(old_cfg, curr_cfg, sizeof(*old_cfg));
+ 
++	pf_vsi = ice_get_main_vsi(pf);
++	if (!pf_vsi) {
++		dev_dbg(&pf->pdev->dev, "PF VSI doesn't exist\n");
++		ret = -EINVAL;
++		goto free_cfg;
++	}
++
+ 	/* avoid race conditions by holding the lock while disabling and
+ 	 * re-enabling the VSI
+ 	 */
+ 	if (!locked)
+ 		rtnl_lock();
+-	ice_pf_dis_all_vsi(pf, true);
++	ice_dis_vsi(pf_vsi, true);
+ 
+ 	memcpy(curr_cfg, new_cfg, sizeof(*curr_cfg));
+ 	memcpy(&curr_cfg->etsrec, &curr_cfg->etscfg, sizeof(curr_cfg->etsrec));
+@@ -204,10 +212,11 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
+ 	ice_pf_dcb_recfg(pf);
+ 
+ out:
+-	ice_pf_ena_all_vsi(pf, true);
++	ice_ena_vsi(pf_vsi, true);
+ 	if (!locked)
+ 		rtnl_unlock();
+-	devm_kfree(&pf->pdev->dev, old_cfg);
++free_cfg:
++	kfree(old_cfg);
+ 	return ret;
+ }
+ 
+@@ -690,6 +699,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 	struct ice_dcbx_cfg tmp_dcbx_cfg;
+ 	bool need_reconfig = false;
+ 	struct ice_port_info *pi;
++	struct ice_vsi *pf_vsi;
+ 	u8 type;
+ 	int ret;
+ 
+@@ -761,8 +771,14 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 		clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
+ 	}
+ 
++	pf_vsi = ice_get_main_vsi(pf);
++	if (!pf_vsi) {
++		dev_dbg(&pf->pdev->dev, "PF VSI doesn't exist\n");
++		return;
++	}
++
+ 	rtnl_lock();
+-	ice_pf_dis_all_vsi(pf, true);
++	ice_dis_vsi(pf_vsi, true);
+ 
+ 	ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
+ 	if (ret) {
+@@ -774,6 +790,6 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 	/* changes in configuration update VSI */
+ 	ice_pf_dcb_recfg(pf);
+ 
+-	ice_pf_ena_all_vsi(pf, true);
++	ice_ena_vsi(pf_vsi, true);
+ 	rtnl_unlock();
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 161a2d24ffbd..8dd7f3848c59 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -2040,6 +2040,62 @@ void ice_vsi_close(struct ice_vsi *vsi)
+ 	ice_vsi_free_rx_rings(vsi);
+ }
+ 
++/**
++ * ice_ena_vsi - resume a VSI
++ * @vsi: the VSI being resume
++ * @locked: is the rtnl_lock already held
++ */
++int ice_ena_vsi(struct ice_vsi *vsi, bool locked)
++{
++	int err = 0;
++
++	if (!test_bit(__ICE_NEEDS_RESTART, vsi->state))
++		return 0;
++
++	clear_bit(__ICE_NEEDS_RESTART, vsi->state);
++
++	if (vsi->netdev && vsi->type == ICE_VSI_PF) {
++		if (netif_running(vsi->netdev)) {
++			if (!locked)
++				rtnl_lock();
++
++			err = ice_open(vsi->netdev);
++
++			if (!locked)
++				rtnl_unlock();
++		}
++	}
++
++	return err;
++}
++
++/**
++ * ice_dis_vsi - pause a VSI
++ * @vsi: the VSI being paused
++ * @locked: is the rtnl_lock already held
++ */
++void ice_dis_vsi(struct ice_vsi *vsi, bool locked)
++{
++	if (test_bit(__ICE_DOWN, vsi->state))
++		return;
++
++	set_bit(__ICE_NEEDS_RESTART, vsi->state);
++
++	if (vsi->type == ICE_VSI_PF && vsi->netdev) {
++		if (netif_running(vsi->netdev)) {
++			if (!locked)
++				rtnl_lock();
++
++			ice_stop(vsi->netdev);
++
++			if (!locked)
++				rtnl_unlock();
++		} else {
++			ice_vsi_close(vsi);
++		}
++	}
++}
++
+ /**
+  * ice_free_res - free a block of resources
+  * @res: pointer to the resource
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index d8cc03197878..1ec2ad98ac46 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -62,6 +62,10 @@ int ice_vsi_release(struct ice_vsi *vsi);
+ 
+ void ice_vsi_close(struct ice_vsi *vsi);
+ 
++int ice_ena_vsi(struct ice_vsi *vsi, bool locked);
++
++void ice_dis_vsi(struct ice_vsi *vsi, bool locked);
++
+ int ice_free_res(struct ice_res_tracker *res, u16 index, u16 id);
+ 
+ int
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 985abd8f5589..dd05505ccbe1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -436,43 +436,12 @@ static void ice_sync_fltr_subtask(struct ice_pf *pf)
+ 		}
+ }
+ 
+-/**
+- * ice_dis_vsi - pause a VSI
+- * @vsi: the VSI being paused
+- * @locked: is the rtnl_lock already held
+- */
+-static void ice_dis_vsi(struct ice_vsi *vsi, bool locked)
+-{
+-	if (test_bit(__ICE_DOWN, vsi->state))
+-		return;
+-
+-	set_bit(__ICE_NEEDS_RESTART, vsi->state);
+-
+-	if (vsi->type == ICE_VSI_PF && vsi->netdev) {
+-		if (netif_running(vsi->netdev)) {
+-			if (!locked)
+-				rtnl_lock();
+-
+-			ice_stop(vsi->netdev);
+-
+-			if (!locked)
+-				rtnl_unlock();
+-		} else {
+-			ice_vsi_close(vsi);
+-		}
+-	}
+-}
+-
+ /**
+  * ice_pf_dis_all_vsi - Pause all VSIs on a PF
+  * @pf: the PF
+  * @locked: is the rtnl_lock already held
+  */
+-#ifdef CONFIG_DCB
+-void ice_pf_dis_all_vsi(struct ice_pf *pf, bool locked)
+-#else
+ static void ice_pf_dis_all_vsi(struct ice_pf *pf, bool locked)
+-#endif /* CONFIG_DCB */
+ {
+ 	int v;
+ 
+@@ -4588,54 +4557,6 @@ static void ice_vsi_release_all(struct ice_pf *pf)
+ 	}
+ }
+ 
+-/**
+- * ice_ena_vsi - resume a VSI
+- * @vsi: the VSI being resume
+- * @locked: is the rtnl_lock already held
+- */
+-static int ice_ena_vsi(struct ice_vsi *vsi, bool locked)
+-{
+-	int err = 0;
+-
+-	if (!test_bit(__ICE_NEEDS_RESTART, vsi->state))
+-		return 0;
+-
+-	clear_bit(__ICE_NEEDS_RESTART, vsi->state);
+-
+-	if (vsi->netdev && vsi->type == ICE_VSI_PF) {
+-		if (netif_running(vsi->netdev)) {
+-			if (!locked)
+-				rtnl_lock();
+-
+-			err = ice_open(vsi->netdev);
+-
+-			if (!locked)
+-				rtnl_unlock();
+-		}
+-	}
+-
+-	return err;
+-}
+-
+-/**
+- * ice_pf_ena_all_vsi - Resume all VSIs on a PF
+- * @pf: the PF
+- * @locked: is the rtnl_lock already held
+- */
+-#ifdef CONFIG_DCB
+-int ice_pf_ena_all_vsi(struct ice_pf *pf, bool locked)
+-{
+-	int v;
+-
+-	ice_for_each_vsi(pf, v)
+-		if (pf->vsi[v])
+-			if (ice_ena_vsi(pf->vsi[v], locked))
+-				return -EIO;
+-
+-	return 0;
+-}
+-#endif /* CONFIG_DCB */
+-
+ /**
+  * ice_vsi_rebuild_by_type - Rebuild VSI of a given type
+  * @pf: pointer to the PF instance
+-- 
+2.20.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
