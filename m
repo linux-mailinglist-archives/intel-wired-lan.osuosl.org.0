@@ -1,56 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E25FE4C6D
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Oct 2019 15:38:56 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C268AE5288
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Oct 2019 19:45:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E5CD121135;
-	Fri, 25 Oct 2019 13:38:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 55D7F87A9C;
+	Fri, 25 Oct 2019 17:45:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9LN1+EXMy23z; Fri, 25 Oct 2019 13:38:54 +0000 (UTC)
+	with ESMTP id P5KVSLKr3XN6; Fri, 25 Oct 2019 17:45:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2BE3D20767;
-	Fri, 25 Oct 2019 13:38:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D56E387B65;
+	Fri, 25 Oct 2019 17:45:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3257D1BF39E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 13:38:51 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D0E0E1BF2C4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 17:45:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 216F485BDF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 13:38:51 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id CA5E686D6F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 17:45:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b43j1C-PNQZb for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Oct 2019 13:38:50 +0000 (UTC)
+ with ESMTP id R+q8gYGTb17J for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Oct 2019 17:45:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 713338578B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 13:38:50 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7FCE686B48
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Oct 2019 17:45:48 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Oct 2019 06:38:49 -0700
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 25 Oct 2019 10:45:47 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,228,1569308400"; d="scan'208";a="373558876"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 25 Oct 2019 06:38:47 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iNznj-000AQT-7k; Fri, 25 Oct 2019 21:38:47 +0800
-Date: Fri, 25 Oct 2019 21:38:32 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5db2fad8.33xmrcITrN0KE/R/%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.68,229,1569308400"; d="scan'208";a="198086417"
+Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
+ by fmsmga007.fm.intel.com with ESMTP; 25 Oct 2019 10:45:47 -0700
+Received: from orsmsx162.amr.corp.intel.com (10.22.240.85) by
+ ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 25 Oct 2019 10:45:44 -0700
+Received: from orsmsx121.amr.corp.intel.com ([169.254.10.88]) by
+ ORSMSX162.amr.corp.intel.com ([169.254.3.148]) with mapi id 14.03.0439.000;
+ Fri, 25 Oct 2019 10:45:44 -0700
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Masahiro Yamada <yamada.masahiro@socionext.com>
+Thread-Topic: [PATCH] namespace: fix namespace.pl script to support relative
+ paths
+Thread-Index: AQHVdYkISHS3XNGT0kCKyhZHN6EY9KdALBNAgAIVm4CAAmLQsIAjqUEAgACZz9CAALWTgIACLwmw
+Date: Fri, 25 Oct 2019 17:45:43 +0000
+Message-ID: <02874ECE860811409154E81DA85FBB589693D053@ORSMSX121.amr.corp.intel.com>
+References: <20190129204319.15238-1-jacob.e.keller@intel.com>
+ <7b26e6cc-10ce-5df2-6375-1f95bc4da04e@infradead.org>
+ <02874ECE860811409154E81DA85FBB58968DBE54@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNARyUEakeG_N9TWcO2cjFSzbgY__k_QJm6C+oOz+fW0aeg@mail.gmail.com>
+ <02874ECE860811409154E81DA85FBB58968E1402@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNARAhZtzdnS9+mgtamj=pLdV81dudnYVDa8NRxcQPpF0bw@mail.gmail.com>
+ <02874ECE860811409154E81DA85FBB589693A38A@ORSMSX121.amr.corp.intel.com>
+ <CAK7LNAQow8N9a5e_=pu7qDiuvETy1x1P5fxp20zYOZgQhXPJhg@mail.gmail.com>
+In-Reply-To: <CAK7LNAQow8N9a5e_=pu7qDiuvETy1x1P5fxp20zYOZgQhXPJhg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmZmNDVjMTgtNDA3ZC00NzM1LThlZmQtNThmM2Q3Yjc4NTdjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWFV0eGJtcWZwbFY4QVdIR1djN2VydkordFhyaHNuTUN4elpiOWFpZWxib1pQN25GSDNMM2R5MVFiWXZrOWlMNSJ9
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- e7d25497f176aa3e963f7e03456ced929700aeef
+Subject: Re: [Intel-wired-lan] [PATCH] namespace: fix namespace.pl script to
+ support relative paths
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,170 +87,123 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Randy Dunlap <rdunlap@infradead.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linux-kbuild <linux-kbuild@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: e7d25497f176aa3e963f7e03456ced929700aeef  i40e: enable X710 support
 
-elapsed time: 888m
+> -----Original Message-----
+> From: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Sent: Wednesday, October 23, 2019 6:22 PM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>
+> Cc: Randy Dunlap <rdunlap@infradead.org>; intel-wired-lan@lists.osuosl.org;
+> linux-kernel@vger.kernel.org; linux-kbuild <linux-kbuild@vger.kernel.org>
+> Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative
+> paths
+> 
+> On Thu, Oct 24, 2019 at 6:34 AM Keller, Jacob E
+> <jacob.e.keller@intel.com> wrote:
+> >
+> > > -----Original Message-----
+> > > From: Masahiro Yamada <yamada.masahiro@socionext.com>
+> > > Sent: Tuesday, October 22, 2019 10:22 PM
+> > > To: Keller, Jacob E <jacob.e.keller@intel.com>; Randy Dunlap
+> > > <rdunlap@infradead.org>
+> > > Cc: intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org; linux-
+> kbuild
+> > > <linux-kbuild@vger.kernel.org>
+> > > Subject: Re: [PATCH] namespace: fix namespace.pl script to support relative
+> > > paths
+> > >
+> > > This scripts has been 5-year broken,
+> > > and I did not see any complaint except from you.
+> > > So, I wonder how many people are using this.
+> > >
+> > > Nor, do I understand how to use it.
+> > >
+> > > Could you teach me a bit more about this script?
+> > >
+> > >
+> > >
+> > > Something might be missing in my mind, but
+> > > I do not know how to use this script in a useful way.
+> > >
+> > >
+> > >
+> > > It provides three checks.
+> > >
+> > > [1] list_multiply_defined()
+> > >
+> > > This warns multiple definition of functions.
+> > >
+> > > The compiler would fail if it saw any multiple definition,
+> > > so the reports from this check are all false-positive.
+> > >
+> > >
+> > > [2] resolve_external_references()
+> > >
+> > > This warns unresolved symbols.
+> > >
+> > > The compiler would fail if it saw any unresolved symbol,
+> > > so the reports from this check are all false-positive, too.
+> > >
+> > >
+> >
+> > The compiler won't necessarily fail when building modules, because the symbol
+> might be in another loadable module.
+> 
+> Right, but this is already checked by modpost, isn't it?
+> 
+> 
+> 
+> > >
+> > >
+> > > [3] list_extra_externals
+> > >
+> > > This warns symbols with no reference.
+> > >
+> > > This potentially contains lots of false-positives.
+> > > For example, the core framework provides APIs, but if all drivers
+> > > are disabled, there is no user of those APIs.
+> > >
+> >
+> > We use this to help verify that driver modules do not expose symbols.
+> 
+> Ah, the output is quite large, so
+> you search for only modules in your interest. Right?
+> 
 
-configs tested: 145
+We run it on only one module at a time, yes.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> 
+> If you want to detect missing 'static',
+> have you tried 'sparse'?
+> 
 
-i386                   randconfig-d002-201942
-x86_64                 randconfig-d002-201942
-i386                   randconfig-d004-201942
-x86_64                 randconfig-d004-201942
-x86_64                 randconfig-d003-201942
-i386                   randconfig-d003-201942
-x86_64                 randconfig-d001-201942
-i386                   randconfig-d001-201942
-arm                              allmodconfig
-arm                         at91_dt_defconfig
-arm64                               defconfig
-arm                        multi_v5_defconfig
-arm64                            allyesconfig
-arm                               allnoconfig
-arm                           efm32_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allmodconfig
-arm                          exynos_defconfig
-arm                        shmobile_defconfig
-arm                        multi_v7_defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-x86_64                 randconfig-g002-201942
-i386                   randconfig-g004-201942
-x86_64                 randconfig-g001-201942
-i386                   randconfig-g002-201942
-x86_64                 randconfig-g004-201942
-x86_64                 randconfig-g003-201942
-i386                   randconfig-g003-201942
-i386                   randconfig-g001-201942
-x86_64                           allyesconfig
-i386                             allmodconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-x86_64                 randconfig-h002-201942
-x86_64                 randconfig-h001-201942
-i386                   randconfig-h004-201942
-i386                   randconfig-h003-201942
-x86_64                 randconfig-h003-201942
-i386                   randconfig-h002-201942
-i386                   randconfig-h001-201942
-x86_64                 randconfig-h004-201942
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-x86_64                 randconfig-c001-201942
-i386                   randconfig-c001-201942
-x86_64                 randconfig-c002-201942
-i386                   randconfig-c004-201942
-i386                   randconfig-c003-201942
-x86_64                 randconfig-c004-201942
-i386                   randconfig-c002-201942
-x86_64                 randconfig-c003-201942
-i386                   randconfig-f002-201942
-i386                   randconfig-f001-201942
-x86_64                 randconfig-f003-201942
-x86_64                 randconfig-f004-201942
-x86_64                 randconfig-f002-201942
-i386                   randconfig-f003-201942
-x86_64                 randconfig-f001-201942
-i386                   randconfig-f004-201942
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-x86_64                                  kexec
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-i386                   randconfig-b001-201942
-x86_64                 randconfig-b002-201942
-x86_64                 randconfig-b003-201942
-i386                   randconfig-b003-201942
-i386                   randconfig-b004-201942
-x86_64                 randconfig-b004-201942
-x86_64                 randconfig-b001-201942
-i386                   randconfig-b002-201942
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-x86_64                 randconfig-a004-201942
-x86_64                 randconfig-a001-201942
-i386                   randconfig-a002-201942
-x86_64                 randconfig-a002-201942
-i386                   randconfig-a001-201942
-i386                   randconfig-a003-201942
-i386                   randconfig-a004-201942
-x86_64                 randconfig-a003-201942
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-x86_64                 randconfig-e004-201942
-x86_64                 randconfig-e001-201942
-x86_64                 randconfig-e003-201942
-x86_64                 randconfig-e002-201942
-i386                   randconfig-e003-201942
-i386                   randconfig-e004-201942
-i386                   randconfig-e001-201942
-i386                   randconfig-e002-201942
-alpha                               defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64                           allmodconfig
+We've used that as well. 
 
----
-0-DAY kernel test infrastructure                Open Source Technology Center
-https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
+To be fair, I agree that it covers similar functionality as other tools. I haven't looked directly at namespace.pl output in a while, and the fix here is multiple years old that took a long time to get picked up.
+
+If it's agreed that the tool has no value, and especially if it results in false indications of a problem, then maybe removing it to prevent someone from mis-reading its output makes sense?
+
+Thanks,
+Jake
+
+> 
+> 
+> > Thanks,
+> > Jake
+> 
+> 
+> 
+> --
+> Best Regards
+> Masahiro Yamada
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
