@@ -1,82 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 826FBE6CAB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2019 08:07:16 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AC76E7875
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2019 19:37:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2FAD120398;
-	Mon, 28 Oct 2019 07:07:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D1918860BC;
+	Mon, 28 Oct 2019 18:37:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7CPihvc6QWyN; Mon, 28 Oct 2019 07:07:15 +0000 (UTC)
+	with ESMTP id 46k0EB7zr463; Mon, 28 Oct 2019 18:37:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E9754203CE;
-	Mon, 28 Oct 2019 07:07:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DD7BF85AE2;
+	Mon, 28 Oct 2019 18:37:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A918C1BF425
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 07:07:12 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C155F1BF29A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 18:37:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A17C720398
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 07:07:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B9366848A3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 18:37:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w4-JRNeAzdV0 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Oct 2019 07:07:11 +0000 (UTC)
+ with ESMTP id 4bdQrg+FGDnZ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Oct 2019 18:37:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id 5CF4220397
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 07:07:11 +0000 (UTC)
-Received: from mail-pf1-f199.google.com ([209.85.210.199])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>) id 1iOz7N-0006ah-2y
- for intel-wired-lan@lists.osuosl.org; Mon, 28 Oct 2019 07:07:09 +0000
-Received: by mail-pf1-f199.google.com with SMTP id x3so2648021pfr.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 00:07:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=jfQkmuDOTeTMav8WguTDuTWarriQw/T8WFB78g2eSdo=;
- b=tlykqnVXWxmKBrGrxmCyM3TDqVIBSPKJexoFzhFo47KNw/hlG9xa3CVHHM5KpzDpDm
- apnKifVTbtAVDKcpAQoULrS34QUHoMYRb2dNiql3Pnw9tPTTa210PwX75/iMZxEt3mjK
- yft+NskWxiBWAE5b/gpneOIvyjdjbnOZBk2TvtyV82XTRiCa3Do6tilvlYk0XVlRX3zu
- NFZUKRLDGYQ51e6dtyCi6ikbubkK/+ua9vERie9Vq8J+2QSQ6MfrtxnApgczQ4+YAj1H
- yXisyT/aKADt3PjYIo7Hvc3vgxo5SK/rDvhtYJMr3Qr9qPt3zBLeIXcPZsQwl2jTyMJZ
- irug==
-X-Gm-Message-State: APjAAAVa8kD5Xcvp8zKao9vfkIvmScAJjlwB2AlE6+9a6O3adXg3zQ2z
- 5MD5BT0FLTxdfwCIh3k9AchqtyQg+4A/vwGsMnY1TdoHJaCX1sVGTORWu6cit/RXPe13Gc8y0rf
- ypFE7Iq7XPxCsUYtX3zkc+rdVMXZe4NOw0UXi1BtAYauQP5E=
-X-Received: by 2002:a63:2f47:: with SMTP id v68mr19033522pgv.318.1572246427647; 
- Mon, 28 Oct 2019 00:07:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxvGjAlrLKj/JoHnaALxY+Y3Db7Nsjp996m81JYS6jCJ9XPQyGYp8qXg4sxTYJKEh2DEwmc5A==
-X-Received: by 2002:a63:2f47:: with SMTP id v68mr19033484pgv.318.1572246427128; 
- Mon, 28 Oct 2019 00:07:07 -0700 (PDT)
-Received: from 2001-b011-380f-3c42-74a9-e8b4-eac5-9609.dynamic-ip6.hinet.net
- (2001-b011-380f-3c42-74a9-e8b4-eac5-9609.dynamic-ip6.hinet.net.
- [2001:b011:380f:3c42:74a9:e8b4:eac5:9609])
- by smtp.gmail.com with ESMTPSA id c12sm5351039pfp.178.2019.10.28.00.07.05
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 28 Oct 2019 00:07:06 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3601\))
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <940da657-a8af-ccde-34ca-7a93fad94567@mni.thm.de>
-Date: Mon, 28 Oct 2019 15:07:04 +0800
-Message-Id: <ADFA5FA0-ED36-4313-9CDD-602946FEBA67@canonical.com>
-References: <171f0c61-73a2-81c2-5c8a-7c140f548803@mni.thm.de>
- <56242322-D549-4E23-97AB-153CC392B107@canonical.com>
- <76fc2204-0786-03b3-773d-110912d48168@mni.thm.de>
- <2994F2A2-D844-40B0-9971-C002E5EC49CD@canonical.com>
- <940da657-a8af-ccde-34ca-7a93fad94567@mni.thm.de>
-To: Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
-X-Mailer: Apple Mail (2.3601)
-Subject: Re: [Intel-wired-lan] e1000e regression - 5.4rc1
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 900208489C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2019 18:37:22 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Oct 2019 11:37:21 -0700
+X-IronPort-AV: E=Sophos;i="5.68,240,1569308400"; d="scan'208";a="203345576"
+Received: from jfsjbrandeb002.jf.intel.com ([10.166.28.116])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Oct 2019 11:37:21 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 28 Oct 2019 11:37:14 -0700
+Message-Id: <20191028183714.50528-1-jesse.brandeburg@intel.com>
+X-Mailer: git-send-email 2.17.2
+Subject: [Intel-wired-lan] [PATCH net-next v1] i40e: implement VF stats NDO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,97 +58,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: tobias.klausmann@freenet.de, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Tobias,
+Implement the VF stats gathering via the kernel via ndo_get_vf_stats().
+The driver will show per-VF stats in the output of the
+ip -s link show dev <PF>
+command.
 
-> On Oct 9, 2019, at 02:28, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
-> 
-> Hi,
-> 
-> On 08.10.19 09:46, Kai-Heng Feng wrote:
->> Hi Tobias,
->> 
->>> On Oct 5, 2019, at 03:52, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
->>> 
->>> Hello,
->>> 
->>> On 04.10.19 19:36, Kai-Heng Feng wrote:
->>>> Hi Tobias
->>>> 
->>>>> On Oct 4, 2019, at 18:34, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
->>>>> 
->>>>> Hello all,
->>>>> 
->>>>> While testing the 5.4rc1 release, i noticed my Ethernet never coming fully up, seemingly having a timeout problem. While bisecting this i landed at the commit dee23594d587386e9fda76732aa5f5a487709510 ("e1000e: Make speed detection on hotplugging cable more reliable") as the first bad commit. And indeed just reverting the commit on top of 5.4rc1 resolves the problem. Let me know if you have further questions, or patches to test!
->>>> Is runtime PM enabled (i.e. "power/control" = auto)?
->>> 
->>> Yes it is set to auto.
->> Is something like TLP or `powertop --auto-tune` is in use?
->> 
->> Do you still see the issue when "power/control" keeps at "on"?
-> 
-> 
-> With "power/control" set to "on" it does still cycle between up and down. But yes i have upower and powerdevil running. After killing them the connection comes up with "power/control" set to "on", yet not with "auto".
+Testing Hints (Required if no HSD): ip -s link show dev eth0,
+will return non-zero VF stats.
 
-Can you please give this branch a try:
-https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git/log/?h=dev-queue
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  1 +
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 48 +++++++++++++++++++
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  2 +
+ 3 files changed, 51 insertions(+)
 
-Kai-Heng
-
-> 
-> 
-> Greetings,
-> 
-> Tobias
-> 
-> 
->> 
->> Kai-Heng
->> 
->>> 
->>>> Also please attach full dmesg, thanks!
->>> Attached,
->>> 
->>> Tobias
->>> 
->>>> Kai-Heng
->>>> 
->>>>> Greetings,
->>>>> 
->>>>> Tobias
->>>>> 
->>>>> 
->>>>> lspci:
->>>>> 
->>>>> 00:19.0 Ethernet controller: Intel Corporation 82579V Gigabit Network Connection (rev 06)
->>>>>         DeviceName:  Onboard LAN
->>>>>         Subsystem: ASUSTeK Computer Inc. P8P67 Deluxe Motherboard
->>>>>         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
->>>>>         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
->>>>>         Latency: 0
->>>>>         Interrupt: pin A routed to IRQ 56
->>>>>         Region 0: Memory at fbf00000 (32-bit, non-prefetchable) [size=128K]
->>>>>         Region 1: Memory at fbf28000 (32-bit, non-prefetchable) [size=4K]
->>>>>         Region 2: I/O ports at f040 [size=32]
->>>>>         Capabilities: [c8] Power Management version 2
->>>>>                 Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
->>>>>                 Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=1 PME-
->>>>>         Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
->>>>>                 Address: 00000000fee00698  Data: 0000
->>>>>         Capabilities: [e0] PCI Advanced Features
->>>>>                 AFCap: TP+ FLR+
->>>>>                 AFCtrl: FLR-
->>>>>                 AFStatus: TP-
->>>>>         Kernel driver in use: e1000e
->>>>>         Kernel modules: e1000e
->>>>> 
->>> <dmesg.txt>
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index a6f60e8a6026..56cf7bc8add3 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -12870,6 +12870,7 @@ static const struct net_device_ops i40e_netdev_ops = {
+ 	.ndo_set_features	= i40e_set_features,
+ 	.ndo_set_vf_mac		= i40e_ndo_set_vf_mac,
+ 	.ndo_set_vf_vlan	= i40e_ndo_set_vf_port_vlan,
++	.ndo_get_vf_stats	= i40e_get_vf_stats,
+ 	.ndo_set_vf_rate	= i40e_ndo_set_vf_bw,
+ 	.ndo_get_vf_config	= i40e_ndo_get_vf_config,
+ 	.ndo_set_vf_link_state	= i40e_ndo_set_vf_link_state,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 7787766d0eb8..84cf851cbbb7 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -4527,3 +4527,51 @@ int i40e_ndo_set_vf_trust(struct net_device *netdev, int vf_id, bool setting)
+ 	clear_bit(__I40E_VIRTCHNL_OP_PENDING, pf->state);
+ 	return ret;
+ }
++
++/**
++ * i40e_get_vf_stats - populate some stats for the VF
++ * @netdev: the netdev of the PF
++ * @vf_id: the host OS identifier (0-127)
++ * @vf_stats: pointer to the OS memory to be initialized
++ */
++int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
++		      struct ifla_vf_stats *vf_stats)
++{
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_pf *pf = np->vsi->back;
++	struct i40e_eth_stats *stats;
++	struct i40e_vsi *vsi;
++	struct i40e_vf *vf;
++
++	/* validate the request */
++	if (i40e_validate_vf(pf, vf_id))
++		return -EINVAL;
++
++	vf = &pf->vf[vf_id];
++	if (!test_bit(I40E_VF_STATE_INIT, &vf->vf_states)) {
++		dev_err(&pf->pdev->dev, "VF %d in reset. Try again.\n", vf_id);
++		return -EBUSY;
++	}
++
++	vsi = pf->vsi[vf->lan_vsi_idx];
++	if (!vsi)
++		return -EINVAL;
++
++	i40e_update_eth_stats(vsi);
++	stats = &vsi->eth_stats;
++
++	memset(vf_stats, 0, sizeof(*vf_stats));
++
++	vf_stats->rx_packets = stats->rx_unicast + stats->rx_broadcast +
++		stats->rx_multicast;
++	vf_stats->tx_packets = stats->tx_unicast + stats->tx_broadcast +
++		stats->tx_multicast;
++	vf_stats->rx_bytes   = stats->rx_bytes;
++	vf_stats->tx_bytes   = stats->tx_bytes;
++	vf_stats->broadcast  = stats->rx_broadcast + stats->tx_broadcast;
++	vf_stats->multicast  = stats->rx_multicast + stats->tx_multicast;
++	vf_stats->rx_dropped = stats->rx_discards;
++	vf_stats->tx_dropped = stats->tx_discards;
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 1ce06240a702..631248c0981a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -138,5 +138,7 @@ int i40e_ndo_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool enable);
+ 
+ void i40e_vc_notify_link_state(struct i40e_pf *pf);
+ void i40e_vc_notify_reset(struct i40e_pf *pf);
++int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
++		      struct ifla_vf_stats *vf_stats);
+ 
+ #endif /* _I40E_VIRTCHNL_PF_H_ */
+-- 
+2.17.2
 
 _______________________________________________
 Intel-wired-lan mailing list
