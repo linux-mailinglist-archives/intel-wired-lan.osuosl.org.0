@@ -1,51 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91C98E7D8E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Oct 2019 01:37:17 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 095BCE8B0D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Oct 2019 15:43:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 50C1C20555;
-	Tue, 29 Oct 2019 00:37:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AB6DC85951;
+	Tue, 29 Oct 2019 14:43:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Td2bw+IVHdkG; Tue, 29 Oct 2019 00:37:16 +0000 (UTC)
+	with ESMTP id XwASPALr3Vro; Tue, 29 Oct 2019 14:43:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 269E520551;
-	Tue, 29 Oct 2019 00:37:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 188F9858B6;
+	Tue, 29 Oct 2019 14:43:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9331F1BF980
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 00:37:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E9D451BF314
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 14:43:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8C2B086233
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 00:37:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AD273865A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 14:43:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cZPqY4R4csej for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Oct 2019 00:37:12 +0000 (UTC)
+ with ESMTP id Zdm-jWhSRCfJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Oct 2019 14:43:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7FF9E853C5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 00:37:12 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2019 17:37:12 -0700
-X-IronPort-AV: E=Sophos;i="5.68,241,1569308400"; d="scan'208";a="189779375"
-Received: from jfsjbrandeb002.jf.intel.com ([10.166.28.116])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2019 17:37:11 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 28 Oct 2019 17:37:07 -0700
-Message-Id: <20191029003707.45245-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.17.2
-Subject: [Intel-wired-lan] [PATCH net-next v2] i40e: implement VF stats NDO
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D4D3B8648E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 14:43:13 +0000 (UTC)
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x9TEYHi0032653; Tue, 29 Oct 2019 10:43:11 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2vxqa8gcss-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Oct 2019 10:43:10 -0400
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.27/8.16.0.27) with SMTP id x9TEYST7033682;
+ Tue, 29 Oct 2019 10:43:10 -0400
+Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.27])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2vxqa8gcrt-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Oct 2019 10:43:10 -0400
+Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
+ by ppma05wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x9TEPEXC021088;
+ Tue, 29 Oct 2019 14:43:09 GMT
+Received: from b03cxnp08027.gho.boulder.ibm.com
+ (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+ by ppma05wdc.us.ibm.com with ESMTP id 2vvds6v4dy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 29 Oct 2019 14:43:09 +0000
+Received: from b03ledav003.gho.boulder.ibm.com
+ (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
+ by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x9TEh86T22479298
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 29 Oct 2019 14:43:08 GMT
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2B7526A061;
+ Tue, 29 Oct 2019 14:43:08 +0000 (GMT)
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C92F56A04F;
+ Tue, 29 Oct 2019 14:43:07 +0000 (GMT)
+Received: from [9.53.179.206] (unknown [9.53.179.206])
+ by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Tue, 29 Oct 2019 14:43:07 +0000 (GMT)
+From: "David Z. Dai" <zdai@linux.vnet.ibm.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+In-Reply-To: <20191011153219.22313.60179.stgit@localhost.localdomain>
+References: <20191011153219.22313.60179.stgit@localhost.localdomain>
+Date: Tue, 29 Oct 2019 09:43:07 -0500
+Message-ID: <1572360187.12281.4.camel@oc5348122405>
+Mime-Version: 1.0
+X-Mailer: Evolution 2.32.3 (2.32.3-36.el6) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-10-29_04:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1908290000 definitions=main-1910290140
+Subject: Re: [Intel-wired-lan] [next-queue PATCH v2 0/2] Address IRQ related
+ crash seen due to io_perm_failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,120 +101,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, alexander.h.duyck@linux.intel.com,
+ intel-wired-lan@lists.osuosl.org, zdai@us.ibm.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement the VF stats gathering via the kernel via ndo_get_vf_stats().
-The driver will show per-VF stats in the output of the command:
-ip -s link show dev <PF>
+On Fri, 2019-10-11 at 08:34 -0700, Alexander Duyck wrote:
+> David Dai had submitted a patch[1] to address a reported issue with e1000e
+> calling pci_disable_msi without first freeing the interrupts. Looking over
+> the issue it seems the problem was the fact that e1000e_down was being
+> called in e1000_io_error_detected without calling e1000_free_irq, and this
+> was resulting in e1000e_close skipping over the call to e1000e_down and
+> e1000_free_irq.
+> 
+> The use of the __E1000_DOWN flag for the close test seems to have come from
+> the runtime power management changes that were made some time ago. From
+> what I can tell in the close path we should be disabling runtime power
+> management via a call to pm_runtime_get_sync. As such we can remove the
+> test for the __E1000_DOWN bit. However in comparing this with other drivers
+> we do need to avoid freeing the IRQs more than once. So in order to address
+> that I have copied the approach taken in igb and taken it a bit further so
+> that we will always detach the interface and if the interface is up we will
+> bring it down and free the IRQs. In addition we are able to reuse some of
+> the power management code so I have taken the opportunity to merge those
+> bits.
+> 
+> [1]: https://lore.kernel.org/lkml/1570121672-12172-1-git-send-email-zdai@linux.vnet.ibm.com/
+> 
+> v2: Move e1000e_pm_thaw out of CONFIG_PM region to fix build issue on Sparc64
+> 
+> ---
+> 
+> Alexander Duyck (2):
+>       e1000e: Use rtnl_lock to prevent race conditions between net and pci/pm
+>       e1000e: Drop unnecessary __E1000_DOWN bit twiddling
+> 
+> 
+>  drivers/net/ethernet/intel/e1000e/netdev.c |   75 +++++++++++++---------------
+>  1 file changed, 36 insertions(+), 39 deletions(-)
+> 
+I am not familiar with the process. Don't mean to push you in any way.
+Just want to check if these 2 v2 patches will be accepted by upstream?
+or any thing else needs to be done to finish the process? 
 
-Testing Hints:
-ip -s link show dev eth0
-will return non-zero VF stats.
-...
-   vf 0 MAC 00:55:aa:00:55:aa, spoof checking on, link-state enable, trust off
-   RX: bytes  packets  mcast   bcast
-   128000     1000     104     104
-   TX: bytes  packets
-   128000     1000
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-
----
-
-v2: remove transmit stats from multicast and broadcast based on
-feedback, add a little to commit message.
----
- drivers/net/ethernet/intel/i40e/i40e_main.c   |  1 +
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 48 +++++++++++++++++++
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  2 +
- 3 files changed, 51 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index a6f60e8a6026..56cf7bc8add3 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -12870,6 +12870,7 @@ static const struct net_device_ops i40e_netdev_ops = {
- 	.ndo_set_features	= i40e_set_features,
- 	.ndo_set_vf_mac		= i40e_ndo_set_vf_mac,
- 	.ndo_set_vf_vlan	= i40e_ndo_set_vf_port_vlan,
-+	.ndo_get_vf_stats	= i40e_get_vf_stats,
- 	.ndo_set_vf_rate	= i40e_ndo_set_vf_bw,
- 	.ndo_get_vf_config	= i40e_ndo_get_vf_config,
- 	.ndo_set_vf_link_state	= i40e_ndo_set_vf_link_state,
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 7787766d0eb8..6d75a35acb67 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -4527,3 +4527,51 @@ int i40e_ndo_set_vf_trust(struct net_device *netdev, int vf_id, bool setting)
- 	clear_bit(__I40E_VIRTCHNL_OP_PENDING, pf->state);
- 	return ret;
- }
-+
-+/**
-+ * i40e_get_vf_stats - populate some stats for the VF
-+ * @netdev: the netdev of the PF
-+ * @vf_id: the host OS identifier (0-127)
-+ * @vf_stats: pointer to the OS memory to be initialized
-+ */
-+int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
-+		      struct ifla_vf_stats *vf_stats)
-+{
-+	struct i40e_netdev_priv *np = netdev_priv(netdev);
-+	struct i40e_pf *pf = np->vsi->back;
-+	struct i40e_eth_stats *stats;
-+	struct i40e_vsi *vsi;
-+	struct i40e_vf *vf;
-+
-+	/* validate the request */
-+	if (i40e_validate_vf(pf, vf_id))
-+		return -EINVAL;
-+
-+	vf = &pf->vf[vf_id];
-+	if (!test_bit(I40E_VF_STATE_INIT, &vf->vf_states)) {
-+		dev_err(&pf->pdev->dev, "VF %d in reset. Try again.\n", vf_id);
-+		return -EBUSY;
-+	}
-+
-+	vsi = pf->vsi[vf->lan_vsi_idx];
-+	if (!vsi)
-+		return -EINVAL;
-+
-+	i40e_update_eth_stats(vsi);
-+	stats = &vsi->eth_stats;
-+
-+	memset(vf_stats, 0, sizeof(*vf_stats));
-+
-+	vf_stats->rx_packets = stats->rx_unicast + stats->rx_broadcast +
-+		stats->rx_multicast;
-+	vf_stats->tx_packets = stats->tx_unicast + stats->tx_broadcast +
-+		stats->tx_multicast;
-+	vf_stats->rx_bytes   = stats->rx_bytes;
-+	vf_stats->tx_bytes   = stats->tx_bytes;
-+	vf_stats->broadcast  = stats->rx_broadcast;
-+	vf_stats->multicast  = stats->rx_multicast;
-+	vf_stats->rx_dropped = stats->rx_discards;
-+	vf_stats->tx_dropped = stats->tx_discards;
-+
-+	return 0;
-+}
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-index 1ce06240a702..631248c0981a 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-@@ -138,5 +138,7 @@ int i40e_ndo_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool enable);
- 
- void i40e_vc_notify_link_state(struct i40e_pf *pf);
- void i40e_vc_notify_reset(struct i40e_pf *pf);
-+int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
-+		      struct ifla_vf_stats *vf_stats);
- 
- #endif /* _I40E_VIRTCHNL_PF_H_ */
--- 
-2.17.2
+Thanks! - David
 
 _______________________________________________
 Intel-wired-lan mailing list
