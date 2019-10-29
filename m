@@ -1,94 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 095BCE8B0D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Oct 2019 15:43:20 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A01D9E8FAA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Oct 2019 20:03:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AB6DC85951;
-	Tue, 29 Oct 2019 14:43:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AD3C0214D2;
+	Tue, 29 Oct 2019 19:03:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XwASPALr3Vro; Tue, 29 Oct 2019 14:43:18 +0000 (UTC)
+	with ESMTP id qxWNLkgT1GRi; Tue, 29 Oct 2019 19:03:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 188F9858B6;
-	Tue, 29 Oct 2019 14:43:18 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0EC392094D;
+	Tue, 29 Oct 2019 19:03:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E9D451BF314
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 14:43:14 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 24DEB1BF3DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 19:03:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AD273865A1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 14:43:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 03F268790D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 19:03:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zdm-jWhSRCfJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Oct 2019 14:43:14 +0000 (UTC)
+ with ESMTP id o56vR3DvNi2n for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Oct 2019 19:03:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D4D3B8648E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 14:43:13 +0000 (UTC)
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x9TEYHi0032653; Tue, 29 Oct 2019 10:43:11 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2vxqa8gcss-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Oct 2019 10:43:10 -0400
-Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.27/8.16.0.27) with SMTP id x9TEYST7033682;
- Tue, 29 Oct 2019 10:43:10 -0400
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com
- [169.47.144.27])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2vxqa8gcrt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Oct 2019 10:43:10 -0400
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
- by ppma05wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x9TEPEXC021088;
- Tue, 29 Oct 2019 14:43:09 GMT
-Received: from b03cxnp08027.gho.boulder.ibm.com
- (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
- by ppma05wdc.us.ibm.com with ESMTP id 2vvds6v4dy-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 29 Oct 2019 14:43:09 +0000
-Received: from b03ledav003.gho.boulder.ibm.com
- (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
- by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x9TEh86T22479298
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 29 Oct 2019 14:43:08 GMT
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2B7526A061;
- Tue, 29 Oct 2019 14:43:08 +0000 (GMT)
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C92F56A04F;
- Tue, 29 Oct 2019 14:43:07 +0000 (GMT)
-Received: from [9.53.179.206] (unknown [9.53.179.206])
- by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
- Tue, 29 Oct 2019 14:43:07 +0000 (GMT)
-From: "David Z. Dai" <zdai@linux.vnet.ibm.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
-In-Reply-To: <20191011153219.22313.60179.stgit@localhost.localdomain>
-References: <20191011153219.22313.60179.stgit@localhost.localdomain>
-Date: Tue, 29 Oct 2019 09:43:07 -0500
-Message-ID: <1572360187.12281.4.camel@oc5348122405>
-Mime-Version: 1.0
-X-Mailer: Evolution 2.32.3 (2.32.3-36.el6) 
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-10-29_04:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1908290000 definitions=main-1910290140
-Subject: Re: [Intel-wired-lan] [next-queue PATCH v2 0/2] Address IRQ related
- crash seen due to io_perm_failure
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AD823875BC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 19:03:09 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Oct 2019 12:03:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,245,1569308400"; d="scan'208";a="211854147"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 29 Oct 2019 12:03:07 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1iPWlm-000Dvf-Nb; Wed, 30 Oct 2019 03:03:06 +0800
+Date: Wed, 30 Oct 2019 03:02:16 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Message-ID: <201910300316.DlrnkW44%lkp@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+X-Patchwork-Hint: ignore
+User-Agent: NeoMutt/20170113 (1.7.2)
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 61/66]
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c:173:1-8: alloc with no test,
+ possible model on line 176
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,53 +67,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, alexander.h.duyck@linux.intel.com,
- intel-wired-lan@lists.osuosl.org, zdai@us.ibm.com
+Cc: intel-wired-lan@lists.osuosl.org, kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 2019-10-11 at 08:34 -0700, Alexander Duyck wrote:
-> David Dai had submitted a patch[1] to address a reported issue with e1000e
-> calling pci_disable_msi without first freeing the interrupts. Looking over
-> the issue it seems the problem was the fact that e1000e_down was being
-> called in e1000_io_error_detected without calling e1000_free_irq, and this
-> was resulting in e1000e_close skipping over the call to e1000e_down and
-> e1000_free_irq.
-> 
-> The use of the __E1000_DOWN flag for the close test seems to have come from
-> the runtime power management changes that were made some time ago. From
-> what I can tell in the close path we should be disabling runtime power
-> management via a call to pm_runtime_get_sync. As such we can remove the
-> test for the __E1000_DOWN bit. However in comparing this with other drivers
-> we do need to avoid freeing the IRQs more than once. So in order to address
-> that I have copied the approach taken in igb and taken it a bit further so
-> that we will always detach the interface and if the interface is up we will
-> bring it down and free the IRQs. In addition we are able to reuse some of
-> the power management code so I have taken the opportunity to merge those
-> bits.
-> 
-> [1]: https://lore.kernel.org/lkml/1570121672-12172-1-git-send-email-zdai@linux.vnet.ibm.com/
-> 
-> v2: Move e1000e_pm_thaw out of CONFIG_PM region to fix build issue on Sparc64
-> 
-> ---
-> 
-> Alexander Duyck (2):
->       e1000e: Use rtnl_lock to prevent race conditions between net and pci/pm
->       e1000e: Drop unnecessary __E1000_DOWN bit twiddling
-> 
-> 
->  drivers/net/ethernet/intel/e1000e/netdev.c |   75 +++++++++++++---------------
->  1 file changed, 36 insertions(+), 39 deletions(-)
-> 
-I am not familiar with the process. Don't mean to push you in any way.
-Just want to check if these 2 v2 patches will be accepted by upstream?
-or any thing else needs to be done to finish the process? 
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
+head:   cb2dcdacc18ac93f735552203907ecd54d527b40
+commit: 162edbdf278fe8325905aaa6657e87db55126b95 [61/66] ice: Use ice_ena_vsi and ice_dis_vsi in DCB configuration flow
 
-Thanks! - David
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
 
+
+coccinelle warnings: (new ones prefixed by >>)
+
+>> drivers/net/ethernet/intel/ice/ice_dcb_lib.c:173:1-8: alloc with no test, possible model on line 176
+
+vim +173 drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+
+   141	
+   142	/**
+   143	 * ice_pf_dcb_cfg - Apply new DCB configuration
+   144	 * @pf: pointer to the PF struct
+   145	 * @new_cfg: DCBX config to apply
+   146	 * @locked: is the RTNL held
+   147	 */
+   148	static
+   149	int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
+   150	{
+   151		struct ice_dcbx_cfg *old_cfg, *curr_cfg;
+   152		struct ice_aqc_port_ets_elem buf = { 0 };
+   153		struct ice_vsi *pf_vsi;
+   154		int ret = 0;
+   155	
+   156		curr_cfg = &pf->hw.port_info->local_dcbx_cfg;
+   157	
+   158		/* Enable DCB tagging only when more than one TC */
+   159		if (ice_dcb_get_num_tc(new_cfg) > 1) {
+   160			dev_dbg(&pf->pdev->dev, "DCB tagging enabled (num TC > 1)\n");
+   161			set_bit(ICE_FLAG_DCB_ENA, pf->flags);
+   162		} else {
+   163			dev_dbg(&pf->pdev->dev, "DCB tagging disabled (num TC = 1)\n");
+   164			clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
+   165		}
+   166	
+   167		if (!memcmp(new_cfg, curr_cfg, sizeof(*new_cfg))) {
+   168			dev_dbg(&pf->pdev->dev, "No change in DCB config required\n");
+   169			return ret;
+   170		}
+   171	
+   172		/* Store old config in case FW config fails */
+ > 173		old_cfg = kzalloc(sizeof(*old_cfg), GFP_KERNEL);
+   174		memcpy(old_cfg, curr_cfg, sizeof(*old_cfg));
+   175	
+ > 176		pf_vsi = ice_get_main_vsi(pf);
+   177		if (!pf_vsi) {
+   178			dev_dbg(&pf->pdev->dev, "PF VSI doesn't exist\n");
+   179			ret = -EINVAL;
+   180			goto free_cfg;
+   181		}
+   182	
+   183		/* avoid race conditions by holding the lock while disabling and
+   184		 * re-enabling the VSI
+   185		 */
+   186		if (!locked)
+   187			rtnl_lock();
+   188		ice_dis_vsi(pf_vsi, true);
+   189	
+   190		memcpy(curr_cfg, new_cfg, sizeof(*curr_cfg));
+   191		memcpy(&curr_cfg->etsrec, &curr_cfg->etscfg, sizeof(curr_cfg->etsrec));
+   192	
+   193		/* Only send new config to HW if we are in SW LLDP mode. Otherwise,
+   194		 * the new config came from the HW in the first place.
+   195		 */
+   196		if (pf->hw.port_info->is_sw_lldp) {
+   197			ret = ice_set_dcb_cfg(pf->hw.port_info);
+   198			if (ret) {
+   199				dev_err(&pf->pdev->dev, "Set DCB Config failed\n");
+   200				/* Restore previous settings to local config */
+   201				memcpy(curr_cfg, old_cfg, sizeof(*curr_cfg));
+   202				goto out;
+   203			}
+   204		}
+   205	
+   206		ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
+   207		if (ret) {
+   208			dev_err(&pf->pdev->dev, "Query Port ETS failed\n");
+   209			goto out;
+   210		}
+   211	
+   212		ice_pf_dcb_recfg(pf);
+   213	
+   214	out:
+   215		ice_ena_vsi(pf_vsi, true);
+   216		if (!locked)
+   217			rtnl_unlock();
+   218	free_cfg:
+   219		kfree(old_cfg);
+   220		return ret;
+   221	}
+   222	
+
+---
+0-DAY kernel test infrastructure                Open Source Technology Center
+https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
