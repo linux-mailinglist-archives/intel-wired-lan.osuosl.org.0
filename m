@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A01D9E8FAA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Oct 2019 20:03:17 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C45FCE9687
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Oct 2019 07:42:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AD3C0214D2;
-	Tue, 29 Oct 2019 19:03:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2AB6786C4A;
+	Wed, 30 Oct 2019 06:42:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qxWNLkgT1GRi; Tue, 29 Oct 2019 19:03:15 +0000 (UTC)
+	with ESMTP id pqh5sbd-Aem6; Wed, 30 Oct 2019 06:42:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0EC392094D;
-	Tue, 29 Oct 2019 19:03:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 083CE86BA4;
+	Wed, 30 Oct 2019 06:42:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 24DEB1BF3DD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 19:03:11 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2AADC1BF57C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 06:42:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 03F268790D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 19:03:11 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 22B6185B09
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 06:42:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o56vR3DvNi2n for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Oct 2019 19:03:09 +0000 (UTC)
+ with ESMTP id BrDx2fvsrTye for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Oct 2019 06:42:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AD823875BC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Oct 2019 19:03:09 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 64E4485B04
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 06:42:31 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2019 12:03:08 -0700
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Oct 2019 23:42:30 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,245,1569308400"; d="scan'208";a="211854147"
+X-IronPort-AV: E=Sophos;i="5.68,246,1569308400"; d="scan'208";a="205704494"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 29 Oct 2019 12:03:07 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 29 Oct 2019 23:42:29 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iPWlm-000Dvf-Nb; Wed, 30 Oct 2019 03:03:06 +0800
-Date: Wed, 30 Oct 2019 03:02:16 +0800
+ id 1iPhgb-000EMW-6l; Wed, 30 Oct 2019 14:42:29 +0800
+Date: Wed, 30 Oct 2019 14:42:04 +0800
 From: kbuild test robot <lkp@intel.com>
-To: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-Message-ID: <201910300316.DlrnkW44%lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5db930bc.UWMjSfgaGt6WhxPx%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Patchwork-Hint: ignore
-User-Agent: NeoMutt/20170113 (1.7.2)
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 61/66]
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c:173:1-8: alloc with no test,
- possible model on line 176
+Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS
+ 1e4b77c6a9e7a89733d3ce1c4a2a136b443cd1b3
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,108 +63,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
-head:   cb2dcdacc18ac93f735552203907ecd54d527b40
-commit: 162edbdf278fe8325905aaa6657e87db55126b95 [61/66] ice: Use ice_ena_vsi and ice_dis_vsi in DCB configuration flow
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
+branch HEAD: 1e4b77c6a9e7a89733d3ce1c4a2a136b443cd1b3  ice: allow 3k MTU for XDP
 
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
+elapsed time: 192m
 
+configs tested: 77
 
-coccinelle warnings: (new ones prefixed by >>)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
->> drivers/net/ethernet/intel/ice/ice_dcb_lib.c:173:1-8: alloc with no test, possible model on line 176
-
-vim +173 drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-
-   141	
-   142	/**
-   143	 * ice_pf_dcb_cfg - Apply new DCB configuration
-   144	 * @pf: pointer to the PF struct
-   145	 * @new_cfg: DCBX config to apply
-   146	 * @locked: is the RTNL held
-   147	 */
-   148	static
-   149	int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
-   150	{
-   151		struct ice_dcbx_cfg *old_cfg, *curr_cfg;
-   152		struct ice_aqc_port_ets_elem buf = { 0 };
-   153		struct ice_vsi *pf_vsi;
-   154		int ret = 0;
-   155	
-   156		curr_cfg = &pf->hw.port_info->local_dcbx_cfg;
-   157	
-   158		/* Enable DCB tagging only when more than one TC */
-   159		if (ice_dcb_get_num_tc(new_cfg) > 1) {
-   160			dev_dbg(&pf->pdev->dev, "DCB tagging enabled (num TC > 1)\n");
-   161			set_bit(ICE_FLAG_DCB_ENA, pf->flags);
-   162		} else {
-   163			dev_dbg(&pf->pdev->dev, "DCB tagging disabled (num TC = 1)\n");
-   164			clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
-   165		}
-   166	
-   167		if (!memcmp(new_cfg, curr_cfg, sizeof(*new_cfg))) {
-   168			dev_dbg(&pf->pdev->dev, "No change in DCB config required\n");
-   169			return ret;
-   170		}
-   171	
-   172		/* Store old config in case FW config fails */
- > 173		old_cfg = kzalloc(sizeof(*old_cfg), GFP_KERNEL);
-   174		memcpy(old_cfg, curr_cfg, sizeof(*old_cfg));
-   175	
- > 176		pf_vsi = ice_get_main_vsi(pf);
-   177		if (!pf_vsi) {
-   178			dev_dbg(&pf->pdev->dev, "PF VSI doesn't exist\n");
-   179			ret = -EINVAL;
-   180			goto free_cfg;
-   181		}
-   182	
-   183		/* avoid race conditions by holding the lock while disabling and
-   184		 * re-enabling the VSI
-   185		 */
-   186		if (!locked)
-   187			rtnl_lock();
-   188		ice_dis_vsi(pf_vsi, true);
-   189	
-   190		memcpy(curr_cfg, new_cfg, sizeof(*curr_cfg));
-   191		memcpy(&curr_cfg->etsrec, &curr_cfg->etscfg, sizeof(curr_cfg->etsrec));
-   192	
-   193		/* Only send new config to HW if we are in SW LLDP mode. Otherwise,
-   194		 * the new config came from the HW in the first place.
-   195		 */
-   196		if (pf->hw.port_info->is_sw_lldp) {
-   197			ret = ice_set_dcb_cfg(pf->hw.port_info);
-   198			if (ret) {
-   199				dev_err(&pf->pdev->dev, "Set DCB Config failed\n");
-   200				/* Restore previous settings to local config */
-   201				memcpy(curr_cfg, old_cfg, sizeof(*curr_cfg));
-   202				goto out;
-   203			}
-   204		}
-   205	
-   206		ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
-   207		if (ret) {
-   208			dev_err(&pf->pdev->dev, "Query Port ETS failed\n");
-   209			goto out;
-   210		}
-   211	
-   212		ice_pf_dcb_recfg(pf);
-   213	
-   214	out:
-   215		ice_ena_vsi(pf_vsi, true);
-   216		if (!locked)
-   217			rtnl_unlock();
-   218	free_cfg:
-   219		kfree(old_cfg);
-   220		return ret;
-   221	}
-   222	
+x86_64                           allyesconfig
+i386                             allmodconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+alpha                               defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                                defconfig
+parisc                            allnoconfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+arm                              allmodconfig
+arm64                            allmodconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+x86_64                 randconfig-a004-201943
+x86_64                 randconfig-a001-201943
+i386                   randconfig-a002-201943
+x86_64                 randconfig-a002-201943
+i386                   randconfig-a001-201943
+i386                   randconfig-a003-201943
+i386                   randconfig-a004-201943
+x86_64                 randconfig-a003-201943
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
