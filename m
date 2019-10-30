@@ -1,50 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE710E995C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Oct 2019 10:43:59 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 948CC86C5C;
-	Wed, 30 Oct 2019 09:43:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G7fWTh8TxF9I; Wed, 30 Oct 2019 09:43:58 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 589F0869CA;
-	Wed, 30 Oct 2019 09:43:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 037501BF31E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 09:43:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DD3B8E9AAC
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Oct 2019 12:21:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F31682034B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 09:43:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6D9DE20380;
+	Wed, 30 Oct 2019 11:21:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j8BijLSqiZsZ; Wed, 30 Oct 2019 11:21:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 9D94D21515;
+	Wed, 30 Oct 2019 11:21:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 164DF1BF3F2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 11:21:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1230186C80
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 11:21:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yFDcfKaVxORf for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Oct 2019 09:43:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by silver.osuosl.org (Postfix) with ESMTPS id 921A620336
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 09:43:53 +0000 (UTC)
-Received: from [10.17.212.211] (unknown [195.37.61.178])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 13D4920225AEF;
- Wed, 30 Oct 2019 10:43:50 +0100 (CET)
-To: Sasha Neftin <sasha.neftin@intel.com>
+ with ESMTP id v85MqbUuHEIm for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Oct 2019 11:21:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4A2FF86C7E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2019 11:21:37 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2019 04:21:36 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,247,1569308400"; d="scan'208";a="400110922"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
+ ([10.185.23.132])
+ by fmsmga005.fm.intel.com with ESMTP; 30 Oct 2019 04:21:36 -0700
+To: Paul Menzel <pmenzel@molgen.mpg.de>
 References: <20191030090848.20842-1-sasha.neftin@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <090fd6fa-bccd-ff67-8326-6eed7a9d5d56@molgen.mpg.de>
-Date: Wed, 30 Oct 2019 10:43:49 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ <090fd6fa-bccd-ff67-8326-6eed7a9d5d56@molgen.mpg.de>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <57c07cd2-1a89-f20a-0fd2-2062415edf93@intel.com>
+Date: Wed, 30 Oct 2019 13:21:35 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20191030090848.20842-1-sasha.neftin@intel.com>
+In-Reply-To: <090fd6fa-bccd-ff67-8326-6eed7a9d5d56@molgen.mpg.de>
 Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Add scatter gather support
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -65,12 +71,20 @@ Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTYXNoYSwKCgpPbiAzMC4xMC4xOSAxMDowOCwgU2FzaGEgTmVmdGluIHdyb3RlOgo+IFNj
-YXR0ZXIgZ2F0aGVyIGlzIHVzZWQgdG8gZG8gRE1BIGRhdGEgdHJhbnNmZXJzIG9mIGRhdGEgdGhh
-dCBpcyB3cml0dGVuIHRvCj4gbm9uY29udGlndW91cyBhcmVhcyBvZiBtZW1vcnkuCj4gVGhpcyBw
-YXRjaCBlbmFibGUgc2NhdHRlciBnYXRoZXIgc3VwcG9ydC4KCmVuYWJsZSpzKgoKRG8geW91IGhh
-dmUgbnVtYmVycywgaWYgYW5kIGhvdyB0aGlzIGltcHJvdmVzIHBlcmZvcm1hbmNlPwoKSG93IGNh
-biB0aGlzIGJlIHRlc3RlZD8KClvigKZdCgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFp
-bGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3Ns
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+T24gMTAvMzAvMjAxOSAxMTo0MywgUGF1bCBNZW56ZWwgd3JvdGU6Cj4gRGVhciBTYXNoYSwKPiAK
+PiAKPiBPbiAzMC4xMC4xOSAxMDowOCwgU2FzaGEgTmVmdGluIHdyb3RlOgo+PiBTY2F0dGVyIGdh
+dGhlciBpcyB1c2VkIHRvIGRvIERNQSBkYXRhIHRyYW5zZmVycyBvZiBkYXRhIHRoYXQgaXMgCj4+
+IHdyaXR0ZW4gdG8KPj4gbm9uY29udGlndW91cyBhcmVhcyBvZiBtZW1vcnkuCj4+IFRoaXMgcGF0
+Y2ggZW5hYmxlIHNjYXR0ZXIgZ2F0aGVyIHN1cHBvcnQuCj4gCj4gZW5hYmxlKnMqCj4gClRoYW5r
+cyBQYXVsIC0gSSB3aWxsIGZpeCBpdCBhbmQgc3VibWl0IHYyLgo+IERvIHlvdSBoYXZlIG51bWJl
+cnMsIGlmIGFuZCBob3cgdGhpcyBpbXByb3ZlcyBwZXJmb3JtYW5jZT8KPiAKWWVzLCBJJ3ZlIGNo
+ZWNrZWQgb24gdHdvIG1hY2hpbmVzIHdpdGggaTIyNSBIVy4gRm9yIGV4YW1wbGUsIEkndmUgCm9i
+c2VydmVkIGFzIGZvbGxvdyBhdCAyLjVHYnBzIGxpbmsgc3BlZWQ6CnNnCW9uIAlvZmYKdGNwCTIz
+NTIuOTMJMjM0Mi4xOSBzbGlnaHRseSBpbXByb3ZlZAp1ZHAJMjQwMy45NwkyNDAzLjQ5IGFsbW9z
+dCBubyBpbXBhY3QKR2VuZXJhbGx5LCBJIHNlZSB0aGUgVENQIHN0cmVhbSBtb3JlIGFmZmVjdGVk
+LgpCdXQgeW91IGNvdWxkIG9ic2VydmUgZGlmZmVyZW50IGJlaGF2aW9yIG9uIGRpZmZlcmVudCBt
+YWNoaW5lcy4KPiBIb3cgY2FuIHRoaXMgYmUgdGVzdGVkPwo+IAo+IFvigKZdCkkgdXNlZCBuZXRw
+ZXJmIG9uIG15IG1hY2hpbmVzLgo+IAo+IAo+IEtpbmQgcmVnYXJkcywKPiAKPiBQYXVsCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
+YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
+b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
