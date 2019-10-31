@@ -1,65 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B179EB3B0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Oct 2019 16:13:56 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 074E1EB592
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Oct 2019 17:58:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A012388275;
-	Thu, 31 Oct 2019 15:13:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5157087988;
+	Thu, 31 Oct 2019 16:58:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ygTg+BzHakDl; Thu, 31 Oct 2019 15:13:54 +0000 (UTC)
+	with ESMTP id nSgV6DgtyWeV; Thu, 31 Oct 2019 16:58:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6AC8E88273;
-	Thu, 31 Oct 2019 15:13:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 049AE8796A;
+	Thu, 31 Oct 2019 16:58:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AD0A51BF424
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 15:13:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 27A2C1BF28A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 16:58:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A80D788266
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 15:13:52 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2201D882F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 16:58:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tKsSwr+8OdhY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 31 Oct 2019 15:13:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mout2.fh-giessen.de (mout2.fh-giessen.de [212.201.18.46])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B1D8A88258
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 15:13:50 +0000 (UTC)
-Received: from mx3.fh-giessen.de ([212.201.18.28])
- by mout2.fh-giessen.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
- id 1iQC8v-0005rm-DU; Thu, 31 Oct 2019 16:13:45 +0100
-Received: from mailgate-1.its.fh-giessen.de ([212.201.18.15])
- by mx3.fh-giessen.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
- id 1iQC8v-00FeOP-Ac; Thu, 31 Oct 2019 16:13:45 +0100
-Received: from p549d322d.dip0.t-ipconnect.de ([84.157.50.45]
- helo=zwei.fritz.box) by mailgate-1.its.fh-giessen.de with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <tobias.johannes.klausmann@mni.thm.de>)
- id 1iQC8v-0003jc-5A; Thu, 31 Oct 2019 16:13:45 +0100
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-References: <171f0c61-73a2-81c2-5c8a-7c140f548803@mni.thm.de>
- <56242322-D549-4E23-97AB-153CC392B107@canonical.com>
- <76fc2204-0786-03b3-773d-110912d48168@mni.thm.de>
- <2994F2A2-D844-40B0-9971-C002E5EC49CD@canonical.com>
- <940da657-a8af-ccde-34ca-7a93fad94567@mni.thm.de>
- <ADFA5FA0-ED36-4313-9CDD-602946FEBA67@canonical.com>
-From: Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de>
-Message-ID: <2906026b-15e5-fd34-0311-da28164f1196@mni.thm.de>
-Date: Thu, 31 Oct 2019 16:13:44 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:72.0) Gecko/20100101
- Thunderbird/72.0a1
+ with ESMTP id 5bU1rFHKB-IQ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 31 Oct 2019 16:58:54 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 63A82882F3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 16:58:54 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id p12so4420425pgn.6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2019 09:58:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:from:to:cc:date:message-id:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=f05iF9G/ns17rw6cWJfFu0PgDfLMjLHyebXYR1Ckmlg=;
+ b=DkSoRXJw1W+71GwuFvu0kD3++jlSponfDd7ClMOLNsxEwkHMn0jd8JKBqtihFBP0Fj
+ 8FvYmMSpvVEb3/+tgTiUHEvX8Cx8Dcc+PLviBuzmNqfs/2u5FSBWMhBF4qljZSF4wzuM
+ lpx16wijqYPNnd285Yh/IqVKFoASglncCZBa0gp5eG2eExIbOFojDjadlR4v8wBcsX3Y
+ 8hzm0Y+ffSUK/lmDtNGVxc2IPU/QNSpC8Jhmdhmps0mM9FQL/bcD6qTh26G61dhuQnBj
+ Q3jsEJWUhKP7+xgpo2g+0QDg6dB5Z7SfmK87pFAXgOxBXPXr4Mra0jLePTQv+gHOyD/+
+ rf9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=f05iF9G/ns17rw6cWJfFu0PgDfLMjLHyebXYR1Ckmlg=;
+ b=ozyZi0lDEO9Kp5vxvlPaykvxILMtC0AdxV/eMZBomy3IKDp+wjXeeiytV05DveWmwA
+ 4vtodZ7yfrezD6VZGVG2b1RppRmpsrp2DIUMM7VzP926/JlZwG0xlFOETzmTOVyfARl2
+ w3G9IBiJssORt6esWwLTaNSEM+YANu+Oga4EPBGpO8zGm26A21wBQg7L+rgyNskDH6Kw
+ Q+kVTQ0giR+Bjh7mJKIIoHRf9YF3tKZM3OPJBA2TJ/ESYJi1vGD639y3fcdKoL+yZk2q
+ KjEQpJrGhxDS0QbQejWX6lQVTsz3ggd9/t0QRO4TzGiTDS6jVn3AhCvG1kbi/xjop25M
+ s+dA==
+X-Gm-Message-State: APjAAAVMLq+DpxSRh2B357eJkB7jHbobICpp6V3vC0aAAn5jpwi0h4dW
+ AjTFnYgkJf1Xq8zGqYRUy2Q=
+X-Google-Smtp-Source: APXvYqwFrU1yqpKXXBPuvye6oNxNqBJVeGKNV+dW703NTSZb4ccjtQbJslh1Up020KD8f+yf0tL92A==
+X-Received: by 2002:a63:3603:: with SMTP id d3mr8094466pga.208.1572541133575; 
+ Thu, 31 Oct 2019 09:58:53 -0700 (PDT)
+Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
+ by smtp.gmail.com with ESMTPSA id h9sm4349964pfn.167.2019.10.31.09.58.52
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 31 Oct 2019 09:58:52 -0700 (PDT)
+From: Alexander Duyck <alexander.duyck@gmail.com>
+To: joe@perches.com, jeffrey.t.kirsher@intel.com, davem@davemloft.net
+Date: Thu, 31 Oct 2019 09:58:51 -0700
+Message-ID: <20191031165537.24154.48242.stgit@localhost.localdomain>
+In-Reply-To: <cf197ef61703cbaa64ac522cf5d191b4b74f64d6.camel@linux.intel.com>
+References: <cf197ef61703cbaa64ac522cf5d191b4b74f64d6.camel@linux.intel.com>
+User-Agent: StGit/0.17.1-dirty
 MIME-Version: 1.0
-In-Reply-To: <ADFA5FA0-ED36-4313-9CDD-602946FEBA67@canonical.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] e1000e regression - 5.4rc1
+Subject: [Intel-wired-lan] [next-queue/net-next PATCH] e1000e: Use
+ netdev_info instead of pr_info for link messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,105 +86,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: tobias.klausmann@freenet.de, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
+Cc: zdai@linux.vnet.ibm.com, nhorman@redhat.com, netdev@vger.kernel.org,
+ smorumu1@in.ibm.com, intel-wired-lan@lists.osuosl.org, sassmann@redhat.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
 
+Replace the pr_info calls with netdev_info in all cases related to the
+netdevice link state.
 
-On 28.10.19 08:07, Kai-Heng Feng wrote:
-> Hi Tobias,
->
->> On Oct 9, 2019, at 02:28, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
->>
->> Hi,
->>
->> On 08.10.19 09:46, Kai-Heng Feng wrote:
->>> Hi Tobias,
->>>
->>>> On Oct 5, 2019, at 03:52, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
->>>>
->>>> Hello,
->>>>
->>>> On 04.10.19 19:36, Kai-Heng Feng wrote:
->>>>> Hi Tobias
->>>>>
->>>>>> On Oct 4, 2019, at 18:34, Tobias Klausmann <tobias.johannes.klausmann@mni.thm.de> wrote:
->>>>>>
->>>>>> Hello all,
->>>>>>
->>>>>> While testing the 5.4rc1 release, i noticed my Ethernet never coming fully up, seemingly having a timeout problem. While bisecting this i landed at the commit dee23594d587386e9fda76732aa5f5a487709510 ("e1000e: Make speed detection on hotplugging cable more reliable") as the first bad commit. And indeed just reverting the commit on top of 5.4rc1 resolves the problem. Let me know if you have further questions, or patches to test!
->>>>> Is runtime PM enabled (i.e. "power/control" = auto)?
->>>> Yes it is set to auto.
->>> Is something like TLP or `powertop --auto-tune` is in use?
->>>
->>> Do you still see the issue when "power/control" keeps at "on"?
->>
->> With "power/control" set to "on" it does still cycle between up and down. But yes i have upower and powerdevil running. After killing them the connection comes up with "power/control" set to "on", yet not with "auto".
-> Can you please give this branch a try:
-> https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git/log/?h=dev-queue
+As a result of this patch the link messages will change as shown below.
+Before:
+e1000e: ens3 NIC Link is Down
+e1000e: ens3 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
 
+After:
+e1000e 0000:00:03.0 ens3: NIC Link is Down
+e1000e 0000:00:03.0 ens3: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
 
-Compiled and tested as is (not having set /power/control) the up and 
-down cycle is still persistent.
+Suggested-by: Joe Perches <joe@perches.com>
+Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+---
 
-Greetings,
+Since Joe hasn't gotten back to me on if he wanted to do the patch or if
+he wanted me to do it I just went ahead and did it. This should address the
+concerns he had about the message formatting in "e1000e: Use rtnl_lock to
+prevent race".
 
-Tobias
+ drivers/net/ethernet/intel/e1000e/netdev.c |    9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index ef8ca0c134b0..a1aa48168855 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -4720,7 +4720,7 @@ int e1000e_close(struct net_device *netdev)
+ 		e1000_free_irq(adapter);
+ 
+ 		/* Link status message must follow this format */
+-		pr_info("%s NIC Link is Down\n", netdev->name);
++		netdev_info(netdev, "NIC Link is Down\n");
+ 	}
+ 
+ 	napi_disable(&adapter->napi);
+@@ -5070,8 +5070,9 @@ static void e1000_print_link_info(struct e1000_adapter *adapter)
+ 	u32 ctrl = er32(CTRL);
+ 
+ 	/* Link status message must follow this format for user tools */
+-	pr_info("%s NIC Link is Up %d Mbps %s Duplex, Flow Control: %s\n",
+-		adapter->netdev->name, adapter->link_speed,
++	netdev_info(adapter->netdev,
++		"NIC Link is Up %d Mbps %s Duplex, Flow Control: %s\n",
++		adapter->link_speed,
+ 		adapter->link_duplex == FULL_DUPLEX ? "Full" : "Half",
+ 		(ctrl & E1000_CTRL_TFCE) && (ctrl & E1000_CTRL_RFCE) ? "Rx/Tx" :
+ 		(ctrl & E1000_CTRL_RFCE) ? "Rx" :
+@@ -5304,7 +5305,7 @@ static void e1000_watchdog_task(struct work_struct *work)
+ 			adapter->link_speed = 0;
+ 			adapter->link_duplex = 0;
+ 			/* Link status message must follow this format */
+-			pr_info("%s NIC Link is Down\n", adapter->netdev->name);
++			netdev_info(netdev, "NIC Link is Down\n");
+ 			netif_carrier_off(netdev);
+ 			netif_stop_queue(netdev);
+ 			if (!test_bit(__E1000_DOWN, &adapter->state))
 
->
-> Kai-Heng
->
->>
->> Greetings,
->>
->> Tobias
->>
->>
->>> Kai-Heng
->>>
->>>>> Also please attach full dmesg, thanks!
->>>> Attached,
->>>>
->>>> Tobias
->>>>
->>>>> Kai-Heng
->>>>>
->>>>>> Greetings,
->>>>>>
->>>>>> Tobias
->>>>>>
->>>>>>
->>>>>> lspci:
->>>>>>
->>>>>> 00:19.0 Ethernet controller: Intel Corporation 82579V Gigabit Network Connection (rev 06)
->>>>>>          DeviceName:  Onboard LAN
->>>>>>          Subsystem: ASUSTeK Computer Inc. P8P67 Deluxe Motherboard
->>>>>>          Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
->>>>>>          Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
->>>>>>          Latency: 0
->>>>>>          Interrupt: pin A routed to IRQ 56
->>>>>>          Region 0: Memory at fbf00000 (32-bit, non-prefetchable) [size=128K]
->>>>>>          Region 1: Memory at fbf28000 (32-bit, non-prefetchable) [size=4K]
->>>>>>          Region 2: I/O ports at f040 [size=32]
->>>>>>          Capabilities: [c8] Power Management version 2
->>>>>>                  Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
->>>>>>                  Status: D0 NoSoftRst- PME-Enable- DSel=0 DScale=1 PME-
->>>>>>          Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
->>>>>>                  Address: 00000000fee00698  Data: 0000
->>>>>>          Capabilities: [e0] PCI Advanced Features
->>>>>>                  AFCap: TP+ FLR+
->>>>>>                  AFCtrl: FLR-
->>>>>>                  AFStatus: TP-
->>>>>>          Kernel driver in use: e1000e
->>>>>>          Kernel modules: e1000e
->>>>>>
->>>> <dmesg.txt>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
