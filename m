@@ -1,55 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C5F3EE6DC
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2019 19:01:40 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98612EE94B
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2019 21:16:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EB4692155E;
-	Mon,  4 Nov 2019 18:01:38 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 55CA888C67;
+	Mon,  4 Nov 2019 20:16:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8AMU7ojfHUSs; Mon,  4 Nov 2019 18:01:36 +0000 (UTC)
+	with ESMTP id mAFQHtZgwBaq; Mon,  4 Nov 2019 20:16:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7A6DA20438;
-	Mon,  4 Nov 2019 18:01:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4F54788CA1;
+	Mon,  4 Nov 2019 20:16:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 15C2A1BF97D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E0E791BF2C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 20:16:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A5FF20110
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DC1B386130
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 20:16:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id phjO49E0+UlJ for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2019 18:01:28 +0000 (UTC)
+ with ESMTP id FUQKEhOkidHo for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2019 20:16:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id D358C20450
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:27 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B29C785BCC
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 20:16:38 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2019 10:01:26 -0800
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2019 12:16:38 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,267,1569308400"; d="scan'208";a="200098412"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by fmsmga008.fm.intel.com with ESMTP; 04 Nov 2019 10:01:26 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  4 Nov 2019 01:31:08 -0800
-Message-Id: <20191104093108.21542-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191104093108.21542-1-anthony.l.nguyen@intel.com>
-References: <20191104093108.21542-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.68,268,1569308400"; d="scan'208";a="200587753"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+ by fmsmga007.fm.intel.com with ESMTP; 04 Nov 2019 12:16:37 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 4 Nov 2019 12:16:37 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 4 Nov 2019 12:16:37 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Mon, 4 Nov 2019 12:16:37 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S30 v4 3/9] ice: Add support for XDP
+Thread-Index: AQHVkD8LLcNim/GuK0mdZSKgxiEQn6d7eOcg
+Date: Mon, 4 Nov 2019 20:16:36 +0000
+Message-ID: <e37a7bf65352463eae381d766b6d6f84@intel.com>
+References: <20191031143005.5002-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20191031143005.5002-1-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMmMwMDZkMzAtYzJhNy00MzE1LThlN2ItMzNiODM0YjlkZWRlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiaHF5SHVIUDBRZWZCOGpTZ1V4RjdsZldlR21tY2JVOXVqQjZVdFBnOTJuQjFcL1RiM29ZUlFRZVJBME1BdUY4NjkifQ==
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S32 v2 15/15] ice: print opcode when
- printing controlq errors
+Subject: Re: [Intel-wired-lan] [PATCH S30 v4 3/9] ice: Add support for XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,43 +87,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Tony Nguyen
+> Sent: Thursday, October 31, 2019 7:30 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S30 v4 3/9] ice: Add support for XDP
+> 
+> From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> 
+> Add support for XDP. Implement ndo_bpf and ndo_xdp_xmit.  Upon load of
+> an XDP program, allocate additional Tx rings for dedicated XDP use.
+> The following actions are supported: XDP_TX, XDP_DROP, XDP_REDIRECT,
+> XDP_PASS, and XDP_ABORTED.
+> 
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> ---
+> v4:
+> - return -EOPNOTSUPP instead of ENOTSUPP for too large MTU which makes
+>   it impossible to attach XDP prog
+> - don't check for case when there's no XDP prog currently on interface
+>   and ice_xdp() is called with NULL bpf_prog; this happens when user
+>   does "ip link set eth0 xdp off" and no prog is present on VSI; no need
+>   for that as it is handled by higher layer
+> - drop the extack message for unknown xdp->command
+> - use the smp_processor_id() for accessing the XDP Tx ring for XDP_TX
+>   action
+> - don't leave the interface in downed state in case of any failure
+>   during the XDP Tx resources handling
+> - undo rename of ice_build_ctob
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h         |  24 +-
+>  drivers/net/ethernet/intel/ice/ice_base.c    |  28 +-
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c |  50 ++-
+>  drivers/net/ethernet/intel/ice/ice_lib.c     |  68 +++-
+>  drivers/net/ethernet/intel/ice/ice_lib.h     |   6 +
+>  drivers/net/ethernet/intel/ice/ice_main.c    | 326 +++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_txrx.c    | 346 ++++++++++++++++---
+>  drivers/net/ethernet/intel/ice/ice_txrx.h    |  34 +-
+>  8 files changed, 825 insertions(+), 57 deletions(-)
 
-To help aid in debugging, display the command opcode in debug messages
-that print an error code. This makes it easier to see what command
-failed if only ICE_DBG_AQ_MSG is enabled.
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_controlq.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
-index 947728aada46..dd946866d7b8 100644
---- a/drivers/net/ethernet/intel/ice/ice_controlq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
-@@ -1017,7 +1017,8 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 		retval = le16_to_cpu(desc->retval);
- 		if (retval) {
- 			ice_debug(hw, ICE_DBG_AQ_MSG,
--				  "Control Send Queue command completed with error 0x%x\n",
-+				  "Control Send Queue command 0x%04X completed with error 0x%X\n",
-+				  le16_to_cpu(desc->opcode),
- 				  retval);
- 
- 			/* strip off FW internal code */
-@@ -1121,7 +1122,8 @@ ice_clean_rq_elem(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 	if (flags & ICE_AQ_FLAG_ERR) {
- 		ret_code = ICE_ERR_AQ_ERROR;
- 		ice_debug(hw, ICE_DBG_AQ_MSG,
--			  "Control Receive Queue Event received with error 0x%x\n",
-+			  "Control Receive Queue Event 0x%04X received with error 0x%X\n",
-+			  le16_to_cpu(desc->opcode),
- 			  cq->rq_last_status);
- 	}
- 	memcpy(&e->desc, desc, sizeof(e->desc));
--- 
-2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
