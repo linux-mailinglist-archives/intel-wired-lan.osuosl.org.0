@@ -1,83 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC846ED7B4
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2019 03:30:41 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D5A0BEE6B5
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2019 18:55:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A7E408A325;
-	Mon,  4 Nov 2019 02:30:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6800588F89;
+	Mon,  4 Nov 2019 17:55:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YprVSp4UmJGT; Mon,  4 Nov 2019 02:30:40 +0000 (UTC)
+	with ESMTP id IHMC_17vJuft; Mon,  4 Nov 2019 17:55:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1F2E78A46B;
-	Mon,  4 Nov 2019 02:30:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F38FD8946A;
+	Mon,  4 Nov 2019 17:55:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 589EC1BF277
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 02:30:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5ACDD1BF5A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 05:47:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5474D8A325
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 02:30:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 56565881BB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 05:47:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AXIN2ttZC11k for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2019 02:30:37 +0000 (UTC)
-X-Greylist: delayed 00:22:24 by SQLgrey-1.7.6
-Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
- [209.85.222.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F304A8A31F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 02:30:36 +0000 (UTC)
-Received: by mail-qk1-f196.google.com with SMTP id e2so16161895qkn.5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 03 Nov 2019 18:30:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=coverfire.com; s=google;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=NZjd1aiE9ljfVyAYAzmVOMl1dm7M7bVI1+859Yvsuy4=;
- b=Mn9trFmjs68dJ50ygRmLgqUHFvL0TJmACdy2aoW2tUO3BLClWdSF1qTRAfQRD/Hkrr
- TMgF3WdJGW2WKP6rrgRH4ONQcj+Vjrc16KSroyYRYwWQFSr/iPQr8GlzM6Ith9qMQo8O
- gT8D8y8dp3kiShYRaL2yOK//vS4viogmucdRoJQhmjb0Wkl8FA0lzcNR191wN3htQDz+
- 5yPEp98QWhZ9MLZArTjs0Ch/9u1uzBzc5xu4V3iHk0BUV4M+gwSaRF8ikMG4ouDlkkvN
- rLOCD7bI/zjPdZStNDzddlA16eRy9ecHjShjmbx0wn4ut/H/ImOpAEIQjshZ9XvQ1QeH
- JljQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=NZjd1aiE9ljfVyAYAzmVOMl1dm7M7bVI1+859Yvsuy4=;
- b=R7hHYSI8Sku2J9DInz4wCH64zt+jMScdazEP4E297fBLnrHT8C3QMlhaY7KmK3ce96
- 6pLV/q0sgl1HZlH0ywP/MevwCPuWkJgJU2EHt2NyHuI70QvTNrnfPwAiBEQ0ZYI0Ie/K
- xZ9/PaPbTq4Fah4noBYQeJXmLCw2JUJUhFJox1bGKSkttR4PFttLPADkGtUFWE+A2wNu
- +yvtonmBjP8I0GSSNR5Cprc3Yc+ybLGy1lATgPLGjckXTX+l6iJ2NvE74UmLEWWI4/SQ
- CYBrkV3SjlMAuyTGk2ey7R28fiq9XDr/RfNskOcVp5TK7N/Zd3z0LVLwF3aNP4TI7p7F
- VrrA==
-X-Gm-Message-State: APjAAAXr3Mgb4BNtKJV5u9sS+B2HQ94lLkXN25X58mdH5+DDTvOGU6Ld
- 1CEISrS5FWITvCKex2KUIhgkpaMswitNOA==
-X-Google-Smtp-Source: APXvYqyfHeKPje0Zs+td+720nNdYHowg5XX/TSNKHED/Ko7t6ratKpzO8Pb3oTDD4F8fUFumf1/Opw==
-X-Received: by 2002:a37:a00f:: with SMTP id j15mr6707654qke.103.1572833291510; 
- Sun, 03 Nov 2019 18:08:11 -0800 (PST)
-Received: from localhost.home ([69.41.199.68])
- by smtp.gmail.com with ESMTPSA id x194sm3617001qkb.66.2019.11.03.18.08.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Nov 2019 18:08:10 -0800 (PST)
-Message-ID: <82fb2eba56d84887772f9d533faa7bda9e3b2ee4.camel@coverfire.com>
-From: dan@coverfire.com
-To: Jakub Kicinski <jakub.kicinski@netronome.com>, "Samudrala, Sridhar"
- <sridhar.samudrala@intel.com>
-Date: Sun, 03 Nov 2019 21:08:08 -0500
-In-Reply-To: <20191031172148.0290b11f@cakuba.netronome.com>
-References: <CAJ+HfNigHWVk2b+UJPhdCWCTcW=Eh=yfRNHg4=Fr1mv98Pq=cA@mail.gmail.com>
- <2e27b8d9-4615-cd8d-93de-2adb75d8effa@intel.com>
- <20191031172148.0290b11f@cakuba.netronome.com>
-User-Agent: Evolution 3.34.1 (3.34.1-1.fc31) 
+ with ESMTP id b2zsUxqed+QI for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2019 05:47:34 +0000 (UTC)
+X-Greylist: delayed 00:15:03 by SQLgrey-1.7.6
+Received: from harmonic.fortimail.com (gw6018.fortimail.com [173.243.136.18])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 29DC788157
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 05:47:34 +0000 (UTC)
+Received: from NAM05-DM3-obe.outbound.protection.outlook.com
+ (mail-dm3nam05lp2054.outbound.protection.outlook.com [104.47.49.54])
+ by harmonic.fortimail.com  with ESMTP id xA45WRZE023235-xA45WRZG023235
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=CAFAIL);
+ Sun, 3 Nov 2019 21:32:28 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=M6VCK59neUa4U3OOAwcucsLkDIwjv6cLmtYP2rWlUMZnc/hentbZyf0RFtPMXpfokYOfAwbuuoupHndW9nJV0tnBDchSecD+cqO1hbX0KueFn2//+dNN76BmH3ONW4M9r6hoAPOPKmX+aNeFvFaGgIxs5yop7EVZ8ar2Iydmf75Cxq8IhuvD5d9pnrrPwcT79pg5dEA0xoPmsm1JQgitdM52/T5kIvEdlYO80tYkxQ37fRCEtcGRW/zVCx0trSLAL7GzjabjmHYo2l6aJga98V52bD37jpQdbLggUY2lgPhMMcrqMRXC6jDEjgRE4dAR6ELtYpI7A+M0k9iV7MFojg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Rtkmx5O/a3IIcY3Ql7JsAcfPH8MQ+NpaQ9YPveesUqQ=;
+ b=OTUBwhmHPOQ0sbTFZDbHIi4Vf5TrO9XqOgQh1fJcDQIMUfSOn1sZ+/+yI6V3YSusZKD1h1SamXfe/cmIgX51iB3rERmfdXlVBW59iQaDNXpWA69rDsVwmiY3+p9QfDgPV+Z/ZQkfZjRldm4S7isSvcl5WpX54+37Pt0P9BYkk5BgtPgzL6ME5XP0iZ2+dJkDgSZmXHz8GTCTmvclwa9bbAEoQHGTZUJREJmpVufMZSfQVHZlzh7u/36GHASkhDttWXoGtVOGo3CKnxZJc/6MXvEDwYf4fMIKyGYHe0xoZVPla6f1JdrtbLH6b49r8b16pb3N4biFIxasZ/R+a+LvoA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=harmonicinc.com; dmarc=pass action=none
+ header.from=harmonicinc.com; dkim=pass header.d=harmonicinc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=harmonicinc.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Rtkmx5O/a3IIcY3Ql7JsAcfPH8MQ+NpaQ9YPveesUqQ=;
+ b=QPyO2llwEK9H5Ia3jJjQlya1rL7mswIYrifFboiP44q/DISiDrP+JTyt44vZ4yKoQHZsNjfBWLiVVjnadDWGjVUEFlHVxbqUmvkvKueG0Rmq2QnpWYZihanXkARUiqZLhby+x2jz/qdOKRATwmCq3gBCgl+cgEFFrRHizjBcB7E=
+Received: from MWHPR11MB1805.namprd11.prod.outlook.com (10.175.56.14) by
+ MWHPR11MB1278.namprd11.prod.outlook.com (10.169.230.151) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2408.24; Mon, 4 Nov 2019 05:32:26 +0000
+Received: from MWHPR11MB1805.namprd11.prod.outlook.com
+ ([fe80::b088:a289:bed5:850c]) by MWHPR11MB1805.namprd11.prod.outlook.com
+ ([fe80::b088:a289:bed5:850c%8]) with mapi id 15.20.2408.024; Mon, 4 Nov 2019
+ 05:32:25 +0000
+From: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "jeffrey.t.kirsher@intel.com" <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [PATCH net] i40e/iavf: Fix msg interface between VF and PF
+Thread-Index: AQHVktE9LXQEe1tn8E2yMWCX6YmauA==
+Date: Mon, 4 Nov 2019 05:32:25 +0000
+Message-ID: <1572845537.13810.225.camel@harmonicinc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [37.142.125.24]
+x-clientproxiedby: PR0P264CA0040.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:100:1::28) To MWHPR11MB1805.namprd11.prod.outlook.com
+ (2603:10b6:300:114::14)
+Authentication-Results: harmonic.fortimail.com;
+ dkim=pass header.i=@harmonicinc.com
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=arkady.gilinsky@harmonicinc.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: Evolution 3.22.6-1+deb9u2 
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: e5e8cd90-a820-4f3a-a4bb-08d760e85fd3
+x-ms-traffictypediagnostic: MWHPR11MB1278:
+x-microsoft-antispam-prvs: <MWHPR11MB12785692165E8A689FB0C527E27F0@MWHPR11MB1278.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1332;
+x-forefront-prvs: 0211965D06
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(366004)(136003)(346002)(376002)(39850400004)(189003)(199004)(99286004)(25786009)(71200400001)(2201001)(316002)(5660300002)(103116003)(256004)(8936002)(2906002)(81166006)(50226002)(71190400001)(81156014)(6512007)(6436002)(478600001)(305945005)(7736002)(4326008)(6486002)(486006)(14454004)(8676002)(66066001)(6116002)(52116002)(26005)(2501003)(102836004)(6506007)(36756003)(53546011)(44832011)(386003)(3846002)(186003)(110136005)(86362001)(2616005)(476003)(66446008)(66476007)(64756008)(66556008)(66946007)(99106002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MWHPR11MB1278;
+ H:MWHPR11MB1805.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: harmonicinc.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: IZ3cqnftVMBk2FxXBTvp2GmX0qHJZScz0c9brPXbQdB/zJ3nRAM2Waoqe3N2xL+XN8MLx/q1nehqPLWsFM0As/D/mOq1SLpDfuzHpYDn94goWgjUYr1uPmcDShUoYOFY8B+1ex1AHB72TSehlTK3wSAMIu+InvryjPkFmtjdbWUyG49kLsLcxUZn7gB6M7gQy1w3UCXSbDFDy59z/45+S04/bkb+0zNL1Ei7rjaLgFim+mGiWXsyg2iiEAn1pdVHv3RGJ1cEondJxZpiVdbLv+SZQ2oBSunw5xf2iwZ/nuyT2Gpr7Sf7BPDpLQzH+SrM5MWt1yAbMnipFLAJS/s576GNl+tHL7jpOBKsig9TtIdOdzsyhQlbtQ8IbDFdYG1pMY/gYm66owJ+TmntBwza88s4GlEXxmxkeB+XK3Ky+INg2hsj4VVMGtO5dT4AIwk8
+x-ms-exchange-transport-forked: True
+Content-ID: <A70CA1D4FF25DF4995CC4C72D718069C@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] FW: [PATCH bpf-next 2/4] xsk: allow AF_XDP
- sockets to receive packets directly from a queue
+X-OriginatorOrg: harmonicinc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e5e8cd90-a820-4f3a-a4bb-08d760e85fd3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2019 05:32:25.4688 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 19294cf8-3352-4dde-be9e-7f47b9b6b73d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: bNu3YUgdq0R0vaX8xizubK30LqXqfK/YTm25k8MMl7i1FsJc+yBj8kyQMccVMLyKQuRyoBwlkeh2sXKqFmDwVz0uk2qzFVWTpV/eYMB/QLE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR11MB1278
+X-FEAS-DKIM: Valid
+X-Mailman-Approved-At: Mon, 04 Nov 2019 17:55:08 +0000
+Subject: [Intel-wired-lan] [PATCH net] i40e/iavf: Fix msg interface between
+ VF and PF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,27 +125,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, toke@redhat.com,
- David Miller <davem@davemloft.net>, intel-wired-lan@lists.osuosl.org,
- tom.herbert@intel.com, netdev@vger.kernel.org, bpf@vger.kernel.org,
- bjorn.topel@intel.com, alexei.starovoitov@gmail.com, magnus.karlsson@intel.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Arkady Gilinsky <arcadyg@gmail.com>
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 2019-10-31 at 17:21 -0700, Jakub Kicinski wrote:
-> 
-> My concern was that we want the applications to encode fast path
-> logic
-> in BPF and load that into the kernel. So your patch works
-> fundamentally
-> against that goal:
+From af5ab2aaa51882bb7111b026882fe217ed81c15b Mon Sep 17 00:00:00 2001
+From: Arkady Gilinsky <arkady.gilinsky@harmonicinc
+.com>
+Date: Sun, 3 Nov 2019 20:37:21 +0200
+Subject: [PATCH net] i40e/iavf: Fix msg interface between VF and PF
 
-I'm only one AF_XDP user but my main goal is to get packets to
-userspace as fast as possible. I don't (currently) need a BPF program
-in the path at all. I suspect that many other people that look at
-AF_XDP as a DPDK replacement have a similar view.
+=A0* The original issue was that iavf driver passing TX/RX queues
+=A0=A0=A0as bitmap in iavf_disable_queues and the i40e driver
+=A0=A0=A0interprets this message as an absolute number in
+=A0=A0=A0i40e_vc_disable_queues_msg, so the validation in the
+=A0=A0=A0latter function always fail.
+=A0=A0=A0This commit reorganize the msg interface between i40e and iavf
+=A0=A0=A0between the iavf_disable_queues and i40e_vc_disable_queues_msg
+=A0=A0=A0functions (also for iavf_enable_queues and i40e_vc_enable_queues_m=
+sg).
+=A0=A0=A0Now both drivers operate with number of queues instead of
+=A0=A0=A0bitmap. Also the commit introduces range check in
+=A0=A0=A0i40e_vc_enable_queues_msg function.
+
+Signed-off-by: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>
+---
+=A0drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 23 ++++++++++++++++=
+------
+=A0drivers/net/ethernet/intel/iavf/iavf_virtchnl.c=A0=A0=A0=A0|=A0=A06 ++++=
+--
+=A02 files changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/n=
+et/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 3d2440838822..c650eb91982a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2352,13 +2352,22 @@ static int i40e_vc_enable_queues_msg(struct i40e_vf=
+ *vf, u8 *msg)
+=A0		goto error_param;
+=A0	}
+=A0
+-	/* Use the queue bit map sent by the VF */
+-	if (i40e_ctrl_vf_rx_rings(pf->vsi[vf->lan_vsi_idx], vqs->rx_queues,
++	if ((vqs->rx_queues =3D=3D 0 && vqs->tx_queues =3D=3D 0) ||
++	=A0=A0=A0=A0vqs->rx_queues > I40E_MAX_VF_QUEUES ||
++	=A0=A0=A0=A0vqs->tx_queues > I40E_MAX_VF_QUEUES) {
++		aq_ret =3D I40E_ERR_PARAM;
++		goto error_param;
++	}
++
++	/* Build the queue bit map from value sent by the VF */
++	if (i40e_ctrl_vf_rx_rings(pf->vsi[vf->lan_vsi_idx],
++				=A0=A0BIT(vqs->rx_queues) - 1,
+=A0				=A0=A0true)) {
+=A0		aq_ret =3D I40E_ERR_TIMEOUT;
+=A0		goto error_param;
+=A0	}
+-	if (i40e_ctrl_vf_tx_rings(pf->vsi[vf->lan_vsi_idx], vqs->tx_queues,
++	if (i40e_ctrl_vf_tx_rings(pf->vsi[vf->lan_vsi_idx],
++				=A0=A0BIT(vqs->tx_queues) - 1,
+=A0				=A0=A0true)) {
+=A0		aq_ret =3D I40E_ERR_TIMEOUT;
+=A0		goto error_param;
+@@ -2416,13 +2425,15 @@ static int i40e_vc_disable_queues_msg(struct i40e_v=
+f *vf, u8 *msg)
+=A0		goto error_param;
+=A0	}
+=A0
+-	/* Use the queue bit map sent by the VF */
+-	if (i40e_ctrl_vf_tx_rings(pf->vsi[vf->lan_vsi_idx], vqs->tx_queues,
++	/* Build the queue bit map from value sent by the VF */
++	if (i40e_ctrl_vf_tx_rings(pf->vsi[vf->lan_vsi_idx],
++				=A0=A0BIT(vqs->tx_queues) - 1,
+=A0				=A0=A0false)) {
+=A0		aq_ret =3D I40E_ERR_TIMEOUT;
+=A0		goto error_param;
+=A0	}
+-	if (i40e_ctrl_vf_rx_rings(pf->vsi[vf->lan_vsi_idx], vqs->rx_queues,
++	if (i40e_ctrl_vf_rx_rings(pf->vsi[vf->lan_vsi_idx],
++				=A0=A0BIT(vqs->rx_queues) - 1,
+=A0				=A0=A0false)) {
+=A0		aq_ret =3D I40E_ERR_TIMEOUT;
+=A0		goto error_param;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/=
+ethernet/intel/iavf/iavf_virtchnl.c
+index c46770eba320..271f144bf05b 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -308,7 +308,8 @@ void iavf_enable_queues(struct iavf_adapter *adapter)
+=A0	}
+=A0	adapter->current_op =3D VIRTCHNL_OP_ENABLE_QUEUES;
+=A0	vqs.vsi_id =3D adapter->vsi_res->vsi_id;
+-	vqs.tx_queues =3D BIT(adapter->num_active_queues) - 1;
++	/* Send the queues number to PF */
++	vqs.tx_queues =3D adapter->num_active_queues;
+=A0	vqs.rx_queues =3D vqs.tx_queues;
+=A0	adapter->aq_required &=3D ~IAVF_FLAG_AQ_ENABLE_QUEUES;
+=A0	iavf_send_pf_msg(adapter, VIRTCHNL_OP_ENABLE_QUEUES,
+@@ -333,7 +334,8 @@ void iavf_disable_queues(struct iavf_adapter *adapter)
+=A0	}
+=A0	adapter->current_op =3D VIRTCHNL_OP_DISABLE_QUEUES;
+=A0	vqs.vsi_id =3D adapter->vsi_res->vsi_id;
+-	vqs.tx_queues =3D BIT(adapter->num_active_queues) - 1;
++	/* Send the queues number to PF */
++	vqs.tx_queues =3D adapter->num_active_queues;
+=A0	vqs.rx_queues =3D vqs.tx_queues;
+=A0	adapter->aq_required &=3D ~IAVF_FLAG_AQ_DISABLE_QUEUES;
+=A0	iavf_send_pf_msg(adapter, VIRTCHNL_OP_DISABLE_QUEUES,
+--=A0
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
