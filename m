@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43B7BEE6DB
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2019 19:01:40 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07152EE6D5
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2019 19:01:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CFF3F220EC;
-	Mon,  4 Nov 2019 18:01:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 99D5A8A9EC;
+	Mon,  4 Nov 2019 18:01:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5hoosFX7cZe5; Mon,  4 Nov 2019 18:01:34 +0000 (UTC)
+	with ESMTP id 2ZwoNUt0r5KD; Mon,  4 Nov 2019 18:01:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5D18322011;
-	Mon,  4 Nov 2019 18:01:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E7D0B8A9E5;
+	Mon,  4 Nov 2019 18:01:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E685C1BF388
+ by ash.osuosl.org (Postfix) with ESMTP id 393091BF388
  for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E302920413
+ by silver.osuosl.org (Postfix) with ESMTP id 338CB20475
  for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J2RNY+CevANB for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id qTYWlz8D5cDe for <intel-wired-lan@lists.osuosl.org>;
  Mon,  4 Nov 2019 18:01:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id 0742A20110
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 2700420386
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2019 18:01:27 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  04 Nov 2019 10:01:26 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,267,1569308400"; d="scan'208";a="200098404"
+X-IronPort-AV: E=Sophos;i="5.68,267,1569308400"; d="scan'208";a="200098405"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by fmsmga008.fm.intel.com with ESMTP; 04 Nov 2019 10:01:26 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  4 Nov 2019 01:31:00 -0800
-Message-Id: <20191104093108.21542-7-anthony.l.nguyen@intel.com>
+Date: Mon,  4 Nov 2019 01:31:01 -0800
+Message-Id: <20191104093108.21542-8-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191104093108.21542-1-anthony.l.nguyen@intel.com>
 References: <20191104093108.21542-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S32 v2 07/15] ice: Check if VF is disabled
- for Opcode and other operations
+Subject: [Intel-wired-lan] [PATCH S32 v2 08/15] ice: Change max MSI-x
+ vector_id check in cfg_irq_map
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,148 +67,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-This patch adds code to check if PF or VF is disabled before honoring
-mailbox message to configure VF - If it is disabled, and opcode is for
-resetting VF, the PF driver simply tell VF that all is set. In addition,
-if reset is ongoing, and Admin intend to configure VF on the host, we can
-poll the VF enabling bit to make sure it is ready before continue - If
-after ~250 milliseconds, VF is not in active state, we can bail out with
-invalid error.
+Currently we check to make sure the vector_id passed down from iavf
+is less than or equal to pf->hw.func_caps.common_caps.num_msix_vectors.
+This is incorrect because the vector_id is always 0-based and never
+greater than or equal to the ICE_MAX_INTR_PER_VF. Fix this by checking
+to make sure the vector_id is less than the max allowed interrupts per
+VF (ICE_MAX_INTR_PER_VF).
 
-Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 74 ++++++++++++++++---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  1 +
- 2 files changed, 63 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 4a1cb51b50c7..537377448bef 100644
+index 537377448bef..eb526144a237 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1151,6 +1151,25 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	return true;
- }
+@@ -2179,9 +2179,11 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
  
-+/**
-+ * ice_is_vf_disabled
-+ * @vf: pointer to the VF info
-+ *
-+ * Returns true if the PF or VF is disabled, false otherwise.
-+ */
-+static bool ice_is_vf_disabled(struct ice_vf *vf)
-+{
-+	struct ice_pf *pf = vf->pf;
-+
-+	/* If the PF has been disabled, there is no need resetting VF until
-+	 * PF is active again. Similarly, if the VF has been disabled, this
-+	 * means something else is resetting the VF, so we shouldn't continue.
-+	 * Otherwise, set disable VF state bit for actual reset, and continue.
-+	 */
-+	return (test_bit(__ICE_VF_DIS, pf->state) ||
-+		test_bit(ICE_VF_STATE_DIS, vf->vf_states));
-+}
-+
- /**
-  * ice_reset_vf - Reset a particular VF
-  * @vf: pointer to the VF structure
-@@ -1168,19 +1187,15 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
- 	u32 reg;
- 	int i;
- 
--	/* If the PF has been disabled, there is no need resetting VF until
--	 * PF is active again.
--	 */
--	if (test_bit(__ICE_VF_DIS, pf->state))
--		return false;
--
--	/* If the VF has been disabled, this means something else is
--	 * resetting the VF, so we shouldn't continue. Otherwise, set
--	 * disable VF state bit for actual reset, and continue.
--	 */
--	if (test_and_set_bit(ICE_VF_STATE_DIS, vf->vf_states))
--		return false;
-+	if (ice_is_vf_disabled(vf)) {
-+		dev_dbg(&pf->pdev->dev,
-+			"VF is already disabled, there is no need for resetting it, telling VM, all is fine %d\n",
-+			 vf->vf_id);
-+		return true;
-+	}
- 
-+	/* Set VF disable bit state here, before triggering reset */
-+	set_bit(ICE_VF_STATE_DIS, vf->vf_states);
- 	ice_trigger_vf_reset(vf, is_vflr, false);
- 
- 	vsi = pf->vsi[vf->lan_vsi_idx];
-@@ -3128,6 +3143,23 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 	return ret;
- }
- 
-+/**
-+ * ice_wait_on_vf_reset
-+ * @vf: The VF being resseting
-+ *
-+ * Poll to make sure a given VF is ready after reset
-+ */
-+static void ice_wait_on_vf_reset(struct ice_vf *vf)
-+{
-+	int i;
-+
-+	for (i = 0; i < ICE_MAX_VF_RESET_WAIT; i++) {
-+		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
-+			break;
-+		msleep(20);
-+	}
-+}
-+
- /**
-  * ice_set_vf_mac
-  * @netdev: network interface device structure
-@@ -3151,6 +3183,15 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
- 	}
- 
- 	vf = &pf->vf[vf_id];
-+	/* Don't set MAC on disabled VF */
-+	if (ice_is_vf_disabled(vf))
-+		return -EINVAL;
-+
-+	/* In case VF is in reset mode, wait until it is completed. Depending
-+	 * on factors like queue disabling routine, this could take ~250ms
-+	 */
-+	ice_wait_on_vf_reset(vf);
-+
- 	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
- 		netdev_err(netdev, "VF %d in reset. Try again.\n", vf_id);
- 		return -EBUSY;
-@@ -3198,6 +3239,15 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
- 	}
- 
- 	vf = &pf->vf[vf_id];
-+	/* Don't set Trusted Mode on disabled VF */
-+	if (ice_is_vf_disabled(vf))
-+		return -EINVAL;
-+
-+	/* In case VF is in reset mode, wait until it is completed. Depending
-+	 * on factors like queue disabling routine, this could take ~250ms
-+	 */
-+	ice_wait_on_vf_reset(vf);
-+
- 	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
- 		dev_err(&pf->pdev->dev, "VF %d in reset. Try again.\n", vf_id);
- 		return -EBUSY;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 0d9880c8bba3..2e867ad2e81d 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -38,6 +38,7 @@
- #define ICE_MAX_POLICY_INTR_PER_VF	33
- #define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
- #define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
-+#define ICE_MAX_VF_RESET_WAIT		15
- 
- /* Specific VF states */
- enum ice_vf_states {
+ 		vector_id = map->vector_id;
+ 		vsi_id = map->vsi_id;
+-		/* validate msg params */
+-		if (!(vector_id < pf->hw.func_caps.common_cap
+-		    .num_msix_vectors) || !ice_vc_isvalid_vsi_id(vf, vsi_id) ||
++		/* vector_id is always 0-based for each VF, and can never be
++		 * larger than or equal to the max allowed interrupts per VF
++		 */
++		if (!(vector_id < ICE_MAX_INTR_PER_VF) ||
++		    !ice_vc_isvalid_vsi_id(vf, vsi_id) ||
+ 		    (!vector_id && (map->rxq_map || map->txq_map))) {
+ 			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 			goto error_param;
 -- 
 2.20.1
 
