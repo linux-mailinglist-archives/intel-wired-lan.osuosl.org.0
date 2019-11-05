@@ -1,51 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2061EF9D1
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Nov 2019 10:44:19 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBA48F0381
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Nov 2019 17:55:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3A1A8220EC;
-	Tue,  5 Nov 2019 09:44:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7EB6288ED0;
+	Tue,  5 Nov 2019 16:55:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id llSzWkR98vsz; Tue,  5 Nov 2019 09:44:18 +0000 (UTC)
+	with ESMTP id zjkghIUMsbwJ; Tue,  5 Nov 2019 16:55:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C7574220D6;
-	Tue,  5 Nov 2019 09:44:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id CEF5288ED1;
+	Tue,  5 Nov 2019 16:55:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1B5681BF2CC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Nov 2019 09:44:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 16E431BF5B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Nov 2019 16:55:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 171CE890F7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Nov 2019 09:44:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 11D6288ECB
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Nov 2019 16:55:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8noBv7ZOYTKz for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Nov 2019 09:44:15 +0000 (UTC)
+ with ESMTP id YMv_l9LuiBAo for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Nov 2019 16:55:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8B38A890ED
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Nov 2019 09:44:15 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C9A8688765
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Nov 2019 16:55:34 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2019 01:44:14 -0800
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2019 08:55:33 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,270,1569308400"; d="scan'208";a="401922250"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga005.fm.intel.com with ESMTP; 05 Nov 2019 01:44:13 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  5 Nov 2019 11:44:13 +0200
-Message-Id: <20191105094413.1405-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: Improve the DMA mapping flow
+X-IronPort-AV: E=Sophos;i="5.68,271,1569308400"; d="scan'208";a="205035243"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga003.jf.intel.com with ESMTP; 05 Nov 2019 08:55:33 -0800
+Received: from orsmsx122.amr.corp.intel.com (10.22.225.227) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 5 Nov 2019 08:55:33 -0800
+Received: from orsmsx113.amr.corp.intel.com ([169.254.9.28]) by
+ ORSMSX122.amr.corp.intel.com ([169.254.11.32]) with mapi id 14.03.0439.000;
+ Tue, 5 Nov 2019 08:55:33 -0800
+From: "Creeley, Brett" <brett.creeley@intel.com>
+To: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg interface
+ between VF and PF
+Thread-Index: AQHVktE9LXQEe1tn8E2yMWCX6YmauKd7neLQgABu5ACAALtz8A==
+Date: Tue, 5 Nov 2019 16:55:32 +0000
+Message-ID: <3508A0C5D531054DBDD98909F6FA64FA11B39863@ORSMSX113.amr.corp.intel.com>
+References: <1572845537.13810.225.camel@harmonicinc.com>
+ <3508A0C5D531054DBDD98909F6FA64FA11B3936D@ORSMSX113.amr.corp.intel.com>
+ <1572931430.13810.227.camel@harmonicinc.com>
+In-Reply-To: <1572931430.13810.227.camel@harmonicinc.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiM2JkM2UyZWEtNzM1Yi00N2I3LWE3M2EtMzBiNmE5NTc1MDc1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiN2ZKcjhWRllLblNwWmtObG1WNE5KNWdcL3JlRmgzd2pJbGpHMVNlK1U4ZXh1ZVpiSkRNWGdIY1pkOEk2MEx6QjIifQ==
+x-originating-ip: [10.22.254.139]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg
+ interface between VF and PF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,68 +85,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Arkady Gilinsky <arcadyg@gmail.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Improve the probe flow and set both the DMA mask and the coherent
-to the same thing. Make the flow optimized and cleared.
+> -----Original Message-----
+> From: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>
+> Sent: Monday, November 4, 2019 9:24 PM
+> To: Creeley, Brett <brett.creeley@intel.com>; intel-wired-lan@lists.osuos=
+l.org; netdev@vger.kernel.org; Kirsher, Jeffrey T
+> <jeffrey.t.kirsher@intel.com>
+> Cc: Arkady Gilinsky <arcadyg@gmail.com>
+> Subject: Re: [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg interface betw=
+een VF and PF
+> > static bool i40e_vc_verify_vqs_bitmaps(struct virtchnl_queue_select *vq=
+s)
+> > {
+> > 	/* this will catch any changes made to the virtchnl_queue_select bitma=
+p */
+> > 	if (sizeof(vqs->rx_queues) !=3D sizeof(u32) ||
+> > 	=A0=A0=A0=A0=A0sizeof(vqs->tx_queues) !=3D sizeof(u32))
+> > 		return false;
+> If so, then is it better to check the type of the fields in compile-time =
+rather than in runtime ?
+> Something like this:
+> BUILD_BUG_ON(sizeof(vqs->rx_queues) !=3D sizeof(u32));
+> BUILD_BUG_ON(sizeof(vqs->tx_queues) !=3D sizeof(u32));
+> This is not required comparison each time when function is called and mad=
+e code more optimized.
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 24 +++++++++---------------
- 1 file changed, 9 insertions(+), 15 deletions(-)
+I don't think this is required with the change you suggested below.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index c3266645c95e..648aee679cb6 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -4346,32 +4346,26 @@ static int igc_probe(struct pci_dev *pdev,
- 	struct net_device *netdev;
- 	struct igc_hw *hw;
- 	const struct igc_info *ei = igc_info_tbl[ent->driver_data];
--	int err;
-+	int err, pci_using_dac;
- 
- 	err = pci_enable_device_mem(pdev);
- 	if (err)
- 		return err;
- 
--	err = dma_set_mask(&pdev->dev, DMA_BIT_MASK(64));
-+	pci_using_dac = 0;
-+	err = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
- 	if (!err) {
--		err = dma_set_coherent_mask(&pdev->dev,
--					    DMA_BIT_MASK(64));
-+		pci_using_dac = 1;
- 	} else {
--		err = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
-+		err = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(32));
- 		if (err) {
--			err = dma_set_coherent_mask(&pdev->dev,
--						    DMA_BIT_MASK(32));
--			if (err) {
--				dev_err(&pdev->dev, "igc: Wrong DMA config\n");
--				goto err_dma;
--			}
-+			dev_err(&pdev->dev,
-+				"No usable DMA configuration, aborting\n");
-+			goto err_dma;
- 		}
- 	}
- 
--	err = pci_request_selected_regions(pdev,
--					   pci_select_bars(pdev,
--							   IORESOURCE_MEM),
--					   igc_driver_name);
-+	err = pci_request_mem_regions(pdev, igc_driver_name);
- 	if (err)
- 		goto err_pci_reg;
- 
--- 
-2.11.0
+> >
+> > 	if ((vqs->rx_queues =3D=3D 0 && vqs->tx_queues =3D=3D 0) ||
+> > 	=A0=A0=A0=A0=A0=A0hweight32(vqs->rx_queues) > I40E_MAX_VF_QUEUES ||
+> > 	=A0=A0=A0=A0=A0=A0hweight32(vqs->tx_queues) > I40E_MAX_VF_QUEUES)
+> > 		return false;
+> Again, from optimization POV it is better to have constant changed than v=
+ariable,
+> since it is compile time and not run time action:
+> 	if ((vqs->rx_queues =3D=3D 0 && vqs->tx_queues =3D=3D 0) ||
+> 	=A0=A0=A0=A0=A0=A0vqs->rx_queues >=3D (BIT(I40E_MAX_VF_QUEUES)) ||
+> =
+
+> =A0=A0=A0=A0=A0=A0vqs->tx_queues >=3D (BIT(I40E_MAX_VF_QUEUES)))
+> 		return false;
+
+This seems much better than my solution. It fixes the original issue, handl=
+es if the
+vqs->[r|t]x_queues variables have changed in size, and the queue bitmap com=
+parison
+uses a constant. Thanks!
+
+> > 	return true;
+> > }
 
 _______________________________________________
 Intel-wired-lan mailing list
