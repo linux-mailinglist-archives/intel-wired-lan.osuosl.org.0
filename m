@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4A0EF1DA0
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2019 19:36:35 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DDD0F1DA1
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2019 19:36:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 8633422D2D;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F2A3C89094;
 	Wed,  6 Nov 2019 18:36:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R3GgfbPPmmPu; Wed,  6 Nov 2019 18:36:34 +0000 (UTC)
+	with ESMTP id JNo8XrrzUHOT; Wed,  6 Nov 2019 18:36:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7587522D10;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C6F9D890C4;
 	Wed,  6 Nov 2019 18:36:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 91DE41BF3FB
+ by ash.osuosl.org (Postfix) with ESMTP id A89D11BF999
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2019 18:36:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8BD9E8A803
+ by hemlock.osuosl.org (Postfix) with ESMTP id A1A758A870
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2019 18:36:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f8YUAHBya9Ps for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Nov 2019 18:36:29 +0000 (UTC)
+ with ESMTP id 365Tgf70vRTd for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Nov 2019 18:36:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8E7098A862
+ by hemlock.osuosl.org (Postfix) with ESMTPS id AC2348A864
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2019 18:36:29 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  06 Nov 2019 10:36:29 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,275,1569308400"; d="scan'208";a="205918157"
+X-IronPort-AV: E=Sophos;i="5.68,275,1569308400"; d="scan'208";a="205918158"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga006.jf.intel.com with ESMTP; 06 Nov 2019 10:36:27 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  6 Nov 2019 02:05:34 -0800
-Message-Id: <20191106100541.48639-8-anthony.l.nguyen@intel.com>
+Date: Wed,  6 Nov 2019 02:05:35 -0800
+Message-Id: <20191106100541.48639-9-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191106100541.48639-1-anthony.l.nguyen@intel.com>
 References: <20191106100541.48639-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S32 v3 08/15] ice: Change max MSI-x
- vector_id check in cfg_irq_map
+Subject: [Intel-wired-lan] [PATCH S32 v3 09/15] ice: use pkg_dwnld_status
+ instead of sq_last_status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,39 +67,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Bruce Allan <bruce.w.allan@intel.com>
 
-Currently we check to make sure the vector_id passed down from iavf
-is less than or equal to pf->hw.func_caps.common_caps.num_msix_vectors.
-This is incorrect because the vector_id is always 0-based and never
-greater than or equal to the ICE_MAX_INTR_PER_VF. Fix this by checking
-to make sure the vector_id is less than the max allowed interrupts per
-VF (ICE_MAX_INTR_PER_VF).
+Since the return value from the Download Package AQ command is stored in
+hw->pkg_dwnld_status, use that instead of sq_last_status since that may
+have the return value from some other AQ command leading to unexpected
+results.
 
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 537377448bef..eb526144a237 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -2179,9 +2179,11 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
- 
- 		vector_id = map->vector_id;
- 		vsi_id = map->vsi_id;
--		/* validate msg params */
--		if (!(vector_id < pf->hw.func_caps.common_cap
--		    .num_msix_vectors) || !ice_vc_isvalid_vsi_id(vf, vsi_id) ||
-+		/* vector_id is always 0-based for each VF, and can never be
-+		 * larger than or equal to the max allowed interrupts per VF
-+		 */
-+		if (!(vector_id < ICE_MAX_INTR_PER_VF) ||
-+		    !ice_vc_isvalid_vsi_id(vf, vsi_id) ||
- 		    (!vector_id && (map->rxq_map || map->txq_map))) {
- 			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 			goto error_param;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 94354b307a4e..aaa398759548 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3025,7 +3025,7 @@ ice_log_pkg_init(struct ice_hw *hw, enum ice_status *status)
+ 				ICE_PKG_SUPP_VER_MAJ, ICE_PKG_SUPP_VER_MNR);
+ 		break;
+ 	case ICE_ERR_AQ_ERROR:
+-		switch (hw->adminq.sq_last_status) {
++		switch (hw->pkg_dwnld_status) {
+ 		case ICE_AQ_RC_ENOSEC:
+ 		case ICE_AQ_RC_EBADSIG:
+ 			dev_err(dev,
 -- 
 2.20.1
 
