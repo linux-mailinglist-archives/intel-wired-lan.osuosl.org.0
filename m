@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 589A5F1DA2
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2019 19:36:36 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3919F1DA3
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2019 19:36:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0890989F73;
-	Wed,  6 Nov 2019 18:36:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B35589196;
+	Wed,  6 Nov 2019 18:36:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A77FkW6l7PnE; Wed,  6 Nov 2019 18:36:34 +0000 (UTC)
+	with ESMTP id t97PFyIhy_hN; Wed,  6 Nov 2019 18:36:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4DA6489F84;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9ABAC8912E;
 	Wed,  6 Nov 2019 18:36:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0750E1BF3FB
+ by ash.osuosl.org (Postfix) with ESMTP id 6D0EE1BF3FB
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2019 18:36:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 043D18A870
+ by hemlock.osuosl.org (Postfix) with ESMTP id 69A208A854
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2019 18:36:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ncg94IRk1hkO for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Nov 2019 18:36:29 +0000 (UTC)
+ with ESMTP id rvTWP-vagcXt for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Nov 2019 18:36:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6C1028A854
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7AC068A85B
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2019 18:36:29 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  06 Nov 2019 10:36:28 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,275,1569308400"; d="scan'208";a="205918155"
+X-IronPort-AV: E=Sophos;i="5.68,275,1569308400"; d="scan'208";a="205918156"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga006.jf.intel.com with ESMTP; 06 Nov 2019 10:36:27 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  6 Nov 2019 02:05:32 -0800
-Message-Id: <20191106100541.48639-6-anthony.l.nguyen@intel.com>
+Date: Wed,  6 Nov 2019 02:05:33 -0800
+Message-Id: <20191106100541.48639-7-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191106100541.48639-1-anthony.l.nguyen@intel.com>
 References: <20191106100541.48639-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S32 v3 06/15] ice: configure software LLDP
- in ice_init_pf_dcb
+Subject: [Intel-wired-lan] [PATCH S32 v3 07/15] ice: Check if VF is disabled
+ for Opcode and other operations
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,102 +67,148 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul Greenwalt <paul.greenwalt@intel.com>
+From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 
-Move software LLDP configuration when FW DCBX is disabled to
-ice_init_pf_dcb, since that is where the FW DCBX state is determined.
-Remove this software LLDP configuration from ice_vsi_setup and
-ice_set_priv_flags. Software configuration includes redirecting Rx LLDP
-packets up the stack, when FW DCBX is not running.
+This patch adds code to check if PF or VF is disabled before honoring
+mailbox message to configure VF - If it is disabled, and opcode is for
+resetting VF, the PF driver simply tell VF that all is set. In addition,
+if reset is ongoing, and Admin intend to configure VF on the host, we can
+poll the VF enabling bit to make sure it is ready before continue - If
+after ~250 milliseconds, VF is not in active state, we can bail out with
+invalid error.
 
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 15 +++++++++++++++
- drivers/net/ethernet/intel/ice/ice_ethtool.c |  5 -----
- drivers/net/ethernet/intel/ice/ice_lib.c     | 14 ++++----------
- 3 files changed, 19 insertions(+), 15 deletions(-)
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 74 ++++++++++++++++---
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  1 +
+ 2 files changed, 63 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 9448a289363d..1150dbd98d0b 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -594,6 +594,8 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 		 "DCB is enabled in the hardware, max number of TCs supported on this port are %d\n",
- 		 pf->hw.func_caps.common_cap.maxtc);
- 	if (err) {
-+		struct ice_vsi *pf_vsi;
-+
- 		/* FW LLDP is disabled, activate SW DCBX/LLDP mode */
- 		dev_info(&pf->pdev->dev,
- 			 "FW LLDP is disabled, DCBx/LLDP in SW mode.\n");
-@@ -606,6 +608,19 @@ int ice_init_pf_dcb(struct ice_pf *pf, bool locked)
- 			goto dcb_init_err;
- 		}
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 4a1cb51b50c7..537377448bef 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1151,6 +1151,25 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
+ 	return true;
+ }
  
-+		/* If the FW DCBX engine is not running then Rx LLDP packets
-+		 * need to be redirected up the stack.
-+		 */
-+		pf_vsi = ice_get_main_vsi(pf);
-+		if (!pf_vsi) {
-+			dev_err(&pf->pdev->dev,
-+				"Failed to set local DCB config\n");
-+			err = -EIO;
-+			goto dcb_init_err;
-+		}
++/**
++ * ice_is_vf_disabled
++ * @vf: pointer to the VF info
++ *
++ * Returns true if the PF or VF is disabled, false otherwise.
++ */
++static bool ice_is_vf_disabled(struct ice_vf *vf)
++{
++	struct ice_pf *pf = vf->pf;
 +
-+		ice_cfg_sw_lldp(pf_vsi, false, true);
++	/* If the PF has been disabled, there is no need resetting VF until
++	 * PF is active again. Similarly, if the VF has been disabled, this
++	 * means something else is resetting the VF, so we shouldn't continue.
++	 * Otherwise, set disable VF state bit for actual reset, and continue.
++	 */
++	return (test_bit(__ICE_VF_DIS, pf->state) ||
++		test_bit(ICE_VF_STATE_DIS, vf->vf_states));
++}
 +
- 		pf->dcbx_cap = DCB_CAP_DCBX_HOST | DCB_CAP_DCBX_VER_IEEE;
- 		return 0;
+ /**
+  * ice_reset_vf - Reset a particular VF
+  * @vf: pointer to the VF structure
+@@ -1168,19 +1187,15 @@ static bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 	u32 reg;
+ 	int i;
+ 
+-	/* If the PF has been disabled, there is no need resetting VF until
+-	 * PF is active again.
+-	 */
+-	if (test_bit(__ICE_VF_DIS, pf->state))
+-		return false;
+-
+-	/* If the VF has been disabled, this means something else is
+-	 * resetting the VF, so we shouldn't continue. Otherwise, set
+-	 * disable VF state bit for actual reset, and continue.
+-	 */
+-	if (test_and_set_bit(ICE_VF_STATE_DIS, vf->vf_states))
+-		return false;
++	if (ice_is_vf_disabled(vf)) {
++		dev_dbg(&pf->pdev->dev,
++			"VF is already disabled, there is no need for resetting it, telling VM, all is fine %d\n",
++			 vf->vf_id);
++		return true;
++	}
+ 
++	/* Set VF disable bit state here, before triggering reset */
++	set_bit(ICE_VF_STATE_DIS, vf->vf_states);
+ 	ice_trigger_vf_reset(vf, is_vflr, false);
+ 
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+@@ -3128,6 +3143,23 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ 	return ret;
+ }
+ 
++/**
++ * ice_wait_on_vf_reset
++ * @vf: The VF being resseting
++ *
++ * Poll to make sure a given VF is ready after reset
++ */
++static void ice_wait_on_vf_reset(struct ice_vf *vf)
++{
++	int i;
++
++	for (i = 0; i < ICE_MAX_VF_RESET_WAIT; i++) {
++		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
++			break;
++		msleep(20);
++	}
++}
++
+ /**
+  * ice_set_vf_mac
+  * @netdev: network interface device structure
+@@ -3151,6 +3183,15 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
  	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 3b9d33ad23d8..9c2045056d59 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -1295,11 +1295,6 @@ static int ice_set_priv_flags(struct net_device *netdev, u32 flags)
- 			status = ice_init_pf_dcb(pf, true);
- 			if (status)
- 				dev_warn(&pf->pdev->dev, "Fail to init DCB\n");
--
--			/* Forward LLDP packets to default VSI so that they
--			 * are passed up the stack
--			 */
--			ice_cfg_sw_lldp(vsi, false, true);
- 		} else {
- 			enum ice_status status;
- 			bool dcbx_agent_status;
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index d4e3df6544f5..c9e0b533da47 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1881,23 +1881,17 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
- 	 * out PAUSE or PFC frames. If enabled, FW can still send FC frames.
- 	 * The rule is added once for PF VSI in order to create appropriate
- 	 * recipe, since VSI/VSI list is ignored with drop action...
--	 * Also add rules to handle LLDP Tx and Rx packets.  Tx LLDP packets
--	 * need to be dropped so that VFs cannot send LLDP packets to reconfig
--	 * DCB settings in the HW.  Also, if the FW DCBX engine is not running
--	 * then Rx LLDP packets need to be redirected up the stack.
-+	 * Also add rules to handle LLDP Tx packets.  Tx LLDP packets need to
-+	 * be dropped so that VFs cannot send LLDP packets to reconfig DCB
-+	 * settings in the HW.
- 	 */
--	if (!ice_is_safe_mode(pf)) {
-+	if (!ice_is_safe_mode(pf))
- 		if (vsi->type == ICE_VSI_PF) {
- 			ice_vsi_add_rem_eth_mac(vsi, true);
  
- 			/* Tx LLDP packets */
- 			ice_cfg_sw_lldp(vsi, true, true);
--
--			/* Rx LLDP packets */
--			if (!test_bit(ICE_FLAG_FW_LLDP_AGENT, pf->flags))
--				ice_cfg_sw_lldp(vsi, false, true);
- 		}
--	}
+ 	vf = &pf->vf[vf_id];
++	/* Don't set MAC on disabled VF */
++	if (ice_is_vf_disabled(vf))
++		return -EINVAL;
++
++	/* In case VF is in reset mode, wait until it is completed. Depending
++	 * on factors like queue disabling routine, this could take ~250ms
++	 */
++	ice_wait_on_vf_reset(vf);
++
+ 	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
+ 		netdev_err(netdev, "VF %d in reset. Try again.\n", vf_id);
+ 		return -EBUSY;
+@@ -3198,6 +3239,15 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
+ 	}
  
- 	return vsi;
+ 	vf = &pf->vf[vf_id];
++	/* Don't set Trusted Mode on disabled VF */
++	if (ice_is_vf_disabled(vf))
++		return -EINVAL;
++
++	/* In case VF is in reset mode, wait until it is completed. Depending
++	 * on factors like queue disabling routine, this could take ~250ms
++	 */
++	ice_wait_on_vf_reset(vf);
++
+ 	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
+ 		dev_err(&pf->pdev->dev, "VF %d in reset. Try again.\n", vf_id);
+ 		return -EBUSY;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+index 0d9880c8bba3..2e867ad2e81d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+@@ -38,6 +38,7 @@
+ #define ICE_MAX_POLICY_INTR_PER_VF	33
+ #define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
+ #define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
++#define ICE_MAX_VF_RESET_WAIT		15
  
+ /* Specific VF states */
+ enum ice_vf_states {
 -- 
 2.20.1
 
