@@ -2,55 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53DB0F41A1
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 09:07:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9874FF41A0
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 09:07:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E8037867C6;
-	Fri,  8 Nov 2019 08:07:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB865867A1;
+	Fri,  8 Nov 2019 08:07:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OeTul5qEu2i4; Fri,  8 Nov 2019 08:07:07 +0000 (UTC)
+	with ESMTP id Yr7lxYUlaAg9; Fri,  8 Nov 2019 08:07:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ECA4B86788;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9329E86742;
 	Fri,  8 Nov 2019 08:07:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6F23D1BF999
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 08:06:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2821F1BF363
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 08:06:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 68FF985F45
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 08:06:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 229D385F46
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 08:06:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8cZeuJaGLXXC for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id MYxzI3_ICn7t for <intel-wired-lan@lists.osuosl.org>;
  Fri,  8 Nov 2019 08:06:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0B3EA85F44
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 08:06:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 588BE85F45
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 08:06:57 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2019 00:06:56 -0800
+ 08 Nov 2019 00:06:57 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,280,1569308400"; d="scan'208";a="228111352"
+X-IronPort-AV: E=Sophos;i="5.68,280,1569308400"; d="scan'208";a="214857623"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 08 Nov 2019 00:06:55 -0800
+ by orsmga002.jf.intel.com with ESMTP; 08 Nov 2019 00:06:55 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iSzIF-000DET-54; Fri, 08 Nov 2019 16:06:55 +0800
-Date: Fri, 08 Nov 2019 16:06:16 +0800
+ id 1iSzIF-000DF9-8O; Fri, 08 Nov 2019 16:06:55 +0800
+Date: Fri, 08 Nov 2019 16:06:32 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5dc521f8.W5UjWoKUDxjmQEr9%lkp@intel.com>
+Message-ID: <5dc52208.fSIdowMiUiBNvl7M%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
- 96b1113b50116d6837e9fec89ce2ae626a797ccb
+Subject: [Intel-wired-lan] [jkirsher-net-queue:master] BUILD SUCCESS
+ e497df686e8fed8c1dd69179010656362858edb3
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,21 +68,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
-branch HEAD: 96b1113b50116d6837e9fec89ce2ae626a797ccb  i40e: Fix for ethtool -m issue on X722 NIC
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  master
+branch HEAD: e497df686e8fed8c1dd69179010656362858edb3  net: usb: qmi_wwan: add support for DW5821e with eSIM support
 
-elapsed time: 485m
+elapsed time: 493m
 
 configs tested: 146
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
-riscv                             allnoconfig
-riscv                               defconfig
-nds32                               defconfig
 alpha                               defconfig
 nds32                             allnoconfig
+nds32                               defconfig
+riscv                             allnoconfig
+riscv                               defconfig
 x86_64                 randconfig-b001-201944
 x86_64                 randconfig-b002-201944
 x86_64                 randconfig-b003-201944
@@ -91,11 +91,9 @@ i386                   randconfig-b001-201944
 i386                   randconfig-b002-201944
 i386                   randconfig-b003-201944
 i386                   randconfig-b004-201944
-x86_64                           allmodconfig
-i386                             alldefconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
 um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
 arc                              allyesconfig
 arc                                 defconfig
 microblaze                      mmu_defconfig
@@ -113,12 +111,12 @@ sparc                               defconfig
 sparc64                          allmodconfig
 sparc64                           allnoconfig
 sparc64                             defconfig
-mips                             allmodconfig
 mips                           32r2_defconfig
-mips                      malta_kvm_defconfig
 mips                         64r6el_defconfig
+mips                             allmodconfig
 mips                              allnoconfig
 mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
 x86_64                 randconfig-g001-201944
 x86_64                 randconfig-g002-201944
 x86_64                 randconfig-g003-201944
@@ -133,15 +131,22 @@ parisc                            allnoconfig
 parisc                         b180_defconfig
 parisc                        c3000_defconfig
 parisc                              defconfig
+m68k                          multi_defconfig
+m68k                       m5475evb_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                           sun3_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
 sh                          rsk7269_defconfig
-i386                   randconfig-f002-201944
-i386                   randconfig-f001-201944
+x86_64                 randconfig-f001-201944
+x86_64                 randconfig-f002-201944
 x86_64                 randconfig-f003-201944
 x86_64                 randconfig-f004-201944
-x86_64                 randconfig-f002-201944
+i386                   randconfig-f001-201944
+i386                   randconfig-f002-201944
 i386                   randconfig-f003-201944
 i386                   randconfig-f004-201944
-x86_64                 randconfig-f001-201944
 arm                              allmodconfig
 arm64                            allmodconfig
 x86_64                 randconfig-d001-201944
@@ -156,13 +161,7 @@ sh                               allmodconfig
 sh                                allnoconfig
 sh                  sh7785lcr_32bit_defconfig
 sh                            titan_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
+i386                             alldefconfig
 i386                              allnoconfig
 i386                                defconfig
 x86_64                 randconfig-c001-201944
@@ -173,6 +172,7 @@ i386                   randconfig-c001-201944
 i386                   randconfig-c002-201944
 i386                   randconfig-c003-201944
 i386                   randconfig-c004-201944
+x86_64                           allmodconfig
 s390                             allmodconfig
 s390                              allnoconfig
 s390                          debug_defconfig
