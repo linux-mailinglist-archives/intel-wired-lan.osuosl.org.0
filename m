@@ -2,80 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6804DF5161
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 17:43:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46703F54AB
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 20:51:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BAE1D86DAD;
-	Fri,  8 Nov 2019 16:43:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 69B8286AB8;
+	Fri,  8 Nov 2019 19:51:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0SeG6Ly4wdBw; Fri,  8 Nov 2019 16:43:41 +0000 (UTC)
+	with ESMTP id PZP-QhHTgVKQ; Fri,  8 Nov 2019 19:51:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 70ED886D91;
-	Fri,  8 Nov 2019 16:43:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C867686AF9;
+	Fri,  8 Nov 2019 19:51:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 420541BF370
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 16:43:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 586E11BF285
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 02:57:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3CD4386222
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 16:43:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5167985E47
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 02:57:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YDOZ_lD2CQSR for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Nov 2019 16:43:38 +0000 (UTC)
+ with ESMTP id JsIe7x7mAgys for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Nov 2019 02:57:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6737D86211
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 16:43:38 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2019 08:43:37 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,282,1569308400"; d="scan'208";a="193213375"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by orsmga007.jf.intel.com with ESMTP; 08 Nov 2019 08:43:37 -0800
-Received: from orsmsx111.amr.corp.intel.com (10.22.240.12) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 8 Nov 2019 08:43:37 -0800
-Received: from orsmsx113.amr.corp.intel.com ([169.254.9.28]) by
- ORSMSX111.amr.corp.intel.com ([169.254.12.154]) with mapi id 14.03.0439.000;
- Fri, 8 Nov 2019 08:43:37 -0800
-From: "Creeley, Brett" <brett.creeley@intel.com>
-To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, Arkady Gilinsky
- <arkady.gilinsky@harmonicinc.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg interface
- between VF and PF
-Thread-Index: AQHVktE9LXQEe1tn8E2yMWCX6YmauKd7neLQgABu5ACAALtz8IAA2KwAgAMFkICAANqjAA==
-Date: Fri, 8 Nov 2019 16:43:36 +0000
-Message-ID: <3508A0C5D531054DBDD98909F6FA64FA11B3EB75@ORSMSX113.amr.corp.intel.com>
-References: <1572845537.13810.225.camel@harmonicinc.com>
- <3508A0C5D531054DBDD98909F6FA64FA11B3936D@ORSMSX113.amr.corp.intel.com>
- <1572931430.13810.227.camel@harmonicinc.com>
- <3508A0C5D531054DBDD98909F6FA64FA11B39863@ORSMSX113.amr.corp.intel.com>
- <1573018214.10368.1.camel@harmonicinc.com>
- <d078d3efc784805a67ba1a1c6e94fb4ec1c0aec6.camel@intel.com>
-In-Reply-To: <d078d3efc784805a67ba1a1c6e94fb4ec1c0aec6.camel@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzEwYjA3MDYtMzk1OS00ZDRmLWJiYWUtNWY5NTVkODViNWY0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiXC9rMXR6cGt5NFRIMUpcL3FCRnhvQ2xCaTh4M1MzNm0rR0dOZVdqcXJiRm9CbVVJNUtQRFg0YnErY0NsOVwvN3p5ZiJ9
-x-originating-ip: [10.22.254.140]
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DD95A85E40
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 02:57:35 +0000 (UTC)
+Received: from [192.168.1.20] (cpe-24-28-70-126.austin.res.rr.com
+ [24.28.70.126])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 14EA42084C;
+ Fri,  8 Nov 2019 02:57:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573181855;
+ bh=CQxQebx01rfyxWBjyBuBcT8jN9KYZVzIqhaOBlm21U0=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=Rfc4yF2gnMhTfT+o6yP2RkaqpUTOX8Xes/O4h90kfw6d0462bX7+n1Qs/7PbL9wCu
+ UJ+ed34JvTN3rmfzSjPWicytH0MTwykymoEmqYhEUKLTQALmd+diBVSVBW/UEy5ctQ
+ PHbkxbrFEO4WJFEC7rEpAYcIw4JcYfcBlzxIrOg4=
+To: Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org
+References: <20191107223537.23440-1-f.fainelli@gmail.com>
+ <20191107223537.23440-3-f.fainelli@gmail.com>
+From: Timur Tabi <timur@kernel.org>
+Message-ID: <dfd60aa0-59e1-5b68-d8ea-61dc3a29ff8e@kernel.org>
+Date: Thu, 7 Nov 2019 20:57:33 -0600
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:60.0)
+ Gecko/20100101 Thunderbird/60.9.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg
- interface between VF and PF
+In-Reply-To: <20191107223537.23440-3-f.fainelli@gmail.com>
+Content-Language: en-US
+X-Mailman-Approved-At: Fri, 08 Nov 2019 19:51:28 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] net: qcom/emac: Demote
+ MTU change print to debug
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,87 +70,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Arkady Gilinsky <arcadyg@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: open list <linux-kernel@vger.kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> Sent: Thursday, November 7, 2019 11:39 AM
-> To: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>; Creeley, Brett <brett.creeley@intel.com>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org
-> Cc: Arkady Gilinsky <arcadyg@gmail.com>
-> Subject: Re: [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg interface between VF and PF
+On 11/7/19 4:35 PM, Florian Fainelli wrote:
+> Changing the MTU can be a frequent operation and it is already clear
+> when (or not) a MTU change is successful, demote prints to debug prints.
 > 
-> On Wed, 2019-11-06 at 05:30 +0000, Arkady Gilinsky wrote:
-> > On Tue, 2019-11-05 at 16:55 +0000, Creeley, Brett wrote:
-> > > > -----Original Message-----
-> > > > From: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>
-> > > > Sent: Monday, November 4, 2019 9:24 PM
-> > > > To: Creeley, Brett <brett.creeley@intel.com>;
-> > > > intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Kirsher,
-> > > > Jeffrey T
-> > > > <jeffrey.t.kirsher@intel.com>
-> > > > Cc: Arkady Gilinsky <arcadyg@gmail.com>
-> > > > Subject: Re: [EXTERNAL] RE: [PATCH net] i40e/iavf: Fix msg interface
-> > > > between VF and PF
-> > > > > static bool i40e_vc_verify_vqs_bitmaps(struct virtchnl_queue_select
-> > > > > *vqs)
-> > > > > {
-> > > > >    /* this will catch any changes made to the virtchnl_queue_select
-> > > > > bitmap */
-> > > > >    if (sizeof(vqs->rx_queues) != sizeof(u32) ||
-> > > > >         sizeof(vqs->tx_queues) != sizeof(u32))
-> > > > >            return false;
-> > > >
-> > > > If so, then is it better to check the type of the fields in compile-
-> > > > time rather than in runtime ?
-> > > > Something like this:
-> > > > BUILD_BUG_ON(sizeof(vqs->rx_queues) != sizeof(u32));
-> > > > BUILD_BUG_ON(sizeof(vqs->tx_queues) != sizeof(u32));
-> > > > This is not required comparison each time when function is called and
-> > > > made code more optimized.
-> > >
-> > > I don't think this is required with the change you suggested below.
-> > Agree.
-> > If other code in driver not need to be adjusted/verified, then this check
-> > is not needed.
-> > > > >    if ((vqs->rx_queues == 0 && vqs->tx_queues == 0) ||
-> > > > >          hweight32(vqs->rx_queues) > I40E_MAX_VF_QUEUES ||
-> > > > >          hweight32(vqs->tx_queues) > I40E_MAX_VF_QUEUES)
-> > > > >            return false;
-> > > >
-> > > > Again, from optimization POV it is better to have constant changed
-> > > > than variable,
-> > > > since it is compile time and not run time action:
-> > > >      if ((vqs->rx_queues == 0 && vqs->tx_queues == 0) ||
-> > > >            vqs->rx_queues >= (BIT(I40E_MAX_VF_QUEUES)) ||
-> > > >
-> > > >       vqs->tx_queues >= (BIT(I40E_MAX_VF_QUEUES)))
-> > > >              return false;
-> > >
-> > > This seems much better than my solution. It fixes the original issue,
-> > > handles if the
-> > > vqs->[r|t]x_queues variables have changed in size, and the queue bitmap
-> > > comparison
-> > > uses a constant. Thanks!
-> > Thanks to you for feedback.
-> > I am trying to understand if this patch will enter into official kernel
-> > tree
-> > and, not less important from my POV, to official Intel drivers.
-> > Brett/Jeffrey, could you, please, assist to make sure that this fix, or
-> > fix suggested by Brett,
-> > will be integrated into Intel i40e/iavf drivers ?
-> > Or may be I should write mail straight to Intel support ?
-> 
-> As Brett pointed out, there are issues with this patch. Please make the
-> suggested changes and re-submit the patch to
-> intel-wired-lan@lists.osuosl.org
+> Signed-off-by: Florian Fainelli<f.fainelli@gmail.com>
 
-Jeff/Arkady: I have already submitted patches for this internally for
-official Intel drivers. Apologies for the delayed response.
+Acked-by: Timur Tabi <timur@kernel.org>
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
