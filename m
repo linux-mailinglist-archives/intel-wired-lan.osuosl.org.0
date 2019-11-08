@@ -1,52 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B124F54B0
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 20:58:24 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39FE9F54B1
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 20:58:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8B1E687F34;
-	Fri,  8 Nov 2019 19:58:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD74522658;
+	Fri,  8 Nov 2019 19:58:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bFRcHX81L66L; Fri,  8 Nov 2019 19:58:22 +0000 (UTC)
+	with ESMTP id AA7rDDvlqSzz; Fri,  8 Nov 2019 19:58:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 54EF787E8E;
-	Fri,  8 Nov 2019 19:58:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 03BC423543;
+	Fri,  8 Nov 2019 19:58:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 161D31BF2FE
+ by ash.osuosl.org (Postfix) with ESMTP id B43201BF2FE
  for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0D0AE2353A
+ by silver.osuosl.org (Postfix) with ESMTP id 9AD7B22658
  for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4s7A0wnwO5tf for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id XtyjQVH8oV6x for <intel-wired-lan@lists.osuosl.org>;
  Fri,  8 Nov 2019 19:58:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id EC67D22658
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 1B64323509
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  08 Nov 2019 11:58:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="354188892"
+X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="354188895"
 Received: from unknown (HELO VM.ch.intel.com) ([10.78.3.78])
- by orsmga004.jf.intel.com with ESMTP; 08 Nov 2019 11:58:16 -0800
+ by orsmga004.jf.intel.com with ESMTP; 08 Nov 2019 11:58:17 -0800
 From: Magnus Karlsson <magnus.karlsson@intel.com>
 To: magnus.karlsson@intel.com, bjorn.topel@intel.com,
  intel-wired-lan@lists.osuosl.org
-Date: Fri,  8 Nov 2019 20:58:09 +0100
-Message-Id: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
+Date: Fri,  8 Nov 2019 20:58:10 +0100
+Message-Id: <1573243090-2721-2-git-send-email-magnus.karlsson@intel.com>
 X-Mailer: git-send-email 2.7.4
-Subject: [Intel-wired-lan] [PATCH net 1/2] i40e: need_wakeup flag might not
+In-Reply-To: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
+References: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
+Subject: [Intel-wired-lan] [PATCH net 2/2] ixgbe: need_wakeup flag might not
  be set for Tx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -98,26 +100,26 @@ speeds and/or a workload that also receives packets.
 
 Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 10 ++--------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 10 ++--------
  1 file changed, 2 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index a05dfec..d07e1a8 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -689,8 +689,6 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
- 		i40e_xdp_ring_update_tail(xdp_ring);
- 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index 100ac89..d6feaac 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -622,8 +622,6 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
+ 	if (tx_desc) {
+ 		ixgbe_xdp_ring_update_tail(xdp_ring);
  		xsk_umem_consume_tx_done(xdp_ring->xsk_umem);
 -		if (xsk_umem_uses_need_wakeup(xdp_ring->xsk_umem))
 -			xsk_clear_tx_need_wakeup(xdp_ring->xsk_umem);
  	}
  
  	return !!budget && work_done;
-@@ -769,12 +767,8 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
- 	i40e_update_tx_stats(tx_ring, completed_frames, total_bytes);
+@@ -691,12 +689,8 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+ 	if (xsk_frames)
+ 		xsk_umem_complete_tx(umem, xsk_frames);
  
- out_xmit:
 -	if (xsk_umem_uses_need_wakeup(tx_ring->xsk_umem)) {
 -		if (tx_ring->next_to_clean == tx_ring->next_to_use)
 -			xsk_set_tx_need_wakeup(tx_ring->xsk_umem);
@@ -127,8 +129,8 @@ index a05dfec..d07e1a8 100644
 +	if (xsk_umem_uses_need_wakeup(tx_ring->xsk_umem))
 +		xsk_set_tx_need_wakeup(tx_ring->xsk_umem);
  
- 	xmit_done = i40e_xmit_zc(tx_ring, budget);
- 
+ 	return ixgbe_xmit_zc(tx_ring, q_vector->tx.work_limit);
+ }
 -- 
 2.7.4
 
