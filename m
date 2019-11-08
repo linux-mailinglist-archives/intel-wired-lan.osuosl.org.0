@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A880F5B60
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 23:54:24 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F4C8F5B62
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 23:54:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D23CB864EC;
-	Fri,  8 Nov 2019 22:54:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A403A88075;
+	Fri,  8 Nov 2019 22:54:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gyBIVmmvS8o6; Fri,  8 Nov 2019 22:54:21 +0000 (UTC)
+	with ESMTP id fiE6nddbpK5F; Fri,  8 Nov 2019 22:54:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1AFB6864EE;
-	Fri,  8 Nov 2019 22:54:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D0EF388084;
+	Fri,  8 Nov 2019 22:54:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2A0FB1BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 22:54:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CEFF71BF995
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 22:54:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2644B864EC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 22:54:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CC58D864EE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 22:54:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 65q-HvGDAlZj for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id dTZtAIXS5qEi for <intel-wired-lan@lists.osuosl.org>;
  Fri,  8 Nov 2019 22:54:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1C876864EA
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3415C864EC
  for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 22:54:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,18 +37,18 @@ Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  08 Nov 2019 14:54:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="201478836"
+X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="201478838"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by fmsmga008.fm.intel.com with ESMTP; 08 Nov 2019 14:54:17 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  8 Nov 2019 06:23:27 -0800
-Message-Id: <20191108142331.10221-11-anthony.l.nguyen@intel.com>
+Date: Fri,  8 Nov 2019 06:23:28 -0800
+Message-Id: <20191108142331.10221-12-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191108142331.10221-1-anthony.l.nguyen@intel.com>
 References: <20191108142331.10221-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S33 11/15] ice: add helpers for virtchnl
+Subject: [Intel-wired-lan] [PATCH S33 12/15] ice: implement VF stats NDO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,333 +68,111 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-The virtchannel interface was repeating a lot of strings
-and wasting storage space in the kernel.  There was also
-inconsistent messages for the same thing.  Consolidate all
-those messages and bit checks into a couple of helper functions.
-
-Also, reduce stack space usage by simplifying getting the pointer
-to the pf using a helper.
+Implement the VF stats gathering via the kernel via ndo_get_vf_stats().
+The driver will show per-VF stats in the output of the
+ip -s link show dev <PF> command.
 
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Co-developed-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 134 ++++++++----------
- 1 file changed, 63 insertions(+), 71 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c     |  1 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 45 +++++++++++++++++++
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  | 11 +++++
+ 3 files changed, 57 insertions(+)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index ea577588b274..d282eb05c2e0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5219,6 +5219,7 @@ static const struct net_device_ops ice_netdev_ops = {
+ 	.ndo_set_vf_trust = ice_set_vf_trust,
+ 	.ndo_set_vf_vlan = ice_set_vf_port_vlan,
+ 	.ndo_set_vf_link_state = ice_set_vf_link_state,
++	.ndo_get_vf_stats = ice_get_vf_stats,
+ 	.ndo_vlan_rx_add_vid = ice_vlan_rx_add_vid,
+ 	.ndo_vlan_rx_kill_vid = ice_vlan_rx_kill_vid,
+ 	.ndo_set_features = ice_set_features,
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 269204ca0b1d..aa99d7cb7d8e 100644
+index aa99d7cb7d8e..edb374296d1f 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -5,6 +5,35 @@
- #include "ice_base.h"
- #include "ice_lib.h"
+@@ -3391,3 +3391,48 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
  
-+/**
-+ * ice_validate_vf_id - helper to check if VF ID is valid
-+ * @pf: pointer to the PF structure
-+ * @vf_id: the ID of the VF to check
-+ */
-+static int ice_validate_vf_id(struct ice_pf *pf, int vf_id)
-+{
-+	if (vf_id >= pf->num_alloc_vfs) {
-+		dev_err(ice_pf_to_dev(pf), "Invalid VF ID: %d\n", vf_id);
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
-+/**
-+ * ice_check_vf_init - helper to check if VF init complete
-+ * @pf: pointer to the PF structure
-+ * @vf: the pointer to the VF to check
-+ */
-+static int ice_check_vf_init(struct ice_pf *pf, struct ice_vf *vf)
-+{
-+	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
-+		dev_err(ice_pf_to_dev(pf), "VF ID: %d in reset. Try again.\n",
-+			vf->vf_id);
-+		return -EBUSY;
-+	}
-+	return 0;
-+}
-+
- /**
-  * ice_err_to_virt err - translate errors for VF return code
-  * @ice_err: error return code
-@@ -1302,9 +1331,13 @@ void ice_vc_notify_reset(struct ice_pf *pf)
- static void ice_vc_notify_vf_reset(struct ice_vf *vf)
- {
- 	struct virtchnl_pf_event pfe;
-+	struct ice_pf *pf;
- 
--	/* validate the request */
--	if (!vf || vf->vf_id >= vf->pf->num_alloc_vfs)
-+	if (!vf)
-+		return;
-+
-+	pf = vf->pf;
-+	if (ice_validate_vf_id(pf, vf->vf_id))
- 		return;
- 
- 	/* Bail out if VF is in disabled state, neither initialized, nor active
-@@ -1317,7 +1350,7 @@ static void ice_vc_notify_vf_reset(struct ice_vf *vf)
- 
- 	pfe.event = VIRTCHNL_EVENT_RESET_IMPENDING;
- 	pfe.severity = PF_EVENT_SEVERITY_CERTAIN_DOOM;
--	ice_aq_send_msg_to_vf(&vf->pf->hw, vf->vf_id, VIRTCHNL_OP_EVENT,
-+	ice_aq_send_msg_to_vf(&pf->hw, vf->vf_id, VIRTCHNL_OP_EVENT,
- 			      VIRTCHNL_STATUS_SUCCESS, (u8 *)&pfe, sizeof(pfe),
- 			      NULL);
+ 	return 0;
  }
-@@ -1544,11 +1577,12 @@ ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
- 	struct device *dev;
- 	struct ice_pf *pf;
- 
--	/* validate the request */
--	if (!vf || vf->vf_id >= vf->pf->num_alloc_vfs)
-+	if (!vf)
- 		return -EINVAL;
- 
- 	pf = vf->pf;
-+	if (ice_validate_vf_id(pf, vf->vf_id))
++
++/**
++ * ice_get_vf_stats - populate some stats for the VF
++ * @netdev: the netdev of the PF
++ * @vf_id: the host OS identifier (0-255)
++ * @vf_stats: pointer to the OS memory to be initialized
++ */
++int ice_get_vf_stats(struct net_device *netdev, int vf_id,
++		     struct ifla_vf_stats *vf_stats)
++{
++	struct ice_pf *pf = ice_netdev_to_pf(netdev);
++	struct ice_eth_stats *stats;
++	struct ice_vsi *vsi;
++	struct ice_vf *vf;
++
++	if (ice_validate_vf_id(pf, vf_id))
 +		return -EINVAL;
- 
- 	dev = ice_pf_to_dev(pf);
- 
-@@ -1622,7 +1656,7 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 	int len = 0;
- 	int ret;
- 
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
-+	if (ice_check_vf_init(pf, vf)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto err;
- 	}
-@@ -1801,7 +1835,7 @@ static int ice_vc_config_rss_key(struct ice_vf *vf, u8 *msg)
- 	struct virtchnl_rss_key *vrk =
- 		(struct virtchnl_rss_key *)msg;
- 	struct ice_pf *pf = vf->pf;
--	struct ice_vsi *vsi = NULL;
-+	struct ice_vsi *vsi;
- 
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-@@ -1848,7 +1882,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
- 	struct virtchnl_rss_lut *vrl = (struct virtchnl_rss_lut *)msg;
- 	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
- 	struct ice_pf *pf = vf->pf;
--	struct ice_vsi *vsi = NULL;
-+	struct ice_vsi *vsi;
- 
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-@@ -2597,19 +2631,15 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
- 		     __be16 vlan_proto)
- {
- 	u16 vlanprio = vlan_id | (qos << ICE_VLAN_PRIORITY_S);
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_pf *pf = np->vsi->back;
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct ice_vsi *vsi;
- 	struct device *dev;
- 	struct ice_vf *vf;
- 	int ret = 0;
- 
- 	dev = ice_pf_to_dev(pf);
--	/* validate the request */
--	if (vf_id >= pf->num_alloc_vfs) {
--		dev_err(dev, "invalid VF id: %d\n", vf_id);
-+	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
--	}
- 
- 	if (vlan_id > ICE_MAX_VLANID || qos > 7) {
- 		dev_err(dev, "Invalid VF Parameters\n");
-@@ -2623,10 +2653,8 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
- 
- 	vf = &pf->vf[vf_id];
- 	vsi = pf->vsi[vf->lan_vsi_idx];
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
--		dev_err(dev, "VF %d in reset. Try again.\n", vf_id);
++
++	vf = &pf->vf[vf_id];
++
 +	if (ice_check_vf_init(pf, vf))
- 		return -EBUSY;
--	}
++		return -EBUSY;
++
++	vsi = pf->vsi[vf->lan_vsi_idx];
++	if (!vsi)
++		return -EINVAL;
++
++	ice_update_eth_stats(vsi);
++	stats = &vsi->eth_stats;
++
++	memset(vf_stats, 0, sizeof(*vf_stats));
++
++	vf_stats->rx_packets = stats->rx_unicast + stats->rx_broadcast +
++		stats->rx_multicast;
++	vf_stats->tx_packets = stats->tx_unicast + stats->tx_broadcast +
++		stats->tx_multicast;
++	vf_stats->rx_bytes   = stats->rx_bytes;
++	vf_stats->tx_bytes   = stats->tx_bytes;
++	vf_stats->broadcast  = stats->rx_broadcast;
++	vf_stats->multicast  = stats->rx_multicast;
++	vf_stats->rx_dropped = stats->rx_discards;
++	vf_stats->tx_dropped = stats->tx_discards;
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+index 2e867ad2e81d..88aa65d5cb31 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+@@ -122,6 +122,9 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena);
+ int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector);
  
- 	if (le16_to_cpu(vsi->info.pvid) == vlanprio) {
- 		/* duplicate request, so just return success */
-@@ -2984,7 +3012,7 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	int err = 0;
- 
- 	dev = ice_pf_to_dev(pf);
--	if (vf_id >= pf->num_alloc_vfs) {
-+	if (ice_validate_vf_id(pf, vf_id)) {
- 		err = -EINVAL;
- 		goto error_handler;
- 	}
-@@ -3102,24 +3130,18 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- int
- ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ void ice_set_vf_state_qs_dis(struct ice_vf *vf);
++int
++ice_get_vf_stats(struct net_device *netdev, int vf_id,
++		 struct ifla_vf_stats *vf_stats);
+ #else /* CONFIG_PCI_IOV */
+ #define ice_process_vflr_event(pf) do {} while (0)
+ #define ice_free_vfs(pf) do {} while (0)
+@@ -194,5 +197,13 @@ ice_calc_vf_reg_idx(struct ice_vf __always_unused *vf,
  {
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
--	struct ice_pf *pf = vsi->back;
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
-+	struct ice_vsi *vsi;
- 	struct ice_vf *vf;
- 
--	/* validate the request */
--	if (vf_id >= pf->num_alloc_vfs) {
--		netdev_err(netdev, "invalid VF id: %d\n", vf_id);
-+	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
--	}
- 
- 	vf = &pf->vf[vf_id];
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
--		netdev_err(netdev, "VF %d in reset. Try again.\n", vf_id);
-+	if (ice_check_vf_init(pf, vf))
- 		return -EBUSY;
--	}
- 
- 	ivi->vf = vf_id;
- 	ether_addr_copy(ivi->mac, vf->dflt_lan_addr.addr);
-@@ -3152,9 +3174,8 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
-  */
- int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- {
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
--	struct ice_pf *pf = vsi->back;
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
-+	struct ice_vsi *vsi = pf->vsi[0];
- 	struct ice_vsi_ctx *ctx;
- 	enum ice_status status;
- 	struct device *dev;
-@@ -3162,18 +3183,12 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 	int ret = 0;
- 
- 	dev = ice_pf_to_dev(pf);
--
--	/* validate the request */
--	if (vf_id >= pf->num_alloc_vfs) {
--		netdev_err(netdev, "invalid VF id: %d\n", vf_id);
-+	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
--	}
- 
- 	vf = &pf->vf[vf_id];
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
--		netdev_err(netdev, "VF %d in reset. Try again.\n", vf_id);
-+	if (ice_check_vf_init(pf, vf))
- 		return -EBUSY;
--	}
- 
- 	if (ena == vf->spoofchk) {
- 		dev_dbg(dev, "VF spoofchk already %s\n",
-@@ -3235,17 +3250,12 @@ static void ice_wait_on_vf_reset(struct ice_vf *vf)
-  */
- int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
- {
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
--	struct ice_pf *pf = vsi->back;
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct ice_vf *vf;
- 	int ret = 0;
- 
--	/* validate the request */
--	if (vf_id >= pf->num_alloc_vfs) {
--		netdev_err(netdev, "invalid VF id: %d\n", vf_id);
-+	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
--	}
- 
- 	vf = &pf->vf[vf_id];
- 	/* Don't set MAC on disabled VF */
-@@ -3257,10 +3267,8 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
- 	 */
- 	ice_wait_on_vf_reset(vf);
- 
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
--		netdev_err(netdev, "VF %d in reset. Try again.\n", vf_id);
-+	if (ice_check_vf_init(pf, vf))
- 		return -EBUSY;
--	}
- 
- 	if (is_zero_ether_addr(mac) || is_multicast_ether_addr(mac)) {
- 		netdev_err(netdev, "%pM not a valid unicast address\n", mac);
-@@ -3292,19 +3300,13 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
-  */
- int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
- {
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
--	struct ice_pf *pf = vsi->back;
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct device *dev;
- 	struct ice_vf *vf;
- 
- 	dev = ice_pf_to_dev(pf);
--
--	/* validate the request */
--	if (vf_id >= pf->num_alloc_vfs) {
--		dev_err(dev, "invalid VF id: %d\n", vf_id);
-+	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
--	}
- 
- 	vf = &pf->vf[vf_id];
- 	/* Don't set Trusted Mode on disabled VF */
-@@ -3316,10 +3318,8 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
- 	 */
- 	ice_wait_on_vf_reset(vf);
- 
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
--		dev_err(dev, "VF %d in reset. Try again.\n", vf_id);
-+	if (ice_check_vf_init(pf, vf))
- 		return -EBUSY;
--	}
- 
- 	/* Check if already trusted */
- 	if (trusted == vf->trusted)
-@@ -3343,29 +3343,21 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
-  */
- int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
- {
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_pf *pf = np->vsi->back;
-+	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct virtchnl_pf_event pfe = { 0 };
- 	struct ice_link_status *ls;
--	struct device *dev;
- 	struct ice_vf *vf;
- 	struct ice_hw *hw;
- 
--	dev = ice_pf_to_dev(pf);
--
--	if (vf_id >= pf->num_alloc_vfs) {
--		dev_err(dev, "Invalid VF Identifier %d\n", vf_id);
-+	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
--	}
- 
- 	vf = &pf->vf[vf_id];
- 	hw = &pf->hw;
- 	ls = &pf->hw.port_info->phy.link_info;
- 
--	if (!test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
--		dev_err(dev, "vf %d in reset. Try again.\n", vf_id);
-+	if (ice_check_vf_init(pf, vf))
- 		return -EBUSY;
--	}
- 
- 	pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
- 	pfe.severity = PF_EVENT_SEVERITY_INFO;
+ 	return 0;
+ }
++
++static inline int
++ice_get_vf_stats(struct net_device __always_unused *netdev,
++		 int __always_unused vf_id,
++		 struct ifla_vf_stats __always_unused *vf_stats)
++{
++	return -EOPNOTSUPP;
++}
+ #endif /* CONFIG_PCI_IOV */
+ #endif /* _ICE_VIRTCHNL_PF_H_ */
 -- 
 2.20.1
 
