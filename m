@@ -1,63 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46703F54AB
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 20:51:32 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B124F54B0
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Nov 2019 20:58:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 69B8286AB8;
-	Fri,  8 Nov 2019 19:51:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8B1E687F34;
+	Fri,  8 Nov 2019 19:58:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PZP-QhHTgVKQ; Fri,  8 Nov 2019 19:51:30 +0000 (UTC)
+	with ESMTP id bFRcHX81L66L; Fri,  8 Nov 2019 19:58:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C867686AF9;
-	Fri,  8 Nov 2019 19:51:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 54EF787E8E;
+	Fri,  8 Nov 2019 19:58:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 586E11BF285
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 02:57:36 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 161D31BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5167985E47
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 02:57:36 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0D0AE2353A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JsIe7x7mAgys for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Nov 2019 02:57:35 +0000 (UTC)
+ with ESMTP id 4s7A0wnwO5tf for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Nov 2019 19:58:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DD95A85E40
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 02:57:35 +0000 (UTC)
-Received: from [192.168.1.20] (cpe-24-28-70-126.austin.res.rr.com
- [24.28.70.126])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 14EA42084C;
- Fri,  8 Nov 2019 02:57:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573181855;
- bh=CQxQebx01rfyxWBjyBuBcT8jN9KYZVzIqhaOBlm21U0=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Rfc4yF2gnMhTfT+o6yP2RkaqpUTOX8Xes/O4h90kfw6d0462bX7+n1Qs/7PbL9wCu
- UJ+ed34JvTN3rmfzSjPWicytH0MTwykymoEmqYhEUKLTQALmd+diBVSVBW/UEy5ctQ
- PHbkxbrFEO4WJFEC7rEpAYcIw4JcYfcBlzxIrOg4=
-To: Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org
-References: <20191107223537.23440-1-f.fainelli@gmail.com>
- <20191107223537.23440-3-f.fainelli@gmail.com>
-From: Timur Tabi <timur@kernel.org>
-Message-ID: <dfd60aa0-59e1-5b68-d8ea-61dc3a29ff8e@kernel.org>
-Date: Thu, 7 Nov 2019 20:57:33 -0600
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:60.0)
- Gecko/20100101 Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <20191107223537.23440-3-f.fainelli@gmail.com>
-Content-Language: en-US
-X-Mailman-Approved-At: Fri, 08 Nov 2019 19:51:28 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] net: qcom/emac: Demote
- MTU change print to debug
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id EC67D22658
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Nov 2019 19:58:17 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Nov 2019 11:58:16 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="354188892"
+Received: from unknown (HELO VM.ch.intel.com) ([10.78.3.78])
+ by orsmga004.jf.intel.com with ESMTP; 08 Nov 2019 11:58:16 -0800
+From: Magnus Karlsson <magnus.karlsson@intel.com>
+To: magnus.karlsson@intel.com, bjorn.topel@intel.com,
+ intel-wired-lan@lists.osuosl.org
+Date: Fri,  8 Nov 2019 20:58:09 +0100
+Message-Id: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
+X-Mailer: git-send-email 2.7.4
+Subject: [Intel-wired-lan] [PATCH net 1/2] i40e: need_wakeup flag might not
+ be set for Tx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,21 +60,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: maciejromanfijalkowski@gmail.com, maciej.fijalkowski@intel.com,
+ netdev@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/7/19 4:35 PM, Florian Fainelli wrote:
-> Changing the MTU can be a frequent operation and it is already clear
-> when (or not) a MTU change is successful, demote prints to debug prints.
-> 
-> Signed-off-by: Florian Fainelli<f.fainelli@gmail.com>
+The need_wakeup flag for Tx might not be set for AF_XDP sockets that
+are only used to send packets. This happens if there is at least one
+outstanding packet that has not been completed by the hardware and we
+get that corresponding completion (which will not generate an
+interrupt since interrupts are disabled in the napi poll loop) between
+the time we stopped processing the Tx completions and interrupts are
+enabled again. In this case, the need_wakeup flag will have been
+cleared at the end of the Tx completion processing as we believe we
+will get an interrupt from the outstanding completion at a later point
+in time. But if this completion interrupt occurs before interrupts
+are enable, we lose it and should at that point really have set the
+need_wakeup flag since there are no more outstanding completions that
+can generate an interrupt to continue the processing. When this
+happens, user space will see a Tx queue need_wakeup of 0 and skip
+issuing a syscall, which means will never get into the Tx processing
+again and we have a deadlock.
 
-Acked-by: Timur Tabi <timur@kernel.org>
+This patch introduces a quick fix for this issue by just setting the
+need_wakeup flag for Tx to 1 all the time. I am working on a proper
+fix for this that will toggle the flag appropriately, but it is more
+challenging than I anticipated and I am afraid that this patch will
+not be completed before the merge window closes, therefore this easier
+fix for now. This fix has a negative performance impact in the range
+of 0% to 4%. Towards the higher end of the scale if you have driver
+and application on the same core and issue a lot of packets, and
+towards no negative impact if you use two cores, lower transmission
+speeds and/or a workload that also receives packets.
+
+Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index a05dfec..d07e1a8 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -689,8 +689,6 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
+ 		i40e_xdp_ring_update_tail(xdp_ring);
+ 
+ 		xsk_umem_consume_tx_done(xdp_ring->xsk_umem);
+-		if (xsk_umem_uses_need_wakeup(xdp_ring->xsk_umem))
+-			xsk_clear_tx_need_wakeup(xdp_ring->xsk_umem);
+ 	}
+ 
+ 	return !!budget && work_done;
+@@ -769,12 +767,8 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
+ 	i40e_update_tx_stats(tx_ring, completed_frames, total_bytes);
+ 
+ out_xmit:
+-	if (xsk_umem_uses_need_wakeup(tx_ring->xsk_umem)) {
+-		if (tx_ring->next_to_clean == tx_ring->next_to_use)
+-			xsk_set_tx_need_wakeup(tx_ring->xsk_umem);
+-		else
+-			xsk_clear_tx_need_wakeup(tx_ring->xsk_umem);
+-	}
++	if (xsk_umem_uses_need_wakeup(tx_ring->xsk_umem))
++		xsk_set_tx_need_wakeup(tx_ring->xsk_umem);
+ 
+ 	xmit_done = i40e_xmit_zc(tx_ring, budget);
+ 
+-- 
+2.7.4
 
 _______________________________________________
 Intel-wired-lan mailing list
