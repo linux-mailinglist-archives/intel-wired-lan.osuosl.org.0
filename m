@@ -2,75 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B37FCF5C2A
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Nov 2019 01:01:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DDC4F5C2E
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Nov 2019 01:02:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 669EF86D7A;
-	Sat,  9 Nov 2019 00:01:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0800288042;
+	Sat,  9 Nov 2019 00:02:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tSqwmCtJZJzb; Sat,  9 Nov 2019 00:01:36 +0000 (UTC)
+	with ESMTP id 9NQwjaMWxD9c; Sat,  9 Nov 2019 00:02:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 87BE186F74;
-	Sat,  9 Nov 2019 00:01:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0857788007;
+	Sat,  9 Nov 2019 00:02:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F3F431BF863
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2019 00:01:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A709C1BF995
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2019 00:02:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EEF6986DCA
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2019 00:01:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A263E86746
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2019 00:02:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HqwYggycspEQ for <intel-wired-lan@lists.osuosl.org>;
- Sat,  9 Nov 2019 00:01:33 +0000 (UTC)
+ with ESMTP id GEw0ea5hDyos for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  9 Nov 2019 00:02:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2BDDD86D7A
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2019 00:01:33 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BC0AD86689
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2019 00:02:08 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2019 16:01:31 -0800
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Nov 2019 16:02:05 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="201833092"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga007.fm.intel.com with ESMTP; 08 Nov 2019 16:01:30 -0800
+X-IronPort-AV: E=Sophos;i="5.68,283,1569308400"; d="scan'208";a="377906935"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by orsmga005.jf.intel.com with ESMTP; 08 Nov 2019 16:02:05 -0800
 Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 8 Nov 2019 16:01:30 -0800
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 8 Nov 2019 16:02:04 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
  fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 8 Nov 2019 16:01:30 -0800
+ 15.1.1713.5; Fri, 8 Nov 2019 16:02:04 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Fri, 8 Nov 2019 16:01:30 -0800
+ Fri, 8 Nov 2019 16:02:04 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net 1/2] i40e: need_wakeup flag might
+Thread-Topic: [Intel-wired-lan] [PATCH net 2/2] ixgbe: need_wakeup flag might
  not be set for Tx
-Thread-Index: AQHVlm8DL7SgHsr26k+raanthf8ROqeB9LQA
-Date: Sat, 9 Nov 2019 00:01:29 +0000
-Message-ID: <b168cadcfda241fdad05b6919b075333@intel.com>
+Thread-Index: AQHVlm8DrMV30n3NPk2b3kL+lk2n0KeB9NLw
+Date: Sat, 9 Nov 2019 00:02:04 +0000
+Message-ID: <290022e664f04723bdcada76e1c1bd7a@intel.com>
 References: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
-In-Reply-To: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
+ <1573243090-2721-2-git-send-email-magnus.karlsson@intel.com>
+In-Reply-To: <1573243090-2721-2-git-send-email-magnus.karlsson@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDdjMjU2YWYtMTM2Yy00NjA4LTgzZDUtNDdlNTkxYjkzMDRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiU2I5UE5mcmxcL0lNU3B5cXFkcWNqMDFsYkx1Nmt1VWt3VEZHcjFZQ0ZVWE8xSm1ybWU1bDJ0U3NVZWdoTHJOTysifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYzU3NTc2Y2UtMzFlNy00NzdiLWEyNGUtZDBlOWM2ODJiNjRmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRGdFNHFuVHFmVEV0YU9ya2p3NCtGbVRxb2k5cG5Eb2IzZ1JCKzZKSmxZbUo4U0k0RUhJZnVWeUF0MUErbkJyXC8ifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net 1/2] i40e: need_wakeup flag might
+Subject: Re: [Intel-wired-lan] [PATCH net 2/2] ixgbe: need_wakeup flag might
  not be set for Tx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -98,8 +99,8 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > <bjorn.topel@intel.com>; intel-wired-lan@lists.osuosl.org
 > Cc: maciejromanfijalkowski@gmail.com; Fijalkowski, Maciej
 > <maciej.fijalkowski@intel.com>; netdev@vger.kernel.org
-> Subject: [Intel-wired-lan] [PATCH net 1/2] i40e: need_wakeup flag might not
-> be set for Tx
+> Subject: [Intel-wired-lan] [PATCH net 2/2] ixgbe: need_wakeup flag might
+> not be set for Tx
 > 
 > The need_wakeup flag for Tx might not be set for AF_XDP sockets that are
 > only used to send packets. This happens if there is at least one outstanding
@@ -129,7 +130,7 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > 
 > Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 10 ++--------
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 10 ++--------
 >  1 file changed, 2 insertions(+), 8 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
