@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2A59FCE71
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 20:07:06 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C60C8FCE73
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 20:08:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6604688321;
-	Thu, 14 Nov 2019 19:07:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 544598919C;
+	Thu, 14 Nov 2019 19:08:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NytSIG9ERkju; Thu, 14 Nov 2019 19:07:04 +0000 (UTC)
+	with ESMTP id mg++DFOL1Swc; Thu, 14 Nov 2019 19:08:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4A15F88312;
-	Thu, 14 Nov 2019 19:07:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8FE728915E;
+	Thu, 14 Nov 2019 19:08:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B6C7E1BF3A1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:07:02 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C0B211BF3A1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:08:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AFCB6228EC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:07:02 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 97ED889A13
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:08:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8tCYpa0E1ttm for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2019 19:07:00 +0000 (UTC)
+ with ESMTP id kV5-6BjEUScr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2019 19:08:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by silver.osuosl.org (Postfix) with ESMTPS id 90889228EB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:07:00 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C59A4899D6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:08:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Nov 2019 11:06:59 -0800
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2019 11:08:18 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,304,1569308400"; d="scan'208";a="198926552"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga008.jf.intel.com with ESMTP; 14 Nov 2019 11:06:59 -0800
-Received: from orsmsx113.amr.corp.intel.com (10.22.240.9) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 14 Nov 2019 11:06:59 -0800
+X-IronPort-AV: E=Sophos;i="5.68,304,1569308400"; d="scan'208";a="288315203"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga001.jf.intel.com with ESMTP; 14 Nov 2019 11:08:17 -0800
+Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
+ ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 14 Nov 2019 11:08:17 -0800
 Received: from orsmsx121.amr.corp.intel.com ([169.254.10.169]) by
- ORSMSX113.amr.corp.intel.com ([169.254.9.200]) with mapi id 14.03.0439.000;
- Thu, 14 Nov 2019 11:06:59 -0800
+ ORSMSX125.amr.corp.intel.com ([169.254.3.139]) with mapi id 14.03.0439.000;
+ Thu, 14 Nov 2019 11:08:17 -0800
 From: "Keller, Jacob E" <jacob.e.keller@intel.com>
 To: Richard Cochran <richardcochran@gmail.com>, "netdev@vger.kernel.org"
  <netdev@vger.kernel.org>
-Thread-Topic: [PATCH net 01/13] ptp: Validate requests to enable time
- stamping of external signals.
-Thread-Index: AQHVmxuqPgHfLdKDTUG2qf6cbdj4gaeLBvVQ
-Date: Thu, 14 Nov 2019 19:06:58 +0000
-Message-ID: <02874ECE860811409154E81DA85FBB589698F67E@ORSMSX121.amr.corp.intel.com>
-References: <20191114184507.18937-2-richardcochran@gmail.com>
-In-Reply-To: <20191114184507.18937-2-richardcochran@gmail.com>
+Thread-Topic: [PATCH net 03/13] mv88e6xxx: reject unsupported external
+ timestamp flags
+Thread-Index: AQHVmxuqoyuZAt2Q/kiNsy7f91B6uaeLB11Q
+Date: Thu, 14 Nov 2019 19:08:16 +0000
+Message-ID: <02874ECE860811409154E81DA85FBB589698F6A6@ORSMSX121.amr.corp.intel.com>
+References: <20191114184507.18937-4-richardcochran@gmail.com>
+In-Reply-To: <20191114184507.18937-4-richardcochran@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNmZmOTYzMWUtZTM0Ny00NmNhLTg3ZDUtMzI2OWYwZDQwZGRmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZEpsUTVOSDFIanJndHhIbWdlMG5WK01hQUNhZlZtVFpCSG9LcVU5Z1Nrd0RlSHZoM2dWbEkwUVFZaGV2a2dTYyJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiODYyNDY2NDItN2FlMy00YjhhLTg4NTYtOThmZjJjYTlkNzVkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiaU1FYm1sQ1Jvb2QwN2srZWJkR0FhT3JqZnhGWElyZVI4Rk5BTHdoRk5ObkZpN3pSbGtMYklJVGYwTEllK292MCJ9
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net 01/13] ptp: Validate requests to
- enable time stamping of external signals.
+Subject: Re: [Intel-wired-lan] [PATCH net 03/13] mv88e6xxx: reject
+ unsupported external timestamp flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,49 +107,32 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Jeffrey T <jeffrey.t.kirsher@intel.com>; Sergei Shtylyov
 > <sergei.shtylyov@cogentembedded.com>; Stefan Sorensen
 > <stefan.sorensen@spectralink.com>
-> Subject: [PATCH net 01/13] ptp: Validate requests to enable time stamping of
-> external signals.
+> Subject: [PATCH net 03/13] mv88e6xxx: reject unsupported external timestamp
+> flags
 > 
-> Commit 415606588c61 ("PTP: introduce new versions of IOCTLs")
-> introduced a new external time stamp ioctl that validates the flags.
-> This patch extends the validation to ensure that at least one rising
-> or falling edge flag is set when enabling external time stamps.
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Signed-off-by: Richard Cochran <richardcochran@gmail.com>
-> ---
->  drivers/ptp/ptp_chardev.c      | 18 +++++++++++++-----
->  include/uapi/linux/ptp_clock.h |  1 +
->  2 files changed, 14 insertions(+), 5 deletions(-)
+> Fix the mv88e6xxx PTP support to explicitly reject any future flags that
+> get added to the external timestamp request ioctl.
 > 
-> diff --git a/drivers/ptp/ptp_chardev.c b/drivers/ptp/ptp_chardev.c
-> index 67d0199840fd..cbbe1237ff8d 100644
-> --- a/drivers/ptp/ptp_chardev.c
-> +++ b/drivers/ptp/ptp_chardev.c
-> @@ -149,11 +149,19 @@ long ptp_ioctl(struct posix_clock *pc, unsigned int cmd,
-> unsigned long arg)
->  			err = -EFAULT;
->  			break;
->  		}
-> -		if (((req.extts.flags & ~PTP_EXTTS_VALID_FLAGS) ||
-> -			req.extts.rsv[0] || req.extts.rsv[1]) &&
-> -			cmd == PTP_EXTTS_REQUEST2) {
-> -			err = -EINVAL;
-> -			break;
-> +		if (cmd == PTP_EXTTS_REQUEST2) {
-> +			/* Make sure no reserved bit is set. */
-> +			if ((req.extts.flags & ~PTP_EXTTS_VALID_FLAGS) ||
-> +			    req.extts.rsv[0] || req.extts.rsv[1]) {
-> +				err = -EINVAL;
-> +				break;
-> +			}
-> +			/* Ensure one of the rising/falling edge bits is set. */
-> +			if ((req.extts.flags & PTP_ENABLE_FEATURE) &&
-> +			    (req.extts.flags & PTP_EXTTS_EDGES) == 0) {
-> +				err = -EINVAL;
-> +				break;
-> +			}
+> In order to maintain currently functioning code, this patch accepts all
+> three current flags. This is because the PTP_RISING_EDGE and
+> PTP_FALLING_EDGE flags have unclear semantics and each driver seems to
+> have interpreted them slightly differently.
+> 
+> For the record, the semantics of this driver are:
+> 
+>   flags                                                 Meaning
+>   ----------------------------------------------------  --------------------------
+>   PTP_ENABLE_FEATURE                                    Time stamp falling edge
 
-Just to confirm, these new ioctls haven't been around long enough to be concerned about this change?
+For the new version of the ioctl this isn't possible, but we still support the v1 ioctl which would still have this mode. Ok.
+
+>   PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising edge
+>   PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling edge
+>   PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp
+> rising edge
+> 
 
 Thanks,
 Jake
