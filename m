@@ -1,74 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B454DFCE96
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 20:16:53 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19D99FCED1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 20:38:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5682B89192;
-	Thu, 14 Nov 2019 19:16:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B17B587FB4;
+	Thu, 14 Nov 2019 19:38:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i3mZLxdyn9h8; Thu, 14 Nov 2019 19:16:52 +0000 (UTC)
+	with ESMTP id SON5qAQtOn3O; Thu, 14 Nov 2019 19:38:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C99798918A;
-	Thu, 14 Nov 2019 19:16:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4946187FAD;
+	Thu, 14 Nov 2019 19:38:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9920B1BF3A1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:16:48 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 187321BF3A1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:38:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 94056890B1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:16:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 037DC1FC71
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:38:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z8CXQrcoqpzk for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2019 19:16:47 +0000 (UTC)
+ with ESMTP id Hpr8bEXO7HS7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2019 19:38:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B657F8907A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:16:47 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Nov 2019 11:16:47 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,304,1569308400"; d="scan'208";a="406428637"
-Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
- by fmsmga006.fm.intel.com with ESMTP; 14 Nov 2019 11:16:45 -0800
-Received: from orsmsx115.amr.corp.intel.com (10.22.240.11) by
- ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 14 Nov 2019 11:16:45 -0800
-Received: from orsmsx121.amr.corp.intel.com ([169.254.10.169]) by
- ORSMSX115.amr.corp.intel.com ([169.254.4.121]) with mapi id 14.03.0439.000;
- Thu, 14 Nov 2019 11:16:45 -0800
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Richard Cochran <richardcochran@gmail.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [PATCH net 00/13] ptp: Validate the ancillary ioctl flags more
- carefully.
-Thread-Index: AQHVmxupzwcs4maF+0CjqiKu9dXf7qeLCV2g
-Date: Thu, 14 Nov 2019 19:16:44 +0000
-Message-ID: <02874ECE860811409154E81DA85FBB589698F714@ORSMSX121.amr.corp.intel.com>
-References: <20191114184507.18937-1-richardcochran@gmail.com>
-In-Reply-To: <20191114184507.18937-1-richardcochran@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDc2MGViMzYtODcxOC00YmY1LWI5ZWUtOWExZjRlMWJiYzQyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMnhhVXViaXJvckRDYVBEbVZxeFFycVwveTJiSTdzK2FPZjZ3SFdIZHhnYjRmdnJqK1wvTUVJZjR5VDU5bTBRb2RBIn0=
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id CE0D823B2B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 19:38:09 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id f19so4421267pgk.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 11:38:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=ap64xGuQZSeSJr3SeCeY6K4NgvAXKseMGFJ4MAefoZU=;
+ b=QgwBx3q2RTBjWCypRcjCAiybB56HkofV5Nj1iE9QMeSXuVZIxJ+z3gm7Y/URXm5FOS
+ fbACu9mpPK2TnPOkWPcKN+XIiKMc+6VG+rEF2hYSzm49c4rXDwGQk8ws0Xlx3FWHU9gh
+ r6rmbHRzWgmrY+tlbMVTqLVnBUKB20s5qpIclXh+7s2ABK7LVaV80ThNAxt9Fc2DR8iX
+ 2fQAz1iddqwSCmjKi+Ida7Z4G2ptjMq8Yg/kmDfxEt9dwSmbTsX+TkQQPcWC7QGTWFfK
+ RP066OY9+HlynlHFy8f8uqT63N6fA3esx4iTbApW5V9aiqGfGlo2mazpbBsrbBNErbXJ
+ 9PCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=ap64xGuQZSeSJr3SeCeY6K4NgvAXKseMGFJ4MAefoZU=;
+ b=YKQFwzc4srYCX7XG8/pePRG6OsQhDdjiky/bHAY9i/5aCqkNLCz5FLVdjlyxagORI6
+ UhfdlOx54eUGnGTJrU9/iOnJKZl7Nsd21i+dtQ/WuS5SQSuj3bk5xdWXhPmvQh5O2wbQ
+ 7dxwsf3etE6AjOLFvAWgJBbVJeN2Q0UxB4NLa37TkQUN8yl3aLzy+gEMkIkJI3InVZ5V
+ FVLs+LxIPKP8+KseLglmZyQEWAuFXV/WPrZVW7QkwTWAuREcvrtmDaITcqmXgOBRZUvT
+ 8yX6LKFrPT1k/xfRNSzY6PjNdH8+nSKRRUisCp5T8lzNU5VnjNRCG5OR7w2lLCG9NDfd
+ KycQ==
+X-Gm-Message-State: APjAAAV3gqzRyGd26Tw+evZM9vjReEQzELEy1EFfPSd2XFOzwOXqL0W3
+ KvgWBfYVqDDOYgj48rfrH/Q=
+X-Google-Smtp-Source: APXvYqxIhxXcaBjEiOcvwiOwcZY5TpTm7qD9JrZ8ismHkMgxf0CIXrV9w9YAiqx8X87i+Re8aqp6pQ==
+X-Received: by 2002:a17:90a:c68f:: with SMTP id
+ n15mr14700507pjt.20.1573760289509; 
+ Thu, 14 Nov 2019 11:38:09 -0800 (PST)
+Received: from localhost (c-73-241-114-122.hsd1.ca.comcast.net.
+ [73.241.114.122])
+ by smtp.gmail.com with ESMTPSA id y24sm8658470pfr.116.2019.11.14.11.38.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Nov 2019 11:38:08 -0800 (PST)
+Date: Thu, 14 Nov 2019 11:38:06 -0800
+From: Richard Cochran <richardcochran@gmail.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>
+Message-ID: <20191114193806.GA19147@localhost>
+References: <20191114184507.18937-2-richardcochran@gmail.com>
+ <02874ECE860811409154E81DA85FBB589698F67E@ORSMSX121.amr.corp.intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net 00/13] ptp: Validate the ancillary
- ioctl flags more carefully.
+Content-Disposition: inline
+In-Reply-To: <02874ECE860811409154E81DA85FBB589698F67E@ORSMSX121.amr.corp.intel.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [PATCH net 01/13] ptp: Validate requests to
+ enable time stamping of external signals.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,90 +94,24 @@ Cc: "Hall, Christopher S" <christopher.s.hall@intel.com>,
  Brandon Streiff <brandon.streiff@ni.com>,
  Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
  Felipe Balbi <felipe.balbi@linux.intel.com>,
- Eugenia Emantayev <eugenia@mellanox.com>, Feras
- Daoud <ferasda@mellanox.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Feras Daoud <ferasda@mellanox.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- David Miller <davem@davemloft.net>,
+ Eugenia Emantayev <eugenia@mellanox.com>, David Miller <davem@davemloft.net>,
  Stefan Sorensen <stefan.sorensen@spectralink.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Richard Cochran <richardcochran@gmail.com>
-> Sent: Thursday, November 14, 2019 10:45 AM
-> To: netdev@vger.kernel.org
-> Cc: intel-wired-lan@lists.osuosl.org; David Miller <davem@davemloft.net>;
-> Brandon Streiff <brandon.streiff@ni.com>; Hall, Christopher S
-> <christopher.s.hall@intel.com>; Eugenia Emantayev <eugenia@mellanox.com>;
-> Felipe Balbi <felipe.balbi@linux.intel.com>; Feras Daoud
-> <ferasda@mellanox.com>; Keller, Jacob E <jacob.e.keller@intel.com>; Kirsher,
-> Jeffrey T <jeffrey.t.kirsher@intel.com>; Sergei Shtylyov
-> <sergei.shtylyov@cogentembedded.com>; Stefan Sorensen
-> <stefan.sorensen@spectralink.com>
-> Subject: [PATCH net 00/13] ptp: Validate the ancillary ioctl flags more carefully.
-> 
-> The flags passed to the ioctls for periodic output signals and
-> time stamping of external signals were never checked, and thus formed
-> a useless ABI inadvertently.  More recently, a version 2 of the ioctls
-> was introduced in order make the flags meaningful.  This series
-> tightens up the checks on the new ioctl flags.
-> 
-> - Patch 1 ensures at least one edge flag is set for the new ioctl.
-> - Patches 2-7 are Jacob's recent checks, picking up the tags.
-> - Patch 8 introduces a "strict" flag for passing to the drivers when the
->   new ioctl is used.
-> - Patches 9-12 implement the "strict" checking in the drivers.
-> - Patch 13 extends the test program to exercise combinations of flags.
-> 
-> Jacob Keller (6):
->   net: reject PTP periodic output requests with unsupported flags
->   mv88e6xxx: reject unsupported external timestamp flags
->   dp83640: reject unsupported external timestamp flags
->   igb: reject unsupported external timestamp flags
->   mlx5: reject unsupported external timestamp flags
->   renesas: reject unsupported external timestamp flags
-> 
+On Thu, Nov 14, 2019 at 07:06:58PM +0000, Keller, Jacob E wrote:
+> Just to confirm, these new ioctls haven't been around long enough to be concerned about this change?
 
-The patches from me accurately represent what I submitted and I'm happy to have them committed via this series.
-
-> Richard Cochran (7):
->   ptp: Validate requests to enable time stamping of external signals.
->   ptp: Introduce strict checking of external time stamp options.
->   mv88e6xxx: Reject requests to enable time stamping on both edges.
->   dp83640: Reject requests to enable time stamping on both edges.
->   igb: Reject requests that fail to enable time stamping on both edges.
->   mlx5: Reject requests to enable time stamping on both edges.
->   ptp: Extend the test program to check the external time stamp flags.
-
-My only suggestion here would be to implement the STRICT flag without modifying drivers, and have drivers allow STRICT and begin checking for it at the same time.
-
-Given this series all lands together though, it's not really a big deal because the resulting tree after all patches apply is the same.
-
-Overall:
-
-Acked-by: Jacob Keller <jacob.e.keller@intel.com>
+The "2" ioctls are about to appear in v5.4, and so I want to get the
+flag checking in before the release if possible.
 
 Thanks,
-Jake
-> 
->  drivers/net/dsa/mv88e6xxx/ptp.c               | 13 +++++
->  drivers/net/ethernet/broadcom/tg3.c           |  4 ++
->  drivers/net/ethernet/intel/igb/igb_ptp.c      | 17 ++++++
->  .../ethernet/mellanox/mlx5/core/lib/clock.c   | 17 ++++++
->  drivers/net/ethernet/microchip/lan743x_ptp.c  |  4 ++
->  drivers/net/ethernet/renesas/ravb_ptp.c       | 11 ++++
->  .../net/ethernet/stmicro/stmmac/stmmac_ptp.c  |  4 ++
->  drivers/net/phy/dp83640.c                     | 16 ++++++
->  drivers/ptp/ptp_chardev.c                     | 20 +++++--
->  include/uapi/linux/ptp_clock.h                |  5 +-
->  tools/testing/selftests/ptp/testptp.c         | 53 ++++++++++++++++++-
->  11 files changed, 156 insertions(+), 8 deletions(-)
-> 
-> --
-> 2.20.1
-
+Richard
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
