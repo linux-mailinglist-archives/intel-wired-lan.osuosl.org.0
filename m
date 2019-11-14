@@ -1,52 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C87DFC101
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 08:54:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2057D883C9;
-	Thu, 14 Nov 2019 07:54:52 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zfEtBaC2dGJS; Thu, 14 Nov 2019 07:54:51 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B012B8846F;
-	Thu, 14 Nov 2019 07:54:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CC52C1BF2E3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 07:54:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8539DFCDFE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 19:45:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C66ED253F9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 07:54:49 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8110B22865;
+	Thu, 14 Nov 2019 18:45:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gpOcJMe+W1QB; Thu, 14 Nov 2019 18:45:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 4B650227AD;
+	Thu, 14 Nov 2019 18:45:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C4AF61BF289
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id C083E89C8B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wsg7YLdIPxnP for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2019 07:54:48 +0000 (UTC)
+ with ESMTP id 5JED6TOIqAor for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2019 18:45:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 8396525343
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 07:54:48 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Nov 2019 23:54:47 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,302,1569308400"; d="scan'208";a="198731177"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by orsmga008.jf.intel.com with ESMTP; 13 Nov 2019 23:54:46 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 14 Nov 2019 09:54:46 +0200
-Message-Id: <20191114075446.20917-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v4] igc: Add legacy power management
- support
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 388AD89C87
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:10 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id c13so4872239pfp.5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 10:45:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wDwYkwxW0FxWLyE3I8m+kCLGsDG+n2ImaTBPf/mcEVk=;
+ b=GgJV72BuHJJp+UqwsWqxhsCz/9TI9AARKZs0gXDWAnzYYo5Gia6DMl7m8k5Tv8KzSw
+ NEMZAwt3LxpBgL7ENtWfg1Xkpnn3hChod84Jdw95rzyIc6cNQFOWALR4+xxTLNgKcfmu
+ dro3XzbVjse/GgHlk3GmEltz3/zWdjoHv0ejOVMx3+cpg+ERGao2KL16AAni+zSVhGb+
+ oR0pq1Wo7dn4j8rMhQZtfs+wkJBenV5KY3h0NQrkk0VEhnuTJFtMfS0q41SKSn5XvOn6
+ f4hvpbMw8vhBN3JAHnxDTC6LwOrAGsjtW3AF6kzRUrlG2sTkVK6LzkQcWM0XzY3STiNu
+ c6OQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wDwYkwxW0FxWLyE3I8m+kCLGsDG+n2ImaTBPf/mcEVk=;
+ b=sTSzM7ihXu/uypwMsCnVcGz/Ma7EBLcznV2n4qNvwJPJ5tACyt24fiRkHR4NizWOVR
+ M5GnGFE3NbimMT07hfwvLB782wLkxz6/0R6A12UkwZBTXgogNjv38x8TNIphPUvev1K3
+ ZNG0I/QYrsObgkraQkxK7rybsdGKnq/wTZWFLtXx+DmVKdOhfUtb1rQsAc08aLgywVMc
+ WUsHkpKwChyQoBAo/OumAK4nNPor4cgOk1//sRucCaM4dLoicHSd9rSZbGSZ8qbF3slr
+ 7a1PP6R8Y2AhwHKeNfXCSrkxuMcIwaYcVAgR/jxK7/xbOdcH3FxXbJgBppxkoNLpWFQK
+ Bnrw==
+X-Gm-Message-State: APjAAAXErOGo1K8tpUU2gHxwNTyuaDxT9rryvrOJQ5DAvEW32Om1+ln5
+ 7vE3WBqzkdi4qSuSrVc55AQ=
+X-Google-Smtp-Source: APXvYqwrUQaGEG3u5iMQy/fmgl1b2cO67i+m2RTiIx5cndf7jM7+Fv2AxcOgtwLPzNdYxDmxMzNKYQ==
+X-Received: by 2002:a17:90a:970a:: with SMTP id
+ x10mr933679pjo.39.1573757109680; 
+ Thu, 14 Nov 2019 10:45:09 -0800 (PST)
+Received: from localhost.localdomain (c-73-241-114-122.hsd1.ca.comcast.net.
+ [73.241.114.122])
+ by smtp.gmail.com with ESMTPSA id 23sm6819507pgw.8.2019.11.14.10.45.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Nov 2019 10:45:08 -0800 (PST)
+From: Richard Cochran <richardcochran@gmail.com>
+To: netdev@vger.kernel.org
+Date: Thu, 14 Nov 2019 10:44:54 -0800
+Message-Id: <20191114184507.18937-1-richardcochran@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH net 00/13] ptp: Validate the ancillary
+ ioctl flags more carefully.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,339 +86,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Christopher Hall <christopher.s.hall@intel.com>,
+ Brandon Streiff <brandon.streiff@ni.com>,
+ Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
+ Felipe Balbi <felipe.balbi@linux.intel.com>,
+ Eugenia Emantayev <eugenia@mellanox.com>, Feras Daoud <ferasda@mellanox.com>,
+ intel-wired-lan@lists.osuosl.org, David Miller <davem@davemloft.net>,
+ Stefan Sorensen <stefan.sorensen@spectralink.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add suspend, resume, runtime_suspend, runtime_resume and
-runtime_idle callbacks implementation.
+The flags passed to the ioctls for periodic output signals and
+time stamping of external signals were never checked, and thus formed
+a useless ABI inadvertently.  More recently, a version 2 of the ioctls
+was introduced in order make the flags meaningful.  This series
+tightens up the checks on the new ioctl flags.
 
-v1 -> v2:
-Fix christmas tree (Jeff's suggestion)
-Add CONFIG_PM pre-compiler flag
+- Patch 1 ensures at least one edge flag is set for the new ioctl.
+- Patches 2-7 are Jacob's recent checks, picking up the tags.
+- Patch 8 introduces a "strict" flag for passing to the drivers when the
+  new ioctl is used.
+- Patches 9-12 implement the "strict" checking in the drivers.
+- Patch 13 extends the test program to exercise combinations of flags.
 
-v2 -> v3
-Fix christmas tree (Jeff's suggestion)
+Jacob Keller (6):
+  net: reject PTP periodic output requests with unsupported flags
+  mv88e6xxx: reject unsupported external timestamp flags
+  dp83640: reject unsupported external timestamp flags
+  igb: reject unsupported external timestamp flags
+  mlx5: reject unsupported external timestamp flags
+  renesas: reject unsupported external timestamp flags
 
-v3 -> v4
-Fix kbuild test robot error: implicit declaration of function
-__igc_shutdown
+Richard Cochran (7):
+  ptp: Validate requests to enable time stamping of external signals.
+  ptp: Introduce strict checking of external time stamp options.
+  mv88e6xxx: Reject requests to enable time stamping on both edges.
+  dp83640: Reject requests to enable time stamping on both edges.
+  igb: Reject requests that fail to enable time stamping on both edges.
+  mlx5: Reject requests to enable time stamping on both edges.
+  ptp: Extend the test program to check the external time stamp flags.
 
-Reported-by: kbuild test robot <lpk@intel.com>
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h         |   2 +
- drivers/net/ethernet/intel/igc/igc_defines.h |  31 ++++
- drivers/net/ethernet/intel/igc/igc_main.c    | 204 +++++++++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |   9 ++
- 4 files changed, 246 insertions(+)
+ drivers/net/dsa/mv88e6xxx/ptp.c               | 13 +++++
+ drivers/net/ethernet/broadcom/tg3.c           |  4 ++
+ drivers/net/ethernet/intel/igb/igb_ptp.c      | 17 ++++++
+ .../ethernet/mellanox/mlx5/core/lib/clock.c   | 17 ++++++
+ drivers/net/ethernet/microchip/lan743x_ptp.c  |  4 ++
+ drivers/net/ethernet/renesas/ravb_ptp.c       | 11 ++++
+ .../net/ethernet/stmicro/stmmac/stmmac_ptp.c  |  4 ++
+ drivers/net/phy/dp83640.c                     | 16 ++++++
+ drivers/ptp/ptp_chardev.c                     | 20 +++++--
+ include/uapi/linux/ptp_clock.h                |  5 +-
+ tools/testing/selftests/ptp/testptp.c         | 53 ++++++++++++++++++-
+ 11 files changed, 156 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 0868677d43ed..612fe9ec81a4 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -370,6 +370,8 @@ struct igc_adapter {
- 	struct timer_list dma_err_timer;
- 	struct timer_list phy_info_timer;
- 
-+	u32 wol;
-+	u32 en_mng_pt;
- 	u16 link_speed;
- 	u16 link_duplex;
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index f3788f0b95b4..50dffd5db606 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -10,6 +10,37 @@
- 
- #define IGC_CTRL_EXT_DRV_LOAD	0x10000000 /* Drv loaded bit for FW */
- 
-+/* Definitions for power management and wakeup registers */
-+/* Wake Up Control */
-+#define IGC_WUC_PME_EN	0x00000002 /* PME Enable */
-+
-+/* Wake Up Filter Control */
-+#define IGC_WUFC_LNKC	0x00000001 /* Link Status Change Wakeup Enable */
-+#define IGC_WUFC_MC	0x00000008 /* Directed Multicast Wakeup Enable */
-+
-+#define IGC_CTRL_ADVD3WUC	0x00100000  /* D3 WUC */
-+
-+/* Wake Up Status */
-+#define IGC_WUS_EX	0x00000004 /* Directed Exact */
-+#define IGC_WUS_ARPD	0x00000020 /* Directed ARP Request */
-+#define IGC_WUS_IPV4	0x00000040 /* Directed IPv4 */
-+#define IGC_WUS_IPV6	0x00000080 /* Directed IPv6 */
-+#define IGC_WUS_NSD	0x00000400 /* Directed IPv6 Neighbor Solicitation */
-+
-+/* Packet types that are enabled for wake packet delivery */
-+#define WAKE_PKT_WUS ( \
-+	IGC_WUS_EX   | \
-+	IGC_WUS_ARPD | \
-+	IGC_WUS_IPV4 | \
-+	IGC_WUS_IPV6 | \
-+	IGC_WUS_NSD)
-+
-+/* Wake Up Packet Length */
-+#define IGC_WUPL_MASK	0x00000FFF
-+
-+/* Wake Up Packet Memory stores the first 128 bytes of the wake up packet */
-+#define IGC_WUPM_BYTES	128
-+
- /* Physical Func Reset Done Indication */
- #define IGC_CTRL_EXT_LINK_MODE_MASK	0x00C00000
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 833770fd16d2..3fc34c0486c6 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -8,6 +8,7 @@
- #include <linux/tcp.h>
- #include <linux/udp.h>
- #include <linux/ip.h>
-+#include <linux/pm_runtime.h>
- 
- #include <net/ipv6.h>
- 
-@@ -4574,11 +4575,214 @@ static void igc_remove(struct pci_dev *pdev)
- 	pci_disable_device(pdev);
- }
- 
-+static int __igc_shutdown(struct pci_dev *pdev, bool *enable_wake,
-+			  bool runtime)
-+{
-+	struct net_device *netdev = pci_get_drvdata(pdev);
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	u32 wufc = runtime ? IGC_WUFC_LNKC : adapter->wol;
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 ctrl, rctl, status;
-+	bool wake;
-+
-+	rtnl_lock();
-+	netif_device_detach(netdev);
-+
-+	if (netif_running(netdev))
-+		__igc_close(netdev, true);
-+
-+	igc_clear_interrupt_scheme(adapter);
-+	rtnl_unlock();
-+
-+	status = rd32(IGC_STATUS);
-+	if (status & IGC_STATUS_LU)
-+		wufc &= ~IGC_WUFC_LNKC;
-+
-+	if (wufc) {
-+		igc_setup_rctl(adapter);
-+		igc_set_rx_mode(netdev);
-+
-+		/* turn on all-multi mode if wake on multicast is enabled */
-+		if (wufc & IGC_WUFC_MC) {
-+			rctl = rd32(IGC_RCTL);
-+			rctl |= IGC_RCTL_MPE;
-+			wr32(IGC_RCTL, rctl);
-+		}
-+
-+		ctrl = rd32(IGC_CTRL);
-+		ctrl |= IGC_CTRL_ADVD3WUC;
-+		wr32(IGC_CTRL, ctrl);
-+
-+		/* Allow time for pending master requests to run */
-+		igc_disable_pcie_master(hw);
-+
-+		wr32(IGC_WUC, IGC_WUC_PME_EN);
-+		wr32(IGC_WUFC, wufc);
-+	} else {
-+		wr32(IGC_WUC, 0);
-+		wr32(IGC_WUFC, 0);
-+	}
-+
-+	wake = wufc || adapter->en_mng_pt;
-+	if (!wake)
-+		igc_power_down_link(adapter);
-+	else
-+		igc_power_up_link(adapter);
-+
-+	if (enable_wake)
-+		*enable_wake = wake;
-+
-+	/* Release control of h/w to f/w.  If f/w is AMT enabled, this
-+	 * would have already happened in close and is redundant.
-+	 */
-+	igc_release_hw_control(adapter);
-+
-+	pci_disable_device(pdev);
-+
-+	return 0;
-+}
-+
-+#ifdef CONFIG_PM
-+static int __maybe_unused igc_runtime_suspend(struct device *dev)
-+{
-+	return __igc_shutdown(to_pci_dev(dev), NULL, 1);
-+}
-+
-+static void igc_deliver_wake_packet(struct net_device *netdev)
-+{
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	struct igc_hw *hw = &adapter->hw;
-+	struct sk_buff *skb;
-+	u32 wupl;
-+
-+	wupl = rd32(IGC_WUPL) & IGC_WUPL_MASK;
-+
-+	/* WUPM stores only the first 128 bytes of the wake packet.
-+	 * Read the packet only if we have the whole thing.
-+	 */
-+	if (wupl == 0 || wupl > IGC_WUPM_BYTES)
-+		return;
-+
-+	skb = netdev_alloc_skb_ip_align(netdev, IGC_WUPM_BYTES);
-+	if (!skb)
-+		return;
-+
-+	skb_put(skb, wupl);
-+
-+	/* Ensure reads are 32-bit aligned */
-+	wupl = roundup(wupl, 4);
-+
-+	memcpy_fromio(skb->data, hw->hw_addr + IGC_WUPM_REG(0), wupl);
-+
-+	skb->protocol = eth_type_trans(skb, netdev);
-+	netif_rx(skb);
-+}
-+
-+static int __maybe_unused igc_resume(struct device *dev)
-+{
-+	struct pci_dev *pdev = to_pci_dev(dev);
-+	struct net_device *netdev = pci_get_drvdata(pdev);
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 err, val;
-+
-+	pci_set_power_state(pdev, PCI_D0);
-+	pci_restore_state(pdev);
-+	pci_save_state(pdev);
-+
-+	if (!pci_device_is_present(pdev))
-+		return -ENODEV;
-+	err = pci_enable_device_mem(pdev);
-+	if (err) {
-+		dev_err(&pdev->dev,
-+			"igc: Cannot enable PCI device from suspend\n");
-+		return err;
-+	}
-+	pci_set_master(pdev);
-+
-+	pci_enable_wake(pdev, PCI_D3hot, 0);
-+	pci_enable_wake(pdev, PCI_D3cold, 0);
-+
-+	if (igc_init_interrupt_scheme(adapter, true)) {
-+		dev_err(&pdev->dev, "Unable to allocate memory for queues\n");
-+		return -ENOMEM;
-+	}
-+
-+	igc_reset(adapter);
-+
-+	/* let the f/w know that the h/w is now under the control of the
-+	 * driver.
-+	 */
-+	igc_get_hw_control(adapter);
-+
-+	val = rd32(IGC_WUS);
-+	if (val & WAKE_PKT_WUS)
-+		igc_deliver_wake_packet(netdev);
-+
-+	wr32(IGC_WUS, ~0);
-+
-+	rtnl_lock();
-+	if (!err && netif_running(netdev))
-+		err = __igc_open(netdev, true);
-+
-+	if (!err)
-+		netif_device_attach(netdev);
-+	rtnl_unlock();
-+
-+	return err;
-+}
-+
-+static int __maybe_unused igc_runtime_resume(struct device *dev)
-+{
-+	return igc_resume(dev);
-+}
-+
-+static int __maybe_unused igc_suspend(struct device *dev)
-+{
-+	return __igc_shutdown(to_pci_dev(dev), NULL, 0);
-+}
-+
-+static int __maybe_unused igc_runtime_idle(struct device *dev)
-+{
-+	struct net_device *netdev = dev_get_drvdata(dev);
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+
-+	if (!igc_has_link(adapter))
-+		pm_schedule_suspend(dev, MSEC_PER_SEC * 5);
-+
-+	return -EBUSY;
-+}
-+#endif /* CONFIG_PM */
-+
-+static void igc_shutdown(struct pci_dev *pdev)
-+{
-+	bool wake;
-+
-+	__igc_shutdown(pdev, &wake, 0);
-+
-+	if (system_state == SYSTEM_POWER_OFF) {
-+		pci_wake_from_d3(pdev, wake);
-+		pci_set_power_state(pdev, PCI_D3hot);
-+	}
-+}
-+
-+#ifdef CONFIG_PM
-+static const struct dev_pm_ops igc_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(igc_suspend, igc_resume)
-+	SET_RUNTIME_PM_OPS(igc_runtime_suspend, igc_runtime_resume,
-+			   igc_runtime_idle)
-+};
-+#endif
-+
- static struct pci_driver igc_driver = {
- 	.name     = igc_driver_name,
- 	.id_table = igc_pci_tbl,
- 	.probe    = igc_probe,
- 	.remove   = igc_remove,
-+#ifdef CONFIG_PM
-+	.driver.pm = &igc_pm_ops,
-+#endif
-+	.shutdown = igc_shutdown,
- };
- 
- void igc_set_flag_queue_pairs(struct igc_adapter *adapter,
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 50d7c04dccf5..93a9139f08c5 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -215,6 +215,15 @@
- /* Shadow Ram Write Register - RW */
- #define IGC_SRWR	0x12018
- 
-+/* Wake Up registers */
-+#define IGC_WUC		0x05800  /* Wakeup Control - RW */
-+#define IGC_WUFC	0x05808  /* Wakeup Filter Control - RW */
-+#define IGC_WUS		0x05810  /* Wakeup Status - R/W1C */
-+#define IGC_WUPL	0x05900  /* Wakeup Packet Length - RW */
-+
-+/* Wake Up packet memory */
-+#define IGC_WUPM_REG(_i)	(0x05A00 + ((_i) * 4))
-+
- /* forward declaration */
- struct igc_hw;
- u32 igc_rd32(struct igc_hw *hw, u32 reg);
 -- 
-2.11.0
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
