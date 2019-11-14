@@ -1,77 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67A7BFCE00
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 19:45:18 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26446FCE06
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2019 19:45:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 126BE882E7;
-	Thu, 14 Nov 2019 18:45:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4DDD489C98;
+	Thu, 14 Nov 2019 18:45:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id paG4uccpEzax; Thu, 14 Nov 2019 18:45:16 +0000 (UTC)
+	with ESMTP id 3QbXNx4bBswb; Thu, 14 Nov 2019 18:45:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 607F1882CC;
-	Thu, 14 Nov 2019 18:45:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C450089C90;
+	Thu, 14 Nov 2019 18:45:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ED7AC1BF289
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:14 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9911F1BF289
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E9DD689168
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8F6CA882E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AAdO2o1E6YHf for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2019 18:45:14 +0000 (UTC)
+ with ESMTP id 1e3OU3LievgE for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2019 18:45:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f194.google.com (mail-pg1-f194.google.com
- [209.85.215.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5787B89153
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:14 +0000 (UTC)
-Received: by mail-pg1-f194.google.com with SMTP id k13so4350095pgh.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 10:45:14 -0800 (PST)
+Received: from mail-pl1-f195.google.com (mail-pl1-f195.google.com
+ [209.85.214.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E1A56882BC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 18:45:15 +0000 (UTC)
+Received: by mail-pl1-f195.google.com with SMTP id j12so3019737plt.9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2019 10:45:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=UJweYauEUzN1el5H7+jNKGxHUTrlFVlLLYMrPDFTPrw=;
- b=HmCxMPjYWo4iAoeAvkA0YrUNRCfDp1kQAfnh91Fp3uRWxaBE8edhI5L0TDjakPMYzV
- BrPSnGSnpa3jJwgggdbsPyazW2K26o2sJNohfKsVpf5zzr5ljGrOfaTNzonfZ7/oK/bs
- QuEdvxPcckNhDFqVg/yFdW4oTyA1V+6NLziwdH40RObMg/CDDFiZYLTCHvo8A7ZHQ0P1
- ULIScUZc89s9Z/ial9FcSnpjLnRVcV2vOsVoJaLaOo5ALiRcuv0K+dUcD6dUkcBZiIST
- kf25itJeHboIZnhkHRDHzcA7W1KCXMMh4Sj6s8SQFdCPiDbSfHz+MXOQkbXaXUXcmgB7
- rwSw==
+ bh=y5PpCROqLUVCSPUX0tvoqkWmvSCrAux1rzZqUUXzDoo=;
+ b=cPhBmbIdmtQyfQF5AzbqYAvH2xoRj/40g6d2qV5pdY0c1+x9QJjtVhWv32MQqPBmNc
+ Sk6GtuGCYW8VDpn/EN2UxzavB3UQ97D36VdcOf+oVrOKj8VG6hJUtXZo7kYhh/Y8TFKn
+ E2uKmuVao6l+yWztnczXHEXRQt/NKrdxorFH7K+nk19Obb34h7PhMpC2hk6ewz8CAMxW
+ Oc1q41H87UAMM/EpVkDyJAbTMcE1/bIjmru0tVvXGVBnd/vbvQwcp4UR+DE4Os4Rfq37
+ fStGwklceIwevHB10wpqPsz8vj6wfNcplYtGBWKOGQiowq1zh9MttEduJM2LX+jcC9Lw
+ 7VUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=UJweYauEUzN1el5H7+jNKGxHUTrlFVlLLYMrPDFTPrw=;
- b=fG/VeY5IF2XztyKMZtelKfIjecYJrms5pTKsxDpGes5n2gQA89QIpjfcIH65WmKexV
- /ch8AK4PRKoHb30sGL59ezwUSAjHZ0qxf9bznV2GsEz2UohxKJAjwGLVMqqcvO/3hiUl
- b7ViAYdyQW3aabunbGqsMYdTDx19O1kiJV+buSvcKkIUCneMy35XUA14IykBusinNucw
- wOtsB3iHS3VjmfYPzq7AWlnpdpnCmXlgwfyuU2DKlRYdN/xqODYtzMEMuvghyH4oiTRX
- 30KG3BVHR8Q3Q/3SLiVGuIXXUfVxckV26b59JyIg7QnMI7ex9lRy7ynN3QDnvXgjyBfw
- 2u2g==
-X-Gm-Message-State: APjAAAVV8FNiBYLmDh2iHBaxVXcX6Xw/3xWPh4JSoF4BS5yBY7nx5QH2
- rhyDMsS1lQdaMjDQNg1gXHM=
-X-Google-Smtp-Source: APXvYqzS8fKT7yamtldHOoBnAh+S2ZqlWam+5y5daaHTtrUwTXblAXw1esOngPaDfBJCQHEfoTdLFQ==
-X-Received: by 2002:a65:678a:: with SMTP id e10mr11686445pgr.258.1573757113982; 
- Thu, 14 Nov 2019 10:45:13 -0800 (PST)
+ bh=y5PpCROqLUVCSPUX0tvoqkWmvSCrAux1rzZqUUXzDoo=;
+ b=FA2c7gqqKZYoPq2QS7mj48LSRDU7M6eGFXGrYn4IUzBP8h7ONA3kuXZV9EKYrJ7aPG
+ iXqbnEo2doEJgJvM9uU6JPkv0IQK5zyNTKxaRWXtDTnBjHg/2A3OX14+rQnYMbFvMIfu
+ eoOBBq4AUxnZ0Hv8JPfpIVwKXWKFvdM8oGGrY/F9VZbV7qlDdE8mQ3WovuSasJ95hvhX
+ H38+g6ML9pQUjgLSj9Ff0/bV6du6Cljw8W8lo4CWx4Pzq0Ctoh4M786QYNfTaRZXg0li
+ CRjgPaS9GtJmM1f90JTQwhtQ8Y/zFpnbuIMogCxX9bae+ebjYeUpB3SbzJ5U9c0l+dEw
+ 8w0w==
+X-Gm-Message-State: APjAAAXf8agxhvE0W5MDMwAQGFRlweG0Is1L8uwg/37zesDoWrjlJfNs
+ iYzL1EnNoHJAJ576jVjdxFE=
+X-Google-Smtp-Source: APXvYqxwXzvhDmITW4QOWmuk5/jUBwai9RuM5ACXa/w6RYjVf9/qTI18CLm1V501Va+erWE2fXAFHA==
+X-Received: by 2002:a17:902:6a88:: with SMTP id
+ n8mr637917plk.226.1573757115373; 
+ Thu, 14 Nov 2019 10:45:15 -0800 (PST)
 Received: from localhost.localdomain (c-73-241-114-122.hsd1.ca.comcast.net.
  [73.241.114.122])
- by smtp.gmail.com with ESMTPSA id 23sm6819507pgw.8.2019.11.14.10.45.12
+ by smtp.gmail.com with ESMTPSA id 23sm6819507pgw.8.2019.11.14.10.45.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Nov 2019 10:45:13 -0800 (PST)
+ Thu, 14 Nov 2019 10:45:14 -0800 (PST)
 From: Richard Cochran <richardcochran@gmail.com>
 To: netdev@vger.kernel.org
-Date: Thu, 14 Nov 2019 10:44:57 -0800
-Message-Id: <20191114184507.18937-4-richardcochran@gmail.com>
+Date: Thu, 14 Nov 2019 10:44:58 -0800
+Message-Id: <20191114184507.18937-5-richardcochran@gmail.com>
 X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 03/13] mv88e6xxx: reject unsupported
+Subject: [Intel-wired-lan] [PATCH net 04/13] dp83640: reject unsupported
  external timestamp flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -92,58 +93,43 @@ Cc: Christopher Hall <christopher.s.hall@intel.com>,
  Eugenia Emantayev <eugenia@mellanox.com>, Feras Daoud <ferasda@mellanox.com>,
  intel-wired-lan@lists.osuosl.org, David Miller <davem@davemloft.net>,
  Stefan Sorensen <stefan.sorensen@spectralink.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
-
-Fix the mv88e6xxx PTP support to explicitly reject any future flags that
-get added to the external timestamp request ioctl.
-
-In order to maintain currently functioning code, this patch accepts all
-three current flags. This is because the PTP_RISING_EDGE and
-PTP_FALLING_EDGE flags have unclear semantics and each driver seems to
-have interpreted them slightly differently.
-
-For the record, the semantics of this driver are:
-
-  flags                                                 Meaning
-  ----------------------------------------------------  --------------------------
-  PTP_ENABLE_FEATURE                                    Time stamp falling edge
-  PTP_ENABLE_FEATURE|PTP_RISING_EDGE                    Time stamp rising edge
-  PTP_ENABLE_FEATURE|PTP_FALLING_EDGE                   Time stamp falling edge
-  PTP_ENABLE_FEATURE|PTP_RISING_EDGE|PTP_FALLING_EDGE   Time stamp rising edge
-
-Cc: Brandon Streiff <brandon.streiff@ni.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Richard Cochran <richardcochran@gmail.com>
----
- drivers/net/dsa/mv88e6xxx/ptp.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/net/dsa/mv88e6xxx/ptp.c b/drivers/net/dsa/mv88e6xxx/ptp.c
-index 073cbd0bb91b..076e622a64d6 100644
---- a/drivers/net/dsa/mv88e6xxx/ptp.c
-+++ b/drivers/net/dsa/mv88e6xxx/ptp.c
-@@ -273,6 +273,12 @@ static int mv88e6352_ptp_enable_extts(struct mv88e6xxx_chip *chip,
- 	int pin;
- 	int err;
- 
-+	/* Reject requests with unsupported flags */
-+	if (rq->extts.flags & ~(PTP_ENABLE_FEATURE |
-+				PTP_RISING_EDGE |
-+				PTP_FALLING_EDGE))
-+		return -EOPNOTSUPP;
-+
- 	pin = ptp_find_pin(chip->ptp_clock, PTP_PF_EXTTS, rq->extts.index);
- 
- 	if (pin < 0)
--- 
-2.20.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RnJvbTogSmFjb2IgS2VsbGVyIDxqYWNvYi5lLmtlbGxlckBpbnRlbC5jb20+CgpGaXggdGhlIGRw
+ODM2NDAgUFRQIHN1cHBvcnQgdG8gZXhwbGljaXRseSByZWplY3QgYW55IGZ1dHVyZSBmbGFncyB0
+aGF0CmdldCBhZGRlZCB0byB0aGUgZXh0ZXJuYWwgdGltZXN0YW1wIHJlcXVlc3QgaW9jdGwuCgpJ
+biBvcmRlciB0byBtYWludGFpbiBjdXJyZW50bHkgZnVuY3Rpb25pbmcgY29kZSwgdGhpcyBwYXRj
+aCBhY2NlcHRzIGFsbAp0aHJlZSBjdXJyZW50IGZsYWdzLiBUaGlzIGlzIGJlY2F1c2UgdGhlIFBU
+UF9SSVNJTkdfRURHRSBhbmQKUFRQX0ZBTExJTkdfRURHRSBmbGFncyBoYXZlIHVuY2xlYXIgc2Vt
+YW50aWNzIGFuZCBlYWNoIGRyaXZlciBzZWVtcyB0bwpoYXZlIGludGVycHJldGVkIHRoZW0gc2xp
+Z2h0bHkgZGlmZmVyZW50bHkuCgpGb3IgdGhlIHJlY29yZCwgdGhlIHNlbWFudGljcyBvZiB0aGlz
+IGRyaXZlciBhcmU6CgogIGZsYWdzICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIE1lYW5pbmcKICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogIFBUUF9FTkFC
+TEVfRkVBVFVSRSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFRpbWUgc3RhbXAg
+cmlzaW5nIGVkZ2UKICBQVFBfRU5BQkxFX0ZFQVRVUkV8UFRQX1JJU0lOR19FREdFICAgICAgICAg
+ICAgICAgICAgICBUaW1lIHN0YW1wIHJpc2luZyBlZGdlCiAgUFRQX0VOQUJMRV9GRUFUVVJFfFBU
+UF9GQUxMSU5HX0VER0UgICAgICAgICAgICAgICAgICAgVGltZSBzdGFtcCBmYWxsaW5nIGVkZ2UK
+ICBQVFBfRU5BQkxFX0ZFQVRVUkV8UFRQX1JJU0lOR19FREdFfFBUUF9GQUxMSU5HX0VER0UgICBU
+aW1lIHN0YW1wIGZhbGxpbmcgZWRnZQoKQ2M6IFN0ZWZhbiBTw7hyZW5zZW4gPHN0ZWZhbi5zb3Jl
+bnNlbkBzcGVjdHJhbGluay5jb20+CkNjOiBSaWNoYXJkIENvY2hyYW4gPHJpY2hhcmRjb2NocmFu
+QGdtYWlsLmNvbT4KU2lnbmVkLW9mZi1ieTogSmFjb2IgS2VsbGVyIDxqYWNvYi5lLmtlbGxlckBp
+bnRlbC5jb20+ClJldmlld2VkLWJ5OiBSaWNoYXJkIENvY2hyYW4gPHJpY2hhcmRjb2NocmFuQGdt
+YWlsLmNvbT4KLS0tCiBkcml2ZXJzL25ldC9waHkvZHA4MzY0MC5jIHwgNSArKysrKwogMSBmaWxl
+IGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3BoeS9k
+cDgzNjQwLmMgYi9kcml2ZXJzL25ldC9waHkvZHA4MzY0MC5jCmluZGV4IDA0YWQ3Nzc1ODkyMC4u
+Mjc4MWIwZTJkOTQ3IDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9waHkvZHA4MzY0MC5jCisrKyBi
+L2RyaXZlcnMvbmV0L3BoeS9kcDgzNjQwLmMKQEAgLTQ2OSw2ICs0NjksMTEgQEAgc3RhdGljIGlu
+dCBwdHBfZHA4MzY0MF9lbmFibGUoc3RydWN0IHB0cF9jbG9ja19pbmZvICpwdHAsCiAKIAlzd2l0
+Y2ggKHJxLT50eXBlKSB7CiAJY2FzZSBQVFBfQ0xLX1JFUV9FWFRUUzoKKwkJLyogUmVqZWN0IHJl
+cXVlc3RzIHdpdGggdW5zdXBwb3J0ZWQgZmxhZ3MgKi8KKwkJaWYgKHJxLT5leHR0cy5mbGFncyAm
+IH4oUFRQX0VOQUJMRV9GRUFUVVJFIHwKKwkJCQkJUFRQX1JJU0lOR19FREdFIHwKKwkJCQkJUFRQ
+X0ZBTExJTkdfRURHRSkpCisJCQlyZXR1cm4gLUVPUE5PVFNVUFA7CiAJCWluZGV4ID0gcnEtPmV4
+dHRzLmluZGV4OwogCQlpZiAoaW5kZXggPj0gTl9FWFRfVFMpCiAJCQlyZXR1cm4gLUVJTlZBTDsK
+LS0gCjIuMjAuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9y
+ZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1s
+YW4K
