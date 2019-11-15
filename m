@@ -1,56 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43F28FD35D
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2019 04:32:25 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15E21FE697
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2019 21:49:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CC29C897DE;
-	Fri, 15 Nov 2019 03:32:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 95B9784FAE;
+	Fri, 15 Nov 2019 20:49:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dNOdfDiAUald; Fri, 15 Nov 2019 03:32:23 +0000 (UTC)
+	with ESMTP id DLnq2eaWzK4X; Fri, 15 Nov 2019 20:49:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 086B9897E2;
-	Fri, 15 Nov 2019 03:32:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 073C18539F;
+	Fri, 15 Nov 2019 20:49:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A464A1BF44A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 03:32:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 520571BF59F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 20:49:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9439588D70
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 03:32:21 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4E46685317
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 20:49:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3emCCNwYGuVy for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Nov 2019 03:32:20 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 792D088D27
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 03:32:20 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Nov 2019 19:32:19 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,306,1569308400"; d="scan'208";a="195261191"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 14 Nov 2019 19:32:17 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1iVSLI-0005Y6-TX; Fri, 15 Nov 2019 11:32:16 +0800
-Date: Fri, 15 Nov 2019 11:31:59 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5dce1c2f.yl0RoVsue7iAope+%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
- 1f477686ea05a2299e6a262ccb311ec2378d8e57
+ with ESMTP id AKNjPFT0xE1A for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Nov 2019 20:49:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id CE10684FAE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 20:49:33 +0000 (UTC)
+Received: from localhost (unknown [IPv6:2601:601:9f00:1e2::3d5])
+ (using TLSv1 with cipher AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: davem-davemloft)
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id E85E514E20F60;
+ Fri, 15 Nov 2019 12:49:32 -0800 (PST)
+Date: Fri, 15 Nov 2019 12:49:32 -0800 (PST)
+Message-Id: <20191115.124932.339187560742442216.davem@davemloft.net>
+To: richardcochran@gmail.com
+From: David Miller <davem@davemloft.net>
+In-Reply-To: <20191114184507.18937-1-richardcochran@gmail.com>
+References: <20191114184507.18937-1-richardcochran@gmail.com>
+X-Mailer: Mew version 6.8 on Emacs 26.1
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
+ (shards.monkeyblade.net [149.20.54.216]);
+ Fri, 15 Nov 2019 12:49:33 -0800 (PST)
+Subject: Re: [Intel-wired-lan] [PATCH net 00/13] ptp: Validate the ancillary
+ ioctl flags more carefully.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,126 +62,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: christopher.s.hall@intel.com, brandon.streiff@ni.com,
+ sergei.shtylyov@cogentembedded.com, felipe.balbi@linux.intel.com,
+ netdev@vger.kernel.org, ferasda@mellanox.com, intel-wired-lan@lists.osuosl.org,
+ eugenia@mellanox.com, stefan.sorensen@spectralink.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 1f477686ea05a2299e6a262ccb311ec2378d8e57  i40e: Fix virtchnl_queue_select bitmap validation
+From: Richard Cochran <richardcochran@gmail.com>
+Date: Thu, 14 Nov 2019 10:44:54 -0800
 
-TIMEOUT after 1447m
+> The flags passed to the ioctls for periodic output signals and
+> time stamping of external signals were never checked, and thus formed
+> a useless ABI inadvertently.  More recently, a version 2 of the ioctls
+> was introduced in order make the flags meaningful.  This series
+> tightens up the checks on the new ioctl flags.
+> 
+> - Patch 1 ensures at least one edge flag is set for the new ioctl.
+> - Patches 2-7 are Jacob's recent checks, picking up the tags.
+> - Patch 8 introduces a "strict" flag for passing to the drivers when the
+>   new ioctl is used.
+> - Patches 9-12 implement the "strict" checking in the drivers.
+> - Patch 13 extends the test program to exercise combinations of flags.
 
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 63
-
-alpha                               defconfig
-arc                              allyesconfig
-arc                                 defconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-i386                             allmodconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-parisc                            allnoconfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                          debug_defconfig
-s390                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                           allmodconfig
-x86_64                           allyesconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-
-configs tested: 30
-
-x86_64                 randconfig-e001-201945
-x86_64                 randconfig-e003-201945
-x86_64                 randconfig-e002-201945
-i386                   randconfig-e003-201945
-i386                   randconfig-e001-201945
-i386                   randconfig-e002-201945
-m68k                          multi_defconfig
-m68k                       m5475evb_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                     edosk2674_defconfig
-m68k                           sun3_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-sparc64                          allmodconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                             defconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                                defconfig
-ia64                             alldefconfig
-i386                   randconfig-d002-201945
-x86_64                 randconfig-d002-201945
-x86_64                 randconfig-d003-201945
-i386                   randconfig-d003-201945
-x86_64                 randconfig-d001-201945
-i386                   randconfig-d001-201945
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-
----
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+Series applied, thanks Richard.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
