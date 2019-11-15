@@ -1,112 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78A6EFE776
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2019 23:15:22 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48891FE759
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2019 23:01:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B12C86A02;
-	Fri, 15 Nov 2019 22:15:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8793E881BF;
+	Fri, 15 Nov 2019 22:01:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WTGmK20ypUDd; Fri, 15 Nov 2019 22:15:20 +0000 (UTC)
+	with ESMTP id h9d9wUZ8h9wu; Fri, 15 Nov 2019 22:01:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 17086869F6;
-	Fri, 15 Nov 2019 22:15:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 68E1888222;
+	Fri, 15 Nov 2019 22:01:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 466F71BF3F7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 21:57:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E12E1BF3F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 22:01:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4000720478
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 21:57:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 277768769B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 22:01:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VsXkyb8MCrYM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Nov 2019 21:57:45 +0000 (UTC)
-X-Greylist: delayed 03:34:35 by SQLgrey-1.7.6
-Received: from EUR01-HE1-obe.outbound.protection.outlook.com
- (mail-eopbgr130071.outbound.protection.outlook.com [40.107.13.71])
- by silver.osuosl.org (Postfix) with ESMTPS id 883B4203FC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 21:57:44 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Xx/z2XxJ3tlrGyiGMp5AMCrA6NMBKwkI2MQPFRMBY7PvYr0FPt0QZ9Bsv8Wu9YJcfoJTINHlXxqujNsIWVDmzNHPvL1nZ2VtLVg+D0AYOQp8rFv1eaJfgLuXmphim9eRhSQtUNAd1gllTfwxuCS5h/gd+uJ1BPEbgBva5j0HiECV2Ky+gUjLeQefaUM30RdtIHpATFpK9xPQqX3Zb+2loA8kDXlkXMzSQuzZJ1BZaM0L6BuAFeD9kCw5zX6olalxNHVXnXaFfUIVAAl4pez/pZy3+FYEtT6Rz0j7YYtCgBjMfQgH6MrTdMcqPY5L+zm+E8Ii/gBSKsFoH4dDifIykw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sCuFB1NlSETFlQt0aAJ/S+qQ9YJrEnm3XGfUhR80rxU=;
- b=Tk0Om+eOffXxO2PnWvA//Rm9F6brocid48duaiYEgLAgRKw/ubX3n4CsjIrx8LKQMukQC5iltUhHC3u+fH/FuqK7t2DsW1ImEeKM1QFcmu8OA/5XhRnk59i3jVzPjJijICeMl7AN3fH26Zwmq6o3DsRIZe2Byp45mRpZ7oQ+QJ3SxbHw4mxGTlHdVH9l3AvcrfXXFSPWP0UpvzfekWZAye5s55Nxy5+rYpEFNPBVMgB6V/BJTdVvjQu1c6c+9G/QzfQVic0tFiiSqkJoMzBp69bsW2szbfoJf88D9w6t645ClS/c/ZpdS4ZQucGawkucl08qqS4fyXnpvwafzee6Tw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
- dkim=pass header.d=mellanox.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sCuFB1NlSETFlQt0aAJ/S+qQ9YJrEnm3XGfUhR80rxU=;
- b=c/M1Pkzm32GGIDwVKdooQKQIeQgjnYejy5e+KlwKUrZKMzKAxNs2naGuo0etoNiOVIuZIH0ezXC8ltMR6Y3QOQ+hOs6ikso7V861PYQVIxyqZefANj767nB1vbFwl3jQUpci54VyQ8ls1n/BtQcsms0P/w866jPkYAOkPtPF2EM=
-Received: from AM4PR05MB3313.eurprd05.prod.outlook.com (10.171.189.29) by
- AM4PR05MB3298.eurprd05.prod.outlook.com (10.171.187.155) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2451.23; Fri, 15 Nov 2019 18:23:06 +0000
-Received: from AM4PR05MB3313.eurprd05.prod.outlook.com
- ([fe80::59bd:e9d7:eaab:b2cc]) by AM4PR05MB3313.eurprd05.prod.outlook.com
- ([fe80::59bd:e9d7:eaab:b2cc%4]) with mapi id 15.20.2451.023; Fri, 15 Nov 2019
- 18:23:06 +0000
-From: Ariel Levkovich <lariel@mellanox.com>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>, Saeed Mahameed
- <saeedm@mellanox.com>, "richardcochran@gmail.com" <richardcochran@gmail.com>, 
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [PATCH net 06/13] mlx5: reject unsupported external timestamp
- flags
-Thread-Index: AQHVmxuuaGhUBoj4KkqsB9Kgi1dgk6eLWewAgAAUMICAAR8egA==
-Date: Fri, 15 Nov 2019 18:23:06 +0000
-Message-ID: <fd597b44-1d5b-f79f-63b9-3dcc2e58b05f@mellanox.com>
-References: <20191114184507.18937-7-richardcochran@gmail.com>
- <c90050bd6a63ef3a6f0c7ea999f44ec51c07e917.camel@mellanox.com>
- <02874ECE860811409154E81DA85FBB5896990AC2@ORSMSX121.amr.corp.intel.com>
-In-Reply-To: <02874ECE860811409154E81DA85FBB5896990AC2@ORSMSX121.amr.corp.intel.com>
+ with ESMTP id tkY0MAYqQhX7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Nov 2019 22:01:12 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BE9778760D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 22:01:12 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 15 Nov 2019 14:01:12 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,309,1569308400"; d="scan'208";a="208538619"
+Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
+ by orsmga006.jf.intel.com with ESMTP; 15 Nov 2019 14:01:11 -0800
+Received: from orsmsx126.amr.corp.intel.com (10.22.240.126) by
+ ORSMSX108.amr.corp.intel.com (10.22.240.6) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 15 Nov 2019 14:01:11 -0800
+Received: from orsmsx101.amr.corp.intel.com ([169.254.8.229]) by
+ ORSMSX126.amr.corp.intel.com ([169.254.4.116]) with mapi id 14.03.0439.000;
+ Fri, 15 Nov 2019 14:01:11 -0800
+From: "Ertman, David M" <david.m.ertman@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, "Patil, Kiran"
+ <kiran.patil@intel.com>
+Thread-Topic: virtual-bus[v3]: Implementation of Virtual Bus
+Thread-Index: AdWcACyGuFscS8nDQAuLll8dIyP4ZQ==
+Date: Fri, 15 Nov 2019 22:01:11 +0000
+Message-ID: <2B0E3F215D1AB84DA946C8BEE234CCC97B300949@ORSMSX101.amr.corp.intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=lariel@mellanox.com; 
-x-originating-ip: [2604:2000:1342:488:cc27:8e0e:9eda:f697]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 412767f5-5a56-474a-6d6d-08d769f8dc48
-x-ms-traffictypediagnostic: AM4PR05MB3298:|AM4PR05MB3298:
-x-ld-processed: a652971c-7d2e-4d9b-a6a4-d149256f461b,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <AM4PR05MB329886C5330B51C577D3E2F8BA700@AM4PR05MB3298.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 02229A4115
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(136003)(366004)(39860400002)(346002)(376002)(396003)(13464003)(199004)(189003)(66446008)(64756008)(6436002)(446003)(6116002)(11346002)(66476007)(6486002)(110136005)(76176011)(54906003)(71190400001)(71200400001)(476003)(2616005)(4001150100001)(186003)(229853002)(2201001)(305945005)(14454004)(7416002)(99286004)(7736002)(46003)(102836004)(6506007)(53546011)(478600001)(2906002)(66556008)(66946007)(6246003)(5660300002)(8676002)(4326008)(6512007)(91956017)(86362001)(36756003)(31686004)(8936002)(76116006)(256004)(81156014)(81166006)(316002)(486006)(31696002)(14444005)(25786009)(2501003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM4PR05MB3298;
- H:AM4PR05MB3313.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: VZ7faVEQ7VxRb09G7LsaAanTx2UamyQfBzQ6x/nET7URKQXwjHKi9qSGnCQNefflLZmNTucRtUfq8mTnq3ttj/AhhEvYLQ15BMCQ4RNLdbF9PiUH9R8V08J/s++6V721tOuaKX33I30hSEoMuzJWqSxvLUS9/DzS/++hBmzevPcn1C1qcWir5acWCPIAm27U4vs79wvhd+p/U2QuJ7fWhOP7G+LLv3OnjZlkYnQjQxjnnkgHCTS+0i1Z4JoPnzUtRre6PCSNZogYOT8Y+8k2XK0mt/Sg+p7+BvOVtw3sV6LUDGtKQpa8f0i95B3EJFe2xGnkx/F7rRGZT8aILvBGfoeemkU8fXYuco1LL2siIcQS1lF+XhHckk//hR9lAq6ffKW1xXDVFIoNDuMQli6Q4mgN2di6ANc8xgUYbXWyb9iMlqT2x4CLh18WXoAHjHgu
-Content-ID: <B8A696B78274B3409A549E6A010DC009@eurprd05.prod.outlook.com>
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 412767f5-5a56-474a-6d6d-08d769f8dc48
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Nov 2019 18:23:06.3315 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: y/bQyA1HN3/2UCHTWckk6VODJfYHjp6PgTN3bjAY/6BkPOvhF/fQStdKCtLXHhPVv+QguNV6Qh1ozokE6wF1aw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM4PR05MB3298
-X-Mailman-Approved-At: Fri, 15 Nov 2019 22:15:18 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net 06/13] mlx5: reject unsupported
- external timestamp flags
+Subject: [Intel-wired-lan] virtual-bus[v3]: Implementation of Virtual Bus
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,73 +76,766 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Hall, Christopher S" <christopher.s.hall@intel.com>,
- "brandon.streiff@ni.com" <brandon.streiff@ni.com>,
- "felipe.balbi@linux.intel.com" <felipe.balbi@linux.intel.com>,
- "sergei.shtylyov@cogentembedded.com" <sergei.shtylyov@cogentembedded.com>,
- Eugenia Emantayev <eugenia@mellanox.com>, Feras Daoud <ferasda@mellanox.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "stefan.sorensen@spectralink.com" <stefan.sorensen@spectralink.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/14/19 8:15 PM, Keller, Jacob E wrote:
->> -----Original Message-----
->> From: Saeed Mahameed <saeedm@mellanox.com>
->> Sent: Thursday, November 14, 2019 4:03 PM
->> To: Ariel Levkovich <lariel@mellanox.com>; richardcochran@gmail.com;
->> netdev@vger.kernel.org
->> Cc: Hall, Christopher S <christopher.s.hall@intel.com>; Eugenia Emantayev
->> <eugenia@mellanox.com>; davem@davemloft.net;
->> sergei.shtylyov@cogentembedded.com; Feras Daoud <ferasda@mellanox.com>;
->> stefan.sorensen@spectralink.com; brandon.streiff@ni.com; Keller, Jacob E
->> <jacob.e.keller@intel.com>; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>;
->> intel-wired-lan@lists.osuosl.org; felipe.balbi@linux.intel.com
->> Subject: Re: [PATCH net 06/13] mlx5: reject unsupported external timestamp
->> flags
->>
->> On Thu, 2019-11-14 at 10:45 -0800, Richard Cochran wrote:
->>> From: Jacob Keller <jacob.e.keller@intel.com>
->>>
->>> Fix the mlx5 core PTP support to explicitly reject any future flags
->>> that
->>> get added to the external timestamp request ioctl.
->>>
->>> In order to maintain currently functioning code, this patch accepts
->>> all
->>> three current flags. This is because the PTP_RISING_EDGE and
->>> PTP_FALLING_EDGE flags have unclear semantics and each driver seems
->>> to
->>> have interpreted them slightly differently.
->>>
->>> [ RC: I'm not 100% sure what this driver does, but if I'm not wrong
->>> it
->>>        follows the dp83640:
->>>
->> The driver will check if the PTP_FALLING_EDGE flag was set then it will
->> set it in HW, if not then it is going to default to PTP_RISING_EDGE, so
->> LGTM.
->>
->> Reviewed-by: Saeed Mahameed <saeedm@mellanox.com>
->>
->> But same story here, old tools that lazily set 0xffff or 0x0000 and
->> expected every thing to work.. again not sure if they do exist.
->>
->> Ariel please have a look at this patch.
->>
-> As long as they stick to the original ioctls this won't be a problem, because the v1 ioctl now explicitly clears unsupported bits before calling driver, so this check will pass. Obviously, this change should not be backported to earlier than 5.4 without also backporting that masking in the original ioctl functions.
->
-> Thanks,
-> Jake
->
-Agree.
+virtual-bus: Implementation of Virtual Bus
 
-Just a small suggestion, you can perform the check with simply 
-PTP_EXTTS_V1_VALID_FLAGS. Italready combines all the bits we need to check.
+From: Dave Ertman <david.m.ertman@intel.com>
 
+This is the initial implementation of the Virtual Bus,
+virtbus_device and virtbus_driver.  The virtual bus is
+a software based bus intended to support lightweight
+devices and drivers and provide matching between them
+and probing of the registered drivers.
+
+The primary purpose of the virual bus is to provide
+matching services and to pass the data pointer
+contained in the virtbus_device to the virtbus_driver
+during its probe call.  This will allow two separate
+kernel objects to match up and start communication.
+
+The bus will support probe/remove shutdown and
+suspend/resume callbacks.
+
+Kconfig and Makefile alterations are included
+
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Signed-off-by: Kiran Patil <kiran.patil@intel.com>
+---
+ Documentation/driver-api/virtual_bus.rst           |   76 +++++
+ drivers/bus/Kconfig                                |   14 +
+ drivers/bus/Makefile                               |    1 
+ drivers/bus/virtual_bus.c                          |  326 ++++++++++++++++++++
+ include/linux/virtual_bus.h                        |   55 +++
+ .../selftests/virtual_bus/virtual_bus_dev/Makefile |    7 
+ .../virtual_bus/virtual_bus_dev/virtual_bus_dev.c  |   67 ++++
+ .../selftests/virtual_bus/virtual_bus_drv/Makefile |    7 
+ .../virtual_bus/virtual_bus_drv/virtual_bus_drv.c  |  101 ++++++
+ 9 files changed, 654 insertions(+)
+ create mode 100644 Documentation/driver-api/virtual_bus.rst
+ create mode 100644 drivers/bus/virtual_bus.c
+ create mode 100644 include/linux/virtual_bus.h
+ create mode 100644 tools/testing/selftests/virtual_bus/virtual_bus_dev/Makefile
+ create mode 100644 tools/testing/selftests/virtual_bus/virtual_bus_dev/virtual_bus_dev.c
+ create mode 100644 tools/testing/selftests/virtual_bus/virtual_bus_drv/Makefile
+ create mode 100644 tools/testing/selftests/virtual_bus/virtual_bus_drv/virtual_bus_drv.c
+
+diff --git a/Documentation/driver-api/virtual_bus.rst b/Documentation/driver-api/virtual_bus.rst
+new file mode 100644
+index 000000000000..970e06267284
+--- /dev/null
++++ b/Documentation/driver-api/virtual_bus.rst
+@@ -0,0 +1,76 @@
++===============================
++Virtual Bus Devices and Drivers
++===============================
++
++See <linux/virtual_bus.h> for the models for virtbus_device and virtbus_driver.
++This bus is meant to be a lightweight software based bus to attach generic
++devices and drivers to so that a chunk of data can be passed between them.
++
++One use case example is an rdma driver needing to connect with several
++different types of PCI LAN devices to be able to request resources from
++them (queue sets).  Each LAN driver that supports rdma will register a
++virtbus_device on the virtual bus for each physical function.  The rdma
++driver will register as a virtbus_driver on the virtual bus to be
++matched up with multiple virtbus_devices and receive a pointer to a
++struct containing the callbacks that the PCI LAN drivers support for
++registering with them.
++
++Sections in this document:
++        Virtbus devices
++        Virtbus drivers
++        Device Enumeration
++        Device naming and driver binding
++        Virtual Bus API entry points
++
++Virtbus devices
++~~~~~~~~~~~~~~~
++Virtbus_devices are lightweight objects that support the minimal device
++functionality.  Devices will accept a name, and then an automatically
++generated index is concatenated onto it for the virtbus_device->name.
++
++The memory backing the "void *data" element of the virtbus_device is
++expected to be allocated and freed outside the context of the bus
++operations.  This memory is also expected to remain viable for the
++duration of the time that the virtbus_device is registered to the
++virtual bus. (e.g. from before the virtbus_dev_register until after
++the paired virtbus_dev_unregister).
++
++The provided API for virtbus_dev_alloc is an efficient way of allocating
++the memory for the virtbus_device (except for the data element) and
++automatically freeing it when the device is removed from the bus.
++
++Virtbus drivers
++~~~~~~~~~~~~~~~
++Virtbus drivers register with the virtual bus to be matched with virtbus
++devices.  They expect to be registered with a probe and remove callback,
++and also support shutdown, suspend, and resume callbacks.  They otherwise
++follow the standard driver behavior of having discovery and enumeration
++handled in the bus infrastructure.
++
++Virtbus drivers register themselves with the API entry point virtbus_drv_reg
++and unregister with virtbus_drv_unreg.
++
++Device Enumeration
++~~~~~~~~~~~~~~~~~~
++Enumeration is handled automatically by the bus infrastructure via the
++ida_simple methods.
++
++Device naming and driver binding
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++The virtbus_device.dev.name is the canonical name for the device. It is
++built from two other parts:
++
++        - virtbus_device.name (also used for matching).
++        - virtbus_device.id (generated automatically from ida_simple calls)
++
++This allows for multiple virtbus_devices with the same name, which will all
++be matched to the same virtbus_driver. Driver binding is performed by the
++driver core, invoking driver probe() after finding a match between device and driver.
++
++Virtual Bus API entry points
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++struct virtbus_device *virtbus_dev_alloc(const char *name, void *data)
++int virtbus_dev_register(struct virtbus_device *vdev)
++void virtbus_dev_unregister(struct virtbus_device *vdev)
++int virtbus_drv_register(struct virtbus_driver *vdrv, struct module *owner)
++void virtbus_drv_unregister(struct virtbus_driver *vdrv)
+diff --git a/drivers/bus/Kconfig b/drivers/bus/Kconfig
+index 6b331061d34b..30cef35b0c30 100644
+--- a/drivers/bus/Kconfig
++++ b/drivers/bus/Kconfig
+@@ -193,4 +193,18 @@ config DA8XX_MSTPRI
+ 
+ source "drivers/bus/fsl-mc/Kconfig"
+ 
++config VIRTUAL_BUS
++       tristate "lightweight Virtual Bus"
++       depends on PM
++       help
++         Provides a lightweight bus for virtbus_devices to be added to it
++         and virtbus_drivers to be registered on it.  Will create a match
++         between the driver and device, then call the driver's probe with
++         the virtbus_device's struct (including a pointer for data).
++         One example is the irdma driver needing to connect with various
++         PCI LAN drivers to request resources (queues) to be able to perform
++         its function.  The data in the virtbus_device created by the
++         PCI LAN driver is a set of ops (function pointers) for the irdma
++         driver to use to register and communicate with the PCI LAN driver.
++
+ endmenu
+diff --git a/drivers/bus/Makefile b/drivers/bus/Makefile
+index 16b43d3468c6..0b0ba53cbe5b 100644
+--- a/drivers/bus/Makefile
++++ b/drivers/bus/Makefile
+@@ -33,3 +33,4 @@ obj-$(CONFIG_UNIPHIER_SYSTEM_BUS)	+= uniphier-system-bus.o
+ obj-$(CONFIG_VEXPRESS_CONFIG)	+= vexpress-config.o
+ 
+ obj-$(CONFIG_DA8XX_MSTPRI)	+= da8xx-mstpri.o
++obj-$(CONFIG_VIRTUAL_BUS)	+= virtual_bus.o
+diff --git a/drivers/bus/virtual_bus.c b/drivers/bus/virtual_bus.c
+new file mode 100644
+index 000000000000..c6eab1658391
+--- /dev/null
++++ b/drivers/bus/virtual_bus.c
+@@ -0,0 +1,326 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * virtual_bus.c - lightweight software based bus for virtual devices
++ *
++ * Copyright (c) 2019-20 Intel Corporation
++ *
++ * Please see Documentation/driver-api/virtual_bus.rst for
++ * more information
++ */
++
++#include <linux/string.h>
++#include <linux/virtual_bus.h>
++#include <linux/of_irq.h>
++#include <linux/module.h>
++#include <linux/init.h>
++#include <linux/pm_runtime.h>
++#include <linux/pm_domain.h>
++#include <linux/acpi.h>
++#include <linux/device.h>
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("Lightweight Virtual Bus");
++MODULE_AUTHOR("David Ertman <david.m.ertman@intel.com>");
++MODULE_AUTHOR("Kiran Patil <kiran.patil@intel.com>");
++
++static DEFINE_IDA(virtbus_dev_ida);
++
++static const
++struct virtbus_dev_id *virtbus_match_id(const struct virtbus_dev_id *id,
++					struct virtbus_device *vdev)
++{
++	while (id->name[0]) {
++		if (!strcmp(vdev->name, id->name)) {
++			vdev->dev_id = id;
++			return id;
++		}
++		id++;
++	}
++	return NULL;
++}
++
++#define to_virtbus_dev(x)	(container_of((x), struct virtbus_device, dev))
++#define to_virtbus_drv(x)	(container_of((x), struct virtbus_driver, \
++				 driver))
++
++/**
++ * virtbus_match - bind virtbus device to virtbus driver
++ * @dev: device
++ * @drv: driver
++ *
++ * Virtbus device IDs are always in "<name>.<instance>" format.
++ * Instances are automatically selected through an ida_simple_get so
++ * are positive integers. Names are taken from the device name field.
++ * Driver IDs are simple <name>.  Need to extract the name from the
++ * Virtual Device compare to name of the driver.
++ */
++static int virtbus_match(struct device *dev, struct device_driver *drv)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(drv);
++	struct virtbus_device *vdev = to_virtbus_dev(dev);
++
++	if (vdrv->id_table)
++		return virtbus_match_id(vdrv->id_table, vdev) != NULL;
++
++	return !strcmp(vdev->name, drv->name);
++}
++
++/**
++ * virtbus_probe - call probe of the virtbus_drv
++ * @dev: device struct
++ */
++static int virtbus_probe(struct device *dev)
++{
++	if (dev->driver->probe)
++		return dev->driver->probe(dev);
++
++	return 0;
++}
++
++static int virtbus_remove(struct device *dev)
++{
++	if (dev->driver->remove)
++		return dev->driver->remove(dev);
++
++	return 0;
++}
++
++static void virtbus_shutdown(struct device *dev)
++{
++	if (dev->driver->shutdown)
++		dev->driver->shutdown(dev);
++}
++
++static int virtbus_suspend(struct device *dev, pm_message_t state)
++{
++	if (dev->driver->suspend)
++		return dev->driver->suspend(dev, state);
++
++	return 0;
++}
++
++static int virtbus_resume(struct device *dev)
++{
++	if (dev->driver->resume)
++		return dev->driver->resume(dev);
++
++	return 0;
++}
++
++struct bus_type virtual_bus_type = {
++	.name		= "virtbus",
++	.match		= virtbus_match,
++	.probe		= virtbus_probe,
++	.remove		= virtbus_remove,
++	.shutdown	= virtbus_shutdown,
++	.suspend	= virtbus_suspend,
++	.resume		= virtbus_resume,
++};
++
++/**
++ * virtbus_dev_register - add a virtual bus device
++ * @vdev: virtual bus device to add
++ */
++int virtbus_dev_register(struct virtbus_device *vdev)
++{
++	int ret;
++
++	if (!vdev)
++		return -EINVAL;
++
++	device_initialize(&vdev->dev);
++
++	vdev->dev.bus = &virtual_bus_type;
++	/* All device IDs are automatically allocated */
++	ret = ida_simple_get(&virtbus_dev_ida, 0, 0, GFP_KERNEL);
++	if (ret < 0)
++		return ret;
++
++	vdev->id = ret;
++	dev_set_name(&vdev->dev, "%s.%d", vdev->name, vdev->id);
++
++	dev_dbg(&vdev->dev, "Registering VirtBus device '%s'\n",
++		dev_name(&vdev->dev));
++
++	ret = device_add(&vdev->dev);
++	if (!ret)
++		return ret;
++
++	/* Error adding virtual device */
++	device_del(&vdev->dev);
++	ida_simple_remove(&virtbus_dev_ida, vdev->id);
++	vdev->id = VIRTBUS_DEVID_NONE;
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(virtbus_dev_register);
++
++/**
++ * virtbus_dev_unregister - remove a virtual bus device
++ * vdev: virtual bus device we are removing
++ */
++void virtbus_dev_unregister(struct virtbus_device *vdev)
++{
++	if (!IS_ERR_OR_NULL(vdev)) {
++		device_del(&vdev->dev);
++
++		ida_simple_remove(&virtbus_dev_ida, vdev->id);
++		vdev->id = VIRTBUS_DEVID_NONE;
++	}
++}
++EXPORT_SYMBOL_GPL(virtbus_dev_unregister);
++
++struct virtbus_object {
++	struct virtbus_device vdev;
++	char name[];
++};
++
++/**
++ * virtbus_dev_release - Destroy a virtbus device
++ * @vdev: virtual device to release
++ *
++ * Note that the vdev->data which is separately allocated needs to be
++ * separately freed on it own.
++ */
++static void virtbus_dev_release(struct device *dev)
++{
++	struct virtbus_object *vo = container_of(dev, struct virtbus_object,
++						 vdev.dev);
++
++	kfree(vo);
++}
++
++/**
++ * virtbus_dev_alloc - allocate a virtbus device
++ * @name: name to associate with the vdev
++ * @data: pointer to data to be associated with this device
++ */
++struct virtbus_device *virtbus_dev_alloc(const char *name, void *data)
++{
++	struct virtbus_object *vo;
++
++	/* Create a virtbus object to contain the vdev and name.  This
++	 * avoids a problem with the const attribute of name in the vdev.
++	 * The virtbus_object will be allocated here and freed in the
++	 * release function.
++	 */
++	vo = kzalloc(sizeof(*vo) + strlen(name) + 1, GFP_KERNEL);
++	if (!vo)
++		return NULL;
++
++	strcpy(vo->name, name);
++	vo->vdev.name = vo->name;
++	vo->vdev.data = data;
++	vo->vdev.dev.release = virtbus_dev_release;
++
++	return &vo->vdev;
++}
++EXPORT_SYMBOL_GPL(virtbus_dev_alloc);
++
++static int virtbus_drv_probe(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++	int ret;
++
++	ret = dev_pm_domain_attach(_dev, true);
++	if (ret) {
++		dev_warn(_dev, "Failed to attatch to PM Domain : %d\n", ret);
++		return ret;
++	}
++
++	if (vdrv->probe) {
++		ret = vdrv->probe(vdev);
++		if (ret)
++			dev_pm_domain_detach(_dev, true);
++	}
++
++	return ret;
++}
++
++static int virtbus_drv_remove(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++	int ret = 0;
++
++	if (vdrv->remove)
++		ret = vdrv->remove(vdev);
++
++	dev_pm_domain_detach(_dev, true);
++
++	return ret;
++}
++
++static void virtbus_drv_shutdown(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++
++	if (vdrv->shutdown)
++		vdrv->shutdown(vdev);
++}
++
++static int virtbus_drv_suspend(struct device *_dev, pm_message_t state)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++
++	if (vdrv->suspend)
++		return vdrv->suspend(vdev, state);
++
++	return 0;
++}
++
++static int virtbus_drv_resume(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++
++	if (vdrv->resume)
++		return vdrv->resume(vdev);
++
++	return 0;
++}
++
++/**
++ * __virtbus_drv_register - register a driver for virtual bus devices
++ * @vdrv: virtbus_driver structure
++ * @owner: owning module/driver
++ */
++int __virtbus_drv_register(struct virtbus_driver *vdrv, struct module *owner)
++{
++	vdrv->driver.owner = owner;
++	vdrv->driver.bus = &virtual_bus_type;
++	vdrv->driver.probe = virtbus_drv_probe;
++	vdrv->driver.remove = virtbus_drv_remove;
++	vdrv->driver.shutdown = virtbus_drv_shutdown;
++	vdrv->driver.suspend = virtbus_drv_suspend;
++	vdrv->driver.resume = virtbus_drv_resume;
++
++	return driver_register(&vdrv->driver);
++}
++EXPORT_SYMBOL_GPL(__virtbus_drv_register);
++
++/**
++ * virtbus_drv_unregister - unregister a driver for virtual bus devices
++ * @drv: virtbus_driver structure
++ */
++void virtbus_drv_unregister(struct virtbus_driver *vdrv)
++{
++	driver_unregister(&vdrv->driver);
++}
++EXPORT_SYMBOL_GPL(virtbus_drv_unregister);
++
++static int __init virtual_bus_init(void)
++{
++	return bus_register(&virtual_bus_type);
++}
++
++static void __exit virtual_bus_exit(void)
++{
++	bus_unregister(&virtual_bus_type);
++}
++
++module_init(virtual_bus_init);
++module_exit(virtual_bus_exit);
+diff --git a/include/linux/virtual_bus.h b/include/linux/virtual_bus.h
+new file mode 100644
+index 000000000000..b6f2406180f8
+--- /dev/null
++++ b/include/linux/virtual_bus.h
+@@ -0,0 +1,55 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * virtual_bus.h - lightweight software bus
++ *
++ * Copyright (c) 2019-20 Intel Corporation
++ *
++ * Please see Documentation/driver-api/virtual_bus.rst for more information
++ */
++
++#ifndef _VIRTUAL_BUS_H_
++#define _VIRTUAL_BUS_H_
++
++#include <linux/device.h>
++
++#define VIRTBUS_DEVID_NONE	(-1)
++#define VIRTBUS_NAME_SIZE	20
++
++struct virtbus_dev_id {
++	char name[VIRTBUS_NAME_SIZE];
++	u64 driver_data;
++};
++
++struct virtbus_device {
++	const char			*name;
++	int				id;
++	const struct virtbus_dev_id	*dev_id;
++	struct device			dev;
++	void				*data;
++};
++
++/* If the driver uses a id_table to match with virtbus_devices, then the
++ * memory for the table is expected to remain allocated for the duration
++ * of the pairing between driver and device.  The pointer for the matching
++ * element will be copied to the dev_id field of the virtbus_device.
++ */
++struct virtbus_driver {
++	int (*probe)(struct virtbus_device *);
++	int (*remove)(struct virtbus_device *);
++	void (*shutdown)(struct virtbus_device *);
++	int (*suspend)(struct virtbus_device *, pm_message_t);
++	int (*resume)(struct virtbus_device *);
++	struct device_driver driver;
++	const struct virtbus_dev_id *id_table;
++};
++
++int virtbus_dev_register(struct virtbus_device *vdev);
++void virtbus_dev_unregister(struct virtbus_device *vdev);
++struct virtbus_device *virtbus_dev_alloc(const char *name, void *devdata);
++int __virtbus_drv_register(struct virtbus_driver *vdrv, struct module *owner);
++void virtbus_drv_unregister(struct virtbus_driver *vdrv);
++
++#define virtbus_drv_register(vdrv) \
++	__virtbus_drv_register(vdrv, THIS_MODULE)
++
++#endif /* _VIRTUAL_BUS_H_ */
+diff --git a/tools/testing/selftests/virtual_bus/virtual_bus_dev/Makefile b/tools/testing/selftests/virtual_bus/virtual_bus_dev/Makefile
+new file mode 100644
+index 000000000000..ddd5088eb26b
+--- /dev/null
++++ b/tools/testing/selftests/virtual_bus/virtual_bus_dev/Makefile
+@@ -0,0 +1,7 @@
++obj-m += virtual_bus_dev.o
++
++all:
++	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
++
++clean:
++	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+diff --git a/tools/testing/selftests/virtual_bus/virtual_bus_dev/virtual_bus_dev.c b/tools/testing/selftests/virtual_bus/virtual_bus_dev/virtual_bus_dev.c
+new file mode 100644
+index 000000000000..29b456d0a158
+--- /dev/null
++++ b/tools/testing/selftests/virtual_bus/virtual_bus_dev/virtual_bus_dev.c
+@@ -0,0 +1,67 @@
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/module.h>
++#include <linux/virtual_bus.h>
++#include <linux/string.h>
++#include <linux/slab.h>
++
++MODULE_LICENSE("GPL v2");
++MODULE_AUTHOR("Dave Ertman");
++MODULE_DESCRIPTION("Test to create a device on virtual bus");
++MODULE_VERSION("1.0");
++
++static struct virtbus_device *vdev;
++static char *data;
++
++static int __init test_dev_init(void)
++{
++	int ret = 0;
++	static char *name;
++
++	printk(KERN_INFO "Loading Virtual Bus Test Device\n");
++
++	name = kzalloc(VIRTBUS_NAME_SIZE, GFP_KERNEL);
++	if (!name)
++		return -ENOMEM;
++	strcpy(name, "virtual_bus_dev");
++
++	data = kzalloc(128, GFP_KERNEL);
++	if (!data) {
++		kfree(name);
++		return -ENOMEM;
++	}
++	strcpy(data, "This is my data string - isn't it wonderful!");
++
++	vdev = virtbus_dev_alloc(name, data);
++	if (!vdev) {
++		kfree(name);
++		kfree(data);
++		return -EINVAL;
++	}
++
++	printk(KERN_ERR "Virtbus Device allocated:\n\t%s\n\t%s\n", vdev->name,
++	       (char *)vdev->data);
++
++	ret = virtbus_dev_register(vdev);
++	kfree(name);
++	if(ret) {
++		printk(KERN_ERR "FAILED TO ADD VIRTBUS DEVICE %d\n", ret);
++		return ret;
++	}
++
++	printk(KERN_INFO "Virtual Device created\n");
++	return ret;
++}
++
++static void __exit test_dev_exit(void)
++{
++	printk(KERN_INFO "Exiting Virtual Bus Test Device");
++
++	virtbus_dev_unregister(vdev);
++	kfree(data);
++
++	printk(KERN_INFO "Virtual Bus Test Device removed\n");
++}
++
++module_init(test_dev_init);
++module_exit(test_dev_exit);
+diff --git a/tools/testing/selftests/virtual_bus/virtual_bus_drv/Makefile b/tools/testing/selftests/virtual_bus/virtual_bus_drv/Makefile
+new file mode 100644
+index 000000000000..a4b7467f7878
+--- /dev/null
++++ b/tools/testing/selftests/virtual_bus/virtual_bus_drv/Makefile
+@@ -0,0 +1,7 @@
++obj-m += virtual_bus_drv.o
++
++all:
++	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
++
++clean:
++	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+diff --git a/tools/testing/selftests/virtual_bus/virtual_bus_drv/virtual_bus_drv.c b/tools/testing/selftests/virtual_bus/virtual_bus_drv/virtual_bus_drv.c
+new file mode 100644
+index 000000000000..202288809b1c
+--- /dev/null
++++ b/tools/testing/selftests/virtual_bus/virtual_bus_drv/virtual_bus_drv.c
+@@ -0,0 +1,101 @@
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/module.h>
++#include <linux/virtual_bus.h>
++#include <linux/string.h>
++#include <linux/slab.h>
++
++MODULE_LICENSE("GPL");
++MODULE_AUTHOR("Dave Ertman");
++MODULE_DESCRIPTION("Test to register a driver on virtual bus");
++MODULE_VERSION("1.0");
++
++static int td_probe(struct virtbus_device *vdev)
++{
++	printk(KERN_ERR "VIRTBUS DRIVER PROBED\n");
++	printk(KERN_ERR "DATA IS %s", vdev->data ? "NOT NULL" : "NULL");
++	if (vdev->dev_id) {
++		printk(KERN_ERR "DEV_ID->DATA 0x%08x\n",
++			(uint)vdev->dev_id->driver_data);
++		if (vdev->dev_id->driver_data == 1)
++			printk(KERN_ERR "DATA STRING: %s\n",
++			       (char *)vdev->data);
++	} else {
++		printk(KERN_ERR "DEV_ID->DATA is NULL\n");
++	}
++
++	return 0;
++}
++
++static int td_remove(struct virtbus_device *vdev)
++{
++	printk(KERN_ERR "VIRTBUS DRIVER REMOVED\n");
++	return 0;
++}
++
++static void td_shutdown(struct virtbus_device *vdev)
++{
++	printk(KERN_ERR "VIRTBUS DRIVER SHUTDOWN\n");
++}
++
++static const struct virtbus_dev_id vdev_id_table[] = {
++
++	{
++		.name = "NOT THE NAME",
++		.driver_data = 0x00000000,
++	},
++	{
++		.name = "virtual_bus_dev",
++		.driver_data = 0x00000001,
++	},
++	{
++		.name = "ice_rdma",
++		.driver_data = 0x00000002,
++	},
++	{
++		.name = "YET AGAIN NOT NAME",
++		.driver_data = 0x00000003,
++	},
++};
++
++static struct virtbus_driver vdrv = {
++	.probe = td_probe,
++	.remove = td_remove,
++	.shutdown = td_shutdown,
++	.driver = {
++		.name = "virtual_bus_dev",
++	},
++};
++
++static int __init test_drv_init(void)
++{
++	int ret;
++
++	printk(KERN_INFO "Registering Virtual Bus Test Driver\n");
++
++	/* To do a simple match, leave the id_table as NULL */
++	vdrv.id_table = &vdev_id_table[0];
++
++	printk(KERN_ERR "name of 0 is %s\n", vdrv.id_table->name);
++
++	ret = virtbus_drv_register(&vdrv);
++
++	if (!ret)
++		printk(KERN_INFO "Virtual Driver registered\n");
++	else
++		printk(KERN_INFO "Virtual Driver FAILED!!\n");
++
++	return ret;
++}
++
++static void __exit test_drv_exit(void)
++{
++	printk(KERN_INFO "Exiting Virtual Bus Test Driver");
++
++	virtbus_drv_unregister(&vdrv);
++
++	printk(KERN_INFO "Virtual Bus Test Driver removed\n");
++}
++
++module_init(test_drv_init);
++module_exit(test_drv_exit);
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
