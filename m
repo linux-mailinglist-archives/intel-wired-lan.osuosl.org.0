@@ -2,75 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6C73FD24E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2019 02:15:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E0AAFD250
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2019 02:17:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 55E7D88EF0;
-	Fri, 15 Nov 2019 01:15:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 72DA188F13;
+	Fri, 15 Nov 2019 01:17:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FcLO9unsYunc; Fri, 15 Nov 2019 01:15:35 +0000 (UTC)
+	with ESMTP id t9p-5zhTnU-x; Fri, 15 Nov 2019 01:17:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DA2E488E24;
-	Fri, 15 Nov 2019 01:15:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1972E88EDF;
+	Fri, 15 Nov 2019 01:17:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6A8611BF406
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 01:15:31 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C3061BF406
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 01:17:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5CA6087D38
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 01:15:31 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6634322DC7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 01:17:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AfNrUnOVXTyC for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Nov 2019 01:15:30 +0000 (UTC)
+ with ESMTP id bq62xadVRchk for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Nov 2019 01:17:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9F1E287CAB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 01:15:30 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2DEE622DB0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2019 01:17:15 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 14 Nov 2019 17:15:30 -0800
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2019 17:17:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,306,1569308400"; d="scan'208";a="214666950"
-Received: from orsmsx108.amr.corp.intel.com ([10.22.240.6])
- by fmsmga001.fm.intel.com with ESMTP; 14 Nov 2019 17:15:29 -0800
-Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
- ORSMSX108.amr.corp.intel.com (10.22.240.6) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 14 Nov 2019 17:15:29 -0800
-Received: from orsmsx121.amr.corp.intel.com ([169.254.10.169]) by
- ORSMSX125.amr.corp.intel.com ([169.254.3.139]) with mapi id 14.03.0439.000;
- Thu, 14 Nov 2019 17:15:29 -0800
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Saeed Mahameed <saeedm@mellanox.com>, Ariel Levkovich
- <lariel@mellanox.com>, "richardcochran@gmail.com" <richardcochran@gmail.com>, 
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [PATCH net 06/13] mlx5: reject unsupported external timestamp
- flags
-Thread-Index: AQHVmxuu8tFLlm8e7EeBgcX3fQ5mDaeL4AsA//+Nx0A=
-Date: Fri, 15 Nov 2019 01:15:27 +0000
-Message-ID: <02874ECE860811409154E81DA85FBB5896990AC2@ORSMSX121.amr.corp.intel.com>
-References: <20191114184507.18937-7-richardcochran@gmail.com>
- <c90050bd6a63ef3a6f0c7ea999f44ec51c07e917.camel@mellanox.com>
-In-Reply-To: <c90050bd6a63ef3a6f0c7ea999f44ec51c07e917.camel@mellanox.com>
+X-IronPort-AV: E=Sophos;i="5.68,306,1569308400"; d="scan'208";a="406520055"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga006.fm.intel.com with ESMTP; 14 Nov 2019 17:17:13 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 14 Nov 2019 17:17:12 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 14 Nov 2019 17:17:12 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Thu, 14 Nov 2019 17:17:12 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select bitmap
+ validation
+Thread-Index: AQHVmliIkEH6hjlYKEKnKZy6zbRV3qeLb8rA
+Date: Fri, 15 Nov 2019 01:17:12 +0000
+Message-ID: <d05e40a7ad5246cdba8f63a6825ce9d9@intel.com>
+References: <20191113192817.531297-1-jeffrey.t.kirsher@intel.com>
+In-Reply-To: <20191113192817.531297-1-jeffrey.t.kirsher@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDViNmVlYzgtMDI3Ny00NTkxLWJjMTEtMTU5ODQ0ZDY4ZjEyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTHNnaTVlV1NOakN6ZCtudm1mT1NMa0k4NFVcL2hyUnBTZW9IdHppR0Y1c2MzdEdnMnFpYlBZN2VwcFRlblZwQVMifQ==
-x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDBkNjhhZjktMmFhZC00YWE1LTg3NjMtZDI2MDZjZWNkODlkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNTFPMmhkYk9IdVhyUlVsVCtlaFwvbllGeCtOdGloT0t4M2NWRlg3aThBcTBvQ3FoN0pYMkJ5QjBCWVZHU1wvUk10In0=
 dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net 06/13] mlx5: reject unsupported
- external timestamp flags
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select
+ bitmap validation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,69 +85,107 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Hall, Christopher S" <christopher.s.hall@intel.com>,
- "brandon.streiff@ni.com" <brandon.streiff@ni.com>,
- "felipe.balbi@linux.intel.com" <felipe.balbi@linux.intel.com>,
- "sergei.shtylyov@cogentembedded.com" <sergei.shtylyov@cogentembedded.com>,
- Eugenia Emantayev <eugenia@mellanox.com>, Feras Daoud <ferasda@mellanox.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "stefan.sorensen@spectralink.com" <stefan.sorensen@spectralink.com>
+Cc: "Creeley, Brett" <brett.creeley@intel.com>,
+ Arkady Gilinksky <arkady.gilinsky@harmonicinc.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Comments inline
+
 > -----Original Message-----
-> From: Saeed Mahameed <saeedm@mellanox.com>
-> Sent: Thursday, November 14, 2019 4:03 PM
-> To: Ariel Levkovich <lariel@mellanox.com>; richardcochran@gmail.com;
-> netdev@vger.kernel.org
-> Cc: Hall, Christopher S <christopher.s.hall@intel.com>; Eugenia Emantayev
-> <eugenia@mellanox.com>; davem@davemloft.net;
-> sergei.shtylyov@cogentembedded.com; Feras Daoud <ferasda@mellanox.com>;
-> stefan.sorensen@spectralink.com; brandon.streiff@ni.com; Keller, Jacob E
-> <jacob.e.keller@intel.com>; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>;
-> intel-wired-lan@lists.osuosl.org; felipe.balbi@linux.intel.com
-> Subject: Re: [PATCH net 06/13] mlx5: reject unsupported external timestamp
-> flags
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Jeff Kirsher
+> Sent: Wednesday, November 13, 2019 11:28 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Creeley, Brett <brett.creeley@intel.com>; Arkady Gilinksky
+> <arkady.gilinsky@harmonicinc.com>
+> Subject: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select bitmap
+> validation
 > 
-> On Thu, 2019-11-14 at 10:45 -0800, Richard Cochran wrote:
-> > From: Jacob Keller <jacob.e.keller@intel.com>
-> >
-> > Fix the mlx5 core PTP support to explicitly reject any future flags
-> > that
-> > get added to the external timestamp request ioctl.
-> >
-> > In order to maintain currently functioning code, this patch accepts
-> > all
-> > three current flags. This is because the PTP_RISING_EDGE and
-> > PTP_FALLING_EDGE flags have unclear semantics and each driver seems
-> > to
-> > have interpreted them slightly differently.
-> >
-> > [ RC: I'm not 100% sure what this driver does, but if I'm not wrong
-> > it
-> >       follows the dp83640:
-> >
+> From: Brett Creeley <brett.creeley@intel.com>
 > 
-> The driver will check if the PTP_FALLING_EDGE flag was set then it will
-> set it in HW, if not then it is going to default to PTP_RISING_EDGE, so
-> LGTM.
+> Currently in i40e_vc_disable_queues_msg() we are incorrectly validating the
+> virtchnl queue select bitmaps. The virtchnl_queue_select rx_queues and
+> tx_queue bitmap is being compared against ICE_MAX_VF_QUEUES, but the
+> problem is that these bitmaps can have a value greater than
+> I40E_MAX_VF_QUEUES.
+> Fix this by comparing the bitmaps against BIT(I40E_MAX_VF_QUEUES).
 > 
-> Reviewed-by: Saeed Mahameed <saeedm@mellanox.com>
+> Also, add the function i40e_vc_validate_vqs_bitmaps() that checks to see if
+> both virtchnl_queue_select bitmaps are empty along with checking that the
+> bitmaps only have valid bits set. This function can then be used in both the
+> queue enable and disable flows.
 > 
-> But same story here, old tools that lazily set 0xffff or 0x0000 and
-> expected every thing to work.. again not sure if they do exist.
+> Suggested-by: Arkady Gilinksky <arkady.gilinsky@harmonicinc.com>
+> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+> ---
+>  .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 22 +++++++++++++++----
+>  1 file changed, 18 insertions(+), 4 deletions(-)
 > 
-> Ariel please have a look at this patch.
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> index 6d75a35acb67..275702d8cf7a 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> @@ -2321,6 +2321,22 @@ static int i40e_ctrl_vf_rx_rings(struct i40e_vsi *vsi,
+> unsigned long q_map,
+>  	return ret;
+>  }
 > 
+> +/**
+> + * i40e_vc_validate_vqs_bitmaps - validate Rx/Tx queue bitmaps from
+> +VIRTHCHNL
+> + * @vqs: virtchnl_queue_select structure containing bitmaps to validate
+> + *
+> + * Returns true if validation was successful, else false.
+> + */
+> +static bool i40e_vc_validate_vqs_bitmaps(struct virtchnl_queue_select
+> +*vqs) {
+> +	if ((!vqs->rx_queues && !vqs->tx_queues) ||
+> +	    vqs->rx_queue >= BIT(I40E_MAX_VF_QUEUES) ||
+> +	    vqs->tx_queue >= BIT(I40E_MAX_VF_QUEUES))
 
-As long as they stick to the original ioctls this won't be a problem, because the v1 ioctl now explicitly clears unsupported bits before calling driver, so this check will pass. Obviously, this change should not be backported to earlier than 5.4 without also backporting that masking in the original ioctl functions.
+Should these not be "rx_queues" and "tx_queues"? 
 
-Thanks,
-Jake
-
+> +	       return false;
+> +
+> +	return true;
+> +}
+> +
+>  /**
+>   * i40e_vc_enable_queues_msg
+>   * @vf: pointer to the VF info
+> @@ -2346,7 +2362,7 @@ static int i40e_vc_enable_queues_msg(struct
+> i40e_vf *vf, u8 *msg)
+>  		goto error_param;
+>  	}
+> 
+> -	if ((0 == vqs->rx_queues) && (0 == vqs->tx_queues)) {
+> +	if (i40e_vc_validate_vqs_bitmaps(vqs)) {
+>  		aq_ret = I40E_ERR_PARAM;
+>  		goto error_param;
+>  	}
+> @@ -2408,9 +2424,7 @@ static int i40e_vc_disable_queues_msg(struct
+> i40e_vf *vf, u8 *msg)
+>  		goto error_param;
+>  	}
+> 
+> -	if ((vqs->rx_queues == 0 && vqs->tx_queues == 0) ||
+> -	    vqs->rx_queues > I40E_MAX_VF_QUEUES ||
+> -	    vqs->tx_queues > I40E_MAX_VF_QUEUES) {
+> +	if (i40e_vc_validate_vqs_bitmaps(vqs)) {
+>  		aq_ret = I40E_ERR_PARAM;
+>  		goto error_param;
+>  	}
+> --
+> 2.23.0
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
