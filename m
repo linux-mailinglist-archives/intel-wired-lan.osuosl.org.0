@@ -1,67 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A9F2FEA47
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Nov 2019 03:43:26 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4591CFF61A
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 17 Nov 2019 00:20:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DF38F20493;
-	Sat, 16 Nov 2019 02:43:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3889986081;
+	Sat, 16 Nov 2019 23:20:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UaU3CEOXpp32; Sat, 16 Nov 2019 02:43:24 +0000 (UTC)
+	with ESMTP id 2DopXll4JJBx; Sat, 16 Nov 2019 23:20:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D179D2075B;
-	Sat, 16 Nov 2019 02:43:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 464598608D;
+	Sat, 16 Nov 2019 23:20:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0A76A1BF38D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 02:43:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A7B9E1BF83A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 23:20:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D431D204B3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 02:43:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A1416203FE
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 23:20:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YyeQraKswf7m for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Nov 2019 02:43:20 +0000 (UTC)
+ with ESMTP id TSmppgSTehGD for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Nov 2019 23:20:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 8049520493
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 02:43:20 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 59014203BB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 23:20:20 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Nov 2019 18:43:19 -0800
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2019 15:20:19 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,310,1569308400"; d="scan'208";a="195573070"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga007.jf.intel.com with ESMTP; 15 Nov 2019 18:43:19 -0800
-Received: from orsmsx114.amr.corp.intel.com ([169.254.8.67]) by
- ORSMSX107.amr.corp.intel.com ([169.254.1.224]) with mapi id 14.03.0439.000;
- Fri, 15 Nov 2019 18:43:19 -0800
-From: "Brandeburg, Jesse" <jesse.brandeburg@intel.com>
-To: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select
- bitmap validation
-Thread-Index: AQHVmliJTvRran1eoUyUsHMyoVqbKKeL9jwAgAF6wgCAAARngP//pR6t
-Date: Sat, 16 Nov 2019 02:43:18 +0000
-Message-ID: <9C221CD4-702F-4A6F-8475-2A67012ADD10@intel.com>
-References: <20191113192817.531297-1-jeffrey.t.kirsher@intel.com>
- <d05e40a7ad5246cdba8f63a6825ce9d9@intel.com>
- <309B89C4C689E141A5FF6A0C5FB2118B971758C2@ORSMSX103.amr.corp.intel.com>,
- <897250446bee4cdc987a9478db97873a@intel.com>
-In-Reply-To: <897250446bee4cdc987a9478db97873a@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
+X-IronPort-AV: E=Sophos;i="5.68,314,1569308400"; d="scan'208";a="230806332"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 16 Nov 2019 15:20:18 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1iW7MX-0008b5-Tj; Sun, 17 Nov 2019 07:20:17 +0800
+Date: Sun, 17 Nov 2019 07:19:41 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5dd0840d.oAUsKfjFsg8OLdka%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select
- bitmap validation
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD INCOMPLETE
+ d46ca81b03f8233b3f228aea8cad3a4834cb821c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,129 +63,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Creeley, Brett" <brett.creeley@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Arkady Gilinksky <arkady.gilinsky@harmonicinc.com>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Brett is out on vacation but you=92re right Andrew, the code should use plu=
-ral variables. =
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: d46ca81b03f8233b3f228aea8cad3a4834cb821c  virtual-bus: Implementation of Virtual Bus
+
+TIMEOUT after 1445m
 
 
---
-Jesse Brandeburg
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
 
+configs timed out: 49
 
-> On Nov 15, 2019, at 16:08, Bowers, AndrewX <andrewx.bowers@intel.com> wro=
-te:
-> =
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+i386                             alldefconfig
+i386                             allmodconfig
+i386                              allnoconfig
+i386                                defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                                defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                          debug_defconfig
+s390                                defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                             defconfig
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                           allmodconfig
+x86_64                           allyesconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
 
-> I was getting the same thing. Taking the compiler's suggestion and changi=
-ng _queue to _queues and it compiles but nobody responded to my comments. =
+configs tested: 31
 
-> =
+m68k                          multi_defconfig
+m68k                       m5475evb_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                           sun3_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+riscv                             allnoconfig
+riscv                               defconfig
+nds32                               defconfig
+alpha                               defconfig
+nds32                             allnoconfig
+xtensa                       common_defconfig
+openrisc                    or1ksim_defconfig
+nios2                         3c120_defconfig
+xtensa                          iss_defconfig
+c6x                        evmc6678_defconfig
+c6x                              allyesconfig
+nios2                         10m50_defconfig
+openrisc                 simple_smp_defconfig
+arc                              allyesconfig
+powerpc                             defconfig
+microblaze                    nommu_defconfig
+powerpc                       ppc64_defconfig
+microblaze                      mmu_defconfig
+arc                                 defconfig
+powerpc                           allnoconfig
+parisc                        c3000_defconfig
+parisc                         b180_defconfig
+parisc                              defconfig
+parisc                            allnoconfig
 
->> -----Original Message-----
->> From: Brown, Aaron F
->> Sent: Friday, November 15, 2019 3:53 PM
->> To: Bowers, AndrewX <andrewx.bowers@intel.com>; Kirsher, Jeffrey T
->> <jeffrey.t.kirsher@intel.com>; intel-wired-lan@lists.osuosl.org
->> Cc: Creeley, Brett <brett.creeley@intel.com>; Arkady Gilinksky
->> <arkady.gilinsky@harmonicinc.com>
->> Subject: RE: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select b=
-itmap
->> validation
->> =
-
->> This patch is causing a compile error for me.  If I pop revert it my com=
-pile
->> error goes away:
->> ---------------------------------------------------------------
->> drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c: In function
->> 'i40e_vc_validate_vqs_bitmaps':
->> drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c:2333:9: error: 'struct
->> virtchnl_queue_select' has no member named 'rx_queue'
->>      vqs->rx_queue >=3D BIT(I40E_MAX_VF_QUEUES) ||
->>         ^
->> drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c:2334:9: error: 'struct
->> virtchnl_queue_select' has no member named 'tx_queue'
->>      vqs->tx_queue >=3D BIT(I40E_MAX_VF_QUEUES))
->>         ^
->> make[6]: *** [drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.o] Error 1
->> make[6]: *** Waiting for unfinished jobs....
->> make[5]: *** [drivers/net/ethernet/intel/i40e] Error 2
->> make[4]: *** [drivers/net/ethernet/intel] Error 2
->> make[4]: *** Waiting for unfinished jobs....
->> make[3]: *** [drivers/net/ethernet] Error 2
->> make[2]: *** [drivers/net] Error 2
->> make[1]: *** [drivers] Error 2
->> make: *** [sub-make] Error 2
->> =
-
->>> -----Original Message-----
->>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
->>> Of Bowers, AndrewX
->>> Sent: Thursday, November 14, 2019 5:17 PM
->>> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
->>> lan@lists.osuosl.org
->>> Cc: Creeley, Brett <brett.creeley@intel.com>; Arkady Gilinksky
->>> <arkady.gilinsky@harmonicinc.com>
->>> Subject: Re: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select
->>> bitmap validation
->>> =
-
->>> Comments inline
->>> =
-
->>>> -----Original Message-----
->>>> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
->>>> Behalf Of Jeff Kirsher
->>>> Sent: Wednesday, November 13, 2019 11:28 AM
->>>> To: intel-wired-lan@lists.osuosl.org
->>>> Cc: Creeley, Brett <brett.creeley@intel.com>; Arkady Gilinksky
->>>> <arkady.gilinsky@harmonicinc.com>
->>>> Subject: [Intel-wired-lan] [PATCH] i40e: Fix virtchnl_queue_select
->>>> bitmap validation
->>>> =
-
->>>> From: Brett Creeley <brett.creeley@intel.com>
->>>> =
-
->>>> Currently in i40e_vc_disable_queues_msg() we are incorrectly
->>>> validating
->>> the
->>>> virtchnl queue select bitmaps. The virtchnl_queue_select rx_queues
->>>> and tx_queue bitmap is being compared against ICE_MAX_VF_QUEUES,
->> but
->>> the
->>>> problem is that these bitmaps can have a value greater than
->>>> I40E_MAX_VF_QUEUES.
->>>> Fix this by comparing the bitmaps against BIT(I40E_MAX_VF_QUEUES).
->>>> =
-
->>>> Also, add the function i40e_vc_validate_vqs_bitmaps() that checks to
->>>> see if both virtchnl_queue_select bitmaps are empty along with
->>>> checking that
->>> the
->>>> bitmaps only have valid bits set. This function can then be used in
->>>> both the queue enable and disable flows.
->>>> =
-
->>>> Suggested-by: Arkady Gilinksky <arkady.gilinsky@harmonicinc.com>
->>>> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
->>>> ---
->>>> .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 22 +++++++++++++++----
->>>> 1 file changed, 18 insertions(+), 4 deletions(-)
->>>> =
-
->> <snip>
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+---
+0-DAY kernel test infrastructure                 Open Source Technology Center
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
