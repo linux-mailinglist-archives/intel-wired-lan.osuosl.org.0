@@ -1,77 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B8FC100B67
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Nov 2019 19:22:33 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EC68100B78
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Nov 2019 19:29:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A606A21567;
-	Mon, 18 Nov 2019 18:22:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 44809844B7;
+	Mon, 18 Nov 2019 18:29:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 303thohOwXZv; Mon, 18 Nov 2019 18:22:31 +0000 (UTC)
+	with ESMTP id m95Ys7aUOSSk; Mon, 18 Nov 2019 18:29:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C9372155E;
-	Mon, 18 Nov 2019 18:22:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 86FC3845AA;
+	Mon, 18 Nov 2019 18:29:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 79F091BF846
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 11:51:05 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B5D11BF344
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Nov 2019 18:29:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 75F2D881C8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 11:51:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5633321561
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Nov 2019 18:29:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BdUVXsXiD8CJ for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Nov 2019 11:51:04 +0000 (UTC)
+ with ESMTP id Tp8mAWO-FozK for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Nov 2019 18:29:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mout.web.de (mout.web.de [212.227.15.3])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A72E1881AB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2019 11:51:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=web.de;
- s=dbaedf251592; t=1573905045;
- bh=2FsLU14m8g1Gnw2RjUC/Ipb1FCtyEewrnlVaECnP6oE=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
- b=CogjriGdFSh1+zWyZgGFEkvXr6oTY2Uf3KXOTQ/DZzCPybJRMRT6RE2BPfoqpLuS0
- ahnCUP9tQIG3qbY7LTeBdXGsbY3DAuWQJ1IXwy2zB+W4Y1ZomhKhn5z/izJLMOAvvs
- KDWpX7lSvp1Lm3j6VUXiiQpbPaWlUSMtreVif9hw=
-X-UI-Sender-Class: c548c8c5-30a9-4db5-a2e7-cb6cb037b8f9
-Received: from minako.localnet ([95.91.225.185]) by smtp.web.de (mrweb002
- [213.165.67.108]) with ESMTPSA (Nemesis) id 0Mbhen-1iCuJN2Jvx-00J6if; Sat, 16
- Nov 2019 12:50:45 +0100
-From: Jan Janssen <medhefgo@web.de>
-To: intel-wired-lan@lists.osuosl.org
-Date: Sat, 16 Nov 2019 12:50:38 +0100
-Message-ID: <3945198.J3aOToa6sv@minako>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6BA9B2155E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Nov 2019 18:29:21 +0000 (UTC)
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Nov 2019 10:29:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,321,1569308400"; 
+ d="asc'?scan'208";a="356860973"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.74])
+ by orsmga004.jf.intel.com with ESMTP; 18 Nov 2019 10:29:20 -0800
+Message-ID: <92b94935dea3b8c7e7236d6f4e1ac148e6cd2ffd.camel@intel.com>
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: Jan Janssen <medhefgo@web.de>, intel-wired-lan@lists.osuosl.org, 
+ "Neftin, Sasha" <sasha.neftin@intel.com>
+Date: Mon, 18 Nov 2019 10:29:20 -0800
+In-Reply-To: <3945198.J3aOToa6sv@minako>
+References: <3945198.J3aOToa6sv@minako>
+Organization: Intel
+User-Agent: Evolution 3.34.1 (3.34.1-1.fc31) 
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:pQCtwh4h5PCezuxWVjwMpfn3ch+nKJihXngch1kOVQvNk6M8JFj
- nF1NDRK0ZYvnF1SvuekkIZpeb/p/FJNZ7Y2v9blmLj4obIRTdr+2mTlYCcn4pnVjoCTgTUw
- note2fGWK9gg7izzYuTj1zcoO6Ln8P9dopgsH3Iza0yNOYSmQYaSkwpoB3KJmgrp94Egwyr
- fF31usiyPg8iINPcJ2ozg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Ut2fAms5/7o=:wmRHyxdlzHot80y6orcEEv
- /2GAPVmkpMDDI8XeeWyXH3kQOmP0LS4zSM10Un16zfAq6KqLp59IPOvuMebb8DE0rjG+pWr5z
- h/36Ep/dY/K7+PyEv4OHlACdBJh6hi7va8c6hJKGZIKjgnQfrdoe8Yq3/gZtlrkzXIo+mwqtx
- gu0vtymH1Tqtyb8t3U7SGQOSlw2XFhWRwvSD9SXDmLkt4OfXrINZWNqPBP5Kh/VTRAOpuAohI
- f3GQEyG+q0y59k4e8GqvGi7FRGJLUOemvlXUXXk75vyYI+rwRoG2YYtOND751Rb9nDoGfGA4A
- bY8fPPEVoahnjlSH8gKqthABBku53vSI1OE38f8eijT3QkkO4vso0qyHKhxAU5AsaYxi1YqyU
- AEcf6lQ44iG59muq6Xa55aaxz0/MVrwdXCzRYUwRZ5s3KoN0n956YKpp3sAQ+h5redH+u1/V+
- mckosMsJa6T2flxXsjcvmMVqoyFll4Ch5rLhjFoa2B6kDtf/XY9azBQQ4VQf0+sgK3Escug4+
- 5IKHGfc8N++hzabF3TpBWUrSj1zq5rMou574D73Icewt4QYkq9vwczJT9sM3Ka/WVvGSbt7kT
- DnD98HHZfpy5N10gUUM8X42EMZN7jLnjRsxLPoFc50IZknSC8qjaSu5YmN+zZX/g9HOiXGlui
- mVUtYYighykWo/Q0xwE5y7FfG62w3cfSQ4YpXR/CsriT6Pwu/MURwuTavgaaxzxsxOk4iQvLY
- hdcEZSS+kuibmPQgIZ9ZEcuU0Nm9yXprsi1w8tKxXu+px6tiB60eh0mgpS27S31cMocuQrrpX
- oTik159ci0tAQnpGsHjb6T4hPv8QO66eRSPDIbYinrKRGUnRVUSgqIaDk5s40N+3y5AENVONu
- 8Kw7YxSXXnKXY0j4Pntan1lB+dLapAAiy+Z0iNg4SqLXevToqRfJosNntpgWX0RuiJgcHTOLd
- l0cKDcNlUXRUtk4Kj8hs8gNbtmconVOuUM4Ssv0MaPSKklSKllUyiUSn3WwYxB5tZHNLHfdjQ
- YRLhO3pE/6y6DxbmV/ImJD3QjUMGt1DH9m+OGnlOQMLc6ASryx8MMoQ57Cg0sxCPajZchOW8J
- ndtyr86vApY2wv0vKf3EABDJ1LkH84n0XyJ7C7L5lA4aVOm3FIZanNjkGLmNCC9xor+MGFt34
- bjSdxg24RCz4/SzNc51sy2VqS1bNcbtCRHheOBD/HRHhiD8/+S46D3iL9fh+xtmRIEs2mNk+p
- HL8s152qfIx4WCiq6vaeYh1mrW7q9CaTljP4vZRZA8XKf2tnf2XRpxZQiMNU=
-X-Mailman-Approved-At: Mon, 18 Nov 2019 18:22:28 +0000
-Subject: [Intel-wired-lan] Regression: e1000e link not coming up
+Subject: Re: [Intel-wired-lan] Regression: e1000e link not coming up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,43 +65,110 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Reply-To: jeffrey.t.kirsher@intel.com
 Cc: "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6047007901265519222=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
 
-since 5.3 my I219-V network interface sometimes doesn't come up when booting
-or resuming from suspend. This either forces me to use "ip link down/up" or
-reloading the module to get working internet.
+--===============6047007901265519222==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-pcQuMDGRxQ3AgA6v1Ruz"
 
-I reported this issue previously to netdev@vger.kernel.org where I initially
-bisected to a wrong commit. After finding the right one nobody reacted to it,
-so now I am trying this again here.
 
-There is also a bugzilla entry for this, but it seems to be ignored by
-maintainers too: https://bugzilla.kernel.org/show_bug.cgi?id=205067
-For me, this happens with systemd-networkd, but the people in the bugzilla
-report are observing this with NetworkManager.
+--=-pcQuMDGRxQ3AgA6v1Ruz
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-The commit introducing the bug is 59653e6497d16f7ac1d9db088f3959f57ee8c3db
-(e1000e: Make watchdog use delayed work) and reverting it did make this bug go
-away. Though, it cannot be reverted automatically on the latest git tree from
-Torvalds anymore.
+On Sat, 2019-11-16 at 12:50 +0100, Jan Janssen wrote:
+> Hi,
+>=20
+> since 5.3 my I219-V network interface sometimes doesn't come up when
+> booting
+> or resuming from suspend. This either forces me to use "ip link
+> down/up" or
+> reloading the module to get working internet.
+>=20
+> I reported this issue previously to netdev@vger.kernel.org where I
+> initially
+> bisected to a wrong commit. After finding the right one nobody
+> reacted to it,
+> so now I am trying this again here.
 
-I've also tried the master branch on jkirsher/net-queue.git  and
-jkirsher/next-queue.git, but the bug is still present there too.
+I apologize, this is the correct mailing list for issues with the Intel
+wired LAN.
 
-This bug is really annoying and inconvenient, so I would really appreciate if
-somebody could fix this bug or at least have the offending commit reverted.
 
-Regards,
-Jan
+> There is also a bugzilla entry for this, but it seems to be ignored
+> by
+> maintainers too: https://bugzilla.kernel.org/show_bug.cgi?id=3D205067
+> For me, this happens with systemd-networkd, but the people in the
+> bugzilla
+> report are observing this with NetworkManager.
+>=20
+> The commit introducing the bug is
+> 59653e6497d16f7ac1d9db088f3959f57ee8c3db
+> (e1000e: Make watchdog use delayed work) and reverting it did make
+> this bug go
+> away. Though, it cannot be reverted automatically on the latest git
+> tree from
+> Torvalds anymore.
 
+I will work with the e1000e driver lead (Sasha Neftin) to work up a
+patch that will apply to David Miller's net tree.  I will make sure you
+are CC'd on the patch, so you will know when it makes it into the
+upstream kernel.
+
+> I've also tried the master branch on jkirsher/net-queue.git  and
+> jkirsher/next-queue.git, but the bug is still present there too.
+>=20
+> This bug is really annoying and inconvenient, so I would really
+> appreciate if
+> somebody could fix this bug or at least have the offending commit
+> reverted.
+>=20
+> Regards,
+> Jan
+>=20
+>=20
+
+
+--=-pcQuMDGRxQ3AgA6v1Ruz
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl3S4wAACgkQ5W/vlVpL
+7c4thhAAodUWquLYk1BV+8mILhwg4hFkfjDe6jN3z6AbBq8nzHm5UzrlhzPwY04n
+x71Q+IwH9L1j8LZiJ7KIXENUS03BNUQ/OeUu4e2JXJacE8HI4AxR/i5is/zaQWsI
+nUeXV4UIJCc9NGmHJh9p5/4az1IrkYxS7VNUxAdodkCZjlio8TDZn29AnqjTaWmc
+5yXCc2lqP1E3opeSso+mCtAUGAM7hxp9wenIQ5Fm6NpDX6Cp+Sb0ydypPT2SCgBR
+8MfGYTqChCZE+4nnMvEK26ps9j80UQxT3346hjtizmSSaBW05H73EVQZlryBKAgh
+GhwmJbRBKCoprGGbx7D7xI8nKNavfTHE2z8TcDZKUQgLA5C57p8DMwZU9pKjI1gF
+nYC6KlqANo7QdcyME1AE16md1MFd3GCxDuH5tGcwxysT4MAt+V/+AdTMx22SgZZb
+zYi4+NckQ+sUt83hlm553iRchDJ47wx1FlAgwXuM83duD+VpVtX27VyJTLMAr2zC
+LYFyOyh23NQE3YStzJ9p935mLA6C+9wXEloHp+ade6i50+2WH/vBeAsVCvZZ7p18
+ZE4/Vku40ECol4aCzvJHQaxoA0WgNUIiQlkc6FEHepjqI51aTohImqXS544kbdBR
+/58rFL9PomE6IllD8khbfrkjF7rHnXheJqJd5cmK2h+Y5wxVXv0=
+=Mxwy
+-----END PGP SIGNATURE-----
+
+--=-pcQuMDGRxQ3AgA6v1Ruz--
+
+
+--===============6047007901265519222==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============6047007901265519222==--
+
