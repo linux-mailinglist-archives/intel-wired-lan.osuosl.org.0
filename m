@@ -1,76 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B7C11031CE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Nov 2019 03:55:28 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A9EA28845E;
-	Wed, 20 Nov 2019 02:55:26 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a2avuKRSLBmX; Wed, 20 Nov 2019 02:55:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 04A2688466;
-	Wed, 20 Nov 2019 02:55:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 02C131BF2BF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2019 02:55:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AA7E103611
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Nov 2019 09:34:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EA5F6877A8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2019 02:55:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3488E87AEF;
+	Wed, 20 Nov 2019 08:34:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1grTHq2kHYtZ; Wed, 20 Nov 2019 08:34:39 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 52A31879E1;
+	Wed, 20 Nov 2019 08:34:38 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A7B01BF44C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2019 08:34:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1651B86C69
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2019 08:34:36 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a9zE5gUeAwyP for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Nov 2019 02:55:22 +0000 (UTC)
+ with ESMTP id X0WmgbXrJZCc for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Nov 2019 08:34:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AB281876C4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2019 02:55:22 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1E81E86C45
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2019 08:34:35 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Nov 2019 18:55:22 -0800
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 20 Nov 2019 00:34:34 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,220,1571727600"; d="scan'208";a="215674664"
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by fmsmga001.fm.intel.com with ESMTP; 19 Nov 2019 18:55:22 -0800
-Received: from orsmsx112.amr.corp.intel.com (10.22.240.13) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 19 Nov 2019 18:55:21 -0800
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.179]) by
- ORSMSX112.amr.corp.intel.com ([169.254.3.26]) with mapi id 14.03.0439.000;
- Tue, 19 Nov 2019 18:55:21 -0800
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>, "joe@perches.com"
- <joe@perches.com>, "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>,
- "davem@davemloft.net" <davem@davemloft.net>
-Thread-Topic: [next-queue/net-next PATCH] e1000e: Use netdev_info instead of
- pr_info for link messages
-Thread-Index: AQHVkAyCtXdab5ln90CZFebY7a8qMKeTesIw
-Date: Wed, 20 Nov 2019 02:55:20 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B97179772@ORSMSX103.amr.corp.intel.com>
-References: <cf197ef61703cbaa64ac522cf5d191b4b74f64d6.camel@linux.intel.com>
- <20191031165537.24154.48242.stgit@localhost.localdomain>
-In-Reply-To: <20191031165537.24154.48242.stgit@localhost.localdomain>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTVlNWE2OWEtMmRhMC00OWIwLTljN2EtZTMwOTIwNzJiNzZmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiS0dUY1hPNFJuaGordjY2VUtDSEt5a3JIQmhEWmNGXC9TQk9TMURwQ1NtRVcwQVZFT0FjYzVJUjNLeWJSaGw0ZkIifQ==
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
+X-IronPort-AV: E=Sophos;i="5.69,221,1571727600"; d="scan'208";a="381287584"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
+ ([10.185.23.132])
+ by orsmga005.jf.intel.com with ESMTP; 20 Nov 2019 00:34:32 -0800
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+To: jeffrey.t.kirsher@intel.com, Jan Janssen <medhefgo@web.de>,
+ intel-wired-lan@lists.osuosl.org
+References: <3945198.J3aOToa6sv@minako>
+ <92b94935dea3b8c7e7236d6f4e1ac148e6cd2ffd.camel@intel.com>
+ <96bdb43e-2a7b-028c-c9ed-98e4477f6b7d@intel.com>
+Message-ID: <e68c0b03-e05b-735d-1bce-8f12aaa073aa@intel.com>
+Date: Wed, 20 Nov 2019 10:34:31 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next-queue/net-next PATCH] e1000e: Use
- netdev_info instead of pr_info for link messages
+In-Reply-To: <96bdb43e-2a7b-028c-c9ed-98e4477f6b7d@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] Regression: e1000e link not coming up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,58 +67,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "zdai@linux.vnet.ibm.com" <zdai@linux.vnet.ibm.com>,
- "nhorman@redhat.com" <nhorman@redhat.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "smorumu1@in.ibm.com" <smorumu1@in.ibm.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "sassmann@redhat.com" <sassmann@redhat.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "David S. Miller" <davem@davemloft.net>,
+ Detlev Casanova <detlev.casanova@gmail.co>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Alexander Duyck <alexander.duyck@gmail.com>
-> Sent: Thursday, October 31, 2019 9:59 AM
-> To: joe@perches.com; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>;
-> davem@davemloft.net
-> Cc: zdai@linux.vnet.ibm.com; nhorman@redhat.com;
-> netdev@vger.kernel.org; smorumu1@in.ibm.com; intel-wired-
-> lan@lists.osuosl.org; Brown, Aaron F <aaron.f.brown@intel.com>;
-> sassmann@redhat.com
-> Subject: [next-queue/net-next PATCH] e1000e: Use netdev_info instead of
-> pr_info for link messages
-> 
-> From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> 
-> Replace the pr_info calls with netdev_info in all cases related to the
-> netdevice link state.
-> 
-> As a result of this patch the link messages will change as shown below.
-> Before:
-> e1000e: ens3 NIC Link is Down
-> e1000e: ens3 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
-> 
-> After:
-> e1000e 0000:00:03.0 ens3: NIC Link is Down
-> e1000e 0000:00:03.0 ens3: NIC Link is Up 1000 Mbps Full Duplex, Flow Control:
-> Rx/Tx
-> 
-> Suggested-by: Joe Perches <joe@perches.com>
-> Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> ---
-> 
-> Since Joe hasn't gotten back to me on if he wanted to do the patch or if
-> he wanted me to do it I just went ahead and did it. This should address the
-> concerns he had about the message formatting in "e1000e: Use rtnl_lock to
-> prevent race".
-> 
->  drivers/net/ethernet/intel/e1000e/netdev.c |    9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMTEvMTkvMjAxOSAwODoxMiwgTmVmdGluLCBTYXNoYSB3cm90ZToKPiBPbiAxMS8xOC8yMDE5
+IDIwOjI5LCBKZWZmIEtpcnNoZXIgd3JvdGU6Cj4+IE9uIFNhdCwgMjAxOS0xMS0xNiBhdCAxMjo1
+MCArMDEwMCwgSmFuIEphbnNzZW4gd3JvdGU6Cj4+PiBIaSwKPj4+Cj4+PiBzaW5jZSA1LjMgbXkg
+STIxOS1WIG5ldHdvcmsgaW50ZXJmYWNlIHNvbWV0aW1lcyBkb2Vzbid0IGNvbWUgdXAgd2hlbgo+
+Pj4gYm9vdGluZwo+Pj4gb3IgcmVzdW1pbmcgZnJvbSBzdXNwZW5kLiBUaGlzIGVpdGhlciBmb3Jj
+ZXMgbWUgdG8gdXNlICJpcCBsaW5rCj4+PiBkb3duL3VwIiBvcgo+Pj4gcmVsb2FkaW5nIHRoZSBt
+b2R1bGUgdG8gZ2V0IHdvcmtpbmcgaW50ZXJuZXQuCj4+Pgo+Pj4gSSByZXBvcnRlZCB0aGlzIGlz
+c3VlIHByZXZpb3VzbHkgdG8gbmV0ZGV2QHZnZXIua2VybmVsLm9yZyB3aGVyZSBJCj4+PiBpbml0
+aWFsbHkKPj4+IGJpc2VjdGVkIHRvIGEgd3JvbmcgY29tbWl0LiBBZnRlciBmaW5kaW5nIHRoZSBy
+aWdodCBvbmUgbm9ib2R5Cj4+PiByZWFjdGVkIHRvIGl0LAo+Pj4gc28gbm93IEkgYW0gdHJ5aW5n
+IHRoaXMgYWdhaW4gaGVyZS4KPj4KPj4gSSBhcG9sb2dpemUsIHRoaXMgaXMgdGhlIGNvcnJlY3Qg
+bWFpbGluZyBsaXN0IGZvciBpc3N1ZXMgd2l0aCB0aGUgSW50ZWwKPj4gd2lyZWQgTEFOLgo+Pgo+
+Pgo+Pj4gVGhlcmUgaXMgYWxzbyBhIGJ1Z3ppbGxhIGVudHJ5IGZvciB0aGlzLCBidXQgaXQgc2Vl
+bXMgdG8gYmUgaWdub3JlZAo+Pj4gYnkKPj4+IG1haW50YWluZXJzIHRvbzogaHR0cHM6Ly9idWd6
+aWxsYS5rZXJuZWwub3JnL3Nob3dfYnVnLmNnaT9pZD0yMDUwNjcKPj4+IEZvciBtZSwgdGhpcyBo
+YXBwZW5zIHdpdGggc3lzdGVtZC1uZXR3b3JrZCwgYnV0IHRoZSBwZW9wbGUgaW4gdGhlCj4+PiBi
+dWd6aWxsYQo+Pj4gcmVwb3J0IGFyZSBvYnNlcnZpbmcgdGhpcyB3aXRoIE5ldHdvcmtNYW5hZ2Vy
+Lgo+Pj4KPj4+IFRoZSBjb21taXQgaW50cm9kdWNpbmcgdGhlIGJ1ZyBpcwo+Pj4gNTk2NTNlNjQ5
+N2QxNmY3YWMxZDlkYjA4OGYzOTU5ZjU3ZWU4YzNkYgo+Pj4gKGUxMDAwZTogTWFrZSB3YXRjaGRv
+ZyB1c2UgZGVsYXllZCB3b3JrKSBhbmQgcmV2ZXJ0aW5nIGl0IGRpZCBtYWtlCj4+PiB0aGlzIGJ1
+ZyBnbwo+Pj4gYXdheS4gVGhvdWdoLCBpdCBjYW5ub3QgYmUgcmV2ZXJ0ZWQgYXV0b21hdGljYWxs
+eSBvbiB0aGUgbGF0ZXN0IGdpdAo+Pj4gdHJlZSBmcm9tCj4+PiBUb3J2YWxkcyBhbnltb3JlLgo+
+Pgo+PiBJIHdpbGwgd29yayB3aXRoIHRoZSBlMTAwMGUgZHJpdmVyIGxlYWQgKFNhc2hhIE5lZnRp
+bikgdG8gd29yayB1cCBhCj4+IHBhdGNoIHRoYXQgd2lsbCBhcHBseSB0byBEYXZpZCBNaWxsZXIn
+cyBuZXQgdHJlZS7CoCBJIHdpbGwgbWFrZSBzdXJlIHlvdQo+PiBhcmUgQ0MnZCBvbiB0aGUgcGF0
+Y2gsIHNvIHlvdSB3aWxsIGtub3cgd2hlbiBpdCBtYWtlcyBpdCBpbnRvIHRoZQo+PiB1cHN0cmVh
+bSBrZXJuZWwuCj4+Cj4gSSBoZWFyZCBhIGxvdCBvZiBwZW9wbGVzIGNvbXBsYWluIGFib3V0IGEg
+cHJvYmxlbSB3aXRoIHVzaW5nIAo+IGRlbGF5ZWRfd29yayBzdHJ1Y3QgaW4gZTEwMDBlLiBJIHdv
+dWxkIHN1Z2dlc3QgcmV2ZXJ0aW5nIHRoaXMgcGF0Y2guCkxvb2tzIHJldmVydGluZyBvZiB0aGlz
+IHBhdGNoIHNvbHZlZCBhbHNvIHRoZSAKaHR0cHM6Ly9idWd6aWxsYS5rZXJuZWwub3JnL3Nob3df
+YnVnLmNnaT9pZD0yMDUwNDcKCj4+PiBJJ3ZlIGFsc28gdHJpZWQgdGhlIG1hc3RlciBicmFuY2gg
+b24gamtpcnNoZXIvbmV0LXF1ZXVlLmdpdMKgIGFuZAo+Pj4gamtpcnNoZXIvbmV4dC1xdWV1ZS5n
+aXQsIGJ1dCB0aGUgYnVnIGlzIHN0aWxsIHByZXNlbnQgdGhlcmUgdG9vLgo+Pj4KPj4+IFRoaXMg
+YnVnIGlzIHJlYWxseSBhbm5veWluZyBhbmQgaW5jb252ZW5pZW50LCBzbyBJIHdvdWxkIHJlYWxs
+eQo+Pj4gYXBwcmVjaWF0ZSBpZgo+Pj4gc29tZWJvZHkgY291bGQgZml4IHRoaXMgYnVnIG9yIGF0
+IGxlYXN0IGhhdmUgdGhlIG9mZmVuZGluZyBjb21taXQKPj4+IHJldmVydGVkLgo+Pj4KPj4+IFJl
+Z2FyZHMsCj4+PiBKYW4KPj4+Cj4+Pgo+Pgo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCj4gSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdAo+IElu
+dGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCj4gaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
+YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdp
+cmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2ludGVsLXdpcmVkLWxhbgo=
