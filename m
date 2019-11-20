@@ -2,15 +2,15 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46A611042E8
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Nov 2019 19:07:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49A591042E5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Nov 2019 19:07:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 062A9886D1;
-	Wed, 20 Nov 2019 18:07:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EA25D88516;
+	Wed, 20 Nov 2019 18:07:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aiSdKttm4gYK; Wed, 20 Nov 2019 18:07:19 +0000 (UTC)
+	with ESMTP id ZaKlL-v-dQP5; Wed, 20 Nov 2019 18:07:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
 	by hemlock.osuosl.org (Postfix) with ESMTP id A417E884E9;
 	Wed, 20 Nov 2019 18:07:14 +0000 (UTC)
