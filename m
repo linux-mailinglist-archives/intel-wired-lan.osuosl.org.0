@@ -1,74 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C5DD109215
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Nov 2019 17:44:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBED786483;
-	Mon, 25 Nov 2019 16:44:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Utz8uTJVWIBK; Mon, 25 Nov 2019 16:44:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 77FBA861E7;
-	Mon, 25 Nov 2019 16:44:55 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D87D81BF298
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 16:44:40 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6A7E109375
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Nov 2019 19:24:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D3A962012D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 16:44:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6023F21505;
+	Mon, 25 Nov 2019 18:24:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ge4g5rxVgG1i; Mon, 25 Nov 2019 18:24:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id ECCA520763;
+	Mon, 25 Nov 2019 18:24:08 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 44EBF1BF23F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 18:24:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 417FC85B3D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 18:24:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k9qG-YtcMIuX for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Nov 2019 16:44:38 +0000 (UTC)
+ with ESMTP id EvfT04gbz17e for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Nov 2019 18:24:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com
- [209.85.167.196])
- by silver.osuosl.org (Postfix) with ESMTPS id EF86C20117
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 16:44:37 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id s71so13655293oih.11
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 08:44:37 -0800 (PST)
+Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
+ [209.85.166.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 222F285A1E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 18:24:06 +0000 (UTC)
+Received: by mail-io1-f68.google.com with SMTP id j20so17298394ioo.11
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 10:24:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AvmJGu0+9BVqN/CUBtyW4HCFThFz2I1sLKj0UkqtpSA=;
- b=WEAHLDM/NBuLzAHzgmWrYT54j96SFFQNzcnAJZRaKcEK66zx+AuBNx6Zz4/duWTBt8
- 3veGnuXHm0nbyxYIau6cE3Kmgjub9eOe+inCSkr5so2XGL28ZcIoohwn6n/dz7/zTy0X
- L85kNMdWE1Ah5HGo5lc67sohCIaIpCWDc7dsdWSKOMd+V7b8OGsOvk5c15/0klh4jJl8
- OAI4n+G/A7FyZXI12uvwMcN0MN6D6CgEz438z78+jC5ngkec3C1MZiRwj4F/dfrSxKs/
- sjXYnjyxVSWm84NVli/uNKt6xmZiZBfBDdZafaR+5S0EGlltAm8+qQDey7RLnPnB0DwE
- bNxw==
+ :cc:content-transfer-encoding;
+ bh=xcKIB6x0BdLkd0mUw6rlhrNb22CiiLAEebAgeSrkRYg=;
+ b=kmLO2jEA2MLSQZbH30JQKAglG7apXby1uRNKK64H2XHNKrlWoihH/jhG59Ns34hO5Q
+ Wlsfy1yJkdu4psM+TjA5W4MPTY9Akf1hkUkSPscRJn9Ue6pYI4uOxLWaXwop/wGXJEbF
+ zblR/3aKzd/67QIcXvyPRhNj47g6LEhmoULc3a2dwxnb9ja/9Ykd6dP+Cd3lyuIq/wvD
+ /7GbjQ7c7dlhlVof12EeNPyB2pEeL/PZA8nlQsSW6n4sh3BlkLO4xoCvyWxG0siL//Kt
+ IIMQJ3IqrvNIK5hxXnbPxZE8aFrg1U/bkQDmBS/l+3vdkv5WdXWtaY9drzOVMTxkCpLU
+ q/9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AvmJGu0+9BVqN/CUBtyW4HCFThFz2I1sLKj0UkqtpSA=;
- b=khJrWoUaG4I6HnH1fmZonF2IDPhcHri/OHs164GgD6EM86SHht/5TF2F1E4q5wAYIR
- 5F0UZ5we6DC1UZkkkpSXmolTfcCIYp4icZc2Dy8ivJAECZF32qd1p32S9228dsGKUqrz
- 0a1JkU/6Gl4ga62oRFWSLWJUijBbYpESXy8R5jSZ3OuAct3enUCmipuQ8jfrXGk5JUrU
- Hk2+qmVQUDwH17i+ShOjAoybepzgafJZ62aX6eO/xp610lFPqZ/6rVBKP43NjTgKTTfd
- AtjfLbvTOxop4kUK3is7+PKR5ccTrRQ0fyu/RdMkBczt1pyUnDREaTz11U4qFfk2I7Dh
- robQ==
-X-Gm-Message-State: APjAAAVGJpnA2smgQAeMbCvSfOH/mkV52G5XxDhCxrtCZeGxCKIfe4X5
- 3UzVqEBcsTlVokFuWrLkieNiUb+auaFqIjUGd9g=
-X-Google-Smtp-Source: APXvYqzocJxj8eHINvlBv++gnJtYeltGdEJTWRjtRQwYJg6sG/05+lW0yW34tem7KRkkh+/n7wBWd25840i+5VznsDs=
-X-Received: by 2002:aca:c753:: with SMTP id x80mr22536632oif.115.1574700277010; 
- Mon, 25 Nov 2019 08:44:37 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=xcKIB6x0BdLkd0mUw6rlhrNb22CiiLAEebAgeSrkRYg=;
+ b=jUmeHSmBmgw0sNgAcb5s3cYh17BbzV+xCj7+s9XhrI2AHA4ywRsn8f/GUWL3rthLUr
+ e7YKDfe2CigCTeI9aJ644V7oTNRgoSHzSbmyUQl5coTelrV/PFXa7/CKtjyx9WQ+Ce/r
+ eamuKMrtRC3BAedDg0vwuCvg5x8HCfMdzwiSy/4d1WodJDGA/LKSwOnz6MyMt+H94yxL
+ QtVrc6/TtEqk0AK0QwpOrj8ph/r1yUYKf1VnuChW7AxCt8jSmU5N/sXAhKVpwCMDgeCI
+ nwWcWgVnZMWSuxnB+xNk5xHKdLd6RGkuHPjEkBYTVX6njii+g1uRv8xiahsJs8dEzd7u
+ XYug==
+X-Gm-Message-State: APjAAAU2av/4a0RDzRv7bwybMk6UBzV2ZyWwZ86rvUDQGjncVvs9+RkS
+ urUENw4d1Ga+/ftnNFTnRER/6sZqGmKHtCIo8tk=
+X-Google-Smtp-Source: APXvYqxiHn9ZLBPpjB9BaKFS3i2KgLbfl4VoPIkBESxB7McEJoY3bkyIZtPFfZfVZQbXtPSc2hcXNw4JWPmAqliUvNQ=
+X-Received: by 2002:a5d:8b94:: with SMTP id p20mr25608093iol.97.1574706245210; 
+ Mon, 25 Nov 2019 10:24:05 -0800 (PST)
 MIME-Version: 1.0
-References: <1573243090-2721-1-git-send-email-magnus.karlsson@intel.com>
- <adee745d-6522-309d-a944-7a54869ac945@mellanox.com>
-In-Reply-To: <adee745d-6522-309d-a944-7a54869ac945@mellanox.com>
-From: Magnus Karlsson <magnus.karlsson@gmail.com>
-Date: Mon, 25 Nov 2019 17:44:26 +0100
-Message-ID: <CAJ8uoz2xsdEqy5OoK_GRLZ8+nX1TdOPQAQ+pCrgELjSX6uw3+Q@mail.gmail.com>
-To: Maxim Mikityanskiy <maximmi@mellanox.com>
-Subject: Re: [Intel-wired-lan] [PATCH net 1/2] i40e: need_wakeup flag might
- not be set for Tx
+References: <20191125142452.21819-1-radoslawx.tyl@intel.com>
+ <7e9bbd9b-ee05-b207-a472-77d03c3ee6ac@molgen.mpg.de>
+In-Reply-To: <7e9bbd9b-ee05-b207-a472-77d03c3ee6ac@molgen.mpg.de>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Mon, 25 Nov 2019 10:23:54 -0800
+Message-ID: <CAKgT0UexoZWiF7Z745O3FkA+A+f-E31DhD5mGXjweXecrRJtgw@mail.gmail.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbevf: Remove limit of 10
+ entries for unicast filter list
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,56 +82,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "maciejromanfijalkowski@gmail.com" <maciejromanfijalkowski@gmail.com>,
- "maciej.fijalkowski@intel.com" <maciej.fijalkowski@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Saeed Mahameed <saeedm@mellanox.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "bjorn.topel@intel.com" <bjorn.topel@intel.com>,
- Magnus Karlsson <magnus.karlsson@intel.com>,
- Tariq Toukan <tariqt@mellanox.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: mukesh.gangadhar@intel.com,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Greg Rose <gvrose8192@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 25, 2019 at 4:40 PM Maxim Mikityanskiy <maximmi@mellanox.com> wrote:
->
-> Hi Magnus,
->
-> On 2019-11-08 21:58, Magnus Karlsson wrote:
-> > This happens if there is at least one
-> > outstanding packet that has not been completed by the hardware and we
-> > get that corresponding completion (which will not generate an
-> > interrupt since interrupts are disabled in the napi poll loop) between
-> > the time we stopped processing the Tx completions and interrupts are
-> > enabled again.
->
-> > But if this completion interrupt occurs before interrupts
-> > are enable, we lose it
-> Why can't it happen for regular traffic? From your description it looks
-> to me as if you can miss a completion for non-AF_XDP traffic, too. Is
-> there any detail that makes this issue AF_XDP-specific?
-
-It can happen for regular traffic too, but it does not matter in that
-case since the application is not dependent on getting a notification
-on completion. The only thing that will happen is that there is some
-memory and HW descriptors being used for longer than necessary. It
-will get completed and reused next time there is some Tx action.
-
-In the cases where it matters, the skb path code has feature that arms
-a later interrupt. I need to introduce something similar for the
-AF_XDP ZC path.
-
-/Magnus
-
-> Thanks,
-> Max
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gTW9uLCBOb3YgMjUsIDIwMTkgYXQgNTozMiBBTSBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xn
+ZW4ubXBnLmRlPiB3cm90ZToKPgo+IERlYXIgUmFkb3NsYXcsCj4KPgo+IE9uIDIwMTktMTEtMjUg
+MTU6MjQsIFJhZG9zbGF3IFR5bCB3cm90ZToKPiA+IEN1cnJlbnRseSwgdGhvdWdoIHRoZSBGREIg
+ZW50cnkgaXMgYWRkZWQgdG8gVkYsIGl0IGRvZXMgbm90IGFwcGVhciBpbgo+ID4gUkFSIGZpbHRl
+cnMuIFZGIGRyaXZlciBvbmx5IGFsbG93cyB0byBhZGQgMTAgZW50cmllcy4gQXR0ZW1wdGluZyB0
+byBhZGQKPiA+IGFub3RoZXIgY2F1c2VzIGFuIGVycm9yLiBUaGlzIHBhdGNoIHJlbW92ZXMgbGlt
+aXRhdGlvbiBhbmQgYWxsb3dzIHVzZSBvZgo+ID4gYWxsIGZyZWUgUkFSIGVudHJpZXMgZm9yIHRo
+ZSBGREIgaWYgbmVlZGVkLgo+Cj4gSSBzdGlsbCB3b25kZXIsIHdoeSB0aGUgbGltaXQgd2FzIGlu
+dHJvZHVjZWQgaW4gdGhlIGZpcnN0IHBsYWNlLgo+IGdyZWdvcnkudi5yb3NlQGludGVsLmNvbSBi
+b3VuY2VzLCBzbyB3ZSBjYW7igJl0IGFzay4KCkkndmUgYWRkZWQgR3JlZydzIGN1cnJlbnQgZW1h
+aWwgYWRkcmVzcyBpbiBjYXNlIGhlIGhhcyBzb21lIG1lbW9yeSBmb3IKd2h5IHRoZSBsaW1pdCBv
+ZiAxMCB3YXMgYWRkZWQuCgpJdCBwcm9iYWJseSBoYXMgdG8gZG8gd2l0aCB3YW50aW5nIHRvIHBy
+ZXZlbnQgc3RhcnZhdGlvbiBvZiByZXNvdXJjZXMuClRoZSBoYXJkd2FyZSBpdHNlbGYgb25seSBz
+dXBwb3J0cyAxMjggdG90YWwgUkFSIGVudHJpZXMuIFNvIGlmIHdlIGhhdmUKNjMgVkZzIGFuZCAx
+IFBGLCBhbmQgMTUgb2YgUEYgbWFjdmxhbnMsIHRoZW4gd2Ugd291bGQgb25seSBoYXZlIDQ5CmVu
+dHJpZXMgdG8gc3BhcmUgdGhhdCBhcmUgdGhlbiBzaGFyZWQuIFNvIGF0IGJlc3QgdGhpcyBpcyBv
+bmx5IHB1c2hpbmcKdGhpbmdzIG91dCB0byA0OSBzaW5jZSBhdCB0aGF0IHBvaW50IHdlIGFyZSBv
+dXQgb2YgUkFSIGVudHJpZXMgYW55d2F5LgoKPiA+IEZpeGVzOiA0NmVjMjBmZjdkICgiaXhnYmV2
+ZjogQWRkIG1hY3ZsYW4gc3VwcG9ydCBpbiB0aGUgc2V0IHJ4IG1vZGUgb3AiKQoKSSB3b3VsZG4n
+dCBib3RoZXIgd2l0aCB0aGUgZml4ZXMgdGFnIHNpbmNlIGl0IGlzbid0ICJmaXhpbmciIHRoaW5n
+cy4KSXQgaXMgY2hhbmdpbmcgYmVoYXZpb3IuIEkgd291bGQgc2F5IGl0IHdhcyBieSBkZXNpZ24g
+dGhhdCBpdCB3YXMKbGltaXRlZCB0byAxMCBlbnRyaWVzLiBBbGwgdGhpcyBjaGFuZ2UgZG9lcyBp
+cyBwdXNoIHRoZSB3b3JrIG9udG8gdGhlClBGIGZvciByZXR1cm5pbmcgYW4gZXJyb3IgaW5zdGVh
+ZCBvZiBkb2luZyBzbyBlYXJsaWVyLgoKRm9yIGEgbm9ybWFsIE5JQyB0aGUgZmFpbHVyZSBjYXNl
+IGhlcmUgd291bGQgYmUgdG8gZW5hYmxlIHByb21pc2N1b3VzCm1vZGUuIEhvd2V2ZXIgc2luY2Ug
+dGhpcyBpcyBhIFZGIHlvdSBjYW5ub3QgZG8gdGhhdC4gSW5zdGVhZCBpdCBtaWdodAptYWtlIG1v
+cmUgc2Vuc2UgdG8gZHVtcCBhIG1lc3NhZ2Ugd2hlbiB5b3UgaGl0IHRoZSBsaW1pdC4KCj4gPiBT
+aWduZWQtb2ZmLWJ5OiBSYWRvc2xhdyBUeWwgPHJhZG9zbGF3eC50eWxAaW50ZWwuY29tPgo+ID4g
+LS0tCj4gPiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4u
+YyB8IDUgLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgNSBkZWxldGlvbnMoLSkKPiA+Cj4gPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21h
+aW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JldmYvaXhnYmV2Zl9tYWluLmMK
+PiA+IGluZGV4IDA3NmYyZGEzNmYyNy4uNjRlYzBlN2M2NGI0IDEwMDY0NAo+ID4gLS0tIGEvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYwo+ID4gKysrIGIv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYwo+ID4gQEAg
+LTIwODEsMTEgKzIwODEsNiBAQCBzdGF0aWMgaW50IGl4Z2JldmZfd3JpdGVfdWNfYWRkcl9saXN0
+KHN0cnVjdCBuZXRfZGV2aWNlICpuZXRkZXYpCj4gPiAgICAgICBzdHJ1Y3QgaXhnYmVfaHcgKmh3
+ID0gJmFkYXB0ZXItPmh3Owo+ID4gICAgICAgaW50IGNvdW50ID0gMDsKPiA+Cj4gPiAtICAgICBp
+ZiAoKG5ldGRldl91Y19jb3VudChuZXRkZXYpKSA+IDEwKSB7Cj4gPiAtICAgICAgICAgICAgIHBy
+X2VycigiVG9vIG1hbnkgdW5pY2FzdCBmaWx0ZXJzIC0gTm8gU3BhY2VcbiIpOwo+ID4gLSAgICAg
+ICAgICAgICByZXR1cm4gLUVOT1NQQzsKPiA+IC0gICAgIH0KPiA+IC0KPiA+ICAgICAgIGlmICgh
+bmV0ZGV2X3VjX2VtcHR5KG5ldGRldikpIHsKPiA+ICAgICAgICAgICAgICAgc3RydWN0IG5ldGRl
+dl9od19hZGRyICpoYTsKCkkgd291bGQgc2F5IE5BSy4gVGhlIHByb2JsZW0gaGVyZSBpcyB0aGlz
+IGRvZXNuJ3Qgc29sdmUgdGhlIG9yaWdpbmFsCnByb2JsZW0uIEl0IGp1c3QgbWFza3MgaXQgYnkg
+cHVzaGluZyB0aGUgZmFpbHVyZSBvdXQgdG8gdGhlCnNldF91Y19hZGRyIGNhbGwgd2hpY2ggZG9l
+c24ndCBoYXZlIHRoZSByZXR1cm4gdmFsdWUgY2hlY2tlZCBzbwppbnN0ZWFkIHlvdSB3aWxsIGdl
+dCBhIHNpbGVudCBmYWlsdXJlLgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBv
+c3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LXdpcmVkLWxhbgo=
