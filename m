@@ -1,47 +1,47 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92266108EEF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Nov 2019 14:32:33 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EDA9108F34
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Nov 2019 14:50:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 41673204BE;
-	Mon, 25 Nov 2019 13:32:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C7544864E5;
+	Mon, 25 Nov 2019 13:49:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gdlB-B8zT1uF; Mon, 25 Nov 2019 13:32:32 +0000 (UTC)
+	with ESMTP id VlvGDCMml8CC; Mon, 25 Nov 2019 13:49:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 60A7920520;
-	Mon, 25 Nov 2019 13:32:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A8C028650E;
+	Mon, 25 Nov 2019 13:49:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E122D1BF340
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 13:32:28 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E6B911BF340
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 13:49:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DC55D85E24
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 13:32:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DD6AF204F4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 13:49:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JurKZsSlKDnr for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Nov 2019 13:32:27 +0000 (UTC)
+ with ESMTP id jGMQQV6Pg6wt for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Nov 2019 13:49:54 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 43A8A855FE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 13:32:27 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 4F32A2010D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2019 13:49:54 +0000 (UTC)
 Received: from keineahnung.molgen.mpg.de (keineahnung.molgen.mpg.de
  [141.14.17.193])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id E928920225AF2;
- Mon, 25 Nov 2019 14:32:23 +0100 (CET)
-To: Radoslaw Tyl <radoslawx.tyl@intel.com>
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7105F20225AF2;
+ Mon, 25 Nov 2019 14:49:52 +0100 (CET)
+To: Radoslaw Tyl <radoslawx.tyl@intel.com>, intel-wired-lan@lists.osuosl.org
 References: <20191125142452.21819-1-radoslawx.tyl@intel.com>
 From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <7e9bbd9b-ee05-b207-a472-77d03c3ee6ac@molgen.mpg.de>
-Date: Mon, 25 Nov 2019 14:32:23 +0100
+Message-ID: <c26cfaf7-40fd-3db3-9248-1ff31e20ac81@molgen.mpg.de>
+Date: Mon, 25 Nov 2019 14:49:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
@@ -60,19 +60,19 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mukesh.gangadhar@intel.com, intel-wired-lan@lists.osuosl.org
-Content-Type: multipart/mixed; boundary="===============2846020077427314613=="
+Cc: mukesh.gangadhar@intel.com
+Content-Type: multipart/mixed; boundary="===============2103263590780711311=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 This is a cryptographically signed message in MIME format.
 
---===============2846020077427314613==
-Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms020602010008040603030009"
+--===============2103263590780711311==
+Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256; boundary="------------ms090100010907080200000406"
 
 This is a cryptographically signed message in MIME format.
 
---------------ms020602010008040603030009
+--------------ms090100010907080200000406
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
@@ -80,44 +80,12 @@ Content-Transfer-Encoding: quoted-printable
 Dear Radoslaw,
 
 
-On 2019-11-25 15:24, Radoslaw Tyl wrote:
-> Currently, though the FDB entry is added to VF, it does not appear in
-> RAR filters. VF driver only allows to add 10 entries. Attempting to add=
+Just a note, that the date of your patch message is from the future.
 
-> another causes an error. This patch removes limitation and allows use o=
-f
-> all free RAR entries for the FDB if needed.
+> Date: Mon, 25 Nov 2019 15:24:52 +0100
 
-I still wonder, why the limit was introduced in the first place.
-gregory.v.rose@intel.com bounces, so we can=E2=80=99t ask.
-
-> Fixes: 46ec20ff7d ("ixgbevf: Add macvlan support in the set rx mode op"=
-)
->=20
-> Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
-> ---
->  drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 5 -----
->  1 file changed, 5 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/driver=
-s/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> index 076f2da36f27..64ec0e7c64b4 100644
-> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-> @@ -2081,11 +2081,6 @@ static int ixgbevf_write_uc_addr_list(struct net=
-_device *netdev)
->  	struct ixgbe_hw *hw =3D &adapter->hw;
->  	int count =3D 0;
-> =20
-> -	if ((netdev_uc_count(netdev)) > 10) {
-> -		pr_err("Too many unicast filters - No Space\n");
-> -		return -ENOSPC;
-> -	}
-> -
->  	if (!netdev_uc_empty(netdev)) {
->  		struct netdev_hw_addr *ha;
-
-Acked-by: Paul Menzel <pmenzel@molgen.mpg.de>
+I guess that=E2=80=99s by design so it always shows up at the top of the
+inbox for a certain amount of time. ;-)
 
 
 Kind regards,
@@ -125,7 +93,7 @@ Kind regards,
 Paul
 
 
---------------ms020602010008040603030009
+--------------ms090100010907080200000406
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -213,23 +181,23 @@ fndPkrXx6XWDdU3S1LyKgHlLIFtarLFm2Hb5zAUR33h+26cN6ohcGqGEEzgIG8tXS8gztEaj
 EwJERTEPMA0GA1UECAwGQmF5ZXJuMREwDwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4
 LVBsYW5jay1HZXNlbGxzY2hhZnQxFTATBgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzF
 RvyiMA0GCWCGSAFlAwQCAQUAoIIB8TAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqG
-SIb3DQEJBTEPFw0xOTExMjUxMzMyMjNaMC8GCSqGSIb3DQEJBDEiBCADnxGqh+tS++gDWGvw
-YqWdbVha8qwnXdaShPexVwL+6DBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
+SIb3DQEJBTEPFw0xOTExMjUxMzQ5NTJaMC8GCSqGSIb3DQEJBDEiBCBHQWWF59J9Q9rDoWsj
+EZDKmcMde4kPjgBgzKVhgVEiHTBsBgkqhkiG9w0BCQ8xXzBdMAsGCWCGSAFlAwQBKjALBglg
 hkgBZQMEAQIwCgYIKoZIhvcNAwcwDgYIKoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcG
 BSsOAwIHMA0GCCqGSIb3DQMCAgEoMIGJBgkrBgEEAYI3EAQxfDB6MGoxCzAJBgNVBAYTAkRF
 MQ8wDQYDVQQIDAZCYXllcm4xETAPBgNVBAcMCE11ZW5jaGVuMSAwHgYDVQQKDBdNYXgtUGxh
 bmNrLUdlc2VsbHNjaGFmdDEVMBMGA1UEAwwMTVBHIENBIC0gRzAyAgweKlJIhfynPMVG/KIw
 gYsGCyqGSIb3DQEJEAILMXygejBqMQswCQYDVQQGEwJERTEPMA0GA1UECAwGQmF5ZXJuMREw
 DwYDVQQHDAhNdWVuY2hlbjEgMB4GA1UECgwXTWF4LVBsYW5jay1HZXNlbGxzY2hhZnQxFTAT
-BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBAFLC
-EHvAcIFBkX83N1/qyIiFwqqC+rQMSWprJxxIYAJHYVh+hM9Xaq87w1zBgrR9wexg/4LuI2mN
-7dAH68BZ4Xjybzq1ljqDzV+o9z/rS3TfgFqd8qBohkMe9AqCf29Hfxiae+jcZWl+02KYUx93
-lOvtFQ8avrEUOcKxSbEDdbOIVAt4dqejXiBetpw2lLtaH4N/PM1vONTLqWbYSgoQ8+PtwTKb
-XBl/p0cKpsjRce3BGJl3vcDq0hRR1VyXNgbaPkb1evue31T94To4E4XO3ary3goe23RCdICe
-QkkaWKFpzlvl02rVgAmVO3xJ/4OemNYoMQxyLSmbzMJoL23PaKQAAAAAAAA=
---------------ms020602010008040603030009--
+BgNVBAMMDE1QRyBDQSAtIEcwMgIMHipSSIX8pzzFRvyiMA0GCSqGSIb3DQEBAQUABIIBAKhi
+HaWZJCb4x4ejGdw1A30rNunpFmMk1Qr9Wso9xKKZxWSIeRwCzSeFQ8yteJtRdgttK3MqnNiH
+Gb7EwW/QlOYgRkZ1yKE0TT1MaLMNmyZ0fanxagm+CFTBYPjeOX2+r/Rm8sxRJ0XJHCKNjDuf
+wiI1WwUNcaKJgt/OGAbTwAgtY22GIGW7+T+664sRV5OYGuMq9aN14dNHP02uaxLIw3QDTixJ
+lBcZxtX4meNCpwuxVQaVDE8H2TU3haBHdXTBTTUJAMFEIdGGSXSlnJhb8Q5kgOOMlv9t0UpA
+M+hmnbwtcvrOnWcMWiW2FlsH1wUTbpsxQuCm0iBDbqIOYWAOJ9AAAAAAAAA=
+--------------ms090100010907080200000406--
 
---===============2846020077427314613==
+--===============2103263590780711311==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -240,4 +208,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============2846020077427314613==--
+--===============2103263590780711311==--
