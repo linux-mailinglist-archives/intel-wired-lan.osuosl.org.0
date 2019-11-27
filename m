@@ -1,75 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1968F10A4B1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Nov 2019 20:44:35 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C71FC10A7BE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Nov 2019 02:04:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CF09785FCB;
-	Tue, 26 Nov 2019 19:44:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 548452263E;
+	Wed, 27 Nov 2019 01:04:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A3T_nPeB41RF; Tue, 26 Nov 2019 19:44:33 +0000 (UTC)
+	with ESMTP id EwDjHhC+mzb6; Wed, 27 Nov 2019 01:04:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D0BD7860B2;
-	Tue, 26 Nov 2019 19:44:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4BB8121519;
+	Wed, 27 Nov 2019 01:04:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5C15E1BF346
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Nov 2019 19:44:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E10021BF357
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Nov 2019 01:04:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 581D686EAC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Nov 2019 19:44:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id D8D4487583
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Nov 2019 01:04:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cyj6zwgkLOUQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Nov 2019 19:44:30 +0000 (UTC)
+ with ESMTP id vwH87MgC1EQT for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Nov 2019 01:04:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C6AC986DF3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Nov 2019 19:44:30 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 14F0C8748E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Nov 2019 01:04:46 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 26 Nov 2019 11:44:30 -0800
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Nov 2019 17:04:45 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,246,1571727600"; d="scan'208";a="359265410"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by orsmga004.jf.intel.com with ESMTP; 26 Nov 2019 11:44:29 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 26 Nov 2019 11:44:29 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 26 Nov 2019 11:44:29 -0800
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Tue, 26 Nov 2019 11:44:29 -0800
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "'intel-wired-lan@lists.osuosl.org'" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: virtual-bus[v4]: Implementation of Virtual Bus
-Thread-Index: AdWejsx8GQqdDhAwRmONv45220IUFgGAxC9w
-Date: Tue, 26 Nov 2019 19:44:29 +0000
-Message-ID: <0362d5f99b4948409239baf1571b2655@intel.com>
-References: <2B0E3F215D1AB84DA946C8BEE234CCC97B3014A3@ORSMSX101.amr.corp.intel.com>
-In-Reply-To: <2B0E3F215D1AB84DA946C8BEE234CCC97B3014A3@ORSMSX101.amr.corp.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMDA4YjI0YjEtZmRmMC00ZTUxLWFkNDktYmM1NjQ2MTFjNmRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMkEwZjBPUFV3NXhPcG1aN1BCTzZhTEhPQitXMnhoN2IxK2M2a05weE8yeEZFUUtSamxEaERWM1NrVlwvQ2dRMWIifQ==
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+X-IronPort-AV: E=Sophos;i="5.69,247,1571727600"; d="scan'208";a="233934667"
+Received: from vcostago-desk1.jf.intel.com ([10.54.70.26])
+ by fmsmga004.fm.intel.com with ESMTP; 26 Nov 2019 17:04:45 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 26 Nov 2019 17:04:30 -0800
+Message-Id: <20191127010435.1733698-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] virtual-bus[v4]: Implementation of Virtual Bus
+Subject: [Intel-wired-lan] [next-queue PATCH v2 0/5] igc: Add basic support
+ for Timestamping/PTP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,53 +65,63 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Ertman, David M
-> Sent: Monday, November 18, 2019 8:07 PM
-> To: 'intel-wired-lan@lists.osuosl.org' <intel-wired-lan@lists.osuosl.org>;
-> Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; Patil, Kiran
-> <kiran.patil@intel.com>
-> Subject: [Intel-wired-lan] virtual-bus[v4]: Implementation of Virtual Bus
-> 
-> virtual-bus[v4]: Implementation of Virtual Bus
-> 
-> From: Dave Ertman <david.m.ertman@intel.com>
-> 
-> This is the initial implementation of the virtual bus, virtbus_device and
-> virtbus_driver.  The virtual bus is a software based bus intended to support
-> registering virtbus_devices and virtbus_drivers and provide matching
-> between them and probing of the registered drivers.
-> 
-> The primary purpose of the virtual bus is to provide matching services to
-> allow the use of a container_of to get access to a piece of desired data.  This
-> will allow two separate kernel objects to match up and start communication.
-> 
-> The bus will support probe/remove shutdown and suspend/resume
-> callbacks.
-> 
-> Kconfig and Makefile alterations are included
-> 
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> Signed-off-by: Kiran Patil <kiran.patil@intel.com>
-> ---
->  .../selftests/virtual_bus/virtual_bus_dev/Makefile |    7 +
->  .../virtual_bus/virtual_bus_dev/virtual_bus_dev.c  |   60 ++++++++++
->  .../selftests/virtual_bus/virtual_bus_drv/Makefile |    7 +
->  .../virtual_bus/virtual_bus_drv/virtual_bus_drv.c  |  115
-> ++++++++++++++++++++
->  4 files changed, 189 insertions(+)
->  create mode 100644
-> tools/testing/selftests/virtual_bus/virtual_bus_dev/Makefile
->  create mode 100644
-> tools/testing/selftests/virtual_bus/virtual_bus_dev/virtual_bus_dev.c
->  create mode 100644
-> tools/testing/selftests/virtual_bus/virtual_bus_drv/Makefile
->  create mode 100644
-> tools/testing/selftests/virtual_bus/virtual_bus_drv/virtual_bus_drv.c
+Hi,
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Changes from v1:
+  - Fixed wrong value for IGC_SRRCTL_TIMESTAMP;
+  - Added support for retrieving timestamps from PHY (patch 5/5);
 
+Original cover letter (lightly edited):
+
+This adds basic support for Timestamping and enables ptp4l/phc2sys to
+work using i225.
+
+To get ptp4l/phc2sys to work we need 2 basic feature sets:
+ (1) reading/adjusting the PHC clock;
+ (2) enabling/retrieving HW timestamps;
+
+Patch 1/5 adds support for (1), patch 2/5 and 3/5 adds support for (2)
+and patch 4/5 implements the ethtool ioctl that ptp4l uses to check
+what timestamping methods are supported.
+
+As most of the functionality is similar to i210, this code uses that
+as a base. To keep this short, only the features necessary to make
+time synchronization using linuxptp are added.
+
+The most important differences from i210 is that there's now support
+for multiple PTP domains, with multiple timestamping registers.
+
+Still aiming to keep this series short, only support for one PTP
+domain is added, and also only one of the timestamping registers is
+used.
+
+Missing from this series is also support configuring/using the
+programmable pins.
+
+
+Cheers,
+--
+Vinicius
+
+Vinicius Costa Gomes (5):
+  igc: Add basic skeleton for PTP
+  igc: Add support for RX timestamping
+  igc: Add support for TX timestamping
+  igc: Add support for ethtool GET_TS_INFO command
+  igc: Use Start of Packet signal from PHY for timestamping
+
+ drivers/net/ethernet/intel/igc/Makefile      |   2 +-
+ drivers/net/ethernet/intel/igc/igc.h         |  45 ++
+ drivers/net/ethernet/intel/igc/igc_defines.h |  66 ++
+ drivers/net/ethernet/intel/igc/igc_ethtool.c |  34 +
+ drivers/net/ethernet/intel/igc/igc_main.c    |  86 +++
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 716 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  27 +
+ 7 files changed, 975 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/net/ethernet/intel/igc/igc_ptp.c
+
+-- 
+2.24.0
 
 _______________________________________________
 Intel-wired-lan mailing list
