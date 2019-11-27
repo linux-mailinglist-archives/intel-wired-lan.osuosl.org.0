@@ -1,52 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B30B510E685
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Dec 2019 08:56:32 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F004620504;
-	Mon,  2 Dec 2019 07:56:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id azUlr4aTbQ2x; Mon,  2 Dec 2019 07:56:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2C6FD204EE;
-	Mon,  2 Dec 2019 07:56:30 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 64AE61BF406
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Dec 2019 07:56:29 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5F4310EF5E
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Dec 2019 19:38:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 608C585E0D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Dec 2019 07:56:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9B922885FB;
+	Mon,  2 Dec 2019 18:38:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5R8vlVW3Qgu7; Mon,  2 Dec 2019 18:38:18 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3F18688604;
+	Mon,  2 Dec 2019 18:38:18 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6CBF71BF3DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Nov 2019 09:10:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 684C887662
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Nov 2019 09:10:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d5Zf4Mniplyy for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Dec 2019 07:56:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id C215B85CE3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Dec 2019 07:56:28 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2019 23:56:27 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,268,1571727600"; d="scan'208";a="410326495"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga005.fm.intel.com with ESMTP; 01 Dec 2019 23:56:27 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  2 Dec 2019 09:56:26 +0200
-Message-Id: <20191202075626.42061-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: Remove serdes comments from a
- description of methods
+ with ESMTP id n1UUQT7Tg1+A for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Nov 2019 09:10:02 +0000 (UTC)
+X-Greylist: delayed 00:05:04 by SQLgrey-1.7.6
+Received: from out30-133.freemail.mail.aliyun.com
+ (out30-133.freemail.mail.aliyun.com [115.124.30.133])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3554F847D9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Nov 2019 09:10:01 +0000 (UTC)
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R731e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04426; MF=cambda@linux.alibaba.com;
+ NM=1; PH=DS; RN=7; SR=0; TI=SMTPD_---0TjDNUDL_1574845494; 
+Received: from localhost(mailfrom:cambda@linux.alibaba.com
+ fp:SMTPD_---0TjDNUDL_1574845494) by smtp.aliyun-inc.com(127.0.0.1);
+ Wed, 27 Nov 2019 17:04:55 +0800
+From: Cambda Zhu <cambda@linux.alibaba.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Date: Wed, 27 Nov 2019 17:03:55 +0800
+Message-Id: <20191127090355.27708-1-cambda@linux.alibaba.com>
+X-Mailer: git-send-email 2.16.5
+X-Mailman-Approved-At: Mon, 02 Dec 2019 18:38:16 +0000
+Subject: [Intel-wired-lan] [PATCH] ixgbe: Fix calculation of queue with VFs
+ and flow director on interface flap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,44 +58,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Cambda Zhu <cambda@linux.alibaba.com>,
+ Radoslaw Tyl <radoslawx.tyl@intel.com>, netdev@vger.kernel.org,
+ Joseph Qi <joseph.qi@linux.alibaba.com>, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Serdes interface is not applicable for i225 devices.
-Remove this from comments and make comments more clearly.
+This patch fixes the calculation of queue when we restore flow director
+filters after resetting adapter. In ixgbe_fdir_filter_restore(), filter's
+vf may be zero which makes the queue outside of the rx_ring array.
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+The calculation is changed to the same as ixgbe_add_ethtool_fdir_entry().
+
+Signed-off-by: Cambda Zhu <cambda@linux.alibaba.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 37 +++++++++++++++++++--------
+ 1 file changed, 27 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index d01ed6c55033..9c8abca08b90 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -59,7 +59,7 @@ enum latency_range {
- };
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 25c097cd8100..6d5be31cc9cb 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -5239,7 +5239,7 @@ static void ixgbe_fdir_filter_restore(struct ixgbe_adapter *adapter)
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	struct hlist_node *node2;
+ 	struct ixgbe_fdir_filter *filter;
+-	u64 action;
++	u8 queue;
  
- /**
-- * igc_power_down_link - Power down the phy/serdes link
-+ * igc_power_down_link - Power down the phy link
-  * @adapter: address of board private structure
-  */
- static void igc_power_down_link(struct igc_adapter *adapter)
-@@ -106,7 +106,7 @@ void igc_reset(struct igc_adapter *adapter)
- }
+ 	spin_lock(&adapter->fdir_perfect_lock);
  
- /**
-- * igc_power_up_link - Power up the phy/serdes link
-+ * igc_power_up_link - Power up the phy link
-  * @adapter: address of board private structure
-  */
- static void igc_power_up_link(struct igc_adapter *adapter)
+@@ -5248,17 +5248,34 @@ static void ixgbe_fdir_filter_restore(struct ixgbe_adapter *adapter)
+ 
+ 	hlist_for_each_entry_safe(filter, node2,
+ 				  &adapter->fdir_filter_list, fdir_node) {
+-		action = filter->action;
+-		if (action != IXGBE_FDIR_DROP_QUEUE && action != 0)
+-			action =
+-			(action >> ETHTOOL_RX_FLOW_SPEC_RING_VF_OFF) - 1;
++		if (filter->action == IXGBE_FDIR_DROP_QUEUE) {
++			queue = IXGBE_FDIR_DROP_QUEUE;
++		} else {
++			u32 ring = ethtool_get_flow_spec_ring(filter->action);
++			u8 vf = ethtool_get_flow_spec_ring_vf(filter->action);
++
++			if (!vf && (ring >= adapter->num_rx_queues)) {
++				e_err(drv, "FDIR restore failed without VF, "
++				      "ring: %u\n", ring);
++				continue;
++			} else if (vf &&
++				   ((vf > adapter->num_vfs) ||
++				     ring >= adapter->num_rx_queues_per_pool)) {
++				e_err(drv, "FDIR restore failed with VF, "
++				      "vf: %hhu, ring: %u\n", vf, ring);
++				continue;
++			}
++
++			/* Map the ring onto the absolute queue index */
++			if (!vf)
++				queue = adapter->rx_ring[ring]->reg_idx;
++			else
++				queue = ((vf - 1) *
++					adapter->num_rx_queues_per_pool) + ring;
++		}
+ 
+ 		ixgbe_fdir_write_perfect_filter_82599(hw,
+-				&filter->filter,
+-				filter->sw_idx,
+-				(action == IXGBE_FDIR_DROP_QUEUE) ?
+-				IXGBE_FDIR_DROP_QUEUE :
+-				adapter->rx_ring[action]->reg_idx);
++				&filter->filter, filter->sw_idx, queue);
+ 	}
+ 
+ 	spin_unlock(&adapter->fdir_perfect_lock);
 -- 
-2.11.0
+2.16.5
 
 _______________________________________________
 Intel-wired-lan mailing list
