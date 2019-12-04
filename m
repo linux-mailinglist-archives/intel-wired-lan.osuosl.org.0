@@ -2,77 +2,75 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C690C1134A4
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Dec 2019 19:26:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B127113541
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Dec 2019 19:58:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7327086F63;
-	Wed,  4 Dec 2019 18:26:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1AF1985232;
+	Wed,  4 Dec 2019 18:58:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vaZsEIAuDF8Q; Wed,  4 Dec 2019 18:26:00 +0000 (UTC)
+	with ESMTP id mocdge1MeRWq; Wed,  4 Dec 2019 18:58:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AE2EB86F60;
-	Wed,  4 Dec 2019 18:25:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D71C185118;
+	Wed,  4 Dec 2019 18:58:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CC4BD1BF25B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 18:25:56 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E10251BF312
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 10:52:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C756487DEB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 18:25:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id DB0EB22264
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 10:52:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KuAyfgZ8RCou for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Dec 2019 18:25:56 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 03E4C87DE1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 18:25:55 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2019 10:25:55 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,278,1571727600"; d="scan'208";a="242942985"
-Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
- by fmsmga002.fm.intel.com with ESMTP; 04 Dec 2019 10:25:54 -0800
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 4 Dec 2019 10:25:54 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 4 Dec 2019 10:25:53 -0800
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 4 Dec 2019 10:25:53 -0800
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] ixgbe: Fix calculation of queue with
- VFs and flow director on interface flap
-Thread-Index: AQHVqT+sRBWDmorGrk+LGmHTdjVjZ6eqTcLQ
-Date: Wed, 4 Dec 2019 18:25:53 +0000
-Message-ID: <da48f1f5ff794532b951591f5406ca21@intel.com>
-References: <20191127090355.27708-1-cambda@linux.alibaba.com>
-In-Reply-To: <20191127090355.27708-1-cambda@linux.alibaba.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjhiY2Y5ZTUtYjg3NS00ZjJiLWE5ODEtYzk0ZTVlOWMwODVhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoibzU4bWVHWUxGeEpCbkdONHNiNnVHQmd1WGJXanM1eGVqaFNiNlRsTXlRdmEwWlpwdEJjdWpRVUZLMHpLYVIxOSJ9
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+ with ESMTP id VirspJZsSLsk for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Dec 2019 10:52:37 +0000 (UTC)
+X-Greylist: delayed 00:11:23 by SQLgrey-1.7.6
+Received: from ns.omicron.at (ns.omicron.at [212.183.10.25])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9772020394
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 10:52:37 +0000 (UTC)
+Received: from MGW02-ATKLA.omicron.at ([172.25.62.35])
+ by ns.omicron.at (8.15.2/8.15.2) with ESMTPS id xB4AfAco019657
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL)
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 4 Dec 2019 11:41:10 +0100
+DKIM-Filter: OpenDKIM Filter v2.11.0 ns.omicron.at xB4AfAco019657
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=omicronenergy.com;
+ s=default; t=1575456070;
+ bh=ukI/cX93/kHMVo4B48kFJfdHSp1u4sCSTmqVqM4D+iw=;
+ h=From:To:CC:Subject:Date:From;
+ b=NKsvp7mAlJTLYSuZ7PkhGwADIYmAV6mfCXlD6W3T0iWLECjTBVPsplq/mqGzl3MJe
+ CosPd25Q3M7SCLQxyz9ZGoUc7KD80l4rjej/CnJikZ8xtve0SSf4AENd4bdCO82C5d
+ sYR0b2K4ZdlNpNHxw1GF9V+gmaFWOBU1LG4tO+UI=
+Received: from MGW02-ATKLA.omicron.at (localhost [127.0.0.1])
+ by MGW02-ATKLA.omicron.at (Postfix) with ESMTP id A4F28A010D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 11:41:10 +0100 (CET)
+Received: from MGW01-ATKLA.omicron.at (unknown [172.25.62.34])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by MGW02-ATKLA.omicron.at (Postfix) with ESMTPS id A3364A010C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2019 11:41:10 +0100 (CET)
+Received: from EXC04-ATKLA.omicron.at ([172.22.100.189])
+ by MGW01-ATKLA.omicron.at  with ESMTP id xB4AfAGx014102-xB4AfAH1014102
+ (version=TLSv1.2 cipher=AES256-SHA256 bits=256 verify=CAFAIL);
+ Wed, 4 Dec 2019 11:41:10 +0100
+Received: from manrud11.omicron.at (172.22.24.34) by EXC04-ATKLA.omicron.at
+ (172.22.100.189) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Wed, 4 Dec 2019
+ 11:41:06 +0100
+From: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
+To: <jeffrey.t.kirsher@intel.com>
+Date: Wed, 4 Dec 2019 11:40:26 +0100
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Fix calculation of queue with
- VFs and flow director on interface flap
+X-Originating-IP: [172.22.24.34]
+X-ClientProxiedBy: EXC04-ATKLA.omicron.at (172.22.100.189) To
+ EXC04-ATKLA.omicron.at (172.22.100.189)
+Message-ID: <ef7b98c8-0ce4-4f84-989d-28b5a29d4831@EXC04-ATKLA.omicron.at>
+X-Mailman-Approved-At: Wed, 04 Dec 2019 18:58:03 +0000
+Subject: [Intel-wired-lan] [PATCH] igb: Fix SGMII SFP module discovery for
+ 100FX/LX.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,37 +83,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Manfred Rudigier <manfred.rudigier@omicronenergy.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Cambda Zhu
-> Sent: Wednesday, November 27, 2019 1:04 AM
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> Cc: Cambda Zhu <cambda@linux.alibaba.com>; Tyl, RadoslawX
-> <radoslawx.tyl@intel.com>; netdev@vger.kernel.org; Joseph Qi
-> <joseph.qi@linux.alibaba.com>; intel-wired-lan@lists.osuosl.org; David S.
-> Miller <davem@davemloft.net>
-> Subject: [Intel-wired-lan] [PATCH] ixgbe: Fix calculation of queue with VFs
-> and flow director on interface flap
-> 
-> This patch fixes the calculation of queue when we restore flow director filters
-> after resetting adapter. In ixgbe_fdir_filter_restore(), filter's vf may be zero
-> which makes the queue outside of the rx_ring array.
-> 
-> The calculation is changed to the same as ixgbe_add_ethtool_fdir_entry().
-> 
-> Signed-off-by: Cambda Zhu <cambda@linux.alibaba.com>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 37
-> +++++++++++++++++++--------
->  1 file changed, 27 insertions(+), 10 deletions(-)
+Changing the link mode should also be done for 100BaseFX SGMII modules,
+otherwise they just don't work when the default link mode in CTRL_EXT
+coming from the EEPROM is SERDES.
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Additionally 100Base-LX SGMII SFP modules are also supported now, which
+was not the case before.
 
+Tested with an i210 using Flexoptix S.1303.2M.G 100FX and
+S.1303.10.G 100LX SGMII SFP modules.
+
+Signed-off-by: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
+---
+ drivers/net/ethernet/intel/igb/e1000_82575.c | 8 ++------
+ drivers/net/ethernet/intel/igb/igb_ethtool.c | 2 +-
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/e1000_82575.c b/drivers/net/ethernet/intel/igb/e1000_82575.c
+index 614130a6ba1f..30e77f5406cf 100644
+--- a/drivers/net/ethernet/intel/igb/e1000_82575.c
++++ b/drivers/net/ethernet/intel/igb/e1000_82575.c
+@@ -530,7 +530,7 @@ static s32 igb_set_sfp_media_type_82575(struct e1000_hw *hw)
+ 		dev_spec->module_plugged = true;
+ 		if (eth_flags->e1000_base_lx || eth_flags->e1000_base_sx) {
+ 			hw->phy.media_type = e1000_media_type_internal_serdes;
+-		} else if (eth_flags->e100_base_fx) {
++		} else if (eth_flags->e100_base_fx || eth_flags->e100_base_lx) {
+ 			dev_spec->sgmii_active = true;
+ 			hw->phy.media_type = e1000_media_type_internal_serdes;
+ 		} else if (eth_flags->e1000_base_t) {
+@@ -657,14 +657,10 @@ static s32 igb_get_invariants_82575(struct e1000_hw *hw)
+ 			break;
+ 		}
+ 
+-		/* do not change link mode for 100BaseFX */
+-		if (dev_spec->eth_flags.e100_base_fx)
+-			break;
+-
+ 		/* change current link mode setting */
+ 		ctrl_ext &= ~E1000_CTRL_EXT_LINK_MODE_MASK;
+ 
+-		if (hw->phy.media_type == e1000_media_type_copper)
++		if (dev_spec->sgmii_active)
+ 			ctrl_ext |= E1000_CTRL_EXT_LINK_MODE_SGMII;
+ 		else
+ 			ctrl_ext |= E1000_CTRL_EXT_LINK_MODE_PCIE_SERDES;
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 5acf3b743876..50954e444985 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
++++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+@@ -181,7 +181,7 @@ static int igb_get_link_ksettings(struct net_device *netdev,
+ 				advertising &= ~ADVERTISED_1000baseKX_Full;
+ 			}
+ 		}
+-		if (eth_flags->e100_base_fx) {
++		if (eth_flags->e100_base_fx || eth_flags->e100_base_lx) {
+ 			supported |= SUPPORTED_100baseT_Full;
+ 			advertising |= ADVERTISED_100baseT_Full;
+ 		}
+-- 
+2.24.0
 
 _______________________________________________
 Intel-wired-lan mailing list
