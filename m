@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0A0C114782
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2019 20:10:06 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38CBB114783
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2019 20:10:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 170B425E27;
+	by whitealder.osuosl.org (Postfix) with ESMTP id A68B7884AA;
 	Thu,  5 Dec 2019 19:10:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sz-XE6QYD-x8; Thu,  5 Dec 2019 19:10:04 +0000 (UTC)
+	with ESMTP id mvPVauwbmvn9; Thu,  5 Dec 2019 19:10:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 72A1E25DCD;
+	by whitealder.osuosl.org (Postfix) with ESMTP id C04A388495;
 	Thu,  5 Dec 2019 19:10:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CE8F11BF31C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2019 15:51:20 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 29D391BF31C
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2019 15:51:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C971088307
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2019 15:51:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 257D122E20
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2019 15:51:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0OYwnqtcx4gB for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id DGjaW8YMBCGz for <intel-wired-lan@lists.osuosl.org>;
  Thu,  5 Dec 2019 15:51:18 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR02-HE1-obe.outbound.protection.outlook.com
- (mail-eopbgr10076.outbound.protection.outlook.com [40.107.1.76])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8427588299
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2019 15:51:17 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from EUR03-DB5-obe.outbound.protection.outlook.com
+ (mail-eopbgr40084.outbound.protection.outlook.com [40.107.4.84])
+ by silver.osuosl.org (Postfix) with ESMTPS id 51052204C8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2019 15:51:18 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Kp4MESk5GOn1KfMT/a2bb2LLWGA+m9AJeleKH/HZoAtw8M0iDKKIW5muVYFIHW+za1ckC9r31ekh2RiSPsPMGiKEbKRegTxAuLA4uwzv6AmdmeWjDGPX293iuhDNp6xQVIe4W7ldfWhqHHZE9Cjy+VTLz7JDuR43RVS5frUMGHasWgSQDoJeIbbZ+qVFnjJWRko+KhaygrhxLLPBeHx7qpx83GfwDUzmOASZCIZiwcz9wTj5CwPdlcvrcOtsL0EVn8EQYgsbgoJPTEdtZhll9zJG/e+S6VMGG7OxbC8zWmvmKE298OOkLEnwNDTFBk37741NwrVedWgSOLTSXjXWVg==
+ b=V1m2dE5+wLTdtPMxKju+0LENMAXZdMwJzPY5Urf1GvLfjbUKc3pKLCZkaeidTAkPtZKHsMcmPeyWzpQdMz5kFBqXVrLQh646FqCdnT5XLry8kHi4HKYtUzzPRxdTliIlH6NUrsuhZG2NNc7+aHQzaAfkLAK8WXdXElWFmcvR7fan7kWrIpycQsStEQddCzRuQLTqffWkxDAaQg0d/Ez7oqLSzoTjbWlAP162yx2l7XKgegbDqoP+iVrOyV33AFAnfZwtqzwX5ij14CQ+BEQ+BQHMs2U3k2yxTRqsSvjWTOxI8jAwxNlKpZrbbFOlPuZdS7kooAxw4UaC1AnwmsRSSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rRuwKOFMmYSodP+B1zZ0c4GlihNPibah6waj40tnEb0=;
- b=A/cICxH5SRxMdW61RJYgMezRbN90HCEMT88yub2h6djsCzAOqHK4EXg8y5iN/nLqtvqMDmXJ3sMTtWkOEs9RmJ2JzV9fZ/PKabS3/sO8PPMFfZ3lXNsk7r/iDuOlCcXHVidmzhZ5PtQMi1BMjRQ4qQAhqYdbVWrcQVwCAJhtRmLwOtFeXXkFGYq7Bl7A5LPQfyHTjksxQIhAoODfLL7jNKtnmbTqPrFZlJmn8sM3WSknbV/BUmie5hXJrBK2H0wWt7Gan2pEgCMkI/ZRGKceipm/ErG1jZeCD7WtmLeiBRpqOe7+grq6JVQsxPXVrgtHHdFMNCmZB5LVlGrmJkWy3Q==
+ bh=INZQ5Ynhk1zqjEWL8bQkqXtZgjWjg25/mVjWINHHA7A=;
+ b=MJyQspyNOcyH75x/NWEkTQ9Pun4ZGrLtgb9hq/kpIscgERjoG2iaC2YP/rKNJTxQokACbA7KM/86l39SpihXz/+8Iz72FduisM0JCUdBtTz+LJUylW7DpeeXAtikpFjPbs8xhDkqWqKdxa+P5S5wGuvmmpn1n9/urT77XqFSPHaygwk9JrmZOCwPWvM22ilfcaG+NF68fJYWv4dpxJzIFr9cVZwarpeWi1ybyImTpbMvTIs7tK7lOj1Nle9AFgKEB4wZsZgU7pHkHYcTTX2Ayrw+vsp2q8wq6oIatL6vmuc0N0BvuUc1iwzLgCWr73hyzLqfs1eVUnbrmA1i/rqTaQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
  dkim=pass header.d=mellanox.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rRuwKOFMmYSodP+B1zZ0c4GlihNPibah6waj40tnEb0=;
- b=QJyhFQl8TsatcmWEdrywazg62DTZnLv8TMNI0ladoUhjIXmrgsV/Hu77dgVe5udZfoUgy+ZGZ4qF9M/f3s2FJUNjDBqV1pIrDlwNzIcJkCjpnogUvBb8HtuB2q1CFYsVa11DiyzNyjDIvrz2LVXpmNjZx8pM3bLvVUFk8y0o9zU=
+ bh=INZQ5Ynhk1zqjEWL8bQkqXtZgjWjg25/mVjWINHHA7A=;
+ b=bx4brbq+9tf1dyRjB5O6KEGCM/HCbuBgygYdbgIGV5gRwBwCBtmdx5WZSnLsIW8TFcZeCsNU6+PGicWZnX/B1UnvXGBpr5QQmrJihantUCEMr1vZuelH6yA9D3aMwbCE6K2BG8Nx90GQb/wN3VEESFlk6S5hlgjMeJBDRy1v3B0=
 Received: from AM0PR05MB5875.eurprd05.prod.outlook.com (20.178.119.159) by
- AM0PR05MB5988.eurprd05.prod.outlook.com (20.178.117.78) with Microsoft SMTP
+ AM0PR05MB4851.eurprd05.prod.outlook.com (20.176.214.222) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.18; Thu, 5 Dec 2019 15:51:14 +0000
+ 15.20.2495.22; Thu, 5 Dec 2019 15:51:16 +0000
 Received: from AM0PR05MB5875.eurprd05.prod.outlook.com
  ([fe80::dca5:7e63:8242:685e]) by AM0PR05MB5875.eurprd05.prod.outlook.com
  ([fe80::dca5:7e63:8242:685e%7]) with mapi id 15.20.2516.013; Thu, 5 Dec 2019
- 15:51:14 +0000
+ 15:51:16 +0000
 From: Maxim Mikityanskiy <maximmi@mellanox.com>
 To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>, Magnus Karlsson
  <magnus.karlsson@intel.com>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Thread-Topic: [PATCH bpf 2/4] net/mlx5e: Fix concurrency issues between config
+Thread-Topic: [PATCH bpf 3/4] net/i40e: Fix concurrency issues between config
  flow and XSK
-Thread-Index: AQHVq4PS6Uynt1LTbkm/KSdAo9x1xA==
-Date: Thu, 5 Dec 2019 15:51:13 +0000
-Message-ID: <20191205155028.28854-3-maximmi@mellanox.com>
+Thread-Index: AQHVq4PTP1CGOF24FEqoAXqjM71N8A==
+Date: Thu, 5 Dec 2019 15:51:15 +0000
+Message-ID: <20191205155028.28854-4-maximmi@mellanox.com>
 References: <20191205155028.28854-1-maximmi@mellanox.com>
 In-Reply-To: <20191205155028.28854-1-maximmi@mellanox.com>
 Accept-Language: en-US
@@ -79,33 +79,33 @@ x-mailer: git-send-email 2.20.1
 x-originating-ip: [94.188.199.18]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 446d4fbf-445e-4bb1-a5f4-08d7799af4f8
-x-ms-traffictypediagnostic: AM0PR05MB5988:|AM0PR05MB5988:
+x-ms-office365-filtering-correlation-id: 54cd7592-a343-4014-5fbc-08d7799af5cf
+x-ms-traffictypediagnostic: AM0PR05MB4851:|AM0PR05MB4851:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <AM0PR05MB598816DED076585640780F0ED15C0@AM0PR05MB5988.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:538;
+x-microsoft-antispam-prvs: <AM0PR05MB4851D0DEC9A0BAF1F6ED55CCD15C0@AM0PR05MB4851.eurprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2958;
 x-forefront-prvs: 02426D11FE
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(346002)(376002)(366004)(136003)(39860400002)(396003)(199004)(189003)(71200400001)(71190400001)(52116002)(305945005)(7416002)(186003)(66476007)(54906003)(99286004)(110136005)(14444005)(26005)(316002)(4326008)(6512007)(8676002)(6506007)(1076003)(8936002)(6486002)(102836004)(76176011)(107886003)(50226002)(14454004)(81166006)(2616005)(36756003)(11346002)(25786009)(81156014)(5660300002)(66946007)(66446008)(64756008)(66556008)(2906002)(478600001)(86362001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR05MB5988;
+ SFS:(10009020)(4636009)(376002)(39860400002)(396003)(136003)(346002)(366004)(189003)(199004)(6506007)(50226002)(6512007)(316002)(2906002)(81156014)(8936002)(102836004)(99286004)(8676002)(4326008)(76176011)(86362001)(305945005)(25786009)(64756008)(11346002)(2616005)(186003)(7416002)(54906003)(71190400001)(36756003)(478600001)(52116002)(14454004)(81166006)(5660300002)(66476007)(71200400001)(66946007)(6486002)(66556008)(107886003)(1076003)(110136005)(66446008)(26005);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR05MB4851;
  H:AM0PR05MB5875.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
+ PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: mellanox.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: goAXb1whxJ1vdgdwYGt2dKefcIi0A4k+qb9QOinbQYN5TuZOlVkmNcLnjMUlfNOkF2IVHf1dPFEePPNe5xr+1LCJ8hzepe5pr1Rx0UhBuGCZ8PbSfgXNbTMEncBQAHV3i6q3HvDVBkYFXfTd4vj6Z+uHId013IjtiqeFEUveYhknOizuRFiYXkAPnMHV9mWfymsiKdiXhpJd27T5oIK0EdQA3mG/l3f+IPMOrcniVsA4h+Nxhq/fBN2ec504GfRYCKXPVFPzg4/+9MwfmF6dsqSWbxogENjSWpahUB2yV5aWK0r2gTUg+dZMIfYB86mStY+fHKCxLbgMRvxljiRZczmnxP5tPLBMIrVrixqs3tvVj6fNcQjWU6Npul2e2wrQRZMXzp3jkDjbyf0wkybJCQbyQ/rdfVtRuyBGnt43TODFqMD1GVd3dffmlInNc+Js
+x-microsoft-antispam-message-info: hYNR7cOb2Ra2uJ4O67sR6+URtKNTI0/xD5aLHkQwt/rIDRkOuvZXnrd77t4RX77151olIZEPXnLkn80/gHrlqBJaSn6866dXW3DJVc3uGz5NaQCdajklfilFYsCJA4vX6sqsxKCBGQEzc2lsfxXiM5owUV9Bio3DTzVPb7KwZ7srJ86YYeOClyW+v86Sq3erd5jXgnFL4jPLVOUVR6T5itqn3ktowleo7xzWgEWXzTQJJqfx807YcQQi9fC4gJVmH+DzX2tMs4SMvgGFYMlo71MIcf/IQnhOcgHD8zfMFh4T/8WHwKpM0+JCwgyZ7+mmSMCpkpAfT1ntVN079iFHLnrXDGhopCvmwRKkxPfIU8bDls61G9nuYme9LbM3z3QbiGJ/P+MtrUSoe36GxJg6+xq0noZHed/Q80uzk66FvF9A/qdwToxXvgfsd7DqEV68
 MIME-Version: 1.0
 X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 446d4fbf-445e-4bb1-a5f4-08d7799af4f8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2019 15:51:13.9784 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 54cd7592-a343-4014-5fbc-08d7799af5cf
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2019 15:51:15.9943 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ksd4x5EI+7pvKm3HdNcriNOSKQa5wmQF9LDD+gnniQZXfNWmNz62udBOl8zJGYUu1Bje9tTwDVq18N09sBvLxA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB5988
+X-MS-Exchange-CrossTenant-userprincipalname: WuymdsR6xRcdGffIG0iN70xAWlbkYMyaBqkkDXm7Z5tJCsLBrXpqW9GBLcuvihkkvzglqJy9Kws7SUI1oimIZQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB4851
 X-Mailman-Approved-At: Thu, 05 Dec 2019 19:10:00 +0000
-Subject: [Intel-wired-lan] [PATCH bpf 2/4] net/mlx5e: Fix concurrency issues
+Subject: [Intel-wired-lan] [PATCH bpf 3/4] net/i40e: Fix concurrency issues
  between config flow and XSK
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -134,168 +134,69 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After disabling resources necessary for XSK (the XDP program, channels,
-XSK queues), use synchronize_rcu to wait until the XSK wakeup function
-finishes, before freeing the resources.
+Use synchronize_rcu to wait until the XSK wakeup function finishes
+before destroying the resources it uses:
 
-Suspend XSK wakeups during switching channels. If the XDP program is
-being removed, synchronize_rcu before closing the old channels to allow
-XSK wakeup to complete.
+1. i40e_down already calls synchronize_rcu. On i40e_down either
+__I40E_VSI_DOWN or __I40E_CONFIG_BUSY is set. Check the latter in
+i40e_xsk_async_xmit (the former is already checked there).
+
+2. After switching the XDP program, call synchronize_rcu to let
+i40e_xsk_async_xmit exit before the XDP program is freed.
+
+3. Changing the number of channels brings the interface down (see
+i40e_prep_for_reset and i40e_pf_quiesce_all_vsi).
+
+4. Disabling UMEM sets __I40E_CONFIG_BUSY, too.
 
 Signed-off-by: Maxim Mikityanskiy <maximmi@mellanox.com>
 ---
- drivers/net/ethernet/mellanox/mlx5/core/en.h  |  2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.h  | 22 ++++++++-----------
- .../mellanox/mlx5/core/en/xsk/setup.c         |  1 +
- .../ethernet/mellanox/mlx5/core/en/xsk/tx.c   |  2 +-
- .../net/ethernet/mellanox/mlx5/core/en_main.c | 19 +---------------
- 5 files changed, 13 insertions(+), 33 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 7 +++++--
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c  | 4 ++++
+ 2 files changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en.h b/drivers/net/ethernet/mellanox/mlx5/core/en.h
-index f1a7bc46f1c0..61084c3744ba 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en.h
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en.h
-@@ -760,7 +760,7 @@ enum {
- 	MLX5E_STATE_OPENED,
- 	MLX5E_STATE_DESTROYING,
- 	MLX5E_STATE_XDP_TX_ENABLED,
--	MLX5E_STATE_XDP_OPEN,
-+	MLX5E_STATE_XDP_ACTIVE,
- };
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 1ccabeafa44c..afa3a99e68e1 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -6823,8 +6823,8 @@ void i40e_down(struct i40e_vsi *vsi)
+ 	for (i = 0; i < vsi->num_queue_pairs; i++) {
+ 		i40e_clean_tx_ring(vsi->tx_rings[i]);
+ 		if (i40e_enabled_xdp_vsi(vsi)) {
+-			/* Make sure that in-progress ndo_xdp_xmit
+-			 * calls are completed.
++			/* Make sure that in-progress ndo_xdp_xmit and
++			 * ndo_xsk_async_xmit calls are completed.
+ 			 */
+ 			synchronize_rcu();
+ 			i40e_clean_tx_ring(vsi->xdp_rings[i]);
+@@ -12545,6 +12545,9 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi,
+ 		i40e_prep_for_reset(pf, true);
  
- struct mlx5e_rqt {
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.h b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.h
-index 36ac1e3816b9..d7587f40ecae 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.h
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.h
-@@ -75,12 +75,18 @@ int mlx5e_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
- static inline void mlx5e_xdp_tx_enable(struct mlx5e_priv *priv)
+ 	old_prog = xchg(&vsi->xdp_prog, prog);
++	if (old_prog)
++		/* Wait until ndo_xsk_async_xmit completes. */
++		synchronize_rcu();
+ 
+ 	if (need_reset)
+ 		i40e_reset_and_rebuild(pf, true, true);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index d07e1a890428..f73cd917c44f 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -787,8 +787,12 @@ int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
  {
- 	set_bit(MLX5E_STATE_XDP_TX_ENABLED, &priv->state);
+ 	struct i40e_netdev_priv *np = netdev_priv(dev);
+ 	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
+ 	struct i40e_ring *ring;
+ 
++	if (test_bit(__I40E_CONFIG_BUSY, pf->state))
++		return -ENETDOWN;
 +
-+	if (priv->channels.params.xdp_prog)
-+		set_bit(MLX5E_STATE_XDP_ACTIVE, &priv->state);
- }
- 
- static inline void mlx5e_xdp_tx_disable(struct mlx5e_priv *priv)
- {
-+	if (priv->channels.params.xdp_prog)
-+		clear_bit(MLX5E_STATE_XDP_ACTIVE, &priv->state);
-+
- 	clear_bit(MLX5E_STATE_XDP_TX_ENABLED, &priv->state);
--	/* let other device's napi(s) see our new state */
-+	/* Let other device's napi(s) and XSK wakeups see our new state. */
- 	synchronize_rcu();
- }
- 
-@@ -89,19 +95,9 @@ static inline bool mlx5e_xdp_tx_is_enabled(struct mlx5e_priv *priv)
- 	return test_bit(MLX5E_STATE_XDP_TX_ENABLED, &priv->state);
- }
- 
--static inline void mlx5e_xdp_set_open(struct mlx5e_priv *priv)
--{
--	set_bit(MLX5E_STATE_XDP_OPEN, &priv->state);
--}
--
--static inline void mlx5e_xdp_set_closed(struct mlx5e_priv *priv)
--{
--	clear_bit(MLX5E_STATE_XDP_OPEN, &priv->state);
--}
--
--static inline bool mlx5e_xdp_is_open(struct mlx5e_priv *priv)
-+static inline bool mlx5e_xdp_is_active(struct mlx5e_priv *priv)
- {
--	return test_bit(MLX5E_STATE_XDP_OPEN, &priv->state);
-+	return test_bit(MLX5E_STATE_XDP_ACTIVE, &priv->state);
- }
- 
- static inline void mlx5e_xmit_xdp_doorbell(struct mlx5e_xdpsq *sq)
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c
-index 631af8dee517..c28cbae42331 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/setup.c
-@@ -144,6 +144,7 @@ void mlx5e_close_xsk(struct mlx5e_channel *c)
- {
- 	clear_bit(MLX5E_CHANNEL_STATE_XSK, c->state);
- 	napi_synchronize(&c->napi);
-+	synchronize_rcu(); /* Sync with the XSK wakeup. */
- 
- 	mlx5e_close_rq(&c->xskrq);
- 	mlx5e_close_cq(&c->xskrq.cq);
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
-index 87827477d38c..fe2d596cb361 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xsk/tx.c
-@@ -14,7 +14,7 @@ int mlx5e_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
- 	struct mlx5e_channel *c;
- 	u16 ix;
- 
--	if (unlikely(!mlx5e_xdp_is_open(priv)))
-+	if (unlikely(!mlx5e_xdp_is_active(priv)))
+ 	if (test_bit(__I40E_VSI_DOWN, vsi->state))
  		return -ENETDOWN;
  
- 	if (unlikely(!mlx5e_qid_get_ch_if_in_group(params, qid, MLX5E_RQ_GROUP_XSK, &ix)))
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-index 09ed7f5f688b..fe1a42fa214b 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
-@@ -3006,12 +3006,9 @@ void mlx5e_timestamp_init(struct mlx5e_priv *priv)
- int mlx5e_open_locked(struct net_device *netdev)
- {
- 	struct mlx5e_priv *priv = netdev_priv(netdev);
--	bool is_xdp = priv->channels.params.xdp_prog;
- 	int err;
- 
- 	set_bit(MLX5E_STATE_OPENED, &priv->state);
--	if (is_xdp)
--		mlx5e_xdp_set_open(priv);
- 
- 	err = mlx5e_open_channels(priv, &priv->channels);
- 	if (err)
-@@ -3026,8 +3023,6 @@ int mlx5e_open_locked(struct net_device *netdev)
- 	return 0;
- 
- err_clear_state_opened_flag:
--	if (is_xdp)
--		mlx5e_xdp_set_closed(priv);
- 	clear_bit(MLX5E_STATE_OPENED, &priv->state);
- 	return err;
- }
-@@ -3059,8 +3054,6 @@ int mlx5e_close_locked(struct net_device *netdev)
- 	if (!test_bit(MLX5E_STATE_OPENED, &priv->state))
- 		return 0;
- 
--	if (priv->channels.params.xdp_prog)
--		mlx5e_xdp_set_closed(priv);
- 	clear_bit(MLX5E_STATE_OPENED, &priv->state);
- 
- 	netif_carrier_off(priv->netdev);
-@@ -4377,16 +4370,6 @@ static int mlx5e_xdp_allowed(struct mlx5e_priv *priv, struct bpf_prog *prog)
- 	return 0;
- }
- 
--static int mlx5e_xdp_update_state(struct mlx5e_priv *priv)
--{
--	if (priv->channels.params.xdp_prog)
--		mlx5e_xdp_set_open(priv);
--	else
--		mlx5e_xdp_set_closed(priv);
--
--	return 0;
--}
--
- static int mlx5e_xdp_set(struct net_device *netdev, struct bpf_prog *prog)
- {
- 	struct mlx5e_priv *priv = netdev_priv(netdev);
-@@ -4421,7 +4404,7 @@ static int mlx5e_xdp_set(struct net_device *netdev, struct bpf_prog *prog)
- 		mlx5e_set_rq_type(priv->mdev, &new_channels.params);
- 		old_prog = priv->channels.params.xdp_prog;
- 
--		err = mlx5e_safe_switch_channels(priv, &new_channels, mlx5e_xdp_update_state);
-+		err = mlx5e_safe_switch_channels(priv, &new_channels, NULL);
- 		if (err)
- 			goto unlock;
- 	} else {
 -- 
 2.20.1
 
