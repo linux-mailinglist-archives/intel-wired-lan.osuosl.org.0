@@ -1,63 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91C2F119690
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Dec 2019 22:28:03 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F0A0119788
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Dec 2019 22:34:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3CAF2858B6;
-	Tue, 10 Dec 2019 21:28:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB59888446;
+	Tue, 10 Dec 2019 21:34:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1Q7dIHvg0eKK; Tue, 10 Dec 2019 21:28:01 +0000 (UTC)
+	with ESMTP id DE4LtxQBNpeF; Tue, 10 Dec 2019 21:34:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AC53C85CFE;
-	Tue, 10 Dec 2019 21:28:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8A08088453;
+	Tue, 10 Dec 2019 21:34:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B5E4A1BF580
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2019 21:13:45 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 10A401BF580
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2019 21:33:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id ADE0E85F0A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2019 21:13:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 07D48879F0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2019 21:33:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zIu1Jm0z-RQG for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Dec 2019 21:13:45 +0000 (UTC)
+ with ESMTP id 8c7Av0+0L7ie for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Dec 2019 21:33:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3ECEF85EAC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2019 21:13:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5790D88446
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2019 21:33:57 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4F209214D8;
- Tue, 10 Dec 2019 21:13:44 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 66822207FF;
+ Tue, 10 Dec 2019 21:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576012425;
- bh=E7+lbFqFUYF8+yzcyNj2J5LN1HbMM0cafsvQ6ohnLvU=;
+ s=default; t=1576013637;
+ bh=FMfB8rSy6S8uzbnoPcrPonnwOtJjf09yAMbyfqMk1jk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=abMuJ8j5G0/xOf8M70DbY+x+25ZyGcZjHW5wFoBJAGk7cyNNkgcjiDw60vLw/26v0
- DUy/SngWjuyhBKT85c7cTJfxr+uFkh3FHyVEGkZgBMsElbnkHfWyd9UIuIAav2QjeV
- hhcQ8ZuHvRQ5Cw87o0jejQeZ1PGiSOKCnzbzugOQ=
+ b=jOPiS4G5DH3sTIspE+/8xHyMix4w5XNH4gB6eENbcxjIwEmWhJaudHj5ROh7Lqd3V
+ UoiYvtlAjfwOoepx+tpzcTIuFgVP+NgiulzZg0ZhfhKPelQUyQmDmhypP1pWjdANYD
+ ZYbl3O+3Letv3KQleHmAox5Wlnj4r79Kp1xD612w=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue, 10 Dec 2019 16:07:24 -0500
-Message-Id: <20191210210735.9077-300-sashal@kernel.org>
+Date: Tue, 10 Dec 2019 16:30:41 -0500
+Message-Id: <20191210213221.11921-77-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191210210735.9077-1-sashal@kernel.org>
-References: <20191210210735.9077-1-sashal@kernel.org>
+In-Reply-To: <20191210213221.11921-1-sashal@kernel.org>
+References: <20191210213221.11921-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-Mailman-Approved-At: Tue, 10 Dec 2019 21:27:55 +0000
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 339/350] ice: Fix setting
- coalesce to handle DCB configuration
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 077/177] i40e: initialize
+ ITRN registers with correct values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,55 +70,86 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Brett Creeley <brett.creeley@intel.com>, intel-wired-lan@lists.osuosl.org
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Nicholas Nunley <nicholas.d.nunley@intel.com>
 
-[ Upstream commit e25f9152bc07de534b2b590ce6c052ea25dd8900 ]
+[ Upstream commit 998e5166e604fd37afe94352f7b8c2d816b11049 ]
 
-Currently there can be a case where a DCB map is applied and there are
-more interrupt vectors (vsi->num_q_vectors) than Rx queues (vsi->num_rxq)
-and Tx queues (vsi->num_txq). If we try to set coalesce settings in this
-case it will report a false failure. Fix this by checking if vector index
-is valid with respect to the number of Tx and Rx queues configured.
+Since commit 92418fb14750 ("i40e/i40evf: Use usec value instead of reg
+value for ITR defines") the driver tracks the interrupt throttling
+intervals in single usec units, although the actual ITRN/ITR0 registers are
+programmed in 2 usec units. Most register programming flows in the driver
+correctly handle the conversion, although it is currently not applied when
+the registers are initialized to their default values. Most of the time
+this doesn't present a problem since the default values are usually
+immediately overwritten through the standard adaptive throttling mechanism,
+or updated manually by the user, but if adaptive throttling is disabled and
+the interval values are left alone then the incorrect value will persist.
 
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Since the intended default interval of 50 usecs (vs. 100 usecs as
+programmed) performs better for most traffic workloads, this can lead to
+performance regressions.
+
+This patch adds the correct conversion when writing the initial values to
+the ITRN registers.
+
+Signed-off-by: Nicholas Nunley <nicholas.d.nunley@intel.com>
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 13 ++++++++++---
- 1 file changed, 10 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 7e23034df955c..1fe9f6050635d 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3368,10 +3368,17 @@ __ice_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec,
- 	struct ice_vsi *vsi = np->vsi;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 1a66373184d62..23b31b2ff5ccd 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3441,14 +3441,14 @@ static void i40e_vsi_configure_msix(struct i40e_vsi *vsi)
+ 		q_vector->rx.target_itr =
+ 			ITR_TO_REG(vsi->rx_rings[i]->itr_setting);
+ 		wr32(hw, I40E_PFINT_ITRN(I40E_RX_ITR, vector - 1),
+-		     q_vector->rx.target_itr);
++		     q_vector->rx.target_itr >> 1);
+ 		q_vector->rx.current_itr = q_vector->rx.target_itr;
  
- 	if (q_num < 0) {
--		int i;
-+		int v_idx;
-+
-+		ice_for_each_q_vector(vsi, v_idx) {
-+			/* In some cases if DCB is configured the num_[rx|tx]q
-+			 * can be less than vsi->num_q_vectors. This check
-+			 * accounts for that so we don't report a false failure
-+			 */
-+			if (v_idx >= vsi->num_rxq && v_idx >= vsi->num_txq)
-+				goto set_complete;
+ 		q_vector->tx.next_update = jiffies + 1;
+ 		q_vector->tx.target_itr =
+ 			ITR_TO_REG(vsi->tx_rings[i]->itr_setting);
+ 		wr32(hw, I40E_PFINT_ITRN(I40E_TX_ITR, vector - 1),
+-		     q_vector->tx.target_itr);
++		     q_vector->tx.target_itr >> 1);
+ 		q_vector->tx.current_itr = q_vector->tx.target_itr;
  
--		ice_for_each_q_vector(vsi, i) {
--			if (ice_set_q_coalesce(vsi, ec, i))
-+			if (ice_set_q_coalesce(vsi, ec, v_idx))
- 				return -EINVAL;
- 		}
- 		goto set_complete;
+ 		wr32(hw, I40E_PFINT_RATEN(vector - 1),
+@@ -3553,11 +3553,11 @@ static void i40e_configure_msi_and_legacy(struct i40e_vsi *vsi)
+ 	/* set the ITR configuration */
+ 	q_vector->rx.next_update = jiffies + 1;
+ 	q_vector->rx.target_itr = ITR_TO_REG(vsi->rx_rings[0]->itr_setting);
+-	wr32(hw, I40E_PFINT_ITR0(I40E_RX_ITR), q_vector->rx.target_itr);
++	wr32(hw, I40E_PFINT_ITR0(I40E_RX_ITR), q_vector->rx.target_itr >> 1);
+ 	q_vector->rx.current_itr = q_vector->rx.target_itr;
+ 	q_vector->tx.next_update = jiffies + 1;
+ 	q_vector->tx.target_itr = ITR_TO_REG(vsi->tx_rings[0]->itr_setting);
+-	wr32(hw, I40E_PFINT_ITR0(I40E_TX_ITR), q_vector->tx.target_itr);
++	wr32(hw, I40E_PFINT_ITR0(I40E_TX_ITR), q_vector->tx.target_itr >> 1);
+ 	q_vector->tx.current_itr = q_vector->tx.target_itr;
+ 
+ 	i40e_enable_misc_int_causes(pf);
+@@ -10735,7 +10735,7 @@ static int i40e_setup_misc_vector(struct i40e_pf *pf)
+ 
+ 	/* associate no queues to the misc vector */
+ 	wr32(hw, I40E_PFINT_LNKLST0, I40E_QUEUE_END_OF_LIST);
+-	wr32(hw, I40E_PFINT_ITR0(I40E_RX_ITR), I40E_ITR_8K);
++	wr32(hw, I40E_PFINT_ITR0(I40E_RX_ITR), I40E_ITR_8K >> 1);
+ 
+ 	i40e_flush(hw);
+ 
 -- 
 2.20.1
 
