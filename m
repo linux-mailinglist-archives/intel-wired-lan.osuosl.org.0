@@ -1,71 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0495511DB42
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Dec 2019 01:49:05 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0527E11E2BE
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Dec 2019 12:25:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7CC54889EC;
-	Fri, 13 Dec 2019 00:49:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D2119880F6;
+	Fri, 13 Dec 2019 11:25:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xVQ2J6upEbrj; Fri, 13 Dec 2019 00:49:03 +0000 (UTC)
+	with ESMTP id hJCy4wko962P; Fri, 13 Dec 2019 11:25:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1550E88A06;
-	Fri, 13 Dec 2019 00:49:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1B7448806D;
+	Fri, 13 Dec 2019 11:25:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C26871BF9B9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 00:49:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A0C0B1BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 11:25:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BE63C8720E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 00:49:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 615DD25445
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 11:25:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MArMoVSogf1k for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Dec 2019 00:49:01 +0000 (UTC)
+ with ESMTP id OiSeSwaAfPMi for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Dec 2019 11:25:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2E24F8712F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 00:49:01 +0000 (UTC)
-Received: by mail-il1-f196.google.com with SMTP id n1so634299ilm.6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2019 16:49:01 -0800 (PST)
+Received: from mail-ua1-f67.google.com (mail-ua1-f67.google.com
+ [209.85.222.67])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6972D24912
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 11:25:29 +0000 (UTC)
+Received: by mail-ua1-f67.google.com with SMTP id z17so647853uac.5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2019 03:25:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LXMfdGtpPwo1nM9kkoN12NplXgpmiYVMokpj1wCUqnI=;
- b=C82E5s4pRIUwQbm0UuzY7t9EJw8vRJpQLibE2K6+OTEhvb/97vKx0+v2Vt1vaufkV8
- xvVirfJzjvKCwRfqIN2ilj9Bhv4jgameRLMwFNHJNQRs1A/rJ8l2G374RmaXeI9tU3o7
- A9w1LXQJ9kg0Z0OwDDZk3BwY5kFQ/OV3G7Nceg84WHk5njwnCcS+0HzVnegcBzuA4Gga
- 8hz9BG1QCTZggxmT9B4j3LHzSMZFYZ25Zi/IH+ytSDLOusjir48JF0XohfFPW9UTAtmU
- 604x2Apj2xxlmHhJJwZ/0HTKuw7EAhFcB5xZKRVIO0iJQVFey8u4hPQg3eDzwTpVvBh/
- zaBw==
+ :cc; bh=3cD771nUoftydYUTIiI3WDduqLP+rMGUEmfqn7B09ms=;
+ b=hNDuxW5sdEi9mJQoTWsCOlAF+PdnxB/d+jSI7LA5uKxyKd/Bl7xqX2QKE1wSFvEKP8
+ QMfE7EhEVLruxp1rghMttIXID1oy+UsHO8E5bu9GModmp9g8FpDPrhpgX1l6QQxej8oy
+ EZpQ3P9wv7JSXv29DoVU6VUDR31cbG1mrag1QGEBY/gOCHKnZxbmpTXCLXmom1Xi3FCy
+ d7GhLBIYo8T5Wbcu+G0W84OEciTqWc0kmE/0DNgktEHXn9W/VAZ0a3jUd3z/gWq0XLE9
+ Jvsmw0a6Mz+OwmeQSHqe1SrF7s89grRsnxC2GQgIDOMRixxC90zqWN1Fyph8l/3YwJHY
+ SSjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=LXMfdGtpPwo1nM9kkoN12NplXgpmiYVMokpj1wCUqnI=;
- b=KdE/cUfOISC1kuQ6nBnkd9ssa6LsD7uG2NYHMnw6EiNtRCgjkp+lsEz53pfTkPEUF+
- KSQkadGlTU2QrYMUTYDQe4eYGn71dhH6XtQsDYMr8BZoDSWjE1YQAJvoJaxeQep3HEYB
- okTCgt1p50rO9db69s6sTelx4A6ojFxH+SAAoSdbPQUceceje+vqa2NO4I9pB7ld8xUo
- tTUdfsOa8CQvqS4lFp3qyjaMZSVxGNxc8aPBApmR1EbOZcg2+WTGlCtXm/34VF0t1xpf
- Zc5zEpViTdHtAehr6gvRyOLBzI9OwpbI974LefwdjR+/tvVjjObS6Fem9Wb3B2MVdrUY
- QKZA==
-X-Gm-Message-State: APjAAAW0d9fne8I5t4RKpTT9KTdrZJJy4tTB+N0myMPje4s3L/7nnzx1
- rZkxKbcMoPGlK/jCY6ekWUdp4f0JiUF5I5Vh0X4=
-X-Google-Smtp-Source: APXvYqxvMYOFRr6KT5lk7SC1D52QaM/O5Dt1mVrz2PTIjrnRB0zIovZeqMEuIpnZCrVKVy1gdr39Tfssc+qgeqbjuig=
-X-Received: by 2002:a92:d081:: with SMTP id h1mr10340696ilh.97.1576198140191; 
- Thu, 12 Dec 2019 16:49:00 -0800 (PST)
+ bh=3cD771nUoftydYUTIiI3WDduqLP+rMGUEmfqn7B09ms=;
+ b=kFQ96giS80iq0cOLbSEdcSWLnePaFTUzj/ENFD3b90VOz6TTD76EjTALTJ+CoVnyCB
+ ORZoLX3ZMEwaPhJlMl1qC7u6HWE85Uss/ks5/xNrWT6l2Np2ycLUG7HRlGve6HspTIdO
+ zu/QJqrwiNTgxB5tgXsXSU7RsuUeYw12bD7Egz95UG/L0Efje9ROnpv2hBkkRwhaW9AC
+ zOO5HOuVTVgEeb+56JbookQH6KBq1oy5H2ibO0vqweRi6Og5Wpuj7wRhzSHY553xEVZM
+ MhZgPtBJIs1qzZI7BgsSeIkStwtGwP/QhWFMQFh0PWaVvDfjDCpHhl4BqllPpOI/Dsk6
+ yhqQ==
+X-Gm-Message-State: APjAAAUQQa0bvShyGPcChpE6YBlnjbhoAihOvUrEjoNPIWBF3TUyJ7Qe
+ vzpXH5Rn+1nDcCYpI0hnJR5Nlki1MbEuTJGppEw=
+X-Google-Smtp-Source: APXvYqwGKtBBhG0mfJ8Y8hyY5f2S36LkcfLCzTPbbyFKS5DHVZhPgLDblQspGeRfcU7kuho/0/LBjBzYnnIo/wy3cR4=
+X-Received: by 2002:ab0:2150:: with SMTP id t16mr12528858ual.61.1576236328340; 
+ Fri, 13 Dec 2019 03:25:28 -0800 (PST)
 MIME-Version: 1.0
 References: <20191212105847.16488-1-gomonovych@gmail.com>
-In-Reply-To: <20191212105847.16488-1-gomonovych@gmail.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 12 Dec 2019 16:48:49 -0800
-Message-ID: <CAKgT0UeTgGmQGEaJ3ePmCoEW5r5KDMmE0c0jrBGGeb-uzbq=3A@mail.gmail.com>
-To: Vasyl Gomonovych <gomonovych@gmail.com>
+ <CAKgT0UeTgGmQGEaJ3ePmCoEW5r5KDMmE0c0jrBGGeb-uzbq=3A@mail.gmail.com>
+In-Reply-To: <CAKgT0UeTgGmQGEaJ3ePmCoEW5r5KDMmE0c0jrBGGeb-uzbq=3A@mail.gmail.com>
+From: "Gomonovych, Vasyl" <gomonovych@gmail.com>
+Date: Fri, 13 Dec 2019 13:25:20 +0200
+Message-ID: <CAHYXAn+0VG_dnRt5W-kxKsZoy3wwt7MibinMQrSP5wUUpXQCww@mail.gmail.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
 Subject: Re: [Intel-wired-lan] [PATCH] igb: index regs_buff array via index
  variable
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -83,34 +84,95 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: Netdev <netdev@vger.kernel.org>,
  intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
  LKML <linux-kernel@vger.kernel.org>, David Miller <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8914063167074832009=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 12, 2019 at 2:58 AM Vasyl Gomonovych <gomonovych@gmail.com> wrote:
->
-> This patch is just a preparation for additional register dump in regs_buff.
-> To make new register insertion in the middle of regs_buff array easier
-> change array indexing to use local counter reg_ix.
->
-> ---
->
-> Basically this path is just a subject to ask
-> How to add a new register to dump from dataseet
-> Because it is logically better to add an additional register
-> in the middle of an array but that will break ABI.
-> To not have the ABI problem we should just add it at the
-> end of the array and increase the array size.
+--===============8914063167074832009==
+Content-Type: multipart/alternative; boundary="0000000000006ed44a0599941ee6"
 
-So I am pretty sure the patch probably breaks ABI. The reasons for the
-fixed offsets is because this driver supports multiple parts that have
-different register sets so we cannot have them overlapping.
+--0000000000006ed44a0599941ee6
+Content-Type: text/plain; charset="UTF-8"
 
-We cannot change the register locations because it will break the
-interface with ethtool. If you need to add additional registers you
-will need to add them to the end of the array.
+Ok, thanks for the clarification.
+
+On Fri, 13 Dec 2019, 02:49 Alexander Duyck, <alexander.duyck@gmail.com>
+wrote:
+
+> On Thu, Dec 12, 2019 at 2:58 AM Vasyl Gomonovych <gomonovych@gmail.com>
+> wrote:
+> >
+> > This patch is just a preparation for additional register dump in
+> regs_buff.
+> > To make new register insertion in the middle of regs_buff array easier
+> > change array indexing to use local counter reg_ix.
+> >
+> > ---
+> >
+> > Basically this path is just a subject to ask
+> > How to add a new register to dump from dataseet
+> > Because it is logically better to add an additional register
+> > in the middle of an array but that will break ABI.
+> > To not have the ABI problem we should just add it at the
+> > end of the array and increase the array size.
+>
+> So I am pretty sure the patch probably breaks ABI. The reasons for the
+> fixed offsets is because this driver supports multiple parts that have
+> different register sets so we cannot have them overlapping.
+>
+> We cannot change the register locations because it will break the
+> interface with ethtool. If you need to add additional registers you
+> will need to add them to the end of the array.
+>
+
+--0000000000006ed44a0599941ee6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Ok, thanks for the clarification.=C2=A0</div><br><div cla=
+ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, 13 Dec 201=
+9, 02:49 Alexander Duyck, &lt;<a href=3D"mailto:alexander.duyck@gmail.com">=
+alexander.duyck@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left=
+:1ex">On Thu, Dec 12, 2019 at 2:58 AM Vasyl Gomonovych &lt;<a href=3D"mailt=
+o:gomonovych@gmail.com" target=3D"_blank" rel=3D"noreferrer">gomonovych@gma=
+il.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; This patch is just a preparation for additional register dump in regs_=
+buff.<br>
+&gt; To make new register insertion in the middle of regs_buff array easier=
+<br>
+&gt; change array indexing to use local counter reg_ix.<br>
+&gt;<br>
+&gt; ---<br>
+&gt;<br>
+&gt; Basically this path is just a subject to ask<br>
+&gt; How to add a new register to dump from dataseet<br>
+&gt; Because it is logically better to add an additional register<br>
+&gt; in the middle of an array but that will break ABI.<br>
+&gt; To not have the ABI problem we should just add it at the<br>
+&gt; end of the array and increase the array size.<br>
+<br>
+So I am pretty sure the patch probably breaks ABI. The reasons for the<br>
+fixed offsets is because this driver supports multiple parts that have<br>
+different register sets so we cannot have them overlapping.<br>
+<br>
+We cannot change the register locations because it will break the<br>
+interface with ethtool. If you need to add additional registers you<br>
+will need to add them to the end of the array.<br>
+</blockquote></div>
+
+--0000000000006ed44a0599941ee6--
+
+--===============8914063167074832009==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============8914063167074832009==--
