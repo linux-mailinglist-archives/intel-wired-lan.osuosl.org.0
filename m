@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B99111EF7B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Dec 2019 02:25:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 38F9C8857B;
-	Sat, 14 Dec 2019 01:25:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WgY+KSiUdGaM; Sat, 14 Dec 2019 01:25:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0504588156;
-	Sat, 14 Dec 2019 01:25:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7EF511BF346
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:25:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B85B11EF7C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Dec 2019 02:26:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7A6D2873C4
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:25:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5460C873EC;
+	Sat, 14 Dec 2019 01:26:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vZYfAAuTNLLL; Sat, 14 Dec 2019 01:26:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5DC14873D1;
+	Sat, 14 Dec 2019 01:26:21 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E0F8A1BF346
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:26:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id DDACE88179
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:26:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ggd-NVlU42gO for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Dec 2019 01:25:55 +0000 (UTC)
+ with ESMTP id 5a4s4aKi1p2H for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Dec 2019 01:26:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0257887330
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:25:54 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id F38CC88156
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:26:18 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2019 17:25:54 -0800
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Dec 2019 17:26:18 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,311,1571727600"; d="scan'208";a="265684344"
-Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
- by FMSMGA003.fm.intel.com with ESMTP; 13 Dec 2019 17:25:53 -0800
-Received: from orsmsx114.amr.corp.intel.com (10.22.240.10) by
- ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 13 Dec 2019 17:25:52 -0800
+X-IronPort-AV: E=Sophos;i="5.69,311,1571727600"; d="scan'208";a="265684428"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by FMSMGA003.fm.intel.com with ESMTP; 13 Dec 2019 17:26:18 -0800
+Received: from orsmsx115.amr.corp.intel.com (10.22.240.11) by
+ ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 13 Dec 2019 17:26:17 -0800
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.250]) by
- ORSMSX114.amr.corp.intel.com ([169.254.8.106]) with mapi id 14.03.0439.000;
- Fri, 13 Dec 2019 17:25:52 -0800
+ ORSMSX115.amr.corp.intel.com ([169.254.4.94]) with mapi id 14.03.0439.000;
+ Fri, 13 Dec 2019 17:26:18 -0800
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: "Gomes, Vinicius" <vinicius.gomes@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next-queue PATCH v3 2/5] igc: Add support
- for RX timestamping
-Thread-Index: AQHVqWcY5tB0o7Z3W02ImkQt8ZU6Lqe45+gA
-Date: Sat, 14 Dec 2019 01:25:52 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9719B446@ORSMSX103.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [next-queue PATCH v3 3/5] igc: Add support
+ for TX timestamping
+Thread-Index: AQHVqWcSVkWzFr5+QUiKnEbUnCOC1Ke46BNw
+Date: Sat, 14 Dec 2019 01:26:17 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9719B45A@ORSMSX103.amr.corp.intel.com>
 References: <20191202231953.2203397-1-vinicius.gomes@intel.com>
- <20191202231953.2203397-3-vinicius.gomes@intel.com>
-In-Reply-To: <20191202231953.2203397-3-vinicius.gomes@intel.com>
+ <20191202231953.2203397-4-vinicius.gomes@intel.com>
+In-Reply-To: <20191202231953.2203397-4-vinicius.gomes@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzcyZTM3MmMtNzZjNy00YTVlLWE4ZTctZmJmNWU3NjM1MGRkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUkJkOXlRSHNLMGJ3b0Nyd0xuck9DalhxUUlxN1BvaFZldnI4eEZzNVMyTGpReUJcLzhzaGZWVVAybFdHbWtadzEifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYmZhYjZjNDktMTg5Yi00ODdkLTkwMWEtNWU1NTcxNDAyMDFmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNVVDazVoQ2ViZ1VreGMzWGVlN2s3UjBHdk5NY0ZyRGpuaDVRblwvaFpnaldqeStKWVJsdjBWN3dTNUhVQ3J0MXkifQ==
 x-ctpclassification: CTP_NT
 dlp-product: dlpe-windows
 dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next-queue PATCH v3 2/5] igc: Add support
- for RX timestamping
+Subject: Re: [Intel-wired-lan] [next-queue PATCH v3 3/5] igc: Add support
+ for TX timestamping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,26 +91,24 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Vinicius Costa Gomes
 > Sent: Monday, December 2, 2019 3:20 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [next-queue PATCH v3 2/5] igc: Add support for RX
+> Subject: [Intel-wired-lan] [next-queue PATCH v3 3/5] igc: Add support for TX
 > timestamping
 > 
-> This adds support for timestamping received packets.
+> This adds support for timestamping packets being transmitted.
 > 
-> It is based on the i210, as many features of i225 work the same way.
-> The main difference from i210 is that i225 has support for choosing
-> the timer register to use when timestamping packets. Right now, we
-> only support using timer 0. The other difference is that i225 stores
-> two timestamps in the receive descriptor, right now, we only retrieve
-> one.
+> Based on the code from i210. The basic differences is that i225 has 4
+> registers to store the transmit timestamps (i210 has one). Right now,
+> we only support retrieving from one register, support for using the
+> other registers will be added later.
 > 
 > Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc.h         |  17 ++
->  drivers/net/ethernet/intel/igc/igc_defines.h |  38 +++
->  drivers/net/ethernet/intel/igc/igc_main.c    |  10 +
->  drivers/net/ethernet/intel/igc/igc_ptp.c     | 272 +++++++++++++++++++
->  drivers/net/ethernet/intel/igc/igc_regs.h    |   3 +
->  5 files changed, 340 insertions(+)
+>  drivers/net/ethernet/intel/igc/igc.h         |  2 +
+>  drivers/net/ethernet/intel/igc/igc_defines.h | 14 +++
+>  drivers/net/ethernet/intel/igc/igc_main.c    | 49 +++++++++++
+>  drivers/net/ethernet/intel/igc/igc_ptp.c     | 92 ++++++++++++++++++++
+>  4 files changed, 157 insertions(+)
+> 
 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
