@@ -1,59 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F7C9122902
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 11:37:09 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3CDF12339B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 18:33:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A7E0620458;
-	Tue, 17 Dec 2019 10:37:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7BDD087E62;
+	Tue, 17 Dec 2019 17:33:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mpIFl0qSENEE; Tue, 17 Dec 2019 10:37:07 +0000 (UTC)
+	with ESMTP id Y6kLKtz7khSS; Tue, 17 Dec 2019 17:33:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4BF26200E5;
-	Tue, 17 Dec 2019 10:37:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1306D87E55;
+	Tue, 17 Dec 2019 17:33:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 349CD1BF28E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 10:37:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 345E21BF95F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 17:33:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 271FE87877
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 10:37:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2F7D687E38
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 17:33:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UDFqarr8kFiJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Dec 2019 10:37:04 +0000 (UTC)
-X-Greylist: delayed 00:05:55 by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
- [207.211.31.81])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D749D87850
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 10:37:03 +0000 (UTC)
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-376-7QV9dpS_PDGVEsxhTRpn8A-1; Tue, 17 Dec 2019 05:29:55 -0500
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B75208017DF;
- Tue, 17 Dec 2019 10:29:53 +0000 (UTC)
-Received: from p50.redhat.com (unknown [10.36.118.71])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1C41D51;
- Tue, 17 Dec 2019 10:29:51 +0000 (UTC)
-From: Stefan Assmann <sassmann@kpanic.de>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 17 Dec 2019 11:29:23 +0100
-Message-Id: <20191217102923.3274961-1-sassmann@kpanic.de>
+ with ESMTP id w+llZxVZBd5q for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Dec 2019 17:33:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6219887E30
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 17:33:22 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Dec 2019 09:33:21 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,326,1571727600"; d="scan'208";a="227570830"
+Received: from kprakasa-mobl.ger.corp.intel.com (HELO
+ btopel-mobl.ger.intel.com) ([10.252.49.247])
+ by orsmga002.jf.intel.com with ESMTP; 17 Dec 2019 09:33:15 -0800
+To: Maxim Mikityanskiy <maximmi@mellanox.com>,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+References: <20191217162023.16011-1-maximmi@mellanox.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>
+Message-ID: <cfe64691-7a0f-5b8a-d511-ebe742cec3c0@intel.com>
+Date: Tue, 17 Dec 2019 18:33:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-MC-Unique: 7QV9dpS_PDGVEsxhTRpn8A-1
-X-Mimecast-Spam-Score: 0
-Subject: [Intel-wired-lan] [PATCH] iavf: remove current MAC address filter
- on VF reset
+In-Reply-To: <20191217162023.16011-1-maximmi@mellanox.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH bpf v2 0/4] Fix concurrency issues
+ between XSK wakeup and control path using RCU
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,123 +67,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, sassmann@kpanic.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jakub Kicinski <jakub.kicinski@netronome.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>, Saeed Mahameed <saeedm@mellanox.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently MAC filters are not altered during a VF reset event. This may
-lead to a stale filter when an administratively set MAC is forced by the
-PF.
-
-For an administratively set MAC the PF driver deletes the VFs filters,
-overwrites the VFs MAC address and triggers a VF reset. However
-the VF driver itself is not aware of the filter removal, which is what
-the VF reset is for.
-The VF reset queues all filters present in the VF driver to be re-added
-to the PF filter list (including the filter for the now stale VF MAC
-address) and triggers a VIRTCHNL_OP_GET_VF_RESOURCES event, which
-provides the new MAC address to the VF.
-
-When this happens i40e will complain and reject the stale MAC filter,
-at least in the untrusted VF case.
-i40e 0000:08:00.0: Setting MAC 3c:fa:fa:fa:fa:01 on VF 0
-iavf 0000:08:02.0: Reset warning received from the PF
-iavf 0000:08:02.0: Scheduling reset task
-i40e 0000:08:00.0: Bring down and up the VF interface to make this change effective.
-i40e 0000:08:00.0: VF attempting to override administratively set MAC address, bring down and up the VF interface to resume normal operation
-i40e 0000:08:00.0: VF 0 failed opcode 10, retval: -1
-iavf 0000:08:02.0: Failed to add MAC filter, error IAVF_ERR_NVM
-
-To avoid re-adding the stale MAC filter it needs to be removed from the
-VF driver's filter list before queuing the existing filters. Then during
-the VIRTCHNL_OP_GET_VF_RESOURCES event the correct filter needs to be
-added again, at which point the MAC address has been updated.
-
-As a bonus this change makes bringing the VF down and up again
-superfluous for the administratively set MAC case.
-
-Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
----
- drivers/net/ethernet/intel/iavf/iavf.h          |  2 ++
- drivers/net/ethernet/intel/iavf/iavf_main.c     | 17 +++++++++++++----
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c |  3 +++
- 3 files changed, 18 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 29de3ae96ef2..bd1b1ed323f4 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -415,4 +415,6 @@ void iavf_enable_channels(struct iavf_adapter *adapter);
- void iavf_disable_channels(struct iavf_adapter *adapter);
- void iavf_add_cloud_filter(struct iavf_adapter *adapter);
- void iavf_del_cloud_filter(struct iavf_adapter *adapter);
-+struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
-+					const u8 *macaddr);
- #endif /* _IAVF_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 0a8824871618..62fe56ddcb6e 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -743,9 +743,8 @@ iavf_mac_filter *iavf_find_filter(struct iavf_adapter *adapter,
-  *
-  * Returns ptr to the filter object or NULL when no memory available.
-  **/
--static struct
--iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
--				 const u8 *macaddr)
-+struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
-+					const u8 *macaddr)
- {
- 	struct iavf_mac_filter *f;
- 
-@@ -2065,9 +2064,9 @@ static void iavf_reset_task(struct work_struct *work)
- 	struct virtchnl_vf_resource *vfres = adapter->vf_res;
- 	struct net_device *netdev = adapter->netdev;
- 	struct iavf_hw *hw = &adapter->hw;
-+	struct iavf_mac_filter *f, *ftmp;
- 	struct iavf_vlan_filter *vlf;
- 	struct iavf_cloud_filter *cf;
--	struct iavf_mac_filter *f;
- 	u32 reg_val;
- 	int i = 0, err;
- 	bool running;
-@@ -2181,6 +2180,16 @@ static void iavf_reset_task(struct work_struct *work)
- 
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 
-+	/* Delete filter for the current MAC address, it could have
-+	 * been changed by the PF via administratively set MAC.
-+	 * Will be re-added via VIRTCHNL_OP_GET_VF_RESOURCES.
-+	 */
-+	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
-+		if (ether_addr_equal(f->macaddr, adapter->hw.mac.addr)) {
-+			list_del(&f->list);
-+			kfree(f);
-+		}
-+	}
- 	/* re-add all MAC filters */
- 	list_for_each_entry(f, &adapter->mac_filter_list, list) {
- 		f->add = true;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index c46770eba320..1ab9cb339acb 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1359,6 +1359,9 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			ether_addr_copy(netdev->perm_addr,
- 					adapter->hw.mac.addr);
- 		}
-+		spin_lock_bh(&adapter->mac_vlan_list_lock);
-+		iavf_add_filter(adapter, adapter->hw.mac.addr);
-+		spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 		iavf_process_config(adapter);
- 		}
- 		break;
--- 
-2.23.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMjAxOS0xMi0xNyAxNzoyMCwgTWF4aW0gTWlraXR5YW5za2l5IHdyb3RlOgo+IFRoaXMgc2Vy
+aWVzIGFkZHJlc3NlcyB0aGUgaXNzdWUgZGVzY3JpYmVkIGluIHRoZSBjb21taXQgbWVzc2FnZSBv
+ZiB0aGUKPiBmaXJzdCBwYXRjaDogbGFjayBvZiBzeW5jaHJvbml6YXRpb24gYmV0d2VlbiBYU0sg
+d2FrZXVwIGFuZCBkZXN0cm95aW5nCj4gdGhlIHJlc291cmNlcyB1c2VkIGJ5IFhTSyB3YWtldXAu
+IFRoZSBpZGVhIGlzIHNpbWlsYXIgdG8KPiBuYXBpX3N5bmNocm9uaXplLiBUaGUgc2VyaWVzIGNv
+bnRhaW5zIGZpeGVzIGZvciB0aGUgZHJpdmVycyB0aGF0Cj4gaW1wbGVtZW50IFhTSy4gSSBoYXZl
+bid0IHRlc3RlZCB0aGUgY2hhbmdlcyB0byBJbnRlbCdzIGRyaXZlcnMsIHNvLAo+IEludGVsIGd1
+eXMsIHBsZWFzZSByZXZpZXcgdGhlbS4KPgoKTWF4LCB0aGFua3MgYSBsb3QgZm9yIGNvbXBpbGlu
+ZyB0aGUgc2VyaWVzIG9uIHlvdXIgdmFjYXRpb24hCgoKQ2hlZXJzLApCasO2cm4KX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1h
+aWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9z
+bC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
