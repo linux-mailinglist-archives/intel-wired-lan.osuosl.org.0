@@ -1,52 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47B811235A2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 20:27:12 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE058123892
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 22:21:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 06CD286652;
-	Tue, 17 Dec 2019 19:27:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9286087FC3;
+	Tue, 17 Dec 2019 21:20:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8ddEfup47ZJt; Tue, 17 Dec 2019 19:27:10 +0000 (UTC)
+	with ESMTP id KAaxoEQoC9cZ; Tue, 17 Dec 2019 21:20:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EBB3A86610;
-	Tue, 17 Dec 2019 19:27:09 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3AE6787F1F;
+	Tue, 17 Dec 2019 21:20:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 643231BF2B1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 19:27:08 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AD73C1BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 21:20:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5FEDF8507B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 19:27:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A522B2264A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 21:20:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7diGKgyeGSW2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Dec 2019 19:27:07 +0000 (UTC)
+ with ESMTP id TXe1fMrOff8B for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Dec 2019 21:20:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BE2B887645
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 19:27:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 45FDF22091
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 21:20:53 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Dec 2019 11:27:07 -0800
+ 17 Dec 2019 13:20:52 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,326,1571727600"; d="scan'208";a="209808325"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga008.jf.intel.com with ESMTP; 17 Dec 2019 11:27:06 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.69,326,1571727600"; d="scan'208";a="227636247"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.74])
+ by orsmga002.jf.intel.com with ESMTP; 17 Dec 2019 13:20:52 -0800
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 17 Dec 2019 02:55:43 -0800
-Message-Id: <20191217105543.40373-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
+Date: Tue, 17 Dec 2019 13:20:45 -0800
+Message-Id: <20191217212045.638958-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] ice: Add device ids for E822 devices
+Subject: [Intel-wired-lan] [net] e1000e: Revert "e1000e: Make watchdog use
+ delayed work"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,92 +65,177 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+This reverts commit 59653e6497d16f7ac1d9db088f3959f57ee8c3db.
 
-Add support for E822 devices
+This is due to this commit causing driver crashes and connections to
+reset unexpectedly.
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_devids.h | 18 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_main.c   |  9 +++++++++
- drivers/net/ethernet/intel/ice/ice_nvm.c    | 12 ++++++++++++
- 3 files changed, 39 insertions(+)
+ drivers/net/ethernet/intel/e1000e/e1000.h  |  5 +-
+ drivers/net/ethernet/intel/e1000e/netdev.c | 57 ++++++++++------------
+ 2 files changed, 29 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
-index f8d5c661d0ba..ce63017c56c7 100644
---- a/drivers/net/ethernet/intel/ice/ice_devids.h
-+++ b/drivers/net/ethernet/intel/ice/ice_devids.h
-@@ -11,5 +11,23 @@
- #define ICE_DEV_ID_E810C_QSFP		0x1592
- /* Intel(R) Ethernet Controller E810-C for SFP */
- #define ICE_DEV_ID_E810C_SFP		0x1593
-+/* Intel(R) Ethernet Connection E822-C for backplane */
-+#define ICE_DEV_ID_E822C_BACKPLANE	0x1890
-+/* Intel(R) Ethernet Connection E822-C for QSFP */
-+#define ICE_DEV_ID_E822C_QSFP		0x1891
-+/* Intel(R) Ethernet Connection E822-C for SFP */
-+#define ICE_DEV_ID_E822C_SFP		0x1892
-+/* Intel(R) Ethernet Connection E822-C/X557-AT 10GBASE-T */
-+#define ICE_DEV_ID_E822C_10G_BASE_T	0x1893
-+/* Intel(R) Ethernet Connection E822-C 1GbE */
-+#define ICE_DEV_ID_E822C_SGMII		0x1894
-+/* Intel(R) Ethernet Connection E822-X for backplane */
-+#define ICE_DEV_ID_E822X_BACKPLANE	0x1897
-+/* Intel(R) Ethernet Connection E822-L for SFP */
-+#define ICE_DEV_ID_E822L_SFP		0x1898
-+/* Intel(R) Ethernet Connection E822-L/X557-AT 10GBASE-T */
-+#define ICE_DEV_ID_E822L_10G_BASE_T	0x1899
-+/* Intel(R) Ethernet Connection E822-L 1GbE */
-+#define ICE_DEV_ID_E822L_SGMII		0x189A
+diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
+index 6c51b1bad8c4..37a2314d3e6b 100644
+--- a/drivers/net/ethernet/intel/e1000e/e1000.h
++++ b/drivers/net/ethernet/intel/e1000e/e1000.h
+@@ -185,13 +185,12 @@ struct e1000_phy_regs {
  
- #endif /* _ICE_DEVIDS_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 59c2df765d6d..019ecb229440 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3637,6 +3637,15 @@ static const struct pci_device_id ice_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822X_BACKPLANE), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII), 0 },
- 	/* required last entry */
- 	{ 0, }
- };
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 57c73f613f32..7525ac50742e 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -289,6 +289,18 @@ enum ice_status ice_init_nvm(struct ice_hw *hw)
+ /* board specific private data structure */
+ struct e1000_adapter {
++	struct timer_list watchdog_timer;
+ 	struct timer_list phy_info_timer;
+ 	struct timer_list blink_timer;
  
- 	nvm->eetrack = (eetrack_hi << 16) | eetrack_lo;
+ 	struct work_struct reset_task;
+-	struct delayed_work watchdog_task;
+-
+-	struct workqueue_struct *e1000_workqueue;
++	struct work_struct watchdog_task;
  
-+	/* the following devices do not have boot_cfg_tlv yet */
-+	if (hw->device_id == ICE_DEV_ID_E822C_BACKPLANE ||
-+	    hw->device_id == ICE_DEV_ID_E822C_QSFP ||
-+	    hw->device_id == ICE_DEV_ID_E822C_10G_BASE_T ||
-+	    hw->device_id == ICE_DEV_ID_E822C_SGMII ||
-+	    hw->device_id == ICE_DEV_ID_E822C_SFP ||
-+	    hw->device_id == ICE_DEV_ID_E822X_BACKPLANE ||
-+	    hw->device_id == ICE_DEV_ID_E822L_SFP ||
-+	    hw->device_id == ICE_DEV_ID_E822L_10G_BASE_T ||
-+	    hw->device_id == ICE_DEV_ID_E822L_SGMII)
-+		return status;
+ 	const struct e1000_info *ei;
+ 
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 7e882c03216d..fc7be9fa0c17 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -1780,8 +1780,7 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
+ 		}
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			mod_delayed_work(adapter->e1000_workqueue,
+-					 &adapter->watchdog_task, HZ);
++			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+ 	}
+ 
+ 	/* Reset on uncorrectable ECC error */
+@@ -1861,8 +1860,7 @@ static irqreturn_t e1000_intr(int __always_unused irq, void *data)
+ 		}
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			mod_delayed_work(adapter->e1000_workqueue,
+-					 &adapter->watchdog_task, HZ);
++			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+ 	}
+ 
+ 	/* Reset on uncorrectable ECC error */
+@@ -1907,8 +1905,7 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
+ 		hw->mac.get_link_status = true;
+ 		/* guard against interrupt when we're going down */
+ 		if (!test_bit(__E1000_DOWN, &adapter->state))
+-			mod_delayed_work(adapter->e1000_workqueue,
+-					 &adapter->watchdog_task, HZ);
++			mod_timer(&adapter->watchdog_timer, jiffies + 1);
+ 	}
+ 
+ 	if (!test_bit(__E1000_DOWN, &adapter->state))
+@@ -4284,6 +4281,7 @@ void e1000e_down(struct e1000_adapter *adapter, bool reset)
+ 
+ 	napi_synchronize(&adapter->napi);
+ 
++	del_timer_sync(&adapter->watchdog_timer);
+ 	del_timer_sync(&adapter->phy_info_timer);
+ 
+ 	spin_lock(&adapter->stats64_lock);
+@@ -5156,11 +5154,25 @@ static void e1000e_check_82574_phy_workaround(struct e1000_adapter *adapter)
+ 	}
+ }
+ 
++/**
++ * e1000_watchdog - Timer Call-back
++ * @data: pointer to adapter cast into an unsigned long
++ **/
++static void e1000_watchdog(struct timer_list *t)
++{
++	struct e1000_adapter *adapter = from_timer(adapter, t, watchdog_timer);
 +
- 	status = ice_get_pfa_module_tlv(hw, &boot_cfg_tlv, &boot_cfg_tlv_len,
- 					ICE_SR_BOOT_CFG_PTR);
- 	if (status) {
++	/* Do the rest outside of interrupt context */
++	schedule_work(&adapter->watchdog_task);
++
++	/* TODO: make this use queue_delayed_work() */
++}
++
+ static void e1000_watchdog_task(struct work_struct *work)
+ {
+ 	struct e1000_adapter *adapter = container_of(work,
+ 						     struct e1000_adapter,
+-						     watchdog_task.work);
++						     watchdog_task);
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct e1000_mac_info *mac = &adapter->hw.mac;
+ 	struct e1000_phy_info *phy = &adapter->hw.phy;
+@@ -5408,9 +5420,8 @@ static void e1000_watchdog_task(struct work_struct *work)
+ 
+ 	/* Reset the timer */
+ 	if (!test_bit(__E1000_DOWN, &adapter->state))
+-		queue_delayed_work(adapter->e1000_workqueue,
+-				   &adapter->watchdog_task,
+-				   round_jiffies(2 * HZ));
++		mod_timer(&adapter->watchdog_timer,
++			  round_jiffies(jiffies + 2 * HZ));
+ }
+ 
+ #define E1000_TX_FLAGS_CSUM		0x00000001
+@@ -7450,21 +7461,11 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		goto err_eeprom;
+ 	}
+ 
+-	adapter->e1000_workqueue = alloc_workqueue("%s", WQ_MEM_RECLAIM, 0,
+-						   e1000e_driver_name);
+-
+-	if (!adapter->e1000_workqueue) {
+-		err = -ENOMEM;
+-		goto err_workqueue;
+-	}
+-
+-	INIT_DELAYED_WORK(&adapter->watchdog_task, e1000_watchdog_task);
+-	queue_delayed_work(adapter->e1000_workqueue, &adapter->watchdog_task,
+-			   0);
+-
++	timer_setup(&adapter->watchdog_timer, e1000_watchdog, 0);
+ 	timer_setup(&adapter->phy_info_timer, e1000_update_phy_info, 0);
+ 
+ 	INIT_WORK(&adapter->reset_task, e1000_reset_task);
++	INIT_WORK(&adapter->watchdog_task, e1000_watchdog_task);
+ 	INIT_WORK(&adapter->downshift_task, e1000e_downshift_workaround);
+ 	INIT_WORK(&adapter->update_phy_task, e1000e_update_phy_task);
+ 	INIT_WORK(&adapter->print_hang_task, e1000_print_hw_hang);
+@@ -7558,9 +7559,6 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	return 0;
+ 
+ err_register:
+-	flush_workqueue(adapter->e1000_workqueue);
+-	destroy_workqueue(adapter->e1000_workqueue);
+-err_workqueue:
+ 	if (!(adapter->flags & FLAG_HAS_AMT))
+ 		e1000e_release_hw_control(adapter);
+ err_eeprom:
+@@ -7604,18 +7602,17 @@ static void e1000_remove(struct pci_dev *pdev)
+ 	/* The timers may be rescheduled, so explicitly disable them
+ 	 * from being rescheduled.
+ 	 */
+-	set_bit(__E1000_DOWN, &adapter->state);
++	if (!down)
++		set_bit(__E1000_DOWN, &adapter->state);
++	del_timer_sync(&adapter->watchdog_timer);
+ 	del_timer_sync(&adapter->phy_info_timer);
+ 
+ 	cancel_work_sync(&adapter->reset_task);
++	cancel_work_sync(&adapter->watchdog_task);
+ 	cancel_work_sync(&adapter->downshift_task);
+ 	cancel_work_sync(&adapter->update_phy_task);
+ 	cancel_work_sync(&adapter->print_hang_task);
+ 
+-	cancel_delayed_work(&adapter->watchdog_task);
+-	flush_workqueue(adapter->e1000_workqueue);
+-	destroy_workqueue(adapter->e1000_workqueue);
+-
+ 	if (adapter->flags & FLAG_HAS_HW_TIMESTAMP) {
+ 		cancel_work_sync(&adapter->tx_hwtstamp_work);
+ 		if (adapter->tx_hwtstamp_skb) {
 -- 
-2.20.1
+2.23.0
 
 _______________________________________________
 Intel-wired-lan mailing list
