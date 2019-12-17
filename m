@@ -1,113 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F8A11234A7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 19:20:59 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47B811235A2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 20:27:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A387587EBA;
-	Tue, 17 Dec 2019 18:20:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 06CD286652;
+	Tue, 17 Dec 2019 19:27:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AQpnxTmWf8Ge; Tue, 17 Dec 2019 18:20:56 +0000 (UTC)
+	with ESMTP id 8ddEfup47ZJt; Tue, 17 Dec 2019 19:27:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7E72E878ED;
-	Tue, 17 Dec 2019 18:20:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EBB3A86610;
+	Tue, 17 Dec 2019 19:27:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 027801BF2B3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 16:35:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 643231BF2B1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 19:27:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D41D685205
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 16:35:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5FEDF8507B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 19:27:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bE-FLtyeEfW1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Dec 2019 16:35:25 +0000 (UTC)
+ with ESMTP id 7diGKgyeGSW2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Dec 2019 19:27:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR04-HE1-obe.outbound.protection.outlook.com
- (mail-eopbgr70048.outbound.protection.outlook.com [40.107.7.48])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 04D9D82492
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 16:35:25 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=DnmwTkkPdMXq4qmuns+z0QRn0EimT/siyQIzO0EgMwWCTo/0sFySx/H/kYDTOY+ynqVNCzwVY76/jKwqv2z17VCR3Iz9HAFKg2pG+NO+j2b9FA6n6C2vwzrKeoGDrM+U6lIzKZ/a++qn/N/wqDgGdSqtDNM60mniJtC+YSMWy0zALHfbtr/fJEEZWFjmjhsQ/J1JDVMX2DLQVIt7rC/c6AR0R+vVKrF6eeyWredhAdvkNkBEL5Pd6OD0o5ZBhixaWY0gu0wbMBtiUs29lMpDIbWWNWIyhEcE5Gf/WEBljm2SvNOXmT1QVbFtKuhyJyKlA3mWG9aCAosB8U5k/kA+bg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oxCkWBSS9ERmXz2+SQhzVIbnCx811MoNC5e/TdqjHYU=;
- b=HoQGZnlwGBrD3B6tgYShTCj7Nqzm7KHdlAEiqSxe35hc6UfQLAWRgWAMAI0sNIe9Z1b0uL4XL+2+zNOMhHZ4/DVFXDD1dorvdetC3vu9x6lNvlLL0C/STx/con31UqT7bHQIB8D4aQG/tFeKuCmpKyz5NtV+0qlnseZ+ODv1bwmmce2KdwUIPRhqbDYnEVzmmxOseBMna7yl5z/m0jIdx+IVyIxX3whe/i7JVw8bVcoBE2u9gyUeWzJaDDLQm8dysIXKEa15Fj1UPHbFibRF75OmH+2ND8R/HHueSVhR/cEuv8kMAn+hgZfOtvU7ftCyrqfIs0F8+4YznevJrygFWQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
- dkim=pass header.d=mellanox.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oxCkWBSS9ERmXz2+SQhzVIbnCx811MoNC5e/TdqjHYU=;
- b=CqesdECiQq1iFwCUiV4L3r5rFNlmFh4FR+77UzUoiQNPUZ8wbnZQb0YlTJX5eqb9cIzcvBObfc8kwkVNYrontTZMPLlkJIvhkC5GzRevtwmWsgOvLWaRUKrwJkTaKCvpKmA+5jp0cCt7mPjDF+p0CtlaaZwTbbLpXSU/CoOB9yE=
-Received: from AM0PR05MB5875.eurprd05.prod.outlook.com (20.178.119.159) by
- AM0PR05MB4259.eurprd05.prod.outlook.com (52.134.126.24) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2538.18; Tue, 17 Dec 2019 16:20:47 +0000
-Received: from AM0PR05MB5875.eurprd05.prod.outlook.com
- ([fe80::259f:70b4:dab1:8f2]) by AM0PR05MB5875.eurprd05.prod.outlook.com
- ([fe80::259f:70b4:dab1:8f2%5]) with mapi id 15.20.2538.019; Tue, 17 Dec 2019
- 16:20:47 +0000
-From: Maxim Mikityanskiy <maximmi@mellanox.com>
-To: =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, Magnus Karlsson
- <magnus.karlsson@intel.com>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Thread-Topic: [PATCH bpf v2 4/4] net/ixgbe: Fix concurrency issues between
- config flow and XSK
-Thread-Index: AQHVtPXw51X2BxHsYEiQil4hifDEQw==
-Date: Tue, 17 Dec 2019 16:20:47 +0000
-Message-ID: <20191217162023.16011-5-maximmi@mellanox.com>
-References: <20191217162023.16011-1-maximmi@mellanox.com>
-In-Reply-To: <20191217162023.16011-1-maximmi@mellanox.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: AM0PR02CA0106.eurprd02.prod.outlook.com
- (2603:10a6:208:154::47) To AM0PR05MB5875.eurprd05.prod.outlook.com
- (2603:10a6:208:12d::31)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=maximmi@mellanox.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-mailer: git-send-email 2.20.1
-x-originating-ip: [94.188.199.18]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: a25a66de-3e86-41fd-5169-08d7830d12c6
-x-ms-traffictypediagnostic: AM0PR05MB4259:|AM0PR05MB4259:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <AM0PR05MB425972E7B55E66F300A11388D1500@AM0PR05MB4259.eurprd05.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2331;
-x-forefront-prvs: 02543CD7CD
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(376002)(136003)(366004)(346002)(396003)(39860400002)(199004)(189003)(54906003)(26005)(66556008)(6506007)(110136005)(66476007)(2906002)(7416002)(64756008)(186003)(5660300002)(66446008)(36756003)(52116002)(1076003)(8676002)(81166006)(71200400001)(86362001)(81156014)(6486002)(107886003)(2616005)(478600001)(316002)(66946007)(6512007)(66574012)(8936002)(4326008);
- DIR:OUT; SFP:1101; SCL:1; SRVR:AM0PR05MB4259;
- H:AM0PR05MB5875.eurprd05.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: mellanox.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: keh7RuEFwRVuXpmogXbkiob6E7axQFPPr0YQ1tpkTmKChD3Cr5+2VLAK8JH4XzyTXQGDlAKPV9InPQ33wddy/0Xo9e64feQ/WWg8pGYVzW+84YWQkUCd2wuDP537YWvLfD0rYWJklTgM5WtZisOdBcmXgrpSUKH/mjvEFOp+LQSlUt9/CzGEqlCjqPUcA1yjGXUAhL21Hrmk+SYQS9qsg0h6ao2FkveTbvqvIWL4FHjalP00TsfdxnIZJv6krUCtNTo6jYHo20acbHIYuzQRkFWDHPBto60OIc4k8Gft83OkV+UK9k8QLKbhUm2NoDZVym4m2Q9AGFZ6MxqR80RS443ZfjJfkckbVyz+pJ6S4v2CnF6A6c9P59sAHBR8ltJVyiaVW9d5n9Q2/jOIL1DdrdJZ0Ig84oGW1CqNgwmJF6EFBrzRZG3CloO1Aa45R9+4
-Content-ID: <B44FA52414F4E04C8B6638B0D7453DE2@eurprd05.prod.outlook.com>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BE2B887645
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 19:27:07 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Dec 2019 11:27:07 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,326,1571727600"; d="scan'208";a="209808325"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by orsmga008.jf.intel.com with ESMTP; 17 Dec 2019 11:27:06 -0800
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 17 Dec 2019 02:55:43 -0800
+Message-Id: <20191217105543.40373-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-OriginatorOrg: Mellanox.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a25a66de-3e86-41fd-5169-08d7830d12c6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Dec 2019 16:20:47.1063 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a652971c-7d2e-4d9b-a6a4-d149256f461b
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Glq5VOsYcXNC7vu4/jv6NXo/zvWRNIbXDUOtlElY50oC2Nlb+1sD0BXVv5BlqInBp7txhitP7kdEzkbxM9/ftg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB4259
-X-Mailman-Approved-At: Tue, 17 Dec 2019 18:20:49 +0000
-Subject: [Intel-wired-lan] [PATCH bpf v2 4/4] net/ixgbe: Fix concurrency
- issues between config flow and XSK
+Subject: [Intel-wired-lan] [PATCH] ice: Add device ids for E822 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,63 +59,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maxim Mikityanskiy <maximmi@mellanox.com>,
- Jakub Kicinski <jakub.kicinski@netronome.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Alexei Starovoitov <ast@kernel.org>, Saeed Mahameed <saeedm@mellanox.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VXNlIHN5bmNocm9uaXplX3JjdSB0byB3YWl0IHVudGlsIHRoZSBYU0sgd2FrZXVwIGZ1bmN0aW9u
-IGZpbmlzaGVzDQpiZWZvcmUgZGVzdHJveWluZyB0aGUgcmVzb3VyY2VzIGl0IHVzZXM6DQoNCjEu
-IGl4Z2JlX2Rvd24gYWxyZWFkeSBjYWxscyBzeW5jaHJvbml6ZV9yY3UgYWZ0ZXIgc2V0dGluZyBf
-X0lYR0JFX0RPV04uDQoNCjIuIEFmdGVyIHN3aXRjaGluZyB0aGUgWERQIHByb2dyYW0sIGNhbGwg
-c3luY2hyb25pemVfcmN1IHRvIGxldA0KaXhnYmVfeHNrX3dha2V1cCBleGl0IGJlZm9yZSB0aGUg
-WERQIHByb2dyYW0gaXMgZnJlZWQuDQoNCjMuIENoYW5naW5nIHRoZSBudW1iZXIgb2YgY2hhbm5l
-bHMgYnJpbmdzIHRoZSBpbnRlcmZhY2UgZG93bi4NCg0KNC4gRGlzYWJsaW5nIFVNRU0gc2V0cyBf
-X0lYR0JFX1RYX0RJU0FCTEVEIGJlZm9yZSBjbG9zaW5nIGhhcmR3YXJlDQpyZXNvdXJjZXMgYW5k
-IHJlc2V0dGluZyB4c2tfdW1lbS4gQ2hlY2sgdGhhdCBiaXQgaW4gaXhnYmVfeHNrX3dha2V1cCB0
-bw0KYXZvaWQgdXNpbmcgdGhlIFhEUCByaW5nIHdoZW4gaXQncyBhbHJlYWR5IGRlc3Ryb3llZC4g
-c3luY2hyb25pemVfcmN1IGlzDQpjYWxsZWQgZnJvbSBpeGdiZV90eHJ4X3JpbmdfZGlzYWJsZS4N
-Cg0KU2lnbmVkLW9mZi1ieTogTWF4aW0gTWlraXR5YW5za2l5IDxtYXhpbW1pQG1lbGxhbm94LmNv
-bT4NClNpZ25lZC1vZmYtYnk6IEJqw7ZybiBUw7ZwZWwgPGJqb3JuLnRvcGVsQGludGVsLmNvbT4N
-Ci0tLQ0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYyB8IDcg
-KysrKysrLQ0KIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jICB8
-IDggKysrKysrLS0NCiAyIGZpbGVzIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDMgZGVsZXRp
-b25zKC0pDQoNCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9p
-eGdiZV9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWlu
-LmMNCmluZGV4IDI1YzA5N2NkODEwMC4uODJhMzBiNTk3Y2Y5IDEwMDY0NA0KLS0tIGEvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jDQorKysgYi9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMNCkBAIC0xMDI2MSw3ICsxMDI2MSwx
-MiBAQCBzdGF0aWMgaW50IGl4Z2JlX3hkcF9zZXR1cChzdHJ1Y3QgbmV0X2RldmljZSAqZGV2LCBz
-dHJ1Y3QgYnBmX3Byb2cgKnByb2cpDQogDQogCS8qIElmIHRyYW5zaXRpb25pbmcgWERQIG1vZGVz
-IHJlY29uZmlndXJlIHJpbmdzICovDQogCWlmIChuZWVkX3Jlc2V0KSB7DQotCQlpbnQgZXJyID0g
-aXhnYmVfc2V0dXBfdGMoZGV2LCBhZGFwdGVyLT5od190Y3MpOw0KKwkJaW50IGVycjsNCisNCisJ
-CWlmICghcHJvZykNCisJCQkvKiBXYWl0IHVudGlsIG5kb194c2tfd2FrZXVwIGNvbXBsZXRlcy4g
-Ki8NCisJCQlzeW5jaHJvbml6ZV9yY3UoKTsNCisJCWVyciA9IGl4Z2JlX3NldHVwX3RjKGRldiwg
-YWRhcHRlci0+aHdfdGNzKTsNCiANCiAJCWlmIChlcnIpIHsNCiAJCQlyY3VfYXNzaWduX3BvaW50
-ZXIoYWRhcHRlci0+eGRwX3Byb2csIG9sZF9wcm9nKTsNCmRpZmYgLS1naXQgYS9kcml2ZXJzL25l
-dC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jDQppbmRleCBkNmZlYWFjZmJmODkuLmI0M2JlOWYxNDEw
-NSAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hz
-ay5jDQorKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYw0K
-QEAgLTcwOSwxMCArNzA5LDE0IEBAIGludCBpeGdiZV94c2tfd2FrZXVwKHN0cnVjdCBuZXRfZGV2
-aWNlICpkZXYsIHUzMiBxaWQsIHUzMiBmbGFncykNCiAJaWYgKHFpZCA+PSBhZGFwdGVyLT5udW1f
-eGRwX3F1ZXVlcykNCiAJCXJldHVybiAtRU5YSU87DQogDQotCWlmICghYWRhcHRlci0+eGRwX3Jp
-bmdbcWlkXS0+eHNrX3VtZW0pDQorCXJpbmcgPSBhZGFwdGVyLT54ZHBfcmluZ1txaWRdOw0KKw0K
-KwlpZiAodGVzdF9iaXQoX19JWEdCRV9UWF9ESVNBQkxFRCwgJnJpbmctPnN0YXRlKSkNCisJCXJl
-dHVybiAtRU5FVERPV047DQorDQorCWlmICghcmluZy0+eHNrX3VtZW0pDQogCQlyZXR1cm4gLUVO
-WElPOw0KIA0KLQlyaW5nID0gYWRhcHRlci0+eGRwX3JpbmdbcWlkXTsNCiAJaWYgKCFuYXBpX2lm
-X3NjaGVkdWxlZF9tYXJrX21pc3NlZCgmcmluZy0+cV92ZWN0b3ItPm5hcGkpKSB7DQogCQl1NjQg
-ZWljcyA9IEJJVF9VTEwocmluZy0+cV92ZWN0b3ItPnZfaWR4KTsNCiANCi0tIA0KMi4yMC4xDQoN
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdp
-cmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9s
-aXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+From: Jacob Keller <jacob.e.keller@intel.com>
+
+Add support for E822 devices
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_devids.h | 18 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_main.c   |  9 +++++++++
+ drivers/net/ethernet/intel/ice/ice_nvm.c    | 12 ++++++++++++
+ 3 files changed, 39 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
+index f8d5c661d0ba..ce63017c56c7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devids.h
++++ b/drivers/net/ethernet/intel/ice/ice_devids.h
+@@ -11,5 +11,23 @@
+ #define ICE_DEV_ID_E810C_QSFP		0x1592
+ /* Intel(R) Ethernet Controller E810-C for SFP */
+ #define ICE_DEV_ID_E810C_SFP		0x1593
++/* Intel(R) Ethernet Connection E822-C for backplane */
++#define ICE_DEV_ID_E822C_BACKPLANE	0x1890
++/* Intel(R) Ethernet Connection E822-C for QSFP */
++#define ICE_DEV_ID_E822C_QSFP		0x1891
++/* Intel(R) Ethernet Connection E822-C for SFP */
++#define ICE_DEV_ID_E822C_SFP		0x1892
++/* Intel(R) Ethernet Connection E822-C/X557-AT 10GBASE-T */
++#define ICE_DEV_ID_E822C_10G_BASE_T	0x1893
++/* Intel(R) Ethernet Connection E822-C 1GbE */
++#define ICE_DEV_ID_E822C_SGMII		0x1894
++/* Intel(R) Ethernet Connection E822-X for backplane */
++#define ICE_DEV_ID_E822X_BACKPLANE	0x1897
++/* Intel(R) Ethernet Connection E822-L for SFP */
++#define ICE_DEV_ID_E822L_SFP		0x1898
++/* Intel(R) Ethernet Connection E822-L/X557-AT 10GBASE-T */
++#define ICE_DEV_ID_E822L_10G_BASE_T	0x1899
++/* Intel(R) Ethernet Connection E822-L 1GbE */
++#define ICE_DEV_ID_E822L_SGMII		0x189A
+ 
+ #endif /* _ICE_DEVIDS_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 59c2df765d6d..019ecb229440 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3637,6 +3637,15 @@ static const struct pci_device_id ice_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822X_BACKPLANE), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII), 0 },
+ 	/* required last entry */
+ 	{ 0, }
+ };
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index 57c73f613f32..7525ac50742e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -289,6 +289,18 @@ enum ice_status ice_init_nvm(struct ice_hw *hw)
+ 
+ 	nvm->eetrack = (eetrack_hi << 16) | eetrack_lo;
+ 
++	/* the following devices do not have boot_cfg_tlv yet */
++	if (hw->device_id == ICE_DEV_ID_E822C_BACKPLANE ||
++	    hw->device_id == ICE_DEV_ID_E822C_QSFP ||
++	    hw->device_id == ICE_DEV_ID_E822C_10G_BASE_T ||
++	    hw->device_id == ICE_DEV_ID_E822C_SGMII ||
++	    hw->device_id == ICE_DEV_ID_E822C_SFP ||
++	    hw->device_id == ICE_DEV_ID_E822X_BACKPLANE ||
++	    hw->device_id == ICE_DEV_ID_E822L_SFP ||
++	    hw->device_id == ICE_DEV_ID_E822L_10G_BASE_T ||
++	    hw->device_id == ICE_DEV_ID_E822L_SGMII)
++		return status;
++
+ 	status = ice_get_pfa_module_tlv(hw, &boot_cfg_tlv, &boot_cfg_tlv_len,
+ 					ICE_SR_BOOT_CFG_PTR);
+ 	if (status) {
+-- 
+2.20.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
