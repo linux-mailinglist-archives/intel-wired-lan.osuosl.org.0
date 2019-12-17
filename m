@@ -1,71 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90A2B11EF80
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Dec 2019 02:28:26 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F7C9122902
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2019 11:37:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5047088852;
-	Sat, 14 Dec 2019 01:28:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A7E0620458;
+	Tue, 17 Dec 2019 10:37:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fQmvI89DYoBa; Sat, 14 Dec 2019 01:28:25 +0000 (UTC)
+	with ESMTP id mpIFl0qSENEE; Tue, 17 Dec 2019 10:37:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 51A6A88844;
-	Sat, 14 Dec 2019 01:28:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4BF26200E5;
+	Tue, 17 Dec 2019 10:37:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E256D1BF346
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:28:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 349CD1BF28E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 10:37:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DDC2A8825E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:28:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 271FE87877
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 10:37:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ugT-HirwxiSr for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Dec 2019 01:28:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EB2FB88156
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2019 01:28:20 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2019 17:28:20 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,311,1571727600"; d="scan'208";a="211606969"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by fmsmga008.fm.intel.com with ESMTP; 13 Dec 2019 17:28:19 -0800
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.250]) by
- ORSMSX107.amr.corp.intel.com ([169.254.1.58]) with mapi id 14.03.0439.000;
- Fri, 13 Dec 2019 17:28:19 -0800
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Manfred Rudigier <manfred.rudigier@omicronenergy.com>, "Kirsher, Jeffrey
- T" <jeffrey.t.kirsher@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] igb: Fix SGMII SFP module discovery
- for 100FX/LX.
-Thread-Index: AQHVqtTQxyErkmuhq0agmnaPVtZva6e45akQ
-Date: Sat, 14 Dec 2019 01:28:19 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9719B49A@ORSMSX103.amr.corp.intel.com>
-References: <ef7b98c8-0ce4-4f84-989d-28b5a29d4831@EXC04-ATKLA.omicron.at>
-In-Reply-To: <ef7b98c8-0ce4-4f84-989d-28b5a29d4831@EXC04-ATKLA.omicron.at>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNTdkY2RmZGQtOWE2YS00ZDc4LTg4N2UtNDIxZTQ5NjM5MmU0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiNEl6eUJIK25UVmh3VjMzdHNCbkFzSTA3WW1nM2ZsdnRnS3ZaUjVid1VtYlNQMnFYMEgxbzBmVVQ4eHNGemQ3ZyJ9
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.140]
+ with ESMTP id UDFqarr8kFiJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Dec 2019 10:37:04 +0000 (UTC)
+X-Greylist: delayed 00:05:55 by SQLgrey-1.7.6
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D749D87850
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2019 10:37:03 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-376-7QV9dpS_PDGVEsxhTRpn8A-1; Tue, 17 Dec 2019 05:29:55 -0500
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B75208017DF;
+ Tue, 17 Dec 2019 10:29:53 +0000 (UTC)
+Received: from p50.redhat.com (unknown [10.36.118.71])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1C41D51;
+ Tue, 17 Dec 2019 10:29:51 +0000 (UTC)
+From: Stefan Assmann <sassmann@kpanic.de>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 17 Dec 2019 11:29:23 +0100
+Message-Id: <20191217102923.3274961-1-sassmann@kpanic.de>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Fix SGMII SFP module discovery
- for 100FX/LX.
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-MC-Unique: 7QV9dpS_PDGVEsxhTRpn8A-1
+X-Mimecast-Spam-Score: 0
+Subject: [Intel-wired-lan] [PATCH] iavf: remove current MAC address filter
+ on VF reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,98 +66,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, sassmann@kpanic.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Manfred Rudigier
-> Sent: Wednesday, December 4, 2019 2:40 AM
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> Cc: Manfred Rudigier <manfred.rudigier@omicronenergy.com>; intel-wired-
-> lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH] igb: Fix SGMII SFP module discovery for
-> 100FX/LX.
-> 
-> Changing the link mode should also be done for 100BaseFX SGMII modules,
-> otherwise they just don't work when the default link mode in CTRL_EXT
-> coming from the EEPROM is SERDES.
-> 
-> Additionally 100Base-LX SGMII SFP modules are also supported now, which
-> was not the case before.
-> 
-> Tested with an i210 using Flexoptix S.1303.2M.G 100FX and
-> S.1303.10.G 100LX SGMII SFP modules.
-> 
-> Signed-off-by: Manfred Rudigier <manfred.rudigier@omicronenergy.com>
-> ---
->  drivers/net/ethernet/intel/igb/e1000_82575.c | 8 ++------
->  drivers/net/ethernet/intel/igb/igb_ethtool.c | 2 +-
->  2 files changed, 3 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/e1000_82575.c
-> b/drivers/net/ethernet/intel/igb/e1000_82575.c
-> index 614130a6ba1f..30e77f5406cf 100644
-> --- a/drivers/net/ethernet/intel/igb/e1000_82575.c
-> +++ b/drivers/net/ethernet/intel/igb/e1000_82575.c
-> @@ -530,7 +530,7 @@ static s32 igb_set_sfp_media_type_82575(struct
-> e1000_hw *hw)
->  		dev_spec->module_plugged = true;
->  		if (eth_flags->e1000_base_lx || eth_flags->e1000_base_sx) {
->  			hw->phy.media_type =
-> e1000_media_type_internal_serdes;
-> -		} else if (eth_flags->e100_base_fx) {
-> +		} else if (eth_flags->e100_base_fx || eth_flags-
-> >e100_base_lx) {
->  			dev_spec->sgmii_active = true;
->  			hw->phy.media_type =
-> e1000_media_type_internal_serdes;
->  		} else if (eth_flags->e1000_base_t) {
-> @@ -657,14 +657,10 @@ static s32 igb_get_invariants_82575(struct
-> e1000_hw *hw)
->  			break;
->  		}
-> 
-> -		/* do not change link mode for 100BaseFX */
-> -		if (dev_spec->eth_flags.e100_base_fx)
-> -			break;
-> -
->  		/* change current link mode setting */
->  		ctrl_ext &= ~E1000_CTRL_EXT_LINK_MODE_MASK;
-> 
-> -		if (hw->phy.media_type == e1000_media_type_copper)
-> +		if (dev_spec->sgmii_active)
->  			ctrl_ext |= E1000_CTRL_EXT_LINK_MODE_SGMII;
->  		else
->  			ctrl_ext |=
-> E1000_CTRL_EXT_LINK_MODE_PCIE_SERDES;
-> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> index 5acf3b743876..50954e444985 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> @@ -181,7 +181,7 @@ static int igb_get_link_ksettings(struct net_device
-> *netdev,
->  				advertising &=
-> ~ADVERTISED_1000baseKX_Full;
->  			}
->  		}
-> -		if (eth_flags->e100_base_fx) {
-> +		if (eth_flags->e100_base_fx || eth_flags->e100_base_lx) {
->  			supported |= SUPPORTED_100baseT_Full;
->  			advertising |= ADVERTISED_100baseT_Full;
->  		}
-> --
-> 2.24.0
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Currently MAC filters are not altered during a VF reset event. This may
+lead to a stale filter when an administratively set MAC is forced by the
+PF.
 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+For an administratively set MAC the PF driver deletes the VFs filters,
+overwrites the VFs MAC address and triggers a VF reset. However
+the VF driver itself is not aware of the filter removal, which is what
+the VF reset is for.
+The VF reset queues all filters present in the VF driver to be re-added
+to the PF filter list (including the filter for the now stale VF MAC
+address) and triggers a VIRTCHNL_OP_GET_VF_RESOURCES event, which
+provides the new MAC address to the VF.
+
+When this happens i40e will complain and reject the stale MAC filter,
+at least in the untrusted VF case.
+i40e 0000:08:00.0: Setting MAC 3c:fa:fa:fa:fa:01 on VF 0
+iavf 0000:08:02.0: Reset warning received from the PF
+iavf 0000:08:02.0: Scheduling reset task
+i40e 0000:08:00.0: Bring down and up the VF interface to make this change effective.
+i40e 0000:08:00.0: VF attempting to override administratively set MAC address, bring down and up the VF interface to resume normal operation
+i40e 0000:08:00.0: VF 0 failed opcode 10, retval: -1
+iavf 0000:08:02.0: Failed to add MAC filter, error IAVF_ERR_NVM
+
+To avoid re-adding the stale MAC filter it needs to be removed from the
+VF driver's filter list before queuing the existing filters. Then during
+the VIRTCHNL_OP_GET_VF_RESOURCES event the correct filter needs to be
+added again, at which point the MAC address has been updated.
+
+As a bonus this change makes bringing the VF down and up again
+superfluous for the administratively set MAC case.
+
+Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+---
+ drivers/net/ethernet/intel/iavf/iavf.h          |  2 ++
+ drivers/net/ethernet/intel/iavf/iavf_main.c     | 17 +++++++++++++----
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c |  3 +++
+ 3 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
+index 29de3ae96ef2..bd1b1ed323f4 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf.h
++++ b/drivers/net/ethernet/intel/iavf/iavf.h
+@@ -415,4 +415,6 @@ void iavf_enable_channels(struct iavf_adapter *adapter);
+ void iavf_disable_channels(struct iavf_adapter *adapter);
+ void iavf_add_cloud_filter(struct iavf_adapter *adapter);
+ void iavf_del_cloud_filter(struct iavf_adapter *adapter);
++struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
++					const u8 *macaddr);
+ #endif /* _IAVF_H_ */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 0a8824871618..62fe56ddcb6e 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -743,9 +743,8 @@ iavf_mac_filter *iavf_find_filter(struct iavf_adapter *adapter,
+  *
+  * Returns ptr to the filter object or NULL when no memory available.
+  **/
+-static struct
+-iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
+-				 const u8 *macaddr)
++struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
++					const u8 *macaddr)
+ {
+ 	struct iavf_mac_filter *f;
+ 
+@@ -2065,9 +2064,9 @@ static void iavf_reset_task(struct work_struct *work)
+ 	struct virtchnl_vf_resource *vfres = adapter->vf_res;
+ 	struct net_device *netdev = adapter->netdev;
+ 	struct iavf_hw *hw = &adapter->hw;
++	struct iavf_mac_filter *f, *ftmp;
+ 	struct iavf_vlan_filter *vlf;
+ 	struct iavf_cloud_filter *cf;
+-	struct iavf_mac_filter *f;
+ 	u32 reg_val;
+ 	int i = 0, err;
+ 	bool running;
+@@ -2181,6 +2180,16 @@ static void iavf_reset_task(struct work_struct *work)
+ 
+ 	spin_lock_bh(&adapter->mac_vlan_list_lock);
+ 
++	/* Delete filter for the current MAC address, it could have
++	 * been changed by the PF via administratively set MAC.
++	 * Will be re-added via VIRTCHNL_OP_GET_VF_RESOURCES.
++	 */
++	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
++		if (ether_addr_equal(f->macaddr, adapter->hw.mac.addr)) {
++			list_del(&f->list);
++			kfree(f);
++		}
++	}
+ 	/* re-add all MAC filters */
+ 	list_for_each_entry(f, &adapter->mac_filter_list, list) {
+ 		f->add = true;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index c46770eba320..1ab9cb339acb 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1359,6 +1359,9 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 			ether_addr_copy(netdev->perm_addr,
+ 					adapter->hw.mac.addr);
+ 		}
++		spin_lock_bh(&adapter->mac_vlan_list_lock);
++		iavf_add_filter(adapter, adapter->hw.mac.addr);
++		spin_unlock_bh(&adapter->mac_vlan_list_lock);
+ 		iavf_process_config(adapter);
+ 		}
+ 		break;
+-- 
+2.23.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
