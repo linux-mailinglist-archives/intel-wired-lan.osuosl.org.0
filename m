@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D85812832B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2019 21:22:34 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAC1112833A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2019 21:24:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1165A24AF4;
-	Fri, 20 Dec 2019 20:22:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 89061888FA;
+	Fri, 20 Dec 2019 20:24:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UpKzdXnhS-T0; Fri, 20 Dec 2019 20:22:32 +0000 (UTC)
+	with ESMTP id NbwhSfAIKfE1; Fri, 20 Dec 2019 20:24:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 02A4023492;
-	Fri, 20 Dec 2019 20:22:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CAB2C8899A;
+	Fri, 20 Dec 2019 20:24:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4B3E41BF401
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:22:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AE8A71BF401
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:24:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 43B6D88307
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:22:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A681A2271C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:24:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dQ8DvYzbJGZp for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Dec 2019 20:22:29 +0000 (UTC)
+ with ESMTP id ysPcTWi7kH5q for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Dec 2019 20:24:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5460188300
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:22:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id DF1E4204C5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:24:32 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Dec 2019 12:22:28 -0800
+ 20 Dec 2019 12:24:32 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,337,1571727600"; d="scan'208";a="416635939"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by fmsmga005.fm.intel.com with ESMTP; 20 Dec 2019 12:22:28 -0800
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 20 Dec 2019 12:22:28 -0800
+X-IronPort-AV: E=Sophos;i="5.69,337,1571727600"; d="scan'208";a="267612649"
+Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
+ by FMSMGA003.fm.intel.com with ESMTP; 20 Dec 2019 12:24:32 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 20 Dec 2019 12:24:31 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 20 Dec 2019 12:22:28 -0800
+ 15.1.1713.5; Fri, 20 Dec 2019 12:24:31 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Fri, 20 Dec 2019 12:22:28 -0800
+ Fri, 20 Dec 2019 12:24:31 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] ice: remove redundant assignment to
- variable xmit_done
-Thread-Index: AQHVtsZxxtI2GgkQ2kuxTKYBfY73uqfDeKeQ
-Date: Fri, 20 Dec 2019 20:22:28 +0000
-Message-ID: <931e77969d3842d780aae153817c9d7c@intel.com>
-References: <20191219234535.37103-1-colin.king@canonical.com>
-In-Reply-To: <20191219234535.37103-1-colin.king@canonical.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next 2/2] drivers: net: ice:
+ Removing hung_queue variable to use txqueue function parameter
+Thread-Index: AQHVtgThBxGKLI4+qkutpf6gFctWIKfDet6A
+Date: Fri, 20 Dec 2019 20:24:31 +0000
+Message-ID: <f63daf8642254899a42c8156ab9baded@intel.com>
+References: <20191218183845.20038-1-jcfaracco@gmail.com>
+ <20191218183845.20038-3-jcfaracco@gmail.com>
+In-Reply-To: <20191218183845.20038-3-jcfaracco@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMjIzNTgzMGItNDJkYy00MGJlLTg3MjctN2Y2Njc2ZDJlNDc0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTGRtNWJncEM1aGo0MStEUEM0YTlUdmtOSE9FN014UEZxeDhqbG5hUUlqT1BETEcrVUVPeENNY0Z4bUxwamkwSiJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiODdjNjQ2MTctMDJlZS00YTczLWE0NDQtZjA3MTAxNzZkMmE5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYWpGWW5iNFBiQjVKWEFPeDQ2bmJoZjkrdzV0NFRnUlRrdytTZ2RmOXo3TXJpV2xLdkVENUt2cmlSQWp4b2FIcSJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] ice: remove redundant assignment to
- variable xmit_done
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] drivers: net: ice:
+ Removing hung_queue variable to use txqueue function parameter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,8 +85,7 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -94,30 +93,28 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Colin King
-> Sent: Thursday, December 19, 2019 3:46 PM
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David S . Miller
-> <davem@davemloft.net>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org
-> Cc: kernel-janitors@vger.kernel.org; linux-kernel@vger.kernel.org
-> Subject: [Intel-wired-lan] [PATCH] ice: remove redundant assignment to
-> variable xmit_done
+> Behalf Of Julio Faracco
+> Sent: Wednesday, December 18, 2019 10:39 AM
+> To: netdev@vger.kernel.org
+> Cc: intel-wired-lan@lists.osuosl.org; davem@davemloft.net
+> Subject: [Intel-wired-lan] [PATCH net-next 2/2] drivers: net: ice: Removing
+> hung_queue variable to use txqueue function parameter
 > 
-> From: Colin Ian King <colin.king@canonical.com>
+> The scope of function .ndo_tx_timeout was changed to include the hang
+> queue when a TX timeout event occurs. See commit 0290bd291cc0
+> ("netdev: pass the stuck queue to the timeout handler") for more details.
+> Now, drivers don't need to identify which queue is stopped.
+> Drivers can simply use the queue index provided bt dev_watchdog and
+> execute all actions needed to restore network traffic. This commit do some
+> cleanups into Intel ice driver to remove a redundant loop to find stopped
+> queue.
 > 
-> The variable xmit_done is being initialized with a value that is never read and
-> it is being updated later with a new value. The initialization is redundant and
-> can be removed.
-> 
-> Addresses-Coverity: ("Unused value")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_xsk.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/ice/ice_main.c | 41 ++++++-----------------
+>  1 file changed, 11 insertions(+), 30 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-
-
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
