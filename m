@@ -1,78 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAC1112833A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2019 21:24:36 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 89061888FA;
-	Fri, 20 Dec 2019 20:24:35 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NbwhSfAIKfE1; Fri, 20 Dec 2019 20:24:35 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CAB2C8899A;
-	Fri, 20 Dec 2019 20:24:34 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AE8A71BF401
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:24:33 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 602B9128B5E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Dec 2019 21:06:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A681A2271C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:24:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DD2FB20370;
+	Sat, 21 Dec 2019 20:06:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HVcMivM3j7aP; Sat, 21 Dec 2019 20:06:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 95333204A9;
+	Sat, 21 Dec 2019 20:06:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C6DD1BF27F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Dec 2019 20:06:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 69CB587592
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Dec 2019 20:06:20 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ysPcTWi7kH5q for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Dec 2019 20:24:33 +0000 (UTC)
+ with ESMTP id jcCUTNSgldUi for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Dec 2019 20:06:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id DF1E4204C5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2019 20:24:32 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5E3BC86E18
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Dec 2019 20:06:19 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Dec 2019 12:24:32 -0800
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2019 12:06:18 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,337,1571727600"; d="scan'208";a="267612649"
-Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
- by FMSMGA003.fm.intel.com with ESMTP; 20 Dec 2019 12:24:32 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 20 Dec 2019 12:24:31 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 20 Dec 2019 12:24:31 -0800
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Fri, 20 Dec 2019 12:24:31 -0800
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next 2/2] drivers: net: ice:
- Removing hung_queue variable to use txqueue function parameter
-Thread-Index: AQHVtgThBxGKLI4+qkutpf6gFctWIKfDet6A
-Date: Fri, 20 Dec 2019 20:24:31 +0000
-Message-ID: <f63daf8642254899a42c8156ab9baded@intel.com>
-References: <20191218183845.20038-1-jcfaracco@gmail.com>
- <20191218183845.20038-3-jcfaracco@gmail.com>
-In-Reply-To: <20191218183845.20038-3-jcfaracco@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiODdjNjQ2MTctMDJlZS00YTczLWE0NDQtZjA3MTAxNzZkMmE5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYWpGWW5iNFBiQjVKWEFPeDQ2bmJoZjkrdzV0NFRnUlRrdytTZ2RmOXo3TXJpV2xLdkVENUt2cmlSQWp4b2FIcSJ9
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+X-IronPort-AV: E=Sophos;i="5.69,341,1571727600"; d="scan'208";a="299318616"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga001.jf.intel.com with ESMTP; 21 Dec 2019 12:06:17 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1iil0z-0009sj-8D; Sun, 22 Dec 2019 04:06:17 +0800
+Date: Sun, 22 Dec 2019 04:06:09 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5dfe7b31.5a6nSOMTrNO+pPEm%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] drivers: net: ice:
- Removing hung_queue variable to use txqueue function parameter
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD REGRESSION
+ 324f7271ac30968fb1e3dad6198b382943da39aa
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,36 +63,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Julio Faracco
-> Sent: Wednesday, December 18, 2019 10:39 AM
-> To: netdev@vger.kernel.org
-> Cc: intel-wired-lan@lists.osuosl.org; davem@davemloft.net
-> Subject: [Intel-wired-lan] [PATCH net-next 2/2] drivers: net: ice: Removing
-> hung_queue variable to use txqueue function parameter
-> 
-> The scope of function .ndo_tx_timeout was changed to include the hang
-> queue when a TX timeout event occurs. See commit 0290bd291cc0
-> ("netdev: pass the stuck queue to the timeout handler") for more details.
-> Now, drivers don't need to identify which queue is stopped.
-> Drivers can simply use the queue index provided bt dev_watchdog and
-> execute all actions needed to restore network traffic. This commit do some
-> cleanups into Intel ice driver to remove a redundant loop to find stopped
-> queue.
-> 
-> Signed-off-by: Julio Faracco <jcfaracco@gmail.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 41 ++++++-----------------
->  1 file changed, 11 insertions(+), 30 deletions(-)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 324f7271ac30968fb1e3dad6198b382943da39aa  e1000e: Revert "e1000e: Make watchdog use delayed work"
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Regressions in current branch:
+
+drivers/net/ethernet/intel/e1000e/netdev.c:7604:6: warning: the address of 'down' will always evaluate as 'true' [-Waddress]
+
+Error ids grouped by kconfigs:
+
+recent_errors
+|-- s390-allmodconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- s390-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-defconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-fedora-25
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-kexec
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-lkp
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-rhel
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+`-- x86_64-rhel-7.6
+    `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+
+TIMEOUT after 2880m
+
+
+Sorry we cannot finish the testset for your branch within a reasonable time.
+It's our fault -- either some build server is down or some build worker is busy
+doing bisects for _other_ trees. The branch will get more complete coverage and
+possible error reports when our build infrastructure is restored or catches up.
+There will be no more build success notification for this branch head, but you
+can expect reasonably good test coverage after waiting for 1 day.
+
+configs timed out: 40
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+i386                             alldefconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+
+configs tested: 58
+
+parisc                            allnoconfig
+parisc                            allyesonfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+s390                              allnoconfig
+s390                             alldefconfig
+s390                          debug_defconfig
+s390                             allmodconfig
+s390                                defconfig
+s390                       zfcpdump_defconfig
+s390                             allyesconfig
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+alpha                               defconfig
+csky                                defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+xtensa                       common_defconfig
+openrisc                    or1ksim_defconfig
+nios2                         3c120_defconfig
+xtensa                          iss_defconfig
+c6x                        evmc6678_defconfig
+c6x                              allyesconfig
+nios2                         10m50_defconfig
+openrisc                 simple_smp_defconfig
+arm64                randconfig-a001-20191220
+arm                  randconfig-a001-20191220
+powerpc              randconfig-a001-20191220
+arc                  randconfig-a001-20191220
+ia64                 randconfig-a001-20191220
+sparc                randconfig-a001-20191220
+
+---
+0-DAY kernel test infrastructure                 Open Source Technology Center
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
