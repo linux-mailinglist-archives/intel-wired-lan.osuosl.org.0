@@ -1,54 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAFF012A850
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Dec 2019 15:18:01 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6590812AAE3
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Dec 2019 09:13:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4086C86372;
-	Wed, 25 Dec 2019 14:18:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3BF68204CA;
+	Thu, 26 Dec 2019 08:13:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6ZsleE4onSI1; Wed, 25 Dec 2019 14:18:00 +0000 (UTC)
+	with ESMTP id ZlwCDnLCdfnv; Thu, 26 Dec 2019 08:13:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8246C85C56;
-	Wed, 25 Dec 2019 14:17:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9AF8A204B9;
+	Thu, 26 Dec 2019 08:13:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 648181BF317
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Dec 2019 14:17:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BC06C1BF5AC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2019 08:13:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5FF8685964
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Dec 2019 14:17:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B608A816FA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2019 08:13:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m1BqXTHeFEEj for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Dec 2019 14:17:56 +0000 (UTC)
+ with ESMTP id tPDC8m-OrsVQ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Dec 2019 08:13:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A4E5F85960
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Dec 2019 14:17:56 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 158E28389C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2019 08:13:11 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 25 Dec 2019 06:17:55 -0800
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 26 Dec 2019 00:13:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,355,1571727600"; d="scan'208";a="207854188"
+X-IronPort-AV: E=Sophos;i="5.69,358,1571727600"; d="scan'208";a="300340195"
 Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
  ([10.185.23.132])
- by orsmga007.jf.intel.com with ESMTP; 25 Dec 2019 06:17:53 -0800
+ by orsmga001.jf.intel.com with ESMTP; 26 Dec 2019 00:13:09 -0800
 From: "Neftin, Sasha" <sasha.neftin@intel.com>
 To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, "Neftin, Sasha" <sasha.neftin@intel.com>
+ intel-wired-lan@lists.osuosl.org
 References: <20191212173650.14210-1-sasha.neftin@intel.com>
  <87imml5t8z.fsf@linux.intel.com>
  <f46101da-8d48-84a3-3229-653a36e6e1ae@intel.com>
-Message-ID: <2a042920-d948-9b08-826d-492e4f81ec83@intel.com>
-Date: Wed, 25 Dec 2019 16:17:52 +0200
+Message-ID: <4d1d0f7d-96a2-02f0-4acb-96bfaee0ee77@intel.com>
+Date: Thu, 26 Dec 2019 10:13:08 +0200
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.1
 MIME-Version: 1.0
@@ -119,13 +119,11 @@ fSB3aGlsZSAoIShwaHBtICYgSUdDX1BIWV9SU1RfQ09NUCkgJiYgdGltZW91dCk7Cj4+PiArCj4+
 PiArwqDCoMKgIGlmICghdGltZW91dCkKPj4+ICvCoMKgwqDCoMKgwqDCoCBod19kYmcoIlRpbWVv
 dWkgaXMgZXhwaXJlZCBhZnRlciBhIHBoeSByZXNldFxuIik7Cj4+Cj4+IG5pdHBpY2s6IFRpbWVv
 dWkgLT4gVGltZW91dAo+Pgo+IHRoYW5rcyAtIEkgd2lsbCBzZW5kIHYzIGFuZCBmaXggdGhlIHR5
-cG8KVW5mb3J0dW5hdGVseSwgUlNUX0NPTVBMIHNpZ25hbCBpbiBhIFBIWSBwb3dlciBtYW5hZ2Vt
-ZW50IHJlZ2lzdGVycyAKc3RpbGwgbm90IHdvcmsgYXMgcHJvcGVybHkuIFBsZWFzZSwgZGlzcmVn
-YXJkIHRoaXMgcGF0Y2guIFRoZSBSU1RfQ09NUEwgCmluZGljYXRpb24gc2hvdWxkIGJlIGZpeGVk
-LiBJIHdpbGwgcmVsZWFzZSBhbm90aGVyIHBhdGNoIHNvLgo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KX19fX19fXwo+IEludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxp
-c3QKPiBJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwo+IGh0dHBzOi8vbGlzdHMub3N1b3NsLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
-bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+cG8KUlNUX0NPTVAgc3RpbGwgbm90IHdvcmtzIGFzIHByb3Blcmx5LiBMZXQncyBkaXNyZWdhcmQg
+dGhpcyBwYXRjaC4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwo+IEludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKPiBJbnRlbC13aXJlZC1sYW5Ab3N1
+b3NsLm9yZwo+IGh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVs
+LXdpcmVkLWxhbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9y
+ZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1s
+YW4K
