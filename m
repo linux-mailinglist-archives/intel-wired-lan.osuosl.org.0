@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B5EC12BC42
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Dec 2019 03:34:48 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8860E12BC45
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Dec 2019 03:41:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E7B7B20385;
-	Sat, 28 Dec 2019 02:34:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0A5EC8598A;
+	Sat, 28 Dec 2019 02:41:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IV8l0bBGH04S; Sat, 28 Dec 2019 02:34:46 +0000 (UTC)
+	with ESMTP id yEaclkTAaePV; Sat, 28 Dec 2019 02:41:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A7019203F4;
-	Sat, 28 Dec 2019 02:34:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5BB2585683;
+	Sat, 28 Dec 2019 02:41:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D1DB81BF2F2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Dec 2019 02:34:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CBCBF1BF2F2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Dec 2019 02:41:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8763C20385
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Dec 2019 02:34:40 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 336EA2038F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Dec 2019 02:41:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HqCkkaR8UrBb for <intel-wired-lan@lists.osuosl.org>;
- Sat, 28 Dec 2019 02:34:39 +0000 (UTC)
+ with ESMTP id atksInMPqxZ8 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 28 Dec 2019 02:41:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 758B420113
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Dec 2019 02:34:39 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id D4CF020113
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Dec 2019 02:41:39 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Dec 2019 18:34:38 -0800
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Dec 2019 18:41:39 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,365,1571727600"; d="scan'208";a="392737254"
+X-IronPort-AV: E=Sophos;i="5.69,365,1571727600"; d="scan'208";a="419857849"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 27 Dec 2019 18:34:37 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 27 Dec 2019 18:41:38 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1il1w5-0007qy-23; Sat, 28 Dec 2019 10:34:37 +0800
-Date: Sat, 28 Dec 2019 10:34:35 +0800
+ id 1il22r-00099Y-Dl; Sat, 28 Dec 2019 10:41:37 +0800
+Date: Sat, 28 Dec 2019 10:40:42 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e06bf3b.iSmAeGXtUczqgPzA%lkp@intel.com>
+Message-ID: <5e06c0aa.P0k0p3xKw1cinu07%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- bde70cc7c17e6d6f7387b7908c5de63858d11cd2
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD REGRESSION
+ 7e5a53fc0c524519c2941cfd719ee598800a5572
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,15 +68,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: bde70cc7c17e6d6f7387b7908c5de63858d11cd2  ice: remove redundant assignment to variable xmit_done
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 7e5a53fc0c524519c2941cfd719ee598800a5572  e1000e: Revert "e1000e: Make watchdog use delayed work"
 
-elapsed time: 257m
+Regressions in current branch:
+
+drivers/net/ethernet/intel/e1000e/netdev.c:7604:6: warning: the address of 'down' will always evaluate as 'true' [-Waddress]
+
+Error ids grouped by kconfigs:
+
+recent_errors
+|-- alpha-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- i386-allmodconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- i386-randconfig-f001-20191228
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- ia64-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- mips-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- parisc-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- powerpc-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- riscv-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- s390-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- sparc-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- sparc64-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-allyesconfig
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+|-- x86_64-randconfig-f001-20191228
+|   `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+`-- xtensa-allyesconfig
+    `-- drivers-net-ethernet-intel-e1000e-netdev.c:warning:the-address-of-down-will-always-evaluate-as-true
+
+elapsed time: 256m
 
 configs tested: 181
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
 arc                              allyesconfig
 arc                                 defconfig
@@ -95,30 +128,18 @@ parisc                            allyesonfig
 parisc                         b180_defconfig
 parisc                        c3000_defconfig
 parisc                              defconfig
-arm                  randconfig-a001-20191227
-arm64                randconfig-a001-20191227
-arc                  randconfig-a001-20191227
-ia64                 randconfig-a001-20191227
-sparc                randconfig-a001-20191227
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-i386                                defconfig
-x86_64               randconfig-h001-20191227
-x86_64               randconfig-h002-20191227
-x86_64               randconfig-h003-20191227
-i386                 randconfig-h001-20191227
-i386                 randconfig-h002-20191227
-i386                 randconfig-h003-20191227
 x86_64               randconfig-a001-20191227
 x86_64               randconfig-a002-20191227
 x86_64               randconfig-a003-20191227
 i386                 randconfig-a001-20191227
 i386                 randconfig-a002-20191227
 i386                 randconfig-a003-20191227
+i386                 randconfig-h002-20191227
+x86_64               randconfig-h001-20191227
+i386                 randconfig-h003-20191227
+x86_64               randconfig-h003-20191227
+i386                 randconfig-h001-20191227
+x86_64               randconfig-h002-20191227
 ia64                             alldefconfig
 ia64                             allmodconfig
 ia64                              allnoconfig
@@ -158,24 +179,17 @@ x86_64               randconfig-e003-20191227
 i386                 randconfig-e001-20191227
 i386                 randconfig-e002-20191227
 i386                 randconfig-e003-20191227
-x86_64               randconfig-f003-20191227
-i386                 randconfig-f001-20191227
-i386                 randconfig-f003-20191227
-i386                 randconfig-f002-20191227
 x86_64               randconfig-f001-20191227
 x86_64               randconfig-f002-20191227
+x86_64               randconfig-f003-20191227
+i386                 randconfig-f001-20191227
+i386                 randconfig-f002-20191227
+i386                 randconfig-f003-20191227
 x86_64                              fedora-25
 x86_64                                  kexec
 x86_64                                    lkp
 x86_64                                   rhel
 x86_64                               rhel-7.6
-s390                             alldefconfig
-s390                             allmodconfig
-s390                              allnoconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
 x86_64               randconfig-b001-20191227
 x86_64               randconfig-b002-20191227
 x86_64               randconfig-b003-20191227
@@ -208,51 +222,70 @@ openrisc             randconfig-a001-20191228
 s390                 randconfig-a001-20191228
 sh                   randconfig-a001-20191228
 xtensa               randconfig-a001-20191228
+csky                 randconfig-a001-20191227
+openrisc             randconfig-a001-20191227
 s390                 randconfig-a001-20191227
 sh                   randconfig-a001-20191227
 xtensa               randconfig-a001-20191227
-openrisc             randconfig-a001-20191227
-csky                 randconfig-a001-20191227
-x86_64               randconfig-c001-20191227
-x86_64               randconfig-c002-20191227
+s390                             alldefconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                          debug_defconfig
+s390                                defconfig
+s390                       zfcpdump_defconfig
 x86_64               randconfig-c003-20191227
 i386                 randconfig-c001-20191227
 i386                 randconfig-c002-20191227
 i386                 randconfig-c003-20191227
+x86_64               randconfig-c002-20191227
+x86_64               randconfig-c001-20191227
 x86_64               randconfig-d001-20191227
 x86_64               randconfig-d002-20191227
 x86_64               randconfig-d003-20191227
 i386                 randconfig-d001-20191227
 i386                 randconfig-d002-20191227
 i386                 randconfig-d003-20191227
-mips                 randconfig-a001-20191228
-riscv                randconfig-a001-20191228
-m68k                 randconfig-a001-20191228
-parisc               randconfig-a001-20191228
-nds32                randconfig-a001-20191228
 alpha                randconfig-a001-20191228
-i386                             allyesconfig
+m68k                 randconfig-a001-20191228
+mips                 randconfig-a001-20191228
+nds32                randconfig-a001-20191228
+parisc               randconfig-a001-20191228
+riscv                randconfig-a001-20191228
+i386                 randconfig-f001-20191228
+x86_64               randconfig-f003-20191228
+i386                 randconfig-f003-20191228
+x86_64               randconfig-f001-20191228
+i386                 randconfig-f002-20191228
+x86_64               randconfig-f002-20191228
 x86_64               randconfig-e001-20191228
 x86_64               randconfig-e002-20191228
 x86_64               randconfig-e003-20191228
 i386                 randconfig-e001-20191228
 i386                 randconfig-e002-20191228
 i386                 randconfig-e003-20191228
-x86_64               randconfig-a002-20191228
-x86_64               randconfig-a001-20191228
-i386                 randconfig-a001-20191228
-x86_64               randconfig-a003-20191228
-i386                 randconfig-a003-20191228
-i386                 randconfig-a002-20191228
+arc                  randconfig-a001-20191227
+arm                  randconfig-a001-20191227
+arm64                randconfig-a001-20191227
+ia64                 randconfig-a001-20191227
 powerpc              randconfig-a001-20191227
-sparc                            allyesconfig
+sparc                randconfig-a001-20191227
 i386                             alldefconfig
 i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+sparc                            allyesconfig
 sparc                               defconfig
 sparc64                          allmodconfig
 sparc64                           allnoconfig
 sparc64                          allyesconfig
 sparc64                             defconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
 alpha                randconfig-a001-20191227
 m68k                 randconfig-a001-20191227
 mips                 randconfig-a001-20191227
