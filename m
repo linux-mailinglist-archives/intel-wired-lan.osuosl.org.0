@@ -1,62 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52D5712FF2D
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Jan 2020 00:38:58 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC15C12FF34
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Jan 2020 00:39:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 88C7487F44;
-	Fri,  3 Jan 2020 23:38:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E7CAB84627;
+	Fri,  3 Jan 2020 23:39:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xOHTtvKjK7uo; Fri,  3 Jan 2020 23:38:56 +0000 (UTC)
+	with ESMTP id HDdKw28ve6R6; Fri,  3 Jan 2020 23:39:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 22CCE87F50;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9601F85C28;
 	Fri,  3 Jan 2020 23:38:55 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CDDBC1BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2020 06:18:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 31EB91BF20D
+ for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:31:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BE20D87553
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2020 06:18:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1726D8650D
+ for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:31:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z6dP0+T6Zs9n for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jan 2020 06:18:45 +0000 (UTC)
+ with ESMTP id zXNWMlJM+RQV for <intel-wired-lan@osuosl.org>;
+ Fri,  3 Jan 2020 02:30:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9813087552
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2020 06:18:45 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ECFB4864E0
+ for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:30:55 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 01 Jan 2020 22:18:44 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,385,1571727600"; 
- d="gz'50?scan'50,208,50";a="301884699"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 01 Jan 2020 22:18:42 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1imtof-00050s-Ds; Thu, 02 Jan 2020 14:18:41 +0800
-Date: Thu, 2 Jan 2020 14:18:08 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Sasha Neftin <sasha.neftin@intel.com>
-Message-ID: <202001021405.ZRJt5NUL%lkp@intel.com>
+ 02 Jan 2020 18:30:55 -0800
+X-IronPort-AV: E=Sophos;i="5.69,389,1571727600"; d="scan'208";a="214327521"
+Received: from jbrandeb-desk.jf.intel.com ([10.166.244.152])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jan 2020 18:30:54 -0800
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Thu,  2 Jan 2020 18:30:51 -0800
+Message-Id: <20200103023051.821621-1-jesse.brandeburg@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="qydrbevpovamqdah"
-Content-Disposition: inline
-User-Agent: NeoMutt/20170113 (1.7.2)
 X-Mailman-Approved-At: Fri, 03 Jan 2020 23:38:53 +0000
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 11/76]
- drivers/net/ethernet/intel/igc/igc_main.c:143:13: error: redefinition of
- 'igc_power_down_link'
+Subject: [Intel-wired-lan] [PATCH net-next v1] i40e: remove unused defines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,1381 +60,7087 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kbuild-all@lists.01.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Remove all the unused defines as they are just dead weight.
 
---qydrbevpovamqdah
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
-head:   74c2ae1254468e2c3db1ff410175525a465488a3
-commit: 9f6846ba9643830c95a59ec950c1e4ba2afb08fc [11/76] igc: Remove no need declaration of the igc_power_down_link
-config: i386-allyesconfig (attached as .config)
-compiler: gcc-7 (Debian 7.5.0-3) 7.5.0
-reproduce:
-        git checkout 9f6846ba9643830c95a59ec950c1e4ba2afb08fc
-        # save the attached .config to linux build tree
-        make ARCH=i386 
-
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> drivers/net/ethernet/intel/igc/igc_main.c:143:13: error: redefinition of 'igc_power_down_link'
-    static void igc_power_down_link(struct igc_adapter *adapter)
-                ^~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igc/igc_main.c:82:13: note: previous definition of 'igc_power_down_link' was here
-    static void igc_power_down_link(struct igc_adapter *adapter)
-                ^~~~~~~~~~~~~~~~~~~
-
-vim +/igc_power_down_link +143 drivers/net/ethernet/intel/igc/igc_main.c
-
-c9a11c23ceb65d Sasha Neftin 2018-10-11  138  
-c9a11c23ceb65d Sasha Neftin 2018-10-11  139  /**
-684ea87cc312c9 Sasha Neftin 2019-12-02  140   * igc_power_down_link - Power down the phy link
-c9a11c23ceb65d Sasha Neftin 2018-10-11  141   * @adapter: address of board private structure
-c9a11c23ceb65d Sasha Neftin 2018-10-11  142   */
-c9a11c23ceb65d Sasha Neftin 2018-10-11 @143  static void igc_power_down_link(struct igc_adapter *adapter)
-c9a11c23ceb65d Sasha Neftin 2018-10-11  144  {
-5586838fe9ced0 Sasha Neftin 2018-10-11  145  	if (adapter->hw.phy.media_type == igc_media_type_copper)
-5586838fe9ced0 Sasha Neftin 2018-10-11  146  		igc_power_down_phy_copper_base(&adapter->hw);
-c9a11c23ceb65d Sasha Neftin 2018-10-11  147  }
-c9a11c23ceb65d Sasha Neftin 2018-10-11  148  
-
-:::::: The code at line 143 was first introduced by commit
-:::::: c9a11c23ceb65db7ecc5735e7428311d70e74ba9 igc: Add netdev
-
-:::::: TO: Sasha Neftin <sasha.neftin@intel.com>
-:::::: CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+ drivers/net/ethernet/intel/i40e/i40e.h        |   20 -
+ .../net/ethernet/intel/i40e/i40e_adminq_cmd.h |  483 +-
+ drivers/net/ethernet/intel/i40e/i40e_client.h |    6 -
+ drivers/net/ethernet/intel/i40e/i40e_common.c |    4 -
+ drivers/net/ethernet/intel/i40e/i40e_dcb.h    |    5 -
+ .../net/ethernet/intel/i40e/i40e_debugfs.c    |    1 -
+ drivers/net/ethernet/intel/i40e/i40e_devids.h |    3 -
+ drivers/net/ethernet/intel/i40e/i40e_hmc.h    |    1 -
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |    3 -
+ drivers/net/ethernet/intel/i40e/i40e_osdep.h  |    1 -
+ .../net/ethernet/intel/i40e/i40e_register.h   | 4664 -----------------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h   |   25 -
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |   81 -
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |    1 -
+ 14 files changed, 1 insertion(+), 5297 deletions(-)
 
---qydrbevpovamqdah
-Content-Type: application/gzip
-Content-Disposition: attachment; filename=".config.gz"
-Content-Transfer-Encoding: base64
-
-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
-sL6WCaktPQMxJ4jc1DQGzllY0MnJwA28Vr0xMTVOdITlpi21F+9qshpJSlVCsuJoOo8Cts6y
-qLpccsenmsDYsW6alNR0dUB3bDoXCX0Ca6MwuZhBgHlZ5uCck8SedqcGrouZjpY3p0A1hF0H
-aqad/KQPby8dyRqLLO3jOHf6dFk2w0UHZc7TFYgbGXEYj+A+VvNo627lLLZz2NHKyrnJM7UV
-kKo8jzfDxKLpTq2Th6TcrtdbVdLEKWlSBpvNErPd9Gq7ni0nGaVL2QKLMn5/BhNM5zZzGmym
-KUM9dwyy4giB3cZwoPLk1KI2ssaC/D1JcxX+7i+Kav0i1fLS6UUyiIFw68noySTIpYlhRqsm
-ceoUQKokTtVoc23d5056M7N0XrJp+iwvXUmtcDWycuhtC7Hq7/oi75w+NKaqA9zKVGMuZvie
-KMp1sFPLYGTu3FDUHb2N9l3jNNPAnDunnNoKJYwoljjnToWZl8a5dO/SBsJpQNVEa12PDLFl
-iU6h9kUvyKfpbm1BPNWJI2XA3Oc5qVm8uTqL28l6zztmuTCR58YdRyNXJsuRnkEhwxWe040h
-KEC0hXCF4tjJoUcefHe0WzSXcZsv3bNHsMqUwp1f62Qdj67+4Da5VA0VgVDjiOPZXRgZ2IgS
-9wgV6CQtOvY7TfQlW8SJNp2DE4iu8BjlSpY0zop35N65jT19FjulHqmzZGIcrcO2B/eEEKYH
-p90NyotdLWDPaXVy6/BUhfmt7qSjTUouE24Dw0BEqBqI2inowig8M5L0nJ9zp9dqEG9tbQLu
-kpP0LH/Zrp0E/NL9howts85bWs/oe+8QbpyRZNWKDj9aBA1mD5iMG5tgol7mDp4vnACQKn7w
-4A5bJkY9kpIy5zmYSpdYYwJt8ds0ZkugcXs/A8olP6otPYUoLhs3KNLsaZ8/3pVl/DMYYWGO
-ReDICih8ZmU0XSb9AoJ3qdjskOqqUYzJ1zt6yUcxsChAsflrej9HsakKKDFGa2NztFuSqbIN
-6eVrIqOWfqqGRa7/cuI8ivaeBcll2n2Kth3mqAnOlCty31iKPVLNnqvZ3oUiuL92yL61yYTa
-uO5W26P7TbYN0UsjAzPvQA1jnpOOPcm11gt8+NddVg5qIXf/lN2dNon0r7lvzVGF0AI3jP/e
-is6WhibGXAp3EEwUhWAj01Gw7VqkTGejvT7pC1a/caRThwM8fvSBDKH3cFbvDCyNDp9sVpg8
-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
-JfebtNuA/T905tvJCn0EAA==
-
---qydrbevpovamqdah
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 4833187bd259..f849dc2148eb 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -60,17 +60,14 @@
+ 		(((pf)->hw_features & I40E_HW_RSS_AQ_CAPABLE) ? 4 : 1)
+ #define I40E_DEFAULT_QUEUES_PER_VF	4
+ #define I40E_MAX_VF_QUEUES		16
+-#define I40E_DEFAULT_QUEUES_PER_TC	1 /* should be a power of 2 */
+ #define i40e_pf_get_max_q_per_tc(pf) \
+ 		(((pf)->hw_features & I40E_HW_128_QP_RSS_CAPABLE) ? 128 : 64)
+-#define I40E_FDIR_RING			0
+ #define I40E_FDIR_RING_COUNT		32
+ #define I40E_MAX_AQ_BUF_SIZE		4096
+ #define I40E_AQ_LEN			256
+ #define I40E_AQ_WORK_LIMIT		66 /* max number of VFs + a little */
+ #define I40E_MAX_USER_PRIORITY		8
+ #define I40E_DEFAULT_TRAFFIC_CLASS	BIT(0)
+-#define I40E_DEFAULT_MSG_ENABLE		4
+ #define I40E_QUEUE_WAIT_RETRY_LIMIT	10
+ #define I40E_INT_NAME_STR_LEN		(IFNAMSIZ + 16)
+ 
+@@ -93,8 +90,6 @@
+ #define I40E_OEM_RELEASE_MASK		0x0000ffff
+ 
+ /* The values in here are decimal coded as hex as is the case in the NVM map*/
+-#define I40E_CURRENT_NVM_VERSION_HI	0x2
+-#define I40E_CURRENT_NVM_VERSION_LO	0x40
+ 
+ #define I40E_RX_DESC(R, i)	\
+ 	(&(((union i40e_32byte_rx_desc *)((R)->desc))[i]))
+@@ -106,7 +101,6 @@
+ 	(&(((struct i40e_filter_program_desc *)((R)->desc))[i]))
+ 
+ /* default to trying for four seconds */
+-#define I40E_TRY_LINK_TIMEOUT	(4 * HZ)
+ 
+ /* BW rate limiting */
+ #define I40E_BW_CREDIT_DIVISOR		50 /* 50Mbps per BW credit */
+@@ -295,9 +289,6 @@ struct i40e_cloud_filter {
+ 	u8 tunnel_type;
+ };
+ 
+-#define I40E_DCB_PRIO_TYPE_STRICT	0
+-#define I40E_DCB_PRIO_TYPE_ETS		1
+-#define I40E_DCB_STRICT_PRIO_CREDITS	127
+ /* DCB per TC information data structure */
+ struct i40e_tc_info {
+ 	u16	qoffset;	/* Queue offset from base queue */
+@@ -357,15 +348,6 @@ struct i40e_ddp_old_profile_list {
+ 					     I40E_FLEX_SET_FSIZE(fsize) | \
+ 					     I40E_FLEX_SET_SRC_WORD(src))
+ 
+-#define I40E_FLEX_PIT_GET_SRC(flex) (((flex) & \
+-				     I40E_PRTQF_FLX_PIT_SOURCE_OFF_MASK) >> \
+-				     I40E_PRTQF_FLX_PIT_SOURCE_OFF_SHIFT)
+-#define I40E_FLEX_PIT_GET_DST(flex) (((flex) & \
+-				     I40E_PRTQF_FLX_PIT_DEST_OFF_MASK) >> \
+-				     I40E_PRTQF_FLX_PIT_DEST_OFF_SHIFT)
+-#define I40E_FLEX_PIT_GET_FSIZE(flex) (((flex) & \
+-				       I40E_PRTQF_FLX_PIT_FSIZE_MASK) >> \
+-				       I40E_PRTQF_FLX_PIT_FSIZE_SHIFT)
+ 
+ #define I40E_MAX_FLEX_SRC_OFFSET 0x1F
+ 
+@@ -390,7 +372,6 @@ struct i40e_ddp_old_profile_list {
+ #define I40E_L4_GLQF_ORT_IDX		35
+ 
+ /* Flex PIT register index */
+-#define I40E_FLEX_PIT_IDX_START_L2	0
+ #define I40E_FLEX_PIT_IDX_START_L3	3
+ #define I40E_FLEX_PIT_IDX_START_L4	6
+ 
+@@ -531,7 +512,6 @@ struct i40e_pf {
+ #define I40E_HW_GENEVE_OFFLOAD_CAPABLE		BIT(9)
+ #define I40E_HW_PTP_L4_CAPABLE			BIT(10)
+ #define I40E_HW_WOL_MC_MAGIC_PKT_WAKE		BIT(11)
+-#define I40E_HW_MPLS_HDR_OFFLOAD_CAPABLE	BIT(12)
+ #define I40E_HW_HAVE_CRT_RETIMER		BIT(13)
+ #define I40E_HW_OUTER_UDP_CSUM_CAPABLE		BIT(14)
+ #define I40E_HW_PHY_CONTROLS_LEDS		BIT(15)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+index aa5f1c0aa721..206fcd889ce6 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+@@ -21,7 +21,6 @@
+ /* API version 1.7 implements additional link and PHY-specific APIs  */
+ #define I40E_MINOR_VER_GET_LINK_INFO_XL710 0x0007
+ /* API version 1.9 for X722 implements additional link and PHY-specific APIs */
+-#define I40E_MINOR_VER_GET_LINK_INFO_X722 0x0009
+ /* API version 1.6 for X722 devices adds ability to stop FW LLDP agent */
+ #define I40E_MINOR_VER_FW_LLDP_STOPPABLE_X722 0x0006
+ 
+@@ -55,29 +54,17 @@ struct i40e_aq_desc {
+  */
+ 
+ /* command flags and offsets*/
+-#define I40E_AQ_FLAG_DD_SHIFT	0
+-#define I40E_AQ_FLAG_CMP_SHIFT	1
+ #define I40E_AQ_FLAG_ERR_SHIFT	2
+-#define I40E_AQ_FLAG_VFE_SHIFT	3
+ #define I40E_AQ_FLAG_LB_SHIFT	9
+ #define I40E_AQ_FLAG_RD_SHIFT	10
+-#define I40E_AQ_FLAG_VFC_SHIFT	11
+ #define I40E_AQ_FLAG_BUF_SHIFT	12
+ #define I40E_AQ_FLAG_SI_SHIFT	13
+-#define I40E_AQ_FLAG_EI_SHIFT	14
+-#define I40E_AQ_FLAG_FE_SHIFT	15
+ 
+-#define I40E_AQ_FLAG_DD		BIT(I40E_AQ_FLAG_DD_SHIFT)  /* 0x1    */
+-#define I40E_AQ_FLAG_CMP	BIT(I40E_AQ_FLAG_CMP_SHIFT) /* 0x2    */
+ #define I40E_AQ_FLAG_ERR	BIT(I40E_AQ_FLAG_ERR_SHIFT) /* 0x4    */
+-#define I40E_AQ_FLAG_VFE	BIT(I40E_AQ_FLAG_VFE_SHIFT) /* 0x8    */
+ #define I40E_AQ_FLAG_LB		BIT(I40E_AQ_FLAG_LB_SHIFT)  /* 0x200  */
+ #define I40E_AQ_FLAG_RD		BIT(I40E_AQ_FLAG_RD_SHIFT)  /* 0x400  */
+-#define I40E_AQ_FLAG_VFC	BIT(I40E_AQ_FLAG_VFC_SHIFT) /* 0x800  */
+ #define I40E_AQ_FLAG_BUF	BIT(I40E_AQ_FLAG_BUF_SHIFT) /* 0x1000 */
+ #define I40E_AQ_FLAG_SI		BIT(I40E_AQ_FLAG_SI_SHIFT)  /* 0x2000 */
+-#define I40E_AQ_FLAG_EI		BIT(I40E_AQ_FLAG_EI_SHIFT)  /* 0x4000 */
+-#define I40E_AQ_FLAG_FE		BIT(I40E_AQ_FLAG_FE_SHIFT)  /* 0x8000 */
+ 
+ /* error codes */
+ enum i40e_admin_queue_err {
+@@ -362,12 +349,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_set_pf_context);
+ /* Request resource ownership (direct 0x0008)
+  * Release resource ownership (direct 0x0009)
+  */
+-#define I40E_AQ_RESOURCE_NVM			1
+-#define I40E_AQ_RESOURCE_SDP			2
+-#define I40E_AQ_RESOURCE_ACCESS_READ		1
+-#define I40E_AQ_RESOURCE_ACCESS_WRITE		2
+-#define I40E_AQ_RESOURCE_NVM_READ_TIMEOUT	3000
+-#define I40E_AQ_RESOURCE_NVM_WRITE_TIMEOUT	180000
+ 
+ struct i40e_aqc_request_resource {
+ 	__le16	resource_id;
+@@ -384,7 +365,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_request_resource);
+  */
+ struct i40e_aqc_list_capabilites {
+ 	u8 command_flags;
+-#define I40E_AQ_LIST_CAP_PF_INDEX_EN	1
+ 	u8 pf_index;
+ 	u8 reserved[2];
+ 	__le32 count;
+@@ -411,8 +391,6 @@ struct i40e_aqc_list_capabilities_element_resp {
+ #define I40E_AQ_CAP_ID_NPAR_ACTIVE	0x0003
+ #define I40E_AQ_CAP_ID_OS2BMC_CAP	0x0004
+ #define I40E_AQ_CAP_ID_FUNCTIONS_VALID	0x0005
+-#define I40E_AQ_CAP_ID_ALTERNATE_RAM	0x0006
+-#define I40E_AQ_CAP_ID_WOL_AND_PROXY	0x0008
+ #define I40E_AQ_CAP_ID_SRIOV		0x0012
+ #define I40E_AQ_CAP_ID_VF		0x0013
+ #define I40E_AQ_CAP_ID_VMDQ		0x0014
+@@ -441,11 +419,6 @@ struct i40e_aqc_list_capabilities_element_resp {
+ /* Set CPPM Configuration (direct 0x0103) */
+ struct i40e_aqc_cppm_configuration {
+ 	__le16	command_flags;
+-#define I40E_AQ_CPPM_EN_LTRC	0x0800
+-#define I40E_AQ_CPPM_EN_DMCTH	0x1000
+-#define I40E_AQ_CPPM_EN_DMCTLX	0x2000
+-#define I40E_AQ_CPPM_EN_HPTC	0x4000
+-#define I40E_AQ_CPPM_EN_DMARC	0x8000
+ 	__le16	ttlx;
+ 	__le32	dmacr;
+ 	__le16	dmcth;
+@@ -459,15 +432,8 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_cppm_configuration);
+ /* Set ARP Proxy command / response (indirect 0x0104) */
+ struct i40e_aqc_arp_proxy_data {
+ 	__le16	command_flags;
+-#define I40E_AQ_ARP_INIT_IPV4	0x0800
+-#define I40E_AQ_ARP_UNSUP_CTL	0x1000
+-#define I40E_AQ_ARP_ENA		0x2000
+-#define I40E_AQ_ARP_ADD_IPV4	0x4000
+-#define I40E_AQ_ARP_DEL_IPV4	0x8000
+ 	__le16	table_id;
+ 	__le32	enabled_offloads;
+-#define I40E_AQ_ARP_DIRECTED_OFFLOAD_ENABLE	0x00000020
+-#define I40E_AQ_ARP_OFFLOAD_ENABLE		0x00000800
+ 	__le32	ip_addr;
+ 	u8	mac_addr[6];
+ 	u8	reserved[2];
+@@ -482,19 +448,6 @@ struct i40e_aqc_ns_proxy_data {
+ 	__le16	table_idx_ipv6_0;
+ 	__le16	table_idx_ipv6_1;
+ 	__le16	control;
+-#define I40E_AQ_NS_PROXY_ADD_0		0x0001
+-#define I40E_AQ_NS_PROXY_DEL_0		0x0002
+-#define I40E_AQ_NS_PROXY_ADD_1		0x0004
+-#define I40E_AQ_NS_PROXY_DEL_1		0x0008
+-#define I40E_AQ_NS_PROXY_ADD_IPV6_0	0x0010
+-#define I40E_AQ_NS_PROXY_DEL_IPV6_0	0x0020
+-#define I40E_AQ_NS_PROXY_ADD_IPV6_1	0x0040
+-#define I40E_AQ_NS_PROXY_DEL_IPV6_1	0x0080
+-#define I40E_AQ_NS_PROXY_COMMAND_SEQ	0x0100
+-#define I40E_AQ_NS_PROXY_INIT_IPV6_TBL	0x0200
+-#define I40E_AQ_NS_PROXY_INIT_MAC_TBL	0x0400
+-#define I40E_AQ_NS_PROXY_OFFLOAD_ENABLE	0x0800
+-#define I40E_AQ_NS_PROXY_DIRECTED_OFFLOAD_ENABLE	0x1000
+ 	u8	mac_addr_0[6];
+ 	u8	mac_addr_1[6];
+ 	u8	local_mac_addr[6];
+@@ -507,7 +460,6 @@ I40E_CHECK_STRUCT_LEN(0x3c, i40e_aqc_ns_proxy_data);
+ /* Manage LAA Command (0x0106) - obsolete */
+ struct i40e_aqc_mng_laa {
+ 	__le16	command_flags;
+-#define I40E_AQ_LAA_FLAG_WR	0x8000
+ 	u8	reserved[2];
+ 	__le32	sal;
+ 	__le16	sah;
+@@ -520,11 +472,7 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_mng_laa);
+ struct i40e_aqc_mac_address_read {
+ 	__le16	command_flags;
+ #define I40E_AQC_LAN_ADDR_VALID		0x10
+-#define I40E_AQC_SAN_ADDR_VALID		0x20
+ #define I40E_AQC_PORT_ADDR_VALID	0x40
+-#define I40E_AQC_WOL_ADDR_VALID		0x80
+-#define I40E_AQC_MC_MAG_EN_VALID	0x100
+-#define I40E_AQC_ADDR_VALID_MASK	0x3F0
+ 	u8	reserved[6];
+ 	__le32	addr_high;
+ 	__le32	addr_low;
+@@ -548,9 +496,7 @@ struct i40e_aqc_mac_address_write {
+ #define I40E_AQC_WOL_PRESERVE_ON_PFR	0x0200
+ #define I40E_AQC_WRITE_TYPE_LAA_ONLY	0x0000
+ #define I40E_AQC_WRITE_TYPE_LAA_WOL	0x4000
+-#define I40E_AQC_WRITE_TYPE_PORT	0x8000
+ #define I40E_AQC_WRITE_TYPE_UPDATE_MC_MAG	0xC000
+-#define I40E_AQC_WRITE_TYPE_MASK	0xC000
+ 
+ 	__le16	mac_sah;
+ 	__le32	mac_sal;
+@@ -573,22 +519,9 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_clear_pxe);
+ 
+ struct i40e_aqc_set_wol_filter {
+ 	__le16 filter_index;
+-#define I40E_AQC_MAX_NUM_WOL_FILTERS	8
+-#define I40E_AQC_SET_WOL_FILTER_TYPE_MAGIC_SHIFT	15
+-#define I40E_AQC_SET_WOL_FILTER_TYPE_MAGIC_MASK	(0x1 << \
+-		I40E_AQC_SET_WOL_FILTER_TYPE_MAGIC_SHIFT)
+-
+-#define I40E_AQC_SET_WOL_FILTER_INDEX_SHIFT		0
+-#define I40E_AQC_SET_WOL_FILTER_INDEX_MASK	(0x7 << \
+-		I40E_AQC_SET_WOL_FILTER_INDEX_SHIFT)
++
+ 	__le16 cmd_flags;
+-#define I40E_AQC_SET_WOL_FILTER				0x8000
+-#define I40E_AQC_SET_WOL_FILTER_NO_TCO_WOL		0x4000
+-#define I40E_AQC_SET_WOL_FILTER_ACTION_CLEAR		0
+-#define I40E_AQC_SET_WOL_FILTER_ACTION_SET		1
+ 	__le16 valid_flags;
+-#define I40E_AQC_SET_WOL_FILTER_ACTION_VALID		0x8000
+-#define I40E_AQC_SET_WOL_FILTER_NO_TCO_ACTION_VALID	0x4000
+ 	u8 reserved[2];
+ 	__le32	address_high;
+ 	__le32	address_low;
+@@ -608,12 +541,6 @@ I40E_CHECK_STRUCT_LEN(0x90, i40e_aqc_set_wol_filter_data);
+ struct i40e_aqc_get_wake_reason_completion {
+ 	u8 reserved_1[2];
+ 	__le16 wake_reason;
+-#define I40E_AQC_GET_WAKE_UP_REASON_WOL_REASON_MATCHED_INDEX_SHIFT	0
+-#define I40E_AQC_GET_WAKE_UP_REASON_WOL_REASON_MATCHED_INDEX_MASK (0xFF << \
+-		I40E_AQC_GET_WAKE_UP_REASON_WOL_REASON_MATCHED_INDEX_SHIFT)
+-#define I40E_AQC_GET_WAKE_UP_REASON_WOL_REASON_RESERVED_SHIFT	8
+-#define I40E_AQC_GET_WAKE_UP_REASON_WOL_REASON_RESERVED_MASK	(0xFF << \
+-		I40E_AQC_GET_WAKE_UP_REASON_WOL_REASON_RESERVED_SHIFT)
+ 	u8 reserved_2[12];
+ };
+ 
+@@ -646,25 +573,12 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_get_switch_config_header_resp);
+ 
+ struct i40e_aqc_switch_config_element_resp {
+ 	u8	element_type;
+-#define I40E_AQ_SW_ELEM_TYPE_MAC	1
+-#define I40E_AQ_SW_ELEM_TYPE_PF		2
+-#define I40E_AQ_SW_ELEM_TYPE_VF		3
+-#define I40E_AQ_SW_ELEM_TYPE_EMP	4
+-#define I40E_AQ_SW_ELEM_TYPE_BMC	5
+-#define I40E_AQ_SW_ELEM_TYPE_PV		16
+-#define I40E_AQ_SW_ELEM_TYPE_VEB	17
+-#define I40E_AQ_SW_ELEM_TYPE_PA		18
+-#define I40E_AQ_SW_ELEM_TYPE_VSI	19
+ 	u8	revision;
+-#define I40E_AQ_SW_ELEM_REV_1		1
+ 	__le16	seid;
+ 	__le16	uplink_seid;
+ 	__le16	downlink_seid;
+ 	u8	reserved[3];
+ 	u8	connection_type;
+-#define I40E_AQ_CONN_TYPE_REGULAR	0x1
+-#define I40E_AQ_CONN_TYPE_DEFAULT	0x2
+-#define I40E_AQ_CONN_TYPE_CASCADED	0x3
+ 	__le16	scheduler_id;
+ 	__le16	element_info;
+ };
+@@ -697,12 +611,7 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_add_remove_statistics);
+ /* Set Port Parameters command (direct 0x0203) */
+ struct i40e_aqc_set_port_parameters {
+ 	__le16	command_flags;
+-#define I40E_AQ_SET_P_PARAMS_SAVE_BAD_PACKETS	1
+-#define I40E_AQ_SET_P_PARAMS_PAD_SHORT_PACKETS	2 /* must set! */
+-#define I40E_AQ_SET_P_PARAMS_DOUBLE_VLAN_ENA	4
+ 	__le16	bad_frame_vsi;
+-#define I40E_AQ_SET_P_PARAMS_BFRAME_SEID_SHIFT	0x0
+-#define I40E_AQ_SET_P_PARAMS_BFRAME_SEID_MASK	0x3FF
+ 	__le16	default_seid;        /* reserved for command */
+ 	u8	reserved[10];
+ };
+@@ -722,25 +631,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_get_switch_resource_alloc);
+ /* expect an array of these structs in the response buffer */
+ struct i40e_aqc_switch_resource_alloc_element_resp {
+ 	u8	resource_type;
+-#define I40E_AQ_RESOURCE_TYPE_VEB		0x0
+-#define I40E_AQ_RESOURCE_TYPE_VSI		0x1
+-#define I40E_AQ_RESOURCE_TYPE_MACADDR		0x2
+-#define I40E_AQ_RESOURCE_TYPE_STAG		0x3
+-#define I40E_AQ_RESOURCE_TYPE_ETAG		0x4
+-#define I40E_AQ_RESOURCE_TYPE_MULTICAST_HASH	0x5
+-#define I40E_AQ_RESOURCE_TYPE_UNICAST_HASH	0x6
+-#define I40E_AQ_RESOURCE_TYPE_VLAN		0x7
+-#define I40E_AQ_RESOURCE_TYPE_VSI_LIST_ENTRY	0x8
+-#define I40E_AQ_RESOURCE_TYPE_ETAG_LIST_ENTRY	0x9
+-#define I40E_AQ_RESOURCE_TYPE_VLAN_STAT_POOL	0xA
+-#define I40E_AQ_RESOURCE_TYPE_MIRROR_RULE	0xB
+-#define I40E_AQ_RESOURCE_TYPE_QUEUE_SETS	0xC
+-#define I40E_AQ_RESOURCE_TYPE_VLAN_FILTERS	0xD
+-#define I40E_AQ_RESOURCE_TYPE_INNER_MAC_FILTERS	0xF
+-#define I40E_AQ_RESOURCE_TYPE_IP_FILTERS	0x10
+-#define I40E_AQ_RESOURCE_TYPE_GRE_VN_KEYS	0x11
+-#define I40E_AQ_RESOURCE_TYPE_VN2_KEYS		0x12
+-#define I40E_AQ_RESOURCE_TYPE_TUNNEL_PORTS	0x13
+ 	u8	reserved1;
+ 	__le16	guaranteed;
+ 	__le16	total;
+@@ -756,7 +646,6 @@ struct i40e_aqc_set_switch_config {
+ 	__le16	flags;
+ /* flags used for both fields below */
+ #define I40E_AQ_SET_SWITCH_CFG_PROMISC		0x0001
+-#define I40E_AQ_SET_SWITCH_CFG_L2_FILTER	0x0002
+ 	__le16	valid_flags;
+ 	/* The ethertype in switch_tag is dropped on ingress and used
+ 	 * internally by the switch. Set this to zero for the default
+@@ -789,17 +678,10 @@ struct i40e_aqc_set_switch_config {
+ 	 */
+ #define I40E_AQ_SET_SWITCH_BIT7_VALID		0x80
+ 
+-#define I40E_AQ_SET_SWITCH_L4_SRC_PORT		0x40
+ 
+-#define I40E_AQ_SET_SWITCH_L4_TYPE_RSVD		0x00
+ #define I40E_AQ_SET_SWITCH_L4_TYPE_TCP		0x10
+-#define I40E_AQ_SET_SWITCH_L4_TYPE_UDP		0x20
+-#define I40E_AQ_SET_SWITCH_L4_TYPE_BOTH		0x30
+ 
+-#define I40E_AQ_SET_SWITCH_MODE_DEFAULT		0x00
+-#define I40E_AQ_SET_SWITCH_MODE_L4_PORT		0x01
+ #define I40E_AQ_SET_SWITCH_MODE_NON_TUNNEL	0x02
+-#define I40E_AQ_SET_SWITCH_MODE_TUNNEL		0x03
+ 	u8	mode;
+ 	u8	rsvd5[5];
+ };
+@@ -834,19 +716,13 @@ struct i40e_aqc_add_get_update_vsi {
+ 	__le16	uplink_seid;
+ 	u8	connection_type;
+ #define I40E_AQ_VSI_CONN_TYPE_NORMAL	0x1
+-#define I40E_AQ_VSI_CONN_TYPE_DEFAULT	0x2
+-#define I40E_AQ_VSI_CONN_TYPE_CASCADED	0x3
+ 	u8	reserved1;
+ 	u8	vf_id;
+ 	u8	reserved2;
+ 	__le16	vsi_flags;
+-#define I40E_AQ_VSI_TYPE_SHIFT		0x0
+-#define I40E_AQ_VSI_TYPE_MASK		(0x3 << I40E_AQ_VSI_TYPE_SHIFT)
+ #define I40E_AQ_VSI_TYPE_VF		0x0
+ #define I40E_AQ_VSI_TYPE_VMDQ2		0x1
+ #define I40E_AQ_VSI_TYPE_PF		0x2
+-#define I40E_AQ_VSI_TYPE_EMP_MNG	0x3
+-#define I40E_AQ_VSI_FLAG_CASCADED_PV	0x4
+ 	__le32	addr_high;
+ 	__le32	addr_low;
+ };
+@@ -870,24 +746,18 @@ struct i40e_aqc_vsi_properties_data {
+ #define I40E_AQ_VSI_PROP_SWITCH_VALID		0x0001
+ #define I40E_AQ_VSI_PROP_SECURITY_VALID		0x0002
+ #define I40E_AQ_VSI_PROP_VLAN_VALID		0x0004
+-#define I40E_AQ_VSI_PROP_CAS_PV_VALID		0x0008
+-#define I40E_AQ_VSI_PROP_INGRESS_UP_VALID	0x0010
+-#define I40E_AQ_VSI_PROP_EGRESS_UP_VALID	0x0020
+ #define I40E_AQ_VSI_PROP_QUEUE_MAP_VALID	0x0040
+ #define I40E_AQ_VSI_PROP_QUEUE_OPT_VALID	0x0080
+-#define I40E_AQ_VSI_PROP_OUTER_UP_VALID		0x0100
+ #define I40E_AQ_VSI_PROP_SCHED_VALID		0x0200
+ 	/* switch section */
+ 	__le16	switch_id; /* 12bit id combined with flags below */
+ #define I40E_AQ_VSI_SW_ID_SHIFT		0x0000
+ #define I40E_AQ_VSI_SW_ID_MASK		(0xFFF << I40E_AQ_VSI_SW_ID_SHIFT)
+-#define I40E_AQ_VSI_SW_ID_FLAG_NOT_STAG	0x1000
+ #define I40E_AQ_VSI_SW_ID_FLAG_ALLOW_LB	0x2000
+ #define I40E_AQ_VSI_SW_ID_FLAG_LOCAL_LB	0x4000
+ 	u8	sw_reserved[2];
+ 	/* security section */
+ 	u8	sec_flags;
+-#define I40E_AQ_VSI_SEC_FLAG_ALLOW_DEST_OVRD	0x01
+ #define I40E_AQ_VSI_SEC_FLAG_ENABLE_VLAN_CHK	0x02
+ #define I40E_AQ_VSI_SEC_FLAG_ENABLE_MAC_CHK	0x04
+ 	u8	sec_reserved;
+@@ -899,78 +769,33 @@ struct i40e_aqc_vsi_properties_data {
+ #define I40E_AQ_VSI_PVLAN_MODE_MASK	(0x03 << \
+ 					 I40E_AQ_VSI_PVLAN_MODE_SHIFT)
+ #define I40E_AQ_VSI_PVLAN_MODE_TAGGED	0x01
+-#define I40E_AQ_VSI_PVLAN_MODE_UNTAGGED	0x02
+ #define I40E_AQ_VSI_PVLAN_MODE_ALL	0x03
+ #define I40E_AQ_VSI_PVLAN_INSERT_PVID	0x04
+ #define I40E_AQ_VSI_PVLAN_EMOD_SHIFT	0x03
+ #define I40E_AQ_VSI_PVLAN_EMOD_MASK	(0x3 << \
+ 					 I40E_AQ_VSI_PVLAN_EMOD_SHIFT)
+ #define I40E_AQ_VSI_PVLAN_EMOD_STR_BOTH	0x0
+-#define I40E_AQ_VSI_PVLAN_EMOD_STR_UP	0x08
+ #define I40E_AQ_VSI_PVLAN_EMOD_STR	0x10
+ #define I40E_AQ_VSI_PVLAN_EMOD_NOTHING	0x18
+ 	u8	pvlan_reserved[3];
+ 	/* ingress egress up sections */
+ 	__le32	ingress_table; /* bitmap, 3 bits per up */
+-#define I40E_AQ_VSI_UP_TABLE_UP0_SHIFT	0
+-#define I40E_AQ_VSI_UP_TABLE_UP0_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP0_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP1_SHIFT	3
+-#define I40E_AQ_VSI_UP_TABLE_UP1_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP1_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP2_SHIFT	6
+-#define I40E_AQ_VSI_UP_TABLE_UP2_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP2_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP3_SHIFT	9
+-#define I40E_AQ_VSI_UP_TABLE_UP3_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP3_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP4_SHIFT	12
+-#define I40E_AQ_VSI_UP_TABLE_UP4_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP4_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP5_SHIFT	15
+-#define I40E_AQ_VSI_UP_TABLE_UP5_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP5_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP6_SHIFT	18
+-#define I40E_AQ_VSI_UP_TABLE_UP6_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP6_SHIFT)
+-#define I40E_AQ_VSI_UP_TABLE_UP7_SHIFT	21
+-#define I40E_AQ_VSI_UP_TABLE_UP7_MASK	(0x7 << \
+-					 I40E_AQ_VSI_UP_TABLE_UP7_SHIFT)
+ 	__le32	egress_table;   /* same defines as for ingress table */
+ 	/* cascaded PV section */
+ 	__le16	cas_pv_tag;
+ 	u8	cas_pv_flags;
+-#define I40E_AQ_VSI_CAS_PV_TAGX_SHIFT		0x00
+-#define I40E_AQ_VSI_CAS_PV_TAGX_MASK		(0x03 << \
+-						 I40E_AQ_VSI_CAS_PV_TAGX_SHIFT)
+-#define I40E_AQ_VSI_CAS_PV_TAGX_LEAVE		0x00
+-#define I40E_AQ_VSI_CAS_PV_TAGX_REMOVE		0x01
+-#define I40E_AQ_VSI_CAS_PV_TAGX_COPY		0x02
+-#define I40E_AQ_VSI_CAS_PV_INSERT_TAG		0x10
+-#define I40E_AQ_VSI_CAS_PV_ETAG_PRUNE		0x20
+-#define I40E_AQ_VSI_CAS_PV_ACCEPT_HOST_TAG	0x40
+ 	u8	cas_pv_reserved;
+ 	/* queue mapping section */
+ 	__le16	mapping_flags;
+ #define I40E_AQ_VSI_QUE_MAP_CONTIG	0x0
+ #define I40E_AQ_VSI_QUE_MAP_NONCONTIG	0x1
+ 	__le16	queue_mapping[16];
+-#define I40E_AQ_VSI_QUEUE_SHIFT		0x0
+-#define I40E_AQ_VSI_QUEUE_MASK		(0x7FF << I40E_AQ_VSI_QUEUE_SHIFT)
+ 	__le16	tc_mapping[8];
+ #define I40E_AQ_VSI_TC_QUE_OFFSET_SHIFT	0
+-#define I40E_AQ_VSI_TC_QUE_OFFSET_MASK	(0x1FF << \
+-					 I40E_AQ_VSI_TC_QUE_OFFSET_SHIFT)
+ #define I40E_AQ_VSI_TC_QUE_NUMBER_SHIFT	9
+-#define I40E_AQ_VSI_TC_QUE_NUMBER_MASK	(0x7 << \
+-					 I40E_AQ_VSI_TC_QUE_NUMBER_SHIFT)
+ 	/* queueing option section */
+ 	u8	queueing_opt_flags;
+-#define I40E_AQ_VSI_QUE_OPT_MULTICAST_UDP_ENA	0x04
+-#define I40E_AQ_VSI_QUE_OPT_UNICAST_UDP_ENA	0x08
+ #define I40E_AQ_VSI_QUE_OPT_TCP_ENA	0x10
+-#define I40E_AQ_VSI_QUE_OPT_FCOE_ENA	0x20
+-#define I40E_AQ_VSI_QUE_OPT_RSS_LUT_PF	0x00
+ #define I40E_AQ_VSI_QUE_OPT_RSS_LUT_VSI	0x40
+ 	u8	queueing_opt_reserved[3];
+ 	/* scheduler section */
+@@ -995,10 +820,6 @@ I40E_CHECK_STRUCT_LEN(128, i40e_aqc_vsi_properties_data);
+  */
+ struct i40e_aqc_add_update_pv {
+ 	__le16	command_flags;
+-#define I40E_AQC_PV_FLAG_PV_TYPE		0x1
+-#define I40E_AQC_PV_FLAG_FWD_UNKNOWN_STAG_EN	0x2
+-#define I40E_AQC_PV_FLAG_FWD_UNKNOWN_ETAG_EN	0x4
+-#define I40E_AQC_PV_FLAG_IS_CTRL_PORT		0x8
+ 	__le16	uplink_seid;
+ 	__le16	connected_seid;
+ 	u8	reserved[10];
+@@ -1009,10 +830,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_add_update_pv);
+ struct i40e_aqc_add_update_pv_completion {
+ 	/* reserved for update; for add also encodes error if rc == ENOSPC */
+ 	__le16	pv_seid;
+-#define I40E_AQC_PV_ERR_FLAG_NO_PV	0x1
+-#define I40E_AQC_PV_ERR_FLAG_NO_SCHED	0x2
+-#define I40E_AQC_PV_ERR_FLAG_NO_COUNTER	0x4
+-#define I40E_AQC_PV_ERR_FLAG_NO_ENTRY	0x8
+ 	u8	reserved[14];
+ };
+ 
+@@ -1026,9 +843,6 @@ struct i40e_aqc_get_pv_params_completion {
+ 	__le16	seid;
+ 	__le16	default_stag;
+ 	__le16	pv_flags; /* same flags as add_pv */
+-#define I40E_AQC_GET_PV_PV_TYPE			0x1
+-#define I40E_AQC_GET_PV_FRWD_UNKNOWN_STAG	0x2
+-#define I40E_AQC_GET_PV_FRWD_UNKNOWN_ETAG	0x4
+ 	u8	reserved[8];
+ 	__le16	default_port_seid;
+ };
+@@ -1041,12 +855,8 @@ struct i40e_aqc_add_veb {
+ 	__le16	downlink_seid;
+ 	__le16	veb_flags;
+ #define I40E_AQC_ADD_VEB_FLOATING		0x1
+-#define I40E_AQC_ADD_VEB_PORT_TYPE_SHIFT	1
+-#define I40E_AQC_ADD_VEB_PORT_TYPE_MASK		(0x3 << \
+-					I40E_AQC_ADD_VEB_PORT_TYPE_SHIFT)
+ #define I40E_AQC_ADD_VEB_PORT_TYPE_DEFAULT	0x2
+ #define I40E_AQC_ADD_VEB_PORT_TYPE_DATA		0x4
+-#define I40E_AQC_ADD_VEB_ENABLE_L2_FILTER	0x8     /* deprecated */
+ #define I40E_AQC_ADD_VEB_ENABLE_DISABLE_STATS	0x10
+ 	u8	enable_tcs;
+ 	u8	reserved[9];
+@@ -1059,10 +869,6 @@ struct i40e_aqc_add_veb_completion {
+ 	__le16	switch_seid;
+ 	/* also encodes error if rc == ENOSPC; codes are the same as add_pv */
+ 	__le16	veb_seid;
+-#define I40E_AQC_VEB_ERR_FLAG_NO_VEB		0x1
+-#define I40E_AQC_VEB_ERR_FLAG_NO_SCHED		0x2
+-#define I40E_AQC_VEB_ERR_FLAG_NO_COUNTER	0x4
+-#define I40E_AQC_VEB_ERR_FLAG_NO_ENTRY		0x8
+ 	__le16	statistic_index;
+ 	__le16	vebs_used;
+ 	__le16	vebs_free;
+@@ -1095,9 +901,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_get_veb_parameters_completion);
+ struct i40e_aqc_macvlan {
+ 	__le16	num_addresses;
+ 	__le16	seid[3];
+-#define I40E_AQC_MACVLAN_CMD_SEID_NUM_SHIFT	0
+-#define I40E_AQC_MACVLAN_CMD_SEID_NUM_MASK	(0x3FF << \
+-					I40E_AQC_MACVLAN_CMD_SEID_NUM_SHIFT)
+ #define I40E_AQC_MACVLAN_CMD_SEID_VALID		0x8000
+ 	__le32	addr_high;
+ 	__le32	addr_low;
+@@ -1111,18 +914,11 @@ struct i40e_aqc_add_macvlan_element_data {
+ 	__le16	vlan_tag;
+ 	__le16	flags;
+ #define I40E_AQC_MACVLAN_ADD_PERFECT_MATCH	0x0001
+-#define I40E_AQC_MACVLAN_ADD_HASH_MATCH		0x0002
+ #define I40E_AQC_MACVLAN_ADD_IGNORE_VLAN	0x0004
+-#define I40E_AQC_MACVLAN_ADD_TO_QUEUE		0x0008
+ #define I40E_AQC_MACVLAN_ADD_USE_SHARED_MAC	0x0010
+ 	__le16	queue_number;
+-#define I40E_AQC_MACVLAN_CMD_QUEUE_SHIFT	0
+-#define I40E_AQC_MACVLAN_CMD_QUEUE_MASK		(0x7FF << \
+-					I40E_AQC_MACVLAN_CMD_SEID_NUM_SHIFT)
+ 	/* response section */
+ 	u8	match_method;
+-#define I40E_AQC_MM_PERFECT_MATCH	0x01
+-#define I40E_AQC_MM_HASH_MATCH		0x02
+ #define I40E_AQC_MM_ERR_NO_RES		0xFF
+ 	u8	reserved1[3];
+ };
+@@ -1148,14 +944,10 @@ struct i40e_aqc_remove_macvlan_element_data {
+ 	__le16	vlan_tag;
+ 	u8	flags;
+ #define I40E_AQC_MACVLAN_DEL_PERFECT_MATCH	0x01
+-#define I40E_AQC_MACVLAN_DEL_HASH_MATCH		0x02
+ #define I40E_AQC_MACVLAN_DEL_IGNORE_VLAN	0x08
+-#define I40E_AQC_MACVLAN_DEL_ALL_VSIS		0x10
+ 	u8	reserved[3];
+ 	/* reply section */
+ 	u8	error_code;
+-#define I40E_AQC_REMOVE_MACVLAN_SUCCESS		0x0
+-#define I40E_AQC_REMOVE_MACVLAN_FAIL		0xFF
+ 	u8	reply_reserved[3];
+ };
+ 
+@@ -1167,29 +959,11 @@ struct i40e_aqc_add_remove_vlan_element_data {
+ 	__le16	vlan_tag;
+ 	u8	vlan_flags;
+ /* flags for add VLAN */
+-#define I40E_AQC_ADD_VLAN_LOCAL			0x1
+-#define I40E_AQC_ADD_PVLAN_TYPE_SHIFT		1
+-#define I40E_AQC_ADD_PVLAN_TYPE_MASK	(0x3 << I40E_AQC_ADD_PVLAN_TYPE_SHIFT)
+-#define I40E_AQC_ADD_PVLAN_TYPE_REGULAR		0x0
+-#define I40E_AQC_ADD_PVLAN_TYPE_PRIMARY		0x2
+-#define I40E_AQC_ADD_PVLAN_TYPE_SECONDARY	0x4
+-#define I40E_AQC_VLAN_PTYPE_SHIFT		3
+-#define I40E_AQC_VLAN_PTYPE_MASK	(0x3 << I40E_AQC_VLAN_PTYPE_SHIFT)
+-#define I40E_AQC_VLAN_PTYPE_REGULAR_VSI		0x0
+-#define I40E_AQC_VLAN_PTYPE_PROMISC_VSI		0x8
+-#define I40E_AQC_VLAN_PTYPE_COMMUNITY_VSI	0x10
+-#define I40E_AQC_VLAN_PTYPE_ISOLATED_VSI	0x18
+ /* flags for remove VLAN */
+-#define I40E_AQC_REMOVE_VLAN_ALL	0x1
+ 	u8	reserved;
+ 	u8	result;
+ /* flags for add VLAN */
+-#define I40E_AQC_ADD_VLAN_SUCCESS	0x0
+-#define I40E_AQC_ADD_VLAN_FAIL_REQUEST	0xFE
+-#define I40E_AQC_ADD_VLAN_FAIL_RESOURCE	0xFF
+ /* flags for remove VLAN */
+-#define I40E_AQC_REMOVE_VLAN_SUCCESS	0x0
+-#define I40E_AQC_REMOVE_VLAN_FAIL	0xFF
+ 	u8	reserved1[3];
+ };
+ 
+@@ -1213,9 +987,7 @@ struct i40e_aqc_set_vsi_promiscuous_modes {
+ #define I40E_AQC_SET_VSI_PROMISC_VLAN		0x10
+ #define I40E_AQC_SET_VSI_PROMISC_TX		0x8000
+ 	__le16	seid;
+-#define I40E_AQC_VSI_PROM_CMD_SEID_MASK		0x3FF
+ 	__le16	vlan_tag;
+-#define I40E_AQC_SET_VSI_VLAN_MASK		0x0FFF
+ #define I40E_AQC_SET_VSI_VLAN_VALID		0x8000
+ 	u8	reserved[8];
+ };
+@@ -1227,11 +999,7 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_set_vsi_promiscuous_modes);
+  */
+ struct i40e_aqc_add_tag {
+ 	__le16	flags;
+-#define I40E_AQC_ADD_TAG_FLAG_TO_QUEUE		0x0001
+ 	__le16	seid;
+-#define I40E_AQC_ADD_TAG_CMD_SEID_NUM_SHIFT	0
+-#define I40E_AQC_ADD_TAG_CMD_SEID_NUM_MASK	(0x3FF << \
+-					I40E_AQC_ADD_TAG_CMD_SEID_NUM_SHIFT)
+ 	__le16	tag;
+ 	__le16	queue_number;
+ 	u8	reserved[8];
+@@ -1252,9 +1020,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_add_remove_tag_completion);
+  */
+ struct i40e_aqc_remove_tag {
+ 	__le16	seid;
+-#define I40E_AQC_REMOVE_TAG_CMD_SEID_NUM_SHIFT	0
+-#define I40E_AQC_REMOVE_TAG_CMD_SEID_NUM_MASK	(0x3FF << \
+-					I40E_AQC_REMOVE_TAG_CMD_SEID_NUM_SHIFT)
+ 	__le16	tag;
+ 	u8	reserved[12];
+ };
+@@ -1290,9 +1055,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_add_remove_mcast_etag_completion);
+ /* Update S/E-Tag (direct 0x0259) */
+ struct i40e_aqc_update_tag {
+ 	__le16	seid;
+-#define I40E_AQC_UPDATE_TAG_CMD_SEID_NUM_SHIFT	0
+-#define I40E_AQC_UPDATE_TAG_CMD_SEID_NUM_MASK	(0x3FF << \
+-					I40E_AQC_UPDATE_TAG_CMD_SEID_NUM_SHIFT)
+ 	__le16	old_tag;
+ 	__le16	new_tag;
+ 	u8	reserved[10];
+@@ -1319,13 +1081,8 @@ struct i40e_aqc_add_remove_control_packet_filter {
+ 	__le16	flags;
+ #define I40E_AQC_ADD_CONTROL_PACKET_FLAGS_IGNORE_MAC	0x0001
+ #define I40E_AQC_ADD_CONTROL_PACKET_FLAGS_DROP		0x0002
+-#define I40E_AQC_ADD_CONTROL_PACKET_FLAGS_TO_QUEUE	0x0004
+ #define I40E_AQC_ADD_CONTROL_PACKET_FLAGS_TX		0x0008
+-#define I40E_AQC_ADD_CONTROL_PACKET_FLAGS_RX		0x0000
+ 	__le16	seid;
+-#define I40E_AQC_ADD_CONTROL_PACKET_CMD_SEID_NUM_SHIFT	0
+-#define I40E_AQC_ADD_CONTROL_PACKET_CMD_SEID_NUM_MASK	(0x3FF << \
+-				I40E_AQC_ADD_CONTROL_PACKET_CMD_SEID_NUM_SHIFT)
+ 	__le16	queue;
+ 	u8	reserved[2];
+ };
+@@ -1351,9 +1108,6 @@ struct i40e_aqc_add_remove_cloud_filters {
+ 	u8	num_filters;
+ 	u8	reserved;
+ 	__le16	seid;
+-#define I40E_AQC_ADD_CLOUD_CMD_SEID_NUM_SHIFT	0
+-#define I40E_AQC_ADD_CLOUD_CMD_SEID_NUM_MASK	(0x3FF << \
+-					I40E_AQC_ADD_CLOUD_CMD_SEID_NUM_SHIFT)
+ 	u8	big_buffer_flag;
+ #define I40E_AQC_ADD_CLOUD_CMD_BB	1
+ 	u8	reserved2[3];
+@@ -1380,9 +1134,6 @@ struct i40e_aqc_cloud_filters_element_data {
+ 		} raw_v6;
+ 	} ipaddr;
+ 	__le16	flags;
+-#define I40E_AQC_ADD_CLOUD_FILTER_SHIFT			0
+-#define I40E_AQC_ADD_CLOUD_FILTER_MASK	(0x3F << \
+-					I40E_AQC_ADD_CLOUD_FILTER_SHIFT)
+ /* 0x0000 reserved */
+ /* 0x0001 reserved */
+ /* 0x0002 reserved */
+@@ -1404,36 +1155,20 @@ struct i40e_aqc_cloud_filters_element_data {
+ #define I40E_AQC_ADD_CLOUD_FILTER_MAC_PORT		0x0011 /* Dest MAC + L4 Port */
+ #define I40E_AQC_ADD_CLOUD_FILTER_MAC_VLAN_PORT		0x0012 /* Dest MAC + VLAN + L4 Port */
+ 
+-#define I40E_AQC_ADD_CLOUD_FLAGS_TO_QUEUE		0x0080
+-#define I40E_AQC_ADD_CLOUD_VNK_SHIFT			6
+-#define I40E_AQC_ADD_CLOUD_VNK_MASK			0x00C0
+ #define I40E_AQC_ADD_CLOUD_FLAGS_IPV4			0
+ #define I40E_AQC_ADD_CLOUD_FLAGS_IPV6			0x0100
+ 
+ #define I40E_AQC_ADD_CLOUD_TNL_TYPE_SHIFT		9
+ #define I40E_AQC_ADD_CLOUD_TNL_TYPE_MASK		0x1E00
+-#define I40E_AQC_ADD_CLOUD_TNL_TYPE_VXLAN		0
+-#define I40E_AQC_ADD_CLOUD_TNL_TYPE_NVGRE_OMAC		1
+ #define I40E_AQC_ADD_CLOUD_TNL_TYPE_GENEVE		2
+-#define I40E_AQC_ADD_CLOUD_TNL_TYPE_IP			3
+-#define I40E_AQC_ADD_CLOUD_TNL_TYPE_RESERVED		4
+-#define I40E_AQC_ADD_CLOUD_TNL_TYPE_VXLAN_GPE		5
+ 
+-#define I40E_AQC_ADD_CLOUD_FLAGS_SHARED_OUTER_MAC	0x2000
+-#define I40E_AQC_ADD_CLOUD_FLAGS_SHARED_INNER_MAC	0x4000
+-#define I40E_AQC_ADD_CLOUD_FLAGS_SHARED_OUTER_IP	0x8000
+ 
+ 	__le32	tenant_id;
+ 	u8	reserved[4];
+ 	__le16	queue_number;
+-#define I40E_AQC_ADD_CLOUD_QUEUE_SHIFT		0
+-#define I40E_AQC_ADD_CLOUD_QUEUE_MASK		(0x7FF << \
+-						 I40E_AQC_ADD_CLOUD_QUEUE_SHIFT)
+ 	u8	reserved2[14];
+ 	/* response section */
+ 	u8	allocation_result;
+-#define I40E_AQC_ADD_CLOUD_FILTER_SUCCESS	0x0
+-#define I40E_AQC_ADD_CLOUD_FILTER_FAIL		0xFF
+ 	u8	response_reserved[7];
+ };
+ 
+@@ -1445,37 +1180,7 @@ I40E_CHECK_STRUCT_LEN(0x40, i40e_aqc_cloud_filters_element_data);
+ struct i40e_aqc_cloud_filters_element_bb {
+ 	struct i40e_aqc_cloud_filters_element_data element;
+ 	u16     general_fields[32];
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X10_WORD0	0
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X10_WORD1	1
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X10_WORD2	2
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X11_WORD0	3
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X11_WORD1	4
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X11_WORD2	5
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X12_WORD0	6
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X12_WORD1	7
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X12_WORD2	8
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X13_WORD0	9
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X13_WORD1	10
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X13_WORD2	11
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X14_WORD0	12
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X14_WORD1	13
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X14_WORD2	14
+ #define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD0	15
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD1	16
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD2	17
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD3	18
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD4	19
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD5	20
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD6	21
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X16_WORD7	22
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD0	23
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD1	24
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD2	25
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD3	26
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD4	27
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD5	28
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD6	29
+-#define I40E_AQC_ADD_CLOUD_FV_FLU_0X17_WORD7	30
+ };
+ 
+ I40E_CHECK_STRUCT_LEN(0x80, i40e_aqc_cloud_filters_element_bb);
+@@ -1504,11 +1209,6 @@ I40E_CHECK_STRUCT_LEN(4, i40e_filter_data);
+ 
+ struct i40e_aqc_replace_cloud_filters_cmd {
+ 	u8      valid_flags;
+-#define I40E_AQC_REPLACE_L1_FILTER		0x0
+-#define I40E_AQC_REPLACE_CLOUD_FILTER		0x1
+-#define I40E_AQC_GET_CLOUD_FILTERS		0x2
+-#define I40E_AQC_MIRROR_CLOUD_FILTER		0x4
+-#define I40E_AQC_HIGH_PRIORITY_CLOUD_FILTER	0x8
+ 	u8      old_filter_type;
+ 	u8      new_filter_type;
+ 	u8      tr_bit;
+@@ -1522,24 +1222,11 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_replace_cloud_filters_cmd);
+ struct i40e_aqc_replace_cloud_filters_cmd_buf {
+ 	u8      data[32];
+ /* Filter type INPUT codes*/
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_ENTRIES_MAX	3
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_VALIDATED	BIT(7)
+ 
+ /* Field Vector offsets */
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_MAC_DA	0
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_STAG_ETH	6
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_STAG	7
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_VLAN	8
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_STAG_OVLAN	9
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_STAG_IVLAN	10
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_TUNNLE_KEY	11
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_IMAC	12
+ /* big FLU */
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_IP_DA	14
+ /* big FLU */
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_OIP_DA	15
+ 
+-#define I40E_AQC_REPLACE_CLOUD_CMD_INPUT_FV_INNER_VLAN	37
+ 	struct i40e_filter_data filters[8];
+ };
+ 
+@@ -1556,8 +1243,6 @@ struct i40e_aqc_add_delete_mirror_rule {
+ #define I40E_AQC_MIRROR_RULE_TYPE_SHIFT		0
+ #define I40E_AQC_MIRROR_RULE_TYPE_MASK		(0x7 << \
+ 						I40E_AQC_MIRROR_RULE_TYPE_SHIFT)
+-#define I40E_AQC_MIRROR_RULE_TYPE_VPORT_INGRESS	1
+-#define I40E_AQC_MIRROR_RULE_TYPE_VPORT_EGRESS	2
+ #define I40E_AQC_MIRROR_RULE_TYPE_VLAN		3
+ #define I40E_AQC_MIRROR_RULE_TYPE_ALL_INGRESS	4
+ #define I40E_AQC_MIRROR_RULE_TYPE_ALL_EGRESS	5
+@@ -1600,8 +1285,6 @@ struct i40e_aqc_write_ddp_resp {
+ 
+ struct i40e_aqc_get_applied_profiles {
+ 	u8      flags;
+-#define I40E_AQC_GET_DDP_GET_CONF	0x1
+-#define I40E_AQC_GET_DDP_GET_RDPU_CONF	0x2
+ 	u8      rsv[3];
+ 	__le32  reserved;
+ 	__le32  addr_high;
+@@ -1618,8 +1301,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_get_applied_profiles);
+ struct i40e_aqc_pfc_ignore {
+ 	u8	tc_bitmap;
+ 	u8	command_flags; /* unused on response */
+-#define I40E_AQC_PFC_IGNORE_SET		0x80
+-#define I40E_AQC_PFC_IGNORE_CLEAR	0x0
+ 	u8	reserved[14];
+ };
+ 
+@@ -1736,7 +1417,6 @@ struct i40e_aqc_configure_switching_comp_ets_data {
+ 	u8	reserved[4];
+ 	u8	tc_valid_bits;
+ 	u8	seepage;
+-#define I40E_AQ_ETS_SEEPAGE_EN_MASK	0x1
+ 	u8	tc_strict_priority_flags;
+ 	u8	reserved1[17];
+ 	u8	tc_bw_share_credits[8];
+@@ -1977,40 +1657,18 @@ struct i40e_aq_get_phy_abilities_resp {
+ 	u8	abilities;
+ #define I40E_AQ_PHY_FLAG_PAUSE_TX	0x01
+ #define I40E_AQ_PHY_FLAG_PAUSE_RX	0x02
+-#define I40E_AQ_PHY_FLAG_LOW_POWER	0x04
+-#define I40E_AQ_PHY_LINK_ENABLED	0x08
+-#define I40E_AQ_PHY_AN_ENABLED		0x10
+-#define I40E_AQ_PHY_FLAG_MODULE_QUAL	0x20
+-#define I40E_AQ_PHY_FEC_ABILITY_KR	0x40
+-#define I40E_AQ_PHY_FEC_ABILITY_RS	0x80
+ 	__le16	eee_capability;
+-#define I40E_AQ_EEE_100BASE_TX		0x0002
+-#define I40E_AQ_EEE_1000BASE_T		0x0004
+-#define I40E_AQ_EEE_10GBASE_T		0x0008
+-#define I40E_AQ_EEE_1000BASE_KX		0x0010
+-#define I40E_AQ_EEE_10GBASE_KX4		0x0020
+-#define I40E_AQ_EEE_10GBASE_KR		0x0040
+ 	__le32	eeer_val;
+ 	u8	d3_lpan;
+-#define I40E_AQ_SET_PHY_D3_LPAN_ENA	0x01
+ 	u8	phy_type_ext;
+ #define I40E_AQ_PHY_TYPE_EXT_25G_KR	0X01
+ #define I40E_AQ_PHY_TYPE_EXT_25G_CR	0X02
+ #define I40E_AQ_PHY_TYPE_EXT_25G_SR	0x04
+ #define I40E_AQ_PHY_TYPE_EXT_25G_LR	0x08
+-#define I40E_AQ_PHY_TYPE_EXT_25G_AOC	0x10
+-#define I40E_AQ_PHY_TYPE_EXT_25G_ACC	0x20
+-#define I40E_AQ_PHY_TYPE_EXT_2_5GBASE_T	0x40
+-#define I40E_AQ_PHY_TYPE_EXT_5GBASE_T	0x80
+ 	u8	fec_cfg_curr_mod_ext_info;
+-#define I40E_AQ_ENABLE_FEC_KR		0x01
+-#define I40E_AQ_ENABLE_FEC_RS		0x02
+ #define I40E_AQ_REQUEST_FEC_KR		0x04
+ #define I40E_AQ_REQUEST_FEC_RS		0x08
+ #define I40E_AQ_ENABLE_FEC_AUTO		0x10
+-#define I40E_AQ_FEC
+-#define I40E_AQ_MODULE_TYPE_EXT_MASK	0xE0
+-#define I40E_AQ_MODULE_TYPE_EXT_SHIFT	5
+ 
+ 	u8	ext_comp_code;
+ 	u8	phy_id[4];
+@@ -2028,7 +1686,6 @@ struct i40e_aq_set_phy_config { /* same bits as above in all */
+ 	u8	link_speed;
+ 	u8	abilities;
+ /* bits 0-2 use the values from get_phy_abilities_resp */
+-#define I40E_AQ_PHY_ENABLE_LINK		0x08
+ #define I40E_AQ_PHY_ENABLE_AN		0x10
+ #define I40E_AQ_PHY_ENABLE_ATOMIC_LINK	0x20
+ 	__le16	eee_capability;
+@@ -2056,21 +1713,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aq_set_phy_config);
+ struct i40e_aq_set_mac_config {
+ 	__le16	max_frame_size;
+ 	u8	params;
+-#define I40E_AQ_SET_MAC_CONFIG_CRC_EN			0x04
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_MASK		0x78
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_SHIFT		3
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_NONE		0x0
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_1B_13TX		0xF
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_1DW_9TX		0x9
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_1DW_4TX		0x8
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_3DW_7TX		0x7
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_2DW_3TX		0x6
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_1DW_1TX		0x5
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_3DW_2TX		0x4
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_7DW_3TX		0x3
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_4DW_1TX		0x2
+-#define I40E_AQ_SET_MAC_CONFIG_PACING_9DW_1TX		0x1
+-#define I40E_AQ_SET_MAC_CONFIG_DROP_BLOCKING_PACKET_EN	0x80
+ 	u8	tx_timer_priority; /* bitmap */
+ 	__le16	tx_timer_value;
+ 	__le16	fc_refresh_threshold;
+@@ -2092,8 +1734,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_set_link_restart_an);
+ /* Get Link Status cmd & response data structure (direct 0x0607) */
+ struct i40e_aqc_get_link_status {
+ 	__le16	command_flags; /* only field set on command */
+-#define I40E_AQ_LSE_MASK		0x3
+-#define I40E_AQ_LSE_NOP			0x0
+ #define I40E_AQ_LSE_DISABLE		0x2
+ #define I40E_AQ_LSE_ENABLE		0x3
+ /* only response uses this flag */
+@@ -2102,44 +1742,17 @@ struct i40e_aqc_get_link_status {
+ 	u8	link_speed;  /* i40e_aq_link_speed */
+ 	u8	link_info;
+ #define I40E_AQ_LINK_UP			0x01    /* obsolete */
+-#define I40E_AQ_LINK_UP_FUNCTION	0x01
+-#define I40E_AQ_LINK_FAULT		0x02
+-#define I40E_AQ_LINK_FAULT_TX		0x04
+-#define I40E_AQ_LINK_FAULT_RX		0x08
+-#define I40E_AQ_LINK_FAULT_REMOTE	0x10
+-#define I40E_AQ_LINK_UP_PORT		0x20
+ #define I40E_AQ_MEDIA_AVAILABLE		0x40
+-#define I40E_AQ_SIGNAL_DETECT		0x80
+ 	u8	an_info;
+ #define I40E_AQ_AN_COMPLETED		0x01
+-#define I40E_AQ_LP_AN_ABILITY		0x02
+-#define I40E_AQ_PD_FAULT		0x04
+-#define I40E_AQ_FEC_EN			0x08
+-#define I40E_AQ_PHY_LOW_POWER		0x10
+ #define I40E_AQ_LINK_PAUSE_TX		0x20
+ #define I40E_AQ_LINK_PAUSE_RX		0x40
+ #define I40E_AQ_QUALIFIED_MODULE	0x80
+ 	u8	ext_info;
+-#define I40E_AQ_LINK_PHY_TEMP_ALARM	0x01
+-#define I40E_AQ_LINK_XCESSIVE_ERRORS	0x02
+-#define I40E_AQ_LINK_TX_SHIFT		0x02
+-#define I40E_AQ_LINK_TX_MASK		(0x03 << I40E_AQ_LINK_TX_SHIFT)
+-#define I40E_AQ_LINK_TX_ACTIVE		0x00
+-#define I40E_AQ_LINK_TX_DRAINED		0x01
+-#define I40E_AQ_LINK_TX_FLUSHED		0x03
+-#define I40E_AQ_LINK_FORCED_40G		0x10
+ /* 25G Error Codes */
+-#define I40E_AQ_25G_NO_ERR		0X00
+-#define I40E_AQ_25G_NOT_PRESENT		0X01
+-#define I40E_AQ_25G_NVM_CRC_ERR		0X02
+-#define I40E_AQ_25G_SBUS_UCODE_ERR	0X03
+-#define I40E_AQ_25G_SERDES_UCODE_ERR	0X04
+-#define I40E_AQ_25G_NIMB_UCODE_ERR	0X05
+ 	u8	loopback; /* use defines from i40e_aqc_set_lb_mode */
+ /* Since firmware API 1.7 loopback field keeps power class info as well */
+ #define I40E_AQ_LOOPBACK_MASK		0x07
+-#define I40E_AQ_PWR_CLASS_SHIFT_LB	6
+-#define I40E_AQ_PWR_CLASS_MASK_LB	(0x03 << I40E_AQ_PWR_CLASS_SHIFT_LB)
+ 	__le16	max_frame_size;
+ 	u8	config;
+ #define I40E_AQ_CONFIG_FEC_KR_ENA	0x01
+@@ -2149,11 +1762,6 @@ struct i40e_aqc_get_link_status {
+ 	union {
+ 		struct {
+ 			u8	power_desc;
+-#define I40E_AQ_LINK_POWER_CLASS_1	0x00
+-#define I40E_AQ_LINK_POWER_CLASS_2	0x01
+-#define I40E_AQ_LINK_POWER_CLASS_3	0x02
+-#define I40E_AQ_LINK_POWER_CLASS_4	0x03
+-#define I40E_AQ_PWR_CLASS_MASK		0x03
+ 			u8	reserved[4];
+ 		};
+ 		struct {
+@@ -2171,13 +1779,7 @@ struct i40e_aqc_set_phy_int_mask {
+ 	__le16	event_mask;
+ #define I40E_AQ_EVENT_LINK_UPDOWN	0x0002
+ #define I40E_AQ_EVENT_MEDIA_NA		0x0004
+-#define I40E_AQ_EVENT_LINK_FAULT	0x0008
+-#define I40E_AQ_EVENT_PHY_TEMP_ALARM	0x0010
+-#define I40E_AQ_EVENT_EXCESSIVE_ERRORS	0x0020
+-#define I40E_AQ_EVENT_SIGNAL_DETECT	0x0040
+-#define I40E_AQ_EVENT_AN_COMPLETED	0x0080
+ #define I40E_AQ_EVENT_MODULE_QUAL_FAIL	0x0100
+-#define I40E_AQ_EVENT_PORT_TX_SUSPENDED	0x0200
+ 	u8	reserved1[6];
+ };
+ 
+@@ -2209,13 +1811,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_set_lb_mode);
+ /* Set PHY Debug command (0x0622) */
+ struct i40e_aqc_set_phy_debug {
+ 	u8	command_flags;
+-#define I40E_AQ_PHY_DEBUG_RESET_INTERNAL	0x02
+-#define I40E_AQ_PHY_DEBUG_RESET_EXTERNAL_SHIFT	2
+-#define I40E_AQ_PHY_DEBUG_RESET_EXTERNAL_MASK	(0x03 << \
+-					I40E_AQ_PHY_DEBUG_RESET_EXTERNAL_SHIFT)
+-#define I40E_AQ_PHY_DEBUG_RESET_EXTERNAL_NONE	0x00
+-#define I40E_AQ_PHY_DEBUG_RESET_EXTERNAL_HARD	0x01
+-#define I40E_AQ_PHY_DEBUG_RESET_EXTERNAL_SOFT	0x02
+ /* Disable link manageability on a single port */
+ #define I40E_AQ_PHY_DEBUG_DISABLE_LINK_FW	0x10
+ /* Disable link manageability on all ports */
+@@ -2247,7 +1842,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_run_phy_activity);
+ /* Get PHY Register command (0x0629) */
+ struct i40e_aqc_phy_register_access {
+ 	u8	phy_interface;
+-#define I40E_AQ_PHY_REG_ACCESS_INTERNAL	0
+ #define I40E_AQ_PHY_REG_ACCESS_EXTERNAL	1
+ #define I40E_AQ_PHY_REG_ACCESS_EXTERNAL_MODULE	2
+ 	u8	dev_address;
+@@ -2274,9 +1868,7 @@ struct i40e_aqc_nvm_update {
+ #define I40E_AQ_NVM_LAST_CMD			0x01
+ #define I40E_AQ_NVM_REARRANGE_TO_FLAT		0x20
+ #define I40E_AQ_NVM_REARRANGE_TO_STRUCT		0x40
+-#define I40E_AQ_NVM_FLASH_ONLY			0x80
+ #define I40E_AQ_NVM_PRESERVATION_FLAGS_SHIFT	1
+-#define I40E_AQ_NVM_PRESERVATION_FLAGS_MASK	0x03
+ #define I40E_AQ_NVM_PRESERVATION_FLAGS_SELECTED	0x03
+ #define I40E_AQ_NVM_PRESERVATION_FLAGS_ALL	0x01
+ 	u8	module_pointer;
+@@ -2291,9 +1883,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_nvm_update);
+ /* NVM Config Read (indirect 0x0704) */
+ struct i40e_aqc_nvm_config_read {
+ 	__le16	cmd_flags;
+-#define I40E_AQ_ANVM_SINGLE_OR_MULTIPLE_FEATURES_MASK	1 
+-#define I40E_AQ_ANVM_READ_SINGLE_FEATURE		0 
+-#define I40E_AQ_ANVM_READ_MULTIPLE_FEATURES		1
+ 	__le16	element_count;
+ 	__le16	element_id;	/* Feature/field ID */
+ 	__le16	element_id_msw;	/* MSWord of field ID */
+@@ -2315,16 +1904,8 @@ struct i40e_aqc_nvm_config_write {
+ I40E_CHECK_CMD_LENGTH(i40e_aqc_nvm_config_write);
+ 
+ /* Used for 0x0704 as well as for 0x0705 commands */
+-#define I40E_AQ_ANVM_FEATURE_OR_IMMEDIATE_SHIFT		1
+-#define I40E_AQ_ANVM_FEATURE_OR_IMMEDIATE_MASK \
+-				BIT(I40E_AQ_ANVM_FEATURE_OR_IMMEDIATE_SHIFT)
+-#define I40E_AQ_ANVM_FEATURE		0
+-#define I40E_AQ_ANVM_IMMEDIATE_FIELD	BIT(FEATURE_OR_IMMEDIATE_SHIFT)
+ struct i40e_aqc_nvm_config_data_feature {
+ 	__le16 feature_id;
+-#define I40E_AQ_ANVM_FEATURE_OPTION_OEM_ONLY		0x01
+-#define I40E_AQ_ANVM_FEATURE_OPTION_DWORD_MAP		0x08
+-#define I40E_AQ_ANVM_FEATURE_OPTION_POR_CSR		0x10
+ 	__le16 feature_options;
+ 	__le16 feature_selection;
+ };
+@@ -2344,7 +1925,6 @@ I40E_CHECK_STRUCT_LEN(0xc, i40e_aqc_nvm_config_data_immediate_field);
+  * no command data struct used
+  */
+ struct i40e_aqc_nvm_oem_post_update {
+-#define I40E_AQ_NVM_OEM_POST_UPDATE_EXTERNAL_DATA	0x01
+ 	u8 sel_data;
+ 	u8 reserved[7];
+ };
+@@ -2366,9 +1946,6 @@ I40E_CHECK_STRUCT_LEN(0x28, i40e_aqc_nvm_oem_post_update_buffer);
+  */
+ struct i40e_aqc_thermal_sensor {
+ 	u8 sensor_action;
+-#define I40E_AQ_THERMAL_SENSOR_READ_CONFIG	0
+-#define I40E_AQ_THERMAL_SENSOR_SET_CONFIG	1
+-#define I40E_AQ_THERMAL_SENSOR_READ_TEMP	2
+ 	u8 reserved[7];
+ 	__le32	addr_high;
+ 	__le32	addr_low;
+@@ -2421,10 +1998,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_alternate_ind_write);
+  */
+ struct i40e_aqc_alternate_write_done {
+ 	__le16	cmd_flags;
+-#define I40E_AQ_ALTERNATE_MODE_BIOS_MASK	1
+-#define I40E_AQ_ALTERNATE_MODE_BIOS_LEGACY	0
+-#define I40E_AQ_ALTERNATE_MODE_BIOS_UEFI	1
+-#define I40E_AQ_ALTERNATE_RESET_NEEDED		2
+ 	u8	reserved[14];
+ };
+ 
+@@ -2433,8 +2006,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_alternate_write_done);
+ /* Set OEM mode (direct 0x0905) */
+ struct i40e_aqc_alternate_set_mode {
+ 	__le32	mode;
+-#define I40E_AQ_ALTERNATE_MODE_NONE	0
+-#define I40E_AQ_ALTERNATE_MODE_OEM	1
+ 	u8	reserved[12];
+ };
+ 
+@@ -2460,13 +2031,9 @@ struct i40e_aqc_lldp_get_mib {
+ #define I40E_AQ_LLDP_MIB_TYPE_MASK		0x3
+ #define I40E_AQ_LLDP_MIB_LOCAL			0x0
+ #define I40E_AQ_LLDP_MIB_REMOTE			0x1
+-#define I40E_AQ_LLDP_MIB_LOCAL_AND_REMOTE	0x2
+ #define I40E_AQ_LLDP_BRIDGE_TYPE_MASK		0xC
+ #define I40E_AQ_LLDP_BRIDGE_TYPE_SHIFT		0x2
+ #define I40E_AQ_LLDP_BRIDGE_TYPE_NEAREST_BRIDGE	0x0
+-#define I40E_AQ_LLDP_BRIDGE_TYPE_NON_TPMR	0x1
+-#define I40E_AQ_LLDP_TX_SHIFT			0x4
+-#define I40E_AQ_LLDP_TX_MASK			(0x03 << I40E_AQ_LLDP_TX_SHIFT)
+ /* TX pause flags use I40E_AQ_LINK_TX_* above */
+ 	__le16	local_len;
+ 	__le16	remote_len;
+@@ -2482,7 +2049,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_lldp_get_mib);
+  */
+ struct i40e_aqc_lldp_update_mib {
+ 	u8	command;
+-#define I40E_AQ_LLDP_MIB_UPDATE_ENABLE	0x0
+ #define I40E_AQ_LLDP_MIB_UPDATE_DISABLE	0x1
+ 	u8	reserved[7];
+ 	__le32	addr_high;
+@@ -2521,7 +2087,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_lldp_update_tlv);
+ /* Stop LLDP (direct 0x0A05) */
+ struct i40e_aqc_lldp_stop {
+ 	u8	command;
+-#define I40E_AQ_LLDP_AGENT_STOP			0x0
+ #define I40E_AQ_LLDP_AGENT_SHUTDOWN		0x1
+ #define I40E_AQ_LLDP_AGENT_STOP_PERSIST		0x2
+ 	u8	reserved[15];
+@@ -2627,13 +2192,6 @@ I40E_CHECK_STRUCT_LEN(0x20, i40e_aqc_get_cee_dcb_cfg_resp);
+  *	Used to replace the local MIB of a given LLDP agent. e.g. DCBx
+  */
+ struct i40e_aqc_lldp_set_local_mib {
+-#define SET_LOCAL_MIB_AC_TYPE_DCBX_SHIFT	0
+-#define SET_LOCAL_MIB_AC_TYPE_DCBX_MASK	BIT(SET_LOCAL_MIB_AC_TYPE_DCBX_SHIFT)
+-#define SET_LOCAL_MIB_AC_TYPE_LOCAL_MIB	0x0
+-#define SET_LOCAL_MIB_AC_TYPE_NON_WILLING_APPS_SHIFT	(1)
+-#define SET_LOCAL_MIB_AC_TYPE_NON_WILLING_APPS_MASK \
+-			BIT(SET_LOCAL_MIB_AC_TYPE_NON_WILLING_APPS_SHIFT)
+-#define SET_LOCAL_MIB_AC_TYPE_NON_WILLING_APPS		0x1
+ 	u8	type;
+ 	u8	reserved0;
+ 	__le16	length;
+@@ -2648,9 +2206,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_lldp_set_local_mib);
+  *	Used for stopping/starting specific LLDP agent. e.g. DCBx
+  */
+ struct i40e_aqc_lldp_stop_start_specific_agent {
+-#define I40E_AQC_START_SPECIFIC_AGENT_SHIFT	0
+-#define I40E_AQC_START_SPECIFIC_AGENT_MASK \
+-				BIT(I40E_AQC_START_SPECIFIC_AGENT_SHIFT)
+ 	u8	command;
+ 	u8	reserved[15];
+ };
+@@ -2660,7 +2215,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_lldp_stop_start_specific_agent);
+ /* Restore LLDP Agent factory settings (direct 0x0A0A) */
+ struct i40e_aqc_lldp_restore {
+ 	u8	command;
+-#define I40E_AQ_LLDP_AGENT_RESTORE_NOT		0x0
+ #define I40E_AQ_LLDP_AGENT_RESTORE		0x1
+ 	u8	reserved[15];
+ };
+@@ -2674,8 +2228,6 @@ struct i40e_aqc_add_udp_tunnel {
+ 	u8	protocol_type;
+ #define I40E_AQC_TUNNEL_TYPE_VXLAN	0x00
+ #define I40E_AQC_TUNNEL_TYPE_NGE	0x01
+-#define I40E_AQC_TUNNEL_TYPE_TEREDO	0x10
+-#define I40E_AQC_TUNNEL_TYPE_VXLAN_GPE	0x11
+ 	u8	reserved1[10];
+ };
+ 
+@@ -2685,8 +2237,6 @@ struct i40e_aqc_add_udp_tunnel_completion {
+ 	__le16	udp_port;
+ 	u8	filter_entry_index;
+ 	u8	multiple_pfs;
+-#define I40E_AQC_SINGLE_PF		0x0
+-#define I40E_AQC_MULTIPLE_PFS		0x1
+ 	u8	total_filters;
+ 	u8	reserved[11];
+ };
+@@ -2759,16 +2309,8 @@ struct i40e_aqc_tunnel_key_structure {
+ 	u8	key1_len;  /* 0 to 15 */
+ 	u8	key2_len;  /* 0 to 15 */
+ 	u8	flags;
+-#define I40E_AQC_TUNNEL_KEY_STRUCT_OVERRIDE	0x01
+ /* response flags */
+-#define I40E_AQC_TUNNEL_KEY_STRUCT_SUCCESS	0x01
+-#define I40E_AQC_TUNNEL_KEY_STRUCT_MODIFIED	0x02
+-#define I40E_AQC_TUNNEL_KEY_STRUCT_OVERRIDDEN	0x03
+ 	u8	network_key_index;
+-#define I40E_AQC_NETWORK_KEY_INDEX_VXLAN		0x0
+-#define I40E_AQC_NETWORK_KEY_INDEX_NGE			0x1
+-#define I40E_AQC_NETWORK_KEY_INDEX_FLEX_MAC_IN_UDP	0x2
+-#define I40E_AQC_NETWORK_KEY_INDEX_GRE			0x3
+ 	u8	reserved[10];
+ };
+ 
+@@ -2777,9 +2319,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_tunnel_key_structure);
+ /* OEM mode commands (direct 0xFE0x) */
+ struct i40e_aqc_oem_param_change {
+ 	__le32	param_type;
+-#define I40E_AQ_OEM_PARAM_TYPE_PF_CTL	0
+-#define I40E_AQ_OEM_PARAM_TYPE_BW_CTL	1
+-#define I40E_AQ_OEM_PARAM_MAC		2
+ 	__le32	param_value1;
+ 	__le16	param_value2;
+ 	u8	reserved[6];
+@@ -2789,8 +2328,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_oem_param_change);
+ 
+ struct i40e_aqc_oem_state_change {
+ 	__le32	state;
+-#define I40E_AQ_OEM_STATE_LINK_DOWN	0x0
+-#define I40E_AQ_OEM_STATE_LINK_UP	0x1
+ 	u8	reserved[12];
+ };
+ 
+@@ -2826,14 +2363,8 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_opc_oem_ocbb_initialize);
+ 
+ struct i40e_acq_set_test_mode {
+ 	u8	mode;
+-#define I40E_AQ_TEST_PARTIAL	0
+-#define I40E_AQ_TEST_FULL	1
+-#define I40E_AQ_TEST_NVM	2
+ 	u8	reserved[3];
+ 	u8	command;
+-#define I40E_AQ_TEST_OPEN	0
+-#define I40E_AQ_TEST_CLOSE	1
+-#define I40E_AQ_TEST_INC	2
+ 	u8	reserved2[3];
+ 	__le32	address_high;
+ 	__le32	address_low;
+@@ -2875,18 +2406,6 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_debug_modify_reg);
+ 
+ /* dump internal data (0xFF08, indirect) */
+ 
+-#define I40E_AQ_CLUSTER_ID_AUX		0
+-#define I40E_AQ_CLUSTER_ID_SWITCH_FLU	1
+-#define I40E_AQ_CLUSTER_ID_TXSCHED	2
+-#define I40E_AQ_CLUSTER_ID_HMC		3
+-#define I40E_AQ_CLUSTER_ID_MAC0		4
+-#define I40E_AQ_CLUSTER_ID_MAC1		5
+-#define I40E_AQ_CLUSTER_ID_MAC2		6
+-#define I40E_AQ_CLUSTER_ID_MAC3		7
+-#define I40E_AQ_CLUSTER_ID_DCB		8
+-#define I40E_AQ_CLUSTER_ID_EMP_MEM	9
+-#define I40E_AQ_CLUSTER_ID_PKT_BUF	10
+-#define I40E_AQ_CLUSTER_ID_ALTRAM	11
+ 
+ struct i40e_aqc_debug_dump_internals {
+ 	u8	cluster_id;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.h b/drivers/net/ethernet/intel/i40e/i40e_client.h
+index 72994baf4941..aa8dfc96d43b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_client.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_client.h
+@@ -41,7 +41,6 @@ struct i40e_client;
+  * In order for us to keep the interface simple, SW will define a
+  * unique type value for AEQ.
+  */
+-#define I40E_QUEUE_TYPE_PE_AEQ  0x80
+ #define I40E_QUEUE_INVALID_IDX	0xFFFF
+ 
+ struct i40e_qv_info {
+@@ -56,7 +55,6 @@ struct i40e_qvlist_info {
+ 	struct i40e_qv_info qv_info[1];
+ };
+ 
+-#define I40E_CLIENT_MSIX_ALL 0xFFFFFFFF
+ 
+ /* set of LAN parameters useful for clients managed by LAN */
+ 
+@@ -87,7 +85,6 @@ struct i40e_info {
+ 	u8 __iomem *hw_addr;
+ 	u8 fid;	/* function id, PF id or VF id */
+ #define I40E_CLIENT_FTYPE_PF 0
+-#define I40E_CLIENT_FTYPE_VF 1
+ 	u8 ftype; /* function type, PF or VF */
+ 	void *pf;
+ 
+@@ -184,10 +181,7 @@ struct i40e_client {
+ 	unsigned long state;		/* client state */
+ 	atomic_t ref_cnt;  /* Count of all the client devices of this kind */
+ 	u32 flags;
+-#define I40E_CLIENT_FLAGS_LAUNCH_ON_PROBE	BIT(0)
+-#define I40E_TX_FLAGS_NOTIFY_OTHER_EVENTS	BIT(2)
+ 	u8 type;
+-#define I40E_CLIENT_IWARP 0
+ 	const struct i40e_client_ops *ops; /* client ops provided by the client */
+ };
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+index d4055037af89..7f982fdecbae 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_common.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+@@ -1455,10 +1455,6 @@ static u32 i40e_led_is_mine(struct i40e_hw *hw, int idx)
+ 	return gpio_val;
+ }
+ 
+-#define I40E_COMBINED_ACTIVITY 0xA
+-#define I40E_FILTER_ACTIVITY 0xE
+-#define I40E_LINK_ACTIVITY 0xC
+-#define I40E_MAC_ACTIVITY 0xD
+ #define I40E_FW_LED BIT(4)
+ #define I40E_LED_MODE_VALID (I40E_GLGEN_GPIO_CTL_LED_MODE_MASK >> \
+ 			     I40E_GLGEN_GPIO_CTL_LED_MODE_SHIFT)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_dcb.h b/drivers/net/ethernet/intel/i40e/i40e_dcb.h
+index ba86ad833bee..2b1a2e81ac73 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_dcb.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_dcb.h
+@@ -6,10 +6,8 @@
+ 
+ #include "i40e_type.h"
+ 
+-#define I40E_DCBX_STATUS_NOT_STARTED	0
+ #define I40E_DCBX_STATUS_IN_PROGRESS	1
+ #define I40E_DCBX_STATUS_DONE		2
+-#define I40E_DCBX_STATUS_MULTIPLE_PEERS	3
+ #define I40E_DCBX_STATUS_DISABLED	7
+ 
+ #define I40E_TLV_TYPE_END		0
+@@ -24,7 +22,6 @@
+ #define I40E_CEE_DCBX_OUI		0x001b21
+ #define I40E_CEE_DCBX_TYPE		2
+ 
+-#define I40E_CEE_SUBTYPE_CTRL		1
+ #define I40E_CEE_SUBTYPE_PG_CFG		2
+ #define I40E_CEE_SUBTYPE_PFC_CFG	3
+ #define I40E_CEE_SUBTYPE_APP_PRI	4
+@@ -105,9 +102,7 @@ struct i40e_cee_ctrl_tlv {
+ struct i40e_cee_feat_tlv {
+ 	struct i40e_cee_tlv_hdr hdr;
+ 	u8 en_will_err; /* Bits: |En|Will|Err|Reserved(5)| */
+-#define I40E_CEE_FEAT_TLV_ENABLE_MASK	0x80
+ #define I40E_CEE_FEAT_TLV_WILLING_MASK	0x40
+-#define I40E_CEE_FEAT_TLV_ERR_MASK	0x20
+ 	u8 subtype;
+ 	u8 tlvinfo[1];
+ };
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index 99ea543dd245..9cb9b781451c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -688,7 +688,6 @@ static void i40e_dbg_dump_vf_all(struct i40e_pf *pf)
+ 			i40e_dbg_dump_vf(pf, i);
+ }
+ 
+-#define I40E_MAX_DEBUG_OUT_BUFFER (4096*4)
+ /**
+  * i40e_dbg_command_write - write into command datum
+  * @filp: the opened file
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_devids.h b/drivers/net/ethernet/intel/i40e/i40e_devids.h
+index bf15a868292f..33df3bf2f73b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_devids.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_devids.h
+@@ -32,8 +32,5 @@
+ #define I40E_DEV_ID_10G_BASE_T_X722	0x37D2
+ #define I40E_DEV_ID_SFP_I_X722		0x37D3
+ 
+-#define i40e_is_40G_device(d)		((d) == I40E_DEV_ID_QSFP_A  || \
+-					 (d) == I40E_DEV_ID_QSFP_B  || \
+-					 (d) == I40E_DEV_ID_QSFP_C)
+ 
+ #endif /* _I40E_DEVIDS_H_ */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_hmc.h b/drivers/net/ethernet/intel/i40e/i40e_hmc.h
+index 1c78de838857..3113792afaff 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_hmc.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_hmc.h
+@@ -14,7 +14,6 @@ struct i40e_hw;
+ #define I40E_HMC_DIRECT_BP_SIZE		0x200000 /* 2M */
+ #define I40E_HMC_PAGED_BP_SIZE		4096
+ #define I40E_HMC_PD_BP_BUF_ALIGNMENT	4096
+-#define I40E_FIRST_VF_FPM_ID		16
+ 
+ struct i40e_hmc_obj_info {
+ 	u64 base;	/* base addr in FPM */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 33912cf964eb..5db7a461ab93 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -6503,8 +6503,6 @@ static int i40e_init_pf_dcb(struct i40e_pf *pf)
+ 	return err;
+ }
+ #endif /* CONFIG_I40E_DCB */
+-#define SPEED_SIZE 14
+-#define FC_SIZE 8
+ /**
+  * i40e_print_link_message - print link up or down
+  * @vsi: the VSI for which link needs a message
+@@ -8966,7 +8964,6 @@ u32 i40e_get_current_atr_cnt(struct i40e_pf *pf)
+  * filter miss error on Rx queue 0. Accumulating enough error messages before
+  * reacting will make sure we don't cause flush too often.
+  */
+-#define I40E_MAX_FD_PROGRAM_ERROR 256
+ 
+ /**
+  * i40e_fdir_reinit_subtask - Worker thread to reinit FDIR filter table
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_osdep.h b/drivers/net/ethernet/intel/i40e/i40e_osdep.h
+index c302ef2524f8..2f6815b2f8df 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_osdep.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_osdep.h
+@@ -26,7 +26,6 @@ do {										\
+ #define wr32(a, reg, value)	writel((value), ((a)->hw_addr + (reg)))
+ #define rd32(a, reg)		readl((a)->hw_addr + (reg))
+ 
+-#define wr64(a, reg, value)	writeq((value), ((a)->hw_addr + (reg)))
+ #define rd64(a, reg)		readq((a)->hw_addr + (reg))
+ #define i40e_flush(a)		readl((a)->hw_addr + I40E_GLGEN_STAT)
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index d35d690ca10f..0653b3bed2f2 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -4,53 +4,14 @@
+ #ifndef _I40E_REGISTER_H_
+ #define _I40E_REGISTER_H_
+ 
+-#define I40E_GL_ARQBAH 0x000801C0 /* Reset: EMPR */
+-#define I40E_GL_ARQBAH_ARQBAH_SHIFT 0
+-#define I40E_GL_ARQBAH_ARQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_ARQBAH_ARQBAH_SHIFT)
+-#define I40E_GL_ARQBAL 0x000800C0 /* Reset: EMPR */
+-#define I40E_GL_ARQBAL_ARQBAL_SHIFT 0
+-#define I40E_GL_ARQBAL_ARQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_ARQBAL_ARQBAL_SHIFT)
+-#define I40E_GL_ARQH 0x000803C0 /* Reset: EMPR */
+-#define I40E_GL_ARQH_ARQH_SHIFT 0
+-#define I40E_GL_ARQH_ARQH_MASK I40E_MASK(0x3FF, I40E_GL_ARQH_ARQH_SHIFT)
+-#define I40E_GL_ARQT 0x000804C0 /* Reset: EMPR */
+-#define I40E_GL_ARQT_ARQT_SHIFT 0
+-#define I40E_GL_ARQT_ARQT_MASK I40E_MASK(0x3FF, I40E_GL_ARQT_ARQT_SHIFT)
+-#define I40E_GL_ATQBAH 0x00080140 /* Reset: EMPR */
+-#define I40E_GL_ATQBAH_ATQBAH_SHIFT 0
+-#define I40E_GL_ATQBAH_ATQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_ATQBAH_ATQBAH_SHIFT)
+-#define I40E_GL_ATQBAL 0x00080040 /* Reset: EMPR */
+-#define I40E_GL_ATQBAL_ATQBAL_SHIFT 0
+-#define I40E_GL_ATQBAL_ATQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_ATQBAL_ATQBAL_SHIFT)
+-#define I40E_GL_ATQH 0x00080340 /* Reset: EMPR */
+-#define I40E_GL_ATQH_ATQH_SHIFT 0
+-#define I40E_GL_ATQH_ATQH_MASK I40E_MASK(0x3FF, I40E_GL_ATQH_ATQH_SHIFT)
+-#define I40E_GL_ATQLEN 0x00080240 /* Reset: EMPR */
+-#define I40E_GL_ATQLEN_ATQLEN_SHIFT 0
+-#define I40E_GL_ATQLEN_ATQLEN_MASK I40E_MASK(0x3FF, I40E_GL_ATQLEN_ATQLEN_SHIFT)
+-#define I40E_GL_ATQLEN_ATQVFE_SHIFT 28
+-#define I40E_GL_ATQLEN_ATQVFE_MASK I40E_MASK(0x1, I40E_GL_ATQLEN_ATQVFE_SHIFT)
+-#define I40E_GL_ATQLEN_ATQOVFL_SHIFT 29
+-#define I40E_GL_ATQLEN_ATQOVFL_MASK I40E_MASK(0x1, I40E_GL_ATQLEN_ATQOVFL_SHIFT)
+ #define I40E_GL_ATQLEN_ATQCRIT_SHIFT 30
+ #define I40E_GL_ATQLEN_ATQCRIT_MASK I40E_MASK(0x1, I40E_GL_ATQLEN_ATQCRIT_SHIFT)
+-#define I40E_GL_ATQLEN_ATQENABLE_SHIFT 31
+-#define I40E_GL_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1, I40E_GL_ATQLEN_ATQENABLE_SHIFT)
+-#define I40E_GL_ATQT 0x00080440 /* Reset: EMPR */
+-#define I40E_GL_ATQT_ATQT_SHIFT 0
+-#define I40E_GL_ATQT_ATQT_MASK I40E_MASK(0x3FF, I40E_GL_ATQT_ATQT_SHIFT)
+ #define I40E_PF_ARQBAH 0x00080180 /* Reset: EMPR */
+-#define I40E_PF_ARQBAH_ARQBAH_SHIFT 0
+-#define I40E_PF_ARQBAH_ARQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_PF_ARQBAH_ARQBAH_SHIFT)
+ #define I40E_PF_ARQBAL 0x00080080 /* Reset: EMPR */
+-#define I40E_PF_ARQBAL_ARQBAL_SHIFT 0
+-#define I40E_PF_ARQBAL_ARQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_PF_ARQBAL_ARQBAL_SHIFT)
+ #define I40E_PF_ARQH 0x00080380 /* Reset: EMPR */
+ #define I40E_PF_ARQH_ARQH_SHIFT 0
+ #define I40E_PF_ARQH_ARQH_MASK I40E_MASK(0x3FF, I40E_PF_ARQH_ARQH_SHIFT)
+ #define I40E_PF_ARQLEN 0x00080280 /* Reset: EMPR */
+-#define I40E_PF_ARQLEN_ARQLEN_SHIFT 0
+-#define I40E_PF_ARQLEN_ARQLEN_MASK I40E_MASK(0x3FF, I40E_PF_ARQLEN_ARQLEN_SHIFT)
+ #define I40E_PF_ARQLEN_ARQVFE_SHIFT 28
+ #define I40E_PF_ARQLEN_ARQVFE_MASK I40E_MASK(0x1, I40E_PF_ARQLEN_ARQVFE_SHIFT)
+ #define I40E_PF_ARQLEN_ARQOVFL_SHIFT 29
+@@ -60,20 +21,10 @@
+ #define I40E_PF_ARQLEN_ARQENABLE_SHIFT 31
+ #define I40E_PF_ARQLEN_ARQENABLE_MASK I40E_MASK(0x1u, I40E_PF_ARQLEN_ARQENABLE_SHIFT)
+ #define I40E_PF_ARQT 0x00080480 /* Reset: EMPR */
+-#define I40E_PF_ARQT_ARQT_SHIFT 0
+-#define I40E_PF_ARQT_ARQT_MASK I40E_MASK(0x3FF, I40E_PF_ARQT_ARQT_SHIFT)
+ #define I40E_PF_ATQBAH 0x00080100 /* Reset: EMPR */
+-#define I40E_PF_ATQBAH_ATQBAH_SHIFT 0
+-#define I40E_PF_ATQBAH_ATQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_PF_ATQBAH_ATQBAH_SHIFT)
+ #define I40E_PF_ATQBAL 0x00080000 /* Reset: EMPR */
+-#define I40E_PF_ATQBAL_ATQBAL_SHIFT 0
+-#define I40E_PF_ATQBAL_ATQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_PF_ATQBAL_ATQBAL_SHIFT)
+ #define I40E_PF_ATQH 0x00080300 /* Reset: EMPR */
+-#define I40E_PF_ATQH_ATQH_SHIFT 0
+-#define I40E_PF_ATQH_ATQH_MASK I40E_MASK(0x3FF, I40E_PF_ATQH_ATQH_SHIFT)
+ #define I40E_PF_ATQLEN 0x00080200 /* Reset: EMPR */
+-#define I40E_PF_ATQLEN_ATQLEN_SHIFT 0
+-#define I40E_PF_ATQLEN_ATQLEN_MASK I40E_MASK(0x3FF, I40E_PF_ATQLEN_ATQLEN_SHIFT)
+ #define I40E_PF_ATQLEN_ATQVFE_SHIFT 28
+ #define I40E_PF_ATQLEN_ATQVFE_MASK I40E_MASK(0x1, I40E_PF_ATQLEN_ATQVFE_SHIFT)
+ #define I40E_PF_ATQLEN_ATQOVFL_SHIFT 29
+@@ -83,284 +34,13 @@
+ #define I40E_PF_ATQLEN_ATQENABLE_SHIFT 31
+ #define I40E_PF_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1u, I40E_PF_ATQLEN_ATQENABLE_SHIFT)
+ #define I40E_PF_ATQT 0x00080400 /* Reset: EMPR */
+-#define I40E_PF_ATQT_ATQT_SHIFT 0
+-#define I40E_PF_ATQT_ATQT_MASK I40E_MASK(0x3FF, I40E_PF_ATQT_ATQT_SHIFT)
+-#define I40E_VF_ARQBAH(_VF) (0x00081400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ARQBAH_MAX_INDEX 127
+-#define I40E_VF_ARQBAH_ARQBAH_SHIFT 0
+-#define I40E_VF_ARQBAH_ARQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ARQBAH_ARQBAH_SHIFT)
+-#define I40E_VF_ARQBAL(_VF) (0x00080C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ARQBAL_MAX_INDEX 127
+-#define I40E_VF_ARQBAL_ARQBAL_SHIFT 0
+-#define I40E_VF_ARQBAL_ARQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ARQBAL_ARQBAL_SHIFT)
+-#define I40E_VF_ARQH(_VF) (0x00082400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ARQH_MAX_INDEX 127
+-#define I40E_VF_ARQH_ARQH_SHIFT 0
+-#define I40E_VF_ARQH_ARQH_MASK I40E_MASK(0x3FF, I40E_VF_ARQH_ARQH_SHIFT)
+-#define I40E_VF_ARQLEN(_VF) (0x00081C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ARQLEN_MAX_INDEX 127
+-#define I40E_VF_ARQLEN_ARQLEN_SHIFT 0
+-#define I40E_VF_ARQLEN_ARQLEN_MASK I40E_MASK(0x3FF, I40E_VF_ARQLEN_ARQLEN_SHIFT)
+-#define I40E_VF_ARQLEN_ARQVFE_SHIFT 28
+-#define I40E_VF_ARQLEN_ARQVFE_MASK I40E_MASK(0x1, I40E_VF_ARQLEN_ARQVFE_SHIFT)
+-#define I40E_VF_ARQLEN_ARQOVFL_SHIFT 29
+-#define I40E_VF_ARQLEN_ARQOVFL_MASK I40E_MASK(0x1, I40E_VF_ARQLEN_ARQOVFL_SHIFT)
+-#define I40E_VF_ARQLEN_ARQCRIT_SHIFT 30
+-#define I40E_VF_ARQLEN_ARQCRIT_MASK I40E_MASK(0x1, I40E_VF_ARQLEN_ARQCRIT_SHIFT)
+-#define I40E_VF_ARQLEN_ARQENABLE_SHIFT 31
+-#define I40E_VF_ARQLEN_ARQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ARQLEN_ARQENABLE_SHIFT)
+-#define I40E_VF_ARQT(_VF) (0x00082C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ARQT_MAX_INDEX 127
+-#define I40E_VF_ARQT_ARQT_SHIFT 0
+-#define I40E_VF_ARQT_ARQT_MASK I40E_MASK(0x3FF, I40E_VF_ARQT_ARQT_SHIFT)
+-#define I40E_VF_ATQBAH(_VF) (0x00081000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ATQBAH_MAX_INDEX 127
+-#define I40E_VF_ATQBAH_ATQBAH_SHIFT 0
+-#define I40E_VF_ATQBAH_ATQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ATQBAH_ATQBAH_SHIFT)
+-#define I40E_VF_ATQBAL(_VF) (0x00080800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ATQBAL_MAX_INDEX 127
+-#define I40E_VF_ATQBAL_ATQBAL_SHIFT 0
+-#define I40E_VF_ATQBAL_ATQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ATQBAL_ATQBAL_SHIFT)
+-#define I40E_VF_ATQH(_VF) (0x00082000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ATQH_MAX_INDEX 127
+-#define I40E_VF_ATQH_ATQH_SHIFT 0
+-#define I40E_VF_ATQH_ATQH_MASK I40E_MASK(0x3FF, I40E_VF_ATQH_ATQH_SHIFT)
+-#define I40E_VF_ATQLEN(_VF) (0x00081800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ATQLEN_MAX_INDEX 127
+-#define I40E_VF_ATQLEN_ATQLEN_SHIFT 0
+-#define I40E_VF_ATQLEN_ATQLEN_MASK I40E_MASK(0x3FF, I40E_VF_ATQLEN_ATQLEN_SHIFT)
+-#define I40E_VF_ATQLEN_ATQVFE_SHIFT 28
+-#define I40E_VF_ATQLEN_ATQVFE_MASK I40E_MASK(0x1, I40E_VF_ATQLEN_ATQVFE_SHIFT)
+-#define I40E_VF_ATQLEN_ATQOVFL_SHIFT 29
+-#define I40E_VF_ATQLEN_ATQOVFL_MASK I40E_MASK(0x1, I40E_VF_ATQLEN_ATQOVFL_SHIFT)
+-#define I40E_VF_ATQLEN_ATQCRIT_SHIFT 30
+-#define I40E_VF_ATQLEN_ATQCRIT_MASK I40E_MASK(0x1, I40E_VF_ATQLEN_ATQCRIT_SHIFT)
+-#define I40E_VF_ATQLEN_ATQENABLE_SHIFT 31
+-#define I40E_VF_ATQLEN_ATQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ATQLEN_ATQENABLE_SHIFT)
+-#define I40E_VF_ATQT(_VF) (0x00082800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_VF_ATQT_MAX_INDEX 127
+-#define I40E_VF_ATQT_ATQT_SHIFT 0
+-#define I40E_VF_ATQT_ATQT_MASK I40E_MASK(0x3FF, I40E_VF_ATQT_ATQT_SHIFT)
+-#define I40E_PRT_L2TAGSEN 0x001C0B20 /* Reset: CORER */
+-#define I40E_PRT_L2TAGSEN_ENABLE_SHIFT 0
+-#define I40E_PRT_L2TAGSEN_ENABLE_MASK I40E_MASK(0xFF, I40E_PRT_L2TAGSEN_ENABLE_SHIFT)
+-#define I40E_PFCM_LAN_ERRDATA 0x0010C080 /* Reset: PFR */
+-#define I40E_PFCM_LAN_ERRDATA_ERROR_CODE_SHIFT 0
+-#define I40E_PFCM_LAN_ERRDATA_ERROR_CODE_MASK I40E_MASK(0xF, I40E_PFCM_LAN_ERRDATA_ERROR_CODE_SHIFT)
+-#define I40E_PFCM_LAN_ERRDATA_Q_TYPE_SHIFT 4
+-#define I40E_PFCM_LAN_ERRDATA_Q_TYPE_MASK I40E_MASK(0x7, I40E_PFCM_LAN_ERRDATA_Q_TYPE_SHIFT)
+-#define I40E_PFCM_LAN_ERRDATA_Q_NUM_SHIFT 8
+-#define I40E_PFCM_LAN_ERRDATA_Q_NUM_MASK I40E_MASK(0xFFF, I40E_PFCM_LAN_ERRDATA_Q_NUM_SHIFT)
+-#define I40E_PFCM_LAN_ERRINFO 0x0010C000 /* Reset: PFR */
+-#define I40E_PFCM_LAN_ERRINFO_ERROR_VALID_SHIFT 0
+-#define I40E_PFCM_LAN_ERRINFO_ERROR_VALID_MASK I40E_MASK(0x1, I40E_PFCM_LAN_ERRINFO_ERROR_VALID_SHIFT)
+-#define I40E_PFCM_LAN_ERRINFO_ERROR_INST_SHIFT 4
+-#define I40E_PFCM_LAN_ERRINFO_ERROR_INST_MASK I40E_MASK(0x7, I40E_PFCM_LAN_ERRINFO_ERROR_INST_SHIFT)
+-#define I40E_PFCM_LAN_ERRINFO_DBL_ERROR_CNT_SHIFT 8
+-#define I40E_PFCM_LAN_ERRINFO_DBL_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_PFCM_LAN_ERRINFO_DBL_ERROR_CNT_SHIFT)
+-#define I40E_PFCM_LAN_ERRINFO_RLU_ERROR_CNT_SHIFT 16
+-#define I40E_PFCM_LAN_ERRINFO_RLU_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_PFCM_LAN_ERRINFO_RLU_ERROR_CNT_SHIFT)
+-#define I40E_PFCM_LAN_ERRINFO_RLS_ERROR_CNT_SHIFT 24
+-#define I40E_PFCM_LAN_ERRINFO_RLS_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_PFCM_LAN_ERRINFO_RLS_ERROR_CNT_SHIFT)
+-#define I40E_PFCM_LANCTXCTL 0x0010C300 /* Reset: CORER */
+-#define I40E_PFCM_LANCTXCTL_QUEUE_NUM_SHIFT 0
+-#define I40E_PFCM_LANCTXCTL_QUEUE_NUM_MASK I40E_MASK(0xFFF, I40E_PFCM_LANCTXCTL_QUEUE_NUM_SHIFT)
+-#define I40E_PFCM_LANCTXCTL_SUB_LINE_SHIFT 12
+-#define I40E_PFCM_LANCTXCTL_SUB_LINE_MASK I40E_MASK(0x7, I40E_PFCM_LANCTXCTL_SUB_LINE_SHIFT)
+-#define I40E_PFCM_LANCTXCTL_QUEUE_TYPE_SHIFT 15
+-#define I40E_PFCM_LANCTXCTL_QUEUE_TYPE_MASK I40E_MASK(0x3, I40E_PFCM_LANCTXCTL_QUEUE_TYPE_SHIFT)
+-#define I40E_PFCM_LANCTXCTL_OP_CODE_SHIFT 17
+-#define I40E_PFCM_LANCTXCTL_OP_CODE_MASK I40E_MASK(0x3, I40E_PFCM_LANCTXCTL_OP_CODE_SHIFT)
+-#define I40E_PFCM_LANCTXDATA(_i) (0x0010C100 + ((_i) * 128)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_PFCM_LANCTXDATA_MAX_INDEX 3
+-#define I40E_PFCM_LANCTXDATA_DATA_SHIFT 0
+-#define I40E_PFCM_LANCTXDATA_DATA_MASK I40E_MASK(0xFFFFFFFF, I40E_PFCM_LANCTXDATA_DATA_SHIFT)
+-#define I40E_PFCM_LANCTXSTAT 0x0010C380 /* Reset: CORER */
+-#define I40E_PFCM_LANCTXSTAT_CTX_DONE_SHIFT 0
+-#define I40E_PFCM_LANCTXSTAT_CTX_DONE_MASK I40E_MASK(0x1, I40E_PFCM_LANCTXSTAT_CTX_DONE_SHIFT)
+-#define I40E_PFCM_LANCTXSTAT_CTX_MISS_SHIFT 1
+-#define I40E_PFCM_LANCTXSTAT_CTX_MISS_MASK I40E_MASK(0x1, I40E_PFCM_LANCTXSTAT_CTX_MISS_SHIFT)
+-#define I40E_VFCM_PE_ERRDATA1(_VF) (0x00138800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFCM_PE_ERRDATA1_MAX_INDEX 127
+-#define I40E_VFCM_PE_ERRDATA1_ERROR_CODE_SHIFT 0
+-#define I40E_VFCM_PE_ERRDATA1_ERROR_CODE_MASK I40E_MASK(0xF, I40E_VFCM_PE_ERRDATA1_ERROR_CODE_SHIFT)
+-#define I40E_VFCM_PE_ERRDATA1_Q_TYPE_SHIFT 4
+-#define I40E_VFCM_PE_ERRDATA1_Q_TYPE_MASK I40E_MASK(0x7, I40E_VFCM_PE_ERRDATA1_Q_TYPE_SHIFT)
+-#define I40E_VFCM_PE_ERRDATA1_Q_NUM_SHIFT 8
+-#define I40E_VFCM_PE_ERRDATA1_Q_NUM_MASK I40E_MASK(0x3FFFF, I40E_VFCM_PE_ERRDATA1_Q_NUM_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO1(_VF) (0x00138400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFCM_PE_ERRINFO1_MAX_INDEX 127
+-#define I40E_VFCM_PE_ERRINFO1_ERROR_VALID_SHIFT 0
+-#define I40E_VFCM_PE_ERRINFO1_ERROR_VALID_MASK I40E_MASK(0x1, I40E_VFCM_PE_ERRINFO1_ERROR_VALID_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO1_ERROR_INST_SHIFT 4
+-#define I40E_VFCM_PE_ERRINFO1_ERROR_INST_MASK I40E_MASK(0x7, I40E_VFCM_PE_ERRINFO1_ERROR_INST_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO1_DBL_ERROR_CNT_SHIFT 8
+-#define I40E_VFCM_PE_ERRINFO1_DBL_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_VFCM_PE_ERRINFO1_DBL_ERROR_CNT_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO1_RLU_ERROR_CNT_SHIFT 16
+-#define I40E_VFCM_PE_ERRINFO1_RLU_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_VFCM_PE_ERRINFO1_RLU_ERROR_CNT_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO1_RLS_ERROR_CNT_SHIFT 24
+-#define I40E_VFCM_PE_ERRINFO1_RLS_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_VFCM_PE_ERRINFO1_RLS_ERROR_CNT_SHIFT)
+-#define I40E_GLDCB_GENC 0x00083044 /* Reset: CORER */
+-#define I40E_GLDCB_GENC_PCIRTT_SHIFT 0
+-#define I40E_GLDCB_GENC_PCIRTT_MASK I40E_MASK(0xFFFF, I40E_GLDCB_GENC_PCIRTT_SHIFT)
+-#define I40E_GLDCB_RUPTI 0x00122618 /* Reset: CORER */
+-#define I40E_GLDCB_RUPTI_PFCTIMEOUT_UP_SHIFT 0
+-#define I40E_GLDCB_RUPTI_PFCTIMEOUT_UP_MASK I40E_MASK(0xFFFFFFFF, I40E_GLDCB_RUPTI_PFCTIMEOUT_UP_SHIFT)
+-#define I40E_PRTDCB_FCCFG 0x001E4640 /* Reset: GLOBR */
+-#define I40E_PRTDCB_FCCFG_TFCE_SHIFT 3
+-#define I40E_PRTDCB_FCCFG_TFCE_MASK I40E_MASK(0x3, I40E_PRTDCB_FCCFG_TFCE_SHIFT)
+-#define I40E_PRTDCB_FCRTV 0x001E4600 /* Reset: GLOBR */
+-#define I40E_PRTDCB_FCRTV_FC_REFRESH_TH_SHIFT 0
+-#define I40E_PRTDCB_FCRTV_FC_REFRESH_TH_MASK I40E_MASK(0xFFFF, I40E_PRTDCB_FCRTV_FC_REFRESH_TH_SHIFT)
+-#define I40E_PRTDCB_FCTTVN(_i) (0x001E4580 + ((_i) * 32)) /* _i=0...3 */ /* Reset: GLOBR */
+-#define I40E_PRTDCB_FCTTVN_MAX_INDEX 3
+-#define I40E_PRTDCB_FCTTVN_TTV_2N_SHIFT 0
+-#define I40E_PRTDCB_FCTTVN_TTV_2N_MASK I40E_MASK(0xFFFF, I40E_PRTDCB_FCTTVN_TTV_2N_SHIFT)
+-#define I40E_PRTDCB_FCTTVN_TTV_2N_P1_SHIFT 16
+-#define I40E_PRTDCB_FCTTVN_TTV_2N_P1_MASK I40E_MASK(0xFFFF, I40E_PRTDCB_FCTTVN_TTV_2N_P1_SHIFT)
+ #define I40E_PRTDCB_GENC 0x00083000 /* Reset: CORER */
+-#define I40E_PRTDCB_GENC_RESERVED_1_SHIFT 0
+-#define I40E_PRTDCB_GENC_RESERVED_1_MASK I40E_MASK(0x3, I40E_PRTDCB_GENC_RESERVED_1_SHIFT)
+-#define I40E_PRTDCB_GENC_NUMTC_SHIFT 2
+-#define I40E_PRTDCB_GENC_NUMTC_MASK I40E_MASK(0xF, I40E_PRTDCB_GENC_NUMTC_SHIFT)
+-#define I40E_PRTDCB_GENC_FCOEUP_SHIFT 6
+-#define I40E_PRTDCB_GENC_FCOEUP_MASK I40E_MASK(0x7, I40E_PRTDCB_GENC_FCOEUP_SHIFT)
+-#define I40E_PRTDCB_GENC_FCOEUP_VALID_SHIFT 9
+-#define I40E_PRTDCB_GENC_FCOEUP_VALID_MASK I40E_MASK(0x1, I40E_PRTDCB_GENC_FCOEUP_VALID_SHIFT)
+ #define I40E_PRTDCB_GENC_PFCLDA_SHIFT 16
+ #define I40E_PRTDCB_GENC_PFCLDA_MASK I40E_MASK(0xFFFF, I40E_PRTDCB_GENC_PFCLDA_SHIFT)
+ #define I40E_PRTDCB_GENS 0x00083020 /* Reset: CORER */
+ #define I40E_PRTDCB_GENS_DCBX_STATUS_SHIFT 0
+ #define I40E_PRTDCB_GENS_DCBX_STATUS_MASK I40E_MASK(0x7, I40E_PRTDCB_GENS_DCBX_STATUS_SHIFT)
+-#define I40E_PRTDCB_MFLCN 0x001E2400 /* Reset: GLOBR */
+-#define I40E_PRTDCB_MFLCN_PMCF_SHIFT 0
+-#define I40E_PRTDCB_MFLCN_PMCF_MASK I40E_MASK(0x1, I40E_PRTDCB_MFLCN_PMCF_SHIFT)
+-#define I40E_PRTDCB_MFLCN_DPF_SHIFT 1
+-#define I40E_PRTDCB_MFLCN_DPF_MASK I40E_MASK(0x1, I40E_PRTDCB_MFLCN_DPF_SHIFT)
+-#define I40E_PRTDCB_MFLCN_RPFCM_SHIFT 2
+-#define I40E_PRTDCB_MFLCN_RPFCM_MASK I40E_MASK(0x1, I40E_PRTDCB_MFLCN_RPFCM_SHIFT)
+-#define I40E_PRTDCB_MFLCN_RFCE_SHIFT 3
+-#define I40E_PRTDCB_MFLCN_RFCE_MASK I40E_MASK(0x1, I40E_PRTDCB_MFLCN_RFCE_SHIFT)
+-#define I40E_PRTDCB_MFLCN_RPFCE_SHIFT 4
+-#define I40E_PRTDCB_MFLCN_RPFCE_MASK I40E_MASK(0xFF, I40E_PRTDCB_MFLCN_RPFCE_SHIFT)
+-#define I40E_PRTDCB_RETSC 0x001223E0 /* Reset: CORER */
+-#define I40E_PRTDCB_RETSC_ETS_MODE_SHIFT 0
+-#define I40E_PRTDCB_RETSC_ETS_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_RETSC_ETS_MODE_SHIFT)
+-#define I40E_PRTDCB_RETSC_NON_ETS_MODE_SHIFT 1
+-#define I40E_PRTDCB_RETSC_NON_ETS_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_RETSC_NON_ETS_MODE_SHIFT)
+-#define I40E_PRTDCB_RETSC_ETS_MAX_EXP_SHIFT 2
+-#define I40E_PRTDCB_RETSC_ETS_MAX_EXP_MASK I40E_MASK(0xF, I40E_PRTDCB_RETSC_ETS_MAX_EXP_SHIFT)
+-#define I40E_PRTDCB_RETSC_LLTC_SHIFT 8
+-#define I40E_PRTDCB_RETSC_LLTC_MASK I40E_MASK(0xFF, I40E_PRTDCB_RETSC_LLTC_SHIFT)
+-#define I40E_PRTDCB_RETSTCC(_i) (0x00122180 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTDCB_RETSTCC_MAX_INDEX 7
+-#define I40E_PRTDCB_RETSTCC_BWSHARE_SHIFT 0
+-#define I40E_PRTDCB_RETSTCC_BWSHARE_MASK I40E_MASK(0x7F, I40E_PRTDCB_RETSTCC_BWSHARE_SHIFT)
+-#define I40E_PRTDCB_RETSTCC_UPINTC_MODE_SHIFT 30
+-#define I40E_PRTDCB_RETSTCC_UPINTC_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_RETSTCC_UPINTC_MODE_SHIFT)
+-#define I40E_PRTDCB_RETSTCC_ETSTC_SHIFT 31
+-#define I40E_PRTDCB_RETSTCC_ETSTC_MASK I40E_MASK(0x1u, I40E_PRTDCB_RETSTCC_ETSTC_SHIFT)
+-#define I40E_PRTDCB_RPPMC 0x001223A0 /* Reset: CORER */
+-#define I40E_PRTDCB_RPPMC_LANRPPM_SHIFT 0
+-#define I40E_PRTDCB_RPPMC_LANRPPM_MASK I40E_MASK(0xFF, I40E_PRTDCB_RPPMC_LANRPPM_SHIFT)
+-#define I40E_PRTDCB_RPPMC_RDMARPPM_SHIFT 8
+-#define I40E_PRTDCB_RPPMC_RDMARPPM_MASK I40E_MASK(0xFF, I40E_PRTDCB_RPPMC_RDMARPPM_SHIFT)
+-#define I40E_PRTDCB_RPPMC_RX_FIFO_SIZE_SHIFT 16
+-#define I40E_PRTDCB_RPPMC_RX_FIFO_SIZE_MASK I40E_MASK(0xFF, I40E_PRTDCB_RPPMC_RX_FIFO_SIZE_SHIFT)
+-#define I40E_PRTDCB_RUP 0x001C0B00 /* Reset: CORER */
+-#define I40E_PRTDCB_RUP_NOVLANUP_SHIFT 0
+-#define I40E_PRTDCB_RUP_NOVLANUP_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP_NOVLANUP_SHIFT)
+-#define I40E_PRTDCB_RUP2TC 0x001C09A0 /* Reset: CORER */
+-#define I40E_PRTDCB_RUP2TC_UP0TC_SHIFT 0
+-#define I40E_PRTDCB_RUP2TC_UP0TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP0TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP1TC_SHIFT 3
+-#define I40E_PRTDCB_RUP2TC_UP1TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP1TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP2TC_SHIFT 6
+-#define I40E_PRTDCB_RUP2TC_UP2TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP2TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP3TC_SHIFT 9
+-#define I40E_PRTDCB_RUP2TC_UP3TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP3TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP4TC_SHIFT 12
+-#define I40E_PRTDCB_RUP2TC_UP4TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP4TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP5TC_SHIFT 15
+-#define I40E_PRTDCB_RUP2TC_UP5TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP5TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP6TC_SHIFT 18
+-#define I40E_PRTDCB_RUP2TC_UP6TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP6TC_SHIFT)
+-#define I40E_PRTDCB_RUP2TC_UP7TC_SHIFT 21
+-#define I40E_PRTDCB_RUP2TC_UP7TC_MASK I40E_MASK(0x7, I40E_PRTDCB_RUP2TC_UP7TC_SHIFT)
+-#define I40E_PRTDCB_RUPTQ(_i) (0x00122400 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTDCB_RUPTQ_MAX_INDEX 7
+-#define I40E_PRTDCB_RUPTQ_RXQNUM_SHIFT 0
+-#define I40E_PRTDCB_RUPTQ_RXQNUM_MASK I40E_MASK(0x3FFF, I40E_PRTDCB_RUPTQ_RXQNUM_SHIFT)
+-#define I40E_PRTDCB_TC2PFC 0x001C0980 /* Reset: CORER */
+-#define I40E_PRTDCB_TC2PFC_TC2PFC_SHIFT 0
+-#define I40E_PRTDCB_TC2PFC_TC2PFC_MASK I40E_MASK(0xFF, I40E_PRTDCB_TC2PFC_TC2PFC_SHIFT)
+-#define I40E_PRTDCB_TCMSTC(_i) (0x000A0040 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTDCB_TCMSTC_MAX_INDEX 7
+-#define I40E_PRTDCB_TCMSTC_MSTC_SHIFT 0
+-#define I40E_PRTDCB_TCMSTC_MSTC_MASK I40E_MASK(0xFFFFF, I40E_PRTDCB_TCMSTC_MSTC_SHIFT)
+-#define I40E_PRTDCB_TCPMC 0x000A21A0 /* Reset: CORER */
+-#define I40E_PRTDCB_TCPMC_CPM_SHIFT 0
+-#define I40E_PRTDCB_TCPMC_CPM_MASK I40E_MASK(0x1FFF, I40E_PRTDCB_TCPMC_CPM_SHIFT)
+-#define I40E_PRTDCB_TCPMC_LLTC_SHIFT 13
+-#define I40E_PRTDCB_TCPMC_LLTC_MASK I40E_MASK(0xFF, I40E_PRTDCB_TCPMC_LLTC_SHIFT)
+-#define I40E_PRTDCB_TCPMC_TCPM_MODE_SHIFT 30
+-#define I40E_PRTDCB_TCPMC_TCPM_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_TCPMC_TCPM_MODE_SHIFT)
+-#define I40E_PRTDCB_TCWSTC(_i) (0x000A2040 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTDCB_TCWSTC_MAX_INDEX 7
+-#define I40E_PRTDCB_TCWSTC_MSTC_SHIFT 0
+-#define I40E_PRTDCB_TCWSTC_MSTC_MASK I40E_MASK(0xFFFFF, I40E_PRTDCB_TCWSTC_MSTC_SHIFT)
+-#define I40E_PRTDCB_TDPMC 0x000A0180 /* Reset: CORER */
+-#define I40E_PRTDCB_TDPMC_DPM_SHIFT 0
+-#define I40E_PRTDCB_TDPMC_DPM_MASK I40E_MASK(0xFF, I40E_PRTDCB_TDPMC_DPM_SHIFT)
+-#define I40E_PRTDCB_TDPMC_TCPM_MODE_SHIFT 30
+-#define I40E_PRTDCB_TDPMC_TCPM_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_TDPMC_TCPM_MODE_SHIFT)
+-#define I40E_PRTDCB_TETSC_TCB 0x000AE060 /* Reset: CORER */
+-#define I40E_PRTDCB_TETSC_TCB_EN_LL_STRICT_PRIORITY_SHIFT 0
+-#define I40E_PRTDCB_TETSC_TCB_EN_LL_STRICT_PRIORITY_MASK I40E_MASK(0x1, I40E_PRTDCB_TETSC_TCB_EN_LL_STRICT_PRIORITY_SHIFT)
+-#define I40E_PRTDCB_TETSC_TCB_LLTC_SHIFT 8
+-#define I40E_PRTDCB_TETSC_TCB_LLTC_MASK I40E_MASK(0xFF, I40E_PRTDCB_TETSC_TCB_LLTC_SHIFT)
+-#define I40E_PRTDCB_TETSC_TPB 0x00098060 /* Reset: CORER */
+-#define I40E_PRTDCB_TETSC_TPB_EN_LL_STRICT_PRIORITY_SHIFT 0
+-#define I40E_PRTDCB_TETSC_TPB_EN_LL_STRICT_PRIORITY_MASK I40E_MASK(0x1, I40E_PRTDCB_TETSC_TPB_EN_LL_STRICT_PRIORITY_SHIFT)
+-#define I40E_PRTDCB_TETSC_TPB_LLTC_SHIFT 8
+-#define I40E_PRTDCB_TETSC_TPB_LLTC_MASK I40E_MASK(0xFF, I40E_PRTDCB_TETSC_TPB_LLTC_SHIFT)
+-#define I40E_PRTDCB_TFCS 0x001E4560 /* Reset: GLOBR */
+-#define I40E_PRTDCB_TFCS_TXOFF_SHIFT 0
+-#define I40E_PRTDCB_TFCS_TXOFF_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF0_SHIFT 8
+-#define I40E_PRTDCB_TFCS_TXOFF0_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF0_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF1_SHIFT 9
+-#define I40E_PRTDCB_TFCS_TXOFF1_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF1_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF2_SHIFT 10
+-#define I40E_PRTDCB_TFCS_TXOFF2_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF2_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF3_SHIFT 11
+-#define I40E_PRTDCB_TFCS_TXOFF3_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF3_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF4_SHIFT 12
+-#define I40E_PRTDCB_TFCS_TXOFF4_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF4_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF5_SHIFT 13
+-#define I40E_PRTDCB_TFCS_TXOFF5_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF5_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF6_SHIFT 14
+-#define I40E_PRTDCB_TFCS_TXOFF6_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF6_SHIFT)
+-#define I40E_PRTDCB_TFCS_TXOFF7_SHIFT 15
+-#define I40E_PRTDCB_TFCS_TXOFF7_MASK I40E_MASK(0x1, I40E_PRTDCB_TFCS_TXOFF7_SHIFT)
+-#define I40E_PRTDCB_TPFCTS(_i) (0x001E4660 + ((_i) * 32)) /* _i=0...7 */ /* Reset: GLOBR */
+-#define I40E_PRTDCB_TPFCTS_MAX_INDEX 7
+-#define I40E_PRTDCB_TPFCTS_PFCTIMER_SHIFT 0
+-#define I40E_PRTDCB_TPFCTS_PFCTIMER_MASK I40E_MASK(0x3FFF, I40E_PRTDCB_TPFCTS_PFCTIMER_SHIFT)
+-#define I40E_GLFCOE_RCTL 0x00269B94 /* Reset: CORER */
+-#define I40E_GLFCOE_RCTL_FCOEVER_SHIFT 0
+-#define I40E_GLFCOE_RCTL_FCOEVER_MASK I40E_MASK(0xF, I40E_GLFCOE_RCTL_FCOEVER_SHIFT)
+-#define I40E_GLFCOE_RCTL_SAVBAD_SHIFT 4
+-#define I40E_GLFCOE_RCTL_SAVBAD_MASK I40E_MASK(0x1, I40E_GLFCOE_RCTL_SAVBAD_SHIFT)
+-#define I40E_GLFCOE_RCTL_ICRC_SHIFT 5
+-#define I40E_GLFCOE_RCTL_ICRC_MASK I40E_MASK(0x1, I40E_GLFCOE_RCTL_ICRC_SHIFT)
+-#define I40E_GLFCOE_RCTL_MAX_SIZE_SHIFT 16
+-#define I40E_GLFCOE_RCTL_MAX_SIZE_MASK I40E_MASK(0x3FFF, I40E_GLFCOE_RCTL_MAX_SIZE_SHIFT)
+ #define I40E_GL_FWSTS 0x00083048 /* Reset: POR */
+-#define I40E_GL_FWSTS_FWS0B_SHIFT 0
+-#define I40E_GL_FWSTS_FWS0B_MASK I40E_MASK(0xFF, I40E_GL_FWSTS_FWS0B_SHIFT)
+-#define I40E_GL_FWSTS_FWRI_SHIFT 9
+-#define I40E_GL_FWSTS_FWRI_MASK I40E_MASK(0x1, I40E_GL_FWSTS_FWRI_SHIFT)
+ #define I40E_GL_FWSTS_FWS1B_SHIFT 16
+ #define I40E_GL_FWSTS_FWS1B_MASK I40E_MASK(0xFF, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK I40E_MASK(0x30, I40E_GL_FWSTS_FWS1B_SHIFT)
+@@ -369,500 +49,119 @@
+ #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_NVM_MASK I40E_MASK(0x33, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_X722_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK I40E_MASK(0xB, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_X722_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK I40E_MASK(0xC, I40E_GL_FWSTS_FWS1B_SHIFT)
+-#define I40E_GLGEN_CLKSTAT 0x000B8184 /* Reset: POR */
+-#define I40E_GLGEN_CLKSTAT_CLKMODE_SHIFT 0
+-#define I40E_GLGEN_CLKSTAT_CLKMODE_MASK I40E_MASK(0x1, I40E_GLGEN_CLKSTAT_CLKMODE_SHIFT)
+-#define I40E_GLGEN_CLKSTAT_U_CLK_SPEED_SHIFT 4
+-#define I40E_GLGEN_CLKSTAT_U_CLK_SPEED_MASK I40E_MASK(0x3, I40E_GLGEN_CLKSTAT_U_CLK_SPEED_SHIFT)
+-#define I40E_GLGEN_CLKSTAT_P0_CLK_SPEED_SHIFT 8
+-#define I40E_GLGEN_CLKSTAT_P0_CLK_SPEED_MASK I40E_MASK(0x7, I40E_GLGEN_CLKSTAT_P0_CLK_SPEED_SHIFT)
+-#define I40E_GLGEN_CLKSTAT_P1_CLK_SPEED_SHIFT 12
+-#define I40E_GLGEN_CLKSTAT_P1_CLK_SPEED_MASK I40E_MASK(0x7, I40E_GLGEN_CLKSTAT_P1_CLK_SPEED_SHIFT)
+-#define I40E_GLGEN_CLKSTAT_P2_CLK_SPEED_SHIFT 16
+-#define I40E_GLGEN_CLKSTAT_P2_CLK_SPEED_MASK I40E_MASK(0x7, I40E_GLGEN_CLKSTAT_P2_CLK_SPEED_SHIFT)
+-#define I40E_GLGEN_CLKSTAT_P3_CLK_SPEED_SHIFT 20
+-#define I40E_GLGEN_CLKSTAT_P3_CLK_SPEED_MASK I40E_MASK(0x7, I40E_GLGEN_CLKSTAT_P3_CLK_SPEED_SHIFT)
+ #define I40E_GLGEN_GPIO_CTL(_i) (0x00088100 + ((_i) * 4)) /* _i=0...29 */ /* Reset: POR */
+ #define I40E_GLGEN_GPIO_CTL_MAX_INDEX 29
+ #define I40E_GLGEN_GPIO_CTL_PRT_NUM_SHIFT 0
+ #define I40E_GLGEN_GPIO_CTL_PRT_NUM_MASK I40E_MASK(0x3, I40E_GLGEN_GPIO_CTL_PRT_NUM_SHIFT)
+ #define I40E_GLGEN_GPIO_CTL_PRT_NUM_NA_SHIFT 3
+ #define I40E_GLGEN_GPIO_CTL_PRT_NUM_NA_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_PRT_NUM_NA_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_PIN_DIR_SHIFT 4
+-#define I40E_GLGEN_GPIO_CTL_PIN_DIR_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_PIN_DIR_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_TRI_CTL_SHIFT 5
+-#define I40E_GLGEN_GPIO_CTL_TRI_CTL_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_TRI_CTL_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_OUT_CTL_SHIFT 6
+-#define I40E_GLGEN_GPIO_CTL_OUT_CTL_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_OUT_CTL_SHIFT)
+ #define I40E_GLGEN_GPIO_CTL_PIN_FUNC_SHIFT 7
+ #define I40E_GLGEN_GPIO_CTL_PIN_FUNC_MASK I40E_MASK(0x7, I40E_GLGEN_GPIO_CTL_PIN_FUNC_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_LED_INVRT_SHIFT 10
+-#define I40E_GLGEN_GPIO_CTL_LED_INVRT_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_LED_INVRT_SHIFT)
+ #define I40E_GLGEN_GPIO_CTL_LED_BLINK_SHIFT 11
+-#define I40E_GLGEN_GPIO_CTL_LED_BLINK_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_LED_BLINK_SHIFT)
+ #define I40E_GLGEN_GPIO_CTL_LED_MODE_SHIFT 12
+ #define I40E_GLGEN_GPIO_CTL_LED_MODE_MASK I40E_MASK(0x1F, I40E_GLGEN_GPIO_CTL_LED_MODE_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_INT_MODE_SHIFT 17
+-#define I40E_GLGEN_GPIO_CTL_INT_MODE_MASK I40E_MASK(0x3, I40E_GLGEN_GPIO_CTL_INT_MODE_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_OUT_DEFAULT_SHIFT 19
+-#define I40E_GLGEN_GPIO_CTL_OUT_DEFAULT_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_CTL_OUT_DEFAULT_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_PHY_PIN_NAME_SHIFT 20
+-#define I40E_GLGEN_GPIO_CTL_PHY_PIN_NAME_MASK I40E_MASK(0x3F, I40E_GLGEN_GPIO_CTL_PHY_PIN_NAME_SHIFT)
+-#define I40E_GLGEN_GPIO_CTL_PRT_BIT_MAP_SHIFT 26
+-#define I40E_GLGEN_GPIO_CTL_PRT_BIT_MAP_MASK I40E_MASK(0xF, I40E_GLGEN_GPIO_CTL_PRT_BIT_MAP_SHIFT)
+-#define I40E_GLGEN_GPIO_SET 0x00088184 /* Reset: POR */
+-#define I40E_GLGEN_GPIO_SET_GPIO_INDX_SHIFT 0
+-#define I40E_GLGEN_GPIO_SET_GPIO_INDX_MASK I40E_MASK(0x1F, I40E_GLGEN_GPIO_SET_GPIO_INDX_SHIFT)
+-#define I40E_GLGEN_GPIO_SET_SDP_DATA_SHIFT 5
+-#define I40E_GLGEN_GPIO_SET_SDP_DATA_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_SET_SDP_DATA_SHIFT)
+-#define I40E_GLGEN_GPIO_SET_DRIVE_SDP_SHIFT 6
+-#define I40E_GLGEN_GPIO_SET_DRIVE_SDP_MASK I40E_MASK(0x1, I40E_GLGEN_GPIO_SET_DRIVE_SDP_SHIFT)
+-#define I40E_GLGEN_GPIO_STAT 0x0008817C /* Reset: POR */
+-#define I40E_GLGEN_GPIO_STAT_GPIO_VALUE_SHIFT 0
+-#define I40E_GLGEN_GPIO_STAT_GPIO_VALUE_MASK I40E_MASK(0x3FFFFFFF, I40E_GLGEN_GPIO_STAT_GPIO_VALUE_SHIFT)
+-#define I40E_GLGEN_GPIO_TRANSIT 0x00088180 /* Reset: POR */
+-#define I40E_GLGEN_GPIO_TRANSIT_GPIO_TRANSITION_SHIFT 0
+-#define I40E_GLGEN_GPIO_TRANSIT_GPIO_TRANSITION_MASK I40E_MASK(0x3FFFFFFF, I40E_GLGEN_GPIO_TRANSIT_GPIO_TRANSITION_SHIFT)
+-#define I40E_GLGEN_I2CCMD(_i) (0x000881E0 + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_GLGEN_I2CCMD_MAX_INDEX 3
+-#define I40E_GLGEN_I2CCMD_DATA_SHIFT 0
+-#define I40E_GLGEN_I2CCMD_DATA_MASK I40E_MASK(0xFFFF, I40E_GLGEN_I2CCMD_DATA_SHIFT)
+-#define I40E_GLGEN_I2CCMD_REGADD_SHIFT 16
+-#define I40E_GLGEN_I2CCMD_REGADD_MASK I40E_MASK(0xFF, I40E_GLGEN_I2CCMD_REGADD_SHIFT)
+-#define I40E_GLGEN_I2CCMD_PHYADD_SHIFT 24
+-#define I40E_GLGEN_I2CCMD_PHYADD_MASK I40E_MASK(0x7, I40E_GLGEN_I2CCMD_PHYADD_SHIFT)
+-#define I40E_GLGEN_I2CCMD_OP_SHIFT 27
+-#define I40E_GLGEN_I2CCMD_OP_MASK I40E_MASK(0x1, I40E_GLGEN_I2CCMD_OP_SHIFT)
+-#define I40E_GLGEN_I2CCMD_RESET_SHIFT 28
+-#define I40E_GLGEN_I2CCMD_RESET_MASK I40E_MASK(0x1, I40E_GLGEN_I2CCMD_RESET_SHIFT)
+-#define I40E_GLGEN_I2CCMD_R_SHIFT 29
+-#define I40E_GLGEN_I2CCMD_R_MASK I40E_MASK(0x1, I40E_GLGEN_I2CCMD_R_SHIFT)
+-#define I40E_GLGEN_I2CCMD_E_SHIFT 31
+-#define I40E_GLGEN_I2CCMD_E_MASK I40E_MASK(0x1, I40E_GLGEN_I2CCMD_E_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS(_i) (0x000881AC + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_GLGEN_I2CPARAMS_MAX_INDEX 3
+-#define I40E_GLGEN_I2CPARAMS_WRITE_TIME_SHIFT 0
+-#define I40E_GLGEN_I2CPARAMS_WRITE_TIME_MASK I40E_MASK(0x1F, I40E_GLGEN_I2CPARAMS_WRITE_TIME_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_READ_TIME_SHIFT 5
+-#define I40E_GLGEN_I2CPARAMS_READ_TIME_MASK I40E_MASK(0x7, I40E_GLGEN_I2CPARAMS_READ_TIME_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_I2CBB_EN_SHIFT 8
+-#define I40E_GLGEN_I2CPARAMS_I2CBB_EN_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_I2CBB_EN_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_CLK_SHIFT 9
+-#define I40E_GLGEN_I2CPARAMS_CLK_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_CLK_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_DATA_OUT_SHIFT 10
+-#define I40E_GLGEN_I2CPARAMS_DATA_OUT_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_DATA_OUT_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_DATA_OE_N_SHIFT 11
+-#define I40E_GLGEN_I2CPARAMS_DATA_OE_N_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_DATA_OE_N_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_DATA_IN_SHIFT 12
+-#define I40E_GLGEN_I2CPARAMS_DATA_IN_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_DATA_IN_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_CLK_OE_N_SHIFT 13
+-#define I40E_GLGEN_I2CPARAMS_CLK_OE_N_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_CLK_OE_N_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_CLK_IN_SHIFT 14
+-#define I40E_GLGEN_I2CPARAMS_CLK_IN_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_CLK_IN_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_CLK_STRETCH_DIS_SHIFT 15
+-#define I40E_GLGEN_I2CPARAMS_CLK_STRETCH_DIS_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_CLK_STRETCH_DIS_SHIFT)
+-#define I40E_GLGEN_I2CPARAMS_I2C_DATA_ORDER_SHIFT 31
+-#define I40E_GLGEN_I2CPARAMS_I2C_DATA_ORDER_MASK I40E_MASK(0x1, I40E_GLGEN_I2CPARAMS_I2C_DATA_ORDER_SHIFT)
+-#define I40E_GLGEN_LED_CTL 0x00088178 /* Reset: POR */
+-#define I40E_GLGEN_LED_CTL_GLOBAL_BLINK_MODE_SHIFT 0
+-#define I40E_GLGEN_LED_CTL_GLOBAL_BLINK_MODE_MASK I40E_MASK(0x1, I40E_GLGEN_LED_CTL_GLOBAL_BLINK_MODE_SHIFT)
+-#define I40E_GLGEN_MDIO_CTRL(_i) (0x000881D0 + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_GLGEN_MDIO_CTRL_MAX_INDEX 3
+-#define I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD2_SHIFT 0
+-#define I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD2_MASK I40E_MASK(0x1FFFF, I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD2_SHIFT)
+-#define I40E_GLGEN_MDIO_CTRL_CONTMDC_SHIFT 17
+-#define I40E_GLGEN_MDIO_CTRL_CONTMDC_MASK I40E_MASK(0x1, I40E_GLGEN_MDIO_CTRL_CONTMDC_SHIFT)
+-#define I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD1_SHIFT 18
+-#define I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD1_MASK I40E_MASK(0x7FF, I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD1_SHIFT)
+-#define I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD0_SHIFT 29
+-#define I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD0_MASK I40E_MASK(0x7, I40E_GLGEN_MDIO_CTRL_LEGACY_RSVD0_SHIFT)
+ #define I40E_GLGEN_MDIO_I2C_SEL(_i) (0x000881C0 + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_GLGEN_MDIO_I2C_SEL_MAX_INDEX 3
+-#define I40E_GLGEN_MDIO_I2C_SEL_MDIO_I2C_SEL_SHIFT 0
+-#define I40E_GLGEN_MDIO_I2C_SEL_MDIO_I2C_SEL_MASK I40E_MASK(0x1, I40E_GLGEN_MDIO_I2C_SEL_MDIO_I2C_SEL_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY_PORT_NUM_SHIFT 1
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY_PORT_NUM_MASK I40E_MASK(0xF, I40E_GLGEN_MDIO_I2C_SEL_PHY_PORT_NUM_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY0_ADDRESS_SHIFT 5
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY0_ADDRESS_MASK I40E_MASK(0x1F, I40E_GLGEN_MDIO_I2C_SEL_PHY0_ADDRESS_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY1_ADDRESS_SHIFT 10
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY1_ADDRESS_MASK I40E_MASK(0x1F, I40E_GLGEN_MDIO_I2C_SEL_PHY1_ADDRESS_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY2_ADDRESS_SHIFT 15
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY2_ADDRESS_MASK I40E_MASK(0x1F, I40E_GLGEN_MDIO_I2C_SEL_PHY2_ADDRESS_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY3_ADDRESS_SHIFT 20
+-#define I40E_GLGEN_MDIO_I2C_SEL_PHY3_ADDRESS_MASK I40E_MASK(0x1F, I40E_GLGEN_MDIO_I2C_SEL_PHY3_ADDRESS_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_MDIO_IF_MODE_SHIFT 25
+-#define I40E_GLGEN_MDIO_I2C_SEL_MDIO_IF_MODE_MASK I40E_MASK(0xF, I40E_GLGEN_MDIO_I2C_SEL_MDIO_IF_MODE_SHIFT)
+-#define I40E_GLGEN_MDIO_I2C_SEL_EN_FAST_MODE_SHIFT 31
+-#define I40E_GLGEN_MDIO_I2C_SEL_EN_FAST_MODE_MASK I40E_MASK(0x1, I40E_GLGEN_MDIO_I2C_SEL_EN_FAST_MODE_SHIFT)
+ #define I40E_GLGEN_MSCA(_i) (0x0008818C + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_GLGEN_MSCA_MAX_INDEX 3
+ #define I40E_GLGEN_MSCA_MDIADD_SHIFT 0
+-#define I40E_GLGEN_MSCA_MDIADD_MASK I40E_MASK(0xFFFF, I40E_GLGEN_MSCA_MDIADD_SHIFT)
+ #define I40E_GLGEN_MSCA_DEVADD_SHIFT 16
+-#define I40E_GLGEN_MSCA_DEVADD_MASK I40E_MASK(0x1F, I40E_GLGEN_MSCA_DEVADD_SHIFT)
+ #define I40E_GLGEN_MSCA_PHYADD_SHIFT 21
+-#define I40E_GLGEN_MSCA_PHYADD_MASK I40E_MASK(0x1F, I40E_GLGEN_MSCA_PHYADD_SHIFT)
+ #define I40E_GLGEN_MSCA_OPCODE_SHIFT 26
+-#define I40E_GLGEN_MSCA_OPCODE_MASK I40E_MASK(0x3, I40E_GLGEN_MSCA_OPCODE_SHIFT)
+ #define I40E_GLGEN_MSCA_STCODE_SHIFT 28
+-#define I40E_GLGEN_MSCA_STCODE_MASK I40E_MASK(0x3, I40E_GLGEN_MSCA_STCODE_SHIFT)
+ #define I40E_GLGEN_MSCA_MDICMD_SHIFT 30
+ #define I40E_GLGEN_MSCA_MDICMD_MASK I40E_MASK(0x1, I40E_GLGEN_MSCA_MDICMD_SHIFT)
+ #define I40E_GLGEN_MSCA_MDIINPROGEN_SHIFT 31
+ #define I40E_GLGEN_MSCA_MDIINPROGEN_MASK I40E_MASK(0x1u, I40E_GLGEN_MSCA_MDIINPROGEN_SHIFT)
+ #define I40E_GLGEN_MSRWD(_i) (0x0008819C + ((_i) * 4)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_GLGEN_MSRWD_MAX_INDEX 3
+ #define I40E_GLGEN_MSRWD_MDIWRDATA_SHIFT 0
+-#define I40E_GLGEN_MSRWD_MDIWRDATA_MASK I40E_MASK(0xFFFF, I40E_GLGEN_MSRWD_MDIWRDATA_SHIFT)
+ #define I40E_GLGEN_MSRWD_MDIRDDATA_SHIFT 16
+ #define I40E_GLGEN_MSRWD_MDIRDDATA_MASK I40E_MASK(0xFFFF, I40E_GLGEN_MSRWD_MDIRDDATA_SHIFT)
+-#define I40E_GLGEN_PCIFCNCNT 0x001C0AB4 /* Reset: PCIR */
+-#define I40E_GLGEN_PCIFCNCNT_PCIPFCNT_SHIFT 0
+-#define I40E_GLGEN_PCIFCNCNT_PCIPFCNT_MASK I40E_MASK(0x1F, I40E_GLGEN_PCIFCNCNT_PCIPFCNT_SHIFT)
+-#define I40E_GLGEN_PCIFCNCNT_PCIVFCNT_SHIFT 16
+-#define I40E_GLGEN_PCIFCNCNT_PCIVFCNT_MASK I40E_MASK(0xFF, I40E_GLGEN_PCIFCNCNT_PCIVFCNT_SHIFT)
+ #define I40E_GLGEN_RSTAT 0x000B8188 /* Reset: POR */
+ #define I40E_GLGEN_RSTAT_DEVSTATE_SHIFT 0
+ #define I40E_GLGEN_RSTAT_DEVSTATE_MASK I40E_MASK(0x3, I40E_GLGEN_RSTAT_DEVSTATE_SHIFT)
+ #define I40E_GLGEN_RSTAT_RESET_TYPE_SHIFT 2
+ #define I40E_GLGEN_RSTAT_RESET_TYPE_MASK I40E_MASK(0x3, I40E_GLGEN_RSTAT_RESET_TYPE_SHIFT)
+-#define I40E_GLGEN_RSTAT_CORERCNT_SHIFT 4
+-#define I40E_GLGEN_RSTAT_CORERCNT_MASK I40E_MASK(0x3, I40E_GLGEN_RSTAT_CORERCNT_SHIFT)
+-#define I40E_GLGEN_RSTAT_GLOBRCNT_SHIFT 6
+-#define I40E_GLGEN_RSTAT_GLOBRCNT_MASK I40E_MASK(0x3, I40E_GLGEN_RSTAT_GLOBRCNT_SHIFT)
+-#define I40E_GLGEN_RSTAT_EMPRCNT_SHIFT 8
+-#define I40E_GLGEN_RSTAT_EMPRCNT_MASK I40E_MASK(0x3, I40E_GLGEN_RSTAT_EMPRCNT_SHIFT)
+-#define I40E_GLGEN_RSTAT_TIME_TO_RST_SHIFT 10
+-#define I40E_GLGEN_RSTAT_TIME_TO_RST_MASK I40E_MASK(0x3F, I40E_GLGEN_RSTAT_TIME_TO_RST_SHIFT)
+ #define I40E_GLGEN_RSTCTL 0x000B8180 /* Reset: POR */
+ #define I40E_GLGEN_RSTCTL_GRSTDEL_SHIFT 0
+ #define I40E_GLGEN_RSTCTL_GRSTDEL_MASK I40E_MASK(0x3F, I40E_GLGEN_RSTCTL_GRSTDEL_SHIFT)
+-#define I40E_GLGEN_RSTCTL_ECC_RST_ENA_SHIFT 8
+-#define I40E_GLGEN_RSTCTL_ECC_RST_ENA_MASK I40E_MASK(0x1, I40E_GLGEN_RSTCTL_ECC_RST_ENA_SHIFT)
+ #define I40E_GLGEN_RTRIG 0x000B8190 /* Reset: CORER */
+ #define I40E_GLGEN_RTRIG_CORER_SHIFT 0
+ #define I40E_GLGEN_RTRIG_CORER_MASK I40E_MASK(0x1, I40E_GLGEN_RTRIG_CORER_SHIFT)
+ #define I40E_GLGEN_RTRIG_GLOBR_SHIFT 1
+ #define I40E_GLGEN_RTRIG_GLOBR_MASK I40E_MASK(0x1, I40E_GLGEN_RTRIG_GLOBR_SHIFT)
+-#define I40E_GLGEN_RTRIG_EMPFWR_SHIFT 2
+-#define I40E_GLGEN_RTRIG_EMPFWR_MASK I40E_MASK(0x1, I40E_GLGEN_RTRIG_EMPFWR_SHIFT)
+ #define I40E_GLGEN_STAT 0x000B612C /* Reset: POR */
+-#define I40E_GLGEN_STAT_HWRSVD0_SHIFT 0
+-#define I40E_GLGEN_STAT_HWRSVD0_MASK I40E_MASK(0x3, I40E_GLGEN_STAT_HWRSVD0_SHIFT)
+-#define I40E_GLGEN_STAT_DCBEN_SHIFT 2
+-#define I40E_GLGEN_STAT_DCBEN_MASK I40E_MASK(0x1, I40E_GLGEN_STAT_DCBEN_SHIFT)
+-#define I40E_GLGEN_STAT_VTEN_SHIFT 3
+-#define I40E_GLGEN_STAT_VTEN_MASK I40E_MASK(0x1, I40E_GLGEN_STAT_VTEN_SHIFT)
+-#define I40E_GLGEN_STAT_FCOEN_SHIFT 4
+-#define I40E_GLGEN_STAT_FCOEN_MASK I40E_MASK(0x1, I40E_GLGEN_STAT_FCOEN_SHIFT)
+-#define I40E_GLGEN_STAT_EVBEN_SHIFT 5
+-#define I40E_GLGEN_STAT_EVBEN_MASK I40E_MASK(0x1, I40E_GLGEN_STAT_EVBEN_SHIFT)
+-#define I40E_GLGEN_STAT_HWRSVD1_SHIFT 6
+-#define I40E_GLGEN_STAT_HWRSVD1_MASK I40E_MASK(0x3, I40E_GLGEN_STAT_HWRSVD1_SHIFT)
+ #define I40E_GLGEN_VFLRSTAT(_i) (0x00092600 + ((_i) * 4)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLGEN_VFLRSTAT_MAX_INDEX 3
+-#define I40E_GLGEN_VFLRSTAT_VFLRE_SHIFT 0
+-#define I40E_GLGEN_VFLRSTAT_VFLRE_MASK I40E_MASK(0xFFFFFFFF, I40E_GLGEN_VFLRSTAT_VFLRE_SHIFT)
+ #define I40E_GLVFGEN_TIMER 0x000881BC /* Reset: CORER */
+-#define I40E_GLVFGEN_TIMER_GTIME_SHIFT 0
+-#define I40E_GLVFGEN_TIMER_GTIME_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVFGEN_TIMER_GTIME_SHIFT)
+ #define I40E_PFGEN_CTRL 0x00092400 /* Reset: PFR */
+ #define I40E_PFGEN_CTRL_PFSWR_SHIFT 0
+ #define I40E_PFGEN_CTRL_PFSWR_MASK I40E_MASK(0x1, I40E_PFGEN_CTRL_PFSWR_SHIFT)
+-#define I40E_PFGEN_DRUN 0x00092500 /* Reset: CORER */
+-#define I40E_PFGEN_DRUN_DRVUNLD_SHIFT 0
+-#define I40E_PFGEN_DRUN_DRVUNLD_MASK I40E_MASK(0x1, I40E_PFGEN_DRUN_DRVUNLD_SHIFT)
+ #define I40E_PFGEN_PORTNUM 0x001C0480 /* Reset: CORER */
+ #define I40E_PFGEN_PORTNUM_PORT_NUM_SHIFT 0
+ #define I40E_PFGEN_PORTNUM_PORT_NUM_MASK I40E_MASK(0x3, I40E_PFGEN_PORTNUM_PORT_NUM_SHIFT)
+-#define I40E_PFGEN_STATE 0x00088000 /* Reset: CORER */
+-#define I40E_PFGEN_STATE_RESERVED_0_SHIFT 0
+-#define I40E_PFGEN_STATE_RESERVED_0_MASK I40E_MASK(0x1, I40E_PFGEN_STATE_RESERVED_0_SHIFT)
+-#define I40E_PFGEN_STATE_PFFCEN_SHIFT 1
+-#define I40E_PFGEN_STATE_PFFCEN_MASK I40E_MASK(0x1, I40E_PFGEN_STATE_PFFCEN_SHIFT)
+-#define I40E_PFGEN_STATE_PFLINKEN_SHIFT 2
+-#define I40E_PFGEN_STATE_PFLINKEN_MASK I40E_MASK(0x1, I40E_PFGEN_STATE_PFLINKEN_SHIFT)
+-#define I40E_PFGEN_STATE_PFSCEN_SHIFT 3
+-#define I40E_PFGEN_STATE_PFSCEN_MASK I40E_MASK(0x1, I40E_PFGEN_STATE_PFSCEN_SHIFT)
+ #define I40E_PRTGEN_CNF 0x000B8120 /* Reset: POR */
+ #define I40E_PRTGEN_CNF_PORT_DIS_SHIFT 0
+ #define I40E_PRTGEN_CNF_PORT_DIS_MASK I40E_MASK(0x1, I40E_PRTGEN_CNF_PORT_DIS_SHIFT)
+-#define I40E_PRTGEN_CNF_ALLOW_PORT_DIS_SHIFT 1
+-#define I40E_PRTGEN_CNF_ALLOW_PORT_DIS_MASK I40E_MASK(0x1, I40E_PRTGEN_CNF_ALLOW_PORT_DIS_SHIFT)
+-#define I40E_PRTGEN_CNF_EMP_PORT_DIS_SHIFT 2
+-#define I40E_PRTGEN_CNF_EMP_PORT_DIS_MASK I40E_MASK(0x1, I40E_PRTGEN_CNF_EMP_PORT_DIS_SHIFT)
+-#define I40E_PRTGEN_CNF2 0x000B8160 /* Reset: POR */
+-#define I40E_PRTGEN_CNF2_ACTIVATE_PORT_LINK_SHIFT 0
+-#define I40E_PRTGEN_CNF2_ACTIVATE_PORT_LINK_MASK I40E_MASK(0x1, I40E_PRTGEN_CNF2_ACTIVATE_PORT_LINK_SHIFT)
+ #define I40E_PRTGEN_STATUS 0x000B8100 /* Reset: POR */
+-#define I40E_PRTGEN_STATUS_PORT_VALID_SHIFT 0
+-#define I40E_PRTGEN_STATUS_PORT_VALID_MASK I40E_MASK(0x1, I40E_PRTGEN_STATUS_PORT_VALID_SHIFT)
+-#define I40E_PRTGEN_STATUS_PORT_ACTIVE_SHIFT 1
+-#define I40E_PRTGEN_STATUS_PORT_ACTIVE_MASK I40E_MASK(0x1, I40E_PRTGEN_STATUS_PORT_ACTIVE_SHIFT)
+ #define I40E_VFGEN_RSTAT1(_VF) (0x00074400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFGEN_RSTAT1_MAX_INDEX 127
+-#define I40E_VFGEN_RSTAT1_VFR_STATE_SHIFT 0
+-#define I40E_VFGEN_RSTAT1_VFR_STATE_MASK I40E_MASK(0x3, I40E_VFGEN_RSTAT1_VFR_STATE_SHIFT)
+ #define I40E_VPGEN_VFRSTAT(_VF) (0x00091C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VPGEN_VFRSTAT_MAX_INDEX 127
+ #define I40E_VPGEN_VFRSTAT_VFRD_SHIFT 0
+ #define I40E_VPGEN_VFRSTAT_VFRD_MASK I40E_MASK(0x1, I40E_VPGEN_VFRSTAT_VFRD_SHIFT)
+ #define I40E_VPGEN_VFRTRIG(_VF) (0x00091800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VPGEN_VFRTRIG_MAX_INDEX 127
+ #define I40E_VPGEN_VFRTRIG_VFSWR_SHIFT 0
+ #define I40E_VPGEN_VFRTRIG_VFSWR_MASK I40E_MASK(0x1, I40E_VPGEN_VFRTRIG_VFSWR_SHIFT)
+-#define I40E_VSIGEN_RSTAT(_VSI) (0x00090800 + ((_VSI) * 4)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_VSIGEN_RSTAT_MAX_INDEX 383
+-#define I40E_VSIGEN_RSTAT_VMRD_SHIFT 0
+-#define I40E_VSIGEN_RSTAT_VMRD_MASK I40E_MASK(0x1, I40E_VSIGEN_RSTAT_VMRD_SHIFT)
+-#define I40E_VSIGEN_RTRIG(_VSI) (0x00090000 + ((_VSI) * 4)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_VSIGEN_RTRIG_MAX_INDEX 383
+-#define I40E_VSIGEN_RTRIG_VMSWR_SHIFT 0
+-#define I40E_VSIGEN_RTRIG_VMSWR_MASK I40E_MASK(0x1, I40E_VSIGEN_RTRIG_VMSWR_SHIFT)
+ #define I40E_GLHMC_FCOEDDPBASE(_i) (0x000C6600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FCOEDDPBASE_MAX_INDEX 15
+ #define I40E_GLHMC_FCOEDDPBASE_FPMFCOEDDPBASE_SHIFT 0
+ #define I40E_GLHMC_FCOEDDPBASE_FPMFCOEDDPBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_FCOEDDPBASE_FPMFCOEDDPBASE_SHIFT)
+ #define I40E_GLHMC_FCOEDDPCNT(_i) (0x000C6700 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FCOEDDPCNT_MAX_INDEX 15
+-#define I40E_GLHMC_FCOEDDPCNT_FPMFCOEDDPCNT_SHIFT 0
+-#define I40E_GLHMC_FCOEDDPCNT_FPMFCOEDDPCNT_MASK I40E_MASK(0xFFFFF, I40E_GLHMC_FCOEDDPCNT_FPMFCOEDDPCNT_SHIFT)
+ #define I40E_GLHMC_FCOEDDPOBJSZ 0x000C2010 /* Reset: CORER */
+-#define I40E_GLHMC_FCOEDDPOBJSZ_PMFCOEDDPOBJSZ_SHIFT 0
+-#define I40E_GLHMC_FCOEDDPOBJSZ_PMFCOEDDPOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_FCOEDDPOBJSZ_PMFCOEDDPOBJSZ_SHIFT)
+ #define I40E_GLHMC_FCOEFBASE(_i) (0x000C6800 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FCOEFBASE_MAX_INDEX 15
+ #define I40E_GLHMC_FCOEFBASE_FPMFCOEFBASE_SHIFT 0
+ #define I40E_GLHMC_FCOEFBASE_FPMFCOEFBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_FCOEFBASE_FPMFCOEFBASE_SHIFT)
+ #define I40E_GLHMC_FCOEFCNT(_i) (0x000C6900 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FCOEFCNT_MAX_INDEX 15
+-#define I40E_GLHMC_FCOEFCNT_FPMFCOEFCNT_SHIFT 0
+-#define I40E_GLHMC_FCOEFCNT_FPMFCOEFCNT_MASK I40E_MASK(0x7FFFFF, I40E_GLHMC_FCOEFCNT_FPMFCOEFCNT_SHIFT)
+ #define I40E_GLHMC_FCOEFMAX 0x000C20D0 /* Reset: CORER */
+ #define I40E_GLHMC_FCOEFMAX_PMFCOEFMAX_SHIFT 0
+ #define I40E_GLHMC_FCOEFMAX_PMFCOEFMAX_MASK I40E_MASK(0xFFFF, I40E_GLHMC_FCOEFMAX_PMFCOEFMAX_SHIFT)
+ #define I40E_GLHMC_FCOEFOBJSZ 0x000C2018 /* Reset: CORER */
+-#define I40E_GLHMC_FCOEFOBJSZ_PMFCOEFOBJSZ_SHIFT 0
+-#define I40E_GLHMC_FCOEFOBJSZ_PMFCOEFOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_FCOEFOBJSZ_PMFCOEFOBJSZ_SHIFT)
+ #define I40E_GLHMC_FCOEMAX 0x000C2014 /* Reset: CORER */
+-#define I40E_GLHMC_FCOEMAX_PMFCOEMAX_SHIFT 0
+-#define I40E_GLHMC_FCOEMAX_PMFCOEMAX_MASK I40E_MASK(0x1FFF, I40E_GLHMC_FCOEMAX_PMFCOEMAX_SHIFT)
+-#define I40E_GLHMC_FSIAVBASE(_i) (0x000C5600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FSIAVBASE_MAX_INDEX 15
+-#define I40E_GLHMC_FSIAVBASE_FPMFSIAVBASE_SHIFT 0
+-#define I40E_GLHMC_FSIAVBASE_FPMFSIAVBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_FSIAVBASE_FPMFSIAVBASE_SHIFT)
+-#define I40E_GLHMC_FSIAVCNT(_i) (0x000C5700 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FSIAVCNT_MAX_INDEX 15
+-#define I40E_GLHMC_FSIAVCNT_FPMFSIAVCNT_SHIFT 0
+-#define I40E_GLHMC_FSIAVCNT_FPMFSIAVCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_FSIAVCNT_FPMFSIAVCNT_SHIFT)
+-#define I40E_GLHMC_FSIAVCNT_RSVD_SHIFT 29
+-#define I40E_GLHMC_FSIAVCNT_RSVD_MASK I40E_MASK(0x7, I40E_GLHMC_FSIAVCNT_RSVD_SHIFT)
+-#define I40E_GLHMC_FSIAVMAX 0x000C2068 /* Reset: CORER */
+-#define I40E_GLHMC_FSIAVMAX_PMFSIAVMAX_SHIFT 0
+-#define I40E_GLHMC_FSIAVMAX_PMFSIAVMAX_MASK I40E_MASK(0x1FFFF, I40E_GLHMC_FSIAVMAX_PMFSIAVMAX_SHIFT)
+-#define I40E_GLHMC_FSIAVOBJSZ 0x000C2064 /* Reset: CORER */
+-#define I40E_GLHMC_FSIAVOBJSZ_PMFSIAVOBJSZ_SHIFT 0
+-#define I40E_GLHMC_FSIAVOBJSZ_PMFSIAVOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_FSIAVOBJSZ_PMFSIAVOBJSZ_SHIFT)
+-#define I40E_GLHMC_FSIMCBASE(_i) (0x000C6000 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FSIMCBASE_MAX_INDEX 15
+-#define I40E_GLHMC_FSIMCBASE_FPMFSIMCBASE_SHIFT 0
+-#define I40E_GLHMC_FSIMCBASE_FPMFSIMCBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_FSIMCBASE_FPMFSIMCBASE_SHIFT)
+-#define I40E_GLHMC_FSIMCCNT(_i) (0x000C6100 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_FSIMCCNT_MAX_INDEX 15
+-#define I40E_GLHMC_FSIMCCNT_FPMFSIMCSZ_SHIFT 0
+-#define I40E_GLHMC_FSIMCCNT_FPMFSIMCSZ_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_FSIMCCNT_FPMFSIMCSZ_SHIFT)
+-#define I40E_GLHMC_FSIMCMAX 0x000C2060 /* Reset: CORER */
+-#define I40E_GLHMC_FSIMCMAX_PMFSIMCMAX_SHIFT 0
+-#define I40E_GLHMC_FSIMCMAX_PMFSIMCMAX_MASK I40E_MASK(0x3FFF, I40E_GLHMC_FSIMCMAX_PMFSIMCMAX_SHIFT)
+-#define I40E_GLHMC_FSIMCOBJSZ 0x000C205c /* Reset: CORER */
+-#define I40E_GLHMC_FSIMCOBJSZ_PMFSIMCOBJSZ_SHIFT 0
+-#define I40E_GLHMC_FSIMCOBJSZ_PMFSIMCOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_FSIMCOBJSZ_PMFSIMCOBJSZ_SHIFT)
+ #define I40E_GLHMC_LANQMAX 0x000C2008 /* Reset: CORER */
+-#define I40E_GLHMC_LANQMAX_PMLANQMAX_SHIFT 0
+-#define I40E_GLHMC_LANQMAX_PMLANQMAX_MASK I40E_MASK(0x7FF, I40E_GLHMC_LANQMAX_PMLANQMAX_SHIFT)
+ #define I40E_GLHMC_LANRXBASE(_i) (0x000C6400 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_LANRXBASE_MAX_INDEX 15
+ #define I40E_GLHMC_LANRXBASE_FPMLANRXBASE_SHIFT 0
+ #define I40E_GLHMC_LANRXBASE_FPMLANRXBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_LANRXBASE_FPMLANRXBASE_SHIFT)
+ #define I40E_GLHMC_LANRXCNT(_i) (0x000C6500 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_LANRXCNT_MAX_INDEX 15
+-#define I40E_GLHMC_LANRXCNT_FPMLANRXCNT_SHIFT 0
+-#define I40E_GLHMC_LANRXCNT_FPMLANRXCNT_MASK I40E_MASK(0x7FF, I40E_GLHMC_LANRXCNT_FPMLANRXCNT_SHIFT)
+ #define I40E_GLHMC_LANRXOBJSZ 0x000C200c /* Reset: CORER */
+-#define I40E_GLHMC_LANRXOBJSZ_PMLANRXOBJSZ_SHIFT 0
+-#define I40E_GLHMC_LANRXOBJSZ_PMLANRXOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_LANRXOBJSZ_PMLANRXOBJSZ_SHIFT)
+ #define I40E_GLHMC_LANTXBASE(_i) (0x000C6200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_LANTXBASE_MAX_INDEX 15
+ #define I40E_GLHMC_LANTXBASE_FPMLANTXBASE_SHIFT 0
+ #define I40E_GLHMC_LANTXBASE_FPMLANTXBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_LANTXBASE_FPMLANTXBASE_SHIFT)
+-#define I40E_GLHMC_LANTXBASE_RSVD_SHIFT 24
+-#define I40E_GLHMC_LANTXBASE_RSVD_MASK I40E_MASK(0xFF, I40E_GLHMC_LANTXBASE_RSVD_SHIFT)
+ #define I40E_GLHMC_LANTXCNT(_i) (0x000C6300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_LANTXCNT_MAX_INDEX 15
+-#define I40E_GLHMC_LANTXCNT_FPMLANTXCNT_SHIFT 0
+-#define I40E_GLHMC_LANTXCNT_FPMLANTXCNT_MASK I40E_MASK(0x7FF, I40E_GLHMC_LANTXCNT_FPMLANTXCNT_SHIFT)
+ #define I40E_GLHMC_LANTXOBJSZ 0x000C2004 /* Reset: CORER */
+-#define I40E_GLHMC_LANTXOBJSZ_PMLANTXOBJSZ_SHIFT 0
+-#define I40E_GLHMC_LANTXOBJSZ_PMLANTXOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_LANTXOBJSZ_PMLANTXOBJSZ_SHIFT)
+-#define I40E_GLHMC_PFASSIGN(_i) (0x000C0c00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PFASSIGN_MAX_INDEX 15
+-#define I40E_GLHMC_PFASSIGN_PMFCNPFASSIGN_SHIFT 0
+-#define I40E_GLHMC_PFASSIGN_PMFCNPFASSIGN_MASK I40E_MASK(0xF, I40E_GLHMC_PFASSIGN_PMFCNPFASSIGN_SHIFT)
+-#define I40E_GLHMC_SDPART(_i) (0x000C0800 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_SDPART_MAX_INDEX 15
+-#define I40E_GLHMC_SDPART_PMSDBASE_SHIFT 0
+-#define I40E_GLHMC_SDPART_PMSDBASE_MASK I40E_MASK(0xFFF, I40E_GLHMC_SDPART_PMSDBASE_SHIFT)
+-#define I40E_GLHMC_SDPART_PMSDSIZE_SHIFT 16
+-#define I40E_GLHMC_SDPART_PMSDSIZE_MASK I40E_MASK(0x1FFF, I40E_GLHMC_SDPART_PMSDSIZE_SHIFT)
+ #define I40E_PFHMC_ERRORDATA 0x000C0500 /* Reset: PFR */
+-#define I40E_PFHMC_ERRORDATA_HMC_ERROR_DATA_SHIFT 0
+-#define I40E_PFHMC_ERRORDATA_HMC_ERROR_DATA_MASK I40E_MASK(0x3FFFFFFF, I40E_PFHMC_ERRORDATA_HMC_ERROR_DATA_SHIFT)
+ #define I40E_PFHMC_ERRORINFO 0x000C0400 /* Reset: PFR */
+-#define I40E_PFHMC_ERRORINFO_PMF_INDEX_SHIFT 0
+-#define I40E_PFHMC_ERRORINFO_PMF_INDEX_MASK I40E_MASK(0x1F, I40E_PFHMC_ERRORINFO_PMF_INDEX_SHIFT)
+-#define I40E_PFHMC_ERRORINFO_PMF_ISVF_SHIFT 7
+-#define I40E_PFHMC_ERRORINFO_PMF_ISVF_MASK I40E_MASK(0x1, I40E_PFHMC_ERRORINFO_PMF_ISVF_SHIFT)
+-#define I40E_PFHMC_ERRORINFO_HMC_ERROR_TYPE_SHIFT 8
+-#define I40E_PFHMC_ERRORINFO_HMC_ERROR_TYPE_MASK I40E_MASK(0xF, I40E_PFHMC_ERRORINFO_HMC_ERROR_TYPE_SHIFT)
+-#define I40E_PFHMC_ERRORINFO_HMC_OBJECT_TYPE_SHIFT 16
+-#define I40E_PFHMC_ERRORINFO_HMC_OBJECT_TYPE_MASK I40E_MASK(0x1F, I40E_PFHMC_ERRORINFO_HMC_OBJECT_TYPE_SHIFT)
+-#define I40E_PFHMC_ERRORINFO_ERROR_DETECTED_SHIFT 31
+-#define I40E_PFHMC_ERRORINFO_ERROR_DETECTED_MASK I40E_MASK(0x1, I40E_PFHMC_ERRORINFO_ERROR_DETECTED_SHIFT)
+ #define I40E_PFHMC_PDINV 0x000C0300 /* Reset: PFR */
+ #define I40E_PFHMC_PDINV_PMSDIDX_SHIFT 0
+-#define I40E_PFHMC_PDINV_PMSDIDX_MASK I40E_MASK(0xFFF, I40E_PFHMC_PDINV_PMSDIDX_SHIFT)
+ #define I40E_PFHMC_PDINV_PMPDIDX_SHIFT 16
+-#define I40E_PFHMC_PDINV_PMPDIDX_MASK I40E_MASK(0x1FF, I40E_PFHMC_PDINV_PMPDIDX_SHIFT)
+ #define I40E_PFHMC_SDCMD 0x000C0000 /* Reset: PFR */
+-#define I40E_PFHMC_SDCMD_PMSDIDX_SHIFT 0
+-#define I40E_PFHMC_SDCMD_PMSDIDX_MASK I40E_MASK(0xFFF, I40E_PFHMC_SDCMD_PMSDIDX_SHIFT)
+ #define I40E_PFHMC_SDCMD_PMSDWR_SHIFT 31
+-#define I40E_PFHMC_SDCMD_PMSDWR_MASK I40E_MASK(0x1, I40E_PFHMC_SDCMD_PMSDWR_SHIFT)
+ #define I40E_PFHMC_SDDATAHIGH 0x000C0200 /* Reset: PFR */
+-#define I40E_PFHMC_SDDATAHIGH_PMSDDATAHIGH_SHIFT 0
+-#define I40E_PFHMC_SDDATAHIGH_PMSDDATAHIGH_MASK I40E_MASK(0xFFFFFFFF, I40E_PFHMC_SDDATAHIGH_PMSDDATAHIGH_SHIFT)
+ #define I40E_PFHMC_SDDATALOW 0x000C0100 /* Reset: PFR */
+ #define I40E_PFHMC_SDDATALOW_PMSDVALID_SHIFT 0
+-#define I40E_PFHMC_SDDATALOW_PMSDVALID_MASK I40E_MASK(0x1, I40E_PFHMC_SDDATALOW_PMSDVALID_SHIFT)
+ #define I40E_PFHMC_SDDATALOW_PMSDTYPE_SHIFT 1
+-#define I40E_PFHMC_SDDATALOW_PMSDTYPE_MASK I40E_MASK(0x1, I40E_PFHMC_SDDATALOW_PMSDTYPE_SHIFT)
+ #define I40E_PFHMC_SDDATALOW_PMSDBPCOUNT_SHIFT 2
+-#define I40E_PFHMC_SDDATALOW_PMSDBPCOUNT_MASK I40E_MASK(0x3FF, I40E_PFHMC_SDDATALOW_PMSDBPCOUNT_SHIFT)
+-#define I40E_PFHMC_SDDATALOW_PMSDDATALOW_SHIFT 12
+-#define I40E_PFHMC_SDDATALOW_PMSDDATALOW_MASK I40E_MASK(0xFFFFF, I40E_PFHMC_SDDATALOW_PMSDDATALOW_SHIFT)
+-#define I40E_GL_GP_FUSE(_i) (0x0009400C + ((_i) * 4)) /* _i=0...28 */ /* Reset: POR */
+-#define I40E_GL_GP_FUSE_MAX_INDEX 28
+-#define I40E_GL_GP_FUSE_GL_GP_FUSE_SHIFT 0
+-#define I40E_GL_GP_FUSE_GL_GP_FUSE_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_GP_FUSE_GL_GP_FUSE_SHIFT)
+-#define I40E_GL_UFUSE 0x00094008 /* Reset: POR */
+-#define I40E_GL_UFUSE_FOUR_PORT_ENABLE_SHIFT 1
+-#define I40E_GL_UFUSE_FOUR_PORT_ENABLE_MASK I40E_MASK(0x1, I40E_GL_UFUSE_FOUR_PORT_ENABLE_SHIFT)
+-#define I40E_GL_UFUSE_NIC_ID_SHIFT 2
+-#define I40E_GL_UFUSE_NIC_ID_MASK I40E_MASK(0x1, I40E_GL_UFUSE_NIC_ID_SHIFT)
+-#define I40E_GL_UFUSE_ULT_LOCKOUT_SHIFT 10
+-#define I40E_GL_UFUSE_ULT_LOCKOUT_MASK I40E_MASK(0x1, I40E_GL_UFUSE_ULT_LOCKOUT_SHIFT)
+-#define I40E_GL_UFUSE_CLS_LOCKOUT_SHIFT 11
+-#define I40E_GL_UFUSE_CLS_LOCKOUT_MASK I40E_MASK(0x1, I40E_GL_UFUSE_CLS_LOCKOUT_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA 0x00088188 /* Reset: POR */
+-#define I40E_EMPINT_GPIO_ENA_GPIO0_ENA_SHIFT 0
+-#define I40E_EMPINT_GPIO_ENA_GPIO0_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO0_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO1_ENA_SHIFT 1
+-#define I40E_EMPINT_GPIO_ENA_GPIO1_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO1_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO2_ENA_SHIFT 2
+-#define I40E_EMPINT_GPIO_ENA_GPIO2_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO2_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO3_ENA_SHIFT 3
+-#define I40E_EMPINT_GPIO_ENA_GPIO3_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO3_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO4_ENA_SHIFT 4
+-#define I40E_EMPINT_GPIO_ENA_GPIO4_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO4_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO5_ENA_SHIFT 5
+-#define I40E_EMPINT_GPIO_ENA_GPIO5_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO5_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO6_ENA_SHIFT 6
+-#define I40E_EMPINT_GPIO_ENA_GPIO6_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO6_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO7_ENA_SHIFT 7
+-#define I40E_EMPINT_GPIO_ENA_GPIO7_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO7_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO8_ENA_SHIFT 8
+-#define I40E_EMPINT_GPIO_ENA_GPIO8_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO8_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO9_ENA_SHIFT 9
+-#define I40E_EMPINT_GPIO_ENA_GPIO9_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO9_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO10_ENA_SHIFT 10
+-#define I40E_EMPINT_GPIO_ENA_GPIO10_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO10_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO11_ENA_SHIFT 11
+-#define I40E_EMPINT_GPIO_ENA_GPIO11_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO11_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO12_ENA_SHIFT 12
+-#define I40E_EMPINT_GPIO_ENA_GPIO12_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO12_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO13_ENA_SHIFT 13
+-#define I40E_EMPINT_GPIO_ENA_GPIO13_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO13_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO14_ENA_SHIFT 14
+-#define I40E_EMPINT_GPIO_ENA_GPIO14_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO14_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO15_ENA_SHIFT 15
+-#define I40E_EMPINT_GPIO_ENA_GPIO15_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO15_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO16_ENA_SHIFT 16
+-#define I40E_EMPINT_GPIO_ENA_GPIO16_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO16_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO17_ENA_SHIFT 17
+-#define I40E_EMPINT_GPIO_ENA_GPIO17_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO17_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO18_ENA_SHIFT 18
+-#define I40E_EMPINT_GPIO_ENA_GPIO18_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO18_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO19_ENA_SHIFT 19
+-#define I40E_EMPINT_GPIO_ENA_GPIO19_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO19_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO20_ENA_SHIFT 20
+-#define I40E_EMPINT_GPIO_ENA_GPIO20_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO20_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO21_ENA_SHIFT 21
+-#define I40E_EMPINT_GPIO_ENA_GPIO21_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO21_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO22_ENA_SHIFT 22
+-#define I40E_EMPINT_GPIO_ENA_GPIO22_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO22_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO23_ENA_SHIFT 23
+-#define I40E_EMPINT_GPIO_ENA_GPIO23_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO23_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO24_ENA_SHIFT 24
+-#define I40E_EMPINT_GPIO_ENA_GPIO24_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO24_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO25_ENA_SHIFT 25
+-#define I40E_EMPINT_GPIO_ENA_GPIO25_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO25_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO26_ENA_SHIFT 26
+-#define I40E_EMPINT_GPIO_ENA_GPIO26_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO26_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO27_ENA_SHIFT 27
+-#define I40E_EMPINT_GPIO_ENA_GPIO27_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO27_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO28_ENA_SHIFT 28
+-#define I40E_EMPINT_GPIO_ENA_GPIO28_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO28_ENA_SHIFT)
+-#define I40E_EMPINT_GPIO_ENA_GPIO29_ENA_SHIFT 29
+-#define I40E_EMPINT_GPIO_ENA_GPIO29_ENA_MASK I40E_MASK(0x1, I40E_EMPINT_GPIO_ENA_GPIO29_ENA_SHIFT)
+ #define I40E_PFGEN_PORTMDIO_NUM 0x0003F100 /* Reset: CORER */
+-#define I40E_PFGEN_PORTMDIO_NUM_PORT_NUM_SHIFT 0
+-#define I40E_PFGEN_PORTMDIO_NUM_PORT_NUM_MASK I40E_MASK(0x3, I40E_PFGEN_PORTMDIO_NUM_PORT_NUM_SHIFT)
+ #define I40E_PFGEN_PORTMDIO_NUM_VFLINK_STAT_ENA_SHIFT 4
+ #define I40E_PFGEN_PORTMDIO_NUM_VFLINK_STAT_ENA_MASK I40E_MASK(0x1, I40E_PFGEN_PORTMDIO_NUM_VFLINK_STAT_ENA_SHIFT)
+ #define I40E_PFINT_AEQCTL 0x00038700 /* Reset: CORER */
+ #define I40E_PFINT_AEQCTL_MSIX_INDX_SHIFT 0
+-#define I40E_PFINT_AEQCTL_MSIX_INDX_MASK I40E_MASK(0xFF, I40E_PFINT_AEQCTL_MSIX_INDX_SHIFT)
+ #define I40E_PFINT_AEQCTL_ITR_INDX_SHIFT 11
+-#define I40E_PFINT_AEQCTL_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_AEQCTL_ITR_INDX_SHIFT)
+-#define I40E_PFINT_AEQCTL_MSIX0_INDX_SHIFT 13
+-#define I40E_PFINT_AEQCTL_MSIX0_INDX_MASK I40E_MASK(0x7, I40E_PFINT_AEQCTL_MSIX0_INDX_SHIFT)
+ #define I40E_PFINT_AEQCTL_CAUSE_ENA_SHIFT 30
+ #define I40E_PFINT_AEQCTL_CAUSE_ENA_MASK I40E_MASK(0x1, I40E_PFINT_AEQCTL_CAUSE_ENA_SHIFT)
+-#define I40E_PFINT_AEQCTL_INTEVENT_SHIFT 31
+-#define I40E_PFINT_AEQCTL_INTEVENT_MASK I40E_MASK(0x1, I40E_PFINT_AEQCTL_INTEVENT_SHIFT)
+ #define I40E_PFINT_CEQCTL(_INTPF) (0x00036800 + ((_INTPF) * 4)) /* _i=0...511 */ /* Reset: CORER */
+-#define I40E_PFINT_CEQCTL_MAX_INDEX 511
+ #define I40E_PFINT_CEQCTL_MSIX_INDX_SHIFT 0
+-#define I40E_PFINT_CEQCTL_MSIX_INDX_MASK I40E_MASK(0xFF, I40E_PFINT_CEQCTL_MSIX_INDX_SHIFT)
+ #define I40E_PFINT_CEQCTL_ITR_INDX_SHIFT 11
+-#define I40E_PFINT_CEQCTL_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_CEQCTL_ITR_INDX_SHIFT)
+-#define I40E_PFINT_CEQCTL_MSIX0_INDX_SHIFT 13
+-#define I40E_PFINT_CEQCTL_MSIX0_INDX_MASK I40E_MASK(0x7, I40E_PFINT_CEQCTL_MSIX0_INDX_SHIFT)
+ #define I40E_PFINT_CEQCTL_NEXTQ_INDX_SHIFT 16
+-#define I40E_PFINT_CEQCTL_NEXTQ_INDX_MASK I40E_MASK(0x7FF, I40E_PFINT_CEQCTL_NEXTQ_INDX_SHIFT)
+-#define I40E_PFINT_CEQCTL_NEXTQ_TYPE_SHIFT 27
+-#define I40E_PFINT_CEQCTL_NEXTQ_TYPE_MASK I40E_MASK(0x3, I40E_PFINT_CEQCTL_NEXTQ_TYPE_SHIFT)
+ #define I40E_PFINT_CEQCTL_CAUSE_ENA_SHIFT 30
+ #define I40E_PFINT_CEQCTL_CAUSE_ENA_MASK I40E_MASK(0x1, I40E_PFINT_CEQCTL_CAUSE_ENA_SHIFT)
+-#define I40E_PFINT_CEQCTL_INTEVENT_SHIFT 31
+-#define I40E_PFINT_CEQCTL_INTEVENT_MASK I40E_MASK(0x1, I40E_PFINT_CEQCTL_INTEVENT_SHIFT)
+ #define I40E_GLINT_CTL 0x0003F800 /* Reset: CORER */
+-#define I40E_GLINT_CTL_DIS_AUTOMASK_PF0_SHIFT 0
+-#define I40E_GLINT_CTL_DIS_AUTOMASK_PF0_MASK I40E_MASK(0x1, I40E_GLINT_CTL_DIS_AUTOMASK_PF0_SHIFT)
+ #define I40E_GLINT_CTL_DIS_AUTOMASK_VF0_SHIFT 1
+ #define I40E_GLINT_CTL_DIS_AUTOMASK_VF0_MASK I40E_MASK(0x1, I40E_GLINT_CTL_DIS_AUTOMASK_VF0_SHIFT)
+-#define I40E_GLINT_CTL_DIS_AUTOMASK_N_SHIFT 2
+-#define I40E_GLINT_CTL_DIS_AUTOMASK_N_MASK I40E_MASK(0x1, I40E_GLINT_CTL_DIS_AUTOMASK_N_SHIFT)
+ #define I40E_PFINT_DYN_CTL0 0x00038480 /* Reset: PFR */
+ #define I40E_PFINT_DYN_CTL0_INTENA_SHIFT 0
+ #define I40E_PFINT_DYN_CTL0_INTENA_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTL0_INTENA_SHIFT)
+@@ -872,8 +171,6 @@
+ #define I40E_PFINT_DYN_CTL0_SWINT_TRIG_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTL0_SWINT_TRIG_SHIFT)
+ #define I40E_PFINT_DYN_CTL0_ITR_INDX_SHIFT 3
+ #define I40E_PFINT_DYN_CTL0_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_DYN_CTL0_ITR_INDX_SHIFT)
+-#define I40E_PFINT_DYN_CTL0_INTERVAL_SHIFT 5
+-#define I40E_PFINT_DYN_CTL0_INTERVAL_MASK I40E_MASK(0xFFF, I40E_PFINT_DYN_CTL0_INTERVAL_SHIFT)
+ #define I40E_PFINT_DYN_CTL0_SW_ITR_INDX_ENA_SHIFT 24
+ #define I40E_PFINT_DYN_CTL0_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTL0_SW_ITR_INDX_ENA_SHIFT)
+ #define I40E_PFINT_DYN_CTL0_SW_ITR_INDX_SHIFT 25
+@@ -881,7 +178,6 @@
+ #define I40E_PFINT_DYN_CTL0_INTENA_MSK_SHIFT 31
+ #define I40E_PFINT_DYN_CTL0_INTENA_MSK_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTL0_INTENA_MSK_SHIFT)
+ #define I40E_PFINT_DYN_CTLN(_INTPF) (0x00034800 + ((_INTPF) * 4)) /* _i=0...511 */ /* Reset: PFR */
+-#define I40E_PFINT_DYN_CTLN_MAX_INDEX 511
+ #define I40E_PFINT_DYN_CTLN_INTENA_SHIFT 0
+ #define I40E_PFINT_DYN_CTLN_INTENA_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTLN_INTENA_SHIFT)
+ #define I40E_PFINT_DYN_CTLN_CLEARPBA_SHIFT 1
+@@ -891,93 +187,13 @@
+ #define I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT 3
+ #define I40E_PFINT_DYN_CTLN_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT)
+ #define I40E_PFINT_DYN_CTLN_INTERVAL_SHIFT 5
+-#define I40E_PFINT_DYN_CTLN_INTERVAL_MASK I40E_MASK(0xFFF, I40E_PFINT_DYN_CTLN_INTERVAL_SHIFT)
+ #define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT 24
+ #define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT)
+-#define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_SHIFT 25
+-#define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_DYN_CTLN_SW_ITR_INDX_SHIFT)
+-#define I40E_PFINT_DYN_CTLN_INTENA_MSK_SHIFT 31
+-#define I40E_PFINT_DYN_CTLN_INTENA_MSK_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTLN_INTENA_MSK_SHIFT)
+-#define I40E_PFINT_GPIO_ENA 0x00088080 /* Reset: CORER */
+-#define I40E_PFINT_GPIO_ENA_GPIO0_ENA_SHIFT 0
+-#define I40E_PFINT_GPIO_ENA_GPIO0_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO0_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO1_ENA_SHIFT 1
+-#define I40E_PFINT_GPIO_ENA_GPIO1_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO1_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO2_ENA_SHIFT 2
+-#define I40E_PFINT_GPIO_ENA_GPIO2_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO2_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO3_ENA_SHIFT 3
+-#define I40E_PFINT_GPIO_ENA_GPIO3_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO3_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO4_ENA_SHIFT 4
+-#define I40E_PFINT_GPIO_ENA_GPIO4_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO4_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO5_ENA_SHIFT 5
+-#define I40E_PFINT_GPIO_ENA_GPIO5_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO5_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO6_ENA_SHIFT 6
+-#define I40E_PFINT_GPIO_ENA_GPIO6_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO6_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO7_ENA_SHIFT 7
+-#define I40E_PFINT_GPIO_ENA_GPIO7_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO7_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO8_ENA_SHIFT 8
+-#define I40E_PFINT_GPIO_ENA_GPIO8_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO8_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO9_ENA_SHIFT 9
+-#define I40E_PFINT_GPIO_ENA_GPIO9_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO9_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO10_ENA_SHIFT 10
+-#define I40E_PFINT_GPIO_ENA_GPIO10_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO10_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO11_ENA_SHIFT 11
+-#define I40E_PFINT_GPIO_ENA_GPIO11_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO11_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO12_ENA_SHIFT 12
+-#define I40E_PFINT_GPIO_ENA_GPIO12_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO12_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO13_ENA_SHIFT 13
+-#define I40E_PFINT_GPIO_ENA_GPIO13_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO13_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO14_ENA_SHIFT 14
+-#define I40E_PFINT_GPIO_ENA_GPIO14_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO14_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO15_ENA_SHIFT 15
+-#define I40E_PFINT_GPIO_ENA_GPIO15_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO15_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO16_ENA_SHIFT 16
+-#define I40E_PFINT_GPIO_ENA_GPIO16_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO16_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO17_ENA_SHIFT 17
+-#define I40E_PFINT_GPIO_ENA_GPIO17_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO17_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO18_ENA_SHIFT 18
+-#define I40E_PFINT_GPIO_ENA_GPIO18_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO18_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO19_ENA_SHIFT 19
+-#define I40E_PFINT_GPIO_ENA_GPIO19_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO19_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO20_ENA_SHIFT 20
+-#define I40E_PFINT_GPIO_ENA_GPIO20_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO20_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO21_ENA_SHIFT 21
+-#define I40E_PFINT_GPIO_ENA_GPIO21_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO21_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO22_ENA_SHIFT 22
+-#define I40E_PFINT_GPIO_ENA_GPIO22_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO22_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO23_ENA_SHIFT 23
+-#define I40E_PFINT_GPIO_ENA_GPIO23_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO23_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO24_ENA_SHIFT 24
+-#define I40E_PFINT_GPIO_ENA_GPIO24_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO24_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO25_ENA_SHIFT 25
+-#define I40E_PFINT_GPIO_ENA_GPIO25_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO25_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO26_ENA_SHIFT 26
+-#define I40E_PFINT_GPIO_ENA_GPIO26_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO26_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO27_ENA_SHIFT 27
+-#define I40E_PFINT_GPIO_ENA_GPIO27_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO27_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO28_ENA_SHIFT 28
+-#define I40E_PFINT_GPIO_ENA_GPIO28_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO28_ENA_SHIFT)
+-#define I40E_PFINT_GPIO_ENA_GPIO29_ENA_SHIFT 29
+-#define I40E_PFINT_GPIO_ENA_GPIO29_ENA_MASK I40E_MASK(0x1, I40E_PFINT_GPIO_ENA_GPIO29_ENA_SHIFT)
+ #define I40E_PFINT_ICR0 0x00038780 /* Reset: CORER */
+ #define I40E_PFINT_ICR0_INTEVENT_SHIFT 0
+ #define I40E_PFINT_ICR0_INTEVENT_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_INTEVENT_SHIFT)
+ #define I40E_PFINT_ICR0_QUEUE_0_SHIFT 1
+ #define I40E_PFINT_ICR0_QUEUE_0_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_0_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_1_SHIFT 2
+-#define I40E_PFINT_ICR0_QUEUE_1_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_1_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_2_SHIFT 3
+-#define I40E_PFINT_ICR0_QUEUE_2_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_2_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_3_SHIFT 4
+-#define I40E_PFINT_ICR0_QUEUE_3_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_3_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_4_SHIFT 5
+-#define I40E_PFINT_ICR0_QUEUE_4_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_4_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_5_SHIFT 6
+-#define I40E_PFINT_ICR0_QUEUE_5_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_5_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_6_SHIFT 7
+-#define I40E_PFINT_ICR0_QUEUE_6_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_6_SHIFT)
+-#define I40E_PFINT_ICR0_QUEUE_7_SHIFT 8
+-#define I40E_PFINT_ICR0_QUEUE_7_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_QUEUE_7_SHIFT)
+ #define I40E_PFINT_ICR0_ECC_ERR_SHIFT 16
+ #define I40E_PFINT_ICR0_ECC_ERR_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ECC_ERR_SHIFT)
+ #define I40E_PFINT_ICR0_MAL_DETECT_SHIFT 19
+@@ -986,14 +202,8 @@
+ #define I40E_PFINT_ICR0_GRST_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_GRST_SHIFT)
+ #define I40E_PFINT_ICR0_PCI_EXCEPTION_SHIFT 21
+ #define I40E_PFINT_ICR0_PCI_EXCEPTION_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_PCI_EXCEPTION_SHIFT)
+-#define I40E_PFINT_ICR0_GPIO_SHIFT 22
+-#define I40E_PFINT_ICR0_GPIO_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_GPIO_SHIFT)
+ #define I40E_PFINT_ICR0_TIMESYNC_SHIFT 23
+ #define I40E_PFINT_ICR0_TIMESYNC_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_TIMESYNC_SHIFT)
+-#define I40E_PFINT_ICR0_STORM_DETECT_SHIFT 24
+-#define I40E_PFINT_ICR0_STORM_DETECT_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_STORM_DETECT_SHIFT)
+-#define I40E_PFINT_ICR0_LINK_STAT_CHANGE_SHIFT 25
+-#define I40E_PFINT_ICR0_LINK_STAT_CHANGE_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_LINK_STAT_CHANGE_SHIFT)
+ #define I40E_PFINT_ICR0_HMC_ERR_SHIFT 26
+ #define I40E_PFINT_ICR0_HMC_ERR_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_HMC_ERR_SHIFT)
+ #define I40E_PFINT_ICR0_PE_CRITERR_SHIFT 28
+@@ -1017,10 +227,6 @@
+ #define I40E_PFINT_ICR0_ENA_GPIO_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_GPIO_SHIFT)
+ #define I40E_PFINT_ICR0_ENA_TIMESYNC_SHIFT 23
+ #define I40E_PFINT_ICR0_ENA_TIMESYNC_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_TIMESYNC_SHIFT)
+-#define I40E_PFINT_ICR0_ENA_STORM_DETECT_SHIFT 24
+-#define I40E_PFINT_ICR0_ENA_STORM_DETECT_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_STORM_DETECT_SHIFT)
+-#define I40E_PFINT_ICR0_ENA_LINK_STAT_CHANGE_SHIFT 25
+-#define I40E_PFINT_ICR0_ENA_LINK_STAT_CHANGE_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_LINK_STAT_CHANGE_SHIFT)
+ #define I40E_PFINT_ICR0_ENA_HMC_ERR_SHIFT 26
+ #define I40E_PFINT_ICR0_ENA_HMC_ERR_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_HMC_ERR_SHIFT)
+ #define I40E_PFINT_ICR0_ENA_PE_CRITERR_SHIFT 28
+@@ -1029,43 +235,17 @@
+ #define I40E_PFINT_ICR0_ENA_VFLR_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_VFLR_SHIFT)
+ #define I40E_PFINT_ICR0_ENA_ADMINQ_SHIFT 30
+ #define I40E_PFINT_ICR0_ENA_ADMINQ_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_ADMINQ_SHIFT)
+-#define I40E_PFINT_ICR0_ENA_RSVD_SHIFT 31
+-#define I40E_PFINT_ICR0_ENA_RSVD_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_ENA_RSVD_SHIFT)
+ #define I40E_PFINT_ITR0(_i) (0x00038000 + ((_i) * 128)) /* _i=0...2 */ /* Reset: PFR */
+-#define I40E_PFINT_ITR0_MAX_INDEX 2
+-#define I40E_PFINT_ITR0_INTERVAL_SHIFT 0
+-#define I40E_PFINT_ITR0_INTERVAL_MASK I40E_MASK(0xFFF, I40E_PFINT_ITR0_INTERVAL_SHIFT)
+ #define I40E_PFINT_ITRN(_i, _INTPF) (0x00030000 + ((_i) * 2048 + (_INTPF) * 4)) /* _i=0...2, _INTPF=0...511 */ /* Reset: PFR */
+-#define I40E_PFINT_ITRN_MAX_INDEX 2
+-#define I40E_PFINT_ITRN_INTERVAL_SHIFT 0
+-#define I40E_PFINT_ITRN_INTERVAL_MASK I40E_MASK(0xFFF, I40E_PFINT_ITRN_INTERVAL_SHIFT)
+ #define I40E_PFINT_LNKLST0 0x00038500 /* Reset: PFR */
+ #define I40E_PFINT_LNKLST0_FIRSTQ_INDX_SHIFT 0
+-#define I40E_PFINT_LNKLST0_FIRSTQ_INDX_MASK I40E_MASK(0x7FF, I40E_PFINT_LNKLST0_FIRSTQ_INDX_SHIFT)
+-#define I40E_PFINT_LNKLST0_FIRSTQ_TYPE_SHIFT 11
+-#define I40E_PFINT_LNKLST0_FIRSTQ_TYPE_MASK I40E_MASK(0x3, I40E_PFINT_LNKLST0_FIRSTQ_TYPE_SHIFT)
+ #define I40E_PFINT_LNKLSTN(_INTPF) (0x00035000 + ((_INTPF) * 4)) /* _i=0...511 */ /* Reset: PFR */
+-#define I40E_PFINT_LNKLSTN_MAX_INDEX 511
+ #define I40E_PFINT_LNKLSTN_FIRSTQ_INDX_SHIFT 0
+ #define I40E_PFINT_LNKLSTN_FIRSTQ_INDX_MASK I40E_MASK(0x7FF, I40E_PFINT_LNKLSTN_FIRSTQ_INDX_SHIFT)
+ #define I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_SHIFT 11
+-#define I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_MASK I40E_MASK(0x3, I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_SHIFT)
+-#define I40E_PFINT_RATE0 0x00038580 /* Reset: PFR */
+-#define I40E_PFINT_RATE0_INTERVAL_SHIFT 0
+-#define I40E_PFINT_RATE0_INTERVAL_MASK I40E_MASK(0x3F, I40E_PFINT_RATE0_INTERVAL_SHIFT)
+-#define I40E_PFINT_RATE0_INTRL_ENA_SHIFT 6
+-#define I40E_PFINT_RATE0_INTRL_ENA_MASK I40E_MASK(0x1, I40E_PFINT_RATE0_INTRL_ENA_SHIFT)
+ #define I40E_PFINT_RATEN(_INTPF) (0x00035800 + ((_INTPF) * 4)) /* _i=0...511 */ /* Reset: PFR */
+-#define I40E_PFINT_RATEN_MAX_INDEX 511
+-#define I40E_PFINT_RATEN_INTERVAL_SHIFT 0
+-#define I40E_PFINT_RATEN_INTERVAL_MASK I40E_MASK(0x3F, I40E_PFINT_RATEN_INTERVAL_SHIFT)
+-#define I40E_PFINT_RATEN_INTRL_ENA_SHIFT 6
+-#define I40E_PFINT_RATEN_INTRL_ENA_MASK I40E_MASK(0x1, I40E_PFINT_RATEN_INTRL_ENA_SHIFT)
+ #define I40E_PFINT_STAT_CTL0 0x00038400 /* Reset: CORER */
+-#define I40E_PFINT_STAT_CTL0_OTHER_ITR_INDX_SHIFT 2
+-#define I40E_PFINT_STAT_CTL0_OTHER_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_STAT_CTL0_OTHER_ITR_INDX_SHIFT)
+ #define I40E_QINT_RQCTL(_Q) (0x0003A000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: CORER */
+-#define I40E_QINT_RQCTL_MAX_INDEX 1535
+ #define I40E_QINT_RQCTL_MSIX_INDX_SHIFT 0
+ #define I40E_QINT_RQCTL_MSIX_INDX_MASK I40E_MASK(0xFF, I40E_QINT_RQCTL_MSIX_INDX_SHIFT)
+ #define I40E_QINT_RQCTL_ITR_INDX_SHIFT 11
+@@ -1075,13 +255,11 @@
+ #define I40E_QINT_RQCTL_NEXTQ_INDX_SHIFT 16
+ #define I40E_QINT_RQCTL_NEXTQ_INDX_MASK I40E_MASK(0x7FF, I40E_QINT_RQCTL_NEXTQ_INDX_SHIFT)
+ #define I40E_QINT_RQCTL_NEXTQ_TYPE_SHIFT 27
+-#define I40E_QINT_RQCTL_NEXTQ_TYPE_MASK I40E_MASK(0x3, I40E_QINT_RQCTL_NEXTQ_TYPE_SHIFT)
+ #define I40E_QINT_RQCTL_CAUSE_ENA_SHIFT 30
+ #define I40E_QINT_RQCTL_CAUSE_ENA_MASK I40E_MASK(0x1, I40E_QINT_RQCTL_CAUSE_ENA_SHIFT)
+ #define I40E_QINT_RQCTL_INTEVENT_SHIFT 31
+ #define I40E_QINT_RQCTL_INTEVENT_MASK I40E_MASK(0x1, I40E_QINT_RQCTL_INTEVENT_SHIFT)
+ #define I40E_QINT_TQCTL(_Q) (0x0003C000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: CORER */
+-#define I40E_QINT_TQCTL_MAX_INDEX 1535
+ #define I40E_QINT_TQCTL_MSIX_INDX_SHIFT 0
+ #define I40E_QINT_TQCTL_MSIX_INDX_MASK I40E_MASK(0xFF, I40E_QINT_TQCTL_MSIX_INDX_SHIFT)
+ #define I40E_QINT_TQCTL_ITR_INDX_SHIFT 11
+@@ -1091,160 +269,45 @@
+ #define I40E_QINT_TQCTL_NEXTQ_INDX_SHIFT 16
+ #define I40E_QINT_TQCTL_NEXTQ_INDX_MASK I40E_MASK(0x7FF, I40E_QINT_TQCTL_NEXTQ_INDX_SHIFT)
+ #define I40E_QINT_TQCTL_NEXTQ_TYPE_SHIFT 27
+-#define I40E_QINT_TQCTL_NEXTQ_TYPE_MASK I40E_MASK(0x3, I40E_QINT_TQCTL_NEXTQ_TYPE_SHIFT)
+ #define I40E_QINT_TQCTL_CAUSE_ENA_SHIFT 30
+ #define I40E_QINT_TQCTL_CAUSE_ENA_MASK I40E_MASK(0x1, I40E_QINT_TQCTL_CAUSE_ENA_SHIFT)
+ #define I40E_QINT_TQCTL_INTEVENT_SHIFT 31
+ #define I40E_QINT_TQCTL_INTEVENT_MASK I40E_MASK(0x1, I40E_QINT_TQCTL_INTEVENT_SHIFT)
+ #define I40E_VFINT_DYN_CTL0(_VF) (0x0002A400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFINT_DYN_CTL0_MAX_INDEX 127
+-#define I40E_VFINT_DYN_CTL0_INTENA_SHIFT 0
+-#define I40E_VFINT_DYN_CTL0_INTENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL0_INTENA_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_CLEARPBA_SHIFT 1
+-#define I40E_VFINT_DYN_CTL0_CLEARPBA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL0_CLEARPBA_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_SWINT_TRIG_SHIFT 2
+-#define I40E_VFINT_DYN_CTL0_SWINT_TRIG_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL0_SWINT_TRIG_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_ITR_INDX_SHIFT 3
+-#define I40E_VFINT_DYN_CTL0_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTL0_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_INTERVAL_SHIFT 5
+-#define I40E_VFINT_DYN_CTL0_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_DYN_CTL0_INTERVAL_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_SW_ITR_INDX_ENA_SHIFT 24
+-#define I40E_VFINT_DYN_CTL0_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL0_SW_ITR_INDX_ENA_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_SW_ITR_INDX_SHIFT 25
+-#define I40E_VFINT_DYN_CTL0_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTL0_SW_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_INTENA_MSK_SHIFT 31
+-#define I40E_VFINT_DYN_CTL0_INTENA_MSK_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL0_INTENA_MSK_SHIFT)
+ #define I40E_VFINT_DYN_CTLN(_INTVF) (0x00024800 + ((_INTVF) * 4)) /* _i=0...511 */ /* Reset: VFR */
+-#define I40E_VFINT_DYN_CTLN_MAX_INDEX 511
+-#define I40E_VFINT_DYN_CTLN_INTENA_SHIFT 0
+-#define I40E_VFINT_DYN_CTLN_INTENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_INTENA_SHIFT)
+ #define I40E_VFINT_DYN_CTLN_CLEARPBA_SHIFT 1
+ #define I40E_VFINT_DYN_CTLN_CLEARPBA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_CLEARPBA_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_SWINT_TRIG_SHIFT 2
+-#define I40E_VFINT_DYN_CTLN_SWINT_TRIG_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_SWINT_TRIG_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_ITR_INDX_SHIFT 3
+-#define I40E_VFINT_DYN_CTLN_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTLN_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_INTERVAL_SHIFT 5
+-#define I40E_VFINT_DYN_CTLN_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_DYN_CTLN_INTERVAL_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT 24
+-#define I40E_VFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_SW_ITR_INDX_SHIFT 25
+-#define I40E_VFINT_DYN_CTLN_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTLN_SW_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_INTENA_MSK_SHIFT 31
+-#define I40E_VFINT_DYN_CTLN_INTENA_MSK_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_INTENA_MSK_SHIFT)
+-#define I40E_VFINT_ICR0(_VF) (0x0002BC00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VFINT_ICR0_MAX_INDEX 127
+-#define I40E_VFINT_ICR0_INTEVENT_SHIFT 0
+-#define I40E_VFINT_ICR0_INTEVENT_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_INTEVENT_SHIFT)
+-#define I40E_VFINT_ICR0_QUEUE_0_SHIFT 1
+-#define I40E_VFINT_ICR0_QUEUE_0_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_QUEUE_0_SHIFT)
+-#define I40E_VFINT_ICR0_QUEUE_1_SHIFT 2
+-#define I40E_VFINT_ICR0_QUEUE_1_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_QUEUE_1_SHIFT)
+-#define I40E_VFINT_ICR0_QUEUE_2_SHIFT 3
+-#define I40E_VFINT_ICR0_QUEUE_2_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_QUEUE_2_SHIFT)
+-#define I40E_VFINT_ICR0_QUEUE_3_SHIFT 4
+-#define I40E_VFINT_ICR0_QUEUE_3_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_QUEUE_3_SHIFT)
+-#define I40E_VFINT_ICR0_LINK_STAT_CHANGE_SHIFT 25
+-#define I40E_VFINT_ICR0_LINK_STAT_CHANGE_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_LINK_STAT_CHANGE_SHIFT)
+-#define I40E_VFINT_ICR0_ADMINQ_SHIFT 30
+-#define I40E_VFINT_ICR0_ADMINQ_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ADMINQ_SHIFT)
+-#define I40E_VFINT_ICR0_SWINT_SHIFT 31
+-#define I40E_VFINT_ICR0_SWINT_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_SWINT_SHIFT)
+-#define I40E_VFINT_ICR0_ENA(_VF) (0x0002C000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VFINT_ICR0_ENA_MAX_INDEX 127
+-#define I40E_VFINT_ICR0_ENA_LINK_STAT_CHANGE_SHIFT 25
+-#define I40E_VFINT_ICR0_ENA_LINK_STAT_CHANGE_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ENA_LINK_STAT_CHANGE_SHIFT)
+-#define I40E_VFINT_ICR0_ENA_ADMINQ_SHIFT 30
+-#define I40E_VFINT_ICR0_ENA_ADMINQ_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ENA_ADMINQ_SHIFT)
+-#define I40E_VFINT_ICR0_ENA_RSVD_SHIFT 31
+-#define I40E_VFINT_ICR0_ENA_RSVD_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ENA_RSVD_SHIFT)
+-#define I40E_VFINT_ITR0(_i, _VF) (0x00028000 + ((_i) * 1024 + (_VF) * 4)) /* _i=0...2, _VF=0...127 */ /* Reset: VFR */
+-#define I40E_VFINT_ITR0_MAX_INDEX 2
+-#define I40E_VFINT_ITR0_INTERVAL_SHIFT 0
+-#define I40E_VFINT_ITR0_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_ITR0_INTERVAL_SHIFT)
+-#define I40E_VFINT_ITRN(_i, _INTVF) (0x00020000 + ((_i) * 2048 + (_INTVF) * 4)) /* _i=0...2, _INTVF=0...511 */ /* Reset: VFR */
+-#define I40E_VFINT_ITRN_MAX_INDEX 2
+-#define I40E_VFINT_ITRN_INTERVAL_SHIFT 0
+-#define I40E_VFINT_ITRN_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_ITRN_INTERVAL_SHIFT)
+-#define I40E_VFINT_STAT_CTL0(_VF) (0x0002A000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VFINT_STAT_CTL0_MAX_INDEX 127
+-#define I40E_VFINT_STAT_CTL0_OTHER_ITR_INDX_SHIFT 2
+-#define I40E_VFINT_STAT_CTL0_OTHER_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_STAT_CTL0_OTHER_ITR_INDX_SHIFT)
+ #define I40E_VPINT_AEQCTL(_VF) (0x0002B800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VPINT_AEQCTL_MAX_INDEX 127
+ #define I40E_VPINT_AEQCTL_MSIX_INDX_SHIFT 0
+-#define I40E_VPINT_AEQCTL_MSIX_INDX_MASK I40E_MASK(0xFF, I40E_VPINT_AEQCTL_MSIX_INDX_SHIFT)
+ #define I40E_VPINT_AEQCTL_ITR_INDX_SHIFT 11
+-#define I40E_VPINT_AEQCTL_ITR_INDX_MASK I40E_MASK(0x3, I40E_VPINT_AEQCTL_ITR_INDX_SHIFT)
+-#define I40E_VPINT_AEQCTL_MSIX0_INDX_SHIFT 13
+-#define I40E_VPINT_AEQCTL_MSIX0_INDX_MASK I40E_MASK(0x7, I40E_VPINT_AEQCTL_MSIX0_INDX_SHIFT)
+ #define I40E_VPINT_AEQCTL_CAUSE_ENA_SHIFT 30
+ #define I40E_VPINT_AEQCTL_CAUSE_ENA_MASK I40E_MASK(0x1, I40E_VPINT_AEQCTL_CAUSE_ENA_SHIFT)
+-#define I40E_VPINT_AEQCTL_INTEVENT_SHIFT 31
+-#define I40E_VPINT_AEQCTL_INTEVENT_MASK I40E_MASK(0x1, I40E_VPINT_AEQCTL_INTEVENT_SHIFT)
+ #define I40E_VPINT_CEQCTL(_INTVF) (0x00026800 + ((_INTVF) * 4)) /* _i=0...511 */ /* Reset: CORER */
+-#define I40E_VPINT_CEQCTL_MAX_INDEX 511
+ #define I40E_VPINT_CEQCTL_MSIX_INDX_SHIFT 0
+-#define I40E_VPINT_CEQCTL_MSIX_INDX_MASK I40E_MASK(0xFF, I40E_VPINT_CEQCTL_MSIX_INDX_SHIFT)
+ #define I40E_VPINT_CEQCTL_ITR_INDX_SHIFT 11
+-#define I40E_VPINT_CEQCTL_ITR_INDX_MASK I40E_MASK(0x3, I40E_VPINT_CEQCTL_ITR_INDX_SHIFT)
+-#define I40E_VPINT_CEQCTL_MSIX0_INDX_SHIFT 13
+-#define I40E_VPINT_CEQCTL_MSIX0_INDX_MASK I40E_MASK(0x7, I40E_VPINT_CEQCTL_MSIX0_INDX_SHIFT)
+ #define I40E_VPINT_CEQCTL_NEXTQ_INDX_SHIFT 16
+ #define I40E_VPINT_CEQCTL_NEXTQ_INDX_MASK I40E_MASK(0x7FF, I40E_VPINT_CEQCTL_NEXTQ_INDX_SHIFT)
+ #define I40E_VPINT_CEQCTL_NEXTQ_TYPE_SHIFT 27
+ #define I40E_VPINT_CEQCTL_NEXTQ_TYPE_MASK I40E_MASK(0x3, I40E_VPINT_CEQCTL_NEXTQ_TYPE_SHIFT)
+ #define I40E_VPINT_CEQCTL_CAUSE_ENA_SHIFT 30
+ #define I40E_VPINT_CEQCTL_CAUSE_ENA_MASK I40E_MASK(0x1, I40E_VPINT_CEQCTL_CAUSE_ENA_SHIFT)
+-#define I40E_VPINT_CEQCTL_INTEVENT_SHIFT 31
+-#define I40E_VPINT_CEQCTL_INTEVENT_MASK I40E_MASK(0x1, I40E_VPINT_CEQCTL_INTEVENT_SHIFT)
+ #define I40E_VPINT_LNKLST0(_VF) (0x0002A800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VPINT_LNKLST0_MAX_INDEX 127
+ #define I40E_VPINT_LNKLST0_FIRSTQ_INDX_SHIFT 0
+ #define I40E_VPINT_LNKLST0_FIRSTQ_INDX_MASK I40E_MASK(0x7FF, I40E_VPINT_LNKLST0_FIRSTQ_INDX_SHIFT)
+-#define I40E_VPINT_LNKLST0_FIRSTQ_TYPE_SHIFT 11
+-#define I40E_VPINT_LNKLST0_FIRSTQ_TYPE_MASK I40E_MASK(0x3, I40E_VPINT_LNKLST0_FIRSTQ_TYPE_SHIFT)
+ #define I40E_VPINT_LNKLSTN(_INTVF) (0x00025000 + ((_INTVF) * 4)) /* _i=0...511 */ /* Reset: VFR */
+-#define I40E_VPINT_LNKLSTN_MAX_INDEX 511
+ #define I40E_VPINT_LNKLSTN_FIRSTQ_INDX_SHIFT 0
+ #define I40E_VPINT_LNKLSTN_FIRSTQ_INDX_MASK I40E_MASK(0x7FF, I40E_VPINT_LNKLSTN_FIRSTQ_INDX_SHIFT)
+ #define I40E_VPINT_LNKLSTN_FIRSTQ_TYPE_SHIFT 11
+ #define I40E_VPINT_LNKLSTN_FIRSTQ_TYPE_MASK I40E_MASK(0x3, I40E_VPINT_LNKLSTN_FIRSTQ_TYPE_SHIFT)
+-#define I40E_VPINT_RATE0(_VF) (0x0002AC00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VPINT_RATE0_MAX_INDEX 127
+-#define I40E_VPINT_RATE0_INTERVAL_SHIFT 0
+-#define I40E_VPINT_RATE0_INTERVAL_MASK I40E_MASK(0x3F, I40E_VPINT_RATE0_INTERVAL_SHIFT)
+-#define I40E_VPINT_RATE0_INTRL_ENA_SHIFT 6
+-#define I40E_VPINT_RATE0_INTRL_ENA_MASK I40E_MASK(0x1, I40E_VPINT_RATE0_INTRL_ENA_SHIFT)
+-#define I40E_VPINT_RATEN(_INTVF) (0x00025800 + ((_INTVF) * 4)) /* _i=0...511 */ /* Reset: VFR */
+-#define I40E_VPINT_RATEN_MAX_INDEX 511
+-#define I40E_VPINT_RATEN_INTERVAL_SHIFT 0
+-#define I40E_VPINT_RATEN_INTERVAL_MASK I40E_MASK(0x3F, I40E_VPINT_RATEN_INTERVAL_SHIFT)
+-#define I40E_VPINT_RATEN_INTRL_ENA_SHIFT 6
+-#define I40E_VPINT_RATEN_INTRL_ENA_MASK I40E_MASK(0x1, I40E_VPINT_RATEN_INTRL_ENA_SHIFT)
+-#define I40E_GL_RDPU_CNTRL 0x00051060 /* Reset: CORER */
+-#define I40E_GL_RDPU_CNTRL_RX_PAD_EN_SHIFT 0
+-#define I40E_GL_RDPU_CNTRL_RX_PAD_EN_MASK I40E_MASK(0x1, I40E_GL_RDPU_CNTRL_RX_PAD_EN_SHIFT)
+-#define I40E_GL_RDPU_CNTRL_ECO_SHIFT 1
+-#define I40E_GL_RDPU_CNTRL_ECO_MASK I40E_MASK(0x7FFFFFFF, I40E_GL_RDPU_CNTRL_ECO_SHIFT)
+ #define I40E_GLLAN_RCTL_0 0x0012A500 /* Reset: CORER */
+ #define I40E_GLLAN_RCTL_0_PXE_MODE_SHIFT 0
+ #define I40E_GLLAN_RCTL_0_PXE_MODE_MASK I40E_MASK(0x1, I40E_GLLAN_RCTL_0_PXE_MODE_SHIFT)
+ #define I40E_GLLAN_TSOMSK_F 0x000442D8 /* Reset: CORER */
+-#define I40E_GLLAN_TSOMSK_F_TCPMSKF_SHIFT 0
+-#define I40E_GLLAN_TSOMSK_F_TCPMSKF_MASK I40E_MASK(0xFFF, I40E_GLLAN_TSOMSK_F_TCPMSKF_SHIFT)
+ #define I40E_GLLAN_TSOMSK_L 0x000442E0 /* Reset: CORER */
+-#define I40E_GLLAN_TSOMSK_L_TCPMSKL_SHIFT 0
+-#define I40E_GLLAN_TSOMSK_L_TCPMSKL_MASK I40E_MASK(0xFFF, I40E_GLLAN_TSOMSK_L_TCPMSKL_SHIFT)
+ #define I40E_GLLAN_TSOMSK_M 0x000442DC /* Reset: CORER */
+-#define I40E_GLLAN_TSOMSK_M_TCPMSKM_SHIFT 0
+-#define I40E_GLLAN_TSOMSK_M_TCPMSKM_MASK I40E_MASK(0xFFF, I40E_GLLAN_TSOMSK_M_TCPMSKM_SHIFT)
+ #define I40E_GLLAN_TXPRE_QDIS(_i) (0x000e6500 + ((_i) * 4)) /* _i=0...11 */ /* Reset: CORER */
+-#define I40E_GLLAN_TXPRE_QDIS_MAX_INDEX 11
+ #define I40E_GLLAN_TXPRE_QDIS_QINDX_SHIFT 0
+ #define I40E_GLLAN_TXPRE_QDIS_QINDX_MASK I40E_MASK(0x7FF, I40E_GLLAN_TXPRE_QDIS_QINDX_SHIFT)
+-#define I40E_GLLAN_TXPRE_QDIS_QDIS_STAT_SHIFT 16
+-#define I40E_GLLAN_TXPRE_QDIS_QDIS_STAT_MASK I40E_MASK(0x1, I40E_GLLAN_TXPRE_QDIS_QDIS_STAT_SHIFT)
+ #define I40E_GLLAN_TXPRE_QDIS_SET_QDIS_SHIFT 30
+ #define I40E_GLLAN_TXPRE_QDIS_SET_QDIS_MASK I40E_MASK(0x1, I40E_GLLAN_TXPRE_QDIS_SET_QDIS_SHIFT)
+ #define I40E_GLLAN_TXPRE_QDIS_CLEAR_QDIS_SHIFT 31
+@@ -1257,19 +320,12 @@
+ #define I40E_PFLAN_QALLOC_VALID_SHIFT 31
+ #define I40E_PFLAN_QALLOC_VALID_MASK I40E_MASK(0x1u, I40E_PFLAN_QALLOC_VALID_SHIFT)
+ #define I40E_QRX_ENA(_Q) (0x00120000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: PFR */
+-#define I40E_QRX_ENA_MAX_INDEX 1535
+ #define I40E_QRX_ENA_QENA_REQ_SHIFT 0
+ #define I40E_QRX_ENA_QENA_REQ_MASK I40E_MASK(0x1, I40E_QRX_ENA_QENA_REQ_SHIFT)
+-#define I40E_QRX_ENA_FAST_QDIS_SHIFT 1
+-#define I40E_QRX_ENA_FAST_QDIS_MASK I40E_MASK(0x1, I40E_QRX_ENA_FAST_QDIS_SHIFT)
+ #define I40E_QRX_ENA_QENA_STAT_SHIFT 2
+ #define I40E_QRX_ENA_QENA_STAT_MASK I40E_MASK(0x1, I40E_QRX_ENA_QENA_STAT_SHIFT)
+ #define I40E_QRX_TAIL(_Q) (0x00128000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: CORER */
+-#define I40E_QRX_TAIL_MAX_INDEX 1535
+-#define I40E_QRX_TAIL_TAIL_SHIFT 0
+-#define I40E_QRX_TAIL_TAIL_MASK I40E_MASK(0x1FFF, I40E_QRX_TAIL_TAIL_SHIFT)
+ #define I40E_QTX_CTL(_Q) (0x00104000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: CORER */
+-#define I40E_QTX_CTL_MAX_INDEX 1535
+ #define I40E_QTX_CTL_PFVF_Q_SHIFT 0
+ #define I40E_QTX_CTL_PFVF_Q_MASK I40E_MASK(0x3, I40E_QTX_CTL_PFVF_Q_SHIFT)
+ #define I40E_QTX_CTL_PF_INDX_SHIFT 2
+@@ -1277,834 +333,63 @@
+ #define I40E_QTX_CTL_VFVM_INDX_SHIFT 7
+ #define I40E_QTX_CTL_VFVM_INDX_MASK I40E_MASK(0x1FF, I40E_QTX_CTL_VFVM_INDX_SHIFT)
+ #define I40E_QTX_ENA(_Q) (0x00100000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: PFR */
+-#define I40E_QTX_ENA_MAX_INDEX 1535
+ #define I40E_QTX_ENA_QENA_REQ_SHIFT 0
+ #define I40E_QTX_ENA_QENA_REQ_MASK I40E_MASK(0x1, I40E_QTX_ENA_QENA_REQ_SHIFT)
+-#define I40E_QTX_ENA_FAST_QDIS_SHIFT 1
+-#define I40E_QTX_ENA_FAST_QDIS_MASK I40E_MASK(0x1, I40E_QTX_ENA_FAST_QDIS_SHIFT)
+ #define I40E_QTX_ENA_QENA_STAT_SHIFT 2
+ #define I40E_QTX_ENA_QENA_STAT_MASK I40E_MASK(0x1, I40E_QTX_ENA_QENA_STAT_SHIFT)
+ #define I40E_QTX_HEAD(_Q) (0x000E4000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: CORER */
+-#define I40E_QTX_HEAD_MAX_INDEX 1535
+-#define I40E_QTX_HEAD_HEAD_SHIFT 0
+-#define I40E_QTX_HEAD_HEAD_MASK I40E_MASK(0x1FFF, I40E_QTX_HEAD_HEAD_SHIFT)
+-#define I40E_QTX_HEAD_RS_PENDING_SHIFT 16
+-#define I40E_QTX_HEAD_RS_PENDING_MASK I40E_MASK(0x1, I40E_QTX_HEAD_RS_PENDING_SHIFT)
+ #define I40E_QTX_TAIL(_Q) (0x00108000 + ((_Q) * 4)) /* _i=0...1535 */ /* Reset: PFR */
+-#define I40E_QTX_TAIL_MAX_INDEX 1535
+-#define I40E_QTX_TAIL_TAIL_SHIFT 0
+-#define I40E_QTX_TAIL_TAIL_MASK I40E_MASK(0x1FFF, I40E_QTX_TAIL_TAIL_SHIFT)
+ #define I40E_VPLAN_MAPENA(_VF) (0x00074000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VPLAN_MAPENA_MAX_INDEX 127
+ #define I40E_VPLAN_MAPENA_TXRX_ENA_SHIFT 0
+ #define I40E_VPLAN_MAPENA_TXRX_ENA_MASK I40E_MASK(0x1, I40E_VPLAN_MAPENA_TXRX_ENA_SHIFT)
+ #define I40E_VPLAN_QTABLE(_i, _VF) (0x00070000 + ((_i) * 1024 + (_VF) * 4)) /* _i=0...15, _VF=0...127 */ /* Reset: VFR */
+-#define I40E_VPLAN_QTABLE_MAX_INDEX 15
+ #define I40E_VPLAN_QTABLE_QINDEX_SHIFT 0
+ #define I40E_VPLAN_QTABLE_QINDEX_MASK I40E_MASK(0x7FF, I40E_VPLAN_QTABLE_QINDEX_SHIFT)
+ #define I40E_VSILAN_QBASE(_VSI) (0x0020C800 + ((_VSI) * 4)) /* _i=0...383 */ /* Reset: PFR */
+-#define I40E_VSILAN_QBASE_MAX_INDEX 383
+-#define I40E_VSILAN_QBASE_VSIBASE_SHIFT 0
+-#define I40E_VSILAN_QBASE_VSIBASE_MASK I40E_MASK(0x7FF, I40E_VSILAN_QBASE_VSIBASE_SHIFT)
+ #define I40E_VSILAN_QBASE_VSIQTABLE_ENA_SHIFT 11
+ #define I40E_VSILAN_QBASE_VSIQTABLE_ENA_MASK I40E_MASK(0x1, I40E_VSILAN_QBASE_VSIQTABLE_ENA_SHIFT)
+ #define I40E_VSILAN_QTABLE(_i, _VSI) (0x00200000 + ((_i) * 2048 + (_VSI) * 4)) /* _i=0...7, _VSI=0...383 */ /* Reset: PFR */
+-#define I40E_VSILAN_QTABLE_MAX_INDEX 7
+-#define I40E_VSILAN_QTABLE_QINDEX_0_SHIFT 0
+-#define I40E_VSILAN_QTABLE_QINDEX_0_MASK I40E_MASK(0x7FF, I40E_VSILAN_QTABLE_QINDEX_0_SHIFT)
+-#define I40E_VSILAN_QTABLE_QINDEX_1_SHIFT 16
+-#define I40E_VSILAN_QTABLE_QINDEX_1_MASK I40E_MASK(0x7FF, I40E_VSILAN_QTABLE_QINDEX_1_SHIFT)
+-#define I40E_PRTGL_SAH 0x001E2140 /* Reset: GLOBR */
+-#define I40E_PRTGL_SAH_FC_SAH_SHIFT 0
+-#define I40E_PRTGL_SAH_FC_SAH_MASK I40E_MASK(0xFFFF, I40E_PRTGL_SAH_FC_SAH_SHIFT)
+-#define I40E_PRTGL_SAH_MFS_SHIFT 16
+-#define I40E_PRTGL_SAH_MFS_MASK I40E_MASK(0xFFFF, I40E_PRTGL_SAH_MFS_SHIFT)
+-#define I40E_PRTGL_SAL 0x001E2120 /* Reset: GLOBR */
+-#define I40E_PRTGL_SAL_FC_SAL_SHIFT 0
+-#define I40E_PRTGL_SAL_FC_SAL_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTGL_SAL_FC_SAL_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GCP 0x001E30E0 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GCP_HSEC_CTL_RX_ENABLE_GCP_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GCP_HSEC_CTL_RX_ENABLE_GCP_MASK I40E_MASK(0x1, I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GCP_HSEC_CTL_RX_ENABLE_GCP_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GPP 0x001E3260 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GPP_HSEC_CTL_RX_ENABLE_GPP_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GPP_HSEC_CTL_RX_ENABLE_GPP_MASK I40E_MASK(0x1, I40E_PRTMAC_HSEC_CTL_RX_ENABLE_GPP_HSEC_CTL_RX_ENABLE_GPP_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_PPP 0x001E32E0 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_PPP_HSEC_CTL_RX_ENABLE_PPP_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_ENABLE_PPP_HSEC_CTL_RX_ENABLE_PPP_MASK I40E_MASK(0x1, I40E_PRTMAC_HSEC_CTL_RX_ENABLE_PPP_HSEC_CTL_RX_ENABLE_PPP_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_FORWARD_CONTROL 0x001E3360 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_FORWARD_CONTROL_HSEC_CTL_RX_FORWARD_CONTROL_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_FORWARD_CONTROL_HSEC_CTL_RX_FORWARD_CONTROL_MASK I40E_MASK(0x1, I40E_PRTMAC_HSEC_CTL_RX_FORWARD_CONTROL_HSEC_CTL_RX_FORWARD_CONTROL_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1 0x001E3110 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1_HSEC_CTL_RX_PAUSE_DA_UCAST_PART1_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2 0x001E3120 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2_MASK I40E_MASK(0xFFFF, I40E_PRTMAC_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2_HSEC_CTL_RX_PAUSE_DA_UCAST_PART2_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_ENABLE 0x001E30C0 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_ENABLE_HSEC_CTL_RX_PAUSE_ENABLE_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_ENABLE_HSEC_CTL_RX_PAUSE_ENABLE_MASK I40E_MASK(0x1FF, I40E_PRTMAC_HSEC_CTL_RX_PAUSE_ENABLE_HSEC_CTL_RX_PAUSE_ENABLE_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART1 0x001E3140 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART1_HSEC_CTL_RX_PAUSE_SA_PART1_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART1_HSEC_CTL_RX_PAUSE_SA_PART1_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART1_HSEC_CTL_RX_PAUSE_SA_PART1_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART2 0x001E3150 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART2_HSEC_CTL_RX_PAUSE_SA_PART2_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART2_HSEC_CTL_RX_PAUSE_SA_PART2_MASK I40E_MASK(0xFFFF, I40E_PRTMAC_HSEC_CTL_RX_PAUSE_SA_PART2_HSEC_CTL_RX_PAUSE_SA_PART2_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_ENABLE 0x001E30D0 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_ENABLE_HSEC_CTL_TX_PAUSE_ENABLE_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_ENABLE_HSEC_CTL_TX_PAUSE_ENABLE_MASK I40E_MASK(0x1FF, I40E_PRTMAC_HSEC_CTL_TX_PAUSE_ENABLE_HSEC_CTL_TX_PAUSE_ENABLE_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA(_i) (0x001E3370 + ((_i) * 16)) /* _i=0...8 */ /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_MAX_INDEX 8
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_HSEC_CTL_TX_PAUSE_QUANTA_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_HSEC_CTL_TX_PAUSE_QUANTA_MASK I40E_MASK(0xFFFF, I40E_PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_HSEC_CTL_TX_PAUSE_QUANTA_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER(_i) (0x001E3400 + ((_i) * 16)) /* _i=0...8 */ /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_MAX_INDEX 8
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_MASK I40E_MASK(0xFFFF, I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_TX_SA_PART1 0x001E34B0 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_TX_SA_PART1_HSEC_CTL_TX_SA_PART1_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_TX_SA_PART1_HSEC_CTL_TX_SA_PART1_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTMAC_HSEC_CTL_TX_SA_PART1_HSEC_CTL_TX_SA_PART1_SHIFT)
+-#define I40E_PRTMAC_HSEC_CTL_TX_SA_PART2 0x001E34C0 /* Reset: GLOBR */
+-#define I40E_PRTMAC_HSEC_CTL_TX_SA_PART2_HSEC_CTL_TX_SA_PART2_SHIFT 0
+-#define I40E_PRTMAC_HSEC_CTL_TX_SA_PART2_HSEC_CTL_TX_SA_PART2_MASK I40E_MASK(0xFFFF, I40E_PRTMAC_HSEC_CTL_TX_SA_PART2_HSEC_CTL_TX_SA_PART2_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A 0x0008C480 /* Reset: GLOBR */
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE3_SHIFT 0
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE3_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE3_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE2_SHIFT 2
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE2_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE2_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE1_SHIFT 4
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE1_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE1_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE0_SHIFT 6
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE0_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_TX_LANE0_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE3_SHIFT 8
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE3_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE3_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE2_SHIFT 10
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE2_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE2_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE1_SHIFT 12
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE1_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE1_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE0_SHIFT 14
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE0_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_A_SWAP_RX_LANE0_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B 0x0008C484 /* Reset: GLOBR */
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE3_SHIFT 0
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE3_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE3_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE2_SHIFT 2
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE2_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE2_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE1_SHIFT 4
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE1_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE1_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE0_SHIFT 6
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE0_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_TX_LANE0_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE3_SHIFT 8
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE3_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE3_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE2_SHIFT 10
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE2_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE2_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE1_SHIFT 12
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE1_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE1_SHIFT)
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE0_SHIFT 14
+-#define I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE0_MASK I40E_MASK(0x3, I40E_PRTMAC_PCS_XAUI_SWAP_B_SWAP_RX_LANE0_SHIFT)
+-#define I40E_GL_FWRESETCNT 0x00083100 /* Reset: POR */
+-#define I40E_GL_FWRESETCNT_FWRESETCNT_SHIFT 0
+-#define I40E_GL_FWRESETCNT_FWRESETCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FWRESETCNT_FWRESETCNT_SHIFT)
+-#define I40E_GL_MNG_FWSM 0x000B6134 /* Reset: POR */
+-#define I40E_GL_MNG_FWSM_FW_MODES_SHIFT 0
+-#define I40E_GL_MNG_FWSM_FW_MODES_MASK I40E_MASK(0x3, I40E_GL_MNG_FWSM_FW_MODES_SHIFT)
+-#define I40E_GL_MNG_FWSM_EEP_RELOAD_IND_SHIFT 10
+-#define I40E_GL_MNG_FWSM_EEP_RELOAD_IND_MASK I40E_MASK(0x1, I40E_GL_MNG_FWSM_EEP_RELOAD_IND_SHIFT)
+-#define I40E_GL_MNG_FWSM_CRC_ERROR_MODULE_SHIFT 11
+-#define I40E_GL_MNG_FWSM_CRC_ERROR_MODULE_MASK I40E_MASK(0xF, I40E_GL_MNG_FWSM_CRC_ERROR_MODULE_SHIFT)
+-#define I40E_GL_MNG_FWSM_FW_STATUS_VALID_SHIFT 15
+-#define I40E_GL_MNG_FWSM_FW_STATUS_VALID_MASK I40E_MASK(0x1, I40E_GL_MNG_FWSM_FW_STATUS_VALID_SHIFT)
+-#define I40E_GL_MNG_FWSM_RESET_CNT_SHIFT 16
+-#define I40E_GL_MNG_FWSM_RESET_CNT_MASK I40E_MASK(0x7, I40E_GL_MNG_FWSM_RESET_CNT_SHIFT)
+-#define I40E_GL_MNG_FWSM_EXT_ERR_IND_SHIFT 19
+-#define I40E_GL_MNG_FWSM_EXT_ERR_IND_MASK I40E_MASK(0x3F, I40E_GL_MNG_FWSM_EXT_ERR_IND_SHIFT)
+-#define I40E_GL_MNG_FWSM_PHY_SERDES0_CONFIG_ERR_SHIFT 26
+-#define I40E_GL_MNG_FWSM_PHY_SERDES0_CONFIG_ERR_MASK I40E_MASK(0x1, I40E_GL_MNG_FWSM_PHY_SERDES0_CONFIG_ERR_SHIFT)
+-#define I40E_GL_MNG_FWSM_PHY_SERDES1_CONFIG_ERR_SHIFT 27
+-#define I40E_GL_MNG_FWSM_PHY_SERDES1_CONFIG_ERR_MASK I40E_MASK(0x1, I40E_GL_MNG_FWSM_PHY_SERDES1_CONFIG_ERR_SHIFT)
+-#define I40E_GL_MNG_FWSM_PHY_SERDES2_CONFIG_ERR_SHIFT 28
+-#define I40E_GL_MNG_FWSM_PHY_SERDES2_CONFIG_ERR_MASK I40E_MASK(0x1, I40E_GL_MNG_FWSM_PHY_SERDES2_CONFIG_ERR_SHIFT)
+-#define I40E_GL_MNG_FWSM_PHY_SERDES3_CONFIG_ERR_SHIFT 29
+-#define I40E_GL_MNG_FWSM_PHY_SERDES3_CONFIG_ERR_MASK I40E_MASK(0x1, I40E_GL_MNG_FWSM_PHY_SERDES3_CONFIG_ERR_SHIFT)
+-#define I40E_GL_MNG_HWARB_CTRL 0x000B6130 /* Reset: POR */
+-#define I40E_GL_MNG_HWARB_CTRL_NCSI_ARB_EN_SHIFT 0
+-#define I40E_GL_MNG_HWARB_CTRL_NCSI_ARB_EN_MASK I40E_MASK(0x1, I40E_GL_MNG_HWARB_CTRL_NCSI_ARB_EN_SHIFT)
+-#define I40E_PRT_MNG_FTFT_DATA(_i) (0x000852A0 + ((_i) * 32)) /* _i=0...31 */ /* Reset: POR */
+-#define I40E_PRT_MNG_FTFT_DATA_MAX_INDEX 31
+-#define I40E_PRT_MNG_FTFT_DATA_DWORD_SHIFT 0
+-#define I40E_PRT_MNG_FTFT_DATA_DWORD_MASK I40E_MASK(0xFFFFFFFF, I40E_PRT_MNG_FTFT_DATA_DWORD_SHIFT)
+-#define I40E_PRT_MNG_FTFT_LENGTH 0x00085260 /* Reset: POR */
+-#define I40E_PRT_MNG_FTFT_LENGTH_LENGTH_SHIFT 0
+-#define I40E_PRT_MNG_FTFT_LENGTH_LENGTH_MASK I40E_MASK(0xFF, I40E_PRT_MNG_FTFT_LENGTH_LENGTH_SHIFT)
+-#define I40E_PRT_MNG_FTFT_MASK(_i) (0x00085160 + ((_i) * 32)) /* _i=0...7 */ /* Reset: POR */
+-#define I40E_PRT_MNG_FTFT_MASK_MAX_INDEX 7
+-#define I40E_PRT_MNG_FTFT_MASK_MASK_SHIFT 0
+-#define I40E_PRT_MNG_FTFT_MASK_MASK_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_FTFT_MASK_MASK_SHIFT)
+-#define I40E_PRT_MNG_MANC 0x00256A20 /* Reset: POR */
+-#define I40E_PRT_MNG_MANC_FLOW_CONTROL_DISCARD_SHIFT 0
+-#define I40E_PRT_MNG_MANC_FLOW_CONTROL_DISCARD_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_FLOW_CONTROL_DISCARD_SHIFT)
+-#define I40E_PRT_MNG_MANC_NCSI_DISCARD_SHIFT 1
+-#define I40E_PRT_MNG_MANC_NCSI_DISCARD_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_NCSI_DISCARD_SHIFT)
+-#define I40E_PRT_MNG_MANC_RCV_TCO_EN_SHIFT 17
+-#define I40E_PRT_MNG_MANC_RCV_TCO_EN_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_RCV_TCO_EN_SHIFT)
+-#define I40E_PRT_MNG_MANC_RCV_ALL_SHIFT 19
+-#define I40E_PRT_MNG_MANC_RCV_ALL_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_RCV_ALL_SHIFT)
+-#define I40E_PRT_MNG_MANC_FIXED_NET_TYPE_SHIFT 25
+-#define I40E_PRT_MNG_MANC_FIXED_NET_TYPE_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_FIXED_NET_TYPE_SHIFT)
+-#define I40E_PRT_MNG_MANC_NET_TYPE_SHIFT 26
+-#define I40E_PRT_MNG_MANC_NET_TYPE_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_NET_TYPE_SHIFT)
+-#define I40E_PRT_MNG_MANC_EN_BMC2OS_SHIFT 28
+-#define I40E_PRT_MNG_MANC_EN_BMC2OS_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_EN_BMC2OS_SHIFT)
+-#define I40E_PRT_MNG_MANC_EN_BMC2NET_SHIFT 29
+-#define I40E_PRT_MNG_MANC_EN_BMC2NET_MASK I40E_MASK(0x1, I40E_PRT_MNG_MANC_EN_BMC2NET_SHIFT)
+-#define I40E_PRT_MNG_MAVTV(_i) (0x00255900 + ((_i) * 32)) /* _i=0...7 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MAVTV_MAX_INDEX 7
+-#define I40E_PRT_MNG_MAVTV_VID_SHIFT 0
+-#define I40E_PRT_MNG_MAVTV_VID_MASK I40E_MASK(0xFFF, I40E_PRT_MNG_MAVTV_VID_SHIFT)
+-#define I40E_PRT_MNG_MDEF(_i) (0x00255D00 + ((_i) * 32)) /* _i=0...7 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MDEF_MAX_INDEX 7
+-#define I40E_PRT_MNG_MDEF_MAC_EXACT_AND_SHIFT 0
+-#define I40E_PRT_MNG_MDEF_MAC_EXACT_AND_MASK I40E_MASK(0xF, I40E_PRT_MNG_MDEF_MAC_EXACT_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_BROADCAST_AND_SHIFT 4
+-#define I40E_PRT_MNG_MDEF_BROADCAST_AND_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_BROADCAST_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_VLAN_AND_SHIFT 5
+-#define I40E_PRT_MNG_MDEF_VLAN_AND_MASK I40E_MASK(0xFF, I40E_PRT_MNG_MDEF_VLAN_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_IPV4_ADDRESS_AND_SHIFT 13
+-#define I40E_PRT_MNG_MDEF_IPV4_ADDRESS_AND_MASK I40E_MASK(0xF, I40E_PRT_MNG_MDEF_IPV4_ADDRESS_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_IPV6_ADDRESS_AND_SHIFT 17
+-#define I40E_PRT_MNG_MDEF_IPV6_ADDRESS_AND_MASK I40E_MASK(0xF, I40E_PRT_MNG_MDEF_IPV6_ADDRESS_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_MAC_EXACT_OR_SHIFT 21
+-#define I40E_PRT_MNG_MDEF_MAC_EXACT_OR_MASK I40E_MASK(0xF, I40E_PRT_MNG_MDEF_MAC_EXACT_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_BROADCAST_OR_SHIFT 25
+-#define I40E_PRT_MNG_MDEF_BROADCAST_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_BROADCAST_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_MULTICAST_AND_SHIFT 26
+-#define I40E_PRT_MNG_MDEF_MULTICAST_AND_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_MULTICAST_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_ARP_REQUEST_OR_SHIFT 27
+-#define I40E_PRT_MNG_MDEF_ARP_REQUEST_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_ARP_REQUEST_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_ARP_RESPONSE_OR_SHIFT 28
+-#define I40E_PRT_MNG_MDEF_ARP_RESPONSE_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_ARP_RESPONSE_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_NEIGHBOR_DISCOVERY_134_OR_SHIFT 29
+-#define I40E_PRT_MNG_MDEF_NEIGHBOR_DISCOVERY_134_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_NEIGHBOR_DISCOVERY_134_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_PORT_0X298_OR_SHIFT 30
+-#define I40E_PRT_MNG_MDEF_PORT_0X298_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_PORT_0X298_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_PORT_0X26F_OR_SHIFT 31
+-#define I40E_PRT_MNG_MDEF_PORT_0X26F_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_PORT_0X26F_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT(_i) (0x00255F00 + ((_i) * 32)) /* _i=0...7 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MDEF_EXT_MAX_INDEX 7
+-#define I40E_PRT_MNG_MDEF_EXT_L2_ETHERTYPE_AND_SHIFT 0
+-#define I40E_PRT_MNG_MDEF_EXT_L2_ETHERTYPE_AND_MASK I40E_MASK(0xF, I40E_PRT_MNG_MDEF_EXT_L2_ETHERTYPE_AND_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_L2_ETHERTYPE_OR_SHIFT 4
+-#define I40E_PRT_MNG_MDEF_EXT_L2_ETHERTYPE_OR_MASK I40E_MASK(0xF, I40E_PRT_MNG_MDEF_EXT_L2_ETHERTYPE_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_FLEX_PORT_OR_SHIFT 8
+-#define I40E_PRT_MNG_MDEF_EXT_FLEX_PORT_OR_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_MDEF_EXT_FLEX_PORT_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_FLEX_TCO_SHIFT 24
+-#define I40E_PRT_MNG_MDEF_EXT_FLEX_TCO_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_FLEX_TCO_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_135_OR_SHIFT 25
+-#define I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_135_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_135_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_136_OR_SHIFT 26
+-#define I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_136_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_136_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_137_OR_SHIFT 27
+-#define I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_137_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_NEIGHBOR_DISCOVERY_137_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_ICMP_OR_SHIFT 28
+-#define I40E_PRT_MNG_MDEF_EXT_ICMP_OR_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_ICMP_OR_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_MLD_SHIFT 29
+-#define I40E_PRT_MNG_MDEF_EXT_MLD_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_MLD_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_APPLY_TO_NETWORK_TRAFFIC_SHIFT 30
+-#define I40E_PRT_MNG_MDEF_EXT_APPLY_TO_NETWORK_TRAFFIC_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_APPLY_TO_NETWORK_TRAFFIC_SHIFT)
+-#define I40E_PRT_MNG_MDEF_EXT_APPLY_TO_HOST_TRAFFIC_SHIFT 31
+-#define I40E_PRT_MNG_MDEF_EXT_APPLY_TO_HOST_TRAFFIC_MASK I40E_MASK(0x1, I40E_PRT_MNG_MDEF_EXT_APPLY_TO_HOST_TRAFFIC_SHIFT)
+-#define I40E_PRT_MNG_MDEFVSI(_i) (0x00256580 + ((_i) * 32)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MDEFVSI_MAX_INDEX 3
+-#define I40E_PRT_MNG_MDEFVSI_MDEFVSI_2N_SHIFT 0
+-#define I40E_PRT_MNG_MDEFVSI_MDEFVSI_2N_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_MDEFVSI_MDEFVSI_2N_SHIFT)
+-#define I40E_PRT_MNG_MDEFVSI_MDEFVSI_2NP1_SHIFT 16
+-#define I40E_PRT_MNG_MDEFVSI_MDEFVSI_2NP1_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_MDEFVSI_MDEFVSI_2NP1_SHIFT)
+-#define I40E_PRT_MNG_METF(_i) (0x00256780 + ((_i) * 32)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_PRT_MNG_METF_MAX_INDEX 3
+-#define I40E_PRT_MNG_METF_ETYPE_SHIFT 0
+-#define I40E_PRT_MNG_METF_ETYPE_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_METF_ETYPE_SHIFT)
+-#define I40E_PRT_MNG_METF_POLARITY_SHIFT 30
+-#define I40E_PRT_MNG_METF_POLARITY_MASK I40E_MASK(0x1, I40E_PRT_MNG_METF_POLARITY_SHIFT)
+-#define I40E_PRT_MNG_MFUTP(_i) (0x00254E00 + ((_i) * 32)) /* _i=0...15 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MFUTP_MAX_INDEX 15
+-#define I40E_PRT_MNG_MFUTP_MFUTP_N_SHIFT 0
+-#define I40E_PRT_MNG_MFUTP_MFUTP_N_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_MFUTP_MFUTP_N_SHIFT)
+-#define I40E_PRT_MNG_MFUTP_UDP_SHIFT 16
+-#define I40E_PRT_MNG_MFUTP_UDP_MASK I40E_MASK(0x1, I40E_PRT_MNG_MFUTP_UDP_SHIFT)
+-#define I40E_PRT_MNG_MFUTP_TCP_SHIFT 17
+-#define I40E_PRT_MNG_MFUTP_TCP_MASK I40E_MASK(0x1, I40E_PRT_MNG_MFUTP_TCP_SHIFT)
+-#define I40E_PRT_MNG_MFUTP_SOURCE_DESTINATION_SHIFT 18
+-#define I40E_PRT_MNG_MFUTP_SOURCE_DESTINATION_MASK I40E_MASK(0x1, I40E_PRT_MNG_MFUTP_SOURCE_DESTINATION_SHIFT)
+-#define I40E_PRT_MNG_MIPAF4(_i) (0x00256280 + ((_i) * 32)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MIPAF4_MAX_INDEX 3
+-#define I40E_PRT_MNG_MIPAF4_MIPAF_SHIFT 0
+-#define I40E_PRT_MNG_MIPAF4_MIPAF_MASK I40E_MASK(0xFFFFFFFF, I40E_PRT_MNG_MIPAF4_MIPAF_SHIFT)
+-#define I40E_PRT_MNG_MIPAF6(_i) (0x00254200 + ((_i) * 32)) /* _i=0...15 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MIPAF6_MAX_INDEX 15
+-#define I40E_PRT_MNG_MIPAF6_MIPAF_SHIFT 0
+-#define I40E_PRT_MNG_MIPAF6_MIPAF_MASK I40E_MASK(0xFFFFFFFF, I40E_PRT_MNG_MIPAF6_MIPAF_SHIFT)
+-#define I40E_PRT_MNG_MMAH(_i) (0x00256380 + ((_i) * 32)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MMAH_MAX_INDEX 3
+-#define I40E_PRT_MNG_MMAH_MMAH_SHIFT 0
+-#define I40E_PRT_MNG_MMAH_MMAH_MASK I40E_MASK(0xFFFF, I40E_PRT_MNG_MMAH_MMAH_SHIFT)
+-#define I40E_PRT_MNG_MMAL(_i) (0x00256480 + ((_i) * 32)) /* _i=0...3 */ /* Reset: POR */
+-#define I40E_PRT_MNG_MMAL_MAX_INDEX 3
+-#define I40E_PRT_MNG_MMAL_MMAL_SHIFT 0
+-#define I40E_PRT_MNG_MMAL_MMAL_MASK I40E_MASK(0xFFFFFFFF, I40E_PRT_MNG_MMAL_MMAL_SHIFT)
+-#define I40E_PRT_MNG_MNGONLY 0x00256A60 /* Reset: POR */
+-#define I40E_PRT_MNG_MNGONLY_EXCLUSIVE_TO_MANAGEABILITY_SHIFT 0
+-#define I40E_PRT_MNG_MNGONLY_EXCLUSIVE_TO_MANAGEABILITY_MASK I40E_MASK(0xFF, I40E_PRT_MNG_MNGONLY_EXCLUSIVE_TO_MANAGEABILITY_SHIFT)
+-#define I40E_PRT_MNG_MSFM 0x00256AA0 /* Reset: POR */
+-#define I40E_PRT_MNG_MSFM_PORT_26F_UDP_SHIFT 0
+-#define I40E_PRT_MNG_MSFM_PORT_26F_UDP_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_PORT_26F_UDP_SHIFT)
+-#define I40E_PRT_MNG_MSFM_PORT_26F_TCP_SHIFT 1
+-#define I40E_PRT_MNG_MSFM_PORT_26F_TCP_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_PORT_26F_TCP_SHIFT)
+-#define I40E_PRT_MNG_MSFM_PORT_298_UDP_SHIFT 2
+-#define I40E_PRT_MNG_MSFM_PORT_298_UDP_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_PORT_298_UDP_SHIFT)
+-#define I40E_PRT_MNG_MSFM_PORT_298_TCP_SHIFT 3
+-#define I40E_PRT_MNG_MSFM_PORT_298_TCP_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_PORT_298_TCP_SHIFT)
+-#define I40E_PRT_MNG_MSFM_IPV6_0_MASK_SHIFT 4
+-#define I40E_PRT_MNG_MSFM_IPV6_0_MASK_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_IPV6_0_MASK_SHIFT)
+-#define I40E_PRT_MNG_MSFM_IPV6_1_MASK_SHIFT 5
+-#define I40E_PRT_MNG_MSFM_IPV6_1_MASK_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_IPV6_1_MASK_SHIFT)
+-#define I40E_PRT_MNG_MSFM_IPV6_2_MASK_SHIFT 6
+-#define I40E_PRT_MNG_MSFM_IPV6_2_MASK_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_IPV6_2_MASK_SHIFT)
+-#define I40E_PRT_MNG_MSFM_IPV6_3_MASK_SHIFT 7
+-#define I40E_PRT_MNG_MSFM_IPV6_3_MASK_MASK I40E_MASK(0x1, I40E_PRT_MNG_MSFM_IPV6_3_MASK_SHIFT)
+-#define I40E_MSIX_PBA(_i) (0x00001000 + ((_i) * 4)) /* _i=0...5 */ /* Reset: FLR */
+-#define I40E_MSIX_PBA_MAX_INDEX 5
+-#define I40E_MSIX_PBA_PENBIT_SHIFT 0
+-#define I40E_MSIX_PBA_PENBIT_MASK I40E_MASK(0xFFFFFFFF, I40E_MSIX_PBA_PENBIT_SHIFT)
+-#define I40E_MSIX_TADD(_i) (0x00000000 + ((_i) * 16)) /* _i=0...128 */ /* Reset: FLR */
+-#define I40E_MSIX_TADD_MAX_INDEX 128
+-#define I40E_MSIX_TADD_MSIXTADD10_SHIFT 0
+-#define I40E_MSIX_TADD_MSIXTADD10_MASK I40E_MASK(0x3, I40E_MSIX_TADD_MSIXTADD10_SHIFT)
+-#define I40E_MSIX_TADD_MSIXTADD_SHIFT 2
+-#define I40E_MSIX_TADD_MSIXTADD_MASK I40E_MASK(0x3FFFFFFF, I40E_MSIX_TADD_MSIXTADD_SHIFT)
+-#define I40E_MSIX_TMSG(_i) (0x00000008 + ((_i) * 16)) /* _i=0...128 */ /* Reset: FLR */
+-#define I40E_MSIX_TMSG_MAX_INDEX 128
+-#define I40E_MSIX_TMSG_MSIXTMSG_SHIFT 0
+-#define I40E_MSIX_TMSG_MSIXTMSG_MASK I40E_MASK(0xFFFFFFFF, I40E_MSIX_TMSG_MSIXTMSG_SHIFT)
+-#define I40E_MSIX_TUADD(_i) (0x00000004 + ((_i) * 16)) /* _i=0...128 */ /* Reset: FLR */
+-#define I40E_MSIX_TUADD_MAX_INDEX 128
+-#define I40E_MSIX_TUADD_MSIXTUADD_SHIFT 0
+-#define I40E_MSIX_TUADD_MSIXTUADD_MASK I40E_MASK(0xFFFFFFFF, I40E_MSIX_TUADD_MSIXTUADD_SHIFT)
+-#define I40E_MSIX_TVCTRL(_i) (0x0000000C + ((_i) * 16)) /* _i=0...128 */ /* Reset: FLR */
+-#define I40E_MSIX_TVCTRL_MAX_INDEX 128
+-#define I40E_MSIX_TVCTRL_MASK_SHIFT 0
+-#define I40E_MSIX_TVCTRL_MASK_MASK I40E_MASK(0x1, I40E_MSIX_TVCTRL_MASK_SHIFT)
+-#define I40E_VFMSIX_PBA1(_i) (0x00002000 + ((_i) * 4)) /* _i=0...19 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_PBA1_MAX_INDEX 19
+-#define I40E_VFMSIX_PBA1_PENBIT_SHIFT 0
+-#define I40E_VFMSIX_PBA1_PENBIT_MASK I40E_MASK(0xFFFFFFFF, I40E_VFMSIX_PBA1_PENBIT_SHIFT)
+-#define I40E_VFMSIX_TADD1(_i) (0x00002100 + ((_i) * 16)) /* _i=0...639 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TADD1_MAX_INDEX 639
+-#define I40E_VFMSIX_TADD1_MSIXTADD10_SHIFT 0
+-#define I40E_VFMSIX_TADD1_MSIXTADD10_MASK I40E_MASK(0x3, I40E_VFMSIX_TADD1_MSIXTADD10_SHIFT)
+-#define I40E_VFMSIX_TADD1_MSIXTADD_SHIFT 2
+-#define I40E_VFMSIX_TADD1_MSIXTADD_MASK I40E_MASK(0x3FFFFFFF, I40E_VFMSIX_TADD1_MSIXTADD_SHIFT)
+-#define I40E_VFMSIX_TMSG1(_i) (0x00002108 + ((_i) * 16)) /* _i=0...639 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TMSG1_MAX_INDEX 639
+-#define I40E_VFMSIX_TMSG1_MSIXTMSG_SHIFT 0
+-#define I40E_VFMSIX_TMSG1_MSIXTMSG_MASK I40E_MASK(0xFFFFFFFF, I40E_VFMSIX_TMSG1_MSIXTMSG_SHIFT)
+-#define I40E_VFMSIX_TUADD1(_i) (0x00002104 + ((_i) * 16)) /* _i=0...639 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TUADD1_MAX_INDEX 639
+-#define I40E_VFMSIX_TUADD1_MSIXTUADD_SHIFT 0
+-#define I40E_VFMSIX_TUADD1_MSIXTUADD_MASK I40E_MASK(0xFFFFFFFF, I40E_VFMSIX_TUADD1_MSIXTUADD_SHIFT)
+-#define I40E_VFMSIX_TVCTRL1(_i) (0x0000210C + ((_i) * 16)) /* _i=0...639 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TVCTRL1_MAX_INDEX 639
+-#define I40E_VFMSIX_TVCTRL1_MASK_SHIFT 0
+-#define I40E_VFMSIX_TVCTRL1_MASK_MASK I40E_MASK(0x1, I40E_VFMSIX_TVCTRL1_MASK_SHIFT)
+ #define I40E_GLNVM_FLA 0x000B6108 /* Reset: POR */
+-#define I40E_GLNVM_FLA_FL_SCK_SHIFT 0
+-#define I40E_GLNVM_FLA_FL_SCK_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_SCK_SHIFT)
+-#define I40E_GLNVM_FLA_FL_CE_SHIFT 1
+-#define I40E_GLNVM_FLA_FL_CE_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_CE_SHIFT)
+-#define I40E_GLNVM_FLA_FL_SI_SHIFT 2
+-#define I40E_GLNVM_FLA_FL_SI_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_SI_SHIFT)
+-#define I40E_GLNVM_FLA_FL_SO_SHIFT 3
+-#define I40E_GLNVM_FLA_FL_SO_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_SO_SHIFT)
+-#define I40E_GLNVM_FLA_FL_REQ_SHIFT 4
+-#define I40E_GLNVM_FLA_FL_REQ_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_REQ_SHIFT)
+-#define I40E_GLNVM_FLA_FL_GNT_SHIFT 5
+-#define I40E_GLNVM_FLA_FL_GNT_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_GNT_SHIFT)
+ #define I40E_GLNVM_FLA_LOCKED_SHIFT 6
+ #define I40E_GLNVM_FLA_LOCKED_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_LOCKED_SHIFT)
+-#define I40E_GLNVM_FLA_FL_SADDR_SHIFT 18
+-#define I40E_GLNVM_FLA_FL_SADDR_MASK I40E_MASK(0x7FF, I40E_GLNVM_FLA_FL_SADDR_SHIFT)
+-#define I40E_GLNVM_FLA_FL_BUSY_SHIFT 30
+-#define I40E_GLNVM_FLA_FL_BUSY_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_BUSY_SHIFT)
+-#define I40E_GLNVM_FLA_FL_DER_SHIFT 31
+-#define I40E_GLNVM_FLA_FL_DER_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_FL_DER_SHIFT)
+-#define I40E_GLNVM_FLASHID 0x000B6104 /* Reset: POR */
+-#define I40E_GLNVM_FLASHID_FLASHID_SHIFT 0
+-#define I40E_GLNVM_FLASHID_FLASHID_MASK I40E_MASK(0xFFFFFF, I40E_GLNVM_FLASHID_FLASHID_SHIFT)
+-#define I40E_GLNVM_FLASHID_FLEEP_PERF_SHIFT 31
+-#define I40E_GLNVM_FLASHID_FLEEP_PERF_MASK I40E_MASK(0x1, I40E_GLNVM_FLASHID_FLEEP_PERF_SHIFT)
+ #define I40E_GLNVM_GENS 0x000B6100 /* Reset: POR */
+-#define I40E_GLNVM_GENS_NVM_PRES_SHIFT 0
+-#define I40E_GLNVM_GENS_NVM_PRES_MASK I40E_MASK(0x1, I40E_GLNVM_GENS_NVM_PRES_SHIFT)
+ #define I40E_GLNVM_GENS_SR_SIZE_SHIFT 5
+ #define I40E_GLNVM_GENS_SR_SIZE_MASK I40E_MASK(0x7, I40E_GLNVM_GENS_SR_SIZE_SHIFT)
+-#define I40E_GLNVM_GENS_BANK1VAL_SHIFT 8
+-#define I40E_GLNVM_GENS_BANK1VAL_MASK I40E_MASK(0x1, I40E_GLNVM_GENS_BANK1VAL_SHIFT)
+-#define I40E_GLNVM_GENS_ALT_PRST_SHIFT 23
+-#define I40E_GLNVM_GENS_ALT_PRST_MASK I40E_MASK(0x1, I40E_GLNVM_GENS_ALT_PRST_SHIFT)
+-#define I40E_GLNVM_GENS_FL_AUTO_RD_SHIFT 25
+-#define I40E_GLNVM_GENS_FL_AUTO_RD_MASK I40E_MASK(0x1, I40E_GLNVM_GENS_FL_AUTO_RD_SHIFT)
+-#define I40E_GLNVM_PROTCSR(_i) (0x000B6010 + ((_i) * 4)) /* _i=0...59 */ /* Reset: POR */
+-#define I40E_GLNVM_PROTCSR_MAX_INDEX 59
+-#define I40E_GLNVM_PROTCSR_ADDR_BLOCK_SHIFT 0
+-#define I40E_GLNVM_PROTCSR_ADDR_BLOCK_MASK I40E_MASK(0xFFFFFF, I40E_GLNVM_PROTCSR_ADDR_BLOCK_SHIFT)
+ #define I40E_GLNVM_SRCTL 0x000B6110 /* Reset: POR */
+-#define I40E_GLNVM_SRCTL_SRBUSY_SHIFT 0
+-#define I40E_GLNVM_SRCTL_SRBUSY_MASK I40E_MASK(0x1, I40E_GLNVM_SRCTL_SRBUSY_SHIFT)
+ #define I40E_GLNVM_SRCTL_ADDR_SHIFT 14
+-#define I40E_GLNVM_SRCTL_ADDR_MASK I40E_MASK(0x7FFF, I40E_GLNVM_SRCTL_ADDR_SHIFT)
+-#define I40E_GLNVM_SRCTL_WRITE_SHIFT 29
+-#define I40E_GLNVM_SRCTL_WRITE_MASK I40E_MASK(0x1, I40E_GLNVM_SRCTL_WRITE_SHIFT)
+ #define I40E_GLNVM_SRCTL_START_SHIFT 30
+-#define I40E_GLNVM_SRCTL_START_MASK I40E_MASK(0x1, I40E_GLNVM_SRCTL_START_SHIFT)
+ #define I40E_GLNVM_SRCTL_DONE_SHIFT 31
+ #define I40E_GLNVM_SRCTL_DONE_MASK I40E_MASK(0x1u, I40E_GLNVM_SRCTL_DONE_SHIFT)
+ #define I40E_GLNVM_SRDATA 0x000B6114 /* Reset: POR */
+-#define I40E_GLNVM_SRDATA_WRDATA_SHIFT 0
+-#define I40E_GLNVM_SRDATA_WRDATA_MASK I40E_MASK(0xFFFF, I40E_GLNVM_SRDATA_WRDATA_SHIFT)
+ #define I40E_GLNVM_SRDATA_RDDATA_SHIFT 16
+ #define I40E_GLNVM_SRDATA_RDDATA_MASK I40E_MASK(0xFFFF, I40E_GLNVM_SRDATA_RDDATA_SHIFT)
+ #define I40E_GLNVM_ULD 0x000B6008 /* Reset: POR */
+-#define I40E_GLNVM_ULD_CONF_PCIR_DONE_SHIFT 0
+-#define I40E_GLNVM_ULD_CONF_PCIR_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_PCIR_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_PCIRTL_DONE_SHIFT 1
+-#define I40E_GLNVM_ULD_CONF_PCIRTL_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_PCIRTL_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_LCB_DONE_SHIFT 2
+-#define I40E_GLNVM_ULD_CONF_LCB_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_LCB_DONE_SHIFT)
+ #define I40E_GLNVM_ULD_CONF_CORE_DONE_SHIFT 3
+ #define I40E_GLNVM_ULD_CONF_CORE_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_CORE_DONE_SHIFT)
+ #define I40E_GLNVM_ULD_CONF_GLOBAL_DONE_SHIFT 4
+ #define I40E_GLNVM_ULD_CONF_GLOBAL_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_GLOBAL_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_POR_DONE_SHIFT 5
+-#define I40E_GLNVM_ULD_CONF_POR_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_POR_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_PCIE_ANA_DONE_SHIFT 6
+-#define I40E_GLNVM_ULD_CONF_PCIE_ANA_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_PCIE_ANA_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_PHY_ANA_DONE_SHIFT 7
+-#define I40E_GLNVM_ULD_CONF_PHY_ANA_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_PHY_ANA_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_EMP_DONE_SHIFT 8
+-#define I40E_GLNVM_ULD_CONF_EMP_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_EMP_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_CONF_PCIALT_DONE_SHIFT 9
+-#define I40E_GLNVM_ULD_CONF_PCIALT_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CONF_PCIALT_DONE_SHIFT)
+-#define I40E_GLPCI_BYTCTH 0x0009C484 /* Reset: PCIR */
+-#define I40E_GLPCI_BYTCTH_PCI_COUNT_BW_BCT_SHIFT 0
+-#define I40E_GLPCI_BYTCTH_PCI_COUNT_BW_BCT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_BYTCTH_PCI_COUNT_BW_BCT_SHIFT)
+-#define I40E_GLPCI_BYTCTL 0x0009C488 /* Reset: PCIR */
+-#define I40E_GLPCI_BYTCTL_PCI_COUNT_BW_BCT_SHIFT 0
+-#define I40E_GLPCI_BYTCTL_PCI_COUNT_BW_BCT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_BYTCTL_PCI_COUNT_BW_BCT_SHIFT)
+-#define I40E_GLPCI_CAPCTRL 0x000BE4A4 /* Reset: PCIR */
+-#define I40E_GLPCI_CAPCTRL_VPD_EN_SHIFT 0
+-#define I40E_GLPCI_CAPCTRL_VPD_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPCTRL_VPD_EN_SHIFT)
+ #define I40E_GLPCI_CAPSUP 0x000BE4A8 /* Reset: PCIR */
+-#define I40E_GLPCI_CAPSUP_PCIE_VER_SHIFT 0
+-#define I40E_GLPCI_CAPSUP_PCIE_VER_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_PCIE_VER_SHIFT)
+-#define I40E_GLPCI_CAPSUP_LTR_EN_SHIFT 2
+-#define I40E_GLPCI_CAPSUP_LTR_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_LTR_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_TPH_EN_SHIFT 3
+-#define I40E_GLPCI_CAPSUP_TPH_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_TPH_EN_SHIFT)
+ #define I40E_GLPCI_CAPSUP_ARI_EN_SHIFT 4
+ #define I40E_GLPCI_CAPSUP_ARI_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_ARI_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_IOV_EN_SHIFT 5
+-#define I40E_GLPCI_CAPSUP_IOV_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_IOV_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_ACS_EN_SHIFT 6
+-#define I40E_GLPCI_CAPSUP_ACS_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_ACS_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_SEC_EN_SHIFT 7
+-#define I40E_GLPCI_CAPSUP_SEC_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_SEC_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_ECRC_GEN_EN_SHIFT 16
+-#define I40E_GLPCI_CAPSUP_ECRC_GEN_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_ECRC_GEN_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_ECRC_CHK_EN_SHIFT 17
+-#define I40E_GLPCI_CAPSUP_ECRC_CHK_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_ECRC_CHK_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_IDO_EN_SHIFT 18
+-#define I40E_GLPCI_CAPSUP_IDO_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_IDO_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_MSI_MASK_SHIFT 19
+-#define I40E_GLPCI_CAPSUP_MSI_MASK_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_MSI_MASK_SHIFT)
+-#define I40E_GLPCI_CAPSUP_CSR_CONF_EN_SHIFT 20
+-#define I40E_GLPCI_CAPSUP_CSR_CONF_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_CSR_CONF_EN_SHIFT)
+-#define I40E_GLPCI_CAPSUP_LOAD_SUBSYS_ID_SHIFT 30
+-#define I40E_GLPCI_CAPSUP_LOAD_SUBSYS_ID_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_LOAD_SUBSYS_ID_SHIFT)
+-#define I40E_GLPCI_CAPSUP_LOAD_DEV_ID_SHIFT 31
+-#define I40E_GLPCI_CAPSUP_LOAD_DEV_ID_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_LOAD_DEV_ID_SHIFT)
+-#define I40E_GLPCI_CNF 0x000BE4C0 /* Reset: POR */
+-#define I40E_GLPCI_CNF_FLEX10_SHIFT 1
+-#define I40E_GLPCI_CNF_FLEX10_MASK I40E_MASK(0x1, I40E_GLPCI_CNF_FLEX10_SHIFT)
+-#define I40E_GLPCI_CNF_WAKE_PIN_EN_SHIFT 2
+-#define I40E_GLPCI_CNF_WAKE_PIN_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CNF_WAKE_PIN_EN_SHIFT)
+ #define I40E_GLPCI_CNF2 0x000BE494 /* Reset: PCIR */
+-#define I40E_GLPCI_CNF2_RO_DIS_SHIFT 0
+-#define I40E_GLPCI_CNF2_RO_DIS_MASK I40E_MASK(0x1, I40E_GLPCI_CNF2_RO_DIS_SHIFT)
+-#define I40E_GLPCI_CNF2_CACHELINE_SIZE_SHIFT 1
+-#define I40E_GLPCI_CNF2_CACHELINE_SIZE_MASK I40E_MASK(0x1, I40E_GLPCI_CNF2_CACHELINE_SIZE_SHIFT)
+ #define I40E_GLPCI_CNF2_MSI_X_PF_N_SHIFT 2
+ #define I40E_GLPCI_CNF2_MSI_X_PF_N_MASK I40E_MASK(0x7FF, I40E_GLPCI_CNF2_MSI_X_PF_N_SHIFT)
+ #define I40E_GLPCI_CNF2_MSI_X_VF_N_SHIFT 13
+ #define I40E_GLPCI_CNF2_MSI_X_VF_N_MASK I40E_MASK(0x7FF, I40E_GLPCI_CNF2_MSI_X_VF_N_SHIFT)
+-#define I40E_GLPCI_DREVID 0x0009C480 /* Reset: PCIR */
+-#define I40E_GLPCI_DREVID_DEFAULT_REVID_SHIFT 0
+-#define I40E_GLPCI_DREVID_DEFAULT_REVID_MASK I40E_MASK(0xFF, I40E_GLPCI_DREVID_DEFAULT_REVID_SHIFT)
+-#define I40E_GLPCI_GSCL_1 0x0009C48C /* Reset: PCIR */
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_0_SHIFT 0
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_0_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_EN_0_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_1_SHIFT 1
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_1_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_EN_1_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_2_SHIFT 2
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_2_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_EN_2_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_3_SHIFT 3
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_EN_3_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_EN_3_SHIFT)
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_0_SHIFT 4
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_0_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_LBC_ENABLE_0_SHIFT)
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_1_SHIFT 5
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_1_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_LBC_ENABLE_1_SHIFT)
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_2_SHIFT 6
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_2_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_LBC_ENABLE_2_SHIFT)
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_3_SHIFT 7
+-#define I40E_GLPCI_GSCL_1_LBC_ENABLE_3_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_LBC_ENABLE_3_SHIFT)
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_LAT_EN_SHIFT 8
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_LAT_EN_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_PCI_COUNT_LAT_EN_SHIFT)
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_LAT_EV_SHIFT 9
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_LAT_EV_MASK I40E_MASK(0x1F, I40E_GLPCI_GSCL_1_PCI_COUNT_LAT_EV_SHIFT)
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_BW_EN_SHIFT 14
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_BW_EN_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_PCI_COUNT_BW_EN_SHIFT)
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_BW_EV_SHIFT 15
+-#define I40E_GLPCI_GSCL_1_PCI_COUNT_BW_EV_MASK I40E_MASK(0x1F, I40E_GLPCI_GSCL_1_PCI_COUNT_BW_EV_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_64_BIT_EN_SHIFT 28
+-#define I40E_GLPCI_GSCL_1_GIO_64_BIT_EN_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_64_BIT_EN_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_RESET_SHIFT 29
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_RESET_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_RESET_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_STOP_SHIFT 30
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_STOP_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_STOP_SHIFT)
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_START_SHIFT 31
+-#define I40E_GLPCI_GSCL_1_GIO_COUNT_START_MASK I40E_MASK(0x1, I40E_GLPCI_GSCL_1_GIO_COUNT_START_SHIFT)
+-#define I40E_GLPCI_GSCL_2 0x0009C490 /* Reset: PCIR */
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_0_SHIFT 0
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_0_MASK I40E_MASK(0xFF, I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_0_SHIFT)
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_1_SHIFT 8
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_1_MASK I40E_MASK(0xFF, I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_1_SHIFT)
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_2_SHIFT 16
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_2_MASK I40E_MASK(0xFF, I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_2_SHIFT)
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_3_SHIFT 24
+-#define I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_3_MASK I40E_MASK(0xFF, I40E_GLPCI_GSCL_2_GIO_EVENT_NUM_3_SHIFT)
+-#define I40E_GLPCI_GSCL_5_8(_i) (0x0009C494 + ((_i) * 4)) /* _i=0...3 */ /* Reset: PCIR */
+-#define I40E_GLPCI_GSCL_5_8_MAX_INDEX 3
+-#define I40E_GLPCI_GSCL_5_8_LBC_THRESHOLD_N_SHIFT 0
+-#define I40E_GLPCI_GSCL_5_8_LBC_THRESHOLD_N_MASK I40E_MASK(0xFFFF, I40E_GLPCI_GSCL_5_8_LBC_THRESHOLD_N_SHIFT)
+-#define I40E_GLPCI_GSCL_5_8_LBC_TIMER_N_SHIFT 16
+-#define I40E_GLPCI_GSCL_5_8_LBC_TIMER_N_MASK I40E_MASK(0xFFFF, I40E_GLPCI_GSCL_5_8_LBC_TIMER_N_SHIFT)
+-#define I40E_GLPCI_GSCN_0_3(_i) (0x0009C4A4 + ((_i) * 4)) /* _i=0...3 */ /* Reset: PCIR */
+-#define I40E_GLPCI_GSCN_0_3_MAX_INDEX 3
+-#define I40E_GLPCI_GSCN_0_3_EVENT_COUNTER_SHIFT 0
+-#define I40E_GLPCI_GSCN_0_3_EVENT_COUNTER_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_GSCN_0_3_EVENT_COUNTER_SHIFT)
+ #define I40E_GLPCI_LBARCTRL 0x000BE484 /* Reset: POR */
+-#define I40E_GLPCI_LBARCTRL_PREFBAR_SHIFT 0
+-#define I40E_GLPCI_LBARCTRL_PREFBAR_MASK I40E_MASK(0x1, I40E_GLPCI_LBARCTRL_PREFBAR_SHIFT)
+-#define I40E_GLPCI_LBARCTRL_BAR32_SHIFT 1
+-#define I40E_GLPCI_LBARCTRL_BAR32_MASK I40E_MASK(0x1, I40E_GLPCI_LBARCTRL_BAR32_SHIFT)
+-#define I40E_GLPCI_LBARCTRL_FLASH_EXPOSE_SHIFT 3
+-#define I40E_GLPCI_LBARCTRL_FLASH_EXPOSE_MASK I40E_MASK(0x1, I40E_GLPCI_LBARCTRL_FLASH_EXPOSE_SHIFT)
+-#define I40E_GLPCI_LBARCTRL_RSVD_4_SHIFT 4
+-#define I40E_GLPCI_LBARCTRL_RSVD_4_MASK I40E_MASK(0x3, I40E_GLPCI_LBARCTRL_RSVD_4_SHIFT)
+ #define I40E_GLPCI_LBARCTRL_FL_SIZE_SHIFT 6
+ #define I40E_GLPCI_LBARCTRL_FL_SIZE_MASK I40E_MASK(0x7, I40E_GLPCI_LBARCTRL_FL_SIZE_SHIFT)
+-#define I40E_GLPCI_LBARCTRL_RSVD_10_SHIFT 10
+-#define I40E_GLPCI_LBARCTRL_RSVD_10_MASK I40E_MASK(0x1, I40E_GLPCI_LBARCTRL_RSVD_10_SHIFT)
+-#define I40E_GLPCI_LBARCTRL_EXROM_SIZE_SHIFT 11
+-#define I40E_GLPCI_LBARCTRL_EXROM_SIZE_MASK I40E_MASK(0x7, I40E_GLPCI_LBARCTRL_EXROM_SIZE_SHIFT)
+-#define I40E_GLPCI_LINKCAP 0x000BE4AC /* Reset: PCIR */
+-#define I40E_GLPCI_LINKCAP_LINK_SPEEDS_VECTOR_SHIFT 0
+-#define I40E_GLPCI_LINKCAP_LINK_SPEEDS_VECTOR_MASK I40E_MASK(0x3F, I40E_GLPCI_LINKCAP_LINK_SPEEDS_VECTOR_SHIFT)
+-#define I40E_GLPCI_LINKCAP_MAX_PAYLOAD_SHIFT 6
+-#define I40E_GLPCI_LINKCAP_MAX_PAYLOAD_MASK I40E_MASK(0x7, I40E_GLPCI_LINKCAP_MAX_PAYLOAD_SHIFT)
+-#define I40E_GLPCI_LINKCAP_MAX_LINK_WIDTH_SHIFT 9
+-#define I40E_GLPCI_LINKCAP_MAX_LINK_WIDTH_MASK I40E_MASK(0xF, I40E_GLPCI_LINKCAP_MAX_LINK_WIDTH_SHIFT)
+-#define I40E_GLPCI_PCIERR 0x000BE4FC /* Reset: PCIR */
+-#define I40E_GLPCI_PCIERR_PCIE_ERR_REP_SHIFT 0
+-#define I40E_GLPCI_PCIERR_PCIE_ERR_REP_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_PCIERR_PCIE_ERR_REP_SHIFT)
+-#define I40E_GLPCI_PKTCT 0x0009C4BC /* Reset: PCIR */
+-#define I40E_GLPCI_PKTCT_PCI_COUNT_BW_PCT_SHIFT 0
+-#define I40E_GLPCI_PKTCT_PCI_COUNT_BW_PCT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_PKTCT_PCI_COUNT_BW_PCT_SHIFT)
+-#define I40E_GLPCI_PM_MUX_NPQ 0x0009C4F4 /* Reset: PCIR */
+-#define I40E_GLPCI_PM_MUX_NPQ_NPQ_NUM_PORT_SEL_SHIFT 0
+-#define I40E_GLPCI_PM_MUX_NPQ_NPQ_NUM_PORT_SEL_MASK I40E_MASK(0x7, I40E_GLPCI_PM_MUX_NPQ_NPQ_NUM_PORT_SEL_SHIFT)
+-#define I40E_GLPCI_PM_MUX_NPQ_INNER_NPQ_SEL_SHIFT 16
+-#define I40E_GLPCI_PM_MUX_NPQ_INNER_NPQ_SEL_MASK I40E_MASK(0x1F, I40E_GLPCI_PM_MUX_NPQ_INNER_NPQ_SEL_SHIFT)
+-#define I40E_GLPCI_PM_MUX_PFB 0x0009C4F0 /* Reset: PCIR */
+-#define I40E_GLPCI_PM_MUX_PFB_PFB_PORT_SEL_SHIFT 0
+-#define I40E_GLPCI_PM_MUX_PFB_PFB_PORT_SEL_MASK I40E_MASK(0x1F, I40E_GLPCI_PM_MUX_PFB_PFB_PORT_SEL_SHIFT)
+-#define I40E_GLPCI_PM_MUX_PFB_INNER_PORT_SEL_SHIFT 16
+-#define I40E_GLPCI_PM_MUX_PFB_INNER_PORT_SEL_MASK I40E_MASK(0x7, I40E_GLPCI_PM_MUX_PFB_INNER_PORT_SEL_SHIFT)
+-#define I40E_GLPCI_PMSUP 0x000BE4B0 /* Reset: PCIR */
+-#define I40E_GLPCI_PMSUP_ASPM_SUP_SHIFT 0
+-#define I40E_GLPCI_PMSUP_ASPM_SUP_MASK I40E_MASK(0x3, I40E_GLPCI_PMSUP_ASPM_SUP_SHIFT)
+-#define I40E_GLPCI_PMSUP_L0S_EXIT_LAT_SHIFT 2
+-#define I40E_GLPCI_PMSUP_L0S_EXIT_LAT_MASK I40E_MASK(0x7, I40E_GLPCI_PMSUP_L0S_EXIT_LAT_SHIFT)
+-#define I40E_GLPCI_PMSUP_L1_EXIT_LAT_SHIFT 5
+-#define I40E_GLPCI_PMSUP_L1_EXIT_LAT_MASK I40E_MASK(0x7, I40E_GLPCI_PMSUP_L1_EXIT_LAT_SHIFT)
+-#define I40E_GLPCI_PMSUP_L0S_ACC_LAT_SHIFT 8
+-#define I40E_GLPCI_PMSUP_L0S_ACC_LAT_MASK I40E_MASK(0x7, I40E_GLPCI_PMSUP_L0S_ACC_LAT_SHIFT)
+-#define I40E_GLPCI_PMSUP_L1_ACC_LAT_SHIFT 11
+-#define I40E_GLPCI_PMSUP_L1_ACC_LAT_MASK I40E_MASK(0x7, I40E_GLPCI_PMSUP_L1_ACC_LAT_SHIFT)
+-#define I40E_GLPCI_PMSUP_SLOT_CLK_SHIFT 14
+-#define I40E_GLPCI_PMSUP_SLOT_CLK_MASK I40E_MASK(0x1, I40E_GLPCI_PMSUP_SLOT_CLK_SHIFT)
+-#define I40E_GLPCI_PMSUP_OBFF_SUP_SHIFT 15
+-#define I40E_GLPCI_PMSUP_OBFF_SUP_MASK I40E_MASK(0x3, I40E_GLPCI_PMSUP_OBFF_SUP_SHIFT)
+-#define I40E_GLPCI_PQ_MAX_USED_SPC 0x0009C4EC /* Reset: PCIR */
+-#define I40E_GLPCI_PQ_MAX_USED_SPC_GLPCI_PQ_MAX_USED_SPC_12_SHIFT 0
+-#define I40E_GLPCI_PQ_MAX_USED_SPC_GLPCI_PQ_MAX_USED_SPC_12_MASK I40E_MASK(0xFF, I40E_GLPCI_PQ_MAX_USED_SPC_GLPCI_PQ_MAX_USED_SPC_12_SHIFT)
+-#define I40E_GLPCI_PQ_MAX_USED_SPC_GLPCI_PQ_MAX_USED_SPC_13_SHIFT 8
+-#define I40E_GLPCI_PQ_MAX_USED_SPC_GLPCI_PQ_MAX_USED_SPC_13_MASK I40E_MASK(0xFF, I40E_GLPCI_PQ_MAX_USED_SPC_GLPCI_PQ_MAX_USED_SPC_13_SHIFT)
+-#define I40E_GLPCI_PWRDATA 0x000BE490 /* Reset: PCIR */
+-#define I40E_GLPCI_PWRDATA_D0_POWER_SHIFT 0
+-#define I40E_GLPCI_PWRDATA_D0_POWER_MASK I40E_MASK(0xFF, I40E_GLPCI_PWRDATA_D0_POWER_SHIFT)
+-#define I40E_GLPCI_PWRDATA_COMM_POWER_SHIFT 8
+-#define I40E_GLPCI_PWRDATA_COMM_POWER_MASK I40E_MASK(0xFF, I40E_GLPCI_PWRDATA_COMM_POWER_SHIFT)
+-#define I40E_GLPCI_PWRDATA_D3_POWER_SHIFT 16
+-#define I40E_GLPCI_PWRDATA_D3_POWER_MASK I40E_MASK(0xFF, I40E_GLPCI_PWRDATA_D3_POWER_SHIFT)
+-#define I40E_GLPCI_PWRDATA_DATA_SCALE_SHIFT 24
+-#define I40E_GLPCI_PWRDATA_DATA_SCALE_MASK I40E_MASK(0x3, I40E_GLPCI_PWRDATA_DATA_SCALE_SHIFT)
+-#define I40E_GLPCI_REVID 0x000BE4B4 /* Reset: PCIR */
+-#define I40E_GLPCI_REVID_NVM_REVID_SHIFT 0
+-#define I40E_GLPCI_REVID_NVM_REVID_MASK I40E_MASK(0xFF, I40E_GLPCI_REVID_NVM_REVID_SHIFT)
+-#define I40E_GLPCI_SERH 0x000BE49C /* Reset: PCIR */
+-#define I40E_GLPCI_SERH_SER_NUM_H_SHIFT 0
+-#define I40E_GLPCI_SERH_SER_NUM_H_MASK I40E_MASK(0xFFFF, I40E_GLPCI_SERH_SER_NUM_H_SHIFT)
+-#define I40E_GLPCI_SERL 0x000BE498 /* Reset: PCIR */
+-#define I40E_GLPCI_SERL_SER_NUM_L_SHIFT 0
+-#define I40E_GLPCI_SERL_SER_NUM_L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_SERL_SER_NUM_L_SHIFT)
+-#define I40E_GLPCI_SPARE_BITS_0 0x0009C4F8 /* Reset: PCIR */
+-#define I40E_GLPCI_SPARE_BITS_0_SPARE_BITS_SHIFT 0
+-#define I40E_GLPCI_SPARE_BITS_0_SPARE_BITS_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_SPARE_BITS_0_SPARE_BITS_SHIFT)
+-#define I40E_GLPCI_SPARE_BITS_1 0x0009C4FC /* Reset: PCIR */
+-#define I40E_GLPCI_SPARE_BITS_1_SPARE_BITS_SHIFT 0
+-#define I40E_GLPCI_SPARE_BITS_1_SPARE_BITS_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPCI_SPARE_BITS_1_SPARE_BITS_SHIFT)
+-#define I40E_GLPCI_SUBVENID 0x000BE48C /* Reset: PCIR */
+-#define I40E_GLPCI_SUBVENID_SUB_VEN_ID_SHIFT 0
+-#define I40E_GLPCI_SUBVENID_SUB_VEN_ID_MASK I40E_MASK(0xFFFF, I40E_GLPCI_SUBVENID_SUB_VEN_ID_SHIFT)
+-#define I40E_GLPCI_UPADD 0x000BE4F8 /* Reset: PCIR */
+-#define I40E_GLPCI_UPADD_ADDRESS_SHIFT 1
+-#define I40E_GLPCI_UPADD_ADDRESS_MASK I40E_MASK(0x7FFFFFFF, I40E_GLPCI_UPADD_ADDRESS_SHIFT)
+-#define I40E_GLPCI_VENDORID 0x000BE518 /* Reset: PCIR */
+-#define I40E_GLPCI_VENDORID_VENDORID_SHIFT 0
+-#define I40E_GLPCI_VENDORID_VENDORID_MASK I40E_MASK(0xFFFF, I40E_GLPCI_VENDORID_VENDORID_SHIFT)
+-#define I40E_GLPCI_VFSUP 0x000BE4B8 /* Reset: PCIR */
+-#define I40E_GLPCI_VFSUP_VF_PREFETCH_SHIFT 0
+-#define I40E_GLPCI_VFSUP_VF_PREFETCH_MASK I40E_MASK(0x1, I40E_GLPCI_VFSUP_VF_PREFETCH_SHIFT)
+-#define I40E_GLPCI_VFSUP_VR_BAR_TYPE_SHIFT 1
+-#define I40E_GLPCI_VFSUP_VR_BAR_TYPE_MASK I40E_MASK(0x1, I40E_GLPCI_VFSUP_VR_BAR_TYPE_SHIFT)
+-#define I40E_GLTPH_CTRL 0x000BE480 /* Reset: PCIR */
+-#define I40E_GLTPH_CTRL_DESC_PH_SHIFT 9
+-#define I40E_GLTPH_CTRL_DESC_PH_MASK I40E_MASK(0x3, I40E_GLTPH_CTRL_DESC_PH_SHIFT)
+-#define I40E_GLTPH_CTRL_DATA_PH_SHIFT 11
+-#define I40E_GLTPH_CTRL_DATA_PH_MASK I40E_MASK(0x3, I40E_GLTPH_CTRL_DATA_PH_SHIFT)
+ #define I40E_PF_FUNC_RID 0x0009C000 /* Reset: PCIR */
+-#define I40E_PF_FUNC_RID_FUNCTION_NUMBER_SHIFT 0
+-#define I40E_PF_FUNC_RID_FUNCTION_NUMBER_MASK I40E_MASK(0x7, I40E_PF_FUNC_RID_FUNCTION_NUMBER_SHIFT)
+-#define I40E_PF_FUNC_RID_DEVICE_NUMBER_SHIFT 3
+-#define I40E_PF_FUNC_RID_DEVICE_NUMBER_MASK I40E_MASK(0x1F, I40E_PF_FUNC_RID_DEVICE_NUMBER_SHIFT)
+-#define I40E_PF_FUNC_RID_BUS_NUMBER_SHIFT 8
+-#define I40E_PF_FUNC_RID_BUS_NUMBER_MASK I40E_MASK(0xFF, I40E_PF_FUNC_RID_BUS_NUMBER_SHIFT)
+ #define I40E_PF_PCI_CIAA 0x0009C080 /* Reset: FLR */
+-#define I40E_PF_PCI_CIAA_ADDRESS_SHIFT 0
+-#define I40E_PF_PCI_CIAA_ADDRESS_MASK I40E_MASK(0xFFF, I40E_PF_PCI_CIAA_ADDRESS_SHIFT)
+ #define I40E_PF_PCI_CIAA_VF_NUM_SHIFT 12
+-#define I40E_PF_PCI_CIAA_VF_NUM_MASK I40E_MASK(0x7F, I40E_PF_PCI_CIAA_VF_NUM_SHIFT)
+ #define I40E_PF_PCI_CIAD 0x0009C100 /* Reset: FLR */
+-#define I40E_PF_PCI_CIAD_DATA_SHIFT 0
+-#define I40E_PF_PCI_CIAD_DATA_MASK I40E_MASK(0xFFFFFFFF, I40E_PF_PCI_CIAD_DATA_SHIFT)
+-#define I40E_PFPCI_CLASS 0x000BE400 /* Reset: PCIR */
+-#define I40E_PFPCI_CLASS_STORAGE_CLASS_SHIFT 0
+-#define I40E_PFPCI_CLASS_STORAGE_CLASS_MASK I40E_MASK(0x1, I40E_PFPCI_CLASS_STORAGE_CLASS_SHIFT)
+-#define I40E_PFPCI_CLASS_RESERVED_1_SHIFT 1
+-#define I40E_PFPCI_CLASS_RESERVED_1_MASK I40E_MASK(0x1, I40E_PFPCI_CLASS_RESERVED_1_SHIFT)
+-#define I40E_PFPCI_CLASS_PF_IS_LAN_SHIFT 2
+-#define I40E_PFPCI_CLASS_PF_IS_LAN_MASK I40E_MASK(0x1, I40E_PFPCI_CLASS_PF_IS_LAN_SHIFT)
+-#define I40E_PFPCI_CNF 0x000BE000 /* Reset: PCIR */
+-#define I40E_PFPCI_CNF_MSI_EN_SHIFT 2
+-#define I40E_PFPCI_CNF_MSI_EN_MASK I40E_MASK(0x1, I40E_PFPCI_CNF_MSI_EN_SHIFT)
+-#define I40E_PFPCI_CNF_EXROM_DIS_SHIFT 3
+-#define I40E_PFPCI_CNF_EXROM_DIS_MASK I40E_MASK(0x1, I40E_PFPCI_CNF_EXROM_DIS_SHIFT)
+-#define I40E_PFPCI_CNF_IO_BAR_SHIFT 4
+-#define I40E_PFPCI_CNF_IO_BAR_MASK I40E_MASK(0x1, I40E_PFPCI_CNF_IO_BAR_SHIFT)
+-#define I40E_PFPCI_CNF_INT_PIN_SHIFT 5
+-#define I40E_PFPCI_CNF_INT_PIN_MASK I40E_MASK(0x3, I40E_PFPCI_CNF_INT_PIN_SHIFT)
+-#define I40E_PFPCI_DEVID 0x000BE080 /* Reset: PCIR */
+-#define I40E_PFPCI_DEVID_PF_DEV_ID_SHIFT 0
+-#define I40E_PFPCI_DEVID_PF_DEV_ID_MASK I40E_MASK(0xFFFF, I40E_PFPCI_DEVID_PF_DEV_ID_SHIFT)
+-#define I40E_PFPCI_DEVID_VF_DEV_ID_SHIFT 16
+-#define I40E_PFPCI_DEVID_VF_DEV_ID_MASK I40E_MASK(0xFFFF, I40E_PFPCI_DEVID_VF_DEV_ID_SHIFT)
+-#define I40E_PFPCI_FACTPS 0x0009C180 /* Reset: FLR */
+-#define I40E_PFPCI_FACTPS_FUNC_POWER_STATE_SHIFT 0
+-#define I40E_PFPCI_FACTPS_FUNC_POWER_STATE_MASK I40E_MASK(0x3, I40E_PFPCI_FACTPS_FUNC_POWER_STATE_SHIFT)
+-#define I40E_PFPCI_FACTPS_FUNC_AUX_EN_SHIFT 3
+-#define I40E_PFPCI_FACTPS_FUNC_AUX_EN_MASK I40E_MASK(0x1, I40E_PFPCI_FACTPS_FUNC_AUX_EN_SHIFT)
+-#define I40E_PFPCI_FUNC 0x000BE200 /* Reset: POR */
+-#define I40E_PFPCI_FUNC_FUNC_DIS_SHIFT 0
+-#define I40E_PFPCI_FUNC_FUNC_DIS_MASK I40E_MASK(0x1, I40E_PFPCI_FUNC_FUNC_DIS_SHIFT)
+-#define I40E_PFPCI_FUNC_ALLOW_FUNC_DIS_SHIFT 1
+-#define I40E_PFPCI_FUNC_ALLOW_FUNC_DIS_MASK I40E_MASK(0x1, I40E_PFPCI_FUNC_ALLOW_FUNC_DIS_SHIFT)
+-#define I40E_PFPCI_FUNC_DIS_FUNC_ON_PORT_DIS_SHIFT 2
+-#define I40E_PFPCI_FUNC_DIS_FUNC_ON_PORT_DIS_MASK I40E_MASK(0x1, I40E_PFPCI_FUNC_DIS_FUNC_ON_PORT_DIS_SHIFT)
+-#define I40E_PFPCI_FUNC2 0x000BE180 /* Reset: PCIR */
+-#define I40E_PFPCI_FUNC2_EMP_FUNC_DIS_SHIFT 0
+-#define I40E_PFPCI_FUNC2_EMP_FUNC_DIS_MASK I40E_MASK(0x1, I40E_PFPCI_FUNC2_EMP_FUNC_DIS_SHIFT)
+-#define I40E_PFPCI_ICAUSE 0x0009C200 /* Reset: PFR */
+-#define I40E_PFPCI_ICAUSE_PCIE_ERR_CAUSE_SHIFT 0
+-#define I40E_PFPCI_ICAUSE_PCIE_ERR_CAUSE_MASK I40E_MASK(0xFFFFFFFF, I40E_PFPCI_ICAUSE_PCIE_ERR_CAUSE_SHIFT)
+-#define I40E_PFPCI_IENA 0x0009C280 /* Reset: PFR */
+-#define I40E_PFPCI_IENA_PCIE_ERR_EN_SHIFT 0
+-#define I40E_PFPCI_IENA_PCIE_ERR_EN_MASK I40E_MASK(0xFFFFFFFF, I40E_PFPCI_IENA_PCIE_ERR_EN_SHIFT)
+-#define I40E_PFPCI_PF_FLUSH_DONE 0x0009C800 /* Reset: PCIR */
+-#define I40E_PFPCI_PF_FLUSH_DONE_FLUSH_DONE_SHIFT 0
+-#define I40E_PFPCI_PF_FLUSH_DONE_FLUSH_DONE_MASK I40E_MASK(0x1, I40E_PFPCI_PF_FLUSH_DONE_FLUSH_DONE_SHIFT)
+-#define I40E_PFPCI_PM 0x000BE300 /* Reset: POR */
+-#define I40E_PFPCI_PM_PME_EN_SHIFT 0
+-#define I40E_PFPCI_PM_PME_EN_MASK I40E_MASK(0x1, I40E_PFPCI_PM_PME_EN_SHIFT)
+-#define I40E_PFPCI_STATUS1 0x000BE280 /* Reset: POR */
+-#define I40E_PFPCI_STATUS1_FUNC_VALID_SHIFT 0
+-#define I40E_PFPCI_STATUS1_FUNC_VALID_MASK I40E_MASK(0x1, I40E_PFPCI_STATUS1_FUNC_VALID_SHIFT)
+-#define I40E_PFPCI_SUBSYSID 0x000BE100 /* Reset: PCIR */
+-#define I40E_PFPCI_SUBSYSID_PF_SUBSYS_ID_SHIFT 0
+-#define I40E_PFPCI_SUBSYSID_PF_SUBSYS_ID_MASK I40E_MASK(0xFFFF, I40E_PFPCI_SUBSYSID_PF_SUBSYS_ID_SHIFT)
+-#define I40E_PFPCI_SUBSYSID_VF_SUBSYS_ID_SHIFT 16
+-#define I40E_PFPCI_SUBSYSID_VF_SUBSYS_ID_MASK I40E_MASK(0xFFFF, I40E_PFPCI_SUBSYSID_VF_SUBSYS_ID_SHIFT)
+-#define I40E_PFPCI_VF_FLUSH_DONE 0x0000E400 /* Reset: PCIR */
+-#define I40E_PFPCI_VF_FLUSH_DONE_FLUSH_DONE_SHIFT 0
+-#define I40E_PFPCI_VF_FLUSH_DONE_FLUSH_DONE_MASK I40E_MASK(0x1, I40E_PFPCI_VF_FLUSH_DONE_FLUSH_DONE_SHIFT)
+-#define I40E_PFPCI_VF_FLUSH_DONE1(_VF) (0x0009C600 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: PCIR */
+-#define I40E_PFPCI_VF_FLUSH_DONE1_MAX_INDEX 127
+-#define I40E_PFPCI_VF_FLUSH_DONE1_FLUSH_DONE_SHIFT 0
+-#define I40E_PFPCI_VF_FLUSH_DONE1_FLUSH_DONE_MASK I40E_MASK(0x1, I40E_PFPCI_VF_FLUSH_DONE1_FLUSH_DONE_SHIFT)
+-#define I40E_PFPCI_VM_FLUSH_DONE 0x0009C880 /* Reset: PCIR */
+-#define I40E_PFPCI_VM_FLUSH_DONE_FLUSH_DONE_SHIFT 0
+-#define I40E_PFPCI_VM_FLUSH_DONE_FLUSH_DONE_MASK I40E_MASK(0x1, I40E_PFPCI_VM_FLUSH_DONE_FLUSH_DONE_SHIFT)
+-#define I40E_PFPCI_VMINDEX 0x0009C300 /* Reset: PCIR */
+-#define I40E_PFPCI_VMINDEX_VMINDEX_SHIFT 0
+-#define I40E_PFPCI_VMINDEX_VMINDEX_MASK I40E_MASK(0x1FF, I40E_PFPCI_VMINDEX_VMINDEX_SHIFT)
+-#define I40E_PFPCI_VMPEND 0x0009C380 /* Reset: PCIR */
+-#define I40E_PFPCI_VMPEND_PENDING_SHIFT 0
+-#define I40E_PFPCI_VMPEND_PENDING_MASK I40E_MASK(0x1, I40E_PFPCI_VMPEND_PENDING_SHIFT)
+ #define I40E_PRTPM_EEE_STAT 0x001E4320 /* Reset: GLOBR */
+-#define I40E_PRTPM_EEE_STAT_EEE_NEG_SHIFT 29
+-#define I40E_PRTPM_EEE_STAT_EEE_NEG_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_EEE_NEG_SHIFT)
+ #define I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_SHIFT 30
+ #define I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_SHIFT)
+ #define I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_SHIFT 31
+ #define I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_SHIFT)
+-#define I40E_PRTPM_EEEC 0x001E4380 /* Reset: GLOBR */
+-#define I40E_PRTPM_EEEC_TW_WAKE_MIN_SHIFT 16
+-#define I40E_PRTPM_EEEC_TW_WAKE_MIN_MASK I40E_MASK(0x3F, I40E_PRTPM_EEEC_TW_WAKE_MIN_SHIFT)
+-#define I40E_PRTPM_EEEC_TX_LU_LPI_DLY_SHIFT 24
+-#define I40E_PRTPM_EEEC_TX_LU_LPI_DLY_MASK I40E_MASK(0x3, I40E_PRTPM_EEEC_TX_LU_LPI_DLY_SHIFT)
+-#define I40E_PRTPM_EEEC_TEEE_DLY_SHIFT 26
+-#define I40E_PRTPM_EEEC_TEEE_DLY_MASK I40E_MASK(0x3F, I40E_PRTPM_EEEC_TEEE_DLY_SHIFT)
+-#define I40E_PRTPM_EEEFWD 0x001E4400 /* Reset: GLOBR */
+-#define I40E_PRTPM_EEEFWD_EEE_FW_CONFIG_DONE_SHIFT 31
+-#define I40E_PRTPM_EEEFWD_EEE_FW_CONFIG_DONE_MASK I40E_MASK(0x1, I40E_PRTPM_EEEFWD_EEE_FW_CONFIG_DONE_SHIFT)
+-#define I40E_PRTPM_EEER 0x001E4360 /* Reset: GLOBR */
+-#define I40E_PRTPM_EEER_TW_SYSTEM_SHIFT 0
+-#define I40E_PRTPM_EEER_TW_SYSTEM_MASK I40E_MASK(0xFFFF, I40E_PRTPM_EEER_TW_SYSTEM_SHIFT)
+-#define I40E_PRTPM_EEER_TX_LPI_EN_SHIFT 16
+-#define I40E_PRTPM_EEER_TX_LPI_EN_MASK I40E_MASK(0x1, I40E_PRTPM_EEER_TX_LPI_EN_SHIFT)
+-#define I40E_PRTPM_EEETXC 0x001E43E0 /* Reset: GLOBR */
+-#define I40E_PRTPM_EEETXC_TW_PHY_SHIFT 0
+-#define I40E_PRTPM_EEETXC_TW_PHY_MASK I40E_MASK(0xFFFF, I40E_PRTPM_EEETXC_TW_PHY_SHIFT)
+-#define I40E_PRTPM_GC 0x000B8140 /* Reset: POR */
+-#define I40E_PRTPM_GC_EMP_LINK_ON_SHIFT 0
+-#define I40E_PRTPM_GC_EMP_LINK_ON_MASK I40E_MASK(0x1, I40E_PRTPM_GC_EMP_LINK_ON_SHIFT)
+-#define I40E_PRTPM_GC_MNG_VETO_SHIFT 1
+-#define I40E_PRTPM_GC_MNG_VETO_MASK I40E_MASK(0x1, I40E_PRTPM_GC_MNG_VETO_SHIFT)
+-#define I40E_PRTPM_GC_RATD_SHIFT 2
+-#define I40E_PRTPM_GC_RATD_MASK I40E_MASK(0x1, I40E_PRTPM_GC_RATD_SHIFT)
+-#define I40E_PRTPM_GC_LCDMP_SHIFT 3
+-#define I40E_PRTPM_GC_LCDMP_MASK I40E_MASK(0x1, I40E_PRTPM_GC_LCDMP_SHIFT)
+-#define I40E_PRTPM_GC_LPLU_ASSERTED_SHIFT 31
+-#define I40E_PRTPM_GC_LPLU_ASSERTED_MASK I40E_MASK(0x1, I40E_PRTPM_GC_LPLU_ASSERTED_SHIFT)
+ #define I40E_PRTPM_RLPIC 0x001E43A0 /* Reset: GLOBR */
+-#define I40E_PRTPM_RLPIC_ERLPIC_SHIFT 0
+-#define I40E_PRTPM_RLPIC_ERLPIC_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTPM_RLPIC_ERLPIC_SHIFT)
+ #define I40E_PRTPM_TLPIC 0x001E43C0 /* Reset: GLOBR */
+-#define I40E_PRTPM_TLPIC_ETLPIC_SHIFT 0
+-#define I40E_PRTPM_TLPIC_ETLPIC_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTPM_TLPIC_ETLPIC_SHIFT)
+-#define I40E_GL_PRS_FVBM(_i) (0x00269760 + ((_i) * 4)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GL_PRS_FVBM_MAX_INDEX 3
+-#define I40E_GL_PRS_FVBM_FV_BYTE_INDX_SHIFT 0
+-#define I40E_GL_PRS_FVBM_FV_BYTE_INDX_MASK I40E_MASK(0x7F, I40E_GL_PRS_FVBM_FV_BYTE_INDX_SHIFT)
+-#define I40E_GL_PRS_FVBM_RULE_BUS_INDX_SHIFT 8
+-#define I40E_GL_PRS_FVBM_RULE_BUS_INDX_MASK I40E_MASK(0x3F, I40E_GL_PRS_FVBM_RULE_BUS_INDX_SHIFT)
+-#define I40E_GL_PRS_FVBM_MSK_ENA_SHIFT 31
+-#define I40E_GL_PRS_FVBM_MSK_ENA_MASK I40E_MASK(0x1, I40E_GL_PRS_FVBM_MSK_ENA_SHIFT)
+-#define I40E_GLRPB_DPSS 0x000AC828 /* Reset: CORER */
+-#define I40E_GLRPB_DPSS_DPS_TCN_SHIFT 0
+-#define I40E_GLRPB_DPSS_DPS_TCN_MASK I40E_MASK(0xFFFFF, I40E_GLRPB_DPSS_DPS_TCN_SHIFT)
+-#define I40E_GLRPB_GHW 0x000AC830 /* Reset: CORER */
+-#define I40E_GLRPB_GHW_GHW_SHIFT 0
+-#define I40E_GLRPB_GHW_GHW_MASK I40E_MASK(0xFFFFF, I40E_GLRPB_GHW_GHW_SHIFT)
+-#define I40E_GLRPB_GLW 0x000AC834 /* Reset: CORER */
+-#define I40E_GLRPB_GLW_GLW_SHIFT 0
+-#define I40E_GLRPB_GLW_GLW_MASK I40E_MASK(0xFFFFF, I40E_GLRPB_GLW_GLW_SHIFT)
+-#define I40E_GLRPB_PHW 0x000AC844 /* Reset: CORER */
+-#define I40E_GLRPB_PHW_PHW_SHIFT 0
+-#define I40E_GLRPB_PHW_PHW_MASK I40E_MASK(0xFFFFF, I40E_GLRPB_PHW_PHW_SHIFT)
+-#define I40E_GLRPB_PLW 0x000AC848 /* Reset: CORER */
+-#define I40E_GLRPB_PLW_PLW_SHIFT 0
+-#define I40E_GLRPB_PLW_PLW_MASK I40E_MASK(0xFFFFF, I40E_GLRPB_PLW_PLW_SHIFT)
+-#define I40E_PRTRPB_DHW(_i) (0x000AC100 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTRPB_DHW_MAX_INDEX 7
+-#define I40E_PRTRPB_DHW_DHW_TCN_SHIFT 0
+-#define I40E_PRTRPB_DHW_DHW_TCN_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_DHW_DHW_TCN_SHIFT)
+-#define I40E_PRTRPB_DLW(_i) (0x000AC220 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTRPB_DLW_MAX_INDEX 7
+-#define I40E_PRTRPB_DLW_DLW_TCN_SHIFT 0
+-#define I40E_PRTRPB_DLW_DLW_TCN_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_DLW_DLW_TCN_SHIFT)
+-#define I40E_PRTRPB_DPS(_i) (0x000AC320 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTRPB_DPS_MAX_INDEX 7
+-#define I40E_PRTRPB_DPS_DPS_TCN_SHIFT 0
+-#define I40E_PRTRPB_DPS_DPS_TCN_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_DPS_DPS_TCN_SHIFT)
+-#define I40E_PRTRPB_SHT(_i) (0x000AC480 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTRPB_SHT_MAX_INDEX 7
+-#define I40E_PRTRPB_SHT_SHT_TCN_SHIFT 0
+-#define I40E_PRTRPB_SHT_SHT_TCN_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_SHT_SHT_TCN_SHIFT)
+-#define I40E_PRTRPB_SHW 0x000AC580 /* Reset: CORER */
+-#define I40E_PRTRPB_SHW_SHW_SHIFT 0
+-#define I40E_PRTRPB_SHW_SHW_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_SHW_SHW_SHIFT)
+-#define I40E_PRTRPB_SLT(_i) (0x000AC5A0 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTRPB_SLT_MAX_INDEX 7
+-#define I40E_PRTRPB_SLT_SLT_TCN_SHIFT 0
+-#define I40E_PRTRPB_SLT_SLT_TCN_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_SLT_SLT_TCN_SHIFT)
+-#define I40E_PRTRPB_SLW 0x000AC6A0 /* Reset: CORER */
+-#define I40E_PRTRPB_SLW_SLW_SHIFT 0
+-#define I40E_PRTRPB_SLW_SLW_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_SLW_SLW_SHIFT)
+-#define I40E_PRTRPB_SPS 0x000AC7C0 /* Reset: CORER */
+-#define I40E_PRTRPB_SPS_SPS_SHIFT 0
+-#define I40E_PRTRPB_SPS_SPS_MASK I40E_MASK(0xFFFFF, I40E_PRTRPB_SPS_SPS_SHIFT)
+-#define I40E_GLQF_CTL 0x00269BA4 /* Reset: CORER */
+-#define I40E_GLQF_CTL_HTOEP_SHIFT 1
+-#define I40E_GLQF_CTL_HTOEP_MASK I40E_MASK(0x1, I40E_GLQF_CTL_HTOEP_SHIFT)
+-#define I40E_GLQF_CTL_HTOEP_FCOE_SHIFT 2
+-#define I40E_GLQF_CTL_HTOEP_FCOE_MASK I40E_MASK(0x1, I40E_GLQF_CTL_HTOEP_FCOE_SHIFT)
+-#define I40E_GLQF_CTL_PCNT_ALLOC_SHIFT 3
+-#define I40E_GLQF_CTL_PCNT_ALLOC_MASK I40E_MASK(0x7, I40E_GLQF_CTL_PCNT_ALLOC_SHIFT)
+-#define I40E_GLQF_CTL_FD_AUTO_PCTYPE_SHIFT 6
+-#define I40E_GLQF_CTL_FD_AUTO_PCTYPE_MASK I40E_MASK(0x1, I40E_GLQF_CTL_FD_AUTO_PCTYPE_SHIFT)
+-#define I40E_GLQF_CTL_RSVD_SHIFT 7
+-#define I40E_GLQF_CTL_RSVD_MASK I40E_MASK(0x1, I40E_GLQF_CTL_RSVD_SHIFT)
+-#define I40E_GLQF_CTL_MAXPEBLEN_SHIFT 8
+-#define I40E_GLQF_CTL_MAXPEBLEN_MASK I40E_MASK(0x7, I40E_GLQF_CTL_MAXPEBLEN_SHIFT)
+-#define I40E_GLQF_CTL_MAXFCBLEN_SHIFT 11
+-#define I40E_GLQF_CTL_MAXFCBLEN_MASK I40E_MASK(0x7, I40E_GLQF_CTL_MAXFCBLEN_SHIFT)
+-#define I40E_GLQF_CTL_MAXFDBLEN_SHIFT 14
+-#define I40E_GLQF_CTL_MAXFDBLEN_MASK I40E_MASK(0x7, I40E_GLQF_CTL_MAXFDBLEN_SHIFT)
+-#define I40E_GLQF_CTL_FDBEST_SHIFT 17
+-#define I40E_GLQF_CTL_FDBEST_MASK I40E_MASK(0xFF, I40E_GLQF_CTL_FDBEST_SHIFT)
+-#define I40E_GLQF_CTL_PROGPRIO_SHIFT 25
+-#define I40E_GLQF_CTL_PROGPRIO_MASK I40E_MASK(0x1, I40E_GLQF_CTL_PROGPRIO_SHIFT)
+-#define I40E_GLQF_CTL_INVALPRIO_SHIFT 26
+-#define I40E_GLQF_CTL_INVALPRIO_MASK I40E_MASK(0x1, I40E_GLQF_CTL_INVALPRIO_SHIFT)
+-#define I40E_GLQF_CTL_IGNORE_IP_SHIFT 27
+-#define I40E_GLQF_CTL_IGNORE_IP_MASK I40E_MASK(0x1, I40E_GLQF_CTL_IGNORE_IP_SHIFT)
+ #define I40E_GLQF_FDCNT_0 0x00269BAC /* Reset: CORER */
+ #define I40E_GLQF_FDCNT_0_GUARANT_CNT_SHIFT 0
+ #define I40E_GLQF_FDCNT_0_GUARANT_CNT_MASK I40E_MASK(0x1FFF, I40E_GLQF_FDCNT_0_GUARANT_CNT_SHIFT)
+@@ -2112,36 +397,7 @@
+ #define I40E_GLQF_FDCNT_0_BESTCNT_MASK I40E_MASK(0x1FFF, I40E_GLQF_FDCNT_0_BESTCNT_SHIFT)
+ #define I40E_GLQF_HKEY(_i) (0x00270140 + ((_i) * 4)) /* _i=0...12 */ /* Reset: CORER */
+ #define I40E_GLQF_HKEY_MAX_INDEX 12
+-#define I40E_GLQF_HKEY_KEY_0_SHIFT 0
+-#define I40E_GLQF_HKEY_KEY_0_MASK I40E_MASK(0xFF, I40E_GLQF_HKEY_KEY_0_SHIFT)
+-#define I40E_GLQF_HKEY_KEY_1_SHIFT 8
+-#define I40E_GLQF_HKEY_KEY_1_MASK I40E_MASK(0xFF, I40E_GLQF_HKEY_KEY_1_SHIFT)
+-#define I40E_GLQF_HKEY_KEY_2_SHIFT 16
+-#define I40E_GLQF_HKEY_KEY_2_MASK I40E_MASK(0xFF, I40E_GLQF_HKEY_KEY_2_SHIFT)
+-#define I40E_GLQF_HKEY_KEY_3_SHIFT 24
+-#define I40E_GLQF_HKEY_KEY_3_MASK I40E_MASK(0xFF, I40E_GLQF_HKEY_KEY_3_SHIFT)
+-#define I40E_GLQF_HSYM(_i) (0x00269D00 + ((_i) * 4)) /* _i=0...63 */ /* Reset: CORER */
+-#define I40E_GLQF_HSYM_MAX_INDEX 63
+-#define I40E_GLQF_HSYM_SYMH_ENA_SHIFT 0
+-#define I40E_GLQF_HSYM_SYMH_ENA_MASK I40E_MASK(0x1, I40E_GLQF_HSYM_SYMH_ENA_SHIFT)
+ #define I40E_GLQF_PCNT(_i) (0x00266800 + ((_i) * 4)) /* _i=0...511 */ /* Reset: CORER */
+-#define I40E_GLQF_PCNT_MAX_INDEX 511
+-#define I40E_GLQF_PCNT_PCNT_SHIFT 0
+-#define I40E_GLQF_PCNT_PCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLQF_PCNT_PCNT_SHIFT)
+-#define I40E_GLQF_SWAP(_i, _j) (0x00267E00 + ((_i) * 4 + (_j) * 8)) /* _i=0...1, _j=0...63 */ /* Reset: CORER */
+-#define I40E_GLQF_SWAP_MAX_INDEX 1
+-#define I40E_GLQF_SWAP_OFF0_SRC0_SHIFT 0
+-#define I40E_GLQF_SWAP_OFF0_SRC0_MASK I40E_MASK(0x3F, I40E_GLQF_SWAP_OFF0_SRC0_SHIFT)
+-#define I40E_GLQF_SWAP_OFF0_SRC1_SHIFT 6
+-#define I40E_GLQF_SWAP_OFF0_SRC1_MASK I40E_MASK(0x3F, I40E_GLQF_SWAP_OFF0_SRC1_SHIFT)
+-#define I40E_GLQF_SWAP_FLEN0_SHIFT 12
+-#define I40E_GLQF_SWAP_FLEN0_MASK I40E_MASK(0xF, I40E_GLQF_SWAP_FLEN0_SHIFT)
+-#define I40E_GLQF_SWAP_OFF1_SRC0_SHIFT 16
+-#define I40E_GLQF_SWAP_OFF1_SRC0_MASK I40E_MASK(0x3F, I40E_GLQF_SWAP_OFF1_SRC0_SHIFT)
+-#define I40E_GLQF_SWAP_OFF1_SRC1_SHIFT 22
+-#define I40E_GLQF_SWAP_OFF1_SRC1_MASK I40E_MASK(0x3F, I40E_GLQF_SWAP_OFF1_SRC1_SHIFT)
+-#define I40E_GLQF_SWAP_FLEN1_SHIFT 28
+-#define I40E_GLQF_SWAP_FLEN1_MASK I40E_MASK(0xF, I40E_GLQF_SWAP_FLEN1_SHIFT)
+ #define I40E_PFQF_CTL_0 0x001C0AC0 /* Reset: CORER */
+ #define I40E_PFQF_CTL_0_PEHSIZE_SHIFT 0
+ #define I40E_PFQF_CTL_0_PEHSIZE_MASK I40E_MASK(0x1F, I40E_PFQF_CTL_0_PEHSIZE_SHIFT)
+@@ -2159,54 +415,19 @@
+ #define I40E_PFQF_CTL_0_ETYPE_ENA_MASK I40E_MASK(0x1, I40E_PFQF_CTL_0_ETYPE_ENA_SHIFT)
+ #define I40E_PFQF_CTL_0_MACVLAN_ENA_SHIFT 19
+ #define I40E_PFQF_CTL_0_MACVLAN_ENA_MASK I40E_MASK(0x1, I40E_PFQF_CTL_0_MACVLAN_ENA_SHIFT)
+-#define I40E_PFQF_CTL_0_VFFCHSIZE_SHIFT 20
+-#define I40E_PFQF_CTL_0_VFFCHSIZE_MASK I40E_MASK(0xF, I40E_PFQF_CTL_0_VFFCHSIZE_SHIFT)
+-#define I40E_PFQF_CTL_0_VFFCDSIZE_SHIFT 24
+-#define I40E_PFQF_CTL_0_VFFCDSIZE_MASK I40E_MASK(0x3, I40E_PFQF_CTL_0_VFFCDSIZE_SHIFT)
+ #define I40E_PFQF_CTL_1 0x00245D80 /* Reset: CORER */
+ #define I40E_PFQF_CTL_1_CLEARFDTABLE_SHIFT 0
+ #define I40E_PFQF_CTL_1_CLEARFDTABLE_MASK I40E_MASK(0x1, I40E_PFQF_CTL_1_CLEARFDTABLE_SHIFT)
+-#define I40E_PFQF_FDALLOC 0x00246280 /* Reset: CORER */
+-#define I40E_PFQF_FDALLOC_FDALLOC_SHIFT 0
+-#define I40E_PFQF_FDALLOC_FDALLOC_MASK I40E_MASK(0xFF, I40E_PFQF_FDALLOC_FDALLOC_SHIFT)
+-#define I40E_PFQF_FDALLOC_FDBEST_SHIFT 8
+-#define I40E_PFQF_FDALLOC_FDBEST_MASK I40E_MASK(0xFF, I40E_PFQF_FDALLOC_FDBEST_SHIFT)
+ #define I40E_PFQF_FDSTAT 0x00246380 /* Reset: CORER */
+ #define I40E_PFQF_FDSTAT_GUARANT_CNT_SHIFT 0
+ #define I40E_PFQF_FDSTAT_GUARANT_CNT_MASK I40E_MASK(0x1FFF, I40E_PFQF_FDSTAT_GUARANT_CNT_SHIFT)
+ #define I40E_PFQF_FDSTAT_BEST_CNT_SHIFT 16
+ #define I40E_PFQF_FDSTAT_BEST_CNT_MASK I40E_MASK(0x1FFF, I40E_PFQF_FDSTAT_BEST_CNT_SHIFT)
+ #define I40E_PFQF_HENA(_i) (0x00245900 + ((_i) * 128)) /* _i=0...1 */ /* Reset: CORER */
+-#define I40E_PFQF_HENA_MAX_INDEX 1
+-#define I40E_PFQF_HENA_PTYPE_ENA_SHIFT 0
+-#define I40E_PFQF_HENA_PTYPE_ENA_MASK I40E_MASK(0xFFFFFFFF, I40E_PFQF_HENA_PTYPE_ENA_SHIFT)
+ #define I40E_PFQF_HKEY(_i) (0x00244800 + ((_i) * 128)) /* _i=0...12 */ /* Reset: CORER */
+ #define I40E_PFQF_HKEY_MAX_INDEX 12
+-#define I40E_PFQF_HKEY_KEY_0_SHIFT 0
+-#define I40E_PFQF_HKEY_KEY_0_MASK I40E_MASK(0xFF, I40E_PFQF_HKEY_KEY_0_SHIFT)
+-#define I40E_PFQF_HKEY_KEY_1_SHIFT 8
+-#define I40E_PFQF_HKEY_KEY_1_MASK I40E_MASK(0xFF, I40E_PFQF_HKEY_KEY_1_SHIFT)
+-#define I40E_PFQF_HKEY_KEY_2_SHIFT 16
+-#define I40E_PFQF_HKEY_KEY_2_MASK I40E_MASK(0xFF, I40E_PFQF_HKEY_KEY_2_SHIFT)
+-#define I40E_PFQF_HKEY_KEY_3_SHIFT 24
+-#define I40E_PFQF_HKEY_KEY_3_MASK I40E_MASK(0xFF, I40E_PFQF_HKEY_KEY_3_SHIFT)
+ #define I40E_PFQF_HLUT(_i) (0x00240000 + ((_i) * 128)) /* _i=0...127 */ /* Reset: CORER */
+ #define I40E_PFQF_HLUT_MAX_INDEX 127
+-#define I40E_PFQF_HLUT_LUT0_SHIFT 0
+-#define I40E_PFQF_HLUT_LUT0_MASK I40E_MASK(0x3F, I40E_PFQF_HLUT_LUT0_SHIFT)
+-#define I40E_PFQF_HLUT_LUT1_SHIFT 8
+-#define I40E_PFQF_HLUT_LUT1_MASK I40E_MASK(0x3F, I40E_PFQF_HLUT_LUT1_SHIFT)
+-#define I40E_PFQF_HLUT_LUT2_SHIFT 16
+-#define I40E_PFQF_HLUT_LUT2_MASK I40E_MASK(0x3F, I40E_PFQF_HLUT_LUT2_SHIFT)
+-#define I40E_PFQF_HLUT_LUT3_SHIFT 24
+-#define I40E_PFQF_HLUT_LUT3_MASK I40E_MASK(0x3F, I40E_PFQF_HLUT_LUT3_SHIFT)
+-#define I40E_PRTQF_CTL_0 0x00256E60 /* Reset: CORER */
+-#define I40E_PRTQF_CTL_0_HSYM_ENA_SHIFT 0
+-#define I40E_PRTQF_CTL_0_HSYM_ENA_MASK I40E_MASK(0x1, I40E_PRTQF_CTL_0_HSYM_ENA_SHIFT)
+-#define I40E_PRTQF_FD_FLXINSET(_i) (0x00253800 + ((_i) * 32)) /* _i=0...63 */ /* Reset: CORER */
+-#define I40E_PRTQF_FD_FLXINSET_MAX_INDEX 63
+-#define I40E_PRTQF_FD_FLXINSET_INSET_SHIFT 0
+-#define I40E_PRTQF_FD_FLXINSET_INSET_MASK I40E_MASK(0xFF, I40E_PRTQF_FD_FLXINSET_INSET_SHIFT)
+ #define I40E_PRTQF_FD_INSET(_i, _j) (0x00250000 + ((_i) * 64 + (_j) * 32)) /* _i=0...63, _j=0...1 */ /* Reset: CORER */
+ #define I40E_PRTQF_FD_INSET_MAX_INDEX 63
+ #define I40E_PRTQF_FD_INSET_INSET_SHIFT 0
+@@ -2215,14 +436,7 @@
+ #define I40E_PRTQF_FD_INSET_MAX_INDEX 63
+ #define I40E_PRTQF_FD_INSET_INSET_SHIFT 0
+ #define I40E_PRTQF_FD_INSET_INSET_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTQF_FD_INSET_INSET_SHIFT)
+-#define I40E_PRTQF_FD_MSK(_i, _j) (0x00252000 + ((_i) * 64 + (_j) * 32)) /* _i=0...63, _j=0...1 */ /* Reset: CORER */
+-#define I40E_PRTQF_FD_MSK_MAX_INDEX 63
+-#define I40E_PRTQF_FD_MSK_MASK_SHIFT 0
+-#define I40E_PRTQF_FD_MSK_MASK_MASK I40E_MASK(0xFFFF, I40E_PRTQF_FD_MSK_MASK_SHIFT)
+-#define I40E_PRTQF_FD_MSK_OFFSET_SHIFT 16
+-#define I40E_PRTQF_FD_MSK_OFFSET_MASK I40E_MASK(0x3F, I40E_PRTQF_FD_MSK_OFFSET_SHIFT)
+ #define I40E_PRTQF_FLX_PIT(_i) (0x00255200 + ((_i) * 32)) /* _i=0...8 */ /* Reset: CORER */
+-#define I40E_PRTQF_FLX_PIT_MAX_INDEX 8
+ #define I40E_PRTQF_FLX_PIT_SOURCE_OFF_SHIFT 0
+ #define I40E_PRTQF_FLX_PIT_SOURCE_OFF_MASK I40E_MASK(0x1F, I40E_PRTQF_FLX_PIT_SOURCE_OFF_SHIFT)
+ #define I40E_PRTQF_FLX_PIT_FSIZE_SHIFT 5
+@@ -2230,775 +444,148 @@
+ #define I40E_PRTQF_FLX_PIT_DEST_OFF_SHIFT 10
+ #define I40E_PRTQF_FLX_PIT_DEST_OFF_MASK I40E_MASK(0x3F, I40E_PRTQF_FLX_PIT_DEST_OFF_SHIFT)
+ #define I40E_VFQF_HENA1(_i, _VF) (0x00230800 + ((_i) * 1024 + (_VF) * 4)) /* _i=0...1, _VF=0...127 */ /* Reset: CORER */
+-#define I40E_VFQF_HENA1_MAX_INDEX 1
+-#define I40E_VFQF_HENA1_PTYPE_ENA_SHIFT 0
+-#define I40E_VFQF_HENA1_PTYPE_ENA_MASK I40E_MASK(0xFFFFFFFF, I40E_VFQF_HENA1_PTYPE_ENA_SHIFT)
+ #define I40E_VFQF_HKEY1(_i, _VF) (0x00228000 + ((_i) * 1024 + (_VF) * 4)) /* _i=0...12, _VF=0...127 */ /* Reset: CORER */
+ #define I40E_VFQF_HKEY1_MAX_INDEX 12
+-#define I40E_VFQF_HKEY1_KEY_0_SHIFT 0
+-#define I40E_VFQF_HKEY1_KEY_0_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY1_KEY_0_SHIFT)
+-#define I40E_VFQF_HKEY1_KEY_1_SHIFT 8
+-#define I40E_VFQF_HKEY1_KEY_1_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY1_KEY_1_SHIFT)
+-#define I40E_VFQF_HKEY1_KEY_2_SHIFT 16
+-#define I40E_VFQF_HKEY1_KEY_2_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY1_KEY_2_SHIFT)
+-#define I40E_VFQF_HKEY1_KEY_3_SHIFT 24
+-#define I40E_VFQF_HKEY1_KEY_3_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY1_KEY_3_SHIFT)
+ #define I40E_VFQF_HLUT1(_i, _VF) (0x00220000 + ((_i) * 1024 + (_VF) * 4)) /* _i=0...15, _VF=0...127 */ /* Reset: CORER */
+ #define I40E_VFQF_HLUT1_MAX_INDEX 15
+-#define I40E_VFQF_HLUT1_LUT0_SHIFT 0
+-#define I40E_VFQF_HLUT1_LUT0_MASK I40E_MASK(0xF, I40E_VFQF_HLUT1_LUT0_SHIFT)
+-#define I40E_VFQF_HLUT1_LUT1_SHIFT 8
+-#define I40E_VFQF_HLUT1_LUT1_MASK I40E_MASK(0xF, I40E_VFQF_HLUT1_LUT1_SHIFT)
+-#define I40E_VFQF_HLUT1_LUT2_SHIFT 16
+-#define I40E_VFQF_HLUT1_LUT2_MASK I40E_MASK(0xF, I40E_VFQF_HLUT1_LUT2_SHIFT)
+-#define I40E_VFQF_HLUT1_LUT3_SHIFT 24
+-#define I40E_VFQF_HLUT1_LUT3_MASK I40E_MASK(0xF, I40E_VFQF_HLUT1_LUT3_SHIFT)
+-#define I40E_VFQF_HREGION1(_i, _VF) (0x0022E000 + ((_i) * 1024 + (_VF) * 4)) /* _i=0...7, _VF=0...127 */ /* Reset: CORER */
+-#define I40E_VFQF_HREGION1_MAX_INDEX 7
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_0_SHIFT 0
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_0_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_0_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_0_SHIFT 1
+-#define I40E_VFQF_HREGION1_REGION_0_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_0_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_1_SHIFT 4
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_1_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_1_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_1_SHIFT 5
+-#define I40E_VFQF_HREGION1_REGION_1_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_1_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_2_SHIFT 8
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_2_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_2_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_2_SHIFT 9
+-#define I40E_VFQF_HREGION1_REGION_2_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_2_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_3_SHIFT 12
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_3_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_3_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_3_SHIFT 13
+-#define I40E_VFQF_HREGION1_REGION_3_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_3_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_4_SHIFT 16
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_4_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_4_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_4_SHIFT 17
+-#define I40E_VFQF_HREGION1_REGION_4_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_4_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_5_SHIFT 20
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_5_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_5_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_5_SHIFT 21
+-#define I40E_VFQF_HREGION1_REGION_5_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_5_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_6_SHIFT 24
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_6_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_6_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_6_SHIFT 25
+-#define I40E_VFQF_HREGION1_REGION_6_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_6_SHIFT)
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_7_SHIFT 28
+-#define I40E_VFQF_HREGION1_OVERRIDE_ENA_7_MASK I40E_MASK(0x1, I40E_VFQF_HREGION1_OVERRIDE_ENA_7_SHIFT)
+-#define I40E_VFQF_HREGION1_REGION_7_SHIFT 29
+-#define I40E_VFQF_HREGION1_REGION_7_MASK I40E_MASK(0x7, I40E_VFQF_HREGION1_REGION_7_SHIFT)
+-#define I40E_VPQF_CTL(_VF) (0x001C0000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VPQF_CTL_MAX_INDEX 127
+-#define I40E_VPQF_CTL_PEHSIZE_SHIFT 0
+-#define I40E_VPQF_CTL_PEHSIZE_MASK I40E_MASK(0x1F, I40E_VPQF_CTL_PEHSIZE_SHIFT)
+-#define I40E_VPQF_CTL_PEDSIZE_SHIFT 5
+-#define I40E_VPQF_CTL_PEDSIZE_MASK I40E_MASK(0x1F, I40E_VPQF_CTL_PEDSIZE_SHIFT)
+-#define I40E_VPQF_CTL_FCHSIZE_SHIFT 10
+-#define I40E_VPQF_CTL_FCHSIZE_MASK I40E_MASK(0xF, I40E_VPQF_CTL_FCHSIZE_SHIFT)
+-#define I40E_VPQF_CTL_FCDSIZE_SHIFT 14
+-#define I40E_VPQF_CTL_FCDSIZE_MASK I40E_MASK(0x3, I40E_VPQF_CTL_FCDSIZE_SHIFT)
+-#define I40E_VSIQF_CTL(_VSI) (0x0020D800 + ((_VSI) * 4)) /* _i=0...383 */ /* Reset: PFR */
+-#define I40E_VSIQF_CTL_MAX_INDEX 383
+-#define I40E_VSIQF_CTL_FCOE_ENA_SHIFT 0
+-#define I40E_VSIQF_CTL_FCOE_ENA_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_FCOE_ENA_SHIFT)
+-#define I40E_VSIQF_CTL_PETCP_ENA_SHIFT 1
+-#define I40E_VSIQF_CTL_PETCP_ENA_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_PETCP_ENA_SHIFT)
+-#define I40E_VSIQF_CTL_PEUUDP_ENA_SHIFT 2
+-#define I40E_VSIQF_CTL_PEUUDP_ENA_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_PEUUDP_ENA_SHIFT)
+-#define I40E_VSIQF_CTL_PEMUDP_ENA_SHIFT 3
+-#define I40E_VSIQF_CTL_PEMUDP_ENA_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_PEMUDP_ENA_SHIFT)
+-#define I40E_VSIQF_CTL_PEUFRAG_ENA_SHIFT 4
+-#define I40E_VSIQF_CTL_PEUFRAG_ENA_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_PEUFRAG_ENA_SHIFT)
+-#define I40E_VSIQF_CTL_PEMFRAG_ENA_SHIFT 5
+-#define I40E_VSIQF_CTL_PEMFRAG_ENA_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_PEMFRAG_ENA_SHIFT)
+-#define I40E_VSIQF_TCREGION(_i, _VSI) (0x00206000 + ((_i) * 2048 + (_VSI) * 4)) /* _i=0...3, _VSI=0...383 */ /* Reset: PFR */
+-#define I40E_VSIQF_TCREGION_MAX_INDEX 3
+-#define I40E_VSIQF_TCREGION_TC_OFFSET_SHIFT 0
+-#define I40E_VSIQF_TCREGION_TC_OFFSET_MASK I40E_MASK(0x1FF, I40E_VSIQF_TCREGION_TC_OFFSET_SHIFT)
+-#define I40E_VSIQF_TCREGION_TC_SIZE_SHIFT 9
+-#define I40E_VSIQF_TCREGION_TC_SIZE_MASK I40E_MASK(0x7, I40E_VSIQF_TCREGION_TC_SIZE_SHIFT)
+-#define I40E_VSIQF_TCREGION_TC_OFFSET2_SHIFT 16
+-#define I40E_VSIQF_TCREGION_TC_OFFSET2_MASK I40E_MASK(0x1FF, I40E_VSIQF_TCREGION_TC_OFFSET2_SHIFT)
+-#define I40E_VSIQF_TCREGION_TC_SIZE2_SHIFT 25
+-#define I40E_VSIQF_TCREGION_TC_SIZE2_MASK I40E_MASK(0x7, I40E_VSIQF_TCREGION_TC_SIZE2_SHIFT)
+-#define I40E_GL_FCOECRC(_i) (0x00314d80 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOECRC_MAX_INDEX 143
+-#define I40E_GL_FCOECRC_FCOECRC_SHIFT 0
+-#define I40E_GL_FCOECRC_FCOECRC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOECRC_FCOECRC_SHIFT)
+-#define I40E_GL_FCOEDDPC(_i) (0x00314480 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDDPC_MAX_INDEX 143
+-#define I40E_GL_FCOEDDPC_FCOEDDPC_SHIFT 0
+-#define I40E_GL_FCOEDDPC_FCOEDDPC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDDPC_FCOEDDPC_SHIFT)
+-#define I40E_GL_FCOEDIFEC(_i) (0x00318480 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDIFEC_MAX_INDEX 143
+-#define I40E_GL_FCOEDIFEC_FCOEDIFRC_SHIFT 0
+-#define I40E_GL_FCOEDIFEC_FCOEDIFRC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDIFEC_FCOEDIFRC_SHIFT)
+-#define I40E_GL_FCOEDIFTCL(_i) (0x00354000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDIFTCL_MAX_INDEX 143
+-#define I40E_GL_FCOEDIFTCL_FCOEDIFTC_SHIFT 0
+-#define I40E_GL_FCOEDIFTCL_FCOEDIFTC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDIFTCL_FCOEDIFTC_SHIFT)
+-#define I40E_GL_FCOEDIXEC(_i) (0x0034c000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDIXEC_MAX_INDEX 143
+-#define I40E_GL_FCOEDIXEC_FCOEDIXEC_SHIFT 0
+-#define I40E_GL_FCOEDIXEC_FCOEDIXEC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDIXEC_FCOEDIXEC_SHIFT)
+-#define I40E_GL_FCOEDIXVC(_i) (0x00350000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDIXVC_MAX_INDEX 143
+-#define I40E_GL_FCOEDIXVC_FCOEDIXVC_SHIFT 0
+-#define I40E_GL_FCOEDIXVC_FCOEDIXVC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDIXVC_FCOEDIXVC_SHIFT)
+-#define I40E_GL_FCOEDWRCH(_i) (0x00320004 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDWRCH_MAX_INDEX 143
+-#define I40E_GL_FCOEDWRCH_FCOEDWRCH_SHIFT 0
+-#define I40E_GL_FCOEDWRCH_FCOEDWRCH_MASK I40E_MASK(0xFFFF, I40E_GL_FCOEDWRCH_FCOEDWRCH_SHIFT)
+-#define I40E_GL_FCOEDWRCL(_i) (0x00320000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDWRCL_MAX_INDEX 143
+-#define I40E_GL_FCOEDWRCL_FCOEDWRCL_SHIFT 0
+-#define I40E_GL_FCOEDWRCL_FCOEDWRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDWRCL_FCOEDWRCL_SHIFT)
+-#define I40E_GL_FCOEDWTCH(_i) (0x00348084 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDWTCH_MAX_INDEX 143
+-#define I40E_GL_FCOEDWTCH_FCOEDWTCH_SHIFT 0
+-#define I40E_GL_FCOEDWTCH_FCOEDWTCH_MASK I40E_MASK(0xFFFF, I40E_GL_FCOEDWTCH_FCOEDWTCH_SHIFT)
+-#define I40E_GL_FCOEDWTCL(_i) (0x00348080 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEDWTCL_MAX_INDEX 143
+-#define I40E_GL_FCOEDWTCL_FCOEDWTCL_SHIFT 0
+-#define I40E_GL_FCOEDWTCL_FCOEDWTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEDWTCL_FCOEDWTCL_SHIFT)
+-#define I40E_GL_FCOELAST(_i) (0x00314000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOELAST_MAX_INDEX 143
+-#define I40E_GL_FCOELAST_FCOELAST_SHIFT 0
+-#define I40E_GL_FCOELAST_FCOELAST_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOELAST_FCOELAST_SHIFT)
+-#define I40E_GL_FCOEPRC(_i) (0x00315200 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEPRC_MAX_INDEX 143
+-#define I40E_GL_FCOEPRC_FCOEPRC_SHIFT 0
+-#define I40E_GL_FCOEPRC_FCOEPRC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEPRC_FCOEPRC_SHIFT)
+-#define I40E_GL_FCOEPTC(_i) (0x00344C00 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOEPTC_MAX_INDEX 143
+-#define I40E_GL_FCOEPTC_FCOEPTC_SHIFT 0
+-#define I40E_GL_FCOEPTC_FCOEPTC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOEPTC_FCOEPTC_SHIFT)
+-#define I40E_GL_FCOERPDC(_i) (0x00324000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_FCOERPDC_MAX_INDEX 143
+-#define I40E_GL_FCOERPDC_FCOERPDC_SHIFT 0
+-#define I40E_GL_FCOERPDC_FCOERPDC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_FCOERPDC_FCOERPDC_SHIFT)
+-#define I40E_GL_RXERR1_L(_i) (0x00318000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_RXERR1_L_MAX_INDEX 143
+-#define I40E_GL_RXERR1_L_FCOEDIFRC_SHIFT 0
+-#define I40E_GL_RXERR1_L_FCOEDIFRC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_RXERR1_L_FCOEDIFRC_SHIFT)
+-#define I40E_GL_RXERR2_L(_i) (0x0031c000 + ((_i) * 8)) /* _i=0...143 */ /* Reset: CORER */
+-#define I40E_GL_RXERR2_L_MAX_INDEX 143
+-#define I40E_GL_RXERR2_L_FCOEDIXAC_SHIFT 0
+-#define I40E_GL_RXERR2_L_FCOEDIXAC_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_RXERR2_L_FCOEDIXAC_SHIFT)
+ #define I40E_GLPRT_BPRCH(_i) (0x003005E4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_BPRCH_MAX_INDEX 3
+-#define I40E_GLPRT_BPRCH_BPRCH_SHIFT 0
+-#define I40E_GLPRT_BPRCH_BPRCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_BPRCH_BPRCH_SHIFT)
+ #define I40E_GLPRT_BPRCL(_i) (0x003005E0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_BPRCL_MAX_INDEX 3
+-#define I40E_GLPRT_BPRCL_BPRCL_SHIFT 0
+-#define I40E_GLPRT_BPRCL_BPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_BPRCL_BPRCL_SHIFT)
+ #define I40E_GLPRT_BPTCH(_i) (0x00300A04 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_BPTCH_MAX_INDEX 3
+-#define I40E_GLPRT_BPTCH_BPTCH_SHIFT 0
+-#define I40E_GLPRT_BPTCH_BPTCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_BPTCH_BPTCH_SHIFT)
+ #define I40E_GLPRT_BPTCL(_i) (0x00300A00 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_BPTCL_MAX_INDEX 3
+-#define I40E_GLPRT_BPTCL_BPTCL_SHIFT 0
+-#define I40E_GLPRT_BPTCL_BPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_BPTCL_BPTCL_SHIFT)
+ #define I40E_GLPRT_CRCERRS(_i) (0x00300080 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_CRCERRS_MAX_INDEX 3
+-#define I40E_GLPRT_CRCERRS_CRCERRS_SHIFT 0
+-#define I40E_GLPRT_CRCERRS_CRCERRS_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_CRCERRS_CRCERRS_SHIFT)
+ #define I40E_GLPRT_GORCH(_i) (0x00300004 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_GORCH_MAX_INDEX 3
+-#define I40E_GLPRT_GORCH_GORCH_SHIFT 0
+-#define I40E_GLPRT_GORCH_GORCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_GORCH_GORCH_SHIFT)
+ #define I40E_GLPRT_GORCL(_i) (0x00300000 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_GORCL_MAX_INDEX 3
+-#define I40E_GLPRT_GORCL_GORCL_SHIFT 0
+-#define I40E_GLPRT_GORCL_GORCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_GORCL_GORCL_SHIFT)
+ #define I40E_GLPRT_GOTCH(_i) (0x00300684 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_GOTCH_MAX_INDEX 3
+-#define I40E_GLPRT_GOTCH_GOTCH_SHIFT 0
+-#define I40E_GLPRT_GOTCH_GOTCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_GOTCH_GOTCH_SHIFT)
+ #define I40E_GLPRT_GOTCL(_i) (0x00300680 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_GOTCL_MAX_INDEX 3
+-#define I40E_GLPRT_GOTCL_GOTCL_SHIFT 0
+-#define I40E_GLPRT_GOTCL_GOTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_GOTCL_GOTCL_SHIFT)
+ #define I40E_GLPRT_ILLERRC(_i) (0x003000E0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_ILLERRC_MAX_INDEX 3
+-#define I40E_GLPRT_ILLERRC_ILLERRC_SHIFT 0
+-#define I40E_GLPRT_ILLERRC_ILLERRC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_ILLERRC_ILLERRC_SHIFT)
+-#define I40E_GLPRT_LDPC(_i) (0x00300620 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_LDPC_MAX_INDEX 3
+-#define I40E_GLPRT_LDPC_LDPC_SHIFT 0
+-#define I40E_GLPRT_LDPC_LDPC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_LDPC_LDPC_SHIFT)
+ #define I40E_GLPRT_LXOFFRXC(_i) (0x00300160 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_LXOFFRXC_MAX_INDEX 3
+-#define I40E_GLPRT_LXOFFRXC_LXOFFRXCNT_SHIFT 0
+-#define I40E_GLPRT_LXOFFRXC_LXOFFRXCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_LXOFFRXC_LXOFFRXCNT_SHIFT)
+ #define I40E_GLPRT_LXOFFTXC(_i) (0x003009A0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_LXOFFTXC_MAX_INDEX 3
+-#define I40E_GLPRT_LXOFFTXC_LXOFFTXC_SHIFT 0
+-#define I40E_GLPRT_LXOFFTXC_LXOFFTXC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_LXOFFTXC_LXOFFTXC_SHIFT)
+ #define I40E_GLPRT_LXONRXC(_i) (0x00300140 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_LXONRXC_MAX_INDEX 3
+-#define I40E_GLPRT_LXONRXC_LXONRXCNT_SHIFT 0
+-#define I40E_GLPRT_LXONRXC_LXONRXCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_LXONRXC_LXONRXCNT_SHIFT)
+ #define I40E_GLPRT_LXONTXC(_i) (0x00300980 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_LXONTXC_MAX_INDEX 3
+-#define I40E_GLPRT_LXONTXC_LXONTXC_SHIFT 0
+-#define I40E_GLPRT_LXONTXC_LXONTXC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_LXONTXC_LXONTXC_SHIFT)
+ #define I40E_GLPRT_MLFC(_i) (0x00300020 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_MLFC_MAX_INDEX 3
+-#define I40E_GLPRT_MLFC_MLFC_SHIFT 0
+-#define I40E_GLPRT_MLFC_MLFC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_MLFC_MLFC_SHIFT)
+ #define I40E_GLPRT_MPRCH(_i) (0x003005C4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_MPRCH_MAX_INDEX 3
+-#define I40E_GLPRT_MPRCH_MPRCH_SHIFT 0
+-#define I40E_GLPRT_MPRCH_MPRCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_MPRCH_MPRCH_SHIFT)
+ #define I40E_GLPRT_MPRCL(_i) (0x003005C0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_MPRCL_MAX_INDEX 3
+-#define I40E_GLPRT_MPRCL_MPRCL_SHIFT 0
+-#define I40E_GLPRT_MPRCL_MPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_MPRCL_MPRCL_SHIFT)
+ #define I40E_GLPRT_MPTCH(_i) (0x003009E4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_MPTCH_MAX_INDEX 3
+-#define I40E_GLPRT_MPTCH_MPTCH_SHIFT 0
+-#define I40E_GLPRT_MPTCH_MPTCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_MPTCH_MPTCH_SHIFT)
+ #define I40E_GLPRT_MPTCL(_i) (0x003009E0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_MPTCL_MAX_INDEX 3
+-#define I40E_GLPRT_MPTCL_MPTCL_SHIFT 0
+-#define I40E_GLPRT_MPTCL_MPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_MPTCL_MPTCL_SHIFT)
+ #define I40E_GLPRT_MRFC(_i) (0x00300040 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_MRFC_MAX_INDEX 3
+-#define I40E_GLPRT_MRFC_MRFC_SHIFT 0
+-#define I40E_GLPRT_MRFC_MRFC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_MRFC_MRFC_SHIFT)
+ #define I40E_GLPRT_PRC1023H(_i) (0x00300504 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC1023H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC1023H_PRC1023H_SHIFT 0
+-#define I40E_GLPRT_PRC1023H_PRC1023H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC1023H_PRC1023H_SHIFT)
+ #define I40E_GLPRT_PRC1023L(_i) (0x00300500 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC1023L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC1023L_PRC1023L_SHIFT 0
+-#define I40E_GLPRT_PRC1023L_PRC1023L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC1023L_PRC1023L_SHIFT)
+ #define I40E_GLPRT_PRC127H(_i) (0x003004A4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC127H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC127H_PRC127H_SHIFT 0
+-#define I40E_GLPRT_PRC127H_PRC127H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC127H_PRC127H_SHIFT)
+ #define I40E_GLPRT_PRC127L(_i) (0x003004A0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC127L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC127L_PRC127L_SHIFT 0
+-#define I40E_GLPRT_PRC127L_PRC127L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC127L_PRC127L_SHIFT)
+ #define I40E_GLPRT_PRC1522H(_i) (0x00300524 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC1522H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC1522H_PRC1522H_SHIFT 0
+-#define I40E_GLPRT_PRC1522H_PRC1522H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC1522H_PRC1522H_SHIFT)
+ #define I40E_GLPRT_PRC1522L(_i) (0x00300520 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC1522L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC1522L_PRC1522L_SHIFT 0
+-#define I40E_GLPRT_PRC1522L_PRC1522L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC1522L_PRC1522L_SHIFT)
+ #define I40E_GLPRT_PRC255H(_i) (0x003004C4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC255H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC255H_PRTPRC255H_SHIFT 0
+-#define I40E_GLPRT_PRC255H_PRTPRC255H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC255H_PRTPRC255H_SHIFT)
+ #define I40E_GLPRT_PRC255L(_i) (0x003004C0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC255L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC255L_PRC255L_SHIFT 0
+-#define I40E_GLPRT_PRC255L_PRC255L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC255L_PRC255L_SHIFT)
+ #define I40E_GLPRT_PRC511H(_i) (0x003004E4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC511H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC511H_PRC511H_SHIFT 0
+-#define I40E_GLPRT_PRC511H_PRC511H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC511H_PRC511H_SHIFT)
+ #define I40E_GLPRT_PRC511L(_i) (0x003004E0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC511L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC511L_PRC511L_SHIFT 0
+-#define I40E_GLPRT_PRC511L_PRC511L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC511L_PRC511L_SHIFT)
+ #define I40E_GLPRT_PRC64H(_i) (0x00300484 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC64H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC64H_PRC64H_SHIFT 0
+-#define I40E_GLPRT_PRC64H_PRC64H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC64H_PRC64H_SHIFT)
+ #define I40E_GLPRT_PRC64L(_i) (0x00300480 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC64L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC64L_PRC64L_SHIFT 0
+-#define I40E_GLPRT_PRC64L_PRC64L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC64L_PRC64L_SHIFT)
+ #define I40E_GLPRT_PRC9522H(_i) (0x00300544 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC9522H_MAX_INDEX 3
+-#define I40E_GLPRT_PRC9522H_PRC1522H_SHIFT 0
+-#define I40E_GLPRT_PRC9522H_PRC1522H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PRC9522H_PRC1522H_SHIFT)
+ #define I40E_GLPRT_PRC9522L(_i) (0x00300540 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PRC9522L_MAX_INDEX 3
+-#define I40E_GLPRT_PRC9522L_PRC1522L_SHIFT 0
+-#define I40E_GLPRT_PRC9522L_PRC1522L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PRC9522L_PRC1522L_SHIFT)
+ #define I40E_GLPRT_PTC1023H(_i) (0x00300724 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC1023H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC1023H_PTC1023H_SHIFT 0
+-#define I40E_GLPRT_PTC1023H_PTC1023H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC1023H_PTC1023H_SHIFT)
+ #define I40E_GLPRT_PTC1023L(_i) (0x00300720 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC1023L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC1023L_PTC1023L_SHIFT 0
+-#define I40E_GLPRT_PTC1023L_PTC1023L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC1023L_PTC1023L_SHIFT)
+ #define I40E_GLPRT_PTC127H(_i) (0x003006C4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC127H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC127H_PTC127H_SHIFT 0
+-#define I40E_GLPRT_PTC127H_PTC127H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC127H_PTC127H_SHIFT)
+ #define I40E_GLPRT_PTC127L(_i) (0x003006C0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC127L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC127L_PTC127L_SHIFT 0
+-#define I40E_GLPRT_PTC127L_PTC127L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC127L_PTC127L_SHIFT)
+ #define I40E_GLPRT_PTC1522H(_i) (0x00300744 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC1522H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC1522H_PTC1522H_SHIFT 0
+-#define I40E_GLPRT_PTC1522H_PTC1522H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC1522H_PTC1522H_SHIFT)
+ #define I40E_GLPRT_PTC1522L(_i) (0x00300740 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC1522L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC1522L_PTC1522L_SHIFT 0
+-#define I40E_GLPRT_PTC1522L_PTC1522L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC1522L_PTC1522L_SHIFT)
+ #define I40E_GLPRT_PTC255H(_i) (0x003006E4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC255H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC255H_PTC255H_SHIFT 0
+-#define I40E_GLPRT_PTC255H_PTC255H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC255H_PTC255H_SHIFT)
+ #define I40E_GLPRT_PTC255L(_i) (0x003006E0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC255L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC255L_PTC255L_SHIFT 0
+-#define I40E_GLPRT_PTC255L_PTC255L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC255L_PTC255L_SHIFT)
+ #define I40E_GLPRT_PTC511H(_i) (0x00300704 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC511H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC511H_PTC511H_SHIFT 0
+-#define I40E_GLPRT_PTC511H_PTC511H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC511H_PTC511H_SHIFT)
+ #define I40E_GLPRT_PTC511L(_i) (0x00300700 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC511L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC511L_PTC511L_SHIFT 0
+-#define I40E_GLPRT_PTC511L_PTC511L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC511L_PTC511L_SHIFT)
+ #define I40E_GLPRT_PTC64H(_i) (0x003006A4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC64H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC64H_PTC64H_SHIFT 0
+-#define I40E_GLPRT_PTC64H_PTC64H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC64H_PTC64H_SHIFT)
+ #define I40E_GLPRT_PTC64L(_i) (0x003006A0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC64L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC64L_PTC64L_SHIFT 0
+-#define I40E_GLPRT_PTC64L_PTC64L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC64L_PTC64L_SHIFT)
+ #define I40E_GLPRT_PTC9522H(_i) (0x00300764 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC9522H_MAX_INDEX 3
+-#define I40E_GLPRT_PTC9522H_PTC9522H_SHIFT 0
+-#define I40E_GLPRT_PTC9522H_PTC9522H_MASK I40E_MASK(0xFFFF, I40E_GLPRT_PTC9522H_PTC9522H_SHIFT)
+ #define I40E_GLPRT_PTC9522L(_i) (0x00300760 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_PTC9522L_MAX_INDEX 3
+-#define I40E_GLPRT_PTC9522L_PTC9522L_SHIFT 0
+-#define I40E_GLPRT_PTC9522L_PTC9522L_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PTC9522L_PTC9522L_SHIFT)
+ #define I40E_GLPRT_PXOFFRXC(_i, _j) (0x00300280 + ((_i) * 8 + (_j) * 32)) /* _i=0...3, _j=0...7 */ /* Reset: CORER */
+-#define I40E_GLPRT_PXOFFRXC_MAX_INDEX 3
+-#define I40E_GLPRT_PXOFFRXC_PRPXOFFRXCNT_SHIFT 0
+-#define I40E_GLPRT_PXOFFRXC_PRPXOFFRXCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PXOFFRXC_PRPXOFFRXCNT_SHIFT)
+ #define I40E_GLPRT_PXOFFTXC(_i, _j) (0x00300880 + ((_i) * 8 + (_j) * 32)) /* _i=0...3, _j=0...7 */ /* Reset: CORER */
+-#define I40E_GLPRT_PXOFFTXC_MAX_INDEX 3
+-#define I40E_GLPRT_PXOFFTXC_PRPXOFFTXCNT_SHIFT 0
+-#define I40E_GLPRT_PXOFFTXC_PRPXOFFTXCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PXOFFTXC_PRPXOFFTXCNT_SHIFT)
+ #define I40E_GLPRT_PXONRXC(_i, _j) (0x00300180 + ((_i) * 8 + (_j) * 32)) /* _i=0...3, _j=0...7 */ /* Reset: CORER */
+-#define I40E_GLPRT_PXONRXC_MAX_INDEX 3
+-#define I40E_GLPRT_PXONRXC_PRPXONRXCNT_SHIFT 0
+-#define I40E_GLPRT_PXONRXC_PRPXONRXCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PXONRXC_PRPXONRXCNT_SHIFT)
+ #define I40E_GLPRT_PXONTXC(_i, _j) (0x00300780 + ((_i) * 8 + (_j) * 32)) /* _i=0...3, _j=0...7 */ /* Reset: CORER */
+-#define I40E_GLPRT_PXONTXC_MAX_INDEX 3
+-#define I40E_GLPRT_PXONTXC_PRPXONTXC_SHIFT 0
+-#define I40E_GLPRT_PXONTXC_PRPXONTXC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_PXONTXC_PRPXONTXC_SHIFT)
+ #define I40E_GLPRT_RDPC(_i) (0x00300600 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_RDPC_MAX_INDEX 3
+-#define I40E_GLPRT_RDPC_RDPC_SHIFT 0
+-#define I40E_GLPRT_RDPC_RDPC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RDPC_RDPC_SHIFT)
+ #define I40E_GLPRT_RFC(_i) (0x00300560 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_RFC_MAX_INDEX 3
+-#define I40E_GLPRT_RFC_RFC_SHIFT 0
+-#define I40E_GLPRT_RFC_RFC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RFC_RFC_SHIFT)
+ #define I40E_GLPRT_RJC(_i) (0x00300580 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_RJC_MAX_INDEX 3
+-#define I40E_GLPRT_RJC_RJC_SHIFT 0
+-#define I40E_GLPRT_RJC_RJC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RJC_RJC_SHIFT)
+ #define I40E_GLPRT_RLEC(_i) (0x003000A0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_RLEC_MAX_INDEX 3
+-#define I40E_GLPRT_RLEC_RLEC_SHIFT 0
+-#define I40E_GLPRT_RLEC_RLEC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RLEC_RLEC_SHIFT)
+ #define I40E_GLPRT_ROC(_i) (0x00300120 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_ROC_MAX_INDEX 3
+-#define I40E_GLPRT_ROC_ROC_SHIFT 0
+-#define I40E_GLPRT_ROC_ROC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_ROC_ROC_SHIFT)
+ #define I40E_GLPRT_RUC(_i) (0x00300100 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_RUC_MAX_INDEX 3
+-#define I40E_GLPRT_RUC_RUC_SHIFT 0
+-#define I40E_GLPRT_RUC_RUC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RUC_RUC_SHIFT)
+-#define I40E_GLPRT_RUPP(_i) (0x00300660 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_RUPP_MAX_INDEX 3
+-#define I40E_GLPRT_RUPP_RUPP_SHIFT 0
+-#define I40E_GLPRT_RUPP_RUPP_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RUPP_RUPP_SHIFT)
+ #define I40E_GLPRT_RXON2OFFCNT(_i, _j) (0x00300380 + ((_i) * 8 + (_j) * 32)) /* _i=0...3, _j=0...7 */ /* Reset: CORER */
+-#define I40E_GLPRT_RXON2OFFCNT_MAX_INDEX 3
+-#define I40E_GLPRT_RXON2OFFCNT_PRRXON2OFFCNT_SHIFT 0
+-#define I40E_GLPRT_RXON2OFFCNT_PRRXON2OFFCNT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_RXON2OFFCNT_PRRXON2OFFCNT_SHIFT)
+ #define I40E_GLPRT_TDOLD(_i) (0x00300A20 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_TDOLD_MAX_INDEX 3
+-#define I40E_GLPRT_TDOLD_GLPRT_TDOLD_SHIFT 0
+-#define I40E_GLPRT_TDOLD_GLPRT_TDOLD_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_TDOLD_GLPRT_TDOLD_SHIFT)
+ #define I40E_GLPRT_UPRCH(_i) (0x003005A4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_UPRCH_MAX_INDEX 3
+-#define I40E_GLPRT_UPRCH_UPRCH_SHIFT 0
+-#define I40E_GLPRT_UPRCH_UPRCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_UPRCH_UPRCH_SHIFT)
+ #define I40E_GLPRT_UPRCL(_i) (0x003005A0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_UPRCL_MAX_INDEX 3
+-#define I40E_GLPRT_UPRCL_UPRCL_SHIFT 0
+-#define I40E_GLPRT_UPRCL_UPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_UPRCL_UPRCL_SHIFT)
+ #define I40E_GLPRT_UPTCH(_i) (0x003009C4 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_UPTCH_MAX_INDEX 3
+-#define I40E_GLPRT_UPTCH_UPTCH_SHIFT 0
+-#define I40E_GLPRT_UPTCH_UPTCH_MASK I40E_MASK(0xFFFF, I40E_GLPRT_UPTCH_UPTCH_SHIFT)
+ #define I40E_GLPRT_UPTCL(_i) (0x003009C0 + ((_i) * 8)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_GLPRT_UPTCL_MAX_INDEX 3
+-#define I40E_GLPRT_UPTCL_VUPTCH_SHIFT 0
+-#define I40E_GLPRT_UPTCL_VUPTCH_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPRT_UPTCL_VUPTCH_SHIFT)
+ #define I40E_GLSW_BPRCH(_i) (0x00370104 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_BPRCH_MAX_INDEX 15
+-#define I40E_GLSW_BPRCH_BPRCH_SHIFT 0
+-#define I40E_GLSW_BPRCH_BPRCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_BPRCH_BPRCH_SHIFT)
+ #define I40E_GLSW_BPRCL(_i) (0x00370100 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_BPRCL_MAX_INDEX 15
+-#define I40E_GLSW_BPRCL_BPRCL_SHIFT 0
+-#define I40E_GLSW_BPRCL_BPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_BPRCL_BPRCL_SHIFT)
+ #define I40E_GLSW_BPTCH(_i) (0x00340104 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_BPTCH_MAX_INDEX 15
+-#define I40E_GLSW_BPTCH_BPTCH_SHIFT 0
+-#define I40E_GLSW_BPTCH_BPTCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_BPTCH_BPTCH_SHIFT)
+ #define I40E_GLSW_BPTCL(_i) (0x00340100 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_BPTCL_MAX_INDEX 15
+-#define I40E_GLSW_BPTCL_BPTCL_SHIFT 0
+-#define I40E_GLSW_BPTCL_BPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_BPTCL_BPTCL_SHIFT)
+ #define I40E_GLSW_GORCH(_i) (0x0035C004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_GORCH_MAX_INDEX 15
+-#define I40E_GLSW_GORCH_GORCH_SHIFT 0
+-#define I40E_GLSW_GORCH_GORCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_GORCH_GORCH_SHIFT)
+ #define I40E_GLSW_GORCL(_i) (0x0035c000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_GORCL_MAX_INDEX 15
+-#define I40E_GLSW_GORCL_GORCL_SHIFT 0
+-#define I40E_GLSW_GORCL_GORCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_GORCL_GORCL_SHIFT)
+ #define I40E_GLSW_GOTCH(_i) (0x0032C004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_GOTCH_MAX_INDEX 15
+-#define I40E_GLSW_GOTCH_GOTCH_SHIFT 0
+-#define I40E_GLSW_GOTCH_GOTCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_GOTCH_GOTCH_SHIFT)
+ #define I40E_GLSW_GOTCL(_i) (0x0032c000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_GOTCL_MAX_INDEX 15
+-#define I40E_GLSW_GOTCL_GOTCL_SHIFT 0
+-#define I40E_GLSW_GOTCL_GOTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_GOTCL_GOTCL_SHIFT)
+ #define I40E_GLSW_MPRCH(_i) (0x00370084 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_MPRCH_MAX_INDEX 15
+-#define I40E_GLSW_MPRCH_MPRCH_SHIFT 0
+-#define I40E_GLSW_MPRCH_MPRCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_MPRCH_MPRCH_SHIFT)
+ #define I40E_GLSW_MPRCL(_i) (0x00370080 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_MPRCL_MAX_INDEX 15
+-#define I40E_GLSW_MPRCL_MPRCL_SHIFT 0
+-#define I40E_GLSW_MPRCL_MPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_MPRCL_MPRCL_SHIFT)
+ #define I40E_GLSW_MPTCH(_i) (0x00340084 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_MPTCH_MAX_INDEX 15
+-#define I40E_GLSW_MPTCH_MPTCH_SHIFT 0
+-#define I40E_GLSW_MPTCH_MPTCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_MPTCH_MPTCH_SHIFT)
+ #define I40E_GLSW_MPTCL(_i) (0x00340080 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_MPTCL_MAX_INDEX 15
+-#define I40E_GLSW_MPTCL_MPTCL_SHIFT 0
+-#define I40E_GLSW_MPTCL_MPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_MPTCL_MPTCL_SHIFT)
+ #define I40E_GLSW_RUPP(_i) (0x00370180 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_RUPP_MAX_INDEX 15
+-#define I40E_GLSW_RUPP_RUPP_SHIFT 0
+-#define I40E_GLSW_RUPP_RUPP_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_RUPP_RUPP_SHIFT)
+ #define I40E_GLSW_TDPC(_i) (0x00348000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_TDPC_MAX_INDEX 15
+-#define I40E_GLSW_TDPC_TDPC_SHIFT 0
+-#define I40E_GLSW_TDPC_TDPC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_TDPC_TDPC_SHIFT)
+ #define I40E_GLSW_UPRCH(_i) (0x00370004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_UPRCH_MAX_INDEX 15
+-#define I40E_GLSW_UPRCH_UPRCH_SHIFT 0
+-#define I40E_GLSW_UPRCH_UPRCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_UPRCH_UPRCH_SHIFT)
+ #define I40E_GLSW_UPRCL(_i) (0x00370000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_UPRCL_MAX_INDEX 15
+-#define I40E_GLSW_UPRCL_UPRCL_SHIFT 0
+-#define I40E_GLSW_UPRCL_UPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_UPRCL_UPRCL_SHIFT)
+ #define I40E_GLSW_UPTCH(_i) (0x00340004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_UPTCH_MAX_INDEX 15
+-#define I40E_GLSW_UPTCH_UPTCH_SHIFT 0
+-#define I40E_GLSW_UPTCH_UPTCH_MASK I40E_MASK(0xFFFF, I40E_GLSW_UPTCH_UPTCH_SHIFT)
+ #define I40E_GLSW_UPTCL(_i) (0x00340000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLSW_UPTCL_MAX_INDEX 15
+-#define I40E_GLSW_UPTCL_UPTCL_SHIFT 0
+-#define I40E_GLSW_UPTCL_UPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLSW_UPTCL_UPTCL_SHIFT)
+ #define I40E_GLV_BPRCH(_i) (0x0036D804 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_BPRCH_MAX_INDEX 383
+-#define I40E_GLV_BPRCH_BPRCH_SHIFT 0
+-#define I40E_GLV_BPRCH_BPRCH_MASK I40E_MASK(0xFFFF, I40E_GLV_BPRCH_BPRCH_SHIFT)
+ #define I40E_GLV_BPRCL(_i) (0x0036d800 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_BPRCL_MAX_INDEX 383
+-#define I40E_GLV_BPRCL_BPRCL_SHIFT 0
+-#define I40E_GLV_BPRCL_BPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_BPRCL_BPRCL_SHIFT)
+ #define I40E_GLV_BPTCH(_i) (0x0033D804 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_BPTCH_MAX_INDEX 383
+-#define I40E_GLV_BPTCH_BPTCH_SHIFT 0
+-#define I40E_GLV_BPTCH_BPTCH_MASK I40E_MASK(0xFFFF, I40E_GLV_BPTCH_BPTCH_SHIFT)
+ #define I40E_GLV_BPTCL(_i) (0x0033d800 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_BPTCL_MAX_INDEX 383
+-#define I40E_GLV_BPTCL_BPTCL_SHIFT 0
+-#define I40E_GLV_BPTCL_BPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_BPTCL_BPTCL_SHIFT)
+ #define I40E_GLV_GORCH(_i) (0x00358004 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_GORCH_MAX_INDEX 383
+-#define I40E_GLV_GORCH_GORCH_SHIFT 0
+-#define I40E_GLV_GORCH_GORCH_MASK I40E_MASK(0xFFFF, I40E_GLV_GORCH_GORCH_SHIFT)
+ #define I40E_GLV_GORCL(_i) (0x00358000 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_GORCL_MAX_INDEX 383
+-#define I40E_GLV_GORCL_GORCL_SHIFT 0
+-#define I40E_GLV_GORCL_GORCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_GORCL_GORCL_SHIFT)
+ #define I40E_GLV_GOTCH(_i) (0x00328004 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_GOTCH_MAX_INDEX 383
+-#define I40E_GLV_GOTCH_GOTCH_SHIFT 0
+-#define I40E_GLV_GOTCH_GOTCH_MASK I40E_MASK(0xFFFF, I40E_GLV_GOTCH_GOTCH_SHIFT)
+ #define I40E_GLV_GOTCL(_i) (0x00328000 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_GOTCL_MAX_INDEX 383
+-#define I40E_GLV_GOTCL_GOTCL_SHIFT 0
+-#define I40E_GLV_GOTCL_GOTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_GOTCL_GOTCL_SHIFT)
+ #define I40E_GLV_MPRCH(_i) (0x0036CC04 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_MPRCH_MAX_INDEX 383
+-#define I40E_GLV_MPRCH_MPRCH_SHIFT 0
+-#define I40E_GLV_MPRCH_MPRCH_MASK I40E_MASK(0xFFFF, I40E_GLV_MPRCH_MPRCH_SHIFT)
+ #define I40E_GLV_MPRCL(_i) (0x0036cc00 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_MPRCL_MAX_INDEX 383
+-#define I40E_GLV_MPRCL_MPRCL_SHIFT 0
+-#define I40E_GLV_MPRCL_MPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_MPRCL_MPRCL_SHIFT)
+ #define I40E_GLV_MPTCH(_i) (0x0033CC04 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_MPTCH_MAX_INDEX 383
+-#define I40E_GLV_MPTCH_MPTCH_SHIFT 0
+-#define I40E_GLV_MPTCH_MPTCH_MASK I40E_MASK(0xFFFF, I40E_GLV_MPTCH_MPTCH_SHIFT)
+ #define I40E_GLV_MPTCL(_i) (0x0033cc00 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_MPTCL_MAX_INDEX 383
+-#define I40E_GLV_MPTCL_MPTCL_SHIFT 0
+-#define I40E_GLV_MPTCL_MPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_MPTCL_MPTCL_SHIFT)
+ #define I40E_GLV_RDPC(_i) (0x00310000 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_RDPC_MAX_INDEX 383
+-#define I40E_GLV_RDPC_RDPC_SHIFT 0
+-#define I40E_GLV_RDPC_RDPC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_RDPC_RDPC_SHIFT)
+ #define I40E_GLV_RUPP(_i) (0x0036E400 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_RUPP_MAX_INDEX 383
+-#define I40E_GLV_RUPP_RUPP_SHIFT 0
+-#define I40E_GLV_RUPP_RUPP_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_RUPP_RUPP_SHIFT)
+ #define I40E_GLV_TEPC(_i) (0x00344000 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_TEPC_MAX_INDEX 383
+-#define I40E_GLV_TEPC_TEPC_SHIFT 0
+-#define I40E_GLV_TEPC_TEPC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_TEPC_TEPC_SHIFT)
+ #define I40E_GLV_UPRCH(_i) (0x0036C004 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_UPRCH_MAX_INDEX 383
+-#define I40E_GLV_UPRCH_UPRCH_SHIFT 0
+-#define I40E_GLV_UPRCH_UPRCH_MASK I40E_MASK(0xFFFF, I40E_GLV_UPRCH_UPRCH_SHIFT)
+ #define I40E_GLV_UPRCL(_i) (0x0036c000 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_UPRCL_MAX_INDEX 383
+-#define I40E_GLV_UPRCL_UPRCL_SHIFT 0
+-#define I40E_GLV_UPRCL_UPRCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_UPRCL_UPRCL_SHIFT)
+ #define I40E_GLV_UPTCH(_i) (0x0033C004 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_UPTCH_MAX_INDEX 383
+-#define I40E_GLV_UPTCH_GLVUPTCH_SHIFT 0
+-#define I40E_GLV_UPTCH_GLVUPTCH_MASK I40E_MASK(0xFFFF, I40E_GLV_UPTCH_GLVUPTCH_SHIFT)
+ #define I40E_GLV_UPTCL(_i) (0x0033c000 + ((_i) * 8)) /* _i=0...383 */ /* Reset: CORER */
+-#define I40E_GLV_UPTCL_MAX_INDEX 383
+-#define I40E_GLV_UPTCL_UPTCL_SHIFT 0
+-#define I40E_GLV_UPTCL_UPTCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLV_UPTCL_UPTCL_SHIFT)
+ #define I40E_GLVEBTC_RBCH(_i, _j) (0x00364004 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_RBCH_MAX_INDEX 7
+-#define I40E_GLVEBTC_RBCH_TCBCH_SHIFT 0
+-#define I40E_GLVEBTC_RBCH_TCBCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBTC_RBCH_TCBCH_SHIFT)
+ #define I40E_GLVEBTC_RBCL(_i, _j) (0x00364000 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_RBCL_MAX_INDEX 7
+-#define I40E_GLVEBTC_RBCL_TCBCL_SHIFT 0
+-#define I40E_GLVEBTC_RBCL_TCBCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBTC_RBCL_TCBCL_SHIFT)
+ #define I40E_GLVEBTC_RPCH(_i, _j) (0x00368004 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_RPCH_MAX_INDEX 7
+-#define I40E_GLVEBTC_RPCH_TCPCH_SHIFT 0
+-#define I40E_GLVEBTC_RPCH_TCPCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBTC_RPCH_TCPCH_SHIFT)
+ #define I40E_GLVEBTC_RPCL(_i, _j) (0x00368000 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_RPCL_MAX_INDEX 7
+-#define I40E_GLVEBTC_RPCL_TCPCL_SHIFT 0
+-#define I40E_GLVEBTC_RPCL_TCPCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBTC_RPCL_TCPCL_SHIFT)
+ #define I40E_GLVEBTC_TBCH(_i, _j) (0x00334004 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_TBCH_MAX_INDEX 7
+-#define I40E_GLVEBTC_TBCH_TCBCH_SHIFT 0
+-#define I40E_GLVEBTC_TBCH_TCBCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBTC_TBCH_TCBCH_SHIFT)
+ #define I40E_GLVEBTC_TBCL(_i, _j) (0x00334000 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_TBCL_MAX_INDEX 7
+-#define I40E_GLVEBTC_TBCL_TCBCL_SHIFT 0
+-#define I40E_GLVEBTC_TBCL_TCBCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBTC_TBCL_TCBCL_SHIFT)
+ #define I40E_GLVEBTC_TPCH(_i, _j) (0x00338004 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_TPCH_MAX_INDEX 7
+-#define I40E_GLVEBTC_TPCH_TCPCH_SHIFT 0
+-#define I40E_GLVEBTC_TPCH_TCPCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBTC_TPCH_TCPCH_SHIFT)
+ #define I40E_GLVEBTC_TPCL(_i, _j) (0x00338000 + ((_i) * 8 + (_j) * 64)) /* _i=0...7, _j=0...15 */ /* Reset: CORER */
+-#define I40E_GLVEBTC_TPCL_MAX_INDEX 7
+-#define I40E_GLVEBTC_TPCL_TCPCL_SHIFT 0
+-#define I40E_GLVEBTC_TPCL_TCPCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBTC_TPCL_TCPCL_SHIFT)
+-#define I40E_GLVEBVL_BPCH(_i) (0x00374804 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_BPCH_MAX_INDEX 127
+-#define I40E_GLVEBVL_BPCH_VLBPCH_SHIFT 0
+-#define I40E_GLVEBVL_BPCH_VLBPCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBVL_BPCH_VLBPCH_SHIFT)
+-#define I40E_GLVEBVL_BPCL(_i) (0x00374800 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_BPCL_MAX_INDEX 127
+-#define I40E_GLVEBVL_BPCL_VLBPCL_SHIFT 0
+-#define I40E_GLVEBVL_BPCL_VLBPCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBVL_BPCL_VLBPCL_SHIFT)
+-#define I40E_GLVEBVL_GORCH(_i) (0x00360004 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_GORCH_MAX_INDEX 127
+-#define I40E_GLVEBVL_GORCH_VLBCH_SHIFT 0
+-#define I40E_GLVEBVL_GORCH_VLBCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBVL_GORCH_VLBCH_SHIFT)
+-#define I40E_GLVEBVL_GORCL(_i) (0x00360000 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_GORCL_MAX_INDEX 127
+-#define I40E_GLVEBVL_GORCL_VLBCL_SHIFT 0
+-#define I40E_GLVEBVL_GORCL_VLBCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBVL_GORCL_VLBCL_SHIFT)
+-#define I40E_GLVEBVL_GOTCH(_i) (0x00330004 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_GOTCH_MAX_INDEX 127
+-#define I40E_GLVEBVL_GOTCH_VLBCH_SHIFT 0
+-#define I40E_GLVEBVL_GOTCH_VLBCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBVL_GOTCH_VLBCH_SHIFT)
+-#define I40E_GLVEBVL_GOTCL(_i) (0x00330000 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_GOTCL_MAX_INDEX 127
+-#define I40E_GLVEBVL_GOTCL_VLBCL_SHIFT 0
+-#define I40E_GLVEBVL_GOTCL_VLBCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBVL_GOTCL_VLBCL_SHIFT)
+-#define I40E_GLVEBVL_MPCH(_i) (0x00374404 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_MPCH_MAX_INDEX 127
+-#define I40E_GLVEBVL_MPCH_VLMPCH_SHIFT 0
+-#define I40E_GLVEBVL_MPCH_VLMPCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBVL_MPCH_VLMPCH_SHIFT)
+-#define I40E_GLVEBVL_MPCL(_i) (0x00374400 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_MPCL_MAX_INDEX 127
+-#define I40E_GLVEBVL_MPCL_VLMPCL_SHIFT 0
+-#define I40E_GLVEBVL_MPCL_VLMPCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBVL_MPCL_VLMPCL_SHIFT)
+-#define I40E_GLVEBVL_UPCH(_i) (0x00374004 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_UPCH_MAX_INDEX 127
+-#define I40E_GLVEBVL_UPCH_VLUPCH_SHIFT 0
+-#define I40E_GLVEBVL_UPCH_VLUPCH_MASK I40E_MASK(0xFFFF, I40E_GLVEBVL_UPCH_VLUPCH_SHIFT)
+-#define I40E_GLVEBVL_UPCL(_i) (0x00374000 + ((_i) * 8)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_GLVEBVL_UPCL_MAX_INDEX 127
+-#define I40E_GLVEBVL_UPCL_VLUPCL_SHIFT 0
+-#define I40E_GLVEBVL_UPCL_VLUPCL_MASK I40E_MASK(0xFFFFFFFF, I40E_GLVEBVL_UPCL_VLUPCL_SHIFT)
+-#define I40E_GL_MTG_FLU_MSK_H 0x00269F4C /* Reset: CORER */
+-#define I40E_GL_MTG_FLU_MSK_H_MASK_HIGH_SHIFT 0
+-#define I40E_GL_MTG_FLU_MSK_H_MASK_HIGH_MASK I40E_MASK(0xFFFF, I40E_GL_MTG_FLU_MSK_H_MASK_HIGH_SHIFT)
+-#define I40E_GL_SWR_DEF_ACT(_i) (0x00270200 + ((_i) * 4)) /* _i=0...35 */ /* Reset: CORER */
+-#define I40E_GL_SWR_DEF_ACT_MAX_INDEX 35
+-#define I40E_GL_SWR_DEF_ACT_DEF_ACTION_SHIFT 0
+-#define I40E_GL_SWR_DEF_ACT_DEF_ACTION_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_SWR_DEF_ACT_DEF_ACTION_SHIFT)
+-#define I40E_GL_SWR_DEF_ACT_EN(_i) (0x0026CFB8 + ((_i) * 4)) /* _i=0...1 */ /* Reset: CORER */
+-#define I40E_GL_SWR_DEF_ACT_EN_MAX_INDEX 1
+-#define I40E_GL_SWR_DEF_ACT_EN_DEF_ACT_EN_BITMAP_SHIFT 0
+-#define I40E_GL_SWR_DEF_ACT_EN_DEF_ACT_EN_BITMAP_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_SWR_DEF_ACT_EN_DEF_ACT_EN_BITMAP_SHIFT)
+-#define I40E_PRTTSYN_ADJ 0x001E4280 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_ADJ_TSYNADJ_SHIFT 0
+-#define I40E_PRTTSYN_ADJ_TSYNADJ_MASK I40E_MASK(0x7FFFFFFF, I40E_PRTTSYN_ADJ_TSYNADJ_SHIFT)
+-#define I40E_PRTTSYN_ADJ_SIGN_SHIFT 31
+-#define I40E_PRTTSYN_ADJ_SIGN_MASK I40E_MASK(0x1, I40E_PRTTSYN_ADJ_SIGN_SHIFT)
+-#define I40E_PRTTSYN_AUX_0(_i) (0x001E42A0 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_AUX_0_MAX_INDEX 1
+-#define I40E_PRTTSYN_AUX_0_OUT_ENA_SHIFT 0
+-#define I40E_PRTTSYN_AUX_0_OUT_ENA_MASK I40E_MASK(0x1, I40E_PRTTSYN_AUX_0_OUT_ENA_SHIFT)
+-#define I40E_PRTTSYN_AUX_0_OUTMOD_SHIFT 1
+-#define I40E_PRTTSYN_AUX_0_OUTMOD_MASK I40E_MASK(0x3, I40E_PRTTSYN_AUX_0_OUTMOD_SHIFT)
+-#define I40E_PRTTSYN_AUX_0_OUTLVL_SHIFT 3
+-#define I40E_PRTTSYN_AUX_0_OUTLVL_MASK I40E_MASK(0x1, I40E_PRTTSYN_AUX_0_OUTLVL_SHIFT)
+-#define I40E_PRTTSYN_AUX_0_PULSEW_SHIFT 8
+-#define I40E_PRTTSYN_AUX_0_PULSEW_MASK I40E_MASK(0xF, I40E_PRTTSYN_AUX_0_PULSEW_SHIFT)
+-#define I40E_PRTTSYN_AUX_0_EVNTLVL_SHIFT 16
+-#define I40E_PRTTSYN_AUX_0_EVNTLVL_MASK I40E_MASK(0x3, I40E_PRTTSYN_AUX_0_EVNTLVL_SHIFT)
+-#define I40E_PRTTSYN_AUX_1(_i) (0x001E42E0 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_AUX_1_MAX_INDEX 1
+-#define I40E_PRTTSYN_AUX_1_INSTNT_SHIFT 0
+-#define I40E_PRTTSYN_AUX_1_INSTNT_MASK I40E_MASK(0x1, I40E_PRTTSYN_AUX_1_INSTNT_SHIFT)
+-#define I40E_PRTTSYN_AUX_1_SAMPLE_TIME_SHIFT 1
+-#define I40E_PRTTSYN_AUX_1_SAMPLE_TIME_MASK I40E_MASK(0x1, I40E_PRTTSYN_AUX_1_SAMPLE_TIME_SHIFT)
+-#define I40E_PRTTSYN_CLKO(_i) (0x001E4240 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_CLKO_MAX_INDEX 1
+-#define I40E_PRTTSYN_CLKO_TSYNCLKO_SHIFT 0
+-#define I40E_PRTTSYN_CLKO_TSYNCLKO_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_CLKO_TSYNCLKO_SHIFT)
+ #define I40E_PRTTSYN_CTL0 0x001E4200 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_CTL0_CLEAR_TSYNTIMER_SHIFT 0
+-#define I40E_PRTTSYN_CTL0_CLEAR_TSYNTIMER_MASK I40E_MASK(0x1, I40E_PRTTSYN_CTL0_CLEAR_TSYNTIMER_SHIFT)
+ #define I40E_PRTTSYN_CTL0_TXTIME_INT_ENA_SHIFT 1
+ #define I40E_PRTTSYN_CTL0_TXTIME_INT_ENA_MASK I40E_MASK(0x1, I40E_PRTTSYN_CTL0_TXTIME_INT_ENA_SHIFT)
+-#define I40E_PRTTSYN_CTL0_EVENT_INT_ENA_SHIFT 2
+-#define I40E_PRTTSYN_CTL0_EVENT_INT_ENA_MASK I40E_MASK(0x1, I40E_PRTTSYN_CTL0_EVENT_INT_ENA_SHIFT)
+-#define I40E_PRTTSYN_CTL0_TGT_INT_ENA_SHIFT 3
+-#define I40E_PRTTSYN_CTL0_TGT_INT_ENA_MASK I40E_MASK(0x1, I40E_PRTTSYN_CTL0_TGT_INT_ENA_SHIFT)
+ #define I40E_PRTTSYN_CTL0_PF_ID_SHIFT 8
+ #define I40E_PRTTSYN_CTL0_PF_ID_MASK I40E_MASK(0xF, I40E_PRTTSYN_CTL0_PF_ID_SHIFT)
+-#define I40E_PRTTSYN_CTL0_TSYNACT_SHIFT 12
+-#define I40E_PRTTSYN_CTL0_TSYNACT_MASK I40E_MASK(0x3, I40E_PRTTSYN_CTL0_TSYNACT_SHIFT)
+ #define I40E_PRTTSYN_CTL0_TSYNENA_SHIFT 31
+ #define I40E_PRTTSYN_CTL0_TSYNENA_MASK I40E_MASK(0x1, I40E_PRTTSYN_CTL0_TSYNENA_SHIFT)
+ #define I40E_PRTTSYN_CTL1 0x00085020 /* Reset: CORER */
+ #define I40E_PRTTSYN_CTL1_V1MESSTYPE0_SHIFT 0
+ #define I40E_PRTTSYN_CTL1_V1MESSTYPE0_MASK I40E_MASK(0xFF, I40E_PRTTSYN_CTL1_V1MESSTYPE0_SHIFT)
+-#define I40E_PRTTSYN_CTL1_V1MESSTYPE1_SHIFT 8
+-#define I40E_PRTTSYN_CTL1_V1MESSTYPE1_MASK I40E_MASK(0xFF, I40E_PRTTSYN_CTL1_V1MESSTYPE1_SHIFT)
+ #define I40E_PRTTSYN_CTL1_V2MESSTYPE0_SHIFT 16
+ #define I40E_PRTTSYN_CTL1_V2MESSTYPE0_MASK I40E_MASK(0xF, I40E_PRTTSYN_CTL1_V2MESSTYPE0_SHIFT)
+-#define I40E_PRTTSYN_CTL1_V2MESSTYPE1_SHIFT 20
+-#define I40E_PRTTSYN_CTL1_V2MESSTYPE1_MASK I40E_MASK(0xF, I40E_PRTTSYN_CTL1_V2MESSTYPE1_SHIFT)
+ #define I40E_PRTTSYN_CTL1_TSYNTYPE_SHIFT 24
+-#define I40E_PRTTSYN_CTL1_TSYNTYPE_MASK I40E_MASK(0x3, I40E_PRTTSYN_CTL1_TSYNTYPE_SHIFT)
+ #define I40E_PRTTSYN_CTL1_UDP_ENA_SHIFT 26
+ #define I40E_PRTTSYN_CTL1_UDP_ENA_MASK I40E_MASK(0x3, I40E_PRTTSYN_CTL1_UDP_ENA_SHIFT)
+ #define I40E_PRTTSYN_CTL1_TSYNENA_SHIFT 31
+ #define I40E_PRTTSYN_CTL1_TSYNENA_MASK I40E_MASK(0x1, I40E_PRTTSYN_CTL1_TSYNENA_SHIFT)
+-#define I40E_PRTTSYN_EVNT_H(_i) (0x001E40C0 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_EVNT_H_MAX_INDEX 1
+-#define I40E_PRTTSYN_EVNT_H_TSYNEVNT_H_SHIFT 0
+-#define I40E_PRTTSYN_EVNT_H_TSYNEVNT_H_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_EVNT_H_TSYNEVNT_H_SHIFT)
+-#define I40E_PRTTSYN_EVNT_L(_i) (0x001E4080 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_EVNT_L_MAX_INDEX 1
+-#define I40E_PRTTSYN_EVNT_L_TSYNEVNT_L_SHIFT 0
+-#define I40E_PRTTSYN_EVNT_L_TSYNEVNT_L_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_EVNT_L_TSYNEVNT_L_SHIFT)
+ #define I40E_PRTTSYN_INC_H 0x001E4060 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_INC_H_TSYNINC_H_SHIFT 0
+-#define I40E_PRTTSYN_INC_H_TSYNINC_H_MASK I40E_MASK(0x3F, I40E_PRTTSYN_INC_H_TSYNINC_H_SHIFT)
+ #define I40E_PRTTSYN_INC_L 0x001E4040 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_INC_L_TSYNINC_L_SHIFT 0
+-#define I40E_PRTTSYN_INC_L_TSYNINC_L_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_INC_L_TSYNINC_L_SHIFT)
+ #define I40E_PRTTSYN_RXTIME_H(_i) (0x00085040 + ((_i) * 32)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_PRTTSYN_RXTIME_H_MAX_INDEX 3
+-#define I40E_PRTTSYN_RXTIME_H_RXTIEM_H_SHIFT 0
+-#define I40E_PRTTSYN_RXTIME_H_RXTIEM_H_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_RXTIME_H_RXTIEM_H_SHIFT)
+ #define I40E_PRTTSYN_RXTIME_L(_i) (0x000850C0 + ((_i) * 32)) /* _i=0...3 */ /* Reset: CORER */
+-#define I40E_PRTTSYN_RXTIME_L_MAX_INDEX 3
+-#define I40E_PRTTSYN_RXTIME_L_RXTIEM_L_SHIFT 0
+-#define I40E_PRTTSYN_RXTIME_L_RXTIEM_L_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_RXTIME_L_RXTIEM_L_SHIFT)
+ #define I40E_PRTTSYN_STAT_0 0x001E4220 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_STAT_0_EVENT0_SHIFT 0
+-#define I40E_PRTTSYN_STAT_0_EVENT0_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_0_EVENT0_SHIFT)
+-#define I40E_PRTTSYN_STAT_0_EVENT1_SHIFT 1
+-#define I40E_PRTTSYN_STAT_0_EVENT1_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_0_EVENT1_SHIFT)
+-#define I40E_PRTTSYN_STAT_0_TGT0_SHIFT 2
+-#define I40E_PRTTSYN_STAT_0_TGT0_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_0_TGT0_SHIFT)
+-#define I40E_PRTTSYN_STAT_0_TGT1_SHIFT 3
+-#define I40E_PRTTSYN_STAT_0_TGT1_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_0_TGT1_SHIFT)
+ #define I40E_PRTTSYN_STAT_0_TXTIME_SHIFT 4
+ #define I40E_PRTTSYN_STAT_0_TXTIME_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_0_TXTIME_SHIFT)
+ #define I40E_PRTTSYN_STAT_1 0x00085140 /* Reset: CORER */
+-#define I40E_PRTTSYN_STAT_1_RXT0_SHIFT 0
+-#define I40E_PRTTSYN_STAT_1_RXT0_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_1_RXT0_SHIFT)
+-#define I40E_PRTTSYN_STAT_1_RXT1_SHIFT 1
+-#define I40E_PRTTSYN_STAT_1_RXT1_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_1_RXT1_SHIFT)
+-#define I40E_PRTTSYN_STAT_1_RXT2_SHIFT 2
+-#define I40E_PRTTSYN_STAT_1_RXT2_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_1_RXT2_SHIFT)
+-#define I40E_PRTTSYN_STAT_1_RXT3_SHIFT 3
+-#define I40E_PRTTSYN_STAT_1_RXT3_MASK I40E_MASK(0x1, I40E_PRTTSYN_STAT_1_RXT3_SHIFT)
+-#define I40E_PRTTSYN_TGT_H(_i) (0x001E4180 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_TGT_H_MAX_INDEX 1
+-#define I40E_PRTTSYN_TGT_H_TSYNTGTT_H_SHIFT 0
+-#define I40E_PRTTSYN_TGT_H_TSYNTGTT_H_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_TGT_H_TSYNTGTT_H_SHIFT)
+-#define I40E_PRTTSYN_TGT_L(_i) (0x001E4140 + ((_i) * 32)) /* _i=0...1 */ /* Reset: GLOBR */
+-#define I40E_PRTTSYN_TGT_L_MAX_INDEX 1
+-#define I40E_PRTTSYN_TGT_L_TSYNTGTT_L_SHIFT 0
+-#define I40E_PRTTSYN_TGT_L_TSYNTGTT_L_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_TGT_L_TSYNTGTT_L_SHIFT)
+ #define I40E_PRTTSYN_TIME_H 0x001E4120 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_TIME_H_TSYNTIME_H_SHIFT 0
+-#define I40E_PRTTSYN_TIME_H_TSYNTIME_H_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_TIME_H_TSYNTIME_H_SHIFT)
+ #define I40E_PRTTSYN_TIME_L 0x001E4100 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_TIME_L_TSYNTIME_L_SHIFT 0
+-#define I40E_PRTTSYN_TIME_L_TSYNTIME_L_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_TIME_L_TSYNTIME_L_SHIFT)
+ #define I40E_PRTTSYN_TXTIME_H 0x001E41E0 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_TXTIME_H_TXTIEM_H_SHIFT 0
+-#define I40E_PRTTSYN_TXTIME_H_TXTIEM_H_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_TXTIME_H_TXTIEM_H_SHIFT)
+ #define I40E_PRTTSYN_TXTIME_L 0x001E41C0 /* Reset: GLOBR */
+-#define I40E_PRTTSYN_TXTIME_L_TXTIEM_L_SHIFT 0
+-#define I40E_PRTTSYN_TXTIME_L_TXTIEM_L_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTTSYN_TXTIME_L_TXTIEM_L_SHIFT)
+ #define I40E_GL_MDET_RX 0x0012A510 /* Reset: CORER */
+ #define I40E_GL_MDET_RX_FUNCTION_SHIFT 0
+ #define I40E_GL_MDET_RX_FUNCTION_MASK I40E_MASK(0xFF, I40E_GL_MDET_RX_FUNCTION_SHIFT)
+@@ -3033,2304 +620,53 @@
+ #define I40E_PF_VT_PFALLOC_VALID_SHIFT 31
+ #define I40E_PF_VT_PFALLOC_VALID_MASK I40E_MASK(0x1u, I40E_PF_VT_PFALLOC_VALID_SHIFT)
+ #define I40E_VP_MDET_RX(_VF) (0x0012A000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VP_MDET_RX_MAX_INDEX 127
+ #define I40E_VP_MDET_RX_VALID_SHIFT 0
+ #define I40E_VP_MDET_RX_VALID_MASK I40E_MASK(0x1, I40E_VP_MDET_RX_VALID_SHIFT)
+ #define I40E_VP_MDET_TX(_VF) (0x000E6000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_VP_MDET_TX_MAX_INDEX 127
+ #define I40E_VP_MDET_TX_VALID_SHIFT 0
+ #define I40E_VP_MDET_TX_VALID_MASK I40E_MASK(0x1, I40E_VP_MDET_TX_VALID_SHIFT)
+-#define I40E_GLPM_WUMC 0x0006C800 /* Reset: POR */
+-#define I40E_GLPM_WUMC_NOTCO_SHIFT 0
+-#define I40E_GLPM_WUMC_NOTCO_MASK I40E_MASK(0x1, I40E_GLPM_WUMC_NOTCO_SHIFT)
+-#define I40E_GLPM_WUMC_SRST_PIN_VAL_SHIFT 1
+-#define I40E_GLPM_WUMC_SRST_PIN_VAL_MASK I40E_MASK(0x1, I40E_GLPM_WUMC_SRST_PIN_VAL_SHIFT)
+-#define I40E_GLPM_WUMC_ROL_MODE_SHIFT 2
+-#define I40E_GLPM_WUMC_ROL_MODE_MASK I40E_MASK(0x1, I40E_GLPM_WUMC_ROL_MODE_SHIFT)
+-#define I40E_GLPM_WUMC_RESERVED_4_SHIFT 3
+-#define I40E_GLPM_WUMC_RESERVED_4_MASK I40E_MASK(0x1FFF, I40E_GLPM_WUMC_RESERVED_4_SHIFT)
+-#define I40E_GLPM_WUMC_MNG_WU_PF_SHIFT 16
+-#define I40E_GLPM_WUMC_MNG_WU_PF_MASK I40E_MASK(0xFFFF, I40E_GLPM_WUMC_MNG_WU_PF_SHIFT)
+ #define I40E_PFPM_APM 0x000B8080 /* Reset: POR */
+ #define I40E_PFPM_APM_APME_SHIFT 0
+ #define I40E_PFPM_APM_APME_MASK I40E_MASK(0x1, I40E_PFPM_APM_APME_SHIFT)
+-#define I40E_PFPM_FHFT_LENGTH(_i) (0x0006A000 + ((_i) * 128)) /* _i=0...7 */ /* Reset: POR */
+-#define I40E_PFPM_FHFT_LENGTH_MAX_INDEX 7
+-#define I40E_PFPM_FHFT_LENGTH_LENGTH_SHIFT 0
+-#define I40E_PFPM_FHFT_LENGTH_LENGTH_MASK I40E_MASK(0xFF, I40E_PFPM_FHFT_LENGTH_LENGTH_SHIFT)
+-#define I40E_PFPM_WUC 0x0006B200 /* Reset: POR */
+-#define I40E_PFPM_WUC_EN_APM_D0_SHIFT 5
+-#define I40E_PFPM_WUC_EN_APM_D0_MASK I40E_MASK(0x1, I40E_PFPM_WUC_EN_APM_D0_SHIFT)
+ #define I40E_PFPM_WUFC 0x0006B400 /* Reset: POR */
+-#define I40E_PFPM_WUFC_LNKC_SHIFT 0
+-#define I40E_PFPM_WUFC_LNKC_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_LNKC_SHIFT)
+ #define I40E_PFPM_WUFC_MAG_SHIFT 1
+ #define I40E_PFPM_WUFC_MAG_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_MAG_SHIFT)
+-#define I40E_PFPM_WUFC_MNG_SHIFT 3
+-#define I40E_PFPM_WUFC_MNG_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_MNG_SHIFT)
+-#define I40E_PFPM_WUFC_FLX0_ACT_SHIFT 4
+-#define I40E_PFPM_WUFC_FLX0_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX0_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX1_ACT_SHIFT 5
+-#define I40E_PFPM_WUFC_FLX1_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX1_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX2_ACT_SHIFT 6
+-#define I40E_PFPM_WUFC_FLX2_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX2_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX3_ACT_SHIFT 7
+-#define I40E_PFPM_WUFC_FLX3_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX3_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX4_ACT_SHIFT 8
+-#define I40E_PFPM_WUFC_FLX4_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX4_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX5_ACT_SHIFT 9
+-#define I40E_PFPM_WUFC_FLX5_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX5_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX6_ACT_SHIFT 10
+-#define I40E_PFPM_WUFC_FLX6_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX6_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX7_ACT_SHIFT 11
+-#define I40E_PFPM_WUFC_FLX7_ACT_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX7_ACT_SHIFT)
+-#define I40E_PFPM_WUFC_FLX0_SHIFT 16
+-#define I40E_PFPM_WUFC_FLX0_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX0_SHIFT)
+-#define I40E_PFPM_WUFC_FLX1_SHIFT 17
+-#define I40E_PFPM_WUFC_FLX1_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX1_SHIFT)
+-#define I40E_PFPM_WUFC_FLX2_SHIFT 18
+-#define I40E_PFPM_WUFC_FLX2_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX2_SHIFT)
+-#define I40E_PFPM_WUFC_FLX3_SHIFT 19
+-#define I40E_PFPM_WUFC_FLX3_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX3_SHIFT)
+-#define I40E_PFPM_WUFC_FLX4_SHIFT 20
+-#define I40E_PFPM_WUFC_FLX4_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX4_SHIFT)
+-#define I40E_PFPM_WUFC_FLX5_SHIFT 21
+-#define I40E_PFPM_WUFC_FLX5_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX5_SHIFT)
+-#define I40E_PFPM_WUFC_FLX6_SHIFT 22
+-#define I40E_PFPM_WUFC_FLX6_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX6_SHIFT)
+-#define I40E_PFPM_WUFC_FLX7_SHIFT 23
+-#define I40E_PFPM_WUFC_FLX7_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FLX7_SHIFT)
+-#define I40E_PFPM_WUFC_FW_RST_WK_SHIFT 31
+-#define I40E_PFPM_WUFC_FW_RST_WK_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_FW_RST_WK_SHIFT)
+-#define I40E_PFPM_WUS 0x0006B600 /* Reset: POR */
+-#define I40E_PFPM_WUS_LNKC_SHIFT 0
+-#define I40E_PFPM_WUS_LNKC_MASK I40E_MASK(0x1, I40E_PFPM_WUS_LNKC_SHIFT)
+-#define I40E_PFPM_WUS_MAG_SHIFT 1
+-#define I40E_PFPM_WUS_MAG_MASK I40E_MASK(0x1, I40E_PFPM_WUS_MAG_SHIFT)
+-#define I40E_PFPM_WUS_PME_STATUS_SHIFT 2
+-#define I40E_PFPM_WUS_PME_STATUS_MASK I40E_MASK(0x1, I40E_PFPM_WUS_PME_STATUS_SHIFT)
+-#define I40E_PFPM_WUS_MNG_SHIFT 3
+-#define I40E_PFPM_WUS_MNG_MASK I40E_MASK(0x1, I40E_PFPM_WUS_MNG_SHIFT)
+-#define I40E_PFPM_WUS_FLX0_SHIFT 16
+-#define I40E_PFPM_WUS_FLX0_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX0_SHIFT)
+-#define I40E_PFPM_WUS_FLX1_SHIFT 17
+-#define I40E_PFPM_WUS_FLX1_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX1_SHIFT)
+-#define I40E_PFPM_WUS_FLX2_SHIFT 18
+-#define I40E_PFPM_WUS_FLX2_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX2_SHIFT)
+-#define I40E_PFPM_WUS_FLX3_SHIFT 19
+-#define I40E_PFPM_WUS_FLX3_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX3_SHIFT)
+-#define I40E_PFPM_WUS_FLX4_SHIFT 20
+-#define I40E_PFPM_WUS_FLX4_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX4_SHIFT)
+-#define I40E_PFPM_WUS_FLX5_SHIFT 21
+-#define I40E_PFPM_WUS_FLX5_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX5_SHIFT)
+-#define I40E_PFPM_WUS_FLX6_SHIFT 22
+-#define I40E_PFPM_WUS_FLX6_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX6_SHIFT)
+-#define I40E_PFPM_WUS_FLX7_SHIFT 23
+-#define I40E_PFPM_WUS_FLX7_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FLX7_SHIFT)
+-#define I40E_PFPM_WUS_FW_RST_WK_SHIFT 31
+-#define I40E_PFPM_WUS_FW_RST_WK_MASK I40E_MASK(0x1, I40E_PFPM_WUS_FW_RST_WK_SHIFT)
+-#define I40E_PRTPM_FHFHR 0x0006C000 /* Reset: POR */
+-#define I40E_PRTPM_FHFHR_UNICAST_SHIFT 0
+-#define I40E_PRTPM_FHFHR_UNICAST_MASK I40E_MASK(0x1, I40E_PRTPM_FHFHR_UNICAST_SHIFT)
+-#define I40E_PRTPM_FHFHR_MULTICAST_SHIFT 1
+-#define I40E_PRTPM_FHFHR_MULTICAST_MASK I40E_MASK(0x1, I40E_PRTPM_FHFHR_MULTICAST_SHIFT)
+-#define I40E_PRTPM_SAH(_i) (0x001E44C0 + ((_i) * 32)) /* _i=0...3 */ /* Reset: PFR */
+-#define I40E_PRTPM_SAH_MAX_INDEX 3
+-#define I40E_PRTPM_SAH_PFPM_SAH_SHIFT 0
+-#define I40E_PRTPM_SAH_PFPM_SAH_MASK I40E_MASK(0xFFFF, I40E_PRTPM_SAH_PFPM_SAH_SHIFT)
+-#define I40E_PRTPM_SAH_PF_NUM_SHIFT 26
+-#define I40E_PRTPM_SAH_PF_NUM_MASK I40E_MASK(0xF, I40E_PRTPM_SAH_PF_NUM_SHIFT)
+-#define I40E_PRTPM_SAH_MC_MAG_EN_SHIFT 30
+-#define I40E_PRTPM_SAH_MC_MAG_EN_MASK I40E_MASK(0x1, I40E_PRTPM_SAH_MC_MAG_EN_SHIFT)
+-#define I40E_PRTPM_SAH_AV_SHIFT 31
+-#define I40E_PRTPM_SAH_AV_MASK I40E_MASK(0x1, I40E_PRTPM_SAH_AV_SHIFT)
+-#define I40E_PRTPM_SAL(_i) (0x001E4440 + ((_i) * 32)) /* _i=0...3 */ /* Reset: PFR */
+-#define I40E_PRTPM_SAL_MAX_INDEX 3
+-#define I40E_PRTPM_SAL_PFPM_SAL_SHIFT 0
+-#define I40E_PRTPM_SAL_PFPM_SAL_MASK I40E_MASK(0xFFFFFFFF, I40E_PRTPM_SAL_PFPM_SAL_SHIFT)
+ #define I40E_VF_ARQBAH1 0x00006000 /* Reset: EMPR */
+-#define I40E_VF_ARQBAH1_ARQBAH_SHIFT 0
+-#define I40E_VF_ARQBAH1_ARQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ARQBAH1_ARQBAH_SHIFT)
+ #define I40E_VF_ARQBAL1 0x00006C00 /* Reset: EMPR */
+-#define I40E_VF_ARQBAL1_ARQBAL_SHIFT 0
+-#define I40E_VF_ARQBAL1_ARQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ARQBAL1_ARQBAL_SHIFT)
+ #define I40E_VF_ARQH1 0x00007400 /* Reset: EMPR */
+-#define I40E_VF_ARQH1_ARQH_SHIFT 0
+-#define I40E_VF_ARQH1_ARQH_MASK I40E_MASK(0x3FF, I40E_VF_ARQH1_ARQH_SHIFT)
+ #define I40E_VF_ARQLEN1 0x00008000 /* Reset: EMPR */
+-#define I40E_VF_ARQLEN1_ARQLEN_SHIFT 0
+-#define I40E_VF_ARQLEN1_ARQLEN_MASK I40E_MASK(0x3FF, I40E_VF_ARQLEN1_ARQLEN_SHIFT)
+-#define I40E_VF_ARQLEN1_ARQVFE_SHIFT 28
+-#define I40E_VF_ARQLEN1_ARQVFE_MASK I40E_MASK(0x1, I40E_VF_ARQLEN1_ARQVFE_SHIFT)
+-#define I40E_VF_ARQLEN1_ARQOVFL_SHIFT 29
+-#define I40E_VF_ARQLEN1_ARQOVFL_MASK I40E_MASK(0x1, I40E_VF_ARQLEN1_ARQOVFL_SHIFT)
+-#define I40E_VF_ARQLEN1_ARQCRIT_SHIFT 30
+-#define I40E_VF_ARQLEN1_ARQCRIT_MASK I40E_MASK(0x1, I40E_VF_ARQLEN1_ARQCRIT_SHIFT)
+-#define I40E_VF_ARQLEN1_ARQENABLE_SHIFT 31
+-#define I40E_VF_ARQLEN1_ARQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ARQLEN1_ARQENABLE_SHIFT)
+ #define I40E_VF_ARQT1 0x00007000 /* Reset: EMPR */
+-#define I40E_VF_ARQT1_ARQT_SHIFT 0
+-#define I40E_VF_ARQT1_ARQT_MASK I40E_MASK(0x3FF, I40E_VF_ARQT1_ARQT_SHIFT)
+ #define I40E_VF_ATQBAH1 0x00007800 /* Reset: EMPR */
+-#define I40E_VF_ATQBAH1_ATQBAH_SHIFT 0
+-#define I40E_VF_ATQBAH1_ATQBAH_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ATQBAH1_ATQBAH_SHIFT)
+ #define I40E_VF_ATQBAL1 0x00007C00 /* Reset: EMPR */
+-#define I40E_VF_ATQBAL1_ATQBAL_SHIFT 0
+-#define I40E_VF_ATQBAL1_ATQBAL_MASK I40E_MASK(0xFFFFFFFF, I40E_VF_ATQBAL1_ATQBAL_SHIFT)
+ #define I40E_VF_ATQH1 0x00006400 /* Reset: EMPR */
+-#define I40E_VF_ATQH1_ATQH_SHIFT 0
+-#define I40E_VF_ATQH1_ATQH_MASK I40E_MASK(0x3FF, I40E_VF_ATQH1_ATQH_SHIFT)
+ #define I40E_VF_ATQLEN1 0x00006800 /* Reset: EMPR */
+-#define I40E_VF_ATQLEN1_ATQLEN_SHIFT 0
+-#define I40E_VF_ATQLEN1_ATQLEN_MASK I40E_MASK(0x3FF, I40E_VF_ATQLEN1_ATQLEN_SHIFT)
+-#define I40E_VF_ATQLEN1_ATQVFE_SHIFT 28
+-#define I40E_VF_ATQLEN1_ATQVFE_MASK I40E_MASK(0x1, I40E_VF_ATQLEN1_ATQVFE_SHIFT)
+-#define I40E_VF_ATQLEN1_ATQOVFL_SHIFT 29
+-#define I40E_VF_ATQLEN1_ATQOVFL_MASK I40E_MASK(0x1, I40E_VF_ATQLEN1_ATQOVFL_SHIFT)
+-#define I40E_VF_ATQLEN1_ATQCRIT_SHIFT 30
+-#define I40E_VF_ATQLEN1_ATQCRIT_MASK I40E_MASK(0x1, I40E_VF_ATQLEN1_ATQCRIT_SHIFT)
+-#define I40E_VF_ATQLEN1_ATQENABLE_SHIFT 31
+-#define I40E_VF_ATQLEN1_ATQENABLE_MASK I40E_MASK(0x1u, I40E_VF_ATQLEN1_ATQENABLE_SHIFT)
+ #define I40E_VF_ATQT1 0x00008400 /* Reset: EMPR */
+-#define I40E_VF_ATQT1_ATQT_SHIFT 0
+-#define I40E_VF_ATQT1_ATQT_MASK I40E_MASK(0x3FF, I40E_VF_ATQT1_ATQT_SHIFT)
+-#define I40E_VFGEN_RSTAT 0x00008800 /* Reset: VFR */
+-#define I40E_VFGEN_RSTAT_VFR_STATE_SHIFT 0
+-#define I40E_VFGEN_RSTAT_VFR_STATE_MASK I40E_MASK(0x3, I40E_VFGEN_RSTAT_VFR_STATE_SHIFT)
+-#define I40E_VFINT_DYN_CTL01 0x00005C00 /* Reset: VFR */
+-#define I40E_VFINT_DYN_CTL01_INTENA_SHIFT 0
+-#define I40E_VFINT_DYN_CTL01_INTENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL01_INTENA_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_CLEARPBA_SHIFT 1
+-#define I40E_VFINT_DYN_CTL01_CLEARPBA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL01_CLEARPBA_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_SWINT_TRIG_SHIFT 2
+-#define I40E_VFINT_DYN_CTL01_SWINT_TRIG_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL01_SWINT_TRIG_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_ITR_INDX_SHIFT 3
+-#define I40E_VFINT_DYN_CTL01_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTL01_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_INTERVAL_SHIFT 5
+-#define I40E_VFINT_DYN_CTL01_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_DYN_CTL01_INTERVAL_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_SW_ITR_INDX_ENA_SHIFT 24
+-#define I40E_VFINT_DYN_CTL01_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL01_SW_ITR_INDX_ENA_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_SW_ITR_INDX_SHIFT 25
+-#define I40E_VFINT_DYN_CTL01_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTL01_SW_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_INTENA_MSK_SHIFT 31
+-#define I40E_VFINT_DYN_CTL01_INTENA_MSK_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL01_INTENA_MSK_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1(_INTVF) (0x00003800 + ((_INTVF) * 4)) /* _i=0...15 */ /* Reset: VFR */
+-#define I40E_VFINT_DYN_CTLN1_MAX_INDEX 15
+-#define I40E_VFINT_DYN_CTLN1_INTENA_SHIFT 0
+-#define I40E_VFINT_DYN_CTLN1_INTENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN1_INTENA_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_CLEARPBA_SHIFT 1
+-#define I40E_VFINT_DYN_CTLN1_CLEARPBA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN1_CLEARPBA_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_SWINT_TRIG_SHIFT 2
+-#define I40E_VFINT_DYN_CTLN1_SWINT_TRIG_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN1_SWINT_TRIG_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_ITR_INDX_SHIFT 3
+-#define I40E_VFINT_DYN_CTLN1_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTLN1_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_INTERVAL_SHIFT 5
+-#define I40E_VFINT_DYN_CTLN1_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_DYN_CTLN1_INTERVAL_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_SW_ITR_INDX_ENA_SHIFT 24
+-#define I40E_VFINT_DYN_CTLN1_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN1_SW_ITR_INDX_ENA_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_SW_ITR_INDX_SHIFT 25
+-#define I40E_VFINT_DYN_CTLN1_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_DYN_CTLN1_SW_ITR_INDX_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_INTENA_MSK_SHIFT 31
+-#define I40E_VFINT_DYN_CTLN1_INTENA_MSK_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN1_INTENA_MSK_SHIFT)
+-#define I40E_VFINT_ICR0_ENA1 0x00005000 /* Reset: CORER */
+-#define I40E_VFINT_ICR0_ENA1_LINK_STAT_CHANGE_SHIFT 25
+-#define I40E_VFINT_ICR0_ENA1_LINK_STAT_CHANGE_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ENA1_LINK_STAT_CHANGE_SHIFT)
+-#define I40E_VFINT_ICR0_ENA1_ADMINQ_SHIFT 30
+-#define I40E_VFINT_ICR0_ENA1_ADMINQ_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ENA1_ADMINQ_SHIFT)
+-#define I40E_VFINT_ICR0_ENA1_RSVD_SHIFT 31
+-#define I40E_VFINT_ICR0_ENA1_RSVD_MASK I40E_MASK(0x1, I40E_VFINT_ICR0_ENA1_RSVD_SHIFT)
+-#define I40E_VFINT_ICR01 0x00004800 /* Reset: CORER */
+-#define I40E_VFINT_ICR01_INTEVENT_SHIFT 0
+-#define I40E_VFINT_ICR01_INTEVENT_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_INTEVENT_SHIFT)
+-#define I40E_VFINT_ICR01_QUEUE_0_SHIFT 1
+-#define I40E_VFINT_ICR01_QUEUE_0_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_QUEUE_0_SHIFT)
+-#define I40E_VFINT_ICR01_QUEUE_1_SHIFT 2
+-#define I40E_VFINT_ICR01_QUEUE_1_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_QUEUE_1_SHIFT)
+-#define I40E_VFINT_ICR01_QUEUE_2_SHIFT 3
+-#define I40E_VFINT_ICR01_QUEUE_2_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_QUEUE_2_SHIFT)
+-#define I40E_VFINT_ICR01_QUEUE_3_SHIFT 4
+-#define I40E_VFINT_ICR01_QUEUE_3_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_QUEUE_3_SHIFT)
+-#define I40E_VFINT_ICR01_LINK_STAT_CHANGE_SHIFT 25
+-#define I40E_VFINT_ICR01_LINK_STAT_CHANGE_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_LINK_STAT_CHANGE_SHIFT)
+-#define I40E_VFINT_ICR01_ADMINQ_SHIFT 30
+-#define I40E_VFINT_ICR01_ADMINQ_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_ADMINQ_SHIFT)
+-#define I40E_VFINT_ICR01_SWINT_SHIFT 31
+-#define I40E_VFINT_ICR01_SWINT_MASK I40E_MASK(0x1, I40E_VFINT_ICR01_SWINT_SHIFT)
+-#define I40E_VFINT_ITR01(_i) (0x00004C00 + ((_i) * 4)) /* _i=0...2 */ /* Reset: VFR */
+-#define I40E_VFINT_ITR01_MAX_INDEX 2
+-#define I40E_VFINT_ITR01_INTERVAL_SHIFT 0
+-#define I40E_VFINT_ITR01_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_ITR01_INTERVAL_SHIFT)
+-#define I40E_VFINT_ITRN1(_i, _INTVF) (0x00002800 + ((_i) * 64 + (_INTVF) * 4)) /* _i=0...2, _INTVF=0...15 */ /* Reset: VFR */
+-#define I40E_VFINT_ITRN1_MAX_INDEX 2
+-#define I40E_VFINT_ITRN1_INTERVAL_SHIFT 0
+-#define I40E_VFINT_ITRN1_INTERVAL_MASK I40E_MASK(0xFFF, I40E_VFINT_ITRN1_INTERVAL_SHIFT)
+-#define I40E_VFINT_STAT_CTL01 0x00005400 /* Reset: CORER */
+-#define I40E_VFINT_STAT_CTL01_OTHER_ITR_INDX_SHIFT 2
+-#define I40E_VFINT_STAT_CTL01_OTHER_ITR_INDX_MASK I40E_MASK(0x3, I40E_VFINT_STAT_CTL01_OTHER_ITR_INDX_SHIFT)
+-#define I40E_QRX_TAIL1(_Q) (0x00002000 + ((_Q) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_QRX_TAIL1_MAX_INDEX 15
+-#define I40E_QRX_TAIL1_TAIL_SHIFT 0
+-#define I40E_QRX_TAIL1_TAIL_MASK I40E_MASK(0x1FFF, I40E_QRX_TAIL1_TAIL_SHIFT)
+-#define I40E_QTX_TAIL1(_Q) (0x00000000 + ((_Q) * 4)) /* _i=0...15 */ /* Reset: PFR */
+-#define I40E_QTX_TAIL1_MAX_INDEX 15
+-#define I40E_QTX_TAIL1_TAIL_SHIFT 0
+-#define I40E_QTX_TAIL1_TAIL_MASK I40E_MASK(0x1FFF, I40E_QTX_TAIL1_TAIL_SHIFT)
+-#define I40E_VFMSIX_PBA 0x00002000 /* Reset: VFLR */
+-#define I40E_VFMSIX_PBA_PENBIT_SHIFT 0
+-#define I40E_VFMSIX_PBA_PENBIT_MASK I40E_MASK(0xFFFFFFFF, I40E_VFMSIX_PBA_PENBIT_SHIFT)
+-#define I40E_VFMSIX_TADD(_i) (0x00000000 + ((_i) * 16)) /* _i=0...16 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TADD_MAX_INDEX 16
+-#define I40E_VFMSIX_TADD_MSIXTADD10_SHIFT 0
+-#define I40E_VFMSIX_TADD_MSIXTADD10_MASK I40E_MASK(0x3, I40E_VFMSIX_TADD_MSIXTADD10_SHIFT)
+-#define I40E_VFMSIX_TADD_MSIXTADD_SHIFT 2
+-#define I40E_VFMSIX_TADD_MSIXTADD_MASK I40E_MASK(0x3FFFFFFF, I40E_VFMSIX_TADD_MSIXTADD_SHIFT)
+-#define I40E_VFMSIX_TMSG(_i) (0x00000008 + ((_i) * 16)) /* _i=0...16 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TMSG_MAX_INDEX 16
+-#define I40E_VFMSIX_TMSG_MSIXTMSG_SHIFT 0
+-#define I40E_VFMSIX_TMSG_MSIXTMSG_MASK I40E_MASK(0xFFFFFFFF, I40E_VFMSIX_TMSG_MSIXTMSG_SHIFT)
+-#define I40E_VFMSIX_TUADD(_i) (0x00000004 + ((_i) * 16)) /* _i=0...16 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TUADD_MAX_INDEX 16
+-#define I40E_VFMSIX_TUADD_MSIXTUADD_SHIFT 0
+-#define I40E_VFMSIX_TUADD_MSIXTUADD_MASK I40E_MASK(0xFFFFFFFF, I40E_VFMSIX_TUADD_MSIXTUADD_SHIFT)
+-#define I40E_VFMSIX_TVCTRL(_i) (0x0000000C + ((_i) * 16)) /* _i=0...16 */ /* Reset: VFLR */
+-#define I40E_VFMSIX_TVCTRL_MAX_INDEX 16
+-#define I40E_VFMSIX_TVCTRL_MASK_SHIFT 0
+-#define I40E_VFMSIX_TVCTRL_MASK_MASK I40E_MASK(0x1, I40E_VFMSIX_TVCTRL_MASK_SHIFT)
+-#define I40E_VFCM_PE_ERRDATA 0x0000DC00 /* Reset: VFR */
+-#define I40E_VFCM_PE_ERRDATA_ERROR_CODE_SHIFT 0
+-#define I40E_VFCM_PE_ERRDATA_ERROR_CODE_MASK I40E_MASK(0xF, I40E_VFCM_PE_ERRDATA_ERROR_CODE_SHIFT)
+-#define I40E_VFCM_PE_ERRDATA_Q_TYPE_SHIFT 4
+-#define I40E_VFCM_PE_ERRDATA_Q_TYPE_MASK I40E_MASK(0x7, I40E_VFCM_PE_ERRDATA_Q_TYPE_SHIFT)
+-#define I40E_VFCM_PE_ERRDATA_Q_NUM_SHIFT 8
+-#define I40E_VFCM_PE_ERRDATA_Q_NUM_MASK I40E_MASK(0x3FFFF, I40E_VFCM_PE_ERRDATA_Q_NUM_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO 0x0000D800 /* Reset: VFR */
+-#define I40E_VFCM_PE_ERRINFO_ERROR_VALID_SHIFT 0
+-#define I40E_VFCM_PE_ERRINFO_ERROR_VALID_MASK I40E_MASK(0x1, I40E_VFCM_PE_ERRINFO_ERROR_VALID_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO_ERROR_INST_SHIFT 4
+-#define I40E_VFCM_PE_ERRINFO_ERROR_INST_MASK I40E_MASK(0x7, I40E_VFCM_PE_ERRINFO_ERROR_INST_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO_DBL_ERROR_CNT_SHIFT 8
+-#define I40E_VFCM_PE_ERRINFO_DBL_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_VFCM_PE_ERRINFO_DBL_ERROR_CNT_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO_RLU_ERROR_CNT_SHIFT 16
+-#define I40E_VFCM_PE_ERRINFO_RLU_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_VFCM_PE_ERRINFO_RLU_ERROR_CNT_SHIFT)
+-#define I40E_VFCM_PE_ERRINFO_RLS_ERROR_CNT_SHIFT 24
+-#define I40E_VFCM_PE_ERRINFO_RLS_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_VFCM_PE_ERRINFO_RLS_ERROR_CNT_SHIFT)
+-#define I40E_VFQF_HENA(_i) (0x0000C400 + ((_i) * 4)) /* _i=0...1 */ /* Reset: CORER */
+-#define I40E_VFQF_HENA_MAX_INDEX 1
+-#define I40E_VFQF_HENA_PTYPE_ENA_SHIFT 0
+-#define I40E_VFQF_HENA_PTYPE_ENA_MASK I40E_MASK(0xFFFFFFFF, I40E_VFQF_HENA_PTYPE_ENA_SHIFT)
+-#define I40E_VFQF_HKEY(_i) (0x0000CC00 + ((_i) * 4)) /* _i=0...12 */ /* Reset: CORER */
+-#define I40E_VFQF_HKEY_MAX_INDEX 12
+-#define I40E_VFQF_HKEY_KEY_0_SHIFT 0
+-#define I40E_VFQF_HKEY_KEY_0_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY_KEY_0_SHIFT)
+-#define I40E_VFQF_HKEY_KEY_1_SHIFT 8
+-#define I40E_VFQF_HKEY_KEY_1_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY_KEY_1_SHIFT)
+-#define I40E_VFQF_HKEY_KEY_2_SHIFT 16
+-#define I40E_VFQF_HKEY_KEY_2_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY_KEY_2_SHIFT)
+-#define I40E_VFQF_HKEY_KEY_3_SHIFT 24
+-#define I40E_VFQF_HKEY_KEY_3_MASK I40E_MASK(0xFF, I40E_VFQF_HKEY_KEY_3_SHIFT)
+-#define I40E_VFQF_HLUT(_i) (0x0000D000 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+ #define I40E_VFQF_HLUT_MAX_INDEX 15
+-#define I40E_VFQF_HLUT_LUT0_SHIFT 0
+-#define I40E_VFQF_HLUT_LUT0_MASK I40E_MASK(0xF, I40E_VFQF_HLUT_LUT0_SHIFT)
+-#define I40E_VFQF_HLUT_LUT1_SHIFT 8
+-#define I40E_VFQF_HLUT_LUT1_MASK I40E_MASK(0xF, I40E_VFQF_HLUT_LUT1_SHIFT)
+-#define I40E_VFQF_HLUT_LUT2_SHIFT 16
+-#define I40E_VFQF_HLUT_LUT2_MASK I40E_MASK(0xF, I40E_VFQF_HLUT_LUT2_SHIFT)
+-#define I40E_VFQF_HLUT_LUT3_SHIFT 24
+-#define I40E_VFQF_HLUT_LUT3_MASK I40E_MASK(0xF, I40E_VFQF_HLUT_LUT3_SHIFT)
+-#define I40E_VFQF_HREGION(_i) (0x0000D400 + ((_i) * 4)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_VFQF_HREGION_MAX_INDEX 7
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_0_SHIFT 0
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_0_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_0_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_0_SHIFT 1
+-#define I40E_VFQF_HREGION_REGION_0_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_0_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_1_SHIFT 4
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_1_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_1_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_1_SHIFT 5
+-#define I40E_VFQF_HREGION_REGION_1_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_1_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_2_SHIFT 8
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_2_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_2_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_2_SHIFT 9
+-#define I40E_VFQF_HREGION_REGION_2_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_2_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_3_SHIFT 12
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_3_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_3_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_3_SHIFT 13
+-#define I40E_VFQF_HREGION_REGION_3_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_3_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_4_SHIFT 16
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_4_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_4_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_4_SHIFT 17
+-#define I40E_VFQF_HREGION_REGION_4_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_4_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_5_SHIFT 20
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_5_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_5_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_5_SHIFT 21
+-#define I40E_VFQF_HREGION_REGION_5_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_5_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_6_SHIFT 24
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_6_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_6_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_6_SHIFT 25
+-#define I40E_VFQF_HREGION_REGION_6_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_6_SHIFT)
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_7_SHIFT 28
+-#define I40E_VFQF_HREGION_OVERRIDE_ENA_7_MASK I40E_MASK(0x1, I40E_VFQF_HREGION_OVERRIDE_ENA_7_SHIFT)
+-#define I40E_VFQF_HREGION_REGION_7_SHIFT 29
+-#define I40E_VFQF_HREGION_REGION_7_MASK I40E_MASK(0x7, I40E_VFQF_HREGION_REGION_7_SHIFT)
+ 
+-#define I40E_MNGSB_FDCRC 0x000B7050 /* Reset: POR */
+-#define I40E_MNGSB_FDCRC_CRC_RES_SHIFT 0
+-#define I40E_MNGSB_FDCRC_CRC_RES_MASK I40E_MASK(0xFF, I40E_MNGSB_FDCRC_CRC_RES_SHIFT)
+-#define I40E_MNGSB_FDCS 0x000B7040 /* Reset: POR */
+-#define I40E_MNGSB_FDCS_CRC_CONT_SHIFT 2
+-#define I40E_MNGSB_FDCS_CRC_CONT_MASK I40E_MASK(0x1, I40E_MNGSB_FDCS_CRC_CONT_SHIFT)
+-#define I40E_MNGSB_FDCS_CRC_SEED_EN_SHIFT 3
+-#define I40E_MNGSB_FDCS_CRC_SEED_EN_MASK I40E_MASK(0x1, I40E_MNGSB_FDCS_CRC_SEED_EN_SHIFT)
+-#define I40E_MNGSB_FDCS_CRC_WR_INH_SHIFT 4
+-#define I40E_MNGSB_FDCS_CRC_WR_INH_MASK I40E_MASK(0x1, I40E_MNGSB_FDCS_CRC_WR_INH_SHIFT)
+-#define I40E_MNGSB_FDCS_CRC_SEED_SHIFT 8
+-#define I40E_MNGSB_FDCS_CRC_SEED_MASK I40E_MASK(0xFF, I40E_MNGSB_FDCS_CRC_SEED_SHIFT)
+-#define I40E_MNGSB_FDS 0x000B7048 /* Reset: POR */
+-#define I40E_MNGSB_FDS_START_BC_SHIFT 0
+-#define I40E_MNGSB_FDS_START_BC_MASK I40E_MASK(0xFFF, I40E_MNGSB_FDS_START_BC_SHIFT)
+-#define I40E_MNGSB_FDS_LAST_BC_SHIFT 16
+-#define I40E_MNGSB_FDS_LAST_BC_MASK I40E_MASK(0xFFF, I40E_MNGSB_FDS_LAST_BC_SHIFT)
+ 
+-#define I40E_GL_VF_CTRL_RX(_VF) (0x00083600 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_GL_VF_CTRL_RX_MAX_INDEX 127
+-#define I40E_GL_VF_CTRL_RX_AQ_RX_EN_SHIFT 0
+-#define I40E_GL_VF_CTRL_RX_AQ_RX_EN_MASK I40E_MASK(0x1, I40E_GL_VF_CTRL_RX_AQ_RX_EN_SHIFT)
+-#define I40E_GL_VF_CTRL_TX(_VF) (0x00083400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: EMPR */
+-#define I40E_GL_VF_CTRL_TX_MAX_INDEX 127
+-#define I40E_GL_VF_CTRL_TX_AQ_TX_EN_SHIFT 0
+-#define I40E_GL_VF_CTRL_TX_AQ_TX_EN_MASK I40E_MASK(0x1, I40E_GL_VF_CTRL_TX_AQ_TX_EN_SHIFT)
+ 
+-#define I40E_GLCM_LAN_CACHESIZE 0x0010C4D8 /* Reset: CORER */
+-#define I40E_GLCM_LAN_CACHESIZE_WORD_SIZE_SHIFT 0
+-#define I40E_GLCM_LAN_CACHESIZE_WORD_SIZE_MASK I40E_MASK(0xFFF, I40E_GLCM_LAN_CACHESIZE_WORD_SIZE_SHIFT)
+-#define I40E_GLCM_LAN_CACHESIZE_SETS_SHIFT 12
+-#define I40E_GLCM_LAN_CACHESIZE_SETS_MASK I40E_MASK(0xF, I40E_GLCM_LAN_CACHESIZE_SETS_SHIFT)
+-#define I40E_GLCM_LAN_CACHESIZE_WAYS_SHIFT 16
+-#define I40E_GLCM_LAN_CACHESIZE_WAYS_MASK I40E_MASK(0x3FF, I40E_GLCM_LAN_CACHESIZE_WAYS_SHIFT)
+-#define I40E_GLCM_PE_CACHESIZE 0x00138FE4 /* Reset: CORER */
+-#define I40E_GLCM_PE_CACHESIZE_WORD_SIZE_SHIFT 0
+-#define I40E_GLCM_PE_CACHESIZE_WORD_SIZE_MASK I40E_MASK(0xFFF, I40E_GLCM_PE_CACHESIZE_WORD_SIZE_SHIFT)
+-#define I40E_GLCM_PE_CACHESIZE_SETS_SHIFT 12
+-#define I40E_GLCM_PE_CACHESIZE_SETS_MASK I40E_MASK(0xF, I40E_GLCM_PE_CACHESIZE_SETS_SHIFT)
+-#define I40E_GLCM_PE_CACHESIZE_WAYS_SHIFT 16
+-#define I40E_GLCM_PE_CACHESIZE_WAYS_MASK I40E_MASK(0x1FF, I40E_GLCM_PE_CACHESIZE_WAYS_SHIFT)
+-#define I40E_PFCM_PE_ERRDATA 0x00138D00 /* Reset: PFR */
+-#define I40E_PFCM_PE_ERRDATA_ERROR_CODE_SHIFT 0
+-#define I40E_PFCM_PE_ERRDATA_ERROR_CODE_MASK I40E_MASK(0xF, I40E_PFCM_PE_ERRDATA_ERROR_CODE_SHIFT)
+-#define I40E_PFCM_PE_ERRDATA_Q_TYPE_SHIFT 4
+-#define I40E_PFCM_PE_ERRDATA_Q_TYPE_MASK I40E_MASK(0x7, I40E_PFCM_PE_ERRDATA_Q_TYPE_SHIFT)
+-#define I40E_PFCM_PE_ERRDATA_Q_NUM_SHIFT 8
+-#define I40E_PFCM_PE_ERRDATA_Q_NUM_MASK I40E_MASK(0x3FFFF, I40E_PFCM_PE_ERRDATA_Q_NUM_SHIFT)
+-#define I40E_PFCM_PE_ERRINFO 0x00138C80 /* Reset: PFR */
+-#define I40E_PFCM_PE_ERRINFO_ERROR_VALID_SHIFT 0
+-#define I40E_PFCM_PE_ERRINFO_ERROR_VALID_MASK I40E_MASK(0x1, I40E_PFCM_PE_ERRINFO_ERROR_VALID_SHIFT)
+-#define I40E_PFCM_PE_ERRINFO_ERROR_INST_SHIFT 4
+-#define I40E_PFCM_PE_ERRINFO_ERROR_INST_MASK I40E_MASK(0x7, I40E_PFCM_PE_ERRINFO_ERROR_INST_SHIFT)
+-#define I40E_PFCM_PE_ERRINFO_DBL_ERROR_CNT_SHIFT 8
+-#define I40E_PFCM_PE_ERRINFO_DBL_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_PFCM_PE_ERRINFO_DBL_ERROR_CNT_SHIFT)
+-#define I40E_PFCM_PE_ERRINFO_RLU_ERROR_CNT_SHIFT 16
+-#define I40E_PFCM_PE_ERRINFO_RLU_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_PFCM_PE_ERRINFO_RLU_ERROR_CNT_SHIFT)
+-#define I40E_PFCM_PE_ERRINFO_RLS_ERROR_CNT_SHIFT 24
+-#define I40E_PFCM_PE_ERRINFO_RLS_ERROR_CNT_MASK I40E_MASK(0xFF, I40E_PFCM_PE_ERRINFO_RLS_ERROR_CNT_SHIFT)
+ 
+-#define I40E_PRTDCB_TFMSTC(_i) (0x000A0040 + ((_i) * 32)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PRTDCB_TFMSTC_MAX_INDEX 7
+-#define I40E_PRTDCB_TFMSTC_MSTC_SHIFT 0
+-#define I40E_PRTDCB_TFMSTC_MSTC_MASK I40E_MASK(0xFFFFF, I40E_PRTDCB_TFMSTC_MSTC_SHIFT)
+-#define I40E_GL_FWSTS_FWROWD_SHIFT 8
+-#define I40E_GL_FWSTS_FWROWD_MASK I40E_MASK(0x1, I40E_GL_FWSTS_FWROWD_SHIFT)
+-#define I40E_GLFOC_CACHESIZE 0x000AA0DC /* Reset: CORER */
+-#define I40E_GLFOC_CACHESIZE_WORD_SIZE_SHIFT 0
+-#define I40E_GLFOC_CACHESIZE_WORD_SIZE_MASK I40E_MASK(0xFF, I40E_GLFOC_CACHESIZE_WORD_SIZE_SHIFT)
+-#define I40E_GLFOC_CACHESIZE_SETS_SHIFT 8
+-#define I40E_GLFOC_CACHESIZE_SETS_MASK I40E_MASK(0xFFF, I40E_GLFOC_CACHESIZE_SETS_SHIFT)
+-#define I40E_GLFOC_CACHESIZE_WAYS_SHIFT 20
+-#define I40E_GLFOC_CACHESIZE_WAYS_MASK I40E_MASK(0xF, I40E_GLFOC_CACHESIZE_WAYS_SHIFT)
+-#define I40E_GLHMC_APBVTINUSEBASE(_i) (0x000C4a00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_APBVTINUSEBASE_MAX_INDEX 15
+-#define I40E_GLHMC_APBVTINUSEBASE_FPMAPBINUSEBASE_SHIFT 0
+-#define I40E_GLHMC_APBVTINUSEBASE_FPMAPBINUSEBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_APBVTINUSEBASE_FPMAPBINUSEBASE_SHIFT)
+-#define I40E_GLHMC_CEQPART(_i) (0x001312C0 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_CEQPART_MAX_INDEX 15
+-#define I40E_GLHMC_CEQPART_PMCEQBASE_SHIFT 0
+-#define I40E_GLHMC_CEQPART_PMCEQBASE_MASK I40E_MASK(0xFF, I40E_GLHMC_CEQPART_PMCEQBASE_SHIFT)
+-#define I40E_GLHMC_CEQPART_PMCEQSIZE_SHIFT 16
+-#define I40E_GLHMC_CEQPART_PMCEQSIZE_MASK I40E_MASK(0x1FF, I40E_GLHMC_CEQPART_PMCEQSIZE_SHIFT)
+-#define I40E_GLHMC_DBCQMAX 0x000C20F0 /* Reset: CORER */
+-#define I40E_GLHMC_DBCQMAX_GLHMC_DBCQMAX_SHIFT 0
+-#define I40E_GLHMC_DBCQMAX_GLHMC_DBCQMAX_MASK I40E_MASK(0x3FFFF, I40E_GLHMC_DBCQMAX_GLHMC_DBCQMAX_SHIFT)
+-#define I40E_GLHMC_DBCQPART(_i) (0x00131240 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_DBCQPART_MAX_INDEX 15
+-#define I40E_GLHMC_DBCQPART_PMDBCQBASE_SHIFT 0
+-#define I40E_GLHMC_DBCQPART_PMDBCQBASE_MASK I40E_MASK(0x3FFF, I40E_GLHMC_DBCQPART_PMDBCQBASE_SHIFT)
+-#define I40E_GLHMC_DBCQPART_PMDBCQSIZE_SHIFT 16
+-#define I40E_GLHMC_DBCQPART_PMDBCQSIZE_MASK I40E_MASK(0x7FFF, I40E_GLHMC_DBCQPART_PMDBCQSIZE_SHIFT)
+-#define I40E_GLHMC_DBQPMAX 0x000C20EC /* Reset: CORER */
+-#define I40E_GLHMC_DBQPMAX_GLHMC_DBQPMAX_SHIFT 0
+-#define I40E_GLHMC_DBQPMAX_GLHMC_DBQPMAX_MASK I40E_MASK(0x7FFFF, I40E_GLHMC_DBQPMAX_GLHMC_DBQPMAX_SHIFT)
+-#define I40E_GLHMC_DBQPPART(_i) (0x00138D80 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_DBQPPART_MAX_INDEX 15
+-#define I40E_GLHMC_DBQPPART_PMDBQPBASE_SHIFT 0
+-#define I40E_GLHMC_DBQPPART_PMDBQPBASE_MASK I40E_MASK(0x3FFF, I40E_GLHMC_DBQPPART_PMDBQPBASE_SHIFT)
+-#define I40E_GLHMC_DBQPPART_PMDBQPSIZE_SHIFT 16
+-#define I40E_GLHMC_DBQPPART_PMDBQPSIZE_MASK I40E_MASK(0x7FFF, I40E_GLHMC_DBQPPART_PMDBQPSIZE_SHIFT)
+-#define I40E_GLHMC_PEARPBASE(_i) (0x000C4800 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEARPBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEARPBASE_FPMPEARPBASE_SHIFT 0
+-#define I40E_GLHMC_PEARPBASE_FPMPEARPBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEARPBASE_FPMPEARPBASE_SHIFT)
+-#define I40E_GLHMC_PEARPCNT(_i) (0x000C4900 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEARPCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEARPCNT_FPMPEARPCNT_SHIFT 0
+-#define I40E_GLHMC_PEARPCNT_FPMPEARPCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEARPCNT_FPMPEARPCNT_SHIFT)
+-#define I40E_GLHMC_PEARPMAX 0x000C2038 /* Reset: CORER */
+-#define I40E_GLHMC_PEARPMAX_PMPEARPMAX_SHIFT 0
+-#define I40E_GLHMC_PEARPMAX_PMPEARPMAX_MASK I40E_MASK(0x1FFFF, I40E_GLHMC_PEARPMAX_PMPEARPMAX_SHIFT)
+-#define I40E_GLHMC_PEARPOBJSZ 0x000C2034 /* Reset: CORER */
+-#define I40E_GLHMC_PEARPOBJSZ_PMPEARPOBJSZ_SHIFT 0
+-#define I40E_GLHMC_PEARPOBJSZ_PMPEARPOBJSZ_MASK I40E_MASK(0x7, I40E_GLHMC_PEARPOBJSZ_PMPEARPOBJSZ_SHIFT)
+-#define I40E_GLHMC_PECQBASE(_i) (0x000C4200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PECQBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PECQBASE_FPMPECQBASE_SHIFT 0
+-#define I40E_GLHMC_PECQBASE_FPMPECQBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PECQBASE_FPMPECQBASE_SHIFT)
+-#define I40E_GLHMC_PECQCNT(_i) (0x000C4300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PECQCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PECQCNT_FPMPECQCNT_SHIFT 0
+-#define I40E_GLHMC_PECQCNT_FPMPECQCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PECQCNT_FPMPECQCNT_SHIFT)
+-#define I40E_GLHMC_PECQOBJSZ 0x000C2020 /* Reset: CORER */
+-#define I40E_GLHMC_PECQOBJSZ_PMPECQOBJSZ_SHIFT 0
+-#define I40E_GLHMC_PECQOBJSZ_PMPECQOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PECQOBJSZ_PMPECQOBJSZ_SHIFT)
+-#define I40E_GLHMC_PEHTCNT(_i) (0x000C4700 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEHTCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEHTCNT_FPMPEHTCNT_SHIFT 0
+-#define I40E_GLHMC_PEHTCNT_FPMPEHTCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEHTCNT_FPMPEHTCNT_SHIFT)
+-#define I40E_GLHMC_PEHTEBASE(_i) (0x000C4600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEHTEBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEHTEBASE_FPMPEHTEBASE_SHIFT 0
+-#define I40E_GLHMC_PEHTEBASE_FPMPEHTEBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEHTEBASE_FPMPEHTEBASE_SHIFT)
+-#define I40E_GLHMC_PEHTEOBJSZ 0x000C202c /* Reset: CORER */
+-#define I40E_GLHMC_PEHTEOBJSZ_PMPEHTEOBJSZ_SHIFT 0
+-#define I40E_GLHMC_PEHTEOBJSZ_PMPEHTEOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PEHTEOBJSZ_PMPEHTEOBJSZ_SHIFT)
+-#define I40E_GLHMC_PEHTMAX 0x000C2030 /* Reset: CORER */
+-#define I40E_GLHMC_PEHTMAX_PMPEHTMAX_SHIFT 0
+-#define I40E_GLHMC_PEHTMAX_PMPEHTMAX_MASK I40E_MASK(0x1FFFFF, I40E_GLHMC_PEHTMAX_PMPEHTMAX_SHIFT)
+-#define I40E_GLHMC_PEMRBASE(_i) (0x000C4c00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEMRBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEMRBASE_FPMPEMRBASE_SHIFT 0
+-#define I40E_GLHMC_PEMRBASE_FPMPEMRBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEMRBASE_FPMPEMRBASE_SHIFT)
+-#define I40E_GLHMC_PEMRCNT(_i) (0x000C4d00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEMRCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEMRCNT_FPMPEMRSZ_SHIFT 0
+-#define I40E_GLHMC_PEMRCNT_FPMPEMRSZ_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEMRCNT_FPMPEMRSZ_SHIFT)
+-#define I40E_GLHMC_PEMRMAX 0x000C2040 /* Reset: CORER */
+-#define I40E_GLHMC_PEMRMAX_PMPEMRMAX_SHIFT 0
+-#define I40E_GLHMC_PEMRMAX_PMPEMRMAX_MASK I40E_MASK(0x7FFFFF, I40E_GLHMC_PEMRMAX_PMPEMRMAX_SHIFT)
+-#define I40E_GLHMC_PEMROBJSZ 0x000C203c /* Reset: CORER */
+-#define I40E_GLHMC_PEMROBJSZ_PMPEMROBJSZ_SHIFT 0
+-#define I40E_GLHMC_PEMROBJSZ_PMPEMROBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PEMROBJSZ_PMPEMROBJSZ_SHIFT)
+-#define I40E_GLHMC_PEPBLBASE(_i) (0x000C5800 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEPBLBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEPBLBASE_FPMPEPBLBASE_SHIFT 0
+-#define I40E_GLHMC_PEPBLBASE_FPMPEPBLBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEPBLBASE_FPMPEPBLBASE_SHIFT)
+-#define I40E_GLHMC_PEPBLCNT(_i) (0x000C5900 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEPBLCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEPBLCNT_FPMPEPBLCNT_SHIFT 0
+-#define I40E_GLHMC_PEPBLCNT_FPMPEPBLCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEPBLCNT_FPMPEPBLCNT_SHIFT)
+-#define I40E_GLHMC_PEPBLMAX 0x000C206c /* Reset: CORER */
+-#define I40E_GLHMC_PEPBLMAX_PMPEPBLMAX_SHIFT 0
+-#define I40E_GLHMC_PEPBLMAX_PMPEPBLMAX_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEPBLMAX_PMPEPBLMAX_SHIFT)
+-#define I40E_GLHMC_PEPFFIRSTSD 0x000C20E4 /* Reset: CORER */
+-#define I40E_GLHMC_PEPFFIRSTSD_GLHMC_PEPFFIRSTSD_SHIFT 0
+-#define I40E_GLHMC_PEPFFIRSTSD_GLHMC_PEPFFIRSTSD_MASK I40E_MASK(0xFFF, I40E_GLHMC_PEPFFIRSTSD_GLHMC_PEPFFIRSTSD_SHIFT)
+-#define I40E_GLHMC_PEQ1BASE(_i) (0x000C5200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEQ1BASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEQ1BASE_FPMPEQ1BASE_SHIFT 0
+-#define I40E_GLHMC_PEQ1BASE_FPMPEQ1BASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEQ1BASE_FPMPEQ1BASE_SHIFT)
+-#define I40E_GLHMC_PEQ1CNT(_i) (0x000C5300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEQ1CNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEQ1CNT_FPMPEQ1CNT_SHIFT 0
+-#define I40E_GLHMC_PEQ1CNT_FPMPEQ1CNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEQ1CNT_FPMPEQ1CNT_SHIFT)
+-#define I40E_GLHMC_PEQ1FLBASE(_i) (0x000C5400 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEQ1FLBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEQ1FLBASE_FPMPEQ1FLBASE_SHIFT 0
+-#define I40E_GLHMC_PEQ1FLBASE_FPMPEQ1FLBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEQ1FLBASE_FPMPEQ1FLBASE_SHIFT)
+-#define I40E_GLHMC_PEQ1FLMAX 0x000C2058 /* Reset: CORER */
+-#define I40E_GLHMC_PEQ1FLMAX_PMPEQ1FLMAX_SHIFT 0
+-#define I40E_GLHMC_PEQ1FLMAX_PMPEQ1FLMAX_MASK I40E_MASK(0x3FFFFFF, I40E_GLHMC_PEQ1FLMAX_PMPEQ1FLMAX_SHIFT)
+-#define I40E_GLHMC_PEQ1MAX 0x000C2054 /* Reset: CORER */
+-#define I40E_GLHMC_PEQ1MAX_PMPEQ1MAX_SHIFT 0
+-#define I40E_GLHMC_PEQ1MAX_PMPEQ1MAX_MASK I40E_MASK(0x3FFFFFF, I40E_GLHMC_PEQ1MAX_PMPEQ1MAX_SHIFT)
+-#define I40E_GLHMC_PEQ1OBJSZ 0x000C2050 /* Reset: CORER */
+-#define I40E_GLHMC_PEQ1OBJSZ_PMPEQ1OBJSZ_SHIFT 0
+-#define I40E_GLHMC_PEQ1OBJSZ_PMPEQ1OBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PEQ1OBJSZ_PMPEQ1OBJSZ_SHIFT)
+-#define I40E_GLHMC_PEQPBASE(_i) (0x000C4000 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEQPBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEQPBASE_FPMPEQPBASE_SHIFT 0
+-#define I40E_GLHMC_PEQPBASE_FPMPEQPBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEQPBASE_FPMPEQPBASE_SHIFT)
+-#define I40E_GLHMC_PEQPCNT(_i) (0x000C4100 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEQPCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEQPCNT_FPMPEQPCNT_SHIFT 0
+-#define I40E_GLHMC_PEQPCNT_FPMPEQPCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEQPCNT_FPMPEQPCNT_SHIFT)
+-#define I40E_GLHMC_PEQPOBJSZ 0x000C201c /* Reset: CORER */
+-#define I40E_GLHMC_PEQPOBJSZ_PMPEQPOBJSZ_SHIFT 0
+-#define I40E_GLHMC_PEQPOBJSZ_PMPEQPOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PEQPOBJSZ_PMPEQPOBJSZ_SHIFT)
+-#define I40E_GLHMC_PESRQBASE(_i) (0x000C4400 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PESRQBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PESRQBASE_FPMPESRQBASE_SHIFT 0
+-#define I40E_GLHMC_PESRQBASE_FPMPESRQBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PESRQBASE_FPMPESRQBASE_SHIFT)
+-#define I40E_GLHMC_PESRQCNT(_i) (0x000C4500 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PESRQCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PESRQCNT_FPMPESRQCNT_SHIFT 0
+-#define I40E_GLHMC_PESRQCNT_FPMPESRQCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PESRQCNT_FPMPESRQCNT_SHIFT)
+-#define I40E_GLHMC_PESRQMAX 0x000C2028 /* Reset: CORER */
+-#define I40E_GLHMC_PESRQMAX_PMPESRQMAX_SHIFT 0
+-#define I40E_GLHMC_PESRQMAX_PMPESRQMAX_MASK I40E_MASK(0xFFFF, I40E_GLHMC_PESRQMAX_PMPESRQMAX_SHIFT)
+-#define I40E_GLHMC_PESRQOBJSZ 0x000C2024 /* Reset: CORER */
+-#define I40E_GLHMC_PESRQOBJSZ_PMPESRQOBJSZ_SHIFT 0
+-#define I40E_GLHMC_PESRQOBJSZ_PMPESRQOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PESRQOBJSZ_PMPESRQOBJSZ_SHIFT)
+-#define I40E_GLHMC_PETIMERBASE(_i) (0x000C5A00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PETIMERBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PETIMERBASE_FPMPETIMERBASE_SHIFT 0
+-#define I40E_GLHMC_PETIMERBASE_FPMPETIMERBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PETIMERBASE_FPMPETIMERBASE_SHIFT)
+-#define I40E_GLHMC_PETIMERCNT(_i) (0x000C5B00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PETIMERCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PETIMERCNT_FPMPETIMERCNT_SHIFT 0
+-#define I40E_GLHMC_PETIMERCNT_FPMPETIMERCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PETIMERCNT_FPMPETIMERCNT_SHIFT)
+-#define I40E_GLHMC_PETIMERMAX 0x000C2084 /* Reset: CORER */
+-#define I40E_GLHMC_PETIMERMAX_PMPETIMERMAX_SHIFT 0
+-#define I40E_GLHMC_PETIMERMAX_PMPETIMERMAX_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PETIMERMAX_PMPETIMERMAX_SHIFT)
+-#define I40E_GLHMC_PETIMEROBJSZ 0x000C2080 /* Reset: CORER */
+-#define I40E_GLHMC_PETIMEROBJSZ_PMPETIMEROBJSZ_SHIFT 0
+-#define I40E_GLHMC_PETIMEROBJSZ_PMPETIMEROBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PETIMEROBJSZ_PMPETIMEROBJSZ_SHIFT)
+-#define I40E_GLHMC_PEXFBASE(_i) (0x000C4e00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEXFBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEXFBASE_FPMPEXFBASE_SHIFT 0
+-#define I40E_GLHMC_PEXFBASE_FPMPEXFBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEXFBASE_FPMPEXFBASE_SHIFT)
+-#define I40E_GLHMC_PEXFCNT(_i) (0x000C4f00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEXFCNT_MAX_INDEX 15
+-#define I40E_GLHMC_PEXFCNT_FPMPEXFCNT_SHIFT 0
+-#define I40E_GLHMC_PEXFCNT_FPMPEXFCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_PEXFCNT_FPMPEXFCNT_SHIFT)
+-#define I40E_GLHMC_PEXFFLBASE(_i) (0x000C5000 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PEXFFLBASE_MAX_INDEX 15
+-#define I40E_GLHMC_PEXFFLBASE_FPMPEXFFLBASE_SHIFT 0
+-#define I40E_GLHMC_PEXFFLBASE_FPMPEXFFLBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_PEXFFLBASE_FPMPEXFFLBASE_SHIFT)
+-#define I40E_GLHMC_PEXFFLMAX 0x000C204c /* Reset: CORER */
+-#define I40E_GLHMC_PEXFFLMAX_PMPEXFFLMAX_SHIFT 0
+-#define I40E_GLHMC_PEXFFLMAX_PMPEXFFLMAX_MASK I40E_MASK(0x1FFFFFF, I40E_GLHMC_PEXFFLMAX_PMPEXFFLMAX_SHIFT)
+-#define I40E_GLHMC_PEXFMAX 0x000C2048 /* Reset: CORER */
+-#define I40E_GLHMC_PEXFMAX_PMPEXFMAX_SHIFT 0
+-#define I40E_GLHMC_PEXFMAX_PMPEXFMAX_MASK I40E_MASK(0x3FFFFFF, I40E_GLHMC_PEXFMAX_PMPEXFMAX_SHIFT)
+-#define I40E_GLHMC_PEXFOBJSZ 0x000C2044 /* Reset: CORER */
+-#define I40E_GLHMC_PEXFOBJSZ_PMPEXFOBJSZ_SHIFT 0
+-#define I40E_GLHMC_PEXFOBJSZ_PMPEXFOBJSZ_MASK I40E_MASK(0xF, I40E_GLHMC_PEXFOBJSZ_PMPEXFOBJSZ_SHIFT)
+-#define I40E_GLHMC_PFPESDPART(_i) (0x000C0880 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLHMC_PFPESDPART_MAX_INDEX 15
+-#define I40E_GLHMC_PFPESDPART_PMSDBASE_SHIFT 0
+-#define I40E_GLHMC_PFPESDPART_PMSDBASE_MASK I40E_MASK(0xFFF, I40E_GLHMC_PFPESDPART_PMSDBASE_SHIFT)
+-#define I40E_GLHMC_PFPESDPART_PMSDSIZE_SHIFT 16
+-#define I40E_GLHMC_PFPESDPART_PMSDSIZE_MASK I40E_MASK(0x1FFF, I40E_GLHMC_PFPESDPART_PMSDSIZE_SHIFT)
+-#define I40E_GLHMC_VFAPBVTINUSEBASE(_i) (0x000Cca00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFAPBVTINUSEBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFAPBVTINUSEBASE_FPMAPBINUSEBASE_SHIFT 0
+-#define I40E_GLHMC_VFAPBVTINUSEBASE_FPMAPBINUSEBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFAPBVTINUSEBASE_FPMAPBINUSEBASE_SHIFT)
+-#define I40E_GLHMC_VFCEQPART(_i) (0x00132240 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFCEQPART_MAX_INDEX 31
+-#define I40E_GLHMC_VFCEQPART_PMCEQBASE_SHIFT 0
+-#define I40E_GLHMC_VFCEQPART_PMCEQBASE_MASK I40E_MASK(0xFF, I40E_GLHMC_VFCEQPART_PMCEQBASE_SHIFT)
+-#define I40E_GLHMC_VFCEQPART_PMCEQSIZE_SHIFT 16
+-#define I40E_GLHMC_VFCEQPART_PMCEQSIZE_MASK I40E_MASK(0x1FF, I40E_GLHMC_VFCEQPART_PMCEQSIZE_SHIFT)
+-#define I40E_GLHMC_VFDBCQPART(_i) (0x00132140 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFDBCQPART_MAX_INDEX 31
+-#define I40E_GLHMC_VFDBCQPART_PMDBCQBASE_SHIFT 0
+-#define I40E_GLHMC_VFDBCQPART_PMDBCQBASE_MASK I40E_MASK(0x3FFF, I40E_GLHMC_VFDBCQPART_PMDBCQBASE_SHIFT)
+-#define I40E_GLHMC_VFDBCQPART_PMDBCQSIZE_SHIFT 16
+-#define I40E_GLHMC_VFDBCQPART_PMDBCQSIZE_MASK I40E_MASK(0x7FFF, I40E_GLHMC_VFDBCQPART_PMDBCQSIZE_SHIFT)
+-#define I40E_GLHMC_VFDBQPPART(_i) (0x00138E00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFDBQPPART_MAX_INDEX 31
+-#define I40E_GLHMC_VFDBQPPART_PMDBQPBASE_SHIFT 0
+-#define I40E_GLHMC_VFDBQPPART_PMDBQPBASE_MASK I40E_MASK(0x3FFF, I40E_GLHMC_VFDBQPPART_PMDBQPBASE_SHIFT)
+-#define I40E_GLHMC_VFDBQPPART_PMDBQPSIZE_SHIFT 16
+-#define I40E_GLHMC_VFDBQPPART_PMDBQPSIZE_MASK I40E_MASK(0x7FFF, I40E_GLHMC_VFDBQPPART_PMDBQPSIZE_SHIFT)
+-#define I40E_GLHMC_VFFSIAVBASE(_i) (0x000Cd600 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFFSIAVBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFFSIAVBASE_FPMFSIAVBASE_SHIFT 0
+-#define I40E_GLHMC_VFFSIAVBASE_FPMFSIAVBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFFSIAVBASE_FPMFSIAVBASE_SHIFT)
+-#define I40E_GLHMC_VFFSIAVCNT(_i) (0x000Cd700 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFFSIAVCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFFSIAVCNT_FPMFSIAVCNT_SHIFT 0
+-#define I40E_GLHMC_VFFSIAVCNT_FPMFSIAVCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFFSIAVCNT_FPMFSIAVCNT_SHIFT)
+-#define I40E_GLHMC_VFPDINV(_i) (0x000C8300 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPDINV_MAX_INDEX 31
+-#define I40E_GLHMC_VFPDINV_PMSDIDX_SHIFT 0
+-#define I40E_GLHMC_VFPDINV_PMSDIDX_MASK I40E_MASK(0xFFF, I40E_GLHMC_VFPDINV_PMSDIDX_SHIFT)
+-#define I40E_GLHMC_VFPDINV_PMSDPARTSEL_SHIFT 15
+-#define I40E_GLHMC_VFPDINV_PMSDPARTSEL_MASK I40E_MASK(0x1, I40E_GLHMC_VFPDINV_PMSDPARTSEL_SHIFT)
+-#define I40E_GLHMC_VFPDINV_PMPDIDX_SHIFT 16
+-#define I40E_GLHMC_VFPDINV_PMPDIDX_MASK I40E_MASK(0x1FF, I40E_GLHMC_VFPDINV_PMPDIDX_SHIFT)
+-#define I40E_GLHMC_VFPEARPBASE(_i) (0x000Cc800 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEARPBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEARPBASE_FPMPEARPBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEARPBASE_FPMPEARPBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEARPBASE_FPMPEARPBASE_SHIFT)
+-#define I40E_GLHMC_VFPEARPCNT(_i) (0x000Cc900 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEARPCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEARPCNT_FPMPEARPCNT_SHIFT 0
+-#define I40E_GLHMC_VFPEARPCNT_FPMPEARPCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEARPCNT_FPMPEARPCNT_SHIFT)
+-#define I40E_GLHMC_VFPECQBASE(_i) (0x000Cc200 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPECQBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPECQBASE_FPMPECQBASE_SHIFT 0
+-#define I40E_GLHMC_VFPECQBASE_FPMPECQBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPECQBASE_FPMPECQBASE_SHIFT)
+-#define I40E_GLHMC_VFPECQCNT(_i) (0x000Cc300 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPECQCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPECQCNT_FPMPECQCNT_SHIFT 0
+-#define I40E_GLHMC_VFPECQCNT_FPMPECQCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPECQCNT_FPMPECQCNT_SHIFT)
+-#define I40E_GLHMC_VFPEHTCNT(_i) (0x000Cc700 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEHTCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEHTCNT_FPMPEHTCNT_SHIFT 0
+-#define I40E_GLHMC_VFPEHTCNT_FPMPEHTCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEHTCNT_FPMPEHTCNT_SHIFT)
+-#define I40E_GLHMC_VFPEHTEBASE(_i) (0x000Cc600 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEHTEBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEHTEBASE_FPMPEHTEBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEHTEBASE_FPMPEHTEBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEHTEBASE_FPMPEHTEBASE_SHIFT)
+-#define I40E_GLHMC_VFPEMRBASE(_i) (0x000Ccc00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEMRBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEMRBASE_FPMPEMRBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEMRBASE_FPMPEMRBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEMRBASE_FPMPEMRBASE_SHIFT)
+-#define I40E_GLHMC_VFPEMRCNT(_i) (0x000Ccd00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEMRCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEMRCNT_FPMPEMRSZ_SHIFT 0
+-#define I40E_GLHMC_VFPEMRCNT_FPMPEMRSZ_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEMRCNT_FPMPEMRSZ_SHIFT)
+-#define I40E_GLHMC_VFPEPBLBASE(_i) (0x000Cd800 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEPBLBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEPBLBASE_FPMPEPBLBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEPBLBASE_FPMPEPBLBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEPBLBASE_FPMPEPBLBASE_SHIFT)
+-#define I40E_GLHMC_VFPEPBLCNT(_i) (0x000Cd900 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEPBLCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEPBLCNT_FPMPEPBLCNT_SHIFT 0
+-#define I40E_GLHMC_VFPEPBLCNT_FPMPEPBLCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEPBLCNT_FPMPEPBLCNT_SHIFT)
+-#define I40E_GLHMC_VFPEQ1BASE(_i) (0x000Cd200 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEQ1BASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEQ1BASE_FPMPEQ1BASE_SHIFT 0
+-#define I40E_GLHMC_VFPEQ1BASE_FPMPEQ1BASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEQ1BASE_FPMPEQ1BASE_SHIFT)
+-#define I40E_GLHMC_VFPEQ1CNT(_i) (0x000Cd300 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEQ1CNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEQ1CNT_FPMPEQ1CNT_SHIFT 0
+-#define I40E_GLHMC_VFPEQ1CNT_FPMPEQ1CNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEQ1CNT_FPMPEQ1CNT_SHIFT)
+-#define I40E_GLHMC_VFPEQ1FLBASE(_i) (0x000Cd400 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEQ1FLBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEQ1FLBASE_FPMPEQ1FLBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEQ1FLBASE_FPMPEQ1FLBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEQ1FLBASE_FPMPEQ1FLBASE_SHIFT)
+-#define I40E_GLHMC_VFPEQPBASE(_i) (0x000Cc000 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEQPBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEQPBASE_FPMPEQPBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEQPBASE_FPMPEQPBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEQPBASE_FPMPEQPBASE_SHIFT)
+-#define I40E_GLHMC_VFPEQPCNT(_i) (0x000Cc100 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEQPCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEQPCNT_FPMPEQPCNT_SHIFT 0
+-#define I40E_GLHMC_VFPEQPCNT_FPMPEQPCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEQPCNT_FPMPEQPCNT_SHIFT)
+-#define I40E_GLHMC_VFPESRQBASE(_i) (0x000Cc400 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPESRQBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPESRQBASE_FPMPESRQBASE_SHIFT 0
+-#define I40E_GLHMC_VFPESRQBASE_FPMPESRQBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPESRQBASE_FPMPESRQBASE_SHIFT)
+-#define I40E_GLHMC_VFPESRQCNT(_i) (0x000Cc500 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPESRQCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPESRQCNT_FPMPESRQCNT_SHIFT 0
+-#define I40E_GLHMC_VFPESRQCNT_FPMPESRQCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPESRQCNT_FPMPESRQCNT_SHIFT)
+-#define I40E_GLHMC_VFPETIMERBASE(_i) (0x000CDA00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPETIMERBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPETIMERBASE_FPMPETIMERBASE_SHIFT 0
+-#define I40E_GLHMC_VFPETIMERBASE_FPMPETIMERBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPETIMERBASE_FPMPETIMERBASE_SHIFT)
+-#define I40E_GLHMC_VFPETIMERCNT(_i) (0x000CDB00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPETIMERCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPETIMERCNT_FPMPETIMERCNT_SHIFT 0
+-#define I40E_GLHMC_VFPETIMERCNT_FPMPETIMERCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPETIMERCNT_FPMPETIMERCNT_SHIFT)
+-#define I40E_GLHMC_VFPEXFBASE(_i) (0x000Cce00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEXFBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEXFBASE_FPMPEXFBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEXFBASE_FPMPEXFBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEXFBASE_FPMPEXFBASE_SHIFT)
+-#define I40E_GLHMC_VFPEXFCNT(_i) (0x000Ccf00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEXFCNT_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEXFCNT_FPMPEXFCNT_SHIFT 0
+-#define I40E_GLHMC_VFPEXFCNT_FPMPEXFCNT_MASK I40E_MASK(0x1FFFFFFF, I40E_GLHMC_VFPEXFCNT_FPMPEXFCNT_SHIFT)
+-#define I40E_GLHMC_VFPEXFFLBASE(_i) (0x000Cd000 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFPEXFFLBASE_MAX_INDEX 31
+-#define I40E_GLHMC_VFPEXFFLBASE_FPMPEXFFLBASE_SHIFT 0
+-#define I40E_GLHMC_VFPEXFFLBASE_FPMPEXFFLBASE_MASK I40E_MASK(0xFFFFFF, I40E_GLHMC_VFPEXFFLBASE_FPMPEXFFLBASE_SHIFT)
+-#define I40E_GLHMC_VFSDPART(_i) (0x000C8800 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLHMC_VFSDPART_MAX_INDEX 31
+-#define I40E_GLHMC_VFSDPART_PMSDBASE_SHIFT 0
+-#define I40E_GLHMC_VFSDPART_PMSDBASE_MASK I40E_MASK(0xFFF, I40E_GLHMC_VFSDPART_PMSDBASE_SHIFT)
+-#define I40E_GLHMC_VFSDPART_PMSDSIZE_SHIFT 16
+-#define I40E_GLHMC_VFSDPART_PMSDSIZE_MASK I40E_MASK(0x1FFF, I40E_GLHMC_VFSDPART_PMSDSIZE_SHIFT)
+-#define I40E_GLPBLOC_CACHESIZE 0x000A80BC /* Reset: CORER */
+-#define I40E_GLPBLOC_CACHESIZE_WORD_SIZE_SHIFT 0
+-#define I40E_GLPBLOC_CACHESIZE_WORD_SIZE_MASK I40E_MASK(0xFF, I40E_GLPBLOC_CACHESIZE_WORD_SIZE_SHIFT)
+-#define I40E_GLPBLOC_CACHESIZE_SETS_SHIFT 8
+-#define I40E_GLPBLOC_CACHESIZE_SETS_MASK I40E_MASK(0xFFF, I40E_GLPBLOC_CACHESIZE_SETS_SHIFT)
+-#define I40E_GLPBLOC_CACHESIZE_WAYS_SHIFT 20
+-#define I40E_GLPBLOC_CACHESIZE_WAYS_MASK I40E_MASK(0xF, I40E_GLPBLOC_CACHESIZE_WAYS_SHIFT)
+-#define I40E_GLPDOC_CACHESIZE 0x000D0088 /* Reset: CORER */
+-#define I40E_GLPDOC_CACHESIZE_WORD_SIZE_SHIFT 0
+-#define I40E_GLPDOC_CACHESIZE_WORD_SIZE_MASK I40E_MASK(0xFF, I40E_GLPDOC_CACHESIZE_WORD_SIZE_SHIFT)
+-#define I40E_GLPDOC_CACHESIZE_SETS_SHIFT 8
+-#define I40E_GLPDOC_CACHESIZE_SETS_MASK I40E_MASK(0xFFF, I40E_GLPDOC_CACHESIZE_SETS_SHIFT)
+-#define I40E_GLPDOC_CACHESIZE_WAYS_SHIFT 20
+-#define I40E_GLPDOC_CACHESIZE_WAYS_MASK I40E_MASK(0xF, I40E_GLPDOC_CACHESIZE_WAYS_SHIFT)
+-#define I40E_GLPEOC_CACHESIZE 0x000A60E8 /* Reset: CORER */
+-#define I40E_GLPEOC_CACHESIZE_WORD_SIZE_SHIFT 0
+-#define I40E_GLPEOC_CACHESIZE_WORD_SIZE_MASK I40E_MASK(0xFF, I40E_GLPEOC_CACHESIZE_WORD_SIZE_SHIFT)
+-#define I40E_GLPEOC_CACHESIZE_SETS_SHIFT 8
+-#define I40E_GLPEOC_CACHESIZE_SETS_MASK I40E_MASK(0xFFF, I40E_GLPEOC_CACHESIZE_SETS_SHIFT)
+-#define I40E_GLPEOC_CACHESIZE_WAYS_SHIFT 20
+-#define I40E_GLPEOC_CACHESIZE_WAYS_MASK I40E_MASK(0xF, I40E_GLPEOC_CACHESIZE_WAYS_SHIFT)
+-#define I40E_PFHMC_PDINV_PMSDPARTSEL_SHIFT 15
+-#define I40E_PFHMC_PDINV_PMSDPARTSEL_MASK I40E_MASK(0x1, I40E_PFHMC_PDINV_PMSDPARTSEL_SHIFT)
+-#define I40E_PFHMC_SDCMD_PMSDPARTSEL_SHIFT 15
+-#define I40E_PFHMC_SDCMD_PMSDPARTSEL_MASK I40E_MASK(0x1, I40E_PFHMC_SDCMD_PMSDPARTSEL_SHIFT)
+-#define I40E_GL_PPRS_SPARE 0x000856E0 /* Reset: CORER */
+-#define I40E_GL_PPRS_SPARE_GL_PPRS_SPARE_SHIFT 0
+-#define I40E_GL_PPRS_SPARE_GL_PPRS_SPARE_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_PPRS_SPARE_GL_PPRS_SPARE_SHIFT)
+-#define I40E_GL_TLAN_SPARE 0x000E64E0 /* Reset: CORER */
+-#define I40E_GL_TLAN_SPARE_GL_TLAN_SPARE_SHIFT 0
+-#define I40E_GL_TLAN_SPARE_GL_TLAN_SPARE_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_TLAN_SPARE_GL_TLAN_SPARE_SHIFT)
+-#define I40E_GL_TUPM_SPARE 0x000a2230 /* Reset: CORER */
+-#define I40E_GL_TUPM_SPARE_GL_TUPM_SPARE_SHIFT 0
+-#define I40E_GL_TUPM_SPARE_GL_TUPM_SPARE_MASK I40E_MASK(0xFFFFFFFF, I40E_GL_TUPM_SPARE_GL_TUPM_SPARE_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG 0x000B81C0 /* Reset: POR */
+-#define I40E_GLGEN_CAR_DEBUG_CAR_UPPER_CORE_CLK_EN_SHIFT 0
+-#define I40E_GLGEN_CAR_DEBUG_CAR_UPPER_CORE_CLK_EN_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_UPPER_CORE_CLK_EN_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_HIU_CLK_EN_SHIFT 1
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_HIU_CLK_EN_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PCIE_HIU_CLK_EN_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PE_CLK_EN_SHIFT 2
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PE_CLK_EN_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PE_CLK_EN_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_PRIM_CLK_ACTIVE_SHIFT 3
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_PRIM_CLK_ACTIVE_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PCIE_PRIM_CLK_ACTIVE_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CDC_PE_ACTIVE_SHIFT 4
+-#define I40E_GLGEN_CAR_DEBUG_CDC_PE_ACTIVE_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CDC_PE_ACTIVE_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_PRST_RESET_N_SHIFT 5
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_PRST_RESET_N_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_PRST_RESET_N_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_SCLR_RESET_N_SHIFT 6
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_SCLR_RESET_N_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_SCLR_RESET_N_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_IB_RESET_N_SHIFT 7
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_IB_RESET_N_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_IB_RESET_N_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_IMIB_RESET_N_SHIFT 8
+-#define I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_IMIB_RESET_N_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_PCIE_RAW_IMIB_RESET_N_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_RAW_EMP_RESET_N_SHIFT 9
+-#define I40E_GLGEN_CAR_DEBUG_CAR_RAW_EMP_RESET_N_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_RAW_EMP_RESET_N_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_RAW_GLOBAL_RESET_N_SHIFT 10
+-#define I40E_GLGEN_CAR_DEBUG_CAR_RAW_GLOBAL_RESET_N_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_RAW_GLOBAL_RESET_N_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CAR_RAW_LAN_POWER_GOOD_SHIFT 11
+-#define I40E_GLGEN_CAR_DEBUG_CAR_RAW_LAN_POWER_GOOD_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CAR_RAW_LAN_POWER_GOOD_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_CDC_IOSF_PRIMERY_RST_B_SHIFT 12
+-#define I40E_GLGEN_CAR_DEBUG_CDC_IOSF_PRIMERY_RST_B_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_CDC_IOSF_PRIMERY_RST_B_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_GBE_GLOBALRST_B_SHIFT 13
+-#define I40E_GLGEN_CAR_DEBUG_GBE_GLOBALRST_B_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_GBE_GLOBALRST_B_SHIFT)
+-#define I40E_GLGEN_CAR_DEBUG_FLEEP_AL_GLOBR_DONE_SHIFT 14
+-#define I40E_GLGEN_CAR_DEBUG_FLEEP_AL_GLOBR_DONE_MASK I40E_MASK(0x1, I40E_GLGEN_CAR_DEBUG_FLEEP_AL_GLOBR_DONE_SHIFT)
+-#define I40E_GLGEN_MISC_SPARE 0x000880E0 /* Reset: POR */
+-#define I40E_GLGEN_MISC_SPARE_GLGEN_MISC_SPARE_SHIFT 0
+-#define I40E_GLGEN_MISC_SPARE_GLGEN_MISC_SPARE_MASK I40E_MASK(0xFFFFFFFF, I40E_GLGEN_MISC_SPARE_GLGEN_MISC_SPARE_SHIFT)
+-#define I40E_GL_UFUSE_SOC 0x000BE550 /* Reset: POR */
+-#define I40E_GL_UFUSE_SOC_PORT_MODE_SHIFT 0
+-#define I40E_GL_UFUSE_SOC_PORT_MODE_MASK I40E_MASK(0x3, I40E_GL_UFUSE_SOC_PORT_MODE_SHIFT)
+-#define I40E_GL_UFUSE_SOC_NIC_ID_SHIFT 2
+-#define I40E_GL_UFUSE_SOC_NIC_ID_MASK I40E_MASK(0x1, I40E_GL_UFUSE_SOC_NIC_ID_SHIFT)
+-#define I40E_GL_UFUSE_SOC_SPARE_FUSES_SHIFT 3
+-#define I40E_GL_UFUSE_SOC_SPARE_FUSES_MASK I40E_MASK(0x1FFF, I40E_GL_UFUSE_SOC_SPARE_FUSES_SHIFT)
+ #define I40E_PFINT_DYN_CTL0_WB_ON_ITR_SHIFT 30
+ #define I40E_PFINT_DYN_CTL0_WB_ON_ITR_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTL0_WB_ON_ITR_SHIFT)
+ #define I40E_PFINT_DYN_CTLN_WB_ON_ITR_SHIFT 30
+ #define I40E_PFINT_DYN_CTLN_WB_ON_ITR_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTLN_WB_ON_ITR_SHIFT)
+-#define I40E_VFINT_DYN_CTL0_WB_ON_ITR_SHIFT 30
+-#define I40E_VFINT_DYN_CTL0_WB_ON_ITR_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL0_WB_ON_ITR_SHIFT)
+-#define I40E_VFINT_DYN_CTLN_WB_ON_ITR_SHIFT 30
+-#define I40E_VFINT_DYN_CTLN_WB_ON_ITR_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN_WB_ON_ITR_SHIFT)
+-#define I40E_VPLAN_QBASE(_VF) (0x00074800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VPLAN_QBASE_MAX_INDEX 127
+-#define I40E_VPLAN_QBASE_VFFIRSTQ_SHIFT 0
+-#define I40E_VPLAN_QBASE_VFFIRSTQ_MASK I40E_MASK(0x7FF, I40E_VPLAN_QBASE_VFFIRSTQ_SHIFT)
+-#define I40E_VPLAN_QBASE_VFNUMQ_SHIFT 11
+-#define I40E_VPLAN_QBASE_VFNUMQ_MASK I40E_MASK(0xFF, I40E_VPLAN_QBASE_VFNUMQ_SHIFT)
+-#define I40E_VPLAN_QBASE_VFQTABLE_ENA_SHIFT 31
+-#define I40E_VPLAN_QBASE_VFQTABLE_ENA_MASK I40E_MASK(0x1, I40E_VPLAN_QBASE_VFQTABLE_ENA_SHIFT)
+-#define I40E_PRTMAC_LINK_DOWN_COUNTER 0x001E2440 /* Reset: GLOBR */
+-#define I40E_PRTMAC_LINK_DOWN_COUNTER_LINK_DOWN_COUNTER_SHIFT 0
+-#define I40E_PRTMAC_LINK_DOWN_COUNTER_LINK_DOWN_COUNTER_MASK I40E_MASK(0xFFFF, I40E_PRTMAC_LINK_DOWN_COUNTER_LINK_DOWN_COUNTER_SHIFT)
+-#define I40E_GLNVM_AL_REQ 0x000B6164 /* Reset: POR */
+-#define I40E_GLNVM_AL_REQ_POR_SHIFT 0
+-#define I40E_GLNVM_AL_REQ_POR_MASK I40E_MASK(0x1, I40E_GLNVM_AL_REQ_POR_SHIFT)
+-#define I40E_GLNVM_AL_REQ_PCIE_IMIB_SHIFT 1
+-#define I40E_GLNVM_AL_REQ_PCIE_IMIB_MASK I40E_MASK(0x1, I40E_GLNVM_AL_REQ_PCIE_IMIB_SHIFT)
+-#define I40E_GLNVM_AL_REQ_GLOBR_SHIFT 2
+-#define I40E_GLNVM_AL_REQ_GLOBR_MASK I40E_MASK(0x1, I40E_GLNVM_AL_REQ_GLOBR_SHIFT)
+-#define I40E_GLNVM_AL_REQ_CORER_SHIFT 3
+-#define I40E_GLNVM_AL_REQ_CORER_MASK I40E_MASK(0x1, I40E_GLNVM_AL_REQ_CORER_SHIFT)
+-#define I40E_GLNVM_AL_REQ_PE_SHIFT 4
+-#define I40E_GLNVM_AL_REQ_PE_MASK I40E_MASK(0x1, I40E_GLNVM_AL_REQ_PE_SHIFT)
+-#define I40E_GLNVM_AL_REQ_PCIE_IMIB_ASSERT_SHIFT 5
+-#define I40E_GLNVM_AL_REQ_PCIE_IMIB_ASSERT_MASK I40E_MASK(0x1, I40E_GLNVM_AL_REQ_PCIE_IMIB_ASSERT_SHIFT)
+-#define I40E_GLNVM_ALTIMERS 0x000B6140 /* Reset: POR */
+-#define I40E_GLNVM_ALTIMERS_PCI_ALTIMER_SHIFT 0
+-#define I40E_GLNVM_ALTIMERS_PCI_ALTIMER_MASK I40E_MASK(0xFFF, I40E_GLNVM_ALTIMERS_PCI_ALTIMER_SHIFT)
+-#define I40E_GLNVM_ALTIMERS_GEN_ALTIMER_SHIFT 12
+-#define I40E_GLNVM_ALTIMERS_GEN_ALTIMER_MASK I40E_MASK(0xFFFFF, I40E_GLNVM_ALTIMERS_GEN_ALTIMER_SHIFT)
+ #define I40E_GLNVM_FLA 0x000B6108 /* Reset: POR */
+ #define I40E_GLNVM_FLA_LOCKED_SHIFT 6
+ #define I40E_GLNVM_FLA_LOCKED_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_LOCKED_SHIFT)
+ 
+ #define I40E_GLNVM_ULD 0x000B6008 /* Reset: POR */
+-#define I40E_GLNVM_ULD_PCIER_DONE_SHIFT 0
+-#define I40E_GLNVM_ULD_PCIER_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_PCIER_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_PCIER_DONE_1_SHIFT 1
+-#define I40E_GLNVM_ULD_PCIER_DONE_1_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_PCIER_DONE_1_SHIFT)
+-#define I40E_GLNVM_ULD_CORER_DONE_SHIFT 3
+-#define I40E_GLNVM_ULD_CORER_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_CORER_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_GLOBR_DONE_SHIFT 4
+-#define I40E_GLNVM_ULD_GLOBR_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_GLOBR_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_POR_DONE_SHIFT 5
+-#define I40E_GLNVM_ULD_POR_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_POR_DONE_SHIFT)
+-#define I40E_GLNVM_ULD_POR_DONE_1_SHIFT 8
+-#define I40E_GLNVM_ULD_POR_DONE_1_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_POR_DONE_1_SHIFT)
+-#define I40E_GLNVM_ULD_PCIER_DONE_2_SHIFT 9
+-#define I40E_GLNVM_ULD_PCIER_DONE_2_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_PCIER_DONE_2_SHIFT)
+-#define I40E_GLNVM_ULD_PE_DONE_SHIFT 10
+-#define I40E_GLNVM_ULD_PE_DONE_MASK I40E_MASK(0x1, I40E_GLNVM_ULD_PE_DONE_SHIFT)
+-#define I40E_GLNVM_ULT 0x000B6154 /* Reset: POR */
+-#define I40E_GLNVM_ULT_CONF_PCIR_AE_SHIFT 0
+-#define I40E_GLNVM_ULT_CONF_PCIR_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_PCIR_AE_SHIFT)
+-#define I40E_GLNVM_ULT_CONF_PCIRTL_AE_SHIFT 1
+-#define I40E_GLNVM_ULT_CONF_PCIRTL_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_PCIRTL_AE_SHIFT)
+-#define I40E_GLNVM_ULT_RESERVED_1_SHIFT 2
+-#define I40E_GLNVM_ULT_RESERVED_1_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_RESERVED_1_SHIFT)
+-#define I40E_GLNVM_ULT_CONF_CORE_AE_SHIFT 3
+-#define I40E_GLNVM_ULT_CONF_CORE_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_CORE_AE_SHIFT)
+-#define I40E_GLNVM_ULT_CONF_GLOBAL_AE_SHIFT 4
+-#define I40E_GLNVM_ULT_CONF_GLOBAL_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_GLOBAL_AE_SHIFT)
+-#define I40E_GLNVM_ULT_CONF_POR_AE_SHIFT 5
+-#define I40E_GLNVM_ULT_CONF_POR_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_POR_AE_SHIFT)
+-#define I40E_GLNVM_ULT_RESERVED_2_SHIFT 6
+-#define I40E_GLNVM_ULT_RESERVED_2_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_RESERVED_2_SHIFT)
+-#define I40E_GLNVM_ULT_RESERVED_3_SHIFT 7
+-#define I40E_GLNVM_ULT_RESERVED_3_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_RESERVED_3_SHIFT)
+-#define I40E_GLNVM_ULT_CONF_EMP_AE_SHIFT 8
+-#define I40E_GLNVM_ULT_CONF_EMP_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_EMP_AE_SHIFT)
+-#define I40E_GLNVM_ULT_CONF_PCIALT_AE_SHIFT 9
+-#define I40E_GLNVM_ULT_CONF_PCIALT_AE_MASK I40E_MASK(0x1, I40E_GLNVM_ULT_CONF_PCIALT_AE_SHIFT)
+-#define I40E_GLNVM_ULT_RESERVED_4_SHIFT 10
+-#define I40E_GLNVM_ULT_RESERVED_4_MASK I40E_MASK(0x3FFFFF, I40E_GLNVM_ULT_RESERVED_4_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT 0x000B615C /* Reset: POR */
+-#define I40E_MEM_INIT_DONE_STAT_CMLAN_MEM_INIT_DONE_SHIFT 0
+-#define I40E_MEM_INIT_DONE_STAT_CMLAN_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_CMLAN_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_PMAT_MEM_INIT_DONE_SHIFT 1
+-#define I40E_MEM_INIT_DONE_STAT_PMAT_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_PMAT_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_RCU_MEM_INIT_DONE_SHIFT 2
+-#define I40E_MEM_INIT_DONE_STAT_RCU_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_RCU_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_TDPU_MEM_INIT_DONE_SHIFT 3
+-#define I40E_MEM_INIT_DONE_STAT_TDPU_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_TDPU_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_TLAN_MEM_INIT_DONE_SHIFT 4
+-#define I40E_MEM_INIT_DONE_STAT_TLAN_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_TLAN_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_RLAN_MEM_INIT_DONE_SHIFT 5
+-#define I40E_MEM_INIT_DONE_STAT_RLAN_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_RLAN_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_RDPU_MEM_INIT_DONE_SHIFT 6
+-#define I40E_MEM_INIT_DONE_STAT_RDPU_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_RDPU_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_PPRS_MEM_INIT_DONE_SHIFT 7
+-#define I40E_MEM_INIT_DONE_STAT_PPRS_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_PPRS_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_RPB_MEM_INIT_DONE_SHIFT 8
+-#define I40E_MEM_INIT_DONE_STAT_RPB_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_RPB_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_TPB_MEM_INIT_DONE_SHIFT 9
+-#define I40E_MEM_INIT_DONE_STAT_TPB_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_TPB_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_FOC_MEM_INIT_DONE_SHIFT 10
+-#define I40E_MEM_INIT_DONE_STAT_FOC_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_FOC_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_TSCD_MEM_INIT_DONE_SHIFT 11
+-#define I40E_MEM_INIT_DONE_STAT_TSCD_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_TSCD_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_TCB_MEM_INIT_DONE_SHIFT 12
+-#define I40E_MEM_INIT_DONE_STAT_TCB_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_TCB_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_RCB_MEM_INIT_DONE_SHIFT 13
+-#define I40E_MEM_INIT_DONE_STAT_RCB_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_RCB_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_WUC_MEM_INIT_DONE_SHIFT 14
+-#define I40E_MEM_INIT_DONE_STAT_WUC_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_WUC_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_STAT_MEM_INIT_DONE_SHIFT 15
+-#define I40E_MEM_INIT_DONE_STAT_STAT_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_STAT_MEM_INIT_DONE_SHIFT)
+-#define I40E_MEM_INIT_DONE_STAT_ITR_MEM_INIT_DONE_SHIFT 16
+-#define I40E_MEM_INIT_DONE_STAT_ITR_MEM_INIT_DONE_MASK I40E_MASK(0x1, I40E_MEM_INIT_DONE_STAT_ITR_MEM_INIT_DONE_SHIFT)
+-#define I40E_MNGSB_DADD 0x000B7030 /* Reset: POR */
+-#define I40E_MNGSB_DADD_ADDR_SHIFT 0
+-#define I40E_MNGSB_DADD_ADDR_MASK I40E_MASK(0xFFFFFFFF, I40E_MNGSB_DADD_ADDR_SHIFT)
+-#define I40E_MNGSB_DCNT 0x000B7034 /* Reset: POR */
+-#define I40E_MNGSB_DCNT_BYTE_CNT_SHIFT 0
+-#define I40E_MNGSB_DCNT_BYTE_CNT_MASK I40E_MASK(0xFFFFFFFF, I40E_MNGSB_DCNT_BYTE_CNT_SHIFT)
+-#define I40E_MNGSB_MSGCTL 0x000B7020 /* Reset: POR */
+-#define I40E_MNGSB_MSGCTL_HDR_DWS_SHIFT 0
+-#define I40E_MNGSB_MSGCTL_HDR_DWS_MASK I40E_MASK(0x3, I40E_MNGSB_MSGCTL_HDR_DWS_SHIFT)
+-#define I40E_MNGSB_MSGCTL_EXP_RDW_SHIFT 8
+-#define I40E_MNGSB_MSGCTL_EXP_RDW_MASK I40E_MASK(0x1FF, I40E_MNGSB_MSGCTL_EXP_RDW_SHIFT)
+-#define I40E_MNGSB_MSGCTL_MSG_MODE_SHIFT 26
+-#define I40E_MNGSB_MSGCTL_MSG_MODE_MASK I40E_MASK(0x3, I40E_MNGSB_MSGCTL_MSG_MODE_SHIFT)
+-#define I40E_MNGSB_MSGCTL_TOKEN_MODE_SHIFT 28
+-#define I40E_MNGSB_MSGCTL_TOKEN_MODE_MASK I40E_MASK(0x3, I40E_MNGSB_MSGCTL_TOKEN_MODE_SHIFT)
+-#define I40E_MNGSB_MSGCTL_BARCLR_SHIFT 30
+-#define I40E_MNGSB_MSGCTL_BARCLR_MASK I40E_MASK(0x1, I40E_MNGSB_MSGCTL_BARCLR_SHIFT)
+-#define I40E_MNGSB_MSGCTL_CMDV_SHIFT 31
+-#define I40E_MNGSB_MSGCTL_CMDV_MASK I40E_MASK(0x1, I40E_MNGSB_MSGCTL_CMDV_SHIFT)
+-#define I40E_MNGSB_RDATA 0x000B7300 /* Reset: POR */
+-#define I40E_MNGSB_RDATA_DATA_SHIFT 0
+-#define I40E_MNGSB_RDATA_DATA_MASK I40E_MASK(0xFFFFFFFF, I40E_MNGSB_RDATA_DATA_SHIFT)
+-#define I40E_MNGSB_RHDR0 0x000B72FC /* Reset: POR */
+-#define I40E_MNGSB_RHDR0_DESTINATION_SHIFT 0
+-#define I40E_MNGSB_RHDR0_DESTINATION_MASK I40E_MASK(0xFF, I40E_MNGSB_RHDR0_DESTINATION_SHIFT)
+-#define I40E_MNGSB_RHDR0_SOURCE_SHIFT 8
+-#define I40E_MNGSB_RHDR0_SOURCE_MASK I40E_MASK(0xFF, I40E_MNGSB_RHDR0_SOURCE_SHIFT)
+-#define I40E_MNGSB_RHDR0_OPCODE_SHIFT 16
+-#define I40E_MNGSB_RHDR0_OPCODE_MASK I40E_MASK(0xFF, I40E_MNGSB_RHDR0_OPCODE_SHIFT)
+-#define I40E_MNGSB_RHDR0_TAG_SHIFT 24
+-#define I40E_MNGSB_RHDR0_TAG_MASK I40E_MASK(0x7, I40E_MNGSB_RHDR0_TAG_SHIFT)
+-#define I40E_MNGSB_RHDR0_RESPONSE_SHIFT 27
+-#define I40E_MNGSB_RHDR0_RESPONSE_MASK I40E_MASK(0x7, I40E_MNGSB_RHDR0_RESPONSE_SHIFT)
+-#define I40E_MNGSB_RHDR0_EH_SHIFT 31
+-#define I40E_MNGSB_RHDR0_EH_MASK I40E_MASK(0x1, I40E_MNGSB_RHDR0_EH_SHIFT)
+-#define I40E_MNGSB_RSPCTL 0x000B7024 /* Reset: POR */
+-#define I40E_MNGSB_RSPCTL_DMA_MSG_DWORDS_SHIFT 0
+-#define I40E_MNGSB_RSPCTL_DMA_MSG_DWORDS_MASK I40E_MASK(0x1FF, I40E_MNGSB_RSPCTL_DMA_MSG_DWORDS_SHIFT)
+-#define I40E_MNGSB_RSPCTL_RSP_MODE_SHIFT 26
+-#define I40E_MNGSB_RSPCTL_RSP_MODE_MASK I40E_MASK(0x3, I40E_MNGSB_RSPCTL_RSP_MODE_SHIFT)
+-#define I40E_MNGSB_RSPCTL_RSP_BAD_LEN_SHIFT 30
+-#define I40E_MNGSB_RSPCTL_RSP_BAD_LEN_MASK I40E_MASK(0x1, I40E_MNGSB_RSPCTL_RSP_BAD_LEN_SHIFT)
+-#define I40E_MNGSB_RSPCTL_RSP_ERR_SHIFT 31
+-#define I40E_MNGSB_RSPCTL_RSP_ERR_MASK I40E_MASK(0x1, I40E_MNGSB_RSPCTL_RSP_ERR_SHIFT)
+-#define I40E_MNGSB_WDATA 0x000B7100 /* Reset: POR */
+-#define I40E_MNGSB_WDATA_DATA_SHIFT 0
+-#define I40E_MNGSB_WDATA_DATA_MASK I40E_MASK(0xFFFFFFFF, I40E_MNGSB_WDATA_DATA_SHIFT)
+-#define I40E_MNGSB_WHDR0 0x000B70F4 /* Reset: POR */
+-#define I40E_MNGSB_WHDR0_RAW_DEST_SHIFT 0
+-#define I40E_MNGSB_WHDR0_RAW_DEST_MASK I40E_MASK(0xFF, I40E_MNGSB_WHDR0_RAW_DEST_SHIFT)
+-#define I40E_MNGSB_WHDR0_DEST_SEL_SHIFT 12
+-#define I40E_MNGSB_WHDR0_DEST_SEL_MASK I40E_MASK(0xF, I40E_MNGSB_WHDR0_DEST_SEL_SHIFT)
+-#define I40E_MNGSB_WHDR0_OPCODE_SEL_SHIFT 16
+-#define I40E_MNGSB_WHDR0_OPCODE_SEL_MASK I40E_MASK(0xFF, I40E_MNGSB_WHDR0_OPCODE_SEL_SHIFT)
+-#define I40E_MNGSB_WHDR0_TAG_SHIFT 24
+-#define I40E_MNGSB_WHDR0_TAG_MASK I40E_MASK(0x7F, I40E_MNGSB_WHDR0_TAG_SHIFT)
+-#define I40E_MNGSB_WHDR1 0x000B70F8 /* Reset: POR */
+-#define I40E_MNGSB_WHDR1_ADDR_SHIFT 0
+-#define I40E_MNGSB_WHDR1_ADDR_MASK I40E_MASK(0xFFFFFFFF, I40E_MNGSB_WHDR1_ADDR_SHIFT)
+-#define I40E_MNGSB_WHDR2 0x000B70FC /* Reset: POR */
+-#define I40E_MNGSB_WHDR2_LENGTH_SHIFT 0
+-#define I40E_MNGSB_WHDR2_LENGTH_MASK I40E_MASK(0xFFFFFFFF, I40E_MNGSB_WHDR2_LENGTH_SHIFT)
+ 
+-#define I40E_GLPCI_CAPSUP_WAKUP_EN_SHIFT 21
+-#define I40E_GLPCI_CAPSUP_WAKUP_EN_MASK I40E_MASK(0x1, I40E_GLPCI_CAPSUP_WAKUP_EN_SHIFT)
+ 
+-#define I40E_GLPCI_CUR_CLNT_COMMON 0x0009CA18 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_CLNT_COMMON_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_CLNT_COMMON_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_CLNT_COMMON_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_CLNT_COMMON_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_CLNT_COMMON_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_CLNT_COMMON_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_CLNT_PIPEMON 0x0009CA20 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_CLNT_PIPEMON_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_CLNT_PIPEMON_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_CLNT_PIPEMON_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_MNG_ALWD 0x0009c514 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_MNG_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_MNG_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_MNG_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_MNG_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_MNG_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_MNG_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_MNG_RSVD 0x0009c594 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_MNG_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_MNG_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_MNG_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_MNG_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_MNG_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_MNG_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_PMAT_ALWD 0x0009c510 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_PMAT_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_PMAT_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_PMAT_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_PMAT_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_PMAT_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_PMAT_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_PMAT_RSVD 0x0009c590 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_PMAT_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_PMAT_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_PMAT_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_PMAT_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_PMAT_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_PMAT_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_RLAN_ALWD 0x0009c500 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_RLAN_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_RLAN_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RLAN_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_RLAN_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_RLAN_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RLAN_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_RLAN_RSVD 0x0009c580 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_RLAN_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_RLAN_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RLAN_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_RLAN_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_RLAN_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RLAN_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_RXPE_ALWD 0x0009c508 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_RXPE_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_RXPE_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RXPE_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_RXPE_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_RXPE_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RXPE_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_RXPE_RSVD 0x0009c588 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_RXPE_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_RXPE_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RXPE_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_RXPE_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_RXPE_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_RXPE_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_TDPU_ALWD 0x0009c518 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_TDPU_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_TDPU_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TDPU_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_TDPU_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_TDPU_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TDPU_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_TDPU_RSVD 0x0009c598 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_TDPU_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_TDPU_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TDPU_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_TDPU_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_TDPU_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TDPU_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_TLAN_ALWD 0x0009c504 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_TLAN_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_TLAN_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TLAN_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_TLAN_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_TLAN_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TLAN_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_TLAN_RSVD 0x0009c584 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_TLAN_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_TLAN_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TLAN_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_TLAN_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_TLAN_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TLAN_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_TXPE_ALWD 0x0009c50C /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_TXPE_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_TXPE_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TXPE_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_TXPE_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_TXPE_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TXPE_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_TXPE_RSVD 0x0009c58c /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_TXPE_RSVD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_TXPE_RSVD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TXPE_RSVD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_TXPE_RSVD_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_TXPE_RSVD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_TXPE_RSVD_OSR_SHIFT)
+-#define I40E_GLPCI_CUR_WATMK_CLNT_COMMON 0x0009CA28 /* Reset: PCIR */
+-#define I40E_GLPCI_CUR_WATMK_CLNT_COMMON_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_CUR_WATMK_CLNT_COMMON_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_WATMK_CLNT_COMMON_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_CUR_WATMK_CLNT_COMMON_OSR_SHIFT 16
+-#define I40E_GLPCI_CUR_WATMK_CLNT_COMMON_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_CUR_WATMK_CLNT_COMMON_OSR_SHIFT)
+ 
+-#define I40E_GLPCI_LBARCTRL_PE_DB_SIZE_SHIFT 4
+-#define I40E_GLPCI_LBARCTRL_PE_DB_SIZE_MASK I40E_MASK(0x3, I40E_GLPCI_LBARCTRL_PE_DB_SIZE_SHIFT)
+-#define I40E_GLPCI_LBARCTRL_VF_PE_DB_SIZE_SHIFT 10
+-#define I40E_GLPCI_LBARCTRL_VF_PE_DB_SIZE_MASK I40E_MASK(0x1, I40E_GLPCI_LBARCTRL_VF_PE_DB_SIZE_SHIFT)
+-#define I40E_GLPCI_NPQ_CFG 0x0009CA00 /* Reset: PCIR */
+-#define I40E_GLPCI_NPQ_CFG_EXTEND_TO_SHIFT 0
+-#define I40E_GLPCI_NPQ_CFG_EXTEND_TO_MASK I40E_MASK(0x1, I40E_GLPCI_NPQ_CFG_EXTEND_TO_SHIFT)
+-#define I40E_GLPCI_NPQ_CFG_SMALL_TO_SHIFT 1
+-#define I40E_GLPCI_NPQ_CFG_SMALL_TO_MASK I40E_MASK(0x1, I40E_GLPCI_NPQ_CFG_SMALL_TO_SHIFT)
+-#define I40E_GLPCI_NPQ_CFG_WEIGHT_AVG_SHIFT 2
+-#define I40E_GLPCI_NPQ_CFG_WEIGHT_AVG_MASK I40E_MASK(0xF, I40E_GLPCI_NPQ_CFG_WEIGHT_AVG_SHIFT)
+-#define I40E_GLPCI_NPQ_CFG_NPQ_SPARE_SHIFT 6
+-#define I40E_GLPCI_NPQ_CFG_NPQ_SPARE_MASK I40E_MASK(0x3FF, I40E_GLPCI_NPQ_CFG_NPQ_SPARE_SHIFT)
+-#define I40E_GLPCI_NPQ_CFG_NPQ_ERR_STAT_SHIFT 16
+-#define I40E_GLPCI_NPQ_CFG_NPQ_ERR_STAT_MASK I40E_MASK(0xF, I40E_GLPCI_NPQ_CFG_NPQ_ERR_STAT_SHIFT)
+-#define I40E_GLPCI_WATMK_CLNT_PIPEMON 0x0009CA30 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_CLNT_PIPEMON_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_CLNT_PIPEMON_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_CLNT_PIPEMON_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_MNG_ALWD 0x0009CB14 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_MNG_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_MNG_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_MNG_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_MNG_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_MNG_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_MNG_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_WATMK_PMAT_ALWD 0x0009CB10 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_PMAT_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_PMAT_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_PMAT_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_PMAT_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_PMAT_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_PMAT_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_WATMK_RLAN_ALWD 0x0009CB00 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_RLAN_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_RLAN_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_RLAN_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_RLAN_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_RLAN_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_RLAN_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_WATMK_RXPE_ALWD 0x0009CB08 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_RXPE_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_RXPE_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_RXPE_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_RXPE_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_RXPE_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_RXPE_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_WATMK_TLAN_ALWD 0x0009CB04 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_TLAN_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_TLAN_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_TLAN_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_TLAN_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_TLAN_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_TLAN_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_WATMK_TPDU_ALWD 0x0009CB18 /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_TPDU_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_TPDU_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_TPDU_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_TPDU_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_TPDU_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_TPDU_ALWD_OSR_SHIFT)
+-#define I40E_GLPCI_WATMK_TXPE_ALWD 0x0009CB0c /* Reset: PCIR */
+-#define I40E_GLPCI_WATMK_TXPE_ALWD_DATA_LINES_SHIFT 0
+-#define I40E_GLPCI_WATMK_TXPE_ALWD_DATA_LINES_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_TXPE_ALWD_DATA_LINES_SHIFT)
+-#define I40E_GLPCI_WATMK_TXPE_ALWD_OSR_SHIFT 16
+-#define I40E_GLPCI_WATMK_TXPE_ALWD_OSR_MASK I40E_MASK(0xFFFF, I40E_GLPCI_WATMK_TXPE_ALWD_OSR_SHIFT)
+-#define I40E_GLPE_CPUSTATUS0 0x0000D040 /* Reset: PE_CORER */
+-#define I40E_GLPE_CPUSTATUS0_PECPUSTATUS0_SHIFT 0
+-#define I40E_GLPE_CPUSTATUS0_PECPUSTATUS0_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPE_CPUSTATUS0_PECPUSTATUS0_SHIFT)
+-#define I40E_GLPE_CPUSTATUS1 0x0000D044 /* Reset: PE_CORER */
+-#define I40E_GLPE_CPUSTATUS1_PECPUSTATUS1_SHIFT 0
+-#define I40E_GLPE_CPUSTATUS1_PECPUSTATUS1_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPE_CPUSTATUS1_PECPUSTATUS1_SHIFT)
+-#define I40E_GLPE_CPUSTATUS2 0x0000D048 /* Reset: PE_CORER */
+-#define I40E_GLPE_CPUSTATUS2_PECPUSTATUS2_SHIFT 0
+-#define I40E_GLPE_CPUSTATUS2_PECPUSTATUS2_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPE_CPUSTATUS2_PECPUSTATUS2_SHIFT)
+-#define I40E_GLPE_CPUTRIG0 0x0000D060 /* Reset: PE_CORER */
+-#define I40E_GLPE_CPUTRIG0_PECPUTRIG0_SHIFT 0
+-#define I40E_GLPE_CPUTRIG0_PECPUTRIG0_MASK I40E_MASK(0xFFFF, I40E_GLPE_CPUTRIG0_PECPUTRIG0_SHIFT)
+-#define I40E_GLPE_CPUTRIG0_TEPREQUEST0_SHIFT 17
+-#define I40E_GLPE_CPUTRIG0_TEPREQUEST0_MASK I40E_MASK(0x1, I40E_GLPE_CPUTRIG0_TEPREQUEST0_SHIFT)
+-#define I40E_GLPE_CPUTRIG0_OOPREQUEST0_SHIFT 18
+-#define I40E_GLPE_CPUTRIG0_OOPREQUEST0_MASK I40E_MASK(0x1, I40E_GLPE_CPUTRIG0_OOPREQUEST0_SHIFT)
+-#define I40E_GLPE_DUAL40_RUPM 0x0000DA04 /* Reset: PE_CORER */
+-#define I40E_GLPE_DUAL40_RUPM_DUAL_40G_MODE_SHIFT 0
+-#define I40E_GLPE_DUAL40_RUPM_DUAL_40G_MODE_MASK I40E_MASK(0x1, I40E_GLPE_DUAL40_RUPM_DUAL_40G_MODE_SHIFT)
+-#define I40E_GLPE_PFAEQEDROPCNT(_i) (0x00131440 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLPE_PFAEQEDROPCNT_MAX_INDEX 15
+-#define I40E_GLPE_PFAEQEDROPCNT_AEQEDROPCNT_SHIFT 0
+-#define I40E_GLPE_PFAEQEDROPCNT_AEQEDROPCNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_PFAEQEDROPCNT_AEQEDROPCNT_SHIFT)
+-#define I40E_GLPE_PFCEQEDROPCNT(_i) (0x001313C0 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLPE_PFCEQEDROPCNT_MAX_INDEX 15
+-#define I40E_GLPE_PFCEQEDROPCNT_CEQEDROPCNT_SHIFT 0
+-#define I40E_GLPE_PFCEQEDROPCNT_CEQEDROPCNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_PFCEQEDROPCNT_CEQEDROPCNT_SHIFT)
+-#define I40E_GLPE_PFCQEDROPCNT(_i) (0x00131340 + ((_i) * 4)) /* _i=0...15 */ /* Reset: CORER */
+-#define I40E_GLPE_PFCQEDROPCNT_MAX_INDEX 15
+-#define I40E_GLPE_PFCQEDROPCNT_CQEDROPCNT_SHIFT 0
+-#define I40E_GLPE_PFCQEDROPCNT_CQEDROPCNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_PFCQEDROPCNT_CQEDROPCNT_SHIFT)
+-#define I40E_GLPE_RUPM_CQPPOOL 0x0000DACC /* Reset: PE_CORER */
+-#define I40E_GLPE_RUPM_CQPPOOL_CQPSPADS_SHIFT 0
+-#define I40E_GLPE_RUPM_CQPPOOL_CQPSPADS_MASK I40E_MASK(0xFF, I40E_GLPE_RUPM_CQPPOOL_CQPSPADS_SHIFT)
+-#define I40E_GLPE_RUPM_FLRPOOL 0x0000DAC4 /* Reset: PE_CORER */
+-#define I40E_GLPE_RUPM_FLRPOOL_FLRSPADS_SHIFT 0
+-#define I40E_GLPE_RUPM_FLRPOOL_FLRSPADS_MASK I40E_MASK(0xFF, I40E_GLPE_RUPM_FLRPOOL_FLRSPADS_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL 0x0000DA00 /* Reset: PE_CORER */
+-#define I40E_GLPE_RUPM_GCTL_ALLOFFTH_SHIFT 0
+-#define I40E_GLPE_RUPM_GCTL_ALLOFFTH_MASK I40E_MASK(0xFF, I40E_GLPE_RUPM_GCTL_ALLOFFTH_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P0_DIS_SHIFT 26
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P0_DIS_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_GCTL_RUPM_P0_DIS_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P1_DIS_SHIFT 27
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P1_DIS_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_GCTL_RUPM_P1_DIS_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P2_DIS_SHIFT 28
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P2_DIS_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_GCTL_RUPM_P2_DIS_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P3_DIS_SHIFT 29
+-#define I40E_GLPE_RUPM_GCTL_RUPM_P3_DIS_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_GCTL_RUPM_P3_DIS_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL_RUPM_DIS_SHIFT 30
+-#define I40E_GLPE_RUPM_GCTL_RUPM_DIS_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_GCTL_RUPM_DIS_SHIFT)
+-#define I40E_GLPE_RUPM_GCTL_SWLB_MODE_SHIFT 31
+-#define I40E_GLPE_RUPM_GCTL_SWLB_MODE_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_GCTL_SWLB_MODE_SHIFT)
+-#define I40E_GLPE_RUPM_PTXPOOL 0x0000DAC8 /* Reset: PE_CORER */
+-#define I40E_GLPE_RUPM_PTXPOOL_PTXSPADS_SHIFT 0
+-#define I40E_GLPE_RUPM_PTXPOOL_PTXSPADS_MASK I40E_MASK(0xFF, I40E_GLPE_RUPM_PTXPOOL_PTXSPADS_SHIFT)
+-#define I40E_GLPE_RUPM_PUSHPOOL 0x0000DAC0 /* Reset: PE_CORER */
+-#define I40E_GLPE_RUPM_PUSHPOOL_PUSHSPADS_SHIFT 0
+-#define I40E_GLPE_RUPM_PUSHPOOL_PUSHSPADS_MASK I40E_MASK(0xFF, I40E_GLPE_RUPM_PUSHPOOL_PUSHSPADS_SHIFT)
+-#define I40E_GLPE_RUPM_TXHOST_EN 0x0000DA08 /* Reset: PE_CORER */
+-#define I40E_GLPE_RUPM_TXHOST_EN_TXHOST_EN_SHIFT 0
+-#define I40E_GLPE_RUPM_TXHOST_EN_TXHOST_EN_MASK I40E_MASK(0x1, I40E_GLPE_RUPM_TXHOST_EN_TXHOST_EN_SHIFT)
+-#define I40E_GLPE_VFAEQEDROPCNT(_i) (0x00132540 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLPE_VFAEQEDROPCNT_MAX_INDEX 31
+-#define I40E_GLPE_VFAEQEDROPCNT_AEQEDROPCNT_SHIFT 0
+-#define I40E_GLPE_VFAEQEDROPCNT_AEQEDROPCNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_VFAEQEDROPCNT_AEQEDROPCNT_SHIFT)
+-#define I40E_GLPE_VFCEQEDROPCNT(_i) (0x00132440 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLPE_VFCEQEDROPCNT_MAX_INDEX 31
+-#define I40E_GLPE_VFCEQEDROPCNT_CEQEDROPCNT_SHIFT 0
+-#define I40E_GLPE_VFCEQEDROPCNT_CEQEDROPCNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_VFCEQEDROPCNT_CEQEDROPCNT_SHIFT)
+-#define I40E_GLPE_VFCQEDROPCNT(_i) (0x00132340 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
+-#define I40E_GLPE_VFCQEDROPCNT_MAX_INDEX 31
+-#define I40E_GLPE_VFCQEDROPCNT_CQEDROPCNT_SHIFT 0
+-#define I40E_GLPE_VFCQEDROPCNT_CQEDROPCNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_VFCQEDROPCNT_CQEDROPCNT_SHIFT)
+-#define I40E_GLPE_VFFLMOBJCTRL(_i) (0x0000D400 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPE_VFFLMOBJCTRL_MAX_INDEX 31
+-#define I40E_GLPE_VFFLMOBJCTRL_XMIT_BLOCKSIZE_SHIFT 0
+-#define I40E_GLPE_VFFLMOBJCTRL_XMIT_BLOCKSIZE_MASK I40E_MASK(0x7, I40E_GLPE_VFFLMOBJCTRL_XMIT_BLOCKSIZE_SHIFT)
+-#define I40E_GLPE_VFFLMOBJCTRL_Q1_BLOCKSIZE_SHIFT 8
+-#define I40E_GLPE_VFFLMOBJCTRL_Q1_BLOCKSIZE_MASK I40E_MASK(0x7, I40E_GLPE_VFFLMOBJCTRL_Q1_BLOCKSIZE_SHIFT)
+-#define I40E_GLPE_VFFLMQ1ALLOCERR(_i) (0x0000C700 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPE_VFFLMQ1ALLOCERR_MAX_INDEX 31
+-#define I40E_GLPE_VFFLMQ1ALLOCERR_ERROR_COUNT_SHIFT 0
+-#define I40E_GLPE_VFFLMQ1ALLOCERR_ERROR_COUNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_VFFLMQ1ALLOCERR_ERROR_COUNT_SHIFT)
+-#define I40E_GLPE_VFFLMXMITALLOCERR(_i) (0x0000C600 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPE_VFFLMXMITALLOCERR_MAX_INDEX 31
+-#define I40E_GLPE_VFFLMXMITALLOCERR_ERROR_COUNT_SHIFT 0
+-#define I40E_GLPE_VFFLMXMITALLOCERR_ERROR_COUNT_MASK I40E_MASK(0xFFFF, I40E_GLPE_VFFLMXMITALLOCERR_ERROR_COUNT_SHIFT)
+-#define I40E_GLPE_VFUDACTRL(_i) (0x0000C000 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPE_VFUDACTRL_MAX_INDEX 31
+-#define I40E_GLPE_VFUDACTRL_IPV4MCFRAGRESBP_SHIFT 0
+-#define I40E_GLPE_VFUDACTRL_IPV4MCFRAGRESBP_MASK I40E_MASK(0x1, I40E_GLPE_VFUDACTRL_IPV4MCFRAGRESBP_SHIFT)
+-#define I40E_GLPE_VFUDACTRL_IPV4UCFRAGRESBP_SHIFT 1
+-#define I40E_GLPE_VFUDACTRL_IPV4UCFRAGRESBP_MASK I40E_MASK(0x1, I40E_GLPE_VFUDACTRL_IPV4UCFRAGRESBP_SHIFT)
+-#define I40E_GLPE_VFUDACTRL_IPV6MCFRAGRESBP_SHIFT 2
+-#define I40E_GLPE_VFUDACTRL_IPV6MCFRAGRESBP_MASK I40E_MASK(0x1, I40E_GLPE_VFUDACTRL_IPV6MCFRAGRESBP_SHIFT)
+-#define I40E_GLPE_VFUDACTRL_IPV6UCFRAGRESBP_SHIFT 3
+-#define I40E_GLPE_VFUDACTRL_IPV6UCFRAGRESBP_MASK I40E_MASK(0x1, I40E_GLPE_VFUDACTRL_IPV6UCFRAGRESBP_SHIFT)
+-#define I40E_GLPE_VFUDACTRL_UDPMCFRAGRESFAIL_SHIFT 4
+-#define I40E_GLPE_VFUDACTRL_UDPMCFRAGRESFAIL_MASK I40E_MASK(0x1, I40E_GLPE_VFUDACTRL_UDPMCFRAGRESFAIL_SHIFT)
+-#define I40E_GLPE_VFUDAUCFBQPN(_i) (0x0000C100 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPE_VFUDAUCFBQPN_MAX_INDEX 31
+-#define I40E_GLPE_VFUDAUCFBQPN_QPN_SHIFT 0
+-#define I40E_GLPE_VFUDAUCFBQPN_QPN_MASK I40E_MASK(0x3FFFF, I40E_GLPE_VFUDAUCFBQPN_QPN_SHIFT)
+-#define I40E_GLPE_VFUDAUCFBQPN_VALID_SHIFT 31
+-#define I40E_GLPE_VFUDAUCFBQPN_VALID_MASK I40E_MASK(0x1, I40E_GLPE_VFUDAUCFBQPN_VALID_SHIFT)
+-#define I40E_PFPE_AEQALLOC 0x00131180 /* Reset: PFR */
+-#define I40E_PFPE_AEQALLOC_AECOUNT_SHIFT 0
+-#define I40E_PFPE_AEQALLOC_AECOUNT_MASK I40E_MASK(0xFFFFFFFF, I40E_PFPE_AEQALLOC_AECOUNT_SHIFT)
+-#define I40E_PFPE_CCQPHIGH 0x00008200 /* Reset: PFR */
+-#define I40E_PFPE_CCQPHIGH_PECCQPHIGH_SHIFT 0
+-#define I40E_PFPE_CCQPHIGH_PECCQPHIGH_MASK I40E_MASK(0xFFFFFFFF, I40E_PFPE_CCQPHIGH_PECCQPHIGH_SHIFT)
+-#define I40E_PFPE_CCQPLOW 0x00008180 /* Reset: PFR */
+-#define I40E_PFPE_CCQPLOW_PECCQPLOW_SHIFT 0
+-#define I40E_PFPE_CCQPLOW_PECCQPLOW_MASK I40E_MASK(0xFFFFFFFF, I40E_PFPE_CCQPLOW_PECCQPLOW_SHIFT)
+-#define I40E_PFPE_CCQPSTATUS 0x00008100 /* Reset: PFR */
+-#define I40E_PFPE_CCQPSTATUS_CCQP_DONE_SHIFT 0
+-#define I40E_PFPE_CCQPSTATUS_CCQP_DONE_MASK I40E_MASK(0x1, I40E_PFPE_CCQPSTATUS_CCQP_DONE_SHIFT)
+-#define I40E_PFPE_CCQPSTATUS_HMC_PROFILE_SHIFT 4
+-#define I40E_PFPE_CCQPSTATUS_HMC_PROFILE_MASK I40E_MASK(0x7, I40E_PFPE_CCQPSTATUS_HMC_PROFILE_SHIFT)
+-#define I40E_PFPE_CCQPSTATUS_RDMA_EN_VFS_SHIFT 16
+-#define I40E_PFPE_CCQPSTATUS_RDMA_EN_VFS_MASK I40E_MASK(0x3F, I40E_PFPE_CCQPSTATUS_RDMA_EN_VFS_SHIFT)
+-#define I40E_PFPE_CCQPSTATUS_CCQP_ERR_SHIFT 31
+-#define I40E_PFPE_CCQPSTATUS_CCQP_ERR_MASK I40E_MASK(0x1, I40E_PFPE_CCQPSTATUS_CCQP_ERR_SHIFT)
+-#define I40E_PFPE_CQACK 0x00131100 /* Reset: PFR */
+-#define I40E_PFPE_CQACK_PECQID_SHIFT 0
+-#define I40E_PFPE_CQACK_PECQID_MASK I40E_MASK(0x1FFFF, I40E_PFPE_CQACK_PECQID_SHIFT)
+-#define I40E_PFPE_CQARM 0x00131080 /* Reset: PFR */
+-#define I40E_PFPE_CQARM_PECQID_SHIFT 0
+-#define I40E_PFPE_CQARM_PECQID_MASK I40E_MASK(0x1FFFF, I40E_PFPE_CQARM_PECQID_SHIFT)
+-#define I40E_PFPE_CQPDB 0x00008000 /* Reset: PFR */
+-#define I40E_PFPE_CQPDB_WQHEAD_SHIFT 0
+-#define I40E_PFPE_CQPDB_WQHEAD_MASK I40E_MASK(0x7FF, I40E_PFPE_CQPDB_WQHEAD_SHIFT)
+-#define I40E_PFPE_CQPERRCODES 0x00008880 /* Reset: PFR */
+-#define I40E_PFPE_CQPERRCODES_CQP_MINOR_CODE_SHIFT 0
+-#define I40E_PFPE_CQPERRCODES_CQP_MINOR_CODE_MASK I40E_MASK(0xFFFF, I40E_PFPE_CQPERRCODES_CQP_MINOR_CODE_SHIFT)
+-#define I40E_PFPE_CQPERRCODES_CQP_MAJOR_CODE_SHIFT 16
+-#define I40E_PFPE_CQPERRCODES_CQP_MAJOR_CODE_MASK I40E_MASK(0xFFFF, I40E_PFPE_CQPERRCODES_CQP_MAJOR_CODE_SHIFT)
+-#define I40E_PFPE_CQPTAIL 0x00008080 /* Reset: PFR */
+-#define I40E_PFPE_CQPTAIL_WQTAIL_SHIFT 0
+-#define I40E_PFPE_CQPTAIL_WQTAIL_MASK I40E_MASK(0x7FF, I40E_PFPE_CQPTAIL_WQTAIL_SHIFT)
+-#define I40E_PFPE_CQPTAIL_CQP_OP_ERR_SHIFT 31
+-#define I40E_PFPE_CQPTAIL_CQP_OP_ERR_MASK I40E_MASK(0x1, I40E_PFPE_CQPTAIL_CQP_OP_ERR_SHIFT)
+-#define I40E_PFPE_FLMQ1ALLOCERR 0x00008980 /* Reset: PFR */
+-#define I40E_PFPE_FLMQ1ALLOCERR_ERROR_COUNT_SHIFT 0
+-#define I40E_PFPE_FLMQ1ALLOCERR_ERROR_COUNT_MASK I40E_MASK(0xFFFF, I40E_PFPE_FLMQ1ALLOCERR_ERROR_COUNT_SHIFT)
+-#define I40E_PFPE_FLMXMITALLOCERR 0x00008900 /* Reset: PFR */
+-#define I40E_PFPE_FLMXMITALLOCERR_ERROR_COUNT_SHIFT 0
+-#define I40E_PFPE_FLMXMITALLOCERR_ERROR_COUNT_MASK I40E_MASK(0xFFFF, I40E_PFPE_FLMXMITALLOCERR_ERROR_COUNT_SHIFT)
+-#define I40E_PFPE_IPCONFIG0 0x00008280 /* Reset: PFR */
+-#define I40E_PFPE_IPCONFIG0_PEIPID_SHIFT 0
+-#define I40E_PFPE_IPCONFIG0_PEIPID_MASK I40E_MASK(0xFFFF, I40E_PFPE_IPCONFIG0_PEIPID_SHIFT)
+-#define I40E_PFPE_IPCONFIG0_USEENTIREIDRANGE_SHIFT 16
+-#define I40E_PFPE_IPCONFIG0_USEENTIREIDRANGE_MASK I40E_MASK(0x1, I40E_PFPE_IPCONFIG0_USEENTIREIDRANGE_SHIFT)
+-#define I40E_PFPE_MRTEIDXMASK 0x00008600 /* Reset: PFR */
+-#define I40E_PFPE_MRTEIDXMASK_MRTEIDXMASKBITS_SHIFT 0
+-#define I40E_PFPE_MRTEIDXMASK_MRTEIDXMASKBITS_MASK I40E_MASK(0x1F, I40E_PFPE_MRTEIDXMASK_MRTEIDXMASKBITS_SHIFT)
+-#define I40E_PFPE_RCVUNEXPECTEDERROR 0x00008680 /* Reset: PFR */
+-#define I40E_PFPE_RCVUNEXPECTEDERROR_TCP_RX_UNEXP_ERR_SHIFT 0
+-#define I40E_PFPE_RCVUNEXPECTEDERROR_TCP_RX_UNEXP_ERR_MASK I40E_MASK(0xFFFFFF, I40E_PFPE_RCVUNEXPECTEDERROR_TCP_RX_UNEXP_ERR_SHIFT)
+-#define I40E_PFPE_TCPNOWTIMER 0x00008580 /* Reset: PFR */
+-#define I40E_PFPE_TCPNOWTIMER_TCP_NOW_SHIFT 0
+-#define I40E_PFPE_TCPNOWTIMER_TCP_NOW_MASK I40E_MASK(0xFFFFFFFF, I40E_PFPE_TCPNOWTIMER_TCP_NOW_SHIFT)
+-#define I40E_PFPE_UDACTRL 0x00008700 /* Reset: PFR */
+-#define I40E_PFPE_UDACTRL_IPV4MCFRAGRESBP_SHIFT 0
+-#define I40E_PFPE_UDACTRL_IPV4MCFRAGRESBP_MASK I40E_MASK(0x1, I40E_PFPE_UDACTRL_IPV4MCFRAGRESBP_SHIFT)
+-#define I40E_PFPE_UDACTRL_IPV4UCFRAGRESBP_SHIFT 1
+-#define I40E_PFPE_UDACTRL_IPV4UCFRAGRESBP_MASK I40E_MASK(0x1, I40E_PFPE_UDACTRL_IPV4UCFRAGRESBP_SHIFT)
+-#define I40E_PFPE_UDACTRL_IPV6MCFRAGRESBP_SHIFT 2
+-#define I40E_PFPE_UDACTRL_IPV6MCFRAGRESBP_MASK I40E_MASK(0x1, I40E_PFPE_UDACTRL_IPV6MCFRAGRESBP_SHIFT)
+-#define I40E_PFPE_UDACTRL_IPV6UCFRAGRESBP_SHIFT 3
+-#define I40E_PFPE_UDACTRL_IPV6UCFRAGRESBP_MASK I40E_MASK(0x1, I40E_PFPE_UDACTRL_IPV6UCFRAGRESBP_SHIFT)
+-#define I40E_PFPE_UDACTRL_UDPMCFRAGRESFAIL_SHIFT 4
+-#define I40E_PFPE_UDACTRL_UDPMCFRAGRESFAIL_MASK I40E_MASK(0x1, I40E_PFPE_UDACTRL_UDPMCFRAGRESFAIL_SHIFT)
+-#define I40E_PFPE_UDAUCFBQPN 0x00008780 /* Reset: PFR */
+-#define I40E_PFPE_UDAUCFBQPN_QPN_SHIFT 0
+-#define I40E_PFPE_UDAUCFBQPN_QPN_MASK I40E_MASK(0x3FFFF, I40E_PFPE_UDAUCFBQPN_QPN_SHIFT)
+-#define I40E_PFPE_UDAUCFBQPN_VALID_SHIFT 31
+-#define I40E_PFPE_UDAUCFBQPN_VALID_MASK I40E_MASK(0x1, I40E_PFPE_UDAUCFBQPN_VALID_SHIFT)
+-#define I40E_PFPE_WQEALLOC 0x00138C00 /* Reset: PFR */
+-#define I40E_PFPE_WQEALLOC_PEQPID_SHIFT 0
+-#define I40E_PFPE_WQEALLOC_PEQPID_MASK I40E_MASK(0x3FFFF, I40E_PFPE_WQEALLOC_PEQPID_SHIFT)
+-#define I40E_PFPE_WQEALLOC_WQE_DESC_INDEX_SHIFT 20
+-#define I40E_PFPE_WQEALLOC_WQE_DESC_INDEX_MASK I40E_MASK(0xFFF, I40E_PFPE_WQEALLOC_WQE_DESC_INDEX_SHIFT)
+-#define I40E_PRTDCB_RLPMC 0x0001F140 /* Reset: PE_CORER */
+-#define I40E_PRTDCB_RLPMC_TC2PFC_SHIFT 0
+-#define I40E_PRTDCB_RLPMC_TC2PFC_MASK I40E_MASK(0xFF, I40E_PRTDCB_RLPMC_TC2PFC_SHIFT)
+-#define I40E_PRTDCB_TCMSTC_RLPM(_i) (0x0001F040 + ((_i) * 32)) /* _i=0...7 */ /* Reset: PE_CORER */
+-#define I40E_PRTDCB_TCMSTC_RLPM_MAX_INDEX 7
+-#define I40E_PRTDCB_TCMSTC_RLPM_MSTC_SHIFT 0
+-#define I40E_PRTDCB_TCMSTC_RLPM_MSTC_MASK I40E_MASK(0xFFFFF, I40E_PRTDCB_TCMSTC_RLPM_MSTC_SHIFT)
+-#define I40E_PRTDCB_TCPMC_RLPM 0x0001F1A0 /* Reset: PE_CORER */
+-#define I40E_PRTDCB_TCPMC_RLPM_CPM_SHIFT 0
+-#define I40E_PRTDCB_TCPMC_RLPM_CPM_MASK I40E_MASK(0x1FFF, I40E_PRTDCB_TCPMC_RLPM_CPM_SHIFT)
+-#define I40E_PRTDCB_TCPMC_RLPM_LLTC_SHIFT 13
+-#define I40E_PRTDCB_TCPMC_RLPM_LLTC_MASK I40E_MASK(0xFF, I40E_PRTDCB_TCPMC_RLPM_LLTC_SHIFT)
+-#define I40E_PRTDCB_TCPMC_RLPM_TCPM_MODE_SHIFT 30
+-#define I40E_PRTDCB_TCPMC_RLPM_TCPM_MODE_MASK I40E_MASK(0x1, I40E_PRTDCB_TCPMC_RLPM_TCPM_MODE_SHIFT)
+-#define I40E_PRTE_RUPM_TCCNTR03 0x0000DAE0 /* Reset: PE_CORER */
+-#define I40E_PRTE_RUPM_TCCNTR03_TC0COUNT_SHIFT 0
+-#define I40E_PRTE_RUPM_TCCNTR03_TC0COUNT_MASK I40E_MASK(0xFF, I40E_PRTE_RUPM_TCCNTR03_TC0COUNT_SHIFT)
+-#define I40E_PRTE_RUPM_TCCNTR03_TC1COUNT_SHIFT 8
+-#define I40E_PRTE_RUPM_TCCNTR03_TC1COUNT_MASK I40E_MASK(0xFF, I40E_PRTE_RUPM_TCCNTR03_TC1COUNT_SHIFT)
+-#define I40E_PRTE_RUPM_TCCNTR03_TC2COUNT_SHIFT 16
+-#define I40E_PRTE_RUPM_TCCNTR03_TC2COUNT_MASK I40E_MASK(0xFF, I40E_PRTE_RUPM_TCCNTR03_TC2COUNT_SHIFT)
+-#define I40E_PRTE_RUPM_TCCNTR03_TC3COUNT_SHIFT 24
+-#define I40E_PRTE_RUPM_TCCNTR03_TC3COUNT_MASK I40E_MASK(0xFF, I40E_PRTE_RUPM_TCCNTR03_TC3COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_CNTR 0x0000DB20 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_CNTR_COUNT_SHIFT 0
+-#define I40E_PRTPE_RUPM_CNTR_COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_CNTR_COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_CTL 0x0000DA40 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_CTL_LLTC_SHIFT 13
+-#define I40E_PRTPE_RUPM_CTL_LLTC_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_CTL_LLTC_SHIFT)
+-#define I40E_PRTPE_RUPM_CTL_RUPM_MODE_SHIFT 30
+-#define I40E_PRTPE_RUPM_CTL_RUPM_MODE_MASK I40E_MASK(0x1, I40E_PRTPE_RUPM_CTL_RUPM_MODE_SHIFT)
+-#define I40E_PRTPE_RUPM_PFCCTL 0x0000DA60 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_PFCCTL_TC2PFC_SHIFT 0
+-#define I40E_PRTPE_RUPM_PFCCTL_TC2PFC_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PFCCTL_TC2PFC_SHIFT)
+-#define I40E_PRTPE_RUPM_PFCPC 0x0000DA80 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_PFCPC_PORTOFFTH_SHIFT 0
+-#define I40E_PRTPE_RUPM_PFCPC_PORTOFFTH_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PFCPC_PORTOFFTH_SHIFT)
+-#define I40E_PRTPE_RUPM_PFCTCC 0x0000DAA0 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_PFCTCC_TCOFFTH_SHIFT 0
+-#define I40E_PRTPE_RUPM_PFCTCC_TCOFFTH_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PFCTCC_TCOFFTH_SHIFT)
+-#define I40E_PRTPE_RUPM_PFCTCC_LL_PRI_TH_SHIFT 16
+-#define I40E_PRTPE_RUPM_PFCTCC_LL_PRI_TH_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PFCTCC_LL_PRI_TH_SHIFT)
+-#define I40E_PRTPE_RUPM_PFCTCC_LL_PRI_EN_SHIFT 31
+-#define I40E_PRTPE_RUPM_PFCTCC_LL_PRI_EN_MASK I40E_MASK(0x1, I40E_PRTPE_RUPM_PFCTCC_LL_PRI_EN_SHIFT)
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47 0x0000DB60 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC4COUNT_SHIFT 0
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC4COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTCTCCNTR47_TC4COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC5COUNT_SHIFT 8
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC5COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTCTCCNTR47_TC5COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC6COUNT_SHIFT 16
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC6COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTCTCCNTR47_TC6COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC7COUNT_SHIFT 24
+-#define I40E_PRTPE_RUPM_PTCTCCNTR47_TC7COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTCTCCNTR47_TC7COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03 0x0000DB40 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC0COUNT_SHIFT 0
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC0COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTXTCCNTR03_TC0COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC1COUNT_SHIFT 8
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC1COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTXTCCNTR03_TC1COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC2COUNT_SHIFT 16
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC2COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTXTCCNTR03_TC2COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC3COUNT_SHIFT 24
+-#define I40E_PRTPE_RUPM_PTXTCCNTR03_TC3COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_PTXTCCNTR03_TC3COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_TCCNTR47 0x0000DB00 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC4COUNT_SHIFT 0
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC4COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_TCCNTR47_TC4COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC5COUNT_SHIFT 8
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC5COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_TCCNTR47_TC5COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC6COUNT_SHIFT 16
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC6COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_TCCNTR47_TC6COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC7COUNT_SHIFT 24
+-#define I40E_PRTPE_RUPM_TCCNTR47_TC7COUNT_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_TCCNTR47_TC7COUNT_SHIFT)
+-#define I40E_PRTPE_RUPM_THRES 0x0000DA20 /* Reset: PE_CORER */
+-#define I40E_PRTPE_RUPM_THRES_MINSPADSPERTC_SHIFT 0
+-#define I40E_PRTPE_RUPM_THRES_MINSPADSPERTC_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_THRES_MINSPADSPERTC_SHIFT)
+-#define I40E_PRTPE_RUPM_THRES_MAXSPADS_SHIFT 8
+-#define I40E_PRTPE_RUPM_THRES_MAXSPADS_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_THRES_MAXSPADS_SHIFT)
+-#define I40E_PRTPE_RUPM_THRES_MAXSPADSPERTC_SHIFT 16
+-#define I40E_PRTPE_RUPM_THRES_MAXSPADSPERTC_MASK I40E_MASK(0xFF, I40E_PRTPE_RUPM_THRES_MAXSPADSPERTC_SHIFT)
+-#define I40E_VFPE_AEQALLOC(_VF) (0x00130C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_AEQALLOC_MAX_INDEX 127
+-#define I40E_VFPE_AEQALLOC_AECOUNT_SHIFT 0
+-#define I40E_VFPE_AEQALLOC_AECOUNT_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_AEQALLOC_AECOUNT_SHIFT)
+-#define I40E_VFPE_CCQPHIGH(_VF) (0x00001000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CCQPHIGH_MAX_INDEX 127
+-#define I40E_VFPE_CCQPHIGH_PECCQPHIGH_SHIFT 0
+-#define I40E_VFPE_CCQPHIGH_PECCQPHIGH_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_CCQPHIGH_PECCQPHIGH_SHIFT)
+-#define I40E_VFPE_CCQPLOW(_VF) (0x00000C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CCQPLOW_MAX_INDEX 127
+-#define I40E_VFPE_CCQPLOW_PECCQPLOW_SHIFT 0
+-#define I40E_VFPE_CCQPLOW_PECCQPLOW_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_CCQPLOW_PECCQPLOW_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS(_VF) (0x00000800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CCQPSTATUS_MAX_INDEX 127
+-#define I40E_VFPE_CCQPSTATUS_CCQP_DONE_SHIFT 0
+-#define I40E_VFPE_CCQPSTATUS_CCQP_DONE_MASK I40E_MASK(0x1, I40E_VFPE_CCQPSTATUS_CCQP_DONE_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS_HMC_PROFILE_SHIFT 4
+-#define I40E_VFPE_CCQPSTATUS_HMC_PROFILE_MASK I40E_MASK(0x7, I40E_VFPE_CCQPSTATUS_HMC_PROFILE_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS_RDMA_EN_VFS_SHIFT 16
+-#define I40E_VFPE_CCQPSTATUS_RDMA_EN_VFS_MASK I40E_MASK(0x3F, I40E_VFPE_CCQPSTATUS_RDMA_EN_VFS_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS_CCQP_ERR_SHIFT 31
+-#define I40E_VFPE_CCQPSTATUS_CCQP_ERR_MASK I40E_MASK(0x1, I40E_VFPE_CCQPSTATUS_CCQP_ERR_SHIFT)
+-#define I40E_VFPE_CQACK(_VF) (0x00130800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CQACK_MAX_INDEX 127
+-#define I40E_VFPE_CQACK_PECQID_SHIFT 0
+-#define I40E_VFPE_CQACK_PECQID_MASK I40E_MASK(0x1FFFF, I40E_VFPE_CQACK_PECQID_SHIFT)
+-#define I40E_VFPE_CQARM(_VF) (0x00130400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CQARM_MAX_INDEX 127
+-#define I40E_VFPE_CQARM_PECQID_SHIFT 0
+-#define I40E_VFPE_CQARM_PECQID_MASK I40E_MASK(0x1FFFF, I40E_VFPE_CQARM_PECQID_SHIFT)
+-#define I40E_VFPE_CQPDB(_VF) (0x00000000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CQPDB_MAX_INDEX 127
+-#define I40E_VFPE_CQPDB_WQHEAD_SHIFT 0
+-#define I40E_VFPE_CQPDB_WQHEAD_MASK I40E_MASK(0x7FF, I40E_VFPE_CQPDB_WQHEAD_SHIFT)
+-#define I40E_VFPE_CQPERRCODES(_VF) (0x00001800 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CQPERRCODES_MAX_INDEX 127
+-#define I40E_VFPE_CQPERRCODES_CQP_MINOR_CODE_SHIFT 0
+-#define I40E_VFPE_CQPERRCODES_CQP_MINOR_CODE_MASK I40E_MASK(0xFFFF, I40E_VFPE_CQPERRCODES_CQP_MINOR_CODE_SHIFT)
+-#define I40E_VFPE_CQPERRCODES_CQP_MAJOR_CODE_SHIFT 16
+-#define I40E_VFPE_CQPERRCODES_CQP_MAJOR_CODE_MASK I40E_MASK(0xFFFF, I40E_VFPE_CQPERRCODES_CQP_MAJOR_CODE_SHIFT)
+-#define I40E_VFPE_CQPTAIL(_VF) (0x00000400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_CQPTAIL_MAX_INDEX 127
+-#define I40E_VFPE_CQPTAIL_WQTAIL_SHIFT 0
+-#define I40E_VFPE_CQPTAIL_WQTAIL_MASK I40E_MASK(0x7FF, I40E_VFPE_CQPTAIL_WQTAIL_SHIFT)
+-#define I40E_VFPE_CQPTAIL_CQP_OP_ERR_SHIFT 31
+-#define I40E_VFPE_CQPTAIL_CQP_OP_ERR_MASK I40E_MASK(0x1, I40E_VFPE_CQPTAIL_CQP_OP_ERR_SHIFT)
+-#define I40E_VFPE_IPCONFIG0(_VF) (0x00001400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_IPCONFIG0_MAX_INDEX 127
+-#define I40E_VFPE_IPCONFIG0_PEIPID_SHIFT 0
+-#define I40E_VFPE_IPCONFIG0_PEIPID_MASK I40E_MASK(0xFFFF, I40E_VFPE_IPCONFIG0_PEIPID_SHIFT)
+-#define I40E_VFPE_IPCONFIG0_USEENTIREIDRANGE_SHIFT 16
+-#define I40E_VFPE_IPCONFIG0_USEENTIREIDRANGE_MASK I40E_MASK(0x1, I40E_VFPE_IPCONFIG0_USEENTIREIDRANGE_SHIFT)
+-#define I40E_VFPE_MRTEIDXMASK(_VF) (0x00003000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_MRTEIDXMASK_MAX_INDEX 127
+-#define I40E_VFPE_MRTEIDXMASK_MRTEIDXMASKBITS_SHIFT 0
+-#define I40E_VFPE_MRTEIDXMASK_MRTEIDXMASKBITS_MASK I40E_MASK(0x1F, I40E_VFPE_MRTEIDXMASK_MRTEIDXMASKBITS_SHIFT)
+-#define I40E_VFPE_RCVUNEXPECTEDERROR(_VF) (0x00003400 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_RCVUNEXPECTEDERROR_MAX_INDEX 127
+-#define I40E_VFPE_RCVUNEXPECTEDERROR_TCP_RX_UNEXP_ERR_SHIFT 0
+-#define I40E_VFPE_RCVUNEXPECTEDERROR_TCP_RX_UNEXP_ERR_MASK I40E_MASK(0xFFFFFF, I40E_VFPE_RCVUNEXPECTEDERROR_TCP_RX_UNEXP_ERR_SHIFT)
+-#define I40E_VFPE_TCPNOWTIMER(_VF) (0x00002C00 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_TCPNOWTIMER_MAX_INDEX 127
+-#define I40E_VFPE_TCPNOWTIMER_TCP_NOW_SHIFT 0
+-#define I40E_VFPE_TCPNOWTIMER_TCP_NOW_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_TCPNOWTIMER_TCP_NOW_SHIFT)
+-#define I40E_VFPE_WQEALLOC(_VF) (0x00138000 + ((_VF) * 4)) /* _i=0...127 */ /* Reset: VFR */
+-#define I40E_VFPE_WQEALLOC_MAX_INDEX 127
+-#define I40E_VFPE_WQEALLOC_PEQPID_SHIFT 0
+-#define I40E_VFPE_WQEALLOC_PEQPID_MASK I40E_MASK(0x3FFFF, I40E_VFPE_WQEALLOC_PEQPID_SHIFT)
+-#define I40E_VFPE_WQEALLOC_WQE_DESC_INDEX_SHIFT 20
+-#define I40E_VFPE_WQEALLOC_WQE_DESC_INDEX_MASK I40E_MASK(0xFFF, I40E_VFPE_WQEALLOC_WQE_DESC_INDEX_SHIFT)
+-#define I40E_GLPES_PFIP4RXDISCARD(_i) (0x00010600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXDISCARD_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXDISCARD_IP4RXDISCARD_SHIFT 0
+-#define I40E_GLPES_PFIP4RXDISCARD_IP4RXDISCARD_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXDISCARD_IP4RXDISCARD_SHIFT)
+-#define I40E_GLPES_PFIP4RXFRAGSHI(_i) (0x00010804 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXFRAGSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXFRAGSHI_IP4RXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4RXFRAGSHI_IP4RXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4RXFRAGSHI_IP4RXFRAGSHI_SHIFT)
+-#define I40E_GLPES_PFIP4RXFRAGSLO(_i) (0x00010800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXFRAGSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXFRAGSLO_IP4RXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4RXFRAGSLO_IP4RXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXFRAGSLO_IP4RXFRAGSLO_SHIFT)
+-#define I40E_GLPES_PFIP4RXMCOCTSHI(_i) (0x00010A04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXMCOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXMCOCTSHI_IP4RXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4RXMCOCTSHI_IP4RXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4RXMCOCTSHI_IP4RXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4RXMCOCTSLO(_i) (0x00010A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXMCOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXMCOCTSLO_IP4RXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4RXMCOCTSLO_IP4RXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXMCOCTSLO_IP4RXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4RXMCPKTSHI(_i) (0x00010C04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXMCPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXMCPKTSHI_IP4RXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4RXMCPKTSHI_IP4RXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4RXMCPKTSHI_IP4RXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4RXMCPKTSLO(_i) (0x00010C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXMCPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXMCPKTSLO_IP4RXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4RXMCPKTSLO_IP4RXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXMCPKTSLO_IP4RXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4RXOCTSHI(_i) (0x00010204 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXOCTSHI_IP4RXOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4RXOCTSHI_IP4RXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4RXOCTSHI_IP4RXOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4RXOCTSLO(_i) (0x00010200 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXOCTSLO_IP4RXOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4RXOCTSLO_IP4RXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXOCTSLO_IP4RXOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4RXPKTSHI(_i) (0x00010404 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXPKTSHI_IP4RXPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4RXPKTSHI_IP4RXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4RXPKTSHI_IP4RXPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4RXPKTSLO(_i) (0x00010400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXPKTSLO_IP4RXPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4RXPKTSLO_IP4RXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXPKTSLO_IP4RXPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4RXTRUNC(_i) (0x00010700 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4RXTRUNC_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4RXTRUNC_IP4RXTRUNC_SHIFT 0
+-#define I40E_GLPES_PFIP4RXTRUNC_IP4RXTRUNC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4RXTRUNC_IP4RXTRUNC_SHIFT)
+-#define I40E_GLPES_PFIP4TXFRAGSHI(_i) (0x00011E04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXFRAGSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXFRAGSHI_IP4TXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4TXFRAGSHI_IP4TXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4TXFRAGSHI_IP4TXFRAGSHI_SHIFT)
+-#define I40E_GLPES_PFIP4TXFRAGSLO(_i) (0x00011E00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXFRAGSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXFRAGSLO_IP4TXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4TXFRAGSLO_IP4TXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4TXFRAGSLO_IP4TXFRAGSLO_SHIFT)
+-#define I40E_GLPES_PFIP4TXMCOCTSHI(_i) (0x00012004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXMCOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXMCOCTSHI_IP4TXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4TXMCOCTSHI_IP4TXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4TXMCOCTSHI_IP4TXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4TXMCOCTSLO(_i) (0x00012000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXMCOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXMCOCTSLO_IP4TXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4TXMCOCTSLO_IP4TXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4TXMCOCTSLO_IP4TXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4TXMCPKTSHI(_i) (0x00012204 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXMCPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXMCPKTSHI_IP4TXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4TXMCPKTSHI_IP4TXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4TXMCPKTSHI_IP4TXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4TXMCPKTSLO(_i) (0x00012200 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXMCPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXMCPKTSLO_IP4TXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4TXMCPKTSLO_IP4TXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4TXMCPKTSLO_IP4TXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4TXNOROUTE(_i) (0x00012E00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXNOROUTE_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXNOROUTE_IP4TXNOROUTE_SHIFT 0
+-#define I40E_GLPES_PFIP4TXNOROUTE_IP4TXNOROUTE_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_PFIP4TXNOROUTE_IP4TXNOROUTE_SHIFT)
+-#define I40E_GLPES_PFIP4TXOCTSHI(_i) (0x00011A04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXOCTSHI_IP4TXOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4TXOCTSHI_IP4TXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4TXOCTSHI_IP4TXOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4TXOCTSLO(_i) (0x00011A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXOCTSLO_IP4TXOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4TXOCTSLO_IP4TXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4TXOCTSLO_IP4TXOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP4TXPKTSHI(_i) (0x00011C04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXPKTSHI_IP4TXPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP4TXPKTSHI_IP4TXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP4TXPKTSHI_IP4TXPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP4TXPKTSLO(_i) (0x00011C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP4TXPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP4TXPKTSLO_IP4TXPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP4TXPKTSLO_IP4TXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP4TXPKTSLO_IP4TXPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6RXDISCARD(_i) (0x00011200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXDISCARD_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXDISCARD_IP6RXDISCARD_SHIFT 0
+-#define I40E_GLPES_PFIP6RXDISCARD_IP6RXDISCARD_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXDISCARD_IP6RXDISCARD_SHIFT)
+-#define I40E_GLPES_PFIP6RXFRAGSHI(_i) (0x00011404 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXFRAGSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXFRAGSHI_IP6RXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6RXFRAGSHI_IP6RXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6RXFRAGSHI_IP6RXFRAGSHI_SHIFT)
+-#define I40E_GLPES_PFIP6RXFRAGSLO(_i) (0x00011400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXFRAGSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXFRAGSLO_IP6RXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6RXFRAGSLO_IP6RXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXFRAGSLO_IP6RXFRAGSLO_SHIFT)
+-#define I40E_GLPES_PFIP6RXMCOCTSHI(_i) (0x00011604 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXMCOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXMCOCTSHI_IP6RXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6RXMCOCTSHI_IP6RXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6RXMCOCTSHI_IP6RXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6RXMCOCTSLO(_i) (0x00011600 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXMCOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXMCOCTSLO_IP6RXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6RXMCOCTSLO_IP6RXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXMCOCTSLO_IP6RXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6RXMCPKTSHI(_i) (0x00011804 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXMCPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXMCPKTSHI_IP6RXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6RXMCPKTSHI_IP6RXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6RXMCPKTSHI_IP6RXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6RXMCPKTSLO(_i) (0x00011800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXMCPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXMCPKTSLO_IP6RXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6RXMCPKTSLO_IP6RXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXMCPKTSLO_IP6RXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6RXOCTSHI(_i) (0x00010E04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXOCTSHI_IP6RXOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6RXOCTSHI_IP6RXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6RXOCTSHI_IP6RXOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6RXOCTSLO(_i) (0x00010E00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXOCTSLO_IP6RXOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6RXOCTSLO_IP6RXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXOCTSLO_IP6RXOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6RXPKTSHI(_i) (0x00011004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXPKTSHI_IP6RXPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6RXPKTSHI_IP6RXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6RXPKTSHI_IP6RXPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6RXPKTSLO(_i) (0x00011000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXPKTSLO_IP6RXPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6RXPKTSLO_IP6RXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXPKTSLO_IP6RXPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6RXTRUNC(_i) (0x00011300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6RXTRUNC_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6RXTRUNC_IP6RXTRUNC_SHIFT 0
+-#define I40E_GLPES_PFIP6RXTRUNC_IP6RXTRUNC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6RXTRUNC_IP6RXTRUNC_SHIFT)
+-#define I40E_GLPES_PFIP6TXFRAGSHI(_i) (0x00012804 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXFRAGSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXFRAGSHI_IP6TXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6TXFRAGSHI_IP6TXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6TXFRAGSHI_IP6TXFRAGSHI_SHIFT)
+-#define I40E_GLPES_PFIP6TXFRAGSLO(_i) (0x00012800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXFRAGSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXFRAGSLO_IP6TXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6TXFRAGSLO_IP6TXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6TXFRAGSLO_IP6TXFRAGSLO_SHIFT)
+-#define I40E_GLPES_PFIP6TXMCOCTSHI(_i) (0x00012A04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXMCOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXMCOCTSHI_IP6TXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6TXMCOCTSHI_IP6TXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6TXMCOCTSHI_IP6TXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6TXMCOCTSLO(_i) (0x00012A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXMCOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXMCOCTSLO_IP6TXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6TXMCOCTSLO_IP6TXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6TXMCOCTSLO_IP6TXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6TXMCPKTSHI(_i) (0x00012C04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXMCPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXMCPKTSHI_IP6TXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6TXMCPKTSHI_IP6TXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6TXMCPKTSHI_IP6TXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6TXMCPKTSLO(_i) (0x00012C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXMCPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXMCPKTSLO_IP6TXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6TXMCPKTSLO_IP6TXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6TXMCPKTSLO_IP6TXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6TXNOROUTE(_i) (0x00012F00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXNOROUTE_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXNOROUTE_IP6TXNOROUTE_SHIFT 0
+-#define I40E_GLPES_PFIP6TXNOROUTE_IP6TXNOROUTE_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_PFIP6TXNOROUTE_IP6TXNOROUTE_SHIFT)
+-#define I40E_GLPES_PFIP6TXOCTSHI(_i) (0x00012404 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXOCTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXOCTSHI_IP6TXOCTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6TXOCTSHI_IP6TXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6TXOCTSHI_IP6TXOCTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6TXOCTSLO(_i) (0x00012400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXOCTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXOCTSLO_IP6TXOCTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6TXOCTSLO_IP6TXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6TXOCTSLO_IP6TXOCTSLO_SHIFT)
+-#define I40E_GLPES_PFIP6TXPKTSHI(_i) (0x00012604 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXPKTSHI_IP6TXPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFIP6TXPKTSHI_IP6TXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFIP6TXPKTSHI_IP6TXPKTSHI_SHIFT)
+-#define I40E_GLPES_PFIP6TXPKTSLO(_i) (0x00012600 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFIP6TXPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFIP6TXPKTSLO_IP6TXPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFIP6TXPKTSLO_IP6TXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFIP6TXPKTSLO_IP6TXPKTSLO_SHIFT)
+-#define I40E_GLPES_PFRDMARXRDSHI(_i) (0x00013E04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMARXRDSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMARXRDSHI_RDMARXRDSHI_SHIFT 0
+-#define I40E_GLPES_PFRDMARXRDSHI_RDMARXRDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFRDMARXRDSHI_RDMARXRDSHI_SHIFT)
+-#define I40E_GLPES_PFRDMARXRDSLO(_i) (0x00013E00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMARXRDSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMARXRDSLO_RDMARXRDSLO_SHIFT 0
+-#define I40E_GLPES_PFRDMARXRDSLO_RDMARXRDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMARXRDSLO_RDMARXRDSLO_SHIFT)
+-#define I40E_GLPES_PFRDMARXSNDSHI(_i) (0x00014004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMARXSNDSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMARXSNDSHI_RDMARXSNDSHI_SHIFT 0
+-#define I40E_GLPES_PFRDMARXSNDSHI_RDMARXSNDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFRDMARXSNDSHI_RDMARXSNDSHI_SHIFT)
+-#define I40E_GLPES_PFRDMARXSNDSLO(_i) (0x00014000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMARXSNDSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMARXSNDSLO_RDMARXSNDSLO_SHIFT 0
+-#define I40E_GLPES_PFRDMARXSNDSLO_RDMARXSNDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMARXSNDSLO_RDMARXSNDSLO_SHIFT)
+-#define I40E_GLPES_PFRDMARXWRSHI(_i) (0x00013C04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMARXWRSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMARXWRSHI_RDMARXWRSHI_SHIFT 0
+-#define I40E_GLPES_PFRDMARXWRSHI_RDMARXWRSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFRDMARXWRSHI_RDMARXWRSHI_SHIFT)
+-#define I40E_GLPES_PFRDMARXWRSLO(_i) (0x00013C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMARXWRSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMARXWRSLO_RDMARXWRSLO_SHIFT 0
+-#define I40E_GLPES_PFRDMARXWRSLO_RDMARXWRSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMARXWRSLO_RDMARXWRSLO_SHIFT)
+-#define I40E_GLPES_PFRDMATXRDSHI(_i) (0x00014404 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMATXRDSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMATXRDSHI_RDMARXRDSHI_SHIFT 0
+-#define I40E_GLPES_PFRDMATXRDSHI_RDMARXRDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFRDMATXRDSHI_RDMARXRDSHI_SHIFT)
+-#define I40E_GLPES_PFRDMATXRDSLO(_i) (0x00014400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMATXRDSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMATXRDSLO_RDMARXRDSLO_SHIFT 0
+-#define I40E_GLPES_PFRDMATXRDSLO_RDMARXRDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMATXRDSLO_RDMARXRDSLO_SHIFT)
+-#define I40E_GLPES_PFRDMATXSNDSHI(_i) (0x00014604 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMATXSNDSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMATXSNDSHI_RDMARXSNDSHI_SHIFT 0
+-#define I40E_GLPES_PFRDMATXSNDSHI_RDMARXSNDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFRDMATXSNDSHI_RDMARXSNDSHI_SHIFT)
+-#define I40E_GLPES_PFRDMATXSNDSLO(_i) (0x00014600 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMATXSNDSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMATXSNDSLO_RDMARXSNDSLO_SHIFT 0
+-#define I40E_GLPES_PFRDMATXSNDSLO_RDMARXSNDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMATXSNDSLO_RDMARXSNDSLO_SHIFT)
+-#define I40E_GLPES_PFRDMATXWRSHI(_i) (0x00014204 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMATXWRSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMATXWRSHI_RDMARXWRSHI_SHIFT 0
+-#define I40E_GLPES_PFRDMATXWRSHI_RDMARXWRSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFRDMATXWRSHI_RDMARXWRSHI_SHIFT)
+-#define I40E_GLPES_PFRDMATXWRSLO(_i) (0x00014200 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMATXWRSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMATXWRSLO_RDMARXWRSLO_SHIFT 0
+-#define I40E_GLPES_PFRDMATXWRSLO_RDMARXWRSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMATXWRSLO_RDMARXWRSLO_SHIFT)
+-#define I40E_GLPES_PFRDMAVBNDHI(_i) (0x00014804 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMAVBNDHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMAVBNDHI_RDMAVBNDHI_SHIFT 0
+-#define I40E_GLPES_PFRDMAVBNDHI_RDMAVBNDHI_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMAVBNDHI_RDMAVBNDHI_SHIFT)
+-#define I40E_GLPES_PFRDMAVBNDLO(_i) (0x00014800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMAVBNDLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMAVBNDLO_RDMAVBNDLO_SHIFT 0
+-#define I40E_GLPES_PFRDMAVBNDLO_RDMAVBNDLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMAVBNDLO_RDMAVBNDLO_SHIFT)
+-#define I40E_GLPES_PFRDMAVINVHI(_i) (0x00014A04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMAVINVHI_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMAVINVHI_RDMAVINVHI_SHIFT 0
+-#define I40E_GLPES_PFRDMAVINVHI_RDMAVINVHI_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMAVINVHI_RDMAVINVHI_SHIFT)
+-#define I40E_GLPES_PFRDMAVINVLO(_i) (0x00014A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRDMAVINVLO_MAX_INDEX 15
+-#define I40E_GLPES_PFRDMAVINVLO_RDMAVINVLO_SHIFT 0
+-#define I40E_GLPES_PFRDMAVINVLO_RDMAVINVLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFRDMAVINVLO_RDMAVINVLO_SHIFT)
+-#define I40E_GLPES_PFRXVLANERR(_i) (0x00010000 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFRXVLANERR_MAX_INDEX 15
+-#define I40E_GLPES_PFRXVLANERR_RXVLANERR_SHIFT 0
+-#define I40E_GLPES_PFRXVLANERR_RXVLANERR_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_PFRXVLANERR_RXVLANERR_SHIFT)
+-#define I40E_GLPES_PFTCPRTXSEG(_i) (0x00013600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPRTXSEG_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPRTXSEG_TCPRTXSEG_SHIFT 0
+-#define I40E_GLPES_PFTCPRTXSEG_TCPRTXSEG_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFTCPRTXSEG_TCPRTXSEG_SHIFT)
+-#define I40E_GLPES_PFTCPRXOPTERR(_i) (0x00013200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPRXOPTERR_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPRXOPTERR_TCPRXOPTERR_SHIFT 0
+-#define I40E_GLPES_PFTCPRXOPTERR_TCPRXOPTERR_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_PFTCPRXOPTERR_TCPRXOPTERR_SHIFT)
+-#define I40E_GLPES_PFTCPRXPROTOERR(_i) (0x00013300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPRXPROTOERR_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPRXPROTOERR_TCPRXPROTOERR_SHIFT 0
+-#define I40E_GLPES_PFTCPRXPROTOERR_TCPRXPROTOERR_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_PFTCPRXPROTOERR_TCPRXPROTOERR_SHIFT)
+-#define I40E_GLPES_PFTCPRXSEGSHI(_i) (0x00013004 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPRXSEGSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPRXSEGSHI_TCPRXSEGSHI_SHIFT 0
+-#define I40E_GLPES_PFTCPRXSEGSHI_TCPRXSEGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFTCPRXSEGSHI_TCPRXSEGSHI_SHIFT)
+-#define I40E_GLPES_PFTCPRXSEGSLO(_i) (0x00013000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPRXSEGSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPRXSEGSLO_TCPRXSEGSLO_SHIFT 0
+-#define I40E_GLPES_PFTCPRXSEGSLO_TCPRXSEGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFTCPRXSEGSLO_TCPRXSEGSLO_SHIFT)
+-#define I40E_GLPES_PFTCPTXSEGHI(_i) (0x00013404 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPTXSEGHI_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPTXSEGHI_TCPTXSEGHI_SHIFT 0
+-#define I40E_GLPES_PFTCPTXSEGHI_TCPTXSEGHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFTCPTXSEGHI_TCPTXSEGHI_SHIFT)
+-#define I40E_GLPES_PFTCPTXSEGLO(_i) (0x00013400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFTCPTXSEGLO_MAX_INDEX 15
+-#define I40E_GLPES_PFTCPTXSEGLO_TCPTXSEGLO_SHIFT 0
+-#define I40E_GLPES_PFTCPTXSEGLO_TCPTXSEGLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFTCPTXSEGLO_TCPTXSEGLO_SHIFT)
+-#define I40E_GLPES_PFUDPRXPKTSHI(_i) (0x00013804 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFUDPRXPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFUDPRXPKTSHI_UDPRXPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFUDPRXPKTSHI_UDPRXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFUDPRXPKTSHI_UDPRXPKTSHI_SHIFT)
+-#define I40E_GLPES_PFUDPRXPKTSLO(_i) (0x00013800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFUDPRXPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFUDPRXPKTSLO_UDPRXPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFUDPRXPKTSLO_UDPRXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFUDPRXPKTSLO_UDPRXPKTSLO_SHIFT)
+-#define I40E_GLPES_PFUDPTXPKTSHI(_i) (0x00013A04 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFUDPTXPKTSHI_MAX_INDEX 15
+-#define I40E_GLPES_PFUDPTXPKTSHI_UDPTXPKTSHI_SHIFT 0
+-#define I40E_GLPES_PFUDPTXPKTSHI_UDPTXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_PFUDPTXPKTSHI_UDPTXPKTSHI_SHIFT)
+-#define I40E_GLPES_PFUDPTXPKTSLO(_i) (0x00013A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_PFUDPTXPKTSLO_MAX_INDEX 15
+-#define I40E_GLPES_PFUDPTXPKTSLO_UDPTXPKTSLO_SHIFT 0
+-#define I40E_GLPES_PFUDPTXPKTSLO_UDPTXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_PFUDPTXPKTSLO_UDPTXPKTSLO_SHIFT)
+-#define I40E_GLPES_RDMARXMULTFPDUSHI 0x0001E014 /* Reset: PE_CORER */
+-#define I40E_GLPES_RDMARXMULTFPDUSHI_RDMARXMULTFPDUSHI_SHIFT 0
+-#define I40E_GLPES_RDMARXMULTFPDUSHI_RDMARXMULTFPDUSHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_RDMARXMULTFPDUSHI_RDMARXMULTFPDUSHI_SHIFT)
+-#define I40E_GLPES_RDMARXMULTFPDUSLO 0x0001E010 /* Reset: PE_CORER */
+-#define I40E_GLPES_RDMARXMULTFPDUSLO_RDMARXMULTFPDUSLO_SHIFT 0
+-#define I40E_GLPES_RDMARXMULTFPDUSLO_RDMARXMULTFPDUSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_RDMARXMULTFPDUSLO_RDMARXMULTFPDUSLO_SHIFT)
+-#define I40E_GLPES_RDMARXOOODDPHI 0x0001E01C /* Reset: PE_CORER */
+-#define I40E_GLPES_RDMARXOOODDPHI_RDMARXOOODDPHI_SHIFT 0
+-#define I40E_GLPES_RDMARXOOODDPHI_RDMARXOOODDPHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_RDMARXOOODDPHI_RDMARXOOODDPHI_SHIFT)
+-#define I40E_GLPES_RDMARXOOODDPLO 0x0001E018 /* Reset: PE_CORER */
+-#define I40E_GLPES_RDMARXOOODDPLO_RDMARXOOODDPLO_SHIFT 0
+-#define I40E_GLPES_RDMARXOOODDPLO_RDMARXOOODDPLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_RDMARXOOODDPLO_RDMARXOOODDPLO_SHIFT)
+-#define I40E_GLPES_RDMARXOOONOMARK 0x0001E004 /* Reset: PE_CORER */
+-#define I40E_GLPES_RDMARXOOONOMARK_RDMAOOONOMARK_SHIFT 0
+-#define I40E_GLPES_RDMARXOOONOMARK_RDMAOOONOMARK_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_RDMARXOOONOMARK_RDMAOOONOMARK_SHIFT)
+-#define I40E_GLPES_RDMARXUNALIGN 0x0001E000 /* Reset: PE_CORER */
+-#define I40E_GLPES_RDMARXUNALIGN_RDMRXAUNALIGN_SHIFT 0
+-#define I40E_GLPES_RDMARXUNALIGN_RDMRXAUNALIGN_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_RDMARXUNALIGN_RDMRXAUNALIGN_SHIFT)
+-#define I40E_GLPES_TCPRXFOURHOLEHI 0x0001E044 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXFOURHOLEHI_TCPRXFOURHOLEHI_SHIFT 0
+-#define I40E_GLPES_TCPRXFOURHOLEHI_TCPRXFOURHOLEHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPRXFOURHOLEHI_TCPRXFOURHOLEHI_SHIFT)
+-#define I40E_GLPES_TCPRXFOURHOLELO 0x0001E040 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXFOURHOLELO_TCPRXFOURHOLELO_SHIFT 0
+-#define I40E_GLPES_TCPRXFOURHOLELO_TCPRXFOURHOLELO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPRXFOURHOLELO_TCPRXFOURHOLELO_SHIFT)
+-#define I40E_GLPES_TCPRXONEHOLEHI 0x0001E02C /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXONEHOLEHI_TCPRXONEHOLEHI_SHIFT 0
+-#define I40E_GLPES_TCPRXONEHOLEHI_TCPRXONEHOLEHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPRXONEHOLEHI_TCPRXONEHOLEHI_SHIFT)
+-#define I40E_GLPES_TCPRXONEHOLELO 0x0001E028 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXONEHOLELO_TCPRXONEHOLELO_SHIFT 0
+-#define I40E_GLPES_TCPRXONEHOLELO_TCPRXONEHOLELO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPRXONEHOLELO_TCPRXONEHOLELO_SHIFT)
+-#define I40E_GLPES_TCPRXPUREACKHI 0x0001E024 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXPUREACKHI_TCPRXPUREACKSHI_SHIFT 0
+-#define I40E_GLPES_TCPRXPUREACKHI_TCPRXPUREACKSHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPRXPUREACKHI_TCPRXPUREACKSHI_SHIFT)
+-#define I40E_GLPES_TCPRXPUREACKSLO 0x0001E020 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXPUREACKSLO_TCPRXPUREACKLO_SHIFT 0
+-#define I40E_GLPES_TCPRXPUREACKSLO_TCPRXPUREACKLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPRXPUREACKSLO_TCPRXPUREACKLO_SHIFT)
+-#define I40E_GLPES_TCPRXTHREEHOLEHI 0x0001E03C /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXTHREEHOLEHI_TCPRXTHREEHOLEHI_SHIFT 0
+-#define I40E_GLPES_TCPRXTHREEHOLEHI_TCPRXTHREEHOLEHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPRXTHREEHOLEHI_TCPRXTHREEHOLEHI_SHIFT)
+-#define I40E_GLPES_TCPRXTHREEHOLELO 0x0001E038 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXTHREEHOLELO_TCPRXTHREEHOLELO_SHIFT 0
+-#define I40E_GLPES_TCPRXTHREEHOLELO_TCPRXTHREEHOLELO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPRXTHREEHOLELO_TCPRXTHREEHOLELO_SHIFT)
+-#define I40E_GLPES_TCPRXTWOHOLEHI 0x0001E034 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXTWOHOLEHI_TCPRXTWOHOLEHI_SHIFT 0
+-#define I40E_GLPES_TCPRXTWOHOLEHI_TCPRXTWOHOLEHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPRXTWOHOLEHI_TCPRXTWOHOLEHI_SHIFT)
+-#define I40E_GLPES_TCPRXTWOHOLELO 0x0001E030 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPRXTWOHOLELO_TCPRXTWOHOLELO_SHIFT 0
+-#define I40E_GLPES_TCPRXTWOHOLELO_TCPRXTWOHOLELO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPRXTWOHOLELO_TCPRXTWOHOLELO_SHIFT)
+-#define I40E_GLPES_TCPTXRETRANSFASTHI 0x0001E04C /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPTXRETRANSFASTHI_TCPTXRETRANSFASTHI_SHIFT 0
+-#define I40E_GLPES_TCPTXRETRANSFASTHI_TCPTXRETRANSFASTHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPTXRETRANSFASTHI_TCPTXRETRANSFASTHI_SHIFT)
+-#define I40E_GLPES_TCPTXRETRANSFASTLO 0x0001E048 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPTXRETRANSFASTLO_TCPTXRETRANSFASTLO_SHIFT 0
+-#define I40E_GLPES_TCPTXRETRANSFASTLO_TCPTXRETRANSFASTLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPTXRETRANSFASTLO_TCPTXRETRANSFASTLO_SHIFT)
+-#define I40E_GLPES_TCPTXTOUTSFASTHI 0x0001E054 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPTXTOUTSFASTHI_TCPTXTOUTSFASTHI_SHIFT 0
+-#define I40E_GLPES_TCPTXTOUTSFASTHI_TCPTXTOUTSFASTHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPTXTOUTSFASTHI_TCPTXTOUTSFASTHI_SHIFT)
+-#define I40E_GLPES_TCPTXTOUTSFASTLO 0x0001E050 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPTXTOUTSFASTLO_TCPTXTOUTSFASTLO_SHIFT 0
+-#define I40E_GLPES_TCPTXTOUTSFASTLO_TCPTXTOUTSFASTLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPTXTOUTSFASTLO_TCPTXTOUTSFASTLO_SHIFT)
+-#define I40E_GLPES_TCPTXTOUTSHI 0x0001E05C /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPTXTOUTSHI_TCPTXTOUTSHI_SHIFT 0
+-#define I40E_GLPES_TCPTXTOUTSHI_TCPTXTOUTSHI_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_TCPTXTOUTSHI_TCPTXTOUTSHI_SHIFT)
+-#define I40E_GLPES_TCPTXTOUTSLO 0x0001E058 /* Reset: PE_CORER */
+-#define I40E_GLPES_TCPTXTOUTSLO_TCPTXTOUTSLO_SHIFT 0
+-#define I40E_GLPES_TCPTXTOUTSLO_TCPTXTOUTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_TCPTXTOUTSLO_TCPTXTOUTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4RXDISCARD(_i) (0x00018600 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXDISCARD_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXDISCARD_IP4RXDISCARD_SHIFT 0
+-#define I40E_GLPES_VFIP4RXDISCARD_IP4RXDISCARD_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXDISCARD_IP4RXDISCARD_SHIFT)
+-#define I40E_GLPES_VFIP4RXFRAGSHI(_i) (0x00018804 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXFRAGSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXFRAGSHI_IP4RXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4RXFRAGSHI_IP4RXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4RXFRAGSHI_IP4RXFRAGSHI_SHIFT)
+-#define I40E_GLPES_VFIP4RXFRAGSLO(_i) (0x00018800 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXFRAGSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXFRAGSLO_IP4RXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4RXFRAGSLO_IP4RXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXFRAGSLO_IP4RXFRAGSLO_SHIFT)
+-#define I40E_GLPES_VFIP4RXMCOCTSHI(_i) (0x00018A04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXMCOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXMCOCTSHI_IP4RXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4RXMCOCTSHI_IP4RXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4RXMCOCTSHI_IP4RXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4RXMCOCTSLO(_i) (0x00018A00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXMCOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXMCOCTSLO_IP4RXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4RXMCOCTSLO_IP4RXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXMCOCTSLO_IP4RXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4RXMCPKTSHI(_i) (0x00018C04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXMCPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXMCPKTSHI_IP4RXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4RXMCPKTSHI_IP4RXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4RXMCPKTSHI_IP4RXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4RXMCPKTSLO(_i) (0x00018C00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXMCPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXMCPKTSLO_IP4RXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4RXMCPKTSLO_IP4RXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXMCPKTSLO_IP4RXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4RXOCTSHI(_i) (0x00018204 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXOCTSHI_IP4RXOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4RXOCTSHI_IP4RXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4RXOCTSHI_IP4RXOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4RXOCTSLO(_i) (0x00018200 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXOCTSLO_IP4RXOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4RXOCTSLO_IP4RXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXOCTSLO_IP4RXOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4RXPKTSHI(_i) (0x00018404 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXPKTSHI_IP4RXPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4RXPKTSHI_IP4RXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4RXPKTSHI_IP4RXPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4RXPKTSLO(_i) (0x00018400 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXPKTSLO_IP4RXPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4RXPKTSLO_IP4RXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXPKTSLO_IP4RXPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4RXTRUNC(_i) (0x00018700 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4RXTRUNC_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4RXTRUNC_IP4RXTRUNC_SHIFT 0
+-#define I40E_GLPES_VFIP4RXTRUNC_IP4RXTRUNC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4RXTRUNC_IP4RXTRUNC_SHIFT)
+-#define I40E_GLPES_VFIP4TXFRAGSHI(_i) (0x00019E04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXFRAGSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXFRAGSHI_IP4TXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4TXFRAGSHI_IP4TXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4TXFRAGSHI_IP4TXFRAGSHI_SHIFT)
+-#define I40E_GLPES_VFIP4TXFRAGSLO(_i) (0x00019E00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXFRAGSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXFRAGSLO_IP4TXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4TXFRAGSLO_IP4TXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4TXFRAGSLO_IP4TXFRAGSLO_SHIFT)
+-#define I40E_GLPES_VFIP4TXMCOCTSHI(_i) (0x0001A004 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXMCOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXMCOCTSHI_IP4TXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4TXMCOCTSHI_IP4TXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4TXMCOCTSHI_IP4TXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4TXMCOCTSLO(_i) (0x0001A000 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXMCOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXMCOCTSLO_IP4TXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4TXMCOCTSLO_IP4TXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4TXMCOCTSLO_IP4TXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4TXMCPKTSHI(_i) (0x0001A204 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXMCPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXMCPKTSHI_IP4TXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4TXMCPKTSHI_IP4TXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4TXMCPKTSHI_IP4TXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4TXMCPKTSLO(_i) (0x0001A200 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXMCPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXMCPKTSLO_IP4TXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4TXMCPKTSLO_IP4TXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4TXMCPKTSLO_IP4TXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4TXNOROUTE(_i) (0x0001AE00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXNOROUTE_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXNOROUTE_IP4TXNOROUTE_SHIFT 0
+-#define I40E_GLPES_VFIP4TXNOROUTE_IP4TXNOROUTE_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_VFIP4TXNOROUTE_IP4TXNOROUTE_SHIFT)
+-#define I40E_GLPES_VFIP4TXOCTSHI(_i) (0x00019A04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXOCTSHI_IP4TXOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4TXOCTSHI_IP4TXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4TXOCTSHI_IP4TXOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4TXOCTSLO(_i) (0x00019A00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXOCTSLO_IP4TXOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4TXOCTSLO_IP4TXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4TXOCTSLO_IP4TXOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP4TXPKTSHI(_i) (0x00019C04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXPKTSHI_IP4TXPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP4TXPKTSHI_IP4TXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP4TXPKTSHI_IP4TXPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP4TXPKTSLO(_i) (0x00019C00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP4TXPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP4TXPKTSLO_IP4TXPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP4TXPKTSLO_IP4TXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP4TXPKTSLO_IP4TXPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6RXDISCARD(_i) (0x00019200 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXDISCARD_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXDISCARD_IP6RXDISCARD_SHIFT 0
+-#define I40E_GLPES_VFIP6RXDISCARD_IP6RXDISCARD_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXDISCARD_IP6RXDISCARD_SHIFT)
+-#define I40E_GLPES_VFIP6RXFRAGSHI(_i) (0x00019404 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXFRAGSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXFRAGSHI_IP6RXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6RXFRAGSHI_IP6RXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6RXFRAGSHI_IP6RXFRAGSHI_SHIFT)
+-#define I40E_GLPES_VFIP6RXFRAGSLO(_i) (0x00019400 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXFRAGSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXFRAGSLO_IP6RXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6RXFRAGSLO_IP6RXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXFRAGSLO_IP6RXFRAGSLO_SHIFT)
+-#define I40E_GLPES_VFIP6RXMCOCTSHI(_i) (0x00019604 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXMCOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXMCOCTSHI_IP6RXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6RXMCOCTSHI_IP6RXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6RXMCOCTSHI_IP6RXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6RXMCOCTSLO(_i) (0x00019600 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXMCOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXMCOCTSLO_IP6RXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6RXMCOCTSLO_IP6RXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXMCOCTSLO_IP6RXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6RXMCPKTSHI(_i) (0x00019804 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXMCPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXMCPKTSHI_IP6RXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6RXMCPKTSHI_IP6RXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6RXMCPKTSHI_IP6RXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6RXMCPKTSLO(_i) (0x00019800 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXMCPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXMCPKTSLO_IP6RXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6RXMCPKTSLO_IP6RXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXMCPKTSLO_IP6RXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6RXOCTSHI(_i) (0x00018E04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXOCTSHI_IP6RXOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6RXOCTSHI_IP6RXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6RXOCTSHI_IP6RXOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6RXOCTSLO(_i) (0x00018E00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXOCTSLO_IP6RXOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6RXOCTSLO_IP6RXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXOCTSLO_IP6RXOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6RXPKTSHI(_i) (0x00019004 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXPKTSHI_IP6RXPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6RXPKTSHI_IP6RXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6RXPKTSHI_IP6RXPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6RXPKTSLO(_i) (0x00019000 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXPKTSLO_IP6RXPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6RXPKTSLO_IP6RXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXPKTSLO_IP6RXPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6RXTRUNC(_i) (0x00019300 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6RXTRUNC_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6RXTRUNC_IP6RXTRUNC_SHIFT 0
+-#define I40E_GLPES_VFIP6RXTRUNC_IP6RXTRUNC_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6RXTRUNC_IP6RXTRUNC_SHIFT)
+-#define I40E_GLPES_VFIP6TXFRAGSHI(_i) (0x0001A804 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXFRAGSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXFRAGSHI_IP6TXFRAGSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6TXFRAGSHI_IP6TXFRAGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6TXFRAGSHI_IP6TXFRAGSHI_SHIFT)
+-#define I40E_GLPES_VFIP6TXFRAGSLO(_i) (0x0001A800 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXFRAGSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXFRAGSLO_IP6TXFRAGSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6TXFRAGSLO_IP6TXFRAGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6TXFRAGSLO_IP6TXFRAGSLO_SHIFT)
+-#define I40E_GLPES_VFIP6TXMCOCTSHI(_i) (0x0001AA04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXMCOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXMCOCTSHI_IP6TXMCOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6TXMCOCTSHI_IP6TXMCOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6TXMCOCTSHI_IP6TXMCOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6TXMCOCTSLO(_i) (0x0001AA00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXMCOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXMCOCTSLO_IP6TXMCOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6TXMCOCTSLO_IP6TXMCOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6TXMCOCTSLO_IP6TXMCOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6TXMCPKTSHI(_i) (0x0001AC04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXMCPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXMCPKTSHI_IP6TXMCPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6TXMCPKTSHI_IP6TXMCPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6TXMCPKTSHI_IP6TXMCPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6TXMCPKTSLO(_i) (0x0001AC00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXMCPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXMCPKTSLO_IP6TXMCPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6TXMCPKTSLO_IP6TXMCPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6TXMCPKTSLO_IP6TXMCPKTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6TXNOROUTE(_i) (0x0001AF00 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXNOROUTE_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXNOROUTE_IP6TXNOROUTE_SHIFT 0
+-#define I40E_GLPES_VFIP6TXNOROUTE_IP6TXNOROUTE_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_VFIP6TXNOROUTE_IP6TXNOROUTE_SHIFT)
+-#define I40E_GLPES_VFIP6TXOCTSHI(_i) (0x0001A404 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXOCTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXOCTSHI_IP6TXOCTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6TXOCTSHI_IP6TXOCTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6TXOCTSHI_IP6TXOCTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6TXOCTSLO(_i) (0x0001A400 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXOCTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXOCTSLO_IP6TXOCTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6TXOCTSLO_IP6TXOCTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6TXOCTSLO_IP6TXOCTSLO_SHIFT)
+-#define I40E_GLPES_VFIP6TXPKTSHI(_i) (0x0001A604 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXPKTSHI_IP6TXPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFIP6TXPKTSHI_IP6TXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFIP6TXPKTSHI_IP6TXPKTSHI_SHIFT)
+-#define I40E_GLPES_VFIP6TXPKTSLO(_i) (0x0001A600 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFIP6TXPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFIP6TXPKTSLO_IP6TXPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFIP6TXPKTSLO_IP6TXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFIP6TXPKTSLO_IP6TXPKTSLO_SHIFT)
+-#define I40E_GLPES_VFRDMARXRDSHI(_i) (0x0001BE04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMARXRDSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMARXRDSHI_RDMARXRDSHI_SHIFT 0
+-#define I40E_GLPES_VFRDMARXRDSHI_RDMARXRDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFRDMARXRDSHI_RDMARXRDSHI_SHIFT)
+-#define I40E_GLPES_VFRDMARXRDSLO(_i) (0x0001BE00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMARXRDSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMARXRDSLO_RDMARXRDSLO_SHIFT 0
+-#define I40E_GLPES_VFRDMARXRDSLO_RDMARXRDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMARXRDSLO_RDMARXRDSLO_SHIFT)
+-#define I40E_GLPES_VFRDMARXSNDSHI(_i) (0x0001C004 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMARXSNDSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMARXSNDSHI_RDMARXSNDSHI_SHIFT 0
+-#define I40E_GLPES_VFRDMARXSNDSHI_RDMARXSNDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFRDMARXSNDSHI_RDMARXSNDSHI_SHIFT)
+-#define I40E_GLPES_VFRDMARXSNDSLO(_i) (0x0001C000 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMARXSNDSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMARXSNDSLO_RDMARXSNDSLO_SHIFT 0
+-#define I40E_GLPES_VFRDMARXSNDSLO_RDMARXSNDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMARXSNDSLO_RDMARXSNDSLO_SHIFT)
+-#define I40E_GLPES_VFRDMARXWRSHI(_i) (0x0001BC04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMARXWRSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMARXWRSHI_RDMARXWRSHI_SHIFT 0
+-#define I40E_GLPES_VFRDMARXWRSHI_RDMARXWRSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFRDMARXWRSHI_RDMARXWRSHI_SHIFT)
+-#define I40E_GLPES_VFRDMARXWRSLO(_i) (0x0001BC00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMARXWRSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMARXWRSLO_RDMARXWRSLO_SHIFT 0
+-#define I40E_GLPES_VFRDMARXWRSLO_RDMARXWRSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMARXWRSLO_RDMARXWRSLO_SHIFT)
+-#define I40E_GLPES_VFRDMATXRDSHI(_i) (0x0001C404 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMATXRDSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMATXRDSHI_RDMARXRDSHI_SHIFT 0
+-#define I40E_GLPES_VFRDMATXRDSHI_RDMARXRDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFRDMATXRDSHI_RDMARXRDSHI_SHIFT)
+-#define I40E_GLPES_VFRDMATXRDSLO(_i) (0x0001C400 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMATXRDSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMATXRDSLO_RDMARXRDSLO_SHIFT 0
+-#define I40E_GLPES_VFRDMATXRDSLO_RDMARXRDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMATXRDSLO_RDMARXRDSLO_SHIFT)
+-#define I40E_GLPES_VFRDMATXSNDSHI(_i) (0x0001C604 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMATXSNDSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMATXSNDSHI_RDMARXSNDSHI_SHIFT 0
+-#define I40E_GLPES_VFRDMATXSNDSHI_RDMARXSNDSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFRDMATXSNDSHI_RDMARXSNDSHI_SHIFT)
+-#define I40E_GLPES_VFRDMATXSNDSLO(_i) (0x0001C600 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMATXSNDSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMATXSNDSLO_RDMARXSNDSLO_SHIFT 0
+-#define I40E_GLPES_VFRDMATXSNDSLO_RDMARXSNDSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMATXSNDSLO_RDMARXSNDSLO_SHIFT)
+-#define I40E_GLPES_VFRDMATXWRSHI(_i) (0x0001C204 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMATXWRSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMATXWRSHI_RDMARXWRSHI_SHIFT 0
+-#define I40E_GLPES_VFRDMATXWRSHI_RDMARXWRSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFRDMATXWRSHI_RDMARXWRSHI_SHIFT)
+-#define I40E_GLPES_VFRDMATXWRSLO(_i) (0x0001C200 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMATXWRSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMATXWRSLO_RDMARXWRSLO_SHIFT 0
+-#define I40E_GLPES_VFRDMATXWRSLO_RDMARXWRSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMATXWRSLO_RDMARXWRSLO_SHIFT)
+-#define I40E_GLPES_VFRDMAVBNDHI(_i) (0x0001C804 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMAVBNDHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMAVBNDHI_RDMAVBNDHI_SHIFT 0
+-#define I40E_GLPES_VFRDMAVBNDHI_RDMAVBNDHI_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMAVBNDHI_RDMAVBNDHI_SHIFT)
+-#define I40E_GLPES_VFRDMAVBNDLO(_i) (0x0001C800 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMAVBNDLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMAVBNDLO_RDMAVBNDLO_SHIFT 0
+-#define I40E_GLPES_VFRDMAVBNDLO_RDMAVBNDLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMAVBNDLO_RDMAVBNDLO_SHIFT)
+-#define I40E_GLPES_VFRDMAVINVHI(_i) (0x0001CA04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMAVINVHI_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMAVINVHI_RDMAVINVHI_SHIFT 0
+-#define I40E_GLPES_VFRDMAVINVHI_RDMAVINVHI_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMAVINVHI_RDMAVINVHI_SHIFT)
+-#define I40E_GLPES_VFRDMAVINVLO(_i) (0x0001CA00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRDMAVINVLO_MAX_INDEX 31
+-#define I40E_GLPES_VFRDMAVINVLO_RDMAVINVLO_SHIFT 0
+-#define I40E_GLPES_VFRDMAVINVLO_RDMAVINVLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFRDMAVINVLO_RDMAVINVLO_SHIFT)
+-#define I40E_GLPES_VFRXVLANERR(_i) (0x00018000 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFRXVLANERR_MAX_INDEX 31
+-#define I40E_GLPES_VFRXVLANERR_RXVLANERR_SHIFT 0
+-#define I40E_GLPES_VFRXVLANERR_RXVLANERR_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_VFRXVLANERR_RXVLANERR_SHIFT)
+-#define I40E_GLPES_VFTCPRTXSEG(_i) (0x0001B600 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPRTXSEG_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPRTXSEG_TCPRTXSEG_SHIFT 0
+-#define I40E_GLPES_VFTCPRTXSEG_TCPRTXSEG_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFTCPRTXSEG_TCPRTXSEG_SHIFT)
+-#define I40E_GLPES_VFTCPRXOPTERR(_i) (0x0001B200 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPRXOPTERR_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPRXOPTERR_TCPRXOPTERR_SHIFT 0
+-#define I40E_GLPES_VFTCPRXOPTERR_TCPRXOPTERR_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_VFTCPRXOPTERR_TCPRXOPTERR_SHIFT)
+-#define I40E_GLPES_VFTCPRXPROTOERR(_i) (0x0001B300 + ((_i) * 4)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPRXPROTOERR_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPRXPROTOERR_TCPRXPROTOERR_SHIFT 0
+-#define I40E_GLPES_VFTCPRXPROTOERR_TCPRXPROTOERR_MASK I40E_MASK(0xFFFFFF, I40E_GLPES_VFTCPRXPROTOERR_TCPRXPROTOERR_SHIFT)
+-#define I40E_GLPES_VFTCPRXSEGSHI(_i) (0x0001B004 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPRXSEGSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPRXSEGSHI_TCPRXSEGSHI_SHIFT 0
+-#define I40E_GLPES_VFTCPRXSEGSHI_TCPRXSEGSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFTCPRXSEGSHI_TCPRXSEGSHI_SHIFT)
+-#define I40E_GLPES_VFTCPRXSEGSLO(_i) (0x0001B000 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPRXSEGSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPRXSEGSLO_TCPRXSEGSLO_SHIFT 0
+-#define I40E_GLPES_VFTCPRXSEGSLO_TCPRXSEGSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFTCPRXSEGSLO_TCPRXSEGSLO_SHIFT)
+-#define I40E_GLPES_VFTCPTXSEGHI(_i) (0x0001B404 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPTXSEGHI_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPTXSEGHI_TCPTXSEGHI_SHIFT 0
+-#define I40E_GLPES_VFTCPTXSEGHI_TCPTXSEGHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFTCPTXSEGHI_TCPTXSEGHI_SHIFT)
+-#define I40E_GLPES_VFTCPTXSEGLO(_i) (0x0001B400 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFTCPTXSEGLO_MAX_INDEX 31
+-#define I40E_GLPES_VFTCPTXSEGLO_TCPTXSEGLO_SHIFT 0
+-#define I40E_GLPES_VFTCPTXSEGLO_TCPTXSEGLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFTCPTXSEGLO_TCPTXSEGLO_SHIFT)
+-#define I40E_GLPES_VFUDPRXPKTSHI(_i) (0x0001B804 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFUDPRXPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFUDPRXPKTSHI_UDPRXPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFUDPRXPKTSHI_UDPRXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFUDPRXPKTSHI_UDPRXPKTSHI_SHIFT)
+-#define I40E_GLPES_VFUDPRXPKTSLO(_i) (0x0001B800 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFUDPRXPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFUDPRXPKTSLO_UDPRXPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFUDPRXPKTSLO_UDPRXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFUDPRXPKTSLO_UDPRXPKTSLO_SHIFT)
+-#define I40E_GLPES_VFUDPTXPKTSHI(_i) (0x0001BA04 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFUDPTXPKTSHI_MAX_INDEX 31
+-#define I40E_GLPES_VFUDPTXPKTSHI_UDPTXPKTSHI_SHIFT 0
+-#define I40E_GLPES_VFUDPTXPKTSHI_UDPTXPKTSHI_MASK I40E_MASK(0xFFFF, I40E_GLPES_VFUDPTXPKTSHI_UDPTXPKTSHI_SHIFT)
+-#define I40E_GLPES_VFUDPTXPKTSLO(_i) (0x0001BA00 + ((_i) * 8)) /* _i=0...31 */ /* Reset: PE_CORER */
+-#define I40E_GLPES_VFUDPTXPKTSLO_MAX_INDEX 31
+-#define I40E_GLPES_VFUDPTXPKTSLO_UDPTXPKTSLO_SHIFT 0
+-#define I40E_GLPES_VFUDPTXPKTSLO_UDPTXPKTSLO_MASK I40E_MASK(0xFFFFFFFF, I40E_GLPES_VFUDPTXPKTSLO_UDPTXPKTSLO_SHIFT)
+-#define I40E_GLGEN_PME_TO 0x000B81BC /* Reset: POR */
+-#define I40E_GLGEN_PME_TO_PME_TO_FOR_PE_SHIFT 0
+-#define I40E_GLGEN_PME_TO_PME_TO_FOR_PE_MASK I40E_MASK(0x1, I40E_GLGEN_PME_TO_PME_TO_FOR_PE_SHIFT)
+-#define I40E_GLQF_APBVT(_i) (0x00260000 + ((_i) * 4)) /* _i=0...2047 */ /* Reset: CORER */
+-#define I40E_GLQF_APBVT_MAX_INDEX 2047
+-#define I40E_GLQF_APBVT_APBVT_SHIFT 0
+-#define I40E_GLQF_APBVT_APBVT_MASK I40E_MASK(0xFFFFFFFF, I40E_GLQF_APBVT_APBVT_SHIFT)
+-#define I40E_GLQF_FD_PCTYPES(_i) (0x00268000 + ((_i) * 4)) /* _i=0...63 */ /* Reset: POR */
+-#define I40E_GLQF_FD_PCTYPES_MAX_INDEX 63
+-#define I40E_GLQF_FD_PCTYPES_FD_PCTYPE_SHIFT 0
+-#define I40E_GLQF_FD_PCTYPES_FD_PCTYPE_MASK I40E_MASK(0x3F, I40E_GLQF_FD_PCTYPES_FD_PCTYPE_SHIFT)
+-#define I40E_GLQF_FD_MSK(_i, _j) (0x00267200 + ((_i) * 4 + (_j) * 8)) /* _i=0...1, _j=0...63 */ /* Reset: CORER */
+-#define I40E_GLQF_FD_MSK_MAX_INDEX 1
+-#define I40E_GLQF_FD_MSK_MASK_SHIFT 0
+-#define I40E_GLQF_FD_MSK_MASK_MASK I40E_MASK(0xFFFF, I40E_GLQF_FD_MSK_MASK_SHIFT)
+-#define I40E_GLQF_FD_MSK_OFFSET_SHIFT 16
+-#define I40E_GLQF_FD_MSK_OFFSET_MASK I40E_MASK(0x3F, I40E_GLQF_FD_MSK_OFFSET_SHIFT)
+ #define I40E_GLQF_HASH_INSET(_i, _j) (0x00267600 + ((_i) * 4 + (_j) * 8)) /* _i=0...1, _j=0...63 */ /* Reset: CORER */
+-#define I40E_GLQF_HASH_INSET_MAX_INDEX 1
+-#define I40E_GLQF_HASH_INSET_INSET_SHIFT 0
+-#define I40E_GLQF_HASH_INSET_INSET_MASK I40E_MASK(0xFFFFFFFF, I40E_GLQF_HASH_INSET_INSET_SHIFT)
+-#define I40E_GLQF_HASH_MSK(_i, _j) (0x00267A00 + ((_i) * 4 + (_j) * 8)) /* _i=0...1, _j=0...63 */ /* Reset: CORER */
+-#define I40E_GLQF_HASH_MSK_MAX_INDEX 1
+-#define I40E_GLQF_HASH_MSK_MASK_SHIFT 0
+-#define I40E_GLQF_HASH_MSK_MASK_MASK I40E_MASK(0xFFFF, I40E_GLQF_HASH_MSK_MASK_SHIFT)
+-#define I40E_GLQF_HASH_MSK_OFFSET_SHIFT 16
+-#define I40E_GLQF_HASH_MSK_OFFSET_MASK I40E_MASK(0x3F, I40E_GLQF_HASH_MSK_OFFSET_SHIFT)
+ #define I40E_GLQF_ORT(_i) (0x00268900 + ((_i) * 4)) /* _i=0...63 */ /* Reset: CORER */
+-#define I40E_GLQF_ORT_MAX_INDEX 63
+ #define I40E_GLQF_ORT_PIT_INDX_SHIFT 0
+ #define I40E_GLQF_ORT_PIT_INDX_MASK I40E_MASK(0x1F, I40E_GLQF_ORT_PIT_INDX_SHIFT)
+ #define I40E_GLQF_ORT_FIELD_CNT_SHIFT 5
+ #define I40E_GLQF_ORT_FIELD_CNT_MASK I40E_MASK(0x3, I40E_GLQF_ORT_FIELD_CNT_SHIFT)
+ #define I40E_GLQF_ORT_FLX_PAYLOAD_SHIFT 7
+ #define I40E_GLQF_ORT_FLX_PAYLOAD_MASK I40E_MASK(0x1, I40E_GLQF_ORT_FLX_PAYLOAD_SHIFT)
+-#define I40E_GLQF_PIT(_i) (0x00268C80 + ((_i) * 4)) /* _i=0...23 */ /* Reset: CORER */
+-#define I40E_GLQF_PIT_MAX_INDEX 23
+-#define I40E_GLQF_PIT_SOURCE_OFF_SHIFT 0
+-#define I40E_GLQF_PIT_SOURCE_OFF_MASK I40E_MASK(0x1F, I40E_GLQF_PIT_SOURCE_OFF_SHIFT)
+-#define I40E_GLQF_PIT_FSIZE_SHIFT 5
+-#define I40E_GLQF_PIT_FSIZE_MASK I40E_MASK(0x1F, I40E_GLQF_PIT_FSIZE_SHIFT)
+-#define I40E_GLQF_PIT_DEST_OFF_SHIFT 10
+-#define I40E_GLQF_PIT_DEST_OFF_MASK I40E_MASK(0x3F, I40E_GLQF_PIT_DEST_OFF_SHIFT)
+ #define I40E_GLQF_FDEVICTENA(_i) (0x00270384 + ((_i) * 4)) /* _i=0...1 */ /* Reset: CORER */
+-#define I40E_GLQF_FDEVICTENA_MAX_INDEX 1
+-#define I40E_GLQF_FDEVICTENA_GLQF_FDEVICTENA_SHIFT 0
+-#define I40E_GLQF_FDEVICTENA_GLQF_FDEVICTENA_MASK I40E_MASK(0xFFFFFFFF, I40E_GLQF_FDEVICTENA_GLQF_FDEVICTENA_SHIFT)
+-#define I40E_GLQF_FDEVICTFLAG 0x00270280 /* Reset: CORER */
+-#define I40E_GLQF_FDEVICTFLAG_TX_FLAGS_SHIFT 0
+-#define I40E_GLQF_FDEVICTFLAG_TX_FLAGS_MASK I40E_MASK(0xFF, I40E_GLQF_FDEVICTFLAG_TX_FLAGS_SHIFT)
+-#define I40E_GLQF_FDEVICTFLAG_RX_FLAGS_SHIFT 8
+-#define I40E_GLQF_FDEVICTFLAG_RX_FLAGS_MASK I40E_MASK(0xFF, I40E_GLQF_FDEVICTFLAG_RX_FLAGS_SHIFT)
+-#define I40E_PFQF_CTL_2 0x00270300 /* Reset: CORER */
+-#define I40E_PFQF_CTL_2_PEHSIZE_SHIFT 0
+-#define I40E_PFQF_CTL_2_PEHSIZE_MASK I40E_MASK(0x1F, I40E_PFQF_CTL_2_PEHSIZE_SHIFT)
+-#define I40E_PFQF_CTL_2_PEDSIZE_SHIFT 5
+-#define I40E_PFQF_CTL_2_PEDSIZE_MASK I40E_MASK(0x1F, I40E_PFQF_CTL_2_PEDSIZE_SHIFT)
+ /* Redefined for X722 family */
+-#define I40E_X722_PFQF_HLUT(_i) (0x00240000 + ((_i) * 128)) /* _i=0...127 */ /* Reset: CORER */
+-#define I40E_X722_PFQF_HLUT_MAX_INDEX 127
+-#define I40E_X722_PFQF_HLUT_LUT0_SHIFT 0
+-#define I40E_X722_PFQF_HLUT_LUT0_MASK I40E_MASK(0x7F, I40E_X722_PFQF_HLUT_LUT0_SHIFT)
+-#define I40E_X722_PFQF_HLUT_LUT1_SHIFT 8
+-#define I40E_X722_PFQF_HLUT_LUT1_MASK I40E_MASK(0x7F, I40E_X722_PFQF_HLUT_LUT1_SHIFT)
+-#define I40E_X722_PFQF_HLUT_LUT2_SHIFT 16
+-#define I40E_X722_PFQF_HLUT_LUT2_MASK I40E_MASK(0x7F, I40E_X722_PFQF_HLUT_LUT2_SHIFT)
+-#define I40E_X722_PFQF_HLUT_LUT3_SHIFT 24
+-#define I40E_X722_PFQF_HLUT_LUT3_MASK I40E_MASK(0x7F, I40E_X722_PFQF_HLUT_LUT3_SHIFT)
+-#define I40E_PFQF_HREGION(_i) (0x00245400 + ((_i) * 128)) /* _i=0...7 */ /* Reset: CORER */
+-#define I40E_PFQF_HREGION_MAX_INDEX 7
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_0_SHIFT 0
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_0_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_0_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_0_SHIFT 1
+-#define I40E_PFQF_HREGION_REGION_0_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_0_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_1_SHIFT 4
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_1_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_1_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_1_SHIFT 5
+-#define I40E_PFQF_HREGION_REGION_1_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_1_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_2_SHIFT 8
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_2_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_2_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_2_SHIFT 9
+-#define I40E_PFQF_HREGION_REGION_2_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_2_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_3_SHIFT 12
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_3_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_3_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_3_SHIFT 13
+-#define I40E_PFQF_HREGION_REGION_3_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_3_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_4_SHIFT 16
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_4_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_4_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_4_SHIFT 17
+-#define I40E_PFQF_HREGION_REGION_4_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_4_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_5_SHIFT 20
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_5_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_5_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_5_SHIFT 21
+-#define I40E_PFQF_HREGION_REGION_5_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_5_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_6_SHIFT 24
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_6_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_6_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_6_SHIFT 25
+-#define I40E_PFQF_HREGION_REGION_6_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_6_SHIFT)
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_7_SHIFT 28
+-#define I40E_PFQF_HREGION_OVERRIDE_ENA_7_MASK I40E_MASK(0x1, I40E_PFQF_HREGION_OVERRIDE_ENA_7_SHIFT)
+-#define I40E_PFQF_HREGION_REGION_7_SHIFT 29
+-#define I40E_PFQF_HREGION_REGION_7_MASK I40E_MASK(0x7, I40E_PFQF_HREGION_REGION_7_SHIFT)
+-#define I40E_VSIQF_CTL_RSS_LUT_TYPE_SHIFT 8
+-#define I40E_VSIQF_CTL_RSS_LUT_TYPE_MASK I40E_MASK(0x1, I40E_VSIQF_CTL_RSS_LUT_TYPE_SHIFT)
+-#define I40E_VSIQF_HKEY(_i, _VSI) (0x002A0000 + ((_i) * 2048 + (_VSI) * 4)) /* _i=0...12, _VSI=0...383 */ /* Reset: CORER */
+-#define I40E_VSIQF_HKEY_MAX_INDEX 12
+-#define I40E_VSIQF_HKEY_KEY_0_SHIFT 0
+-#define I40E_VSIQF_HKEY_KEY_0_MASK I40E_MASK(0xFF, I40E_VSIQF_HKEY_KEY_0_SHIFT)
+-#define I40E_VSIQF_HKEY_KEY_1_SHIFT 8
+-#define I40E_VSIQF_HKEY_KEY_1_MASK I40E_MASK(0xFF, I40E_VSIQF_HKEY_KEY_1_SHIFT)
+-#define I40E_VSIQF_HKEY_KEY_2_SHIFT 16
+-#define I40E_VSIQF_HKEY_KEY_2_MASK I40E_MASK(0xFF, I40E_VSIQF_HKEY_KEY_2_SHIFT)
+-#define I40E_VSIQF_HKEY_KEY_3_SHIFT 24
+-#define I40E_VSIQF_HKEY_KEY_3_MASK I40E_MASK(0xFF, I40E_VSIQF_HKEY_KEY_3_SHIFT)
+-#define I40E_VSIQF_HLUT(_i, _VSI) (0x00220000 + ((_i) * 2048 + (_VSI) * 4)) /* _i=0...15, _VSI=0...383 */ /* Reset: CORER */
+-#define I40E_VSIQF_HLUT_MAX_INDEX 15
+-#define I40E_VSIQF_HLUT_LUT0_SHIFT 0
+-#define I40E_VSIQF_HLUT_LUT0_MASK I40E_MASK(0xF, I40E_VSIQF_HLUT_LUT0_SHIFT)
+-#define I40E_VSIQF_HLUT_LUT1_SHIFT 8
+-#define I40E_VSIQF_HLUT_LUT1_MASK I40E_MASK(0xF, I40E_VSIQF_HLUT_LUT1_SHIFT)
+-#define I40E_VSIQF_HLUT_LUT2_SHIFT 16
+-#define I40E_VSIQF_HLUT_LUT2_MASK I40E_MASK(0xF, I40E_VSIQF_HLUT_LUT2_SHIFT)
+-#define I40E_VSIQF_HLUT_LUT3_SHIFT 24
+-#define I40E_VSIQF_HLUT_LUT3_MASK I40E_MASK(0xF, I40E_VSIQF_HLUT_LUT3_SHIFT)
+ #define I40E_GLGEN_STAT_CLEAR 0x00390004 /* Reset: CORER */
+-#define I40E_GLGEN_STAT_CLEAR_GLGEN_STAT_CLEAR_SHIFT 0
+-#define I40E_GLGEN_STAT_CLEAR_GLGEN_STAT_CLEAR_MASK I40E_MASK(0x1, I40E_GLGEN_STAT_CLEAR_GLGEN_STAT_CLEAR_SHIFT)
+-#define I40E_GLGEN_STAT_HALT 0x00390000 /* Reset: CORER */
+-#define I40E_GLGEN_STAT_HALT_HALT_CELLS_SHIFT 0
+-#define I40E_GLGEN_STAT_HALT_HALT_CELLS_MASK I40E_MASK(0x3FFFFFFF, I40E_GLGEN_STAT_HALT_HALT_CELLS_SHIFT)
+-#define I40E_VFINT_DYN_CTL01_WB_ON_ITR_SHIFT 30
+-#define I40E_VFINT_DYN_CTL01_WB_ON_ITR_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTL01_WB_ON_ITR_SHIFT)
+-#define I40E_VFINT_DYN_CTLN1_WB_ON_ITR_SHIFT 30
+-#define I40E_VFINT_DYN_CTLN1_WB_ON_ITR_MASK I40E_MASK(0x1, I40E_VFINT_DYN_CTLN1_WB_ON_ITR_SHIFT)
+-#define I40E_VFPE_AEQALLOC1 0x0000A400 /* Reset: VFR */
+-#define I40E_VFPE_AEQALLOC1_AECOUNT_SHIFT 0
+-#define I40E_VFPE_AEQALLOC1_AECOUNT_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_AEQALLOC1_AECOUNT_SHIFT)
+-#define I40E_VFPE_CCQPHIGH1 0x00009800 /* Reset: VFR */
+-#define I40E_VFPE_CCQPHIGH1_PECCQPHIGH_SHIFT 0
+-#define I40E_VFPE_CCQPHIGH1_PECCQPHIGH_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_CCQPHIGH1_PECCQPHIGH_SHIFT)
+-#define I40E_VFPE_CCQPLOW1 0x0000AC00 /* Reset: VFR */
+-#define I40E_VFPE_CCQPLOW1_PECCQPLOW_SHIFT 0
+-#define I40E_VFPE_CCQPLOW1_PECCQPLOW_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_CCQPLOW1_PECCQPLOW_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS1 0x0000B800 /* Reset: VFR */
+-#define I40E_VFPE_CCQPSTATUS1_CCQP_DONE_SHIFT 0
+-#define I40E_VFPE_CCQPSTATUS1_CCQP_DONE_MASK I40E_MASK(0x1, I40E_VFPE_CCQPSTATUS1_CCQP_DONE_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS1_HMC_PROFILE_SHIFT 4
+-#define I40E_VFPE_CCQPSTATUS1_HMC_PROFILE_MASK I40E_MASK(0x7, I40E_VFPE_CCQPSTATUS1_HMC_PROFILE_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS1_RDMA_EN_VFS_SHIFT 16
+-#define I40E_VFPE_CCQPSTATUS1_RDMA_EN_VFS_MASK I40E_MASK(0x3F, I40E_VFPE_CCQPSTATUS1_RDMA_EN_VFS_SHIFT)
+-#define I40E_VFPE_CCQPSTATUS1_CCQP_ERR_SHIFT 31
+-#define I40E_VFPE_CCQPSTATUS1_CCQP_ERR_MASK I40E_MASK(0x1, I40E_VFPE_CCQPSTATUS1_CCQP_ERR_SHIFT)
+-#define I40E_VFPE_CQACK1 0x0000B000 /* Reset: VFR */
+-#define I40E_VFPE_CQACK1_PECQID_SHIFT 0
+-#define I40E_VFPE_CQACK1_PECQID_MASK I40E_MASK(0x1FFFF, I40E_VFPE_CQACK1_PECQID_SHIFT)
+-#define I40E_VFPE_CQARM1 0x0000B400 /* Reset: VFR */
+-#define I40E_VFPE_CQARM1_PECQID_SHIFT 0
+-#define I40E_VFPE_CQARM1_PECQID_MASK I40E_MASK(0x1FFFF, I40E_VFPE_CQARM1_PECQID_SHIFT)
+-#define I40E_VFPE_CQPDB1 0x0000BC00 /* Reset: VFR */
+-#define I40E_VFPE_CQPDB1_WQHEAD_SHIFT 0
+-#define I40E_VFPE_CQPDB1_WQHEAD_MASK I40E_MASK(0x7FF, I40E_VFPE_CQPDB1_WQHEAD_SHIFT)
+-#define I40E_VFPE_CQPERRCODES1 0x00009C00 /* Reset: VFR */
+-#define I40E_VFPE_CQPERRCODES1_CQP_MINOR_CODE_SHIFT 0
+-#define I40E_VFPE_CQPERRCODES1_CQP_MINOR_CODE_MASK I40E_MASK(0xFFFF, I40E_VFPE_CQPERRCODES1_CQP_MINOR_CODE_SHIFT)
+-#define I40E_VFPE_CQPERRCODES1_CQP_MAJOR_CODE_SHIFT 16
+-#define I40E_VFPE_CQPERRCODES1_CQP_MAJOR_CODE_MASK I40E_MASK(0xFFFF, I40E_VFPE_CQPERRCODES1_CQP_MAJOR_CODE_SHIFT)
+-#define I40E_VFPE_CQPTAIL1 0x0000A000 /* Reset: VFR */
+-#define I40E_VFPE_CQPTAIL1_WQTAIL_SHIFT 0
+-#define I40E_VFPE_CQPTAIL1_WQTAIL_MASK I40E_MASK(0x7FF, I40E_VFPE_CQPTAIL1_WQTAIL_SHIFT)
+-#define I40E_VFPE_CQPTAIL1_CQP_OP_ERR_SHIFT 31
+-#define I40E_VFPE_CQPTAIL1_CQP_OP_ERR_MASK I40E_MASK(0x1, I40E_VFPE_CQPTAIL1_CQP_OP_ERR_SHIFT)
+-#define I40E_VFPE_IPCONFIG01 0x00008C00 /* Reset: VFR */
+-#define I40E_VFPE_IPCONFIG01_PEIPID_SHIFT 0
+-#define I40E_VFPE_IPCONFIG01_PEIPID_MASK I40E_MASK(0xFFFF, I40E_VFPE_IPCONFIG01_PEIPID_SHIFT)
+-#define I40E_VFPE_IPCONFIG01_USEENTIREIDRANGE_SHIFT 16
+-#define I40E_VFPE_IPCONFIG01_USEENTIREIDRANGE_MASK I40E_MASK(0x1, I40E_VFPE_IPCONFIG01_USEENTIREIDRANGE_SHIFT)
+-#define I40E_VFPE_MRTEIDXMASK1 0x00009000 /* Reset: VFR */
+-#define I40E_VFPE_MRTEIDXMASK1_MRTEIDXMASKBITS_SHIFT 0
+-#define I40E_VFPE_MRTEIDXMASK1_MRTEIDXMASKBITS_MASK I40E_MASK(0x1F, I40E_VFPE_MRTEIDXMASK1_MRTEIDXMASKBITS_SHIFT)
+-#define I40E_VFPE_RCVUNEXPECTEDERROR1 0x00009400 /* Reset: VFR */
+-#define I40E_VFPE_RCVUNEXPECTEDERROR1_TCP_RX_UNEXP_ERR_SHIFT 0
+-#define I40E_VFPE_RCVUNEXPECTEDERROR1_TCP_RX_UNEXP_ERR_MASK I40E_MASK(0xFFFFFF, I40E_VFPE_RCVUNEXPECTEDERROR1_TCP_RX_UNEXP_ERR_SHIFT)
+-#define I40E_VFPE_TCPNOWTIMER1 0x0000A800 /* Reset: VFR */
+-#define I40E_VFPE_TCPNOWTIMER1_TCP_NOW_SHIFT 0
+-#define I40E_VFPE_TCPNOWTIMER1_TCP_NOW_MASK I40E_MASK(0xFFFFFFFF, I40E_VFPE_TCPNOWTIMER1_TCP_NOW_SHIFT)
+-#define I40E_VFPE_WQEALLOC1 0x0000C000 /* Reset: VFR */
+-#define I40E_VFPE_WQEALLOC1_PEQPID_SHIFT 0
+-#define I40E_VFPE_WQEALLOC1_PEQPID_MASK I40E_MASK(0x3FFFF, I40E_VFPE_WQEALLOC1_PEQPID_SHIFT)
+-#define I40E_VFPE_WQEALLOC1_WQE_DESC_INDEX_SHIFT 20
+-#define I40E_VFPE_WQEALLOC1_WQE_DESC_INDEX_MASK I40E_MASK(0xFFF, I40E_VFPE_WQEALLOC1_WQE_DESC_INDEX_SHIFT)
+ #endif /* _I40E_REGISTER_H_ */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+index 36d37f31a287..9b8ca024e1c0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+@@ -18,10 +18,7 @@
+ #define I40E_ITR_DYNAMIC	0x8000	/* use top bit as a flag */
+ #define I40E_ITR_MASK		0x1FFE	/* mask for ITR register value */
+ #define I40E_MIN_ITR		     2	/* reg uses 2 usec resolution */
+-#define I40E_ITR_100K		    10	/* all values below must be even */
+-#define I40E_ITR_50K		    20
+ #define I40E_ITR_20K		    50
+-#define I40E_ITR_18K		    60
+ #define I40E_ITR_8K		   122
+ #define I40E_MAX_ITR		  8160	/* maximum value as per datasheet */
+ #define ITR_TO_REG(setting) ((setting) & ~I40E_ITR_DYNAMIC)
+@@ -52,9 +49,6 @@ static inline u16 i40e_intrl_usec_to_reg(int intrl)
+ 	else
+ 		return 0;
+ }
+-#define I40E_INTRL_8K              125     /* 8000 ints/sec */
+-#define I40E_INTRL_62K             16      /* 62500 ints/sec */
+-#define I40E_INTRL_83K             12      /* 83333 ints/sec */
+ 
+ #define I40E_QUEUE_END_OF_LIST 0x7FF
+ 
+@@ -73,7 +67,6 @@ enum i40e_dyn_idx_t {
+ /* these are indexes into ITRN registers */
+ #define I40E_RX_ITR    I40E_IDX_ITR0
+ #define I40E_TX_ITR    I40E_IDX_ITR1
+-#define I40E_PE_ITR    I40E_IDX_ITR2
+ 
+ /* Supported RSS offloads */
+ #define I40E_DEFAULT_RSS_HENA ( \
+@@ -193,13 +186,6 @@ static inline bool i40e_test_staterr(union i40e_rx_desc *rx_desc,
+ 
+ /* How many Rx Buffers do we bundle into one write to the hardware ? */
+ #define I40E_RX_BUFFER_WRITE	32	/* Must be power of 2 */
+-#define I40E_RX_INCREMENT(r, i) \
+-	do {					\
+-		(i)++;				\
+-		if ((i) == (r)->count)		\
+-			i = 0;			\
+-		r->next_to_clean = i;		\
+-	} while (0)
+ 
+ #define I40E_RX_NEXT_DESC(r, i, n)		\
+ 	do {					\
+@@ -209,11 +195,6 @@ static inline bool i40e_test_staterr(union i40e_rx_desc *rx_desc,
+ 		(n) = I40E_RX_DESC((r), (i));	\
+ 	} while (0)
+ 
+-#define I40E_RX_NEXT_DESC_PREFETCH(r, i, n)		\
+-	do {						\
+-		I40E_RX_NEXT_DESC((r), (i), (n));	\
+-		prefetch((n));				\
+-	} while (0)
+ 
+ #define I40E_MAX_BUFFER_TXD	8
+ #define I40E_MIN_TX_LEN		17
+@@ -262,15 +243,12 @@ static inline unsigned int i40e_txd_use_count(unsigned int size)
+ 
+ /* Tx Descriptors needed, worst case */
+ #define DESC_NEEDED (MAX_SKB_FRAGS + 6)
+-#define I40E_MIN_DESC_PENDING	4
+ 
+ #define I40E_TX_FLAGS_HW_VLAN		BIT(1)
+ #define I40E_TX_FLAGS_SW_VLAN		BIT(2)
+ #define I40E_TX_FLAGS_TSO		BIT(3)
+ #define I40E_TX_FLAGS_IPV4		BIT(4)
+ #define I40E_TX_FLAGS_IPV6		BIT(5)
+-#define I40E_TX_FLAGS_FCCRC		BIT(6)
+-#define I40E_TX_FLAGS_FSO		BIT(7)
+ #define I40E_TX_FLAGS_TSYN		BIT(8)
+ #define I40E_TX_FLAGS_FD_SB		BIT(9)
+ #define I40E_TX_FLAGS_UDP_TUNNEL	BIT(10)
+@@ -340,9 +318,7 @@ enum i40e_ring_state_t {
+ /* some useful defines for virtchannel interface, which
+  * is the only remaining user of header split
+  */
+-#define I40E_RX_DTYPE_NO_SPLIT      0
+ #define I40E_RX_DTYPE_HEADER_SPLIT  1
+-#define I40E_RX_DTYPE_SPLIT_ALWAYS  2
+ #define I40E_RX_SPLIT_L2      0x1
+ #define I40E_RX_SPLIT_IP      0x2
+ #define I40E_RX_SPLIT_TCP_UDP 0x4
+@@ -452,7 +428,6 @@ static inline void set_ring_xdp(struct i40e_ring *ring)
+ #define I40E_ITR_ADAPTIVE_MAX_USECS	0x007e
+ #define I40E_ITR_ADAPTIVE_LATENCY	0x8000
+ #define I40E_ITR_ADAPTIVE_BULK		0x0000
+-#define ITR_IS_BULK(x) (!((x) & I40E_ITR_ADAPTIVE_LATENCY))
+ 
+ struct i40e_ring_container {
+ 	struct i40e_ring *ring;		/* pointer to linked list of ring(s) */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+index 6ea2867ff60f..898e30f1097c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_type.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+@@ -84,8 +84,6 @@ enum i40e_debug_mask {
+ 						  I40E_GLGEN_MSCA_OPCODE_SHIFT)
+ #define I40E_MDIO_CLAUSE45_OPCODE_WRITE_MASK	I40E_MASK(1, \
+ 						  I40E_GLGEN_MSCA_OPCODE_SHIFT)
+-#define I40E_MDIO_CLAUSE45_OPCODE_READ_INC_ADDR_MASK	I40E_MASK(2, \
+-						I40E_GLGEN_MSCA_OPCODE_SHIFT)
+ #define I40E_MDIO_CLAUSE45_OPCODE_READ_MASK	I40E_MASK(3, \
+ 						I40E_GLGEN_MSCA_OPCODE_SHIFT)
+ 
+@@ -178,21 +176,10 @@ struct i40e_link_status {
+ 	u8 module_type[3];
+ 	/* 1st byte: module identifier */
+ #define I40E_MODULE_TYPE_SFP		0x03
+-#define I40E_MODULE_TYPE_QSFP		0x0D
+ 	/* 2nd byte: ethernet compliance codes for 10/40G */
+-#define I40E_MODULE_TYPE_40G_ACTIVE	0x01
+-#define I40E_MODULE_TYPE_40G_LR4	0x02
+-#define I40E_MODULE_TYPE_40G_SR4	0x04
+-#define I40E_MODULE_TYPE_40G_CR4	0x08
+-#define I40E_MODULE_TYPE_10G_BASE_SR	0x10
+-#define I40E_MODULE_TYPE_10G_BASE_LR	0x20
+-#define I40E_MODULE_TYPE_10G_BASE_LRM	0x40
+-#define I40E_MODULE_TYPE_10G_BASE_ER	0x80
+ 	/* 3rd byte: ethernet compliance codes for 1G */
+ #define I40E_MODULE_TYPE_1000BASE_SX	0x01
+ #define I40E_MODULE_TYPE_1000BASE_LX	0x02
+-#define I40E_MODULE_TYPE_1000BASE_CX	0x04
+-#define I40E_MODULE_TYPE_1000BASE_T	0x08
+ };
+ 
+ struct i40e_phy_info {
+@@ -262,9 +249,6 @@ struct i40e_phy_info {
+ /* Capabilities of a PF or a VF or the whole device */
+ struct i40e_hw_capabilities {
+ 	u32  switch_mode;
+-#define I40E_NVM_IMAGE_TYPE_EVB		0x0
+-#define I40E_NVM_IMAGE_TYPE_CLOUD	0x2
+-#define I40E_NVM_IMAGE_TYPE_UDP_CLOUD	0x3
+ 
+ 	/* Cloud filter modes:
+ 	 * Mode1: Filter on L4 port only
+@@ -273,14 +257,10 @@ struct i40e_hw_capabilities {
+ 	 */
+ #define I40E_CLOUD_FILTER_MODE1	0x6
+ #define I40E_CLOUD_FILTER_MODE2	0x7
+-#define I40E_CLOUD_FILTER_MODE3	0x8
+ #define I40E_SWITCH_MODE_MASK	0xF
+ 
+ 	u32  management_mode;
+ 	u32  mng_protocols_over_mctp;
+-#define I40E_MNG_PROTOCOL_PLDM		0x2
+-#define I40E_MNG_PROTOCOL_OEM_COMMANDS	0x4
+-#define I40E_MNG_PROTOCOL_NCSI		0x8
+ 	u32  npar_enable;
+ 	u32  os2bmc;
+ 	u32  valid_functions;
+@@ -294,13 +274,8 @@ struct i40e_hw_capabilities {
+ 	bool flex10_enable;
+ 	bool flex10_capable;
+ 	u32  flex10_mode;
+-#define I40E_FLEX10_MODE_UNKNOWN	0x0
+-#define I40E_FLEX10_MODE_DCC		0x1
+-#define I40E_FLEX10_MODE_DCI		0x2
+ 
+ 	u32 flex10_status;
+-#define I40E_FLEX10_STATUS_DCC_ERROR	0x1
+-#define I40E_FLEX10_STATUS_VC_MODE	0x2
+ 
+ 	bool sec_rev_disabled;
+ 	bool update_disabled;
+@@ -421,11 +396,8 @@ enum i40e_nvmupd_state {
+ #define I40E_NVM_AQE				0xe
+ #define I40E_NVM_EXEC				0xf
+ 
+-#define I40E_NVM_ADAPT_SHIFT	16
+-#define I40E_NVM_ADAPT_MASK	(0xffff << I40E_NVM_ADAPT_SHIFT)
+ 
+ #define I40E_NVMUPD_MAX_DATA	4096
+-#define I40E_NVMUPD_IFACE_TIMEOUT 2 /* seconds */
+ 
+ struct i40e_nvm_access {
+ 	u32 command;
+@@ -438,7 +410,6 @@ struct i40e_nvm_access {
+ /* (Q)SFP module access definitions */
+ #define I40E_I2C_EEPROM_DEV_ADDR	0xA0
+ #define I40E_I2C_EEPROM_DEV_ADDR2	0xA2
+-#define I40E_MODULE_TYPE_ADDR		0x00
+ #define I40E_MODULE_REVISION_ADDR	0x01
+ #define I40E_MODULE_SFF_8472_COMP	0x5E
+ #define I40E_MODULE_SFF_8472_SWAP	0x5C
+@@ -547,7 +518,6 @@ struct i40e_dcbx_config {
+ #define I40E_DCBX_MODE_CEE	0x1
+ #define I40E_DCBX_MODE_IEEE	0x2
+ 	u8  app_mode;
+-#define I40E_DCBX_APPS_NON_WILLING	0x1
+ 	u32 numapps;
+ 	u32 tlv_status; /* CEE mode TLV status */
+ 	struct i40e_dcb_ets_config etscfg;
+@@ -892,9 +862,6 @@ enum i40e_rx_ptype_payload_layer {
+ #define I40E_RXD_QW1_LENGTH_PBUF_MASK	(0x3FFFULL << \
+ 					 I40E_RXD_QW1_LENGTH_PBUF_SHIFT)
+ 
+-#define I40E_RXD_QW1_LENGTH_HBUF_SHIFT	52
+-#define I40E_RXD_QW1_LENGTH_HBUF_MASK	(0x7FFULL << \
+-					 I40E_RXD_QW1_LENGTH_HBUF_SHIFT)
+ 
+ #define I40E_RXD_QW1_LENGTH_SPH_SHIFT	63
+ #define I40E_RXD_QW1_LENGTH_SPH_MASK	BIT_ULL(I40E_RXD_QW1_LENGTH_SPH_SHIFT)
+@@ -923,7 +890,6 @@ enum i40e_rx_desc_pe_status_bits {
+ 	I40E_RX_DESC_PE_STATUS_IPOPT_SHIFT	= 29
+ };
+ 
+-#define I40E_RX_PROG_STATUS_DESC_LENGTH_SHIFT		38
+ #define I40E_RX_PROG_STATUS_DESC_LENGTH			0x2000000
+ 
+ #define I40E_RX_PROG_STATUS_DESC_QW1_PROGID_SHIFT	2
+@@ -960,8 +926,6 @@ struct i40e_tx_desc {
+ 	__le64 cmd_type_offset_bsz;
+ };
+ 
+-#define I40E_TXD_QW1_DTYPE_SHIFT	0
+-#define I40E_TXD_QW1_DTYPE_MASK		(0xFUL << I40E_TXD_QW1_DTYPE_SHIFT)
+ 
+ enum i40e_tx_desc_dtype_value {
+ 	I40E_TX_DESC_DTYPE_DATA		= 0x0,
+@@ -977,7 +941,6 @@ enum i40e_tx_desc_dtype_value {
+ };
+ 
+ #define I40E_TXD_QW1_CMD_SHIFT	4
+-#define I40E_TXD_QW1_CMD_MASK	(0x3FFUL << I40E_TXD_QW1_CMD_SHIFT)
+ 
+ enum i40e_tx_desc_cmd_bits {
+ 	I40E_TX_DESC_CMD_EOP			= 0x0001,
+@@ -1001,8 +964,6 @@ enum i40e_tx_desc_cmd_bits {
+ };
+ 
+ #define I40E_TXD_QW1_OFFSET_SHIFT	16
+-#define I40E_TXD_QW1_OFFSET_MASK	(0x3FFFFULL << \
+-					 I40E_TXD_QW1_OFFSET_SHIFT)
+ 
+ enum i40e_tx_desc_length_fields {
+ 	/* Note: These are predefined bit offsets */
+@@ -1012,11 +973,8 @@ enum i40e_tx_desc_length_fields {
+ };
+ 
+ #define I40E_TXD_QW1_TX_BUF_SZ_SHIFT	34
+-#define I40E_TXD_QW1_TX_BUF_SZ_MASK	(0x3FFFULL << \
+-					 I40E_TXD_QW1_TX_BUF_SZ_SHIFT)
+ 
+ #define I40E_TXD_QW1_L2TAG1_SHIFT	48
+-#define I40E_TXD_QW1_L2TAG1_MASK	(0xFFFFULL << I40E_TXD_QW1_L2TAG1_SHIFT)
+ 
+ /* Context descriptors */
+ struct i40e_tx_context_desc {
+@@ -1026,11 +984,8 @@ struct i40e_tx_context_desc {
+ 	__le64 type_cmd_tso_mss;
+ };
+ 
+-#define I40E_TXD_CTX_QW1_DTYPE_SHIFT	0
+-#define I40E_TXD_CTX_QW1_DTYPE_MASK	(0xFUL << I40E_TXD_CTX_QW1_DTYPE_SHIFT)
+ 
+ #define I40E_TXD_CTX_QW1_CMD_SHIFT	4
+-#define I40E_TXD_CTX_QW1_CMD_MASK	(0xFFFFUL << I40E_TXD_CTX_QW1_CMD_SHIFT)
+ 
+ enum i40e_tx_ctx_desc_cmd_bits {
+ 	I40E_TX_CTX_DESC_TSO		= 0x01,
+@@ -1045,19 +1000,10 @@ enum i40e_tx_ctx_desc_cmd_bits {
+ };
+ 
+ #define I40E_TXD_CTX_QW1_TSO_LEN_SHIFT	30
+-#define I40E_TXD_CTX_QW1_TSO_LEN_MASK	(0x3FFFFULL << \
+-					 I40E_TXD_CTX_QW1_TSO_LEN_SHIFT)
+ 
+ #define I40E_TXD_CTX_QW1_MSS_SHIFT	50
+-#define I40E_TXD_CTX_QW1_MSS_MASK	(0x3FFFULL << \
+-					 I40E_TXD_CTX_QW1_MSS_SHIFT)
+ 
+-#define I40E_TXD_CTX_QW1_VSI_SHIFT	50
+-#define I40E_TXD_CTX_QW1_VSI_MASK	(0x1FFULL << I40E_TXD_CTX_QW1_VSI_SHIFT)
+ 
+-#define I40E_TXD_CTX_QW0_EXT_IP_SHIFT	0
+-#define I40E_TXD_CTX_QW0_EXT_IP_MASK	(0x3ULL << \
+-					 I40E_TXD_CTX_QW0_EXT_IP_SHIFT)
+ 
+ enum i40e_tx_ctx_desc_eipt_offload {
+ 	I40E_TX_CTX_EXT_IP_NONE		= 0x0,
+@@ -1067,28 +1013,16 @@ enum i40e_tx_ctx_desc_eipt_offload {
+ };
+ 
+ #define I40E_TXD_CTX_QW0_EXT_IPLEN_SHIFT	2
+-#define I40E_TXD_CTX_QW0_EXT_IPLEN_MASK	(0x3FULL << \
+-					 I40E_TXD_CTX_QW0_EXT_IPLEN_SHIFT)
+ 
+ #define I40E_TXD_CTX_QW0_NATT_SHIFT	9
+-#define I40E_TXD_CTX_QW0_NATT_MASK	(0x3ULL << I40E_TXD_CTX_QW0_NATT_SHIFT)
+ 
+ #define I40E_TXD_CTX_UDP_TUNNELING	BIT_ULL(I40E_TXD_CTX_QW0_NATT_SHIFT)
+ #define I40E_TXD_CTX_GRE_TUNNELING	(0x2ULL << I40E_TXD_CTX_QW0_NATT_SHIFT)
+ 
+-#define I40E_TXD_CTX_QW0_EIP_NOINC_SHIFT	11
+-#define I40E_TXD_CTX_QW0_EIP_NOINC_MASK \
+-				       BIT_ULL(I40E_TXD_CTX_QW0_EIP_NOINC_SHIFT)
+ 
+-#define I40E_TXD_CTX_EIP_NOINC_IPID_CONST	I40E_TXD_CTX_QW0_EIP_NOINC_MASK
+ 
+ #define I40E_TXD_CTX_QW0_NATLEN_SHIFT	12
+-#define I40E_TXD_CTX_QW0_NATLEN_MASK	(0X7FULL << \
+-					 I40E_TXD_CTX_QW0_NATLEN_SHIFT)
+ 
+-#define I40E_TXD_CTX_QW0_DECTTL_SHIFT	19
+-#define I40E_TXD_CTX_QW0_DECTTL_MASK	(0xFULL << \
+-					 I40E_TXD_CTX_QW0_DECTTL_SHIFT)
+ 
+ #define I40E_TXD_CTX_QW0_L4T_CS_SHIFT	23
+ #define I40E_TXD_CTX_QW0_L4T_CS_MASK	BIT_ULL(I40E_TXD_CTX_QW0_L4T_CS_SHIFT)
+@@ -1158,11 +1092,8 @@ enum i40e_filter_program_desc_fd_status {
+ 					 I40E_TXD_FLTR_QW0_DEST_VSI_SHIFT)
+ 
+ #define I40E_TXD_FLTR_QW1_CMD_SHIFT	4
+-#define I40E_TXD_FLTR_QW1_CMD_MASK	(0xFFFFULL << \
+-					 I40E_TXD_FLTR_QW1_CMD_SHIFT)
+ 
+ #define I40E_TXD_FLTR_QW1_PCMD_SHIFT	(0x0ULL + I40E_TXD_FLTR_QW1_CMD_SHIFT)
+-#define I40E_TXD_FLTR_QW1_PCMD_MASK	(0x7ULL << I40E_TXD_FLTR_QW1_PCMD_SHIFT)
+ 
+ enum i40e_filter_program_desc_pcmd {
+ 	I40E_FILTER_PROGRAM_DESC_PCMD_ADD_UPDATE	= 0x1,
+@@ -1313,7 +1244,6 @@ struct i40e_hw_port_stats {
+ #define I40E_NVM_OEM_VER_OFF			0x83
+ #define I40E_SR_NVM_DEV_STARTER_VERSION		0x18
+ #define I40E_SR_NVM_WAKE_ON_LAN			0x19
+-#define I40E_SR_ALTERNATE_SAN_MAC_ADDRESS_PTR	0x27
+ #define I40E_SR_NVM_EETRACK_LO			0x2D
+ #define I40E_SR_NVM_EETRACK_HI			0x2E
+ #define I40E_SR_VPD_PTR				0x2F
+@@ -1326,7 +1256,6 @@ struct i40e_hw_port_stats {
+ #define I40E_SR_PCIE_ALT_MODULE_MAX_SIZE	1024
+ #define I40E_SR_CONTROL_WORD_1_SHIFT		0x06
+ #define I40E_SR_CONTROL_WORD_1_MASK	(0x03 << I40E_SR_CONTROL_WORD_1_SHIFT)
+-#define I40E_SR_CONTROL_WORD_1_NVM_BANK_VALID	BIT(5)
+ #define I40E_SR_NVM_MAP_STRUCTURE_TYPE		BIT(12)
+ #define I40E_PTR_TYPE				BIT(15)
+ #define I40E_SR_OCP_CFG_WORD0			0x2B
+@@ -1460,14 +1389,11 @@ struct i40e_lldp_variables {
+ /* Offsets into Alternate Ram */
+ #define I40E_ALT_STRUCT_FIRST_PF_OFFSET		0   /* in dwords */
+ #define I40E_ALT_STRUCT_DWORDS_PER_PF		64   /* in dwords */
+-#define I40E_ALT_STRUCT_OUTER_VLAN_TAG_OFFSET	0xD  /* in dwords */
+-#define I40E_ALT_STRUCT_USER_PRIORITY_OFFSET	0xC  /* in dwords */
+ #define I40E_ALT_STRUCT_MIN_BW_OFFSET		0xE  /* in dwords */
+ #define I40E_ALT_STRUCT_MAX_BW_OFFSET		0xF  /* in dwords */
+ 
+ /* Alternate Ram Bandwidth Masks */
+ #define I40E_ALT_BW_VALUE_MASK		0xFF
+-#define I40E_ALT_BW_RELATIVE_MASK	0x40000000
+ #define I40E_ALT_BW_VALID_MASK		0x80000000
+ 
+ /* RSS Hash Table Size */
+@@ -1526,9 +1452,7 @@ struct i40e_package_header {
+ /* Generic segment header */
+ struct i40e_generic_seg_header {
+ #define SEGMENT_TYPE_METADATA	0x00000001
+-#define SEGMENT_TYPE_NOTES	0x00000002
+ #define SEGMENT_TYPE_I40E	0x00000011
+-#define SEGMENT_TYPE_X722	0x00000012
+ 	u32 type;
+ 	struct i40e_ddp_version version;
+ 	u32 size;
+@@ -1538,7 +1462,6 @@ struct i40e_generic_seg_header {
+ struct i40e_metadata_segment {
+ 	struct i40e_generic_seg_header header;
+ 	struct i40e_ddp_version version;
+-#define I40E_DDP_TRACKID_RDONLY		0
+ #define I40E_DDP_TRACKID_INVALID	0xFFFFFFFF
+ 	u32 track_id;
+ 	char name[I40E_DDP_NAME_SIZE];
+@@ -1572,10 +1495,6 @@ struct i40e_profile_section_header {
+ #define SECTION_TYPE_AQ		0x00000801
+ #define SECTION_TYPE_RB_AQ	0x00001801
+ #define SECTION_TYPE_NOTE	0x80000000
+-#define SECTION_TYPE_NAME	0x80000001
+-#define SECTION_TYPE_PROTO	0x80000002
+-#define SECTION_TYPE_PCTYPE	0x80000003
+-#define SECTION_TYPE_PTYPE	0x80000004
+ 		u32 type;
+ 		u32 offset;
+ 		u32 size;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 631248c0981a..5491215d81de 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -10,7 +10,6 @@
+ 
+ #define I40E_VIRTCHNL_SUPPORTED_QTYPES 2
+ 
+-#define I40E_DEFAULT_NUM_MDD_EVENTS_ALLOWED	3
+ #define I40E_DEFAULT_NUM_INVALID_MSGS_ALLOWED	10
+ 
+ #define I40E_VLAN_PRIORITY_SHIFT	13
+-- 
+2.24.1
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---qydrbevpovamqdah--
