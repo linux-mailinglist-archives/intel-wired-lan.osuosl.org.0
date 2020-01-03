@@ -1,52 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2849612F2E7
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Jan 2020 03:23:54 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23FA012F2E9
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Jan 2020 03:24:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D207387B81;
-	Fri,  3 Jan 2020 02:23:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B380385C9F;
+	Fri,  3 Jan 2020 02:24:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T5Xh+rWMjKbB; Fri,  3 Jan 2020 02:23:52 +0000 (UTC)
+	with ESMTP id 6_u1168WWqw6; Fri,  3 Jan 2020 02:24:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CCB1587B84;
-	Fri,  3 Jan 2020 02:23:51 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3498385C7A;
+	Fri,  3 Jan 2020 02:24:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 729391BF20D
- for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:23:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6462B1BF20D
+ for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:24:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6C3CE864CB
- for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:23:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5FA65864CB
+ for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:24:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aF7RSdHfcxoM for <intel-wired-lan@osuosl.org>;
- Fri,  3 Jan 2020 02:23:48 +0000 (UTC)
+ with ESMTP id n9jak53GYZEH for <intel-wired-lan@osuosl.org>;
+ Fri,  3 Jan 2020 02:24:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 6814F86477
- for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:23:48 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9F73786477
+ for <intel-wired-lan@osuosl.org>; Fri,  3 Jan 2020 02:24:30 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Jan 2020 18:23:47 -0800
-X-IronPort-AV: E=Sophos;i="5.69,389,1571727600"; d="scan'208";a="209957272"
-Received: from jbrandeb-desk.jf.intel.com ([10.166.244.152])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 02 Jan 2020 18:23:47 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Thu,  2 Jan 2020 18:23:42 -0800
-Message-Id: <20200103022342.820175-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.24.1
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Jan 2020 18:24:29 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,389,1571727600"; d="scan'208";a="244773375"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by fmsmga004.fm.intel.com with ESMTP; 02 Jan 2020 18:24:28 -0800
+Received: from orsmsx114.amr.corp.intel.com ([169.254.8.106]) by
+ ORSMSX107.amr.corp.intel.com ([169.254.1.58]) with mapi id 14.03.0439.000;
+ Thu, 2 Jan 2020 18:24:28 -0800
+From: "Brandeburg, Jesse" <jesse.brandeburg@intel.com>
+To: "Brandeburg, Jesse" <jesse.brandeburg@intel.com>,
+ "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v1] i40e: use better trace path
+Thread-Index: AQHVwdrqk7Ghx0SbO0KsJAq7CpfMEafYNgRw
+Date: Fri, 3 Jan 2020 02:24:27 +0000
+Message-ID: <253CF818969A9240AB2054BF91F2C2BC98EFB0F3@ORSMSX114.amr.corp.intel.com>
+References: <20200103020938.816066-1-jesse.brandeburg@intel.com>
+In-Reply-To: <20200103020938.816066-1-jesse.brandeburg@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v2] i40e/iavf: use better trace path
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: use better trace path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,77 +79,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-I'm seeing compilation fail of the i40e/iavf driver for some reason.
-I just checked 5.5-rc4 and the tip of net/net-next and all fail.
-Fails all the way back to v5.1 at least, I didn't check further back.
-
-repro steps:
-$ gcc -v
-gcc version 9.2.1 20190827 (Red Hat 9.2.1-1) (GCC)
-
-$ git checkout -b my-net davem-net/master
-$ make mrproper
-$ make O=../my-net.obj defconfig allmodconfig modules_prepare
-$ make O=../my-net.obj M=drivers/net/ethernet/intel/i40e
-
-make[1]: Entering directory '/home/jbrandeb/git/my-net.obj'
-  CC [M]  drivers/net/ethernet/intel/i40e/i40e_main.o
-In file included from
-/home/jbrandeb/git/linux2/drivers/net/ethernet/intel/i40e/i40e_trace.h:209,
-                 from /home/jbrandeb/git/linux2/drivers/net/ethernet/intel/i40e/i40e_main.c:20:
-/home/jbrandeb/git/linux2/include/trace/define_trace.h:95:42: fatal error: ./i40e_trace.h: No such file or directory
-   95 | #include TRACE_INCLUDE(TRACE_INCLUDE_FILE)
-      |                                          ^
-compilation terminated.
-make[2]: *** [/home/jbrandeb/git/linux2/scripts/Makefile.build:266: drivers/net/ethernet/intel/i40e/i40e_main.o] Error 1
-make[1]: *** [/home/jbrandeb/git/linux2/Makefile:1693: drivers/net/ethernet/intel/i40e] Error 2
-make[1]: Leaving directory '/home/jbrandeb/git/my-net.obj'
-make: *** [Makefile:179: sub-make] Error 2
-
-Just for sanity, I tried building the ice driver the same as above and
-it succeeds, so the build does work for some drivers.
-
-So fix the include path for the i40e driver trace file to be relative
-to the kernel root like (some) other drivers do.
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-
----
-v2: added iavf for the same fix
----
- drivers/net/ethernet/intel/i40e/i40e_trace.h | 2 +-
- drivers/net/ethernet/intel/iavf/iavf_trace.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_trace.h b/drivers/net/ethernet/intel/i40e/i40e_trace.h
-index 424f02077e2e..122a3fcb62b1 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_trace.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_trace.h
-@@ -203,7 +203,7 @@ DEFINE_EVENT(
-  * module.
-  */
- #undef TRACE_INCLUDE_PATH
--#define TRACE_INCLUDE_PATH .
-+#define TRACE_INCLUDE_PATH ../../drivers/net/ethernet/intel/i40e
- #undef TRACE_INCLUDE_FILE
- #define TRACE_INCLUDE_FILE i40e_trace
- #include <trace/define_trace.h>
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_trace.h b/drivers/net/ethernet/intel/iavf/iavf_trace.h
-index 1058e68a02b4..b2674c935c21 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_trace.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_trace.h
-@@ -203,7 +203,7 @@ DEFINE_EVENT(
-  * module.
-  */
- #undef TRACE_INCLUDE_PATH
--#define TRACE_INCLUDE_PATH .
-+#define TRACE_INCLUDE_PATH ../../drivers/net/ethernet/intel/iavf
- #undef TRACE_INCLUDE_FILE
- #define TRACE_INCLUDE_FILE iavf_trace
- #include <trace/define_trace.h>
--- 
-2.24.1
-
+Can ignore this one, I sent a v2 with iavf included.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
