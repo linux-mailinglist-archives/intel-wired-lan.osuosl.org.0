@@ -1,56 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 463B8131018
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2020 11:12:15 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C366A131921
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2020 21:17:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0761820504;
-	Mon,  6 Jan 2020 10:12:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5034486469;
+	Mon,  6 Jan 2020 20:17:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wVO6qGiptrfN; Mon,  6 Jan 2020 10:12:13 +0000 (UTC)
+	with ESMTP id 9NNPfuCif419; Mon,  6 Jan 2020 20:17:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D79AE20501;
-	Mon,  6 Jan 2020 10:12:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 88A3886472;
+	Mon,  6 Jan 2020 20:17:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AA76D1BF29C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 10:12:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 584C81BF378
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 20:17:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A5FE985B4A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 10:12:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 53B1B86D41
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 20:17:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hfn4sVpIsS6b for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jan 2020 10:12:09 +0000 (UTC)
+ with ESMTP id 0P0iSrbQBZa4 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Jan 2020 20:17:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AF37B85A4E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 10:12:09 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A12B486B58
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 20:17:19 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Jan 2020 02:12:09 -0800
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Jan 2020 12:17:18 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,402,1571727600"; d="scan'208";a="271157031"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 06 Jan 2020 02:12:08 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1ioPMm-000HeJ-07; Mon, 06 Jan 2020 18:12:08 +0800
-Date: Mon, 06 Jan 2020 18:11:53 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e1307e9.9gN849P4gvFu+slm%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.69,403,1571727600"; d="scan'208";a="232934741"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by orsmga002.jf.intel.com with ESMTP; 06 Jan 2020 12:17:18 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 6 Jan 2020 12:17:18 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 6 Jan 2020 12:17:17 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Mon, 6 Jan 2020 12:17:17 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "'intel-wired-lan@lists.osuosl.org'" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: virtual-bus[v5]: Implementation of Virtual Bus
+Thread-Index: AdW2ywQY+pzzyfjGRtyb53ICRucqNQOAzWUA
+Date: Mon, 6 Jan 2020 20:17:17 +0000
+Message-ID: <8c819821ba07416a95189db2c57e8648@intel.com>
+References: <2B0E3F215D1AB84DA946C8BEE234CCC97B33B5D6@ORSMSX101.amr.corp.intel.com>
+In-Reply-To: <2B0E3F215D1AB84DA946C8BEE234CCC97B33B5D6@ORSMSX101.amr.corp.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzIzY2RlMDItMjRkNy00MTljLTlhODgtNjJmOTMzOTZiN2FlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiamJtK01MVGljeWFsTjlaOWllY1wvcDFhYkx0YXF5cUZZSktXamJCc2p0eWNhaUNzZzJpS3FqakE0TWV5a3UwdXEifQ==
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- 12afe6269478fcbfd5451376a1e77a02722c4a22
+Subject: Re: [Intel-wired-lan] virtual-bus[v5]: Implementation of Virtual Bus
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,241 +87,49 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 12afe6269478fcbfd5451376a1e77a02722c4a22  i40e: Fix receive buffer starvation for AF_XDP
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Ertman, David M
+> Sent: Thursday, December 19, 2019 4:19 PM
+> To: 'intel-wired-lan@lists.osuosl.org' <intel-wired-lan@lists.osuosl.org>; Patil,
+> Kiran <kiran.patil@intel.com>; Kirsher, Jeffrey T
+> <jeffrey.t.kirsher@intel.com>
+> Subject: [Intel-wired-lan] virtual-bus[v5]: Implementation of Virtual Bus
+> 
+> virtual-bus[v5]: Implementation of Virtual Bus
+> 
+> From: Dave Ertman <david.m.ertman@intel.com>
+> 
+> This is the initial implementation of the Virtual Bus, virtbus_device and
+> virtbus_driver.  The virtual bus is a software based bus intended to support
+> registering virtbus_devices and virtbus_drivers and provide matching
+> between them and probing of the registered drivers.
+> 
+> The bus will support probe/remove shutdown and suspend/resume
+> callbacks.
+> 
+> Kconfig and Makefile alterations are included
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> Signed-off-by: Kiran Patil <kiran.patil@intel.com>
+> ---
+>  Documentation/driver-api/virtual_bus.rst |   59 +++++++
+>  drivers/bus/Kconfig                      |   11 +
+>  drivers/bus/Makefile                     |    1
+>  drivers/bus/virtual_bus.c                |  267
+> ++++++++++++++++++++++++++++++
+>  include/linux/mod_devicetable.h          |    8 +
+>  include/linux/virtual_bus.h              |   57 ++++++
+>  scripts/mod/devicetable-offsets.c        |    3
+>  scripts/mod/file2alias.c                 |    8 +
+>  8 files changed, 414 insertions(+)
+>  create mode 100644 Documentation/driver-api/virtual_bus.rst
+>  create mode 100644 drivers/bus/virtual_bus.c  create mode 100644
+> include/linux/virtual_bus.h
 
-Regressions in current branch:
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-drivers/net/ethernet/intel/i40e/i40e_adminq.c:542:27: error: 'I40E_MINOR_VER_GET_LINK_INFO_X722' undeclared (first use in this function); did you mean 'I40E_MINOR_VER_GET_LINK_INFO_XL710'?
 
-Error ids grouped by kconfigs:
-
-recent_errors
-|-- alpha-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- arm-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- arm64-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- i386-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- i386-allyesconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- i386-randconfig-e002-20200106
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- i386-randconfig-f003-20200106
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- ia64-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- mips-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- mips-allyesconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- parisc-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- powerpc-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- riscv-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- riscv-allyesconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- s390-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- s390-allyesconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- sparc-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- sparc-allyesconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- sparc64-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-allmodconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-allyesconfig
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-fedora-25
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-kexec
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-lkp
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-randconfig-h003-20200106
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-rhel
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-|-- x86_64-rhel-7.6
-|   `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-`-- xtensa-allmodconfig
-    `-- drivers-net-ethernet-intel-i40e-i40e_adminq.c:error:I40E_MINOR_VER_GET_LINK_INFO_X722-undeclared-(first-use-in-this-function)-did-you-mean-I40E_MINOR_VER_GET_LINK_INFO_XL710
-
-elapsed time: 276m
-
-configs tested: 160
-
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-i386                             allyesconfig
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-x86_64               randconfig-e001-20200106
-x86_64               randconfig-e002-20200106
-x86_64               randconfig-e003-20200106
-i386                 randconfig-e001-20200106
-i386                 randconfig-e002-20200106
-i386                 randconfig-e003-20200106
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-i386                 randconfig-f001-20200106
-x86_64               randconfig-f003-20200106
-i386                 randconfig-f002-20200106
-i386                 randconfig-f003-20200106
-x86_64               randconfig-f001-20200106
-x86_64               randconfig-f002-20200106
-x86_64               randconfig-f001-20200105
-x86_64               randconfig-f002-20200105
-i386                 randconfig-f001-20200105
-i386                 randconfig-f002-20200105
-i386                 randconfig-f003-20200105
-csky                 randconfig-a001-20200106
-s390                 randconfig-a001-20200106
-sh                   randconfig-a001-20200106
-xtensa               randconfig-a001-20200106
-openrisc             randconfig-a001-20200106
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-c6x                  randconfig-a001-20200106
-h8300                randconfig-a001-20200106
-microblaze           randconfig-a001-20200106
-nios2                randconfig-a001-20200106
-sparc64              randconfig-a001-20200106
-arm                         at91_dt_defconfig
-x86_64               randconfig-a002-20200105
-i386                 randconfig-a001-20200105
-x86_64               randconfig-a001-20200105
-i386                 randconfig-a002-20200105
-x86_64               randconfig-a003-20200105
-i386                 randconfig-a003-20200105
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-s390                              allnoconfig
-s390                             alldefconfig
-s390                          debug_defconfig
-s390                             allmodconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-s390                             allyesconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-x86_64               randconfig-g001-20200106
-x86_64               randconfig-g002-20200106
-x86_64               randconfig-g003-20200106
-i386                 randconfig-g001-20200106
-i386                 randconfig-g003-20200106
-i386                              allnoconfig
-i386                                defconfig
-i386                             alldefconfig
-x86_64               randconfig-h003-20200106
-x86_64               randconfig-h002-20200106
-i386                 randconfig-h003-20200106
-i386                 randconfig-h002-20200106
-i386                 randconfig-h001-20200106
-x86_64               randconfig-h001-20200106
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-parisc               randconfig-a001-20200106
-mips                 randconfig-a001-20200106
-riscv                randconfig-a001-20200106
-alpha                randconfig-a001-20200106
-m68k                 randconfig-a001-20200106
-nds32                randconfig-a001-20200106
-x86_64               randconfig-b003-20200106
-i386                 randconfig-b001-20200106
-x86_64               randconfig-b002-20200106
-i386                 randconfig-b003-20200106
-x86_64               randconfig-b001-20200106
-i386                 randconfig-b002-20200106
-arm                               allnoconfig
-arm                              allyesconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-x86_64                               rhel-7.6
-x86_64                              fedora-25
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-mips                             allmodconfig
-x86_64               randconfig-d003-20200106
-x86_64               randconfig-d002-20200106
-x86_64               randconfig-d001-20200106
-i386                 randconfig-d002-20200106
-i386                 randconfig-d001-20200106
-i386                 randconfig-d003-20200106
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-riscv                          rv32_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-riscv                    nommu_virt_defconfig
-riscv                            allyesconfig
-arm                              allmodconfig
-arm64                            allmodconfig
-m68k                             allmodconfig
-x86_64               randconfig-c001-20200106
-x86_64               randconfig-c002-20200106
-x86_64               randconfig-c003-20200106
-i386                 randconfig-c001-20200106
-i386                 randconfig-c002-20200106
-
----
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
