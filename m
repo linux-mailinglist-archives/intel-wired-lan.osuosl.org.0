@@ -1,75 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C366A131921
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2020 21:17:23 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5034486469;
-	Mon,  6 Jan 2020 20:17:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9NNPfuCif419; Mon,  6 Jan 2020 20:17:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 88A3886472;
-	Mon,  6 Jan 2020 20:17:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 584C81BF378
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 20:17:20 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 854F513192B
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2020 21:18:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 53B1B86D41
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 20:17:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA1EB87534;
+	Mon,  6 Jan 2020 20:18:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zXlreQXUZo5O; Mon,  6 Jan 2020 20:18:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 08D0A881A0;
+	Mon,  6 Jan 2020 20:18:17 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3C8EB1BF378
+ for <intel-wired-lan@osuosl.org>; Mon,  6 Jan 2020 20:18:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 37F8A20457
+ for <intel-wired-lan@osuosl.org>; Mon,  6 Jan 2020 20:18:15 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0P0iSrbQBZa4 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jan 2020 20:17:19 +0000 (UTC)
+ with ESMTP id Fa7jQGphxsCQ for <intel-wired-lan@osuosl.org>;
+ Mon,  6 Jan 2020 20:18:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A12B486B58
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2020 20:17:19 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id 30A6E20014
+ for <intel-wired-lan@osuosl.org>; Mon,  6 Jan 2020 20:18:13 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Jan 2020 12:17:18 -0800
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Jan 2020 12:18:12 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,403,1571727600"; d="scan'208";a="232934741"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by orsmga002.jf.intel.com with ESMTP; 06 Jan 2020 12:17:18 -0800
+X-IronPort-AV: E=Sophos;i="5.69,403,1571727600"; d="scan'208";a="245696056"
+Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
+ by fmsmga004.fm.intel.com with ESMTP; 06 Jan 2020 12:18:12 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 6 Jan 2020 12:18:12 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 6 Jan 2020 12:17:18 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 6 Jan 2020 12:17:17 -0800
+ 15.1.1713.5; Mon, 6 Jan 2020 12:18:11 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 6 Jan 2020 12:17:17 -0800
+ Mon, 6 Jan 2020 12:18:11 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "'intel-wired-lan@lists.osuosl.org'" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: virtual-bus[v5]: Implementation of Virtual Bus
-Thread-Index: AdW2ywQY+pzzyfjGRtyb53ICRucqNQOAzWUA
-Date: Mon, 6 Jan 2020 20:17:17 +0000
-Message-ID: <8c819821ba07416a95189db2c57e8648@intel.com>
-References: <2B0E3F215D1AB84DA946C8BEE234CCC97B33B5D6@ORSMSX101.amr.corp.intel.com>
-In-Reply-To: <2B0E3F215D1AB84DA946C8BEE234CCC97B33B5D6@ORSMSX101.amr.corp.intel.com>
+To: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net v2] i40e/iavf: use better trace path
+Thread-Index: AQHVwdzZWCRkNSfFbEKYHQATmqWN7afeGQag
+Date: Mon, 6 Jan 2020 20:18:11 +0000
+Message-ID: <94caf87af5d749bc8748a90f4f46cb50@intel.com>
+References: <20200103022342.820175-1-jesse.brandeburg@intel.com>
+In-Reply-To: <20200103022342.820175-1-jesse.brandeburg@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzIzY2RlMDItMjRkNy00MTljLTlhODgtNjJmOTMzOTZiN2FlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiamJtK01MVGljeWFsTjlaOWllY1wvcDFhYkx0YXF5cUZZSktXamJCc2p0eWNhaUNzZzJpS3FqakE0TWV5a3UwdXEifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTVlYWYwMzQtNDJhMy00YTNiLTgxYzQtY2Y1NWIyOWJmYzBiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUURkaWcxSmFNdENrVHFYT2Q2QUh1NkZUYWRhVk5WUG9tRElGeHB4c1RaTzJwbVA5aWxFek5oMk9DUnJYZEZObyJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] virtual-bus[v5]: Implementation of Virtual Bus
+Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e/iavf: use better trace
+ path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,43 +90,56 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Ertman, David M
-> Sent: Thursday, December 19, 2019 4:19 PM
-> To: 'intel-wired-lan@lists.osuosl.org' <intel-wired-lan@lists.osuosl.org>; Patil,
-> Kiran <kiran.patil@intel.com>; Kirsher, Jeffrey T
-> <jeffrey.t.kirsher@intel.com>
-> Subject: [Intel-wired-lan] virtual-bus[v5]: Implementation of Virtual Bus
+> Behalf Of Jesse Brandeburg
+> Sent: Thursday, January 2, 2020 6:24 PM
+> To: intel-wired-lan@osuosl.org
+> Subject: [Intel-wired-lan] [PATCH net v2] i40e/iavf: use better trace path
 > 
-> virtual-bus[v5]: Implementation of Virtual Bus
+> I'm seeing compilation fail of the i40e/iavf driver for some reason.
+> I just checked 5.5-rc4 and the tip of net/net-next and all fail.
+> Fails all the way back to v5.1 at least, I didn't check further back.
 > 
-> From: Dave Ertman <david.m.ertman@intel.com>
+> repro steps:
+> $ gcc -v
+> gcc version 9.2.1 20190827 (Red Hat 9.2.1-1) (GCC)
 > 
-> This is the initial implementation of the Virtual Bus, virtbus_device and
-> virtbus_driver.  The virtual bus is a software based bus intended to support
-> registering virtbus_devices and virtbus_drivers and provide matching
-> between them and probing of the registered drivers.
+> $ git checkout -b my-net davem-net/master $ make mrproper $ make
+> O=../my-net.obj defconfig allmodconfig modules_prepare $ make O=../my-
+> net.obj M=drivers/net/ethernet/intel/i40e
 > 
-> The bus will support probe/remove shutdown and suspend/resume
-> callbacks.
+> make[1]: Entering directory '/home/jbrandeb/git/my-net.obj'
+>   CC [M]  drivers/net/ethernet/intel/i40e/i40e_main.o
+> In file included from
+> /home/jbrandeb/git/linux2/drivers/net/ethernet/intel/i40e/i40e_trace.h:20
+> 9,
+>                  from
+> /home/jbrandeb/git/linux2/drivers/net/ethernet/intel/i40e/i40e_main.c:20:
+> /home/jbrandeb/git/linux2/include/trace/define_trace.h:95:42: fatal error:
+> ./i40e_trace.h: No such file or directory
+>    95 | #include TRACE_INCLUDE(TRACE_INCLUDE_FILE)
+>       |                                          ^
+> compilation terminated.
+> make[2]: *** [/home/jbrandeb/git/linux2/scripts/Makefile.build:266:
+> drivers/net/ethernet/intel/i40e/i40e_main.o] Error 1
+> make[1]: *** [/home/jbrandeb/git/linux2/Makefile:1693:
+> drivers/net/ethernet/intel/i40e] Error 2
+> make[1]: Leaving directory '/home/jbrandeb/git/my-net.obj'
+> make: *** [Makefile:179: sub-make] Error 2
 > 
-> Kconfig and Makefile alterations are included
+> Just for sanity, I tried building the ice driver the same as above and it
+> succeeds, so the build does work for some drivers.
 > 
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> Signed-off-by: Kiran Patil <kiran.patil@intel.com>
+> So fix the include path for the i40e driver trace file to be relative to the kernel
+> root like (some) other drivers do.
+> 
+> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> 
 > ---
->  Documentation/driver-api/virtual_bus.rst |   59 +++++++
->  drivers/bus/Kconfig                      |   11 +
->  drivers/bus/Makefile                     |    1
->  drivers/bus/virtual_bus.c                |  267
-> ++++++++++++++++++++++++++++++
->  include/linux/mod_devicetable.h          |    8 +
->  include/linux/virtual_bus.h              |   57 ++++++
->  scripts/mod/devicetable-offsets.c        |    3
->  scripts/mod/file2alias.c                 |    8 +
->  8 files changed, 414 insertions(+)
->  create mode 100644 Documentation/driver-api/virtual_bus.rst
->  create mode 100644 drivers/bus/virtual_bus.c  create mode 100644
-> include/linux/virtual_bus.h
+> v2: added iavf for the same fix
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_trace.h | 2 +-
+> drivers/net/ethernet/intel/iavf/iavf_trace.h | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
