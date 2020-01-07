@@ -2,74 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87909133767
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2020 00:28:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BB13133768
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2020 00:28:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 01199858B8;
-	Tue,  7 Jan 2020 23:28:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B7D7855DF;
+	Tue,  7 Jan 2020 23:28:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IjzBAYJ3bauh; Tue,  7 Jan 2020 23:28:22 +0000 (UTC)
+	with ESMTP id lyMOigE2aHiD; Tue,  7 Jan 2020 23:28:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 292B78561D;
-	Tue,  7 Jan 2020 23:28:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8DCD88561D;
+	Tue,  7 Jan 2020 23:28:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0DBAB1BF312
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2020 23:28:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 924011BF312
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2020 23:28:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0935485572
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2020 23:28:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8D81585572
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2020 23:28:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QX_8dK-2NBqq for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Jan 2020 23:28:19 +0000 (UTC)
+ with ESMTP id UHRB219Jd0lB for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Jan 2020 23:28:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6D3328513B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2020 23:28:19 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E81D28513B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2020 23:28:53 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2020 15:28:18 -0800
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Jan 2020 15:28:53 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,407,1571727600"; d="scan'208";a="422731404"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga006.fm.intel.com with ESMTP; 07 Jan 2020 15:28:18 -0800
+X-IronPort-AV: E=Sophos;i="5.69,407,1571727600"; d="scan'208";a="395556603"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by orsmga005.jf.intel.com with ESMTP; 07 Jan 2020 15:28:53 -0800
 Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 7 Jan 2020 15:28:17 -0800
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 7 Jan 2020 15:28:52 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
  fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 7 Jan 2020 15:28:17 -0800
+ 15.1.1713.5; Tue, 7 Jan 2020 15:28:52 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Tue, 7 Jan 2020 15:28:16 -0800
+ Tue, 7 Jan 2020 15:28:52 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [net-next v3] i40e: remove unused defines
-Thread-Index: AQHVxO9eiYtOVV4w7kKuwuYR442X26ff2klg
-Date: Tue, 7 Jan 2020 23:28:16 +0000
-Message-ID: <d7126a86c6a5427db7d68d5ca97ab9d0@intel.com>
-References: <20200107000933.906614-1-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20200107000933.906614-1-jeffrey.t.kirsher@intel.com>
+Thread-Topic: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for
+ AF_XDP
+Thread-Index: AQHVw6SUWA51p8+QYUq5fY0K3bQJwKff3Qjw
+Date: Tue, 7 Jan 2020 23:28:52 +0000
+Message-ID: <9cca5b6987e343cb844a549651aa9648@intel.com>
+References: <20200105084600.4025394-1-jeffrey.t.kirsher@intel.com>
+In-Reply-To: <20200105084600.4025394-1-jeffrey.t.kirsher@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMmYxZWJlNTMtMTVjMS00Y2ZkLWJlYzEtYzhjZWU5ZjYyZGZmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZzRmS0RoTks0bERTMEJcL3FVekpLaERzQ1Y5VWViT1IzSFJGZ0pmN3UwSkVhT1ptc1wvU1NcL2dpNXFHa3JwYmdnQyJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMWI5NjIyM2YtMTU3My00ZDA0LTkyOGMtZjM1MWYxODc4MmUwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMVVvMGo1ZU5tTTFZUWZEdVwvMjZFN2xOXC9RNExSVElvd0NtR1NvNk94XC9OMnRRY3RSQitxQUl4U0ZyM04zTEVNZyJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-next v3] i40e: remove unused defines
+Subject: Re: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for
+ AF_XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,35 +92,22 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
 > Behalf Of Jeff Kirsher
-> Sent: Monday, January 6, 2020 4:10 PM
+> Sent: Sunday, January 5, 2020 12:46 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [net-next v3] i40e: remove unused defines
+> Cc: Karlsson, Magnus <magnus.karlsson@intel.com>
+> Subject: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for AF_XDP
 > 
-> From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Magnus's fix to resolve a potential receive buffer starvation for AF_XDP got
+> applied to both the i40e_xsk_umem_enable/disable() functions, when it
+> should have only been applied to the "enable".  So clean up the undesired
+> code in the disable function.
 > 
-> Remove all the unused defines as they are just dead weight.
-> 
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> CC: Magnus Karlsson <magnus.karlsson@intel.com>
+> Fixes: 1f459bdc2007 ("i40e: fix potential RX buffer starvation for AF_XDP")
+> Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 > ---
-> v2: fix patch to apply to current dev-queue branch (where i40e_client.h
->     has moved to include/linux/net/intel/)
-> v3: add back 2 defines that were still in use
-> 
->  drivers/net/ethernet/intel/i40e/i40e.h        |   20 -
->  .../net/ethernet/intel/i40e/i40e_adminq_cmd.h |  482 +-
->  drivers/net/ethernet/intel/i40e/i40e_common.c |    4 -
->  drivers/net/ethernet/intel/i40e/i40e_dcb.h    |    5 -
->  .../net/ethernet/intel/i40e/i40e_debugfs.c    |    1 -
->  drivers/net/ethernet/intel/i40e/i40e_devids.h |    3 -
->  drivers/net/ethernet/intel/i40e/i40e_hmc.h    |    1 -
->  drivers/net/ethernet/intel/i40e/i40e_main.c   |    3 -
->  drivers/net/ethernet/intel/i40e/i40e_osdep.h  |    1 -
->  .../net/ethernet/intel/i40e/i40e_register.h   | 4664 -----------------
->  drivers/net/ethernet/intel/i40e/i40e_txrx.h   |   25 -
->  drivers/net/ethernet/intel/i40e/i40e_type.h   |   81 -
->  .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |    1 -
->  include/linux/net/intel/i40e_client.h         |    5 -
->  14 files changed, 1 insertion(+), 5295 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 -----
+>  1 file changed, 5 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
