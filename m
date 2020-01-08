@@ -1,51 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A33B133CFD
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2020 09:19:31 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB394134F54
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2020 23:22:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 371E887A12;
-	Wed,  8 Jan 2020 08:19:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2370D204BD;
+	Wed,  8 Jan 2020 22:22:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id inqIXBDzmS5f; Wed,  8 Jan 2020 08:19:30 +0000 (UTC)
+	with ESMTP id 3Gz4n-ub0MFi; Wed,  8 Jan 2020 22:22:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 59D6E879CF;
-	Wed,  8 Jan 2020 08:19:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 20CAC204B1;
+	Wed,  8 Jan 2020 22:22:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BAF291BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 08:19:27 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C5E51BF28F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 13:44:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B7265841E9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 08:19:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1824D87CFB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 13:44:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xUUlghN_AQaY for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jan 2020 08:19:27 +0000 (UTC)
+ with ESMTP id LHKFEK4x-MoX for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jan 2020 13:44:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 27694844A8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 08:19:27 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2020 00:19:26 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,409,1571727600"; d="scan'208";a="422849882"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga006.fm.intel.com with ESMTP; 08 Jan 2020 00:19:25 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  8 Jan 2020 10:19:24 +0200
-Message-Id: <20200108081924.20008-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v3] igc: Add PHY power management control
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3062D87C88
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 13:44:22 +0000 (UTC)
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id DAEC7D65DF3EF50D2D83;
+ Wed,  8 Jan 2020 21:44:15 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.175.113.25) by
+ DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
+ 14.3.439.0; Wed, 8 Jan 2020 21:44:09 +0800
+From: Chen Zhou <chenzhou10@huawei.com>
+To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>
+Date: Wed, 8 Jan 2020 21:39:59 +0800
+Message-ID: <20200108133959.93035-1-chenzhou10@huawei.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+X-Originating-IP: [10.175.113.25]
+X-CFilter-Loop: Reflected
+X-Mailman-Approved-At: Wed, 08 Jan 2020 22:22:44 +0000
+Subject: [Intel-wired-lan] [PATCH next] igc: make non-global functions static
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,93 +59,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: chenzhou10@huawei.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-PHY power management control should provide a reliable and accurate
-indication of PHY reset completion and decrease the delay time
-after a PHY reset
+Fix sparse warning:
+drivers/net/ethernet/intel/igc/igc_ptp.c:512:6:
+	warning: symbol 'igc_ptp_tx_work' was not declared. Should it be static?
+drivers/net/ethernet/intel/igc/igc_ptp.c:644:6:
+	warning: symbol 'igc_ptp_suspend' was not declared. Should it be static?
 
-v1 -> v2: add hw_dbg print for a timeout
-v2 -> v3: address some community comments
-
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Chen Zhou <chenzhou10@huawei.com>
 ---
- drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
- drivers/net/ethernet/intel/igc/igc_phy.c     | 16 +++++++++++++++-
- drivers/net/ethernet/intel/igc/igc_regs.h    |  1 +
- 3 files changed, 17 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 9e34b0969322..58efa7a02c68 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -464,6 +464,7 @@
- /* PHY Status Register */
- #define MII_SR_LINK_STATUS	0x0004 /* Link Status 1 = link */
- #define MII_SR_AUTONEG_COMPLETE	0x0020 /* Auto Neg Complete */
-+#define IGC_PHY_RST_COMP	0x0100 /* Internal PHY reset completion */
- 
- /* PHY 1000 MII Register/Bit Definitions */
- /* PHY Registers defined by IEEE */
-diff --git a/drivers/net/ethernet/intel/igc/igc_phy.c b/drivers/net/ethernet/intel/igc/igc_phy.c
-index f4b05af0dd2f..8e1799508edc 100644
---- a/drivers/net/ethernet/intel/igc/igc_phy.c
-+++ b/drivers/net/ethernet/intel/igc/igc_phy.c
-@@ -173,6 +173,7 @@ s32 igc_check_downshift(struct igc_hw *hw)
- s32 igc_phy_hw_reset(struct igc_hw *hw)
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 6935065..389a969 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -509,7 +509,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
+  * This work function polls the TSYNCTXCTL valid bit to determine when a
+  * timestamp has been taken for the current stored skb.
+  */
+-void igc_ptp_tx_work(struct work_struct *work)
++static void igc_ptp_tx_work(struct work_struct *work)
  {
- 	struct igc_phy_info *phy = &hw->phy;
-+	u32 phpm = 0, timeout = 10000;
- 	s32  ret_val;
- 	u32 ctrl;
- 
-@@ -186,6 +187,8 @@ s32 igc_phy_hw_reset(struct igc_hw *hw)
- 	if (ret_val)
- 		goto out;
- 
-+	phpm = rd32(IGC_I225_PHPM);
-+
- 	ctrl = rd32(IGC_CTRL);
- 	wr32(IGC_CTRL, ctrl | IGC_CTRL_PHY_RST);
- 	wrfl();
-@@ -195,7 +198,18 @@ s32 igc_phy_hw_reset(struct igc_hw *hw)
- 	wr32(IGC_CTRL, ctrl);
- 	wrfl();
- 
--	usleep_range(1500, 2000);
-+	/* SW should guarantee 100us for the completion of the PHY reset */
-+	usleep_range(100, 150);
-+	do {
-+		phpm = rd32(IGC_I225_PHPM);
-+		timeout--;
-+		udelay(1);
-+	} while (!(phpm & IGC_PHY_RST_COMP) && timeout);
-+
-+	if (!timeout)
-+		hw_dbg("Timeout is expired after a phy reset\n");
-+
-+	usleep_range(100, 150);
- 
- 	phy->ops.release(hw);
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index c82111051898..164c42b39dfa 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -12,6 +12,7 @@
- #define IGC_MDIC		0x00020  /* MDI Control - RW */
- #define IGC_MDICNFG		0x00E04  /* MDC/MDIO Configuration - RW */
- #define IGC_CONNSW		0x00034  /* Copper/Fiber switch control - RW */
-+#define IGC_I225_PHPM		0x00E14	 /* I225 PHY Power Management */
- 
- /* Internal Packet Buffer Size Registers */
- #define IGC_RXPBS		0x02404  /* Rx Packet Buffer Size - RW */
+ 	struct igc_adapter *adapter = container_of(work, struct igc_adapter,
+ 						   ptp_tx_work);
+@@ -641,7 +641,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
+  * This function stops the overflow check work and PTP Tx timestamp work, and
+  * will prepare the device for OS suspend.
+  */
+-void igc_ptp_suspend(struct igc_adapter *adapter)
++static void igc_ptp_suspend(struct igc_adapter *adapter)
+ {
+ 	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
+ 		return;
 -- 
-2.11.0
+2.7.4
 
 _______________________________________________
 Intel-wired-lan mailing list
