@@ -1,52 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB394134F54
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2020 23:22:48 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EBEEE134F96
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2020 23:47:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2370D204BD;
-	Wed,  8 Jan 2020 22:22:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7CF4C864DA;
+	Wed,  8 Jan 2020 22:47:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3Gz4n-ub0MFi; Wed,  8 Jan 2020 22:22:46 +0000 (UTC)
+	with ESMTP id hMC+XR5l1NST; Wed,  8 Jan 2020 22:47:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 20CAC204B1;
-	Wed,  8 Jan 2020 22:22:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by whitealder.osuosl.org (Postfix) with ESMTP id B44C286969;
+	Wed,  8 Jan 2020 22:47:23 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1C5E51BF28F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 13:44:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E0E381BF3DD
+ for <intel-wired-lan@osuosl.org>; Wed,  8 Jan 2020 22:47:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1824D87CFB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 13:44:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D79D885A2E
+ for <intel-wired-lan@osuosl.org>; Wed,  8 Jan 2020 22:47:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LHKFEK4x-MoX for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jan 2020 13:44:22 +0000 (UTC)
+ with ESMTP id VjS7qr9046UM for <intel-wired-lan@osuosl.org>;
+ Wed,  8 Jan 2020 22:47:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3062D87C88
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2020 13:44:22 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id DAEC7D65DF3EF50D2D83;
- Wed,  8 Jan 2020 21:44:15 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.439.0; Wed, 8 Jan 2020 21:44:09 +0800
-From: Chen Zhou <chenzhou10@huawei.com>
-To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>
-Date: Wed, 8 Jan 2020 21:39:59 +0800
-Message-ID: <20200108133959.93035-1-chenzhou10@huawei.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 51EDC859F8
+ for <intel-wired-lan@osuosl.org>; Wed,  8 Jan 2020 22:47:21 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2020 14:47:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,411,1571727600"; d="scan'208";a="211690086"
+Received: from jekeller-mobl.amr.corp.intel.com (HELO [134.134.177.84])
+ ([134.134.177.84])
+ by orsmga007.jf.intel.com with ESMTP; 08 Jan 2020 14:47:20 -0800
+To: intel-wired-lan@osuosl.org
+References: <20191125142452.21819-1-radoslawx.tyl@intel.com>
+ <7e9bbd9b-ee05-b207-a472-77d03c3ee6ac@molgen.mpg.de>
+ <CAKgT0UexoZWiF7Z745O3FkA+A+f-E31DhD5mGXjweXecrRJtgw@mail.gmail.com>
+ <ff7c1cc5-3bec-3ce7-f584-6fb1ef1f9cbe@gmail.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
+Organization: Intel Corporation
+Message-ID: <35f3bcec-6685-d6c3-8842-09fc1729dd57@intel.com>
+Date: Wed, 8 Jan 2020 14:47:20 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
-X-Mailman-Approved-At: Wed, 08 Jan 2020 22:22:44 +0000
-Subject: [Intel-wired-lan] [PATCH next] igc: make non-global functions static
+In-Reply-To: <ff7c1cc5-3bec-3ce7-f584-6fb1ef1f9cbe@gmail.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v2] ixgbevf: Remove limit of 10
+ entries for unicast filter list
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,51 +69,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: chenzhou10@huawei.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix sparse warning:
-drivers/net/ethernet/intel/igc/igc_ptp.c:512:6:
-	warning: symbol 'igc_ptp_tx_work' was not declared. Should it be static?
-drivers/net/ethernet/intel/igc/igc_ptp.c:644:6:
-	warning: symbol 'igc_ptp_suspend' was not declared. Should it be static?
-
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Chen Zhou <chenzhou10@huawei.com>
----
- drivers/net/ethernet/intel/igc/igc_ptp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 6935065..389a969 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -509,7 +509,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
-  * This work function polls the TSYNCTXCTL valid bit to determine when a
-  * timestamp has been taken for the current stored skb.
-  */
--void igc_ptp_tx_work(struct work_struct *work)
-+static void igc_ptp_tx_work(struct work_struct *work)
- {
- 	struct igc_adapter *adapter = container_of(work, struct igc_adapter,
- 						   ptp_tx_work);
-@@ -641,7 +641,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
-  * This function stops the overflow check work and PTP Tx timestamp work, and
-  * will prepare the device for OS suspend.
-  */
--void igc_ptp_suspend(struct igc_adapter *adapter)
-+static void igc_ptp_suspend(struct igc_adapter *adapter)
- {
- 	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
- 		return;
--- 
-2.7.4
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+CgpPbiAxMS8yNS8yMDE5IDExOjE0IEFNLCBHcmVnb3J5IFJvc2Ugd3JvdGU6Cj4gCj4gSXQncyB0
+b3VnaCB0byByZWNhbGwgZXhhY3RseSB3aGF0IG15IHRoaW5raW5nIHdhcyAtIDggeWVhcnMgaXMg
+YSBsb25nIAo+IHRpbWUuwqAgSG93ZXZlciwgSSB0aGluayB5b3UncmUKPiByaWdodCB0aGF0IHRo
+aXMgaXMgYWJvdXQgcmVzb3VyY2Ugc2hhcmluZyBhbmQgbm90IGFsbG93aW5nIGFueSBzaW5nbGUg
+VkYgCj4gdG8gY29uc3VtZSBhbGwgdGhlIHJlbWFpbmluZwo+IFJBUiBlbnRyaWVzLsKgIFRlbiBl
+bnRyaWVzIHNlZW1zIGFyYml0cmFyeSBidXQgSSBkbyByZWNhbGwgYXQgdGhlIHRpbWUgYSAKPiBj
+b21tb24gdGVzdCBzZXR1cCB3YXMgd2l0aAo+IDQgVkZzLsKgIEFsc28sIHdlIG5lZWRlZCB0byBy
+ZXNlcnZlIFJBUiBlbnRyaWVzIGZvciB0aGUgUEYgdG9vIElJUkMuCj4gCj4gTWF5YmUgU2liYWkg
+Y2FuIHJlY2FsbCwgSSBkb24ndCBrbm93IGlmIHNoZSdzIHN0aWxsIGF0IEludGVsIGJ1dCBtYXli
+ZSAKPiBhc2sgaGVyIGFzIHdlbGwuCj4gCj4gU29ycnkgSSBjb3VsZG4ndCBiZSBtb3JlIGhlbHAu
+Cj4gCj4gUmVnYXJkcywKPiAKPiAtIEdyZWcKClJpZ2h0LiBUaGlzIGlzIHdoYXQgSSB3b3VsZCBo
+YXZlIHRob3VnaHQgYXMgd2VsbC4gQnkgbm90IGxpbWl0aW5nLCB3ZQpwb3RlbnRpYWxseSBhbGxv
+dyBvbmUgVkYgdG8gaG9nIGFsbCBvZiB0aGUgcmVzb3VyY2VzLgoKSXQncyBwbGF1c2libGUgdGhh
+dCB0aGlzIGxpbWl0IG91Z2h0IHRvIGJlIGNvbmZpZ3VyYWJsZSBpbnN0ZWFkIG9mCnN0YXRpYy4g
+VGhpcyB3YXksIGEgc3lzdGVtIGFkbWluaXN0cmF0b3IgY291bGQgY2hhbmdlIHRoZSBsaW1pdCBv
+biB0aGUKUEYgYW5kIGVuYWJsZSBtb3JlIGVudHJpZXMgdGhhbiB0aGUgc3RhdGljIGxpbWl0IG9m
+IDEwLgoKVGhhdCBvYnZpb3VzbHkgcmVxdWlyZXMgbW9yZSBwbHVtYmluZyBpbiBwbGFjZSB0byBy
+ZXByZXNlbnQgdGhlIGxpbWl0CmFuZCBmaW5kIGFuIGFkZXF1YXRlIHdheSBvZiBpbmZvcm1pbmcg
+dGhlIFBGIHN5c3RlbSBhZG1pbmlzdHJhdG9yLi4uCgpUaGFua3MsCkpha2UKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxp
+bmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
