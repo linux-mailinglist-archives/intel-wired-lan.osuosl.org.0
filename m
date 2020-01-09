@@ -1,59 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEC8F1350AB
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 01:52:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7AA11350C5
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 02:01:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4CF4A85194;
-	Thu,  9 Jan 2020 00:52:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3737386AFF;
+	Thu,  9 Jan 2020 01:01:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PteGBl0fqLG0; Thu,  9 Jan 2020 00:52:19 +0000 (UTC)
+	with ESMTP id XAU0tBBYmh0A; Thu,  9 Jan 2020 01:01:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 90FA4851FF;
-	Thu,  9 Jan 2020 00:52:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A101C1BF9B0
- for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 00:52:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D331A869B6;
+	Thu,  9 Jan 2020 01:01:11 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 874251BF9B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 01:01:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9C15D84F5F
- for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 00:52:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 82B6B85F57
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 01:01:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sgm+uaJVgubD for <intel-wired-lan@osuosl.org>;
- Thu,  9 Jan 2020 00:52:15 +0000 (UTC)
+ with ESMTP id aIWMurj4cgzO for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Jan 2020 01:01:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 660B281CED
- for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 00:52:15 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C59AC85F33
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 01:01:06 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2020 16:52:14 -0800
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2020 17:01:06 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,412,1571727600"; d="scan'208";a="211716656"
-Received: from jekeller-mobl.amr.corp.intel.com (HELO [134.134.177.84])
- ([134.134.177.84])
- by orsmga007.jf.intel.com with ESMTP; 08 Jan 2020 16:52:14 -0800
-To: intel-wired-lan@osuosl.org
-References: <20200105084600.4025394-1-jeffrey.t.kirsher@intel.com>
-From: Jacob Keller <jacob.e.keller@intel.com>
-Organization: Intel Corporation
-Message-ID: <648fb7f4-b3b7-8f75-675d-26b0ffdfe2b4@intel.com>
-Date: Wed, 8 Jan 2020 16:52:14 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
-MIME-Version: 1.0
-In-Reply-To: <20200105084600.4025394-1-jeffrey.t.kirsher@intel.com>
+X-IronPort-AV: E=Sophos;i="5.69,412,1571727600"; d="scan'208";a="233869969"
+Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
+ by orsmga002.jf.intel.com with ESMTP; 08 Jan 2020 17:01:05 -0800
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.250]) by
+ ORSMSX110.amr.corp.intel.com ([169.254.10.84]) with mapi id 14.03.0439.000;
+ Wed, 8 Jan 2020 17:01:05 -0800
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: Jia-Ju Bai <baijiaju1990@gmail.com>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>, "davem@davemloft.net" <davem@davemloft.net>
+Thread-Topic: [PATCH] net: intel: e1000e: fix possible
+ sleep-in-atomic-context bugs in e1000e_get_hw_semaphore()
+Thread-Index: AQHVta3aFEjLZ+EvHEi0p4CGcL5CcqfhpOxw
+Date: Thu, 9 Jan 2020 01:01:05 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971A925B@ORSMSX103.amr.corp.intel.com>
+References: <20191218141656.12416-1-baijiaju1990@gmail.com>
+In-Reply-To: <20191218141656.12416-1-baijiaju1990@gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for
- AF_XDP
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjlkZmI1NDAtYjM2NC00MTIwLWI2MjgtZjQ3ZTk4Y2IyZDM1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWGdFY0pPWVVaVjZhVkNlSlhkVDZtdDlJdXc2V2EwUEs4ZEI3ZUtEa2xSRnEyU20ybEZcL2tySzlwWEM0UHVcL1A4In0=
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH] net: intel: e1000e: fix possible
+ sleep-in-atomic-context bugs in e1000e_get_hw_semaphore()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,57 +78,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/5/2020 12:46 AM, Jeff Kirsher wrote:
-> Magnus's fix to resolve a potential receive buffer starvation for AF_XDP
-> got applied to both the i40e_xsk_umem_enable/disable() functions, when it
-> should have only been applied to the "enable".  So clean up the undesired
-> code in the disable function.
+> From: netdev-owner@vger.kernel.org <netdev-owner@vger.kernel.org>
+> On Behalf Of Jia-Ju Bai
+> Sent: Wednesday, December 18, 2019 6:17 AM
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; davem@davemloft.net
+> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
+> kernel@vger.kernel.org; Jia-Ju Bai <baijiaju1990@gmail.com>
+> Subject: [PATCH] net: intel: e1000e: fix possible sleep-in-atomic-context bugs
+> in e1000e_get_hw_semaphore()
 > 
-> CC: Magnus Karlsson <magnus.karlsson@intel.com>
-> Fixes: 1f459bdc2007 ("i40e: fix potential RX buffer starvation for AF_XDP")
-> Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+> The driver may sleep while holding a spinlock.
+> The function call path (from bottom to top) in Linux 4.19 is:
+> 
+> drivers/net/ethernet/intel/e1000e/mac.c, 1366:
+> 	usleep_range in e1000e_get_hw_semaphore
+> drivers/net/ethernet/intel/e1000e/80003es2lan.c, 322:
+> 	e1000e_get_hw_semaphore in
+> e1000_release_swfw_sync_80003es2lan
+> drivers/net/ethernet/intel/e1000e/80003es2lan.c, 197:
+> 	e1000_release_swfw_sync_80003es2lan in
+> e1000_release_phy_80003es2lan
+> drivers/net/ethernet/intel/e1000e/netdev.c, 4883:
+> 	(FUNC_PTR) e1000_release_phy_80003es2lan in
+> e1000e_update_phy_stats
+> drivers/net/ethernet/intel/e1000e/netdev.c, 4917:
+> 	e1000e_update_phy_stats in e1000e_update_stats
+> drivers/net/ethernet/intel/e1000e/netdev.c, 5945:
+> 	e1000e_update_stats in e1000e_get_stats64
+> drivers/net/ethernet/intel/e1000e/netdev.c, 5944:
+> 	spin_lock in e1000e_get_stats64
+> 
+> drivers/net/ethernet/intel/e1000e/mac.c, 1384:
+> 	usleep_range in e1000e_get_hw_semaphore
+> drivers/net/ethernet/intel/e1000e/80003es2lan.c, 322:
+> 	e1000e_get_hw_semaphore in
+> e1000_release_swfw_sync_80003es2lan
+> drivers/net/ethernet/intel/e1000e/80003es2lan.c, 197:
+> 	e1000_release_swfw_sync_80003es2lan in
+> e1000_release_phy_80003es2lan
+> drivers/net/ethernet/intel/e1000e/netdev.c, 4883:
+> 	(FUNC_PTR) e1000_release_phy_80003es2lan in
+> e1000e_update_phy_stats
+> drivers/net/ethernet/intel/e1000e/netdev.c, 4917:
+> 	e1000e_update_phy_stats in e1000e_update_stats
+> drivers/net/ethernet/intel/e1000e/netdev.c, 5945:
+> 	e1000e_update_stats in e1000e_get_stats64
+> drivers/net/ethernet/intel/e1000e/netdev.c, 5944:
+> 	spin_lock in e1000e_get_stats64
+> 
+> (FUNC_PTR) means a function pointer is called.
+> 
+> To fix these bugs, usleep_range() is replaced with udelay().
+> 
+> These bugs are found by a static analysis tool STCheck written by myself.
+> 
+> Signed-off-by: Jia-Ju Bai <baijiaju1990@gmail.com>
 > ---
->  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 -----
->  1 file changed, 5 deletions(-)
+>  drivers/net/ethernet/intel/e1000e/mac.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> index 42058fad6a3c..1b13d8e0d67a 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> @@ -114,11 +114,6 @@ static int i40e_xsk_umem_enable(struct i40e_vsi *vsi, struct xdp_umem *umem,
 
-Umm.. Based on the commit message, you meant to remove only from the
-disable function, not the enable one...
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 
-And indeed you actually did in October:
-
-2c19e395e061 ("i40e: Fix receive buffer starvation for AF_XDP")
-Date:   Mon Oct 7 15:07:24 2019 -0700
-
-I think this patch should be dropped from your tree.
-
-(Thanks Lihong for pointing this out to me!)
-
-Thanks,
-Jake
-
->  		err = i40e_queue_pair_enable(vsi, qid);
->  		if (err)
->  			return err;
-> -
-> -		/* Kick start the NAPI context so that receiving will start */
-> -		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
-> -		if (err)
-> -			return err;
->  	}
->  
->  	return 0;
-> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
