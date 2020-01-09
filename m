@@ -1,72 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF51F1350A4
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 01:50:26 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EEC8F1350AB
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 01:52:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3E9212044B;
-	Thu,  9 Jan 2020 00:50:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4CF4A85194;
+	Thu,  9 Jan 2020 00:52:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mWo1tDYAE7QP; Thu,  9 Jan 2020 00:50:25 +0000 (UTC)
+	with ESMTP id PteGBl0fqLG0; Thu,  9 Jan 2020 00:52:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 03ADC2049A;
-	Thu,  9 Jan 2020 00:50:24 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2F7A11BF9B0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 00:50:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 90FA4851FF;
+	Thu,  9 Jan 2020 00:52:18 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A101C1BF9B0
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 00:52:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 18E2D8650E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 00:50:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9C15D84F5F
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 00:52:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DxdeidwxILBg for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jan 2020 00:50:21 +0000 (UTC)
+ with ESMTP id sgm+uaJVgubD for <intel-wired-lan@osuosl.org>;
+ Thu,  9 Jan 2020 00:52:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 402DE864D8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 00:50:21 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 660B281CED
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 00:52:15 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2020 16:50:20 -0800
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2020 16:52:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,412,1571727600"; d="scan'208";a="254415840"
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by fmsmga002.fm.intel.com with ESMTP; 08 Jan 2020 16:50:17 -0800
-Received: from orsmsx162.amr.corp.intel.com (10.22.240.85) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 8 Jan 2020 16:50:16 -0800
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.250]) by
- ORSMSX162.amr.corp.intel.com ([169.254.3.178]) with mapi id 14.03.0439.000;
- Wed, 8 Jan 2020 16:50:16 -0800
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Ben Dooks (Codethink)" <ben.dooks@codethink.co.uk>
-Thread-Topic: [PATCH] e1000e: fix missing cpu_to_le64 on buffer_addr
-Thread-Index: AQHVtYkDl8Hax0/3vEaIb+hEJx6RVafhokAw
-Date: Thu, 9 Jan 2020 00:50:16 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971A921A@ORSMSX103.amr.corp.intel.com>
-References: <20191218095308.2397408-1-ben.dooks@codethink.co.uk>
-In-Reply-To: <20191218095308.2397408-1-ben.dooks@codethink.co.uk>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNGJmZDc2MWMtMTc4Zi00ZDg3LTg0OWMtYmU0NDdlZDJkZmQ4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZFk0QktCSEUrTDBJN3R0UTg4VWpIXC94R1pxaDVuZkZ5VFpHUzdLVDI1clM5XC9YbTVoNCtKSmFONlBXYTdaZmI4In0=
-x-ctpclassification: CTP_NT
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
+X-IronPort-AV: E=Sophos;i="5.69,412,1571727600"; d="scan'208";a="211716656"
+Received: from jekeller-mobl.amr.corp.intel.com (HELO [134.134.177.84])
+ ([134.134.177.84])
+ by orsmga007.jf.intel.com with ESMTP; 08 Jan 2020 16:52:14 -0800
+To: intel-wired-lan@osuosl.org
+References: <20200105084600.4025394-1-jeffrey.t.kirsher@intel.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
+Organization: Intel Corporation
+Message-ID: <648fb7f4-b3b7-8f75-675d-26b0ffdfe2b4@intel.com>
+Date: Wed, 8 Jan 2020 16:52:14 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: fix missing cpu_to_le64 on
- buffer_addr
+In-Reply-To: <20200105084600.4025394-1-jeffrey.t.kirsher@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [net] i40e: Fix receive buffer starvation for
+ AF_XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,47 +66,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: netdev-owner@vger.kernel.org <netdev-owner@vger.kernel.org>
-> On Behalf Of Ben Dooks (Codethink)
-> Sent: Wednesday, December 18, 2019 1:53 AM
-> To: ben.dooks@codethink.co.uk
-> Cc: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David S. Miller
-> <davem@davemloft.net>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org
-> Subject: [PATCH] e1000e: fix missing cpu_to_le64 on buffer_addr
+On 1/5/2020 12:46 AM, Jeff Kirsher wrote:
+> Magnus's fix to resolve a potential receive buffer starvation for AF_XDP
+> got applied to both the i40e_xsk_umem_enable/disable() functions, when it
+> should have only been applied to the "enable".  So clean up the undesired
+> code in the disable function.
 > 
-> The following warning suggests there is a missing cpu_to_le64() in
-> the e1000_flush_tx_ring() function (it is also the behaviour
-> elsewhere in the driver to do cpu_to_le64() on the buffer_addr
-> when setting it)
-> 
-> drivers/net/ethernet/intel/e1000e/netdev.c:3813:30: warning: incorrect
-> type in assignment (different base types)
-> drivers/net/ethernet/intel/e1000e/netdev.c:3813:30:    expected restricted
-> __le64 [usertype] buffer_addr
-> drivers/net/ethernet/intel/e1000e/netdev.c:3813:30:    got unsigned long
-> long [usertype] dma
-> 
-> Signed-off-by: Ben Dooks (Codethink) <ben.dooks@codethink.co.uk>
+> CC: Magnus Karlsson <magnus.karlsson@intel.com>
+> Fixes: 1f459bdc2007 ("i40e: fix potential RX buffer starvation for AF_XDP")
+> Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 > ---
-> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org
-> ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 5 -----
+>  1 file changed, 5 deletions(-)
 > 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> index 42058fad6a3c..1b13d8e0d67a 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> @@ -114,11 +114,6 @@ static int i40e_xsk_umem_enable(struct i40e_vsi *vsi, struct xdp_umem *umem,
 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+Umm.. Based on the commit message, you meant to remove only from the
+disable function, not the enable one...
+
+And indeed you actually did in October:
+
+2c19e395e061 ("i40e: Fix receive buffer starvation for AF_XDP")
+Date:   Mon Oct 7 15:07:24 2019 -0700
+
+I think this patch should be dropped from your tree.
+
+(Thanks Lihong for pointing this out to me!)
+
+Thanks,
+Jake
+
+>  		err = i40e_queue_pair_enable(vsi, qid);
+>  		if (err)
+>  			return err;
+> -
+> -		/* Kick start the NAPI context so that receiving will start */
+> -		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
+> -		if (err)
+> -			return err;
+>  	}
+>  
+>  	return 0;
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
