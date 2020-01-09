@@ -1,81 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3120A13538C
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 08:12:43 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA9CD85F71;
-	Thu,  9 Jan 2020 07:12:41 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GRAcirP3eOpc; Thu,  9 Jan 2020 07:12:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E26585F0B;
-	Thu,  9 Jan 2020 07:12:40 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8623C1BF25B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:12:39 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 85986135F89
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 18:43:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 82586862D2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:12:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2B913856ED;
+	Thu,  9 Jan 2020 17:43:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id K0H+Y2bsmdkZ; Thu,  9 Jan 2020 17:43:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 01455857D0;
+	Thu,  9 Jan 2020 17:43:56 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D0BEB1BF869
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 17:43:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id C6A798827E
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 17:43:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5BmfNxjqNDKv for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jan 2020 07:12:39 +0000 (UTC)
-X-Greylist: delayed 00:07:33 by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BC847847BE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:12:38 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id p17so1588581wmb.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 08 Jan 2020 23:12:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=46+ynsaDS/hEbXLBiyXFHvaKMRvB9JIQ5ONGN8owdAY=;
- b=om4RGcDUHzMs1QHCQ3csAqDlIcKgwsnsT/FzoIvVSP779EYjElklos5cMoppOr7zbv
- gLVTjW3w2vO0mOSn66TklJ5FP/eUwF7s4vuT9A9bg0jkGv6OrgOvJJqJ0UPjjYPITaS2
- oZW7ar73Hn0odOcGxN9TlhABcr5zCDs4RQzsP2Cmt7QvaJRUCGbODXK49htSAoEumMWm
- 4qJ1oyUe2Z+fBnQLflDwm4n5oHcg8lj4EbT/69wDOfDK0/j0Im3lcfWFoi10SF+serAI
- n7SvfTN5z9qdVHisyx8mmSISCV14PlBfJf3NIAUHrB7amnoDDphnrsJ/tR8jmp0vTYTn
- ynJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=46+ynsaDS/hEbXLBiyXFHvaKMRvB9JIQ5ONGN8owdAY=;
- b=GlG04stxmNId0RC04T4qM9SOpiugkh2MrWU+gCsWO5c4ua45ZgAMA54mCroJHJGWEQ
- aw1laDtnudvKJS6RJrPqvDyDYgg0JhBfK5Wsxj3QYez2Lc5ryrvoVlE3eZUMqOn8/LHt
- LK7d8Thu/yByUB1/nzeF/AS9yJl24VrMuJ319Evs+4e3AaZNWFMsyNfqhjiIq/A7EWFQ
- ohnz1l9IG6tMy5LceTkrMGrGrDtHxemV/EtPmQkHPMVLVaKWCLrknKDaezt5aHUXiXjk
- PfpM8fDixuklCHoUnJqGNn2Ms65IVhiKJ/plQZOm/vyYxmgVsA8sNx5WRtLRePEhrpVq
- cmYw==
-X-Gm-Message-State: APjAAAWVKNf+s0fGEtiSF1ppleN7ab91ksJK82VcW1gNBL4z2sAkBIv9
- OhWjy5ZaB4enYGFh5S+lxNhS9nJTVvc=
-X-Google-Smtp-Source: APXvYqx0cylayRbM0ANGFwMfL7zkujHXETPawOgsY6jAhdXy7BpAtn2+Xn91dAkt6FdWO1evUq4CZQ==
-X-Received: by 2002:a7b:cb0d:: with SMTP id u13mr1163551wmj.31.1578553503930; 
- Wed, 08 Jan 2020 23:05:03 -0800 (PST)
-Received: from localhost (jirka.pirko.cz. [84.16.102.26])
- by smtp.gmail.com with ESMTPSA id a16sm7078496wrt.37.2020.01.08.23.05.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2020 23:05:03 -0800 (PST)
-Date: Thu, 9 Jan 2020 08:05:02 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20200109070502.GC2235@nanopsycho.orion>
-References: <20200109010818.1326575-1-jacob.e.keller@intel.com>
- <20200109010818.1326575-4-jacob.e.keller@intel.com>
+ with ESMTP id XNoom6YMI118 for <intel-wired-lan@osuosl.org>;
+ Thu,  9 Jan 2020 17:43:53 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 051B687A34
+ for <intel-wired-lan@osuosl.org>; Thu,  9 Jan 2020 17:43:52 +0000 (UTC)
+X-Amp-Result: UNSCANNABLE
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Jan 2020 09:43:52 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,414,1571727600"; 
+ d="asc'?scan'208";a="272171584"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.74])
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Jan 2020 09:43:52 -0800
+Message-ID: <9400163aa83bbd414e43e2aebd5d9e1e23e394b5.camel@intel.com>
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@osuosl.org, 
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Date: Thu, 09 Jan 2020 09:43:52 -0800
+In-Reply-To: <07213c35-b4fb-e230-75a2-1d11d51815c9@intel.com>
+References: <20200103022342.820175-1-jesse.brandeburg@intel.com>
+ <4185adba-3420-32ad-014d-64eee768d183@intel.com>
+ <07213c35-b4fb-e230-75a2-1d11d51815c9@intel.com>
+Organization: Intel
+User-Agent: Evolution 3.34.2 (3.34.2-1.fc31) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200109010818.1326575-4-jacob.e.keller@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH 3/4] devlink: add support for
- triggering snapshots from userspace
+Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e/iavf: use better trace
+ path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,39 +67,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, valex@mellanox.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: jeffrey.t.kirsher@intel.com
+Content-Type: multipart/mixed; boundary="===============5273661537841229326=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thu, Jan 09, 2020 at 02:08:18AM CET, jacob.e.keller@intel.com wrote:
->Currently, devlink region snapshots are captured by the driver at some
->internal trigger. There is no standard method for userspace to request
->that a snapshot be created.
->
->For some use cases of regions, this is acceptable. The snapshots only
->make sense if taken in response to some internal driver event.
->
->However, regions could be used for other purposes. For example, a driver
->might export a region that represents the contents of some portion of
->the device flash. In this case, there is no event that triggers
->a snapshot. Instead, it makes sense for user space to request a snapshot
->in some manner.
->
->Currently, drivers must implement such a trigger through an out-of-band
->mechanism. The netdevsim driver does this through a debugfs file.
->
->Create a standard interface for requesting snapshots via a new devlink
->command: DEVLINK_CMG_REGION_TRIGGER_SNAPSHOT.
->
->At region creation time, drivers may optionally define
->a trigger_snapshot function callback. If not defined, the
->DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT will simply report EOPNOTSUPP.
 
-Similar mechanism is already implemented for health reporters. Why that
-wouln't work for you?
+--===============5273661537841229326==
+Content-Type: multipart/signed; micalg="pgp-sha256";
+	protocol="application/pgp-signature"; boundary="=-FSBgXwNNOf0hqjkdtQMp"
+
+
+--=-FSBgXwNNOf0hqjkdtQMp
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, 2020-01-08 at 14:55 -0800, Jacob Keller wrote:
+> On 1/8/2020 2:49 PM, Jacob Keller wrote:
+> > On 1/2/2020 6:23 PM, Jesse Brandeburg wrote:
+> > > I'm seeing compilation fail of the i40e/iavf driver for some
+> > > reason.
+> > > I just checked 5.5-rc4 and the tip of net/net-next and all fail.
+> > > Fails all the way back to v5.1 at least, I didn't check further
+> > > back.
+> > >=20
+> > > repro steps:
+> > > $ gcc -v
+> > > gcc version 9.2.1 20190827 (Red Hat 9.2.1-1) (GCC)
+> > >=20
+> > > $ git checkout -b my-net davem-net/master
+> > > $ make mrproper
+> > > $ make O=3D../my-net.obj defconfig allmodconfig modules_prepare
+> > > $ make O=3D../my-net.obj M=3Ddrivers/net/ethernet/intel/i40e
+> > >=20
+> > > make[1]: Entering directory '/home/jbrandeb/git/my-net.obj'
+> > >   CC [M]  drivers/net/ethernet/intel/i40e/i40e_main.o
+> > > In file included from
+> > > /home/jbrandeb/git/linux2/drivers/net/ethernet/intel/i40e/i40e_tr
+> > > ace.h:209,
+> > >                  from
+> > > /home/jbrandeb/git/linux2/drivers/net/ethernet/intel/i40e/i40e_ma
+> > > in.c:20:
+> > > /home/jbrandeb/git/linux2/include/trace/define_trace.h:95:42:
+> > > fatal error: ./i40e_trace.h: No such file or directory
+> > >    95 | #include TRACE_INCLUDE(TRACE_INCLUDE_FILE)
+> > >       |                                          ^
+> > > compilation terminated.
+> > > make[2]: ***
+> > > [/home/jbrandeb/git/linux2/scripts/Makefile.build:266:
+> > > drivers/net/ethernet/intel/i40e/i40e_main.o] Error 1
+> > > make[1]: *** [/home/jbrandeb/git/linux2/Makefile:1693:
+> > > drivers/net/ethernet/intel/i40e] Error 2
+> > > make[1]: Leaving directory '/home/jbrandeb/git/my-net.obj'
+> > > make: *** [Makefile:179: sub-make] Error 2
+> > >=20
+> > > Just for sanity, I tried building the ice driver the same as
+> > > above and
+> > > it succeeds, so the build does work for some drivers.
+> > >=20
+> >=20
+> > So.. ice works for some reason but i40e and iavf do not? Is the ice
+> > driver using a path relative to the root?
+> >=20
+> > > So fix the include path for the i40e driver trace file to be
+> > > relative
+> > > to the kernel root like (some) other drivers do.
+> >=20
+> > I'd really like to know why this isn't required by all drivers...
+> >=20
+>=20
+> It looks like this is handled in driver's Makefile via:
+>=20
+> ccflags-y +=3D -I$(src)>-->------->-------# needed for trace events
+>=20
+> or the following:
+>=20
+> CFLAGS_trace.o :=3D -I$(src)
+
+I like the above solution, as it is much cleaner and less prone for
+future errors, if the directory patch would change for whatever reason.
+
+>=20
+> This seems like the preferred solution when building with a separate
+> object tree.
+>=20
+> Thanks,
+> Jake
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+
+--=-FSBgXwNNOf0hqjkdtQMp
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl4XZlgACgkQ5W/vlVpL
+7c4uhxAAj1xxAShPMBFmR32TI9f0R0Vucdj04Z29XykvkINbrpW9Q1qmsicACFBU
+9sb+sUpCQbu1ney55htYYw5f+QTz+ghoHg3J+FW12XyFkgZZ6u9xFSxXXZBz9oWq
+W9YEB5Wsq0bJ5fGefRRhxyuN2cEYZZwp6lhQ08nktmtBkujF/AJdruQt/ETi/Exc
+1j1nAXmkjbfU4TEa7uU7bnry1j2Ajiy7XvnRcIaBAeg5iNFUPBfVlEV/QGdtHgQN
+yjWODGaeQMPP9zQV2If7YFQgGWvyZbpsFL0+7/SxZ8vMXoVB76b9mr2tjYpJ8Sm2
+m7Gv7Tzy/PeEaoDAvHahXJCzhIHI83XrOTHqDgY4QlwfVI9KCuKQq3OWcWuXCq1m
+pAGffegQd0EvgRkG+Uz8pvbOC9fjK/Hu7oQqhl5W/Gl9KT+dgKVKq03cJwYYnBHD
+l8RO3YXjoITUUzeXZiquMyQSMo8TelxxTUSHW+RzAU4BGH/DembBqCRavDocmwjE
+akUNy0e7UiSt//SP3InQ33uTI2CjqiVgL6wYm46WKdq/WdakusVSTN7uozHgwEER
+sg5QMK0NBXfdKeZozWxXMZb+wM+riYkPnEerZ1XyaQEh+dDNtaOj24uIoV8VpLfA
+soT/Lv+n8QibwyJ9Q0BUfZX2az04t4eB31jYG+VDJbt+wStAwDg=
+=zlvz
+-----END PGP SIGNATURE-----
+
+--=-FSBgXwNNOf0hqjkdtQMp--
+
+
+--===============5273661537841229326==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============5273661537841229326==--
+
