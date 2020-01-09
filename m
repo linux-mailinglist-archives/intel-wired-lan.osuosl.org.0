@@ -1,81 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 234E3135387
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 08:08:58 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3120A13538C
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 08:12:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A623087534;
-	Thu,  9 Jan 2020 07:08:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AA9CD85F71;
+	Thu,  9 Jan 2020 07:12:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W3op1gyv4r2g; Thu,  9 Jan 2020 07:08:56 +0000 (UTC)
+	with ESMTP id GRAcirP3eOpc; Thu,  9 Jan 2020 07:12:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D685787DAA;
-	Thu,  9 Jan 2020 07:08:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E26585F0B;
+	Thu,  9 Jan 2020 07:12:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B68861BF25B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:08:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8623C1BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:12:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 8AC65800C4
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:08:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 82586862D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:12:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9fp5oxcbfQ9j for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jan 2020 07:08:50 +0000 (UTC)
-X-Greylist: delayed 00:07:52 by SQLgrey-1.7.6
-Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
- [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 05AC2864F6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:08:47 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id c14so6129796wrn.7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 08 Jan 2020 23:08:46 -0800 (PST)
+ with ESMTP id 5BmfNxjqNDKv for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Jan 2020 07:12:39 +0000 (UTC)
+X-Greylist: delayed 00:07:33 by SQLgrey-1.7.6
+Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
+ [209.85.128.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BC847847BE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:12:38 +0000 (UTC)
+Received: by mail-wm1-f65.google.com with SMTP id p17so1588581wmb.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 08 Jan 2020 23:12:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=resnulli-us.20150623.gappssmtp.com; s=20150623;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=VQ9Syd41XlUnkyQ80kZYH0FYpIf/ubBBu8DyRcPmj2Q=;
- b=Os5/Y+I78xWIPKszD7zOWRy04LKuDlis/LCWsymwd3emu+p2zk8wDh6SQxYscX7Z/M
- W0IgrLCaxLz2Ej26TCypyZFeZe+K46rdwl9qPGvey1UWfbkB0HEYGsXyx5G2ssP+S/2q
- m22aOu3+2jxiu/ZX4r5Gp5R5EGmr257YeucarVyPqAnxc8xqnf5/G10w1B/PvzZXqiXj
- lou3f2XIJvN8CecUTk2Vy7NNoDBSwE/hYN6jCfDz+K79XLgWYkGWBHTcWSNsoOGnP+i/
- yAh3Y5DOobI6YM2sbJoWIntFGU4tz41+/RNtIkoHGZCnObR7fDX6Z5oea8CcysA0bAO6
- qASQ==
+ bh=46+ynsaDS/hEbXLBiyXFHvaKMRvB9JIQ5ONGN8owdAY=;
+ b=om4RGcDUHzMs1QHCQ3csAqDlIcKgwsnsT/FzoIvVSP779EYjElklos5cMoppOr7zbv
+ gLVTjW3w2vO0mOSn66TklJ5FP/eUwF7s4vuT9A9bg0jkGv6OrgOvJJqJ0UPjjYPITaS2
+ oZW7ar73Hn0odOcGxN9TlhABcr5zCDs4RQzsP2Cmt7QvaJRUCGbODXK49htSAoEumMWm
+ 4qJ1oyUe2Z+fBnQLflDwm4n5oHcg8lj4EbT/69wDOfDK0/j0Im3lcfWFoi10SF+serAI
+ n7SvfTN5z9qdVHisyx8mmSISCV14PlBfJf3NIAUHrB7amnoDDphnrsJ/tR8jmp0vTYTn
+ ynJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=VQ9Syd41XlUnkyQ80kZYH0FYpIf/ubBBu8DyRcPmj2Q=;
- b=NHmfqCnXHjHJNu9K/uSdVu6FT749GwfwXxLY+gnkm9afh9oZ1wbj+NHeOkAldjuced
- OneV2gz85xXKVVT45QbE4BGcIIurN62oxnoQcACY30HGa3SoLjt1b/VXLmiOLWHpDyue
- WRZsKyURgSE4SzzewwJHRdL0DO9ahtNjI1tvY+3v2PXaDgBTrtc7wFPLnDvbwx/a0D+Z
- hxlXIVCCyODBQ5Ycsv64NXLdBnvaJr2qAX/709CjPn/LxhEPUdXIqkcaGdxhi1QAnKin
- 4XgeyGZPqixEYRt20K/6fU6IxuboEjSlpQn5/m2rzg7+QXRSIE3abgHLDqUaj/krjYze
- F+NQ==
-X-Gm-Message-State: APjAAAWzgcoUmpcHGpU8ujHWM+dYshCYWztWFyxSNgJ2uvn/yqYVQu4p
- yEasRRn1chXld/7TYIt7Fu52iQ==
-X-Google-Smtp-Source: APXvYqwHKc0aR0Em4H03BFtKWRdcbCpus4Lev/p/rE0ue+w1iWt3C5oYQElimKN81QFhBEzfwtG+DQ==
-X-Received: by 2002:adf:8150:: with SMTP id 74mr9446727wrm.114.1578553307634; 
- Wed, 08 Jan 2020 23:01:47 -0800 (PST)
+ bh=46+ynsaDS/hEbXLBiyXFHvaKMRvB9JIQ5ONGN8owdAY=;
+ b=GlG04stxmNId0RC04T4qM9SOpiugkh2MrWU+gCsWO5c4ua45ZgAMA54mCroJHJGWEQ
+ aw1laDtnudvKJS6RJrPqvDyDYgg0JhBfK5Wsxj3QYez2Lc5ryrvoVlE3eZUMqOn8/LHt
+ LK7d8Thu/yByUB1/nzeF/AS9yJl24VrMuJ319Evs+4e3AaZNWFMsyNfqhjiIq/A7EWFQ
+ ohnz1l9IG6tMy5LceTkrMGrGrDtHxemV/EtPmQkHPMVLVaKWCLrknKDaezt5aHUXiXjk
+ PfpM8fDixuklCHoUnJqGNn2Ms65IVhiKJ/plQZOm/vyYxmgVsA8sNx5WRtLRePEhrpVq
+ cmYw==
+X-Gm-Message-State: APjAAAWVKNf+s0fGEtiSF1ppleN7ab91ksJK82VcW1gNBL4z2sAkBIv9
+ OhWjy5ZaB4enYGFh5S+lxNhS9nJTVvc=
+X-Google-Smtp-Source: APXvYqx0cylayRbM0ANGFwMfL7zkujHXETPawOgsY6jAhdXy7BpAtn2+Xn91dAkt6FdWO1evUq4CZQ==
+X-Received: by 2002:a7b:cb0d:: with SMTP id u13mr1163551wmj.31.1578553503930; 
+ Wed, 08 Jan 2020 23:05:03 -0800 (PST)
 Received: from localhost (jirka.pirko.cz. [84.16.102.26])
- by smtp.gmail.com with ESMTPSA id t125sm1825444wmf.17.2020.01.08.23.01.46
+ by smtp.gmail.com with ESMTPSA id a16sm7078496wrt.37.2020.01.08.23.05.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2020 23:01:47 -0800 (PST)
-Date: Thu, 9 Jan 2020 08:01:46 +0100
+ Wed, 08 Jan 2020 23:05:03 -0800 (PST)
+Date: Thu, 9 Jan 2020 08:05:02 +0100
 From: Jiri Pirko <jiri@resnulli.us>
 To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20200109070146.GB2235@nanopsycho.orion>
+Message-ID: <20200109070502.GC2235@nanopsycho.orion>
 References: <20200109010818.1326575-1-jacob.e.keller@intel.com>
- <20200109010818.1326575-3-jacob.e.keller@intel.com>
+ <20200109010818.1326575-4-jacob.e.keller@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200109010818.1326575-3-jacob.e.keller@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH 2/4] doc: fix typo of snapshot in
- documentation
+In-Reply-To: <20200109010818.1326575-4-jacob.e.keller@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH 3/4] devlink: add support for
+ triggering snapshots from userspace
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,47 +94,32 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thu, Jan 09, 2020 at 02:08:17AM CET, jacob.e.keller@intel.com wrote:
->A couple of locations accidentally misspelled snapshot as shapshot.
+Thu, Jan 09, 2020 at 02:08:18AM CET, jacob.e.keller@intel.com wrote:
+>Currently, devlink region snapshots are captured by the driver at some
+>internal trigger. There is no standard method for userspace to request
+>that a snapshot be created.
+>
+>For some use cases of regions, this is acceptable. The snapshots only
+>make sense if taken in response to some internal driver event.
+>
+>However, regions could be used for other purposes. For example, a driver
+>might export a region that represents the contents of some portion of
+>the device flash. In this case, there is no event that triggers
+>a snapshot. Instead, it makes sense for user space to request a snapshot
+>in some manner.
+>
+>Currently, drivers must implement such a trigger through an out-of-band
+>mechanism. The netdevsim driver does this through a debugfs file.
+>
+>Create a standard interface for requesting snapshots via a new devlink
+>command: DEVLINK_CMG_REGION_TRIGGER_SNAPSHOT.
+>
+>At region creation time, drivers may optionally define
+>a trigger_snapshot function callback. If not defined, the
+>DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT will simply report EOPNOTSUPP.
 
-This does not have anything to do with the rest of the set.
-
->
->Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
->---
-> Documentation/admin-guide/devices.txt    | 2 +-
-> Documentation/media/v4l-drivers/meye.rst | 2 +-
-> 2 files changed, 2 insertions(+), 2 deletions(-)
->
->diff --git a/Documentation/admin-guide/devices.txt b/Documentation/admin-guide/devices.txt
->index 1c5d2281efc9..2a97aaec8b12 100644
->--- a/Documentation/admin-guide/devices.txt
->+++ b/Documentation/admin-guide/devices.txt
->@@ -319,7 +319,7 @@
-> 		182 = /dev/perfctr	Performance-monitoring counters
-> 		183 = /dev/hwrng	Generic random number generator
-> 		184 = /dev/cpu/microcode CPU microcode update interface
->-		186 = /dev/atomicps	Atomic shapshot of process state data
->+		186 = /dev/atomicps	Atomic snapshot of process state data
-> 		187 = /dev/irnet	IrNET device
-> 		188 = /dev/smbusbios	SMBus BIOS
-> 		189 = /dev/ussp_ctl	User space serial port control
->diff --git a/Documentation/media/v4l-drivers/meye.rst b/Documentation/media/v4l-drivers/meye.rst
->index a572996cdbf6..dc57a6a91b43 100644
->--- a/Documentation/media/v4l-drivers/meye.rst
->+++ b/Documentation/media/v4l-drivers/meye.rst
->@@ -95,7 +95,7 @@ so all video4linux tools (like xawtv) should work with this driver.
-> 
-> Besides the video4linux interface, the driver has a private interface
-> for accessing the Motion Eye extended parameters (camera sharpness,
->-agc, video framerate), the shapshot and the MJPEG capture facilities.
->+agc, video framerate), the snapshot and the MJPEG capture facilities.
-> 
-> This interface consists of several ioctls (prototypes and structures
-> can be found in include/linux/meye.h):
->-- 
->2.25.0.rc1
->
+Similar mechanism is already implemented for health reporters. Why that
+wouln't work for you?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
