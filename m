@@ -1,55 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C65F1350DE
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 02:09:41 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 99C651353A8
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2020 08:24:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E224584482;
-	Thu,  9 Jan 2020 01:09:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2FF9E203D6;
+	Thu,  9 Jan 2020 07:24:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LcPNHsUhKoZT; Thu,  9 Jan 2020 01:09:39 +0000 (UTC)
+	with ESMTP id HX7Vg8HV+WcP; Thu,  9 Jan 2020 07:24:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A4182844D6;
-	Thu,  9 Jan 2020 01:09:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7A4712048C;
+	Thu,  9 Jan 2020 07:24:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 770B21BF9B2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 01:09:36 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 32EF71BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:24:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 73FA0864F5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 01:09:36 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 27D3585DC1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:24:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9k3Zw694uqlJ for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jan 2020 01:09:36 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id DD776864C5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 01:09:35 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 08 Jan 2020 17:09:35 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,412,1571727600"; d="scan'208";a="223112628"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.244.172])
- by orsmga006.jf.intel.com with ESMTP; 08 Jan 2020 17:09:34 -0800
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Wed,  8 Jan 2020 17:08:19 -0800
-Message-Id: <20200109010818.1326575-5-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.25.0.rc1
-In-Reply-To: <20200109010818.1326575-1-jacob.e.keller@intel.com>
+ with ESMTP id A3Px6BCpIlTA for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Jan 2020 07:24:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
+ [209.85.221.68])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1988A8561D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2020 07:24:01 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id c14so6167491wrn.7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 08 Jan 2020 23:24:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=WBbhaBKQdw8G0anb2bwjbSFLEjz889g2eEjcjQquTJc=;
+ b=WPVERb4VzuFvt5ZufJeFIf58zraID0aMffDdTU1N/e99QkN5b8IkWoKf2lJJ8i4bHm
+ IuKBS7jRONekpf6Gh1uwf7CFIXowHu08cyOYvFmePBz0K4rv0Za62dxGZhMXuDxx02OG
+ XMUWh1xrqeU5VsFw5XHEfiscnGanCLyIhS/DqgI5gwPiWNfhGMfNm71O8vZPapSgbAHH
+ qnxzUrkOqBpCkTNb8JgpVsnc736Fm05GKvkJcjBkF+dSvP+GTtku7Un2fNCZZrYV3DdB
+ WnR4MpXt8vwX2lgnQ0eqlxrnG2maQ2bb8xZxT0jZ+n32bxC0/I3a/xUBbQqqdZz5oJVC
+ l9cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=WBbhaBKQdw8G0anb2bwjbSFLEjz889g2eEjcjQquTJc=;
+ b=rPX5j0tOoTH0vHXjUMYJLkhkYIfa99J4WG0VgdVPfselFdxrqiUEg/DYineqGZPT5V
+ gONaSeUTlEvC8kgCVGT3HrHhZ9QMKap4lDyoy+mzEjG5m2pezB1qOCDTlYaBenR9x6v1
+ GR/AHtOu9qAQYT8fOc2nmsJXud8RfBk9k/Yfh3uK2VLeXh9MBZMSFNe41AcwQCwyWnSX
+ 4956x42XurAFQqWtE9If9NiFWWoq6fkFc+phPQR6FYQq/8r0AZK0dhAQ/ByQmtEyN6T8
+ eABlxnloca63l6DaRafD1cttY0VVLrlT9qD6TeWGn2RzOFzIzU2DLOEH6XBsx26HeAr1
+ 2Shw==
+X-Gm-Message-State: APjAAAWEZmxol0ZhbsdXk20dDclLiERt3Y9t0ivRLuoYodFsMvLS1UPZ
+ COFWV3oZnj/mIR6s7WVvAXJLp9QwGtc=
+X-Google-Smtp-Source: APXvYqxvYSCRhY8IYbNaQgL1BvIXNffnq9lsezCKhoEPOZC45RJa6cWA/ieJ4nhuzTtHk9NxqoZjqQ==
+X-Received: by 2002:a5d:558d:: with SMTP id i13mr9125122wrv.364.1578553253114; 
+ Wed, 08 Jan 2020 23:00:53 -0800 (PST)
+Received: from localhost (jirka.pirko.cz. [84.16.102.26])
+ by smtp.gmail.com with ESMTPSA id x7sm6644096wrq.41.2020.01.08.23.00.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 Jan 2020 23:00:52 -0800 (PST)
+Date: Thu, 9 Jan 2020 08:00:51 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <20200109070051.GA2235@nanopsycho.orion>
 References: <20200109010818.1326575-1-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 4/4] devlink: add support for
- DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT
+Content-Disposition: inline
+In-Reply-To: <20200109010818.1326575-1-jacob.e.keller@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH 0/4] devlink region snapshot triggering
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,88 +86,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, valex@mellanox.com
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, valex@mellanox.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for the devlink command to trigger a snapshot if the region
-supports it.
+Thu, Jan 09, 2020 at 02:08:15AM CET, jacob.e.keller@intel.com wrote:
+>This series consists of patches to enable devlink to request a snapshot via
+>a new DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT.
+>
+>The netdevsim driver is modified to support the new trigger_snapshot
+>callback as an example of how this can be used.
+>
+>There is also some fix ups for s/shapshot/snapshot/ in documentation
+>and the devlink_snapshot_id_get function.
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- devlink/devlink.c            | 20 ++++++++++++++++++++
- include/uapi/linux/devlink.h |  2 ++
- 2 files changed, 22 insertions(+)
+You can already trigger health reporter dump from userspace. Why don't
+you use health reporter?
 
-diff --git a/devlink/devlink.c b/devlink/devlink.c
-index 95f05a0b..3a473531 100644
---- a/devlink/devlink.c
-+++ b/devlink/devlink.c
-@@ -4200,6 +4200,7 @@ static const char *cmd_obj(uint8_t cmd)
- 	case DEVLINK_CMD_REGION_SET:
- 	case DEVLINK_CMD_REGION_NEW:
- 	case DEVLINK_CMD_REGION_DEL:
-+	case DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT:
- 		return "region";
- 	case DEVLINK_CMD_FLASH_UPDATE:
- 	case DEVLINK_CMD_FLASH_UPDATE_END:
-@@ -6362,12 +6363,28 @@ static int cmd_region_read(struct dl *dl)
- 	return err;
- }
- 
-+static int cmd_region_trigger(struct dl *dl)
-+{
-+	struct nlmsghdr *nlh;
-+	int err;
-+
-+	nlh = mnlg_msg_prepare(dl->nlg, DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT,
-+			NLM_F_REQUEST | NLM_F_ACK);
-+
-+	err = dl_argv_parse_put(nlh, dl, DL_OPT_HANDLE_REGION, 0);
-+	if (err)
-+		return err;
-+
-+	return _mnlg_socket_sndrcv(dl->nlg, nlh, NULL, NULL);
-+}
-+
- static void cmd_region_help(void)
- {
- 	pr_err("Usage: devlink region show [ DEV/REGION ]\n");
- 	pr_err("       devlink region del DEV/REGION snapshot SNAPSHOT_ID\n");
- 	pr_err("       devlink region dump DEV/REGION [ snapshot SNAPSHOT_ID ]\n");
- 	pr_err("       devlink region read DEV/REGION [ snapshot SNAPSHOT_ID ] address ADDRESS length LENGTH\n");
-+	pr_err("       devlink region trigger DEV/REGION\n");
- }
- 
- static int cmd_region(struct dl *dl)
-@@ -6389,6 +6406,9 @@ static int cmd_region(struct dl *dl)
- 	} else if (dl_argv_match(dl, "read")) {
- 		dl_arg_inc(dl);
- 		return cmd_region_read(dl);
-+	} else if (dl_argv_match(dl, "trigger")) {
-+		dl_arg_inc(dl);
-+		return cmd_region_trigger(dl);
- 	}
- 	pr_err("Command \"%s\" not found\n", dl_argv(dl));
- 	return -ENOENT;
-diff --git a/include/uapi/linux/devlink.h b/include/uapi/linux/devlink.h
-index 3f82dedd..37348f84 100644
---- a/include/uapi/linux/devlink.h
-+++ b/include/uapi/linux/devlink.h
-@@ -117,6 +117,8 @@ enum devlink_command {
- 	DEVLINK_CMD_TRAP_GROUP_NEW,
- 	DEVLINK_CMD_TRAP_GROUP_DEL,
- 
-+	DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT,
-+
- 	/* add new commands above here */
- 	__DEVLINK_CMD_MAX,
- 	DEVLINK_CMD_MAX = __DEVLINK_CMD_MAX - 1
--- 
-2.21.0
 
+>
+>Jacob Keller (3):
+>  devlink: correct misspelling of snapshot
+>  doc: fix typo of snapshot in documentation
+>  devlink: add support for triggering snapshots from userspace
+>
+>The last patch is a patch to the iproute2 project to implement support for
+>the new command.
+>
+>Jacob Keller (1):
+>  devlink: add support for DEVLINK_CMD_REGION_TRIGGER_SNAPSHOT
+>
+> Documentation/admin-guide/devices.txt       |  2 +-
+> Documentation/media/v4l-drivers/meye.rst    |  2 +-
+> drivers/net/ethernet/mellanox/mlx4/crdump.c |  6 +--
+> drivers/net/netdevsim/dev.c                 | 37 +++++++++++-----
+> include/net/devlink.h                       | 14 +++---
+> include/uapi/linux/devlink.h                |  2 +
+> net/core/devlink.c                          | 49 ++++++++++++++++++---
+> 7 files changed, 85 insertions(+), 27 deletions(-)
+>
+> devlink/devlink.c            | 20 ++++++++++++++++++++
+> include/uapi/linux/devlink.h |  2 ++
+> 2 files changed, 22 insertions(+)
+>
+>-- 
+>2.25.0.rc1
+>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
