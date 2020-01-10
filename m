@@ -2,49 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D752F136870
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jan 2020 08:42:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB1DF137144
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jan 2020 16:30:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8A7B887FC9;
-	Fri, 10 Jan 2020 07:42:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6CC22884B5;
+	Fri, 10 Jan 2020 15:30:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mAQdsIguUp9z; Fri, 10 Jan 2020 07:42:27 +0000 (UTC)
+	with ESMTP id 8J+v0lxWJV4T; Fri, 10 Jan 2020 15:30:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B6516881A4;
-	Fri, 10 Jan 2020 07:42:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8115687C8C;
+	Fri, 10 Jan 2020 15:30:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 047611BF3B1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jan 2020 07:42:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A0CE71BF28C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jan 2020 15:30:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F199E86AAC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jan 2020 07:42:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9A7BA22115
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jan 2020 15:30:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I0hwWh7IkksX for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Jan 2020 07:42:24 +0000 (UTC)
+ with ESMTP id 0yuFVMkcvZJN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Jan 2020 15:30:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1022F86AAA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jan 2020 07:42:23 +0000 (UTC)
-Received: from 61-220-137-37.hinet-ip.hinet.net ([61.220.137.37]
- helo=localhost) by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>)
- id 1ipovy-0001rC-CO; Fri, 10 Jan 2020 07:42:18 +0000
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-To: davem@davemloft.ne,
-	jeffrey.t.kirsher@intel.com
-Date: Fri, 10 Jan 2020 15:41:58 +0800
-Message-Id: <20200110074159.18473-1-kai.heng.feng@canonical.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH 1/2] igb: Use device_lock() insead of
- rtnl_lock()
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by silver.osuosl.org (Postfix) with ESMTPS id 96F582011B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jan 2020 15:30:39 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Jan 2020 07:30:39 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,417,1571727600"; d="scan'208";a="231176732"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga001.fm.intel.com with ESMTP; 10 Jan 2020 07:30:38 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1ipwFC-0008em-4X; Fri, 10 Jan 2020 23:30:38 +0800
+Date: Fri, 10 Jan 2020 23:30:25 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5e189891.53asdqzs1or+60F+%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ 056dc10188024a588d75d8d80347a6be2fd95e61
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,83 +63,176 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>,
- open list <linux-kernel@vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 9474933caf21 ("igb: close/suspend race in netif_device_detach")
-fixed race condition between close and power management ops by using
-rtnl_lock().
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 056dc10188024a588d75d8d80347a6be2fd95e61  i40e: Fix receive buffer starvation for AF_XDP
 
-However we can achieve the same by using device_lock() since all power
-management ops are protected by device_lock().
+elapsed time: 2494m
 
-This fix is a preparation for next patch, to prevent a dead lock under
-rtnl_lock() when calling runtime resume routine.
+configs tested: 151
 
-Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+alpha                               defconfig
+csky                                defconfig
+nds32                             allnoconfig
+nds32                               defconfig
+s390                             alldefconfig
+s390                             allmodconfig
+s390                              allnoconfig
+s390                             allyesconfig
+s390                          debug_defconfig
+s390                                defconfig
+s390                       zfcpdump_defconfig
+x86_64               randconfig-f001-20200109
+x86_64               randconfig-f002-20200109
+x86_64               randconfig-f003-20200109
+i386                 randconfig-f001-20200109
+i386                 randconfig-f002-20200109
+i386                 randconfig-f003-20200109
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                            titan_defconfig
+arc                  randconfig-a001-20200109
+arm                  randconfig-a001-20200109
+arm64                randconfig-a001-20200109
+ia64                 randconfig-a001-20200109
+powerpc              randconfig-a001-20200109
+sparc                randconfig-a001-20200109
+c6x                  randconfig-a001-20200109
+h8300                randconfig-a001-20200109
+microblaze           randconfig-a001-20200109
+nios2                randconfig-a001-20200109
+sparc64              randconfig-a001-20200109
+arc                              allyesconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+nios2                         3c120_defconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+x86_64               randconfig-d001-20200109
+x86_64               randconfig-d002-20200109
+x86_64               randconfig-d003-20200109
+i386                 randconfig-d001-20200109
+i386                 randconfig-d002-20200109
+i386                 randconfig-d003-20200109
+x86_64               randconfig-c001-20200109
+x86_64               randconfig-c002-20200109
+x86_64               randconfig-c003-20200109
+i386                 randconfig-c001-20200109
+i386                 randconfig-c002-20200109
+i386                 randconfig-c003-20200109
+parisc                            allnoconfig
+parisc                            allyesonfig
+parisc                         b180_defconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                               rhel-7.6
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                          allmodconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+x86_64               randconfig-g001-20200109
+x86_64               randconfig-g002-20200109
+x86_64               randconfig-g003-20200109
+i386                 randconfig-g001-20200109
+i386                 randconfig-g002-20200109
+i386                 randconfig-g003-20200109
+i386                             alldefconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+arm                              allmodconfig
+arm64                            allmodconfig
+alpha                randconfig-a001-20200109
+m68k                 randconfig-a001-20200109
+mips                 randconfig-a001-20200109
+nds32                randconfig-a001-20200109
+parisc               randconfig-a001-20200109
+riscv                randconfig-a001-20200109
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+m68k                          multi_defconfig
+m68k                           sun3_defconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+csky                 randconfig-a001-20200109
+openrisc             randconfig-a001-20200109
+s390                 randconfig-a001-20200109
+sh                   randconfig-a001-20200109
+xtensa               randconfig-a001-20200109
+arm                               allnoconfig
+arm                              allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+alpha                randconfig-a001-20200110
+m68k                 randconfig-a001-20200110
+mips                 randconfig-a001-20200110
+nds32                randconfig-a001-20200110
+parisc               randconfig-a001-20200110
+x86_64               randconfig-h001-20200109
+x86_64               randconfig-h002-20200109
+x86_64               randconfig-h003-20200109
+i386                 randconfig-h001-20200109
+i386                 randconfig-h002-20200109
+i386                 randconfig-h003-20200109
+um                                  defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index b46bff8fe056..3750e2b926b1 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -4026,8 +4026,13 @@ static int __igb_close(struct net_device *netdev, bool suspending)
- 
- int igb_close(struct net_device *netdev)
- {
-+	struct igb_adapter *adapter = netdev_priv(netdev);
-+	struct device *dev = &adapter->pdev->dev;
-+
-+	device_lock(dev);
- 	if (netif_device_present(netdev) || netdev->dismantle)
- 		return __igb_close(netdev, false);
-+	device_unlock(dev);
- 	return 0;
- }
- 
-@@ -8760,7 +8765,6 @@ static int __igb_shutdown(struct pci_dev *pdev, bool *enable_wake,
- 	u32 wufc = runtime ? E1000_WUFC_LNKC : adapter->wol;
- 	bool wake;
- 
--	rtnl_lock();
- 	netif_device_detach(netdev);
- 
- 	if (netif_running(netdev))
-@@ -8769,7 +8773,6 @@ static int __igb_shutdown(struct pci_dev *pdev, bool *enable_wake,
- 	igb_ptp_suspend(adapter);
- 
- 	igb_clear_interrupt_scheme(adapter);
--	rtnl_unlock();
- 
- 	status = rd32(E1000_STATUS);
- 	if (status & E1000_STATUS_LU)
-@@ -8897,13 +8900,11 @@ static int __maybe_unused igb_resume(struct device *dev)
- 
- 	wr32(E1000_WUS, ~0);
- 
--	rtnl_lock();
- 	if (!err && netif_running(netdev))
- 		err = __igb_open(netdev, true);
- 
- 	if (!err)
- 		netif_device_attach(netdev);
--	rtnl_unlock();
- 
- 	return err;
- }
--- 
-2.17.1
-
+0-DAY kernel test infrastructure                 Open Source Technology Center
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
