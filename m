@@ -2,60 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C3FA13E1DB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jan 2020 17:54:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51B6F13E24C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jan 2020 17:55:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AEFDF864D1;
-	Thu, 16 Jan 2020 16:54:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B948864B5;
+	Thu, 16 Jan 2020 16:55:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id I9NgYy9-nbJL; Thu, 16 Jan 2020 16:54:06 +0000 (UTC)
+	with ESMTP id 5-cr-mdbVO5a; Thu, 16 Jan 2020 16:55:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A7DC864D6;
-	Thu, 16 Jan 2020 16:54:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5D3086435;
+	Thu, 16 Jan 2020 16:55:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 554EA1BF3DB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 16:54:04 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 63D691BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 16:55:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 50F4787EA7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 16:54:04 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5FDA386388
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 16:55:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ocSV6nK0Tmya for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jan 2020 16:53:59 +0000 (UTC)
+ with ESMTP id wDcfktrrjWFa for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jan 2020 16:55:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5353A87A8E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 16:53:59 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6A2988638F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 16:55:08 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 500DC2464B;
- Thu, 16 Jan 2020 16:53:58 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7523B2467A;
+ Thu, 16 Jan 2020 16:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579193639;
- bh=mUz6qZrJgnd1j+6KAws1RtLn1Uq8ghUFLn08Z1tBoys=;
+ s=default; t=1579193708;
+ bh=Dslocvm6ODpusPCVvet1wWvSZrEl0x0UXS983L8p52U=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hVdeG6VHL4BSWLPGmSA0CUNj+AK2ctgOFfijsHNfdmV6QSa8NahQQ6aEeZKQ0F8D3
- 0hFZMPEgVIOhQ4vmhglyuSNh1qmmmkoAPiIImCvRLcWTNSnpcXmcWMRVQm0uPZdImF
- w0H4Igg2ABAAdVdLeO29/iq4/iJS8MWi0WmSjm3s=
+ b=PqPgYqASOvF6IIgaCAHfqQrhQ39plW94jdAYRPgAzesgXzJB/n1sW2N6V1FJA2r3X
+ 92Yy2tLfcO0mwNVZ73Xh+5DHjBzu4fjsVcKdVrjZ2oT+0OqaRa+a9a4OHhCUHJt8oW
+ M6xfq5gnpL3aq4km1LrvQw5dqPgsSnNZSvSdpU40=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Thu, 16 Jan 2020 11:42:26 -0500
-Message-Id: <20200116164300.6705-171-sashal@kernel.org>
+Date: Thu, 16 Jan 2020 11:43:55 -0500
+Message-Id: <20200116165502.8838-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
-References: <20200116164300.6705-1-sashal@kernel.org>
+In-Reply-To: <20200116165502.8838-1-sashal@kernel.org>
+References: <20200116165502.8838-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 171/205] ice: fix stack leakage
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 004/671] ixgbe: don't clear
+ IPsec sa counters on HW clearing
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,52 +70,51 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+ intel-wired-lan@lists.osuosl.org, Shannon Nelson <shannon.nelson@oracle.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+From: Shannon Nelson <shannon.nelson@oracle.com>
 
-[ Upstream commit 949375de945f7042df2b6488228a1a2b36e69f35 ]
+[ Upstream commit 9e3f2f5ecee69b0f70003fb3e07639151e91de73 ]
 
-In the case of an invalid virtchannel request the driver
-would return uninitialized data to the VF from the PF stack
-which is a bug.  Fix by initializing the stack variable
-earlier in the function before any return paths can be taken.
+The software SA record counters should not be cleared when clearing
+the hardware tables.  This causes the counters to be out of sync
+after a driver reset.
 
-Fixes: 1071a8358a28 ("ice: Implement virtchnl commands for AVF support")
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Fixes: 63a67fe229ea ("ixgbe: add ipsec offload add and remove SA")
+Signed-off-by: Shannon Nelson <shannon.nelson@oracle.com>
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index c0637a0cbfe8..e92a00a61755 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1873,8 +1873,8 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8 *msg)
- 	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
- 	struct virtchnl_queue_select *vqs =
- 		(struct virtchnl_queue_select *)msg;
-+	struct ice_eth_stats stats = { 0 };
- 	struct ice_pf *pf = vf->pf;
--	struct ice_eth_stats stats;
- 	struct ice_vsi *vsi;
- 
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
-@@ -1893,7 +1893,6 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8 *msg)
- 		goto error_param;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
+index b27f7a968820..49e6d66ccf80 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
+@@ -114,7 +114,6 @@ static void ixgbe_ipsec_set_rx_ip(struct ixgbe_hw *hw, u16 idx, __be32 addr[])
+  **/
+ static void ixgbe_ipsec_clear_hw_tables(struct ixgbe_adapter *adapter)
+ {
+-	struct ixgbe_ipsec *ipsec = adapter->ipsec;
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	u32 buf[4] = {0, 0, 0, 0};
+ 	u16 idx;
+@@ -133,9 +132,6 @@ static void ixgbe_ipsec_clear_hw_tables(struct ixgbe_adapter *adapter)
+ 		ixgbe_ipsec_set_tx_sa(hw, idx, buf, 0);
+ 		ixgbe_ipsec_set_rx_sa(hw, idx, 0, buf, 0, 0, 0);
  	}
+-
+-	ipsec->num_rx_sa = 0;
+-	ipsec->num_tx_sa = 0;
+ }
  
--	memset(&stats, 0, sizeof(struct ice_eth_stats));
- 	ice_update_eth_stats(vsi);
- 
- 	stats = vsi->eth_stats;
+ /**
 -- 
 2.20.1
 
