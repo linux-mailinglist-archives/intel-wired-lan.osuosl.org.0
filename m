@@ -1,51 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C06F13A250
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jan 2020 08:56:04 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B000013D637
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jan 2020 09:53:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3418620015;
-	Tue, 14 Jan 2020 07:56:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5A49B866F0;
+	Thu, 16 Jan 2020 08:53:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4hZoQa-pL86Y; Tue, 14 Jan 2020 07:56:03 +0000 (UTC)
+	with ESMTP id 5r003SJm8zaA; Thu, 16 Jan 2020 08:53:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DD1722044B;
-	Tue, 14 Jan 2020 07:56:00 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B085D8681A;
+	Thu, 16 Jan 2020 08:53:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 538DE1BF3BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2020 07:55:59 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 367E21BF340
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 08:53:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4F073203CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2020 07:55:59 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 303EF87B81
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 08:53:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QxEA8+DYI0DA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jan 2020 07:55:57 +0000 (UTC)
+ with ESMTP id pi3M7UsRnRTi for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jan 2020 08:53:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id 0A97520015
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2020 07:55:56 +0000 (UTC)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D6BAB87CC9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 08:53:25 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2020 23:55:55 -0800
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Jan 2020 00:53:25 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.69,432,1571727600"; d="scan'208";a="247569503"
+X-IronPort-AV: E=Sophos;i="5.70,325,1574150400"; d="scan'208";a="305787549"
 Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga001.fm.intel.com with ESMTP; 13 Jan 2020 23:55:54 -0800
+ by orsmga001.jf.intel.com with ESMTP; 16 Jan 2020 00:53:24 -0800
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 Jan 2020 09:55:54 +0200
-Message-Id: <20200114075554.14538-1-sasha.neftin@intel.com>
+Date: Thu, 16 Jan 2020 10:53:23 +0200
+Message-Id: <20200116085323.3027-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: Add dump options
+Subject: [Intel-wired-lan] [PATCH v1] e1000e: Add support for Alder Lake
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,417 +64,169 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Placeholder for debugging functionality.
-In this patch, we add some registers and rings summary dumps.
+Add devices ID's for the next LOM generations that will be
+available on the next Intel Client platform (Alder Lake)
+This patch provides the initial support for these devices
 
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/igc/Makefile      |   2 +-
- drivers/net/ethernet/intel/igc/igc.h         |   4 +
- drivers/net/ethernet/intel/igc/igc_defines.h |   3 +
- drivers/net/ethernet/intel/igc/igc_dump.c    | 323 +++++++++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_main.c    |   2 +
- drivers/net/ethernet/intel/igc/igc_regs.h    |   5 +
- 6 files changed, 338 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/ethernet/intel/igc/igc_dump.c
+ drivers/net/ethernet/intel/e1000e/ethtool.c |  2 ++
+ drivers/net/ethernet/intel/e1000e/hw.h      |  5 +++++
+ drivers/net/ethernet/intel/e1000e/ich8lan.c |  7 +++++++
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 10 ++++++++--
+ drivers/net/ethernet/intel/e1000e/ptp.c     |  1 +
+ 5 files changed, 23 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/Makefile b/drivers/net/ethernet/intel/igc/Makefile
-index 49fb1e1965cd..e3c164c12e10 100644
---- a/drivers/net/ethernet/intel/igc/Makefile
-+++ b/drivers/net/ethernet/intel/igc/Makefile
-@@ -8,4 +8,4 @@
- obj-$(CONFIG_IGC) += igc.o
+diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+index adce7e319b9e..9e7881db7859 100644
+--- a/drivers/net/ethernet/intel/e1000e/ethtool.c
++++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+@@ -897,6 +897,7 @@ static int e1000_reg_test(struct e1000_adapter *adapter, u64 *data)
+ 	case e1000_pch_cnp:
+ 		/* fall through */
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		mask |= BIT(18);
+ 		break;
+ 	default:
+@@ -1561,6 +1562,7 @@ static void e1000_loopback_cleanup(struct e1000_adapter *adapter)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		fext_nvm11 = er32(FEXTNVM11);
+ 		fext_nvm11 &= ~E1000_FEXTNVM11_DISABLE_MULR_FIX;
+ 		ew32(FEXTNVM11, fext_nvm11);
+diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
+index f556163481cb..a1dbf8df1c70 100644
+--- a/drivers/net/ethernet/intel/e1000e/hw.h
++++ b/drivers/net/ethernet/intel/e1000e/hw.h
+@@ -97,6 +97,10 @@ struct e1000_hw;
+ #define E1000_DEV_ID_PCH_TGP_I219_LM14		0x15F9
+ #define E1000_DEV_ID_PCH_TGP_I219_V14		0x15FA
+ #define E1000_DEV_ID_PCH_TGP_I219_LM15		0x15F4
++#define E1000_DEV_ID_PCH_ADP_1219_LM16		0x1A1E
++#define E1000_DEV_ID_PCH_ADP_1219_V16		0x1A1F
++#define E1000_DEV_ID_PCH_ADP_1219_LM17		0x1A1C
++#define E1000_DEV_ID_PCH_ADP_1219_V17		0x1A1D
  
- igc-objs := igc_main.o igc_mac.o igc_i225.o igc_base.o igc_nvm.o igc_phy.o \
--igc_ethtool.o igc_ptp.o
-+igc_ethtool.o igc_ptp.o igc_dump.o
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 52066bdbbad0..5d38d0faeced 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -42,6 +42,10 @@ int igc_del_mac_steering_filter(struct igc_adapter *adapter,
- 				const u8 *addr, u8 queue, u8 flags);
- void igc_update_stats(struct igc_adapter *adapter);
+ #define E1000_REVISION_4	4
  
-+/* igc_dump declarations */
-+void igc_rings_dump(struct igc_adapter *adapter);
-+void igc_regs_dump(struct igc_adapter *adapter);
-+
- extern char igc_driver_name[];
- extern char igc_driver_version[];
+@@ -121,6 +125,7 @@ enum e1000_mac_type {
+ 	e1000_pch_spt,
+ 	e1000_pch_cnp,
+ 	e1000_pch_tgp,
++	e1000_pch_adp,
+ };
  
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 58efa7a02c68..3c03962bde5e 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -259,6 +259,9 @@
- #define IGC_GPIE_EIAME		0x40000000
- #define IGC_GPIE_PBA		0x80000000
+ enum e1000_media_type {
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index b4135c50e905..735bf25952fc 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -317,6 +317,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		if (e1000_phy_is_accessible_pchlan(hw))
+ 			break;
  
-+/* Receive Descriptor bit definitions */
-+#define IGC_RXD_STAT_DD		0x01    /* Descriptor Done */
-+
- /* Transmit Descriptor bit definitions */
- #define IGC_TXD_DTYP_D		0x00100000 /* Data Descriptor */
- #define IGC_TXD_DTYP_C		0x00000000 /* Context Descriptor */
-diff --git a/drivers/net/ethernet/intel/igc/igc_dump.c b/drivers/net/ethernet/intel/igc/igc_dump.c
-new file mode 100644
-index 000000000000..657ab50ae296
---- /dev/null
-+++ b/drivers/net/ethernet/intel/igc/igc_dump.c
-@@ -0,0 +1,323 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c)  2018 Intel Corporation */
-+
-+#include "igc.h"
-+
-+struct igc_reg_info {
-+	u32 ofs;
-+	char *name;
-+};
-+
-+static const struct igc_reg_info igc_reg_info_tbl[] = {
-+	/* General Registers */
-+	{IGC_CTRL, "CTRL"},
-+	{IGC_STATUS, "STATUS"},
-+	{IGC_CTRL_EXT, "CTRL_EXT"},
-+	{IGC_MDIC, "MDIC"},
-+
-+	/* Interrupt Registers */
-+	{IGC_ICR, "ICR"},
-+
-+	/* RX Registers */
-+	{IGC_RCTL, "RCTL"},
-+	{IGC_RDLEN(0), "RDLEN"},
-+	{IGC_RDH(0), "RDH"},
-+	{IGC_RDT(0), "RDT"},
-+	{IGC_RXDCTL(0), "RXDCTL"},
-+	{IGC_RDBAL(0), "RDBAL"},
-+	{IGC_RDBAH(0), "RDBAH"},
-+
-+	/* TX Registers */
-+	{IGC_TCTL, "TCTL"},
-+	{IGC_TDBAL(0), "TDBAL"},
-+	{IGC_TDBAH(0), "TDBAH"},
-+	{IGC_TDLEN(0), "TDLEN"},
-+	{IGC_TDH(0), "TDH"},
-+	{IGC_TDT(0), "TDT"},
-+	{IGC_TXDCTL(0), "TXDCTL"},
-+	{IGC_TDFH, "TDFH"},
-+	{IGC_TDFT, "TDFT"},
-+	{IGC_TDFHS, "TDFHS"},
-+	{IGC_TDFPC, "TDFPC"},
-+
-+	/* List Terminator */
-+	{}
-+};
-+
-+/* igc_regdump - register printout routine */
-+static void igc_regdump(struct igc_hw *hw, struct igc_reg_info *reginfo)
-+{
-+	int n = 0;
-+	char rname[16];
-+	u32 regs[8];
-+
-+	switch (reginfo->ofs) {
-+	case IGC_RDLEN(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RDLEN(n));
-+		break;
-+	case IGC_RDH(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RDH(n));
-+		break;
-+	case IGC_RDT(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RDT(n));
-+		break;
-+	case IGC_RXDCTL(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RXDCTL(n));
-+		break;
-+	case IGC_RDBAL(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RDBAL(n));
-+		break;
-+	case IGC_RDBAH(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RDBAH(n));
-+		break;
-+	case IGC_TDBAL(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_RDBAL(n));
-+		break;
-+	case IGC_TDBAH(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_TDBAH(n));
-+		break;
-+	case IGC_TDLEN(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_TDLEN(n));
-+		break;
-+	case IGC_TDH(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_TDH(n));
-+		break;
-+	case IGC_TDT(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_TDT(n));
-+		break;
-+	case IGC_TXDCTL(0):
-+		for (n = 0; n < 4; n++)
-+			regs[n] = rd32(IGC_TXDCTL(n));
-+		break;
-+	default:
-+		pr_info("%-15s %08x\n", reginfo->name, rd32(reginfo->ofs));
-+		return;
-+	}
-+
-+	snprintf(rname, 16, "%s%s", reginfo->name, "[0-3]");
-+	pr_info("%-15s %08x %08x %08x %08x\n", rname, regs[0], regs[1],
-+		regs[2], regs[3]);
-+}
-+
-+/* igc_rings_dump - Tx-rings and Rx-rings */
-+void igc_rings_dump(struct igc_adapter *adapter)
-+{
-+	struct net_device *netdev = adapter->netdev;
-+	struct my_u0 { u64 a; u64 b; } *u0;
-+	union igc_adv_tx_desc *tx_desc;
-+	union igc_adv_rx_desc *rx_desc;
-+	struct igc_ring *tx_ring;
-+	struct igc_ring *rx_ring;
-+	u32 staterr;
-+	u16 i, n;
-+
-+	if (!netif_msg_hw(adapter))
-+		return;
-+
-+	/* Print netdevice Info */
-+	if (netdev) {
-+		dev_info(&adapter->pdev->dev, "Net device Info\n");
-+		pr_info("Device Name     state            trans_start\n");
-+		pr_info("%-15s %016lX %016lX\n", netdev->name,
-+			netdev->state, dev_trans_start(netdev));
-+	}
-+
-+	/* Print TX Ring Summary */
-+	if (!netdev || !netif_running(netdev))
-+		goto exit;
-+
-+	dev_info(&adapter->pdev->dev, "TX Rings Summary\n");
-+	pr_info("Queue [NTU] [NTC] [bi(ntc)->dma  ] leng ntw timestamp\n");
-+	for (n = 0; n < adapter->num_tx_queues; n++) {
-+		struct igc_tx_buffer *buffer_info;
-+
-+		tx_ring = adapter->tx_ring[n];
-+		buffer_info = &tx_ring->tx_buffer_info[tx_ring->next_to_clean];
-+
-+		pr_info(" %5d %5X %5X %016llX %04X %p %016llX\n",
-+			n, tx_ring->next_to_use, tx_ring->next_to_clean,
-+			(u64)dma_unmap_addr(buffer_info, dma),
-+			dma_unmap_len(buffer_info, len),
-+			buffer_info->next_to_watch,
-+			(u64)buffer_info->time_stamp);
-+	}
-+
-+	/* Print TX Rings */
-+	if (!netif_msg_tx_done(adapter))
-+		goto rx_ring_summary;
-+
-+	dev_info(&adapter->pdev->dev, "TX Rings Dump\n");
-+
-+	/* Transmit Descriptor Formats
-+	 *
-+	 * Advanced Transmit Descriptor
-+	 *   +--------------------------------------------------------------+
-+	 * 0 |         Buffer Address [63:0]                                |
-+	 *   +--------------------------------------------------------------+
-+	 * 8 | PAYLEN  | PORTS  |CC|IDX | STA | DCMD  |DTYP|MAC|RSV| DTALEN |
-+	 *   +--------------------------------------------------------------+
-+	 *   63      46 45    40 39 38 36 35 32 31   24             15       0
-+	 */
-+
-+	for (n = 0; n < adapter->num_tx_queues; n++) {
-+		tx_ring = adapter->tx_ring[n];
-+		pr_info("------------------------------------\n");
-+		pr_info("TX QUEUE INDEX = %d\n", tx_ring->queue_index);
-+		pr_info("------------------------------------\n");
-+		pr_info("T [desc]     [address 63:0  ] [PlPOCIStDDM Ln] [bi->dma       ] leng  ntw timestamp        bi->skb\n");
-+
-+		for (i = 0; tx_ring->desc && (i < tx_ring->count); i++) {
-+			const char *next_desc;
-+			struct igc_tx_buffer *buffer_info;
-+
-+			tx_desc = IGC_TX_DESC(tx_ring, i);
-+			buffer_info = &tx_ring->tx_buffer_info[i];
-+			u0 = (struct my_u0 *)tx_desc;
-+			if (i == tx_ring->next_to_use &&
-+			    i == tx_ring->next_to_clean)
-+				next_desc = " NTC/U";
-+			else if (i == tx_ring->next_to_use)
-+				next_desc = " NTU";
-+			else if (i == tx_ring->next_to_clean)
-+				next_desc = " NTC";
-+			else
-+				next_desc = "";
-+
-+			pr_info("T [0x%03X]    %016llX %016llX %016llX %04X  %p %016llX %p%s\n",
-+				i, le64_to_cpu(u0->a),
-+				le64_to_cpu(u0->b),
-+				(u64)dma_unmap_addr(buffer_info, dma),
-+				dma_unmap_len(buffer_info, len),
-+				buffer_info->next_to_watch,
-+				(u64)buffer_info->time_stamp,
-+				buffer_info->skb, next_desc);
-+
-+			if (netif_msg_pktdata(adapter) && buffer_info->skb)
-+				print_hex_dump(KERN_INFO, "",
-+					       DUMP_PREFIX_ADDRESS,
-+					       16, 1, buffer_info->skb->data,
-+					       dma_unmap_len(buffer_info, len),
-+					       true);
-+		}
-+	}
-+
-+	/* Print RX Rings Summary */
-+rx_ring_summary:
-+	dev_info(&adapter->pdev->dev, "RX Rings Summary\n");
-+	pr_info("Queue [NTU] [NTC]\n");
-+	for (n = 0; n < adapter->num_rx_queues; n++) {
-+		rx_ring = adapter->rx_ring[n];
-+		pr_info(" %5d %5X %5X\n",
-+			n, rx_ring->next_to_use, rx_ring->next_to_clean);
-+	}
-+
-+	/* Print RX Rings */
-+	if (!netif_msg_rx_status(adapter))
-+		goto exit;
-+
-+	dev_info(&adapter->pdev->dev, "RX Rings Dump\n");
-+
-+	/* Advanced Receive Descriptor (Read) Format
-+	 *    63                                           1        0
-+	 *    +-----------------------------------------------------+
-+	 *  0 |       Packet Buffer Address [63:1]           |A0/NSE|
-+	 *    +----------------------------------------------+------+
-+	 *  8 |       Header Buffer Address [63:1]           |  DD  |
-+	 *    +-----------------------------------------------------+
-+	 *
-+	 *
-+	 * Advanced Receive Descriptor (Write-Back) Format
-+	 *
-+	 *   63       48 47    32 31  30      21 20 17 16   4 3     0
-+	 *   +------------------------------------------------------+
-+	 * 0 | Packet     IP     |SPH| HDR_LEN   | RSV|Packet|  RSS |
-+	 *   | Checksum   Ident  |   |           |    | Type | Type |
-+	 *   +------------------------------------------------------+
-+	 * 8 | VLAN Tag | Length | Extended Error | Extended Status |
-+	 *   +------------------------------------------------------+
-+	 *   63       48 47    32 31            20 19               0
-+	 */
-+
-+	for (n = 0; n < adapter->num_rx_queues; n++) {
-+		rx_ring = adapter->rx_ring[n];
-+		pr_info("------------------------------------\n");
-+		pr_info("RX QUEUE INDEX = %d\n", rx_ring->queue_index);
-+		pr_info("------------------------------------\n");
-+		pr_info("R  [desc]      [ PktBuf     A0] [  HeadBuf   DD] [bi->dma       ] [bi->skb] <-- Adv Rx Read format\n");
-+		pr_info("RWB[desc]      [PcsmIpSHl PtRs] [vl er S cks ln] ---------------- [bi->skb] <-- Adv Rx Write-Back format\n");
-+
-+		for (i = 0; i < rx_ring->count; i++) {
-+			const char *next_desc;
-+			struct igc_rx_buffer *buffer_info;
-+
-+			buffer_info = &rx_ring->rx_buffer_info[i];
-+			rx_desc = IGC_RX_DESC(rx_ring, i);
-+			u0 = (struct my_u0 *)rx_desc;
-+			staterr = le32_to_cpu(rx_desc->wb.upper.status_error);
-+
-+			if (i == rx_ring->next_to_use)
-+				next_desc = " NTU";
-+			else if (i == rx_ring->next_to_clean)
-+				next_desc = " NTC";
-+			else
-+				next_desc = "";
-+
-+			if (staterr & IGC_RXD_STAT_DD) {
-+				/* Descriptor Done */
-+				pr_info("%s[0x%03X]     %016llX %016llX ---------------- %s\n",
-+					"RWB", i,
-+					le64_to_cpu(u0->a),
-+					le64_to_cpu(u0->b),
-+					next_desc);
-+			} else {
-+				pr_info("%s[0x%03X]     %016llX %016llX %016llX %s\n",
-+					"R  ", i,
-+					le64_to_cpu(u0->a),
-+					le64_to_cpu(u0->b),
-+					(u64)buffer_info->dma,
-+					next_desc);
-+
-+				if (netif_msg_pktdata(adapter) &&
-+				    buffer_info->dma && buffer_info->page) {
-+					print_hex_dump(KERN_INFO, "",
-+						       DUMP_PREFIX_ADDRESS,
-+						       16, 1,
-+						       page_address
-+						       (buffer_info->page) +
-+						       buffer_info->page_offset,
-+						       igc_rx_bufsz(rx_ring),
-+						       true);
-+				}
-+			}
-+		}
-+	}
-+
-+exit:
-+	return;
-+}
-+
-+/* igc_regs_dump - registers dump */
-+void igc_regs_dump(struct igc_adapter *adapter)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	struct igc_reg_info *reginfo;
-+
-+	/* Print Registers */
-+	dev_info(&adapter->pdev->dev, "Register Dump\n");
-+	pr_info(" Register Name   Value\n");
-+	for (reginfo = (struct igc_reg_info *)igc_reg_info_tbl;
-+	     reginfo->name; reginfo++) {
-+		igc_regdump(hw, reginfo);
-+	}
-+}
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index e7787c0929b2..08ed9796d088 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -3546,6 +3546,8 @@ static void igc_reset_task(struct work_struct *work)
+@@ -460,6 +461,7 @@ static s32 e1000_init_phy_params_pchlan(struct e1000_hw *hw)
+ 		case e1000_pch_spt:
+ 		case e1000_pch_cnp:
+ 		case e1000_pch_tgp:
++		case e1000_pch_adp:
+ 			/* In case the PHY needs to be in mdio slow mode,
+ 			 * set slow mode and try to get the PHY id again.
+ 			 */
+@@ -703,6 +705,7 @@ static s32 e1000_init_mac_params_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 	case e1000_pchlan:
+ 		/* check management mode */
+ 		mac->ops.check_mng_mode = e1000_check_mng_mode_pchlan;
+@@ -1642,6 +1645,7 @@ static s32 e1000_get_variants_ich8lan(struct e1000_adapter *adapter)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		rc = e1000_init_phy_params_pchlan(hw);
+ 		break;
+ 	default:
+@@ -2095,6 +2099,7 @@ static s32 e1000_sw_lcd_config_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		sw_cfg_mask = E1000_FEXTNVM_SW_CONFIG_ICH8M;
+ 		break;
+ 	default:
+@@ -3133,6 +3138,7 @@ static s32 e1000_valid_nvm_bank_detect_ich8lan(struct e1000_hw *hw, u32 *bank)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		bank1_offset = nvm->flash_bank_size;
+ 		act_offset = E1000_ICH_NVM_SIG_WORD;
  
- 	adapter = container_of(work, struct igc_adapter, reset_task);
+@@ -4077,6 +4083,7 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		word = NVM_COMPAT;
+ 		valid_csum_mask = NVM_COMPAT_VALID_CSUM;
+ 		break;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 60df6f2663c0..25ad824bb431 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3539,6 +3539,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
+ 		break;
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		if (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI) {
+ 			/* Stable 24MHz frequency */
+ 			incperiod = INCPERIOD_24MHZ;
+@@ -4052,8 +4053,9 @@ void e1000e_reset(struct e1000_adapter *adapter)
+ 	case e1000_pch_cnp:
+ 		/* fall-through */
+ 	case e1000_pch_tgp:
+-		fc->refresh_time = 0xFFFF;
+-		fc->pause_time = 0xFFFF;
++	case e1000_pch_adp:
++
++		fc->refresh_time = 0x0400;
  
-+	igc_rings_dump(adapter);
-+	igc_regs_dump(adapter);
- 	netdev_err(adapter->netdev, "Reset adapter\n");
- 	igc_reinit_locked(adapter);
- }
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 164c42b39dfa..09c1a54372d8 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -17,6 +17,11 @@
- /* Internal Packet Buffer Size Registers */
- #define IGC_RXPBS		0x02404  /* Rx Packet Buffer Size - RW */
- #define IGC_TXPBS		0x03404  /* Tx Packet Buffer Size - RW */
-+#define IGC_TDFH		0x03410  /* Tx Data FIFO Head - RW */
-+#define IGC_TDFT		0x03418  /* Tx Data FIFO Tail - RW */
-+#define IGC_TDFHS		0x03420  /* Tx Data FIFO Head Saved - RW */
-+#define IGC_TDFTS		0x03428  /* Tx Data FIFO Tail Saved - RW */
-+#define IGC_TDFPC		0x03430  /* Tx Data FIFO Packet Count - RW */
+ 		if (adapter->netdev->mtu <= ETH_DATA_LEN) {
+ 			fc->high_water = 0x05C20;
+@@ -7764,6 +7766,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM16), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V16), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM17), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V17), board_pch_cnp },
  
- /* NVM  Register Descriptions */
- #define IGC_EERD		0x12014  /* EEprom mode read - RW */
+ 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
+ };
+diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
+index eaa5a0fb99f0..439fda2f5368 100644
+--- a/drivers/net/ethernet/intel/e1000e/ptp.c
++++ b/drivers/net/ethernet/intel/e1000e/ptp.c
+@@ -297,6 +297,7 @@ void e1000e_ptp_init(struct e1000_adapter *adapter)
+ 	case e1000_pch_cnp:
+ 		/* fall-through */
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		if ((hw->mac.type < e1000_pch_lpt) ||
+ 		    (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI)) {
+ 			adapter->ptp_clock_info.max_adj = 24000000 - 1;
 -- 
 2.11.0
 
