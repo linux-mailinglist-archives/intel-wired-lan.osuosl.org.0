@@ -2,61 +2,52 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B6CC13E7FD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jan 2020 18:29:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3288613FC9D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 00:05:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C8EF087ED2;
-	Thu, 16 Jan 2020 17:29:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C2B3B87FBF;
+	Thu, 16 Jan 2020 23:05:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WpdtW4pRFWSP; Thu, 16 Jan 2020 17:29:35 +0000 (UTC)
+	with ESMTP id jxnyqMLjTJSo; Thu, 16 Jan 2020 23:05:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BBDE587F12;
-	Thu, 16 Jan 2020 17:29:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E9FF187F81;
+	Thu, 16 Jan 2020 23:05:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7629B1BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:29:32 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2989B1BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 23:05:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 71C7F81FD3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:29:32 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 227AF87F71
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 23:05:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GZU85FwCZZmx for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jan 2020 17:29:27 +0000 (UTC)
+ with ESMTP id WV26OmTwr1fo for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jan 2020 23:05:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C6D45867A1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:29:27 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A5F1824719;
- Thu, 16 Jan 2020 17:29:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579195767;
- bh=ouDOGODEY/dNR0K0ljr0NFswmyk7CBZsCorqDZUqP4Y=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BRnW+1i0yfpCl2JLc3/e5K8GCfirPWT7KScok1/hOHAOUEEYBCLyDFM+meUFjofsa
- 0huc4akveKPD1GaxA006yqafipXTAs1oY0zphdPjAAzroLGNUaQjn76caca9pwszwp
- /VMDFRORL0Ktz8GFykbVWSmlNsaz+C5IG9VhR8hQ=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Thu, 16 Jan 2020 12:22:47 -0500
-Message-Id: <20200116172403.18149-238-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116172403.18149-1-sashal@kernel.org>
-References: <20200116172403.18149-1-sashal@kernel.org>
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B998E823B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 23:05:17 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Jan 2020 15:05:17 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,327,1574150400"; d="scan'208";a="424242062"
+Received: from nmaznan-mobl1.gar.corp.intel.com (HELO
+ ssaleem-MOBL.amr.corp.intel.com) ([10.254.99.102])
+ by fmsmga005.fm.intel.com with ESMTP; 16 Jan 2020 15:05:16 -0800
+From: Shiraz Saleem <shiraz.saleem@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 16 Jan 2020 17:04:52 -0600
+Message-Id: <20200116230508.1814-1-shiraz.saleem@intel.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.14 295/371] ixgbe: sync the
- first fragment unconditionally
+Subject: [Intel-wired-lan] [PATCH RFC rdma 00/16] Add virtbus driver irdma
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,86 +60,195 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Firo Yang <firo.yang@suse.com>, intel-wired-lan@lists.osuosl.org,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>
+Cc: "Saleem, Shiraz" <shiraz.saleem@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Firo Yang <firo.yang@suse.com>
+From: "Saleem, Shiraz" <shiraz.saleem@intel.com>
 
-[ Upstream commit e7ba676c6188d394a0133fc4b9bcd7ee50d54b7f ]
+This RFC series is identical to an earlier submission [1]
+except that includes changes (Patch #1) to adapt to the
+latest ver. of virtbus and is intended to help aid the
+virtbus review.
 
-In Xen environment, if Xen-swiotlb is enabled, ixgbe driver
-could possibly allocate a page, DMA memory buffer, for the first
-fragment which is not suitable for Xen-swiotlb to do DMA operations.
-Xen-swiotlb have to internally allocate another page for doing DMA
-operations. This mechanism requires syncing the data from the internal
-page to the page which ixgbe sends to upper network stack. However,
-since commit f3213d932173 ("ixgbe: Update driver to make use of DMA
-attributes in Rx path"), the unmap operation is performed with
-DMA_ATTR_SKIP_CPU_SYNC. As a result, the sync is not performed.
-Since the sync isn't performed, the upper network stack could receive
-a incomplete network packet. By incomplete, it means the linear data
-on the first fragment(between skb->head and skb->end) is invalid. So
-we have to copy the data from the internal xen-swiotlb page to the page
-which ixgbe sends to upper network stack through the sync operation.
-
-More details from Alexander Duyck:
-Specifically since we are mapping the frame with
-DMA_ATTR_SKIP_CPU_SYNC we have to unmap with that as well. As a result
-a sync is not performed on an unmap and must be done manually as we
-skipped it for the first frag. As such we need to always sync before
-possibly performing a page unmap operation.
-
-Fixes: f3213d932173 ("ixgbe: Update driver to make use of DMA attributes in Rx path")
-Signed-off-by: Firo Yang <firo.yang@suse.com>
-Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 0edfd199937d..e4c1e6345edd 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -1871,13 +1871,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
- static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
- 				struct sk_buff *skb)
- {
--	/* if the page was released unmap it, else just sync our portion */
--	if (unlikely(IXGBE_CB(skb)->page_released)) {
--		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
--				     ixgbe_rx_pg_size(rx_ring),
--				     DMA_FROM_DEVICE,
--				     IXGBE_RX_DMA_ATTR);
--	} else if (ring_uses_build_skb(rx_ring)) {
-+	if (ring_uses_build_skb(rx_ring)) {
- 		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
+The remaining feedback on irdma posted in [1] is work in progress
+and will be part of a future submission.
  
- 		dma_sync_single_range_for_cpu(rx_ring->dev,
-@@ -1894,6 +1888,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
- 					      skb_frag_size(frag),
- 					      DMA_FROM_DEVICE);
- 	}
-+
-+	/* If the page was released, just unmap it. */
-+	if (unlikely(IXGBE_CB(skb)->page_released)) {
-+		dma_unmap_page_attrs(rx_ring->dev, IXGBE_CB(skb)->dma,
-+				     ixgbe_rx_pg_size(rx_ring),
-+				     DMA_FROM_DEVICE,
-+				     IXGBE_RX_DMA_ATTR);
-+	}
- }
- 
- /**
+[1] https://lore.kernel.org/linux-rdma/20191209224935.1780117-1-jeffrey.t.kirsher@intel.com/
+
+Michael J. Ruhl (1):
+  RDMA/irdma: Add dynamic tracing for CM
+
+Mustafa Ismail (13):
+  RDMA/irdma: Add driver framework definitions
+  RDMA/irdma: Implement device initialization definitions
+  RDMA/irdma: Implement HW Admin Queue OPs
+  RDMA/irdma: Add HMC backing store setup functions
+  RDMA/irdma: Add privileged UDA queue implementation
+  RDMA/irdma: Add QoS definitions
+  RDMA/irdma: Add connection manager
+  RDMA/irdma: Add PBLE resource manager
+  RDMA/irdma: Implement device supported verb APIs
+  RDMA/irdma: Add RoCEv2 UD OP support
+  RDMA/irdma: Add user/kernel shared libraries
+  RDMA/irdma: Add miscellaneous utility definitions
+  RDMA/irdma: Add ABI definitions
+
+Shiraz Saleem (2):
+  RDMA: Add irdma Kconfig/Makefile and remove i40iw
+  RDMA/irdma: Update MAINTAINERS file
+
+ Documentation/ABI/stable/sysfs-class-infiniband |   18 -
+ MAINTAINERS                                     |    8 +-
+ drivers/infiniband/Kconfig                      |    2 +-
+ drivers/infiniband/hw/Makefile                  |    2 +-
+ drivers/infiniband/hw/i40iw/Kconfig             |    9 -
+ drivers/infiniband/hw/i40iw/Makefile            |    9 -
+ drivers/infiniband/hw/i40iw/i40iw.h             |  602 ---
+ drivers/infiniband/hw/i40iw/i40iw_cm.c          | 4422 -----------------
+ drivers/infiniband/hw/i40iw/i40iw_cm.h          |  462 --
+ drivers/infiniband/hw/i40iw/i40iw_ctrl.c        | 5198 --------------------
+ drivers/infiniband/hw/i40iw/i40iw_d.h           | 1737 -------
+ drivers/infiniband/hw/i40iw/i40iw_hmc.c         |  821 ----
+ drivers/infiniband/hw/i40iw/i40iw_hmc.h         |  241 -
+ drivers/infiniband/hw/i40iw/i40iw_hw.c          |  852 ----
+ drivers/infiniband/hw/i40iw/i40iw_main.c        | 2070 --------
+ drivers/infiniband/hw/i40iw/i40iw_osdep.h       |  217 -
+ drivers/infiniband/hw/i40iw/i40iw_p.h           |  128 -
+ drivers/infiniband/hw/i40iw/i40iw_pble.c        |  612 ---
+ drivers/infiniband/hw/i40iw/i40iw_pble.h        |  131 -
+ drivers/infiniband/hw/i40iw/i40iw_puda.c        | 1493 ------
+ drivers/infiniband/hw/i40iw/i40iw_puda.h        |  188 -
+ drivers/infiniband/hw/i40iw/i40iw_register.h    | 1030 ----
+ drivers/infiniband/hw/i40iw/i40iw_status.h      |  101 -
+ drivers/infiniband/hw/i40iw/i40iw_type.h        | 1363 ------
+ drivers/infiniband/hw/i40iw/i40iw_uk.c          | 1232 -----
+ drivers/infiniband/hw/i40iw/i40iw_user.h        |  430 --
+ drivers/infiniband/hw/i40iw/i40iw_utils.c       | 1557 ------
+ drivers/infiniband/hw/i40iw/i40iw_verbs.c       | 2788 -----------
+ drivers/infiniband/hw/i40iw/i40iw_verbs.h       |  179 -
+ drivers/infiniband/hw/i40iw/i40iw_vf.c          |   85 -
+ drivers/infiniband/hw/i40iw/i40iw_vf.h          |   62 -
+ drivers/infiniband/hw/i40iw/i40iw_virtchnl.c    |  756 ---
+ drivers/infiniband/hw/i40iw/i40iw_virtchnl.h    |  124 -
+ drivers/infiniband/hw/irdma/Kconfig             |   10 +
+ drivers/infiniband/hw/irdma/Makefile            |   28 +
+ drivers/infiniband/hw/irdma/cm.c                | 4515 +++++++++++++++++
+ drivers/infiniband/hw/irdma/cm.h                |  414 ++
+ drivers/infiniband/hw/irdma/ctrl.c              | 5990 +++++++++++++++++++++++
+ drivers/infiniband/hw/irdma/defs.h              | 2129 ++++++++
+ drivers/infiniband/hw/irdma/hmc.c               |  705 +++
+ drivers/infiniband/hw/irdma/hmc.h               |  218 +
+ drivers/infiniband/hw/irdma/hw.c                | 2596 ++++++++++
+ drivers/infiniband/hw/irdma/i40iw_hw.c          |  209 +
+ drivers/infiniband/hw/irdma/i40iw_hw.h          |  162 +
+ drivers/infiniband/hw/irdma/i40iw_if.c          |  214 +
+ drivers/infiniband/hw/irdma/icrdma_hw.c         |   74 +
+ drivers/infiniband/hw/irdma/icrdma_hw.h         |   62 +
+ drivers/infiniband/hw/irdma/irdma.h             |  190 +
+ drivers/infiniband/hw/irdma/irdma_if.c          |  449 ++
+ drivers/infiniband/hw/irdma/main.c              |  631 +++
+ drivers/infiniband/hw/irdma/main.h              |  652 +++
+ drivers/infiniband/hw/irdma/osdep.h             |  106 +
+ drivers/infiniband/hw/irdma/pble.c              |  510 ++
+ drivers/infiniband/hw/irdma/pble.h              |  135 +
+ drivers/infiniband/hw/irdma/protos.h            |   91 +
+ drivers/infiniband/hw/irdma/puda.c              | 1690 +++++++
+ drivers/infiniband/hw/irdma/puda.h              |  186 +
+ drivers/infiniband/hw/irdma/status.h            |   69 +
+ drivers/infiniband/hw/irdma/trace.c             |  112 +
+ drivers/infiniband/hw/irdma/trace.h             |    3 +
+ drivers/infiniband/hw/irdma/trace_cm.h          |  458 ++
+ drivers/infiniband/hw/irdma/type.h              | 1709 +++++++
+ drivers/infiniband/hw/irdma/uda.c               |  390 ++
+ drivers/infiniband/hw/irdma/uda.h               |   64 +
+ drivers/infiniband/hw/irdma/uda_d.h             |  382 ++
+ drivers/infiniband/hw/irdma/uk.c                | 1744 +++++++
+ drivers/infiniband/hw/irdma/user.h              |  450 ++
+ drivers/infiniband/hw/irdma/utils.c             | 2407 +++++++++
+ drivers/infiniband/hw/irdma/verbs.c             | 4358 +++++++++++++++++
+ drivers/infiniband/hw/irdma/verbs.h             |  199 +
+ drivers/infiniband/hw/irdma/ws.c                |  395 ++
+ drivers/infiniband/hw/irdma/ws.h                |   39 +
+ include/uapi/rdma/i40iw-abi.h                   |  107 -
+ include/uapi/rdma/ib_user_ioctl_verbs.h         |    1 +
+ include/uapi/rdma/irdma-abi.h                   |  131 +
+ 75 files changed, 34883 insertions(+), 29030 deletions(-)
+ delete mode 100644 drivers/infiniband/hw/i40iw/Kconfig
+ delete mode 100644 drivers/infiniband/hw/i40iw/Makefile
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_cm.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_cm.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_ctrl.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_d.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_hmc.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_hmc.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_hw.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_main.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_osdep.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_p.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_pble.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_pble.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_puda.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_puda.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_register.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_status.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_type.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_uk.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_user.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_utils.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_verbs.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_verbs.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_vf.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_vf.h
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_virtchnl.c
+ delete mode 100644 drivers/infiniband/hw/i40iw/i40iw_virtchnl.h
+ create mode 100644 drivers/infiniband/hw/irdma/Kconfig
+ create mode 100644 drivers/infiniband/hw/irdma/Makefile
+ create mode 100644 drivers/infiniband/hw/irdma/cm.c
+ create mode 100644 drivers/infiniband/hw/irdma/cm.h
+ create mode 100644 drivers/infiniband/hw/irdma/ctrl.c
+ create mode 100644 drivers/infiniband/hw/irdma/defs.h
+ create mode 100644 drivers/infiniband/hw/irdma/hmc.c
+ create mode 100644 drivers/infiniband/hw/irdma/hmc.h
+ create mode 100644 drivers/infiniband/hw/irdma/hw.c
+ create mode 100644 drivers/infiniband/hw/irdma/i40iw_hw.c
+ create mode 100644 drivers/infiniband/hw/irdma/i40iw_hw.h
+ create mode 100644 drivers/infiniband/hw/irdma/i40iw_if.c
+ create mode 100644 drivers/infiniband/hw/irdma/icrdma_hw.c
+ create mode 100644 drivers/infiniband/hw/irdma/icrdma_hw.h
+ create mode 100644 drivers/infiniband/hw/irdma/irdma.h
+ create mode 100644 drivers/infiniband/hw/irdma/irdma_if.c
+ create mode 100644 drivers/infiniband/hw/irdma/main.c
+ create mode 100644 drivers/infiniband/hw/irdma/main.h
+ create mode 100644 drivers/infiniband/hw/irdma/osdep.h
+ create mode 100644 drivers/infiniband/hw/irdma/pble.c
+ create mode 100644 drivers/infiniband/hw/irdma/pble.h
+ create mode 100644 drivers/infiniband/hw/irdma/protos.h
+ create mode 100644 drivers/infiniband/hw/irdma/puda.c
+ create mode 100644 drivers/infiniband/hw/irdma/puda.h
+ create mode 100644 drivers/infiniband/hw/irdma/status.h
+ create mode 100644 drivers/infiniband/hw/irdma/trace.c
+ create mode 100644 drivers/infiniband/hw/irdma/trace.h
+ create mode 100644 drivers/infiniband/hw/irdma/trace_cm.h
+ create mode 100644 drivers/infiniband/hw/irdma/type.h
+ create mode 100644 drivers/infiniband/hw/irdma/uda.c
+ create mode 100644 drivers/infiniband/hw/irdma/uda.h
+ create mode 100644 drivers/infiniband/hw/irdma/uda_d.h
+ create mode 100644 drivers/infiniband/hw/irdma/uk.c
+ create mode 100644 drivers/infiniband/hw/irdma/user.h
+ create mode 100644 drivers/infiniband/hw/irdma/utils.c
+ create mode 100644 drivers/infiniband/hw/irdma/verbs.c
+ create mode 100644 drivers/infiniband/hw/irdma/verbs.h
+ create mode 100644 drivers/infiniband/hw/irdma/ws.c
+ create mode 100644 drivers/infiniband/hw/irdma/ws.h
+ delete mode 100644 include/uapi/rdma/i40iw-abi.h
+ create mode 100644 include/uapi/rdma/irdma-abi.h
+
 -- 
-2.20.1
+1.8.3.1
 
 _______________________________________________
 Intel-wired-lan mailing list
