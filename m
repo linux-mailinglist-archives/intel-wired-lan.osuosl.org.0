@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE28713E4F1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jan 2020 18:11:54 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B6CC13E7FD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jan 2020 18:29:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9FBE286B6B;
-	Thu, 16 Jan 2020 17:11:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C8EF087ED2;
+	Thu, 16 Jan 2020 17:29:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PpPnY+VTQ49z; Thu, 16 Jan 2020 17:11:53 +0000 (UTC)
+	with ESMTP id WpdtW4pRFWSP; Thu, 16 Jan 2020 17:29:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7E04D86BA4;
-	Thu, 16 Jan 2020 17:11:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BBDE587F12;
+	Thu, 16 Jan 2020 17:29:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0D46A1BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:11:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7629B1BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:29:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0740B86B7B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:11:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 71C7F81FD3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:29:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 465jjnRwZcIR for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jan 2020 17:11:44 +0000 (UTC)
+ with ESMTP id GZU85FwCZZmx for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jan 2020 17:29:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 83C1D86B6B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:11:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C6D45867A1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jan 2020 17:29:27 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7259421D56;
- Thu, 16 Jan 2020 17:11:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A5F1824719;
+ Thu, 16 Jan 2020 17:29:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579194704;
- bh=VpZbRTFKM0xn+6cjq7+IvuLQrY6Rt9Cnp9fdZkHXzlE=;
+ s=default; t=1579195767;
+ bh=ouDOGODEY/dNR0K0ljr0NFswmyk7CBZsCorqDZUqP4Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=AjGIKmFGrKiHOXc5MHkpzLw/AFs0atW4ZRp1h4cBfx9/aBP+qk6hZoH9WhjCGFAMl
- +sKPbGV9CH5rylipwl06uUOPtwIIulIWhBljvedS7+lCOsJjjUY5GPY0XjI97dS+Ga
- 1o5R9synhO5ao6SelWRJFrL7btSU7aqQoxWCm8xc=
+ b=BRnW+1i0yfpCl2JLc3/e5K8GCfirPWT7KScok1/hOHAOUEEYBCLyDFM+meUFjofsa
+ 0huc4akveKPD1GaxA006yqafipXTAs1oY0zphdPjAAzroLGNUaQjn76caca9pwszwp
+ /VMDFRORL0Ktz8GFykbVWSmlNsaz+C5IG9VhR8hQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Thu, 16 Jan 2020 12:03:01 -0500
-Message-Id: <20200116170509.12787-280-sashal@kernel.org>
+Date: Thu, 16 Jan 2020 12:22:47 -0500
+Message-Id: <20200116172403.18149-238-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
-References: <20200116170509.12787-1-sashal@kernel.org>
+In-Reply-To: <20200116172403.18149-1-sashal@kernel.org>
+References: <20200116172403.18149-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 543/671] ixgbe: sync the
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.14 295/371] ixgbe: sync the
  first fragment unconditionally
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -114,10 +114,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index de65ca1e6558..51cd58fbab69 100644
+index 0edfd199937d..e4c1e6345edd 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -1822,13 +1822,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
+@@ -1871,13 +1871,7 @@ static void ixgbe_pull_tail(struct ixgbe_ring *rx_ring,
  static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
  				struct sk_buff *skb)
  {
@@ -132,7 +132,7 @@ index de65ca1e6558..51cd58fbab69 100644
  		unsigned long offset = (unsigned long)(skb->data) & ~PAGE_MASK;
  
  		dma_sync_single_range_for_cpu(rx_ring->dev,
-@@ -1845,6 +1839,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
+@@ -1894,6 +1888,14 @@ static void ixgbe_dma_sync_frag(struct ixgbe_ring *rx_ring,
  					      skb_frag_size(frag),
  					      DMA_FROM_DEVICE);
  	}
