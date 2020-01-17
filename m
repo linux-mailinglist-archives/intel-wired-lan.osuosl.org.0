@@ -1,75 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 012BB1413D1
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 23:00:19 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78B551413E2
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 23:02:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AF1C72011B;
-	Fri, 17 Jan 2020 22:00:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2528986747;
+	Fri, 17 Jan 2020 22:02:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o9fJQvowWo75; Fri, 17 Jan 2020 22:00:17 +0000 (UTC)
+	with ESMTP id Pbxx-vUSqavp; Fri, 17 Jan 2020 22:02:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5A67920392;
-	Fri, 17 Jan 2020 22:00:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2E97387937;
+	Fri, 17 Jan 2020 22:02:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B2FBF1BF383
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:00:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D41A21BF383
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:02:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AE6762011B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:00:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id CF01420367
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:02:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZO0u3SD3S+Hp for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Jan 2020 22:00:07 +0000 (UTC)
+ with ESMTP id TzoT4D0oTe+T for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Jan 2020 22:02:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id 9E7012010F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:00:07 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 06BA620392
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:02:06 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2020 14:00:00 -0800
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2020 14:02:05 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,331,1574150400"; d="scan'208";a="263825444"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga001.fm.intel.com with ESMTP; 17 Jan 2020 14:00:00 -0800
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 17 Jan 2020 13:59:47 -0800
+X-IronPort-AV: E=Sophos;i="5.70,331,1574150400"; d="scan'208";a="226482150"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by orsmga003.jf.intel.com with ESMTP; 17 Jan 2020 14:02:05 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 17 Jan 2020 14:02:05 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 17 Jan 2020 13:59:46 -0800
+ 15.1.1713.5; Fri, 17 Jan 2020 14:02:04 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Fri, 17 Jan 2020 13:59:46 -0800
+ Fri, 17 Jan 2020 14:02:04 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
-Thread-Index: AQHVzMGrCbbyF5Vl6U+0PHLZMp+P66fvaUQg
-Date: Fri, 17 Jan 2020 21:59:43 +0000
-Message-ID: <7e2c22164e9949028d0b2d70ad970a9f@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 2/2] i40e: Register a virtbus device to
+ provide RDMA
+Thread-Index: AQHVzMGrYgerrbVsOEyeDG24tqKNrKfvactQ
+Date: Fri, 17 Jan 2020 22:02:03 +0000
+Message-ID: <966fc2becaec4bd6adcf49ca67cbbeb1@intel.com>
 References: <20200116230610.1868-1-shiraz.saleem@intel.com>
-In-Reply-To: <20200116230610.1868-1-shiraz.saleem@intel.com>
+ <20200116230610.1868-2-shiraz.saleem@intel.com>
+In-Reply-To: <20200116230610.1868-2-shiraz.saleem@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMjMxMTAwZDItOThmYi00MjJkLTk3M2UtNDlhMTc5Mzc1MzEzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiXC9QU1djcEJMVWErTXpRTDRkVm5RclRSa1lyS2dCZ0RhVU8xZE02c1NRbzNCekhrNklWbVJVUzdxYU10d0JnOXYifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmM4NDVlMDMtNjBmYy00MjE2LWFkZDEtMTFjOTdjMzgwOGNlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTTFTQU9nd0NSbHFLeTl5U1NRT1h4UWlXY3djM0F2bzhmVkpnSXZ4Zks4RURXN2tKT1wvREM0dHRVMUlaZVpDY0gifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] i40e: Register a virtbus device
+ to provide RDMA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,25 +96,34 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Thursday, January 16, 2020 3:06 PM
 > To: intel-wired-lan@lists.osuosl.org
 > Cc: Saleem, Shiraz <shiraz.saleem@intel.com>
-> Subject: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
+> Subject: [Intel-wired-lan] [PATCH 2/2] i40e: Register a virtbus device to
+> provide RDMA
 > 
-> From: "Shiraz Saleem" <shiraz.saleem@intel.com>
+> Register client virtbus device on the virtbus for the RDMA virtbus driver
+> (irdma) to bind to. It allows to realize a single RDMA driver capable of working
+> with multiple netdev drivers over multi-generation Intel HW supporting
+> RDMA.
+> There is also no load ordering dependencies between i40e and irdma.
 > 
-> Move i40e_client.h to include/linux/net/intel/* since its shared between
-> i40iw and i40e.
+> Summary of changes:
+> * Support to add/remove virtbus devices
+> * Add 2 new client ops.
+> 	* i40e_client_device_register() which is called during RDMA
+> 	  probe() per PF. Validate client drv OPs and schedule service
+> 	  task to call open()
+> 	* i40e_client_device_unregister() called during RDMA remove()
+> 	  per PF. Call client close() and release_qvlist.
+> * The global register/unregister calls exported for i40iw are retained
+>   until i40iw is removed from the kernel.
 > 
+> Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
 > Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
 > ---
->  drivers/infiniband/hw/i40iw/Makefile          |   1 -
->  drivers/infiniband/hw/i40iw/i40iw.h           |   2 +-
->  drivers/net/ethernet/intel/i40e/i40e.h        |   2 +-
->  drivers/net/ethernet/intel/i40e/i40e_client.c |   2 +-
->  drivers/net/ethernet/intel/i40e/i40e_client.h | 203 --------------------------
->  include/linux/net/intel/i40e_client.h         | 203
-> ++++++++++++++++++++++++++
->  6 files changed, 206 insertions(+), 207 deletions(-)  delete mode 100644
-> drivers/net/ethernet/intel/i40e/i40e_client.h
->  create mode 100644 include/linux/net/intel/i40e_client.h
+>  drivers/net/ethernet/intel/Kconfig            |   1 +
+>  drivers/net/ethernet/intel/i40e/i40e_client.c | 137
+> ++++++++++++++++++++++----
+>  include/linux/net/intel/i40e_client.h         |  15 +++
+>  3 files changed, 133 insertions(+), 20 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
