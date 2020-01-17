@@ -2,71 +2,51 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC54B1409C7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 13:32:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2409914102E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 18:47:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D3C7874C5;
-	Fri, 17 Jan 2020 12:32:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AF59A87E53;
+	Fri, 17 Jan 2020 17:47:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EXE6jnaMWXc2; Fri, 17 Jan 2020 12:32:32 +0000 (UTC)
+	with ESMTP id PPQZQR-7AosP; Fri, 17 Jan 2020 17:47:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 32A9187B62;
-	Fri, 17 Jan 2020 12:32:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ACC6A88158;
+	Fri, 17 Jan 2020 17:47:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B9A491BF331
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 12:32:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E1271BF30B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 17:26:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B2050869CA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 12:32:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 98EB422005
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 17:26:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sjqc4YdtW3b1 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Jan 2020 12:32:19 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f178.google.com (mail-qk1-f178.google.com
- [209.85.222.178])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CA5CD869BA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 12:32:19 +0000 (UTC)
-Received: by mail-qk1-f178.google.com with SMTP id x129so22453140qke.8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 04:32:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=bDo76dKOnuzMEZoozXWQMHwLc/1xlavJZ+W7DLl98cA=;
- b=Zuu0U+4k8U3TD77N2gxENMofYswGIX7cAUtVza5colFEksaX5SB4mO8RaFQiZ0sz6I
- f/QfQjY00+2cPnqGozgWSiBjafKbOzsDuH+OEtrfBZBYGWEYKPhW/klR4C4LvXCSAz5r
- xnDht5j6I8hjqzR8NUNkUkzeecoKkD6XTJJt9AiRk33yuyQNdHfBMDydVVLE48k4r3cD
- 8Bi78ttsu2qI5QpkioiQ7M0kuPUOXz4GT73zqyXUmXMAqDvQD2KSoj7mfDU8CRHHWHNk
- GjeBExZ2Qp8OTx/xVe+ZqTqJBUVhgFTO+T2xckmvSAPOdALBSJTIbDkrymed+Uy4ndF1
- 0iRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bDo76dKOnuzMEZoozXWQMHwLc/1xlavJZ+W7DLl98cA=;
- b=rsGLSK2U0E9iMf6v/yd/LYQAM6pIBHDdC93freMj80H88EWBMJutx8IERDDzBhj36C
- jSkhm1Gjkbu2EHabmW6Fd01gOWy7eSqWGQKBWUCC1j5Cw1PxQB5KPIE9xeoQxAXzkVHu
- QoV8EIaP151Sp7tAbME55eqSb6uH2NSygxwUOm8Fq5OM03693qvbB0w4grA5gk4OmrL8
- f75spnt3y/6MwAYb9macZ87wOI5Mn2mevzTqMc02x6Dq6HWZz+yk4MGe2ianjacF6cCy
- mLwo7MauZO8ujhwyZ3Nm7nMFol8P9K7aS7KvZmq5NbjcSwyEZ2Yab8UNUuWCgTc4QHNy
- OLeA==
-X-Gm-Message-State: APjAAAU80yAAYLlxS2SN28/EDw4FWYow8xH5VDD9OwsFrREUPxm9Kdvt
- Zq8jG67FGZhAq8nUqUMQM90LpcfzihSyJTH86QU=
-X-Google-Smtp-Source: APXvYqxTXWA54rmWZpLP6uGDCWOlZc+r+yABTf9LKI9AozCp3AplLW8CMhCxgL+4K2WT73qjLAzt1DUkxLTE72V/ueE=
-X-Received: by 2002:ae9:ee11:: with SMTP id i17mr38169903qkg.333.1579264338781; 
- Fri, 17 Jan 2020 04:32:18 -0800 (PST)
-MIME-Version: 1.0
+ with ESMTP id WE4aEhJO3CRl for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Jan 2020 17:26:19 +0000 (UTC)
+X-Greylist: delayed 00:09:38 by SQLgrey-1.7.6
+Received: from mail-c.ads.isi.edu (mail-c.ads.isi.edu [128.9.180.198])
+ by silver.osuosl.org (Postfix) with ESMTPS id C5E8020480
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 17:26:19 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.70,330,1574150400"; d="scan'208";a="22258381"
+Received: from pool-108-14-86-129.nycmny.ftas.verizon.net (HELO
+ smtp.ads.isi.edu) ([108.14.86.129])
+ by mail-c.ads.isi.edu with ESMTP/TLS/AES256-GCM-SHA384;
+ 17 Jan 2020 09:16:39 -0800
+Date: Fri, 17 Jan 2020 12:16:37 -0500
+From: Ryan Goodfellow <rgoodfel@isi.edu>
+To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>
+Message-ID: <20200117171637.GB69024@smtp.ads.isi.edu>
 References: <14f9e1bf5c3a41dbaec53f83cb5f0564@isi.edu>
-In-Reply-To: <14f9e1bf5c3a41dbaec53f83cb5f0564@isi.edu>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Fri, 17 Jan 2020 13:32:07 +0100
-Message-ID: <CAJ+HfNhdPEe34DVUAj4eHxLkBUSTo2CXbLHoWu+dwFCp753oMg@mail.gmail.com>
-To: Ryan Goodfellow <rgoodfel@isi.edu>
+ <CAJ+HfNhdPEe34DVUAj4eHxLkBUSTo2CXbLHoWu+dwFCp753oMg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAJ+HfNhdPEe34DVUAj4eHxLkBUSTo2CXbLHoWu+dwFCp753oMg@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Mailman-Approved-At: Fri, 17 Jan 2020 17:47:07 +0000
 Subject: Re: [Intel-wired-lan] zero-copy between interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -81,29 +61,149 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "xdp-newbies@vger.kernel.org" <xdp-newbies@vger.kernel.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>,
  intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Karlsson,
  Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gTW9uLCAxMyBKYW4gMjAyMCBhdCAwMToyOCwgUnlhbiBHb29kZmVsbG93IDxyZ29vZGZlbEBp
-c2kuZWR1PiB3cm90ZToKPgpbLi4uXQo+Cj4gSSBjb3VsZCBub3QgZ2V0IHplcm8tY29weSB0byB3
-b3JrIHdpdGggdGhlIGk0MGUgZHJpdmVyIGFzIGl0IHdvdWxkIGNyYXNoLiBJJ3ZlCj4gYXR0YWNo
-ZWQgdGhlIGNvcnJlc3BvbmRpbmcgdHJhY2VzIGZyb20gZG1lc2cuCgpUaGFua3MgUnlhbiEgSSBo
-YWQgYSBsb29rIGF0IHRoZSBjcmFzaCwgYW5kIGl0J3MgaW4gdGhlIFhEUCBzZXR1cDoKCmk0MGVf
-eGRwX3NldHVwOgouLi4KIGZvciAoaSA9IDA7IGkgPCB2c2ktPm51bV9xdWV1ZV9wYWlyczsgaSsr
-KQogICAgIFdSSVRFX09OQ0UodnNpLT5yeF9yaW5nc1tpXS0+eGRwX3Byb2csIHZzaS0+eGRwX3By
-b2cpOwoKYW5kIHRoZSB2c2ktPnJ4X3JpbmdbMF0gaXMgTlVMTC4gVGhpcyBpcyBjbGVhcmx5IGJy
-b2tlbi4KCkl0IHdvdWxkIGhlbHAgd2l0aCBtb3JlIGxpbmVzIGZyb20geW91ciBkbWVzZzogdGhl
-IGN1dCBpNDBlIGxvZyBoaW50cwp0aGF0IHNvbWV0aGluZyBpcyByZWFsbHkgYnJva2VuOgoKWyAg
-MzI4LjU3OTE1NF0gaTQwZSAwMDAwOmI3OjAwLjI6IGZhaWxlZCB0byBnZXQgdHJhY2tpbmcgZm9y
-IDI1NgpxdWV1ZXMgZm9yIFZTSSAwIGVyciAtMTIKWyAgMzI4LjU3OTI4MF0gaTQwZSAwMDAwOmI3
-OjAwLjI6IHNldHVwIG9mIE1BSU4gVlNJIGZhaWxlZApbICAzMjguNTc5MzY3XSBpNDBlIDAwMDA6
-Yjc6MDAuMjogY2FuJ3QgcmVtb3ZlIFZFQiAxNjIgd2l0aCAwIFZTSXMgbGVmdAoKSXMgaXQgcG9z
-c2libGUgdG8gZGlnIG91dCB0aGUgY29tcGxldGUgbG9nPwoKVGhhbmtzIQpCasO2cm4KX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFu
-IG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9z
-dW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Fri, Jan 17, 2020 at 01:32:07PM +0100, Bj=F6rn T=F6pel wrote:
+> On Mon, 13 Jan 2020 at 01:28, Ryan Goodfellow <rgoodfel@isi.edu> wrote:
+> >
+> [...]
+> >
+> > I could not get zero-copy to work with the i40e driver as it would cras=
+h. I've
+> > attached the corresponding traces from dmesg.
+> =
+
+> Thanks Ryan! I had a look at the crash, and it's in the XDP setup:
+> =
+
+> i40e_xdp_setup:
+> ...
+>  for (i =3D 0; i < vsi->num_queue_pairs; i++)
+>      WRITE_ONCE(vsi->rx_rings[i]->xdp_prog, vsi->xdp_prog);
+> =
+
+> and the vsi->rx_ring[0] is NULL. This is clearly broken.
+> =
+
+> It would help with more lines from your dmesg: the cut i40e log hints
+> that something is really broken:
+> =
+
+> [  328.579154] i40e 0000:b7:00.2: failed to get tracking for 256
+> queues for VSI 0 err -12
+> [  328.579280] i40e 0000:b7:00.2: setup of MAIN VSI failed
+> [  328.579367] i40e 0000:b7:00.2: can't remove VEB 162 with 0 VSIs left
+> =
+
+> Is it possible to dig out the complete log?
+
+Hi Bj=F6rn,
+
+I've linked a full dmesg log from an XDP setup crash. Note that there are =
+
+two i40e cards on this machine. The X710 (0000:65:00.0, 0000:65:00.1) works =
+
+fine, the X722 (0000:b7:00.0, 0000:b7:00.1, 0000:b7:00.2, 0000:b7:00.3) is =
+the
+one that is crashing on XDP setup.
+
+https://gitlab.com/mergetb/tech/network-emulation/kernel/snippets/1931080
+
+Some info that may be useful:
+
+ry@turbine:~$ sudo ethtool -i eno7
+driver: i40e
+version: 2.8.20-k
+firmware-version: 3.33 0x80001006 1.1747.0
+expansion-rom-version:
+bus-info: 0000:b7:00.2
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+supports-priv-flags: yes
+
+The firmware version 3.33 was the latest I could find as of a few weeks ago.
+
+ry@turbine:~$ sudo lspci -vvv | grep 722
+b7:00.0 Ethernet controller: Intel Corporation Ethernet Connection X722 for=
+ 10GBASE-T (rev 04)
+	DeviceName: Intel LAN X722 #1
+	Subsystem: Super Micro Computer Inc Ethernet Connection X722 for 10GBASE-T
+b7:00.1 Ethernet controller: Intel Corporation Ethernet Connection X722 for=
+ 10GBASE-T (rev 04)
+	DeviceName: Intel LAN X722 #2
+	Subsystem: Super Micro Computer Inc Ethernet Connection X722 for 10GBASE-T
+b7:00.2 Ethernet controller: Intel Corporation Ethernet Connection X722 for=
+ 10GbE SFP+ (rev 04)
+	DeviceName: Intel LAN X722 #3
+	Subsystem: Super Micro Computer Inc Ethernet Connection X722 for 10GbE SFP+
+b7:00.3 Ethernet controller: Intel Corporation Ethernet Connection X722 for=
+ 10GbE SFP+ (rev 04)
+	DeviceName: Intel LAN X722 #4
+	Subsystem: Super Micro Computer Inc Ethernet Connection X722 for 10GbE SFP+
+
+ry@ryzen:~$ uname -a
+Linux ryzen 4.19.0-6-amd64 #1 SMP Debian 4.19.67-2+deb10u2 (2019-11-11) x86=
+_64 GNU/Linux
+
+ry@turbine:~/kmoa/bpf-next$ git log -2
+commit 60d71397d27e7859fdaaaaab6594e4d977ae46e2 (HEAD -> master)
+Author: Ryan Goodfellow <rgoodfel@isi.edu>
+Date:   Wed Jan 15 16:54:39 2020 -0500
+
+    add xdpsock_multidev sample program
+
+    This is a simple program that uses AF_XDP sockets to forward packets
+    between two interfaces using a common memory region and no copying of
+    packets.
+
+    Signed-off-by: Ryan Goodfellow <rgoodfel@isi.edu>
+
+commit 9173cac3b64e6785dd604f5075e6035b045a0026 (origin/master, origin/HEAD)
+Author: Andrii Nakryiko <andriin@fb.com>
+Date:   Wed Jan 15 11:08:56 2020 -0800
+
+    libbpf: Support .text sub-calls relocations
+
+    The LLVM patch https://reviews.llvm.org/D72197 makes LLVM emit function=
+ call
+    relocations within the same section. This includes a default .text sect=
+ion,
+    which contains any BPF sub-programs. This wasn't the case before and so=
+ libbpf
+    was able to get a way with slightly simpler handling of subprogram call
+    relocations.
+
+    This patch adds support for .text section relocations. It needs to ensu=
+re
+    correct order of relocations, so does two passes:
+    - first, relocate .text instructions, if there are any relocations in i=
+t;
+    - then process all the other programs and copy over patched .text instr=
+uctions
+    for all sub-program calls.
+
+    v1->v2:
+    - break early once .text program is processed.
+
+    Signed-off-by: Andrii Nakryiko <andriin@fb.com>
+    Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+    Acked-by: Yonghong Song <yhs@fb.com>
+    Cc: Alexei Starovoitov <ast@kernel.org>
+    Link: https://lore.kernel.org/bpf/20200115190856.2391325-1-andriin@fb.c=
+om
+
+-- =
+
+~ ry
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
