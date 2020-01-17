@@ -1,53 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D9CD14106B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 19:10:31 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 012BB1413D1
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2020 23:00:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D42F98699B;
-	Fri, 17 Jan 2020 18:10:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AF1C72011B;
+	Fri, 17 Jan 2020 22:00:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wFMkyFoLhcow; Fri, 17 Jan 2020 18:10:25 +0000 (UTC)
+	with ESMTP id o9fJQvowWo75; Fri, 17 Jan 2020 22:00:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 147A1869A5;
-	Fri, 17 Jan 2020 18:10:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5A67920392;
+	Fri, 17 Jan 2020 22:00:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A265C1BF5DE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 18:10:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B2FBF1BF383
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:00:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9BF35221B2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 18:10:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AE6762011B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:00:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o7yHzb6RTxdx for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Jan 2020 18:10:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-d.ads.isi.edu (mail-d.ads.isi.edu [128.9.180.199])
- by silver.osuosl.org (Postfix) with ESMTPS id 694A622128
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 18:10:16 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.70,331,1574150400"; d="scan'208";a="20832595"
-Received: from pool-108-14-86-129.nycmny.ftas.verizon.net (HELO
- smtp.ads.isi.edu) ([108.14.86.129])
- by mail-d.ads.isi.edu with ESMTP/TLS/AES256-GCM-SHA384;
- 17 Jan 2020 10:10:15 -0800
-Date: Fri, 17 Jan 2020 13:10:12 -0500
-From: Ryan Goodfellow <rgoodfel@isi.edu>
-To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>
-Message-ID: <20200117181012.GA74692@smtp.ads.isi.edu>
-References: <14f9e1bf5c3a41dbaec53f83cb5f0564@isi.edu>
- <CAJ+HfNhdPEe34DVUAj4eHxLkBUSTo2CXbLHoWu+dwFCp753oMg@mail.gmail.com>
- <20200117171637.GB69024@smtp.ads.isi.edu>
+ with ESMTP id ZO0u3SD3S+Hp for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Jan 2020 22:00:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9E7012010F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2020 22:00:07 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2020 14:00:00 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,331,1574150400"; d="scan'208";a="263825444"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by fmsmga001.fm.intel.com with ESMTP; 17 Jan 2020 14:00:00 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 17 Jan 2020 13:59:47 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Fri, 17 Jan 2020 13:59:46 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Fri, 17 Jan 2020 13:59:46 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
+Thread-Index: AQHVzMGrCbbyF5Vl6U+0PHLZMp+P66fvaUQg
+Date: Fri, 17 Jan 2020 21:59:43 +0000
+Message-ID: <7e2c22164e9949028d0b2d70ad970a9f@intel.com>
+References: <20200116230610.1868-1-shiraz.saleem@intel.com>
+In-Reply-To: <20200116230610.1868-1-shiraz.saleem@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiMjMxMTAwZDItOThmYi00MjJkLTk3M2UtNDlhMTc5Mzc1MzEzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiXC9QU1djcEJMVWErTXpRTDRkVm5RclRSa1lyS2dCZ0RhVU8xZE02c1NRbzNCekhrNklWbVJVUzdxYU10d0JnOXYifQ==
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200117171637.GB69024@smtp.ads.isi.edu>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: Re: [Intel-wired-lan] zero-copy between interfaces
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,27 +82,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "xdp-newbies@vger.kernel.org" <xdp-newbies@vger.kernel.org>,
- =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 17, 2020 at 12:16:37PM -0500, Ryan Goodfellow wrote:
-> ry@ryzen:~$ uname -a
-> Linux ryzen 4.19.0-6-amd64 #1 SMP Debian 4.19.67-2+deb10u2 (2019-11-11) x86_64 GNU/Linux
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Shiraz Saleem
+> Sent: Thursday, January 16, 2020 3:06 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Saleem, Shiraz <shiraz.saleem@intel.com>
+> Subject: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
+> 
+> From: "Shiraz Saleem" <shiraz.saleem@intel.com>
+> 
+> Move i40e_client.h to include/linux/net/intel/* since its shared between
+> i40iw and i40e.
+> 
+> Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
+> ---
+>  drivers/infiniband/hw/i40iw/Makefile          |   1 -
+>  drivers/infiniband/hw/i40iw/i40iw.h           |   2 +-
+>  drivers/net/ethernet/intel/i40e/i40e.h        |   2 +-
+>  drivers/net/ethernet/intel/i40e/i40e_client.c |   2 +-
+>  drivers/net/ethernet/intel/i40e/i40e_client.h | 203 --------------------------
+>  include/linux/net/intel/i40e_client.h         | 203
+> ++++++++++++++++++++++++++
+>  6 files changed, 206 insertions(+), 207 deletions(-)  delete mode 100644
+> drivers/net/ethernet/intel/i40e/i40e_client.h
+>  create mode 100644 include/linux/net/intel/i40e_client.h
 
-correction, that was a terminal on the wrong machine
-
-ry@turbine:~$ uname -a
-Linux turbine 5.5.0-rc4-moa+ #16 SMP Fri Jan 17 10:52:42 EST 2020 x86_64 GNU/Linux
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
 
--- 
-~ ry
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
