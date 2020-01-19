@@ -1,32 +1,32 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6BEF2141D79
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EFE6C141D7A
 	for <lists+intel-wired-lan@lfdr.de>; Sun, 19 Jan 2020 12:06:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id EC4E7203DE;
-	Sun, 19 Jan 2020 11:06:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7D47985657;
+	Sun, 19 Jan 2020 11:06:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KLFtxm9HW7bk; Sun, 19 Jan 2020 11:06:45 +0000 (UTC)
+	with ESMTP id 7SeyYno6J3OI; Sun, 19 Jan 2020 11:06:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D5388203DA;
-	Sun, 19 Jan 2020 11:06:44 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2D42C8564D;
+	Sun, 19 Jan 2020 11:06:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7DC6E1BF2C6
+ by ash.osuosl.org (Postfix) with ESMTP id 83B471BF95C
  for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jan 2020 11:06:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A024C81B42
+ by hemlock.osuosl.org (Postfix) with ESMTP id D4F2081BD4
  for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jan 2020 11:06:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WUG8gA00U6Av for <intel-wired-lan@lists.osuosl.org>;
- Sun, 19 Jan 2020 11:06:40 +0000 (UTC)
+ with ESMTP id kTyc4SqkI0P6 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 19 Jan 2020 11:06:41 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
  by hemlock.osuosl.org (Postfix) with ESMTPS id 810BE8750A
