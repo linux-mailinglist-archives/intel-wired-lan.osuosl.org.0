@@ -2,55 +2,50 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF7EF141696
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jan 2020 09:39:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 054D6141CE0
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 19 Jan 2020 08:46:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2F37684DCD;
-	Sat, 18 Jan 2020 08:39:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 74B4085497;
+	Sun, 19 Jan 2020 07:46:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 546HfWGwV99U; Sat, 18 Jan 2020 08:39:24 +0000 (UTC)
+	with ESMTP id J699g2CrnMdH; Sun, 19 Jan 2020 07:46:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C221584763;
-	Sat, 18 Jan 2020 08:39:22 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A93ED854C0;
+	Sun, 19 Jan 2020 07:46:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CA4F31BF28D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2020 08:39:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 062E01BF59D
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jan 2020 07:46:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C536F20385
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2020 08:39:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 016432002D
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jan 2020 07:46:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vRGm+6EWI0bO for <intel-wired-lan@lists.osuosl.org>;
- Sat, 18 Jan 2020 08:39:20 +0000 (UTC)
+ with ESMTP id n3-wIHoKvM1S for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 19 Jan 2020 07:46:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 5CD1620346
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2020 08:39:20 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 85FC22002B
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jan 2020 07:46:04 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2020 00:39:19 -0800
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2020 23:46:03 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,333,1574150400"; d="scan'208";a="219155553"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 18 Jan 2020 00:39:18 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1isjdW-00035H-5v; Sat, 18 Jan 2020 16:39:18 +0800
-Date: Sat, 18 Jan 2020 16:38:24 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e22c400.2tga32s2r5ShKzvx%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
- 102d412a3d565a105f16e883169239dd66b680b5
+X-IronPort-AV: E=Sophos;i="5.70,337,1574150400"; d="scan'208";a="424904745"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
+ by fmsmga005.fm.intel.com with ESMTP; 18 Jan 2020 23:46:02 -0800
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Sun, 19 Jan 2020 09:46:01 +0200
+Message-Id: <20200119074601.33324-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v2] e1000e: Add support for Alder Lake
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,184 +58,181 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
-branch HEAD: 102d412a3d565a105f16e883169239dd66b680b5  ice: remove redundant assignment to variable xmit_done
+Add devices ID's for the next LOM generations that will be
+available on the next Intel Client platform (Alder Lake)
+This patch provides the initial support for these devices
 
-elapsed time: 718m
+v1->v2:
+Address comminuty comments
 
-configs tested: 158
-configs skipped: 0
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-csky                 randconfig-a001-20200118
-openrisc             randconfig-a001-20200118
-s390                 randconfig-a001-20200118
-sh                   randconfig-a001-20200118
-xtensa               randconfig-a001-20200118
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-x86_64               randconfig-g001-20200118
-x86_64               randconfig-g002-20200118
-x86_64               randconfig-g003-20200118
-i386                 randconfig-g001-20200118
-i386                 randconfig-g002-20200118
-i386                 randconfig-g003-20200118
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-parisc                            allnoconfig
-parisc                            allyesonfig
-parisc                         b180_defconfig
-parisc                        c3000_defconfig
-parisc                              defconfig
-alpha                randconfig-a001-20200118
-m68k                 randconfig-a001-20200118
-mips                 randconfig-a001-20200118
-nds32                randconfig-a001-20200118
-parisc               randconfig-a001-20200118
-riscv                randconfig-a001-20200118
-c6x                  randconfig-a001-20200118
-h8300                randconfig-a001-20200118
-microblaze           randconfig-a001-20200118
-nios2                randconfig-a001-20200118
-sparc64              randconfig-a001-20200118
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                             allyesconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-x86_64               randconfig-f001-20200118
-x86_64               randconfig-f002-20200118
-x86_64               randconfig-f003-20200118
-i386                 randconfig-f001-20200118
-i386                 randconfig-f002-20200118
-i386                 randconfig-f003-20200118
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                               rhel-7.6
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-s390                              allnoconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                    nommu_virt_defconfig
-riscv                          rv32_defconfig
-x86_64               randconfig-a001-20200118
-x86_64               randconfig-a002-20200118
-x86_64               randconfig-a003-20200118
-i386                 randconfig-a001-20200118
-i386                 randconfig-a002-20200118
-i386                 randconfig-a003-20200118
-x86_64               randconfig-b001-20200118
-x86_64               randconfig-b002-20200118
-x86_64               randconfig-b003-20200118
-i386                 randconfig-b001-20200118
-i386                 randconfig-b002-20200118
-i386                 randconfig-b003-20200118
-x86_64               randconfig-e001-20200118
-x86_64               randconfig-e002-20200118
-x86_64               randconfig-e003-20200118
-i386                 randconfig-e001-20200118
-i386                 randconfig-e002-20200118
-i386                 randconfig-e003-20200118
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-x86_64               randconfig-h001-20200118
-x86_64               randconfig-h002-20200118
-x86_64               randconfig-h003-20200118
-i386                 randconfig-h001-20200118
-i386                 randconfig-h002-20200118
-i386                 randconfig-h003-20200118
-x86_64               randconfig-c001-20200118
-x86_64               randconfig-c002-20200118
-x86_64               randconfig-c003-20200118
-i386                 randconfig-c001-20200118
-i386                 randconfig-c002-20200118
-i386                 randconfig-c003-20200118
-s390                             alldefconfig
-s390                             allmodconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                                defconfig
-s390                       zfcpdump_defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-arc                  randconfig-a001-20200118
-arm                  randconfig-a001-20200118
-arm64                randconfig-a001-20200118
-ia64                 randconfig-a001-20200118
-powerpc              randconfig-a001-20200118
-sparc                randconfig-a001-20200118
-
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
-0-DAY kernel test infrastructure                 Open Source Technology Center
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+ drivers/net/ethernet/intel/e1000e/ethtool.c | 3 ++-
+ drivers/net/ethernet/intel/e1000e/hw.h      | 5 +++++
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 7 +++++++
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 7 ++++++-
+ drivers/net/ethernet/intel/e1000e/ptp.c     | 1 +
+ 5 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+index adce7e319b9e..aac0b7fb6243 100644
+--- a/drivers/net/ethernet/intel/e1000e/ethtool.c
++++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+@@ -895,8 +895,8 @@ static int e1000_reg_test(struct e1000_adapter *adapter, u64 *data)
+ 	case e1000_pch_lpt:
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+-		/* fall through */
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		mask |= BIT(18);
+ 		break;
+ 	default:
+@@ -1561,6 +1561,7 @@ static void e1000_loopback_cleanup(struct e1000_adapter *adapter)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		fext_nvm11 = er32(FEXTNVM11);
+ 		fext_nvm11 &= ~E1000_FEXTNVM11_DISABLE_MULR_FIX;
+ 		ew32(FEXTNVM11, fext_nvm11);
+diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
+index f556163481cb..a1dbf8df1c70 100644
+--- a/drivers/net/ethernet/intel/e1000e/hw.h
++++ b/drivers/net/ethernet/intel/e1000e/hw.h
+@@ -97,6 +97,10 @@ struct e1000_hw;
+ #define E1000_DEV_ID_PCH_TGP_I219_LM14		0x15F9
+ #define E1000_DEV_ID_PCH_TGP_I219_V14		0x15FA
+ #define E1000_DEV_ID_PCH_TGP_I219_LM15		0x15F4
++#define E1000_DEV_ID_PCH_ADP_1219_LM16		0x1A1E
++#define E1000_DEV_ID_PCH_ADP_1219_V16		0x1A1F
++#define E1000_DEV_ID_PCH_ADP_1219_LM17		0x1A1C
++#define E1000_DEV_ID_PCH_ADP_1219_V17		0x1A1D
+ 
+ #define E1000_REVISION_4	4
+ 
+@@ -121,6 +125,7 @@ enum e1000_mac_type {
+ 	e1000_pch_spt,
+ 	e1000_pch_cnp,
+ 	e1000_pch_tgp,
++	e1000_pch_adp,
+ };
+ 
+ enum e1000_media_type {
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index b4135c50e905..735bf25952fc 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -317,6 +317,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		if (e1000_phy_is_accessible_pchlan(hw))
+ 			break;
+ 
+@@ -460,6 +461,7 @@ static s32 e1000_init_phy_params_pchlan(struct e1000_hw *hw)
+ 		case e1000_pch_spt:
+ 		case e1000_pch_cnp:
+ 		case e1000_pch_tgp:
++		case e1000_pch_adp:
+ 			/* In case the PHY needs to be in mdio slow mode,
+ 			 * set slow mode and try to get the PHY id again.
+ 			 */
+@@ -703,6 +705,7 @@ static s32 e1000_init_mac_params_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 	case e1000_pchlan:
+ 		/* check management mode */
+ 		mac->ops.check_mng_mode = e1000_check_mng_mode_pchlan;
+@@ -1642,6 +1645,7 @@ static s32 e1000_get_variants_ich8lan(struct e1000_adapter *adapter)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		rc = e1000_init_phy_params_pchlan(hw);
+ 		break;
+ 	default:
+@@ -2095,6 +2099,7 @@ static s32 e1000_sw_lcd_config_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		sw_cfg_mask = E1000_FEXTNVM_SW_CONFIG_ICH8M;
+ 		break;
+ 	default:
+@@ -3133,6 +3138,7 @@ static s32 e1000_valid_nvm_bank_detect_ich8lan(struct e1000_hw *hw, u32 *bank)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		bank1_offset = nvm->flash_bank_size;
+ 		act_offset = E1000_ICH_NVM_SIG_WORD;
+ 
+@@ -4077,6 +4083,7 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		word = NVM_COMPAT;
+ 		valid_csum_mask = NVM_COMPAT_VALID_CSUM;
+ 		break;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 60df6f2663c0..54b1768b1807 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3539,6 +3539,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
+ 		break;
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		if (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI) {
+ 			/* Stable 24MHz frequency */
+ 			incperiod = INCPERIOD_24MHZ;
+@@ -4050,8 +4051,8 @@ void e1000e_reset(struct e1000_adapter *adapter)
+ 	case e1000_pch_lpt:
+ 	case e1000_pch_spt:
+ 	case e1000_pch_cnp:
+-		/* fall-through */
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		fc->refresh_time = 0xFFFF;
+ 		fc->pause_time = 0xFFFF;
+ 
+@@ -7764,6 +7765,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM16), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V16), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM17), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V17), board_pch_cnp },
+ 
+ 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
+ };
+diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
+index eaa5a0fb99f0..439fda2f5368 100644
+--- a/drivers/net/ethernet/intel/e1000e/ptp.c
++++ b/drivers/net/ethernet/intel/e1000e/ptp.c
+@@ -297,6 +297,7 @@ void e1000e_ptp_init(struct e1000_adapter *adapter)
+ 	case e1000_pch_cnp:
+ 		/* fall-through */
+ 	case e1000_pch_tgp:
++	case e1000_pch_adp:
+ 		if ((hw->mac.type < e1000_pch_lpt) ||
+ 		    (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI)) {
+ 			adapter->ptp_clock_info.max_adj = 24000000 - 1;
+-- 
+2.11.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
