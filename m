@@ -2,50 +2,51 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5975F142323
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jan 2020 07:18:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A0B1142352
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jan 2020 07:33:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DB30F86CD3;
-	Mon, 20 Jan 2020 06:18:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0420986FE7;
+	Mon, 20 Jan 2020 06:33:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id StCb7yxSv6Nn; Mon, 20 Jan 2020 06:18:03 +0000 (UTC)
+	with ESMTP id k4F+tVrH0gpx; Mon, 20 Jan 2020 06:33:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 635CC86FB0;
-	Mon, 20 Jan 2020 06:18:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 099988700E;
+	Mon, 20 Jan 2020 06:33:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A37681BF48B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:18:01 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 08A6B1BF48B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:33:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9DBD885085
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:18:01 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E8197203FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:33:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NNmwAacaeEJE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Jan 2020 06:18:01 +0000 (UTC)
+ with ESMTP id FCc6owH0qo4o for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Jan 2020 06:33:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id ED6D985081
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:18:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 7119B203B0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:33:52 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2020 22:18:00 -0800
+ 19 Jan 2020 22:33:51 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,340,1574150400"; d="scan'208";a="258596334"
+X-IronPort-AV: E=Sophos;i="5.70,340,1574150400"; d="scan'208";a="219560348"
 Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by fmsmga002.fm.intel.com with ESMTP; 19 Jan 2020 22:17:59 -0800
+ by orsmga008.jf.intel.com with ESMTP; 19 Jan 2020 22:33:51 -0800
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 20 Jan 2020 08:17:58 +0200
-Message-Id: <20200120061758.25650-1-sasha.neftin@intel.com>
+Date: Mon, 20 Jan 2020 08:33:50 +0200
+Message-Id: <20200120063350.36467-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v2] igc: Fix the typo in comment
+Subject: [Intel-wired-lan] [PATCH v1] igc: Complete to commit Add basic
+ skeleton for PTP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,28 +65,54 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix the typo and comment to correspond to the i225 device
-v1->v2:
-Address community comment
+commit 5f2958052c58 ("igc: Add basic skeleton for PTP")
+Add ptp suspend method to the igc_shutdown.
 
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc.h      | 1 +
+ drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
+ drivers/net/ethernet/intel/igc/igc_ptp.c  | 2 +-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 5d38d0faeced..cb1362188c2a 100644
+index 5d38d0faeced..3db1568c88db 100644
 --- a/drivers/net/ethernet/intel/igc/igc.h
 +++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -112,7 +112,7 @@ extern char igc_driver_version[];
- #define IGC_RX_HDR_LEN			IGC_RXBUFFER_256
+@@ -556,6 +556,7 @@ int igc_erase_filter(struct igc_adapter *adapter,
  
- /* Transmit and receive latency (for PTP timestamps) */
--/* FIXME: These values were estimated using the ones that i210 has as
-+/* FIXME: These values were estimated using the ones that i225 has as
-  * basis, they seem to provide good numbers with ptp4l/phc2sys, but we
-  * need to confirm them.
+ void igc_ptp_init(struct igc_adapter *adapter);
+ void igc_ptp_reset(struct igc_adapter *adapter);
++void igc_ptp_suspend(struct igc_adapter *adapter);
+ void igc_ptp_stop(struct igc_adapter *adapter);
+ void igc_ptp_rx_rgtstamp(struct igc_q_vector *q_vector, struct sk_buff *skb);
+ void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, void *va,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 08ed9796d088..fa72460e255a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4899,6 +4899,8 @@ static int __igc_shutdown(struct pci_dev *pdev, bool *enable_wake,
+ 	if (netif_running(netdev))
+ 		__igc_close(netdev, true);
+ 
++	igc_ptp_suspend(adapter);
++
+ 	igc_clear_interrupt_scheme(adapter);
+ 	rtnl_unlock();
+ 
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 389a969fe5f4..f99c514ad0f4 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -641,7 +641,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
+  * This function stops the overflow check work and PTP Tx timestamp work, and
+  * will prepare the device for OS suspend.
   */
+-static void igc_ptp_suspend(struct igc_adapter *adapter)
++void igc_ptp_suspend(struct igc_adapter *adapter)
+ {
+ 	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
+ 		return;
 -- 
 2.11.0
 
