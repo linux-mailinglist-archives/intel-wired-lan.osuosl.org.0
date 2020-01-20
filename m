@@ -1,52 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A0B1142352
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jan 2020 07:33:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0420986FE7;
-	Mon, 20 Jan 2020 06:33:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k4F+tVrH0gpx; Mon, 20 Jan 2020 06:33:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 099988700E;
-	Mon, 20 Jan 2020 06:33:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 08A6B1BF48B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:33:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DEE09142540
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jan 2020 09:24:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E8197203FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:33:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6600E20014;
+	Mon, 20 Jan 2020 08:24:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MjxMTUTIpbSp; Mon, 20 Jan 2020 08:24:28 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id ACC0D20415;
+	Mon, 20 Jan 2020 08:24:23 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3775A1BF20F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 08:24:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2E58781C6B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 08:24:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FCc6owH0qo4o for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Jan 2020 06:33:52 +0000 (UTC)
+ with ESMTP id 8gSaLZIJp6Sf for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Jan 2020 08:24:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 7119B203B0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 06:33:52 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Jan 2020 22:33:51 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,340,1574150400"; d="scan'208";a="219560348"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
- by orsmga008.jf.intel.com with ESMTP; 19 Jan 2020 22:33:51 -0800
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 20 Jan 2020 08:33:50 +0200
-Message-Id: <20200120063350.36467-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: Complete to commit Add basic
- skeleton for PTP
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com
+ [209.85.210.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7D1D08165A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 08:24:17 +0000 (UTC)
+Received: by mail-ot1-f66.google.com with SMTP id 66so27915858otd.9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jan 2020 00:24:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=W4fcOVDhCKcmNI7y3pf/Woelqlr8yd99XCEdr0lmBVY=;
+ b=vVTWQneIVgNgNBlN9QObC2yTenvqmCqNpnViWb711PDg1VQoKngB1F8O+uPOBoEO1b
+ WiVbvVCtzNq+i0DJQI9gOPeBa33IUT7sftp1vE9kX5J7vevnl+ysClIAZvbPZMu9H8Lj
+ nw6jg8hDCFj0y7S3yaz7Q9uzLxYIN6vQdwh4ZDpp21uQdjN7SMesoxnFenpeI6mLpPE8
+ wUuQQmJZqCxQBih97Za1w4HCzKWO6e1KVCLCmEv5+wyGXhax2vehC3pHOZtOQwLYIAcx
+ CZ4ijJsI2Lh572Y9iRYnpqS9xioOn9N3heZ3eoGP9rwxQ7EFwHXGM7unyEn7DSMa0CCx
+ 0MHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=W4fcOVDhCKcmNI7y3pf/Woelqlr8yd99XCEdr0lmBVY=;
+ b=s6BBaphsjLbjapl6exe1KccEugwofESVmZhJEVkdyLlCUGfhGcOdqH3djzRq3JNleF
+ iI5W0RJx29vagJTOjlHysZ/nVHnMf0PMXl2BIsJHED0EJVEt45s2KBqQx8B84VRQGIg0
+ HDHqu/f3fsWpOyvZgnvzkAo0X9CcJiE+nn1DzOsmV+3nVF/CAoRa64pGHB9C7CDu34jw
+ Zv8FMDie3Asiy34wQOUHRNQZNEd8wQ1ShUksh1JteHuX26fvuUZ7G8aSnQPd7DrQsH9Y
+ 1YrdF12Bfm4lbqj+fH2yY6mXpnvsbR+nRp/Qg4XVAqahRsQyFQccuFRgsOQknXAp9ngE
+ Nqmg==
+X-Gm-Message-State: APjAAAXQLqKCznBLAX2KdhTN+bHWzy0avx7DOgThmvt55+qytkL05ms9
+ lwWDgKT0Z0Ff0WJL/PDmGnaeJOzP8GjSyirh6qo=
+X-Google-Smtp-Source: APXvYqyuDSiJDGSFQ4tgZpEWrYNcUgO8TWUY9TTUsTjPWQlXVZoflREfhW82Oifc/2753uWevqPHSrgPYcCWLks2isY=
+X-Received: by 2002:a05:6830:10d5:: with SMTP id
+ z21mr15715747oto.30.1579508656389; 
+ Mon, 20 Jan 2020 00:24:16 -0800 (PST)
+MIME-Version: 1.0
+References: <14f9e1bf5c3a41dbaec53f83cb5f0564@isi.edu>
+ <CAJ+HfNhdPEe34DVUAj4eHxLkBUSTo2CXbLHoWu+dwFCp753oMg@mail.gmail.com>
+ <20200117171637.GB69024@smtp.ads.isi.edu>
+In-Reply-To: <20200117171637.GB69024@smtp.ads.isi.edu>
+From: Magnus Karlsson <magnus.karlsson@gmail.com>
+Date: Mon, 20 Jan 2020 09:24:05 +0100
+Message-ID: <CAJ8uoz0i2NVxBty18Cq=kK5_Ysue=pt1psBBahLFiZqN168OiQ@mail.gmail.com>
+To: Ryan Goodfellow <rgoodfel@isi.edu>
+Subject: Re: [Intel-wired-lan] zero-copy between interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,64 +83,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "xdp-newbies@vger.kernel.org" <xdp-newbies@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-commit 5f2958052c58 ("igc: Add basic skeleton for PTP")
-Add ptp suspend method to the igc_shutdown.
-
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      | 1 +
- drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
- drivers/net/ethernet/intel/igc/igc_ptp.c  | 2 +-
- 3 files changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 5d38d0faeced..3db1568c88db 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -556,6 +556,7 @@ int igc_erase_filter(struct igc_adapter *adapter,
- 
- void igc_ptp_init(struct igc_adapter *adapter);
- void igc_ptp_reset(struct igc_adapter *adapter);
-+void igc_ptp_suspend(struct igc_adapter *adapter);
- void igc_ptp_stop(struct igc_adapter *adapter);
- void igc_ptp_rx_rgtstamp(struct igc_q_vector *q_vector, struct sk_buff *skb);
- void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, void *va,
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 08ed9796d088..fa72460e255a 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -4899,6 +4899,8 @@ static int __igc_shutdown(struct pci_dev *pdev, bool *enable_wake,
- 	if (netif_running(netdev))
- 		__igc_close(netdev, true);
- 
-+	igc_ptp_suspend(adapter);
-+
- 	igc_clear_interrupt_scheme(adapter);
- 	rtnl_unlock();
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 389a969fe5f4..f99c514ad0f4 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -641,7 +641,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
-  * This function stops the overflow check work and PTP Tx timestamp work, and
-  * will prepare the device for OS suspend.
-  */
--static void igc_ptp_suspend(struct igc_adapter *adapter)
-+void igc_ptp_suspend(struct igc_adapter *adapter)
- {
- 	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
- 		return;
--- 
-2.11.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gRnJpLCBKYW4gMTcsIDIwMjAgYXQgNjoxNiBQTSBSeWFuIEdvb2RmZWxsb3cgPHJnb29kZmVs
+QGlzaS5lZHU+IHdyb3RlOgo+Cj4gT24gRnJpLCBKYW4gMTcsIDIwMjAgYXQgMDE6MzI6MDdQTSAr
+MDEwMCwgQmrDtnJuIFTDtnBlbCB3cm90ZToKPiA+IE9uIE1vbiwgMTMgSmFuIDIwMjAgYXQgMDE6
+MjgsIFJ5YW4gR29vZGZlbGxvdyA8cmdvb2RmZWxAaXNpLmVkdT4gd3JvdGU6Cj4gPiA+Cj4gPiBb
+Li4uXQo+ID4gPgo+ID4gPiBJIGNvdWxkIG5vdCBnZXQgemVyby1jb3B5IHRvIHdvcmsgd2l0aCB0
+aGUgaTQwZSBkcml2ZXIgYXMgaXQgd291bGQgY3Jhc2guIEkndmUKPiA+ID4gYXR0YWNoZWQgdGhl
+IGNvcnJlc3BvbmRpbmcgdHJhY2VzIGZyb20gZG1lc2cuCj4gPgo+ID4gVGhhbmtzIFJ5YW4hIEkg
+aGFkIGEgbG9vayBhdCB0aGUgY3Jhc2gsIGFuZCBpdCdzIGluIHRoZSBYRFAgc2V0dXA6Cj4gPgo+
+ID4gaTQwZV94ZHBfc2V0dXA6Cj4gPiAuLi4KPiA+ICBmb3IgKGkgPSAwOyBpIDwgdnNpLT5udW1f
+cXVldWVfcGFpcnM7IGkrKykKPiA+ICAgICAgV1JJVEVfT05DRSh2c2ktPnJ4X3JpbmdzW2ldLT54
+ZHBfcHJvZywgdnNpLT54ZHBfcHJvZyk7Cj4gPgo+ID4gYW5kIHRoZSB2c2ktPnJ4X3JpbmdbMF0g
+aXMgTlVMTC4gVGhpcyBpcyBjbGVhcmx5IGJyb2tlbi4KPiA+Cj4gPiBJdCB3b3VsZCBoZWxwIHdp
+dGggbW9yZSBsaW5lcyBmcm9tIHlvdXIgZG1lc2c6IHRoZSBjdXQgaTQwZSBsb2cgaGludHMKPiA+
+IHRoYXQgc29tZXRoaW5nIGlzIHJlYWxseSBicm9rZW46Cj4gPgo+ID4gWyAgMzI4LjU3OTE1NF0g
+aTQwZSAwMDAwOmI3OjAwLjI6IGZhaWxlZCB0byBnZXQgdHJhY2tpbmcgZm9yIDI1Ngo+ID4gcXVl
+dWVzIGZvciBWU0kgMCBlcnIgLTEyCj4gPiBbICAzMjguNTc5MjgwXSBpNDBlIDAwMDA6Yjc6MDAu
+Mjogc2V0dXAgb2YgTUFJTiBWU0kgZmFpbGVkCj4gPiBbICAzMjguNTc5MzY3XSBpNDBlIDAwMDA6
+Yjc6MDAuMjogY2FuJ3QgcmVtb3ZlIFZFQiAxNjIgd2l0aCAwIFZTSXMgbGVmdAo+ID4KPiA+IElz
+IGl0IHBvc3NpYmxlIHRvIGRpZyBvdXQgdGhlIGNvbXBsZXRlIGxvZz8KPgo+IEhpIEJqw7ZybiwK
+Pgo+IEkndmUgbGlua2VkIGEgZnVsbCBkbWVzZyBsb2cgZnJvbSBhbiBYRFAgc2V0dXAgY3Jhc2gu
+IE5vdGUgdGhhdCB0aGVyZSBhcmUKPiB0d28gaTQwZSBjYXJkcyBvbiB0aGlzIG1hY2hpbmUuIFRo
+ZSBYNzEwICgwMDAwOjY1OjAwLjAsIDAwMDA6NjU6MDAuMSkgd29ya3MKPiBmaW5lLCB0aGUgWDcy
+MiAoMDAwMDpiNzowMC4wLCAwMDAwOmI3OjAwLjEsIDAwMDA6Yjc6MDAuMiwgMDAwMDpiNzowMC4z
+KSBpcyB0aGUKPiBvbmUgdGhhdCBpcyBjcmFzaGluZyBvbiBYRFAgc2V0dXAuCgpSeWFuLAoKSSB3
+YXMgd29uZGVyaW5nIGlmIHlvdSBjb3VsZCBydW4gdHdvIHNtYWxsIGV4cGVyaW1lbnRzIHNpbmNl
+IEkgY2Fubm90CnJlcHJvZHVjZSB0aGlzPwoKMTogUnVuIHlvdXIgcHJvZ3JhbSB1c2luZyB0aGUg
+dHdvIHBvcnRzIG9uIHlvdXIgWDcxMCBjYXJkLiBEb2VzIGl0Cndvcms/IFRoaXMgaXMgbXkgc2V0
+dXAgYW5kIHdvcmtzIGZvciBtZS4KMjogT24geW91ciBNZWxsYW5veCBzZXR1cCwgaW5zZXJ0IGEg
+a2lja190eCgpIGNhbGwgZm9yIGVhY2ggb2YgeW91cgp0d28gc29ja2V0cyBiZWZvcmUgdGhlIHBv
+bGwoKSBjYWxsIGluIHlvdXIgZm9yd2FyZCgpIGZ1bmN0aW9uLiBKdXN0IHRvCnNlZSBpZiBpdCB3
+b3JrcyB3aGVuIHdlIGV4cGxpY2l0bHkgd2FrZSB1cCB0aGUgZHJpdmVyLgoKVGhhbmtzOiBNYWdu
+dXMKCj4gaHR0cHM6Ly9naXRsYWIuY29tL21lcmdldGIvdGVjaC9uZXR3b3JrLWVtdWxhdGlvbi9r
+ZXJuZWwvc25pcHBldHMvMTkzMTA4MAo+Cj4gU29tZSBpbmZvIHRoYXQgbWF5IGJlIHVzZWZ1bDoK
+Pgo+IHJ5QHR1cmJpbmU6fiQgc3VkbyBldGh0b29sIC1pIGVubzcKPiBkcml2ZXI6IGk0MGUKPiB2
+ZXJzaW9uOiAyLjguMjAtawo+IGZpcm13YXJlLXZlcnNpb246IDMuMzMgMHg4MDAwMTAwNiAxLjE3
+NDcuMAo+IGV4cGFuc2lvbi1yb20tdmVyc2lvbjoKPiBidXMtaW5mbzogMDAwMDpiNzowMC4yCj4g
+c3VwcG9ydHMtc3RhdGlzdGljczogeWVzCj4gc3VwcG9ydHMtdGVzdDogeWVzCj4gc3VwcG9ydHMt
+ZWVwcm9tLWFjY2VzczogeWVzCj4gc3VwcG9ydHMtcmVnaXN0ZXItZHVtcDogeWVzCj4gc3VwcG9y
+dHMtcHJpdi1mbGFnczogeWVzCj4KPiBUaGUgZmlybXdhcmUgdmVyc2lvbiAzLjMzIHdhcyB0aGUg
+bGF0ZXN0IEkgY291bGQgZmluZCBhcyBvZiBhIGZldyB3ZWVrcyBhZ28uCj4KPiByeUB0dXJiaW5l
+On4kIHN1ZG8gbHNwY2kgLXZ2diB8IGdyZXAgNzIyCj4gYjc6MDAuMCBFdGhlcm5ldCBjb250cm9s
+bGVyOiBJbnRlbCBDb3Jwb3JhdGlvbiBFdGhlcm5ldCBDb25uZWN0aW9uIFg3MjIgZm9yIDEwR0JB
+U0UtVCAocmV2IDA0KQo+ICAgICAgICAgRGV2aWNlTmFtZTogSW50ZWwgTEFOIFg3MjIgIzEKPiAg
+ICAgICAgIFN1YnN5c3RlbTogU3VwZXIgTWljcm8gQ29tcHV0ZXIgSW5jIEV0aGVybmV0IENvbm5l
+Y3Rpb24gWDcyMiBmb3IgMTBHQkFTRS1UCj4gYjc6MDAuMSBFdGhlcm5ldCBjb250cm9sbGVyOiBJ
+bnRlbCBDb3Jwb3JhdGlvbiBFdGhlcm5ldCBDb25uZWN0aW9uIFg3MjIgZm9yIDEwR0JBU0UtVCAo
+cmV2IDA0KQo+ICAgICAgICAgRGV2aWNlTmFtZTogSW50ZWwgTEFOIFg3MjIgIzIKPiAgICAgICAg
+IFN1YnN5c3RlbTogU3VwZXIgTWljcm8gQ29tcHV0ZXIgSW5jIEV0aGVybmV0IENvbm5lY3Rpb24g
+WDcyMiBmb3IgMTBHQkFTRS1UCj4gYjc6MDAuMiBFdGhlcm5ldCBjb250cm9sbGVyOiBJbnRlbCBD
+b3Jwb3JhdGlvbiBFdGhlcm5ldCBDb25uZWN0aW9uIFg3MjIgZm9yIDEwR2JFIFNGUCsgKHJldiAw
+NCkKPiAgICAgICAgIERldmljZU5hbWU6IEludGVsIExBTiBYNzIyICMzCj4gICAgICAgICBTdWJz
+eXN0ZW06IFN1cGVyIE1pY3JvIENvbXB1dGVyIEluYyBFdGhlcm5ldCBDb25uZWN0aW9uIFg3MjIg
+Zm9yIDEwR2JFIFNGUCsKPiBiNzowMC4zIEV0aGVybmV0IGNvbnRyb2xsZXI6IEludGVsIENvcnBv
+cmF0aW9uIEV0aGVybmV0IENvbm5lY3Rpb24gWDcyMiBmb3IgMTBHYkUgU0ZQKyAocmV2IDA0KQo+
+ICAgICAgICAgRGV2aWNlTmFtZTogSW50ZWwgTEFOIFg3MjIgIzQKPiAgICAgICAgIFN1YnN5c3Rl
+bTogU3VwZXIgTWljcm8gQ29tcHV0ZXIgSW5jIEV0aGVybmV0IENvbm5lY3Rpb24gWDcyMiBmb3Ig
+MTBHYkUgU0ZQKwo+Cj4gcnlAcnl6ZW46fiQgdW5hbWUgLWEKPiBMaW51eCByeXplbiA0LjE5LjAt
+Ni1hbWQ2NCAjMSBTTVAgRGViaWFuIDQuMTkuNjctMitkZWIxMHUyICgyMDE5LTExLTExKSB4ODZf
+NjQgR05VL0xpbnV4Cj4KPiByeUB0dXJiaW5lOn4va21vYS9icGYtbmV4dCQgZ2l0IGxvZyAtMgo+
+IGNvbW1pdCA2MGQ3MTM5N2QyN2U3ODU5ZmRhYWFhYWI2NTk0ZTRkOTc3YWU0NmUyIChIRUFEIC0+
+IG1hc3RlcikKPiBBdXRob3I6IFJ5YW4gR29vZGZlbGxvdyA8cmdvb2RmZWxAaXNpLmVkdT4KPiBE
+YXRlOiAgIFdlZCBKYW4gMTUgMTY6NTQ6MzkgMjAyMCAtMDUwMAo+Cj4gICAgIGFkZCB4ZHBzb2Nr
+X211bHRpZGV2IHNhbXBsZSBwcm9ncmFtCj4KPiAgICAgVGhpcyBpcyBhIHNpbXBsZSBwcm9ncmFt
+IHRoYXQgdXNlcyBBRl9YRFAgc29ja2V0cyB0byBmb3J3YXJkIHBhY2tldHMKPiAgICAgYmV0d2Vl
+biB0d28gaW50ZXJmYWNlcyB1c2luZyBhIGNvbW1vbiBtZW1vcnkgcmVnaW9uIGFuZCBubyBjb3B5
+aW5nIG9mCj4gICAgIHBhY2tldHMuCj4KPiAgICAgU2lnbmVkLW9mZi1ieTogUnlhbiBHb29kZmVs
+bG93IDxyZ29vZGZlbEBpc2kuZWR1Pgo+Cj4gY29tbWl0IDkxNzNjYWMzYjY0ZTY3ODVkZDYwNGY1
+MDc1ZTYwMzViMDQ1YTAwMjYgKG9yaWdpbi9tYXN0ZXIsIG9yaWdpbi9IRUFEKQo+IEF1dGhvcjog
+QW5kcmlpIE5ha3J5aWtvIDxhbmRyaWluQGZiLmNvbT4KPiBEYXRlOiAgIFdlZCBKYW4gMTUgMTE6
+MDg6NTYgMjAyMCAtMDgwMAo+Cj4gICAgIGxpYmJwZjogU3VwcG9ydCAudGV4dCBzdWItY2FsbHMg
+cmVsb2NhdGlvbnMKPgo+ICAgICBUaGUgTExWTSBwYXRjaCBodHRwczovL3Jldmlld3MubGx2bS5v
+cmcvRDcyMTk3IG1ha2VzIExMVk0gZW1pdCBmdW5jdGlvbiBjYWxsCj4gICAgIHJlbG9jYXRpb25z
+IHdpdGhpbiB0aGUgc2FtZSBzZWN0aW9uLiBUaGlzIGluY2x1ZGVzIGEgZGVmYXVsdCAudGV4dCBz
+ZWN0aW9uLAo+ICAgICB3aGljaCBjb250YWlucyBhbnkgQlBGIHN1Yi1wcm9ncmFtcy4gVGhpcyB3
+YXNuJ3QgdGhlIGNhc2UgYmVmb3JlIGFuZCBzbyBsaWJicGYKPiAgICAgd2FzIGFibGUgdG8gZ2V0
+IGEgd2F5IHdpdGggc2xpZ2h0bHkgc2ltcGxlciBoYW5kbGluZyBvZiBzdWJwcm9ncmFtIGNhbGwK
+PiAgICAgcmVsb2NhdGlvbnMuCj4KPiAgICAgVGhpcyBwYXRjaCBhZGRzIHN1cHBvcnQgZm9yIC50
+ZXh0IHNlY3Rpb24gcmVsb2NhdGlvbnMuIEl0IG5lZWRzIHRvIGVuc3VyZQo+ICAgICBjb3JyZWN0
+IG9yZGVyIG9mIHJlbG9jYXRpb25zLCBzbyBkb2VzIHR3byBwYXNzZXM6Cj4gICAgIC0gZmlyc3Qs
+IHJlbG9jYXRlIC50ZXh0IGluc3RydWN0aW9ucywgaWYgdGhlcmUgYXJlIGFueSByZWxvY2F0aW9u
+cyBpbiBpdDsKPiAgICAgLSB0aGVuIHByb2Nlc3MgYWxsIHRoZSBvdGhlciBwcm9ncmFtcyBhbmQg
+Y29weSBvdmVyIHBhdGNoZWQgLnRleHQgaW5zdHJ1Y3Rpb25zCj4gICAgIGZvciBhbGwgc3ViLXBy
+b2dyYW0gY2FsbHMuCj4KPiAgICAgdjEtPnYyOgo+ICAgICAtIGJyZWFrIGVhcmx5IG9uY2UgLnRl
+eHQgcHJvZ3JhbSBpcyBwcm9jZXNzZWQuCj4KPiAgICAgU2lnbmVkLW9mZi1ieTogQW5kcmlpIE5h
+a3J5aWtvIDxhbmRyaWluQGZiLmNvbT4KPiAgICAgU2lnbmVkLW9mZi1ieTogQWxleGVpIFN0YXJv
+dm9pdG92IDxhc3RAa2VybmVsLm9yZz4KPiAgICAgQWNrZWQtYnk6IFlvbmdob25nIFNvbmcgPHlo
+c0BmYi5jb20+Cj4gICAgIENjOiBBbGV4ZWkgU3Rhcm92b2l0b3YgPGFzdEBrZXJuZWwub3JnPgo+
+ICAgICBMaW5rOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9icGYvMjAyMDAxMTUxOTA4NTYuMjM5
+MTMyNS0xLWFuZHJpaW5AZmIuY29tCj4KPiAtLQo+IH4gcnkKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJ
+bnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
