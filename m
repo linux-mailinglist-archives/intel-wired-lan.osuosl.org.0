@@ -1,54 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05D3214474A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Jan 2020 23:26:00 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC67C14488A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jan 2020 00:46:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A6199868F9;
-	Tue, 21 Jan 2020 22:25:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6897D20767;
+	Tue, 21 Jan 2020 23:46:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xDZ6qOsYcPFl; Tue, 21 Jan 2020 22:25:56 +0000 (UTC)
+	with ESMTP id vNb04Zj1C0xV; Tue, 21 Jan 2020 23:46:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D361D86914;
-	Tue, 21 Jan 2020 22:25:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2BB1820762;
+	Tue, 21 Jan 2020 23:46:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6DED41BF48D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jan 2020 22:25:51 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4772E1BF982
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jan 2020 23:46:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5AD1C868F9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jan 2020 22:25:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 42FAF87B39
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jan 2020 23:46:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eix2U997mVVl for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Jan 2020 22:25:48 +0000 (UTC)
+ with ESMTP id 7GUQ1hmpG-tg for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Jan 2020 23:46:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 17B3F868B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jan 2020 22:25:48 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 81249861F8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Jan 2020 23:46:34 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2020 14:25:47 -0800
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 Jan 2020 15:46:34 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,347,1574150400"; d="scan'208";a="427209798"
-Received: from vcostago-desk1.jf.intel.com (HELO vcostago-desk1)
- ([10.54.70.26])
- by fmsmga006.fm.intel.com with ESMTP; 21 Jan 2020 14:25:46 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-In-Reply-To: <20200120061758.25650-1-sasha.neftin@intel.com>
-References: <20200120061758.25650-1-sasha.neftin@intel.com>
-Date: Tue, 21 Jan 2020 14:26:55 -0800
-Message-ID: <87h80o30pc.fsf@linux.intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,347,1574150400"; d="scan'208";a="275448333"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.74])
+ by FMSMGA003.fm.intel.com with ESMTP; 21 Jan 2020 15:46:33 -0800
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 21 Jan 2020 15:46:28 -0800
+Message-Id: <20200121234628.4123479-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v2] igc: Fix the typo in comment
+Subject: [Intel-wired-lan] [next-queue v2] e1000e: Add support for Tiger
+ Lake device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,42 +65,44 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Sasha,
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
 
-Sasha Neftin <sasha.neftin@intel.com> writes:
+Added support for a device id that is a part of the Intel Tiger Lake
+platform.
 
-> Fix the typo and comment to correspond to the i225 device
-> v1->v2:
-> Address community comment
->
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index 5d38d0faeced..cb1362188c2a 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -112,7 +112,7 @@ extern char igc_driver_version[];
->  #define IGC_RX_HDR_LEN			IGC_RXBUFFER_256
->  
->  /* Transmit and receive latency (for PTP timestamps) */
-> -/* FIXME: These values were estimated using the ones that i210 has as
-> +/* FIXME: These values were estimated using the ones that i225 has as
->   * basis, they seem to provide good numbers with ptp4l/phc2sys, but we
->   * need to confirm them.
->   */
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/hw.h     | 1 +
+ drivers/net/ethernet/intel/e1000e/netdev.c | 1 +
+ 2 files changed, 2 insertions(+)
 
-If you are sending this patch, it means that I couldn't explain myself
-well enough. The idea of that comment was to point out that the
-documentation doesn't provide an estimate of those values, so I used the
-ones from the i210 datasheet.
+diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
+index a1dbf8df1c70..61a0c7cb9ced 100644
+--- a/drivers/net/ethernet/intel/e1000e/hw.h
++++ b/drivers/net/ethernet/intel/e1000e/hw.h
+@@ -97,6 +97,7 @@ struct e1000_hw;
+ #define E1000_DEV_ID_PCH_TGP_I219_LM14		0x15F9
+ #define E1000_DEV_ID_PCH_TGP_I219_V14		0x15FA
+ #define E1000_DEV_ID_PCH_TGP_I219_LM15		0x15F4
++#define E1000_DEV_ID_PCH_TGP_I219_V15		0x15F5
+ #define E1000_DEV_ID_PCH_ADP_1219_LM16		0x1A1E
+ #define E1000_DEV_ID_PCH_ADP_1219_V16		0x1A1F
+ #define E1000_DEV_ID_PCH_ADP_1219_LM17		0x1A1C
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 59db2a865aa8..35f21add3732 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -7762,6 +7762,7 @@ static const struct pci_device_id e1000_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V15), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM16), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V16), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM17), board_pch_cnp },
+-- 
+2.24.1
 
-
-Cheers,
---
-Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
