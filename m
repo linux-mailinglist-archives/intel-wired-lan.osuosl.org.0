@@ -1,54 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5425A145F6F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 00:53:38 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08577145F78
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 00:54:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0687521FFB;
-	Wed, 22 Jan 2020 23:53:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AC82C81EAA;
+	Wed, 22 Jan 2020 23:54:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JZ-lKcDAk9af; Wed, 22 Jan 2020 23:53:36 +0000 (UTC)
+	with ESMTP id 1xqUS-yLw00M; Wed, 22 Jan 2020 23:54:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D2CDF2151E;
-	Wed, 22 Jan 2020 23:53:34 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4BF7881EE9;
+	Wed, 22 Jan 2020 23:54:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 953711BF281
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5565E1BF977
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:54:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 9207E86463
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:27 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 4B71C834A3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:54:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WFytyOCZES_w for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Jan 2020 23:53:26 +0000 (UTC)
+ with ESMTP id hUoZP8xLHv2o for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Jan 2020 23:54:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 89CB986469
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:26 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 586A181A29
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:54:22 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2020 15:53:25 -0800
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2020 15:54:21 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="222189292"
+X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="259651609"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by fmsmga008.fm.intel.com with ESMTP; 22 Jan 2020 15:53:25 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 22 Jan 2020 15:54:21 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Jan 2020 07:20:41 -0800
-Message-Id: <20200122152041.41498-15-anthony.l.nguyen@intel.com>
+Date: Wed, 22 Jan 2020 07:21:24 -0800
+Message-Id: <20200122152138.41585-1-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200122152041.41498-1-anthony.l.nguyen@intel.com>
-References: <20200122152041.41498-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S37 15/15] ice: Trivial fixes
+Subject: [Intel-wired-lan] [PATCH S38 01/15] ice: Add initial support for
+ QinQ
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,247 +65,217 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a collection of trivial fixes including fixing whitespace, typos,
-function headers, reverse Christmas tree, etc.
+From: Brett Creeley <brett.creeley@intel.com>
 
+Allow support for S-Tag + C-Tag VLAN traffic by disabling pruning when
+there are no 0x8100 VLAN interfaces currently created on top of the PF.
+When an 0x8100 VLAN interface is configured, enable pruning and only
+support single and double C-Tag VLAN traffic. If all of the 0x8100
+interfaces that were created on top of the PF are removed via
+ethtool -K <iface> rx-vlan-filter off or via ip tools, then disable
+pruning and allow S-Tag + C-Tag traffic again.
+
+Add VLAN 0 filter by default for the PF. This is because a bridge
+sets the default_pvid to 1, sends the request down to
+ice_vlan_rx_add_vid(), and we never get the request to add VLAN 0 via
+the 8021q module which causes all untagged traffic to be dropped.
+
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_adminq_cmd.h  |  1 +
- drivers/net/ethernet/intel/ice/ice_common.c      |  4 ++--
- drivers/net/ethernet/intel/ice/ice_dcb.c         |  8 ++++----
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c     |  4 ++--
- drivers/net/ethernet/intel/ice/ice_ethtool.c     | 10 +++++-----
- drivers/net/ethernet/intel/ice/ice_lib.c         |  7 ++++---
- drivers/net/ethernet/intel/ice/ice_main.c        |  4 +++-
- drivers/net/ethernet/intel/ice/ice_txrx.c        |  9 ++++-----
- drivers/net/ethernet/intel/ice/ice_type.h        |  2 +-
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  3 +--
- 10 files changed, 27 insertions(+), 25 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 43 +++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_lib.h      |  2 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 21 ++++++---
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 14 +++---
+ 4 files changed, 63 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 2722789fa703..210113eade20 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1691,6 +1691,7 @@ struct ice_aqc_get_pkg_info_resp {
- 	__le32 count;
- 	struct ice_aqc_get_pkg_info pkg_info[1];
- };
-+
- /**
-  * struct ice_aq_desc - Admin Queue (AQ) descriptor
-  * @flags: ICE_AQ_FLAG_* flags
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index e89b549b943d..873c632271b8 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -588,10 +588,10 @@ void ice_output_fw_log(struct ice_hw *hw, struct ice_aq_desc *desc, void *buf)
- }
- 
- /**
-- * ice_get_itr_intrl_gran - determine int/intrl granularity
-+ * ice_get_itr_intrl_gran
-  * @hw: pointer to the HW struct
-  *
-- * Determines the ITR/intrl granularities based on the maximum aggregate
-+ * Determines the ITR/INTRL granularities based on the maximum aggregate
-  * bandwidth according to the device's configuration during power-on.
-  */
- static void ice_get_itr_intrl_gran(struct ice_hw *hw)
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb.c b/drivers/net/ethernet/intel/ice/ice_dcb.c
-index 713e8a892e14..adb8dab765c8 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb.c
-@@ -1323,13 +1323,13 @@ enum ice_status ice_set_dcb_cfg(struct ice_port_info *pi)
- }
- 
- /**
-- * ice_aq_query_port_ets - query port ets configuration
-+ * ice_aq_query_port_ets - query port ETS configuration
-  * @pi: port information structure
-  * @buf: pointer to buffer
-  * @buf_size: buffer size in bytes
-  * @cd: pointer to command details structure or NULL
-  *
-- * query current port ets configuration
-+ * query current port ETS configuration
-  */
- static enum ice_status
- ice_aq_query_port_ets(struct ice_port_info *pi,
-@@ -1416,13 +1416,13 @@ ice_update_port_tc_tree_cfg(struct ice_port_info *pi,
- }
- 
- /**
-- * ice_query_port_ets - query port ets configuration
-+ * ice_query_port_ets - query port ETS configuration
-  * @pi: port information structure
-  * @buf: pointer to buffer
-  * @buf_size: buffer size in bytes
-  * @cd: pointer to command details structure or NULL
-  *
-- * query current port ets configuration and update the
-+ * query current port ETS configuration and update the
-  * SW DB with the TC changes
-  */
- enum ice_status
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 935797e962a2..0f4ca813a7ab 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -436,9 +436,9 @@ static int ice_dcb_init_cfg(struct ice_pf *pf, bool locked)
- }
- 
- /**
-- * ice_dcb_sw_default_config - Apply a default DCB config
-+ * ice_dcb_sw_dflt_cfg - Apply a default DCB config
-  * @pf: PF to apply config to
-- * @ets_willing: configure ets willing
-+ * @ets_willing: configure ETS willing
-  * @locked: was this function called with RTNL held
-  */
- static int ice_dcb_sw_dflt_cfg(struct ice_pf *pf, bool ets_willing, bool locked)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 4b29d1ae56a7..c0f58e08890e 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3800,11 +3800,11 @@ ice_get_module_eeprom(struct net_device *netdev,
- static const struct ethtool_ops ice_ethtool_ops = {
- 	.get_link_ksettings	= ice_get_link_ksettings,
- 	.set_link_ksettings	= ice_set_link_ksettings,
--	.get_drvinfo            = ice_get_drvinfo,
--	.get_regs_len           = ice_get_regs_len,
--	.get_regs               = ice_get_regs,
--	.get_msglevel           = ice_get_msglevel,
--	.set_msglevel           = ice_set_msglevel,
-+	.get_drvinfo		= ice_get_drvinfo,
-+	.get_regs_len		= ice_get_regs_len,
-+	.get_regs		= ice_get_regs,
-+	.get_msglevel		= ice_get_msglevel,
-+	.set_msglevel		= ice_set_msglevel,
- 	.self_test		= ice_self_test,
- 	.get_link		= ethtool_op_get_link,
- 	.get_eeprom_len		= ice_get_eeprom_len,
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 7d546c75dcc6..3c9353d7b0ed 100644
+index 3c9353d7b0ed..3d851ac489cf 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1241,8 +1241,9 @@ static void ice_vsi_set_rss_flow_fld(struct ice_vsi *vsi)
-  *
-  * Returns 0 on success or ENOMEM on failure.
-  */
--int ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
--			const u8 *macaddr)
-+int
-+ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
-+		    const u8 *macaddr)
- {
- 	struct ice_fltr_list_entry *tmp;
- 	struct ice_pf *pf = vsi->back;
-@@ -2874,8 +2875,8 @@ static void ice_vsi_update_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctx)
- int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- {
- 	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] = { 0 };
--	struct ice_vsi_ctx *ctx;
- 	struct ice_pf *pf = vsi->back;
-+	struct ice_vsi_ctx *ctx;
- 	enum ice_status status;
- 	struct device *dev;
- 	int i, ret = 0;
+@@ -1383,7 +1383,9 @@ int ice_vsi_add_vlan(struct ice_vsi *vsi, u16 vid)
+ 	list_add(&tmp->list_entry, &tmp_add_list);
+ 
+ 	status = ice_add_vlan(&pf->hw, &tmp_add_list);
+-	if (status) {
++	if (!status) {
++		vsi->num_vlan++;
++	} else {
+ 		err = -ENODEV;
+ 		dev_err(dev, "Failure Adding VLAN %d on VSI %i\n", vid,
+ 			vsi->vsi_num);
+@@ -1425,10 +1427,12 @@ int ice_vsi_kill_vlan(struct ice_vsi *vsi, u16 vid)
+ 	list_add(&list->list_entry, &tmp_add_list);
+ 
+ 	status = ice_remove_vlan(&pf->hw, &tmp_add_list);
+-	if (status == ICE_ERR_DOES_NOT_EXIST) {
++	if (!status) {
++		vsi->num_vlan--;
++	} else if (status == ICE_ERR_DOES_NOT_EXIST) {
+ 		dev_dbg(dev, "Failed to remove VLAN %d on VSI %i, it does not exist, status: %d\n",
+ 			vid, vsi->vsi_num, status);
+-	} else if (status) {
++	} else {
+ 		dev_err(dev, "Error removing VLAN %d on vsi %i error: %d\n",
+ 			vid, vsi->vsi_num, status);
+ 		err = -EIO;
+@@ -1790,6 +1794,26 @@ int ice_vsi_stop_xdp_tx_rings(struct ice_vsi *vsi)
+ 	return ice_vsi_stop_tx_rings(vsi, ICE_NO_RESET, 0, vsi->xdp_rings);
+ }
+ 
++/**
++ * ice_vsi_is_vlan_pruning_ena - check if VLAN pruning is enabled or not
++ * @vsi: VSI to check whether or not VLAN pruning is enabled.
++ *
++ * returns true if Rx VLAN pruning and Tx VLAN anti-spoof is enabled and false
++ * otherwise.
++ */
++bool ice_vsi_is_vlan_pruning_ena(struct ice_vsi *vsi)
++{
++	u8 rx_pruning = ICE_AQ_VSI_SW_FLAG_RX_VLAN_PRUNE_ENA;
++	u8 tx_pruning = ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
++		ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S;
++
++	if (!vsi)
++		return false;
++
++	return ((vsi->info.sw_flags2 & rx_pruning) &&
++		(vsi->info.sec_flags & tx_pruning));
++}
++
+ /**
+  * ice_cfg_vlan_pruning - enable or disable VLAN pruning on the VSI
+  * @vsi: VSI to enable or disable VLAN pruning on
+@@ -2060,6 +2084,17 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
+ 		if (ret)
+ 			goto unroll_vector_base;
+ 
++		/* Always add VLAN ID 0 switch rule by default. This is needed
++		 * in order to allow all untagged and 0 tagged priority traffic
++		 * if Rx VLAN pruning is enabled. Also there are cases where we
++		 * don't get the call to add VLAN 0 via ice_vlan_rx_add_vid()
++		 * so this handles those cases (i.e. adding the PF to a bridge
++		 * without the 8021q module loaded).
++		 */
++		ret = ice_vsi_add_vlan(vsi, 0);
++		if (ret)
++			goto unroll_clear_rings;
++
+ 		ice_vsi_map_rings_to_vectors(vsi);
+ 
+ 		/* Do not exit if configuring RSS had an issue, at least
+@@ -2139,6 +2174,8 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
+ 
+ 	return vsi;
+ 
++unroll_clear_rings:
++	ice_vsi_clear_rings(vsi);
+ unroll_vector_base:
+ 	/* reclaim SW interrupts back to the common pool */
+ 	ice_free_res(pf->irq_tracker, vsi->base_vector, vsi->idx);
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 002fdbdade4f..b1e131c44e52 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -44,6 +44,8 @@ int ice_vsi_cfg_xdp_txqs(struct ice_vsi *vsi);
+ 
+ int ice_vsi_stop_xdp_tx_rings(struct ice_vsi *vsi);
+ 
++bool ice_vsi_is_vlan_pruning_ena(struct ice_vsi *vsi);
++
+ int ice_cfg_vlan_pruning(struct ice_vsi *vsi, bool ena, bool vlan_promisc);
+ 
+ void ice_cfg_sw_lldp(struct ice_vsi *vsi, bool tx, bool create);
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 2297a5a5c572..1bf6d21c38e4 100644
+index 1bf6d21c38e4..4f20add0c5e3 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3179,7 +3179,9 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	struct ice_hw *hw;
- 	int err;
+@@ -2467,16 +2467,19 @@ ice_vlan_rx_add_vid(struct net_device *netdev, __always_unused __be16 proto,
+ 	if (vsi->info.pvid)
+ 		return -EINVAL;
  
--	/* this driver uses devres, see Documentation/driver-api/driver-model/devres.rst */
-+	/* this driver uses devres, see
-+	 * Documentation/driver-api/driver-model/devres.rst
-+	 */
- 	err = pcim_enable_device(pdev);
- 	if (err)
- 		return err;
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 1d4755acca3d..4de61dbedd36 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -644,7 +644,7 @@ static bool ice_page_is_reserved(struct page *page)
-  * Update the offset within page so that Rx buf will be ready to be reused.
-  * For systems with PAGE_SIZE < 8192 this function will flip the page offset
-  * so the second half of page assigned to Rx buffer will be used, otherwise
-- * the offset is moved by the @size bytes
-+ * the offset is moved by "size" bytes
-  */
- static void
- ice_rx_buf_adjust_pg_offset(struct ice_rx_buf *rx_buf, unsigned int size)
-@@ -1619,11 +1619,11 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
- {
- 	u64 td_offset, td_tag, td_cmd;
- 	u16 i = tx_ring->next_to_use;
--	skb_frag_t *frag;
- 	unsigned int data_len, size;
- 	struct ice_tx_desc *tx_desc;
- 	struct ice_tx_buf *tx_buf;
- 	struct sk_buff *skb;
-+	skb_frag_t *frag;
- 	dma_addr_t dma;
+-	/* Enable VLAN pruning when VLAN 0 is added */
+-	if (unlikely(!vid)) {
++	/* VLAN 0 is added by default during load/reset */
++	if (!vid)
++		return 0;
++
++	/* Enable VLAN pruning when a VLAN other than 0 is added */
++	if (!ice_vsi_is_vlan_pruning_ena(vsi)) {
+ 		ret = ice_cfg_vlan_pruning(vsi, true, false);
+ 		if (ret)
+ 			return ret;
+ 	}
  
- 	td_tag = off->td_l2tag1;
-@@ -1736,9 +1736,8 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
- 	ice_maybe_stop_tx(tx_ring, DESC_NEEDED);
+-	/* Add all VLAN IDs including 0 to the switch filter. VLAN ID 0 is
+-	 * needed to continue allowing all untagged packets since VLAN prune
+-	 * list is applied to all packets by the switch
++	/* Add a switch rule for this VLAN ID so its corresponding VLAN tagged
++	 * packets aren't pruned by the device's internal switch on Rx
+ 	 */
+ 	ret = ice_vsi_add_vlan(vsi, vid);
+ 	if (!ret) {
+@@ -2506,6 +2509,10 @@ ice_vlan_rx_kill_vid(struct net_device *netdev, __always_unused __be16 proto,
+ 	if (vsi->info.pvid)
+ 		return -EINVAL;
  
- 	/* notify HW of packet */
--	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more()) {
-+	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more())
- 		writel(i, tx_ring->tail);
--	}
++	/* don't allow removal of VLAN 0 */
++	if (!vid)
++		return 0;
++
+ 	/* Make sure ice_vsi_kill_vlan is successful before updating VLAN
+ 	 * information
+ 	 */
+@@ -2513,8 +2520,8 @@ ice_vlan_rx_kill_vid(struct net_device *netdev, __always_unused __be16 proto,
+ 	if (ret)
+ 		return ret;
  
- 	return;
+-	/* Disable VLAN pruning when VLAN 0 is removed */
+-	if (unlikely(!vid))
++	/* Disable pruning when VLAN 0 is the only VLAN rule */
++	if (vsi->num_vlan == 1 && ice_vsi_is_vlan_pruning_ena(vsi))
+ 		ret = ice_cfg_vlan_pruning(vsi, false, false);
  
-@@ -2076,7 +2075,7 @@ static bool __ice_chk_linearize(struct sk_buff *skb)
- 	frag = &skb_shinfo(skb)->frags[0];
- 
- 	/* Initialize size to the negative value of gso_size minus 1. We
--	 * use this as the worst case scenerio in which the frag ahead
-+	 * use this as the worst case scenario in which the frag ahead
- 	 * of us only provides one byte which is why we are limited to 6
- 	 * descriptors for a single transmit as the header and previous
- 	 * fragment are already consuming 2 descriptors.
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 5224b066730a..bf67f6df5333 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -521,7 +521,7 @@ struct ice_hw {
- 	struct ice_fw_log_cfg fw_log;
- 
- /* Device max aggregate bandwidths corresponding to the GL_PWR_MODE_CTL
-- * register. Used for determining the ITR/intrl granularity during
-+ * register. Used for determining the ITR/INTRL granularity during
-  * initialization.
-  */
- #define ICE_MAX_AGG_BW_200G	0x0
+ 	vsi->vlan_ena = false;
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 6d78bcdd162d..1874bfa65796 100644
+index 1874bfa65796..8230a58a9b19 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1093,7 +1093,6 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	 * finished resetting.
- 	 */
- 	for (i = 0, v = 0; i < 10 && v < pf->num_alloc_vfs; i++) {
--
- 		/* Check each VF in sequence */
- 		while (v < pf->num_alloc_vfs) {
- 			u32 reg;
-@@ -2612,8 +2611,8 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
- 	struct ice_pf *pf = vf->pf;
- 	u16 max_allowed_vf_queues;
- 	u16 tx_rx_queue_left;
--	u16 cur_queues;
- 	struct device *dev;
-+	u16 cur_queues;
+@@ -2843,9 +2843,9 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
+ 				goto error_param;
+ 			}
  
- 	dev = ice_pf_to_dev(pf);
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
+-			vsi->num_vlan++;
+-			/* Enable VLAN pruning when VLAN is added */
+-			if (!vlan_promisc) {
++			/* Enable VLAN pruning when non-zero VLAN is added */
++			if (!vlan_promisc && vid &&
++			    !ice_vsi_is_vlan_pruning_ena(vsi)) {
+ 				status = ice_cfg_vlan_pruning(vsi, true, false);
+ 				if (status) {
+ 					v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+@@ -2853,7 +2853,7 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
+ 						vid, status);
+ 					goto error_param;
+ 				}
+-			} else {
++			} else if (vlan_promisc) {
+ 				/* Enable Ucast/Mcast VLAN promiscuous mode */
+ 				promisc_m = ICE_PROMISC_VLAN_TX |
+ 					    ICE_PROMISC_VLAN_RX;
+@@ -2897,9 +2897,9 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
+ 				goto error_param;
+ 			}
+ 
+-			vsi->num_vlan--;
+-			/* Disable VLAN pruning when the last VLAN is removed */
+-			if (!vsi->num_vlan)
++			/* Disable VLAN pruning when only VLAN 0 is left */
++			if (vsi->num_vlan == 1 &&
++			    ice_vsi_is_vlan_pruning_ena(vsi))
+ 				ice_cfg_vlan_pruning(vsi, false, false);
+ 
+ 			/* Disable Unicast/Multicast VLAN promiscuous mode */
 -- 
 2.20.1
 
