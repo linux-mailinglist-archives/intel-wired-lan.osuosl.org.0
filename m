@@ -2,34 +2,34 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3992145F72
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 00:53:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2502145F65
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 00:53:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 83463204C5;
-	Wed, 22 Jan 2020 23:53:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 451FF2014A;
+	Wed, 22 Jan 2020 23:53:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5szJfib2V-eu; Wed, 22 Jan 2020 23:53:38 +0000 (UTC)
+	with ESMTP id xxf46pvY+FVi; Wed, 22 Jan 2020 23:53:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AD0E621FF6;
-	Wed, 22 Jan 2020 23:53:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 073E220361;
+	Wed, 22 Jan 2020 23:53:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 12B521BF281
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 02BFC1BF977
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0F83A86463
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id F3BA786469
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zqQfiBJ6V7bo for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id deMi7A-eSa3o for <intel-wired-lan@lists.osuosl.org>;
  Wed, 22 Jan 2020 23:53:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 73D1286470
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8B3BD864EA
  for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:53:25 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  22 Jan 2020 15:53:24 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="222189280"
+X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="222189281"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by fmsmga008.fm.intel.com with ESMTP; 22 Jan 2020 15:53:24 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Jan 2020 07:20:29 -0800
-Message-Id: <20200122152041.41498-3-anthony.l.nguyen@intel.com>
+Date: Wed, 22 Jan 2020 07:20:30 -0800
+Message-Id: <20200122152041.41498-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200122152041.41498-1-anthony.l.nguyen@intel.com>
 References: <20200122152041.41498-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S37 03/15] ice: display supported and
- advertised link modes
+Subject: [Intel-wired-lan] [PATCH S37 04/15] ice: Don't allow same value for
+ Rx tail to be written twice
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,317 +67,33 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul Greenwalt <paul.greenwalt@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-Display all of the supported and advertised link modes based on the PHY
-capability with media.
+Currently we compare the value we are about to write to the Rx tail
+register with the previous value of next_to_use. The problem with this
+is we only write tail on 8 descriptor boundaries, but next_to_use is
+updated whenever we clean Rx descriptors. Fix this by comparing the
+value we are about to write to tail with the previously written tail
+value. This will prevent duplicate Rx tail bumps.
 
-Displaying all supported modes is more informative then only displaying
-the current link mode.
-
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 282 +------------------
- 1 file changed, 2 insertions(+), 280 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 90c6a3ca20c9..26eca4ce9e2c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -1710,291 +1710,13 @@ ice_get_settings_link_up(struct ethtool_link_ksettings *ks,
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+index 35bbc4ff603c..6da048a6ca7c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+@@ -10,7 +10,7 @@
+  */
+ void ice_release_rx_desc(struct ice_ring *rx_ring, u32 val)
  {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_port_info *pi = np->vsi->port_info;
--	struct ethtool_link_ksettings cap_ksettings;
- 	struct ice_link_status *link_info;
- 	struct ice_vsi *vsi = np->vsi;
--	bool unrecog_phy_high = false;
--	bool unrecog_phy_low = false;
+-	u16 prev_ntu = rx_ring->next_to_use;
++	u16 prev_ntu = rx_ring->next_to_use & ~0x7;
  
- 	link_info = &vsi->port_info->phy.link_info;
+ 	rx_ring->next_to_use = val;
  
--	/* Initialize supported and advertised settings based on PHY settings */
--	switch (link_info->phy_type_low) {
--	case ICE_PHY_TYPE_LOW_100BASE_TX:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100baseT_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     100baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100M_SGMII:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_1000BASE_T:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     1000baseT_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     1000baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_1G_SGMII:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     1000baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_1000BASE_SX:
--	case ICE_PHY_TYPE_LOW_1000BASE_LX:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     1000baseX_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_1000BASE_KX:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     1000baseKX_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     1000baseKX_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_2500BASE_T:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     2500baseT_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     2500baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_2500BASE_X:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     2500baseX_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_2500BASE_KX:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     2500baseX_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     2500baseX_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_5GBASE_T:
--	case ICE_PHY_TYPE_LOW_5GBASE_KR:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     5000baseT_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     5000baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_10GBASE_T:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     10000baseT_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     10000baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_10G_SFI_DA:
--	case ICE_PHY_TYPE_LOW_10G_SFI_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_10G_SFI_C2C:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     10000baseT_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_10GBASE_SR:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     10000baseSR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_10GBASE_LR:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     10000baseLR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_10GBASE_KR_CR1:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     10000baseKR_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     10000baseKR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_25GBASE_T:
--	case ICE_PHY_TYPE_LOW_25GBASE_CR:
--	case ICE_PHY_TYPE_LOW_25GBASE_CR_S:
--	case ICE_PHY_TYPE_LOW_25GBASE_CR1:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     25000baseCR_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     25000baseCR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_25G_AUI_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_25G_AUI_C2C:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     25000baseCR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_25GBASE_SR:
--	case ICE_PHY_TYPE_LOW_25GBASE_LR:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     25000baseSR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_25GBASE_KR:
--	case ICE_PHY_TYPE_LOW_25GBASE_KR1:
--	case ICE_PHY_TYPE_LOW_25GBASE_KR_S:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     25000baseKR_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     25000baseKR_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_40GBASE_CR4:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     40000baseCR4_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     40000baseCR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_40G_XLAUI_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_40G_XLAUI:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     40000baseCR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_40GBASE_SR4:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     40000baseSR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_40GBASE_LR4:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     40000baseLR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_40GBASE_KR4:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     40000baseKR4_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     40000baseKR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_50GBASE_CR2:
--	case ICE_PHY_TYPE_LOW_50GBASE_CP:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     50000baseCR2_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     50000baseCR2_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_50G_LAUI2_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_50G_LAUI2:
--	case ICE_PHY_TYPE_LOW_50G_AUI2_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_50G_AUI2:
--	case ICE_PHY_TYPE_LOW_50GBASE_SR:
--	case ICE_PHY_TYPE_LOW_50G_AUI1_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_50G_AUI1:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     50000baseCR2_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_50GBASE_KR2:
--	case ICE_PHY_TYPE_LOW_50GBASE_KR_PAM4:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     50000baseKR2_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     50000baseKR2_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_50GBASE_SR2:
--	case ICE_PHY_TYPE_LOW_50GBASE_LR2:
--	case ICE_PHY_TYPE_LOW_50GBASE_FR:
--	case ICE_PHY_TYPE_LOW_50GBASE_LR:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     50000baseSR2_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100GBASE_CR4:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseCR4_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     100000baseCR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100G_CAUI4_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_100G_CAUI4:
--	case ICE_PHY_TYPE_LOW_100G_AUI4_AOC_ACC:
--	case ICE_PHY_TYPE_LOW_100G_AUI4:
--	case ICE_PHY_TYPE_LOW_100GBASE_CR_PAM4:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseCR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100GBASE_CP2:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseCR4_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     100000baseCR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100GBASE_SR4:
--	case ICE_PHY_TYPE_LOW_100GBASE_SR2:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseSR4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100GBASE_LR4:
--	case ICE_PHY_TYPE_LOW_100GBASE_DR:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseLR4_ER4_Full);
--		break;
--	case ICE_PHY_TYPE_LOW_100GBASE_KR4:
--	case ICE_PHY_TYPE_LOW_100GBASE_KR_PAM4:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseKR4_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     100000baseKR4_Full);
--		break;
--	default:
--		unrecog_phy_low = true;
--	}
--
--	switch (link_info->phy_type_high) {
--	case ICE_PHY_TYPE_HIGH_100GBASE_KR2_PAM4:
--		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseKR4_Full);
--		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
--		ethtool_link_ksettings_add_link_mode(ks, advertising,
--						     100000baseKR4_Full);
--		break;
--	case ICE_PHY_TYPE_HIGH_100G_CAUI2_AOC_ACC:
--	case ICE_PHY_TYPE_HIGH_100G_CAUI2:
--	case ICE_PHY_TYPE_HIGH_100G_AUI2_AOC_ACC:
--	case ICE_PHY_TYPE_HIGH_100G_AUI2:
--		ethtool_link_ksettings_add_link_mode(ks, supported,
--						     100000baseCR4_Full);
--		break;
--	default:
--		unrecog_phy_high = true;
--	}
--
--	if (unrecog_phy_low && unrecog_phy_high) {
--		/* if we got here and link is up something bad is afoot */
--		netdev_info(netdev,
--			    "WARNING: Unrecognized PHY_Low (0x%llx).\n",
--			    (u64)link_info->phy_type_low);
--		netdev_info(netdev,
--			    "WARNING: Unrecognized PHY_High (0x%llx).\n",
--			    (u64)link_info->phy_type_high);
--	}
--
--	/* Now that we've worked out everything that could be supported by the
--	 * current PHY type, get what is supported by the NVM and intersect
--	 * them to get what is truly supported
--	 */
--	memset(&cap_ksettings, 0, sizeof(cap_ksettings));
--	ice_phy_type_to_ethtool(netdev, &cap_ksettings);
--	ethtool_intersect_link_masks(ks, &cap_ksettings);
-+	/* Get supported and advertised settings from PHY ability with media */
-+	ice_phy_type_to_ethtool(netdev, ks);
- 
- 	switch (link_info->link_speed) {
- 	case ICE_AQ_LINK_SPEED_100GB:
 -- 
 2.20.1
 
