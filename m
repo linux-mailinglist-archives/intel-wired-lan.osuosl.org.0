@@ -1,59 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 097B1144BC1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jan 2020 07:28:51 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 92BD62042B;
-	Wed, 22 Jan 2020 06:28:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dIfMgNELxI7J; Wed, 22 Jan 2020 06:28:49 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 71F5E20784;
-	Wed, 22 Jan 2020 06:28:47 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 91CC81BF59E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 06:28:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 21076144E8E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jan 2020 10:21:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8D62D85F7F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 06:28:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BE1B085FD5;
+	Wed, 22 Jan 2020 09:21:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iNUwK_PHXRLX; Wed, 22 Jan 2020 09:21:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0CA5A85FD6;
+	Wed, 22 Jan 2020 09:21:17 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2198D1BF40E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 09:21:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1D4C387BD3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 09:21:16 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m9nJvXNLtOqC for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Jan 2020 06:28:44 +0000 (UTC)
+ with ESMTP id Ul+olIy2z6Sm for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Jan 2020 09:21:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6757685F33
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 06:28:44 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7DCFD87B92
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 09:21:15 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 21 Jan 2020 22:28:43 -0800
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2020 01:21:15 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,348,1574150400"; d="scan'208";a="399913166"
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
- ([10.185.23.132])
- by orsmga005.jf.intel.com with ESMTP; 21 Jan 2020 22:28:42 -0800
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org
-References: <20200120063350.36467-1-sasha.neftin@intel.com>
- <87o8uw31zr.fsf@linux.intel.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <545eced6-a1ef-185d-41a5-3289cc045107@intel.com>
-Date: Wed, 22 Jan 2020 08:28:41 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <87o8uw31zr.fsf@linux.intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1] igc: Complete to commit Add basic
+X-IronPort-AV: E=Sophos;i="5.70,349,1574150400"; d="scan'208";a="215841602"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.161.150])
+ by orsmga007.jf.intel.com with ESMTP; 22 Jan 2020 01:21:14 -0800
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 22 Jan 2020 11:21:13 +0200
+Message-Id: <20200122092113.28381-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v2] igc: Complete to commit Add basic
  skeleton for PTP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -67,38 +59,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/21/2020 23:59, Vinicius Costa Gomes wrote:
-> Hi Sasha,
-> 
-> Sasha Neftin <sasha.neftin@intel.com> writes:
-> 
->> commit 5f2958052c58 ("igc: Add basic skeleton for PTP")
->> Add ptp suspend method to the igc_shutdown.
-> 
-> I guess the commit message could use a bit more text, something like
-> this:
-> 
-> "Commit 5f2958052c58 ("igc: Add basic skeleton for PTP") added basic
-> support for PTP, what's missing is support for suspending. By cleaning
-> the runtime storage for timestamp this avoids a possible invalid memory
-> access when the system comes back from suspend."
-Thanks Vinicius - I will extend the commit message in v2.
-> 
-> Apart from that, the code looks good.
-> 
-> Is this the only thing missing for suspend/resume to work? If so, that's
-> cool :-)
-> 
-> 
-> Cheers,
-> --
-> Vinicius
-> 
+commit 5f2958052c58 ("igc: Add basic skeleton for PTP") added basic
+support for PTP, what's missing is support for suspending.
+Legacy power management has been added. Now we can add
+the suspend method to the igc_shutdown.
+By cleaning the runtime storage for timestamp this avoids a possible
+invalid memory access when the system comes back from suspend state.
+
+v1->v2:
+Address community comment
+
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h      | 1 +
+ drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
+ drivers/net/ethernet/intel/igc/igc_ptp.c  | 2 +-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index cb1362188c2a..5e9c2dd8b8e4 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -556,6 +556,7 @@ int igc_erase_filter(struct igc_adapter *adapter,
+ 
+ void igc_ptp_init(struct igc_adapter *adapter);
+ void igc_ptp_reset(struct igc_adapter *adapter);
++void igc_ptp_suspend(struct igc_adapter *adapter);
+ void igc_ptp_stop(struct igc_adapter *adapter);
+ void igc_ptp_rx_rgtstamp(struct igc_q_vector *q_vector, struct sk_buff *skb);
+ void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, void *va,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 08ed9796d088..fa72460e255a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4899,6 +4899,8 @@ static int __igc_shutdown(struct pci_dev *pdev, bool *enable_wake,
+ 	if (netif_running(netdev))
+ 		__igc_close(netdev, true);
+ 
++	igc_ptp_suspend(adapter);
++
+ 	igc_clear_interrupt_scheme(adapter);
+ 	rtnl_unlock();
+ 
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 389a969fe5f4..f99c514ad0f4 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -641,7 +641,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
+  * This function stops the overflow check work and PTP Tx timestamp work, and
+  * will prepare the device for OS suspend.
+  */
+-static void igc_ptp_suspend(struct igc_adapter *adapter)
++void igc_ptp_suspend(struct igc_adapter *adapter)
+ {
+ 	if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
+ 		return;
+-- 
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
