@@ -1,51 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 429E7145FBC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 01:14:39 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D700145FF5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 01:33:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F3279860F8;
-	Thu, 23 Jan 2020 00:14:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C8E7922049;
+	Thu, 23 Jan 2020 00:33:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0DMZTSKWuOTK; Thu, 23 Jan 2020 00:14:37 +0000 (UTC)
+	with ESMTP id O3OpZrEgYuMV; Thu, 23 Jan 2020 00:33:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F2D7F861BC;
-	Thu, 23 Jan 2020 00:14:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 399A121579;
+	Thu, 23 Jan 2020 00:33:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8AE421BF9B2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:14:35 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 977951BF9B2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:33:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 86D378614E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:14:35 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 922A58827E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:33:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DrGZmKRpriD9 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Jan 2020 00:14:34 +0000 (UTC)
+ with ESMTP id URvSb+fVxg-Y for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Jan 2020 00:33:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A39D7860F8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:14:34 +0000 (UTC)
-Received: from [82.43.126.140] (helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1iuQ8j-0002d1-KW; Thu, 23 Jan 2020 00:14:29 +0000
-From: Colin King <colin.king@canonical.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "David S . Miller" <davem@davemloft.net>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-Date: Thu, 23 Jan 2020 00:14:29 +0000
-Message-Id: <20200123001429.2831701-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.24.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8756488277
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:33:52 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2020 16:33:52 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="259663973"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by fmsmga002.fm.intel.com with ESMTP; 22 Jan 2020 16:33:52 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 22 Jan 2020 16:33:51 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 22 Jan 2020 16:33:51 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Wed, 22 Jan 2020 16:33:51 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S34 v3 1/6] ice: Create and register
+ virtual bus for RDMA
+Thread-Index: AQHV0L5ZtncQ65wuUUaa6Oq1ShXUZ6f3aAPQ
+Date: Thu, 23 Jan 2020 00:33:51 +0000
+Message-ID: <d3719a7426404bbfb7fac958d90720d7@intel.com>
+References: <20200121162021.17107-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200121162021.17107-1-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjZmOTYxMDItNGY3NC00Yzc0LTgwNTgtYWRlZjhmZDcyMjZiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWWorbEgxb3JCXC9sck9VZWZrQkV2UVVVTEU5RTFRQ3N6QUVQY3lEdSs5ZDB0UWRqYU96VFg4YzhyYm1iZUdRTXMifQ==
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] i40e: fix spelling mistake "to" -> "too"
+Subject: Re: [Intel-wired-lan] [PATCH S34 v3 1/6] ice: Create and register
+ virtual bus for RDMA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,36 +84,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Colin Ian King <colin.king@canonical.com>
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Tony Nguyen
+> Sent: Tuesday, January 21, 2020 8:20 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S34 v3 1/6] ice: Create and register virtual
+> bus for RDMA
+> 
+> From: Dave Ertman <david.m.ertman@intel.com>
+> 
+> The RDMA block does not have its own PCI function, instead it must utilize
+> the ice driver to gain access to the PCI device. Create a virtual bus device so
+> the irdma driver can register a virtual bus driver to bind to it and receive
+> device data. The device data contains all of the relevant information that the
+> irdma peer will need to access this PF's IIDC API callbacks.
+> 
+> Note the header file iidc.h is located under include/linux/net/intel as this is a
+> unified header file to be used by all consumers of the IIDC interface.
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> ---
+>  MAINTAINERS                                   |   1 +
+>  drivers/net/ethernet/intel/Kconfig            |   1 +
+>  drivers/net/ethernet/intel/ice/Makefile       |   1 +
+>  drivers/net/ethernet/intel/ice/ice.h          |  13 +
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   1 +
+>  drivers/net/ethernet/intel/ice/ice_common.c   |  15 +
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |  31 ++
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.h  |   3 +
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   |   1 +
+>  drivers/net/ethernet/intel/ice/ice_idc.c      | 422 ++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_idc_int.h  |  67 +++
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |  11 +
+>  drivers/net/ethernet/intel/ice/ice_lib.h      |   2 +
+>  drivers/net/ethernet/intel/ice/ice_main.c     |  56 ++-
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+>  include/linux/net/intel/iidc.h                | 337 ++++++++++++++
+>  16 files changed, 961 insertions(+), 2 deletions(-)  create mode 100644
+> drivers/net/ethernet/intel/ice/ice_idc.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_idc_int.h
+>  create mode 100644 include/linux/net/intel/iidc.h
 
-There is a spelling mistake in a hw_dbg message. Fix it.
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/net/ethernet/intel/i40e/i40e_common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index d4055037af89..45b90eb11adb 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -1113,7 +1113,7 @@ i40e_status i40e_read_pba_string(struct i40e_hw *hw, u8 *pba_num,
- 	 */
- 	pba_size--;
- 	if (pba_num_size < (((u32)pba_size * 2) + 1)) {
--		hw_dbg(hw, "Buffer to small for PBA data.\n");
-+		hw_dbg(hw, "Buffer too small for PBA data.\n");
- 		return I40E_ERR_PARAM;
- 	}
- 
--- 
-2.24.0
 
 _______________________________________________
 Intel-wired-lan mailing list
