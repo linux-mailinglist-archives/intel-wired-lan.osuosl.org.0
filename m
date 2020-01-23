@@ -1,55 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03450145F7F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 00:54:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B0E6A2155E;
-	Wed, 22 Jan 2020 23:54:53 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ytrnQWcy3k2B; Wed, 22 Jan 2020 23:54:53 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AF40120361;
-	Wed, 22 Jan 2020 23:54:52 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CA2521BF281
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:54:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7062E145FAD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 01:10:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C587981A67
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:54:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A5FC83754;
+	Thu, 23 Jan 2020 00:10:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IyOpgT7akzuN; Thu, 23 Jan 2020 00:10:30 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C1BBC8464C;
+	Thu, 23 Jan 2020 00:10:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B0FEF1BF988
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:09:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id ACC2B81EE6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:09:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R4ExLl0rtxp2 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Jan 2020 23:54:23 +0000 (UTC)
+ with ESMTP id BkIsIwDfY2lF for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Jan 2020 00:09:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8EC2D83469
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jan 2020 23:54:23 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8C6D8827A7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:09:09 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2020 15:54:23 -0800
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2020 16:09:08 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="259651625"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by fmsmga002.fm.intel.com with ESMTP; 22 Jan 2020 15:54:23 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Jan 2020 07:21:38 -0800
-Message-Id: <20200122152138.41585-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200122152138.41585-1-anthony.l.nguyen@intel.com>
-References: <20200122152138.41585-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="222193802"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by fmsmga008.fm.intel.com with ESMTP; 22 Jan 2020 16:09:08 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 22 Jan 2020 16:09:08 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 22 Jan 2020 16:09:07 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Wed, 22 Jan 2020 16:09:07 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S36 1/8] ice: Enable writing hardware
+ filtering tables
+Thread-Index: AQHVzZPwPcK7ZjCh2UWu71uJEYYwWKf3Z3Dg
+Date: Thu, 23 Jan 2020 00:09:07 +0000
+Message-ID: <3299008f7b994321841a8e30bb022229@intel.com>
+References: <20200117153919.50321-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200117153919.50321-1-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTE4ODBkMjMtM2NlOC00ZGVlLWEzMmEtZWNhMzJlYjkwM2Q4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoidHM1aGJCUUNpUnBkK09PWTdLU3p6UDVYc1l1Q2JOQXBBd2xhQWFKcUlxd09RSGdmREFKVUxjYlpHNkE3eFZqRSJ9
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S38 15/15] ice: use true/false for bool
- types
+Subject: Re: [Intel-wired-lan] [PATCH S36 1/8] ice: Enable writing hardware
+ filtering tables
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,31 +89,38 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bruce Allan <bruce.w.allan@intel.com>
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Tony Nguyen
+> Sent: Friday, January 17, 2020 7:39 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S36 1/8] ice: Enable writing hardware
+> filtering tables
+> 
+> Enable the driver to write the filtering hardware tables to allow for changing
+> of RSS rules. Upon loading of DDP package, a minimal configuration should be
+> written to hardware.
+> 
+> Introduce and initialize structures for storing configuration and make the top
+> level calls to configure the RSS tables to initial values. A packet segment will
+> be created but nothing is written to hardware yet.
+> 
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Signed-off-by: Henry Tieman <henry.w.tieman@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/Makefile       |   3 +-
+>  drivers/net/ethernet/intel/ice/ice_common.c   |   6 +-
+>  .../net/ethernet/intel/ice/ice_flex_pipe.c    |  31 ++-
+>  drivers/net/ethernet/intel/ice/ice_flow.c     | 250 ++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_flow.h     | 114 ++++++++
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |  87 +++++-
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   4 +
+>  7 files changed, 491 insertions(+), 4 deletions(-)  create mode 100644
+> drivers/net/ethernet/intel/ice/ice_flow.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_flow.h
 
-Subject says it all.
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_xsk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index b6b0f1180b13..55d994f2d71e 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -841,8 +841,8 @@ int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget)
- 	unsigned int total_rx_bytes = 0, total_rx_packets = 0;
- 	u16 cleaned_count = ICE_DESC_UNUSED(rx_ring);
- 	unsigned int xdp_xmit = 0;
-+	bool failure = false;
- 	struct xdp_buff xdp;
--	bool failure = 0;
- 
- 	xdp.rxq = &rx_ring->xdp_rxq;
- 
--- 
-2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
