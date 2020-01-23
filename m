@@ -2,77 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6956B145FFE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 01:36:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DA00146003
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 01:40:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1EE8488277;
-	Thu, 23 Jan 2020 00:36:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4462E88277;
+	Thu, 23 Jan 2020 00:40:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bnwJ+tKr7cRt; Thu, 23 Jan 2020 00:36:14 +0000 (UTC)
+	with ESMTP id RrcgSWq-whGF; Thu, 23 Jan 2020 00:40:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA50E88293;
-	Thu, 23 Jan 2020 00:36:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 968B588293;
+	Thu, 23 Jan 2020 00:40:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1E0DE1BF9B2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:36:13 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AFB191BF9B2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:40:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 193F58827E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:36:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3FDAD8665F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:40:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UkdodJ+BNhVd for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Jan 2020 00:36:12 +0000 (UTC)
+ with ESMTP id ZT2cB-Pxpsvu for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Jan 2020 00:40:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9581888277
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:36:12 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0523786652
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:40:06 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2020 16:36:12 -0800
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2020 16:40:06 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="221386763"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga007.fm.intel.com with ESMTP; 22 Jan 2020 16:36:12 -0800
+X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="259665393"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by fmsmga002.fm.intel.com with ESMTP; 22 Jan 2020 16:40:06 -0800
 Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 22 Jan 2020 16:36:12 -0800
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 22 Jan 2020 16:40:06 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
  fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 22 Jan 2020 16:36:11 -0800
+ 15.1.1713.5; Wed, 22 Jan 2020 16:40:05 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 22 Jan 2020 16:36:11 -0800
+ Wed, 22 Jan 2020 16:40:05 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S34 v3 6/6] ice: Pass through
- communications to VF
-Thread-Index: AQHV0L5YBRZz4qUQDkaHr0kwuoncyqf3aK4g
-Date: Thu, 23 Jan 2020 00:36:11 +0000
-Message-ID: <47420ac4e8554b3595fc9c78a3bef3a3@intel.com>
-References: <20200121162021.17107-1-anthony.l.nguyen@intel.com>
- <20200121162021.17107-6-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200121162021.17107-6-anthony.l.nguyen@intel.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH -next] i40e: remove unnecessary
+ conversions to bool
+Thread-Index: AQHVzswZrtP2LQT+HE+virtMr9uRkaf3bZqQ
+Date: Thu, 23 Jan 2020 00:40:05 +0000
+Message-ID: <e1fd238f66684cc1a70fe498467177e2@intel.com>
+References: <20200119132138.37781-1-chenzhou10@huawei.com>
+In-Reply-To: <20200119132138.37781-1-chenzhou10@huawei.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTgzYjU0NjMtZWQ0NS00ZmE1LWEyYTItMDM4YTNhMmQ0OTkwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiTlFvVkxTcXNLeHRnMTE0cXV4dnhOdjdURVd5bGFMZnFvMllZVEVNWUJIOHphaGxFNkxDZXlkdWZKM2ZWUWVvRyJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYTU4NDY1ZTAtYmFkZC00ZWIwLWJmMDMtZjQyNThiYTQwZjRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZG9pQU5RWE4yU2xCRWVmTjdKNFVxSmJDMnFUZ05DQlJKNEozZU1WSFZBSThuNHpIWFwvWm1vV1ZvK2dRSFVENUIifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S34 v3 6/6] ice: Pass through
- communications to VF
+Subject: Re: [Intel-wired-lan] [PATCH -next] i40e: remove unnecessary
+ conversions to bool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,28 +93,24 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Tony Nguyen
-> Sent: Tuesday, January 21, 2020 8:20 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S34 v3 6/6] ice: Pass through
-> communications to VF
+> Behalf Of Chen Zhou
+> Sent: Sunday, January 19, 2020 5:22 AM
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; davem@davemloft.net
+> Cc: chenzhou10@huawei.com; netdev@vger.kernel.org; intel-wired-
+> lan@lists.osuosl.org; linux-kernel@vger.kernel.org
+> Subject: [Intel-wired-lan] [PATCH -next] i40e: remove unnecessary
+> conversions to bool
 > 
-> From: Dave Ertman <david.m.ertman@intel.com>
+> The conversions to bool are not needed, remove these.
 > 
-> Allow for forwarding of RDMA and VF virt channel messages. The driver will
-> forward messages from the RDMA driver to the VF via the vc_send operation
-> and invoke the peer's vc_receive() call when receiving a virt channel message
-> destined for the peer driver.
-> 
-> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Signed-off-by: Chen Zhou <chenzhou10@huawei.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h          |  1 +
->  drivers/net/ethernet/intel/ice/ice_idc.c      | 34 +++++++++++++++++++
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 34 +++++++++++++++++++
->  3 files changed, 69 insertions(+)
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
