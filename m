@@ -1,61 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC2BC148EC3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jan 2020 20:41:09 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7E79A88216;
-	Fri, 24 Jan 2020 19:41:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lRkp3M0+c2v0; Fri, 24 Jan 2020 19:41:08 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D592988266;
-	Fri, 24 Jan 2020 19:41:07 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D23221BF263
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 19:41:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BACF81491A9
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Jan 2020 00:17:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C4BFB87903
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 19:41:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6083587A8A;
+	Fri, 24 Jan 2020 23:17:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id r67ZeqLqcHWc; Fri, 24 Jan 2020 23:17:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3B19187ABA;
+	Fri, 24 Jan 2020 23:17:11 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DBAC1BF471
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 23:17:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 58A2C86E7F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 23:17:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tJTJVqxujWVx for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Jan 2020 19:41:05 +0000 (UTC)
-X-Greylist: delayed 00:09:59 by SQLgrey-1.7.6
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
- by whitealder.osuosl.org (Postfix) with ESMTP id 22D32878FE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 19:41:05 +0000 (UTC)
-Received: from [192.168.100.195] (50-251-239-81-static.hfc.comcastbusiness.net
- [50.251.239.81])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail3.candelatech.com (Postfix) with ESMTPSA id 88092105A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 11:31:05 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 88092105A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
- s=default; t=1579894265;
- bh=5Vp2twjnSTBUez4MmIYwlYDvS/CDWyTEymNCxp1g2kE=;
- h=To:From:Subject:Date:From;
- b=dQ04dssfRl6zkqFvFFPz+kvufo0CvJ6C10MUwRhM/71AYqeqSl8GCbbKosb4c5V6n
- fF7VIO6wsQ7lhHYVyxVPN1ubgptj/ZxVEvW/zrQ/Oj7k7+8WgRQ+MZdY3FElZHUWNL
- PvOKYttX01RWcSAJtzH06UuISfEILb2vsIxeVATM=
-To: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Message-ID: <9c5158a4-8c45-f45c-636e-7ea75d40eabf@candelatech.com>
-Date: Fri, 24 Jan 2020 11:31:05 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
-MIME-Version: 1.0
+ with ESMTP id RvgwkRANwIp7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Jan 2020 23:17:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 370AA86DB0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 23:17:09 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 24 Jan 2020 15:17:08 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,359,1574150400"; d="scan'208";a="276451338"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+ by FMSMGA003.fm.intel.com with ESMTP; 24 Jan 2020 15:17:08 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 24 Jan 2020 15:17:08 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Fri, 24 Jan 2020 15:17:08 -0800
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Fri, 24 Jan 2020 15:17:08 -0800
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S37 02/15] ice: Fix switch between FW
+ and SW LLDP
+Thread-Index: AQHV0X8oQ0F5cjkdc0680cMG4xYkjqf6cqWQ
+Date: Fri, 24 Jan 2020 23:17:07 +0000
+Message-ID: <f36e6fafc0e1406e8fd14f3e73c4d3d9@intel.com>
+References: <20200122152041.41498-1-anthony.l.nguyen@intel.com>
+ <20200122152041.41498-2-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200122152041.41498-2-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-Subject: [Intel-wired-lan] ixgbe: "Warning firmware error detected FWSM:
- 0xFFFFFFFF"
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYmMxYmMwNzktYTJiNC00MTNlLTk0MmEtZmViOWUwOGM0NWYzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYUtySWYwaFhSVDZvSUYwajhuXC9sZE85czBudW13MG5RckFKMmVzbkUzQit5V2pqSVNXVkRGNWRCQlFla0NrbGMifQ==
+dlp-reaction: no-action
+dlp-version: 11.0.400.15
+x-originating-ip: [10.22.254.132]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH S37 02/15] ice: Fix switch between FW
+ and SW LLDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,53 +85,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello,
+> -----Original Message-----
+> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
+> Behalf Of Tony Nguyen
+> Sent: Wednesday, January 22, 2020 7:20 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S37 02/15] ice: Fix switch between FW and
+> SW LLDP
+> 
+> From: Dave Ertman <david.m.ertman@intel.com>
+> 
+> When switching between FW and SW LLDP mode, the number of configured
+> TLV apps in the driver's DCB configuration is getting out of synch with what
+> lldpad thinks is configured.  This is causing a problem when shutting down
+> lldpad.  The cleanup is trying to delete TLV apps that are not defined in the
+> kernel.
+> 
+> Since the driver is keeping an accurate account of the apps defined, use the
+> drivers number of apps to determine if there is an app to delete.
+> If the number of apps is <= 1, then do not attempt to delete.
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_dcb_nl.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 
-Anyone know what this problem means?
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
-# dmesg|grep ixg
-[    3.840480] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver - version 5.1.0-k
-[    3.840481] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
-[    4.535677] ixgbe 0000:01:00.0: Multiqueue Enabled: Rx Queue count = 8, Tx Queue count = 8 XDP Queue count = 0
-[    4.633347] ixgbe 0000:01:00.0: 31.504 Gb/s available PCIe bandwidth (8 GT/s x4 link)
-[    4.745337] ixgbe 0000:01:00.0: MAC: 4, PHY: 0, PBA No: H86377-005
-[    4.745338] ixgbe 0000:01:00.0: 9c:69:b4:60:e4:a6
-[    4.904379] ixgbe 0000:01:00.0: Intel(R) 10 Gigabit Network Connection
-[    4.904413] libphy: ixgbe-mdio: probed
-[    5.610158] ixgbe 0000:01:00.1: Multiqueue Enabled: Rx Queue count = 8, Tx Queue count = 8 XDP Queue count = 0
-[    5.709523] ixgbe 0000:01:00.1: 31.504 Gb/s available PCIe bandwidth (8 GT/s x4 link)
-[    5.823067] ixgbe 0000:01:00.1: MAC: 4, PHY: 0, PBA No: H86377-005
-[    5.823071] ixgbe 0000:01:00.1: 9c:69:b4:60:e4:a7
-[    5.986413] ixgbe 0000:01:00.1: Intel(R) 10 Gigabit Network Connection
-[    5.986444] libphy: ixgbe-mdio: probed
-[    5.987671] ixgbe 0000:01:00.0 enp1s0f0: renamed from eth0
-[    5.995744] ixgbe 0000:01:00.1 enp1s0f1: renamed from eth1
-[   10.086982] ixgbe 0000:01:00.0 eth2: renamed from enp1s0f0
-[   10.098434] ixgbe 0000:01:00.1 eth3: renamed from enp1s0f1
-[   30.868089] ixgbe 0000:01:00.0: registered PHC device on eth2
-[   31.327796] ixgbe 0000:01:00.1: registered PHC device on eth3
-[   47.567801] ixgbe 0000:01:00.0: Adapter removed
-[   47.571172] ixgbe 0000:01:00.0: Warning firmware error detected FWSM: 0xFFFFFFFF
-[   47.571188] ixgbe 0000:01:00.0: Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and Devices User Guide for 
-details on firmware recovery mode.
-[   47.588245] ixgbe 0000:01:00.0: removed PHC on eth2
-[   48.056546] ixgbe 0000:01:00.1: Adapter removed
-[   48.059916] ixgbe 0000:01:00.1: Warning firmware error detected FWSM: 0xFFFFFFFF
-[   48.059932] ixgbe 0000:01:00.1: Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and Devices User Guide for 
-details on firmware recovery mode.
-[   48.076589] ixgbe 0000:01:00.1: removed PHC on eth3
-
-Thanks,
-Ben
-
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
 
 _______________________________________________
 Intel-wired-lan mailing list
