@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2AD71486CD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jan 2020 15:19:12 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE29114870B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jan 2020 15:20:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 61B778817D;
-	Fri, 24 Jan 2020 14:19:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7575D2035B;
+	Fri, 24 Jan 2020 14:20:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QTmqPuatusvM; Fri, 24 Jan 2020 14:19:11 +0000 (UTC)
+	with ESMTP id 4KDyeHSJp1P9; Fri, 24 Jan 2020 14:20:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 93D6C8805D;
-	Fri, 24 Jan 2020 14:19:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5D57E203C9;
+	Fri, 24 Jan 2020 14:20:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E38A61BF3AE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:19:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 18A3E1BF3AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:20:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E00A684F12
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:19:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 13CC620110
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:20:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VW+3NSx9jOxs for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Jan 2020 14:19:07 +0000 (UTC)
+ with ESMTP id lZ-pA23J8Pv6 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Jan 2020 14:20:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 308DF85381
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:19:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 75AA42010D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:20:36 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 37A19222D9;
- Fri, 24 Jan 2020 14:19:06 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 79BE122527;
+ Fri, 24 Jan 2020 14:20:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579875547;
- bh=1uzgcsSaJZLu+0KgecdYIA0XH7hSo+0oomAqGGk7dBg=;
+ s=default; t=1579875636;
+ bh=M3igxGJbPwWLFddQF1W+xeYwC2g5LtR0ImoWkxG7tLg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jUtB5O9n/xPvquu3MCRL4357fy8UvcneUz5fig3E8d7BvmNVgjwWDZ9LQyyyX7Wy7
- 0L29jnnRzXQPSF0R0Yy2kyx3YiUhs6WyResImVr+oz8fR2G7QRFLZLERazDexeh9HO
- y/xOwpVqH//GBe/EI95kcjqZNKkfpxmALLKNqoZ4=
+ b=cWJIcHFG3cIpsic/ODTwrBpN/uUrUuS1Y2+yUAVL94f0vVp1D4RYvr+o9kqDGV9y2
+ J9mruHVMHcQ6B9wgAUImRZ8LgRA/abe4ejOctG6AChdaT5G5bL+JQE5tLisSrlCDBE
+ jjpYuoh5m/FBjaR0/Wymxj3cDL2Rprip04ucl5dQ=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Fri, 24 Jan 2020 09:17:12 -0500
-Message-Id: <20200124141817.28793-42-sashal@kernel.org>
+Date: Fri, 24 Jan 2020 09:19:36 -0500
+Message-Id: <20200124142012.29752-20-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200124141817.28793-1-sashal@kernel.org>
-References: <20200124141817.28793-1-sashal@kernel.org>
+In-Reply-To: <20200124142012.29752-1-sashal@kernel.org>
+References: <20200124142012.29752-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 042/107] iavf: remove current
- MAC address filter on VF reset
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 20/56] ixgbevf: Remove limit
+ of 10 entries for unicast filter list
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,127 +69,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Stefan Assmann <sassmann@kpanic.de>, intel-wired-lan@lists.osuosl.org
+Cc: Sasha Levin <sashal@kernel.org>, Paul Menzel <pmenzel@molgen.mpg.de>,
+ Radoslaw Tyl <radoslawx.tyl@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Stefan Assmann <sassmann@kpanic.de>
+From: Radoslaw Tyl <radoslawx.tyl@intel.com>
 
-[ Upstream commit 9e05229190380f6b8f702da39aaeb97a0fc80dc3 ]
+[ Upstream commit aa604651d523b1493988d0bf6710339f3ee60272 ]
 
-Currently MAC filters are not altered during a VF reset event. This may
-lead to a stale filter when an administratively set MAC is forced by the
-PF.
+Currently, though the FDB entry is added to VF, it does not appear in
+RAR filters. VF driver only allows to add 10 entries. Attempting to add
+another causes an error. This patch removes limitation and allows use of
+all free RAR entries for the FDB if needed.
 
-For an administratively set MAC the PF driver deletes the VFs filters,
-overwrites the VFs MAC address and triggers a VF reset. However
-the VF driver itself is not aware of the filter removal, which is what
-the VF reset is for.
-The VF reset queues all filters present in the VF driver to be re-added
-to the PF filter list (including the filter for the now stale VF MAC
-address) and triggers a VIRTCHNL_OP_GET_VF_RESOURCES event, which
-provides the new MAC address to the VF.
-
-When this happens i40e will complain and reject the stale MAC filter,
-at least in the untrusted VF case.
-i40e 0000:08:00.0: Setting MAC 3c:fa:fa:fa:fa:01 on VF 0
-iavf 0000:08:02.0: Reset warning received from the PF
-iavf 0000:08:02.0: Scheduling reset task
-i40e 0000:08:00.0: Bring down and up the VF interface to make this change effective.
-i40e 0000:08:00.0: VF attempting to override administratively set MAC address, bring down and up the VF interface to resume normal operation
-i40e 0000:08:00.0: VF 0 failed opcode 10, retval: -1
-iavf 0000:08:02.0: Failed to add MAC filter, error IAVF_ERR_NVM
-
-To avoid re-adding the stale MAC filter it needs to be removed from the
-VF driver's filter list before queuing the existing filters. Then during
-the VIRTCHNL_OP_GET_VF_RESOURCES event the correct filter needs to be
-added again, at which point the MAC address has been updated.
-
-As a bonus this change makes bringing the VF down and up again
-superfluous for the administratively set MAC case.
-
-Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Fixes: 46ec20ff7d ("ixgbevf: Add macvlan support in the set rx mode op")
+Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
+Acked-by: Paul Menzel <pmenzel@molgen.mpg.de>
 Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/iavf/iavf.h          |  2 ++
- drivers/net/ethernet/intel/iavf/iavf_main.c     | 17 +++++++++++++----
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c |  3 +++
- 3 files changed, 18 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 29de3ae96ef22..bd1b1ed323f4f 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -415,4 +415,6 @@ void iavf_enable_channels(struct iavf_adapter *adapter);
- void iavf_disable_channels(struct iavf_adapter *adapter);
- void iavf_add_cloud_filter(struct iavf_adapter *adapter);
- void iavf_del_cloud_filter(struct iavf_adapter *adapter);
-+struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
-+					const u8 *macaddr);
- #endif /* _IAVF_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 821987da5698a..8e16be960e96b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -743,9 +743,8 @@ iavf_mac_filter *iavf_find_filter(struct iavf_adapter *adapter,
-  *
-  * Returns ptr to the filter object or NULL when no memory available.
-  **/
--static struct
--iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
--				 const u8 *macaddr)
-+struct iavf_mac_filter *iavf_add_filter(struct iavf_adapter *adapter,
-+					const u8 *macaddr)
- {
- 	struct iavf_mac_filter *f;
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+index 4093a9c52c182..a10756f0b0d8b 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+@@ -2066,11 +2066,6 @@ static int ixgbevf_write_uc_addr_list(struct net_device *netdev)
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	int count = 0;
  
-@@ -2065,9 +2064,9 @@ static void iavf_reset_task(struct work_struct *work)
- 	struct virtchnl_vf_resource *vfres = adapter->vf_res;
- 	struct net_device *netdev = adapter->netdev;
- 	struct iavf_hw *hw = &adapter->hw;
-+	struct iavf_mac_filter *f, *ftmp;
- 	struct iavf_vlan_filter *vlf;
- 	struct iavf_cloud_filter *cf;
--	struct iavf_mac_filter *f;
- 	u32 reg_val;
- 	int i = 0, err;
- 	bool running;
-@@ -2181,6 +2180,16 @@ continue_reset:
+-	if ((netdev_uc_count(netdev)) > 10) {
+-		pr_err("Too many unicast filters - No Space\n");
+-		return -ENOSPC;
+-	}
+-
+ 	if (!netdev_uc_empty(netdev)) {
+ 		struct netdev_hw_addr *ha;
  
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
- 
-+	/* Delete filter for the current MAC address, it could have
-+	 * been changed by the PF via administratively set MAC.
-+	 * Will be re-added via VIRTCHNL_OP_GET_VF_RESOURCES.
-+	 */
-+	list_for_each_entry_safe(f, ftmp, &adapter->mac_filter_list, list) {
-+		if (ether_addr_equal(f->macaddr, adapter->hw.mac.addr)) {
-+			list_del(&f->list);
-+			kfree(f);
-+		}
-+	}
- 	/* re-add all MAC filters */
- 	list_for_each_entry(f, &adapter->mac_filter_list, list) {
- 		f->add = true;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index c46770eba320e..1ab9cb339acb4 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1359,6 +1359,9 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			ether_addr_copy(netdev->perm_addr,
- 					adapter->hw.mac.addr);
- 		}
-+		spin_lock_bh(&adapter->mac_vlan_list_lock);
-+		iavf_add_filter(adapter, adapter->hw.mac.addr);
-+		spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 		iavf_process_config(adapter);
- 		}
- 		break;
 -- 
 2.20.1
 
