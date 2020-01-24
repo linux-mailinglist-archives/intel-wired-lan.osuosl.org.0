@@ -1,79 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DA00146003
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2020 01:40:30 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4462E88277;
-	Thu, 23 Jan 2020 00:40:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RrcgSWq-whGF; Thu, 23 Jan 2020 00:40:29 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 968B588293;
-	Thu, 23 Jan 2020 00:40:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AFB191BF9B2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:40:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 15F0E1486C9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jan 2020 15:19:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3FDAD8665F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:40:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B79686D7B;
+	Fri, 24 Jan 2020 14:19:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oz7mWyuMJJ3d; Fri, 24 Jan 2020 14:19:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2894686D77;
+	Fri, 24 Jan 2020 14:19:04 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2FBB11BF3AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:19:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 2AECD203EC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:19:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZT2cB-Pxpsvu for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Jan 2020 00:40:07 +0000 (UTC)
+ with ESMTP id SI2nGo5Kx3Bp for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Jan 2020 14:19:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0523786652
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2020 00:40:06 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2020 16:40:06 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,351,1574150400"; d="scan'208";a="259665393"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga002.fm.intel.com with ESMTP; 22 Jan 2020 16:40:06 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 22 Jan 2020 16:40:06 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 22 Jan 2020 16:40:05 -0800
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 22 Jan 2020 16:40:05 -0800
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH -next] i40e: remove unnecessary
- conversions to bool
-Thread-Index: AQHVzswZrtP2LQT+HE+virtMr9uRkaf3bZqQ
-Date: Thu, 23 Jan 2020 00:40:05 +0000
-Message-ID: <e1fd238f66684cc1a70fe498467177e2@intel.com>
-References: <20200119132138.37781-1-chenzhou10@huawei.com>
-In-Reply-To: <20200119132138.37781-1-chenzhou10@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYTU4NDY1ZTAtYmFkZC00ZWIwLWJmMDMtZjQyNThiYTQwZjRjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiZG9pQU5RWE4yU2xCRWVmTjdKNFVxSmJDMnFUZ05DQlJKNEozZU1WSFZBSThuNHpIWFwvWm1vV1ZvK2dRSFVENUIifQ==
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 590F5203CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jan 2020 14:19:02 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 35123214AF;
+ Fri, 24 Jan 2020 14:19:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1579875542;
+ bh=gITOntd6JjepyRqHUzvVgH4Fg1uLC6E0WP0cBUWuEUc=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=aZDL0aGvq+AmgZKv/WjMhXqCszbGB/kN8Fd7OsLWn7cv08ybS8qPHk1C9/idCdkUA
+ Xm9AcHLBPQW+9BlJ1ETujyKrrC/1nfhYgzaP5c8anXnILiMgW+7Jq9DT0gDHd59JAe
+ Ucewostg4O+av5HOtdprVvWKeoqSIoNcXrgW6dG4=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Date: Fri, 24 Jan 2020 09:17:08 -0500
+Message-Id: <20200124141817.28793-38-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200124141817.28793-1-sashal@kernel.org>
+References: <20200124141817.28793-1-sashal@kernel.org>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH -next] i40e: remove unnecessary
- conversions to bool
+X-stable: review
+X-Patchwork-Hint: Ignore
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 038/107] i40e: Fix
+ virtchnl_queue_select bitmap validation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,30 +69,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
+ Brett Creeley <brett.creeley@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Arkady Gilinksky <arkady.gilinsky@harmonicinc.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Chen Zhou
-> Sent: Sunday, January 19, 2020 5:22 AM
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; davem@davemloft.net
-> Cc: chenzhou10@huawei.com; netdev@vger.kernel.org; intel-wired-
-> lan@lists.osuosl.org; linux-kernel@vger.kernel.org
-> Subject: [Intel-wired-lan] [PATCH -next] i40e: remove unnecessary
-> conversions to bool
-> 
-> The conversions to bool are not needed, remove these.
-> 
-> Signed-off-by: Chen Zhou <chenzhou10@huawei.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+From: Brett Creeley <brett.creeley@intel.com>
 
+[ Upstream commit d9d6a9aed3f66f8ce5fa3ca6ca26007d75032296 ]
+
+Currently in i40e_vc_disable_queues_msg() we are incorrectly
+validating the virtchnl queue select bitmaps. The
+virtchnl_queue_select rx_queues and tx_queue bitmap is being
+compared against ICE_MAX_VF_QUEUES, but the problem is that
+these bitmaps can have a value greater than I40E_MAX_VF_QUEUES.
+Fix this by comparing the bitmaps against BIT(I40E_MAX_VF_QUEUES).
+
+Also, add the function i40e_vc_validate_vqs_bitmaps() that checks to see
+if both virtchnl_queue_select bitmaps are empty along with checking that
+the bitmaps only have valid bits set. This function can then be used in
+both the queue enable and disable flows.
+
+Suggested-by: Arkady Gilinksky <arkady.gilinsky@harmonicinc.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 22 +++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 3d24408388226..3515ace0f0201 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2322,6 +2322,22 @@ static int i40e_ctrl_vf_rx_rings(struct i40e_vsi *vsi, unsigned long q_map,
+ 	return ret;
+ }
+ 
++/**
++ * i40e_vc_validate_vqs_bitmaps - validate Rx/Tx queue bitmaps from VIRTHCHNL
++ * @vqs: virtchnl_queue_select structure containing bitmaps to validate
++ *
++ * Returns true if validation was successful, else false.
++ */
++static bool i40e_vc_validate_vqs_bitmaps(struct virtchnl_queue_select *vqs)
++{
++	if ((!vqs->rx_queues && !vqs->tx_queues) ||
++	    vqs->rx_queues >= BIT(I40E_MAX_VF_QUEUES) ||
++	    vqs->tx_queues >= BIT(I40E_MAX_VF_QUEUES))
++		return false;
++
++	return true;
++}
++
+ /**
+  * i40e_vc_enable_queues_msg
+  * @vf: pointer to the VF info
+@@ -2347,7 +2363,7 @@ static int i40e_vc_enable_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
+-	if ((0 == vqs->rx_queues) && (0 == vqs->tx_queues)) {
++	if (i40e_vc_validate_vqs_bitmaps(vqs)) {
+ 		aq_ret = I40E_ERR_PARAM;
+ 		goto error_param;
+ 	}
+@@ -2409,9 +2425,7 @@ static int i40e_vc_disable_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 		goto error_param;
+ 	}
+ 
+-	if ((vqs->rx_queues == 0 && vqs->tx_queues == 0) ||
+-	    vqs->rx_queues > I40E_MAX_VF_QUEUES ||
+-	    vqs->tx_queues > I40E_MAX_VF_QUEUES) {
++	if (i40e_vc_validate_vqs_bitmaps(vqs)) {
+ 		aq_ret = I40E_ERR_PARAM;
+ 		goto error_param;
+ 	}
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
