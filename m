@@ -1,54 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BE0014A8F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Jan 2020 18:32:17 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E23D14A8F6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Jan 2020 18:32:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 879FF20497;
-	Mon, 27 Jan 2020 17:32:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 255A784D2E;
+	Mon, 27 Jan 2020 17:32:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sM8-aPa6KcBC; Mon, 27 Jan 2020 17:32:15 +0000 (UTC)
+	with ESMTP id EJORZKCcal_1; Mon, 27 Jan 2020 17:32:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C3DA220423;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5CAE684B23;
 	Mon, 27 Jan 2020 17:32:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 014131BF283
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B95291BF283
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ED3D8879A6
+ by hemlock.osuosl.org (Postfix) with ESMTP id B1834879F0
  for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pu4YiMc5xW8p for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 819GfdDumyRq for <intel-wired-lan@lists.osuosl.org>;
  Mon, 27 Jan 2020 17:32:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EAE908796C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:10 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2135A879A6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:11 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  27 Jan 2020 09:32:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,370,1574150400"; d="scan'208";a="427350658"
+X-IronPort-AV: E=Sophos;i="5.70,370,1574150400"; d="scan'208";a="427350660"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by fmsmga005.fm.intel.com with ESMTP; 27 Jan 2020 09:32:10 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 27 Jan 2020 00:59:24 -0800
-Message-Id: <20200127085927.13999-12-anthony.l.nguyen@intel.com>
+Date: Mon, 27 Jan 2020 00:59:25 -0800
+Message-Id: <20200127085927.13999-13-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200127085927.13999-1-anthony.l.nguyen@intel.com>
 References: <20200127085927.13999-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S39 12/15] ice: add backslash-n to strings
+Subject: [Intel-wired-lan] [PATCH S39 13/15] ice: add additional E810 device
+ id
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,159 +67,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+From: Bruce Allan <bruce.w.allan@intel.com>
 
-There were several strings found without line feeds, fix
-them by adding a line feed, as is typical.  Without this
-lotsofmessagescanbejumbledtogether.
+Add support for device id 0x159b.
 
-This patch has known checkpatch warnings from long lines
-for the NL_* messages, because checkpatch doesn't know
-how to ignore them.
-
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_base.c        |  3 +--
- drivers/net/ethernet/intel/ice/ice_ethtool.c     |  8 ++++----
- drivers/net/ethernet/intel/ice/ice_main.c        | 12 ++++--------
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_xsk.c         |  6 +++---
- 5 files changed, 13 insertions(+), 18 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_devids.h | 2 ++
+ drivers/net/ethernet/intel/ice/ice_main.c   | 1 +
+ 2 files changed, 3 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 54aa533f36d4..a19cd6f5436b 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -203,8 +203,7 @@ static void ice_cfg_itr_gran(struct ice_hw *hw)
-  */
- static u16 ice_calc_q_handle(struct ice_vsi *vsi, struct ice_ring *ring, u8 tc)
- {
--	WARN_ONCE(ice_ring_is_xdp(ring) && tc,
--		  "XDP ring can't belong to TC other than 0");
-+	WARN_ONCE(ice_ring_is_xdp(ring) && tc, "XDP ring can't belong to TC other than 0\n");
- 
- 	/* Idea here for calculation is that we subtract the number of queue
- 	 * count from TC that ring belongs to from it's absolute queue index
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index c302470b095b..6d7089534d42 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -673,7 +673,7 @@ static u64 ice_loopback_test(struct net_device *netdev)
- 
- 	test_vsi = ice_lb_vsi_setup(pf, pf->hw.port_info);
- 	if (!test_vsi) {
--		netdev_err(netdev, "Failed to create a VSI for the loopback test");
-+		netdev_err(netdev, "Failed to create a VSI for the loopback test\n");
- 		return 1;
- 	}
- 
-@@ -732,7 +732,7 @@ static u64 ice_loopback_test(struct net_device *netdev)
- 	devm_kfree(dev, tx_frame);
- remove_mac_filters:
- 	if (ice_remove_mac(&pf->hw, &tmp_list))
--		netdev_err(netdev, "Could not remove MAC filter for the test VSI");
-+		netdev_err(netdev, "Could not remove MAC filter for the test VSI\n");
- free_mac_list:
- 	ice_free_fltr_list(dev, &tmp_list);
- lbtest_mac_dis:
-@@ -745,7 +745,7 @@ static u64 ice_loopback_test(struct net_device *netdev)
- lbtest_vsi_close:
- 	test_vsi->netdev = NULL;
- 	if (ice_vsi_release(test_vsi))
--		netdev_err(netdev, "Failed to remove the test VSI");
-+		netdev_err(netdev, "Failed to remove the test VSI\n");
- 
- 	return ret;
- }
-@@ -835,7 +835,7 @@ ice_self_test(struct net_device *netdev, struct ethtool_test *eth_test,
- 			int status = ice_open(netdev);
- 
- 			if (status) {
--				dev_err(dev, "Could not open device %s, err %d",
-+				dev_err(dev, "Could not open device %s, err %d\n",
- 					pf->int_name, status);
- 			}
- 		}
+diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
+index ce63017c56c7..56952d89ada8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devids.h
++++ b/drivers/net/ethernet/intel/ice/ice_devids.h
+@@ -11,6 +11,8 @@
+ #define ICE_DEV_ID_E810C_QSFP		0x1592
+ /* Intel(R) Ethernet Controller E810-C for SFP */
+ #define ICE_DEV_ID_E810C_SFP		0x1593
++/* Intel(R) Ethernet Controller E810-XXV for SFP */
++#define ICE_DEV_ID_E810_XXV_SFP		0x159B
+ /* Intel(R) Ethernet Connection E822-C for backplane */
+ #define ICE_DEV_ID_E822C_BACKPLANE	0x1890
+ /* Intel(R) Ethernet Connection E822-C for QSFP */
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index bbc428c4ec07..b695a65b2b3c 100644
+index b695a65b2b3c..017d68b158fc 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1930,8 +1930,7 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
- 	if (if_running && !test_and_set_bit(__ICE_DOWN, vsi->state)) {
- 		ret = ice_down(vsi);
- 		if (ret) {
--			NL_SET_ERR_MSG_MOD(extack,
--					   "Preparing device for XDP attach failed");
-+			NL_SET_ERR_MSG_MOD(extack, "Preparing device for XDP attach failed");
- 			return ret;
- 		}
- 	}
-@@ -1940,13 +1939,11 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
- 		vsi->num_xdp_txq = vsi->alloc_txq;
- 		xdp_ring_err = ice_prepare_xdp_rings(vsi, prog);
- 		if (xdp_ring_err)
--			NL_SET_ERR_MSG_MOD(extack,
--					   "Setting up XDP Tx resources failed");
-+			NL_SET_ERR_MSG_MOD(extack, "Setting up XDP Tx resources failed");
- 	} else if (ice_is_xdp_ena_vsi(vsi) && !prog) {
- 		xdp_ring_err = ice_destroy_xdp_rings(vsi);
- 		if (xdp_ring_err)
--			NL_SET_ERR_MSG_MOD(extack,
--					   "Freeing XDP Tx resources failed");
-+			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Tx resources failed");
- 	} else {
- 		ice_vsi_assign_bpf_prog(vsi, prog);
- 	}
-@@ -1979,8 +1976,7 @@ static int ice_xdp(struct net_device *dev, struct netdev_bpf *xdp)
- 	struct ice_vsi *vsi = np->vsi;
- 
- 	if (vsi->type != ICE_VSI_PF) {
--		NL_SET_ERR_MSG_MOD(xdp->extack,
--				   "XDP can be loaded only on PF VSI");
-+		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF VSI");
- 		return -EINVAL;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index c84ac00a316e..5f9ef7d1d3a8 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1993,7 +1993,7 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 
- 	status = ice_update_vsi(&pf->hw, vf_vsi->idx, ctx, NULL);
- 	if (status) {
--		dev_err(dev, "Failed to %sable spoofchk on VF %d VSI %d\n error %d",
-+		dev_err(dev, "Failed to %sable spoofchk on VF %d VSI %d\n error %d\n",
- 			ena ? "en" : "dis", vf->vf_id, vf_vsi->vsi_num, status);
- 		ret = -EIO;
- 		goto out;
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 3fd31ad73e0e..8279db15e870 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -457,7 +457,7 @@ int ice_xsk_umem_setup(struct ice_vsi *vsi, struct xdp_umem *umem, u16 qid)
- 	if (if_running) {
- 		ret = ice_qp_dis(vsi, qid);
- 		if (ret) {
--			netdev_err(vsi->netdev, "ice_qp_dis error = %d", ret);
-+			netdev_err(vsi->netdev, "ice_qp_dis error = %d\n", ret);
- 			goto xsk_umem_if_up;
- 		}
- 	}
-@@ -471,11 +471,11 @@ int ice_xsk_umem_setup(struct ice_vsi *vsi, struct xdp_umem *umem, u16 qid)
- 		if (!ret && umem_present)
- 			napi_schedule(&vsi->xdp_rings[qid]->q_vector->napi);
- 		else if (ret)
--			netdev_err(vsi->netdev, "ice_qp_ena error = %d", ret);
-+			netdev_err(vsi->netdev, "ice_qp_ena error = %d\n", ret);
- 	}
- 
- 	if (umem_failure) {
--		netdev_err(vsi->netdev, "Could not %sable UMEM, error = %d",
-+		netdev_err(vsi->netdev, "Could not %sable UMEM, error = %d\n",
- 			   umem_present ? "en" : "dis", umem_failure);
- 		return umem_failure;
- 	}
+@@ -3615,6 +3615,7 @@ static const struct pci_device_id ice_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP), 0 },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_SFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP), 0 },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
 -- 
 2.20.1
 
