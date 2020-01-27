@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2331E14AC76
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jan 2020 00:14:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 73DF014AC7A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jan 2020 00:15:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C1F2A840B8;
-	Mon, 27 Jan 2020 23:14:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C67B84B01;
+	Mon, 27 Jan 2020 23:15:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eLvj6Y4_wWsE; Mon, 27 Jan 2020 23:14:25 +0000 (UTC)
+	with ESMTP id JNuxwDKcHeIA; Mon, 27 Jan 2020 23:15:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B3EE835E8;
-	Mon, 27 Jan 2020 23:14:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6FFDD84B08;
+	Mon, 27 Jan 2020 23:15:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E748E1BF34E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:14:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DA8191BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:15:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E353C81E2B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:14:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D211520198
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:15:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v2egLaZpm6TS for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Jan 2020 23:14:21 +0000 (UTC)
+ with ESMTP id q+Rvsq20CS1d for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Jan 2020 23:15:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D49CE84964
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:14:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id DECFD20131
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:15:17 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2020 15:14:21 -0800
+ 27 Jan 2020 15:15:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="246556619"
-Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
- by orsmga002.jf.intel.com with ESMTP; 27 Jan 2020 15:14:21 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 27 Jan 2020 15:14:20 -0800
+X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="221906034"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by orsmga008.jf.intel.com with ESMTP; 27 Jan 2020 15:15:17 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 27 Jan 2020 15:14:55 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 27 Jan 2020 15:14:20 -0800
+ 15.1.1713.5; Mon, 27 Jan 2020 15:14:55 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 27 Jan 2020 15:14:20 -0800
+ Mon, 27 Jan 2020 15:14:55 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S38 06/15] ice: Add support to
- enable/disable all Rx queues before waiting
-Thread-Index: AQHV0X9OopOVJ7P9l0OAr65IMu97Nqf/K/JQ
-Date: Mon, 27 Jan 2020 23:14:20 +0000
-Message-ID: <ed752e9fee864b698e21be3b0a2e66d3@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S38 07/15] ice: Fix implicit queue
+ mapping mode in ice_vsi_get_qs
+Thread-Index: AQHV0X9aAobpge1/9UiLdd5ghFzRDaf/LBsg
+Date: Mon, 27 Jan 2020 23:14:55 +0000
+Message-ID: <484d94228fe84523aa28d2a70a5d111e@intel.com>
 References: <20200122152138.41585-1-anthony.l.nguyen@intel.com>
- <20200122152138.41585-6-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200122152138.41585-6-anthony.l.nguyen@intel.com>
+ <20200122152138.41585-7-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200122152138.41585-7-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmY5OWM4YmUtYjIxYi00ZmZhLWExZWYtY2VhODA2NDQ3NzczIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUFl1VjYrQVVcL1FTOThFS00xMGdrd2xvS0dEcVFwcHd2ZEw5VTVkcFFlMHlcL1M0Wk1idjN3TVZTZjNGQUZPMXBzIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZjY1NzRlMWItNjFlNC00YmY3LTllZTctOWFjZGQzNmI0ZjdhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiU09YOEJybXJUVU5jZmpsWFJmZmx6UkVueHE3RHpcLzRVNVNsWUZVMkpqYlVGUStyb2J1VVBnWkZJTU9Qb2lldncifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S38 06/15] ice: Add support to
- enable/disable all Rx queues before waiting
+Subject: Re: [Intel-wired-lan] [PATCH S38 07/15] ice: Fix implicit queue
+ mapping mode in ice_vsi_get_qs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,46 +93,30 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
 > Behalf Of Tony Nguyen
-> Sent: Wednesday, January 22, 2020 7:21 AM
+> Sent: Wednesday, January 22, 2020 7:22 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S38 06/15] ice: Add support to
-> enable/disable all Rx queues before waiting
+> Subject: [Intel-wired-lan] [PATCH S38 07/15] ice: Fix implicit queue mapping
+> mode in ice_vsi_get_qs
 > 
 > From: Brett Creeley <brett.creeley@intel.com>
 > 
-> Currently when we enable/disable all Rx queues we do the following
-> sequence for each Rx queue and then move to the next queue.
+> Currently in ice_vsi_get_qs() we set the mapping_mode for Tx and Rx to
+> vsi->[tx|rx]_mapping_mode, but the problem is vsi-
+> >[tx|rx]_mapping_mode
+> have not been set yet. This was working because ICE_VSI_MAP_CONTIG is
+> defined to 0. Fix this by being explicit with our mapping mode by initializing
+> the Tx and Rx structure's mapping_mode to ICE_VSI_MAP_CONTIG and then
+> setting the vsi->[tx|rx]_mapping_mode to the
+> [tx|rx]_qs_cfg.mapping_mode values.
 > 
-> 1. Enable/Disable the Rx queue via register write.
-> 2. Read the configuration register to determine if the Rx queue was
-> enabled/disabled successfully.
-> 
-> In some cases enabling/disabling queue 0 fails because of step 2 above.
-> Fix this by doing step 1 for all of the Rx queues and then step 2 for all of the
-> Rx queues.
-> 
-> Also, there are cases where we enable/disable a single queue (i.e.
-> SR-IOV and XDP) so add a new function that does step 1 and 2 above with a
-> read flush in between.
-> 
-> This change also required a single Rx queue to be enabled/disabled with and
-> without waiting for the change to propagate through hardware. Fix this by
-> adding a boolean wait flag to the necessary functions.
-> 
-> Also, add the keywords "one" and "all" to distinguish between
-> enabling/disabling a single Rx queue and all Rx queues respectively.
+> Also, only assign the vsi->[tx|rx]_mapping_mode when the queues are
+> successfully mapped to the VSI. With this change there was no longer a need
+> to initialize the ret variable to 0 so remove that.
 > 
 > Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_base.c     | 42 ++++++++++++++-----
->  drivers/net/ethernet/intel/ice/ice_base.h     |  4 +-
->  drivers/net/ethernet/intel/ice/ice_ethtool.c  |  4 +-
->  drivers/net/ethernet/intel/ice/ice_lib.c      | 32 +++++++++-----
->  drivers/net/ethernet/intel/ice/ice_lib.h      |  4 +-
->  drivers/net/ethernet/intel/ice/ice_main.c     |  4 +-
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  7 ++--
->  drivers/net/ethernet/intel/ice/ice_xsk.c      |  4 +-
->  8 files changed, 67 insertions(+), 34 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_lib.c | 21 ++++++++++++---------
+>  1 file changed, 12 insertions(+), 9 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
