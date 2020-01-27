@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B8D114AC64
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jan 2020 00:04:48 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0223414AC74
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jan 2020 00:13:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F036E20358;
-	Mon, 27 Jan 2020 23:04:46 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B5A4984B1C;
+	Mon, 27 Jan 2020 23:13:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BgrYYRDiaMGW; Mon, 27 Jan 2020 23:04:46 +0000 (UTC)
+	with ESMTP id pRZG8J2_Esa7; Mon, 27 Jan 2020 23:13:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CC5B3204AD;
-	Mon, 27 Jan 2020 23:04:45 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9403184B08;
+	Mon, 27 Jan 2020 23:13:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C82371BF34E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:04:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 92FF51BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:13:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C3CA420358
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:04:43 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8CC2720131
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:13:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W5USSAgtXtZS for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Jan 2020 23:04:42 +0000 (UTC)
+ with ESMTP id gMYaiscjxuqg for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Jan 2020 23:13:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id D095A20343
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:04:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id BC7B920104
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:13:29 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2020 15:04:42 -0800
+ 27 Jan 2020 15:13:29 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="429161020"
+X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="246556433"
 Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
- by fmsmga006.fm.intel.com with ESMTP; 27 Jan 2020 15:04:42 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ by orsmga002.jf.intel.com with ESMTP; 27 Jan 2020 15:13:29 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
  fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 27 Jan 2020 15:04:42 -0800
+ id 14.3.439.0; Mon, 27 Jan 2020 15:13:28 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 27 Jan 2020 15:04:41 -0800
+ 15.1.1713.5; Mon, 27 Jan 2020 15:13:28 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 27 Jan 2020 15:04:41 -0800
+ Mon, 27 Jan 2020 15:13:28 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S38 04/15] ice: Fix Port VLAN priority
- bits
-Thread-Index: AQHV0X9LCx8JBucgjUy+yutPSOxqOaf/KS4g
-Date: Mon, 27 Jan 2020 23:04:41 +0000
-Message-ID: <1a75ae083a4347fca9ea0c3f11862b2d@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S38 05/15] ice: Only allow tagged
+ bcast/mcast traffic for VF in port VLAN
+Thread-Index: AQHV0X9cnm0BPhdgfUeqiWLhiFHsaaf/K7Tw
+Date: Mon, 27 Jan 2020 23:13:28 +0000
+Message-ID: <0358cd1357e449649fd31002b76438d9@intel.com>
 References: <20200122152138.41585-1-anthony.l.nguyen@intel.com>
- <20200122152138.41585-4-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200122152138.41585-4-anthony.l.nguyen@intel.com>
+ <20200122152138.41585-5-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200122152138.41585-5-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOTQzNmZlN2YtYjYwZi00OTI1LTliMzYtMzhiYjE1Y2YyM2FmIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiT3pcL0tObkNadEhMYzloSStvSDVobWJCaUFJWlBYNjY0eG5adGNvMG9GcTRwTis1blJrVnhqM25EcjluNlwvTFRTIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZWFjYTY0ODUtYzU5OC00Mzg2LTlmZWQtZTYzMTgyNDNmZGVjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoibmNjcnMxZ0J3MmhGMFRYOFZBTGY2TGhzVlpzR0I1UjZsZlBBb2pcL2xMSitqQVk5WmUxbGhBYzFSczdTR0JKVU0ifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S38 04/15] ice: Fix Port VLAN priority
- bits
+Subject: Re: [Intel-wired-lan] [PATCH S38 05/15] ice: Only allow tagged
+ bcast/mcast traffic for VF in port VLAN
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,27 +95,34 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Wednesday, January 22, 2020 7:21 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S38 04/15] ice: Fix Port VLAN priority bits
+> Subject: [Intel-wired-lan] [PATCH S38 05/15] ice: Only allow tagged
+> bcast/mcast traffic for VF in port VLAN
 > 
 > From: Brett Creeley <brett.creeley@intel.com>
 > 
-> Currently when configuring a port VLAN for a VF we are only shifting the QoS
-> bits by 12. This is incorrect. Fix this by getting rid of the ICE specific VLAN
-> defines and use the kernel VLAN defines instead.
+> Currently the VF can see other's broadcast and multicast traffic because it
+> always has a VLAN filter for VLAN 0. Fix this by removing/adding the VF's
+> VLAN 0 filter when a port VLAN is added/removed respectively.
 > 
-> Also, don't assign a value to vlanprio until the VLAN ID and QoS parameters
-> have been validated.
+> This required a few changes.
 > 
-> Also, there are many places we do (le16_to_cpu(vsi->info.pvid) &
-> VLAN_VID_MASK). Instead do (vf->port_vlan_info & VLAN_VID_MASK)
-> because we always save what's stored in vsi->info.pvid to vf->port_vlan_info
-> in the CPU's endianness.
+> 1. Move where we add VLAN 0 by default for the VF into
+> ice_alloc_vsi_res() because this is when we determine if a port VLAN is
+> present for load and reset.
+> 
+> 2. Moved where we kill the old port VLAN filter in
+> ice_set_vf_port_vlan() to the very end of the function because it allows us
+> to save the old port VLAN configuration upon any failure case.
+> 
+> 3. During adding/removing of a port VLAN via ice_set_vf_port_vlan() we also
+> need to remove/add the VLAN 0 filter rule respectively.
+> 
+> 4. Improve log messages.
 > 
 > Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > ---
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 27 +++++++++----------
-> .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |  5 ----
->  2 files changed, 13 insertions(+), 19 deletions(-)
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 49 ++++++++++++-------
+>  1 file changed, 31 insertions(+), 18 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
