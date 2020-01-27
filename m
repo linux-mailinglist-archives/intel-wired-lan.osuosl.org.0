@@ -2,54 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 303A014A8F7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Jan 2020 18:32:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3576314ABA5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Jan 2020 22:30:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D721987A0A;
-	Mon, 27 Jan 2020 17:32:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 818C387B48;
+	Mon, 27 Jan 2020 21:30:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id elUpjnt1iFNJ; Mon, 27 Jan 2020 17:32:14 +0000 (UTC)
+	with ESMTP id SCrbxnUcdfXP; Mon, 27 Jan 2020 21:30:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 988A387534;
-	Mon, 27 Jan 2020 17:32:14 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D64F587A6E;
+	Mon, 27 Jan 2020 21:30:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 162141BF977
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:12 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EB13C1BF28C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 21:30:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1303E879A6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E11AB84C1E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 21:30:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E13olUA5df4Y for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Jan 2020 17:32:11 +0000 (UTC)
+ with ESMTP id tSNGX32rdxxh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Jan 2020 21:30:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7BDC7879CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 17:32:11 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EF3F984B75
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 21:29:59 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2020 09:32:10 -0800
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2020 13:29:58 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,370,1574150400"; d="scan'208";a="427350664"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by fmsmga005.fm.intel.com with ESMTP; 27 Jan 2020 09:32:10 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 27 Jan 2020 00:59:27 -0800
-Message-Id: <20200127085927.13999-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200127085927.13999-1-anthony.l.nguyen@intel.com>
-References: <20200127085927.13999-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="231652855"
+Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
+ by orsmga006.jf.intel.com with ESMTP; 27 Jan 2020 13:29:58 -0800
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 27 Jan 2020 13:29:58 -0800
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.147]) by
+ ORSMSX151.amr.corp.intel.com ([169.254.7.99]) with mapi id 14.03.0439.000;
+ Mon, 27 Jan 2020 13:29:58 -0800
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v1] e1000e: Add support to 0x15F5
+ Device Id of Tiger Lake
+Thread-Index: AQHVzrBhpF2OnA10p0O3nyUnw7/bXaf6tGqggAEoh4CAAzXRoA==
+Date: Mon, 27 Jan 2020 21:29:58 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971CD843@ORSMSX103.amr.corp.intel.com>
+References: <20200119100809.38869-1-vitaly.lifshits@intel.com>
+ <309B89C4C689E141A5FF6A0C5FB2118B971CC4E7@ORSMSX103.amr.corp.intel.com>
+ <3b5bb66d-949e-e190-56c1-c067a2f3bb9b@intel.com>
+In-Reply-To: <3b5bb66d-949e-e190-56c1-c067a2f3bb9b@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S39 15/15] ice: fix define for E822
- backplane device
+Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: Add support to 0x15F5
+ Device Id of Tiger Lake
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,62 +86,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bruce Allan <bruce.w.allan@intel.com>
+> From: Lifshits, Vitaly <vitaly.lifshits@intel.com>
+> Sent: Saturday, January 25, 2020 4:22 AM
+> To: Brown, Aaron F <aaron.f.brown@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: Add support to 0x15F5
+> Device Id of Tiger Lake
+> 
+> On 1/25/2020 04:45, Brown, Aaron F wrote:
+> >> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of
+> >> Vitaly Lifshits
+> >> Sent: Sunday, January 19, 2020 2:08 AM
+> >> To: intel-wired-lan@lists.osuosl.org
+> >> Subject: [Intel-wired-lan] [PATCH v1] e1000e: Add support to 0x15F5
+> Device
+> >> Id of Tiger Lake
+> >>
+> >> Added support to 0x15F5 Device ID which is part of Intel Tiger Lake
+> >> Platforms. This patch follows commit:
+> >> 776f5d57ee ("e1000e: Add support for Tiger Lake").
+> >>
+> >> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> >> ---
+> >>   drivers/net/ethernet/intel/e1000e/hw.h     | 1 +
+> >>   drivers/net/ethernet/intel/e1000e/netdev.c | 1 +
+> >>   2 files changed, 2 insertions(+)
 
-This product's name has changed; update the macro identifier accordingly.
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_devids.h | 4 ++--
- drivers/net/ethernet/intel/ice/ice_main.c   | 2 +-
- drivers/net/ethernet/intel/ice/ice_nvm.c    | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+> >>  <snip>
+> >
+> > Something seems to be missing.  After building and booting to the kernel
+> with this patch included I do not see the 15f5 device from modinfo:
+> > u1519:[1]/usr/src/kernels/next-queue> modinfo igc|grep -i 15f5
+> > u1519:[1]/usr/src/kernels/next-queue>
+> >
+> 
+> If I understand your test correctly, I think you should run:
+>  > modinfo e1000e | grep -i 15f5
+> 
+> Since the patch is to e1000e module and not igc.
+Yes of course, thanks.  End of a long week ://)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
-index 6fccb66ff43c..9d8194671f6a 100644
---- a/drivers/net/ethernet/intel/ice/ice_devids.h
-+++ b/drivers/net/ethernet/intel/ice/ice_devids.h
-@@ -43,8 +43,8 @@
- #define ICE_DEV_ID_E822C_10G_BASE_T	0x1893
- /* Intel(R) Ethernet Connection E822-C 1GbE */
- #define ICE_DEV_ID_E822C_SGMII		0x1894
--/* Intel(R) Ethernet Connection E822-X for backplane */
--#define ICE_DEV_ID_E822X_BACKPLANE	0x1897
-+/* Intel(R) Ethernet Connection E822-L for backplane */
-+#define ICE_DEV_ID_E822L_BACKPLANE	0x1897
- /* Intel(R) Ethernet Connection E822-L for SFP */
- #define ICE_DEV_ID_E822L_SFP		0x1898
- /* Intel(R) Ethernet Connection E822-L/X557-AT 10GBASE-T */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 5f23806669e2..b25ac179c8b8 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3626,7 +3626,7 @@ static const struct pci_device_id ice_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822X_BACKPLANE), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_BACKPLANE), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII), 0 },
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 75cd4cbb473b..f6e25db22c23 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -301,7 +301,7 @@ enum ice_status ice_init_nvm(struct ice_hw *hw)
- 	case ICE_DEV_ID_E822C_10G_BASE_T:
- 	case ICE_DEV_ID_E822C_SGMII:
- 	case ICE_DEV_ID_E822C_SFP:
--	case ICE_DEV_ID_E822X_BACKPLANE:
-+	case ICE_DEV_ID_E822L_BACKPLANE:
- 	case ICE_DEV_ID_E822L_SFP:
- 	case ICE_DEV_ID_E822L_10G_BASE_T:
- 	case ICE_DEV_ID_E822L_SGMII:
--- 
-2.20.1
-
+u1459:[1]/usr/src/kernels/next-queue> modinfo e1000e | grep -i 15f5
+alias:          pci:v00008086d000015F5sv*sd*bc*sc*i*
+u1459:[1]/usr/src/kernels/next-queue>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
