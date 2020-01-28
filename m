@@ -1,78 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F8E014AC91
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jan 2020 00:20:30 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 360D914ACE4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jan 2020 01:02:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE57884B08;
-	Mon, 27 Jan 2020 23:20:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DC90D87A1D;
+	Tue, 28 Jan 2020 00:02:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uk_T4RtrMvJX; Mon, 27 Jan 2020 23:20:28 +0000 (UTC)
+	with ESMTP id W+d3wzsREd-p; Tue, 28 Jan 2020 00:02:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 532C484B1C;
-	Mon, 27 Jan 2020 23:20:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1E9F4879A6;
+	Tue, 28 Jan 2020 00:02:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F289C1BF34E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:20:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 700551BF980
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jan 2020 00:02:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D607B20131
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:20:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6479620343
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jan 2020 00:02:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YQXeEbAdhifc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Jan 2020 23:20:25 +0000 (UTC)
+ with ESMTP id pR99E5Iva-GD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Jan 2020 00:02:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 6D09120104
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2020 23:20:25 +0000 (UTC)
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6E79620334
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jan 2020 00:02:43 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2020 15:20:25 -0800
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2020 16:02:42 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="246557884"
-Received: from fmsmsx104.amr.corp.intel.com ([10.18.124.202])
- by orsmga002.jf.intel.com with ESMTP; 27 Jan 2020 15:20:24 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx104.amr.corp.intel.com (10.18.124.202) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 27 Jan 2020 15:20:24 -0800
+X-IronPort-AV: E=Sophos;i="5.70,371,1574150400"; d="scan'208";a="222628484"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga007.fm.intel.com with ESMTP; 27 Jan 2020 16:02:42 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 27 Jan 2020 16:02:42 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 27 Jan 2020 15:20:23 -0800
+ 15.1.1713.5; Mon, 27 Jan 2020 16:02:41 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 27 Jan 2020 15:20:23 -0800
+ Mon, 27 Jan 2020 16:02:41 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S38 15/15] ice: use true/false for bool
- types
-Thread-Index: AQHV0X9aLCx/UTyQJ0CqCt8GU7kKu6f/LaSQ
-Date: Mon, 27 Jan 2020 23:20:23 +0000
-Message-ID: <b71ba7e8434d47e98b74b94d44561f1a@intel.com>
-References: <20200122152138.41585-1-anthony.l.nguyen@intel.com>
- <20200122152138.41585-15-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200122152138.41585-15-anthony.l.nguyen@intel.com>
+Thread-Topic: [Intel-wired-lan] [next-queue v6] virtual-bus: Implementation of
+ Virtual Bus
+Thread-Index: AQHV0UtIgUliyYqMl0Sg17URwK+Zj6f/OcXg
+Date: Tue, 28 Jan 2020 00:02:41 +0000
+Message-ID: <524f74a3cac1446cbe29f4b34cd0dbfd@intel.com>
+References: <20200122174152.5962-1-jeffrey.t.kirsher@intel.com>
+In-Reply-To: <20200122174152.5962-1-jeffrey.t.kirsher@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZWJmNzBiMTctMGUzOC00NGU2LTkxZWItMTQxMmE3NTRjYWFkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoib3VyVEhJem9uMEZZQjByZTNtWUl0SU1VUU9UNENSZVNmelQ3Y0dGWE1VZ2xmcVhEeGZpXC9YU0FzM3JYdkoyMCsifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNzZjYWU3MTktZTczYy00MzA2LWJiY2MtMDRhZGI5MGUzMTBkIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiYUh5Ujh4U3hueUFZYlo2akNreFUwQ043TnpKMzFjRG9RWTRXNE1KWG5zNXBQUEMwMWdtSytRMWV5QkpONER6ZCJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S38 15/15] ice: use true/false for
- bool types
+Subject: Re: [Intel-wired-lan] [next-queue v6] virtual-bus: Implementation
+ of Virtual Bus
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,19 +91,42 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Tony Nguyen
-> Sent: Wednesday, January 22, 2020 7:22 AM
+> Behalf Of Jeff Kirsher
+> Sent: Wednesday, January 22, 2020 9:42 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S38 15/15] ice: use true/false for bool types
+> Subject: [Intel-wired-lan] [next-queue v6] virtual-bus: Implementation of
+> Virtual Bus
 > 
-> From: Bruce Allan <bruce.w.allan@intel.com>
+> From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> Subject says it all.
+> This is the initial implementation of the Virtual Bus, virtbus_device and
+> virtbus_driver.  The virtual bus is a software based bus intended to support
+> registering virtbus_devices and virtbus_drivers and provide matching
+> between them and probing of the registered drivers.
 > 
-> Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+> The bus will support probe/remove shutdown and suspend/resume
+> callbacks.
+> 
+> Kconfig and Makefile alterations are included
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> Signed-off-by: Kiran Patil <kiran.patil@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_xsk.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> v6: Fix the order of put_device() and device_del() in
+>     virtbus_dev_unregister()
+> 
+>  Documentation/driver-api/virtual_bus.rst |  59 +++++
+>  drivers/bus/Kconfig                      |  11 +
+>  drivers/bus/Makefile                     |   1 +
+>  drivers/bus/virtual_bus.c                | 267 +++++++++++++++++++++++
+>  include/linux/mod_devicetable.h          |   8 +
+>  include/linux/virtual_bus.h              |  57 +++++
+>  scripts/mod/devicetable-offsets.c        |   3 +
+>  scripts/mod/file2alias.c                 |   8 +
+>  8 files changed, 414 insertions(+)
+>  create mode 100644 Documentation/driver-api/virtual_bus.rst
+>  create mode 100644 drivers/bus/virtual_bus.c  create mode 100644
+> include/linux/virtual_bus.h
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
