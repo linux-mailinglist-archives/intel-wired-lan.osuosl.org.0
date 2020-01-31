@@ -1,54 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AF2F14F45E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2020 23:12:18 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 14BA614F44C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2020 23:11:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A839C878B0;
-	Fri, 31 Jan 2020 22:12:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7CEE986B46;
+	Fri, 31 Jan 2020 22:11:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zRV8grCS52B6; Fri, 31 Jan 2020 22:12:13 +0000 (UTC)
+	with ESMTP id dnG1ouhdjamp; Fri, 31 Jan 2020 22:11:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 71D98878D6;
-	Fri, 31 Jan 2020 22:12:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 339E986B47;
+	Fri, 31 Jan 2020 22:11:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 72B491BF37B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 961141BF37B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:11:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 68A81228D5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:08 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 908032045C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:11:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jfp2UQRtfW4G for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Jan 2020 22:12:06 +0000 (UTC)
+ with ESMTP id NqfU4Jo9KrNB for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Jan 2020 22:11:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id B7EAA20466
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:05 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 47AA320468
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:11:13 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jan 2020 14:12:04 -0800
+ 31 Jan 2020 14:11:12 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,387,1574150400"; d="scan'208";a="310126644"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga001.jf.intel.com with ESMTP; 31 Jan 2020 14:12:03 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 31 Jan 2020 05:39:05 -0800
-Message-Id: <20200131133905.42518-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
-References: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,387,1574150400"; d="scan'208";a="253463405"
+Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
+ by fmsmga004.fm.intel.com with ESMTP; 31 Jan 2020 14:11:11 -0800
+Received: from orsmsx158.amr.corp.intel.com (10.22.240.20) by
+ ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 31 Jan 2020 14:11:10 -0800
+Received: from orsmsx116.amr.corp.intel.com ([169.254.7.209]) by
+ ORSMSX158.amr.corp.intel.com ([169.254.10.113]) with mapi id 14.03.0439.000;
+ Fri, 31 Jan 2020 14:11:10 -0800
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: Julia Lawall <julia.lawall@inria.fr>, "Ertman, David M"
+ <david.m.ertman@intel.com>
+Thread-Topic: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 23/68]
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c:866:2-8: preceding lock on line
+ 823 (fwd)
+Thread-Index: AQHV2IB3ViszSLcAuki7MXYtvFMJvqgFVWqQ
+Date: Fri, 31 Jan 2020 22:11:10 +0000
+Message-ID: <4C5EDC162D52824D9E7FB1446983F3EED7D3EF01@ORSMSX116.amr.corp.intel.com>
+References: <alpine.DEB.2.21.2001311538500.2236@hadrien>
+In-Reply-To: <alpine.DEB.2.21.2001311538500.2236@hadrien>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYmMyMTZhNDQtNTQzMC00OTc0LThjNTYtZjQ3MTRjYzgzMDM4IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoicVF2Wm93clQxNGYwb3IyUmZWcllXaXhSZk5nQTIzZWpIZUtxRExGVjVVMG50eXc3NmVOSll6ajJJTTlOaTFmWCJ9
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S37 v2 15/15] ice: Trivial fixes
+Subject: Re: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 23/68]
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c:866:2-8: preceding lock on
+ line 823 (fwd)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,274 +83,243 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ "kbuild-all@lists.01.org" <kbuild-all@lists.01.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a collection of trivial fixes including fixing whitespace, typos,
-function headers, reverse Christmas tree, etc.
 
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
-v2:
-- Another whitespace fix
----
- drivers/net/ethernet/intel/ice/ice_adminq_cmd.h  |  1 +
- drivers/net/ethernet/intel/ice/ice_common.c      |  4 ++--
- drivers/net/ethernet/intel/ice/ice_dcb.c         |  8 ++++----
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c     |  4 ++--
- drivers/net/ethernet/intel/ice/ice_ethtool.c     | 10 +++++-----
- drivers/net/ethernet/intel/ice/ice_lib.c         |  7 ++++---
- drivers/net/ethernet/intel/ice/ice_main.c        |  4 +++-
- drivers/net/ethernet/intel/ice/ice_txrx.c        |  9 ++++-----
- drivers/net/ethernet/intel/ice/ice_txrx.h        |  4 ++--
- drivers/net/ethernet/intel/ice/ice_type.h        |  2 +-
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  3 +--
- 11 files changed, 29 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 2722789fa703..210113eade20 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1691,6 +1691,7 @@ struct ice_aqc_get_pkg_info_resp {
- 	__le32 count;
- 	struct ice_aqc_get_pkg_info pkg_info[1];
- };
-+
- /**
-  * struct ice_aq_desc - Admin Queue (AQ) descriptor
-  * @flags: ICE_AQ_FLAG_* flags
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 8931c6a3e3f6..e7e528631757 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -588,10 +588,10 @@ void ice_output_fw_log(struct ice_hw *hw, struct ice_aq_desc *desc, void *buf)
- }
- 
- /**
-- * ice_get_itr_intrl_gran - determine int/intrl granularity
-+ * ice_get_itr_intrl_gran
-  * @hw: pointer to the HW struct
-  *
-- * Determines the ITR/intrl granularities based on the maximum aggregate
-+ * Determines the ITR/INTRL granularities based on the maximum aggregate
-  * bandwidth according to the device's configuration during power-on.
-  */
- static void ice_get_itr_intrl_gran(struct ice_hw *hw)
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb.c b/drivers/net/ethernet/intel/ice/ice_dcb.c
-index 713e8a892e14..adb8dab765c8 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb.c
-@@ -1323,13 +1323,13 @@ enum ice_status ice_set_dcb_cfg(struct ice_port_info *pi)
- }
- 
- /**
-- * ice_aq_query_port_ets - query port ets configuration
-+ * ice_aq_query_port_ets - query port ETS configuration
-  * @pi: port information structure
-  * @buf: pointer to buffer
-  * @buf_size: buffer size in bytes
-  * @cd: pointer to command details structure or NULL
-  *
-- * query current port ets configuration
-+ * query current port ETS configuration
-  */
- static enum ice_status
- ice_aq_query_port_ets(struct ice_port_info *pi,
-@@ -1416,13 +1416,13 @@ ice_update_port_tc_tree_cfg(struct ice_port_info *pi,
- }
- 
- /**
-- * ice_query_port_ets - query port ets configuration
-+ * ice_query_port_ets - query port ETS configuration
-  * @pi: port information structure
-  * @buf: pointer to buffer
-  * @buf_size: buffer size in bytes
-  * @cd: pointer to command details structure or NULL
-  *
-- * query current port ets configuration and update the
-+ * query current port ETS configuration and update the
-  * SW DB with the TC changes
-  */
- enum ice_status
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 545f1d8eaa7b..fe3a39cdab2f 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -436,9 +436,9 @@ static int ice_dcb_init_cfg(struct ice_pf *pf, bool locked)
- }
- 
- /**
-- * ice_dcb_sw_default_config - Apply a default DCB config
-+ * ice_dcb_sw_dflt_cfg - Apply a default DCB config
-  * @pf: PF to apply config to
-- * @ets_willing: configure ets willing
-+ * @ets_willing: configure ETS willing
-  * @locked: was this function called with RTNL held
-  */
- static int ice_dcb_sw_dflt_cfg(struct ice_pf *pf, bool ets_willing, bool locked)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 4b29d1ae56a7..c0f58e08890e 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3800,11 +3800,11 @@ ice_get_module_eeprom(struct net_device *netdev,
- static const struct ethtool_ops ice_ethtool_ops = {
- 	.get_link_ksettings	= ice_get_link_ksettings,
- 	.set_link_ksettings	= ice_set_link_ksettings,
--	.get_drvinfo            = ice_get_drvinfo,
--	.get_regs_len           = ice_get_regs_len,
--	.get_regs               = ice_get_regs,
--	.get_msglevel           = ice_get_msglevel,
--	.set_msglevel           = ice_set_msglevel,
-+	.get_drvinfo		= ice_get_drvinfo,
-+	.get_regs_len		= ice_get_regs_len,
-+	.get_regs		= ice_get_regs,
-+	.get_msglevel		= ice_get_msglevel,
-+	.set_msglevel		= ice_set_msglevel,
- 	.self_test		= ice_self_test,
- 	.get_link		= ethtool_op_get_link,
- 	.get_eeprom_len		= ice_get_eeprom_len,
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 7d546c75dcc6..3c9353d7b0ed 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1241,8 +1241,9 @@ static void ice_vsi_set_rss_flow_fld(struct ice_vsi *vsi)
-  *
-  * Returns 0 on success or ENOMEM on failure.
-  */
--int ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
--			const u8 *macaddr)
-+int
-+ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
-+		    const u8 *macaddr)
- {
- 	struct ice_fltr_list_entry *tmp;
- 	struct ice_pf *pf = vsi->back;
-@@ -2874,8 +2875,8 @@ static void ice_vsi_update_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctx)
- int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- {
- 	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] = { 0 };
--	struct ice_vsi_ctx *ctx;
- 	struct ice_pf *pf = vsi->back;
-+	struct ice_vsi_ctx *ctx;
- 	enum ice_status status;
- 	struct device *dev;
- 	int i, ret = 0;
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 2297a5a5c572..1bf6d21c38e4 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3179,7 +3179,9 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	struct ice_hw *hw;
- 	int err;
- 
--	/* this driver uses devres, see Documentation/driver-api/driver-model/devres.rst */
-+	/* this driver uses devres, see
-+	 * Documentation/driver-api/driver-model/devres.rst
-+	 */
- 	err = pcim_enable_device(pdev);
- 	if (err)
- 		return err;
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 1d4755acca3d..4de61dbedd36 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -644,7 +644,7 @@ static bool ice_page_is_reserved(struct page *page)
-  * Update the offset within page so that Rx buf will be ready to be reused.
-  * For systems with PAGE_SIZE < 8192 this function will flip the page offset
-  * so the second half of page assigned to Rx buffer will be used, otherwise
-- * the offset is moved by the @size bytes
-+ * the offset is moved by "size" bytes
-  */
- static void
- ice_rx_buf_adjust_pg_offset(struct ice_rx_buf *rx_buf, unsigned int size)
-@@ -1619,11 +1619,11 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
- {
- 	u64 td_offset, td_tag, td_cmd;
- 	u16 i = tx_ring->next_to_use;
--	skb_frag_t *frag;
- 	unsigned int data_len, size;
- 	struct ice_tx_desc *tx_desc;
- 	struct ice_tx_buf *tx_buf;
- 	struct sk_buff *skb;
-+	skb_frag_t *frag;
- 	dma_addr_t dma;
- 
- 	td_tag = off->td_l2tag1;
-@@ -1736,9 +1736,8 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
- 	ice_maybe_stop_tx(tx_ring, DESC_NEEDED);
- 
- 	/* notify HW of packet */
--	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more()) {
-+	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more())
- 		writel(i, tx_ring->tail);
--	}
- 
- 	return;
- 
-@@ -2076,7 +2075,7 @@ static bool __ice_chk_linearize(struct sk_buff *skb)
- 	frag = &skb_shinfo(skb)->frags[0];
- 
- 	/* Initialize size to the negative value of gso_size minus 1. We
--	 * use this as the worst case scenerio in which the frag ahead
-+	 * use this as the worst case scenario in which the frag ahead
- 	 * of us only provides one byte which is why we are limited to 6
- 	 * descriptors for a single transmit as the header and previous
- 	 * fragment are already consuming 2 descriptors.
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index a86270696df1..14a1bf445889 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -33,8 +33,8 @@
-  * frame.
-  *
-  * Note: For cache line sizes 256 or larger this value is going to end
-- *       up negative.  In these cases we should fall back to the legacy
-- *       receive path.
-+ *	 up negative.  In these cases we should fall back to the legacy
-+ *	 receive path.
-  */
- #if (PAGE_SIZE < 8192)
- #define ICE_2K_TOO_SMALL_WITH_PADDING \
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 5224b066730a..bf67f6df5333 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -521,7 +521,7 @@ struct ice_hw {
- 	struct ice_fw_log_cfg fw_log;
- 
- /* Device max aggregate bandwidths corresponding to the GL_PWR_MODE_CTL
-- * register. Used for determining the ITR/intrl granularity during
-+ * register. Used for determining the ITR/INTRL granularity during
-  * initialization.
-  */
- #define ICE_MAX_AGG_BW_200G	0x0
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 6d78bcdd162d..1874bfa65796 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1093,7 +1093,6 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
- 	 * finished resetting.
- 	 */
- 	for (i = 0, v = 0; i < 10 && v < pf->num_alloc_vfs; i++) {
--
- 		/* Check each VF in sequence */
- 		while (v < pf->num_alloc_vfs) {
- 			u32 reg;
-@@ -2612,8 +2611,8 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
- 	struct ice_pf *pf = vf->pf;
- 	u16 max_allowed_vf_queues;
- 	u16 tx_rx_queue_left;
--	u16 cur_queues;
- 	struct device *dev;
-+	u16 cur_queues;
- 
- 	dev = ice_pf_to_dev(pf);
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
--- 
-2.20.1
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Julia
+> Lawall
+> Sent: Friday, January 31, 2020 6:40 AM
+> To: Ertman, David M <david.m.ertman@intel.com>
+> Cc: kbuild-all@lists.01.org; Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+> Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 23/68]
+> drivers/net/ethernet/intel/ice/ice_dcb_lib.c:866:2-8: preceding lock on line 823
+> (fwd)
+> 
+> It looks like an unlock may be needed on line 866.
+> 
+> Julia
 
+Hi Julia,
+
+I saw that recently as well and have a v2 for that patch going out shortly.
+
+Thanks,
+Tony
+
+> 
+> ---------- Forwarded message ----------
+> Date: Fri, 31 Jan 2020 03:37:17 +0800
+> From: kbuild test robot <lkp@intel.com>
+> To: kbuild@lists.01.org
+> Cc: Julia Lawall <julia.lawall@lip6.fr>
+> Subject: [jkirsher-next-queue:dev-queue 23/68]
+>     drivers/net/ethernet/intel/ice/ice_dcb_lib.c:866:2-8: preceding lock on line
+>      823
+> 
+> CC: kbuild-all@lists.01.org
+> CC: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+> TO: Dave Ertman <david.m.ertman@intel.com>
+> CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+> 
+> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git
+> dev-queue
+> head:   c48a1f5522f05b3654059aee22adb40107d10670
+> commit: 5eed7bb45be7c777685502ffc993d102d10c3379 [23/68] ice: Fix DCB
+> rebuild after reset
+> :::::: branch date: 24 hours ago
+> :::::: commit date: 24 hours ago
+> 
+> If you fix the issue, kindly add following tag
+> Reported-by: kbuild test robot <lkp@intel.com>
+> Reported-by: Julia Lawall <julia.lawall@lip6.fr>
+> 
+> >> drivers/net/ethernet/intel/ice/ice_dcb_lib.c:866:2-8: preceding lock
+> >> on line 823
+> 
+> # https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-
+> queue.git/commit/?id=5eed7bb45be7c777685502ffc993d102d10c3379
+> git remote add jkirsher-next-queue
+> https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git
+> git remote update jkirsher-next-queue
+> git checkout 5eed7bb45be7c777685502ffc993d102d10c3379
+> vim +866 drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+> 
+> 7516010ac2db5c Dave Ertman            2020-01-29  771
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  772  /**
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  773   *
+> ice_dcb_process_lldp_set_mib_change - Process MIB change
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  774   * @pf: ptr to ice_pf
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  775   * @event: pointer
+> to the admin queue receive event
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  776   */
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  777  void
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  778
+> ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  779
+> 		    struct ice_rq_event_info *event)
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  780  {
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  781  	struct
+> ice_aqc_port_ets_elem buf = { 0 };
+> 4015d11e4b9720 Brett Creeley          2019-11-08  782  	struct device *dev =
+> ice_pf_to_dev(pf);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  783  	struct
+> ice_aqc_lldp_get_mib *mib;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  784  	struct ice_dcbx_cfg
+> tmp_dcbx_cfg;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  785  	bool need_reconfig =
+> false;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  786  	struct ice_port_info
+> *pi;
+> 9d614b6425f844 Anirudh Venkataramanan 2019-11-06  787  	struct ice_vsi
+> *pf_vsi;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  788  	u8 type;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  789  	int ret;
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  790
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  791  	/* Not DCB capable or
+> capability disabled */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  792  	if
+> (!(test_bit(ICE_FLAG_DCB_CAPABLE, pf->flags)))
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  793
+> 	return;
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  794
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  795  	if (pf->dcbx_cap &
+> DCB_CAP_DCBX_HOST) {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  796  		dev_dbg(dev,
+> "MIB Change Event in HOST mode\n");
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  797  		return;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  798  	}
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  799
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  800  	pi = pf->hw.port_info;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  801  	mib = (struct
+> ice_aqc_lldp_get_mib *)&event->desc.params.raw;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  802  	/* Ignore if event is
+> not for Nearest Bridge */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  803  	type = ((mib->type >>
+> ICE_AQ_LLDP_BRID_TYPE_S) &
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  804
+> 	ICE_AQ_LLDP_BRID_TYPE_M);
+> 4015d11e4b9720 Brett Creeley          2019-11-08  805  	dev_dbg(dev, "LLDP
+> event MIB bridge type 0x%x\n", type);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  806  	if (type !=
+> ICE_AQ_LLDP_BRID_TYPE_NEAREST_BRID)
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  807  		return;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  808
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  809  	/* Check MIB Type and
+> return if event for Remote MIB update */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  810  	type = mib->type &
+> ICE_AQ_LLDP_MIB_TYPE_M;
+> 4015d11e4b9720 Brett Creeley          2019-11-08  811  	dev_dbg(dev, "LLDP
+> event mib type %s\n", type ? "remote" : "local");
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  812  	if (type ==
+> ICE_AQ_LLDP_MIB_REMOTE) {
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  813  		/* Update the
+> remote cached instance and return */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  814  		ret =
+> ice_aq_get_dcb_cfg(pi->hw, ICE_AQ_LLDP_MIB_REMOTE,
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  815
+> 		 ICE_AQ_LLDP_BRID_TYPE_NEAREST_BRID,
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  816
+> 		 &pi->remote_dcbx_cfg);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  817  		if (ret) {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  818
+> 	dev_err(dev, "Failed to get remote DCB config\n");
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  819
+> 	return;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  820  		}
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  821  	}
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  822
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29 @823  	mutex_lock(&pf-
+> >tc_mutex);
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29  824
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  825  	/* store the old
+> configuration */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  826  	tmp_dcbx_cfg = pf-
+> >hw.port_info->local_dcbx_cfg;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  827
+> 2f2da36ebf42ef Anirudh Venkataramanan 2019-04-16  828  	/* Reset the
+> old DCBX configuration data */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  829  	memset(&pi-
+> >local_dcbx_cfg, 0, sizeof(pi->local_dcbx_cfg));
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  830
+> 2f2da36ebf42ef Anirudh Venkataramanan 2019-04-16  831  	/* Get
+> updated DCBX data from firmware */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  832  	ret =
+> ice_get_dcb_cfg(pf->hw.port_info);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  833  	if (ret) {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  834  		dev_err(dev,
+> "Failed to get DCB config\n");
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29  835
+> 	mutex_unlock(&pf->tc_mutex);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  836  		return;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  837  	}
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  838
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  839  	/* No change detected
+> in DCBX configs */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  840  	if
+> (!memcmp(&tmp_dcbx_cfg, &pi->local_dcbx_cfg, sizeof(tmp_dcbx_cfg))) {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  841  		dev_dbg(dev,
+> "No change detected in DCBX configuration.\n");
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29  842
+> 	mutex_unlock(&pf->tc_mutex);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  843  		return;
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  844  	}
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  845
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  846  	need_reconfig =
+> ice_dcb_need_recfg(pf, &tmp_dcbx_cfg,
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  847
+> 		   &pi->local_dcbx_cfg);
+> b94b013eb62695 Dave Ertman            2019-11-06  848
+> 	ice_dcbnl_flush_apps(pf, &tmp_dcbx_cfg, &pi->local_dcbx_cfg);
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29  849  	if (!need_reconfig) {
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29  850
+> 	mutex_unlock(&pf->tc_mutex);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  851  		return;
+> 5eed7bb45be7c7 Dave Ertman            2020-01-29  852  	}
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  853
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  854  	/* Enable DCB tagging
+> only when more than one TC */
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  855  	if
+> (ice_dcb_get_num_tc(&pi->local_dcbx_cfg) > 1) {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  856  		dev_dbg(dev,
+> "DCB tagging enabled (num TC > 1)\n");
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  857
+> 	set_bit(ICE_FLAG_DCB_ENA, pf->flags);
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  858  	} else {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  859  		dev_dbg(dev,
+> "DCB tagging disabled (num TC = 1)\n");
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  860
+> 	clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
+> 00cc3f1b3a3011 Anirudh Venkataramanan 2019-02-28  861  	}
+> a17a5ff6812c26 Usha Ketineni          2019-04-16  862
+> 9d614b6425f844 Anirudh Venkataramanan 2019-11-06  863  	pf_vsi =
+> ice_get_main_vsi(pf);
+> 9d614b6425f844 Anirudh Venkataramanan 2019-11-06  864  	if (!pf_vsi) {
+> 4015d11e4b9720 Brett Creeley          2019-11-08  865  		dev_dbg(dev,
+> "PF VSI doesn't exist\n");
+> 9d614b6425f844 Anirudh Venkataramanan 2019-11-06 @866
+> 	return;
+> 
+> :::::: The code at line 866 was first introduced by commit
+> :::::: 9d614b6425f844a722630d66b9cb7eb531fd706e ice: Use ice_ena_vsi and
+> ice_dis_vsi in DCB configuration flow
+> 
+> :::::: TO: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+> :::::: CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+> 
+> ---
+> 0-DAY kernel test infrastructure                 Open Source Technology Center
+> https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org Intel Corporation
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
