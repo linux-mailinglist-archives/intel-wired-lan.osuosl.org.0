@@ -2,54 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87F6814F455
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2020 23:12:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F62514F456
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2020 23:12:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B71A86B5A;
-	Fri, 31 Jan 2020 22:12:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 500AA86B62;
+	Fri, 31 Jan 2020 22:12:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5WeCTk-9ZxFv; Fri, 31 Jan 2020 22:12:08 +0000 (UTC)
+	with ESMTP id SHAwNDhuqHoM; Fri, 31 Jan 2020 22:12:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9D60586B54;
-	Fri, 31 Jan 2020 22:12:08 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DF86386B45;
+	Fri, 31 Jan 2020 22:12:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AFE911BF9BF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 93E211BF37B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id ACA8E88356
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 90C3188356
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9DAGlKdShRID for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 2NtqPRVq+qmF for <intel-wired-lan@lists.osuosl.org>;
  Fri, 31 Jan 2020 22:12:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5B23888398
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 77EC0883A8
  for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:04 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jan 2020 14:12:03 -0800
+ 31 Jan 2020 14:12:04 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,387,1574150400"; d="scan'208";a="310126634"
+X-IronPort-AV: E=Sophos;i="5.70,387,1574150400"; d="scan'208";a="310126635"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga001.jf.intel.com with ESMTP; 31 Jan 2020 14:12:02 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 31 Jan 2020 05:38:56 -0800
-Message-Id: <20200131133905.42518-6-anthony.l.nguyen@intel.com>
+Date: Fri, 31 Jan 2020 05:38:57 -0800
+Message-Id: <20200131133905.42518-7-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
 References: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S37 v2 06/15] ice: Remove CONFIG_PCI_IOV
- wrap in ice_set_pf_caps
+Subject: [Intel-wired-lan] [PATCH S37 v2 07/15] ice: Modify link message
+ logging
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,37 +67,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+From: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 
-Remove unnecessary CONFIG_PCI_IOV wrapping in ice_set_pf_caps. None
-of the data structures accessed within the block are wrapped with
-this flag. When CONFIG_PCI_IOV is undefined, pf->num_vfs_supported
-will be 0 anyway.
+This patch modifies link message logging to include "Full Duplex" and
+"Negotiated" for FEC, so as to distinguish it from "Requested" FEC.
 
-Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Akeem G Abodunrin <akeem.g.abodunrin@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index d4bc6fd3321c..cddadd308253 100644
+index cddadd308253..809e7bee8f62 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2677,14 +2677,12 @@ static void ice_set_pf_caps(struct ice_pf *pf)
- 	clear_bit(ICE_FLAG_DCB_CAPABLE, pf->flags);
- 	if (func_caps->common_cap.dcb)
- 		set_bit(ICE_FLAG_DCB_CAPABLE, pf->flags);
--#ifdef CONFIG_PCI_IOV
- 	clear_bit(ICE_FLAG_SRIOV_CAPABLE, pf->flags);
- 	if (func_caps->common_cap.sr_iov_1_1) {
- 		set_bit(ICE_FLAG_SRIOV_CAPABLE, pf->flags);
- 		pf->num_vfs_supported = min_t(int, func_caps->num_allocd_vfs,
- 					      ICE_MAX_VF_COUNT);
- 	}
--#endif /* CONFIG_PCI_IOV */
- 	clear_bit(ICE_FLAG_RSS_ENA, pf->flags);
- 	if (func_caps->common_cap.rss_table_size)
- 		set_bit(ICE_FLAG_RSS_ENA, pf->flags);
+@@ -755,7 +755,7 @@ void ice_print_link_msg(struct ice_vsi *vsi, bool isup)
+ 	kfree(caps);
+ 
+ done:
+-	netdev_info(vsi->netdev, "NIC Link is up %sbps, Requested FEC: %s, FEC: %s, Autoneg: %s, Flow Control: %s\n",
++	netdev_info(vsi->netdev, "NIC Link is up %sbps Full Duplex, Requested FEC: %s, Negotiated FEC: %s, Autoneg: %s, Flow Control: %s\n",
+ 		    speed, fec_req, fec, an, fc);
+ 	ice_print_topo_conflict(vsi);
+ }
 -- 
 2.20.1
 
