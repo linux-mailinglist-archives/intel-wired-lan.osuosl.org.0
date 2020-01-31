@@ -1,55 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1888214F45B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2020 23:12:16 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AF2F14F45E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2020 23:12:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C6E5486B5E;
-	Fri, 31 Jan 2020 22:12:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A839C878B0;
+	Fri, 31 Jan 2020 22:12:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tVWxfSoOrMDV; Fri, 31 Jan 2020 22:12:14 +0000 (UTC)
+	with ESMTP id zRV8grCS52B6; Fri, 31 Jan 2020 22:12:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D2C5A86B65;
-	Fri, 31 Jan 2020 22:12:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 71D98878D6;
+	Fri, 31 Jan 2020 22:12:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 115B21BF9BD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 72B491BF37B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0E54888355
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 68A81228D5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UrJ9jhqfO3kW for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Jan 2020 22:12:04 +0000 (UTC)
+ with ESMTP id jfp2UQRtfW4G for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Jan 2020 22:12:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 94541883E4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:04 +0000 (UTC)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id B7EAA20466
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2020 22:12:05 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  31 Jan 2020 14:12:04 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,387,1574150400"; d="scan'208";a="310126643"
+X-IronPort-AV: E=Sophos;i="5.70,387,1574150400"; d="scan'208";a="310126644"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga001.jf.intel.com with ESMTP; 31 Jan 2020 14:12:03 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 31 Jan 2020 05:39:04 -0800
-Message-Id: <20200131133905.42518-14-anthony.l.nguyen@intel.com>
+Date: Fri, 31 Jan 2020 05:39:05 -0800
+Message-Id: <20200131133905.42518-15-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
 References: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S37 v2 14/15] ice: Use correct netif error
- function
+Subject: [Intel-wired-lan] [PATCH S37 v2 15/15] ice: Trivial fixes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,30 +66,266 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Ben Shelton <benjamin.h.shelton@intel.com>
+This is a collection of trivial fixes including fixing whitespace, typos,
+function headers, reverse Christmas tree, etc.
 
-Use the correct netif_msg_[tx,rx]_error() function to determine whether to
-print the MDD event type.
-
-Signed-off-by: Ben Shelton <benjamin.h.shelton@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v2:
+- Another whitespace fix
+---
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h  |  1 +
+ drivers/net/ethernet/intel/ice/ice_common.c      |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_dcb.c         |  8 ++++----
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c     |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_ethtool.c     | 10 +++++-----
+ drivers/net/ethernet/intel/ice/ice_lib.c         |  7 ++++---
+ drivers/net/ethernet/intel/ice/ice_main.c        |  4 +++-
+ drivers/net/ethernet/intel/ice/ice_txrx.c        |  9 ++++-----
+ drivers/net/ethernet/intel/ice/ice_txrx.h        |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_type.h        |  2 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  3 +--
+ 11 files changed, 29 insertions(+), 27 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 2722789fa703..210113eade20 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1691,6 +1691,7 @@ struct ice_aqc_get_pkg_info_resp {
+ 	__le32 count;
+ 	struct ice_aqc_get_pkg_info pkg_info[1];
+ };
++
+ /**
+  * struct ice_aq_desc - Admin Queue (AQ) descriptor
+  * @flags: ICE_AQ_FLAG_* flags
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 8931c6a3e3f6..e7e528631757 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -588,10 +588,10 @@ void ice_output_fw_log(struct ice_hw *hw, struct ice_aq_desc *desc, void *buf)
+ }
+ 
+ /**
+- * ice_get_itr_intrl_gran - determine int/intrl granularity
++ * ice_get_itr_intrl_gran
+  * @hw: pointer to the HW struct
+  *
+- * Determines the ITR/intrl granularities based on the maximum aggregate
++ * Determines the ITR/INTRL granularities based on the maximum aggregate
+  * bandwidth according to the device's configuration during power-on.
+  */
+ static void ice_get_itr_intrl_gran(struct ice_hw *hw)
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb.c b/drivers/net/ethernet/intel/ice/ice_dcb.c
+index 713e8a892e14..adb8dab765c8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb.c
+@@ -1323,13 +1323,13 @@ enum ice_status ice_set_dcb_cfg(struct ice_port_info *pi)
+ }
+ 
+ /**
+- * ice_aq_query_port_ets - query port ets configuration
++ * ice_aq_query_port_ets - query port ETS configuration
+  * @pi: port information structure
+  * @buf: pointer to buffer
+  * @buf_size: buffer size in bytes
+  * @cd: pointer to command details structure or NULL
+  *
+- * query current port ets configuration
++ * query current port ETS configuration
+  */
+ static enum ice_status
+ ice_aq_query_port_ets(struct ice_port_info *pi,
+@@ -1416,13 +1416,13 @@ ice_update_port_tc_tree_cfg(struct ice_port_info *pi,
+ }
+ 
+ /**
+- * ice_query_port_ets - query port ets configuration
++ * ice_query_port_ets - query port ETS configuration
+  * @pi: port information structure
+  * @buf: pointer to buffer
+  * @buf_size: buffer size in bytes
+  * @cd: pointer to command details structure or NULL
+  *
+- * query current port ets configuration and update the
++ * query current port ETS configuration and update the
+  * SW DB with the TC changes
+  */
+ enum ice_status
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index 545f1d8eaa7b..fe3a39cdab2f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -436,9 +436,9 @@ static int ice_dcb_init_cfg(struct ice_pf *pf, bool locked)
+ }
+ 
+ /**
+- * ice_dcb_sw_default_config - Apply a default DCB config
++ * ice_dcb_sw_dflt_cfg - Apply a default DCB config
+  * @pf: PF to apply config to
+- * @ets_willing: configure ets willing
++ * @ets_willing: configure ETS willing
+  * @locked: was this function called with RTNL held
+  */
+ static int ice_dcb_sw_dflt_cfg(struct ice_pf *pf, bool ets_willing, bool locked)
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 4b29d1ae56a7..c0f58e08890e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3800,11 +3800,11 @@ ice_get_module_eeprom(struct net_device *netdev,
+ static const struct ethtool_ops ice_ethtool_ops = {
+ 	.get_link_ksettings	= ice_get_link_ksettings,
+ 	.set_link_ksettings	= ice_set_link_ksettings,
+-	.get_drvinfo            = ice_get_drvinfo,
+-	.get_regs_len           = ice_get_regs_len,
+-	.get_regs               = ice_get_regs,
+-	.get_msglevel           = ice_get_msglevel,
+-	.set_msglevel           = ice_set_msglevel,
++	.get_drvinfo		= ice_get_drvinfo,
++	.get_regs_len		= ice_get_regs_len,
++	.get_regs		= ice_get_regs,
++	.get_msglevel		= ice_get_msglevel,
++	.set_msglevel		= ice_set_msglevel,
+ 	.self_test		= ice_self_test,
+ 	.get_link		= ethtool_op_get_link,
+ 	.get_eeprom_len		= ice_get_eeprom_len,
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 7d546c75dcc6..3c9353d7b0ed 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1241,8 +1241,9 @@ static void ice_vsi_set_rss_flow_fld(struct ice_vsi *vsi)
+  *
+  * Returns 0 on success or ENOMEM on failure.
+  */
+-int ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
+-			const u8 *macaddr)
++int
++ice_add_mac_to_list(struct ice_vsi *vsi, struct list_head *add_list,
++		    const u8 *macaddr)
+ {
+ 	struct ice_fltr_list_entry *tmp;
+ 	struct ice_pf *pf = vsi->back;
+@@ -2874,8 +2875,8 @@ static void ice_vsi_update_q_map(struct ice_vsi *vsi, struct ice_vsi_ctx *ctx)
+ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ {
+ 	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] = { 0 };
+-	struct ice_vsi_ctx *ctx;
+ 	struct ice_pf *pf = vsi->back;
++	struct ice_vsi_ctx *ctx;
+ 	enum ice_status status;
+ 	struct device *dev;
+ 	int i, ret = 0;
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 456c8efe49c5..2297a5a5c572 100644
+index 2297a5a5c572..1bf6d21c38e4 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1231,7 +1231,7 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
- 		u16 queue = ((reg & GL_MDET_TX_TCLAN_QNUM_M) >>
- 				GL_MDET_TX_TCLAN_QNUM_S);
+@@ -3179,7 +3179,9 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	struct ice_hw *hw;
+ 	int err;
  
--		if (netif_msg_rx_err(pf))
-+		if (netif_msg_tx_err(pf))
- 			dev_info(dev, "Malicious Driver Detection event %d on TX queue %d PF# %d VF# %d\n",
- 				 event, queue, pf_num, vf_num);
- 		wr32(hw, GL_MDET_TX_TCLAN, 0xffffffff);
+-	/* this driver uses devres, see Documentation/driver-api/driver-model/devres.rst */
++	/* this driver uses devres, see
++	 * Documentation/driver-api/driver-model/devres.rst
++	 */
+ 	err = pcim_enable_device(pdev);
+ 	if (err)
+ 		return err;
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 1d4755acca3d..4de61dbedd36 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -644,7 +644,7 @@ static bool ice_page_is_reserved(struct page *page)
+  * Update the offset within page so that Rx buf will be ready to be reused.
+  * For systems with PAGE_SIZE < 8192 this function will flip the page offset
+  * so the second half of page assigned to Rx buffer will be used, otherwise
+- * the offset is moved by the @size bytes
++ * the offset is moved by "size" bytes
+  */
+ static void
+ ice_rx_buf_adjust_pg_offset(struct ice_rx_buf *rx_buf, unsigned int size)
+@@ -1619,11 +1619,11 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
+ {
+ 	u64 td_offset, td_tag, td_cmd;
+ 	u16 i = tx_ring->next_to_use;
+-	skb_frag_t *frag;
+ 	unsigned int data_len, size;
+ 	struct ice_tx_desc *tx_desc;
+ 	struct ice_tx_buf *tx_buf;
+ 	struct sk_buff *skb;
++	skb_frag_t *frag;
+ 	dma_addr_t dma;
+ 
+ 	td_tag = off->td_l2tag1;
+@@ -1736,9 +1736,8 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
+ 	ice_maybe_stop_tx(tx_ring, DESC_NEEDED);
+ 
+ 	/* notify HW of packet */
+-	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more()) {
++	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more())
+ 		writel(i, tx_ring->tail);
+-	}
+ 
+ 	return;
+ 
+@@ -2076,7 +2075,7 @@ static bool __ice_chk_linearize(struct sk_buff *skb)
+ 	frag = &skb_shinfo(skb)->frags[0];
+ 
+ 	/* Initialize size to the negative value of gso_size minus 1. We
+-	 * use this as the worst case scenerio in which the frag ahead
++	 * use this as the worst case scenario in which the frag ahead
+ 	 * of us only provides one byte which is why we are limited to 6
+ 	 * descriptors for a single transmit as the header and previous
+ 	 * fragment are already consuming 2 descriptors.
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
+index a86270696df1..14a1bf445889 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.h
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
+@@ -33,8 +33,8 @@
+  * frame.
+  *
+  * Note: For cache line sizes 256 or larger this value is going to end
+- *       up negative.  In these cases we should fall back to the legacy
+- *       receive path.
++ *	 up negative.  In these cases we should fall back to the legacy
++ *	 receive path.
+  */
+ #if (PAGE_SIZE < 8192)
+ #define ICE_2K_TOO_SMALL_WITH_PADDING \
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 5224b066730a..bf67f6df5333 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -521,7 +521,7 @@ struct ice_hw {
+ 	struct ice_fw_log_cfg fw_log;
+ 
+ /* Device max aggregate bandwidths corresponding to the GL_PWR_MODE_CTL
+- * register. Used for determining the ITR/intrl granularity during
++ * register. Used for determining the ITR/INTRL granularity during
+  * initialization.
+  */
+ #define ICE_MAX_AGG_BW_200G	0x0
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 6d78bcdd162d..1874bfa65796 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1093,7 +1093,6 @@ bool ice_reset_all_vfs(struct ice_pf *pf, bool is_vflr)
+ 	 * finished resetting.
+ 	 */
+ 	for (i = 0, v = 0; i < 10 && v < pf->num_alloc_vfs; i++) {
+-
+ 		/* Check each VF in sequence */
+ 		while (v < pf->num_alloc_vfs) {
+ 			u32 reg;
+@@ -2612,8 +2611,8 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	struct ice_pf *pf = vf->pf;
+ 	u16 max_allowed_vf_queues;
+ 	u16 tx_rx_queue_left;
+-	u16 cur_queues;
+ 	struct device *dev;
++	u16 cur_queues;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
 -- 
 2.20.1
 
