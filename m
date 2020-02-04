@@ -1,63 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48B9C151D5A
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2020 16:34:32 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42AB3151F1D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2020 18:17:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D3FF48700E;
-	Tue,  4 Feb 2020 15:34:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AAEBB2052A;
+	Tue,  4 Feb 2020 17:17:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 423wrURXNuBs; Tue,  4 Feb 2020 15:34:30 +0000 (UTC)
+	with ESMTP id XnO4bX8BQiNZ; Tue,  4 Feb 2020 17:17:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2CCED86FB0;
-	Tue,  4 Feb 2020 15:34:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7BEA220400;
+	Tue,  4 Feb 2020 17:17:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3EC081BF83A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2020 15:34:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6F8E71BF288
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2020 17:17:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3ADA881404
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2020 15:34:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6741984900
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2020 17:17:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H7bNbe0YNemy for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Feb 2020 15:34:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from unicom145.biz-email.net (unicom145.biz-email.net
- [210.51.26.145])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3138F81384
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2020 15:34:25 +0000 (UTC)
-Received: from ([60.208.111.195])
- by unicom145.biz-email.net (Antispam) with ASMTP (SSL) id WRM97317;
- Tue, 04 Feb 2020 23:34:17 +0800
-Received: from jtjnmail201605.home.langchao.com (10.100.2.5) by
- jtjnmail201606.home.langchao.com (10.100.2.6) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1591.10; Tue, 4 Feb 2020 23:34:16 +0800
-Received: from jtjnmail201605.home.langchao.com ([fe80::8d20:4cc5:1116:d16e])
- by jtjnmail201605.home.langchao.com ([fe80::8d20:4cc5:1116:d16e%8])
- with mapi id 15.01.1591.008; Tue, 4 Feb 2020 23:34:16 +0800
-From: =?gb2312?B?WWkgWWFuZyAo0e6gRCkt1Ma3/s7xvK/NxQ==?= <yangyi01@inspur.com>
-To: "jeffrey.t.kirsher@intel.com" <jeffrey.t.kirsher@intel.com>
-Thread-Topic: bad iperf3 tcp performance of Intel 10G NIC when MTU is 9000
-Thread-Index: AdXbb2mVymWQD2ThRaO9xqLNfQeEtQ==
-Importance: high
-X-Priority: 1
-Date: Tue, 4 Feb 2020 15:34:16 +0000
-Message-ID: <6bc9d97b27a24cf79edadedf502caf06@inspur.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: yes
+ with ESMTP id hsoey3VICs7Y for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Feb 2020 17:17:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E901781E80
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2020 17:17:51 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2020 09:17:43 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,402,1574150400"; d="scan'208";a="279119469"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by FMSMGA003.fm.intel.com with ESMTP; 04 Feb 2020 09:17:42 -0800
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 4 Feb 2020 09:17:42 -0800
+Received: from orsmsx113.amr.corp.intel.com ([169.254.9.57]) by
+ ORSMSX151.amr.corp.intel.com ([169.254.7.99]) with mapi id 14.03.0439.000;
+ Tue, 4 Feb 2020 09:17:42 -0800
+From: "Allan, Bruce W" <bruce.w.allan@intel.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S37 v2 01/15] ice: Fix DCB rebuild
+ after reset
+Thread-Index: AQHV2IOFXcpj8lM4A02ehMAkeOvxI6gLQblA
+Date: Tue, 4 Feb 2020 17:17:42 +0000
+Message-ID: <804857E1F29AAC47BF68C404FC60A184010AF5CFED@ORSMSX113.amr.corp.intel.com>
+References: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200131133905.42518-1-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [10.100.1.52]
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiN2JhYjcxZmItMTc1My00OWQ5LWEwODAtYmJlN2UwYmI5YzQ3IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiQ3JQVU5uSGdqdEIrTzllOStiZ3V0Y2tXUFBOUkxxb1VkMTJDXC9QOW5nSGdWODNmRlJRQjBOdUpDVlprOFpwY0gifQ==
+x-ctpclassification: CTP_NT
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] bad iperf3 tcp performance of Intel 10G NIC when
- MTU is 9000
+Subject: Re: [Intel-wired-lan] [PATCH S37 v2 01/15] ice: Fix DCB rebuild
+ after reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,117 +81,265 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "yang_y_yi@163.com" <yang_y_yi@163.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============7801353653307857976=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============7801353653307857976==
-Content-Language: zh-CN
-Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
-	micalg=SHA1; boundary="----=_NextPart_000_009B_01D5DBB3.9CCC95E0"
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Tony Nguyen
+> Sent: Friday, January 31, 2020 5:39 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S37 v2 01/15] ice: Fix DCB rebuild after reset
+> 
+> From: Dave Ertman <david.m.ertman@intel.com>
+> 
+> The function ice_dcb_rebuild had some logic
+> flaws in it, and also didn't differentiate
+> between FW and SW modes needs.
+> 
+> For FW flow, the willing setting was being
+> forced to OFF and left that way.  Unwilling
+> in DCB FW mode is not a supported model.
+> 
+> Leave the config alone and use the return value
+> from the set command to determine if setting the
+> config was successful.
+> 
+> The SW DCB flow does not need to need to register
+> for MIB change events (as they are not used in
+> SW mode).
+> 
+> Use !is_sw_lldp checks to only perform FW specific
+> task while in FW mode.
+> 
+> Also adding a reapplication of the current DCB
+> config after a link event.  Some NVMs are not
+> maintaining their DCB configs across link events.
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+> ---
+> v2:
+> - Add missing mutex_unlock() in error path
+> ---
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 83 +++++++++-----------
+>  drivers/net/ethernet/intel/ice/ice_main.c    |  1 +
+>  2 files changed, 36 insertions(+), 48 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+> b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+> index 9401f2051293..8e96c722b065 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+> @@ -339,9 +339,9 @@ ice_dcb_need_recfg(struct ice_pf *pf, struct
+> ice_dcbx_cfg *old_cfg,
+>   */
+>  void ice_dcb_rebuild(struct ice_pf *pf)
+>  {
+> -	struct ice_dcbx_cfg *local_dcbx_cfg, *desired_dcbx_cfg, *prev_cfg;
+>  	struct ice_aqc_port_ets_elem buf = { 0 };
+>  	struct device *dev = ice_pf_to_dev(pf);
+> +	struct ice_dcbx_cfg *err_cfg;
+>  	enum ice_status ret;
+> 
+>  	ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
+> @@ -354,53 +354,25 @@ void ice_dcb_rebuild(struct ice_pf *pf)
+>  	if (!test_bit(ICE_FLAG_DCB_ENA, pf->flags))
+>  		return;
+> 
+> -	local_dcbx_cfg = &pf->hw.port_info->local_dcbx_cfg;
+> -	desired_dcbx_cfg = &pf->hw.port_info->desired_dcbx_cfg;
+> +	mutex_lock(&pf->tc_mutex);
+> 
+> -	/* Save current willing state and force FW to unwilling */
+> -	local_dcbx_cfg->etscfg.willing = 0x0;
+> -	local_dcbx_cfg->pfc.willing = 0x0;
+> -	local_dcbx_cfg->app_mode = ICE_DCBX_APPS_NON_WILLING;
+> +	if (!pf->hw.port_info->is_sw_lldp)
+> +		ice_cfg_etsrec_defaults(pf->hw.port_info);
+> 
+> -	ice_cfg_etsrec_defaults(pf->hw.port_info);
+>  	ret = ice_set_dcb_cfg(pf->hw.port_info);
+>  	if (ret) {
+> -		dev_err(dev, "Failed to set DCB to unwilling\n");
+> +		dev_err(dev, "Failed to set DCB config in rebuild\n");
+>  		goto dcb_error;
+>  	}
+> 
+> -	/* Retrieve DCB config and ensure same as current in SW */
+> -	prev_cfg = kmemdup(local_dcbx_cfg, sizeof(*prev_cfg), GFP_KERNEL);
+> -	if (!prev_cfg)
+> -		goto dcb_error;
+> -
+> -	ice_init_dcb(&pf->hw, true);
+> -	if (pf->hw.port_info->dcbx_status == ICE_DCBX_STATUS_DIS)
+> -		pf->hw.port_info->is_sw_lldp = true;
+> -	else
+> -		pf->hw.port_info->is_sw_lldp = false;
+> -
+> -	if (ice_dcb_need_recfg(pf, prev_cfg, local_dcbx_cfg)) {
+> -		/* difference in cfg detected - disable DCB till next MIB */
+> -		dev_err(dev, "Set local MIB not accurate\n");
+> -		kfree(prev_cfg);
+> -		goto dcb_error;
+> +	if (!pf->hw.port_info->is_sw_lldp) {
+> +		ret = ice_cfg_lldp_mib_change(&pf->hw, true);
+> +		if (ret && !pf->hw.port_info->is_sw_lldp) {
+> +			dev_err(dev, "Failed to register for MIB changes\n");
+> +			goto dcb_error;
+> +		}
+>  	}
+> 
+> -	/* fetched config congruent to previous configuration */
+> -	kfree(prev_cfg);
+> -
+> -	/* Set the local desired config */
+> -	if (local_dcbx_cfg->dcbx_mode == ICE_DCBX_MODE_CEE)
+> -		memcpy(local_dcbx_cfg, desired_dcbx_cfg,
+> -		       sizeof(*local_dcbx_cfg));
+> -
+> -	ice_cfg_etsrec_defaults(pf->hw.port_info);
+> -	ret = ice_set_dcb_cfg(pf->hw.port_info);
+> -	if (ret) {
+> -		dev_err(dev, "Failed to set desired config\n");
+> -		goto dcb_error;
+> -	}
+>  	dev_info(dev, "DCB restored after reset\n");
+>  	ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
+>  	if (ret) {
+> @@ -408,26 +380,32 @@ void ice_dcb_rebuild(struct ice_pf *pf)
+>  		goto dcb_error;
+>  	}
+> 
+> +	mutex_unlock(&pf->tc_mutex);
+> +
+>  	return;
+> 
+>  dcb_error:
+>  	dev_err(dev, "Disabling DCB until new settings occur\n");
+> -	prev_cfg = kzalloc(sizeof(*prev_cfg), GFP_KERNEL);
+> -	if (!prev_cfg)
+> +	err_cfg = kzalloc(sizeof(*err_cfg), GFP_KERNEL);
+> +	if (!err_cfg) {
+> +		mutex_unlock(&pf->tc_mutex);
+>  		return;
+> +	}
+> 
+> -	prev_cfg->etscfg.willing = true;
+> -	prev_cfg->etscfg.tcbwtable[0] = ICE_TC_MAX_BW;
+> -	prev_cfg->etscfg.tsatable[0] = ICE_IEEE_TSA_ETS;
+> -	memcpy(&prev_cfg->etsrec, &prev_cfg->etscfg, sizeof(prev_cfg-
+> >etsrec));
+> +	err_cfg->etscfg.willing = true;
+> +	err_cfg->etscfg.tcbwtable[0] = ICE_TC_MAX_BW;
+> +	err_cfg->etscfg.tsatable[0] = ICE_IEEE_TSA_ETS;
+> +	memcpy(&err_cfg->etsrec, &err_cfg->etscfg, sizeof(err_cfg->etsrec));
+>  	/* Coverity warns the return code of ice_pf_dcb_cfg() is not checked
+>  	 * here as is done for other calls to that function. That check is
+>  	 * not necessary since this is in this function's error cleanup path.
+>  	 * Suppress the Coverity warning with the following comment...
+>  	 */
+>  	/* coverity[check_return] */
+> -	ice_pf_dcb_cfg(pf, prev_cfg, false);
+> -	kfree(prev_cfg);
+> +	ice_pf_dcb_cfg(pf, err_cfg, false);
+> +	kfree(err_cfg);
+> +
+> +	mutex_unlock(&pf->tc_mutex);
+>  }
+> 
+>  /**
+> @@ -842,6 +820,8 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf
+> *pf,
+>  		}
+>  	}
+> 
+> +	mutex_lock(&pf->tc_mutex);
 
-------=_NextPart_000_009B_01D5DBB3.9CCC95E0
-Content-Type: text/plain;
-	charset="gb2312"
-Content-Transfer-Encoding: 7bit
+This lock is unlocked with most but not all return() function exit points.  That needs fixing,
+and it would be better if there was a single function exit point where things like the locked
+mutex and locked rtnl are unrolled.
 
-Hi, all
-
-We find a very weird issue on Intel 10G NIC, iperf3 tcp performance is good
-when MTU is 1500, but it is about one third of the former when MTU is 9000,
-anybody knows why it is so, is any solution to it available?
-
-The below is our kernel and ixgbe deriver information:
-
-Ubuntu 16.04 and kernel is updated to 4.15.0-36-generic x86_64
-Ixgbe driver version: 5.1.0-k
-Firmware version: 0x61c10001
-
-BTW, tso is on.
-
-------=_NextPart_000_009B_01D5DBB3.9CCC95E0
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-
-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
-SIb3DQMEAgIAgDAHBgUrDgMCBzAKBggqhkiG9w0DBzAdBgNVHQ4EFgQUwS9Wt2AmUPVKr98VTbaf
-wjdIUXAwHwYDVR0jBBgwFoAUXlkDprRMWGCRTvYetaU5pjLBNWowgdEGA1UdHwSByTCBxjCBw6CB
-wKCBvYaBumxkYXA6Ly8vQ049SU5TUFVSLUNBLENOPUpUQ0EyMDEyLENOPUNEUCxDTj1QdWJsaWMl
-MjBLZXklMjBTZXJ2aWNlcyxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPWhvbWUsREM9
-bGFuZ2NoYW8sREM9Y29tP2NlcnRpZmljYXRlUmV2b2NhdGlvbkxpc3Q/YmFzZT9vYmplY3RDbGFz
-cz1jUkxEaXN0cmlidXRpb25Qb2ludDCBxAYIKwYBBQUHAQEEgbcwgbQwgbEGCCsGAQUFBzAChoGk
-bGRhcDovLy9DTj1JTlNQVVItQ0EsQ049QUlBLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENO
-PVNlcnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9aG9tZSxEQz1sYW5nY2hhbyxEQz1jb20/Y0FD
-ZXJ0aWZpY2F0ZT9iYXNlP29iamVjdENsYXNzPWNlcnRpZmljYXRpb25BdXRob3JpdHkwQwYDVR0R
-BDwwOqAjBgorBgEEAYI3FAIDoBUME3lhbmd5aTAxQGluc3B1ci5jb22BE3lhbmd5aTAxQGluc3B1
-ci5jb20wDQYJKoZIhvcNAQELBQADggEBAApWKZfwQ5Gbpv3Pg2mJyUz8jhno5OBy2Hdku/euDQfD
-aOOPsUxsvr8ZnWU03E9rwTAHgD9oB10Oe27CNeS6G/kqJubOZt5Emrw9EJBA6NMz4GLZYPmm82ph
-l+1iajL8+U2fINJbqvTlj9Dv0VOzW+952fk9K5JiArDhWskKRLnO31YAESFfUUKaHe54l2u+2+cn
-MeuQyyNOGXu2zT0XicYRUsZBOCisXzLD6I9/LgyBcqWcpLBdRK1JdO/oih2/uznyWUp1pCvpi89r
-SmyUUdbfFd/FN0j8Qok4ZdKwoHNj3oi+vLaN8SHmUNHISOuUZyWcmfVzd7c5ydIDB9nQiHoxggOT
-MIIDjwIBATBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZFghsYW5nY2hh
-bzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNVBAMTCUlOU1BVUi1DQQITfgAAPxhfXKY27C7W
-sQAAAAA/GDAJBgUrDgMCGgUAoIIB+DAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3
-DQEJBTEPFw0yMDAyMDQxNTM0MTVaMCMGCSqGSIb3DQEJBDEWBBSi5yKwyVVrSC8MNii657FXW6Ub
-cTB/BgkrBgEEAYI3EAQxcjBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZ
-FghsYW5nY2hhbzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNVBAMTCUlOU1BVUi1DQQITfgAA
-PxhfXKY27C7WsQAAAAA/GDCBgQYLKoZIhvcNAQkQAgsxcqBwMFkxEzARBgoJkiaJk/IsZAEZFgNj
-b20xGDAWBgoJkiaJk/IsZAEZFghsYW5nY2hhbzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNV
-BAMTCUlOU1BVUi1DQQITfgAAPxhfXKY27C7WsQAAAAA/GDCBkwYJKoZIhvcNAQkPMYGFMIGCMAsG
-CWCGSAFlAwQBKjALBglghkgBZQMEARYwCgYIKoZIhvcNAwcwCwYJYIZIAWUDBAECMA4GCCqGSIb3
-DQMCAgIAgDANBggqhkiG9w0DAgIBQDAHBgUrDgMCGjALBglghkgBZQMEAgMwCwYJYIZIAWUDBAIC
-MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQC+TJbItqYsn+CzaLT2cu16XdXrLIFQ0UU6
-1Pv07CMbWGDh7M9K1WN8tA1Jww94inADbpJoYONHr07+sV5EsNs7ApWpPT9IKoan+5Q8F/QVgXru
-paCiBooGXO/s+5azl6omoxbf9Ao3NLUXCadlyRD+l+YByk+bmft7iTye0zTSgFV3L+65R00DEsJL
-HXBkhX0tKezMYkST+jDbomm6ul4mCajDkkSpdAXDdVfa4vvBLk8QBkSRXtEnRdeorlG0C2Ar5ulZ
-2tTZHz+KV2klwEwDRjSUEqdME06Tuu89loEMbZDW2kmUWdlbJOJt7rYKX+PFwwYmWVvAQL4VFeMa
-aWdBAAAAAAAA
-
-------=_NextPart_000_009B_01D5DBB3.9CCC95E0--
-
---===============7801353653307857976==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+> +
+>  	/* store the old configuration */
+>  	tmp_dcbx_cfg = pf->hw.port_info->local_dcbx_cfg;
+> 
+> @@ -852,20 +832,24 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf
+> *pf,
+>  	ret = ice_get_dcb_cfg(pf->hw.port_info);
+>  	if (ret) {
+>  		dev_err(dev, "Failed to get DCB config\n");
+> +		mutex_unlock(&pf->tc_mutex);
+>  		return;
+>  	}
+> 
+>  	/* No change detected in DCBX configs */
+>  	if (!memcmp(&tmp_dcbx_cfg, &pi->local_dcbx_cfg,
+> sizeof(tmp_dcbx_cfg))) {
+>  		dev_dbg(dev, "No change detected in DCBX configuration.\n");
+> +		mutex_unlock(&pf->tc_mutex);
+>  		return;
+>  	}
+> 
+>  	need_reconfig = ice_dcb_need_recfg(pf, &tmp_dcbx_cfg,
+>  					   &pi->local_dcbx_cfg);
+>  	ice_dcbnl_flush_apps(pf, &tmp_dcbx_cfg, &pi->local_dcbx_cfg);
+> -	if (!need_reconfig)
+> +	if (!need_reconfig) {
+> +		mutex_unlock(&pf->tc_mutex);
+>  		return;
+> +	}
+> 
+>  	/* Enable DCB tagging only when more than one TC */
+>  	if (ice_dcb_get_num_tc(&pi->local_dcbx_cfg) > 1) {
+> @@ -879,6 +863,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf
+> *pf,
+>  	pf_vsi = ice_get_main_vsi(pf);
+>  	if (!pf_vsi) {
+>  		dev_dbg(dev, "PF VSI doesn't exist\n");
+> +		mutex_unlock(&pf->tc_mutex);
+>  		return;
+>  	}
+> 
+> @@ -889,6 +874,7 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf
+> *pf,
+>  	if (ret) {
+>  		dev_err(dev, "Query Port ETS failed\n");
+>  		rtnl_unlock();
+> +		mutex_unlock(&pf->tc_mutex);
+>  		return;
+>  	}
+> 
+> @@ -897,4 +883,5 @@ ice_dcb_process_lldp_set_mib_change(struct ice_pf
+> *pf,
+> 
+>  	ice_ena_vsi(pf_vsi, true);
+>  	rtnl_unlock();
+> +	mutex_unlock(&pf->tc_mutex);
+>  }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
+> b/drivers/net/ethernet/intel/ice/ice_main.c
+> index 6ce422789df7..d4bc6fd3321c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -844,6 +844,7 @@ ice_link_event(struct ice_pf *pf, struct ice_port_info
+> *pi, bool link_up,
+>  		}
+>  	}
+> 
+> +	ice_dcb_rebuild(pf);
+>  	ice_vsi_link_event(vsi, link_up);
+>  	ice_print_link_msg(vsi, link_up);
+> 
+> --
+> 2.20.1
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7801353653307857976==--
