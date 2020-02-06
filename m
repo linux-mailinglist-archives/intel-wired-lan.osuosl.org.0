@@ -1,54 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 240001538AE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Feb 2020 20:03:56 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AA52153F5E
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2020 08:48:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CD90C20111;
-	Wed,  5 Feb 2020 19:03:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C087081E6F;
+	Thu,  6 Feb 2020 07:48:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id o64ooQNAVesH; Wed,  5 Feb 2020 19:03:54 +0000 (UTC)
+	with ESMTP id ofLpYeXUEQga; Thu,  6 Feb 2020 07:48:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 521E8207A6;
-	Wed,  5 Feb 2020 19:03:54 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2745D84525;
+	Thu,  6 Feb 2020 07:48:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 712551BF5A4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2020 19:03:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 444ED1BF3B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2020 07:48:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 66EBB2047C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2020 19:03:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 37F5C20372
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2020 07:48:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ENouGn0SQ00T for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Feb 2020 19:03:50 +0000 (UTC)
+ with ESMTP id XcrKt1jY-cR8 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Feb 2020 07:48:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id 74A0A20111
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2020 19:03:50 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 846C220335
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2020 07:48:49 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Feb 2020 11:03:50 -0800
-X-IronPort-AV: E=Sophos;i="5.70,406,1574150400"; d="scan'208";a="235688252"
-Received: from jbrandeb-desk4.amr.corp.intel.com (HELO localhost)
- ([10.166.241.50])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Feb 2020 11:03:49 -0800
-Date: Wed, 5 Feb 2020 11:03:49 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Sasha Neftin <sasha.neftin@intel.com>
-Message-ID: <20200205110242.000060ec@intel.com>
-In-Reply-To: <20200205123115.44103-1-sasha.neftin@intel.com>
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Feb 2020 23:48:49 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,408,1574150400"; d="scan'208";a="264515282"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.185.23.132])
+ ([10.185.23.132])
+ by fmsmga002.fm.intel.com with ESMTP; 05 Feb 2020 23:48:48 -0800
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
 References: <20200205123115.44103-1-sasha.neftin@intel.com>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; i686-w64-mingw32)
+ <20200205110242.000060ec@intel.com>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <1315bbbd-a1d4-bd7c-17b3-66e848642f59@intel.com>
+Date: Thu, 6 Feb 2020 09:48:47 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
+In-Reply-To: <20200205110242.000060ec@intel.com>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Complete to commit Add
  support for TSO
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -64,20 +67,26 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 5 Feb 2020 14:31:15 +0200 Sasha wrote:
-> commit f38b782dccab ("igc: Add support for TSO")
+On 2/5/2020 21:03, Jesse Brandeburg wrote:
+> On Wed, 5 Feb 2020 14:31:15 +0200 Sasha wrote:
+>> commit f38b782dccab ("igc: Add support for TSO")
+> 
+> is that a Fixes tag?
+> 
+no, this is previous commit for support TSO
+>> Add option to setting transmit command (TUCMD) of the context
+>> descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
+> 
+> You said what you did but not why.
+> 
+I would align the igc driver with the same approach as igb and ixgbe 
+drivers. I referred to their code.
 
-is that a Fixes tag?
-
-> Add option to setting transmit command (TUCMD) of the context
-> descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
-
-You said what you did but not why.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
