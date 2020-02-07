@@ -1,59 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 159D5155D43
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2020 18:59:39 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 796F0155D41
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2020 18:59:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EFF0F813F2;
-	Fri,  7 Feb 2020 17:59:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mKAqelCvkRon; Fri,  7 Feb 2020 17:59:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1BFA381ED9;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 75E6987F34;
 	Fri,  7 Feb 2020 17:59:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tpFYY6ff+AMt; Fri,  7 Feb 2020 17:59:34 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B2FAD87ED0;
+	Fri,  7 Feb 2020 17:59:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E20F71BF23B
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 72C011BF23B
  for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 17:59:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DEF7185F58
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6E45F87EC5
  for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 17:59:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9y7CqvHMWS_r for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2020 17:59:24 +0000 (UTC)
+ with ESMTP id XIi+Wr4k9SHx for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2020 17:59:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1150084BBE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 17:59:24 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9D1E78783F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 17:59:23 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  07 Feb 2020 09:59:22 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,414,1574150400"; d="scan'208";a="255484427"
+X-IronPort-AV: E=Sophos;i="5.70,414,1574150400"; d="scan'208";a="225611380"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 07 Feb 2020 09:59:21 -0800
+ by fmsmga007.fm.intel.com with ESMTP; 07 Feb 2020 09:59:21 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1j07uT-0003Mm-A1; Sat, 08 Feb 2020 01:59:21 +0800
-Date: Sat, 8 Feb 2020 01:58:25 +0800
+ id 1j07uT-0003Mx-B9; Sat, 08 Feb 2020 01:59:21 +0800
+Date: Sat, 8 Feb 2020 01:58:27 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
-Message-ID: <202002080142.jXgA7Lza%lkp@intel.com>
+Message-ID: <20200207175827.vnfqd6flcsdymvoi@f53c9c00458a>
+References: <202002080142.jXgA7Lza%lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <202002080142.jXgA7Lza%lkp@intel.com>
+X-Patchwork-Hint: ignore
 User-Agent: NeoMutt/20170113 (1.7.2)
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 75/75]
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse: sparse:
- incorrect type in initializer (different address spaces)
+Subject: [Intel-wired-lan] [RFC PATCH jkirsher-next-queue] gwdpa: gswip:
+ mac_get_speed() can be static
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,149 +75,107 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
-head:   efd2087941d2bc08b6c0a559aab0d8cdcfa38e0f
-commit: efd2087941d2bc08b6c0a559aab0d8cdcfa38e0f [75/75] gwdpa: gswip: Introduce Gigabit Ethernet Switch (GSWIP) device driver
-reproduce:
-        # apt-get install sparse
-        # sparse version: v0.6.1-159-g100509c0-dirty
-        git checkout efd2087941d2bc08b6c0a559aab0d8cdcfa38e0f
-        make ARCH=x86_64 allmodconfig
-        make C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__'
 
-If you fix the issue, kindly add following tag
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-sparse warnings: (new ones prefixed by >>)
-
->> drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse: sparse: incorrect type in initializer (different address spaces)
->> drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse:    expected void [noderef] <asn:2> *base
->> drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse:    got void *context
-   drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:41:30: sparse: sparse: incorrect type in initializer (different address spaces)
-   drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:41:30: sparse:    expected void [noderef] <asn:2> *base
-   drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:41:30: sparse:    got void *context
->> drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:77:30: sparse: sparse: incorrect type in argument 3 (different address spaces)
->> drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:77:30: sparse:    expected void *bus_context
->> drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:77:30: sparse:    got void [noderef] <asn:2> *[assigned] core
---
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:38:5: sparse: sparse: symbol 'mac_get_speed' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:50:5: sparse: sparse: symbol 'mac_set_physpeed' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:119:5: sparse: sparse: symbol 'mac_set_duplex' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:144:5: sparse: sparse: symbol 'mac_get_duplex' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:156:5: sparse: sparse: symbol 'mac_get_linksts' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:168:5: sparse: sparse: symbol 'mac_set_linksts' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:193:5: sparse: sparse: symbol 'mac_set_flowctrl' was not declared. Should it be static?
---
->> drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c:478:5: sparse: sparse: symbol 'xgmac_mdio_single_wr' was not declared. Should it be static?
->> drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c:529:5: sparse: sparse: symbol 'xgmac_mdio_single_rd' was not declared. Should it be static?
-
-Please review and possibly fold the followup patch.
-
-vim +32 drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
-
-    29	
-    30	static int regmap_reg_write(void *context, unsigned int reg, unsigned int val)
-    31	{
-  > 32		void __iomem *base = context;
-    33	
-    34		writew(val, base + reg);
-    35	
-    36		return 0;
-    37	}
-    38	
-    39	static int regmap_reg_read(void *context, unsigned int reg, unsigned int *val)
-    40	{
-    41		void __iomem *base = context;
-    42	
-    43		*val = readw(base + reg);
-    44	
-    45		return 0;
-    46	}
-    47	
-    48	static const struct regmap_config gswip_core_regmap_config = {
-    49		.reg_bits = 16,
-    50		.val_bits = 16,
-    51		.reg_stride = 4,
-    52		.reg_write = regmap_reg_write,
-    53		.reg_read = regmap_reg_read,
-    54		.fast_io = true,
-    55	};
-    56	
-    57	static int np_gswip_parse_dt(struct platform_device *pdev,
-    58				     struct gswip_priv *priv)
-    59	{
-    60		struct device *dev = &pdev->dev;
-    61		struct device_node *node = dev->of_node;
-    62		struct gswip_pdata *pdata = &priv->pdata;
-    63		struct device_node *np;
-    64		void __iomem *core;
-    65	
-    66		pdata->sw = devm_platform_ioremap_resource_byname(pdev, "switch");
-    67		if (IS_ERR(pdata->sw))
-    68			return PTR_ERR(pdata->sw);
-    69	
-    70		pdata->lmac = devm_platform_ioremap_resource_byname(pdev, "lmac");
-    71		if (IS_ERR(pdata->lmac))
-    72			return PTR_ERR(pdata->lmac);
-    73	
-    74		core = devm_platform_ioremap_resource_byname(pdev, "core");
-    75		if (IS_ERR(core))
-    76			return PTR_ERR(core);
-  > 77		pdata->core_regmap = devm_regmap_init(dev, NULL, core,
-    78						      &gswip_core_regmap_config);
-    79		if (IS_ERR(pdata->core_regmap))
-    80			return PTR_ERR(pdata->core_regmap);
-    81	
-    82		pdata->sw_irq = platform_get_irq_byname(pdev, "switch");
-    83		if (pdata->sw_irq < 0) {
-    84			dev_err(dev, "switch irq not found\n");
-    85			return -ENODEV;
-    86		}
-    87	
-    88		pdata->core_irq = platform_get_irq_byname(pdev, "core");
-    89		if (pdata->core_irq < 0) {
-    90			dev_err(dev, "core irq not found\n");
-    91			return -ENODEV;
-    92		}
-    93	
-    94		pdata->ptp_clk = devm_clk_get(dev, "ptp");
-    95		if (IS_ERR(pdata->ptp_clk))
-    96			return PTR_ERR(pdata->ptp_clk);
-    97	
-    98		pdata->sw_clk = devm_clk_get(dev, "switch");
-    99		if (IS_ERR(pdata->sw_clk))
-   100			return PTR_ERR(priv->pdata.sw_clk);
-   101	
-   102		for_each_node_by_name(node, GSWIP_MAC_DEV_NAME) {
-   103			priv->num_subdev_mac++;
-   104			if (priv->num_subdev_mac > GSWIP_SUBDEV_MAC_MAX) {
-   105				dev_err(dev, "too many GSWIP mac subdevices\n");
-   106				return -EINVAL;
-   107			}
-   108		}
-   109	
-   110		if (!priv->num_subdev_mac) {
-   111			dev_err(dev, "GSWIP mac subdevice not found\n");
-   112			return -EINVAL;
-   113		}
-   114	
-   115		np = of_find_node_by_name(node, GSWIP_CORE_DEV_NAME);
-   116		if (np) {
-   117			priv->num_subdev_core++;
-   118			of_node_put(np);
-   119		} else {
-   120			dev_err(dev, "GSWIP core subdevice not found\n");
-   121			return -EINVAL;
-   122		}
-   123	
-   124		return 0;
-   125	}
-   126	
-
+Fixes: efd2087941d2 ("gwdpa: gswip: Introduce Gigabit Ethernet Switch (GSWIP) device driver")
+Signed-off-by: kbuild test robot <lkp@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ mac_cfg.c |   14 +++++++-------
+ xgmac.c   |    8 ++++----
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c b/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
+index 0e57404f00156..75776f402b608 100644
+--- a/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
+@@ -35,7 +35,7 @@ static int mac_speed_to_val(u32 speed)
+ 	return val;
+ }
+ 
+-int mac_get_speed(struct device *dev)
++static int mac_get_speed(struct device *dev)
+ {
+ 	struct gswip_mac *priv = dev_get_drvdata(dev);
+ 	u32 mac_speed;
+@@ -47,7 +47,7 @@ int mac_get_speed(struct device *dev)
+ 	return mac_speed_to_val(mac_speed);
+ }
+ 
+-int mac_set_physpeed(struct gswip_mac *priv, u32 phy_speed)
++static int mac_set_physpeed(struct gswip_mac *priv, u32 phy_speed)
+ {
+ 	spin_lock_bh(&priv->mac_lock);
+ 	xgmac_set_extcfg(priv, 1);
+@@ -116,7 +116,7 @@ int mac_set_physpeed(struct gswip_mac *priv, u32 phy_speed)
+ 	return 0;
+ }
+ 
+-int mac_set_duplex(struct gswip_mac *priv, u32 mode)
++static int mac_set_duplex(struct gswip_mac *priv, u32 mode)
+ {
+ 	u32 val;
+ 
+@@ -141,7 +141,7 @@ int mac_set_duplex(struct gswip_mac *priv, u32 mode)
+ 	return 0;
+ }
+ 
+-int mac_get_duplex(struct device *dev)
++static int mac_get_duplex(struct device *dev)
+ {
+ 	struct gswip_mac *priv = dev_get_drvdata(dev);
+ 	int val;
+@@ -153,7 +153,7 @@ int mac_get_duplex(struct device *dev)
+ 	return val;
+ }
+ 
+-int mac_get_linksts(struct device *dev)
++static int mac_get_linksts(struct device *dev)
+ {
+ 	struct gswip_mac *priv = dev_get_drvdata(dev);
+ 	int linksts;
+@@ -165,7 +165,7 @@ int mac_get_linksts(struct device *dev)
+ 	return linksts;
+ }
+ 
+-int mac_set_linksts(struct gswip_mac *priv, u32 mode)
++static int mac_set_linksts(struct gswip_mac *priv, u32 mode)
+ {
+ 	u8 val;
+ 
+@@ -190,7 +190,7 @@ int mac_set_linksts(struct gswip_mac *priv, u32 mode)
+ 	return 0;
+ }
+ 
+-int mac_set_flowctrl(struct device *dev, u32 val)
++static int mac_set_flowctrl(struct device *dev, u32 val)
+ {
+ 	struct gswip_mac *priv = dev_get_drvdata(dev);
+ 
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
+index 959b0e0e04ed8..618a63a32cb0e 100644
+--- a/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
+@@ -475,8 +475,8 @@ int xgmac_mdio_set_clause(struct gswip_mac *priv, u32 clause, u32 phy_id)
+ 	return 0;
+ }
+ 
+-int xgmac_mdio_single_wr(struct gswip_mac *priv, u32 dev_adr, u32 phy_id,
+-			 u32 phy_reg, u32 phy_reg_data)
++static int xgmac_mdio_single_wr(struct gswip_mac *priv, u32 dev_adr, u32 phy_id,
++				u32 phy_reg, u32 phy_reg_data)
+ {
+ 	u32 mdio_sccdr, mdio_scar;
+ 	u32 retries = 100;
+@@ -526,8 +526,8 @@ int xgmac_mdio_single_wr(struct gswip_mac *priv, u32 dev_adr, u32 phy_id,
+ 	return 0;
+ }
+ 
+-int xgmac_mdio_single_rd(struct gswip_mac *priv, u32 dev_adr, u32 phy_id,
+-			 u32 phy_reg)
++static int xgmac_mdio_single_rd(struct gswip_mac *priv, u32 dev_adr, u32 phy_id,
++				u32 phy_reg)
+ {
+ 	u32 mdio_sccdr, mdio_scar;
+ 	u32 retries = 100;
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
