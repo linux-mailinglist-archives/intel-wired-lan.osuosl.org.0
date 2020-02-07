@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BA1E155DDE
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2020 19:23:29 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA4FD155DDF
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2020 19:23:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9F57B22613;
-	Fri,  7 Feb 2020 18:23:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 46C7687EC4;
+	Fri,  7 Feb 2020 18:23:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6jx4zIdGIDEI; Fri,  7 Feb 2020 18:23:27 +0000 (UTC)
+	with ESMTP id GJMg7fvWjVm4; Fri,  7 Feb 2020 18:23:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8255820492;
-	Fri,  7 Feb 2020 18:23:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9DE7587F12;
+	Fri,  7 Feb 2020 18:23:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EA8D81BF38E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 18:23:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3CA9F1BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 18:23:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id DC0CA87F12
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 18:23:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3447787ECB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 18:23:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ybn5E0lRZtEA for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2020 18:23:24 +0000 (UTC)
+ with ESMTP id vYC6XEDcs-36 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2020 18:23:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id E4BB687ECB
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B474887EC4
  for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 18:23:23 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,17 +37,19 @@ Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  07 Feb 2020 10:23:23 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,414,1574150400"; d="scan'208";a="404899413"
+X-IronPort-AV: E=Sophos;i="5.70,414,1574150400"; d="scan'208";a="404899414"
 Received: from vcostago-desk1.jf.intel.com ([10.54.70.26])
  by orsmga005.jf.intel.com with ESMTP; 07 Feb 2020 10:23:22 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  7 Feb 2020 10:24:41 -0800
-Message-Id: <20200207182443.1501016-1-vinicius.gomes@intel.com>
+Date: Fri,  7 Feb 2020 10:24:42 -0800
+Message-Id: <20200207182443.1501016-2-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.25.0
+In-Reply-To: <20200207182443.1501016-1-vinicius.gomes@intel.com>
+References: <20200207182443.1501016-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next-queue PATCH v2 0/2] igc: Add initial TSN
- qdiscs offloading
+Subject: [Intel-wired-lan] [next-queue PATCH v2 1/2] igc: Add support for
+ taprio offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,55 +67,436 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Adds support for translating taprio schedules into i225 cycles. This
+will allow schedules to run in the hardware, making the schedules
+enforcement more precise and saving CPU time.
 
-Hi,
+Right now, the only simple schedules are allowed, complex schedules are
+rejected. "simple" in this context are schedules that each HW queue is
+opened and closed only once in each cycle.
 
-Changes from v1:
-  - Fixed review comments (Andre Guedes);
+Changing schedules is still not supported as well.
 
-Original cover letter:
-
-This adds support for offloading taprio (which handles what was
-formerly known as Qbv) and ETF (using the LaunchTime feature) to i225.
-
-To try and keep things organized, a new file is added: igc_tsn.c. The
-idea is that the more TSN specific code will live here, in the future
-this will include frame-preemption support, and CBS (formerly Qav)
-support.
-
-The current support has a few limitations:
-  - because the BASET registers can only be written once per reset,
-    when removing taprio or ETF, we force the NIC to reset;
-  - In part because of the above limitation, we don't support changing
-    schedules;
-  - The way the registers for the schedule are organized, each queue
-    can only be opened and closed once per cycle, so some schedules
-    provided by the user are going to be rejected by the driver;
-
-Future improvements:
-  - When configuring a Qbv cycle, when we detect that a queue would
-    stay open for two intervals, we could want to merge them;
-  - More testing with taprio and ETF together, when ETF is installed
-    under taprio (when using them separately, it works fine);
-
---
-Cheers,
-
-Vinicius Costa Gomes (2):
-  igc: Add support for taprio offloading
-  igc: Add support for ETF offloading
-
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
  drivers/net/ethernet/intel/igc/Makefile      |   2 +-
  drivers/net/ethernet/intel/igc/igc.h         |   7 +
- drivers/net/ethernet/intel/igc/igc_defines.h |  14 ++
- drivers/net/ethernet/intel/igc/igc_main.c    | 184 ++++++++++++++++++-
+ drivers/net/ethernet/intel/igc/igc_defines.h |  13 ++
+ drivers/net/ethernet/intel/igc/igc_main.c    | 114 +++++++++++++++
  drivers/net/ethernet/intel/igc/igc_regs.h    |  12 ++
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 156 ++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_tsn.h     |   9 +
- 7 files changed, 380 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_tsn.c     | 139 +++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_tsn.h     |   9 ++
+ 7 files changed, 295 insertions(+), 1 deletion(-)
  create mode 100644 drivers/net/ethernet/intel/igc/igc_tsn.c
  create mode 100644 drivers/net/ethernet/intel/igc/igc_tsn.h
 
+diff --git a/drivers/net/ethernet/intel/igc/Makefile b/drivers/net/ethernet/intel/igc/Makefile
+index e3c164c12e10..3652f211f351 100644
+--- a/drivers/net/ethernet/intel/igc/Makefile
++++ b/drivers/net/ethernet/intel/igc/Makefile
+@@ -8,4 +8,4 @@
+ obj-$(CONFIG_IGC) += igc.o
+ 
+ igc-objs := igc_main.o igc_mac.o igc_i225.o igc_base.o igc_nvm.o igc_phy.o \
+-igc_ethtool.o igc_ptp.o igc_dump.o
++igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 0014828eec46..4c40dc8f276c 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -70,6 +70,7 @@ extern char igc_driver_version[];
+ #define IGC_FLAG_HAS_MSIX		BIT(13)
+ #define IGC_FLAG_VLAN_PROMISC		BIT(15)
+ #define IGC_FLAG_RX_LEGACY		BIT(16)
++#define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
+ 
+ #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
+ #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
+@@ -287,6 +288,9 @@ struct igc_ring {
+ 	u8 reg_idx;                     /* physical index of the ring */
+ 	bool launchtime_enable;		/* true if LaunchTime is enabled */
+ 
++	u32 start_time;
++	u32 end_time;
++
+ 	/* everything past this point are written often */
+ 	u16 next_to_clean;
+ 	u16 next_to_use;
+@@ -421,6 +425,9 @@ struct igc_adapter {
+ 	u32 max_frame_size;
+ 	u32 min_frame_size;
+ 
++	ktime_t base_time;
++	ktime_t cycle_time;
++
+ 	/* OS defined structs */
+ 	struct pci_dev *pdev;
+ 	/* lock for statistics */
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 044c0f8d4c16..976fa97b082a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -377,6 +377,11 @@
+ #define I225_TXPBSIZE_DEFAULT	0x04000014 /* TXPBSIZE default */
+ #define IGC_RXPBS_CFG_TS_EN	0x80000000 /* Timestamp in Rx buffer */
+ 
++#define IGC_TXPBSIZE_TSN	0x04145145 /* 5k bytes buffer for each queue */
++
++#define IGC_DTXMXPKTSZ_TSN	0x19 /* 1600 bytes of max TX DMA packet size */
++#define IGC_DTXMXPKTSZ_DEFAULT	0x98 /* 9728-byte Jumbo frames */
++
+ /* Time Sync Interrupt Causes */
+ #define IGC_TSICR_SYS_WRAP	BIT(0) /* SYSTIM Wrap around. */
+ #define IGC_TSICR_TXTS		BIT(1) /* Transmit Timestamp. */
+@@ -431,6 +436,14 @@
+ #define IGC_TSYNCTXCTL_START_SYNC		0x80000000  /* initiate sync */
+ #define IGC_TSYNCTXCTL_TXSYNSIG			0x00000020  /* Sample TX tstamp in PHY sop */
+ 
++/* Transmit Scheduling */
++#define IGC_TQAVCTRL_TRANSMIT_MODE_TSN	0x00000001
++#define IGC_TQAVCTRL_ENHANCED_QAV	0x00000008
++
++#define IGC_TXQCTL_STRICT_CYCLE		0x00000002
++#define IGC_TXQCTL_STRICT_END		0x00000004
++#define IGC_TXQCTL_PREEMPTIBLE		0x00000008
++
+ /* Receive Checksum Control */
+ #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable */
+ #define IGC_RXCSUM_PCSD		0x00002000   /* packet checksum disabled */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 3407af11dff8..0cb0c72160ab 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -9,11 +9,13 @@
+ #include <linux/udp.h>
+ #include <linux/ip.h>
+ #include <linux/pm_runtime.h>
++#include <net/pkt_sched.h>
+ 
+ #include <net/ipv6.h>
+ 
+ #include "igc.h"
+ #include "igc_hw.h"
++#include "igc_tsn.h"
+ 
+ #define DRV_VERSION	"0.0.1-k"
+ #define DRV_SUMMARY	"Intel(R) 2.5G Ethernet Linux Driver"
+@@ -106,6 +108,9 @@ void igc_reset(struct igc_adapter *adapter)
+ 	/* Re-enable PTP, where applicable. */
+ 	igc_ptp_reset(adapter);
+ 
++	/* Re-enable TSN offloading, where applicable. */
++	igc_tsn_offload_apply(adapter);
++
+ 	igc_get_phy_info(hw);
+ }
+ 
+@@ -4492,6 +4497,114 @@ static int igc_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
+ 	}
+ }
+ 
++static bool validate_schedule(const struct tc_taprio_qopt_offload *qopt)
++{
++	int queue_uses[IGC_MAX_TX_QUEUES] = { };
++	size_t n;
++
++	if (qopt->cycle_time_extension)
++		return false;
++
++	for (n = 0; n < qopt->num_entries; n++) {
++		const struct tc_taprio_sched_entry *e;
++		int i;
++
++		e = &qopt->entries[n];
++
++		/* i225 only supports "global" frame preemption
++		 * settings.
++		 */
++		if (e->command != TC_TAPRIO_CMD_SET_GATES)
++			return false;
++
++		for (i = 0; i < IGC_MAX_TX_QUEUES; i++) {
++			if (e->gate_mask & BIT(i))
++				queue_uses[i]++;
++
++			if (queue_uses[i] > 1)
++				return false;
++		}
++	}
++
++	return true;
++}
++
++static int igc_save_qbv_schedule(struct igc_adapter *adapter,
++				 struct tc_taprio_qopt_offload *qopt)
++{
++	u32 start_time = 0, end_time = 0;
++	struct igc_ring *ring;
++	size_t n;
++	int i;
++
++	if (!qopt->enable) {
++		adapter->base_time = 0;
++		return 0;
++	}
++
++	if (adapter->base_time)
++		return -EALREADY;
++
++	if (!validate_schedule(qopt))
++		return -EINVAL;
++
++	adapter->cycle_time = qopt->cycle_time;
++	adapter->base_time = qopt->base_time;
++
++	/* FIXME: be a little smarter about cases when the gate for a
++	 * queue stays open for more than one entry.
++	 */
++	for (n = 0; n < qopt->num_entries; n++) {
++		struct tc_taprio_sched_entry *e = &qopt->entries[n];
++
++		end_time += e->interval;
++
++		for (i = 0; i < IGC_MAX_TX_QUEUES; i++) {
++			ring = adapter->tx_ring[i];
++
++			if (!(e->gate_mask & BIT(i)))
++				continue;
++
++			ring->start_time = start_time;
++			ring->end_time = end_time;
++		}
++
++		start_time += e->interval;
++	}
++
++	return 0;
++}
++
++static int igc_tsn_enable_qbv_scheduling(struct igc_adapter *adapter,
++					 struct tc_taprio_qopt_offload *qopt)
++{
++	struct igc_hw *hw = &adapter->hw;
++	int err;
++
++	if (hw->mac.type != igc_i225)
++		return -EOPNOTSUPP;
++
++	err = igc_save_qbv_schedule(adapter, qopt);
++	if (err)
++		return err;
++
++	return igc_tsn_offload_apply(adapter);
++}
++
++static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
++			void *type_data)
++{
++	struct igc_adapter *adapter = netdev_priv(dev);
++
++	switch (type) {
++	case TC_SETUP_QDISC_TAPRIO:
++		return igc_tsn_enable_qbv_scheduling(adapter, type_data);
++
++	default:
++		return -EOPNOTSUPP;
++	}
++}
++
+ static const struct net_device_ops igc_netdev_ops = {
+ 	.ndo_open		= igc_open,
+ 	.ndo_stop		= igc_close,
+@@ -4504,6 +4617,7 @@ static const struct net_device_ops igc_netdev_ops = {
+ 	.ndo_set_features	= igc_set_features,
+ 	.ndo_features_check	= igc_features_check,
+ 	.ndo_do_ioctl		= igc_ioctl,
++	.ndo_setup_tc           = igc_setup_tc,
+ };
+ 
+ /* PCIe configuration access */
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index d4af53a80f11..96dee3c1a5f7 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -231,6 +231,18 @@
+ 
+ #define IGC_RXPBS	0x02404  /* Rx Packet Buffer Size - RW */
+ 
++/* Transmit Scheduling Registers */
++#define IGC_TQAVCTRL                   0x3570
++#define IGC_TXQCTL(_n)                 (0x3344 + 0x4 * (_n))
++#define IGC_BASET_L                    0x3314
++#define IGC_BASET_H                    0x3318
++#define IGC_QBVCYCLET                  0x331C
++#define IGC_QBVCYCLET_S                0x3320
++
++#define IGC_STQT(_n)                   (0x3324 + 0x4 * (_n))
++#define IGC_ENDQT(_n)                  (0x3334 + 0x4 * (_n))
++#define IGC_DTXMXPKTSZ                 0x355C
++
+ /* System Time Registers */
+ #define IGC_SYSTIML	0x0B600  /* System time register Low - RO */
+ #define IGC_SYSTIMH	0x0B604  /* System time register High - RO */
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+new file mode 100644
+index 000000000000..ebd61b89d90e
+--- /dev/null
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+@@ -0,0 +1,139 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c)  2019 Intel Corporation */
++
++#include "igc.h"
++
++/* Returns the TSN specific registers to their default values after
++ * TSN offloading is disabled.
++ */
++static int igc_tsn_disable_offload(struct igc_adapter *adapter)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 tqavctrl;
++	int i;
++
++	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED))
++		return 0;
++
++	adapter->cycle_time = 0;
++
++	wr32(IGC_TXPBS, I225_TXPBSIZE_DEFAULT);
++	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_DEFAULT);
++
++	tqavctrl = rd32(IGC_TQAVCTRL);
++	tqavctrl &= ~(IGC_TQAVCTRL_TRANSMIT_MODE_TSN |
++		      IGC_TQAVCTRL_ENHANCED_QAV);
++	wr32(IGC_TQAVCTRL, tqavctrl);
++
++	for (i = 0; i < adapter->num_tx_queues; i++) {
++		struct igc_ring *ring = adapter->tx_ring[i];
++
++		ring->start_time = 0;
++		ring->end_time = 0;
++		ring->launchtime_enable = false;
++
++		wr32(IGC_TXQCTL(i), 0);
++		wr32(IGC_STQT(i), 0);
++		wr32(IGC_ENDQT(i), NSEC_PER_SEC);
++	}
++
++	wr32(IGC_QBVCYCLET_S, NSEC_PER_SEC);
++	wr32(IGC_QBVCYCLET, NSEC_PER_SEC);
++
++	adapter->flags &= ~IGC_FLAG_TSN_QBV_ENABLED;
++
++	return 0;
++}
++
++static int igc_tsn_enable_offload(struct igc_adapter *adapter)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 tqavctrl, baset_l, baset_h;
++	u32 sec, nsec, cycle;
++	ktime_t base_time, systim;
++	int i;
++
++	if (adapter->flags & IGC_FLAG_TSN_QBV_ENABLED)
++		return 0;
++
++	cycle = adapter->cycle_time;
++	base_time = adapter->base_time;
++
++	wr32(IGC_TSAUXC, 0);
++	wr32(IGC_DTXMXPKTSZ, IGC_DTXMXPKTSZ_TSN);
++	wr32(IGC_TXPBS, IGC_TXPBSIZE_TSN);
++
++	tqavctrl = rd32(IGC_TQAVCTRL);
++	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
++	wr32(IGC_TQAVCTRL, tqavctrl);
++
++	wr32(IGC_QBVCYCLET_S, cycle);
++	wr32(IGC_QBVCYCLET, cycle);
++
++	for (i = 0; i < adapter->num_tx_queues; i++) {
++		struct igc_ring *ring = adapter->tx_ring[i];
++		u32 txqctl = 0;
++
++		wr32(IGC_STQT(i), ring->start_time);
++		wr32(IGC_ENDQT(i), ring->end_time);
++
++		if (adapter->base_time) {
++			/* If we have a base_time we are in "taprio"
++			 * mode and we need to be strict about the
++			 * cycles: only transmit a packet if it can be
++			 * completed during that cycle.
++			 */
++			txqctl |= IGC_TXQCTL_STRICT_CYCLE |
++				IGC_TXQCTL_STRICT_END;
++		}
++
++		wr32(IGC_TXQCTL(i), txqctl);
++	}
++
++	nsec = rd32(IGC_SYSTIML);
++	sec = rd32(IGC_SYSTIMH);
++
++	systim = ktime_set(sec, nsec);
++
++	if (ktime_compare(systim, base_time) > 0) {
++		s64 n;
++
++		n = div64_s64(ktime_sub_ns(systim, base_time), cycle);
++		base_time = ktime_add_ns(base_time, (n + 1) * cycle);
++	}
++
++	baset_h = div_s64_rem(base_time, NSEC_PER_SEC, &baset_l);
++
++	wr32(IGC_BASET_H, baset_h);
++	wr32(IGC_BASET_L, baset_l);
++
++	adapter->flags |= IGC_FLAG_TSN_QBV_ENABLED;
++
++	return 0;
++}
++
++int igc_tsn_offload_apply(struct igc_adapter *adapter)
++{
++	bool is_any_enabled = adapter->base_time;
++
++	if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED) && !is_any_enabled)
++		return 0;
++
++	if (!is_any_enabled) {
++		int err = igc_tsn_disable_offload(adapter);
++
++		if (err < 0)
++			return err;
++
++		/* The BASET registers aren't cleared when writing
++		 * into them, force a reset if the interface is
++		 * running.
++		 */
++		if (netif_running(adapter->netdev))
++			schedule_work(&adapter->reset_task);
++
++		return 0;
++	}
++
++	return igc_tsn_enable_offload(adapter);
++}
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
+new file mode 100644
+index 000000000000..8c34be0d9aae
+--- /dev/null
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
+@@ -0,0 +1,9 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c)  2018 Intel Corporation */
++
++#ifndef _IGC_TSN_H_
++#define _IGC_TSN_H_
++
++int igc_tsn_offload_apply(struct igc_adapter *adapter);
++
++#endif /* _IGC_BASE_H */
 -- 
 2.25.0
 
