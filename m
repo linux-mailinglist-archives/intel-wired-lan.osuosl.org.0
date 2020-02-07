@@ -2,75 +2,75 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3C6E156153
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2020 23:36:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09605156156
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2020 23:38:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A435C88098;
-	Fri,  7 Feb 2020 22:36:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8FD628808D;
+	Fri,  7 Feb 2020 22:38:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L9BugSkwHRB9; Fri,  7 Feb 2020 22:36:02 +0000 (UTC)
+	with ESMTP id dcgg-3JAXp3L; Fri,  7 Feb 2020 22:38:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E9C0A88047;
-	Fri,  7 Feb 2020 22:36:01 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C90FF88047;
+	Fri,  7 Feb 2020 22:38:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CF5BA1BF57C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 22:35:59 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2BDD61BF57C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 22:38:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CA6908800F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 22:35:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 18A7586ECC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 22:38:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q3TMuNsmcpNr for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2020 22:35:59 +0000 (UTC)
+ with ESMTP id NxdKZJlFJjdi for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2020 22:38:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5C76D87EA4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 22:35:59 +0000 (UTC)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 71EFD86EC9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2020 22:38:31 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 07 Feb 2020 14:35:59 -0800
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 07 Feb 2020 14:38:31 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,415,1574150400"; d="scan'208";a="226620392"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga008.fm.intel.com with ESMTP; 07 Feb 2020 14:35:59 -0800
+X-IronPort-AV: E=Sophos;i="5.70,415,1574150400"; d="scan'208";a="432721170"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by fmsmga006.fm.intel.com with ESMTP; 07 Feb 2020 14:38:31 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Fri, 7 Feb 2020 14:38:31 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 7 Feb 2020 14:35:58 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 7 Feb 2020 14:35:58 -0800
+ 15.1.1713.5; Fri, 7 Feb 2020 14:38:30 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Fri, 7 Feb 2020 14:35:58 -0800
+ Fri, 7 Feb 2020 14:38:30 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S37 v3 15/15] ice: Trivial fixes
-Thread-Index: AQHV3RZkD2DZ8pEcSEi2rucntzkM86gQU7Jg
-Date: Fri, 7 Feb 2020 22:35:58 +0000
-Message-ID: <0eeaa5c1860f4a89a1d99108483c96fd@intel.com>
-References: <20200206092013.23388-1-anthony.l.nguyen@intel.com>
- <20200206092013.23388-15-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200206092013.23388-15-anthony.l.nguyen@intel.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net] ice: Fix a couple off by one bugs
+Thread-Index: AQHV1/L6QFkGydHjFE2oQ+RqQ75FIqgQXpFg
+Date: Fri, 7 Feb 2020 22:38:30 +0000
+Message-ID: <4d2cb89e16e44f619e45d6470ce4b1c4@intel.com>
+References: <20200131045658.ahliv7jvubpwoeru@kili.mountain>
+In-Reply-To: <20200131045658.ahliv7jvubpwoeru@kili.mountain>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZmFkNmE1NjUtMmU0MS00ODA1LWEyM2YtYWRjYWFlMmFjN2Q2IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUmFNVFMrV201ditXdmNiOTZCNXM4blZ0MFwvZjcwb1phS3VqUEFcL01yR0tMU3U2MEQ5bkJHVHI4SkFRTFg3bGVUIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNjU2MTVhMjktOWE0Yi00NjA5LWJkOTMtMWExNTk0ZTk2MWE1IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRzhUc09tNkRiQmpLSWk4dDd4SjhLNVZxTGV3WStCdEtJRUdHSHZTNHpBZ1lkVGdwMlZiWjMwM2Vxc0xZSkY4OSJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S37 v3 15/15] ice: Trivial fixes
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix a couple off by one bugs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,31 +90,23 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Tony Nguyen
-> Sent: Thursday, February 6, 2020 1:20 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S37 v3 15/15] ice: Trivial fixes
+> Behalf Of Dan Carpenter
+> Sent: Thursday, January 30, 2020 8:57 PM
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>
+> Cc: netdev@vger.kernel.org; kernel-janitors@vger.kernel.org; intel-wired-
+> lan@lists.osuosl.org; David S. Miller <davem@davemloft.net>
+> Subject: [Intel-wired-lan] [PATCH net] ice: Fix a couple off by one bugs
 > 
-> This is a collection of trivial fixes including fixing whitespace, typos, function
-> headers, reverse Christmas tree, etc.
+> The hw->blk[blk]->es.ref_count[] array has hw->blk[blk].es.count elements.
+> It gets allocated in ice_init_hw_tbls().  So the > should be
+> >= to prevent accessing one element beyond the end of the array.
 > 
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Fixes: 2c61054c5fda ("ice: Optimize table usage")
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 > ---
-> v2:
-> - Another whitespace fix
-> ---
->  drivers/net/ethernet/intel/ice/ice_adminq_cmd.h  |  1 +
->  drivers/net/ethernet/intel/ice/ice_common.c      |  4 ++--
->  drivers/net/ethernet/intel/ice/ice_dcb.c         |  8 ++++----
->  drivers/net/ethernet/intel/ice/ice_dcb_lib.c     |  4 ++--
->  drivers/net/ethernet/intel/ice/ice_ethtool.c     | 14 +++++++-------
->  drivers/net/ethernet/intel/ice/ice_lib.c         |  7 ++++---
->  drivers/net/ethernet/intel/ice/ice_main.c        |  4 +++-
->  drivers/net/ethernet/intel/ice/ice_txrx.c        |  9 ++++-----
->  drivers/net/ethernet/intel/ice/ice_txrx.h        |  4 ++--
->  drivers/net/ethernet/intel/ice/ice_type.h        |  2 +-
->  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c |  3 +--
->  11 files changed, 31 insertions(+), 29 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_flex_pipe.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
