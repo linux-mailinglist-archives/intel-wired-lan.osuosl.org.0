@@ -2,55 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92D95156A04
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Feb 2020 12:54:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 287F1156AA0
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Feb 2020 14:27:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 479FA85039;
-	Sun,  9 Feb 2020 11:54:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B63598592F;
+	Sun,  9 Feb 2020 13:27:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NkahgvUtONMy; Sun,  9 Feb 2020 11:54:53 +0000 (UTC)
+	with ESMTP id 7EjAeRPyqO3l; Sun,  9 Feb 2020 13:27:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A7A0C841E9;
-	Sun,  9 Feb 2020 11:54:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3E1ED8593F;
+	Sun,  9 Feb 2020 13:27:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 80C9A1BF427
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2020 11:54:51 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 33D8D1BF41A
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2020 13:27:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 75DEB2049F
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2020 11:54:51 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2FA6D85DE0
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2020 13:27:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R3V561562xFZ for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Feb 2020 11:54:48 +0000 (UTC)
+ with ESMTP id WYt0gvGElhZZ for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Feb 2020 13:27:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 70CF72039D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2020 11:54:48 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 2475D85D00
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2020 13:27:03 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 09 Feb 2020 03:54:48 -0800
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Feb 2020 05:27:02 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,421,1574150400"; d="scan'208";a="405314231"
+X-IronPort-AV: E=Sophos;i="5.70,421,1574150400"; d="scan'208";a="265568093"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 09 Feb 2020 03:54:46 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 09 Feb 2020 05:27:01 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1j0lAk-000Eup-CZ; Sun, 09 Feb 2020 19:54:46 +0800
-Date: Sun, 09 Feb 2020 19:53:48 +0800
+ id 1j0mc1-0006z9-5C; Sun, 09 Feb 2020 21:27:01 +0800
+Date: Sun, 09 Feb 2020 21:26:03 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e3ff2cc.bg5isaXwqSX63wq3%lkp@intel.com>
+Message-ID: <5e40086b.sC82pCv4r3oB5ucS%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- efd2087941d2bc08b6c0a559aab0d8cdcfa38e0f
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ 014e2013d07445bf00adcddb8b9742ce13deaeaf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,68 +68,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: efd2087941d2bc08b6c0a559aab0d8cdcfa38e0f  gwdpa: gswip: Introduce Gigabit Ethernet Switch (GSWIP) device driver
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 014e2013d07445bf00adcddb8b9742ce13deaeaf  i40e: Fix the conditional for i40e_vc_validate_vqs_bitmaps
 
-Regressions in current branch:
+elapsed time: 2881m
 
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse:    expected void [noderef] <asn:2> *base
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse:    got void *context
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:32:30: sparse: sparse: incorrect type in initializer (different address spaces)
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:77:30: sparse:    expected void *bus_context
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:77:30: sparse:    got void [noderef] <asn:2> *[assigned] core
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c:77:30: sparse: sparse: incorrect type in argument 3 (different address spaces)
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:119:5: sparse: sparse: symbol 'mac_set_duplex' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:144:5: sparse: sparse: symbol 'mac_get_duplex' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:156:5: sparse: sparse: symbol 'mac_get_linksts' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:168:5: sparse: sparse: symbol 'mac_set_linksts' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:193:5: sparse: sparse: symbol 'mac_set_flowctrl' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:38:5: sparse: sparse: symbol 'mac_get_speed' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c:50:5: sparse: sparse: symbol 'mac_set_physpeed' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c:478:5: sparse: sparse: symbol 'xgmac_mdio_single_wr' was not declared. Should it be static?
-drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c:529:5: sparse: sparse: symbol 'xgmac_mdio_single_rd' was not declared. Should it be static?
-drivers/net/ethernet/intel/ice/ice_flow.c:1048 ice_add_rss_cfg_sync() error: we previously assumed 'prof' could be null (see line 1030)
-
-Error ids grouped by kconfigs:
-
-recent_errors
-|-- i386-allyesconfig
-|   `-- drivers-net-ethernet-intel-ice-ice_flow.c-ice_add_rss_cfg_sync()-error:we-previously-assumed-prof-could-be-null-(see-line-)
-`-- x86_64-allyesconfig
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_dev.c:sparse:expected-void-bus_context
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_dev.c:sparse:expected-void-noderef-asn-base
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_dev.c:sparse:got-void-context
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_dev.c:sparse:got-void-noderef-asn-assigned-core
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_dev.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_dev.c:sparse:sparse:incorrect-type-in-initializer-(different-address-spaces)
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_get_duplex-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_get_linksts-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_get_speed-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_set_duplex-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_set_flowctrl-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_set_linksts-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-mac_cfg.c:sparse:sparse:symbol-mac_set_physpeed-was-not-declared.-Should-it-be-static
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-xgmac.c:sparse:sparse:symbol-xgmac_mdio_single_rd-was-not-declared.-Should-it-be-static
-    `-- drivers-net-ethernet-intel-gwdpa-gswip-xgmac.c:sparse:sparse:symbol-xgmac_mdio_single_wr-was-not-declared.-Should-it-be-static
-
-TIMEOUT after 2885m
-
-
-Sorry we cannot finish the testset for your branch within a reasonable time.
-It's our fault -- either some build server is down or some build worker is busy
-doing bisects for _other_ trees. The branch will get more complete coverage and
-possible error reports when our build infrastructure is restored or catches up.
-There will be no more build success notification for this branch head, but you
-can expect reasonably good test coverage after waiting for 1 day.
-
-configs timed out: 3
-
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-
-configs tested: 137
+configs tested: 136
 configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
 arm                              allmodconfig
 arm                               allnoconfig
@@ -146,27 +94,27 @@ arm64                             allnoconfig
 arm64                            allyesconfig
 arm64                               defconfig
 sparc                            allyesconfig
-sh                          rsk7269_defconfig
 ia64                                defconfig
-riscv                             allnoconfig
 parisc                           allyesconfig
-um                                  defconfig
-sparc64                          allyesconfig
 arc                              allyesconfig
 xtensa                          iss_defconfig
-m68k                       m5475evb_defconfig
-ia64                              allnoconfig
-nios2                         3c120_defconfig
+sparc64                          allyesconfig
+s390                                defconfig
 sh                  sh7785lcr_32bit_defconfig
 sh                            titan_defconfig
-nios2                         10m50_defconfig
-sparc64                           allnoconfig
-i386                                defconfig
-i386                             allyesconfig
+microblaze                    nommu_defconfig
 i386                             alldefconfig
 i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
 c6x                              allyesconfig
 c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
 openrisc                    or1ksim_defconfig
 openrisc                 simple_smp_defconfig
 xtensa                       common_defconfig
@@ -178,11 +126,11 @@ h8300                     edosk2674_defconfig
 h8300                    h8300h-sim_defconfig
 h8300                       h8s-sim_defconfig
 m68k                             allmodconfig
+m68k                       m5475evb_defconfig
 m68k                          multi_defconfig
 m68k                           sun3_defconfig
 arc                                 defconfig
 microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
 powerpc                           allnoconfig
 powerpc                             defconfig
 powerpc                       ppc64_defconfig
@@ -198,45 +146,41 @@ parisc                            allnoconfig
 parisc                         b180_defconfig
 parisc                        c3000_defconfig
 parisc                              defconfig
-c6x                  randconfig-a001-20200209
-h8300                randconfig-a001-20200209
-microblaze           randconfig-a001-20200209
-nios2                randconfig-a001-20200209
-sparc64              randconfig-a001-20200209
 h8300                randconfig-a001-20200207
 nios2                randconfig-a001-20200207
 sparc64              randconfig-a001-20200207
-microblaze           randconfig-a001-20200207
 c6x                  randconfig-a001-20200207
-sh                   randconfig-a001-20200207
-csky                 randconfig-a001-20200207
-s390                 randconfig-a001-20200207
-xtensa               randconfig-a001-20200207
-openrisc             randconfig-a001-20200207
-x86_64               randconfig-c001-20200207
-x86_64               randconfig-c002-20200207
+microblaze           randconfig-a001-20200207
 x86_64               randconfig-c003-20200207
-i386                 randconfig-c001-20200207
+x86_64               randconfig-c002-20200207
 i386                 randconfig-c002-20200207
+i386                 randconfig-c001-20200207
+x86_64               randconfig-c001-20200207
 i386                 randconfig-c003-20200207
+x86_64               randconfig-d001-20200207
+x86_64               randconfig-d002-20200207
 x86_64               randconfig-d003-20200207
 i386                 randconfig-d001-20200207
-x86_64               randconfig-d002-20200207
-i386                 randconfig-d003-20200207
-x86_64               randconfig-d001-20200207
 i386                 randconfig-d002-20200207
-i386                 randconfig-e003-20200207
-i386                 randconfig-e002-20200207
+i386                 randconfig-d003-20200207
 x86_64               randconfig-e001-20200207
+x86_64               randconfig-e002-20200207
 x86_64               randconfig-e003-20200207
 i386                 randconfig-e001-20200207
-x86_64               randconfig-e002-20200207
-x86_64               randconfig-g001-20200207
-x86_64               randconfig-g002-20200207
-x86_64               randconfig-g003-20200207
-i386                 randconfig-g001-20200207
-i386                 randconfig-g002-20200207
-i386                 randconfig-g003-20200207
+i386                 randconfig-e002-20200207
+i386                 randconfig-e003-20200207
+x86_64               randconfig-f001-20200207
+x86_64               randconfig-f002-20200207
+x86_64               randconfig-f003-20200207
+i386                 randconfig-f001-20200207
+i386                 randconfig-f002-20200207
+i386                 randconfig-f003-20200207
+x86_64               randconfig-h001-20200207
+x86_64               randconfig-h002-20200207
+x86_64               randconfig-h003-20200207
+i386                 randconfig-h001-20200207
+i386                 randconfig-h002-20200207
+i386                 randconfig-h003-20200207
 x86_64               randconfig-h001-20200208
 x86_64               randconfig-h002-20200208
 x86_64               randconfig-h003-20200208
@@ -244,6 +188,7 @@ i386                 randconfig-h001-20200208
 i386                 randconfig-h002-20200208
 i386                 randconfig-h003-20200208
 riscv                            allmodconfig
+riscv                             allnoconfig
 riscv                            allyesconfig
 riscv                               defconfig
 riscv                    nommu_virt_defconfig
@@ -253,15 +198,17 @@ s390                             allmodconfig
 s390                              allnoconfig
 s390                             allyesconfig
 s390                          debug_defconfig
-s390                                defconfig
 s390                       zfcpdump_defconfig
 sh                               allmodconfig
 sh                                allnoconfig
+sh                          rsk7269_defconfig
 sparc                               defconfig
 sparc64                          allmodconfig
+sparc64                           allnoconfig
 sparc64                             defconfig
-um                             i386_defconfig
 um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
 x86_64                              fedora-25
 x86_64                                  kexec
 x86_64                                    lkp
