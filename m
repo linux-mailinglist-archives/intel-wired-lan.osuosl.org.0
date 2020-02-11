@@ -2,70 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96995159C0A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2020 23:20:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 916D8159C14
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2020 23:23:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3EC4286D73;
-	Tue, 11 Feb 2020 22:20:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 415D386D73;
+	Tue, 11 Feb 2020 22:23:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jnbe0nlsHOhj; Tue, 11 Feb 2020 22:20:31 +0000 (UTC)
+	with ESMTP id CvduSNe2DND1; Tue, 11 Feb 2020 22:23:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D31BC86CB4;
-	Tue, 11 Feb 2020 22:20:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 76B5886E49;
+	Tue, 11 Feb 2020 22:23:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 728551BF82D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 22:20:28 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1061E1BF82D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 22:23:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6B1F386C1A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 22:20:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0BE6F855F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 22:23:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZILpZKfr4eYX for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Feb 2020 22:20:27 +0000 (UTC)
+ with ESMTP id MjWdkNUQ0bcP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Feb 2020 22:23:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8018686C4A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 22:20:27 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 85BD484BAF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 22:23:03 +0000 (UTC)
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2020 14:20:26 -0800
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Feb 2020 14:23:03 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.70,428,1574150400"; 
- d="p7s'?scan'208";a="226627163"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga007.fm.intel.com with ESMTP; 11 Feb 2020 14:20:26 -0800
-Received: from orsmsx162.amr.corp.intel.com (10.22.240.85) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 11 Feb 2020 14:20:26 -0800
+ d="p7s'?scan'208";a="227645011"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by fmsmga008.fm.intel.com with ESMTP; 11 Feb 2020 14:23:02 -0800
+Received: from orsmsx124.amr.corp.intel.com (10.22.240.120) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 11 Feb 2020 14:23:02 -0800
 Received: from orsmsx116.amr.corp.intel.com ([169.254.7.108]) by
- ORSMSX162.amr.corp.intel.com ([169.254.3.233]) with mapi id 14.03.0439.000;
- Tue, 11 Feb 2020 14:20:26 -0800
+ ORSMSX124.amr.corp.intel.com ([169.254.2.72]) with mapi id 14.03.0439.000;
+ Tue, 11 Feb 2020 14:23:02 -0800
 From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
 To: "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>
-Thread-Topic: [Intel-wired-lan] [PATCH S39 01/15] ice: Validate config for
- SW DCB map
-Thread-Index: AQHV1Tr1cBCLcSbivkWzc1OhfvJlGagW1zmAgABXVIA=
-Date: Tue, 11 Feb 2020 22:20:25 +0000
-Message-ID: <69197e331233673ea185bd5d48f9773ee72bf45e.camel@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S39 09/15] ice: Don't reject odd
+ values of usecs set by user
+Thread-Index: AQHV1TtPzHrocOKmH0OB8SQDqT+9JagW2wsAgABUPQA=
+Date: Tue, 11 Feb 2020 22:23:01 +0000
+Message-ID: <201a8cea45b211d6a5d4257c527bf723799149d8.camel@intel.com>
 References: <20200127085927.13999-1-anthony.l.nguyen@intel.com>
- <5cea01f5-7e1b-f835-60b3-2dafa8b6e744@molgen.mpg.de>
-In-Reply-To: <5cea01f5-7e1b-f835-60b3-2dafa8b6e744@molgen.mpg.de>
+ <20200127085927.13999-9-anthony.l.nguyen@intel.com>
+ <9d07b895-938e-c013-65a5-f274a3b8dcdf@molgen.mpg.de>
+In-Reply-To: <9d07b895-938e-c013-65a5-f274a3b8dcdf@molgen.mpg.de>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: yes
 X-MS-TNEF-Correlator: 
 x-originating-ip: [10.166.244.155]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S39 01/15] ice: Validate config for SW
- DCB map
+Subject: Re: [Intel-wired-lan] [PATCH S39 09/15] ice: Don't reject odd
+ values of usecs set by user
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,201 +79,179 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============3614719371576313719=="
+Cc: "Creeley, Brett" <brett.creeley@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: multipart/mixed; boundary="===============1067663838889012052=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============3614719371576313719==
+--===============1067663838889012052==
 Content-Language: en-US
 Content-Type: multipart/signed; micalg=sha-1;
-	protocol="application/x-pkcs7-signature"; boundary="=-6d8hIXDUOIp7zeLGGp4G"
+	protocol="application/x-pkcs7-signature"; boundary="=-T0Qd88saMqTzfwKd9MwA"
 
---=-6d8hIXDUOIp7zeLGGp4G
+--=-T0Qd88saMqTzfwKd9MwA
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, 2020-02-11 at 18:07 +0100, Paul Menzel wrote:
+On Tue, 2020-02-11 at 18:21 +0100, Paul Menzel wrote:
 > Dear Tony,
 >=20
 >=20
 > On 2020-01-27 09:59, Tony Nguyen wrote:
-> > From: Avinash Dayanand <avinash.dayanand@intel.com>
+> > From: Brett Creeley <brett.creeley@intel.com>
 > >=20
-> > Validate the inputs for SW DCB config received either via lldptool
-> > or pcap
-> > file. And don't apply DCB for bad bandwidth inputs or non-
-> > contiguous TCs.
-> > Without this patch, any config having bad inputs will cause the
-> > loss of
-> > link making PF unusable even after driver reload. Recoverable only
-> > via
-> > system reboot.
+> > Currently if a user sets an odd [tx|rx]-usecs value through
+> > ethtool,
+> > the request is denied because the hardware is set to have an ITR
+> > granularity of 2us. This caused poor customer experience. Fix this
+> > by
+> > aligning to a register allowed value, which results in rounding
+> > down.
+> > Also, print a once per ring container type message to be clear
+> > about
+> > our intentions.
 > >=20
-> > Signed-off-by: Avinash Dayanand <avinash.dayanand@intel.com>
-> > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> > Also, change the ITR_TO_REG define to be the bitwise and of the ITR
+> > setting and the ICE_ITR_MASK. This makes the purpose of ITR_TO_REG
+> > more
+> > obvious.
+> >=20
+> > Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > > ---
-> >  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 55
-> > ++++++++++++++++++++
-> >  drivers/net/ethernet/intel/ice/ice_dcb_lib.h |  1 +
-> >  drivers/net/ethernet/intel/ice/ice_dcb_nl.c  |  7 +++
-> >  3 files changed, 63 insertions(+)
+> >  drivers/net/ethernet/intel/ice/ice_ethtool.c | 49 +++++++++++++++-
+> > ----
+> >  drivers/net/ethernet/intel/ice/ice_txrx.h    |  2 +-
+> >  2 files changed, 39 insertions(+), 12 deletions(-)
 > >=20
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> > b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> > index 0f4ca813a7ab..bd361212921c 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> > @@ -169,6 +169,56 @@ ice_peer_prep_tc_change(struct
-> > ice_peer_dev_int *peer_dev_int,
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> > b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> > index db14ec2e0b46..ae0b63d5673d 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> > @@ -3488,21 +3488,13 @@ ice_set_rc_coalesce(enum ice_container_type
+> > c_type, struct ethtool_coalesce *ec,
+> >  		return -EINVAL;
+> >  	}
+> > =20
+> > -	/* hardware only supports an ITR granularity of 2us */
+> > -	if (coalesce_usecs % 2 !=3D 0) {
+> > -		netdev_info(vsi->netdev, "Invalid value, %s-usecs must
+> > be even\n",
+> > -			    c_type_str);
+> > -		return -EINVAL;
+> > -	}
+> > -
+> >  	if (use_adaptive_coalesce) {
+> >  		rc->itr_setting |=3D ICE_ITR_DYNAMIC;
+> >  	} else {
+> > -		/* store user facing value how it was set */
+> > +		/* save the user set usecs */
+> >  		rc->itr_setting =3D coalesce_usecs;
+> > -		/* set to static and convert to value HW understands */
+> > -		rc->target_itr =3D
+> > -			ITR_TO_REG(ITR_REG_ALIGN(rc->itr_setting));
+> > +		/* device ITR granularity is in 2 usec increments */
+> > +		rc->target_itr =3D ITR_REG_ALIGN(rc->itr_setting);
+> >  	}
+> > =20
+> >  	return 0;
+> > @@ -3595,6 +3587,30 @@ ice_is_coalesce_param_invalid(struct
+> > net_device *netdev,
 > >  	return 0;
 > >  }
 > > =20
 > > +/**
-> > + * ice_dcb_bwchk - check if ETS bandwidth input parameters are
-> > correct
-> > + * @dcbcfg: pointer to DCB config structure
+> > + * ice_print_if_odd_usecs - print message if user tries to set odd
+> > [tx|rx]-usecs
+> > + * @netdev: netdev used for print
+> > + * @itr_setting: previous user setting
+> > + * @use_adaptive_coalesce: if adaptive coalesce is enabled or
+> > being enabled
+> > + * @coalesce_usecs: requested value of [tx|rx]-usecs
+> > + * @c_type_str: either "rx" or "tx" to match user set field of
+> > [tx|rx]-usecs
+>=20
+> Why `c_type_str`? What does it mean?
+
+It stands for container type string; so whether the container type is
+"rx" or "tx".  It is has the same usage in ice_set_rx_coalesce() so we
+continued with the convention here.
+
 > > + */
-> > +int ice_dcb_bwchk(struct ice_dcbx_cfg *dcbcfg)
+> > +static void
+> > +ice_print_if_odd_usecs(struct net_device *netdev, u16 itr_setting,
+> > +		       u32 use_adaptive_coalesce, u32 coalesce_usecs,
+> > +		       const char *c_type_str)
 > > +{
-> > +	struct ice_dcb_ets_cfg *etscfg =3D &dcbcfg->etscfg;
-> > +	u8 num_tc, total_bw =3D 0;
-> > +	int i;
-> > +
-> > +	/* returns number of contigous TCs and 1 TC for non-contigous
-> > TCs,
-> > +	 * since at least 1 TC has to be configured
-> > +	 */
-> > +	num_tc =3D ice_dcb_get_num_tc(dcbcfg);
-> > +
-> > +	/* no bandwidth checks required if there's only one TC and
-> > assign
-> > +	 * all bandwidth to it i.e. to TC0 and return
+> > +	if (use_adaptive_coalesce)
+> > +		return;
 >=20
-> =E2=80=A6, so assign all bandwidth to TC0 and return
->=20
+> Why not check that before calling the function and not passing the it
+> to this
+> one.
 
-Will fix the comment to include this
-
-> > +	 */
-> > +	if (num_tc =3D=3D 1) {
-> > +		etscfg->tcbwtable[0] =3D ICE_TC_MAX_BW;
-> > +		return 0;
-> > +	}
-> > +	/* There are few rules with which TC bandwidth can be applied
-> > for any TC
-> > +	 * with a UP mapped to it.
-> > +	 *	1. All TCs have zero BW - Valid
-> > +	 *	   ex:  tcbw=3D0,0,0
-> > +	 *	2. First few non-zero and rest zero BW - Valid
-> > +	 *	   ex:  tcbw=3D100,0,0
-> > +	 *	3. Zero BW in between 2 non-zero BW TCs - Invalid
-> > +	 *	   ex:  tcbw=3D25,0,75
-> > +	 */
-> > +	for (i =3D 0; i < num_tc; i++) {
-> > +		/* don't allow zero BW for TCs other than TC0 */
-> > +		if (i && !etscfg->tcbwtable[i])
-> > +			goto err;
->=20
-> As the error handling is just `return -EINVAL`, please do that
-> directly
-> here.
-
-After talking to others this check is not needed so I'll take it out
-altogether.
+This is put in the function instead of before calling it to reduce code
+duplication.  Adaptive coalesce can be set for Tx and Rx; usecs can
+also be set for Tx and RX so putting it in here allows us to use the
+same code to do the checks.  Otherwise, we will need to check each
+condition for both Tx and Rx before calling this function.
 
 > > +
-> > +		if (etscfg->tsatable[i] =3D=3D ICE_IEEE_TSA_ETS)
-> > +			total_bw +=3D etscfg->tcbwtable[i];
-> > +	}
+> > +	itr_setting =3D ITR_TO_REG(itr_setting);
 > > +
-> > +	 /* total bandwidth should be equal to 100 */
-> > +	if (total_bw !=3D ICE_TC_MAX_BW)
-> > +		goto err;
->=20
-> Ditto.
->=20
-> Also, why not print an error for this case?
-
-Will do both.
-
-> > +
-> > +	return 0;
-> > +
-> > +err:
-> > +	return -EINVAL;
+> > +	if (itr_setting !=3D coalesce_usecs && (coalesce_usecs % 2))
+> > +		netdev_info(netdev, "User set %s-usecs to %d, device
+> > only supports even values. Rounding down and attempting to set %s-
+> > usecs to %d\n",
+> > +			    c_type_str, coalesce_usecs, c_type_str,
+> > +			    ITR_REG_ALIGN(coalesce_usecs));
 > > +}
 > > +
 > >  /**
-> >   * ice_pf_dcb_cfg - Apply new DCB configuration
-> >   * @pf: pointer to the PF struct
-> > @@ -206,6 +256,11 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct
-> > ice_dcbx_cfg *new_cfg, bool locked)
-> >  	/* Notify capable peers about impending change to TCs */
-> >  	ice_for_each_peer(pf, NULL, ice_peer_prep_tc_change);
+> >   * __ice_set_coalesce - set ITR/INTRL values for the device
+> >   * @netdev: pointer to the netdev associated with this query
+> > @@ -3615,8 +3631,19 @@ __ice_set_coalesce(struct net_device
+> > *netdev, struct ethtool_coalesce *ec,
+> >  		return -EINVAL;
 > > =20
-> > +	if (ice_dcb_bwchk(new_cfg)) {
-> > +		dev_err(dev, "Invalid config, not applying DCB\n");
+> >  	if (q_num < 0) {
+> > +		struct ice_q_vector *q_vector =3D vsi->q_vectors[0];
+> >  		int v_idx;
+> > =20
+> > +		if (q_vector) {
 >=20
-> It=E2=80=99d be useful to know what is incorrect. So, maybe move the erro=
-r
-> message
-> into the function.
+> Why not check for `(coalesce_usecs % 2)` here already?
 
-Will include messaging in the function on what is incorrect.
+Explained in previous response.
 
->=20
-> > +		return -EINVAL;
-> > +	}
+> > +			ice_print_if_odd_usecs(netdev, q_vector-
+> > >rx.itr_setting,
+> > +					       ec-
+> > >use_adaptive_rx_coalesce,
+> > +					       ec->rx_coalesce_usecs,
+> > "rx");
 > > +
-> >  	/* Store old config in case FW config fails */
-> >  	old_cfg =3D kmemdup(curr_cfg, sizeof(*old_cfg), GFP_KERNEL);
-> >  	if (!old_cfg)
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-> > b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-> > index bb53edf462ba..2b900da27f57 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-> > +++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-> > @@ -20,6 +20,7 @@ u8 ice_dcb_get_num_tc(struct ice_dcbx_cfg
-> > *dcbcfg);
-> >  u8 ice_dcb_get_tc(struct ice_vsi *vsi, int queue_index);
-> >  int
-> >  ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg,
-> > bool locked);
-> > +int ice_dcb_bwchk(struct ice_dcbx_cfg *dcbcfg);
-> >  void ice_pf_dcb_recfg(struct ice_pf *pf);
-> >  void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi);
-> >  int ice_init_pf_dcb(struct ice_pf *pf, bool locked);
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-> > b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-> > index b61aba428adb..a45e8abef8f3 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-> > @@ -95,6 +95,12 @@ static int ice_dcbnl_setets(struct net_device
-> > *netdev, struct ieee_ets *ets)
-> >  		new_cfg->etsrec.prio_table[i] =3D ets->reco_prio_tc[i];
-> >  	}
-> > =20
-> > +	if (ice_dcb_bwchk(new_cfg)) {
-> > +		netdev_err(netdev, "Invalid config, not applying
-> > DCB\n");
-> > +		err =3D -EINVAL;
-> > +		goto ets_out;
+> > +			ice_print_if_odd_usecs(netdev, q_vector-
+> > >tx.itr_setting,
+> > +					       ec-
+> > >use_adaptive_tx_coalesce,
+> > +					       ec->tx_coalesce_usecs,
+> > "tx");
+> > +		}
+> > +
 >=20
-> Is that good style to use goto in this case? Why can=E2=80=99t it be put
-> after
-> `ice_pf_dcb_cfg()`?
+> I do not know of such a construct in the rest of the Linux kernel. Is
+> there
+> a better way to achieve your goal?
 
-We need to validate the config before applying it, which is what
-ice_pf_dcb_cfg() does. We can't apply the config without knowing that
-it's a good configuration.
-
-For the goto, we're trying to have a single point of unlock/exit.
+I'm not aware of anything else to use, but I'm open to other thoughts
+or suggestions if you have any.
 
 Thanks,
 Tony
 
---=-6d8hIXDUOIp7zeLGGp4G
+--=-T0Qd88saMqTzfwKd9MwA
 Content-Type: application/x-pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -328,18 +307,18 @@ B8uO1XlhOrj+Z3mSi85eblWWhJlq6+TQH/hZWSiyZH2lo3J49oHClTlk86GUEIUp/sf5v5cxggIX
 MIICEwIBATCBkDB5MQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFDASBgNVBAcTC1NhbnRhIENs
 YXJhMRowGAYDVQQKExFJbnRlbCBDb3Jwb3JhdGlvbjErMCkGA1UEAxMiSW50ZWwgRXh0ZXJuYWwg
 QmFzaWMgSXNzdWluZyBDQSA0QQITMwAA0J5PWjT/SLEH2wAAAADQnjAJBgUrDgMCGgUAoF0wGAYJ
-KoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAwMjExMjIyMDIzWjAjBgkq
-hkiG9w0BCQQxFgQUJggZOioqJoW/HkdAnz6OHjhxDu0wDQYJKoZIhvcNAQEBBQAEggEASwajBPL3
-wh6GI/6hmpGamKx/IQAe1ThXF0kAqSNKE9nejSx0qy7h5ta4g+vRjbqY0w5P5+5LaKmKn3nC/1xr
-14Nty9zuQfa7l/7llN6FoW4P7sN2Gn+w7F/9Xou5H5g+dIu6GZl6Oq4zcr37CqNlLMUdPKRQ6yXa
-RMiZPLoScAoPukqown0mTnv2GBVAgezFKJEExG/XSlRy9g6ykPKB6/91xLh5Cp/tPFYie19dQnHl
-KN77z70uXDKzDD0nOTdlx5KOc4IlYtgIPmCQivH1JlWYrSZVgh7fhRKT7QOnHbl31TkCPO210cui
-PrgkzutNJFgDC3Jj4Q2DGcY75k6ZZwAAAAAAAA==
+KoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjAwMjExMjIyMzAwWjAjBgkq
+hkiG9w0BCQQxFgQU0EGRssR5T4ufCWzOj8CZar0emOcwDQYJKoZIhvcNAQEBBQAEggEANPULq57w
+Z0i44IJ6DaYFoySZ4k7qSGMqasN/npULigXIM2RNSsyP34JPl42SYhhla3dxQkzz5F+Nb98h8Ron
+FLxBIoanlsOGpEUDpsX3UvkF8WNfMB+yQUyYBuShGvG/WEkk8obMHIFWLd+2vT3ANUixfl6FGTKv
+xROZdqM2Uwdp9XESWkub8kngyIfktGXxosGeGizxUjALCrx3DD252A2bKWrI3brwqSHtF1wAUhFg
+rXTgLm2BKkOMLMkAI/jBnuCR5ggyp6JgTdyhSgGhKxLs9bgXUyQaEVb1ks/iQ7iVNCQ+F/DtNtir
+hXdaGIxZOSkRubt26SXuUQNJaPNjoQAAAAAAAA==
 
 
---=-6d8hIXDUOIp7zeLGGp4G--
+--=-T0Qd88saMqTzfwKd9MwA--
 
---===============3614719371576313719==
+--===============1067663838889012052==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -350,4 +329,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============3614719371576313719==--
+--===============1067663838889012052==--
