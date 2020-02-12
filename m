@@ -1,56 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19429159DA5
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Feb 2020 00:48:17 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EE6C15A0D8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Feb 2020 06:49:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 097A020423;
-	Tue, 11 Feb 2020 23:48:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E186187B3E;
+	Wed, 12 Feb 2020 05:49:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L7vf4DAn+MiK; Tue, 11 Feb 2020 23:48:14 +0000 (UTC)
+	with ESMTP id AiKEH9hXNTWY; Wed, 12 Feb 2020 05:49:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DA06020502;
-	Tue, 11 Feb 2020 23:48:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 3C57387ACE;
+	Wed, 12 Feb 2020 05:49:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E531D1BF33F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 23:48:11 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 94F851BF2BC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Feb 2020 05:49:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DC08A8647A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 23:48:11 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8D5EA2044F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Feb 2020 05:49:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q4dwyaYyLYQY for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Feb 2020 23:48:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3589881DD2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2020 23:48:11 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2020 15:48:10 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,428,1574150400"; 
- d="asc'?scan'208";a="233621554"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.74])
- by orsmga003.jf.intel.com with ESMTP; 11 Feb 2020 15:48:09 -0800
-Message-ID: <43c9336e1c0c23e374420586868052e947b75126.camel@intel.com>
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Linux PM
- <linux-pm@vger.kernel.org>
-Date: Tue, 11 Feb 2020 15:48:09 -0800
-In-Reply-To: <10624145.o336LLEsho@kreacher>
+ with ESMTP id Jay4c3JPLM97 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Feb 2020 05:49:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail27.static.mailgun.info (mail27.static.mailgun.info
+ [104.130.122.27])
+ by silver.osuosl.org (Postfix) with ESMTPS id A6380203F2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Feb 2020 05:49:50 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1581486590; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=4nXRF41DUnBVNFoYDb54+pPJeN0bz4OPCsG/eKuBNxs=;
+ b=w9DQ5f7Gg/0bnw0KInRsvT/rU/YkIJzblNh1e4cfDq3ZT7W1XeXnkHOQRKZyhg6CZq29spiA
+ 9wErDdXE9IQoOoVb7bJmOgx4QeNcYxIZ86spNNoVW/LlIVuNoqSH7TCgSn+0ro/XKD3xGTTr
+ iJbBlD6djUDbgEnOcw0jkA4ij3o=
+X-Mailgun-Sending-Ip: 104.130.122.27
+X-Mailgun-Sid: WyIzYjE0NCIsICJpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZyIsICJiZTllNGEiXQ==
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e4391fd.7f4267026c00-smtp-out-n02;
+ Wed, 12 Feb 2020 05:49:49 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 52156C4479C; Wed, 12 Feb 2020 05:49:48 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 01C66C43383;
+ Wed, 12 Feb 2020 05:49:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 01C66C43383
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
 References: <1654227.8mz0SueHsU@kreacher> <10624145.o336LLEsho@kreacher>
-Organization: Intel
-User-Agent: Evolution 3.34.3 (3.34.3-1.fc31) 
+Date: Wed, 12 Feb 2020 07:49:43 +0200
+In-Reply-To: <10624145.o336LLEsho@kreacher> (Rafael J. Wysocki's message of
+ "Wed, 12 Feb 2020 00:24:36 +0100")
+Message-ID: <87v9ocwe14.fsf@kamboji.qca.qualcomm.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH 20/28] drivers: net: Call
  cpu_latency_qos_*() instead of pm_qos_*()
@@ -66,81 +82,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: jeffrey.t.kirsher@intel.com
-Cc: Kalle Valo <kvalo@codeaurora.org>, linux-wireless@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, LKML <linux-kernel@vger.kernel.org>,
- Amit Kucheria <amit.kucheria@linaro.org>
-Content-Type: multipart/mixed; boundary="===============7601743566128866768=="
+Cc: Linux PM <linux-pm@vger.kernel.org>, linux-wireless@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>, Amit Kucheria <amit.kucheria@linaro.org>,
+ intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+"Rafael J. Wysocki" <rjw@rjwysocki.net> writes:
 
---===============7601743566128866768==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-GaZoanpPv4L3uFpFpUoG"
-
-
---=-GaZoanpPv4L3uFpFpUoG
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, 2020-02-12 at 00:24 +0100, Rafael J. Wysocki wrote:
 > From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
->=20
+>
 > Call cpu_latency_qos_add/update/remove_request() instead of
 > pm_qos_add/update/remove_request(), respectively, because the
 > latter are going to be dropped.
->=20
+>
 > No intentional functional impact.
->=20
+>
 > Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-
-Acked-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com
-
-For the e1000e changes
-
 > ---
 >  drivers/net/ethernet/intel/e1000e/netdev.c   | 13 ++++++-------
 >  drivers/net/wireless/ath/ath10k/core.c       |  4 ++--
 >  drivers/net/wireless/intel/ipw2x00/ipw2100.c | 10 +++++-----
 >  3 files changed, 13 insertions(+), 14 deletions(-)
 
+For the wireless stuff:
 
---=-GaZoanpPv4L3uFpFpUoG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl5DPTkACgkQ5W/vlVpL
-7c4a3g//SCBWhCZ3vnz6qb26ASH5pK5fgz/l9o0FmD/sOn6jHfXbGmD3C8zTo6ic
-j1pQ488wAXMKm+Ay6CNyy3tqC3l9Lg1GKu6wQ4R/evm7cCk38Mwg7+sHa5aNdjwo
-6+KmMvHD9aY3Ya+QzsrJg5ZztvW/CWP69SJ1J2JfM9a401S0Us5MX/O2WmdyYo/9
-nXRGTYYj3Aekg1Ghs2JdWkYyiPGUDTic1R8psB8I7rDHZV5zmrrBferSMz8jB9Gk
-ReQE43h5rF0CZKQevMws/J6gO2Ndfbre5BZoXA7wydzs4kkV2O98u0aTc/HBP16l
-q8vf//TZ0cJy+rTEexxKIlWsfdIKQbYsWIenY6GEjR7W0n/chJYQZw40wGODisMd
-Et4ZZwL7fVpWxLxVtSrhlAieD2RpAYyCYl6l9s46lcmHSf59kbx1EyN/EmwrpEIn
-N9wCiCX9s1Nj4kH1CQAdTXhK8InLFKxKdApKSbACTwXyKuxMB/Pk65fbh4BVGTGo
-kX0PZgKNIFo4+YvZZUwin+rioyBGQopgfbgy5z4StXQ2Rd0jEpwrMIu0mxXy39PG
-X9A0+gUBAlsWDr+Jv8NCXpw5Q74vbSzHuUZwi4wpDbwnjqb6WO2yXv9mJXJCgR+b
-xJA8RDrjt9XmBr4zk43EzPZqqPlp5w2oiPH3e7cJ84sDSG7H9Sc=
-=6ivJ
------END PGP SIGNATURE-----
-
---=-GaZoanpPv4L3uFpFpUoG--
-
-
---===============7601743566128866768==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+-- 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============7601743566128866768==--
-
