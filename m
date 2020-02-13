@@ -1,61 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5BE815C9B9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 18:48:58 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1235315CD4D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 22:31:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 83DC185F11;
-	Thu, 13 Feb 2020 17:48:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9DDA287EE8;
+	Thu, 13 Feb 2020 21:31:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CYJ8Ee6clml6; Thu, 13 Feb 2020 17:48:57 +0000 (UTC)
+	with ESMTP id Eq8xbwcSQVdh; Thu, 13 Feb 2020 21:31:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 43CC085F5C;
-	Thu, 13 Feb 2020 17:48:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9774987F44;
+	Thu, 13 Feb 2020 21:31:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D4D481BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 17:48:54 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B1BA71BF338
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D040285F56
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 17:48:54 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id ACF1086E1D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IoshLEPSClyg for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Feb 2020 17:48:53 +0000 (UTC)
+ with ESMTP id WXxKAJ44Zxb3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Feb 2020 21:31:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A9C2385F11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 17:48:53 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A344686D05
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:24 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2020 09:48:53 -0800
-X-IronPort-AV: E=Sophos;i="5.70,437,1574150400"; d="scan'208";a="347772418"
-Received: from aguedesl-mac01.jf.intel.com (HELO localhost) ([10.24.12.183])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2020 09:48:52 -0800
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2020 13:31:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,438,1574150400"; d="scan'208";a="313859255"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
+ by orsmga001.jf.intel.com with ESMTP; 13 Feb 2020 13:31:20 -0800
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	pmenzel@molgen.mpg.de
+Date: Thu, 13 Feb 2020 13:30:59 -0800
+Message-Id: <20200213213059.33939-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <87eeuzwdid.fsf@linux.intel.com>
-References: <20200207182443.1501016-1-vinicius.gomes@intel.com>
- <20200207182443.1501016-3-vinicius.gomes@intel.com>
- <158136684850.75536.15541483288653337386@1.0.0.127.in-addr.arpa>
- <87pnemx6xi.fsf@linux.intel.com>
- <158144496367.84624.2078546125857384447@titagi-mobl.amr.corp.intel.com>
- <87eeuzwdid.fsf@linux.intel.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org
-From: Andre Guedes <andre.guedes@linux.intel.com>
-Message-ID: <158161613134.6795.5785392030121729642@1.0.0.127.in-addr.arpa>
-User-Agent: alot/0.8.1
-Date: Thu, 13 Feb 2020 09:48:51 -0800
-Subject: Re: [Intel-wired-lan] [next-queue PATCH v2 2/2] igc: Add support
- for ETF offloading
+Subject: [Intel-wired-lan] [PATCH S39 v2 01/15] ice: Validate config for SW
+ DCB map
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,66 +66,125 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vinicius,
+From: Avinash Dayanand <avinash.dayanand@intel.com>
 
-Quoting Vinicius Costa Gomes (2020-02-12 16:13:14)
-> >> >> @@ -4600,6 +4661,9 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
-> >> >>         case TC_SETUP_QDISC_TAPRIO:
-> >> >>                 return igc_tsn_enable_qbv_scheduling(adapter, type_data);
-> >> >>  
-> >> >> +       case TC_SETUP_QDISC_ETF:
-> >> >> +               return igc_tsn_enable_launchtime(adapter, type_data);
-> >> >
-> >> > Consider the scenario where both TAPRIO and ETF offloads are disabled and we
-> >> > want to enable ETF offload. ETF depends on adapter->base_time is set to work
-> >> > properly, but I couldn't find where in this patch it is set. Could you please
-> >> > clarify that?
-> >> 
-> >> '->base_time' doesn't need to be set, i.e. if it's zero (which is the
-> >> case that only ETF offloading is enabled), it should be fine. H
-> >> 
-> >> ow we calculate the launchtime in igc_tx_launchtime() is able to handle
-> >> 'base_time_ being zero just fine, and the BASET_{L,H} registers will
-> >> have sane values when it's zero as well.
-> >
-> > If '->base_time' is never set, I suspect ETF disabling has an issue. See this
-> > piece of code:
-> >
-> > int igc_tsn_offload_apply(struct igc_adapter *adapter)
-> > {
-> >         bool is_any_enabled = adapter->base_time || is_any_launchtime(adapter);
-> >
-> >         if (!(adapter->flags & IGC_FLAG_TSN_QBV_ENABLED) && !is_any_enabled)
-> >                 return 0;
-> >
-> >         ...
-> > }
-> >
-> > By the time igc_tsn_offload_apply() is called, we had already set
-> > 'ring->launchtime' to false. Since IGC_FLAG_TSN_QBV_ENABLED isn't set and
-> > 'is_any_enabled' is false, we return without calling igc_tsn_disable_offload().
-> >
-> 
-> I am still not seeing the problem.
-> 
-> If ETF offloading was disabled, and then enabled,
-> igc_save_launchtime_params() got called and some of the queues have
-> launchtime_enable bit set. igc_save_launchtime_params() calls
-> igc_tsn_offload_apply() and IGC_FLAG_TSN_QBV_ENABLED is set. Later, when
-> the user wants to disable ETF offloading (the only way is to remove the
-> qdisc, remember), the same thing happens: save_launchtime() and then
-> offload_apply(), but now the IGC_FLAG_TSN_QBV_ENABLED is enabled, but
-> there's no user, so igc_tsn_disable_offload() is called and the
-> controller is reset if necessary.
+Validate the inputs for SW DCB config received either via lldptool or pcap
+file. And don't apply DCB for bad bandwidth inputs. Without this patch, any
+config having bad inputs will cause the loss of link making PF unusable
+even after driver reload. Recoverable only via system reboot.
 
-Oh, I see it now, thanks.
+Signed-off-by: Avinash Dayanand <avinash.dayanand@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+v2:
+- Allocate all bandwidth to TC0 if no TCs requested any bandwidth
+- Remove zero bandwidth check on non-TC0
+- Add message about reason for error and return from error immediately in
+  ice_dcb_bwchk()
+- Change a comment
+---
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 40 ++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.h |  1 +
+ drivers/net/ethernet/intel/ice/ice_dcb_nl.c  |  6 +++
+ 3 files changed, 47 insertions(+)
 
-The source of my misunderstanding was the fact that I was not expecting
-IGC_FLAG_TSN_QBV_ENABLED flag to be set since we are not enabling Qbv, but
-launchtime. I understand these features share configuration registers, but
-they are different features after all.
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index 017b71d8e894..175b08219f7a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -169,6 +169,43 @@ ice_peer_prep_tc_change(struct ice_peer_dev_int *peer_dev_int,
+ 	return 0;
+ }
+ 
++/**
++ * ice_dcb_bwchk - check if ETS bandwidth input parameters are correct
++ * @pf: pointer to the PF struct
++ * @dcbcfg: pointer to DCB config structure
++ */
++int ice_dcb_bwchk(struct ice_pf *pf, struct ice_dcbx_cfg *dcbcfg)
++{
++	struct ice_dcb_ets_cfg *etscfg = &dcbcfg->etscfg;
++	u8 num_tc, total_bw = 0;
++	int i;
++
++	/* returns number of contigous TCs and 1 TC for non-contigous TCs,
++	 * since at least 1 TC has to be configured
++	 */
++	num_tc = ice_dcb_get_num_tc(dcbcfg);
++
++	/* no bandwidth checks required if there's only one TC, so assign
++	 * all bandwidth to TC0 and return
++	 */
++	if (num_tc == 1) {
++		etscfg->tcbwtable[0] = ICE_TC_MAX_BW;
++		return 0;
++	}
++
++	for (i = 0; i < num_tc; i++)
++		total_bw += etscfg->tcbwtable[i];
++
++	if (!total_bw) {
++		etscfg->tcbwtable[0] = ICE_TC_MAX_BW;
++	} else if (total_bw != ICE_TC_MAX_BW) {
++		dev_err(ice_pf_to_dev(pf), "Invalid config, total bandwidth must equal 100\n");
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_pf_dcb_cfg - Apply new DCB configuration
+  * @pf: pointer to the PF struct
+@@ -206,6 +243,9 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
+ 	/* Notify capable peers about impending change to TCs */
+ 	ice_for_each_peer(pf, NULL, ice_peer_prep_tc_change);
+ 
++	if (ice_dcb_bwchk(pf, new_cfg))
++		return -EINVAL;
++
+ 	/* Store old config in case FW config fails */
+ 	old_cfg = kmemdup(curr_cfg, sizeof(*old_cfg), GFP_KERNEL);
+ 	if (!old_cfg)
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
+index bb53edf462ba..11457b6ba145 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
+@@ -20,6 +20,7 @@ u8 ice_dcb_get_num_tc(struct ice_dcbx_cfg *dcbcfg);
+ u8 ice_dcb_get_tc(struct ice_vsi *vsi, int queue_index);
+ int
+ ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked);
++int ice_dcb_bwchk(struct ice_pf *pf, struct ice_dcbx_cfg *dcbcfg);
+ void ice_pf_dcb_recfg(struct ice_pf *pf);
+ void ice_vsi_cfg_dcb_rings(struct ice_vsi *vsi);
+ int ice_init_pf_dcb(struct ice_pf *pf, bool locked);
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+index b61aba428adb..c572aa5c28e0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+@@ -95,6 +95,11 @@ static int ice_dcbnl_setets(struct net_device *netdev, struct ieee_ets *ets)
+ 		new_cfg->etsrec.prio_table[i] = ets->reco_prio_tc[i];
+ 	}
+ 
++	if (ice_dcb_bwchk(pf, new_cfg)) {
++		err = -EINVAL;
++		goto ets_out;
++	}
++
+ 	/* max_tc is a 1-8 value count of number of TC's, not a 0-7 value
+ 	 * for the TC's index number.  Add one to value if not zero, and
+ 	 * for zero set it to the FW's default value
+@@ -119,6 +124,7 @@ static int ice_dcbnl_setets(struct net_device *netdev, struct ieee_ets *ets)
+ 	if (err == ICE_DCB_NO_HW_CHG)
+ 		err = ICE_DCB_HW_CHG_RST;
+ 
++ets_out:
+ 	mutex_unlock(&pf->tc_mutex);
+ 	return err;
+ }
+-- 
+2.20.1
 
-- Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
