@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E92E15CD54
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 22:32:04 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50C5F15CD52
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 22:32:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 12BDA8757D;
-	Thu, 13 Feb 2020 21:32:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E515786361;
+	Thu, 13 Feb 2020 21:32:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8SLYcHVeYYa8; Thu, 13 Feb 2020 21:32:02 +0000 (UTC)
+	with ESMTP id 0PTCQjM09dSI; Thu, 13 Feb 2020 21:32:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4A40D8733E;
-	Thu, 13 Feb 2020 21:32:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 654CF87ECD;
+	Thu, 13 Feb 2020 21:32:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 39E821BF338
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EAAEA1BF9B9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 374D321561
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E79BB862B4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mIz38oB98g4L for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id bFkUFgyZK25E for <intel-wired-lan@lists.osuosl.org>;
  Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 20826203F0
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3D595862CA
  for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  13 Feb 2020 13:31:51 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,438,1574150400"; d="scan'208";a="227382411"
+X-IronPort-AV: E=Sophos;i="5.70,438,1574150400"; d="scan'208";a="227382412"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga008.jf.intel.com with ESMTP; 13 Feb 2020 13:31:51 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 13 Feb 2020 13:31:22 -0800
-Message-Id: <20200213213129.34023-7-anthony.l.nguyen@intel.com>
+Date: Thu, 13 Feb 2020 13:31:23 -0800
+Message-Id: <20200213213129.34023-8-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
 References: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S39 v2 08/15] ice: Support XDP UMEM wake
- up mechanism
+Subject: [Intel-wired-lan] [PATCH S39 v2 09/15] ice: Don't reject odd values
+ of usecs set by user
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,63 +67,118 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-Add support for a new AF_XDP feature that has already been introduced in
-upstreamed Intel NIC drivers. If a user space application signals that
-it might sleep using the new bind flag XDP_USE_NEED_WAKEUP, the driver
-will then set this flag if it has no more buffers on the NIC Rx ring and
-yield to the application. For Tx, it will set the flag if it has no
-outstanding Tx completion interrupts and return to the application.
+Currently if a user sets an odd [tx|rx]-usecs value through ethtool,
+the request is denied because the hardware is set to have an ITR
+granularity of 2us. This caused poor customer experience. Fix this by
+aligning to a register allowed value, which results in rounding down.
+Also, print a once per ring container type message to be clear about
+our intentions.
 
-Signed-off-by: Krzysztof Kazimierczak <krzysztof.kazimierczak@intel.com>
+Also, change the ITR_TO_REG define to be the bitwise and of the ITR
+setting and the ICE_ITR_MASK. This makes the purpose of ITR_TO_REG more
+obvious.
+
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_xsk.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 49 +++++++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_txrx.h    |  2 +-
+ 2 files changed, 39 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 55d994f2d71e..3fd31ad73e0e 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -937,6 +937,15 @@ int ice_clean_rx_irq_zc(struct ice_ring *rx_ring, int budget)
- 	ice_finalize_xdp_rx(rx_ring, xdp_xmit);
- 	ice_update_rx_ring_stats(rx_ring, total_rx_packets, total_rx_bytes);
- 
-+	if (xsk_umem_uses_need_wakeup(rx_ring->xsk_umem)) {
-+		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
-+			xsk_set_rx_need_wakeup(rx_ring->xsk_umem);
-+		else
-+			xsk_clear_rx_need_wakeup(rx_ring->xsk_umem);
-+
-+		return (int)total_rx_packets;
-+	}
-+
- 	return failure ? budget : (int)total_rx_packets;
- }
- 
-@@ -988,6 +997,8 @@ static bool ice_xmit_zc(struct ice_ring *xdp_ring, int budget)
- 	if (tx_desc) {
- 		ice_xdp_ring_update_tail(xdp_ring);
- 		xsk_umem_consume_tx_done(xdp_ring->xsk_umem);
-+		if (xsk_umem_uses_need_wakeup(xdp_ring->xsk_umem))
-+			xsk_clear_tx_need_wakeup(xdp_ring->xsk_umem);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 63a69ea02d22..22a9f59e7218 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3488,21 +3488,13 @@ ice_set_rc_coalesce(enum ice_container_type c_type, struct ethtool_coalesce *ec,
+ 		return -EINVAL;
  	}
  
- 	return budget > 0 && work_done;
-@@ -1063,6 +1074,13 @@ bool ice_clean_tx_irq_zc(struct ice_ring *xdp_ring, int budget)
- 	if (xsk_frames)
- 		xsk_umem_complete_tx(xdp_ring->xsk_umem, xsk_frames);
+-	/* hardware only supports an ITR granularity of 2us */
+-	if (coalesce_usecs % 2 != 0) {
+-		netdev_info(vsi->netdev, "Invalid value, %s-usecs must be even\n",
+-			    c_type_str);
+-		return -EINVAL;
+-	}
+-
+ 	if (use_adaptive_coalesce) {
+ 		rc->itr_setting |= ICE_ITR_DYNAMIC;
+ 	} else {
+-		/* store user facing value how it was set */
++		/* save the user set usecs */
+ 		rc->itr_setting = coalesce_usecs;
+-		/* set to static and convert to value HW understands */
+-		rc->target_itr =
+-			ITR_TO_REG(ITR_REG_ALIGN(rc->itr_setting));
++		/* device ITR granularity is in 2 usec increments */
++		rc->target_itr = ITR_REG_ALIGN(rc->itr_setting);
+ 	}
  
-+	if (xsk_umem_uses_need_wakeup(xdp_ring->xsk_umem)) {
-+		if (xdp_ring->next_to_clean == xdp_ring->next_to_use)
-+			xsk_set_tx_need_wakeup(xdp_ring->xsk_umem);
-+		else
-+			xsk_clear_tx_need_wakeup(xdp_ring->xsk_umem);
-+	}
+ 	return 0;
+@@ -3595,6 +3587,30 @@ ice_is_coalesce_param_invalid(struct net_device *netdev,
+ 	return 0;
+ }
+ 
++/**
++ * ice_print_if_odd_usecs - print message if user tries to set odd [tx|rx]-usecs
++ * @netdev: netdev used for print
++ * @itr_setting: previous user setting
++ * @use_adaptive_coalesce: if adaptive coalesce is enabled or being enabled
++ * @coalesce_usecs: requested value of [tx|rx]-usecs
++ * @c_type_str: either "rx" or "tx" to match user set field of [tx|rx]-usecs
++ */
++static void
++ice_print_if_odd_usecs(struct net_device *netdev, u16 itr_setting,
++		       u32 use_adaptive_coalesce, u32 coalesce_usecs,
++		       const char *c_type_str)
++{
++	if (use_adaptive_coalesce)
++		return;
 +
- 	ice_update_tx_ring_stats(xdp_ring, total_packets, total_bytes);
- 	xmit_done = ice_xmit_zc(xdp_ring, ICE_DFLT_IRQ_WORK);
++	itr_setting = ITR_TO_REG(itr_setting);
++
++	if (itr_setting != coalesce_usecs && (coalesce_usecs % 2))
++		netdev_info(netdev, "User set %s-usecs to %d, device only supports even values. Rounding down and attempting to set %s-usecs to %d\n",
++			    c_type_str, coalesce_usecs, c_type_str,
++			    ITR_REG_ALIGN(coalesce_usecs));
++}
++
+ /**
+  * __ice_set_coalesce - set ITR/INTRL values for the device
+  * @netdev: pointer to the netdev associated with this query
+@@ -3615,8 +3631,19 @@ __ice_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec,
+ 		return -EINVAL;
  
+ 	if (q_num < 0) {
++		struct ice_q_vector *q_vector = vsi->q_vectors[0];
+ 		int v_idx;
+ 
++		if (q_vector) {
++			ice_print_if_odd_usecs(netdev, q_vector->rx.itr_setting,
++					       ec->use_adaptive_rx_coalesce,
++					       ec->rx_coalesce_usecs, "rx");
++
++			ice_print_if_odd_usecs(netdev, q_vector->tx.itr_setting,
++					       ec->use_adaptive_tx_coalesce,
++					       ec->tx_coalesce_usecs, "tx");
++		}
++
+ 		ice_for_each_q_vector(vsi, v_idx) {
+ 			/* In some cases if DCB is configured the num_[rx|tx]q
+ 			 * can be less than vsi->num_q_vectors. This check
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
+index 14a1bf445889..7ee00a128663 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.h
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
+@@ -222,7 +222,7 @@ enum ice_rx_dtype {
+ #define ICE_ITR_GRAN_S		1	/* ITR granularity is always 2us */
+ #define ICE_ITR_GRAN_US		BIT(ICE_ITR_GRAN_S)
+ #define ICE_ITR_MASK		0x1FFE	/* ITR register value alignment mask */
+-#define ITR_REG_ALIGN(setting)	__ALIGN_MASK(setting, ~ICE_ITR_MASK)
++#define ITR_REG_ALIGN(setting)	((setting) & ICE_ITR_MASK)
+ 
+ #define ICE_ITR_ADAPTIVE_MIN_INC	0x0002
+ #define ICE_ITR_ADAPTIVE_MIN_USECS	0x0002
 -- 
 2.20.1
 
