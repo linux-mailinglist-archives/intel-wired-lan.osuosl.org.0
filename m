@@ -1,59 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ED4615BA6A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 09:02:29 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3736C15C902
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 17:59:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DD46F85F57;
-	Thu, 13 Feb 2020 08:02:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DCEC687F9C;
+	Thu, 13 Feb 2020 16:59:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YX1_fa-n1Enk; Thu, 13 Feb 2020 08:02:27 +0000 (UTC)
+	with ESMTP id 95fZ8mXnplYr; Thu, 13 Feb 2020 16:59:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BCE2A85F81;
-	Thu, 13 Feb 2020 08:02:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 569B187FCF;
+	Thu, 13 Feb 2020 16:59:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 544E51BF25F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 08:02:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7695E1BF20D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 16:59:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4D8F0203A6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 08:02:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7122F2152F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 16:59:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x9X6PZuk21xn for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Feb 2020 08:02:24 +0000 (UTC)
+ with ESMTP id SR7-5XROfUNZ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Feb 2020 16:59:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 476362037A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 08:02:24 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2020 00:02:23 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,436,1574150400"; d="scan'208";a="257094634"
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.255.201.153])
- ([10.255.201.153])
- by fmsmga004.fm.intel.com with ESMTP; 13 Feb 2020 00:02:22 -0800
-To: Alexander Duyck <alexander.duyck@gmail.com>,
- "Brown, Aaron F" <aaron.f.brown@intel.com>
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9C5551FD43
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 16:59:28 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id z16so7242448iod.11
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 08:59:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gFHEa5QXgXrMSGUxWD57Hvbj3L268E9bB91zqpZbyrk=;
+ b=ad3canef0YmG61P06BWe+DUrBvISGwRh+4bBG2GFXpD9l90e72RLTgOVjhSs8OyKQX
+ txvaolTA4srS6RtnpwkNjccooLMuXQOObVYYMRQwVlSVIpVwDu0g6cycTPajHrAcO/dR
+ OSRwj18BQplTx/fYYt58qW1+zA48CFPG2q+LFZw4NacVEjtYAo9y5BsfWldBnt6RN1tp
+ oGkMxOnLDb4ysM3QUY538RKNMf1UZkI+whzb/DhSR4pcHN2GQd2OqAkmAefi78W4P8us
+ JrEpdhTadCk5knpfjIfbh4WxoumvNx/NH9AZDUwNN0RNk9m2KZRIKoU9lJeCl+bllLql
+ HYeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gFHEa5QXgXrMSGUxWD57Hvbj3L268E9bB91zqpZbyrk=;
+ b=ic+tx7vklEVORofclTsG6H+L0PWFXEYaH35Zn4wQ8GFFCdHNDk9gXTDlfzhXQzeDRY
+ Y1jF3PhbZm61WV6JQqcCdMBDaXWgE5TpWlKgxpXFJ4pe0lX6Gg7tVNIl0SpjVQRZXpYE
+ AUZeU9aD1cGulmelJOLJW7ikhJDx6W59wFSBfRqq+eoGHZ17JghAEQSO6QVdDfIfEzcD
+ A+7pd2BpRZUqd6En9N+bmJlJDr4qtB/iS+Qf4xMCKQYhDIr/vYN8hDdgihJ5jiBTbNDP
+ XQFpwXLO2LKme6j/6wNGF/uZ+PlHw7j7S9WOeutI8QOnaTEHqNGkLkHnjgwE8aMVSUf0
+ lY/Q==
+X-Gm-Message-State: APjAAAUtsoChJfYebm6FScFvDuJcgSD6Sd1dolfxP9QgWVlUZYlMPE9U
+ eMYpADT9NDyqtyEURZMW+maNb+XApwCx18Zrlac=
+X-Google-Smtp-Source: APXvYqynFAPBE7hqR/ioFIzklnMAR/jNGGgWJddws1fSlSAAGKwO4wxRhcJrkdK6iC/T18oe1HTnJpGLf/SqkTcn9rY=
+X-Received: by 2002:a5e:860f:: with SMTP id z15mr21677306ioj.64.1581613167763; 
+ Thu, 13 Feb 2020 08:59:27 -0800 (PST)
+MIME-Version: 1.0
 References: <20200205123115.44103-1-sasha.neftin@intel.com>
  <309B89C4C689E141A5FF6A0C5FB2118B971F357D@ORSMSX103.amr.corp.intel.com>
  <CAKgT0UfvFZBPEYf1-b+WU48RKk1_sp8xzJtKe6rAXAk8_bCZ9Q@mail.gmail.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <c6c9c3e0-5c56-5f4f-8975-a46f8c5a08af@intel.com>
-Date: Thu, 13 Feb 2020 10:02:21 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.2
-MIME-Version: 1.0
-In-Reply-To: <CAKgT0UfvFZBPEYf1-b+WU48RKk1_sp8xzJtKe6rAXAk8_bCZ9Q@mail.gmail.com>
-Content-Language: en-US
+ <c6c9c3e0-5c56-5f4f-8975-a46f8c5a08af@intel.com>
+In-Reply-To: <c6c9c3e0-5c56-5f4f-8975-a46f8c5a08af@intel.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Thu, 13 Feb 2020 08:59:16 -0800
+Message-ID: <CAKgT0UejnOv1p4TQJ+CcMkJ-d4nGpBxVaOZJRfN6q7muvrp+XQ@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Complete to commit Add
  support for TSO
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -69,47 +84,47 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2/13/2020 00:47, Alexander Duyck wrote:
-> On Wed, Feb 12, 2020 at 2:39 PM Brown, Aaron F <aaron.f.brown@intel.com> wrote:
->>
->>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->>> Sasha Neftin
->>> Sent: Wednesday, February 5, 2020 4:31 AM
->>> To: intel-wired-lan@lists.osuosl.org
->>> Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Complete to commit Add
->>> support for TSO
->>>
->>> commit f38b782dccab ("igc: Add support for TSO")
->>> Add option to setting transmit command (TUCMD) of the context
->>> descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
->>>
->>> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
->>> ---
->>>   drivers/net/ethernet/intel/igc/igc_defines.h | 1 +
->>>   drivers/net/ethernet/intel/igc/igc_main.c    | 3 ++-
->>>   2 files changed, 3 insertions(+), 1 deletion(-)
->>>
->> Aside from possibly including the responses to Jesse's questions on this...
->> Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-> 
-> I'm not sure the patch makes any sense. Does the driver support UDP
-> GSO? I don't see the feature flag (NETIF_F_GSO_UDP_L4) anywhere that
-> enables it.
-> 
-Yes, it is supported. The MAC is similar to igb from segmentation 
-perspectives. I missed add it. Please, let me finish some testing and I 
-will add NETIF_F_GSO_UDP_L4 flag to _features_check and _probe methods. 
-I will process another patch with complements.
-> If it doesn't enable it then it doesn't make much sense to update the
-> code to add this one bit until it does since you can't actually test
-> it as the stack will not ask you to segment UDP frames.
-> 
+On Thu, Feb 13, 2020 at 12:02 AM Neftin, Sasha <sasha.neftin@intel.com> wrote:
+>
+> On 2/13/2020 00:47, Alexander Duyck wrote:
+> > On Wed, Feb 12, 2020 at 2:39 PM Brown, Aaron F <aaron.f.brown@intel.com> wrote:
+> >>
+> >>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> >>> Sasha Neftin
+> >>> Sent: Wednesday, February 5, 2020 4:31 AM
+> >>> To: intel-wired-lan@lists.osuosl.org
+> >>> Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Complete to commit Add
+> >>> support for TSO
+> >>>
+> >>> commit f38b782dccab ("igc: Add support for TSO")
+> >>> Add option to setting transmit command (TUCMD) of the context
+> >>> descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
+> >>>
+> >>> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> >>> ---
+> >>>   drivers/net/ethernet/intel/igc/igc_defines.h | 1 +
+> >>>   drivers/net/ethernet/intel/igc/igc_main.c    | 3 ++-
+> >>>   2 files changed, 3 insertions(+), 1 deletion(-)
+> >>>
+> >> Aside from possibly including the responses to Jesse's questions on this...
+> >> Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+> >
+> > I'm not sure the patch makes any sense. Does the driver support UDP
+> > GSO? I don't see the feature flag (NETIF_F_GSO_UDP_L4) anywhere that
+> > enables it.
+> >
+> Yes, it is supported. The MAC is similar to igb from segmentation
+> perspectives. I missed add it. Please, let me finish some testing and I
+> will add NETIF_F_GSO_UDP_L4 flag to _features_check and _probe methods.
 
+Thats fine. I just wouldn't submit this patch as it is. It should be
+adding the NETIF_F_GSO_UDP_L4 flag so you can actually test the code
+and verify the hardware is handling it correctly.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
