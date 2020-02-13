@@ -1,35 +1,35 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69E2815CD59
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 22:32:09 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6824B15CD53
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 22:32:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1413386D05;
-	Thu, 13 Feb 2020 21:32:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1CC1C87EE8;
+	Thu, 13 Feb 2020 21:32:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PYq2qM9Wn3En; Thu, 13 Feb 2020 21:32:04 +0000 (UTC)
+	with ESMTP id YDYfwa-As-8I; Thu, 13 Feb 2020 21:32:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1DFE18757F;
-	Thu, 13 Feb 2020 21:32:03 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B23CB87EA6;
+	Thu, 13 Feb 2020 21:32:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B459B1BF338
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 107CF1BF9BA
  for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B124F203F0
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0C813862B4
  for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 32gXNzqFhTMx for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id MYQ3pW3EZkbg for <intel-wired-lan@lists.osuosl.org>;
  Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 936F82156E
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 787B9862DB
  for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
@@ -37,19 +37,19 @@ Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
  13 Feb 2020 13:31:51 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,438,1574150400"; d="scan'208";a="227382406"
+X-IronPort-AV: E=Sophos;i="5.70,438,1574150400"; d="scan'208";a="227382407"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by orsmga008.jf.intel.com with ESMTP; 13 Feb 2020 13:31:50 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 13 Feb 2020 13:31:17 -0800
-Message-Id: <20200213213129.34023-2-anthony.l.nguyen@intel.com>
+Date: Thu, 13 Feb 2020 13:31:18 -0800
+Message-Id: <20200213213129.34023-3-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
 References: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S39 v2 03/15] ice: Fix for TCAM entry
- management
+Subject: [Intel-wired-lan] [PATCH S39 v2 04/15] ice: Always clear the
+ QRXFLXP_CNTXT register for VF Rx queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,182 +67,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dan Nowlin <dan.nowlin@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-Order intermediate VSIG list correct in order to correctly match existing
-VSIG lists.
+Currently when the PF reduces its number of channels via ethtool and
+then VFs are created there may be stale data for some of the Rx queues
+belonging to VFs. This happens when a VF reuses an Rx queue that was
+previously used by the PF. Specifically, the QRXFLXP_CNTXT register
+will have incorrect values. Fix this by always clearing the relevant
+values in the QRXFLXP_CNTXT register for VF queues.
 
-When overriding pre-existing TCAM entries, properly delete the existing
-entry and remove it from the change/update list.
-
-Signed-off-by: Dan Nowlin <dan.nowlin@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_flex_pipe.c    | 65 +++++++++++++++----
- 1 file changed, 51 insertions(+), 14 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_base.c       | 8 ++++++--
+ drivers/net/ethernet/intel/ice/ice_hw_autogen.h | 1 +
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-index 99208946224c..42bac3ec5526 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-@@ -3470,6 +3470,24 @@ ice_move_vsi(struct ice_hw *hw, enum ice_block blk, u16 vsi, u16 vsig,
- 	return 0;
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index 75cc5a366b26..54aa533f36d4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -386,8 +386,8 @@ int ice_setup_rx_ctx(struct ice_ring *ring)
+ 	 /* Enable Flexible Descriptors in the queue context which
+ 	  * allows this driver to select a specific receive descriptor format
+ 	  */
++	regval = rd32(hw, QRXFLXP_CNTXT(pf_q));
+ 	if (vsi->type != ICE_VSI_VF) {
+-		regval = rd32(hw, QRXFLXP_CNTXT(pf_q));
+ 		regval |= (rxdid << QRXFLXP_CNTXT_RXDID_IDX_S) &
+ 			QRXFLXP_CNTXT_RXDID_IDX_M;
  
-+/**
-+ * ice_rem_chg_tcam_ent - remove a specific TCAM entry from change list
-+ * @hw: pointer to the HW struct
-+ * @idx: the index of the TCAM entry to remove
-+ * @chg: the list of change structures to search
-+ */
-+static void
-+ice_rem_chg_tcam_ent(struct ice_hw *hw, u16 idx, struct list_head *chg)
-+{
-+	struct ice_chs_chg *pos, *tmp;
-+
-+	list_for_each_entry_safe(tmp, pos, chg, list_entry)
-+		if (tmp->type == ICE_TCAM_ADD && tmp->tcam_idx == idx) {
-+			list_del(&tmp->list_entry);
-+			devm_kfree(ice_hw_to_dev(hw), tmp);
-+		}
-+}
-+
- /**
-  * ice_prof_tcam_ena_dis - add enable or disable TCAM change
-  * @hw: pointer to the HW struct
-@@ -3489,14 +3507,19 @@ ice_prof_tcam_ena_dis(struct ice_hw *hw, enum ice_block blk, bool enable,
- 	enum ice_status status;
- 	struct ice_chs_chg *p;
+@@ -398,8 +398,12 @@ int ice_setup_rx_ctx(struct ice_ring *ring)
+ 		regval |= (0x03 << QRXFLXP_CNTXT_RXDID_PRIO_S) &
+ 			QRXFLXP_CNTXT_RXDID_PRIO_M;
  
--	/* Default: enable means change the low flag bit to don't care */
--	u8 dc_msk[ICE_TCAM_KEY_VAL_SZ] = { 0x01, 0x00, 0x00, 0x00, 0x00 };
-+	u8 vl_msk[ICE_TCAM_KEY_VAL_SZ] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-+	u8 dc_msk[ICE_TCAM_KEY_VAL_SZ] = { 0xFF, 0xFF, 0x00, 0x00, 0x00 };
- 	u8 nm_msk[ICE_TCAM_KEY_VAL_SZ] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
--	u8 vl_msk[ICE_TCAM_KEY_VAL_SZ] = { 0x01, 0x00, 0x00, 0x00, 0x00 };
- 
- 	/* if disabling, free the TCAM */
- 	if (!enable) {
--		status = ice_free_tcam_ent(hw, blk, tcam->tcam_idx);
-+		status = ice_rel_tcam_idx(hw, blk, tcam->tcam_idx);
-+
-+		/* if we have already created a change for this TCAM entry, then
-+		 * we need to remove that entry, in order to prevent writing to
-+		 * a TCAM entry we no longer will have ownership of.
-+		 */
-+		ice_rem_chg_tcam_ent(hw, tcam->tcam_idx, chg);
- 		tcam->tcam_idx = 0;
- 		tcam->in_use = 0;
- 		return status;
-@@ -3612,11 +3635,12 @@ ice_adj_prof_priorities(struct ice_hw *hw, enum ice_block blk, u16 vsig,
-  * @blk: hardware block
-  * @vsig: the VSIG to which this profile is to be added
-  * @hdl: the profile handle indicating the profile to add
-+ * @rev: true to add entries to the end of the list
-  * @chg: the change list
-  */
- static enum ice_status
- ice_add_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsig, u64 hdl,
--		     struct list_head *chg)
-+		     bool rev, struct list_head *chg)
- {
- 	/* Masks that ignore flags */
- 	u8 vl_msk[ICE_TCAM_KEY_VAL_SZ] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
-@@ -3625,7 +3649,7 @@ ice_add_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsig, u64 hdl,
- 	struct ice_prof_map *map;
- 	struct ice_vsig_prof *t;
- 	struct ice_chs_chg *p;
--	u16 i;
-+	u16 vsig_idx, i;
- 
- 	/* Get the details on the profile specified by the handle ID */
- 	map = ice_search_prof_id(hw, blk, hdl);
-@@ -3687,8 +3711,13 @@ ice_add_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsig, u64 hdl,
+-		wr32(hw, QRXFLXP_CNTXT(pf_q), regval);
++	} else {
++		regval &= ~(QRXFLXP_CNTXT_RXDID_IDX_M |
++			    QRXFLXP_CNTXT_RXDID_PRIO_M |
++			    QRXFLXP_CNTXT_TS_M);
  	}
++	wr32(hw, QRXFLXP_CNTXT(pf_q), regval);
  
- 	/* add profile to VSIG */
--	list_add(&t->list,
--		 &hw->blk[blk].xlt2.vsig_tbl[(vsig & ICE_VSIG_IDX_M)].prop_lst);
-+	vsig_idx = vsig & ICE_VSIG_IDX_M;
-+	if (rev)
-+		list_add_tail(&t->list,
-+			      &hw->blk[blk].xlt2.vsig_tbl[vsig_idx].prop_lst);
-+	else
-+		list_add(&t->list,
-+			 &hw->blk[blk].xlt2.vsig_tbl[vsig_idx].prop_lst);
- 
- 	return 0;
- 
-@@ -3728,7 +3757,7 @@ ice_create_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl,
- 	if (status)
- 		goto err_ice_create_prof_id_vsig;
- 
--	status = ice_add_prof_id_vsig(hw, blk, new_vsig, hdl, chg);
-+	status = ice_add_prof_id_vsig(hw, blk, new_vsig, hdl, false, chg);
- 	if (status)
- 		goto err_ice_create_prof_id_vsig;
- 
-@@ -3753,11 +3782,13 @@ ice_create_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl,
-  * @blk: hardware block
-  * @vsi: the initial VSI that will be in VSIG
-  * @lst: the list of profile that will be added to the VSIG
-+ * @new_vsig: return of new VSIG
-  * @chg: the change list
-  */
- static enum ice_status
- ice_create_vsig_from_lst(struct ice_hw *hw, enum ice_block blk, u16 vsi,
--			 struct list_head *lst, struct list_head *chg)
-+			 struct list_head *lst, u16 *new_vsig,
-+			 struct list_head *chg)
- {
- 	struct ice_vsig_prof *t;
- 	enum ice_status status;
-@@ -3772,12 +3803,15 @@ ice_create_vsig_from_lst(struct ice_hw *hw, enum ice_block blk, u16 vsi,
- 		return status;
- 
- 	list_for_each_entry(t, lst, list) {
-+		/* Reverse the order here since we are copying the list */
- 		status = ice_add_prof_id_vsig(hw, blk, vsig, t->profile_cookie,
--					      chg);
-+					      true, chg);
- 		if (status)
- 			return status;
- 	}
- 
-+	*new_vsig = vsig;
-+
- 	return 0;
- }
- 
-@@ -3899,7 +3933,8 @@ ice_add_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl)
- 			 * not sharing entries and we can simply add the new
- 			 * profile to the VSIG.
- 			 */
--			status = ice_add_prof_id_vsig(hw, blk, vsig, hdl, &chg);
-+			status = ice_add_prof_id_vsig(hw, blk, vsig, hdl, false,
-+						      &chg);
- 			if (status)
- 				goto err_ice_add_prof_id_flow;
- 
-@@ -3910,7 +3945,8 @@ ice_add_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl)
- 		} else {
- 			/* No match, so we need a new VSIG */
- 			status = ice_create_vsig_from_lst(hw, blk, vsi,
--							  &union_lst, &chg);
-+							  &union_lst, &vsig,
-+							  &chg);
- 			if (status)
- 				goto err_ice_add_prof_id_flow;
- 
-@@ -4076,7 +4112,8 @@ ice_rem_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl)
- 				 * new VSIG and TCAM entries
- 				 */
- 				status = ice_create_vsig_from_lst(hw, blk, vsi,
--								  &copy, &chg);
-+								  &copy, &vsig,
-+								  &chg);
- 				if (status)
- 					goto err_ice_rem_prof_id_flow;
- 
+ 	/* Absolute queue number out of 2K needs to be passed */
+ 	err = ice_write_rxq_ctx(hw, &rlan_ctx, pf_q);
+diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+index 57f1c4513c0b..3f40736a8295 100644
+--- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
++++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+@@ -86,6 +86,7 @@
+ #define QRXFLXP_CNTXT_RXDID_IDX_M		ICE_M(0x3F, 0)
+ #define QRXFLXP_CNTXT_RXDID_PRIO_S		8
+ #define QRXFLXP_CNTXT_RXDID_PRIO_M		ICE_M(0x7, 8)
++#define QRXFLXP_CNTXT_TS_M			BIT(11)
+ #define GLGEN_RSTAT				0x000B8188
+ #define GLGEN_RSTAT_DEVSTATE_M			ICE_M(0x3, 0)
+ #define GLGEN_RSTCTL				0x000B8180
 -- 
 2.20.1
 
