@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C287415DDA7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2020 17:00:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 571F115DFF3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2020 17:11:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2F7472049B;
-	Fri, 14 Feb 2020 16:00:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F52184407;
+	Fri, 14 Feb 2020 16:11:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SL01XeKc-yei; Fri, 14 Feb 2020 16:00:23 +0000 (UTC)
+	with ESMTP id YWgqpYhOq4Ua; Fri, 14 Feb 2020 16:11:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3F1FD2214F;
-	Fri, 14 Feb 2020 16:00:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E3B1845D7;
+	Fri, 14 Feb 2020 16:11:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8BFDD1BF3FE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:00:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 543AC1BF5EA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:11:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 87EB487647
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:00:20 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4F07F87662
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:11:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7LaAXt3lv1jM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2020 16:00:19 +0000 (UTC)
+ with ESMTP id 1vnHBCrGbSaP for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2020 16:11:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EF9C387646
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:00:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D558287647
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:11:28 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D57542086A;
- Fri, 14 Feb 2020 16:00:18 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B67E9222C2;
+ Fri, 14 Feb 2020 16:11:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581696019;
+ s=default; t=1581696688;
  bh=vCOwDC4HiMKfA9asIcQGpE8w0AH9BpB7uecmviq9Qsc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=NoH2aBHFXcTynOX7zXn9jT6EOQOJLS+WOExD4jUvdZB5WXHY2ixuwLaJu01TtuWM4
- WVQPXKlWKBwSaG59QRvPZGnoo4FgsZXFeO6aNn0VT6mk4vlIYKty1TCknMRn1ajYV8
- ldeH/soZX6TXxCk9/IZN/gUpRRdplpv3eBVZbKYo=
+ b=mZE6dLUMmNUHYgS9l8DrV9xh/EocV/pq54xwKnbsE7NMykE6hd+TkcixLfYmrQUXq
+ dBZEGylGTZuc+66NRw3zzywNjM63Y3WdbeFy5S3qcwoeqTlUCI0CPLEZ6zkGBybf3m
+ M8IKqf16lrkg+DJu2FmLAyKM0bVweDdeM2yHTEHc=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Fri, 14 Feb 2020 10:48:47 -0500
-Message-Id: <20200214154854.6746-535-sashal@kernel.org>
+Date: Fri, 14 Feb 2020 11:01:45 -0500
+Message-Id: <20200214160149.11681-455-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200214154854.6746-1-sashal@kernel.org>
-References: <20200214154854.6746-1-sashal@kernel.org>
+In-Reply-To: <20200214160149.11681-1-sashal@kernel.org>
+References: <20200214160149.11681-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.5 535/542] i40e: Relax
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 455/459] i40e: Relax
  i40e_xsk_wakeup's return value when PF is busy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
