@@ -1,55 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAEA815CD4F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2020 22:31:59 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B999A15D084
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2020 04:29:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 20CAE203F0;
-	Thu, 13 Feb 2020 21:31:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E2036875B6;
+	Fri, 14 Feb 2020 03:29:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lXLoUrbzWdrc; Thu, 13 Feb 2020 21:31:57 +0000 (UTC)
+	with ESMTP id JyxtRBsLueYl; Fri, 14 Feb 2020 03:29:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id ED79721574;
-	Thu, 13 Feb 2020 21:31:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4838A87593;
+	Fri, 14 Feb 2020 03:29:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 63C631BF338
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4C8451BF28A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 03:28:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5ED6221F69
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 483342048B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 03:28:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eGBGN1GhgP4Y for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Feb 2020 21:31:53 +0000 (UTC)
+ with ESMTP id ElMsbKt0cUCI for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2020 03:28:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 3FEA62156E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2020 21:31:53 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3B79E20480
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 03:28:57 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2020 13:31:51 -0800
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2020 19:28:56 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,438,1574150400"; d="scan'208";a="227382419"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
- by orsmga008.jf.intel.com with ESMTP; 13 Feb 2020 13:31:51 -0800
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 13 Feb 2020 13:31:29 -0800
-Message-Id: <20200213213129.34023-14-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
-References: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,439,1574150400"; d="scan'208";a="227463688"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga008.jf.intel.com with ESMTP; 13 Feb 2020 19:28:55 -0800
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1j2Rex-000Btr-4v; Fri, 14 Feb 2020 11:28:55 +0800
+Date: Fri, 14 Feb 2020 11:28:43 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5e4613eb.CLauu820MA/O0B3q%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S39 v2 15/15] ice: fix define for E822
- backplane device
+Subject: [Intel-wired-lan] [jkirsher-net-queue:master] BUILD SUCCESS
+ b9287f2ac321ecac56eb51e6231f6579683dcdae
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,62 +68,248 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bruce Allan <bruce.w.allan@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  master
+branch HEAD: b9287f2ac321ecac56eb51e6231f6579683dcdae  net: ethernet: ave: Add capability of rgmii-id mode
 
-This product's name has changed; update the macro identifier accordingly.
+elapsed time: 1940m
 
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+configs tested: 227
+configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                              allmodconfig
+arm                               allnoconfig
+arm                              allyesconfig
+arm                         at91_dt_defconfig
+arm                           efm32_defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                        multi_v7_defconfig
+arm                        shmobile_defconfig
+arm                           sunxi_defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+sparc                            allyesconfig
+s390                                defconfig
+nios2                         10m50_defconfig
+riscv                             allnoconfig
+sh                  sh7785lcr_32bit_defconfig
+c6x                              allyesconfig
+xtensa                          iss_defconfig
+parisc                           allyesconfig
+s390                              allnoconfig
+riscv                               defconfig
+m68k                           sun3_defconfig
+openrisc                 simple_smp_defconfig
+i386                                defconfig
+powerpc                           allnoconfig
+sparc64                          allmodconfig
+nds32                               defconfig
+s390                             allmodconfig
+riscv                    nommu_virt_defconfig
+powerpc                             defconfig
+i386                             allyesconfig
+mips                      malta_kvm_defconfig
+mips                      fuloong2e_defconfig
+parisc                         b180_defconfig
+sparc64                           allnoconfig
+m68k                          multi_defconfig
+nds32                             allnoconfig
+riscv                          rv32_defconfig
+um                             i386_defconfig
+i386                              allnoconfig
+csky                                defconfig
+nios2                         3c120_defconfig
+s390                             allyesconfig
+arc                              allyesconfig
+microblaze                    nommu_defconfig
+alpha                               defconfig
+sh                            titan_defconfig
+sparc                               defconfig
+i386                             alldefconfig
+ia64                             alldefconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                                defconfig
+c6x                        evmc6678_defconfig
+openrisc                    or1ksim_defconfig
+xtensa                       common_defconfig
+h8300                     edosk2674_defconfig
+h8300                    h8300h-sim_defconfig
+h8300                       h8s-sim_defconfig
+m68k                             allmodconfig
+m68k                       m5475evb_defconfig
+arc                                 defconfig
+microblaze                      mmu_defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+mips                           32r2_defconfig
+mips                         64r6el_defconfig
+mips                             allmodconfig
+mips                              allnoconfig
+mips                             allyesconfig
+parisc                            allnoconfig
+parisc                        c3000_defconfig
+parisc                              defconfig
+x86_64               randconfig-a001-20200213
+x86_64               randconfig-a002-20200213
+x86_64               randconfig-a003-20200213
+i386                 randconfig-a001-20200213
+i386                 randconfig-a002-20200213
+i386                 randconfig-a003-20200213
+x86_64               randconfig-a001-20200214
+x86_64               randconfig-a002-20200214
+x86_64               randconfig-a003-20200214
+i386                 randconfig-a001-20200214
+i386                 randconfig-a002-20200214
+i386                 randconfig-a003-20200214
+parisc               randconfig-a001-20200213
+riscv                randconfig-a001-20200213
+mips                 randconfig-a001-20200213
+m68k                 randconfig-a001-20200213
+nds32                randconfig-a001-20200213
+alpha                randconfig-a001-20200213
+alpha                randconfig-a001-20200214
+m68k                 randconfig-a001-20200214
+mips                 randconfig-a001-20200214
+nds32                randconfig-a001-20200214
+parisc               randconfig-a001-20200214
+c6x                  randconfig-a001-20200213
+h8300                randconfig-a001-20200213
+microblaze           randconfig-a001-20200213
+nios2                randconfig-a001-20200213
+sparc64              randconfig-a001-20200213
+c6x                  randconfig-a001-20200214
+h8300                randconfig-a001-20200214
+microblaze           randconfig-a001-20200214
+nios2                randconfig-a001-20200214
+sparc64              randconfig-a001-20200214
+openrisc             randconfig-a001-20200213
+sh                   randconfig-a001-20200213
+csky                 randconfig-a001-20200213
+s390                 randconfig-a001-20200213
+xtensa               randconfig-a001-20200213
+csky                 randconfig-a001-20200214
+openrisc             randconfig-a001-20200214
+s390                 randconfig-a001-20200214
+xtensa               randconfig-a001-20200214
+x86_64               randconfig-b001-20200213
+x86_64               randconfig-b002-20200213
+x86_64               randconfig-b003-20200213
+i386                 randconfig-b001-20200213
+i386                 randconfig-b002-20200213
+i386                 randconfig-b003-20200213
+x86_64               randconfig-b001-20200214
+x86_64               randconfig-b002-20200214
+x86_64               randconfig-b003-20200214
+i386                 randconfig-b001-20200214
+i386                 randconfig-b002-20200214
+i386                 randconfig-b003-20200214
+x86_64               randconfig-c001-20200213
+x86_64               randconfig-c002-20200213
+x86_64               randconfig-c003-20200213
+i386                 randconfig-c001-20200213
+i386                 randconfig-c002-20200213
+i386                 randconfig-c003-20200213
+x86_64               randconfig-c001-20200214
+x86_64               randconfig-c002-20200214
+x86_64               randconfig-c003-20200214
+i386                 randconfig-c001-20200214
+i386                 randconfig-c002-20200214
+i386                 randconfig-c003-20200214
+x86_64               randconfig-d001-20200213
+x86_64               randconfig-d002-20200213
+x86_64               randconfig-d003-20200213
+i386                 randconfig-d001-20200213
+i386                 randconfig-d002-20200213
+i386                 randconfig-d003-20200213
+x86_64               randconfig-e001-20200213
+x86_64               randconfig-e002-20200213
+x86_64               randconfig-e003-20200213
+i386                 randconfig-e001-20200213
+i386                 randconfig-e002-20200213
+i386                 randconfig-e003-20200213
+x86_64               randconfig-e001-20200214
+x86_64               randconfig-e002-20200214
+x86_64               randconfig-e003-20200214
+i386                 randconfig-e001-20200214
+i386                 randconfig-e002-20200214
+i386                 randconfig-e003-20200214
+x86_64               randconfig-f001-20200213
+x86_64               randconfig-f002-20200213
+x86_64               randconfig-f003-20200213
+i386                 randconfig-f001-20200213
+i386                 randconfig-f002-20200213
+i386                 randconfig-f003-20200213
+x86_64               randconfig-f001-20200214
+x86_64               randconfig-f002-20200214
+x86_64               randconfig-f003-20200214
+i386                 randconfig-f001-20200214
+i386                 randconfig-f002-20200214
+i386                 randconfig-f003-20200214
+x86_64               randconfig-g001-20200213
+x86_64               randconfig-g002-20200213
+x86_64               randconfig-g003-20200213
+i386                 randconfig-g001-20200213
+i386                 randconfig-g002-20200213
+i386                 randconfig-g003-20200213
+x86_64               randconfig-g001-20200214
+x86_64               randconfig-g002-20200214
+x86_64               randconfig-g003-20200214
+i386                 randconfig-g001-20200214
+i386                 randconfig-g002-20200214
+i386                 randconfig-g003-20200214
+x86_64               randconfig-h001-20200213
+x86_64               randconfig-h002-20200213
+x86_64               randconfig-h003-20200213
+i386                 randconfig-h001-20200213
+i386                 randconfig-h002-20200213
+i386                 randconfig-h003-20200213
+x86_64               randconfig-h001-20200214
+x86_64               randconfig-h002-20200214
+x86_64               randconfig-h003-20200214
+i386                 randconfig-h001-20200214
+i386                 randconfig-h002-20200214
+i386                 randconfig-h003-20200214
+arc                  randconfig-a001-20200213
+arm                  randconfig-a001-20200213
+arm64                randconfig-a001-20200213
+ia64                 randconfig-a001-20200213
+powerpc              randconfig-a001-20200213
+sparc                randconfig-a001-20200213
+arc                  randconfig-a001-20200214
+arm                  randconfig-a001-20200214
+arm64                randconfig-a001-20200214
+ia64                 randconfig-a001-20200214
+powerpc              randconfig-a001-20200214
+sparc                randconfig-a001-20200214
+riscv                            allmodconfig
+riscv                            allyesconfig
+s390                             alldefconfig
+s390                          debug_defconfig
+s390                       zfcpdump_defconfig
+sh                               allmodconfig
+sh                                allnoconfig
+sh                          rsk7269_defconfig
+sparc64                          allyesconfig
+sparc64                             defconfig
+um                                  defconfig
+um                           x86_64_defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
+
 ---
- drivers/net/ethernet/intel/ice/ice_devids.h | 4 ++--
- drivers/net/ethernet/intel/ice/ice_main.c   | 2 +-
- drivers/net/ethernet/intel/ice/ice_nvm.c    | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_devids.h b/drivers/net/ethernet/intel/ice/ice_devids.h
-index 6fccb66ff43c..9d8194671f6a 100644
---- a/drivers/net/ethernet/intel/ice/ice_devids.h
-+++ b/drivers/net/ethernet/intel/ice/ice_devids.h
-@@ -43,8 +43,8 @@
- #define ICE_DEV_ID_E822C_10G_BASE_T	0x1893
- /* Intel(R) Ethernet Connection E822-C 1GbE */
- #define ICE_DEV_ID_E822C_SGMII		0x1894
--/* Intel(R) Ethernet Connection E822-X for backplane */
--#define ICE_DEV_ID_E822X_BACKPLANE	0x1897
-+/* Intel(R) Ethernet Connection E822-L for backplane */
-+#define ICE_DEV_ID_E822L_BACKPLANE	0x1897
- /* Intel(R) Ethernet Connection E822-L for SFP */
- #define ICE_DEV_ID_E822L_SFP		0x1898
- /* Intel(R) Ethernet Connection E822-L/X557-AT 10GBASE-T */
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 5f23806669e2..b25ac179c8b8 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3626,7 +3626,7 @@ static const struct pci_device_id ice_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822X_BACKPLANE), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_BACKPLANE), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T), 0 },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII), 0 },
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 75cd4cbb473b..f6e25db22c23 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -301,7 +301,7 @@ enum ice_status ice_init_nvm(struct ice_hw *hw)
- 	case ICE_DEV_ID_E822C_10G_BASE_T:
- 	case ICE_DEV_ID_E822C_SGMII:
- 	case ICE_DEV_ID_E822C_SFP:
--	case ICE_DEV_ID_E822X_BACKPLANE:
-+	case ICE_DEV_ID_E822L_BACKPLANE:
- 	case ICE_DEV_ID_E822L_SFP:
- 	case ICE_DEV_ID_E822L_10G_BASE_T:
- 	case ICE_DEV_ID_E822L_SGMII:
--- 
-2.20.1
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
