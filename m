@@ -1,62 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 571F115DFF3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2020 17:11:33 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0892315FB0F
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Feb 2020 00:50:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F52184407;
-	Fri, 14 Feb 2020 16:11:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CD76A20111;
+	Fri, 14 Feb 2020 23:50:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YWgqpYhOq4Ua; Fri, 14 Feb 2020 16:11:31 +0000 (UTC)
+	with ESMTP id TifGg+RyjGdr; Fri, 14 Feb 2020 23:50:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5E3B1845D7;
-	Fri, 14 Feb 2020 16:11:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BA434221DC;
+	Fri, 14 Feb 2020 23:50:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 543AC1BF5EA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:11:29 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B71871BF303
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 23:50:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4F07F87662
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:11:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id B23022279B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 23:50:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1vnHBCrGbSaP for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2020 16:11:28 +0000 (UTC)
+ with ESMTP id s2np4o0pLavd for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2020 23:50:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D558287647
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 16:11:28 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B67E9222C2;
- Fri, 14 Feb 2020 16:11:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581696688;
- bh=vCOwDC4HiMKfA9asIcQGpE8w0AH9BpB7uecmviq9Qsc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mZE6dLUMmNUHYgS9l8DrV9xh/EocV/pq54xwKnbsE7NMykE6hd+TkcixLfYmrQUXq
- dBZEGylGTZuc+66NRw3zzywNjM63Y3WdbeFy5S3qcwoeqTlUCI0CPLEZ6zkGBybf3m
- M8IKqf16lrkg+DJu2FmLAyKM0bVweDdeM2yHTEHc=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Fri, 14 Feb 2020 11:01:45 -0500
-Message-Id: <20200214160149.11681-455-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200214160149.11681-1-sashal@kernel.org>
-References: <20200214160149.11681-1-sashal@kernel.org>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 599C422246
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2020 23:50:38 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2020 15:50:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,442,1574150400"; d="scan'208";a="252798559"
+Received: from vcostago-desk1.jf.intel.com ([10.54.70.26])
+ by orsmga002.jf.intel.com with ESMTP; 14 Feb 2020 15:50:37 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 14 Feb 2020 15:52:01 -0800
+Message-Id: <20200214235203.3910513-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.25.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 455/459] i40e: Relax
- i40e_xsk_wakeup's return value when PF is busy
+Subject: [Intel-wired-lan] [next-queue PATCH v3 0/2] igc: Add initial TSN
+ qdiscs offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,40 +60,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJvbTogTWFjaWVqIEZpamFsa293c2tpIDxtYWNpZWouZmlqYWxrb3dza2lAaW50ZWwuY29tPgoK
-WyBVcHN0cmVhbSBjb21taXQgYzc3ZTlmMDkxNDM4MjI2MjNkZDcxYTBmZGM4NDMzMTEyOWU5N2Mz
-YSBdCgpSZXR1cm4gLUVBR0FJTiBpbnN0ZWFkIG9mIC1FTkVURE9XTiB0byBwcm92aWRlIGEgc2xp
-Z2h0bHkgbWlsZGVyCmluZm9ybWF0aW9uIHRvIHVzZXIgc3BhY2Ugc28gdGhhdCBhbiBhcHBsaWNh
-dGlvbiB3aWxsIGtub3cgdG8gcmV0cnkgdGhlCnN5c2NhbGwgd2hlbiBfX0k0MEVfQ09ORklHX0JV
-U1kgYml0IGlzIHNldCBvbiBwZi0+c3RhdGUuCgpGaXhlczogYjM4NzNhNWJlNzU3ICgibmV0L2k0
-MGU6IEZpeCBjb25jdXJyZW5jeSBpc3N1ZXMgYmV0d2VlbiBjb25maWcgZmxvdyBhbmQgWFNLIikK
-U2lnbmVkLW9mZi1ieTogTWFjaWVqIEZpamFsa293c2tpIDxtYWNpZWouZmlqYWxrb3dza2lAaW50
-ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgQm9ya21hbm4gPGRhbmllbEBpb2dlYXJib3gu
-bmV0PgpBY2tlZC1ieTogQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgpMaW5r
-OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9icGYvMjAyMDAyMDUwNDU4MzQuNTY3OTUtMi1tYWNp
-ZWouZmlqYWxrb3dza2lAaW50ZWwuY29tClNpZ25lZC1vZmYtYnk6IFNhc2hhIExldmluIDxzYXNo
-YWxAa2VybmVsLm9yZz4KLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVf
-eHNrLmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
-LSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNr
-LmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMKaW5kZXggZjcz
-Y2Q5MTdjNDRmNy4uMzE1NmRlNzg2ZDk1NSAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2k0MGUvaTQwZV94c2suYwpAQCAtNzkxLDcgKzc5MSw3IEBAIGludCBpNDBlX3hza193YWtldXAo
-c3RydWN0IG5ldF9kZXZpY2UgKmRldiwgdTMyIHF1ZXVlX2lkLCB1MzIgZmxhZ3MpCiAJc3RydWN0
-IGk0MGVfcmluZyAqcmluZzsKIAogCWlmICh0ZXN0X2JpdChfX0k0MEVfQ09ORklHX0JVU1ksIHBm
-LT5zdGF0ZSkpCi0JCXJldHVybiAtRU5FVERPV047CisJCXJldHVybiAtRUFHQUlOOwogCiAJaWYg
-KHRlc3RfYml0KF9fSTQwRV9WU0lfRE9XTiwgdnNpLT5zdGF0ZSkpCiAJCXJldHVybiAtRU5FVERP
-V047Ci0tIAoyLjIwLjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9z
-bC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2ly
-ZWQtbGFuCg==
+Hi,
+
+Changes from v2:
+  - Fixed review comments (Andre Guedes);
+  - Just a note, about the comment about ETF + taprio, when both are
+    in offload mode, since commit bfabd41da341 ("taprio: Fix dropping
+    packets when using taprio + ETF offloading") it should work fine.
+
+Changes from v1:
+  - Fixed review comments (Andre Guedes);
+
+Original cover letter:
+
+This adds support for offloading taprio (which handles what was
+formerly known as Qbv) and ETF (using the LaunchTime feature) to i225.
+
+To try and keep things organized, a new file is added: igc_tsn.c. The
+idea is that the more TSN specific code will live here, in the future
+this will include frame-preemption support, and CBS (formerly Qav)
+support.
+
+The current support has a few limitations:
+  - because the BASET registers can only be written once per reset,
+    when removing taprio or ETF, we force the NIC to reset;
+  - In part because of the above limitation, we don't support changing
+    schedules;
+  - The way the registers for the schedule are organized, each queue
+    can only be opened and closed once per cycle, so some schedules
+    provided by the user are going to be rejected by the driver;
+
+Future improvements:
+  - When configuring a Qbv cycle, when we detect that a queue would
+    stay open for two intervals, we could want to merge them;
+  - More testing with taprio and ETF together, when ETF is installed
+    under taprio (when using them separately, it works fine);
+
+
+Vinicius Costa Gomes (2):
+  igc: Add support for taprio offloading
+  igc: Add support for ETF offloading
+
+ drivers/net/ethernet/intel/igc/Makefile      |   2 +-
+ drivers/net/ethernet/intel/igc/igc.h         |   7 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  13 ++
+ drivers/net/ethernet/intel/igc/igc_main.c    | 183 ++++++++++++++++++-
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  12 ++
+ drivers/net/ethernet/intel/igc/igc_tsn.c     | 157 ++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_tsn.h     |   9 +
+ 7 files changed, 379 insertions(+), 4 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/igc/igc_tsn.c
+ create mode 100644 drivers/net/ethernet/intel/igc/igc_tsn.h
+
+-- 
+2.25.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
