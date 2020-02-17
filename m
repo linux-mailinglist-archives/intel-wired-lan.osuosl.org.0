@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6387160333
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Feb 2020 10:47:12 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 377A6160A33
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Feb 2020 07:07:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2095486856;
-	Sun, 16 Feb 2020 09:47:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8E6402011B;
+	Mon, 17 Feb 2020 06:07:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cCqk+UX3vcx5; Sun, 16 Feb 2020 09:47:09 +0000 (UTC)
+	with ESMTP id nvDv2bznRNLl; Mon, 17 Feb 2020 06:07:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 015F2867C8;
-	Sun, 16 Feb 2020 09:47:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8C685203C9;
+	Mon, 17 Feb 2020 06:07:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 73DD01BF83B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2020 09:47:06 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B48331BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 06:07:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 63B0A85DF7
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2020 09:47:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AE77885CE2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 06:07:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XCsarlHEtc2Q for <intel-wired-lan@lists.osuosl.org>;
- Sun, 16 Feb 2020 09:47:05 +0000 (UTC)
+ with ESMTP id 5HQ8XA7ZLy2v for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Feb 2020 06:07:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C64A285D3A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2020 09:47:05 +0000 (UTC)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0580D85CC7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 06:07:19 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Feb 2020 01:47:04 -0800
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2020 22:07:19 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,448,1574150400"; d="scan'208";a="268072057"
+X-IronPort-AV: E=Sophos;i="5.70,451,1574150400"; d="scan'208";a="348432219"
 Received: from ccdlinuxdev09.iil.intel.com ([143.185.163.21])
- by fmsmga002.fm.intel.com with ESMTP; 16 Feb 2020 01:47:03 -0800
+ by fmsmga001.fm.intel.com with ESMTP; 16 Feb 2020 22:07:19 -0800
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Sun, 16 Feb 2020 11:47:03 +0200
-Message-Id: <20200216094703.17867-1-sasha.neftin@intel.com>
+Date: Mon, 17 Feb 2020 08:07:18 +0200
+Message-Id: <20200217060718.20965-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v2 1/1] igc: Complete to commit Add
- support for TSO
+Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Fix typo in Alder Lake
+ brand name
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,68 +65,53 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-commit f38b782dccab ("igc: Add support for TSO")
-Add option to setting transmit command (TUCMD) of the context
-descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
-
-v1 -> v2: add SKB_GSO_UDP_L4 to features check and probe
+Follow to commit e15ef7697361 ("e1000e: Add support for Alder Lake")
+Fix typo in brand name string
 
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_defines.h | 1 +
- drivers/net/ethernet/intel/igc/igc_main.c    | 6 +++++-
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/e1000e/hw.h     | 8 ++++----
+ drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 4ddccccf42cc..044c0f8d4c16 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -509,6 +509,7 @@
- #define IGC_VLAPQF_QUEUE_MASK	0x03
+diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
+index 61a0c7cb9ced..b1447221669e 100644
+--- a/drivers/net/ethernet/intel/e1000e/hw.h
++++ b/drivers/net/ethernet/intel/e1000e/hw.h
+@@ -98,10 +98,10 @@ struct e1000_hw;
+ #define E1000_DEV_ID_PCH_TGP_I219_V14		0x15FA
+ #define E1000_DEV_ID_PCH_TGP_I219_LM15		0x15F4
+ #define E1000_DEV_ID_PCH_TGP_I219_V15		0x15F5
+-#define E1000_DEV_ID_PCH_ADP_1219_LM16		0x1A1E
+-#define E1000_DEV_ID_PCH_ADP_1219_V16		0x1A1F
+-#define E1000_DEV_ID_PCH_ADP_1219_LM17		0x1A1C
+-#define E1000_DEV_ID_PCH_ADP_1219_V17		0x1A1D
++#define E1000_DEV_ID_PCH_ADP_I219_LM16		0x1A1E
++#define E1000_DEV_ID_PCH_ADP_I219_V16		0x1A1F
++#define E1000_DEV_ID_PCH_ADP_I219_LM17		0x1A1C
++#define E1000_DEV_ID_PCH_ADP_I219_V17		0x1A1D
  
- #define IGC_ADVTXD_MACLEN_SHIFT		9  /* Adv ctxt desc mac len shift */
-+#define IGC_ADVTXD_TUCMD_L4T_UDP	0x00000000  /* L4 Packet TYPE of UDP */
- #define IGC_ADVTXD_TUCMD_IPV4		0x00000400  /* IP Packet Type:1=IPv4 */
- #define IGC_ADVTXD_TUCMD_L4T_TCP	0x00000800  /* L4 Packet Type of TCP */
- #define IGC_ADVTXD_TUCMD_L4T_SCTP	0x00001000 /* L4 packet TYPE of SCTP */
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 771148e57941..f1f6a5230dda 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -1208,7 +1208,8 @@ static int igc_tso(struct igc_ring *tx_ring,
- 	l4.hdr = skb_checksum_start(skb);
+ #define E1000_REVISION_4	4
  
- 	/* ADV DTYP TUCMD MKRLOC/ISCSIHEDLEN */
--	type_tucmd = IGC_ADVTXD_TUCMD_L4T_TCP;
-+	type_tucmd = (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4) ?
-+		      IGC_ADVTXD_TUCMD_L4T_UDP : IGC_ADVTXD_TUCMD_L4T_TCP;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 35f21add3732..fb92002cabee 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -7763,10 +7763,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V14), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_LM15), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_TGP_I219_V15), board_pch_cnp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM16), board_pch_cnp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V16), board_pch_cnp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_LM17), board_pch_cnp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_1219_V17), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM16), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V16), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM17), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V17), board_pch_cnp },
  
- 	/* initialize outer IP header fields */
- 	if (ip.v4->version == 4) {
-@@ -3669,6 +3670,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
- 	if (unlikely(mac_hdr_len > IGC_MAX_MAC_HDR_LEN))
- 		return features & ~(NETIF_F_HW_CSUM |
- 				    NETIF_F_SCTP_CRC |
-+				    NETIF_F_GSO_UDP_L4 |
- 				    NETIF_F_HW_VLAN_CTAG_TX |
- 				    NETIF_F_TSO |
- 				    NETIF_F_TSO6);
-@@ -3677,6 +3679,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
- 	if (unlikely(network_hdr_len >  IGC_MAX_NETWORK_HDR_LEN))
- 		return features & ~(NETIF_F_HW_CSUM |
- 				    NETIF_F_SCTP_CRC |
-+				    NETIF_F_GSO_UDP_L4 |
- 				    NETIF_F_TSO |
- 				    NETIF_F_TSO6);
- 
-@@ -4726,6 +4729,7 @@ static int igc_probe(struct pci_dev *pdev,
- 	netdev->features |= NETIF_F_RXCSUM;
- 	netdev->features |= NETIF_F_HW_CSUM;
- 	netdev->features |= NETIF_F_SCTP_CRC;
-+	netdev->features |= NETIF_F_GSO_UDP_L4;
- 
- 	/* setup the private structure */
- 	err = igc_sw_init(adapter);
+ 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
+ };
 -- 
 2.11.0
 
