@@ -1,72 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3A4E161EDB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 03:10:06 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 09CAD2040F;
-	Tue, 18 Feb 2020 02:10:05 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rrw4RZndjIn5; Tue, 18 Feb 2020 02:10:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C2D68203F9;
-	Tue, 18 Feb 2020 02:10:03 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CD2581BF37B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 21:41:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D5D32161EDD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 03:10:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C645F859BD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 21:41:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8E78F84EAD;
+	Tue, 18 Feb 2020 02:10:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fettBX9khFPd; Tue, 18 Feb 2020 02:10:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2F09684F5A;
+	Tue, 18 Feb 2020 02:10:04 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 81C611BF37B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 21:42:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 7CFEF2042B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 21:42:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i-mFLhhDRRtP for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Feb 2020 21:41:04 +0000 (UTC)
+ with ESMTP id ospWVpxwjREJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Feb 2020 21:42:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E6D7985209
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 21:41:03 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id a6so787305wme.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 13:41:03 -0800 (PST)
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id EB0B62046E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 21:42:05 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id t14so773537wmi.5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2020 13:42:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=8ARFrFQV0qlOU9GqIKhHr+/9GQBmGgiD3Q14CXHt7ws=;
- b=P2pROcebCz0VgM4B3LjbRdt53mGMZJ/572Gmh4gxcuOtve3Ct3epgxq7xh7KTreJtW
- /V5E7sOGSWIZHly56Cxa1xz+BNNowmsdbc8FIlN4ky5yLPFBEs898w+025l6/4Tk0Twx
- 5SUJCnMdposybv9NE9NZhh5Uz/vi5MGeWuOLVvYHL+Mqxh8m5mkDotvyg8b2d7DBnYsx
- hVEeBmtkxilP+P2U09JxFSHlz9BY5v1ITvVps8CePC3jXN8okjttoOSP9WndTPQRgPDV
- q4JO5deQGtiZ1Ne83CEt8J+P+DvA05DLbQyGTAqbpzAysRQCBzR9Id5atMGYT0C36u57
- tQpA==
+ bh=cjeh9v8Xhl5vf17zgEZjFCMDibT7UUm5HC0X2z/QhaI=;
+ b=ZsgD0lTYfz6ieZ6SfUvJ/p5AMCoN0HZB0R3wrR1lkZtiJYUYhBwgxKD6jt3sVs+vde
+ y1gUNDIqje/eC5MhrCkPN0UCkS3w01yk3kXnqnwseXCZzQdHPYl/WNwtxhj4r5cn1HvT
+ g7lqanx+8IhSWoKvTDTJA45Lafothcj5oqlo5a+d3NY6Rv5eBAmHhMNLNnhIAOXj5/LM
+ C9XicF4XzqLrnj48nZNw1cHSWWypGK842GeyAgiIoZys23xqjyOhaHXakoaBYBeS6BRR
+ rxOheD6EedwIrmLcwAhs/6+tYYdMdF3rqJSXU2HHC8SWmwZdWmsZ04PqpuvXlLfPFqwb
+ B9Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=8ARFrFQV0qlOU9GqIKhHr+/9GQBmGgiD3Q14CXHt7ws=;
- b=h6diDx1aNmDV8YwMjaONAGqj/grYKNv6KKc5+t7igD8Z6QeBHGMsN8t/B+u14YzZsc
- nLj0P0X5IdUv0ZjOFbSM7QU5WoXSTiXHbqbyMaTkFpoYkZ3cO3LAJZxbZRsm19wkkf5R
- a0u/ck3IVfD7pGBSi9M4RJyLSMHPC7Md9OyyqiAZye7wCvU/R0Vh6K3Gzst+Ic1PMtyt
- 9PeejIm9dBqGA5YWyfbGuG31A+jQTYXzmx34YT70ZE9Dxo4oLgCWC+0DN6cFpde5Ab2k
- 7klDLJjUJhx/+Auo/kv+0aPTNdGiVocL6pwcJQDgzbeeVicudLotCam6xfOmu96MkmPk
- bJRA==
-X-Gm-Message-State: APjAAAUbVENQdMvbULBSJCeflMHXLEPRMwuFDT0NiApbWrrfC+JsXqIr
- R/iOv/MFhSiNOYr8DzYCIrY=
-X-Google-Smtp-Source: APXvYqx/0EaWmdS7wPEFj0nevtLwqqPVhFUkYYkYkfo7PcJf/rCTyqMxBRSRGx5iAmbPndkQ5E9t1g==
-X-Received: by 2002:a1c:7fd7:: with SMTP id a206mr900534wmd.171.1581975662156; 
- Mon, 17 Feb 2020 13:41:02 -0800 (PST)
+ bh=cjeh9v8Xhl5vf17zgEZjFCMDibT7UUm5HC0X2z/QhaI=;
+ b=KGq6i136W8KXGZh1VZlg3OZ6jPcbCGGL7UM58XstEx9uUNcSRiS2qtoIGqV9SIqJLR
+ GItXxT4Dyj3tYXYxGUouM5WeoqChxkpSiVvvkR+2BOK/Pd6xcPbpK0t3kcX9QiiCeDbH
+ U5OkOfGdMzS6J/VY7ETJenvdhllSS5CWX4Hi2jhOEztaINyixRN1IG6iT0fih93qj1uq
+ JdLKieCJY7FqRpsvTAc/5TG2VYiD1EkG20L6h23wdBFPm+U4vN6/IE8J6EWUKK+IvYhq
+ WlgpTIwqkUFxiijtoy1zRtezopG/YPUfyuzhPLNSy3ShhNxS/L2GZmsAWGAhbxzBxVBA
+ CNlg==
+X-Gm-Message-State: APjAAAUkmkw2gdUXF7VPcB91F9msW8aOVy7HvFDDmaZY+kL+DVlebZdd
+ fYovq2w4QwbGcLUU2fffALQ=
+X-Google-Smtp-Source: APXvYqxEQPgZsTWSmVdE5H03b38/6KYJiWeSoWc+PwoUuRcAQGUl+NXdpwv0LoPkKmNamG9313L54Q==
+X-Received: by 2002:a05:600c:21c5:: with SMTP id
+ x5mr995220wmj.72.1581975724312; 
+ Mon, 17 Feb 2020 13:42:04 -0800 (PST)
 Received: from ?IPv6:2003:ea:8f29:6000:41c6:31a6:d880:888?
  (p200300EA8F29600041C631A6D8800888.dip0.t-ipconnect.de.
  [2003:ea:8f29:6000:41c6:31a6:d880:888])
- by smtp.googlemail.com with ESMTPSA id t187sm916530wmt.25.2020.02.17.13.41.01
+ by smtp.googlemail.com with ESMTPSA id q124sm1510675wme.2.2020.02.17.13.42.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2020 13:41:01 -0800 (PST)
+ Mon, 17 Feb 2020 13:42:03 -0800 (PST)
 From: Heiner Kallweit <hkallweit1@gmail.com>
 To: David Miller <davem@davemloft.net>,
  Realtek linux nic maintainers <nic_swsd@realtek.com>,
@@ -85,15 +86,15 @@ To: David Miller <davem@davemloft.net>,
  Stephen Hemminger <sthemmin@microsoft.com>, Sasha Levin <sashal@kernel.org>,
  Ronak Doshi <doshir@vmware.com>, "VMware, Inc." <pv-drivers@vmware.com>
 References: <76cd6cfc-f4f3-ece7-203a-0266b7f02a12@gmail.com>
-Message-ID: <02ea88e7-1a79-f779-d58c-bb1dced0b3b4@gmail.com>
-Date: Mon, 17 Feb 2020 22:40:59 +0100
+Message-ID: <9270ae4b-feb1-6a4d-8a22-fbe5e47b7617@gmail.com>
+Date: Mon, 17 Feb 2020 22:42:01 +0100
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
 In-Reply-To: <76cd6cfc-f4f3-ece7-203a-0266b7f02a12@gmail.com>
 Content-Language: en-US
 X-Mailman-Approved-At: Tue, 18 Feb 2020 02:10:01 +0000
-Subject: [Intel-wired-lan] [PATCH net-next 2/3] r8169: use new helper
+Subject: [Intel-wired-lan] [PATCH net-next 3/3] net: use new helper
  tcp_v6_gso_csum_prep
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -117,19 +118,214 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Simplify the code by using new helper tcp_v6_gso_csum_prep.
+Use new helper tcp_v6_gso_csum_prep in additional network drivers.
 
 Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 ---
- drivers/net/ethernet/realtek/r8169_main.c | 26 ++---------------------
- 1 file changed, 2 insertions(+), 24 deletions(-)
+ drivers/net/ethernet/atheros/alx/main.c       |  5 +---
+ .../net/ethernet/atheros/atl1c/atl1c_main.c   |  6 ++---
+ drivers/net/ethernet/brocade/bna/bnad.c       |  7 +----
+ drivers/net/ethernet/cisco/enic/enic_main.c   |  3 +--
+ drivers/net/ethernet/intel/e1000/e1000_main.c |  6 +----
+ drivers/net/ethernet/intel/e1000e/netdev.c    |  5 +---
+ drivers/net/ethernet/jme.c                    |  7 +----
+ .../net/ethernet/pensando/ionic/ionic_txrx.c  |  5 +---
+ drivers/net/ethernet/qualcomm/emac/emac-mac.c |  7 ++---
+ drivers/net/ethernet/socionext/netsec.c       |  6 +----
+ drivers/net/hyperv/netvsc_drv.c               |  5 +---
+ drivers/net/usb/r8152.c                       | 26 ++-----------------
+ drivers/net/vmxnet3/vmxnet3_drv.c             |  5 +---
+ 13 files changed, 16 insertions(+), 77 deletions(-)
 
-diff --git a/drivers/net/ethernet/realtek/r8169_main.c b/drivers/net/ethernet/realtek/r8169_main.c
-index 5a9143b50..75ba10069 100644
---- a/drivers/net/ethernet/realtek/r8169_main.c
-+++ b/drivers/net/ethernet/realtek/r8169_main.c
-@@ -4108,29 +4108,6 @@ static bool rtl_test_hw_pad_bug(struct rtl8169_private *tp, struct sk_buff *skb)
- 	return skb->len < ETH_ZLEN && tp->mac_version == RTL_GIGA_MAC_VER_34;
+diff --git a/drivers/net/ethernet/atheros/alx/main.c b/drivers/net/ethernet/atheros/alx/main.c
+index 1dcbc486e..3e0215887 100644
+--- a/drivers/net/ethernet/atheros/alx/main.c
++++ b/drivers/net/ethernet/atheros/alx/main.c
+@@ -1416,10 +1416,7 @@ static int alx_tso(struct sk_buff *skb, struct alx_txd *first)
+ 							 0, IPPROTO_TCP, 0);
+ 		first->word1 |= 1 << TPD_IPV4_SHIFT;
+ 	} else if (skb_is_gso_v6(skb)) {
+-		ipv6_hdr(skb)->payload_len = 0;
+-		tcp_hdr(skb)->check = ~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-						       &ipv6_hdr(skb)->daddr,
+-						       0, IPPROTO_TCP, 0);
++		tcp_v6_gso_csum_prep(skb, true);
+ 		/* LSOv2: the first TPD only provides the packet length */
+ 		first->adrl.l.pkt_len = skb->len;
+ 		first->word1 |= 1 << TPD_LSO_V2_SHIFT;
+diff --git a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
+index 4c0b1f855..482e18d0d 100644
+--- a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
++++ b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
+@@ -2025,10 +2025,8 @@ static int atl1c_tso_csum(struct atl1c_adapter *adapter,
+ 						"IPV6 tso with zero data??\n");
+ 				goto check_sum;
+ 			} else
+-				tcp_hdr(skb)->check = ~csum_ipv6_magic(
+-						&ipv6_hdr(skb)->saddr,
+-						&ipv6_hdr(skb)->daddr,
+-						0, IPPROTO_TCP, 0);
++				tcp_v6_gso_csum_prep(skb, false);
++
+ 			etpd->word1 |= 1 << TPD_LSO_EN_SHIFT;
+ 			etpd->word1 |= 1 << TPD_LSO_VER_SHIFT;
+ 			etpd->pkt_len = cpu_to_le32(skb->len);
+diff --git a/drivers/net/ethernet/brocade/bna/bnad.c b/drivers/net/ethernet/brocade/bna/bnad.c
+index 01a50a4b2..c301ad736 100644
+--- a/drivers/net/ethernet/brocade/bna/bnad.c
++++ b/drivers/net/ethernet/brocade/bna/bnad.c
+@@ -2504,12 +2504,7 @@ bnad_tso_prepare(struct bnad *bnad, struct sk_buff *skb)
+ 					   IPPROTO_TCP, 0);
+ 		BNAD_UPDATE_CTR(bnad, tso4);
+ 	} else {
+-		struct ipv6hdr *ipv6h = ipv6_hdr(skb);
+-
+-		ipv6h->payload_len = 0;
+-		tcp_hdr(skb)->check =
+-			~csum_ipv6_magic(&ipv6h->saddr, &ipv6h->daddr, 0,
+-					 IPPROTO_TCP, 0);
++		tcp_v6_gso_csum_prep(skb, true);
+ 		BNAD_UPDATE_CTR(bnad, tso6);
+ 	}
+ 
+diff --git a/drivers/net/ethernet/cisco/enic/enic_main.c b/drivers/net/ethernet/cisco/enic/enic_main.c
+index ddf60dc9a..683c628ef 100644
+--- a/drivers/net/ethernet/cisco/enic/enic_main.c
++++ b/drivers/net/ethernet/cisco/enic/enic_main.c
+@@ -696,8 +696,7 @@ static void enic_preload_tcp_csum(struct sk_buff *skb)
+ 		tcp_hdr(skb)->check = ~csum_tcpudp_magic(ip_hdr(skb)->saddr,
+ 			ip_hdr(skb)->daddr, 0, IPPROTO_TCP, 0);
+ 	} else if (skb->protocol == cpu_to_be16(ETH_P_IPV6)) {
+-		tcp_hdr(skb)->check = ~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-			&ipv6_hdr(skb)->daddr, 0, IPPROTO_TCP, 0);
++		tcp_v6_gso_csum_prep(skb, false);
+ 	}
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 2bced34c1..0664985e8 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -2715,11 +2715,7 @@ static int e1000_tso(struct e1000_adapter *adapter,
+ 			cmd_length = E1000_TXD_CMD_IP;
+ 			ipcse = skb_transport_offset(skb) - 1;
+ 		} else if (skb_is_gso_v6(skb)) {
+-			ipv6_hdr(skb)->payload_len = 0;
+-			tcp_hdr(skb)->check =
+-				~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-						 &ipv6_hdr(skb)->daddr,
+-						 0, IPPROTO_TCP, 0);
++			tcp_v6_gso_csum_prep(skb, true);
+ 			ipcse = 0;
+ 		}
+ 		ipcss = skb_network_offset(skb);
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index db4ea58ba..7dda7d407 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -5462,10 +5462,7 @@ static int e1000_tso(struct e1000_ring *tx_ring, struct sk_buff *skb,
+ 		cmd_length = E1000_TXD_CMD_IP;
+ 		ipcse = skb_transport_offset(skb) - 1;
+ 	} else if (skb_is_gso_v6(skb)) {
+-		ipv6_hdr(skb)->payload_len = 0;
+-		tcp_hdr(skb)->check = ~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-						       &ipv6_hdr(skb)->daddr,
+-						       0, IPPROTO_TCP, 0);
++		tcp_v6_gso_csum_prep(skb, true);
+ 		ipcse = 0;
+ 	}
+ 	ipcss = skb_network_offset(skb);
+diff --git a/drivers/net/ethernet/jme.c b/drivers/net/ethernet/jme.c
+index 2e4975572..cde9be497 100644
+--- a/drivers/net/ethernet/jme.c
++++ b/drivers/net/ethernet/jme.c
+@@ -2077,12 +2077,7 @@ jme_tx_tso(struct sk_buff *skb, __le16 *mss, u8 *flags)
+ 								IPPROTO_TCP,
+ 								0);
+ 		} else {
+-			struct ipv6hdr *ip6h = ipv6_hdr(skb);
+-
+-			tcp_hdr(skb)->check = ~csum_ipv6_magic(&ip6h->saddr,
+-								&ip6h->daddr, 0,
+-								IPPROTO_TCP,
+-								0);
++			tcp_v6_gso_csum_prep(skb, false);
+ 		}
+ 
+ 		return 0;
+diff --git a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
+index e452f4242..3d8469d97 100644
+--- a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
++++ b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
+@@ -632,10 +632,7 @@ static int ionic_tx_tcp_pseudo_csum(struct sk_buff *skb)
+ 					   ip_hdr(skb)->daddr,
+ 					   0, IPPROTO_TCP, 0);
+ 	} else if (skb->protocol == cpu_to_be16(ETH_P_IPV6)) {
+-		tcp_hdr(skb)->check =
+-			~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-					 &ipv6_hdr(skb)->daddr,
+-					 0, IPPROTO_TCP, 0);
++		tcp_v6_gso_csum_prep(skb, false);
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/qualcomm/emac/emac-mac.c b/drivers/net/ethernet/qualcomm/emac/emac-mac.c
+index bebe38d74..01bcc5e68 100644
+--- a/drivers/net/ethernet/qualcomm/emac/emac-mac.c
++++ b/drivers/net/ethernet/qualcomm/emac/emac-mac.c
+@@ -1288,11 +1288,8 @@ static int emac_tso_csum(struct emac_adapter *adpt,
+ 			memset(tpd, 0, sizeof(*tpd));
+ 			memset(&extra_tpd, 0, sizeof(extra_tpd));
+ 
+-			ipv6_hdr(skb)->payload_len = 0;
+-			tcp_hdr(skb)->check =
+-				~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-						 &ipv6_hdr(skb)->daddr,
+-						 0, IPPROTO_TCP, 0);
++			tcp_v6_gso_csum_prep(skb, true);
++
+ 			TPD_PKT_LEN_SET(&extra_tpd, skb->len);
+ 			TPD_LSO_SET(&extra_tpd, 1);
+ 			TPD_LSOV_SET(&extra_tpd, 1);
+diff --git a/drivers/net/ethernet/socionext/netsec.c b/drivers/net/ethernet/socionext/netsec.c
+index e8224b543..d7a033053 100644
+--- a/drivers/net/ethernet/socionext/netsec.c
++++ b/drivers/net/ethernet/socionext/netsec.c
+@@ -1148,11 +1148,7 @@ static netdev_tx_t netsec_netdev_start_xmit(struct sk_buff *skb,
+ 				~tcp_v4_check(0, ip_hdr(skb)->saddr,
+ 					      ip_hdr(skb)->daddr, 0);
+ 		} else {
+-			ipv6_hdr(skb)->payload_len = 0;
+-			tcp_hdr(skb)->check =
+-				~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-						 &ipv6_hdr(skb)->daddr,
+-						 0, IPPROTO_TCP, 0);
++			tcp_v6_gso_csum_prep(skb, true);
+ 		}
+ 
+ 		tx_ctrl.tcp_seg_offload_flag = true;
+diff --git a/drivers/net/hyperv/netvsc_drv.c b/drivers/net/hyperv/netvsc_drv.c
+index 65e12cb07..f41e48634 100644
+--- a/drivers/net/hyperv/netvsc_drv.c
++++ b/drivers/net/hyperv/netvsc_drv.c
+@@ -638,10 +638,7 @@ static int netvsc_xmit(struct sk_buff *skb, struct net_device *net, bool xdp_tx)
+ 		} else {
+ 			lso_info->lso_v2_transmit.ip_version =
+ 				NDIS_TCP_LARGE_SEND_OFFLOAD_IPV6;
+-			ipv6_hdr(skb)->payload_len = 0;
+-			tcp_hdr(skb)->check =
+-				~csum_ipv6_magic(&ipv6_hdr(skb)->saddr,
+-						 &ipv6_hdr(skb)->daddr, 0, IPPROTO_TCP, 0);
++			tcp_v6_gso_csum_prep(skb, true);
+ 		}
+ 		lso_info->lso_v2_transmit.tcp_header_offset = skb_transport_offset(skb);
+ 		lso_info->lso_v2_transmit.mss = skb_shinfo(skb)->gso_size;
+diff --git a/drivers/net/usb/r8152.c b/drivers/net/usb/r8152.c
+index 78ddbaf64..4ad2a1d42 100644
+--- a/drivers/net/usb/r8152.c
++++ b/drivers/net/usb/r8152.c
+@@ -1948,29 +1948,6 @@ static void r8152_csum_workaround(struct r8152 *tp, struct sk_buff *skb,
+ 	}
  }
  
 -/* msdn_giant_send_check()
@@ -155,20 +351,37 @@ index 5a9143b50..75ba10069 100644
 -	return ret;
 -}
 -
- static void rtl8169_tso_csum_v1(struct sk_buff *skb, u32 *opts)
+ static inline void rtl_tx_vlan_tag(struct tx_desc *desc, struct sk_buff *skb)
  {
- 	u32 mss = skb_shinfo(skb)->gso_size;
-@@ -4163,9 +4140,10 @@ static bool rtl8169_tso_csum_v2(struct rtl8169_private *tp,
+ 	if (skb_vlan_tag_present(skb)) {
+@@ -2016,10 +1993,11 @@ static int r8152_tx_csum(struct r8152 *tp, struct tx_desc *desc,
  			break;
  
  		case htons(ETH_P_IPV6):
--			if (msdn_giant_send_check(skb))
-+			if (skb_cow_head(skb, 0))
- 				return false;
- 
+-			if (msdn_giant_send_check(skb)) {
++			if (skb_cow_head(skb, 0)) {
+ 				ret = TX_CSUM_TSO;
+ 				goto unavailable;
+ 			}
 +			tcp_v6_gso_csum_prep(skb, false);
- 			opts[0] |= TD1_GTSENV6;
+ 			opts1 |= GTSENDV6;
  			break;
+ 
+diff --git a/drivers/net/vmxnet3/vmxnet3_drv.c b/drivers/net/vmxnet3/vmxnet3_drv.c
+index 18f152fa0..92c2ecf3f 100644
+--- a/drivers/net/vmxnet3/vmxnet3_drv.c
++++ b/drivers/net/vmxnet3/vmxnet3_drv.c
+@@ -942,10 +942,7 @@ vmxnet3_prepare_tso(struct sk_buff *skb,
+ 		tcph->check = ~csum_tcpudp_magic(iph->saddr, iph->daddr, 0,
+ 						 IPPROTO_TCP, 0);
+ 	} else if (ctx->ipv6) {
+-		struct ipv6hdr *iph = ipv6_hdr(skb);
+-
+-		tcph->check = ~csum_ipv6_magic(&iph->saddr, &iph->daddr, 0,
+-					       IPPROTO_TCP, 0);
++		tcp_v6_gso_csum_prep(skb, false);
+ 	}
+ }
  
 -- 
 2.25.0
