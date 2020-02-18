@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF6A0163674
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 23:51:07 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC6CC163682
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 23:54:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 710628565B;
-	Tue, 18 Feb 2020 22:51:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7E8E3864A0;
+	Tue, 18 Feb 2020 22:54:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0wIWfZjSw-EL; Tue, 18 Feb 2020 22:51:05 +0000 (UTC)
+	with ESMTP id bogudn21zSDF; Tue, 18 Feb 2020 22:54:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B94AB858F5;
-	Tue, 18 Feb 2020 22:51:04 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F07F5864D4;
+	Tue, 18 Feb 2020 22:54:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 57BC71BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:51:03 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 65BA21BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:54:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 52B14203F0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:51:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5EEA686489
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:54:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AkP7K6Q8zHwg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2020 22:51:01 +0000 (UTC)
+ with ESMTP id b+ICYa0WwYMU for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2020 22:54:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 9D67A1FEED
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:51:01 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 09260864A0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:54:08 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2020 14:51:01 -0800
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Feb 2020 14:54:07 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="239500384"
+X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="282925868"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
- by orsmga006.jf.intel.com with ESMTP; 18 Feb 2020 14:51:00 -0800
+ by FMSMGA003.fm.intel.com with ESMTP; 18 Feb 2020 14:54:06 -0800
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Feb 2020 14:50:59 -0800
-Message-Id: <20200218225059.1294769-1-jeffrey.t.kirsher@intel.com>
+Date: Tue, 18 Feb 2020 14:54:06 -0800
+Message-Id: <20200218225406.1300598-1-jeffrey.t.kirsher@intel.com>
 X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-queue v4] ice: Wait for VF to be reset/ready
+Subject: [Intel-wired-lan] [net-queue v3] ice: Wait for VF to be reset/ready
  before configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -105,10 +105,9 @@ take a max of ~800ms and previously the wait was a max of ~300ms.
 
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
-v2: add SKB_GSO_UDP_L4 to features check and probe
-v3: patch did not apply cleanly to next-queue tree, due to other igc
-    patches that had been applied, so fixed up the patch to apply cleanly
-v4: fixed two return values, which should have returned 0 (Success)
+v2: Original patch did not apply cleanly to my net-queue tree, so it had
+    to be applied by hand, this version applies cleanly to net-queue
+v3: fixed two return values, which should have returned 0 (Success)
 
  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 127 ++++++++++--------
  .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   3 +-
