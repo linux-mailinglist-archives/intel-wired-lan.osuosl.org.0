@@ -1,100 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 179C4163552
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 22:46:43 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22CF3163541
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 22:42:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 59D6585C5E;
-	Tue, 18 Feb 2020 21:46:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D616D87594;
+	Tue, 18 Feb 2020 21:41:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jd4P6-lJzuOu; Tue, 18 Feb 2020 21:46:40 +0000 (UTC)
+	with ESMTP id a9DejOaQvRZb; Tue, 18 Feb 2020 21:41:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 90B2285D3D;
-	Tue, 18 Feb 2020 21:46:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6FAF685AC7;
+	Tue, 18 Feb 2020 21:41:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 740121BF399
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 20:16:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 489DA1BF5AE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 21:41:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6F8188591B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 20:16:11 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4402085B97
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 21:41:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6SJQnedoVMBw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2020 20:16:11 +0000 (UTC)
+ with ESMTP id oRQSlMrQBH02 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2020 21:41:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wr1-f67.google.com (mail-wr1-f67.google.com
- [209.85.221.67])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AEB988516C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 20:16:10 +0000 (UTC)
-Received: by mail-wr1-f67.google.com with SMTP id z3so25594026wru.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 12:16:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bFMbK7LyKRnHu/ZMhuK+JeN3P8TImavRX9bgAiZfMtk=;
- b=QXTAl6KeEOAmHWG0qH4S6XmPJj4USYFkCIZ78dT/rmi09maEvpVOzZ//BmyS1kesW5
- XI0TPXmZ4qZ31jlmuQf0h92ss4SwkWJD0CejHK2mP4ontx77GV16UeS5NSj1hJT9DdLM
- 7Jp/3ahcbfRwH6xUmZPVnPH/+DZFAaM5OFoXpCQUaqd7lr2KciD2f1UX97+D9esFaXeb
- MHqm3+rmkAeECR3RkLCiE3l94YF4S6XbViZ/ur1ZSwK6SZ4lbKgVBkwNoCkeZWI37kMC
- WmvS9n0GQIDsgnLwBpALegvqZ7pIl5NjrlFPcg6hlF7QDFnkxvHaaQKfgGjjT9VCyVBW
- ytag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=bFMbK7LyKRnHu/ZMhuK+JeN3P8TImavRX9bgAiZfMtk=;
- b=uga1JBhEt9xvUTMwNOvC+Af0okvN/oSh7kYFjJx4hQrfxY9/J7TAJpxo7SJl5ei+1C
- sUQnsRQjlayZZ0/CvM5OPPiNQ7E7cVv0NKkSR+AwqYAPexPO3TajvP1MQRdcmtl/CzZj
- bAn+d5lBgr4UqCPEUJwv4iiAgHhfPywTmJBxDe1TNjDtgNDz2knpikJ8TqfAjMj2punb
- QoZ2QL+udmBTgLCfD9lpHJ73cFV9GPw6BJC/LBWKjE4AjlR51EU6oGW9B3mf3y9Y+ZP7
- bDSFJlHa+mFrt43SbU1Z59BU1vAmyG0bxgHnbUT/7ZLOPaJU+v5WCSvZ7/ZZN47PvD2o
- vpVw==
-X-Gm-Message-State: APjAAAUvLrjsgZyC44uNTEgI184Sg/y2B9GpVnBZlWZjfHeemhJNDSY7
- GyD8GCdAL026RPwJHFoJN9w=
-X-Google-Smtp-Source: APXvYqx0o7TLaD/TAtGQo3xJ8sCR+Q65dDtECgJ0RmmNYCrQiqxI1MUf49p/dryUzt3jnppRFGzHDQ==
-X-Received: by 2002:adf:f28f:: with SMTP id k15mr30535210wro.230.1582056968961; 
- Tue, 18 Feb 2020 12:16:08 -0800 (PST)
-Received: from ?IPv6:2003:ea:8f29:6000:5cb0:582f:968:ec00?
- (p200300EA8F2960005CB0582F0968EC00.dip0.t-ipconnect.de.
- [2003:ea:8f29:6000:5cb0:582f:968:ec00])
- by smtp.googlemail.com with ESMTPSA id p26sm4590202wmc.24.2020.02.18.12.16.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Feb 2020 12:16:08 -0800 (PST)
-From: Heiner Kallweit <hkallweit1@gmail.com>
-To: David Miller <davem@davemloft.net>,
- Realtek linux nic maintainers <nic_swsd@realtek.com>,
- Jay Cliburn <jcliburn@gmail.com>, Chris Snook <chris.snook@gmail.com>,
- Rasesh Mody <rmody@marvell.com>, Sudarsana Kalluru <skalluru@marvell.com>,
- GR-Linux-NIC-Dev@marvell.com, Christian Benvenuti <benve@cisco.com>,
- Govindarajulu Varadarajan <_govind@gmx.com>,
- Parvi Kaustubhi <pkaustub@cisco.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Guo-Fu Tseng <cooldavid@cooldavid.org>, Shannon Nelson
- <snelson@pensando.io>, Pensando Drivers <drivers@pensando.io>,
- Timur Tabi <timur@kernel.org>, Jassi Brar <jaswinder.singh@linaro.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>, Sasha Levin <sashal@kernel.org>,
- Ronak Doshi <doshir@vmware.com>, "VMware, Inc." <pv-drivers@vmware.com>
-References: <fffc8b6d-68ed-7501-18f1-94cf548821fb@gmail.com>
-Message-ID: <82ba1653-6a88-edf2-b22f-938b64e46655@gmail.com>
-Date: Tue, 18 Feb 2020 20:56:41 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3EDEB8545D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 21:41:56 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Feb 2020 13:41:52 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="268920275"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
+ by fmsmga002.fm.intel.com with ESMTP; 18 Feb 2020 13:41:51 -0800
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 18 Feb 2020 13:41:48 -0800
+Message-Id: <20200218214148.1127641-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-In-Reply-To: <fffc8b6d-68ed-7501-18f1-94cf548821fb@gmail.com>
-Content-Language: en-US
-X-Mailman-Approved-At: Tue, 18 Feb 2020 21:46:38 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v2 01/13] net: core: add helper
- tcp_v6_gso_csum_prep
+Subject: [Intel-wired-lan] [next-queue v3] igc: Complete to commit Add
+ support for TSO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,51 +60,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- linux-hyperv@vger.kernel.org,
- Linux USB Mailing List <linux-usb@vger.kernel.org>,
- intel-wired-lan@lists.osuosl.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Several network drivers for chips that support TSO6 share the same code
-for preparing the TCP header, so let's factor it out to a helper.
-A difference is that some drivers reset the payload_len whilst others
-don't do this. This value is overwritten by TSO anyway, therefore
-the new helper resets it in general.
+From: Sasha Neftin <sasha.neftin@intel.com>
 
-Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
-Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+commit f38b782dccab ("igc: Add support for TSO")
+Add option to setting transmit command (TUCMD) of the context
+descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
+
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- include/net/ip6_checksum.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
+v2: add SKB_GSO_UDP_L4 to features check and probe
+v3: patch did not apply cleanly to next-queue tree, due to other igc
+    patches that had been applied, so fixed up the patch to apply cleanly
 
-diff --git a/include/net/ip6_checksum.h b/include/net/ip6_checksum.h
-index 7bec95df4..27ec612cd 100644
---- a/include/net/ip6_checksum.h
-+++ b/include/net/ip6_checksum.h
-@@ -76,6 +76,15 @@ static inline void __tcp_v6_send_check(struct sk_buff *skb,
- 	}
- }
+ drivers/net/ethernet/intel/igc/igc_defines.h | 1 +
+ drivers/net/ethernet/intel/igc/igc_main.c    | 6 +++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 1b0fd2ffd08d..0746fa42ff3f 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -522,6 +522,7 @@
+ #define IGC_VLAPQF_QUEUE_MASK	0x03
  
-+static inline void tcp_v6_gso_csum_prep(struct sk_buff *skb)
-+{
-+	struct ipv6hdr *ipv6h = ipv6_hdr(skb);
-+	struct tcphdr *th = tcp_hdr(skb);
-+
-+	ipv6h->payload_len = 0;
-+	th->check = ~tcp_v6_check(0, &ipv6h->saddr, &ipv6h->daddr, 0);
-+}
-+
- #if IS_ENABLED(CONFIG_IPV6)
- static inline void tcp_v6_send_check(struct sock *sk, struct sk_buff *skb)
- {
+ #define IGC_ADVTXD_MACLEN_SHIFT		9  /* Adv ctxt desc mac len shift */
++#define IGC_ADVTXD_TUCMD_L4T_UDP	0x00000000  /* L4 Packet TYPE of UDP */
+ #define IGC_ADVTXD_TUCMD_IPV4		0x00000400  /* IP Packet Type:1=IPv4 */
+ #define IGC_ADVTXD_TUCMD_L4T_TCP	0x00000800  /* L4 Packet Type of TCP */
+ #define IGC_ADVTXD_TUCMD_L4T_SCTP	0x00001000 /* L4 packet TYPE of SCTP */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 972c833a552b..d406aaea24af 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -1232,7 +1232,8 @@ static int igc_tso(struct igc_ring *tx_ring,
+ 	l4.hdr = skb_checksum_start(skb);
+ 
+ 	/* ADV DTYP TUCMD MKRLOC/ISCSIHEDLEN */
+-	type_tucmd = IGC_ADVTXD_TUCMD_L4T_TCP;
++	type_tucmd = (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4) ?
++		      IGC_ADVTXD_TUCMD_L4T_UDP : IGC_ADVTXD_TUCMD_L4T_TCP;
+ 
+ 	/* initialize outer IP header fields */
+ 	if (ip.v4->version == 4) {
+@@ -3693,6 +3694,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
+ 	if (unlikely(mac_hdr_len > IGC_MAX_MAC_HDR_LEN))
+ 		return features & ~(NETIF_F_HW_CSUM |
+ 				    NETIF_F_SCTP_CRC |
++				    NETIF_F_GSO_UDP_L4 |
+ 				    NETIF_F_HW_VLAN_CTAG_TX |
+ 				    NETIF_F_TSO |
+ 				    NETIF_F_TSO6);
+@@ -3701,6 +3703,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
+ 	if (unlikely(network_hdr_len >  IGC_MAX_NETWORK_HDR_LEN))
+ 		return features & ~(NETIF_F_HW_CSUM |
+ 				    NETIF_F_SCTP_CRC |
++				    NETIF_F_GSO_UDP_L4 |
+ 				    NETIF_F_TSO |
+ 				    NETIF_F_TSO6);
+ 
+@@ -4903,6 +4906,7 @@ static int igc_probe(struct pci_dev *pdev,
+ 	netdev->features |= NETIF_F_RXCSUM;
+ 	netdev->features |= NETIF_F_HW_CSUM;
+ 	netdev->features |= NETIF_F_SCTP_CRC;
++	netdev->features |= NETIF_F_GSO_UDP_L4;
+ 
+ #define IGC_GSO_PARTIAL_FEATURES (NETIF_F_GSO_GRE | \
+ 				  NETIF_F_GSO_GRE_CSUM | \
 -- 
-2.25.1
-
+2.24.1
 
 _______________________________________________
 Intel-wired-lan mailing list
