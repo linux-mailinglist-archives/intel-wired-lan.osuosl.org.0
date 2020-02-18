@@ -1,86 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85775162F20
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 19:55:33 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5788C162F21
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 19:55:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 18668204C1;
-	Tue, 18 Feb 2020 18:55:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 057A2853D9;
+	Tue, 18 Feb 2020 18:55:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m8ZKRCVR2EpG; Tue, 18 Feb 2020 18:55:31 +0000 (UTC)
+	with ESMTP id bWeNfDCFHqFj; Tue, 18 Feb 2020 18:55:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4E9BD2034B;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A796A85585;
 	Tue, 18 Feb 2020 18:55:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A6F81BF95A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 18:54:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 412081BF95A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 18:54:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1613286096
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 18:54:26 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 3D03686096
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 18:54:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PC8z-KDcH4i9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2020 18:54:25 +0000 (UTC)
+ with ESMTP id 27iB6YAngF7k for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2020 18:54:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wr1-f68.google.com (mail-wr1-f68.google.com
  [209.85.221.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4D1AA8557B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 18:54:25 +0000 (UTC)
-Received: by mail-wr1-f68.google.com with SMTP id e8so2769116wrm.5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 10:54:25 -0800 (PST)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7F1248557B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 18:54:27 +0000 (UTC)
+Received: by mail-wr1-f68.google.com with SMTP id k11so25241179wrd.9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 10:54:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=r+BjQ+2qeHRzwq563xO8WHAunXFGHBK9xvOKVsSVi74=;
- b=mhl+g3cDhkTh8cc47iq87t0C9LHE681ndAKjC4TcbgXItv3EV1BNGcZxW5ApFu+dRD
- rNmdhehJtbaguOOf2RdAwyBVCEGKnm1Ab+s4SScl3ZcEQ5v5P+SBZNsFqmJGVkX+39XZ
- I+R8zvVLwGieoR+97B6rq2CJ6eL3TEgU9aUzu1j7uP/tcCLucNEqtlhiZ3vM7/sRTmks
- f8aHHnPf5e4qDI1bdZ3x7w7kbT80hZoNEWa4iVISvQtJxdd6QUuQ0k71XHOsyWqQZeAs
- CKAaG3WvJwmT3tDBXTiwdX57NNHHjDF7wrWkHr/RSQu/O5xfh4SxCdgkHp2ectLBNeE/
- F3dQ==
+ bh=Y7qUJSXwwRkICtUYTtp+S0/ljWs/qWqgz7p3m1sFX4Y=;
+ b=aLFDpYUJFF3GYhbt7B7EhwuQo/+PXdf4Cfpf+fLFmynmOloqWaNW1NN/1+DrE7t4Lu
+ Srcd9TdLK9vwjhpJ8K2kKkKkWQ4oHIUkxPZt5Gy8dYKeMWmWWc9zxm8N8nGQKRGzV+r5
+ llpag+bUfQ9rhiEhw7+9h+haFlzXKTb9ybJpGu3xQIoj7RRhUFhgueF5quN0Hq+efrIy
+ Hd1c9NtOLP6y376rgYS4FLyixrDnbWje9cDdiVSt4/UjDuoBeuAv7dmdvMT67HdyFMVE
+ YbQEK98gshDK24QcUU95gt1ddTGfPWpSY9k5zn/cRfSnp9sMGNa5R+H7ApcvIUFoG3FP
+ qvHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=r+BjQ+2qeHRzwq563xO8WHAunXFGHBK9xvOKVsSVi74=;
- b=nvr3EAOAh/T7S5nKlxZzPC1TsyDYKKYzhe+Bvw5Yn0FsgPddoKV1SMSbn3hH7jy/88
- tXrV2xVaD54F9MXDiyatsVeYfB/rKaTi56xzHs3C6R1WDEjHuvp4Id9dJu3Gp6h9d3B7
- +09ULNjudERpikaa4Jf8O6kx1r+3fUbhrDtKXDepUuIKr0cWIiRDjlyPMb6p17nxelE4
- H2RmAVAygYNMKbreaND3VBI6krwXdOyZixK9i72KlkBercbsqcpu4RlolZh0HcK2U86S
- HyAZceA7xXpF5GPBLx2PUrJIvqDPStC7h3RYeKWufoF/l+EY+0gj+02KasbCJSdTtDe3
- JhEw==
-X-Gm-Message-State: APjAAAW1DXb72BKCRS8YGeTlNyVolMbMIrNwIgzcs3Ocb0ACppfglpm0
- PRegvN9fAr40RQTbv7/eJus=
-X-Google-Smtp-Source: APXvYqzABYNfk9UgM05SPcBk6+APE0YnacggzTdBt6Oqs3cqUS9GbNk32+DfkE8bsypZSm0XV9Cwyw==
-X-Received: by 2002:adf:e88f:: with SMTP id d15mr29211606wrm.186.1582052063505; 
- Tue, 18 Feb 2020 10:54:23 -0800 (PST)
+ bh=Y7qUJSXwwRkICtUYTtp+S0/ljWs/qWqgz7p3m1sFX4Y=;
+ b=DRvKzgv+ooMiNjECuL6dJ9S23+AR6yghKu3tfDrw3tZwh0BjfeuziTNHebeN6w95HU
+ uqiHyRX36rwAyPBxDK47qvi41tUsB7EGCt+/3y8U/VFlcx9xwn6kdNswzfqm56uhgJQ+
+ 1v2ozq3nvaGT1LIEGN1Sjd/I7nGeGGKmOQhuQCmlKdmKqVJNVomIO4Jc3Z42CbvD9rQK
+ TK1RHC9KdOe3r52Yt7lzOnxfyFzkTDja94ifLrKiEBPZpbPAr7eNdj+8/nqUIAHn3dIa
+ Fqn/drrSY+jpqUespJmntfV+Gze+krmRTPg3iDE30QCk6dpkQ8ySYoXqXALr4Es+VfTf
+ cU4w==
+X-Gm-Message-State: APjAAAVLnQSjfpD4IkEy9v2jpufSnFIkSW0FZVGieow2oSVnTog7WxPT
+ +yED7PhTUEUyC69DaJCDWVA=
+X-Google-Smtp-Source: APXvYqzzvKAZpis1HIhIgd3mnujaR+Dlua6dzCzgByfruiDOYiVDYIQnuVVk6MPyVZLvqfKfOGODfQ==
+X-Received: by 2002:adf:a381:: with SMTP id l1mr30546370wrb.102.1582052065975; 
+ Tue, 18 Feb 2020 10:54:25 -0800 (PST)
 Received: from ?IPv6:2003:ea:8f29:6000:5cb0:582f:968:ec00?
  (p200300EA8F2960005CB0582F0968EC00.dip0.t-ipconnect.de.
  [2003:ea:8f29:6000:5cb0:582f:968:ec00])
- by smtp.googlemail.com with ESMTPSA id c141sm4251997wme.41.2020.02.18.10.54.22
+ by smtp.googlemail.com with ESMTPSA id e22sm4299861wme.45.2020.02.18.10.54.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Feb 2020 10:54:23 -0800 (PST)
+ Tue, 18 Feb 2020 10:54:25 -0800 (PST)
 To: Alexander Duyck <alexander.duyck@gmail.com>
 References: <76cd6cfc-f4f3-ece7-203a-0266b7f02a12@gmail.com>
- <02ea88e7-1a79-f779-d58c-bb1dced0b3b4@gmail.com>
- <CAKgT0UfaBpLxWQZO55-KE8QKJD9XgC2SCPAtzo=PA_MAwRxtuw@mail.gmail.com>
+ <9fdc5f0c-fdf0-122e-48a5-43ff029cf8d9@gmail.com>
+ <CAKgT0UeUEcoKZsRnxzftMA4tc2chasmW+sWQkP11hVLbdYTYxA@mail.gmail.com>
 From: Heiner Kallweit <hkallweit1@gmail.com>
-Message-ID: <5dacf5fb-873b-79d5-326f-f30feb1ac645@gmail.com>
-Date: Tue, 18 Feb 2020 19:45:53 +0100
+Message-ID: <f349d932-582c-96f9-fa7a-b76c615adb96@gmail.com>
+Date: Tue, 18 Feb 2020 19:53:48 +0100
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAKgT0UfaBpLxWQZO55-KE8QKJD9XgC2SCPAtzo=PA_MAwRxtuw@mail.gmail.com>
+In-Reply-To: <CAKgT0UeUEcoKZsRnxzftMA4tc2chasmW+sWQkP11hVLbdYTYxA@mail.gmail.com>
 Content-Language: en-US
 X-Mailman-Approved-At: Tue, 18 Feb 2020 18:55:30 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/3] r8169: use new helper
+Subject: Re: [Intel-wired-lan] [PATCH net-next 1/3] net: core: add helper
  tcp_v6_gso_csum_prep
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -120,70 +120,56 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 18.02.2020 19:37, Alexander Duyck wrote:
-> On Mon, Feb 17, 2020 at 1:42 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+On 18.02.2020 19:25, Alexander Duyck wrote:
+> On Mon, Feb 17, 2020 at 1:41 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
 >>
->> Simplify the code by using new helper tcp_v6_gso_csum_prep.
+>> Several network drivers for chips that support TSO6 share the same code
+>> for preparing the TCP header. A difference is that some reset the
+>> payload_len whilst others don't do this. Let's factor out this common
+>> code to a new helper.
 >>
 >> Signed-off-by: Heiner Kallweit <hkallweit1@gmail.com>
 >> ---
->>  drivers/net/ethernet/realtek/r8169_main.c | 26 ++---------------------
->>  1 file changed, 2 insertions(+), 24 deletions(-)
+>>  include/net/ip6_checksum.h | 12 ++++++++++++
+>>  1 file changed, 12 insertions(+)
 >>
->> diff --git a/drivers/net/ethernet/realtek/r8169_main.c b/drivers/net/ethernet/realtek/r8169_main.c
->> index 5a9143b50..75ba10069 100644
->> --- a/drivers/net/ethernet/realtek/r8169_main.c
->> +++ b/drivers/net/ethernet/realtek/r8169_main.c
->> @@ -4108,29 +4108,6 @@ static bool rtl_test_hw_pad_bug(struct rtl8169_private *tp, struct sk_buff *skb)
->>         return skb->len < ETH_ZLEN && tp->mac_version == RTL_GIGA_MAC_VER_34;
+>> diff --git a/include/net/ip6_checksum.h b/include/net/ip6_checksum.h
+>> index 7bec95df4..ef0130023 100644
+>> --- a/include/net/ip6_checksum.h
+>> +++ b/include/net/ip6_checksum.h
+>> @@ -76,6 +76,18 @@ static inline void __tcp_v6_send_check(struct sk_buff *skb,
+>>         }
 >>  }
 >>
->> -/* msdn_giant_send_check()
->> - * According to the document of microsoft, the TCP Pseudo Header excludes the
->> - * packet length for IPv6 TCP large packets.
->> - */
->> -static int msdn_giant_send_check(struct sk_buff *skb)
->> -{
->> -       const struct ipv6hdr *ipv6h;
->> -       struct tcphdr *th;
->> -       int ret;
->> -
->> -       ret = skb_cow_head(skb, 0);
->> -       if (ret)
->> -               return ret;
->> -
->> -       ipv6h = ipv6_hdr(skb);
->> -       th = tcp_hdr(skb);
->> -
->> -       th->check = 0;
->> -       th->check = ~tcp_v6_check(0, &ipv6h->saddr, &ipv6h->daddr, 0);
->> -
->> -       return ret;
->> -}
->> -
->>  static void rtl8169_tso_csum_v1(struct sk_buff *skb, u32 *opts)
+>> +static inline void tcp_v6_gso_csum_prep(struct sk_buff *skb,
+>> +                                       bool clear_payload_len)
+>> +{
+>> +       struct ipv6hdr *ipv6h = ipv6_hdr(skb);
+>> +       struct tcphdr *th = tcp_hdr(skb);
+>> +
+>> +       if (clear_payload_len)
+>> +               ipv6h->payload_len = 0;
+>> +
+>> +       th->check = ~tcp_v6_check(0, &ipv6h->saddr, &ipv6h->daddr, 0);
+>> +}
+>> +
+>>  #if IS_ENABLED(CONFIG_IPV6)
+>>  static inline void tcp_v6_send_check(struct sock *sk, struct sk_buff *skb)
 >>  {
->>         u32 mss = skb_shinfo(skb)->gso_size;
->> @@ -4163,9 +4140,10 @@ static bool rtl8169_tso_csum_v2(struct rtl8169_private *tp,
->>                         break;
->>
->>                 case htons(ETH_P_IPV6):
->> -                       if (msdn_giant_send_check(skb))
->> +                       if (skb_cow_head(skb, 0))
->>                                 return false;
->>
->> +                       tcp_v6_gso_csum_prep(skb, false);
->>                         opts[0] |= TD1_GTSENV6;
->>                         break;
->>
 > 
-> This change looks more or less identical to the one you made in
-> "drivers/net/usb/r8152.c" for patch 3. If you have to resubmit it
-> might make sense to pull that change out and include it here since
-> they are both essentially the same change.
+> So functionally I believe this is correct. The only piece I have a
+> question about is if we should just force the clear_payload_len as
+> always being the case since the value should either be
+> ignored/overwritten in any GSO case anyway.
 > 
-Right, it's the same change. I just treated r8169 separately because
-I happen to be maintainer of it.
+I also thought about this and just wasn't sure whether this functional
+change may break any driver. But yes, then let's change it this way.
+Breaking down the series into smaller patches makes it easier to
+revert an individual patch in case of a problem.
+
+> Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+> 
+Thanks for the review.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
