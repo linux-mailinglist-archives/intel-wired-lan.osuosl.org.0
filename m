@@ -2,52 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 790581634BD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 22:22:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F34CF163551
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 22:46:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 26EF185BE4;
-	Tue, 18 Feb 2020 21:22:13 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A241E85D41;
+	Tue, 18 Feb 2020 21:46:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8TlgvufP5Qwt; Tue, 18 Feb 2020 21:22:12 +0000 (UTC)
+	with ESMTP id YvG0TQCyfLMZ; Tue, 18 Feb 2020 21:46:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B723085C00;
-	Tue, 18 Feb 2020 21:22:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4F02D85C97;
+	Tue, 18 Feb 2020 21:46:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 99F731BF5AE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 21:22:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B1771BF389
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 19:55:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 929B885BD3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 21:22:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 96EB584DFD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 19:55:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Oz6i1OD-mutX for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2020 21:22:08 +0000 (UTC)
+ with ESMTP id K7s3kHld83cN for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2020 19:55:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DD6285B81
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 21:22:08 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2020 13:22:08 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="229601769"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
- by fmsmga008.fm.intel.com with ESMTP; 18 Feb 2020 13:22:08 -0800
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Feb 2020 13:22:06 -0800
-Message-Id: <20200218212206.1043785-1-jeffrey.t.kirsher@intel.com>
-X-Mailer: git-send-email 2.24.1
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D72DE80C91
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 19:55:25 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id w12so25471005wrt.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 11:55:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:subject:to:cc:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=2XbnpJ3DCsRKiHe1DaCKVtnJE9/aeVVRESQe3D8Emz0=;
+ b=vUohnzwHM6ww95pQT57+3W9rF4ypv0oi9Sr2c9p3s83ysEDCy4B8i7wA2YEjpx4o7O
+ NcjBuJOYJT3TkV38cAxuxjb+GQg+/EGWFW7GqjNTqfN9IXB1ujD8cfSNj805Eqi9UL3J
+ sVm9BCtuHEfxKEPYZxsEhZJn7fhEIQrGxl+bbVqNYURgddAdzTdXM+0zuWbYJmPrQY59
+ wKP2rd4F6kVeZdGKvosiHVzXPskpRcN+Ld9zlmdZfT1pXW9Pmgt5x9Wmmq76Ugw2uFx1
+ kRSPDlv37YJUGIgNKnCM8XV/FSdiTFZJzGUDuK+ZYgrIDM8RGYpeMxkNLm4rW2QysL8S
+ aFaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:subject:to:cc:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=2XbnpJ3DCsRKiHe1DaCKVtnJE9/aeVVRESQe3D8Emz0=;
+ b=BhDrYK34UI6KfYjSGbTbhRI4nXSXGb7y4kggiP2Vy9XWqYHwceJkDLyZiP2E7mMAsO
+ PFbIpQnpLil3suQ4C87uQbcATJWL9jDciKExAFc/BZsxLS/uIAB2Wlc83iNwLjl/xdQN
+ 3Q3Mix8MiSYt1PCrfhqPLoNNK2sDzEeBkXYESuH9gG7IWjUyhPJ0ttPZ/sZKA7H6cf33
+ sR3d05DV7R93+O9TDHHdT5bn/xF3e3cJ6hvTsE9KgNyn0Ft+KzY0rGhXuENeF9s/2UUC
+ jFod8aKsIAahkJ85IwSxS4Pavzu24V9GcSMXpEAOdAL5u0gZ75ugKUh53xkGk/D+pFPD
+ VaUQ==
+X-Gm-Message-State: APjAAAVZwvfIll9UwAG1DfZNRfoNF0quQX2NhIqtgLSk3pkXjxKfWHrd
+ tEOdt+IDNsQcWh2l0cPThq8=
+X-Google-Smtp-Source: APXvYqxgH2Zy4SF7Ru6OgX1SQtM0GsOax0n4VqsktL36jANdSqE9ij6StXtgtan9ISXSA9S4DFix+Q==
+X-Received: by 2002:a5d:438c:: with SMTP id i12mr30082796wrq.51.1582055724084; 
+ Tue, 18 Feb 2020 11:55:24 -0800 (PST)
+Received: from ?IPv6:2003:ea:8f29:6000:5cb0:582f:968:ec00?
+ (p200300EA8F2960005CB0582F0968EC00.dip0.t-ipconnect.de.
+ [2003:ea:8f29:6000:5cb0:582f:968:ec00])
+ by smtp.googlemail.com with ESMTPSA id t187sm4914865wmt.25.2020.02.18.11.55.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Feb 2020 11:55:23 -0800 (PST)
+From: Heiner Kallweit <hkallweit1@gmail.com>
+To: David Miller <davem@davemloft.net>,
+ Realtek linux nic maintainers <nic_swsd@realtek.com>,
+ Jay Cliburn <jcliburn@gmail.com>, Chris Snook <chris.snook@gmail.com>,
+ Rasesh Mody <rmody@marvell.com>, Sudarsana Kalluru <skalluru@marvell.com>,
+ GR-Linux-NIC-Dev@marvell.com, Christian Benvenuti <benve@cisco.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>,
+ Parvi Kaustubhi <pkaustub@cisco.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Guo-Fu Tseng <cooldavid@cooldavid.org>, Shannon Nelson
+ <snelson@pensando.io>, Pensando Drivers <drivers@pensando.io>,
+ Timur Tabi <timur@kernel.org>, Jassi Brar <jaswinder.singh@linaro.org>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ "K. Y. Srinivasan" <kys@microsoft.com>,
+ Haiyang Zhang <haiyangz@microsoft.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>, Sasha Levin <sashal@kernel.org>,
+ Ronak Doshi <doshir@vmware.com>, "VMware, Inc." <pv-drivers@vmware.com>
+Message-ID: <fffc8b6d-68ed-7501-18f1-94cf548821fb@gmail.com>
+Date: Tue, 18 Feb 2020 20:55:18 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-queue v2] ice: Wait for VF to be reset/ready
- before configuration
+Content-Language: en-US
+X-Mailman-Approved-At: Tue, 18 Feb 2020 21:46:38 +0000
+Subject: [Intel-wired-lan] [PATCH net-next v2 0/13] net: core: add helper
+ tcp_v6_gso_csum_prep
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,294 +104,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Brett Creeley <brett.creeley@intel.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ linux-hyperv@vger.kernel.org,
+ Linux USB Mailing List <linux-usb@vger.kernel.org>,
+ intel-wired-lan@lists.osuosl.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+Several network drivers for chips that support TSO6 share the same code
+for preparing the TCP header, so let's factor it out to a helper.
+A difference is that some drivers reset the payload_len whilst others
+don't do this. This value is overwritten by TSO anyway, therefore
+the new helper resets it in general.
 
-The configuration/command below is failing when the VF in the xml
-file is already bound to the host iavf driver.
+Heiner Kallweit (13):
+  net: core: add helper tcp_v6_gso_csum_prep
+  r8169: use new helper tcp_v6_gso_csum_prep
+  net: atheros: use new helper tcp_v6_gso_csum_prep
+  bna: use new helper tcp_v6_gso_csum_prep
+  enic: use new helper tcp_v6_gso_csum_prep
+  e1000(e): use new helper tcp_v6_gso_csum_prep
+  jme: use new helper tcp_v6_gso_csum_prep
+  ionic: use new helper tcp_v6_gso_csum_prep
+  net: qcom/emac: use new helper tcp_v6_gso_csum_prep
+  net: socionext: use new helper tcp_v6_gso_csum_prep
+  hv_netvsc: use new helper tcp_v6_gso_csum_prep
+  r8152: use new helper tcp_v6_gso_csum_prep
+  vmxnet3: use new helper tcp_v6_gso_csum_prep
 
-pci_0000_af_0_0.xml:
+ drivers/net/ethernet/atheros/alx/main.c       |  5 +---
+ .../net/ethernet/atheros/atl1c/atl1c_main.c   |  6 ++---
+ drivers/net/ethernet/brocade/bna/bnad.c       |  7 +----
+ drivers/net/ethernet/cisco/enic/enic_main.c   |  3 +--
+ drivers/net/ethernet/intel/e1000/e1000_main.c |  6 +----
+ drivers/net/ethernet/intel/e1000e/netdev.c    |  5 +---
+ drivers/net/ethernet/jme.c                    |  7 +----
+ .../net/ethernet/pensando/ionic/ionic_txrx.c  |  5 +---
+ drivers/net/ethernet/qualcomm/emac/emac-mac.c |  7 ++---
+ drivers/net/ethernet/realtek/r8169_main.c     | 26 ++-----------------
+ drivers/net/ethernet/socionext/netsec.c       |  6 +----
+ drivers/net/hyperv/netvsc_drv.c               |  5 +---
+ drivers/net/usb/r8152.c                       | 26 ++-----------------
+ drivers/net/vmxnet3/vmxnet3_drv.c             |  5 +---
+ include/net/ip6_checksum.h                    |  9 +++++++
+ 15 files changed, 27 insertions(+), 101 deletions(-)
 
-<interface type='hostdev' managed='yes'>
-<source>
-<address type='pci' domain='0x0000' bus='0xaf' slot='0x0' function='0x0'/>
-</source>
-<mac address='00:de:ad:00:11:01'/>
-</interface>
-
-> virsh attach-device domain_name pci_0000_af_0_0.xml
-error: Failed to attach device from pci_0000_af_0_0.xml
-error: Cannot set interface MAC/vlanid to 00:de:ad:00:11:01/0 for
-	ifname ens1f1 vf 0: Device or resource busy
-
-This is failing because the VF has not been completely removed/reset
-after being unbound (via the virsh command above) from the host iavf
-driver and ice_set_vf_mac() checks if the VF is disabled before waiting
-for the reset to finish.
-
-Fix this by waiting for the VF remove/reset process to happen before
-checking if the VF is disabled. Also, since many functions for VF
-administration on the PF were more or less calling the same 3 functions
-(ice_wait_on_vf_reset(), ice_is_vf_disabled(), and ice_check_vf_init())
-move these into the helper function ice_check_vf_ready_for_cfg(). Then
-call this function in any flow that attempts to configure/query a VF
-from the PF.
-
-Lastly, increase the maximum wait time in ice_wait_on_vf_reset() to
-800ms, and modify/add the #define(s) that determine the wait time.
-This was done for robustness because in rare/stress cases VF removal can
-take a max of ~800ms and previously the wait was a max of ~300ms.
-
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
----
-v2: Original patch did not apply cleanly to my net-queue tree, so it had
-    to be applied by hand, this version applies cleanly to net-queue
-
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 123 ++++++++++--------
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   3 +-
- 2 files changed, 71 insertions(+), 55 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 262714d5f54a..af3e37b71111 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1873,6 +1873,48 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
- 				     NULL, 0);
- }
- 
-+/**
-+ * ice_wait_on_vf_reset - poll to make sure a given VF is ready after reset
-+ * @vf: The VF being resseting
-+ *
-+ * The max poll time is about ~800ms, which is about the maximum time it takes
-+ * for a VF to be reset and/or a VF driver to be removed.
-+ */
-+static void ice_wait_on_vf_reset(struct ice_vf *vf)
-+{
-+	int i;
-+
-+	for (i = 0; i < ICE_MAX_VF_RESET_TRIES; i++) {
-+		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
-+			break;
-+		msleep(ICE_MAX_VF_RESET_SLEEP_MS);
-+	}
-+}
-+
-+/**
-+ * ice_check_vf_ready_for_cfg - check if VF is ready to be configured/queried
-+ * @vf: VF to check if it's ready to be configured/queried
-+ *
-+ * The purpose of this function is to make sure the VF is not in reset, not
-+ * disabled, and initialized so it can be configured and/or queried by a host
-+ * administrator.
-+ */
-+static int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
-+{
-+	struct ice_pf *pf;
-+
-+	ice_wait_on_vf_reset(vf);
-+
-+	if (ice_is_vf_disabled(vf))
-+		return -EINVAL;
-+
-+	pf = vf->pf;
-+	if (ice_check_vf_init(pf, vf))
-+		return -EBUSY;
-+
-+	return 0;
-+}
-+
- /**
-  * ice_set_vf_spoofchk
-  * @netdev: network interface device structure
-@@ -1890,16 +1932,16 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 	enum ice_status status;
- 	struct device *dev;
- 	struct ice_vf *vf;
--	int ret = 0;
-+	int ret;
- 
- 	dev = ice_pf_to_dev(pf);
- 	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
- 
- 	vf = &pf->vf[vf_id];
--
--	if (ice_check_vf_init(pf, vf))
--		return -EBUSY;
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
- 
- 	vf_vsi = pf->vsi[vf->lan_vsi_idx];
- 	if (!vf_vsi) {
-@@ -2696,7 +2738,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
- 	struct ice_vsi *vsi;
- 	struct device *dev;
- 	struct ice_vf *vf;
--	int ret = 0;
-+	int ret;
- 
- 	dev = ice_pf_to_dev(pf);
- 	if (ice_validate_vf_id(pf, vf_id))
-@@ -2714,8 +2756,10 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
- 
- 	vf = &pf->vf[vf_id];
- 	vsi = pf->vsi[vf->lan_vsi_idx];
--	if (ice_check_vf_init(pf, vf))
--		return -EBUSY;
-+
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
- 
- 	if (le16_to_cpu(vsi->info.pvid) == vlanprio) {
- 		/* duplicate request, so just return success */
-@@ -3236,23 +3280,6 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
- 	return 0;
- }
- 
--/**
-- * ice_wait_on_vf_reset
-- * @vf: The VF being resseting
-- *
-- * Poll to make sure a given VF is ready after reset
-- */
--static void ice_wait_on_vf_reset(struct ice_vf *vf)
--{
--	int i;
--
--	for (i = 0; i < ICE_MAX_VF_RESET_WAIT; i++) {
--		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
--			break;
--		msleep(20);
--	}
--}
--
- /**
-  * ice_set_vf_mac
-  * @netdev: network interface device structure
-@@ -3265,29 +3292,21 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
- {
- 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct ice_vf *vf;
--	int ret = 0;
-+	int ret;
- 
- 	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
- 
--	vf = &pf->vf[vf_id];
--	/* Don't set MAC on disabled VF */
--	if (ice_is_vf_disabled(vf))
--		return -EINVAL;
--
--	/* In case VF is in reset mode, wait until it is completed. Depending
--	 * on factors like queue disabling routine, this could take ~250ms
--	 */
--	ice_wait_on_vf_reset(vf);
--
--	if (ice_check_vf_init(pf, vf))
--		return -EBUSY;
--
- 	if (is_zero_ether_addr(mac) || is_multicast_ether_addr(mac)) {
- 		netdev_err(netdev, "%pM not a valid unicast address\n", mac);
- 		return -EINVAL;
- 	}
- 
-+	vf = &pf->vf[vf_id];
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
-+
- 	/* copy MAC into dflt_lan_addr and trigger a VF reset. The reset
- 	 * flow will use the updated dflt_lan_addr and add a MAC filter
- 	 * using ice_add_mac. Also set pf_set_mac to indicate that the PF has
-@@ -3314,22 +3333,15 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
- {
- 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct ice_vf *vf;
-+	int ret;
- 
- 	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
- 
- 	vf = &pf->vf[vf_id];
--	/* Don't set Trusted Mode on disabled VF */
--	if (ice_is_vf_disabled(vf))
--		return -EINVAL;
--
--	/* In case VF is in reset mode, wait until it is completed. Depending
--	 * on factors like queue disabling routine, this could take ~250ms
--	 */
--	ice_wait_on_vf_reset(vf);
--
--	if (ice_check_vf_init(pf, vf))
--		return -EBUSY;
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
- 
- 	/* Check if already trusted */
- 	if (trusted == vf->trusted)
-@@ -3355,13 +3367,15 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
- {
- 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
- 	struct ice_vf *vf;
-+	int ret;
- 
- 	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
- 
- 	vf = &pf->vf[vf_id];
--	if (ice_check_vf_init(pf, vf))
--		return -EBUSY;
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
- 
- 	switch (link_state) {
- 	case IFLA_VF_LINK_STATE_AUTO:
-@@ -3397,14 +3411,15 @@ int ice_get_vf_stats(struct net_device *netdev, int vf_id,
- 	struct ice_eth_stats *stats;
- 	struct ice_vsi *vsi;
- 	struct ice_vf *vf;
-+	int ret;
- 
- 	if (ice_validate_vf_id(pf, vf_id))
- 		return -EINVAL;
- 
- 	vf = &pf->vf[vf_id];
--
--	if (ice_check_vf_init(pf, vf))
--		return -EBUSY;
-+	ret = ice_check_vf_ready_for_cfg(vf);
-+	if (ret)
-+		return ret;
- 
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 	if (!vsi)
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 4647d636ed36..ac67982751df 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -38,7 +38,8 @@
- #define ICE_MAX_POLICY_INTR_PER_VF	33
- #define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
- #define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
--#define ICE_MAX_VF_RESET_WAIT		15
-+#define ICE_MAX_VF_RESET_TRIES		40
-+#define ICE_MAX_VF_RESET_SLEEP_MS	20
- 
- #define ice_for_each_vf(pf, i) \
- 	for ((i) = 0; (i) < (pf)->num_alloc_vfs; (i)++)
 -- 
-2.24.1
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
