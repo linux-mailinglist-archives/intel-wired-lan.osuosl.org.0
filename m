@@ -1,56 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A01C16366C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 23:48:56 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3B9B48788D;
-	Tue, 18 Feb 2020 22:48:55 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y1Qx0lWo1wfu; Tue, 18 Feb 2020 22:48:55 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1F6C187880;
-	Tue, 18 Feb 2020 22:48:54 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6A6771BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:48:52 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF6A0163674
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 23:51:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 659BB844CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:48:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 710628565B;
+	Tue, 18 Feb 2020 22:51:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0wIWfZjSw-EL; Tue, 18 Feb 2020 22:51:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B94AB858F5;
+	Tue, 18 Feb 2020 22:51:04 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 57BC71BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:51:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 52B14203F0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:51:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9ParLy4CGdip for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2020 22:48:50 +0000 (UTC)
+ with ESMTP id AkP7K6Q8zHwg for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2020 22:51:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CFFBD84456
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:48:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 9D67A1FEED
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:51:01 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2020 14:48:50 -0800
+ 18 Feb 2020 14:51:01 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="436018578"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 18 Feb 2020 14:48:49 -0800
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1j4Bfc-000IWj-N5; Wed, 19 Feb 2020 06:48:48 +0800
-Date: Wed, 19 Feb 2020 06:48:41 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e4c69c9.kabvm8Yz/GKxUlwm%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="239500384"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
+ by orsmga006.jf.intel.com with ESMTP; 18 Feb 2020 14:51:00 -0800
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 18 Feb 2020 14:50:59 -0800
+Message-Id: <20200218225059.1294769-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:rdma] BUILD SUCCESS
- 0da12e8bba80489f4906453254164c0a46ffdc57
+Subject: [Intel-wired-lan] [net-queue v4] ice: Wait for VF to be reset/ready
+ before configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,276 +60,312 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Brett Creeley <brett.creeley@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  rdma
-branch HEAD: 0da12e8bba80489f4906453254164c0a46ffdc57  RDMA/irdma: Update MAINTAINERS file
+From: Brett Creeley <brett.creeley@intel.com>
 
-elapsed time: 8838m
+The configuration/command below is failing when the VF in the xml
+file is already bound to the host iavf driver.
 
-configs tested: 250
-configs skipped: 0
+pci_0000_af_0_0.xml:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+<interface type='hostdev' managed='yes'>
+<source>
+<address type='pci' domain='0x0000' bus='0xaf' slot='0x0' function='0x0'/>
+</source>
+<mac address='00:de:ad:00:11:01'/>
+</interface>
 
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-sparc                            allyesconfig
-mips                             allyesconfig
-parisc                           allyesconfig
-s390                              allnoconfig
-s390                                defconfig
-m68k                           sun3_defconfig
-openrisc                 simple_smp_defconfig
-ia64                              allnoconfig
-parisc                generic-32bit_defconfig
-riscv                    nommu_virt_defconfig
-h8300                     edosk2674_defconfig
-h8300                       h8s-sim_defconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-csky                                defconfig
-nios2                         3c120_defconfig
-s390                             allmodconfig
-parisc                generic-64bit_defconfig
-i386                             alldefconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-ia64                                defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-openrisc                    or1ksim_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-alpha                               defconfig
-h8300                    h8300h-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-x86_64               randconfig-a001-20200218
-x86_64               randconfig-a002-20200218
-x86_64               randconfig-a003-20200218
-i386                 randconfig-a001-20200218
-i386                 randconfig-a002-20200218
-i386                 randconfig-a003-20200218
-x86_64               randconfig-a001-20200215
-x86_64               randconfig-a002-20200215
-x86_64               randconfig-a003-20200215
-i386                 randconfig-a001-20200215
-i386                 randconfig-a002-20200215
-i386                 randconfig-a003-20200215
-i386                 randconfig-a003-20200213
-x86_64               randconfig-a003-20200213
-i386                 randconfig-a001-20200213
-x86_64               randconfig-a002-20200213
-i386                 randconfig-a002-20200213
-x86_64               randconfig-a001-20200213
-alpha                randconfig-a001-20200214
-m68k                 randconfig-a001-20200214
-mips                 randconfig-a001-20200214
-nds32                randconfig-a001-20200214
-parisc               randconfig-a001-20200214
-alpha                randconfig-a001-20200219
-m68k                 randconfig-a001-20200219
-nds32                randconfig-a001-20200219
-parisc               randconfig-a001-20200219
-riscv                randconfig-a001-20200219
-c6x                  randconfig-a001-20200219
-h8300                randconfig-a001-20200219
-microblaze           randconfig-a001-20200219
-nios2                randconfig-a001-20200219
-sparc64              randconfig-a001-20200219
-csky                 randconfig-a001-20200214
-openrisc             randconfig-a001-20200214
-s390                 randconfig-a001-20200214
-sh                   randconfig-a001-20200214
-xtensa               randconfig-a001-20200214
-openrisc             randconfig-a001-20200213
-sh                   randconfig-a001-20200213
-csky                 randconfig-a001-20200213
-s390                 randconfig-a001-20200213
-xtensa               randconfig-a001-20200213
-x86_64               randconfig-b001-20200219
-x86_64               randconfig-b002-20200219
-x86_64               randconfig-b003-20200219
-i386                 randconfig-b001-20200219
-i386                 randconfig-b002-20200219
-i386                 randconfig-b003-20200219
-x86_64               randconfig-b001-20200213
-x86_64               randconfig-b002-20200213
-x86_64               randconfig-b003-20200213
-i386                 randconfig-b001-20200213
-i386                 randconfig-b002-20200213
-i386                 randconfig-b003-20200213
-x86_64               randconfig-c001-20200214
-x86_64               randconfig-c002-20200214
-x86_64               randconfig-c003-20200214
-i386                 randconfig-c001-20200214
-i386                 randconfig-c002-20200214
-i386                 randconfig-c003-20200214
-i386                 randconfig-c002-20200213
-x86_64               randconfig-c003-20200213
-i386                 randconfig-c001-20200213
-x86_64               randconfig-c002-20200213
-x86_64               randconfig-c001-20200213
-i386                 randconfig-c003-20200213
-x86_64               randconfig-c001-20200219
-x86_64               randconfig-c002-20200219
-x86_64               randconfig-c003-20200219
-i386                 randconfig-c001-20200219
-i386                 randconfig-c002-20200219
-i386                 randconfig-c003-20200219
-x86_64               randconfig-d001-20200213
-x86_64               randconfig-d002-20200213
-x86_64               randconfig-d003-20200213
-i386                 randconfig-d001-20200213
-i386                 randconfig-d002-20200213
-i386                 randconfig-d003-20200213
-x86_64               randconfig-d001-20200214
-x86_64               randconfig-d002-20200214
-x86_64               randconfig-d003-20200214
-i386                 randconfig-d001-20200214
-i386                 randconfig-d002-20200214
-i386                 randconfig-d003-20200214
-x86_64               randconfig-d001-20200218
-x86_64               randconfig-d002-20200218
-x86_64               randconfig-d003-20200218
-i386                 randconfig-d001-20200218
-i386                 randconfig-d002-20200218
-i386                 randconfig-d003-20200218
-x86_64               randconfig-e001-20200213
-x86_64               randconfig-e002-20200213
-x86_64               randconfig-e003-20200213
-i386                 randconfig-e001-20200213
-i386                 randconfig-e002-20200213
-i386                 randconfig-e003-20200213
-x86_64               randconfig-e001-20200214
-x86_64               randconfig-e002-20200214
-x86_64               randconfig-e003-20200214
-i386                 randconfig-e001-20200214
-i386                 randconfig-e002-20200214
-i386                 randconfig-e003-20200214
-x86_64               randconfig-f001-20200214
-x86_64               randconfig-f002-20200214
-x86_64               randconfig-f003-20200214
-i386                 randconfig-f001-20200214
-i386                 randconfig-f002-20200214
-i386                 randconfig-f003-20200214
-x86_64               randconfig-f001-20200213
-x86_64               randconfig-f002-20200213
-x86_64               randconfig-f003-20200213
-i386                 randconfig-f001-20200213
-i386                 randconfig-f002-20200213
-i386                 randconfig-f003-20200213
-x86_64               randconfig-f001-20200218
-x86_64               randconfig-f002-20200218
-x86_64               randconfig-f003-20200218
-i386                 randconfig-f001-20200218
-i386                 randconfig-f002-20200218
-i386                 randconfig-f003-20200218
-x86_64               randconfig-g001-20200214
-x86_64               randconfig-g002-20200214
-x86_64               randconfig-g003-20200214
-i386                 randconfig-g001-20200214
-i386                 randconfig-g002-20200214
-i386                 randconfig-g003-20200214
-x86_64               randconfig-g001-20200213
-x86_64               randconfig-g002-20200213
-x86_64               randconfig-g003-20200213
-i386                 randconfig-g001-20200213
-i386                 randconfig-g002-20200213
-i386                 randconfig-g003-20200213
-x86_64               randconfig-h001-20200214
-x86_64               randconfig-h002-20200214
-x86_64               randconfig-h003-20200214
-i386                 randconfig-h001-20200214
-i386                 randconfig-h002-20200214
-i386                 randconfig-h003-20200214
-x86_64               randconfig-h001-20200213
-x86_64               randconfig-h002-20200213
-x86_64               randconfig-h003-20200213
-i386                 randconfig-h001-20200213
-i386                 randconfig-h002-20200213
-i386                 randconfig-h003-20200213
-arc                  randconfig-a001-20200213
-sparc                randconfig-a001-20200213
-ia64                 randconfig-a001-20200213
-arm                  randconfig-a001-20200213
-arm64                randconfig-a001-20200213
-arc                  randconfig-a001-20200214
-arm                  randconfig-a001-20200214
-arm64                randconfig-a001-20200214
-ia64                 randconfig-a001-20200214
-powerpc              randconfig-a001-20200214
-sparc                randconfig-a001-20200214
-riscv                            allmodconfig
-riscv                             allnoconfig
-riscv                            allyesconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-s390                             alldefconfig
-s390                             allyesconfig
-s390                          debug_defconfig
-s390                       zfcpdump_defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
+> virsh attach-device domain_name pci_0000_af_0_0.xml
+error: Failed to attach device from pci_0000_af_0_0.xml
+error: Cannot set interface MAC/vlanid to 00:de:ad:00:11:01/0 for
+	ifname ens1f1 vf 0: Device or resource busy
 
+This is failing because the VF has not been completely removed/reset
+after being unbound (via the virsh command above) from the host iavf
+driver and ice_set_vf_mac() checks if the VF is disabled before waiting
+for the reset to finish.
+
+Fix this by waiting for the VF remove/reset process to happen before
+checking if the VF is disabled. Also, since many functions for VF
+administration on the PF were more or less calling the same 3 functions
+(ice_wait_on_vf_reset(), ice_is_vf_disabled(), and ice_check_vf_init())
+move these into the helper function ice_check_vf_ready_for_cfg(). Then
+call this function in any flow that attempts to configure/query a VF
+from the PF.
+
+Lastly, increase the maximum wait time in ice_wait_on_vf_reset() to
+800ms, and modify/add the #define(s) that determine the wait time.
+This was done for robustness because in rare/stress cases VF removal can
+take a max of ~800ms and previously the wait was a max of ~300ms.
+
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+v2: add SKB_GSO_UDP_L4 to features check and probe
+v3: patch did not apply cleanly to next-queue tree, due to other igc
+    patches that had been applied, so fixed up the patch to apply cleanly
+v4: fixed two return values, which should have returned 0 (Success)
+
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 127 ++++++++++--------
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   3 +-
+ 2 files changed, 73 insertions(+), 57 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 262714d5f54a..396d59044ead 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1873,6 +1873,48 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
+ 				     NULL, 0);
+ }
+ 
++/**
++ * ice_wait_on_vf_reset - poll to make sure a given VF is ready after reset
++ * @vf: The VF being resseting
++ *
++ * The max poll time is about ~800ms, which is about the maximum time it takes
++ * for a VF to be reset and/or a VF driver to be removed.
++ */
++static void ice_wait_on_vf_reset(struct ice_vf *vf)
++{
++	int i;
++
++	for (i = 0; i < ICE_MAX_VF_RESET_TRIES; i++) {
++		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
++			break;
++		msleep(ICE_MAX_VF_RESET_SLEEP_MS);
++	}
++}
++
++/**
++ * ice_check_vf_ready_for_cfg - check if VF is ready to be configured/queried
++ * @vf: VF to check if it's ready to be configured/queried
++ *
++ * The purpose of this function is to make sure the VF is not in reset, not
++ * disabled, and initialized so it can be configured and/or queried by a host
++ * administrator.
++ */
++static int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
++{
++	struct ice_pf *pf;
++
++	ice_wait_on_vf_reset(vf);
++
++	if (ice_is_vf_disabled(vf))
++		return -EINVAL;
++
++	pf = vf->pf;
++	if (ice_check_vf_init(pf, vf))
++		return -EBUSY;
++
++	return 0;
++}
++
+ /**
+  * ice_set_vf_spoofchk
+  * @netdev: network interface device structure
+@@ -1890,16 +1932,16 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ 	enum ice_status status;
+ 	struct device *dev;
+ 	struct ice_vf *vf;
+-	int ret = 0;
++	int ret;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	vf_vsi = pf->vsi[vf->lan_vsi_idx];
+ 	if (!vf_vsi) {
+@@ -2696,7 +2738,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 	struct ice_vsi *vsi;
+ 	struct device *dev;
+ 	struct ice_vf *vf;
+-	int ret = 0;
++	int ret;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (ice_validate_vf_id(pf, vf_id))
+@@ -2714,13 +2756,15 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 
+ 	vf = &pf->vf[vf_id];
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	if (le16_to_cpu(vsi->info.pvid) == vlanprio) {
+ 		/* duplicate request, so just return success */
+ 		dev_dbg(dev, "Duplicate pvid %d request\n", vlanprio);
+-		return ret;
++		return 0;
+ 	}
+ 
+ 	/* If PVID, then remove all filters on the old VLAN */
+@@ -3236,23 +3280,6 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ 	return 0;
+ }
+ 
+-/**
+- * ice_wait_on_vf_reset
+- * @vf: The VF being resseting
+- *
+- * Poll to make sure a given VF is ready after reset
+- */
+-static void ice_wait_on_vf_reset(struct ice_vf *vf)
+-{
+-	int i;
+-
+-	for (i = 0; i < ICE_MAX_VF_RESET_WAIT; i++) {
+-		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
+-			break;
+-		msleep(20);
+-	}
+-}
+-
+ /**
+  * ice_set_vf_mac
+  * @netdev: network interface device structure
+@@ -3265,29 +3292,21 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ {
+ 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
+ 	struct ice_vf *vf;
+-	int ret = 0;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+-	vf = &pf->vf[vf_id];
+-	/* Don't set MAC on disabled VF */
+-	if (ice_is_vf_disabled(vf))
+-		return -EINVAL;
+-
+-	/* In case VF is in reset mode, wait until it is completed. Depending
+-	 * on factors like queue disabling routine, this could take ~250ms
+-	 */
+-	ice_wait_on_vf_reset(vf);
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
+-
+ 	if (is_zero_ether_addr(mac) || is_multicast_ether_addr(mac)) {
+ 		netdev_err(netdev, "%pM not a valid unicast address\n", mac);
+ 		return -EINVAL;
+ 	}
+ 
++	vf = &pf->vf[vf_id];
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
++
+ 	/* copy MAC into dflt_lan_addr and trigger a VF reset. The reset
+ 	 * flow will use the updated dflt_lan_addr and add a MAC filter
+ 	 * using ice_add_mac. Also set pf_set_mac to indicate that the PF has
+@@ -3299,7 +3318,7 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 		    vf_id, mac);
+ 
+ 	ice_vc_reset_vf(vf);
+-	return ret;
++	return 0;
+ }
+ 
+ /**
+@@ -3314,22 +3333,15 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
+ {
+ 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
+ 	struct ice_vf *vf;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-	/* Don't set Trusted Mode on disabled VF */
+-	if (ice_is_vf_disabled(vf))
+-		return -EINVAL;
+-
+-	/* In case VF is in reset mode, wait until it is completed. Depending
+-	 * on factors like queue disabling routine, this could take ~250ms
+-	 */
+-	ice_wait_on_vf_reset(vf);
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	/* Check if already trusted */
+ 	if (trusted == vf->trusted)
+@@ -3355,13 +3367,15 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
+ {
+ 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
+ 	struct ice_vf *vf;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	switch (link_state) {
+ 	case IFLA_VF_LINK_STATE_AUTO:
+@@ -3397,14 +3411,15 @@ int ice_get_vf_stats(struct net_device *netdev, int vf_id,
+ 	struct ice_eth_stats *stats;
+ 	struct ice_vsi *vsi;
+ 	struct ice_vf *vf;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 	if (!vsi)
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+index 4647d636ed36..ac67982751df 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+@@ -38,7 +38,8 @@
+ #define ICE_MAX_POLICY_INTR_PER_VF	33
+ #define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
+ #define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
+-#define ICE_MAX_VF_RESET_WAIT		15
++#define ICE_MAX_VF_RESET_TRIES		40
++#define ICE_MAX_VF_RESET_SLEEP_MS	20
+ 
+ #define ice_for_each_vf(pf, i) \
+ 	for ((i) = 0; (i) < (pf)->num_alloc_vfs; (i)++)
+-- 
+2.24.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
