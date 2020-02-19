@@ -1,58 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59DA016368C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2020 23:56:57 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 714E016383B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 01:11:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 15A4F864FB;
-	Tue, 18 Feb 2020 22:56:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1FA5E203F0;
+	Wed, 19 Feb 2020 00:11:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XtOhASBCr5VD; Tue, 18 Feb 2020 22:56:55 +0000 (UTC)
+	with ESMTP id UUKxIUY8ghyZ; Wed, 19 Feb 2020 00:11:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F35AB864D4;
-	Tue, 18 Feb 2020 22:56:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 39193204C9;
+	Wed, 19 Feb 2020 00:11:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7BAFE1BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:56:53 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 67E281BF280
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 77A3585B4A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:56:53 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 63FBE8641F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hBzZd_UC-KCz for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2020 22:56:53 +0000 (UTC)
+ with ESMTP id H6faS3--5FmW for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2020 00:11:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E146B85A60
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 22:56:52 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2020 14:56:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; 
- d="asc'?scan'208";a="235690390"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
- by orsmga003.jf.intel.com with ESMTP; 18 Feb 2020 14:56:51 -0800
-Message-ID: <c78f27ad9d3eeccdbe85ec5d393fbcc9fac662a5.camel@intel.com>
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Feb 2020 14:56:51 -0800
-In-Reply-To: <20200218225059.1294769-1-jeffrey.t.kirsher@intel.com>
-References: <20200218225059.1294769-1-jeffrey.t.kirsher@intel.com>
-Organization: Intel
-User-Agent: Evolution 3.34.3 (3.34.3-1.fc31) 
+Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
+ [209.85.166.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4960585039
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:11 +0000 (UTC)
+Received: by mail-il1-f194.google.com with SMTP id g12so18997477ild.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 16:11:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=bGlhbQrg5FUHqkwA+9SBQzgwOXaqri+7vb0xTORTrj8=;
+ b=Wx38fmlSI7XpPFO9agStBtL2iXFPqs1BTERYdf13Pae9/+BVr/dBU55xsTvDyN8FlE
+ aHxwHRH81/pH3+kWLqqaOgvWePSZIIo9bsbKABrTJEpP7FgqaOiV3XCAeB3ymAeWOH5N
+ 2KLBbcZM9AXfb04Hhto00rl0sxrIqliR9U8ho/eKZcxSkl3pktTjxttR1YCyPRmX9pxF
+ 7rFBxM0GTqOwRBDnPZFxo9vxaDg0riF65XZqNpAw2vO7Ngssr+2n+pHkCmhjZ8xft9QP
+ SFy5+hyTKfc3jWJLjMu3yL0xorsRYfrsvlSSevK/EJ27mQYKnciLoNW9s4Nx55lZ70Y3
+ gqhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=bGlhbQrg5FUHqkwA+9SBQzgwOXaqri+7vb0xTORTrj8=;
+ b=U62KdCPAx4mUN+JpI+d4+Zb+OaYEGvbgBx34DPl31oc4ym2CQ73jYXfDYKDqo+161i
+ YmCDdPuIQguyhAMfXq+JIZqaxgNLUZdeYd9yPjy6GEUz7P9lOpbai5fQFcsSkZ3yXGaH
+ CSIlSZekXjNVXBeYUy8mW+nB14XNFarew/c44TTYlVSepEUsIsEVNdYes2y6EBgeZDt1
+ bQQkgvWXYGnfkxTALgnFzC3XFoYLkt1VY+bl7BhUzxnZDLq7Iu7cylplUP+EdYsq4TWX
+ Q+S2i2v/40+Wn0TtuvDV3fmvi0PkVrdjY6HTZGOZUNaA23Ek6LOF+lSzP0DtdWKRdjdh
+ OcvQ==
+X-Gm-Message-State: APjAAAVr/uCutQzTJsXY9WcoW0tNKBtKjavj2Sae51PI+FKUfYDBqk4Z
+ 7C8APtWq/ggOnBQgmqGKWDaxvLiOllu26hvk7g0=
+X-Google-Smtp-Source: APXvYqxjlcaAtTki7Y0njuMYkH5ep24tlIXzIQrUDf0Earcl1wzT8m16cM7gJlhLOjSzi8hmceRAWZHdm98QpxcuIDI=
+X-Received: by 2002:a92:dac3:: with SMTP id o3mr22520927ilq.237.1582071070408; 
+ Tue, 18 Feb 2020 16:11:10 -0800 (PST)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-queue v4] ice: Wait for VF to be
- reset/ready before configuration
+References: <20200218214148.1127641-1-jeffrey.t.kirsher@intel.com>
+In-Reply-To: <20200218214148.1127641-1-jeffrey.t.kirsher@intel.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Tue, 18 Feb 2020 16:10:59 -0800
+Message-ID: <CAKgT0Ucyv5bYGpjTJuXLZhdDi-t47XXTgtEiHER7p=6b1xqc4g@mail.gmail.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Subject: Re: [Intel-wired-lan] [next-queue v3] igc: Complete to commit Add
+ support for TSO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,120 +80,94 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: jeffrey.t.kirsher@intel.com
-Cc: Brett Creeley <brett.creeley@intel.com>
-Content-Type: multipart/mixed; boundary="===============0404604459498213792=="
+Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Tue, Feb 18, 2020 at 1:42 PM Jeff Kirsher
+<jeffrey.t.kirsher@intel.com> wrote:
+>
+> From: Sasha Neftin <sasha.neftin@intel.com>
+>
+> commit f38b782dccab ("igc: Add support for TSO")
+> Add option to setting transmit command (TUCMD) of the context
+> descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
+>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 
---===============0404604459498213792==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-VfXjmVTkF+WMR7hhEjy+"
-
-
---=-VfXjmVTkF+WMR7hhEjy+
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, 2020-02-18 at 14:50 -0800, Jeff Kirsher wrote:
-> From: Brett Creeley <brett.creeley@intel.com>
->=20
-> The configuration/command below is failing when the VF in the xml
-> file is already bound to the host iavf driver.
->=20
-> pci_0000_af_0_0.xml:
->=20
-> <interface type=3D'hostdev' managed=3D'yes'>
-> <source>
-> <address type=3D'pci' domain=3D'0x0000' bus=3D'0xaf' slot=3D'0x0'
-> function=3D'0x0'/>
-> </source>
-> <mac address=3D'00:de:ad:00:11:01'/>
-> </interface>
->=20
-> > virsh attach-device domain_name pci_0000_af_0_0.xml
-> error: Failed to attach device from pci_0000_af_0_0.xml
-> error: Cannot set interface MAC/vlanid to 00:de:ad:00:11:01/0 for
->         ifname ens1f1 vf 0: Device or resource busy
->=20
-> This is failing because the VF has not been completely removed/reset
-> after being unbound (via the virsh command above) from the host iavf
-> driver and ice_set_vf_mac() checks if the VF is disabled before
-> waiting
-> for the reset to finish.
->=20
-> Fix this by waiting for the VF remove/reset process to happen before
-> checking if the VF is disabled. Also, since many functions for VF
-> administration on the PF were more or less calling the same 3
-> functions
-> (ice_wait_on_vf_reset(), ice_is_vf_disabled(), and
-> ice_check_vf_init())
-> move these into the helper function ice_check_vf_ready_for_cfg().
-> Then
-> call this function in any flow that attempts to configure/query a VF
-> from the PF.
->=20
-> Lastly, increase the maximum wait time in ice_wait_on_vf_reset() to
-> 800ms, and modify/add the #define(s) that determine the wait time.
-> This was done for robustness because in rare/stress cases VF removal
-> can
-> take a max of ~800ms and previously the wait was a max of ~300ms.
->=20
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-
-Disregard this submission, I put the wrong change log below on this
-patch and this was supposed to be v3, not v4.  I have already submitted
-the correct version, with the correct change log.
+The title and description should be redone. This patch is adding
+support for UDP segmentation offload. It should mention that in the
+title and explain that in the commit message.
 
 > ---
 > v2: add SKB_GSO_UDP_L4 to features check and probe
 > v3: patch did not apply cleanly to next-queue tree, due to other igc
->     patches that had been applied, so fixed up the patch to apply
-> cleanly
-> v4: fixed two return values, which should have returned 0 (Success)
->=20
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 127 ++++++++++----
-> ----
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   3 +-
->  2 files changed, 73 insertions(+), 57 deletions(-)
-
-
---=-VfXjmVTkF+WMR7hhEjy+
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl5Ma7MACgkQ5W/vlVpL
-7c5g+w//VslQbBYCDlosniWzg90qRYOvfjFA+e0jcIjpy0aYCZE8GwZObBlXrqeU
-DEgWFk1Gc6cfyfn7ZOwA6LSIehkoC6V79jeq80RfviX/tA2mnvEJRZqthJcXg9+S
-kLoIGjGCB01p6H4LutoOD0iqAEwxyz0R7I7YkbekWxqmtPc8Bs+i+jTmNTn36olK
-ybk2AyTg/sYtADHzS5ICgBnYOxb36caolACfXxDdWYHa9q5Hmt+E4j7/jVZddCJu
-dYQ6pP1lQGg7XXD7eC/kFLB4WIYEEKXVDfyarhM9HQeqqv3pA5JRDWk5hMeKkz9+
-XZem+cv23+YUMJ3odJ3/jPcDMjuMUIF0sl4wpSrLJlokoHJJ0oo350pcb20BoT6G
-ctfwnVR2iPBdEUrzTtMe60C3Ig6DlEJ8iNgmedssB26XyOJOq0dACNbCAR6VImu1
-8Qs9AfmYvXfFUVwY54f83KhSuW+VAXQunQfyn/G/JnxoIJn7YuSnPiuztlP089As
-OUJ4QCjD0olL9UfjGkz/pLnez7rmKznnQcTKQbE/Fktt0tRhIx0TlT1w9KUVFtj+
-Z6OuaG/QuPz+796XG/m+TRRpGzRZqiItFblOvwRAxoCIztRU34QfibiscRnmD6j6
-VNC84uw/JkJmfGEgfuU6GozRnOA9sYcsaSuZJOOK5/CYG3PZB6Q=
-=DCnx
------END PGP SIGNATURE-----
-
---=-VfXjmVTkF+WMR7hhEjy+--
-
-
---===============0404604459498213792==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+>     patches that had been applied, so fixed up the patch to apply cleanly
+>
+>  drivers/net/ethernet/intel/igc/igc_defines.h | 1 +
+>  drivers/net/ethernet/intel/igc/igc_main.c    | 6 +++++-
+>  2 files changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index 1b0fd2ffd08d..0746fa42ff3f 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -522,6 +522,7 @@
+>  #define IGC_VLAPQF_QUEUE_MASK  0x03
+>
+>  #define IGC_ADVTXD_MACLEN_SHIFT                9  /* Adv ctxt desc mac len shift */
+> +#define IGC_ADVTXD_TUCMD_L4T_UDP       0x00000000  /* L4 Packet TYPE of UDP */
+>  #define IGC_ADVTXD_TUCMD_IPV4          0x00000400  /* IP Packet Type:1=IPv4 */
+>  #define IGC_ADVTXD_TUCMD_L4T_TCP       0x00000800  /* L4 Packet Type of TCP */
+>  #define IGC_ADVTXD_TUCMD_L4T_SCTP      0x00001000 /* L4 packet TYPE of SCTP */
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 972c833a552b..d406aaea24af 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -1232,7 +1232,8 @@ static int igc_tso(struct igc_ring *tx_ring,
+>         l4.hdr = skb_checksum_start(skb);
+>
+>         /* ADV DTYP TUCMD MKRLOC/ISCSIHEDLEN */
+> -       type_tucmd = IGC_ADVTXD_TUCMD_L4T_TCP;
+> +       type_tucmd = (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4) ?
+> +                     IGC_ADVTXD_TUCMD_L4T_UDP : IGC_ADVTXD_TUCMD_L4T_TCP;
+>
+>         /* initialize outer IP header fields */
+>         if (ip.v4->version == 4) {
+> @@ -3693,6 +3694,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
+>         if (unlikely(mac_hdr_len > IGC_MAX_MAC_HDR_LEN))
+>                 return features & ~(NETIF_F_HW_CSUM |
+>                                     NETIF_F_SCTP_CRC |
+> +                                   NETIF_F_GSO_UDP_L4 |
+>                                     NETIF_F_HW_VLAN_CTAG_TX |
+>                                     NETIF_F_TSO |
+>                                     NETIF_F_TSO6);
+> @@ -3701,6 +3703,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
+>         if (unlikely(network_hdr_len >  IGC_MAX_NETWORK_HDR_LEN))
+>                 return features & ~(NETIF_F_HW_CSUM |
+>                                     NETIF_F_SCTP_CRC |
+> +                                   NETIF_F_GSO_UDP_L4 |
+>                                     NETIF_F_TSO |
+>                                     NETIF_F_TSO6);
+>
+> @@ -4903,6 +4906,7 @@ static int igc_probe(struct pci_dev *pdev,
+>         netdev->features |= NETIF_F_RXCSUM;
+>         netdev->features |= NETIF_F_HW_CSUM;
+>         netdev->features |= NETIF_F_SCTP_CRC;
+> +       netdev->features |= NETIF_F_GSO_UDP_L4;
+>
+>  #define IGC_GSO_PARTIAL_FEATURES (NETIF_F_GSO_GRE | \
+>                                   NETIF_F_GSO_GRE_CSUM | \
+> --
+> 2.24.1
+>
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0404604459498213792==--
-
