@@ -1,73 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 714E016383B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 01:11:17 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A124716383F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 01:11:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1FA5E203F0;
-	Wed, 19 Feb 2020 00:11:16 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2191087852;
+	Wed, 19 Feb 2020 00:11:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UUKxIUY8ghyZ; Wed, 19 Feb 2020 00:11:15 +0000 (UTC)
+	with ESMTP id GtUhoDWn8YvV; Wed, 19 Feb 2020 00:11:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 39193204C9;
-	Wed, 19 Feb 2020 00:11:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C56CF87834;
+	Wed, 19 Feb 2020 00:11:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 67E281BF280
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9D1A91BF280
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 63FBE8641F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 98E868641F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H6faS3--5FmW for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2020 00:11:11 +0000 (UTC)
+ with ESMTP id 4IU92j1eDx2n for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2020 00:11:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
- [209.85.166.194])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4960585039
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:11 +0000 (UTC)
-Received: by mail-il1-f194.google.com with SMTP id g12so18997477ild.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2020 16:11:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bGlhbQrg5FUHqkwA+9SBQzgwOXaqri+7vb0xTORTrj8=;
- b=Wx38fmlSI7XpPFO9agStBtL2iXFPqs1BTERYdf13Pae9/+BVr/dBU55xsTvDyN8FlE
- aHxwHRH81/pH3+kWLqqaOgvWePSZIIo9bsbKABrTJEpP7FgqaOiV3XCAeB3ymAeWOH5N
- 2KLBbcZM9AXfb04Hhto00rl0sxrIqliR9U8ho/eKZcxSkl3pktTjxttR1YCyPRmX9pxF
- 7rFBxM0GTqOwRBDnPZFxo9vxaDg0riF65XZqNpAw2vO7Ngssr+2n+pHkCmhjZ8xft9QP
- SFy5+hyTKfc3jWJLjMu3yL0xorsRYfrsvlSSevK/EJ27mQYKnciLoNW9s4Nx55lZ70Y3
- gqhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bGlhbQrg5FUHqkwA+9SBQzgwOXaqri+7vb0xTORTrj8=;
- b=U62KdCPAx4mUN+JpI+d4+Zb+OaYEGvbgBx34DPl31oc4ym2CQ73jYXfDYKDqo+161i
- YmCDdPuIQguyhAMfXq+JIZqaxgNLUZdeYd9yPjy6GEUz7P9lOpbai5fQFcsSkZ3yXGaH
- CSIlSZekXjNVXBeYUy8mW+nB14XNFarew/c44TTYlVSepEUsIsEVNdYes2y6EBgeZDt1
- bQQkgvWXYGnfkxTALgnFzC3XFoYLkt1VY+bl7BhUzxnZDLq7Iu7cylplUP+EdYsq4TWX
- Q+S2i2v/40+Wn0TtuvDV3fmvi0PkVrdjY6HTZGOZUNaA23Ek6LOF+lSzP0DtdWKRdjdh
- OcvQ==
-X-Gm-Message-State: APjAAAVr/uCutQzTJsXY9WcoW0tNKBtKjavj2Sae51PI+FKUfYDBqk4Z
- 7C8APtWq/ggOnBQgmqGKWDaxvLiOllu26hvk7g0=
-X-Google-Smtp-Source: APXvYqxjlcaAtTki7Y0njuMYkH5ep24tlIXzIQrUDf0Earcl1wzT8m16cM7gJlhLOjSzi8hmceRAWZHdm98QpxcuIDI=
-X-Received: by 2002:a92:dac3:: with SMTP id o3mr22520927ilq.237.1582071070408; 
- Tue, 18 Feb 2020 16:11:10 -0800 (PST)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 86CDD85039
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 00:11:27 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 18 Feb 2020 16:11:26 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,458,1574150400"; d="scan'208";a="268964417"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
+ by fmsmga002.fm.intel.com with ESMTP; 18 Feb 2020 16:11:26 -0800
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 18 Feb 2020 16:11:24 -0800
+Message-Id: <20200219001124.1610130-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-References: <20200218214148.1127641-1-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20200218214148.1127641-1-jeffrey.t.kirsher@intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 18 Feb 2020 16:10:59 -0800
-Message-ID: <CAKgT0Ucyv5bYGpjTJuXLZhdDi-t47XXTgtEiHER7p=6b1xqc4g@mail.gmail.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Subject: Re: [Intel-wired-lan] [next-queue v3] igc: Complete to commit Add
- support for TSO
+Subject: [Intel-wired-lan] [net v4] ice: Wait for VF to be reset/ready
+ before configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,93 +60,341 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Cc: Brett Creeley <brett.creeley@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 18, 2020 at 1:42 PM Jeff Kirsher
-<jeffrey.t.kirsher@intel.com> wrote:
->
-> From: Sasha Neftin <sasha.neftin@intel.com>
->
-> commit f38b782dccab ("igc: Add support for TSO")
-> Add option to setting transmit command (TUCMD) of the context
-> descriptor based on skb_shinfo gso_type and SKB_GSO_UDP_L4 flag.
->
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-The title and description should be redone. This patch is adding
-support for UDP segmentation offload. It should mention that in the
-title and explain that in the commit message.
+The configuration/command below is failing when the VF in the xml
+file is already bound to the host iavf driver.
 
-> ---
-> v2: add SKB_GSO_UDP_L4 to features check and probe
-> v3: patch did not apply cleanly to next-queue tree, due to other igc
->     patches that had been applied, so fixed up the patch to apply cleanly
->
->  drivers/net/ethernet/intel/igc/igc_defines.h | 1 +
->  drivers/net/ethernet/intel/igc/igc_main.c    | 6 +++++-
->  2 files changed, 6 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-> index 1b0fd2ffd08d..0746fa42ff3f 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
-> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-> @@ -522,6 +522,7 @@
->  #define IGC_VLAPQF_QUEUE_MASK  0x03
->
->  #define IGC_ADVTXD_MACLEN_SHIFT                9  /* Adv ctxt desc mac len shift */
-> +#define IGC_ADVTXD_TUCMD_L4T_UDP       0x00000000  /* L4 Packet TYPE of UDP */
->  #define IGC_ADVTXD_TUCMD_IPV4          0x00000400  /* IP Packet Type:1=IPv4 */
->  #define IGC_ADVTXD_TUCMD_L4T_TCP       0x00000800  /* L4 Packet Type of TCP */
->  #define IGC_ADVTXD_TUCMD_L4T_SCTP      0x00001000 /* L4 packet TYPE of SCTP */
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 972c833a552b..d406aaea24af 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -1232,7 +1232,8 @@ static int igc_tso(struct igc_ring *tx_ring,
->         l4.hdr = skb_checksum_start(skb);
->
->         /* ADV DTYP TUCMD MKRLOC/ISCSIHEDLEN */
-> -       type_tucmd = IGC_ADVTXD_TUCMD_L4T_TCP;
-> +       type_tucmd = (skb_shinfo(skb)->gso_type & SKB_GSO_UDP_L4) ?
-> +                     IGC_ADVTXD_TUCMD_L4T_UDP : IGC_ADVTXD_TUCMD_L4T_TCP;
->
->         /* initialize outer IP header fields */
->         if (ip.v4->version == 4) {
-> @@ -3693,6 +3694,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
->         if (unlikely(mac_hdr_len > IGC_MAX_MAC_HDR_LEN))
->                 return features & ~(NETIF_F_HW_CSUM |
->                                     NETIF_F_SCTP_CRC |
-> +                                   NETIF_F_GSO_UDP_L4 |
->                                     NETIF_F_HW_VLAN_CTAG_TX |
->                                     NETIF_F_TSO |
->                                     NETIF_F_TSO6);
-> @@ -3701,6 +3703,7 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
->         if (unlikely(network_hdr_len >  IGC_MAX_NETWORK_HDR_LEN))
->                 return features & ~(NETIF_F_HW_CSUM |
->                                     NETIF_F_SCTP_CRC |
-> +                                   NETIF_F_GSO_UDP_L4 |
->                                     NETIF_F_TSO |
->                                     NETIF_F_TSO6);
->
-> @@ -4903,6 +4906,7 @@ static int igc_probe(struct pci_dev *pdev,
->         netdev->features |= NETIF_F_RXCSUM;
->         netdev->features |= NETIF_F_HW_CSUM;
->         netdev->features |= NETIF_F_SCTP_CRC;
-> +       netdev->features |= NETIF_F_GSO_UDP_L4;
->
->  #define IGC_GSO_PARTIAL_FEATURES (NETIF_F_GSO_GRE | \
->                                   NETIF_F_GSO_GRE_CSUM | \
-> --
-> 2.24.1
->
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+pci_0000_af_0_0.xml:
+
+<interface type='hostdev' managed='yes'>
+<source>
+<address type='pci' domain='0x0000' bus='0xaf' slot='0x0' function='0x0'/>
+</source>
+<mac address='00:de:ad:00:11:01'/>
+</interface>
+
+> virsh attach-device domain_name pci_0000_af_0_0.xml
+error: Failed to attach device from pci_0000_af_0_0.xml
+error: Cannot set interface MAC/vlanid to 00:de:ad:00:11:01/0 for
+	ifname ens1f1 vf 0: Device or resource busy
+
+This is failing because the VF has not been completely removed/reset
+after being unbound (via the virsh command above) from the host iavf
+driver and ice_set_vf_mac() checks if the VF is disabled before waiting
+for the reset to finish.
+
+Fix this by waiting for the VF remove/reset process to happen before
+checking if the VF is disabled. Also, since many functions for VF
+administration on the PF were more or less calling the same 3 functions
+(ice_wait_on_vf_reset(), ice_is_vf_disabled(), and ice_check_vf_init())
+move these into the helper function ice_check_vf_ready_for_cfg(). Then
+call this function in any flow that attempts to configure/query a VF
+from the PF.
+
+Lastly, increase the maximum wait time in ice_wait_on_vf_reset() to
+800ms, and modify/add the #define(s) that determine the wait time.
+This was done for robustness because in rare/stress cases VF removal can
+take a max of ~800ms and previously the wait was a max of ~300ms.
+
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+---
+v2: Original patch did not apply cleanly to my net-queue tree, so it had
+    to be applied by hand, this version applies cleanly to net-queue
+v3: fixed two return values, which should have returned 0 (Success)
+v4: Brett cleaned up the use of "goto's" and simply returned the current
+    'ret' value
+
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 134 ++++++++++--------
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   3 +-
+ 2 files changed, 76 insertions(+), 61 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 262714d5f54a..75c70d432c72 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1873,6 +1873,48 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
+ 				     NULL, 0);
+ }
+ 
++/**
++ * ice_wait_on_vf_reset - poll to make sure a given VF is ready after reset
++ * @vf: The VF being resseting
++ *
++ * The max poll time is about ~800ms, which is about the maximum time it takes
++ * for a VF to be reset and/or a VF driver to be removed.
++ */
++static void ice_wait_on_vf_reset(struct ice_vf *vf)
++{
++	int i;
++
++	for (i = 0; i < ICE_MAX_VF_RESET_TRIES; i++) {
++		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
++			break;
++		msleep(ICE_MAX_VF_RESET_SLEEP_MS);
++	}
++}
++
++/**
++ * ice_check_vf_ready_for_cfg - check if VF is ready to be configured/queried
++ * @vf: VF to check if it's ready to be configured/queried
++ *
++ * The purpose of this function is to make sure the VF is not in reset, not
++ * disabled, and initialized so it can be configured and/or queried by a host
++ * administrator.
++ */
++static int ice_check_vf_ready_for_cfg(struct ice_vf *vf)
++{
++	struct ice_pf *pf;
++
++	ice_wait_on_vf_reset(vf);
++
++	if (ice_is_vf_disabled(vf))
++		return -EINVAL;
++
++	pf = vf->pf;
++	if (ice_check_vf_init(pf, vf))
++		return -EBUSY;
++
++	return 0;
++}
++
+ /**
+  * ice_set_vf_spoofchk
+  * @netdev: network interface device structure
+@@ -1890,16 +1932,16 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
+ 	enum ice_status status;
+ 	struct device *dev;
+ 	struct ice_vf *vf;
+-	int ret = 0;
++	int ret;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	vf_vsi = pf->vsi[vf->lan_vsi_idx];
+ 	if (!vf_vsi) {
+@@ -2696,7 +2738,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 	struct ice_vsi *vsi;
+ 	struct device *dev;
+ 	struct ice_vf *vf;
+-	int ret = 0;
++	int ret;
+ 
+ 	dev = ice_pf_to_dev(pf);
+ 	if (ice_validate_vf_id(pf, vf_id))
+@@ -2714,13 +2756,15 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 
+ 	vf = &pf->vf[vf_id];
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	if (le16_to_cpu(vsi->info.pvid) == vlanprio) {
+ 		/* duplicate request, so just return success */
+ 		dev_dbg(dev, "Duplicate pvid %d request\n", vlanprio);
+-		return ret;
++		return 0;
+ 	}
+ 
+ 	/* If PVID, then remove all filters on the old VLAN */
+@@ -2731,7 +2775,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 	if (vlan_id || qos) {
+ 		ret = ice_vsi_manage_pvid(vsi, vlanprio, true);
+ 		if (ret)
+-			goto error_set_pvid;
++			return ret;
+ 	} else {
+ 		ice_vsi_manage_pvid(vsi, 0, false);
+ 		vsi->info.pvid = 0;
+@@ -2744,7 +2788,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 		/* add new VLAN filter for each MAC */
+ 		ret = ice_vsi_add_vlan(vsi, vlan_id);
+ 		if (ret)
+-			goto error_set_pvid;
++			return ret;
+ 	}
+ 
+ 	/* The Port VLAN needs to be saved across resets the same as the
+@@ -2752,8 +2796,7 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ 	 */
+ 	vf->port_vlan_id = le16_to_cpu(vsi->info.pvid);
+ 
+-error_set_pvid:
+-	return ret;
++	return 0;
+ }
+ 
+ /**
+@@ -3236,23 +3279,6 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
+ 	return 0;
+ }
+ 
+-/**
+- * ice_wait_on_vf_reset
+- * @vf: The VF being resseting
+- *
+- * Poll to make sure a given VF is ready after reset
+- */
+-static void ice_wait_on_vf_reset(struct ice_vf *vf)
+-{
+-	int i;
+-
+-	for (i = 0; i < ICE_MAX_VF_RESET_WAIT; i++) {
+-		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
+-			break;
+-		msleep(20);
+-	}
+-}
+-
+ /**
+  * ice_set_vf_mac
+  * @netdev: network interface device structure
+@@ -3265,29 +3291,21 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ {
+ 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
+ 	struct ice_vf *vf;
+-	int ret = 0;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+-	vf = &pf->vf[vf_id];
+-	/* Don't set MAC on disabled VF */
+-	if (ice_is_vf_disabled(vf))
+-		return -EINVAL;
+-
+-	/* In case VF is in reset mode, wait until it is completed. Depending
+-	 * on factors like queue disabling routine, this could take ~250ms
+-	 */
+-	ice_wait_on_vf_reset(vf);
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
+-
+ 	if (is_zero_ether_addr(mac) || is_multicast_ether_addr(mac)) {
+ 		netdev_err(netdev, "%pM not a valid unicast address\n", mac);
+ 		return -EINVAL;
+ 	}
+ 
++	vf = &pf->vf[vf_id];
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
++
+ 	/* copy MAC into dflt_lan_addr and trigger a VF reset. The reset
+ 	 * flow will use the updated dflt_lan_addr and add a MAC filter
+ 	 * using ice_add_mac. Also set pf_set_mac to indicate that the PF has
+@@ -3299,7 +3317,7 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
+ 		    vf_id, mac);
+ 
+ 	ice_vc_reset_vf(vf);
+-	return ret;
++	return 0;
+ }
+ 
+ /**
+@@ -3314,22 +3332,15 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
+ {
+ 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
+ 	struct ice_vf *vf;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-	/* Don't set Trusted Mode on disabled VF */
+-	if (ice_is_vf_disabled(vf))
+-		return -EINVAL;
+-
+-	/* In case VF is in reset mode, wait until it is completed. Depending
+-	 * on factors like queue disabling routine, this could take ~250ms
+-	 */
+-	ice_wait_on_vf_reset(vf);
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	/* Check if already trusted */
+ 	if (trusted == vf->trusted)
+@@ -3355,13 +3366,15 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state)
+ {
+ 	struct ice_pf *pf = ice_netdev_to_pf(netdev);
+ 	struct ice_vf *vf;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	switch (link_state) {
+ 	case IFLA_VF_LINK_STATE_AUTO:
+@@ -3397,14 +3410,15 @@ int ice_get_vf_stats(struct net_device *netdev, int vf_id,
+ 	struct ice_eth_stats *stats;
+ 	struct ice_vsi *vsi;
+ 	struct ice_vf *vf;
++	int ret;
+ 
+ 	if (ice_validate_vf_id(pf, vf_id))
+ 		return -EINVAL;
+ 
+ 	vf = &pf->vf[vf_id];
+-
+-	if (ice_check_vf_init(pf, vf))
+-		return -EBUSY;
++	ret = ice_check_vf_ready_for_cfg(vf);
++	if (ret)
++		return ret;
+ 
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 	if (!vsi)
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+index 4647d636ed36..ac67982751df 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
+@@ -38,7 +38,8 @@
+ #define ICE_MAX_POLICY_INTR_PER_VF	33
+ #define ICE_MIN_INTR_PER_VF		(ICE_MIN_QS_PER_VF + 1)
+ #define ICE_DFLT_INTR_PER_VF		(ICE_DFLT_QS_PER_VF + 1)
+-#define ICE_MAX_VF_RESET_WAIT		15
++#define ICE_MAX_VF_RESET_TRIES		40
++#define ICE_MAX_VF_RESET_SLEEP_MS	20
+ 
+ #define ice_for_each_vf(pf, i) \
+ 	for ((i) = 0; (i) < (pf)->num_alloc_vfs; (i)++)
+-- 
+2.24.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
