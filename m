@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6FFB164F16
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 20:42:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C01C164F19
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 20:42:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9483E87A33;
-	Wed, 19 Feb 2020 19:42:21 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B278387A04;
+	Wed, 19 Feb 2020 19:42:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p+SHKBQ-XOh1; Wed, 19 Feb 2020 19:42:21 +0000 (UTC)
+	with ESMTP id R3tzQb8syOnr; Wed, 19 Feb 2020 19:42:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E24BF87A15;
-	Wed, 19 Feb 2020 19:42:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4D1AA87A12;
+	Wed, 19 Feb 2020 19:42:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7DC301BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:42:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A0E5F1BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:42:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7984B845DC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:42:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9D0ED845DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:42:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Neu1N6NyW2L1 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2020 19:42:18 +0000 (UTC)
+ with ESMTP id UttmcqnTXkEH for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2020 19:42:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 06085845D5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:42:17 +0000 (UTC)
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3C38D845D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:42:44 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2020 11:42:17 -0800
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2020 11:42:43 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,461,1574150400"; d="scan'208";a="408545192"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by orsmga005.jf.intel.com with ESMTP; 19 Feb 2020 11:42:17 -0800
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 19 Feb 2020 11:42:16 -0800
+X-IronPort-AV: E=Sophos;i="5.70,461,1574150400"; d="scan'208";a="228694892"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by fmsmga007.fm.intel.com with ESMTP; 19 Feb 2020 11:42:43 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 19 Feb 2020 11:42:43 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 19 Feb 2020 11:42:16 -0800
+ 15.1.1713.5; Wed, 19 Feb 2020 11:42:43 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 19 Feb 2020 11:42:16 -0800
+ Wed, 19 Feb 2020 11:42:43 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S39 v2 10/15] ice: Don't tell the OS
- that link is going down
-Thread-Index: AQHV4rUMYvWy0N4Ink6bQif1k+k2Kagi8+aA
-Date: Wed, 19 Feb 2020 19:42:16 +0000
-Message-ID: <7e4597c386854c15bc37399ced3aed66@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S39 v2 11/15] ice: increase PF reset
+ wait timeout to 300 milliseconds
+Thread-Index: AQHV4rUOl0/tO4hq50KTFO2H5n5Qjagi9Acg
+Date: Wed, 19 Feb 2020 19:42:43 +0000
+Message-ID: <bf67d5df5fa842df82e2349b94042622@intel.com>
 References: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
- <20200213213129.34023-9-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200213213129.34023-9-anthony.l.nguyen@intel.com>
+ <20200213213129.34023-10-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200213213129.34023-10-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNmVhOGYwM2MtZTBmMy00NmI0LWEzZmItYjU0ODU0OGJiNTIzIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiUnJUVEVORFwvZCtHcFpQZWxnb29kSUdLaWRiTHVZMUpvdmQwdzllNkxKNm5XWHZacVRmQjE3RmNyMXphWU9wRUUifQ==
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOWY3NjdkODAtYTg5YS00MTY2LTllNWYtN2IxZGI0YzBjMGI5IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoibXdaUHFHeFV3MVlGRTNvTWdLY1lvNFJYY1p3bWVkY0JSaEVZVUdkS09PaUtLSFlhQlIxMWlsYjhhWGhSRkJTTSJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S39 v2 10/15] ice: Don't tell the OS
- that link is going down
+Subject: Re: [Intel-wired-lan] [PATCH S39 v2 11/15] ice: increase PF reset
+ wait timeout to 300 milliseconds
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,25 +95,19 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, February 13, 2020 1:31 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S39 v2 10/15] ice: Don't tell the OS that link
-> is going down
+> Subject: [Intel-wired-lan] [PATCH S39 v2 11/15] ice: increase PF reset wait
+> timeout to 300 milliseconds
 > 
-> From: Michal Swiatkowski <michal.swiatkowski@intel.com>
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Remove code that tell the OS that link is going down when user change flow
-> control via ethtool. When link is up it isn't certain that link goes down after
-> 0x0605 aq command. If link doesn't go down, OS thinks that link is down, but
-> physical link is up. To reset this state user have to take interface down and
-> up.
+> Increase the maximum time that the driver will wait for a PF reset from
+> 200 milliseconds to 300 milliseconds, to account for possibility of a slightly
+> longer than expected PF reset.
 > 
-> If link goes down after 0x0605 command, FW send information about that
-> and after that driver tells the OS that the link goes down. So this code in
-> ethtool is unnecessary.
-> 
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_ethtool.c | 7 -------
->  1 file changed, 7 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
