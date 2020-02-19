@@ -1,78 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4120D164F2D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 20:46:02 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EF2D3847D3;
-	Wed, 19 Feb 2020 19:46:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fdJU-jkshMuR; Wed, 19 Feb 2020 19:46:00 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5442584771;
-	Wed, 19 Feb 2020 19:46:00 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A793D1BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:45:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B9E1F165031
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 21:43:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9EE0783D1A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:45:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1487486AB8;
+	Wed, 19 Feb 2020 20:43:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mgkQQjtqPEBZ; Wed, 19 Feb 2020 20:43:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0C248869BA;
+	Wed, 19 Feb 2020 20:43:33 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E70C01BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:22:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id E29B585AA0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:22:05 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vFi1hWkCcqLb for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2020 19:45:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EE7A2810C7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:45:58 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2020 11:45:58 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,461,1574150400"; d="scan'208";a="228695531"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga007.fm.intel.com with ESMTP; 19 Feb 2020 11:45:58 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 19 Feb 2020 11:45:57 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 19 Feb 2020 11:45:57 -0800
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 19 Feb 2020 11:45:57 -0800
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S39 v2 15/15] ice: fix define for E822
- backplane device
-Thread-Index: AQHV4rUOX6DawyNV4k+De4wU5x8g5agi9O8A
-Date: Wed, 19 Feb 2020 19:45:57 +0000
-Message-ID: <69a5a23e267344969c08dcaec25993fb@intel.com>
-References: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
- <20200213213129.34023-14-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200213213129.34023-14-anthony.l.nguyen@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNGYyMTZlYTYtZWRjNS00M2Q3LTk4ZjItOTk3ZDc4MGUyMmVlIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiWGNYcmxyYXJXTXJpT0pVdzFCeHVsTkxWcWpiek9ubGU1OVplVlltSzkxbEVYWlJYZDVkNU01bzUxT1wvVW1sbk8ifQ==
-dlp-reaction: no-action
-dlp-version: 11.0.400.15
-x-originating-ip: [10.22.254.132]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S39 v2 15/15] ice: fix define for E822
- backplane device
+ with ESMTP id ui0ppSnUzKCy for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2020 19:22:05 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 69E2A8587D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:22:05 +0000 (UTC)
+Received: from localhost (unknown [IPv6:2601:601:9f00:477::3d5])
+ (using TLSv1 with cipher AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: davem-davemloft)
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id 1659D15AE0877;
+ Wed, 19 Feb 2020 11:22:03 -0800 (PST)
+Date: Wed, 19 Feb 2020 11:22:02 -0800 (PST)
+Message-Id: <20200219.112202.41545263500542131.davem@davemloft.net>
+To: hkallweit1@gmail.com
+From: David Miller <davem@davemloft.net>
+In-Reply-To: <fffc8b6d-68ed-7501-18f1-94cf548821fb@gmail.com>
+References: <fffc8b6d-68ed-7501-18f1-94cf548821fb@gmail.com>
+X-Mailer: Mew version 6.8 on Emacs 26.1
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
+ (shards.monkeyblade.net [149.20.54.216]);
+ Wed, 19 Feb 2020 11:22:04 -0800 (PST)
+X-Mailman-Approved-At: Wed, 19 Feb 2020 20:43:31 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 0/13] net: core: add
+ helper tcp_v6_gso_csum_prep
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,34 +63,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-hyperv@vger.kernel.org, linux-usb@vger.kernel.org, doshir@vmware.com,
+ pv-drivers@vmware.com, chris.snook@gmail.com, _govind@gmx.com,
+ pkaustub@cisco.com, sashal@kernel.org, sthemmin@microsoft.com,
+ cooldavid@cooldavid.org, intel-wired-lan@lists.osuosl.org, jcliburn@gmail.com,
+ nic_swsd@realtek.com, haiyangz@microsoft.com, jaswinder.singh@linaro.org,
+ drivers@pensando.io, GR-Linux-NIC-Dev@marvell.com, timur@kernel.org,
+ rmody@marvell.com, netdev@vger.kernel.org, ilias.apalodimas@linaro.org,
+ linux-kernel@vger.kernel.org, snelson@pensando.io, skalluru@marvell.com,
+ benve@cisco.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On
-> Behalf Of Tony Nguyen
-> Sent: Thursday, February 13, 2020 1:31 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S39 v2 15/15] ice: fix define for E822
-> backplane device
-> 
-> From: Bruce Allan <bruce.w.allan@intel.com>
-> 
-> This product's name has changed; update the macro identifier accordingly.
-> 
-> Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_devids.h | 4 ++--
->  drivers/net/ethernet/intel/ice/ice_main.c   | 2 +-
->  drivers/net/ethernet/intel/ice/ice_nvm.c    | 2 +-
->  3 files changed, 4 insertions(+), 4 deletions(-)
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Date: Tue, 18 Feb 2020 20:55:18 +0100
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+> Several network drivers for chips that support TSO6 share the same code
+> for preparing the TCP header, so let's factor it out to a helper.
+> A difference is that some drivers reset the payload_len whilst others
+> don't do this. This value is overwritten by TSO anyway, therefore
+> the new helper resets it in general.
 
-
+Series applied, thanks Heiner.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
