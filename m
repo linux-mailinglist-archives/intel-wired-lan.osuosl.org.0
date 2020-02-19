@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8ECB2164F0D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 20:40:17 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 890EB164F0F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2020 20:40:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 43392879A6;
-	Wed, 19 Feb 2020 19:40:16 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 41FB320773;
+	Wed, 19 Feb 2020 19:40:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gbDgjiQKo3nw; Wed, 19 Feb 2020 19:40:16 +0000 (UTC)
+	with ESMTP id X7u2N2tvF9LT; Wed, 19 Feb 2020 19:40:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D024787A04;
-	Wed, 19 Feb 2020 19:40:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5BDB720656;
+	Wed, 19 Feb 2020 19:40:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 23BE11BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:40:14 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DBF1F1BF2FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:40:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1DA1C879F5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:40:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D4C08845DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:40:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d-uT6JF+pY4g for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2020 19:40:13 +0000 (UTC)
+ with ESMTP id gT29RuHT4bDg for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2020 19:40:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 99F05879A6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:40:13 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 26229845D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2020 19:40:43 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2020 11:40:13 -0800
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2020 11:40:42 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,461,1574150400"; d="scan'208";a="228694280"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga007.fm.intel.com with ESMTP; 19 Feb 2020 11:40:13 -0800
+X-IronPort-AV: E=Sophos;i="5.70,461,1574150400"; d="scan'208";a="229901175"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by fmsmga008.fm.intel.com with ESMTP; 19 Feb 2020 11:40:42 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 19 Feb 2020 11:40:42 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 19 Feb 2020 11:40:13 -0800
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 19 Feb 2020 11:40:12 -0800
+ 15.1.1713.5; Wed, 19 Feb 2020 11:40:42 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Wed, 19 Feb 2020 11:40:12 -0800
+ Wed, 19 Feb 2020 11:40:42 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S39 v2 06/15] ice: Report correct DCB
- mode
-Thread-Index: AQHV4rUNtIr2PzXsJ0qtSWqND9Ujpagi81Mg
-Date: Wed, 19 Feb 2020 19:40:12 +0000
-Message-ID: <85928f958dde436a9dfd79ce9b8b0e13@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S39 v2 07/15] ice: SW DCB, report
+ correct max TC value
+Thread-Index: AQHV4rUQLelSMuSqLUeIFtPhX3cizqgi83dQ
+Date: Wed, 19 Feb 2020 19:40:41 +0000
+Message-ID: <4e52cc666a9449ad806ee3a78497a470@intel.com>
 References: <20200213213129.34023-1-anthony.l.nguyen@intel.com>
- <20200213213129.34023-5-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200213213129.34023-5-anthony.l.nguyen@intel.com>
+ <20200213213129.34023-6-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200213213129.34023-6-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiYjhiZDM1MzctMTlmYy00ZDgyLWIyZWItNDMwOGY3ZWU1MjlhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoic0NQMmViVjdmSWN2QzlYOVpDaFhzOUVvWXd2VXcxTWI3OExkNU13dFVxMEh6RE9VNnlFV1NBOG1uaTM4TURtNCJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiN2Q4Zjg2ODgtMjg5Yy00ZmMzLTlmZDctODJiMDE0Mzg3ZTIyIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRTFwK1NmUkE4YmlLVmVcL3VNN3Zud0VScytuWXRwS2N3RlVrRTBmS3hidEVqTWYrenFWSFF5ZzJFWmZEdmNyVkQifQ==
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S39 v2 06/15] ice: Report correct DCB
- mode
+Subject: Re: [Intel-wired-lan] [PATCH S39 v2 07/15] ice: SW DCB,
+ report correct max TC value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,18 +95,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Thursday, February 13, 2020 1:31 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S39 v2 06/15] ice: Report correct DCB mode
+> Subject: [Intel-wired-lan] [PATCH S39 v2 07/15] ice: SW DCB, report correct
+> max TC value
 > 
-> From: Avinash Dayanand <avinash.dayanand@intel.com>
+> From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> Add code to detect if DCB is in IEEE or CEE mode. Without this the code will
-> always report as IEEE mode which is incorrect and confuses the user.
+> lldpad is using the value reported in the DCB config for max_tc as the max
+> allowed number of TCs, not the current max.  ICE driver was reporting it as
+> current maximum TC.
 > 
-> Signed-off-by: Avinash Dayanand <avinash.dayanand@intel.com>
-> Signed-off-by: Scott Register <scottx.register@intel.com>
+> Change DCB_NL function to report maximum TC allowed by this device.
+> 
+> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 27 +++++++++++++++++---
->  1 file changed, 24 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_dcb_nl.c | 9 +--------
+>  1 file changed, 1 insertion(+), 8 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
