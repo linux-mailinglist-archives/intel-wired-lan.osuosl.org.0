@@ -1,50 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C08BC165FE7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Feb 2020 15:43:48 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B3981689DD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2020 23:15:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 79BC585F94;
-	Thu, 20 Feb 2020 14:43:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 04DD187EAD;
+	Fri, 21 Feb 2020 22:15:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9t5UX4NAScag; Thu, 20 Feb 2020 14:43:47 +0000 (UTC)
+	with ESMTP id TkjSYxFfWzek; Fri, 21 Feb 2020 22:15:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ADEB685F92;
-	Thu, 20 Feb 2020 14:43:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7C4A18817F;
+	Fri, 21 Feb 2020 22:15:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AC4C71BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2020 14:43:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4E82D1BF288
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2020 22:15:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A489E87CEE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2020 14:43:45 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 47C1C88007
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2020 22:15:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id esHQ0Rln7psH for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Feb 2020 14:43:44 +0000 (UTC)
+ with ESMTP id JvWtiD5aC8tk for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Feb 2020 22:15:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail3-relais-sop.national.inria.fr
- (mail3-relais-sop.national.inria.fr [192.134.164.104])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 19ADB87CE1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2020 14:43:43 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.70,464,1574118000"; d="scan'208";a="339864857"
-Received: from unknown (HELO hadrien) ([132.227.124.212])
- by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2020 15:43:40 +0100
-Date: Thu, 20 Feb 2020 15:43:40 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: julia@hadrien
-To: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
-Message-ID: <alpine.DEB.2.21.2002201541470.2210@hadrien>
-User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0C16E87EAD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2020 22:15:30 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 21 Feb 2020 14:15:29 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,469,1574150400"; d="scan'208";a="435326057"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.76])
+ by fmsmga005.fm.intel.com with ESMTP; 21 Feb 2020 14:15:29 -0800
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 21 Feb 2020 14:15:27 -0800
+Message-Id: <20200221221527.393892-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] gwdpa: gswip: fix odd_ptr_err.cocci
- warnings
+Subject: [Intel-wired-lan] [next-queue] ice: Cleanup unneeded parenthesis
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,49 +59,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kbuild-all@lists.01.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Amireddy Mallikarjuna reddy <mallikarjunax.reddy@linux.intel.com>
+Cc: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: kbuild test robot <lkp@intel.com>
+Sergei Shtylyov pointed out that two instances of parenthesis are not
+needed, so remove them.
 
-PTR_ERR should typically access the value just tested by IS_ERR
-
-Generated by: scripts/coccinelle/tests/odd_ptr_err.cocci
-
-Fixes: 69fab0a67a95 ("gwdpa: gswip: Introduce Gigabit Ethernet Switch (GSWIP) device driver")
-CC: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
-Signed-off-by: kbuild test robot <lkp@intel.com>
-Signed-off-by: Julia Lawall <julia.lawall@inria.fr>
-
+Suggested-by: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 ---
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Maybe the code is correct, but just unnecessarily obscure.
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index 81b13781e0e8..49e05f8ad93e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -77,9 +77,9 @@ static u8 ice_dcb_get_mode(struct ice_port_info *port_info, bool host)
+ 		mode = DCB_CAP_DCBX_LLD_MANAGED;
+ 
+ 	if (port_info->local_dcbx_cfg.dcbx_mode & ICE_DCBX_MODE_CEE)
+-		return (mode | DCB_CAP_DCBX_VER_CEE);
++		return mode | DCB_CAP_DCBX_VER_CEE;
+ 	else
+-		return (mode | DCB_CAP_DCBX_VER_IEEE);
++		return mode | DCB_CAP_DCBX_VER_IEEE;
+ }
+ 
+ /**
+-- 
+2.24.1
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
-head:   7a6fc7fc71cf6316739b60fcffdb86e0c43f99b5
-commit: 69fab0a67a95208a25af95de20a0301298ee23f6 [43/47] gwdpa: gswip: Introduce Gigabit Ethernet Switch (GSWIP) device driver
-:::::: branch date: 9 hours ago
-:::::: commit date: 9 hours ago
-
- gswip_dev.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
---- a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
-@@ -96,7 +96,7 @@ static int np_gswip_parse_dt(struct plat
-
- 	pdata->sw_clk = devm_clk_get(dev, "switch");
- 	if (IS_ERR(pdata->sw_clk))
--		return PTR_ERR(priv->pdata.sw_clk);
-+		return PTR_ERR(pdata->sw_clk);
-
- 	for_each_node_by_name(node, GSWIP_MAC_DEV_NAME) {
- 		priv->num_subdev_mac++;
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
