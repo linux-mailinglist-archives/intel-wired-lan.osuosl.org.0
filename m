@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D869016933C
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 23 Feb 2020 03:22:00 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9A12022786;
-	Sun, 23 Feb 2020 02:21:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eHRHUY-h+2HG; Sun, 23 Feb 2020 02:21:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8B97D22782;
-	Sun, 23 Feb 2020 02:21:58 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6C2E61BF28B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Feb 2020 02:21:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D561C169345
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 23 Feb 2020 03:22:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 685F187BD4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Feb 2020 02:21:56 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4F44C85A58;
+	Sun, 23 Feb 2020 02:22:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7haWfsuJoZfZ; Sun, 23 Feb 2020 02:22:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0D961857BC;
+	Sun, 23 Feb 2020 02:22:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 03C661BF28B
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Feb 2020 02:22:11 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0031385F98
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Feb 2020 02:22:11 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5X0cVAMFFQaJ for <intel-wired-lan@lists.osuosl.org>;
- Sun, 23 Feb 2020 02:21:55 +0000 (UTC)
+ with ESMTP id 85w-AIVmzIon for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 23 Feb 2020 02:22:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B1E8187B36
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Feb 2020 02:21:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7E00485F29
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Feb 2020 02:22:10 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 84D7C20707;
- Sun, 23 Feb 2020 02:21:54 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7F38C208C3;
+ Sun, 23 Feb 2020 02:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1582424515;
- bh=ZgrOXiqRzy5igwgxlz+b0I01l7sWc+pNE3y9vXxcG64=;
+ s=default; t=1582424530;
+ bh=GL+ErFHzO4uUVjyhpYexc0RZkb4zGsFm7jDq9h5knZk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=kWEQnypRIDbH7WOwpVduGqPRN5ZRk3PHVSZWVTFqEI4HXL7IAnnE0Uvl8m4eUpDrq
- DzYxm/FGVBmNtzE5YkBZ+uzIYr0bDK2XpjbBt+JEw4IE8x7afheGzCUyvF7SCCaV0e
- iJE58Z0WXc4vhx1Dz6cNvruyXDwaFbcdrHZhHe84=
+ b=n3J7NFbXd5phFXpE6T2Y2hT7O7ggQa2j7ecXuIBLFbj+qYXBskxKtL3UKfMNoXGoH
+ KHIu4FiuIUyLcHu7JgREjFqYnf8OgJrhSK4SCEBAlCXPwPhA6rp7e5mQQaPqTDQxcL
+ XRAOy5wiLBA6HLG9zMBHtKQnDsYf2VMG57p9x5l4=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Sat, 22 Feb 2020 21:20:50 -0500
-Message-Id: <20200223022119.707-29-sashal@kernel.org>
+Date: Sat, 22 Feb 2020 21:21:03 -0500
+Message-Id: <20200223022119.707-42-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200223022119.707-1-sashal@kernel.org>
 References: <20200223022119.707-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.5 29/58] i40e: Fix the
- conditional for i40e_vc_validate_vqs_bitmaps
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.5 42/58] ice: Fix switch between
+ FW and SW LLDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,54 +70,61 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- Brett Creeley <brett.creeley@intel.com>, intel-wired-lan@lists.osuosl.org,
- "David S . Miller" <davem@davemloft.net>
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Dave Ertman <david.m.ertman@intel.com>
 
-[ Upstream commit f27f37a04a69890ac85d9155f03ee2d23b678d8f ]
+[ Upstream commit 53977ee47410885e7d4eee87d2c811a48a275150 ]
 
-Commit d9d6a9aed3f6 ("i40e: Fix virtchnl_queue_select bitmap
-validation") introduced a necessary change for verifying how queue
-bitmaps from the iavf driver get validated. Unfortunately, the
-conditional was reversed. Fix this.
+When switching between FW and SW LLDP mode, the
+number of configured TLV apps in the driver's
+DCB configuration is getting out of synch with
+what lldpad thinks is configured.  This is causing
+a problem when shutting down lldpad.  The cleanup
+is trying to delete TLV apps that are not defined
+in the kernel.
 
-Fixes: d9d6a9aed3f6 ("i40e: Fix virtchnl_queue_select bitmap validation")
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Since the driver is keeping an accurate account
+of the apps defined, use the drivers number of
+apps to determine if there is an app to delete.
+If the number of apps is <= 1, then do not
+attempt to delete.
+
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_dcb_nl.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 69523ac85639e..56b9e445732ba 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2362,7 +2362,7 @@ static int i40e_vc_enable_queues_msg(struct i40e_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+index d870c1aedc170..926c9772f0860 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+@@ -713,13 +713,13 @@ static int ice_dcbnl_delapp(struct net_device *netdev, struct dcb_app *app)
+ 		return -EINVAL;
  
--	if (i40e_vc_validate_vqs_bitmaps(vqs)) {
-+	if (!i40e_vc_validate_vqs_bitmaps(vqs)) {
- 		aq_ret = I40E_ERR_PARAM;
- 		goto error_param;
- 	}
-@@ -2424,7 +2424,7 @@ static int i40e_vc_disable_queues_msg(struct i40e_vf *vf, u8 *msg)
- 		goto error_param;
- 	}
+ 	mutex_lock(&pf->tc_mutex);
+-	ret = dcb_ieee_delapp(netdev, app);
+-	if (ret)
+-		goto delapp_out;
+-
+ 	old_cfg = &pf->hw.port_info->local_dcbx_cfg;
  
--	if (i40e_vc_validate_vqs_bitmaps(vqs)) {
-+	if (!i40e_vc_validate_vqs_bitmaps(vqs)) {
- 		aq_ret = I40E_ERR_PARAM;
- 		goto error_param;
- 	}
+-	if (old_cfg->numapps == 1)
++	if (old_cfg->numapps <= 1)
++		goto delapp_out;
++
++	ret = dcb_ieee_delapp(netdev, app);
++	if (ret)
+ 		goto delapp_out;
+ 
+ 	new_cfg = &pf->hw.port_info->desired_dcbx_cfg;
 -- 
 2.20.1
 
