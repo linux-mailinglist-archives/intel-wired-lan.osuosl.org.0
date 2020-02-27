@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76DEB17266B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2020 19:16:10 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DEC8D172657
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2020 19:15:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 219D1230FB;
-	Thu, 27 Feb 2020 18:16:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8F4DD87960;
+	Thu, 27 Feb 2020 18:15:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1oEccTIgLJLa; Thu, 27 Feb 2020 18:16:08 +0000 (UTC)
+	with ESMTP id oen42fnGdZXh; Thu, 27 Feb 2020 18:15:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4C3E223120;
-	Thu, 27 Feb 2020 18:16:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C335187943;
+	Thu, 27 Feb 2020 18:15:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A8EDC1BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 18:15:58 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C97371BF9B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 18:15:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 80F2E230FB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 18:15:58 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C3BE788002
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 18:15:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oaGaayyGhZlw for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id 5Jb61+1AlGNT for <intel-wired-lan@lists.osuosl.org>;
  Thu, 27 Feb 2020 18:15:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 0A7A7230A4
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C6D9C8800F
  for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 18:15:53 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2020 10:15:52 -0800
+ by orsmga104.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2020 10:15:53 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,492,1574150400"; d="scan'208";a="285408852"
+X-IronPort-AV: E=Sophos;i="5.70,492,1574150400"; d="scan'208";a="285408853"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.174])
  by FMSMGA003.fm.intel.com with ESMTP; 27 Feb 2020 10:15:52 -0800
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 27 Feb 2020 10:14:59 -0800
-Message-Id: <20200227181505.61720-9-anthony.l.nguyen@intel.com>
+Date: Thu, 27 Feb 2020 10:15:00 -0800
+Message-Id: <20200227181505.61720-10-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200227181505.61720-1-anthony.l.nguyen@intel.com>
 References: <20200227181505.61720-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S40 09/15] ice: Correct setting VLAN
- pruning
+Subject: [Intel-wired-lan] [PATCH S40 10/15] ice: Increase mailbox receive
+ queue length to maximum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,47 +67,47 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 
-VLAN pruning is not always being set correctly due to a previous change
-that set Tx antispoof off. ice_vsi_is_vlan_pruning_ena() currently checks
-for both Tx antispoof and Rx pruning. The expectation for this function is
-to only check Rx pruning so fix the check.
+Currently the PF's mailbox receive queue is only 512 entries. This fine,
+but considering that all VF's mailbox send queues funnel into the PF's
+single mailbox receive queue, let's increase it to the maximum size. This
+will help prevent any possible bottleneck/slowdown occurring from the PF's
+mailbox receive queue being full.
 
-Fixes: cd6d6b83316a ("ice: Fix VF spoofchk")
+Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h      | 1 -
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 7005a11f0c7d..7fdea256722b 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1912,20 +1912,14 @@ int ice_vsi_stop_xdp_tx_rings(struct ice_vsi *vsi)
-  * ice_vsi_is_vlan_pruning_ena - check if VLAN pruning is enabled or not
-  * @vsi: VSI to check whether or not VLAN pruning is enabled.
-  *
-- * returns true if Rx VLAN pruning and Tx VLAN anti-spoof is enabled and false
-- * otherwise.
-+ * returns true if Rx VLAN pruning is enabled and false otherwise.
-  */
- bool ice_vsi_is_vlan_pruning_ena(struct ice_vsi *vsi)
- {
--	u8 rx_pruning = ICE_AQ_VSI_SW_FLAG_RX_VLAN_PRUNE_ENA;
--	u8 tx_pruning = ICE_AQ_VSI_SEC_TX_VLAN_PRUNE_ENA <<
--		ICE_AQ_VSI_SEC_TX_PRUNE_ENA_S;
--
- 	if (!vsi)
- 		return false;
- 
--	return ((vsi->info.sw_flags2 & rx_pruning) &&
--		(vsi->info.sec_flags & tx_pruning));
-+	return (vsi->info.sw_flags2 & ICE_AQ_VSI_SW_FLAG_RX_VLAN_PRUNE_ENA);
- }
- 
- /**
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index b32d9ed35b21..f237df923ea1 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -66,7 +66,6 @@ extern const char ice_drv_ver[];
+ #define ICE_INT_NAME_STR_LEN	(IFNAMSIZ + 16)
+ #define ICE_AQ_LEN		64
+ #define ICE_MBXSQ_LEN		64
+-#define ICE_MBXRQ_LEN		512
+ #define ICE_MIN_MSIX		2
+ #define ICE_NO_VSI		0xffff
+ #define ICE_VSI_MAP_CONTIG	0
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 13ac6073a75d..af1c2be5f6ff 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1524,7 +1524,7 @@ static void ice_set_ctrlq_len(struct ice_hw *hw)
+ 	hw->adminq.num_sq_entries = ICE_AQ_LEN;
+ 	hw->adminq.rq_buf_size = ICE_AQ_MAX_BUF_LEN;
+ 	hw->adminq.sq_buf_size = ICE_AQ_MAX_BUF_LEN;
+-	hw->mailboxq.num_rq_entries = ICE_MBXRQ_LEN;
++	hw->mailboxq.num_rq_entries = PF_MBX_ARQLEN_ARQLEN_M;
+ 	hw->mailboxq.num_sq_entries = ICE_MBXSQ_LEN;
+ 	hw->mailboxq.rq_buf_size = ICE_MBXQ_MAX_BUF_LEN;
+ 	hw->mailboxq.sq_buf_size = ICE_MBXQ_MAX_BUF_LEN;
 -- 
 2.20.1
 
