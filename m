@@ -1,71 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C0BB17371B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2020 13:20:20 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 864A9173EDA
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2020 18:50:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0FF5F88091;
-	Fri, 28 Feb 2020 12:20:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 14BDC876BD;
+	Fri, 28 Feb 2020 17:50:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FkQRkEn5f8zn; Fri, 28 Feb 2020 12:20:18 +0000 (UTC)
+	with ESMTP id 6pTDWysES5AP; Fri, 28 Feb 2020 17:50:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CE8A487AAE;
-	Fri, 28 Feb 2020 12:20:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 666BA8746E;
+	Fri, 28 Feb 2020 17:50:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3534D1BF2F0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 12:20:16 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AB6FA1BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 17:50:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2952587B62
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 12:20:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A788A86E3C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 17:50:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mWw0x2NT5EOM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Feb 2020 12:20:15 +0000 (UTC)
+ with ESMTP id 1fg4cERsyPhn for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Feb 2020 17:50:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [207.211.31.81])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4957087AAE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 12:20:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1582892414;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=w9cxFp8LDEAVTHlgkfdjkdM6yZMYvsET80U5OR5BNZU=;
- b=WSaKPT1J22S9bRoH6Dc7OY4klXbEYw5JC8tWKtiYU2A0uSdQRXSffRiVADczYohcSUUwfN
- +DSZVcjZPAMwEluY906y3c16cq7YcbqIoIsmHvVIooYnUsMY+hyfJVx8hb+gDdIqN72+dN
- WInQ7//uH4oFcUXpbNc3RDFYozCRR+4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-293-L8ZPG99NPxWSgrPGihX6Ag-1; Fri, 28 Feb 2020 07:20:09 -0500
-X-MC-Unique: L8ZPG99NPxWSgrPGihX6Ag-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 854C81882CDD;
- Fri, 28 Feb 2020 12:20:08 +0000 (UTC)
-Received: from firesoul.localdomain (ovpn-200-20.brq.redhat.com [10.40.200.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AA9BC1CB;
- Fri, 28 Feb 2020 12:20:05 +0000 (UTC)
-Received: from [10.1.1.1] (localhost [IPv6:::1])
- by firesoul.localdomain (Postfix) with ESMTP id 42BB130737E05;
- Fri, 28 Feb 2020 13:20:04 +0100 (CET)
-From: Jesper Dangaard Brouer <brouer@redhat.com>
-To: Jesper Dangaard Brouer <brouer@redhat.com>, netdev@vger.kernel.org
-Date: Fri, 28 Feb 2020 13:20:04 +0100
-Message-ID: <158289240414.1877500.8426359194461700361.stgit@firesoul>
-User-Agent: StGit/0.19
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Subject: [Intel-wired-lan] [net-next PATCH] ixgbe: fix XDP redirect on archs
- with PAGE_SIZE above 4K
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id AD89C86E40
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 17:50:09 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2020 09:50:09 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,496,1574150400"; d="scan'208";a="238827349"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by orsmga003.jf.intel.com with ESMTP; 28 Feb 2020 09:50:07 -0800
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 28 Feb 2020 19:50:07 +0200
+Message-Id: <20200228175007.31144-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Fix double definition
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,43 +58,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ixgbe driver have another memory model when compiled on archs with
-PAGE_SIZE above 4096 bytes. In this mode it doesn't split the page in
-two halves, but instead increment rx_buffer->page_offset by truesize of
-packet (which include headroom and tailroom for skb_shared_info).
+IGC_START_ITR has beed defined twice
+This patch come to fix it
 
-This is done correctly in ixgbe_build_skb(), but in ixgbe_rx_buffer_flip
-which is currently only called on XDP_TX and XDP_REDIRECT, it forgets
-to add the tailroom for skb_shared_info. This breaks XDP_REDIRECT, for
-veth and cpumap.  Fix by adding size of skb_shared_info tailroom.
-
-Fixes: 6453073987ba ("ixgbe: add initial support for xdp redirect")
-Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc.h | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 718931d951bc..ea6834bae04c 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -2254,7 +2254,8 @@ static void ixgbe_rx_buffer_flip(struct ixgbe_ring *rx_ring,
- 	rx_buffer->page_offset ^= truesize;
- #else
- 	unsigned int truesize = ring_uses_build_skb(rx_ring) ?
--				SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) :
-+				SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) +
-+				SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
- 				SKB_DATA_ALIGN(size);
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 0d4ffbb74214..b6137648471d 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -246,9 +246,6 @@ extern char igc_driver_version[];
+ /* flags controlling PTP/1588 function */
+ #define IGC_PTP_ENABLED		BIT(0)
  
- 	rx_buffer->page_offset += truesize;
-
+-/* Interrupt defines */
+-#define IGC_START_ITR			648 /* ~6000 ints/sec */
+-
+ /* Flags definitions */
+ #define IGC_FLAG_HAS_MSI		BIT(0)
+ #define IGC_FLAG_QUEUE_PAIRS		BIT(3)
+@@ -270,6 +267,7 @@ extern char igc_driver_version[];
+ #define IGC_MRQC_RSS_FIELD_IPV4_UDP	0x00400000
+ #define IGC_MRQC_RSS_FIELD_IPV6_UDP	0x00800000
+ 
++/* Interrupt defines */
+ #define IGC_START_ITR			648 /* ~6000 ints/sec */
+ #define IGC_4K_ITR			980
+ #define IGC_20K_ITR			196
+-- 
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
