@@ -1,75 +1,51 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDB9C1729C2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2020 21:55:37 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 694DB172D2F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2020 01:25:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 804D7204C3;
-	Thu, 27 Feb 2020 20:55:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1862F86BE0;
+	Fri, 28 Feb 2020 00:25:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8ahDd1wWRCqn; Thu, 27 Feb 2020 20:55:36 +0000 (UTC)
+	with ESMTP id Lgap-wbtSr7B; Fri, 28 Feb 2020 00:25:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2A526230E6;
-	Thu, 27 Feb 2020 20:55:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 560DE86D03;
+	Fri, 28 Feb 2020 00:25:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9EF2D1BF3AF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 20:55:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 38D341BF861
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 00:25:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 828CA204C3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 20:55:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 30F6A86BE0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 00:25:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yxBG0vGYokj8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Feb 2020 20:55:32 +0000 (UTC)
+ with ESMTP id 84AbnU-AqJo0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Feb 2020 00:25:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 3AECD1FEAE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2020 20:55:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BF8F486D78
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2020 00:25:17 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by orsmga105.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2020 12:55:31 -0800
+ 27 Feb 2020 16:25:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,493,1574150400"; d="scan'208";a="261630736"
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by fmsmga004.fm.intel.com with ESMTP; 27 Feb 2020 12:55:30 -0800
-Received: from orsmsx116.amr.corp.intel.com (10.22.240.14) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 27 Feb 2020 12:55:30 -0800
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.43]) by
- ORSMSX116.amr.corp.intel.com ([169.254.7.180]) with mapi id 14.03.0439.000;
- Thu, 27 Feb 2020 12:55:30 -0800
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Gomes, Vinicius" <vinicius.gomes@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next-queue PATCH v3 2/2] igc: Add support
- for ETF offloading
-Thread-Index: AQHV45GTqv5/9VwSEk2cSo5e1RXhPKgueVPggAGGqQD//5ePQA==
-Date: Thu, 27 Feb 2020 20:55:30 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B971FE358@ORSMSX103.amr.corp.intel.com>
-References: <20200214235203.3910513-1-vinicius.gomes@intel.com>
- <20200214235203.3910513-3-vinicius.gomes@intel.com>
- <309B89C4C689E141A5FF6A0C5FB2118B971FCCCA@ORSMSX103.amr.corp.intel.com>
- <878sknontx.fsf@linux.intel.com>
-In-Reply-To: <878sknontx.fsf@linux.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next-queue PATCH v3 2/2] igc: Add support
- for ETF offloading
+X-IronPort-AV: E=Sophos;i="5.70,493,1574150400"; d="scan'208";a="437235427"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by fmsmga005.fm.intel.com with ESMTP; 27 Feb 2020 16:25:15 -0800
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 28 Feb 2020 02:25:15 +0200
+Message-Id: <20200228002515.31650-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove forward declaration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,124 +58,461 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Gomes, Vinicius <vinicius.gomes@intel.com>
-> Sent: Thursday, February 27, 2020 11:03 AM
-> To: Brown, Aaron F <aaron.f.brown@intel.com>; intel-wired-
-> lan@lists.osuosl.org
-> Subject: RE: [Intel-wired-lan] [next-queue PATCH v3 2/2] igc: Add support for
-> ETF offloading
-> 
-> Hi Aaron,
-> 
-> "Brown, Aaron F" <aaron.f.brown@intel.com> writes:
-> 
-> >> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> Of
-> >> Vinicius Costa Gomes
-> >> Sent: Friday, February 14, 2020 3:52 PM
-> >> To: intel-wired-lan@lists.osuosl.org
-> >> Subject: [Intel-wired-lan] [next-queue PATCH v3 2/2] igc: Add support for
-> >> ETF offloading
-> >>
-> >> This adds support for ETF offloading for the i225 controller.
-> >>
-> >> For i225, the LaunchTime feature is almost a subset of the Qbv
-> >> feature. The main change from the i210 is that the launchtime of each
-> >> packet is specified as an offset applied to the BASET register. BASET
-> >> is automatically incremented each cycle.
-> >>
-> >> For i225, the approach chosen is to re-use most of the setup used for
-> >> taprio offloading. With a few changes:
-> >>
-> >>  - The more or less obvious one is that when ETF is enabled, we should
-> >>  set add the expected launchtime to the (advanced) transmit
-> >>  descriptor;
-> >>
-> >>  - The less obvious, is that when taprio offloading is not enabled, we
-> >>  add a dummy schedule (all queues are open all the time, with a cycle
-> >>  time of 1 second).
-> >>
-> >> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> >> ---
-> >>  drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
-> >>  drivers/net/ethernet/intel/igc/igc_main.c    | 70
-> +++++++++++++++++++-
-> >>  drivers/net/ethernet/intel/igc/igc_tsn.c     | 19 +++++-
-> >>  3 files changed, 86 insertions(+), 4 deletions(-)
-> >>
-> > I'm using the TSN Scheduled TX Tools from
-> https://gist.github.com/jeez/bd3afeff081ba64a695008dd8215866f, and the
-> process (from both the README.etf and README.taprio) seems to work fine
-> with an i210 (igb adapter) but when I try to use the same process with an i225
-> (igc based adapter) I get a series of Tx Unit Hangs when I start sending traffic.
-> Packets are still getting sent, but lot of ones just hang.
-> > ------------------------------------------------------------
-> > [  936.406229] igc 0000:01:00.0: Detected Tx Unit Hang
-> >                  Tx Queue             <0>
-> >                  TDH                  <de>
-> >                  TDT                  <e4>
-> >                  next_to_use          <e4>
-> >                  next_to_clean        <de>
-> >                buffer_info[next_to_clean]
-> >                  time_stamp           <100099d84>
-> >                  next_to_watch        <0000000052519a89>
-> >                  jiffies              <10009a393>
-> >                  desc.status          <4a8200>
-> > [  941.932530] igc 0000:01:00.0: Detected Tx Unit Hang
-> >                  Tx Queue             <0>
-> >                  TDH                  <1e>
-> >                  TDT                  <22>
-> >                  next_to_use          <22>
-> >                  next_to_clean        <1e>
-> >                buffer_info[next_to_clean]
-> >                  time_stamp           <10009b0e0>
-> >                  next_to_watch        <00000000ff485dca>
-> >                  jiffies              <10009bb52>
-> >                  desc.status          <4a8200>
-> > [  945.581031] igc 0000:01:00.0: Detected Tx Unit Hang
-> >                  Tx Queue             <0>
-> >                  TDH                  <4a>
-> >                  TDT                  <52>
-> >                  next_to_use          <52>
-> >                  next_to_clean        <4a>
-> >                buffer_info[next_to_clean]
-> >                  time_stamp           <10009c388>
-> >                  next_to_watch        <00000000073a6ad3>
-> >                  jiffies              <10009caff>
-> >                  desc.status          <4a8200>
-> >
-> > ...
-> > And so on until I stop the talker.  Other (regular) traffic still gets through
-> without any apparent problem.  But only a portion of the etf scheduled ones,
-> the rest left TX Hanging.
-> >
-> 
-> Thanks for the test.
-> 
-> I only got to reproduce this when the system clock and the NIC PHC are
-> out of sync, e.g. I only see this when I start udp_tai just after I
-> start ptp4l/phc2sys.
+Move igc_adapter and igc_ring structures up to avoid
+forward declaration
+It is not necessary to forward declare these structures
 
-That could be the case on my system.  I am getting a fair amount of thrash from ptp4l, switching between the local ptp hw clock and the remote one that it supposed to be master.  I'll see what happens when I use more of a known quantity, probably i210, for the link partner ptp master.
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h | 391 +++++++++++++++++------------------
+ 1 file changed, 194 insertions(+), 197 deletions(-)
 
-> 
-> Just to confirm that we talking about the same problem, if possible,
-> wait a few minutes before starting udp_tai after starting ptp4l/phc2sys,
-> and see if the problem persists.
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 5e36822de5ec..0d4ffbb74214 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -19,8 +19,200 @@
+ /* forward declaration */
+ void igc_set_ethtool_ops(struct net_device *);
+ 
+-struct igc_adapter;
+-struct igc_ring;
++/* Transmit and receive queues */
++#define IGC_MAX_RX_QUEUES		4
++#define IGC_MAX_TX_QUEUES		4
++
++#define MAX_Q_VECTORS			8
++#define MAX_STD_JUMBO_FRAME_SIZE	9216
++
++#define MAX_ETYPE_FILTER		(4 - 1)
++#define IGC_RETA_SIZE			128
++
++struct igc_tx_queue_stats {
++	u64 packets;
++	u64 bytes;
++	u64 restart_queue;
++	u64 restart_queue2;
++};
++
++struct igc_rx_queue_stats {
++	u64 packets;
++	u64 bytes;
++	u64 drops;
++	u64 csum_err;
++	u64 alloc_failed;
++};
++
++struct igc_rx_packet_stats {
++	u64 ipv4_packets;      /* IPv4 headers processed */
++	u64 ipv4e_packets;     /* IPv4E headers with extensions processed */
++	u64 ipv6_packets;      /* IPv6 headers processed */
++	u64 ipv6e_packets;     /* IPv6E headers with extensions processed */
++	u64 tcp_packets;       /* TCP headers processed */
++	u64 udp_packets;       /* UDP headers processed */
++	u64 sctp_packets;      /* SCTP headers processed */
++	u64 nfs_packets;       /* NFS headers processe */
++	u64 other_packets;
++};
++
++struct igc_ring_container {
++	struct igc_ring *ring;          /* pointer to linked list of rings */
++	unsigned int total_bytes;       /* total bytes processed this int */
++	unsigned int total_packets;     /* total packets processed this int */
++	u16 work_limit;                 /* total work allowed per interrupt */
++	u8 count;                       /* total number of rings in vector */
++	u8 itr;                         /* current ITR setting for ring */
++};
++
++struct igc_ring {
++	struct igc_q_vector *q_vector;  /* backlink to q_vector */
++	struct net_device *netdev;      /* back pointer to net_device */
++	struct device *dev;             /* device for dma mapping */
++	union {                         /* array of buffer info structs */
++		struct igc_tx_buffer *tx_buffer_info;
++		struct igc_rx_buffer *rx_buffer_info;
++	};
++	void *desc;                     /* descriptor ring memory */
++	unsigned long flags;            /* ring specific flags */
++	void __iomem *tail;             /* pointer to ring tail register */
++	dma_addr_t dma;                 /* phys address of the ring */
++	unsigned int size;              /* length of desc. ring in bytes */
++
++	u16 count;                      /* number of desc. in the ring */
++	u8 queue_index;                 /* logical index of the ring*/
++	u8 reg_idx;                     /* physical index of the ring */
++	bool launchtime_enable;		/* true if LaunchTime is enabled */
++
++	u32 start_time;
++	u32 end_time;
++
++	/* everything past this point are written often */
++	u16 next_to_clean;
++	u16 next_to_use;
++	u16 next_to_alloc;
++
++	union {
++		/* TX */
++		struct {
++			struct igc_tx_queue_stats tx_stats;
++			struct u64_stats_sync tx_syncp;
++			struct u64_stats_sync tx_syncp2;
++		};
++		/* RX */
++		struct {
++			struct igc_rx_queue_stats rx_stats;
++			struct igc_rx_packet_stats pkt_stats;
++			struct u64_stats_sync rx_syncp;
++			struct sk_buff *skb;
++		};
++	};
++} ____cacheline_internodealigned_in_smp;
++
++/* Board specific private data structure */
++struct igc_adapter {
++	struct net_device *netdev;
++
++	unsigned long state;
++	unsigned int flags;
++	unsigned int num_q_vectors;
++
++	struct msix_entry *msix_entries;
++
++	/* TX */
++	u16 tx_work_limit;
++	u32 tx_timeout_count;
++	int num_tx_queues;
++	struct igc_ring *tx_ring[IGC_MAX_TX_QUEUES];
++
++	/* RX */
++	int num_rx_queues;
++	struct igc_ring *rx_ring[IGC_MAX_RX_QUEUES];
++
++	struct timer_list watchdog_timer;
++	struct timer_list dma_err_timer;
++	struct timer_list phy_info_timer;
++
++	u32 wol;
++	u32 en_mng_pt;
++	u16 link_speed;
++	u16 link_duplex;
++
++	u8 port_num;
++
++	u8 __iomem *io_addr;
++	/* Interrupt Throttle Rate */
++	u32 rx_itr_setting;
++	u32 tx_itr_setting;
++
++	struct work_struct reset_task;
++	struct work_struct watchdog_task;
++	struct work_struct dma_err_task;
++	bool fc_autoneg;
++
++	u8 tx_timeout_factor;
++
++	int msg_enable;
++	u32 max_frame_size;
++	u32 min_frame_size;
++
++	ktime_t base_time;
++	ktime_t cycle_time;
++
++	/* OS defined structs */
++	struct pci_dev *pdev;
++	/* lock for statistics */
++	spinlock_t stats64_lock;
++	struct rtnl_link_stats64 stats64;
++
++	/* structs defined in igc_hw.h */
++	struct igc_hw hw;
++	struct igc_hw_stats stats;
++
++	struct igc_q_vector *q_vector[MAX_Q_VECTORS];
++	u32 eims_enable_mask;
++	u32 eims_other;
++
++	u16 tx_ring_count;
++	u16 rx_ring_count;
++
++	u32 tx_hwtstamp_timeouts;
++	u32 tx_hwtstamp_skipped;
++	u32 rx_hwtstamp_cleared;
++
++	u32 rss_queues;
++	u32 rss_indir_tbl_init;
++
++	/* RX network flow classification support */
++	struct hlist_head nfc_filter_list;
++	struct hlist_head cls_flower_list;
++	unsigned int nfc_filter_count;
++
++	/* lock for RX network flow classification filter */
++	spinlock_t nfc_lock;
++	bool etype_bitmap[MAX_ETYPE_FILTER];
++
++	struct igc_mac_addr *mac_table;
++
++	u8 rss_indir_tbl[IGC_RETA_SIZE];
++
++	unsigned long link_check_timeout;
++	struct igc_info ei;
++
++	struct ptp_clock *ptp_clock;
++	struct ptp_clock_info ptp_caps;
++	struct work_struct ptp_tx_work;
++	struct sk_buff *ptp_tx_skb;
++	struct hwtstamp_config tstamp_config;
++	unsigned long ptp_tx_start;
++	unsigned long last_rx_ptp_check;
++	unsigned long last_rx_timestamp;
++	unsigned int ptp_flags;
++	/* System time value lock */
++	spinlock_t tmreg_lock;
++	struct cyclecounter cc;
++	struct timecounter tc;
++};
+ 
+ void igc_up(struct igc_adapter *adapter);
+ void igc_down(struct igc_adapter *adapter);
+@@ -50,7 +242,6 @@ extern char igc_driver_name[];
+ extern char igc_driver_version[];
+ 
+ #define IGC_REGS_LEN			740
+-#define IGC_RETA_SIZE			128
+ 
+ /* flags controlling PTP/1588 function */
+ #define IGC_PTP_ENABLED		BIT(0)
+@@ -100,13 +291,6 @@ extern char igc_driver_version[];
+ #define IGC_MIN_RXD		80
+ #define IGC_MAX_RXD		4096
+ 
+-/* Transmit and receive queues */
+-#define IGC_MAX_RX_QUEUES		4
+-#define IGC_MAX_TX_QUEUES		4
+-
+-#define MAX_Q_VECTORS			8
+-#define MAX_STD_JUMBO_FRAME_SIZE	9216
+-
+ /* Supported Rx Buffer Sizes */
+ #define IGC_RXBUFFER_256		256
+ #define IGC_RXBUFFER_2048		2048
+@@ -233,86 +417,6 @@ struct igc_rx_buffer {
+ 	__u16 pagecnt_bias;
+ };
+ 
+-struct igc_tx_queue_stats {
+-	u64 packets;
+-	u64 bytes;
+-	u64 restart_queue;
+-	u64 restart_queue2;
+-};
+-
+-struct igc_rx_queue_stats {
+-	u64 packets;
+-	u64 bytes;
+-	u64 drops;
+-	u64 csum_err;
+-	u64 alloc_failed;
+-};
+-
+-struct igc_rx_packet_stats {
+-	u64 ipv4_packets;      /* IPv4 headers processed */
+-	u64 ipv4e_packets;     /* IPv4E headers with extensions processed */
+-	u64 ipv6_packets;      /* IPv6 headers processed */
+-	u64 ipv6e_packets;     /* IPv6E headers with extensions processed */
+-	u64 tcp_packets;       /* TCP headers processed */
+-	u64 udp_packets;       /* UDP headers processed */
+-	u64 sctp_packets;      /* SCTP headers processed */
+-	u64 nfs_packets;       /* NFS headers processe */
+-	u64 other_packets;
+-};
+-
+-struct igc_ring_container {
+-	struct igc_ring *ring;          /* pointer to linked list of rings */
+-	unsigned int total_bytes;       /* total bytes processed this int */
+-	unsigned int total_packets;     /* total packets processed this int */
+-	u16 work_limit;                 /* total work allowed per interrupt */
+-	u8 count;                       /* total number of rings in vector */
+-	u8 itr;                         /* current ITR setting for ring */
+-};
+-
+-struct igc_ring {
+-	struct igc_q_vector *q_vector;  /* backlink to q_vector */
+-	struct net_device *netdev;      /* back pointer to net_device */
+-	struct device *dev;             /* device for dma mapping */
+-	union {                         /* array of buffer info structs */
+-		struct igc_tx_buffer *tx_buffer_info;
+-		struct igc_rx_buffer *rx_buffer_info;
+-	};
+-	void *desc;                     /* descriptor ring memory */
+-	unsigned long flags;            /* ring specific flags */
+-	void __iomem *tail;             /* pointer to ring tail register */
+-	dma_addr_t dma;                 /* phys address of the ring */
+-	unsigned int size;              /* length of desc. ring in bytes */
+-
+-	u16 count;                      /* number of desc. in the ring */
+-	u8 queue_index;                 /* logical index of the ring*/
+-	u8 reg_idx;                     /* physical index of the ring */
+-	bool launchtime_enable;		/* true if LaunchTime is enabled */
+-
+-	u32 start_time;
+-	u32 end_time;
+-
+-	/* everything past this point are written often */
+-	u16 next_to_clean;
+-	u16 next_to_use;
+-	u16 next_to_alloc;
+-
+-	union {
+-		/* TX */
+-		struct {
+-			struct igc_tx_queue_stats tx_stats;
+-			struct u64_stats_sync tx_syncp;
+-			struct u64_stats_sync tx_syncp2;
+-		};
+-		/* RX */
+-		struct {
+-			struct igc_rx_queue_stats rx_stats;
+-			struct igc_rx_packet_stats pkt_stats;
+-			struct u64_stats_sync rx_syncp;
+-			struct sk_buff *skb;
+-		};
+-	};
+-} ____cacheline_internodealigned_in_smp;
+-
+ struct igc_q_vector {
+ 	struct igc_adapter *adapter;    /* backlink */
+ 	void __iomem *itr_register;
+@@ -333,8 +437,6 @@ struct igc_q_vector {
+ 	struct igc_ring ring[] ____cacheline_internodealigned_in_smp;
+ };
+ 
+-#define MAX_ETYPE_FILTER		(4 - 1)
+-
+ enum igc_filter_match_flags {
+ 	IGC_FILTER_FLAG_ETHER_TYPE =	0x1,
+ 	IGC_FILTER_FLAG_VLAN_TCI   =	0x2,
+@@ -378,111 +480,6 @@ struct igc_mac_addr {
+ 
+ #define IGC_MAX_RXNFC_FILTERS		16
+ 
+-/* Board specific private data structure */
+-struct igc_adapter {
+-	struct net_device *netdev;
+-
+-	unsigned long state;
+-	unsigned int flags;
+-	unsigned int num_q_vectors;
+-
+-	struct msix_entry *msix_entries;
+-
+-	/* TX */
+-	u16 tx_work_limit;
+-	u32 tx_timeout_count;
+-	int num_tx_queues;
+-	struct igc_ring *tx_ring[IGC_MAX_TX_QUEUES];
+-
+-	/* RX */
+-	int num_rx_queues;
+-	struct igc_ring *rx_ring[IGC_MAX_RX_QUEUES];
+-
+-	struct timer_list watchdog_timer;
+-	struct timer_list dma_err_timer;
+-	struct timer_list phy_info_timer;
+-
+-	u32 wol;
+-	u32 en_mng_pt;
+-	u16 link_speed;
+-	u16 link_duplex;
+-
+-	u8 port_num;
+-
+-	u8 __iomem *io_addr;
+-	/* Interrupt Throttle Rate */
+-	u32 rx_itr_setting;
+-	u32 tx_itr_setting;
+-
+-	struct work_struct reset_task;
+-	struct work_struct watchdog_task;
+-	struct work_struct dma_err_task;
+-	bool fc_autoneg;
+-
+-	u8 tx_timeout_factor;
+-
+-	int msg_enable;
+-	u32 max_frame_size;
+-	u32 min_frame_size;
+-
+-	ktime_t base_time;
+-	ktime_t cycle_time;
+-
+-	/* OS defined structs */
+-	struct pci_dev *pdev;
+-	/* lock for statistics */
+-	spinlock_t stats64_lock;
+-	struct rtnl_link_stats64 stats64;
+-
+-	/* structs defined in igc_hw.h */
+-	struct igc_hw hw;
+-	struct igc_hw_stats stats;
+-
+-	struct igc_q_vector *q_vector[MAX_Q_VECTORS];
+-	u32 eims_enable_mask;
+-	u32 eims_other;
+-
+-	u16 tx_ring_count;
+-	u16 rx_ring_count;
+-
+-	u32 tx_hwtstamp_timeouts;
+-	u32 tx_hwtstamp_skipped;
+-	u32 rx_hwtstamp_cleared;
+-
+-	u32 rss_queues;
+-	u32 rss_indir_tbl_init;
+-
+-	/* RX network flow classification support */
+-	struct hlist_head nfc_filter_list;
+-	struct hlist_head cls_flower_list;
+-	unsigned int nfc_filter_count;
+-
+-	/* lock for RX network flow classification filter */
+-	spinlock_t nfc_lock;
+-	bool etype_bitmap[MAX_ETYPE_FILTER];
+-
+-	struct igc_mac_addr *mac_table;
+-
+-	u8 rss_indir_tbl[IGC_RETA_SIZE];
+-
+-	unsigned long link_check_timeout;
+-	struct igc_info ei;
+-
+-	struct ptp_clock *ptp_clock;
+-	struct ptp_clock_info ptp_caps;
+-	struct work_struct ptp_tx_work;
+-	struct sk_buff *ptp_tx_skb;
+-	struct hwtstamp_config tstamp_config;
+-	unsigned long ptp_tx_start;
+-	unsigned long last_rx_ptp_check;
+-	unsigned long last_rx_timestamp;
+-	unsigned int ptp_flags;
+-	/* System time value lock */
+-	spinlock_t tmreg_lock;
+-	struct cyclecounter cc;
+-	struct timecounter tc;
+-};
+-
+ /* igc_desc_unused - calculate if we have unused descriptors */
+ static inline u16 igc_desc_unused(const struct igc_ring *ring)
+ {
+-- 
+2.11.0
 
-I do still see the Tx Unit Hangs if I give it a few minutes between starting the clock synch and launching the talker (udp_tai.)  But I don't think my ptp4l session is settling down so it sounds plausible that we are looking the same thing.
-
-> 
-> I am trying to think what I can do from the driver side.
-> 
-> Cheers,
-> --
-> Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
