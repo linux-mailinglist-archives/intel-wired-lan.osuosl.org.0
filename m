@@ -2,74 +2,51 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFB91175EA2
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Mar 2020 16:44:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FD76176066
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Mar 2020 17:52:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A7FF684B0F;
-	Mon,  2 Mar 2020 15:44:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C670B860E1;
+	Mon,  2 Mar 2020 16:52:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FjCYXSXfJeSV; Mon,  2 Mar 2020 15:44:50 +0000 (UTC)
+	with ESMTP id yqQXKfzjKAkp; Mon,  2 Mar 2020 16:52:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DF6EB85BCA;
-	Mon,  2 Mar 2020 15:44:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 17BD58609C;
+	Mon,  2 Mar 2020 16:52:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2C4B11BF30F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2020 15:44:47 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E4C5B1BF321
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2020 16:52:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2833F85E5E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2020 15:44:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E198C20130
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2020 16:52:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SwqBZri8uFZQ for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Mar 2020 15:44:46 +0000 (UTC)
+ with ESMTP id LWfu3qKuLvoD for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Mar 2020 16:52:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f195.google.com (mail-il1-f195.google.com
- [209.85.166.195])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F1EB285C9D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2020 15:44:45 +0000 (UTC)
-Received: by mail-il1-f195.google.com with SMTP id p8so9695411iln.12
- for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Mar 2020 07:44:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+W+ZJNRUa5MT0Cx78b4oMrqrkHSpySREzOkn09S9aKw=;
- b=AcQrCXfWAYrEEoSPm7Aucgtg90CdpbnhPyAMwEZ9MEb06Tef2T2nIuHXCEqrdEmMUF
- srXEoZVbHWedZShfEcw3IDLXMaoOzYo3OrNvBrjduxap1VunMpzjqvaVIGbMLDG4fKwg
- JflMpXT4MaLHHYSsXhdcAlGtjLu5/w3Y5vIgH28WEq3m1hCByYDBrwr2f0RQtI0MORUS
- bE1wa1JeYWxnqsGUW2aTNv7TXmHdI/gYFiV4zHQ5SG586lpcZMdr5gagS+9QIW4hDC9M
- qHkOhV7DxpwBKUvrucEyE3KOFwGYBV4MRgA91SfiusTwmXcRO4DxSxuCENrlC3M5WvSX
- z6TA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+W+ZJNRUa5MT0Cx78b4oMrqrkHSpySREzOkn09S9aKw=;
- b=Y7sx0VWCn26383RRCpdwkr7ihVkKTGajFM7ROoXC6HkRhg9sx+DmKJnfVmBGb7GuTL
- EHgXzHvjHrjP6bz/7gRyZQNt7uDnqoONZKlCo1CQje3ijVYKWKDQSnAPx1uSL7TL9o1j
- S2KpWTPbCbBtXAKuqdRdcZDdzuaJ318vhdUDlj9N6clVrOO+FbrurF0cYHAeJMKUcSqS
- yPksFYV8AD29PSBAFEnhHn32pZGNowj2jufR5YL/PUDol+hfY9rZ3UhTlm2mydwexFX9
- ki7ju/S2LX/en9uBn4JI8HbVvwxBwyJPaIQZIVp63c/VAUcWCPOUgbr/trsR0qG/hZeq
- fyNg==
-X-Gm-Message-State: ANhLgQ37BPWaHtaEzI/q1M1HpfLZ9As+/qx1Qm2ZVgFpmy74ne0+zBDO
- Hro540sHWYkU+jBEMEYzdrA1Dgd5PLyA4tiDqEk=
-X-Google-Smtp-Source: ADFU+vvo7rWY5cT+JXiOqpSsgVdIP+b7VK1Izn6JIE7qkC/NHI/ksd0djLD0eaaKzNX0NZM8MBTENcXjYZM7uo8ue0E=
-X-Received: by 2002:a92:d608:: with SMTP id w8mr212846ilm.95.1583163885137;
- Mon, 02 Mar 2020 07:44:45 -0800 (PST)
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3E31C1FFFF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2020 16:52:03 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 02 Mar 2020 08:52:02 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,507,1574150400"; d="scan'208";a="258008867"
+Received: from ssaleem-mobl.amr.corp.intel.com ([10.122.129.215])
+ by orsmga002.jf.intel.com with ESMTP; 02 Mar 2020 08:52:01 -0800
+From: Shiraz Saleem <shiraz.saleem@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  2 Mar 2020 10:51:53 -0600
+Message-Id: <20200302165154.1098-1-shiraz.saleem@intel.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-References: <158289240414.1877500.8426359194461700361.stgit@firesoul>
- <CAKgT0Udj=BRNh3=TkNk5XyY5zbXtY_3kw+VORspUZLhvUFDN+w@mail.gmail.com>
- <20200302100059.58763d59@carbon>
-In-Reply-To: <20200302100059.58763d59@carbon>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Mon, 2 Mar 2020 07:44:34 -0800
-Message-ID: <CAKgT0Ueqg-HohhtoH4FaBGugqBY3M5+G0reKBr097LSJBhCBtg@mail.gmail.com>
-To: Jesper Dangaard Brouer <brouer@redhat.com>
-Subject: Re: [Intel-wired-lan] [net-next PATCH] ixgbe: fix XDP redirect on
- archs with PAGE_SIZE above 4K
+Subject: [Intel-wired-lan] [PATCH 1/2] i40e: Move client header location
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,154 +59,507 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Jubran, Samih" <sameehj@amazon.com>, Netdev <netdev@vger.kernel.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Cc: Shiraz Saleem <shiraz.saleem@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Mar 2, 2020 at 1:01 AM Jesper Dangaard Brouer <brouer@redhat.com> wrote:
->
-> On Fri, 28 Feb 2020 10:53:58 -0800
-> Alexander Duyck <alexander.duyck@gmail.com> wrote:
->
-> > On Fri, Feb 28, 2020 at 4:20 AM Jesper Dangaard Brouer
-> > <brouer@redhat.com> wrote:
-> > >
-> > > The ixgbe driver have another memory model when compiled on archs with
-> > > PAGE_SIZE above 4096 bytes. In this mode it doesn't split the page in
-> > > two halves, but instead increment rx_buffer->page_offset by truesize of
-> > > packet (which include headroom and tailroom for skb_shared_info).
-> > >
-> > > This is done correctly in ixgbe_build_skb(), but in ixgbe_rx_buffer_flip
-> > > which is currently only called on XDP_TX and XDP_REDIRECT, it forgets
-> > > to add the tailroom for skb_shared_info. This breaks XDP_REDIRECT, for
-> > > veth and cpumap.  Fix by adding size of skb_shared_info tailroom.
-> > >
-> > > Fixes: 6453073987ba ("ixgbe: add initial support for xdp redirect")
-> > > Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
-> >
-> > This approach to fixing it seems problematic at best. From what I can
-> > tell there wasn't an issue until this frame gets up into the
-> > XDP_REDIRECT path. In the case of XDP_TX the ixgbe driver has not need
-> > for the extra shared info space. I assume you need this because you
-> > are converting the buffer to an skbuff.
->
-> Except for XDP_TX the extra space is needed (and for our planned
-> multi-frame XDP it will also be needed for XDP_TX). The XDP_PASS case
-> does the correct thing in ixgbe_build_skb(). The XDP_REDIRECT also
-> depend on this extra space for skb_shared_info, as cpumap and veth
-> creates SKBs based on xdp_frame, which I want to generalize further[1].
+Move i40e_client.h to include/linux/net/intel/*
+since its shared between i40iw and i40e.
 
-The thing is in the XDP_PASS case the driver still owns that memory
-region so it isn't an issue. It is only the XDP_REDIRECT case that is
-the problem since it is trying to use memory that was not necessarily
-allocated to it.
+Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
+---
+ drivers/infiniband/hw/i40iw/Makefile          |   1 -
+ drivers/infiniband/hw/i40iw/i40iw.h           |   2 +-
+ drivers/net/ethernet/intel/i40e/i40e.h        |   2 +-
+ drivers/net/ethernet/intel/i40e/i40e_client.c |   2 +-
+ drivers/net/ethernet/intel/i40e/i40e_client.h | 203 --------------------------
+ include/linux/net/intel/i40e_client.h         | 203 ++++++++++++++++++++++++++
+ 6 files changed, 206 insertions(+), 207 deletions(-)
+ delete mode 100644 drivers/net/ethernet/intel/i40e/i40e_client.h
+ create mode 100644 include/linux/net/intel/i40e_client.h
 
-> > The question I have is exactly how is this failing, are we talking
-> > about it resulting in the region being shared with the next frame, or
-> > is it being correctly identified that there is no tailroom and the
-> > frame is dropped? If we are seeing memory corruption due to it sharing
-> > the memory I would say we have a problem with the design for
->
-> (Sorry for this rant:)
-> The design was violated when ixgbe added XDP-support, as it complicated
-> the XDP-memory model, with it's split-page approach, and now I realize
-> that is even more complicated, with this bigger PAGE_SIZE approach.
-> One of the XDP performance advantage comes from a simplified memory
-> model.  I'm very tempted to disable XDP on this driver for PAGE_SIZE
-> above 4096 bytes.
+diff --git a/drivers/infiniband/hw/i40iw/Makefile b/drivers/infiniband/hw/i40iw/Makefile
+index 8942f82..34da9eb 100644
+--- a/drivers/infiniband/hw/i40iw/Makefile
++++ b/drivers/infiniband/hw/i40iw/Makefile
+@@ -1,5 +1,4 @@
+ # SPDX-License-Identifier: GPL-2.0
+-ccflags-y :=  -I $(srctree)/drivers/net/ethernet/intel/i40e
+ 
+ obj-$(CONFIG_INFINIBAND_I40IW) += i40iw.o
+ 
+diff --git a/drivers/infiniband/hw/i40iw/i40iw.h b/drivers/infiniband/hw/i40iw/i40iw.h
+index 8feec35..f628325 100644
+--- a/drivers/infiniband/hw/i40iw/i40iw.h
++++ b/drivers/infiniband/hw/i40iw/i40iw.h
+@@ -45,6 +45,7 @@
+ #include <linux/slab.h>
+ #include <linux/io.h>
+ #include <linux/crc32c.h>
++#include <linux/net/intel/i40e_client.h>
+ #include <rdma/ib_smi.h>
+ #include <rdma/ib_verbs.h>
+ #include <rdma/ib_pack.h>
+@@ -57,7 +58,6 @@
+ #include "i40iw_d.h"
+ #include "i40iw_hmc.h"
+ 
+-#include <i40e_client.h>
+ #include "i40iw_type.h"
+ #include "i40iw_p.h"
+ #include <rdma/i40iw-abi.h>
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 4833187..05453f55 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -38,7 +38,7 @@
+ #include <net/xdp_sock.h>
+ #include "i40e_type.h"
+ #include "i40e_prototype.h"
+-#include "i40e_client.h"
++#include <linux/net/intel/i40e_client.h>
+ #include <linux/avf/virtchnl.h>
+ #include "i40e_virtchnl_pf.h"
+ #include "i40e_txrx.h"
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
+index e81530c..befd301 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_client.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
+@@ -3,10 +3,10 @@
+ 
+ #include <linux/list.h>
+ #include <linux/errno.h>
++#include <linux/net/intel/i40e_client.h>
+ 
+ #include "i40e.h"
+ #include "i40e_prototype.h"
+-#include "i40e_client.h"
+ 
+ static const char i40e_client_interface_version_str[] = I40E_CLIENT_VERSION_STR;
+ static struct i40e_client *registered_client;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.h b/drivers/net/ethernet/intel/i40e/i40e_client.h
+deleted file mode 100644
+index 72994ba..0000000
+--- a/drivers/net/ethernet/intel/i40e/i40e_client.h
++++ /dev/null
+@@ -1,203 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0 */
+-/* Copyright(c) 2013 - 2018 Intel Corporation. */
+-
+-#ifndef _I40E_CLIENT_H_
+-#define _I40E_CLIENT_H_
+-
+-#define I40E_CLIENT_STR_LENGTH 10
+-
+-/* Client interface version should be updated anytime there is a change in the
+- * existing APIs or data structures.
+- */
+-#define I40E_CLIENT_VERSION_MAJOR 0
+-#define I40E_CLIENT_VERSION_MINOR 01
+-#define I40E_CLIENT_VERSION_BUILD 00
+-#define I40E_CLIENT_VERSION_STR     \
+-	__stringify(I40E_CLIENT_VERSION_MAJOR) "." \
+-	__stringify(I40E_CLIENT_VERSION_MINOR) "." \
+-	__stringify(I40E_CLIENT_VERSION_BUILD)
+-
+-struct i40e_client_version {
+-	u8 major;
+-	u8 minor;
+-	u8 build;
+-	u8 rsvd;
+-};
+-
+-enum i40e_client_state {
+-	__I40E_CLIENT_NULL,
+-	__I40E_CLIENT_REGISTERED
+-};
+-
+-enum i40e_client_instance_state {
+-	__I40E_CLIENT_INSTANCE_NONE,
+-	__I40E_CLIENT_INSTANCE_OPENED,
+-};
+-
+-struct i40e_ops;
+-struct i40e_client;
+-
+-/* HW does not define a type value for AEQ; only for RX/TX and CEQ.
+- * In order for us to keep the interface simple, SW will define a
+- * unique type value for AEQ.
+- */
+-#define I40E_QUEUE_TYPE_PE_AEQ  0x80
+-#define I40E_QUEUE_INVALID_IDX	0xFFFF
+-
+-struct i40e_qv_info {
+-	u32 v_idx; /* msix_vector */
+-	u16 ceq_idx;
+-	u16 aeq_idx;
+-	u8 itr_idx;
+-};
+-
+-struct i40e_qvlist_info {
+-	u32 num_vectors;
+-	struct i40e_qv_info qv_info[1];
+-};
+-
+-#define I40E_CLIENT_MSIX_ALL 0xFFFFFFFF
+-
+-/* set of LAN parameters useful for clients managed by LAN */
+-
+-/* Struct to hold per priority info */
+-struct i40e_prio_qos_params {
+-	u16 qs_handle; /* qs handle for prio */
+-	u8 tc; /* TC mapped to prio */
+-	u8 reserved;
+-};
+-
+-#define I40E_CLIENT_MAX_USER_PRIORITY        8
+-/* Struct to hold Client QoS */
+-struct i40e_qos_params {
+-	struct i40e_prio_qos_params prio_qos[I40E_CLIENT_MAX_USER_PRIORITY];
+-};
+-
+-struct i40e_params {
+-	struct i40e_qos_params qos;
+-	u16 mtu;
+-};
+-
+-/* Structure to hold Lan device info for a client device */
+-struct i40e_info {
+-	struct i40e_client_version version;
+-	u8 lanmac[6];
+-	struct net_device *netdev;
+-	struct pci_dev *pcidev;
+-	u8 __iomem *hw_addr;
+-	u8 fid;	/* function id, PF id or VF id */
+-#define I40E_CLIENT_FTYPE_PF 0
+-#define I40E_CLIENT_FTYPE_VF 1
+-	u8 ftype; /* function type, PF or VF */
+-	void *pf;
+-
+-	/* All L2 params that could change during the life span of the PF
+-	 * and needs to be communicated to the client when they change
+-	 */
+-	struct i40e_qvlist_info *qvlist_info;
+-	struct i40e_params params;
+-	struct i40e_ops *ops;
+-
+-	u16 msix_count;	 /* number of msix vectors*/
+-	/* Array down below will be dynamically allocated based on msix_count */
+-	struct msix_entry *msix_entries;
+-	u16 itr_index; /* Which ITR index the PE driver is suppose to use */
+-	u16 fw_maj_ver;                 /* firmware major version */
+-	u16 fw_min_ver;                 /* firmware minor version */
+-	u32 fw_build;                   /* firmware build number */
+-};
+-
+-#define I40E_CLIENT_RESET_LEVEL_PF   1
+-#define I40E_CLIENT_RESET_LEVEL_CORE 2
+-#define I40E_CLIENT_VSI_FLAG_TCP_ENABLE  BIT(1)
+-
+-struct i40e_ops {
+-	/* setup_q_vector_list enables queues with a particular vector */
+-	int (*setup_qvlist)(struct i40e_info *ldev, struct i40e_client *client,
+-			    struct i40e_qvlist_info *qv_info);
+-
+-	int (*virtchnl_send)(struct i40e_info *ldev, struct i40e_client *client,
+-			     u32 vf_id, u8 *msg, u16 len);
+-
+-	/* If the PE Engine is unresponsive, RDMA driver can request a reset.
+-	 * The level helps determine the level of reset being requested.
+-	 */
+-	void (*request_reset)(struct i40e_info *ldev,
+-			      struct i40e_client *client, u32 level);
+-
+-	/* API for the RDMA driver to set certain VSI flags that control
+-	 * PE Engine.
+-	 */
+-	int (*update_vsi_ctxt)(struct i40e_info *ldev,
+-			       struct i40e_client *client,
+-			       bool is_vf, u32 vf_id,
+-			       u32 flag, u32 valid_flag);
+-};
+-
+-struct i40e_client_ops {
+-	/* Should be called from register_client() or whenever PF is ready
+-	 * to create a specific client instance.
+-	 */
+-	int (*open)(struct i40e_info *ldev, struct i40e_client *client);
+-
+-	/* Should be called when netdev is unavailable or when unregister
+-	 * call comes in. If the close is happenening due to a reset being
+-	 * triggered set the reset bit to true.
+-	 */
+-	void (*close)(struct i40e_info *ldev, struct i40e_client *client,
+-		      bool reset);
+-
+-	/* called when some l2 managed parameters changes - mtu */
+-	void (*l2_param_change)(struct i40e_info *ldev,
+-				struct i40e_client *client,
+-				struct i40e_params *params);
+-
+-	int (*virtchnl_receive)(struct i40e_info *ldev,
+-				struct i40e_client *client, u32 vf_id,
+-				u8 *msg, u16 len);
+-
+-	/* called when a VF is reset by the PF */
+-	void (*vf_reset)(struct i40e_info *ldev,
+-			 struct i40e_client *client, u32 vf_id);
+-
+-	/* called when the number of VFs changes */
+-	void (*vf_enable)(struct i40e_info *ldev,
+-			  struct i40e_client *client, u32 num_vfs);
+-
+-	/* returns true if VF is capable of specified offload */
+-	int (*vf_capable)(struct i40e_info *ldev,
+-			  struct i40e_client *client, u32 vf_id);
+-};
+-
+-/* Client device */
+-struct i40e_client_instance {
+-	struct list_head list;
+-	struct i40e_info lan_info;
+-	struct i40e_client *client;
+-	unsigned long  state;
+-};
+-
+-struct i40e_client {
+-	struct list_head list;		/* list of registered clients */
+-	char name[I40E_CLIENT_STR_LENGTH];
+-	struct i40e_client_version version;
+-	unsigned long state;		/* client state */
+-	atomic_t ref_cnt;  /* Count of all the client devices of this kind */
+-	u32 flags;
+-#define I40E_CLIENT_FLAGS_LAUNCH_ON_PROBE	BIT(0)
+-#define I40E_TX_FLAGS_NOTIFY_OTHER_EVENTS	BIT(2)
+-	u8 type;
+-#define I40E_CLIENT_IWARP 0
+-	const struct i40e_client_ops *ops; /* client ops provided by the client */
+-};
+-
+-static inline bool i40e_client_is_registered(struct i40e_client *client)
+-{
+-	return test_bit(__I40E_CLIENT_REGISTERED, &client->state);
+-}
+-
+-/* used by clients */
+-int i40e_register_client(struct i40e_client *client);
+-int i40e_unregister_client(struct i40e_client *client);
+-
+-#endif /* _I40E_CLIENT_H_ */
+diff --git a/include/linux/net/intel/i40e_client.h b/include/linux/net/intel/i40e_client.h
+new file mode 100644
+index 0000000..72994ba
+--- /dev/null
++++ b/include/linux/net/intel/i40e_client.h
+@@ -0,0 +1,203 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright(c) 2013 - 2018 Intel Corporation. */
++
++#ifndef _I40E_CLIENT_H_
++#define _I40E_CLIENT_H_
++
++#define I40E_CLIENT_STR_LENGTH 10
++
++/* Client interface version should be updated anytime there is a change in the
++ * existing APIs or data structures.
++ */
++#define I40E_CLIENT_VERSION_MAJOR 0
++#define I40E_CLIENT_VERSION_MINOR 01
++#define I40E_CLIENT_VERSION_BUILD 00
++#define I40E_CLIENT_VERSION_STR     \
++	__stringify(I40E_CLIENT_VERSION_MAJOR) "." \
++	__stringify(I40E_CLIENT_VERSION_MINOR) "." \
++	__stringify(I40E_CLIENT_VERSION_BUILD)
++
++struct i40e_client_version {
++	u8 major;
++	u8 minor;
++	u8 build;
++	u8 rsvd;
++};
++
++enum i40e_client_state {
++	__I40E_CLIENT_NULL,
++	__I40E_CLIENT_REGISTERED
++};
++
++enum i40e_client_instance_state {
++	__I40E_CLIENT_INSTANCE_NONE,
++	__I40E_CLIENT_INSTANCE_OPENED,
++};
++
++struct i40e_ops;
++struct i40e_client;
++
++/* HW does not define a type value for AEQ; only for RX/TX and CEQ.
++ * In order for us to keep the interface simple, SW will define a
++ * unique type value for AEQ.
++ */
++#define I40E_QUEUE_TYPE_PE_AEQ  0x80
++#define I40E_QUEUE_INVALID_IDX	0xFFFF
++
++struct i40e_qv_info {
++	u32 v_idx; /* msix_vector */
++	u16 ceq_idx;
++	u16 aeq_idx;
++	u8 itr_idx;
++};
++
++struct i40e_qvlist_info {
++	u32 num_vectors;
++	struct i40e_qv_info qv_info[1];
++};
++
++#define I40E_CLIENT_MSIX_ALL 0xFFFFFFFF
++
++/* set of LAN parameters useful for clients managed by LAN */
++
++/* Struct to hold per priority info */
++struct i40e_prio_qos_params {
++	u16 qs_handle; /* qs handle for prio */
++	u8 tc; /* TC mapped to prio */
++	u8 reserved;
++};
++
++#define I40E_CLIENT_MAX_USER_PRIORITY        8
++/* Struct to hold Client QoS */
++struct i40e_qos_params {
++	struct i40e_prio_qos_params prio_qos[I40E_CLIENT_MAX_USER_PRIORITY];
++};
++
++struct i40e_params {
++	struct i40e_qos_params qos;
++	u16 mtu;
++};
++
++/* Structure to hold Lan device info for a client device */
++struct i40e_info {
++	struct i40e_client_version version;
++	u8 lanmac[6];
++	struct net_device *netdev;
++	struct pci_dev *pcidev;
++	u8 __iomem *hw_addr;
++	u8 fid;	/* function id, PF id or VF id */
++#define I40E_CLIENT_FTYPE_PF 0
++#define I40E_CLIENT_FTYPE_VF 1
++	u8 ftype; /* function type, PF or VF */
++	void *pf;
++
++	/* All L2 params that could change during the life span of the PF
++	 * and needs to be communicated to the client when they change
++	 */
++	struct i40e_qvlist_info *qvlist_info;
++	struct i40e_params params;
++	struct i40e_ops *ops;
++
++	u16 msix_count;	 /* number of msix vectors*/
++	/* Array down below will be dynamically allocated based on msix_count */
++	struct msix_entry *msix_entries;
++	u16 itr_index; /* Which ITR index the PE driver is suppose to use */
++	u16 fw_maj_ver;                 /* firmware major version */
++	u16 fw_min_ver;                 /* firmware minor version */
++	u32 fw_build;                   /* firmware build number */
++};
++
++#define I40E_CLIENT_RESET_LEVEL_PF   1
++#define I40E_CLIENT_RESET_LEVEL_CORE 2
++#define I40E_CLIENT_VSI_FLAG_TCP_ENABLE  BIT(1)
++
++struct i40e_ops {
++	/* setup_q_vector_list enables queues with a particular vector */
++	int (*setup_qvlist)(struct i40e_info *ldev, struct i40e_client *client,
++			    struct i40e_qvlist_info *qv_info);
++
++	int (*virtchnl_send)(struct i40e_info *ldev, struct i40e_client *client,
++			     u32 vf_id, u8 *msg, u16 len);
++
++	/* If the PE Engine is unresponsive, RDMA driver can request a reset.
++	 * The level helps determine the level of reset being requested.
++	 */
++	void (*request_reset)(struct i40e_info *ldev,
++			      struct i40e_client *client, u32 level);
++
++	/* API for the RDMA driver to set certain VSI flags that control
++	 * PE Engine.
++	 */
++	int (*update_vsi_ctxt)(struct i40e_info *ldev,
++			       struct i40e_client *client,
++			       bool is_vf, u32 vf_id,
++			       u32 flag, u32 valid_flag);
++};
++
++struct i40e_client_ops {
++	/* Should be called from register_client() or whenever PF is ready
++	 * to create a specific client instance.
++	 */
++	int (*open)(struct i40e_info *ldev, struct i40e_client *client);
++
++	/* Should be called when netdev is unavailable or when unregister
++	 * call comes in. If the close is happenening due to a reset being
++	 * triggered set the reset bit to true.
++	 */
++	void (*close)(struct i40e_info *ldev, struct i40e_client *client,
++		      bool reset);
++
++	/* called when some l2 managed parameters changes - mtu */
++	void (*l2_param_change)(struct i40e_info *ldev,
++				struct i40e_client *client,
++				struct i40e_params *params);
++
++	int (*virtchnl_receive)(struct i40e_info *ldev,
++				struct i40e_client *client, u32 vf_id,
++				u8 *msg, u16 len);
++
++	/* called when a VF is reset by the PF */
++	void (*vf_reset)(struct i40e_info *ldev,
++			 struct i40e_client *client, u32 vf_id);
++
++	/* called when the number of VFs changes */
++	void (*vf_enable)(struct i40e_info *ldev,
++			  struct i40e_client *client, u32 num_vfs);
++
++	/* returns true if VF is capable of specified offload */
++	int (*vf_capable)(struct i40e_info *ldev,
++			  struct i40e_client *client, u32 vf_id);
++};
++
++/* Client device */
++struct i40e_client_instance {
++	struct list_head list;
++	struct i40e_info lan_info;
++	struct i40e_client *client;
++	unsigned long  state;
++};
++
++struct i40e_client {
++	struct list_head list;		/* list of registered clients */
++	char name[I40E_CLIENT_STR_LENGTH];
++	struct i40e_client_version version;
++	unsigned long state;		/* client state */
++	atomic_t ref_cnt;  /* Count of all the client devices of this kind */
++	u32 flags;
++#define I40E_CLIENT_FLAGS_LAUNCH_ON_PROBE	BIT(0)
++#define I40E_TX_FLAGS_NOTIFY_OTHER_EVENTS	BIT(2)
++	u8 type;
++#define I40E_CLIENT_IWARP 0
++	const struct i40e_client_ops *ops; /* client ops provided by the client */
++};
++
++static inline bool i40e_client_is_registered(struct i40e_client *client)
++{
++	return test_bit(__I40E_CLIENT_REGISTERED, &client->state);
++}
++
++/* used by clients */
++int i40e_register_client(struct i40e_client *client);
++int i40e_unregister_client(struct i40e_client *client);
++
++#endif /* _I40E_CLIENT_H_ */
+-- 
+1.8.3.1
 
-This is at the heard of the problem with the XDP design. Assuming an
-XDP buffer is always one page is problematic, especially on systems
-where the page size is 64K. That is why most drivers doe the page
-reuse trick for these types of pages.
-
-> > XDP_REDIRECT since it is assuming things about the buffer that may or
-> > may not be true. At a minimum we are going to need to guarantee that
-> > all XDP devices going forward provide this padding on the end of the
-> > frame which has not been anything that was communicated up until now.
->
-> First of all, I'm working on patches for "data_hard_end" such that we
-> can reliably establish the size of the frame / memory, and there by
-> know the size of the padding / tailroom. (Which is why I discovered
-> this bug).
-
-This is something that I believe is a must have if you are going to
-allow for XDP programs to push data into the tail section of the
-buffer.
-
-> Second, it have been communicated since day-1, that XDP drivers need to
-> use build_skb(), and we have converted every XDP driver to build_skb
-> before adding XDP support. Thus, this tailroom requirement should not
-> be a surprise.
-
-Most drivers were already converted over to build_skb before XDP was
-really introduced. They weren't converting over because of XDP, or at
-least that is the case with the Intel drivers.
-
-What I find disconcerting about this change is that you are pushing
-requirements down onto the drivers and I don't see these requirements
-in writing anywhere. One thing that would be useful would be to add
-documentation and also add comments in the driver code so that we
-don't end up with somebody coming through and trying to free back up
-the unused memory.
-
-> > I would argue that we should not be using build_skb on XDP buffers
-> > since it is going to lead to similar issues in the future. It would be
-> > much better to simply add the XDP frame as a fragment and to pull the
-> > headers as we have done in the past.
->
-> No, absolutely not. Again this will complicate and slowdown SKB
-> creation (as you know, this would require allocating a new memory area
-> for skb_shared_info (+ the SKB), while with the tailroom provided anyhow
-> for build_skb, we can avoid this extra allocation).
-
-In the case of redirect I would say that the problem is you don't have
-any guarantee that you have enough tailroom to make the change you are
-wanting to. Until you have the data_hard_end implemented you run the
-risk of corrupting memory and creating more issues like this in the
-future if you are using build_skb assuming that you have enough
-tailroom on the frame. As it stands you will probably still need some
-sort of fall-back solution in cases where something added data to the
-tail of the frame and cut into the tailroom.
-
-> > > ---
-> > >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |    3 ++-
-> > >  1 file changed, 2 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > > b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c index
-> > > 718931d951bc..ea6834bae04c 100644 ---
-> > > a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c +++
-> > > b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c @@ -2254,7 +2254,8
-> > > @@ static void ixgbe_rx_buffer_flip(struct ixgbe_ring *rx_ring,
-> > > rx_buffer->page_offset ^= truesize; #else
-> > >         unsigned int truesize = ring_uses_build_skb(rx_ring) ?
-> > > -                               SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) :
-> > > +                               SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) +
-> > > +                               SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
-> > >                                 SKB_DATA_ALIGN(size);
-> > >
-> > >         rx_buffer->page_offset += truesize;
-
-The change itself is fine. It is just reserving some extra space. I
-just feel like it isn't the complete solution. You are basically
-changing the definition for the truesize without putting in place why
-it should be that value. What I would really like to see put in place
-is some documentation as to why this is being done added to the code
-since most of us are not experts on the requirements for XDP_REDIRECT.
-
->
-> [1] http://people.netfilter.org/hawk/presentations/KernelRecipes2019/xdp-netstack-concert.pdf
-
-Really the big thing I would like to see solved in XDP is the jumbo
-frames problem since it ties back into all of this. We should have a
-way to express frames larger than 4K via some sort of multi-buffer
-setup. Once we have that then I would think that XDP is finally
-starting to mature.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
