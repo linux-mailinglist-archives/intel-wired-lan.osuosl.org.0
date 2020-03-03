@@ -2,61 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B969176B43
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Mar 2020 03:49:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 734B3177B52
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Mar 2020 17:00:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id AA624853E5;
-	Tue,  3 Mar 2020 02:49:30 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2B82285D70;
+	Tue,  3 Mar 2020 16:00:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5QGNVPAuqW_B; Tue,  3 Mar 2020 02:49:30 +0000 (UTC)
+	with ESMTP id 9I_IOLw6t5Um; Tue,  3 Mar 2020 16:00:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F119D858D2;
-	Tue,  3 Mar 2020 02:49:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 561B585D3D;
+	Tue,  3 Mar 2020 16:00:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3274C1BF31B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:49:29 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E2E9F1BF423
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 16:00:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2DF078707A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:49:29 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DBF9C860E1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 16:00:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qT3xJXr-yrir for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Mar 2020 02:49:28 +0000 (UTC)
+ with ESMTP id Ew+YVVxlWwer for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Mar 2020 16:00:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A6DAA86EA3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:49:28 +0000 (UTC)
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A2FC624699;
- Tue,  3 Mar 2020 02:49:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583203768;
- bh=+PYbT6PSjcBXlV0X5hQe9ZrLqKbBChZnSnxyDuUYcQY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=yYPwqvjh6TltDOWbJs8C04YcTMGXYKn8XUfqb/eXCmXp25u0Rns3aqhqpxVJ7ez9z
- ACcb8Y5BKqq4O8zRqbcjWp5nfC7HMeN90okcjqdJ/R+TczxJV26oDid2Ovb56jTLhB
- wE7ID3x7ES3ROj1SZ7durpgef/T6DaYvqPGEbjdc=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Date: Mon,  2 Mar 2020 21:48:48 -0500
-Message-Id: <20200303024851.10054-29-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200303024851.10054-1-sashal@kernel.org>
-References: <20200303024851.10054-1-sashal@kernel.org>
+Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
+ [209.85.166.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3A4CA86373
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 16:00:39 +0000 (UTC)
+Received: by mail-il1-f194.google.com with SMTP id r4so3228653iln.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 03 Mar 2020 08:00:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5nB5KliZFfDrFmGaiqqiN/kMb95eEp9p0bbqKdfRBHs=;
+ b=jSz/1KUlvDtcxL9W6/vxFZJqjJNSgtudmmh54An+nx0SMXhfYWpeCjxg1e+gFsOiQZ
+ inHLZSRCrpG0l7fdvJIJ0g9GwLQAJzxwl5HYalitBQe8zfuxKcCXi5UGZaSQ54wKMIq7
+ 7RaA5tS1vsN0CAarbZ972Di/BeCrZWdEgUTdqU2GYHPvuDe7IOR0WX+fGHqXJtNdX5+/
+ O/nMQemyzxXXEDybBIF7/AaE0ghWDT2D0RdUR7fdiF4sUZRjvlaNVU84iJuaKntmqy4B
+ P2nlZjb8hUnnf7Ec94k9Ky7PtW4UY9rMqqbqV10MAbQQ6cNOgS5LMxVT8KCgN4j9IKig
+ sytA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5nB5KliZFfDrFmGaiqqiN/kMb95eEp9p0bbqKdfRBHs=;
+ b=EQUQzhQiWYYLA2AxduRAuJ/GkYN/HIAqGCXjFIkh7uUcae6eDp30g/p75bQF383YBf
+ bsMi+/u2ZF9rpKXnPIr8AbwV4Rv28/Q1xR3gTqFNS1Rz3x3dd7zyNUZBji/uHP3p1oIe
+ fvHSAd0KDgAd63ax+mF5yYGhkXEHGZRyzqMmuas8jiZYxeeeTXhwG2aFreYQVjzBMFRd
+ FSXmVGPpGE+72t3v3u5/xgrn+K75904JDcJ3BiVmvL9/tvOReMDJX/NYVI2H0y5+SDw9
+ cKqDipnfD/0RUch1jMvNl2iKOECto3UAlaH6YkCJcwaKds4PHg0QNIeq8eufqm/TNWIv
+ LKew==
+X-Gm-Message-State: ANhLgQ0jTA7jhq47u7hByZw5o24oSy0Nv5/fSGbpKMWNLNq/nloeSBAN
+ pDVOaF0S0iIXAJ0EY2ZDJ+HlDJXP7IZENfxGXsY=
+X-Google-Smtp-Source: ADFU+vu5fEGrqLhFjwWFJ7T5rLPmiHETg62LW/PS7AtOywMyIN6+e9m5Vr7yW9Z48xzVVr8gIK4GTg+pyc+FjmG6riM=
+X-Received: by 2002:a92:d782:: with SMTP id d2mr5609468iln.42.1583251238293;
+ Tue, 03 Mar 2020 08:00:38 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 29/32] ice: Don't tell the OS
- that link is going down
+References: <20200302202307.23260-1-sasha.neftin@intel.com>
+ <CAKgT0UdFW1KbAzsUX2o7-UDD1ay70euxs6Ts=RjYN4dfFEE6Fg@mail.gmail.com>
+ <549bd226-b5fa-eb68-44a5-f77dcaf28c5a@intel.com>
+In-Reply-To: <549bd226-b5fa-eb68-44a5-f77dcaf28c5a@intel.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Tue, 3 Mar 2020 08:00:27 -0800
+Message-ID: <CAKgT0Uc-nbt+8+gbNWabWrA0xZrUFqBtvUWNiNNpKMD-XhCCKg@mail.gmail.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove copper fiber
+ switch control
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,57 +82,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Michal Swiatkowski <michal.swiatkowski@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Swiatkowski <michal.swiatkowski@intel.com>
+On Mon, Mar 2, 2020 at 4:44 PM Neftin, Sasha <sasha.neftin@intel.com> wrote:
+>
+> On 3/2/2020 13:26, Alexander Duyck wrote:
+> > On Mon, Mar 2, 2020 at 12:23 PM Sasha Neftin <sasha.neftin@intel.com> wrote:
+> >>
+> >> i225 device support copper mode only
+> >> PHY signal detect indication for copper fiber switch
+> >> not applicable to i225 part
+> >>
+> >> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> >
+> > So there are a couple issues with this patch.
+> >
+> > All the changes in igc_ethtool.c are broken at this point. Once a
+> > register is defined in regs_buff you cannot change it. Otherwise you
+> > cannot debug this in the future. You would be better off just skipping
+> > the register that you were storing CONNSW and let it default to zero
+> > instead of doing all of the shifting you are doing. You can just skip
+> > over the register in the dump in ethtool assuming there is even a file
+> > for the device that hasbeen added.
+> >
+> This change not affected igc_ethtool.c behavior. I see the same behavior
+> on my setup.
+> Actually ethtool --register-dump not called (as properly).get_regs
+> callback from igc_ethtool.c. This is not related to this patch and I
+> need investigate and fix it.
+> ethtool --register-dump <adapter> show me row generic data. Data is
+> really from i225 registers, but not parcered as for other drivers.
+>
 
-[ Upstream commit 8a55c08d3bbc9ffc9639f69f742e59ebd99f913b ]
+Right. It isn't implemented yet, but you don't want to break it. The
+logic for the register dump assumes the register locations are fixed.
+So once you released this the first time you cannot move the registers
+around. You can drop registers or add registers, but once they are in
+the list they are permanently in that position. If you don't do that
+you will never be able to decode the data.
 
-Remove code that tell the OS that link is going down when user
-change flow control via ethtool. When link is up it isn't certain
-that link goes down after 0x0605 aq command. If link doesn't go
-down, OS thinks that link is down, but physical link is up. To
-reset this state user have to take interface down and up.
-
-If link goes down after 0x0605 command, FW send information
-about that and after that driver tells the OS that the link goes
-down. So this code in ethtool is unnecessary.
-
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@intel.com>
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 7 -------
- 1 file changed, 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 4c5c87b158f55..627abef829c9a 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -772,13 +772,6 @@ ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
- 	else
- 		return -EINVAL;
- 
--	/* Tell the OS link is going down, the link will go back up when fw
--	 * says it is ready asynchronously
--	 */
--	ice_print_link_msg(vsi, false);
--	netif_carrier_off(netdev);
--	netif_tx_stop_all_queues(netdev);
--
- 	/* Set the FC mode and only restart AN if link is up */
- 	status = ice_set_fc(pi, &aq_failures, link_up);
- 
--- 
-2.20.1
-
+- Alex
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
