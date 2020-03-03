@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFAAB176B20
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Mar 2020 03:48:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 79D81863D0;
-	Tue,  3 Mar 2020 02:48:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ClREY6XkeKQl; Tue,  3 Mar 2020 02:48:39 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 82F0D86373;
-	Tue,  3 Mar 2020 02:48:38 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0B7E91BF31B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:48:37 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B969176B43
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Mar 2020 03:49:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0717E85308
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:48:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AA624853E5;
+	Tue,  3 Mar 2020 02:49:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5QGNVPAuqW_B; Tue,  3 Mar 2020 02:49:30 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F119D858D2;
+	Tue,  3 Mar 2020 02:49:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3274C1BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:49:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2DF078707A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:49:29 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HZn2t6AU2FOK for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Mar 2020 02:48:36 +0000 (UTC)
+ with ESMTP id qT3xJXr-yrir for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Mar 2020 02:49:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A094B83511
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:48:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A6DAA86EA3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Mar 2020 02:49:28 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A0214246D5;
- Tue,  3 Mar 2020 02:48:35 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A2FC624699;
+ Tue,  3 Mar 2020 02:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583203716;
- bh=ujHYlmvzzmARpzykN3UJl7tQFXD5glbjjzu9OoZqoc4=;
+ s=default; t=1583203768;
+ bh=+PYbT6PSjcBXlV0X5hQe9ZrLqKbBChZnSnxyDuUYcQY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mCbK/NiQMUcFcCo7Fg383r9rVy27soXJ4BKpunCau8qKalfceY/WWAZNDBBonOJla
- z7FLjKQmgA0DFEMaUQpji9ovgzX1jjPGd5XYLIs3hDdNSlw45GDEowLBOR+fRuDryA
- tLYMzOWfXh0zqgyEn+6LWMOt+hmkkiQ/ynra2YTI=
+ b=yYPwqvjh6TltDOWbJs8C04YcTMGXYKn8XUfqb/eXCmXp25u0Rns3aqhqpxVJ7ez9z
+ ACcb8Y5BKqq4O8zRqbcjWp5nfC7HMeN90okcjqdJ/R+TczxJV26oDid2Ovb56jTLhB
+ wE7ID3x7ES3ROj1SZ7durpgef/T6DaYvqPGEbjdc=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Mon,  2 Mar 2020 21:47:28 -0500
-Message-Id: <20200303024740.9511-46-sashal@kernel.org>
+Date: Mon,  2 Mar 2020 21:48:48 -0500
+Message-Id: <20200303024851.10054-29-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200303024740.9511-1-sashal@kernel.org>
-References: <20200303024740.9511-1-sashal@kernel.org>
+In-Reply-To: <20200303024851.10054-1-sashal@kernel.org>
+References: <20200303024851.10054-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 46/58] ice: Don't tell the OS
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 29/32] ice: Don't tell the OS
  that link is going down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -100,10 +100,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 1fe9f6050635d..62673e27af0e8 100644
+index 4c5c87b158f55..627abef829c9a 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2916,13 +2916,6 @@ ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
+@@ -772,13 +772,6 @@ ice_set_pauseparam(struct net_device *netdev, struct ethtool_pauseparam *pause)
  	else
  		return -EINVAL;
  
