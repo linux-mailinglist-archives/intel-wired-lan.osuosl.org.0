@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0D4517B17B
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Mar 2020 23:32:42 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E05D17B17C
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Mar 2020 23:33:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3D5E488081;
-	Thu,  5 Mar 2020 22:32:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7CABE22091;
+	Thu,  5 Mar 2020 22:33:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xWXgyh9HWYFH; Thu,  5 Mar 2020 22:32:41 +0000 (UTC)
+	with ESMTP id RXPEgW6mKYmR; Thu,  5 Mar 2020 22:33:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CB85E88076;
-	Thu,  5 Mar 2020 22:32:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 684B8220C1;
+	Thu,  5 Mar 2020 22:33:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B52981BF9B3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:32:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8EDDF1BF2CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8558186BC1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:32:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8ACB088058
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZJhVrMGzUuxc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Mar 2020 22:32:36 +0000 (UTC)
+ with ESMTP id oAOX2IWOt8Ce for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EEB8486D5A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:32:35 +0000 (UTC)
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 19B9488007
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2020 14:32:35 -0800
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2020 14:33:01 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,519,1574150400"; d="scan'208";a="234575611"
-Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
- by orsmga008.jf.intel.com with ESMTP; 05 Mar 2020 14:32:35 -0800
+X-IronPort-AV: E=Sophos;i="5.70,519,1574150400"; d="scan'208";a="441727449"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by fmsmga006.fm.intel.com with ESMTP; 05 Mar 2020 14:33:01 -0800
 Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 5 Mar 2020 14:32:34 -0800
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 5 Mar 2020 14:33:01 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
  fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 5 Mar 2020 14:32:34 -0800
+ 15.1.1713.5; Thu, 5 Mar 2020 14:33:00 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Thu, 5 Mar 2020 14:32:34 -0800
+ Thu, 5 Mar 2020 14:33:00 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S34 v4 2/6] ice: Complete RDMA peer
- registration
-Thread-Index: AQHV8OrWBuKc96mdmEG4nYntRtQd4ag6mgfw
-Date: Thu, 5 Mar 2020 22:32:34 +0000
-Message-ID: <17944530967c417b856bc2c918c066b6@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S34 v4 3/6] ice: Support resource
+ allocation requests
+Thread-Index: AQHV8OrV+3oyayGd/kaQcb+IgaEkHqg6miXQ
+Date: Thu, 5 Mar 2020 22:33:00 +0000
+Message-ID: <225d870927aa40ecaf1846c77f4ed47b@intel.com>
 References: <20200302233107.4691-1-anthony.l.nguyen@intel.com>
- <20200302233107.4691-2-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200302233107.4691-2-anthony.l.nguyen@intel.com>
+ <20200302233107.4691-3-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200302233107.4691-3-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiM2E2MmFkZGMtYTgyYy00OTRkLWJhMzQtYzM1ZGMwMGNkMTUwIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiRmx4RkhicnlcLzFuRE1Ed2JCS0xhZzl2SmJUaklpT1ZYK1pneUxrTm93TzdNRUxFd1ZTZ1wvQks5OCtweVdYWmxDIn0=
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTRiYjVkMzMtOTUxNy00OGM4LTg1ODUtMTBjNTMwZGZlYjc0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVzN5Z2Q3RkF5d0NUeDV0VzlsZjhaZ1RtbTFBS0lXcWhvRHcweUVCVVp0RnJqS2RUQjF6RFFXanV6UnBlUjhCdiJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S34 v4 2/6] ice: Complete RDMA peer
- registration
+Subject: Re: [Intel-wired-lan] [PATCH S34 v4 3/6] ice: Support resource
+ allocation requests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,26 +95,26 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Monday, March 2, 2020 3:31 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S34 v4 2/6] ice: Complete RDMA peer
-> registration
+> Subject: [Intel-wired-lan] [PATCH S34 v4 3/6] ice: Support resource allocation
+> requests
 > 
 > From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> Ensure that the peer supports the minimal set of operations required for
-> operation and, if so, open the connection to the peer.
+> Enable the peer device to request queue sets from the PF.
 > 
 > Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_idc.c      | 288 ++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_idc_int.h  |  36 +++
->  drivers/net/ethernet/intel/ice/ice_lib.c      |  33 ++
->  drivers/net/ethernet/intel/ice/ice_lib.h      |   2 +
->  drivers/net/ethernet/intel/ice/ice_main.c     |  18 +-
->  drivers/net/ethernet/intel/ice/ice_switch.c   |  23 ++
+>  drivers/net/ethernet/intel/ice/ice.h          |   1 +
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  32 +++
+>  drivers/net/ethernet/intel/ice/ice_common.c   | 188 ++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_common.h   |   9 +
+>  drivers/net/ethernet/intel/ice/ice_idc.c      | 244 ++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_sched.c    |  69 ++++-
+>  drivers/net/ethernet/intel/ice/ice_switch.c   |   4 +
 >  drivers/net/ethernet/intel/ice/ice_switch.h   |   2 +
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  25 --
->  8 files changed, 401 insertions(+), 26 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   3 +
+>  9 files changed, 547 insertions(+), 5 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
