@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E05D17B17C
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Mar 2020 23:33:08 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66C2717B17E
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Mar 2020 23:33:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7CABE22091;
-	Thu,  5 Mar 2020 22:33:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26B0B8461B;
+	Thu,  5 Mar 2020 22:33:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RXPEgW6mKYmR; Thu,  5 Mar 2020 22:33:06 +0000 (UTC)
+	with ESMTP id PmtQpfpGHimL; Thu,  5 Mar 2020 22:33:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 684B8220C1;
-	Thu,  5 Mar 2020 22:33:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C640586E5E;
+	Thu,  5 Mar 2020 22:33:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8EDDF1BF2CC
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 802CE1BF2CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8ACB088058
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1DBB586813
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oAOX2IWOt8Ce for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
+ with ESMTP id ezQoLwVJ9pw8 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Mar 2020 22:33:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 19B9488007
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:02 +0000 (UTC)
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id BEB6E86463
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 22:33:27 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2020 14:33:01 -0800
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2020 14:33:27 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,519,1574150400"; d="scan'208";a="441727449"
-Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
- by fmsmga006.fm.intel.com with ESMTP; 05 Mar 2020 14:33:01 -0800
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 5 Mar 2020 14:33:01 -0800
+X-IronPort-AV: E=Sophos;i="5.70,519,1574150400"; d="scan'208";a="234575900"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by orsmga008.jf.intel.com with ESMTP; 05 Mar 2020 14:33:27 -0800
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 5 Mar 2020 14:33:26 -0800
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 5 Mar 2020 14:33:00 -0800
+ 15.1.1713.5; Thu, 5 Mar 2020 14:33:26 -0800
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Thu, 5 Mar 2020 14:33:00 -0800
+ Thu, 5 Mar 2020 14:33:26 -0800
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S34 v4 3/6] ice: Support resource
- allocation requests
-Thread-Index: AQHV8OrV+3oyayGd/kaQcb+IgaEkHqg6miXQ
-Date: Thu, 5 Mar 2020 22:33:00 +0000
-Message-ID: <225d870927aa40ecaf1846c77f4ed47b@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S34 v4 4/6] ice: Enable event
+ notifications
+Thread-Index: AQHV8OrQUkk+eETyFUyvQxtHux1iLag6mkbQ
+Date: Thu, 5 Mar 2020 22:33:26 +0000
+Message-ID: <1f111c67cedc4cd79ea9e16def7fc419@intel.com>
 References: <20200302233107.4691-1-anthony.l.nguyen@intel.com>
- <20200302233107.4691-3-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200302233107.4691-3-anthony.l.nguyen@intel.com>
+ <20200302233107.4691-4-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200302233107.4691-4-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 dlp-product: dlpe-windows
 x-ctpclassification: CTP_NT
-x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZTRiYjVkMzMtOTUxNy00OGM4LTg1ODUtMTBjNTMwZGZlYjc0IiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiVzN5Z2Q3RkF5d0NUeDV0VzlsZjhaZ1RtbTFBS0lXcWhvRHcweUVCVVp0RnJqS2RUQjF6RFFXanV6UnBlUjhCdiJ9
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiOWU0N2VmZDYtNDRlZS00NTAzLTk5ZGMtMWRlMGNjYzdkMDhjIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiMkhaK0FzTFNkc2ZJajNRQjY4MWY3bVVUZ0F1eERQTmtXSTlNbjBiclVmNklvbVd5Y2VodDdBWFNxK0sxOXFNNSJ9
 dlp-reaction: no-action
 dlp-version: 11.0.400.15
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S34 v4 3/6] ice: Support resource
- allocation requests
+Subject: Re: [Intel-wired-lan] [PATCH S34 v4 4/6] ice: Enable event
+ notifications
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,26 +95,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Behalf Of Tony Nguyen
 > Sent: Monday, March 2, 2020 3:31 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S34 v4 3/6] ice: Support resource allocation
-> requests
+> Subject: [Intel-wired-lan] [PATCH S34 v4 4/6] ice: Enable event notifications
 > 
 > From: Dave Ertman <david.m.ertman@intel.com>
 > 
-> Enable the peer device to request queue sets from the PF.
+> Enable registration of notifications. Peer devices can register to be notified of
+> certain events as well as notify the driver of its state changes.
 > 
 > Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h          |   1 +
->  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  32 +++
->  drivers/net/ethernet/intel/ice/ice_common.c   | 188 ++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_common.h   |   9 +
->  drivers/net/ethernet/intel/ice/ice_idc.c      | 244 ++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_sched.c    |  69 ++++-
->  drivers/net/ethernet/intel/ice/ice_switch.c   |   4 +
->  drivers/net/ethernet/intel/ice/ice_switch.h   |   2 +
->  drivers/net/ethernet/intel/ice/ice_type.h     |   3 +
->  9 files changed, 547 insertions(+), 5 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  37 ++++
+>  drivers/net/ethernet/intel/ice/ice_idc.c     | 221 +++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_idc_int.h |   1 +
+>  drivers/net/ethernet/intel/ice/ice_main.c    |  27 ++-
+>  4 files changed, 280 insertions(+), 6 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
