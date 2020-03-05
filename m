@@ -1,60 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA5801798C1
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Mar 2020 20:17:00 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7C04179CE7
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Mar 2020 01:40:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE031848FC;
-	Wed,  4 Mar 2020 19:16:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DDEEE87B62;
+	Thu,  5 Mar 2020 00:40:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FeFVaKAgZGnz; Wed,  4 Mar 2020 19:16:58 +0000 (UTC)
+	with ESMTP id DaIaSuexpoiG; Thu,  5 Mar 2020 00:40:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 60DA784922;
-	Wed,  4 Mar 2020 19:16:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0DCE587B6D;
+	Thu,  5 Mar 2020 00:40:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 425D91BF589
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2020 19:16:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2EAAB1BF9B6
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 00:40:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 39979203A7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2020 19:16:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2AB25203C8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 00:40:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d684-pc9hjR6 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Mar 2020 19:16:55 +0000 (UTC)
+ with ESMTP id AyUXM0LQlQKe for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Mar 2020 00:40:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 39724203A6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2020 19:16:55 +0000 (UTC)
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
+ by silver.osuosl.org (Postfix) with ESMTPS id 9819720384
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Mar 2020 00:40:02 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Mar 2020 11:16:54 -0800
+ 04 Mar 2020 16:40:01 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,514,1574150400"; 
- d="asc'?scan'208";a="387258262"
-Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.86])
- by orsmga004.jf.intel.com with ESMTP; 04 Mar 2020 11:16:53 -0800
-Message-ID: <6ae80c13890cb71f6e079393173b08c5b4bd9917.camel@intel.com>
-From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Date: Wed, 04 Mar 2020 11:16:53 -0800
-In-Reply-To: <20200304111008.2c85f386@kicinski-fedora-PC1C0HJN>
-References: <9e23756531794a5e8b3d7aa6e0a6e8b6@AcuMS.aculab.com>
- <32fd09495d86bb2800def5b19e782a6a91a74ed9.camel@intel.com>
- <20200304111008.2c85f386@kicinski-fedora-PC1C0HJN>
-Organization: Intel
-User-Agent: Evolution 3.34.4 (3.34.4-1.fc31) 
+X-IronPort-AV: E=Sophos;i="5.70,516,1574150400"; d="scan'208";a="229513212"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga007.jf.intel.com with ESMTP; 04 Mar 2020 16:40:01 -0800
+Received: from orsmsx156.amr.corp.intel.com (10.22.240.22) by
+ ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 4 Mar 2020 16:40:00 -0800
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.43]) by
+ ORSMSX156.amr.corp.intel.com ([169.254.8.240]) with mapi id 14.03.0439.000;
+ Wed, 4 Mar 2020 16:40:00 -0800
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v1 1/1] igc: Enable NETIF_F_HW_TC flag
+Thread-Index: AQHV8PKoApOSQcEXI0Gfk2rXLPgkuKg5KxwA
+Date: Thu, 5 Mar 2020 00:40:00 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9720140F@ORSMSX103.amr.corp.intel.com>
+References: <20200303002808.14210-1-sasha.neftin@intel.com>
+In-Reply-To: <20200303002808.14210-1-sasha.neftin@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.139]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net 0/1] e1000e: Stop tx/rx setup
- spinning for upwards of 300us.
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Enable NETIF_F_HW_TC flag
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,72 +77,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: jeffrey.t.kirsher@intel.com
-Cc: Network Development <netdev@vger.kernel.org>,
- David Laight <David.Laight@ACULAB.COM>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============6421371146438112791=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Sasha Neftin
+> Sent: Monday, March 2, 2020 4:28 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Enable NETIF_F_HW_TC flag
+> 
+> This assignment of the feature NETIF_F_HW_TC
+> occurs prior to the initial setup of the local
+> hw_features variable.
+> 
+> This ensures that NETIF_F_HW_TC are marked
+> as user changeable, and also enables it by
+> default when the driver loads.
+> 
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_main.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
---===============6421371146438112791==
-Content-Type: multipart/signed; micalg="pgp-sha256";
-	protocol="application/pgp-signature"; boundary="=-wq+fY5fqMTH9QTFXP/PF"
-
-
---=-wq+fY5fqMTH9QTFXP/PF
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, 2020-03-04 at 11:10 -0800, Jakub Kicinski wrote:
-> On Wed, 04 Mar 2020 10:02:08 -0800 Jeff Kirsher wrote:
-> > Adding the intel-wired-lan@lists.osuosl.org mailing list, so that
-> > the
-> > developers you want feedback from will actually see your
-> > patches/questions/comments.
->=20
-> Is that list still moderated? I was going to CC it yesterday but=20
-> I don't want to subject people who respond to moderation messages..
-
-Yes, this is still moderated, helps keep the crap email out of peoples
-inbox.
-
---=-wq+fY5fqMTH9QTFXP/PF
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiTyZWz+nnTrOJ1LZ5W/vlVpL7c4FAl5f/qUACgkQ5W/vlVpL
-7c4/2A/9Hh2qTBx4p0PDED97hNsz7hNuhJMjIkQqTCViICTxSsw4O6NTpLwOWcOD
-KqsxJZACSMsFdGZsJAmitg/ungAFpnC/hBHIArbI4XCqnf3tVJqgvfuI/klwrNe4
-JSArked3Ifw31ICONW8uaNJs4C3OVD5VQR8h/FDE+HP1kJHo5jeIzDEOlKtONhum
-NEhLLxYCc2ZOEKnxa21ryZSQrMcZgVlKAOgIebcQxZ2tnISxHIsYl6Ka5MNuDxDZ
-ERyvzEGNMjGz0DzZKgIcKvxGJ/FA6iiXW/cFOkUzlN1qqBktiftA+rW1lQGAMmWi
-qWaKXyaPFJ9QmJdHWPbcRUBAkTRvytrC+HKnwevSdRpPLt/1WoROWPRhzn8oK8lR
-YQMw+tg+pSpXMBspEvm36OkDh3Rw/y0VN45KspkGbJCVae/EIRUmkdz2aSZCanEB
-pmSEr4y8sij3k3kDluo1WSxxnRmiSuxRVb4F9rA//w4BlKAbj5wy9FeuW3gOoKBt
-TvAnHjXXhfu9cjZgUvCkNGLwRr5GkXIbl2fk+WnjkHB7p09o9DrkUcD0/pRf4gDH
-7F5aDzJKozzGBEhYHniKZVoK+IRfzMr75b7p3KGBtvuwu2q9zTJnuzQI1jnm6e3V
-eHPNYZgn8bdvzbbDmVnL1mn0ULjWpy/ky2Oj+hnFjqjPURDa2Gk=
-=VEjK
------END PGP SIGNATURE-----
-
---=-wq+fY5fqMTH9QTFXP/PF--
-
-
---===============6421371146438112791==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============6421371146438112791==--
-
