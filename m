@@ -1,57 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E930617CBDE
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 Mar 2020 05:07:43 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3714017EB32
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Mar 2020 22:32:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 5804C2035B;
-	Sat,  7 Mar 2020 04:07:42 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9E06C889BE;
+	Mon,  9 Mar 2020 21:32:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7OCuHJo7oUfU; Sat,  7 Mar 2020 04:07:42 +0000 (UTC)
+	with ESMTP id eS6LpsOzSxne; Mon,  9 Mar 2020 21:32:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6E78B2038F;
-	Sat,  7 Mar 2020 04:07:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 21DBF88ADA;
+	Mon,  9 Mar 2020 21:32:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 641081BF83C
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Mar 2020 04:07:39 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D67FC1BF30A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Mar 2020 21:32:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5BD3F20364
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Mar 2020 04:07:39 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CD7B3889CA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Mar 2020 21:32:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2GA3i7vMcecR for <intel-wired-lan@lists.osuosl.org>;
- Sat,  7 Mar 2020 04:07:38 +0000 (UTC)
+ with ESMTP id jB2FWaya8IsE for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Mar 2020 21:32:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 591F82035B
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Mar 2020 04:07:38 +0000 (UTC)
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D1A61889BE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Mar 2020 21:32:00 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2020 20:07:37 -0800
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 09 Mar 2020 14:32:00 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,518,1574150400"; d="scan'208";a="259790932"
-Received: from jdoman-desk.amr.corp.intel.com (HELO [10.254.10.205])
- ([10.254.10.205])
- by orsmga002.jf.intel.com with ESMTP; 06 Mar 2020 20:07:37 -0800
-To: Andre Guedes <andre.guedes@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20200306235403.18751-1-andre.guedes@intel.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <66f9198b-9cdb-441b-b2e1-1a4254971274@intel.com>
-Date: Fri, 6 Mar 2020 20:07:36 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+X-IronPort-AV: E=Sophos;i="5.70,534,1574150400"; d="scan'208";a="441059110"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.33])
+ by fmsmga005.fm.intel.com with ESMTP; 09 Mar 2020 14:31:59 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+	jkirsher@osuosl.org
+Date: Mon,  9 Mar 2020 14:31:57 -0700
+Message-Id: <20200309213157.181873-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-In-Reply-To: <20200306235403.18751-1-andre.guedes@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igc: Fix NFC queue redirection support
+Subject: [Intel-wired-lan] [PATCH] fm10k: remove driver version from fm10k
+ module
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,74 +61,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/6/2020 15:54, Andre Guedes wrote:
-> The support for ethtool Network Flow Classification (NFC) queue
-> redirection based on destination MAC address is currently broken in IGC.
-> For instance, if we add the following rule, matching frames aren't
-> enqueued on the expected rx queue.
-> 
-> $ ethtool -N IFNAME flow-type ether dst 3c:fd:fe:9e:7f:71 queue 2
-> 
-> The issue here is due to the fact that igc_rar_set_index() is missing
-> code to enable the queue selection feature from Receive Address High
-> (RAH) register. This patch adds the missing code and fixes the issue.
-> 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_defines.h |  5 ++++-
->   drivers/net/ethernet/intel/igc/igc_main.c    | 11 ++++++++---
->   2 files changed, 12 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-> index e5116337b68d..63d3d34763da 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
-> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-> @@ -63,8 +63,11 @@
->    * (RAR[15]) for our directed address used by controllers with
->    * manageability enabled, allowing us room for 15 multicast addresses.
->    */
-> +#define IGC_RAH_QSEL_MASK	0x000C0000
-> +#define IGC_RAH_QSEL_SHIFT	18
-> +#define IGC_RAH_QSEL_ENABLE	BIT(28)
->   #define IGC_RAH_AV		0x80000000 /* Receive descriptor valid */
-> -#define IGC_RAH_POOL_1		0x00040000
-> +
->   #define IGC_RAL_MAC_ADDR_LEN	4
->   #define IGC_RAH_MAC_ADDR_LEN	2
->   
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 025f2e439aef..49a0d0bff727 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -780,13 +780,18 @@ static void igc_rar_set_index(struct igc_adapter *adapter, u32 index)
->   	rar_low = le32_to_cpup((__le32 *)(addr));
->   	rar_high = le16_to_cpup((__le16 *)(addr + 4));
->   
-> +	if (adapter->mac_table[index].state & IGC_MAC_STATE_QUEUE_STEERING) {
-> +		u8 queue = adapter->mac_table[index].queue;
-> +		u32 qsel = IGC_RAH_QSEL_MASK & (queue << IGC_RAH_QSEL_SHIFT);
-> +
-> +		rar_high |= qsel;
-> +		rar_high |= IGC_RAH_QSEL_ENABLE;
-> +	}
-> +
->   	/* Indicate to hardware the Address is Valid. */
->   	if (adapter->mac_table[index].state & IGC_MAC_STATE_IN_USE) {
->   		if (is_valid_ether_addr(addr))
->   			rar_high |= IGC_RAH_AV;
-> -
-> -		rar_high |= IGC_RAH_POOL_1 <<
-> -			adapter->mac_table[index].queue;
->   	}
->   
->   	wr32(IGC_RAL(index), rar_low);
-> 
-Acked-by: Sasha Neftin <sasha.neftin@intel.com>
+As with other networking drivers, remove the unnecessary driver version
+from the fm10k module. The ethtool driver information and module version
+will then report the kernel version instead.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+ drivers/net/ethernet/intel/fm10k/fm10k.h         | 1 -
+ drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c | 2 --
+ drivers/net/ethernet/intel/fm10k/fm10k_main.c    | 5 +----
+ 3 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k.h b/drivers/net/ethernet/intel/fm10k/fm10k.h
+index 5b78362b82ac..f9be10a04dd6 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k.h
++++ b/drivers/net/ethernet/intel/fm10k/fm10k.h
+@@ -476,7 +476,6 @@ struct fm10k_cb {
+ 
+ /* main */
+ extern char fm10k_driver_name[];
+-extern const char fm10k_driver_version[];
+ int fm10k_init_queueing_scheme(struct fm10k_intfc *interface);
+ void fm10k_clear_queueing_scheme(struct fm10k_intfc *interface);
+ __be16 fm10k_tx_encap_offload(struct sk_buff *skb);
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c b/drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c
+index 68edf55ac906..3cae18a3bcf0 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c
+@@ -449,8 +449,6 @@ static void fm10k_get_drvinfo(struct net_device *dev,
+ 
+ 	strncpy(info->driver, fm10k_driver_name,
+ 		sizeof(info->driver) - 1);
+-	strncpy(info->version, fm10k_driver_version,
+-		sizeof(info->version) - 1);
+ 	strncpy(info->bus_info, pci_name(interface->pdev),
+ 		sizeof(info->bus_info) - 1);
+ }
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_main.c b/drivers/net/ethernet/intel/fm10k/fm10k_main.c
+index 17738b0a9873..05e9bdb5f4aa 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_main.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_main.c
+@@ -11,9 +11,7 @@
+ 
+ #include "fm10k.h"
+ 
+-#define DRV_VERSION	"0.27.1-k"
+ #define DRV_SUMMARY	"Intel(R) Ethernet Switch Host Interface Driver"
+-const char fm10k_driver_version[] = DRV_VERSION;
+ char fm10k_driver_name[] = "fm10k";
+ static const char fm10k_driver_string[] = DRV_SUMMARY;
+ static const char fm10k_copyright[] =
+@@ -22,7 +20,6 @@ static const char fm10k_copyright[] =
+ MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
+ MODULE_DESCRIPTION(DRV_SUMMARY);
+ MODULE_LICENSE("GPL v2");
+-MODULE_VERSION(DRV_VERSION);
+ 
+ /* single workqueue for entire fm10k driver */
+ struct workqueue_struct *fm10k_workqueue;
+@@ -35,7 +32,7 @@ struct workqueue_struct *fm10k_workqueue;
+  **/
+ static int __init fm10k_init_module(void)
+ {
+-	pr_info("%s - version %s\n", fm10k_driver_string, fm10k_driver_version);
++	pr_info("%s\n", fm10k_driver_string);
+ 	pr_info("%s\n", fm10k_copyright);
+ 
+ 	/* create driver workqueue */
+-- 
+2.24.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
