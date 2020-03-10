@@ -2,51 +2,51 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AA30180C25
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Mar 2020 00:15:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C119180C46
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Mar 2020 00:23:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0247285EC4;
-	Tue, 10 Mar 2020 23:15:40 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C8C1285F56;
+	Tue, 10 Mar 2020 23:23:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qg4qAz7NgYA9; Tue, 10 Mar 2020 23:15:36 +0000 (UTC)
+	with ESMTP id YMt41zFOlOV1; Tue, 10 Mar 2020 23:23:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 82B5785F60;
-	Tue, 10 Mar 2020 23:15:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B11C685F60;
+	Tue, 10 Mar 2020 23:23:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E42C11BF5B5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2020 23:15:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C7AD11BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2020 23:23:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF06B875B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2020 23:15:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C2431877CE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2020 23:23:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fg88+Mw5-lU2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Mar 2020 23:15:31 +0000 (UTC)
+ with ESMTP id bNMKBhHkanLG for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Mar 2020 23:23:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 47719875AE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2020 23:15:31 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 34A328777D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2020 23:23:04 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2020 16:15:30 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2020 16:23:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,538,1574150400"; d="scan'208";a="389080148"
+X-IronPort-AV: E=Sophos;i="5.70,538,1574150400"; d="scan'208";a="236217266"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.86])
- by orsmga004.jf.intel.com with ESMTP; 10 Mar 2020 16:15:30 -0700
+ by orsmga008.jf.intel.com with ESMTP; 10 Mar 2020 16:23:03 -0700
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 10 Mar 2020 16:15:27 -0700
-Message-Id: <20200310231527.2468955-1-jeffrey.t.kirsher@intel.com>
+Date: Tue, 10 Mar 2020 16:23:01 -0700
+Message-Id: <20200310232301.2470904-1-jeffrey.t.kirsher@intel.com>
 X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next-queue] net/intel: remove driver versions
+Subject: [Intel-wired-lan] [next-queue v2] net/intel: remove driver versions
  from Intel drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -82,8 +82,10 @@ CC: Alek Loktionov <aleksandr.loktionov@intel.com>
 CC: Kevin Liedtke <kevin.d.liedtke@intel.com>
 CC: Aaron Rowden <aaron.f.rowden@intel.com>
 Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Co-developed: Jacob Keller <jacob.e.keller@intel.com>
+Co-developed-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
+v2: fixed Co-developed-by: tag
+
  drivers/net/ethernet/intel/e100.c             |  6 +----
  drivers/net/ethernet/intel/e1000/e1000.h      |  1 -
  .../net/ethernet/intel/e1000/e1000_ethtool.c  |  2 --
