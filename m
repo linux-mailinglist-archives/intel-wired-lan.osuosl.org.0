@@ -1,49 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5EE018134D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Mar 2020 09:38:09 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D75C181507
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Mar 2020 10:35:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 33D4086987;
-	Wed, 11 Mar 2020 08:38:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2C10B204EF;
+	Wed, 11 Mar 2020 09:35:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sx5k5A1FpJhr; Wed, 11 Mar 2020 08:38:07 +0000 (UTC)
+	with ESMTP id dWsKcapAbnus; Wed, 11 Mar 2020 09:35:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 648828698F;
-	Wed, 11 Mar 2020 08:38:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4CFDC204E4;
+	Wed, 11 Mar 2020 09:35:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AA1991BF28B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 08:38:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E7A021BF5DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 09:35:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A5F858695E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 08:38:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E3B1786381
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 09:35:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U1LMPxE2rVuc for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Mar 2020 08:38:04 +0000 (UTC)
+ with ESMTP id Ht2oNNFN3BkR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Mar 2020 09:35:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 382EA868B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 08:38:04 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id C72BBB1AE;
- Wed, 11 Mar 2020 08:38:01 +0000 (UTC)
-From: Takashi Iwai <tiwai@suse.de>
-To: netdev@vger.kernel.org
-Date: Wed, 11 Mar 2020 09:37:40 +0100
-Message-Id: <20200311083745.17328-3-tiwai@suse.de>
-X-Mailer: git-send-email 2.16.4
-In-Reply-To: <20200311083745.17328-1-tiwai@suse.de>
-References: <20200311083745.17328-1-tiwai@suse.de>
-Subject: [Intel-wired-lan] [PATCH 2/7] i40e: Use scnprintf() for avoiding
- potential buffer overflow
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4519F84F58
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 09:35:08 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2020 02:35:06 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,518,1574150400"; d="scan'208";a="261088999"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by orsmga002.jf.intel.com with ESMTP; 11 Mar 2020 02:35:06 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 11 Mar 2020 11:35:06 +0200
+Message-Id: <20200311093506.36496-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Add new device IDs for i225
+ part
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,72 +59,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, "David S . Miller" <davem@davemloft.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Since snprintf() returns the would-be-output size instead of the
-actual output size, the succeeding calls may go beyond the given
-buffer limit.  Fix it by replacing with scnprintf().
+Add new device IDs for the next step of i225
 
-Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org
-Signed-off-by: Takashi Iwai <tiwai@suse.de>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_base.c | 3 +++
+ drivers/net/ethernet/intel/igc/igc_hw.h   | 3 +++
+ drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
+ 3 files changed, 9 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 8c3e753bfb9d..ff431c13f858 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -14478,29 +14478,29 @@ static void i40e_print_features(struct i40e_pf *pf)
+diff --git a/drivers/net/ethernet/intel/igc/igc_base.c b/drivers/net/ethernet/intel/igc/igc_base.c
+index 5a506440560a..f7fb18d8d8f5 100644
+--- a/drivers/net/ethernet/intel/igc/igc_base.c
++++ b/drivers/net/ethernet/intel/igc/igc_base.c
+@@ -212,6 +212,9 @@ static s32 igc_get_invariants_base(struct igc_hw *hw)
+ 	case IGC_DEV_ID_I225_I:
+ 	case IGC_DEV_ID_I220_V:
+ 	case IGC_DEV_ID_I225_K:
++	case IGC_DEV_ID_I225_K2:
++	case IGC_DEV_ID_I225_LMVP:
++	case IGC_DEV_ID_I225_IT:
+ 	case IGC_DEV_ID_I225_BLANK_NVM:
+ 		mac->type = igc_i225;
+ 		break;
+diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
+index 90ac0e0144d8..af34ae310327 100644
+--- a/drivers/net/ethernet/intel/igc/igc_hw.h
++++ b/drivers/net/ethernet/intel/igc/igc_hw.h
+@@ -21,6 +21,9 @@
+ #define IGC_DEV_ID_I225_I			0x15F8
+ #define IGC_DEV_ID_I220_V			0x15F7
+ #define IGC_DEV_ID_I225_K			0x3100
++#define IGC_DEV_ID_I225_K2			0x3101
++#define IGC_DEV_ID_I225_LMVP			0x5502
++#define IGC_DEV_ID_I225_IT			0x0D9F
+ #define IGC_DEV_ID_I225_BLANK_NVM		0x15FD
  
- 	i = snprintf(buf, INFO_STRING_LEN, "Features: PF-id[%d]", hw->pf_id);
- #ifdef CONFIG_PCI_IOV
--	i += snprintf(&buf[i], REMAIN(i), " VFs: %d", pf->num_req_vfs);
-+	i += scnprintf(&buf[i], REMAIN(i), " VFs: %d", pf->num_req_vfs);
- #endif
--	i += snprintf(&buf[i], REMAIN(i), " VSIs: %d QP: %d",
-+	i += scnprintf(&buf[i], REMAIN(i), " VSIs: %d QP: %d",
- 		      pf->hw.func_caps.num_vsis,
- 		      pf->vsi[pf->lan_vsi]->num_queue_pairs);
- 	if (pf->flags & I40E_FLAG_RSS_ENABLED)
--		i += snprintf(&buf[i], REMAIN(i), " RSS");
-+		i += scnprintf(&buf[i], REMAIN(i), " RSS");
- 	if (pf->flags & I40E_FLAG_FD_ATR_ENABLED)
--		i += snprintf(&buf[i], REMAIN(i), " FD_ATR");
-+		i += scnprintf(&buf[i], REMAIN(i), " FD_ATR");
- 	if (pf->flags & I40E_FLAG_FD_SB_ENABLED) {
--		i += snprintf(&buf[i], REMAIN(i), " FD_SB");
--		i += snprintf(&buf[i], REMAIN(i), " NTUPLE");
-+		i += scnprintf(&buf[i], REMAIN(i), " FD_SB");
-+		i += scnprintf(&buf[i], REMAIN(i), " NTUPLE");
- 	}
- 	if (pf->flags & I40E_FLAG_DCB_CAPABLE)
--		i += snprintf(&buf[i], REMAIN(i), " DCB");
--	i += snprintf(&buf[i], REMAIN(i), " VxLAN");
--	i += snprintf(&buf[i], REMAIN(i), " Geneve");
-+		i += scnprintf(&buf[i], REMAIN(i), " DCB");
-+	i += scnprintf(&buf[i], REMAIN(i), " VxLAN");
-+	i += scnprintf(&buf[i], REMAIN(i), " Geneve");
- 	if (pf->flags & I40E_FLAG_PTP)
--		i += snprintf(&buf[i], REMAIN(i), " PTP");
-+		i += scnprintf(&buf[i], REMAIN(i), " PTP");
- 	if (pf->flags & I40E_FLAG_VEB_MODE_ENABLED)
--		i += snprintf(&buf[i], REMAIN(i), " VEB");
-+		i += scnprintf(&buf[i], REMAIN(i), " VEB");
- 	else
--		i += snprintf(&buf[i], REMAIN(i), " VEPA");
-+		i += scnprintf(&buf[i], REMAIN(i), " VEPA");
- 
- 	dev_info(&pf->pdev->dev, "%s\n", buf);
- 	kfree(buf);
+ /* Function pointers for the MAC. */
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 9ffaabfaa93a..1b8023f69f28 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -47,6 +47,9 @@ static const struct pci_device_id igc_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I225_I), board_base },
+ 	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I220_V), board_base },
+ 	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I225_K), board_base },
++	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I225_K2), board_base },
++	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I225_LMVP), board_base },
++	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I225_IT), board_base },
+ 	{ PCI_VDEVICE(INTEL, IGC_DEV_ID_I225_BLANK_NVM), board_base },
+ 	/* required last entry */
+ 	{0, }
 -- 
-2.16.4
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
