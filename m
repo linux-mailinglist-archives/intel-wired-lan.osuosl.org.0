@@ -2,60 +2,51 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C11A71826A9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Mar 2020 02:34:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5413B1826EA
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Mar 2020 02:58:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 810FF869A5;
-	Thu, 12 Mar 2020 01:34:43 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 091C886AE1;
+	Thu, 12 Mar 2020 01:58:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xOCF0Q3dxXa3; Thu, 12 Mar 2020 01:34:42 +0000 (UTC)
+	with ESMTP id k5vzwRpFpVii; Thu, 12 Mar 2020 01:58:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 009CA86992;
-	Thu, 12 Mar 2020 01:34:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B4CB86A4A;
+	Thu, 12 Mar 2020 01:58:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D1D1A1BF473
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 01:34:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F00711BF9B6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 01:58:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CDB56886E5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 01:34:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E41B888541
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 01:58:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GSRq1EI7uubf for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Mar 2020 01:34:39 +0000 (UTC)
+ with ESMTP id QpdRfV9buLmB for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Mar 2020 01:58:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CD7BA882AC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 01:34:39 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EEAD78852E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 01:58:21 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2020 18:34:39 -0700
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2020 18:58:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,543,1574150400"; d="scan'208";a="389449532"
-Received: from jekeller-mobl1.amr.corp.intel.com (HELO [134.134.177.106])
- ([134.134.177.106])
- by orsmga004.jf.intel.com with ESMTP; 11 Mar 2020 18:34:39 -0700
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <20200312012726.973301-1-jacob.e.keller@intel.com>
- <20200312012726.973301-7-jacob.e.keller@intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,543,1574150400"; d="scan'208";a="236656302"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.33])
+ by orsmga008.jf.intel.com with ESMTP; 11 Mar 2020 18:58:21 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-Organization: Intel Corporation
-Message-ID: <ef5f5cb1-fecf-52ec-4814-79bb0ca09ce0@intel.com>
-Date: Wed, 11 Mar 2020 18:34:38 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Wed, 11 Mar 2020 18:58:09 -0700
+Message-Id: <20200312015818.1007882-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.24.1
 MIME-Version: 1.0
-In-Reply-To: <20200312012726.973301-7-jacob.e.keller@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v2 6/9] ice: enable initial devlink
- support
+Subject: [Intel-wired-lan] [PATCH v3 0/9] ice devlink support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,101 +65,134 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ugh sorry for the thrash, Jeff, please do not apply this to IWL yet,
-looks like I need a v3.
+(Sorry for the thrash, v3 should correct the warning)
 
-On 3/11/2020 6:27 PM, Jacob Keller wrote:
-> +/**
-> + * ice_devlink_create_port - Create a devlink port for this PF
-> + * @pf: the PF to create a port for
-> + *
-> + * Create and register a devlink_port for this PF. Note that although each
-> + * physical function is connected to a separate devlink instance, the port
-> + * will still be numbered according to the physical function id.
-> + *
-> + * Return: zero on success or an error code on failure.
-> + */
-> +int ice_devlink_create_port(struct ice_pf *pf)
-> +{
-> +	struct devlink *devlink = priv_to_devlink(pf);
-> +	struct ice_vsi *vsi = ice_get_main_vsi(pf);
-> +	struct device *dev = ice_pf_to_dev(pf);
-> +	int err;
-> +
-> +	if (!vsi) {
-> +		dev_err(dev, "%s: unable to find main VSI\n", __func__);
-> +		return -EIO;
-> +	}
-> +
-> +	devlink_port_attrs_set(&pf->devlink_port, DEVLINK_PORT_FLAVOUR_PHYSICAL,
-> +			       pf->hw.pf_id, false, 0, NULL, 0);
-> +	err = devlink_port_register(devlink, &pf->devlink_port, pf->hw.pf_id);
-> +	if (err) {
-> +		dev_err(dev, "devlink_port_register failed: %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	return 0;
-> +}
+Implement basic support for the devlink interface in the ice driver.
+Additionally pave some necessary changes for adding a devlink region that
+exposes the NVM contents.
 
-<snip>
+This series first contains 5 patches for enabling and implementing full NVM
+read access via the ETHTOOL_GEEPROM interface. This includes some cleanup of
+endian-types, a new function for reading from the NVM and Shadow RAM as a
+flat addressable space, a function to calculate the available flash size
+during load, and a change to how some of the NVM version fields are stored
+in the ice_nvm_info structure.
 
->  #define DRV_VERSION_MAJOR 0
->  #define DRV_VERSION_MINOR 8
-> @@ -2426,6 +2427,8 @@ static int ice_cfg_netdev(struct ice_vsi *vsi)
->  	if (err)
->  		return err;
->  
-> +	devlink_port_type_eth_set(&pf->devlink_port, vsi->netdev);
-> +
+Following this is 3 patches for implementing devlink support. First, one
+patch which implements the basic framework and introduces the ice_devlink.c
+file. Second, a patch to implement basic .info_get support. Finally, a
+patch which reads the device PBA identifier and reports it as the `board.id`
+value in the .info_get response.
 
-Ugh. I just noticed this when I went to reboot my test system,
-apparently this is called before ice_devlink_create_port and generates a
-warning:
+This series builds on previous reviews for patches sent as RFC and is
+intended to pave the way for the devlink region changes to support creating
+snapshots from userspace and reading from a region without a snapshot.
 
-> [  186.682927] ------------[ cut here ]------------
-> [  186.682934] WARNING: CPU: 28 PID: 731 at net/core/devlink.c:6936 __devlink_port_type_set+0x60/0x70
-> [  186.682934] Modules linked in: ice(+) ip6t_REJECT nf_reject_ipv6 ip6t_rpfilter ipt_REJECT nf_reject_ipv4 xt_conntrack ebtable_nat ebtable_broute ip6table_nat ip6table_mangle ip6table_raw ip6table_security iptable_nat nf_nat iptable_ma
-> ngle iptable_raw iptable_security nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_set nfnetlink ebtable_filter ebtables ip6table_filter ip6_tables iptable_filter sunrpc vfat fat intel_rapl_msr intel_rapl_common isst_if_common skx_edac nfit
->  libnvdimm x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm irqbypass crct10dif_pclmul crc32_pclmul ghash_clmulni_intel iTCO_wdt iTCO_vendor_support intel_cstate qat_c62x ipmi_ssif intel_qat intel_uncore mei_me mei intel_rapl
-> _perf ioatdma joydev authenc pcspkr i2c_i801 lpc_ich ipmi_si dca ipmi_devintf ipmi_msghandler acpi_power_meter acpi_pad ip_tables xfs libcrc32c ast i2c_algo_bit drm_vram_helper drm_ttm_helper ttm drm_kms_helper cec drm i40e crc32c_intel
-> virtual_bus wmi pkcs8_key_parser [last unloaded: ice]
-> [  186.682962] CPU: 28 PID: 731 Comm: kworker/28:1 Tainted: G        W         5.6.0-rc3+ #3
-> [  186.682963] Hardware name: Intel Corporation S2600STQ/S2600STQ, BIOS SE5C620.86B.02.01.0010.010620200716 01/06/2020
-> [  186.682969] Workqueue: events work_for_cpu_fn
-> [  186.682971] RIP: 0010:__devlink_port_type_set+0x60/0x70
-> [  186.682972] Code: 89 e7 e8 33 52 16 00 44 89 6d 34 4c 89 e7 48 89 5d 40 e8 93 52 16 00 48 89 ef 5b be 07 00 00 00 5d 41 5c 41 5d e9 90 fc ff ff <0f> 0b c3 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 0f 1f 44 00 00 41
-> [  186.682973] RSP: 0018:ffffa14c60567d70 EFLAGS: 00010246
-> [  186.682974] RAX: 0000000000000000 RBX: ffffffffc05b86c0 RCX: 0000000000000000
-> [  186.682974] RDX: ffff8bdffb72b000 RSI: 0000000000000002 RDI: ffff8bdff7568128
-> [  186.682975] RBP: ffff8bdff7568128 R08: ffffffffb77f9820 R09: ffffa14c60567c68
-> [  186.682975] R10: ffff8bdfa9d22a18 R11: ffff8bdfff16af38 R12: ffff8bdffb72b000
-> [  186.682975] R13: ffff8bdff7568120 R14: ffff8bdff7568280 R15: 0000000000000000
-> [  186.682976] FS:  0000000000000000(0000) GS:ffff8bdfff000000(0000) knlGS:0000000000000000
-> [  186.682977] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  186.682977] CR2: 0000556b79c52c58 CR3: 0000000e5760a004 CR4: 00000000007606e0
-> [  186.682978] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-> [  186.682978] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-> [  186.682979] PKRU: 55555554
-> [  186.682979] Call Trace:
-> [  186.682983]  devlink_port_type_eth_set+0x7b/0xb0
-> [  186.682993]  ice_probe+0x7dc/0xda0 [ice]
-> [  186.682998]  local_pci_probe+0x42/0x80
-> [  186.683002]  ? __schedule+0x2cf/0x740
-> [  186.683003]  work_for_cpu_fn+0x16/0x20
-> [  186.683006]  process_one_work+0x1b5/0x360
-> [  186.683007]  worker_thread+0x1e2/0x3c0
-> [  186.683010]  kthread+0xf9/0x130
-> [  186.683012]  ? process_one_work+0x360/0x360
-> [  186.683013]  ? kthread_park+0x90/0x90
-> [  186.683014]  ret_from_fork+0x35/0x40
-> [  186.683016] ---[ end trace 5fff949e65047c29 ]---
+Previous RFC series and discussion can be found at the following locations
 
-I'm fairly sure this is because we do not call ice_devlink_create_port
-early enough, but I need to figure out the best place to put this :(
+* v1 https://lore.kernel.org/netdev/20200130225913.1671982-2-jacob.e.keller@intel.com/
+* v2 https://lore.kernel.org/netdev/20200214232223.3442651-1-jacob.e.keller@intel.com/
 
-Regards,
-Jake
+This series only contains the ice driver changes for the basic devlink
+interface. I am working on updating the devlink core proposals and will send
+them to the netdev list after this has been merged.
+
+Once again, thank you for your continued review and feedback.
+
+## Changes since v2 ##
+
+* create devlink_port before calling register_netdev, correctly fixing the
+  issue pointed out by Jiri in the RFC review.
+
+## Changes since v1 ##
+
+* added a patch to promote ``fw.bundle_id`` to a generic version
+* used ``fw.bundle_id`` instead of ``fw.bundle``
+
+## Changes since the RFC ##
+
+Removed patches:
+* remove "ice: rename variables used for Option ROM version", as this is
+  superseded by the patch to change now NVM version data is stored.
+
+Patches without change:
+* "ice: use __le16 types for explicitly Little Endian values"
+* "ice: create function to read a section of the NVM and Shadow RAM"
+
+New patches:
+* "ice: store NVM version info in extracted format"
+  a patch which modifies how the NVM version information is stored
+* "ice: discover and store size of available flash"
+  a patch to discover and save the available flash size during load
+
+Changes in "ice: implement full NVM read from ETHTOOL_GEEPROM"
+* use the new flash_size field in ice_get_eeprom_len, enabling a complete
+  dump of flash contents, instead of only the initial 64Kb
+* remove the unnecessary EINVAL check on return value from
+  ice_read_flat_nvm. Now that we report the proper flash size, this error
+  code is unexpected, and should be treated as an error.
+* Use a "goto release" to ensure that the ice_release_nvm() function is
+  called.
+
+Changes in "ice: enable initial devlink support"
+* Update copyright year on ice_devlink.c to 2020
+* make ice_devlink_ops static
+* Use "Return:" instead of "@returns" in kernel-doc comments
+* Move the call to devlink_port_type_eth_set into ice_cfg_netdev, after the
+  call to register_netdev().
+
+Changes in "ice: add basic handler for devlink .info_get"
+* convert to a loop over structured data, similar to the nfp driver
+* change ``fw.mgmt.bundle`` to ``fw.mgmt.build``
+* change ``fw.undi.orom`` to just ``fw.undi``
+* change ``nvm.psid`` to ``fw.psid.api``
+* change ``nvm.bundle`` to ``fw.bundle``
+* add ``fw.app.name`` and ``fw.app`` representing the name and version of
+  the active DDP package
+* use lowercase %08x instead of %08X for ``fw.bundle``
+
+Changes in "ice: add board identifier info to devlink .info_get"
+* modified to use the new structured format for adding new versions
+
+Jacob Keller (8):
+  ice: use __le16 types for explicitly Little Endian values
+  ice: create function to read a section of the NVM and Shadow RAM
+  ice: store NVM version info in extracted format
+  ice: discover and store size of available flash
+  ice: enable initial devlink support
+  devlink: promote "fw.bundle_id" to a generic info version
+  ice: add basic handler for devlink .info_get
+  ice: add board identifier info to devlink .info_get
+
+Jesse Brandeburg (1):
+  ice: implement full NVM read from ETHTOOL_GEEPROM
+
+ .../networking/devlink/devlink-info.rst       |   5 +
+ Documentation/networking/devlink/ice.rst      |  71 +++
+ Documentation/networking/devlink/index.rst    |   1 +
+ drivers/net/ethernet/intel/Kconfig            |   1 +
+ drivers/net/ethernet/intel/ice/Makefile       |   1 +
+ drivers/net/ethernet/intel/ice/ice.h          |   4 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   4 +
+ drivers/net/ethernet/intel/ice/ice_common.c   |  89 ----
+ drivers/net/ethernet/intel/ice/ice_common.h   |   9 -
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 320 ++++++++++++
+ drivers/net/ethernet/intel/ice/ice_devlink.h  |  14 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  46 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  33 +-
+ drivers/net/ethernet/intel/ice/ice_nvm.c      | 484 +++++++++++-------
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |  12 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |  32 +-
+ .../net/ethernet/netronome/nfp/nfp_devlink.c  |   2 +-
+ include/net/devlink.h                         |   2 +
+ 18 files changed, 826 insertions(+), 304 deletions(-)
+ create mode 100644 Documentation/networking/devlink/ice.rst
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_devlink.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_devlink.h
+
+-- 
+2.24.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
