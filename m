@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14B5B183A7B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Mar 2020 21:18:03 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF79E183A7C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Mar 2020 21:18:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A2E2888601;
-	Thu, 12 Mar 2020 20:18:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6991D20371;
+	Thu, 12 Mar 2020 20:18:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TdlAAAIlHeWN; Thu, 12 Mar 2020 20:18:01 +0000 (UTC)
+	with ESMTP id XgU4xVehU0ex; Thu, 12 Mar 2020 20:18:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 66249885ED;
-	Thu, 12 Mar 2020 20:18:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D4A3520382;
+	Thu, 12 Mar 2020 20:18:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 40D1B1BF3EA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 20:17:41 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7B1DD1BF3EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 20:18:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3C1FE8654C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 20:17:41 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7626D875AE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 20:18:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sBR0lR6b0f85 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Mar 2020 20:17:40 +0000 (UTC)
+ with ESMTP id aVtXxIOStqaC for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Mar 2020 20:18:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B76B88648C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 20:17:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DB8D0875A2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Mar 2020 20:18:38 +0000 (UTC)
 Received: from kicinski-fedora-PC1C0HJN (unknown [163.114.132.4])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6366F206E2;
- Thu, 12 Mar 2020 20:17:40 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 932AE206E2;
+ Thu, 12 Mar 2020 20:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1584044260;
- bh=zhu+rsTufrw2FzTmrz0GF4KFrsSif/d1LfR9k+MShXc=;
+ s=default; t=1584044318;
+ bh=tcuucS7hOdCj8EdkSe9DlmycIQN4z0cO7w8Ib3DboTA=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=2PtAXT3/Us/EkOGP+ZH3Vsi7V+vRkA2GeaRmK0dB6YMMMmf83H9gIlW5xyu8nziij
- bIyGuvK/NoLXwXsBbHB2k3x2WJgdmFYqqZoWmZgoaal/T9z/OSx2gCXs0V+425PP4T
- tSlcK94U2auAOAt3iLPrkqDzgTn/gOYLJlN/7oZY=
-Date: Thu, 12 Mar 2020 13:17:38 -0700
+ b=x6fWZaTk8gLZgHFvV6YG34k5hXzLRNPHjQwH1T7ok63wsrLOA4YIg8/yCnhetIbIy
+ SI2W7k1x++TehavTORcUJlicUCqtDPEEq0qGpuiRw3hU4Ocd2jAaMdS1zAnilcfCR2
+ plD/01iFcArODhiKgytr206TBdIrpub53E/kAZ90=
+Date: Thu, 12 Mar 2020 13:18:36 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20200312131738.77d91d7e@kicinski-fedora-PC1C0HJN>
-In-Reply-To: <20200312015818.1007882-8-jacob.e.keller@intel.com>
+Message-ID: <20200312131836.1679a4a3@kicinski-fedora-PC1C0HJN>
+In-Reply-To: <20200312015818.1007882-9-jacob.e.keller@intel.com>
 References: <20200312015818.1007882-1-jacob.e.keller@intel.com>
- <20200312015818.1007882-8-jacob.e.keller@intel.com>
+ <20200312015818.1007882-9-jacob.e.keller@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote
- "fw.bundle_id" to a generic info version
+Subject: Re: [Intel-wired-lan] [PATCH v3 8/9] ice: add basic handler for
+ devlink .info_get
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,16 +71,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 11 Mar 2020 18:58:16 -0700 Jacob Keller wrote:
-> The nfp driver uses ``fw.bundle_id`` to represent a unique identifier of the
-> entire firmware bundle.
+On Wed, 11 Mar 2020 18:58:17 -0700 Jacob Keller wrote:
+> The devlink .info_get callback allows the driver to report detailed
+> version information. The following devlink versions are reported with
+> this initial implementation:
 > 
-> A future change is going to introduce a similar notion in the ice
-> driver, so promote ``fw.bundle_id`` into a generic version now.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+>  "fw.mgmt" -> The version of the firmware that controls PHY, link, etc
+>  "fw.mgmt.api" -> API version of interface exposed over the AdminQ
+>  "fw.mgmt.build" -> Unique build id of the source for the management fw
+>  "fw.undi" -> Version of the Option ROM containing the UEFI driver
+>  "fw.psid.api" -> Version of the NVM image format.
+>  "fw.bundle_id" -> Unique identifier for the combined flash image.
+>  "fw.app.name" -> The name of the active DDP package.
+>  "fw.app" -> The version of the active DDP package.
 
-Reviewed-by: Jakub Kicinski <kuba@kernel.org>
+Acked-by: Jakub Kicinski <kuba@kernel.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
