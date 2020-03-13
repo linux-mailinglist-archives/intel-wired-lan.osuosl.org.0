@@ -1,124 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F958189100
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Mar 2020 23:05:36 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A654189101
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Mar 2020 23:05:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1EF4D883A1;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E25BA86B7A;
 	Tue, 17 Mar 2020 22:05:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eHFdTlK65YZg; Tue, 17 Mar 2020 22:05:34 +0000 (UTC)
+	with ESMTP id yxBORaq7aiYc; Tue, 17 Mar 2020 22:05:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 989058838B;
-	Tue, 17 Mar 2020 22:05:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 03A2786B92;
+	Tue, 17 Mar 2020 22:05:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A5FA31BF861
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 05:06:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D05271BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 08:40:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 8975421FAD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 05:06:52 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BAA0922FD5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 08:40:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2ReyqpI2MrMo for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Mar 2020 05:06:42 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0196.hostedemail.com
- [216.40.44.196])
- by silver.osuosl.org (Postfix) with ESMTPS id CBE5E21567
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Mar 2020 05:06:41 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay02.hostedemail.com (Postfix) with ESMTP id 34C948418;
- Wed, 11 Mar 2020 05:06:39 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 10, 1, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:230:355:379:541:857:960:966:967:973:982:988:989:1042:1260:1311:1314:1345:1437:1515:1605:1730:1747:1777:1792:1801:2194:2196:2197:2198:2199:2200:2201:2202:2393:2525:2561:2564:2682:2685:2734:2859:2894:2896:2901:2902:2904:2914:2915:2924:2925:2926:2933:2937:2939:2942:2945:2947:2951:2954:3022:3138:3139:3140:3141:3142:3165:3302:3865:3866:3867:3868:3870:3871:3872:3874:3934:3936:3938:3941:3944:3947:3950:3953:3956:3959:4225:4250:4321:4384:4385:4395:4559:4605:5007:6261:6299:6630:6737:6738:6742:6743:7688:7875:7903:7974:8549:8568:8784:8957:9025:9038:9149:10004:10394:11026:11657:11914:12043:12048:12295:12296:12297:12438:12555:12679:12688:12690:12697:12702:12712:12713:12723:12726:12731:12737:12740:12895:12903:12986:13160:13161:13184:13229:13894:14096:14394:14877:21060:21080:21221:21324:21325:21433:21451:21611:21627:21740:21771:21772:21773:21774:21789:21795:21796:21811:21939:21965:21990:30009:30010:30012:30036:30054:30055:30
- 065:3007
-X-HE-Tag: oven06_19d681dffdc56
-X-Filterd-Recvd-Size: 138927
-Received: from joe-laptop.perches.com (unknown [47.151.143.254])
- (Authenticated sender: joe@perches.com)
- by omf16.hostedemail.com (Postfix) with ESMTPA;
- Wed, 11 Mar 2020 05:06:17 +0000 (UTC)
-From: Joe Perches <joe@perches.com>
-To: linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org,
- linux-tegra@vger.kernel.org, kvmarm@lists.cs.columbia.edu,
- linux-csky@vger.kernel.org, linux-m68k@lists.linux-m68k.org,
- linux-mips@vger.kernel.org, linux-kernel@vger.kernel.org,
- kvm@vger.kernel.org, oprofile-list@lists.sf.net, kvm-ppc@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-riscv@lists.infradead.org,
- netdev@vger.kernel.org, bpf@vger.kernel.org, linux-edac@vger.kernel.org,
- linux-block@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-acpi@vger.kernel.org, devel@acpica.org, linux-ide@vger.kernel.org,
- linux-atm-general@lists.sourceforge.net, drbd-dev@lists.linbit.com,
- ceph-devel@vger.kernel.org, xen-devel@lists.xenproject.org,
- linux-bluetooth@vger.kernel.org, openipmi-developer@lists.sourceforge.net,
- linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@axis.com, dmaengine@vger.kernel.org,
- linux1394-devel@lists.sourceforge.net, linux-gpio@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-stm32@st-md-mailman.stormreply.com,
- amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- intel-gvt-dev@lists.freedesktop.org, intel-gfx@lists.freedesktop.org,
- linux-amlogic@lists.infradead.org, nouveau@lists.freedesktop.org,
- greybus-dev@lists.linaro.org, linux-input@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-hyperv@vger.kernel.org,
- linux-hwmon@vger.kernel.org, linux-i2c@vger.kernel.org,
- openbmc@lists.ozlabs.org, linux-iio@vger.kernel.org,
- linux-rdma@vger.kernel.org, target-devel@vger.kernel.org,
- patches@opensource.cirrus.com, iommu@lists.linux-foundation.org,
- virtualization@lists.linux-foundation.org, linux-bcache@vger.kernel.org,
- dm-devel@redhat.com, linux-raid@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, MPT-FusionLinux.pdl@broadcom.com,
- linux-scsi@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-can@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-acenic@sunsite.dk,
- bcm-kernel-feedback-list@broadcom.com, linux-parisc@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-hams@vger.kernel.org,
- ath10k@lists.infradead.org, ath11k@lists.infradead.org,
- linux-wireless@vger.kernel.org, wcn36xx@lists.infradead.org,
- b43-dev@lists.infradead.org, linux-nfc@lists.01.org,
- linux-ntb@googlegroups.com, linux-nvme@lists.infradead.org,
- linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
- platform-driver-x86@vger.kernel.org, ibm-acpi-devel@lists.sourceforge.net,
- linux-remoteproc@vger.kernel.org, linux-rtc@vger.kernel.org,
- linux-s390@vger.kernel.org, esc.storagedev@microsemi.com,
- open-iscsi@googlegroups.com, megaraidlinux.pdl@broadcom.com,
- linux-spi@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
- linux-serial@vger.kernel.org, linux-unisoc@lists.infradead.org,
- sparclinux@vger.kernel.org, accessrunner-general@lists.sourceforge.net,
- usb-storage@lists.one-eyed-alien.net, linux-fbdev@vger.kernel.org,
- linux-watchdog@vger.kernel.org, v9fs-developer@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, linux-afs@lists.infradead.org,
- linux-aio@kvack.org, linux-btrfs@vger.kernel.org,
- linux-cifs@vger.kernel.org, samba-technical@lists.samba.org,
- linux-nvdimm@lists.01.org, cluster-devel@redhat.com,
- linux-erofs@lists.ozlabs.org, linux-ext4@vger.kernel.org,
- linux-f2fs-devel@lists.sourceforge.net, io-uring@vger.kernel.org,
- linux-xfs@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-mm@kvack.org, linux-audit@redhat.com,
- linux-security-module@vger.kernel.org,
- kgdb-bugreport@lists.sourceforge.net, cgroups@vger.kernel.org,
- netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
- dccp@vger.kernel.org, linux-decnet-user@lists.sourceforge.net,
- mptcp@lists.01.org, lvs-devel@vger.kernel.org, dev@openvswitch.org,
- rds-devel@oss.oracle.com, cake@lists.bufferbloat.net,
- linux-sctp@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-x25@vger.kernel.org, linux-integrity@vger.kernel.org,
- keyrings@vger.kernel.org, selinux@vger.kernel.org,
- alsa-devel@alsa-project.org, clang-built-linux@googlegroups.com
-Date: Tue, 10 Mar 2020 21:51:14 -0700
-Message-Id: <cover.1583896344.git.joe@perches.com>
-X-Mailer: git-send-email 2.24.0
-MIME-Version: 1.0
+ with ESMTP id sKun+b6Hi-jC for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Mar 2020 08:40:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5784B22DEC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 08:40:04 +0000 (UTC)
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2020 01:40:03 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,548,1574150400"; d="scan'208";a="237147961"
+Received: from sgsxdev004.isng.intel.com (HELO localhost) ([10.226.88.13])
+ by orsmga008.jf.intel.com with ESMTP; 13 Mar 2020 01:39:59 -0700
+From: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 13 Mar 2020 16:39:43 +0800
+Message-Id: <8bd05d664cec0b4d72ee8f31b77d3f12b90e27a0.1584088476.git.jack.ping.chng@linux.intel.com>
+X-Mailer: git-send-email 2.11.0
 X-Mailman-Approved-At: Tue, 17 Mar 2020 22:05:17 +0000
-Subject: [Intel-wired-lan] [PATCH -next 000/491] treewide: use fallthrough; 
+Subject: [Intel-wired-lan] [next-queue PATCH v3] gwdpa: gswip: Introduce
+ Gigabit Ethernet Switch (GSWIP) device driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,2522 +60,5215 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: uclinux-h8-devel@lists.sourceforge.jp, linux-xtensa@linux-xtensa.org,
- brcm80211-dev-list.pdl@broadcom.com, devel@driverdev.osuosl.org,
- linux-ia64@vger.kernel.org, linux-c6x-dev@linux-c6x.org,
- linux-sh@vger.kernel.org, oss-drivers@netronome.com,
- linux-hexagon@vger.kernel.org, bridge@lists.linux-foundation.org,
- linux-um@lists.infradead.org, qat-linux@intel.com,
- brcm80211-dev-list@cypress.com, linux-wpan@vger.kernel.org,
- openrisc@lists.librecores.org, linux-alpha@vger.kernel.org,
- linux-i3c@lists.infradead.org, linux-snps-arc@lists.infradead.org,
- freedreno@lists.freedesktop.org, linux-clk@vger.kernel.org,
- ocfs2-devel@oss.oracle.com
+Cc: cheol.yong.kim@intel.com,
+ Amireddy Mallikarjuna reddy <mallikarjunax.reddy@linux.intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There is a new fallthrough pseudo-keyword macro that can be used
-to replace the various /* fallthrough */ style comments that are
-used to indicate a case label code block is intended to fallthrough
-to the next case label block.
+This driver enables the Intel's LGM SoC GSWIP block. GSWIP is a core module
+tailored for L2/L3/L4+ data plane and QoS functions. It allows CPUs and
+other accelerators connected to the SoC datapath to enqueue and dequeue
+packets through DMAs. Most configuration values are stored in tables
+such as Parsing and Classification Engine tables, Buffer Manager tables
+and Pseudo MAC tables.
 
-See commit 294f69e662d1 ("compiler_attributes.h: Add 'fallthrough'
-pseudo keyword for switch/case use")
+Signed-off-by: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
+Signed-off-by: Amireddy Mallikarjuna reddy <mallikarjunax.reddy@linux.intel.com>
+---
+Changes:
 
-These patches are intended to allow clang to detect missing
-switch/case fallthrough uses.
+v3:
+- Removed redundant err print for platform_get_irq_byname
+- Fixed duplicated argument mac_get_mii_interface
+- Used common define for MAC/PMAC
+---
+ drivers/net/ethernet/intel/Kconfig                 |  11 +
+ drivers/net/ethernet/intel/Makefile                |   1 +
+ drivers/net/ethernet/intel/gwdpa/Makefile          |   5 +
+ drivers/net/ethernet/intel/gwdpa/gswip/Makefile    |  10 +
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip.h     | 448 ++++++++++++
+ .../net/ethernet/intel/gwdpa/gswip/gswip_core.c    | 804 +++++++++++++++++++++
+ .../net/ethernet/intel/gwdpa/gswip/gswip_core.h    |  90 +++
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c | 179 +++++
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h |  19 +
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c | 225 ++++++
+ .../net/ethernet/intel/gwdpa/gswip/gswip_port.c    | 330 +++++++++
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h | 491 +++++++++++++
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c | 332 +++++++++
+ drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h | 195 +++++
+ drivers/net/ethernet/intel/gwdpa/gswip/lmac.c      |  46 ++
+ drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c   | 524 ++++++++++++++
+ .../net/ethernet/intel/gwdpa/gswip/mac_common.h    | 238 ++++++
+ drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c   | 186 +++++
+ drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c     | 643 ++++++++++++++++
+ drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h     | 236 ++++++
+ 20 files changed, 5013 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/Makefile
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/Makefile
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip.h
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/lmac.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
+ create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h
 
-Do a depth-first pass on the MAINTAINERS file and find the various
-F: pattern files and convert the fallthrough comments to fallthrough;
-for all files matched by all  F: patterns in in each section.
-
-Done via the perl script below and the previously posted
-cvt_fallthrough.pl script.
-
-Link: https://lore.kernel.org/lkml/b56602fcf79f849e733e7b521bb0e17895d390fa.1582230379.git.joe.com/
-
-These patches are based on next-20200310 and are available in
-
-git://repo.or.cz/linux-2.6/trivial-mods.git in branch 20200310_fallthrough_2
-
-$ cat commit_fallthrough.pl
-#!/usr/bin/env perl
-
-use sort 'stable';
-
-#
-# Reorder a sorted array so file entries are before directory entries
-# depends on a trailing / for directories
-# so:
-#   foo/
-#   foo/bar.c
-# becomes
-#   foo/bar.c
-#   foo/
-#
-sub file_before_directory {
-    my ($array_ref) = (@_);
-
-    my $count = scalar(@$array_ref);
-
-    for (my $i = 1; $i < $count; $i++) {
-	if (substr(@$array_ref[$i - 1], -1) eq '/' &&
-	    substr(@$array_ref[$i], 0, length(@$array_ref[$i - 1])) eq @$array_ref[$i - 1]) {
-		my $string = @$array_ref[$i - 1];
-		@$array_ref[$i - 1] = @$array_ref[$i];
-		@$array_ref[$i] = $string;
-	    }
-	}
-}
-
-sub uniq {
-    my (@parms) = @_;
-
-    my %saw;
-    @parms = grep(!$saw{$_}++, @parms);
-
-    return @parms;
-}
-
-# Get all the F: file patterns in MAINTAINERS that could be a .[ch] file
-my $maintainer_patterns = `grep -P '^F:\\s+' MAINTAINERS`;
-my @patterns = split('\n', $maintainer_patterns);
-s/^F:\s*// for @patterns;
-@patterns = grep(!/^(?:Documentation|tools|scripts)\//, @patterns);
-@patterns = grep(!/\.(?:dtsi?|rst|config)$/, @patterns);
-@patterns = sort @patterns;
-@patterns = sort { $b =~ tr/\//\// cmp $a =~ tr/\//\// } @patterns;
-file_before_directory(\@patterns);
-
-my %sections_done;
-
-foreach my $pattern (@patterns) {
-
-# Find the files the pattern matches
-    my $pattern_files = `git ls-files -- $pattern`;
-    my @new_patterns = split('\n', $pattern_files);
-    $pattern_files = join(' ', @new_patterns);
-    next if ($pattern_files =~ /^\s*$/);
-
-# Find the section the first file matches
-    my $pattern_file = @new_patterns[0];
-    my $section_output = `./scripts/get_maintainer.pl --nogit --nogit-fallback --sections --pattern-depth=1 $pattern_file`;
-    my @section = split('\n', $section_output);
-    my $section_header = @section[0];
-
-    print("Section: <$section_header>\n");
-
-# Skip the section if it's already done
-    print("Already done '$section_header'\n") if ($sections_done{$section_header});
-    next if ($sections_done{$section_header}++);
-
-# Find all the .[ch] files in all F: lines in that section
-    my @new_section;
-    foreach my $line (@section) {
-	last if ($line =~ /^\s*$/);
-	push(@new_section, $line);
-    }
-    @section = grep(/^F:/, @new_section);
-    s/^F:\s*// for @section;
-
-    @section = grep(!/^(?:Documentation|tools|scripts)\//, @section);
-    @section = grep(!/\.(?:dtsi?|rst|config)$/, @section);
-    @section = sort @section;
-    @section = uniq(@section);
-
-    my $section_files = join(' ', @section);
-
-    print("section_files: <$section_files>\n");
-
-    next if ($section_files =~ /^\s*$/);
-
-    my $cvt_files = `git ls-files -- $section_files`;
-    my @files = split('\n', $cvt_files);
-
-    @files = grep(!/^(?:Documentation|tools|scripts)\//, @files);
-    @files = grep(!/\.(?:dtsi?|rst|config)$/, @files);
-    @files = grep(/\.[ch]$/, @files);
-    @files = sort @files;
-    @files = uniq(@files);
-
-    $cvt_files = join(' ', @files);
-    print("files: <$cvt_files>\n");
-
-    next if (scalar(@files) < 1);
-
-# Convert fallthroughs for all [.ch] files in the section
-    print("doing cvt_fallthrough.pl -- $cvt_files\n");
-
-    `cvt_fallthrough.pl -- $cvt_files`;
-
-# If nothing changed, nothing to commit
-    `git diff-index --quiet HEAD --`;
-    next if (!$?);
-
-# Commit the changes
-    my $fh;
-
-    open($fh, "+>", "cvt_fallthrough.commit_msg") or die "$0: can't create temporary file: $!\n";
-    print $fh <<EOF
-$section_header: Use fallthrough;
-
-Convert the various uses of fallthrough comments to fallthrough;
-
-Done via script
-Link: https://lore.kernel.org/lkml/b56602fcf79f849e733e7b521bb0e17895d390fa.1582230379.git.joe@perches.com/
-EOF
-;
-    close $fh;
-
-    `git commit -s -a -F cvt_fallthrough.commit_msg`;
-}
-
-Joe Perches (491):
-  MELLANOX ETHERNET INNOVA DRIVERS: Use fallthrough;
-  MARVELL OCTEONTX2 RVU ADMIN FUNCTION DRIVER: Use fallthrough;
-  MELLANOX MLX5 core VPI driver: Use fallthrough;
-  PERFORMANCE EVENTS SUBSYSTEM: Use fallthrough;
-  ARM/UNIPHIER ARCHITECTURE: Use fallthrough;
-  ARM/RISCPC ARCHITECTURE: Use fallthrough;
-  KERNEL VIRTUAL MACHINE FOR ARM/ARM64 (KVM/arm, KVM/arm64): Use
-    fallthrough;
-  ARM/CIRRUS LOGIC EP93XX ARM ARCHITECTURE: Use fallthrough;
-  ARM/Amlogic Meson SoC support: Use fallthrough;
-  ARM/SAMSUNG EXYNOS ARM ARCHITECTURES: Use fallthrough;
-  ARM/QUALCOMM SUPPORT: Use fallthrough;
-  ARM/ZTE ARCHITECTURE: Use fallthrough;
-  INGENIC JZ47xx SoCs: Use fallthrough;
-  DECSTATION PLATFORM SUPPORT: Use fallthrough;
-  KERNEL VIRTUAL MACHINE FOR MIPS (KVM/mips): Use fallthrough;
-  KERNEL VIRTUAL MACHINE FOR POWERPC (KVM/powerpc): Use fallthrough;
-  CELL BROADBAND ENGINE ARCHITECTURE: Use fallthrough;
-  KERNEL VIRTUAL MACHINE for s390 (KVM/s390): Use fallthrough;
-  Hyper-V CORE AND DRIVERS: Use fallthrough;
-  XEN HYPERVISOR INTERFACE: Use fallthrough;
-  KERNEL VIRTUAL MACHINE FOR X86 (KVM/x86): Use fallthrough;
-  X86 MCE INFRASTRUCTURE: Use fallthrough;
-  AMD KFD: Use fallthrough;
-  AMD DISPLAY CORE: Use fallthrough;
-  AMD POWERPLAY: Use fallthrough;
-  INTEL GVT-g DRIVERS (Intel GPU Virtualization): Use fallthrough;
-  AMD XGBE DRIVER: Use fallthrough;
-  BROADCOM BNX2X 10 GIGABIT ETHERNET DRIVER: Use fallthrough;
-  BROADCOM BNXT_EN 50 GIGABIT ETHERNET DRIVER: Use fallthrough;
-  BROADCOM GENET ETHERNET DRIVER: Use fallthrough;
-  BROCADE BNA 10 GIGABIT ETHERNET DRIVER: Use fallthrough;
-  CAVIUM LIQUIDIO NETWORK DRIVER: Use fallthrough;
-  ARM/CAVIUM THUNDER NETWORK DRIVER: Use fallthrough;
-  CXGB3 ETHERNET DRIVER (CXGB3): Use fallthrough;
-  CXGB4 ETHERNET DRIVER (CXGB4): Use fallthrough;
-  CXGB4VF ETHERNET DRIVER (CXGB4VF): Use fallthrough;
-  CISCO VIC ETHERNET NIC DRIVER: Use fallthrough;
-  TULIP NETWORK DRIVERS: Use fallthrough;
-  Emulex 10Gbps NIC BE2, BE3-R, Lancer, Skyhawk-R DRIVER (be2net): Use
-    fallthrough;
-  DPAA2 ETHERNET DRIVER: Use fallthrough;
-  HISILICON NETWORK SUBSYSTEM 3 DRIVER (HNS3): Use fallthrough;
-  EHEA (IBM pSeries eHEA 10Gb ethernet adapter) DRIVER: Use fallthrough;
-  INTEL ETHERNET DRIVERS: Use fallthrough;
-  MELLANOX ETHERNET DRIVER (mlx4_en): Use fallthrough;
-  MELLANOX MLX4 core VPI driver: Use fallthrough;
-  MELLANOX FIRMWARE FLASH LIBRARY (mlxfw): Use fallthrough;
-  MELLANOX ETHERNET SWITCH DRIVERS: Use fallthrough;
-  NETXEN (1/10) GbE SUPPORT: Use fallthrough;
-  QLOGIC QL4xxx ETHERNET DRIVER: Use fallthrough;
-  QLOGIC QLCNIC (1/10)Gb ETHERNET DRIVER: Use fallthrough;
-  SAMSUNG SXGBE DRIVERS: Use fallthrough;
-  STMMAC ETHERNET DRIVER: Use fallthrough;
-  QUALCOMM ATHEROS ATH10K WIRELESS DRIVER: Use fallthrough;
-  QUALCOMM ATHEROS ATH11K WIRELESS DRIVER: Use fallthrough;
-  ATHEROS ATH5K WIRELESS DRIVER: Use fallthrough;
-  ATHEROS ATH6KL WIRELESS DRIVER: Use fallthrough;
-  QUALCOMM ATHEROS ATH9K WIRELESS DRIVER: Use fallthrough;
-  CARL9170 LINUX COMMUNITY WIRELESS DRIVER: Use fallthrough;
-  QUALCOMM WCN36XX WIRELESS DRIVER: Use fallthrough;
-  B43 WIRELESS DRIVER: Use fallthrough;
-  B43LEGACY WIRELESS DRIVER: Use fallthrough;
-  BROADCOM BRCM80211 IEEE802.11n WIRELESS DRIVER: Use fallthrough;
-  INTEL WIRELESS 3945ABG/BG, 4965AGN (iwlegacy): Use fallthrough;
-  INTEL WIRELESS WIFI LINK (iwlwifi): Use fallthrough;
-  ORINOCO DRIVER: Use fallthrough;
-  PRISM54 WIRELESS DRIVER: Use fallthrough;
-  MARVELL MWIFIEX WIRELESS DRIVER: Use fallthrough;
-  MEDIATEK MT76 WIRELESS LAN DRIVER: Use fallthrough;
-  MEDIATEK MT7601U WIRELESS LAN DRIVER: Use fallthrough;
-  RALINK RT2X00 WIRELESS LAN DRIVER: Use fallthrough;
-  RTL8XXXU WIRELESS DRIVER (rtl8xxxu): Use fallthrough;
-  REALTEK WIRELESS DRIVER (rtlwifi family): Use fallthrough;
-  REALTEK WIRELESS DRIVER (rtw88): Use fallthrough;
-  TRACING: Use fallthrough;
-  OPROFILE: Use fallthrough;
-  PTRACE SUPPORT: Use fallthrough;
-  HIBERNATION (aka Software Suspend, aka swsusp): Use fallthrough;
-  ARM PMU PROFILING AND DEBUGGING: Use fallthrough;
-  ARM/ARTPEC MACHINE SUPPORT: Use fallthrough;
-  ARM/Marvell Dove/MV78xx0/Orion SOC support: Use fallthrough;
-  MMP SUPPORT: Use fallthrough;
-  PXA2xx/PXA3xx SUPPORT: Use fallthrough;
-  ARM/RDA MICRO ARCHITECTURE: Use fallthrough;
-  ARM/Rockchip SoC support: Use fallthrough;
-  ARM/NOMADIK/U300/Ux500 ARCHITECTURES: Use fallthrough;
-  PS3 PLATFORM SUPPORT: Use fallthrough;
-  LINUX FOR POWER MACINTOSH: Use fallthrough;
-  SCx200 CPU SUPPORT: Use fallthrough;
-  CAVIUM OCTEON-TX CRYPTO DRIVER: Use fallthrough;
-  ARM MALI-DP DRM DRIVER: Use fallthrough;
-  DRM DRIVER FOR AST SERVER GRAPHICS CHIPS: Use fallthrough;
-  DRM DRIVERS FOR BRIDGE CHIPS: Use fallthrough;
-  DRM DRIVERS FOR EXYNOS: Use fallthrough;
-  DRM DRIVERS FOR FREESCALE DCU: Use fallthrough;
-  INTEL DRM DRIVERS (excluding Poulsbo, Moorestown and derivative
-    chipsets): Use fallthrough;
-  DRM DRIVERS FOR FREESCALE IMX: Use fallthrough;
-  DRM DRIVERS FOR AMLOGIC SOCS: Use fallthrough;
-  DRM DRIVER FOR MSM ADRENO GPU: Use fallthrough;
-  DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS: Use fallthrough;
-  DRM DRIVERS FOR TI OMAP: Use fallthrough;
-  RADEON and AMDGPU DRM DRIVERS: Use fallthrough;
-  DRM DRIVER FOR SAVAGE VIDEO CARDS: Use fallthrough;
-  DRM DRIVERS FOR ALLWINNER A10: Use fallthrough;
-  DRM DRIVERS FOR NVIDIA TEGRA: Use fallthrough;
-  DRM DRIVERS FOR TI LCDC: Use fallthrough;
-  DRM TTM SUBSYSTEM: Use fallthrough;
-  DRM DRIVERS FOR XEN: Use fallthrough;
-  BROADCOM NETXTREME-E ROCE DRIVER: Use fallthrough;
-  CXGB4 IWARP RNIC DRIVER (IW_CXGB4): Use fallthrough;
-  INTEL RDMA RNIC DRIVER: Use fallthrough;
-  MELLANOX MLX4 IB driver: Use fallthrough;
-  MELLANOX MLX5 IB driver: Use fallthrough;
-  EMULEX ONECONNECT ROCE DRIVER: Use fallthrough;
-  QLOGIC QL4xxx RDMA DRIVER: Use fallthrough;
-  QIB DRIVER: Use fallthrough;
-  VMWARE PVRDMA DRIVER: Use fallthrough;
-  SOFT-ROCE DRIVER (rxe): Use fallthrough;
-  SOFT-IWARP DRIVER (siw): Use fallthrough;
-  ISCSI EXTENSIONS FOR RDMA (ISER) INITIATOR: Use fallthrough;
-  SIANO DVB DRIVER: Use fallthrough;
-  VIDEOBUF2 FRAMEWORK: Use fallthrough;
-  SAMSUNG S5C73M3 CAMERA DRIVER: Use fallthrough;
-  SMIA AND SMIA++ IMAGE SENSOR DRIVER: Use fallthrough;
-  BTTV VIDEO4LINUX DRIVER: Use fallthrough;
-  CX88 VIDEO4LINUX DRIVER: Use fallthrough;
-  MEDIA DRIVERS FOR DIGITAL DEVICES PCIE DEVICES: Use fallthrough;
-  MOTION EYE VAIO PICTUREBOOK CAMERA DRIVER: Use fallthrough;
-  SAA7134 VIDEO4LINUX DRIVER: Use fallthrough;
-  SOFTLOGIC 6x10 MPEG CODEC: Use fallthrough;
-  CODA V4L2 MEM2MEM DRIVER: Use fallthrough;
-  SAMSUNG S5P/EXYNOS4 SOC SERIES CAMERA SUBSYSTEM DRIVERS: Use
-    fallthrough;
-  CAFE CMOS INTEGRATED CAMERA CONTROLLER DRIVER: Use fallthrough;
-  OMAP IMAGING SUBSYSTEM (OMAP3 ISP and OMAP4 ISS): Use fallthrough;
-  VICODEC VIRTUAL CODEC DRIVER: Use fallthrough;
-  VIVID VIRTUAL VIDEO DRIVER: Use fallthrough;
-  SI4713 FM RADIO TRANSMITTER I2C DRIVER: Use fallthrough;
-  CEC FRAMEWORK: Use fallthrough;
-  DVB_USB_AF9015 MEDIA DRIVER: Use fallthrough;
-  DVB_USB_GL861 MEDIA DRIVER: Use fallthrough;
-  LME2510 MEDIA DRIVER: Use fallthrough;
-  DVB_USB_MXL111SF MEDIA DRIVER: Use fallthrough;
-  EM28XX VIDEO4LINUX DRIVER: Use fallthrough;
-  GO7007 MPEG CODEC: Use fallthrough;
-  GSPCA SN9C20X SUBDRIVER: Use fallthrough;
-  GSPCA USB WEBCAM DRIVER: Use fallthrough;
-  PULSE8-CEC DRIVER: Use fallthrough;
-  PWC WEBCAM DRIVER: Use fallthrough;
-  TM6000 VIDEO4LINUX DRIVER: Use fallthrough;
-  USB VIDEO CLASS: Use fallthrough;
-  ONENAND FLASH DRIVER: Use fallthrough;
-  BROADCOM B53 ETHERNET SWITCH DRIVER: Use fallthrough;
-  MICROCHIP KSZ SERIES ETHERNET SWITCH DRIVER: Use fallthrough;
-  MARVELL 88E6XXX ETHERNET SWITCH FABRIC DRIVER: Use fallthrough;
-  8390 NETWORK DRIVERS [WD80x3/SMC-ELITE, SMC-ULTRA, NE2000, 3C503,
-    etc.]: Use fallthrough;
-  ALACRITECH GIGABIT ETHERNET DRIVER: Use fallthrough;
-  ACENIC DRIVER: Use fallthrough;
-  BROADCOM BNX2 GIGABIT ETHERNET DRIVER: Use fallthrough;
-  BROADCOM TG3 GIGABIT ETHERNET DRIVER: Use fallthrough;
-  ATMEL MACB ETHERNET DRIVER: Use fallthrough;
-  FREESCALE QORIQ DPAA ETHERNET DRIVER: Use fallthrough;
-  FREESCALE QORIQ DPAA FMAN DRIVER: Use fallthrough;
-  FREESCALE QUICC ENGINE UCC ETHERNET DRIVER: Use fallthrough;
-  HISILICON NETWORK SUBSYSTEM DRIVER: Use fallthrough;
-  LINUX FOR POWERPC (32-BIT AND 64-BIT): Use fallthrough;
-  MARVELL MVNETA ETHERNET DRIVER: Use fallthrough;
-  MARVELL GIGABIT ETHERNET DRIVERS (skge/sky2): Use fallthrough;
-  MEDIATEK ETHERNET DRIVER: Use fallthrough;
-  MICROCHIP LAN743X ETHERNET DRIVER: Use fallthrough;
-  MICROSEMI ETHERNET SWITCH DRIVER: Use fallthrough;
-  NATSEMI ETHERNET DRIVER (DP8381x): Use fallthrough;
-  NETERION 10GbE DRIVERS (s2io/vxge): Use fallthrough;
-  NETRONOME ETHERNET DRIVERS: Use fallthrough;
-  QLOGIC QLA3XXX NETWORK DRIVER: Use fallthrough;
-  8169 10/100/1000 GIGABIT ETHERNET DRIVER: Use fallthrough;
-  ROCKER DRIVER: Use fallthrough;
-  SFC NETWORK DRIVER: Use fallthrough;
-  SIS 900/7016 FAST ETHERNET DRIVER: Use fallthrough;
-  SOCIONEXT (SNI) NETSEC NETWORK DRIVER: Use fallthrough;
-  TI ETHERNET SWITCH DRIVER (CPSW): Use fallthrough;
-  TLAN NETWORK DRIVER: Use fallthrough;
-  SPIDERNET NETWORK DRIVER for CELL: Use fallthrough;
-  INTEL WIRELESS WIMAX CONNECTION 2400: Use fallthrough;
-  ATMEL WIRELESS DRIVER: Use fallthrough;
-  TI WILINK WIRELESS DRIVERS: Use fallthrough;
-  USB ZD1201 DRIVER: Use fallthrough;
-  PCI DRIVER FOR IMX6: Use fallthrough;
-  ANALOG DEVICES INC IIO DRIVERS: Use fallthrough;
-  HANTRO VPU CODEC DRIVER: Use fallthrough;
-  MEDIA DRIVERS FOR FREESCALE IMX: Use fallthrough;
-  SOC-CAMERA V4L2 SUBSYSTEM: Use fallthrough;
-  USB VISION DRIVER: Use fallthrough;
-  PARISC ARCHITECTURE: Use fallthrough;
-  MICROCHIP USBA UDC DRIVER: Use fallthrough;
-  FREESCALE USB PERIPHERAL DRIVERS: Use fallthrough;
-  USB TYPEC PORT CONTROLLER DRIVERS: Use fallthrough;
-  RADEON FRAMEBUFFER DISPLAY DRIVER: Use fallthrough;
-  ARC FRAMEBUFFER DRIVER: Use fallthrough;
-  NVIDIA (rivafb and nvidiafb) FRAMEBUFFER DRIVER: Use fallthrough;
-  OMAP FRAMEBUFFER SUPPORT: Use fallthrough;
-  OMAP DISPLAY SUBSYSTEM and FRAMEBUFFER SUPPORT (DSS2): Use
-    fallthrough;
-  S3 SAVAGE FRAMEBUFFER DRIVER: Use fallthrough;
-  SIS FRAMEBUFFER DRIVER: Use fallthrough;
-  VIA UNICHROME(PRO)/CHROME9 FRAMEBUFFER DRIVER: Use fallthrough;
-  CAN NETWORK DRIVERS: Use fallthrough;
-  WOLFSON MICROELECTRONICS DRIVERS: Use fallthrough;
-  DIALOG SEMICONDUCTOR DRIVERS: Use fallthrough;
-  MEDIA INPUT INFRASTRUCTURE (V4L/DVB): Use fallthrough;
-  CAN NETWORK LAYER: Use fallthrough;
-  HSI SUBSYSTEM: Use fallthrough;
-  MULTIMEDIA CARD (MMC), SECURE DIGITAL (SD) AND SDIO SUBSYSTEM: Use
-    fallthrough;
-  KERNEL NFSD, SUNRPC, AND LOCKD SERVERS: Use fallthrough;
-  SOFTWARE RAID (Multiple Disks) SUPPORT: Use fallthrough;
-  SPI SUBSYSTEM: Use fallthrough;
-  NFS, SUNRPC, AND LOCKD CLIENTS: Use fallthrough;
-  TC subsystem: Use fallthrough;
-  FCOE SUBSYSTEM (libfc, libfcoe, fcoe): Use fallthrough;
-  CRYPTO API: Use fallthrough;
-  BPF (Safe dynamic programs and tools): Use fallthrough;
-  OMAP USB SUPPORT: Use fallthrough;
-  OMAP1 SUPPORT: Use fallthrough;
-  OMAP2+ SUPPORT: Use fallthrough;
-  ARM SUB-ARCHITECTURES: Use fallthrough;
-  M68K ON APPLE MACINTOSH: Use fallthrough;
-  PCI SUBSYSTEM: Use fallthrough;
-  FPU EMULATOR: Use fallthrough;
-  X86 MM: Use fallthrough;
-  NETWORKING [IPv4/IPv6]: Use fallthrough;
-  USER-MODE LINUX (UML): Use fallthrough;
-  ACPI COMPONENT ARCHITECTURE (ACPICA): Use fallthrough;
-  FIRMWARE LOADER (request_firmware): Use fallthrough;
-  ATA OVER ETHERNET (AOE) DRIVER: Use fallthrough;
-  DRBD DRIVER: Use fallthrough;
-  PARIDE DRIVERS FOR PARALLEL PORT IDE DEVICES: Use fallthrough;
-  FLASH ADAPTER DRIVER (IBM Flash Adapter 900GB Full Height PCI Flash
-    Card): Use fallthrough;
-  XEN BLOCK SUBSYSTEM: Use fallthrough;
-  AGPGART DRIVER: Use fallthrough;
-  IPMI SUBSYSTEM: Use fallthrough;
-  TI DAVINCI SERIES CLOCK DRIVER: Use fallthrough;
-  H8/300 ARCHITECTURE: Use fallthrough;
-  VIRTIO CORE AND NET DRIVERS: Use fallthrough;
-  DRM DRIVERS AND MISC GPU PATCHES: Use fallthrough;
-  USB HID/HIDBP DRIVERS (USB KEYBOARDS, MICE, REMOTE CONTROLS, ...): Use
-    fallthrough;
-  ARM/CORESIGHT FRAMEWORK AND DRIVERS: Use fallthrough;
-  INTEL(R) TRACE HUB: Use fallthrough;
-  I2C SUBSYSTEM HOST DRIVERS: Use fallthrough;
-  ARM/ZYNQ ARCHITECTURE: Use fallthrough;
-  I3C DRIVER FOR SYNOPSYS DESIGNWARE: Use fallthrough;
-  SENSIRION SPS30 AIR POLLUTION SENSOR DRIVER: Use fallthrough;
-  IIO DIGITAL POTENTIOMETER DAC: Use fallthrough;
-  ASAHI KASEI AK8974 DRIVER: Use fallthrough;
-  HFI1 DRIVER: Use fallthrough;
-  RDMAVT - RDMA verbs software: Use fallthrough;
-  ISCSI EXTENSIONS FOR RDMA (ISER) TARGET: Use fallthrough;
-  OPA-VNIC DRIVER: Use fallthrough;
-  FLYSKY FSIA6B RC RECEIVER: Use fallthrough;
-  WACOM PROTOCOL 4 SERIAL TABLETS: Use fallthrough;
-  ATMEL MAXTOUCH DRIVER: Use fallthrough;
-  ISDN/mISDN SUBSYSTEM: Use fallthrough;
-  BCACHE (BLOCK LAYER CACHE): Use fallthrough;
-  DEVICE-MAPPER (LVM): Use fallthrough;
-  TI FLASH MEDIA MEMORYSTICK/MMC DRIVERS: Use fallthrough;
-  LSILOGIC MPT FUSION DRIVERS (FC/SAS/SPI): Use fallthrough;
-  INTEL MIC DRIVERS (mic): Use fallthrough;
-  SGI GRU DRIVER: Use fallthrough;
-  SGI XP/XPC/XPNET DRIVER: Use fallthrough;
-  BLOCK2MTD DRIVER: Use fallthrough;
-  PHRAM MTD DRIVER: Use fallthrough;
-  NAND FLASH SUBSYSTEM: Use fallthrough;
-  SPI NOR SUBSYSTEM: Use fallthrough;
-  UNSORTED BLOCK IMAGES (UBI): Use fallthrough;
-  APPLETALK NETWORK LAYER: Use fallthrough;
-  ARCNET NETWORK LAYER: Use fallthrough;
-  BONDING DRIVER: Use fallthrough;
-  MEDIATEK SWITCH DRIVER: Use fallthrough;
-  NETWORKING [DSA]: Use fallthrough;
-  BAYCOM/HDLCDRV DRIVERS FOR AX.25: Use fallthrough;
-  IEEE 802.15.4 SUBSYSTEM: Use fallthrough;
-  NETDEVSIM: Use fallthrough;
-  ANALOG DEVICES INC ADIN DRIVER: Use fallthrough;
-  PTP HARDWARE CLOCK SUPPORT: Use fallthrough;
-  SFF/SFP/SFP+ MODULE SUPPORT: Use fallthrough;
-  ETHERNET PHY LIBRARY: Use fallthrough;
-  USB LAN78XX ETHERNET DRIVER: Use fallthrough;
-  USB PEGASUS DRIVER: Use fallthrough;
-  USB RTL8150 DRIVER: Use fallthrough;
-  USB "USBNET" DRIVER FRAMEWORK: Use fallthrough;
-  USB NETWORKING DRIVERS: Use fallthrough;
-  FRAME RELAY DLCI/FRAD (Sangoma drivers too): Use fallthrough;
-  MAC80211: Use fallthrough;
-  RAYLINK/WEBGEAR 802.11 WIRELESS LAN DRIVER: Use fallthrough;
-  NETWORKING DRIVERS (WIRELESS): Use fallthrough;
-  XEN NETWORK BACKEND DRIVER: Use fallthrough;
-  NVM EXPRESS FC TRANSPORT DRIVERS: Use fallthrough;
-  NVM EXPRESS DRIVER: Use fallthrough;
-  NVM EXPRESS TARGET DRIVER: Use fallthrough;
-  ACPI: Use fallthrough;
-  BROADCOM BCM2711/BCM2835 ARM ARCHITECTURE: Use fallthrough;
-  PIN CONTROLLER - INTEL: Use fallthrough;
-  MIPS: Use fallthrough;
-  X86 PLATFORM DRIVERS: Use fallthrough;
-  CHROMEOS EC SUBDRIVERS: Use fallthrough;
-  POWER SUPPLY CLASS/SUBSYSTEM and DRIVERS: Use fallthrough;
-  S390 COMMON I/O LAYER: Use fallthrough;
-  S390 VFIO AP DRIVER: Use fallthrough;
-  S390 ZCRYPT DRIVER: Use fallthrough;
-  S390 IUCV NETWORK LAYER: Use fallthrough;
-  S390 NETWORK DRIVERS: Use fallthrough;
-  S390 ZFCP DRIVER: Use fallthrough;
-  AACRAID SCSI RAID DRIVER: Use fallthrough;
-  AIC7XXX / AIC79XX SCSI DRIVER: Use fallthrough;
-  NCR 5380 SCSI DRIVERS: Use fallthrough;
-  Emulex 10Gbps iSCSI - OneConnect DRIVER: Use fallthrough;
-  BROCADE BFA FC SCSI DRIVER: Use fallthrough;
-  BROADCOM BNX2FC 10 GIGABIT FCOE DRIVER: Use fallthrough;
-  CXGB3 ISCSI DRIVER (CXGB3I): Use fallthrough;
-  CXGB4 ISCSI DRIVER (CXGB4I): Use fallthrough;
-  CXLFLASH (IBM Coherent Accelerator Processor Interface CAPI Flash)
-    SCSI DRIVER: Use fallthrough;
-  HISILICON SAS Controller: Use fallthrough;
-  IBM Power Virtual SCSI Device Target Driver: Use fallthrough;
-  INTEL C600 SERIES SAS CONTROLLER DRIVER: Use fallthrough;
-  EMULEX/BROADCOM LPFC FC/FCOE SCSI DRIVER: Use fallthrough;
-  MEGARAID SCSI/SAS DRIVERS: Use fallthrough;
-  NINJA SCSI-3 / NINJA SCSI-32Bi (16bit/CardBus) PCMCIA SCSI HOST
-    ADAPTER DRIVER: Use fallthrough;
-  QLOGIC QLA2XXX FC-SCSI DRIVER: Use fallthrough;
-  QLOGIC QLA4XXX iSCSI DRIVER: Use fallthrough;
-  MICROSEMI SMART ARRAY SMARTPQI DRIVER (smartpqi): Use fallthrough;
-  LSILOGIC/SYMBIOS/NCR 53C8XX and 53C1010 PCI-SCSI drivers: Use
-    fallthrough;
-  UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER: Use fallthrough;
-  STAGING - COMEDI: Use fallthrough;
-  DPAA2 ETHERNET SWITCH DRIVER: Use fallthrough;
-  QLOGIC QLGE 10Gb ETHERNET DRIVER: Use fallthrough;
-  STAGING - REALTEK RTL8188EU DRIVERS: Use fallthrough;
-  STAGING - REALTEK RTL8712U DRIVERS: Use fallthrough;
-  STAGING - VIA VT665X DRIVERS: Use fallthrough;
-  HYPERVISOR VIRTUAL CONSOLE DRIVER: Use fallthrough;
-  SYNOPSYS ARC ARCHITECTURE: Use fallthrough;
-  MICROCHIP AT91 SERIAL DRIVER: Use fallthrough;
-  KGDB / KDB /debug_core: Use fallthrough;
-  TEGRA SERIAL DRIVER: Use fallthrough;
-  TTY LAYER: Use fallthrough;
-  CONEXANT ACCESSRUNNER USB DRIVER: Use fallthrough;
-  USB CYPRESS C67X00 DRIVER: Use fallthrough;
-  DESIGNWARE USB3 DRD IP DRIVER: Use fallthrough;
-  USB GADGET/PERIPHERAL SUBSYSTEM: Use fallthrough;
-  USB EHCI DRIVER: Use fallthrough;
-  USB ISP116X DRIVER: Use fallthrough;
-  USB OHCI DRIVER: Use fallthrough;
-  USB XHCI DRIVER: Use fallthrough;
-  MEDIATEK USB3 DRD IP DRIVER: Use fallthrough;
-  MUSB MULTIPOINT HIGH SPEED DUAL-ROLE CONTROLLER: Use fallthrough;
-  USB PHY LAYER: Use fallthrough;
-  USB SERIAL SUBSYSTEM: Use fallthrough;
-  USB ATTACHED SCSI: Use fallthrough;
-  USB MASS STORAGE DRIVER: Use fallthrough;
-  USB OVER IP DRIVER: Use fallthrough;
-  ADP8860 BACKLIGHT DRIVER (ADP8860/ADP8861/ADP8863): Use fallthrough;
-  MICROCHIP LCDFB DRIVER: Use fallthrough;
-  FREESCALE DIU FRAMEBUFFER DRIVER: Use fallthrough;
-  SAMSUNG FRAMEBUFFER DRIVER: Use fallthrough;
-  VIRTUAL BOX GUEST DEVICE DRIVER: Use fallthrough;
-  FANOTIFY: Use fallthrough;
-  MULTIFUNCTION DEVICES (MFD): Use fallthrough;
-  MULTIPLEXER SUBSYSTEM: Use fallthrough;
-  VOLTAGE AND CURRENT REGULATOR FRAMEWORK: Use fallthrough;
-  RESET CONTROLLER FRAMEWORK: Use fallthrough;
-  SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEMENT (ASoC): Use
-    fallthrough;
-  CEPH COMMON CODE (LIBCEPH): Use fallthrough;
-  GPIO SUBSYSTEM: Use fallthrough;
-  GREYBUS SUBSYSTEM: Use fallthrough;
-  INPUT (KEYBOARD, MOUSE, JOYSTICK, TOUCHSCREEN) DRIVERS: Use
-    fallthrough;
-  MEMORY TECHNOLOGY DEVICES (MTD): Use fallthrough;
-  ETHERNET BRIDGE: Use fallthrough;
-  PIN CONTROL SUBSYSTEM: Use fallthrough;
-  NFC SUBSYSTEM: Use fallthrough;
-  REAL TIME CLOCK (RTC) SUBSYSTEM: Use fallthrough;
-  CPU FREQUENCY SCALING FRAMEWORK: Use fallthrough;
-  NOHZ, DYNTICKS SUPPORT: Use fallthrough;
-  SONICS SILICON BACKPLANE DRIVER (SSB): Use fallthrough;
-  USB SUBSYSTEM: Use fallthrough;
-  9P FILE SYSTEM: Use fallthrough;
-  BLUETOOTH SUBSYSTEM: Use fallthrough;
-  NETFILTER: Use fallthrough;
-  PHONET PROTOCOL: Use fallthrough;
-  SCTP PROTOCOL: Use fallthrough;
-  AFS FILESYSTEM: Use fallthrough;
-  EROFS FILE SYSTEM: Use fallthrough;
-  F2FS FILE SYSTEM: Use fallthrough;
-  FILESYSTEM DIRECT ACCESS (DAX): Use fallthrough;
-  HARDWARE MONITORING: Use fallthrough;
-  INFINIBAND SUBSYSTEM: Use fallthrough;
-  NILFS2 FILESYSTEM: Use fallthrough;
-  RXRPC SOCKETS (AF_RXRPC): Use fallthrough;
-  ATM: Use fallthrough;
-  AUDIT SUBSYSTEM: Use fallthrough;
-  BTRFS FILE SYSTEM: Use fallthrough;
-  CAPABILITIES: Use fallthrough;
-  HEWLETT-PACKARD SMART ARRAY RAID DRIVER (hpsa): Use fallthrough;
-  DCCP PROTOCOL: Use fallthrough;
-  DEVLINK: Use fallthrough;
-  XFS FILESYSTEM: Use fallthrough;
-  FRAMEBUFFER LAYER: Use fallthrough;
-  FILE LOCKING (flock() and fcntl()/lockf()): Use fallthrough;
-  FIREWIRE SUBSYSTEM: Use fallthrough;
-  FILESYSTEMS (VFS and infrastructure): Use fallthrough;
-  FUTEX SUBSYSTEM: Use fallthrough;
-  HID CORE LAYER: Use fallthrough;
-  I2C SUBSYSTEM: Use fallthrough;
-  NETWORKING DRIVERS: Use fallthrough;
-  NETWORKING [GENERAL]: Use fallthrough;
-  KEYS/KEYRINGS: Use fallthrough;
-  LIGHTNVM PLATFORM SUPPORT: Use fallthrough;
-  PARALLEL PORT SUBSYSTEM: Use fallthrough;
-  SCHEDULER: Use fallthrough;
-  SELINUX SECURITY MODULE: Use fallthrough;
-  THERMAL: Use fallthrough;
-  TIMEKEEPING, CLOCKSOURCE CORE, NTP, ALARMTIMER: Use fallthrough;
-  VFIO DRIVER: Use fallthrough;
-  VIRTIO BLOCK AND SCSI DRIVERS: Use fallthrough;
-  WATCHDOG DEVICE DRIVERS: Use fallthrough;
-  SOUND: Use fallthrough;
-  INTEGRITY MEASUREMENT ARCHITECTURE (IMA): Use fallthrough;
-  ALPHA PORT: Use fallthrough;
-  ARM PORT: Use fallthrough;
-  ARM64 PORT (AARCH64 ARCHITECTURE): Use fallthrough;
-  C6X ARCHITECTURE: Use fallthrough;
-  C-SKY ARCHITECTURE: Use fallthrough;
-  QUALCOMM HEXAGON ARCHITECTURE: Use fallthrough;
-  IA64 (Itanium) PLATFORM: Use fallthrough;
-  MICROBLAZE ARCHITECTURE: Use fallthrough;
-  ANDES ARCHITECTURE: Use fallthrough;
-  OPENRISC ARCHITECTURE: Use fallthrough;
-  RISC-V ARCHITECTURE: Use fallthrough;
-  S390: Use fallthrough;
-  SUPERH: Use fallthrough;
-  SPARC + UltraSPARC (sparc/sparc64): Use fallthrough;
-  UNICORE32 ARCHITECTURE: Use fallthrough;
-  X86 ARCHITECTURE (32-BIT AND 64-BIT): Use fallthrough;
-  TENSILICA XTENSA PORT (xtensa): Use fallthrough;
-  ASYNCHRONOUS TRANSFERS/TRANSFORMS (IOAT) API: Use fallthrough;
-  LIBATA SATA AHCI PLATFORM devices support: Use fallthrough;
-  LIBATA PATA DRIVERS: Use fallthrough;
-  LIBATA SATA PROMISE TX2/TX4 CONTROLLER DRIVER: Use fallthrough;
-  LIBATA SUBSYSTEM (Serial and Parallel ATA drivers): Use fallthrough;
-  PARALLEL LCD/KEYPAD PANEL DRIVER: Use fallthrough;
-  FLOPPY DRIVER: Use fallthrough;
-  RADOS BLOCK DEVICE (RBD): Use fallthrough;
-  STEC S1220 SKD DRIVER: Use fallthrough;
-  BLOCK LAYER: Use fallthrough;
-  BLUETOOTH DRIVERS: Use fallthrough;
-  CHAR and MISC DRIVERS: Use fallthrough;
-  COMMON CLK FRAMEWORK: Use fallthrough;
-  EDAC-AMD64: Use fallthrough;
-  EDAC-PND2: Use fallthrough;
-  IDE/ATAPI DRIVERS: Use fallthrough;
-  IDE SUBSYSTEM: Use fallthrough;
-  IIO SUBSYSTEM AND DRIVERS: Use fallthrough;
-  AMD IOMMU (AMD-VI): Use fallthrough;
-  ARM SMMU DRIVERS: Use fallthrough;
-  INTEL IOMMU (VT-d): Use fallthrough;
-  VIRTIO IOMMU DRIVER: Use fallthrough;
-  IRQCHIP DRIVERS: Use fallthrough;
-  OMAP GENERAL PURPOSE MEMORY CONTROLLER SUPPORT: Use fallthrough;
-  SONY MEMORYSTICK SUBSYSTEM: Use fallthrough;
-  NTB DRIVER CORE: Use fallthrough;
-  PCMCIA SUBSYSTEM: Use fallthrough;
-  RAPIDIO SUBSYSTEM: Use fallthrough;
-  53C700 AND 53C700-66 SCSI DRIVER: Use fallthrough;
-  BUSLOGIC SCSI DRIVER: Use fallthrough;
-  ATTO EXPRESSSAS SAS/SATA RAID SCSI DRIVER: Use fallthrough;
-  MYLEX DAC960 PCI RAID Controller: Use fallthrough;
-  SCSI CDROM DRIVER: Use fallthrough;
-  SCSI TAPE DRIVER: Use fallthrough;
-  VMware PVSCSI driver: Use fallthrough;
-  SCSI SUBSYSTEM: Use fallthrough;
-  STAGING SUBSYSTEM: Use fallthrough;
-  SCSI TARGET SUBSYSTEM: Use fallthrough;
-  THUNDERBOLT DRIVER: Use fallthrough;
-  M68K ARCHITECTURE: Use fallthrough;
-  EXTRA BOOT CONFIG: Use fallthrough;
-  HIGH-RESOLUTION TIMERS, CLOCKEVENTS: Use fallthrough;
-  DYNAMIC INTERRUPT MODERATION: Use fallthrough;
-  MEMORY MANAGEMENT: Use fallthrough;
-  SIPHASH PRF ROUTINES: Use fallthrough;
-  POSIX CLOCKS and TIMERS: Use fallthrough;
-  GCOV BASED KERNEL PROFILING: Use fallthrough;
-  IRQ SUBSYSTEM: Use fallthrough;
-  APPARMOR SECURITY MODULE: Use fallthrough;
-  SMACK SECURITY MODULE: Use fallthrough;
-  TOMOYO SECURITY MODULE: Use fallthrough;
-  VSPRINTF: Use fallthrough;
-  THE REST: Use fallthrough;
-
- arch/alpha/kernel/module.c                    |   2 +-
- arch/alpha/kernel/signal.c                    |   2 +-
- arch/alpha/kernel/traps.c                     |   6 +-
- arch/arc/kernel/disasm.c                      |   3 +-
- arch/arc/kernel/signal.c                      |   3 +-
- arch/arc/kernel/unwind.c                      |   6 +-
- arch/arm/kernel/hw_breakpoint.c               |  10 +-
- arch/arm/kernel/signal.c                      |   2 +-
- arch/arm/mach-ep93xx/crunch.c                 |   3 +-
- arch/arm/mach-mmp/pm-mmp2.c                   |   8 +-
- arch/arm/mach-mmp/pm-pxa910.c                 |  10 +-
- arch/arm/mach-omap2/id.c                      |   8 --
- arch/arm/mach-omap2/omap_device.c             |   2 +-
- arch/arm/mach-orion5x/dns323-setup.c          |   2 +-
- arch/arm/mach-rpc/riscpc.c                    |   2 +-
- arch/arm/mach-tegra/reset.c                   |   2 +-
- arch/arm/mm/alignment.c                       |   6 +-
- arch/arm/plat-omap/dma.c                      |   6 +-
- arch/arm/probes/decode.c                      |   2 +-
- arch/arm/probes/kprobes/core.c                |   2 +-
- arch/arm64/kernel/cpufeature.c                |   2 +-
- arch/arm64/kernel/cpuinfo.c                   |   2 +-
- arch/arm64/kernel/hw_breakpoint.c             |   8 +-
- arch/arm64/kernel/module.c                    |   8 +-
- arch/arm64/kernel/smp.c                       |   2 +-
- arch/arm64/kvm/handle_exit.c                  |   2 +-
- arch/arm64/kvm/hyp/debug-sr.c                 |  60 ++++-----
- arch/arm64/mm/context.c                       |   2 +-
- arch/c6x/kernel/signal.c                      |   5 +-
- arch/csky/kernel/signal.c                     |   2 +-
- arch/h8300/kernel/signal.c                    |   2 +-
- arch/hexagon/kernel/module.c                  |   2 +-
- arch/hexagon/kernel/signal.c                  |   2 +-
- arch/ia64/kernel/crash.c                      |   2 +-
- arch/ia64/kernel/module.c                     |   2 +-
- arch/ia64/kernel/perfmon.c                    |   2 +-
- arch/ia64/kernel/signal.c                     |   2 +-
- arch/ia64/kernel/unaligned.c                  |   6 +-
- arch/ia64/kernel/unwind.c                     |   2 +-
- arch/m68k/amiga/config.c                      |   4 +-
- arch/m68k/atari/atakeyb.c                     |   3 +-
- arch/m68k/kernel/signal.c                     |   2 +-
- arch/m68k/mac/config.c                        |   2 +-
- arch/m68k/mac/via.c                           |   2 +-
- arch/m68k/mm/fault.c                          |   2 +-
- arch/microblaze/kernel/signal.c               |   2 +-
- arch/mips/alchemy/devboards/db1550.c          |   2 +-
- arch/mips/ar7/setup.c                         |   2 +-
- arch/mips/ath79/setup.c                       |   3 +-
- arch/mips/bcm63xx/cpu.c                       |   2 +-
- arch/mips/bcm63xx/dev-flash.c                 |   2 +-
- arch/mips/cavium-octeon/executive/cvmx-pko.c  |   2 +-
- arch/mips/cavium-octeon/octeon-platform.c     |   4 +-
- arch/mips/cavium-octeon/octeon-usb.c          |   2 +-
- arch/mips/dec/tc.c                            |   2 +-
- arch/mips/include/asm/fpu.h                   |   2 +-
- arch/mips/include/asm/octeon/cvmx-sli-defs.h  |   2 +-
- arch/mips/include/asm/page.h                  |   2 +-
- arch/mips/include/asm/unroll.h                |  64 +++++-----
- arch/mips/kernel/branch.c                     |  26 ++--
- arch/mips/kernel/cpu-probe.c                  |  22 ++--
- arch/mips/kernel/idle.c                       |   2 +-
- arch/mips/kernel/mips-r2-to-r6-emul.c         |   2 +-
- arch/mips/kernel/perf_event_mipsxx.c          |   6 +-
- arch/mips/kernel/signal.c                     |   2 +-
- arch/mips/kernel/traps.c                      |   3 +-
- arch/mips/kernel/watch.c                      |  26 ++--
- arch/mips/kvm/emulate.c                       |   8 +-
- arch/mips/math-emu/cp1emu.c                   |  28 ++---
- arch/mips/math-emu/dp_add.c                   |   3 +-
- arch/mips/math-emu/dp_div.c                   |   3 +-
- arch/mips/math-emu/dp_fmax.c                  |   6 +-
- arch/mips/math-emu/dp_fmin.c                  |   6 +-
- arch/mips/math-emu/dp_maddf.c                 |   3 +-
- arch/mips/math-emu/dp_mul.c                   |   3 +-
- arch/mips/math-emu/dp_sqrt.c                  |   5 +-
- arch/mips/math-emu/dp_sub.c                   |   3 +-
- arch/mips/math-emu/sp_add.c                   |   3 +-
- arch/mips/math-emu/sp_div.c                   |   3 +-
- arch/mips/math-emu/sp_fdp.c                   |   3 +-
- arch/mips/math-emu/sp_fmax.c                  |   6 +-
- arch/mips/math-emu/sp_fmin.c                  |   6 +-
- arch/mips/math-emu/sp_maddf.c                 |   3 +-
- arch/mips/math-emu/sp_mul.c                   |   3 +-
- arch/mips/math-emu/sp_sub.c                   |   3 +-
- arch/mips/mm/c-r4k.c                          |   6 +-
- arch/mips/mm/tlbex.c                          |   2 +-
- arch/mips/oprofile/op_model_mipsxx.c          |  26 ++--
- arch/mips/pci/fixup-sni.c                     |   3 +-
- arch/mips/pci/ops-bcm63xx.c                   |   2 +-
- arch/nds32/kernel/fpu.c                       |  12 +-
- arch/nds32/kernel/signal.c                    |   4 +-
- arch/openrisc/kernel/signal.c                 |   2 +-
- arch/parisc/kernel/signal.c                   |   2 +-
- arch/parisc/kernel/traps.c                    |  10 +-
- arch/parisc/mm/fault.c                        |   5 +-
- arch/powerpc/kernel/align.c                   |   8 +-
- arch/powerpc/kvm/book3s_32_mmu.c              |   2 +-
- arch/powerpc/kvm/book3s_64_mmu.c              |   2 +-
- arch/powerpc/kvm/book3s_pr.c                  |   2 +-
- arch/powerpc/kvm/booke.c                      |   6 +-
- arch/powerpc/kvm/powerpc.c                    |   1 -
- arch/powerpc/platforms/cell/spufs/switch.c    |   2 +-
- arch/powerpc/platforms/powermac/feature.c     |   2 +-
- arch/powerpc/platforms/powernv/opal-async.c   |   2 +-
- arch/powerpc/platforms/pseries/hvcserver.c    |   2 +-
- arch/powerpc/xmon/xmon.c                      |   2 +-
- arch/riscv/kernel/signal.c                    |   2 +-
- arch/riscv/net/bpf_jit_comp32.c               |   5 +-
- arch/s390/kernel/signal.c                     |   4 +-
- arch/s390/kernel/topology.c                   |   2 +-
- arch/s390/kvm/gaccess.c                       |  23 ++--
- arch/s390/kvm/interrupt.c                     |   2 +-
- arch/s390/kvm/kvm-s390.c                      |   4 +-
- arch/s390/mm/fault.c                          |  13 +-
- arch/s390/mm/gmap.c                           |   6 +-
- arch/s390/mm/pgalloc.c                        |   2 +-
- arch/sh/drivers/platform_early.c              |   2 +-
- arch/sh/kernel/disassemble.c                  |   4 +-
- arch/sh/kernel/kgdb.c                         |   2 +-
- arch/sh/kernel/signal_32.c                    |   2 +-
- arch/sh/kernel/signal_64.c                    |   2 +-
- arch/sparc/kernel/auxio_64.c                  |   1 -
- arch/sparc/kernel/central.c                   |   2 +-
- arch/sparc/kernel/kgdb_32.c                   |   3 +-
- arch/sparc/kernel/kgdb_64.c                   |   3 +-
- arch/sparc/kernel/pcr.c                       |   2 +-
- arch/sparc/kernel/prom_32.c                   |   3 +-
- arch/sparc/kernel/signal32.c                  |   4 +-
- arch/sparc/kernel/signal_32.c                 |   4 +-
- arch/sparc/kernel/signal_64.c                 |   4 +-
- arch/sparc/math-emu/math_32.c                 |   8 +-
- arch/sparc/net/bpf_jit_comp_32.c              |   2 +-
- arch/um/kernel/signal.c                       |   2 +-
- arch/unicore32/kernel/signal.c                |   2 +-
- arch/x86/boot/cmdline.c                       |   6 +-
- arch/x86/boot/compressed/kaslr.c              |   2 +-
- arch/x86/events/intel/core.c                  |   7 +-
- arch/x86/events/intel/lbr.c                   |   2 +-
- arch/x86/kernel/alternative.c                 |   4 +-
- arch/x86/kernel/apic/io_apic.c                |   4 +-
- arch/x86/kernel/apic/probe_32.c               |   2 +-
- arch/x86/kernel/cpu/cacheinfo.c               |   2 +-
- arch/x86/kernel/cpu/mce/inject.c              |   2 +-
- arch/x86/kernel/cpu/mce/intel.c               |   4 +-
- arch/x86/kernel/cpu/mtrr/cyrix.c              |   2 +-
- arch/x86/kernel/hw_breakpoint.c               |   2 +-
- arch/x86/kernel/kgdb.c                        |   4 +-
- arch/x86/kernel/mpparse.c                     |   4 +-
- arch/x86/kernel/ptrace.c                      |   3 +-
- arch/x86/kernel/reboot.c                      |   3 +-
- arch/x86/kernel/signal.c                      |   2 +-
- arch/x86/kernel/uprobes.c                     |   4 +-
- arch/x86/kvm/emulate.c                        |   2 +-
- arch/x86/kvm/hyperv.c                         |   2 +-
- arch/x86/kvm/irq_comm.c                       |   2 +-
- arch/x86/kvm/lapic.c                          |   6 +-
- arch/x86/kvm/mmu/mmu.c                        |   2 +-
- arch/x86/kvm/svm.c                            |   2 +-
- arch/x86/kvm/vmx/vmx.c                        |  15 ++-
- arch/x86/kvm/x86.c                            |  12 +-
- arch/x86/lib/cmdline.c                        |  12 +-
- arch/x86/lib/insn-eval.c                      |   8 +-
- arch/x86/math-emu/errors.c                    |   2 +-
- arch/x86/math-emu/fpu_trig.c                  |   2 +-
- arch/x86/mm/ioremap.c                         |   3 +-
- arch/xtensa/kernel/signal.c                   |   2 +-
- block/badblocks.c                             |   2 +-
- block/bfq-iosched.c                           |   4 +-
- block/blk-wbt.c                               |   2 +-
- crypto/drbg.c                                 |   3 +-
- crypto/tcrypt.c                               | 114 +++++++++---------
- .../accessibility/braille/braille_console.c   |   2 +-
- drivers/acpi/ac.c                             |   2 +-
- drivers/acpi/acpi_processor.c                 |   3 +-
- drivers/acpi/acpica/dscontrol.c               |   4 +-
- drivers/acpi/acpica/dswexec.c                 |   3 +-
- drivers/acpi/acpica/dswload.c                 |   4 +-
- drivers/acpi/acpica/dswload2.c                |   4 +-
- drivers/acpi/acpica/exfldio.c                 |   4 +-
- drivers/acpi/acpica/exresop.c                 |   7 +-
- drivers/acpi/acpica/exstore.c                 |   8 +-
- drivers/acpi/acpica/hwgpe.c                   |   4 +-
- drivers/acpi/acpica/utdelete.c                |   4 +-
- drivers/acpi/acpica/utprint.c                 |   3 +-
- drivers/acpi/button.c                         |   2 +-
- drivers/acpi/dock.c                           |   2 +-
- drivers/acpi/processor_idle.c                 |   3 +-
- drivers/acpi/resource.c                       |   2 +-
- drivers/acpi/spcr.c                           |   4 +-
- drivers/ata/ahci_brcm.c                       |   2 +-
- drivers/ata/libahci_platform.c                |   2 +-
- drivers/ata/libata-core.c                     |  16 +--
- drivers/ata/libata-eh.c                       |   6 +-
- drivers/ata/libata-scsi.c                     |   2 +-
- drivers/ata/pata_atp867x.c                    |   4 +-
- drivers/ata/pata_serverworks.c                |   2 +-
- drivers/ata/sata_mv.c                         |  12 +-
- drivers/ata/sata_promise.c                    |   8 +-
- drivers/ata/sata_sx4.c                        |   2 +-
- drivers/atm/firestream.c                      |   2 +-
- drivers/atm/fore200e.c                        |  24 ++--
- drivers/atm/he.c                              |   4 +-
- drivers/atm/idt77105.c                        |   2 +-
- drivers/atm/lanai.c                           |   2 +-
- drivers/atm/zatm.c                            |   2 +-
- drivers/auxdisplay/panel.c                    |   6 +-
- drivers/base/firmware_loader/fallback.c       |   4 +-
- drivers/block/aoe/aoecmd.c                    |   2 +-
- drivers/block/ataflop.c                       |   2 +-
- drivers/block/drbd/drbd_int.h                 |   2 +-
- drivers/block/drbd/drbd_main.c                |   2 +-
- drivers/block/drbd/drbd_nl.c                  |   2 +-
- drivers/block/drbd/drbd_receiver.c            |  13 +-
- drivers/block/drbd/drbd_req.c                 |   5 +-
- drivers/block/floppy.c                        |   4 +-
- drivers/block/loop.c                          |   4 +-
- drivers/block/paride/pd.c                     |   4 +-
- drivers/block/rbd.c                           |   8 +-
- drivers/block/rsxx/core.c                     |   2 +-
- drivers/block/skd_main.c                      |   3 +-
- drivers/block/xen-blkback/blkback.c           |   2 +-
- drivers/block/xen-blkfront.c                  |   5 +-
- drivers/bluetooth/bcm203x.c                   |   2 +-
- drivers/bluetooth/bluecard_cs.c               |   2 -
- drivers/bluetooth/hci_ll.c                    |   2 +-
- drivers/bluetooth/hci_qca.c                   |   8 +-
- drivers/bus/ti-sysc.c                         |   2 +-
- drivers/char/agp/ali-agp.c                    |   2 +-
- drivers/char/ipmi/kcs_bmc.c                   |   3 +-
- drivers/char/lp.c                             |   4 +-
- drivers/char/mem.c                            |   2 +-
- drivers/char/nvram.c                          |   2 +-
- drivers/clk/davinci/pll.c                     |   2 +-
- drivers/clk/imx/clk-pllv3.c                   |   4 +-
- drivers/clk/samsung/clk-s3c2443.c             |   2 +-
- drivers/clocksource/timer-cadence-ttc.c       |   5 +-
- drivers/cpufreq/p4-clockmod.c                 |   2 +-
- drivers/cpufreq/speedstep-lib.c               |   2 +-
- drivers/cpufreq/ti-cpufreq.c                  |   4 +-
- drivers/crypto/axis/artpec6_crypto.c          |   3 +-
- drivers/crypto/cavium/cpt/cptvf_reqmanager.c  |   4 +-
- drivers/crypto/chelsio/chcr_ktls.c            |   4 +-
- drivers/crypto/qat/qat_common/adf_pf2vf_msg.c |   2 +-
- drivers/crypto/qat/qat_common/qat_uclo.c      |   6 +-
- drivers/crypto/ux500/cryp/cryp.c              |  18 +--
- drivers/dma/amba-pl08x.c                      |  10 +-
- drivers/dma/fsldma.c                          |   2 +-
- drivers/dma/imx-dma.c                         |   2 +-
- drivers/dma/iop-adma.h                        |  12 +-
- drivers/dma/nbpfaxi.c                         |   2 +-
- drivers/dma/pl330.c                           |  13 +-
- drivers/dma/sh/shdma-base.c                   |   2 +-
- drivers/edac/amd64_edac.c                     |   2 +-
- drivers/edac/pnd2_edac.c                      |   2 +-
- drivers/firewire/core-device.c                |   2 +-
- drivers/firewire/core-iso.c                   |   3 +-
- drivers/firewire/core-topology.c              |   2 +-
- drivers/firewire/core-transaction.c           |   6 +-
- drivers/firewire/ohci.c                       |   5 +-
- drivers/gpio/gpio-aspeed-sgpio.c              |   6 +-
- drivers/gpio/gpio-aspeed.c                    |   6 +-
- drivers/gpio/gpio-ath79.c                     |   2 +-
- drivers/gpio/gpio-eic-sprd.c                  |   4 +-
- drivers/gpio/gpio-stmpe.c                     |   4 +-
- drivers/gpio/gpiolib-acpi.c                   |   2 +-
- .../drm/amd/amdgpu/amdgpu_amdkfd_arcturus.c   |   2 +-
- drivers/gpu/drm/amd/amdgpu/gfx_v8_0.c         |   3 +-
- drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c         |   2 +-
- drivers/gpu/drm/amd/amdgpu/si_dpm.c           |   4 +-
- .../drm/amd/display/dc/bios/bios_parser2.c    |   4 +-
- drivers/gpu/drm/amd/display/dc/dce/dce_aux.c  |   2 +-
- .../drm/amd/display/dc/dce/dce_mem_input.c    |   2 +-
- .../gpu/drm/amd/powerplay/hwmgr/smu7_hwmgr.c  |   6 +-
- drivers/gpu/drm/arm/malidp_hw.c               |   6 +-
- drivers/gpu/drm/ast/ast_main.c                |   2 +-
- .../drm/bridge/synopsys/dw-hdmi-i2s-audio.c   |   4 +-
- drivers/gpu/drm/bridge/ti-sn65dsi86.c         |   6 +-
- drivers/gpu/drm/drm_bufs.c                    |   2 +-
- drivers/gpu/drm/drm_dp_helper.c               |   2 +-
- drivers/gpu/drm/drm_modes.c                   |   2 +-
- drivers/gpu/drm/drm_vm.c                      |   4 +-
- drivers/gpu/drm/exynos/exynos_drm_dsi.c       |  10 +-
- drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_plane.c   |   6 +-
- drivers/gpu/drm/i915/display/icl_dsi.c        |   6 +-
- drivers/gpu/drm/i915/display/intel_bios.c     |   6 +-
- drivers/gpu/drm/i915/display/intel_cdclk.c    |  10 +-
- .../gpu/drm/i915/display/intel_combo_phy.c    |   6 +-
- drivers/gpu/drm/i915/display/intel_ddi.c      |   4 +-
- drivers/gpu/drm/i915/display/intel_display.c  |  20 +--
- drivers/gpu/drm/i915/display/intel_dpll_mgr.c |   8 +-
- drivers/gpu/drm/i915/display/intel_sdvo.c     |  12 +-
- drivers/gpu/drm/i915/display/intel_sprite.c   |  22 ++--
- drivers/gpu/drm/i915/display/intel_tc.c       |   2 +-
- drivers/gpu/drm/i915/gem/i915_gem_mman.c      |   2 +-
- drivers/gpu/drm/i915/gem/i915_gem_pages.c     |   2 +-
- drivers/gpu/drm/i915/gem/i915_gem_stolen.c    |   6 +-
- drivers/gpu/drm/i915/gt/intel_engine_cs.c     |   2 +-
- drivers/gpu/drm/i915/gt/intel_ggtt.c          |   2 +-
- drivers/gpu/drm/i915/gt/intel_lrc.c           |   2 +-
- .../gpu/drm/i915/gt/intel_ring_submission.c   |   2 +-
- drivers/gpu/drm/i915/gvt/handlers.c           |   2 +-
- drivers/gpu/drm/i915/i915_gpu_error.c         |   2 +-
- drivers/gpu/drm/i915/i915_pmu.c               |   2 +-
- drivers/gpu/drm/i915/intel_device_info.c      |   4 +-
- drivers/gpu/drm/imx/ipuv3-plane.c             |   3 +-
- drivers/gpu/drm/ingenic/ingenic-drm.c         |   2 +-
- drivers/gpu/drm/meson/meson_crtc.c            |   4 +-
- drivers/gpu/drm/meson/meson_osd_afbcd.c       |   2 +-
- drivers/gpu/drm/meson/meson_overlay.c         |   4 +-
- drivers/gpu/drm/msm/adreno/a5xx_gpu.c         |   4 +-
- drivers/gpu/drm/msm/adreno/a6xx_gmu.c         |   2 +-
- drivers/gpu/drm/msm/adreno/a6xx_gpu.c         |   2 +-
- drivers/gpu/drm/msm/adreno/adreno_gpu.c       |   2 +-
- drivers/gpu/drm/nouveau/dispnv50/disp.c       |   2 +-
- drivers/gpu/drm/nouveau/nouveau_bo.c          |   2 +-
- drivers/gpu/drm/nouveau/nouveau_connector.c   |   4 +-
- .../gpu/drm/nouveau/nvkm/engine/disp/hdmi.c   |  34 +++---
- .../drm/nouveau/nvkm/engine/dma/usernv04.c    |   2 +-
- .../gpu/drm/nouveau/nvkm/engine/fifo/nv04.c   |   4 +-
- .../gpu/drm/nouveau/nvkm/engine/fifo/nv40.c   |   2 +-
- .../gpu/drm/nouveau/nvkm/subdev/bios/dcb.c    |   3 +-
- drivers/gpu/drm/nouveau/nvkm/subdev/bios/dp.c |   2 +-
- .../gpu/drm/nouveau/nvkm/subdev/bios/perf.c   |   2 +-
- .../gpu/drm/nouveau/nvkm/subdev/bios/pll.c    |   2 +-
- .../gpu/drm/nouveau/nvkm/subdev/bios/timing.c |  10 +-
- .../gpu/drm/nouveau/nvkm/subdev/clk/base.c    |   2 +-
- .../gpu/drm/nouveau/nvkm/subdev/clk/mcp77.c   |   2 +-
- .../drm/nouveau/nvkm/subdev/devinit/nv04.c    |  18 ++-
- .../gpu/drm/nouveau/nvkm/subdev/fb/ramnv40.c  |   4 +-
- .../gpu/drm/nouveau/nvkm/subdev/mxm/nv50.c    |   2 +-
- drivers/gpu/drm/omapdrm/dss/venc.c            |   2 +-
- drivers/gpu/drm/radeon/ci_dpm.c               |   4 +-
- drivers/gpu/drm/radeon/r300.c                 |   4 +-
- drivers/gpu/drm/radeon/r420.c                 |   2 +-
- drivers/gpu/drm/radeon/r600_cs.c              |   4 +-
- drivers/gpu/drm/radeon/radeon_uvd.c           |   3 +-
- drivers/gpu/drm/radeon/si_dpm.c               |   4 +-
- drivers/gpu/drm/radeon/uvd_v1_0.c             |   3 +-
- drivers/gpu/drm/savage/savage_state.c         |  10 +-
- drivers/gpu/drm/sti/sti_hdmi.c                |   6 +-
- drivers/gpu/drm/sun4i/sun4i_tcon.c            |   4 +-
- drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c        |   3 +-
- drivers/gpu/drm/tegra/dc.c                    |   2 +-
- drivers/gpu/drm/tilcdc/tilcdc_crtc.c          |   2 +-
- drivers/gpu/drm/ttm/ttm_bo_vm.c               |   2 +-
- drivers/gpu/drm/via/via_dmablit.c             |   8 +-
- drivers/gpu/drm/xen/xen_drm_front.c           |   3 -
- drivers/gpu/ipu-v3/ipu-dc.c                   |   2 +-
- drivers/greybus/es2.c                         |   2 +-
- drivers/greybus/interface.c                   |   2 +-
- drivers/hid/hid-lg-g15.c                      |   2 +-
- drivers/hid/hid-logitech-dj.c                 |   2 +-
- drivers/hid/hid-microsoft.c                   |   3 -
- drivers/hid/hid-rmi.c                         |   1 -
- drivers/hid/hid-roccat-kone.c                 |   2 +-
- drivers/hid/hid-uclogic-params.c              |   2 +-
- drivers/hid/hid-wiimote-core.c                |   2 -
- drivers/hid/usbhid/hiddev.c                   |   1 -
- drivers/hid/wacom_wac.c                       |  47 +++-----
- drivers/hsi/clients/ssi_protocol.c            |   4 +-
- drivers/hsi/controllers/omap_ssi_core.c       |   2 +-
- drivers/hv/hv_kvp.c                           |   4 +-
- drivers/hv/vmbus_drv.c                        |   2 +-
- drivers/hwmon/adt7462.c                       |   8 +-
- drivers/hwmon/emc1403.c                       |   4 +-
- drivers/hwmon/f71882fg.c                      |   4 +-
- drivers/hwmon/hwmon-vid.c                     |   4 +-
- drivers/hwmon/ina3221.c                       |   3 +-
- drivers/hwmon/nct6775.c                       |   2 +-
- drivers/hwmon/occ/common.c                    |   6 +-
- drivers/hwmon/w83627hf.c                      |   2 +-
- drivers/hwmon/w83781d.c                       |   2 +-
- drivers/hwmon/w83795.c                        |   2 +-
- .../hwtracing/coresight/coresight-cpu-debug.c |   4 +-
- drivers/hwtracing/coresight/coresight-etm4x.c |   1 -
- .../hwtracing/coresight/coresight-platform.c  |   3 +-
- drivers/hwtracing/coresight/coresight-tmc.c   |   2 -
- drivers/hwtracing/intel_th/sth.c              |   6 +-
- drivers/i2c/busses/i2c-amd8111.c              |   2 +-
- drivers/i2c/busses/i2c-aspeed.c               |   4 +-
- drivers/i2c/busses/i2c-designware-pcidrv.c    |   2 +-
- drivers/i2c/busses/i2c-digicolor.c            |   2 +-
- drivers/i2c/busses/i2c-i801.c                 |   8 +-
- drivers/i2c/busses/i2c-mv64xxx.c              |   9 +-
- drivers/i2c/busses/i2c-omap.c                 |   1 -
- drivers/i2c/busses/i2c-opal.c                 |   2 +-
- drivers/i2c/busses/i2c-s3c2410.c              |   3 +-
- drivers/i2c/busses/i2c-synquacer.c            |   4 +-
- drivers/i2c/busses/i2c-viapro.c               |   2 +-
- drivers/i2c/busses/scx200_acb.c               |   3 +-
- drivers/i2c/i2c-slave-eeprom.c                |   2 +-
- drivers/i3c/master/dw-i3c-master.c            |   2 +-
- drivers/ide/hpt366.c                          |   6 +-
- drivers/ide/ide-cd.c                          |   4 +-
- drivers/ide/ide-floppy.c                      |   2 +-
- drivers/ide/ide-probe.c                       |   2 +-
- drivers/ide/ide-taskfile.c                    |  12 +-
- drivers/ide/sis5513.c                         |   2 +-
- drivers/iio/accel/mma8452.c                   |   2 +-
- drivers/iio/adc/ab8500-gpadc.c                |   2 +-
- drivers/iio/adc/cpcap-adc.c                   |   2 +-
- drivers/iio/chemical/sps30.c                  |   2 +-
- drivers/iio/dac/ad5592r-base.c                |   2 -
- drivers/iio/dac/dpot-dac.c                    |   2 +-
- drivers/iio/health/max30102.c                 |   4 +-
- drivers/iio/imu/adis.c                        |   6 +-
- drivers/iio/industrialio-core.c               |   2 +-
- drivers/iio/light/si1145.c                    |   2 +-
- drivers/iio/magnetometer/ak8974.c             |   2 +-
- drivers/infiniband/core/cm.c                  |  14 +--
- drivers/infiniband/core/cma.c                 |   3 +-
- drivers/infiniband/core/ucma.c                |   4 +-
- drivers/infiniband/core/uverbs_ioctl.c        |   5 +-
- drivers/infiniband/hw/bnxt_re/ib_verbs.c      |   2 +-
- drivers/infiniband/hw/bnxt_re/qplib_fp.c      |   2 +-
- drivers/infiniband/hw/cxgb4/cm.c              |   4 +-
- drivers/infiniband/hw/cxgb4/qp.c              |   2 +-
- drivers/infiniband/hw/hfi1/chip.c             |   8 +-
- drivers/infiniband/hw/hfi1/firmware.c         |  16 ---
- drivers/infiniband/hw/hfi1/mad.c              |   9 +-
- drivers/infiniband/hw/hfi1/pio.c              |   2 +-
- drivers/infiniband/hw/hfi1/pio_copy.c         |  12 +-
- drivers/infiniband/hw/hfi1/platform.c         |  12 +-
- drivers/infiniband/hw/hfi1/qp.c               |   2 +-
- drivers/infiniband/hw/hfi1/qsfp.c             |   4 +-
- drivers/infiniband/hw/hfi1/rc.c               |  25 ++--
- drivers/infiniband/hw/hfi1/sdma.c             |   9 +-
- drivers/infiniband/hw/hfi1/tid_rdma.c         |   5 +-
- drivers/infiniband/hw/hfi1/uc.c               |   8 +-
- drivers/infiniband/hw/i40iw/i40iw_cm.c        |   2 +-
- drivers/infiniband/hw/i40iw/i40iw_ctrl.c      |   5 +-
- drivers/infiniband/hw/i40iw/i40iw_hw.c        |   3 +-
- drivers/infiniband/hw/i40iw/i40iw_main.c      |  21 ++--
- drivers/infiniband/hw/i40iw/i40iw_puda.c      |   4 +-
- drivers/infiniband/hw/i40iw/i40iw_utils.c     |   8 +-
- drivers/infiniband/hw/i40iw/i40iw_verbs.c     |   5 +-
- drivers/infiniband/hw/mlx4/cq.c               |   4 +-
- drivers/infiniband/hw/mlx4/mcg.c              |   2 +-
- drivers/infiniband/hw/mlx4/qp.c               |   6 +-
- drivers/infiniband/hw/mlx5/cq.c               |   4 +-
- drivers/infiniband/hw/mlx5/mad.c              |   3 +-
- drivers/infiniband/hw/mlx5/main.c             |   6 +-
- drivers/infiniband/hw/mlx5/qp.c               |  11 +-
- drivers/infiniband/hw/mthca/mthca_av.c        |   2 +-
- drivers/infiniband/hw/ocrdma/ocrdma_verbs.c   |   4 +-
- drivers/infiniband/hw/qedr/verbs.c            |   3 +-
- drivers/infiniband/hw/qib/qib_iba6120.c       |   4 +-
- drivers/infiniband/hw/qib/qib_iba7220.c       |   4 +-
- drivers/infiniband/hw/qib/qib_iba7322.c       |   6 +-
- drivers/infiniband/hw/qib/qib_mad.c           |  14 +--
- drivers/infiniband/hw/qib/qib_rc.c            |  18 +--
- drivers/infiniband/hw/qib/qib_sdma.c          |   2 +-
- drivers/infiniband/hw/qib/qib_uc.c            |   8 +-
- drivers/infiniband/hw/qib/qib_verbs.c         |   2 +-
- drivers/infiniband/hw/vmw_pvrdma/pvrdma_qp.c  |   2 +-
- drivers/infiniband/sw/rdmavt/qp.c             |   2 +-
- drivers/infiniband/sw/rxe/rxe_task.c          |   2 +-
- drivers/infiniband/sw/rxe/rxe_verbs.c         |   2 +-
- drivers/infiniband/sw/siw/siw_cm.c            |   2 -
- drivers/infiniband/sw/siw/siw_qp_rx.c         |   6 +-
- drivers/infiniband/sw/siw/siw_qp_tx.c         |   6 +-
- drivers/infiniband/ulp/ipoib/ipoib_cm.c       |   4 +-
- drivers/infiniband/ulp/ipoib/ipoib_main.c     |   2 +-
- drivers/infiniband/ulp/iser/iser_verbs.c      |   2 +-
- drivers/infiniband/ulp/isert/ib_isert.c       |  10 +-
- .../infiniband/ulp/opa_vnic/opa_vnic_vema.c   |   1 -
- drivers/input/joystick/db9.c                  |  11 +-
- drivers/input/joystick/fsia6b.c               |   4 +-
- drivers/input/joystick/gamecon.c              |  10 +-
- drivers/input/joystick/sidewinder.c           |  15 ++-
- drivers/input/joystick/spaceball.c            |   8 +-
- drivers/input/keyboard/adp5589-keys.c         |   2 +-
- drivers/input/keyboard/atkbd.c                |   3 +-
- drivers/input/keyboard/gpio_keys.c            |   1 -
- drivers/input/misc/pwm-vibra.c                |   3 +-
- drivers/input/misc/xen-kbdfront.c             |   5 +-
- drivers/input/mouse/appletouch.c              |   2 +-
- drivers/input/mouse/cyapa_gen3.c              |   6 +-
- drivers/input/mouse/cyapa_gen5.c              |   3 +-
- drivers/input/mouse/cyapa_gen6.c              |   3 +-
- drivers/input/mouse/elantech.c                |   6 +-
- drivers/input/mouse/hgpk.c                    |   8 +-
- drivers/input/mouse/navpoint.c                |   2 +-
- drivers/input/mouse/sentelic.c                |   3 +-
- drivers/input/mouse/sermouse.c                |   6 +-
- drivers/input/serio/i8042.c                   |   2 +-
- drivers/input/serio/libps2.c                  |   2 +-
- drivers/input/sparse-keymap.c                 |   3 +-
- drivers/input/tablet/gtco.c                   |   9 +-
- drivers/input/tablet/pegasus_notetaker.c      |   3 +-
- drivers/input/tablet/wacom_serial4.c          |   2 +-
- drivers/input/touchscreen/atmel_mxt_ts.c      |   2 +-
- drivers/input/touchscreen/edt-ft5x06.c        |   5 +-
- drivers/input/touchscreen/elants_i2c.c        |   3 +-
- drivers/input/touchscreen/elo.c               |   3 +-
- drivers/input/touchscreen/iqs5xx.c            |   2 +-
- drivers/input/touchscreen/max11801_ts.c       |   1 -
- drivers/input/touchscreen/stmfts.c            |   3 +-
- drivers/input/touchscreen/wm831x-ts.c         |   2 +-
- drivers/iommu/amd_iommu_init.c                |   2 +-
- drivers/iommu/arm-smmu-v3.c                   |  11 +-
- drivers/iommu/intel-iommu.c                   |   1 -
- drivers/iommu/virtio-iommu.c                  |   2 +-
- drivers/irqchip/irq-gic-v3-its.c              |   4 +-
- drivers/irqchip/irq-gic-v3.c                  |   8 +-
- drivers/irqchip/irq-imx-gpcv2.c               |   2 +-
- drivers/irqchip/irq-mips-gic.c                |   2 +-
- drivers/irqchip/irq-vic.c                     |   2 +-
- drivers/isdn/hardware/mISDN/avmfritz.c        |   2 +-
- drivers/isdn/hardware/mISDN/hfcpci.c          |   2 +-
- drivers/isdn/hardware/mISDN/hfcsusb.c         |   2 +-
- drivers/isdn/hardware/mISDN/isdnhdlc.c        |   2 +-
- drivers/isdn/hardware/mISDN/mISDNinfineon.c   |   2 +-
- drivers/isdn/hardware/mISDN/mISDNisar.c       |   8 +-
- drivers/isdn/mISDN/stack.c                    |   2 +-
- drivers/lightnvm/pblk-core.c                  |   2 +-
- drivers/macintosh/adbhid.c                    |   3 +-
- drivers/macintosh/smu.c                       |   2 +-
- drivers/md/bcache/journal.c                   |   3 +-
- drivers/md/bcache/util.c                      |  14 +--
- drivers/md/dm-mpath.c                         |   2 +-
- drivers/md/dm.c                               |   2 +-
- drivers/md/md-bitmap.c                        |   2 +-
- drivers/md/raid5.c                            |   4 +-
- drivers/media/cec/cec-adap.c                  |   2 +-
- drivers/media/cec/cec-pin.c                   |   6 +-
- drivers/media/common/v4l2-tpg/v4l2-tpg-core.c |  36 +++---
- .../media/common/videobuf2/videobuf2-v4l2.c   |   2 +-
- drivers/media/dvb-core/dvb_net.c              |   2 +-
- drivers/media/dvb-frontends/af9013.c          |   2 +-
- drivers/media/dvb-frontends/bcm3510.c         |   2 +-
- drivers/media/dvb-frontends/dib0090.c         |   3 +-
- drivers/media/dvb-frontends/dib3000mb.c       |   2 +-
- drivers/media/dvb-frontends/dib7000p.c        |   2 +-
- drivers/media/dvb-frontends/drx39xyj/drxj.c   |  99 ++++++++-------
- drivers/media/dvb-frontends/drxd_hard.c       |  12 +-
- drivers/media/dvb-frontends/drxk_hard.c       |  24 ++--
- drivers/media/dvb-frontends/lg2160.c          |   2 +-
- drivers/media/dvb-frontends/lgdt3306a.c       |   2 +-
- drivers/media/dvb-frontends/mt352.c           |   2 +-
- drivers/media/dvb-frontends/mxl5xx.c          |   2 +-
- drivers/media/dvb-frontends/or51132.c         |   2 +-
- drivers/media/dvb-frontends/s5h1411.c         |   2 +-
- drivers/media/dvb-frontends/zl10353.c         |   4 +-
- drivers/media/i2c/adv7180.c                   |   2 +-
- drivers/media/i2c/adv7511-v4l2.c              |   4 +-
- drivers/media/i2c/msp3400-kthreads.c          |   2 +-
- drivers/media/i2c/ov5640.c                    |   2 +-
- drivers/media/i2c/ov6650.c                    |   4 +-
- drivers/media/i2c/ov9640.c                    |   2 +-
- drivers/media/i2c/s5c73m3/s5c73m3-ctrls.c     |   2 +-
- drivers/media/i2c/smiapp/smiapp-core.c        |   6 +-
- drivers/media/i2c/tda1997x.c                  |  10 +-
- drivers/media/i2c/tvp5150.c                   |   2 +-
- drivers/media/pci/bt8xx/bttv-driver.c         |   2 +-
- drivers/media/pci/cx23885/cx23885-cards.c     |   4 +-
- drivers/media/pci/cx88/cx88-cards.c           |   2 +-
- drivers/media/pci/cx88/cx88-video.c           |   2 +-
- drivers/media/pci/ddbridge/ddbridge-core.c    |  23 ++--
- drivers/media/pci/meye/meye.c                 |   2 +-
- drivers/media/pci/saa7134/saa7134-cards.c     |   4 +-
- drivers/media/pci/solo6x10/solo6x10-core.c    |   2 +-
- drivers/media/pci/solo6x10/solo6x10-i2c.c     |   2 +-
- drivers/media/pci/ttpci/av7110.c              |   6 +-
- drivers/media/pci/ttpci/av7110_hw.c           |   2 +-
- drivers/media/pci/ttpci/av7110_ipack.c        |   2 +-
- drivers/media/pci/ttpci/budget-av.c           |   2 +-
- drivers/media/pci/ttpci/budget.c              |   5 +-
- drivers/media/platform/coda/coda-bit.c        |   4 +-
- drivers/media/platform/coda/coda-common.c     |  10 +-
- .../media/platform/exynos4-is/fimc-capture.c  |   6 +-
- drivers/media/platform/exynos4-is/fimc-reg.c  |   2 +-
- drivers/media/platform/exynos4-is/media-dev.c |   2 +-
- .../media/platform/marvell-ccic/mcam-core.c   |   2 +-
- drivers/media/platform/omap3isp/ispvideo.c    |   2 +-
- drivers/media/platform/pxa_camera.c           |   6 +-
- drivers/media/platform/qcom/venus/vdec.c      |   2 +-
- drivers/media/platform/renesas-ceu.c          |   4 +-
- drivers/media/platform/sh_vou.c               |   4 +-
- drivers/media/platform/vicodec/vicodec-core.c |   2 +-
- drivers/media/platform/vivid/vivid-vbi-gen.c  |   2 +-
- drivers/media/radio/radio-si476x.c            |   3 +-
- drivers/media/radio/si4713/si4713.c           |   2 +-
- drivers/media/radio/tea575x.c                 |   2 +-
- drivers/media/rc/bpf-lirc.c                   |   2 +-
- drivers/media/rc/iguanair.c                   |   2 +-
- drivers/media/rc/ir-rc6-decoder.c             |   2 +-
- drivers/media/rc/ir-sony-decoder.c            |   3 +-
- drivers/media/tuners/fc0011.c                 |   2 +-
- drivers/media/tuners/tda18271-fe.c            |   2 +-
- drivers/media/tuners/xc5000.c                 |   2 +-
- drivers/media/usb/b2c2/flexcop-usb.c          |   2 +-
- drivers/media/usb/cpia2/cpia2_core.c          |  36 +++---
- drivers/media/usb/cx231xx/cx231xx-video.c     |   2 +-
- drivers/media/usb/dvb-usb-v2/af9015.c         |   2 +-
- drivers/media/usb/dvb-usb-v2/gl861.c          |   2 +-
- drivers/media/usb/dvb-usb-v2/lmedm04.c        |   8 +-
- drivers/media/usb/dvb-usb-v2/mxl111sf-gpio.c  |   4 +-
- drivers/media/usb/dvb-usb/dib0700_devices.c   |   2 +-
- drivers/media/usb/dvb-usb/dw2102.c            |   6 +-
- drivers/media/usb/em28xx/em28xx-audio.c       |   8 +-
- drivers/media/usb/go7007/go7007-driver.c      |   2 +-
- drivers/media/usb/gspca/mr97310a.c            |  10 +-
- drivers/media/usb/gspca/nw80x.c               |   2 +-
- drivers/media/usb/gspca/ov519.c               |   6 +-
- drivers/media/usb/gspca/sn9c20x.c             |   2 +-
- drivers/media/usb/gspca/sunplus.c             |   4 +-
- drivers/media/usb/gspca/xirlink_cit.c         |   4 +-
- drivers/media/usb/gspca/zc3xx.c               |   4 +-
- drivers/media/usb/pulse8-cec/pulse8-cec.c     |   2 +-
- drivers/media/usb/pwc/pwc-v4l.c               |   2 +-
- drivers/media/usb/siano/smsusb.c              |   2 +-
- drivers/media/usb/tm6000/tm6000-alsa.c        |   8 +-
- drivers/media/usb/uvc/uvc_video.c             |   4 +-
- drivers/media/v4l2-core/v4l2-ctrls.c          |   2 +-
- drivers/media/v4l2-core/v4l2-ioctl.c          |   2 -
- drivers/media/v4l2-core/videobuf-core.c       |   2 +-
- drivers/memory/omap-gpmc.c                    |   1 -
- drivers/memstick/core/ms_block.c              |  18 +--
- drivers/memstick/host/jmb38x_ms.c             |   4 +-
- drivers/memstick/host/tifm_ms.c               |   4 +-
- drivers/message/fusion/mptbase.c              |   7 +-
- drivers/message/fusion/mptsas.c               |   3 +-
- drivers/message/fusion/mptscsih.c             |   5 +-
- drivers/mfd/db8500-prcmu.c                    |   4 +-
- drivers/mfd/iqs62x.c                          |  12 +-
- drivers/mfd/mxs-lradc.c                       |   2 +-
- drivers/mfd/omap-usb-host.c                   |   6 +-
- drivers/mfd/rave-sp.c                         |   6 +-
- drivers/mfd/syscon.c                          |   2 +-
- drivers/misc/eeprom/at25.c                    |  10 +-
- drivers/misc/mic/scif/scif_api.c              |   4 +-
- drivers/misc/mic/scif/scif_rma.c              |   2 +-
- drivers/misc/sgi-gru/grukservices.c           |   4 +-
- drivers/misc/sgi-xp/xpc_main.c                |   6 +-
- drivers/misc/sgi-xp/xpc_partition.c           |   4 +-
- drivers/misc/sgi-xp/xpc_uv.c                  |   2 +-
- drivers/mmc/core/host.c                       |   2 +-
- drivers/mmc/host/atmel-mci.c                  |   8 +-
- drivers/mmc/host/davinci_mmc.c                |   2 +-
- drivers/mmc/host/dw_mmc-k3.c                  |   2 +-
- drivers/mmc/host/dw_mmc.c                     |  11 +-
- drivers/mmc/host/jz4740_mmc.c                 |   6 +-
- drivers/mmc/host/meson-mx-sdio.c              |   2 +-
- drivers/mmc/host/renesas_sdhi_core.c          |   2 +-
- drivers/mmc/host/sdhci-esdhc-imx.c            |   3 +-
- drivers/mmc/host/sdhci-s3c.c                  |   2 +-
- drivers/mmc/host/sdhci-sprd.c                 |   2 +-
- drivers/mmc/host/sdhci-xenon-phy.c            |   2 +-
- drivers/mmc/host/sdhci.c                      |   3 +-
- drivers/mmc/host/tifm_sd.c                    |   2 +-
- drivers/mmc/host/usdhi6rol0.c                 |   6 +-
- drivers/mtd/chips/cfi_cmdset_0001.c           |   4 +-
- drivers/mtd/chips/cfi_cmdset_0002.c           |   5 +-
- drivers/mtd/chips/cfi_cmdset_0020.c           |  17 +--
- drivers/mtd/chips/cfi_util.c                  |  12 +-
- drivers/mtd/devices/block2mtd.c               |   4 +-
- drivers/mtd/devices/phram.c                   |   4 +-
- drivers/mtd/lpddr/lpddr_cmds.c                |   3 +-
- drivers/mtd/maps/sa1100-flash.c               |   3 +-
- drivers/mtd/nand/onenand/onenand_base.c       |   2 +-
- drivers/mtd/nand/raw/diskonchip.c             |   2 +-
- drivers/mtd/nand/raw/fsl_elbc_nand.c          |   3 +-
- .../mtd/nand/raw/ingenic/ingenic_nand_drv.c   |   2 +-
- drivers/mtd/nand/raw/ingenic/jz4725b_bch.c    |   4 +-
- drivers/mtd/nand/raw/ingenic/jz4780_bch.c     |   4 +-
- drivers/mtd/nand/raw/nand_base.c              |   9 +-
- drivers/mtd/nand/raw/nand_legacy.c            |   6 +-
- drivers/mtd/nand/raw/nandsim.c                |   4 +-
- drivers/mtd/nand/raw/omap_elm.c               |   8 +-
- drivers/mtd/spi-nor/aspeed-smc.c              |   2 +-
- drivers/mtd/spi-nor/spi-nor.c                 |   1 -
- drivers/mtd/ubi/attach.c                      |   2 +-
- drivers/mtd/ubi/build.c                       |   4 +-
- drivers/mux/adgs1408.c                        |   2 +-
- drivers/net/appletalk/cops.c                  |   2 +-
- drivers/net/arcnet/arc-rimi.c                 |   6 +-
- drivers/net/arcnet/com20020-isa.c             |  12 +-
- drivers/net/arcnet/com90io.c                  |   4 +-
- drivers/net/arcnet/com90xx.c                  |   6 +-
- drivers/net/bonding/bond_3ad.c                |   6 +-
- drivers/net/bonding/bond_main.c               |   8 +-
- drivers/net/can/at91_can.c                    |   4 +-
- drivers/net/can/peak_canfd/peak_pciefd_main.c |   3 +-
- drivers/net/can/sja1000/sja1000_platform.c    |   2 +-
- drivers/net/can/slcan.c                       |   4 +-
- drivers/net/can/spi/mcp251x.c                 |   2 +-
- drivers/net/can/usb/peak_usb/pcan_usb.c       |   3 +-
- drivers/net/can/usb/peak_usb/pcan_usb_core.c  |   2 +-
- drivers/net/can/usb/peak_usb/pcan_usb_pro.c   |   4 +-
- drivers/net/dsa/b53/b53_common.c              |   2 +-
- drivers/net/dsa/b53/b53_serdes.c              |   2 +-
- drivers/net/dsa/bcm_sf2.c                     |   2 +-
- drivers/net/dsa/microchip/ksz9477.c           |   2 +-
- drivers/net/dsa/mt7530.c                      |   2 +-
- drivers/net/dsa/mv88e6xxx/chip.c              |   2 +-
- drivers/net/ethernet/3com/3c509.c             |   4 +-
- drivers/net/ethernet/3com/3c574_cs.c          |   2 +-
- drivers/net/ethernet/8390/axnet_cs.c          |   2 +-
- drivers/net/ethernet/8390/pcnet_cs.c          |   2 +-
- drivers/net/ethernet/alacritech/slicoss.c     |   8 +-
- drivers/net/ethernet/alteon/acenic.c          |   2 +-
- drivers/net/ethernet/amd/amd8111e.c           |   3 +-
- drivers/net/ethernet/amd/xgbe/xgbe-drv.c      |   6 +-
- drivers/net/ethernet/broadcom/bgmac-bcma.c    |   2 +-
- .../net/ethernet/broadcom/bgmac-platform.c    |   2 +-
- drivers/net/ethernet/broadcom/bnx2.c          |  15 ++-
- .../net/ethernet/broadcom/bnx2x/bnx2x_link.c  |  14 +--
- .../net/ethernet/broadcom/bnx2x/bnx2x_main.c  |   6 +-
- .../net/ethernet/broadcom/bnx2x/bnx2x_sriov.c |   4 +-
- drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  17 ++-
- .../net/ethernet/broadcom/bnxt/bnxt_ethtool.c |   4 +-
- drivers/net/ethernet/broadcom/bnxt/bnxt_xdp.c |   4 +-
- drivers/net/ethernet/broadcom/cnic.c          |   4 +-
- .../net/ethernet/broadcom/genet/bcmgenet.c    |   4 +-
- drivers/net/ethernet/broadcom/genet/bcmmii.c  |   2 +-
- drivers/net/ethernet/broadcom/tg3.c           |  58 +++++----
- drivers/net/ethernet/brocade/bna/bfa_ioc.c    |   8 +-
- drivers/net/ethernet/brocade/bna/bna_enet.c   |   2 +-
- drivers/net/ethernet/brocade/bna/bna_tx_rx.c  |   3 +-
- drivers/net/ethernet/cadence/macb_ptp.c       |   2 +-
- .../net/ethernet/cavium/liquidio/lio_main.c   |  42 +++----
- .../ethernet/cavium/liquidio/lio_vf_main.c    |  37 ++----
- .../ethernet/cavium/thunder/nicvf_ethtool.c   |   2 +-
- .../net/ethernet/cavium/thunder/nicvf_main.c  |   4 +-
- .../net/ethernet/chelsio/cxgb3/cxgb3_main.c   |   2 +-
- drivers/net/ethernet/chelsio/cxgb3/l2t.c      |   2 +-
- drivers/net/ethernet/chelsio/cxgb4/l2t.c      |   2 +-
- drivers/net/ethernet/chelsio/cxgb4/t4_hw.c    |   6 +-
- .../ethernet/chelsio/cxgb4vf/cxgb4vf_main.c   |   3 +-
- drivers/net/ethernet/cisco/enic/enic_main.c   |   4 +-
- drivers/net/ethernet/davicom/dm9000.c         |   2 +-
- drivers/net/ethernet/dec/tulip/de4x5.c        |   9 +-
- drivers/net/ethernet/dec/tulip/tulip_core.c   |   3 +-
- drivers/net/ethernet/dec/tulip/winbond-840.c  |   3 +-
- .../net/ethernet/emulex/benet/be_ethtool.c    |   2 +-
- .../net/ethernet/freescale/dpaa/dpaa_eth.c    |   2 +-
- .../ethernet/freescale/dpaa/dpaa_ethtool.c    |   2 +-
- .../net/ethernet/freescale/dpaa2/dpaa2-eth.c  |   4 +-
- .../net/ethernet/freescale/fman/fman_memac.c  |   2 +-
- .../net/ethernet/freescale/fman/fman_port.c   |   4 +-
- drivers/net/ethernet/freescale/ucc_geth.c     |   2 +-
- .../net/ethernet/hisilicon/hns/hns_ethtool.c  |   2 +-
- .../net/ethernet/hisilicon/hns3/hns3_enet.c   |   2 +-
- .../hisilicon/hns3/hns3pf/hclge_main.c        |   4 +-
- drivers/net/ethernet/ibm/ehea/ehea_main.c     |   3 +-
- drivers/net/ethernet/ibm/emac/core.c          |   2 +-
- drivers/net/ethernet/intel/e1000/e1000_hw.c   |   4 +-
- drivers/net/ethernet/intel/e1000/e1000_main.c |   2 +-
- .../net/ethernet/intel/e1000/e1000_param.c    |   2 +-
- drivers/net/ethernet/intel/e1000e/82571.c     |   4 +-
- drivers/net/ethernet/intel/e1000e/ethtool.c   |  11 +-
- drivers/net/ethernet/intel/e1000e/ich8lan.c   |  16 ++-
- drivers/net/ethernet/intel/e1000e/netdev.c    |  13 +-
- drivers/net/ethernet/intel/e1000e/param.c     |   2 +-
- drivers/net/ethernet/intel/e1000e/phy.c       |   2 +-
- drivers/net/ethernet/intel/e1000e/ptp.c       |   3 +-
- .../net/ethernet/intel/fm10k/fm10k_ethtool.c  |   4 +-
- drivers/net/ethernet/intel/fm10k/fm10k_main.c |   2 +-
- drivers/net/ethernet/intel/fm10k/fm10k_mbx.c  |   8 +-
- .../net/ethernet/intel/fm10k/fm10k_netdev.c   |   2 +-
- drivers/net/ethernet/intel/fm10k/fm10k_pf.c   |   8 +-
- drivers/net/ethernet/intel/i40e/i40e_adminq.c |   2 +-
- .../net/ethernet/intel/i40e/i40e_ethtool.c    |   2 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c   |   5 +-
- drivers/net/ethernet/intel/i40e/i40e_ptp.c    |   2 +-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c   |   4 +-
- drivers/net/ethernet/intel/i40e/i40e_xsk.c    |   4 +-
- drivers/net/ethernet/intel/igb/e1000_82575.c  |   4 +-
- drivers/net/ethernet/intel/igb/e1000_nvm.c    |   2 +-
- drivers/net/ethernet/intel/igb/e1000_phy.c    |   4 +-
- drivers/net/ethernet/intel/igb/igb_ethtool.c  |   8 +-
- drivers/net/ethernet/intel/igb/igb_main.c     |  25 ++--
- drivers/net/ethernet/intel/igb/igb_ptp.c      |   2 +-
- drivers/net/ethernet/intel/igbvf/netdev.c     |   4 +-
- drivers/net/ethernet/intel/igc/igc_ethtool.c  |  16 +--
- drivers/net/ethernet/intel/igc/igc_main.c     |   5 +-
- drivers/net/ethernet/intel/igc/igc_ptp.c      |   2 +-
- .../net/ethernet/intel/ixgbe/ixgbe_82598.c    |   2 +-
- .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |   6 +-
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   5 +-
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  10 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  30 ++---
- drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c  |   4 +-
- .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    |   4 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |  10 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  |   4 +-
- .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |   8 +-
- drivers/net/ethernet/intel/ixgbevf/vf.c       |   6 +-
- drivers/net/ethernet/marvell/mvneta.c         |   4 +-
- .../net/ethernet/marvell/mvpp2/mvpp2_cls.c    |   2 +-
- .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |   4 +-
- .../ethernet/marvell/octeontx2/af/rvu_nix.c   |   2 +-
- drivers/net/ethernet/marvell/skge.c           |   3 +-
- drivers/net/ethernet/marvell/sky2.c           |   5 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   |   6 +-
- drivers/net/ethernet/mellanox/mlx4/en_rx.c    |   4 +-
- drivers/net/ethernet/mellanox/mlx4/eq.c       |   2 +-
- drivers/net/ethernet/mellanox/mlx4/mcg.c      |   6 +-
- .../net/ethernet/mellanox/mlx5/core/en/txrx.h |   2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   4 +-
- .../mellanox/mlx5/core/en_accel/ktls_tx.c     |   2 +-
- .../ethernet/mellanox/mlx5/core/en_ethtool.c  |   2 +-
- .../mellanox/mlx5/core/eswitch_offloads.c     |   2 +-
- .../ethernet/mellanox/mlx5/core/fpga/conn.c   |   4 +-
- .../net/ethernet/mellanox/mlx5/core/lag_mp.c  |   8 +-
- .../net/ethernet/mellanox/mlx5/core/vport.c   |   2 +-
- .../net/ethernet/mellanox/mlxfw/mlxfw_fsm.c   |   4 +-
- drivers/net/ethernet/mellanox/mlxsw/core.c    |  18 +--
- .../net/ethernet/mellanox/mlxsw/core_env.c    |   8 +-
- .../net/ethernet/mellanox/mlxsw/core_hwmon.c  |   4 +-
- .../net/ethernet/mellanox/mlxsw/spectrum.c    |   4 +-
- .../net/ethernet/mellanox/mlxsw/spectrum.h    |  10 +-
- .../ethernet/mellanox/mlxsw/spectrum_router.c |  32 ++---
- .../mellanox/mlxsw/spectrum_switchdev.c       |  12 +-
- .../net/ethernet/microchip/lan743x_ethtool.c  |   2 +-
- drivers/net/ethernet/mscc/ocelot.c            |   2 +-
- drivers/net/ethernet/mscc/ocelot_tc.c         |   2 +-
- drivers/net/ethernet/natsemi/natsemi.c        |   3 +-
- .../net/ethernet/neterion/vxge/vxge-config.c  |   6 +-
- .../net/ethernet/netronome/nfp/crypto/tls.c   |   2 +-
- .../ethernet/netronome/nfp/flower/action.c    |   2 +-
- .../net/ethernet/netronome/nfp/flower/cmsg.c  |   2 +-
- .../ethernet/netronome/nfp/flower/offload.c   |   2 +-
- drivers/net/ethernet/netronome/nfp/nfp_asm.c  |   2 +-
- .../ethernet/netronome/nfp/nfp_net_common.c   |   4 +-
- .../netronome/nfp/nfpcore/nfp6000_pcie.c      |   4 +-
- .../netronome/nfp/nfpcore/nfp_rtsym.c         |   2 +-
- .../ethernet/oki-semi/pch_gbe/pch_gbe_param.c |   2 +-
- .../net/ethernet/packetengines/yellowfin.c    |   3 +-
- .../qlogic/netxen/netxen_nic_ethtool.c        |   4 +-
- drivers/net/ethernet/qlogic/qed/qed_cxt.c     |   2 +-
- drivers/net/ethernet/qlogic/qed/qed_dev.c     |   5 +-
- drivers/net/ethernet/qlogic/qed/qed_main.c    |   6 +-
- drivers/net/ethernet/qlogic/qed/qed_mcp.c     |  10 +-
- drivers/net/ethernet/qlogic/qede/qede_fp.c    |   4 +-
- drivers/net/ethernet/qlogic/qla3xxx.c         |   3 +-
- .../ethernet/qlogic/qlcnic/qlcnic_ethtool.c   |   4 +-
- drivers/net/ethernet/realtek/r8169_main.c     |   4 +-
- drivers/net/ethernet/rocker/rocker_main.c     |   8 +-
- .../ethernet/samsung/sxgbe/sxgbe_ethtool.c    |   4 +-
- drivers/net/ethernet/sfc/falcon/ethtool.c     |   2 +-
- drivers/net/ethernet/sfc/falcon/farch.c       |  14 +--
- drivers/net/ethernet/sfc/farch.c              |  14 +--
- drivers/net/ethernet/sfc/mcdi_filters.c       |   2 +-
- drivers/net/ethernet/sfc/mcdi_port_common.c   |   2 +-
- drivers/net/ethernet/sfc/rx.c                 |   2 +-
- drivers/net/ethernet/sis/sis900.c             |   3 +-
- drivers/net/ethernet/smsc/smc911x.c           |   2 +-
- drivers/net/ethernet/socionext/netsec.c       |   4 +-
- .../ethernet/stmicro/stmmac/dwmac-anarion.c   |   5 +-
- .../ethernet/stmicro/stmmac/dwmac-meson8b.c   |   3 +-
- .../stmicro/stmmac/stmmac_selftests.c         |   4 +-
- .../net/ethernet/stmicro/stmmac/stmmac_tc.c   |   2 +-
- drivers/net/ethernet/sun/cassini.c            |   3 +-
- drivers/net/ethernet/sun/niu.c                |   6 +-
- drivers/net/ethernet/sun/sungem.c             |   3 +-
- drivers/net/ethernet/ti/cpsw-phy-sel.c        |   4 +-
- drivers/net/ethernet/ti/cpsw_priv.c           |   4 +-
- drivers/net/ethernet/ti/cpts.c                |   2 +-
- drivers/net/ethernet/ti/tlan.c                |   4 +-
- .../net/ethernet/toshiba/ps3_gelic_wireless.c |   2 +-
- drivers/net/ethernet/toshiba/spider_net.c     |  29 +++--
- drivers/net/ethernet/xircom/xirc2ps_cs.c      |   2 +-
- drivers/net/fddi/skfp/pcmplc.c                |   4 +-
- drivers/net/fjes/fjes_main.c                  |   2 +-
- drivers/net/hamradio/baycom_epp.c             |   3 +-
- drivers/net/hamradio/mkiss.c                  |   5 +-
- drivers/net/macvlan.c                         |   2 +-
- drivers/net/mii.c                             |   3 +-
- drivers/net/netdevsim/bus.c                   |   2 +-
- drivers/net/netdevsim/fib.c                   |   6 +-
- drivers/net/phy/adin.c                        |   4 +-
- drivers/net/phy/dp83640.c                     |   8 +-
- drivers/net/phy/fixed_phy.c                   |   4 +-
- drivers/net/phy/phy.c                         |   6 +-
- drivers/net/phy/phylink.c                     |   6 +-
- drivers/net/phy/sfp-bus.c                     |   4 +-
- drivers/net/phy/sfp.c                         |  12 +-
- drivers/net/plip/plip.c                       |  38 ++----
- drivers/net/tun.c                             |   6 +-
- drivers/net/usb/aqc111.c                      |   6 +-
- drivers/net/usb/catc.c                        |   2 +-
- drivers/net/usb/cdc-phonet.c                  |   2 +-
- drivers/net/usb/lan78xx.c                     |   7 +-
- drivers/net/usb/pegasus.c                     |   4 +-
- drivers/net/usb/r8152.c                       |   7 +-
- drivers/net/usb/rtl8150.c                     |   2 +-
- drivers/net/usb/usbnet.c                      |   7 +-
- drivers/net/veth.c                            |   8 +-
- drivers/net/virtio_net.c                      |   6 +-
- drivers/net/wan/lapbether.c                   |   2 +-
- drivers/net/wan/sdla.c                        |   3 +-
- drivers/net/wan/x25_asy.c                     |   2 +-
- drivers/net/wimax/i2400m/control.c            |   2 +-
- drivers/net/wimax/i2400m/usb-fw.c             |   2 +-
- drivers/net/wimax/i2400m/usb-tx.c             |   2 +-
- drivers/net/wimax/i2400m/usb.c                |   2 +-
- drivers/net/wireless/ath/ath10k/core.c        |   2 +-
- drivers/net/wireless/ath/ath10k/htt_rx.c      |   2 +-
- drivers/net/wireless/ath/ath10k/htt_tx.c      |   6 +-
- drivers/net/wireless/ath/ath10k/mac.c         |  18 +--
- drivers/net/wireless/ath/ath10k/wow.c         |   2 +-
- drivers/net/wireless/ath/ath11k/core.c        |   2 +-
- drivers/net/wireless/ath/ath11k/dp.c          |   2 +-
- drivers/net/wireless/ath/ath11k/mac.c         |  23 ++--
- drivers/net/wireless/ath/ath5k/eeprom.c       |   4 +-
- drivers/net/wireless/ath/ath5k/pcu.c          |   4 +-
- drivers/net/wireless/ath/ath5k/phy.c          |   7 +-
- drivers/net/wireless/ath/ath5k/reset.c        |   2 +-
- drivers/net/wireless/ath/ath6kl/cfg80211.c    |   6 +-
- drivers/net/wireless/ath/ath6kl/main.c        |   2 +-
- drivers/net/wireless/ath/ath9k/ar5008_phy.c   |   4 +-
- drivers/net/wireless/ath/ath9k/ar9002_mac.c   |   2 +-
- drivers/net/wireless/ath/ath9k/ar9002_phy.c   |   2 +-
- drivers/net/wireless/ath/ath9k/ar9003_mac.c   |   2 +-
- drivers/net/wireless/ath/ath9k/channel.c      |   4 +-
- drivers/net/wireless/ath/ath9k/eeprom_def.c   |   2 +-
- drivers/net/wireless/ath/ath9k/hw.c           |   6 +-
- drivers/net/wireless/ath/ath9k/main.c         |   2 +-
- drivers/net/wireless/ath/carl9170/rx.c        |   3 +-
- drivers/net/wireless/ath/carl9170/tx.c        |   9 +-
- drivers/net/wireless/ath/wcn36xx/smd.c        |   2 +-
- drivers/net/wireless/atmel/at76c50x-usb.c     |   2 +-
- drivers/net/wireless/atmel/atmel.c            |   2 +-
- drivers/net/wireless/broadcom/b43/dma.c       |   2 +-
- drivers/net/wireless/broadcom/b43/main.c      |   8 +-
- drivers/net/wireless/broadcom/b43/phy_n.c     |   2 +-
- drivers/net/wireless/broadcom/b43/pio.c       |   2 +-
- .../net/wireless/broadcom/b43/tables_nphy.c   |   2 +-
- drivers/net/wireless/broadcom/b43legacy/dma.c |   2 +-
- .../net/wireless/broadcom/b43legacy/main.c    |   4 +-
- .../broadcom/brcm80211/brcmfmac/cfg80211.c    |   8 +-
- .../broadcom/brcm80211/brcmfmac/chip.c        |   2 +-
- .../broadcom/brcm80211/brcmsmac/rate.c        |   1 -
- .../net/wireless/intel/iwlegacy/3945-mac.c    |   2 +-
- .../net/wireless/intel/iwlegacy/4965-mac.c    |   4 +-
- drivers/net/wireless/intel/iwlegacy/common.c  |   5 +-
- .../net/wireless/intel/iwlwifi/dvm/mac80211.c |   2 +-
- drivers/net/wireless/intel/iwlwifi/dvm/rx.c   |   6 +-
- drivers/net/wireless/intel/iwlwifi/dvm/scan.c |   2 +-
- drivers/net/wireless/intel/iwlwifi/dvm/sta.c  |   2 +-
- drivers/net/wireless/intel/iwlwifi/dvm/tx.c   |   2 +-
- drivers/net/wireless/intel/iwlwifi/iwl-drv.c  |   2 +-
- drivers/net/wireless/intel/iwlwifi/mvm/led.c  |   2 +-
- .../net/wireless/intel/iwlwifi/mvm/mac-ctxt.c |   2 +-
- .../net/wireless/intel/iwlwifi/mvm/mac80211.c |   2 +-
- .../net/wireless/intel/iwlwifi/mvm/phy-ctxt.c |   2 +-
- drivers/net/wireless/intel/iwlwifi/mvm/rx.c   |   3 +-
- drivers/net/wireless/intel/iwlwifi/mvm/rxmq.c |   8 +-
- drivers/net/wireless/intel/iwlwifi/mvm/scan.c |   2 +-
- drivers/net/wireless/intel/iwlwifi/mvm/sta.c  |  10 +-
- drivers/net/wireless/intel/iwlwifi/mvm/tx.c   |   4 +-
- drivers/net/wireless/intersil/orinoco/main.c  |   4 +-
- .../wireless/intersil/orinoco/orinoco_usb.c   |   9 +-
- .../net/wireless/intersil/prism54/isl_38xx.c  |   3 +-
- .../net/wireless/intersil/prism54/isl_ioctl.c |   2 +-
- .../wireless/intersil/prism54/islpci_dev.c    |   2 +-
- drivers/net/wireless/mac80211_hwsim.c         |   2 +-
- .../net/wireless/marvell/mwifiex/cfg80211.c   |   8 +-
- drivers/net/wireless/marvell/mwifiex/ie.c     |   2 +-
- drivers/net/wireless/marvell/mwifiex/scan.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7603/dma.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7603/mac.c   |   4 +-
- .../net/wireless/mediatek/mt76/mt7615/dma.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7615/mac.c   |   4 +-
- .../net/wireless/mediatek/mt76/mt76x0/phy.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt76x02_mac.c  |   6 +-
- drivers/net/wireless/mediatek/mt76/usb.c      |   2 +-
- drivers/net/wireless/mediatek/mt7601u/dma.c   |   4 +-
- drivers/net/wireless/mediatek/mt7601u/mac.c   |   4 +-
- drivers/net/wireless/mediatek/mt7601u/phy.c   |   2 +-
- .../net/wireless/ralink/rt2x00/rt2400pci.c    |   2 +-
- .../net/wireless/ralink/rt2x00/rt2500pci.c    |   2 +-
- .../net/wireless/ralink/rt2x00/rt2800lib.c    |  42 +++----
- .../net/wireless/ralink/rt2x00/rt2800mmio.c   |   1 -
- .../net/wireless/ralink/rt2x00/rt2800usb.c    |   1 -
- drivers/net/wireless/ralink/rt2x00/rt61pci.c  |   3 +-
- drivers/net/wireless/ralink/rt2x00/rt73usb.c  |   1 -
- drivers/net/wireless/ray_cs.c                 |   6 +-
- .../wireless/realtek/rtl8xxxu/rtl8xxxu_core.c |   8 +-
- drivers/net/wireless/realtek/rtlwifi/base.c   |   2 +-
- drivers/net/wireless/realtek/rtlwifi/core.c   |   4 +-
- .../wireless/realtek/rtlwifi/rtl8821ae/phy.c  |   2 +-
- drivers/net/wireless/realtek/rtw88/main.c     |   4 +-
- drivers/net/wireless/realtek/rtw88/phy.c      |   6 +-
- drivers/net/wireless/ti/wlcore/main.c         |   4 +-
- drivers/net/wireless/zydas/zd1201.c           |   2 +-
- drivers/net/xen-netback/hash.c                |   2 +-
- drivers/net/xen-netback/xenbus.c              |   2 +-
- drivers/net/xen-netfront.c                    |   2 +-
- drivers/nfc/pn533/pn533.c                     |   4 +-
- drivers/nfc/st21nfca/dep.c                    |   2 +-
- drivers/nfc/trf7970a.c                        |   4 +-
- drivers/ntb/ntb_transport.c                   |   4 +-
- drivers/nvme/host/core.c                      |  10 +-
- drivers/nvme/host/pci.c                       |   2 +-
- drivers/nvme/host/rdma.c                      |   2 +-
- drivers/nvme/target/core.c                    |   2 +-
- drivers/nvme/target/fcloop.c                  |   3 +-
- drivers/nvme/target/io-cmd-bdev.c             |   1 -
- drivers/nvme/target/rdma.c                    |   2 +-
- drivers/parport/ieee1284.c                    |   8 +-
- drivers/parport/parport_pc.c                  |   2 +-
- drivers/pci/controller/dwc/pci-imx6.c         |   6 +-
- drivers/pci/controller/pci-rcar-gen2.c        |   2 +-
- drivers/pci/hotplug/ibmphp_res.c              |   2 +-
- drivers/pci/hotplug/pciehp_ctrl.c             |   4 +-
- drivers/pci/hotplug/shpchp_ctrl.c             |   4 +-
- drivers/pci/pci-acpi.c                        |   6 +-
- drivers/pci/pci.c                             |   4 +-
- drivers/pci/proc.c                            |   2 +-
- drivers/pci/quirks.c                          |   4 +-
- drivers/pci/setup-bus.c                       |   2 +-
- drivers/pci/xen-pcifront.c                    |   2 +-
- drivers/pcmcia/db1xxx_ss.c                    |   8 +-
- drivers/perf/arm-ccn.c                        |   2 +-
- drivers/perf/arm_spe_pmu.c                    |   4 +-
- drivers/phy/qualcomm/phy-qcom-usb-hs.c        |   2 +-
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c |   8 +-
- drivers/pinctrl/intel/pinctrl-baytrail.c      |   4 +-
- drivers/pinctrl/pinctrl-lpc18xx.c             |  12 +-
- drivers/pinctrl/pinctrl-single.c              |   2 +-
- drivers/pinctrl/qcom/pinctrl-spmi-gpio.c      |   4 +-
- drivers/pinctrl/qcom/pinctrl-ssbi-gpio.c      |   2 +-
- drivers/platform/olpc/olpc-xo175-ec.c         |   2 +-
- drivers/platform/x86/acer-wmi.c               |   8 +-
- drivers/platform/x86/dell-laptop.c            |   4 +-
- drivers/platform/x86/surfacepro3_button.c     |   8 +-
- drivers/platform/x86/thinkpad_acpi.c          |   8 +-
- drivers/platform/x86/toshiba_acpi.c           |   2 +-
- drivers/power/supply/ab8500_charger.c         |   4 +-
- drivers/power/supply/ab8500_fg.c              |   7 +-
- drivers/power/supply/abx500_chargalg.c        |  39 ++----
- drivers/power/supply/axp20x_usb_power.c       |   2 +-
- drivers/power/supply/cros_usbpd-charger.c     |   2 +-
- drivers/power/supply/max8925_power.c          |   2 +-
- drivers/power/supply/wm831x_power.c           |   2 +-
- drivers/power/supply/wm8350_power.c           |   2 +-
- drivers/ps3/ps3av.c                           |   2 +-
- drivers/ps3/ps3av_cmd.c                       |   4 +-
- drivers/rapidio/devices/rio_mport_cdev.c      |   2 +-
- drivers/regulator/axp20x-regulator.c          |   9 +-
- drivers/regulator/core.c                      |   3 +-
- drivers/regulator/slg51000-regulator.c        |   3 +-
- drivers/regulator/twl6030-regulator.c         |   2 +-
- drivers/reset/reset-imx7.c                    |  10 +-
- drivers/rpmsg/qcom_glink_native.c             |   4 +-
- drivers/rtc/rtc-ds1374.c                      |   2 +-
- drivers/rtc/rtc-m41t80.c                      |   2 +-
- drivers/rtc/rtc-pcf85063.c                    |   2 +-
- drivers/rtc/rtc-pcf8523.c                     |   2 +-
- drivers/rtc/rtc-stmp3xxx.c                    |   2 +-
- drivers/s390/char/con3215.c                   |   2 +-
- drivers/s390/char/hmcdrv_ftp.c                |   2 +-
- drivers/s390/char/sclp_sdias.c                |   2 +-
- drivers/s390/char/tape_core.c                 |   6 +-
- drivers/s390/cio/device.c                     |   4 +-
- drivers/s390/crypto/ap_bus.c                  |   2 +-
- drivers/s390/crypto/ap_queue.c                |   8 +-
- drivers/s390/crypto/vfio_ap_ops.c             |   2 +-
- drivers/s390/crypto/zcrypt_msgtype6.c         |   8 +-
- drivers/s390/net/ctcm_fsms.c                  |   2 +-
- drivers/s390/net/ctcm_mpc.c                   |   6 +-
- drivers/s390/net/qeth_core_main.c             |   4 +-
- drivers/s390/net/qeth_ethtool.c               |   6 +-
- drivers/s390/net/qeth_l2_main.c               |   2 +-
- drivers/s390/net/qeth_l3_main.c               |   2 +-
- drivers/s390/scsi/zfcp_erp.c                  |  10 +-
- drivers/s390/scsi/zfcp_fsf.c                  |  23 ++--
- drivers/scsi/53c700.c                         |   2 +-
- drivers/scsi/BusLogic.c                       |   2 +-
- drivers/scsi/FlashPoint.c                     |   9 +-
- drivers/scsi/NCR5380.c                        |   2 +-
- drivers/scsi/aacraid/aachba.c                 |   9 +-
- drivers/scsi/aacraid/commsup.c                |   2 +-
- drivers/scsi/aacraid/linit.c                  |   2 +-
- drivers/scsi/aic7xxx/aic79xx_core.c           |  40 +++---
- drivers/scsi/aic7xxx/aic79xx_osm.c            |   2 +-
- drivers/scsi/aic7xxx/aic7xxx_core.c           |  28 ++---
- drivers/scsi/aic94xx/aic94xx_scb.c            |  11 +-
- drivers/scsi/aic94xx/aic94xx_tmf.c            |   2 +-
- drivers/scsi/arcmsr/arcmsr_hba.c              |   2 +-
- drivers/scsi/arm/fas216.c                     |  17 +--
- drivers/scsi/be2iscsi/be_iscsi.c              |   2 +-
- drivers/scsi/be2iscsi/be_main.c               |   2 +-
- drivers/scsi/bfa/bfa_fcpim.c                  |   6 +-
- drivers/scsi/bfa/bfa_fcs_lport.c              |   6 +-
- drivers/scsi/bfa/bfa_fcs_rport.c              |  16 ++-
- drivers/scsi/bfa/bfa_ioc.c                    |   8 +-
- drivers/scsi/bfa/bfa_svc.c                    |   3 +-
- drivers/scsi/bnx2fc/bnx2fc_hwi.c              |   1 -
- drivers/scsi/csiostor/csio_hw.c               |   3 +-
- drivers/scsi/csiostor/csio_lnode.c            |   1 -
- drivers/scsi/csiostor/csio_wr.c               |   2 +-
- drivers/scsi/cxgbi/cxgb3i/cxgb3i.c            |   2 +-
- drivers/scsi/cxgbi/cxgb4i/cxgb4i.c            |   2 +-
- drivers/scsi/cxlflash/main.c                  |  29 +++--
- drivers/scsi/cxlflash/superpipe.c             |  13 +-
- drivers/scsi/device_handler/scsi_dh_hp_sw.c   |   4 +-
- drivers/scsi/esas2r/esas2r_flash.c            |   4 +-
- drivers/scsi/esas2r/esas2r_init.c             |   6 +-
- drivers/scsi/esp_scsi.c                       |   6 +-
- drivers/scsi/fcoe/fcoe_ctlr.c                 |   8 +-
- drivers/scsi/g_NCR5380.c                      |   2 +-
- drivers/scsi/hisi_sas/hisi_sas_main.c         |   2 +-
- drivers/scsi/hpsa.c                           |  10 +-
- drivers/scsi/ibmvscsi/ibmvfc.c                |   6 +-
- drivers/scsi/ibmvscsi_tgt/ibmvscsi_tgt.c      |   6 +-
- drivers/scsi/imm.c                            |  21 ++--
- drivers/scsi/isci/phy.c                       |   2 +-
- drivers/scsi/isci/remote_device.c             |   5 +-
- drivers/scsi/isci/remote_node_context.c       |   6 +-
- drivers/scsi/isci/request.c                   |   2 +-
- drivers/scsi/libfc/fc_exch.c                  |   4 +-
- drivers/scsi/libfc/fc_fcp.c                   |   9 +-
- drivers/scsi/libfc/fc_lport.c                 |   2 +-
- drivers/scsi/libfc/fc_rport.c                 |   2 +-
- drivers/scsi/libiscsi.c                       |   6 +-
- drivers/scsi/libiscsi_tcp.c                   |   2 +-
- drivers/scsi/libsas/sas_ata.c                 |   2 +-
- drivers/scsi/libsas/sas_discover.c            |   4 +-
- drivers/scsi/libsas/sas_expander.c            |   2 +-
- drivers/scsi/libsas/sas_scsi_host.c           |   2 +-
- drivers/scsi/lpfc/lpfc_ct.c                   |   4 +-
- drivers/scsi/lpfc/lpfc_els.c                  |   2 +-
- drivers/scsi/lpfc/lpfc_hbadisc.c              |   6 +-
- drivers/scsi/lpfc/lpfc_nportdisc.c            |   2 +-
- drivers/scsi/lpfc/lpfc_nvme.c                 |   2 +-
- drivers/scsi/lpfc/lpfc_scsi.c                 |   9 +-
- drivers/scsi/lpfc/lpfc_sli.c                  |  30 +++--
- drivers/scsi/megaraid.c                       |  12 +-
- drivers/scsi/megaraid/megaraid_mbox.c         |   4 +-
- drivers/scsi/megaraid/megaraid_sas_base.c     |   3 +-
- drivers/scsi/megaraid/megaraid_sas_fusion.c   |   2 +-
- drivers/scsi/mesh.c                           |   3 +-
- drivers/scsi/mpt3sas/mpt3sas_base.c           |   2 +-
- drivers/scsi/mpt3sas/mpt3sas_ctl.c            |   2 +-
- drivers/scsi/mpt3sas/mpt3sas_scsih.c          |  10 +-
- drivers/scsi/myrb.c                           |   8 +-
- drivers/scsi/ncr53c8xx.c                      |  16 ++-
- drivers/scsi/pcmcia/nsp_cs.c                  |   2 +-
- drivers/scsi/ppa.c                            |  15 +--
- drivers/scsi/qla2xxx/qla_gs.c                 |   2 +-
- drivers/scsi/qla2xxx/qla_init.c               |   2 +-
- drivers/scsi/qla2xxx/qla_iocb.c               |   2 +-
- drivers/scsi/qla2xxx/qla_isr.c                |  10 +-
- drivers/scsi/qla2xxx/qla_sup.c                |   8 +-
- drivers/scsi/qla2xxx/qla_target.c             |   6 +-
- drivers/scsi/qla4xxx/ql4_os.c                 |   2 +-
- drivers/scsi/qlogicpti.c                      |  20 +--
- drivers/scsi/scsi_error.c                     |  29 +++--
- drivers/scsi/scsi_ioctl.c                     |   4 +-
- drivers/scsi/scsi_lib.c                       |   2 +-
- drivers/scsi/smartpqi/smartpqi_init.c         |  17 ++-
- drivers/scsi/sr.c                             |   4 +-
- drivers/scsi/st.c                             |   8 +-
- drivers/scsi/sun3_scsi.c                      |   6 +-
- drivers/scsi/sym53c8xx_2/sym_fw.c             |   2 +-
- drivers/scsi/sym53c8xx_2/sym_hipd.c           |   4 +-
- drivers/scsi/sym53c8xx_2/sym_nvram.c          |   2 +-
- drivers/scsi/ufs/ufs_bsg.c                    |   3 +-
- drivers/scsi/ufs/ufshcd.c                     |   8 +-
- drivers/scsi/virtio_scsi.c                    |   2 +-
- drivers/scsi/vmw_pvscsi.c                     |   3 +-
- drivers/scsi/wd33c93.c                        |   2 +-
- drivers/scsi/xen-scsifront.c                  |   2 +-
- drivers/soc/qcom/socinfo.c                    |  16 +--
- drivers/soc/tegra/pmc.c                       |   3 +-
- drivers/spi/spi-bcm2835aux.c                  |   4 +-
- drivers/spi/spi-fsl-cpm.c                     |   4 +-
- drivers/spi/spi-sprd-adi.c                    |   2 +-
- drivers/ssb/driver_chipcommon.c               |   2 +-
- drivers/ssb/driver_mipscore.c                 |   2 +-
- drivers/ssb/scan.c                            |   2 +-
- drivers/staging/comedi/drivers/s526.c         |   2 +-
- drivers/staging/fsl-dpaa2/ethsw/ethsw.c       |   2 +-
- drivers/staging/gdm724x/gdm_lte.c             |   2 +-
- drivers/staging/ks7010/ks_wlan_net.c          |  18 +--
- .../media/hantro/hantro_g1_mpeg2_dec.c        |   2 +-
- .../media/hantro/rk3399_vpu_hw_mpeg2_dec.c    |   2 +-
- drivers/staging/media/imx/imx-media-csi.c     |   2 +-
- .../staging/media/soc_camera/soc_mediabus.c   |   2 +-
- .../staging/media/usbvision/usbvision-i2c.c   |   6 +-
- drivers/staging/qlge/qlge_mpi.c               |   4 +-
- drivers/staging/rtl8188eu/core/rtw_mlme_ext.c |   2 +-
- drivers/staging/rtl8188eu/hal/usb_halinit.c   |   2 +-
- .../staging/rtl8188eu/os_dep/usb_ops_linux.c  |   2 +-
- drivers/staging/rtl8192e/rtllib_wx.c          |   2 +-
- drivers/staging/rtl8712/usb_ops_linux.c       |   2 +-
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |   2 +-
- .../interface/vchiq_arm/vchiq_core.c          |   2 +-
- drivers/staging/vt6655/channel.c              |   2 +-
- drivers/staging/vt6655/key.c                  |   6 +-
- drivers/staging/vt6656/card.c                 |   4 +-
- drivers/staging/vt6656/channel.c              |   2 +-
- drivers/staging/vt6656/key.c                  |   6 +-
- drivers/target/iscsi/cxgbit/cxgbit_main.c     |   2 +-
- drivers/target/iscsi/iscsi_target.c           |   2 +-
- drivers/target/target_core_pr.c               |   4 +-
- drivers/target/target_core_sbc.c              |   2 +-
- drivers/target/target_core_transport.c        |   4 +-
- drivers/target/tcm_fc/tfc_cmd.c               |   2 +-
- drivers/thermal/clock_cooling.c               |   2 +-
- drivers/thermal/qcom/tsens-v0_1.c             |   8 +-
- drivers/thermal/qcom/tsens-v1.c               |   4 +-
- drivers/thunderbolt/ctl.c                     |   2 +-
- drivers/thunderbolt/switch.c                  |   3 +-
- drivers/thunderbolt/tunnel.c                  |   4 +-
- drivers/tty/hvc/hvc_xen.c                     |   2 +-
- drivers/tty/mips_ejtag_fdc.c                  |   2 +-
- drivers/tty/n_gsm.c                           |   4 +-
- drivers/tty/n_hdlc.c                          |   3 +-
- drivers/tty/n_r3964.c                         |   1 -
- drivers/tty/serial/8250/8250_em.c             |   2 +-
- drivers/tty/serial/8250/8250_fintek.c         |   2 +-
- drivers/tty/serial/8250/8250_pci.c            |   2 +-
- drivers/tty/serial/8250/8250_port.c           |   2 +-
- drivers/tty/serial/8250/8250_uniphier.c       |   6 +-
- drivers/tty/serial/atmel_serial.c             |   2 +-
- drivers/tty/serial/omap-serial.c              |   2 -
- drivers/tty/serial/rda-uart.c                 |   2 +-
- drivers/tty/serial/serial-tegra.c             |   2 +-
- drivers/tty/serial/serial_core.c              |   2 +-
- drivers/tty/serial/sunsu.c                    |   2 +-
- drivers/tty/serial/sunzilog.c                 |   2 +-
- drivers/tty/serial/xilinx_uartps.c            |   2 +-
- drivers/tty/tty_ioctl.c                       |   2 +-
- drivers/tty/vt/vt.c                           |   6 +-
- drivers/usb/atm/cxacru.c                      |   4 +-
- drivers/usb/c67x00/c67x00-sched.c             |   3 +-
- drivers/usb/cdns3/gadget.c                    |   4 +-
- drivers/usb/class/usbtmc.c                    |   2 +-
- drivers/usb/core/config.c                     |   2 +-
- drivers/usb/core/hcd.c                        |   8 +-
- drivers/usb/core/hub.c                        |   2 +-
- drivers/usb/core/urb.c                        |   4 +-
- drivers/usb/dwc3/core.c                       |   5 +-
- drivers/usb/gadget/composite.c                |  16 +--
- drivers/usb/gadget/function/f_fs.c            |   2 +-
- drivers/usb/gadget/function/f_hid.c           |   2 +-
- drivers/usb/gadget/function/f_mass_storage.c  |   2 -
- drivers/usb/gadget/function/f_phonet.c        |   4 +-
- drivers/usb/gadget/function/f_printer.c       |   7 +-
- drivers/usb/gadget/function/f_rndis.c         |   2 +-
- drivers/usb/gadget/function/f_tcm.c           |   2 +-
- drivers/usb/gadget/function/u_ether.c         |   5 +-
- drivers/usb/gadget/function/u_serial.c        |   6 +-
- drivers/usb/gadget/legacy/inode.c             |   7 +-
- drivers/usb/gadget/udc/atmel_usba_udc.c       |   2 +-
- drivers/usb/gadget/udc/dummy_hcd.c            |  13 +-
- drivers/usb/gadget/udc/fsl_udc_core.c         |   2 +-
- drivers/usb/gadget/udc/goku_udc.c             |   9 +-
- drivers/usb/gadget/udc/omap_udc.c             |   4 +-
- drivers/usb/gadget/udc/pxa25x_udc.c           |   4 +-
- drivers/usb/gadget/udc/s3c2410_udc.c          |   4 +-
- drivers/usb/gadget/udc/tegra-xudc.c           |   2 +-
- drivers/usb/host/ehci-dbg.c                   |   2 +-
- drivers/usb/host/ehci-fsl.c                   |   4 +-
- drivers/usb/host/ehci-hcd.c                   |   4 +-
- drivers/usb/host/ehci-q.c                     |   3 +-
- drivers/usb/host/ehci-sched.c                 |   2 +-
- drivers/usb/host/fotg210-hcd.c                |   9 +-
- drivers/usb/host/isp116x-hcd.c                |   6 +-
- drivers/usb/host/isp1362-hcd.c                |   2 +-
- drivers/usb/host/max3421-hcd.c                |   6 +-
- drivers/usb/host/ohci-hcd.c                   |   4 +-
- drivers/usb/host/ohci-hub.c                   |   2 +-
- drivers/usb/host/ohci-q.c                     |   6 +-
- drivers/usb/host/ohci-tmio.c                  |   6 +-
- drivers/usb/host/oxu210hp-hcd.c               |   9 +-
- drivers/usb/host/pci-quirks.c                 |   3 +-
- drivers/usb/host/xhci-dbgcap.c                |   2 +-
- drivers/usb/host/xhci-hub.c                   |   2 +-
- drivers/usb/host/xhci-mem.c                   |   6 +-
- drivers/usb/host/xhci-ring.c                  |   2 +-
- drivers/usb/host/xhci.c                       |   2 +-
- drivers/usb/image/mdc800.c                    |   3 +-
- drivers/usb/isp1760/isp1760-hcd.c             |   4 +-
- drivers/usb/misc/appledisplay.c               |   2 +-
- drivers/usb/misc/usbtest.c                    |   8 +-
- drivers/usb/misc/yurex.c                      |   2 +-
- drivers/usb/mtu3/mtu3_core.c                  |   2 +-
- drivers/usb/musb/cppi_dma.c                   |   2 +-
- drivers/usb/musb/musb_core.c                  |  13 +-
- drivers/usb/musb/musb_dsps.c                  |   8 +-
- drivers/usb/musb/musb_gadget_ep0.c            |   6 +-
- drivers/usb/musb/musb_host.c                  |   7 +-
- drivers/usb/musb/musb_virthub.c               |   2 +-
- drivers/usb/musb/omap2430.c                   |   2 +-
- drivers/usb/musb/tusb6010.c                   |   2 +-
- drivers/usb/phy/phy-ab8500-usb.c              |  12 +-
- drivers/usb/phy/phy-fsl-usb.c                 |   4 +-
- drivers/usb/phy/phy-isp1301-omap.c            |  15 ++-
- drivers/usb/phy/phy-mv-usb.c                  |   2 +-
- drivers/usb/renesas_usbhs/mod_gadget.c        |   2 +-
- drivers/usb/renesas_usbhs/pipe.c              |   2 +-
- drivers/usb/serial/cypress_m8.c               |   4 +-
- drivers/usb/serial/io_edgeport.c              |   4 +-
- drivers/usb/serial/kobil_sct.c                |   2 +-
- drivers/usb/serial/upd78f0730.c               |   2 +-
- drivers/usb/storage/sddr55.c                  |   2 +-
- drivers/usb/storage/uas.c                     |   2 +-
- drivers/usb/typec/tcpm/tcpci.c                |   2 +-
- drivers/usb/usbip/stub_rx.c                   |   2 +-
- drivers/usb/usbip/vhci_hcd.c                  |   7 +-
- drivers/usb/usbip/vhci_rx.c                   |   2 +-
- drivers/usb/usbip/vudc_transfer.c             |   4 +-
- drivers/vfio/pci/vfio_pci.c                   |   2 +-
- drivers/vfio/vfio_iommu_type1.c               |   2 +-
- drivers/video/backlight/adp8860_bl.c          |   2 +-
- drivers/video/fbdev/acornfb.c                 |   2 +-
- drivers/video/fbdev/arcfb.c                   |   3 +-
- drivers/video/fbdev/atmel_lcdfb.c             |   4 +-
- drivers/video/fbdev/aty/radeon_pm.c           |   6 +-
- drivers/video/fbdev/cirrusfb.c                |   4 +-
- drivers/video/fbdev/controlfb.c               |   2 +-
- drivers/video/fbdev/core/fbmem.c              |   2 +-
- drivers/video/fbdev/fsl-diu-fb.c              |   4 +-
- drivers/video/fbdev/gxt4500.c                 |   2 +-
- drivers/video/fbdev/hyperv_fb.c               |   4 +-
- drivers/video/fbdev/i740fb.c                  |   2 +-
- drivers/video/fbdev/nvidia/nv_hw.c            |   2 +-
- drivers/video/fbdev/offb.c                    |   4 +-
- drivers/video/fbdev/omap/lcdc.c               |   4 +-
- drivers/video/fbdev/omap/omapfb_main.c        |  20 +--
- drivers/video/fbdev/omap2/omapfb/dss/dispc.c  |   4 +-
- .../video/fbdev/omap2/omapfb/omapfb-ioctl.c   |   3 +-
- .../video/fbdev/omap2/omapfb/omapfb-main.c    |   2 +-
- drivers/video/fbdev/pm2fb.c                   |   4 +-
- drivers/video/fbdev/pxafb.c                   |   3 +-
- drivers/video/fbdev/riva/fbdev.c              |   2 +-
- drivers/video/fbdev/s3c-fb.c                  |   7 +-
- drivers/video/fbdev/sa1100fb.c                |   3 +-
- drivers/video/fbdev/savage/savagefb_driver.c  |   4 +-
- drivers/video/fbdev/sh_mobile_lcdcfb.c        |   4 +-
- drivers/video/fbdev/sis/sis_main.c            |   8 +-
- drivers/video/fbdev/sm501fb.c                 |   3 +-
- drivers/video/fbdev/stifb.c                   |   4 +-
- drivers/video/fbdev/tdfxfb.c                  |   2 +-
- drivers/video/fbdev/via/lcd.c                 |   2 +-
- drivers/video/fbdev/xen-fbfront.c             |   2 +-
- drivers/virt/vboxguest/vboxguest_core.c       |   2 +-
- drivers/virt/vboxguest/vboxguest_utils.c      |   2 +-
- drivers/watchdog/advantechwdt.c               |   2 +-
- drivers/watchdog/alim1535_wdt.c               |   2 +-
- drivers/watchdog/alim7101_wdt.c               |   2 +-
- drivers/watchdog/ar7_wdt.c                    |   3 +-
- drivers/watchdog/ath79_wdt.c                  |   3 +-
- drivers/watchdog/eurotechwdt.c                |   3 +-
- drivers/watchdog/f71808e_wdt.c                |   6 +-
- drivers/watchdog/gef_wdt.c                    |   3 +-
- drivers/watchdog/geodewdt.c                   |   2 +-
- drivers/watchdog/ib700wdt.c                   |   3 +-
- drivers/watchdog/it8712f_wdt.c                |   2 +-
- drivers/watchdog/ixp4xx_wdt.c                 |   3 +-
- drivers/watchdog/m54xx_wdt.c                  |   3 +-
- drivers/watchdog/machzwd.c                    |   2 +-
- drivers/watchdog/mv64x60_wdt.c                |   3 +-
- drivers/watchdog/nv_tco.c                     |   2 +-
- drivers/watchdog/pc87413_wdt.c                |   2 +-
- drivers/watchdog/pcwd.c                       |   3 +-
- drivers/watchdog/pcwd_pci.c                   |   3 +-
- drivers/watchdog/pcwd_usb.c                   |   3 +-
- drivers/watchdog/rc32434_wdt.c                |   2 +-
- drivers/watchdog/riowd.c                      |   3 +-
- drivers/watchdog/sa1100_wdt.c                 |   3 +-
- drivers/watchdog/sb_wdog.c                    |   3 +-
- drivers/watchdog/sbc60xxwdt.c                 |   2 +-
- drivers/watchdog/sbc7240_wdt.c                |   2 +-
- drivers/watchdog/sbc_fitpc2_wdt.c             |   3 +-
- drivers/watchdog/sc1200wdt.c                  |   3 +-
- drivers/watchdog/sc520_wdt.c                  |   2 +-
- drivers/watchdog/sch311x_wdt.c                |   2 +-
- drivers/watchdog/scx200_wdt.c                 |   2 +-
- drivers/watchdog/smsc37b787_wdt.c             |   2 +-
- drivers/watchdog/w83877f_wdt.c                |   2 +-
- drivers/watchdog/w83977f_wdt.c                |   3 +-
- drivers/watchdog/wafer5823wdt.c               |   2 +-
- drivers/watchdog/watchdog_dev.c               |   2 +-
- drivers/watchdog/wdrtas.c                     |   3 +-
- drivers/watchdog/wdt.c                        |   2 +-
- drivers/watchdog/wdt285.c                     |   2 +-
- drivers/watchdog/wdt977.c                     |   3 +-
- drivers/watchdog/wdt_pci.c                    |   2 +-
- drivers/xen/pvcalls-front.c                   |   2 +-
- drivers/xen/xen-acpi-memhotplug.c             |   2 +-
- drivers/xen/xen-pciback/xenbus.c              |   2 +-
- drivers/xen/xen-scsiback.c                    |   2 +-
- drivers/xen/xenbus/xenbus_probe_frontend.c    |   6 +-
- fs/9p/vfs_file.c                              |   2 +-
- fs/adfs/dir_f.c                               |  12 +-
- fs/affs/inode.c                               |   2 +-
- fs/affs/super.c                               |   6 +-
- fs/afs/cmservice.c                            |  21 ++--
- fs/afs/file.c                                 |   3 +-
- fs/afs/flock.c                                |   3 +-
- fs/afs/fsclient.c                             |  12 +-
- fs/afs/misc.c                                 |  18 +--
- fs/afs/rotate.c                               |   2 +-
- fs/afs/rxrpc.c                                |   7 +-
- fs/afs/vlclient.c                             |  24 ++--
- fs/afs/write.c                                |   2 +-
- fs/afs/yfsclient.c                            |  24 ++--
- fs/aio.c                                      |   2 +-
- fs/btrfs/ctree.c                              |   2 +-
- fs/btrfs/ref-verify.c                         |   2 +-
- fs/btrfs/super.c                              |   6 +-
- fs/btrfs/volumes.h                            |   2 +-
- fs/buffer.c                                   |   2 +-
- fs/ceph/dir.c                                 |   2 +-
- fs/ceph/file.c                                |   2 +-
- fs/cifs/cifssmb.c                             |   2 +-
- fs/cifs/connect.c                             |  10 +-
- fs/cifs/sess.c                                |   6 +-
- fs/cifs/smb2pdu.c                             |   6 +-
- fs/configfs/dir.c                             |   4 +-
- fs/dax.c                                      |   2 +-
- fs/dlm/lock.c                                 |   2 +-
- fs/erofs/zmap.c                               |   6 +-
- fs/ext2/inode.c                               |   4 +-
- fs/ext2/super.c                               |   2 +-
- fs/ext4/hash.c                                |   4 +-
- fs/ext4/indirect.c                            |  12 +-
- fs/ext4/readpage.c                            |   4 +-
- fs/f2fs/f2fs.h                                |   2 +-
- fs/f2fs/node.c                                |   4 +-
- fs/fcntl.c                                    |   4 +-
- fs/fs_context.c                               |   2 +-
- fs/fsopen.c                                   |   2 +-
- fs/gfs2/bmap.c                                |   4 +-
- fs/gfs2/quota.c                               |   2 +-
- fs/hfsplus/wrapper.c                          |   2 +-
- fs/io_uring.c                                 |   4 +-
- fs/iomap/seek.c                               |   4 +-
- fs/jffs2/fs.c                                 |   3 +-
- fs/jffs2/readinode.c                          |   4 +-
- fs/libfs.c                                    |   4 +-
- fs/locks.c                                    |   6 +-
- fs/namei.c                                    |   2 +-
- fs/nfs/blocklayout/blocklayout.c              |   2 +-
- fs/nfs/dir.c                                  |   2 +-
- fs/nfs/filelayout/filelayout.c                |   2 +-
- fs/nfs/flexfilelayout/flexfilelayout.c        |   2 +-
- fs/nfs/fs_context.c                           |  22 ++--
- fs/nfs/nfs3acl.c                              |   4 +-
- fs/nfs/nfs4file.c                             |   2 +-
- fs/nfs/nfs4idmap.c                            |   4 +-
- fs/nfs/nfs4proc.c                             |  32 ++---
- fs/nfs/nfs4state.c                            |  14 +--
- fs/nfs/pagelist.c                             |   2 +-
- fs/nfs/pnfs.c                                 |   2 +-
- fs/nfs_common/nfsacl.c                        |   2 +-
- fs/nfsd/blocklayout.c                         |   4 +-
- fs/nfsd/nfs4callback.c                        |   2 +-
- fs/nfsd/nfs4layouts.c                         |   2 +-
- fs/nfsd/nfs4proc.c                            |   2 +-
- fs/nfsd/nfs4state.c                           |  12 +-
- fs/nfsd/nfsfh.c                               |   4 +-
- fs/nfsd/nfsproc.c                             |   3 +-
- fs/nfsd/nfssvc.c                              |   2 +-
- fs/nfsd/vfs.c                                 |   4 +-
- fs/nilfs2/bmap.c                              |   2 +-
- fs/nilfs2/recovery.c                          |   2 +-
- fs/nilfs2/segment.c                           |  19 +--
- fs/notify/fanotify/fanotify_user.c            |   2 +-
- fs/ocfs2/cluster/quorum.c                     |   2 +-
- fs/quota/quota.c                              |   2 +-
- fs/seq_file.c                                 |   2 +-
- fs/signalfd.c                                 |   2 +-
- fs/ubifs/lprops.c                             |   4 +-
- fs/udf/symlink.c                              |   2 +-
- fs/ufs/util.h                                 |  12 +-
- fs/vboxsf/utils.c                             |   2 +-
- fs/xfs/libxfs/xfs_ag_resv.c                   |   4 +-
- fs/xfs/libxfs/xfs_alloc.c                     |   2 +-
- fs/xfs/libxfs/xfs_da_btree.c                  |   2 +-
- fs/xfs/libxfs/xfs_inode_buf.c                 |   4 +-
- fs/xfs/scrub/bmap.c                           |   2 +-
- fs/xfs/scrub/btree.c                          |   2 +-
- fs/xfs/scrub/common.c                         |   6 +-
- fs/xfs/scrub/dabtree.c                        |   2 +-
- fs/xfs/scrub/repair.c                         |   2 +-
- fs/xfs/xfs_bmap_util.c                        |   3 +-
- fs/xfs/xfs_export.c                           |   4 +-
- fs/xfs/xfs_file.c                             |   2 +-
- fs/xfs/xfs_fsmap.c                            |   2 +-
- fs/xfs/xfs_inode.c                            |   2 +-
- fs/xfs/xfs_ioctl.c                            |   4 +-
- fs/xfs/xfs_iomap.c                            |   2 +-
- fs/xfs/xfs_log.c                              |   2 +-
- fs/xfs/xfs_trans_buf.c                        |   2 +-
- fs/zonefs/super.c                             |   2 +-
- include/linux/compat.h                        |   6 +-
- include/linux/filter.h                        |   2 +-
- include/linux/jhash.h                         |  39 ++++--
- include/linux/mm.h                            |   9 +-
- include/linux/signal.h                        |  12 +-
- include/linux/skbuff.h                        |  12 +-
- include/math-emu/op-common.h                  |   6 +-
- init/do_mounts_md.c                           |   4 +-
- ipc/sem.c                                     |   4 +-
- ipc/shm.c                                     |   4 +-
- kernel/auditfilter.c                          |   2 +-
- kernel/bpf/cgroup.c                           |   4 +-
- kernel/bpf/syscall.c                          |   2 +-
- kernel/bpf/verifier.c                         |   4 +-
- kernel/capability.c                           |   2 +-
- kernel/compat.c                               |   6 +-
- kernel/debug/gdbstub.c                        |   6 +-
- kernel/debug/kdb/kdb_keyboard.c               |   4 +-
- kernel/debug/kdb/kdb_support.c                |   6 +-
- kernel/events/core.c                          |   3 +-
- kernel/futex.c                                |   4 +-
- kernel/gcov/gcc_3_4.c                         |   6 +-
- kernel/irq/handle.c                           |   3 +-
- kernel/irq/manage.c                           |   5 +-
- kernel/kallsyms.c                             |   4 +-
- kernel/power/hibernate.c                      |   2 +-
- kernel/power/qos.c                            |   4 +-
- kernel/sched/core.c                           |   2 +-
- kernel/sched/topology.c                       |   6 +-
- kernel/signal.c                               |   2 +-
- kernel/sys.c                                  |   3 +-
- kernel/time/hrtimer.c                         |   2 +-
- kernel/time/posix-timers.c                    |   4 +-
- kernel/time/tick-broadcast.c                  |   2 +-
- kernel/time/timer.c                           |   2 +-
- kernel/trace/blktrace.c                       |   2 +-
- kernel/trace/trace_events_filter.c            |   4 +-
- lib/asn1_decoder.c                            |   6 +-
- lib/assoc_array.c                             |   2 +-
- lib/bootconfig.c                              |   4 +-
- lib/cmdline.c                                 |  10 +-
- lib/dim/net_dim.c                             |   2 +-
- lib/dim/rdma_dim.c                            |   4 +-
- lib/glob.c                                    |   2 +-
- lib/nlattr.c                                  |   5 +-
- lib/siphash.c                                 |  54 ++++++---
- lib/ts_fsm.c                                  |   3 +-
- lib/vsprintf.c                                |  18 ++-
- lib/xz/xz_dec_lzma2.c                         |   8 +-
- lib/xz/xz_dec_stream.c                        |  32 ++---
- lib/zlib_inflate/inflate.c                    |  24 ++--
- lib/zstd/bitstream.h                          |  10 +-
- lib/zstd/compress.c                           |   3 +-
- lib/zstd/decompress.c                         |  17 +--
- lib/zstd/huf_compress.c                       |   4 +-
- mm/gup.c                                      |   2 +-
- mm/hugetlb_cgroup.c                           |   6 +-
- mm/ksm.c                                      |   3 +-
- mm/list_lru.c                                 |   2 +-
- mm/memcontrol.c                               |   2 +-
- mm/mempolicy.c                                |   3 -
- mm/mmap.c                                     |   5 +-
- mm/shmem.c                                    |   2 +-
- mm/zsmalloc.c                                 |   2 +-
- net/8021q/vlan_dev.c                          |   2 +-
- net/9p/trans_xen.c                            |   2 +-
- net/atm/common.c                              |   4 +-
- net/atm/lec.c                                 |   2 +-
- net/atm/resources.c                           |   8 +-
- net/bluetooth/hci_event.c                     |   6 +-
- net/bluetooth/hci_sock.c                      |   4 +-
- net/bluetooth/l2cap_core.c                    |  22 ++--
- net/bluetooth/l2cap_sock.c                    |   4 +-
- net/bluetooth/mgmt.c                          |   4 +-
- net/bluetooth/rfcomm/core.c                   |   3 +-
- net/bluetooth/rfcomm/sock.c                   |   3 +-
- net/bluetooth/smp.c                           |   2 +-
- net/bpf/test_run.c                            |   2 +-
- net/bridge/netfilter/ebtables.c               |   2 +-
- net/can/j1939/socket.c                        |   2 +-
- net/can/j1939/transport.c                     |  21 ++--
- net/ceph/ceph_hash.c                          |  20 +--
- net/ceph/crush/mapper.c                       |   2 +-
- net/ceph/messenger.c                          |   4 +-
- net/ceph/mon_client.c                         |   2 +-
- net/ceph/osd_client.c                         |   6 +-
- net/core/dev.c                                |   4 +-
- net/core/dev_ioctl.c                          |   2 +-
- net/core/devlink.c                            |   2 +-
- net/core/drop_monitor.c                       |   2 +-
- net/core/filter.c                             |   2 +-
- net/core/pktgen.c                             |   2 +-
- net/core/skmsg.c                              |   3 +-
- net/core/sock.c                               |   2 +-
- net/dccp/ccids/ccid3.c                        |   2 +-
- net/dccp/feat.c                               |   3 +-
- net/dccp/input.c                              |  10 +-
- net/dccp/options.c                            |   2 +-
- net/dccp/output.c                             |   9 +-
- net/dccp/proto.c                              |   8 +-
- net/decnet/af_decnet.c                        |   6 +-
- net/decnet/dn_nsp_in.c                        |   2 +-
- net/decnet/dn_table.c                         |   2 +-
- net/decnet/sysctl_net_decnet.c                |   2 +-
- net/dsa/slave.c                               |   2 +-
- net/ieee802154/6lowpan/reassembly.c           |   3 +-
- net/ieee802154/6lowpan/rx.c                   |   6 +-
- net/ipv4/af_inet.c                            |   4 +-
- net/ipv4/ah4.c                                |   2 +-
- net/ipv4/arp.c                                |   2 +-
- net/ipv4/devinet.c                            |   6 +-
- net/ipv4/fib_semantics.c                      |   4 +-
- net/ipv4/icmp.c                               |   2 +-
- net/ipv4/ip_output.c                          |   2 +-
- net/ipv4/ipmr.c                               |   2 +-
- net/ipv4/netfilter/nf_log_ipv4.c              |   2 +-
- net/ipv4/netfilter/nf_nat_pptp.c              |   4 +-
- net/ipv4/nexthop.c                            |   2 +-
- net/ipv4/tcp.c                                |   2 +-
- net/ipv4/tcp_input.c                          |   6 +-
- net/ipv4/tcp_ipv4.c                           |   4 +-
- net/ipv4/udp.c                                |   2 +-
- net/ipv6/addrconf.c                           |   6 +-
- net/ipv6/ah6.c                                |   2 +-
- net/ipv6/exthdrs.c                            |   2 +-
- net/ipv6/icmp.c                               |   2 +-
- net/ipv6/ip6_fib.c                            |   8 +-
- net/ipv6/ip6mr.c                              |   2 +-
- net/ipv6/ndisc.c                              |   2 +-
- net/ipv6/netfilter/nf_log_ipv6.c              |   2 +-
- net/ipv6/raw.c                                |   8 +-
- net/ipv6/route.c                              |   2 +-
- net/ipv6/tcp_ipv6.c                           |   2 +-
- net/iucv/af_iucv.c                            |  13 +-
- net/l2tp/l2tp_netlink.c                       |   2 +-
- net/mac80211/cfg.c                            |   6 +-
- net/mac80211/chan.c                           |   2 +-
- net/mac80211/ht.c                             |   4 +-
- net/mac80211/ibss.c                           |   4 +-
- net/mac80211/iface.c                          |  11 +-
- net/mac80211/key.c                            |   3 +-
- net/mac80211/mesh.c                           |   4 +-
- net/mac80211/mesh_hwmp.c                      |   2 +-
- net/mac80211/mesh_plink.c                     |   2 +-
- net/mac80211/mlme.c                           |   4 +-
- net/mac80211/offchannel.c                     |   4 +-
- net/mac80211/rx.c                             |   4 +-
- net/mac80211/tdls.c                           |   8 +-
- net/mac80211/tx.c                             |  12 +-
- net/mac80211/util.c                           |  11 +-
- net/mac80211/wme.c                            |   2 +-
- net/mpls/af_mpls.c                            |   2 +-
- net/mptcp/protocol.c                          |   2 +-
- net/ncsi/ncsi-manage.c                        |   4 +-
- net/netfilter/ipset/ip_set_core.c             |   2 +-
- net/netfilter/ipvs/ip_vs_proto_tcp.c          |   2 +-
- net/netfilter/ipvs/ip_vs_proto_udp.c          |   2 +-
- net/netfilter/nf_conntrack_h323_asn1.c        |   6 +-
- net/netfilter/nf_conntrack_proto.c            |   2 +-
- net/netfilter/nf_conntrack_proto_tcp.c        |   2 +-
- net/netfilter/nf_conntrack_standalone.c       |   2 +-
- net/netfilter/nf_nat_core.c                   |  10 +-
- net/netfilter/nf_synproxy_core.c              |   6 +-
- net/netfilter/nf_tables_api.c                 |   8 +-
- net/netfilter/nf_tables_core.c                |   2 +-
- net/netfilter/nfnetlink_cttimeout.c           |   2 +-
- net/netfilter/nft_cmp.c                       |   4 +-
- net/netfilter/nft_ct.c                        |   4 +-
- net/netfilter/nft_fib.c                       |   2 +-
- net/netfilter/nft_payload.c                   |   2 +-
- net/netfilter/utils.c                         |   8 +-
- net/netfilter/x_tables.c                      |   2 +-
- net/netrom/nr_in.c                            |   2 +-
- net/netrom/nr_route.c                         |   8 +-
- net/openvswitch/conntrack.c                   |   4 +-
- net/openvswitch/flow.c                        |   2 +-
- net/packet/af_packet.c                        |   3 +-
- net/phonet/pep.c                              |  10 +-
- net/rds/send.c                                |   3 +-
- net/rose/rose_in.c                            |   2 +-
- net/rose/rose_route.c                         |   4 +-
- net/rxrpc/af_rxrpc.c                          |   7 +-
- net/rxrpc/call_accept.c                       |   2 +-
- net/rxrpc/conn_client.c                       |   2 +-
- net/rxrpc/input.c                             |   6 +-
- net/rxrpc/local_object.c                      |   2 +-
- net/rxrpc/recvmsg.c                           |   2 +-
- net/rxrpc/sendmsg.c                           |   6 +-
- net/sched/act_csum.c                          |   3 +-
- net/sched/act_ct.c                            |   2 +-
- net/sched/sch_cake.c                          |   2 +-
- net/sched/sch_cbq.c                           |   2 +-
- net/sched/sch_drr.c                           |   2 +-
- net/sched/sch_ets.c                           |   2 +-
- net/sched/sch_fq_codel.c                      |   2 +-
- net/sched/sch_fq_pie.c                        |   2 +-
- net/sched/sch_hfsc.c                          |   2 +-
- net/sched/sch_htb.c                           |   2 +-
- net/sched/sch_multiq.c                        |   2 +-
- net/sched/sch_prio.c                          |   2 +-
- net/sched/sch_qfq.c                           |   2 +-
- net/sched/sch_sfb.c                           |   2 +-
- net/sched/sch_sfq.c                           |   2 +-
- net/sctp/ipv6.c                               |   2 +-
- net/sctp/outqueue.c                           |   6 +-
- net/sctp/sm_make_chunk.c                      |   2 +-
- net/sctp/sm_sideeffect.c                      |   3 +-
- net/sctp/sm_statefuns.c                       |   2 +-
- net/socket.c                                  |   6 +-
- net/sunrpc/auth_gss/gss_krb5_wrap.c           |   2 +-
- net/sunrpc/clnt.c                             |  22 ++--
- net/sunrpc/xprt.c                             |   2 +-
- net/sunrpc/xprtsock.c                         |   8 +-
- net/tipc/bearer.c                             |   2 +-
- net/tipc/group.c                              |   2 +-
- net/tipc/link.c                               |   2 +-
- net/tipc/socket.c                             |   4 +-
- net/unix/af_unix.c                            |   2 +-
- net/wireless/chan.c                           |   4 +-
- net/wireless/mlme.c                           |   2 +-
- net/wireless/nl80211.c                        |  20 +--
- net/wireless/scan.c                           |   2 +-
- net/wireless/sme.c                            |   4 +-
- net/wireless/util.c                           |   4 +-
- net/wireless/wext-compat.c                    |   4 +-
- net/x25/x25_facilities.c                      |   2 +-
- net/x25/x25_in.c                              |   2 +-
- net/xfrm/xfrm_policy.c                        |   2 +-
- samples/bpf/hbm.c                             |   2 +-
- security/apparmor/domain.c                    |   2 +-
- security/apparmor/lib.c                       |   4 +-
- security/integrity/ima/ima_appraise.c         |   4 +-
- security/integrity/ima/ima_policy.c           |   8 +-
- security/integrity/ima/ima_template_lib.c     |   2 +-
- security/keys/process_keys.c                  |   6 +-
- security/keys/request_key.c                   |  12 +-
- security/selinux/hooks.c                      |   8 +-
- security/selinux/ss/mls.c                     |   3 +-
- security/smack/smack_lsm.c                    |   2 +-
- security/tomoyo/common.c                      |  18 +--
- security/tomoyo/file.c                        |   2 +-
- sound/atmel/ac97c.c                           |  16 +--
- sound/core/memalloc.c                         |   2 +-
- sound/core/oss/pcm_oss.c                      |   2 +-
- sound/core/oss/pcm_plugin.c                   |   2 +-
- sound/core/pcm_native.c                       |   8 +-
- sound/core/seq/oss/seq_oss_timer.c            |   2 +-
- sound/core/seq/seq_midi_emul.c                |   2 +-
- sound/drivers/opl3/opl3_midi.c                |   4 +-
- sound/isa/galaxy/galaxy.c                     |   6 +-
- sound/isa/msnd/msnd_pinnacle_mixer.c          |   3 +-
- sound/isa/opti9xx/miro.c                      |  12 +-
- sound/isa/opti9xx/opti92x-ad1848.c            |  13 +-
- sound/isa/sb/sb8_main.c                       |  10 +-
- sound/oss/dmasound/dmasound_atari.c           |   2 +-
- sound/oss/dmasound/dmasound_core.c            |   4 +-
- sound/pci/ac97/ac97_codec.c                   |   4 +-
- sound/pci/atiixp.c                            |   6 +-
- sound/pci/azt3328.c                           |   2 +-
- sound/pci/echoaudio/echoaudio.c               |   4 +-
- sound/pci/emu10k1/emupcm.c                    |   5 +-
- sound/pci/hda/hda_beep.c                      |   2 +-
- sound/pci/hda/patch_conexant.c                |   2 +-
- sound/pci/hda/patch_realtek.c                 |   4 +-
- sound/pci/ice1712/delta.c                     |   2 +-
- sound/pci/intel8x0.c                          |   8 +-
- sound/pci/mixart/mixart.c                     |   2 +-
- sound/pci/mixart/mixart_core.c                |   2 +-
- sound/pci/nm256/nm256.c                       |   6 +-
- sound/pci/oxygen/oxygen_pcm.c                 |   2 +-
- sound/pci/ymfpci/ymfpci_main.c                |   2 +-
- sound/pcmcia/pdaudiocf/pdaudiocf_pcm.c        |   4 +-
- sound/ppc/snd_ps3.c                           |   4 +-
- sound/soc/atmel/mchp-i2s-mcc.c                |   2 +-
- sound/soc/codecs/ab8500-codec.c               |   2 +-
- sound/soc/codecs/adau1761.c                   |   4 +-
- sound/soc/codecs/adau17x1.c                   |   4 +-
- sound/soc/codecs/adav80x.c                    |   2 +-
- sound/soc/codecs/ak4613.c                     |   6 +-
- sound/soc/codecs/es8328.c                     |   4 +-
- sound/soc/codecs/jz4770.c                     |   2 +-
- sound/soc/codecs/max9860.c                    |   2 +-
- sound/soc/codecs/msm8916-wcd-analog.c         |   2 +-
- sound/soc/codecs/rt274.c                      |   4 +-
- sound/soc/codecs/rt5640.c                     |   4 +-
- sound/soc/codecs/rt5677.c                     |   2 +-
- sound/soc/codecs/sta32x.c                     |   2 +-
- sound/soc/codecs/sta350.c                     |   2 +-
- sound/soc/codecs/tas2552.c                    |   2 +-
- sound/soc/codecs/tlv320aic23.c                |   2 +-
- sound/soc/codecs/tlv320aic31xx.c              |   3 +-
- sound/soc/codecs/tpa6130a2.c                  |   2 +-
- sound/soc/codecs/wm8753.c                     |   6 +-
- sound/soc/codecs/wm8903.c                     |   2 +-
- sound/soc/codecs/wm8904.c                     |   5 +-
- sound/soc/codecs/wm8955.c                     |   2 +-
- sound/soc/codecs/wm8960.c                     |   2 +-
- sound/soc/codecs/wm8961.c                     |   2 +-
- sound/soc/codecs/wm8962.c                     |   2 +-
- sound/soc/codecs/wm8993.c                     |   4 +-
- sound/soc/codecs/wm8994.c                     |   4 +-
- sound/soc/codecs/wm8995.c                     |   2 +-
- sound/soc/codecs/wm8996.c                     |   2 +-
- sound/soc/codecs/wm9081.c                     |   2 +-
- sound/soc/fsl/fsl_ssi.c                       |   2 +-
- sound/soc/hisilicon/hi6210-i2s.c              |   4 +-
- sound/soc/intel/baytrail/sst-baytrail-pcm.c   |   2 +-
- sound/soc/intel/boards/bytcht_es8316.c        |   2 +-
- sound/soc/intel/boards/bytcr_rt5651.c         |   4 +-
- sound/soc/intel/skylake/skl-pcm.c             |   3 +-
- sound/soc/meson/axg-tdm-interface.c           |   8 +-
- sound/soc/pxa/pxa-ssp.c                       |   2 +-
- sound/soc/rockchip/rockchip_pdm.c             |   6 +-
- sound/soc/samsung/i2s.c                       |   2 +-
- sound/soc/soc-core.c                          |   3 +-
- sound/soc/soc-topology.c                      |   4 +-
- sound/soc/sof/intel/hda-dai.c                 |   6 +-
- sound/soc/sof/pcm.c                           |   5 +-
- sound/soc/sof/topology.c                      |   2 +-
- sound/soc/ti/davinci-i2s.c                    |   2 +-
- sound/soc/ti/n810.c                           |   2 +-
- sound/soc/ti/omap-dmic.c                      |   4 +-
- sound/soc/ti/omap-mcpdm.c                     |   8 +-
- sound/soc/ti/rx51.c                           |   2 +-
- sound/soc/zte/zx-i2s.c                        |   4 +-
- sound/soc/zte/zx-spdif.c                      |   2 +-
- sound/sparc/dbri.c                            |   8 +-
- sound/usb/caiaq/audio.c                       |   2 +-
- sound/usb/caiaq/device.c                      |   2 +-
- sound/usb/card.c                              |   3 +-
- sound/usb/clock.c                             |   2 +-
- sound/usb/midi.c                              |   2 +-
- sound/usb/pcm.c                               |   2 +-
- sound/usb/stream.c                            |   3 +-
- sound/xen/xen_snd_front.c                     |   3 -
- sound/xen/xen_snd_front_evtchnl.c             |   4 -
- virt/kvm/arm/hyp/vgic-v3-sr.c                 |  16 +--
- 1831 files changed, 4064 insertions(+), 4709 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index 154e2e818ec6..82fa937cfa48 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -341,4 +341,15 @@ config IGC
+ 	  To compile this driver as a module, choose M here. The module
+ 	  will be called igc.
+ 
++config INTEL_GSWIP
++	tristate "Intel(R) Gigabit Ethernet Switch IP support"
++	default n
++	depends on OF_MDIO
++	help
++	  Turn on this option to build GSWIP driver.
++	  Gigabit Ethernet Switch is a hardware IP in the
++	  Intel Networking SoCs. This driver consists of
++	  core and mac. It is part of the Intel gateway
++	  datapath architecture.
++
+ endif # NET_VENDOR_INTEL
+diff --git a/drivers/net/ethernet/intel/Makefile b/drivers/net/ethernet/intel/Makefile
+index 3075290063f6..ab3281e9bc4c 100644
+--- a/drivers/net/ethernet/intel/Makefile
++++ b/drivers/net/ethernet/intel/Makefile
+@@ -16,3 +16,4 @@ obj-$(CONFIG_IXGB) += ixgb/
+ obj-$(CONFIG_IAVF) += iavf/
+ obj-$(CONFIG_FM10K) += fm10k/
+ obj-$(CONFIG_ICE) += ice/
++obj-y += gwdpa/
+diff --git a/drivers/net/ethernet/intel/gwdpa/Makefile b/drivers/net/ethernet/intel/gwdpa/Makefile
+new file mode 100644
+index 000000000000..ada65e907601
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/Makefile
+@@ -0,0 +1,5 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Makefile for the Intel datapath specific drivers.
++#
++obj-$(CONFIG_INTEL_GSWIP)	+= gswip/
+\ No newline at end of file
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/Makefile b/drivers/net/ethernet/intel/gwdpa/gswip/Makefile
+new file mode 100644
+index 000000000000..548b716d6984
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/Makefile
+@@ -0,0 +1,10 @@
++# SPDX-License-Identifier: GPL-2.0
++#
++# Makefile for GSWIP
++#
++obj-y += gswip-dev.o gswip-core.o gswip-mac.o
++
++gswip-dev-y := gswip_dev.o
++gswip-core-y := gswip_core.o gswip_port.o gswip_tbl.o
++gswip-mac-y := mac_dev.o mac_cfg.o gswip_mac.o xgmac.o lmac.o
++
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip.h
+new file mode 100644
+index 000000000000..1e8b4b5b146a
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip.h
+@@ -0,0 +1,448 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation. */
++#ifndef _DATAPATH_GSWIP_H_
++#define _DATAPATH_GSWIP_H_
++
++#include <linux/device.h>
++#include <linux/bits.h>
++
++#define BR_PORT_MAP_NUM		16
++#define PMAC_BSL_THRES_NUM	3
++#define PMAC_HEADER_NUM		8
++
++enum gswip_cpu_parser_hdr_cfg {
++	GSWIP_CPU_PARSER_NIL,
++	GSWIP_CPU_PARSER_FLAGS,
++	GSWIP_CPU_PARSER_OFFSETS_FLAGS,
++	GSWIP_CPU_PARSER_RESERVED,
++};
++
++struct gswip_cpu_port_cfg {
++	u8 lpid;
++	bool is_cpu_port;
++	bool spec_tag_ig;
++	bool spec_tag_eg;
++	bool fcs_chk;
++	bool fcs_generate;
++	enum gswip_cpu_parser_hdr_cfg no_mpe_parser_cfg;
++	enum gswip_cpu_parser_hdr_cfg mpe1_parser_cfg;
++	enum gswip_cpu_parser_hdr_cfg mpe2_parser_cfg;
++	enum gswip_cpu_parser_hdr_cfg mpe3_parser_cfg;
++	bool ts_rm_ptp_pkt;
++	bool ts_rm_non_ptp_pkt;
++};
++
++enum gswip_pmac_short_frm_chk {
++	GSWIP_PMAC_SHORT_LEN_DIS,
++	GSWIP_PMAC_SHORT_LEN_ENA_UNTAG,
++	GSWIP_PMAC_SHORT_LEN_ENA_TAG,
++	GSWIP_PMAC_SHORT_LEN_RESERVED,
++};
++
++enum gswip_pmac_proc_flags_eg_cfg {
++	GSWIP_PMAC_PROC_FLAGS_NONE,
++	GSWIP_PMAC_PROC_FLAGS_TC,
++	GSWIP_PMAC_PROC_FLAGS_FLAG,
++	GSWIP_PMAC_PROC_FLAGS_MIX,
++};
++
++struct gswip_pmac_glb_cfg {
++	u8 pmac_id;
++	bool apad_en;
++	bool pad_en;
++	bool vpad_en;
++	bool svpad_en;
++	bool rx_fcs_dis;
++	bool tx_fcs_dis;
++	bool ip_trans_chk_reg_dis;
++	bool ip_trans_chk_ver_dis;
++	bool jumbo_en;
++	u16 max_jumbo_len;
++	u16 jumbo_thresh_len;
++	bool long_frm_chk_dis;
++	enum gswip_pmac_short_frm_chk short_frm_chk_type;
++	bool proc_flags_eg_cfg_en;
++	enum gswip_pmac_proc_flags_eg_cfg proc_flags_eg_cfg;
++	u16 bsl_thresh[PMAC_BSL_THRES_NUM];
++};
++
++struct gswip_pmac_bp_map {
++	u8 pmac_id;
++	u8 tx_dma_chan_id;
++	u32 tx_q_mask;
++	u32 rx_port_mask;
++};
++
++enum gswip_pmac_ig_cfg_src {
++	GSWIP_PMAC_IG_CFG_SRC_DMA_DESC,
++	GSWIP_PMAC_IG_CFG_SRC_DEF_PMAC,
++	GSWIP_PMAC_IG_CFG_SRC_PMAC,
++};
++
++struct gswip_pmac_ig_cfg {
++	u8 pmac_id;
++	u8 tx_dma_chan_id;
++	bool err_pkt_disc;
++	bool class_def;
++	bool class_en;
++	enum gswip_pmac_ig_cfg_src sub_id;
++	bool src_port_id_def;
++	bool pmac_present;
++	u8 def_pmac_hdr[PMAC_HEADER_NUM];
++};
++
++struct gswip_pmac_eg_cfg {
++	u8 pmac_id;
++	u8 dst_port_id;
++	u8 tc;
++	bool mpe1;
++	bool mpe2;
++	bool decrypt;
++	bool encrypt;
++	u8 flow_id_msb;
++	bool process_sel;
++	u8 rx_dma_chan_id;
++	bool rm_l2_hdr;
++	u8 num_byte_rm;
++	bool fcs_en;
++	bool pmac_en;
++	bool redir_en;
++	bool bsl_seg_disable;
++	u8 bsl_tc;
++	bool resv_dw1_en;
++	u8 resv_dw1;
++	bool resv_1dw0_en;
++	u8 resv_1dw0;
++	bool resv_2dw0_en;
++	u8 resv_2dw0;
++	bool tc_en;
++};
++
++struct gswip_lpid2gpid {
++	u16 lpid;
++	u16 first_gpid;
++	u16 num_gpid;
++	u8 valid_bits;
++};
++
++struct gswip_gpid2lpid {
++	u16 gpid;
++	u16 lpid;
++	u8 subif_grp_field;
++	bool subif_grp_field_ovr;
++};
++
++enum gswip_ctp_port_config_mask {
++	GSWIP_CTP_PORT_CONFIG_MASK_BRIDGE_PORT_ID	= BIT(0),
++	GSWIP_CTP_PORT_CONFIG_MASK_FORCE_TRAFFIC_CLASS	= BIT(1),
++	GSWIP_CTP_PORT_CONFIG_MASK_INGRESS_VLAN		= BIT(2),
++	GSWIP_CTP_PORT_CONFIG_MASK_INGRESS_VLAN_IGMP	= BIT(3),
++	GSWIP_CTP_PORT_CONFIG_MASK_EGRESS_VLAN		= BIT(4),
++	GSWIP_CTP_PORT_CONFIG_MASK_EGRESS_VLAN_IGMP	= BIT(5),
++	GSWIP_CTP_PORT_CONFIG_MASK_INRESS_NTO1_VLAN	= BIT(6),
++	GSWIP_CTP_PORT_CONFIG_MASK_EGRESS_NTO1_VLAN	= BIT(7),
++	GSWIP_CTP_PORT_CONFIG_INGRESS_MARKING		= BIT(8),
++	GSWIP_CTP_PORT_CONFIG_EGRESS_MARKING		= BIT(9),
++	GSWIP_CTP_PORT_CONFIG_EGRESS_MARKING_OVERRIDE	= BIT(10),
++	GSWIP_CTP_PORT_CONFIG_EGRESS_REMARKING		= BIT(11),
++	GSWIP_CTP_PORT_CONFIG_INGRESS_METER		= BIT(12),
++	GSWIP_CTP_PORT_CONFIG_EGRESS_METER		= BIT(13),
++	GSWIP_CTP_PORT_CONFIG_BRIDGING_BYPASS		= BIT(14),
++	GSWIP_CTP_PORT_CONFIG_FLOW_ENTRY		= BIT(15),
++	GSWIP_CTP_PORT_CONFIG_LOOPBACK_AND_MIRROR	= BIT(16),
++	GSWIP_CTP_PORT_CONFIG_MASK_FORCE		= BIT(31),
++};
++
++struct gswip_ctp_port_cfg {
++	u8 lpid;
++	u16 subif_id_grp;
++	u16 br_pid;
++	enum gswip_ctp_port_config_mask mask;
++	bool br_bypass;
++};
++
++enum gswip_lport_mode {
++	GSWIP_LPORT_8BIT_WLAN,
++	GSWIP_LPORT_9BIT_WLAN,
++	GSWIP_LPORT_GPON,
++	GSWIP_LPORT_EPON,
++	GSWIP_LPORT_GINT,
++	GSWIP_LPORT_OTHER = 0xFF,
++};
++
++struct gswip_ctp_port_info {
++	u8 lpid;
++	u16 first_pid;
++	u16 num_port;
++	enum gswip_lport_mode mode;
++	u16 br_pid;
++};
++
++enum gswip_br_port_cfg_mask {
++	GSWIP_BR_PORT_CFG_MASK_BR_ID			= BIT(0),
++	GSWIP_BR_PORT_CFG_MASK_IG_VLAN			= BIT(1),
++	GSWIP_BR_PORT_CFG_MASK_EG_VLAN			= BIT(2),
++	GSWIP_BR_PORT_CFG_MASK_IG_MARKING		= BIT(3),
++	GSWIP_BR_PORT_CFG_MASK_EG_REMARKING		= BIT(4),
++	GSWIP_BR_PORT_CFG_MASK_IG_METER			= BIT(5),
++	GSWIP_BR_PORT_CFG_MASK_EG_SUB_METER		= BIT(6),
++	GSWIP_BR_PORT_CFG_MASK_EG_CTP_MAPPING		= BIT(7),
++	GSWIP_BR_PORT_CFG_MASK_BR_PORT_MAP		= BIT(8),
++	GSWIP_BR_PORT_CFG_MASK_MCAST_DST_IP_LOOKUP	= BIT(9),
++	GSWIP_BR_PORT_CFG_MASK_MCAST_SRC_IP_LOOKUP	= BIT(10),
++	GSWIP_BR_PORT_CFG_MASK_MCAST_DST_MAC_LOOKUP	= BIT(11),
++	GSWIP_BR_PORT_CFG_MASK_MCAST_SRC_MAC_LEARNING	= BIT(12),
++	GSWIP_BR_PORT_CFG_MASK_MAC_SPOOFING		= BIT(13),
++	GSWIP_BR_PORT_CFG_MASK_PORT_LOCK		= BIT(14),
++	GSWIP_BR_PORT_CFG_MASK_MAC_LEARNING_LIMIT	= BIT(15),
++	GSWIP_BR_PORT_CFG_MASK_MAC_LEARNED_COUNT	= BIT(16),
++	GSWIP_BR_PORT_CFG_MASK_IG_VLAN_FILTER		= BIT(17),
++	GSWIP_BR_PORT_CFG_MASK_EG_VLAN_FILTER1		= BIT(18),
++	GSWIP_BR_PORT_CFG_MASK_EG_VLAN_FILTER2		= BIT(19),
++	GSWIP_BR_PORT_CFG_MASK_FORCE			= BIT(31),
++};
++
++enum gswip_pmapper_mapping_mode {
++	GSWIP_PMAPPER_MAPPING_PCP,
++	GSWIP_PMAPPER_MAPPING_DSCP,
++};
++
++enum gswip_br_port_eg_meter {
++	GSWIP_BR_PORT_EG_METER_BROADCAST,
++	GSWIP_BR_PORT_EG_METER_MULTICAST,
++	GSWIP_BR_PORT_EG_METER_UNKNOWN_MCAST_IP,
++	GSWIP_BR_PORT_EG_METER_UNKNOWN_MCAST_NON_IP,
++	GSWIP_BR_PORT_EG_METER_UNKNOWN_UCAST,
++	GSWIP_BR_PORT_EG_METER_OTHERS,
++	GSWIP_BR_PORT_EG_METER_MAX,
++};
++
++struct gswip_br_port_alloc {
++	u8 br_id;
++	u8 br_pid;
++};
++
++enum gswip_br_cfg_mask {
++	GSWIP_BR_CFG_MASK_MAC_LEARNING_LIMIT	= BIT(0),
++	GSWIP_BR_CFG_MASK_MAC_LEARNED_COUNT	= BIT(1),
++	GSWIP_BR_CFG_MASK_MAC_DISCARD_COUNT	= BIT(2),
++	GSWIP_BR_CFG_MASK_SUB_METER		= BIT(3),
++	GSWIP_BR_CFG_MASK_FORWARDING_MODE	= BIT(4),
++	GSWIP_BR_CFG_MASK_FORCE			= BIT(31),
++};
++
++enum gswip_br_fwd_mode {
++	GSWIP_BR_FWD_FLOOD,
++	GSWIP_BR_FWD_DISCARD,
++	GSWIP_BR_FWD_CPU,
++};
++
++struct gswip_br_alloc {
++	u8 br_id;
++};
++
++struct gswip_br_cfg {
++	u8 br_id;
++	enum gswip_br_cfg_mask mask;
++	bool mac_lrn_limit_en;
++	u16 mac_lrn_limit;
++	u16 mac_lrn_count;
++	u32 lrn_disc_event;
++	enum gswip_br_fwd_mode fwd_bcast;
++	enum gswip_br_fwd_mode fwd_unk_mcast_ip;
++	enum gswip_br_fwd_mode fwd_unk_mcast_non_ip;
++	enum gswip_br_fwd_mode fwd_unk_ucast;
++};
++
++struct gswip_qos_wred_q_cfg {
++	u8 qid;
++	u16 red_min;
++	u16 red_max;
++	u16 yellow_min;
++	u16 yellow_max;
++	u16 green_min;
++	u16 green_max;
++};
++
++struct gswip_qos_wred_port_cfg {
++	u8 lpid;
++	u16 red_min;
++	u16 red_max;
++	u16 yellow_min;
++	u16 yellow_max;
++	u16 green_min;
++	u16 green_max;
++};
++
++enum gswip_qos_q_map_mode {
++	GSWIP_QOS_QMAP_SINGLE_MD,
++	GSWIP_QOS_QMAP_SUBIFID_MD,
++};
++
++struct gswip_qos_q_port {
++	u8 lpid;
++	bool extration_en;
++	enum gswip_qos_q_map_mode q_map_mode;
++	u8 tc_id;
++	u8 qid;
++	bool egress;
++	u8 redir_port_id;
++	bool en_ig_pce_bypass;
++	bool resv_port_mode;
++};
++
++struct gswip_register {
++	u16 offset;
++	u16 data;
++};
++
++enum {
++	SPEED_LMAC_10M,
++	SPEED_LMAC_100M,
++	SPEED_LMAC_200M,
++	SPEED_LMAC_1G,
++	SPEED_XGMAC_10M,
++	SPEED_XGMAC_100M,
++	SPEED_XGMAC_1G,
++	SPEED_XGMII_25G,
++	SPEED_XGMAC_5G,
++	SPEED_XGMAC_10G,
++	SPEED_GMII_25G,
++	SPEED_MAC_AUTO,
++};
++
++enum gsw_portspeed {
++	/* 10 Mbit/s */
++	GSW_PORT_SPEED_10 = 10,
++
++	/* 100 Mbit/s */
++	GSW_PORT_SPEED_100 = 100,
++
++	/* 200 Mbit/s */
++	GSW_PORT_SPEED_200 = 200,
++
++	/* 1000 Mbit/s */
++	GSW_PORT_SPEED_1000 = 1000,
++
++	/* 2.5 Gbit/s */
++	GSW_PORT_SPEED_25000 = 25000,
++
++	/* 10 Gbit/s */
++	GSW_PORT_SPEED_100000 = 100000,
++};
++
++enum gsw_portlink_status {
++	LINK_AUTO,
++	LINK_UP,
++	LINK_DOWN,
++};
++
++enum gsw_flow_control_modes {
++	FC_AUTO,
++	FC_RX,
++	FC_TX,
++	FC_RXTX,
++	FC_DIS,
++	FC_INVALID,
++};
++
++/* Ethernet port interface mode. */
++enum gsw_mii_mode {
++	/* Normal PHY interface (twisted pair), use internal MII Interface */
++	GSW_PORT_HW_MII,
++
++	/* Reduced MII interface in normal mode */
++	GSW_PORT_HW_RMII,
++
++	/* GMII or MII, depending upon the speed */
++	GSW_PORT_HW_GMII,
++
++	/* RGMII mode */
++	GSW_PORT_HW_RGMII,
++
++	/* XGMII mode */
++	GSW_PORT_HW_XGMII,
++};
++
++struct core_common_ops {
++	int (*enable)(struct device *dev, bool enable);
++	int (*cpu_port_cfg_get)(struct device *dev,
++				struct gswip_cpu_port_cfg *cpu);
++	int (*reg_get)(struct device *dev, struct gswip_register *param);
++	int (*reg_set)(struct device *dev, struct gswip_register *param);
++};
++
++struct core_pmac_ops {
++	int (*gbl_cfg_set)(struct device *dev, struct gswip_pmac_glb_cfg *pmac);
++	int (*bp_map_get)(struct device *dev, struct gswip_pmac_bp_map *bp);
++	int (*ig_cfg_set)(struct device *dev, struct gswip_pmac_ig_cfg *ig);
++	int (*eg_cfg_set)(struct device *dev, struct gswip_pmac_eg_cfg *eg);
++};
++
++struct core_gpid_ops {
++	int (*lpid2gpid_set)(struct device *dev,
++			     struct gswip_lpid2gpid *lp2gp);
++	int (*lpid2gpid_get)(struct device *dev,
++			     struct gswip_lpid2gpid *lp2gp);
++	int (*gpid2lpid_set)(struct device *dev,
++			     struct gswip_gpid2lpid *gp2lp);
++	int (*gpid2lpid_get)(struct device *dev,
++			     struct gswip_gpid2lpid *gp2lp);
++};
++
++struct core_ctp_ops {
++	int (*alloc)(struct device *dev, struct gswip_ctp_port_info *ctp);
++	int (*free)(struct device *dev, u8 lpid);
++};
++
++struct core_br_port_ops {
++	int (*alloc)(struct device *dev, struct gswip_br_port_alloc *bp);
++	int (*free)(struct device *dev, struct gswip_br_port_alloc *bp);
++};
++
++struct core_br_ops {
++	int (*alloc)(struct device *dev, struct gswip_br_alloc *br);
++	int (*free)(struct device *dev, struct gswip_br_alloc *br);
++};
++
++struct core_qos_ops {
++	int (*q_port_set)(struct device *dev, struct gswip_qos_q_port *qport);
++	int (*wred_q_cfg_set)(struct device *dev,
++			      struct gswip_qos_wred_q_cfg *wredq);
++	int (*wred_port_cfg_set)(struct device *dev,
++				 struct gswip_qos_wred_port_cfg *wredp);
++};
++
++struct gsw_mac_ops {
++	/* Initialize MAC */
++	int (*init)(struct device *dev);
++
++	int (*set_macaddr)(struct device *dev, u8 *mac_addr);
++	int (*get_link_sts)(struct device *dev);
++
++	int (*get_duplex)(struct device *dev);
++
++	int (*set_speed)(struct device *dev, u8 speed);
++	int (*get_speed)(struct device *dev);
++
++	u32 (*get_mtu)(struct device *dev);
++	int (*set_mtu)(struct device *dev, u32 mtu);
++
++	u32 (*get_flowctrl)(struct device *dev);
++	int (*set_flowctrl)(struct device *dev, u32 val);
++
++	int (*get_pfsa)(struct device *dev, u8 *addr, u32 *mode);
++	int (*set_pfsa)(struct device *dev, u8 *mac_addr, u32 macif);
++
++	int (*get_mii_if)(struct device *dev);
++	int (*set_mii_if)(struct device *dev, u32 mii_mode);
++
++	u32 (*get_lpi)(struct device *dev);
++
++	int (*get_fcsgen)(struct device *dev);
++};
++
++struct gsw_adap_ops {
++	int (*sw_core_enable)(struct device *dev, u32 val);
++};
++#endif
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c
+new file mode 100644
+index 000000000000..164840beaae4
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c
+@@ -0,0 +1,804 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#include <asm/unaligned.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/of_platform.h>
++
++#include "gswip_core.h"
++#include "gswip_dev.h"
++#include "gswip_reg.h"
++#include "gswip_tbl.h"
++#include "mac_common.h"
++
++#define GSWIP_VER		0x32
++
++/* TX DMA channels for PMAC0 to PMAC2 */
++#define PMAC0_TX_DMACHID_START	0
++#define PMAC0_TX_DMACHID_END	16
++#define PMAC1_TX_DMACHID_START	0
++#define PMAC1_TX_DMACHID_END	16
++#define PMAC2_TX_DMACHID_START	0
++#define PMAC2_TX_DMACHID_END	16
++
++#define MAX_JUMBO_FRM_LEN	10000
++
++/* Data Protocol Unit (DPU) */
++enum dpu {
++	DPU,
++	NON_DPU,
++};
++
++enum queue_id {
++	QUEUE0,
++	QUEUE1,
++	QUEUE2,
++	QUEUE3,
++	QUEUE4,
++	QUEUE5,
++	QUEUE6,
++	QUEUE7,
++	QUEUE8,
++	QUEUE9,
++	QUEUE10,
++};
++
++enum traffic_class {
++	TC0,
++	TC1,
++	TC2,
++	TC3,
++	TC_MAX,
++};
++
++struct eg_pce_bypass_path {
++	/* egress logical port id */
++	u8 eg_pid;
++	/* local extracted */
++	bool ext;
++	/* queue id */
++	u8 qid;
++	/* redirect logical port id */
++	u8 redir_pid;
++};
++
++struct ig_pce_bypass_path {
++	/* ingress logical port id */
++	u8 ig_pid;
++	/* local extracted */
++	bool ext;
++	/* traffic class */
++	u8 tc_start;
++	u8 tc_end;
++	/* queue id */
++	u8 qid;
++	/* redirect logical port id */
++	u8 redir_pid;
++};
++
++/* default GSWIP egress PCE bypass path Q-map */
++static struct eg_pce_bypass_path eg_pce_byp_path[] = {
++	{MAC2,  false, QUEUE0, MAC2 },
++	{MAC3,  false, QUEUE1, MAC3 },
++	{MAC4,  false, QUEUE2, MAC4 },
++	{MAC5,  false, QUEUE3, MAC5 },
++	{MAC6,  false, QUEUE4, MAC6 },
++	{MAC7,  false, QUEUE5, MAC7 },
++	{MAC8,  false, QUEUE6, MAC8 },
++	{MAC9,  false, QUEUE7, MAC9 },
++	{MAC10, false, QUEUE8, MAC10},
++};
++
++/* default GSWIP ingress PCE bypass path Q-map */
++static struct ig_pce_bypass_path ig_pce_byp_path[] = {
++	{PMAC0, false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC2,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC3,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC4,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC5,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC6,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC7,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC8,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC9,  false, TC0, TC_MAX, QUEUE10, PMAC2},
++	{MAC10, false, TC0, TC_MAX, QUEUE10, PMAC2},
++};
++
++static inline int pmac_ig_cfg(struct gswip_core_priv *priv, u8 pmac_id, u8 dpu)
++{
++	const struct core_pmac_ops *pmac_ops =  priv->ops.pmac_ops;
++	u8 start[] = { PMAC0_TX_DMACHID_START,
++		       PMAC1_TX_DMACHID_START,
++		       PMAC2_TX_DMACHID_START };
++	u8 end[] = { PMAC0_TX_DMACHID_END,
++		     PMAC1_TX_DMACHID_END,
++		     PMAC2_TX_DMACHID_END };
++	u8 pmac[] = { PMAC0, PMAC1, PMAC2 };
++	struct gswip_pmac_ig_cfg ig_cfg = {0};
++	int i, ret;
++
++	ig_cfg.pmac_id = pmac_id;
++	ig_cfg.err_pkt_disc = true;
++	ig_cfg.class_en = true;
++
++	for (i = start[pmac_id]; i < end[pmac_id]; i++) {
++		ig_cfg.tx_dma_chan_id = i;
++		ig_cfg.def_pmac_hdr[2] = FIELD_PREP(PMAC_IGCFG_HDR_ID,
++						    pmac[pmac_id]);
++
++		ret = pmac_ops->ig_cfg_set(priv->dev, &ig_cfg);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
++static inline int pmac_eg_cfg(struct gswip_core_priv *priv, u8 pmac_id, u8 dpu)
++{
++	const struct core_pmac_ops *pmac_ops =  priv->ops.pmac_ops;
++	struct gswip_pmac_eg_cfg pmac_eg = {0};
++
++	pmac_eg.pmac_id = pmac_id;
++	pmac_eg.pmac_en = true;
++	pmac_eg.bsl_seg_disable = true;
++
++	return pmac_ops->eg_cfg_set(priv->dev, &pmac_eg);
++}
++
++static inline int pmac_glbl_cfg(struct gswip_core_priv *priv, u8 pmac_id)
++{
++	const struct core_pmac_ops *pmac_ops =  priv->ops.pmac_ops;
++	struct gswip_pmac_glb_cfg pmac_cfg = {0};
++
++	pmac_cfg.pmac_id = pmac_id;
++	pmac_cfg.rx_fcs_dis = true;
++	pmac_cfg.jumbo_en = true;
++	pmac_cfg.max_jumbo_len = MAX_JUMBO_FRM_LEN;
++	pmac_cfg.long_frm_chk_dis = true;
++	pmac_cfg.short_frm_chk_type = GSWIP_PMAC_SHORT_LEN_ENA_UNTAG;
++	pmac_cfg.proc_flags_eg_cfg_en = true;
++	pmac_cfg.proc_flags_eg_cfg = GSWIP_PMAC_PROC_FLAGS_MIX;
++
++	return pmac_ops->gbl_cfg_set(priv->dev, &pmac_cfg);
++}
++
++static int gswip_core_pmac_init_nondpu(struct gswip_core_priv *priv)
++{
++	int i, ret;
++
++	for (i = 0; i < priv->num_pmac; i++) {
++		ret = pmac_glbl_cfg(priv, i);
++		if (ret)
++			return ret;
++
++		ret = pmac_ig_cfg(priv, i, NON_DPU);
++		if (ret)
++			return ret;
++
++		ret = pmac_eg_cfg(priv, i, NON_DPU);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
++static int gswip_core_set_def_eg_pce_bypass_qmap(struct gswip_core_priv *priv,
++						 enum gswip_qos_q_map_mode mode)
++{
++	const struct core_qos_ops *qos_ops =  priv->ops.qos_ops;
++	int num_elem = ARRAY_SIZE(eg_pce_byp_path);
++	struct gswip_qos_q_port q_map = {0};
++	int i, ret;
++
++	q_map.egress = true;
++	q_map.q_map_mode = mode;
++
++	for (i = 0; i < num_elem; i++) {
++		q_map.lpid = eg_pce_byp_path[i].eg_pid;
++		q_map.extration_en = eg_pce_byp_path[i].ext;
++		q_map.qid = eg_pce_byp_path[i].qid;
++		q_map.redir_port_id = eg_pce_byp_path[i].redir_pid;
++
++		ret = qos_ops->q_port_set(priv->dev, &q_map);
++		if (ret)
++			return -EINVAL;
++	}
++
++	return 0;
++}
++
++static int gswip_core_set_def_ig_pce_bypass_qmap(struct gswip_core_priv *priv)
++{
++	const struct core_qos_ops *qos_ops =  priv->ops.qos_ops;
++	int num_elem = ARRAY_SIZE(ig_pce_byp_path);
++	struct gswip_qos_q_port q_map = {0};
++	int i, j, ret;
++
++	q_map.en_ig_pce_bypass = true;
++
++	for (i = 0; i < num_elem; i++) {
++		for (j = ig_pce_byp_path[i].tc_start;
++		     j < ig_pce_byp_path[i].tc_end; j++) {
++			q_map.lpid = ig_pce_byp_path[i].ig_pid;
++			q_map.qid = ig_pce_byp_path[i].qid;
++			q_map.redir_port_id = ig_pce_byp_path[i].redir_pid;
++			q_map.tc_id = j;
++
++			ret = qos_ops->q_port_set(priv->dev, &q_map);
++			if (ret)
++				return -EINVAL;
++		}
++	}
++
++	return 0;
++}
++
++static inline u16 pmac_reg(u16 offset, u8 id)
++{
++	u16 pmac_offset[] = { 0, PMAC_REG_OFFSET_1, PMAC_REG_OFFSET_2 };
++
++	return offset += pmac_offset[id];
++}
++
++/* PMAC global configuration */
++static int gswip_pmac_glb_cfg_set(struct device *dev,
++				  struct gswip_pmac_glb_cfg *pmac)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 bsl_reg[] = { PMAC_BSL_LEN0, PMAC_BSL_LEN1, PMAC_BSL_LEN2 };
++	u16 ctrl_reg[] = { PMAC_CTRL_0, PMAC_CTRL_1,
++			   PMAC_CTRL_2, PMAC_CTRL_4 };
++	u16 ctrl[PMAC_CTRL_NUM] = {0};
++	u8 id;
++	int i;
++
++	if (pmac->pmac_id >= priv->num_pmac) {
++		dev_err(priv->dev, "Invalid pmac id %d\n", pmac->pmac_id);
++		return -EINVAL;
++	}
++
++	ctrl[0] = FIELD_PREP(PMAC_CTRL_0_FCSEN, pmac->rx_fcs_dis) |
++		  FIELD_PREP(PMAC_CTRL_0_APADEN, pmac->apad_en) |
++		  FIELD_PREP(PMAC_CTRL_0_VPAD2EN, pmac->svpad_en) |
++		  FIELD_PREP(PMAC_CTRL_0_VPADEN, pmac->vpad_en) |
++		  FIELD_PREP(PMAC_CTRL_0_PADEN, pmac->pad_en) |
++		  FIELD_PREP(PMAC_CTRL_0_FCS, pmac->tx_fcs_dis) |
++		  FIELD_PREP(PMAC_CTRL_0_CHKREG, pmac->ip_trans_chk_reg_dis) |
++		  FIELD_PREP(PMAC_CTRL_0_CHKVER, pmac->ip_trans_chk_ver_dis);
++
++	if (pmac->jumbo_en) {
++		ctrl[1] = pmac->max_jumbo_len,
++		ctrl[2] = FIELD_PREP(PMAC_CTRL_2_MLEN, 1);
++	}
++
++	ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKL, pmac->long_frm_chk_dis);
++
++	switch (pmac->short_frm_chk_type) {
++	case GSWIP_PMAC_SHORT_LEN_DIS:
++		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 0);
++		break;
++
++	case GSWIP_PMAC_SHORT_LEN_ENA_UNTAG:
++		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 1);
++		break;
++
++	case GSWIP_PMAC_SHORT_LEN_ENA_TAG:
++		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 2);
++		break;
++
++	case GSWIP_PMAC_SHORT_LEN_RESERVED:
++		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 3);
++		break;
++	}
++
++	switch (pmac->proc_flags_eg_cfg) {
++	case GSWIP_PMAC_PROC_FLAGS_NONE:
++		break;
++
++	case GSWIP_PMAC_PROC_FLAGS_TC:
++		ctrl[3] |= FIELD_PREP(PMAC_CTRL_4_FLAGEN, 0);
++		break;
++
++	case GSWIP_PMAC_PROC_FLAGS_FLAG:
++		ctrl[3] |= FIELD_PREP(PMAC_CTRL_4_FLAGEN, 1);
++		break;
++
++	case GSWIP_PMAC_PROC_FLAGS_MIX:
++		ctrl[3] |= FIELD_PREP(PMAC_CTRL_4_FLAGEN, 2);
++		break;
++	}
++
++	id = pmac->pmac_id;
++
++	for (i = 0; i < PMAC_CTRL_NUM; i++)
++		regmap_write(priv->regmap, pmac_reg(ctrl_reg[i], id), ctrl[i]);
++
++	for (i = 0; i < PMAC_BSL_NUM; i++)
++		regmap_write(priv->regmap, pmac_reg(bsl_reg[i], id),
++			     pmac->bsl_thresh[i]);
++
++	return 0;
++}
++
++/* PMAC backpressure configuration */
++static int gswip_pmac_bp_map_get(struct device *dev,
++				 struct gswip_pmac_bp_map *bp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pmac_tbl_prog pmac_tbl = {0};
++	int ret;
++
++	pmac_tbl.id = PMAC_BP_MAP;
++	pmac_tbl.pmac_id = bp->pmac_id;
++	pmac_tbl.addr = FIELD_GET(PMAC_BPMAP_TX_DMA_CH, bp->tx_dma_chan_id);
++	pmac_tbl.num_val = PMAC_BP_MAP_TBL_VAL_NUM;
++
++	ret = gswip_pmac_table_read(priv, &pmac_tbl);
++	if (ret)
++		return -EINVAL;
++
++	bp->rx_port_mask = pmac_tbl.val[0];
++	bp->tx_q_mask = pmac_tbl.val[1];
++	bp->tx_q_mask |= FIELD_PREP(PMAC_BPMAP_TX_Q_UPPER, pmac_tbl.val[2]);
++
++	return 0;
++}
++
++/* PMAC ingress configuration */
++static int gswip_pmac_ig_cfg_set(struct device *dev,
++				 struct gswip_pmac_ig_cfg *ig)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pmac_tbl_prog pmac_tbl = {0};
++	u16 *val;
++	u16 i;
++
++	pmac_tbl.id = PMAC_IG_CFG;
++	pmac_tbl.pmac_id = ig->pmac_id;
++	pmac_tbl.addr = FIELD_GET(PMAC_IGCFG_TX_DMA_CH, ig->tx_dma_chan_id);
++
++	val = &pmac_tbl.val[0];
++	for (i = 0; i < 4; i++)
++		val[i] = get_unaligned_be16(&ig->def_pmac_hdr[i * 2]);
++
++	switch (ig->sub_id) {
++	case GSWIP_PMAC_IG_CFG_SRC_DMA_DESC:
++		break;
++
++	case GSWIP_PMAC_IG_CFG_SRC_PMAC:
++	case GSWIP_PMAC_IG_CFG_SRC_DEF_PMAC:
++		val[4] = PMAC_IGCFG_VAL4_SUBID_MODE;
++		break;
++	}
++
++	val[4] |= FIELD_PREP(PMAC_IGCFG_VAL4_PMAC_FLAG, ig->pmac_present) |
++		  FIELD_PREP(PMAC_IGCFG_VAL4_CLASSEN_MODE, ig->class_en) |
++		  FIELD_PREP(PMAC_IGCFG_VAL4_CLASS_MODE, ig->class_def) |
++		  FIELD_PREP(PMAC_IGCFG_VAL4_ERR_DP, ig->err_pkt_disc) |
++		  FIELD_PREP(PMAC_IGCFG_VAL4_SPPID_MODE, ig->src_port_id_def);
++
++	pmac_tbl.num_val = PMAC_IG_CFG_TBL_VAL_NUM;
++
++	return gswip_pmac_table_write(priv, &pmac_tbl);
++}
++
++/* PMAC egress configuration */
++static int gswip_pmac_eg_cfg_set(struct device *dev,
++				 struct gswip_pmac_eg_cfg *eg)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pmac_tbl_prog pmac_tbl = {0};
++	u16 ctrl, pmac_ctrl4;
++	u16 *val;
++
++	pmac_ctrl4 = pmac_reg(PMAC_CTRL_4, eg->pmac_id);
++
++	pmac_tbl.id = PMAC_EG_CFG;
++	pmac_tbl.pmac_id = eg->pmac_id;
++	pmac_tbl.addr = FIELD_PREP(PMAC_EGCFG_DST_PORT_ID, eg->dst_port_id)
++			| FIELD_PREP(PMAC_EGCFG_FLOW_ID_MSB,
++				     eg->flow_id_msb);
++
++	ctrl = reg_rbits(priv, pmac_ctrl4, PMAC_CTRL_4_FLAGEN);
++
++	if (ctrl == PMAC_RX_FSM_IDLE) {
++		pmac_tbl.addr |= FIELD_PREP(PMAC_EGCFG_TC_4BITS, eg->tc);
++	} else if (ctrl == PMAC_RX_FSM_IGCFG) {
++		pmac_tbl.addr |= FIELD_PREP(PMAC_EGCFG_MPE1, eg->mpe1) |
++				 FIELD_PREP(PMAC_EGCFG_MPE2, eg->mpe2) |
++				 FIELD_PREP(PMAC_EGCFG_ECRYPT, eg->encrypt) |
++				 FIELD_PREP(PMAC_EGCFG_DECRYPT, eg->decrypt);
++	} else if (ctrl == PMAC_RX_FSM_DASA) {
++		pmac_tbl.addr |= FIELD_PREP(PMAC_EGCFG_TC_2BITS, eg->tc) |
++				 FIELD_PREP(PMAC_EGCFG_MPE1, eg->mpe1) |
++				 FIELD_PREP(PMAC_EGCFG_MPE2, eg->mpe2);
++	}
++
++	val = &pmac_tbl.val[0];
++	val[0] = FIELD_PREP(PMAC_EGCFG_VAL0_REDIR, eg->redir_en) |
++		 FIELD_PREP(PMAC_EGCFG_VAL0_RES_3BITS, ctrl) |
++		   FIELD_PREP(PMAC_EGCFG_VAL0_BSL, eg->bsl_tc) |
++		   FIELD_PREP(PMAC_EGCFG_VAL0_RES_2BITS, eg->resv_2dw0);
++
++	val[1] = FIELD_PREP(PMAC_EGCFG_VAL1_RX_DMA_CH, eg->rx_dma_chan_id);
++
++	val[2] = FIELD_PREP(PMAC_EGCFG_VAL2_FCS_MODE, eg->fcs_en) |
++		   FIELD_PREP(PMAC_EGCFG_VAL2_PMAC_FLAG, eg->pmac_en);
++
++	if (eg->rm_l2_hdr) {
++		val[2] |= PMAC_EGCFG_VAL2_L2HD_RM_MODE |
++			    FIELD_PREP(PMAC_EGCFG_VAL2_L2HD_RM,
++				       eg->num_byte_rm);
++	}
++
++	pmac_tbl.num_val = PMAC_EG_CFG_TBL_VAL_NUM;
++
++	return gswip_pmac_table_write(priv, &pmac_tbl);
++}
++
++static int gswip_cpu_port_cfg_get(struct device *dev,
++				  struct gswip_cpu_port_cfg *cpu)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 lpid, val;
++
++	lpid = cpu->lpid;
++	if (lpid >= priv->num_lport) {
++		dev_err(priv->dev, "Invalid cpu port id %d > %d\n",
++			lpid, priv->num_lport);
++		return -EINVAL;
++	}
++
++	cpu->is_cpu_port = lpid == priv->cpu_port;
++	cpu->spec_tag_ig = reg_rbits(priv, PCE_PCTRL_0(lpid),
++				     PCE_PCTRL_0_IGSTEN);
++	cpu->fcs_chk = reg_rbits(priv, SDMA_PCTRL(lpid), SDMA_PCTRL_FCSIGN);
++
++	reg_r16(priv, FDMA_PASR, &val);
++	cpu->no_mpe_parser_cfg = FIELD_GET(FDMA_PASR_CPU, val);
++	cpu->mpe1_parser_cfg = FIELD_GET(FDMA_PASR_MPE1, val);
++	cpu->mpe2_parser_cfg = FIELD_GET(FDMA_PASR_MPE2, val);
++	cpu->mpe3_parser_cfg = FIELD_GET(FDMA_PASR_MPE3, val);
++
++	reg_r16(priv, FDMA_PCTRL(lpid), &val);
++	cpu->spec_tag_eg = FIELD_GET(FDMA_PCTRL_STEN, val);
++	cpu->ts_rm_ptp_pkt = FIELD_GET(FDMA_PCTRL_TS_PTP, val);
++	cpu->ts_rm_non_ptp_pkt = FIELD_GET(FDMA_PCTRL_TS_NONPTP, val);
++
++	return 0;
++}
++
++static int gswip_register_get(struct device *dev, struct gswip_register *param)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++
++	reg_r16(priv, param->offset, &param->data);
++
++	return 0;
++}
++
++static int gswip_register_set(struct device *dev, struct gswip_register *param)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++
++	regmap_write(priv->regmap, param->offset, param->data);
++
++	return 0;
++}
++
++/* Global Port ID/ Logical Port ID */
++static int gswip_lpid2gpid_set(struct device *dev,
++			       struct gswip_lpid2gpid *lp2gp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 lpid, first_gpid, last_gpid, val;
++
++	lpid = lp2gp->lpid;
++	first_gpid = lp2gp->first_gpid;
++	last_gpid = first_gpid + lp2gp->num_gpid - 1;
++
++	if (lpid >= priv->num_lport) {
++		dev_err(priv->dev, "Invalid lpid %d >= %d\n",
++			lpid, priv->num_lport);
++		return -EINVAL;
++	}
++
++	if (last_gpid >= priv->num_glb_port) {
++		dev_err(priv->dev, "Invalid last gpid %d >= %d\n",
++			last_gpid, priv->num_glb_port);
++		return -EINVAL;
++	}
++
++	val = FIELD_PREP(ETHSW_GPID_STARTID_STARTID, first_gpid) |
++	      FIELD_PREP(ETHSW_GPID_STARTID_BITS, lp2gp->valid_bits);
++	regmap_write(priv->regmap, ETHSW_GPID_STARTID(lpid), val);
++
++	reg_wbits(priv, ETHSW_GPID_ENDID(lpid),
++		  ETHSW_GPID_ENDID_ENDID, last_gpid);
++
++	return 0;
++}
++
++static int gswip_lpid2gpid_get(struct device *dev,
++			       struct gswip_lpid2gpid *lp2gp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 lpid, val;
++
++	lpid = lp2gp->lpid;
++	if (lpid >= priv->num_lport) {
++		dev_err(priv->dev, "Invalid lpid %d >= %d\n",
++			lpid, priv->num_lport);
++		return -EINVAL;
++	}
++
++	reg_r16(priv, ETHSW_GPID_STARTID(lpid), &val);
++	lp2gp->first_gpid = FIELD_GET(ETHSW_GPID_STARTID_STARTID, val);
++	lp2gp->valid_bits = FIELD_GET(ETHSW_GPID_STARTID_BITS, val);
++
++	reg_r16(priv, ETHSW_GPID_ENDID(lpid), &val);
++	lp2gp->num_gpid = val - lp2gp->first_gpid + 1;
++
++	return 0;
++}
++
++static int gswip_gpid2lpid_set(struct device *dev,
++			       struct gswip_gpid2lpid *gp2lp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 val = 0;
++
++	if (gp2lp->lpid >= priv->num_lport) {
++		dev_err(priv->dev, "Invalid lpid %d >= %d\n",
++			gp2lp->lpid, priv->num_lport);
++		return -EINVAL;
++	}
++
++	if (gp2lp->gpid >= priv->num_glb_port) {
++		dev_err(priv->dev, "Invalid gpid %d >= %d\n",
++			gp2lp->gpid, priv->num_glb_port);
++		return -EINVAL;
++	}
++
++	val = FIELD_PREP(GPID_RAM_VAL_LPID, gp2lp->lpid) |
++	      FIELD_PREP(GPID_RAM_VAL_SUBID_GRP, gp2lp->subif_grp_field) |
++	      FIELD_PREP(GPID_RAM_VAL_OV, gp2lp->subif_grp_field_ovr);
++
++	regmap_write(priv->regmap, GPID_RAM_VAL, val);
++
++	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to access gpid table\n");
++		return -EBUSY;
++	}
++
++	reg_r16(priv, GPID_RAM_CTRL, &val);
++
++	update_val(&val, GPID_RAM_CTRL_ADDR, gp2lp->gpid);
++	val |= FIELD_PREP(GPID_RAM_CTRL_OPMOD, 1) |
++	       FIELD_PREP(GPID_RAM_CTRL_BAS, 1);
++
++	regmap_write(priv->regmap, GPID_RAM_CTRL, val);
++
++	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to write gpid table\n");
++		return -EBUSY;
++	}
++
++	return 0;
++}
++
++static int gswip_gpid2lpid_get(struct device *dev,
++			       struct gswip_gpid2lpid *gp2lp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 val;
++
++	if (gp2lp->gpid >= priv->num_glb_port) {
++		dev_err(priv->dev, "gpid %d >= %d\n",
++			gp2lp->gpid, priv->num_glb_port);
++		return -EINVAL;
++	}
++
++	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to access gpid table\n");
++		return -EBUSY;
++	}
++
++	reg_r16(priv, GPID_RAM_CTRL, &val);
++
++	update_val(&val, GPID_RAM_CTRL_ADDR, gp2lp->gpid);
++	val |= FIELD_PREP(GPID_RAM_CTRL_OPMOD, 0) |
++	       FIELD_PREP(GPID_RAM_CTRL_BAS, 1);
++
++	regmap_write(priv->regmap, GPID_RAM_CTRL, val);
++
++	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to read gpid table\n");
++		return -EBUSY;
++	}
++
++	reg_r16(priv, GPID_RAM_VAL, &val);
++
++	gp2lp->lpid = FIELD_GET(GPID_RAM_VAL_LPID, val);
++	gp2lp->subif_grp_field = FIELD_GET(GPID_RAM_VAL_SUBID_GRP, val);
++	gp2lp->subif_grp_field_ovr = FIELD_GET(GPID_RAM_VAL_OV, val);
++
++	return 0;
++}
++
++static int gswip_enable(struct device *dev, bool enable)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 i;
++
++	for (i = 0; i < priv->num_lport; i++) {
++		reg_wbits(priv, FDMA_PCTRL(i), FDMA_PCTRL_EN, enable);
++		reg_wbits(priv, SDMA_PCTRL(i), SDMA_PCTRL_PEN, enable);
++	}
++
++	return 0;
++}
++
++static const struct core_common_ops gswip_core_common_ops = {
++	.enable = gswip_enable,
++	.cpu_port_cfg_get = gswip_cpu_port_cfg_get,
++	.reg_get = gswip_register_get,
++	.reg_set = gswip_register_set,
++};
++
++static const struct core_pmac_ops gswip_core_pmac_ops = {
++	.gbl_cfg_set = gswip_pmac_glb_cfg_set,
++	.bp_map_get = gswip_pmac_bp_map_get,
++	.ig_cfg_set = gswip_pmac_ig_cfg_set,
++	.eg_cfg_set = gswip_pmac_eg_cfg_set,
++};
++
++static const struct core_gpid_ops gswip_core_gpid_ops = {
++	.lpid2gpid_set = gswip_lpid2gpid_set,
++	.lpid2gpid_get = gswip_lpid2gpid_get,
++	.gpid2lpid_set = gswip_gpid2lpid_set,
++	.gpid2lpid_get = gswip_gpid2lpid_get,
++};
++
++static int gswip_core_setup_ops(struct gswip_core_priv *priv)
++{
++	struct core_ops *ops =  &priv->ops;
++
++	ops->common_ops = &gswip_core_common_ops;
++	ops->pmac_ops = &gswip_core_pmac_ops;
++	ops->gpid_ops = &gswip_core_gpid_ops;
++
++	return 0;
++}
++
++static int gswip_core_get_hw_cap(struct gswip_core_priv *priv)
++{
++	u16 val;
++
++	priv->ver = reg_rbits(priv, ETHSW_VERSION, ETHSW_VERSION_REV_ID);
++	if (priv->ver != GSWIP_VER) {
++		dev_err(priv->dev, "Wrong hardware ip version %d\n",
++			priv->ver);
++		return -EINVAL;
++	}
++
++	priv->num_phy_port = reg_rbits(priv, ETHSW_CAP_1, ETHSW_CAP_1_PPORTS);
++
++	reg_r16(priv, ETHSW_CAP_1, &val);
++	priv->num_lport = priv->num_phy_port;
++	priv->num_lport += FIELD_GET(ETHSW_CAP_1_VPORTS, val);
++	priv->num_q = FIELD_GET(ETHSW_CAP_1_QUEUE, val);
++
++	priv->num_pmac = reg_rbits(priv, ETHSW_CAP_13, ETHSW_CAP_13_PMAC);
++
++	reg_r16(priv, ETHSW_CAP_17, &val);
++	priv->num_br = (1 << FIELD_GET(ETHSW_CAP_17_BRG, val));
++	priv->num_br_port = (1 << FIELD_GET(ETHSW_CAP_17_BRGPT, val));
++
++	reg_r16(priv, ETHSW_CAP_18, &priv->num_ctp);
++
++	priv->num_glb_port = priv->num_br_port * 2;
++
++	return 0;
++}
++
++static int gswip_core_init(struct gswip_core_priv *priv)
++{
++	priv->br_map = devm_kzalloc(priv->dev, BITS_TO_LONGS(priv->num_br),
++				    GFP_KERNEL);
++	if (!priv->br_map)
++		return -ENOMEM;
++
++	priv->br_port_map = devm_kzalloc(priv->dev,
++					 BITS_TO_LONGS(priv->num_br_port),
++					 GFP_KERNEL);
++	if (!priv->br_port_map)
++		return -ENOMEM;
++
++	priv->ctp_port_map = devm_kzalloc(priv->dev,
++					  BITS_TO_LONGS(priv->num_ctp),
++					  GFP_KERNEL);
++	if (!priv->ctp_port_map)
++		return -ENOMEM;
++
++	spin_lock_init(&priv->tbl_lock);
++
++	gswip_core_setup_ops(priv);
++	gswip_core_setup_port_ops(priv);
++
++	return 0;
++}
++
++static int gswip_core_setup(struct gswip_core_priv *priv)
++{
++	int ret;
++
++	ret = gswip_core_set_def_eg_pce_bypass_qmap(priv,
++						    GSWIP_QOS_QMAP_SINGLE_MD);
++	if (ret)
++		return ret;
++
++	ret = gswip_core_set_def_ig_pce_bypass_qmap(priv);
++	if (ret)
++		return ret;
++
++	ret = gswip_core_pmac_init_nondpu(priv);
++	if (ret)
++		return -EINVAL;
++
++	return 0;
++}
++
++static int gswip_core_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct device *parent = dev->parent;
++	struct gswip_core_priv *priv;
++	struct gswip_pdata *pdata = parent->platform_data;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->pdev = pdev;
++	priv->dev = dev;
++	priv->regmap = pdata->core_regmap;
++
++	platform_set_drvdata(pdev, priv);
++
++	ret = gswip_core_get_hw_cap(priv);
++	if (ret)
++		return -EINVAL;
++
++	ret = gswip_core_init(priv);
++	if (ret)
++		return ret;
++
++	ret = gswip_core_setup(priv);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
++static const struct of_device_id gswip_core_of_match_table[] = {
++	{ .compatible = "gswip-core" },
++	{}
++};
++
++MODULE_DEVICE_TABLE(of, gswip_core);
++
++static struct platform_driver gswip_core_drv = {
++	.probe = gswip_core_probe,
++	.driver = {
++		.name = "gswip_core",
++		.of_match_table = gswip_core_of_match_table,
++	},
++};
++
++module_platform_driver(gswip_core_drv);
++
++MODULE_LICENSE("GPL v2");
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h
+new file mode 100644
+index 000000000000..614a9089c1b0
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h
+@@ -0,0 +1,90 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation. */
++#ifndef _GSWIP_CORE_H_
++#define _GSWIP_CORE_H_
++
++#include <linux/bitfield.h>
++#include <linux/delay.h>
++#include <linux/regmap.h>
++
++#include "gswip.h"
++
++/* table should be ready in 30 clock cycle */
++#define TBL_BUSY_TIMEOUT_US	1
++
++struct core_ops {
++	const struct core_common_ops *common_ops;
++	const struct core_pmac_ops *pmac_ops;
++	const struct core_gpid_ops *gpid_ops;
++	const struct core_ctp_ops *ctp_ops;
++	const struct core_br_port_ops *br_port_ops;
++	const struct core_br_ops *br_ops;
++	const struct core_qos_ops *qos_ops;
++};
++
++struct gswip_core_priv {
++	struct device *dev;
++
++	unsigned long *br_map;
++	unsigned long *br_port_map;
++	unsigned long *ctp_port_map;
++	void *pdev;
++
++	u8 cpu_port;
++	u8 num_lport;
++	u8 num_br;
++	u8 num_br_port;
++	u16 num_ctp;
++	u16 num_glb_port;
++	u16 num_pmac;
++	u16 num_phy_port;
++	u16 num_q;
++
++	u16 ver;
++	struct regmap *regmap;
++	/* table read/write lock */
++	spinlock_t tbl_lock;
++
++	struct core_ops ops;
++};
++
++static inline void update_val(u16 *val, u16 mask, u16 set)
++{
++	*val &= ~mask;
++	*val |= FIELD_PREP(mask, set);
++}
++
++static inline void reg_r16(struct gswip_core_priv *priv, u16 reg, u16 *val)
++{
++	unsigned int reg_val;
++
++	regmap_read(priv->regmap, reg, &reg_val);
++	*val = reg_val;
++}
++
++static inline void reg_wbits(struct gswip_core_priv *priv,
++			     u16 reg, u16 mask, u16 val)
++{
++	regmap_update_bits(priv->regmap, reg, mask, FIELD_PREP(mask, val));
++}
++
++static inline u16 reg_rbits(struct gswip_core_priv *priv, u16 reg, u16 mask)
++{
++	unsigned int reg_val;
++
++	regmap_read(priv->regmap, reg, &reg_val);
++	return FIELD_GET(mask, reg_val);
++}
++
++/* Access table with timeout */
++static inline int tbl_rw_tmout(struct gswip_core_priv *priv, u16 reg, u16 mask)
++{
++	unsigned int val;
++
++	return regmap_read_poll_timeout(priv->regmap, reg, val, !(val & mask),
++					0, TBL_BUSY_TIMEOUT_US);
++}
++
++int gswip_core_setup_port_ops(struct gswip_core_priv *priv);
++
++#endif
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
+new file mode 100644
+index 000000000000..492e0dfd7159
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
+@@ -0,0 +1,179 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#include <linux/clk.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_platform.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/reset.h>
++
++#include "gswip.h"
++#include "gswip_dev.h"
++
++#define GSWIP_SUBDEV_MAC_MAX	9
++#define GSWIP_SUBDEV_CORE_MAX	1
++#define GSWIP_MAC_DEV_NAME	"gswip_mac"
++#define GSWIP_CORE_DEV_NAME	"gswip_core"
++
++struct gswip_priv {
++	struct device *dev;
++	u32 id;
++	int num_subdev_mac;
++	int num_subdev_core;
++	struct gswip_pdata pdata;
++};
++
++static int regmap_reg_write(void *context, unsigned int reg, unsigned int val)
++{
++	struct gswip_pdata *pdata = context;
++
++	writew(val, pdata->core + reg);
++
++	return 0;
++}
++
++static int regmap_reg_read(void *context, unsigned int reg, unsigned int *val)
++{
++	struct gswip_pdata *pdata = context;
++
++	*val = readw(pdata->core + reg);
++
++	return 0;
++}
++
++static const struct regmap_config gswip_core_regmap_config = {
++	.reg_bits = 16,
++	.val_bits = 16,
++	.reg_stride = 4,
++	.reg_write = regmap_reg_write,
++	.reg_read = regmap_reg_read,
++	.fast_io = true,
++};
++
++static int np_gswip_parse_dt(struct platform_device *pdev,
++			     struct gswip_priv *priv)
++{
++	struct device *dev = &pdev->dev;
++	struct device_node *node = dev->of_node;
++	struct gswip_pdata *pdata = &priv->pdata;
++	struct device_node *np;
++
++	pdata->sw = devm_platform_ioremap_resource_byname(pdev, "switch");
++	if (IS_ERR(pdata->sw))
++		return PTR_ERR(pdata->sw);
++
++	pdata->lmac = devm_platform_ioremap_resource_byname(pdev, "lmac");
++	if (IS_ERR(pdata->lmac))
++		return PTR_ERR(pdata->lmac);
++
++	pdata->core = devm_platform_ioremap_resource_byname(pdev, "core");
++	if (IS_ERR(pdata->core))
++		return PTR_ERR(pdata->core);
++	pdata->core_regmap = devm_regmap_init(dev, NULL, pdata,
++					      &gswip_core_regmap_config);
++	if (IS_ERR(pdata->core_regmap))
++		return PTR_ERR(pdata->core_regmap);
++
++	pdata->sw_irq = platform_get_irq_byname(pdev, "switch");
++	if (pdata->sw_irq < 0)
++		return -ENODEV;
++
++	pdata->core_irq = platform_get_irq_byname(pdev, "core");
++	if (pdata->core_irq < 0)
++		return -ENODEV;
++
++	pdata->ptp_clk = devm_clk_get(dev, "ptp");
++	if (IS_ERR(pdata->ptp_clk))
++		return PTR_ERR(pdata->ptp_clk);
++
++	pdata->sw_clk = devm_clk_get(dev, "switch");
++	if (IS_ERR(pdata->sw_clk))
++		return PTR_ERR(pdata->sw_clk);
++
++	for_each_node_by_name(node, GSWIP_MAC_DEV_NAME) {
++		priv->num_subdev_mac++;
++		if (priv->num_subdev_mac > GSWIP_SUBDEV_MAC_MAX) {
++			dev_err(dev, "too many GSWIP mac subdevices\n");
++			return -EINVAL;
++		}
++	}
++
++	if (!priv->num_subdev_mac) {
++		dev_err(dev, "GSWIP mac subdevice not found\n");
++		return -EINVAL;
++	}
++
++	np = of_find_node_by_name(node, GSWIP_CORE_DEV_NAME);
++	if (np) {
++		priv->num_subdev_core++;
++		of_node_put(np);
++	} else {
++		dev_err(dev, "GSWIP core subdevice not found\n");
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static const struct of_device_id gswip_of_match_table[] = {
++	{ .compatible = "intel,lgm-gswip" },
++	{}
++};
++MODULE_DEVICE_TABLE(of, gswip_of_match_table);
++
++static int np_gswip_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct reset_control *rcu_reset;
++	struct gswip_priv *priv;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->dev = dev;
++
++	ret = np_gswip_parse_dt(pdev, priv);
++	if (ret) {
++		dev_err(dev, "failed to parse device tree\n");
++		return ret;
++	}
++
++	dev->id = priv->id;
++
++	rcu_reset = devm_reset_control_get_optional(dev, NULL);
++	if (IS_ERR(rcu_reset)) {
++		dev_err(dev, "error getting reset control of gswip\n");
++		return PTR_ERR(rcu_reset);
++	}
++
++	reset_control_assert(rcu_reset);
++	udelay(1);
++	reset_control_deassert(rcu_reset);
++
++	dev_set_drvdata(dev, priv);
++
++	dev->platform_data = &priv->pdata;
++
++	ret = devm_of_platform_populate(dev);
++
++	return ret;
++}
++
++static struct platform_driver np_gswip_driver = {
++	.probe = np_gswip_probe,
++	.driver = {
++		.name = "np_gswip",
++		.of_match_table = gswip_of_match_table,
++	},
++};
++
++module_platform_driver(np_gswip_driver);
++
++MODULE_LICENSE("GPL v2");
++
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h
+new file mode 100644
+index 000000000000..bdf5f26bc2ce
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation. */
++#ifndef _GSWIP_DEV_H
++#define _GSWIP_DEV_H
++
++struct gswip_pdata {
++	void __iomem *sw;
++	void __iomem *lmac;
++	void __iomem *core;
++	int sw_irq;
++	int core_irq;
++	struct clk *ptp_clk;
++	struct clk *sw_clk;
++	bool intr_flag;
++	struct regmap *core_regmap;
++};
++
++#endif
++
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c
+new file mode 100644
+index 000000000000..eb8c8049a77f
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c
+@@ -0,0 +1,225 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#include <linux/bitfield.h>
++#include <linux/types.h>
++
++#include "mac_common.h"
++
++int sw_core_enable(struct device *dev, u32 val)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	u32 reg;
++
++	spin_lock_bh(&priv->sw_lock);
++	reg = sw_read(priv, GSWIP_CFG);
++	reg &= ~GSWIP_CFG_CORE_SE_EN;
++	reg |= FIELD_PREP(GSWIP_CFG_CORE_SE_EN, val);
++	sw_write(priv, GSWIP_CFG, reg);
++	spin_unlock_bh(&priv->sw_lock);
++
++	return 0;
++}
++
++int sw_set_mac_rxfcs_op(struct gswip_mac *priv, u32 val)
++{
++	u32 mac_op_cfg;
++
++	mac_op_cfg = sw_read(priv, MAC_OP_CFG_REG(priv->mac_idx));
++	if (FIELD_GET(MAC_OP_CFG_RX_FCS, mac_op_cfg) != val) {
++		mac_op_cfg &= ~MAC_OP_CFG_RX_FCS;
++		mac_op_cfg |= FIELD_PREP(MAC_OP_CFG_RX_FCS, val);
++		sw_write(priv, MAC_OP_CFG_REG(priv->mac_idx), mac_op_cfg);
++	}
++
++	return 0;
++}
++
++int sw_set_eee_cap(struct gswip_mac *priv, u32 val)
++{
++	u32 aneg_eee;
++
++	aneg_eee = sw_read(priv, ANEG_EEE_REG(priv->mac_idx));
++	aneg_eee &= ~ANEG_EEE_CAP;
++	aneg_eee |= FIELD_PREP(ANEG_EEE_CAP, val);
++	sw_write(priv, ANEG_EEE_REG(priv->mac_idx), aneg_eee);
++
++	return 0;
++}
++
++int sw_set_fe_intf(struct gswip_mac *priv, u32 macif)
++{
++	u32 mac_if_cfg;
++
++	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++
++	if (macif == LMAC_MII)
++		mac_if_cfg &= ~MAC_IF_CFG_CFGFE;
++	else
++		mac_if_cfg |= MAC_IF_CFG_CFGFE;
++
++	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), mac_if_cfg);
++
++	return 0;
++}
++
++int sw_set_1g_intf(struct gswip_mac *priv, u32 macif)
++{
++	u32 mac_if_cfg;
++
++	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++
++	if (macif == LMAC_GMII)
++		mac_if_cfg &= ~MAC_IF_CFG_CFG1G;
++	else
++		mac_if_cfg |= MAC_IF_CFG_CFG1G;
++
++	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), mac_if_cfg);
++
++	return 0;
++}
++
++int sw_set_2G5_intf(struct gswip_mac *priv, u32 macif)
++{
++	u32 mac_if_cfg;
++
++	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++
++	if (macif == XGMAC_GMII)
++		mac_if_cfg &= ~MAC_IF_CFG_CFG2G5;
++	else
++		mac_if_cfg |= MAC_IF_CFG_CFG2G5;
++
++	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), mac_if_cfg);
++
++	return 0;
++}
++
++int sw_set_speed(struct gswip_mac *priv, u8 speed)
++{
++	u16 phy_mode = 0;
++	u8 speed_msb = 0, speed_lsb = 0;
++
++	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
++
++	/* clear first */
++	phy_mode &= ~PHY_MODE_SPEED_MSB & ~PHY_MODE_SPEED_LSB;
++
++	speed_msb = FIELD_GET(SPEED_MSB, speed);
++	speed_lsb = FIELD_GET(SPEED_LSB, speed);
++	phy_mode |= FIELD_PREP(PHY_MODE_SPEED_MSB, speed_msb);
++	phy_mode |= FIELD_PREP(PHY_MODE_SPEED_LSB, speed_lsb);
++
++	sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
++
++	return 0;
++}
++
++int sw_set_duplex_mode(struct gswip_mac *priv, u32 val)
++{
++	u16 phy_mode;
++
++	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
++	if (FIELD_GET(PHY_MODE_FDUP, phy_mode) != val) {
++		phy_mode &= ~PHY_MODE_FDUP;
++		phy_mode |= FIELD_PREP(PHY_MODE_FDUP, val);
++		sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
++	}
++
++	return 0;
++}
++
++int sw_get_duplex_mode(struct gswip_mac *priv)
++{
++	u16 phy_mode;
++	int val;
++
++	phy_mode = sw_read(priv, PHY_STAT_REG(priv->mac_idx));
++	val = FIELD_GET(PHY_STAT_FDUP, phy_mode);
++
++	return val;
++}
++
++int sw_get_linkstatus(struct gswip_mac *priv)
++{
++	u16 phy_mode;
++	int linkst;
++
++	phy_mode = sw_read(priv, PHY_STAT_REG(priv->mac_idx));
++	linkst = FIELD_GET(PHY_STAT_LSTAT, phy_mode);
++
++	return linkst;
++}
++
++int sw_set_linkstatus(struct gswip_mac *priv, u8 linkst)
++{
++	u16 phy_mode;
++	u8 val;
++
++	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
++	val = FIELD_GET(PHY_MODE_LINKST, phy_mode);
++	if (val != linkst) {
++		phy_mode &= ~PHY_MODE_LINKST;
++		phy_mode |= FIELD_PREP(PHY_MODE_LINKST, linkst);
++		sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
++	}
++
++	return 0;
++}
++
++int sw_set_flowctrl(struct gswip_mac *priv, u8 val, u32 mode)
++{
++	u16 phy_mode;
++
++	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
++
++	switch (mode) {
++	case FCONRX:
++		phy_mode &= ~PHY_MODE_FCONRX;
++		phy_mode |= FIELD_PREP(PHY_MODE_FCONRX, val);
++		break;
++
++	case FCONTX:
++		phy_mode &= ~PHY_MODE_FCONTX;
++		phy_mode |= FIELD_PREP(PHY_MODE_FCONTX, val);
++		break;
++	}
++
++	sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
++
++	return 0;
++}
++
++u32 sw_get_speed(struct gswip_mac *priv)
++{
++	u16 phy_mode = 0;
++	u32 speed_msb, speed_lsb, speed;
++
++	phy_mode = sw_read(priv, PHY_STAT_REG(priv->mac_idx));
++	speed_msb = FIELD_GET(PHY_STAT_SPEED_MSB, phy_mode);
++	speed_lsb = FIELD_GET(PHY_STAT_SPEED_LSB, phy_mode);
++	speed = (speed_msb << 2) | speed_lsb;
++
++	return speed;
++}
++
++u32 sw_mac_get_mtu(struct gswip_mac *priv)
++{
++	u32 reg, val;
++
++	reg = sw_read(priv, MAC_MTU_CFG_REG(priv->mac_idx));
++	val = FIELD_PREP(MAC_MTU_CFG_MTU, reg);
++
++	return val;
++}
++
++int sw_mac_set_mtu(struct gswip_mac *priv, u32 mtu)
++{
++	u32 val;
++
++	val = sw_mac_get_mtu(priv);
++	if (val != mtu)
++		sw_write(priv, MAC_MTU_CFG_REG(priv->mac_idx), mtu);
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c
+new file mode 100644
+index 000000000000..1fd611db9ffc
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c
+@@ -0,0 +1,330 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation.*/
++#include "gswip_core.h"
++#include "gswip_reg.h"
++#include "gswip_tbl.h"
++
++#define ENABLE		1
++#define DISABLE		0
++
++static int gswip_ctp_port_set(struct gswip_core_priv *priv,
++			      struct gswip_ctp_port_info *ctp)
++{
++	u16 val, last_port;
++
++	val = ctp->first_pid;
++	last_port = ctp->first_pid + ctp->num_port - 1;
++
++	switch (ctp->mode) {
++	case GSWIP_LPORT_8BIT_WLAN:
++		val |= FIELD_PREP(ETHSW_CTP_STARTID_MD, MD_WLAN8);
++		break;
++
++	case GSWIP_LPORT_9BIT_WLAN:
++		val |= FIELD_PREP(ETHSW_CTP_STARTID_MD, MD_WLAN8);
++		break;
++	case GSWIP_LPORT_GPON:
++	case GSWIP_LPORT_EPON:
++	case GSWIP_LPORT_GINT:
++	case GSWIP_LPORT_OTHER:
++		val |= FIELD_PREP(ETHSW_CTP_STARTID_MD, MD_OTHER);
++		break;
++	}
++
++	regmap_write(priv->regmap, ETHSW_CTP_STARTID(ctp->lpid), val);
++	regmap_write(priv->regmap, ETHSW_CTP_ENDID(ctp->lpid), last_port);
++
++	return 0;
++}
++
++static int gswip_ctp_port_get(struct gswip_core_priv *priv,
++			      struct gswip_ctp_port_info *ctp)
++{
++	u16 val, last_port;
++
++	reg_r16(priv, ETHSW_CTP_STARTID(ctp->lpid), &val);
++
++	ctp->mode = FIELD_GET(ETHSW_CTP_STARTID_MD, val);
++	ctp->first_pid = FIELD_GET(ETHSW_CTP_STARTID_STARTID, val);
++
++	last_port = reg_rbits(priv, ETHSW_CTP_ENDID(ctp->lpid),
++			      ETHSW_CTP_ENDID_ENDID);
++	ctp->num_port = last_port - ctp->first_pid + 1;
++
++	return 0;
++}
++
++static int gswip_ctp_port_alloc(struct device *dev,
++				struct gswip_ctp_port_info *ctp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	u16 first_ctp;
++	int ret;
++
++	if (!ctp->num_port || ctp->num_port >= priv->num_ctp) {
++		dev_err(priv->dev, "Invalid num of ctp port requested %d\n",
++			ctp->num_port);
++		return -EINVAL;
++	}
++
++	first_ctp = bitmap_find_next_zero_area(priv->ctp_port_map,
++					       priv->num_ctp, 0,
++					       ctp->num_port, 0);
++	if (first_ctp >= priv->num_ctp) {
++		dev_err(priv->dev, "Failed to find contiguous ctp port\n");
++		return -EINVAL;
++	}
++
++	bitmap_set(priv->ctp_port_map, first_ctp, ctp->num_port);
++	ctp->first_pid = first_ctp;
++
++	ret = gswip_ctp_port_set(priv, ctp);
++	if (ret) {
++		bitmap_clear(priv->ctp_port_map, first_ctp, ctp->num_port);
++		return ret;
++	}
++
++	reg_wbits(priv, SDMA_PCTRL(ctp->lpid), SDMA_PCTRL_PEN, ENABLE);
++
++	return 0;
++}
++
++static int gswip_ctp_port_free(struct device *dev, u8 lpid)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct gswip_ctp_port_info ctp;
++
++	if (lpid >= priv->num_lport) {
++		dev_err(priv->dev, "Invalid lpid %d\n", lpid);
++		return -EINVAL;
++	}
++
++	ctp.lpid = lpid;
++	gswip_ctp_port_get(priv, &ctp);
++
++	reg_wbits(priv, SDMA_PCTRL(lpid), SDMA_PCTRL_PEN, DISABLE);
++	regmap_write(priv->regmap, ETHSW_CTP_STARTID(lpid), 0);
++	regmap_write(priv->regmap, ETHSW_CTP_ENDID(lpid), 0);
++
++	bitmap_clear(priv->ctp_port_map, ctp.first_pid, ctp.num_port);
++
++	return 0;
++}
++
++static int gswip_bridge_port_alloc(struct device *dev,
++				   struct gswip_br_port_alloc *bp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pce_tbl_prog pce_tbl = {0};
++	int ret;
++
++	bp->br_pid = find_first_zero_bit(priv->br_port_map, priv->num_br_port);
++	if (bp->br_pid >= priv->num_br_port) {
++		dev_err(priv->dev, "failed to alloc bridge port\n");
++		return -EINVAL;
++	}
++
++	set_bit(bp->br_pid, priv->br_port_map);
++
++	pce_tbl.id = PCE_IG_BRP_CFG;
++	pce_tbl.addr = bp->br_pid;
++	pce_tbl.val[4] = PCE_MAC_LIMIT_NUM |
++			 FIELD_PREP(PCE_IGBGP_VAL4_BR_ID, bp->br_id);
++
++	ret = gswip_pce_table_write(priv, &pce_tbl);
++	if (ret) {
++		clear_bit(bp->br_pid, priv->br_port_map);
++		return ret;
++	}
++
++	return 0;
++}
++
++static int gswip_bridge_port_free(struct device *dev,
++				  struct gswip_br_port_alloc *bp)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pce_tbl_prog pce_tbl = {0};
++	u16 br_pid;
++	int ret;
++
++	br_pid = bp->br_pid;
++	if (br_pid >= priv->num_br_port) {
++		dev_err(priv->dev, "brige port id %d >=%d\n",
++			br_pid, priv->num_br_port);
++		return -EINVAL;
++	}
++
++	if (!test_bit(br_pid, priv->br_port_map)) {
++		dev_err(priv->dev, "bridge port id %d is not in used\n",
++			br_pid);
++		return -EINVAL;
++	}
++
++	pce_tbl.id = PCE_IG_BRP_CFG;
++	pce_tbl.addr = br_pid;
++	pce_tbl.val[4] = PCE_MAC_LIMIT_NUM;
++
++	ret = gswip_pce_table_write(priv, &pce_tbl);
++	if (ret)
++		return ret;
++
++	clear_bit(br_pid, priv->br_port_map);
++
++	return 0;
++}
++
++static int gswip_bridge_alloc(struct device *dev, struct gswip_br_alloc *br)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++
++	br->br_id = find_first_zero_bit(priv->br_map, priv->num_br);
++	if (br->br_id >= priv->num_br) {
++		dev_err(priv->dev, "failed to alloc bridge\n");
++		return -EINVAL;
++	}
++
++	set_bit(br->br_id, priv->br_map);
++
++	return 0;
++}
++
++static int gswip_bridge_free(struct device *dev, struct gswip_br_alloc *br)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pce_tbl_prog pce_tbl = {0};
++	u16 br_id;
++	int ret;
++
++	if (br->br_id >= priv->num_br) {
++		dev_err(priv->dev, "bridge id %d >= %d\n",
++			br->br_id, priv->num_br);
++		return -EINVAL;
++	}
++
++	br_id = br->br_id;
++	if (!test_bit(br_id, priv->br_map)) {
++		dev_err(priv->dev, "bridge id %d not allocated\n", br_id);
++		return 0;
++	}
++
++	pce_tbl.id = PCE_BR_CFG;
++	pce_tbl.addr = br_id;
++	pce_tbl.val[0] = PCE_MAC_LIMIT_NUM;
++
++	ret = gswip_pce_table_write(priv, &pce_tbl);
++	if (ret)
++		return ret;
++
++	clear_bit(br_id, priv->br_map);
++
++	return 0;
++}
++
++/* Set queue for a logical port based on egress/ingress packet.
++ * Then map the queue to an egress port.
++ *  +----------------------+               +---------------------+
++ *  | ingress logical port | -> queue/s -> | egress logical port |
++ *  +----------------------+               +---------------------+
++ */
++static int gswip_qos_q_port_set(struct device *dev,
++				struct gswip_qos_q_port *qport)
++{
++	struct gswip_core_priv *priv = dev_get_drvdata(dev);
++	struct pce_tbl_prog pce_tbl = {0};
++	struct bm_tbl_prog bm_tbl = {0};
++	u16 eg_port, val;
++	u8 qid;
++	int ret;
++
++	qid = qport->qid;
++
++	if (qport->egress) {
++		/* Egress packet always bypass PCE.
++		 * Queue identifier is set in the SDMA_BYPASS register
++		 * for each logical port.
++		 */
++		reg_r16(priv, SDMA_BYPASS(qport->lpid), &val);
++
++		if (!qport->extration_en) {
++			if (qport->q_map_mode == GSWIP_QOS_QMAP_SINGLE_MD)
++				val |= FIELD_PREP(SDMA_BYPASS_MD, 1);
++			else
++				val |= FIELD_PREP(SDMA_BYPASS_MD, 0);
++
++			val |= FIELD_PREP(SDMA_BYPASS_NMQID, qid);
++		} else {
++			val |= FIELD_PREP(SDMA_BYPASS_EXTQID, qid);
++		}
++
++		regmap_write(priv->regmap, SDMA_BYPASS(qport->lpid), val);
++	} else {
++		/* Ingress packet can bypass or not bypass PCE.
++		 * Queue identifier is set in the Queue Mapping Table
++		 * under PCE Table Programming. This table will be used
++		 * for bypass/no bypass case.
++		 */
++		pce_tbl.id = PCE_Q_MAP;
++		pce_tbl.addr = qport->tc_id;
++		pce_tbl.addr |= FIELD_PREP(PCE_Q_MAP_EG_PID, qport->lpid);
++
++		if (qport->en_ig_pce_bypass || qport->resv_port_mode) {
++			pce_tbl.addr |= PCE_Q_MAP_IG_PORT_MODE;
++		} else {
++			if (qport->extration_en)
++				pce_tbl.addr |= PCE_Q_MAP_LOCAL_EXTRACT;
++		}
++
++		pce_tbl.val[0] = qid;
++		ret = gswip_pce_table_write(priv, &pce_tbl);
++		if (ret)
++			return ret;
++
++		reg_wbits(priv, SDMA_BYPASS(qport->lpid),
++			  SDMA_BYPASS_PCEBYP, qport->en_ig_pce_bypass);
++	}
++
++	/* Redirect port id for table is bit 4, and bit (2,0) */
++	eg_port = FIELD_GET(BM_Q_MAP_VAL4_REDIR_PID, qport->redir_port_id);
++	val = FIELD_GET(BM_Q_MAP_VAL4_REDIR_PID_MSB, qport->redir_port_id);
++	eg_port |= FIELD_PREP(BM_Q_MAP_VAL4_REDIR_PID_BIT4, val);
++
++	/* Map queue to an egress port. */
++	bm_tbl.id = BM_Q_MAP;
++	bm_tbl.val[0] = eg_port;
++	bm_tbl.num_val = 1;
++	bm_tbl.qmap.qid = qid;
++
++	return gswip_bm_table_write(priv, &bm_tbl);
++}
++
++static const struct core_ctp_ops gswip_core_ctp_ops = {
++	.alloc = gswip_ctp_port_alloc,
++	.free = gswip_ctp_port_free,
++};
++
++static const struct core_br_port_ops gswip_core_br_port_ops = {
++	.alloc = gswip_bridge_port_alloc,
++	.free = gswip_bridge_port_free,
++};
++
++static const struct core_br_ops gswip_core_br_ops = {
++	.alloc = gswip_bridge_alloc,
++	.free = gswip_bridge_free,
++};
++
++static const struct core_qos_ops gswip_core_qos_ops = {
++	.q_port_set = gswip_qos_q_port_set,
++};
++
++int gswip_core_setup_port_ops(struct gswip_core_priv *priv)
++{
++	struct core_ops *ops =  &priv->ops;
++
++	ops->ctp_ops = &gswip_core_ctp_ops;
++	ops->br_port_ops = &gswip_core_br_port_ops;
++	ops->br_ops = &gswip_core_br_ops;
++	ops->qos_ops = &gswip_core_qos_ops;
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h
+new file mode 100644
+index 000000000000..50a13b68ef85
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h
+@@ -0,0 +1,491 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation.
++ *
++ * GSWIP-O Top and Legacy MAC Register Description.
++ */
++#ifndef _GSWIP_REG_H
++#define _GSWIP_REG_H
++
++#define ETHSW_CAP_1			0x001c
++#define ETHSW_CAP_1_PPORTS		GENMASK(3, 0)
++#define ETHSW_CAP_1_VPORTS		GENMASK(7, 4)
++#define ETHSW_CAP_1_QUEUE		GENMASK(14, 8)
++#define ETHSW_CAP_1_GMAC		BIT(15)
++
++#define ETHSW_VERSION			0x004c
++#define ETHSW_VERSION_REV_ID		GENMASK(7, 0)
++#define ETHSW_VERSION_MOD_ID		GENMASK(15, 8)
++
++#define ETHSW_CAP_13			0x0058
++#define ETHSW_CAP_13_EVLAN		GENMASK(3, 0)
++#define ETHSW_CAP_13_INTRMON		GENMASK(7, 4)
++#define ETHSW_CAP_13_PAYLOAD		GENMASK(11, 8)
++#define ETHSW_CAP_13_PMAC		GENMASK(15, 12)
++
++#define ETHSW_CAP_17			0x0068
++#define ETHSW_CAP_17_BRGPT		GENMASK(3, 0)
++#define ETHSW_CAP_17_BRG		GENMASK(7, 4)
++#define ETHSW_CAP_17_PMAP		GENMASK(11, 8)
++
++#define ETHSW_CAP_18			0x006c
++#define ETHSW_CAP_18_CTP		GENMASK(15, 0)
++
++#define BM_RAM_VAL_OFFSET		4
++#define BM_RAM_VAL_0			0x010c
++#define BM_RAM_VAL_0_VAL0		GENMASK(15, 0)
++
++#define BM_RAM_ADDR			0x0110
++#define BM_RAM_ADDR_ADDR		GENMASK(15, 0)
++
++#define BM_RAM_CTRL			0x0114
++#define BM_RAM_CTRL_ADDR		GENMASK(4, 0)
++#define BM_RAM_CTRL_OPMOD		BIT(5)
++#define BM_RAM_CTRL_RMON		BIT(6)
++#define BM_RAM_CTRL_BAS			BIT(15)
++
++#define BM_RMON_GCTRL			0x0188
++#define BM_RMON_GCTRL_METER_RES		BIT(1)
++#define BM_RMON_GCTRL_ALLITF_RES	BIT(2)
++#define BM_RMON_GCTRL_INT_RES		BIT(3)
++#define BM_RMON_GCTRL_ITFID		GENMASK(11, 4)
++#define BM_RMON_GCTRL_PMAC_RES		BIT(12)
++#define BM_RMON_GCTRL_MRMON		BIT(14)
++#define BM_RMON_GCTRL_INTMON		BIT(15)
++
++#define BM_PCFG_OFFSET			8
++#define BM_PCFG(x)			(0x0200 + BM_PCFG_OFFSET * (x))
++#define BM_PCFG_CNTEN			BIT(0)
++
++#define BM_RMON_CTRL_OFFSET		8
++#define BM_RMON_CTRL(x)			(0x0204 + BM_RMON_CTRL_OFFSET * (x))
++#define BM_RMON_CTRL_RAM1_RES		BIT(0)
++#define BM_RMON_CTRL_RAM2_RES		BIT(1)
++
++#define BM_PWRED_RTH_0_OFFSET		24
++#define BM_PWRED_RTH_0(x)		(0x0280 + BM_PWRED_RTH_0_OFFSET * (x))
++#define BM_PWRED_RTH_0_MINTH		GENMASK(9, 0)
++
++#define BM_PWRED_RTH_1_OFFSET		24
++#define BM_PWRED_RTH_1(x)		(0x0284 + BM_PWRED_RTH_1_OFFSET * (x))
++#define BM_PWRED_RTH_1_MAXTH		GENMASK(9, 0)
++
++#define BM_PWRED_YTH_0_OFFSET		24
++#define BM_PWRED_YTH_0(x)		(0x0288 + BM_PWRED_YTH_0_OFFSET * (x))
++#define BM_PWRED_YTH_0_MINTH		GENMASK(9, 0)
++
++#define BM_PWRED_YTH_1_OFFSET		24
++#define BM_PWRED_YTH_1(x)		(0x028c + BM_PWRED_YTH_1_OFFSET * (x))
++#define BM_PWRED_YTH_1_MAXTH		GENMASK(9, 0)
++
++#define BM_PWRED_GTH_0_OFFSET		24
++#define BM_PWRED_GTH_0(x)		(0x0290 + BM_PWRED_GTH_0_OFFSET * (x))
++#define BM_PWRED_GTH_0_MINTH		GENMASK(9, 0)
++
++#define BM_PWRED_GTH_1_OFFSET		24
++#define BM_PWRED_GTH_1(x)		(0x0294 + BM_PWRED_GTH_1_OFFSET * (x))
++#define BM_PWRED_GTH_1_MAXTH		GENMASK(9, 0)
++
++#define PCE_TBL_VAL_30			0x1014
++#define PCE_TBL_VAL_29			0x1018
++#define PCE_TBL_VAL_28			0x101c
++#define PCE_TBL_VAL_27			0x1020
++#define PCE_TBL_VAL_26			0x1024
++
++#define PCE_TBL_KEY_33			0x1038
++#define PCE_TBL_KEY_32			0x103c
++#define PCE_TBL_KEY_31			0x1040
++#define PCE_TBL_KEY_30			0x1044
++#define PCE_TBL_KEY_29			0x1048
++#define PCE_TBL_KEY_28			0x104c
++#define PCE_TBL_KEY_27			0x1050
++#define PCE_TBL_KEY_26			0x1054
++#define PCE_TBL_KEY_25			0x1058
++#define PCE_TBL_KEY_24			0x105c
++#define PCE_TBL_KEY_23			0x1060
++#define PCE_TBL_KEY_22			0x1064
++#define PCE_TBL_KEY_21			0x1068
++#define PCE_TBL_KEY_20			0x106c
++#define PCE_TBL_KEY_19			0x1070
++#define PCE_TBL_KEY_18			0x1074
++#define PCE_TBL_KEY_17			0x1078
++#define PCE_TBL_KEY_16			0x107c
++
++#define PCE_TBL_VAL_25			0x1080
++#define PCE_TBL_VAL_24			0x1084
++#define PCE_TBL_VAL_23			0x1088
++#define PCE_TBL_VAL_22			0x108c
++#define PCE_TBL_VAL_21			0x1090
++#define PCE_TBL_VAL_20			0x1094
++#define PCE_TBL_VAL_19			0x1098
++#define PCE_TBL_VAL_18			0x109c
++#define PCE_TBL_VAL_17			0x10a0
++#define PCE_TBL_VAL_16			0x10a4
++
++#define PCE_TBL_MASK_3			0x10a8
++#define PCE_TBL_MASK_2			0x10ac
++#define PCE_TBL_MASK_1			0x10b0
++
++#define PCE_TBL_VAL_15			0x10b4
++#define PCE_TBL_VAL_14			0x10b8
++#define PCE_TBL_VAL_13			0x10bc
++#define PCE_TBL_VAL_12			0x10c0
++#define PCE_TBL_VAL_11			0x10c4
++#define PCE_TBL_VAL_10			0x10c8
++#define PCE_TBL_VAL_9			0x10cc
++#define PCE_TBL_VAL_8			0x10d0
++#define PCE_TBL_VAL_7			0x10d4
++#define PCE_TBL_VAL_6			0x10d8
++#define PCE_TBL_VAL_5			0x10dc
++
++#define PCE_TBL_KEY_15			0x01e0
++#define PCE_TBL_KEY_14			0x10e4
++#define PCE_TBL_KEY_13			0x10e8
++#define PCE_TBL_KEY_12			0x10ec
++#define PCE_TBL_KEY_11			0x10f0
++#define PCE_TBL_KEY_10			0x10f4
++#define PCE_TBL_KEY_9			0x10f8
++#define PCE_TBL_KEY_8			0x10fc
++#define PCE_TBL_KEY_7			0x1100
++#define PCE_TBL_KEY_6			0x1104
++#define PCE_TBL_KEY_5			0x1108
++#define PCE_TBL_KEY_4			0x110c
++#define PCE_TBL_KEY_3			0x1110
++#define PCE_TBL_KEY_2			0x1114
++#define PCE_TBL_KEY_1			0x1118
++#define PCE_TBL_KEY_0			0x111c
++
++#define PCE_TBL_MASK_0			0x1120
++
++#define PCE_TBL_VAL_4			0x1124
++#define PCE_TBL_VAL_3			0x1128
++#define PCE_TBL_VAL_2			0x112c
++#define PCE_TBL_VAL_1			0x1130
++#define PCE_TBL_VAL_0			0x1134
++
++#define PCE_TBL_ADDR			0x1138
++#define PCE_TBL_ADDR_ADDR		GENMASK(11, 0)
++
++#define PCE_TBL_CTRL			0x113c
++#define PCE_TBL_CTRL_ADDR		GENMASK(4, 0)
++#define PCE_TBL_CTRL_OPMOD		GENMASK(6, 5)
++#define PCE_TBL_CTRL_GMAP		GENMASK(10, 7)
++#define PCE_TBL_CTRL_KEYFORM		BIT(11)
++#define PCE_TBL_CTRL_VLD		BIT(12)
++#define PCE_TBL_CTRL_TYPE		BIT(13)
++#define PCE_TBL_CTRL_EXTOP		BIT(14)
++#define PCE_TBL_CTRL_BAS		BIT(15)
++
++#define PCE_PCTRL_OFFSET		40
++#define PCE_PCTRL_0(x)			(0x1200 + PCE_PCTRL_OFFSET * (x))
++#define PCE_PCTRL_0_PSTATE		GENMASK(2, 0)
++#define PCE_PCTRL_0_AGEDIS		BIT(3)
++#define PCE_PCTRL_0_PLOCK		BIT(4)
++#define PCE_PCTRL_0_TVM			BIT(5)
++#define PCE_PCTRL_0_VREP		BIT(6)
++#define PCE_PCTRL_0_CMOD		BIT(7)
++#define PCE_PCTRL_0_DPEN		BIT(8)
++#define PCE_PCTRL_0_CLPEN		BIT(9)
++#define PCE_PCTRL_0_PCPEN		BIT(10)
++#define PCE_PCTRL_0_IGSTEN		BIT(11)
++#define PCE_PCTRL_0_EGSTEN		BIT(12)
++#define PCE_PCTRL_0_MCST		BIT(13)
++#define PCE_PCTRL_0_SPFDIS		BIT(14)
++#define PCE_PCTRL_0_MSTP		BIT(15)
++
++#define FDMA_PASR			0x291c
++#define FDMA_PASR_CPU			GENMASK(1, 0)
++#define FDMA_PASR_MPE1			GENMASK(3, 2)
++#define FDMA_PASR_MPE2			GENMASK(5, 4)
++#define FDMA_PASR_MPE3			GENMASK(7, 6)
++
++#define FDMA_PCTRL_OFFSET		24
++#define FDMA_PCTRL(x)			(0x2a00 + FDMA_PCTRL_OFFSET * (x))
++#define FDMA_PCTRL_EN			BIT(0)
++#define FDMA_PCTRL_STEN			BIT(1)
++#define FDMA_PCTRL_DSCPRM		BIT(2)
++#define FDMA_PCTRL_VLANMOD		BIT(3)
++#define FDMA_PCTRL_TS_PTP		BIT(4)
++#define FDMA_PCTRL_TS_NONPTP		BIT(5)
++#define FDMA_PCTRL_HEADER_SHORT		BIT(6)
++#define FDMA_PCTRL_VLANTPID		BIT(7)
++
++#define SDMA_PCTRL_OFFSET		24
++#define SDMA_PCTRL(x)			(0x2f00 + SDMA_PCTRL_OFFSET * (x))
++#define SDMA_PCTRL_PEN			BIT(0)
++#define SDMA_PCTRL_FCEN			BIT(1)
++#define SDMA_PCTRL_MFCEN		BIT(2)
++#define SDMA_PCTRL_PAUFWD		BIT(3)
++#define SDMA_PCTRL_FCSFWD		BIT(4)
++#define SDMA_PCTRL_FCSIGN		BIT(5)
++#define SDMA_PCTRL_USFWD		BIT(6)
++#define SDMA_PCTRL_OSFWD		BIT(7)
++#define SDMA_PCTRL_LENFWD		BIT(8)
++#define SDMA_PCTRL_ALGFWD		BIT(9)
++#define SDMA_PCTRL_PHYEFWD		BIT(10)
++#define SDMA_PCTRL_PTHR			GENMASK(12, 11)
++#define SDMA_PCTRL_DTHR			GENMASK(14, 13)
++
++#define SDMA_PRIO_OFFSET		24
++#define SDMA_PRIO(x)			(0x2f04 + SDMA_PRIO_OFFSET * (x))
++#define SDMA_PRIO_BIT10			GENMASK(1, 0)
++#define SDMA_PRIO_USIGN			BIT(2)
++#define SDMA_PRIO_OSIGN			BIT(3)
++#define SDMA_PRIO_LENIGN		BIT(4)
++#define SDMA_PRIO_ALGIGN		BIT(5)
++#define SDMA_PRIO_PHYEIGN		BIT(6)
++#define SDMA_PRIO_MIN_IFG		GENMASK(11, 7)
++
++#define SDMA_BYPASS_OFFSET		24
++#define SDMA_BYPASS(x)			(0x2f10 + SDMA_BYPASS_OFFSET * (x))
++#define SDMA_BYPASS_MD			BIT(0)
++#define SDMA_BYPASS_NMQID		GENMASK(5, 1)
++#define SDMA_BYPASS_EXTQID		GENMASK(10, 6)
++#define SDMA_BYPASS_PCEBYP		BIT(11)
++#define SDMA_BYPASS_IGMIR		BIT(12)
++#define SDMA_BYPASS_EGMIR		BIT(13)
++
++#define PMAC_CTRL_0			0x340c
++#define PMAC_CTRL_0_CHKVER		BIT(5)
++#define PMAC_CTRL_0_CHKREG		BIT(6)
++#define PMAC_CTRL_0_FCS			BIT(7)
++#define PMAC_CTRL_0_PADEN		BIT(8)
++#define PMAC_CTRL_0_VPADEN		BIT(9)
++#define PMAC_CTRL_0_VPAD2EN		BIT(10)
++#define PMAC_CTRL_0_APADEN		BIT(11)
++#define PMAC_CTRL_0_FCSEN		BIT(12)
++
++#define PMAC_CTRL_1			0x3410
++#define PMAC_CTRL_1_MLEN		GENMASK(13, 0)
++
++#define PMAC_CTRL_2			0x3414
++#define PMAC_CTRL_2_LCHKS		GENMASK(1, 0)
++#define PMAC_CTRL_2_LCHKL		BIT(2)
++#define PMAC_CTRL_2_MLEN		BIT(3)
++
++#define PMAC_CTRL_4			0x341c
++#define PMAC_CTRL_4_FLAGEN		GENMASK(1, 0)
++#define PMAC_RX_FSM_IDLE		0x00
++#define PMAC_RX_FSM_IGCFG		0x01
++#define PMAC_RX_FSM_DASA		0x10
++
++#define PMAC_CTRL_NUM			4
++
++#define PMAC_REG_OFFSET_1		0x200
++#define PMAC_REG_OFFSET_2		0x600
++
++#define	PMAC_BSL_LEN0			0x3440
++#define	PMAC_BSL_LEN0_LEN0		GENMASK(15, 0)
++
++#define	PMAC_BSL_LEN1			0x3444
++#define	PMAC_BSL_LEN1_LEN1		GENMASK(15, 0)
++
++#define	PMAC_BSL_LEN2			0x3448
++#define	PMAC_BSL_LEN2_LEN2		GENMASK(15, 0)
++
++#define PMAC_BSL_NUM			3
++
++#define PMAC_TBL_VAL_OFFSET		0x200
++#define PMAC_TBL_VAL(_x)		\
++				({ typeof(_x) (x) = (_x); \
++				(0x3510 + PMAC_TBL_VAL_OFFSET * (x) * (x)); })
++#define PMAC_TBL_VAL_0_VAL0		GENMASK(15, 0)
++
++#define PMAC_TBL_VAL_SFT		4
++
++#define PMAC_TBL_ADDR_OFFSET		0x200
++#define PMAC_TBL_ADDR(_x)		\
++				({ typeof(_x) (x) = (_x); \
++				(0x3514 + PMAC_TBL_ADDR_OFFSET * (x) * (x)); })
++#define PMAC_TBL_ADDR_ADDR		GENMASK(11, 0)
++
++#define PMAC_TBL_CTRL_OFFSET		0x200
++#define PMAC_TBL_CTRL(_x)		\
++				({ typeof(_x) (x) = (_x); \
++				(0x3518 + PMAC_TBL_CTRL_OFFSET * (x) * (x)); })
++#define PMAC_TBL_CTRL_ADDR		GENMASK(2, 0)
++#define PMAC_TBL_CTRL_OPMOD		BIT(5)
++#define PMAC_TBL_CTRL_BAS		BIT(15)
++
++#define ETHSW_CTP_STARTID_OFFSET	8
++#define ETHSW_CTP_STARTID(x)		\
++				(0x3a00 + ETHSW_CTP_STARTID_OFFSET * (x))
++#define ETHSW_CTP_STARTID_STARTID	GENMASK(8, 0)
++#define ETHSW_CTP_STARTID_MD		GENMASK(15, 14)
++#define MD_WLAN8			0
++#define MD_WLAN9			1
++#define MD_OTHER			2
++
++#define ETHSW_CTP_ENDID_0		0x3a04
++#define ETHSW_CTP_ENDID(x)		\
++			(ETHSW_CTP_ENDID_0 + ETHSW_CTP_STARTID_OFFSET * (x))
++#define ETHSW_CTP_ENDID_ENDID		GENMASK(8, 0)
++
++#define ETHSW_GPID_STARTID_OFFSET	8
++#define ETHSW_GPID_STARTID(x)		\
++				(0x3a80 + ETHSW_GPID_STARTID_OFFSET * (x))
++#define ETHSW_GPID_STARTID_BITS		GENMASK(14, 12)
++#define ETHSW_GPID_STARTID_STARTID	GENMASK(7, 0)
++
++#define ETHSW_GPID_ENDID_OFFSET		8
++#define ETHSW_GPID_ENDID(x)		\
++				(0x3a84 + ETHSW_GPID_ENDID_OFFSET * (x))
++#define ETHSW_GPID_ENDID_ENDID		GENMASK(8, 0)
++
++#define GPID_RAM_VAL			0x3b00
++#define GPID_RAM_VAL_OV			BIT(15)
++#define GPID_RAM_VAL_SUBID_GRP		GENMASK(11, 4)
++#define GPID_RAM_VAL_LPID		GENMASK(3, 0)
++
++#define GPID_RAM_CTRL			0x3b04
++#define GPID_RAM_CTRL_BAS		BIT(15)
++#define GPID_RAM_CTRL_OPMOD		BIT(8)
++#define GPID_RAM_CTRL_ADDR		GENMASK(7, 0)
++
++/** GSWIP-O Top Register Description **/
++#define GSWIP_CFG			0x0000
++#define GSWIP_CFG_SS_HWRES_ON		BIT(1)
++#define GSWIP_CFG_CLK_MD		GENMASK(3, 2)
++#define GSWIP_CFG_CLK_MUX_SEL		GENMASK(12, 11)
++#define GSWIP_CFG_CORE_SE_EN		BIT(15)
++
++#define MACSEC_EN			0x0008
++#define GSWIPSS_IER0			0x0010
++
++#define GSWIPSS_ISR0			0x0014
++#define GSWIPSS_I_XGMAC2		BIT(2)
++#define GSWIPSS_I_XGMAC3		BIT(3)
++#define GSWIPSS_I_XGMAC4		BIT(4)
++#define GSWIPSS_I_XGMAC5		BIT(5)
++#define GSWIPSS_I_XGMAC6		BIT(6)
++#define GSWIPSS_I_XGMAC7		BIT(7)
++#define GSWIPSS_I_XGMAC8		BIT(8)
++#define GSWIPSS_I_XGMAC9		BIT(9)
++#define GSWIPSS_I_XGMAC10		BIT(10)
++
++#define GSWIPSS_IER1			0x0018
++#define GSWIPSS_ISR1			0x001c
++#define GSWIPSS_SPTAG_ETYPE		0x0038
++#define GSWIPSS_1588_CFG0		0x0050
++#define GSWIPSS_1588_CFG1		0x0054
++#define GSWIPSS_NCO1_LSB		0x0060
++#define GSWIPSS_NCO1_USB		0x0064
++#define GSWIPSS_NCO2_LSB		0x0068
++#define GSWIPSS_NC02_MSB		0x006c
++#define GSWIPSS_NCO3_LSB		0x0070
++#define GSWIPSS_NCO3_MSB		0x0074
++#define GSWIPSS_NC04_LSB		0x0078
++#define GSWIPSS_NC04_MSB		0x007c
++#define GSWIP_MEMLS0			0x0080
++#define GSWIP_MEMLS1			0x0084
++
++/* GSWIP-O Top: MAC Registers */
++#define MAC_IF_CFG			0X1200
++#define MAC_IF_CFG_CFG2G5		BIT(0)
++#define MAC_IF_CFG_CFG1G		BIT(1)
++#define MAC_IF_CFG_CFGFE		BIT(2)
++#define MAC_IF_CFG_PTP_DIS		BIT(11)
++#define MAC_IF_CFG_MAC_EN		BIT(12)
++#define MAC_IF_CFG_XGMAC_RES		BIT(13)
++#define MAC_IF_CFG_LMAC_RES		BIT(14)
++#define MAC_IF_CFG_ADAP_RES		BIT(15)
++
++#define MAC_OP_CFG			0X1204
++#define MAC_OP_CFG_RX_SPTAG		GENMASK(1, 0)
++#define MAC_OP_CFG_RX_TIME		GENMASK(3, 2)
++#define MAC_OP_CFG_RX_FCS		GENMASK(5, 4)
++#define MAC_OP_CFG_RX_FCS_M0		0x00
++#define MAC_OP_CFG_RX_FCS_M1		0x01
++#define MAC_OP_CFG_RX_FCS_M2		0X02
++#define MAC_OP_CFG_RX_FCS_M3		0x03
++
++#define MAC_MTU_CFG			0X1208
++#define MAC_MTU_CFG_MTU			GENMASK(13, 0)
++
++#define PHY_MODE			0x1270
++#define PHY_MODE_FCONRX			GENMASK(6, 5)
++#define PHY_MODE_FCONTX			GENMASK(8, 7)
++#define PHY_MODE_FCON_AUTO		0x00
++#define PHY_MODE_FCON_EN		0x01
++#define PHY_MODE_FCON_DIS		0x11
++#define PHY_MODE_FDUP			GENMASK(10, 9)
++#define PHY_MODE_FDUP_AUTO		0x00
++#define PHY_MODE_FDUP_FD		0x01
++#define PHY_MODE_FDUP_HD		0x11
++#define PHY_MODE_SPEED_LSB		GENMASK(12, 11)
++#define PHY_MODE_LINKST			GENMASK(14, 13)
++#define PHY_MODE_LINKST_AUTO		0x00
++#define PHY_MODE_LINKST_UP		0x01
++#define PHY_MODE_LINKST_DOWN		0x10
++#define PHY_MODE_SPEED_MSB		BIT(15)
++#define PHY_MODE_SPEED_10M		0x000
++#define PHY_MODE_SPEED_100M		0x001
++#define PHY_MODE_SPEED_1G		0x010
++#define PHY_MODE_SPEED_10G		0x011
++#define PHY_MODE_SPEED_2G5		0x100
++#define PHY_MODE_SPEED_5G		0x101
++#define PHY_MODE_SPEED_FLEX		0x110
++#define PHY_MODE_SPEED_AUTO		0x111
++
++#define PHY_STAT			0x1274
++#define PHY_STAT_FDUP			BIT(2)
++#define PHY_STAT_SPEED_LSB		GENMASK(4, 3)
++#define PHY_STAT_LSTAT			BIT(5)
++#define PHY_STAT_SPEED_MSB		BIT(11)
++
++#define ANEG_EEE			0x1278
++#define ANEG_EEE_CAP			GENMASK(1, 0)
++#define ANEG_EEE_CAP_AUTO		0x00
++#define ANEG_EEE_CAP_ON			0x01
++#define ANEG_EEE_CAP_OFF		0x11
++#define ANEG_EEE_CLK_STOP_CAP		GENMASK(3, 2)
++
++#define MAC_Q_INC			0x100
++#define MAC_IF_CFG_REG(x)		(MAC_IF_CFG + ((x) - MAC2) * MAC_Q_INC)
++#define MAC_OP_CFG_REG(x)		(MAC_OP_CFG + ((x) - MAC2) * MAC_Q_INC)
++#define MAC_MTU_CFG_REG(x)		\
++				(MAC_MTU_CFG + ((x) - MAC2) * MAC_Q_INC)
++#define PHY_MODE_REG(x)			(PHY_MODE + ((x) - MAC2) * MAC_Q_INC)
++#define PHY_STAT_REG(x)			(PHY_STAT + ((x) - MAC2) * MAC_Q_INC)
++#define ANEG_EEE_REG(x)			(ANEG_EEE + ((x) - MAC2) * MAC_Q_INC)
++
++/* GSWIP-O TOP: XGMAC indirect access */
++#define XGMAC_CTRL			0x1280
++#define XGMAC_REGACC_DATA0		0x1290
++#define XGMAC_REGACC_DATA1		0x1294
++
++#define XGMAC_REGACC_CTRL		0x1298
++#define XGMAC_REGACC_CTRL_ADDR		GENMASK(13, 0)
++#define XGMAC_REGACC_CTRL_OPMOD_WR	BIT(14)
++#define XGMAC_REGACC_CTRL_ADDR_BAS	BIT(15)
++
++/** Legacy MAC Register Description **/
++
++/* Legacy MAC: Common Registers */
++#define MAC_TEST			0x0300
++#define MAC_PFAD_CFG			0x0304
++#define MAC_PFSA_0			0x0308
++#define MAC_PFSA_1			0x030c
++#define MAC_PFSA_2			0x0310
++#define LMAC_IER			0x0320
++#define LMAC_ISR			0x0324
++#define LMAC_I_MAC2			BIT(0)
++
++#define LMAC_CNT_LSB			0x0328
++#define LMAC_CNT_MSB			0x032c
++#define LMAC_CNT_ACC			0x0330
++
++/* Legacy MAC: Single MAC Registers */
++#define MAC_CTRL0			0x040c
++#define MAC_CTRL0_GMII			GENMASK(1, 0)
++#define MAC_CTRL0_FDUP			GENMASK(3, 2)
++#define MAC_CTRL0_FCON			GENMASK(5, 4)
++#define MAC_CTRL0_FCS			BIT(7)
++#define MAC_CTRL0_PADEN			BIT(8)
++#define MAC_CTRL0_VPADEN		BIT(9)
++#define MAC_CTRL0_VPAD2EN		BIT(10)
++#define MAC_CTRL0_APADEN		BIT(11)
++
++#define LMAC_Q_INC			0x30
++#define MAC_CTRL0_REG(x)		(MAC_CTRL0 + ((x) - MAC2) * LMAC_Q_INC)
++
++#endif /* _GSWIP_REG_H_ */
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c
+new file mode 100644
+index 000000000000..18e75e75d7ab
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c
+@@ -0,0 +1,332 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation.*/
++#include <linux/kernel.h>
++
++#include "gswip_core.h"
++#include "gswip_reg.h"
++#include "gswip_tbl.h"
++
++enum tbl_opmode {
++	TBL_RD,
++	TBL_WR,
++};
++
++enum tbl_busy_indication {
++	TBL_READY,
++	TBL_BUSY,
++};
++
++enum pce_tbl_opmode {
++	/* Address-based read access  */
++	PCE_OPMODE_ADRD,
++	/* Address-based write access */
++	PCE_OPMODE_ADWR,
++	/* Key-based read access      */
++	PCE_OPMODE_KSRD,
++	/* Key-based write access     */
++	PCE_OPMODE_KSWR
++};
++
++struct pce_tbl_config {
++	u16 num_key;
++	u16 num_mask;
++	u16 num_val;
++};
++
++struct pce_tbl_reg_map {
++	const u16 *key;
++	const u16 *mask;
++	const u16 *value;
++};
++
++static const u16 pce_tbl_key[] = {
++	PCE_TBL_KEY_0, PCE_TBL_KEY_1,   PCE_TBL_KEY_2, PCE_TBL_KEY_3,
++	PCE_TBL_KEY_4, PCE_TBL_KEY_5,   PCE_TBL_KEY_6, PCE_TBL_KEY_7,
++	PCE_TBL_KEY_8, PCE_TBL_KEY_9,   PCE_TBL_KEY_10, PCE_TBL_KEY_11,
++	PCE_TBL_KEY_12, PCE_TBL_KEY_13, PCE_TBL_KEY_14, PCE_TBL_KEY_15,
++	PCE_TBL_KEY_16, PCE_TBL_KEY_17, PCE_TBL_KEY_18, PCE_TBL_KEY_19,
++	PCE_TBL_KEY_20, PCE_TBL_KEY_21, PCE_TBL_KEY_22, PCE_TBL_KEY_23,
++	PCE_TBL_KEY_24, PCE_TBL_KEY_25, PCE_TBL_KEY_26, PCE_TBL_KEY_27,
++	PCE_TBL_KEY_28, PCE_TBL_KEY_29, PCE_TBL_KEY_30, PCE_TBL_KEY_31,
++	PCE_TBL_KEY_32, PCE_TBL_KEY_33,
++};
++
++static const u16 pce_tbl_mask[] = {
++	PCE_TBL_MASK_0, PCE_TBL_MASK_1, PCE_TBL_MASK_2, PCE_TBL_MASK_3,
++};
++
++static const u16 pce_tbl_value[] = {
++	PCE_TBL_VAL_0, PCE_TBL_VAL_1,   PCE_TBL_VAL_2, PCE_TBL_VAL_3,
++	PCE_TBL_VAL_4, PCE_TBL_VAL_5,   PCE_TBL_VAL_6, PCE_TBL_VAL_7,
++	PCE_TBL_VAL_8, PCE_TBL_VAL_9,   PCE_TBL_VAL_10, PCE_TBL_VAL_11,
++	PCE_TBL_VAL_12, PCE_TBL_VAL_13, PCE_TBL_VAL_14, PCE_TBL_VAL_15,
++	PCE_TBL_VAL_16, PCE_TBL_VAL_17, PCE_TBL_VAL_18, PCE_TBL_VAL_19,
++	PCE_TBL_VAL_20, PCE_TBL_VAL_21, PCE_TBL_VAL_22, PCE_TBL_VAL_23,
++	PCE_TBL_VAL_24, PCE_TBL_VAL_25, PCE_TBL_VAL_26, PCE_TBL_VAL_27,
++	PCE_TBL_VAL_28, PCE_TBL_VAL_29, PCE_TBL_VAL_30,
++};
++
++/* PCE table default entries for Key, Mask and Value.
++ * Only minimum entries settings are required by default.
++ */
++static const struct pce_tbl_config pce_tbl_def_cfg[] = {
++	/* Parser ucode table                      */
++	{ 0,  0,  4 },
++	/* Dummy                                   */
++	{ 0,  0,  0 },
++	/* VLAN filter table                       */
++	{ 1,  0,  1 },
++	/* PPPoE table                             */
++	{ 1,  0,  0 },
++	/* Protocol table                          */
++	{ 1,  1,  0 },
++	/* Application table                       */
++	{ 1,  1,  0 },
++	/* IP DA/SA MSB table                      */
++	{ 4,  4,  0 },
++	/* IP DA/SA LSB table                      */
++	{ 4,  4,  0 },
++	/* Packet length table                     */
++	{ 1,  1,  0 },
++	/* Inner PCP/DEI table                     */
++	{ 0,  0,  1 },
++	/* DSCP table                              */
++	{ 0,  0,  1 },
++	/* MAC bridging table                      */
++	{ 4,  0,  10},
++	/* DSCP2PCP configuration table            */
++	{ 0,  0,  2 },
++	/* Multicast SW table                      */
++	{ 19, 0,  10},
++	/* Dummy                                   */
++	{ 0,  0,  0 },
++	/* Traffic Flow table                      */
++	{ 34, 0,  31},
++	/* PBB tunnel template configuration table */
++	{ 0,  0,  11},
++	/* Queue mapping table                     */
++	{ 0,  0,  1 },
++	/* Ingress CTP port configuration table    */
++	{ 0,  0,  9 },
++	/* Egress CTP port configuration table     */
++	{ 0,  0,  7 },
++	/* Ingress bridge port configuration table */
++	{ 0,  0,  18},
++	/* Egress bridge port configuration table  */
++	{ 0,  0,  14},
++	/* MAC DA table                            */
++	{ 3,  1,  0 },
++	/* MAC SA table                            */
++	{ 3,  1,  0 },
++	/* Flags table                             */
++	{ 1,  1,  0 },
++	/* Bridge configuration table              */
++	{ 0,  0,  10},
++	/* Outer PCP/DEI table                     */
++	{ 0,  0,  1 },
++	/* Color marking table                     */
++	{ 0,  0,  1 },
++	/* Color remarking table                   */
++	{ 0,  0,  1 },
++	/* Payload table                           */
++	{ 1,  1,  0 },
++	/* Extended VLAN operation table           */
++	{ 4,  0,  6 },
++	/* P-mapping configuration table           */
++	{ 0,  0,  1 },
++};
++
++int gswip_pce_table_write(struct gswip_core_priv *priv,
++			  struct pce_tbl_prog *pce_tbl)
++{
++	struct regmap *regmap = priv->regmap;
++	u16 i, ctrl;
++
++	spin_lock(&priv->tbl_lock);
++
++	/* update key registers */
++	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_key; i++)
++		regmap_write(regmap, pce_tbl_key[i], pce_tbl->key[i]);
++
++	/* update mask registers */
++	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_mask; i++)
++		regmap_write(regmap, pce_tbl_mask[i], pce_tbl->mask[i]);
++
++	/* update value registers */
++	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_val; i++)
++		regmap_write(regmap, pce_tbl_value[i], pce_tbl->val[i]);
++
++	ctrl = FIELD_PREP(PCE_TBL_CTRL_ADDR, pce_tbl->id) |
++	       FIELD_PREP(PCE_TBL_CTRL_OPMOD, PCE_OPMODE_ADWR) |
++	       FIELD_PREP(PCE_TBL_CTRL_BAS, TBL_BUSY);
++
++	/* update the pce table */
++	regmap_write(regmap, PCE_TBL_ADDR, pce_tbl->addr);
++	regmap_write(regmap, PCE_TBL_CTRL, ctrl);
++
++	if (tbl_rw_tmout(priv, PCE_TBL_CTRL, PCE_TBL_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to write pce table\n");
++		spin_unlock(&priv->tbl_lock);
++		return -EBUSY;
++	}
++
++	spin_unlock(&priv->tbl_lock);
++
++	return 0;
++}
++
++int gswip_pce_table_read(struct gswip_core_priv *priv,
++			 struct pce_tbl_prog *pce_tbl)
++{
++	u16 i, ctrl;
++
++	spin_lock(&priv->tbl_lock);
++
++	regmap_write(priv->regmap, PCE_TBL_ADDR, pce_tbl->addr);
++
++	ctrl = FIELD_PREP(PCE_TBL_CTRL_ADDR, pce_tbl->id) |
++	       FIELD_PREP(PCE_TBL_CTRL_OPMOD, PCE_OPMODE_ADRD) |
++	       FIELD_PREP(PCE_TBL_CTRL_BAS, TBL_BUSY);
++	regmap_write(priv->regmap, PCE_TBL_CTRL, ctrl);
++
++	if (tbl_rw_tmout(priv, PCE_TBL_CTRL, PCE_TBL_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to read pce table\n");
++		spin_unlock(&priv->tbl_lock);
++		return -EBUSY;
++	}
++
++	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_key; i++)
++		reg_r16(priv, pce_tbl_key[i], &pce_tbl->key[i]);
++
++	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_mask; i++)
++		reg_r16(priv, pce_tbl_mask[i], &pce_tbl->mask[i]);
++
++	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_val; i++)
++		reg_r16(priv, pce_tbl_value[i], &pce_tbl->val[i]);
++
++	spin_unlock(&priv->tbl_lock);
++
++	return 0;
++}
++
++int gswip_bm_table_write(struct gswip_core_priv *priv,
++			 struct bm_tbl_prog *bm_tbl)
++{
++	struct regmap *regmap = priv->regmap;
++	u16 ctrl;
++	int i;
++
++	spin_lock(&priv->tbl_lock);
++
++	for (i = 0; i < bm_tbl->num_val; i++)
++		regmap_write(regmap, (BM_RAM_VAL_0 - i * BM_RAM_VAL_OFFSET),
++			     bm_tbl->val[i]);
++
++	regmap_write(regmap, BM_RAM_ADDR, bm_tbl->addr);
++
++	ctrl = bm_tbl->id;
++	ctrl |= FIELD_PREP(BM_RAM_CTRL_OPMOD, TBL_WR);
++	ctrl |= FIELD_PREP(BM_RAM_CTRL_BAS, TBL_BUSY);
++	regmap_write(regmap, BM_RAM_CTRL, ctrl);
++
++	if (tbl_rw_tmout(priv, BM_RAM_CTRL, BM_RAM_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to write bm table\n");
++		spin_unlock(&priv->tbl_lock);
++		return -EBUSY;
++	}
++
++	spin_unlock(&priv->tbl_lock);
++
++	return 0;
++}
++
++int gswip_bm_table_read(struct gswip_core_priv *priv,
++			struct bm_tbl_prog *bm_tbl)
++{
++	u16 ctrl;
++	int i;
++
++	spin_lock(&priv->tbl_lock);
++
++	regmap_write(priv->regmap, BM_RAM_ADDR, bm_tbl->addr);
++
++	ctrl = FIELD_PREP(BM_RAM_CTRL_ADDR, bm_tbl->id) |
++	       FIELD_PREP(BM_RAM_CTRL_OPMOD, TBL_RD) |
++	       FIELD_PREP(BM_RAM_CTRL_BAS, TBL_BUSY);
++	regmap_write(priv->regmap, BM_RAM_CTRL, ctrl);
++
++	if (tbl_rw_tmout(priv, BM_RAM_CTRL, BM_RAM_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to read bm table\n");
++		spin_unlock(&priv->tbl_lock);
++		return -EBUSY;
++	}
++
++	for (i = 0; i < bm_tbl->num_val; i++)
++		reg_r16(priv, (BM_RAM_VAL_0 - i * BM_RAM_VAL_OFFSET),
++			&bm_tbl->val[i]);
++
++	spin_unlock(&priv->tbl_lock);
++
++	return 0;
++}
++
++int gswip_pmac_table_write(struct gswip_core_priv *priv,
++			   struct pmac_tbl_prog *pmac_tbl)
++{
++	u16 pmac_id = pmac_tbl->pmac_id, ctrl;
++	int i;
++
++	spin_lock(&priv->tbl_lock);
++
++	for (i = 0; i < pmac_tbl->num_val; i++)
++		regmap_write(priv->regmap,
++			     (PMAC_TBL_VAL(pmac_id) - i * PMAC_TBL_VAL_SFT),
++			     pmac_tbl->val[i]);
++
++	regmap_write(priv->regmap, PMAC_TBL_ADDR(pmac_id), pmac_tbl->addr);
++
++	ctrl = FIELD_PREP(PMAC_TBL_CTRL_ADDR, pmac_tbl->id) |
++	       FIELD_PREP(PMAC_TBL_CTRL_OPMOD, TBL_WR) |
++	       FIELD_PREP(PMAC_TBL_CTRL_BAS, TBL_BUSY);
++	regmap_write(priv->regmap, PMAC_TBL_CTRL(pmac_id), ctrl);
++
++	if (tbl_rw_tmout(priv, PMAC_TBL_CTRL(pmac_id), PMAC_TBL_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to write pmac table\n");
++		spin_unlock(&priv->tbl_lock);
++		return -EBUSY;
++	}
++
++	spin_unlock(&priv->tbl_lock);
++
++	return 0;
++}
++
++int gswip_pmac_table_read(struct gswip_core_priv *priv,
++			  struct pmac_tbl_prog *pmac_tbl)
++{
++	u16 pmac_id = pmac_tbl->pmac_id, ctrl;
++	int i;
++
++	spin_lock(&priv->tbl_lock);
++
++	regmap_write(priv->regmap, PMAC_TBL_ADDR(pmac_id), pmac_tbl->addr);
++
++	ctrl = FIELD_PREP(PMAC_TBL_CTRL_ADDR, pmac_tbl->id) |
++	       FIELD_PREP(PMAC_TBL_CTRL_OPMOD, TBL_RD) |
++	       FIELD_PREP(PMAC_TBL_CTRL_BAS, TBL_BUSY);
++	regmap_write(priv->regmap, PMAC_TBL_CTRL(pmac_id), ctrl);
++
++	if (tbl_rw_tmout(priv, PMAC_TBL_CTRL(pmac_id), PMAC_TBL_CTRL_BAS)) {
++		dev_err(priv->dev, "failed to read pmac table\n");
++		spin_unlock(&priv->tbl_lock);
++		return -EBUSY;
++	}
++
++	for (i = 0; i < pmac_tbl->num_val; i++)
++		reg_r16(priv, (PMAC_TBL_VAL(pmac_id) - i * PMAC_TBL_VAL_SFT),
++			&pmac_tbl->val[i]);
++
++	spin_unlock(&priv->tbl_lock);
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h
+new file mode 100644
+index 000000000000..4bd92951e7ae
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h
+@@ -0,0 +1,195 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation. */
++#ifndef _GSW_TBL_RW_H_
++#define _GSW_TBL_RW_H_
++
++#define PCE_TBL_KEY_NUM		34
++#define PCE_TBL_VAL_NUM		31
++#define PCE_TBL_MASK_NUM	4
++#define PCE_MAC_LIMIT_NUM	255
++
++/* PCE queue mapping table */
++#define PCE_Q_MAP_LOCAL_EXTRACT			BIT(8)
++#define PCE_Q_MAP_IG_PORT_MODE			BIT(9)
++#define PCE_Q_MAP_EG_PID			GENMASK(7, 4)
++
++/* PCE ingress CTP port configuration table */
++#define PCE_IGCTP_VAL4_BYPASS_BR		BIT(15)
++
++/* PCE ingress bridge port configuration table */
++#define PCE_IGBGP_VAL10_PORT_MAP_0		10
++#define PCE_IGBGP_VAL4_LRN_LIMIT		GENMASK(7, 0)
++#define PCE_IGBGP_VAL4_BR_ID			GENMASK(13, 8)
++
++/* PCE EGBGP table */
++#define PCE_EGBGP_VAL4_DST_SUBIF_ID_GRP		GENMASK(7, 0)
++#define PCE_EGBGP_VAL4_DST_LPID			GENMASK(11, 8)
++#define PCE_EGBGP_VAL4_PMAPPER			BIT(14)
++
++/* PCE_BRGCFG table */
++#define PCE_BRGCFG_VAL1_BCAST_FW_MODE		GENMASK(1, 0)
++#define PCE_BRGCFG_VAL1_UCAST_FW_MODE		GENMASK(3, 2)
++#define PCE_BRGCFG_VAL1_MCAST_NIP_FW_MODE	GENMASK(5, 4)
++#define PCE_BRGCFG_VAL1_MCAST_IP_FW_MODE	GENMASK(7, 6)
++#define PCE_BRGCFG_VAL3_LRN_DISC_CNT		GENMASK(31, 16)
++
++/* BM_PQM_THRES table */
++#define BM_PQM_THRES_Q_NUM			GENMASK(7, 3)
++
++/* BM_Q_MAP table */
++#define BM_Q_MAP_VAL4_REDIR_PID			GENMASK(2, 0)
++#define BM_Q_MAP_VAL4_REDIR_PID_MSB		BIT(3)
++#define BM_Q_MAP_VAL4_REDIR_PID_BIT4		BIT(4)
++
++enum pce_tbl_id {
++	PCE_TFLOW	= 0x0f,
++	PCE_Q_MAP	= 0x11,
++	PCE_IG_CTP_CFG	= 0x12,
++	PCE_EG_CTP_CFG	= 0x13,
++	PCE_IG_BRP_CFG	= 0x14,
++	PCE_EG_BRP_CFG	= 0x15,
++	PCE_BR_CFG	= 0x19,
++	PCE_PMAP	= 0x1f,
++};
++
++#define PCE_TBL_KEY_NUM		34
++#define PCE_TBL_VAL_NUM		31
++#define PCE_TBL_MASK_NUM	4
++
++/* PCE programming table */
++struct pce_tbl_prog {
++	enum pce_tbl_id id;
++	u16 val[PCE_TBL_VAL_NUM];
++	u16 key[PCE_TBL_KEY_NUM];
++	u16 mask[PCE_TBL_MASK_NUM];
++	u16 addr;
++};
++
++/* BM programming table */
++enum bm_tbl_id {
++	BM_CTP_RX_RMON		= 0x00,
++	BM_CTP_TX_RMON		= 0x01,
++	BM_BR_RX_RMON		= 0x02,
++	BM_BR_TX_RMON		= 0x03,
++	BM_CTP_PCE_BYPASS_RMON	= 0x04,
++	BM_TFLOW_RX_RMON	= 0x05,
++	BM_TFLOW_TX_RMON	= 0x06,
++	BM_WFQ_PARAM		= 0x07,
++	BM_PQM_THRES		= 0x09,
++	BM_Q_MAP		= 0x0e,
++	BM_PMAC_CNTR		= 0x1c
++};
++
++#define BM_RAM_VAL_MAX		10
++
++struct rmon_cntr_tbl {
++	u16 ctr_offset : 6;
++	u16 port_offset : 10;
++};
++
++struct qmap_tbl {
++	u16 qid : 6;
++	u16 reserved : 10;
++};
++
++struct pmac_cntr_tbl {
++	u16 addr : 5;
++	u16 ctr_offset : 3;
++	u16 pmac_id : 3;
++	u16 reserved : 1;
++	u16 ctr_offset_hdr : 1;
++	u16 reserved1 : 3;
++};
++
++struct bm_tbl_prog {
++	enum bm_tbl_id id;
++	union {
++		struct rmon_cntr_tbl rmon_cntr;
++		struct qmap_tbl qmap;
++		struct pmac_cntr_tbl pmac_cntr;
++		u16 addr;
++	};
++	u16 val[BM_RAM_VAL_MAX];
++	u32 num_val;
++};
++
++/* PMAC programming table */
++enum pmac_tbl_id {
++	PMAC_BP_MAP,
++	PMAC_IG_CFG,
++	PMAC_EG_CFG,
++};
++
++#define PMAC_BP_MAP_TBL_VAL_NUM		3
++#define PMAC_IG_CFG_TBL_VAL_NUM		5
++#define PMAC_EG_CFG_TBL_VAL_NUM		3
++#define PMAC_TBL_VAL_MAX		11
++
++/* PMAC_BP_MAP table */
++/* Table Control */
++#define PMAC_BPMAP_TX_DMA_CH		GENMASK(4, 0)
++/* PMAC_TBL_VAL_2 */
++#define PMAC_BPMAP_TX_Q_UPPER		GENMASK(31, 16)
++
++/* PMAC_IG_CFG table */
++/* Table Control */
++#define PMAC_IGCFG_TX_DMA_CH		GENMASK(4, 0)
++/* PMAC_TBL_VAL_2 */
++#define PMAC_IGCFG_HDR_ID		GENMASK(7, 4)
++/* PMAC_TBL_VAL_4 */
++#define PMAC_IGCFG_VAL4_PMAC_FLAG	BIT(0)
++#define PMAC_IGCFG_VAL4_SPPID_MODE	BIT(1)
++#define PMAC_IGCFG_VAL4_SUBID_MODE	BIT(2)
++#define PMAC_IGCFG_VAL4_CLASSEN_MODE	BIT(3)
++#define PMAC_IGCFG_VAL4_CLASS_MODE	BIT(5)
++#define PMAC_IGCFG_VAL4_ERR_DP		BIT(7)
++
++/* PMAC_EG_CFG table */
++/* Table Control */
++#define PMAC_EGCFG_DST_PORT_ID		GENMASK(3, 0)
++#define PMAC_EGCFG_MPE1			BIT(4)
++#define PMAC_EGCFG_MPE2			BIT(5)
++#define PMAC_EGCFG_ECRYPT		BIT(6)
++#define PMAC_EGCFG_DECRYPT		BIT(7)
++#define PMAC_EGCFG_TC_4BITS		GENMASK(7, 4)
++#define PMAC_EGCFG_TC_2BITS		GENMASK(7, 6)
++#define PMAC_EGCFG_FLOW_ID_MSB		GENMASK(9, 8)
++/* PMAC_TBL_VAL_0 */
++#define PMAC_EGCFG_VAL0_RES_2BITS	GENMASK(1, 0)
++#define PMAC_EGCFG_VAL0_RES_3BITS	GENMASK(4, 2)
++#define PMAC_EGCFG_VAL0_REDIR		BIT(4)
++#define PMAC_EGCFG_VAL0_BSL		GENMASK(7, 5)
++/* PMAC_TBL_VAL_1 */
++#define PMAC_EGCFG_VAL1_RX_DMA_CH	GENMASK(3, 0)
++/* PMAC_TBL_VAL_2 */
++#define PMAC_EGCFG_VAL2_PMAC_FLAG	BIT(0)
++#define PMAC_EGCFG_VAL2_FCS_MODE	BIT(1)
++#define PMAC_EGCFG_VAL2_L2HD_RM_MODE	BIT(2)
++#define PMAC_EGCFG_VAL2_L2HD_RM		GENMASK(15, 8)
++
++struct pmac_tbl_prog {
++	u16 pmac_id;
++	enum pmac_tbl_id id;
++	u16 val[PMAC_TBL_VAL_MAX];
++	u8 num_val;
++	u16 addr;
++};
++
++struct gswip_core_priv;
++
++int gswip_pce_table_init(void);
++int gswip_pce_table_write(struct gswip_core_priv *priv,
++			  struct pce_tbl_prog *pce_tbl);
++int gswip_pce_table_read(struct gswip_core_priv *priv,
++			 struct pce_tbl_prog *pce_tbl);
++int gswip_bm_table_read(struct gswip_core_priv *priv,
++			struct bm_tbl_prog *bm_tbl);
++int gswip_bm_table_write(struct gswip_core_priv *priv,
++			 struct bm_tbl_prog *bm_tbl);
++int gswip_pmac_table_read(struct gswip_core_priv *priv,
++			  struct pmac_tbl_prog *pmac_tbl);
++int gswip_pmac_table_write(struct gswip_core_priv *priv,
++			   struct pmac_tbl_prog *pmac_tbl);
++
++#endif
++
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/lmac.c b/drivers/net/ethernet/intel/gwdpa/gswip/lmac.c
+new file mode 100644
+index 000000000000..2fef9eaeeadc
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/lmac.c
+@@ -0,0 +1,46 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#include <linux/bitfield.h>
++#include <linux/types.h>
++
++#include "mac_common.h"
++
++int lmac_set_duplex_mode(struct gswip_mac *priv, u32 val)
++{
++	u32 mac_ctrl0 = lmac_read(priv, MAC_CTRL0_REG(priv->mac_idx));
++
++	if (FIELD_GET(MAC_CTRL0_FDUP, mac_ctrl0) != val) {
++		mac_ctrl0 &= ~MAC_CTRL0_FDUP;
++		mac_ctrl0 |= FIELD_PREP(MAC_CTRL0_FDUP, val);
++		lmac_write(priv, MAC_CTRL0_REG(priv->mac_idx), mac_ctrl0);
++	}
++
++	return 0;
++}
++
++int lmac_set_flowcon_mode(struct gswip_mac *priv, u32 val)
++{
++	u32 mac_ctrl0 = lmac_read(priv, MAC_CTRL0_REG(priv->mac_idx));
++
++	if (FIELD_GET(MAC_CTRL0_FCON, mac_ctrl0) != val) {
++		mac_ctrl0 &= ~MAC_CTRL0_FCON;
++		mac_ctrl0 |= FIELD_PREP(MAC_CTRL0_FCON, val);
++		lmac_write(priv, MAC_CTRL0_REG(priv->mac_idx), mac_ctrl0);
++	}
++
++	return 0;
++}
++
++int lmac_set_intf_mode(struct gswip_mac *priv, u32 val)
++{
++	u32 mac_ctrl0 = lmac_read(priv, MAC_CTRL0_REG(priv->mac_idx));
++
++	if (FIELD_GET(MAC_CTRL0_GMII, mac_ctrl0) != val) {
++		mac_ctrl0 &= ~MAC_CTRL0_GMII;
++		mac_ctrl0 |= FIELD_PREP(MAC_CTRL0_GMII, val);
++		lmac_write(priv, MAC_CTRL0_REG(priv->mac_idx), mac_ctrl0);
++	}
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c b/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
+new file mode 100644
+index 000000000000..dcbcb3e3deab
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
+@@ -0,0 +1,524 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#include <linux/bitfield.h>
++#include <linux/ethtool.h>
++#include "mac_common.h"
++
++static int mac_speed_to_val(u32 speed)
++{
++	int val;
++
++	switch (speed) {
++	case SPEED_10M:
++		val = SPEED_10;
++		break;
++	case SPEED_100M:
++		val = SPEED_100;
++		break;
++	case SPEED_1G:
++		val = SPEED_1000;
++		break;
++	case SPEED_10G:
++		val = SPEED_10000;
++		break;
++	case SPEED_2G5:
++		val = SPEED_2500;
++		break;
++	case SPEED_5G:
++		val = SPEED_5000;
++		break;
++	default:
++		val = SPEED_UNKNOWN;
++	}
++
++	return val;
++}
++
++static int mac_get_speed(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	u32 mac_speed;
++
++	spin_lock_bh(&priv->mac_lock);
++	mac_speed = sw_get_speed(priv);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return mac_speed_to_val(mac_speed);
++}
++
++static int mac_set_physpeed(struct gswip_mac *priv, u32 phy_speed)
++{
++	spin_lock_bh(&priv->mac_lock);
++	xgmac_set_extcfg(priv, 1);
++
++	switch (phy_speed) {
++	default:
++	case SPEED_MAC_AUTO:
++		sw_set_speed(priv, SPEED_AUTO);
++		break;
++
++	case SPEED_XGMAC_10G:
++		xgmac_set_xgmii_speed(priv);
++		sw_set_speed(priv, SPEED_10G);
++		break;
++
++	case SPEED_GMII_25G:
++		sw_set_speed(priv, SPEED_2G5);
++		sw_set_2G5_intf(priv, XGMAC_GMII);
++		xgmac_set_gmii_2500_speed(priv);
++		break;
++
++	case SPEED_XGMII_25G:
++		sw_set_speed(priv, SPEED_2G5);
++		sw_set_2G5_intf(priv, XGMAC_XGMII);
++		xgmac_set_xgmii_2500_speed(priv);
++		break;
++
++	case SPEED_XGMAC_1G:
++		sw_set_speed(priv, SPEED_1G);
++		sw_set_1g_intf(priv, XGMAC_GMII);
++		xgmac_set_gmii_speed(priv);
++		xgmac_set_extcfg(priv, 1);
++		break;
++
++	case SPEED_XGMAC_10M:
++		sw_set_speed(priv, SPEED_10M);
++		/* FALLTHRU */
++	case SPEED_XGMAC_100M:
++		if (phy_speed != SPEED_XGMAC_10M)
++			sw_set_speed(priv, SPEED_100M);
++
++		sw_set_fe_intf(priv, XGMAC_GMII);
++		sw_set_1g_intf(priv, XGMAC_GMII);
++		xgmac_set_gmii_speed(priv);
++		break;
++
++	case SPEED_LMAC_10M:
++		sw_set_speed(priv, SPEED_10M);
++		/* FALLTHRU */
++	case SPEED_LMAC_100M:
++		if (phy_speed != SPEED_LMAC_10M)
++			sw_set_speed(priv, SPEED_100M);
++
++		sw_set_fe_intf(priv, LMAC_MII);
++		lmac_set_intf_mode(priv, 1);
++		break;
++
++	case SPEED_LMAC_1G:
++		sw_set_speed(priv, SPEED_1G);
++		sw_set_1g_intf(priv, LMAC_GMII);
++		lmac_set_intf_mode(priv, 2);
++		break;
++	}
++	spin_unlock_bh(&priv->mac_lock);
++
++	return 0;
++}
++
++static int mac_set_duplex(struct gswip_mac *priv, u32 mode)
++{
++	u32 val;
++
++	spin_lock_bh(&priv->mac_lock);
++	switch (mode) {
++	default:
++	case GSW_DUPLEX_AUTO:
++		val = PHY_MODE_FDUP_AUTO;
++		break;
++	case GSW_DUPLEX_HALF:
++		val = PHY_MODE_FDUP_HD;
++		break;
++	case GSW_DUPLEX_FULL:
++		val = PHY_MODE_FDUP_FD;
++		break;
++	}
++
++	sw_set_duplex_mode(priv, val);
++	lmac_set_duplex_mode(priv, val);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return 0;
++}
++
++static int mac_get_duplex(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	int val;
++
++	spin_lock_bh(&priv->mac_lock);
++	val = sw_get_duplex_mode(priv);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return val;
++}
++
++static int mac_get_linksts(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	int linksts;
++
++	spin_lock_bh(&priv->mac_lock);
++	linksts = sw_get_linkstatus(priv);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return linksts;
++}
++
++static int mac_set_linksts(struct gswip_mac *priv, u32 mode)
++{
++	u8 val;
++
++	spin_lock_bh(&priv->mac_lock);
++	switch (mode) {
++	default:
++	case LINK_AUTO:
++		val = PHY_MODE_LINKST_AUTO;
++		break;
++
++	case LINK_UP:
++		val = PHY_MODE_LINKST_UP;
++		break;
++
++	case LINK_DOWN:
++		val = PHY_MODE_LINKST_DOWN;
++		break;
++	}
++	sw_set_linkstatus(priv, val);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return 0;
++}
++
++static int mac_set_flowctrl(struct device *dev, u32 val)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++
++	if (val >= FC_INVALID)
++		return -EINVAL;
++
++	spin_lock_bh(&priv->mac_lock);
++	lmac_set_flowcon_mode(priv, val);
++
++	switch (val) {
++	default:
++	case FC_AUTO:
++		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_EN);
++		xgmac_rx_flow_ctl(priv, XGMAC_FC_EN);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_AUTO, FCONRX);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_AUTO, FCONTX);
++		break;
++
++	case FC_RX:
++		/* Disable TX in XGMAC and GSWSS */
++		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_DIS);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_DIS, FCONTX);
++
++		/* Enable RX in XGMAC and GSWSS */
++		xgmac_rx_flow_ctl(priv, XGMAC_FC_EN);
++
++		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONRX);
++		break;
++
++	case FC_TX:
++		/* Disable RX in XGMAC and GSWSS */
++		xgmac_rx_flow_ctl(priv, XGMAC_FC_DIS);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_DIS, FCONTX);
++
++		/* Enable TX in XGMAC and GSWSS */
++		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_EN);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONTX);
++		break;
++
++	case FC_RXTX:
++		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_EN);
++		xgmac_rx_flow_ctl(priv, XGMAC_FC_EN);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONRX);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONTX);
++		break;
++
++	case FC_DIS:
++		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_DIS);
++		xgmac_rx_flow_ctl(priv, XGMAC_FC_DIS);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_DIS, FCONRX);
++		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONTX);
++		break;
++	}
++	spin_unlock_bh(&priv->mac_lock);
++
++	return 0;
++}
++
++inline int get_2G5_intf(struct gswip_mac *priv)
++{
++	u32 mac_if_cfg, macif;
++	int ret;
++
++	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++	macif = FIELD_PREP(MAC_IF_CFG_CFG2G5, mac_if_cfg);
++
++	if (macif == 0)
++		ret = XGMAC_GMII;
++	else if (macif == 1)
++		ret = XGMAC_XGMII;
++	else
++		ret = -EINVAL;
++
++	return ret;
++}
++
++inline int get_1g_intf(struct gswip_mac *priv)
++{
++	u32 mac_if_cfg, macif;
++	int ret;
++
++	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++	macif = FIELD_GET(MAC_IF_CFG_CFG1G, mac_if_cfg);
++
++	if (macif == 0)
++		ret = LMAC_GMII;
++	else if (macif == 1)
++		ret = XGMAC_GMII;
++	else
++		ret = -EINVAL;
++
++	return ret;
++}
++
++inline int get_fe_intf(struct gswip_mac *priv)
++{
++	u32 mac_if_cfg, macif;
++	int ret;
++
++	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++	macif = FIELD_GET(MAC_IF_CFG_CFGFE, mac_if_cfg);
++
++	if (macif == 0)
++		ret = LMAC_MII;
++	else if (macif == 1)
++		ret = XGMAC_GMII;
++	else
++		ret = -EINVAL;
++
++	return ret;
++}
++
++static int mac_get_mii_interface(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	int intf, ret;
++	u8 mac_speed;
++
++	spin_lock_bh(&priv->mac_lock);
++	mac_speed = sw_get_speed(priv);
++	switch (mac_speed) {
++	case SPEED_10M:
++	case SPEED_100M:
++		intf = get_fe_intf(priv);
++		if (intf == XGMAC_GMII)
++			ret = GSW_PORT_HW_GMII;
++		else if (intf == LMAC_MII)
++			ret = GSW_PORT_HW_MII;
++		else
++			ret = -EINVAL;
++		break;
++
++	case SPEED_1G:
++		intf = get_1g_intf(priv);
++		if (intf == LMAC_GMII || intf == XGMAC_GMII)
++			ret = GSW_PORT_HW_GMII;
++		else
++			ret = -EINVAL;
++		break;
++
++	case SPEED_2G5:
++		intf = get_2G5_intf(priv);
++		if (intf == XGMAC_GMII)
++			ret = GSW_PORT_HW_GMII;
++		else if (intf == XGMAC_XGMII)
++			ret = GSW_PORT_HW_XGMII;
++		else
++			ret = -EINVAL;
++		break;
++
++	case SPEED_10G:
++		ret = GSW_PORT_HW_XGMII;
++		break;
++
++	case SPEED_AUTO:
++		ret = GSW_PORT_HW_XGMII;
++		break;
++
++	default:
++		ret = -EINVAL;
++	}
++	spin_unlock_bh(&priv->mac_lock);
++
++	return ret;
++}
++
++inline u32 set_mii_if_fe(u32 mode)
++{
++	u32 val = 0;
++
++	switch (mode) {
++	default:
++	case LMAC_MII:
++		val &= ~MAC_IF_CFG_CFGFE;
++		break;
++
++	case XGMAC_GMII:
++		val |= MAC_IF_CFG_CFGFE;
++		break;
++	}
++
++	return val;
++}
++
++inline u32 set_mii_if_1g(u32 mode)
++{
++	u32 val = 0;
++
++	switch (mode) {
++	default:
++	case LMAC_GMII:
++		val &= ~MAC_IF_CFG_CFG1G;
++		break;
++
++	case XGMAC_GMII:
++		val |= MAC_IF_CFG_CFG1G;
++		break;
++	}
++
++	return val;
++}
++
++inline u32 set_mii_if_2G5(u32 mode)
++{
++	u32 val = 0;
++
++	switch (mode) {
++	default:
++	case XGMAC_GMII:
++		val &= ~MAC_IF_CFG_CFG2G5;
++		break;
++
++	case XGMAC_XGMII:
++		val |= MAC_IF_CFG_CFG2G5;
++		break;
++	}
++
++	return val;
++}
++
++static int mac_set_mii_interface(struct device *dev, u32 mii_mode)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	u32 reg_val = 0;
++
++	spin_lock_bh(&priv->mac_lock);
++	reg_val = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
++
++	/* Default modes...
++	 *		2.5G -	XGMAC_GMII
++	 *		1G   -	LMAC_GMII
++	 *		FE   -	LMAC_MII
++	 */
++	switch (mii_mode) {
++	default:
++	case GSW_PORT_HW_XGMII:
++		reg_val |= set_mii_if_2G5(XGMAC_XGMII);
++		break;
++
++	case GSW_PORT_HW_GMII:
++		reg_val |= set_mii_if_1g(XGMAC_GMII);
++		reg_val |= set_mii_if_fe(XGMAC_GMII);
++		reg_val |= set_mii_if_2G5(XGMAC_GMII);
++		break;
++
++	case GSW_PORT_HW_MII:
++		reg_val |= set_mii_if_fe(LMAC_MII);
++		break;
++	}
++
++	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), reg_val);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return 0;
++}
++
++static u32 mac_get_mtu(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++	u32 val;
++
++	spin_lock_bh(&priv->mac_lock);
++	val = sw_mac_get_mtu(priv);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return val;
++}
++
++static int mac_set_mtu(struct device *dev, u32 mtu)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++
++	if (mtu > LGM_MAX_MTU)
++		return -EINVAL;
++
++	spin_lock_bh(&priv->mac_lock);
++	sw_mac_set_mtu(priv, mtu);
++	xgmac_config_pkt(priv, mtu);
++	spin_unlock_bh(&priv->mac_lock);
++
++	return 0;
++}
++
++static int mac_init(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++
++	xgmac_set_mac_address(priv, priv->mac_addr);
++	mac_set_mtu(dev, priv->mtu);
++	xgmac_config_packet_filter(priv, PROMISC);
++	xgmac_config_packet_filter(priv, PASS_ALL_MULTICAST);
++	mac_set_mii_interface(dev, GSW_PORT_HW_GMII);
++	mac_set_flowctrl(dev, FC_RXTX);
++	mac_set_linksts(priv, LINK_UP);
++	mac_set_duplex(priv, GSW_DUPLEX_FULL);
++	xgmac_set_mac_lpitx(priv, LPITX_EN);
++	mac_set_physpeed(priv, SPEED_XGMAC_10G);
++	/* Enable XMAC Tx/Rx */
++	xgmac_enable(priv);
++	xgmac_pause_frame_filter(priv, 1);
++	sw_set_eee_cap(priv, ANEG_EEE_CAP_OFF);
++	sw_set_mac_rxfcs_op(priv, MAC_OP_CFG_RX_FCS_M3);
++	xgmac_mdio_set_clause(priv, MDIO_CLAUSE22, (priv->mac_idx - MAC2));
++	xgmac_mdio_register(priv);
++
++	return 0;
++}
++
++static const struct gsw_mac_ops lgm_mac_ops = {
++	.init		= mac_init,
++	.set_mtu	= mac_set_mtu,
++	.get_mtu	= mac_get_mtu,
++	.set_mii_if	= mac_set_mii_interface,
++	.get_mii_if	= mac_get_mii_interface,
++	.set_flowctrl	= mac_set_flowctrl,
++	.get_link_sts	= mac_get_linksts,
++	.get_duplex	= mac_get_duplex,
++	.get_speed	= mac_get_speed,
++};
++
++static const struct gsw_adap_ops lgm_adap_ops = {
++	.sw_core_enable = sw_core_enable,
++};
++
++void mac_init_ops(struct device *dev)
++{
++	struct gswip_mac *priv = dev_get_drvdata(dev);
++
++	priv->mac_ops = &lgm_mac_ops;
++	priv->adap_ops = &lgm_adap_ops;
++}
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h b/drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h
+new file mode 100644
+index 000000000000..581997a615d6
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h
+@@ -0,0 +1,238 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#ifndef _MAC_COMMON_H
++#define _MAC_COMMON_H
++
++#include <linux/io.h>
++#include <linux/kernel.h>
++#include <linux/platform_device.h>
++#include <linux/spinlock.h>
++
++#include "gswip.h"
++#include "gswip_reg.h"
++#include "gswip_dev.h"
++
++#define LGM_MAX_MTU	10000
++#define LPITX_EN	1
++#define SPEED_LSB	GENMASK(1, 0)
++#define SPEED_MSB	BIT(2)
++#define MDIO_CLAUSE22	1
++#define MDIO_CLAUSE45	0
++
++/* MAC Index */
++enum mac_index {
++	PMAC0 = 0,
++	PMAC1,
++	MAC2,
++	MAC3,
++	MAC4,
++	MAC5,
++	MAC6,
++	MAC7,
++	MAC8,
++	MAC9,
++	MAC10,
++	PMAC2,
++	MAC_LAST,
++};
++
++enum packet_flilter_mode {
++	PROMISC = 0,
++	PASS_ALL_MULTICAST,
++	PKT_FR_DEF,
++};
++
++enum mii_interface {
++	LMAC_MII = 0,
++	LMAC_GMII,
++	XGMAC_GMII,
++	XGMAC_XGMII,
++};
++
++enum speed_interface {
++	SPEED_10M = 0,
++	SPEED_100M,
++	SPEED_1G,
++	SPEED_10G,
++	SPEED_2G5,
++	SPEED_5G,
++	SPEED_FLEX,
++	SPEED_AUTO
++};
++
++enum gsw_fcon {
++	FCONRX = 0,
++	FCONTX,
++	FDUP,
++};
++
++enum xgmac_fcon_on_off {
++	XGMAC_FC_EN = 0,
++	XGMAC_FC_DIS,
++};
++
++enum gsw_portduplex_mode {
++	GSW_DUPLEX_AUTO = 0,
++	GSW_DUPLEX_HALF,
++	GSW_DUPLEX_FULL,
++};
++
++struct xgmac_hw_features {
++	/* HW version */
++	u32 version;
++
++	/* HW Feature0 Register: core */
++	u32 gmii;	/* 1000 Mbps support */
++	u32 vlhash;	/* VLAN Hash Filter */
++	u32 sma;	/* SMA(MDIO) Interface */
++	u32 rwk;	/* PMT remote wake-up packet */
++	u32 mgk;	/* PMT magic packet */
++	u32 mmc;	/* RMON module */
++	u32 aoe;	/* ARP Offload */
++	u32 ts;		/* IEEE 1588-2008 Advanced Timestamp */
++	u32 eee;	/* Energy Efficient Ethernet */
++	u32 tx_coe;	/* Tx Checksum Offload */
++	u32 rx_coe;	/* Rx Checksum Offload */
++	u32 addn_mac;	/* Additional MAC Addresses */
++	u32 ts_src;	/* Timestamp Source */
++	u32 sa_vlan_ins;/* Source Address or VLAN Insertion */
++	u32 vxn;	/* VxLAN/NVGRE Support */
++	u32 ediffc;	/* Different Descriptor Cache */
++	u32 edma;	/* Enhanced DMA */
++
++	/* HW Feature1 Register: DMA and MTL */
++	u32 rx_fifo_size;	/* MTL Receive FIFO Size */
++	u32 tx_fifo_size;	/* MTL Transmit FIFO Size */
++	u32 osten;		/* One-Step Timestamping Enable */
++	u32 ptoen;		/* PTP Offload Enable */
++	u32 adv_ts_hi;		/* Advance Timestamping High Word */
++	u32 dma_width;		/* DMA width */
++	u32 dcb;		/* DCB Feature */
++	u32 sph;		/* Split Header Feature */
++	u32 tso;		/* TCP Segmentation Offload */
++	u32 dma_debug;		/* DMA Debug Registers */
++	u32 rss;		/* Receive Side Scaling */
++	u32 tc_cnt;		/* Number of Traffic Classes */
++	u32 hash_table_size;	/* Hash Table Size */
++	u32 l3l4_filter_num;	/* Number of L3-L4 Filters */
++
++	/* HW Feature2 Register: Channels(DMA) and Queues(MTL) */
++	u32 rx_q_cnt;		/* Number of MTL Receive Queues */
++	u32 tx_q_cnt;		/* Number of MTL Transmit Queues */
++	u32 rx_ch_cnt;		/* Number of DMA Receive Channels */
++	u32 tx_ch_cnt;		/* Number of DMA Transmit Channels */
++	u32 pps_out_num;	/* Number of PPS outputs */
++	u32 aux_snap_num;	/* Number of Aux snapshot inputs */
++};
++
++struct gswip_mac {
++	void __iomem *sw;	/* adaption layer */
++	void __iomem *lmac;	/* legacy mac */
++
++	/* XGMAC registers for indirect accessing */
++	u32 xgmac_ctrl_reg;
++	u32 xgmac_data0_reg;
++	u32 xgmac_data1_reg;
++
++	u32 sw_irq;
++	struct clk *ptp_clk;
++	struct clk *sw_clk;
++
++	struct device *dev;
++	struct device *parent;
++
++	spinlock_t mac_lock;	/* MAC spin lock*/
++	spinlock_t irw_lock;	/* lock for Indirect read/write */
++	spinlock_t sw_lock;	/* adaption lock */
++
++	/* Phy status */
++	u32 phy_speed;
++	const char *phy_mode;
++
++	u32 ver;
++	/* Index to point XGMAC 2/3/4/.. */
++	u32 mac_idx;
++	u32 mac_max;
++	u32 ptp_clk_rate;
++
++	struct xgmac_hw_features hw_feat;
++	const struct gsw_mac_ops *mac_ops;
++
++	const struct gsw_adap_ops *adap_ops;
++	u32 core_en_cnt;
++	struct mii_bus *mii;
++
++	u8 mac_addr[6];
++	u32 mtu;
++	bool promisc_mode;
++	bool all_mcast_mode;
++	u32 pause_time;
++};
++
++/*  GSWIP-O Top Register write */
++static inline void sw_write(struct gswip_mac *priv, u32 reg, u32 val)
++{
++	writel(val, priv->sw + reg);
++}
++
++/* GSWIP-O Top Register read */
++static inline int sw_read(struct gswip_mac *priv, u32 reg)
++{
++	return readl(priv->sw + reg);
++}
++
++/* Legacy MAC Register read */
++static inline void lmac_write(struct gswip_mac *priv, u32 reg, u32 val)
++{
++	writel(val, priv->lmac + reg);
++}
++
++/* Legacy MAC Register write */
++static inline int lmac_read(struct gswip_mac *priv, u32 reg)
++{
++	return readl(priv->lmac + reg);
++}
++
++/* prototype */
++void mac_init_ops(struct device *dev);
++void xgmac_init_priv(struct gswip_mac *priv);
++void xgmac_get_hw_features(struct gswip_mac *priv);
++void xgmac_set_mac_address(struct gswip_mac *priv, u8 *mac_addr);
++void xgmac_config_pkt(struct gswip_mac *priv, u32 mtu);
++void xgmac_config_packet_filter(struct gswip_mac *priv, u32 mode);
++void xgmac_tx_flow_ctl(struct gswip_mac *priv, u32 pause_time, u32 mode);
++void xgmac_rx_flow_ctl(struct gswip_mac *priv, u32 mode);
++int xgmac_set_mac_lpitx(struct gswip_mac *priv, u32 val);
++int xgmac_enable(struct gswip_mac *priv);
++int xgmac_disable(struct gswip_mac *priv);
++int xgmac_pause_frame_filter(struct gswip_mac *priv, u32 val);
++int xgmac_set_extcfg(struct gswip_mac *priv, u32 val);
++int xgmac_set_xgmii_speed(struct gswip_mac *priv);
++int xgmac_set_gmii_2500_speed(struct gswip_mac *priv);
++int xgmac_set_xgmii_2500_speed(struct gswip_mac *priv);
++int xgmac_set_gmii_speed(struct gswip_mac *priv);
++int xgmac_mdio_set_clause(struct gswip_mac *priv, u32 clause, u32 phy_id);
++int xgmac_mdio_register(struct gswip_mac *priv);
++
++int sw_mac_set_mtu(struct gswip_mac *priv, u32 mtu);
++u32 sw_mac_get_mtu(struct gswip_mac *priv);
++u32 sw_get_speed(struct gswip_mac *priv);
++int sw_set_flowctrl(struct gswip_mac *priv, u8 val, u32 mode);
++int sw_get_linkstatus(struct gswip_mac *priv);
++int sw_set_linkstatus(struct gswip_mac *priv, u8 linkst);
++int sw_get_duplex_mode(struct gswip_mac *priv);
++int sw_set_duplex_mode(struct gswip_mac *priv, u32 val);
++int sw_set_speed(struct gswip_mac *priv, u8 speed);
++int sw_set_2G5_intf(struct gswip_mac *priv, u32 macif);
++int sw_set_1g_intf(struct gswip_mac *priv, u32 macif);
++int sw_set_fe_intf(struct gswip_mac *priv, u32 macif);
++int sw_set_eee_cap(struct gswip_mac *priv, u32 val);
++int sw_set_mac_rxfcs_op(struct gswip_mac *priv, u32 val);
++
++int lmac_set_flowcon_mode(struct gswip_mac *priv, u32 val);
++int lmac_set_duplex_mode(struct gswip_mac *priv, u32 val);
++int lmac_set_intf_mode(struct gswip_mac *priv, u32 val);
++
++int sw_core_enable(struct device *dev, u32 val);
++#endif
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c b/drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c
+new file mode 100644
+index 000000000000..028c580cdf8e
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c
+@@ -0,0 +1,186 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation.
++ *
++ * GSWIP MAC controller driver.
++ */
++
++#include <linux/clk.h>
++#include <linux/err.h>
++#include <linux/interrupt.h>
++#include <linux/irq.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/of_platform.h>
++#include <linux/phy.h>
++#include <linux/platform_device.h>
++#include <linux/spinlock.h>
++
++#include "mac_common.h"
++
++#define	MAX_MAC	9
++
++static const char *link_status_to_str(int link)
++{
++	switch (link) {
++	case 0:
++		return "DOWN";
++	case 1:
++		return "UP";
++	default:
++		return "UNKNOWN";
++	}
++}
++
++static void gswss_update_interrupt(struct gswip_mac *priv, u32 mask, u32 set)
++{
++	u32 val;
++
++	val = (sw_read(priv, GSWIPSS_IER0) & ~mask) | set;
++	sw_write(priv, GSWIPSS_IER0, val);
++}
++
++static void lmac_update_interrupt(struct gswip_mac *priv, u32 mask, u32 set)
++{
++	u32 val;
++
++	val = (lmac_read(priv, LMAC_IER) & ~mask) | set;
++	lmac_write(priv, LMAC_IER, val);
++}
++
++static void gswss_clear_interrupt_all(struct gswip_mac *priv)
++{
++	unsigned long xgmac_status, lmac_status;
++	u32 pos;
++
++	xgmac_status = sw_read(priv, GSWIPSS_ISR0);
++	lmac_status = lmac_read(priv, LMAC_ISR);
++
++	pos = GSWIPSS_I_XGMAC2;
++	for_each_set_bit_from(pos, &xgmac_status, priv->mac_max)
++		gswss_update_interrupt(priv, BIT(pos), 0);
++
++	pos = LMAC_I_MAC2;
++	for_each_set_bit_from(pos, &lmac_status, priv->mac_max)
++		lmac_update_interrupt(priv, BIT(pos), 0);
++}
++
++static irqreturn_t mac_interrupt(int irq, void *data)
++{
++	struct gswip_mac *priv = data;
++
++	/* clear all interrupts */
++	gswss_clear_interrupt_all(priv);
++
++	return IRQ_HANDLED;
++}
++
++/* All MAC instances have one interrupt line and need to register only once. */
++static int mac_irq_init(struct gswip_mac *priv)
++{
++	return devm_request_irq(priv->dev, priv->sw_irq, mac_interrupt, 0,
++				"gswip_mac", priv);
++}
++
++static int get_mac_index(struct device_node *node, u32 *idx)
++{
++	if (!strstr(node->full_name, "@"))
++		return -EINVAL;
++
++	return kstrtou32(node->full_name + strlen(node->name) + 1, 0, idx);
++}
++
++static int mac_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	int linksts, duplex, speed;
++	struct gswip_pdata *pdata;
++	struct device_node *node;
++	struct gswip_mac *priv;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	node = dev->of_node;
++	pdata = dev_get_platdata(dev->parent);
++
++	/* get the platform data */
++	priv->dev = &pdev->dev;
++	priv->parent = dev->parent;
++	priv->sw = pdata->sw;
++	priv->lmac = pdata->lmac;
++	priv->sw_irq = pdata->sw_irq;
++	priv->ptp_clk = pdata->ptp_clk;
++	priv->sw_clk = pdata->sw_clk;
++
++	/* Initialize spin lock */
++	spin_lock_init(&priv->mac_lock);
++	spin_lock_init(&priv->irw_lock);
++	spin_lock_init(&priv->sw_lock);
++
++	priv->mac_max =	MAX_MAC;
++	ret = get_mac_index(node, &priv->mac_idx);
++	if (ret)
++		return ret;
++
++	/* check the mac index range */
++	if (priv->mac_idx < 0 || priv->mac_idx > priv->mac_max) {
++		dev_err(dev, "Mac index Error!!\n");
++		return -EINVAL;
++	}
++
++	priv->ptp_clk_rate = clk_get_rate(priv->ptp_clk);
++
++	ret = of_property_read_string(node, "phy-mode", &priv->phy_mode);
++	if (ret)
++		return ret;
++
++	ret = of_property_read_u32(node, "speed", &priv->phy_speed);
++	if (ret)
++		return ret;
++
++	/* Request IRQ on first MAC instance */
++	if (!pdata->intr_flag) {
++		ret = mac_irq_init(priv);
++		if (ret)
++			return ret;
++		pdata->intr_flag = true;
++	}
++
++	dev_set_drvdata(dev, priv);
++	xgmac_init_priv(priv);
++	xgmac_get_hw_features(priv);
++	mac_init_ops(dev);
++
++	/* Initialize MAC */
++	priv->mac_ops->init(dev);
++
++	linksts = priv->mac_ops->get_link_sts(dev);
++	duplex = priv->mac_ops->get_duplex(dev);
++	speed = priv->mac_ops->get_speed(dev);
++
++	priv->adap_ops->sw_core_enable(dev, 1);
++
++	dev_info(dev, "Init done - Rev:%x Mac_id:%d Speed=%s Link=%s Duplex=%s\n",
++		 priv->ver, priv->mac_idx, phy_speed_to_str(speed),
++		 link_status_to_str(linksts), phy_duplex_to_str(duplex));
++
++	return 0;
++}
++
++static const struct of_device_id gswip_mac_match[] = {
++	{ .compatible = "gswip-mac" },
++	{}
++};
++MODULE_DEVICE_TABLE(of, gswip_mac_match);
++
++static struct platform_driver gswip_mac_driver = {
++	.probe = mac_probe,
++	.driver = {
++		.name = "gswip-mac",
++		.of_match_table = gswip_mac_match,
++	},
++};
++
++module_platform_driver(gswip_mac_driver);
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
+new file mode 100644
+index 000000000000..e3f9d9680579
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
+@@ -0,0 +1,643 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2016-2019 Intel Corporation. */
++
++#include <linux/bitfield.h>
++#include <linux/device.h>
++#include <linux/of_mdio.h>
++#include <linux/phy.h>
++
++#include "mac_common.h"
++#include "xgmac.h"
++
++/**
++ * xgmac_reg_rw - XGMAC register indirect read and write access.
++ * @priv: mac private data.
++ * @reg: register offset.
++ * @val:
++ *	read - pointer variable to read the value into.
++ *	write - pointer variable to the write value.
++ * @rd_wr: boolean value, true/false.
++ *	false - read.
++ *	true - write.
++ */
++static inline void xgmac_reg_rw(struct gswip_mac *priv, u16 reg, u32 *val,
++				bool rd_wr)
++{
++	void __iomem *xgmac_ctrl_reg  = priv->sw + priv->xgmac_ctrl_reg;
++	void __iomem *xgmac_data0_reg = priv->sw + priv->xgmac_data0_reg;
++	void __iomem *xgmac_data1_reg = priv->sw + priv->xgmac_data1_reg;
++	u32 access = XGMAC_REGACC_CTRL_ADDR_BAS;
++	u32 retries = 2000;
++
++	spin_lock_bh(&priv->irw_lock);
++	access &= ~XGMAC_REGACC_CTRL_OPMOD_WR;
++	if (rd_wr) {
++		writel(FIELD_GET(MASK_HIGH, *val), xgmac_data1_reg);
++		writel(FIELD_GET(MASK_LOW, *val), xgmac_data0_reg);
++		access |= XGMAC_REGACC_CTRL_OPMOD_WR;
++	}
++
++	writel(access | reg, xgmac_ctrl_reg);
++
++	do {
++		if (!(readl(xgmac_ctrl_reg) & XGMAC_REGACC_CTRL_ADDR_BAS))
++			break;
++		cpu_relax();
++	} while (--retries);
++	if (!retries)
++		dev_warn(priv->dev, "Xgmac register %s failed for Offset %x\n",
++			 rd_wr ? "write" : "read", reg);
++
++	if (!rd_wr)
++		*val = FIELD_PREP(MASK_HIGH, readl(xgmac_data1_reg)) |
++		       readl(xgmac_data0_reg);
++	spin_unlock_bh(&priv->irw_lock);
++}
++
++void xgmac_get_hw_features(struct gswip_mac *priv)
++{
++	struct xgmac_hw_features *hw_feat = &priv->hw_feat;
++	u32 mac_hfr0, mac_hfr1, mac_hfr2;
++
++	xgmac_reg_rw(priv, MAC_HW_F0, &mac_hfr0, false);
++	xgmac_reg_rw(priv, MAC_HW_F1, &mac_hfr1, false);
++	xgmac_reg_rw(priv, MAC_HW_F2, &mac_hfr2, false);
++	xgmac_reg_rw(priv, MAC_VER, &hw_feat->version, false);
++
++	priv->ver = FIELD_GET(MAC_VER_USERVER, hw_feat->version);
++
++	/* Hardware feature0 regiter*/
++	hw_feat->gmii = FIELD_GET(MAC_HW_F0_GMIISEL, mac_hfr0);
++	hw_feat->vlhash = FIELD_GET(MAC_HW_F0_VLHASH, mac_hfr0);
++	hw_feat->sma = FIELD_GET(MAC_HW_F0_SMASEL, mac_hfr0);
++	hw_feat->rwk = FIELD_GET(MAC_HW_F0_RWKSEL, mac_hfr0);
++	hw_feat->mgk = FIELD_GET(MAC_HW_F0_MGKSEL, mac_hfr0);
++	hw_feat->mmc = FIELD_GET(MAC_HW_F0_MMCSEL, mac_hfr0);
++	hw_feat->aoe = FIELD_GET(MAC_HW_F0_ARPOFFSEL, mac_hfr0);
++	hw_feat->ts = FIELD_GET(MAC_HW_F0_TSSEL, mac_hfr0);
++	hw_feat->eee = FIELD_GET(MAC_HW_F0_EEESEL, mac_hfr0);
++	hw_feat->tx_coe = FIELD_GET(MAC_HW_F0_TXCOESEL, mac_hfr0);
++	hw_feat->rx_coe = FIELD_GET(MAC_HW_F0_RXCOESEL, mac_hfr0);
++	hw_feat->addn_mac = FIELD_GET(MAC_HW_F0_ADDMACADRSEL, mac_hfr0);
++	hw_feat->ts_src = FIELD_GET(MAC_HW_F0_TSSTSSEL, mac_hfr0);
++	hw_feat->sa_vlan_ins = FIELD_GET(MAC_HW_F0_SAVLANINS, mac_hfr0);
++	hw_feat->vxn = FIELD_GET(MAC_HW_F0_VXN, mac_hfr0);
++	hw_feat->ediffc = FIELD_GET(MAC_HW_F0_EDIFFC, mac_hfr0);
++	hw_feat->edma = FIELD_GET(MAC_HW_F0_EDMA, mac_hfr0);
++
++	/* Hardware feature1 register*/
++	hw_feat->rx_fifo_size = FIELD_GET(MAC_HW_F1_RXFIFOSIZE, mac_hfr1);
++	hw_feat->tx_fifo_size = FIELD_GET(MAC_HW_F1_TXFIFOSIZE, mac_hfr1);
++	hw_feat->osten = FIELD_GET(MAC_HW_F1_OSTEN, mac_hfr1);
++	hw_feat->ptoen = FIELD_GET(MAC_HW_F1_PTOEN, mac_hfr1);
++	hw_feat->adv_ts_hi = FIELD_GET(MAC_HW_F1_ADVTHWORD, mac_hfr1);
++	hw_feat->dma_width = FIELD_GET(MAC_HW_F1_ADDR64, mac_hfr1);
++	hw_feat->dcb = FIELD_GET(MAC_HW_F1_DCBEN, mac_hfr1);
++	hw_feat->sph = FIELD_GET(MAC_HW_F1_SPHEN, mac_hfr1);
++	hw_feat->tso = FIELD_GET(MAC_HW_F1_TSOEN, mac_hfr1);
++	hw_feat->dma_debug = FIELD_GET(MAC_HW_F1_DBGMEMA, mac_hfr1);
++	hw_feat->rss = FIELD_GET(MAC_HW_F1_RSSEN, mac_hfr1);
++	hw_feat->tc_cnt = FIELD_GET(MAC_HW_F1_NUMTC, mac_hfr1);
++	hw_feat->hash_table_size = FIELD_GET(MAC_HW_F1_HASHTBLSZ, mac_hfr1);
++	hw_feat->l3l4_filter_num = FIELD_GET(MAC_HW_F1_L3L4FNUM, mac_hfr1);
++
++	/* Hardware feature2 register*/
++	hw_feat->rx_q_cnt = FIELD_GET(MAC_HW_F2_RXCHCNT, mac_hfr2);
++	hw_feat->tx_q_cnt = FIELD_GET(MAC_HW_F2_TXQCNT, mac_hfr2);
++	hw_feat->rx_ch_cnt = FIELD_GET(MAC_HW_F2_RXCHCNT, mac_hfr2);
++	hw_feat->tx_ch_cnt = FIELD_GET(MAC_HW_F2_TXCHCNT, mac_hfr2);
++	hw_feat->pps_out_num = FIELD_GET(MAC_HW_F2_PPSOUTNUM, mac_hfr2);
++	hw_feat->aux_snap_num = FIELD_GET(MAC_HW_F2_AUXSNAPNUM, mac_hfr2);
++
++	/* TC and Queue are zero based so increment to get the actual number */
++	hw_feat->tc_cnt++;
++	hw_feat->rx_q_cnt++;
++	hw_feat->tx_q_cnt++;
++}
++
++void xgmac_init_priv(struct gswip_mac *priv)
++{
++	u8 mac_addr[6] = {0x00, 0x00, 0x94, 0x00, 0x00, 0x08};
++
++	priv->mac_idx += MAC2;
++
++	priv->xgmac_ctrl_reg = XGMAC_CTRL_REG(priv->mac_idx);
++	priv->xgmac_data1_reg = XGMAC_DATA1_REG(priv->mac_idx);
++	priv->xgmac_data0_reg = XGMAC_DATA0_REG(priv->mac_idx);
++
++	/* Temp mac addr, Later eth driver will update */
++	mac_addr[5] = priv->mac_idx;
++	memcpy(priv->mac_addr, mac_addr, 6);
++
++	priv->mtu = LGM_MAX_MTU;
++	priv->promisc_mode = true;
++	priv->all_mcast_mode = true;
++}
++
++void xgmac_set_mac_address(struct gswip_mac *priv, u8 *mac_addr)
++{
++	u32 mac_addr_hi, mac_addr_low;
++	u32 val;
++
++	mac_addr_hi = (mac_addr[5] << 8) | (mac_addr[4] << 0);
++	mac_addr_low = (mac_addr[3] << 24) | (mac_addr[2] << 16) |
++			(mac_addr[1] <<  8) | (mac_addr[0] <<  0);
++
++	xgmac_reg_rw(priv, MAC_MACA0HR, &mac_addr_hi, true);
++
++	xgmac_reg_rw(priv, MAC_MACA0LR, &val, false);
++	if (val != mac_addr_low)
++		xgmac_reg_rw(priv, MAC_MACA0LR, &mac_addr_low, true);
++}
++
++inline void xgmac_prep_pkt_jumbo(u32 mtu, u32 *mac_rcr, u32 *mac_tcr)
++{
++	if (mtu < XGMAC_MAX_GPSL) {	/* upto 9018 configuration */
++		*mac_rcr |= MAC_RX_CFG_JE;
++		*mac_rcr &= ~MAC_RX_CFG_WD & ~MAC_RX_CFG_GPSLCE;
++		*mac_tcr &= ~MAC_TX_CFG_JD;
++
++	} else {			/* upto 16K configuration */
++		*mac_rcr &= ~MAC_RX_CFG_JE;
++		*mac_rcr |= MAC_RX_CFG_WD | MAC_RX_CFG_GPSLCE |
++			    FIELD_PREP(MAC_RX_CFG_GPSL,
++				       XGMAC_MAX_SUPPORTED_MTU);
++		*mac_tcr |= MAC_TX_CFG_JD;
++	}
++}
++
++inline void xgmac_prep_pkt_standard(u32 *mac_rcr, u32 *mac_tcr)
++{
++	*mac_rcr &= ~MAC_RX_CFG_JE & ~MAC_RX_CFG_WD & ~MAC_RX_CFG_GPSLCE;
++	*mac_tcr &= ~MAC_TX_CFG_JD;
++}
++
++void xgmac_config_pkt(struct gswip_mac *priv, u32 mtu)
++{
++	u32 mac_rcr, mac_tcr;
++
++	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, false);
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++
++	if (mtu > XGMAC_MAX_STD_PACKET)
++		xgmac_prep_pkt_jumbo(mtu, &mac_rcr, &mac_tcr);
++	else
++		xgmac_prep_pkt_standard(&mac_rcr, &mac_tcr);
++
++	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, true);
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++}
++
++void xgmac_config_packet_filter(struct gswip_mac *priv, u32 mode)
++{
++	u32 reg_val;
++
++	xgmac_reg_rw(priv, MAC_PKT_FR, &reg_val, false);
++
++	switch (mode) {
++	case PROMISC:
++		reg_val &= ~MAC_PKT_FR_PR;
++		reg_val |= FIELD_PREP(MAC_PKT_FR_PR, priv->promisc_mode);
++		break;
++
++	case PASS_ALL_MULTICAST:
++		reg_val &= ~MAC_PKT_FR_PM;
++		reg_val |= FIELD_PREP(MAC_PKT_FR_PM, priv->all_mcast_mode);
++		break;
++
++	default:
++		reg_val &= ~MAC_PKT_FR_PR & ~MAC_PKT_FR_PM;
++		reg_val |= FIELD_PREP(MAC_PKT_FR_PR, priv->promisc_mode) |
++			   FIELD_PREP(MAC_PKT_FR_PM, priv->all_mcast_mode);
++	}
++
++	xgmac_reg_rw(priv, MAC_PKT_FR, &reg_val, true);
++}
++
++void xgmac_tx_flow_ctl(struct gswip_mac *priv, u32 pause_time, u32 mode)
++{
++	u32 reg_val = 0;
++
++	xgmac_reg_rw(priv, MAC_TX_FCR, &reg_val, false);
++
++	switch (mode) {
++	case XGMAC_FC_EN:
++		/* enable tx flow control */
++		reg_val |= MAC_TX_FCR_TFE;
++
++		/* Set pause time */
++		reg_val &= ~MAC_TX_FCR_PT;
++		reg_val |= FIELD_PREP(MAC_TX_FCR_PT, pause_time);
++		break;
++
++	case XGMAC_FC_DIS:
++		reg_val &= ~MAC_TX_FCR_TFE;
++		break;
++	}
++
++	xgmac_reg_rw(priv, MAC_TX_FCR, &reg_val, true);
++}
++
++void xgmac_rx_flow_ctl(struct gswip_mac *priv, u32 mode)
++{
++	u32 reg_val = 0;
++
++	xgmac_reg_rw(priv, MAC_RX_FCR, &reg_val, false);
++
++	switch (mode) {
++	case XGMAC_FC_EN:
++		/* rx fc enable */
++		reg_val |= MAC_RX_FCR_RFE;
++		reg_val &= ~MAC_RX_FCR_PFCE;
++		break;
++
++	case XGMAC_FC_DIS:
++		reg_val &= ~MAC_RX_FCR_RFE;
++		break;
++	}
++
++	xgmac_reg_rw(priv, MAC_RX_FCR, &reg_val, true);
++}
++
++int xgmac_set_mac_lpitx(struct gswip_mac *priv, u32 val)
++{
++	u32 lpiate;
++
++	xgmac_reg_rw(priv, MAC_LPI_CSR, &lpiate, false);
++
++	if (FIELD_GET(MAC_LPI_CSR_LPIATE, lpiate) != val) {
++		lpiate &= ~MAC_LPI_CSR_LPIATE;
++		lpiate |= FIELD_PREP(MAC_LPI_CSR_LPIATE, val);
++	}
++
++	if (FIELD_GET(MAC_LPI_CSR_LPITXA, lpiate) != val) {
++		lpiate &= ~MAC_LPI_CSR_LPITXA;
++		lpiate |= FIELD_PREP(MAC_LPI_CSR_LPITXA, val);
++	}
++
++	xgmac_reg_rw(priv, MAC_LPI_CSR, &lpiate, true);
++
++	return 0;
++}
++
++int xgmac_enable(struct gswip_mac *priv)
++{
++	u32 mac_tcr, mac_rcr, mac_pfr;
++
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, false);
++	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, false);
++
++	/* Enable MAC Tx */
++	if (!FIELD_GET(MAC_TX_CFG_TE, mac_tcr)) {
++		mac_tcr |= MAC_TX_CFG_TE;
++		xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	}
++
++	/* Enable MAC Rx */
++	if (!FIELD_GET(MAC_RX_CFG_RE, mac_rcr)) {
++		mac_rcr |= MAC_RX_CFG_RE;
++		xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, true);
++	}
++
++	/* Enable MAC Filter Rx All */
++	if (!FIELD_GET(MAC_PKT_FR_RA, mac_pfr)) {
++		mac_pfr |= MAC_PKT_FR_RA;
++		xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, true);
++	}
++
++	return 0;
++}
++
++int xgmac_disable(struct gswip_mac *priv)
++{
++	u32 mac_tcr, mac_rcr, mac_pfr;
++
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, false);
++	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, false);
++
++	/* Disable MAC Tx */
++	if (FIELD_GET(MAC_TX_CFG_TE, mac_tcr) != 0) {
++		mac_tcr &= ~MAC_TX_CFG_TE;
++		xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	}
++
++	/* Disable MAC Rx */
++	if (FIELD_GET(MAC_RX_CFG_RE, mac_rcr) != 0) {
++		mac_rcr &= ~MAC_RX_CFG_RE;
++		xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, true);
++	}
++
++	/* Disable MAC Filter Rx All */
++	if (FIELD_GET(MAC_PKT_FR_RA, mac_pfr) != 0) {
++		mac_pfr &= ~MAC_PKT_FR_RA;
++		xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, true);
++	}
++
++	return 0;
++}
++
++int xgmac_pause_frame_filter(struct gswip_mac *priv, u32 val)
++{
++	u32 mac_pfr;
++
++	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, false);
++
++	if (FIELD_GET(MAC_PKT_FR_PCF, mac_pfr) != val) {
++		/* Pause filtering */
++		mac_pfr &= ~MAC_PKT_FR_PCF;
++		mac_pfr |= FIELD_PREP(MAC_PKT_FR_PCF, val);
++	}
++
++	/* The Receiver module passes only those packets to the application
++	 * that pass the SA or DA address filter.
++	 */
++	if (FIELD_GET(MAC_PKT_FR_RA, mac_pfr) == 1)
++		mac_pfr &= ~MAC_PKT_FR_RA;
++
++	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, true);
++
++	return 0;
++}
++
++int xgmac_set_extcfg(struct gswip_mac *priv, u32 val)
++{
++	u32 mac_extcfg;
++
++	xgmac_reg_rw(priv, MAC_EXTCFG, &mac_extcfg, false);
++
++	if (FIELD_GET(MAC_EXTCFG_SBDIOEN, mac_extcfg) != val) {
++		mac_extcfg &= ~MAC_EXTCFG_SBDIOEN;
++		mac_extcfg |= FIELD_PREP(MAC_EXTCFG_SBDIOEN, val);
++		xgmac_reg_rw(priv, MAC_EXTCFG, &mac_extcfg, true);
++	}
++
++	return 0;
++}
++
++int xgmac_set_xgmii_speed(struct gswip_mac *priv)
++{
++	u32 mac_tcr;
++
++	xgmac_disable(priv);
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++
++	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 0)
++		mac_tcr &= ~MAC_TX_CFG_USS;
++
++	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0)
++		mac_tcr &= ~MAC_TX_CFG_SS;
++
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	xgmac_enable(priv);
++
++	return 0;
++}
++
++int xgmac_set_gmii_2500_speed(struct gswip_mac *priv)
++{
++	u32 mac_tcr;
++
++	xgmac_disable(priv);
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++
++	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 0)
++		mac_tcr &= ~MAC_TX_CFG_USS;
++
++	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0x2) {
++		mac_tcr &= ~MAC_TX_CFG_SS;
++		mac_tcr |= FIELD_PREP(MAC_TX_CFG_SS, 0x2);
++	}
++
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	xgmac_enable(priv);
++
++	return 0;
++}
++
++int xgmac_set_xgmii_2500_speed(struct gswip_mac *priv)
++{
++	u32 mac_tcr;
++
++	xgmac_disable(priv);
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++
++	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 1)
++		mac_tcr |= MAC_TX_CFG_USS;
++
++	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0x2) {
++		mac_tcr &= ~MAC_TX_CFG_SS;
++		mac_tcr |= FIELD_PREP(MAC_TX_CFG_SS, 0x2);
++	}
++
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	xgmac_enable(priv);
++
++	return 0;
++}
++
++int xgmac_set_gmii_speed(struct gswip_mac *priv)
++{
++	u32 mac_tcr;
++
++	xgmac_disable(priv);
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++
++	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 0)
++		mac_tcr &= MAC_TX_CFG_USS;
++
++	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0x3) {
++		mac_tcr &= ~MAC_TX_CFG_SS;
++		mac_tcr |= FIELD_PREP(MAC_TX_CFG_SS, 0x3);
++	}
++
++	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	xgmac_enable(priv);
++
++	return 0;
++}
++
++int xgmac_mdio_set_clause(struct gswip_mac *priv, u32 clause, u32 phy_id)
++{
++	u32 mdio_c22p = 0;
++
++	xgmac_reg_rw(priv, MDIO_C22P, &mdio_c22p, false);
++
++	if (clause == MDIO_CLAUSE22)
++		mdio_c22p |= MDIO_C22P_PORT(phy_id);
++	else
++		mdio_c22p &= ~MDIO_C22P_PORT(phy_id);
++
++	/* Select port 0, 1, 2 and 3 as Clause 22/45 ports */
++	xgmac_reg_rw(priv, MDIO_C22P, &mdio_c22p, true);
++
++	return 0;
++}
++
++static int xgmac_mdio_single_wr(struct gswip_mac *priv, u32 dev_adr,
++				u32 phy_id, u32 phy_reg, u32 phy_reg_data)
++{
++	u32 mdio_sccdr, mdio_scar;
++	u32 retries = 100;
++
++	/* wait for any previous MDIO read/write operation to complete */
++	/* Poll */
++	do {
++		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
++			break;
++		cpu_relax();
++	} while (--retries);
++	if (!retries) {
++		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
++		return -ETIMEDOUT;
++	}
++
++	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, false);
++	mdio_scar &= ~MDIO_SCAR_DA & ~MDIO_SCAR_PA & ~MDIO_SCAR_RA;
++	mdio_scar |= FIELD_PREP(MDIO_SCAR_DA, dev_adr);
++	mdio_scar |= FIELD_PREP(MDIO_SCAR_PA, phy_id);
++	mdio_scar |= FIELD_PREP(MDIO_SCAR_RA, phy_reg);
++	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, true);
++
++	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++	mdio_sccdr &= ~MDIO_SCCDR_SDATA & ~MDIO_SCCDR_CMD;
++	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_SDATA, phy_reg_data);
++	mdio_sccdr |= MDIO_SCCDR_BUSY;
++	mdio_sccdr &= ~MDIO_SCCDR_SADDR;
++	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_CMD, 1);
++	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, true);
++
++	retries = 100;
++	/* wait for MDIO read operation to complete */
++	/* Poll */
++	do {
++		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
++			break;
++		cpu_relax();
++	} while (--retries);
++	if (!retries) {
++		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
++		return -ETIMEDOUT;
++	}
++
++	return 0;
++}
++
++static int xgmac_mdio_single_rd(struct gswip_mac *priv, u32 dev_adr,
++				u32 phy_id, u32 phy_reg)
++{
++	u32 mdio_sccdr, mdio_scar;
++	u32 retries = 100;
++	int phy_reg_data;
++
++	/* wait for any previous MDIO read/write operation to complete */
++	/* Poll */
++	do {
++		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
++			break;
++		cpu_relax();
++	} while (--retries);
++	if (!retries) {
++		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
++		return -ETIMEDOUT;
++	}
++
++	/* initiate the MDIO read operation by updating desired bits
++	 * PA - phy address/id (0 - 31)
++	 * RA - phy register offset
++	 */
++
++	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, false);
++	mdio_scar &= ~MDIO_SCAR_DA & ~MDIO_SCAR_PA & ~MDIO_SCAR_RA;
++	mdio_scar |= FIELD_PREP(MDIO_SCAR_DA, dev_adr);
++	mdio_scar |= FIELD_PREP(MDIO_SCAR_PA, phy_id);
++	mdio_scar |= FIELD_PREP(MDIO_SCAR_RA, phy_reg);
++	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, true);
++
++	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++	mdio_sccdr &= ~MDIO_SCCDR_CMD & ~MDIO_SCCDR_SDATA;
++	mdio_sccdr |= MDIO_SCCDR_BUSY;
++	mdio_sccdr &= ~MDIO_SCCDR_SADDR;
++	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_CMD, 3);
++	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_SDATA, 0);
++	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, true);
++
++	retries = 100;
++	/* wait for MDIO read operation to complete */
++	/* Poll */
++	do {
++		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
++			break;
++		cpu_relax();
++	} while (--retries);
++	if (!retries) {
++		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
++		return -ETIMEDOUT;
++	}
++
++	/* read the data */
++	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
++	phy_reg_data = FIELD_GET(MDIO_SCCDR_SDATA, mdio_sccdr);
++
++	return phy_reg_data;
++}
++
++static int xgmac_mdio_read(struct mii_bus *bus, int phyadr, int phyreg)
++{
++	struct gswip_mac *priv = bus->priv;
++
++	return xgmac_mdio_single_rd(priv, 0, phyadr, phyreg);
++}
++
++static int xgmac_mdio_write(struct mii_bus *bus, int phyadr, int phyreg,
++			    u16 phydata)
++{
++	struct gswip_mac *priv = bus->priv;
++
++	return xgmac_mdio_single_wr(priv, 0, phyadr, phyreg, phydata);
++}
++
++int xgmac_mdio_register(struct gswip_mac *priv)
++{
++	struct device_node *mdio_np;
++	struct mii_bus *bus;
++	int ret;
++
++	mdio_np = of_get_child_by_name(priv->dev->of_node, "mdio");
++	if (!mdio_np)
++		return -ENOLINK;
++
++	bus = mdiobus_alloc();
++	if (!bus)
++		return -ENOMEM;
++
++	bus->name = "xgmac_phy";
++	bus->read = xgmac_mdio_read;
++	bus->write = xgmac_mdio_write;
++	bus->reset = NULL;
++	snprintf(bus->id, MII_BUS_ID_SIZE, "%s-%x", bus->name, priv->mac_idx);
++	bus->priv = priv;
++	bus->parent = priv->dev;
++
++	/* At this moment gphy is not yet up (firmware not yet loaded), so we
++	 * avoid auto mdio scan.
++	 */
++	bus->phy_mask = 0xFFFFFFFF;
++
++	ret = of_mdiobus_register(bus, mdio_np);
++	if (ret) {
++		mdiobus_free(bus);
++		return ret;
++	}
++
++	priv->mii = bus;
++	dev_info(priv->dev, "XGMAC %d: MDIO register Successful\n",
++		 priv->mac_idx);
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h
+new file mode 100644
+index 000000000000..0d1be931fcf3
+--- /dev/null
++++ b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h
+@@ -0,0 +1,236 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c) 2016-2019 Intel Corporation. */
++/* Xgmac registers indirect access */
++
++#ifndef _XGMAC_H
++#define _XGMAC_H
++
++#include <linux/bits.h>
++
++/* MAC register offsets */
++#define MAC_TX_CFG			0x0000
++#define MAC_TX_CFG_TE			BIT(0)
++#define MAC_TX_CFG_DDIC			BIT(1)
++#define MAC_TX_CFG_ISM			BIT(3)
++#define MAC_TX_CFG_ISR			GENMASK(7, 4)
++#define MAC_TX_CFG_IPG			GENMASK(10, 8)
++#define MAC_TX_CFG_IFP			BIT(11)
++#define MAC_TX_CFG_JD			BIT(16)
++#define MAC_TX_CFG_SARC			GENMASK(22, 20)
++#define MAC_TX_CFG_VNE			BIT(24)
++#define MAC_TX_CFG_VNM			BIT(25)
++#define MAC_TX_CFG_G9991EN		BIT(28)
++#define MAC_TX_CFG_SS			GENMASK(30, 29)
++#define MAC_TX_CFG_USS			BIT(31)
++
++#define MAC_RX_CFG			0x0004
++#define MAC_RX_CFG_RE			BIT(0)
++#define MAC_RX_CFG_ACS			BIT(1)
++#define MAC_RX_CFG_CST			BIT(2)
++#define MAC_RX_CFG_DCRCC		BIT(3)
++#define MAC_RX_CFG_SPEN			BIT(4)
++#define MAC_RX_CFG_USP			BIT(5)
++#define MAC_RX_CFG_GPSLCE		BIT(6)
++#define MAC_RX_CFG_WD			BIT(7)
++#define MAC_RX_CFG_JE			BIT(8)
++#define MAC_RX_CFG_IPC			BIT(9)
++#define MAC_RX_CFG_LM			BIT(10)
++#define MAC_RX_CFG_S2KP			BIT(11)
++#define MAC_RX_CFG_HDSMS		GENMASK(14, 12)
++#define MAC_RX_CFG_GPSL			GENMASK(29, 16)
++#define MAC_RX_CFG_ELEN			BIT(30)
++#define MAC_RX_CFG_ARPEN		BIT(31)
++
++#define MAC_PKT_FR			0x0008
++#define MAC_PKT_FR_PR			BIT(0)
++#define MAC_PKT_FR_HUC			BIT(1)
++#define MAC_PKT_FR_HMC			BIT(2)
++#define MAC_PKT_FR_DAIF			BIT(3)
++#define MAC_PKT_FR_PM			BIT(4)
++#define MAC_PKT_FR_DBF			BIT(5)
++#define MAC_PKT_FR_PCF			GENMASK(7, 6)
++#define MAC_PKT_FR_SAIF			BIT(8)
++#define MAC_PKT_FR_SAF			BIT(9)
++#define MAC_PKT_FR_HPF			BIT(10)
++#define MAC_PKT_FR_VTFE			BIT(16)
++#define MAC_PKT_FR_IPFE			BIT(20)
++#define MAC_PKT_FR_DNTU			BIT(21)
++#define MAC_PKT_FR_VUCC			BIT(22)
++#define MAC_PKT_FR_RA			BIT(31)
++#define MAC_TX_FCR			0x0070
++#define MAC_TX_FCR_FCB			BIT(0)
++#define MAC_TX_FCR_TFE			BIT(1)
++#define MAC_TX_FCR_PLT			GENMASK(6, 4)
++#define MAC_TX_FCR_DZPQ			BIT(7)
++#define MAC_TX_FCR_PT			GENMASK(31, 16)
++
++#define MAC_TX_FCR1			0x0074
++#define MAC_TX_FCR2			0x0078
++#define MAC_TX_FCR3			0x007C
++#define MAC_TX_FCR4			0x0080
++#define MAC_TX_FCR5			0x0084
++#define MAC_TX_FCR6			0x0088
++#define MAC_TX_FCR7			0x008C
++#define MAC_RX_FCR			0x0090
++#define MAC_RX_FCR_RFE			BIT(0)
++#define MAC_RX_FCR_UP			BIT(1)
++#define MAC_RX_FCR_PFCE			BIT(8)
++
++#define MAC_ISR				0x00b0
++#define MAC_IER				0x00b4
++#define MAC_RXTX_STS			0x00b8
++#define MAC_PMT_CSR			0x00c0
++#define MAC_RWK_PFR			0x00c4
++#define MAC_LPI_CSR			0x00d0
++#define MAC_LPI_CSR_TLPIEN		BIT(0)
++#define MAC_LPI_CSR_TLPIEX		BIT(1)
++#define MAC_LPI_CSR_RLPIEN		BIT(2)
++#define MAC_LPI_CSR_RLPIEX		BIT(3)
++#define MAC_LPI_CSR_TLPIST		BIT(8)
++#define MAC_LPI_CSR_RLPIST		BIT(9)
++#define MAC_LPI_CSR_RXRSTP		BIT(10)
++#define MAC_LPI_CSR_TXRSTP		BIT(11)
++#define MAC_LPI_CSR_LPITXEN		BIT(16)
++#define MAC_LPI_CSR_PLS			BIT(17)
++#define MAC_LPI_CSR_PLSDIS		BIT(18)
++#define MAC_LPI_CSR_LPITXA		BIT(19)
++#define MAC_LPI_CSR_LPIATE		BIT(20)
++#define MAC_LPI_CSR_TXCGE		BIT(21)
++
++#define MAC_LPI_TCR			0x00d4
++#define MAC_VER				0x0110
++#define MAC_VER_USERVER			GENMASK(23, 16)
++
++#define MAC_HW_F0			0x011c
++#define MAC_HW_F0_GMIISEL		BIT(1)
++#define MAC_HW_F0_VLHASH		BIT(4)
++#define MAC_HW_F0_SMASEL		BIT(5)
++#define MAC_HW_F0_RWKSEL		BIT(6)
++#define MAC_HW_F0_MGKSEL		BIT(7)
++#define MAC_HW_F0_MMCSEL		BIT(8)
++#define MAC_HW_F0_ARPOFFSEL		BIT(9)
++#define MAC_HW_F0_TSSEL			BIT(12)
++#define MAC_HW_F0_EEESEL		BIT(13)
++#define MAC_HW_F0_TXCOESEL		BIT(14)
++#define MAC_HW_F0_RXCOESEL		BIT(16)
++#define MAC_HW_F0_ADDMACADRSEL		GENMASK(22, 18)
++#define MAC_HW_F0_TSSTSSEL		GENMASK(26, 25)
++#define MAC_HW_F0_SAVLANINS		BIT(27)
++#define MAC_HW_F0_VXN			BIT(29)
++#define MAC_HW_F0_EDIFFC		BIT(30)
++#define MAC_HW_F0_EDMA			BIT(31)
++
++#define MAC_HW_F1			0x0120
++#define MAC_HW_F1_RXFIFOSIZE		GENMASK(4, 0)
++#define MAC_HW_F1_TXFIFOSIZE		GENMASK(10, 6)
++#define MAC_HW_F1_OSTEN			BIT(11)
++#define MAC_HW_F1_PTOEN			BIT(12)
++#define MAC_HW_F1_ADVTHWORD		BIT(13)
++#define MAC_HW_F1_ADDR64		GENMASK(15, 14)
++#define MAC_HW_F1_DCBEN			BIT(16)
++#define MAC_HW_F1_SPHEN			BIT(17)
++#define MAC_HW_F1_TSOEN			BIT(18)
++#define MAC_HW_F1_DBGMEMA		BIT(19)
++#define MAC_HW_F1_RSSEN			BIT(20)
++#define MAC_HW_F1_NUMTC			GENMASK(23, 21)
++#define MAC_HW_F1_HASHTBLSZ		GENMASK(25, 24)
++#define MAC_HW_F1_L3L4FNUM		GENMASK(30, 27)
++
++#define MAC_HW_F2			0x0124
++#define MAC_HW_F2_RXQCNT		GENMASK(3, 0)
++#define MAC_HW_F2_TXQCNT		GENMASK(9, 6)
++#define MAC_HW_F2_RXCHCNT		GENMASK(15, 12)
++#define MAC_HW_F2_TXCHCNT		GENMASK(21, 18)
++#define MAC_HW_F2_PPSOUTNUM		GENMASK(26, 24)
++#define MAC_HW_F2_AUXSNAPNUM		GENMASK(30, 28)
++
++#define MAC_EXTCFG			0x0140
++#define MAC_EXTCFG_SBDIOEN		BIT(8)
++
++#define MDIO_SCAR			0x200
++#define MDIO_SCAR_RA			GENMASK(15, 0)
++#define MDIO_SCAR_PA			GENMASK(20, 16)
++#define MDIO_SCAR_DA			GENMASK(25, 21)
++
++#define MDIO_SCCDR			0x204
++#define MDIO_SCCDR_SDATA		GENMASK(15, 0)
++#define MDIO_SCCDR_CMD			GENMASK(17, 16)
++#define MDIO_SCCDR_SADDR		BIT(18)
++#define MDIO_SCCDR_CR			GENMASK(21, 19)
++#define MDIO_SCCDR_BUSY			BIT(22)
++
++#define MDIO_C22P			0x220
++#define MDIO_C22P_PORT(idx)		BIT(idx)
++
++#define MAC_MACA0HR			0x0300
++#define MAC_MACA0LR			0x0304
++#define MAC_MACA1HR			0x0308
++#define MAC_MACA1LR			0x030c
++
++#define MMC_CR				0x0800
++
++#define MMC_TXOCTETCOUNT_GB_LO		0x0814
++#define MMC_TXFRAMECOUNT_GB_LO		0x081c
++#define MMC_TXBROADCASTFRAMES_G_LO	0x0824
++#define MMC_TXMULTICASTFRAMES_G_LO	0x082c
++#define MMC_TXUNICASTFRAMES_GB_LO	0x0864
++#define MMC_TXMULTICASTFRAMES_GB_LO	0x086c
++#define MMC_TXBROADCASTFRAMES_GB_LO	0x0874
++#define MMC_TXUNDERFLOWERROR_LO		0x087c
++#define MMC_TXOCTETCOUNT_G_LO		0x0884
++#define MMC_TXFRAMECOUNT_G_LO		0x088c
++#define MMC_TXPAUSEFRAMES_LO		0x0894
++#define MMC_TXVLANFRAMES_G_LO		0x089c
++
++#define MMC_RXFRAMECOUNT_GB_LO		0x0900
++#define MMC_RXOCTETCOUNT_GB_LO		0x0908
++#define MMC_RXOCTETCOUNT_G_LO		0x0910
++#define MMC_RXBROADCASTFRAMES_G_LO	0x0918
++#define MMC_RXMULTICASTFRAMES_G_LO	0x0920
++#define MMC_RXCRCERROR_LO		0x0928
++#define MMC_RXRUNTERROR			0x0930
++#define MMC_RXJABBERERROR		0x0934
++#define MMC_RXUNDERSIZE_G		0x0938
++#define MMC_RXOVERSIZE_G		0x093c
++#define MMC_RXUNICASTFRAMES_G_LO	0x0970
++#define MMC_RXLENGTHERROR_LO		0x0978
++#define MMC_RXOUTOFRANGETYPE_LO		0x0980
++#define MMC_RXPAUSEFRAMES_LO		0x0988
++#define MMC_RXFIFOOVERFLOW_LO		0x0990
++#define MMC_RXVLANFRAMES_GB_LO		0x0998
++#define MMC_RXWATCHDOGERROR		0x09a0
++
++#define MAC_TSTAMP_CR			0x0d00
++#define MAC_SUBSEC_INCR			0x0d04
++#define MAC_SYS_TIME_SEC		0x0d08
++#define MAC_SYS_TIME_NSEC		0x0d0c
++#define MAC_SYS_TIME_SEC_UPD		0x0d10
++#define MAC_SYS_TIME_NSEC_UPD		0x0d14
++#define MAC_TSTAMP_ADDNDR		0x0d18
++#define MAC_TSTAMP_STSR			0x0d20
++#define MAC_TXTSTAMP_NSECR		0x0d30
++#define MAC_TXTSTAMP_SECR		0x0d34
++#define MAC_TXTSTAMP_STS		0x0d38
++#define MAC_AUX_CTRL			0x0d40
++#define MAC_AUX_NSEC			0x0d48
++#define MAC_AUX_SEC			0x0d4c
++#define MAC_RX_PCH_CRC_CNT		0x0d2c
++
++#define XGMAC_Q_INC			0x100
++#define XGMAC_CTRL_REG(idx)					\
++	(XGMAC_REGACC_CTRL + ((idx) - MAC2) * XGMAC_Q_INC)
++#define XGMAC_DATA0_REG(idx)					\
++	(XGMAC_REGACC_DATA0 + ((idx) - MAC2) * XGMAC_Q_INC)
++#define XGMAC_DATA1_REG(idx)					\
++	(XGMAC_REGACC_DATA1 + ((idx) - MAC2) * XGMAC_Q_INC)
++
++#define MASK_LOW			GENMASK(15, 0)
++#define MASK_HIGH			GENMASK(31, 16)
++
++/* gaint packet size limit */
++#define XGMAC_MAX_GPSL			9000
++#define XGMAC_MAX_SUPPORTED_MTU		16380
++
++#define XGMAC_MAX_STD_PACKET		1518
++
++#endif
 -- 
-2.24.0
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
