@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38ECA184A5D
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Mar 2020 16:17:13 +0100 (CET)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76C26184A69
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Mar 2020 16:17:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E60E1875A9;
-	Fri, 13 Mar 2020 15:17:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 68B3D88714;
+	Fri, 13 Mar 2020 15:17:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SePHSVfwORaX; Fri, 13 Mar 2020 15:17:11 +0000 (UTC)
+	with ESMTP id N4BugWiFdOm5; Fri, 13 Mar 2020 15:17:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5A2BB875DA;
-	Fri, 13 Mar 2020 15:17:11 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 267BE895AC;
+	Fri, 13 Mar 2020 15:17:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4B2A51BF841
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:07 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E2201BF841
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4737D23335
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 692A488CBB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZNvS5kXkpkfn for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Mar 2020 15:17:06 +0000 (UTC)
+ with ESMTP id D2okogiZT9Y7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Mar 2020 15:17:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id 20F9C23307
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:06 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 630BC88C85
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:10 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2020 08:17:05 -0700
+ 13 Mar 2020 08:17:09 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,549,1574150400"; d="scan'208";a="236981053"
+X-IronPort-AV: E=Sophos;i="5.70,549,1574150400"; d="scan'208";a="236981074"
 Received: from ssaleem-mobl.amr.corp.intel.com ([10.254.43.202])
- by fmsmga008.fm.intel.com with ESMTP; 13 Mar 2020 08:17:04 -0700
+ by fmsmga008.fm.intel.com with ESMTP; 13 Mar 2020 08:17:08 -0700
 From: Shiraz Saleem <shiraz.saleem@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 13 Mar 2020 10:16:38 -0500
-Message-Id: <20200313151640.2070-15-shiraz.saleem@intel.com>
+Date: Fri, 13 Mar 2020 10:16:40 -0500
+Message-Id: <20200313151640.2070-17-shiraz.saleem@intel.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200313151640.2070-1-shiraz.saleem@intel.com>
 References: <20200313151640.2070-1-shiraz.saleem@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH RFC v5 14/16] RDMA/irdma: Add ABI
- definitions
+Subject: [Intel-wired-lan] [PATCH RFC v5 16/16] RDMA/irdma: Update
+ MAINTAINERS file
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,170 +62,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mustafa Ismail <mustafa.ismail@intel.com>,
- Shiraz Saleem <shiraz.saleem@intel.com>
+Cc: Shiraz Saleem <shiraz.saleem@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mustafa Ismail <mustafa.ismail@intel.com>
-
-Add ABI definitions for irdma.
+Add maintainer entry for irdma driver.
 
 Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
 Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
 ---
- include/uapi/rdma/irdma-abi.h | 140 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 140 insertions(+)
- create mode 100644 include/uapi/rdma/irdma-abi.h
+ MAINTAINERS | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/include/uapi/rdma/irdma-abi.h b/include/uapi/rdma/irdma-abi.h
-new file mode 100644
-index 0000000..2eb2532
---- /dev/null
-+++ b/include/uapi/rdma/irdma-abi.h
-@@ -0,0 +1,140 @@
-+/* SPDX-License-Identifier: (GPL-2.0 WITH Linux-syscall-note) OR Linux-OpenIB) */
-+/*
-+ * Copyright (c) 2006 - 2019 Intel Corporation.  All rights reserved.
-+ * Copyright (c) 2005 Topspin Communications.  All rights reserved.
-+ * Copyright (c) 2005 Cisco Systems.  All rights reserved.
-+ * Copyright (c) 2005 Open Grid Computing, Inc. All rights reserved.
-+ */
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6de98ac..395763e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -8626,6 +8626,14 @@ L:	linux-pm@vger.kernel.org
+ S:	Supported
+ F:	drivers/cpufreq/intel_pstate.c
+ 
++INTEL ETHERNET PROTOCL DRIVER FOR RDMA
++M:	Mustafa Ismail <mustafa.ismail@intel.com>
++M:	Shiraz Saleem <shiraz.saleem@intel.com>
++L:	linux-rdma@vger.kernel.org
++S:	Supported
++F:	drivers/infiniband/hw/irdma/
++F:	include/uapi/rdma/irdma-abi.h
 +
-+#ifndef IRDMA_ABI_H
-+#define IRDMA_ABI_H
-+
-+#include <linux/types.h>
-+
-+/* irdma must support legacy GEN_1 i40iw kernel
-+ * and user-space whose last ABI ver is 5
-+ */
-+#define IRDMA_ABI_VER 6
-+
-+enum irdma_memreg_type {
-+	IW_MEMREG_TYPE_MEM  = 0,
-+	IW_MEMREG_TYPE_QP   = 1,
-+	IW_MEMREG_TYPE_CQ   = 2,
-+	IW_MEMREG_TYPE_RSVD = 3,
-+	IW_MEMREG_TYPE_MW   = 4,
-+};
-+
-+struct irdma_alloc_ucontext_req {
-+	__u32 rsvd32;
-+	__u8 userspace_ver;
-+	__u8 rsvd8[3];
-+};
-+
-+struct i40iw_alloc_ucontext_req {
-+	__u32 rsvd32;
-+	__u8 userspace_ver;
-+	__u8 rsvd8[3];
-+};
-+
-+struct irdma_alloc_ucontext_resp {
-+	__aligned_u64 feature_flags;
-+	__aligned_u64 db_mmap_key;
-+	__u32 max_hw_wq_frags;
-+	__u32 max_hw_read_sges;
-+	__u32 max_hw_inline;
-+	__u32 max_hw_rq_quanta;
-+	__u32 max_hw_wq_quanta;
-+	__u32 min_hw_cq_size;
-+	__u32 max_hw_cq_size;
-+	__u32 rsvd1[7];
-+	__u16 max_hw_sq_chunk;
-+	__u16 rsvd2[11];
-+	__u8 kernel_ver;
-+	__u8 hw_rev;
-+	__u8 rsvd3[6];
-+};
-+
-+struct i40iw_alloc_ucontext_resp {
-+	__u32 max_pds;
-+	__u32 max_qps;
-+	__u32 wq_size; /* size of the WQs (SQ+RQ) in the mmaped area */
-+	__u8 kernel_ver;
-+	__u8 rsvd[3];
-+};
-+
-+struct irdma_alloc_pd_resp {
-+	__u32 pd_id;
-+	__u8 rsvd[4];
-+};
-+
-+struct irdma_resize_cq_req {
-+	__aligned_u64 user_cq_buffer;
-+};
-+
-+struct irdma_create_cq_req {
-+	__aligned_u64 user_cq_buf;
-+	__aligned_u64 user_shadow_area;
-+};
-+
-+struct irdma_create_qp_req {
-+	__aligned_u64 user_wqe_bufs;
-+	__aligned_u64 user_compl_ctx;
-+};
-+
-+struct i40iw_create_qp_req {
-+	__aligned_u64 user_wqe_bufs;
-+	__aligned_u64 user_compl_ctx;
-+};
-+
-+struct irdma_mem_reg_req {
-+	__u16 reg_type; /* Memory, QP or CQ */
-+	__u16 cq_pages;
-+	__u16 rq_pages;
-+	__u16 sq_pages;
-+};
-+
-+struct irdma_modify_qp_req {
-+	__u8 sq_flush;
-+	__u8 rq_flush;
-+	__u8 rsvd[6];
-+};
-+
-+struct irdma_create_cq_resp {
-+	__u32 cq_id;
-+	__u32 cq_size;
-+};
-+
-+struct irdma_create_qp_resp {
-+	__u32 qp_id;
-+	__u32 actual_sq_size;
-+	__u32 actual_rq_size;
-+	__u32 irdma_drv_opt;
-+	__u32 qp_caps;
-+	__u16 rsvd1;
-+	__u8 lsmm;
-+	__u8 rsvd2;
-+};
-+
-+struct i40iw_create_qp_resp {
-+	__u32 qp_id;
-+	__u32 actual_sq_size;
-+	__u32 actual_rq_size;
-+	__u32 i40iw_drv_opt;
-+	__u16 push_idx;
-+	__u8 lsmm;
-+	__u8 rsvd;
-+};
-+
-+struct irdma_modify_qp_resp {
-+	__aligned_u64 push_wqe_mmap_key;
-+	__aligned_u64 push_db_mmap_key;
-+	__u16 push_offset;
-+	__u8 push_valid;
-+	__u8 rsvd[5];
-+};
-+
-+struct irdma_create_ah_resp {
-+	__u32 ah_id;
-+	__u8 rsvd[4];
-+};
-+#endif /* IRDMA_ABI_H */
+ INTEL SPEED SELECT TECHNOLOGY
+ M:	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
+ L:	platform-driver-x86@vger.kernel.org
 -- 
 1.8.3.1
 
