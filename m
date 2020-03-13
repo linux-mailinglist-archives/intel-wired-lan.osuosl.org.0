@@ -2,52 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A654189101
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Mar 2020 23:05:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C407318910E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Mar 2020 23:07:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E25BA86B7A;
-	Tue, 17 Mar 2020 22:05:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 599DA875DA;
+	Tue, 17 Mar 2020 22:07:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yxBORaq7aiYc; Tue, 17 Mar 2020 22:05:28 +0000 (UTC)
+	with ESMTP id aqlwPMLN3rIJ; Tue, 17 Mar 2020 22:07:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 03A2786B92;
-	Tue, 17 Mar 2020 22:05:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 866EE875C0;
+	Tue, 17 Mar 2020 22:07:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D05271BF30C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 08:40:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1AC101BF841
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BAA0922FD5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 08:40:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0BEE9231A5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sKun+b6Hi-jC for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Mar 2020 08:40:04 +0000 (UTC)
+ with ESMTP id Gs1Qz5FH+szu for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Mar 2020 15:16:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 5784B22DEC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 08:40:04 +0000 (UTC)
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id EFEA022773
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:16:57 +0000 (UTC)
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2020 01:40:03 -0700
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2020 08:16:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,548,1574150400"; d="scan'208";a="237147961"
-Received: from sgsxdev004.isng.intel.com (HELO localhost) ([10.226.88.13])
- by orsmga008.jf.intel.com with ESMTP; 13 Mar 2020 01:39:59 -0700
-From: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
+X-IronPort-AV: E=Sophos;i="5.70,549,1574150400"; d="scan'208";a="236980974"
+Received: from ssaleem-mobl.amr.corp.intel.com ([10.254.43.202])
+ by fmsmga008.fm.intel.com with ESMTP; 13 Mar 2020 08:16:56 -0700
+From: Shiraz Saleem <shiraz.saleem@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 13 Mar 2020 16:39:43 +0800
-Message-Id: <8bd05d664cec0b4d72ee8f31b77d3f12b90e27a0.1584088476.git.jack.ping.chng@linux.intel.com>
-X-Mailer: git-send-email 2.11.0
-X-Mailman-Approved-At: Tue, 17 Mar 2020 22:05:17 +0000
-Subject: [Intel-wired-lan] [next-queue PATCH v3] gwdpa: gswip: Introduce
- Gigabit Ethernet Switch (GSWIP) device driver
+Date: Fri, 13 Mar 2020 10:16:26 -0500
+Message-Id: <20200313151640.2070-3-shiraz.saleem@intel.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20200313151640.2070-1-shiraz.saleem@intel.com>
+References: <20200313151640.2070-1-shiraz.saleem@intel.com>
+MIME-Version: 1.0
+X-Mailman-Approved-At: Tue, 17 Mar 2020 22:06:09 +0000
+Subject: [Intel-wired-lan] [PATCH RFC v5 02/16] RDMA/irdma: Implement device
+ initialization definitions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,5215 +63,3176 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: cheol.yong.kim@intel.com,
- Amireddy Mallikarjuna reddy <mallikarjunax.reddy@linux.intel.com>
-MIME-Version: 1.0
+Cc: Mustafa Ismail <mustafa.ismail@intel.com>,
+ Shiraz Saleem <shiraz.saleem@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This driver enables the Intel's LGM SoC GSWIP block. GSWIP is a core module
-tailored for L2/L3/L4+ data plane and QoS functions. It allows CPUs and
-other accelerators connected to the SoC datapath to enqueue and dequeue
-packets through DMAs. Most configuration values are stored in tables
-such as Parsing and Classification Engine tables, Buffer Manager tables
-and Pseudo MAC tables.
+From: Mustafa Ismail <mustafa.ismail@intel.com>
 
-Signed-off-by: Jack Ping CHNG <jack.ping.chng@linux.intel.com>
-Signed-off-by: Amireddy Mallikarjuna reddy <mallikarjunax.reddy@linux.intel.com>
+Implement device initialization routines, interrupt set-up,
+and allocate object bit-map tracking structures.
+Also, add device specific attributes and register definitions.
+
+Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
+Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
 ---
-Changes:
+ drivers/infiniband/hw/irdma/hw.c        | 2597 +++++++++++++++++++++++++++++++
+ drivers/infiniband/hw/irdma/i40iw_hw.c  |  211 +++
+ drivers/infiniband/hw/irdma/i40iw_hw.h  |  162 ++
+ drivers/infiniband/hw/irdma/icrdma_hw.c |   76 +
+ drivers/infiniband/hw/irdma/icrdma_hw.h |   62 +
+ 5 files changed, 3108 insertions(+)
+ create mode 100644 drivers/infiniband/hw/irdma/hw.c
+ create mode 100644 drivers/infiniband/hw/irdma/i40iw_hw.c
+ create mode 100644 drivers/infiniband/hw/irdma/i40iw_hw.h
+ create mode 100644 drivers/infiniband/hw/irdma/icrdma_hw.c
+ create mode 100644 drivers/infiniband/hw/irdma/icrdma_hw.h
 
-v3:
-- Removed redundant err print for platform_get_irq_byname
-- Fixed duplicated argument mac_get_mii_interface
-- Used common define for MAC/PMAC
----
- drivers/net/ethernet/intel/Kconfig                 |  11 +
- drivers/net/ethernet/intel/Makefile                |   1 +
- drivers/net/ethernet/intel/gwdpa/Makefile          |   5 +
- drivers/net/ethernet/intel/gwdpa/gswip/Makefile    |  10 +
- drivers/net/ethernet/intel/gwdpa/gswip/gswip.h     | 448 ++++++++++++
- .../net/ethernet/intel/gwdpa/gswip/gswip_core.c    | 804 +++++++++++++++++++++
- .../net/ethernet/intel/gwdpa/gswip/gswip_core.h    |  90 +++
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c | 179 +++++
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h |  19 +
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c | 225 ++++++
- .../net/ethernet/intel/gwdpa/gswip/gswip_port.c    | 330 +++++++++
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h | 491 +++++++++++++
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c | 332 +++++++++
- drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h | 195 +++++
- drivers/net/ethernet/intel/gwdpa/gswip/lmac.c      |  46 ++
- drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c   | 524 ++++++++++++++
- .../net/ethernet/intel/gwdpa/gswip/mac_common.h    | 238 ++++++
- drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c   | 186 +++++
- drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c     | 643 ++++++++++++++++
- drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h     | 236 ++++++
- 20 files changed, 5013 insertions(+)
- create mode 100644 drivers/net/ethernet/intel/gwdpa/Makefile
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/Makefile
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip.h
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/lmac.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
- create mode 100644 drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 154e2e818ec6..82fa937cfa48 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -341,4 +341,15 @@ config IGC
- 	  To compile this driver as a module, choose M here. The module
- 	  will be called igc.
- 
-+config INTEL_GSWIP
-+	tristate "Intel(R) Gigabit Ethernet Switch IP support"
-+	default n
-+	depends on OF_MDIO
-+	help
-+	  Turn on this option to build GSWIP driver.
-+	  Gigabit Ethernet Switch is a hardware IP in the
-+	  Intel Networking SoCs. This driver consists of
-+	  core and mac. It is part of the Intel gateway
-+	  datapath architecture.
-+
- endif # NET_VENDOR_INTEL
-diff --git a/drivers/net/ethernet/intel/Makefile b/drivers/net/ethernet/intel/Makefile
-index 3075290063f6..ab3281e9bc4c 100644
---- a/drivers/net/ethernet/intel/Makefile
-+++ b/drivers/net/ethernet/intel/Makefile
-@@ -16,3 +16,4 @@ obj-$(CONFIG_IXGB) += ixgb/
- obj-$(CONFIG_IAVF) += iavf/
- obj-$(CONFIG_FM10K) += fm10k/
- obj-$(CONFIG_ICE) += ice/
-+obj-y += gwdpa/
-diff --git a/drivers/net/ethernet/intel/gwdpa/Makefile b/drivers/net/ethernet/intel/gwdpa/Makefile
+diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
 new file mode 100644
-index 000000000000..ada65e907601
+index 0000000..294ee3c
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/Makefile
-@@ -0,0 +1,5 @@
-+# SPDX-License-Identifier: GPL-2.0
-+#
-+# Makefile for the Intel datapath specific drivers.
-+#
-+obj-$(CONFIG_INTEL_GSWIP)	+= gswip/
-\ No newline at end of file
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/Makefile b/drivers/net/ethernet/intel/gwdpa/gswip/Makefile
-new file mode 100644
-index 000000000000..548b716d6984
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/Makefile
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0
-+#
-+# Makefile for GSWIP
-+#
-+obj-y += gswip-dev.o gswip-core.o gswip-mac.o
-+
-+gswip-dev-y := gswip_dev.o
-+gswip-core-y := gswip_core.o gswip_port.o gswip_tbl.o
-+gswip-mac-y := mac_dev.o mac_cfg.o gswip_mac.o xgmac.o lmac.o
-+
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip.h
-new file mode 100644
-index 000000000000..1e8b4b5b146a
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip.h
-@@ -0,0 +1,448 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+#ifndef _DATAPATH_GSWIP_H_
-+#define _DATAPATH_GSWIP_H_
-+
-+#include <linux/device.h>
-+#include <linux/bits.h>
-+
-+#define BR_PORT_MAP_NUM		16
-+#define PMAC_BSL_THRES_NUM	3
-+#define PMAC_HEADER_NUM		8
-+
-+enum gswip_cpu_parser_hdr_cfg {
-+	GSWIP_CPU_PARSER_NIL,
-+	GSWIP_CPU_PARSER_FLAGS,
-+	GSWIP_CPU_PARSER_OFFSETS_FLAGS,
-+	GSWIP_CPU_PARSER_RESERVED,
-+};
-+
-+struct gswip_cpu_port_cfg {
-+	u8 lpid;
-+	bool is_cpu_port;
-+	bool spec_tag_ig;
-+	bool spec_tag_eg;
-+	bool fcs_chk;
-+	bool fcs_generate;
-+	enum gswip_cpu_parser_hdr_cfg no_mpe_parser_cfg;
-+	enum gswip_cpu_parser_hdr_cfg mpe1_parser_cfg;
-+	enum gswip_cpu_parser_hdr_cfg mpe2_parser_cfg;
-+	enum gswip_cpu_parser_hdr_cfg mpe3_parser_cfg;
-+	bool ts_rm_ptp_pkt;
-+	bool ts_rm_non_ptp_pkt;
-+};
-+
-+enum gswip_pmac_short_frm_chk {
-+	GSWIP_PMAC_SHORT_LEN_DIS,
-+	GSWIP_PMAC_SHORT_LEN_ENA_UNTAG,
-+	GSWIP_PMAC_SHORT_LEN_ENA_TAG,
-+	GSWIP_PMAC_SHORT_LEN_RESERVED,
-+};
-+
-+enum gswip_pmac_proc_flags_eg_cfg {
-+	GSWIP_PMAC_PROC_FLAGS_NONE,
-+	GSWIP_PMAC_PROC_FLAGS_TC,
-+	GSWIP_PMAC_PROC_FLAGS_FLAG,
-+	GSWIP_PMAC_PROC_FLAGS_MIX,
-+};
-+
-+struct gswip_pmac_glb_cfg {
-+	u8 pmac_id;
-+	bool apad_en;
-+	bool pad_en;
-+	bool vpad_en;
-+	bool svpad_en;
-+	bool rx_fcs_dis;
-+	bool tx_fcs_dis;
-+	bool ip_trans_chk_reg_dis;
-+	bool ip_trans_chk_ver_dis;
-+	bool jumbo_en;
-+	u16 max_jumbo_len;
-+	u16 jumbo_thresh_len;
-+	bool long_frm_chk_dis;
-+	enum gswip_pmac_short_frm_chk short_frm_chk_type;
-+	bool proc_flags_eg_cfg_en;
-+	enum gswip_pmac_proc_flags_eg_cfg proc_flags_eg_cfg;
-+	u16 bsl_thresh[PMAC_BSL_THRES_NUM];
-+};
-+
-+struct gswip_pmac_bp_map {
-+	u8 pmac_id;
-+	u8 tx_dma_chan_id;
-+	u32 tx_q_mask;
-+	u32 rx_port_mask;
-+};
-+
-+enum gswip_pmac_ig_cfg_src {
-+	GSWIP_PMAC_IG_CFG_SRC_DMA_DESC,
-+	GSWIP_PMAC_IG_CFG_SRC_DEF_PMAC,
-+	GSWIP_PMAC_IG_CFG_SRC_PMAC,
-+};
-+
-+struct gswip_pmac_ig_cfg {
-+	u8 pmac_id;
-+	u8 tx_dma_chan_id;
-+	bool err_pkt_disc;
-+	bool class_def;
-+	bool class_en;
-+	enum gswip_pmac_ig_cfg_src sub_id;
-+	bool src_port_id_def;
-+	bool pmac_present;
-+	u8 def_pmac_hdr[PMAC_HEADER_NUM];
-+};
-+
-+struct gswip_pmac_eg_cfg {
-+	u8 pmac_id;
-+	u8 dst_port_id;
-+	u8 tc;
-+	bool mpe1;
-+	bool mpe2;
-+	bool decrypt;
-+	bool encrypt;
-+	u8 flow_id_msb;
-+	bool process_sel;
-+	u8 rx_dma_chan_id;
-+	bool rm_l2_hdr;
-+	u8 num_byte_rm;
-+	bool fcs_en;
-+	bool pmac_en;
-+	bool redir_en;
-+	bool bsl_seg_disable;
-+	u8 bsl_tc;
-+	bool resv_dw1_en;
-+	u8 resv_dw1;
-+	bool resv_1dw0_en;
-+	u8 resv_1dw0;
-+	bool resv_2dw0_en;
-+	u8 resv_2dw0;
-+	bool tc_en;
-+};
-+
-+struct gswip_lpid2gpid {
-+	u16 lpid;
-+	u16 first_gpid;
-+	u16 num_gpid;
-+	u8 valid_bits;
-+};
-+
-+struct gswip_gpid2lpid {
-+	u16 gpid;
-+	u16 lpid;
-+	u8 subif_grp_field;
-+	bool subif_grp_field_ovr;
-+};
-+
-+enum gswip_ctp_port_config_mask {
-+	GSWIP_CTP_PORT_CONFIG_MASK_BRIDGE_PORT_ID	= BIT(0),
-+	GSWIP_CTP_PORT_CONFIG_MASK_FORCE_TRAFFIC_CLASS	= BIT(1),
-+	GSWIP_CTP_PORT_CONFIG_MASK_INGRESS_VLAN		= BIT(2),
-+	GSWIP_CTP_PORT_CONFIG_MASK_INGRESS_VLAN_IGMP	= BIT(3),
-+	GSWIP_CTP_PORT_CONFIG_MASK_EGRESS_VLAN		= BIT(4),
-+	GSWIP_CTP_PORT_CONFIG_MASK_EGRESS_VLAN_IGMP	= BIT(5),
-+	GSWIP_CTP_PORT_CONFIG_MASK_INRESS_NTO1_VLAN	= BIT(6),
-+	GSWIP_CTP_PORT_CONFIG_MASK_EGRESS_NTO1_VLAN	= BIT(7),
-+	GSWIP_CTP_PORT_CONFIG_INGRESS_MARKING		= BIT(8),
-+	GSWIP_CTP_PORT_CONFIG_EGRESS_MARKING		= BIT(9),
-+	GSWIP_CTP_PORT_CONFIG_EGRESS_MARKING_OVERRIDE	= BIT(10),
-+	GSWIP_CTP_PORT_CONFIG_EGRESS_REMARKING		= BIT(11),
-+	GSWIP_CTP_PORT_CONFIG_INGRESS_METER		= BIT(12),
-+	GSWIP_CTP_PORT_CONFIG_EGRESS_METER		= BIT(13),
-+	GSWIP_CTP_PORT_CONFIG_BRIDGING_BYPASS		= BIT(14),
-+	GSWIP_CTP_PORT_CONFIG_FLOW_ENTRY		= BIT(15),
-+	GSWIP_CTP_PORT_CONFIG_LOOPBACK_AND_MIRROR	= BIT(16),
-+	GSWIP_CTP_PORT_CONFIG_MASK_FORCE		= BIT(31),
-+};
-+
-+struct gswip_ctp_port_cfg {
-+	u8 lpid;
-+	u16 subif_id_grp;
-+	u16 br_pid;
-+	enum gswip_ctp_port_config_mask mask;
-+	bool br_bypass;
-+};
-+
-+enum gswip_lport_mode {
-+	GSWIP_LPORT_8BIT_WLAN,
-+	GSWIP_LPORT_9BIT_WLAN,
-+	GSWIP_LPORT_GPON,
-+	GSWIP_LPORT_EPON,
-+	GSWIP_LPORT_GINT,
-+	GSWIP_LPORT_OTHER = 0xFF,
-+};
-+
-+struct gswip_ctp_port_info {
-+	u8 lpid;
-+	u16 first_pid;
-+	u16 num_port;
-+	enum gswip_lport_mode mode;
-+	u16 br_pid;
-+};
-+
-+enum gswip_br_port_cfg_mask {
-+	GSWIP_BR_PORT_CFG_MASK_BR_ID			= BIT(0),
-+	GSWIP_BR_PORT_CFG_MASK_IG_VLAN			= BIT(1),
-+	GSWIP_BR_PORT_CFG_MASK_EG_VLAN			= BIT(2),
-+	GSWIP_BR_PORT_CFG_MASK_IG_MARKING		= BIT(3),
-+	GSWIP_BR_PORT_CFG_MASK_EG_REMARKING		= BIT(4),
-+	GSWIP_BR_PORT_CFG_MASK_IG_METER			= BIT(5),
-+	GSWIP_BR_PORT_CFG_MASK_EG_SUB_METER		= BIT(6),
-+	GSWIP_BR_PORT_CFG_MASK_EG_CTP_MAPPING		= BIT(7),
-+	GSWIP_BR_PORT_CFG_MASK_BR_PORT_MAP		= BIT(8),
-+	GSWIP_BR_PORT_CFG_MASK_MCAST_DST_IP_LOOKUP	= BIT(9),
-+	GSWIP_BR_PORT_CFG_MASK_MCAST_SRC_IP_LOOKUP	= BIT(10),
-+	GSWIP_BR_PORT_CFG_MASK_MCAST_DST_MAC_LOOKUP	= BIT(11),
-+	GSWIP_BR_PORT_CFG_MASK_MCAST_SRC_MAC_LEARNING	= BIT(12),
-+	GSWIP_BR_PORT_CFG_MASK_MAC_SPOOFING		= BIT(13),
-+	GSWIP_BR_PORT_CFG_MASK_PORT_LOCK		= BIT(14),
-+	GSWIP_BR_PORT_CFG_MASK_MAC_LEARNING_LIMIT	= BIT(15),
-+	GSWIP_BR_PORT_CFG_MASK_MAC_LEARNED_COUNT	= BIT(16),
-+	GSWIP_BR_PORT_CFG_MASK_IG_VLAN_FILTER		= BIT(17),
-+	GSWIP_BR_PORT_CFG_MASK_EG_VLAN_FILTER1		= BIT(18),
-+	GSWIP_BR_PORT_CFG_MASK_EG_VLAN_FILTER2		= BIT(19),
-+	GSWIP_BR_PORT_CFG_MASK_FORCE			= BIT(31),
-+};
-+
-+enum gswip_pmapper_mapping_mode {
-+	GSWIP_PMAPPER_MAPPING_PCP,
-+	GSWIP_PMAPPER_MAPPING_DSCP,
-+};
-+
-+enum gswip_br_port_eg_meter {
-+	GSWIP_BR_PORT_EG_METER_BROADCAST,
-+	GSWIP_BR_PORT_EG_METER_MULTICAST,
-+	GSWIP_BR_PORT_EG_METER_UNKNOWN_MCAST_IP,
-+	GSWIP_BR_PORT_EG_METER_UNKNOWN_MCAST_NON_IP,
-+	GSWIP_BR_PORT_EG_METER_UNKNOWN_UCAST,
-+	GSWIP_BR_PORT_EG_METER_OTHERS,
-+	GSWIP_BR_PORT_EG_METER_MAX,
-+};
-+
-+struct gswip_br_port_alloc {
-+	u8 br_id;
-+	u8 br_pid;
-+};
-+
-+enum gswip_br_cfg_mask {
-+	GSWIP_BR_CFG_MASK_MAC_LEARNING_LIMIT	= BIT(0),
-+	GSWIP_BR_CFG_MASK_MAC_LEARNED_COUNT	= BIT(1),
-+	GSWIP_BR_CFG_MASK_MAC_DISCARD_COUNT	= BIT(2),
-+	GSWIP_BR_CFG_MASK_SUB_METER		= BIT(3),
-+	GSWIP_BR_CFG_MASK_FORWARDING_MODE	= BIT(4),
-+	GSWIP_BR_CFG_MASK_FORCE			= BIT(31),
-+};
-+
-+enum gswip_br_fwd_mode {
-+	GSWIP_BR_FWD_FLOOD,
-+	GSWIP_BR_FWD_DISCARD,
-+	GSWIP_BR_FWD_CPU,
-+};
-+
-+struct gswip_br_alloc {
-+	u8 br_id;
-+};
-+
-+struct gswip_br_cfg {
-+	u8 br_id;
-+	enum gswip_br_cfg_mask mask;
-+	bool mac_lrn_limit_en;
-+	u16 mac_lrn_limit;
-+	u16 mac_lrn_count;
-+	u32 lrn_disc_event;
-+	enum gswip_br_fwd_mode fwd_bcast;
-+	enum gswip_br_fwd_mode fwd_unk_mcast_ip;
-+	enum gswip_br_fwd_mode fwd_unk_mcast_non_ip;
-+	enum gswip_br_fwd_mode fwd_unk_ucast;
-+};
-+
-+struct gswip_qos_wred_q_cfg {
-+	u8 qid;
-+	u16 red_min;
-+	u16 red_max;
-+	u16 yellow_min;
-+	u16 yellow_max;
-+	u16 green_min;
-+	u16 green_max;
-+};
-+
-+struct gswip_qos_wred_port_cfg {
-+	u8 lpid;
-+	u16 red_min;
-+	u16 red_max;
-+	u16 yellow_min;
-+	u16 yellow_max;
-+	u16 green_min;
-+	u16 green_max;
-+};
-+
-+enum gswip_qos_q_map_mode {
-+	GSWIP_QOS_QMAP_SINGLE_MD,
-+	GSWIP_QOS_QMAP_SUBIFID_MD,
-+};
-+
-+struct gswip_qos_q_port {
-+	u8 lpid;
-+	bool extration_en;
-+	enum gswip_qos_q_map_mode q_map_mode;
-+	u8 tc_id;
-+	u8 qid;
-+	bool egress;
-+	u8 redir_port_id;
-+	bool en_ig_pce_bypass;
-+	bool resv_port_mode;
-+};
-+
-+struct gswip_register {
-+	u16 offset;
-+	u16 data;
-+};
-+
-+enum {
-+	SPEED_LMAC_10M,
-+	SPEED_LMAC_100M,
-+	SPEED_LMAC_200M,
-+	SPEED_LMAC_1G,
-+	SPEED_XGMAC_10M,
-+	SPEED_XGMAC_100M,
-+	SPEED_XGMAC_1G,
-+	SPEED_XGMII_25G,
-+	SPEED_XGMAC_5G,
-+	SPEED_XGMAC_10G,
-+	SPEED_GMII_25G,
-+	SPEED_MAC_AUTO,
-+};
-+
-+enum gsw_portspeed {
-+	/* 10 Mbit/s */
-+	GSW_PORT_SPEED_10 = 10,
-+
-+	/* 100 Mbit/s */
-+	GSW_PORT_SPEED_100 = 100,
-+
-+	/* 200 Mbit/s */
-+	GSW_PORT_SPEED_200 = 200,
-+
-+	/* 1000 Mbit/s */
-+	GSW_PORT_SPEED_1000 = 1000,
-+
-+	/* 2.5 Gbit/s */
-+	GSW_PORT_SPEED_25000 = 25000,
-+
-+	/* 10 Gbit/s */
-+	GSW_PORT_SPEED_100000 = 100000,
-+};
-+
-+enum gsw_portlink_status {
-+	LINK_AUTO,
-+	LINK_UP,
-+	LINK_DOWN,
-+};
-+
-+enum gsw_flow_control_modes {
-+	FC_AUTO,
-+	FC_RX,
-+	FC_TX,
-+	FC_RXTX,
-+	FC_DIS,
-+	FC_INVALID,
-+};
-+
-+/* Ethernet port interface mode. */
-+enum gsw_mii_mode {
-+	/* Normal PHY interface (twisted pair), use internal MII Interface */
-+	GSW_PORT_HW_MII,
-+
-+	/* Reduced MII interface in normal mode */
-+	GSW_PORT_HW_RMII,
-+
-+	/* GMII or MII, depending upon the speed */
-+	GSW_PORT_HW_GMII,
-+
-+	/* RGMII mode */
-+	GSW_PORT_HW_RGMII,
-+
-+	/* XGMII mode */
-+	GSW_PORT_HW_XGMII,
-+};
-+
-+struct core_common_ops {
-+	int (*enable)(struct device *dev, bool enable);
-+	int (*cpu_port_cfg_get)(struct device *dev,
-+				struct gswip_cpu_port_cfg *cpu);
-+	int (*reg_get)(struct device *dev, struct gswip_register *param);
-+	int (*reg_set)(struct device *dev, struct gswip_register *param);
-+};
-+
-+struct core_pmac_ops {
-+	int (*gbl_cfg_set)(struct device *dev, struct gswip_pmac_glb_cfg *pmac);
-+	int (*bp_map_get)(struct device *dev, struct gswip_pmac_bp_map *bp);
-+	int (*ig_cfg_set)(struct device *dev, struct gswip_pmac_ig_cfg *ig);
-+	int (*eg_cfg_set)(struct device *dev, struct gswip_pmac_eg_cfg *eg);
-+};
-+
-+struct core_gpid_ops {
-+	int (*lpid2gpid_set)(struct device *dev,
-+			     struct gswip_lpid2gpid *lp2gp);
-+	int (*lpid2gpid_get)(struct device *dev,
-+			     struct gswip_lpid2gpid *lp2gp);
-+	int (*gpid2lpid_set)(struct device *dev,
-+			     struct gswip_gpid2lpid *gp2lp);
-+	int (*gpid2lpid_get)(struct device *dev,
-+			     struct gswip_gpid2lpid *gp2lp);
-+};
-+
-+struct core_ctp_ops {
-+	int (*alloc)(struct device *dev, struct gswip_ctp_port_info *ctp);
-+	int (*free)(struct device *dev, u8 lpid);
-+};
-+
-+struct core_br_port_ops {
-+	int (*alloc)(struct device *dev, struct gswip_br_port_alloc *bp);
-+	int (*free)(struct device *dev, struct gswip_br_port_alloc *bp);
-+};
-+
-+struct core_br_ops {
-+	int (*alloc)(struct device *dev, struct gswip_br_alloc *br);
-+	int (*free)(struct device *dev, struct gswip_br_alloc *br);
-+};
-+
-+struct core_qos_ops {
-+	int (*q_port_set)(struct device *dev, struct gswip_qos_q_port *qport);
-+	int (*wred_q_cfg_set)(struct device *dev,
-+			      struct gswip_qos_wred_q_cfg *wredq);
-+	int (*wred_port_cfg_set)(struct device *dev,
-+				 struct gswip_qos_wred_port_cfg *wredp);
-+};
-+
-+struct gsw_mac_ops {
-+	/* Initialize MAC */
-+	int (*init)(struct device *dev);
-+
-+	int (*set_macaddr)(struct device *dev, u8 *mac_addr);
-+	int (*get_link_sts)(struct device *dev);
-+
-+	int (*get_duplex)(struct device *dev);
-+
-+	int (*set_speed)(struct device *dev, u8 speed);
-+	int (*get_speed)(struct device *dev);
-+
-+	u32 (*get_mtu)(struct device *dev);
-+	int (*set_mtu)(struct device *dev, u32 mtu);
-+
-+	u32 (*get_flowctrl)(struct device *dev);
-+	int (*set_flowctrl)(struct device *dev, u32 val);
-+
-+	int (*get_pfsa)(struct device *dev, u8 *addr, u32 *mode);
-+	int (*set_pfsa)(struct device *dev, u8 *mac_addr, u32 macif);
-+
-+	int (*get_mii_if)(struct device *dev);
-+	int (*set_mii_if)(struct device *dev, u32 mii_mode);
-+
-+	u32 (*get_lpi)(struct device *dev);
-+
-+	int (*get_fcsgen)(struct device *dev);
-+};
-+
-+struct gsw_adap_ops {
-+	int (*sw_core_enable)(struct device *dev, u32 val);
-+};
-+#endif
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c
-new file mode 100644
-index 000000000000..164840beaae4
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.c
-@@ -0,0 +1,804 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+
-+#include <asm/unaligned.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/of_platform.h>
-+
-+#include "gswip_core.h"
-+#include "gswip_dev.h"
-+#include "gswip_reg.h"
-+#include "gswip_tbl.h"
-+#include "mac_common.h"
-+
-+#define GSWIP_VER		0x32
-+
-+/* TX DMA channels for PMAC0 to PMAC2 */
-+#define PMAC0_TX_DMACHID_START	0
-+#define PMAC0_TX_DMACHID_END	16
-+#define PMAC1_TX_DMACHID_START	0
-+#define PMAC1_TX_DMACHID_END	16
-+#define PMAC2_TX_DMACHID_START	0
-+#define PMAC2_TX_DMACHID_END	16
-+
-+#define MAX_JUMBO_FRM_LEN	10000
-+
-+/* Data Protocol Unit (DPU) */
-+enum dpu {
-+	DPU,
-+	NON_DPU,
-+};
-+
-+enum queue_id {
-+	QUEUE0,
-+	QUEUE1,
-+	QUEUE2,
-+	QUEUE3,
-+	QUEUE4,
-+	QUEUE5,
-+	QUEUE6,
-+	QUEUE7,
-+	QUEUE8,
-+	QUEUE9,
-+	QUEUE10,
-+};
-+
-+enum traffic_class {
-+	TC0,
-+	TC1,
-+	TC2,
-+	TC3,
-+	TC_MAX,
-+};
-+
-+struct eg_pce_bypass_path {
-+	/* egress logical port id */
-+	u8 eg_pid;
-+	/* local extracted */
-+	bool ext;
-+	/* queue id */
-+	u8 qid;
-+	/* redirect logical port id */
-+	u8 redir_pid;
-+};
-+
-+struct ig_pce_bypass_path {
-+	/* ingress logical port id */
-+	u8 ig_pid;
-+	/* local extracted */
-+	bool ext;
-+	/* traffic class */
-+	u8 tc_start;
-+	u8 tc_end;
-+	/* queue id */
-+	u8 qid;
-+	/* redirect logical port id */
-+	u8 redir_pid;
-+};
-+
-+/* default GSWIP egress PCE bypass path Q-map */
-+static struct eg_pce_bypass_path eg_pce_byp_path[] = {
-+	{MAC2,  false, QUEUE0, MAC2 },
-+	{MAC3,  false, QUEUE1, MAC3 },
-+	{MAC4,  false, QUEUE2, MAC4 },
-+	{MAC5,  false, QUEUE3, MAC5 },
-+	{MAC6,  false, QUEUE4, MAC6 },
-+	{MAC7,  false, QUEUE5, MAC7 },
-+	{MAC8,  false, QUEUE6, MAC8 },
-+	{MAC9,  false, QUEUE7, MAC9 },
-+	{MAC10, false, QUEUE8, MAC10},
-+};
-+
-+/* default GSWIP ingress PCE bypass path Q-map */
-+static struct ig_pce_bypass_path ig_pce_byp_path[] = {
-+	{PMAC0, false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC2,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC3,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC4,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC5,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC6,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC7,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC8,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC9,  false, TC0, TC_MAX, QUEUE10, PMAC2},
-+	{MAC10, false, TC0, TC_MAX, QUEUE10, PMAC2},
-+};
-+
-+static inline int pmac_ig_cfg(struct gswip_core_priv *priv, u8 pmac_id, u8 dpu)
-+{
-+	const struct core_pmac_ops *pmac_ops =  priv->ops.pmac_ops;
-+	u8 start[] = { PMAC0_TX_DMACHID_START,
-+		       PMAC1_TX_DMACHID_START,
-+		       PMAC2_TX_DMACHID_START };
-+	u8 end[] = { PMAC0_TX_DMACHID_END,
-+		     PMAC1_TX_DMACHID_END,
-+		     PMAC2_TX_DMACHID_END };
-+	u8 pmac[] = { PMAC0, PMAC1, PMAC2 };
-+	struct gswip_pmac_ig_cfg ig_cfg = {0};
-+	int i, ret;
-+
-+	ig_cfg.pmac_id = pmac_id;
-+	ig_cfg.err_pkt_disc = true;
-+	ig_cfg.class_en = true;
-+
-+	for (i = start[pmac_id]; i < end[pmac_id]; i++) {
-+		ig_cfg.tx_dma_chan_id = i;
-+		ig_cfg.def_pmac_hdr[2] = FIELD_PREP(PMAC_IGCFG_HDR_ID,
-+						    pmac[pmac_id]);
-+
-+		ret = pmac_ops->ig_cfg_set(priv->dev, &ig_cfg);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static inline int pmac_eg_cfg(struct gswip_core_priv *priv, u8 pmac_id, u8 dpu)
-+{
-+	const struct core_pmac_ops *pmac_ops =  priv->ops.pmac_ops;
-+	struct gswip_pmac_eg_cfg pmac_eg = {0};
-+
-+	pmac_eg.pmac_id = pmac_id;
-+	pmac_eg.pmac_en = true;
-+	pmac_eg.bsl_seg_disable = true;
-+
-+	return pmac_ops->eg_cfg_set(priv->dev, &pmac_eg);
-+}
-+
-+static inline int pmac_glbl_cfg(struct gswip_core_priv *priv, u8 pmac_id)
-+{
-+	const struct core_pmac_ops *pmac_ops =  priv->ops.pmac_ops;
-+	struct gswip_pmac_glb_cfg pmac_cfg = {0};
-+
-+	pmac_cfg.pmac_id = pmac_id;
-+	pmac_cfg.rx_fcs_dis = true;
-+	pmac_cfg.jumbo_en = true;
-+	pmac_cfg.max_jumbo_len = MAX_JUMBO_FRM_LEN;
-+	pmac_cfg.long_frm_chk_dis = true;
-+	pmac_cfg.short_frm_chk_type = GSWIP_PMAC_SHORT_LEN_ENA_UNTAG;
-+	pmac_cfg.proc_flags_eg_cfg_en = true;
-+	pmac_cfg.proc_flags_eg_cfg = GSWIP_PMAC_PROC_FLAGS_MIX;
-+
-+	return pmac_ops->gbl_cfg_set(priv->dev, &pmac_cfg);
-+}
-+
-+static int gswip_core_pmac_init_nondpu(struct gswip_core_priv *priv)
-+{
-+	int i, ret;
-+
-+	for (i = 0; i < priv->num_pmac; i++) {
-+		ret = pmac_glbl_cfg(priv, i);
-+		if (ret)
-+			return ret;
-+
-+		ret = pmac_ig_cfg(priv, i, NON_DPU);
-+		if (ret)
-+			return ret;
-+
-+		ret = pmac_eg_cfg(priv, i, NON_DPU);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int gswip_core_set_def_eg_pce_bypass_qmap(struct gswip_core_priv *priv,
-+						 enum gswip_qos_q_map_mode mode)
-+{
-+	const struct core_qos_ops *qos_ops =  priv->ops.qos_ops;
-+	int num_elem = ARRAY_SIZE(eg_pce_byp_path);
-+	struct gswip_qos_q_port q_map = {0};
-+	int i, ret;
-+
-+	q_map.egress = true;
-+	q_map.q_map_mode = mode;
-+
-+	for (i = 0; i < num_elem; i++) {
-+		q_map.lpid = eg_pce_byp_path[i].eg_pid;
-+		q_map.extration_en = eg_pce_byp_path[i].ext;
-+		q_map.qid = eg_pce_byp_path[i].qid;
-+		q_map.redir_port_id = eg_pce_byp_path[i].redir_pid;
-+
-+		ret = qos_ops->q_port_set(priv->dev, &q_map);
-+		if (ret)
-+			return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int gswip_core_set_def_ig_pce_bypass_qmap(struct gswip_core_priv *priv)
-+{
-+	const struct core_qos_ops *qos_ops =  priv->ops.qos_ops;
-+	int num_elem = ARRAY_SIZE(ig_pce_byp_path);
-+	struct gswip_qos_q_port q_map = {0};
-+	int i, j, ret;
-+
-+	q_map.en_ig_pce_bypass = true;
-+
-+	for (i = 0; i < num_elem; i++) {
-+		for (j = ig_pce_byp_path[i].tc_start;
-+		     j < ig_pce_byp_path[i].tc_end; j++) {
-+			q_map.lpid = ig_pce_byp_path[i].ig_pid;
-+			q_map.qid = ig_pce_byp_path[i].qid;
-+			q_map.redir_port_id = ig_pce_byp_path[i].redir_pid;
-+			q_map.tc_id = j;
-+
-+			ret = qos_ops->q_port_set(priv->dev, &q_map);
-+			if (ret)
-+				return -EINVAL;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static inline u16 pmac_reg(u16 offset, u8 id)
-+{
-+	u16 pmac_offset[] = { 0, PMAC_REG_OFFSET_1, PMAC_REG_OFFSET_2 };
-+
-+	return offset += pmac_offset[id];
-+}
-+
-+/* PMAC global configuration */
-+static int gswip_pmac_glb_cfg_set(struct device *dev,
-+				  struct gswip_pmac_glb_cfg *pmac)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 bsl_reg[] = { PMAC_BSL_LEN0, PMAC_BSL_LEN1, PMAC_BSL_LEN2 };
-+	u16 ctrl_reg[] = { PMAC_CTRL_0, PMAC_CTRL_1,
-+			   PMAC_CTRL_2, PMAC_CTRL_4 };
-+	u16 ctrl[PMAC_CTRL_NUM] = {0};
-+	u8 id;
-+	int i;
-+
-+	if (pmac->pmac_id >= priv->num_pmac) {
-+		dev_err(priv->dev, "Invalid pmac id %d\n", pmac->pmac_id);
-+		return -EINVAL;
-+	}
-+
-+	ctrl[0] = FIELD_PREP(PMAC_CTRL_0_FCSEN, pmac->rx_fcs_dis) |
-+		  FIELD_PREP(PMAC_CTRL_0_APADEN, pmac->apad_en) |
-+		  FIELD_PREP(PMAC_CTRL_0_VPAD2EN, pmac->svpad_en) |
-+		  FIELD_PREP(PMAC_CTRL_0_VPADEN, pmac->vpad_en) |
-+		  FIELD_PREP(PMAC_CTRL_0_PADEN, pmac->pad_en) |
-+		  FIELD_PREP(PMAC_CTRL_0_FCS, pmac->tx_fcs_dis) |
-+		  FIELD_PREP(PMAC_CTRL_0_CHKREG, pmac->ip_trans_chk_reg_dis) |
-+		  FIELD_PREP(PMAC_CTRL_0_CHKVER, pmac->ip_trans_chk_ver_dis);
-+
-+	if (pmac->jumbo_en) {
-+		ctrl[1] = pmac->max_jumbo_len,
-+		ctrl[2] = FIELD_PREP(PMAC_CTRL_2_MLEN, 1);
-+	}
-+
-+	ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKL, pmac->long_frm_chk_dis);
-+
-+	switch (pmac->short_frm_chk_type) {
-+	case GSWIP_PMAC_SHORT_LEN_DIS:
-+		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 0);
-+		break;
-+
-+	case GSWIP_PMAC_SHORT_LEN_ENA_UNTAG:
-+		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 1);
-+		break;
-+
-+	case GSWIP_PMAC_SHORT_LEN_ENA_TAG:
-+		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 2);
-+		break;
-+
-+	case GSWIP_PMAC_SHORT_LEN_RESERVED:
-+		ctrl[2] |= FIELD_PREP(PMAC_CTRL_2_LCHKS, 3);
-+		break;
-+	}
-+
-+	switch (pmac->proc_flags_eg_cfg) {
-+	case GSWIP_PMAC_PROC_FLAGS_NONE:
-+		break;
-+
-+	case GSWIP_PMAC_PROC_FLAGS_TC:
-+		ctrl[3] |= FIELD_PREP(PMAC_CTRL_4_FLAGEN, 0);
-+		break;
-+
-+	case GSWIP_PMAC_PROC_FLAGS_FLAG:
-+		ctrl[3] |= FIELD_PREP(PMAC_CTRL_4_FLAGEN, 1);
-+		break;
-+
-+	case GSWIP_PMAC_PROC_FLAGS_MIX:
-+		ctrl[3] |= FIELD_PREP(PMAC_CTRL_4_FLAGEN, 2);
-+		break;
-+	}
-+
-+	id = pmac->pmac_id;
-+
-+	for (i = 0; i < PMAC_CTRL_NUM; i++)
-+		regmap_write(priv->regmap, pmac_reg(ctrl_reg[i], id), ctrl[i]);
-+
-+	for (i = 0; i < PMAC_BSL_NUM; i++)
-+		regmap_write(priv->regmap, pmac_reg(bsl_reg[i], id),
-+			     pmac->bsl_thresh[i]);
-+
-+	return 0;
-+}
-+
-+/* PMAC backpressure configuration */
-+static int gswip_pmac_bp_map_get(struct device *dev,
-+				 struct gswip_pmac_bp_map *bp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pmac_tbl_prog pmac_tbl = {0};
-+	int ret;
-+
-+	pmac_tbl.id = PMAC_BP_MAP;
-+	pmac_tbl.pmac_id = bp->pmac_id;
-+	pmac_tbl.addr = FIELD_GET(PMAC_BPMAP_TX_DMA_CH, bp->tx_dma_chan_id);
-+	pmac_tbl.num_val = PMAC_BP_MAP_TBL_VAL_NUM;
-+
-+	ret = gswip_pmac_table_read(priv, &pmac_tbl);
-+	if (ret)
-+		return -EINVAL;
-+
-+	bp->rx_port_mask = pmac_tbl.val[0];
-+	bp->tx_q_mask = pmac_tbl.val[1];
-+	bp->tx_q_mask |= FIELD_PREP(PMAC_BPMAP_TX_Q_UPPER, pmac_tbl.val[2]);
-+
-+	return 0;
-+}
-+
-+/* PMAC ingress configuration */
-+static int gswip_pmac_ig_cfg_set(struct device *dev,
-+				 struct gswip_pmac_ig_cfg *ig)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pmac_tbl_prog pmac_tbl = {0};
-+	u16 *val;
-+	u16 i;
-+
-+	pmac_tbl.id = PMAC_IG_CFG;
-+	pmac_tbl.pmac_id = ig->pmac_id;
-+	pmac_tbl.addr = FIELD_GET(PMAC_IGCFG_TX_DMA_CH, ig->tx_dma_chan_id);
-+
-+	val = &pmac_tbl.val[0];
-+	for (i = 0; i < 4; i++)
-+		val[i] = get_unaligned_be16(&ig->def_pmac_hdr[i * 2]);
-+
-+	switch (ig->sub_id) {
-+	case GSWIP_PMAC_IG_CFG_SRC_DMA_DESC:
-+		break;
-+
-+	case GSWIP_PMAC_IG_CFG_SRC_PMAC:
-+	case GSWIP_PMAC_IG_CFG_SRC_DEF_PMAC:
-+		val[4] = PMAC_IGCFG_VAL4_SUBID_MODE;
-+		break;
-+	}
-+
-+	val[4] |= FIELD_PREP(PMAC_IGCFG_VAL4_PMAC_FLAG, ig->pmac_present) |
-+		  FIELD_PREP(PMAC_IGCFG_VAL4_CLASSEN_MODE, ig->class_en) |
-+		  FIELD_PREP(PMAC_IGCFG_VAL4_CLASS_MODE, ig->class_def) |
-+		  FIELD_PREP(PMAC_IGCFG_VAL4_ERR_DP, ig->err_pkt_disc) |
-+		  FIELD_PREP(PMAC_IGCFG_VAL4_SPPID_MODE, ig->src_port_id_def);
-+
-+	pmac_tbl.num_val = PMAC_IG_CFG_TBL_VAL_NUM;
-+
-+	return gswip_pmac_table_write(priv, &pmac_tbl);
-+}
-+
-+/* PMAC egress configuration */
-+static int gswip_pmac_eg_cfg_set(struct device *dev,
-+				 struct gswip_pmac_eg_cfg *eg)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pmac_tbl_prog pmac_tbl = {0};
-+	u16 ctrl, pmac_ctrl4;
-+	u16 *val;
-+
-+	pmac_ctrl4 = pmac_reg(PMAC_CTRL_4, eg->pmac_id);
-+
-+	pmac_tbl.id = PMAC_EG_CFG;
-+	pmac_tbl.pmac_id = eg->pmac_id;
-+	pmac_tbl.addr = FIELD_PREP(PMAC_EGCFG_DST_PORT_ID, eg->dst_port_id)
-+			| FIELD_PREP(PMAC_EGCFG_FLOW_ID_MSB,
-+				     eg->flow_id_msb);
-+
-+	ctrl = reg_rbits(priv, pmac_ctrl4, PMAC_CTRL_4_FLAGEN);
-+
-+	if (ctrl == PMAC_RX_FSM_IDLE) {
-+		pmac_tbl.addr |= FIELD_PREP(PMAC_EGCFG_TC_4BITS, eg->tc);
-+	} else if (ctrl == PMAC_RX_FSM_IGCFG) {
-+		pmac_tbl.addr |= FIELD_PREP(PMAC_EGCFG_MPE1, eg->mpe1) |
-+				 FIELD_PREP(PMAC_EGCFG_MPE2, eg->mpe2) |
-+				 FIELD_PREP(PMAC_EGCFG_ECRYPT, eg->encrypt) |
-+				 FIELD_PREP(PMAC_EGCFG_DECRYPT, eg->decrypt);
-+	} else if (ctrl == PMAC_RX_FSM_DASA) {
-+		pmac_tbl.addr |= FIELD_PREP(PMAC_EGCFG_TC_2BITS, eg->tc) |
-+				 FIELD_PREP(PMAC_EGCFG_MPE1, eg->mpe1) |
-+				 FIELD_PREP(PMAC_EGCFG_MPE2, eg->mpe2);
-+	}
-+
-+	val = &pmac_tbl.val[0];
-+	val[0] = FIELD_PREP(PMAC_EGCFG_VAL0_REDIR, eg->redir_en) |
-+		 FIELD_PREP(PMAC_EGCFG_VAL0_RES_3BITS, ctrl) |
-+		   FIELD_PREP(PMAC_EGCFG_VAL0_BSL, eg->bsl_tc) |
-+		   FIELD_PREP(PMAC_EGCFG_VAL0_RES_2BITS, eg->resv_2dw0);
-+
-+	val[1] = FIELD_PREP(PMAC_EGCFG_VAL1_RX_DMA_CH, eg->rx_dma_chan_id);
-+
-+	val[2] = FIELD_PREP(PMAC_EGCFG_VAL2_FCS_MODE, eg->fcs_en) |
-+		   FIELD_PREP(PMAC_EGCFG_VAL2_PMAC_FLAG, eg->pmac_en);
-+
-+	if (eg->rm_l2_hdr) {
-+		val[2] |= PMAC_EGCFG_VAL2_L2HD_RM_MODE |
-+			    FIELD_PREP(PMAC_EGCFG_VAL2_L2HD_RM,
-+				       eg->num_byte_rm);
-+	}
-+
-+	pmac_tbl.num_val = PMAC_EG_CFG_TBL_VAL_NUM;
-+
-+	return gswip_pmac_table_write(priv, &pmac_tbl);
-+}
-+
-+static int gswip_cpu_port_cfg_get(struct device *dev,
-+				  struct gswip_cpu_port_cfg *cpu)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 lpid, val;
-+
-+	lpid = cpu->lpid;
-+	if (lpid >= priv->num_lport) {
-+		dev_err(priv->dev, "Invalid cpu port id %d > %d\n",
-+			lpid, priv->num_lport);
-+		return -EINVAL;
-+	}
-+
-+	cpu->is_cpu_port = lpid == priv->cpu_port;
-+	cpu->spec_tag_ig = reg_rbits(priv, PCE_PCTRL_0(lpid),
-+				     PCE_PCTRL_0_IGSTEN);
-+	cpu->fcs_chk = reg_rbits(priv, SDMA_PCTRL(lpid), SDMA_PCTRL_FCSIGN);
-+
-+	reg_r16(priv, FDMA_PASR, &val);
-+	cpu->no_mpe_parser_cfg = FIELD_GET(FDMA_PASR_CPU, val);
-+	cpu->mpe1_parser_cfg = FIELD_GET(FDMA_PASR_MPE1, val);
-+	cpu->mpe2_parser_cfg = FIELD_GET(FDMA_PASR_MPE2, val);
-+	cpu->mpe3_parser_cfg = FIELD_GET(FDMA_PASR_MPE3, val);
-+
-+	reg_r16(priv, FDMA_PCTRL(lpid), &val);
-+	cpu->spec_tag_eg = FIELD_GET(FDMA_PCTRL_STEN, val);
-+	cpu->ts_rm_ptp_pkt = FIELD_GET(FDMA_PCTRL_TS_PTP, val);
-+	cpu->ts_rm_non_ptp_pkt = FIELD_GET(FDMA_PCTRL_TS_NONPTP, val);
-+
-+	return 0;
-+}
-+
-+static int gswip_register_get(struct device *dev, struct gswip_register *param)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+
-+	reg_r16(priv, param->offset, &param->data);
-+
-+	return 0;
-+}
-+
-+static int gswip_register_set(struct device *dev, struct gswip_register *param)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+
-+	regmap_write(priv->regmap, param->offset, param->data);
-+
-+	return 0;
-+}
-+
-+/* Global Port ID/ Logical Port ID */
-+static int gswip_lpid2gpid_set(struct device *dev,
-+			       struct gswip_lpid2gpid *lp2gp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 lpid, first_gpid, last_gpid, val;
-+
-+	lpid = lp2gp->lpid;
-+	first_gpid = lp2gp->first_gpid;
-+	last_gpid = first_gpid + lp2gp->num_gpid - 1;
-+
-+	if (lpid >= priv->num_lport) {
-+		dev_err(priv->dev, "Invalid lpid %d >= %d\n",
-+			lpid, priv->num_lport);
-+		return -EINVAL;
-+	}
-+
-+	if (last_gpid >= priv->num_glb_port) {
-+		dev_err(priv->dev, "Invalid last gpid %d >= %d\n",
-+			last_gpid, priv->num_glb_port);
-+		return -EINVAL;
-+	}
-+
-+	val = FIELD_PREP(ETHSW_GPID_STARTID_STARTID, first_gpid) |
-+	      FIELD_PREP(ETHSW_GPID_STARTID_BITS, lp2gp->valid_bits);
-+	regmap_write(priv->regmap, ETHSW_GPID_STARTID(lpid), val);
-+
-+	reg_wbits(priv, ETHSW_GPID_ENDID(lpid),
-+		  ETHSW_GPID_ENDID_ENDID, last_gpid);
-+
-+	return 0;
-+}
-+
-+static int gswip_lpid2gpid_get(struct device *dev,
-+			       struct gswip_lpid2gpid *lp2gp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 lpid, val;
-+
-+	lpid = lp2gp->lpid;
-+	if (lpid >= priv->num_lport) {
-+		dev_err(priv->dev, "Invalid lpid %d >= %d\n",
-+			lpid, priv->num_lport);
-+		return -EINVAL;
-+	}
-+
-+	reg_r16(priv, ETHSW_GPID_STARTID(lpid), &val);
-+	lp2gp->first_gpid = FIELD_GET(ETHSW_GPID_STARTID_STARTID, val);
-+	lp2gp->valid_bits = FIELD_GET(ETHSW_GPID_STARTID_BITS, val);
-+
-+	reg_r16(priv, ETHSW_GPID_ENDID(lpid), &val);
-+	lp2gp->num_gpid = val - lp2gp->first_gpid + 1;
-+
-+	return 0;
-+}
-+
-+static int gswip_gpid2lpid_set(struct device *dev,
-+			       struct gswip_gpid2lpid *gp2lp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 val = 0;
-+
-+	if (gp2lp->lpid >= priv->num_lport) {
-+		dev_err(priv->dev, "Invalid lpid %d >= %d\n",
-+			gp2lp->lpid, priv->num_lport);
-+		return -EINVAL;
-+	}
-+
-+	if (gp2lp->gpid >= priv->num_glb_port) {
-+		dev_err(priv->dev, "Invalid gpid %d >= %d\n",
-+			gp2lp->gpid, priv->num_glb_port);
-+		return -EINVAL;
-+	}
-+
-+	val = FIELD_PREP(GPID_RAM_VAL_LPID, gp2lp->lpid) |
-+	      FIELD_PREP(GPID_RAM_VAL_SUBID_GRP, gp2lp->subif_grp_field) |
-+	      FIELD_PREP(GPID_RAM_VAL_OV, gp2lp->subif_grp_field_ovr);
-+
-+	regmap_write(priv->regmap, GPID_RAM_VAL, val);
-+
-+	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to access gpid table\n");
-+		return -EBUSY;
-+	}
-+
-+	reg_r16(priv, GPID_RAM_CTRL, &val);
-+
-+	update_val(&val, GPID_RAM_CTRL_ADDR, gp2lp->gpid);
-+	val |= FIELD_PREP(GPID_RAM_CTRL_OPMOD, 1) |
-+	       FIELD_PREP(GPID_RAM_CTRL_BAS, 1);
-+
-+	regmap_write(priv->regmap, GPID_RAM_CTRL, val);
-+
-+	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to write gpid table\n");
-+		return -EBUSY;
-+	}
-+
-+	return 0;
-+}
-+
-+static int gswip_gpid2lpid_get(struct device *dev,
-+			       struct gswip_gpid2lpid *gp2lp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 val;
-+
-+	if (gp2lp->gpid >= priv->num_glb_port) {
-+		dev_err(priv->dev, "gpid %d >= %d\n",
-+			gp2lp->gpid, priv->num_glb_port);
-+		return -EINVAL;
-+	}
-+
-+	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to access gpid table\n");
-+		return -EBUSY;
-+	}
-+
-+	reg_r16(priv, GPID_RAM_CTRL, &val);
-+
-+	update_val(&val, GPID_RAM_CTRL_ADDR, gp2lp->gpid);
-+	val |= FIELD_PREP(GPID_RAM_CTRL_OPMOD, 0) |
-+	       FIELD_PREP(GPID_RAM_CTRL_BAS, 1);
-+
-+	regmap_write(priv->regmap, GPID_RAM_CTRL, val);
-+
-+	if (tbl_rw_tmout(priv, GPID_RAM_CTRL, GPID_RAM_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to read gpid table\n");
-+		return -EBUSY;
-+	}
-+
-+	reg_r16(priv, GPID_RAM_VAL, &val);
-+
-+	gp2lp->lpid = FIELD_GET(GPID_RAM_VAL_LPID, val);
-+	gp2lp->subif_grp_field = FIELD_GET(GPID_RAM_VAL_SUBID_GRP, val);
-+	gp2lp->subif_grp_field_ovr = FIELD_GET(GPID_RAM_VAL_OV, val);
-+
-+	return 0;
-+}
-+
-+static int gswip_enable(struct device *dev, bool enable)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 i;
-+
-+	for (i = 0; i < priv->num_lport; i++) {
-+		reg_wbits(priv, FDMA_PCTRL(i), FDMA_PCTRL_EN, enable);
-+		reg_wbits(priv, SDMA_PCTRL(i), SDMA_PCTRL_PEN, enable);
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct core_common_ops gswip_core_common_ops = {
-+	.enable = gswip_enable,
-+	.cpu_port_cfg_get = gswip_cpu_port_cfg_get,
-+	.reg_get = gswip_register_get,
-+	.reg_set = gswip_register_set,
-+};
-+
-+static const struct core_pmac_ops gswip_core_pmac_ops = {
-+	.gbl_cfg_set = gswip_pmac_glb_cfg_set,
-+	.bp_map_get = gswip_pmac_bp_map_get,
-+	.ig_cfg_set = gswip_pmac_ig_cfg_set,
-+	.eg_cfg_set = gswip_pmac_eg_cfg_set,
-+};
-+
-+static const struct core_gpid_ops gswip_core_gpid_ops = {
-+	.lpid2gpid_set = gswip_lpid2gpid_set,
-+	.lpid2gpid_get = gswip_lpid2gpid_get,
-+	.gpid2lpid_set = gswip_gpid2lpid_set,
-+	.gpid2lpid_get = gswip_gpid2lpid_get,
-+};
-+
-+static int gswip_core_setup_ops(struct gswip_core_priv *priv)
-+{
-+	struct core_ops *ops =  &priv->ops;
-+
-+	ops->common_ops = &gswip_core_common_ops;
-+	ops->pmac_ops = &gswip_core_pmac_ops;
-+	ops->gpid_ops = &gswip_core_gpid_ops;
-+
-+	return 0;
-+}
-+
-+static int gswip_core_get_hw_cap(struct gswip_core_priv *priv)
-+{
-+	u16 val;
-+
-+	priv->ver = reg_rbits(priv, ETHSW_VERSION, ETHSW_VERSION_REV_ID);
-+	if (priv->ver != GSWIP_VER) {
-+		dev_err(priv->dev, "Wrong hardware ip version %d\n",
-+			priv->ver);
-+		return -EINVAL;
-+	}
-+
-+	priv->num_phy_port = reg_rbits(priv, ETHSW_CAP_1, ETHSW_CAP_1_PPORTS);
-+
-+	reg_r16(priv, ETHSW_CAP_1, &val);
-+	priv->num_lport = priv->num_phy_port;
-+	priv->num_lport += FIELD_GET(ETHSW_CAP_1_VPORTS, val);
-+	priv->num_q = FIELD_GET(ETHSW_CAP_1_QUEUE, val);
-+
-+	priv->num_pmac = reg_rbits(priv, ETHSW_CAP_13, ETHSW_CAP_13_PMAC);
-+
-+	reg_r16(priv, ETHSW_CAP_17, &val);
-+	priv->num_br = (1 << FIELD_GET(ETHSW_CAP_17_BRG, val));
-+	priv->num_br_port = (1 << FIELD_GET(ETHSW_CAP_17_BRGPT, val));
-+
-+	reg_r16(priv, ETHSW_CAP_18, &priv->num_ctp);
-+
-+	priv->num_glb_port = priv->num_br_port * 2;
-+
-+	return 0;
-+}
-+
-+static int gswip_core_init(struct gswip_core_priv *priv)
-+{
-+	priv->br_map = devm_kzalloc(priv->dev, BITS_TO_LONGS(priv->num_br),
-+				    GFP_KERNEL);
-+	if (!priv->br_map)
-+		return -ENOMEM;
-+
-+	priv->br_port_map = devm_kzalloc(priv->dev,
-+					 BITS_TO_LONGS(priv->num_br_port),
-+					 GFP_KERNEL);
-+	if (!priv->br_port_map)
-+		return -ENOMEM;
-+
-+	priv->ctp_port_map = devm_kzalloc(priv->dev,
-+					  BITS_TO_LONGS(priv->num_ctp),
-+					  GFP_KERNEL);
-+	if (!priv->ctp_port_map)
-+		return -ENOMEM;
-+
-+	spin_lock_init(&priv->tbl_lock);
-+
-+	gswip_core_setup_ops(priv);
-+	gswip_core_setup_port_ops(priv);
-+
-+	return 0;
-+}
-+
-+static int gswip_core_setup(struct gswip_core_priv *priv)
-+{
-+	int ret;
-+
-+	ret = gswip_core_set_def_eg_pce_bypass_qmap(priv,
-+						    GSWIP_QOS_QMAP_SINGLE_MD);
-+	if (ret)
-+		return ret;
-+
-+	ret = gswip_core_set_def_ig_pce_bypass_qmap(priv);
-+	if (ret)
-+		return ret;
-+
-+	ret = gswip_core_pmac_init_nondpu(priv);
-+	if (ret)
-+		return -EINVAL;
-+
-+	return 0;
-+}
-+
-+static int gswip_core_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device *parent = dev->parent;
-+	struct gswip_core_priv *priv;
-+	struct gswip_pdata *pdata = parent->platform_data;
-+	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->pdev = pdev;
-+	priv->dev = dev;
-+	priv->regmap = pdata->core_regmap;
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	ret = gswip_core_get_hw_cap(priv);
-+	if (ret)
-+		return -EINVAL;
-+
-+	ret = gswip_core_init(priv);
-+	if (ret)
-+		return ret;
-+
-+	ret = gswip_core_setup(priv);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id gswip_core_of_match_table[] = {
-+	{ .compatible = "gswip-core" },
-+	{}
-+};
-+
-+MODULE_DEVICE_TABLE(of, gswip_core);
-+
-+static struct platform_driver gswip_core_drv = {
-+	.probe = gswip_core_probe,
-+	.driver = {
-+		.name = "gswip_core",
-+		.of_match_table = gswip_core_of_match_table,
++++ b/drivers/infiniband/hw/irdma/hw.c
+@@ -0,0 +1,2597 @@
++// SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB
++/* Copyright (c) 2015 - 2019 Intel Corporation */
++#include "main.h"
++
++static struct irdma_rsrc_limits rsrc_limits_table[] = {
++	[0] = {
++		.qplimit = 4096,
++	},
++	[1] = {
++		.qplimit = 128,
++	},
++	[2] = {
++		.qplimit = 1024,
++	},
++	[3] = {
++		.qplimit = 2048,
++	},
++	[4] = {
++		.qplimit = 16384,
++	},
++	[5] = {
++		.qplimit = 65536,
 +	},
 +};
 +
-+module_platform_driver(gswip_core_drv);
-+
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h
-new file mode 100644
-index 000000000000..614a9089c1b0
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_core.h
-@@ -0,0 +1,90 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+#ifndef _GSWIP_CORE_H_
-+#define _GSWIP_CORE_H_
-+
-+#include <linux/bitfield.h>
-+#include <linux/delay.h>
-+#include <linux/regmap.h>
-+
-+#include "gswip.h"
-+
-+/* table should be ready in 30 clock cycle */
-+#define TBL_BUSY_TIMEOUT_US	1
-+
-+struct core_ops {
-+	const struct core_common_ops *common_ops;
-+	const struct core_pmac_ops *pmac_ops;
-+	const struct core_gpid_ops *gpid_ops;
-+	const struct core_ctp_ops *ctp_ops;
-+	const struct core_br_port_ops *br_port_ops;
-+	const struct core_br_ops *br_ops;
-+	const struct core_qos_ops *qos_ops;
++/* types of hmc objects */
++static enum irdma_hmc_rsrc_type iw_hmc_obj_types[] = {
++	IRDMA_HMC_IW_QP,
++	IRDMA_HMC_IW_CQ,
++	IRDMA_HMC_IW_HTE,
++	IRDMA_HMC_IW_ARP,
++	IRDMA_HMC_IW_APBVT_ENTRY,
++	IRDMA_HMC_IW_MR,
++	IRDMA_HMC_IW_XF,
++	IRDMA_HMC_IW_XFFL,
++	IRDMA_HMC_IW_Q1,
++	IRDMA_HMC_IW_Q1FL,
++	IRDMA_HMC_IW_TIMER,
++	IRDMA_HMC_IW_FSIMC,
++	IRDMA_HMC_IW_FSIAV,
++	IRDMA_HMC_IW_RRF,
++	IRDMA_HMC_IW_RRFFL,
++	IRDMA_HMC_IW_HDR,
++	IRDMA_HMC_IW_MD,
++	IRDMA_HMC_IW_OOISC,
++	IRDMA_HMC_IW_OOISCFFL,
 +};
 +
-+struct gswip_core_priv {
-+	struct device *dev;
-+
-+	unsigned long *br_map;
-+	unsigned long *br_port_map;
-+	unsigned long *ctp_port_map;
-+	void *pdev;
-+
-+	u8 cpu_port;
-+	u8 num_lport;
-+	u8 num_br;
-+	u8 num_br_port;
-+	u16 num_ctp;
-+	u16 num_glb_port;
-+	u16 num_pmac;
-+	u16 num_phy_port;
-+	u16 num_q;
-+
-+	u16 ver;
-+	struct regmap *regmap;
-+	/* table read/write lock */
-+	spinlock_t tbl_lock;
-+
-+	struct core_ops ops;
-+};
-+
-+static inline void update_val(u16 *val, u16 mask, u16 set)
-+{
-+	*val &= ~mask;
-+	*val |= FIELD_PREP(mask, set);
-+}
-+
-+static inline void reg_r16(struct gswip_core_priv *priv, u16 reg, u16 *val)
-+{
-+	unsigned int reg_val;
-+
-+	regmap_read(priv->regmap, reg, &reg_val);
-+	*val = reg_val;
-+}
-+
-+static inline void reg_wbits(struct gswip_core_priv *priv,
-+			     u16 reg, u16 mask, u16 val)
-+{
-+	regmap_update_bits(priv->regmap, reg, mask, FIELD_PREP(mask, val));
-+}
-+
-+static inline u16 reg_rbits(struct gswip_core_priv *priv, u16 reg, u16 mask)
-+{
-+	unsigned int reg_val;
-+
-+	regmap_read(priv->regmap, reg, &reg_val);
-+	return FIELD_GET(mask, reg_val);
-+}
-+
-+/* Access table with timeout */
-+static inline int tbl_rw_tmout(struct gswip_core_priv *priv, u16 reg, u16 mask)
-+{
-+	unsigned int val;
-+
-+	return regmap_read_poll_timeout(priv->regmap, reg, val, !(val & mask),
-+					0, TBL_BUSY_TIMEOUT_US);
-+}
-+
-+int gswip_core_setup_port_ops(struct gswip_core_priv *priv);
-+
-+#endif
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
-new file mode 100644
-index 000000000000..492e0dfd7159
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.c
-@@ -0,0 +1,179 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+
-+#include <linux/clk.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
-+
-+#include "gswip.h"
-+#include "gswip_dev.h"
-+
-+#define GSWIP_SUBDEV_MAC_MAX	9
-+#define GSWIP_SUBDEV_CORE_MAX	1
-+#define GSWIP_MAC_DEV_NAME	"gswip_mac"
-+#define GSWIP_CORE_DEV_NAME	"gswip_core"
-+
-+struct gswip_priv {
-+	struct device *dev;
-+	u32 id;
-+	int num_subdev_mac;
-+	int num_subdev_core;
-+	struct gswip_pdata pdata;
-+};
-+
-+static int regmap_reg_write(void *context, unsigned int reg, unsigned int val)
-+{
-+	struct gswip_pdata *pdata = context;
-+
-+	writew(val, pdata->core + reg);
-+
-+	return 0;
-+}
-+
-+static int regmap_reg_read(void *context, unsigned int reg, unsigned int *val)
-+{
-+	struct gswip_pdata *pdata = context;
-+
-+	*val = readw(pdata->core + reg);
-+
-+	return 0;
-+}
-+
-+static const struct regmap_config gswip_core_regmap_config = {
-+	.reg_bits = 16,
-+	.val_bits = 16,
-+	.reg_stride = 4,
-+	.reg_write = regmap_reg_write,
-+	.reg_read = regmap_reg_read,
-+	.fast_io = true,
-+};
-+
-+static int np_gswip_parse_dt(struct platform_device *pdev,
-+			     struct gswip_priv *priv)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = dev->of_node;
-+	struct gswip_pdata *pdata = &priv->pdata;
-+	struct device_node *np;
-+
-+	pdata->sw = devm_platform_ioremap_resource_byname(pdev, "switch");
-+	if (IS_ERR(pdata->sw))
-+		return PTR_ERR(pdata->sw);
-+
-+	pdata->lmac = devm_platform_ioremap_resource_byname(pdev, "lmac");
-+	if (IS_ERR(pdata->lmac))
-+		return PTR_ERR(pdata->lmac);
-+
-+	pdata->core = devm_platform_ioremap_resource_byname(pdev, "core");
-+	if (IS_ERR(pdata->core))
-+		return PTR_ERR(pdata->core);
-+	pdata->core_regmap = devm_regmap_init(dev, NULL, pdata,
-+					      &gswip_core_regmap_config);
-+	if (IS_ERR(pdata->core_regmap))
-+		return PTR_ERR(pdata->core_regmap);
-+
-+	pdata->sw_irq = platform_get_irq_byname(pdev, "switch");
-+	if (pdata->sw_irq < 0)
-+		return -ENODEV;
-+
-+	pdata->core_irq = platform_get_irq_byname(pdev, "core");
-+	if (pdata->core_irq < 0)
-+		return -ENODEV;
-+
-+	pdata->ptp_clk = devm_clk_get(dev, "ptp");
-+	if (IS_ERR(pdata->ptp_clk))
-+		return PTR_ERR(pdata->ptp_clk);
-+
-+	pdata->sw_clk = devm_clk_get(dev, "switch");
-+	if (IS_ERR(pdata->sw_clk))
-+		return PTR_ERR(pdata->sw_clk);
-+
-+	for_each_node_by_name(node, GSWIP_MAC_DEV_NAME) {
-+		priv->num_subdev_mac++;
-+		if (priv->num_subdev_mac > GSWIP_SUBDEV_MAC_MAX) {
-+			dev_err(dev, "too many GSWIP mac subdevices\n");
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (!priv->num_subdev_mac) {
-+		dev_err(dev, "GSWIP mac subdevice not found\n");
-+		return -EINVAL;
-+	}
-+
-+	np = of_find_node_by_name(node, GSWIP_CORE_DEV_NAME);
-+	if (np) {
-+		priv->num_subdev_core++;
-+		of_node_put(np);
-+	} else {
-+		dev_err(dev, "GSWIP core subdevice not found\n");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id gswip_of_match_table[] = {
-+	{ .compatible = "intel,lgm-gswip" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, gswip_of_match_table);
-+
-+static int np_gswip_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct reset_control *rcu_reset;
-+	struct gswip_priv *priv;
-+	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->dev = dev;
-+
-+	ret = np_gswip_parse_dt(pdev, priv);
-+	if (ret) {
-+		dev_err(dev, "failed to parse device tree\n");
-+		return ret;
-+	}
-+
-+	dev->id = priv->id;
-+
-+	rcu_reset = devm_reset_control_get_optional(dev, NULL);
-+	if (IS_ERR(rcu_reset)) {
-+		dev_err(dev, "error getting reset control of gswip\n");
-+		return PTR_ERR(rcu_reset);
-+	}
-+
-+	reset_control_assert(rcu_reset);
-+	udelay(1);
-+	reset_control_deassert(rcu_reset);
-+
-+	dev_set_drvdata(dev, priv);
-+
-+	dev->platform_data = &priv->pdata;
-+
-+	ret = devm_of_platform_populate(dev);
-+
-+	return ret;
-+}
-+
-+static struct platform_driver np_gswip_driver = {
-+	.probe = np_gswip_probe,
-+	.driver = {
-+		.name = "np_gswip",
-+		.of_match_table = gswip_of_match_table,
-+	},
-+};
-+
-+module_platform_driver(np_gswip_driver);
-+
-+MODULE_LICENSE("GPL v2");
-+
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h
-new file mode 100644
-index 000000000000..bdf5f26bc2ce
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_dev.h
-@@ -0,0 +1,19 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+#ifndef _GSWIP_DEV_H
-+#define _GSWIP_DEV_H
-+
-+struct gswip_pdata {
-+	void __iomem *sw;
-+	void __iomem *lmac;
-+	void __iomem *core;
-+	int sw_irq;
-+	int core_irq;
-+	struct clk *ptp_clk;
-+	struct clk *sw_clk;
-+	bool intr_flag;
-+	struct regmap *core_regmap;
-+};
-+
-+#endif
-+
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c
-new file mode 100644
-index 000000000000..eb8c8049a77f
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_mac.c
-@@ -0,0 +1,225 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+
-+#include <linux/bitfield.h>
-+#include <linux/types.h>
-+
-+#include "mac_common.h"
-+
-+int sw_core_enable(struct device *dev, u32 val)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	u32 reg;
-+
-+	spin_lock_bh(&priv->sw_lock);
-+	reg = sw_read(priv, GSWIP_CFG);
-+	reg &= ~GSWIP_CFG_CORE_SE_EN;
-+	reg |= FIELD_PREP(GSWIP_CFG_CORE_SE_EN, val);
-+	sw_write(priv, GSWIP_CFG, reg);
-+	spin_unlock_bh(&priv->sw_lock);
-+
-+	return 0;
-+}
-+
-+int sw_set_mac_rxfcs_op(struct gswip_mac *priv, u32 val)
-+{
-+	u32 mac_op_cfg;
-+
-+	mac_op_cfg = sw_read(priv, MAC_OP_CFG_REG(priv->mac_idx));
-+	if (FIELD_GET(MAC_OP_CFG_RX_FCS, mac_op_cfg) != val) {
-+		mac_op_cfg &= ~MAC_OP_CFG_RX_FCS;
-+		mac_op_cfg |= FIELD_PREP(MAC_OP_CFG_RX_FCS, val);
-+		sw_write(priv, MAC_OP_CFG_REG(priv->mac_idx), mac_op_cfg);
-+	}
-+
-+	return 0;
-+}
-+
-+int sw_set_eee_cap(struct gswip_mac *priv, u32 val)
-+{
-+	u32 aneg_eee;
-+
-+	aneg_eee = sw_read(priv, ANEG_EEE_REG(priv->mac_idx));
-+	aneg_eee &= ~ANEG_EEE_CAP;
-+	aneg_eee |= FIELD_PREP(ANEG_EEE_CAP, val);
-+	sw_write(priv, ANEG_EEE_REG(priv->mac_idx), aneg_eee);
-+
-+	return 0;
-+}
-+
-+int sw_set_fe_intf(struct gswip_mac *priv, u32 macif)
-+{
-+	u32 mac_if_cfg;
-+
-+	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+
-+	if (macif == LMAC_MII)
-+		mac_if_cfg &= ~MAC_IF_CFG_CFGFE;
-+	else
-+		mac_if_cfg |= MAC_IF_CFG_CFGFE;
-+
-+	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), mac_if_cfg);
-+
-+	return 0;
-+}
-+
-+int sw_set_1g_intf(struct gswip_mac *priv, u32 macif)
-+{
-+	u32 mac_if_cfg;
-+
-+	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+
-+	if (macif == LMAC_GMII)
-+		mac_if_cfg &= ~MAC_IF_CFG_CFG1G;
-+	else
-+		mac_if_cfg |= MAC_IF_CFG_CFG1G;
-+
-+	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), mac_if_cfg);
-+
-+	return 0;
-+}
-+
-+int sw_set_2G5_intf(struct gswip_mac *priv, u32 macif)
-+{
-+	u32 mac_if_cfg;
-+
-+	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+
-+	if (macif == XGMAC_GMII)
-+		mac_if_cfg &= ~MAC_IF_CFG_CFG2G5;
-+	else
-+		mac_if_cfg |= MAC_IF_CFG_CFG2G5;
-+
-+	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), mac_if_cfg);
-+
-+	return 0;
-+}
-+
-+int sw_set_speed(struct gswip_mac *priv, u8 speed)
-+{
-+	u16 phy_mode = 0;
-+	u8 speed_msb = 0, speed_lsb = 0;
-+
-+	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
-+
-+	/* clear first */
-+	phy_mode &= ~PHY_MODE_SPEED_MSB & ~PHY_MODE_SPEED_LSB;
-+
-+	speed_msb = FIELD_GET(SPEED_MSB, speed);
-+	speed_lsb = FIELD_GET(SPEED_LSB, speed);
-+	phy_mode |= FIELD_PREP(PHY_MODE_SPEED_MSB, speed_msb);
-+	phy_mode |= FIELD_PREP(PHY_MODE_SPEED_LSB, speed_lsb);
-+
-+	sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
-+
-+	return 0;
-+}
-+
-+int sw_set_duplex_mode(struct gswip_mac *priv, u32 val)
-+{
-+	u16 phy_mode;
-+
-+	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
-+	if (FIELD_GET(PHY_MODE_FDUP, phy_mode) != val) {
-+		phy_mode &= ~PHY_MODE_FDUP;
-+		phy_mode |= FIELD_PREP(PHY_MODE_FDUP, val);
-+		sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
-+	}
-+
-+	return 0;
-+}
-+
-+int sw_get_duplex_mode(struct gswip_mac *priv)
-+{
-+	u16 phy_mode;
-+	int val;
-+
-+	phy_mode = sw_read(priv, PHY_STAT_REG(priv->mac_idx));
-+	val = FIELD_GET(PHY_STAT_FDUP, phy_mode);
-+
-+	return val;
-+}
-+
-+int sw_get_linkstatus(struct gswip_mac *priv)
-+{
-+	u16 phy_mode;
-+	int linkst;
-+
-+	phy_mode = sw_read(priv, PHY_STAT_REG(priv->mac_idx));
-+	linkst = FIELD_GET(PHY_STAT_LSTAT, phy_mode);
-+
-+	return linkst;
-+}
-+
-+int sw_set_linkstatus(struct gswip_mac *priv, u8 linkst)
-+{
-+	u16 phy_mode;
-+	u8 val;
-+
-+	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
-+	val = FIELD_GET(PHY_MODE_LINKST, phy_mode);
-+	if (val != linkst) {
-+		phy_mode &= ~PHY_MODE_LINKST;
-+		phy_mode |= FIELD_PREP(PHY_MODE_LINKST, linkst);
-+		sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
-+	}
-+
-+	return 0;
-+}
-+
-+int sw_set_flowctrl(struct gswip_mac *priv, u8 val, u32 mode)
-+{
-+	u16 phy_mode;
-+
-+	phy_mode = sw_read(priv, PHY_MODE_REG(priv->mac_idx));
-+
-+	switch (mode) {
-+	case FCONRX:
-+		phy_mode &= ~PHY_MODE_FCONRX;
-+		phy_mode |= FIELD_PREP(PHY_MODE_FCONRX, val);
-+		break;
-+
-+	case FCONTX:
-+		phy_mode &= ~PHY_MODE_FCONTX;
-+		phy_mode |= FIELD_PREP(PHY_MODE_FCONTX, val);
-+		break;
-+	}
-+
-+	sw_write(priv, PHY_MODE_REG(priv->mac_idx), phy_mode);
-+
-+	return 0;
-+}
-+
-+u32 sw_get_speed(struct gswip_mac *priv)
-+{
-+	u16 phy_mode = 0;
-+	u32 speed_msb, speed_lsb, speed;
-+
-+	phy_mode = sw_read(priv, PHY_STAT_REG(priv->mac_idx));
-+	speed_msb = FIELD_GET(PHY_STAT_SPEED_MSB, phy_mode);
-+	speed_lsb = FIELD_GET(PHY_STAT_SPEED_LSB, phy_mode);
-+	speed = (speed_msb << 2) | speed_lsb;
-+
-+	return speed;
-+}
-+
-+u32 sw_mac_get_mtu(struct gswip_mac *priv)
-+{
-+	u32 reg, val;
-+
-+	reg = sw_read(priv, MAC_MTU_CFG_REG(priv->mac_idx));
-+	val = FIELD_PREP(MAC_MTU_CFG_MTU, reg);
-+
-+	return val;
-+}
-+
-+int sw_mac_set_mtu(struct gswip_mac *priv, u32 mtu)
-+{
-+	u32 val;
-+
-+	val = sw_mac_get_mtu(priv);
-+	if (val != mtu)
-+		sw_write(priv, MAC_MTU_CFG_REG(priv->mac_idx), mtu);
-+
-+	return 0;
-+}
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c
-new file mode 100644
-index 000000000000..1fd611db9ffc
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_port.c
-@@ -0,0 +1,330 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation.*/
-+#include "gswip_core.h"
-+#include "gswip_reg.h"
-+#include "gswip_tbl.h"
-+
-+#define ENABLE		1
-+#define DISABLE		0
-+
-+static int gswip_ctp_port_set(struct gswip_core_priv *priv,
-+			      struct gswip_ctp_port_info *ctp)
-+{
-+	u16 val, last_port;
-+
-+	val = ctp->first_pid;
-+	last_port = ctp->first_pid + ctp->num_port - 1;
-+
-+	switch (ctp->mode) {
-+	case GSWIP_LPORT_8BIT_WLAN:
-+		val |= FIELD_PREP(ETHSW_CTP_STARTID_MD, MD_WLAN8);
-+		break;
-+
-+	case GSWIP_LPORT_9BIT_WLAN:
-+		val |= FIELD_PREP(ETHSW_CTP_STARTID_MD, MD_WLAN8);
-+		break;
-+	case GSWIP_LPORT_GPON:
-+	case GSWIP_LPORT_EPON:
-+	case GSWIP_LPORT_GINT:
-+	case GSWIP_LPORT_OTHER:
-+		val |= FIELD_PREP(ETHSW_CTP_STARTID_MD, MD_OTHER);
-+		break;
-+	}
-+
-+	regmap_write(priv->regmap, ETHSW_CTP_STARTID(ctp->lpid), val);
-+	regmap_write(priv->regmap, ETHSW_CTP_ENDID(ctp->lpid), last_port);
-+
-+	return 0;
-+}
-+
-+static int gswip_ctp_port_get(struct gswip_core_priv *priv,
-+			      struct gswip_ctp_port_info *ctp)
-+{
-+	u16 val, last_port;
-+
-+	reg_r16(priv, ETHSW_CTP_STARTID(ctp->lpid), &val);
-+
-+	ctp->mode = FIELD_GET(ETHSW_CTP_STARTID_MD, val);
-+	ctp->first_pid = FIELD_GET(ETHSW_CTP_STARTID_STARTID, val);
-+
-+	last_port = reg_rbits(priv, ETHSW_CTP_ENDID(ctp->lpid),
-+			      ETHSW_CTP_ENDID_ENDID);
-+	ctp->num_port = last_port - ctp->first_pid + 1;
-+
-+	return 0;
-+}
-+
-+static int gswip_ctp_port_alloc(struct device *dev,
-+				struct gswip_ctp_port_info *ctp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	u16 first_ctp;
-+	int ret;
-+
-+	if (!ctp->num_port || ctp->num_port >= priv->num_ctp) {
-+		dev_err(priv->dev, "Invalid num of ctp port requested %d\n",
-+			ctp->num_port);
-+		return -EINVAL;
-+	}
-+
-+	first_ctp = bitmap_find_next_zero_area(priv->ctp_port_map,
-+					       priv->num_ctp, 0,
-+					       ctp->num_port, 0);
-+	if (first_ctp >= priv->num_ctp) {
-+		dev_err(priv->dev, "Failed to find contiguous ctp port\n");
-+		return -EINVAL;
-+	}
-+
-+	bitmap_set(priv->ctp_port_map, first_ctp, ctp->num_port);
-+	ctp->first_pid = first_ctp;
-+
-+	ret = gswip_ctp_port_set(priv, ctp);
-+	if (ret) {
-+		bitmap_clear(priv->ctp_port_map, first_ctp, ctp->num_port);
-+		return ret;
-+	}
-+
-+	reg_wbits(priv, SDMA_PCTRL(ctp->lpid), SDMA_PCTRL_PEN, ENABLE);
-+
-+	return 0;
-+}
-+
-+static int gswip_ctp_port_free(struct device *dev, u8 lpid)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct gswip_ctp_port_info ctp;
-+
-+	if (lpid >= priv->num_lport) {
-+		dev_err(priv->dev, "Invalid lpid %d\n", lpid);
-+		return -EINVAL;
-+	}
-+
-+	ctp.lpid = lpid;
-+	gswip_ctp_port_get(priv, &ctp);
-+
-+	reg_wbits(priv, SDMA_PCTRL(lpid), SDMA_PCTRL_PEN, DISABLE);
-+	regmap_write(priv->regmap, ETHSW_CTP_STARTID(lpid), 0);
-+	regmap_write(priv->regmap, ETHSW_CTP_ENDID(lpid), 0);
-+
-+	bitmap_clear(priv->ctp_port_map, ctp.first_pid, ctp.num_port);
-+
-+	return 0;
-+}
-+
-+static int gswip_bridge_port_alloc(struct device *dev,
-+				   struct gswip_br_port_alloc *bp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pce_tbl_prog pce_tbl = {0};
-+	int ret;
-+
-+	bp->br_pid = find_first_zero_bit(priv->br_port_map, priv->num_br_port);
-+	if (bp->br_pid >= priv->num_br_port) {
-+		dev_err(priv->dev, "failed to alloc bridge port\n");
-+		return -EINVAL;
-+	}
-+
-+	set_bit(bp->br_pid, priv->br_port_map);
-+
-+	pce_tbl.id = PCE_IG_BRP_CFG;
-+	pce_tbl.addr = bp->br_pid;
-+	pce_tbl.val[4] = PCE_MAC_LIMIT_NUM |
-+			 FIELD_PREP(PCE_IGBGP_VAL4_BR_ID, bp->br_id);
-+
-+	ret = gswip_pce_table_write(priv, &pce_tbl);
-+	if (ret) {
-+		clear_bit(bp->br_pid, priv->br_port_map);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static int gswip_bridge_port_free(struct device *dev,
-+				  struct gswip_br_port_alloc *bp)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pce_tbl_prog pce_tbl = {0};
-+	u16 br_pid;
-+	int ret;
-+
-+	br_pid = bp->br_pid;
-+	if (br_pid >= priv->num_br_port) {
-+		dev_err(priv->dev, "brige port id %d >=%d\n",
-+			br_pid, priv->num_br_port);
-+		return -EINVAL;
-+	}
-+
-+	if (!test_bit(br_pid, priv->br_port_map)) {
-+		dev_err(priv->dev, "bridge port id %d is not in used\n",
-+			br_pid);
-+		return -EINVAL;
-+	}
-+
-+	pce_tbl.id = PCE_IG_BRP_CFG;
-+	pce_tbl.addr = br_pid;
-+	pce_tbl.val[4] = PCE_MAC_LIMIT_NUM;
-+
-+	ret = gswip_pce_table_write(priv, &pce_tbl);
-+	if (ret)
-+		return ret;
-+
-+	clear_bit(br_pid, priv->br_port_map);
-+
-+	return 0;
-+}
-+
-+static int gswip_bridge_alloc(struct device *dev, struct gswip_br_alloc *br)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+
-+	br->br_id = find_first_zero_bit(priv->br_map, priv->num_br);
-+	if (br->br_id >= priv->num_br) {
-+		dev_err(priv->dev, "failed to alloc bridge\n");
-+		return -EINVAL;
-+	}
-+
-+	set_bit(br->br_id, priv->br_map);
-+
-+	return 0;
-+}
-+
-+static int gswip_bridge_free(struct device *dev, struct gswip_br_alloc *br)
-+{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pce_tbl_prog pce_tbl = {0};
-+	u16 br_id;
-+	int ret;
-+
-+	if (br->br_id >= priv->num_br) {
-+		dev_err(priv->dev, "bridge id %d >= %d\n",
-+			br->br_id, priv->num_br);
-+		return -EINVAL;
-+	}
-+
-+	br_id = br->br_id;
-+	if (!test_bit(br_id, priv->br_map)) {
-+		dev_err(priv->dev, "bridge id %d not allocated\n", br_id);
-+		return 0;
-+	}
-+
-+	pce_tbl.id = PCE_BR_CFG;
-+	pce_tbl.addr = br_id;
-+	pce_tbl.val[0] = PCE_MAC_LIMIT_NUM;
-+
-+	ret = gswip_pce_table_write(priv, &pce_tbl);
-+	if (ret)
-+		return ret;
-+
-+	clear_bit(br_id, priv->br_map);
-+
-+	return 0;
-+}
-+
-+/* Set queue for a logical port based on egress/ingress packet.
-+ * Then map the queue to an egress port.
-+ *  +----------------------+               +---------------------+
-+ *  | ingress logical port | -> queue/s -> | egress logical port |
-+ *  +----------------------+               +---------------------+
++/**
++ * irdma_iwarp_ce_handler - handle iwarp completions
++ * @iwcq: iwarp cq receiving event
 + */
-+static int gswip_qos_q_port_set(struct device *dev,
-+				struct gswip_qos_q_port *qport)
++static void irdma_iwarp_ce_handler(struct irdma_sc_cq *iwcq)
 +{
-+	struct gswip_core_priv *priv = dev_get_drvdata(dev);
-+	struct pce_tbl_prog pce_tbl = {0};
-+	struct bm_tbl_prog bm_tbl = {0};
-+	u16 eg_port, val;
-+	u8 qid;
++	struct irdma_cq *cq = iwcq->back_cq;
++
++	if (cq->ibcq.comp_handler)
++		cq->ibcq.comp_handler(&cq->ibcq, cq->ibcq.cq_context);
++}
++
++/**
++ * irdma_puda_ce_handler - handle puda completion events
++ * @rf: RDMA PCI function
++ * @cq: puda completion q for event
++ */
++static void irdma_puda_ce_handler(struct irdma_pci_f *rf,
++				  struct irdma_sc_cq *cq)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	enum irdma_status_code status;
++	u32 compl_error;
++
++	do {
++		status = irdma_puda_poll_cmpl(dev, cq, &compl_error);
++		if (status == IRDMA_ERR_Q_EMPTY)
++			break;
++		if (status) {
++			dev_dbg(rfdev_to_dev(dev), "ERR: puda status = %d\n",
++				status);
++			break;
++		}
++		if (compl_error) {
++			dev_dbg(rfdev_to_dev(dev),
++				"ERR: puda compl_err  =0x%x\n", compl_error);
++			break;
++		}
++	} while (1);
++
++	dev->ccq_ops->ccq_arm(cq);
++}
++
++/**
++ * irdma_process_ceq - handle ceq for completions
++ * @rf: RDMA PCI function
++ * @ceq: ceq having cq for completion
++ */
++static void irdma_process_ceq(struct irdma_pci_f *rf, struct irdma_ceq *ceq)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_sc_ceq *sc_ceq;
++	struct irdma_sc_cq *cq;
++
++	sc_ceq = &ceq->sc_ceq;
++	do {
++		cq = dev->ceq_ops->process_ceq(dev, sc_ceq);
++		if (!cq)
++			break;
++
++		if (cq->cq_type == IRDMA_CQ_TYPE_CQP)
++			queue_work(rf->cqp_cmpl_wq, &rf->cqp_cmpl_work);
++		else if (cq->cq_type == IRDMA_CQ_TYPE_IWARP)
++			irdma_iwarp_ce_handler(cq);
++		else if (cq->cq_type == IRDMA_CQ_TYPE_ILQ ||
++			 cq->cq_type == IRDMA_CQ_TYPE_IEQ)
++			irdma_puda_ce_handler(rf, cq);
++	} while (1);
++}
++
++/**
++ * irdma_process_aeq - handle aeq events
++ * @rf: RDMA PCI function
++ */
++static void irdma_process_aeq(struct irdma_pci_f *rf)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_aeq *aeq = &rf->aeq;
++	struct irdma_sc_aeq *sc_aeq = &aeq->sc_aeq;
++	struct irdma_aeqe_info aeinfo;
++	struct irdma_aeqe_info *info = &aeinfo;
 +	int ret;
++	struct irdma_qp *iwqp = NULL;
++	struct irdma_sc_cq *cq = NULL;
++	struct irdma_cq *iwcq = NULL;
++	struct irdma_sc_qp *qp = NULL;
++	struct irdma_qp_host_ctx_info *ctx_info = NULL;
++	unsigned long flags;
 +
-+	qid = qport->qid;
++	u32 aeqcnt = 0;
 +
-+	if (qport->egress) {
-+		/* Egress packet always bypass PCE.
-+		 * Queue identifier is set in the SDMA_BYPASS register
-+		 * for each logical port.
-+		 */
-+		reg_r16(priv, SDMA_BYPASS(qport->lpid), &val);
++	if (!sc_aeq->size)
++		return;
 +
-+		if (!qport->extration_en) {
-+			if (qport->q_map_mode == GSWIP_QOS_QMAP_SINGLE_MD)
-+				val |= FIELD_PREP(SDMA_BYPASS_MD, 1);
++	do {
++		memset(info, 0, sizeof(*info));
++		ret = dev->aeq_ops->get_next_aeqe(sc_aeq, info);
++		if (ret)
++			break;
++
++		aeqcnt++;
++		dev_dbg(rfdev_to_dev(dev),
++			"AEQ: ae_id = 0x%x bool qp=%d qp_id = %d\n",
++			info->ae_id, info->qp, info->qp_cq_id);
++		if (info->qp) {
++			spin_lock_irqsave(&rf->qptable_lock, flags);
++			iwqp = rf->qp_table[info->qp_cq_id];
++			if (!iwqp) {
++				spin_unlock_irqrestore(&rf->qptable_lock,
++						       flags);
++				if (info->ae_id == IRDMA_AE_QP_SUSPEND_COMPLETE) {
++					struct irdma_device *iwdev;
++
++					iwdev = irdma_get_device(rf->netdev);
++					if (iwdev) {
++						atomic_dec(&iwdev->vsi.qp_suspend_reqs);
++						wake_up(&iwdev->suspend_wq);
++						irdma_put_device(iwdev);
++					}
++					continue;
++				}
++				dev_dbg(rfdev_to_dev(dev),
++					"AEQ: qp_id %d is already freed\n",
++					info->qp_cq_id);
++				continue;
++			}
++			irdma_add_ref(&iwqp->ibqp);
++			spin_unlock_irqrestore(&rf->qptable_lock, flags);
++			qp = &iwqp->sc_qp;
++			spin_lock_irqsave(&iwqp->lock, flags);
++			iwqp->hw_tcp_state = info->tcp_state;
++			iwqp->hw_iwarp_state = info->iwarp_state;
++			iwqp->last_aeq = info->ae_id;
++			spin_unlock_irqrestore(&iwqp->lock, flags);
++			ctx_info = &iwqp->ctx_info;
++			if (rdma_protocol_roce(&iwqp->iwdev->ibdev, 1))
++				ctx_info->roce_info->err_rq_idx_valid = true;
 +			else
-+				val |= FIELD_PREP(SDMA_BYPASS_MD, 0);
-+
-+			val |= FIELD_PREP(SDMA_BYPASS_NMQID, qid);
++				ctx_info->iwarp_info->err_rq_idx_valid = true;
 +		} else {
-+			val |= FIELD_PREP(SDMA_BYPASS_EXTQID, qid);
++			if (info->ae_id != IRDMA_AE_CQ_OPERATION_ERROR)
++				continue;
 +		}
 +
-+		regmap_write(priv->regmap, SDMA_BYPASS(qport->lpid), val);
-+	} else {
-+		/* Ingress packet can bypass or not bypass PCE.
-+		 * Queue identifier is set in the Queue Mapping Table
-+		 * under PCE Table Programming. This table will be used
-+		 * for bypass/no bypass case.
-+		 */
-+		pce_tbl.id = PCE_Q_MAP;
-+		pce_tbl.addr = qport->tc_id;
-+		pce_tbl.addr |= FIELD_PREP(PCE_Q_MAP_EG_PID, qport->lpid);
++		switch (info->ae_id) {
++			struct irdma_cm_node *cm_node;
++		case IRDMA_AE_LLP_CONNECTION_ESTABLISHED:
++			cm_node = iwqp->cm_node;
++			if (cm_node->accept_pend) {
++				atomic_dec(&cm_node->listener->pend_accepts_cnt);
++				cm_node->accept_pend = 0;
++			}
++			iwqp->rts_ae_rcvd = 1;
++			wake_up_interruptible(&iwqp->waitq);
++			break;
++		case IRDMA_AE_LLP_FIN_RECEIVED:
++		case IRDMA_AE_RDMAP_ROE_BAD_LLP_CLOSE:
++			if (qp->term_flags)
++				break;
++			if (atomic_inc_return(&iwqp->close_timer_started) == 1) {
++				iwqp->hw_tcp_state = IRDMA_TCP_STATE_CLOSE_WAIT;
++				if (iwqp->hw_tcp_state == IRDMA_TCP_STATE_CLOSE_WAIT &&
++				    iwqp->ibqp_state == IB_QPS_RTS) {
++					irdma_next_iw_state(iwqp,
++							    IRDMA_QP_STATE_CLOSING,
++							    0, 0, 0);
++					irdma_cm_disconn(iwqp);
++				}
++				iwqp->cm_id->add_ref(iwqp->cm_id);
++				irdma_schedule_cm_timer(iwqp->cm_node,
++							(struct irdma_puda_buf *)iwqp,
++							IRDMA_TIMER_TYPE_CLOSE,
++							1, 0);
++			}
++			break;
++		case IRDMA_AE_LLP_CLOSE_COMPLETE:
++			if (qp->term_flags)
++				irdma_terminate_done(qp, 0);
++			else
++				irdma_cm_disconn(iwqp);
++			break;
++		case IRDMA_AE_BAD_CLOSE:
++			/* fall through */
++		case IRDMA_AE_RESET_SENT:
++			irdma_next_iw_state(iwqp, IRDMA_QP_STATE_ERROR, 1, 0,
++					    0);
++			irdma_cm_disconn(iwqp);
++			break;
++		case IRDMA_AE_LLP_CONNECTION_RESET:
++			if (atomic_read(&iwqp->close_timer_started))
++				break;
++			irdma_cm_disconn(iwqp);
++			break;
++		case IRDMA_AE_QP_SUSPEND_COMPLETE:
++			atomic_dec(&iwqp->sc_qp.vsi->qp_suspend_reqs);
++			wake_up(&iwqp->iwdev->suspend_wq);
++			break;
++		case IRDMA_AE_TERMINATE_SENT:
++			irdma_terminate_send_fin(qp);
++			break;
++		case IRDMA_AE_LLP_TERMINATE_RECEIVED:
++			irdma_terminate_received(qp, info);
++			break;
++		case IRDMA_AE_CQ_OPERATION_ERROR:
++			dev_err(rfdev_to_dev(dev),
++				"Processing an iWARP related AE for CQ misc = 0x%04X\n",
++				info->ae_id);
++			cq = (struct irdma_sc_cq *)(unsigned long)
++			     info->compl_ctx;
 +
-+		if (qport->en_ig_pce_bypass || qport->resv_port_mode) {
-+			pce_tbl.addr |= PCE_Q_MAP_IG_PORT_MODE;
-+		} else {
-+			if (qport->extration_en)
-+				pce_tbl.addr |= PCE_Q_MAP_LOCAL_EXTRACT;
++			iwcq = cq->back_cq;
++
++			if (iwcq->ibcq.event_handler) {
++				struct ib_event ibevent;
++
++				ibevent.device = iwcq->ibcq.device;
++				ibevent.event = IB_EVENT_CQ_ERR;
++				ibevent.element.cq = &iwcq->ibcq;
++				iwcq->ibcq.event_handler(&ibevent,
++							 iwcq->ibcq.cq_context);
++			}
++			break;
++		case IRDMA_AE_LLP_DOUBT_REACHABILITY:
++		case IRDMA_AE_RESOURCE_EXHAUSTION:
++			break;
++		case IRDMA_AE_PRIV_OPERATION_DENIED:
++		case IRDMA_AE_STAG_ZERO_INVALID:
++		case IRDMA_AE_IB_RREQ_AND_Q1_FULL:
++		case IRDMA_AE_DDP_UBE_INVALID_DDP_VERSION:
++		case IRDMA_AE_DDP_UBE_INVALID_MO:
++		case IRDMA_AE_DDP_UBE_INVALID_QN:
++		case IRDMA_AE_DDP_NO_L_BIT:
++		case IRDMA_AE_RDMAP_ROE_INVALID_RDMAP_VERSION:
++		case IRDMA_AE_RDMAP_ROE_UNEXPECTED_OPCODE:
++		case IRDMA_AE_ROE_INVALID_RDMA_READ_REQUEST:
++		case IRDMA_AE_ROE_INVALID_RDMA_WRITE_OR_READ_RESP:
++		case IRDMA_AE_INVALID_ARP_ENTRY:
++		case IRDMA_AE_INVALID_TCP_OPTION_RCVD:
++		case IRDMA_AE_STALE_ARP_ENTRY:
++		case IRDMA_AE_LLP_RECEIVED_MPA_CRC_ERROR:
++		case IRDMA_AE_LLP_SEGMENT_TOO_SMALL:
++		case IRDMA_AE_LLP_SYN_RECEIVED:
++		case IRDMA_AE_LLP_TOO_MANY_RETRIES:
++		case IRDMA_AE_LCE_QP_CATASTROPHIC:
++		case IRDMA_AE_LCE_FUNCTION_CATASTROPHIC:
++		case IRDMA_AE_LCE_CQ_CATASTROPHIC:
++		case IRDMA_AE_UDA_XMIT_DGRAM_TOO_LONG:
++			if (rdma_protocol_roce(&iwqp->iwdev->ibdev, 1))
++				ctx_info->roce_info->err_rq_idx_valid = false;
++			else
++				ctx_info->iwarp_info->err_rq_idx_valid = false;
++			/* fall through */
++		default:
++			dev_err(rfdev_to_dev(dev),
++				"abnormal ae_id = 0x%x bool qp=%d qp_id = %d\n",
++				info->ae_id, info->qp, info->qp_cq_id);
++			if (rdma_protocol_roce(&iwqp->iwdev->ibdev, 1)) {
++				if (!info->sq && ctx_info->roce_info->err_rq_idx_valid) {
++					ctx_info->roce_info->err_rq_idx = info->wqe_idx;
++					ret = dev->iw_priv_qp_ops->qp_setctx_roce(&iwqp->sc_qp,
++										  iwqp->host_ctx.va,
++										  ctx_info);
++				}
++				irdma_cm_disconn(iwqp);
++				break;
++			}
++			if (!info->sq && ctx_info->iwarp_info->err_rq_idx_valid) {
++				ctx_info->iwarp_info->err_rq_idx = info->wqe_idx;
++				ctx_info->tcp_info_valid = false;
++				ctx_info->iwarp_info_valid = false;
++				ret = dev->iw_priv_qp_ops->qp_setctx(&iwqp->sc_qp,
++								     iwqp->host_ctx.va,
++								     ctx_info);
++			}
++			if (iwqp->hw_iwarp_state != IRDMA_QP_STATE_RTS &&
++			    iwqp->hw_iwarp_state != IRDMA_QP_STATE_TERMINATE) {
++				irdma_next_iw_state(iwqp, IRDMA_QP_STATE_ERROR, 1, 0, 0);
++				irdma_cm_disconn(iwqp);
++			} else {
++				irdma_terminate_connection(qp, info);
++			}
++			break;
 +		}
++		if (info->qp)
++			irdma_rem_ref(&iwqp->ibqp);
++	} while (1);
 +
-+		pce_tbl.val[0] = qid;
-+		ret = gswip_pce_table_write(priv, &pce_tbl);
-+		if (ret)
-+			return ret;
-+
-+		reg_wbits(priv, SDMA_BYPASS(qport->lpid),
-+			  SDMA_BYPASS_PCEBYP, qport->en_ig_pce_bypass);
-+	}
-+
-+	/* Redirect port id for table is bit 4, and bit (2,0) */
-+	eg_port = FIELD_GET(BM_Q_MAP_VAL4_REDIR_PID, qport->redir_port_id);
-+	val = FIELD_GET(BM_Q_MAP_VAL4_REDIR_PID_MSB, qport->redir_port_id);
-+	eg_port |= FIELD_PREP(BM_Q_MAP_VAL4_REDIR_PID_BIT4, val);
-+
-+	/* Map queue to an egress port. */
-+	bm_tbl.id = BM_Q_MAP;
-+	bm_tbl.val[0] = eg_port;
-+	bm_tbl.num_val = 1;
-+	bm_tbl.qmap.qid = qid;
-+
-+	return gswip_bm_table_write(priv, &bm_tbl);
++	if (aeqcnt)
++		dev->aeq_ops->repost_aeq_entries(dev, aeqcnt);
 +}
 +
-+static const struct core_ctp_ops gswip_core_ctp_ops = {
-+	.alloc = gswip_ctp_port_alloc,
-+	.free = gswip_ctp_port_free,
-+};
-+
-+static const struct core_br_port_ops gswip_core_br_port_ops = {
-+	.alloc = gswip_bridge_port_alloc,
-+	.free = gswip_bridge_port_free,
-+};
-+
-+static const struct core_br_ops gswip_core_br_ops = {
-+	.alloc = gswip_bridge_alloc,
-+	.free = gswip_bridge_free,
-+};
-+
-+static const struct core_qos_ops gswip_core_qos_ops = {
-+	.q_port_set = gswip_qos_q_port_set,
-+};
-+
-+int gswip_core_setup_port_ops(struct gswip_core_priv *priv)
++/**
++ * irdma_enable_intr - set up device interrupts
++ * @dev: hardware control device structure
++ * @msix_id: id of the interrupt to be enabled
++ */
++static void irdma_ena_intr(struct irdma_sc_dev *dev, u32 msix_id)
 +{
-+	struct core_ops *ops =  &priv->ops;
-+
-+	ops->ctp_ops = &gswip_core_ctp_ops;
-+	ops->br_port_ops = &gswip_core_br_port_ops;
-+	ops->br_ops = &gswip_core_br_ops;
-+	ops->qos_ops = &gswip_core_qos_ops;
-+
-+	return 0;
++	dev->irq_ops->irdma_en_irq(dev, msix_id);
 +}
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h
-new file mode 100644
-index 000000000000..50a13b68ef85
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_reg.h
-@@ -0,0 +1,491 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation.
++
++/**
++ * irdma_dpc - tasklet for aeq and ceq 0
++ * @data: RDMA PCI function
++ */
++static void irdma_dpc(unsigned long data)
++{
++	struct irdma_pci_f *rf = (struct irdma_pci_f *)data;
++
++	if (rf->msix_shared)
++		irdma_process_ceq(rf, rf->ceqlist);
++	irdma_process_aeq(rf);
++	irdma_ena_intr(&rf->sc_dev, rf->iw_msixtbl[0].idx);
++}
++
++/**
++ * irdma_ceq_dpc - dpc handler for CEQ
++ * @data: data points to CEQ
++ */
++static void irdma_ceq_dpc(unsigned long data)
++{
++	struct irdma_ceq *iwceq = (struct irdma_ceq *)data;
++	struct irdma_pci_f *rf = iwceq->rf;
++
++	irdma_process_ceq(rf, iwceq);
++	irdma_ena_intr(&rf->sc_dev, iwceq->msix_idx);
++}
++
++/**
++ * irdma_save_msix_info - copy msix vector information to iwarp device
++ * @rf: RDMA PCI function
 + *
-+ * GSWIP-O Top and Legacy MAC Register Description.
++ * Allocate iwdev msix table and copy the ldev msix info to the table
++ * Return 0 if successful, otherwise return error
 + */
-+#ifndef _GSWIP_REG_H
-+#define _GSWIP_REG_H
-+
-+#define ETHSW_CAP_1			0x001c
-+#define ETHSW_CAP_1_PPORTS		GENMASK(3, 0)
-+#define ETHSW_CAP_1_VPORTS		GENMASK(7, 4)
-+#define ETHSW_CAP_1_QUEUE		GENMASK(14, 8)
-+#define ETHSW_CAP_1_GMAC		BIT(15)
-+
-+#define ETHSW_VERSION			0x004c
-+#define ETHSW_VERSION_REV_ID		GENMASK(7, 0)
-+#define ETHSW_VERSION_MOD_ID		GENMASK(15, 8)
-+
-+#define ETHSW_CAP_13			0x0058
-+#define ETHSW_CAP_13_EVLAN		GENMASK(3, 0)
-+#define ETHSW_CAP_13_INTRMON		GENMASK(7, 4)
-+#define ETHSW_CAP_13_PAYLOAD		GENMASK(11, 8)
-+#define ETHSW_CAP_13_PMAC		GENMASK(15, 12)
-+
-+#define ETHSW_CAP_17			0x0068
-+#define ETHSW_CAP_17_BRGPT		GENMASK(3, 0)
-+#define ETHSW_CAP_17_BRG		GENMASK(7, 4)
-+#define ETHSW_CAP_17_PMAP		GENMASK(11, 8)
-+
-+#define ETHSW_CAP_18			0x006c
-+#define ETHSW_CAP_18_CTP		GENMASK(15, 0)
-+
-+#define BM_RAM_VAL_OFFSET		4
-+#define BM_RAM_VAL_0			0x010c
-+#define BM_RAM_VAL_0_VAL0		GENMASK(15, 0)
-+
-+#define BM_RAM_ADDR			0x0110
-+#define BM_RAM_ADDR_ADDR		GENMASK(15, 0)
-+
-+#define BM_RAM_CTRL			0x0114
-+#define BM_RAM_CTRL_ADDR		GENMASK(4, 0)
-+#define BM_RAM_CTRL_OPMOD		BIT(5)
-+#define BM_RAM_CTRL_RMON		BIT(6)
-+#define BM_RAM_CTRL_BAS			BIT(15)
-+
-+#define BM_RMON_GCTRL			0x0188
-+#define BM_RMON_GCTRL_METER_RES		BIT(1)
-+#define BM_RMON_GCTRL_ALLITF_RES	BIT(2)
-+#define BM_RMON_GCTRL_INT_RES		BIT(3)
-+#define BM_RMON_GCTRL_ITFID		GENMASK(11, 4)
-+#define BM_RMON_GCTRL_PMAC_RES		BIT(12)
-+#define BM_RMON_GCTRL_MRMON		BIT(14)
-+#define BM_RMON_GCTRL_INTMON		BIT(15)
-+
-+#define BM_PCFG_OFFSET			8
-+#define BM_PCFG(x)			(0x0200 + BM_PCFG_OFFSET * (x))
-+#define BM_PCFG_CNTEN			BIT(0)
-+
-+#define BM_RMON_CTRL_OFFSET		8
-+#define BM_RMON_CTRL(x)			(0x0204 + BM_RMON_CTRL_OFFSET * (x))
-+#define BM_RMON_CTRL_RAM1_RES		BIT(0)
-+#define BM_RMON_CTRL_RAM2_RES		BIT(1)
-+
-+#define BM_PWRED_RTH_0_OFFSET		24
-+#define BM_PWRED_RTH_0(x)		(0x0280 + BM_PWRED_RTH_0_OFFSET * (x))
-+#define BM_PWRED_RTH_0_MINTH		GENMASK(9, 0)
-+
-+#define BM_PWRED_RTH_1_OFFSET		24
-+#define BM_PWRED_RTH_1(x)		(0x0284 + BM_PWRED_RTH_1_OFFSET * (x))
-+#define BM_PWRED_RTH_1_MAXTH		GENMASK(9, 0)
-+
-+#define BM_PWRED_YTH_0_OFFSET		24
-+#define BM_PWRED_YTH_0(x)		(0x0288 + BM_PWRED_YTH_0_OFFSET * (x))
-+#define BM_PWRED_YTH_0_MINTH		GENMASK(9, 0)
-+
-+#define BM_PWRED_YTH_1_OFFSET		24
-+#define BM_PWRED_YTH_1(x)		(0x028c + BM_PWRED_YTH_1_OFFSET * (x))
-+#define BM_PWRED_YTH_1_MAXTH		GENMASK(9, 0)
-+
-+#define BM_PWRED_GTH_0_OFFSET		24
-+#define BM_PWRED_GTH_0(x)		(0x0290 + BM_PWRED_GTH_0_OFFSET * (x))
-+#define BM_PWRED_GTH_0_MINTH		GENMASK(9, 0)
-+
-+#define BM_PWRED_GTH_1_OFFSET		24
-+#define BM_PWRED_GTH_1(x)		(0x0294 + BM_PWRED_GTH_1_OFFSET * (x))
-+#define BM_PWRED_GTH_1_MAXTH		GENMASK(9, 0)
-+
-+#define PCE_TBL_VAL_30			0x1014
-+#define PCE_TBL_VAL_29			0x1018
-+#define PCE_TBL_VAL_28			0x101c
-+#define PCE_TBL_VAL_27			0x1020
-+#define PCE_TBL_VAL_26			0x1024
-+
-+#define PCE_TBL_KEY_33			0x1038
-+#define PCE_TBL_KEY_32			0x103c
-+#define PCE_TBL_KEY_31			0x1040
-+#define PCE_TBL_KEY_30			0x1044
-+#define PCE_TBL_KEY_29			0x1048
-+#define PCE_TBL_KEY_28			0x104c
-+#define PCE_TBL_KEY_27			0x1050
-+#define PCE_TBL_KEY_26			0x1054
-+#define PCE_TBL_KEY_25			0x1058
-+#define PCE_TBL_KEY_24			0x105c
-+#define PCE_TBL_KEY_23			0x1060
-+#define PCE_TBL_KEY_22			0x1064
-+#define PCE_TBL_KEY_21			0x1068
-+#define PCE_TBL_KEY_20			0x106c
-+#define PCE_TBL_KEY_19			0x1070
-+#define PCE_TBL_KEY_18			0x1074
-+#define PCE_TBL_KEY_17			0x1078
-+#define PCE_TBL_KEY_16			0x107c
-+
-+#define PCE_TBL_VAL_25			0x1080
-+#define PCE_TBL_VAL_24			0x1084
-+#define PCE_TBL_VAL_23			0x1088
-+#define PCE_TBL_VAL_22			0x108c
-+#define PCE_TBL_VAL_21			0x1090
-+#define PCE_TBL_VAL_20			0x1094
-+#define PCE_TBL_VAL_19			0x1098
-+#define PCE_TBL_VAL_18			0x109c
-+#define PCE_TBL_VAL_17			0x10a0
-+#define PCE_TBL_VAL_16			0x10a4
-+
-+#define PCE_TBL_MASK_3			0x10a8
-+#define PCE_TBL_MASK_2			0x10ac
-+#define PCE_TBL_MASK_1			0x10b0
-+
-+#define PCE_TBL_VAL_15			0x10b4
-+#define PCE_TBL_VAL_14			0x10b8
-+#define PCE_TBL_VAL_13			0x10bc
-+#define PCE_TBL_VAL_12			0x10c0
-+#define PCE_TBL_VAL_11			0x10c4
-+#define PCE_TBL_VAL_10			0x10c8
-+#define PCE_TBL_VAL_9			0x10cc
-+#define PCE_TBL_VAL_8			0x10d0
-+#define PCE_TBL_VAL_7			0x10d4
-+#define PCE_TBL_VAL_6			0x10d8
-+#define PCE_TBL_VAL_5			0x10dc
-+
-+#define PCE_TBL_KEY_15			0x01e0
-+#define PCE_TBL_KEY_14			0x10e4
-+#define PCE_TBL_KEY_13			0x10e8
-+#define PCE_TBL_KEY_12			0x10ec
-+#define PCE_TBL_KEY_11			0x10f0
-+#define PCE_TBL_KEY_10			0x10f4
-+#define PCE_TBL_KEY_9			0x10f8
-+#define PCE_TBL_KEY_8			0x10fc
-+#define PCE_TBL_KEY_7			0x1100
-+#define PCE_TBL_KEY_6			0x1104
-+#define PCE_TBL_KEY_5			0x1108
-+#define PCE_TBL_KEY_4			0x110c
-+#define PCE_TBL_KEY_3			0x1110
-+#define PCE_TBL_KEY_2			0x1114
-+#define PCE_TBL_KEY_1			0x1118
-+#define PCE_TBL_KEY_0			0x111c
-+
-+#define PCE_TBL_MASK_0			0x1120
-+
-+#define PCE_TBL_VAL_4			0x1124
-+#define PCE_TBL_VAL_3			0x1128
-+#define PCE_TBL_VAL_2			0x112c
-+#define PCE_TBL_VAL_1			0x1130
-+#define PCE_TBL_VAL_0			0x1134
-+
-+#define PCE_TBL_ADDR			0x1138
-+#define PCE_TBL_ADDR_ADDR		GENMASK(11, 0)
-+
-+#define PCE_TBL_CTRL			0x113c
-+#define PCE_TBL_CTRL_ADDR		GENMASK(4, 0)
-+#define PCE_TBL_CTRL_OPMOD		GENMASK(6, 5)
-+#define PCE_TBL_CTRL_GMAP		GENMASK(10, 7)
-+#define PCE_TBL_CTRL_KEYFORM		BIT(11)
-+#define PCE_TBL_CTRL_VLD		BIT(12)
-+#define PCE_TBL_CTRL_TYPE		BIT(13)
-+#define PCE_TBL_CTRL_EXTOP		BIT(14)
-+#define PCE_TBL_CTRL_BAS		BIT(15)
-+
-+#define PCE_PCTRL_OFFSET		40
-+#define PCE_PCTRL_0(x)			(0x1200 + PCE_PCTRL_OFFSET * (x))
-+#define PCE_PCTRL_0_PSTATE		GENMASK(2, 0)
-+#define PCE_PCTRL_0_AGEDIS		BIT(3)
-+#define PCE_PCTRL_0_PLOCK		BIT(4)
-+#define PCE_PCTRL_0_TVM			BIT(5)
-+#define PCE_PCTRL_0_VREP		BIT(6)
-+#define PCE_PCTRL_0_CMOD		BIT(7)
-+#define PCE_PCTRL_0_DPEN		BIT(8)
-+#define PCE_PCTRL_0_CLPEN		BIT(9)
-+#define PCE_PCTRL_0_PCPEN		BIT(10)
-+#define PCE_PCTRL_0_IGSTEN		BIT(11)
-+#define PCE_PCTRL_0_EGSTEN		BIT(12)
-+#define PCE_PCTRL_0_MCST		BIT(13)
-+#define PCE_PCTRL_0_SPFDIS		BIT(14)
-+#define PCE_PCTRL_0_MSTP		BIT(15)
-+
-+#define FDMA_PASR			0x291c
-+#define FDMA_PASR_CPU			GENMASK(1, 0)
-+#define FDMA_PASR_MPE1			GENMASK(3, 2)
-+#define FDMA_PASR_MPE2			GENMASK(5, 4)
-+#define FDMA_PASR_MPE3			GENMASK(7, 6)
-+
-+#define FDMA_PCTRL_OFFSET		24
-+#define FDMA_PCTRL(x)			(0x2a00 + FDMA_PCTRL_OFFSET * (x))
-+#define FDMA_PCTRL_EN			BIT(0)
-+#define FDMA_PCTRL_STEN			BIT(1)
-+#define FDMA_PCTRL_DSCPRM		BIT(2)
-+#define FDMA_PCTRL_VLANMOD		BIT(3)
-+#define FDMA_PCTRL_TS_PTP		BIT(4)
-+#define FDMA_PCTRL_TS_NONPTP		BIT(5)
-+#define FDMA_PCTRL_HEADER_SHORT		BIT(6)
-+#define FDMA_PCTRL_VLANTPID		BIT(7)
-+
-+#define SDMA_PCTRL_OFFSET		24
-+#define SDMA_PCTRL(x)			(0x2f00 + SDMA_PCTRL_OFFSET * (x))
-+#define SDMA_PCTRL_PEN			BIT(0)
-+#define SDMA_PCTRL_FCEN			BIT(1)
-+#define SDMA_PCTRL_MFCEN		BIT(2)
-+#define SDMA_PCTRL_PAUFWD		BIT(3)
-+#define SDMA_PCTRL_FCSFWD		BIT(4)
-+#define SDMA_PCTRL_FCSIGN		BIT(5)
-+#define SDMA_PCTRL_USFWD		BIT(6)
-+#define SDMA_PCTRL_OSFWD		BIT(7)
-+#define SDMA_PCTRL_LENFWD		BIT(8)
-+#define SDMA_PCTRL_ALGFWD		BIT(9)
-+#define SDMA_PCTRL_PHYEFWD		BIT(10)
-+#define SDMA_PCTRL_PTHR			GENMASK(12, 11)
-+#define SDMA_PCTRL_DTHR			GENMASK(14, 13)
-+
-+#define SDMA_PRIO_OFFSET		24
-+#define SDMA_PRIO(x)			(0x2f04 + SDMA_PRIO_OFFSET * (x))
-+#define SDMA_PRIO_BIT10			GENMASK(1, 0)
-+#define SDMA_PRIO_USIGN			BIT(2)
-+#define SDMA_PRIO_OSIGN			BIT(3)
-+#define SDMA_PRIO_LENIGN		BIT(4)
-+#define SDMA_PRIO_ALGIGN		BIT(5)
-+#define SDMA_PRIO_PHYEIGN		BIT(6)
-+#define SDMA_PRIO_MIN_IFG		GENMASK(11, 7)
-+
-+#define SDMA_BYPASS_OFFSET		24
-+#define SDMA_BYPASS(x)			(0x2f10 + SDMA_BYPASS_OFFSET * (x))
-+#define SDMA_BYPASS_MD			BIT(0)
-+#define SDMA_BYPASS_NMQID		GENMASK(5, 1)
-+#define SDMA_BYPASS_EXTQID		GENMASK(10, 6)
-+#define SDMA_BYPASS_PCEBYP		BIT(11)
-+#define SDMA_BYPASS_IGMIR		BIT(12)
-+#define SDMA_BYPASS_EGMIR		BIT(13)
-+
-+#define PMAC_CTRL_0			0x340c
-+#define PMAC_CTRL_0_CHKVER		BIT(5)
-+#define PMAC_CTRL_0_CHKREG		BIT(6)
-+#define PMAC_CTRL_0_FCS			BIT(7)
-+#define PMAC_CTRL_0_PADEN		BIT(8)
-+#define PMAC_CTRL_0_VPADEN		BIT(9)
-+#define PMAC_CTRL_0_VPAD2EN		BIT(10)
-+#define PMAC_CTRL_0_APADEN		BIT(11)
-+#define PMAC_CTRL_0_FCSEN		BIT(12)
-+
-+#define PMAC_CTRL_1			0x3410
-+#define PMAC_CTRL_1_MLEN		GENMASK(13, 0)
-+
-+#define PMAC_CTRL_2			0x3414
-+#define PMAC_CTRL_2_LCHKS		GENMASK(1, 0)
-+#define PMAC_CTRL_2_LCHKL		BIT(2)
-+#define PMAC_CTRL_2_MLEN		BIT(3)
-+
-+#define PMAC_CTRL_4			0x341c
-+#define PMAC_CTRL_4_FLAGEN		GENMASK(1, 0)
-+#define PMAC_RX_FSM_IDLE		0x00
-+#define PMAC_RX_FSM_IGCFG		0x01
-+#define PMAC_RX_FSM_DASA		0x10
-+
-+#define PMAC_CTRL_NUM			4
-+
-+#define PMAC_REG_OFFSET_1		0x200
-+#define PMAC_REG_OFFSET_2		0x600
-+
-+#define	PMAC_BSL_LEN0			0x3440
-+#define	PMAC_BSL_LEN0_LEN0		GENMASK(15, 0)
-+
-+#define	PMAC_BSL_LEN1			0x3444
-+#define	PMAC_BSL_LEN1_LEN1		GENMASK(15, 0)
-+
-+#define	PMAC_BSL_LEN2			0x3448
-+#define	PMAC_BSL_LEN2_LEN2		GENMASK(15, 0)
-+
-+#define PMAC_BSL_NUM			3
-+
-+#define PMAC_TBL_VAL_OFFSET		0x200
-+#define PMAC_TBL_VAL(_x)		\
-+				({ typeof(_x) (x) = (_x); \
-+				(0x3510 + PMAC_TBL_VAL_OFFSET * (x) * (x)); })
-+#define PMAC_TBL_VAL_0_VAL0		GENMASK(15, 0)
-+
-+#define PMAC_TBL_VAL_SFT		4
-+
-+#define PMAC_TBL_ADDR_OFFSET		0x200
-+#define PMAC_TBL_ADDR(_x)		\
-+				({ typeof(_x) (x) = (_x); \
-+				(0x3514 + PMAC_TBL_ADDR_OFFSET * (x) * (x)); })
-+#define PMAC_TBL_ADDR_ADDR		GENMASK(11, 0)
-+
-+#define PMAC_TBL_CTRL_OFFSET		0x200
-+#define PMAC_TBL_CTRL(_x)		\
-+				({ typeof(_x) (x) = (_x); \
-+				(0x3518 + PMAC_TBL_CTRL_OFFSET * (x) * (x)); })
-+#define PMAC_TBL_CTRL_ADDR		GENMASK(2, 0)
-+#define PMAC_TBL_CTRL_OPMOD		BIT(5)
-+#define PMAC_TBL_CTRL_BAS		BIT(15)
-+
-+#define ETHSW_CTP_STARTID_OFFSET	8
-+#define ETHSW_CTP_STARTID(x)		\
-+				(0x3a00 + ETHSW_CTP_STARTID_OFFSET * (x))
-+#define ETHSW_CTP_STARTID_STARTID	GENMASK(8, 0)
-+#define ETHSW_CTP_STARTID_MD		GENMASK(15, 14)
-+#define MD_WLAN8			0
-+#define MD_WLAN9			1
-+#define MD_OTHER			2
-+
-+#define ETHSW_CTP_ENDID_0		0x3a04
-+#define ETHSW_CTP_ENDID(x)		\
-+			(ETHSW_CTP_ENDID_0 + ETHSW_CTP_STARTID_OFFSET * (x))
-+#define ETHSW_CTP_ENDID_ENDID		GENMASK(8, 0)
-+
-+#define ETHSW_GPID_STARTID_OFFSET	8
-+#define ETHSW_GPID_STARTID(x)		\
-+				(0x3a80 + ETHSW_GPID_STARTID_OFFSET * (x))
-+#define ETHSW_GPID_STARTID_BITS		GENMASK(14, 12)
-+#define ETHSW_GPID_STARTID_STARTID	GENMASK(7, 0)
-+
-+#define ETHSW_GPID_ENDID_OFFSET		8
-+#define ETHSW_GPID_ENDID(x)		\
-+				(0x3a84 + ETHSW_GPID_ENDID_OFFSET * (x))
-+#define ETHSW_GPID_ENDID_ENDID		GENMASK(8, 0)
-+
-+#define GPID_RAM_VAL			0x3b00
-+#define GPID_RAM_VAL_OV			BIT(15)
-+#define GPID_RAM_VAL_SUBID_GRP		GENMASK(11, 4)
-+#define GPID_RAM_VAL_LPID		GENMASK(3, 0)
-+
-+#define GPID_RAM_CTRL			0x3b04
-+#define GPID_RAM_CTRL_BAS		BIT(15)
-+#define GPID_RAM_CTRL_OPMOD		BIT(8)
-+#define GPID_RAM_CTRL_ADDR		GENMASK(7, 0)
-+
-+/** GSWIP-O Top Register Description **/
-+#define GSWIP_CFG			0x0000
-+#define GSWIP_CFG_SS_HWRES_ON		BIT(1)
-+#define GSWIP_CFG_CLK_MD		GENMASK(3, 2)
-+#define GSWIP_CFG_CLK_MUX_SEL		GENMASK(12, 11)
-+#define GSWIP_CFG_CORE_SE_EN		BIT(15)
-+
-+#define MACSEC_EN			0x0008
-+#define GSWIPSS_IER0			0x0010
-+
-+#define GSWIPSS_ISR0			0x0014
-+#define GSWIPSS_I_XGMAC2		BIT(2)
-+#define GSWIPSS_I_XGMAC3		BIT(3)
-+#define GSWIPSS_I_XGMAC4		BIT(4)
-+#define GSWIPSS_I_XGMAC5		BIT(5)
-+#define GSWIPSS_I_XGMAC6		BIT(6)
-+#define GSWIPSS_I_XGMAC7		BIT(7)
-+#define GSWIPSS_I_XGMAC8		BIT(8)
-+#define GSWIPSS_I_XGMAC9		BIT(9)
-+#define GSWIPSS_I_XGMAC10		BIT(10)
-+
-+#define GSWIPSS_IER1			0x0018
-+#define GSWIPSS_ISR1			0x001c
-+#define GSWIPSS_SPTAG_ETYPE		0x0038
-+#define GSWIPSS_1588_CFG0		0x0050
-+#define GSWIPSS_1588_CFG1		0x0054
-+#define GSWIPSS_NCO1_LSB		0x0060
-+#define GSWIPSS_NCO1_USB		0x0064
-+#define GSWIPSS_NCO2_LSB		0x0068
-+#define GSWIPSS_NC02_MSB		0x006c
-+#define GSWIPSS_NCO3_LSB		0x0070
-+#define GSWIPSS_NCO3_MSB		0x0074
-+#define GSWIPSS_NC04_LSB		0x0078
-+#define GSWIPSS_NC04_MSB		0x007c
-+#define GSWIP_MEMLS0			0x0080
-+#define GSWIP_MEMLS1			0x0084
-+
-+/* GSWIP-O Top: MAC Registers */
-+#define MAC_IF_CFG			0X1200
-+#define MAC_IF_CFG_CFG2G5		BIT(0)
-+#define MAC_IF_CFG_CFG1G		BIT(1)
-+#define MAC_IF_CFG_CFGFE		BIT(2)
-+#define MAC_IF_CFG_PTP_DIS		BIT(11)
-+#define MAC_IF_CFG_MAC_EN		BIT(12)
-+#define MAC_IF_CFG_XGMAC_RES		BIT(13)
-+#define MAC_IF_CFG_LMAC_RES		BIT(14)
-+#define MAC_IF_CFG_ADAP_RES		BIT(15)
-+
-+#define MAC_OP_CFG			0X1204
-+#define MAC_OP_CFG_RX_SPTAG		GENMASK(1, 0)
-+#define MAC_OP_CFG_RX_TIME		GENMASK(3, 2)
-+#define MAC_OP_CFG_RX_FCS		GENMASK(5, 4)
-+#define MAC_OP_CFG_RX_FCS_M0		0x00
-+#define MAC_OP_CFG_RX_FCS_M1		0x01
-+#define MAC_OP_CFG_RX_FCS_M2		0X02
-+#define MAC_OP_CFG_RX_FCS_M3		0x03
-+
-+#define MAC_MTU_CFG			0X1208
-+#define MAC_MTU_CFG_MTU			GENMASK(13, 0)
-+
-+#define PHY_MODE			0x1270
-+#define PHY_MODE_FCONRX			GENMASK(6, 5)
-+#define PHY_MODE_FCONTX			GENMASK(8, 7)
-+#define PHY_MODE_FCON_AUTO		0x00
-+#define PHY_MODE_FCON_EN		0x01
-+#define PHY_MODE_FCON_DIS		0x11
-+#define PHY_MODE_FDUP			GENMASK(10, 9)
-+#define PHY_MODE_FDUP_AUTO		0x00
-+#define PHY_MODE_FDUP_FD		0x01
-+#define PHY_MODE_FDUP_HD		0x11
-+#define PHY_MODE_SPEED_LSB		GENMASK(12, 11)
-+#define PHY_MODE_LINKST			GENMASK(14, 13)
-+#define PHY_MODE_LINKST_AUTO		0x00
-+#define PHY_MODE_LINKST_UP		0x01
-+#define PHY_MODE_LINKST_DOWN		0x10
-+#define PHY_MODE_SPEED_MSB		BIT(15)
-+#define PHY_MODE_SPEED_10M		0x000
-+#define PHY_MODE_SPEED_100M		0x001
-+#define PHY_MODE_SPEED_1G		0x010
-+#define PHY_MODE_SPEED_10G		0x011
-+#define PHY_MODE_SPEED_2G5		0x100
-+#define PHY_MODE_SPEED_5G		0x101
-+#define PHY_MODE_SPEED_FLEX		0x110
-+#define PHY_MODE_SPEED_AUTO		0x111
-+
-+#define PHY_STAT			0x1274
-+#define PHY_STAT_FDUP			BIT(2)
-+#define PHY_STAT_SPEED_LSB		GENMASK(4, 3)
-+#define PHY_STAT_LSTAT			BIT(5)
-+#define PHY_STAT_SPEED_MSB		BIT(11)
-+
-+#define ANEG_EEE			0x1278
-+#define ANEG_EEE_CAP			GENMASK(1, 0)
-+#define ANEG_EEE_CAP_AUTO		0x00
-+#define ANEG_EEE_CAP_ON			0x01
-+#define ANEG_EEE_CAP_OFF		0x11
-+#define ANEG_EEE_CLK_STOP_CAP		GENMASK(3, 2)
-+
-+#define MAC_Q_INC			0x100
-+#define MAC_IF_CFG_REG(x)		(MAC_IF_CFG + ((x) - MAC2) * MAC_Q_INC)
-+#define MAC_OP_CFG_REG(x)		(MAC_OP_CFG + ((x) - MAC2) * MAC_Q_INC)
-+#define MAC_MTU_CFG_REG(x)		\
-+				(MAC_MTU_CFG + ((x) - MAC2) * MAC_Q_INC)
-+#define PHY_MODE_REG(x)			(PHY_MODE + ((x) - MAC2) * MAC_Q_INC)
-+#define PHY_STAT_REG(x)			(PHY_STAT + ((x) - MAC2) * MAC_Q_INC)
-+#define ANEG_EEE_REG(x)			(ANEG_EEE + ((x) - MAC2) * MAC_Q_INC)
-+
-+/* GSWIP-O TOP: XGMAC indirect access */
-+#define XGMAC_CTRL			0x1280
-+#define XGMAC_REGACC_DATA0		0x1290
-+#define XGMAC_REGACC_DATA1		0x1294
-+
-+#define XGMAC_REGACC_CTRL		0x1298
-+#define XGMAC_REGACC_CTRL_ADDR		GENMASK(13, 0)
-+#define XGMAC_REGACC_CTRL_OPMOD_WR	BIT(14)
-+#define XGMAC_REGACC_CTRL_ADDR_BAS	BIT(15)
-+
-+/** Legacy MAC Register Description **/
-+
-+/* Legacy MAC: Common Registers */
-+#define MAC_TEST			0x0300
-+#define MAC_PFAD_CFG			0x0304
-+#define MAC_PFSA_0			0x0308
-+#define MAC_PFSA_1			0x030c
-+#define MAC_PFSA_2			0x0310
-+#define LMAC_IER			0x0320
-+#define LMAC_ISR			0x0324
-+#define LMAC_I_MAC2			BIT(0)
-+
-+#define LMAC_CNT_LSB			0x0328
-+#define LMAC_CNT_MSB			0x032c
-+#define LMAC_CNT_ACC			0x0330
-+
-+/* Legacy MAC: Single MAC Registers */
-+#define MAC_CTRL0			0x040c
-+#define MAC_CTRL0_GMII			GENMASK(1, 0)
-+#define MAC_CTRL0_FDUP			GENMASK(3, 2)
-+#define MAC_CTRL0_FCON			GENMASK(5, 4)
-+#define MAC_CTRL0_FCS			BIT(7)
-+#define MAC_CTRL0_PADEN			BIT(8)
-+#define MAC_CTRL0_VPADEN		BIT(9)
-+#define MAC_CTRL0_VPAD2EN		BIT(10)
-+#define MAC_CTRL0_APADEN		BIT(11)
-+
-+#define LMAC_Q_INC			0x30
-+#define MAC_CTRL0_REG(x)		(MAC_CTRL0 + ((x) - MAC2) * LMAC_Q_INC)
-+
-+#endif /* _GSWIP_REG_H_ */
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c
-new file mode 100644
-index 000000000000..18e75e75d7ab
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c
-@@ -0,0 +1,332 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation.*/
-+#include <linux/kernel.h>
-+
-+#include "gswip_core.h"
-+#include "gswip_reg.h"
-+#include "gswip_tbl.h"
-+
-+enum tbl_opmode {
-+	TBL_RD,
-+	TBL_WR,
-+};
-+
-+enum tbl_busy_indication {
-+	TBL_READY,
-+	TBL_BUSY,
-+};
-+
-+enum pce_tbl_opmode {
-+	/* Address-based read access  */
-+	PCE_OPMODE_ADRD,
-+	/* Address-based write access */
-+	PCE_OPMODE_ADWR,
-+	/* Key-based read access      */
-+	PCE_OPMODE_KSRD,
-+	/* Key-based write access     */
-+	PCE_OPMODE_KSWR
-+};
-+
-+struct pce_tbl_config {
-+	u16 num_key;
-+	u16 num_mask;
-+	u16 num_val;
-+};
-+
-+struct pce_tbl_reg_map {
-+	const u16 *key;
-+	const u16 *mask;
-+	const u16 *value;
-+};
-+
-+static const u16 pce_tbl_key[] = {
-+	PCE_TBL_KEY_0, PCE_TBL_KEY_1,   PCE_TBL_KEY_2, PCE_TBL_KEY_3,
-+	PCE_TBL_KEY_4, PCE_TBL_KEY_5,   PCE_TBL_KEY_6, PCE_TBL_KEY_7,
-+	PCE_TBL_KEY_8, PCE_TBL_KEY_9,   PCE_TBL_KEY_10, PCE_TBL_KEY_11,
-+	PCE_TBL_KEY_12, PCE_TBL_KEY_13, PCE_TBL_KEY_14, PCE_TBL_KEY_15,
-+	PCE_TBL_KEY_16, PCE_TBL_KEY_17, PCE_TBL_KEY_18, PCE_TBL_KEY_19,
-+	PCE_TBL_KEY_20, PCE_TBL_KEY_21, PCE_TBL_KEY_22, PCE_TBL_KEY_23,
-+	PCE_TBL_KEY_24, PCE_TBL_KEY_25, PCE_TBL_KEY_26, PCE_TBL_KEY_27,
-+	PCE_TBL_KEY_28, PCE_TBL_KEY_29, PCE_TBL_KEY_30, PCE_TBL_KEY_31,
-+	PCE_TBL_KEY_32, PCE_TBL_KEY_33,
-+};
-+
-+static const u16 pce_tbl_mask[] = {
-+	PCE_TBL_MASK_0, PCE_TBL_MASK_1, PCE_TBL_MASK_2, PCE_TBL_MASK_3,
-+};
-+
-+static const u16 pce_tbl_value[] = {
-+	PCE_TBL_VAL_0, PCE_TBL_VAL_1,   PCE_TBL_VAL_2, PCE_TBL_VAL_3,
-+	PCE_TBL_VAL_4, PCE_TBL_VAL_5,   PCE_TBL_VAL_6, PCE_TBL_VAL_7,
-+	PCE_TBL_VAL_8, PCE_TBL_VAL_9,   PCE_TBL_VAL_10, PCE_TBL_VAL_11,
-+	PCE_TBL_VAL_12, PCE_TBL_VAL_13, PCE_TBL_VAL_14, PCE_TBL_VAL_15,
-+	PCE_TBL_VAL_16, PCE_TBL_VAL_17, PCE_TBL_VAL_18, PCE_TBL_VAL_19,
-+	PCE_TBL_VAL_20, PCE_TBL_VAL_21, PCE_TBL_VAL_22, PCE_TBL_VAL_23,
-+	PCE_TBL_VAL_24, PCE_TBL_VAL_25, PCE_TBL_VAL_26, PCE_TBL_VAL_27,
-+	PCE_TBL_VAL_28, PCE_TBL_VAL_29, PCE_TBL_VAL_30,
-+};
-+
-+/* PCE table default entries for Key, Mask and Value.
-+ * Only minimum entries settings are required by default.
++static enum irdma_status_code irdma_save_msix_info(struct irdma_pci_f *rf)
++{
++	struct irdma_priv_ldev *ldev = &rf->ldev;
++	struct irdma_qvlist_info *iw_qvlist;
++	struct irdma_qv_info *iw_qvinfo;
++	struct msix_entry *pmsix;
++	u32 ceq_idx;
++	u32 i;
++	u32 size;
++
++	if (!ldev->msix_count) {
++		pr_err("No MSI-X vectors for RDMA\n");
++		return IRDMA_ERR_CFG;
++	}
++
++	rf->msix_count = ldev->msix_count;
++	size = sizeof(struct irdma_msix_vector) * rf->msix_count;
++	size += sizeof(struct irdma_qvlist_info);
++	size += sizeof(struct irdma_qv_info) * rf->msix_count - 1;
++	rf->iw_msixtbl = kzalloc(size, GFP_KERNEL);
++	if (!rf->iw_msixtbl)
++		return IRDMA_ERR_NO_MEMORY;
++
++	rf->iw_qvlist = (struct irdma_qvlist_info *)
++			(&rf->iw_msixtbl[rf->msix_count]);
++	iw_qvlist = rf->iw_qvlist;
++	iw_qvinfo = iw_qvlist->qv_info;
++	iw_qvlist->num_vectors = rf->msix_count;
++	if (rf->msix_count <= num_online_cpus())
++		rf->msix_shared = true;
++
++	for (i = 0, ceq_idx = 0, pmsix = ldev->msix_entries; i < rf->msix_count;
++	     i++, iw_qvinfo++, pmsix++) {
++		rf->iw_msixtbl[i].idx = pmsix->entry;
++		rf->iw_msixtbl[i].irq = pmsix->vector;
++		rf->iw_msixtbl[i].cpu_affinity = ceq_idx;
++		if (!i) {
++			iw_qvinfo->aeq_idx = 0;
++			if (rf->msix_shared)
++				iw_qvinfo->ceq_idx = ceq_idx++;
++			else
++				iw_qvinfo->ceq_idx = IRDMA_Q_INVALID_IDX;
++		} else {
++			iw_qvinfo->aeq_idx = IRDMA_Q_INVALID_IDX;
++			iw_qvinfo->ceq_idx = ceq_idx++;
++		}
++		iw_qvinfo->itr_idx = 3;
++		iw_qvinfo->v_idx = rf->iw_msixtbl[i].idx;
++	}
++
++	return 0;
++}
++
++/**
++ * irdma_irq_handler - interrupt handler for aeq and ceq0
++ * @irq: Interrupt request number
++ * @data: RDMA PCI function
 + */
-+static const struct pce_tbl_config pce_tbl_def_cfg[] = {
-+	/* Parser ucode table                      */
-+	{ 0,  0,  4 },
-+	/* Dummy                                   */
-+	{ 0,  0,  0 },
-+	/* VLAN filter table                       */
-+	{ 1,  0,  1 },
-+	/* PPPoE table                             */
-+	{ 1,  0,  0 },
-+	/* Protocol table                          */
-+	{ 1,  1,  0 },
-+	/* Application table                       */
-+	{ 1,  1,  0 },
-+	/* IP DA/SA MSB table                      */
-+	{ 4,  4,  0 },
-+	/* IP DA/SA LSB table                      */
-+	{ 4,  4,  0 },
-+	/* Packet length table                     */
-+	{ 1,  1,  0 },
-+	/* Inner PCP/DEI table                     */
-+	{ 0,  0,  1 },
-+	/* DSCP table                              */
-+	{ 0,  0,  1 },
-+	/* MAC bridging table                      */
-+	{ 4,  0,  10},
-+	/* DSCP2PCP configuration table            */
-+	{ 0,  0,  2 },
-+	/* Multicast SW table                      */
-+	{ 19, 0,  10},
-+	/* Dummy                                   */
-+	{ 0,  0,  0 },
-+	/* Traffic Flow table                      */
-+	{ 34, 0,  31},
-+	/* PBB tunnel template configuration table */
-+	{ 0,  0,  11},
-+	/* Queue mapping table                     */
-+	{ 0,  0,  1 },
-+	/* Ingress CTP port configuration table    */
-+	{ 0,  0,  9 },
-+	/* Egress CTP port configuration table     */
-+	{ 0,  0,  7 },
-+	/* Ingress bridge port configuration table */
-+	{ 0,  0,  18},
-+	/* Egress bridge port configuration table  */
-+	{ 0,  0,  14},
-+	/* MAC DA table                            */
-+	{ 3,  1,  0 },
-+	/* MAC SA table                            */
-+	{ 3,  1,  0 },
-+	/* Flags table                             */
-+	{ 1,  1,  0 },
-+	/* Bridge configuration table              */
-+	{ 0,  0,  10},
-+	/* Outer PCP/DEI table                     */
-+	{ 0,  0,  1 },
-+	/* Color marking table                     */
-+	{ 0,  0,  1 },
-+	/* Color remarking table                   */
-+	{ 0,  0,  1 },
-+	/* Payload table                           */
-+	{ 1,  1,  0 },
-+	/* Extended VLAN operation table           */
-+	{ 4,  0,  6 },
-+	/* P-mapping configuration table           */
-+	{ 0,  0,  1 },
-+};
-+
-+int gswip_pce_table_write(struct gswip_core_priv *priv,
-+			  struct pce_tbl_prog *pce_tbl)
++static irqreturn_t irdma_irq_handler(int irq, void *data)
 +{
-+	struct regmap *regmap = priv->regmap;
-+	u16 i, ctrl;
++	struct irdma_pci_f *rf = data;
 +
-+	spin_lock(&priv->tbl_lock);
-+
-+	/* update key registers */
-+	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_key; i++)
-+		regmap_write(regmap, pce_tbl_key[i], pce_tbl->key[i]);
-+
-+	/* update mask registers */
-+	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_mask; i++)
-+		regmap_write(regmap, pce_tbl_mask[i], pce_tbl->mask[i]);
-+
-+	/* update value registers */
-+	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_val; i++)
-+		regmap_write(regmap, pce_tbl_value[i], pce_tbl->val[i]);
-+
-+	ctrl = FIELD_PREP(PCE_TBL_CTRL_ADDR, pce_tbl->id) |
-+	       FIELD_PREP(PCE_TBL_CTRL_OPMOD, PCE_OPMODE_ADWR) |
-+	       FIELD_PREP(PCE_TBL_CTRL_BAS, TBL_BUSY);
-+
-+	/* update the pce table */
-+	regmap_write(regmap, PCE_TBL_ADDR, pce_tbl->addr);
-+	regmap_write(regmap, PCE_TBL_CTRL, ctrl);
-+
-+	if (tbl_rw_tmout(priv, PCE_TBL_CTRL, PCE_TBL_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to write pce table\n");
-+		spin_unlock(&priv->tbl_lock);
-+		return -EBUSY;
-+	}
-+
-+	spin_unlock(&priv->tbl_lock);
-+
-+	return 0;
-+}
-+
-+int gswip_pce_table_read(struct gswip_core_priv *priv,
-+			 struct pce_tbl_prog *pce_tbl)
-+{
-+	u16 i, ctrl;
-+
-+	spin_lock(&priv->tbl_lock);
-+
-+	regmap_write(priv->regmap, PCE_TBL_ADDR, pce_tbl->addr);
-+
-+	ctrl = FIELD_PREP(PCE_TBL_CTRL_ADDR, pce_tbl->id) |
-+	       FIELD_PREP(PCE_TBL_CTRL_OPMOD, PCE_OPMODE_ADRD) |
-+	       FIELD_PREP(PCE_TBL_CTRL_BAS, TBL_BUSY);
-+	regmap_write(priv->regmap, PCE_TBL_CTRL, ctrl);
-+
-+	if (tbl_rw_tmout(priv, PCE_TBL_CTRL, PCE_TBL_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to read pce table\n");
-+		spin_unlock(&priv->tbl_lock);
-+		return -EBUSY;
-+	}
-+
-+	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_key; i++)
-+		reg_r16(priv, pce_tbl_key[i], &pce_tbl->key[i]);
-+
-+	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_mask; i++)
-+		reg_r16(priv, pce_tbl_mask[i], &pce_tbl->mask[i]);
-+
-+	for (i = 0; i < pce_tbl_def_cfg[pce_tbl->id].num_val; i++)
-+		reg_r16(priv, pce_tbl_value[i], &pce_tbl->val[i]);
-+
-+	spin_unlock(&priv->tbl_lock);
-+
-+	return 0;
-+}
-+
-+int gswip_bm_table_write(struct gswip_core_priv *priv,
-+			 struct bm_tbl_prog *bm_tbl)
-+{
-+	struct regmap *regmap = priv->regmap;
-+	u16 ctrl;
-+	int i;
-+
-+	spin_lock(&priv->tbl_lock);
-+
-+	for (i = 0; i < bm_tbl->num_val; i++)
-+		regmap_write(regmap, (BM_RAM_VAL_0 - i * BM_RAM_VAL_OFFSET),
-+			     bm_tbl->val[i]);
-+
-+	regmap_write(regmap, BM_RAM_ADDR, bm_tbl->addr);
-+
-+	ctrl = bm_tbl->id;
-+	ctrl |= FIELD_PREP(BM_RAM_CTRL_OPMOD, TBL_WR);
-+	ctrl |= FIELD_PREP(BM_RAM_CTRL_BAS, TBL_BUSY);
-+	regmap_write(regmap, BM_RAM_CTRL, ctrl);
-+
-+	if (tbl_rw_tmout(priv, BM_RAM_CTRL, BM_RAM_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to write bm table\n");
-+		spin_unlock(&priv->tbl_lock);
-+		return -EBUSY;
-+	}
-+
-+	spin_unlock(&priv->tbl_lock);
-+
-+	return 0;
-+}
-+
-+int gswip_bm_table_read(struct gswip_core_priv *priv,
-+			struct bm_tbl_prog *bm_tbl)
-+{
-+	u16 ctrl;
-+	int i;
-+
-+	spin_lock(&priv->tbl_lock);
-+
-+	regmap_write(priv->regmap, BM_RAM_ADDR, bm_tbl->addr);
-+
-+	ctrl = FIELD_PREP(BM_RAM_CTRL_ADDR, bm_tbl->id) |
-+	       FIELD_PREP(BM_RAM_CTRL_OPMOD, TBL_RD) |
-+	       FIELD_PREP(BM_RAM_CTRL_BAS, TBL_BUSY);
-+	regmap_write(priv->regmap, BM_RAM_CTRL, ctrl);
-+
-+	if (tbl_rw_tmout(priv, BM_RAM_CTRL, BM_RAM_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to read bm table\n");
-+		spin_unlock(&priv->tbl_lock);
-+		return -EBUSY;
-+	}
-+
-+	for (i = 0; i < bm_tbl->num_val; i++)
-+		reg_r16(priv, (BM_RAM_VAL_0 - i * BM_RAM_VAL_OFFSET),
-+			&bm_tbl->val[i]);
-+
-+	spin_unlock(&priv->tbl_lock);
-+
-+	return 0;
-+}
-+
-+int gswip_pmac_table_write(struct gswip_core_priv *priv,
-+			   struct pmac_tbl_prog *pmac_tbl)
-+{
-+	u16 pmac_id = pmac_tbl->pmac_id, ctrl;
-+	int i;
-+
-+	spin_lock(&priv->tbl_lock);
-+
-+	for (i = 0; i < pmac_tbl->num_val; i++)
-+		regmap_write(priv->regmap,
-+			     (PMAC_TBL_VAL(pmac_id) - i * PMAC_TBL_VAL_SFT),
-+			     pmac_tbl->val[i]);
-+
-+	regmap_write(priv->regmap, PMAC_TBL_ADDR(pmac_id), pmac_tbl->addr);
-+
-+	ctrl = FIELD_PREP(PMAC_TBL_CTRL_ADDR, pmac_tbl->id) |
-+	       FIELD_PREP(PMAC_TBL_CTRL_OPMOD, TBL_WR) |
-+	       FIELD_PREP(PMAC_TBL_CTRL_BAS, TBL_BUSY);
-+	regmap_write(priv->regmap, PMAC_TBL_CTRL(pmac_id), ctrl);
-+
-+	if (tbl_rw_tmout(priv, PMAC_TBL_CTRL(pmac_id), PMAC_TBL_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to write pmac table\n");
-+		spin_unlock(&priv->tbl_lock);
-+		return -EBUSY;
-+	}
-+
-+	spin_unlock(&priv->tbl_lock);
-+
-+	return 0;
-+}
-+
-+int gswip_pmac_table_read(struct gswip_core_priv *priv,
-+			  struct pmac_tbl_prog *pmac_tbl)
-+{
-+	u16 pmac_id = pmac_tbl->pmac_id, ctrl;
-+	int i;
-+
-+	spin_lock(&priv->tbl_lock);
-+
-+	regmap_write(priv->regmap, PMAC_TBL_ADDR(pmac_id), pmac_tbl->addr);
-+
-+	ctrl = FIELD_PREP(PMAC_TBL_CTRL_ADDR, pmac_tbl->id) |
-+	       FIELD_PREP(PMAC_TBL_CTRL_OPMOD, TBL_RD) |
-+	       FIELD_PREP(PMAC_TBL_CTRL_BAS, TBL_BUSY);
-+	regmap_write(priv->regmap, PMAC_TBL_CTRL(pmac_id), ctrl);
-+
-+	if (tbl_rw_tmout(priv, PMAC_TBL_CTRL(pmac_id), PMAC_TBL_CTRL_BAS)) {
-+		dev_err(priv->dev, "failed to read pmac table\n");
-+		spin_unlock(&priv->tbl_lock);
-+		return -EBUSY;
-+	}
-+
-+	for (i = 0; i < pmac_tbl->num_val; i++)
-+		reg_r16(priv, (PMAC_TBL_VAL(pmac_id) - i * PMAC_TBL_VAL_SFT),
-+			&pmac_tbl->val[i]);
-+
-+	spin_unlock(&priv->tbl_lock);
-+
-+	return 0;
-+}
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h
-new file mode 100644
-index 000000000000..4bd92951e7ae
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.h
-@@ -0,0 +1,195 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+#ifndef _GSW_TBL_RW_H_
-+#define _GSW_TBL_RW_H_
-+
-+#define PCE_TBL_KEY_NUM		34
-+#define PCE_TBL_VAL_NUM		31
-+#define PCE_TBL_MASK_NUM	4
-+#define PCE_MAC_LIMIT_NUM	255
-+
-+/* PCE queue mapping table */
-+#define PCE_Q_MAP_LOCAL_EXTRACT			BIT(8)
-+#define PCE_Q_MAP_IG_PORT_MODE			BIT(9)
-+#define PCE_Q_MAP_EG_PID			GENMASK(7, 4)
-+
-+/* PCE ingress CTP port configuration table */
-+#define PCE_IGCTP_VAL4_BYPASS_BR		BIT(15)
-+
-+/* PCE ingress bridge port configuration table */
-+#define PCE_IGBGP_VAL10_PORT_MAP_0		10
-+#define PCE_IGBGP_VAL4_LRN_LIMIT		GENMASK(7, 0)
-+#define PCE_IGBGP_VAL4_BR_ID			GENMASK(13, 8)
-+
-+/* PCE EGBGP table */
-+#define PCE_EGBGP_VAL4_DST_SUBIF_ID_GRP		GENMASK(7, 0)
-+#define PCE_EGBGP_VAL4_DST_LPID			GENMASK(11, 8)
-+#define PCE_EGBGP_VAL4_PMAPPER			BIT(14)
-+
-+/* PCE_BRGCFG table */
-+#define PCE_BRGCFG_VAL1_BCAST_FW_MODE		GENMASK(1, 0)
-+#define PCE_BRGCFG_VAL1_UCAST_FW_MODE		GENMASK(3, 2)
-+#define PCE_BRGCFG_VAL1_MCAST_NIP_FW_MODE	GENMASK(5, 4)
-+#define PCE_BRGCFG_VAL1_MCAST_IP_FW_MODE	GENMASK(7, 6)
-+#define PCE_BRGCFG_VAL3_LRN_DISC_CNT		GENMASK(31, 16)
-+
-+/* BM_PQM_THRES table */
-+#define BM_PQM_THRES_Q_NUM			GENMASK(7, 3)
-+
-+/* BM_Q_MAP table */
-+#define BM_Q_MAP_VAL4_REDIR_PID			GENMASK(2, 0)
-+#define BM_Q_MAP_VAL4_REDIR_PID_MSB		BIT(3)
-+#define BM_Q_MAP_VAL4_REDIR_PID_BIT4		BIT(4)
-+
-+enum pce_tbl_id {
-+	PCE_TFLOW	= 0x0f,
-+	PCE_Q_MAP	= 0x11,
-+	PCE_IG_CTP_CFG	= 0x12,
-+	PCE_EG_CTP_CFG	= 0x13,
-+	PCE_IG_BRP_CFG	= 0x14,
-+	PCE_EG_BRP_CFG	= 0x15,
-+	PCE_BR_CFG	= 0x19,
-+	PCE_PMAP	= 0x1f,
-+};
-+
-+#define PCE_TBL_KEY_NUM		34
-+#define PCE_TBL_VAL_NUM		31
-+#define PCE_TBL_MASK_NUM	4
-+
-+/* PCE programming table */
-+struct pce_tbl_prog {
-+	enum pce_tbl_id id;
-+	u16 val[PCE_TBL_VAL_NUM];
-+	u16 key[PCE_TBL_KEY_NUM];
-+	u16 mask[PCE_TBL_MASK_NUM];
-+	u16 addr;
-+};
-+
-+/* BM programming table */
-+enum bm_tbl_id {
-+	BM_CTP_RX_RMON		= 0x00,
-+	BM_CTP_TX_RMON		= 0x01,
-+	BM_BR_RX_RMON		= 0x02,
-+	BM_BR_TX_RMON		= 0x03,
-+	BM_CTP_PCE_BYPASS_RMON	= 0x04,
-+	BM_TFLOW_RX_RMON	= 0x05,
-+	BM_TFLOW_TX_RMON	= 0x06,
-+	BM_WFQ_PARAM		= 0x07,
-+	BM_PQM_THRES		= 0x09,
-+	BM_Q_MAP		= 0x0e,
-+	BM_PMAC_CNTR		= 0x1c
-+};
-+
-+#define BM_RAM_VAL_MAX		10
-+
-+struct rmon_cntr_tbl {
-+	u16 ctr_offset : 6;
-+	u16 port_offset : 10;
-+};
-+
-+struct qmap_tbl {
-+	u16 qid : 6;
-+	u16 reserved : 10;
-+};
-+
-+struct pmac_cntr_tbl {
-+	u16 addr : 5;
-+	u16 ctr_offset : 3;
-+	u16 pmac_id : 3;
-+	u16 reserved : 1;
-+	u16 ctr_offset_hdr : 1;
-+	u16 reserved1 : 3;
-+};
-+
-+struct bm_tbl_prog {
-+	enum bm_tbl_id id;
-+	union {
-+		struct rmon_cntr_tbl rmon_cntr;
-+		struct qmap_tbl qmap;
-+		struct pmac_cntr_tbl pmac_cntr;
-+		u16 addr;
-+	};
-+	u16 val[BM_RAM_VAL_MAX];
-+	u32 num_val;
-+};
-+
-+/* PMAC programming table */
-+enum pmac_tbl_id {
-+	PMAC_BP_MAP,
-+	PMAC_IG_CFG,
-+	PMAC_EG_CFG,
-+};
-+
-+#define PMAC_BP_MAP_TBL_VAL_NUM		3
-+#define PMAC_IG_CFG_TBL_VAL_NUM		5
-+#define PMAC_EG_CFG_TBL_VAL_NUM		3
-+#define PMAC_TBL_VAL_MAX		11
-+
-+/* PMAC_BP_MAP table */
-+/* Table Control */
-+#define PMAC_BPMAP_TX_DMA_CH		GENMASK(4, 0)
-+/* PMAC_TBL_VAL_2 */
-+#define PMAC_BPMAP_TX_Q_UPPER		GENMASK(31, 16)
-+
-+/* PMAC_IG_CFG table */
-+/* Table Control */
-+#define PMAC_IGCFG_TX_DMA_CH		GENMASK(4, 0)
-+/* PMAC_TBL_VAL_2 */
-+#define PMAC_IGCFG_HDR_ID		GENMASK(7, 4)
-+/* PMAC_TBL_VAL_4 */
-+#define PMAC_IGCFG_VAL4_PMAC_FLAG	BIT(0)
-+#define PMAC_IGCFG_VAL4_SPPID_MODE	BIT(1)
-+#define PMAC_IGCFG_VAL4_SUBID_MODE	BIT(2)
-+#define PMAC_IGCFG_VAL4_CLASSEN_MODE	BIT(3)
-+#define PMAC_IGCFG_VAL4_CLASS_MODE	BIT(5)
-+#define PMAC_IGCFG_VAL4_ERR_DP		BIT(7)
-+
-+/* PMAC_EG_CFG table */
-+/* Table Control */
-+#define PMAC_EGCFG_DST_PORT_ID		GENMASK(3, 0)
-+#define PMAC_EGCFG_MPE1			BIT(4)
-+#define PMAC_EGCFG_MPE2			BIT(5)
-+#define PMAC_EGCFG_ECRYPT		BIT(6)
-+#define PMAC_EGCFG_DECRYPT		BIT(7)
-+#define PMAC_EGCFG_TC_4BITS		GENMASK(7, 4)
-+#define PMAC_EGCFG_TC_2BITS		GENMASK(7, 6)
-+#define PMAC_EGCFG_FLOW_ID_MSB		GENMASK(9, 8)
-+/* PMAC_TBL_VAL_0 */
-+#define PMAC_EGCFG_VAL0_RES_2BITS	GENMASK(1, 0)
-+#define PMAC_EGCFG_VAL0_RES_3BITS	GENMASK(4, 2)
-+#define PMAC_EGCFG_VAL0_REDIR		BIT(4)
-+#define PMAC_EGCFG_VAL0_BSL		GENMASK(7, 5)
-+/* PMAC_TBL_VAL_1 */
-+#define PMAC_EGCFG_VAL1_RX_DMA_CH	GENMASK(3, 0)
-+/* PMAC_TBL_VAL_2 */
-+#define PMAC_EGCFG_VAL2_PMAC_FLAG	BIT(0)
-+#define PMAC_EGCFG_VAL2_FCS_MODE	BIT(1)
-+#define PMAC_EGCFG_VAL2_L2HD_RM_MODE	BIT(2)
-+#define PMAC_EGCFG_VAL2_L2HD_RM		GENMASK(15, 8)
-+
-+struct pmac_tbl_prog {
-+	u16 pmac_id;
-+	enum pmac_tbl_id id;
-+	u16 val[PMAC_TBL_VAL_MAX];
-+	u8 num_val;
-+	u16 addr;
-+};
-+
-+struct gswip_core_priv;
-+
-+int gswip_pce_table_init(void);
-+int gswip_pce_table_write(struct gswip_core_priv *priv,
-+			  struct pce_tbl_prog *pce_tbl);
-+int gswip_pce_table_read(struct gswip_core_priv *priv,
-+			 struct pce_tbl_prog *pce_tbl);
-+int gswip_bm_table_read(struct gswip_core_priv *priv,
-+			struct bm_tbl_prog *bm_tbl);
-+int gswip_bm_table_write(struct gswip_core_priv *priv,
-+			 struct bm_tbl_prog *bm_tbl);
-+int gswip_pmac_table_read(struct gswip_core_priv *priv,
-+			  struct pmac_tbl_prog *pmac_tbl);
-+int gswip_pmac_table_write(struct gswip_core_priv *priv,
-+			   struct pmac_tbl_prog *pmac_tbl);
-+
-+#endif
-+
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/lmac.c b/drivers/net/ethernet/intel/gwdpa/gswip/lmac.c
-new file mode 100644
-index 000000000000..2fef9eaeeadc
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/lmac.c
-@@ -0,0 +1,46 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+
-+#include <linux/bitfield.h>
-+#include <linux/types.h>
-+
-+#include "mac_common.h"
-+
-+int lmac_set_duplex_mode(struct gswip_mac *priv, u32 val)
-+{
-+	u32 mac_ctrl0 = lmac_read(priv, MAC_CTRL0_REG(priv->mac_idx));
-+
-+	if (FIELD_GET(MAC_CTRL0_FDUP, mac_ctrl0) != val) {
-+		mac_ctrl0 &= ~MAC_CTRL0_FDUP;
-+		mac_ctrl0 |= FIELD_PREP(MAC_CTRL0_FDUP, val);
-+		lmac_write(priv, MAC_CTRL0_REG(priv->mac_idx), mac_ctrl0);
-+	}
-+
-+	return 0;
-+}
-+
-+int lmac_set_flowcon_mode(struct gswip_mac *priv, u32 val)
-+{
-+	u32 mac_ctrl0 = lmac_read(priv, MAC_CTRL0_REG(priv->mac_idx));
-+
-+	if (FIELD_GET(MAC_CTRL0_FCON, mac_ctrl0) != val) {
-+		mac_ctrl0 &= ~MAC_CTRL0_FCON;
-+		mac_ctrl0 |= FIELD_PREP(MAC_CTRL0_FCON, val);
-+		lmac_write(priv, MAC_CTRL0_REG(priv->mac_idx), mac_ctrl0);
-+	}
-+
-+	return 0;
-+}
-+
-+int lmac_set_intf_mode(struct gswip_mac *priv, u32 val)
-+{
-+	u32 mac_ctrl0 = lmac_read(priv, MAC_CTRL0_REG(priv->mac_idx));
-+
-+	if (FIELD_GET(MAC_CTRL0_GMII, mac_ctrl0) != val) {
-+		mac_ctrl0 &= ~MAC_CTRL0_GMII;
-+		mac_ctrl0 |= FIELD_PREP(MAC_CTRL0_GMII, val);
-+		lmac_write(priv, MAC_CTRL0_REG(priv->mac_idx), mac_ctrl0);
-+	}
-+
-+	return 0;
-+}
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c b/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
-new file mode 100644
-index 000000000000..dcbcb3e3deab
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_cfg.c
-@@ -0,0 +1,524 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+
-+#include <linux/bitfield.h>
-+#include <linux/ethtool.h>
-+#include "mac_common.h"
-+
-+static int mac_speed_to_val(u32 speed)
-+{
-+	int val;
-+
-+	switch (speed) {
-+	case SPEED_10M:
-+		val = SPEED_10;
-+		break;
-+	case SPEED_100M:
-+		val = SPEED_100;
-+		break;
-+	case SPEED_1G:
-+		val = SPEED_1000;
-+		break;
-+	case SPEED_10G:
-+		val = SPEED_10000;
-+		break;
-+	case SPEED_2G5:
-+		val = SPEED_2500;
-+		break;
-+	case SPEED_5G:
-+		val = SPEED_5000;
-+		break;
-+	default:
-+		val = SPEED_UNKNOWN;
-+	}
-+
-+	return val;
-+}
-+
-+static int mac_get_speed(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	u32 mac_speed;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	mac_speed = sw_get_speed(priv);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return mac_speed_to_val(mac_speed);
-+}
-+
-+static int mac_set_physpeed(struct gswip_mac *priv, u32 phy_speed)
-+{
-+	spin_lock_bh(&priv->mac_lock);
-+	xgmac_set_extcfg(priv, 1);
-+
-+	switch (phy_speed) {
-+	default:
-+	case SPEED_MAC_AUTO:
-+		sw_set_speed(priv, SPEED_AUTO);
-+		break;
-+
-+	case SPEED_XGMAC_10G:
-+		xgmac_set_xgmii_speed(priv);
-+		sw_set_speed(priv, SPEED_10G);
-+		break;
-+
-+	case SPEED_GMII_25G:
-+		sw_set_speed(priv, SPEED_2G5);
-+		sw_set_2G5_intf(priv, XGMAC_GMII);
-+		xgmac_set_gmii_2500_speed(priv);
-+		break;
-+
-+	case SPEED_XGMII_25G:
-+		sw_set_speed(priv, SPEED_2G5);
-+		sw_set_2G5_intf(priv, XGMAC_XGMII);
-+		xgmac_set_xgmii_2500_speed(priv);
-+		break;
-+
-+	case SPEED_XGMAC_1G:
-+		sw_set_speed(priv, SPEED_1G);
-+		sw_set_1g_intf(priv, XGMAC_GMII);
-+		xgmac_set_gmii_speed(priv);
-+		xgmac_set_extcfg(priv, 1);
-+		break;
-+
-+	case SPEED_XGMAC_10M:
-+		sw_set_speed(priv, SPEED_10M);
-+		/* FALLTHRU */
-+	case SPEED_XGMAC_100M:
-+		if (phy_speed != SPEED_XGMAC_10M)
-+			sw_set_speed(priv, SPEED_100M);
-+
-+		sw_set_fe_intf(priv, XGMAC_GMII);
-+		sw_set_1g_intf(priv, XGMAC_GMII);
-+		xgmac_set_gmii_speed(priv);
-+		break;
-+
-+	case SPEED_LMAC_10M:
-+		sw_set_speed(priv, SPEED_10M);
-+		/* FALLTHRU */
-+	case SPEED_LMAC_100M:
-+		if (phy_speed != SPEED_LMAC_10M)
-+			sw_set_speed(priv, SPEED_100M);
-+
-+		sw_set_fe_intf(priv, LMAC_MII);
-+		lmac_set_intf_mode(priv, 1);
-+		break;
-+
-+	case SPEED_LMAC_1G:
-+		sw_set_speed(priv, SPEED_1G);
-+		sw_set_1g_intf(priv, LMAC_GMII);
-+		lmac_set_intf_mode(priv, 2);
-+		break;
-+	}
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return 0;
-+}
-+
-+static int mac_set_duplex(struct gswip_mac *priv, u32 mode)
-+{
-+	u32 val;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	switch (mode) {
-+	default:
-+	case GSW_DUPLEX_AUTO:
-+		val = PHY_MODE_FDUP_AUTO;
-+		break;
-+	case GSW_DUPLEX_HALF:
-+		val = PHY_MODE_FDUP_HD;
-+		break;
-+	case GSW_DUPLEX_FULL:
-+		val = PHY_MODE_FDUP_FD;
-+		break;
-+	}
-+
-+	sw_set_duplex_mode(priv, val);
-+	lmac_set_duplex_mode(priv, val);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return 0;
-+}
-+
-+static int mac_get_duplex(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	int val;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	val = sw_get_duplex_mode(priv);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return val;
-+}
-+
-+static int mac_get_linksts(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	int linksts;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	linksts = sw_get_linkstatus(priv);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return linksts;
-+}
-+
-+static int mac_set_linksts(struct gswip_mac *priv, u32 mode)
-+{
-+	u8 val;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	switch (mode) {
-+	default:
-+	case LINK_AUTO:
-+		val = PHY_MODE_LINKST_AUTO;
-+		break;
-+
-+	case LINK_UP:
-+		val = PHY_MODE_LINKST_UP;
-+		break;
-+
-+	case LINK_DOWN:
-+		val = PHY_MODE_LINKST_DOWN;
-+		break;
-+	}
-+	sw_set_linkstatus(priv, val);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return 0;
-+}
-+
-+static int mac_set_flowctrl(struct device *dev, u32 val)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+
-+	if (val >= FC_INVALID)
-+		return -EINVAL;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	lmac_set_flowcon_mode(priv, val);
-+
-+	switch (val) {
-+	default:
-+	case FC_AUTO:
-+		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_EN);
-+		xgmac_rx_flow_ctl(priv, XGMAC_FC_EN);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_AUTO, FCONRX);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_AUTO, FCONTX);
-+		break;
-+
-+	case FC_RX:
-+		/* Disable TX in XGMAC and GSWSS */
-+		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_DIS);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_DIS, FCONTX);
-+
-+		/* Enable RX in XGMAC and GSWSS */
-+		xgmac_rx_flow_ctl(priv, XGMAC_FC_EN);
-+
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONRX);
-+		break;
-+
-+	case FC_TX:
-+		/* Disable RX in XGMAC and GSWSS */
-+		xgmac_rx_flow_ctl(priv, XGMAC_FC_DIS);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_DIS, FCONTX);
-+
-+		/* Enable TX in XGMAC and GSWSS */
-+		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_EN);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONTX);
-+		break;
-+
-+	case FC_RXTX:
-+		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_EN);
-+		xgmac_rx_flow_ctl(priv, XGMAC_FC_EN);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONRX);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONTX);
-+		break;
-+
-+	case FC_DIS:
-+		xgmac_tx_flow_ctl(priv, priv->pause_time, XGMAC_FC_DIS);
-+		xgmac_rx_flow_ctl(priv, XGMAC_FC_DIS);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_DIS, FCONRX);
-+		sw_set_flowctrl(priv, PHY_MODE_FCON_EN, FCONTX);
-+		break;
-+	}
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return 0;
-+}
-+
-+inline int get_2G5_intf(struct gswip_mac *priv)
-+{
-+	u32 mac_if_cfg, macif;
-+	int ret;
-+
-+	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+	macif = FIELD_PREP(MAC_IF_CFG_CFG2G5, mac_if_cfg);
-+
-+	if (macif == 0)
-+		ret = XGMAC_GMII;
-+	else if (macif == 1)
-+		ret = XGMAC_XGMII;
-+	else
-+		ret = -EINVAL;
-+
-+	return ret;
-+}
-+
-+inline int get_1g_intf(struct gswip_mac *priv)
-+{
-+	u32 mac_if_cfg, macif;
-+	int ret;
-+
-+	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+	macif = FIELD_GET(MAC_IF_CFG_CFG1G, mac_if_cfg);
-+
-+	if (macif == 0)
-+		ret = LMAC_GMII;
-+	else if (macif == 1)
-+		ret = XGMAC_GMII;
-+	else
-+		ret = -EINVAL;
-+
-+	return ret;
-+}
-+
-+inline int get_fe_intf(struct gswip_mac *priv)
-+{
-+	u32 mac_if_cfg, macif;
-+	int ret;
-+
-+	mac_if_cfg = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+	macif = FIELD_GET(MAC_IF_CFG_CFGFE, mac_if_cfg);
-+
-+	if (macif == 0)
-+		ret = LMAC_MII;
-+	else if (macif == 1)
-+		ret = XGMAC_GMII;
-+	else
-+		ret = -EINVAL;
-+
-+	return ret;
-+}
-+
-+static int mac_get_mii_interface(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	int intf, ret;
-+	u8 mac_speed;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	mac_speed = sw_get_speed(priv);
-+	switch (mac_speed) {
-+	case SPEED_10M:
-+	case SPEED_100M:
-+		intf = get_fe_intf(priv);
-+		if (intf == XGMAC_GMII)
-+			ret = GSW_PORT_HW_GMII;
-+		else if (intf == LMAC_MII)
-+			ret = GSW_PORT_HW_MII;
-+		else
-+			ret = -EINVAL;
-+		break;
-+
-+	case SPEED_1G:
-+		intf = get_1g_intf(priv);
-+		if (intf == LMAC_GMII || intf == XGMAC_GMII)
-+			ret = GSW_PORT_HW_GMII;
-+		else
-+			ret = -EINVAL;
-+		break;
-+
-+	case SPEED_2G5:
-+		intf = get_2G5_intf(priv);
-+		if (intf == XGMAC_GMII)
-+			ret = GSW_PORT_HW_GMII;
-+		else if (intf == XGMAC_XGMII)
-+			ret = GSW_PORT_HW_XGMII;
-+		else
-+			ret = -EINVAL;
-+		break;
-+
-+	case SPEED_10G:
-+		ret = GSW_PORT_HW_XGMII;
-+		break;
-+
-+	case SPEED_AUTO:
-+		ret = GSW_PORT_HW_XGMII;
-+		break;
-+
-+	default:
-+		ret = -EINVAL;
-+	}
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return ret;
-+}
-+
-+inline u32 set_mii_if_fe(u32 mode)
-+{
-+	u32 val = 0;
-+
-+	switch (mode) {
-+	default:
-+	case LMAC_MII:
-+		val &= ~MAC_IF_CFG_CFGFE;
-+		break;
-+
-+	case XGMAC_GMII:
-+		val |= MAC_IF_CFG_CFGFE;
-+		break;
-+	}
-+
-+	return val;
-+}
-+
-+inline u32 set_mii_if_1g(u32 mode)
-+{
-+	u32 val = 0;
-+
-+	switch (mode) {
-+	default:
-+	case LMAC_GMII:
-+		val &= ~MAC_IF_CFG_CFG1G;
-+		break;
-+
-+	case XGMAC_GMII:
-+		val |= MAC_IF_CFG_CFG1G;
-+		break;
-+	}
-+
-+	return val;
-+}
-+
-+inline u32 set_mii_if_2G5(u32 mode)
-+{
-+	u32 val = 0;
-+
-+	switch (mode) {
-+	default:
-+	case XGMAC_GMII:
-+		val &= ~MAC_IF_CFG_CFG2G5;
-+		break;
-+
-+	case XGMAC_XGMII:
-+		val |= MAC_IF_CFG_CFG2G5;
-+		break;
-+	}
-+
-+	return val;
-+}
-+
-+static int mac_set_mii_interface(struct device *dev, u32 mii_mode)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	u32 reg_val = 0;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	reg_val = sw_read(priv, MAC_IF_CFG_REG(priv->mac_idx));
-+
-+	/* Default modes...
-+	 *		2.5G -	XGMAC_GMII
-+	 *		1G   -	LMAC_GMII
-+	 *		FE   -	LMAC_MII
-+	 */
-+	switch (mii_mode) {
-+	default:
-+	case GSW_PORT_HW_XGMII:
-+		reg_val |= set_mii_if_2G5(XGMAC_XGMII);
-+		break;
-+
-+	case GSW_PORT_HW_GMII:
-+		reg_val |= set_mii_if_1g(XGMAC_GMII);
-+		reg_val |= set_mii_if_fe(XGMAC_GMII);
-+		reg_val |= set_mii_if_2G5(XGMAC_GMII);
-+		break;
-+
-+	case GSW_PORT_HW_MII:
-+		reg_val |= set_mii_if_fe(LMAC_MII);
-+		break;
-+	}
-+
-+	sw_write(priv, MAC_IF_CFG_REG(priv->mac_idx), reg_val);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return 0;
-+}
-+
-+static u32 mac_get_mtu(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+	u32 val;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	val = sw_mac_get_mtu(priv);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return val;
-+}
-+
-+static int mac_set_mtu(struct device *dev, u32 mtu)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+
-+	if (mtu > LGM_MAX_MTU)
-+		return -EINVAL;
-+
-+	spin_lock_bh(&priv->mac_lock);
-+	sw_mac_set_mtu(priv, mtu);
-+	xgmac_config_pkt(priv, mtu);
-+	spin_unlock_bh(&priv->mac_lock);
-+
-+	return 0;
-+}
-+
-+static int mac_init(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+
-+	xgmac_set_mac_address(priv, priv->mac_addr);
-+	mac_set_mtu(dev, priv->mtu);
-+	xgmac_config_packet_filter(priv, PROMISC);
-+	xgmac_config_packet_filter(priv, PASS_ALL_MULTICAST);
-+	mac_set_mii_interface(dev, GSW_PORT_HW_GMII);
-+	mac_set_flowctrl(dev, FC_RXTX);
-+	mac_set_linksts(priv, LINK_UP);
-+	mac_set_duplex(priv, GSW_DUPLEX_FULL);
-+	xgmac_set_mac_lpitx(priv, LPITX_EN);
-+	mac_set_physpeed(priv, SPEED_XGMAC_10G);
-+	/* Enable XMAC Tx/Rx */
-+	xgmac_enable(priv);
-+	xgmac_pause_frame_filter(priv, 1);
-+	sw_set_eee_cap(priv, ANEG_EEE_CAP_OFF);
-+	sw_set_mac_rxfcs_op(priv, MAC_OP_CFG_RX_FCS_M3);
-+	xgmac_mdio_set_clause(priv, MDIO_CLAUSE22, (priv->mac_idx - MAC2));
-+	xgmac_mdio_register(priv);
-+
-+	return 0;
-+}
-+
-+static const struct gsw_mac_ops lgm_mac_ops = {
-+	.init		= mac_init,
-+	.set_mtu	= mac_set_mtu,
-+	.get_mtu	= mac_get_mtu,
-+	.set_mii_if	= mac_set_mii_interface,
-+	.get_mii_if	= mac_get_mii_interface,
-+	.set_flowctrl	= mac_set_flowctrl,
-+	.get_link_sts	= mac_get_linksts,
-+	.get_duplex	= mac_get_duplex,
-+	.get_speed	= mac_get_speed,
-+};
-+
-+static const struct gsw_adap_ops lgm_adap_ops = {
-+	.sw_core_enable = sw_core_enable,
-+};
-+
-+void mac_init_ops(struct device *dev)
-+{
-+	struct gswip_mac *priv = dev_get_drvdata(dev);
-+
-+	priv->mac_ops = &lgm_mac_ops;
-+	priv->adap_ops = &lgm_adap_ops;
-+}
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h b/drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h
-new file mode 100644
-index 000000000000..581997a615d6
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_common.h
-@@ -0,0 +1,238 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+
-+#ifndef _MAC_COMMON_H
-+#define _MAC_COMMON_H
-+
-+#include <linux/io.h>
-+#include <linux/kernel.h>
-+#include <linux/platform_device.h>
-+#include <linux/spinlock.h>
-+
-+#include "gswip.h"
-+#include "gswip_reg.h"
-+#include "gswip_dev.h"
-+
-+#define LGM_MAX_MTU	10000
-+#define LPITX_EN	1
-+#define SPEED_LSB	GENMASK(1, 0)
-+#define SPEED_MSB	BIT(2)
-+#define MDIO_CLAUSE22	1
-+#define MDIO_CLAUSE45	0
-+
-+/* MAC Index */
-+enum mac_index {
-+	PMAC0 = 0,
-+	PMAC1,
-+	MAC2,
-+	MAC3,
-+	MAC4,
-+	MAC5,
-+	MAC6,
-+	MAC7,
-+	MAC8,
-+	MAC9,
-+	MAC10,
-+	PMAC2,
-+	MAC_LAST,
-+};
-+
-+enum packet_flilter_mode {
-+	PROMISC = 0,
-+	PASS_ALL_MULTICAST,
-+	PKT_FR_DEF,
-+};
-+
-+enum mii_interface {
-+	LMAC_MII = 0,
-+	LMAC_GMII,
-+	XGMAC_GMII,
-+	XGMAC_XGMII,
-+};
-+
-+enum speed_interface {
-+	SPEED_10M = 0,
-+	SPEED_100M,
-+	SPEED_1G,
-+	SPEED_10G,
-+	SPEED_2G5,
-+	SPEED_5G,
-+	SPEED_FLEX,
-+	SPEED_AUTO
-+};
-+
-+enum gsw_fcon {
-+	FCONRX = 0,
-+	FCONTX,
-+	FDUP,
-+};
-+
-+enum xgmac_fcon_on_off {
-+	XGMAC_FC_EN = 0,
-+	XGMAC_FC_DIS,
-+};
-+
-+enum gsw_portduplex_mode {
-+	GSW_DUPLEX_AUTO = 0,
-+	GSW_DUPLEX_HALF,
-+	GSW_DUPLEX_FULL,
-+};
-+
-+struct xgmac_hw_features {
-+	/* HW version */
-+	u32 version;
-+
-+	/* HW Feature0 Register: core */
-+	u32 gmii;	/* 1000 Mbps support */
-+	u32 vlhash;	/* VLAN Hash Filter */
-+	u32 sma;	/* SMA(MDIO) Interface */
-+	u32 rwk;	/* PMT remote wake-up packet */
-+	u32 mgk;	/* PMT magic packet */
-+	u32 mmc;	/* RMON module */
-+	u32 aoe;	/* ARP Offload */
-+	u32 ts;		/* IEEE 1588-2008 Advanced Timestamp */
-+	u32 eee;	/* Energy Efficient Ethernet */
-+	u32 tx_coe;	/* Tx Checksum Offload */
-+	u32 rx_coe;	/* Rx Checksum Offload */
-+	u32 addn_mac;	/* Additional MAC Addresses */
-+	u32 ts_src;	/* Timestamp Source */
-+	u32 sa_vlan_ins;/* Source Address or VLAN Insertion */
-+	u32 vxn;	/* VxLAN/NVGRE Support */
-+	u32 ediffc;	/* Different Descriptor Cache */
-+	u32 edma;	/* Enhanced DMA */
-+
-+	/* HW Feature1 Register: DMA and MTL */
-+	u32 rx_fifo_size;	/* MTL Receive FIFO Size */
-+	u32 tx_fifo_size;	/* MTL Transmit FIFO Size */
-+	u32 osten;		/* One-Step Timestamping Enable */
-+	u32 ptoen;		/* PTP Offload Enable */
-+	u32 adv_ts_hi;		/* Advance Timestamping High Word */
-+	u32 dma_width;		/* DMA width */
-+	u32 dcb;		/* DCB Feature */
-+	u32 sph;		/* Split Header Feature */
-+	u32 tso;		/* TCP Segmentation Offload */
-+	u32 dma_debug;		/* DMA Debug Registers */
-+	u32 rss;		/* Receive Side Scaling */
-+	u32 tc_cnt;		/* Number of Traffic Classes */
-+	u32 hash_table_size;	/* Hash Table Size */
-+	u32 l3l4_filter_num;	/* Number of L3-L4 Filters */
-+
-+	/* HW Feature2 Register: Channels(DMA) and Queues(MTL) */
-+	u32 rx_q_cnt;		/* Number of MTL Receive Queues */
-+	u32 tx_q_cnt;		/* Number of MTL Transmit Queues */
-+	u32 rx_ch_cnt;		/* Number of DMA Receive Channels */
-+	u32 tx_ch_cnt;		/* Number of DMA Transmit Channels */
-+	u32 pps_out_num;	/* Number of PPS outputs */
-+	u32 aux_snap_num;	/* Number of Aux snapshot inputs */
-+};
-+
-+struct gswip_mac {
-+	void __iomem *sw;	/* adaption layer */
-+	void __iomem *lmac;	/* legacy mac */
-+
-+	/* XGMAC registers for indirect accessing */
-+	u32 xgmac_ctrl_reg;
-+	u32 xgmac_data0_reg;
-+	u32 xgmac_data1_reg;
-+
-+	u32 sw_irq;
-+	struct clk *ptp_clk;
-+	struct clk *sw_clk;
-+
-+	struct device *dev;
-+	struct device *parent;
-+
-+	spinlock_t mac_lock;	/* MAC spin lock*/
-+	spinlock_t irw_lock;	/* lock for Indirect read/write */
-+	spinlock_t sw_lock;	/* adaption lock */
-+
-+	/* Phy status */
-+	u32 phy_speed;
-+	const char *phy_mode;
-+
-+	u32 ver;
-+	/* Index to point XGMAC 2/3/4/.. */
-+	u32 mac_idx;
-+	u32 mac_max;
-+	u32 ptp_clk_rate;
-+
-+	struct xgmac_hw_features hw_feat;
-+	const struct gsw_mac_ops *mac_ops;
-+
-+	const struct gsw_adap_ops *adap_ops;
-+	u32 core_en_cnt;
-+	struct mii_bus *mii;
-+
-+	u8 mac_addr[6];
-+	u32 mtu;
-+	bool promisc_mode;
-+	bool all_mcast_mode;
-+	u32 pause_time;
-+};
-+
-+/*  GSWIP-O Top Register write */
-+static inline void sw_write(struct gswip_mac *priv, u32 reg, u32 val)
-+{
-+	writel(val, priv->sw + reg);
-+}
-+
-+/* GSWIP-O Top Register read */
-+static inline int sw_read(struct gswip_mac *priv, u32 reg)
-+{
-+	return readl(priv->sw + reg);
-+}
-+
-+/* Legacy MAC Register read */
-+static inline void lmac_write(struct gswip_mac *priv, u32 reg, u32 val)
-+{
-+	writel(val, priv->lmac + reg);
-+}
-+
-+/* Legacy MAC Register write */
-+static inline int lmac_read(struct gswip_mac *priv, u32 reg)
-+{
-+	return readl(priv->lmac + reg);
-+}
-+
-+/* prototype */
-+void mac_init_ops(struct device *dev);
-+void xgmac_init_priv(struct gswip_mac *priv);
-+void xgmac_get_hw_features(struct gswip_mac *priv);
-+void xgmac_set_mac_address(struct gswip_mac *priv, u8 *mac_addr);
-+void xgmac_config_pkt(struct gswip_mac *priv, u32 mtu);
-+void xgmac_config_packet_filter(struct gswip_mac *priv, u32 mode);
-+void xgmac_tx_flow_ctl(struct gswip_mac *priv, u32 pause_time, u32 mode);
-+void xgmac_rx_flow_ctl(struct gswip_mac *priv, u32 mode);
-+int xgmac_set_mac_lpitx(struct gswip_mac *priv, u32 val);
-+int xgmac_enable(struct gswip_mac *priv);
-+int xgmac_disable(struct gswip_mac *priv);
-+int xgmac_pause_frame_filter(struct gswip_mac *priv, u32 val);
-+int xgmac_set_extcfg(struct gswip_mac *priv, u32 val);
-+int xgmac_set_xgmii_speed(struct gswip_mac *priv);
-+int xgmac_set_gmii_2500_speed(struct gswip_mac *priv);
-+int xgmac_set_xgmii_2500_speed(struct gswip_mac *priv);
-+int xgmac_set_gmii_speed(struct gswip_mac *priv);
-+int xgmac_mdio_set_clause(struct gswip_mac *priv, u32 clause, u32 phy_id);
-+int xgmac_mdio_register(struct gswip_mac *priv);
-+
-+int sw_mac_set_mtu(struct gswip_mac *priv, u32 mtu);
-+u32 sw_mac_get_mtu(struct gswip_mac *priv);
-+u32 sw_get_speed(struct gswip_mac *priv);
-+int sw_set_flowctrl(struct gswip_mac *priv, u8 val, u32 mode);
-+int sw_get_linkstatus(struct gswip_mac *priv);
-+int sw_set_linkstatus(struct gswip_mac *priv, u8 linkst);
-+int sw_get_duplex_mode(struct gswip_mac *priv);
-+int sw_set_duplex_mode(struct gswip_mac *priv, u32 val);
-+int sw_set_speed(struct gswip_mac *priv, u8 speed);
-+int sw_set_2G5_intf(struct gswip_mac *priv, u32 macif);
-+int sw_set_1g_intf(struct gswip_mac *priv, u32 macif);
-+int sw_set_fe_intf(struct gswip_mac *priv, u32 macif);
-+int sw_set_eee_cap(struct gswip_mac *priv, u32 val);
-+int sw_set_mac_rxfcs_op(struct gswip_mac *priv, u32 val);
-+
-+int lmac_set_flowcon_mode(struct gswip_mac *priv, u32 val);
-+int lmac_set_duplex_mode(struct gswip_mac *priv, u32 val);
-+int lmac_set_intf_mode(struct gswip_mac *priv, u32 val);
-+
-+int sw_core_enable(struct device *dev, u32 val);
-+#endif
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c b/drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c
-new file mode 100644
-index 000000000000..028c580cdf8e
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/mac_dev.c
-@@ -0,0 +1,186 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation.
-+ *
-+ * GSWIP MAC controller driver.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/err.h>
-+#include <linux/interrupt.h>
-+#include <linux/irq.h>
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of_platform.h>
-+#include <linux/phy.h>
-+#include <linux/platform_device.h>
-+#include <linux/spinlock.h>
-+
-+#include "mac_common.h"
-+
-+#define	MAX_MAC	9
-+
-+static const char *link_status_to_str(int link)
-+{
-+	switch (link) {
-+	case 0:
-+		return "DOWN";
-+	case 1:
-+		return "UP";
-+	default:
-+		return "UNKNOWN";
-+	}
-+}
-+
-+static void gswss_update_interrupt(struct gswip_mac *priv, u32 mask, u32 set)
-+{
-+	u32 val;
-+
-+	val = (sw_read(priv, GSWIPSS_IER0) & ~mask) | set;
-+	sw_write(priv, GSWIPSS_IER0, val);
-+}
-+
-+static void lmac_update_interrupt(struct gswip_mac *priv, u32 mask, u32 set)
-+{
-+	u32 val;
-+
-+	val = (lmac_read(priv, LMAC_IER) & ~mask) | set;
-+	lmac_write(priv, LMAC_IER, val);
-+}
-+
-+static void gswss_clear_interrupt_all(struct gswip_mac *priv)
-+{
-+	unsigned long xgmac_status, lmac_status;
-+	u32 pos;
-+
-+	xgmac_status = sw_read(priv, GSWIPSS_ISR0);
-+	lmac_status = lmac_read(priv, LMAC_ISR);
-+
-+	pos = GSWIPSS_I_XGMAC2;
-+	for_each_set_bit_from(pos, &xgmac_status, priv->mac_max)
-+		gswss_update_interrupt(priv, BIT(pos), 0);
-+
-+	pos = LMAC_I_MAC2;
-+	for_each_set_bit_from(pos, &lmac_status, priv->mac_max)
-+		lmac_update_interrupt(priv, BIT(pos), 0);
-+}
-+
-+static irqreturn_t mac_interrupt(int irq, void *data)
-+{
-+	struct gswip_mac *priv = data;
-+
-+	/* clear all interrupts */
-+	gswss_clear_interrupt_all(priv);
++	tasklet_schedule(&rf->dpc_tasklet);
 +
 +	return IRQ_HANDLED;
 +}
 +
-+/* All MAC instances have one interrupt line and need to register only once. */
-+static int mac_irq_init(struct gswip_mac *priv)
++/**
++ * irdma_ceq_handler - interrupt handler for ceq
++ * @irq: interrupt request number
++ * @data: ceq pointer
++ */
++static irqreturn_t irdma_ceq_handler(int irq, void *data)
 +{
-+	return devm_request_irq(priv->dev, priv->sw_irq, mac_interrupt, 0,
-+				"gswip_mac", priv);
++	struct irdma_ceq *iwceq = data;
++
++	if (iwceq->irq != irq)
++		dev_err(rfdev_to_dev(&iwceq->rf->sc_dev),
++			"expected irq = %d received irq = %d\n", iwceq->irq,
++			irq);
++	tasklet_schedule(&iwceq->dpc_tasklet);
++
++	return IRQ_HANDLED;
 +}
 +
-+static int get_mac_index(struct device_node *node, u32 *idx)
++/**
++ * irdma_destroy_irq - destroy device interrupts
++ * @rf: RDMA PCI function
++ * @msix_vec: msix vector to disable irq
++ * @dev_id: parameter to pass to free_irq (used during irq setup)
++ *
++ * The function is called when destroying aeq/ceq
++ */
++static void irdma_destroy_irq(struct irdma_pci_f *rf,
++			      struct irdma_msix_vector *msix_vec, void *dev_id)
 +{
-+	if (!strstr(node->full_name, "@"))
-+		return -EINVAL;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
 +
-+	return kstrtou32(node->full_name + strlen(node->name) + 1, 0, idx);
++	dev->irq_ops->irdma_dis_irq(dev, msix_vec->idx);
++	irq_set_affinity_hint(msix_vec->irq, NULL);
++	free_irq(msix_vec->irq, dev_id);
 +}
 +
-+static int mac_probe(struct platform_device *pdev)
++/**
++ * irdma_destroy_cqp  - destroy control qp
++ * @rf: RDMA PCI function
++ * @free_hwcqp: 1 if hw cqp should be freed
++ *
++ * Issue destroy cqp request and
++ * free the resources associated with the cqp
++ */
++static void irdma_destroy_cqp(struct irdma_pci_f *rf, bool free_hwcqp)
 +{
-+	struct device *dev = &pdev->dev;
-+	int linksts, duplex, speed;
-+	struct gswip_pdata *pdata;
-+	struct device_node *node;
-+	struct gswip_mac *priv;
-+	int ret;
++	enum irdma_status_code status = 0;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_cqp *cqp = &rf->cqp;
 +
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
++	if (rf->cqp_cmpl_wq)
++		destroy_workqueue(rf->cqp_cmpl_wq);
 +
-+	node = dev->of_node;
-+	pdata = dev_get_platdata(dev->parent);
++	if (free_hwcqp)
++		status = dev->cqp_ops->cqp_destroy(dev->cqp);
++	if (status)
++		dev_dbg(rfdev_to_dev(dev), "ERR: Destroy CQP failed %d\n",
++			status);
 +
-+	/* get the platform data */
-+	priv->dev = &pdev->dev;
-+	priv->parent = dev->parent;
-+	priv->sw = pdata->sw;
-+	priv->lmac = pdata->lmac;
-+	priv->sw_irq = pdata->sw_irq;
-+	priv->ptp_clk = pdata->ptp_clk;
-+	priv->sw_clk = pdata->sw_clk;
++	irdma_cleanup_pending_cqp_op(rf);
++	dma_free_coherent(hw_to_dev(dev->hw), cqp->sq.size, cqp->sq.va,
++			  cqp->sq.pa);
++	cqp->sq.va = NULL;
++	kfree(cqp->scratch_array);
++	cqp->scratch_array = NULL;
++	kfree(cqp->cqp_requests);
++	cqp->cqp_requests = NULL;
++}
 +
-+	/* Initialize spin lock */
-+	spin_lock_init(&priv->mac_lock);
-+	spin_lock_init(&priv->irw_lock);
-+	spin_lock_init(&priv->sw_lock);
++/**
++ * irdma_destroy_aeq - destroy aeq
++ * @rf: RDMA PCI function
++ *
++ * Issue a destroy aeq request and
++ * free the resources associated with the aeq
++ * The function is called during driver unload
++ */
++static void irdma_destroy_aeq(struct irdma_pci_f *rf)
++{
++	enum irdma_status_code status = IRDMA_ERR_NOT_READY;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_aeq *aeq = &rf->aeq;
 +
-+	priv->mac_max =	MAX_MAC;
-+	ret = get_mac_index(node, &priv->mac_idx);
-+	if (ret)
-+		return ret;
++	if (!rf->msix_shared)
++		irdma_destroy_irq(rf, rf->iw_msixtbl, rf);
++	if (rf->reset)
++		goto exit;
 +
-+	/* check the mac index range */
-+	if (priv->mac_idx < 0 || priv->mac_idx > priv->mac_max) {
-+		dev_err(dev, "Mac index Error!!\n");
-+		return -EINVAL;
++	if (!dev->aeq_ops->aeq_destroy(&aeq->sc_aeq, 0, 1))
++		status = dev->aeq_ops->aeq_destroy_done(&aeq->sc_aeq);
++	if (status)
++		dev_dbg(rfdev_to_dev(dev), "ERR: Destroy AEQ failed %d\n",
++			status);
++
++exit:
++	dma_free_coherent(hw_to_dev(dev->hw), aeq->mem.size, aeq->mem.va,
++			  aeq->mem.pa);
++	aeq->mem.va = NULL;
++}
++
++/**
++ * irdma_destroy_ceq - destroy ceq
++ * @rf: RDMA PCI function
++ * @iwceq: ceq to be destroyed
++ *
++ * Issue a destroy ceq request and
++ * free the resources associated with the ceq
++ */
++static void irdma_destroy_ceq(struct irdma_pci_f *rf, struct irdma_ceq *iwceq)
++{
++	enum irdma_status_code status;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++
++	if (rf->reset)
++		goto exit;
++
++	status = dev->ceq_ops->ceq_destroy(&iwceq->sc_ceq, 0, 1);
++	if (status) {
++		dev_dbg(rfdev_to_dev(dev),
++			"ERR: CEQ destroy command failed %d\n", status);
++		goto exit;
 +	}
 +
-+	priv->ptp_clk_rate = clk_get_rate(priv->ptp_clk);
++	status = dev->ceq_ops->cceq_destroy_done(&iwceq->sc_ceq);
++	if (status)
++		dev_dbg(rfdev_to_dev(dev),
++			"ERR: CEQ destroy completion failed %d\n", status);
++exit:
++	dma_free_coherent(hw_to_dev(dev->hw), iwceq->mem.size, iwceq->mem.va,
++			  iwceq->mem.pa);
++	iwceq->mem.va = NULL;
++}
 +
-+	ret = of_property_read_string(node, "phy-mode", &priv->phy_mode);
-+	if (ret)
-+		return ret;
++/**
++ * irdma_del_ceq_0 - destroy ceq 0
++ * @rf: RDMA PCI function
++ *
++ * Disable the ceq 0 interrupt and destroy the ceq 0
++ */
++static void irdma_del_ceq_0(struct irdma_pci_f *rf)
++{
++	struct irdma_ceq *iwceq = rf->ceqlist;
++	struct irdma_msix_vector *msix_vec;
 +
-+	ret = of_property_read_u32(node, "speed", &priv->phy_speed);
-+	if (ret)
-+		return ret;
++	if (rf->msix_shared) {
++		msix_vec = &rf->iw_msixtbl[0];
++		irdma_destroy_irq(rf, msix_vec, rf);
++	} else {
++		msix_vec = &rf->iw_msixtbl[1];
++		irdma_destroy_irq(rf, msix_vec, iwceq);
++	}
++	irdma_destroy_ceq(rf, iwceq);
++	rf->sc_dev.ceq_valid = false;
++	rf->ceqs_count = 0;
++}
 +
-+	/* Request IRQ on first MAC instance */
-+	if (!pdata->intr_flag) {
-+		ret = mac_irq_init(priv);
-+		if (ret)
-+			return ret;
-+		pdata->intr_flag = true;
++/**
++ * irdma_del_ceqs - destroy all ceq's except CEQ 0
++ * @rf: RDMA PCI function
++ *
++ * Go through all of the device ceq's, except 0, and for each
++ * ceq disable the ceq interrupt and destroy the ceq
++ */
++static void irdma_del_ceqs(struct irdma_pci_f *rf)
++{
++	struct irdma_ceq *iwceq = &rf->ceqlist[1];
++	struct irdma_msix_vector *msix_vec;
++	u32 i = 0;
++
++	if (rf->msix_shared)
++		msix_vec = &rf->iw_msixtbl[1];
++	else
++		msix_vec = &rf->iw_msixtbl[2];
++
++	for (i = 1; i < rf->ceqs_count; i++, msix_vec++, iwceq++) {
++		irdma_destroy_irq(rf, msix_vec, iwceq);
++		irdma_cqp_ceq_cmd(&rf->sc_dev, &iwceq->sc_ceq,
++				  IRDMA_OP_CEQ_DESTROY);
++		dma_free_coherent(hw_to_dev(rf->sc_dev.hw), iwceq->mem.size,
++				  iwceq->mem.va, iwceq->mem.pa);
++		iwceq->mem.va = NULL;
++	}
++	rf->ceqs_count = 1;
++}
++
++/**
++ * irdma_destroy_ccq - destroy control cq
++ * @rf: RDMA PCI function
++ *
++ * Issue destroy ccq request and
++ * free the resources associated with the ccq
++ */
++static void irdma_destroy_ccq(struct irdma_pci_f *rf)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_ccq *ccq = &rf->ccq;
++	enum irdma_status_code status = 0;
++
++	if (!rf->reset)
++		status = dev->ccq_ops->ccq_destroy(dev->ccq, 0, true);
++	if (status)
++		dev_dbg(rfdev_to_dev(dev), "ERR: CCQ destroy failed %d\n",
++			status);
++	dma_free_coherent(hw_to_dev(dev->hw), ccq->mem_cq.size,
++			  ccq->mem_cq.va, ccq->mem_cq.pa);
++	ccq->mem_cq.va = NULL;
++}
++
++/**
++ * irdma_close_hmc_objects_type - delete hmc objects of a given type
++ * @dev: iwarp device
++ * @obj_type: the hmc object type to be deleted
++ * @hmc_info: host memory info struct
++ * @privileged: permission to close HMC objects
++ * @reset: true if called before reset
++ */
++static void irdma_close_hmc_objects_type(struct irdma_sc_dev *dev,
++					 enum irdma_hmc_rsrc_type obj_type,
++					 struct irdma_hmc_info *hmc_info,
++					 bool privileged, bool reset)
++{
++	struct irdma_hmc_del_obj_info info = {};
++
++	info.hmc_info = hmc_info;
++	info.rsrc_type = obj_type;
++	info.count = hmc_info->hmc_obj[obj_type].cnt;
++	info.privileged = privileged;
++	if (dev->hmc_ops->del_hmc_object(dev, &info, reset))
++		dev_dbg(rfdev_to_dev(dev),
++			"ERR: del HMC obj of type %d failed\n", obj_type);
++}
++
++/**
++ * irdma_del_hmc_objects - remove all device hmc objects
++ * @dev: iwarp device
++ * @hmc_info: hmc_info to free
++ * @privileged: permission to delete HMC objects
++ * @reset: true if called before reset
++ * @vers: hardware version
++ */
++static void irdma_del_hmc_objects(struct irdma_sc_dev *dev,
++				  struct irdma_hmc_info *hmc_info, bool privileged,
++				  bool reset, enum irdma_vers vers)
++{
++	unsigned int i;
++
++	for (i = 0; i < IW_HMC_OBJ_TYPE_NUM; i++) {
++		if (dev->hmc_info->hmc_obj[iw_hmc_obj_types[i]].cnt)
++			irdma_close_hmc_objects_type(dev, iw_hmc_obj_types[i],
++						     hmc_info, privileged, reset);
++		if (vers == IRDMA_GEN_1 && i == IRDMA_HMC_IW_TIMER)
++			break;
++	}
++}
++
++/**
++ * irdma_create_hmc_obj_type - create hmc object of a given type
++ * @dev: hardware control device structure
++ * @info: information for the hmc object to create
++ */
++static enum irdma_status_code
++irdma_create_hmc_obj_type(struct irdma_sc_dev *dev,
++			  struct irdma_hmc_create_obj_info *info)
++{
++	return dev->hmc_ops->create_hmc_object(dev, info);
++}
++
++/**
++ * irdma_create_hmc_objs - create all hmc objects for the device
++ * @rf: RDMA PCI function
++ * @privileged: permission to create HMC objects
++ * @vers: HW version
++ *
++ * Create the device hmc objects and allocate hmc pages
++ * Return 0 if successful, otherwise clean up and return error
++ */
++static enum irdma_status_code
++irdma_create_hmc_objs(struct irdma_pci_f *rf, bool privileged, enum irdma_vers vers)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_hmc_create_obj_info info = {};
++	enum irdma_status_code status = 0;
++	int i;
++
++	info.hmc_info = dev->hmc_info;
++	info.privileged = privileged;
++	info.entry_type = rf->sd_type;
++
++	for (i = 0; i < IW_HMC_OBJ_TYPE_NUM; i++) {
++		if (dev->hmc_info->hmc_obj[iw_hmc_obj_types[i]].cnt) {
++			info.rsrc_type = iw_hmc_obj_types[i];
++			info.count = dev->hmc_info->hmc_obj[info.rsrc_type].cnt;
++			info.add_sd_cnt = 0;
++			status = irdma_create_hmc_obj_type(dev, &info);
++			if (status) {
++				dev_dbg(rfdev_to_dev(dev),
++					"ERR: create obj type %d status = %d\n",
++					iw_hmc_obj_types[i], status);
++				break;
++			}
++		}
++		if (vers == IRDMA_GEN_1 && i == IRDMA_HMC_IW_TIMER)
++			break;
 +	}
 +
-+	dev_set_drvdata(dev, priv);
-+	xgmac_init_priv(priv);
-+	xgmac_get_hw_features(priv);
-+	mac_init_ops(dev);
++	if (!status)
++		return dev->hmc_ops->static_hmc_pages_allocated(dev->cqp, 0,
++								dev->hmc_fn_id,
++								true, true);
 +
-+	/* Initialize MAC */
-+	priv->mac_ops->init(dev);
++	while (i) {
++		i--;
++		/* destroy the hmc objects of a given type */
++		irdma_close_hmc_objects_type(dev, iw_hmc_obj_types[i],
++					     dev->hmc_info, privileged, false);
++	}
 +
-+	linksts = priv->mac_ops->get_link_sts(dev);
-+	duplex = priv->mac_ops->get_duplex(dev);
-+	speed = priv->mac_ops->get_speed(dev);
++	return status;
++}
 +
-+	priv->adap_ops->sw_core_enable(dev, 1);
++/**
++ * irdma_obj_aligned_mem - get aligned memory from device allocated memory
++ * @rf: RDMA PCI function
++ * @memptr: points to the memory addresses
++ * @size: size of memory needed
++ * @mask: mask for the aligned memory
++ *
++ * Get aligned memory of the requested size and
++ * update the memptr to point to the new aligned memory
++ * Return 0 if successful, otherwise return no memory error
++ */
++static enum irdma_status_code
++irdma_obj_aligned_mem(struct irdma_pci_f *rf, struct irdma_dma_mem *memptr,
++		      u32 size, u32 mask)
++{
++	unsigned long va, newva;
++	unsigned long extra;
 +
-+	dev_info(dev, "Init done - Rev:%x Mac_id:%d Speed=%s Link=%s Duplex=%s\n",
-+		 priv->ver, priv->mac_idx, phy_speed_to_str(speed),
-+		 link_status_to_str(linksts), phy_duplex_to_str(duplex));
++	va = (unsigned long)rf->obj_next.va;
++	newva = va;
++	if (mask)
++		newva = ALIGN(va, (unsigned long)mask + 1ULL);
++	extra = newva - va;
++	memptr->va = (u8 *)va + extra;
++	memptr->pa = rf->obj_next.pa + extra;
++	memptr->size = size;
++	if ((memptr->va + size) > (rf->obj_mem.va + rf->obj_mem.size))
++		return IRDMA_ERR_NO_MEMORY;
++
++	rf->obj_next.va = memptr->va + size;
++	rf->obj_next.pa = memptr->pa + size;
 +
 +	return 0;
 +}
 +
-+static const struct of_device_id gswip_mac_match[] = {
-+	{ .compatible = "gswip-mac" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, gswip_mac_match);
++/**
++ * irdma_create_cqp - create control qp
++ * @rf: RDMA PCI function
++ *
++ * Return 0, if the cqp and all the resources associated with it
++ * are successfully created, otherwise return error
++ */
++static enum irdma_status_code irdma_create_cqp(struct irdma_pci_f *rf)
++{
++	enum irdma_status_code status;
++	u32 sqsize = IRDMA_CQP_SW_SQSIZE_2048;
++	struct irdma_dma_mem mem;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_cqp_init_info cqp_init_info = {};
++	struct irdma_cqp *cqp = &rf->cqp;
++	u16 maj_err, min_err;
++	int i;
 +
-+static struct platform_driver gswip_mac_driver = {
-+	.probe = mac_probe,
-+	.driver = {
-+		.name = "gswip-mac",
-+		.of_match_table = gswip_mac_match,
-+	},
-+};
++	cqp->cqp_requests = kcalloc(sqsize, sizeof(*cqp->cqp_requests), GFP_KERNEL);
++	if (!cqp->cqp_requests)
++		return IRDMA_ERR_NO_MEMORY;
 +
-+module_platform_driver(gswip_mac_driver);
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
-new file mode 100644
-index 000000000000..e3f9d9680579
---- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.c
-@@ -0,0 +1,643 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2016-2019 Intel Corporation. */
++	cqp->scratch_array = kcalloc(sqsize, sizeof(*cqp->scratch_array), GFP_KERNEL);
++	if (!cqp->scratch_array) {
++		kfree(cqp->cqp_requests);
++		return IRDMA_ERR_NO_MEMORY;
++	}
 +
-+#include <linux/bitfield.h>
-+#include <linux/device.h>
-+#include <linux/of_mdio.h>
-+#include <linux/phy.h>
++	dev->cqp = &cqp->sc_cqp;
++	dev->cqp->dev = dev;
++	cqp->sq.size = ALIGN(sizeof(struct irdma_cqp_sq_wqe) * sqsize,
++			     IRDMA_CQP_ALIGNMENT);
++	cqp->sq.va = dma_alloc_coherent(hw_to_dev(dev->hw), cqp->sq.size,
++					&cqp->sq.pa, GFP_KERNEL);
++	if (!cqp->sq.va) {
++		kfree(cqp->scratch_array);
++		kfree(cqp->cqp_requests);
++		return IRDMA_ERR_NO_MEMORY;
++	}
 +
-+#include "mac_common.h"
-+#include "xgmac.h"
++	status = irdma_obj_aligned_mem(rf, &mem, sizeof(struct irdma_cqp_ctx),
++				       IRDMA_HOST_CTX_ALIGNMENT_M);
++	if (status)
++		goto exit;
++
++	dev->cqp->host_ctx_pa = mem.pa;
++	dev->cqp->host_ctx = mem.va;
++	/* populate the cqp init info */
++	cqp_init_info.dev = dev;
++	cqp_init_info.sq_size = sqsize;
++	cqp_init_info.sq = cqp->sq.va;
++	cqp_init_info.sq_pa = cqp->sq.pa;
++	cqp_init_info.host_ctx_pa = mem.pa;
++	cqp_init_info.host_ctx = mem.va;
++	cqp_init_info.hmc_profile = rf->rsrc_profile;
++	cqp_init_info.ena_vf_count = rf->max_rdma_vfs;
++	cqp_init_info.scratch_array = cqp->scratch_array;
++	cqp_init_info.disable_packed = true;
++	cqp_init_info.protocol_used = rf->protocol_used;
++	status = dev->cqp_ops->cqp_init(dev->cqp, &cqp_init_info);
++	if (status) {
++		dev_dbg(rfdev_to_dev(dev), "ERR: cqp init status %d\n",
++			status);
++		goto exit;
++	}
++
++	status = dev->cqp_ops->cqp_create(dev->cqp, &maj_err, &min_err);
++	if (status) {
++		dev_dbg(rfdev_to_dev(dev),
++			"ERR: cqp create failed - status %d maj_err %d min_err %d\n",
++			status, maj_err, min_err);
++		goto exit;
++	}
++
++	spin_lock_init(&cqp->req_lock);
++	spin_lock_init(&cqp->compl_lock);
++	INIT_LIST_HEAD(&cqp->cqp_avail_reqs);
++	INIT_LIST_HEAD(&cqp->cqp_pending_reqs);
++
++	/* init the waitqueue of the cqp_requests and add them to the list */
++	for (i = 0; i < sqsize; i++) {
++		init_waitqueue_head(&cqp->cqp_requests[i].waitq);
++		list_add_tail(&cqp->cqp_requests[i].list, &cqp->cqp_avail_reqs);
++	}
++	init_waitqueue_head(&cqp->remove_wq);
++	return 0;
++
++exit:
++	irdma_destroy_cqp(rf, false);
++
++	return status;
++}
 +
 +/**
-+ * xgmac_reg_rw - XGMAC register indirect read and write access.
-+ * @priv: mac private data.
-+ * @reg: register offset.
-+ * @val:
-+ *	read - pointer variable to read the value into.
-+ *	write - pointer variable to the write value.
-+ * @rd_wr: boolean value, true/false.
-+ *	false - read.
-+ *	true - write.
++ * irdma_create_ccq - create control cq
++ * @rf: RDMA PCI function
++ *
++ * Return 0, if the ccq and the resources associated with it
++ * are successfully created, otherwise return error
 + */
-+static inline void xgmac_reg_rw(struct gswip_mac *priv, u16 reg, u32 *val,
-+				bool rd_wr)
++static enum irdma_status_code irdma_create_ccq(struct irdma_pci_f *rf)
 +{
-+	void __iomem *xgmac_ctrl_reg  = priv->sw + priv->xgmac_ctrl_reg;
-+	void __iomem *xgmac_data0_reg = priv->sw + priv->xgmac_data0_reg;
-+	void __iomem *xgmac_data1_reg = priv->sw + priv->xgmac_data1_reg;
-+	u32 access = XGMAC_REGACC_CTRL_ADDR_BAS;
-+	u32 retries = 2000;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	enum irdma_status_code status;
++	struct irdma_ccq_init_info info = {};
++	struct irdma_ccq *ccq = &rf->ccq;
 +
-+	spin_lock_bh(&priv->irw_lock);
-+	access &= ~XGMAC_REGACC_CTRL_OPMOD_WR;
-+	if (rd_wr) {
-+		writel(FIELD_GET(MASK_HIGH, *val), xgmac_data1_reg);
-+		writel(FIELD_GET(MASK_LOW, *val), xgmac_data0_reg);
-+		access |= XGMAC_REGACC_CTRL_OPMOD_WR;
++	dev->ccq = &ccq->sc_cq;
++	dev->ccq->dev = dev;
++	info.dev = dev;
++	ccq->shadow_area.size = sizeof(struct irdma_cq_shadow_area);
++	ccq->mem_cq.size = ALIGN(sizeof(struct irdma_cqe) * IW_CCQ_SIZE,
++				 IRDMA_CQ0_ALIGNMENT);
++	ccq->mem_cq.va = dma_alloc_coherent(hw_to_dev(dev->hw),
++					    ccq->mem_cq.size, &ccq->mem_cq.pa,
++					    GFP_KERNEL);
++	if (!ccq->mem_cq.va)
++		return IRDMA_ERR_NO_MEMORY;
++
++	status = irdma_obj_aligned_mem(rf, &ccq->shadow_area,
++				       ccq->shadow_area.size,
++				       IRDMA_SHADOWAREA_M);
++	if (status)
++		goto exit;
++
++	ccq->sc_cq.back_cq = ccq;
++	/* populate the ccq init info */
++	info.cq_base = ccq->mem_cq.va;
++	info.cq_pa = ccq->mem_cq.pa;
++	info.num_elem = IW_CCQ_SIZE;
++	info.shadow_area = ccq->shadow_area.va;
++	info.shadow_area_pa = ccq->shadow_area.pa;
++	info.ceqe_mask = false;
++	info.ceq_id_valid = true;
++	info.shadow_read_threshold = 16;
++	info.vsi = &rf->default_vsi;
++	status = dev->ccq_ops->ccq_init(dev->ccq, &info);
++	if (!status)
++		status = dev->ccq_ops->ccq_create(dev->ccq, 0, true, true);
++exit:
++	if (status) {
++		dma_free_coherent(hw_to_dev(dev->hw), ccq->mem_cq.size,
++				  ccq->mem_cq.va, ccq->mem_cq.pa);
++		ccq->mem_cq.va = NULL;
 +	}
 +
-+	writel(access | reg, xgmac_ctrl_reg);
++	return status;
++}
++
++/**
++ * irdma_alloc_set_mac - set up a mac address table entry
++ * @iwdev: irdma device
++ *
++ * Allocate a mac ip entry and add it to the hw table Return 0
++ * if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_alloc_set_mac(struct irdma_device *iwdev)
++{
++	enum irdma_status_code status;
++
++	status = irdma_alloc_local_mac_entry(iwdev->rf,
++					     &iwdev->mac_ip_table_idx);
++	if (!status) {
++		status = irdma_add_local_mac_entry(iwdev->rf,
++						   (u8 *)iwdev->netdev->dev_addr,
++						   (u8)iwdev->mac_ip_table_idx);
++		if (status)
++			irdma_del_local_mac_entry(iwdev->rf,
++						  (u8)iwdev->mac_ip_table_idx);
++	}
++	return status;
++}
++
++/**
++ * irdma_configure_ceq_vector - set up the msix interrupt vector for ceq
++ * @rf: RDMA PCI function
++ * @iwceq: ceq associated with the vector
++ * @ceq_id: the id number of the iwceq
++ * @msix_vec: interrupt vector information
++ *
++ * Allocate interrupt resources and enable irq handling
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code
++irdma_cfg_ceq_vector(struct irdma_pci_f *rf, struct irdma_ceq *iwceq,
++		     u32 ceq_id, struct irdma_msix_vector *msix_vec)
++{
++	int status;
++
++	if (rf->msix_shared && !ceq_id) {
++		tasklet_init(&rf->dpc_tasklet, irdma_dpc, (unsigned long)rf);
++		status = request_irq(msix_vec->irq, irdma_irq_handler, 0,
++				     "AEQCEQ", rf);
++	} else {
++		tasklet_init(&iwceq->dpc_tasklet, irdma_ceq_dpc,
++			     (unsigned long)iwceq);
++
++		status = request_irq(msix_vec->irq, irdma_ceq_handler, 0, "CEQ",
++				     iwceq);
++	}
++
++	cpumask_clear(&msix_vec->mask);
++	cpumask_set_cpu(msix_vec->cpu_affinity, &msix_vec->mask);
++	irq_set_affinity_hint(msix_vec->irq, &msix_vec->mask);
++	if (status) {
++		dev_dbg(rfdev_to_dev(&rf->sc_dev),
++			"ERR: ceq irq config fail\n");
++		return IRDMA_ERR_CFG;
++	}
++
++	msix_vec->ceq_id = ceq_id;
++	rf->sc_dev.irq_ops->irdma_cfg_ceq(&rf->sc_dev, ceq_id, msix_vec->idx);
++
++	return 0;
++}
++
++/**
++ * irdma_configure_aeq_vector - set up the msix vector for aeq
++ * @rf: RDMA PCI function
++ *
++ * Allocate interrupt resources and enable irq handling
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_cfg_aeq_vector(struct irdma_pci_f *rf)
++{
++	struct irdma_msix_vector *msix_vec = rf->iw_msixtbl;
++	u32 ret = 0;
++
++	if (!rf->msix_shared) {
++		tasklet_init(&rf->dpc_tasklet, irdma_dpc, (unsigned long)rf);
++		ret = request_irq(msix_vec->irq, irdma_irq_handler, 0, "irdma",
++				  rf);
++	}
++	if (ret) {
++		dev_dbg(rfdev_to_dev(&rf->sc_dev),
++			"ERR: aeq irq config fail\n");
++		return IRDMA_ERR_CFG;
++	}
++
++	rf->sc_dev.irq_ops->irdma_cfg_aeq(&rf->sc_dev, msix_vec->idx);
++
++	return 0;
++}
++
++/**
++ * irdma_create_ceq - create completion event queue
++ * @rf: RDMA PCI function
++ * @iwceq: pointer to the ceq resources to be created
++ * @ceq_id: the id number of the iwceq
++ * @vsi: SC vsi struct
++ *
++ * Return 0, if the ceq and the resources associated with it
++ * are successfully created, otherwise return error
++ */
++static enum irdma_status_code irdma_create_ceq(struct irdma_pci_f *rf,
++					       struct irdma_ceq *iwceq,
++					       u32 ceq_id,
++					       struct irdma_sc_vsi *vsi)
++{
++	enum irdma_status_code status;
++	struct irdma_ceq_init_info info = {};
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	u64 scratch;
++
++	info.ceq_id = ceq_id;
++	iwceq->rf = rf;
++	iwceq->mem.size = ALIGN(sizeof(struct irdma_ceqe) * rf->sc_dev.hmc_info->hmc_obj[IRDMA_HMC_IW_CQ].cnt,
++				IRDMA_CEQ_ALIGNMENT);
++	iwceq->mem.va = dma_alloc_coherent(hw_to_dev(dev->hw),
++					   iwceq->mem.size, &iwceq->mem.pa,
++					   GFP_KERNEL);
++	if (!iwceq->mem.va)
++		return IRDMA_ERR_NO_MEMORY;
++
++	info.ceq_id = ceq_id;
++	info.ceqe_base = iwceq->mem.va;
++	info.ceqe_pa = iwceq->mem.pa;
++	info.elem_cnt = rf->sc_dev.hmc_info->hmc_obj[IRDMA_HMC_IW_CQ].cnt;
++	iwceq->sc_ceq.ceq_id = ceq_id;
++	info.dev = dev;
++	info.vsi = vsi;
++	scratch = (uintptr_t)&rf->cqp.sc_cqp;
++	status = dev->ceq_ops->ceq_init(&iwceq->sc_ceq, &info);
++	if (!status) {
++		if (dev->ceq_valid)
++			status = irdma_cqp_ceq_cmd(&rf->sc_dev, &iwceq->sc_ceq,
++						   IRDMA_OP_CEQ_CREATE);
++		else
++			status = dev->ceq_ops->cceq_create(&iwceq->sc_ceq,
++							   scratch);
++	}
++
++	if (status) {
++		dma_free_coherent(hw_to_dev(dev->hw), iwceq->mem.size,
++				  iwceq->mem.va, iwceq->mem.pa);
++		iwceq->mem.va = NULL;
++	}
++
++	return status;
++}
++
++/**
++ * irdma_setup_ceq_0 - create CEQ 0 and it's interrupt resource
++ * @rf: RDMA PCI function
++ *
++ * Allocate a list for all device completion event queues
++ * Create the ceq 0 and configure it's msix interrupt vector
++ * Return 0, if successfully set up, otherwise return error
++ */
++static enum irdma_status_code irdma_setup_ceq_0(struct irdma_pci_f *rf)
++{
++	u32 i;
++	struct irdma_ceq *iwceq;
++	struct irdma_msix_vector *msix_vec;
++	enum irdma_status_code status = 0;
++	u32 num_ceqs;
++
++	num_ceqs = min(rf->msix_count, rf->sc_dev.hmc_fpm_misc.max_ceqs);
++	rf->ceqlist = kcalloc(num_ceqs, sizeof(*rf->ceqlist), GFP_KERNEL);
++	if (!rf->ceqlist) {
++		status = IRDMA_ERR_NO_MEMORY;
++		goto exit;
++	}
++
++	i = rf->msix_shared ? 0 : 1;
++	iwceq = &rf->ceqlist[0];
++	status = irdma_create_ceq(rf, iwceq, 0, &rf->default_vsi);
++	if (status) {
++		dev_dbg(rfdev_to_dev(&rf->sc_dev),
++			"ERR: create ceq status = %d\n", status);
++		goto exit;
++	}
++
++	msix_vec = &rf->iw_msixtbl[i];
++	iwceq->irq = msix_vec->irq;
++	iwceq->msix_idx = msix_vec->idx;
++	status = irdma_cfg_ceq_vector(rf, iwceq, 0, msix_vec);
++	if (status) {
++		irdma_destroy_ceq(rf, iwceq);
++		goto exit;
++	}
++
++	irdma_ena_intr(&rf->sc_dev, msix_vec->idx);
++	rf->ceqs_count++;
++
++exit:
++	if (status && !rf->ceqs_count) {
++		kfree(rf->ceqlist);
++		rf->ceqlist = NULL;
++		return status;
++	}
++	rf->sc_dev.ceq_valid = true;
++
++	return 0;
++}
++
++/**
++ * irdma_setup_ceqs - manage the device ceq's and their interrupt resources
++ * @rf: RDMA PCI function
++ * @vsi: VSI structure for this CEQ
++ *
++ * Allocate a list for all device completion event queues
++ * Create the ceq's and configure their msix interrupt vectors
++ * Return 0, if at least one ceq is successfully set up, otherwise return error
++ */
++static enum irdma_status_code irdma_setup_ceqs(struct irdma_pci_f *rf,
++					       struct irdma_sc_vsi *vsi)
++{
++	u32 i;
++	u32 ceq_id;
++	struct irdma_ceq *iwceq;
++	struct irdma_msix_vector *msix_vec;
++	enum irdma_status_code status = 0;
++	u32 num_ceqs;
++
++	num_ceqs = min(rf->msix_count, rf->sc_dev.hmc_fpm_misc.max_ceqs);
++	i = (rf->msix_shared) ? 1 : 2;
++	for (ceq_id = 1; i < num_ceqs; i++, ceq_id++) {
++		iwceq = &rf->ceqlist[ceq_id];
++		status = irdma_create_ceq(rf, iwceq, ceq_id, vsi);
++		if (status) {
++			dev_dbg(rfdev_to_dev(&rf->sc_dev),
++				"ERR: create ceq status = %d\n", status);
++			break;
++		}
++		msix_vec = &rf->iw_msixtbl[i];
++		iwceq->irq = msix_vec->irq;
++		iwceq->msix_idx = msix_vec->idx;
++		status = irdma_cfg_ceq_vector(rf, iwceq, ceq_id, msix_vec);
++		if (status) {
++			irdma_destroy_ceq(rf, iwceq);
++			break;
++		}
++		irdma_ena_intr(&rf->sc_dev, msix_vec->idx);
++		rf->ceqs_count++;
++	}
++
++	return status;
++}
++
++/**
++ * irdma_create_aeq - create async event queue
++ * @rf: RDMA PCI function
++ *
++ * Return 0, if the aeq and the resources associated with it
++ * are successfully created, otherwise return error
++ */
++static enum irdma_status_code irdma_create_aeq(struct irdma_pci_f *rf)
++{
++	enum irdma_status_code status;
++	struct irdma_aeq_init_info info = {};
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_aeq *aeq = &rf->aeq;
++	struct irdma_hmc_info *hmc_info = rf->sc_dev.hmc_info;
++	u64 scratch = 0;
++	u32 aeq_size;
++
++	aeq_size = 2 * hmc_info->hmc_obj[IRDMA_HMC_IW_QP].cnt +
++		   hmc_info->hmc_obj[IRDMA_HMC_IW_CQ].cnt;
++	aeq->mem.size = ALIGN(sizeof(struct irdma_sc_aeqe) * aeq_size,
++			      IRDMA_AEQ_ALIGNMENT);
++	aeq->mem.va = dma_alloc_coherent(hw_to_dev(dev->hw), aeq->mem.size,
++					 &aeq->mem.pa, GFP_KERNEL);
++	if (!aeq->mem.va)
++		return IRDMA_ERR_NO_MEMORY;
++
++	info.aeqe_base = aeq->mem.va;
++	info.aeq_elem_pa = aeq->mem.pa;
++	info.elem_cnt = aeq_size;
++	info.dev = dev;
++	status = dev->aeq_ops->aeq_init(&aeq->sc_aeq, &info);
++	if (status)
++		goto exit;
++
++	status = dev->aeq_ops->aeq_create(&aeq->sc_aeq, scratch, 1);
++	if (!status)
++		status = dev->aeq_ops->aeq_create_done(&aeq->sc_aeq);
++exit:
++	if (status) {
++		dma_free_coherent(hw_to_dev(dev->hw), aeq->mem.size,
++				  aeq->mem.va, aeq->mem.pa);
++		aeq->mem.va = NULL;
++	}
++
++	return status;
++}
++
++/**
++ * irdma_setup_aeq - set up the device aeq
++ * @rf: RDMA PCI function
++ *
++ * Create the aeq and configure its msix interrupt vector
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_setup_aeq(struct irdma_pci_f *rf)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	enum irdma_status_code status;
++
++	status = irdma_create_aeq(rf);
++	if (status)
++		return status;
++
++	status = irdma_cfg_aeq_vector(rf);
++	if (status) {
++		irdma_destroy_aeq(rf);
++		return status;
++	}
++
++	if (!rf->msix_shared)
++		irdma_ena_intr(dev, rf->iw_msixtbl[0].idx);
++
++	return 0;
++}
++
++/**
++ * irdma_initialize_ilq - create iwarp local queue for cm
++ * @iwdev: irdma device
++ *
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_initialize_ilq(struct irdma_device *iwdev)
++{
++	struct irdma_puda_rsrc_info info = {};
++	enum irdma_status_code status;
++
++	info.type = IRDMA_PUDA_RSRC_TYPE_ILQ;
++	info.cq_id = 1;
++	info.qp_id = 1;
++	info.count = 1;
++	info.pd_id = 1;
++	info.sq_size = min(iwdev->rf->max_qp / 2, (u32)32768);
++	info.rq_size = info.sq_size;
++	info.buf_size = 1024;
++	info.tx_buf_cnt = 2 * info.sq_size;
++	info.receive = irdma_receive_ilq;
++	info.xmit_complete = irdma_free_sqbuf;
++	status = irdma_puda_create_rsrc(&iwdev->vsi, &info);
++	if (status)
++		dev_dbg(rfdev_to_dev(&iwdev->rf->sc_dev),
++			"ERR: ilq create fail\n");
++
++	return status;
++}
++
++/**
++ * irdma_initialize_ieq - create iwarp exception queue
++ * @iwdev: irdma device
++ *
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_initialize_ieq(struct irdma_device *iwdev)
++{
++	struct irdma_puda_rsrc_info info = {};
++	enum irdma_status_code status;
++
++	info.type = IRDMA_PUDA_RSRC_TYPE_IEQ;
++	info.cq_id = 2;
++	info.qp_id = iwdev->vsi.exception_lan_q;
++	info.count = 1;
++	info.pd_id = 2;
++	info.sq_size = min(iwdev->rf->max_qp / 2, (u32)32768);
++	info.rq_size = info.sq_size;
++	info.buf_size = iwdev->vsi.mtu + IRDMA_IPV4_PAD;
++	info.tx_buf_cnt = 4096;
++	status = irdma_puda_create_rsrc(&iwdev->vsi, &info);
++	if (status)
++		dev_dbg(rfdev_to_dev(&iwdev->rf->sc_dev),
++			"ERR: ieq create fail\n");
++
++	return status;
++}
++
++/**
++ * irdma_reinitialize_ieq - destroy and re-create ieq
++ * @vsi: VSI structure
++ */
++void irdma_reinitialize_ieq(struct irdma_sc_vsi *vsi)
++{
++	struct irdma_device *iwdev = vsi->back_vsi;
++	struct irdma_pci_f *rf = iwdev->rf;
++
++	irdma_puda_dele_rsrc(vsi, IRDMA_PUDA_RSRC_TYPE_IEQ, false);
++	if (irdma_initialize_ieq(iwdev)) {
++		iwdev->reset = true;
++		rf->gen_ops.request_reset(rf);
++	}
++}
++
++/**
++ * irdma_hmc_setup - create hmc objects for the device
++ * @rf: RDMA PCI function
++ *
++ * Set up the device private memory space for the number and size of
++ * the hmc objects and create the objects
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_hmc_setup(struct irdma_pci_f *rf)
++{
++	enum irdma_status_code status;
++	u32 qpcnt;
++
++	if (rf->rdma_ver == IRDMA_GEN_1)
++		qpcnt = rsrc_limits_table[rf->limits_sel].qplimit * 2;
++	else
++		qpcnt = rsrc_limits_table[rf->limits_sel].qplimit;
++
++	rf->sd_type = IRDMA_SD_TYPE_DIRECT;
++	status = irdma_cfg_fpm_val(&rf->sc_dev, qpcnt);
++	if (status)
++		return status;
++
++	status = irdma_create_hmc_objs(rf, true, rf->rdma_ver);
++
++	return status;
++}
++
++/**
++ * irdma_del_init_mem - deallocate memory resources
++ * @rf: RDMA PCI function
++ */
++static void irdma_del_init_mem(struct irdma_pci_f *rf)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++
++	kfree(dev->hmc_info->sd_table.sd_entry);
++	dev->hmc_info->sd_table.sd_entry = NULL;
++	kfree(rf->mem_rsrc);
++	rf->mem_rsrc = NULL;
++	dma_free_coherent(hw_to_dev(&rf->hw), rf->obj_mem.size,
++			  rf->obj_mem.va, rf->obj_mem.pa);
++	rf->obj_mem.va = NULL;
++	if (rf->rdma_ver != IRDMA_GEN_1) {
++		kfree(rf->allocated_ws_nodes);
++		rf->allocated_ws_nodes = NULL;
++	}
++	kfree(rf->ceqlist);
++	rf->ceqlist = NULL;
++	kfree(rf->iw_msixtbl);
++	rf->iw_msixtbl = NULL;
++	kfree(rf->hmc_info_mem);
++	rf->hmc_info_mem = NULL;
++}
++/**
++ * irdma_initialize_dev - initialize device
++ * @rf: RDMA PCI function
++ * @ldev: lan device information
++ *
++ * Allocate memory for the hmc objects and initialize iwdev
++ * Return 0 if successful, otherwise clean up the resources
++ * and return error
++ */
++static enum irdma_status_code irdma_initialize_dev(struct irdma_pci_f *rf,
++						   struct irdma_priv_ldev *ldev)
++{
++	enum irdma_status_code status;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	struct irdma_device_init_info info = {};
++	struct irdma_dma_mem mem;
++	u32 size;
++
++	size = sizeof(struct irdma_hmc_pble_rsrc) +
++	       sizeof(struct irdma_hmc_info) +
++	       (sizeof(struct irdma_hmc_obj_info) * IRDMA_HMC_IW_MAX);
++
++	rf->hmc_info_mem = kzalloc(size, GFP_KERNEL);
++	if (!rf->hmc_info_mem)
++		return IRDMA_ERR_NO_MEMORY;
++
++	rf->pble_rsrc = (struct irdma_hmc_pble_rsrc *)rf->hmc_info_mem;
++	dev->hmc_info = &rf->hw.hmc;
++	dev->hmc_info->hmc_obj = (struct irdma_hmc_obj_info *)
++				 (rf->pble_rsrc + 1);
++
++	status = irdma_obj_aligned_mem(rf, &mem, IRDMA_QUERY_FPM_BUF_SIZE,
++				       IRDMA_FPM_QUERY_BUF_ALIGNMENT_M);
++	if (status)
++		goto error;
++
++	info.fpm_query_buf_pa = mem.pa;
++	info.fpm_query_buf = mem.va;
++	info.init_hw = rf->gen_ops.init_hw;
++
++	status = irdma_obj_aligned_mem(rf, &mem, IRDMA_COMMIT_FPM_BUF_SIZE,
++				       IRDMA_FPM_COMMIT_BUF_ALIGNMENT_M);
++	if (status)
++		goto error;
++
++	info.fpm_commit_buf_pa = mem.pa;
++	info.fpm_commit_buf = mem.va;
++
++	info.bar0 = rf->hw.hw_addr;
++	info.hmc_fn_id = (u8)ldev->fn_num;
++	info.privileged = !ldev->ftype;
++	info.hw = &rf->hw;
++	info.vchnl_send = NULL;
++	status = irdma_sc_ctrl_init(rf->rdma_ver, &rf->sc_dev, &info);
++	if (status)
++		goto error;
++
++	return status;
++error:
++	kfree(rf->hmc_info_mem);
++	rf->hmc_info_mem = NULL;
++
++	return status;
++}
++
++/**
++ * irdma_rt_deinit_hw - clean up the irdma device resources
++ * @iwdev: irdma device
++ *
++ * remove the mac ip entry and ipv4/ipv6 addresses, destroy the
++ * device queues and free the pble and the hmc objects
++ */
++void irdma_rt_deinit_hw(struct irdma_device *iwdev)
++{
++	dev_dbg(rfdev_to_dev(&iwdev->rf->sc_dev), "INIT: state = %d\n",
++		iwdev->init_state);
++
++	switch (iwdev->init_state) {
++	case IP_ADDR_REGISTERED:
++		if (iwdev->rf->sc_dev.hw_attrs.uk_attrs.hw_rev == IRDMA_GEN_1)
++			irdma_del_local_mac_entry(iwdev->rf,
++						  (u8)iwdev->mac_ip_table_idx);
++		/* fallthrough */
++	case PBLE_CHUNK_MEM:
++		/* fallthrough */
++	case CEQS_CREATED:
++		/* fallthrough */
++	case IEQ_CREATED:
++		irdma_puda_dele_rsrc(&iwdev->vsi, IRDMA_PUDA_RSRC_TYPE_IEQ,
++				     iwdev->reset);
++		/* fallthrough */
++	case ILQ_CREATED:
++		if (iwdev->create_ilq)
++			irdma_puda_dele_rsrc(&iwdev->vsi,
++					     IRDMA_PUDA_RSRC_TYPE_ILQ,
++					     iwdev->reset);
++		break;
++	default:
++		dev_warn(rfdev_to_dev(&iwdev->rf->sc_dev),
++			 "bad init_state = %d\n", iwdev->init_state);
++		break;
++	}
++
++	irdma_cleanup_cm_core(&iwdev->cm_core);
++	if (iwdev->vsi.pestat) {
++		irdma_vsi_stats_free(&iwdev->vsi);
++		kfree(iwdev->vsi.pestat);
++	}
++	destroy_workqueue(iwdev->cleanup_wq);
++	list_del(&iwdev->list);
++}
++
++/**
++ * irdma_setup_init_state - set up the initial device struct
++ * @rf: RDMA PCI function
++ *
++ * Initialize the iwarp device and its hdl information
++ * using the ldev and client information
++ * Return 0 if successful, otherwise return error
++ */
++static enum irdma_status_code irdma_setup_init_state(struct irdma_pci_f *rf)
++{
++	struct irdma_priv_ldev *ldev = &rf->ldev;
++	enum irdma_status_code status;
++
++	status = irdma_save_msix_info(rf);
++	if (status)
++		return status;
++
++	rf->hw.pdev = rf->pdev;
++	rf->obj_mem.size = ALIGN(8192, IRDMA_HW_PAGE_SIZE);
++	rf->obj_mem.va = dma_alloc_coherent(hw_to_dev(&rf->hw),
++					    rf->obj_mem.size, &rf->obj_mem.pa,
++					    GFP_KERNEL);
++	if (!rf->obj_mem.va) {
++		kfree(rf->iw_msixtbl);
++		rf->iw_msixtbl = NULL;
++		return IRDMA_ERR_NO_MEMORY;
++	}
++
++	rf->obj_next = rf->obj_mem;
++	rf->ooo = false;
++	init_waitqueue_head(&rf->vchnl_waitq);
++	status = irdma_initialize_dev(rf, ldev);
++	if (status) {
++		kfree(rf->iw_msixtbl);
++		dma_free_coherent(hw_to_dev(&rf->hw), rf->obj_mem.size,
++				  rf->obj_mem.va, rf->obj_mem.pa);
++		rf->obj_mem.va = NULL;
++		rf->iw_msixtbl = NULL;
++	}
++
++	return status;
++}
++
++/**
++ * irdma_get_used_rsrc - determine resources used internally
++ * @iwdev: irdma device
++ *
++ * Called at the end of open to get all internal allocations
++ */
++static void irdma_get_used_rsrc(struct irdma_device *iwdev)
++{
++	iwdev->rf->used_pds = find_next_zero_bit(iwdev->rf->allocated_pds,
++						 iwdev->rf->max_pd, 0);
++	iwdev->rf->used_qps = find_next_zero_bit(iwdev->rf->allocated_qps,
++						 iwdev->rf->max_qp, 0);
++	iwdev->rf->used_cqs = find_next_zero_bit(iwdev->rf->allocated_cqs,
++						 iwdev->rf->max_cq, 0);
++	iwdev->rf->used_mrs = find_next_zero_bit(iwdev->rf->allocated_mrs,
++						 iwdev->rf->max_mr, 0);
++}
++
++void irdma_ctrl_deinit_hw(struct irdma_pci_f *rf)
++{
++	enum init_completion_state state = rf->init_state;
++
++	rf->init_state = INVALID_STATE;
++	if (rf->rsrc_created) {
++		irdma_destroy_pble_prm(rf->pble_rsrc);
++		irdma_del_ceqs(rf);
++		rf->rsrc_created = false;
++	}
++	switch (state) {
++	case CEQ0_CREATED:
++		irdma_del_ceq_0(rf);
++		/* fallthrough */
++	case AEQ_CREATED:
++		irdma_destroy_aeq(rf);
++		/* fallthrough */
++	case CCQ_CREATED:
++		irdma_destroy_ccq(rf);
++		/* fallthrough */
++	case HW_RSRC_INITIALIZED:
++		/* fallthrough */
++	case HMC_OBJS_CREATED:
++		irdma_del_hmc_objects(&rf->sc_dev, rf->sc_dev.hmc_info, true,
++				      rf->reset, rf->rdma_ver);
++		/* fallthrough */
++	case CQP_CREATED:
++		irdma_destroy_cqp(rf, true);
++		/* fallthrough */
++	case INITIAL_STATE:
++		irdma_del_init_mem(rf);
++		break;
++	case INVALID_STATE:
++		/* fallthrough */
++	default:
++		pr_warn("bad init_state = %d\n", rf->init_state);
++		break;
++	}
++}
++
++/**
++ * irdma_rt_init_hw - Initializes runtime portion of HW
++ * @rf: RDMA PCI function
++ * @iwdev: irdma device
++ * @l2params: qos, tc, mtu info from netdev driver
++ *
++ * Create device queues ILQ, IEQ, CEQs and PBLEs. Setup irdma
++ * device resource objects.
++ */
++enum irdma_status_code irdma_rt_init_hw(struct irdma_pci_f *rf,
++					struct irdma_device *iwdev,
++					struct irdma_l2params *l2params)
++{
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	enum irdma_status_code status;
++	struct irdma_vsi_init_info vsi_info = {};
++	struct irdma_vsi_stats_info stats_info = {};
++
++	list_add(&iwdev->list, &rf->vsi_dev_list);
++	irdma_sc_rt_init(dev);
++	vsi_info.vm_vf_type = rf->ldev.ftype ? IRDMA_VF_TYPE : IRDMA_PF_TYPE;
++	vsi_info.dev = dev;
++	vsi_info.back_vsi = iwdev;
++	vsi_info.params = l2params;
++	vsi_info.pf_data_vsi_num = iwdev->vsi_num;
++	vsi_info.register_qset = rf->gen_ops.register_qset;
++	vsi_info.unregister_qset = rf->gen_ops.unregister_qset;
++	vsi_info.exception_lan_q = 2;
++	irdma_sc_vsi_init(&iwdev->vsi, &vsi_info);
++
++	status = irdma_setup_cm_core(iwdev, rf->rdma_ver);
++	if (status)
++		return status;
++
++	stats_info.pestat = kzalloc(sizeof(*stats_info.pestat), GFP_KERNEL);
++	if (!stats_info.pestat) {
++		irdma_cleanup_cm_core(&iwdev->cm_core);
++		list_del(&iwdev->list);
++		return IRDMA_ERR_NO_MEMORY;
++	}
++	stats_info.fcn_id = dev->hmc_fn_id;
++	status = irdma_vsi_stats_init(&iwdev->vsi, &stats_info);
++	if (status) {
++		irdma_cleanup_cm_core(&iwdev->cm_core);
++		kfree(stats_info.pestat);
++		list_del(&iwdev->list);
++		return status;
++	}
 +
 +	do {
-+		if (!(readl(xgmac_ctrl_reg) & XGMAC_REGACC_CTRL_ADDR_BAS))
++		if (iwdev->create_ilq) {
++			status = irdma_initialize_ilq(iwdev);
++			if (status)
++				break;
++			iwdev->init_state = ILQ_CREATED;
++		}
++		status = irdma_initialize_ieq(iwdev);
++		if (status)
 +			break;
-+		cpu_relax();
-+	} while (--retries);
-+	if (!retries)
-+		dev_warn(priv->dev, "Xgmac register %s failed for Offset %x\n",
-+			 rd_wr ? "write" : "read", reg);
++		iwdev->init_state = IEQ_CREATED;
++		if (!rf->rsrc_created) {
++			status = irdma_setup_ceqs(rf, &iwdev->vsi);
++			if (status)
++				break;
++			iwdev->init_state = CEQS_CREATED;
 +
-+	if (!rd_wr)
-+		*val = FIELD_PREP(MASK_HIGH, readl(xgmac_data1_reg)) |
-+		       readl(xgmac_data0_reg);
-+	spin_unlock_bh(&priv->irw_lock);
++			status = irdma_hmc_init_pble(&rf->sc_dev,
++						     rf->pble_rsrc);
++			if (status) {
++				irdma_del_ceqs(rf);
++				break;
++			}
++			spin_lock_init(&rf->pble_rsrc->pble_lock);
++			iwdev->init_state = PBLE_CHUNK_MEM;
++			rf->rsrc_created = true;
++		}
++
++		iwdev->device_cap_flags = IB_DEVICE_LOCAL_DMA_LKEY |
++					  IB_DEVICE_MEM_WINDOW |
++					  IB_DEVICE_MEM_MGT_EXTENSIONS;
++
++		if (iwdev->rf->sc_dev.hw_attrs.uk_attrs.hw_rev == IRDMA_GEN_1)
++			irdma_alloc_set_mac(iwdev);
++		irdma_add_ip(iwdev);
++		iwdev->init_state = IP_ADDR_REGISTERED;
++
++		/* handles asynch cleanup tasks - disconnect CM , free qp,
++		 * free cq bufs
++		 */
++		iwdev->cleanup_wq = alloc_workqueue("irdma-cleanup-wq",
++					WQ_UNBOUND, WQ_UNBOUND_MAX_ACTIVE);
++		if (!iwdev->cleanup_wq)
++			return IRDMA_ERR_NO_MEMORY;
++		irdma_get_used_rsrc(iwdev);
++		init_waitqueue_head(&iwdev->suspend_wq);
++
++		return 0;
++	} while (0);
++
++	dev_err(rfdev_to_dev(dev), "VSI open FAIL status = %d last cmpl = %d\n",
++		status, iwdev->init_state);
++	irdma_rt_deinit_hw(iwdev);
++
++	return status;
 +}
 +
-+void xgmac_get_hw_features(struct gswip_mac *priv)
++/**
++ * irdma_ctrl_init_hw - Initializes control portion of HW
++ * @rf: RDMA PCI function
++ *
++ * Create admin queues, HMC obejcts and RF resource objects
++ */
++enum irdma_status_code irdma_ctrl_init_hw(struct irdma_pci_f *rf)
 +{
-+	struct xgmac_hw_features *hw_feat = &priv->hw_feat;
-+	u32 mac_hfr0, mac_hfr1, mac_hfr2;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	enum irdma_status_code status;
 +
-+	xgmac_reg_rw(priv, MAC_HW_F0, &mac_hfr0, false);
-+	xgmac_reg_rw(priv, MAC_HW_F1, &mac_hfr1, false);
-+	xgmac_reg_rw(priv, MAC_HW_F2, &mac_hfr2, false);
-+	xgmac_reg_rw(priv, MAC_VER, &hw_feat->version, false);
++	INIT_LIST_HEAD(&rf->vsi_dev_list);
 +
-+	priv->ver = FIELD_GET(MAC_VER_USERVER, hw_feat->version);
++	do {
++		status = irdma_setup_init_state(rf);
++		if (status)
++			break;
++		rf->init_state = INITIAL_STATE;
 +
-+	/* Hardware feature0 regiter*/
-+	hw_feat->gmii = FIELD_GET(MAC_HW_F0_GMIISEL, mac_hfr0);
-+	hw_feat->vlhash = FIELD_GET(MAC_HW_F0_VLHASH, mac_hfr0);
-+	hw_feat->sma = FIELD_GET(MAC_HW_F0_SMASEL, mac_hfr0);
-+	hw_feat->rwk = FIELD_GET(MAC_HW_F0_RWKSEL, mac_hfr0);
-+	hw_feat->mgk = FIELD_GET(MAC_HW_F0_MGKSEL, mac_hfr0);
-+	hw_feat->mmc = FIELD_GET(MAC_HW_F0_MMCSEL, mac_hfr0);
-+	hw_feat->aoe = FIELD_GET(MAC_HW_F0_ARPOFFSEL, mac_hfr0);
-+	hw_feat->ts = FIELD_GET(MAC_HW_F0_TSSEL, mac_hfr0);
-+	hw_feat->eee = FIELD_GET(MAC_HW_F0_EEESEL, mac_hfr0);
-+	hw_feat->tx_coe = FIELD_GET(MAC_HW_F0_TXCOESEL, mac_hfr0);
-+	hw_feat->rx_coe = FIELD_GET(MAC_HW_F0_RXCOESEL, mac_hfr0);
-+	hw_feat->addn_mac = FIELD_GET(MAC_HW_F0_ADDMACADRSEL, mac_hfr0);
-+	hw_feat->ts_src = FIELD_GET(MAC_HW_F0_TSSTSSEL, mac_hfr0);
-+	hw_feat->sa_vlan_ins = FIELD_GET(MAC_HW_F0_SAVLANINS, mac_hfr0);
-+	hw_feat->vxn = FIELD_GET(MAC_HW_F0_VXN, mac_hfr0);
-+	hw_feat->ediffc = FIELD_GET(MAC_HW_F0_EDIFFC, mac_hfr0);
-+	hw_feat->edma = FIELD_GET(MAC_HW_F0_EDMA, mac_hfr0);
++		status = irdma_create_cqp(rf);
++		if (status)
++			break;
++		rf->init_state = CQP_CREATED;
 +
-+	/* Hardware feature1 register*/
-+	hw_feat->rx_fifo_size = FIELD_GET(MAC_HW_F1_RXFIFOSIZE, mac_hfr1);
-+	hw_feat->tx_fifo_size = FIELD_GET(MAC_HW_F1_TXFIFOSIZE, mac_hfr1);
-+	hw_feat->osten = FIELD_GET(MAC_HW_F1_OSTEN, mac_hfr1);
-+	hw_feat->ptoen = FIELD_GET(MAC_HW_F1_PTOEN, mac_hfr1);
-+	hw_feat->adv_ts_hi = FIELD_GET(MAC_HW_F1_ADVTHWORD, mac_hfr1);
-+	hw_feat->dma_width = FIELD_GET(MAC_HW_F1_ADDR64, mac_hfr1);
-+	hw_feat->dcb = FIELD_GET(MAC_HW_F1_DCBEN, mac_hfr1);
-+	hw_feat->sph = FIELD_GET(MAC_HW_F1_SPHEN, mac_hfr1);
-+	hw_feat->tso = FIELD_GET(MAC_HW_F1_TSOEN, mac_hfr1);
-+	hw_feat->dma_debug = FIELD_GET(MAC_HW_F1_DBGMEMA, mac_hfr1);
-+	hw_feat->rss = FIELD_GET(MAC_HW_F1_RSSEN, mac_hfr1);
-+	hw_feat->tc_cnt = FIELD_GET(MAC_HW_F1_NUMTC, mac_hfr1);
-+	hw_feat->hash_table_size = FIELD_GET(MAC_HW_F1_HASHTBLSZ, mac_hfr1);
-+	hw_feat->l3l4_filter_num = FIELD_GET(MAC_HW_F1_L3L4FNUM, mac_hfr1);
++		status = irdma_hmc_setup(rf);
++		if (status)
++			break;
++		rf->init_state = HMC_OBJS_CREATED;
 +
-+	/* Hardware feature2 register*/
-+	hw_feat->rx_q_cnt = FIELD_GET(MAC_HW_F2_RXCHCNT, mac_hfr2);
-+	hw_feat->tx_q_cnt = FIELD_GET(MAC_HW_F2_TXQCNT, mac_hfr2);
-+	hw_feat->rx_ch_cnt = FIELD_GET(MAC_HW_F2_RXCHCNT, mac_hfr2);
-+	hw_feat->tx_ch_cnt = FIELD_GET(MAC_HW_F2_TXCHCNT, mac_hfr2);
-+	hw_feat->pps_out_num = FIELD_GET(MAC_HW_F2_PPSOUTNUM, mac_hfr2);
-+	hw_feat->aux_snap_num = FIELD_GET(MAC_HW_F2_AUXSNAPNUM, mac_hfr2);
++		status = irdma_initialize_hw_rsrc(rf);
++		if (status)
++			break;
++		rf->init_state = HW_RSRC_INITIALIZED;
 +
-+	/* TC and Queue are zero based so increment to get the actual number */
-+	hw_feat->tc_cnt++;
-+	hw_feat->rx_q_cnt++;
-+	hw_feat->tx_q_cnt++;
++		status = irdma_create_ccq(rf);
++		if (status)
++			break;
++		rf->init_state = CCQ_CREATED;
++
++		status = irdma_setup_aeq(rf);
++		if (status)
++			break;
++		rf->init_state = AEQ_CREATED;
++		rf->sc_dev.feature_info[IRDMA_FEATURE_FW_INFO] = IRDMA_FW_VER_DEFAULT;
++
++		if (rf->rdma_ver != IRDMA_GEN_1)
++			status = irdma_get_rdma_features(&rf->sc_dev);
++		if (!status) {
++			u32 fw_ver = dev->feature_info[IRDMA_FEATURE_FW_INFO];
++			u8 hw_rev = dev->hw_attrs.uk_attrs.hw_rev;
++
++			if ((hw_rev == IRDMA_GEN_1 && fw_ver >= IRDMA_FW_VER_0x30010) ||
++			    (hw_rev != IRDMA_GEN_1 && fw_ver >= IRDMA_FW_VER_0x1000D))
++
++				dev->hw_attrs.uk_attrs.feature_flags |= IRDMA_FEATURE_RTS_AE |
++									IRDMA_FEATURE_CQ_RESIZE;
++		}
++
++		status = irdma_setup_ceq_0(rf);
++		if (status)
++			break;
++		rf->init_state = CEQ0_CREATED;
++		/* Handles processing of CQP completions */
++		rf->cqp_cmpl_wq = alloc_ordered_workqueue("cqp_cmpl_wq",
++						WQ_HIGHPRI | WQ_UNBOUND);
++		if (!rf->cqp_cmpl_wq) {
++			status = IRDMA_ERR_NO_MEMORY;
++			break;
++		}
++		INIT_WORK(&rf->cqp_cmpl_work, cqp_compl_worker);
++		dev->ccq_ops->ccq_arm(dev->ccq);
++		return 0;
++	} while (0);
++
++	pr_err("IRDMA hardware initialization FAILED init_state=%d status=%d\n",
++	       rf->init_state, status);
++	irdma_ctrl_deinit_hw(rf);
++	return status;
 +}
 +
-+void xgmac_init_priv(struct gswip_mac *priv)
++/**
++ * irdma_initialize_hw_resources - initialize hw resource tracking array
++ * @rf: RDMA PCI function
++ */
++u32 irdma_initialize_hw_rsrc(struct irdma_pci_f *rf)
 +{
-+	u8 mac_addr[6] = {0x00, 0x00, 0x94, 0x00, 0x00, 0x08};
++	unsigned long num_pds;
++	u32 rsrc_size;
++	u32 max_mr;
++	u32 max_qp;
++	u32 max_cq;
++	u32 arp_table_size;
++	u32 mrdrvbits;
++	void *rsrc_ptr;
++	u32 num_ahs;
++	u32 num_mcg;
 +
-+	priv->mac_idx += MAC2;
++	if (rf->rdma_ver != IRDMA_GEN_1) {
++		rf->allocated_ws_nodes =
++			kcalloc(BITS_TO_LONGS(IRDMA_MAX_WS_NODES),
++				sizeof(unsigned long), GFP_KERNEL);
++		if (!rf->allocated_ws_nodes)
++			return -ENOMEM;
 +
-+	priv->xgmac_ctrl_reg = XGMAC_CTRL_REG(priv->mac_idx);
-+	priv->xgmac_data1_reg = XGMAC_DATA1_REG(priv->mac_idx);
-+	priv->xgmac_data0_reg = XGMAC_DATA0_REG(priv->mac_idx);
++		set_bit(0, rf->allocated_ws_nodes);
++		rf->max_ws_node_id = IRDMA_MAX_WS_NODES;
++	}
++	max_qp = rf->sc_dev.hmc_info->hmc_obj[IRDMA_HMC_IW_QP].cnt;
++	max_cq = rf->sc_dev.hmc_info->hmc_obj[IRDMA_HMC_IW_CQ].cnt;
++	max_mr = rf->sc_dev.hmc_info->hmc_obj[IRDMA_HMC_IW_MR].cnt;
++	arp_table_size = rf->sc_dev.hmc_info->hmc_obj[IRDMA_HMC_IW_ARP].cnt;
++	rf->max_cqe = rf->sc_dev.hw_attrs.uk_attrs.max_hw_cq_size;
++	num_pds = rf->sc_dev.hw_attrs.max_hw_pds;
++	rsrc_size = sizeof(struct irdma_arp_entry) * arp_table_size;
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(max_qp);
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(max_mr);
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(max_cq);
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(num_pds);
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(arp_table_size);
++	num_ahs = max_qp * 4;
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(num_ahs);
++	num_mcg = max_qp;
++	rsrc_size += sizeof(unsigned long) * BITS_TO_LONGS(num_mcg);
++	rsrc_size += sizeof(struct irdma_qp **) * max_qp;
 +
-+	/* Temp mac addr, Later eth driver will update */
-+	mac_addr[5] = priv->mac_idx;
-+	memcpy(priv->mac_addr, mac_addr, 6);
++	rf->mem_rsrc = kzalloc(rsrc_size, GFP_KERNEL);
++	if (!rf->mem_rsrc) {
++		kfree(rf->allocated_ws_nodes);
++		rf->allocated_ws_nodes = NULL;
++		return -ENOMEM;
++	}
 +
-+	priv->mtu = LGM_MAX_MTU;
-+	priv->promisc_mode = true;
-+	priv->all_mcast_mode = true;
++	rf->max_qp = max_qp;
++	rf->max_mr = max_mr;
++	rf->max_cq = max_cq;
++	rf->max_pd = num_pds;
++	rf->arp_table_size = arp_table_size;
++	rf->arp_table = (struct irdma_arp_entry *)rf->mem_rsrc;
++	rsrc_ptr = rf->mem_rsrc +
++		   (sizeof(struct irdma_arp_entry) * arp_table_size);
++	rf->max_ah = num_ahs;
++	rf->max_mcg = num_mcg;
++	rf->allocated_qps = rsrc_ptr;
++	rf->allocated_cqs = &rf->allocated_qps[BITS_TO_LONGS(max_qp)];
++	rf->allocated_mrs = &rf->allocated_cqs[BITS_TO_LONGS(max_cq)];
++	rf->allocated_pds = &rf->allocated_mrs[BITS_TO_LONGS(max_mr)];
++	rf->allocated_ahs = &rf->allocated_pds[BITS_TO_LONGS(num_pds)];
++	rf->allocated_mcgs = &rf->allocated_ahs[BITS_TO_LONGS(num_ahs)];
++	rf->allocated_arps = &rf->allocated_mcgs[BITS_TO_LONGS(num_mcg)];
++	rf->qp_table = (struct irdma_qp **)
++		       (&rf->allocated_arps[BITS_TO_LONGS(arp_table_size)]);
++
++	set_bit(0, rf->allocated_mrs);
++	set_bit(0, rf->allocated_qps);
++	set_bit(0, rf->allocated_cqs);
++	set_bit(0, rf->allocated_pds);
++	set_bit(0, rf->allocated_arps);
++	set_bit(0, rf->allocated_ahs);
++	set_bit(0, rf->allocated_mcgs);
++	set_bit(2, rf->allocated_qps); /* qp 2 IEQ */
++	set_bit(1, rf->allocated_qps); /* qp 1 ILQ */
++	set_bit(1, rf->allocated_cqs);
++	set_bit(1, rf->allocated_pds);
++	set_bit(2, rf->allocated_cqs);
++	set_bit(2, rf->allocated_pds);
++
++	spin_lock_init(&rf->rsrc_lock);
++	spin_lock_init(&rf->arp_lock);
++	spin_lock_init(&rf->qptable_lock);
++	spin_lock_init(&rf->qh_list_lock);
++
++	INIT_LIST_HEAD(&rf->mc_qht_list.list);
++	/* stag index mask has a minimum of 14 bits */
++	mrdrvbits = 24 - max(get_count_order(rf->max_mr), 14);
++	rf->mr_stagmask = ~(((1 << mrdrvbits) - 1) << (32 - mrdrvbits));
++
++	return 0;
 +}
 +
-+void xgmac_set_mac_address(struct gswip_mac *priv, u8 *mac_addr)
++/**
++ * irdma_cqp_ce_handler - handle cqp completions
++ * @rf: RDMA PCI function
++ * @cq: cq for cqp completions
++ */
++void irdma_cqp_ce_handler(struct irdma_pci_f *rf, struct irdma_sc_cq *cq)
 +{
-+	u32 mac_addr_hi, mac_addr_low;
-+	u32 val;
++	struct irdma_cqp_request *cqp_request;
++	struct irdma_sc_dev *dev = &rf->sc_dev;
++	u32 cqe_count = 0;
++	struct irdma_ccq_cqe_info info;
++	unsigned long flags;
++	int ret;
 +
-+	mac_addr_hi = (mac_addr[5] << 8) | (mac_addr[4] << 0);
-+	mac_addr_low = (mac_addr[3] << 24) | (mac_addr[2] << 16) |
-+			(mac_addr[1] <<  8) | (mac_addr[0] <<  0);
++	do {
++		memset(&info, 0, sizeof(info));
++		spin_lock_irqsave(&rf->cqp.compl_lock, flags);
++		ret = dev->ccq_ops->ccq_get_cqe_info(cq, &info);
++		spin_unlock_irqrestore(&rf->cqp.compl_lock, flags);
++		if (ret)
++			break;
 +
-+	xgmac_reg_rw(priv, MAC_MACA0HR, &mac_addr_hi, true);
++		cqp_request = (struct irdma_cqp_request *)
++			      (unsigned long)info.scratch;
++		if (info.error)
++			dev_dbg(rfdev_to_dev(dev),
++				"ERR: opcode = 0x%x maj_err_code = 0x%x min_err_code = 0x%x\n",
++				info.op_code, info.maj_err_code,
++				info.min_err_code);
++		if (cqp_request) {
++			cqp_request->compl_info.maj_err_code = info.maj_err_code;
++			cqp_request->compl_info.min_err_code = info.min_err_code;
++			cqp_request->compl_info.op_ret_val = info.op_ret_val;
++			cqp_request->compl_info.error = info.error;
 +
-+	xgmac_reg_rw(priv, MAC_MACA0LR, &val, false);
-+	if (val != mac_addr_low)
-+		xgmac_reg_rw(priv, MAC_MACA0LR, &mac_addr_low, true);
-+}
++			if (cqp_request->waiting) {
++				cqp_request->request_done = true;
++				wake_up(&cqp_request->waitq);
++				irdma_put_cqp_request(&rf->cqp, cqp_request);
++			} else {
++				if (cqp_request->callback_fcn)
++					cqp_request->callback_fcn(cqp_request);
++				irdma_put_cqp_request(&rf->cqp, cqp_request);
++			}
++		}
 +
-+inline void xgmac_prep_pkt_jumbo(u32 mtu, u32 *mac_rcr, u32 *mac_tcr)
-+{
-+	if (mtu < XGMAC_MAX_GPSL) {	/* upto 9018 configuration */
-+		*mac_rcr |= MAC_RX_CFG_JE;
-+		*mac_rcr &= ~MAC_RX_CFG_WD & ~MAC_RX_CFG_GPSLCE;
-+		*mac_tcr &= ~MAC_TX_CFG_JD;
++		cqe_count++;
++	} while (1);
 +
-+	} else {			/* upto 16K configuration */
-+		*mac_rcr &= ~MAC_RX_CFG_JE;
-+		*mac_rcr |= MAC_RX_CFG_WD | MAC_RX_CFG_GPSLCE |
-+			    FIELD_PREP(MAC_RX_CFG_GPSL,
-+				       XGMAC_MAX_SUPPORTED_MTU);
-+		*mac_tcr |= MAC_TX_CFG_JD;
++	if (cqe_count) {
++		irdma_process_bh(dev);
++		dev->ccq_ops->ccq_arm(cq);
 +	}
 +}
 +
-+inline void xgmac_prep_pkt_standard(u32 *mac_rcr, u32 *mac_tcr)
++/**
++ * cqp_compl_worker - Handle cqp completions
++ * @work: Pointer to work structure
++ */
++void cqp_compl_worker(struct work_struct *work)
 +{
-+	*mac_rcr &= ~MAC_RX_CFG_JE & ~MAC_RX_CFG_WD & ~MAC_RX_CFG_GPSLCE;
-+	*mac_tcr &= ~MAC_TX_CFG_JD;
++	struct irdma_pci_f *rf = container_of(work, struct irdma_pci_f,
++					      cqp_cmpl_work);
++	struct irdma_sc_cq *cq = &rf->ccq.sc_cq;
++
++	irdma_cqp_ce_handler(rf, cq);
 +}
 +
-+void xgmac_config_pkt(struct gswip_mac *priv, u32 mtu)
++/**
++ * irdma_next_iw_state - modify qp state
++ * @iwqp: iwarp qp to modify
++ * @state: next state for qp
++ * @del_hash: del hash
++ * @term: term message
++ * @termlen: length of term message
++ */
++void irdma_next_iw_state(struct irdma_qp *iwqp, u8 state, u8 del_hash, u8 term,
++			 u8 termlen)
 +{
-+	u32 mac_rcr, mac_tcr;
++	struct irdma_modify_qp_info info = {};
 +
-+	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, false);
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
++	info.next_iwarp_state = state;
++	info.remove_hash_idx = del_hash;
++	info.cq_num_valid = true;
++	info.arp_cache_idx_valid = true;
++	info.dont_send_term = true;
++	info.dont_send_fin = true;
++	info.termlen = termlen;
 +
-+	if (mtu > XGMAC_MAX_STD_PACKET)
-+		xgmac_prep_pkt_jumbo(mtu, &mac_rcr, &mac_tcr);
++	if (term & IRDMAQP_TERM_SEND_TERM_ONLY)
++		info.dont_send_term = false;
++	if (term & IRDMAQP_TERM_SEND_FIN_ONLY)
++		info.dont_send_fin = false;
++	if (iwqp->sc_qp.term_flags && state == IRDMA_QP_STATE_ERROR)
++		info.reset_tcp_conn = true;
++	iwqp->hw_iwarp_state = state;
++	irdma_hw_modify_qp(iwqp->iwdev, iwqp, &info, 0);
++	iwqp->iwarp_state = info.next_iwarp_state;
++}
++
++/**
++ * irdma_del_mac_entry - remove a mac entry from the hw table
++ * @rf: RDMA PCI function
++ * @idx: the index of the mac ip address to delete
++ */
++void irdma_del_local_mac_entry(struct irdma_pci_f *rf, u16 idx)
++{
++	struct irdma_cqp *iwcqp = &rf->cqp;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++	enum irdma_status_code status = 0;
++
++	cqp_request = irdma_get_cqp_request(iwcqp, true);
++	if (!cqp_request) {
++		pr_err("cqp_request memory failed\n");
++		return;
++	}
++
++	cqp_info = &cqp_request->info;
++	cqp_info->cqp_cmd = IRDMA_OP_DELETE_LOCAL_MAC_ENTRY;
++	cqp_info->post_sq = 1;
++	cqp_info->in.u.del_local_mac_entry.cqp = &iwcqp->sc_cqp;
++	cqp_info->in.u.del_local_mac_entry.scratch = (uintptr_t)cqp_request;
++	cqp_info->in.u.del_local_mac_entry.entry_idx = idx;
++	cqp_info->in.u.del_local_mac_entry.ignore_ref_count = 0;
++	status = irdma_handle_cqp_op(rf, cqp_request);
++	if (status)
++		pr_err("CQP-OP Del MAC entry fail");
++}
++
++/**
++ * irdma_add_mac_entry - add a mac ip address entry to the hw table
++ * @rf: RDMA PCI function
++ * @mac_addr: pointer to mac address
++ * @idx: the index of the mac ip address to add
++ */
++int irdma_add_local_mac_entry(struct irdma_pci_f *rf, u8 *mac_addr, u16 idx)
++{
++	struct irdma_local_mac_entry_info *info;
++	struct irdma_cqp *iwcqp = &rf->cqp;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++	enum irdma_status_code status = 0;
++
++	cqp_request = irdma_get_cqp_request(iwcqp, true);
++	if (!cqp_request) {
++		pr_err("cqp_request memory failed\n");
++		return IRDMA_ERR_NO_MEMORY;
++	}
++
++	cqp_info = &cqp_request->info;
++	cqp_info->post_sq = 1;
++	info = &cqp_info->in.u.add_local_mac_entry.info;
++	ether_addr_copy(info->mac_addr, mac_addr);
++	info->entry_idx = idx;
++	cqp_info->in.u.add_local_mac_entry.scratch = (uintptr_t)cqp_request;
++	cqp_info->cqp_cmd = IRDMA_OP_ADD_LOCAL_MAC_ENTRY;
++	cqp_info->in.u.add_local_mac_entry.cqp = &iwcqp->sc_cqp;
++	cqp_info->in.u.add_local_mac_entry.scratch = (uintptr_t)cqp_request;
++	status = irdma_handle_cqp_op(rf, cqp_request);
++	if (status)
++		pr_err("CQP-OP Add MAC entry fail");
++
++	return status;
++}
++
++/**
++ * irdma_alloc_local_mac_entry - allocate a mac entry
++ * @rf: RDMA PCI function
++ * @mac_tbl_idx: the index of the new mac address
++ *
++ * Allocate a mac address entry and update the mac_tbl_idx
++ * to hold the index of the newly created mac address
++ * Return 0 if successful, otherwise return error
++ */
++int irdma_alloc_local_mac_entry(struct irdma_pci_f *rf, u16 *mac_tbl_idx)
++{
++	struct irdma_cqp *iwcqp = &rf->cqp;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++	enum irdma_status_code status = 0;
++
++	cqp_request = irdma_get_cqp_request(iwcqp, true);
++	if (!cqp_request) {
++		pr_err("cqp_request memory failed\n");
++		return IRDMA_ERR_NO_MEMORY;
++	}
++
++	/* increment refcount, because we need the cqp request ret value */
++	refcount_inc(&cqp_request->refcnt);
++	cqp_info = &cqp_request->info;
++	cqp_info->cqp_cmd = IRDMA_OP_ALLOC_LOCAL_MAC_ENTRY;
++	cqp_info->post_sq = 1;
++	cqp_info->in.u.alloc_local_mac_entry.cqp = &iwcqp->sc_cqp;
++	cqp_info->in.u.alloc_local_mac_entry.scratch = (uintptr_t)cqp_request;
++	status = irdma_handle_cqp_op(rf, cqp_request);
++	if (!status)
++		*mac_tbl_idx = (u16)cqp_request->compl_info.op_ret_val;
 +	else
-+		xgmac_prep_pkt_standard(&mac_rcr, &mac_tcr);
++		pr_err("CQP-OP Alloc MAC entry fail");
++	/* decrement refcount and free the cqp request, if no longer used */
++	irdma_put_cqp_request(iwcqp, cqp_request);
 +
-+	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, true);
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
++	return status;
 +}
 +
-+void xgmac_config_packet_filter(struct gswip_mac *priv, u32 mode)
++/**
++ * irdma_cqp_manage_apbvt_cmd - send cqp command manage apbvt
++ * @iwdev: irdma device
++ * @accel_local_port: port for apbvt
++ * @add_port: add ordelete port
++ */
++static enum irdma_status_code
++irdma_cqp_manage_apbvt_cmd(struct irdma_device *iwdev, u16 accel_local_port,
++			   bool add_port)
++{
++	struct irdma_apbvt_info *info;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++	enum irdma_status_code status;
++
++	cqp_request = irdma_get_cqp_request(&iwdev->rf->cqp, add_port);
++	if (!cqp_request)
++		return IRDMA_ERR_NO_MEMORY;
++
++	cqp_info = &cqp_request->info;
++	info = &cqp_info->in.u.manage_apbvt_entry.info;
++	memset(info, 0, sizeof(*info));
++	info->add = add_port;
++	info->port = accel_local_port;
++	cqp_info->cqp_cmd = IRDMA_OP_MANAGE_APBVT_ENTRY;
++	cqp_info->post_sq = 1;
++	cqp_info->in.u.manage_apbvt_entry.cqp = &iwdev->rf->cqp.sc_cqp;
++	cqp_info->in.u.manage_apbvt_entry.scratch = (uintptr_t)cqp_request;
++	status = irdma_handle_cqp_op(iwdev->rf, cqp_request);
++	if (status)
++		dev_dbg(rfdev_to_dev(&iwdev->rf->sc_dev),
++			"ERR: CQP-OP Manage APBVT entry fail");
++
++	return status;
++}
++
++/**
++ * irdma_manage_apbvt - add or delete tcp port
++ * @iwdev: irdma device
++ * @accel_local_port: port for apbvt
++ * @add_port: add or delete port
++ */
++enum irdma_status_code irdma_manage_apbvt(struct irdma_device *iwdev,
++					  u16 accel_local_port, bool add_port)
++{
++	struct irdma_cm_core *cm_core = &iwdev->cm_core;
++	enum irdma_status_code status = 0;
++	unsigned long flags;
++	bool in_use;
++
++	/* apbvt_lock is held across CQP delete APBVT OP (non-waiting) to
++	 * protect against race where add APBVT CQP can race ahead of the delete
++	 * APBVT for same port.
++	 */
++	if (add_port) {
++		spin_lock_irqsave(&cm_core->apbvt_lock, flags);
++		in_use = __test_and_set_bit(accel_local_port,
++					    cm_core->ports_in_use);
++		spin_unlock_irqrestore(&cm_core->apbvt_lock, flags);
++		if (in_use)
++			return 0;
++		return irdma_cqp_manage_apbvt_cmd(iwdev, accel_local_port,
++						  true);
++	} else {
++		spin_lock_irqsave(&cm_core->apbvt_lock, flags);
++		in_use = irdma_port_in_use(cm_core, accel_local_port);
++		if (in_use) {
++			spin_unlock_irqrestore(&cm_core->apbvt_lock, flags);
++			return 0;
++		}
++		__clear_bit(accel_local_port, cm_core->ports_in_use);
++		status = irdma_cqp_manage_apbvt_cmd(iwdev, accel_local_port,
++						    false);
++		spin_unlock_irqrestore(&cm_core->apbvt_lock, flags);
++		return status;
++	}
++}
++
++/**
++ * irdma_manage_arp_cache - manage hw arp cache
++ * @rf: RDMA PCI function
++ * @mac_addr: mac address ptr
++ * @ip_addr: ip addr for arp cache
++ * @ipv4: flag inicating IPv4
++ * @action: add, delete or modify
++ */
++void irdma_manage_arp_cache(struct irdma_pci_f *rf, unsigned char *mac_addr,
++			    u32 *ip_addr, bool ipv4, u32 action)
++{
++	struct irdma_add_arp_cache_entry_info *info;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++	int arp_index;
++
++	arp_index = irdma_arp_table(rf, ip_addr, ipv4, mac_addr, action);
++	if (arp_index == -1)
++		return;
++
++	cqp_request = irdma_get_cqp_request(&rf->cqp, false);
++	if (!cqp_request)
++		return;
++
++	cqp_info = &cqp_request->info;
++	if (action == IRDMA_ARP_ADD) {
++		cqp_info->cqp_cmd = IRDMA_OP_ADD_ARP_CACHE_ENTRY;
++		info = &cqp_info->in.u.add_arp_cache_entry.info;
++		memset(info, 0, sizeof(*info));
++		info->arp_index = (u16)arp_index;
++		info->permanent = true;
++		ether_addr_copy(info->mac_addr, mac_addr);
++		cqp_info->in.u.add_arp_cache_entry.scratch =
++			(uintptr_t)cqp_request;
++		cqp_info->in.u.add_arp_cache_entry.cqp = &rf->cqp.sc_cqp;
++	} else {
++		cqp_info->cqp_cmd = IRDMA_OP_DELETE_ARP_CACHE_ENTRY;
++		cqp_info->in.u.del_arp_cache_entry.scratch =
++			(uintptr_t)cqp_request;
++		cqp_info->in.u.del_arp_cache_entry.cqp = &rf->cqp.sc_cqp;
++		cqp_info->in.u.del_arp_cache_entry.arp_index = arp_index;
++	}
++
++	cqp_info->in.u.add_arp_cache_entry.cqp = &rf->cqp.sc_cqp;
++	cqp_info->in.u.add_arp_cache_entry.scratch = (uintptr_t)cqp_request;
++	cqp_info->post_sq = 1;
++	if (irdma_handle_cqp_op(rf, cqp_request))
++		dev_dbg(rfdev_to_dev(&rf->sc_dev),
++			"ERR: CQP-OP Add/Del Arp Cache entry fail");
++}
++
++/**
++ * irdma_send_syn_cqp_callback - do syn/ack after qhash
++ * @cqp_request: qhash cqp completion
++ */
++static void irdma_send_syn_cqp_callback(struct irdma_cqp_request *cqp_request)
++{
++	irdma_send_syn(cqp_request->param, 1);
++}
++
++/**
++ * irdma_manage_qhash - add or modify qhash
++ * @iwdev: irdma device
++ * @cminfo: cm info for qhash
++ * @etype: type (syn or quad)
++ * @mtype: type of qhash
++ * @cmnode: cmnode associated with connection
++ * @wait: wait for completion
++ */
++enum irdma_status_code
++irdma_manage_qhash(struct irdma_device *iwdev, struct irdma_cm_info *cminfo,
++		   enum irdma_quad_entry_type etype,
++		   enum irdma_quad_hash_manage_type mtype, void *cmnode,
++		   bool wait)
++{
++	struct irdma_qhash_table_info *info;
++	struct irdma_sc_dev *dev = &iwdev->rf->sc_dev;
++	enum irdma_status_code status;
++	struct irdma_cqp *iwcqp = &iwdev->rf->cqp;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++
++	cqp_request = irdma_get_cqp_request(iwcqp, wait);
++	if (!cqp_request)
++		return IRDMA_ERR_NO_MEMORY;
++
++	cqp_info = &cqp_request->info;
++	info = &cqp_info->in.u.manage_qhash_table_entry.info;
++	memset(info, 0, sizeof(*info));
++	info->vsi = &iwdev->vsi;
++	info->manage = mtype;
++	info->entry_type = etype;
++	if (cminfo->vlan_id < VLAN_N_VID) {
++		info->vlan_valid = true;
++		info->vlan_id = cminfo->vlan_id;
++	} else {
++		info->vlan_valid = false;
++	}
++	info->ipv4_valid = cminfo->ipv4;
++	info->user_pri = cminfo->user_pri;
++	ether_addr_copy(info->mac_addr, iwdev->netdev->dev_addr);
++	info->qp_num = cminfo->qh_qpid;
++	info->dest_port = cminfo->loc_port;
++	info->dest_ip[0] = cminfo->loc_addr[0];
++	info->dest_ip[1] = cminfo->loc_addr[1];
++	info->dest_ip[2] = cminfo->loc_addr[2];
++	info->dest_ip[3] = cminfo->loc_addr[3];
++	if (etype == IRDMA_QHASH_TYPE_TCP_ESTABLISHED ||
++	    etype == IRDMA_QHASH_TYPE_UDP_UNICAST ||
++	    etype == IRDMA_QHASH_TYPE_UDP_MCAST ||
++	    etype == IRDMA_QHASH_TYPE_ROCE_MCAST ||
++	    etype == IRDMA_QHASH_TYPE_ROCEV2_HW) {
++		info->src_port = cminfo->rem_port;
++		info->src_ip[0] = cminfo->rem_addr[0];
++		info->src_ip[1] = cminfo->rem_addr[1];
++		info->src_ip[2] = cminfo->rem_addr[2];
++		info->src_ip[3] = cminfo->rem_addr[3];
++	}
++	if (cmnode) {
++		cqp_request->callback_fcn = irdma_send_syn_cqp_callback;
++		cqp_request->param = cmnode;
++	}
++	if (info->ipv4_valid)
++		dev_dbg(rfdev_to_dev(dev),
++			"CM: %s IP=%pI4, port=%d, mac=%pM, vlan_id=%d\n",
++			!mtype ? "DELETE" : "ADD", info->dest_ip,
++			info->dest_port, info->mac_addr, cminfo->vlan_id);
++	else
++		dev_dbg(rfdev_to_dev(dev),
++			"CM: %s IP=%pI6, port=%d, mac=%pM, vlan_id=%d\n",
++			!mtype ? "DELETE" : "ADD", info->dest_ip,
++			info->dest_port, info->mac_addr, cminfo->vlan_id);
++	cqp_info->in.u.manage_qhash_table_entry.cqp = &iwdev->rf->cqp.sc_cqp;
++	cqp_info->in.u.manage_qhash_table_entry.scratch = (uintptr_t)cqp_request;
++	cqp_info->cqp_cmd = IRDMA_OP_MANAGE_QHASH_TABLE_ENTRY;
++	cqp_info->post_sq = 1;
++	status = irdma_handle_cqp_op(iwdev->rf, cqp_request);
++	if (status)
++		dev_dbg(rfdev_to_dev(dev),
++			"ERR: CQP-OP Manage Qhash Entry fail");
++
++	return status;
++}
++
++/**
++ * irdma_post_qp_fatal - Post QP_FATAL event associated with given QP
++ * @qp: QP associated with QP_FATL event
++ */
++static inline void irdma_post_qp_fatal(struct irdma_qp *qp)
++{
++	struct ib_event ibevent;
++
++	if (qp->ibqp.event_handler) {
++		ibevent.device = qp->ibqp.device;
++		ibevent.event = IB_EVENT_QP_FATAL;
++		ibevent.element.qp = &qp->ibqp;
++		qp->ibqp.event_handler(&ibevent, qp->ibqp.qp_context);
++	}
++}
++
++/**
++ * irdma_hw_flush_wqes_callback - Check return code after flush
++ * @cqp_request: qhash cqp completion
++ */
++static void irdma_hw_flush_wqes_callback(struct irdma_cqp_request *cqp_request)
++{
++	struct irdma_qp_flush_info *hw_info;
++	struct irdma_sc_qp *qp;
++	struct irdma_qp *iwqp;
++	struct cqp_cmds_info *cqp_info;
++
++	cqp_info = &cqp_request->info;
++	hw_info = &cqp_request->info.in.u.qp_flush_wqes.info;
++	qp = cqp_info->in.u.qp_flush_wqes.qp;
++	iwqp = qp->qp_uk.back_qp;
++
++	if (cqp_request->compl_info.maj_err_code)
++		return;
++	if (hw_info->rq &&
++	    (cqp_request->compl_info.min_err_code == IRDMA_CQP_COMPL_SQ_WQE_FLUSHED ||
++	     cqp_request->compl_info.min_err_code == 0)) {
++		/* RQ WQE flush was requested but did not happen */
++		qp->qp_uk.rq_flush_complete = true;
++		complete(&iwqp->rq_drained);
++	}
++	if (hw_info->sq &&
++	    (cqp_request->compl_info.min_err_code == IRDMA_CQP_COMPL_RQ_WQE_FLUSHED ||
++	     cqp_request->compl_info.min_err_code == 0)) {
++		qp->qp_uk.sq_flush_complete = true;
++		complete(&iwqp->sq_drained);
++	}
++}
++
++/**
++ * irdma_hw_flush_wqes - flush qp's wqe
++ * @rf: RDMA PCI function
++ * @qp: hardware control qp
++ * @info: info for flush
++ * @wait: flag wait for completion
++ */
++enum irdma_status_code irdma_hw_flush_wqes(struct irdma_pci_f *rf,
++					   struct irdma_sc_qp *qp,
++					   struct irdma_qp_flush_info *info,
++					   bool wait)
++{
++	enum irdma_status_code status;
++	struct irdma_qp_flush_info *hw_info;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++	struct irdma_qp *iwqp = qp->qp_uk.back_qp;
++	unsigned long flags = 0;
++
++	cqp_request = irdma_get_cqp_request(&rf->cqp, wait);
++	if (!cqp_request)
++		return IRDMA_ERR_NO_MEMORY;
++
++	cqp_info = &cqp_request->info;
++	if (!wait)
++		cqp_request->callback_fcn = irdma_hw_flush_wqes_callback;
++	hw_info = &cqp_request->info.in.u.qp_flush_wqes.info;
++	memcpy(hw_info, info, sizeof(*hw_info));
++	cqp_info->cqp_cmd = IRDMA_OP_QP_FLUSH_WQES;
++	cqp_info->post_sq = 1;
++	cqp_info->in.u.qp_flush_wqes.qp = qp;
++	cqp_info->in.u.qp_flush_wqes.scratch = (uintptr_t)cqp_request;
++	status = irdma_handle_cqp_op(rf, cqp_request);
++	if (status) {
++		dev_dbg(rfdev_to_dev(&rf->sc_dev),
++			"ERR: CQP-OP Flush WQE's fail");
++		complete(&iwqp->sq_drained);
++		complete(&iwqp->rq_drained);
++		qp->qp_uk.sq_flush_complete = true;
++		qp->qp_uk.rq_flush_complete = true;
++		return status;
++	}
++
++	if (!wait || cqp_request->compl_info.maj_err_code)
++		return 0;
++
++	if (info->rq) {
++		if (cqp_request->compl_info.min_err_code == IRDMA_CQP_COMPL_SQ_WQE_FLUSHED ||
++		    cqp_request->compl_info.min_err_code == 0) {
++			/* RQ WQE flush was requested but did not happen */
++			qp->qp_uk.rq_flush_complete = true;
++			complete(&iwqp->rq_drained);
++		}
++	}
++	if (info->sq) {
++		if (cqp_request->compl_info.min_err_code == IRDMA_CQP_COMPL_RQ_WQE_FLUSHED ||
++		    cqp_request->compl_info.min_err_code == 0) {
++			spin_lock_irqsave(&iwqp->lock, flags);
++			/*
++			 * Handling case where WQE is posted to empty SQ when
++			 * flush has not completed
++			 */
++			if (IRDMA_RING_MORE_WORK(qp->qp_uk.sq_ring)) {
++				struct irdma_cqp_request *new_req;
++
++				if (!qp->qp_uk.sq_flush_complete) {
++					spin_unlock_irqrestore(&iwqp->lock, flags);
++					return 0;
++				}
++				qp->qp_uk.sq_flush_complete = false;
++				qp->flush_sq = false;
++				spin_unlock_irqrestore(&iwqp->lock, flags);
++
++				info->rq = false;
++				info->sq = true;
++				new_req = irdma_get_cqp_request(&rf->cqp, true);
++				if (!new_req)
++					return IRDMA_ERR_NO_MEMORY;
++				cqp_info = &new_req->info;
++				hw_info = &new_req->info.in.u.qp_flush_wqes.info;
++				memcpy(hw_info, info, sizeof(*hw_info));
++				cqp_info->cqp_cmd = IRDMA_OP_QP_FLUSH_WQES;
++				cqp_info->post_sq = 1;
++				cqp_info->in.u.qp_flush_wqes.qp = qp;
++				cqp_info->in.u.qp_flush_wqes.scratch = (uintptr_t)new_req;
++
++				status = irdma_handle_cqp_op(rf, new_req);
++				if (new_req->compl_info.maj_err_code ||
++				    new_req->compl_info.min_err_code != IRDMA_CQP_COMPL_SQ_WQE_FLUSHED ||
++				    status) {
++					pr_err("SQ in error but not flushed");
++					qp->qp_uk.sq_flush_complete = false;
++					irdma_post_qp_fatal(iwqp);
++				}
++			} else {
++				/* SQ WQE flush was requested but did not happen */
++				qp->qp_uk.sq_flush_complete = true;
++				spin_unlock_irqrestore(&iwqp->lock, flags);
++				complete(&iwqp->sq_drained);
++			}
++		} else {
++			spin_lock_irqsave(&iwqp->lock, flags);
++			if (!IRDMA_RING_MORE_WORK(qp->qp_uk.sq_ring)) {
++				qp->qp_uk.sq_flush_complete = true;
++				spin_unlock_irqrestore(&iwqp->lock, flags);
++				complete(&iwqp->sq_drained);
++			} else {
++				spin_unlock_irqrestore(&iwqp->lock, flags);
++			}
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * irdma_gen_ae - generate AE
++ * @rf: RDMA PCI function
++ * @qp: qp associated with AE
++ * @info: info for ae
++ * @wait: wait for completion
++ */
++void irdma_gen_ae(struct irdma_pci_f *rf, struct irdma_sc_qp *qp,
++		  struct irdma_gen_ae_info *info, bool wait)
++{
++	struct irdma_gen_ae_info *ae_info;
++	struct irdma_cqp_request *cqp_request;
++	struct cqp_cmds_info *cqp_info;
++
++	cqp_request = irdma_get_cqp_request(&rf->cqp, wait);
++	if (!cqp_request)
++		return;
++
++	cqp_info = &cqp_request->info;
++	ae_info = &cqp_request->info.in.u.gen_ae.info;
++	memcpy(ae_info, info, sizeof(*ae_info));
++	cqp_info->cqp_cmd = IRDMA_OP_GEN_AE;
++	cqp_info->post_sq = 1;
++	cqp_info->in.u.gen_ae.qp = qp;
++	cqp_info->in.u.gen_ae.scratch = (uintptr_t)cqp_request;
++	if (irdma_handle_cqp_op(rf, cqp_request))
++		dev_dbg(rfdev_to_dev(&rf->sc_dev),
++			"ERR: CQP OP failed attempting to generate ae_code=0x%x\n",
++			info->ae_code);
++}
++
++/**
++ * irdma_get_ib_wc - return change flush code to IB's
++ * @opcode: iwarp flush code
++ */
++static enum ib_wc_status irdma_get_ib_wc(enum irdma_flush_opcode opcode)
++{
++	switch (opcode) {
++	case FLUSH_PROT_ERR:
++		return IB_WC_LOC_PROT_ERR;
++	case FLUSH_REM_ACCESS_ERR:
++		return IB_WC_REM_ACCESS_ERR;
++	case FLUSH_LOC_QP_OP_ERR:
++		return IB_WC_LOC_QP_OP_ERR;
++	case FLUSH_REM_OP_ERR:
++		return IB_WC_REM_OP_ERR;
++	case FLUSH_LOC_LEN_ERR:
++		return IB_WC_LOC_LEN_ERR;
++	case FLUSH_GENERAL_ERR:
++		return IB_WC_GENERAL_ERR;
++	case FLUSH_FATAL_ERR:
++	default:
++		return IB_WC_FATAL_ERR;
++	}
++}
++
++void irdma_flush_wqes(struct irdma_qp *iwqp, u32 flush_mask)
++{
++	struct irdma_qp_flush_info info = {};
++	struct irdma_pci_f *rf = iwqp->iwdev->rf;
++	u8 opcode = iwqp->sc_qp.flush_code;
++
++	if (!(flush_mask & IRDMA_FLUSH_SQ)  && !(flush_mask & IRDMA_FLUSH_RQ))
++		return;
++
++	/* Set flush info fields*/
++	info.sq = flush_mask & IRDMA_FLUSH_SQ;
++	info.rq = flush_mask & IRDMA_FLUSH_RQ;
++
++	if (flush_mask & IRDMA_REFLUSH) {
++		if (info.sq)
++			iwqp->sc_qp.flush_sq = false;
++		if (info.rq)
++			iwqp->sc_qp.flush_rq = false;
++	}
++
++	/* Generate userflush errors in CQE */
++	if (opcode) {
++		if (info.sq) {
++			info.sq_minor_code = (u16)irdma_get_ib_wc(opcode);
++			info.sq_major_code = IRDMA_FLUSH_MAJOR_ERR;
++		}
++		if (info.rq) {
++			info.rq_minor_code = (u16)irdma_get_ib_wc(opcode);
++			info.rq_major_code = IRDMA_FLUSH_MAJOR_ERR;
++		}
++		info.userflushcode = true;
++	}
++
++	if (irdma_upload_context && !(flush_mask & IRDMA_REFLUSH) &&
++	    irdma_upload_qp_context(iwqp, 0, 1))
++		dev_warn(rfdev_to_dev(&rf->sc_dev),
++			 "failed to upload QP context\n");
++
++	/* Issue flush */
++	(void)irdma_hw_flush_wqes(rf, &iwqp->sc_qp, &info,
++				  flush_mask & IRDMA_FLUSH_WAIT);
++	iwqp->flush_issued = true;
++}
+diff --git a/drivers/infiniband/hw/irdma/i40iw_hw.c b/drivers/infiniband/hw/irdma/i40iw_hw.c
+new file mode 100644
+index 0000000..8abee8a
+--- /dev/null
++++ b/drivers/infiniband/hw/irdma/i40iw_hw.c
+@@ -0,0 +1,211 @@
++// SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB
++/* Copyright (c) 2015 - 2019 Intel Corporation */
++#include "osdep.h"
++#include "type.h"
++#include "i40iw_hw.h"
++#include "status.h"
++#include "protos.h"
++
++#define I40E_CQPSQ_CQ_CQID_SHIFT 0
++#define I40E_CQPSQ_CQ_CQID_MASK \
++	(0xffffULL << I40E_CQPSQ_CQ_CQID_SHIFT)
++
++static u32 i40iw_regs[IRDMA_MAX_REGS] = {
++	I40E_PFPE_CQPTAIL,
++	I40E_PFPE_CQPDB,
++	I40E_PFPE_CCQPSTATUS,
++	I40E_PFPE_CCQPHIGH,
++	I40E_PFPE_CCQPLOW,
++	I40E_PFPE_CQARM,
++	I40E_PFPE_CQACK,
++	I40E_PFPE_AEQALLOC,
++	I40E_PFPE_CQPERRCODES,
++	I40E_PFPE_WQEALLOC,
++	I40E_PFINT_DYN_CTLN(0),
++	I40IW_DB_ADDR_OFFSET,
++
++	I40E_GLPCI_LBARCTRL,
++	I40E_GLPE_CPUSTATUS0,
++	I40E_GLPE_CPUSTATUS1,
++	I40E_GLPE_CPUSTATUS2,
++	I40E_PFINT_AEQCTL,
++	I40E_PFINT_CEQCTL(0),
++	I40E_VSIQF_CTL(0),
++	I40E_PFHMC_PDINV,
++	I40E_GLHMC_VFPDINV(0)
++};
++
++static u32 i40iw_stat_offsets_32[IRDMA_HW_STAT_INDEX_MAX_32] = {
++	I40E_GLPES_PFIP4RXDISCARD(0),
++	I40E_GLPES_PFIP4RXTRUNC(0),
++	I40E_GLPES_PFIP4TXNOROUTE(0),
++	I40E_GLPES_PFIP6RXDISCARD(0),
++	I40E_GLPES_PFIP6RXTRUNC(0),
++	I40E_GLPES_PFIP6TXNOROUTE(0),
++	I40E_GLPES_PFTCPRTXSEG(0),
++	I40E_GLPES_PFTCPRXOPTERR(0),
++	I40E_GLPES_PFTCPRXPROTOERR(0),
++	I40E_GLPES_PFRXVLANERR(0)
++};
++
++static u32 i40iw_stat_offsets_64[IRDMA_HW_STAT_INDEX_MAX_64] = {
++	I40E_GLPES_PFIP4RXOCTSLO(0),
++	I40E_GLPES_PFIP4RXPKTSLO(0),
++	I40E_GLPES_PFIP4RXFRAGSLO(0),
++	I40E_GLPES_PFIP4RXMCPKTSLO(0),
++	I40E_GLPES_PFIP4TXOCTSLO(0),
++	I40E_GLPES_PFIP4TXPKTSLO(0),
++	I40E_GLPES_PFIP4TXFRAGSLO(0),
++	I40E_GLPES_PFIP4TXMCPKTSLO(0),
++	I40E_GLPES_PFIP6RXOCTSLO(0),
++	I40E_GLPES_PFIP6RXPKTSLO(0),
++	I40E_GLPES_PFIP6RXFRAGSLO(0),
++	I40E_GLPES_PFIP6RXMCPKTSLO(0),
++	I40E_GLPES_PFIP6TXOCTSLO(0),
++	I40E_GLPES_PFIP6TXPKTSLO(0),
++	I40E_GLPES_PFIP6TXFRAGSLO(0),
++	I40E_GLPES_PFIP6TXMCPKTSLO(0),
++	I40E_GLPES_PFTCPRXSEGSLO(0),
++	I40E_GLPES_PFTCPTXSEGLO(0),
++	I40E_GLPES_PFRDMARXRDSLO(0),
++	I40E_GLPES_PFRDMARXSNDSLO(0),
++	I40E_GLPES_PFRDMARXWRSLO(0),
++	I40E_GLPES_PFRDMATXRDSLO(0),
++	I40E_GLPES_PFRDMATXSNDSLO(0),
++	I40E_GLPES_PFRDMATXWRSLO(0),
++	I40E_GLPES_PFRDMAVBNDLO(0),
++	I40E_GLPES_PFRDMAVINVLO(0),
++	I40E_GLPES_PFIP4RXMCOCTSLO(0),
++	I40E_GLPES_PFIP4TXMCOCTSLO(0),
++	I40E_GLPES_PFIP6RXMCOCTSLO(0),
++	I40E_GLPES_PFIP6TXMCOCTSLO(0),
++	I40E_GLPES_PFUDPRXPKTSLO(0),
++	I40E_GLPES_PFUDPTXPKTSLO(0)
++};
++
++static u64 i40iw_masks[IRDMA_MAX_MASKS] = {
++	I40E_PFPE_CCQPSTATUS_CCQP_DONE_MASK,
++	I40E_PFPE_CCQPSTATUS_CCQP_ERR_MASK,
++	I40E_CQPSQ_STAG_PDID_MASK,
++	I40E_CQPSQ_CQ_CEQID_MASK,
++	I40E_CQPSQ_CQ_CQID_MASK,
++};
++
++static u64 i40iw_shifts[IRDMA_MAX_SHIFTS] = {
++	I40E_PFPE_CCQPSTATUS_CCQP_DONE_SHIFT,
++	I40E_PFPE_CCQPSTATUS_CCQP_ERR_SHIFT,
++	I40E_CQPSQ_STAG_PDID_SHIFT,
++	I40E_CQPSQ_CQ_CEQID_SHIFT,
++	I40E_CQPSQ_CQ_CQID_SHIFT,
++};
++
++static struct irdma_irq_ops i40iw_irq_ops;
++
++/**
++ * i40iw_config_ceq- Configure CEQ interrupt
++ * @dev: pointer to the device structure
++ * @ceq_id: Completion Event Queue ID
++ * @idx: vector index
++ */
++static void i40iw_config_ceq(struct irdma_sc_dev *dev, u32 ceq_id, u32 idx)
 +{
 +	u32 reg_val;
 +
-+	xgmac_reg_rw(priv, MAC_PKT_FR, &reg_val, false);
++	reg_val = (ceq_id << I40E_PFINT_LNKLSTN_FIRSTQ_INDX_SHIFT);
++	reg_val |= (QUEUE_TYPE_CEQ << I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_SHIFT);
++	wr32(dev->hw, I40E_PFINT_LNKLSTN(idx - 1), reg_val);
 +
-+	switch (mode) {
-+	case PROMISC:
-+		reg_val &= ~MAC_PKT_FR_PR;
-+		reg_val |= FIELD_PREP(MAC_PKT_FR_PR, priv->promisc_mode);
-+		break;
++	reg_val = (0x3 << I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT);
++	reg_val |= I40E_PFINT_DYN_CTLN_INTENA_MASK;
++	wr32(dev->hw, I40E_PFINT_DYN_CTLN(idx - 1), reg_val);
 +
-+	case PASS_ALL_MULTICAST:
-+		reg_val &= ~MAC_PKT_FR_PM;
-+		reg_val |= FIELD_PREP(MAC_PKT_FR_PM, priv->all_mcast_mode);
-+		break;
++	reg_val = (IRDMA_GLINT_CEQCTL_CAUSE_ENA_M |
++		   (idx << IRDMA_GLINT_CEQCTL_MSIX_INDX_S) |
++		   IRDMA_GLINT_CEQCTL_ITR_INDX_M);
++	reg_val |= (NULL_QUEUE_INDEX << I40E_PFINT_CEQCTL_NEXTQ_INDX_SHIFT);
 +
-+	default:
-+		reg_val &= ~MAC_PKT_FR_PR & ~MAC_PKT_FR_PM;
-+		reg_val |= FIELD_PREP(MAC_PKT_FR_PR, priv->promisc_mode) |
-+			   FIELD_PREP(MAC_PKT_FR_PM, priv->all_mcast_mode);
-+	}
-+
-+	xgmac_reg_rw(priv, MAC_PKT_FR, &reg_val, true);
++	wr32(dev->hw, i40iw_regs[IRDMA_GLINT_CEQCTL] + 4 * ceq_id, reg_val);
 +}
 +
-+void xgmac_tx_flow_ctl(struct gswip_mac *priv, u32 pause_time, u32 mode)
++/**
++ * i40iw_ena_irq - Enable interrupt
++ * @dev: pointer to the device structure
++ * @idx: vector index
++ */
++static void i40iw_ena_irq(struct irdma_sc_dev *dev, u32 idx)
 +{
-+	u32 reg_val = 0;
++	u32 val;
 +
-+	xgmac_reg_rw(priv, MAC_TX_FCR, &reg_val, false);
-+
-+	switch (mode) {
-+	case XGMAC_FC_EN:
-+		/* enable tx flow control */
-+		reg_val |= MAC_TX_FCR_TFE;
-+
-+		/* Set pause time */
-+		reg_val &= ~MAC_TX_FCR_PT;
-+		reg_val |= FIELD_PREP(MAC_TX_FCR_PT, pause_time);
-+		break;
-+
-+	case XGMAC_FC_DIS:
-+		reg_val &= ~MAC_TX_FCR_TFE;
-+		break;
-+	}
-+
-+	xgmac_reg_rw(priv, MAC_TX_FCR, &reg_val, true);
++	val = IRDMA_GLINT_DYN_CTL_INTENA_M | IRDMA_GLINT_DYN_CTL_CLEARPBA_M |
++	      IRDMA_GLINT_DYN_CTL_ITR_INDX_M;
++	wr32(dev->hw, i40iw_regs[IRDMA_GLINT_DYN_CTL] + 4 * (idx - 1), val);
 +}
 +
-+void xgmac_rx_flow_ctl(struct gswip_mac *priv, u32 mode)
++/**
++ * irdma_disable_irq - Disable interrupt
++ * @dev: pointer to the device structure
++ * @idx: vector index
++ */
++static void i40iw_disable_irq(struct irdma_sc_dev *dev, u32 idx)
 +{
-+	u32 reg_val = 0;
-+
-+	xgmac_reg_rw(priv, MAC_RX_FCR, &reg_val, false);
-+
-+	switch (mode) {
-+	case XGMAC_FC_EN:
-+		/* rx fc enable */
-+		reg_val |= MAC_RX_FCR_RFE;
-+		reg_val &= ~MAC_RX_FCR_PFCE;
-+		break;
-+
-+	case XGMAC_FC_DIS:
-+		reg_val &= ~MAC_RX_FCR_RFE;
-+		break;
-+	}
-+
-+	xgmac_reg_rw(priv, MAC_RX_FCR, &reg_val, true);
++	wr32(dev->hw, i40iw_regs[IRDMA_GLINT_DYN_CTL] + 4 * (idx - 1), 0);
 +}
 +
-+int xgmac_set_mac_lpitx(struct gswip_mac *priv, u32 val)
++void i40iw_init_hw(struct irdma_sc_dev *dev)
 +{
-+	u32 lpiate;
++	int i;
++	u8 __iomem *hw_addr;
 +
-+	xgmac_reg_rw(priv, MAC_LPI_CSR, &lpiate, false);
++	for (i = 0; i < IRDMA_MAX_REGS; ++i) {
++		hw_addr = dev->hw->hw_addr;
 +
-+	if (FIELD_GET(MAC_LPI_CSR_LPIATE, lpiate) != val) {
-+		lpiate &= ~MAC_LPI_CSR_LPIATE;
-+		lpiate |= FIELD_PREP(MAC_LPI_CSR_LPIATE, val);
++		if (i == IRDMA_DB_ADDR_OFFSET)
++			hw_addr = NULL;
++
++		dev->hw_regs[i] = (u32 __iomem *)(i40iw_regs[i] + hw_addr);
 +	}
 +
-+	if (FIELD_GET(MAC_LPI_CSR_LPITXA, lpiate) != val) {
-+		lpiate &= ~MAC_LPI_CSR_LPITXA;
-+		lpiate |= FIELD_PREP(MAC_LPI_CSR_LPITXA, val);
-+	}
++	for (i = 0; i < IRDMA_HW_STAT_INDEX_MAX_32; ++i)
++		dev->hw_stats_regs_32[i] = i40iw_stat_offsets_32[i];
 +
-+	xgmac_reg_rw(priv, MAC_LPI_CSR, &lpiate, true);
++	for (i = 0; i < IRDMA_HW_STAT_INDEX_MAX_64; ++i)
++		dev->hw_stats_regs_64[i] = i40iw_stat_offsets_64[i];
 +
-+	return 0;
++	for (i = 0; i < IRDMA_MAX_SHIFTS; ++i)
++		dev->hw_shifts[i] = i40iw_shifts[i];
++
++	for (i = 0; i < IRDMA_MAX_MASKS; ++i)
++		dev->hw_masks[i] = i40iw_masks[i];
++
++	dev->wqe_alloc_db = dev->hw_regs[IRDMA_WQEALLOC];
++	dev->cq_arm_db = dev->hw_regs[IRDMA_CQARM];
++	dev->aeq_alloc_db = dev->hw_regs[IRDMA_AEQALLOC];
++	dev->cqp_db = dev->hw_regs[IRDMA_CQPDB];
++	dev->cq_ack_db = dev->hw_regs[IRDMA_CQACK];
++	dev->ceq_itr_mask_db = NULL;
++	dev->aeq_itr_mask_db = NULL;
++
++	memcpy(&i40iw_irq_ops, dev->irq_ops, sizeof(i40iw_irq_ops));
++	i40iw_irq_ops.irdma_en_irq = i40iw_ena_irq;
++	i40iw_irq_ops.irdma_dis_irq = i40iw_disable_irq;
++	i40iw_irq_ops.irdma_cfg_ceq = i40iw_config_ceq;
++	dev->irq_ops = &i40iw_irq_ops;
++
++	/* Setup the hardware limits, hmc may limit further */
++	dev->hw_attrs.uk_attrs.max_hw_wq_frags = I40IW_MAX_WQ_FRAGMENT_COUNT;
++	dev->hw_attrs.uk_attrs.max_hw_read_sges = I40IW_MAX_SGE_RD;
++	dev->hw_attrs.max_hw_device_pages = I40IW_MAX_PUSH_PAGE_COUNT;
++	dev->hw_attrs.first_hw_vf_fpm_id = I40IW_FIRST_VF_FPM_ID;
++	dev->hw_attrs.uk_attrs.max_hw_inline = I40IW_MAX_INLINE_DATA_SIZE;
++	dev->hw_attrs.max_hw_ird = I40IW_MAX_IRD_SIZE;
++	dev->hw_attrs.max_hw_ord = I40IW_MAX_ORD_SIZE;
++	dev->hw_attrs.max_hw_wqes = I40IW_MAX_WQ_ENTRIES;
++	dev->hw_attrs.uk_attrs.max_hw_rq_quanta = I40IW_QP_SW_MAX_RQ_QUANTA;
++	dev->hw_attrs.uk_attrs.max_hw_wq_quanta = I40IW_QP_SW_MAX_WQ_QUANTA;
++	dev->hw_attrs.uk_attrs.max_hw_sq_chunk = I40IW_MAX_QUANTA_PER_WR;
++	dev->hw_attrs.max_hw_pds = I40IW_MAX_PDS;
++	dev->hw_attrs.max_stat_inst = I40IW_MAX_STATS_COUNT;
++	dev->hw_attrs.max_hw_outbound_msg_size = I40IW_MAX_OUTBOUND_MSG_SIZE;
++	dev->hw_attrs.max_hw_inbound_msg_size = I40IW_MAX_INBOUND_MSG_SIZE;
++	dev->hw_attrs.max_qp_wr = I40IW_MAX_QP_WRS;
 +}
-+
-+int xgmac_enable(struct gswip_mac *priv)
-+{
-+	u32 mac_tcr, mac_rcr, mac_pfr;
-+
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
-+	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, false);
-+	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, false);
-+
-+	/* Enable MAC Tx */
-+	if (!FIELD_GET(MAC_TX_CFG_TE, mac_tcr)) {
-+		mac_tcr |= MAC_TX_CFG_TE;
-+		xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
-+	}
-+
-+	/* Enable MAC Rx */
-+	if (!FIELD_GET(MAC_RX_CFG_RE, mac_rcr)) {
-+		mac_rcr |= MAC_RX_CFG_RE;
-+		xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, true);
-+	}
-+
-+	/* Enable MAC Filter Rx All */
-+	if (!FIELD_GET(MAC_PKT_FR_RA, mac_pfr)) {
-+		mac_pfr |= MAC_PKT_FR_RA;
-+		xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, true);
-+	}
-+
-+	return 0;
-+}
-+
-+int xgmac_disable(struct gswip_mac *priv)
-+{
-+	u32 mac_tcr, mac_rcr, mac_pfr;
-+
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
-+	xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, false);
-+	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, false);
-+
-+	/* Disable MAC Tx */
-+	if (FIELD_GET(MAC_TX_CFG_TE, mac_tcr) != 0) {
-+		mac_tcr &= ~MAC_TX_CFG_TE;
-+		xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
-+	}
-+
-+	/* Disable MAC Rx */
-+	if (FIELD_GET(MAC_RX_CFG_RE, mac_rcr) != 0) {
-+		mac_rcr &= ~MAC_RX_CFG_RE;
-+		xgmac_reg_rw(priv, MAC_RX_CFG, &mac_rcr, true);
-+	}
-+
-+	/* Disable MAC Filter Rx All */
-+	if (FIELD_GET(MAC_PKT_FR_RA, mac_pfr) != 0) {
-+		mac_pfr &= ~MAC_PKT_FR_RA;
-+		xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, true);
-+	}
-+
-+	return 0;
-+}
-+
-+int xgmac_pause_frame_filter(struct gswip_mac *priv, u32 val)
-+{
-+	u32 mac_pfr;
-+
-+	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, false);
-+
-+	if (FIELD_GET(MAC_PKT_FR_PCF, mac_pfr) != val) {
-+		/* Pause filtering */
-+		mac_pfr &= ~MAC_PKT_FR_PCF;
-+		mac_pfr |= FIELD_PREP(MAC_PKT_FR_PCF, val);
-+	}
-+
-+	/* The Receiver module passes only those packets to the application
-+	 * that pass the SA or DA address filter.
-+	 */
-+	if (FIELD_GET(MAC_PKT_FR_RA, mac_pfr) == 1)
-+		mac_pfr &= ~MAC_PKT_FR_RA;
-+
-+	xgmac_reg_rw(priv, MAC_PKT_FR, &mac_pfr, true);
-+
-+	return 0;
-+}
-+
-+int xgmac_set_extcfg(struct gswip_mac *priv, u32 val)
-+{
-+	u32 mac_extcfg;
-+
-+	xgmac_reg_rw(priv, MAC_EXTCFG, &mac_extcfg, false);
-+
-+	if (FIELD_GET(MAC_EXTCFG_SBDIOEN, mac_extcfg) != val) {
-+		mac_extcfg &= ~MAC_EXTCFG_SBDIOEN;
-+		mac_extcfg |= FIELD_PREP(MAC_EXTCFG_SBDIOEN, val);
-+		xgmac_reg_rw(priv, MAC_EXTCFG, &mac_extcfg, true);
-+	}
-+
-+	return 0;
-+}
-+
-+int xgmac_set_xgmii_speed(struct gswip_mac *priv)
-+{
-+	u32 mac_tcr;
-+
-+	xgmac_disable(priv);
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
-+
-+	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 0)
-+		mac_tcr &= ~MAC_TX_CFG_USS;
-+
-+	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0)
-+		mac_tcr &= ~MAC_TX_CFG_SS;
-+
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
-+	xgmac_enable(priv);
-+
-+	return 0;
-+}
-+
-+int xgmac_set_gmii_2500_speed(struct gswip_mac *priv)
-+{
-+	u32 mac_tcr;
-+
-+	xgmac_disable(priv);
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
-+
-+	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 0)
-+		mac_tcr &= ~MAC_TX_CFG_USS;
-+
-+	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0x2) {
-+		mac_tcr &= ~MAC_TX_CFG_SS;
-+		mac_tcr |= FIELD_PREP(MAC_TX_CFG_SS, 0x2);
-+	}
-+
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
-+	xgmac_enable(priv);
-+
-+	return 0;
-+}
-+
-+int xgmac_set_xgmii_2500_speed(struct gswip_mac *priv)
-+{
-+	u32 mac_tcr;
-+
-+	xgmac_disable(priv);
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
-+
-+	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 1)
-+		mac_tcr |= MAC_TX_CFG_USS;
-+
-+	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0x2) {
-+		mac_tcr &= ~MAC_TX_CFG_SS;
-+		mac_tcr |= FIELD_PREP(MAC_TX_CFG_SS, 0x2);
-+	}
-+
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
-+	xgmac_enable(priv);
-+
-+	return 0;
-+}
-+
-+int xgmac_set_gmii_speed(struct gswip_mac *priv)
-+{
-+	u32 mac_tcr;
-+
-+	xgmac_disable(priv);
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, false);
-+
-+	if (FIELD_GET(MAC_TX_CFG_USS, mac_tcr) != 0)
-+		mac_tcr &= MAC_TX_CFG_USS;
-+
-+	if (FIELD_GET(MAC_TX_CFG_SS, mac_tcr) != 0x3) {
-+		mac_tcr &= ~MAC_TX_CFG_SS;
-+		mac_tcr |= FIELD_PREP(MAC_TX_CFG_SS, 0x3);
-+	}
-+
-+	xgmac_reg_rw(priv, MAC_TX_CFG, &mac_tcr, true);
-+	xgmac_enable(priv);
-+
-+	return 0;
-+}
-+
-+int xgmac_mdio_set_clause(struct gswip_mac *priv, u32 clause, u32 phy_id)
-+{
-+	u32 mdio_c22p = 0;
-+
-+	xgmac_reg_rw(priv, MDIO_C22P, &mdio_c22p, false);
-+
-+	if (clause == MDIO_CLAUSE22)
-+		mdio_c22p |= MDIO_C22P_PORT(phy_id);
-+	else
-+		mdio_c22p &= ~MDIO_C22P_PORT(phy_id);
-+
-+	/* Select port 0, 1, 2 and 3 as Clause 22/45 ports */
-+	xgmac_reg_rw(priv, MDIO_C22P, &mdio_c22p, true);
-+
-+	return 0;
-+}
-+
-+static int xgmac_mdio_single_wr(struct gswip_mac *priv, u32 dev_adr,
-+				u32 phy_id, u32 phy_reg, u32 phy_reg_data)
-+{
-+	u32 mdio_sccdr, mdio_scar;
-+	u32 retries = 100;
-+
-+	/* wait for any previous MDIO read/write operation to complete */
-+	/* Poll */
-+	do {
-+		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
-+			break;
-+		cpu_relax();
-+	} while (--retries);
-+	if (!retries) {
-+		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, false);
-+	mdio_scar &= ~MDIO_SCAR_DA & ~MDIO_SCAR_PA & ~MDIO_SCAR_RA;
-+	mdio_scar |= FIELD_PREP(MDIO_SCAR_DA, dev_adr);
-+	mdio_scar |= FIELD_PREP(MDIO_SCAR_PA, phy_id);
-+	mdio_scar |= FIELD_PREP(MDIO_SCAR_RA, phy_reg);
-+	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, true);
-+
-+	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+	mdio_sccdr &= ~MDIO_SCCDR_SDATA & ~MDIO_SCCDR_CMD;
-+	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_SDATA, phy_reg_data);
-+	mdio_sccdr |= MDIO_SCCDR_BUSY;
-+	mdio_sccdr &= ~MDIO_SCCDR_SADDR;
-+	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_CMD, 1);
-+	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, true);
-+
-+	retries = 100;
-+	/* wait for MDIO read operation to complete */
-+	/* Poll */
-+	do {
-+		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
-+			break;
-+		cpu_relax();
-+	} while (--retries);
-+	if (!retries) {
-+		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	return 0;
-+}
-+
-+static int xgmac_mdio_single_rd(struct gswip_mac *priv, u32 dev_adr,
-+				u32 phy_id, u32 phy_reg)
-+{
-+	u32 mdio_sccdr, mdio_scar;
-+	u32 retries = 100;
-+	int phy_reg_data;
-+
-+	/* wait for any previous MDIO read/write operation to complete */
-+	/* Poll */
-+	do {
-+		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
-+			break;
-+		cpu_relax();
-+	} while (--retries);
-+	if (!retries) {
-+		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	/* initiate the MDIO read operation by updating desired bits
-+	 * PA - phy address/id (0 - 31)
-+	 * RA - phy register offset
-+	 */
-+
-+	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, false);
-+	mdio_scar &= ~MDIO_SCAR_DA & ~MDIO_SCAR_PA & ~MDIO_SCAR_RA;
-+	mdio_scar |= FIELD_PREP(MDIO_SCAR_DA, dev_adr);
-+	mdio_scar |= FIELD_PREP(MDIO_SCAR_PA, phy_id);
-+	mdio_scar |= FIELD_PREP(MDIO_SCAR_RA, phy_reg);
-+	xgmac_reg_rw(priv, MDIO_SCAR, &mdio_scar, true);
-+
-+	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+	mdio_sccdr &= ~MDIO_SCCDR_CMD & ~MDIO_SCCDR_SDATA;
-+	mdio_sccdr |= MDIO_SCCDR_BUSY;
-+	mdio_sccdr &= ~MDIO_SCCDR_SADDR;
-+	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_CMD, 3);
-+	mdio_sccdr |= FIELD_PREP(MDIO_SCCDR_SDATA, 0);
-+	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, true);
-+
-+	retries = 100;
-+	/* wait for MDIO read operation to complete */
-+	/* Poll */
-+	do {
-+		xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+		if (!FIELD_GET(MDIO_SCCDR_BUSY, mdio_sccdr))
-+			break;
-+		cpu_relax();
-+	} while (--retries);
-+	if (!retries) {
-+		dev_err(priv->dev, "Xgmac MDIO rd/wr operation failed\n");
-+		return -ETIMEDOUT;
-+	}
-+
-+	/* read the data */
-+	xgmac_reg_rw(priv, MDIO_SCCDR, &mdio_sccdr, false);
-+	phy_reg_data = FIELD_GET(MDIO_SCCDR_SDATA, mdio_sccdr);
-+
-+	return phy_reg_data;
-+}
-+
-+static int xgmac_mdio_read(struct mii_bus *bus, int phyadr, int phyreg)
-+{
-+	struct gswip_mac *priv = bus->priv;
-+
-+	return xgmac_mdio_single_rd(priv, 0, phyadr, phyreg);
-+}
-+
-+static int xgmac_mdio_write(struct mii_bus *bus, int phyadr, int phyreg,
-+			    u16 phydata)
-+{
-+	struct gswip_mac *priv = bus->priv;
-+
-+	return xgmac_mdio_single_wr(priv, 0, phyadr, phyreg, phydata);
-+}
-+
-+int xgmac_mdio_register(struct gswip_mac *priv)
-+{
-+	struct device_node *mdio_np;
-+	struct mii_bus *bus;
-+	int ret;
-+
-+	mdio_np = of_get_child_by_name(priv->dev->of_node, "mdio");
-+	if (!mdio_np)
-+		return -ENOLINK;
-+
-+	bus = mdiobus_alloc();
-+	if (!bus)
-+		return -ENOMEM;
-+
-+	bus->name = "xgmac_phy";
-+	bus->read = xgmac_mdio_read;
-+	bus->write = xgmac_mdio_write;
-+	bus->reset = NULL;
-+	snprintf(bus->id, MII_BUS_ID_SIZE, "%s-%x", bus->name, priv->mac_idx);
-+	bus->priv = priv;
-+	bus->parent = priv->dev;
-+
-+	/* At this moment gphy is not yet up (firmware not yet loaded), so we
-+	 * avoid auto mdio scan.
-+	 */
-+	bus->phy_mask = 0xFFFFFFFF;
-+
-+	ret = of_mdiobus_register(bus, mdio_np);
-+	if (ret) {
-+		mdiobus_free(bus);
-+		return ret;
-+	}
-+
-+	priv->mii = bus;
-+	dev_info(priv->dev, "XGMAC %d: MDIO register Successful\n",
-+		 priv->mac_idx);
-+
-+	return 0;
-+}
-diff --git a/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h
+diff --git a/drivers/infiniband/hw/irdma/i40iw_hw.h b/drivers/infiniband/hw/irdma/i40iw_hw.h
 new file mode 100644
-index 000000000000..0d1be931fcf3
+index 0000000..058b252
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/gwdpa/gswip/xgmac.h
-@@ -0,0 +1,236 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2016-2019 Intel Corporation. */
-+/* Xgmac registers indirect access */
++++ b/drivers/infiniband/hw/irdma/i40iw_hw.h
+@@ -0,0 +1,162 @@
++/* SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB */
++/* Copyright (c) 2015 - 2019 Intel Corporation */
++#ifndef I40IW_HW_H
++#define I40IW_HW_H
++#define I40E_VFPE_CQPTAIL1            0x0000A000 /* Reset: VFR */
++#define I40E_VFPE_CQPDB1              0x0000BC00 /* Reset: VFR */
++#define I40E_VFPE_CCQPSTATUS1         0x0000B800 /* Reset: VFR */
++#define I40E_VFPE_CCQPHIGH1           0x00009800 /* Reset: VFR */
++#define I40E_VFPE_CCQPLOW1            0x0000AC00 /* Reset: VFR */
++#define I40E_VFPE_CQARM1              0x0000B400 /* Reset: VFR */
++#define I40E_VFPE_CQACK1              0x0000B000 /* Reset: VFR */
++#define I40E_VFPE_AEQALLOC1           0x0000A400 /* Reset: VFR */
++#define I40E_VFPE_CQPERRCODES1        0x00009C00 /* Reset: VFR */
++#define I40E_VFPE_WQEALLOC1           0x0000C000 /* Reset: VFR */
++#define I40E_VFINT_DYN_CTLN(_INTVF)   (0x00024800 + ((_INTVF) * 4)) /* _i=0...511 */ /* Reset: VFR */
 +
-+#ifndef _XGMAC_H
-+#define _XGMAC_H
++#define I40E_PFPE_CQPTAIL             0x00008080 /* Reset: PFR */
 +
-+#include <linux/bits.h>
++#define I40E_PFPE_CQPDB               0x00008000 /* Reset: PFR */
++#define I40E_PFPE_CCQPSTATUS          0x00008100 /* Reset: PFR */
++#define I40E_PFPE_CCQPHIGH            0x00008200 /* Reset: PFR */
++#define I40E_PFPE_CCQPLOW             0x00008180 /* Reset: PFR */
++#define I40E_PFPE_CQARM               0x00131080 /* Reset: PFR */
++#define I40E_PFPE_CQACK               0x00131100 /* Reset: PFR */
++#define I40E_PFPE_AEQALLOC            0x00131180 /* Reset: PFR */
++#define I40E_PFPE_CQPERRCODES         0x00008880 /* Reset: PFR */
++#define I40E_PFPE_WQEALLOC            0x00138C00 /* Reset: PFR */
++#define I40E_GLPCI_LBARCTRL           0x000BE484 /* Reset: POR */
++#define I40E_GLPE_CPUSTATUS0          0x0000D040 /* Reset: PE_CORER */
++#define I40E_GLPE_CPUSTATUS1          0x0000D044 /* Reset: PE_CORER */
++#define I40E_GLPE_CPUSTATUS2          0x0000D048 /* Reset: PE_CORER */
++#define I40E_PFHMC_PDINV              0x000C0300 /* Reset: PFR */
++#define I40E_GLHMC_VFPDINV(_i)        (0x000C8300 + ((_i) * 4)) /* _i=0...31 */ /* Reset: CORER */
++#define I40E_PFINT_DYN_CTLN(_INTPF)   (0x00034800 + ((_INTPF) * 4)) /* _i=0...511 */	/* Reset: PFR */
++#define I40E_PFINT_AEQCTL             0x00038700 /* Reset: CORER */
 +
-+/* MAC register offsets */
-+#define MAC_TX_CFG			0x0000
-+#define MAC_TX_CFG_TE			BIT(0)
-+#define MAC_TX_CFG_DDIC			BIT(1)
-+#define MAC_TX_CFG_ISM			BIT(3)
-+#define MAC_TX_CFG_ISR			GENMASK(7, 4)
-+#define MAC_TX_CFG_IPG			GENMASK(10, 8)
-+#define MAC_TX_CFG_IFP			BIT(11)
-+#define MAC_TX_CFG_JD			BIT(16)
-+#define MAC_TX_CFG_SARC			GENMASK(22, 20)
-+#define MAC_TX_CFG_VNE			BIT(24)
-+#define MAC_TX_CFG_VNM			BIT(25)
-+#define MAC_TX_CFG_G9991EN		BIT(28)
-+#define MAC_TX_CFG_SS			GENMASK(30, 29)
-+#define MAC_TX_CFG_USS			BIT(31)
++#define I40E_GLPES_PFIP4RXDISCARD(_i)            (0x00010600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4RXTRUNC(_i)              (0x00010700 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4TXNOROUTE(_i)            (0x00012E00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXDISCARD(_i)            (0x00011200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXTRUNC(_i)              (0x00011300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
 +
-+#define MAC_RX_CFG			0x0004
-+#define MAC_RX_CFG_RE			BIT(0)
-+#define MAC_RX_CFG_ACS			BIT(1)
-+#define MAC_RX_CFG_CST			BIT(2)
-+#define MAC_RX_CFG_DCRCC		BIT(3)
-+#define MAC_RX_CFG_SPEN			BIT(4)
-+#define MAC_RX_CFG_USP			BIT(5)
-+#define MAC_RX_CFG_GPSLCE		BIT(6)
-+#define MAC_RX_CFG_WD			BIT(7)
-+#define MAC_RX_CFG_JE			BIT(8)
-+#define MAC_RX_CFG_IPC			BIT(9)
-+#define MAC_RX_CFG_LM			BIT(10)
-+#define MAC_RX_CFG_S2KP			BIT(11)
-+#define MAC_RX_CFG_HDSMS		GENMASK(14, 12)
-+#define MAC_RX_CFG_GPSL			GENMASK(29, 16)
-+#define MAC_RX_CFG_ELEN			BIT(30)
-+#define MAC_RX_CFG_ARPEN		BIT(31)
++#define I40E_GLPES_PFRDMAVBNDLO(_i)              (0x00014800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4TXMCOCTSLO(_i)           (0x00012000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXMCOCTSLO(_i)           (0x00011600 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6TXMCOCTSLO(_i)           (0x00012A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFUDPRXPKTSLO(_i)             (0x00013800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFUDPTXPKTSLO(_i)             (0x00013A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
 +
-+#define MAC_PKT_FR			0x0008
-+#define MAC_PKT_FR_PR			BIT(0)
-+#define MAC_PKT_FR_HUC			BIT(1)
-+#define MAC_PKT_FR_HMC			BIT(2)
-+#define MAC_PKT_FR_DAIF			BIT(3)
-+#define MAC_PKT_FR_PM			BIT(4)
-+#define MAC_PKT_FR_DBF			BIT(5)
-+#define MAC_PKT_FR_PCF			GENMASK(7, 6)
-+#define MAC_PKT_FR_SAIF			BIT(8)
-+#define MAC_PKT_FR_SAF			BIT(9)
-+#define MAC_PKT_FR_HPF			BIT(10)
-+#define MAC_PKT_FR_VTFE			BIT(16)
-+#define MAC_PKT_FR_IPFE			BIT(20)
-+#define MAC_PKT_FR_DNTU			BIT(21)
-+#define MAC_PKT_FR_VUCC			BIT(22)
-+#define MAC_PKT_FR_RA			BIT(31)
-+#define MAC_TX_FCR			0x0070
-+#define MAC_TX_FCR_FCB			BIT(0)
-+#define MAC_TX_FCR_TFE			BIT(1)
-+#define MAC_TX_FCR_PLT			GENMASK(6, 4)
-+#define MAC_TX_FCR_DZPQ			BIT(7)
-+#define MAC_TX_FCR_PT			GENMASK(31, 16)
++#define I40E_GLPES_PFIP6TXNOROUTE(_i)            (0x00012F00 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFTCPRTXSEG(_i)               (0x00013600 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFTCPRXOPTERR(_i)             (0x00013200 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFTCPRXPROTOERR(_i)           (0x00013300 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRXVLANERR(_i)               (0x00010000 + ((_i) * 4)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4RXOCTSLO(_i)             (0x00010200 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4RXPKTSLO(_i)             (0x00010400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4RXFRAGSLO(_i)            (0x00010800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4RXMCPKTSLO(_i)           (0x00010C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4TXOCTSLO(_i)             (0x00011A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4TXPKTSLO(_i)             (0x00011C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4TXFRAGSLO(_i)            (0x00011E00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4TXMCPKTSLO(_i)           (0x00012200 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXOCTSLO(_i)             (0x00010E00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXPKTSLO(_i)             (0x00011000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXFRAGSLO(_i)            (0x00011400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6TXOCTSLO(_i)             (0x00012400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6TXPKTSLO(_i)             (0x00012600 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6TXFRAGSLO(_i)            (0x00012800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6TXMCPKTSLO(_i)           (0x00012C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFTCPTXSEGLO(_i)              (0x00013400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMARXRDSLO(_i)             (0x00013E00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMARXSNDSLO(_i)            (0x00014000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMARXWRSLO(_i)             (0x00013C00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMATXRDSLO(_i)             (0x00014400 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMATXSNDSLO(_i)            (0x00014600 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMATXWRSLO(_i)             (0x00014200 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP4RXMCOCTSLO(_i)           (0x00010A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFIP6RXMCPKTSLO(_i)           (0x00011800 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFTCPRXSEGSLO(_i)             (0x00013000 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
++#define I40E_GLPES_PFRDMAVINVLO(_i)              (0x00014A00 + ((_i) * 8)) /* _i=0...15 */ /* Reset: PE_CORER */
 +
-+#define MAC_TX_FCR1			0x0074
-+#define MAC_TX_FCR2			0x0078
-+#define MAC_TX_FCR3			0x007C
-+#define MAC_TX_FCR4			0x0080
-+#define MAC_TX_FCR5			0x0084
-+#define MAC_TX_FCR6			0x0088
-+#define MAC_TX_FCR7			0x008C
-+#define MAC_RX_FCR			0x0090
-+#define MAC_RX_FCR_RFE			BIT(0)
-+#define MAC_RX_FCR_UP			BIT(1)
-+#define MAC_RX_FCR_PFCE			BIT(8)
++#define I40IW_DB_ADDR_OFFSET    (4 * 1024 * 1024 - 64 * 1024)
 +
-+#define MAC_ISR				0x00b0
-+#define MAC_IER				0x00b4
-+#define MAC_RXTX_STS			0x00b8
-+#define MAC_PMT_CSR			0x00c0
-+#define MAC_RWK_PFR			0x00c4
-+#define MAC_LPI_CSR			0x00d0
-+#define MAC_LPI_CSR_TLPIEN		BIT(0)
-+#define MAC_LPI_CSR_TLPIEX		BIT(1)
-+#define MAC_LPI_CSR_RLPIEN		BIT(2)
-+#define MAC_LPI_CSR_RLPIEX		BIT(3)
-+#define MAC_LPI_CSR_TLPIST		BIT(8)
-+#define MAC_LPI_CSR_RLPIST		BIT(9)
-+#define MAC_LPI_CSR_RXRSTP		BIT(10)
-+#define MAC_LPI_CSR_TXRSTP		BIT(11)
-+#define MAC_LPI_CSR_LPITXEN		BIT(16)
-+#define MAC_LPI_CSR_PLS			BIT(17)
-+#define MAC_LPI_CSR_PLSDIS		BIT(18)
-+#define MAC_LPI_CSR_LPITXA		BIT(19)
-+#define MAC_LPI_CSR_LPIATE		BIT(20)
-+#define MAC_LPI_CSR_TXCGE		BIT(21)
++#define I40IW_VF_DB_ADDR_OFFSET (64 * 1024)
 +
-+#define MAC_LPI_TCR			0x00d4
-+#define MAC_VER				0x0110
-+#define MAC_VER_USERVER			GENMASK(23, 16)
++#define I40E_PFINT_LNKLSTN(_INTPF)           (0x00035000 + ((_INTPF) * 4)) /* _i=0...511 */ /* Reset: PFR */
++#define I40E_PFINT_LNKLSTN_MAX_INDEX         511
++#define I40E_PFINT_LNKLSTN_FIRSTQ_INDX_SHIFT 0
++#define I40E_PFINT_LNKLSTN_FIRSTQ_INDX_MASK  (0x7FF << I40E_PFINT_LNKLSTN_FIRSTQ_INDX_SHIFT)
++#define I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_SHIFT 11
++#define I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_MASK  (0x3 << I40E_PFINT_LNKLSTN_FIRSTQ_TYPE_SHIFT)
 +
-+#define MAC_HW_F0			0x011c
-+#define MAC_HW_F0_GMIISEL		BIT(1)
-+#define MAC_HW_F0_VLHASH		BIT(4)
-+#define MAC_HW_F0_SMASEL		BIT(5)
-+#define MAC_HW_F0_RWKSEL		BIT(6)
-+#define MAC_HW_F0_MGKSEL		BIT(7)
-+#define MAC_HW_F0_MMCSEL		BIT(8)
-+#define MAC_HW_F0_ARPOFFSEL		BIT(9)
-+#define MAC_HW_F0_TSSEL			BIT(12)
-+#define MAC_HW_F0_EEESEL		BIT(13)
-+#define MAC_HW_F0_TXCOESEL		BIT(14)
-+#define MAC_HW_F0_RXCOESEL		BIT(16)
-+#define MAC_HW_F0_ADDMACADRSEL		GENMASK(22, 18)
-+#define MAC_HW_F0_TSSTSSEL		GENMASK(26, 25)
-+#define MAC_HW_F0_SAVLANINS		BIT(27)
-+#define MAC_HW_F0_VXN			BIT(29)
-+#define MAC_HW_F0_EDIFFC		BIT(30)
-+#define MAC_HW_F0_EDMA			BIT(31)
++#define I40E_PFINT_CEQCTL(_INTPF)          (0x00036800 + ((_INTPF) * 4)) /* _i=0...511 */ /* Reset: CORER */
++#define I40E_PFINT_CEQCTL_MAX_INDEX        511
++#define I40E_PFINT_CEQCTL_MSIX_INDX_SHIFT  0
++#define I40E_PFINT_CEQCTL_MSIX_INDX_MASK   (0xFF << I40E_PFINT_CEQCTL_MSIX_INDX_SHIFT)
++#define I40E_PFINT_CEQCTL_ITR_INDX_SHIFT   11
++#define I40E_PFINT_CEQCTL_ITR_INDX_MASK    (0x3 << I40E_PFINT_CEQCTL_ITR_INDX_SHIFT)
++#define I40E_PFINT_CEQCTL_MSIX0_INDX_SHIFT 13
++#define I40E_PFINT_CEQCTL_MSIX0_INDX_MASK  (0x7 << I40E_PFINT_CEQCTL_MSIX0_INDX_SHIFT)
++#define I40E_PFINT_CEQCTL_NEXTQ_INDX_SHIFT 16
++#define I40E_PFINT_CEQCTL_NEXTQ_INDX_MASK  (0x7FF << I40E_PFINT_CEQCTL_NEXTQ_INDX_SHIFT)
++#define I40E_PFINT_CEQCTL_NEXTQ_TYPE_SHIFT 27
++#define I40E_PFINT_CEQCTL_NEXTQ_TYPE_MASK  (0x3 << I40E_PFINT_CEQCTL_NEXTQ_TYPE_SHIFT)
++#define I40E_PFINT_CEQCTL_CAUSE_ENA_SHIFT  30
++#define I40E_PFINT_CEQCTL_CAUSE_ENA_MASK   (0x1 << I40E_PFINT_CEQCTL_CAUSE_ENA_SHIFT)
++#define I40E_PFINT_CEQCTL_INTEVENT_SHIFT   31
++#define I40E_PFINT_CEQCTL_INTEVENT_MASK    (0x1 << I40E_PFINT_CEQCTL_INTEVENT_SHIFT)
 +
-+#define MAC_HW_F1			0x0120
-+#define MAC_HW_F1_RXFIFOSIZE		GENMASK(4, 0)
-+#define MAC_HW_F1_TXFIFOSIZE		GENMASK(10, 6)
-+#define MAC_HW_F1_OSTEN			BIT(11)
-+#define MAC_HW_F1_PTOEN			BIT(12)
-+#define MAC_HW_F1_ADVTHWORD		BIT(13)
-+#define MAC_HW_F1_ADDR64		GENMASK(15, 14)
-+#define MAC_HW_F1_DCBEN			BIT(16)
-+#define MAC_HW_F1_SPHEN			BIT(17)
-+#define MAC_HW_F1_TSOEN			BIT(18)
-+#define MAC_HW_F1_DBGMEMA		BIT(19)
-+#define MAC_HW_F1_RSSEN			BIT(20)
-+#define MAC_HW_F1_NUMTC			GENMASK(23, 21)
-+#define MAC_HW_F1_HASHTBLSZ		GENMASK(25, 24)
-+#define MAC_HW_F1_L3L4FNUM		GENMASK(30, 27)
++#define I40E_CQPSQ_STAG_PDID_SHIFT         48
++#define I40E_CQPSQ_STAG_PDID_MASK          (0x7FFFULL << I40E_CQPSQ_STAG_PDID_SHIFT)
 +
-+#define MAC_HW_F2			0x0124
-+#define MAC_HW_F2_RXQCNT		GENMASK(3, 0)
-+#define MAC_HW_F2_TXQCNT		GENMASK(9, 6)
-+#define MAC_HW_F2_RXCHCNT		GENMASK(15, 12)
-+#define MAC_HW_F2_TXCHCNT		GENMASK(21, 18)
-+#define MAC_HW_F2_PPSOUTNUM		GENMASK(26, 24)
-+#define MAC_HW_F2_AUXSNAPNUM		GENMASK(30, 28)
++#define I40E_PFPE_CCQPSTATUS_CCQP_DONE_SHIFT   0
++#define I40E_PFPE_CCQPSTATUS_CCQP_DONE_MASK    (0x1ULL <<  I40E_PFPE_CCQPSTATUS_CCQP_DONE_SHIFT)
 +
-+#define MAC_EXTCFG			0x0140
-+#define MAC_EXTCFG_SBDIOEN		BIT(8)
++#define I40E_PFPE_CCQPSTATUS_CCQP_ERR_SHIFT    31
++#define I40E_PFPE_CCQPSTATUS_CCQP_ERR_MASK     (0x1ULL <<  I40E_PFPE_CCQPSTATUS_CCQP_ERR_SHIFT)
 +
-+#define MDIO_SCAR			0x200
-+#define MDIO_SCAR_RA			GENMASK(15, 0)
-+#define MDIO_SCAR_PA			GENMASK(20, 16)
-+#define MDIO_SCAR_DA			GENMASK(25, 21)
++#define I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT     3
++#define I40E_PFINT_DYN_CTLN_ITR_INDX_MASK      (0x3 <<  I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT)
 +
-+#define MDIO_SCCDR			0x204
-+#define MDIO_SCCDR_SDATA		GENMASK(15, 0)
-+#define MDIO_SCCDR_CMD			GENMASK(17, 16)
-+#define MDIO_SCCDR_SADDR		BIT(18)
-+#define MDIO_SCCDR_CR			GENMASK(21, 19)
-+#define MDIO_SCCDR_BUSY			BIT(22)
++#define I40E_PFINT_DYN_CTLN_INTENA_SHIFT       0
++#define I40E_PFINT_DYN_CTLN_INTENA_MASK        (0x1 <<  I40E_PFINT_DYN_CTLN_INTENA_SHIFT)
 +
-+#define MDIO_C22P			0x220
-+#define MDIO_C22P_PORT(idx)		BIT(idx)
++#define I40E_CQPSQ_CQ_CEQID_SHIFT 24
++#define I40E_CQPSQ_CQ_CEQID_MASK (0x7fUL << I40E_CQPSQ_CQ_CEQID_SHIFT)
 +
-+#define MAC_MACA0HR			0x0300
-+#define MAC_MACA0LR			0x0304
-+#define MAC_MACA1HR			0x0308
-+#define MAC_MACA1LR			0x030c
++#define I40E_VSIQF_CTL(_VSI)             (0x0020D800 + ((_VSI) * 4))
 +
-+#define MMC_CR				0x0800
++enum i40iw_device_caps_const {
++	I40IW_MAX_WQ_FRAGMENT_COUNT		= 3,
++	I40IW_MAX_SGE_RD			= 1,
++	I40IW_MAX_PUSH_PAGE_COUNT		= 0,
++	I40IW_MAX_INLINE_DATA_SIZE		= 48,
++	I40IW_MAX_IRD_SIZE			= 63,
++	I40IW_MAX_ORD_SIZE			= 127,
++	I40IW_MAX_WQ_ENTRIES			= 2048,
++	I40IW_MAX_WQE_SIZE_RQ			= 128,
++	I40IW_MAX_PDS				= 32768,
++	I40IW_MAX_STATS_COUNT			= 16,
++	I40IW_MAX_CQ_SIZE			= 1048575,
++	I40IW_MAX_OUTBOUND_MSG_SIZE		= 2147483647,
++	I40IW_MAX_INBOUND_MSG_SIZE		= 2147483647,
++};
 +
-+#define MMC_TXOCTETCOUNT_GB_LO		0x0814
-+#define MMC_TXFRAMECOUNT_GB_LO		0x081c
-+#define MMC_TXBROADCASTFRAMES_G_LO	0x0824
-+#define MMC_TXMULTICASTFRAMES_G_LO	0x082c
-+#define MMC_TXUNICASTFRAMES_GB_LO	0x0864
-+#define MMC_TXMULTICASTFRAMES_GB_LO	0x086c
-+#define MMC_TXBROADCASTFRAMES_GB_LO	0x0874
-+#define MMC_TXUNDERFLOWERROR_LO		0x087c
-+#define MMC_TXOCTETCOUNT_G_LO		0x0884
-+#define MMC_TXFRAMECOUNT_G_LO		0x088c
-+#define MMC_TXPAUSEFRAMES_LO		0x0894
-+#define MMC_TXVLANFRAMES_G_LO		0x089c
++#define I40IW_QP_WQE_MIN_SIZE	32
++#define I40IW_QP_WQE_MAX_SIZE	128
++#define I40IW_QP_SW_MIN_WQSIZE	4
 +
-+#define MMC_RXFRAMECOUNT_GB_LO		0x0900
-+#define MMC_RXOCTETCOUNT_GB_LO		0x0908
-+#define MMC_RXOCTETCOUNT_G_LO		0x0910
-+#define MMC_RXBROADCASTFRAMES_G_LO	0x0918
-+#define MMC_RXMULTICASTFRAMES_G_LO	0x0920
-+#define MMC_RXCRCERROR_LO		0x0928
-+#define MMC_RXRUNTERROR			0x0930
-+#define MMC_RXJABBERERROR		0x0934
-+#define MMC_RXUNDERSIZE_G		0x0938
-+#define MMC_RXOVERSIZE_G		0x093c
-+#define MMC_RXUNICASTFRAMES_G_LO	0x0970
-+#define MMC_RXLENGTHERROR_LO		0x0978
-+#define MMC_RXOUTOFRANGETYPE_LO		0x0980
-+#define MMC_RXPAUSEFRAMES_LO		0x0988
-+#define MMC_RXFIFOOVERFLOW_LO		0x0990
-+#define MMC_RXVLANFRAMES_GB_LO		0x0998
-+#define MMC_RXWATCHDOGERROR		0x09a0
++#define	I40IW_MAX_RQ_WQE_SHIFT	2
++#define I40IW_MAX_QUANTA_PER_WR 2
 +
-+#define MAC_TSTAMP_CR			0x0d00
-+#define MAC_SUBSEC_INCR			0x0d04
-+#define MAC_SYS_TIME_SEC		0x0d08
-+#define MAC_SYS_TIME_NSEC		0x0d0c
-+#define MAC_SYS_TIME_SEC_UPD		0x0d10
-+#define MAC_SYS_TIME_NSEC_UPD		0x0d14
-+#define MAC_TSTAMP_ADDNDR		0x0d18
-+#define MAC_TSTAMP_STSR			0x0d20
-+#define MAC_TXTSTAMP_NSECR		0x0d30
-+#define MAC_TXTSTAMP_SECR		0x0d34
-+#define MAC_TXTSTAMP_STS		0x0d38
-+#define MAC_AUX_CTRL			0x0d40
-+#define MAC_AUX_NSEC			0x0d48
-+#define MAC_AUX_SEC			0x0d4c
-+#define MAC_RX_PCH_CRC_CNT		0x0d2c
++#define I40IW_QP_SW_MAX_SQ_QUANTA 2048
++#define I40IW_QP_SW_MAX_RQ_QUANTA 16384
++#define I40IW_QP_SW_MAX_WQ_QUANTA 2048
++#define I40IW_MAX_QP_WRS ((I40IW_QP_SW_MAX_SQ_QUANTA - IRDMA_SQ_RSVD) / I40IW_MAX_QUANTA_PER_WR)
++#define I40IW_FIRST_VF_FPM_ID	16
++#define QUEUE_TYPE_CEQ		2
++#define NULL_QUEUE_INDEX	0x7FF
 +
-+#define XGMAC_Q_INC			0x100
-+#define XGMAC_CTRL_REG(idx)					\
-+	(XGMAC_REGACC_CTRL + ((idx) - MAC2) * XGMAC_Q_INC)
-+#define XGMAC_DATA0_REG(idx)					\
-+	(XGMAC_REGACC_DATA0 + ((idx) - MAC2) * XGMAC_Q_INC)
-+#define XGMAC_DATA1_REG(idx)					\
-+	(XGMAC_REGACC_DATA1 + ((idx) - MAC2) * XGMAC_Q_INC)
++void i40iw_init_hw(struct irdma_sc_dev *dev);
++#endif /* I40IW_HW_H */
+diff --git a/drivers/infiniband/hw/irdma/icrdma_hw.c b/drivers/infiniband/hw/irdma/icrdma_hw.c
+new file mode 100644
+index 0000000..90ceb9c
+--- /dev/null
++++ b/drivers/infiniband/hw/irdma/icrdma_hw.c
+@@ -0,0 +1,76 @@
++// SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB
++/* Copyright (c) 2019 Intel Corporation */
++#include "osdep.h"
++#include "type.h"
++#include "icrdma_hw.h"
 +
-+#define MASK_LOW			GENMASK(15, 0)
-+#define MASK_HIGH			GENMASK(31, 16)
++static u32 icrdma_regs[IRDMA_MAX_REGS] = {
++	PFPE_CQPTAIL,
++	PFPE_CQPDB,
++	PFPE_CCQPSTATUS,
++	PFPE_CCQPHIGH,
++	PFPE_CCQPLOW,
++	PFPE_CQARM,
++	PFPE_CQACK,
++	PFPE_AEQALLOC,
++	PFPE_CQPERRCODES,
++	PFPE_WQEALLOC,
++	GLINT_DYN_CTL(0),
++	ICRDMA_DB_ADDR_OFFSET,
 +
-+/* gaint packet size limit */
-+#define XGMAC_MAX_GPSL			9000
-+#define XGMAC_MAX_SUPPORTED_MTU		16380
++	GLPCI_LBARCTRL,
++	GLPE_CPUSTATUS0,
++	GLPE_CPUSTATUS1,
++	GLPE_CPUSTATUS2,
++	PFINT_AEQCTL,
++	GLINT_CEQCTL(0),
++	VSIQF_PE_CTL1(0),
++	PFHMC_PDINV,
++	GLHMC_VFPDINV(0)
++};
 +
-+#define XGMAC_MAX_STD_PACKET		1518
++static u64 icrdma_masks[IRDMA_MAX_MASKS] = {
++	ICRDMA_CCQPSTATUS_CCQP_DONE_M,
++	ICRDMA_CCQPSTATUS_CCQP_ERR_M,
++	ICRDMA_CQPSQ_STAG_PDID_M,
++	ICRDMA_CQPSQ_CQ_CEQID_M,
++	ICRDMA_CQPSQ_CQ_CQID_M,
++};
 +
-+#endif
++static u64 icrdma_shifts[IRDMA_MAX_SHIFTS] = {
++	ICRDMA_CCQPSTATUS_CCQP_DONE_S,
++	ICRDMA_CCQPSTATUS_CCQP_ERR_S,
++	ICRDMA_CQPSQ_STAG_PDID_S,
++	ICRDMA_CQPSQ_CQ_CEQID_S,
++	ICRDMA_CQPSQ_CQ_CQID_S,
++};
++
++void icrdma_init_hw(struct irdma_sc_dev *dev)
++{
++	int i;
++	u8 __iomem *hw_addr;
++
++	for (i = 0; i < IRDMA_MAX_REGS; ++i) {
++		hw_addr = dev->hw->hw_addr;
++
++		if (i == IRDMA_DB_ADDR_OFFSET)
++			hw_addr = NULL;
++
++		dev->hw_regs[i] = (u32 __iomem *)(hw_addr + icrdma_regs[i]);
++	}
++
++	for (i = 0; i < IRDMA_MAX_SHIFTS; ++i)
++		dev->hw_shifts[i] = icrdma_shifts[i];
++
++	for (i = 0; i < IRDMA_MAX_MASKS; ++i)
++		dev->hw_masks[i] = icrdma_masks[i];
++
++	dev->wqe_alloc_db = dev->hw_regs[IRDMA_WQEALLOC];
++	dev->cq_arm_db = dev->hw_regs[IRDMA_CQARM];
++	dev->aeq_alloc_db = dev->hw_regs[IRDMA_AEQALLOC];
++	dev->cqp_db = dev->hw_regs[IRDMA_CQPDB];
++	dev->cq_ack_db = dev->hw_regs[IRDMA_CQACK];
++	dev->hw_attrs.max_stat_inst = ICRDMA_MAX_STATS_COUNT;
++
++	dev->hw_attrs.uk_attrs.max_hw_sq_chunk = IRDMA_MAX_QUANTA_PER_WR;
++}
+diff --git a/drivers/infiniband/hw/irdma/icrdma_hw.h b/drivers/infiniband/hw/irdma/icrdma_hw.h
+new file mode 100644
+index 0000000..7eb7cbd
+--- /dev/null
++++ b/drivers/infiniband/hw/irdma/icrdma_hw.h
+@@ -0,0 +1,62 @@
++/* SPDX-License-Identifier: GPL-2.0 or Linux-OpenIB */
++/* Copyright (c) 2019 Intel Corporation */
++#ifndef ICRDMA_HW_H
++#define ICRDMA_HW_H
++
++#define VFPE_CQPTAIL1		0x0000a000
++#define VFPE_CQPDB1		0x0000bc00
++#define VFPE_CCQPSTATUS1	0x0000b800
++#define VFPE_CCQPHIGH1		0x00009800
++#define VFPE_CCQPLOW1		0x0000ac00
++#define VFPE_CQARM1		0x0000b400
++#define VFPE_CQARM1		0x0000b400
++#define VFPE_CQACK1		0x0000b000
++#define VFPE_AEQALLOC1		0x0000a400
++#define VFPE_CQPERRCODES1	0x00009c00
++#define VFPE_WQEALLOC1		0x0000c000
++#define VFINT_DYN_CTLN(_i)	(0x00003800 + ((_i) * 4)) /* _i=0...63 */
++
++#define PFPE_CQPTAIL		0x00500880
++#define PFPE_CQPDB		0x00500800
++#define PFPE_CCQPSTATUS		0x0050a000
++#define PFPE_CCQPHIGH		0x0050a100
++#define PFPE_CCQPLOW		0x0050a080
++#define PFPE_CQARM		0x00502c00
++#define PFPE_CQACK		0x00502c80
++#define PFPE_AEQALLOC		0x00502d00
++#define GLINT_DYN_CTL(_INT)	(0x00160000 + ((_INT) * 4)) /* _i=0...2047 */
++#define GLPCI_LBARCTRL		0x0009de74
++#define GLPE_CPUSTATUS0		0x0050ba5c
++#define GLPE_CPUSTATUS1		0x0050ba60
++#define GLPE_CPUSTATUS2		0x0050ba64
++#define PFINT_AEQCTL		0x0016cb00
++#define PFPE_CQPERRCODES	0x0050a200
++#define PFPE_WQEALLOC		0x00504400
++#define GLINT_CEQCTL(_INT)	(0x0015c000 + ((_INT) * 4)) /* _i=0...2047 */
++#define VSIQF_PE_CTL1(_VSI)	(0x00414000 + ((_VSI) * 4)) /* _i=0...767 */
++#define PFHMC_PDINV		0x00520300
++#define GLHMC_VFPDINV(_i)	(0x00528300 + ((_i) * 4)) /* _i=0...31 */
++
++#define ICRDMA_DB_ADDR_OFFSET		(8 * 1024 * 1024 - 64 * 1024)
++
++#define ICRDMA_VF_DB_ADDR_OFFSET	(64 * 1024)
++
++/* CCQSTATUS */
++#define ICRDMA_CCQPSTATUS_CCQP_DONE_S	0
++#define ICRDMA_CCQPSTATUS_CCQP_DONE_M	(0x1ULL << ICRDMA_CCQPSTATUS_CCQP_DONE_S)
++#define ICRDMA_CCQPSTATUS_CCQP_ERR_S	31
++#define ICRDMA_CCQPSTATUS_CCQP_ERR_M	(0x1ULL << ICRDMA_CCQPSTATUS_CCQP_ERR_S)
++#define ICRDMA_CQPSQ_STAG_PDID_S	46
++#define ICRDMA_CQPSQ_STAG_PDID_M	(0x3ffffULL << ICRDMA_CQPSQ_STAG_PDID_S)
++#define ICRDMA_CQPSQ_CQ_CEQID_S		22
++#define ICRDMA_CQPSQ_CQ_CEQID_M		(0x3ffULL << ICRDMA_CQPSQ_CQ_CEQID_S)
++#define ICRDMA_CQPSQ_CQ_CQID_S 0
++#define ICRDMA_CQPSQ_CQ_CQID_M \
++	(0x7ffffULL << ICRDMA_CQPSQ_CQ_CQID_S)
++
++enum icrdma_device_caps_const {
++	ICRDMA_MAX_STATS_COUNT = 128,
++};
++
++void icrdma_init_hw(struct irdma_sc_dev *dev);
++#endif /* ICRDMA_HW_H*/
 -- 
-2.11.0
+1.8.3.1
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
