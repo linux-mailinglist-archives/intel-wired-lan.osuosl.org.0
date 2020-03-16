@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0849B1873F5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 21:24:33 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9635187407
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 21:26:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5DD7388D0D;
-	Mon, 16 Mar 2020 20:24:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6412D214F6;
+	Mon, 16 Mar 2020 20:26:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BPf-3N+5odMR; Mon, 16 Mar 2020 20:24:31 +0000 (UTC)
+	with ESMTP id t4smRSKs-Jej; Mon, 16 Mar 2020 20:26:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E436688D58;
-	Mon, 16 Mar 2020 20:24:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8DFDD220A2;
+	Mon, 16 Mar 2020 20:26:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9F4411BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:24:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A89D61BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:26:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9B7DB214F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:24:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9FBA7214F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:26:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dHindpqqyn1N for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Mar 2020 20:24:27 +0000 (UTC)
+ with ESMTP id 16XW-KPAzRqs for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Mar 2020 20:26:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 6401F20798
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:24:27 +0000 (UTC)
-IronPort-SDR: s9diKGuwQl0IgCcWuH9d2S3thX6oOObhPCdqRu7PmkOcUH4BW4SphJ89t9fuySiokixypmCgae
- cAVrF/zV8mLA==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4CC3B20798
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:26:23 +0000 (UTC)
+IronPort-SDR: 2d3dAbfawxl0nrRwq6R6w1Na3uEEJRz3GPEYcH1nDCao0HIB/YfCvhTfnUNXYKz87yjrd5egKA
+ MGFqqV398U4A==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2020 13:24:26 -0700
-IronPort-SDR: VUEuQtiw+JiRQCMgDxC4gFtMHauQY9OGvpDDB5mZivprkqBAjMXnjJr3jU4yGA+sBdf6nNijb7
- ADfWx3bjZpxg==
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2020 13:26:22 -0700
+IronPort-SDR: KcGoIt3gJwY6l0/fQ2hPM4kqLKW3l9UXR8zV1dHlhdivk94g8RGEVK3amibRnbANLLMVpkmAvI
+ XW/BSMOurF/Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,561,1574150400"; d="scan'208";a="445252118"
+X-IronPort-AV: E=Sophos;i="5.70,561,1574150400"; d="scan'208";a="445252508"
 Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga006.fm.intel.com with ESMTP; 16 Mar 2020 13:24:27 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 16 Mar 2020 13:24:26 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 16 Mar 2020 13:26:23 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 16 Mar 2020 13:26:23 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 16 Mar 2020 13:24:26 -0700
+ 15.1.1713.5; Mon, 16 Mar 2020 13:26:22 -0700
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 16 Mar 2020 13:24:26 -0700
+ Mon, 16 Mar 2020 13:26:22 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v3 9/9] ice: add board identifier info
- to devlink .info_get
-Thread-Index: AQHV+BHAlQqKz5U1OU6Jij5PaGTyzqhLsYfw
-Date: Mon, 16 Mar 2020 20:24:25 +0000
-Message-ID: <751159554ce04968aa92bc41b5f907be@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote "fw.bundle_id"
+ to a generic info version
+Thread-Index: AQHV+BG7y0Rqe8iC3kuNDWmDF4GQDahLshbQ
+Date: Mon, 16 Mar 2020 20:26:22 +0000
+Message-ID: <3e0ed58c03574295b98da3441a253a88@intel.com>
 References: <20200312015818.1007882-1-jacob.e.keller@intel.com>
- <20200312015818.1007882-10-jacob.e.keller@intel.com>
-In-Reply-To: <20200312015818.1007882-10-jacob.e.keller@intel.com>
+ <20200312015818.1007882-8-jacob.e.keller@intel.com>
+In-Reply-To: <20200312015818.1007882-8-jacob.e.keller@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -73,8 +73,8 @@ dlp-reaction: no-action
 dlp-version: 11.2.0.6
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 9/9] ice: add board identifier info
- to devlink .info_get
+Subject: Re: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote
+ "fw.bundle_id" to a generic info version
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,23 +97,17 @@ From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jacob Ke
 Sent: Wednesday, March 11, 2020 6:58 PM
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 Cc: Jakub Kicinski <kuba@kernel.org>
-Subject: [Intel-wired-lan] [PATCH v3 9/9] ice: add board identifier info to devlink .info_get
+Subject: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote "fw.bundle_id" to a generic info version
 
-Export a unique board identifier using "board.id" for devlink's .info_get command.
+The nfp driver uses ``fw.bundle_id`` to represent a unique identifier of the entire firmware bundle.
 
-Obtain this by reading the NVM for the PBA identification string.
+A future change is going to introduce a similar notion in the ice driver, so promote ``fw.bundle_id`` into a generic version now.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
- Documentation/networking/devlink/ice.rst     |   4 +
- drivers/net/ethernet/intel/ice/ice_common.c  |  66 ----------
- drivers/net/ethernet/intel/ice/ice_common.h  |   3 -
- drivers/net/ethernet/intel/ice/ice_devlink.c |  16 ++-
- drivers/net/ethernet/intel/ice/ice_nvm.c     | 125 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_nvm.h     |   5 +
- drivers/net/ethernet/intel/ice/ice_type.h    |   1 +
- 7 files changed, 150 insertions(+), 70 deletions(-)
+ Documentation/networking/devlink/devlink-info.rst | 5 +++++  drivers/net/ethernet/netronome/nfp/nfp_devlink.c  | 2 +-
+ include/net/devlink.h                             | 2 ++
+ 3 files changed, 8 insertions(+), 1 deletion(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
