@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9635187407
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 21:26:27 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CFCDE187414
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 21:32:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6412D214F6;
-	Mon, 16 Mar 2020 20:26:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1EE38885DD;
+	Mon, 16 Mar 2020 20:32:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t4smRSKs-Jej; Mon, 16 Mar 2020 20:26:26 +0000 (UTC)
+	with ESMTP id YUaeiPsX3H6b; Mon, 16 Mar 2020 20:32:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 8DFDD220A2;
-	Mon, 16 Mar 2020 20:26:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id AC06588587;
+	Mon, 16 Mar 2020 20:32:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A89D61BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:26:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F2A541BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:32:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9FBA7214F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:26:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E683387598
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:32:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 16XW-KPAzRqs for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Mar 2020 20:26:23 +0000 (UTC)
+ with ESMTP id xdGKIPtKm-kc for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Mar 2020 20:32:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id 4CC3B20798
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:26:23 +0000 (UTC)
-IronPort-SDR: 2d3dAbfawxl0nrRwq6R6w1Na3uEEJRz3GPEYcH1nDCao0HIB/YfCvhTfnUNXYKz87yjrd5egKA
- MGFqqV398U4A==
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 5473286FAE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 20:32:15 +0000 (UTC)
+IronPort-SDR: 9pzPlmgOSz2DTgg/n74z25i5LjK1ExVoh75RcmjN40LTLZgK79pyODf4yCjndQ5EIw/C6i8w+e
+ jYJtCKbzI3/A==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2020 13:26:22 -0700
-IronPort-SDR: KcGoIt3gJwY6l0/fQ2hPM4kqLKW3l9UXR8zV1dHlhdivk94g8RGEVK3amibRnbANLLMVpkmAvI
- XW/BSMOurF/Q==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2020 13:32:14 -0700
+IronPort-SDR: O7wchPFsCDjbA5BJR3f+5rCkfQAZYX1SfTdm0v5kJxufJ9g92Phb4lHQYAJUhUMp+B8qW0OD4q
+ 6Zwz9Gz4jYAg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,561,1574150400"; d="scan'208";a="445252508"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga006.fm.intel.com with ESMTP; 16 Mar 2020 13:26:23 -0700
+X-IronPort-AV: E=Sophos;i="5.70,561,1574150400"; d="scan'208";a="390829276"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by orsmga004.jf.intel.com with ESMTP; 16 Mar 2020 13:32:14 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 16 Mar 2020 13:32:13 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 16 Mar 2020 13:26:23 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 16 Mar 2020 13:26:22 -0700
+ 15.1.1713.5; Mon, 16 Mar 2020 13:32:12 -0700
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Mon, 16 Mar 2020 13:26:22 -0700
+ Mon, 16 Mar 2020 13:32:12 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote "fw.bundle_id"
- to a generic info version
-Thread-Index: AQHV+BG7y0Rqe8iC3kuNDWmDF4GQDahLshbQ
-Date: Mon, 16 Mar 2020 20:26:22 +0000
-Message-ID: <3e0ed58c03574295b98da3441a253a88@intel.com>
-References: <20200312015818.1007882-1-jacob.e.keller@intel.com>
- <20200312015818.1007882-8-jacob.e.keller@intel.com>
-In-Reply-To: <20200312015818.1007882-8-jacob.e.keller@intel.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH 2/7] i40e: Use scnprintf() for avoiding
+ potential buffer overflow
+Thread-Index: AQHV94BpxEHGJZ/0oUmmtF0B/EZBq6hLtNEg
+Date: Mon, 16 Mar 2020 20:32:12 +0000
+Message-ID: <92500904ba1a4c91b5a1215d12266234@intel.com>
+References: <20200311083745.17328-1-tiwai@suse.de>
+ <20200311083745.17328-3-tiwai@suse.de>
+In-Reply-To: <20200311083745.17328-3-tiwai@suse.de>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -73,8 +73,8 @@ dlp-reaction: no-action
 dlp-version: 11.2.0.6
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote
- "fw.bundle_id" to a generic info version
+Subject: Re: [Intel-wired-lan] [PATCH 2/7] i40e: Use scnprintf() for
+ avoiding potential buffer overflow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,27 +87,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 -----Original Message-----
-From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jacob Keller
-Sent: Wednesday, March 11, 2020 6:58 PM
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Cc: Jakub Kicinski <kuba@kernel.org>
-Subject: [Intel-wired-lan] [PATCH v3 7/9] devlink: promote "fw.bundle_id" to a generic info version
+From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Takashi Iwai
+Sent: Wednesday, March 11, 2020 1:38 AM
+To: netdev@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org; David S . Miller <davem@davemloft.net>
+Subject: [Intel-wired-lan] [PATCH 2/7] i40e: Use scnprintf() for avoiding potential buffer overflow
 
-The nfp driver uses ``fw.bundle_id`` to represent a unique identifier of the entire firmware bundle.
+Since snprintf() returns the would-be-output size instead of the actual output size, the succeeding calls may go beyond the given buffer limit.  Fix it by replacing with scnprintf().
 
-A future change is going to introduce a similar notion in the ice driver, so promote ``fw.bundle_id`` into a generic version now.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
 ---
- Documentation/networking/devlink/devlink-info.rst | 5 +++++  drivers/net/ethernet/netronome/nfp/nfp_devlink.c  | 2 +-
- include/net/devlink.h                             | 2 ++
- 3 files changed, 8 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
