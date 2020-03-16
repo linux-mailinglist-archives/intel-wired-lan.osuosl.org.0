@@ -1,55 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76C26184A69
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Mar 2020 16:17:46 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0167D1868C6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 11:16:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 68B3D88714;
-	Fri, 13 Mar 2020 15:17:27 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A5C4E8565B;
+	Mon, 16 Mar 2020 10:16:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N4BugWiFdOm5; Fri, 13 Mar 2020 15:17:27 +0000 (UTC)
+	with ESMTP id CgevMz9-eMgK; Mon, 16 Mar 2020 10:16:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 267BE895AC;
-	Fri, 13 Mar 2020 15:17:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id DE2A787B4E;
+	Mon, 16 Mar 2020 10:16:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6E2201BF841
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:23 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D0F1E1BF395
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 10:16:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 692A488CBB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CCFAD899A2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 10:16:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D2okogiZT9Y7 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Mar 2020 15:17:20 +0000 (UTC)
+ with ESMTP id 9lJ5yR2ZoBe5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Mar 2020 10:16:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 630BC88C85
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Mar 2020 15:17:10 +0000 (UTC)
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2020 08:17:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,549,1574150400"; d="scan'208";a="236981074"
-Received: from ssaleem-mobl.amr.corp.intel.com ([10.254.43.202])
- by fmsmga008.fm.intel.com with ESMTP; 13 Mar 2020 08:17:08 -0700
-From: Shiraz Saleem <shiraz.saleem@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 13 Mar 2020 10:16:40 -0500
-Message-Id: <20200313151640.2070-17-shiraz.saleem@intel.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200313151640.2070-1-shiraz.saleem@intel.com>
-References: <20200313151640.2070-1-shiraz.saleem@intel.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
+ [205.139.110.61])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 027EC898ED
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 10:16:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1584353810;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fhlaLu41fKjyJCaBA5i8hSKMaPVLJFPaihSlC46nwKY=;
+ b=I9fNFTooQZYQaea++rICWpF0JiwZ3LbX/2xK3epbGQ9lGuGA0X0DjZsFSj4WOETS1wXIyA
+ wl71ixcB0C29NC7oN8hRdzzTF65ka4D0s0+2QXuohWFd2sfb/B2RBZUG4Ro6OZSIRAYIY7
+ wGhAIIu0LEfc+lVO1Ne9kV2QQreIySE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-440-AePaLJR-PCK92IBJf6eNrg-1; Mon, 16 Mar 2020 06:16:46 -0400
+X-MC-Unique: AePaLJR-PCK92IBJf6eNrg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1C0D7477;
+ Mon, 16 Mar 2020 10:16:45 +0000 (UTC)
+Received: from [192.168.122.1] (ovpn-200-32.brq.redhat.com [10.40.200.32])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4389F972D3;
+ Mon, 16 Mar 2020 10:16:39 +0000 (UTC)
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Jesper Dangaard Brouer <brouer@redhat.com>, netdev@vger.kernel.org
+Date: Mon, 16 Mar 2020 11:16:38 +0100
+Message-ID: <158435379870.2479973.8293720099992666964.stgit@carbon>
+User-Agent: StGit/0.19
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH RFC v5 16/16] RDMA/irdma: Update
- MAINTAINERS file
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Subject: [Intel-wired-lan] [PATCH net-next] i40e: trivial fixup of comments
+ in i40e_xsk.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,41 +75,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shiraz Saleem <shiraz.saleem@intel.com>
+Cc: =?utf-8?b?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Magnus Karlsson <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add maintainer entry for irdma driver.
+The comment above i40e_run_xdp_zc() was clearly copy-pasted from
+function i40e_xsk_umem_setup, which is just above.
 
-Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
-Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
+Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
 ---
- MAINTAINERS | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6de98ac..395763e 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8626,6 +8626,14 @@ L:	linux-pm@vger.kernel.org
- S:	Supported
- F:	drivers/cpufreq/intel_pstate.c
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 0b7d29192b2c..30dfb0d3d185 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -184,8 +184,6 @@ int i40e_xsk_umem_setup(struct i40e_vsi *vsi, struct xdp_umem *umem,
+  * @rx_ring: Rx ring
+  * @xdp: xdp_buff used as input to the XDP program
+  *
+- * This function enables or disables a UMEM to a certain ring.
+- *
+  * Returns any of I40E_XDP_{PASS, CONSUMED, TX, REDIR}
+  **/
+ static int i40e_run_xdp_zc(struct i40e_ring *rx_ring, struct xdp_buff *xdp)
+@@ -474,7 +472,7 @@ void i40e_zca_free(struct zero_copy_allocator *alloc, unsigned long handle)
+ }
  
-+INTEL ETHERNET PROTOCL DRIVER FOR RDMA
-+M:	Mustafa Ismail <mustafa.ismail@intel.com>
-+M:	Shiraz Saleem <shiraz.saleem@intel.com>
-+L:	linux-rdma@vger.kernel.org
-+S:	Supported
-+F:	drivers/infiniband/hw/irdma/
-+F:	include/uapi/rdma/irdma-abi.h
-+
- INTEL SPEED SELECT TECHNOLOGY
- M:	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
- L:	platform-driver-x86@vger.kernel.org
--- 
-1.8.3.1
+ /**
+- * i40e_construct_skb_zc - Create skbufff from zero-copy Rx buffer
++ * i40e_construct_skb_zc - Create skbuff from zero-copy Rx buffer
+  * @rx_ring: Rx ring
+  * @bi: Rx buffer
+  * @xdp: xdp_buff
+
 
 _______________________________________________
 Intel-wired-lan mailing list
