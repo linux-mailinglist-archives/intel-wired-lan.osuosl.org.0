@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 431BF186CA1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 14:55:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0695C186CA0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Mar 2020 14:55:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BD01F86940;
-	Mon, 16 Mar 2020 13:55:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B199386064;
+	Mon, 16 Mar 2020 13:55:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ge2C-XapxGTB; Mon, 16 Mar 2020 13:55:03 +0000 (UTC)
+	with ESMTP id vm-hfoC3Z5zS; Mon, 16 Mar 2020 13:55:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7B6BB8683C;
-	Mon, 16 Mar 2020 13:55:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1167D815F8;
+	Mon, 16 Mar 2020 13:55:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A50651BF271
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 13:55:01 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A1FBE87858
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 13:55:01 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
- by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R9uSkyoMbzxT for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Mar 2020 13:54:59 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DA7F8871C7
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 78D161BF271
  for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 13:54:58 +0000 (UTC)
-IronPort-SDR: Lm4Xf0fU1pLmQe6o09zlO9I/jkbVqToEbxkvtPzDhpPx/ufw+jCYX6MUZaTAg8fBic+7+jIHlZ
- zmcp6Ylce9JQ==
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 73E6C893B6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 13:54:58 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
+ by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RJ2CPpB03dUm for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Mar 2020 13:54:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C6A1488C6F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Mar 2020 13:54:57 +0000 (UTC)
+IronPort-SDR: 8rAz/WfYYXzLJIOlAH171sGyQAHhL930GsuyUR9mjOybwT7HSl7d9OQFy6m0HFwJCrDl67kNyW
+ 8jBfXJ891rCg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Mar 2020 06:54:58 -0700
-IronPort-SDR: 9Fs/6rgqGfJ4DrHy/NtGa1kWrYKSprBIpJia4lmHIcc0VajdZNlvWcZuzxcnITntW1rcBVX0FI
- gjAVidVGBh3Q==
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2020 06:54:57 -0700
+IronPort-SDR: cU6xFtsHh/Ur6N4VKEabM0opqlogFbP+x44AUH4QP0Tompw/IGraE3V+aEwTpjd4XaPwATBr2t
+ T30bWPM51Wlw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,560,1574150400"; d="scan'208";a="237628354"
+X-IronPort-AV: E=Sophos;i="5.70,560,1574150400"; d="scan'208";a="236023547"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 16 Mar 2020 06:54:56 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 16 Mar 2020 06:54:56 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jDqCm-0007j2-8R; Mon, 16 Mar 2020 21:54:56 +0800
-Date: Mon, 16 Mar 2020 21:54:24 +0800
+ id 1jDqCl-0007ia-U6; Mon, 16 Mar 2020 21:54:55 +0800
+Date: Mon, 16 Mar 2020 21:54:38 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e6f8510.0OcbfdLtfM4/oHX5%lkp@intel.com>
+Message-ID: <5e6f851e.GE4H+GmUYhdNpHFZ%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:master] BUILD SUCCESS
- 94b18a87efdd1626a1e6aef87271af4a7c616d36
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ 841ffcb05f90e728da7e284fc639f93c837140cc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,12 +72,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  master
-branch HEAD: 94b18a87efdd1626a1e6aef87271af4a7c616d36  Merge tag 'wireless-drivers-2020-03-13' of git://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 841ffcb05f90e728da7e284fc639f93c837140cc  ice: Fix a couple off by one bugs
 
-elapsed time: 483m
+elapsed time: 484m
 
-configs tested: 113
+configs tested: 109
 configs skipped: 0
 
 The following configs have been built successfully.
@@ -110,10 +110,6 @@ openrisc                    or1ksim_defconfig
 openrisc                 simple_smp_defconfig
 xtensa                       common_defconfig
 xtensa                          iss_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
 h8300                     edosk2674_defconfig
 h8300                    h8300h-sim_defconfig
 h8300                       h8s-sim_defconfig
