@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64B9C189D5D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2020 14:52:35 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 781D9189D67
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2020 14:55:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0470888443;
-	Wed, 18 Mar 2020 13:52:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 291F185F6E;
+	Wed, 18 Mar 2020 13:55:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jh-h5gXy1c7W; Wed, 18 Mar 2020 13:52:32 +0000 (UTC)
+	with ESMTP id 2-Nz0OHtJAHv; Wed, 18 Mar 2020 13:55:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E766F883C0;
-	Wed, 18 Mar 2020 13:52:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8180385F77;
+	Wed, 18 Mar 2020 13:55:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6FE211BF2C6
- for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:52:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D06DA1BF38B
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:55:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 67C2C24F76
- for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:52:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A091A203C4
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:54:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rSeJlzWOtqcn for <intel-wired-lan@osuosl.org>;
- Wed, 18 Mar 2020 13:52:04 +0000 (UTC)
+ with ESMTP id 9Rgsss-y-cWX for <intel-wired-lan@osuosl.org>;
+ Wed, 18 Mar 2020 13:54:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id A3C6C2547E
- for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:52:04 +0000 (UTC)
-IronPort-SDR: 4g5fP21jcqu4RvFmJyWtkvf92dcp82fMHm6sS0PUjV1HntGXy96szpseq42+T9FviPQRT/AzvE
- M0b13jaYZlGw==
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id B143B203B1
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:54:50 +0000 (UTC)
+IronPort-SDR: IwVBLb/rDNfrXLkyySEtxJlWNphHVDOBmq+xM/aYQQE/a7hq7PnO8B+0cjN4pvWnjrJcEZVHpu
+ FN9BEosaU6XA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2020 06:52:03 -0700
-IronPort-SDR: cqf0UwVr8Gc7GeQgAOpDhi3jwA4QgVlC7lqmUpj8YF3OkJdcBaWMs+i6J+jK768h97OxVnKIRU
- Ri1QFxvy/i7g==
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2020 06:54:49 -0700
+IronPort-SDR: XJm0eqHx7PatoNZSdHpDDsGIXM2hsdI7XpPxOcg4KueQi074LET5PdhfvdyqlL+Wye1bc/IN/C
+ B1KyKmTEVzjA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,567,1574150400"; d="scan'208";a="355708654"
+X-IronPort-AV: E=Sophos;i="5.70,567,1574150400"; d="scan'208";a="268362583"
 Received: from ccdlinuxdev08.iil.intel.com ([143.185.160.195])
- by fmsmga001.fm.intel.com with ESMTP; 18 Mar 2020 06:52:02 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 18 Mar 2020 06:54:48 -0700
 From: Vitaly Lifshits <vitaly.lifshits@intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Wed, 18 Mar 2020 15:52:00 +0200
-Message-Id: <20200318135200.10845-1-vitaly.lifshits@intel.com>
+Date: Wed, 18 Mar 2020 15:54:46 +0200
+Message-Id: <20200318135446.10921-1-vitaly.lifshits@intel.com>
 X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1] igc: add support to interrupt, eeprom,
+Subject: [Intel-wired-lan] [PATCH v2] igc: add support to interrupt, eeprom,
  registers and link self-tests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -75,10 +75,13 @@ these files are being used by ethtool self-test callbacks.
 Which mean that interrupt, eeprom, registers and link self-tests for
 ethtool were implemented.
 
-Change-type: ImplementationChange
-Title: igc: add support to interrupt, eeprom, registers and link self-tests
 Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Reported-by: kbuild test robot <lkp@intel.com>
 ---
+v1->v2:
+Fix return 0/1 to boolean value in igc_reg_test function
+---
+
  drivers/net/ethernet/intel/igc/Makefile      |   2 +-
  drivers/net/ethernet/intel/igc/igc.h         |   4 +
  drivers/net/ethernet/intel/igc/igc_diag.c    | 350 +++++++++++++++++++++++++++
@@ -124,7 +127,7 @@ index 4823b8ead547..e743f92a27c6 100644
  void igc_free_tx_resources(struct igc_ring *ring);
 diff --git a/drivers/net/ethernet/intel/igc/igc_diag.c b/drivers/net/ethernet/intel/igc/igc_diag.c
 new file mode 100644
-index 000000000000..80f96c9e5a90
+index 000000000000..cfb6a4cc623f
 --- /dev/null
 +++ b/drivers/net/ethernet/intel/igc/igc_diag.c
 @@ -0,0 +1,350 @@
@@ -246,7 +249,7 @@ index 000000000000..80f96c9e5a90
 +			"failed STATUS register test got: 0x%08X expected: 0x%08X\n",
 +			after, value);
 +		*data = 1;
-+		return 1;
++		return true;
 +	}
 +	/* restore previous status */
 +	wr32(IGC_STATUS, before);
