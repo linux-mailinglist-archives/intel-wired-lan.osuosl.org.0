@@ -2,69 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7799189D07
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2020 14:31:41 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64B9C189D5D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2020 14:52:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5E654882E1;
-	Wed, 18 Mar 2020 13:31:40 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0470888443;
+	Wed, 18 Mar 2020 13:52:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xn1TWI4gRoVw; Wed, 18 Mar 2020 13:31:40 +0000 (UTC)
+	with ESMTP id Jh-h5gXy1c7W; Wed, 18 Mar 2020 13:52:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5F995882EB;
-	Wed, 18 Mar 2020 13:31:38 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 34A9A1BF2C6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 13:31:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E766F883C0;
+	Wed, 18 Mar 2020 13:52:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6FE211BF2C6
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:52:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 307EC86EBA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 13:31:37 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 67C2C24F76
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:52:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8KfLlyvsfoGg for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2020 13:31:36 +0000 (UTC)
+ with ESMTP id rSeJlzWOtqcn for <intel-wired-lan@osuosl.org>;
+ Wed, 18 Mar 2020 13:52:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 57A7486D8A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 13:31:36 +0000 (UTC)
-IronPort-SDR: Kzs6gIhrHk6V7881mGVbTtS1TZiajfv8EEiYi7IF53wmI512L2S7kHGFXY/NAVkKaoLLBWoLI1
- 0B24toJ204OQ==
+ by silver.osuosl.org (Postfix) with ESMTPS id A3C6C2547E
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Mar 2020 13:52:04 +0000 (UTC)
+IronPort-SDR: 4g5fP21jcqu4RvFmJyWtkvf92dcp82fMHm6sS0PUjV1HntGXy96szpseq42+T9FviPQRT/AzvE
+ M0b13jaYZlGw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2020 06:31:33 -0700
-IronPort-SDR: BZKSGEOMTBdwLG5O3sJB4kEkGhQRi3CnAsW6IsCtEPXRaIq70R99ETUeuZ+DxQAQw+H2KPicMn
- 4TC3mk+euZ+A==
+ 18 Mar 2020 06:52:03 -0700
+IronPort-SDR: cqf0UwVr8Gc7GeQgAOpDhi3jwA4QgVlC7lqmUpj8YF3OkJdcBaWMs+i6J+jK768h97OxVnKIRU
+ Ri1QFxvy/i7g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,567,1574150400"; d="scan'208";a="233841828"
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.214.209.111])
- ([10.214.209.111])
- by orsmga007.jf.intel.com with ESMTP; 18 Mar 2020 06:31:29 -0700
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-References: <0A7D1E37-88A4-4E5A-8522-B80A8AE679EE@canonical.com>
- <8c0032bd-15be-734b-1b52-dedba72a8da3@intel.com>
- <897C8B9E-839A-4FC1-9411-B3CB141890BC@canonical.com>
- <540fd2d3-9187-1dba-185a-58d94c4c5b69@intel.com>
- <BA29B851-8765-4F47-AC98-E2D604595EA6@canonical.com>
- <38766b04-eec3-f4ce-5fe5-6352562b271c@intel.com>
- <FFE42849-4E95-4ADC-9B46-7A0F5B58508B@canonical.com>
- <6c1bcb34-a713-a6ea-7def-8a0e553ea0bb@intel.com>
- <C9A08D85-D64B-44DD-8460-3405F2547D53@canonical.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <c94e12da-efb2-5e7f-b6a7-726f0378268b@intel.com>
-Date: Wed, 18 Mar 2020 15:31:28 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
-MIME-Version: 1.0
-In-Reply-To: <C9A08D85-D64B-44DD-8460-3405F2547D53@canonical.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [Regression] "e1000e: Add support for S0ix"
- breaks s2idle on Lenovo X1 Carbon 7th
+X-IronPort-AV: E=Sophos;i="5.70,567,1574150400"; d="scan'208";a="355708654"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.160.195])
+ by fmsmga001.fm.intel.com with ESMTP; 18 Mar 2020 06:52:02 -0700
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Wed, 18 Mar 2020 15:52:00 +0200
+Message-Id: <20200318135200.10845-1-vitaly.lifshits@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1] igc: add support to interrupt, eeprom,
+ registers and link self-tests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,41 +63,600 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Shalev, Avi" <avi.shalev@intel.com>, Jason Yen <jason.yen@canonical.com>,
- Anthony Wong <anthony.wong@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/18/2020 14:21, Kai-Heng Feng wrote:
-> Hi Sasha,
-> 
->> On Mar 18, 2020, at 16:50, Neftin, Sasha <sasha.neftin@intel.com> wrote:
-> 
-> [snipped]
-> 
->> ok, let's understand where is PHY location.
-> 
-> Lenovo confirmed the PHY is inside the laptop.
-> 
->> Since no docking connected why driver should run?
-> 
-> Because the SoC in the laptop has an I219 device?
-> 
->> There is no RJ45 port on laptop.
-> 
-> The Lenovo ethernet dongle wires the RJ45 to the I219 device.
-> 
->> S0ix flow same (I got confirmation from our architecture team) and should haven't impact on Sx.
->> if PHY located externally... during S0ix flow we try access to the PHY and it can be problem. Since laptop have no RJ45 connector driver not expected to run I though.
-> 
-> But the I219 device is always on the PCI bus so e1000e should bind to it?
-> 
-ok. Need to debug this system. We will escalate this problem to our PAE.
-> Kai-Heng
-> 
+Introduced igc_diag.c and igc_diag.h, these files have the
+diagnostics functionality of igc driver. For the time being
+these files are being used by ethtool self-test callbacks.
+Which mean that interrupt, eeprom, registers and link self-tests for
+ethtool were implemented.
+
+Change-type: ImplementationChange
+Title: igc: add support to interrupt, eeprom, registers and link self-tests
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+---
+ drivers/net/ethernet/intel/igc/Makefile      |   2 +-
+ drivers/net/ethernet/intel/igc/igc.h         |   4 +
+ drivers/net/ethernet/intel/igc/igc_diag.c    | 350 +++++++++++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_diag.h    |  31 +++
+ drivers/net/ethernet/intel/igc/igc_ethtool.c |  81 +++++++
+ drivers/net/ethernet/intel/igc/igc_main.c    |   4 +-
+ drivers/net/ethernet/intel/igc/igc_regs.h    |   1 +
+ 7 files changed, 470 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/igc/igc_diag.c
+ create mode 100644 drivers/net/ethernet/intel/igc/igc_diag.h
+
+diff --git a/drivers/net/ethernet/intel/igc/Makefile b/drivers/net/ethernet/intel/igc/Makefile
+index 3652f211f351..1c3051db9085 100644
+--- a/drivers/net/ethernet/intel/igc/Makefile
++++ b/drivers/net/ethernet/intel/igc/Makefile
+@@ -8,4 +8,4 @@
+ obj-$(CONFIG_IGC) += igc.o
+ 
+ igc-objs := igc_main.o igc_mac.o igc_i225.o igc_base.o igc_nvm.o igc_phy.o \
+-igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o
++igc_diag.o igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 4823b8ead547..e743f92a27c6 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -198,6 +198,8 @@ struct igc_adapter {
+ 	unsigned long link_check_timeout;
+ 	struct igc_info ei;
+ 
++	u32 test_icr;
++
+ 	struct ptp_clock *ptp_clock;
+ 	struct ptp_clock_info ptp_caps;
+ 	struct work_struct ptp_tx_work;
+@@ -215,6 +217,8 @@ struct igc_adapter {
+ 
+ void igc_up(struct igc_adapter *adapter);
+ void igc_down(struct igc_adapter *adapter);
++int igc_open(struct net_device *netdev);
++int igc_close(struct net_device *netdev);
+ int igc_setup_tx_resources(struct igc_ring *ring);
+ int igc_setup_rx_resources(struct igc_ring *ring);
+ void igc_free_tx_resources(struct igc_ring *ring);
+diff --git a/drivers/net/ethernet/intel/igc/igc_diag.c b/drivers/net/ethernet/intel/igc/igc_diag.c
+new file mode 100644
+index 000000000000..80f96c9e5a90
+--- /dev/null
++++ b/drivers/net/ethernet/intel/igc/igc_diag.c
+@@ -0,0 +1,350 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c)  2018 Intel Corporation */
++
++#include "igc.h"
++#include "igc_diag.h"
++
++struct igc_reg_test reg_test[] = {
++	{ IGC_FCAL,	1,	PATTERN_TEST,	0xFFFFFFFF,	0xFFFFFFFF },
++	{ IGC_FCAH,	1,	PATTERN_TEST,	0x0000FFFF,	0xFFFFFFFF },
++	{ IGC_FCT,	1,	PATTERN_TEST,	0x0000FFFF,	0xFFFFFFFF },
++	{ IGC_RDBAH(0), 4,	PATTERN_TEST,	0xFFFFFFFF,	0xFFFFFFFF },
++	{ IGC_RDBAL(0),	4,	PATTERN_TEST,	0xFFFFFF80,	0xFFFFFF80 },
++	{ IGC_RDLEN(0),	4,	PATTERN_TEST,	0x000FFF80,	0x000FFFFF },
++	{ IGC_RDT(0),	4,	PATTERN_TEST,	0x0000FFFF,	0x0000FFFF },
++	{ IGC_FCRTH,	1,	PATTERN_TEST,	0x0003FFF0,	0x0003FFF0 },
++	{ IGC_FCTTV,	1,	PATTERN_TEST,	0x0000FFFF,	0x0000FFFF },
++	{ IGC_TIPG,	1,	PATTERN_TEST,	0x3FFFFFFF,	0x3FFFFFFF },
++	{ IGC_TDBAH(0),	4,	PATTERN_TEST,	0xFFFFFFFF,     0xFFFFFFFF },
++	{ IGC_TDBAL(0),	4,	PATTERN_TEST,	0xFFFFFF80,     0xFFFFFF80 },
++	{ IGC_TDLEN(0),	4,	PATTERN_TEST,	0x000FFF80,     0x000FFFFF },
++	{ IGC_TDT(0),	4,	PATTERN_TEST,	0x0000FFFF,     0x0000FFFF },
++	{ IGC_RCTL,	1,	SET_READ_TEST,	0xFFFFFFFF,	0x00000000 },
++	{ IGC_RCTL,	1,	SET_READ_TEST,	0x04CFB2FE,	0x003FFFFB },
++	{ IGC_RCTL,	1,	SET_READ_TEST,	0x04CFB2FE,	0xFFFFFFFF },
++	{ IGC_TCTL,	1,	SET_READ_TEST,	0xFFFFFFFF,	0x00000000 },
++	{ IGC_RA,	16,	TABLE64_TEST_LO,
++						0xFFFFFFFF,	0xFFFFFFFF },
++	{ IGC_RA,	16,	TABLE64_TEST_HI,
++						0x900FFFFF,	0xFFFFFFFF },
++	{ IGC_MTA,	128,	TABLE32_TEST,
++						0xFFFFFFFF,	0xFFFFFFFF },
++	{ 0, 0, 0, 0}
++};
++
++static bool reg_pattern_test(struct igc_adapter *adapter, u64 *data, int reg,
++			     u32 mask, u32 write)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 pat, val, before;
++	static const u32 test_pattern[] = {
++		0x5A5A5A5A, 0xA5A5A5A5, 0x00000000, 0xFFFFFFFF
++	};
++
++	if (IGC_REMOVED(hw->hw_addr)) {
++		*data = 1;
++		return true;
++	}
++	for (pat = 0; pat < ARRAY_SIZE(test_pattern); pat++) {
++		before = rd32(reg);
++		wr32(reg, test_pattern[pat] & write);
++		val = rd32(reg);
++		if (val != (test_pattern[pat] & write & mask)) {
++			dev_err(&adapter->pdev->dev,
++				"pattern test reg %04X failed: got 0x%08X expected 0x%08X\n",
++				reg, val, test_pattern[pat] & write & mask);
++			*data = reg;
++			wr32(reg, before);
++			return true;
++		}
++		wr32(reg, before);
++	}
++	return false;
++}
++
++static bool reg_set_and_check(struct igc_adapter *adapter, u64 *data, int reg,
++			      u32 mask, u32 write)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 val, before;
++
++	if (IGC_REMOVED(hw->hw_addr)) {
++		*data = 1;
++		return true;
++	}
++	before = rd32(reg);
++	wr32(reg, write & mask);
++	val = rd32(reg);
++	if ((write & mask) != (val & mask)) {
++		dev_err(&adapter->pdev->dev,
++			"set/check reg %04X test failed: got 0x%08X expected 0x%08X\n",
++			reg, (val & mask), (write & mask));
++		*data = reg;
++		wr32(reg, before);
++		return true;
++	}
++	wr32(reg, before);
++	return false;
++}
++
++bool igc_reg_test(struct igc_adapter *adapter, u64 *data)
++{
++	struct igc_reg_test *test = reg_test;
++	struct igc_hw *hw = &adapter->hw;
++	u32 value, before, after;
++	u32 i, toggle, b;
++
++	if (IGC_REMOVED(hw->hw_addr)) {
++		dev_err(&adapter->pdev->dev, "Adapter removed - register test blocked\n");
++		*data = 1;
++		return true;
++	}
++
++	/* Because the status register is such a special case,
++	 * we handle it separately from the rest of the register
++	 * tests.  Some bits are read-only, some toggle, and some
++	 * are writeable.
++	 */
++
++	toggle = 0x6800D3;
++	before = rd32(IGC_STATUS);
++	value = before & toggle;
++	wr32(IGC_STATUS, toggle);
++	after = rd32(IGC_STATUS) & toggle;
++	if (value != after) {
++		dev_err(&adapter->pdev->dev,
++			"failed STATUS register test got: 0x%08X expected: 0x%08X\n",
++			after, value);
++		*data = 1;
++		return 1;
++	}
++	/* restore previous status */
++	wr32(IGC_STATUS, before);
++
++	/* Perform the remainder of the register test, looping through
++	 * the test table until we either fail or reach the null entry.
++	 */
++	while (test->reg) {
++		for (i = 0; i < test->array_len; i++) {
++			switch (test->test_type) {
++			case PATTERN_TEST:
++				b = reg_pattern_test(adapter, data,
++						     test->reg + (i * 0x40),
++						     test->mask,
++						     test->write);
++				break;
++			case SET_READ_TEST:
++				b = reg_set_and_check(adapter, data,
++						      test->reg + (i * 0x40),
++						      test->mask,
++						      test->write);
++				break;
++			case TABLE64_TEST_LO:
++				b = reg_pattern_test(adapter, data,
++						     test->reg + (i * 8),
++						     test->mask,
++						     test->write);
++				break;
++			case TABLE64_TEST_HI:
++				b = reg_pattern_test(adapter, data,
++						     test->reg + 4 + (i * 8),
++						     test->mask,
++						     test->write);
++				break;
++			case TABLE32_TEST:
++				b = reg_pattern_test(adapter, data,
++						     test->reg + (i * 4),
++						     test->mask,
++						     test->write);
++				break;
++			}
++			if (b)
++				return true;
++		}
++		test++;
++	}
++	*data = 0;
++	return false;
++}
++
++bool igc_eeprom_test(struct igc_adapter *adapter, u64 *data)
++{
++	struct igc_hw *hw = &adapter->hw;
++
++	*data = 0;
++
++	if (hw->nvm.ops.validate(hw) != IGC_SUCCESS) {
++		*data = 1;
++		return true;
++	}
++
++	return false;
++}
++
++static irqreturn_t igc_test_intr(int irq, void *data)
++{
++	struct igc_adapter *adapter = (struct igc_adapter *)data;
++	struct igc_hw *hw = &adapter->hw;
++
++	adapter->test_icr |= rd32(IGC_ICR);
++
++	return IRQ_HANDLED;
++}
++
++int igc_intr_test(struct igc_adapter *adapter, u64 *data)
++{
++	struct igc_hw *hw = &adapter->hw;
++	struct net_device *netdev = adapter->netdev;
++	u32 mask, ics_mask, i = 0, shared_int = true;
++	u32 irq = adapter->pdev->irq;
++
++	if (IGC_REMOVED(hw->hw_addr)) {
++		*data = 1;
++		return -1;
++	}
++
++	*data = 0;
++
++	/* Hook up test interrupt handler just for this test */
++	if (adapter->msix_entries) {
++		if (request_irq(adapter->msix_entries[0].vector,
++				&igc_test_intr, 0, netdev->name, adapter)) {
++			*data = 1;
++			return -1;
++		}
++	} else if (adapter->flags & IGC_FLAG_HAS_MSI) {
++		shared_int = false;
++		if (request_irq(irq,
++				igc_test_intr, 0, netdev->name, adapter)) {
++			*data = 1;
++			return -1;
++		}
++	} else if (!request_irq(irq, igc_test_intr, IRQF_PROBE_SHARED,
++				netdev->name, adapter)) {
++		shared_int = false;
++	} else if (request_irq(irq, &igc_test_intr, IRQF_SHARED,
++		 netdev->name, adapter)) {
++		*data = 1;
++		return -1;
++	}
++	dev_info(&adapter->pdev->dev, "testing %s interrupt\n",
++		 (shared_int ? "shared" : "unshared"));
++
++	/* Disable all the interrupts */
++	wr32(IGC_IMC, ~0);
++	wrfl();
++	usleep_range(10000, 20000);
++
++	/* Define all writable bits for ICS */
++	ics_mask = 0x77DCFED5;
++
++	/* Test each interrupt */
++	for (; i < 31; i++) {
++		/* Interrupt to test */
++		mask = BIT(i);
++
++		if (!(mask & ics_mask))
++			continue;
++
++		if (!shared_int) {
++			/* Disable the interrupt to be reported in
++			 * the cause register and then force the same
++			 * interrupt and see if one gets posted.  If
++			 * an interrupt was posted to the bus, the
++			 * test failed.
++			 */
++			adapter->test_icr = 0;
++
++			/* Flush any pending interrupts */
++			wr32(IGC_ICR, ~0);
++
++			wr32(IGC_IMC, mask);
++			wr32(IGC_ICS, mask);
++			wrfl();
++			usleep_range(10000, 20000);
++
++			if (adapter->test_icr & mask) {
++				*data = 3;
++				break;
++			}
++		}
++
++		/* Enable the interrupt to be reported in
++		 * the cause register and then force the same
++		 * interrupt and see if one gets posted.  If
++		 * an interrupt was not posted to the bus, the
++		 * test failed.
++		 */
++		adapter->test_icr = 0;
++
++		/* Flush any pending interrupts */
++		wr32(IGC_ICR, ~0);
++
++		wr32(IGC_IMS, mask);
++		wr32(IGC_ICS, mask);
++		wrfl();
++		usleep_range(10000, 20000);
++
++		if (!(adapter->test_icr & mask)) {
++			*data = 4;
++			break;
++		}
++
++		if (!shared_int) {
++			/* Disable the other interrupts to be reported in
++			 * the cause register and then force the other
++			 * interrupts and see if any get posted.  If
++			 * an interrupt was posted to the bus, the
++			 * test failed.
++			 */
++			adapter->test_icr = 0;
++
++			/* Flush any pending interrupts */
++			wr32(IGC_ICR, ~0);
++
++			wr32(IGC_IMC, ~mask);
++			wr32(IGC_ICS, ~mask);
++			wrfl();
++			usleep_range(10000, 20000);
++
++			if (adapter->test_icr & mask) {
++				*data = 5;
++				break;
++			}
++		}
++	}
++
++	/* Disable all the interrupts */
++	wr32(IGC_IMC, ~0);
++	wrfl();
++	usleep_range(10000, 20000);
++
++	/* Unhook test interrupt handler */
++	if (adapter->msix_entries)
++		free_irq(adapter->msix_entries[0].vector, adapter);
++	else
++		free_irq(irq, adapter);
++
++	return *data;
++}
++
++u64 igc_link_test(struct igc_adapter *adapter, u64 *data)
++{
++	bool link_up = false;
++
++	if (IGC_REMOVED(adapter->hw.hw_addr)) {
++		*data = 1;
++		return 1;
++	}
++	*data = 0;
++
++	/* add delay to give enough time for autonegotioation to finish */
++	if (adapter->hw.mac.autoneg)
++		ssleep(5);
++
++	link_up = igc_has_link(adapter);
++	if (!link_up)
++		*data = 1;
++
++	return *data;
++}
+diff --git a/drivers/net/ethernet/intel/igc/igc_diag.h b/drivers/net/ethernet/intel/igc/igc_diag.h
+new file mode 100644
+index 000000000000..8a2ec9f7b338
+--- /dev/null
++++ b/drivers/net/ethernet/intel/igc/igc_diag.h
+@@ -0,0 +1,31 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/* Copyright (c)  2018 Intel Corporation */
++
++bool igc_reg_test(struct igc_adapter *adapter, u64 *data);
++bool igc_eeprom_test(struct igc_adapter *adapter, u64 *data);
++int igc_intr_test(struct igc_adapter *adapter, u64 *data);
++u64 igc_link_test(struct igc_adapter *adapter, u64 *data);
++
++struct igc_reg_test {
++	u16 reg;
++	u8 array_len;
++	u8 test_type;
++	u32 mask;
++	u32 write;
++};
++
++/* In the hardware, registers are laid out either singly, in arrays
++ * spaced 0x40 bytes apart, or in contiguous tables.  We assume
++ * most tests take place on arrays or single registers (handled
++ * as a single-element array) and special-case the tables.
++ * Table tests are always pattern tests.
++ *
++ * We also make provision for some required setup steps by specifying
++ * registers to be written without any read-back testing.
++ */
++
++#define PATTERN_TEST	1
++#define SET_READ_TEST	2
++#define TABLE32_TEST	3
++#define TABLE64_TEST_LO	4
++#define TABLE64_TEST_HI	5
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index ff2a40496e4e..925f0979506e 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -6,6 +6,7 @@
+ #include <linux/pm_runtime.h>
+ 
+ #include "igc.h"
++#include "igc_diag.h"
+ 
+ /* forward declaration */
+ struct igc_stats {
+@@ -1902,6 +1903,85 @@ static int igc_set_link_ksettings(struct net_device *netdev,
+ 	return 0;
+ }
+ 
++static void igc_diag_test(struct net_device *netdev,
++			  struct ethtool_test *eth_test, u64 *data)
++{
++	struct igc_adapter *adapter = netdev_priv(netdev);
++	bool if_running = netif_running(netdev);
++
++	if (IGC_REMOVED(adapter->hw.hw_addr)) {
++		dev_err(&adapter->pdev->dev,
++			"Adapter removed - test blocked\n");
++		data[0] = 1;
++		data[1] = 1;
++		data[2] = 1;
++		data[3] = 1;
++		data[4] = 1;
++		eth_test->flags |= ETH_TEST_FL_FAILED;
++		return;
++	}
++	set_bit(__IGC_TESTING, &adapter->state);
++	if (eth_test->flags == ETH_TEST_FL_OFFLINE) {
++		/* Offline tests */
++		dev_info(&adapter->pdev->dev,
++			 "offline testing starting\n");
++
++		/* Link test performed before hardware reset so autoneg doesn't
++		 * interfere with test result
++		 */
++		if (igc_link_test(adapter, &data[4]))
++			eth_test->flags |= ETH_TEST_FL_FAILED;
++
++		if (if_running)
++			/* indicate we're in test mode */
++			igc_close(netdev);
++		else
++			igc_reset(adapter);
++
++		dev_info(&adapter->pdev->dev,
++			 "register testing starting\n");
++		if (igc_reg_test(adapter, &data[0]))
++			eth_test->flags |= ETH_TEST_FL_FAILED;
++
++		igc_reset(adapter);
++
++		dev_info(&adapter->pdev->dev,
++			 "eeprom testing starting\n");
++		if (igc_eeprom_test(adapter, &data[1]))
++			eth_test->flags |= ETH_TEST_FL_FAILED;
++
++		igc_reset(adapter);
++
++		dev_info(&adapter->pdev->dev,
++			 "interrupt testing starting\n");
++		if (igc_eeprom_test(adapter, &data[2]))
++			eth_test->flags |= ETH_TEST_FL_FAILED;
++
++		igc_reset(adapter);
++
++		/* loopback test will be implemented in the future */
++		data[3] = 0;
++
++		clear_bit(__IGC_TESTING, &adapter->state);
++		if (if_running)
++			igc_open(netdev);
++	} else {
++		dev_info(&adapter->pdev->dev,
++			 "online testing starting\n");
++
++		/* register, eeprom, intr and loopback tests not run online */
++		data[0] = 0;
++		data[1] = 0;
++		data[2] = 0;
++		data[3] = 0;
++
++		if (igc_link_test(adapter, &data[4]))
++			eth_test->flags |= ETH_TEST_FL_FAILED;
++	}
++
++	msleep_interruptible(4 * 1000);
++}
++
+ static const struct ethtool_ops igc_ethtool_ops = {
+ 	.supported_coalesce_params = ETHTOOL_COALESCE_USECS,
+ 	.get_drvinfo		= igc_get_drvinfo,
+@@ -1939,6 +2019,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
+ 	.complete		= igc_ethtool_complete,
+ 	.get_link_ksettings	= igc_get_link_ksettings,
+ 	.set_link_ksettings	= igc_set_link_ksettings,
++	.self_test		= igc_diag_test,
+ };
+ 
+ void igc_set_ethtool_ops(struct net_device *netdev)
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 1b8023f69f28..a964ef18ac0c 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4449,7 +4449,7 @@ static int __igc_open(struct net_device *netdev, bool resuming)
+ 	return err;
+ }
+ 
+-static int igc_open(struct net_device *netdev)
++int igc_open(struct net_device *netdev)
+ {
+ 	return __igc_open(netdev, false);
+ }
+@@ -4491,7 +4491,7 @@ static int __igc_close(struct net_device *netdev, bool suspending)
+ 	return 0;
+ }
+ 
+-static int igc_close(struct net_device *netdev)
++int igc_close(struct net_device *netdev)
+ {
+ 	if (netif_device_present(netdev) || netdev->dismantle)
+ 		return __igc_close(netdev, false);
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index 96dee3c1a5f7..7bfba20bf207 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -119,6 +119,7 @@
+ #define IGC_RLPML		0x05004  /* Rx Long Packet Max Length */
+ #define IGC_RFCTL		0x05008  /* Receive Filter Control*/
+ #define IGC_MTA			0x05200  /* Multicast Table Array - RW Array */
++#define IGC_RA	0x05400  /* Receive Address - RW Array */
+ #define IGC_UTA			0x0A000  /* Unicast Table Array - RW */
+ #define IGC_RAL(_n)		(0x05400 + ((_n) * 0x08))
+ #define IGC_RAH(_n)		(0x05404 + ((_n) * 0x08))
+-- 
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
