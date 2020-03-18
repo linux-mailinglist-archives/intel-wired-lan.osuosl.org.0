@@ -1,83 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB803189449
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2020 04:12:35 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CC67189569
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2020 06:40:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2F935880F6;
-	Wed, 18 Mar 2020 03:12:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1D003860EA;
+	Wed, 18 Mar 2020 05:40:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aRpoAGb74aS6; Wed, 18 Mar 2020 03:12:34 +0000 (UTC)
+	with ESMTP id vu1FwgrgmqRZ; Wed, 18 Mar 2020 05:40:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1E9E188538;
-	Wed, 18 Mar 2020 03:12:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3D142860FF;
+	Wed, 18 Mar 2020 05:40:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AC74A1BF999
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 03:12:31 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 86E681BF857
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 05:40:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 79F0825CA8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 03:12:31 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7C826878F1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 05:40:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y7ABHm0qR3jf for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2020 03:12:30 +0000 (UTC)
+ with ESMTP id lGbFyLthb8Rx for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Mar 2020 05:40:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id 3BE8925C57
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 03:12:30 +0000 (UTC)
-Received: from mail-pf1-f198.google.com ([209.85.210.198])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>) id 1jEP87-0001ZJ-Je
- for intel-wired-lan@lists.osuosl.org; Wed, 18 Mar 2020 03:12:27 +0000
-Received: by mail-pf1-f198.google.com with SMTP id h191so17170731pfe.14
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Mar 2020 20:12:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=l4/jByA516A4vfF7JREpMzwgrcL+J3njPTKVNvxHohw=;
- b=jDahkV6CzvBH3LhCAA3b0ZZveDmSUYIUfoMkSBXfBXKwUAdMBKk2A9hq9e3bbzPKKT
- 7CAKZ/x1gINHAqu8kEISYNMaO3uUQTyiIf6cLYwdOWmD8/v4nuer26vQRi94CNRMP3fq
- +C0+nYv4LN1r3QZ5R+nk4RIY/l9uoTit8riXA26rIUIUmTRmx2pkno88P8RPcchM/PlX
- sRkzk9/PJF6v3X0u38jdDnKhoMpT4ZXqEMzSOrQoSUJNU/lZ4z2OWGe+e7POIhZDh7Li
- kZ5tsBNoDVVFjw59qJFYiru7lUnNVQ5koVkntTTqCYeXMLta8yct5Jc5BcoeUDXIxOLs
- l6CQ==
-X-Gm-Message-State: ANhLgQ2TmlbuLDq/Eqd0zOzaH5Vr5XgJhHVB53KNqwJJbp8sBV5Dvd0h
- abskVgy//on66RZVfpEVG9sFu+705u+H9W3wVQB7iPuIawjpWJ3dfVMTfdp32uN2cLdHnEM1A2w
- eDI0h8l1Cp2s5leG727OZpsNO1sGRvXW0H+dSVDCsP7NU2+M=
-X-Received: by 2002:a17:90a:bd0e:: with SMTP id
- y14mr2461263pjr.11.1584501146087; 
- Tue, 17 Mar 2020 20:12:26 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vsaXhjDz+kND+n7xIPp/XLdb739bZj6nzrn/FQ+Fl9xpK24upx/ZpRP7mrdhIAe5YDbshnXLA==
-X-Received: by 2002:a17:90a:bd0e:: with SMTP id
- y14mr2461230pjr.11.1584501145677; 
- Tue, 17 Mar 2020 20:12:25 -0700 (PDT)
-Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
- [220.133.187.190])
- by smtp.gmail.com with ESMTPSA id i124sm4360676pfg.14.2020.03.17.20.12.21
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 17 Mar 2020 20:12:25 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3608.60.0.2.5\))
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <540fd2d3-9187-1dba-185a-58d94c4c5b69@intel.com>
-Date: Wed, 18 Mar 2020 11:12:20 +0800
-Message-Id: <BA29B851-8765-4F47-AC98-E2D604595EA6@canonical.com>
-References: <0A7D1E37-88A4-4E5A-8522-B80A8AE679EE@canonical.com>
- <8c0032bd-15be-734b-1b52-dedba72a8da3@intel.com>
- <897C8B9E-839A-4FC1-9411-B3CB141890BC@canonical.com>
- <540fd2d3-9187-1dba-185a-58d94c4c5b69@intel.com>
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7031C878E5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 05:40:53 +0000 (UTC)
+IronPort-SDR: GGXSegXvPtwvDVUAmCHvU0YHTCOiGpwHZjUS2B5z48MJWU7yVjeQJ+M/p4JvorCyP0j/28lSpV
+ Kw9JrGLsuFfg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Mar 2020 22:40:52 -0700
+IronPort-SDR: 0iQ50qFdkIg44ysNjheZoPXYbizy8+P+U+1g1c/CgCitJgoRWhbcw8xBVhOd/Q6yAcRgJ5ebyq
+ KubTopS8lfUQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,566,1574150400"; d="scan'208";a="236547399"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 17 Mar 2020 22:40:51 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jERRi-00007e-P3; Wed, 18 Mar 2020 13:40:50 +0800
+Date: Wed, 18 Mar 2020 13:40:14 +0800
+From: kbuild test robot <lkp@intel.com>
 To: Vitaly Lifshits <vitaly.lifshits@intel.com>
-X-Mailer: Apple Mail (2.3608.60.0.2.5)
-Subject: Re: [Intel-wired-lan] [Regression] "e1000e: Add support for S0ix"
- breaks s2idle on Lenovo X1 Carbon 7th
+Message-ID: <202003181310.IqYz3010%lkp@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 49/49]
+ drivers/net/ethernet/intel/igc/igc_diag.c:119:9-10: WARNING: return of 0/1
+ in function 'igc_reg_test' with return type bool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,51 +69,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jason Yen <jason.yen@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Anthony Wong <anthony.wong@canonical.com>
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, kbuild-all@lists.01.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vitaly,
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
+head:   a6017405fcd0cda0cd9f35b34cae92400cf9e3e3
+commit: a6017405fcd0cda0cd9f35b34cae92400cf9e3e3 [49/49] igc: add support to interrupt, eeprom, registers and link self-tests
 
-> On Mar 17, 2020, at 22:39, Vitaly Lifshits <vitaly.lifshits@intel.com> wrote:
-> 
-> On 3/17/2020 16:04, Kai-Heng Feng wrote:
->>> On Mar 17, 2020, at 21:56, Neftin, Sasha <sasha.neftin@intel.com> wrote:
->>> 
->>> On 3/17/2020 15:34, Kai-Heng Feng wrote:
->>>> Hi,
->>>> Users reported that X1 Carbon 7th can only suspend once due of "e1000e 0000:00:1f.6 enp0s31f6: Hardware Error" [1] [2].
->>>> I managed to get one at hand and I can confirm the issue is 100% reproducible.
->>>> The error occurs at the first e1e_rphy() in e1000_copper_link_setup_82577() [3].
->>>> Reverting "e1000e: Add support for S0ix" makes suspend work again.
->>>> I also tried commit e1738282f6c6 "e1000e: fix S0ix flows for cable connected case" however the issue persists.
->>>> Kai-Heng
->>>> [1] https://bugs.launchpad.net/bugs/1865570
->>>> [2] https://bugs.launchpad.net/bugs/1866170
->>>> [3] https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git/tree/drivers/net/ethernet/intel/e1000e/phy.c?h=dev-queue&id=e1738282f6c6ad0ec56a15c4d5a3b657d90e4435#n630
->>> please, check of ME enabled on this system. try disable ME and re-run
->> I disabled "Intel AMT", issue is still reproducible.
->> Kai-Heng
-> Hi Kai,
-> 
-> Do you work with cable connected?
+If you fix the issue, kindly add following tag
+Reported-by: kbuild test robot <lkp@intel.com>
 
-No, ethernet cable is not plugged.
 
-> If so, please try to run this command:
-> sudo echo 3 > /sys/kernel/debug/pmc_core/ltr_ignore
+coccinelle warnings: (new ones prefixed by >>)
 
-Same issue after doing that.
+>> drivers/net/ethernet/intel/igc/igc_diag.c:119:9-10: WARNING: return of 0/1 in function 'igc_reg_test' with return type bool
 
-Though unlikely, can this be caused by the special design of X1 Carbon?
-To keep the laptop thin, it doesn't have a RJ45 port. Instead it has a special connecter which requires a RJ45 dongle to support ethernet.
-Maybe that's why the PHY part isn't working after suspend?
+Please review and possibly fold the followup patch.
 
-Kai-Heng
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
