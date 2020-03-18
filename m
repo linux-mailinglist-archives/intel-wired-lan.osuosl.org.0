@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E40CE18A8E3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2020 00:02:24 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDCD218A8E1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2020 00:02:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8DB7087D5A;
-	Wed, 18 Mar 2020 23:02:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8510F866E5;
+	Wed, 18 Mar 2020 23:02:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HUyHgmF4bw7S; Wed, 18 Mar 2020 23:02:20 +0000 (UTC)
+	with ESMTP id WlTCXd_xlXGu; Wed, 18 Mar 2020 23:02:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 849B487CB9;
-	Wed, 18 Mar 2020 23:02:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1BC838665F;
+	Wed, 18 Mar 2020 23:02:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CE5061BF335
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 23:02:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E778A1BF335
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 23:02:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C4B59203F3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 23:02:15 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E29042044A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 23:02:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WvRuM2a0YyCo for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id Xr-QoVEUO1fr for <intel-wired-lan@lists.osuosl.org>;
  Wed, 18 Mar 2020 23:02:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 6879120403
+ by silver.osuosl.org (Postfix) with ESMTPS id AE0E4203EE
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2020 23:02:11 +0000 (UTC)
-IronPort-SDR: I/17xcu9a/esMIXMktN3zIeuIlzHVngHh1eq5P/yfByh7BruJFB9Ch5jNG/IpeJ0hFaZHQA68r
- dWGFBrkyJiuA==
+IronPort-SDR: HRqL4UmIV2rLy/7Q5m99XcUCHKpU7GGgBDtnLWUqUj/gKZSv4zgCKT39OXqIk6tefmNLfJuK/V
+ vIT8A8nO8ihg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Mar 2020 16:02:10 -0700
-IronPort-SDR: KS5yX2NQ9Or9/l9iSOFK2rfKth4ScxRHS+Ax3oPQdS1DGizH9e3zyaW4lcDa1kiDz8tplWeLc3
- NbIekxNfzxZw==
+IronPort-SDR: E2Ugk9ivmcSk1Otmchxk5rlhecm7aABUstEro/0Eq35Qa8jLH0+oeFhCWRW0NY5V6A5dCTCGAs
+ Ko24/wevQKpg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,569,1574150400"; d="scan'208";a="248341788"
+X-IronPort-AV: E=Sophos;i="5.70,569,1574150400"; d="scan'208";a="248341790"
 Received: from ymtomada-mobl.amr.corp.intel.com ([10.251.21.179])
  by orsmga006.jf.intel.com with ESMTP; 18 Mar 2020 16:02:10 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 18 Mar 2020 16:00:59 -0700
-Message-Id: <20200318230102.36952-10-andre.guedes@intel.com>
+Date: Wed, 18 Mar 2020 16:01:00 -0700
+Message-Id: <20200318230102.36952-11-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200318230102.36952-1-andre.guedes@intel.com>
 References: <20200318230102.36952-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 09/12] igc: Remove
- igc_*_mac_steering_filter() wrappers
+Subject: [Intel-wired-lan] [PATCH 10/12] igc: Refactor
+ igc_mac_entry_can_be_used()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,129 +71,133 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-With the previous two patches, igc_add_mac_steering_filter() and
-igc_del_mac_steering_filter() became a pointless wrapper of
-igc_add_mac_filter() and igc_del_mac_filter().
+The helper igc_mac_entry_can_be_used() implementation is a bit
+convoluted since it does two different things: find a not-in-use slot
+in mac_table or find an in-use slot where the address and address type
+match. This patch does a code refactoring and break it up into two
+helper functions.
 
-This patch removes these wrappers and update callers to call
-igc_add_mac_filter() and igc_del_mac_filter() directly.
+With this patch we might traverse mac_table twice in some situations,
+but this is not harmful performance-wise (mac_table has only 16 entries
+and adding mac filters is not hot-path), and it improves igc_add_mac_
+filter() readability considerably.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  8 ++++----
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 20 ++++++++------------
- drivers/net/ethernet/intel/igc/igc_main.c    | 20 ++++----------------
- 3 files changed, 16 insertions(+), 32 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 80 +++++++++++++----------
+ 1 file changed, 47 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 192cef07bdf7..6c18c74a68fb 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -231,10 +231,10 @@ void igc_write_rss_indir_tbl(struct igc_adapter *adapter);
- bool igc_has_link(struct igc_adapter *adapter);
- void igc_reset(struct igc_adapter *adapter);
- int igc_set_spd_dplx(struct igc_adapter *adapter, u32 spd, u8 dplx);
--int igc_add_mac_steering_filter(struct igc_adapter *adapter,
--				const u8 *addr, u8 queue, u8 flags);
--int igc_del_mac_steering_filter(struct igc_adapter *adapter,
--				const u8 *addr, u8 queue, u8 flags);
-+int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
-+		       const s8 queue, const u8 flags);
-+int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
-+		       const u8 flags);
- void igc_update_stats(struct igc_adapter *adapter);
- 
- /* igc_dump declarations */
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 9ef133fe6e40..93608bd57c29 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1267,18 +1267,16 @@ int igc_add_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
- 	}
- 
- 	if (input->filter.match_flags & IGC_FILTER_FLAG_DST_MAC_ADDR) {
--		err = igc_add_mac_steering_filter(adapter,
--						  input->filter.dst_addr,
--						  input->action, 0);
-+		err = igc_add_mac_filter(adapter, input->filter.dst_addr,
-+					 input->action, 0);
- 		if (err)
- 			return err;
- 	}
- 
- 	if (input->filter.match_flags & IGC_FILTER_FLAG_SRC_MAC_ADDR) {
--		err = igc_add_mac_steering_filter(adapter,
--						  input->filter.src_addr,
--						  input->action,
--						  IGC_MAC_STATE_SRC_ADDR);
-+		err = igc_add_mac_filter(adapter, input->filter.src_addr,
-+					 input->action,
-+					 IGC_MAC_STATE_SRC_ADDR);
- 		if (err)
- 			return err;
- 	}
-@@ -1332,13 +1330,11 @@ int igc_erase_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
- 					   ntohs(input->filter.vlan_tci));
- 
- 	if (input->filter.match_flags & IGC_FILTER_FLAG_SRC_MAC_ADDR)
--		igc_del_mac_steering_filter(adapter, input->filter.src_addr,
--					    input->action,
--					    IGC_MAC_STATE_SRC_ADDR);
-+		igc_del_mac_filter(adapter, input->filter.src_addr,
-+				   IGC_MAC_STATE_SRC_ADDR);
- 
- 	if (input->filter.match_flags & IGC_FILTER_FLAG_DST_MAC_ADDR)
--		igc_del_mac_steering_filter(adapter, input->filter.dst_addr,
--					    input->action, 0);
-+		igc_del_mac_filter(adapter, input->filter.dst_addr, 0);
- 
- 	return 0;
- }
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 273817252823..25d0431f4f4a 100644
+index 25d0431f4f4a..0264e424bd07 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2210,8 +2210,8 @@ static bool igc_mac_entry_can_be_used(const struct igc_mac_addr *entry,
-  *
-  * In case of success, returns 0. Otherwise, it returns a negative errno code.
-   */
--static int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
--			      const s8 queue, const u8 flags)
-+int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
-+		       const s8 queue, const u8 flags)
- {
- 	struct igc_hw *hw = &adapter->hw;
- 	int rar_entries = hw->mac.rar_entry_count;
-@@ -2251,8 +2251,8 @@ static int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
-  *
-  * In case of success, returns 0. Otherwise, it returns a negative errno code.
-   */
--static int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
--			      const u8 flags)
-+int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
-+		       const u8 flags)
- {
- 	struct igc_hw *hw = &adapter->hw;
- 	int rar_entries = hw->mac.rar_entry_count;
-@@ -3736,18 +3736,6 @@ igc_features_check(struct sk_buff *skb, struct net_device *dev,
- 	return features;
+@@ -2177,25 +2177,44 @@ static void igc_nfc_filter_restore(struct igc_adapter *adapter)
+ 	spin_unlock(&adapter->nfc_lock);
  }
  
--int igc_add_mac_steering_filter(struct igc_adapter *adapter,
--				const u8 *addr, u8 queue, u8 flags)
--{
--	return igc_add_mac_filter(adapter, addr, queue, flags);
--}
--
--int igc_del_mac_steering_filter(struct igc_adapter *adapter,
--				const u8 *addr, u8 queue, u8 flags)
--{
--	return igc_del_mac_filter(adapter, addr, flags);
--}
--
- static void igc_tsync_interrupt(struct igc_adapter *adapter)
+-/* If the filter to be added and an already existing filter express
+- * the same address and address type, it should be possible to only
+- * override the other configurations, for example the queue to steer
+- * traffic.
+- */
+-static bool igc_mac_entry_can_be_used(const struct igc_mac_addr *entry,
+-				      const u8 *addr, const u8 flags)
++static int igc_find_mac_filter(struct igc_adapter *adapter, const u8 *addr,
++			       u8 flags)
  {
- 	struct igc_hw *hw = &adapter->hw;
+-	if (!(entry->state & IGC_MAC_STATE_IN_USE))
+-		return true;
++	int max_entries = adapter->hw.mac.rar_entry_count;
++	struct igc_mac_addr *entry;
++	int i;
+ 
+-	if ((entry->state & IGC_MAC_STATE_SRC_ADDR) !=
+-	    (flags & IGC_MAC_STATE_SRC_ADDR))
+-		return false;
++	for (i = 0; i < max_entries; i++) {
++		entry = &adapter->mac_table[i];
+ 
+-	if (!ether_addr_equal(addr, entry->addr))
+-		return false;
++		if (!(entry->state & IGC_MAC_STATE_IN_USE))
++			continue;
++		if (!ether_addr_equal(addr, entry->addr))
++			continue;
++		if ((entry->state & IGC_MAC_STATE_SRC_ADDR) !=
++		    (flags & IGC_MAC_STATE_SRC_ADDR))
++			continue;
+ 
+-	return true;
++		return i;
++	}
++
++	return -1;
++}
++
++static int igc_get_avail_mac_filter_slot(struct igc_adapter *adapter)
++{
++	int max_entries = adapter->hw.mac.rar_entry_count;
++	struct igc_mac_addr *entry;
++	int i;
++
++	for (i = 0; i < max_entries; i++) {
++		entry = &adapter->mac_table[i];
++
++		if (!(entry->state & IGC_MAC_STATE_IN_USE))
++			return i;
++	}
++
++	return -1;
+ }
+ 
+ /* Add MAC address filter to adapter.
+@@ -2213,33 +2232,28 @@ static bool igc_mac_entry_can_be_used(const struct igc_mac_addr *entry,
+ int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
+ 		       const s8 queue, const u8 flags)
+ {
+-	struct igc_hw *hw = &adapter->hw;
+-	int rar_entries = hw->mac.rar_entry_count;
+-	int i;
++	int index;
+ 
+ 	if (!is_valid_ether_addr(addr))
+ 		return -EINVAL;
+ 	if (flags & IGC_MAC_STATE_SRC_ADDR)
+ 		return -ENOTSUPP;
+ 
+-	/* Search for the first empty entry in the MAC table.
+-	 * Do not touch entries at the end of the table reserved for the VF MAC
+-	 * addresses.
+-	 */
+-	for (i = 0; i < rar_entries; i++) {
+-		if (!igc_mac_entry_can_be_used(&adapter->mac_table[i],
+-					       addr, flags))
+-			continue;
++	index = igc_find_mac_filter(adapter, addr, flags);
++	if (index >= 0)
++		goto update_queue_assignment;
+ 
+-		ether_addr_copy(adapter->mac_table[i].addr, addr);
+-		adapter->mac_table[i].queue = queue;
+-		adapter->mac_table[i].state |= IGC_MAC_STATE_IN_USE | flags;
++	index = igc_get_avail_mac_filter_slot(adapter);
++	if (index < 0)
++		return -ENOSPC;
+ 
+-		igc_set_mac_filter_hw(adapter, i, addr, queue);
+-		return 0;
+-	}
++	ether_addr_copy(adapter->mac_table[index].addr, addr);
++	adapter->mac_table[index].state |= IGC_MAC_STATE_IN_USE | flags;
++update_queue_assignment:
++	adapter->mac_table[index].queue = queue;
+ 
+-	return -ENOSPC;
++	igc_set_mac_filter_hw(adapter, index, addr, queue);
++	return 0;
+ }
+ 
+ /* Delete MAC address filter from adapter.
 -- 
 2.25.0
 
