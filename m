@@ -1,79 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19FB51919D3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2020 20:27:43 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A9A5191DF2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2020 01:17:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B939C87C30;
-	Tue, 24 Mar 2020 19:27:41 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8ACD1860DE;
+	Wed, 25 Mar 2020 00:17:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bfClm8MmmP7i; Wed, 25 Mar 2020 00:17:30 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 812F286672;
+	Wed, 25 Mar 2020 00:17:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 636CF1BF32A
+ for <intel-wired-lan@osuosl.org>; Wed, 25 Mar 2020 00:17:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 5F38F88217
+ for <intel-wired-lan@osuosl.org>; Wed, 25 Mar 2020 00:17:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5CCtRz9v3IrK; Tue, 24 Mar 2020 19:27:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0A3F687D91;
-	Tue, 24 Mar 2020 19:27:41 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EC4321BF2A2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2020 19:27:39 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E789988874
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2020 19:27:39 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cIMPNbMQvBsB for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Mar 2020 19:27:39 +0000 (UTC)
+ with ESMTP id ebmPJo7qxChn for <intel-wired-lan@osuosl.org>;
+ Wed, 25 Mar 2020 00:17:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4CC8488843
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2020 19:27:39 +0000 (UTC)
-IronPort-SDR: A2nbgtUtYI+ge4xaU2ULajkb1CgPCXPkQXUszz7gf50EyZaHJlE2Sv8jAelAM6BGj3ooswjGsK
- wCG91/I3QYew==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 040B488215
+ for <intel-wired-lan@osuosl.org>; Wed, 25 Mar 2020 00:17:26 +0000 (UTC)
+IronPort-SDR: T/T4mTbzqcjVDQR/yjFruzPpQIt3tMBnxLYhyknjuBdmlcFy3G6msplaEqgAvmdOmRBkNXBGqE
+ KioDeu8LJRzA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2020 12:27:38 -0700
-IronPort-SDR: iRWFmJeMildnnrvB/O+fEtpGg1DxbYrk7abG35Fv4YgxBzP8hR3Sl5IYH4UcA62OR+tuDFj7GD
- PocmhsAs78QQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,301,1580803200"; d="scan'208";a="420007836"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by orsmga005.jf.intel.com with ESMTP; 24 Mar 2020 12:27:36 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 24 Mar 2020 12:27:25 -0700
-Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 24 Mar 2020 12:27:24 -0700
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
- fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Tue, 24 Mar 2020 12:27:24 -0700
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S40 v2 4/15] ice: Add support for
- tunnel offloads
-Thread-Index: AQHV/iue7b6iXVC120iVfpT+LlVjoKhYJ6rQ
-Date: Tue, 24 Mar 2020 19:27:24 +0000
-Message-ID: <d3cb5854b8b54bd1a21ee871c11a72f7@intel.com>
-References: <20200319201718.66672-1-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200319201718.66672-1-anthony.l.nguyen@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.2.0.6
-x-originating-ip: [10.22.254.132]
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Mar 2020 17:17:26 -0700
+IronPort-SDR: BPagLBXLv4M29hMu8nJxfDtpFHcI4jJuTcxuX5wDfTHeh5ESGOnAogZDv6vVH7lKnRsXTSx3c+
+ wMtLue9/CMbg==
+X-IronPort-AV: E=Sophos;i="5.72,302,1580803200"; d="scan'208";a="420141263"
+Received: from johnorte-mobl2.amr.corp.intel.com (HELO localhost)
+ ([10.251.10.249])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Mar 2020 17:17:24 -0700
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH S40 v2 4/15] ice: Add support for
- tunnel offloads
+In-Reply-To: <20200322184909.19122-1-vitaly.lifshits@intel.com>
+References: <20200322184909.19122-1-vitaly.lifshits@intel.com>
+From: Andre Guedes <andre.guedes@linux.intel.com>
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>, intel-wired-lan@osuosl.org
+Date: Tue, 24 Mar 2020 17:17:21 -0700
+Message-ID: <158509544149.2475.17714180585378673278@johnorte-mobl2.amr.corp.intel.com>
+User-Agent: alot/0.9
+Subject: Re: [Intel-wired-lan] [PATCH v3] igc: add support to interrupt,
+ eeprom, registers and link self-tests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,46 +72,119 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi Vitaly,
 
+Quoting Vitaly Lifshits (2020-03-22 11:49:09)
+> Introduced igc_diag.c and igc_diag.h, these files have the
+> diagnostics functionality of igc driver. For the time being
+> these files are being used by ethtool self-test callbacks.
+> Which mean that interrupt, eeprom, registers and link self-tests for
+> ethtool were implemented.
+> 
+> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Reported-by: kbuild test robot <lkp@intel.com>
+> ---
+> v2: Fix return 0/1 to boolean value in igc_reg_test function
+> v3: Address community comments
 
------Original Message-----
-From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Tony Nguyen
-Sent: Thursday, March 19, 2020 1:17 PM
-To: intel-wired-lan@lists.osuosl.org
-Subject: [Intel-wired-lan] [PATCH S40 v2 4/15] ice: Add support for tunnel offloads
+When I run the offline tests, the interrupt test fails:
 
-Create a boost TCAM entry for each tunnel port in order to get a tunnel PTYPE. Update netdev feature flags and implement the appropriate logic to get and set values for hardware offloads.
+$ sudo ethtool -t enp2s0 offline
+The test result is FAIL
+The test extra info:
+Register test  (offline)         0
+Eeprom test    (offline)         0
+Interrupt test (offline)         4
+Loopback test  (offline)         0
+Link test   (on/offline)         0
 
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Henry Tieman <henry.w.tieman@intel.com>
----
-v2:
-- Add reference counting for same port additions
-- Removed parameter 'index' from ice_tunnel_port_in_use()
-- Change message level for exceeding max tunnel ports and tunnel not found to info
-- Redo description for ice_create_tunnel()
-- Removed unneccesary casts
----
- drivers/net/ethernet/intel/ice/ice.h          |   4 +
- drivers/net/ethernet/intel/ice/ice_common.c   |   2 +
- .../net/ethernet/intel/ice/ice_flex_pipe.c    | 530 +++++++++++++++++-
- .../net/ethernet/intel/ice/ice_flex_pipe.h    |   5 +
- .../net/ethernet/intel/ice/ice_flex_type.h    |  33 ++
- drivers/net/ethernet/intel/ice/ice_flow.c     |  36 +-
- drivers/net/ethernet/intel/ice/ice_flow.h     |   3 +
- .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |  25 +
- drivers/net/ethernet/intel/ice/ice_main.c     |  94 +++-
- .../ethernet/intel/ice/ice_protocol_type.h    |   1 +
- drivers/net/ethernet/intel/ice/ice_txrx.c     | 126 ++++-
- drivers/net/ethernet/intel/ice/ice_txrx.h     |   3 +
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  21 +-
- drivers/net/ethernet/intel/ice/ice_type.h     |   4 +
- 14 files changed, 873 insertions(+), 14 deletions(-)
+Is this expected?
 
+> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+> index 4823b8ead547..1685609cd15f 100644
+...
+> +enum igc_ethtool_test_id {
+> +       IGC_ETH_TEST_REG = 0,
+> +       IGC_ETH_TEST_EEPROM,
+> +       IGC_ETH_TEST_INTR,
+> +       IGC_ETH_TEST_LOOP,
+> +       IGC_ETH_TEST_LINK,
+> +};
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+I seems this enum is only used in igc_ethtool.c so how about we defined it
+there intead of in igc.h?
 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_diag.c b/drivers/net/ethernet/intel/igc/igc_diag.c
+> new file mode 100644
+> index 000000000000..56acc9b8447e
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/igc/igc_diag.c
+> @@ -0,0 +1,326 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (c)  2018 Intel Corporation */
 
+s/2018/2020/
+
+> diff --git a/drivers/net/ethernet/intel/igc/igc_diag.h b/drivers/net/ethernet/intel/igc/igc_diag.h
+> new file mode 100644
+> index 000000000000..aa5a474d9bb4
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/igc/igc_diag.h
+> @@ -0,0 +1,37 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/* Copyright (c)  2018 Intel Corporation */
+
+s/2018/2020/
+
+> +bool igc_reg_test(struct igc_adapter *adapter, u64 *data);
+> +bool igc_eeprom_test(struct igc_adapter *adapter, u64 *data);
+> +int igc_intr_test(struct igc_adapter *adapter, u64 *data);
+> +u64 igc_link_test(struct igc_adapter *adapter, u64 *data);
+
+These APIs return different types (bool, int, u64)? They all could return bool,
+making them more consistent and easier to read.
+
+> +struct igc_reg_test {
+> +       u16 reg;
+> +       u8 array_len;
+> +       u8 test_type;
+> +       u32 mask;
+> +       u32 write;
+> +};
+
+It seems this struct is used only in igc_diag.c, so how about we define it
+there instead of here?
+
+> +/* In the hardware, registers are laid out either singly, in arrays
+> + * spaced 0x40 bytes apart, or in contiguous tables.  We assume
+> + * most tests take place on arrays or single registers (handled
+> + * as a single-element array) and special-case the tables.
+> + * Table tests are always pattern tests.
+> + *
+> + * We also make provision for some required setup steps by specifying
+> + * registers to be written without any read-back testing.
+> + */
+> +
+> +#define PATTERN_TEST   1
+> +#define SET_READ_TEST  2
+> +#define TABLE32_TEST   3
+> +#define TABLE64_TEST_LO        4
+> +#define TABLE64_TEST_HI        5
+
+The comment above applies to these macros here as well.
+
+> +
+> +#define ETH_REG_TEST   0
+> +#define ETH_EEPROM_TEST        1
+> +#define ETH_INTR_TEST  2
+> +#define ETH_LOOP_TEST  3
+> +#define ETH_LINK_TEST  4
+
+None of the macros above are used in this patch.
+
+Regards,
+
+Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
