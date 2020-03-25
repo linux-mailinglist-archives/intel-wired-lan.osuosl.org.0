@@ -1,80 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB220192141
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2020 07:40:03 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4505E192148
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2020 07:43:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 933B486C22;
-	Wed, 25 Mar 2020 06:40:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D6E1723042;
+	Wed, 25 Mar 2020 06:43:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lkPjqXCK11Gm; Wed, 25 Mar 2020 06:40:02 +0000 (UTC)
+	with ESMTP id wgqMUoemlB7c; Wed, 25 Mar 2020 06:43:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C255686C37;
-	Wed, 25 Mar 2020 06:40:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D8C682535C;
+	Wed, 25 Mar 2020 06:43:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B70BC1BF5E6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 06:40:00 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E0D151BF5E6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 06:43:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id ABB0887C20
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 06:40:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DC2ED86C6A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 06:43:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5UV5ehbRjcEO for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Mar 2020 06:39:59 +0000 (UTC)
+ with ESMTP id RvvcXVIlOYEB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Mar 2020 06:43:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8500B8654D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 06:39:59 +0000 (UTC)
-Received: from mail-pj1-f71.google.com ([209.85.216.71])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>) id 1jGzhk-0007W3-P5
- for intel-wired-lan@lists.osuosl.org; Wed, 25 Mar 2020 06:39:57 +0000
-Received: by mail-pj1-f71.google.com with SMTP id v8so3373075pju.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2020 23:39:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=iWtwzKqHnxSyWlleZtW4ct9mSZDNGZzNr3hrg6PDj8Y=;
- b=YQ9IOjxXVr8MkqDWX1j5LbTD4qR1jtnMrwU8Nn0jJ0dUsfScY62ARiPoRKNbv3wCGj
- 2IC+9acGEyo8PXDKTtCEoUgXzuuLSE3dKdtDTIzLmAuWVzm9JDeKIKfCyRgz2ff1tcRL
- rt/oDj8XammRpvMKjJH+U9rfTIgaeq72x7hlhlUeVKJKL7XvgZZh7Hd9neGgEy+OX/Bz
- EUXvd9xbZn5ZfnXa/ajnvlU0uPlbm3rsRRyQybYtqDfZCdRIapL3VQO0SXlSy6gjuAhr
- K8up2IawE+zJ6qhwKZsG8MEOpMQtKRmXm9BbnZwUWztuhRAhZwF6AhDwhkUyd5D0xK0n
- bKsA==
-X-Gm-Message-State: ANhLgQ3XqN2tveDOMQerfZKhxiKqrvNj/TUYTYRNVuOzme5Fy9r5Erjl
- A8r+ITGq/i57RDT0nl4qaREjfc6DYXvpRvc2iuDPh1DFZf/twgPdypKPU8TSrOXm4vd1/USRMz+
- AmuDy2mjOnzuo99nW+wUSzK/R5kQUqKnPotRm/EberKTarX0=
-X-Received: by 2002:a17:90b:3653:: with SMTP id
- nh19mr149401pjb.154.1585118395361; 
- Tue, 24 Mar 2020 23:39:55 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vtDCyUBDVvdOTPlz+d8xy5xLrtQ01jfAkPuGHdyrUmuN5as73UJTMJivR3g7I3qrCzNEoprkQ==
-X-Received: by 2002:a17:90b:3653:: with SMTP id
- nh19mr149376pjb.154.1585118394965; 
- Tue, 24 Mar 2020 23:39:54 -0700 (PDT)
-Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
- [220.133.187.190])
- by smtp.gmail.com with ESMTPSA id e126sm17474185pfa.122.2020.03.24.23.39.52
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 24 Mar 2020 23:39:54 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3608.60.0.2.5\))
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <2c765c59-556e-266b-4d0d-a4602db94476@intel.com>
-Date: Wed, 25 Mar 2020 14:39:51 +0800
-Message-Id: <206441A5-70CF-4F34-93B2-90F4A846BF4E@canonical.com>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1090F86C22
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 06:43:04 +0000 (UTC)
+IronPort-SDR: Ero5DK9sbYkRT5sgu5brkIxtQOkDnqWgt1nw59pWzva/82u9aYm9CjrDkP46j5PJjaR864qeOi
+ kHjgUdxnzvBg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Mar 2020 23:43:03 -0700
+IronPort-SDR: 2mV35U+xgzl4jmo3HTIaf2P5n1oMkzKICgo+wd94ikwljKSXdhTZwZjopUXVQ5X9ZANYqDmzL9
+ ZI31VERRCdjQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,303,1580803200"; d="scan'208";a="446525271"
+Received: from kmsmsx156.gar.corp.intel.com ([172.21.138.133])
+ by fmsmga005.fm.intel.com with ESMTP; 24 Mar 2020 23:43:01 -0700
+Received: from pgsmsx109.gar.corp.intel.com (10.221.44.109) by
+ KMSMSX156.gar.corp.intel.com (172.21.138.133) with Microsoft SMTP Server
+ (TLS) id 14.3.439.0; Wed, 25 Mar 2020 14:43:00 +0800
+Received: from pgsmsx101.gar.corp.intel.com ([169.254.1.189]) by
+ PGSMSX109.gar.corp.intel.com ([169.254.14.132]) with mapi id 14.03.0439.000;
+ Wed, 25 Mar 2020 14:43:00 +0800
+From: "Tsai, Rex" <rex.tsai@intel.com>
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>, "Neftin, Sasha"
+ <sasha.neftin@intel.com>
+Thread-Topic: [PATCH] e1000e: bump up timeout to wait when ME un-configure
+ ULP mode
+Thread-Index: AQHWAm/CtyGz6kX6QUmdKAyk1jOQIqhYVWOAgACGtaA=
+Date: Wed, 25 Mar 2020 06:42:59 +0000
+Message-ID: <D83742F1B1819A43B1E71852F964BF245D7698AD@PGSMSX101.gar.corp.intel.com>
 References: <20200323191639.48826-1-aaron.ma@canonical.com>
  <EC4F7F0B-90F8-4325-B170-84C65D8BBBB8@canonical.com>
  <2c765c59-556e-266b-4d0d-a4602db94476@intel.com>
-To: "Neftin, Sasha" <sasha.neftin@intel.com>
-X-Mailer: Apple Mail (2.3608.60.0.2.5)
+ <206441A5-70CF-4F34-93B2-90F4A846BF4E@canonical.com>
+In-Reply-To: <206441A5-70CF-4F34-93B2-90F4A846BF4E@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [172.30.20.205]
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: bump up timeout to wait when
  ME un-configure ULP mode
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -92,12 +89,23 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
  open list <linux-kernel@vger.kernel.org>,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Aaron Ma <aaron.ma@canonical.com>, David Miller <davem@davemloft.net>,
- rex.tsai@intel.com
+ Aaron Ma <aaron.ma@canonical.com>, David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
+
+Hello Kai-Heng,
+If you are using vPro system, ME LAN driver is always alive and you have no way to disable it until you build new BIOS. Is this also for Lenovo system?
+
+Rex Tsai | Intel Client LAN Engineer | +1 (503) 264-0517
+
+-----Original Message-----
+From: Kai-Heng Feng <kai.heng.feng@canonical.com> 
+Sent: Tuesday, March 24, 2020 11:40 PM
+To: Neftin, Sasha <sasha.neftin@intel.com>
+Cc: Aaron Ma <aaron.ma@canonical.com>; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David Miller <davem@davemloft.net>; moderated list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>; open list:NETWORKING DRIVERS <netdev@vger.kernel.org>; open list <linux-kernel@vger.kernel.org>; Lifshits, Vitaly <vitaly.lifshits@intel.com>; Tsai, Rex <rex.tsai@intel.com>
+Subject: Re: [PATCH] e1000e: bump up timeout to wait when ME un-configure ULP mode
 
 Hi Sasha,
 
@@ -107,8 +115,8 @@ Hi Sasha,
 >> Hi Aaron,
 >>> On Mar 24, 2020, at 03:16, Aaron Ma <aaron.ma@canonical.com> wrote:
 >>> 
->>> ME takes 2+ seconds to un-configure ULP mode done after resume
->>> from s2idle on some ThinkPad laptops.
+>>> ME takes 2+ seconds to un-configure ULP mode done after resume from 
+>>> s2idle on some ThinkPad laptops.
 >>> Without enough wait, reset and re-init will fail with error.
 >> Thanks, this patch solves the issue. We can drop the DMI quirk in favor of this patch.
 >>> 
@@ -119,7 +127,8 @@ Hi Sasha,
 >>> drivers/net/ethernet/intel/e1000e/ich8lan.c | 4 ++--
 >>> 1 file changed, 2 insertions(+), 2 deletions(-)
 >>> 
->>> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+>>> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c 
+>>> b/drivers/net/ethernet/intel/e1000e/ich8lan.c
 >>> index b4135c50e905..147b15a2f8b3 100644
 >>> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
 >>> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
@@ -153,7 +162,7 @@ Kai-Heng
 > Meanwhile I prefer keep DMI quirk.
 > Thanks,
 > Sasha
->>> -- 
+>>> --
 >>> 2.17.1
 
 _______________________________________________
