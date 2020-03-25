@@ -1,81 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17CFB192462
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2020 10:42:46 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFFD9192A9B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2020 14:58:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B271E86C22;
-	Wed, 25 Mar 2020 09:42:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 251C7227FF;
+	Wed, 25 Mar 2020 13:58:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GRMR2FD-CrDn; Wed, 25 Mar 2020 09:42:44 +0000 (UTC)
+	with ESMTP id 1TB-S8vj89B0; Wed, 25 Mar 2020 13:58:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 71BFA86C4F;
-	Wed, 25 Mar 2020 09:42:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C7AE8220EC;
+	Wed, 25 Mar 2020 13:58:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C7DC11BF37C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 09:42:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2753A1BF33D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 13:58:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C01768872A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 09:42:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1DF7E8844E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 13:58:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fTeR0i8mwajt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Mar 2020 09:42:40 +0000 (UTC)
+ with ESMTP id AtOR121uCqxV for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Mar 2020 13:58:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9153B88728
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 09:42:40 +0000 (UTC)
-Received: from mail-pg1-f197.google.com ([209.85.215.197])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>) id 1jH2YY-0008WT-Au
- for intel-wired-lan@lists.osuosl.org; Wed, 25 Mar 2020 09:42:38 +0000
-Received: by mail-pg1-f197.google.com with SMTP id m25so1331928pgl.8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 02:42:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=WEm/Oq7JATNH4WpMbMOCRGSUs1m+s06ist0t7Zd6Gyc=;
- b=VO0z5EppiovBJ59NWfLGnrSMQEn8iq0z89xJ7x9vNKKmsoX8HPStbPjDCdbfk8Mc6j
- Y4mCOi52doihBQEM8y213XPtYNAlpxT9SXs+EiGoPMOMf5d8Yp9HnQxTbWng9R7USXNr
- k5ibfFuaY1AyNSr7KtgJSsRx+kIX865kvXj8NjgxlMvLxpWvfXmUJZ4ya4eWrgqoCsWf
- 3IsyoYZZcSJORN0fMy8I3RfgQ3tKDnFAGLBSsqt3bz9HbfSG5WGyTWqpN4vFCsq1YsZ0
- Lq/7NqUPJnIgHp31chvoEpl5FEzIeENRv0w+o1FdFZFYniuhT5DmQ48ltywllLzyMA6z
- 3ISw==
-X-Gm-Message-State: ANhLgQ2jmU4YOfCX5+Mo+qTrEF9Ah+frOdj7vmgbif+Oy1Gk7Pi32xJO
- 44ME3z6EFd7cVlRReBu2SQrEHrVvySliJ+ew8mZYXlQgj9qB7PNAl8S/R7fMEjZYEn/gexD3GGO
- oq7KxSGVaNHI7KTKq8GZd1g6o/WaDh1EaB7xI+iX2qwK06TY=
-X-Received: by 2002:a65:4544:: with SMTP id x4mr2187631pgr.388.1585129356916; 
- Wed, 25 Mar 2020 02:42:36 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vvj90gfcJU2r68Oskg+mmyv4M+UId2JeQ2EkaQMMLSubnjDUsbz8zp/Sd05+Pt1LoN+2fiWQQ==
-X-Received: by 2002:a65:4544:: with SMTP id x4mr2187604pgr.388.1585129356561; 
- Wed, 25 Mar 2020 02:42:36 -0700 (PDT)
-Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
- [220.133.187.190])
- by smtp.gmail.com with ESMTPSA id c1sm4168751pje.24.2020.03.25.02.42.34
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 25 Mar 2020 02:42:36 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 13.0 \(3608.60.0.2.5\))
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <309B89C4C689E141A5FF6A0C5FB2118B97224361@ORSMSX103.amr.corp.intel.com>
-Date: Wed, 25 Mar 2020 17:42:33 +0800
-Message-Id: <4A655203-7609-434C-9225-269A39AD5B35@canonical.com>
-References: <20200207101005.4454-1-kai.heng.feng@canonical.com>
- <309B89C4C689E141A5FF6A0C5FB2118B971F9210@ORSMSX103.amr.corp.intel.com>
- <3CA021B0-FEB8-4DAA-9CF2-224F305A8C8A@canonical.com>
- <309B89C4C689E141A5FF6A0C5FB2118B97224361@ORSMSX103.amr.corp.intel.com>
-To: "Brown, Aaron F" <aaron.f.brown@intel.com>
-X-Mailer: Apple Mail (2.3608.60.0.2.5)
-Subject: Re: [Intel-wired-lan] [PATCH v3 1/2] igb: Use device_lock() insead
- of rtnl_lock()
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D0DCC88431
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2020 13:58:22 +0000 (UTC)
+IronPort-SDR: ygbcrIZaImf5JOK9hFQS5GF3vAntu2Shwn+kjIgZK1LouxegMl1hVTY2rIB0JeutlQOivurCY0
+ AEB2JUlB3TVQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Mar 2020 06:58:22 -0700
+IronPort-SDR: o9zSkCT5hDK5XmHbZCnGADHqvotdopCLhW8E7HR5FuWibpPdWFbThBbapqlEXWRUKcXKKgDD7J
+ sbLcFc/fPbFA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,304,1580803200"; d="scan'208";a="235943153"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.214.229.188])
+ ([10.214.229.188])
+ by orsmga007.jf.intel.com with ESMTP; 25 Mar 2020 06:58:18 -0700
+To: Aaron Ma <aaron.ma@canonical.com>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>
+References: <20200323191639.48826-1-aaron.ma@canonical.com>
+ <EC4F7F0B-90F8-4325-B170-84C65D8BBBB8@canonical.com>
+ <2c765c59-556e-266b-4d0d-a4602db94476@intel.com>
+ <899895bc-fb88-a97d-a629-b514ceda296d@canonical.com>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <750ad0ad-816a-5896-de2f-7e034d2a2508@intel.com>
+Date: Wed, 25 Mar 2020 15:58:16 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
+MIME-Version: 1.0
+In-Reply-To: <899895bc-fb88-a97d-a629-b514ceda296d@canonical.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: bump up timeout to wait when
+ ME un-configure ULP mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,86 +73,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "mkubecek@suse.cz" <mkubecek@suse.cz>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
  open list <linux-kernel@vger.kernel.org>,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ David Miller <davem@davemloft.net>, rex.tsai@intel.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Aaron,
-
-> On Mar 20, 2020, at 15:00, Brown, Aaron F <aaron.f.brown@intel.com> wrote:
-> 
->> From: Kai-Heng Feng <kai.heng.feng@canonical.com>
->> Sent: Monday, February 24, 2020 3:02 AM
->> To: Brown, Aaron F <aaron.f.brown@intel.com>
->> Cc: davem@davemloft.net; mkubecek@suse.cz; Kirsher, Jeffrey T
->> <jeffrey.t.kirsher@intel.com>; open list:NETWORKING DRIVERS
->> <netdev@vger.kernel.org>; moderated list:INTEL ETHERNET DRIVERS <intel-
->> wired-lan@lists.osuosl.org>; open list <linux-kernel@vger.kernel.org>
->> Subject: Re: [Intel-wired-lan] [PATCH v3 1/2] igb: Use device_lock() insead of
->> rtnl_lock()
->> 
->> 
->> 
->>> On Feb 22, 2020, at 08:30, Brown, Aaron F <aaron.f.brown@intel.com> wrote:
->>> 
->>> 
->>> 
->>>> -----Original Message-----
->>>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->>>> Kai-Heng Feng
->>>> Sent: Friday, February 7, 2020 2:10 AM
->>>> To: davem@davemloft.net; mkubecek@suse.cz; Kirsher, Jeffrey T
->>>> <jeffrey.t.kirsher@intel.com>
->>>> Cc: open list:NETWORKING DRIVERS <netdev@vger.kernel.org>; Kai-Heng
->>>> Feng <kai.heng.feng@canonical.com>; moderated list:INTEL ETHERNET
->>>> DRIVERS <intel-wired-lan@lists.osuosl.org>; open list <linux-
->>>> kernel@vger.kernel.org>
->>>> Subject: [Intel-wired-lan] [PATCH v3 1/2] igb: Use device_lock() insead of
->>>> rtnl_lock()
->>>> 
->>>> Commit 9474933caf21 ("igb: close/suspend race in netif_device_detach")
->>>> fixed race condition between close and power management ops by using
->>>> rtnl_lock().
->>>> 
->>>> However we can achieve the same by using device_lock() since all power
->>>> management ops are protected by device_lock().
->>>> 
->>>> This fix is a preparation for next patch, to prevent a dead lock under
->>>> rtnl_lock() when calling runtime resume routine.
->>>> 
->>>> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
->>>> ---
->>>> v3:
->>>> - Fix unreleased lock reported by 0-day test bot.
->>>> v2:
->>>> - No change.
->>>> 
->>>> drivers/net/ethernet/intel/igb/igb_main.c | 14 ++++++++------
->>>> 1 file changed, 8 insertions(+), 6 deletions(-)
->>> 
->>> This patch introduces the following call trace / RIP when I sleep / resume (via
->> rtcwake) a system that has an igb port with link up:  I'm not sure if it introduces
->> the issue or just exposes / displays it as it only shows up on the first sleep /
->> resume cycle and the systems I have that were stable for many sleep / resume
->> cycles (arbitrarily 50+) continue to be so.
->> 
->> I can't reproduce the issue here.
->> 
-> 
-> I just got back to looking at the igb driver and  found a similar call trace / RIP with this patch.  Turns out any of my igb systems will freeze if the igb driver is unloaded while the interface is logically up with link.  The system continues to run if I switch to another console, but any attempt to look at the network (ifconfig, ethtool, etc...) makes that other session freeze up.  Then about 5 minutes later a trace appears on the screen and continues to do so every few minutes.  Here's what I pulled out of the system log for this instance:
-
-Yes I can reproduce the bug by removing the module while link is up.
-I am currently finding a fix for this issue.
-
-Kai-Heng
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMy8yNS8yMDIwIDA4OjQzLCBBYXJvbiBNYSB3cm90ZToKPiAKPiAKPiBPbiAzLzI1LzIwIDI6
+MzYgUE0sIE5lZnRpbiwgU2FzaGEgd3JvdGU6Cj4+IE9uIDMvMjUvMjAyMCAwNjoxNywgS2FpLUhl
+bmcgRmVuZyB3cm90ZToKPj4+IEhpIEFhcm9uLAo+Pj4KPj4+PiBPbiBNYXIgMjQsIDIwMjAsIGF0
+IDAzOjE2LCBBYXJvbiBNYSA8YWFyb24ubWFAY2Fub25pY2FsLmNvbT4gd3JvdGU6Cj4+Pj4KPj4+
+PiBNRSB0YWtlcyAyKyBzZWNvbmRzIHRvIHVuLWNvbmZpZ3VyZSBVTFAgbW9kZSBkb25lIGFmdGVy
+IHJlc3VtZQo+Pj4+IGZyb20gczJpZGxlIG9uIHNvbWUgVGhpbmtQYWQgbGFwdG9wcy4KPj4+PiBX
+aXRob3V0IGVub3VnaCB3YWl0LCByZXNldCBhbmQgcmUtaW5pdCB3aWxsIGZhaWwgd2l0aCBlcnJv
+ci4KPj4+Cj4+PiBUaGFua3MsIHRoaXMgcGF0Y2ggc29sdmVzIHRoZSBpc3N1ZS4gV2UgY2FuIGRy
+b3AgdGhlIERNSSBxdWlyayBpbgo+Pj4gZmF2b3Igb2YgdGhpcyBwYXRjaC4KPj4+Cj4+Pj4KPj4+
+PiBGaXhlczogZjE1YmI2ZGRlNzM4Y2M4ZmEwICgiZTEwMDBlOiBBZGQgc3VwcG9ydCBmb3IgUzBp
+eCIpCj4+Pj4gQnVnTGluazogaHR0cHM6Ly9idWdzLmxhdW5jaHBhZC5uZXQvYnVncy8xODY1NTcw
+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogQWFyb24gTWEgPGFhcm9uLm1hQGNhbm9uaWNhbC5jb20+Cj4+
+Pj4gLS0tCj4+Pj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2ljaDhsYW4uYyB8
+IDQgKystLQo+Pj4+IDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25z
+KC0pCj4+Pj4KPj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEw
+MDBlL2ljaDhsYW4uYwo+Pj4+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2lj
+aDhsYW4uYwo+Pj4+IGluZGV4IGI0MTM1YzUwZTkwNS4uMTQ3YjE1YTJmOGIzIDEwMDY0NAo+Pj4+
+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMKPj4+PiAr
+KysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jCj4+Pj4gQEAg
+LTEyNDAsOSArMTI0MCw5IEBAIHN0YXRpYyBzMzIgZTEwMDBfZGlzYWJsZV91bHBfbHB0X2xwKHN0
+cnVjdAo+Pj4+IGUxMDAwX2h3ICpodywgYm9vbCBmb3JjZSkKPj4+PiAgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoCBldzMyKEgyTUUsIG1hY19yZWcpOwo+Pj4+ICDCoMKgwqDCoMKgwqDCoCB9Cj4+Pj4K
+Pj4+PiAtwqDCoMKgwqDCoMKgwqAgLyogUG9sbCB1cCB0byAzMDBtc2VjIGZvciBNRSB0byBjbGVh
+ciBVTFBfQ0ZHX0RPTkUuICovCj4+Pj4gK8KgwqDCoMKgwqDCoMKgIC8qIFBvbGwgdXAgdG8gMi41
+c2VjIGZvciBNRSB0byBjbGVhciBVTFBfQ0ZHX0RPTkUuICovCj4+Pj4gIMKgwqDCoMKgwqDCoMKg
+IHdoaWxlIChlcjMyKEZXU00pICYgRTEwMDBfRldTTV9VTFBfQ0ZHX0RPTkUpIHsKPj4+PiAtwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAoaSsrID09IDMwKSB7Cj4+Pj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgaWYgKGkrKyA9PSAyNTApIHsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIHJldF92YWwgPSAtRTEwMDBfRVJSX1BIWTsKPj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIGdvdG8gb3V0Owo+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+
+Cj4+PiBUaGUgcmV0dXJuIHZhbHVlIHdhcyBub3QgY2F1Z2h0IGJ5IHRoZSBjYWxsZXIsIHNvIHRo
+ZSBlcnJvciBlbmRzIHVwCj4+PiB1bm5vdGljZWQuCj4+PiBNYXliZSBsZXQgdGhlIGNhbGxlciBj
+aGVjayB0aGUgcmV0dXJuIHZhbHVlIG9mCj4+PiBlMTAwMF9kaXNhYmxlX3VscF9scHRfbHAoKT8K
+Pj4+Cj4+PiBLYWktSGVuZwo+PiBIZWxsbyBLYWktSGVuZyBhbmQgQWFyb24sCj4+IEkgYSBiaXQg
+Y29uZnVzZWQuIEluIG91ciBwcmV2aW91cyBjb252ZXJzYXRpb24geW91IHRvbGQgTUUgbm90IHJ1
+bm5pbmcuCj4+IGxldCBtZSBzaGltbWluZyBpbi4gSW5jcmVhc2luZyBkZWxheSB3b24ndCBiZSBz
+b2x2ZSB0aGUgcHJvYmxlbSBhbmQganVzdAo+PiBtYXNrIGl0LiBXZSBuZWVkIHRvIHVuZGVyc3Rh
+bmQgd2h5IE1FIHRha2UgdG9vIG11Y2ggdGltZS4gV2hhdCBpcwo+PiBwcm9ibGVtIHdpdGggdGhp
+cyBzcGVjaWZpYyBzeXN0ZW0/Cj4+IFNvLCBiYXNpY2FsbHkgbm8gTUUgc3lzdGVtIHNob3VsZCB3
+b3JrcyBmb3IgeW91Lgo+IAo+IFNvbWUgbGFwdG9wcyBNRSB3b3JrIHRoYXQncyB3aHkgb25seSBy
+ZXByb2R1Y2UgaXNzdWUgb24gc29tZSBsYXB0b3BzLgo+IEluIHRoaXMgaXNzdWUgaTIxOSBpcyBj
+b250cm9sbGVkIGJ5IE1FLgo+IApXaG8gY2FuIGV4cGxhaW4gLSB3aHkgTUUgcmVxdWlyZWQgdG9v
+IG11Y2ggdGltZSBvbiB0aGlzIHN5c3RlbT8KUHJvYmFibHkgbmVlZCB3b3JrIHdpdGggTUUvQklP
+UyB2ZW5kb3IgYW5kIHVuZGVyc3RhbmQgaXQuCkRlbGF5IHdpbGwganVzdCBtYXNrIHRoZSByZWFs
+IHByb2JsZW0gLSB3ZSBuZWVkIHRvIGZpbmQgcm9vdCBjYXVzZS4KPiBRdWlyayBpcyBvbmx5IGZv
+ciAxIG1vZGVsIHR5cGUuIEJ1dCBpc3N1ZSBpcyByZXByb2R1Y2VkIGJ5IG1vcmUgbW9kZWxzLgo+
+IFNvIGl0IHdvbid0IHdvcmsuCj4gCj4gUmVnYXJkLAo+IEFhcm9uCj4gCj4+Cj4+IE1lYW53aGls
+ZSBJIHByZWZlciBrZWVwIERNSSBxdWlyay4KPj4gVGhhbmtzLAo+PiBTYXNoYQo+Pj4KPj4+PiAt
+LSAKPj4+PiAyLjE3LjEKPj4+Pgo+Pj4KPj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
+ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
+Zm8vaW50ZWwtd2lyZWQtbGFuCg==
