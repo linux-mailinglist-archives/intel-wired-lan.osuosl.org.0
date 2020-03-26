@@ -1,73 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A826194444
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Mar 2020 17:28:01 +0100 (CET)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FAC01944BE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Mar 2020 17:56:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 503A826291;
-	Thu, 26 Mar 2020 16:27:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 39C9888534;
+	Thu, 26 Mar 2020 16:56:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AbzFXQjM772p; Thu, 26 Mar 2020 16:27:58 +0000 (UTC)
+	with ESMTP id q2V8HiPVE0NE; Thu, 26 Mar 2020 16:56:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CD03C2153D;
-	Thu, 26 Mar 2020 16:27:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0FB41884FC;
+	Thu, 26 Mar 2020 16:56:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 43A091BF289
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 16:27:55 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 809771BF289
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 16:56:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 36C8E2042A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 16:27:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7C38E871C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 16:56:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BVu37b9hOYf1 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Mar 2020 16:27:54 +0000 (UTC)
+ with ESMTP id lFx5FK7Vk9hL for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Mar 2020 16:55:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by silver.osuosl.org (Postfix) with ESMTPS id 11E3720243
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 16:27:54 +0000 (UTC)
-Received: by mail-il1-f196.google.com with SMTP id e8so5900041ilc.13
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 09:27:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2MvgnsSQhFJOcyx9F2ihbJOXdLnu/MGIqeeUoB2SLbM=;
- b=O+HVkvBErHFx61kmKWqwDVr9mM9NwxkP5CgHZkz8KKBG51hrYlwuKP26qg84OHsxVB
- 0Csn9hEqw5zUtxAZ8hXbKJYonAGgMiW0oSwLVoWbnfKE7nmgDQTWRrmKkq0R3soBo1O6
- YA2xpd7O25TSRoBEZeQ7E95N53qbjw3fE5HCjUUKmtAeNikCAx8lmf4WzXJgNMiGFSJx
- c4+Rvjrk3GX2GNNId3q5hbOuLfTBkYt3mx/jzzQjOjWhqiNfneAMWR968ENRiKCvdJgC
- Lt4zrBYpUJM4uD/0sBT0Ucf0edmhAvR21jjC3t8qlxejtaMgYo1HetQF0xoeZiEQ/Df3
- Sgmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2MvgnsSQhFJOcyx9F2ihbJOXdLnu/MGIqeeUoB2SLbM=;
- b=gRbuGwQzJaD4PUY1VOuJkSBsH1NeW58I2GxL/knnBL4cibFct1S+Bz8Tfc81KHB+Vu
- dQDi3libWErsUWs+xGM37gECNP20Nsd5/d9cGGizQu3UEIHWDIrzcyTfy3H8tVXpygl7
- FokX6qxF3o3pJSiFt5Cxec6/HSTyG7XYFwCGD1UGYr72jI2Nf7Fe9iNMIi6hYDDQZKKz
- HeE0oEWQRszHaOvS9i0N0VN5ZYiZpS8nmD2oEqifpC+olQQd9IwjQn8VxtN360ajbn3W
- f8Sd6mDwsz83X3GfjpfPiMVWhOwbYoK4C1oIXOP4MecY1HPZamT6nCM1EFnfuPr4e5SU
- oXVQ==
-X-Gm-Message-State: ANhLgQ0IsgD4tFUTyORt+5U9oI7ToPm217qnagKWQ83HMp+zlc7PMfSt
- llls6Fs/lSzOTqG/ya1dNFUO7JTF+RNJvbhbEPM=
-X-Google-Smtp-Source: ADFU+vs3UUxKJvBojeAzB/v9NDT0zXbWaHLGTU3p4w5iPWYt+V3DgoqWyKdwP6CKCFaA8gpJqDpqts+2JawxmNNR4DE=
-X-Received: by 2002:a92:3955:: with SMTP id g82mr9646493ila.237.1585240073233; 
- Thu, 26 Mar 2020 09:27:53 -0700 (PDT)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 839D58719F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Mar 2020 16:55:59 +0000 (UTC)
+IronPort-SDR: bS5DF0RCQOGH27vMQU7LNjfLp5XQIL6X2SyXdMN6SOnm/6QTsnyL9rFDF/DFoaHkSN7TW/WgXS
+ qB2dNd/HaCQg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2020 09:55:58 -0700
+IronPort-SDR: LimB4TXCpQgKnLDGVsFWooB8Li8CDcZHAX13UuxiBDQtFV7PYSYwm4flIqOqdOvPjf4J/w8fVm
+ v5feMrGL/WUA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,309,1580803200"; d="scan'208";a="448695865"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 26 Mar 2020 09:55:57 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jHVnQ-00083q-Uu; Fri, 27 Mar 2020 00:55:56 +0800
+Date: Fri, 27 Mar 2020 00:55:28 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5e7cde80.hCC7HYWgSBPt/Voq%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-References: <20200326103926.20888-1-kai.heng.feng@canonical.com>
-In-Reply-To: <20200326103926.20888-1-kai.heng.feng@canonical.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 26 Mar 2020 09:27:42 -0700
-Message-ID: <CAKgT0UfFnXcSSsXvxk8+xiZvyzDh+8V-9bCT-z5U+MEVoAVKLw@mail.gmail.com>
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Use a sperate mutex insead of
- rtnl_lock()
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 900885e2380159cde38f7e4ac15204635cb3b437
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,92 +67,159 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- "David S. Miller" <davem@davemloft.net>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Mar 26, 2020 at 3:39 AM Kai-Heng Feng
-<kai.heng.feng@canonical.com> wrote:
->
-> Commit 9474933caf21 ("igb: close/suspend race in netif_device_detach")
-> fixed race condition between close and power management ops by using
-> rtnl_lock().
->
-> This fix is a preparation for next patch, to prevent a dead lock under
-> rtnl_lock() when calling runtime resume routine.
->
-> However, we can't use device_lock() in igb_close() because when module
-> is getting removed, the lock is already held for igb_remove(), and
-> igb_close() gets called during unregistering the netdev, hence causing a
-> deadlock. So let's introduce a new mutex so we don't cause a deadlock
-> with driver core or netdev core.
->
-> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 900885e2380159cde38f7e4ac15204635cb3b437  igc: Remove '\n' from log strings in igc_phy.c
 
-So this description doesn't make much sense to me. You describe the
-use of the device_lock() in igb_close() but it isn't used there. In
-addition it seems like you are arbitrarily moving code that was
-wrapped in the rtnl_lock out of it. I'm not entirely sure that is safe
-since there are calls within many of these functions that assume the
-rtnl_lock is held and changing that is likely going to introduce more
-issues.
+elapsed time: 1000m
 
+configs tested: 133
+configs skipped: 0
 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 19 +++++++++++++------
->  1 file changed, 13 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index b46bff8fe056..dc7ed5dd216b 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -288,6 +288,8 @@ static const struct igb_reg_info igb_reg_info_tbl[] = {
->         {}
->  };
->
-> +static DEFINE_MUTEX(igb_mutex);
-> +
->  /* igb_regdump - register printout routine */
->  static void igb_regdump(struct e1000_hw *hw, struct igb_reg_info *reginfo)
->  {
-> @@ -4026,9 +4028,14 @@ static int __igb_close(struct net_device *netdev, bool suspending)
->
->  int igb_close(struct net_device *netdev)
->  {
-> +       int err = 0;
-> +
-> +       mutex_lock(&igb_mutex);
->         if (netif_device_present(netdev) || netdev->dismantle)
-> -               return __igb_close(netdev, false);
-> -       return 0;
-> +               err = __igb_close(netdev, false);
-> +       mutex_unlock(&igb_mutex);
-> +
-> +       return err;
->  }
->
+arm64                            allyesconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm                              allmodconfig
+arm64                             allnoconfig
+arm                               allnoconfig
+arm                           efm32_defconfig
+arm                         at91_dt_defconfig
+arm                        shmobile_defconfig
+arm64                               defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                           sunxi_defconfig
+arm                        multi_v7_defconfig
+ia64                             allmodconfig
+m68k                          multi_defconfig
+i386                              allnoconfig
+i386                             alldefconfig
+i386                             allyesconfig
+i386                                defconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+ia64                             alldefconfig
+c6x                              allyesconfig
+c6x                        evmc6678_defconfig
+nios2                         10m50_defconfig
+nios2                         3c120_defconfig
+openrisc                    or1ksim_defconfig
+openrisc                 simple_smp_defconfig
+xtensa                       common_defconfig
+xtensa                          iss_defconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                                defconfig
+alpha                               defconfig
+h8300                       h8s-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                       m5475evb_defconfig
+m68k                             allmodconfig
+h8300                    h8300h-sim_defconfig
+m68k                           sun3_defconfig
+arc                                 defconfig
+arc                              allyesconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+microblaze                      mmu_defconfig
+microblaze                    nommu_defconfig
+powerpc                           allnoconfig
+mips                      fuloong2e_defconfig
+mips                      malta_kvm_defconfig
+parisc                            allnoconfig
+parisc                generic-64bit_defconfig
+parisc                generic-32bit_defconfig
+parisc                           allyesconfig
+x86_64               randconfig-a001-20200325
+x86_64               randconfig-a002-20200325
+x86_64               randconfig-a003-20200325
+i386                 randconfig-a001-20200325
+i386                 randconfig-a002-20200325
+i386                 randconfig-a003-20200325
+mips                 randconfig-a001-20200325
+nds32                randconfig-a001-20200325
+m68k                 randconfig-a001-20200325
+parisc               randconfig-a001-20200325
+alpha                randconfig-a001-20200325
+riscv                randconfig-a001-20200325
+c6x                  randconfig-a001-20200325
+h8300                randconfig-a001-20200325
+microblaze           randconfig-a001-20200325
+nios2                randconfig-a001-20200325
+sparc64              randconfig-a001-20200325
+c6x                  randconfig-a001-20200326
+h8300                randconfig-a001-20200326
+microblaze           randconfig-a001-20200326
+nios2                randconfig-a001-20200326
+sparc64              randconfig-a001-20200326
+s390                 randconfig-a001-20200325
+xtensa               randconfig-a001-20200325
+csky                 randconfig-a001-20200325
+openrisc             randconfig-a001-20200325
+sh                   randconfig-a001-20200325
+i386                 randconfig-f001-20200325
+i386                 randconfig-f003-20200325
+i386                 randconfig-f002-20200325
+x86_64               randconfig-f002-20200325
+x86_64               randconfig-f003-20200325
+x86_64               randconfig-f001-20200325
+i386                 randconfig-g003-20200326
+x86_64               randconfig-g002-20200326
+i386                 randconfig-g001-20200326
+i386                 randconfig-g002-20200326
+x86_64               randconfig-g001-20200326
+x86_64               randconfig-g003-20200326
+arm                  randconfig-a001-20200325
+arm64                randconfig-a001-20200325
+ia64                 randconfig-a001-20200325
+sparc                randconfig-a001-20200325
+arc                  randconfig-a001-20200325
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                            allyesconfig
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+s390                       zfcpdump_defconfig
+s390                          debug_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                             alldefconfig
+s390                                defconfig
+sh                          rsk7269_defconfig
+sh                               allmodconfig
+sh                            titan_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                              fedora-25
+x86_64                                  kexec
+x86_64                                    lkp
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                               rhel-7.6
 
-Okay, so I am guessing the problem has something to do with the
-addition of the netdev->dismantle test here and the fact that it is
-bypassing the present check for the hotplug remove case?
-
-So it looks like nobody ever really reviewed commit 888f22931478
-("igb: Free IRQs when device is hotplugged"). What I would recommend
-is reverting it and instead we fix the remaining pieces that need to
-be addressed in igb so it more closely matches what we have in e1000e
-after commit a7023819404a ("e1000e: Use rtnl_lock to prevent race
-conditions between net and pci/pm"). From what I can tell the only
-pieces that are really missing is to update igb_io_error_detected so
-that in addition to igb_down it will call igb_free_irq, and then in
-addition we should be wrapping most of the code in that function with
-an rtnl_lock since it is detaching a device and making modifications
-to it.
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
