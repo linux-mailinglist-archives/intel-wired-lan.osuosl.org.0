@@ -2,63 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8D7D197F6D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Mar 2020 17:20:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ACB98198847
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 01:29:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 62BFC863E1;
-	Mon, 30 Mar 2020 15:20:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5532B868BC;
+	Mon, 30 Mar 2020 23:29:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iwBwZQjnWDPi; Mon, 30 Mar 2020 15:20:05 +0000 (UTC)
+	with ESMTP id bpSrXr1NG24q; Mon, 30 Mar 2020 23:29:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4AC9A86190;
-	Mon, 30 Mar 2020 15:20:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 85057868BE;
+	Mon, 30 Mar 2020 23:29:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EF8781BF40E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Mar 2020 15:14:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C54D11BF329
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Mar 2020 23:29:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E85A985D92
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Mar 2020 15:14:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BBB0E868BB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Mar 2020 23:29:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VPvVULAbPmLD for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Mar 2020 15:13:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from www262.sakura.ne.jp (www262.sakura.ne.jp [202.181.97.72])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D52F385EA5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Mar 2020 15:13:37 +0000 (UTC)
-Received: from fsav305.sakura.ne.jp (fsav305.sakura.ne.jp [153.120.85.136])
- by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 02UFD7Hq079755;
- Tue, 31 Mar 2020 00:13:07 +0900 (JST)
- (envelope-from penguin-kernel@I-love.SAKURA.ne.jp)
-Received: from www262.sakura.ne.jp (202.181.97.72)
- by fsav305.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav305.sakura.ne.jp);
- Tue, 31 Mar 2020 00:13:07 +0900 (JST)
-X-Virus-Status: clean(F-Secure/fsigk_smtp/550/fsav305.sakura.ne.jp)
-Received: from [192.168.1.9] (M106072142033.v4.enabler.ne.jp [106.72.142.33])
- (authenticated bits=0)
- by www262.sakura.ne.jp (8.15.2/8.15.2) with ESMTPSA id 02UFD7n5079751
- (version=TLSv1.2 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
- Tue, 31 Mar 2020 00:13:07 +0900 (JST)
- (envelope-from penguin-kernel@I-love.SAKURA.ne.jp)
-To: syzbot <syzbot+89731ccb6fec15ce1c22@syzkaller.appspotmail.com>,
- casey@schaufler-ca.com
-References: <000000000000db448f05a212beea@google.com>
-From: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>
-Message-ID: <a293a766-4329-f6de-c8a9-1a5051217c45@I-love.SAKURA.ne.jp>
-Date: Tue, 31 Mar 2020 00:13:05 +0900
-User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
-MIME-Version: 1.0
-In-Reply-To: <000000000000db448f05a212beea@google.com>
+ with ESMTP id Wi6tsk-Hl8p3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Mar 2020 23:29:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 13D2B868B4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Mar 2020 23:29:31 +0000 (UTC)
+IronPort-SDR: Jkuk/xyNpTdbcYs3jbRGQOnRXe9ouX8jyQDaON8/gWl6Ue77iLKwsZ0pKah+45gz72xdTkgNQO
+ 0lTS8IAuZmdg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Mar 2020 16:29:30 -0700
+IronPort-SDR: 017WBPzhgR+rir9qRoBOKIxa0BXkd4YE/P8VF9FTuXBxTRHwU0XtxhykhtywkDlbQEdyuriCCY
+ 8JG6TjP/xB+Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,326,1580803200"; d="scan'208";a="267090052"
+Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
+ by orsmga002.jf.intel.com with ESMTP; 30 Mar 2020 16:29:30 -0700
+Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
+ ORSMSX110.amr.corp.intel.com ([169.254.10.144]) with mapi id 14.03.0439.000;
+ Mon, 30 Mar 2020 16:29:29 -0700
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: "Gomes, Vinicius" <vinicius.gomes@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [next-queue PATCH v3 1/2] igc: Add support
+ for taprio offloading
+Thread-Index: AQHV45GWH2Wd9xRfyUWRenIIXQRjvahiDo5w
+Date: Mon, 30 Mar 2020 23:29:29 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722CFA6@ORSMSX103.amr.corp.intel.com>
+References: <20200214235203.3910513-1-vinicius.gomes@intel.com>
+ <20200214235203.3910513-2-vinicius.gomes@intel.com>
+In-Reply-To: <20200214235203.3910513-2-vinicius.gomes@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-Mailman-Approved-At: Mon, 30 Mar 2020 15:20:03 +0000
-Subject: Re: [Intel-wired-lan] kernel panic: smack: Failed to initialize
- cipso DOI.
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.140]
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [next-queue PATCH v3 1/2] igc: Add support
+ for taprio offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,32 +81,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-security-module@vger.kernel.org, syzkaller-bugs@googlegroups.com,
- jmorris@namei.org, serge@hallyn.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2020/03/30 22:51, syzbot wrote:
-> Hello,
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Vinicius Costa Gomes
+> Sent: Friday, February 14, 2020 3:52 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [next-queue PATCH v3 1/2] igc: Add support for taprio
+> offloading
 > 
-> syzbot found the following crash on:
+> Adds support for translating taprio schedules into i225 cycles. This
+> will allow schedules to run in the hardware, making the schedules
+> enforcement more precise and saving CPU time.
 > 
-> HEAD commit:    1b649e0b Merge git://git.kernel.org/pub/scm/linux/kernel/g..
-> git tree:       upstream
-> console output: https://syzkaller.appspot.com/x/log.txt?x=14957099e00000
-> kernel config:  https://syzkaller.appspot.com/x/.config?x=4ac76c43beddbd9
-> dashboard link: https://syzkaller.appspot.com/bug?extid=89731ccb6fec15ce1c22
-> compiler:       clang version 10.0.0 (https://github.com/llvm/llvm-project/ c2443155a0fb245c8f17f2c1c72b6ea391e86e81)
-> syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=1202c375e00000
-> C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=1390bb03e00000
+> Right now, the only simple schedules are allowed, complex schedules are
+> rejected. "simple" in this context are schedules that each HW queue is
+> opened and closed only once in each cycle.
+> 
+> Changing schedules is still not supported as well.
+> 
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/Makefile      |   2 +-
+>  drivers/net/ethernet/intel/igc/igc.h         |   7 +
+>  drivers/net/ethernet/intel/igc/igc_defines.h |  12 ++
+>  drivers/net/ethernet/intel/igc/igc_main.c    | 113 +++++++++++++++
+>  drivers/net/ethernet/intel/igc/igc_regs.h    |  12 ++
+>  drivers/net/ethernet/intel/igc/igc_tsn.c     | 140 +++++++++++++++++++
+>  drivers/net/ethernet/intel/igc/igc_tsn.h     |   9 ++
+>  7 files changed, 294 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/net/ethernet/intel/igc/igc_tsn.c
+>  create mode 100644 drivers/net/ethernet/intel/igc/igc_tsn.h
+> 
 
-Wrong bisection. This is not a network / driver problem.
-There is a memory allocation fault injection prior to this panic.
-
-  [ T1576] FAULT_INJECTION: forcing a failure.
-  [ T1576] Kernel panic - not syncing: smack:  Failed to initialize cipso DOI.
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
