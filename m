@@ -2,65 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80583199F94
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 21:59:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 13BE8199F99
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 21:59:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 189A720456;
-	Tue, 31 Mar 2020 19:59:02 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C01FE20456;
+	Tue, 31 Mar 2020 19:59:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L6LC+GfwTaU4; Tue, 31 Mar 2020 19:59:01 +0000 (UTC)
+	with ESMTP id ExLzwt-PKm7x; Tue, 31 Mar 2020 19:59:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6D6602538B;
-	Tue, 31 Mar 2020 19:59:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5B6F6253A7;
+	Tue, 31 Mar 2020 19:59:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 127B51BF418
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 19:59:00 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 74AE01BF263
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 19:59:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 0EDE185CFF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 19:59:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7043987EB1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 19:59:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8kDmwL8hxp2k for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Mar 2020 19:58:59 +0000 (UTC)
+ with ESMTP id d1KmSB9Dmkk2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Mar 2020 19:59:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 444B885C63
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 19:58:59 +0000 (UTC)
-IronPort-SDR: 3wlPI92WP31rdepsP7l3VeQ635QtN6g6rerfUUcOddJePPVnxe0NNbwhgz/bfIvb5zVUZoaWnn
- BJUoRdBniUEA==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B670B87EB0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 19:59:21 +0000 (UTC)
+IronPort-SDR: WDy6ps5mLPMb5NGYRCRg9rqsIKcBc10PNt43/6cUXTuB/3IpXAOvyfRCImOk2RG1W6C2grK9p9
+ 6cHlNdBqMzhg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2020 12:58:58 -0700
-IronPort-SDR: cn+sijDT4TjWM6aZSK7I/aeg3RUs9yngw4ENE6WLwiQYY+oEe4DHWXDhkXITIcOF+aLqLB5Q8B
- iEZPG8poe5iw==
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2020 12:59:21 -0700
+IronPort-SDR: xwoOgmHJxDIL8rI6amophI+HRTuHiULsUe2bj8ohnrEXEjqU8gH17BSjzxA2nhfcNMAe3RDPAX
+ M3A/EBXPZEuQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,328,1580803200"; d="scan'208";a="242015987"
+X-IronPort-AV: E=Sophos;i="5.72,328,1580803200"; d="scan'208";a="242016118"
 Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
- by fmsmga008.fm.intel.com with ESMTP; 31 Mar 2020 12:58:58 -0700
-Received: from orsmsx123.amr.corp.intel.com (10.22.240.116) by
+ by fmsmga008.fm.intel.com with ESMTP; 31 Mar 2020 12:59:21 -0700
+Received: from orsmsx114.amr.corp.intel.com (10.22.240.10) by
  ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 31 Mar 2020 12:58:57 -0700
+ id 14.3.439.0; Tue, 31 Mar 2020 12:59:20 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
- ORSMSX123.amr.corp.intel.com ([169.254.1.39]) with mapi id 14.03.0439.000;
- Tue, 31 Mar 2020 12:58:57 -0700
+ ORSMSX114.amr.corp.intel.com ([169.254.8.205]) with mapi id 14.03.0439.000;
+ Tue, 31 Mar 2020 12:59:20 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: "Guedes, Andre" <andre.guedes@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
- igc_add_mac_filter()
-Thread-Index: AQHV/XlOME8QqLdOjUewpGBhmRMLHahjMpVQ
-Date: Tue, 31 Mar 2020 19:58:57 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722DD90@ORSMSX103.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 03/12] igc: Change
+ igc_add_mac_filter() returning value
+Thread-Index: AQHV/XlEvi7INC6QFUKKJm3L45ZQDqhjMrPA
+Date: Tue, 31 Mar 2020 19:59:20 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722DDA4@ORSMSX103.amr.corp.intel.com>
 References: <20200318230102.36952-1-andre.guedes@intel.com>
- <20200318230102.36952-3-andre.guedes@intel.com>
-In-Reply-To: <20200318230102.36952-3-andre.guedes@intel.com>
+ <20200318230102.36952-4-andre.guedes@intel.com>
+In-Reply-To: <20200318230102.36952-4-andre.guedes@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -70,8 +70,8 @@ dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
- igc_add_mac_filter()
+Subject: Re: [Intel-wired-lan] [PATCH 03/12] igc: Change
+ igc_add_mac_filter() returning value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,18 +93,25 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Andre Guedes
 > Sent: Wednesday, March 18, 2020 4:01 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
-> igc_add_mac_filter()
+> Subject: [Intel-wired-lan] [PATCH 03/12] igc: Change igc_add_mac_filter()
+> returning value
 > 
-> The IGC_MAC_STATE_SRC_ADDR flags is not supported by igc_add_mac_
-> filter() so this patch adds a check for it and returns -ENOTSUPP
-> in case it is set.
+> In case of success, igc_add_mac_filter() returns the index in
+> adapter->mac_table where the requested filter was added. This
+> information, however, is not used by any caller of that function.
+> In fact, callers have extra code just to handle this returning
+> index as 0 (success).
+> 
+> So this patch changes the function to return 0 on success instead,
+> and cleans up the extra code.
 > 
 > Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 --
+>  drivers/net/ethernet/intel/igc/igc_main.c    | 7 ++-----
+>  2 files changed, 2 insertions(+), 7 deletions(-)
 
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
