@@ -1,66 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7950319A044
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 22:57:42 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 039A919A058
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 22:59:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 320CB88773;
-	Tue, 31 Mar 2020 20:57:41 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7FAAE253A7;
+	Tue, 31 Mar 2020 20:59:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id js9qnD0bCCOh; Tue, 31 Mar 2020 20:57:41 +0000 (UTC)
+	with ESMTP id V7ca3azq8q6D; Tue, 31 Mar 2020 20:59:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D7CD68879B;
-	Tue, 31 Mar 2020 20:57:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2652F25351;
+	Tue, 31 Mar 2020 20:59:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D54DF1BF41E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:57:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D9041BF263
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:59:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id CF28A87EA6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:57:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6303E25067
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:59:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sArM3FhNHaU6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Mar 2020 20:57:38 +0000 (UTC)
+ with ESMTP id AoY-1ROArma1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Mar 2020 20:59:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5740487E3B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:57:38 +0000 (UTC)
-IronPort-SDR: g7B0O38b/8lhG/l5nY4RrPQKX6N2ZfqVVdxlUNaRZDivXMwBm5l0V4ri8CGVsr3DvgpdYqygkq
- xK/EeBA4Pf5g==
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 85B5420370
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:59:35 +0000 (UTC)
+IronPort-SDR: qN2Gq9R9IY9BQ5YlOQGJ2lRXv3HAs9SxaOn3OEHvoglK/3R3RtwViUH8/gQlxgfi/tpib5JwMP
+ pAXRudvcwgeA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2020 13:57:37 -0700
-IronPort-SDR: As85pYYehCfAR7VFy+yXcJPRtbNuCg8FEMjV7QgBbyuYT7f1QaOS1mY1/K7iPQJMEDnqJ5kkXm
- dpQNqK8Td3sw==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2020 13:59:34 -0700
+IronPort-SDR: HAi4Rsdligsk6Uc0XUmLPFo+zrcM0Lz2LIa5s/HwK1kR29FtTihHo9gNbSok2h2PgyNfUbVJ5V
+ 35AYuu0XinDw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,329,1580803200"; d="scan'208";a="422431668"
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by orsmga005.jf.intel.com with ESMTP; 31 Mar 2020 13:57:37 -0700
-Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 31 Mar 2020 13:57:37 -0700
+X-IronPort-AV: E=Sophos;i="5.72,329,1580803200"; d="scan'208";a="328204122"
+Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
+ by orsmga001.jf.intel.com with ESMTP; 31 Mar 2020 13:59:35 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
- ORSMSX153.amr.corp.intel.com ([169.254.12.24]) with mapi id 14.03.0439.000;
- Tue, 31 Mar 2020 13:57:37 -0700
+ ORSMSX105.amr.corp.intel.com ([169.254.2.72]) with mapi id 14.03.0439.000;
+ Tue, 31 Mar 2020 13:59:34 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Guedes, Andre" <andre.guedes@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 12/12] igc: Add debug messages to MAC
- filter code
-Thread-Index: AQHV/XlMpA7AWqM3NUqjdtDuwI+u+qhjQvqQ
-Date: Tue, 31 Mar 2020 20:57:36 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722DF14@ORSMSX103.amr.corp.intel.com>
+To: "Brown, Aaron F" <aaron.f.brown@intel.com>, "Guedes, Andre"
+ <andre.guedes@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
+ igc_add_mac_filter()
+Thread-Index: AQHV/XlOME8QqLdOjUewpGBhmRMLHahjMpVQgAAQ5yA=
+Date: Tue, 31 Mar 2020 20:59:34 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722DF36@ORSMSX103.amr.corp.intel.com>
 References: <20200318230102.36952-1-andre.guedes@intel.com>
- <20200318230102.36952-13-andre.guedes@intel.com>
-In-Reply-To: <20200318230102.36952-13-andre.guedes@intel.com>
+ <20200318230102.36952-3-andre.guedes@intel.com>
+ <309B89C4C689E141A5FF6A0C5FB2118B9722DD90@ORSMSX103.amr.corp.intel.com>
+In-Reply-To: <309B89C4C689E141A5FF6A0C5FB2118B9722DD90@ORSMSX103.amr.corp.intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -70,8 +69,8 @@ dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 12/12] igc: Add debug messages to MAC
- filter code
+Subject: Re: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
+ igc_add_mac_filter()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,20 +89,27 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Andre Guedes
-> Sent: Wednesday, March 18, 2020 4:01 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH 12/12] igc: Add debug messages to MAC filter
-> code
+> Brown, Aaron F
+> Sent: Tuesday, March 31, 2020 12:59 PM
+> To: Guedes, Andre <andre.guedes@intel.com>; intel-wired-lan@lists.osuosl.org
+> Subject: Re: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
+> igc_add_mac_filter()
 > 
-> This patch adds log messages to functions related to the MAC address
-> filtering code to ease debugging.
-> 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 24 +++++++++++++++++++++--
->  1 file changed, 22 insertions(+), 2 deletions(-)
-> 
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> > Andre Guedes
+> > Sent: Wednesday, March 18, 2020 4:01 PM
+> > To: intel-wired-lan@lists.osuosl.org
+> > Subject: [Intel-wired-lan] [PATCH 02/12] igc: Check unsupported flag in
+> > igc_add_mac_filter()
+> >
+> > The IGC_MAC_STATE_SRC_ADDR flags is not supported by igc_add_mac_
+> > filter() so this patch adds a check for it and returns -ENOTSUPP
+> > in case it is set.
+> >
+> > Signed-off-by: Andre Guedes <andre.guedes@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
+> >  1 file changed, 2 insertions(+)
 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
