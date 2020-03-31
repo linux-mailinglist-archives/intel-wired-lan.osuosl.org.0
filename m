@@ -1,66 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 159AD19A041
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 22:56:59 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44C4B19A042
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Mar 2020 22:57:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C2EB087EC7;
-	Tue, 31 Mar 2020 20:56:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EA3F086E51;
+	Tue, 31 Mar 2020 20:57:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FgdpsnM2P0uq; Tue, 31 Mar 2020 20:56:57 +0000 (UTC)
+	with ESMTP id Zwc6pop4vR0z; Tue, 31 Mar 2020 20:57:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F18C187EB0;
-	Tue, 31 Mar 2020 20:56:56 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7893D86E5C;
+	Tue, 31 Mar 2020 20:57:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 083F91BF41E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:56:55 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 795321BF41E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:57:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 04302888BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:56:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7599E87EA6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:57:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0lZxQoNcFDk6 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Mar 2020 20:56:53 +0000 (UTC)
+ with ESMTP id 2QT3Oh1w9WrT for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Mar 2020 20:57:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2BF50888B0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:56:53 +0000 (UTC)
-IronPort-SDR: QFcRK2GATJFOukbldj4Tat5gJljMtvH7Xh0wm2ozHQ13hDEQoKtXQ17arxKsJBvTGhhsHVbn5C
- B2crSNlivTww==
+ by whitealder.osuosl.org (Postfix) with ESMTPS id EDEDB87E3B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Mar 2020 20:57:13 +0000 (UTC)
+IronPort-SDR: kqRqRsKOskYoR0LdQdAByEjWEFq1JMjoJVkAayZAm0FHePQSw2IiN4vX9a5rtWi7cddGOpDGLj
+ vXlRpKuqjcfA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2020 13:56:52 -0700
-IronPort-SDR: 8PCPJbAXfL6mLCmd2PNYqqQ6Mq3rErN2EtSQ3CsmBH047fOkYQJFT2fsJJw+t0JRiEzQrTxE7N
- eS3cmXA8ikLQ==
+ 31 Mar 2020 13:57:13 -0700
+IronPort-SDR: emFZE4xtCr+XqTELitYGZrBZ4OGoA0qsysshuXrLNesms3TXzz0dvHvBEM/aCUgbrN26oXAIau
+ ua0otJ6LiyQQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,329,1580803200"; d="scan'208";a="448824530"
-Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
- by fmsmga005.fm.intel.com with ESMTP; 31 Mar 2020 13:56:52 -0700
-Received: from orsmsx113.amr.corp.intel.com (10.22.240.9) by
- ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 31 Mar 2020 13:56:51 -0700
+X-IronPort-AV: E=Sophos;i="5.72,329,1580803200"; d="scan'208";a="395670984"
+Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
+ by orsmga004.jf.intel.com with ESMTP; 31 Mar 2020 13:57:13 -0700
+Received: from orsmsx112.amr.corp.intel.com (10.22.240.13) by
+ ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 31 Mar 2020 13:57:13 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
- ORSMSX113.amr.corp.intel.com ([169.254.9.188]) with mapi id 14.03.0439.000;
- Tue, 31 Mar 2020 13:56:51 -0700
+ ORSMSX112.amr.corp.intel.com ([169.254.3.76]) with mapi id 14.03.0439.000;
+ Tue, 31 Mar 2020 13:57:12 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: "Guedes, Andre" <andre.guedes@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 10/12] igc: Refactor
- igc_mac_entry_can_be_used()
-Thread-Index: AQHV/XlPye8lfsPIzEeVba6EBuhle6hjQsgA
-Date: Tue, 31 Mar 2020 20:56:51 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722DEED@ORSMSX103.amr.corp.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 11/12] igc: Refactor
+ igc_del_mac_filter()
+Thread-Index: AQHV/XlLx1VesEBMvEG4xXpaqK5yuahjQuMQ
+Date: Tue, 31 Mar 2020 20:57:11 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722DF01@ORSMSX103.amr.corp.intel.com>
 References: <20200318230102.36952-1-andre.guedes@intel.com>
- <20200318230102.36952-11-andre.guedes@intel.com>
-In-Reply-To: <20200318230102.36952-11-andre.guedes@intel.com>
+ <20200318230102.36952-12-andre.guedes@intel.com>
+In-Reply-To: <20200318230102.36952-12-andre.guedes@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -70,8 +70,8 @@ dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 10/12] igc: Refactor
- igc_mac_entry_can_be_used()
+Subject: Re: [Intel-wired-lan] [PATCH 11/12] igc: Refactor
+ igc_del_mac_filter()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,24 +93,16 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Andre Guedes
 > Sent: Wednesday, March 18, 2020 4:01 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH 10/12] igc: Refactor
-> igc_mac_entry_can_be_used()
+> Subject: [Intel-wired-lan] [PATCH 11/12] igc: Refactor igc_del_mac_filter()
 > 
-> The helper igc_mac_entry_can_be_used() implementation is a bit
-> convoluted since it does two different things: find a not-in-use slot
-> in mac_table or find an in-use slot where the address and address type
-> match. This patch does a code refactoring and break it up into two
-> helper functions.
-> 
-> With this patch we might traverse mac_table twice in some situations,
-> but this is not harmful performance-wise (mac_table has only 16 entries
-> and adding mac filters is not hot-path), and it improves igc_add_mac_
-> filter() readability considerably.
+> This patch does a code refactoring in igc_del_mac_filter() so it uses
+> the new helper igc_find_mac_filter() and improves the comment about the
+> special handling when deleting the default filter.
 > 
 > Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 80 +++++++++++++----------
->  1 file changed, 47 insertions(+), 33 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc_main.c | 45 ++++++++++-------------
+>  1 file changed, 19 insertions(+), 26 deletions(-)
 > 
 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
