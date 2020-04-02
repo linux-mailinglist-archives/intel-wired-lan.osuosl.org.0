@@ -1,74 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CBA319BAC5
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Apr 2020 05:52:34 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9A6119BB8D
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Apr 2020 08:16:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B763387E97;
-	Thu,  2 Apr 2020 03:52:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 61D9020425;
+	Thu,  2 Apr 2020 06:16:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k9AK-MmbLkeY; Thu,  2 Apr 2020 06:16:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 281922040B;
+	Thu,  2 Apr 2020 06:16:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 385861BF405
+ for <intel-wired-lan@osuosl.org>; Thu,  2 Apr 2020 06:16:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 30A8388185
+ for <intel-wired-lan@osuosl.org>; Thu,  2 Apr 2020 06:16:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1EQPoc0LCjvD; Thu,  2 Apr 2020 03:52:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 77BE287E9D;
-	Thu,  2 Apr 2020 03:52:32 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D9B221BF836
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:52:30 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D56A186BFF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:52:30 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QUhq2L60rprF for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Apr 2020 03:52:28 +0000 (UTC)
+ with ESMTP id hpPxxf5I4lSV for <intel-wired-lan@osuosl.org>;
+ Thu,  2 Apr 2020 06:16:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 094618697E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:52:27 +0000 (UTC)
-IronPort-SDR: 1YA0N22lnqo+dkFiJCB9lArl3Jc8IUZRz/kXqstgeWQpMWhqrgA3Y7JpBvpuFzQfHBJd2pR7oA
- K9mZKIOlukBg==
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EDC5F8805D
+ for <intel-wired-lan@osuosl.org>; Thu,  2 Apr 2020 06:16:36 +0000 (UTC)
+IronPort-SDR: VY2CYRrsipel7PGUKnzn+xiwbC5aNk3Yu0ZuOv46sItvhxo6+tkloHAmlcAQ9yKPq4CxMe2/3L
+ uDmyQec5H8Rg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2020 20:52:27 -0700
-IronPort-SDR: vsmztPeqdaF/yPoPUDotfpB2sYG2jPcA40nzaCJ9ms8aUSx+ShS45+hlD4Kq8mpxq8Am7Nbd81
- SinpDbQu3GGA==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2020 23:16:36 -0700
+IronPort-SDR: JCoOWzZsvGLgz7c9qhDbb6AvsKkOfD+WY4OJ9z5/vcxBGYvDxYEArv0CDlXGgjR5Aqhge0pA2T
+ FGpR6OuI012Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,334,1580803200"; d="scan'208";a="238395735"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga007.jf.intel.com with ESMTP; 01 Apr 2020 20:52:27 -0700
-Received: from orsmsx113.amr.corp.intel.com (10.22.240.9) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 1 Apr 2020 20:52:27 -0700
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
- ORSMSX113.amr.corp.intel.com ([169.254.9.188]) with mapi id 14.03.0439.000;
- Wed, 1 Apr 2020 20:52:27 -0700
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Neftin, Sasha" <sasha.neftin@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unneeded register
-Thread-Index: AQHWBb461E8KTdtiyk2KOscOzoKu5KhlOLNA
-Date: Thu, 2 Apr 2020 03:52:26 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722ECC2@ORSMSX103.amr.corp.intel.com>
-References: <20200329113554.34873-1-sasha.neftin@intel.com>
-In-Reply-To: <20200329113554.34873-1-sasha.neftin@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.140]
+X-IronPort-AV: E=Sophos;i="5.72,334,1580803200"; d="scan'208";a="423010629"
+Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.214.218.243])
+ ([10.214.218.243])
+ by orsmga005.jf.intel.com with ESMTP; 01 Apr 2020 23:16:34 -0700
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>, intel-wired-lan@osuosl.org
+References: <20200401091644.5863-1-vitaly.lifshits@intel.com>
+From: "Neftin, Sasha" <sasha.neftin@intel.com>
+Message-ID: <08d29d85-9f5b-f97b-d6dc-9346b5844beb@intel.com>
+Date: Thu, 2 Apr 2020 09:16:33 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unneeded register
+In-Reply-To: <20200401091644.5863-1-vitaly.lifshits@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH v1] igc: remove IGC_REMOVED function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,26 +68,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Sasha
-> Neftin
-> Sent: Sunday, March 29, 2020 4:36 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unneeded register
+On 4/1/2020 12:16, Vitaly Lifshits wrote:
+> igc driver has leftovers from the previous device that supported
+> virtualization. This can be found in the function IGC_REMOVED which
+> became obsolete, and can be removed.
 > 
-> Flow control status register not applicable for i225 parts
-> This patch come to  clean up it
-> 
-> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_regs.h | 1 -
->  1 file changed, 1 deletion(-)
+>   drivers/net/ethernet/intel/igc/igc_mac.h  | 4 ----
+>   drivers/net/ethernet/intel/igc/igc_main.c | 3 ---
+>   drivers/net/ethernet/intel/igc/igc_regs.h | 3 +--
+>   3 files changed, 1 insertion(+), 9 deletions(-)
 > 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+> diff --git a/drivers/net/ethernet/intel/igc/igc_mac.h b/drivers/net/ethernet/intel/igc/igc_mac.h
+> index 832cccec87cd..b5963f86defb 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_mac.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_mac.h
+> @@ -8,10 +8,6 @@
+>   #include "igc_phy.h"
+>   #include "igc_defines.h"
+>   
+> -#ifndef IGC_REMOVED
+> -#define IGC_REMOVED(a) (0)
+> -#endif /* IGC_REMOVED */
+> -
+>   /* forward declaration */
+>   s32 igc_disable_pcie_master(struct igc_hw *hw);
+>   s32 igc_check_for_copper_link(struct igc_hw *hw);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index c3555148ca0e..cb0d523ffc19 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -4662,9 +4662,6 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg)
+>   	u8 __iomem *hw_addr = READ_ONCE(hw->hw_addr);
+>   	u32 value = 0;
+>   
+> -	if (IGC_REMOVED(hw_addr))
+> -		return ~value;
+> -
+>   	value = readl(&hw_addr[reg]);
+>   
+>   	/* reads should not return all F's */
+> diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+> index 82158176634c..21b6fc42edbb 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_regs.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+> @@ -277,8 +277,7 @@ u32 igc_rd32(struct igc_hw *hw, u32 reg);
+>   #define wr32(reg, val) \
+>   do { \
+>   	u8 __iomem *hw_addr = READ_ONCE((hw)->hw_addr); \
+> -	if (!IGC_REMOVED(hw_addr)) \
+> -		writel((val), &hw_addr[(reg)]); \
+> +	writel((val), &hw_addr[(reg)]); \
+>   } while (0)
+>   
+>   #define rd32(reg) (igc_rd32(hw, reg))
+> 
+Acked-by: Sasha Neftin <sasha.neftion@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
