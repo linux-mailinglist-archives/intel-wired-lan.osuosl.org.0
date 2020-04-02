@@ -2,65 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E735619BABE
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Apr 2020 05:49:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 11E7B19BAC3
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Apr 2020 05:51:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D5F887E9D;
-	Thu,  2 Apr 2020 03:49:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id BD3528751C;
+	Thu,  2 Apr 2020 03:51:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u4KO6j521D5h; Thu,  2 Apr 2020 03:49:23 +0000 (UTC)
+	with ESMTP id 6KLLJmF9-FaZ; Thu,  2 Apr 2020 03:51:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2F59387EA1;
-	Thu,  2 Apr 2020 03:49:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0637D8738A;
+	Thu,  2 Apr 2020 03:51:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C7DFA1BF836
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:49:21 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A6331BF836
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:51:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C3B748691A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:49:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 2F9EE203D1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:51:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Oiu598Sud_s8 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Apr 2020 03:49:20 +0000 (UTC)
+ with ESMTP id v1yqF0n5HmDi for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Apr 2020 03:51:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A080D86916
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:49:20 +0000 (UTC)
-IronPort-SDR: Hj8/WEjqjCqFyXoUMvONy3cvK42p0TyyMleyZJl7LiRA0Gn174EGwYugtbEKv9v665qARItspa
- ej5VWsk/d4sg==
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 5FB632001D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 03:51:43 +0000 (UTC)
+IronPort-SDR: j4tPc58JP18nCBHeNeLQvYj4imMbU6acF6yLeWnpRFVQwdu6FooYUhKnvjMfPdYl86emdYk8/g
+ Kw9GfwtlLILQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Apr 2020 20:49:19 -0700
-IronPort-SDR: LzleAPM6C7R/WR9zwCKSPSWjU5fVh+eimbaHhpq+igA12n6NjHrbHrUgvg3csx6Jx6CBqz3/oV
- 6vW+yBLkRgpA==
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Apr 2020 20:51:43 -0700
+IronPort-SDR: bX8elHf6t/SVH62ukUdd5cxI7zq/q8B6ZKMggFVLH2SRyOnCC5m72uT0FxwNQiuTAuYrb/PN61
+ P/lfnIHTJzGA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,334,1580803200"; d="scan'208";a="267887012"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by orsmga002.jf.intel.com with ESMTP; 01 Apr 2020 20:49:19 -0700
-Received: from orsmsx154.amr.corp.intel.com (10.22.226.12) by
- ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 1 Apr 2020 20:49:19 -0700
+X-IronPort-AV: E=Sophos;i="5.72,334,1580803200"; d="scan'208";a="450787410"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by fmsmga006.fm.intel.com with ESMTP; 01 Apr 2020 20:51:43 -0700
+Received: from orsmsx156.amr.corp.intel.com (10.22.240.22) by
+ ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 1 Apr 2020 20:51:42 -0700
 Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
- ORSMSX154.amr.corp.intel.com ([169.254.11.209]) with mapi id 14.03.0439.000;
- Wed, 1 Apr 2020 20:49:19 -0700
+ ORSMSX156.amr.corp.intel.com ([169.254.8.211]) with mapi id 14.03.0439.000;
+ Wed, 1 Apr 2020 20:51:42 -0700
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Guedes, Andre" <andre.guedes@intel.com>,
+To: "Neftin, Sasha" <sasha.neftin@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 10/10] igc: Remove '\n' from log
- strings in igc_phy.c
-Thread-Index: AQHWAj3FVbNAnEVyRUOIVwdnmo9TKahlPsVQ
-Date: Thu, 2 Apr 2020 03:49:18 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722EC99@ORSMSX103.amr.corp.intel.com>
-References: <20200325003824.5487-1-andre.guedes@intel.com>
- <20200325003824.5487-11-andre.guedes@intel.com>
-In-Reply-To: <20200325003824.5487-11-andre.guedes@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unneeded definition
+Thread-Index: AQHWBai0uB6KRalFTEmHgkpVzO3OrqhlOHxw
+Date: Thu, 2 Apr 2020 03:51:42 +0000
+Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722ECAE@ORSMSX103.amr.corp.intel.com>
+References: <20200329090151.42247-1-sasha.neftin@intel.com>
+In-Reply-To: <20200329090151.42247-1-sasha.neftin@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -70,8 +68,7 @@ dlp-version: 11.2.0.6
 dlp-reaction: no-action
 x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 10/10] igc: Remove '\n' from log
- strings in igc_phy.c
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unneeded definition
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,24 +86,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Andre Guedes
-> Sent: Tuesday, March 24, 2020 5:38 PM
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Sasha
+> Neftin
+> Sent: Sunday, March 29, 2020 2:02 AM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH 10/10] igc: Remove '\n' from log strings in
-> igc_phy.c
+> Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unneeded definition
 > 
-> To keep log strings in igc_phy.c consistent with the rest of the driver
-> code, this patch removes the '\n' character at the end. The newline
-> character is automatically added by netdev_dbg() so there is no changes
-> in the output.
+> PHY_FORCE_LIMIT definition not in use and could be removed
+> i225 parts support auto negitiation mechanism
 > 
-> Note: hw_dbg() is a macro that expands to netdev_dbg().
-> 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_phy.c | 52 ++++++++++++------------
->  1 file changed, 26 insertions(+), 26 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc_defines.h | 1 -
+>  1 file changed, 1 deletion(-)
 > 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
