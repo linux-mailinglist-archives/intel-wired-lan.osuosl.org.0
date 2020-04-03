@@ -2,74 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 39F9A19C926
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Apr 2020 20:51:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5913519CECC
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Apr 2020 05:15:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E7A48888E5;
-	Thu,  2 Apr 2020 18:51:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AF345890BA;
+	Fri,  3 Apr 2020 03:15:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SAuIDTuc0aH6; Thu,  2 Apr 2020 18:51:55 +0000 (UTC)
+	with ESMTP id SvcDbffktvNl; Fri,  3 Apr 2020 03:15:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 74BE389228;
-	Thu,  2 Apr 2020 18:51:55 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2846D8907F;
+	Fri,  3 Apr 2020 03:15:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 778151BF3E9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 18:51:54 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 46A141BF9C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2020 03:15:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 72649889B1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 18:51:54 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 41380203C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2020 03:15:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4J4WtjKTnZ1l for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Apr 2020 18:51:53 +0000 (UTC)
+ with ESMTP id uaDAQOrbI1r1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Apr 2020 03:15:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F13E0888E5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2020 18:51:52 +0000 (UTC)
-IronPort-SDR: GtcHyDw23eEmc8JULFz2usztMC4mFy+0mtzkRIfD5A8OxFID2jzipZyGh4S7bdxLKnOw5J0PYK
- kTXZEsx+olfg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2020 11:51:52 -0700
-IronPort-SDR: /PNZLi9AkMwENO8sgMAuie2vULQe1Abr53z2BokbWZB60yNSbPeVk12QRa1YTYEOEbovlcl5H7
- 3jpthYzuBRFw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,336,1580803200"; d="scan'208";a="284877564"
-Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
- by fmsmga002.fm.intel.com with ESMTP; 02 Apr 2020 11:51:51 -0700
-Received: from orsmsx125.amr.corp.intel.com (10.22.240.125) by
- ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 2 Apr 2020 11:51:51 -0700
-Received: from orsmsx103.amr.corp.intel.com ([169.254.5.6]) by
- ORSMSX125.amr.corp.intel.com ([169.254.3.103]) with mapi id 14.03.0439.000;
- Thu, 2 Apr 2020 11:51:51 -0700
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Thread-Topic: [Intel-wired-lan] [PATCH v1] e1000e: Add support for S0ix
-Thread-Index: AQHWCQ0hJ3xCb6+PbkqjUl4Fcacbg6hmDNJQ
-Date: Thu, 2 Apr 2020 18:51:50 +0000
-Message-ID: <309B89C4C689E141A5FF6A0C5FB2118B9722F305@ORSMSX103.amr.corp.intel.com>
-References: <20190916065240.41486-1-sasha.neftin@intel.com>
- <309B89C4C689E141A5FF6A0C5FB2118B9714C814@ORSMSX103.amr.corp.intel.com>
- <cf87df61-9a63-5eb3-6589-a29a934bfa93@molgen.mpg.de>
-In-Reply-To: <cf87df61-9a63-5eb3-6589-a29a934bfa93@molgen.mpg.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.140]
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id 37A9C203A2
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2020 03:15:21 +0000 (UTC)
+Received: from [123.118.214.4] (helo=localhost.localdomain)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <aaron.ma@canonical.com>)
+ id 1jKCnb-0008Mo-1M; Fri, 03 Apr 2020 03:15:15 +0000
+To: Hans de Goede <hdegoede@redhat.com>, jeffrey.t.kirsher@intel.com,
+ davem@davemloft.net, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org, sasha.neftin@intel.com
+References: <20200323191639.48826-1-aaron.ma@canonical.com>
+ <4f9f1ad0-e66a-d3c8-b152-209e9595e5d7@redhat.com>
+From: Aaron Ma <aaron.ma@canonical.com>
+Autocrypt: addr=aaron.ma@canonical.com; prefer-encrypt=mutual; keydata=
+ mQENBFffeLkBCACi4eE4dPsgWN6B9UDOVcAvb5QgU/hRG6yS0I1lGKQv4KA+bke0c5g8clbO
+ 9gIlIl2bityfA9NzBsDik4Iei3AxMbFyxv9keMwcOFQBIOZF0P3f05qjxftF8P+yp9QTV4hp
+ BkFzsXzWRgXN3r8hU8wqZybepF4B1C83sm2kQ5A5N0AUGbZli9i2G+/VscG9sWfLy8T7f4YW
+ MjmlijCjoV6k29vsmTWQPZ7EApNpvR5BnZQPmQWzkkr0lNXlsKcyLgefQtlwg6drK4fe4wz0
+ ouBIHJEiXE1LWK1hUzkCUASra4WRwKk1Mv/NLLE/aJRqEvF2ukt3uVuM77RWfl7/H/v5ABEB
+ AAG0IUFhcm9uIE1hIDxhYXJvbi5tYUBjYW5vbmljYWwuY29tPokBNwQTAQgAIQUCV994uQIb
+ AwULCQgHAgYVCAkKCwIEFgIDAQIeAQIXgAAKCRDNxCzQfVU6ntJ9B/9aVy0+RkLqF9QpLmw+
+ LAf1m3Fd+4ZarPTerqDqkLla3ekYhbrEtlI1mYuB5f+gtrIjmcW27gacHdslKB9YwaL8B4ZB
+ GJKhcrntLg4YPzYUnXZkHHTv1hMw7fBYw82cBT+EbG0Djh6Po6Ihqyr3auHhfFcp1PZH4Mtq
+ 6hN5KaDZzF/go+tRF5e4bn61Nhdue7mrhFSlfkzLG2ehHWmRV+S91ksH81YDFnazK0sRINBx
+ V1S8ts3WJ2f1AbgmnDlbK3c/AfI5YxnIHn/x2ZdXj1P/wn7DgZHmpMy5DMuk0gN34NLUPLA/
+ cHeKoBAF8emugljiKecKBpMTLe8FrVOxbkrauQENBFffeLkBCACweKP3Wx+gK81+rOUpuQ00
+ sCyKzdtMuXXJ7oL4GzYHbLfJq+F+UHpQbytVGTn3R5+Y61v41g2zTYZooaC+Hs1+ixf+buG2
+ +2LZjPSELWPNzH9lsKNlCcEvu1XhyyHkBDbnFFHWlUlql3nSXMo//dOTG/XGKaEaZUxjCLUC
+ 8ehLc16DJDvdXsPwWhHrCH/4k92F6qQ14QigBMsl75jDTDJMEYgRYEBT1D/bwxdIeoN1BfIG
+ mYgf059RrWax4SMiJtVDSUuDOpdwoEcZ0FWesRfbFrM+k/XKiIbjMZSvLunA4FIsOdWYOob4
+ Hh0rsm1G+fBLYtT+bE26OWpQ/lSn4TdhABEBAAGJAR8EGAEIAAkFAlffeLkCGwwACgkQzcQs
+ 0H1VOp6p5Af/ap5EVuP1AhFdPD3pXLNrUUt72W3cuAOjXyss43qFC2YRjGfktrizsDjQU46g
+ VKoD6EW9XUPgvYM+k8BJEoXDLhHWnCnMKlbHP3OImxzLRhF4kdlnLicz1zKRcessQatRpJgG
+ NIiD+eFyh0CZcWBO1BB5rWikjO/idicHao2stFdaBmIeXvhT9Xp6XNFEmzOmfHps+kKpWshY
+ 9LDAU0ERBNsW4bekOCa/QxfqcbZYRjrVQvya0EhrPhq0bBpzkIL/7QSBMcdv6IajTlHnLARF
+ nAIofCEKeEl7+ksiRapL5Nykcbt4dldE3sQWxIybC94SZ4inENKw6I8RNpigWm0R5w==
+Message-ID: <1c0e602f-1fe7-62b1-2283-b98783782e87@canonical.com>
+Date: Fri, 3 Apr 2020 11:15:06 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: Add support for S0ix
+In-Reply-To: <4f9f1ad0-e66a-d3c8-b152-209e9595e5d7@redhat.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: bump up timeout to wait when
+ ME un-configure ULP mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,70 +87,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Rajneesh Bhardwaj <rajneesh.bhardwaj@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Paul Menzel <pmenzel@molgen.mpg.de>
-> Sent: Thursday, April 2, 2020 9:38 AM
-> To: Brown, Aaron F <aaron.f.brown@intel.com>
-> Cc: Neftin, Sasha <sasha.neftin@intel.com>; intel-wired-lan@lists.osuosl.org;
-> Rajneesh Bhardwaj <rajneesh.bhardwaj@linux.intel.com>
-> Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: Add support for S0ix
-> 
-> Dear Aaron,
-> 
-> 
-> Am 11.10.19 um 02:56 schrieb Brown, Aaron F:
-> >> From: Intel-wired-lan [mailto:intel-wired-lan-bounces@osuosl.org] On Behalf
-> Of
-> >> Sasha Neftin
-> >> Sent: Sunday, September 15, 2019 11:53 PM
-> >> To: intel-wired-lan@lists.osuosl.org
-> >> Cc: Rajneesh Bhardwaj <rajneesh.bhardwaj@linux.intel.com>
-> >> Subject: [Intel-wired-lan] [PATCH v1] e1000e: Add support for S0ix
-> >>
-> >> Implement flow for S0ix support. Modern SoCs support S0ix low power
-> >> states during idle periods, which are sub-states of ACPI S0 that increase
-> >> power saving while supporting an instant-on experience for providing
-> >> lower latency that ACPI S0. The S0ix states shut off parts of the SoC
-> >> when they are not in use, while still maintaning optimal performance.
-> >> This patch add support for S0ix started from an Ice Lake platform.
-> >>
-> >> Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> >> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> >> Signed-off-by: Rajneesh Bhardwaj <rajneesh.bhardwaj@linux.intel.com>
-> >> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-> >> ---
-> >>   drivers/net/ethernet/intel/e1000e/netdev.c | 186
-> >> +++++++++++++++++++++++++++++
-> >>   drivers/net/ethernet/intel/e1000e/regs.h   |   4 +
-> >>   2 files changed, 190 insertions(+)
-> >
-> > I do not yet have access to an Ice lake platform but this does not seem to
-> harm any of my regression systems, so...
-> > Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-> 
-> Is testing several s2idle cycles part of your testing (with (un)plugging
-> the cable)?
-Not as part of the normal regression checks.  I did a whole lot of sleep / suspend resume with cables connected, some without cables and once I started to understand the problem more went back and did more on the different link states (w/ cable link down, w/o cable, etc...) and none of my systems seemed to function differently before or after the patch.  But as I stated with the Tested-by, I don't have the platform the patch targets.
- 
-> 
-> Can you reproduce the issues reported on the list [1][2]?
-No, none of the test systems I used showed the problem, but I did not (still don't) gave access to a Lenova Carbon or any other system that contain the combination of components, i219 and ME, that the problem appears on.
+Hi Jeffrey:
 
+I have received the email that you apply this patch to next-queue branch
+dev-queue.
+
+But after this branch is rebased to v5.6, I can't find it.
+
+Will you apply again?
+
+Thanks,
+Aaron
+
+On 4/2/20 8:31 PM, Hans de Goede wrote:
 > 
-> 
-> Kind regards,
-> 
-> Paul
-> 
-> 
-> [1]: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1865570
-> [2]: https://bugzilla.redhat.com/show_bug.cgi?id=1816621
+> This fix fixes a real problem, on a popular model laptop
+> and since it just extends a timeout it is a pretty harmless
+> (no chance of regressions) fix. As such since there seems
+> to be no other solution in sight, can we please move forward
+> with this fix for now ?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
