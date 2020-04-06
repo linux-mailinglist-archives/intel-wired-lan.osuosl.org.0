@@ -2,123 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE4F219FD87
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Apr 2020 20:52:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA84F1A0026
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Apr 2020 23:32:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8482186490;
-	Mon,  6 Apr 2020 18:52:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 97BD686472;
+	Mon,  6 Apr 2020 21:32:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4vX6Or9cViam; Mon,  6 Apr 2020 18:51:51 +0000 (UTC)
+	with ESMTP id t05MBqLZl1vF; Mon,  6 Apr 2020 21:32:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C04BE864A6;
-	Mon,  6 Apr 2020 18:51:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C79D865DB;
+	Mon,  6 Apr 2020 21:32:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BA6401BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2020 15:38:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8D1451BF32C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2020 21:32:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AC5DA20360
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2020 15:38:42 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 865CD20486
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2020 21:32:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gn-PDnXnjoc9 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Apr 2020 15:38:30 +0000 (UTC)
-X-Greylist: delayed 00:16:00 by SQLgrey-1.7.6
-Received: from smtp2.peak6.com (smtp2.peak6.com [38.98.137.9])
- by silver.osuosl.org (Postfix) with ESMTPS id D3B1C20117
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2020 15:38:29 +0000 (UTC)
-Received: from pps.filterd (svachi6pprofagt1.peak6.net [127.0.0.1])
- by svachi6pprofagt1.peak6.net (8.16.0.22/8.16.0.22) with SMTP id
- 036FKwOs008468
- for <intel-wired-lan@lists.osuosl.org>; Mon, 6 Apr 2020 10:22:28 -0500
-Received: from sswchi6pmbx3.peak6.net (sswchi6pmbx3.peak6.net [10.2.14.31])
- by svachi6pprofagt1.peak6.net with ESMTP id 306pf109r8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA256 bits=128 verify=NOT)
- for <intel-wired-lan@lists.osuosl.org>; Mon, 06 Apr 2020 10:22:27 -0500
-Received: from sswchi6pmbx3.peak6.net (10.2.14.31) by sswchi6pmbx3.peak6.net
- (10.2.14.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35; Mon, 6
- Apr 2020 10:22:26 -0500
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (10.20.108.11) by
- sswchi6pmbx3.peak6.net (10.2.14.31) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1261.35 via Frontend Transport; Mon, 6 Apr 2020 10:22:26 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FJdNyxt2OyXsp5MAgXpuYg8GZmTfTDcUzDEz8go+2/vkFpJObmu5zLyv4jkRvgti28evqxwiRMICllcxtmaVsCiQRSUjFma+e8Ak3/uVLGXJmglD0lDTvg9b/Atx+uKBIHIZYkO6CWpHEICbgM6bir23PsdTRFRQ9ChWK767SQrntHinibqchr4P/k1RgAW/r7t2/IqInv094EQ9yJe+RTlEILhUkjG1Jo2ifOdHiQ/v1ZAljLnlcourmI/tIVy7YxU5s8QUTYErZaR9O+iOFnv1wffLDvRhcve9gYcjXisalVjyVmc2q35aAKZUBcCBGR+ObTU4Z+VjCoDdK9dd4Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wZm9yVTa42TYW0E00aVc/sKz+nvpIhPqWq7+EKwHABg=;
- b=U7i6GeAjFGYqvNdhu/j9mIgzR5sT38YH6qL+w+mYGpgJbyw6rMfiG3tb5omhtVsgXHftj2t0j0UdpKHrmilqmw23La22qJTI/c+b2JEfO7QK//KskCzvRe5lTEcj0P8MQUuxDXjZ77IuOreWdIOXBv3ajvvxmYk5xcOJ3oKmTU6wWCLDEsfGPW92qDqRDOU8ToeUzAEs6tr6iqCH9oWOr2twa6bzuiiyXwStRUGvNw/6szKLkt+Mwee7plC5NCT8S6w0qbLR0Ne/XDrnYpOz8OB+ar3uOYk8jcoMRho+nP9f0YuH6g6uizAwl/N3Ln4ApPe9XxDg10K+kbWDse4Z1A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=peak6.com; dmarc=pass action=none header.from=peak6.com;
- dkim=pass header.d=peak6.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=peak6group.onmicrosoft.com; s=selector1-peak6group-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wZm9yVTa42TYW0E00aVc/sKz+nvpIhPqWq7+EKwHABg=;
- b=noLqL0FoUbIiuTZ+1PHK+eL7+/l+obOeq+y9/RXoFadeQ9z3kXt+D9sMvCXQRss0lylPzqYdD3CBzEB3+4h3+ibstu0OeM0bCN1VN/qzbMOqdTsVvrKxvZnT6aRKIdTGizOf1u0KBaLhM2e7JpdhS8lfdvKulG0cbq9Atlow4U4=
-Received: from MWHPR2201MB1727.namprd22.prod.outlook.com
- (2603:10b6:301:68::17) by MWHPR2201MB1469.namprd22.prod.outlook.com
- (2603:10b6:301:2e::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2835.19; Mon, 6 Apr
- 2020 15:22:22 +0000
-Received: from MWHPR2201MB1727.namprd22.prod.outlook.com
- ([fe80::284f:9e49:8c6b:355c]) by MWHPR2201MB1727.namprd22.prod.outlook.com
- ([fe80::284f:9e49:8c6b:355c%7]) with mapi id 15.20.2856.019; Mon, 6 Apr 2020
- 15:22:22 +0000
-From: Kevin Newman <knewman@peak6.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+ with ESMTP id Zc2zlK5gjSHm for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Apr 2020 21:31:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id 512792045F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2020 21:31:57 +0000 (UTC)
+IronPort-SDR: 6mh5K9GL3wgCl7cA6BEbgvAmLvlVkJeAE5AmGjrX5DWWDoLjVl7ZBHfEONKLkF7Vi8IC+jK/4l
+ TUONr2iq2XtQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Apr 2020 14:31:56 -0700
+IronPort-SDR: m/fVn6agECJv59KKz12eblig3TGwF41rx7ImXQOV97J1Bir4FgkTf7x8f2trq9F5wCFcfTPkj2
+ lxCEuoDbjiDQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,352,1580803200"; 
+ d="scan'208,217";a="239746126"
+Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
+ by orsmga007.jf.intel.com with ESMTP; 06 Apr 2020 14:31:56 -0700
+Received: from orsmsx151.amr.corp.intel.com (10.22.226.38) by
+ ORSMSX109.amr.corp.intel.com (10.22.240.7) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 6 Apr 2020 14:31:55 -0700
+Received: from orsmsx115.amr.corp.intel.com ([169.254.4.102]) by
+ ORSMSX151.amr.corp.intel.com ([169.254.7.134]) with mapi id 14.03.0439.000;
+ Mon, 6 Apr 2020 14:31:55 -0700
+From: "Fujinaka, Todd" <todd.fujinaka@intel.com>
+To: Kevin Newman <knewman@peak6.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
 Thread-Topic: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
-Thread-Index: AdYMJynuZXPrQwA7S++9EbW3UxM63A==
-Date: Mon, 6 Apr 2020 15:22:22 +0000
-Message-ID: <MWHPR2201MB1727D9040A0A395978363BB0E9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
+Thread-Index: AdYMJynuZXPrQwA7S++9EbW3UxM63AAM08Fw
+Date: Mon, 6 Apr 2020 21:31:54 +0000
+Message-ID: <9B4A1B1917080E46B64F07F2989DADD69B107E30@ORSMSX115.amr.corp.intel.com>
+References: <MWHPR2201MB1727D9040A0A395978363BB0E9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
+In-Reply-To: <MWHPR2201MB1727D9040A0A395978363BB0E9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [38.98.137.7]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: cd4bf169-44a2-4396-2d54-08d7da3e4df0
-x-ms-traffictypediagnostic: MWHPR2201MB1469:
-x-microsoft-antispam-prvs: <MWHPR2201MB14695A96A56CB8F3E8FEB952E9C20@MWHPR2201MB1469.namprd22.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1360;
-x-forefront-prvs: 0365C0E14B
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR2201MB1727.namprd22.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(136003)(366004)(39840400004)(346002)(376002)(396003)(55016002)(5660300002)(33656002)(9686003)(7696005)(66946007)(66476007)(66556008)(66446008)(64756008)(26005)(52536014)(6916009)(76116006)(316002)(478600001)(30864003)(9326002)(81166006)(8936002)(186003)(81156014)(8676002)(86362001)(6506007)(2906002)(71200400001);
- DIR:OUT; SFP:1102; 
-received-spf: None (protection.outlook.com: peak6.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: kAWt+N1nRm/kFY2488kkk8HDHAt6k6CMSDlexZjh8RzqUXgJ/EK6VkjjKYPM70IMTIVo55FtIU8vuWYZiDFohajAkZVRzeKSdSaq6WfflUr3meH9QOfltLbc70LBF0Zplj5BcZlpgc/i1FQrHp1VkODFBIRdb/7gHav7D7/65CebDEnUYheUyCQWPj+2Pk9bZWk35o06H5ExWzLvSjKVixpQtGZedKxc55kBl6/y8iNns+uQQjbpoCOIhL30BRa1BYbgcMvJ6C/I+052rxUJah7Ir6GcXzUqvE4xi+MP3Fv17d7jRhUAN3j8pPZBAMkln6plx38LxL/j8iukd/YFQohXLBm3jTfg6uI9UJk+s7LC9G8yxBnWcDdmhto4sC7MJlfdcRgPIcBBIxsul68dPhQ1U88QeURsqEvSYgczfMhRY2suUSIWgJ+QlajfUgwL
-x-ms-exchange-antispam-messagedata: 2tRc+q5/VWVAjuK4zryQhOvmZbxB1Zy3j+JkRg4YGFcgvD6EE9955Mnm3IM7cHxQ0MOFiSxiQlay2ENIbHRAe+Vam8g3t/G5C9YYLjqDrdfUrAgcEmWCRu7Sp8AO7cOkLalxhrMlI+efqRtNLbOK9A==
-x-ms-exchange-transport-forked: True
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.140]
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: cd4bf169-44a2-4396-2d54-08d7da3e4df0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Apr 2020 15:22:22.5518 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: be5b5bb5-4d80-403f-bb05-3442831c26f8
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: SbphDcC33FwMc05vw9I+YUdWYFdpR5iFXbr2zPPMD11imiDYIhhNamel9o7eQwR7bJdEt6X8RyI40h7gxYbIaA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR2201MB1469
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-04-06_08:2020-04-06,
- 2020-04-06 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1011 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-2002250000 definitions=main-2004060127
-X-Mailman-Approved-At: Mon, 06 Apr 2020 18:51:38 +0000
-Subject: [Intel-wired-lan] X550 + ixgbe Reporting "ECC Err" With Strange
+Subject: Re: [Intel-wired-lan] X550 + ixgbe Reporting "ECC Err" With Strange
  Regularity...
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -132,18 +83,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6803203859941479352=="
+Content-Type: multipart/mixed; boundary="===============1588483758050761241=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============6803203859941479352==
+--===============1588483758050761241==
 Content-Language: en-US
 Content-Type: multipart/alternative;
-	boundary="_000_MWHPR2201MB1727D9040A0A395978363BB0E9C20MWHPR2201MB1727_"
+	boundary="_000_9B4A1B1917080E46B64F07F2989DADD69B107E30ORSMSX115amrcor_"
 
---_000_MWHPR2201MB1727D9040A0A395978363BB0E9C20MWHPR2201MB1727_
+--_000_9B4A1B1917080E46B64F07F2989DADD69B107E30ORSMSX115amrcor_
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+
+Unfortunately, the "ECC Error" bit in the ICR is overloaded and could be ca=
+used by other things. Do you have a dmesg we can look at? (The whole thing =
+from boot to the error?)
+
+Todd Fujinaka
+Software Application Engineer
+Data Center Group
+Intel Corporation
+todd.fujinaka@intel.com
+
+From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Kev=
+in Newman
+Sent: Monday, April 6, 2020 8:22 AM
+To: intel-wired-lan@lists.osuosl.org
+Subject: [Intel-wired-lan] X550 + ixgbe Reporting "ECC Err" With Strange Re=
+gularity...
 
 Hi,
 
@@ -635,7 +603,8 @@ ened.
 I'm skeptical of this "ECC Err" that triggers it since they're all fairly n=
 ew servers and having bad memory on that many NICs is still abnormally high=
 . In that same vein, the main system DIMMs don't report any errors or anyth=
-ing to indicate that there are multi-bit or even single-bit errors going on.
+ing to indicate that there are multi-bit or even single-bit errors going on=
+.
 
 Are there any further diagnostic tools I could use to figure out what's goi=
 ng on here? I can't seem to reproduce the issue by sending high packet load=
@@ -647,11 +616,12 @@ Thanks!
 -Kevin
 
 
-______________________________________________________________________
+
+________________________________
 See http://www.peak6.com/email_disclaimer/ for terms and conditions related=
  to this email
 
---_000_MWHPR2201MB1727D9040A0A395978363BB0E9C20MWHPR2201MB1727_
+--_000_9B4A1B1917080E46B64F07F2989DADD69B107E30ORSMSX115amrcor_
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -660,9 +630,14 @@ osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
 xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
 //www.w3.org/TR/REC-html40">
 <head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
 <meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
 /* Font Definitions */
 @font-face
 	{font-family:"Cambria Math";
@@ -684,13 +659,25 @@ a:visited, span.MsoHyperlinkFollowed
 	{mso-style-priority:99;
 	color:#954F72;
 	text-decoration:underline;}
-span.EmailStyle17
-	{mso-style-type:personal-compose;
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+span.EmailStyle18
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+span.EmailStyle20
+	{mso-style-type:personal-reply;
 	font-family:"Calibri",sans-serif;
 	color:windowtext;}
 .MsoChpDefault
 	{mso-style-type:export-only;
-	font-family:"Calibri",sans-serif;}
+	font-size:10.0pt;}
 @page WordSection1
 	{size:8.5in 11.0in;
 	margin:1.0in 1.0in 1.0in 1.0in;}
@@ -705,6 +692,39 @@ div.WordSection1
 </head>
 <body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
 <div class=3D"WordSection1">
+<p class=3D"MsoNormal">Unfortunately, the &#8220;ECC Error&#8221; bit in th=
+e ICR is overloaded and could be caused by other things. Do you have a dmes=
+g we can look at? (The whole thing from boot to the error?)<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<p class=3D"MsoNormal"><b><span style=3D"color:black">Todd Fujinaka</span><=
+/b><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,=
+serif;color:black"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Softwar=
+e Application Engineer</span><span style=3D"color:black"><o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Data Ce=
+nter Group</span><span style=3D"color:black"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Intel C=
+orporation</span><span style=3D"color:black"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><u><span style=3D"font-size:10.0pt;color:black">todd=
+.fujinaka@intel.com</span></u><u><span style=3D"color:black"><o:p></o:p></s=
+pan></u></p>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b>From:</b> Intel-wired-lan &lt;intel-wired-lan-bou=
+nces@osuosl.org&gt;
+<b>On Behalf Of </b>Kevin Newman<br>
+<b>Sent:</b> Monday, April 6, 2020 8:22 AM<br>
+<b>To:</b> intel-wired-lan@lists.osuosl.org<br>
+<b>Subject:</b> [Intel-wired-lan] X550 &#43; ixgbe Reporting &quot;ECC Err&=
+quot; With Strange Regularity...<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal">Hi,<o:p></o:p></p>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal">I&#8217;m seeing a strangely high incidence of the f=
@@ -1238,7 +1258,8 @@ on 19.5 firmware when it happened.<o:p></o:p></p>
 at triggers it since they&#8217;re all fairly new servers and having bad me=
 mory on that many NICs is still abnormally high. In that same vein, the mai=
 n system DIMMs don&#8217;t report any errors or anything to indicate
- that there are multi-bit or even single-bit errors going on.<o:p></o:p></p>
+ that there are multi-bit or even single-bit errors going on.<o:p></o:p></p=
+>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal">Are there any further diagnostic tools I could use t=
 o figure out what&#8217;s going on here? I can&#8217;t seem to reproduce th=
@@ -1251,18 +1272,21 @@ bug that you all are aware of?<o:p></o:p></p>
 <p class=3D"MsoNormal">-Kevin<o:p></o:p></p>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
-;Arial&quot;,sans-serif;color:#20365A"><o:p></o:p></span></b></p>
+;Arial&quot;,sans-serif;color:#20365A"><o:p>&nbsp;</o:p></span></b></p>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center">
+<hr size=3D"2" width=3D"100%" align=3D"center">
 </div>
-
-<HR>See http://www.peak6.com/email_disclaimer/ for terms and conditions rel=
-ated to this email<BR>
+<p class=3D"MsoNormal">See <a href=3D"http://www.peak6.com/email_disclaimer=
+/">http://www.peak6.com/email_disclaimer/</a> for terms and conditions rela=
+ted to this email<o:p></o:p></p>
+</div>
 </body>
 </html>
 
---_000_MWHPR2201MB1727D9040A0A395978363BB0E9C20MWHPR2201MB1727_--
+--_000_9B4A1B1917080E46B64F07F2989DADD69B107E30ORSMSX115amrcor_--
 
---===============6803203859941479352==
+--===============1588483758050761241==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1273,4 +1297,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============6803203859941479352==--
+--===============1588483758050761241==--
