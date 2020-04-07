@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4982C1A0D5B
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Apr 2020 14:13:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C7741A1037
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Apr 2020 17:30:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D465D2210F;
-	Tue,  7 Apr 2020 12:13:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CEB7E87857;
+	Tue,  7 Apr 2020 15:30:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ro8Lk2a7oqVZ; Tue,  7 Apr 2020 12:13:28 +0000 (UTC)
+	with ESMTP id 3U51tdlYPIrn; Tue,  7 Apr 2020 15:30:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 808B22047B;
-	Tue,  7 Apr 2020 12:13:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0D779877D0;
+	Tue,  7 Apr 2020 15:30:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F1BFA1BF842
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 12:13:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 071FB1BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 15:30:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E91272047B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 12:13:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F36BC20471
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 15:30:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QBw7dFNrVWzP for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Apr 2020 12:13:24 +0000 (UTC)
+ with ESMTP id OSlp1RSChEjH for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Apr 2020 15:30:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by silver.osuosl.org (Postfix) with ESMTPS id B3BB720006
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 12:13:24 +0000 (UTC)
-IronPort-SDR: cI4fBVO0/NBMxJTKm/SKw4XPhqxHb3JWeaIULUw5tcQ6pghyj0NEhhUZbOKb+RIYtB8BVmHXTB
- c8DlfOtW+PDw==
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by silver.osuosl.org (Postfix) with ESMTPS id E3ACF20467
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 15:30:31 +0000 (UTC)
+IronPort-SDR: Xz3RRqubMK4HB1Nl9XOPlrjJ9F28PQdAwpg+MSftcxZwE2KejubMeek8gj/Io4yt08rYbZ4JKr
+ 7uRwfxYgGyHw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Apr 2020 05:13:24 -0700
-IronPort-SDR: Mdu3S30D508h+oVUGpI9BdAEr+9WuKqxK3S0Wi0xvbfc7UbbonwnR6dheGy6h7T+OPTTfJTLlJ
- vXgzgQOtTvyw==
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2020 08:30:31 -0700
+IronPort-SDR: B8665/nW0labqw1IRyv79GXh8ZPeQyaHsTit6aaIM7zcew043/4RioRl4jex8i7/a4bDh8lvY3
+ tVCsphmkbELQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,354,1580803200"; d="scan'208";a="239936840"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 07 Apr 2020 05:13:22 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jLn6X-0005NE-RT; Tue, 07 Apr 2020 20:13:21 +0800
-Date: Tue, 07 Apr 2020 20:12:31 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e8c6e2f.A5ebpIv2XCNWtqGV%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.72,355,1580803200"; d="scan'208";a="251265177"
+Received: from htfujina-fc.jf.intel.com ([10.166.22.52])
+ by orsmga003.jf.intel.com with ESMTP; 07 Apr 2020 08:30:31 -0700
+From: Todd Fujinaka <todd.fujinaka@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  7 Apr 2020 08:13:02 -0700
+Message-Id: <20200407151302.25191-1-todd.fujinaka@intel.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
- ebc01afcb1211f9330713d9b439bffa5570ddabf
+Subject: [Intel-wired-lan] [PATCH] i40e: Add a check to see if MFS is set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,206 +68,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: ebc01afcb1211f9330713d9b439bffa5570ddabf  igc: Refactor VLAN priority filtering code
+A customer was chain-booting to provision his systems and one of the
+steps was setting MFS. MFS isn't cleared by normal warm reboots
+(clearing requires a GLOBR) and there was no indication of why Jumbo
+Frame receives were failing.
 
-Warning in current branch:
+Add a warning if MFS is set to anything lower than the default.
 
-const u16 *value;
-drivers/net/ethernet/intel/gwdpa/gswip/gswip_tbl.c:39:13: warning: struct member 'pce_tbl_reg_map::value' is never used. [unusedStructMember]
-drivers/net/ethernet/intel/igc/igc_main.c:5188:6: note: Assuming that condition 'err' is not redundant
-drivers/net/ethernet/intel/igc/igc_main.c:5216:6: note: Condition '!err' is always true
-drivers/net/ethernet/intel/igc/igc_main.c:5216:6: warning: Condition '!err' is always true [knownConditionTrueFalse]
-struct igc_mac_addr *entry;
-
-Warning ids grouped by kconfigs:
-
-recent_errors
-|-- i386-allmodconfig
-|   |-- drivers-net-ethernet-intel-igc-igc_main.c:note:Assuming-that-condition-err-is-not-redundant
-|   |-- drivers-net-ethernet-intel-igc-igc_main.c:note:Condition-err-is-always-true
-|   |-- drivers-net-ethernet-intel-igc-igc_main.c:warning:Condition-err-is-always-true-knownConditionTrueFalse
-|   `-- struct-igc_mac_addr-entry
-`-- x86_64-allyesconfig
-    |-- const-u16-value
-    |-- drivers-net-ethernet-intel-gwdpa-gswip-gswip_tbl.c:warning:struct-member-pce_tbl_reg_map::value-is-never-used.-unusedStructMember
-    |-- drivers-net-ethernet-intel-igc-igc_main.c:note:Assuming-that-condition-err-is-not-redundant
-    |-- drivers-net-ethernet-intel-igc-igc_main.c:note:Condition-err-is-always-true
-    |-- drivers-net-ethernet-intel-igc-igc_main.c:warning:Condition-err-is-always-true-knownConditionTrueFalse
-    `-- struct-igc_mac_addr-entry
-
-elapsed time: 865m
-
-configs tested: 160
-configs skipped: 0
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-sparc                            allyesconfig
-powerpc                           allnoconfig
-parisc                generic-32bit_defconfig
-riscv                             allnoconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                             alldefconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                             alldefconfig
-arm                              allmodconfig
-arm64                            allmodconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-xtensa                          iss_defconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                                defconfig
-alpha                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                                 defconfig
-arc                              allyesconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-mips                             allyesconfig
-mips                         64r6el_defconfig
-mips                              allnoconfig
-mips                           32r2_defconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                generic-64bit_defconfig
-i386                 randconfig-a003-20200407
-mips                 randconfig-a001-20200407
-nds32                randconfig-a001-20200407
-m68k                 randconfig-a001-20200407
-parisc               randconfig-a001-20200407
-alpha                randconfig-a001-20200407
-riscv                randconfig-a001-20200407
-alpha                randconfig-a001-20200406
-m68k                 randconfig-a001-20200406
-nds32                randconfig-a001-20200406
-parisc               randconfig-a001-20200406
-riscv                randconfig-a001-20200406
-sparc64              randconfig-a001-20200406
-h8300                randconfig-a001-20200406
-nios2                randconfig-a001-20200406
-microblaze           randconfig-a001-20200406
-c6x                  randconfig-a001-20200406
-c6x                  randconfig-a001-20200407
-h8300                randconfig-a001-20200407
-microblaze           randconfig-a001-20200407
-nios2                randconfig-a001-20200407
-sparc64              randconfig-a001-20200407
-s390                 randconfig-a001-20200406
-xtensa               randconfig-a001-20200406
-csky                 randconfig-a001-20200406
-openrisc             randconfig-a001-20200406
-sh                   randconfig-a001-20200406
-x86_64               randconfig-b001-20200407
-x86_64               randconfig-b002-20200407
-x86_64               randconfig-b003-20200407
-i386                 randconfig-b001-20200407
-i386                 randconfig-b002-20200407
-i386                 randconfig-b003-20200407
-i386                 randconfig-b003-20200406
-x86_64               randconfig-b002-20200406
-x86_64               randconfig-b001-20200406
-i386                 randconfig-b001-20200406
-x86_64               randconfig-b003-20200406
-i386                 randconfig-b002-20200406
-x86_64               randconfig-d001-20200407
-i386                 randconfig-d003-20200407
-i386                 randconfig-d001-20200407
-i386                 randconfig-d002-20200407
-x86_64               randconfig-d002-20200407
-x86_64               randconfig-d003-20200407
-i386                 randconfig-e001-20200406
-i386                 randconfig-e003-20200406
-x86_64               randconfig-e002-20200406
-x86_64               randconfig-e001-20200406
-i386                 randconfig-e002-20200406
-x86_64               randconfig-e003-20200406
-i386                 randconfig-f001-20200406
-x86_64               randconfig-f003-20200406
-i386                 randconfig-f003-20200406
-x86_64               randconfig-f001-20200406
-i386                 randconfig-f002-20200406
-x86_64               randconfig-g003-20200406
-i386                 randconfig-g003-20200406
-x86_64               randconfig-g002-20200406
-i386                 randconfig-g001-20200406
-i386                 randconfig-g002-20200406
-x86_64               randconfig-g001-20200406
-x86_64               randconfig-h002-20200406
-i386                 randconfig-h002-20200406
-i386                 randconfig-h003-20200406
-i386                 randconfig-h001-20200406
-x86_64               randconfig-h003-20200406
-x86_64               randconfig-h001-20200406
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                             alldefconfig
-s390                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-um                                  defconfig
-x86_64                                   rhel
-x86_64                               rhel-7.6
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                                  kexec
-
+Signed-off-by: Todd Fujinaka <todd.fujinaka@intel.com>
+Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 2a037ec244b9..afcc7f82f103 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -15264,6 +15264,15 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 			i40e_stat_str(&pf->hw, err),
+ 			i40e_aq_str(&pf->hw, pf->hw.aq.asq_last_status));
+ 
++	/* make sure the MFS hasn't been set lower than the default */
++#define MAX_FRAME_SIZE_DEFAULT 0x2600
++	for (i = 0; i < 4; i++) {
++		val = ((rd32(&pf->hw, I40E_PRTGL_SAH) & I40E_PRTGL_SAH_MFS_MASK)
++			>> I40E_PRTGL_SAH_MFS_SHIFT);
++		if (val < MAX_FRAME_SIZE_DEFAULT)
++			dev_warn(&pdev->dev, "MFS for port %x has been set below the default: %x\n", i, val);
++	}
++
+ 	/* Add a filter to drop all Flow control frames from any VSI from being
+ 	 * transmitted. By doing so we stop a malicious VF from sending out
+ 	 * PAUSE or PFC frames and potentially controlling traffic for other
+-- 
+2.26.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
