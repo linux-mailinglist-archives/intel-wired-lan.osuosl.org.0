@@ -1,129 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBC551A049C
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Apr 2020 03:44:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7270A86457;
-	Tue,  7 Apr 2020 01:43:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RbcSmcQMV1Zc; Tue,  7 Apr 2020 01:43:59 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CB49387EAD;
-	Tue,  7 Apr 2020 01:43:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 25ADE1BF3AD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:43:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BE711A0AE6
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Apr 2020 12:16:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 14DA4821E2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:43:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 275C287D1D;
+	Tue,  7 Apr 2020 10:16:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sOzEOcSjnpN2; Tue,  7 Apr 2020 10:16:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1170587E7B;
+	Tue,  7 Apr 2020 10:16:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C57BB1BF303
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 10:16:03 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id BFDA985C9F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 10:16:03 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rtem+oV1OLv9 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Apr 2020 01:43:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtp.peak6.com (smtp.peak6.com [38.98.137.6])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D9D6086578
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:43:15 +0000 (UTC)
-Received: from pps.filterd (svachi5pprofagt1.peak6.net [127.0.0.1])
- by svachi5pprofagt1.peak6.net (8.16.0.22/8.16.0.22) with SMTP id
- 0371cZpD008705; Mon, 6 Apr 2020 20:43:11 -0500
-Received: from sswchi6pmbx4.peak6.net (sswchi6pmbx4.peak6.net [10.2.14.32])
- by svachi5pprofagt1.peak6.net with ESMTP id 306pf3951p-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA256 bits=128 verify=NOT);
- Mon, 06 Apr 2020 20:43:10 -0500
-Received: from sswchi6pmbx4.peak6.net (10.2.14.32) by sswchi6pmbx4.peak6.net
- (10.2.14.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35; Mon, 6
- Apr 2020 20:43:10 -0500
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.20.108.11) by
- sswchi6pmbx4.peak6.net (10.2.14.32) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1261.35 via Frontend Transport; Mon, 6 Apr 2020 20:43:09 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Na8tBNoAc1O1v++mAIb2F/D3WNPK6zVsPHGpbtn013bqdTBHTXZtp2dBfgmeB1M11k0o+sZvF9DCnkIrXjA4kgiNuEfVxCCh7ItZ8g2pobTwx+uvZjEKMVzD3LXm5jXO8u4OQVofhhAVO4DtUK64SjwT8HeaGn8e1XrO1fEjerz1dqr6PvVlrr7+XIXE8nzagcVMTMUYOkNhZJlGCwrIxGc6oitZpngOHV7hAd8hkPRWm7qF/UBa1vsm64QLzl7TS2IK8XczBLHdabjwPkB3NIHnXxSwcY4RYbtaOyMRxqwxtvpR6lldXYS5bugby4F7xW2TdAirt0CV0wTMBncCPQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nOGIMd65owDqK1egPrJ7Cxewj0lwtz4+8iRPpblXUhw=;
- b=UrkYad0pDCuSqQ5sdpbKi45gwX5fhR0SXhPnMtCLYc5896fq63QRKZCtViYUaYy5uT+nrpYQA32fMCyMa4lKfZV5YAZgt4hMTQ3aqqmuqDJ99zkHMTgrovd9GO+Ijk0BrCY3OaMW+0hs7vx98yqU8JVqkJZmQnoXW30KOrKsPhjJpUT+HuyecEJBhcb8qRBRlMOeVVQd6vMEFnMCS2g9S4XJnMU/yHd3t1Ri33E79MNoVbJUZbzHJ58GIrOeHvaOB+25IqTFPzWoSDMjLmNbcgNRPXtFxB7rhrYLk/fsEQA7QsTSSNV5f1CNj2a5pTkvEje9zAIJXsTHBsqbnh9mDA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=peak6.com; dmarc=pass action=none header.from=peak6.com;
- dkim=pass header.d=peak6.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=peak6group.onmicrosoft.com; s=selector1-peak6group-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nOGIMd65owDqK1egPrJ7Cxewj0lwtz4+8iRPpblXUhw=;
- b=X32RN70eHXTqOOnQ9wK0/kM5+g+js2yFIJZfUldrGPFrVwGMQt0vMU9DoIPRbOtWMoo3cnFJwmY75N2xyMaJnKJOzO1wwStTTGpCs79sbBATL08zEUMkPlL5/YH44KGFiXm87OJu8KE29+uEpgg9UQubAf/KfXq7xQPZ2tUH7MM=
-Received: from MWHPR2201MB1727.namprd22.prod.outlook.com
- (2603:10b6:301:68::17) by MWHPR2201MB1327.namprd22.prod.outlook.com
- (2603:10b6:301:1c::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15; Tue, 7 Apr
- 2020 01:43:08 +0000
-Received: from MWHPR2201MB1727.namprd22.prod.outlook.com
- ([fe80::284f:9e49:8c6b:355c]) by MWHPR2201MB1727.namprd22.prod.outlook.com
- ([fe80::284f:9e49:8c6b:355c%7]) with mapi id 15.20.2856.019; Tue, 7 Apr 2020
- 01:43:08 +0000
-From: Kevin Newman <knewman@peak6.com>
-To: "Fujinaka, Todd" <todd.fujinaka@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
-Thread-Index: AdYMJynuZXPrQwA7S++9EbW3UxM63AAM08FwAAG0guAABiI2EAAA06Jg
-Date: Tue, 7 Apr 2020 01:43:08 +0000
-Message-ID: <MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30@MWHPR2201MB1727.namprd22.prod.outlook.com>
-References: <MWHPR2201MB1727D9040A0A395978363BB0E9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
- <9B4A1B1917080E46B64F07F2989DADD69B107E30@ORSMSX115.amr.corp.intel.com>
- <MWHPR2201MB1727AB167B14105544DC5CDFE9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
- <9B4A1B1917080E46B64F07F2989DADD69B107F0B@ORSMSX115.amr.corp.intel.com>
-In-Reply-To: <9B4A1B1917080E46B64F07F2989DADD69B107F0B@ORSMSX115.amr.corp.intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [38.98.137.7]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5ebd5207-08b3-4e76-26b4-08d7da950637
-x-ms-traffictypediagnostic: MWHPR2201MB1327:
-x-microsoft-antispam-prvs: <MWHPR2201MB13277ECAAD7951D842176599E9C30@MWHPR2201MB1327.namprd22.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 036614DD9C
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR2201MB1727.namprd22.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(39830400003)(346002)(376002)(396003)(366004)(136003)(6506007)(53546011)(7696005)(33656002)(186003)(9686003)(55016002)(8676002)(81156014)(81166006)(478600001)(966005)(8936002)(30864003)(86362001)(66476007)(5660300002)(110136005)(26005)(52536014)(71200400001)(316002)(66946007)(66556008)(76116006)(2906002)(66446008)(64756008)(579004);
- DIR:OUT; SFP:1102; 
-received-spf: None (protection.outlook.com: peak6.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5TtRhjKjHn4jM6aFRdGgWAkr+jSdrvITBXwBBkqWZJ69Xjd1C0cQqVFnIfu4QnafQglUFAYKE5gH+3ajgtPnTP26iyLoSVxZA3GlkKW8+gOZUFx1KlD0nAY4GKM45hWUvxviTA9dFreQolH99G2LpwU/jJ3Idle38Uc4qFzy0eK+mLfvd3bKy9j/Ag9j73wuIOKzztT1cQzoAxuUHf8HipcwLyQhznNXicsjOKinbiT7MtVDFnLmAreNleVrOiwJE0+Tdh5lzODZz2H/GCQZLl4ITjL9VY09OX8XyFy32v3RhJVUsUEsxmxzXOw8HcGlROncCXL+OiYTZcbQxj98WNwm5FfoDFr4pizQrLuzneYxCnj7gCndgsLbsJzXGryOy24TJjI6yeuBxnsAFZXPZHvYoXhr6fQ+4sakaVYwKFyUsPrjUa+Gj4d54hfx45/eI/j6HcxorFXSiQsx8llFwzwxBz3faT54rPFnLTpnrjjbv+z/ngFv00KDkAwAcujr6wr4dZo1qhInoXX69C4B1g==
-x-ms-exchange-antispam-messagedata: 5J5GCuynZj6Gm3ROg14+qOgmr5RgbcgiN5h0sb6gm6mywRr5P6DpZhyxRgwGjd5t8SmDQLGnJnE3FV/KN5sCNkXzbmHq1Z6KJm+ENsdboomjAQWy4K0WuJtn211V8GQo9bOOkZ2xsM3v9zIfjxo07A==
-x-ms-exchange-transport-forked: True
+ with ESMTP id DxIskIJ8VTzB for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Apr 2020 10:16:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DA3C85C4C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 10:16:02 +0000 (UTC)
+IronPort-SDR: 7gd/AYeN+q2TngIgamfsd58pSfymZaMiCLQI67WiJW2tZbJV3JOj1rCU0VI1OTGYROeyHNg2Ok
+ uPY4QX/sP//A==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Apr 2020 03:16:03 -0700
+IronPort-SDR: XMnODOFYKjjldPMUlQubV6kTBDDb9Ope1FbVLj+O2xNzuE7/t2HU3etT4DlfHDvh+XgxN8QmMu
+ uSZbsb2Z2oAw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,353,1580803200"; d="scan'208";a="451172857"
+Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
+ by fmsmga005.fm.intel.com with ESMTP; 07 Apr 2020 03:15:59 -0700
+From: arkadiusz.kubalewski@intel.com
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  7 Apr 2020 10:13:59 +0000
+Message-Id: <20200407101359.14064-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5ebd5207-08b3-4e76-26b4-08d7da950637
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Apr 2020 01:43:08.4734 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: be5b5bb5-4d80-403f-bb05-3442831c26f8
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cXciXvyaZA6TmmGQ2jrtuwZAF+e/NWUg8FjpkWVfKxaq5O5MIFavCduhvvip8M1Es20Np/i2+7Nwcvkji2KciA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR2201MB1327
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
- definitions=2020-04-07_01:2020-04-07,
- 2020-04-06 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-2002250000 definitions=main-2004070011
-Subject: Re: [Intel-wired-lan] X550 + ixgbe Reporting "ECC Err" With Strange
- Regularity...
+Subject: [Intel-wired-lan] [PATCH] i40e: Add support for a new feature:
+ Total Port Shutdown
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,1395 +64,294 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4884529303732672017=="
+Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============4884529303732672017==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_"
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 
---_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Currently after requesting to down a link on a physical network port,
+the traffic is no longer being processed but the physical link
+with a link partner is still established.
 
-Such is my situation, unfortunately :( I've been going back and forth with =
-their support and they've told me that they can't talk to Intel unless I ca=
-n reproduce the error. Having seen this only 5 times in the past 4 months, =
-I don't have a reliable method for reproducing it. I've done all sorts of m=
-ulticast load tests on the NIC and haven't been able to reproduce. Yet, 5 N=
-ICs in the past few months totally dropping offline when this happens is ex=
-tremely concerning to me and damaging to our confidence in the Intel chipse=
-t. They're all X550s too. I have about 300 other that are a combinations of=
- X520 and X540 under similar load that haven't seen the issue. Happy to for=
-ward you the ticket number if that helps!
+Total Port Shutdown allows to completely shutdown the port on the
+link-down procedure by physically removing the link from the port.
 
-From: Fujinaka, Todd <todd.fujinaka@intel.com>
-Sent: Monday, April 6, 2020 8:15 PM
-To: Kevin Newman <knewman@peak6.com>; intel-wired-lan@lists.osuosl.org
-Subject: RE: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
+Introduced changes:
+- probe NVM if the feature was enabled at initialization of the port
+- special handling on link-down procedure to let FW physically
+shutdown the port if the feature was enabled
 
-This is an EXTERNAL EMAIL. STOP. THINK before you CLICK links or OPEN attac=
-hments.
+Testing Hints (required if no HSD):
+Link up/down, link-down-on-close
 
-________________________________
-I just realized as this is a Dell server, you have to go through them first=
-. Can you file a ticket with Dell?
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com> 
+---
+ drivers/net/ethernet/intel/i40e/i40e.h        |   1 +
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |   8 ++
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 125 +++++++++++++++---
+ 3 files changed, 113 insertions(+), 21 deletions(-)
 
-Thanks.
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 4833187..8a1cbeb 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -567,6 +567,7 @@ struct i40e_pf {
+ #define I40E_FLAG_DISABLE_FW_LLDP		BIT(24)
+ #define I40E_FLAG_RS_FEC			BIT(25)
+ #define I40E_FLAG_BASE_R_FEC			BIT(26)
++#define I40E_FLAG_TOTAL_PORT_SHUTDOWN		BIT(27)
+ 
+ 	struct i40e_client_instance *cinst;
+ 	bool stat_offsets_loaded;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 317f3f1..4fdb6ef 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -428,6 +428,7 @@ struct i40e_priv_flags {
+ static const struct i40e_priv_flags i40e_gstrings_priv_flags[] = {
+ 	/* NOTE: MFP setting cannot be changed */
+ 	I40E_PRIV_FLAG("MFP", I40E_FLAG_MFP_ENABLED, 1),
++	I40E_PRIV_FLAG("total-port-shutdown", I40E_FLAG_TOTAL_PORT_SHUTDOWN, 1),
+ 	I40E_PRIV_FLAG("LinkPolling", I40E_FLAG_LINK_POLLING_ENABLED, 0),
+ 	I40E_PRIV_FLAG("flow-director-atr", I40E_FLAG_FD_ATR_ENABLED, 0),
+ 	I40E_PRIV_FLAG("veb-stats", I40E_FLAG_VEB_STATS_ENABLED, 0),
+@@ -5006,6 +5007,13 @@ static int i40e_set_priv_flags(struct net_device *dev, u32 flags)
+ 			dev_warn(&pf->pdev->dev, "Cannot change FEC config\n");
+ 	}
+ 
++	if ((changed_flags & I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED) &&
++	    (orig_flags & I40E_FLAG_TOTAL_PORT_SHUTDOWN)) {
++		dev_err(&pf->pdev->dev,
++			"Setting link-down-on-close not supported on this port\n");
++		return -EOPNOTSUPP;
++	}
++
+ 	if ((changed_flags & new_flags &
+ 	     I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED) &&
+ 	    (new_flags & I40E_FLAG_MFP_ENABLED))
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 8c3e753..62a2074 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -54,7 +54,7 @@ static void i40e_fdir_sb_setup(struct i40e_pf *pf);
+ static int i40e_veb_get_bw_info(struct i40e_veb *veb);
+ static int i40e_get_capabilities(struct i40e_pf *pf,
+ 				 enum i40e_admin_queue_opc list_type);
+-
++static bool i40e_is_total_port_shutdown_enabled(struct i40e_pf *pf);
+ 
+ /* i40e_pci_tbl - PCI Device ID Table
+  *
+@@ -6672,21 +6672,6 @@ static void i40e_vsi_reinit_locked(struct i40e_vsi *vsi)
+ 	clear_bit(__I40E_CONFIG_BUSY, pf->state);
+ }
+ 
+-/**
+- * i40e_up - Bring the connection back up after being down
+- * @vsi: the VSI being configured
+- **/
+-int i40e_up(struct i40e_vsi *vsi)
+-{
+-	int err;
+-
+-	err = i40e_vsi_configure(vsi);
+-	if (!err)
+-		err = i40e_up_complete(vsi);
+-
+-	return err;
+-}
+-
+ /**
+  * i40e_force_link_state - Force the link status
+  * @pf: board private structure
+@@ -6697,10 +6682,12 @@ static i40e_status i40e_force_link_state(struct i40e_pf *pf, bool is_up)
+ 	struct i40e_aq_get_phy_abilities_resp abilities;
+ 	struct i40e_aq_set_phy_config config = {0};
+ 	struct i40e_hw *hw = &pf->hw;
++	bool non_zero_phy_type;
+ 	i40e_status err;
+ 	u64 mask;
+ 	u8 speed;
+ 
++	non_zero_phy_type = is_up;
+ 	/* Card might've been put in an unstable state by other drivers
+ 	 * and applications, which causes incorrect speed values being
+ 	 * set on startup. In order to clear speed registers, we call
+@@ -6731,8 +6718,11 @@ static i40e_status i40e_force_link_state(struct i40e_pf *pf, bool is_up)
+ 
+ 	/* If link needs to go up, but was not forced to go down,
+ 	 * and its speed values are OK, no need for a flap
++	 * if non_zero_phy_type was set, still need to force up
+ 	 */
+-	if (is_up && abilities.phy_type != 0 && abilities.link_speed != 0)
++	if (pf->flags & I40E_FLAG_TOTAL_PORT_SHUTDOWN)
++		non_zero_phy_type = true;
++	else if (is_up && abilities.phy_type != 0 && abilities.link_speed != 0)
+ 		return I40E_SUCCESS;
+ 
+ 	/* To force link we need to set bits for all supported PHY types,
+@@ -6740,10 +6730,18 @@ static i40e_status i40e_force_link_state(struct i40e_pf *pf, bool is_up)
+ 	 * across two fields.
+ 	 */
+ 	mask = I40E_PHY_TYPES_BITMASK;
+-	config.phy_type = is_up ? cpu_to_le32((u32)(mask & 0xffffffff)) : 0;
+-	config.phy_type_ext = is_up ? (u8)((mask >> 32) & 0xff) : 0;
++	config.phy_type =
++		non_zero_phy_type ? cpu_to_le32((u32)(mask & 0xffffffff)) : 0;
++	config.phy_type_ext =
++		non_zero_phy_type ? (u8)((mask >> 32) & 0xff) : 0;
+ 	/* Copy the old settings, except of phy_type */
+ 	config.abilities = abilities.abilities;
++	if (pf->flags & I40E_FLAG_TOTAL_PORT_SHUTDOWN) {
++		if (is_up)
++			config.abilities |= I40E_AQ_PHY_ENABLE_LINK;
++		else
++			config.abilities &= ~(I40E_AQ_PHY_ENABLE_LINK);
++	}
+ 	if (abilities.link_speed != 0)
+ 		config.link_speed = abilities.link_speed;
+ 	else
+@@ -6774,11 +6772,31 @@ static i40e_status i40e_force_link_state(struct i40e_pf *pf, bool is_up)
+ 		i40e_update_link_info(hw);
+ 	}
+ 
+-	i40e_aq_set_link_restart_an(hw, true, NULL);
++	i40e_aq_set_link_restart_an(hw, is_up, NULL);
+ 
+ 	return I40E_SUCCESS;
+ }
+ 
++/**
++ * i40e_up - Bring the connection back up after being down
++ * @vsi: the VSI being configured
++ **/
++int i40e_up(struct i40e_vsi *vsi)
++{
++	int err;
++
++	if (vsi->type == I40E_VSI_MAIN &&
++	    (vsi->back->flags & I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED ||
++	     vsi->back->flags & I40E_FLAG_TOTAL_PORT_SHUTDOWN))
++		i40e_force_link_state(vsi->back, true);
++
++	err = i40e_vsi_configure(vsi);
++	if (!err)
++		err = i40e_up_complete(vsi);
++
++	return err;
++}
++
+ /**
+  * i40e_down - Shutdown the connection processing
+  * @vsi: the VSI being stopped
+@@ -6797,7 +6815,8 @@ void i40e_down(struct i40e_vsi *vsi)
+ 	i40e_vsi_disable_irq(vsi);
+ 	i40e_vsi_stop_rings(vsi);
+ 	if (vsi->type == I40E_VSI_MAIN &&
+-	    vsi->back->flags & I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED)
++	   (vsi->back->flags & I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED ||
++	    vsi->back->flags & I40E_FLAG_TOTAL_PORT_SHUTDOWN))
+ 		i40e_force_link_state(vsi->back, false);
+ 	i40e_napi_disable_all(vsi);
+ 
+@@ -11837,6 +11856,60 @@ i40e_status i40e_commit_partition_bw_setting(struct i40e_pf *pf)
+ 	return ret;
+ }
+ 
++/**
++ * i40e_is_total_port_shutdown_enabled - read nvm and return value
++ * if total port shutdown feature is enabled for this pf
++ * @pf: board private structure
++ **/
++static bool i40e_is_total_port_shutdown_enabled(struct i40e_pf *pf)
++{
++#define I40E_TOTAL_PORT_SHUTDOWN_ENABLED	BIT(4)
++#define I40E_FEATURES_ENABLE_PTR		0x2A
++#define I40E_CURRENT_SETTING_PTR		0x2B
++#define I40E_LINK_BEHAVIOR_WORD_OFFSET		0x2D
++#define I40E_LINK_BEHAVIOR_WORD_LENGTH		0x1
++#define I40E_LINK_BEHAVIOR_OS_FORCED_ENABLED	BIT(0)
++#define I40E_LINK_BEHAVIOR_PORT_BIT_LENGTH	4
++	i40e_status read_status = I40E_SUCCESS;
++	u16 sr_emp_sr_settings_ptr = 0;
++	u16 features_enable = 0;
++	u16 link_behavior = 0;
++	bool ret = false;
++
++	read_status = i40e_read_nvm_word(&pf->hw,
++					 I40E_SR_EMP_SR_SETTINGS_PTR,
++					 &sr_emp_sr_settings_ptr);
++	if (read_status)
++		goto err_nvm;
++	read_status = i40e_read_nvm_word(&pf->hw,
++					 sr_emp_sr_settings_ptr +
++					 I40E_FEATURES_ENABLE_PTR,
++					 &features_enable);
++	if (read_status)
++		goto err_nvm;
++	if (I40E_TOTAL_PORT_SHUTDOWN_ENABLED & features_enable) {
++		read_status =
++		i40e_read_nvm_module_data(&pf->hw,
++					  I40E_SR_EMP_SR_SETTINGS_PTR,
++					  I40E_CURRENT_SETTING_PTR,
++					  I40E_LINK_BEHAVIOR_WORD_OFFSET,
++					  I40E_LINK_BEHAVIOR_WORD_LENGTH,
++					  &link_behavior);
++		if (read_status)
++			goto err_nvm;
++		link_behavior >>=
++		(pf->hw.port * I40E_LINK_BEHAVIOR_PORT_BIT_LENGTH);
++		ret = I40E_LINK_BEHAVIOR_OS_FORCED_ENABLED & link_behavior;
++	}
++	return ret;
++
++err_nvm:
++	dev_warn(&pf->pdev->dev,
++		 "Total Port Shutdown feature is off due to read nvm error:%d\n",
++		 read_status);
++	return ret;
++}
++
+ /**
+  * i40e_sw_init - Initialize general software structures (struct i40e_pf)
+  * @pf: board private structure to initialize
+@@ -12012,6 +12085,16 @@ static int i40e_sw_init(struct i40e_pf *pf)
+ 
+ 	pf->tx_timeout_recovery_level = 1;
+ 
++	if (pf->hw.mac.type != I40E_MAC_X722 &&
++	    i40e_is_total_port_shutdown_enabled(pf)) {
++		/* Link down on close must be on when total port shutdown
++		 * is enabled for a given port
++		 */
++		pf->flags |= (I40E_FLAG_TOTAL_PORT_SHUTDOWN
++			  | I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED);
++		dev_info(&pf->pdev->dev,
++			 "Total Port Shutdown is enabled, link-down-on-close forced on\n");
++	}
+ 	mutex_init(&pf->switch_mutex);
+ 
+ sw_init_done:
+-- 
+2.26.0
 
-Todd Fujinaka
-Software Application Engineer
-Data Center Group
-Intel Corporation
-todd.fujinaka@intel.com<mailto:todd.fujinaka@intel.com>
+--------------------------------------------------------------------
 
-From: Kevin Newman <knewman@peak6.com<mailto:knewman@peak6.com>>
-Sent: Monday, April 6, 2020 3:19 PM
-To: Fujinaka, Todd <todd.fujinaka@intel.com<mailto:todd.fujinaka@intel.com>=
->; intel-wired-lan@lists.osuosl.org<mailto:intel-wired-lan@lists.osuosl.org=
->
-Subject: RE: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
+Intel Technology Poland sp. z o.o.
+ul. Slowackiego 173 | 80-298 Gdansk | Sad Rejonowy Gdansk Polnoc | VII Wydzial Gospodarczy Krajowego Rejestru Sadowego - KRS 101882 | NIP 957-07-52-316 | Kapital zakladowy 200.000 PLN.
 
-Sure. Just booted a few days ago actually. Full dmesg log attached (ends wi=
-th me hard booting the server).
-
-
-From: Fujinaka, Todd <todd.fujinaka@intel.com<mailto:todd.fujinaka@intel.co=
-m>>
-Sent: Monday, April 6, 2020 4:32 PM
-To: Kevin Newman <knewman@peak6.com<mailto:knewman@peak6.com>>; intel-wired=
--lan@lists.osuosl.org<mailto:intel-wired-lan@lists.osuosl.org>
-Subject: RE: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
-
-This is an EXTERNAL EMAIL. STOP. THINK before you CLICK links or OPEN attac=
-hments.
-
-________________________________
-Unfortunately, the "ECC Error" bit in the ICR is overloaded and could be ca=
-used by other things. Do you have a dmesg we can look at? (The whole thing =
-from boot to the error?)
-
-Todd Fujinaka
-Software Application Engineer
-Data Center Group
-Intel Corporation
-todd.fujinaka@intel.com<mailto:todd.fujinaka@intel.com>
-
-From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org<mailto:intel-wire=
-d-lan-bounces@osuosl.org>> On Behalf Of Kevin Newman
-Sent: Monday, April 6, 2020 8:22 AM
-To: intel-wired-lan@lists.osuosl.org<mailto:intel-wired-lan@lists.osuosl.or=
-g>
-Subject: [Intel-wired-lan] X550 + ixgbe Reporting "ECC Err" With Strange Re=
-gularity...
-
-Hi,
-
-I'm seeing a strangely high incidence of the following type of "ECC error" =
-on X550 NICs running ixgbe 5.1.0 via kernel 4.15.0:
-
-2020-04-06T08:35:16.077662-05:00 dell-server1 kernel: [155528.916479] ixgbe=
- 0000:19:00.1 eno2: Received ECC Err, initiating reset
-2020-04-06T08:35:16.077684-05:00 dell-server1 kernel: [155528.916480] ixgbe=
- 0000:19:00.0 eno1: Received ECC Err, initiating reset
-2020-04-06T08:35:16.077685-05:00 dell-server1 kernel: [155528.916491] ixgbe=
- 0000:19:00.0 eno1: Reset adapter
-2020-04-06T08:35:16.090422-05:00 dell-server1 kernel: [155528.930407] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 0 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.090439-05:00 dell-server1 kernel: [155528.930572] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 1 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.090440-05:00 dell-server1 kernel: [155528.930721] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 2 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.090440-05:00 dell-server1 kernel: [155528.930877] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 3 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.090442-05:00 dell-server1 kernel: [155528.931032] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 4 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.090443-05:00 dell-server1 kernel: [155528.931188] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 5 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.094301-05:00 dell-server1 kernel: [155528.933193] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 6 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.094319-05:00 dell-server1 kernel: [155528.935148] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 7 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.098055-05:00 dell-server1 kernel: [155528.937064] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 8 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.098062-05:00 dell-server1 kernel: [155528.938939] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 9 not cleared within the poll=
-ing period
-2020-04-06T08:35:16.101678-05:00 dell-server1 kernel: [155528.940816] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 10 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.101685-05:00 dell-server1 kernel: [155528.942620] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 11 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.106751-05:00 dell-server1 kernel: [155528.944435] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 12 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.106759-05:00 dell-server1 kernel: [155528.946149] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 13 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.106760-05:00 dell-server1 kernel: [155528.947827] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 14 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.109948-05:00 dell-server1 kernel: [155528.949507] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 15 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.109955-05:00 dell-server1 kernel: [155528.951112] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 16 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.114513-05:00 dell-server1 kernel: [155528.952707] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 17 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.114522-05:00 dell-server1 kernel: [155528.954248] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 18 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.114528-05:00 dell-server1 kernel: [155528.955757] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 19 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.118763-05:00 dell-server1 kernel: [155528.957271] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 20 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.118769-05:00 dell-server1 kernel: [155528.958751] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 21 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.118770-05:00 dell-server1 kernel: [155528.960153] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 22 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.122679-05:00 dell-server1 kernel: [155528.961525] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 23 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.122690-05:00 dell-server1 kernel: [155528.962851] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 24 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.122691-05:00 dell-server1 kernel: [155528.964160] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 25 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.126155-05:00 dell-server1 kernel: [155528.965440] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 26 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.126167-05:00 dell-server1 kernel: [155528.966637] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 27 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.126168-05:00 dell-server1 kernel: [155528.967767] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 28 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.130187-05:00 dell-server1 kernel: [155528.968913] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 29 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.130206-05:00 dell-server1 kernel: [155528.969974] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 30 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.130207-05:00 dell-server1 kernel: [155528.971011] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 31 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.130208-05:00 dell-server1 kernel: [155528.971998] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 32 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.134180-05:00 dell-server1 kernel: [155528.972946] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 33 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.134192-05:00 dell-server1 kernel: [155528.973828] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 34 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.134193-05:00 dell-server1 kernel: [155528.974679] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 35 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.134194-05:00 dell-server1 kernel: [155528.975470] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 36 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.134195-05:00 dell-server1 kernel: [155528.976227] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 37 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.137630-05:00 dell-server1 kernel: [155528.976933] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 38 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.137641-05:00 dell-server1 kernel: [155528.977592] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 39 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.137642-05:00 dell-server1 kernel: [155528.978215] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 40 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.137643-05:00 dell-server1 kernel: [155528.978796] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 41 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.137644-05:00 dell-server1 kernel: [155528.979335] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 42 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.137645-05:00 dell-server1 kernel: [155528.979830] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 43 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141629-05:00 dell-server1 kernel: [155528.980314] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 44 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141640-05:00 dell-server1 kernel: [155528.980712] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 45 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141641-05:00 dell-server1 kernel: [155528.981079] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 46 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141642-05:00 dell-server1 kernel: [155528.981433] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 47 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141649-05:00 dell-server1 kernel: [155528.981761] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 48 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141650-05:00 dell-server1 kernel: [155528.982083] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 49 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141651-05:00 dell-server1 kernel: [155528.982414] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 50 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141652-05:00 dell-server1 kernel: [155528.982735] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 51 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141652-05:00 dell-server1 kernel: [155528.983061] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 52 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141722-05:00 dell-server1 kernel: [155528.983390] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 53 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141738-05:00 dell-server1 kernel: [155528.983703] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 54 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141740-05:00 dell-server1 kernel: [155528.984032] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 55 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.141748-05:00 dell-server1 kernel: [155528.984375] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 56 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.145642-05:00 dell-server1 kernel: [155528.984697] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 57 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.145653-05:00 dell-server1 kernel: [155528.985012] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 58 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.145654-05:00 dell-server1 kernel: [155528.985316] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 59 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.145655-05:00 dell-server1 kernel: [155528.985624] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 60 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.145690-05:00 dell-server1 kernel: [155528.985936] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 61 not cleared within the pol=
-ling period
-2020-04-06T08:35:16.145691-05:00 dell-server1 kernel: [155528.986246] ixgbe=
- 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 62 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.037635-05:00 dell-server1 kernel: [155529.877028] ixgbe=
- 0000:19:00.1 eno2: Reset adapter
-2020-04-06T08:35:17.037648-05:00 dell-server1 kernel: [155529.877044] ixgbe=
- 0000:19:00.0 eno1: speed changed to 0 for port eno1
-2020-04-06T08:35:17.049728-05:00 dell-server1 kernel: [155529.891566] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 0 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.049734-05:00 dell-server1 kernel: [155529.891856] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 1 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.049736-05:00 dell-server1 kernel: [155529.892133] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 2 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053617-05:00 dell-server1 kernel: [155529.892410] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 3 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053621-05:00 dell-server1 kernel: [155529.892665] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 4 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053621-05:00 dell-server1 kernel: [155529.892917] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 5 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053622-05:00 dell-server1 kernel: [155529.893170] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 6 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053622-05:00 dell-server1 kernel: [155529.893420] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 7 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053623-05:00 dell-server1 kernel: [155529.893670] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 8 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053625-05:00 dell-server1 kernel: [155529.893921] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 9 not cleared within the poll=
-ing period
-2020-04-06T08:35:17.053626-05:00 dell-server1 kernel: [155529.894171] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 10 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053626-05:00 dell-server1 kernel: [155529.894430] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 11 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053627-05:00 dell-server1 kernel: [155529.894688] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 12 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053628-05:00 dell-server1 kernel: [155529.894945] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 13 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053629-05:00 dell-server1 kernel: [155529.895201] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 14 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053630-05:00 dell-server1 kernel: [155529.895458] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 15 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053630-05:00 dell-server1 kernel: [155529.895715] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 16 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053700-05:00 dell-server1 kernel: [155529.895971] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 17 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.053722-05:00 dell-server1 kernel: [155529.896235] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 18 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057692-05:00 dell-server1 kernel: [155529.896519] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 19 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057697-05:00 dell-server1 kernel: [155529.896775] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 20 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057698-05:00 dell-server1 kernel: [155529.897029] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 21 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057699-05:00 dell-server1 kernel: [155529.897285] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 22 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057699-05:00 dell-server1 kernel: [155529.897540] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 23 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057700-05:00 dell-server1 kernel: [155529.897796] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 24 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057701-05:00 dell-server1 kernel: [155529.898049] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 25 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057705-05:00 dell-server1 kernel: [155529.898309] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 26 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057706-05:00 dell-server1 kernel: [155529.898562] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 27 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057708-05:00 dell-server1 kernel: [155529.898815] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 28 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057710-05:00 dell-server1 kernel: [155529.899069] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 29 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057711-05:00 dell-server1 kernel: [155529.899322] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 30 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057713-05:00 dell-server1 kernel: [155529.899575] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 31 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057715-05:00 dell-server1 kernel: [155529.899828] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 32 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.057716-05:00 dell-server1 kernel: [155529.900082] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 33 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061626-05:00 dell-server1 kernel: [155529.900350] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 34 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061632-05:00 dell-server1 kernel: [155529.900605] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 35 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061633-05:00 dell-server1 kernel: [155529.900859] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 36 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061633-05:00 dell-server1 kernel: [155529.901114] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 37 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061634-05:00 dell-server1 kernel: [155529.901368] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 38 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061635-05:00 dell-server1 kernel: [155529.901622] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 39 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061636-05:00 dell-server1 kernel: [155529.901876] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 40 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061637-05:00 dell-server1 kernel: [155529.902130] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 41 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061641-05:00 dell-server1 kernel: [155529.902383] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 42 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061642-05:00 dell-server1 kernel: [155529.902636] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 43 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061643-05:00 dell-server1 kernel: [155529.902890] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 44 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061643-05:00 dell-server1 kernel: [155529.903145] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 45 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061644-05:00 dell-server1 kernel: [155529.903383] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 46 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061656-05:00 dell-server1 kernel: [155529.903616] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 47 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061658-05:00 dell-server1 kernel: [155529.903836] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 48 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.061659-05:00 dell-server1 kernel: [155529.904054] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 49 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065643-05:00 dell-server1 kernel: [155529.904286] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 50 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065655-05:00 dell-server1 kernel: [155529.904510] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 51 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065656-05:00 dell-server1 kernel: [155529.904730] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 52 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065661-05:00 dell-server1 kernel: [155529.904950] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 53 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065662-05:00 dell-server1 kernel: [155529.905170] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 54 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065670-05:00 dell-server1 kernel: [155529.905389] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 55 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065671-05:00 dell-server1 kernel: [155529.905608] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 56 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065672-05:00 dell-server1 kernel: [155529.905827] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 57 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065673-05:00 dell-server1 kernel: [155529.906039] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 58 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065674-05:00 dell-server1 kernel: [155529.906250] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 59 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065674-05:00 dell-server1 kernel: [155529.906462] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 60 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065675-05:00 dell-server1 kernel: [155529.906674] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 61 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.065676-05:00 dell-server1 kernel: [155529.906885] ixgbe=
- 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 62 not cleared within the pol=
-ling period
-2020-04-06T08:35:17.965630-05:00 dell-server1 kernel: [155530.804204] bond0=
-: link status definitely down for interface eno1, disabling it
-2020-04-06T08:35:17.965648-05:00 dell-server1 kernel: [155530.804272] bond0=
-: link status definitely down for interface eno2, disabling it
-2020-04-06T08:35:17.965649-05:00 dell-server1 kernel: [155530.804274] bond0=
-: now running without any active interface!
-2020-04-06T08:35:18.069645-05:00 dell-server1 kernel: [155530.908165] bond0=
-: link status definitely down for interface eno2, disabling it
-2020-04-06T08:35:22.137624-05:00 dell-server1 kernel: [155534.976629] ixgbe=
- 0000:19:00.0 eno1: NIC Link is Up 10 Gbps, Flow Control: None
-2020-04-06T08:35:22.141618-05:00 dell-server1 kernel: [155534.979784] bond0=
-: link status definitely up for interface eno1, 10000 Mbps full duplex
-2020-04-06T08:35:22.141627-05:00 dell-server1 kernel: [155534.979791] bond0=
-: first active interface up!
-2020-04-06T08:35:23.005627-05:00 dell-server1 kernel: [155535.844845] ixgbe=
- 0000:19:00.1 eno2: NIC Link is Up 10 Gbps, Flow Control: None
-2020-04-06T08:35:23.077611-05:00 dell-server1 kernel: [155535.915696] bond0=
-: link status definitely up for interface eno2, 10000 Mbps full duplex
-2020-04-06T08:35:25.256404-05:00 dell-server1 kernel: [155538.083623] ixgbe=
- 0000:19:00.0 eno1: Detected Tx Unit Hang
-2020-04-06T08:35:25.256418-05:00 dell-server1 kernel: [155538.083623]   Tx =
-Queue             <39>
-2020-04-06T08:35:25.256419-05:00 dell-server1 kernel: [155538.083623]   TDH=
-, TDT             <0>, <d>
-2020-04-06T08:35:25.256420-05:00 dell-server1 kernel: [155538.083623]   nex=
-t_to_use          <d>
-2020-04-06T08:35:25.256421-05:00 dell-server1 kernel: [155538.083623]   nex=
-t_to_clean        <0>
-2020-04-06T08:35:25.256421-05:00 dell-server1 kernel: [155538.083623] tx_bu=
-ffer_info[next_to_clean]
-2020-04-06T08:35:25.256422-05:00 dell-server1 kernel: [155538.083623]   tim=
-e_stamp           <1025039c7>
-2020-04-06T08:35:25.256422-05:00 dell-server1 kernel: [155538.083623]   jif=
-fies              <102503cb8>
-2020-04-06T08:35:25.256423-05:00 dell-server1 kernel: [155538.083626] ixgbe=
- 0000:19:00.0 eno1: Detected Tx Unit Hang
-2020-04-06T08:35:25.256424-05:00 dell-server1 kernel: [155538.083626]   Tx =
-Queue             <35>
-2020-04-06T08:35:25.256425-05:00 dell-server1 kernel: [155538.083626]   TDH=
-, TDT             <0>, <6>
-2020-04-06T08:35:25.256425-05:00 dell-server1 kernel: [155538.083626]   nex=
-t_to_use          <6>
-2020-04-06T08:35:25.256425-05:00 dell-server1 kernel: [155538.083626]   nex=
-t_to_clean        <0>
-2020-04-06T08:35:25.256439-05:00 dell-server1 kernel: [155538.083626] tx_bu=
-ffer_info[next_to_clean]
-2020-04-06T08:35:25.256440-05:00 dell-server1 kernel: [155538.083626]   tim=
-e_stamp           <1025039e0>
-2020-04-06T08:35:25.256441-05:00 dell-server1 kernel: [155538.083626]   jif=
-fies              <102503cb8>
-2020-04-06T08:35:25.256443-05:00 dell-server1 kernel: [155538.083629] ixgbe=
- 0000:19:00.0 eno1: Detected Tx Unit Hang
-2020-04-06T08:35:25.256444-05:00 dell-server1 kernel: [155538.083629]   Tx =
-Queue             <52>
-2020-04-06T08:35:25.256445-05:00 dell-server1 kernel: [155538.083629]   TDH=
-, TDT             <0>, <3>
-2020-04-06T08:35:25.256445-05:00 dell-server1 kernel: [155538.083629]   nex=
-t_to_use          <3>
-2020-04-06T08:35:25.256449-05:00 dell-server1 kernel: [155538.083629]   nex=
-t_to_clean        <0>
-2020-04-06T08:35:25.256450-05:00 dell-server1 kernel: [155538.083629] tx_bu=
-ffer_info[next_to_clean]
-2020-04-06T08:35:25.256451-05:00 dell-server1 kernel: [155538.083629]   tim=
-e_stamp           <102503a08>
-2020-04-06T08:35:25.256453-05:00 dell-server1 kernel: [155538.083629]   jif=
-fies              <102503cb8>
-2020-04-06T08:35:25.256454-05:00 dell-server1 kernel: [155538.083632] ixgbe=
- 0000:19:00.0 eno1: Detected Tx Unit Hang
-2020-04-06T08:35:25.256456-05:00 dell-server1 kernel: [155538.083632]   Tx =
-Queue             <56>
-2020-04-06T08:35:25.256458-05:00 dell-server1 kernel: [155538.083632]   TDH=
-, TDT             <0>, <4>
-2020-04-06T08:35:25.256460-05:00 dell-server1 kernel: [155538.083632]   nex=
-t_to_use          <4>
-2020-04-06T08:35:25.256461-05:00 dell-server1 kernel: [155538.083632]   nex=
-t_to_clean        <0>
-2020-04-06T08:35:25.256463-05:00 dell-server1 kernel: [155538.083632] tx_bu=
-ffer_info[next_to_clean]
-2020-04-06T08:35:25.256464-05:00 dell-server1 kernel: [155538.083632]   tim=
-e_stamp           <1025039f0>
-2020-04-06T08:35:25.256467-05:00 dell-server1 kernel: [155538.083632]   jif=
-fies              <102503cb8>
-2020-04-06T08:35:25.256469-05:00 dell-server1 kernel: [155538.083634] ixgbe=
- 0000:19:00.0 eno1: Detected Tx Unit Hang
-2020-04-06T08:35:25.256470-05:00 dell-server1 kernel: [155538.083634]   Tx =
-Queue             <55>
-(...and this process repeats itself, even after rmmod'ing ixgbe and modprob=
-e'ing it back...)
-
-The reason I say it's a high incidence is that we have about 100 of these N=
-ICs and have already seen it on 4 or 5 of them. 3 of them were on 19.0 firm=
-ware when it happened but this latest one was on 19.5 firmware when it happ=
-ened.
-
-I'm skeptical of this "ECC Err" that triggers it since they're all fairly n=
-ew servers and having bad memory on that many NICs is still abnormally high=
-. In that same vein, the main system DIMMs don't report any errors or anyth=
-ing to indicate that there are multi-bit or even single-bit errors going on=
-.
-
-Are there any further diagnostic tools I could use to figure out what's goi=
-ng on here? I can't seem to reproduce the issue by sending high packet load=
- at the cards or anything. Or is this a bug that you all are aware of?
-
-
-Thanks!
-
--Kevin
-
-
-
-________________________________
-See http://www.peak6.com/email_disclaimer/ for terms and conditions related=
- to this email
-
---_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
-o\:* {behavior:url(#default#VML);}
-w\:* {behavior:url(#default#VML);}
-.shape {behavior:url(#default#VML);}
-</style><![endif]--><style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#0563C1;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:#954F72;
-	text-decoration:underline;}
-p.msonormal0, li.msonormal0, div.msonormal0
-	{mso-style-name:msonormal;
-	mso-margin-top-alt:auto;
-	margin-right:0in;
-	mso-margin-bottom-alt:auto;
-	margin-left:0in;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-span.EmailStyle18
-	{mso-style-type:personal;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-span.EmailStyle19
-	{mso-style-type:personal;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-span.EmailStyle20
-	{mso-style-type:personal;
-	font-family:"Calibri",sans-serif;
-	color:#1F497D;}
-span.EmailStyle21
-	{mso-style-type:personal;
-	font-family:"Calibri",sans-serif;
-	color:windowtext;}
-span.EmailStyle22
-	{mso-style-type:personal-reply;
-	font-family:"Calibri",sans-serif;
-	color:#1F497D;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-size:10.0pt;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style><!--[if gte mso 9]><xml>
-<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
-<o:shapelayout v:ext=3D"edit">
-<o:idmap v:ext=3D"edit" data=3D"1" />
-</o:shapelayout></xml><![endif]-->
-</head>
-<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Such is my situation, =
-unfortunately :( I&#8217;ve been going back and forth with their support an=
-d they&#8217;ve told me that they can&#8217;t talk to Intel unless I can re=
-produce the error. Having seen this only 5 times in the
- past 4 months, I don&#8217;t have a reliable method for reproducing it. I&=
-#8217;ve done all sorts of multicast load tests on the NIC and haven&#8217;=
-t been able to reproduce. Yet, 5 NICs in the past few months totally droppi=
-ng offline when this happens is extremely concerning
- to me and damaging to our confidence in the Intel chipset. They&#8217;re a=
-ll X550s too. I have about 300 other that are a combinations of X520 and X5=
-40 under similar load that haven&#8217;t seen the issue. Happy to forward y=
-ou the ticket number if that helps!<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
-n></p>
-<div>
-<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
-0in 0in">
-<p class=3D"MsoNormal"><b>From:</b> Fujinaka, Todd &lt;todd.fujinaka@intel.=
-com&gt; <br>
-<b>Sent:</b> Monday, April 6, 2020 8:15 PM<br>
-<b>To:</b> Kevin Newman &lt;knewman@peak6.com&gt;; intel-wired-lan@lists.os=
-uosl.org<br>
-<b>Subject:</b> RE: X550 &#43; ixgbe Reporting &quot;ECC Err&quot; With Str=
-ange Regularity...<o:p></o:p></p>
-</div>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span s=
-tyle=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;colo=
-r:red">This is an EXTERNAL EMAIL. STOP. THINK before you CLICK links or OPE=
-N attachments.</span><span style=3D"font-size:12.0pt;font-family:&quot;Time=
-s New Roman&quot;,serif"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
-mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
-<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
- style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
-<hr size=3D"2" width=3D"100%" align=3D"center">
-</span></div>
-<p class=3D"MsoNormal">I just realized as this is a Dell server, you have t=
-o go through them first. Can you file a ticket with Dell?<o:p></o:p></p>
-<p class=3D"MsoNormal"><br>
-Thanks.<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<div>
-<p class=3D"MsoNormal"><b><span style=3D"color:black">Todd Fujinaka</span><=
-/b><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,=
-serif;color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Softwar=
-e Application Engineer</span><span style=3D"color:black"><o:p></o:p></span>=
-</p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Data Ce=
-nter Group</span><span style=3D"color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Intel C=
-orporation</span><span style=3D"color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><u><span style=3D"font-size:10.0pt;color:black"><a h=
-ref=3D"mailto:todd.fujinaka@intel.com">todd.fujinaka@intel.com</a></span><s=
-pan style=3D"color:black"><o:p></o:p></span></u></p>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<div>
-<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
-0in 0in">
-<p class=3D"MsoNormal"><b>From:</b> Kevin Newman &lt;<a href=3D"mailto:knew=
-man@peak6.com">knewman@peak6.com</a>&gt;
-<br>
-<b>Sent:</b> Monday, April 6, 2020 3:19 PM<br>
-<b>To:</b> Fujinaka, Todd &lt;<a href=3D"mailto:todd.fujinaka@intel.com">to=
-dd.fujinaka@intel.com</a>&gt;;
-<a href=3D"mailto:intel-wired-lan@lists.osuosl.org">intel-wired-lan@lists.o=
-suosl.org</a><br>
-<b>Subject:</b> RE: X550 &#43; ixgbe Reporting &quot;ECC Err&quot; With Str=
-ange Regularity...<o:p></o:p></p>
-</div>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Sure. Just booted a fe=
-w days ago actually. Full dmesg log attached (ends with me hard booting the=
- server).<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
-n></p>
-<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
-n></p>
-<div>
-<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
-0in 0in">
-<p class=3D"MsoNormal"><b>From:</b> Fujinaka, Todd &lt;<a href=3D"mailto:to=
-dd.fujinaka@intel.com">todd.fujinaka@intel.com</a>&gt;
-<br>
-<b>Sent:</b> Monday, April 6, 2020 4:32 PM<br>
-<b>To:</b> Kevin Newman &lt;<a href=3D"mailto:knewman@peak6.com">knewman@pe=
-ak6.com</a>&gt;;
-<a href=3D"mailto:intel-wired-lan@lists.osuosl.org">intel-wired-lan@lists.o=
-suosl.org</a><br>
-<b>Subject:</b> RE: X550 &#43; ixgbe Reporting &quot;ECC Err&quot; With Str=
-ange Regularity...<o:p></o:p></p>
-</div>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span s=
-tyle=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;colo=
-r:red">This is an EXTERNAL EMAIL. STOP. THINK before you CLICK links or OPE=
-N attachments.</span><span style=3D"font-size:12.0pt;font-family:&quot;Time=
-s New Roman&quot;,serif"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
-mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
-<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
- style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
-<hr size=3D"2" width=3D"100%" align=3D"center">
-</span></div>
-<p class=3D"MsoNormal">Unfortunately, the &#8220;ECC Error&#8221; bit in th=
-e ICR is overloaded and could be caused by other things. Do you have a dmes=
-g we can look at? (The whole thing from boot to the error?)<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<div>
-<p class=3D"MsoNormal"><b><span style=3D"color:black">Todd Fujinaka</span><=
-/b><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,=
-serif;color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Softwar=
-e Application Engineer</span><span style=3D"color:black"><o:p></o:p></span>=
-</p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Data Ce=
-nter Group</span><span style=3D"color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Intel C=
-orporation</span><span style=3D"color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><u><span style=3D"font-size:10.0pt;color:black"><a h=
-ref=3D"mailto:todd.fujinaka@intel.com">todd.fujinaka@intel.com</a></span><s=
-pan style=3D"color:black"><o:p></o:p></span></u></p>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<div>
-<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
-0in 0in">
-<p class=3D"MsoNormal"><b>From:</b> Intel-wired-lan &lt;<a href=3D"mailto:i=
-ntel-wired-lan-bounces@osuosl.org">intel-wired-lan-bounces@osuosl.org</a>&g=
-t;
-<b>On Behalf Of </b>Kevin Newman<br>
-<b>Sent:</b> Monday, April 6, 2020 8:22 AM<br>
-<b>To:</b> <a href=3D"mailto:intel-wired-lan@lists.osuosl.org">intel-wired-=
-lan@lists.osuosl.org</a><br>
-<b>Subject:</b> [Intel-wired-lan] X550 &#43; ixgbe Reporting &quot;ECC Err&=
-quot; With Strange Regularity...<o:p></o:p></p>
-</div>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">Hi,<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">I&#8217;m seeing a strangely high incidence of the f=
-ollowing type of &#8220;ECC error&#8221; on X550 NICs running ixgbe 5.1.0 v=
-ia kernel 4.15.0:<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.077662-05:00 dell-server1 kernel=
-: [155528.916479] ixgbe 0000:19:00.1 eno2: Received ECC Err, initiating res=
-et<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.077684-05:00 dell-server1 kernel=
-: [155528.916480] ixgbe 0000:19:00.0 eno1: Received ECC Err, initiating res=
-et<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.077685-05:00 dell-server1 kernel=
-: [155528.916491] ixgbe 0000:19:00.0 eno1: Reset adapter<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.090422-05:00 dell-server1 kernel=
-: [155528.930407] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 0 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.090439-05:00 dell-server1 kernel=
-: [155528.930572] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 1 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.090440-05:00 dell-server1 kernel=
-: [155528.930721] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 2 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.090440-05:00 dell-server1 kernel=
-: [155528.930877] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 3 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.090442-05:00 dell-server1 kernel=
-: [155528.931032] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 4 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.090443-05:00 dell-server1 kernel=
-: [155528.931188] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 5 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.094301-05:00 dell-server1 kernel=
-: [155528.933193] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 6 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.094319-05:00 dell-server1 kernel=
-: [155528.935148] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 7 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.098055-05:00 dell-server1 kernel=
-: [155528.937064] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 8 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.098062-05:00 dell-server1 kernel=
-: [155528.938939] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 9 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.101678-05:00 dell-server1 kernel=
-: [155528.940816] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 10 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.101685-05:00 dell-server1 kernel=
-: [155528.942620] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 11 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.106751-05:00 dell-server1 kernel=
-: [155528.944435] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 12 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.106759-05:00 dell-server1 kernel=
-: [155528.946149] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 13 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.106760-05:00 dell-server1 kernel=
-: [155528.947827] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 14 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.109948-05:00 dell-server1 kernel=
-: [155528.949507] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 15 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.109955-05:00 dell-server1 kernel=
-: [155528.951112] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 16 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.114513-05:00 dell-server1 kernel=
-: [155528.952707] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 17 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.114522-05:00 dell-server1 kernel=
-: [155528.954248] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 18 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.114528-05:00 dell-server1 kernel=
-: [155528.955757] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 19 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.118763-05:00 dell-server1 kernel=
-: [155528.957271] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 20 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.118769-05:00 dell-server1 kernel=
-: [155528.958751] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 21 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.118770-05:00 dell-server1 kernel=
-: [155528.960153] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 22 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.122679-05:00 dell-server1 kernel=
-: [155528.961525] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 23 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.122690-05:00 dell-server1 kernel=
-: [155528.962851] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 24 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.122691-05:00 dell-server1 kernel=
-: [155528.964160] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 25 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.126155-05:00 dell-server1 kernel=
-: [155528.965440] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 26 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.126167-05:00 dell-server1 kernel=
-: [155528.966637] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 27 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.126168-05:00 dell-server1 kernel=
-: [155528.967767] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 28 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.130187-05:00 dell-server1 kernel=
-: [155528.968913] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 29 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.130206-05:00 dell-server1 kernel=
-: [155528.969974] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 30 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.130207-05:00 dell-server1 kernel=
-: [155528.971011] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 31 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.130208-05:00 dell-server1 kernel=
-: [155528.971998] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 32 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.134180-05:00 dell-server1 kernel=
-: [155528.972946] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 33 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.134192-05:00 dell-server1 kernel=
-: [155528.973828] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 34 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.134193-05:00 dell-server1 kernel=
-: [155528.974679] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 35 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.134194-05:00 dell-server1 kernel=
-: [155528.975470] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 36 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.134195-05:00 dell-server1 kernel=
-: [155528.976227] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 37 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.137630-05:00 dell-server1 kernel=
-: [155528.976933] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 38 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.137641-05:00 dell-server1 kernel=
-: [155528.977592] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 39 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.137642-05:00 dell-server1 kernel=
-: [155528.978215] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 40 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.137643-05:00 dell-server1 kernel=
-: [155528.978796] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 41 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.137644-05:00 dell-server1 kernel=
-: [155528.979335] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 42 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.137645-05:00 dell-server1 kernel=
-: [155528.979830] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 43 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141629-05:00 dell-server1 kernel=
-: [155528.980314] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 44 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141640-05:00 dell-server1 kernel=
-: [155528.980712] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 45 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141641-05:00 dell-server1 kernel=
-: [155528.981079] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 46 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141642-05:00 dell-server1 kernel=
-: [155528.981433] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 47 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141649-05:00 dell-server1 kernel=
-: [155528.981761] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 48 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141650-05:00 dell-server1 kernel=
-: [155528.982083] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 49 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141651-05:00 dell-server1 kernel=
-: [155528.982414] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 50 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141652-05:00 dell-server1 kernel=
-: [155528.982735] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 51 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141652-05:00 dell-server1 kernel=
-: [155528.983061] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 52 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141722-05:00 dell-server1 kernel=
-: [155528.983390] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 53 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141738-05:00 dell-server1 kernel=
-: [155528.983703] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 54 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141740-05:00 dell-server1 kernel=
-: [155528.984032] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 55 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.141748-05:00 dell-server1 kernel=
-: [155528.984375] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 56 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.145642-05:00 dell-server1 kernel=
-: [155528.984697] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 57 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.145653-05:00 dell-server1 kernel=
-: [155528.985012] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 58 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.145654-05:00 dell-server1 kernel=
-: [155528.985316] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 59 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.145655-05:00 dell-server1 kernel=
-: [155528.985624] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 60 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.145690-05:00 dell-server1 kernel=
-: [155528.985936] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 61 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:16.145691-05:00 dell-server1 kernel=
-: [155528.986246] ixgbe 0000:19:00.0 eno1: RXDCTL.ENABLE on Rx queue 62 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.037635-05:00 dell-server1 kernel=
-: [155529.877028] ixgbe 0000:19:00.1 eno2: Reset adapter<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.037648-05:00 dell-server1 kernel=
-: [155529.877044] ixgbe 0000:19:00.0 eno1: speed changed to 0 for port eno1=
-<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.049728-05:00 dell-server1 kernel=
-: [155529.891566] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 0 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.049734-05:00 dell-server1 kernel=
-: [155529.891856] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 1 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.049736-05:00 dell-server1 kernel=
-: [155529.892133] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 2 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053617-05:00 dell-server1 kernel=
-: [155529.892410] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 3 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053621-05:00 dell-server1 kernel=
-: [155529.892665] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 4 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053621-05:00 dell-server1 kernel=
-: [155529.892917] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 5 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053622-05:00 dell-server1 kernel=
-: [155529.893170] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 6 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053622-05:00 dell-server1 kernel=
-: [155529.893420] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 7 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053623-05:00 dell-server1 kernel=
-: [155529.893670] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 8 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053625-05:00 dell-server1 kernel=
-: [155529.893921] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 9 not =
-cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053626-05:00 dell-server1 kernel=
-: [155529.894171] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 10 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053626-05:00 dell-server1 kernel=
-: [155529.894430] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 11 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053627-05:00 dell-server1 kernel=
-: [155529.894688] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 12 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053628-05:00 dell-server1 kernel=
-: [155529.894945] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 13 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053629-05:00 dell-server1 kernel=
-: [155529.895201] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 14 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053630-05:00 dell-server1 kernel=
-: [155529.895458] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 15 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053630-05:00 dell-server1 kernel=
-: [155529.895715] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 16 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053700-05:00 dell-server1 kernel=
-: [155529.895971] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 17 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.053722-05:00 dell-server1 kernel=
-: [155529.896235] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 18 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057692-05:00 dell-server1 kernel=
-: [155529.896519] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 19 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057697-05:00 dell-server1 kernel=
-: [155529.896775] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 20 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057698-05:00 dell-server1 kernel=
-: [155529.897029] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 21 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057699-05:00 dell-server1 kernel=
-: [155529.897285] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 22 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057699-05:00 dell-server1 kernel=
-: [155529.897540] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 23 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057700-05:00 dell-server1 kernel=
-: [155529.897796] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 24 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057701-05:00 dell-server1 kernel=
-: [155529.898049] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 25 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057705-05:00 dell-server1 kernel=
-: [155529.898309] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 26 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057706-05:00 dell-server1 kernel=
-: [155529.898562] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 27 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057708-05:00 dell-server1 kernel=
-: [155529.898815] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 28 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057710-05:00 dell-server1 kernel=
-: [155529.899069] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 29 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057711-05:00 dell-server1 kernel=
-: [155529.899322] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 30 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057713-05:00 dell-server1 kernel=
-: [155529.899575] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 31 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057715-05:00 dell-server1 kernel=
-: [155529.899828] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 32 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.057716-05:00 dell-server1 kernel=
-: [155529.900082] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 33 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061626-05:00 dell-server1 kernel=
-: [155529.900350] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 34 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061632-05:00 dell-server1 kernel=
-: [155529.900605] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 35 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061633-05:00 dell-server1 kernel=
-: [155529.900859] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 36 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061633-05:00 dell-server1 kernel=
-: [155529.901114] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 37 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061634-05:00 dell-server1 kernel=
-: [155529.901368] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 38 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061635-05:00 dell-server1 kernel=
-: [155529.901622] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 39 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061636-05:00 dell-server1 kernel=
-: [155529.901876] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 40 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061637-05:00 dell-server1 kernel=
-: [155529.902130] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 41 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061641-05:00 dell-server1 kernel=
-: [155529.902383] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 42 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061642-05:00 dell-server1 kernel=
-: [155529.902636] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 43 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061643-05:00 dell-server1 kernel=
-: [155529.902890] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 44 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061643-05:00 dell-server1 kernel=
-: [155529.903145] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 45 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061644-05:00 dell-server1 kernel=
-: [155529.903383] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 46 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061656-05:00 dell-server1 kernel=
-: [155529.903616] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 47 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061658-05:00 dell-server1 kernel=
-: [155529.903836] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 48 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.061659-05:00 dell-server1 kernel=
-: [155529.904054] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 49 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065643-05:00 dell-server1 kernel=
-: [155529.904286] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 50 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065655-05:00 dell-server1 kernel=
-: [155529.904510] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 51 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065656-05:00 dell-server1 kernel=
-: [155529.904730] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 52 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065661-05:00 dell-server1 kernel=
-: [155529.904950] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 53 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065662-05:00 dell-server1 kernel=
-: [155529.905170] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 54 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065670-05:00 dell-server1 kernel=
-: [155529.905389] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 55 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065671-05:00 dell-server1 kernel=
-: [155529.905608] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 56 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065672-05:00 dell-server1 kernel=
-: [155529.905827] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 57 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065673-05:00 dell-server1 kernel=
-: [155529.906039] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 58 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065674-05:00 dell-server1 kernel=
-: [155529.906250] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 59 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065674-05:00 dell-server1 kernel=
-: [155529.906462] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 60 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065675-05:00 dell-server1 kernel=
-: [155529.906674] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 61 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.065676-05:00 dell-server1 kernel=
-: [155529.906885] ixgbe 0000:19:00.1 eno2: RXDCTL.ENABLE on Rx queue 62 not=
- cleared within the polling period<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.965630-05:00 dell-server1 kernel=
-: [155530.804204] bond0: link status definitely down for interface eno1, di=
-sabling it<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.965648-05:00 dell-server1 kernel=
-: [155530.804272] bond0: link status definitely down for interface eno2, di=
-sabling it<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:17.965649-05:00 dell-server1 kernel=
-: [155530.804274] bond0: now running without any active interface!<o:p></o:=
-p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:18.069645-05:00 dell-server1 kernel=
-: [155530.908165] bond0: link status definitely down for interface eno2, di=
-sabling it<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:22.137624-05:00 dell-server1 kernel=
-: [155534.976629] ixgbe 0000:19:00.0 eno1: NIC Link is Up 10 Gbps, Flow Con=
-trol: None<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:22.141618-05:00 dell-server1 kernel=
-: [155534.979784] bond0: link status definitely up for interface eno1, 1000=
-0 Mbps full duplex<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:22.141627-05:00 dell-server1 kernel=
-: [155534.979791] bond0: first active interface up!<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:23.005627-05:00 dell-server1 kernel=
-: [155535.844845] ixgbe 0000:19:00.1 eno2: NIC Link is Up 10 Gbps, Flow Con=
-trol: None<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:23.077611-05:00 dell-server1 kernel=
-: [155535.915696] bond0: link status definitely up for interface eno2, 1000=
-0 Mbps full duplex<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256404-05:00 dell-server1 kernel=
-: [155538.083623] ixgbe 0000:19:00.0 eno1: Detected Tx Unit Hang<o:p></o:p>=
-</p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256418-05:00 dell-server1 kernel=
-: [155538.083623]&nbsp;&nbsp; Tx Queue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;39&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256419-05:00 dell-server1 kernel=
-: [155538.083623]&nbsp;&nbsp; TDH, TDT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;0&gt;, &lt;d&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256420-05:00 dell-server1 kernel=
-: [155538.083623]&nbsp;&nbsp; next_to_use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp; &lt;d&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256421-05:00 dell-server1 kernel=
-: [155538.083623]&nbsp;&nbsp; next_to_clean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp; &lt;0&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256421-05:00 dell-server1 kernel=
-: [155538.083623] tx_buffer_info[next_to_clean]<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256422-05:00 dell-server1 kernel=
-: [155538.083623]&nbsp;&nbsp; time_stamp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp; &lt;1025039c7&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256422-05:00 dell-server1 kernel=
-: [155538.083623]&nbsp;&nbsp; jiffies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;102503cb8&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256423-05:00 dell-server1 kernel=
-: [155538.083626] ixgbe 0000:19:00.0 eno1: Detected Tx Unit Hang<o:p></o:p>=
-</p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256424-05:00 dell-server1 kernel=
-: [155538.083626]&nbsp;&nbsp; Tx Queue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;35&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256425-05:00 dell-server1 kernel=
-: [155538.083626]&nbsp;&nbsp; TDH, TDT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;0&gt;, &lt;6&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256425-05:00 dell-server1 kernel=
-: [155538.083626]&nbsp;&nbsp; next_to_use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp; &lt;6&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256425-05:00 dell-server1 kernel=
-: [155538.083626]&nbsp;&nbsp; next_to_clean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp; &lt;0&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256439-05:00 dell-server1 kernel=
-: [155538.083626] tx_buffer_info[next_to_clean]<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256440-05:00 dell-server1 kernel=
-: [155538.083626]&nbsp;&nbsp; time_stamp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp; &lt;1025039e0&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256441-05:00 dell-server1 kernel=
-: [155538.083626]&nbsp;&nbsp; jiffies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;102503cb8&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256443-05:00 dell-server1 kernel=
-: [155538.083629] ixgbe 0000:19:00.0 eno1: Detected Tx Unit Hang<o:p></o:p>=
-</p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256444-05:00 dell-server1 kernel=
-: [155538.083629]&nbsp;&nbsp; Tx Queue &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;52&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256445-05:00 dell-server1 kernel=
-: [155538.083629]&nbsp;&nbsp; TDH, TDT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;0&gt;, &lt;3&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256445-05:00 dell-server1 kernel=
-: [155538.083629]&nbsp;&nbsp; next_to_use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp; &lt;3&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256449-05:00 dell-server1 kernel=
-: [155538.083629]&nbsp;&nbsp; next_to_clean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp; &lt;0&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256450-05:00 dell-server1 kernel=
-: [155538.083629] tx_buffer_info[next_to_clean]<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256451-05:00 dell-server1 kernel=
-: [155538.083629]&nbsp;&nbsp; time_stamp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp; &lt;102503a08&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256453-05:00 dell-server1 kernel=
-: [155538.083629]&nbsp;&nbsp; jiffies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;102503cb8&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256454-05:00 dell-server1 kernel=
-: [155538.083632] ixgbe 0000:19:00.0 eno1: Detected Tx Unit Hang<o:p></o:p>=
-</p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256456-05:00 dell-server1 kernel=
-: [155538.083632]&nbsp;&nbsp; Tx Queue&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;56&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256458-05:00 dell-server1 kernel=
-: [155538.083632]&nbsp;&nbsp; TDH, TDT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;0&gt;, &lt;4&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256460-05:00 dell-server1 kernel=
-: [155538.083632]&nbsp;&nbsp; next_to_use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp; &lt;4&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256461-05:00 dell-server1 kernel=
-: [155538.083632]&nbsp;&nbsp; next_to_clean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp; &lt;0&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256463-05:00 dell-server1 kernel=
-: [155538.083632] tx_buffer_info[next_to_clean]<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256464-05:00 dell-server1 kernel=
-: [155538.083632]&nbsp;&nbsp; time_stamp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp; &lt;1025039f0&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256467-05:00 dell-server1 kernel=
-: [155538.083632]&nbsp;&nbsp; jiffies&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;102503cb8&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256469-05:00 dell-server1 kernel=
-: [155538.083634] ixgbe 0000:19:00.0 eno1: Detected Tx Unit Hang<o:p></o:p>=
-</p>
-<p class=3D"MsoNormal">2020-04-06T08:35:25.256470-05:00 dell-server1 kernel=
-: [155538.083634]&nbsp;&nbsp; Tx Queue&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;55&gt;<o:p></o:p></p>
-<p class=3D"MsoNormal">(&#8230;and this process repeats itself, even after =
-rmmod&#8217;ing ixgbe and modprobe&#8217;ing it back&#8230;)<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">The reason I say it&#8217;s a high incidence is that=
- we have about 100 of these NICs and have already seen it on 4 or 5 of them=
-. 3 of them were on 19.0 firmware when it happened but this latest one was =
-on 19.5 firmware when it happened.<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">I&#8217;m skeptical of this &#8220;ECC Err&#8221; th=
-at triggers it since they&#8217;re all fairly new servers and having bad me=
-mory on that many NICs is still abnormally high. In that same vein, the mai=
-n system DIMMs don&#8217;t report any errors or anything to indicate
- that there are multi-bit or even single-bit errors going on.<o:p></o:p></p=
->
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">Are there any further diagnostic tools I could use t=
-o figure out what&#8217;s going on here? I can&#8217;t seem to reproduce th=
-e issue by sending high packet load at the cards or anything. Or is this a =
-bug that you all are aware of?<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">Thanks!<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal">-Kevin<o:p></o:p></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
-;Arial&quot;,sans-serif;color:#20365A"><o:p>&nbsp;</o:p></span></b></p>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center">
-<hr size=3D"2" width=3D"100%" align=3D"center">
-</div>
-<p class=3D"MsoNormal">See <a href=3D"http://www.peak6.com/email_disclaimer=
-/">http://www.peak6.com/email_disclaimer/</a> for terms and conditions rela=
-ted to this email<o:p></o:p></p>
-</div>
-</body>
-</html>
-
---_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_--
-
---===============4884529303732672017==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Ta wiadomosc wraz z zalacznikami jest przeznaczona dla okreslonego adresata i moze zawierac informacje poufne. W razie przypadkowego otrzymania tej wiadomosci, prosimy o powiadomienie nadawcy oraz trwale jej usuniecie; jakiekolwiek
+przegladanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by
+others is strictly prohibited.
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============4884529303732672017==--
