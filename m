@@ -1,73 +1,127 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEC3C1A0436
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Apr 2020 03:15:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CBC551A049C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Apr 2020 03:44:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 64B7484481;
-	Tue,  7 Apr 2020 01:15:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7270A86457;
+	Tue,  7 Apr 2020 01:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PpvC26QKzq7r; Tue,  7 Apr 2020 01:15:40 +0000 (UTC)
+	with ESMTP id RbcSmcQMV1Zc; Tue,  7 Apr 2020 01:43:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A4621859BA;
-	Tue,  7 Apr 2020 01:15:26 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CB49387EAD;
+	Tue,  7 Apr 2020 01:43:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C56911BF3AD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:15:24 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 25ADE1BF3AD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:43:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B017D2002E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:15:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 14DA4821E2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:43:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BSVYK0Yz7kkn for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Apr 2020 01:15:04 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 4F2FA20033
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:15:04 +0000 (UTC)
-IronPort-SDR: y4Ni1tDn4dH6dqvIECRc9aScBcuX5bavxX/bTg+5TZGP4SZmDwAn0+8usjiCZ7x9Fugz8bBU7x
- 7Kq0T3vlyNcg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Apr 2020 18:15:03 -0700
-IronPort-SDR: ZndUJLYIf4+LAONyJCcrWZn/t8fpPdVxZgnb0zE6MBiC3td2hcZ62fNvVYU9OJSfVLcerpqzgE
- wk1EsysTgajA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,353,1580803200"; 
- d="scan'208,217";a="296805684"
-Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
- by FMSMGA003.fm.intel.com with ESMTP; 06 Apr 2020 18:15:02 -0700
-Received: from orsmsx115.amr.corp.intel.com ([169.254.4.102]) by
- ORSMSX105.amr.corp.intel.com ([169.254.2.72]) with mapi id 14.03.0439.000;
- Mon, 6 Apr 2020 18:15:02 -0700
-From: "Fujinaka, Todd" <todd.fujinaka@intel.com>
-To: Kevin Newman <knewman@peak6.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
+ with ESMTP id Rtem+oV1OLv9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Apr 2020 01:43:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from smtp.peak6.com (smtp.peak6.com [38.98.137.6])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D9D6086578
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Apr 2020 01:43:15 +0000 (UTC)
+Received: from pps.filterd (svachi5pprofagt1.peak6.net [127.0.0.1])
+ by svachi5pprofagt1.peak6.net (8.16.0.22/8.16.0.22) with SMTP id
+ 0371cZpD008705; Mon, 6 Apr 2020 20:43:11 -0500
+Received: from sswchi6pmbx4.peak6.net (sswchi6pmbx4.peak6.net [10.2.14.32])
+ by svachi5pprofagt1.peak6.net with ESMTP id 306pf3951p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-SHA256 bits=128 verify=NOT);
+ Mon, 06 Apr 2020 20:43:10 -0500
+Received: from sswchi6pmbx4.peak6.net (10.2.14.32) by sswchi6pmbx4.peak6.net
+ (10.2.14.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1261.35; Mon, 6
+ Apr 2020 20:43:10 -0500
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.20.108.11) by
+ sswchi6pmbx4.peak6.net (10.2.14.32) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1261.35 via Frontend Transport; Mon, 6 Apr 2020 20:43:09 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Na8tBNoAc1O1v++mAIb2F/D3WNPK6zVsPHGpbtn013bqdTBHTXZtp2dBfgmeB1M11k0o+sZvF9DCnkIrXjA4kgiNuEfVxCCh7ItZ8g2pobTwx+uvZjEKMVzD3LXm5jXO8u4OQVofhhAVO4DtUK64SjwT8HeaGn8e1XrO1fEjerz1dqr6PvVlrr7+XIXE8nzagcVMTMUYOkNhZJlGCwrIxGc6oitZpngOHV7hAd8hkPRWm7qF/UBa1vsm64QLzl7TS2IK8XczBLHdabjwPkB3NIHnXxSwcY4RYbtaOyMRxqwxtvpR6lldXYS5bugby4F7xW2TdAirt0CV0wTMBncCPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nOGIMd65owDqK1egPrJ7Cxewj0lwtz4+8iRPpblXUhw=;
+ b=UrkYad0pDCuSqQ5sdpbKi45gwX5fhR0SXhPnMtCLYc5896fq63QRKZCtViYUaYy5uT+nrpYQA32fMCyMa4lKfZV5YAZgt4hMTQ3aqqmuqDJ99zkHMTgrovd9GO+Ijk0BrCY3OaMW+0hs7vx98yqU8JVqkJZmQnoXW30KOrKsPhjJpUT+HuyecEJBhcb8qRBRlMOeVVQd6vMEFnMCS2g9S4XJnMU/yHd3t1Ri33E79MNoVbJUZbzHJ58GIrOeHvaOB+25IqTFPzWoSDMjLmNbcgNRPXtFxB7rhrYLk/fsEQA7QsTSSNV5f1CNj2a5pTkvEje9zAIJXsTHBsqbnh9mDA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=peak6.com; dmarc=pass action=none header.from=peak6.com;
+ dkim=pass header.d=peak6.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=peak6group.onmicrosoft.com; s=selector1-peak6group-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nOGIMd65owDqK1egPrJ7Cxewj0lwtz4+8iRPpblXUhw=;
+ b=X32RN70eHXTqOOnQ9wK0/kM5+g+js2yFIJZfUldrGPFrVwGMQt0vMU9DoIPRbOtWMoo3cnFJwmY75N2xyMaJnKJOzO1wwStTTGpCs79sbBATL08zEUMkPlL5/YH44KGFiXm87OJu8KE29+uEpgg9UQubAf/KfXq7xQPZ2tUH7MM=
+Received: from MWHPR2201MB1727.namprd22.prod.outlook.com
+ (2603:10b6:301:68::17) by MWHPR2201MB1327.namprd22.prod.outlook.com
+ (2603:10b6:301:1c::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2878.15; Tue, 7 Apr
+ 2020 01:43:08 +0000
+Received: from MWHPR2201MB1727.namprd22.prod.outlook.com
+ ([fe80::284f:9e49:8c6b:355c]) by MWHPR2201MB1727.namprd22.prod.outlook.com
+ ([fe80::284f:9e49:8c6b:355c%7]) with mapi id 15.20.2856.019; Tue, 7 Apr 2020
+ 01:43:08 +0000
+From: Kevin Newman <knewman@peak6.com>
+To: "Fujinaka, Todd" <todd.fujinaka@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Thread-Topic: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
-Thread-Index: AdYMJynuZXPrQwA7S++9EbW3UxM63AAM08FwAAG0guAABiI2EA==
-Date: Tue, 7 Apr 2020 01:15:02 +0000
-Message-ID: <9B4A1B1917080E46B64F07F2989DADD69B107F0B@ORSMSX115.amr.corp.intel.com>
+Thread-Index: AdYMJynuZXPrQwA7S++9EbW3UxM63AAM08FwAAG0guAABiI2EAAA06Jg
+Date: Tue, 7 Apr 2020 01:43:08 +0000
+Message-ID: <MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30@MWHPR2201MB1727.namprd22.prod.outlook.com>
 References: <MWHPR2201MB1727D9040A0A395978363BB0E9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
  <9B4A1B1917080E46B64F07F2989DADD69B107E30@ORSMSX115.amr.corp.intel.com>
  <MWHPR2201MB1727AB167B14105544DC5CDFE9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
-In-Reply-To: <MWHPR2201MB1727AB167B14105544DC5CDFE9C20@MWHPR2201MB1727.namprd22.prod.outlook.com>
+ <9B4A1B1917080E46B64F07F2989DADD69B107F0B@ORSMSX115.amr.corp.intel.com>
+In-Reply-To: <9B4A1B1917080E46B64F07F2989DADD69B107F0B@ORSMSX115.amr.corp.intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.140]
+x-originating-ip: [38.98.137.7]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 5ebd5207-08b3-4e76-26b4-08d7da950637
+x-ms-traffictypediagnostic: MWHPR2201MB1327:
+x-microsoft-antispam-prvs: <MWHPR2201MB13277ECAAD7951D842176599E9C30@MWHPR2201MB1327.namprd22.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-forefront-prvs: 036614DD9C
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR2201MB1727.namprd22.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(10019020)(39830400003)(346002)(376002)(396003)(366004)(136003)(6506007)(53546011)(7696005)(33656002)(186003)(9686003)(55016002)(8676002)(81156014)(81166006)(478600001)(966005)(8936002)(30864003)(86362001)(66476007)(5660300002)(110136005)(26005)(52536014)(71200400001)(316002)(66946007)(66556008)(76116006)(2906002)(66446008)(64756008)(579004);
+ DIR:OUT; SFP:1102; 
+received-spf: None (protection.outlook.com: peak6.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 5TtRhjKjHn4jM6aFRdGgWAkr+jSdrvITBXwBBkqWZJ69Xjd1C0cQqVFnIfu4QnafQglUFAYKE5gH+3ajgtPnTP26iyLoSVxZA3GlkKW8+gOZUFx1KlD0nAY4GKM45hWUvxviTA9dFreQolH99G2LpwU/jJ3Idle38Uc4qFzy0eK+mLfvd3bKy9j/Ag9j73wuIOKzztT1cQzoAxuUHf8HipcwLyQhznNXicsjOKinbiT7MtVDFnLmAreNleVrOiwJE0+Tdh5lzODZz2H/GCQZLl4ITjL9VY09OX8XyFy32v3RhJVUsUEsxmxzXOw8HcGlROncCXL+OiYTZcbQxj98WNwm5FfoDFr4pizQrLuzneYxCnj7gCndgsLbsJzXGryOy24TJjI6yeuBxnsAFZXPZHvYoXhr6fQ+4sakaVYwKFyUsPrjUa+Gj4d54hfx45/eI/j6HcxorFXSiQsx8llFwzwxBz3faT54rPFnLTpnrjjbv+z/ngFv00KDkAwAcujr6wr4dZo1qhInoXX69C4B1g==
+x-ms-exchange-antispam-messagedata: 5J5GCuynZj6Gm3ROg14+qOgmr5RgbcgiN5h0sb6gm6mywRr5P6DpZhyxRgwGjd5t8SmDQLGnJnE3FV/KN5sCNkXzbmHq1Z6KJm+ENsdboomjAQWy4K0WuJtn211V8GQo9bOOkZ2xsM3v9zIfjxo07A==
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5ebd5207-08b3-4e76-26b4-08d7da950637
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Apr 2020 01:43:08.4734 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: be5b5bb5-4d80-403f-bb05-3442831c26f8
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: cXciXvyaZA6TmmGQ2jrtuwZAF+e/NWUg8FjpkWVfKxaq5O5MIFavCduhvvip8M1Es20Np/i2+7Nwcvkji2KciA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR2201MB1327
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.138, 18.0.676
+ definitions=2020-04-07_01:2020-04-07,
+ 2020-04-06 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-2002250000 definitions=main-2004070011
 Subject: Re: [Intel-wired-lan] X550 + ixgbe Reporting "ECC Err" With Strange
  Regularity...
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -82,19 +136,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6120935182302793868=="
+Content-Type: multipart/mixed; boundary="===============4884529303732672017=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============6120935182302793868==
+--===============4884529303732672017==
 Content-Language: en-US
 Content-Type: multipart/alternative;
-	boundary="_000_9B4A1B1917080E46B64F07F2989DADD69B107F0BORSMSX115amrcor_"
+	boundary="_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_"
 
---_000_9B4A1B1917080E46B64F07F2989DADD69B107F0BORSMSX115amrcor_
+--_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
+Such is my situation, unfortunately :( I've been going back and forth with =
+their support and they've told me that they can't talk to Intel unless I ca=
+n reproduce the error. Having seen this only 5 times in the past 4 months, =
+I don't have a reliable method for reproducing it. I've done all sorts of m=
+ulticast load tests on the NIC and haven't been able to reproduce. Yet, 5 N=
+ICs in the past few months totally dropping offline when this happens is ex=
+tremely concerning to me and damaging to our confidence in the Intel chipse=
+t. They're all X550s too. I have about 300 other that are a combinations of=
+ X520 and X540 under similar load that haven't seen the issue. Happy to for=
+ward you the ticket number if that helps!
+
+From: Fujinaka, Todd <todd.fujinaka@intel.com>
+Sent: Monday, April 6, 2020 8:15 PM
+To: Kevin Newman <knewman@peak6.com>; intel-wired-lan@lists.osuosl.org
+Subject: RE: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
+
+This is an EXTERNAL EMAIL. STOP. THINK before you CLICK links or OPEN attac=
+hments.
+
+________________________________
 I just realized as this is a Dell server, you have to go through them first=
 . Can you file a ticket with Dell?
 
@@ -104,12 +178,13 @@ Todd Fujinaka
 Software Application Engineer
 Data Center Group
 Intel Corporation
-todd.fujinaka@intel.com
+todd.fujinaka@intel.com<mailto:todd.fujinaka@intel.com>
 
-From: Kevin Newman <knewman@peak6.com>
+From: Kevin Newman <knewman@peak6.com<mailto:knewman@peak6.com>>
 Sent: Monday, April 6, 2020 3:19 PM
-To: Fujinaka, Todd <todd.fujinaka@intel.com>; intel-wired-lan@lists.osuosl.=
-org
+To: Fujinaka, Todd <todd.fujinaka@intel.com<mailto:todd.fujinaka@intel.com>=
+>; intel-wired-lan@lists.osuosl.org<mailto:intel-wired-lan@lists.osuosl.org=
+>
 Subject: RE: X550 + ixgbe Reporting "ECC Err" With Strange Regularity...
 
 Sure. Just booted a few days ago actually. Full dmesg log attached (ends wi=
@@ -653,7 +728,7 @@ ________________________________
 See http://www.peak6.com/email_disclaimer/ for terms and conditions related=
  to this email
 
---_000_9B4A1B1917080E46B64F07F2989DADD69B107F0BORSMSX115amrcor_
+--_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -711,10 +786,14 @@ span.EmailStyle20
 	{mso-style-type:personal;
 	font-family:"Calibri",sans-serif;
 	color:#1F497D;}
+span.EmailStyle21
+	{mso-style-type:personal;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
 span.EmailStyle22
 	{mso-style-type:personal-reply;
 	font-family:"Calibri",sans-serif;
-	color:windowtext;}
+	color:#1F497D;}
 .MsoChpDefault
 	{mso-style-type:export-only;
 	font-size:10.0pt;}
@@ -732,6 +811,44 @@ div.WordSection1
 </head>
 <body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
 <div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D">Such is my situation, =
+unfortunately :( I&#8217;ve been going back and forth with their support an=
+d they&#8217;ve told me that they can&#8217;t talk to Intel unless I can re=
+produce the error. Having seen this only 5 times in the
+ past 4 months, I don&#8217;t have a reliable method for reproducing it. I&=
+#8217;ve done all sorts of multicast load tests on the NIC and haven&#8217;=
+t been able to reproduce. Yet, 5 NICs in the past few months totally droppi=
+ng offline when this happens is extremely concerning
+ to me and damaging to our confidence in the Intel chipset. They&#8217;re a=
+ll X550s too. I have about 300 other that are a combinations of X520 and X5=
+40 under similar load that haven&#8217;t seen the issue. Happy to forward y=
+ou the ticket number if that helps!<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"color:#1F497D"><o:p>&nbsp;</o:p></spa=
+n></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b>From:</b> Fujinaka, Todd &lt;todd.fujinaka@intel.=
+com&gt; <br>
+<b>Sent:</b> Monday, April 6, 2020 8:15 PM<br>
+<b>To:</b> Kevin Newman &lt;knewman@peak6.com&gt;; intel-wired-lan@lists.os=
+uosl.org<br>
+<b>Subject:</b> RE: X550 &#43; ixgbe Reporting &quot;ECC Err&quot; With Str=
+ange Regularity...<o:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span s=
+tyle=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;colo=
+r:red">This is an EXTERNAL EMAIL. STOP. THINK before you CLICK links or OPE=
+N attachments.</span><span style=3D"font-size:12.0pt;font-family:&quot;Time=
+s New Roman&quot;,serif"><o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif"><o:p>&nbsp;</o:p></span></p>
+<div class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span=
+ style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif">
+<hr size=3D"2" width=3D"100%" align=3D"center">
+</span></div>
 <p class=3D"MsoNormal">I just realized as this is a Dell server, you have t=
 o go through them first. Can you file a ticket with Dell?<o:p></o:p></p>
 <p class=3D"MsoNormal"><br>
@@ -748,19 +865,22 @@ e Application Engineer</span><span style=3D"color:black"><o:p></o:p></span>=
 nter Group</span><span style=3D"color:black"><o:p></o:p></span></p>
 <p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;color:black">Intel C=
 orporation</span><span style=3D"color:black"><o:p></o:p></span></p>
-<p class=3D"MsoNormal"><u><span style=3D"font-size:10.0pt;color:black">todd=
-.fujinaka@intel.com</span></u><u><span style=3D"color:black"><o:p></o:p></s=
-pan></u></p>
+<p class=3D"MsoNormal"><u><span style=3D"font-size:10.0pt;color:black"><a h=
+ref=3D"mailto:todd.fujinaka@intel.com">todd.fujinaka@intel.com</a></span><s=
+pan style=3D"color:black"><o:p></o:p></span></u></p>
 </div>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <div>
 <div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
 0in 0in">
-<p class=3D"MsoNormal"><b>From:</b> Kevin Newman &lt;knewman@peak6.com&gt; =
+<p class=3D"MsoNormal"><b>From:</b> Kevin Newman &lt;<a href=3D"mailto:knew=
+man@peak6.com">knewman@peak6.com</a>&gt;
 <br>
 <b>Sent:</b> Monday, April 6, 2020 3:19 PM<br>
-<b>To:</b> Fujinaka, Todd &lt;todd.fujinaka@intel.com&gt;; intel-wired-lan@=
-lists.osuosl.org<br>
+<b>To:</b> Fujinaka, Todd &lt;<a href=3D"mailto:todd.fujinaka@intel.com">to=
+dd.fujinaka@intel.com</a>&gt;;
+<a href=3D"mailto:intel-wired-lan@lists.osuosl.org">intel-wired-lan@lists.o=
+suosl.org</a><br>
 <b>Subject:</b> RE: X550 &#43; ixgbe Reporting &quot;ECC Err&quot; With Str=
 ange Regularity...<o:p></o:p></p>
 </div>
@@ -1394,9 +1514,9 @@ ted to this email<o:p></o:p></p>
 </body>
 </html>
 
---_000_9B4A1B1917080E46B64F07F2989DADD69B107F0BORSMSX115amrcor_--
+--_000_MWHPR2201MB1727FA48A9AB2F1F3EDAC480E9C30MWHPR2201MB1727_--
 
---===============6120935182302793868==
+--===============4884529303732672017==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1407,4 +1527,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============6120935182302793868==--
+--===============4884529303732672017==--
