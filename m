@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D762C1A399B
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Apr 2020 20:11:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7D4F787F08;
-	Thu,  9 Apr 2020 18:11:09 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aQXUIYzwiCBs; Thu,  9 Apr 2020 18:11:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C508987F0C;
-	Thu,  9 Apr 2020 18:11:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AA8F81BF3D5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:11:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D7FB51A399A
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Apr 2020 20:10:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A70C487E46
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:11:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 11F158806D;
+	Thu,  9 Apr 2020 18:10:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WdfQcYLRk+tg; Thu,  9 Apr 2020 18:10:55 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6CC5987E46;
+	Thu,  9 Apr 2020 18:10:55 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D12F1BF3D5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:10:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 589BF862A5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:10:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EOVGM6SmgacF for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Apr 2020 18:11:06 +0000 (UTC)
+ with ESMTP id mi8qSTbxkoVz for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Apr 2020 18:10:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id F134581F55
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:11:05 +0000 (UTC)
-IronPort-SDR: qMV2sVRuaZL7PzW3P7obugXZwuHudOJ4HuEmhv43SYwc+tTqJozQCb4svJdthnuNGw3PIFcDje
- W3ORu3IYZpHw==
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 73D3586155
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:10:53 +0000 (UTC)
+IronPort-SDR: gQ+GLHUFP1Gv1FCDYAoVLSJUarFQ2O7BBIoN4dzIg4wb7AhJd+X1L/VJDDUPc4sUF4swgjWHey
+ 5UYBKOQ3UACw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2020 11:09:56 -0700
-IronPort-SDR: kz9ttCCJYMy1yFZkH32DX/+HuNrv4odTxCQd1byOxnFFzY10mqVVtWN5QmBe8LRHHlcf6rZYae
- 45Ow8u/t1xYQ==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2020 11:10:52 -0700
+IronPort-SDR: e1Ijgeds6oT661bbv+yoVwhyzPPvEx2tbyrZY80OBAHu2jKj+/jyucdePxPVgbKerucjrnBDRS
+ W5R/wQ1lX7HA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,363,1580803200"; d="scan'208";a="275918962"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by fmsmga004.fm.intel.com with ESMTP; 09 Apr 2020 11:09:56 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 9 Apr 2020 11:09:56 -0700
+X-IronPort-AV: E=Sophos;i="5.72,363,1580803200"; d="scan'208";a="240708412"
+Received: from fmsmsx105.amr.corp.intel.com ([10.18.124.203])
+ by orsmga007.jf.intel.com with ESMTP; 09 Apr 2020 11:10:50 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ FMSMSX105.amr.corp.intel.com (10.18.124.203) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 9 Apr 2020 11:10:48 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 9 Apr 2020 11:09:55 -0700
+ 15.1.1713.5; Thu, 9 Apr 2020 11:10:48 -0700
 Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
  fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
- Thu, 9 Apr 2020 11:09:55 -0700
+ Thu, 9 Apr 2020 11:10:48 -0700
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [next-queue v2] i40e: Add a check to see if
- MFS is set
-Thread-Index: AQHWDSmLgXKILhLmgEmctdwmFZkHKKhxGYow
-Date: Thu, 9 Apr 2020 18:09:55 +0000
-Message-ID: <4f171aed2dcd4c229ebd5dd5d26c13cb@intel.com>
-References: <20200407221139.2233977-1-jeffrey.t.kirsher@intel.com>
-In-Reply-To: <20200407221139.2233977-1-jeffrey.t.kirsher@intel.com>
+Thread-Topic: [Intel-wired-lan] [next-queue v2] i40e: Add support for a new
+ feature: Total Port Shutdown
+Thread-Index: AQHWDQbjcwnTbXahMku7TgsRkpnkRqhxGiCg
+Date: Thu, 9 Apr 2020 18:10:48 +0000
+Message-ID: <cabe5a3627e545849fcf40604771ca7b@intel.com>
+References: <20200407180252.1920528-1-jeffrey.t.kirsher@intel.com>
+In-Reply-To: <20200407180252.1920528-1-jeffrey.t.kirsher@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -72,8 +72,8 @@ dlp-reaction: no-action
 dlp-version: 11.2.0.6
 x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next-queue v2] i40e: Add a check to see if
- MFS is set
+Subject: Re: [Intel-wired-lan] [next-queue v2] i40e: Add support for a new
+ feature: Total Port Shutdown
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,25 +93,35 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 -----Original Message-----
 From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jeff Kirsher
-Sent: Tuesday, April 7, 2020 3:12 PM
+Sent: Tuesday, April 7, 2020 11:03 AM
 To: intel-wired-lan@lists.osuosl.org
-Subject: [Intel-wired-lan] [next-queue v2] i40e: Add a check to see if MFS is set
+Cc: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>; Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+Subject: [Intel-wired-lan] [next-queue v2] i40e: Add support for a new feature: Total Port Shutdown
 
-From: Todd Fujinaka <todd.fujinaka@intel.com>
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 
-A customer was chain-booting to provision his systems and one of the steps was setting MFS. MFS isn't cleared by normal warm reboots (clearing requires a GLOBR) and there was no indication of why Jumbo Frame receives were failing.
+Currently after requesting to down a link on a physical network port, the traffic is no longer being processed but the physical link with a link partner is still established.
 
-Add a warning if MFS is set to anything lower than the default.
+Total Port Shutdown allows to completely shutdown the port on the link-down procedure by physically removing the link from the port.
 
-Signed-off-by: Todd Fujinaka <todd.fujinaka@intel.com>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Introduced changes:
+- probe NVM if the feature was enabled at initialization of the port
+- special handling on link-down procedure to let FW physically shutdown the port if the feature was enabled
+
+Testing Hints (required if no HSD):
+Link up/down, link-down-on-close
+
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
-v2: added missing defines
+v2: added missing define
 
- drivers/net/ethernet/intel/i40e/i40e_main.c     | 9 +++++++++
- drivers/net/ethernet/intel/i40e/i40e_register.h | 8 ++++++++
- 2 files changed, 17 insertions(+)
-
+ drivers/net/ethernet/intel/i40e/i40e.h        |   1 +
+ .../net/ethernet/intel/i40e/i40e_adminq_cmd.h |   1 +
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |   8 ++
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 125 +++++++++++++++---
+ 4 files changed, 114 insertions(+), 21 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
