@@ -1,60 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 505B91A3923
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Apr 2020 19:51:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D762C1A399B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Apr 2020 20:11:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F2BE624C5E;
-	Thu,  9 Apr 2020 17:51:16 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7D4F787F08;
+	Thu,  9 Apr 2020 18:11:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a6Ud2qjBBuv6; Thu,  9 Apr 2020 17:51:16 +0000 (UTC)
+	with ESMTP id aQXUIYzwiCBs; Thu,  9 Apr 2020 18:11:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0809A24CC1;
-	Thu,  9 Apr 2020 17:51:16 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2135C1BF3A7
- for <intel-wired-lan@osuosl.org>; Thu,  9 Apr 2020 17:51:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C508987F0C;
+	Thu,  9 Apr 2020 18:11:08 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AA8F81BF3D5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:11:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1D02686B74
- for <intel-wired-lan@osuosl.org>; Thu,  9 Apr 2020 17:51:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A70C487E46
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:11:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HmEOhhBgdjK2 for <intel-wired-lan@osuosl.org>;
- Thu,  9 Apr 2020 17:51:12 +0000 (UTC)
+ with ESMTP id EOVGM6SmgacF for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Apr 2020 18:11:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CA33F86B68
- for <intel-wired-lan@osuosl.org>; Thu,  9 Apr 2020 17:51:12 +0000 (UTC)
-IronPort-SDR: eZBAwvCeG9mDq1a7nHhjHi3e6uxzkezmietgsL3AqYt0+aJZcFY9BTRKo4jBFfx5/lxLTkpFeq
- WAnTgHLWGzNw==
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id F134581F55
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2020 18:11:05 +0000 (UTC)
+IronPort-SDR: qMV2sVRuaZL7PzW3P7obugXZwuHudOJ4HuEmhv43SYwc+tTqJozQCb4svJdthnuNGw3PIFcDje
+ W3ORu3IYZpHw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2020 10:51:12 -0700
-IronPort-SDR: OZ/Na33SiPjRR3tanZ/1M8cDDItP7lm+md9017H2VD1aUXnnR8hvh4zTy+OkOHwF6iB0EAR7OY
- M2/7x3qPLpNA==
-X-IronPort-AV: E=Sophos;i="5.72,363,1580803200"; d="scan'208";a="244377692"
-Received: from maberbou-mobl.amr.corp.intel.com (HELO localhost)
- ([10.251.26.250])
- by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2020 10:51:11 -0700
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2020 11:09:56 -0700
+IronPort-SDR: kz9ttCCJYMy1yFZkH32DX/+HuNrv4odTxCQd1byOxnFFzY10mqVVtWN5QmBe8LRHHlcf6rZYae
+ 45Ow8u/t1xYQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,363,1580803200"; d="scan'208";a="275918962"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by fmsmga004.fm.intel.com with ESMTP; 09 Apr 2020 11:09:56 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 9 Apr 2020 11:09:56 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 9 Apr 2020 11:09:55 -0700
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82]) by
+ fmsmsx602.amr.corp.intel.com ([10.18.126.82]) with mapi id 15.01.1713.004;
+ Thu, 9 Apr 2020 11:09:55 -0700
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [next-queue v2] i40e: Add a check to see if
+ MFS is set
+Thread-Index: AQHWDSmLgXKILhLmgEmctdwmFZkHKKhxGYow
+Date: Thu, 9 Apr 2020 18:09:55 +0000
+Message-ID: <4f171aed2dcd4c229ebd5dd5d26c13cb@intel.com>
+References: <20200407221139.2233977-1-jeffrey.t.kirsher@intel.com>
+In-Reply-To: <20200407221139.2233977-1-jeffrey.t.kirsher@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.2.0.6
+x-originating-ip: [10.22.254.132]
 MIME-Version: 1.0
-In-Reply-To: <20200405121604.36654-1-vitaly.lifshits@intel.com>
-References: <20200405121604.36654-1-vitaly.lifshits@intel.com>
-From: Andre Guedes <andre.guedes@linux.intel.com>
-To: Vitaly Lifshits <vitaly.lifshits@intel.com>, intel-wired-lan@osuosl.org
-Date: Thu, 09 Apr 2020 10:51:09 -0700
-Message-ID: <158645466999.55760.14738986034336933984@pbarlowx-mobl.amr.corp.intel.com>
-User-Agent: alot/0.9
-Subject: Re: [Intel-wired-lan] [PATCH v4] igc: add support to interrupt,
- eeprom, registers and link self-tests
+Subject: Re: [Intel-wired-lan] [next-queue v2] i40e: Add a check to see if
+ MFS is set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,17 +91,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Introduced igc_diag.c and igc_diag.h, these files have the
-> diagnostics functionality of igc driver. For the time being
-> these files are being used by ethtool self-test callbacks.
-> Which mean that interrupt, eeprom, registers and link self-tests for
-> ethtool were implemented.
-> 
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> Reported-by: kbuild test robot <lkp@intel.com>
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+-----Original Message-----
+From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jeff Kirsher
+Sent: Tuesday, April 7, 2020 3:12 PM
+To: intel-wired-lan@lists.osuosl.org
+Subject: [Intel-wired-lan] [next-queue v2] i40e: Add a check to see if MFS is set
 
-Acked-by: Andre Guedes <andre.guedes@intel.com>
+From: Todd Fujinaka <todd.fujinaka@intel.com>
+
+A customer was chain-booting to provision his systems and one of the steps was setting MFS. MFS isn't cleared by normal warm reboots (clearing requires a GLOBR) and there was no indication of why Jumbo Frame receives were failing.
+
+Add a warning if MFS is set to anything lower than the default.
+
+Signed-off-by: Todd Fujinaka <todd.fujinaka@intel.com>
+Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+---
+v2: added missing defines
+
+ drivers/net/ethernet/intel/i40e/i40e_main.c     | 9 +++++++++
+ drivers/net/ethernet/intel/i40e/i40e_register.h | 8 ++++++++
+ 2 files changed, 17 insertions(+)
+
+
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
