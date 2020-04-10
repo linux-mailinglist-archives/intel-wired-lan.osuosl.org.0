@@ -2,59 +2,49 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A040E1A3E96
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2020 05:08:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D4671A4A08
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2020 20:55:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 17FE02052C;
-	Fri, 10 Apr 2020 03:08:55 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BE65125014;
+	Fri, 10 Apr 2020 18:55:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id om1NnFkabGG4; Fri, 10 Apr 2020 03:08:54 +0000 (UTC)
+	with ESMTP id cIQ4v2bPoOkw; Fri, 10 Apr 2020 18:55:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C868D20524;
-	Fri, 10 Apr 2020 03:08:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9075424F76;
+	Fri, 10 Apr 2020 18:55:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 59FF41BF34A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2020 03:08:52 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 571201BF2F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2020 16:00:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BD816203F2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2020 03:08:51 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 524B086BC2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2020 16:00:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3fZvJfVsjmyU for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Apr 2020 03:08:49 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 6B7FB2012D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2020 03:08:47 +0000 (UTC)
-IronPort-SDR: w7Ri2u31PctWw6eAMca7j88imMdLGyl77betIzcHg7ktZ221DBrYEKDgnQzC/FgRSqLg24CyxJ
- z2ZtcvHp+bbg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2020 20:08:47 -0700
-IronPort-SDR: DADh/bBrMFjosrZOaJDkwx5bA3r2JABY3k4uTrLfQzqIlfA4+Uj0p2jPAmkDRRoa37GeCGY8PM
- +KcZHgZJWaow==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,364,1580803200"; d="scan'208";a="242825632"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 09 Apr 2020 20:08:45 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jMk29-000Are-8c; Fri, 10 Apr 2020 11:08:45 +0800
-Date: Fri, 10 Apr 2020 11:07:49 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5e8fe305.vYDISNaB2KxWY5X3%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id xMmGf6Srg_sl for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Apr 2020 16:00:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from cloudserver094114.home.pl (cloudserver094114.home.pl
+ [79.96.170.134])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B1DE286BA6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2020 16:00:49 +0000 (UTC)
+Received: from 185.80.35.16 (185.80.35.16) (HELO kreacher.localnet)
+ by serwer1319399.home.pl (79.96.170.134) with SMTP (IdeaSmtpServer 0.83.415)
+ id 3a80db90d5ade516; Fri, 10 Apr 2020 18:00:46 +0200
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+To: Linux PM <linux-pm@vger.kernel.org>, Alan Stern <stern@rowland.harvard.edu>
+Date: Fri, 10 Apr 2020 17:56:13 +0200
+Message-ID: <5092680.jloV5Ae5OO@kreacher>
+In-Reply-To: <1888197.j9z7NJ8yPn@kreacher>
+References: <1888197.j9z7NJ8yPn@kreacher>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
- 61c1436fa238cc723bf77c9a6a3b29b399dba209
+X-Mailman-Approved-At: Fri, 10 Apr 2020 18:55:40 +0000
+Subject: [Intel-wired-lan] [PATCH 5/7] PM: sleep: core: Rename
+ DPM_FLAG_NEVER_SKIP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,192 +57,248 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Hans De Goede <hdegoede@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Intel Graphics <intel-gfx@lists.freedesktop.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ DRI-devel <dri-devel@lists.freedesktop.org>,
+ Linux ACPI <linux-acpi@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
+ Linux PCI <linux-pci@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Mika Westerberg <mika.westerberg@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
-branch HEAD: 61c1436fa238cc723bf77c9a6a3b29b399dba209  ice: Fix a couple off by one bugs
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
 
-elapsed time: 480m
+Rename DPM_FLAG_NEVER_SKIP to DPM_FLAG_NO_DIRECT_COMPLETE which
+matches its purpose more closely.
 
-configs tested: 166
-configs skipped: 0
+No functional impact.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                              allmodconfig
-arm                               allnoconfig
-arm                              allyesconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm64                            allyesconfig
-arm                         at91_dt_defconfig
-arm                           efm32_defconfig
-arm                          exynos_defconfig
-arm                        multi_v5_defconfig
-arm                        multi_v7_defconfig
-arm                        shmobile_defconfig
-arm                           sunxi_defconfig
-arm64                               defconfig
-s390                              allnoconfig
-mips                             allyesconfig
-xtensa                          iss_defconfig
-i386                              allnoconfig
-i386                             alldefconfig
-i386                             allyesconfig
-i386                              debian-10.3
-i386                                defconfig
-ia64                             alldefconfig
-ia64                             allmodconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-ia64                                defconfig
-c6x                              allyesconfig
-c6x                        evmc6678_defconfig
-nios2                         10m50_defconfig
-nios2                         3c120_defconfig
-openrisc                    or1ksim_defconfig
-openrisc                 simple_smp_defconfig
-xtensa                       common_defconfig
-alpha                               defconfig
-csky                                defconfig
-nds32                             allnoconfig
-nds32                               defconfig
-h8300                     edosk2674_defconfig
-h8300                    h8300h-sim_defconfig
-h8300                       h8s-sim_defconfig
-m68k                             allmodconfig
-m68k                       m5475evb_defconfig
-m68k                          multi_defconfig
-m68k                           sun3_defconfig
-arc                              allyesconfig
-arc                                 defconfig
-microblaze                      mmu_defconfig
-microblaze                    nommu_defconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                       ppc64_defconfig
-powerpc                          rhel-kconfig
-mips                           32r2_defconfig
-mips                         64r6el_defconfig
-mips                             allmodconfig
-mips                              allnoconfig
-mips                      fuloong2e_defconfig
-mips                      malta_kvm_defconfig
-parisc                            allnoconfig
-parisc                           allyesconfig
-parisc                generic-32bit_defconfig
-parisc                generic-64bit_defconfig
-x86_64               randconfig-a001-20200410
-x86_64               randconfig-a002-20200410
-x86_64               randconfig-a003-20200410
-i386                 randconfig-a001-20200410
-i386                 randconfig-a002-20200410
-i386                 randconfig-a003-20200410
-alpha                randconfig-a001-20200409
-m68k                 randconfig-a001-20200409
-mips                 randconfig-a001-20200409
-nds32                randconfig-a001-20200409
-parisc               randconfig-a001-20200409
-riscv                randconfig-a001-20200409
-c6x                  randconfig-a001-20200410
-h8300                randconfig-a001-20200410
-microblaze           randconfig-a001-20200410
-nios2                randconfig-a001-20200410
-sparc64              randconfig-a001-20200410
-csky                 randconfig-a001-20200409
-openrisc             randconfig-a001-20200409
-s390                 randconfig-a001-20200409
-sh                   randconfig-a001-20200409
-xtensa               randconfig-a001-20200409
-x86_64               randconfig-b001-20200409
-x86_64               randconfig-b002-20200409
-x86_64               randconfig-b003-20200409
-i386                 randconfig-b001-20200409
-i386                 randconfig-b002-20200409
-i386                 randconfig-b003-20200409
-x86_64               randconfig-c001-20200409
-x86_64               randconfig-c002-20200409
-x86_64               randconfig-c003-20200409
-i386                 randconfig-c001-20200409
-i386                 randconfig-c002-20200409
-i386                 randconfig-c003-20200409
-x86_64               randconfig-d001-20200410
-x86_64               randconfig-d002-20200410
-x86_64               randconfig-d003-20200410
-i386                 randconfig-d001-20200410
-i386                 randconfig-d002-20200410
-i386                 randconfig-d003-20200410
-x86_64               randconfig-e001-20200409
-x86_64               randconfig-e002-20200409
-x86_64               randconfig-e003-20200409
-i386                 randconfig-e001-20200409
-i386                 randconfig-e002-20200409
-i386                 randconfig-e003-20200409
-x86_64               randconfig-f001-20200409
-x86_64               randconfig-f002-20200409
-x86_64               randconfig-f003-20200409
-i386                 randconfig-f001-20200409
-i386                 randconfig-f002-20200409
-i386                 randconfig-f003-20200409
-x86_64               randconfig-g001-20200410
-x86_64               randconfig-g002-20200410
-x86_64               randconfig-g003-20200410
-i386                 randconfig-g001-20200410
-i386                 randconfig-g002-20200410
-i386                 randconfig-g003-20200410
-x86_64               randconfig-h001-20200409
-x86_64               randconfig-h002-20200409
-x86_64               randconfig-h003-20200409
-i386                 randconfig-h001-20200409
-i386                 randconfig-h002-20200409
-i386                 randconfig-h003-20200409
-arc                  randconfig-a001-20200409
-arm                  randconfig-a001-20200409
-arm64                randconfig-a001-20200409
-ia64                 randconfig-a001-20200409
-powerpc              randconfig-a001-20200409
-sparc                randconfig-a001-20200409
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-s390                       zfcpdump_defconfig
-s390                          debug_defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-s390                             alldefconfig
-s390                                defconfig
-sh                               allmodconfig
-sh                                allnoconfig
-sh                          rsk7269_defconfig
-sh                  sh7785lcr_32bit_defconfig
-sh                            titan_defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                          allmodconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                             defconfig
-um                                  defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              fedora-25
-x86_64                                  kexec
-x86_64                                    lkp
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ Documentation/driver-api/pm/devices.rst    |  6 +++---
+ Documentation/power/pci.rst                | 10 +++++-----
+ drivers/base/power/main.c                  |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c    |  2 +-
+ drivers/gpu/drm/i915/intel_runtime_pm.c    |  2 +-
+ drivers/gpu/drm/radeon/radeon_kms.c        |  2 +-
+ drivers/misc/mei/pci-me.c                  |  2 +-
+ drivers/misc/mei/pci-txe.c                 |  2 +-
+ drivers/net/ethernet/intel/e1000e/netdev.c |  2 +-
+ drivers/net/ethernet/intel/igb/igb_main.c  |  2 +-
+ drivers/net/ethernet/intel/igc/igc_main.c  |  2 +-
+ drivers/pci/pcie/portdrv_pci.c             |  2 +-
+ include/linux/pm.h                         |  6 +++---
+ 13 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/Documentation/driver-api/pm/devices.rst b/Documentation/driver-api/pm/devices.rst
+index f66c7b9126ea..4ace0eba4506 100644
+--- a/Documentation/driver-api/pm/devices.rst
++++ b/Documentation/driver-api/pm/devices.rst
+@@ -361,9 +361,9 @@ the phases are: ``prepare``, ``suspend``, ``suspend_late``, ``suspend_noirq``.
+ 	runtime PM disabled.
+ 
+ 	This feature also can be controlled by device drivers by using the
+-	``DPM_FLAG_NEVER_SKIP`` and ``DPM_FLAG_SMART_PREPARE`` driver power
+-	management flags.  [Typically, they are set at the time the driver is
+-	probed against the device in question by passing them to the
++	``DPM_FLAG_NO_DIRECT_COMPLETE`` and ``DPM_FLAG_SMART_PREPARE`` driver
++	power management flags.  [Typically, they are set at the time the driver
++	is probed against the device in question by passing them to the
+ 	:c:func:`dev_pm_set_driver_flags` helper function.]  If the first of
+ 	these flags is set, the PM core will not apply the direct-complete
+ 	procedure described above to the given device and, consequenty, to any
+diff --git a/Documentation/power/pci.rst b/Documentation/power/pci.rst
+index aa1c7fce6cd0..9e1408121bea 100644
+--- a/Documentation/power/pci.rst
++++ b/Documentation/power/pci.rst
+@@ -1004,11 +1004,11 @@ including the PCI bus type.  The flags should be set once at the driver probe
+ time with the help of the dev_pm_set_driver_flags() function and they should not
+ be updated directly afterwards.
+ 
+-The DPM_FLAG_NEVER_SKIP flag prevents the PM core from using the direct-complete
+-mechanism allowing device suspend/resume callbacks to be skipped if the device
+-is in runtime suspend when the system suspend starts.  That also affects all of
+-the ancestors of the device, so this flag should only be used if absolutely
+-necessary.
++The DPM_FLAG_NO_DIRECT_COMPLETE flag prevents the PM core from using the
++direct-complete mechanism allowing device suspend/resume callbacks to be skipped
++if the device is in runtime suspend when the system suspend starts.  That also
++affects all of the ancestors of the device, so this flag should only be used if
++absolutely necessary.
+ 
+ The DPM_FLAG_SMART_PREPARE flag instructs the PCI bus type to only return a
+ positive value from pci_pm_prepare() if the ->prepare callback provided by the
+diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
+index 21187ee37b22..aa9c8df9fc4b 100644
+--- a/drivers/base/power/main.c
++++ b/drivers/base/power/main.c
+@@ -1850,7 +1850,7 @@ static int device_prepare(struct device *dev, pm_message_t state)
+ 	spin_lock_irq(&dev->power.lock);
+ 	dev->power.direct_complete = state.event == PM_EVENT_SUSPEND &&
+ 		(ret > 0 || dev->power.no_pm_callbacks) &&
+-		!dev_pm_test_driver_flags(dev, DPM_FLAG_NEVER_SKIP);
++		!dev_pm_test_driver_flags(dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 	spin_unlock_irq(&dev->power.lock);
+ 	return 0;
+ }
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+index fd1dc3236eca..a9086ea1ab60 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+@@ -191,7 +191,7 @@ int amdgpu_driver_load_kms(struct drm_device *dev, unsigned long flags)
+ 	}
+ 
+ 	if (adev->runpm) {
+-		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NEVER_SKIP);
++		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 		pm_runtime_use_autosuspend(dev->dev);
+ 		pm_runtime_set_autosuspend_delay(dev->dev, 5000);
+ 		pm_runtime_set_active(dev->dev);
+diff --git a/drivers/gpu/drm/i915/intel_runtime_pm.c b/drivers/gpu/drm/i915/intel_runtime_pm.c
+index ad719c9602af..9cb2d7548daa 100644
+--- a/drivers/gpu/drm/i915/intel_runtime_pm.c
++++ b/drivers/gpu/drm/i915/intel_runtime_pm.c
+@@ -549,7 +549,7 @@ void intel_runtime_pm_enable(struct intel_runtime_pm *rpm)
+ 	 * becaue the HDA driver may require us to enable the audio power
+ 	 * domain during system suspend.
+ 	 */
+-	dev_pm_set_driver_flags(kdev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(kdev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	pm_runtime_set_autosuspend_delay(kdev, 10000); /* 10s */
+ 	pm_runtime_mark_last_busy(kdev);
+diff --git a/drivers/gpu/drm/radeon/radeon_kms.c b/drivers/gpu/drm/radeon/radeon_kms.c
+index 58176db85952..372962358a18 100644
+--- a/drivers/gpu/drm/radeon/radeon_kms.c
++++ b/drivers/gpu/drm/radeon/radeon_kms.c
+@@ -158,7 +158,7 @@ int radeon_driver_load_kms(struct drm_device *dev, unsigned long flags)
+ 	}
+ 
+ 	if (radeon_is_px(dev)) {
+-		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NEVER_SKIP);
++		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 		pm_runtime_use_autosuspend(dev->dev);
+ 		pm_runtime_set_autosuspend_delay(dev->dev, 5000);
+ 		pm_runtime_set_active(dev->dev);
+diff --git a/drivers/misc/mei/pci-me.c b/drivers/misc/mei/pci-me.c
+index 3d21c38e2dbb..53f16f3bd091 100644
+--- a/drivers/misc/mei/pci-me.c
++++ b/drivers/misc/mei/pci-me.c
+@@ -240,7 +240,7 @@ static int mei_me_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 * MEI requires to resume from runtime suspend mode
+ 	 * in order to perform link reset flow upon system suspend.
+ 	 */
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	/*
+ 	 * ME maps runtime suspend/resume to D0i states,
+diff --git a/drivers/misc/mei/pci-txe.c b/drivers/misc/mei/pci-txe.c
+index beacf2a2f2b5..4bf26ce61044 100644
+--- a/drivers/misc/mei/pci-txe.c
++++ b/drivers/misc/mei/pci-txe.c
+@@ -128,7 +128,7 @@ static int mei_txe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 * MEI requires to resume from runtime suspend mode
+ 	 * in order to perform link reset flow upon system suspend.
+ 	 */
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	/*
+ 	 * TXE maps runtime suspend/resume to own power gating states,
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 177c6da80c57..2730b1c7dddb 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -7549,7 +7549,7 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	e1000_print_device_info(adapter);
+ 
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
+ 		pm_runtime_put_noidle(&pdev->dev);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index b46bff8fe056..8bb3db2cbd41 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -3445,7 +3445,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		}
+ 	}
+ 
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 69fa1ce1f927..59fc0097438f 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4825,7 +4825,7 @@ static int igc_probe(struct pci_dev *pdev,
+ 	pcie_print_link_status(pdev);
+ 	netdev_info(netdev, "MAC: %pM\n", netdev->dev_addr);
+ 
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 
+diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
+index 160d67c59310..3acf151ae015 100644
+--- a/drivers/pci/pcie/portdrv_pci.c
++++ b/drivers/pci/pcie/portdrv_pci.c
+@@ -115,7 +115,7 @@ static int pcie_portdrv_probe(struct pci_dev *dev,
+ 
+ 	pci_save_state(dev);
+ 
+-	dev_pm_set_driver_flags(&dev->dev, DPM_FLAG_NEVER_SKIP |
++	dev_pm_set_driver_flags(&dev->dev, DPM_FLAG_NO_DIRECT_COMPLETE |
+ 					   DPM_FLAG_SMART_SUSPEND);
+ 
+ 	if (pci_bridge_d3_possible(dev)) {
+diff --git a/include/linux/pm.h b/include/linux/pm.h
+index d89b7099f241..28fd444fb5c9 100644
+--- a/include/linux/pm.h
++++ b/include/linux/pm.h
+@@ -544,7 +544,7 @@ struct pm_subsys_data {
+  * These flags can be set by device drivers at the probe time.  They need not be
+  * cleared by the drivers as the driver core will take care of that.
+  *
+- * NEVER_SKIP: Do not skip all system suspend/resume callbacks for the device.
++ * NO_DIRECT_COMPLETE: Do not apply direct-complete optimization to the device.
+  * SMART_PREPARE: Check the return value of the driver's ->prepare callback.
+  * SMART_SUSPEND: No need to resume the device from runtime suspend.
+  * LEAVE_SUSPENDED: Avoid resuming the device during system resume if possible.
+@@ -554,7 +554,7 @@ struct pm_subsys_data {
+  * their ->prepare callbacks if the driver's ->prepare callback returns 0 (in
+  * other words, the system suspend/resume callbacks can only be skipped for the
+  * device if its driver doesn't object against that).  This flag has no effect
+- * if NEVER_SKIP is set.
++ * if NO_DIRECT_COMPLETE is set.
+  *
+  * Setting SMART_SUSPEND instructs bus types and PM domains which may want to
+  * runtime resume the device upfront during system suspend that doing so is not
+@@ -565,7 +565,7 @@ struct pm_subsys_data {
+  * Setting LEAVE_SUSPENDED informs the PM core and middle-layer code that the
+  * driver prefers the device to be left in suspend after system resume.
+  */
+-#define DPM_FLAG_NEVER_SKIP		BIT(0)
++#define DPM_FLAG_NO_DIRECT_COMPLETE	BIT(0)
+ #define DPM_FLAG_SMART_PREPARE		BIT(1)
+ #define DPM_FLAG_SMART_SUSPEND		BIT(2)
+ #define DPM_FLAG_LEAVE_SUSPENDED	BIT(3)
+-- 
+2.16.4
+
+
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
