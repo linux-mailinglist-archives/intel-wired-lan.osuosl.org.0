@@ -2,70 +2,72 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 822A81A892E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2020 20:22:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E6E7D1A891D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2020 20:20:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 2EC49220DF;
-	Tue, 14 Apr 2020 18:22:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8F5A221FF8;
+	Tue, 14 Apr 2020 18:20:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pjzKs+XS3oXS; Tue, 14 Apr 2020 18:22:24 +0000 (UTC)
+	with ESMTP id 9uZ8+Xa8j9-S; Tue, 14 Apr 2020 18:20:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E4689220A2;
-	Tue, 14 Apr 2020 18:22:23 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3E40821546;
+	Tue, 14 Apr 2020 18:20:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6572D1BF314
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 09:01:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 978A91BF255
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 10:16:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5D4DF8559F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 09:01:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8F06E847D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 10:16:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jd7xuxTvMMla for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Apr 2020 09:01:33 +0000 (UTC)
+ with ESMTP id AVL_d3hJACP2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Apr 2020 10:16:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5BC8185582
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 09:01:33 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id a201so12686558wme.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 02:01:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZSEHFc2eh+N6K60wyVHbBWfK0AmjMN90oe2OMNtMMJ0=;
- b=HQ0EknzuywB0Jf0HubvZ8d7oICD2wRWCnCIt8yFWFQnvt9ahr86I943nm6GbAqWVSz
- J+aYZoHS84PdJtQIB1lChi91dRjLsyDcEio56Z5dsdSjWNV9GHCLcLuJPvnrOKyxeVZW
- c+xKB/ufVH6EqxdGUOPl/h9Rz5KStXiENJyuZki5B4beotjG5l7ETBO9Lg7j1M6XjD0O
- d9LQutSMWUvfV7k8HbKYaVKMu4gCZHH4H6G058daPQC4JLaC+IWli6UivQlnzns+prQv
- /TS/UiMGjSxG2paX9qka2trKQez1OObsk/OYM1xVpMweqVWf2F9bCwOMUJOgPTN6+h/f
- 7gMQ==
-X-Gm-Message-State: AGi0PuY0mjiTjqAdVQVUV4YR3tghM+L+xUq+t3BZQ2W/6Gdm9OYUYF6P
- eA5oEM5rXK1qs4stkmstmrA=
-X-Google-Smtp-Source: APiQypIjMMKQ1krTcIb7iRe2Mn/fScrYHKTluZiYEwYRZsrwjhiGsUjKHrgwCKNk20IxGSD17N1euw==
-X-Received: by 2002:a1c:a913:: with SMTP id s19mr23660673wme.134.1586854891811; 
- Tue, 14 Apr 2020 02:01:31 -0700 (PDT)
-Received: from localhost (ip-37-188-180-223.eurotel.cz. [37.188.180.223])
- by smtp.gmail.com with ESMTPSA id n6sm18637096wrs.81.2020.04.14.02.01.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Apr 2020 02:01:30 -0700 (PDT)
-Date: Tue, 14 Apr 2020 11:01:29 +0200
-From: Michal Hocko <mhocko@kernel.org>
-To: Waiman Long <longman@redhat.com>
-Message-ID: <20200414090129.GE4629@dhcp22.suse.cz>
-References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [205.139.110.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B734084713
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 10:16:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586859412;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mtn8Wer36F66lv1oVM1/nLcmPFI938b9NPEjtqQ2+fs=;
+ b=G58GvTEr+UE2jj1R4WiJ8IlWzipgvc5lYZ028eG5CVnQIH86i2hDjdMTD/X4vh+rrXyuwD
+ 68V5E+HHifWaXWotLU/6UGEGPzxftVSL0U8rHQ3IgJFLv5pENSUGRa4J//DUPtmppMft/C
+ jhBjVw56KDia/9h5mrWVvwKUw5DHXI8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-380-AZfUOMCuO--X4173cUufdw-1; Tue, 14 Apr 2020 06:16:47 -0400
+X-MC-Unique: AZfUOMCuO--X4173cUufdw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B3DDDBB1;
+ Tue, 14 Apr 2020 10:16:45 +0000 (UTC)
+Received: from carbon (unknown [10.40.208.6])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A1C3D5C1B0;
+ Tue, 14 Apr 2020 10:16:34 +0000 (UTC)
+Date: Tue, 14 Apr 2020 12:16:33 +0200
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: David Miller <davem@davemloft.net>
+Message-ID: <20200414121633.0461ece4@carbon>
+In-Reply-To: <20200408.144845.783523592365109446.davem@davemloft.net>
+References: <158634658714.707275.7903484085370879864.stgit@firesoul>
+ <158634676645.707275.7536684877295305696.stgit@firesoul>
+ <20200408.144845.783523592365109446.davem@davemloft.net>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200413211550.8307-2-longman@redhat.com>
-X-Mailman-Approved-At: Tue, 14 Apr 2020 18:22:19 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] mm,
- treewide: Rename kzfree() to kfree_sensitive()
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mailman-Approved-At: Tue, 14 Apr 2020 18:20:42 +0000
+Subject: Re: [Intel-wired-lan] [PATCH RFC v2 26/33] i40e: add XDP frame size
+ to driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,73 +80,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-btrfs@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, keyrings@vger.kernel.org,
- kasan-dev@googlegroups.com, samba-technical@lists.samba.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
- cocci@systeme.lip6.fr, linux-wpan@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, David Rientjes <rientjes@google.com>,
- "Serge E. Hallyn" <serge@hallyn.com>, linux-pm@vger.kernel.org,
- ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-integrity@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-cifs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
+Cc: willemdebruijn.kernel@gmail.com, ilias.apalodimas@linaro.org,
+ zorik@amazon.com, lorenzo@kernel.org, netdev@vger.kernel.org, toke@redhat.com,
+ brouer@redhat.com, gtzalik@amazon.com, saeedm@mellanox.com,
+ intel-wired-lan@lists.osuosl.org, dsahern@gmail.com, sameehj@amazon.com,
+ bpf@vger.kernel.org, borkmann@iogearbox.net, alexei.starovoitov@gmail.com,
+ akiyano@amazon.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon 13-04-20 17:15:49, Waiman Long wrote:
-> As said by Linus:
-> 
->   A symmetric naming is only helpful if it implies symmetries in use.
->   Otherwise it's actively misleading.
-> 
->   In "kzalloc()", the z is meaningful and an important part of what the
->   caller wants.
-> 
->   In "kzfree()", the z is actively detrimental, because maybe in the
->   future we really _might_ want to use that "memfill(0xdeadbeef)" or
->   something. The "zero" part of the interface isn't even _relevant_.
-> 
-> The main reason that kzfree() exists is to clear sensitive information
-> that should not be leaked to other future users of the same memory
-> objects.
-> 
-> Rename kzfree() to kfree_sensitive() to follow the example of the
-> recently added kvfree_sensitive() and make the intention of the API
-> more explicit. In addition, memzero_explicit() is used to clear the
-> memory to make sure that it won't get optimized away by the compiler.
-> 
-> The renaming is done by using the command sequence:
-> 
->   git grep -w --name-only kzfree |\
->   xargs sed -i 's/\bkzfree\b/kfree_sensitive/'
-> 
-> followed by some editing of the kfree_sensitive() kerneldoc and the
-> use of memzero_explicit() instead of memset().
-> 
-> Suggested-by: Joe Perches <joe@perches.com>
-> Signed-off-by: Waiman Long <longman@redhat.com>
+On Wed, 08 Apr 2020 14:48:45 -0700 (PDT)
+David Miller <davem@davemloft.net> wrote:
 
-Makes sense. I haven't checked all the conversions and will rely on the
-script doing the right thing. The core MM part is correct.
+> From: Jesper Dangaard Brouer <brouer@redhat.com>
+> Date: Wed, 08 Apr 2020 13:52:46 +0200
+> 
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> > index b8496037ef7f..1fb6b1004dcb 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> > @@ -1507,6 +1507,23 @@ static inline unsigned int i40e_rx_offset(struct i40e_ring *rx_ring)
+> >  	return ring_uses_build_skb(rx_ring) ? I40E_SKB_PAD : 0;
+> >  }
+> >  
+> > +static inline unsigned int i40e_rx_frame_truesize(struct i40e_ring *rx_ring,
+> > +						  unsigned int size)  
+> 
+> Please don't use inline in foo.c files.  I noticed you properly elided this in
+> the ice changes so I wonder why it showed up here :-)
 
-Acked-by: Michal Hocko <mhocko@suse.com>
+Yes, I know I should not do this.  It got here by copy-paste accident,
+as I first had ixgbe function in a header file, and later I decided to
+move this into the ixgbe C-file, but I had already copy-pasted this
+into i40e driver ;-)
+
 -- 
-Michal Hocko
-SUSE Labs
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
