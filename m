@@ -1,75 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BB701A83C8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2020 17:51:17 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB1A61A8932
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2020 20:22:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C318886430;
-	Tue, 14 Apr 2020 15:51:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6C70F22098;
+	Tue, 14 Apr 2020 18:22:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8fKOBFSGFCYs; Tue, 14 Apr 2020 15:51:15 +0000 (UTC)
+	with ESMTP id F2VhD7iwsSR6; Tue, 14 Apr 2020 18:22:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 406B88691B;
-	Tue, 14 Apr 2020 15:51:14 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AE11F220D6;
+	Tue, 14 Apr 2020 18:22:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DEC771BF59D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 15:51:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 752901BF45A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 16:25:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DA49586430
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 15:51:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6F50583079
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 16:25:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wrb4TOqpD5vj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Apr 2020 15:51:11 +0000 (UTC)
+ with ESMTP id BqUqo5JlL6R8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Apr 2020 16:25:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
- [209.85.166.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CE69D86742
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 15:51:11 +0000 (UTC)
-Received: by mail-io1-f68.google.com with SMTP id s18so10368529ioe.10
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 08:51:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4cAyVbZ5COn1OcRqgq9nR7fLvg4V1HkON81sQ7ObhuU=;
- b=M7vtx7Ln812XR9re0r9ZDNtO/hiwSJp5CEqqgv2pc8Y2OjQKDtWwOS3CYL6rt3RPz0
- mwVy9PVKaq3SVzxkCdlXwrGLaQ4OW5MsZlpDwnppdoF9apHhqRAq5783Y9AR483tzs1b
- +ocnJs1zoH4T3kX7jQqTzqqplSGGNkb8clc/YVpD+rUn3mXw31rpdty2n4+BW5yKRmqE
- UhnSG3Dd74p2lBT38ag5yxw8vmMiU5sQeHQO/keZ3bJGzEu3cSW2pm6dSyvcMass/CS3
- G3VrDl4HVxx/tP3PODLlbqJ2qwCIHB0gVtlEsBBRtPo1gVoPwf33Gz0lvwgBK1mteIR7
- qqUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4cAyVbZ5COn1OcRqgq9nR7fLvg4V1HkON81sQ7ObhuU=;
- b=N4IVfvUU1bapYMNdvgj+eEG4TzGGfuUPL/SSLGrRhS8PlfqSRfRpoxSPjKysU3Qpwc
- 2WkUo7vOvRBklA64HJn8uA5DGl5ztXNwlyPJCFnOtSsUA6ILYV4WPm6vkn8MjXImKML+
- TGZO6Y6XRwN8gQ5j0MQ48OL2AuBH4FJY9f0MY7esUx7sONWCfEx6lkSukyTb+GMxjUzz
- qB//vA2ZQ5RCw0oWzE03wu50ODcV2hxywRlYdV94OVf5obo+tJBSSGyEwFI1CavkH5ie
- b+4fClaIKA0XOB3UT99VPpxlxHNIxJiVf2kk6KhHOF+PTQIo81QHlh2jPQqlIhvAdFCw
- 5jfA==
-X-Gm-Message-State: AGi0PuYBXY2ZpcExhVBAo4WOB435JMenyONIwJvVAI4xCetGInM9ysiL
- +Vp9blMyC81msvhoMiz/9siAo2mj4zg9rH9gZcQ=
-X-Google-Smtp-Source: APiQypJom1qT9CGtZyGfBzB/8Nk8sayobqgdaf2m8OHsxrE9Xnj1ZapGSrh/Sv6+0IV8YLP5LUEe+G0Es8jRtvWynWY=
-X-Received: by 2002:a02:9642:: with SMTP id c60mr21342669jai.87.1586879470745; 
- Tue, 14 Apr 2020 08:51:10 -0700 (PDT)
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com
+ [207.211.31.81])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 347A283FA2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2020 16:25:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586881501;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yW8t58m2bp1NhazlqC7/k8J+nPWsrZBYDWUsjTyk2qQ=;
+ b=NsgcQPq0gDRRzr+WCv6O+IejAhACeGf91UcZUch7xVIEkk4F0++6WsAKwkQ+6nkMoq/jD7
+ lzSV3f1EuKP3Hxnp2JivHQcF6Vr/Z22M++foNVb8RdxR7eWsyL6QJbeO4NazIgQ9svAhXl
+ 7AFa78Hn9YCF68TMh9hKXOVlm2kXUcc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-87-m_CJjLwlPvyXxruKyZ4cKA-1; Tue, 14 Apr 2020 12:24:56 -0400
+X-MC-Unique: m_CJjLwlPvyXxruKyZ4cKA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 12123107ACC4;
+ Tue, 14 Apr 2020 16:24:50 +0000 (UTC)
+Received: from llong.remote.csb (ovpn-118-173.rdu2.redhat.com [10.10.118.173])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0E02D118DEE;
+ Tue, 14 Apr 2020 16:24:36 +0000 (UTC)
+To: Christophe Leroy <christophe.leroy@c-s.fr>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ David Howells <dhowells@redhat.com>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Joe Perches
+ <joe@perches.com>, Matthew Wilcox <willy@infradead.org>,
+ David Rientjes <rientjes@google.com>
+References: <20200413211550.8307-1-longman@redhat.com>
+ <20200413222846.24240-1-longman@redhat.com>
+ <eca85e0b-0af3-c43a-31e4-bd5c3f519798@c-s.fr>
+From: Waiman Long <longman@redhat.com>
+Organization: Red Hat
+Message-ID: <e194a51f-a5e5-a557-c008-b08cac558572@redhat.com>
+Date: Tue, 14 Apr 2020 12:24:36 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-References: <20200412191824.GA109724@laptop>
- <CAKgT0Udn3sE4iZci2dRNun6i3DMoG==kuksX_gLXWQORXA1kWA@mail.gmail.com>
- <20200413215508.GA122208@laptop>
-In-Reply-To: <20200413215508.GA122208@laptop>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 14 Apr 2020 08:50:59 -0700
-Message-ID: <CAKgT0UeThCT2FrccmP1TdNuWD9S2cgXOhu2423MQteOKw5Xpvw@mail.gmail.com>
-To: Maxim Zhukov <mussitantesmortem@gmail.com>
-Subject: Re: [Intel-wired-lan] BUG: e1000: infinitely loop at
- e1000_set_link_ksettings
+In-Reply-To: <eca85e0b-0af3-c43a-31e4-bd5c3f519798@c-s.fr>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mailman-Approved-At: Tue, 14 Apr 2020 18:22:19 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v2 2/2] crypto: Remove unnecessary
+ memzero_explicit()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,155 +91,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- LKML <linux-kernel@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: samba-technical@lists.samba.org, virtualization@lists.linux-foundation.org,
+ linux-mm@kvack.org, linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
+ kasan-dev@googlegroups.com, cocci@systeme.lip6.fr, linux-wpan@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-crypto@vger.kernel.org,
+ linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-cifs@vger.kernel.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
+ keyrings@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org,
+ linux-integrity@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-btrfs@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Apr 13, 2020 at 2:55 PM Maxim Zhukov
-<mussitantesmortem@gmail.com> wrote:
->
-> On Mon, Apr 13, 2020 at 11:47:21AM -0700, Alexander Duyck wrote:
-> > On Sun, Apr 12, 2020 at 4:12 PM Maxim Zhukov
-> > <mussitantesmortem@gmail.com> wrote:
-> > >
-> > > On Qemu X86 (kernel 5.4.31):
-> > What version of QEMU are you running? That would tell us more about
-> > how the device is being emulated.
-> $ qemu-system-i386 --version
-> QEMU emulator version 4.2.0
-> Copyright (c) 2003-2019 Fabrice Bellard and the QEMU Project developers
-> >
-> > > The system-maintenance daemon hangout on D-state at startup on
-> > > ioctl(ETHTOOL_SSET) for setup advertising, duplex, etc...
-> > >
-> > > kgdb stacktrace:
-> > >
-> > > ----
-> > >
-> >
-> > I am dropping the first backtrace since it is a symptom of the trace
-> > below. Essentially the issue is all calls to e1000_reinit_locked get
-> > stuck because the __E1000_RESETTING bit is stuck set because this
-> > first thread is stuck waiting on napi_disable to succeed.
-> >
-> > > Also stalled workers backtrace:
-> > >
-> > > #3  0xc19e0870 in schedule () at kernel/sched/core.c:4150
-> > > #4  0xc19e2f3e in schedule_timeout (timeout=<optimized out>) at kernel/time/timer.c:1895
-> > > #5  0xc19e3041 in schedule_timeout_uninterruptible (timeout=<optimized out>) at kernel/time/timer.c:1929
-> > > #6  0xc10b3dd1 in msleep (msecs=<optimized out>) at kernel/time/timer.c:2048
-> > > #7  0xc1771fb4 in napi_disable (n=0xdec0b7d8) at net/core/dev.c:6240
-> > > #8  0xc15f0e87 in e1000_down (adapter=0xdec0b540) at drivers/net/ethernet/intel/e1000/e1000_main.c:522
-> > > #9  0xc15f0f35 in e1000_reinit_locked (adapter=0xdec0b540) at drivers/net/ethernet/intel/e1000/e1000_main.c:545
-> > > #10 0xc15f6ecd in e1000_reset_task (work=0xdec0bca0) at drivers/net/ethernet/intel/e1000/e1000_main.c:3506
-> > > #11 0xc106c882 in process_one_work (worker=0xdef4d840, work=0xdec0bca0) at kernel/workqueue.c:2272
-> > > #12 0xc106ccc6 in worker_thread (__worker=0xdef4d840) at kernel/workqueue.c:2418
-> > > #13 0xc1070657 in kthread (_create=0xdf508800) at kernel/kthread.c:255
-> > > #14 0xc19e4078 in ret_from_fork () at arch/x86/entry/entry_32.S:813
-> >
-> > So the question I would have is what is causing napi_disable to stall
-> > out? I have looked over the latest QEMU code and the driver code and
-> > both the Tx and Rx paths should have been shut down at the point where
-> > napi_disable is called. I'm assuming there is little to no traffic
-> > present so the NAPI thread shouldn't be stuck in the polling state for
-> > that reason. The only other thing I can think of is that somehow this
-> > is getting scheduled after the interface was already brought down
-> > causing napi_disable to be called a second time for the same NAPI
-> > instance.
-> In the log below udhcpc sends discover packets in the raw mode (https://git.busybox.net/busybox/tree/networking/udhcp/dhcpc.c#n738), maybe it's triggered stall?
->
-> >
-> > A dmesg log for the system at the time of the hang might be useful as
-> > it could include some information on what other configuration options
-> > might have been changed that led to us blocking on the napi_disable
-> > call.
->
-> running command:
-> qemu-system-i386 \
->         -kernel bzImage \
->         -drive file=rootfs.ext2,index=0,media=disk,format=raw \
->         -drive file=storage.ext2,index=1,media=disk,format=raw \
->         -smp 2 \
->         -m 2047M \
->         -enable-kvm \
->         -append "console=ttyS0 root=/dev/sda rw storage=/dev/sdb rw virtfs_tag=host0" \
->         -netdev tap,id=mynet1,ifname=tap0,script=no,downscript=no -device e1000,netdev=mynet1,mac=02:88:b1:e7:d1:f7 \
->         -netdev tap,id=mynet2,ifname=tap1,script=no,downscript=no -device e1000,netdev=mynet2,mac=02:70:67:e7:d1:f7 \
->         -virtfs local,path=./share/,mount_tag=host0,security_model=mapped-file,id=host0 \
->         -nographic
->
->
-> dmesg:
->
-> ---------
-> [    2.113622] Run /sbin/init as init process
-> [    2.145965] random: init: uninitialized urandom read (4 bytes read)
-> [    3.175813] random: modprobe: uninitialized urandom read (4 bytes read)
-> [    3.182942] modprobe (1267) used greatest stack depth: 5904 bytes left
-> [    3.193894] EXT4-fs (sdb): mounting ext2 file system using the ext4 subsystem
-> [    3.196343] EXT4-fs (sdb): warning: mounting unchecked fs, running e2fsck is recommended
-> [    3.406740] EXT4-fs (sdb): mounted filesystem without journal. Opts: (null)
-> [    3.408419] ext2 filesystem being mounted at /boot supports timestamps until 2038 (0x7fffffff)
-> [    3.412388] random: sh: uninitialized urandom read (4 bytes read)
-> [    3.415512] random: startup.sh: uninitialized urandom read (4 bytes read)
-> [    3.907569] 8021q: adding VLAN 0 to HW filter on device eth0
-> [    3.909715] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
-> [    3.912057] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
-> [    3.922927] 8021q: adding VLAN 0 to HW filter on device x86eth100
-> [    3.934933] 8021q: adding VLAN 0 to HW filter on device eth1
-> [    3.936800] e1000: eth1 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
-> [    3.939092] IPv6: ADDRCONF(NETDEV_CHANGE): eth1: link becomes ready
-> [    3.948995] 8021q: adding VLAN 0 to HW filter on device x86eth200
-> [    4.178555] e1000 0000:00:04.0 eth1: Reset adapter
-> [    4.219492] dmsd[wrkr] (1350) used greatest stack depth: 5536 bytes left
-> [    4.368172] random: crng init done
-> [    4.369034] random: 6 urandom warning(s) missed due to ratelimiting
-> [    4.502536] 8021q: adding VLAN 0 to HW filter on device x86eth100
-> [    4.520655] 8021q: adding VLAN 0 to HW filter on device x86eth200
-> [    4.558841] br1: port 1(x86eth100) entered blocking state
-> [    4.560342] br1: port 1(x86eth100) entered disabled state
-> [    4.561649] device x86eth100 entered promiscuous mode
-> [    4.562823] device eth0 entered promiscuous mode
-> [    9.705295] 8021q: adding VLAN 0 to HW filter on device eth0
-> [   11.731948] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
-> ----
->
-> syslog:
->
-> ----
-> Apr 14 00:31:23 [ALRT] default_port_status_set[1716]: ioctl(eth0, ETHTOOL_SSET)
-> Apr 14 00:31:23 [ALRT] default_port_status_set[1716]: ifup eth0
-> Apr 14 00:31:23 [INFO] kernel: [    9.705295] 8021q: adding VLAN 0 to HW filter on device eth0
-> Apr 14 00:31:23 [ALRT] default_port_status_set[1717]: ioctl(eth1, ETHTOOL_SSET)                                   <<<<<<<<<<< last ioctl
-> Apr 14 00:31:24 [INFO] udhcpc[1545]: sending discover
-> Apr 14 00:31:25 [INFO] kernel: [   11.731948] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
-> ----
->
->
-> >
-> > Other than that, how easy is it to trigger this hang. Is this
-> > happening every time you start the guest, or does this just happen
-> > periodically?
-> It's happening periodically, sometimes the chance is very low.
->
-> I did't find the way for reproduce this hang (I tried to call ioctl + ifups in several configurations)
->
-> Thanks for your attention!
-
-Thanks for the logs. I'll have to look it over and see if I can figure
-out what is going on. It looks like something is triggering a reset
-for eth1 almost immediately after the link is up. I'm suspecting some
-sort of race during initialization time resulting in us coming up and
-triggering the reset while the interface is actually down and causing
-the hang.
-
-One other question. Are you always seeing this on eth1 or is it
-cycling between eth1 and eth0 when it occurs?
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gNC8xNC8yMCAyOjA4IEFNLCBDaHJpc3RvcGhlIExlcm95IHdyb3RlOgo+Cj4KPiBMZSAxNC8w
+NC8yMDIwIMOgIDAwOjI4LCBXYWltYW4gTG9uZyBhIMOpY3JpdMKgOgo+PiBTaW5jZSBrZnJlZV9z
+ZW5zaXRpdmUoKSB3aWxsIGRvIGFuIGltcGxpY2l0IG1lbXplcm9fZXhwbGljaXQoKSwgdGhlcmUK
+Pj4gaXMgbm8gbmVlZCB0byBjYWxsIG1lbXplcm9fZXhwbGljaXQoKSBiZWZvcmUgaXQuIEVsaW1p
+bmF0ZSB0aG9zZQo+PiBtZW16ZXJvX2V4cGxpY2l0KCkgYW5kIHNpbXBsaWZ5IHRoZSBjYWxsIHNp
+dGVzLiBGb3IgYmV0dGVyIGNvcnJlY3RuZXNzLAo+PiB0aGUgc2V0dGluZyBvZiBrZXlsZW4gaXMg
+YWxzbyBtb3ZlZCBkb3duIGFmdGVyIHRoZSBrZXkgcG9pbnRlciBjaGVjay4KPj4KPj4gU2lnbmVk
+LW9mZi1ieTogV2FpbWFuIExvbmcgPGxvbmdtYW5AcmVkaGF0LmNvbT4KPj4gLS0tCj4+IMKgIC4u
+Li9hbGx3aW5uZXIvc3VuOGktY2Uvc3VuOGktY2UtY2lwaGVyLmPCoMKgwqDCoMKgIHwgMTkgKysr
+KystLS0tLS0tLS0tLS0tCj4+IMKgIC4uLi9hbGx3aW5uZXIvc3VuOGktc3Mvc3VuOGktc3MtY2lw
+aGVyLmPCoMKgwqDCoMKgIHwgMjAgKysrKystLS0tLS0tLS0tLS0tLQo+PiDCoCBkcml2ZXJzL2Ny
+eXB0by9hbWxvZ2ljL2FtbG9naWMtZ3hsLWNpcGhlci5jwqDCoCB8IDEyICsrKy0tLS0tLS0tCj4+
+IMKgIGRyaXZlcnMvY3J5cHRvL2luc2lkZS1zZWN1cmUvc2FmZXhjZWxfaGFzaC5jwqAgfMKgIDMg
+Ky0tCj4+IMKgIDQgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNDAgZGVsZXRpb25z
+KC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2NyeXB0by9hbGx3aW5uZXIvc3VuOGktY2Uv
+c3VuOGktY2UtY2lwaGVyLmMKPj4gYi9kcml2ZXJzL2NyeXB0by9hbGx3aW5uZXIvc3VuOGktY2Uv
+c3VuOGktY2UtY2lwaGVyLmMKPj4gaW5kZXggYWE0ZThmZGMyYjMyLi44MzU4ZmFjOTg3MTkgMTAw
+NjQ0Cj4+IC0tLSBhL2RyaXZlcnMvY3J5cHRvL2FsbHdpbm5lci9zdW44aS1jZS9zdW44aS1jZS1j
+aXBoZXIuYwo+PiArKysgYi9kcml2ZXJzL2NyeXB0by9hbGx3aW5uZXIvc3VuOGktY2Uvc3VuOGkt
+Y2UtY2lwaGVyLmMKPj4gQEAgLTM2NiwxMCArMzY2LDcgQEAgdm9pZCBzdW44aV9jZV9jaXBoZXJf
+ZXhpdChzdHJ1Y3QgY3J5cHRvX3RmbSAqdGZtKQo+PiDCoCB7Cj4+IMKgwqDCoMKgwqAgc3RydWN0
+IHN1bjhpX2NpcGhlcl90Zm1fY3R4ICpvcCA9IGNyeXB0b190Zm1fY3R4KHRmbSk7Cj4+IMKgIC3C
+oMKgwqAgaWYgKG9wLT5rZXkpIHsKPj4gLcKgwqDCoMKgwqDCoMKgIG1lbXplcm9fZXhwbGljaXQo
+b3AtPmtleSwgb3AtPmtleWxlbik7Cj4+IC3CoMKgwqDCoMKgwqDCoCBrZnJlZShvcC0+a2V5KTsK
+Pj4gLcKgwqDCoCB9Cj4+ICvCoMKgwqAga2ZyZWVfc2Vuc2l0aXZlKG9wLT5rZXkpOwo+PiDCoMKg
+wqDCoMKgIGNyeXB0b19mcmVlX3N5bmNfc2tjaXBoZXIob3AtPmZhbGxiYWNrX3RmbSk7Cj4+IMKg
+wqDCoMKgwqAgcG1fcnVudGltZV9wdXRfc3luY19zdXNwZW5kKG9wLT5jZS0+ZGV2KTsKPj4gwqAg
+fQo+PiBAQCAtMzkxLDE0ICszODgsMTEgQEAgaW50IHN1bjhpX2NlX2Flc19zZXRrZXkoc3RydWN0
+IGNyeXB0b19za2NpcGhlcgo+PiAqdGZtLCBjb25zdCB1OCAqa2V5LAo+PiDCoMKgwqDCoMKgwqDC
+oMKgwqAgZGV2X2RiZyhjZS0+ZGV2LCAiRVJST1I6IEludmFsaWQga2V5bGVuICV1XG4iLCBrZXls
+ZW4pOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FSU5WQUw7Cj4+IMKgwqDCoMKgwqAg
+fQo+PiAtwqDCoMKgIGlmIChvcC0+a2V5KSB7Cj4+IC3CoMKgwqDCoMKgwqDCoCBtZW16ZXJvX2V4
+cGxpY2l0KG9wLT5rZXksIG9wLT5rZXlsZW4pOwo+PiAtwqDCoMKgwqDCoMKgwqAga2ZyZWUob3At
+PmtleSk7Cj4+IC3CoMKgwqAgfQo+PiAtwqDCoMKgIG9wLT5rZXlsZW4gPSBrZXlsZW47Cj4+ICvC
+oMKgwqAga2ZyZWVfc2Vuc2l0aXZlKG9wLT5rZXkpOwo+PiDCoMKgwqDCoMKgIG9wLT5rZXkgPSBr
+bWVtZHVwKGtleSwga2V5bGVuLCBHRlBfS0VSTkVMIHwgR0ZQX0RNQSk7Cj4+IMKgwqDCoMKgwqAg
+aWYgKCFvcC0+a2V5KQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FTk9NRU07Cj4+ICvC
+oMKgwqAgb3AtPmtleWxlbiA9IGtleWxlbjsKPgo+IERvZXMgaXQgbWF0dGVyIGF0IGFsbCB0byBl
+bnN1cmUgb3AtPmtleWxlbiBpcyBub3Qgc2V0IHdoZW4gb2YtPmtleSBpcwo+IE5VTEwgPyBJJ20g
+bm90IHN1cmUuCj4KPiBCdXQgaWYgaXQgZG9lcywgdGhlbiBvcC0+a2V5bGVuIHNob3VsZCBiZSBz
+ZXQgdG8gMCB3aGVuIGZyZWVpbmcgb3AtPmtleS4gCgpNeSB0aGlua2luZyBpcyB0aGF0IGlmIG1l
+bW9yeSBhbGxvY2F0aW9uIGZhaWxzLCB3ZSBqdXN0IGRvbid0IHRvdWNoCmFueXRoaW5nIGFuZCBy
+ZXR1cm4gYW4gZXJyb3IgY29kZS4gSSB3aWxsIG5vdCBleHBsaWNpdGx5IHNldCBrZXlsZW4gdG8g
+MAppbiB0aGlzIGNhc2UgdW5sZXNzIGl0IGlzIHNwZWNpZmllZCBpbiB0aGUgQVBJIGRvY3VtZW50
+YXRpb24uCgpDaGVlcnMsCkxvbmdtYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQt
+bGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8v
+aW50ZWwtd2lyZWQtbGFuCg==
