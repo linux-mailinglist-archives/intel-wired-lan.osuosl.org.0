@@ -1,49 +1,54 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 019A31AA98E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2020 16:17:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id F0B471AA9B9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2020 16:19:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AAB9886430;
-	Wed, 15 Apr 2020 14:17:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8039D8734E;
+	Wed, 15 Apr 2020 14:19:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0RJj28IALR+7; Wed, 15 Apr 2020 14:17:38 +0000 (UTC)
+	with ESMTP id 4Bz941V0M5ME; Wed, 15 Apr 2020 14:19:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DCDC4864DA;
-	Wed, 15 Apr 2020 14:17:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C746587263;
+	Wed, 15 Apr 2020 14:19:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5D77B1BF372
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2020 14:17:35 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C560F1BF372
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2020 14:19:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 55F7C85EEF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2020 14:17:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id BA5022013C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2020 14:19:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Dl-208c5AWEA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Apr 2020 14:17:34 +0000 (UTC)
+ with ESMTP id BnxHdF-B61Jy for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Apr 2020 14:19:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail3-relais-sop.national.inria.fr
  (mail3-relais-sop.national.inria.fr [192.134.164.104])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1619384471
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2020 14:17:33 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="5.72,387,1580770800"; d="scan'208";a="345994661"
+ by silver.osuosl.org (Postfix) with ESMTPS id BB9102010E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2020 14:19:20 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="5.72,387,1580770800"; d="scan'208";a="345994838"
 Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2020 16:17:31 +0200
-Date: Wed, 15 Apr 2020 16:17:31 +0200 (CEST)
+ 15 Apr 2020 16:18:57 +0200
+Date: Wed, 15 Apr 2020 16:18:57 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
 X-X-Sender: jll@hadrien
-To: Shiraz Saleem <shiraz.saleem@intel.com>
-Message-ID: <alpine.DEB.2.21.2004151615550.2381@hadrien>
+To: Shiraz Saleem <shiraz.saleem@intel.com>, 
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, 
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
+ kbuild-all@lists.01.org
+Message-ID: <alpine.DEB.2.21.2004151617570.2381@hadrien>
 User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] RDMA/irdma: fix semicolon.cocci warnings
+Subject: [Intel-wired-lan] [jkirsher-next-queue:rdma 24/25]
+ drivers/infiniband/hw/irdma/irdma_if.c:138:56-61: WARNING: conversion to
+ bool not needed here (fwd)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,26 +61,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mustafa Ismail <mustafa.ismail@intel.com>, kbuild-all@lists.01.org,
- linux-rdma@vger.kernel.org, linux-kernel@vger.kernel.org,
- Jason Gunthorpe <jgg@ziepe.ca>, Doug Ledford <dledford@redhat.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hello,
+
+I have forwarded patches about the first and third issues below, but there
+is another issue about a duplicated argument to & or | that could be
+looked into.
+
+julia
+
+---------- Forwarded message ----------
+Date: Wed, 15 Apr 2020 22:04:23 +0800
 From: kbuild test robot <lkp@intel.com>
+To: kbuild@lists.01.org
+Cc: lkp@intel.com, Julia Lawall <julia.lawall@lip6.fr>
+Subject: [jkirsher-next-queue:rdma 24/25]
+    drivers/infiniband/hw/irdma/irdma_if.c:138:56-61: WARNING: conversion to
+    bool not needed here
 
-Remove unneeded semicolon.
-
-Generated by: scripts/coccinelle/misc/semicolon.cocci
-
-Fixes: f473122f41f6 ("RDMA/irdma: Add irdma Kconfig/Makefile and remove i40iw")
-CC: Shiraz Saleem <shiraz.saleem@intel.com>
-Signed-off-by: kbuild test robot <lkp@intel.com>
-Signed-off-by: Julia Lawall <julia.lawall@inria.fr>
----
+CC: kbuild-all@lists.01.org
+CC: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+TO: Shiraz Saleem <shiraz.saleem@intel.com>
+CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git rdma
 head:   4d75d9adac8df983bc733b92711683a7cd7ddd40
@@ -83,20 +94,24 @@ commit: f473122f41f69394e29a834fbfcd569dcdd1d879 [24/25] RDMA/irdma: Add irdma K
 :::::: branch date: 2 days ago
 :::::: commit date: 2 days ago
 
- verbs.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kbuild test robot <lkp@intel.com>
+Reported-by: Julia Lawall <julia.lawall@lip6.fr>
 
---- a/drivers/infiniband/hw/irdma/verbs.c
-+++ b/drivers/infiniband/hw/irdma/verbs.c
-@@ -2384,7 +2384,7 @@ static int irdma_handle_q_mem(struct ird
- 	default:
- 		ibdev_dbg(to_ibdev(iwdev), "VERBS: MR type error\n");
- 		err = -EINVAL;
--	};
-+	}
 
- 	if (use_pbles && ret) {
- 		irdma_free_pble(iwdev->rf->pble_rsrc, palloc);
+coccinelle warnings: (new ones prefixed by >>)
+
+>> drivers/infiniband/hw/irdma/irdma_if.c:138:56-61: WARNING: conversion to bool not needed here
+--
+>> drivers/infiniband/hw/irdma/ctrl.c:581:7-59: duplicated argument to & or |
+--
+>> drivers/infiniband/hw/irdma/verbs.c:2387:2-3: Unneeded semicolon
+
+Please review and possibly fold the followup patch.
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
