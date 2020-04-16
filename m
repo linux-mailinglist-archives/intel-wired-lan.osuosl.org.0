@@ -1,77 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDDE71ACFB9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2020 20:36:28 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BC801AD12C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2020 22:34:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9DF7B85D3A;
-	Thu, 16 Apr 2020 18:36:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DBD7684F12;
+	Thu, 16 Apr 2020 20:34:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CIpbYbqFhn7B; Thu, 16 Apr 2020 18:36:27 +0000 (UTC)
+	with ESMTP id EHdlyCCQWYRg; Thu, 16 Apr 2020 20:34:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0D60285EC6;
-	Thu, 16 Apr 2020 18:36:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 150E58683A;
+	Thu, 16 Apr 2020 20:34:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5F0761BF3B0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 18:36:24 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2BFEA1BF371
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 20:34:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 562CF87E09
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 18:36:24 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 21D73861D4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 20:34:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fk-2xnMU14PW for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Apr 2020 18:36:22 +0000 (UTC)
+ with ESMTP id 9pO2iZw-azlk for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Apr 2020 20:34:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f193.google.com (mail-il1-f193.google.com
- [209.85.166.193])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 589048786C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 18:36:22 +0000 (UTC)
-Received: by mail-il1-f193.google.com with SMTP id d2so7958980ilc.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 11:36:22 -0700 (PDT)
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D5C9F84F12
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 20:34:21 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id 20so36912qkl.10
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 13:34:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=UkpkgLeM63IcqwS7YYVxtQeSerzU5wvl1HSEBtaXhuY=;
- b=TSrR3Z81gI7Vn7LAvNc7nM5GIl9i+sZ2tOLh19Ze5w4X5jenVdx0Gt/z9T7SJNr7xK
- sn/XNrmbpCatCC3y7xdMawUiYunmU0KBC7EIEN8q9nzaTcAezewHaJ0d0SNU+gVt+lKi
- ZdDbSgGPw3LDlCyfC0fW0lTyW5qNSz2IxyAHhsfxfC0HXoxyerE1JaVBZ82MaqKSHRkB
- gLWhVKcEh84dMP27fMMgHHRTp3P03T6f2xuDFM8sWpZtM9MnYYghvL87Yt1PDB60pE0I
- CFx6jopHmscocmmxDs+S7tSYnXHzwo6Dq0RCfueNtBqC3PWY6TVgF09PbABMqEJ4nMjj
- 0o6g==
+ h=subject:from:to:cc:date:message-id:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=iAAkg/ZFJmL7wuVqtACQGH5GsSS+iZDvt0bORPhAs+w=;
+ b=ddtAM8EqUMeCI6sip4tt1MpJLWA+caTNHVwcDi2vrIZ/zzoJP+FeSGgoSTGqUBM0Ex
+ iwVaQCxxKtzHnfUcf/ADYkvzZMsokOiZJb2p8KGv4kBmQQPZ13QnYH5zr3AkJwX4s3wl
+ /Cb5eVrmiTZStfloVgcOYPFKk5ZRliIPFqmOY/mrjBPieR+T+BrGYMlD0XpsAVlvYME8
+ VcqDeBVWUVToKFRsEsfmQnwW0iZyKLdxHmIdmrHfB8/LCbOw8Te8to0UT2FVuy6M6B1F
+ T7hUGmmjWI8sPOmTLW7Ti9mZPegY59IJJi8BQEghzLgPtVHawc3c/cdE6SCwjwEy+L8h
+ nI7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=UkpkgLeM63IcqwS7YYVxtQeSerzU5wvl1HSEBtaXhuY=;
- b=VNw1pTks4hD9StE+WL2N2+SYDuut3g5EX4hIQ7/rcHsVuRKlLMQ1kXhq6q9zRV370d
- o/oDCHxnQSkzc3a6RJWrM6DbzNJ7bptfAnGjiAF3KrTjKVPdVw+wIkcFtEub1w822QKC
- J4/aLP+svHi5Bk+O/COEBfdrQY1cxKbmlo1zFiYaxU2p7yrfBqNKLR65E+pM2hBFjKfD
- qVmCaYmKIWhJYy5VQkSElW/yHvQOcaTfxZ+VdQ5gRKnbp2mmhgqKXkPFWg8mMzUFYPh0
- bYnhRosmMd7qvnKYTlbrsb8pma/m+TP87i+1K88L7ep64urf4ZtLLdhZ1K/v/f6oWQRS
- TykA==
-X-Gm-Message-State: AGi0Pub2/nGABRh3zRx+Fe9/bF8ECruN2nvV/epn6LjMvd7ykFK70vmb
- ZObAm8/VlDK4EjJ9I4LhjfFh64Sany+0cC0Jn38EfVCz
-X-Google-Smtp-Source: APiQypIiI3U0LuDykVxGPdcCRPBXyuUkDw2xD5tsMh6TEsXuL8KogGkTpbss3Lk5N3SMcU5t8J9+k+Ku/jgaB6EUukw=
-X-Received: by 2002:a92:858b:: with SMTP id f133mr2166838ilh.97.1587062180217; 
- Thu, 16 Apr 2020 11:36:20 -0700 (PDT)
-MIME-Version: 1.0
-References: <e640c125696a0a5395089846266c9146@sslemail.net>
- <CAKgT0UeKxrJr_GrcRR8igxNLAPoh9b=pYajozsL+b3==abhdBQ@mail.gmail.com>
- <d418667033b84bcdb23e57e4ea8ecd61@inspur.com>
-In-Reply-To: <d418667033b84bcdb23e57e4ea8ecd61@inspur.com>
+ h=x-gm-message-state:subject:from:to:cc:date:message-id:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=iAAkg/ZFJmL7wuVqtACQGH5GsSS+iZDvt0bORPhAs+w=;
+ b=nhBH+/RbskirNODirXcZaGV2Jw3+m22A0iPNc6YCgq6ZxV1A0lAahvaY7bObRkb2IC
+ +82HKx62qRw/LTQhhyeq1I/XcpF8X4eBmhoPiEDtlMOZrsl/7bOGMUj8O/F114AR7Vb0
+ HZ65shJ443SSncTjipIZw6R3ARSm/de0AAVhl5pkfOFbJrUebiJF3wdNjo8wh0UgnkRV
+ a/O/1WEHOH4NxyIsVhnyGr2k7JldCTf+7CaDp2jg6rD3RqJjBCcy9qFWobYaZ7eNgDo5
+ EDOFa8hlyoZOqOTYW1s2aIKaur4ERfHIyq7tAVFl/ZeltY48ifDiCaDF6hXKHXNNsFMV
+ eFkA==
+X-Gm-Message-State: AGi0PuYEx/gmjxyDWr1T1LBxL1mqGSsQ8zmlDk5/gUOwOiNFsYzS6wVs
+ Ao5VdEA2VjdsuBPVaP7AzZI=
+X-Google-Smtp-Source: APiQypJl9k+ZDLZSDurCjd0oAAGKg3VUjked8scIjzWeyuYPjcpBiprQo1sXCJkstOltXn9VR42KSw==
+X-Received: by 2002:ae9:ec12:: with SMTP id h18mr31264024qkg.387.1587069260711; 
+ Thu, 16 Apr 2020 13:34:20 -0700 (PDT)
+Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
+ by smtp.gmail.com with ESMTPSA id h25sm2360065qte.37.2020.04.16.13.34.19
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 16 Apr 2020 13:34:20 -0700 (PDT)
 From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 16 Apr 2020 11:36:08 -0700
-Message-ID: <CAKgT0UeaeQo1b1+yfiOZQG_GrGWGy5EX0QD+r4NxYJcmf-EjOA@mail.gmail.com>
-To: =?UTF-8?B?WWkgWWFuZyAo5p2o54eaKS3kupHmnI3liqHpm4blm6I=?=
- <yangyi01@inspur.com>
-Subject: Re: [Intel-wired-lan] Anybody knows why Intel 82599ES 10Gb NIC has
- low small UDP packets forwarding performance?
+To: mussitantesmortem@gmail.com
+Date: Thu, 16 Apr 2020 13:34:19 -0700
+Message-ID: <20200416203151.10210.78244.stgit@localhost.localdomain>
+In-Reply-To: <20200414184547.ue7mvj6olmr76m2i@laptop>
+References: <20200414184547.ue7mvj6olmr76m2i@laptop>
+User-Agent: StGit/0.17.1-dirty
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [RFC PATCH] e1000: Do not perform reset in
+ reset_task if we are already down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,108 +86,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-V2hlbiB5b3Ugc2F5IDE2IGJ5dGUgVURQIHBhY2tldHMgSSBhc3N1bWUgeW91IG1lYW4gMTZCIG9m
-IHBheWxvYWQuIFNvCndpdGggMTRCIGV0aGVybmV0IGhlYWRlciwgMjBCIG9mIElQIGhlYWRlciwg
-OEIgVURQIGhlYWRlciwgYW5kIEkgYW0KYXNzdW1pbmcgMkIgb2YgcGFkZGluZyB5b3UgYXJlIGNh
-cnJ5aW5nIGEgNjAgYnl0ZSBwYWNrZXQgd2hlbgpldmVyeXRoaW5nIGlzIHNhaWQgYW5kIGRvbmUu
-IEZyb20gcGVyc29uYWwgZXhwZXJpZW5jZSBJIGNhbiB0ZWxsIHlvdQp0aGF0IHRoZSBhZGFwdGVy
-IHNob3VsZCBiZSBhYmxlIHRvIGhhbmRsZSBhYm91dCAxME1wcHMgb3Igc28gcGVyIHBvcnQKd2l0
-aCBwYWNrZXRzIHRoYXQgc2l6ZS4gSSBoYXZlIGRvbmUgcm91dGluZyB0ZXN0cyBpbiB0aGUgcGFz
-dCB3aXRoCnRob3NlIHNvcnQgb2YgcGFja2V0cyB3aXRob3V0IGFueSBpc3N1ZS4gSG93ZXZlciB0
-aGUgb3ZlcmhlYWQgZm9yCnRob3NlIHBhY2tldHMgaXMgc2lnbmlmaWNhbnRseSBoaWdoZXIgdGhh
-biBzdGFuZGFyZCBwYWNrZXRzIGFzIHlvdSBlbmQKdXAgaGF2aW5nIHRvIHBlcmZvcm0gb3BlcmF0
-aW9ucyBwZXItcGFja2V0IHdoZXJlIGFzIHdpdGggVENQIHlvdSBoYXZlCnRoZSBhZHZhbnRhZ2Ug
-b2YgVFNPIHNvIHlvdSBoYXZlIG9uZSBsYXJnZSBmcmFtZSB0aGF0IHRoZSBhZGFwdGVyIHdpbGwK
-YnJlYWsgdXAgaW50byBzbWFsbGVyIHBpZWNlcy4KCldpdGggdGhhdCBzYWlkLCBoYXZlIHlvdSB0
-cmllZCBydW5uaW5nICJwZXJmIHRvcCIgb24gYSBzeXN0ZW0gdW5kZXIKdGVzdCB0byBzZWUgd2hh
-dCBob3Qgc3BvdHMgdGhlcmUgYXJlPyBUaGF0IG1pZ2h0IGhlbHAgdG8gaWRlbnRpZnkgYW55Cmlz
-c3Vlcy4KCkkga25vdyBvbmUgY29tbW9uIG9uZSB0aGF0IGNhbiBjYXVzZSBzaWduaWZpY2FudCBz
-bWFsbCBwYWNrZXQKcGVyZm9ybWFuY2UgcmVncmVzc2lvbnMgaXMgaGF2aW5nIGFuIElPTU1VIGVu
-YWJsZWQgb24gdGhlIHN5c3RlbQp3aXRob3V0IHVzaW5nIHRoZSBrZXJuZWwgcGFyYW1ldGVyICJp
-b21tdT1wdCIuIFdoYXQgY2FuIGhhcHBlbiBpcyB0aGF0CnRoZSBETUEgbWFwcGluZyB3aWxsIGJl
-Y29tZSBhIGJvdHRsZS1uZWNrIGFzIGVhY2ggbWFwcGluZyB3aWxsIHJlcXVpcmUKdXNpbmcgYSBy
-ZXNvdXJjZSBsb2NrIG9uIGEgdGFibGUgdGhhdCBpcyBzaGFyZWQgYmV0d2VlbiBhbGwgb2YgdGhl
-CnF1ZXVlcy4gWW91IGNhbiBwcm9iYWJseSBydW4gImRtZXNnIHwgZ3JlcCAtaSBpb21tdSIgdG8g
-c2VlIGlmCmFueXRoaW5nIHBvcHMgdXAgaW4geW91ciBsb2dzIHJlbGF0ZWQgdG8gYW4gSU9NTVUg
-YmVpbmcgZW5hYmxlZC4KCk90aGVyIHRoYW4gdGhhdCB5b3UgbWlnaHQgZG91YmxlIGNoZWNrIHlv
-dXIgaW50ZXJydXB0IG1vZGVyYXRpb24Kc2V0dGluZ3MuIFlvdSBtaWdodCBzdGFydCB0cnlpbmcg
-YXNzaWduaW5nIG1hbnVhbCBkZWxheXMgdmlhICJldGh0b29sCi1DIiBpbnN0ZWFkIG9mIGFsbG93
-aW5nIGZvciBkeW5hbWljIHJhdGVzIHRvIHNlZSBpZiB0aGF0IGhhcyBhbnkKZWZmZWN0LgoKSG9w
-ZSB0aGF0IGhlbHBzLgoKLSBBbGV4CgpPbiBXZWQsIEFwciAxNSwgMjAyMCBhdCA3OjI1IFBNIFlp
-IFlhbmcgKOadqOeHmikt5LqR5pyN5Yqh6ZuG5ZuiIDx5YW5neWkwMUBpbnNwdXIuY29tPiB3cm90
-ZToKPgo+IFRoYW5rcyBBbGV4YW5kZXIsIGJ1dCB1bmZvcnR1bmF0ZWx5LCB0aGlzIE5JQyBpcyBp
-bnRlZ3JhdGVkIGludG8gbW90aGVyYm9hcmQsIHNvIHdlIGNhbid0IHVucGx1ZyBpdC4KPgo+IEkn
-bSB2ZXJ5IHN1cmUgaXQgaXNuJ3QgUENJZSBiYW5kd2lkdGggaXNzdWUsIGJlY2F1c2UgVENQIGFu
-ZCBVRFAgcGVyZm9ybWFuY2UgYXJlIG9rLCBvbmx5IHNtYWxsIFVEUCBwcHMgcGVyZm9ybWFuY2Ug
-aXMgYmFkLiAxNiBieXRlcyBVRFAgcGFja2V0cyB3b24ndCBjb25zdW1lIHRvbyBtdWNoIGJhbmR3
-aWR0aCwgMjAwTWJwcyBpcyBlbm91Z2guCj4KPiAtLS0tLemCruS7tuWOn+S7ti0tLS0tCj4g5Y+R
-5Lu25Lq6OiBBbGV4YW5kZXIgRHV5Y2sgW21haWx0bzphbGV4YW5kZXIuZHV5Y2tAZ21haWwuY29t
-XQo+IOWPkemAgeaXtumXtDogMjAyMOW5tDTmnIgxNeaXpSAyMzoxNQo+IOaUtuS7tuS6ujogWWkg
-WWFuZyAo5p2o54eaKS3kupHmnI3liqHpm4blm6IgPHlhbmd5aTAxQGluc3B1ci5jb20+Cj4g5oqE
-6YCBOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZwo+IOS4u+mimDogUmU6IFtJbnRl
-bC13aXJlZC1sYW5dIEFueWJvZHkga25vd3Mgd2h5IEludGVsIDgyNTk5RVMgMTBHYiBOSUMgaGFz
-IGxvdyBzbWFsbCBVRFAgcGFja2V0cyBmb3J3YXJkaW5nIHBlcmZvcm1hbmNlPwo+Cj4gT24gV2Vk
-LCBBcHIgMTUsIDIwMjAgYXQgMTowMyBBTSBZaSBZYW5nICjmnajnh5opLeS6keacjeWKoembhuWb
-oiA8eWFuZ3lpMDFAaW5zcHVyLmNvbT4gd3JvdGU6Cj4gPgo+ID4gSGksIGd1eXMKPiA+Cj4gPiBX
-ZSBmaW5kIEludGVsIDgyNTk5RVMgMTBHYiBOSUMgaGFzIGxvdyBzbWFsbCBVRFAgcGFja2V0cyBm
-b3J3YXJkaW5nCj4gPiBwZXJmb3JtYW5jZSwgdGhpcyBhbHNvIGltcGFjdHMgb24gMTYgYnl0ZXMg
-VURQIHBwcyhwYWNrZXQgcGVyIHNlY29uZCkKPiA+IHBlcmZvcm1hbmNlIG9mIFZNcyBpbiBPcGVu
-c3RhY2sgZW52aXJvbm1lbnQsIG15IE5JQyBpbmZvcm1hdGlvbiBpcyBiZWxvdzoKPiA+Cj4gPiAk
-IGV0aHRvb2wgLWkgdGVuMQo+ID4gZHJpdmVyOiBpeGdiZQo+ID4gdmVyc2lvbjogNS42LjUKPiA+
-IGZpcm13YXJlLXZlcnNpb246IDB4ODAwMDAzZGYKPiA+IGV4cGFuc2lvbi1yb20tdmVyc2lvbjoK
-PiA+IGJ1cy1pbmZvOiAwMDAwOjA2OjAwLjAKPiA+IHN1cHBvcnRzLXN0YXRpc3RpY3M6IHllcwo+
-ID4gc3VwcG9ydHMtdGVzdDogeWVzCj4gPiBzdXBwb3J0cy1lZXByb20tYWNjZXNzOiB5ZXMKPiA+
-IHN1cHBvcnRzLXJlZ2lzdGVyLWR1bXA6IHllcwo+ID4gc3VwcG9ydHMtcHJpdi1mbGFnczogeWVz
-Cj4gPiAkCj4gPgo+ID4gT24gVk1zLGZvciAxNiBieXRlcyBVRFAgcGFja2V0cywgbWF4aW11bSBw
-cHMgaXMgYWJvdXQgMTgwMDAwIChJIGhhdmUKPiA+IHR1bmVkIGlycSBhZmZpbml0eSwgVk0gaXMg
-cGlubmVkIHRvIGZpeGVkIENQVSwgaXQgaXMgc2NoZWR1bGVkIG9uIHRoZQo+ID4gc2FtZSBudW1h
-IG5vZGUgYXMgTklDLCBzbyB0aGlzIGhhcyBiZWVuIGEgbWF4aW11bSBwb3NzaWJsZSB2YWx1ZSks
-IHdlCj4gPiBhbHNvIHRyaWVkIHBoeXNpY2FsIHBvcnQgdG8gcGh5c2ljYWwgcG9ydCBwcHMgcGVy
-Zm9ybWFuY2UgaW4gdHdvCj4gPiBwaHlzaWNhbCBtYWNoaW5lcywgdGhhdCBvbmx5IGNhbiByZWFj
-aCBtYXhpbXVtIHBwcyAzMDAwMDAgKEkgaGF2ZSB0cmllZCBhbGwgdGhlIHR1bmluZyB3YXlzKS4K
-PiA+Cj4gPiBCdXQgb24gbXkgb3RoZXIgc2VydmVycyB3aGljaCBoYXZlIEludGVsIFg3MTAgMTBH
-YiBOSUMsIHRoZSBkcml2ZXIgaXMKPiA+IGk0MGUsIG5vdCBpeGdiZSwgaXQgY2FuIHJlYWNoIDM1
-MDAwMCBwcHMgZm9yIHBoeXNpY2FsIHBvcnQgdG8gcGh5c2ljYWwKPiA+IHBvcnQgY2FzZSB3aXRo
-b3V0IGFueSBleHRyYSB0dW5pbmcuIEluIFZ4TEFOIGNhc2UsIGZvciAzMiBieXRlcyBVRFAKPiA+
-IHBhY2tldHMsIHBwcyBjYW4gcmVhY2ggMjAwMDAwIHZlcnkgZWFzaWx5LCBpdCBkb2VzbuKAmXQg
-bmVlZCBhbnkgZXh0cmEgdHVuaW5nLgo+ID4KPiA+IGh0dHBzOi8vZG9jcy5vcGVuc3RhY2sub3Jn
-L2RldmVsb3Blci9wZXJmb3JtYW5jZS1kb2NzL3Rlc3RfcGxhbnMvdGVuYW4KPiA+IHRfbmV0dwo+
-ID4gb3JraW5nL3BsYW4uaHRtbCBhbmQKPiA+IGh0dHBzOi8vZG9jcy5vcGVuc3RhY2sub3JnL2Rl
-dmVsb3Blci9wZXJmb3JtYW5jZS1kb2NzL3Rlc3RfcmVzdWx0cy90ZW4KPiA+IGFudF9uZSB0d29y
-a2luZy9uZXV0cm9uX3Z4bGFuX2R2cl8zNzgvcGVybF9sMi9pbmRleC5odG1sI3RjcCBzaG93Cj4g
-PiBpeGdiZSBkcml2ZXIgYWxzbyBjYW4gcmVhY2ggMjAwMDAwIHBwcyBmb3IgMzIgYnl0ZXMgVURQ
-IHBhY2tldCBmb3IgVk1zCj4gPiBhbmQgVnhMQU4gY2FzZXMuIEl0IGRvZXNuJ3QgbWVudGlvbiB3
-aGljaCBJbnRlbCBFdGhlcm5ldCBDb250cm9sbGVyIGlzCj4gPiB1c2VkLgo+ID4KPiA+IE1ldHJp
-Ywo+ID4gICAgICAgICAgICAgICAgTWluICAgIEF2ZyAgICAgTWF4Cj4gPiBsb3NzLCAlICAgICAg
-ICAgICAgICAgIDQuMDkKPiA+IGppdHRlciwgbXMgICAgICAgICAgICAgIDAuMDEKPiA+IHBhY2tl
-dHMsIHBwcyAxOTAzMjAgICAgIDE5OTU4MyAgMjEzNjYwCj4gPgo+ID4KPiA+IE15IGlzc3VlIGlz
-IGFueWJvZHkga25vd3MgaWYgODI1OTlFUyBjYW4gcmVhY2ggMzUwMDAwIHBwcyBmb3IgMTYgYnl0
-ZXMKPiA+IFVEUCBwYWNrZXRzIGZvciBwaHlzaWNhbCBwb3J0IHRvIHBoeXNpY2FsIHBvcnQgY2Fz
-ZSAobm90ZTogSSBtZWFuCj4gPiBpcGVyZjMgcGVyZm9ybWFuY2UsIEkga25vdyBEUERLIGNhbiBy
-ZWFjaCB0aGlzKS4KPiA+Cj4gPiBCVFcsIEkgZmluZCA4MjU5OUVTIGNhbiBzdXBwb3J0IFZ4TEFO
-IFRTTyBvZmZsb2FkLCB0aGUgcGVyZm9ybWFuY2UKPiA+IGRhdGEgaXMgZ29vZCBpbiBjYXNlIHRo
-YXQgVk0gTVRVIGlzIGNvbmZpZ3VyZWQgdG8gODk1MCAob3VyIHVuZGVybGF5Cj4gPiBNVFUgaXMg
-OTAwMCksIGJvdGggVENQIGFuZCBVRFAgcGVyZm9ybWFuY2UgY2FuIHJlYWNoIGxpbmUgc3BlZWQu
-Cj4KPiBUaGVyZSBjb3VsZCBiZSBhIG51bWJlciBvZiB0aGluZ3MgZ29pbmcgb24uIFlvdSBtaWdo
-dCB3YW50IHRvIGNoZWNrIHlvdXIgaW50ZXJydXB0IG1vZGVyYXRpb24gc2V0dGluZ3MsIHlvdSBt
-aWdodCB3YW50IHRvIG1ha2Ugc3VyZSB5b3UgZG8gbm90IGhhdmUgYW4gSU9NTVUgZW5hYmxlZCwg
-eW91IHdpbGwgd2FudCB0byBtYWtlIGNlcnRhaW4geW91IGhhdmUgc3VmZmljaWVudCBQQ0llIGJh
-bmR3aWR0aCBhcyB0aGUgWDcxMCBpcyBhIFBDSWUgZ2VuIDMgcGFydCBhbmQgODI1OTkgaXMgb25s
-eSBnZW4yLiBZb3UgbWF5IHdhbnQgdG8gZG91YmxlIGNoZWNrIHRvIG1ha2Ugc3VyZSB0aGUgbWVt
-b3J5IGxheW91dCBiZXR3ZWVuIHRoZSB0d28gc3lzdGVtcyBpcyB0aGUgc2FtZSBhcyBtZW1vcnkg
-Y2FuIGNhdXNlIGRlbGF5cyBpbiBwYWNrZXQgdGhyb3VnaHB1dC4KPgo+IE15IGFkdmljZSB3b3Vs
-ZCBiZSB0byBzZWUgaWYgeW91IGNhbiBzd2FwIHRoZSBYNzEwIGFuZCA4MjU5OSBiZXR3ZWVuIHR3
-byBvZiB5b3VyIHN5c3RlbXMgYW5kIHNlZSBpZiB0aGUgcGVyZm9ybWFuY2UgaXNzdWVzIGZvbGxv
-dyB0aGUgY2FyZCBvciB0aGUgc2VydmVyLiBJZiBpdCBmb2xsb3dzIHRoZSBzZXJ2ZXIgdGhlbiB5
-b3UgbGlrZWx5IGhhdmUgc29tZXRoaW5nIG1pc2NvbmZpZ3VyZWQgb24gdGhlIHNlcnZlciwgaWYg
-aXQgZm9sbG93cyB0aGUgY2FyZCB0aGVuIHdlIGNvdWxkIGZvbGxvdyB1cCB3aXRoIGFkZGl0aW9u
-YWwgZGVidWdnaW5nLgo+Cj4gVGhhbmtzLgo+Cj4gLSBBbGV4Cl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+
+We are seeing a deadlock in e1000 down when NAPI is being disabled. Looking
+over the kernel function trace of the system it appears that the interface
+is being closed and then a reset is hitting which deadlocks the interface
+as the NAPI interface is already disabled.
+
+To prevent this from happening I am disabling the reset task when
+__E1000_DOWN is already set. In addition code has been added so that we set
+the __E1000_DOWN while holding the __E1000_RESET flag in e1000_close in
+order to guarantee that the reset task will not run after we have started
+the close call.
+
+Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+---
+
+Maxim,
+
+If possible I would appreciate it if you could try this patch and see if
+it addresses the issues you were seeing. From what I can tell this issue
+is due to the interface being closed around the same time a reset is
+scheduled so the two are racing and resulting in down being called after
+a down was already completed. Adding this test for the down flag should
+correct that.
+
+If it does I will resubmit this patch as a non-RFC.
+
+Thanks.
+
+Alex
+
+ drivers/net/ethernet/intel/e1000/e1000_main.c |   18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index f7103356ef56..566bbcb74056 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -542,8 +542,13 @@ void e1000_reinit_locked(struct e1000_adapter *adapter)
+ 	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags))
+ 		msleep(1);
+-	e1000_down(adapter);
+-	e1000_up(adapter);
++
++	/* only run the task if not already down */
++	if (!test_bit(__E1000_DOWN, &adapter->flags)) {
++		e1000_down(adapter);
++		e1000_up(adapter);
++	}
++
+ 	clear_bit(__E1000_RESETTING, &adapter->flags);
+ }
+ 
+@@ -1433,10 +1438,15 @@ int e1000_close(struct net_device *netdev)
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	int count = E1000_CHECK_RESET_COUNT;
+ 
+-	while (test_bit(__E1000_RESETTING, &adapter->flags) && count--)
++	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags) && count--)
+ 		usleep_range(10000, 20000);
+ 
+-	WARN_ON(test_bit(__E1000_RESETTING, &adapter->flags));
++	WARN_ON(count < 0);
++
++	/* signal that we're down so that the reset task will no longer run */
++	set_bit(__E1000_DOWN, &adapter->flags);
++	clear_bit(__E1000_RESETTING, &adapter->flags);
++
+ 	e1000_down(adapter);
+ 	e1000_power_down_phy(adapter);
+ 	e1000_free_irq(adapter);
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
