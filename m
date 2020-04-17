@@ -2,57 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F9631AE4E5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 20:40:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56B9D1AE5D6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 21:31:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7F2DB88296;
-	Fri, 17 Apr 2020 18:40:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8826D8828E;
+	Fri, 17 Apr 2020 19:31:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GBlV4Rs5il9n; Fri, 17 Apr 2020 18:40:36 +0000 (UTC)
+	with ESMTP id H6hp4Fysdz78; Fri, 17 Apr 2020 19:31:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA02888299;
-	Fri, 17 Apr 2020 18:40:35 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CB8D98826A;
+	Fri, 17 Apr 2020 19:31:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E993E1BF834
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 18:40:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 588A71BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 19:31:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E45F28780A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 18:40:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 502988773D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 19:31:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SfQ5d8pk2qTf for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Apr 2020 18:40:30 +0000 (UTC)
+ with ESMTP id F0HsV4fhokwH for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Apr 2020 19:31:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B366687801
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 18:40:30 +0000 (UTC)
-IronPort-SDR: +plm0EHZ7d0+y1SaFD/7UYmSXkISiv2JuTivHM29bXc8Fll77b9OxdjDZlTdxkb2+e7UOtES/M
- xTVnsqYqJhhA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2020 11:40:30 -0700
-IronPort-SDR: GDPN1+eizLHMI4RvOywmD5b/mFMXbKkmU3TsHCxALIXUWr4OxPJOOMYoT/k5WDC5EfJPoeYUF5
- TCDFv9vooUmg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,395,1580803200"; d="scan'208";a="272504719"
-Received: from jbrandeb-mobl2.amr.corp.intel.com (HELO localhost)
- ([10.134.73.141])
- by orsmga002.jf.intel.com with ESMTP; 17 Apr 2020 11:40:28 -0700
-Date: Fri, 17 Apr 2020 11:40:27 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: <andrew@daynix.com>
-Message-ID: <20200417114027.0000363b@intel.com>
-In-Reply-To: <20200417110627.3589435-1-andrew@daynix.com>
-References: <20200417110627.3589435-1-andrew@daynix.com>
-X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
+Received: from mail-io1-f68.google.com (mail-io1-f68.google.com
+ [209.85.166.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 6B48687726
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 19:31:23 +0000 (UTC)
+Received: by mail-io1-f68.google.com with SMTP id e127so3579913iof.6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 12:31:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=n9+lL2n8AucDNjde26Ly/5qWICz+zDBvuPK5kwsgulg=;
+ b=fVUkvwBIKudRVG4RCzOMpYiYsWwBD7/EJjmYAWWnViftF0ZA8ItYjZWabl2Wop3/SI
+ TTtHva647+yM90MfBS0fdJauivuOor/+RHiKvggi3I80mS1jY2vw23XR10UggTDKf5ua
+ JHydrfkVJ4kLeCtahlQeMfbumHYE8PWpq4F5ndwzso4r1wlBHoYVVMuJU6jZHTgxqSaf
+ xp7RQLqu5Gh8C+WnHaHQRw1/e5NdkQCanzO7ASYTvybmrXCvwgbdYGVt81Ih9ARdgazb
+ jRkiuZN86oC3Jm+WptYy33347O+NfiPCtRQJygRuFF/wKmbtLGmi/q+oP1xf0SYLQCAI
+ 47gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=n9+lL2n8AucDNjde26Ly/5qWICz+zDBvuPK5kwsgulg=;
+ b=E1tedZe9ovd+oNYfF0JWFawFi12uZufY1m4JJ/mmV3c0UYbzT3GKeAJMDhvzgDlfyh
+ AoUOtYDFTMhIKyy5IsPMBa5QpSy0y34ecgkZg98E5/NwfqI1wPZzJC7wYU6LYbcf2kL/
+ 8lQHykEk7yze9cTT0qulZJKhRv0qyN31gpNjcD36DpM5vI0sCDRMQ36XkL2fVUIS5bkK
+ MZ6o15liLpfNVclp8gJgHKqOtJQfFLkSUz4jltZh3v0Xfn9Fp+jeew7UrQoBxTg4ed63
+ ap3yZ5B9W52uXXdtti928wsvQcobGgh4QQXxWKthdFyCjhWsg1fbFaYOwWRfTKnx7eXJ
+ d3Wg==
+X-Gm-Message-State: AGi0PuaNy7CkVqk13Jnn+XQZKTnazLjskSS9r2e+KjwLUZUVfOLOtULi
+ t4RXu6o3MzwYuQnhuh+QFB8hZoWPUPJJ0NEUFo0=
+X-Google-Smtp-Source: APiQypK3tNlNQeIPwt+9hUFRkz+NkeaW7pGH6m0IS++XRgKGvjeMMaS7OnJ4iiemNC+v29HXcrxOe9BYCUD6EVfezV4=
+X-Received: by 2002:a05:6638:103c:: with SMTP id
+ n28mr4710561jan.114.1587151882482; 
+ Fri, 17 Apr 2020 12:31:22 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200417110627.3589435-1-andrew@daynix.com>
+In-Reply-To: <20200417110627.3589435-1-andrew@daynix.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Fri, 17 Apr 2020 12:31:11 -0700
+Message-ID: <CAKgT0UfSFWu9VRzMY5PTwgzAgaeMx711Lip2hn=jbpyx-pn0uQ@mail.gmail.com>
+To: andrew@daynix.com
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Fixed issue with LSC pending.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -66,17 +80,16 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 17 Apr 2020 14:06:27 +0300
-<andrew@daynix.com> wrote:
-
+On Fri, Apr 17, 2020 at 3:39 AM <andrew@daynix.com> wrote:
+>
 > From: Andrew Melnychenko <andrew@daynix.com>
-> 
+>
 > Bug: https://bugzilla.redhat.com/show_bug.cgi?id=1707441
 > The issue was detected with QEMU and doesn't reproduce on Windows guest.
 > CTRL_EXT.IAME is disabled by
@@ -86,52 +99,48 @@ On Fri, 17 Apr 2020 14:06:27 +0300
 > So let's leave it like that and add interrupt pending clearance
 > using write to ICR. It fixes the issue when removed cable can't be detected
 > by the driver.
-
-Thanks for your patch! I think you may want to add a correctly
-formatted Fixes: tag.
-
-Please beware, this interrupt code is very tricky and difficult to get
-right, we had a "small" change in e1000 that took months to iron out
-and get working correctly, and in the meantime broke a bunch of stuff.
-
-So, explaining root cause in your commit message, and a comment below
-to help future code editors understand the code/functionality better
-would be a good idea, IMO. Also, the QEMU behavior often doesn't do a
-very good job of matching real hardware (esp with side effect
-registers like ICR), so sometimes it is better to just fix QEMU, did
-you consider that in this case?
-
-
-> 
+>
 > Signed-off-by: Andrew Melnychenko <andrew@daynix.com>
 > ---
 >  drivers/net/ethernet/intel/e1000e/netdev.c | 3 +++
 >  1 file changed, 3 insertions(+)
-> 
+>
 > diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
 > index 177c6da80c57..064bb4a47131 100644
 > --- a/drivers/net/ethernet/intel/e1000e/netdev.c
 > +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
 > @@ -1898,6 +1898,9 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
->  	struct e1000_hw *hw = &adapter->hw;
->  	u32 icr = er32(ICR);
->  
-
-I'd really like to see a comment in the code here explaining what is
-going on. f.e.
-
-	/* if auto-mask is not enabled we need to explicitly
-	 * clear the interrupt asserted bit in ICR to allow
-	 * more interrupts
-	 */
-> +	if (!(er32(CTRL_EXT) & E1000_CTRL_EXT_IAME))
-> +		ew32(ICR, icr & ~E1000_ICR_INT_ASSERTED);
+>         struct e1000_hw *hw = &adapter->hw;
+>         u32 icr = er32(ICR);
+>
+> +       if (!(er32(CTRL_EXT) & E1000_CTRL_EXT_IAME))
+> +               ew32(ICR, icr & ~E1000_ICR_INT_ASSERTED);
 > +
->  	if (icr & adapter->eiac_mask)
->  		ew32(ICS, (icr & adapter->eiac_mask));
+>         if (icr & adapter->eiac_mask)
+>                 ew32(ICS, (icr & adapter->eiac_mask));
+>
 
+So this would likely cause more issues then it helps. Specifically,
+clearing the ICR should happen with any read of it as long as at least
+one bit in the current mask is set, and the write doesn't make any
+sense for actual hardware as the INT_ASSERTED bit is not clear on
+write. It is cleared when the register is cleared.
 
+I am pretty sure this is a bug in the QEMU side of the implementation,
+specifically in e1000e_mac_icr_read
+(https://lxr.missinglinkelectronics.com/qemu+v4.0.0/hw/net/e1000e_core.c#L2608).
+If you look at section 13.3.27 of the 8257X developers manual
+(https://lxr.missinglinkelectronics.com/qemu+v4.0.0/hw/net/e1000e_core.c#L2608)
+it has a lengthy explanation about the ICR register in the "Note:"
+section where it essentially explains that as long as any bit in the
+IMS is set that corresponds to the ICR register value, and the
+INT_ASSERTED bit is set then the entire ICR is cleared on read. The
+IAME bit triggers something similar but it is based on the IAM
+register which is why it worked prior to this patch.
 
+The fix would likely to be to add a bit to QEMU to allow for clearing
+the ICR register, or at least any bits from it that are set in the IMS
+when it is read.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
