@@ -1,77 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83B781AE256
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 18:35:40 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F9631AE4E5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 20:40:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 23519226FC;
-	Fri, 17 Apr 2020 16:35:39 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7F2DB88296;
+	Fri, 17 Apr 2020 18:40:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AQAo8Uhi1maB; Fri, 17 Apr 2020 16:35:38 +0000 (UTC)
+	with ESMTP id GBlV4Rs5il9n; Fri, 17 Apr 2020 18:40:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C188022718;
-	Fri, 17 Apr 2020 16:35:37 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id DA02888299;
+	Fri, 17 Apr 2020 18:40:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 419B31BF28E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 16:35:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E993E1BF834
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 18:40:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3D279866C8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 16:35:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id E45F28780A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 18:40:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LHyFHi34CecW for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Apr 2020 16:35:35 +0000 (UTC)
+ with ESMTP id SfQ5d8pk2qTf for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Apr 2020 18:40:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
- [209.85.222.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8A9FB866AD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 16:35:35 +0000 (UTC)
-Received: by mail-qk1-f195.google.com with SMTP id s63so3050968qke.4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 09:35:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:date:message-id:user-agent:mime-version
- :content-transfer-encoding;
- bh=3uELr8a2YBlygOjULXHfTsQ5W5OUjM3HBq49e4sxrQ8=;
- b=Wlb80tESjlhP0DPrVosDOIf78j+RGf9xqOjWNPyljdGYM35GyngClPCiyXzoiQxH9U
- jnla2a2AX44KFHYDsq2V/mebMtIzFixocqPuyqWSstv9jFXqx+xzsmXIwA7tWFnGoAp5
- DvDsvAq6G/PtrXOLa8BHxuTYWWbzNeXoTSBtBsSjIcUhWJzOqFo+ZlVM7lmpco61kmZp
- QAjhbxpwDh7/Tf6sLyS6AWbhdfZHaOziZPg8NEGgCOan9BSHfhyGsjlaRNS2R7bSbTOJ
- 5djCbR4BcrUIPbrXmQ+GpqL1l1jonsvqD6vdgOJyrimmdtcQghKlPRBjQYCXij9sNvpg
- AhuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:date:message-id:user-agent
- :mime-version:content-transfer-encoding;
- bh=3uELr8a2YBlygOjULXHfTsQ5W5OUjM3HBq49e4sxrQ8=;
- b=KJP7oYGDioerTmzGYYLQW1IP4yMADvjsybxync4FXCrKAJ5PilslLvUyrwIDl7WxHE
- 5rrdqt6Zlk5ZtjFmUD+RWh+OrRCw2jREYlFz+eHFIMgG5D8Az2x6mq72qG7QlKQYtGVS
- w1fCcSnolJ7se+75NqP8Dog5sevdYBCalgrleFes/gf4oM5fg6hWOcJLK4k2jD7dRAir
- w501XORQxzDF0UQ0dGDr0djhijyXfQAV0htGuU5YPowaapfiE2V3o2hT5Ko/9fi7y40J
- pGNA2gj5TVUSm39/Vv7bQ5A3Qs3SbV64JOCdDUMR6ToBXta6z/XSKXmhG1rVsatr+tp6
- IKWg==
-X-Gm-Message-State: AGi0Pub/nL/neBNvDH/thqWbzAz1U/gM9FnYZpoELMfJWxNRuEmwFxnL
- +YsP02kvlDtIjKXwI3fGM+U=
-X-Google-Smtp-Source: APiQypI+pT5MAJm0YqrCO54KsIwIRA4IbCHScStwYEKpUT5MghkIfcxJaldnITGI2xo3iRTd7eh0Pw==
-X-Received: by 2002:a37:a5c7:: with SMTP id o190mr4265184qke.5.1587141333289; 
- Fri, 17 Apr 2020 09:35:33 -0700 (PDT)
-Received: from localhost.localdomain ([2001:470:b:9c3:9e5c:8eff:fe4f:f2d0])
- by smtp.gmail.com with ESMTPSA id g12sm17440621qtu.69.2020.04.17.09.35.32
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 17 Apr 2020 09:35:32 -0700 (PDT)
-From: Alexander Duyck <alexander.duyck@gmail.com>
-To: jeffrey.t.kirsher@intel.com
-Date: Fri, 17 Apr 2020 09:35:31 -0700
-Message-ID: <20200417163531.5041.22649.stgit@localhost.localdomain>
-User-Agent: StGit/0.17.1-dirty
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id B366687801
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 18:40:30 +0000 (UTC)
+IronPort-SDR: +plm0EHZ7d0+y1SaFD/7UYmSXkISiv2JuTivHM29bXc8Fll77b9OxdjDZlTdxkb2+e7UOtES/M
+ xTVnsqYqJhhA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Apr 2020 11:40:30 -0700
+IronPort-SDR: GDPN1+eizLHMI4RvOywmD5b/mFMXbKkmU3TsHCxALIXUWr4OxPJOOMYoT/k5WDC5EfJPoeYUF5
+ TCDFv9vooUmg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,395,1580803200"; d="scan'208";a="272504719"
+Received: from jbrandeb-mobl2.amr.corp.intel.com (HELO localhost)
+ ([10.134.73.141])
+ by orsmga002.jf.intel.com with ESMTP; 17 Apr 2020 11:40:28 -0700
+Date: Fri, 17 Apr 2020 11:40:27 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: <andrew@daynix.com>
+Message-ID: <20200417114027.0000363b@intel.com>
+In-Reply-To: <20200417110627.3589435-1-andrew@daynix.com>
+References: <20200417110627.3589435-1-andrew@daynix.com>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net-queue PATCH] e1000: Do not perform reset in
- reset_task if we are already down
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Fixed issue with LSC pending.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,69 +66,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mussitantesmortem@gmail.com, intel-wired-lan@lists.osuosl.org
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+On Fri, 17 Apr 2020 14:06:27 +0300
+<andrew@daynix.com> wrote:
 
-We are seeing a deadlock in e1000 down when NAPI is being disabled. Looking
-over the kernel function trace of the system it appears that the interface
-is being closed and then a reset is hitting which deadlocks the interface
-as the NAPI interface is already disabled.
+> From: Andrew Melnychenko <andrew@daynix.com>
+> 
+> Bug: https://bugzilla.redhat.com/show_bug.cgi?id=1707441
+> The issue was detected with QEMU and doesn't reproduce on Windows guest.
+> CTRL_EXT.IAME is disabled by
+> rev 0a8047ac68e50e4ccbadcfc6b6b070805b976885:
+> "to avoid disruption from potential programs that access the registers
+> directly."
+> So let's leave it like that and add interrupt pending clearance
+> using write to ICR. It fixes the issue when removed cable can't be detected
+> by the driver.
 
-To prevent this from happening I am disabling the reset task when
-__E1000_DOWN is already set. In addition code has been added so that we set
-the __E1000_DOWN while holding the __E1000_RESET flag in e1000_close in
-order to guarantee that the reset task will not run after we have started
-the close call.
+Thanks for your patch! I think you may want to add a correctly
+formatted Fixes: tag.
 
-Tested-by: Maxim Zhukov <mussitantesmortem@gmail.com>
-Signed-off-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
----
- drivers/net/ethernet/intel/e1000/e1000_main.c |   18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+Please beware, this interrupt code is very tricky and difficult to get
+right, we had a "small" change in e1000 that took months to iron out
+and get working correctly, and in the meantime broke a bunch of stuff.
 
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
-index f7103356ef56..566bbcb74056 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_main.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
-@@ -542,8 +542,13 @@ void e1000_reinit_locked(struct e1000_adapter *adapter)
- 	WARN_ON(in_interrupt());
- 	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags))
- 		msleep(1);
--	e1000_down(adapter);
--	e1000_up(adapter);
-+
-+	/* only run the task if not already down */
-+	if (!test_bit(__E1000_DOWN, &adapter->flags)) {
-+		e1000_down(adapter);
-+		e1000_up(adapter);
-+	}
-+
- 	clear_bit(__E1000_RESETTING, &adapter->flags);
- }
- 
-@@ -1433,10 +1438,15 @@ int e1000_close(struct net_device *netdev)
- 	struct e1000_hw *hw = &adapter->hw;
- 	int count = E1000_CHECK_RESET_COUNT;
- 
--	while (test_bit(__E1000_RESETTING, &adapter->flags) && count--)
-+	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags) && count--)
- 		usleep_range(10000, 20000);
- 
--	WARN_ON(test_bit(__E1000_RESETTING, &adapter->flags));
-+	WARN_ON(count < 0);
-+
-+	/* signal that we're down so that the reset task will no longer run */
-+	set_bit(__E1000_DOWN, &adapter->flags);
-+	clear_bit(__E1000_RESETTING, &adapter->flags);
-+
- 	e1000_down(adapter);
- 	e1000_power_down_phy(adapter);
- 	e1000_free_irq(adapter);
+So, explaining root cause in your commit message, and a comment below
+to help future code editors understand the code/functionality better
+would be a good idea, IMO. Also, the QEMU behavior often doesn't do a
+very good job of matching real hardware (esp with side effect
+registers like ICR), so sometimes it is better to just fix QEMU, did
+you consider that in this case?
+
+
+> 
+> Signed-off-by: Andrew Melnychenko <andrew@daynix.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/netdev.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index 177c6da80c57..064bb4a47131 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -1898,6 +1898,9 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
+>  	struct e1000_hw *hw = &adapter->hw;
+>  	u32 icr = er32(ICR);
+>  
+
+I'd really like to see a comment in the code here explaining what is
+going on. f.e.
+
+	/* if auto-mask is not enabled we need to explicitly
+	 * clear the interrupt asserted bit in ICR to allow
+	 * more interrupts
+	 */
+> +	if (!(er32(CTRL_EXT) & E1000_CTRL_EXT_IAME))
+> +		ew32(ICR, icr & ~E1000_ICR_INT_ASSERTED);
+> +
+>  	if (icr & adapter->eiac_mask)
+>  		ew32(ICS, (icr & adapter->eiac_mask));
+
+
 
 _______________________________________________
 Intel-wired-lan mailing list
