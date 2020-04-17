@@ -1,74 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE7FB1AD1D2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2020 23:21:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6C14C87D9D;
-	Thu, 16 Apr 2020 21:21:27 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TZ9Gwu5LFoyU; Thu, 16 Apr 2020 21:21:27 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DCEAC87EBB;
-	Thu, 16 Apr 2020 21:21:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2181D1BF40E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 21:21:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A328F1AD42A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 03:32:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 1CF2F85F87
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 21:21:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A00886228;
+	Fri, 17 Apr 2020 01:32:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gSWuQzz_T_Qc; Fri, 17 Apr 2020 01:32:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B3FCF861F1;
+	Fri, 17 Apr 2020 01:32:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9A82E1BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:32:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8E37888056
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:32:40 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WgrjE5u5moEW for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Apr 2020 21:21:24 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f178.google.com (mail-qt1-f178.google.com
- [209.85.160.178])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5E19D85F85
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 21:21:24 +0000 (UTC)
-Received: by mail-qt1-f178.google.com with SMTP id q17so211911qtp.4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2020 14:21:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xM/V2k6EpQ5uys5KfPpPiHTUx3WvT66a+m3gTxQaTk8=;
- b=YXU5AtZ0Cw8nXH/b5cnK63DV49l3QT85fE/EEH7GjUmE2BnCrN50n4usKuIMGXoyFz
- J3qeUK9ej1o9tFKFwo4MjdRnn5mrsJ3JMsBEhY3tECqpt/nR4KzyeTQ7/LNF6w3Gx2F+
- mjvr5xIaoNzz5eeY7PVHKg/TOzsCG+pERLKnnYtTeXAritybSWDdgFcQeaKYKG22cLHz
- O/c92ABRcsFlR7tUh/KQguT/ZGggOquEYsb7djuVat/L4ouZ3XUaEER03e2tlv3rxBOC
- NOikDBAn2pc7TvP7oRBsaJFXd2cvJwHycRgcmAYsuk5mYHiw58oA0DNAJJ1S5Smf1jYZ
- XZyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xM/V2k6EpQ5uys5KfPpPiHTUx3WvT66a+m3gTxQaTk8=;
- b=gesoK7fYrjXRvY7isUpST6VdIMDu2R0YavU6eApCgg4B6x45sLvNzg7zGQ3rOdgkGU
- jUyUEzbpF/y/Cuw5gHaqqjTQLRC+rOJOmSrzCJXtAEIuZHzna74SjQZQ0ihYAD0rGGgo
- 4eGkcvomPLljw1+TFdTNvK6IBWOoNGPI/iZgrmJjGiLxgbYI6siDkLfwAvFPQ6zL03md
- HgpT+ceIoYybcX401ggDpaETl5OV/BlcmhGAYIkbI2+d+pMbk/IK0uD0BkQH58ywqBLO
- W7y+hebo9W2YfUJOI2ZpMl9GVXi3DXBkAlzlgJJTkpTcKRyX6vQS1PBFdW2IxDeseS6D
- S8qQ==
-X-Gm-Message-State: AGi0PuaYVu24G9I6aoYP2MmrtazNEyu7eKiSibv9vDDwT+u1eapCCces
- fzcdVuMm+ktrEKY1rDmcYXzlB4jUJHwIobm76FA=
-X-Google-Smtp-Source: APiQypKEiU7B4/UNbPjz3+cqmBnZt077IB/VReF2U4+C2GGYJAV1bHUlxetDpAIKQFGZhVFTncLXwzD/ggVmSG4LN6s=
-X-Received: by 2002:ac8:528d:: with SMTP id s13mr18098095qtn.160.1587072083228; 
- Thu, 16 Apr 2020 14:21:23 -0700 (PDT)
+ with ESMTP id SD2-FS-IXlmk for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Apr 2020 01:32:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from unicom145.biz-email.net (unicom145.biz-email.net
+ [210.51.26.145])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id DB65187FDE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:32:36 +0000 (UTC)
+Received: from ([60.208.111.195])
+ by unicom145.biz-email.net (Antispam) with ASMTP (SSL) id JFX40711;
+ Fri, 17 Apr 2020 09:32:11 +0800
+Received: from jtjnmail201605.home.langchao.com (10.100.2.5) by
+ jtjnmail201601.home.langchao.com (10.100.2.1) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1591.10; Fri, 17 Apr 2020 09:32:05 +0800
+Received: from jtjnmail201605.home.langchao.com ([fe80::8d20:4cc5:1116:d16e])
+ by jtjnmail201605.home.langchao.com ([fe80::8d20:4cc5:1116:d16e%8])
+ with mapi id 15.01.1591.008; Fri, 17 Apr 2020 09:32:05 +0800
+From: =?utf-8?B?WWkgWWFuZyAo5p2o54eaKS3kupHmnI3liqHpm4blm6I=?=
+ <yangyi01@inspur.com>
+To: "alexander.duyck@gmail.com" <alexander.duyck@gmail.com>
+Thread-Topic: [Intel-wired-lan] Anybody knows why Intel 82599ES 10Gb NIC has
+ low small UDP packets forwarding performance?
+Thread-Index: AdYS+MPnojF9oxncTGy4WAiVI2uUMv//+bgA//7AmICAAwnVAP//Bq2g
+Importance: high
+X-Priority: 1
+Date: Fri, 17 Apr 2020 01:32:05 +0000
+Message-ID: <bb3a9253b3a94592b319b2fa245c6124@inspur.com>
+References: <e640c125696a0a5395089846266c9146@sslemail.net>
+ <CAKgT0UeKxrJr_GrcRR8igxNLAPoh9b=pYajozsL+b3==abhdBQ@mail.gmail.com>
+ <d418667033b84bcdb23e57e4ea8ecd61@inspur.com>
+ <CAKgT0UeaeQo1b1+yfiOZQG_GrGWGy5EX0QD+r4NxYJcmf-EjOA@mail.gmail.com>
+In-Reply-To: <CAKgT0UeaeQo1b1+yfiOZQG_GrGWGy5EX0QD+r4NxYJcmf-EjOA@mail.gmail.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.100.1.52]
 MIME-Version: 1.0
-References: <CABcq3pESeM2aF=HP-j4-iu2fwaxF7+mr65zTgFaBK8prmu+srw@mail.gmail.com>
- <61CC2BC414934749BD9F5BF3D5D940449863D544@ORSMSX112.amr.corp.intel.com>
-In-Reply-To: <61CC2BC414934749BD9F5BF3D5D940449863D544@ORSMSX112.amr.corp.intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 16 Apr 2020 14:21:11 -0700
-Message-ID: <CAKgT0Uc2w6gKGsUMrzDoTtM237DjVnQrUGhi+jARMKBcDBJu+g@mail.gmail.com>
-To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
-Subject: Re: [Intel-wired-lan] Pls provide some advice - e1000e Linux link
- down
+Subject: [Intel-wired-lan] =?utf-8?b?562U5aSNOiAgQW55Ym9keSBrbm93cyB3aHkg?=
+ =?utf-8?q?Intel_82599ES_10Gb_NIC_has_low_small_UDP_packets_forwarding_per?=
+ =?utf-8?q?formance=3F?=
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,52 +78,267 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Melnichenko <andrew@daynix.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: multipart/mixed; boundary="===============0411076948122839559=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Apr 16, 2020 at 9:16 AM Kirsher, Jeffrey T
-<jeffrey.t.kirsher@intel.com> wrote:
->
-> > From: Andrew Melnichenko <andrew@daynix.com>
-> > Sent: Saturday, April 11, 2020 12:56
-> > To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> > Subject: Pls provide some advice - e1000e Linux link down
-> >
-> > Yo,
-> > I'm a humble linux developer, currently I'm researching the issue with e1000e driver that can't handle "link down" on Linux guest(https://bugzilla.redhat.com/show_bug.cgi?id=1707441).
-> > For now I've found that qemu can't raise LSC interrupts. But, on Windows guests the issue doesn't reproduce.
+--===============0411076948122839559==
+Content-Language: zh-CN
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
+	micalg=SHA1; boundary="----=_NextPart_000_0019_01D6149B.0DAB39E0"
 
-What do you mean that QEMU cannot raise LSC interrupts? Looking over
-the latest QEMU code it looks like it is attempting to do just that in
-e1000e_core_set_link_status(https://lxr.missinglinkelectronics.com/qemu+v4.0.0/hw/net/e1000e_core.c#L1800).
+------=_NextPart_000_0019_01D6149B.0DAB39E0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 
-> > I've researched spec and the driver and for now, my main suspicion is still the issue in qemu and I have few hacks for "fixing".
-> > But because on Windows guests that issue wasn't reproduced and I don't have a "real" device - I have a question:
-> > Does "real" e1000e with Linux driver detect cable removing? Should I look more the driver?
-> > Currently I have one hack for the driver that would "fix" the issue(small differences in interrupt clearing).
->
-> Adding the e1000e developers and the Intel Wired LAN mailing list...
+Thanks Alexander, I checked IOMMU, here is info.
 
-So the fact that you need to hack on the interrupt clearing tells me
-that odds are you probably don't have a good emulation of the
-interrupt register behavior. We have had to make a number of changes
-to that code to work around the quirks in the hardware. I wouldn't
-find it too surprising if the emulation behavior didn't match up just
-because there have been a number of errata that have had to be work
-around.
+$ sudo cat /proc/cmdline
+BOOT_IMAGE=3D/boot/vmlinuz-4.15.0-46-generic =
+root=3D/dev/mapper/vg1-lvroot ro default_hugepagesz=3D1G hugepagesz=3D1G =
+hugepages=3D16
+$ dmesg | grep -i iommu
+[    0.000000] DMAR-IR: IOAPIC id 3 under DRHD base  0xfbffc000 IOMMU 0
+[    0.000000] DMAR-IR: IOAPIC id 1 under DRHD base  0xc7ffc000 IOMMU 1
+[    0.000000] DMAR-IR: IOAPIC id 2 under DRHD base  0xc7ffc000 IOMMU 1
+$
 
-If you could include the code form your "fix" that might be useful as
-that would tell us what behavior it is you are running into that needs
-to be sorted out between QEMU and the hardware.
+It looks like IOMMU isn't enabled.
 
-Thanks.
+-----=E9=82=AE=E4=BB=B6=E5=8E=9F=E4=BB=B6-----
+=E5=8F=91=E4=BB=B6=E4=BA=BA: Alexander Duyck =
+[mailto:alexander.duyck@gmail.com]=20
+=E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: 2020=E5=B9=B44=E6=9C=8817=E6=97=A5 =
+2:36
+=E6=94=B6=E4=BB=B6=E4=BA=BA: Yi Yang =
+(=E6=9D=A8=E7=87=9A)-=E4=BA=91=E6=9C=8D=E5=8A=A1=E9=9B=86=E5=9B=A2 =
+<yangyi01@inspur.com>
+=E6=8A=84=E9=80=81: intel-wired-lan@lists.osuosl.org
+=E4=B8=BB=E9=A2=98: Re: [Intel-wired-lan] Anybody knows why Intel =
+82599ES 10Gb NIC has low small UDP packets forwarding performance?
+
+When you say 16 byte UDP packets I assume you mean 16B of payload. So =
+with 14B ethernet header, 20B of IP header, 8B UDP header, and I am =
+assuming 2B of padding you are carrying a 60 byte packet when everything =
+is said and done. From personal experience I can tell you that the =
+adapter should be able to handle about 10Mpps or so per port with =
+packets that size. I have done routing tests in the past with those sort =
+of packets without any issue. However the overhead for those packets is =
+significantly higher than standard packets as you end up having to =
+perform operations per-packet where as with TCP you have the advantage =
+of TSO so you have one large frame that the adapter will break up into =
+smaller pieces.
+
+With that said, have you tried running "perf top" on a system under test =
+to see what hot spots there are? That might help to identify any issues.
+
+I know one common one that can cause significant small packet =
+performance regressions is having an IOMMU enabled on the system without =
+using the kernel parameter "iommu=3Dpt". What can happen is that the DMA =
+mapping will become a bottle-neck as each mapping will require using a =
+resource lock on a table that is shared between all of the queues. You =
+can probably run "dmesg | grep -i iommu" to see if anything pops up in =
+your logs related to an IOMMU being enabled.
+
+Other than that you might double check your interrupt moderation =
+settings. You might start trying assigning manual delays via "ethtool =
+-C" instead of allowing for dynamic rates to see if that has any effect.
+
+Hope that helps.
 
 - Alex
+
+On Wed, Apr 15, 2020 at 7:25 PM Yi Yang =
+(=E6=9D=A8=E7=87=9A)-=E4=BA=91=E6=9C=8D=E5=8A=A1=E9=9B=86=E5=9B=A2 =
+<yangyi01@inspur.com> wrote:
+>
+> Thanks Alexander, but unfortunately, this NIC is integrated into =
+motherboard, so we can't unplug it.
+>
+> I'm very sure it isn't PCIe bandwidth issue, because TCP and UDP =
+performance are ok, only small UDP pps performance is bad. 16 bytes UDP =
+packets won't consume too much bandwidth, 200Mbps is enough.
+>
+> -----=E9=82=AE=E4=BB=B6=E5=8E=9F=E4=BB=B6-----
+> =E5=8F=91=E4=BB=B6=E4=BA=BA: Alexander Duyck =
+[mailto:alexander.duyck@gmail.com]
+> =E5=8F=91=E9=80=81=E6=97=B6=E9=97=B4: =
+2020=E5=B9=B44=E6=9C=8815=E6=97=A5 23:15
+> =E6=94=B6=E4=BB=B6=E4=BA=BA: Yi Yang =
+(=E6=9D=A8=E7=87=9A)-=E4=BA=91=E6=9C=8D=E5=8A=A1=E9=9B=86=E5=9B=A2 =
+<yangyi01@inspur.com>
+> =E6=8A=84=E9=80=81: intel-wired-lan@lists.osuosl.org
+> =E4=B8=BB=E9=A2=98: Re: [Intel-wired-lan] Anybody knows why Intel =
+82599ES 10Gb NIC has low small UDP packets forwarding performance?
+>
+> On Wed, Apr 15, 2020 at 1:03 AM Yi Yang =
+(=E6=9D=A8=E7=87=9A)-=E4=BA=91=E6=9C=8D=E5=8A=A1=E9=9B=86=E5=9B=A2 =
+<yangyi01@inspur.com> wrote:
+> >
+> > Hi, guys
+> >
+> > We find Intel 82599ES 10Gb NIC has low small UDP packets forwarding=20
+> > performance, this also impacts on 16 bytes UDP pps(packet per=20
+> > second) performance of VMs in Openstack environment, my NIC =
+information is below:
+> >
+> > $ ethtool -i ten1
+> > driver: ixgbe
+> > version: 5.6.5
+> > firmware-version: 0x800003df
+> > expansion-rom-version:
+> > bus-info: 0000:06:00.0
+> > supports-statistics: yes
+> > supports-test: yes
+> > supports-eeprom-access: yes
+> > supports-register-dump: yes
+> > supports-priv-flags: yes
+> > $
+> >
+> > On VMs,for 16 bytes UDP packets, maximum pps is about 180000 (I have =
+
+> > tuned irq affinity, VM is pinned to fixed CPU, it is scheduled on=20
+> > the same numa node as NIC, so this has been a maximum possible=20
+> > value), we also tried physical port to physical port pps performance =
+
+> > in two physical machines, that only can reach maximum pps 300000 (I =
+have tried all the tuning ways).
+> >
+> > But on my other servers which have Intel X710 10Gb NIC, the driver=20
+> > is i40e, not ixgbe, it can reach 350000 pps for physical port to=20
+> > physical port case without any extra tuning. In VxLAN case, for 32=20
+> > bytes UDP packets, pps can reach 200000 very easily, it =
+doesn=E2=80=99t need any extra tuning.
+> >
+> > https://docs.openstack.org/developer/performance-docs/test_plans/ten
+> > an
+> > t_netw
+> > orking/plan.html and
+> > https://docs.openstack.org/developer/performance-docs/test_results/t
+> > en ant_ne tworking/neutron_vxlan_dvr_378/perl_l2/index.html#tcp show =
+
+> > ixgbe driver also can reach 200000 pps for 32 bytes UDP packet for=20
+> > VMs and VxLAN cases. It doesn't mention which Intel Ethernet=20
+> > Controller is used.
+> >
+> > Metric
+> >                Min    Avg     Max
+> > loss, %                4.09
+> > jitter, ms              0.01
+> > packets, pps 190320     199583  213660
+> >
+> >
+> > My issue is anybody knows if 82599ES can reach 350000 pps for 16=20
+> > bytes UDP packets for physical port to physical port case (note: I=20
+> > mean
+> > iperf3 performance, I know DPDK can reach this).
+> >
+> > BTW, I find 82599ES can support VxLAN TSO offload, the performance=20
+> > data is good in case that VM MTU is configured to 8950 (our underlay =
+
+> > MTU is 9000), both TCP and UDP performance can reach line speed.
+>
+> There could be a number of things going on. You might want to check =
+your interrupt moderation settings, you might want to make sure you do =
+not have an IOMMU enabled, you will want to make certain you have =
+sufficient PCIe bandwidth as the X710 is a PCIe gen 3 part and 82599 is =
+only gen2. You may want to double check to make sure the memory layout =
+between the two systems is the same as memory can cause delays in packet =
+throughput.
+>
+> My advice would be to see if you can swap the X710 and 82599 between =
+two of your systems and see if the performance issues follow the card or =
+the server. If it follows the server then you likely have something =
+misconfigured on the server, if it follows the card then we could follow =
+up with additional debugging.
+>
+> Thanks.
+>
+> - Alex
+
+------=_NextPart_000_0019_01D6149B.0DAB39E0
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+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
+SIb3DQMEAgIAgDAHBgUrDgMCBzAKBggqhkiG9w0DBzAdBgNVHQ4EFgQUwS9Wt2AmUPVKr98VTbaf
+wjdIUXAwHwYDVR0jBBgwFoAUXlkDprRMWGCRTvYetaU5pjLBNWowgdEGA1UdHwSByTCBxjCBw6CB
+wKCBvYaBumxkYXA6Ly8vQ049SU5TUFVSLUNBLENOPUpUQ0EyMDEyLENOPUNEUCxDTj1QdWJsaWMl
+MjBLZXklMjBTZXJ2aWNlcyxDTj1TZXJ2aWNlcyxDTj1Db25maWd1cmF0aW9uLERDPWhvbWUsREM9
+bGFuZ2NoYW8sREM9Y29tP2NlcnRpZmljYXRlUmV2b2NhdGlvbkxpc3Q/YmFzZT9vYmplY3RDbGFz
+cz1jUkxEaXN0cmlidXRpb25Qb2ludDCBxAYIKwYBBQUHAQEEgbcwgbQwgbEGCCsGAQUFBzAChoGk
+bGRhcDovLy9DTj1JTlNQVVItQ0EsQ049QUlBLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENO
+PVNlcnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9aG9tZSxEQz1sYW5nY2hhbyxEQz1jb20/Y0FD
+ZXJ0aWZpY2F0ZT9iYXNlP29iamVjdENsYXNzPWNlcnRpZmljYXRpb25BdXRob3JpdHkwQwYDVR0R
+BDwwOqAjBgorBgEEAYI3FAIDoBUME3lhbmd5aTAxQGluc3B1ci5jb22BE3lhbmd5aTAxQGluc3B1
+ci5jb20wDQYJKoZIhvcNAQELBQADggEBAApWKZfwQ5Gbpv3Pg2mJyUz8jhno5OBy2Hdku/euDQfD
+aOOPsUxsvr8ZnWU03E9rwTAHgD9oB10Oe27CNeS6G/kqJubOZt5Emrw9EJBA6NMz4GLZYPmm82ph
+l+1iajL8+U2fINJbqvTlj9Dv0VOzW+952fk9K5JiArDhWskKRLnO31YAESFfUUKaHe54l2u+2+cn
+MeuQyyNOGXu2zT0XicYRUsZBOCisXzLD6I9/LgyBcqWcpLBdRK1JdO/oih2/uznyWUp1pCvpi89r
+SmyUUdbfFd/FN0j8Qok4ZdKwoHNj3oi+vLaN8SHmUNHISOuUZyWcmfVzd7c5ydIDB9nQiHoxggOT
+MIIDjwIBATBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZFghsYW5nY2hh
+bzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNVBAMTCUlOU1BVUi1DQQITfgAAPxhfXKY27C7W
+sQAAAAA/GDAJBgUrDgMCGgUAoIIB+DAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3
+DQEJBTEPFw0yMDA0MTcwMTMyMDNaMCMGCSqGSIb3DQEJBDEWBBRWjazbg1jWG1JBhkW64ybhXRqR
+rjB/BgkrBgEEAYI3EAQxcjBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZ
+FghsYW5nY2hhbzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNVBAMTCUlOU1BVUi1DQQITfgAA
+PxhfXKY27C7WsQAAAAA/GDCBgQYLKoZIhvcNAQkQAgsxcqBwMFkxEzARBgoJkiaJk/IsZAEZFgNj
+b20xGDAWBgoJkiaJk/IsZAEZFghsYW5nY2hhbzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNV
+BAMTCUlOU1BVUi1DQQITfgAAPxhfXKY27C7WsQAAAAA/GDCBkwYJKoZIhvcNAQkPMYGFMIGCMAsG
+CWCGSAFlAwQBKjALBglghkgBZQMEARYwCgYIKoZIhvcNAwcwCwYJYIZIAWUDBAECMA4GCCqGSIb3
+DQMCAgIAgDANBggqhkiG9w0DAgIBQDAHBgUrDgMCGjALBglghkgBZQMEAgMwCwYJYIZIAWUDBAIC
+MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBZ0gr3COVCt6KnR44T9rVGS8WGl+cfVhG4
+2Z1p7uBGczA8sbpEsF/L9C8XIzmTGLgDhS06dVwffcfVPrLnxDsBwj9c0iZmZYJcUMcxXDCqG9lZ
+cxQysgHpt3nA3lL4v2ZjTzNA57hY48F/SFVBX6cDyDwPogjiRGPMiqjtDMm8Yw26Mao/VuoMGDnd
+GewnFcCqbF5c9GA1Mjoxvava077iyMXqZEc4jeEBtYIppwOA/dEzzginT68AhILJMcT+2XRePWeN
+/+Ty+vjEl3MXdcSsonufr0se8yJc4TWROSLF2Dn6c6LhAkiUOCPdVilNJyYZGW8LHeUZ0naFlLNK
+JKQbAAAAAAAA
+
+------=_NextPart_000_0019_01D6149B.0DAB39E0--
+
+--===============0411076948122839559==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0411076948122839559==--
