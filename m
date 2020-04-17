@@ -1,57 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A328F1AD42A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 03:32:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A00886228;
-	Fri, 17 Apr 2020 01:32:45 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gSWuQzz_T_Qc; Fri, 17 Apr 2020 01:32:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B3FCF861F1;
-	Fri, 17 Apr 2020 01:32:41 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9A82E1BF3C5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:32:40 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 313671AD42E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2020 03:36:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8E37888056
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:32:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ADB66861B5;
+	Fri, 17 Apr 2020 01:36:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rPzdHACUFPnt; Fri, 17 Apr 2020 01:36:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id B259485CDB;
+	Fri, 17 Apr 2020 01:36:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 880F81BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:36:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7F00186995
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:36:44 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SD2-FS-IXlmk for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Apr 2020 01:32:37 +0000 (UTC)
+ with ESMTP id 3Twk26cAoMAQ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Apr 2020 01:36:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from unicom145.biz-email.net (unicom145.biz-email.net
  [210.51.26.145])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DB65187FDE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:32:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 887D886838
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2020 01:36:39 +0000 (UTC)
 Received: from ([60.208.111.195])
- by unicom145.biz-email.net (Antispam) with ASMTP (SSL) id JFX40711;
- Fri, 17 Apr 2020 09:32:11 +0800
+ by unicom145.biz-email.net (Antispam) with ASMTP (SSL) id JFB91533;
+ Fri, 17 Apr 2020 09:36:33 +0800
 Received: from jtjnmail201605.home.langchao.com (10.100.2.5) by
- jtjnmail201601.home.langchao.com (10.100.2.1) with Microsoft SMTP Server
+ jtjnmail201606.home.langchao.com (10.100.2.6) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1591.10; Fri, 17 Apr 2020 09:32:05 +0800
+ 15.1.1591.10; Fri, 17 Apr 2020 09:36:32 +0800
 Received: from jtjnmail201605.home.langchao.com ([fe80::8d20:4cc5:1116:d16e])
  by jtjnmail201605.home.langchao.com ([fe80::8d20:4cc5:1116:d16e%8])
- with mapi id 15.01.1591.008; Fri, 17 Apr 2020 09:32:05 +0800
+ with mapi id 15.01.1591.008; Fri, 17 Apr 2020 09:36:32 +0800
 From: =?utf-8?B?WWkgWWFuZyAo5p2o54eaKS3kupHmnI3liqHpm4blm6I=?=
  <yangyi01@inspur.com>
 To: "alexander.duyck@gmail.com" <alexander.duyck@gmail.com>
 Thread-Topic: [Intel-wired-lan] Anybody knows why Intel 82599ES 10Gb NIC has
  low small UDP packets forwarding performance?
-Thread-Index: AdYS+MPnojF9oxncTGy4WAiVI2uUMv//+bgA//7AmICAAwnVAP//Bq2g
+Thread-Index: AdYS+MPnojF9oxncTGy4WAiVI2uUMv//+bgA//7AmICAAwnVAP//BSNg
 Importance: high
 X-Priority: 1
-Date: Fri, 17 Apr 2020 01:32:05 +0000
-Message-ID: <bb3a9253b3a94592b319b2fa245c6124@inspur.com>
+Date: Fri, 17 Apr 2020 01:36:32 +0000
+Message-ID: <5fe974cae1fd4841a092abc1369d0994@inspur.com>
 References: <e640c125696a0a5395089846266c9146@sslemail.net>
  <CAKgT0UeKxrJr_GrcRR8igxNLAPoh9b=pYajozsL+b3==abhdBQ@mail.gmail.com>
  <d418667033b84bcdb23e57e4ea8ecd61@inspur.com>
@@ -79,33 +79,53 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: multipart/mixed; boundary="===============0411076948122839559=="
+Content-Type: multipart/mixed; boundary="===============8358347608656483103=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============0411076948122839559==
+--===============8358347608656483103==
 Content-Language: zh-CN
 Content-Type: multipart/signed; protocol="application/x-pkcs7-signature";
-	micalg=SHA1; boundary="----=_NextPart_000_0019_01D6149B.0DAB39E0"
+	micalg=SHA1; boundary="----=_NextPart_000_001D_01D6149B.AD0439B0"
 
-------=_NextPart_000_0019_01D6149B.0DAB39E0
+------=_NextPart_000_001D_01D6149B.AD0439B0
 Content-Type: text/plain;
 	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 
-Thanks Alexander, I checked IOMMU, here is info.
+Here is my coalesce parameters, can you help provide what specific =
+parameters can be tuned for this? It'll be better if you can give out =
+specific command lines.
 
-$ sudo cat /proc/cmdline
-BOOT_IMAGE=3D/boot/vmlinuz-4.15.0-46-generic =
-root=3D/dev/mapper/vg1-lvroot ro default_hugepagesz=3D1G hugepagesz=3D1G =
-hugepages=3D16
-$ dmesg | grep -i iommu
-[    0.000000] DMAR-IR: IOAPIC id 3 under DRHD base  0xfbffc000 IOMMU 0
-[    0.000000] DMAR-IR: IOAPIC id 1 under DRHD base  0xc7ffc000 IOMMU 1
-[    0.000000] DMAR-IR: IOAPIC id 2 under DRHD base  0xc7ffc000 IOMMU 1
+$ sudo ethtool -c ten1
+Coalesce parameters for ten1:
+Adaptive RX: off  TX: off
+stats-block-usecs: 0
+sample-interval: 0
+pkt-rate-low: 0
+pkt-rate-high: 0
+
+rx-usecs: 1
+rx-frames: 0
+rx-usecs-irq: 0
+rx-frames-irq: 0
+
+tx-usecs: 0
+tx-frames: 0
+tx-usecs-irq: 0
+tx-frames-irq: 256
+
+rx-usecs-low: 0
+rx-frame-low: 0
+tx-usecs-low: 0
+tx-frame-low: 0
+
+rx-usecs-high: 0
+rx-frame-high: 0
+tx-usecs-high: 0
+tx-frame-high: 0
+
 $
-
-It looks like IOMMU isn't enabled.
 
 -----=E9=82=AE=E4=BB=B6=E5=8E=9F=E4=BB=B6-----
 =E5=8F=91=E4=BB=B6=E4=BA=BA: Alexander Duyck =
@@ -258,7 +278,7 @@ up with additional debugging.
 >
 > - Alex
 
-------=_NextPart_000_0019_01D6149B.0DAB39E0
+------=_NextPart_000_001D_01D6149B.AD0439B0
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -313,24 +333,24 @@ SmyUUdbfFd/FN0j8Qok4ZdKwoHNj3oi+vLaN8SHmUNHISOuUZyWcmfVzd7c5ydIDB9nQiHoxggOT
 MIIDjwIBATBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZFghsYW5nY2hh
 bzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNVBAMTCUlOU1BVUi1DQQITfgAAPxhfXKY27C7W
 sQAAAAA/GDAJBgUrDgMCGgUAoIIB+DAYBgkqhkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3
-DQEJBTEPFw0yMDA0MTcwMTMyMDNaMCMGCSqGSIb3DQEJBDEWBBRWjazbg1jWG1JBhkW64ybhXRqR
-rjB/BgkrBgEEAYI3EAQxcjBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZ
+DQEJBTEPFw0yMDA0MTcwMTM2MzBaMCMGCSqGSIb3DQEJBDEWBBRuIOuWp98H8xe48/2Vk4orv41b
+XjB/BgkrBgEEAYI3EAQxcjBwMFkxEzARBgoJkiaJk/IsZAEZFgNjb20xGDAWBgoJkiaJk/IsZAEZ
 FghsYW5nY2hhbzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNVBAMTCUlOU1BVUi1DQQITfgAA
 PxhfXKY27C7WsQAAAAA/GDCBgQYLKoZIhvcNAQkQAgsxcqBwMFkxEzARBgoJkiaJk/IsZAEZFgNj
 b20xGDAWBgoJkiaJk/IsZAEZFghsYW5nY2hhbzEUMBIGCgmSJomT8ixkARkWBGhvbWUxEjAQBgNV
 BAMTCUlOU1BVUi1DQQITfgAAPxhfXKY27C7WsQAAAAA/GDCBkwYJKoZIhvcNAQkPMYGFMIGCMAsG
 CWCGSAFlAwQBKjALBglghkgBZQMEARYwCgYIKoZIhvcNAwcwCwYJYIZIAWUDBAECMA4GCCqGSIb3
 DQMCAgIAgDANBggqhkiG9w0DAgIBQDAHBgUrDgMCGjALBglghkgBZQMEAgMwCwYJYIZIAWUDBAIC
-MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBZ0gr3COVCt6KnR44T9rVGS8WGl+cfVhG4
-2Z1p7uBGczA8sbpEsF/L9C8XIzmTGLgDhS06dVwffcfVPrLnxDsBwj9c0iZmZYJcUMcxXDCqG9lZ
-cxQysgHpt3nA3lL4v2ZjTzNA57hY48F/SFVBX6cDyDwPogjiRGPMiqjtDMm8Yw26Mao/VuoMGDnd
-GewnFcCqbF5c9GA1Mjoxvava077iyMXqZEc4jeEBtYIppwOA/dEzzginT68AhILJMcT+2XRePWeN
-/+Ty+vjEl3MXdcSsonufr0se8yJc4TWROSLF2Dn6c6LhAkiUOCPdVilNJyYZGW8LHeUZ0naFlLNK
-JKQbAAAAAAAA
+MAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBuTwc5Nnsfu9wJa82PDuRJ9pWYOzpj1ALz
+Vfg26/IyL9/K1pNYAaR7izCbh3vi6b/mBvCbcnB9rFJbtgM/5F/BUVus+wviCUWwHT+RgAcBa9T7
+AsLjcz2720h2pHOAoKWdUHf78+R3v+U+J/K0I2+EbidG0dPFgDSHpBWLo5ODZpXS8QFKj6uLm368
+g1fKmepTdV6GcY/fITDEmkdlohsUVEEc6XXrusx5meu1X+1YIoq0WH33gebSkpX8B7r+Pi/VWHhk
+7tJgVmP6qMyZjGP0vbMMvKKIzxIZK2WcQiJI/9n//Ib7Eo7kz1iB5YDSFRwOJc6PSFv7L/j8sS8S
+Nk8WAAAAAAAA
 
-------=_NextPart_000_0019_01D6149B.0DAB39E0--
+------=_NextPart_000_001D_01D6149B.AD0439B0--
 
---===============0411076948122839559==
+--===============8358347608656483103==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -341,4 +361,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============0411076948122839559==--
+--===============8358347608656483103==--
