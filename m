@@ -1,130 +1,49 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4055A1AE9B8
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Apr 2020 06:00:27 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D1CA71AF291
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Apr 2020 19:12:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BF3BA8826F;
-	Sat, 18 Apr 2020 04:00:25 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8EB0585DDB;
+	Sat, 18 Apr 2020 17:12:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id phYFwIdb2ChY; Sat, 18 Apr 2020 04:00:25 +0000 (UTC)
+	with ESMTP id 3jk3S4vY6HsF; Sat, 18 Apr 2020 17:11:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3BF5488296;
-	Sat, 18 Apr 2020 04:00:25 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 95C13848A5;
+	Sat, 18 Apr 2020 17:11:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EB1A81BF337
- for <intel-wired-lan@osuosl.org>; Sat, 18 Apr 2020 04:00:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 31C111BF417
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2020 17:11:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E33A58826F
- for <intel-wired-lan@osuosl.org>; Sat, 18 Apr 2020 04:00:23 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2C36287C63
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2020 17:11:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kELoMTaR8pbF for <intel-wired-lan@osuosl.org>;
- Sat, 18 Apr 2020 04:00:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 3081C8823A
- for <intel-wired-lan@osuosl.org>; Sat, 18 Apr 2020 04:00:23 +0000 (UTC)
-IronPort-SDR: ZB+2e2RcDwLmRMPEmTINeeIWMDAqoF2pgwiq96hweNYtdmMO3cDP3ppXOu5Ntvib57VldUkG94
- eHe8K23oZwyA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2020 21:00:22 -0700
-IronPort-SDR: /2MfVCgtd68cLjIn8uW3DfjtDdfCt2lGNkl5RHHqrjPE8Y0hUQCfjOdFzeBumVdItlO/beRb+B
- ge3h9LUpuWCQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,397,1580803200"; d="scan'208";a="254402494"
-Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
- by orsmga003.jf.intel.com with ESMTP; 17 Apr 2020 21:00:22 -0700
-Received: from fmsmsx155.amr.corp.intel.com (10.18.116.71) by
- FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 17 Apr 2020 21:00:21 -0700
-Received: from FMSEDG001.ED.cps.intel.com (10.1.192.133) by
- FMSMSX155.amr.corp.intel.com (10.18.116.71) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 17 Apr 2020 21:00:21 -0700
-Received: from NAM04-BN3-obe.outbound.protection.outlook.com (104.47.46.52) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (TLS) id 14.3.439.0; Fri, 17 Apr 2020 21:00:21 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LobDnMlrQxqgz7hvro5PzPDhlIPUBfmNP9iRhJmXiKyLVPGlfEdGUuWhzRYOnWCv383voHGhaRelyhW7oIaRZTQ3Dr5jzRnza03UAMrtMt2B23/0thQRSdDjEWIFoGDkNi4r1hcecIpJkXWt05r8REkW6WdQEGEgP6bYGTOZRVCdrhOhm7mrDLal9KAMXrPQLJXPbU3lVEOqPs8gFyO/xb44ahkA3E8SVHac5/deDxi0dCqCqEFgSTNlD+/9oLGFs0Vqfohu7rM7IxHJmgVK++RjBoNxNoiR7AtPl0quPkhAtjR1Y7c5NiumBg+ik4QHJmr/cmlngSPhv6Y7kNOrkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F7Eo4GUW/yw3Ua7iVOQhZFIgCdI0vXnatZNGM9Unqog=;
- b=Yr8AESGBCeG8A+uwhAarc3uWhSQjvBtZQdvAwoRMmArwiz2/3u4RaSbF8igQAwF0Rpsp5LH38yMs4R09vSdnVzcCPJr9XJAMCNMq1Y21Mmv+X78SCMQXqZiGeWzhJzrpe4cIUic4sA5lajExfXAbbtIiPGYb7eOq3q0vUBGV+ngzZHkayIUBKrW7bEa8KphDe8Vz2kxsGoaqL7/HDvdn5c7VupN1riTH++BYdLX1frOeqZFSYUngicZCrhVptY3rEpZS7TCFrwCasxAnT7pbFnTVHzOP/xWkZinKlFPLOaMhRKp0D7+t3Q324SIr3MtRwAphFRGbeY0cxjRZX3s+kQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F7Eo4GUW/yw3Ua7iVOQhZFIgCdI0vXnatZNGM9Unqog=;
- b=ZeC3LIzqnlek8ZQ/FtzlG50/YKcvY7lh037YyBWHNZaMqx5dqToBbktxEN8RPXebJAMP0JwEXx/9zul9Utj9QyAlPVYcVk5hv2Njh7SsWWLe0Gyi3SGlXqNqcLvhKP/T4JwO2WvQ3RVGOJc3Rpl6KBCV4sng1c8qEX7Yhmek+Wg=
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB3434.namprd11.prod.outlook.com (2603:10b6:5:70::27) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2900.17; Sat, 18 Apr 2020 04:00:17 +0000
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::40b:5b49:b17d:d875]) by DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::40b:5b49:b17d:d875%7]) with mapi id 15.20.2900.030; Sat, 18 Apr 2020
- 04:00:17 +0000
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v1] e1000e: fix S0ix flows for cable
- connected case
-Thread-Index: AQHV+GVjdS8uZtRBYUqKmEbztUPeO6h+eqgA
-Date: Sat, 18 Apr 2020 04:00:17 +0000
-Message-ID: <DM6PR11MB28902EB7C6FF2F8818ADB21ABCD60@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200312115707.6534-1-vitaly.lifshits@intel.com>
-In-Reply-To: <20200312115707.6534-1-vitaly.lifshits@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.2.0.6
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=aaron.f.brown@intel.com; 
-x-originating-ip: [192.55.52.210]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f68862e2-f971-451a-4808-08d7e34d0182
-x-ms-traffictypediagnostic: DM6PR11MB3434:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB34345387E659EFBFF45F397DBCD60@DM6PR11MB3434.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1923;
-x-forefront-prvs: 0377802854
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(39860400002)(136003)(346002)(376002)(366004)(396003)(71200400001)(2906002)(81156014)(76116006)(66946007)(64756008)(66446008)(66556008)(66476007)(8676002)(8936002)(186003)(86362001)(26005)(5660300002)(4744005)(110136005)(33656002)(316002)(9686003)(55016002)(6506007)(53546011)(478600001)(7696005)(52536014)(32563001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: KK7sNwoHPwatKHwmRtqG8DBnM5l7qmc4mRXagXVAjpO6EeiEar5oxOmul0c74fp7IusDO1w3UE6s5H7KaPoXTgUrkFa+QL3hN+/CAckPloBZ+LIuU4R+pGusajip+sv5mjbrnK/A18v4ZTHqqYQ4ZBUYLKc3+owvD8duRhASUuX3zVBXR8YnCtxUl7kaMEnvBs5fJwEFIjt8VLf1SUh9tRxErrINqN9M7LkxbUrnIjuRT75R9v8hxApwvFyanOR30ckvG/kxpsHMX6yPs3UWQbDh5tGHEd7WusfPGP59650D2+bt7ulscdN5rAw7J9hwr9/BqktJKRqWoZ9UEAltlV0RyZ6wzfEQE6zBx4OLpYeMoUX5weLCbNKRh7I+PS6SpPbXGmJ9k5mjrbt02whQ3ihd/RB2rnwAn9YDBhzDaVuQE/N0Ine3qr1tMBVTvNPoj8EIz4jqi8DARMhHFcoxJcOj4+DFHi6t2QggX7WFtN06U1ENVychhHdLwjZiQiHm
-x-ms-exchange-antispam-messagedata: 6ARXTWybNWNWH1aP51epHeZRBFm1NO6tY/Dl0PCDEckJHtQ2PzzWiNUAURDwCzsDJnf6TdmDA1xPVM6EhgUHDEFZH3jqsfz1irOeIlY3ksBi7Wosvkkof5Jx8A6NDSCtbVC6UwBm/IwK8bXhGBiF5A==
+ with ESMTP id MG8dB0u8OreX for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 18 Apr 2020 17:11:55 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from cloudserver094114.home.pl (cloudserver094114.home.pl
+ [79.96.170.134])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7F8FD87B69
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2020 17:11:55 +0000 (UTC)
+Received: from 185.80.35.16 (185.80.35.16) (HELO kreacher.localnet)
+ by serwer1319399.home.pl (79.96.170.134) with SMTP (IdeaSmtpServer 0.83.415)
+ id a76c4f0d6061ffcc; Sat, 18 Apr 2020 19:11:52 +0200
+From: "Rafael J. Wysocki" <rjw@rjwysocki.net>
+To: Linux PM <linux-pm@vger.kernel.org>, Alan Stern <stern@rowland.harvard.edu>
+Date: Sat, 18 Apr 2020 18:53:01 +0200
+Message-ID: <2011970.oZpq0QmfcQ@kreacher>
+In-Reply-To: <5673945.BT02kTCndr@kreacher>
+References: <1888197.j9z7NJ8yPn@kreacher> <5673945.BT02kTCndr@kreacher>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: f68862e2-f971-451a-4808-08d7e34d0182
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Apr 2020 04:00:17.1278 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: XJgXLwozbHUPC4U31ScKybYiyGq01qkB+GsOfaBghXRYax+83KPGeev4xTZVhXp7BvjbfW4WnNQpXcX/j0ulFw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3434
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: fix S0ix flows for cable
- connected case
+Subject: [Intel-wired-lan] [PATCH v2 7/9] PM: sleep: core: Rename
+ DPM_FLAG_NEVER_SKIP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -137,33 +56,256 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Hans De Goede <hdegoede@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Intel Graphics <intel-gfx@lists.freedesktop.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ DRI-devel <dri-devel@lists.freedesktop.org>,
+ Linux ACPI <linux-acpi@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
+ Linux PCI <linux-pci@vger.kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Mika Westerberg <mika.westerberg@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Vitaly Lifshits
-> Sent: Thursday, March 12, 2020 4:57 AM
-> To: intel-wired-lan@osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v1] e1000e: fix S0ix flows for cable
-> connected case
-> 
-> Added a fix to S0ix entry and exit flows for TGP and above
-> MAC types, to the case when the ethernet cable is connected
-> and the link is up. With that the system is able to reach
-> SLP_S0 when going to freeze power state.
-> 
-> Change-type: ImplementationChange
-> Title: e1000e: fix S0ix flows for cable connected case
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 54
-> ++++++++++++++++++++++++++++++
->  drivers/net/ethernet/intel/e1000e/regs.h   |  3 ++
->  2 files changed, 57 insertions(+)
+From: "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+Rename DPM_FLAG_NEVER_SKIP to DPM_FLAG_NO_DIRECT_COMPLETE which
+matches its purpose more closely.
+
+No functional impact.
+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Acked-by: Bjorn Helgaas <bhelgaas@google.com> # for PCI parts
+Acked-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+---
+
+-> v2:
+   * Rebased.
+   * Added tags received so far.
+
+---
+ Documentation/driver-api/pm/devices.rst    |  6 +++---
+ Documentation/power/pci.rst                | 10 +++++-----
+ drivers/base/power/main.c                  |  2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c    |  2 +-
+ drivers/gpu/drm/i915/intel_runtime_pm.c    |  2 +-
+ drivers/gpu/drm/radeon/radeon_kms.c        |  2 +-
+ drivers/misc/mei/pci-me.c                  |  2 +-
+ drivers/misc/mei/pci-txe.c                 |  2 +-
+ drivers/net/ethernet/intel/e1000e/netdev.c |  2 +-
+ drivers/net/ethernet/intel/igb/igb_main.c  |  2 +-
+ drivers/net/ethernet/intel/igc/igc_main.c  |  2 +-
+ drivers/pci/pcie/portdrv_pci.c             |  2 +-
+ include/linux/pm.h                         |  6 +++---
+ 13 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/Documentation/driver-api/pm/devices.rst b/Documentation/driver-api/pm/devices.rst
+index f66c7b9126ea..4ace0eba4506 100644
+--- a/Documentation/driver-api/pm/devices.rst
++++ b/Documentation/driver-api/pm/devices.rst
+@@ -361,9 +361,9 @@ the phases are: ``prepare``, ``suspend``, ``suspend_late``, ``suspend_noirq``.
+ 	runtime PM disabled.
+ 
+ 	This feature also can be controlled by device drivers by using the
+-	``DPM_FLAG_NEVER_SKIP`` and ``DPM_FLAG_SMART_PREPARE`` driver power
+-	management flags.  [Typically, they are set at the time the driver is
+-	probed against the device in question by passing them to the
++	``DPM_FLAG_NO_DIRECT_COMPLETE`` and ``DPM_FLAG_SMART_PREPARE`` driver
++	power management flags.  [Typically, they are set at the time the driver
++	is probed against the device in question by passing them to the
+ 	:c:func:`dev_pm_set_driver_flags` helper function.]  If the first of
+ 	these flags is set, the PM core will not apply the direct-complete
+ 	procedure described above to the given device and, consequenty, to any
+diff --git a/Documentation/power/pci.rst b/Documentation/power/pci.rst
+index aa1c7fce6cd0..9e1408121bea 100644
+--- a/Documentation/power/pci.rst
++++ b/Documentation/power/pci.rst
+@@ -1004,11 +1004,11 @@ including the PCI bus type.  The flags should be set once at the driver probe
+ time with the help of the dev_pm_set_driver_flags() function and they should not
+ be updated directly afterwards.
+ 
+-The DPM_FLAG_NEVER_SKIP flag prevents the PM core from using the direct-complete
+-mechanism allowing device suspend/resume callbacks to be skipped if the device
+-is in runtime suspend when the system suspend starts.  That also affects all of
+-the ancestors of the device, so this flag should only be used if absolutely
+-necessary.
++The DPM_FLAG_NO_DIRECT_COMPLETE flag prevents the PM core from using the
++direct-complete mechanism allowing device suspend/resume callbacks to be skipped
++if the device is in runtime suspend when the system suspend starts.  That also
++affects all of the ancestors of the device, so this flag should only be used if
++absolutely necessary.
+ 
+ The DPM_FLAG_SMART_PREPARE flag instructs the PCI bus type to only return a
+ positive value from pci_pm_prepare() if the ->prepare callback provided by the
+diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
+index 3170d93e29f9..dbc1e5e7346b 100644
+--- a/drivers/base/power/main.c
++++ b/drivers/base/power/main.c
+@@ -1844,7 +1844,7 @@ static int device_prepare(struct device *dev, pm_message_t state)
+ 	spin_lock_irq(&dev->power.lock);
+ 	dev->power.direct_complete = state.event == PM_EVENT_SUSPEND &&
+ 		(ret > 0 || dev->power.no_pm_callbacks) &&
+-		!dev_pm_test_driver_flags(dev, DPM_FLAG_NEVER_SKIP);
++		!dev_pm_test_driver_flags(dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 	spin_unlock_irq(&dev->power.lock);
+ 	return 0;
+ }
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+index fd1dc3236eca..a9086ea1ab60 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_kms.c
+@@ -191,7 +191,7 @@ int amdgpu_driver_load_kms(struct drm_device *dev, unsigned long flags)
+ 	}
+ 
+ 	if (adev->runpm) {
+-		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NEVER_SKIP);
++		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 		pm_runtime_use_autosuspend(dev->dev);
+ 		pm_runtime_set_autosuspend_delay(dev->dev, 5000);
+ 		pm_runtime_set_active(dev->dev);
+diff --git a/drivers/gpu/drm/i915/intel_runtime_pm.c b/drivers/gpu/drm/i915/intel_runtime_pm.c
+index ad719c9602af..9cb2d7548daa 100644
+--- a/drivers/gpu/drm/i915/intel_runtime_pm.c
++++ b/drivers/gpu/drm/i915/intel_runtime_pm.c
+@@ -549,7 +549,7 @@ void intel_runtime_pm_enable(struct intel_runtime_pm *rpm)
+ 	 * becaue the HDA driver may require us to enable the audio power
+ 	 * domain during system suspend.
+ 	 */
+-	dev_pm_set_driver_flags(kdev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(kdev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	pm_runtime_set_autosuspend_delay(kdev, 10000); /* 10s */
+ 	pm_runtime_mark_last_busy(kdev);
+diff --git a/drivers/gpu/drm/radeon/radeon_kms.c b/drivers/gpu/drm/radeon/radeon_kms.c
+index 58176db85952..372962358a18 100644
+--- a/drivers/gpu/drm/radeon/radeon_kms.c
++++ b/drivers/gpu/drm/radeon/radeon_kms.c
+@@ -158,7 +158,7 @@ int radeon_driver_load_kms(struct drm_device *dev, unsigned long flags)
+ 	}
+ 
+ 	if (radeon_is_px(dev)) {
+-		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NEVER_SKIP);
++		dev_pm_set_driver_flags(dev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 		pm_runtime_use_autosuspend(dev->dev);
+ 		pm_runtime_set_autosuspend_delay(dev->dev, 5000);
+ 		pm_runtime_set_active(dev->dev);
+diff --git a/drivers/misc/mei/pci-me.c b/drivers/misc/mei/pci-me.c
+index 3d21c38e2dbb..53f16f3bd091 100644
+--- a/drivers/misc/mei/pci-me.c
++++ b/drivers/misc/mei/pci-me.c
+@@ -240,7 +240,7 @@ static int mei_me_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 * MEI requires to resume from runtime suspend mode
+ 	 * in order to perform link reset flow upon system suspend.
+ 	 */
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	/*
+ 	 * ME maps runtime suspend/resume to D0i states,
+diff --git a/drivers/misc/mei/pci-txe.c b/drivers/misc/mei/pci-txe.c
+index beacf2a2f2b5..4bf26ce61044 100644
+--- a/drivers/misc/mei/pci-txe.c
++++ b/drivers/misc/mei/pci-txe.c
+@@ -128,7 +128,7 @@ static int mei_txe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 * MEI requires to resume from runtime suspend mode
+ 	 * in order to perform link reset flow upon system suspend.
+ 	 */
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	/*
+ 	 * TXE maps runtime suspend/resume to own power gating states,
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 177c6da80c57..2730b1c7dddb 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -7549,7 +7549,7 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	e1000_print_device_info(adapter);
+ 
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	if (pci_dev_run_wake(pdev) && hw->mac.type < e1000_pch_cnp)
+ 		pm_runtime_put_noidle(&pdev->dev);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index b46bff8fe056..8bb3db2cbd41 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -3445,7 +3445,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		}
+ 	}
+ 
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 69fa1ce1f927..59fc0097438f 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4825,7 +4825,7 @@ static int igc_probe(struct pci_dev *pdev,
+ 	pcie_print_link_status(pdev);
+ 	netdev_info(netdev, "MAC: %pM\n", netdev->dev_addr);
+ 
+-	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NO_DIRECT_COMPLETE);
+ 
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 
+diff --git a/drivers/pci/pcie/portdrv_pci.c b/drivers/pci/pcie/portdrv_pci.c
+index 160d67c59310..3acf151ae015 100644
+--- a/drivers/pci/pcie/portdrv_pci.c
++++ b/drivers/pci/pcie/portdrv_pci.c
+@@ -115,7 +115,7 @@ static int pcie_portdrv_probe(struct pci_dev *dev,
+ 
+ 	pci_save_state(dev);
+ 
+-	dev_pm_set_driver_flags(&dev->dev, DPM_FLAG_NEVER_SKIP |
++	dev_pm_set_driver_flags(&dev->dev, DPM_FLAG_NO_DIRECT_COMPLETE |
+ 					   DPM_FLAG_SMART_SUSPEND);
+ 
+ 	if (pci_bridge_d3_possible(dev)) {
+diff --git a/include/linux/pm.h b/include/linux/pm.h
+index 8c59a7f0bcf4..cdb8fbd6ab18 100644
+--- a/include/linux/pm.h
++++ b/include/linux/pm.h
+@@ -544,7 +544,7 @@ struct pm_subsys_data {
+  * These flags can be set by device drivers at the probe time.  They need not be
+  * cleared by the drivers as the driver core will take care of that.
+  *
+- * NEVER_SKIP: Do not skip all system suspend/resume callbacks for the device.
++ * NO_DIRECT_COMPLETE: Do not apply direct-complete optimization to the device.
+  * SMART_PREPARE: Check the return value of the driver's ->prepare callback.
+  * SMART_SUSPEND: No need to resume the device from runtime suspend.
+  * LEAVE_SUSPENDED: Avoid resuming the device during system resume if possible.
+@@ -554,7 +554,7 @@ struct pm_subsys_data {
+  * their ->prepare callbacks if the driver's ->prepare callback returns 0 (in
+  * other words, the system suspend/resume callbacks can only be skipped for the
+  * device if its driver doesn't object against that).  This flag has no effect
+- * if NEVER_SKIP is set.
++ * if NO_DIRECT_COMPLETE is set.
+  *
+  * Setting SMART_SUSPEND instructs bus types and PM domains which may want to
+  * runtime resume the device upfront during system suspend that doing so is not
+@@ -565,7 +565,7 @@ struct pm_subsys_data {
+  * Setting LEAVE_SUSPENDED informs the PM core and middle-layer code that the
+  * driver prefers the device to be left in suspend after system resume.
+  */
+-#define DPM_FLAG_NEVER_SKIP		BIT(0)
++#define DPM_FLAG_NO_DIRECT_COMPLETE	BIT(0)
+ #define DPM_FLAG_SMART_PREPARE		BIT(1)
+ #define DPM_FLAG_SMART_SUSPEND		BIT(2)
+ #define DPM_FLAG_LEAVE_SUSPENDED	BIT(3)
+-- 
+2.16.4
+
+
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
