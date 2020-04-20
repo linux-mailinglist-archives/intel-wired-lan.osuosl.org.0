@@ -2,56 +2,53 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72C551B172F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2020 22:33:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5075E1B1730
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2020 22:33:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 26F6F87720;
-	Mon, 20 Apr 2020 20:33:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C07D387896;
+	Mon, 20 Apr 2020 20:33:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wpS-NclF+ZY1; Mon, 20 Apr 2020 20:33:28 +0000 (UTC)
+	with ESMTP id rOgbWvkjIW45; Mon, 20 Apr 2020 20:33:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5BD7087856;
+	by whitealder.osuosl.org (Postfix) with ESMTP id A3CC48788C;
 	Mon, 20 Apr 2020 20:33:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7583F1BF29F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6DB711BF29F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 70BE985CAA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:19 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 69D7B85CAA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ui2_EBP38iYU for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Apr 2020 12:08:18 +0000 (UTC)
+ with ESMTP id LDj4F4RZFFfC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Apr 2020 12:08:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id EB12885C86
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:17 +0000 (UTC)
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 9F657B648C2AFE2537E3;
- Mon, 20 Apr 2020 20:08:14 +0800 (CST)
-Received: from huawei.com (10.175.124.28) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Apr 2020
- 20:08:07 +0800
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EEC5B85C86
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:33 +0000 (UTC)
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id C46F9895216008B9E491;
+ Mon, 20 Apr 2020 20:08:30 +0800 (CST)
+Received: from huawei.com (10.175.124.28) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Apr 2020
+ 20:08:24 +0800
 From: Jason Yan <yanaijie@huawei.com>
-To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>, <ast@kernel.org>,
- <daniel@iogearbox.net>, <kuba@kernel.org>, <hawk@kernel.org>,
- <john.fastabend@gmail.com>, <kafai@fb.com>, <songliubraving@fb.com>,
- <yhs@fb.com>, <andriin@fb.com>, <kpsingh@chromium.org>,
+To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>,
  <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <bpf@vger.kernel.org>
-Date: Mon, 20 Apr 2020 20:34:48 +0800
-Message-ID: <20200420123448.7382-1-yanaijie@huawei.com>
+ <linux-kernel@vger.kernel.org>
+Date: Mon, 20 Apr 2020 20:35:06 +0800
+Message-ID: <20200420123506.7716-1-yanaijie@huawei.com>
 X-Mailer: git-send-email 2.21.1
 MIME-Version: 1.0
 X-Originating-IP: [10.175.124.28]
 X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Mon, 20 Apr 2020 20:33:26 +0000
-Subject: [Intel-wired-lan] [PATCH] i40e: Remove unneeded conversion to bool
+Subject: [Intel-wired-lan] [PATCH] e1000: remove unneeded conversion to bool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,38 +70,27 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 The '==' expression itself is bool, no need to convert it to bool again.
 This fixes the following coccicheck warning:
 
-drivers/net/ethernet/intel/i40e/i40e_main.c:1614:52-57: WARNING:
-conversion to bool not needed here
-drivers/net/ethernet/intel/i40e/i40e_main.c:11439:52-57: WARNING:
+drivers/net/ethernet/intel/e1000/e1000_main.c:1479:44-49: WARNING:
 conversion to bool not needed here
 
 Signed-off-by: Jason Yan <yanaijie@huawei.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 8c3e753bfb9d..2a037ec244b9 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -1611,7 +1611,7 @@ static int i40e_config_rss_aq(struct i40e_vsi *vsi, const u8 *seed,
- 		}
- 	}
- 	if (lut) {
--		bool pf_lut = vsi->type == I40E_VSI_MAIN ? true : false;
-+		bool pf_lut = vsi->type == I40E_VSI_MAIN;
- 
- 		ret = i40e_aq_set_rss_lut(hw, vsi->id, pf_lut, lut, lut_size);
- 		if (ret) {
-@@ -11436,7 +11436,7 @@ static int i40e_get_rss_aq(struct i40e_vsi *vsi, const u8 *seed,
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index ac5146d53c4c..05bc6e216bca 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -1476,7 +1476,7 @@ static bool e1000_check_64k_bound(struct e1000_adapter *adapter, void *start,
+ 	if (hw->mac_type == e1000_82545 ||
+ 	    hw->mac_type == e1000_ce4100 ||
+ 	    hw->mac_type == e1000_82546) {
+-		return ((begin ^ (end - 1)) >> 16) != 0 ? false : true;
++		return ((begin ^ (end - 1)) >> 16) == 0;
  	}
  
- 	if (lut) {
--		bool pf_lut = vsi->type == I40E_VSI_MAIN ? true : false;
-+		bool pf_lut = vsi->type == I40E_VSI_MAIN;
- 
- 		ret = i40e_aq_get_rss_lut(hw, vsi->id, pf_lut, lut, lut_size);
- 		if (ret) {
+ 	return true;
 -- 
 2.21.1
 
