@@ -2,55 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 301851B078C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2020 13:39:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 72C551B172F
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2020 22:33:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6276C8357B;
-	Mon, 20 Apr 2020 11:38:58 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26F6F87720;
+	Mon, 20 Apr 2020 20:33:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3MoepRA+gkay; Mon, 20 Apr 2020 11:38:58 +0000 (UTC)
+	with ESMTP id wpS-NclF+ZY1; Mon, 20 Apr 2020 20:33:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AE6BA83C53;
-	Mon, 20 Apr 2020 11:38:57 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5BD7087856;
+	Mon, 20 Apr 2020 20:33:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E4E301BF429
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 11:38:56 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7583F1BF29F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DF5718357B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 11:38:56 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 70BE985CAA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iT9rnNe9TfdQ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Apr 2020 11:38:56 +0000 (UTC)
+ with ESMTP id ui2_EBP38iYU for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Apr 2020 12:08:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0C6818346C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 11:38:55 +0000 (UTC)
-IronPort-SDR: rRtBlvfTVg3daO+2TELDSU8QKmBl0/oPLMMT+XlsBQNkvaIea2X/LuJgDDoAZbChkLWnJgPLOo
- rDTW9XC82iOQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Apr 2020 04:38:55 -0700
-IronPort-SDR: TgLwhj2oFIlUO/m4fmn1eR05GKG7FrDVH4MQEYp4RpQsuDTf6jPNKZqc2fAqY3fKbZWFYqyOmT
- Yn+M2/AyrPzQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,406,1580803200"; d="scan'208";a="290058133"
-Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
- by fmsmga002.fm.intel.com with ESMTP; 20 Apr 2020 04:38:54 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 20 Apr 2020 14:38:53 +0300
-Message-Id: <20200420113853.35732-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove obsolete circuit
- breaker registers
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id EB12885C86
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2020 12:08:17 +0000 (UTC)
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 9F657B648C2AFE2537E3;
+ Mon, 20 Apr 2020 20:08:14 +0800 (CST)
+Received: from huawei.com (10.175.124.28) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Apr 2020
+ 20:08:07 +0800
+From: Jason Yan <yanaijie@huawei.com>
+To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>, <ast@kernel.org>,
+ <daniel@iogearbox.net>, <kuba@kernel.org>, <hawk@kernel.org>,
+ <john.fastabend@gmail.com>, <kafai@fb.com>, <songliubraving@fb.com>,
+ <yhs@fb.com>, <andriin@fb.com>, <kpsingh@chromium.org>,
+ <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <bpf@vger.kernel.org>
+Date: Mon, 20 Apr 2020 20:34:48 +0800
+Message-ID: <20200420123448.7382-1-yanaijie@huawei.com>
+X-Mailer: git-send-email 2.21.1
+MIME-Version: 1.0
+X-Originating-IP: [10.175.124.28]
+X-CFilter-Loop: Reflected
+X-Mailman-Approved-At: Mon, 20 Apr 2020 20:33:26 +0000
+Subject: [Intel-wired-lan] [PATCH] i40e: Remove unneeded conversion to bool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,59 +64,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: Jason Yan <yanaijie@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Part of circuit breaker registers is obsolete
-and not applicable for i225 device.
-This patch comes to clean up these registers.
+The '==' expression itself is bool, no need to convert it to bool again.
+This fixes the following coccicheck warning:
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+drivers/net/ethernet/intel/i40e/i40e_main.c:1614:52-57: WARNING:
+conversion to bool not needed here
+drivers/net/ethernet/intel/i40e/i40e_main.c:11439:52-57: WARNING:
+conversion to bool not needed here
+
+Signed-off-by: Jason Yan <yanaijie@huawei.com>
 ---
- drivers/net/ethernet/intel/igc/igc_mac.c  | 4 ----
- drivers/net/ethernet/intel/igc/igc_regs.h | 7 -------
- 2 files changed, 11 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
-index 2cd52b5c203d..018548c7e51c 100644
---- a/drivers/net/ethernet/intel/igc/igc_mac.c
-+++ b/drivers/net/ethernet/intel/igc/igc_mac.c
-@@ -307,12 +307,8 @@ void igc_clear_hw_cntrs_base(struct igc_hw *hw)
- 	rd32(IGC_ICTXQMTC);
- 	rd32(IGC_ICRXDMTC);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 8c3e753bfb9d..2a037ec244b9 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -1611,7 +1611,7 @@ static int i40e_config_rss_aq(struct i40e_vsi *vsi, const u8 *seed,
+ 		}
+ 	}
+ 	if (lut) {
+-		bool pf_lut = vsi->type == I40E_VSI_MAIN ? true : false;
++		bool pf_lut = vsi->type == I40E_VSI_MAIN;
  
--	rd32(IGC_CBTMPC);
--	rd32(IGC_HTDPMC);
--	rd32(IGC_CBRMPC);
- 	rd32(IGC_RPTHC);
- 	rd32(IGC_HGPTC);
--	rd32(IGC_HTCBDPC);
- 	rd32(IGC_HGORCL);
- 	rd32(IGC_HGORCH);
- 	rd32(IGC_HGOTCL);
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 76ec08b082bb..f2989946d9dc 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -68,13 +68,6 @@
- #define IGC_ICRXDMTC		0x04120  /* Rx Descriptor Min Threshold Count */
- #define IGC_ICRXOC		0x04124  /* Receiver Overrun Count */
+ 		ret = i40e_aq_set_rss_lut(hw, vsi->id, pf_lut, lut, lut_size);
+ 		if (ret) {
+@@ -11436,7 +11436,7 @@ static int i40e_get_rss_aq(struct i40e_vsi *vsi, const u8 *seed,
+ 	}
  
--#define IGC_CBTMPC		0x0402C  /* Circuit Breaker TX Packet Count */
--#define IGC_HTDPMC		0x0403C  /* Host Transmit Discarded Packets */
--#define IGC_CBRMPC		0x040FC  /* Circuit Breaker RX Packet Count */
--#define IGC_RPTHC		0x04104  /* Rx Packets To Host */
--#define IGC_HGPTC		0x04118  /* Host Good Packets TX Count */
--#define IGC_HTCBDPC		0x04124  /* Host TX Circ.Breaker Drop Count */
--
- /* MSI-X Table Register Descriptions */
- #define IGC_PBACL		0x05B68  /* MSIx PBA Clear - R/W 1 to clear */
+ 	if (lut) {
+-		bool pf_lut = vsi->type == I40E_VSI_MAIN ? true : false;
++		bool pf_lut = vsi->type == I40E_VSI_MAIN;
  
+ 		ret = i40e_aq_get_rss_lut(hw, vsi->id, pf_lut, lut, lut_size);
+ 		if (ret) {
 -- 
-2.11.0
+2.21.1
 
 _______________________________________________
 Intel-wired-lan mailing list
