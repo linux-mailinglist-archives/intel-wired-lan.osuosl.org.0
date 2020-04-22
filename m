@@ -1,56 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6528A1B3A72
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Apr 2020 10:42:01 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B058C1B4097
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Apr 2020 12:46:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 12A6F20002;
-	Wed, 22 Apr 2020 08:42:00 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 460FA85E09;
+	Wed, 22 Apr 2020 10:46:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SxR0S5KXuGx4; Wed, 22 Apr 2020 08:41:59 +0000 (UTC)
+	with ESMTP id 6n4HUuMc7dy9; Wed, 22 Apr 2020 10:46:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5930C22008;
-	Wed, 22 Apr 2020 08:41:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 86B6D8626E;
+	Wed, 22 Apr 2020 10:46:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F07CB1BF3DF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2020 08:41:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3DFA71BF335
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2020 10:46:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E40FE8758F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2020 08:41:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 0427581D32
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2020 10:46:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ajx0-10IHsXZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Apr 2020 08:41:57 +0000 (UTC)
+ with ESMTP id kg6RxobVg6uw for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Apr 2020 10:46:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EFBC185E14
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2020 08:41:56 +0000 (UTC)
-IronPort-SDR: jnEiKOLNfAglqT/ElCL3ExhnbG8z4AlQuN9yDAz3kafddoJQvCDKM5eAPVSIEmk0U0Ex4tD1zu
- fxDEqQAAZhDA==
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4BC7B880C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2020 10:46:49 +0000 (UTC)
+IronPort-SDR: MyZKUQ9uATj6Io7tPSqqixYN1FVpzmiwXYqETNbLgAxqWOMdwTvFeBKBWLbMtPW8v/nW0dbEMW
+ 4m22C7wEW/fg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2020 01:41:56 -0700
-IronPort-SDR: AVLUdilt7uxum+NOoy2XF7jppl+6fHK2UnPH84FW2vkQDJOgk4pSk9hbvbWbHngh9VOFO7iMaG
- DgKuPsvob3kA==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2020 03:46:48 -0700
+IronPort-SDR: 237PYXolIuCeDOaSq0tXvylyGTR7YPCiPOa0Yu0WfQLAlMd1H+c1C7RIgMYcy0SH2CvVXmRXLp
+ ZH20tEzT8RTw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,413,1580803200"; d="scan'208";a="273814595"
+X-IronPort-AV: E=Sophos;i="5.72,414,1580803200"; d="scan'208";a="456461682"
 Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
- by orsmga002.jf.intel.com with ESMTP; 22 Apr 2020 01:41:55 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 22 Apr 2020 03:46:48 -0700
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 Apr 2020 11:41:55 +0300
-Message-Id: <20200422084155.36971-1-sasha.neftin@intel.com>
+Date: Wed, 22 Apr 2020 13:46:47 +0300
+Message-Id: <20200422104647.27290-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove header redirection
- register
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove per queue good
+ transmited counter register
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,26 +69,28 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Header redirection missed packet counter not applicable for i225 device.
+Per queue good transmitted packet counter not applicable for i225 device.
 This patch comes to clean up this register.
 
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_regs.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_regs.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index f2654f379d88..79bd104363ed 100644
+index 79bd104363ed..7f999cfc9b39 100644
 --- a/drivers/net/ethernet/intel/igc/igc_regs.h
 +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -199,7 +199,6 @@
- #define IGC_HGOTCL	0x04130  /* Host Good Octets Transmit Count Low */
- #define IGC_HGOTCH	0x04134  /* Host Good Octets Transmit Count High */
- #define IGC_LENERRS	0x04138  /* Length Errors Count */
--#define IGC_HRMPC	0x0A018  /* Header Redirection Missed Packet Count */
+@@ -124,9 +124,6 @@
+ #define IGC_MMDAC		13 /* MMD Access Control */
+ #define IGC_MMDAAD		14 /* MMD Access Address/Data */
  
- /* Time sync registers */
- #define IGC_TSICR	0x0B66C  /* Time Sync Interrupt Cause */
+-/* Good transmitted packets counter registers */
+-#define IGC_PQGPTC(_n)		(0x010014 + (0x100 * (_n)))
+-
+ /* Statistics Register Descriptions */
+ #define IGC_CRCERRS	0x04000  /* CRC Error Count - R/clr */
+ #define IGC_ALGNERRC	0x04004  /* Alignment Error Count - R/clr */
 -- 
 2.11.0
 
