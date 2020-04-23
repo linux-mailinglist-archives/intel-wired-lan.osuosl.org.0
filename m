@@ -2,97 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D971F1B6311
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2020 20:12:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 196F81B6332
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2020 20:21:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2A8998831B;
-	Thu, 23 Apr 2020 18:12:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AA10F88550;
+	Thu, 23 Apr 2020 18:20:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zWRx4LHYL7k9; Thu, 23 Apr 2020 18:12:48 +0000 (UTC)
+	with ESMTP id mOR3HSBpbIKm; Thu, 23 Apr 2020 18:20:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id BB4248851F;
-	Thu, 23 Apr 2020 18:12:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 82EE488575;
+	Thu, 23 Apr 2020 18:20:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7D0151BF325
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 18:12:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B60C71BF325
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 18:20:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 78D438838C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 18:12:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AF15187E61
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 18:20:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HuhBf7urnDzB for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Apr 2020 18:12:45 +0000 (UTC)
+ with ESMTP id Ql7Ce00rtOk9 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Apr 2020 18:20:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A4CD78831B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 18:12:45 +0000 (UTC)
-IronPort-SDR: CWQTSSMrPIlhVFO69U3qy3zdtSKWmGNV/i1sR+Nk7vVrTxDeXQHuHyP04+iEeO/aWVmIwKKzAy
- 3G1t6aDE1OMA==
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C227987E3C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 18:20:55 +0000 (UTC)
+IronPort-SDR: OtyIoLy8mhVGe+DhK+ro6zxwQkVLjaw7AmyWH7+myU3+j4/G3ABZql5t3o+D80ljFC5mY8zThO
+ bQh8lOUsZQyg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2020 11:12:45 -0700
-IronPort-SDR: f1veD+drB02GU9zu5pbBRJTpdVfCsGlEXcqdLMsqiTWBkazsDEYLAQD3tVPbKmQrwlK/75y9K7
- yWTLrY9oParg==
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2020 11:20:55 -0700
+IronPort-SDR: gk+gHv82oLUAl/GQNycsEFL/lGe49pAv/jABnjOkbgS1YjuQO6XbVWGbQbWhhhhLJn9M91kbwI
+ bl6Qbxa8Q7TQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,307,1583222400"; d="scan'208";a="457594639"
+X-IronPort-AV: E=Sophos;i="5.73,307,1583222400"; d="scan'208";a="291268692"
 Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by fmsmga006.fm.intel.com with ESMTP; 23 Apr 2020 11:12:45 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ by fmsmga002.fm.intel.com with ESMTP; 23 Apr 2020 11:20:55 -0700
+Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
  FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 23 Apr 2020 11:12:14 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ id 14.3.439.0; Thu, 23 Apr 2020 11:20:22 -0700
+Received: from fmsmsx605.amr.corp.intel.com (10.18.126.85) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 23 Apr 2020 11:12:13 -0700
-Received: from FMSEDG001.ED.cps.intel.com (10.1.192.133) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ 15.1.1713.5; Thu, 23 Apr 2020 11:20:22 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 23 Apr 2020 11:12:13 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.101)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Thu, 23 Apr 2020 11:12:06 -0700
+ via Frontend Transport; Thu, 23 Apr 2020 11:20:22 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.177)
+ by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Thu, 23 Apr 2020 11:20:21 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kdrxJR0aDJjEim2Wa+V51W2xqmNnebAQaHuV2O7xZBEZmi1wutxdnmtQ+p4YtM2rsCOOOwF3GUCIe8iQhRuwBvsj1L+e5Ipx0Wo9M/50YfApIG8VlfIipJhDtgceRumRjXXgI6sOcWZ9LzOIpkRNdFyJCRK5YvUPzbvA1awvdWxJsLDKV9jKwyShVyYpOv93U9SQOad8MQiEJExNG+gT59BAVzbpQnJc88U6bEXIWBQ6GjxKUj56AOMWwMJCTH+qvLPb3/XxJFdpKoWwbeHu/+qr5bHTYJnJNzvw/KCNLpHUgaXWb7/YInmpn/6uCuqkTcJjFVT/lNtMWtIdNIZjjQ==
+ b=N/Zt/4FiZtNFBdO+46McgEf5K28+0XmXOD9A3q9vHZ7HWEhAVQb8IjiM3ajuQTE8izrxF0izocirWihCpNyKMKQRDnO4QDfCG0IS9726NMF2F1g0QwuoMwDYE67ZWW3yInUHQP4usFQu7WzFhoujs2YuP2XITsZ90Q3e03PnlyXmK5ciZYZ8IBXJFh0QBmV45AjRMmvz+mHRbEkMQtUTF85RlAHXrjsQOIamPaLq+cGjRW1hghHOvyer3ReYkgpehLupjyAdCVaCXi4GljaITFk3gAy7XDaV88fontXi8Ysk/sAEV2OuV+awsHdCYRLXksxqLKa5Tg/hS97vEfltGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qh2wqONXrqOaoRj15+/k4yHkjGWq1VuQV/KDGAkuESE=;
- b=mWrxAwRfwjWulkH0pwGuo3jlPm0NUp4CuZCIsaqUxAOZSSj3w6+JJB4P3lraXTq3UCfI716pcEQTtP9ycV0Ejns0xxp1SCmnVS21D8n0/JXGmFhg7P6T0yF4lheiYO7PZXh0wzy9eHyGtTlRjxeZXLTdlzGoIsDLzUV3lAUKvaU8pBUxp2itbXagtpPfo20pABx3sefpSYLqLpYPzfN51Zih/fqzLjl/bOvVESHIi5qWKieUF6Iy+Q7a+kcPLnF3ZgOm/aPDeCinWxCG8VCcBzmWWhCBsCuIJy0rHbF9Fp4VN+sWgQGpQmLU7XXkDMRnGtM/HChD2zaK7VT95KFa2w==
+ bh=39INpEC8wQuevBq4Ccwcbjtr06HsQv4kcdoMErGkPOw=;
+ b=TOcQn3dT9jUXJrOT48oV6C/o9cBH1Y5ysl4mMSG8dykJ+T4ihsalnlr+qum2HOAlw0kPMqf6mehcHmiWSqnkkErr2rnYtCRdfo/b90MxbokXqzU42exwDIr4zXmWVFwuAsg3qqWPqfj9DmPgThEY+9q2ETOpQ0nIyf4/acvlJwlAVwG10igIENOifxgazOJlPo31A5oE9Natno02SKgQplfbypj3hy3JpNf2nBdBPNkn6Ze0EaCQMatV3zlYqWV7I14F6ArxgJkARPTLQrGQUjSWvvnDHzeBeVK9lX+hATaELOtU+1qewgSLG0rmZPtESnNmZeqN9mJsbsPftCUSSg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qh2wqONXrqOaoRj15+/k4yHkjGWq1VuQV/KDGAkuESE=;
- b=i0ZWHCK6s6L1QF8XaQIOvX1dHx3x0JQ0NmDFJ2gvv7jrbXf/5iHXBXbXfZCV1Go3udCuHREdo7kIjhC6HKhHAAPs5nZames0pD0Zk0EMFL81vXDphZMFcfxDF2EPnx3DyHx6rX9wDWw43DA9nE6zBAna7hB4sjaxpi1ARzBiY2E=
+ bh=39INpEC8wQuevBq4Ccwcbjtr06HsQv4kcdoMErGkPOw=;
+ b=F3JYoQ6YS0r5/uiUrydBhdjP0MTZKQvgAlPf9B1VRp+2ueJmUCg+OeUKMo2qmaXtdEN/GpwQxzekMj56pEKTrzwzIUnW6AQKqbur1n7ka/J5wZ4SkiTQ/n0pe0p5UDiZXG7eb6+0Z5QgeoBKt00aB9wzgsiep9lc0s888EGlMS8=
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB3833.namprd11.prod.outlook.com (2603:10b6:5:144::26) with
+ DM6PR11MB4626.namprd11.prod.outlook.com (2603:10b6:5:2a9::21) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2921.29; Thu, 23 Apr 2020 18:12:05 +0000
+ 15.20.2921.29; Thu, 23 Apr 2020 18:20:20 +0000
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::40b:5b49:b17d:d875]) by DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::40b:5b49:b17d:d875%7]) with mapi id 15.20.2921.030; Thu, 23 Apr 2020
- 18:12:05 +0000
+ 18:20:20 +0000
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: "Guedes, Andre" <andre.guedes@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 1/5] igc: Remove duplicated IGC_RXPBS
- macro
-Thread-Index: AQHWDSCOn/ZXvx5uaEKXwVen3/ZRgKiHGv3A
-Date: Thu, 23 Apr 2020 18:12:05 +0000
-Message-ID: <DM6PR11MB289041C9760BB6F1AFC9ADBBBCD30@DM6PR11MB2890.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 2/5] igc: Remove ethertype filter in
+ ptp code
+Thread-Index: AQHWDSCMDg4rWtt34kq3jeh/B0dgzKiHHUyw
+Date: Thu, 23 Apr 2020 18:20:20 +0000
+Message-ID: <DM6PR11MB28906FE0967C7E2E09049631BCD30@DM6PR11MB2890.namprd11.prod.outlook.com>
 References: <20200407210711.24371-1-andre.guedes@intel.com>
- <20200407210711.24371-2-andre.guedes@intel.com>
-In-Reply-To: <20200407210711.24371-2-andre.guedes@intel.com>
+ <20200407210711.24371-3-andre.guedes@intel.com>
+In-Reply-To: <20200407210711.24371-3-andre.guedes@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -104,32 +104,32 @@ authentication-results: spf=none (sender IP is )
  smtp.mailfrom=aaron.f.brown@intel.com; 
 x-originating-ip: [134.134.136.218]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 935dd4d3-e4cd-44ef-8494-08d7e7b1d461
-x-ms-traffictypediagnostic: DM6PR11MB3833:
+x-ms-office365-filtering-correlation-id: 04085aae-17a8-4cba-f01b-08d7e7b2fb6d
+x-ms-traffictypediagnostic: DM6PR11MB4626:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB3833B715402EB61A64427929BCD30@DM6PR11MB3833.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3826;
+x-microsoft-antispam-prvs: <DM6PR11MB4626F5CCF0AC76D766F064D2BCD30@DM6PR11MB4626.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4303;
 x-forefront-prvs: 03827AF76E
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(10019020)(39860400002)(396003)(366004)(376002)(346002)(136003)(478600001)(81156014)(86362001)(8676002)(4744005)(76116006)(55016002)(5660300002)(9686003)(186003)(66946007)(66476007)(66446008)(64756008)(66556008)(71200400001)(33656002)(110136005)(2906002)(7696005)(52536014)(316002)(26005)(53546011)(6506007)(8936002);
+ SFS:(10019020)(366004)(396003)(39860400002)(136003)(346002)(376002)(66946007)(26005)(86362001)(2906002)(6506007)(53546011)(9686003)(7696005)(55016002)(33656002)(4744005)(5660300002)(52536014)(76116006)(66476007)(66556008)(64756008)(66446008)(478600001)(81156014)(8676002)(8936002)(316002)(110136005)(186003)(71200400001);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: At6M8wiATPcOAwoLVTFFB093NppMLY153wb0LqM+88M91nWfCJdmK9aYM/oAXydpjWyP07HkPyKfZ/0xnbwOOO3DiqklNYsjMHHmk0ZfM8XARkdrI2Gs5HfR8Q/i6NA1vjyAeN726gmRaryT7smkUBUr+UYk/38pFva2vsIOjALLG2Hr7R3gmt15nzNBMxI7WCYW2nds7saydLlBPNM/Z39u1Sg0lie7rJ8RBu23djrum7wFF+V9SmeM1hWqIbqFQx/SfpN6q0ttjfRZXf2PXsFrj3XJV+9JSV5hShnDgDvezaCNmpEs/xKVRXifpEauy1sQz14vuB3Mewfg1i1PHN6dS/rSAcCcitblnzBQudGzimbW+UB3pTItaPZEJCo7YzZY8X5sEj7bZHn2GXkWqWe8SFtQaImwF5oBfyXox+5MQPHeGzeemezRyjr3Smi+
-x-ms-exchange-antispam-messagedata: yzv5NupqrKvvA5EX6PZjNn2bf6stG09biZZdXoOzL5MU4RO9P4Syq4+Z5WXQ1BUqoA7jjkjK52S4YVoDvMdB3kMgpUcQ43n4I/wKRPwsDvNStf4mo3AspgdMkNXoRWyAgUFiOvTyr5NOFpFYbCbwSw==
+x-microsoft-antispam-message-info: I7EKWGz0OPDyZ3mu8lRrJ6PzCPJ50+X3XKFWFONZoDB2iJQFeLuo9B+WPQ7ancFXQ2hSWGcS3IZ4Lgz1AH99SsLxb6MLWj7VQHx3rtGSlJxeN1oxsMh+kY/5l8iWH0En6zhycedAsU4T4jEspsCYH2FoVcaJLFCzYfS82jeiA1R8ahFHAa4kL2VIkld+nsEKEGPQdk/X1X4kjoUjXjUGVQjXTI9W47N2jlYSletlrZPYgdu+fIEPSp8ZLbBmJW4ErOeD92ivECN2Zp9rboIDlsPlbkkSr33mNsZcxq5vC9QPKvLL2mwubXSY2sO1uiwhsJNzNDAeISuyrwrI0t8kzelWkqF2zLA7rCasmFcrZyQeszp7iARpGPknHyFFIBzbHyhlFHDcBnI8ftxmflNL8h4smMzrWhJbIK1+1bdhM5PKfHBbb1Ev7AcE47/He+rc
+x-ms-exchange-antispam-messagedata: cQwVK2+xGrmRxb9tif6Zm652JelCLNkzWG0S4dz+sQmdf/VGq9R7/njO9LlYMbdqoeCOYq0/0tYmSPKgD3p2EsoQuTBsV2JCh1CMsBh+Z1QQjJgXqorgcD81bN1qesWPSAK4Blhr4NEIoPfwxYhYrw==
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 935dd4d3-e4cd-44ef-8494-08d7e7b1d461
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2020 18:12:05.3303 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 04085aae-17a8-4cba-f01b-08d7e7b2fb6d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2020 18:20:20.3206 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kr88Vd4BWTBGd1zdF8ZTmuZobK6RAbi7e07mufNRjFXAV+fVhQH154FCouybDUnjVWT3FIkNHC/J3Yvhcqi+pw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3833
+X-MS-Exchange-CrossTenant-userprincipalname: /JPrpO5ADLjNu9oD30Opehj64LazTASE5Dm5PhXN4Pumx3JntEe/gg+a806acZ0QI3PCEmvIVzWlct7uCJoQlQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4626
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH 1/5] igc: Remove duplicated IGC_RXPBS
- macro
+Subject: Re: [Intel-wired-lan] [PATCH 2/5] igc: Remove ethertype filter in
+ ptp code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -151,16 +151,22 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Andre Guedes
 > Sent: Tuesday, April 7, 2020 2:07 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH 1/5] igc: Remove duplicated IGC_RXPBS
-> macro
+> Subject: [Intel-wired-lan] [PATCH 2/5] igc: Remove ethertype filter in ptp
+> code
 > 
-> This patch remove the IGC_RXPBS macro defined in line 233 since it is
-> already defined in line 18 with the exactly same value.
+> The driver only supports hardware timestamping for all incoming
+> traffic (HWTSTAMP_FILTER_ALL) which is enabled via Rx Time Sync
+> Control (TSYNCRXCTL) register already. Therefore, the ethertype
+> filter set in in igc_ptp_set_timestamp_mode() is useless so this
+> patch removes it.
 > 
 > Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc_regs.h | 2 --
->  1 file changed, 2 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc.h         |  2 +-
+>  drivers/net/ethernet/intel/igc/igc_defines.h |  3 ---
+>  drivers/net/ethernet/intel/igc/igc_ptp.c     | 12 ------------
+>  3 files changed, 1 insertion(+), 16 deletions(-)
+> 
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
