@@ -2,58 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E89F41B806A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B3951B806B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 999D686B89;
-	Fri, 24 Apr 2020 20:17:42 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 98A5486D1E;
+	Fri, 24 Apr 2020 20:17:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Agbm4GKw2SHq; Fri, 24 Apr 2020 20:17:42 +0000 (UTC)
+	with ESMTP id bTmcWXTblyou; Fri, 24 Apr 2020 20:17:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 0352786BF7;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F0FC186D4D;
 	Fri, 24 Apr 2020 20:17:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 82DC01BF83C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 848A81BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7E38C87FCC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:32 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6F64687F94
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fw8feYW3Difg for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id Gj6J6tjCqy6s for <intel-wired-lan@lists.osuosl.org>;
  Fri, 24 Apr 2020 20:17:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 804DB87FEA
+ by whitealder.osuosl.org (Postfix) with ESMTPS id AC4FF87FED
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:29 +0000 (UTC)
-IronPort-SDR: a052hZaPiZxAAHebYHCd0mHJvAAHnCyVUHhBXRtxQHzJtmuVqpPsVZd+J3nq4K1FHGbMhLelum
- eTti8C2vFPvw==
+IronPort-SDR: du274H7SiaT/Mvhi7MDqQufgx/9Oh4UDRrVpRYu95jFtmqPCdZTfgBWcX4+lIuUzaPxWyFRHLo
+ rR8PD/yb2bgg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Apr 2020 13:17:28 -0700
-IronPort-SDR: 83t1QgCc8hTmTpFWXZnOYcC5WVaJkaEXN3S5LmvTtdJ+JKnLnQ0DiMtizpm+4HDQuvtSPbjHx2
- 1P+SkmfgGHtQ==
+ 24 Apr 2020 13:17:29 -0700
+IronPort-SDR: 9gT3KZT1Xxz/M2i7+hGM1vWB8AQIvMctQrV9am0KHG3DbOEK8KYmbZDuPUp1xULL8vgWxVUrfS
+ H3yJ73PFqsEw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474522"
+X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474524"
 Received: from kleandre-mobl.amr.corp.intel.com ([10.213.164.39])
  by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:28 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Apr 2020 13:16:19 -0700
-Message-Id: <20200424201623.10971-16-andre.guedes@intel.com>
+Date: Fri, 24 Apr 2020 13:16:20 -0700
+Message-Id: <20200424201623.10971-17-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200424201623.10971-1-andre.guedes@intel.com>
 References: <20200424201623.10971-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 15/19] igc: Fix NFC rules leak when driver
- is unloaded
+Subject: [Intel-wired-lan] [PATCH 16/19] igc: Fix NFC rule validation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,71 +70,50 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If we have RFC rules in adapter->nfc_rule_list when the IGC driver
-is unloaded, all rules are leaked. This patch fixes the issue by
-introducing the helper igc_flush_nfc_rules() and calling it in
-igc_remove(). It also updates igc_set_features() so is reuses the
-new helper instead of re-implementing it.
+If we try to overwrite an existing rule with the same filter but
+different action, we get EEXIST error as shown below.
+
+$ ethtool -N eth0 flow-type ether dst <MACADDR> action 1 loc 10
+$ ethtool -N eth0 flow-type ether dst <MACADDR> action 2 loc 10
+rmgr: Cannot insert RX class rule: File exists
+
+The second command is expected to overwrite the previous rule in location
+10 and succeed.
+
+This patch fixes igc_ethtool_check_nfc_rule() so it also checks the
+rules location. In case they match, the rule under evaluation should not
+be considered invalid.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 29 +++++++++++++----------
- 1 file changed, 16 insertions(+), 13 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index e09d74331257..64e372f38c6b 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2545,6 +2545,18 @@ void igc_del_nfc_rule(struct igc_adapter *adapter, struct igc_nfc_rule *rule)
- 	kfree(rule);
- }
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index de9ab3c8179a..32bc77af71dd 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1225,8 +1225,8 @@ static void igc_ethtool_init_nfc_rule(struct igc_nfc_rule *rule,
+  * Rules with both destination and source MAC addresses are considered invalid
+  * since the driver doesn't support them.
+  *
+- * Also, if there is already another rule with the same filter, @rule is
+- * considered invalid.
++ * Also, if there is already another rule with the same filter in a different
++ * location, @rule is considered invalid.
+  *
+  * Context: Expects adapter->nfc_rule_lock to be held by caller.
+  *
+@@ -1252,7 +1252,8 @@ static int igc_ethtool_check_nfc_rule(struct igc_adapter *adapter,
  
-+static void igc_flush_nfc_rules(struct igc_adapter *adapter)
-+{
-+	struct igc_nfc_rule *rule, *tmp;
-+
-+	spin_lock(&adapter->nfc_rule_lock);
-+
-+	list_for_each_entry_safe(rule, tmp, &adapter->nfc_rule_list, list)
-+		igc_del_nfc_rule(adapter, rule);
-+
-+	spin_unlock(&adapter->nfc_rule_lock);
-+}
-+
- /**
-  * igc_add_nfc_rule() - Add NFC rule.
-  * @adapter: Pointer to adapter.
-@@ -3968,19 +3980,8 @@ static int igc_set_features(struct net_device *netdev,
- 	if (!(changed & (NETIF_F_RXALL | NETIF_F_NTUPLE)))
- 		return 0;
- 
--	if (!(features & NETIF_F_NTUPLE)) {
--		struct igc_nfc_rule *rule, *tmp;
--
--		spin_lock(&adapter->nfc_rule_lock);
--		list_for_each_entry_safe(rule, tmp,
--					 &adapter->nfc_rule_list, list) {
--			igc_disable_nfc_rule(adapter, rule);
--			list_del(&rule->list);
--			kfree(rule);
--		}
--		spin_unlock(&adapter->nfc_rule_lock);
--		adapter->nfc_rule_count = 0;
--	}
-+	if (!(features & NETIF_F_NTUPLE))
-+		igc_flush_nfc_rules(adapter);
- 
- 	netdev->features = features;
- 
-@@ -5250,6 +5251,8 @@ static void igc_remove(struct pci_dev *pdev)
- 
- 	pm_runtime_get_noresume(&pdev->dev);
- 
-+	igc_flush_nfc_rules(adapter);
-+
- 	igc_ptp_stop(adapter);
- 
- 	set_bit(__IGC_DOWN, &adapter->state);
+ 	list_for_each_entry(tmp, &adapter->nfc_rule_list, list) {
+ 		if (!memcmp(&rule->filter, &tmp->filter,
+-			    sizeof(rule->filter))) {
++			    sizeof(rule->filter)) &&
++		    tmp->location != rule->location) {
+ 			netdev_dbg(dev, "Rule already exists");
+ 			return -EEXIST;
+ 		}
 -- 
 2.26.0
 
