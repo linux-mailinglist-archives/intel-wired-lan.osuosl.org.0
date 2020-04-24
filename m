@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BF381B8069
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:43 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 949E61B8064
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id CC6102202E;
-	Fri, 24 Apr 2020 20:17:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4DC568818D;
+	Fri, 24 Apr 2020 20:17:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8mTgFHm1ugUM; Fri, 24 Apr 2020 20:17:39 +0000 (UTC)
+	with ESMTP id iqkRG-y4XmZL; Fri, 24 Apr 2020 20:17:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9E30A204AE;
+	by hemlock.osuosl.org (Postfix) with ESMTP id F030C8871F;
 	Fri, 24 Apr 2020 20:17:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9189E1BF83C
+ by ash.osuosl.org (Postfix) with ESMTP id F1F721BF83C
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8E356868A9
+ by fraxinus.osuosl.org (Postfix) with ESMTP id EEE4C868A9
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I7-Ug73YXNQ3 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id HCKYskyz6yPj for <intel-wired-lan@lists.osuosl.org>;
  Fri, 24 Apr 2020 20:17:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8E12886B59
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B189686B89
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:28 +0000 (UTC)
-IronPort-SDR: +EYm+G8qTWVk/SwUMyokdJWC9Orh5M4ZZnCAnwXNhHrpHAvQRQHVkDkDkmM/V1cjYwhgNFx4+R
- B50lyXZeBlxA==
+IronPort-SDR: cB2p7ocYMgSBrWwSNZWS0fn674EqcrcApriKQWZ7z1H6IX7C2DexYGwCDY8ezDonWwLMjH30VT
+ bxzjR0buhMNw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Apr 2020 13:17:27 -0700
-IronPort-SDR: SREIDNVVBjWpiHq9iy0TaCCsSWGpydT0b3QX5irCG7SylbahV7mK9aPkowt5JuupflH1BSxVxW
- drhm4pRAE54A==
+ 24 Apr 2020 13:17:28 -0700
+IronPort-SDR: 4I8tNb1SqJo1aYzd/SfDEARWBI0I6n8RW1W1KZtNDtBTytPWCyn3hJvi6ICDaNIWxXO7ojIfKk
+ dCwW51/w4W7Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474513"
+X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474517"
 Received: from kleandre-mobl.amr.corp.intel.com ([10.213.164.39])
  by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:27 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Apr 2020 13:16:15 -0700
-Message-Id: <20200424201623.10971-12-andre.guedes@intel.com>
+Date: Fri, 24 Apr 2020 13:16:16 -0700
+Message-Id: <20200424201623.10971-13-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200424201623.10971-1-andre.guedes@intel.com>
 References: <20200424201623.10971-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 11/19] igc: Fix NFC rule overwrite cases
+Subject: [Intel-wired-lan] [PATCH 12/19] igc: Fix NFC rules with multicast
+ addresses
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,31 +71,40 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When the 'loc' argument is passed in ethtool, the input rule overwrites
-any rule present in that location. In this situation we must disable the
-old rule otherwise it is left enabled in hardware. This patch fixes
-the issue by always calling igc_disable_nfc_rule() when deleting the
-old rule, no matter the value of 'input' argument.
+Multicast MAC addresses are valid address for NFC rules but
+igc_add_mac_filter() is currently rejecting them. In fact, the I225
+controller doesn't impose any constraint on the address value so this
+patch gets rid of the address validation check in MAC filter APIs.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 38ac61c04e5c..e975efea4a15 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1270,8 +1270,7 @@ static int igc_ethtool_update_nfc_rule(struct igc_adapter *adapter,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 7d9a2da4feee..b0c4206f9c7d 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2250,9 +2250,6 @@ int igc_add_mac_filter(struct igc_adapter *adapter,
+ 	struct net_device *dev = adapter->netdev;
+ 	int index;
  
- 	/* if there is an old rule occupying our place remove it */
- 	if (rule && rule->location == location) {
--		if (!input)
--			err = igc_disable_nfc_rule(adapter, rule);
-+		err = igc_disable_nfc_rule(adapter, rule);
+-	if (!is_valid_ether_addr(addr))
+-		return -EINVAL;
+-
+ 	index = igc_find_mac_filter(adapter, type, addr);
+ 	if (index >= 0)
+ 		goto update_filter;
+@@ -2284,9 +2281,6 @@ int igc_del_mac_filter(struct igc_adapter *adapter,
+ 	struct net_device *dev = adapter->netdev;
+ 	int index;
  
- 		hlist_del(&rule->nfc_node);
- 		kfree(rule);
+-	if (!is_valid_ether_addr(addr))
+-		return -EINVAL;
+-
+ 	index = igc_find_mac_filter(adapter, type, addr);
+ 	if (index < 0)
+ 		return -ENOENT;
 -- 
 2.26.0
 
