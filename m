@@ -1,60 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 901571B6AB3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 03:12:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 256BE86E36;
-	Fri, 24 Apr 2020 01:12:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0K-QdlM0kcUf; Fri, 24 Apr 2020 01:12:21 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BD42C86EB2;
-	Fri, 24 Apr 2020 01:12:20 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 978151BF3D0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 01:12:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A80CA1B805E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 84BEC8867E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 01:12:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5F2E48816B;
+	Fri, 24 Apr 2020 20:17:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1TCJ2TaF8G4P; Fri, 24 Apr 2020 20:17:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 093E288720;
+	Fri, 24 Apr 2020 20:17:32 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 19E0B1BF9C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 16F9586B89
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:27 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 74PDvMoa9WvK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Apr 2020 01:12:17 +0000 (UTC)
+ with ESMTP id nvtKkS-lVo2F for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Apr 2020 20:17:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EDF8887E62
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 01:12:16 +0000 (UTC)
-IronPort-SDR: QAEwQEA9gCgJAjMEYvwbwQTzHdP+8KzQZkrqD3W4aEbqF0mmSoMlC1sasvVsFImHfJIQoi2PAa
- 5MA5X+NBNLug==
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 48A8F868A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:25 +0000 (UTC)
+IronPort-SDR: rfWqDFiWhtfMbvMZ4oXheij09dE8FGcLH5PfUCQPo6/civiSPTrX9rqDw7NtAoevkR92D2ZC6k
+ oTkbYIVFSiwA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2020 18:12:16 -0700
-IronPort-SDR: ib7sjkMxkl62GlzJs6PNNexCgkMVgM/CldtcrdcrMM7PEYdDAj/u+f/1S+6eZuFeBdS23fsvfA
- W5ZmvRRurJ7w==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Apr 2020 13:17:24 -0700
+IronPort-SDR: nQAoUWQVrA5yCwR0ZhNDZDDxlK/uf/2/8mbGc+8vyluwQRMK48ldlfDrU6r/CgRMRcvzCflfxM
+ QZHblNQvpLxw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,309,1583222400"; d="scan'208";a="457145540"
-Received: from jwstark-mobl.amr.corp.intel.com ([10.212.173.233])
- by fmsmga005.fm.intel.com with ESMTP; 23 Apr 2020 18:12:15 -0700
+X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474496"
+Received: from kleandre-mobl.amr.corp.intel.com ([10.213.164.39])
+ by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:24 -0700
 From: Andre Guedes <andre.guedes@intel.com>
-To: intel-wired-lan@lists.osuosl.org, aaron.f.brown@intel.com,
- jeffrey.t.kirsher@intel.com
-Date: Thu, 23 Apr 2020 18:11:19 -0700
-Message-Id: <20200424011119.98746-1-andre.guedes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 24 Apr 2020 13:16:04 -0700
+Message-Id: <20200424201623.10971-1-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.0
-In-Reply-To: <20200403181743.23447-5-andre.guedes@intel.com>
-References: <20200403181743.23447-5-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v2 4/4] igc: Refactor VLAN priority
- filtering code
+Subject: [Intel-wired-lan] [PATCH 00/19] igc: Fixes to NFC support code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,197 +68,61 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The whole VLAN priority filtering code is implemented in igc_ethtool.c
-and mixes logic from ethtool and core parts. This patch refactors it so
-core logic is moved to igc_main.c, aligning the VLAN priority filtering
-code organization with the MAC address filtering code.
+Hi all,
 
-This patch also takes the opportunity to add some log messages to ease
-debugging.
+Previous patch series [1-4] addressed issues with IGC filtering support
+individually (MAC address, VLAN priority, and ethertype filtering). This
+patch series fixes issues with the Network Flow Classification (NFC)
+support, which is built on top of those individual filters.
 
-Signed-off-by: Andre Guedes <andre.guedes@intel.com>
----
-v2: Previous version had a bug when clearing IGC_VLANPQF_QSEL bits in
-    igc_del_vlan_prio_filter().
----
- drivers/net/ethernet/intel/igc/igc.h         |  3 +
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 64 ++++----------------
- drivers/net/ethernet/intel/igc/igc_main.c    | 52 ++++++++++++++++
- 3 files changed, 68 insertions(+), 51 deletions(-)
+This series is organized as follows:
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 1b07e8b870c2..48eb9c00a44d 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -235,6 +235,9 @@ int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
- 		       const s8 queue, const u8 flags);
- int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
- 		       const u8 flags);
-+int igc_add_vlan_prio_filter(struct igc_adapter *adapter, int prio,
-+			     int queue);
-+void igc_del_vlan_prio_filter(struct igc_adapter *adapter, int prio);
- void igc_update_stats(struct igc_adapter *adapter);
- 
- /* igc_dump declarations */
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 036a2244b76c..35bc125183a0 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1223,35 +1223,6 @@ static int igc_rxnfc_write_etype_filter(struct igc_adapter *adapter,
- 	return 0;
- }
- 
--static int igc_rxnfc_write_vlan_prio_filter(struct igc_adapter *adapter,
--					    struct igc_nfc_filter *input)
--{
--	struct igc_hw *hw = &adapter->hw;
--	u8 vlan_priority;
--	u16 queue_index;
--	u32 vlapqf;
--
--	vlapqf = rd32(IGC_VLANPQF);
--	vlan_priority = (ntohs(input->filter.vlan_tci) & VLAN_PRIO_MASK)
--				>> VLAN_PRIO_SHIFT;
--	queue_index = (vlapqf >> (vlan_priority * 4)) & IGC_VLANPQF_QUEUE_MASK;
--
--	/* check whether this vlan prio is already set */
--	if (vlapqf & IGC_VLANPQF_VALID(vlan_priority) &&
--	    queue_index != input->action) {
--		netdev_err(adapter->netdev,
--			   "ethtool rxnfc set vlan prio filter failed");
--		return -EEXIST;
--	}
--
--	vlapqf |= IGC_VLANPQF_VALID(vlan_priority);
--	vlapqf |= IGC_VLANPQF_QSEL(vlan_priority, input->action);
--
--	wr32(IGC_VLANPQF, vlapqf);
--
--	return 0;
--}
--
- int igc_add_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
- {
- 	struct igc_hw *hw = &adapter->hw;
-@@ -1285,10 +1256,15 @@ int igc_add_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
- 			return err;
- 	}
- 
--	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI)
--		err = igc_rxnfc_write_vlan_prio_filter(adapter, input);
-+	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
-+		int prio = (ntohs(input->filter.vlan_tci) & VLAN_PRIO_MASK)
-+				>> VLAN_PRIO_SHIFT;
-+		err = igc_add_vlan_prio_filter(adapter, prio, input->action);
-+		if (err)
-+			return err;
-+	}
- 
--	return err;
-+	return 0;
- }
- 
- static void igc_clear_etype_filter_regs(struct igc_adapter *adapter,
-@@ -1306,31 +1282,17 @@ static void igc_clear_etype_filter_regs(struct igc_adapter *adapter,
- 	adapter->etype_bitmap[reg_index] = false;
- }
- 
--static void igc_clear_vlan_prio_filter(struct igc_adapter *adapter,
--				       u16 vlan_tci)
--{
--	struct igc_hw *hw = &adapter->hw;
--	u8 vlan_priority;
--	u32 vlapqf;
--
--	vlan_priority = (vlan_tci & VLAN_PRIO_MASK) >> VLAN_PRIO_SHIFT;
--
--	vlapqf = rd32(IGC_VLANPQF);
--	vlapqf &= ~IGC_VLANPQF_VALID(vlan_priority);
--	vlapqf &= ~IGC_VLANPQF_QSEL(vlan_priority, IGC_VLANPQF_QUEUE_MASK);
--
--	wr32(IGC_VLANPQF, vlapqf);
--}
--
- int igc_erase_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
- {
- 	if (input->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE)
- 		igc_clear_etype_filter_regs(adapter,
- 					    input->etype_reg_index);
- 
--	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI)
--		igc_clear_vlan_prio_filter(adapter,
--					   ntohs(input->filter.vlan_tci));
-+	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
-+		int prio = (ntohs(input->filter.vlan_tci) & VLAN_PRIO_MASK)
-+				>> VLAN_PRIO_SHIFT;
-+		igc_del_vlan_prio_filter(adapter, prio);
-+	}
- 
- 	if (input->filter.match_flags & IGC_FILTER_FLAG_SRC_MAC_ADDR)
- 		igc_del_mac_filter(adapter, input->filter.src_addr,
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index c3555148ca0e..7ae5bc476bdb 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2315,6 +2315,58 @@ int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
- 	return 0;
- }
- 
-+/**
-+ * igc_add_vlan_prio_filter() - Add VLAN priority filter.
-+ * @adapter: Pointer to adapter where the filter should be added.
-+ * @prio: VLAN priority value.
-+ * @queue: Queue number which matching frames are assigned to.
-+ *
-+ * Return: 0 in case of success, negative errno code otherwise.
-+ */
-+int igc_add_vlan_prio_filter(struct igc_adapter *adapter, int prio, int queue)
-+{
-+	struct net_device *dev = adapter->netdev;
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 vlanpqf;
-+
-+	vlanpqf = rd32(IGC_VLANPQF);
-+
-+	if (vlanpqf & IGC_VLANPQF_VALID(prio)) {
-+		netdev_dbg(dev, "VLAN priority filter already in use");
-+		return -EEXIST;
-+	}
-+
-+	vlanpqf |= IGC_VLANPQF_QSEL(prio, queue);
-+	vlanpqf |= IGC_VLANPQF_VALID(prio);
-+
-+	wr32(IGC_VLANPQF, vlanpqf);
-+
-+	netdev_dbg(dev, "Add VLAN priority filter: prio %d queue %d",
-+		   prio, queue);
-+	return 0;
-+}
-+
-+/**
-+ * igc_del_vlan_prio_filter() - Delete VLAN priority filter.
-+ * @adapter: Pointer to adapter where the filter should be deleted from.
-+ * @prio: VLAN priority value.
-+ */
-+void igc_del_vlan_prio_filter(struct igc_adapter *adapter, int prio)
-+{
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 vlanpqf;
-+
-+	vlanpqf = rd32(IGC_VLANPQF);
-+
-+	vlanpqf &= ~IGC_VLANPQF_VALID(prio);
-+	vlanpqf &= ~IGC_VLANPQF_QSEL(prio, IGC_VLANPQF_QUEUE_MASK);
-+
-+	wr32(IGC_VLANPQF, vlanpqf);
-+
-+	netdev_dbg(adapter->netdev, "Delete VLAN priority filter: prio %d",
-+		   prio);
-+}
-+
- static int igc_uc_sync(struct net_device *netdev, const unsigned char *addr)
- {
- 	struct igc_adapter *adapter = netdev_priv(netdev);
+    * Initial patches (1 to 4) do trivial code cleanup like remove unused
+      code, useless wrappers, simplify logic, etc.
+
+    * Midsection patches (5 to 8) refactor the NFC support code to improve
+      code reuse and organization. It also makes some upcoming bug fixes
+      simpler.
+
+    * The rest of the series (9 to 19) fixes multiple bugs related to rules
+      insertion, overwrite, and restoration as well as other issues like
+      memory leak and locking.
+
+Best regards,
+
+Andre
+
+[1] https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20200318230102.36952-1-andre.guedes@intel.com/
+[2] https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20200403181743.23447-1-andre.guedes@intel.com/
+[3] https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20200407210711.24371-1-andre.guedes@intel.com/
+[4] https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20200411002834.13916-1-andre.guedes@intel.com/
+
+Andre Guedes (19):
+  igc: Remove unused field from igc_nfc_filter
+  igc: Get rid of igc_max_channels()
+  igc: Cleanup _get|set_rxnfc ethtool ops
+  igc: Early return in igc_get_ethtool_nfc_entry()
+  igc: Add 'igc_ethtool_' prefix to functions in igc_ethtool.c
+  igc: Align terms used in NFC support code
+  igc: Change byte order in struct igc_nfc_filter
+  igc: Refactor igc_ethtool_add_nfc_rule()
+  igc: Fix 'sw_idx' type in struct igc_nfc_rule
+  igc: Fix locking issue when retrieving NFC rules
+  igc: Fix NFC rule overwrite cases
+  igc: Fix NFC rules with multicast addresses
+  igc: Fix NFC rules restoration
+  igc: Refactor igc_ethtool_update_nfc_rule()
+  igc: Fix NFC rules leak when driver is unloaded
+  igc: Fix NFC rule validation
+  igc: Change return type from igc_disable_nfc_rule()
+  igc: Change adapter->nfc_rule_lock to mutex
+  igc: Remove igc_nfc_rule_exit()
+
+ drivers/net/ethernet/intel/igc/igc.h         |  57 +-
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 608 ++++++++-----------
+ drivers/net/ethernet/intel/igc/igc_main.c    | 257 +++++---
+ 3 files changed, 469 insertions(+), 453 deletions(-)
+
 -- 
 2.26.0
 
