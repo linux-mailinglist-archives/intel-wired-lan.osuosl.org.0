@@ -1,59 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B9101B8063
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:36 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BF381B8069
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E229887FEA;
-	Fri, 24 Apr 2020 20:17:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CC6102202E;
+	Fri, 24 Apr 2020 20:17:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xAb5MibAaxCt; Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
+	with ESMTP id 8mTgFHm1ugUM; Fri, 24 Apr 2020 20:17:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 73A4687FD1;
-	Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9E30A204AE;
+	Fri, 24 Apr 2020 20:17:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BDE101BF83C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9189E1BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BA53786BA9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:28 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8E356868A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5W2pcpmhSAcU for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id I7-Ug73YXNQ3 for <intel-wired-lan@lists.osuosl.org>;
  Fri, 24 Apr 2020 20:17:28 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 42257868C9
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8E12886B59
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:28 +0000 (UTC)
-IronPort-SDR: aiwywdPN/KP3JYGqyOBl5Rb4wB48BQMHdfhQlWkjk7qbaPCNdg1Tudj2ywtIk3FEsNis+QpVLq
- Q/v9KTplGmLw==
+IronPort-SDR: +EYm+G8qTWVk/SwUMyokdJWC9Orh5M4ZZnCAnwXNhHrpHAvQRQHVkDkDkmM/V1cjYwhgNFx4+R
+ B50lyXZeBlxA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  24 Apr 2020 13:17:27 -0700
-IronPort-SDR: nnCDQnp47gU/Z5gaEq4fc0Ang0IZ74K5ErWZ29KNayt38J7r+YoT73s50lpeGr7BsI0m66uObe
- b9JgXTtMhfWA==
+IronPort-SDR: SREIDNVVBjWpiHq9iy0TaCCsSWGpydT0b3QX5irCG7SylbahV7mK9aPkowt5JuupflH1BSxVxW
+ drhm4pRAE54A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474512"
+X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474513"
 Received: from kleandre-mobl.amr.corp.intel.com ([10.213.164.39])
- by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:26 -0700
+ by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:27 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Apr 2020 13:16:14 -0700
-Message-Id: <20200424201623.10971-11-andre.guedes@intel.com>
+Date: Fri, 24 Apr 2020 13:16:15 -0700
+Message-Id: <20200424201623.10971-12-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200424201623.10971-1-andre.guedes@intel.com>
 References: <20200424201623.10971-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 10/19] igc: Fix locking issue when
- retrieving NFC rules
+Subject: [Intel-wired-lan] [PATCH 11/19] igc: Fix NFC rule overwrite cases
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,75 +70,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Access to NFC rules stored in adapter->nfc_rule_list is protect by
-adapter->nfc_rule_lock. The functions igc_ethtool_get_nfc_rule()
-and igc_ethtool_get_nfc_rules() are missing to hold the lock while
-accessing rule objects.
+When the 'loc' argument is passed in ethtool, the input rule overwrites
+any rule present in that location. In this situation we must disable the
+old rule otherwise it is left enabled in hardware. This patch fixes
+the issue by always calling igc_disable_nfc_rule() when deleting the
+old rule, no matter the value of 'input' argument.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 93274e75e8c5..38ac61c04e5c 100644
+index 38ac61c04e5c..e975efea4a15 100644
 --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
 +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -939,16 +939,18 @@ static int igc_ethtool_get_nfc_rule(struct igc_adapter *adapter,
+@@ -1270,8 +1270,7 @@ static int igc_ethtool_update_nfc_rule(struct igc_adapter *adapter,
  
- 	cmd->data = IGC_MAX_RXNFC_RULES;
+ 	/* if there is an old rule occupying our place remove it */
+ 	if (rule && rule->location == location) {
+-		if (!input)
+-			err = igc_disable_nfc_rule(adapter, rule);
++		err = igc_disable_nfc_rule(adapter, rule);
  
-+	spin_lock(&adapter->nfc_rule_lock);
-+
- 	hlist_for_each_entry(rule, &adapter->nfc_rule_list, nfc_node) {
- 		if (fsp->location <= rule->location)
- 			break;
- 	}
- 
- 	if (!rule || fsp->location != rule->location)
--		return -EINVAL;
-+		goto out;
- 
- 	if (!rule->filter.match_flags)
--		return -EINVAL;
-+		goto out;
- 
- 	fsp->flow_type = ETHER_FLOW;
- 	fsp->ring_cookie = rule->action;
-@@ -976,7 +978,12 @@ static int igc_ethtool_get_nfc_rule(struct igc_adapter *adapter,
- 		eth_broadcast_addr(fsp->m_u.ether_spec.h_source);
- 	}
- 
-+	spin_unlock(&adapter->nfc_rule_lock);
- 	return 0;
-+
-+out:
-+	spin_unlock(&adapter->nfc_rule_lock);
-+	return -EINVAL;
- }
- 
- static int igc_ethtool_get_nfc_rules(struct igc_adapter *adapter,
-@@ -988,13 +995,19 @@ static int igc_ethtool_get_nfc_rules(struct igc_adapter *adapter,
- 
- 	cmd->data = IGC_MAX_RXNFC_RULES;
- 
-+	spin_lock(&adapter->nfc_rule_lock);
-+
- 	hlist_for_each_entry(rule, &adapter->nfc_rule_list, nfc_node) {
--		if (cnt == cmd->rule_cnt)
-+		if (cnt == cmd->rule_cnt) {
-+			spin_unlock(&adapter->nfc_rule_lock);
- 			return -EMSGSIZE;
-+		}
- 		rule_locs[cnt] = rule->location;
- 		cnt++;
- 	}
- 
-+	spin_unlock(&adapter->nfc_rule_lock);
-+
- 	cmd->rule_cnt = cnt;
- 
- 	return 0;
+ 		hlist_del(&rule->nfc_node);
+ 		kfree(rule);
 -- 
 2.26.0
 
