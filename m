@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B3951B806B
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69EF71B806C
 	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 98A5486D1E;
-	Fri, 24 Apr 2020 20:17:43 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1AD9B88028;
+	Fri, 24 Apr 2020 20:17:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bTmcWXTblyou; Fri, 24 Apr 2020 20:17:43 +0000 (UTC)
+	with ESMTP id HtCxLXjWQNbI; Fri, 24 Apr 2020 20:17:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F0FC186D4D;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 521FA87FD3;
 	Fri, 24 Apr 2020 20:17:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 848A81BF83C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8FE9F1BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 6F64687F94
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8C8928803D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gj6J6tjCqy6s for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id VfyrXC6f3exc for <intel-wired-lan@lists.osuosl.org>;
  Fri, 24 Apr 2020 20:17:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AC4FF87FED
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D80F188005
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:29 +0000 (UTC)
-IronPort-SDR: du274H7SiaT/Mvhi7MDqQufgx/9Oh4UDRrVpRYu95jFtmqPCdZTfgBWcX4+lIuUzaPxWyFRHLo
- rR8PD/yb2bgg==
+IronPort-SDR: Wob5vgvSiFTwXSTkfJW6k1eXFGGvnM4kyo/z5Dx6XEnD1rOTsi2Bn6GpbzvbPD0cwwyDVA9i57
+ qoGDKJbwd4rg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  24 Apr 2020 13:17:29 -0700
-IronPort-SDR: 9gT3KZT1Xxz/M2i7+hGM1vWB8AQIvMctQrV9am0KHG3DbOEK8KYmbZDuPUp1xULL8vgWxVUrfS
- H3yJ73PFqsEw==
+IronPort-SDR: 66GEftB/VnoZWnfeceGq/fnhQ3Ds0RcTi7DvR+x0gDsW+JvCEoqWUzp047R3ZnCHddeKHDaiiC
+ 1F7GKKOSm75g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474524"
+X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474525"
 Received: from kleandre-mobl.amr.corp.intel.com ([10.213.164.39])
- by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:28 -0700
+ by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:29 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Apr 2020 13:16:20 -0700
-Message-Id: <20200424201623.10971-17-andre.guedes@intel.com>
+Date: Fri, 24 Apr 2020 13:16:21 -0700
+Message-Id: <20200424201623.10971-18-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200424201623.10971-1-andre.guedes@intel.com>
 References: <20200424201623.10971-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 16/19] igc: Fix NFC rule validation
+Subject: [Intel-wired-lan] [PATCH 17/19] igc: Change return type from
+ igc_disable_nfc_rule()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,50 +71,111 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If we try to overwrite an existing rule with the same filter but
-different action, we get EEXIST error as shown below.
+None of igc_disable_nfc_rule() callers actually check its returning
+value. A closer look at why this function would fail shows that the
+only situation is when we try to delete an ethertype or mac filter that
+doesn't exist.
 
-$ ethtool -N eth0 flow-type ether dst <MACADDR> action 1 loc 10
-$ ethtool -N eth0 flow-type ether dst <MACADDR> action 2 loc 10
-rmgr: Cannot insert RX class rule: File exists
-
-The second command is expected to overwrite the previous rule in location
-10 and succeed.
-
-This patch fixes igc_ethtool_check_nfc_rule() so it also checks the
-rules location. In case they match, the rule under evaluation should not
-be considered invalid.
+That situation is very unlikely so we can change igc_del_etype_filter()
+and igc_del_mac_filter() logic to "if the filter doesn't exist, we are
+done", and keep the logic in igc_disable_nfc_rule() callers simple.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 26 ++++++++---------------
+ 1 file changed, 9 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index de9ab3c8179a..32bc77af71dd 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1225,8 +1225,8 @@ static void igc_ethtool_init_nfc_rule(struct igc_nfc_rule *rule,
-  * Rules with both destination and source MAC addresses are considered invalid
-  * since the driver doesn't support them.
-  *
-- * Also, if there is already another rule with the same filter, @rule is
-- * considered invalid.
-+ * Also, if there is already another rule with the same filter in a different
-+ * location, @rule is considered invalid.
-  *
-  * Context: Expects adapter->nfc_rule_lock to be held by caller.
-  *
-@@ -1252,7 +1252,8 @@ static int igc_ethtool_check_nfc_rule(struct igc_adapter *adapter,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 64e372f38c6b..134523064fe9 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2260,18 +2260,16 @@ static int igc_add_mac_filter(struct igc_adapter *adapter,
+  * @adapter: Pointer to adapter where the filter should be deleted from
+  * @type: MAC address filter type (source or destination)
+  * @addr: MAC address
+- *
+- * Return: 0 in case of success, negative errno code otherwise.
+  */
+-static int igc_del_mac_filter(struct igc_adapter *adapter,
+-			      enum igc_mac_filter_type type, const u8 *addr)
++static void igc_del_mac_filter(struct igc_adapter *adapter,
++			       enum igc_mac_filter_type type, const u8 *addr)
+ {
+ 	struct net_device *dev = adapter->netdev;
+ 	int index;
  
- 	list_for_each_entry(tmp, &adapter->nfc_rule_list, list) {
- 		if (!memcmp(&rule->filter, &tmp->filter,
--			    sizeof(rule->filter))) {
-+			    sizeof(rule->filter)) &&
-+		    tmp->location != rule->location) {
- 			netdev_dbg(dev, "Rule already exists");
- 			return -EEXIST;
- 		}
+ 	index = igc_find_mac_filter(adapter, type, addr);
+ 	if (index < 0)
+-		return -ENOENT;
++		return;
+ 
+ 	if (index == 0) {
+ 		/* If this is the default filter, we don't actually delete it.
+@@ -2289,8 +2287,6 @@ static int igc_del_mac_filter(struct igc_adapter *adapter,
+ 
+ 		igc_clear_mac_filter_hw(adapter, index);
+ 	}
+-
+-	return 0;
+ }
+ 
+ /**
+@@ -2421,23 +2417,20 @@ static int igc_find_etype_filter(struct igc_adapter *adapter, u16 etype)
+  * igc_del_etype_filter() - Delete ethertype filter.
+  * @adapter: Pointer to adapter where the filter should be deleted from.
+  * @etype: Ethertype value.
+- *
+- * Return: 0 in case of success, negative errno code otherwise.
+  */
+-static int igc_del_etype_filter(struct igc_adapter *adapter, u16 etype)
++static void igc_del_etype_filter(struct igc_adapter *adapter, u16 etype)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
+ 	int index;
+ 
+ 	index = igc_find_etype_filter(adapter, etype);
+ 	if (index < 0)
+-		return -ENOENT;
++		return;
+ 
+ 	wr32(IGC_ETQF(index), 0);
+ 
+ 	netdev_dbg(adapter->netdev, "Delete ethertype filter: etype %04x",
+ 		   etype);
+-	return 0;
+ }
+ 
+ static int igc_enable_nfc_rule(struct igc_adapter *adapter,
+@@ -2478,8 +2471,8 @@ static int igc_enable_nfc_rule(struct igc_adapter *adapter,
+ 	return 0;
+ }
+ 
+-static int igc_disable_nfc_rule(struct igc_adapter *adapter,
+-				const struct igc_nfc_rule *rule)
++static void igc_disable_nfc_rule(struct igc_adapter *adapter,
++				 const struct igc_nfc_rule *rule)
+ {
+ 	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE)
+ 		igc_del_etype_filter(adapter, rule->filter.etype);
+@@ -2498,8 +2491,6 @@ static int igc_disable_nfc_rule(struct igc_adapter *adapter,
+ 	if (rule->filter.match_flags & IGC_FILTER_FLAG_DST_MAC_ADDR)
+ 		igc_del_mac_filter(adapter, IGC_MAC_FILTER_TYPE_DST,
+ 				   rule->filter.dst_addr);
+-
+-	return 0;
+ }
+ 
+ /**
+@@ -2624,7 +2615,8 @@ static int igc_uc_unsync(struct net_device *netdev, const unsigned char *addr)
+ {
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 
+-	return igc_del_mac_filter(adapter, IGC_MAC_FILTER_TYPE_DST, addr);
++	igc_del_mac_filter(adapter, IGC_MAC_FILTER_TYPE_DST, addr);
++	return 0;
+ }
+ 
+ /**
 -- 
 2.26.0
 
