@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F7AC1B8061
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:35 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32E9D1B8062
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 22:17:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id BDC6920BF8;
-	Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D9557868C9;
+	Fri, 24 Apr 2020 20:17:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kZx21dDoTrF1; Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
+	with ESMTP id 72d7Tpl9AKbU; Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7292A204BD;
-	Fri, 24 Apr 2020 20:17:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C80A86B59;
+	Fri, 24 Apr 2020 20:17:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 474E61BF83C
+ by ash.osuosl.org (Postfix) with ESMTP id BB6141BF9C2
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4468C86B89
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B279E86B59
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0948LTtFIDAv for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Apr 2020 20:17:26 +0000 (UTC)
+ with ESMTP id Zh844B2ZICuX for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Apr 2020 20:17:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 981E386B59
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id F1387868C9
  for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 20:17:26 +0000 (UTC)
-IronPort-SDR: Jz8+mX6z1qKhtV8hQ7RdqwAFmFqNhiO2kpRLhJTEZsNCT97jm3ZZtwPkWeq3qPeKEQabFFOYlk
- ofbdxtIAzAnA==
+IronPort-SDR: Th0tszmc3hYS0yzlPGDGYF2/yfwzo0QsJ54w1hUL8EsJCuSnjiQDny7G3dT0YSzqz/0IoD9dIt
+ 6yeCS/IXxaJw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  24 Apr 2020 13:17:26 -0700
-IronPort-SDR: NY/Bwas+hU8RxitxSlSz9+PSU5PGhekae3k250NT95KYbiaCGYsTMUpEutOzducVcbUYsGPDwt
- OmePds16K12g==
+IronPort-SDR: G1jvgECB+GOj/nQJbnHDvqpuLm3I6+JF2EUprSIwrl5k+GxxDuuzBFrZL0d08B91cxa737vr6N
+ O7NKG/pYJLhA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474508"
+X-IronPort-AV: E=Sophos;i="5.73,313,1583222400"; d="scan'208";a="335474510"
 Received: from kleandre-mobl.amr.corp.intel.com ([10.213.164.39])
  by orsmga001.jf.intel.com with ESMTP; 24 Apr 2020 13:17:26 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 Apr 2020 13:16:11 -0700
-Message-Id: <20200424201623.10971-8-andre.guedes@intel.com>
+Date: Fri, 24 Apr 2020 13:16:12 -0700
+Message-Id: <20200424201623.10971-9-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.0
 In-Reply-To: <20200424201623.10971-1-andre.guedes@intel.com>
 References: <20200424201623.10971-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 07/19] igc: Change byte order in struct
- igc_nfc_filter
+Subject: [Intel-wired-lan] [PATCH 08/19] igc: Refactor
+ igc_ethtool_add_nfc_rule()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,124 +71,227 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Every time we access the 'etype' and 'vlan_tci' fields from struct
-igc_nfc_filter to enable or disable filters in hardware we have to
-convert them from big endian to host order so it makes more sense to
-simply have these fields in host order.
+Current implementation of igc_ethtool_add_nfc_rule() is quite long and a
+bit convoluted so this patch does a code refactoring to improve the
+code.
 
-The byte order conversion should take place in igc_ethtool_get_nfc_
-rule() and igc_ethtool_add_nfc_rule(), which are called by .get_rxnfc
-and .set_rxnfc ethtool ops, since ethtool subsystem is the one who deals
-with them in big endian order.
+Code related to NFC rule object initialization is refactored out to the
+local helper function igc_ethtool_init_nfc_rule(). Likewise, code
+related to NFC rule validation is refactored out to another local
+helper, igc_ethtool_is_nfc_rule_valid().
+
+RX_CLS_FLOW_DISC check is removed since it is redundant. The macro is
+defined as the max value fsp->ring_cookie can have, so checking if
+fsp->ring_cookie >= adapter->num_rx_queues is already sufficient.
+
+Finally, some log messages are improved or added, and obvious comments
+are removed.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         | 10 ++------
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 25 +++++++++-----------
- 2 files changed, 13 insertions(+), 22 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 150 ++++++++++++-------
+ 1 file changed, 92 insertions(+), 58 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 7124ba254b89..fcc6261d7f67 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -452,16 +452,10 @@ enum igc_filter_match_flags {
- 	IGC_FILTER_FLAG_DST_MAC_ADDR =	0x8,
- };
- 
--/* RX network flow classification data structure */
- struct igc_nfc_filter {
--	/* Byte layout in order, all values with MSB first:
--	 * match_flags - 1 byte
--	 * etype - 2 bytes
--	 * vlan_tci - 2 bytes
--	 */
- 	u8 match_flags;
--	__be16 etype;
--	__be16 vlan_tci;
-+	u16 etype;
-+	u16 vlan_tci;
- 	u8 src_addr[ETH_ALEN];
- 	u8 dst_addr[ETH_ALEN];
- };
 diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 46599ee7f0b9..f9518aa1375b 100644
+index f9518aa1375b..bdb7c99f66be 100644
 --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
 +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -954,13 +954,13 @@ static int igc_ethtool_get_nfc_rule(struct igc_adapter *adapter,
- 	fsp->ring_cookie = rule->action;
+@@ -1271,9 +1271,6 @@ static int igc_ethtool_update_nfc_rule(struct igc_adapter *adapter,
+ 	if (!input)
+ 		return err;
  
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE) {
--		fsp->h_u.ether_spec.h_proto = rule->filter.etype;
-+		fsp->h_u.ether_spec.h_proto = htons(rule->filter.etype);
- 		fsp->m_u.ether_spec.h_proto = ETHER_TYPE_FULL_MASK;
- 	}
- 
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
- 		fsp->flow_type |= FLOW_EXT;
--		fsp->h_ext.vlan_tci = rule->filter.vlan_tci;
-+		fsp->h_ext.vlan_tci = htons(rule->filter.vlan_tci);
- 		fsp->m_ext.vlan_tci = htons(VLAN_PRIO_MASK);
- 	}
- 
-@@ -1183,9 +1183,8 @@ int igc_enable_nfc_rule(struct igc_adapter *adapter,
- 	int err = -EINVAL;
- 
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE) {
--		u16 etype = ntohs(rule->filter.etype);
+-	/* initialize node */
+-	INIT_HLIST_NODE(&input->nfc_node);
 -
--		err = igc_add_etype_filter(adapter, etype, rule->action);
-+		err = igc_add_etype_filter(adapter, rule->filter.etype,
-+					   rule->action);
- 		if (err)
- 			return err;
- 	}
-@@ -1205,8 +1204,9 @@ int igc_enable_nfc_rule(struct igc_adapter *adapter,
- 	}
+ 	/* add filter to the list */
+ 	if (parent)
+ 		hlist_add_behind(&input->nfc_node, &parent->nfc_node);
+@@ -1286,41 +1283,19 @@ static int igc_ethtool_update_nfc_rule(struct igc_adapter *adapter,
+ 	return 0;
+ }
  
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
--		int prio = (ntohs(rule->filter.vlan_tci) & VLAN_PRIO_MASK)
-+		int prio = (rule->filter.vlan_tci & VLAN_PRIO_MASK)
- 				>> VLAN_PRIO_SHIFT;
-+
- 		err = igc_add_vlan_prio_filter(adapter, prio, rule->action);
- 		if (err)
- 			return err;
-@@ -1218,14 +1218,11 @@ int igc_enable_nfc_rule(struct igc_adapter *adapter,
- int igc_disable_nfc_rule(struct igc_adapter *adapter,
- 			 const struct igc_nfc_rule *rule)
+-static int igc_ethtool_add_nfc_rule(struct igc_adapter *adapter,
+-				    struct ethtool_rxnfc *cmd)
++static void igc_ethtool_init_nfc_rule(struct igc_nfc_rule *rule,
++				      const struct ethtool_rx_flow_spec *fsp)
  {
--	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE) {
--		u16 etype = ntohs(rule->filter.etype);
+-	struct net_device *netdev = adapter->netdev;
+-	struct ethtool_rx_flow_spec *fsp =
+-		(struct ethtool_rx_flow_spec *)&cmd->fs;
+-	struct igc_nfc_rule *rule, *tmp;
+-	int err = 0;
 -
--		igc_del_etype_filter(adapter, etype);
+-	if (!(netdev->hw_features & NETIF_F_NTUPLE))
+-		return -EOPNOTSUPP;
++	INIT_HLIST_NODE(&rule->nfc_node);
+ 
+-	/* Don't allow programming if the action is a queue greater than
+-	 * the number of online Rx queues.
+-	 */
+-	if (fsp->ring_cookie == RX_CLS_FLOW_DISC ||
+-	    fsp->ring_cookie >= adapter->num_rx_queues) {
+-		netdev_err(netdev,
+-			   "ethtool -N: The specified action is invalid");
+-		return -EINVAL;
 -	}
-+	if (rule->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE)
-+		igc_del_etype_filter(adapter, rule->filter.etype);
++	rule->action = fsp->ring_cookie;
++	rule->sw_idx = fsp->location;
  
- 	if (rule->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
--		int prio = (ntohs(rule->filter.vlan_tci) & VLAN_PRIO_MASK)
-+		int prio = (rule->filter.vlan_tci & VLAN_PRIO_MASK)
- 				>> VLAN_PRIO_SHIFT;
- 		igc_del_vlan_prio_filter(adapter, prio);
- 	}
-@@ -1325,7 +1322,7 @@ static int igc_ethtool_add_nfc_rule(struct igc_adapter *adapter,
- 		return -ENOMEM;
- 
- 	if (fsp->m_u.ether_spec.h_proto == ETHER_TYPE_FULL_MASK) {
--		rule->filter.etype = fsp->h_u.ether_spec.h_proto;
-+		rule->filter.etype = ntohs(fsp->h_u.ether_spec.h_proto);
- 		rule->filter.match_flags = IGC_FILTER_FLAG_ETHER_TYPE;
- 	}
- 
-@@ -1357,7 +1354,7 @@ static int igc_ethtool_add_nfc_rule(struct igc_adapter *adapter,
- 			err = -EOPNOTSUPP;
- 			goto err_out;
- 		}
--		rule->filter.vlan_tci = fsp->h_ext.vlan_tci;
+-	/* Don't allow indexes to exist outside of available space */
+-	if (fsp->location >= IGC_MAX_RXNFC_RULES) {
+-		netdev_err(netdev, "Location out of range");
+-		return -EINVAL;
++	if ((fsp->flow_type & FLOW_EXT) && fsp->m_ext.vlan_tci) {
 +		rule->filter.vlan_tci = ntohs(fsp->h_ext.vlan_tci);
- 		rule->filter.match_flags |= IGC_FILTER_FLAG_VLAN_TCI;
++		rule->filter.match_flags |= IGC_FILTER_FLAG_VLAN_TCI;
  	}
  
+-	if ((fsp->flow_type & ~FLOW_EXT) != ETHER_FLOW)
+-		return -EINVAL;
+-
+-	rule = kzalloc(sizeof(*rule), GFP_KERNEL);
+-	if (!rule)
+-		return -ENOMEM;
+-
+ 	if (fsp->m_u.ether_spec.h_proto == ETHER_TYPE_FULL_MASK) {
+ 		rule->filter.etype = ntohs(fsp->h_u.ether_spec.h_proto);
+ 		rule->filter.match_flags = IGC_FILTER_FLAG_ETHER_TYPE;
+@@ -1340,51 +1315,110 @@ static int igc_ethtool_add_nfc_rule(struct igc_adapter *adapter,
+ 		ether_addr_copy(rule->filter.dst_addr,
+ 				fsp->h_u.ether_spec.h_dest);
+ 	}
++}
+ 
+-	if (rule->filter.match_flags & IGC_FILTER_FLAG_DST_MAC_ADDR &&
+-	    rule->filter.match_flags & IGC_FILTER_FLAG_SRC_MAC_ADDR) {
+-		netdev_dbg(netdev, "Filters with both dst and src are not supported");
+-		err = -EOPNOTSUPP;
+-		goto err_out;
+-	}
++/**
++ * igc_ethtool_check_nfc_rule() - Check if NFC rule is valid.
++ * @adapter: Pointer to adapter.
++ * @rule: Rule under evaluation.
++ *
++ * Rules with both destination and source MAC addresses are considered invalid
++ * since the driver doesn't support them.
++ *
++ * Also, if there is already another rule with the same filter, @rule is
++ * considered invalid.
++ *
++ * Context: Expects adapter->nfc_rule_lock to be held by caller.
++ *
++ * Return: 0 in case of success, negative errno code otherwise.
++ */
++static int igc_ethtool_check_nfc_rule(struct igc_adapter *adapter,
++				      struct igc_nfc_rule *rule)
++{
++	struct net_device *dev = adapter->netdev;
++	u8 flags = rule->filter.match_flags;
++	struct igc_nfc_rule *tmp;
+ 
+-	if ((fsp->flow_type & FLOW_EXT) && fsp->m_ext.vlan_tci) {
+-		if (fsp->m_ext.vlan_tci != htons(VLAN_PRIO_MASK)) {
+-			netdev_dbg(netdev, "VLAN mask not supported");
+-			err = -EOPNOTSUPP;
+-			goto err_out;
+-		}
+-		rule->filter.vlan_tci = ntohs(fsp->h_ext.vlan_tci);
+-		rule->filter.match_flags |= IGC_FILTER_FLAG_VLAN_TCI;
++	if (!flags) {
++		netdev_dbg(dev, "Rule with no match");
++		return -EINVAL;
+ 	}
+ 
+-	rule->action = fsp->ring_cookie;
+-	rule->sw_idx = fsp->location;
+-
+-	spin_lock(&adapter->nfc_rule_lock);
++	if (flags & IGC_FILTER_FLAG_DST_MAC_ADDR &&
++	    flags & IGC_FILTER_FLAG_SRC_MAC_ADDR) {
++		netdev_dbg(dev, "Filters with both dst and src are not supported");
++		return -EOPNOTSUPP;
++	}
+ 
+ 	hlist_for_each_entry(tmp, &adapter->nfc_rule_list, nfc_node) {
+ 		if (!memcmp(&rule->filter, &tmp->filter,
+ 			    sizeof(rule->filter))) {
+-			err = -EEXIST;
+-			netdev_err(netdev,
+-				   "ethtool: this filter is already set");
+-			goto err_out_w_lock;
++			netdev_dbg(dev, "Rule already exists");
++			return -EEXIST;
+ 		}
+ 	}
+ 
++	return 0;
++}
++
++static int igc_ethtool_add_nfc_rule(struct igc_adapter *adapter,
++				    struct ethtool_rxnfc *cmd)
++{
++	struct net_device *netdev = adapter->netdev;
++	struct ethtool_rx_flow_spec *fsp =
++		(struct ethtool_rx_flow_spec *)&cmd->fs;
++	struct igc_nfc_rule *rule;
++	int err;
++
++	if (!(netdev->hw_features & NETIF_F_NTUPLE)) {
++		netdev_dbg(netdev, "N-tuple filters disabled");
++		return -EOPNOTSUPP;
++	}
++
++	if ((fsp->flow_type & ~FLOW_EXT) != ETHER_FLOW) {
++		netdev_dbg(netdev, "Only ethernet flow type is supported");
++		return -EOPNOTSUPP;
++	}
++
++	if ((fsp->flow_type & FLOW_EXT) &&
++	    fsp->m_ext.vlan_tci != htons(VLAN_PRIO_MASK)) {
++		netdev_dbg(netdev, "VLAN mask not supported");
++		return -EOPNOTSUPP;
++	}
++
++	if (fsp->ring_cookie >= adapter->num_rx_queues) {
++		netdev_dbg(netdev, "Invalid action");
++		return -EINVAL;
++	}
++
++	if (fsp->location >= IGC_MAX_RXNFC_RULES) {
++		netdev_dbg(netdev, "Invalid location");
++		return -EINVAL;
++	}
++
++	rule = kzalloc(sizeof(*rule), GFP_KERNEL);
++	if (!rule)
++		return -ENOMEM;
++
++	igc_ethtool_init_nfc_rule(rule, fsp);
++
++	spin_lock(&adapter->nfc_rule_lock);
++
++	err = igc_ethtool_check_nfc_rule(adapter, rule);
++	if (err)
++		goto err;
++
+ 	err = igc_enable_nfc_rule(adapter, rule);
+ 	if (err)
+-		goto err_out_w_lock;
++		goto err;
+ 
+ 	igc_ethtool_update_nfc_rule(adapter, rule, rule->sw_idx);
+ 
+ 	spin_unlock(&adapter->nfc_rule_lock);
+ 	return 0;
+ 
+-err_out_w_lock:
++err:
+ 	spin_unlock(&adapter->nfc_rule_lock);
+-err_out:
+ 	kfree(rule);
+ 	return err;
+ }
 -- 
 2.26.0
 
