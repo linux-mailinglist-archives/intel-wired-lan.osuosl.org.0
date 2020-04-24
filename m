@@ -1,130 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 318AA1B662E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2020 23:36:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 901571B6AB3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Apr 2020 03:12:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CD029877A8;
-	Thu, 23 Apr 2020 21:36:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 256BE86E36;
+	Fri, 24 Apr 2020 01:12:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Qdu4+zaa0BYZ; Thu, 23 Apr 2020 21:36:22 +0000 (UTC)
+	with ESMTP id 0K-QdlM0kcUf; Fri, 24 Apr 2020 01:12:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CC5F287847;
-	Thu, 23 Apr 2020 21:36:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BD42C86EB2;
+	Fri, 24 Apr 2020 01:12:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 571F91BF82B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 21:36:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 978151BF3D0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 01:12:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 43311845E7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 21:36:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 84BEC8867E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 01:12:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8QmlUmvUnhVQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Apr 2020 21:36:17 +0000 (UTC)
+ with ESMTP id 74PDvMoa9WvK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Apr 2020 01:12:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 70C4588688
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2020 21:36:17 +0000 (UTC)
-IronPort-SDR: I8q6MjQz+t1qUQwe0Rk64Lk4pVulJEBryiqIC7bBceoXPwvLitIlj192TezUxcwIFGz51Sdgf5
- Vy2UCLyDTzpg==
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EDF8887E62
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Apr 2020 01:12:16 +0000 (UTC)
+IronPort-SDR: QAEwQEA9gCgJAjMEYvwbwQTzHdP+8KzQZkrqD3W4aEbqF0mmSoMlC1sasvVsFImHfJIQoi2PAa
+ 5MA5X+NBNLug==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2020 14:36:16 -0700
-IronPort-SDR: 87YG8/D3vj9VDHhv4z3mE8ja57tzRwoTEY5ZGzOse4yYcbYuIQh1MDYzju6Y5dq0+Mx9fiOVFL
- qaypWOAH1fKA==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2020 18:12:16 -0700
+IronPort-SDR: ib7sjkMxkl62GlzJs6PNNexCgkMVgM/CldtcrdcrMM7PEYdDAj/u+f/1S+6eZuFeBdS23fsvfA
+ W5ZmvRRurJ7w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,309,1583222400"; d="scan'208";a="256131207"
-Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
- by orsmga003.jf.intel.com with ESMTP; 23 Apr 2020 14:36:16 -0700
-Received: from fmsmsx113.amr.corp.intel.com (10.18.116.7) by
- FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 23 Apr 2020 14:35:59 -0700
-Received: from FMSEDG001.ED.cps.intel.com (10.1.192.133) by
- FMSMSX113.amr.corp.intel.com (10.18.116.7) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 23 Apr 2020 14:35:59 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.44) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (TLS) id 14.3.439.0; Thu, 23 Apr 2020 14:35:59 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HrTmD8LEyYobKD6UuAlR6OFATC3aMZVwoLqPuLknxcI8GoDV626+M+BROqYetcPmmdnLJiVPDmALlSAbbU/jFwFMq9g0W6CY5v8wfC5WNNpmeIEfw/2B4SPDuI+smB6gq5mHX/CnYDcnfFLCrANP42SdnG7Xz95Pa8EGtimOADrLlqMNQ2yOVd2FPZAmCvY/PmLtOW2zciVk1KD48XARezZXtcUYM1qLBmMjeTNioPOx5YDgpgKAYc4oT6iNdYkBGetApzhDMY+9TQvdjE4mm8H0uy2IIBrO9orBksbxlgmeoj9rAQw2tiAvA1eWShVRWDdPrqUaL/g9oB4X+dT+YA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0bOQlu7vv//1glPiWDoAADXjBwlRGR9hXxrWh59e/MI=;
- b=a1qHbt7oWjWemxn06VPdyIwL5J1y5jkTCxZjkQYQvYNKkVO6LVJ+p5iQWzWbbA6tvnx+dzlfoArY1NVhGKXl/PpXoKqBvheNkDBWN4pyxQvcmlW7574e/hx6ubWUcSDUAzlp0/WblvYNTOe4qFkQDjPR3zDTGIA4RK9/2Sx+pQKCWdm0XCbeHU56LGFQ7/QRrLL0A9LU7FqjLVexA82nvdDtLErUccFLLlk22RE1oAqY2Noru86Iw+EtupIZ6h/bHbtOgCiG8XsbiuUL0BCZ9Xp2r6Cur3Yhi947hoy0oqrkYR1MBh3p4aUv1jy2HyphFLWBfV+N5WfgYmsXHX4OeA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0bOQlu7vv//1glPiWDoAADXjBwlRGR9hXxrWh59e/MI=;
- b=nHYWSwd06Gskh/6xzTwY77546fy0NBpgP0SyLw1mhNK6TgR2QTw5kXupwOwSlUpD6gONmAFEZsGd8BmOpZfa3UCaiO64lj1gCe2KchWpjKOeAuy6myb53QnTpmzbHpWAzcr1bb3jupw6ToVc2eGvxuE93oTwKM6ipQQfYwUyNUY=
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB3899.namprd11.prod.outlook.com (2603:10b6:5:19c::31) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2921.29; Thu, 23 Apr 2020 21:35:58 +0000
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::40b:5b49:b17d:d875]) by DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::40b:5b49:b17d:d875%7]) with mapi id 15.20.2921.030; Thu, 23 Apr 2020
- 21:35:58 +0000
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Guedes, Andre" <andre.guedes@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v2 4/4] igc: Enable NFC rules based
- source MAC address
-Thread-Index: AQHWEa0ycGxVwW4ydk+y1XU+zNrqtqiHSs6g
-Date: Thu, 23 Apr 2020 21:35:58 +0000
-Message-ID: <DM6PR11MB2890DB4B7C3185E2F85EE279BCD30@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200411002834.13916-5-andre.guedes@intel.com>
- <20200413160049.35565-1-andre.guedes@intel.com>
-In-Reply-To: <20200413160049.35565-1-andre.guedes@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.2.0.6
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=aaron.f.brown@intel.com; 
-x-originating-ip: [192.55.52.218]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 72ab1e72-d586-436b-c387-08d7e7ce4fac
-x-ms-traffictypediagnostic: DM6PR11MB3899:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB38994FBA16E087ED2EB7CCC5BCD30@DM6PR11MB3899.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:883;
-x-forefront-prvs: 03827AF76E
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(136003)(39860400002)(396003)(366004)(346002)(376002)(5660300002)(478600001)(76116006)(8676002)(66946007)(6506007)(53546011)(33656002)(7696005)(66446008)(64756008)(66556008)(66476007)(86362001)(52536014)(8936002)(316002)(26005)(81156014)(9686003)(55016002)(186003)(2906002)(71200400001)(110136005)(4744005);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Oao/bbEKL9/sjqTCMlVxfwbEiqIoCp+uq5ymQJ9ceG0NLaDAaBfFqiFnB8p5hmFHUAbNgiMBS6/jF3n9a+Tr8/AERjV1hKi08EFZDqMunum/a22yhLvx3A+5ufjAYHTPr7meJZI7KpP/zYvQihTSOdtzjJfyNRd3HNkJn+SRFENzwpfDvIpbAsrOQUvwCuJC27hDQ5ISvLgRCQeHAu+1v6JWGQsC7RCvMi24yZ2a5vl4TgZZqFpTtEnjanM4jNZSr2cy6gbIUXF4a/Wtt85U8/4JwVfjuPRMnkrUS3gL+Kdx5l3dBXHokzQTdtrUA57NH1xajhi1HyoPg/d929SyEIht8Rk+Yy4IPTx10vZklcoDxMDAgpQty918d5yEHV32f85R0FbJQgQNpyeVDeWEPIh3OflPvhJ4pZjxXhEsy3LBbZ23gnr9s0/8h4k7yi/P
-x-ms-exchange-antispam-messagedata: wtEi/6CfOTKWQNP0wfAvOHKcajDjew4084LScgvdliQMzkhF+zbUXqPtQIcYUfIT5srBI+sPgxsjj2A/UdOvPLq6tSw4qx8WOEkYR9ZMVIAgblSKapQ88Q7nCsmmX77dmL+MrnN1nAzHdb1CaGTiFg==
+X-IronPort-AV: E=Sophos;i="5.73,309,1583222400"; d="scan'208";a="457145540"
+Received: from jwstark-mobl.amr.corp.intel.com ([10.212.173.233])
+ by fmsmga005.fm.intel.com with ESMTP; 23 Apr 2020 18:12:15 -0700
+From: Andre Guedes <andre.guedes@intel.com>
+To: intel-wired-lan@lists.osuosl.org, aaron.f.brown@intel.com,
+ jeffrey.t.kirsher@intel.com
+Date: Thu, 23 Apr 2020 18:11:19 -0700
+Message-Id: <20200424011119.98746-1-andre.guedes@intel.com>
+X-Mailer: git-send-email 2.26.0
+In-Reply-To: <20200403181743.23447-5-andre.guedes@intel.com>
+References: <20200403181743.23447-5-andre.guedes@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72ab1e72-d586-436b-c387-08d7e7ce4fac
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2020 21:35:58.0666 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 6d6y9wcd/nRpdoOWYDgtBeG6Zsd9wlWPZzAG+wCsyiI2sLgeK3BL5FNbc1bc2eMLAxrZzZ2CWtCr+7MIcO5z0A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3899
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v2 4/4] igc: Enable NFC rules based
- source MAC address
+Subject: [Intel-wired-lan] [PATCH v2 4/4] igc: Refactor VLAN priority
+ filtering code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,26 +72,200 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Andre Guedes
-> Sent: Monday, April 13, 2020 9:01 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v2 4/4] igc: Enable NFC rules based source
-> MAC address
-> 
-> This patch adds support for Network Flow Classification (NFC) rules
-> based on source MAC address. Note that the controller doesn't support
-> rules with both source and destination addresses set, so this special
-> case is checked in igc_add_ethtool_nfc_entry().
-> 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-> ---
-> v2: Fix memory leak when both dst and src are set.
-> ---
->  drivers/net/ethernet/intel/igc/igc_ethtool.c | 32 ++++++++++++++------
->  1 file changed, 22 insertions(+), 10 deletions(-)
-> 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+The whole VLAN priority filtering code is implemented in igc_ethtool.c
+and mixes logic from ethtool and core parts. This patch refactors it so
+core logic is moved to igc_main.c, aligning the VLAN priority filtering
+code organization with the MAC address filtering code.
+
+This patch also takes the opportunity to add some log messages to ease
+debugging.
+
+Signed-off-by: Andre Guedes <andre.guedes@intel.com>
+---
+v2: Previous version had a bug when clearing IGC_VLANPQF_QSEL bits in
+    igc_del_vlan_prio_filter().
+---
+ drivers/net/ethernet/intel/igc/igc.h         |  3 +
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 64 ++++----------------
+ drivers/net/ethernet/intel/igc/igc_main.c    | 52 ++++++++++++++++
+ 3 files changed, 68 insertions(+), 51 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 1b07e8b870c2..48eb9c00a44d 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -235,6 +235,9 @@ int igc_add_mac_filter(struct igc_adapter *adapter, const u8 *addr,
+ 		       const s8 queue, const u8 flags);
+ int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
+ 		       const u8 flags);
++int igc_add_vlan_prio_filter(struct igc_adapter *adapter, int prio,
++			     int queue);
++void igc_del_vlan_prio_filter(struct igc_adapter *adapter, int prio);
+ void igc_update_stats(struct igc_adapter *adapter);
+ 
+ /* igc_dump declarations */
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 036a2244b76c..35bc125183a0 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1223,35 +1223,6 @@ static int igc_rxnfc_write_etype_filter(struct igc_adapter *adapter,
+ 	return 0;
+ }
+ 
+-static int igc_rxnfc_write_vlan_prio_filter(struct igc_adapter *adapter,
+-					    struct igc_nfc_filter *input)
+-{
+-	struct igc_hw *hw = &adapter->hw;
+-	u8 vlan_priority;
+-	u16 queue_index;
+-	u32 vlapqf;
+-
+-	vlapqf = rd32(IGC_VLANPQF);
+-	vlan_priority = (ntohs(input->filter.vlan_tci) & VLAN_PRIO_MASK)
+-				>> VLAN_PRIO_SHIFT;
+-	queue_index = (vlapqf >> (vlan_priority * 4)) & IGC_VLANPQF_QUEUE_MASK;
+-
+-	/* check whether this vlan prio is already set */
+-	if (vlapqf & IGC_VLANPQF_VALID(vlan_priority) &&
+-	    queue_index != input->action) {
+-		netdev_err(adapter->netdev,
+-			   "ethtool rxnfc set vlan prio filter failed");
+-		return -EEXIST;
+-	}
+-
+-	vlapqf |= IGC_VLANPQF_VALID(vlan_priority);
+-	vlapqf |= IGC_VLANPQF_QSEL(vlan_priority, input->action);
+-
+-	wr32(IGC_VLANPQF, vlapqf);
+-
+-	return 0;
+-}
+-
+ int igc_add_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
+@@ -1285,10 +1256,15 @@ int igc_add_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
+ 			return err;
+ 	}
+ 
+-	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI)
+-		err = igc_rxnfc_write_vlan_prio_filter(adapter, input);
++	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
++		int prio = (ntohs(input->filter.vlan_tci) & VLAN_PRIO_MASK)
++				>> VLAN_PRIO_SHIFT;
++		err = igc_add_vlan_prio_filter(adapter, prio, input->action);
++		if (err)
++			return err;
++	}
+ 
+-	return err;
++	return 0;
+ }
+ 
+ static void igc_clear_etype_filter_regs(struct igc_adapter *adapter,
+@@ -1306,31 +1282,17 @@ static void igc_clear_etype_filter_regs(struct igc_adapter *adapter,
+ 	adapter->etype_bitmap[reg_index] = false;
+ }
+ 
+-static void igc_clear_vlan_prio_filter(struct igc_adapter *adapter,
+-				       u16 vlan_tci)
+-{
+-	struct igc_hw *hw = &adapter->hw;
+-	u8 vlan_priority;
+-	u32 vlapqf;
+-
+-	vlan_priority = (vlan_tci & VLAN_PRIO_MASK) >> VLAN_PRIO_SHIFT;
+-
+-	vlapqf = rd32(IGC_VLANPQF);
+-	vlapqf &= ~IGC_VLANPQF_VALID(vlan_priority);
+-	vlapqf &= ~IGC_VLANPQF_QSEL(vlan_priority, IGC_VLANPQF_QUEUE_MASK);
+-
+-	wr32(IGC_VLANPQF, vlapqf);
+-}
+-
+ int igc_erase_filter(struct igc_adapter *adapter, struct igc_nfc_filter *input)
+ {
+ 	if (input->filter.match_flags & IGC_FILTER_FLAG_ETHER_TYPE)
+ 		igc_clear_etype_filter_regs(adapter,
+ 					    input->etype_reg_index);
+ 
+-	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI)
+-		igc_clear_vlan_prio_filter(adapter,
+-					   ntohs(input->filter.vlan_tci));
++	if (input->filter.match_flags & IGC_FILTER_FLAG_VLAN_TCI) {
++		int prio = (ntohs(input->filter.vlan_tci) & VLAN_PRIO_MASK)
++				>> VLAN_PRIO_SHIFT;
++		igc_del_vlan_prio_filter(adapter, prio);
++	}
+ 
+ 	if (input->filter.match_flags & IGC_FILTER_FLAG_SRC_MAC_ADDR)
+ 		igc_del_mac_filter(adapter, input->filter.src_addr,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index c3555148ca0e..7ae5bc476bdb 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2315,6 +2315,58 @@ int igc_del_mac_filter(struct igc_adapter *adapter, const u8 *addr,
+ 	return 0;
+ }
+ 
++/**
++ * igc_add_vlan_prio_filter() - Add VLAN priority filter.
++ * @adapter: Pointer to adapter where the filter should be added.
++ * @prio: VLAN priority value.
++ * @queue: Queue number which matching frames are assigned to.
++ *
++ * Return: 0 in case of success, negative errno code otherwise.
++ */
++int igc_add_vlan_prio_filter(struct igc_adapter *adapter, int prio, int queue)
++{
++	struct net_device *dev = adapter->netdev;
++	struct igc_hw *hw = &adapter->hw;
++	u32 vlanpqf;
++
++	vlanpqf = rd32(IGC_VLANPQF);
++
++	if (vlanpqf & IGC_VLANPQF_VALID(prio)) {
++		netdev_dbg(dev, "VLAN priority filter already in use");
++		return -EEXIST;
++	}
++
++	vlanpqf |= IGC_VLANPQF_QSEL(prio, queue);
++	vlanpqf |= IGC_VLANPQF_VALID(prio);
++
++	wr32(IGC_VLANPQF, vlanpqf);
++
++	netdev_dbg(dev, "Add VLAN priority filter: prio %d queue %d",
++		   prio, queue);
++	return 0;
++}
++
++/**
++ * igc_del_vlan_prio_filter() - Delete VLAN priority filter.
++ * @adapter: Pointer to adapter where the filter should be deleted from.
++ * @prio: VLAN priority value.
++ */
++void igc_del_vlan_prio_filter(struct igc_adapter *adapter, int prio)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 vlanpqf;
++
++	vlanpqf = rd32(IGC_VLANPQF);
++
++	vlanpqf &= ~IGC_VLANPQF_VALID(prio);
++	vlanpqf &= ~IGC_VLANPQF_QSEL(prio, IGC_VLANPQF_QUEUE_MASK);
++
++	wr32(IGC_VLANPQF, vlanpqf);
++
++	netdev_dbg(adapter->netdev, "Delete VLAN priority filter: prio %d",
++		   prio);
++}
++
+ static int igc_uc_sync(struct net_device *netdev, const unsigned char *addr)
+ {
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+-- 
+2.26.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
