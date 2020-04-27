@@ -1,53 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C9351BA357
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2020 14:11:28 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71E8D1BCCF5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2020 22:06:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A87A287D9E;
-	Mon, 27 Apr 2020 12:11:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F5A786881;
+	Tue, 28 Apr 2020 20:06:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hgURcoNO27d8; Mon, 27 Apr 2020 12:11:26 +0000 (UTC)
+	with ESMTP id rM-U9CLSylSb; Tue, 28 Apr 2020 20:06:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0B47087D94;
-	Mon, 27 Apr 2020 12:11:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1825C86652;
+	Tue, 28 Apr 2020 20:06:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7673F1BF3AA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 12:11:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7BAFA1BF2B6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 19:52:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7099087D8E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 12:11:24 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 74AB58756C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 19:52:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id b7LLJil6cDgy for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Apr 2020 12:11:22 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 6583487D8B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 12:11:22 +0000 (UTC)
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 1CCCF8F3E1766AC1EC17;
- Mon, 27 Apr 2020 20:11:18 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS404-HUB.china.huawei.com (10.3.19.204) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 27 Apr 2020 20:11:08 +0800
-From: Wei Yongjun <weiyongjun1@huawei.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>
-Date: Mon, 27 Apr 2020 12:12:28 +0000
-Message-ID: <20200427121228.12241-1-weiyongjun1@huawei.com>
-X-Mailer: git-send-email 2.20.1
+ with ESMTP id ZDTvvlRSpDul for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Apr 2020 19:52:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7BE8C861B5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 19:52:00 +0000 (UTC)
+Received: from sslproxy01.your-server.de ([78.46.139.224])
+ by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
+ (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
+ id 1jT9nE-0000wD-CR; Mon, 27 Apr 2020 21:51:52 +0200
+Received: from [178.195.186.98] (helo=pc-9.home)
+ by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
+ id 1jT9nD-000VkW-Oy; Mon, 27 Apr 2020 21:51:51 +0200
+To: Jesper Dangaard Brouer <brouer@redhat.com>, sameehj@amazon.com
+References: <158757160439.1370371.13213378122947426220.stgit@firesoul>
+ <158757175790.1370371.16071055208561239272.stgit@firesoul>
+From: Daniel Borkmann <daniel@iogearbox.net>
+Message-ID: <69e05693-c3df-8f48-7a08-03bf4d58cb07@iogearbox.net>
+Date: Mon, 27 Apr 2020 21:51:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Fix error return code in
- ice_add_prof()
+In-Reply-To: <158757175790.1370371.16071055208561239272.stgit@firesoul>
+Content-Language: en-US
+X-Authenticated-Sender: daniel@iogearbox.net
+X-Virus-Scanned: Clear (ClamAV 0.102.2/25795/Mon Apr 27 14:00:10 2020)
+X-Mailman-Approved-At: Tue, 28 Apr 2020 20:06:08 +0000
+Subject: Re: [Intel-wired-lan] [PATCH net-next 23/33] ixgbe: add XDP frame
+ size to driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,41 +67,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
- Wei Yongjun <weiyongjun1@huawei.com>, netdev@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: steffen.klassert@secunet.com,
+ Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, zorik@amazon.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
+ =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>,
+ gtzalik@amazon.com, Saeed Mahameed <saeedm@mellanox.com>,
+ intel-wired-lan@lists.osuosl.org, David Ahern <dsahern@gmail.com>,
+ bpf@vger.kernel.org, Daniel Borkmann <borkmann@iogearbox.net>,
+ Alexei Starovoitov <alexei.starovoitov@gmail.com>, akiyano@amazon.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix to return a error code from the error handling case
-instead of 0, as done elsewhere in this function.
+On 4/22/20 6:09 PM, Jesper Dangaard Brouer wrote:
+> This driver uses different memory models depending on PAGE_SIZE at
+> compile time. For PAGE_SIZE 4K it uses page splitting, meaning for
+> normal MTU frame size is 2048 bytes (and headroom 192 bytes). For
+> larger MTUs the driver still use page splitting, by allocating
+> order-1 pages (8192 bytes) for RX frames. For PAGE_SIZE larger than
+> 4K, driver instead advance its rx_buffer->page_offset with the frame
+> size "truesize".
+> 
+> For XDP frame size calculations, this mean that in PAGE_SIZE larger
+> than 4K mode the frame_sz change on a per packet basis. For the page
+> split 4K PAGE_SIZE mode, xdp.frame_sz is more constant and can be
+> updated once outside the main NAPI loop.
+> 
+> The default setting in the driver uses build_skb(), which provides
+> the necessary headroom and tailroom for XDP-redirect in RX-frame
+> (in both modes).
+> 
+> There is one complication, which is legacy-rx mode (configurable via
+> ethtool priv-flags). There are zero headroom in this mode, which is a
+> requirement for XDP-redirect to work. The conversion to xdp_frame
+> (convert_to_xdp_frame) will detect this insufficient space, and
+> xdp_do_redirect() call will fail. This is deemed acceptable, as it
+> allows other XDP actions to still work in legacy-mode. In
+> legacy-mode + larger PAGE_SIZE due to lacking tailroom, we also
+> accept that xdp_adjust_tail shrink doesn't work.
+> 
+> Cc: intel-wired-lan@lists.osuosl.org
+> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+> Cc: Alexander Duyck <alexander.duyck@gmail.com>
+> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
 
-Fixes: 31ad4e4ee1e4 ("ice: Allocate flow profile")
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
----
- drivers/net/ethernet/intel/ice/ice_flex_pipe.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Alexander/Jeff, in case the ixgbe/i40e/ice changes look good to you,
+please ack.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-index 42bac3ec5526..e7a2671222d2 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-@@ -2962,8 +2962,10 @@ ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
- 
- 	/* add profile info */
- 	prof = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*prof), GFP_KERNEL);
--	if (!prof)
-+	if (!prof) {
-+		status = ICE_ERR_NO_MEMORY;
- 		goto err_ice_add_prof;
-+	}
- 
- 	prof->profile_cookie = id;
- 	prof->prof_id = prof_id;
-
-
-
+Thanks,
+Daniel
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
