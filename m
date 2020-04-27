@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71E8D1BCCF5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2020 22:06:14 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A0391BAF92
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2020 22:33:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2F5A786881;
-	Tue, 28 Apr 2020 20:06:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D0D8522624;
+	Mon, 27 Apr 2020 20:23:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rM-U9CLSylSb; Tue, 28 Apr 2020 20:06:12 +0000 (UTC)
+	with ESMTP id iTRZmch3bCHH; Mon, 27 Apr 2020 20:23:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1825C86652;
-	Tue, 28 Apr 2020 20:06:12 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2AD5F22270;
+	Mon, 27 Apr 2020 20:23:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7BAFA1BF2B6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 19:52:02 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 253F31BF29D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 20:23:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 74AB58756C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 19:52:02 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1CD5486940
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 20:23:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZDTvvlRSpDul for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Apr 2020 19:52:00 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from www62.your-server.de (www62.your-server.de [213.133.104.62])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7BE8C861B5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 19:52:00 +0000 (UTC)
-Received: from sslproxy01.your-server.de ([78.46.139.224])
- by www62.your-server.de with esmtpsa (TLSv1.2:DHE-RSA-AES256-GCM-SHA384:256)
- (Exim 4.89_1) (envelope-from <daniel@iogearbox.net>)
- id 1jT9nE-0000wD-CR; Mon, 27 Apr 2020 21:51:52 +0200
-Received: from [178.195.186.98] (helo=pc-9.home)
- by sslproxy01.your-server.de with esmtpsa (TLSv1.3:TLS_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <daniel@iogearbox.net>)
- id 1jT9nD-000VkW-Oy; Mon, 27 Apr 2020 21:51:51 +0200
-To: Jesper Dangaard Brouer <brouer@redhat.com>, sameehj@amazon.com
-References: <158757160439.1370371.13213378122947426220.stgit@firesoul>
- <158757175790.1370371.16071055208561239272.stgit@firesoul>
-From: Daniel Borkmann <daniel@iogearbox.net>
-Message-ID: <69e05693-c3df-8f48-7a08-03bf4d58cb07@iogearbox.net>
-Date: Mon, 27 Apr 2020 21:51:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ with ESMTP id tHCyi+AyS8sn for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Apr 2020 20:23:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 76E4C86AD9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2020 20:23:05 +0000 (UTC)
+IronPort-SDR: OOQkxqZmFg1abFAVBo/VLtb8rqYyhRYPcmm5jgSjh2z905UcEAGws3iFAZwuxEjbH9EWicG8Q+
+ j1Xw2FVpMtNA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2020 13:23:04 -0700
+IronPort-SDR: 7b9ez9T3xaVd0j1IvuLYF2Unpe70zb/IjTFzk09mi7rZF6DoEyCW8zOM5VXwrCB+AtPZXF/06e
+ RaOK36y5zqFw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,325,1583222400"; d="scan'208";a="275595690"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 27 Apr 2020 13:23:03 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jTAHO-000912-GW; Tue, 28 Apr 2020 04:23:02 +0800
+Date: Tue, 28 Apr 2020 04:22:24 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ea73f00.u/M2h/Vdkqxggflw%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <158757175790.1370371.16071055208561239272.stgit@firesoul>
-Content-Language: en-US
-X-Authenticated-Sender: daniel@iogearbox.net
-X-Virus-Scanned: Clear (ClamAV 0.102.2/25795/Mon Apr 27 14:00:10 2020)
-X-Mailman-Approved-At: Tue, 28 Apr 2020 20:06:08 +0000
-Subject: Re: [Intel-wired-lan] [PATCH net-next 23/33] ixgbe: add XDP frame
- size to driver
+Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
+ 88956f98ac94bf7143b404405b885474c855f618
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,57 +67,483 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: steffen.klassert@secunet.com,
- Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, zorik@amazon.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
- =?UTF-8?Q?Toke_H=c3=b8iland-J=c3=b8rgensen?= <toke@redhat.com>,
- gtzalik@amazon.com, Saeed Mahameed <saeedm@mellanox.com>,
- intel-wired-lan@lists.osuosl.org, David Ahern <dsahern@gmail.com>,
- bpf@vger.kernel.org, Daniel Borkmann <borkmann@iogearbox.net>,
- Alexei Starovoitov <alexei.starovoitov@gmail.com>, akiyano@amazon.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 4/22/20 6:09 PM, Jesper Dangaard Brouer wrote:
-> This driver uses different memory models depending on PAGE_SIZE at
-> compile time. For PAGE_SIZE 4K it uses page splitting, meaning for
-> normal MTU frame size is 2048 bytes (and headroom 192 bytes). For
-> larger MTUs the driver still use page splitting, by allocating
-> order-1 pages (8192 bytes) for RX frames. For PAGE_SIZE larger than
-> 4K, driver instead advance its rx_buffer->page_offset with the frame
-> size "truesize".
-> 
-> For XDP frame size calculations, this mean that in PAGE_SIZE larger
-> than 4K mode the frame_sz change on a per packet basis. For the page
-> split 4K PAGE_SIZE mode, xdp.frame_sz is more constant and can be
-> updated once outside the main NAPI loop.
-> 
-> The default setting in the driver uses build_skb(), which provides
-> the necessary headroom and tailroom for XDP-redirect in RX-frame
-> (in both modes).
-> 
-> There is one complication, which is legacy-rx mode (configurable via
-> ethtool priv-flags). There are zero headroom in this mode, which is a
-> requirement for XDP-redirect to work. The conversion to xdp_frame
-> (convert_to_xdp_frame) will detect this insufficient space, and
-> xdp_do_redirect() call will fail. This is deemed acceptable, as it
-> allows other XDP actions to still work in legacy-mode. In
-> legacy-mode + larger PAGE_SIZE due to lacking tailroom, we also
-> accept that xdp_adjust_tail shrink doesn't work.
-> 
-> Cc: intel-wired-lan@lists.osuosl.org
-> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> Cc: Alexander Duyck <alexander.duyck@gmail.com>
-> Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
+branch HEAD: 88956f98ac94bf7143b404405b885474c855f618  igc: Remove unneeded register
 
-Alexander/Jeff, in case the ixgbe/i40e/ice changes look good to you,
-please ack.
+elapsed time: 9713m
 
-Thanks,
-Daniel
+configs tested: 457
+configs skipped: 0
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm64                            allyesconfig
+arm                              allyesconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                               allnoconfig
+arm                              allmodconfig
+arm                           efm32_defconfig
+arm                         at91_dt_defconfig
+arm                        shmobile_defconfig
+arm64                               defconfig
+arm                          exynos_defconfig
+arm                        multi_v5_defconfig
+arm                           sunxi_defconfig
+arm                        multi_v7_defconfig
+sparc                            allyesconfig
+ia64                          tiger_defconfig
+arc                                 defconfig
+ia64                                defconfig
+ia64                              allnoconfig
+microblaze                      mmu_defconfig
+mips                malta_kvm_guest_defconfig
+ia64                        generic_defconfig
+riscv                            allmodconfig
+mips                              allnoconfig
+um                           x86_64_defconfig
+mips                      fuloong2e_defconfig
+parisc                            allnoconfig
+alpha                               defconfig
+xtensa                          iss_defconfig
+mips                       capcella_defconfig
+s390                          debug_defconfig
+csky                                defconfig
+s390                             alldefconfig
+i386                             alldefconfig
+powerpc                           allnoconfig
+sparc                               defconfig
+mips                            ar7_defconfig
+riscv                            allyesconfig
+parisc                generic-64bit_defconfig
+mips                          ath79_defconfig
+openrisc                    or1ksim_defconfig
+nios2                         3c120_defconfig
+ia64                         bigsur_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                             allyesconfig
+ia64                             alldefconfig
+nios2                         10m50_defconfig
+c6x                        evmc6678_defconfig
+c6x                              allyesconfig
+xtensa                       common_defconfig
+openrisc                 simple_smp_defconfig
+nds32                               defconfig
+nds32                             allnoconfig
+h8300                       h8s-sim_defconfig
+h8300                     edosk2674_defconfig
+m68k                       m5475evb_defconfig
+m68k                             allmodconfig
+h8300                    h8300h-sim_defconfig
+m68k                           sun3_defconfig
+m68k                          multi_defconfig
+arc                              allyesconfig
+powerpc                             defconfig
+powerpc                       ppc64_defconfig
+powerpc                          rhel-kconfig
+microblaze                    nommu_defconfig
+mips                      malta_kvm_defconfig
+mips                             allyesconfig
+mips                         64r6el_defconfig
+mips                           32r2_defconfig
+mips                             allmodconfig
+mips                         tb0287_defconfig
+mips                           ip32_defconfig
+mips                  decstation_64_defconfig
+mips                      loongson3_defconfig
+mips                        bcm63xx_defconfig
+parisc                generic-32bit_defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+parisc               randconfig-a001-20200422
+mips                 randconfig-a001-20200422
+alpha                randconfig-a001-20200422
+m68k                 randconfig-a001-20200422
+riscv                randconfig-a001-20200422
+nds32                randconfig-a001-20200422
+parisc               randconfig-a001-20200424
+alpha                randconfig-a001-20200424
+m68k                 randconfig-a001-20200424
+riscv                randconfig-a001-20200424
+nds32                randconfig-a001-20200424
+parisc               randconfig-a001-20200426
+mips                 randconfig-a001-20200426
+alpha                randconfig-a001-20200426
+m68k                 randconfig-a001-20200426
+nds32                randconfig-a001-20200426
+parisc               randconfig-a001-20200427
+alpha                randconfig-a001-20200427
+mips                 randconfig-a001-20200427
+m68k                 randconfig-a001-20200427
+riscv                randconfig-a001-20200427
+nds32                randconfig-a001-20200427
+parisc               randconfig-a001-20200421
+alpha                randconfig-a001-20200421
+mips                 randconfig-a001-20200421
+m68k                 randconfig-a001-20200421
+riscv                randconfig-a001-20200421
+nds32                randconfig-a001-20200421
+parisc               randconfig-a001-20200423
+alpha                randconfig-a001-20200423
+mips                 randconfig-a001-20200423
+riscv                randconfig-a001-20200423
+nds32                randconfig-a001-20200423
+nios2                randconfig-a001-20200421
+h8300                randconfig-a001-20200421
+c6x                  randconfig-a001-20200421
+sparc64              randconfig-a001-20200421
+microblaze           randconfig-a001-20200421
+nios2                randconfig-a001-20200424
+c6x                  randconfig-a001-20200424
+h8300                randconfig-a001-20200424
+sparc64              randconfig-a001-20200424
+microblaze           randconfig-a001-20200424
+nios2                randconfig-a001-20200422
+h8300                randconfig-a001-20200422
+c6x                  randconfig-a001-20200422
+sparc64              randconfig-a001-20200422
+microblaze           randconfig-a001-20200422
+nios2                randconfig-a001-20200427
+c6x                  randconfig-a001-20200427
+h8300                randconfig-a001-20200427
+sparc64              randconfig-a001-20200427
+microblaze           randconfig-a001-20200427
+nios2                randconfig-a001-20200428
+h8300                randconfig-a001-20200428
+c6x                  randconfig-a001-20200428
+sparc64              randconfig-a001-20200428
+microblaze           randconfig-a001-20200428
+nios2                randconfig-a001-20200425
+c6x                  randconfig-a001-20200425
+h8300                randconfig-a001-20200425
+sparc64              randconfig-a001-20200425
+microblaze           randconfig-a001-20200425
+sh                   randconfig-a001-20200421
+csky                 randconfig-a001-20200421
+s390                 randconfig-a001-20200421
+xtensa               randconfig-a001-20200421
+openrisc             randconfig-a001-20200421
+sh                   randconfig-a001-20200427
+csky                 randconfig-a001-20200427
+xtensa               randconfig-a001-20200427
+openrisc             randconfig-a001-20200427
+sh                   randconfig-a001-20200422
+csky                 randconfig-a001-20200422
+s390                 randconfig-a001-20200422
+xtensa               randconfig-a001-20200422
+openrisc             randconfig-a001-20200422
+sh                   randconfig-a001-20200424
+csky                 randconfig-a001-20200424
+s390                 randconfig-a001-20200424
+xtensa               randconfig-a001-20200424
+openrisc             randconfig-a001-20200424
+sh                   randconfig-a001-20200425
+csky                 randconfig-a001-20200425
+s390                 randconfig-a001-20200425
+xtensa               randconfig-a001-20200425
+openrisc             randconfig-a001-20200425
+x86_64               randconfig-a001-20200422
+i386                 randconfig-a003-20200422
+x86_64               randconfig-a003-20200422
+i386                 randconfig-a002-20200422
+i386                 randconfig-a001-20200422
+x86_64               randconfig-a002-20200422
+i386                 randconfig-a003-20200427
+i386                 randconfig-a001-20200427
+i386                 randconfig-a002-20200427
+x86_64               randconfig-a002-20200427
+i386                 randconfig-b002-20200422
+i386                 randconfig-b001-20200422
+x86_64               randconfig-b001-20200422
+i386                 randconfig-b003-20200422
+x86_64               randconfig-b003-20200422
+i386                 randconfig-b002-20200427
+x86_64               randconfig-b001-20200427
+i386                 randconfig-b001-20200427
+i386                 randconfig-b003-20200427
+x86_64               randconfig-b002-20200427
+x86_64               randconfig-b003-20200427
+i386                 randconfig-b002-20200421
+i386                 randconfig-b001-20200421
+x86_64               randconfig-b001-20200421
+i386                 randconfig-b003-20200421
+x86_64               randconfig-b002-20200421
+x86_64               randconfig-b003-20200421
+i386                 randconfig-b002-20200426
+x86_64               randconfig-b001-20200426
+i386                 randconfig-b001-20200426
+i386                 randconfig-b003-20200426
+x86_64               randconfig-b003-20200426
+i386                 randconfig-b002-20200425
+x86_64               randconfig-b001-20200425
+i386                 randconfig-b001-20200425
+i386                 randconfig-b003-20200425
+x86_64               randconfig-b002-20200425
+x86_64               randconfig-b003-20200425
+x86_64               randconfig-a001-20200424
+i386                 randconfig-a003-20200424
+x86_64               randconfig-a003-20200424
+i386                 randconfig-a002-20200424
+i386                 randconfig-a001-20200424
+x86_64               randconfig-a002-20200424
+i386                 randconfig-c001-20200421
+x86_64               randconfig-c002-20200421
+x86_64               randconfig-c001-20200421
+i386                 randconfig-c003-20200421
+x86_64               randconfig-c003-20200421
+i386                 randconfig-c002-20200427
+i386                 randconfig-c001-20200427
+x86_64               randconfig-c002-20200427
+x86_64               randconfig-c001-20200427
+i386                 randconfig-c003-20200427
+x86_64               randconfig-c003-20200427
+i386                 randconfig-c002-20200424
+i386                 randconfig-c001-20200424
+x86_64               randconfig-c001-20200424
+i386                 randconfig-c003-20200424
+x86_64               randconfig-c003-20200424
+i386                 randconfig-c002-20200425
+i386                 randconfig-c001-20200425
+x86_64               randconfig-c002-20200425
+x86_64               randconfig-c001-20200425
+i386                 randconfig-c003-20200425
+x86_64               randconfig-c003-20200425
+i386                 randconfig-c002-20200423
+i386                 randconfig-c001-20200423
+x86_64               randconfig-c002-20200423
+x86_64               randconfig-c001-20200423
+i386                 randconfig-c003-20200423
+x86_64               randconfig-c003-20200423
+i386                 randconfig-c002-20200421
+x86_64               randconfig-d001-20200421
+x86_64               randconfig-d002-20200421
+i386                 randconfig-d002-20200421
+i386                 randconfig-d001-20200421
+x86_64               randconfig-d003-20200421
+i386                 randconfig-d003-20200421
+x86_64               randconfig-d002-20200422
+i386                 randconfig-d002-20200422
+i386                 randconfig-d001-20200422
+i386                 randconfig-d003-20200422
+x86_64               randconfig-d001-20200423
+x86_64               randconfig-d002-20200423
+i386                 randconfig-d002-20200423
+i386                 randconfig-d001-20200423
+x86_64               randconfig-d003-20200423
+i386                 randconfig-d003-20200423
+x86_64               randconfig-d001-20200424
+i386                 randconfig-d002-20200424
+i386                 randconfig-d001-20200424
+x86_64               randconfig-d003-20200424
+i386                 randconfig-d003-20200424
+x86_64               randconfig-d002-20200426
+i386                 randconfig-d002-20200426
+i386                 randconfig-d001-20200426
+i386                 randconfig-d003-20200426
+x86_64               randconfig-d001-20200427
+x86_64               randconfig-d002-20200427
+i386                 randconfig-d002-20200427
+i386                 randconfig-d001-20200427
+x86_64               randconfig-d003-20200427
+i386                 randconfig-d003-20200427
+x86_64               randconfig-e002-20200421
+i386                 randconfig-e003-20200421
+x86_64               randconfig-e003-20200421
+i386                 randconfig-e002-20200421
+i386                 randconfig-e001-20200421
+x86_64               randconfig-e001-20200421
+i386                 randconfig-e003-20200427
+x86_64               randconfig-e002-20200427
+x86_64               randconfig-e003-20200427
+i386                 randconfig-e002-20200427
+i386                 randconfig-e001-20200427
+x86_64               randconfig-e001-20200427
+x86_64               randconfig-e002-20200423
+i386                 randconfig-e003-20200423
+x86_64               randconfig-e003-20200423
+i386                 randconfig-e002-20200423
+i386                 randconfig-e001-20200423
+x86_64               randconfig-e001-20200423
+i386                 randconfig-e003-20200425
+x86_64               randconfig-e002-20200425
+x86_64               randconfig-e003-20200425
+i386                 randconfig-e002-20200425
+i386                 randconfig-e001-20200425
+x86_64               randconfig-e001-20200425
+i386                 randconfig-e003-20200426
+x86_64               randconfig-e003-20200426
+i386                 randconfig-e002-20200426
+i386                 randconfig-e001-20200426
+x86_64               randconfig-e001-20200426
+i386                 randconfig-e003-20200422
+x86_64               randconfig-e003-20200422
+i386                 randconfig-e002-20200422
+i386                 randconfig-e001-20200422
+x86_64               randconfig-e001-20200422
+i386                 randconfig-f002-20200421
+i386                 randconfig-f003-20200421
+x86_64               randconfig-f003-20200421
+i386                 randconfig-f001-20200421
+x86_64               randconfig-f001-20200421
+x86_64               randconfig-f002-20200424
+i386                 randconfig-f002-20200424
+i386                 randconfig-f003-20200424
+x86_64               randconfig-f003-20200424
+i386                 randconfig-f001-20200424
+x86_64               randconfig-f001-20200424
+i386                 randconfig-f002-20200425
+i386                 randconfig-f003-20200425
+x86_64               randconfig-f003-20200425
+i386                 randconfig-f001-20200425
+x86_64               randconfig-f001-20200425
+x86_64               randconfig-f002-20200422
+i386                 randconfig-f002-20200422
+x86_64               randconfig-f003-20200422
+i386                 randconfig-f003-20200422
+i386                 randconfig-f001-20200422
+x86_64               randconfig-f001-20200422
+x86_64               randconfig-f002-20200426
+i386                 randconfig-f002-20200426
+x86_64               randconfig-f003-20200426
+i386                 randconfig-f003-20200426
+i386                 randconfig-f001-20200426
+x86_64               randconfig-f001-20200426
+i386                 randconfig-g003-20200422
+x86_64               randconfig-g001-20200422
+i386                 randconfig-g001-20200422
+x86_64               randconfig-g002-20200422
+i386                 randconfig-g002-20200422
+x86_64               randconfig-g003-20200422
+i386                 randconfig-g003-20200424
+i386                 randconfig-g001-20200424
+x86_64               randconfig-g001-20200424
+x86_64               randconfig-g002-20200424
+i386                 randconfig-g002-20200424
+x86_64               randconfig-g003-20200424
+i386                 randconfig-g003-20200427
+i386                 randconfig-g001-20200427
+x86_64               randconfig-g001-20200427
+i386                 randconfig-g002-20200427
+x86_64               randconfig-g003-20200427
+i386                 randconfig-g003-20200426
+i386                 randconfig-g001-20200426
+x86_64               randconfig-g001-20200426
+x86_64               randconfig-g002-20200426
+i386                 randconfig-g002-20200426
+x86_64               randconfig-g003-20200426
+i386                 randconfig-g003-20200423
+x86_64               randconfig-g001-20200423
+i386                 randconfig-g001-20200423
+i386                 randconfig-g002-20200423
+x86_64               randconfig-g003-20200423
+i386                 randconfig-h003-20200421
+x86_64               randconfig-h001-20200421
+x86_64               randconfig-h003-20200421
+i386                 randconfig-h002-20200421
+i386                 randconfig-h001-20200421
+i386                 randconfig-h003-20200424
+x86_64               randconfig-h001-20200424
+x86_64               randconfig-h003-20200424
+x86_64               randconfig-h002-20200424
+i386                 randconfig-h001-20200424
+i386                 randconfig-h002-20200424
+i386                 randconfig-h003-20200426
+x86_64               randconfig-h001-20200426
+x86_64               randconfig-h003-20200426
+x86_64               randconfig-h002-20200426
+i386                 randconfig-h001-20200426
+i386                 randconfig-h002-20200426
+i386                 randconfig-h003-20200422
+x86_64               randconfig-h001-20200422
+x86_64               randconfig-h003-20200422
+x86_64               randconfig-h002-20200422
+i386                 randconfig-h001-20200422
+i386                 randconfig-h002-20200422
+i386                 randconfig-h003-20200427
+x86_64               randconfig-h002-20200427
+i386                 randconfig-h002-20200427
+i386                 randconfig-h001-20200427
+i386                 randconfig-h003-20200425
+x86_64               randconfig-h001-20200425
+x86_64               randconfig-h003-20200425
+i386                 randconfig-h002-20200425
+i386                 randconfig-h001-20200425
+i386                 randconfig-h003-20200423
+x86_64               randconfig-h002-20200423
+i386                 randconfig-h002-20200423
+i386                 randconfig-h001-20200423
+sparc                randconfig-a001-20200423
+ia64                 randconfig-a001-20200423
+arm                  randconfig-a001-20200423
+arm64                randconfig-a001-20200423
+arc                  randconfig-a001-20200423
+sparc                randconfig-a001-20200425
+ia64                 randconfig-a001-20200425
+powerpc              randconfig-a001-20200425
+arm                  randconfig-a001-20200425
+arc                  randconfig-a001-20200425
+sparc                randconfig-a001-20200422
+ia64                 randconfig-a001-20200422
+powerpc              randconfig-a001-20200422
+arm                  randconfig-a001-20200422
+arm64                randconfig-a001-20200422
+arc                  randconfig-a001-20200422
+sparc                randconfig-a001-20200421
+ia64                 randconfig-a001-20200421
+powerpc              randconfig-a001-20200421
+arm                  randconfig-a001-20200421
+arc                  randconfig-a001-20200421
+sparc                randconfig-a001-20200427
+ia64                 randconfig-a001-20200427
+arm                  randconfig-a001-20200427
+arm64                randconfig-a001-20200427
+arc                  randconfig-a001-20200427
+sparc                randconfig-a001-20200424
+ia64                 randconfig-a001-20200424
+powerpc              randconfig-a001-20200424
+arm64                randconfig-a001-20200424
+arc                  randconfig-a001-20200424
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+s390                       zfcpdump_defconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sh                          rsk7269_defconfig
+sh                               allmodconfig
+sh                            titan_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                                allnoconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                             i386_defconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
