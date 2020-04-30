@@ -2,74 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23F861C07E5
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2020 22:26:31 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7907F1C0668
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2020 21:30:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9C078859D6;
-	Thu, 30 Apr 2020 20:26:29 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F37C586E41;
+	Thu, 30 Apr 2020 19:30:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FPINGs7uuOty; Thu, 30 Apr 2020 20:26:28 +0000 (UTC)
+	with ESMTP id WH7x0_T1VeGt; Thu, 30 Apr 2020 19:30:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8F14B8614E;
-	Thu, 30 Apr 2020 20:26:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E8F2E1BF48B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2020 11:22:53 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E340B86E51;
+	Thu, 30 Apr 2020 19:30:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1623E1BF3ED
+ for <intel-wired-lan@osuosl.org>; Thu, 30 Apr 2020 19:30:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E3C8C86BF9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2020 11:22:53 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id F145C204AD
+ for <intel-wired-lan@osuosl.org>; Thu, 30 Apr 2020 19:30:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SpK1CGH5Ibct for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Apr 2020 11:22:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1F72687E45
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2020 11:22:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1588245772;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2PYospgl4V46SO7jrDTJxA6eWa0oPr50V1+Q+637rBY=;
- b=bdkY/iqGtUbkVzA3KSAps3oxQN/NcxeJMCTH1F8I0XpjsZSni3SZLHS5K762JG952TYshm
- wIzn5rYbRXFR75VfCa6L25UguS/LCiAxIhwDLsHy4uvIGRNNw1AK4m0jgGuxwNsyBKnOl6
- 8DBTm2rRzya1kEBwmQ7Kg6qGVcgt4D4=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-150-mmdLmjsLOCS6ACBROQq3_A-1; Thu, 30 Apr 2020 07:22:48 -0400
-X-MC-Unique: mmdLmjsLOCS6ACBROQq3_A-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8FAD88005B7;
- Thu, 30 Apr 2020 11:22:45 +0000 (UTC)
-Received: from firesoul.localdomain (unknown [10.40.208.4])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BB48C66070;
- Thu, 30 Apr 2020 11:22:39 +0000 (UTC)
-Received: from [192.168.42.3] (localhost [IPv6:::1])
- by firesoul.localdomain (Postfix) with ESMTP id B948B324DB2C0;
- Thu, 30 Apr 2020 13:22:38 +0200 (CEST)
-From: Jesper Dangaard Brouer <brouer@redhat.com>
-To: sameehj@amazon.com
-Date: Thu, 30 Apr 2020 13:22:38 +0200
-Message-ID: <158824575868.2172139.9112642256444167939.stgit@firesoul>
-In-Reply-To: <158824557985.2172139.4173570969543904434.stgit@firesoul>
-References: <158824557985.2172139.4173570969543904434.stgit@firesoul>
-User-Agent: StGit/0.19
+ with ESMTP id przfxxRtfN2s for <intel-wired-lan@osuosl.org>;
+ Thu, 30 Apr 2020 19:30:00 +0000 (UTC)
+X-Greylist: delayed 00:07:44 by SQLgrey-1.7.6
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com
+ [209.85.128.45])
+ by silver.osuosl.org (Postfix) with ESMTPS id A9CE720465
+ for <intel-wired-lan@osuosl.org>; Thu, 30 Apr 2020 19:29:59 +0000 (UTC)
+Received: by mail-wm1-f45.google.com with SMTP id u16so3433000wmc.5
+ for <intel-wired-lan@osuosl.org>; Thu, 30 Apr 2020 12:29:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nextdroid-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=6M2qLRbXlAwcbvaenK0eZBBPcDNHoWrhwEhohnmZ1NM=;
+ b=Yu2Wao8mdYKNwxJYFHJVIFvZA6oBp21HyZSDTyNumlmlXGxdqce6pBwMF6B6ee+4iM
+ Iv118EZvv5u0RUMSALWDGKXTFnX8Xt6RNab94L+M4ora4Ie2orPez9B8oqKmRhdrmKeK
+ 25rZxUNegIbMud1PYIb1fJqGc9+HOeqtFiOGGny7yCRNZCIjpNiuFSJ+W4ye1gQsmqXD
+ zcLyIBAVzLQQXye952G+Q1HHuMHbkYdyJiBioFTLYUPcmccSBe0P+Jo4RQkEcN6HeRCa
+ Iz7NbfWhB88yvKIWpABO5yd712nqrRpJJIxNVheSe/++BGQ/jp5i1D6VCXa8P4jlRto6
+ WePg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=6M2qLRbXlAwcbvaenK0eZBBPcDNHoWrhwEhohnmZ1NM=;
+ b=QiDXCNTyVVHvT0zOTnjueO0Mwt/NJpe8v+g7cL8X9EN+SQxVWzBwk72abksnGdgMec
+ bgZbr0N+INyvAqW/0ET/uq0GXXdXUWsjQYkclat0TiScdiNOEKqHCjm8N3C9kRtnVbn3
+ vfuwkTGiYl3okCEQWC+Gi8QsGOZYQ4IrWoKTMUbrSXrxF+hvpV4ovVJ/IkOc7LDxF5T8
+ cat35tuu3IYnwD8uzBmyE1peQBWv++7qs4yiK1++qI+nKFqeLg9/N2TZly78ITo4Fr52
+ Vj5vxIr4/qqYfryU+jTOCyN9Db3n/vwovUkzoUagjK1DPhUYS8fJhxNGEFI3vEQ9rYLF
+ A8GQ==
+X-Gm-Message-State: AGi0PuYEDpG8xnQQdgwlNqILhTsiB3J3ojC3bR898ZBjHR/bJfLLWcFx
+ HO5uMnxIWANQTOU9i+qH+oYlQLNH2Wuc3aLftnzBqzB9oyw=
+X-Google-Smtp-Source: APiQypL8fYitch5u4AH9MRNU5SzPCheYeOmwrHAw/B1dprIOHDmImrZ0nOgxWbPFwPV7dcTymIP0TO/oH0TeeiUs7+4=
+X-Received: by 2002:a05:600c:114d:: with SMTP id
+ z13mr146976wmz.54.1588274532995; 
+ Thu, 30 Apr 2020 12:22:12 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mailman-Approved-At: Thu, 30 Apr 2020 20:26:25 +0000
-Subject: [Intel-wired-lan] [PATCH net-next v2 27/33] xdp: for Intel AF_XDP
- drivers add XDP frame_sz
+From: Dan Williams <dwilliams@nextdroid.com>
+Date: Thu, 30 Apr 2020 15:22:02 -0400
+Message-ID: <CAGrNP8nfqAZnEoOBsrxrsvszw7T5pdKHG4mt6fVcKB6iigV_BA@mail.gmail.com>
+To: intel-wired-lan@osuosl.org
+Subject: [Intel-wired-lan] Does the 'igb` kernel module support setting
+ 2-Tuple filters (aka `--config-ntuple`) on a i210 NIC?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,94 +79,347 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: steffen.klassert@secunet.com,
- Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- Daniel Borkmann <borkmann@iogearbox.net>, zorik@amazon.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, David Ahern <dsahern@gmail.com>,
- netdev@vger.kernel.org,
- =?utf-8?q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
- gtzalik@amazon.com, Saeed Mahameed <saeedm@mellanox.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- intel-wired-lan@lists.osuosl.org, Jesper Dangaard Brouer <brouer@redhat.com>,
- bpf@vger.kernel.org, =?utf-8?b?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- Alexei Starovoitov <alexei.starovoitov@gmail.com>, akiyano@amazon.com,
- Magnus Karlsson <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Daniel Gandhi <dgandhi@nextdroid.com>, Nick Rizzo <nrizzo@nextdroid.com>
+Content-Type: multipart/mixed; boundary="===============1587019501268576803=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SW50ZWwgZHJpdmVycyBpbXBsZW1lbnQgbmF0aXZlIEFGX1hEUCB6ZXJvY29weSBpbiBzZXBhcmF0
-ZSBDLWZpbGVzLAp0aGF0IGhhdmUgaXRzIG93biBpbnZvY2F0aW9uIG9mIGJwZl9wcm9nX3J1bl94
-ZHAoKS4gVGhlIHNldHVwIG9mCnhkcF9idWZmIGlzIGFsc28gaGFuZGxlZCBpbiBzZXBhcmF0ZWx5
-IGZyb20gbm9ybWFsIGNvZGUgcGF0aC4KClRoaXMgcGF0Y2ggdXBkYXRlIFhEUCBmcmFtZV9zeiBm
-b3IgQUZfWERQIHplcm9jb3B5IGRyaXZlcnMgaTQwZSwgaWNlCmFuZCBpeGdiZSwgYXMgdGhlIGNv
-ZGUgY2hhbmdlcyBuZWVkZWQgYXJlIHZlcnkgc2ltaWxhci4gIEludHJvZHVjZSBhCmhlbHBlciBm
-dW5jdGlvbiB4c2tfdW1lbV94ZHBfZnJhbWVfc3ooKSBmb3IgY2FsY3VsYXRpbmcgZnJhbWUgc2l6
-ZS4KCkNjOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZwpDYzogQmrDtnJuIFTDtnBl
-bCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgpDYzogTWFnbnVzIEthcmxzc29uIDxtYWdudXMua2Fy
-bHNzb25AaW50ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBKZXNwZXIgRGFuZ2FhcmQgQnJvdWVyIDxi
-cm91ZXJAcmVkaGF0LmNvbT4KQWNrZWQtYnk6IEJqw7ZybiBUw7ZwZWwgPGJqb3JuLnRvcGVsQGlu
-dGVsLmNvbT4KLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMg
-ICB8ICAgIDIgKysKIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfeHNrLmMgICAg
-IHwgICAgMiArKwogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMg
-fCAgICAyICsrCiBpbmNsdWRlL25ldC94ZHBfc29jay5oICAgICAgICAgICAgICAgICAgICAgICB8
-ICAgMTEgKysrKysrKysrKysKIDQgZmlsZXMgY2hhbmdlZCwgMTcgaW5zZXJ0aW9ucygrKQoKZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyBiL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwppbmRleCAwYjdkMjkxOTJi
-MmMuLjJiOTE4NGFlYWQ1ZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aTQwZS9pNDBlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
-ZV94c2suYwpAQCAtNTMxLDEyICs1MzEsMTQgQEAgaW50IGk0MGVfY2xlYW5fcnhfaXJxX3pjKHN0
-cnVjdCBpNDBlX3JpbmcgKnJ4X3JpbmcsIGludCBidWRnZXQpCiB7CiAJdW5zaWduZWQgaW50IHRv
-dGFsX3J4X2J5dGVzID0gMCwgdG90YWxfcnhfcGFja2V0cyA9IDA7CiAJdTE2IGNsZWFuZWRfY291
-bnQgPSBJNDBFX0RFU0NfVU5VU0VEKHJ4X3JpbmcpOworCXN0cnVjdCB4ZHBfdW1lbSAqdW1lbSA9
-IHJ4X3JpbmctPnhza191bWVtOwogCXVuc2lnbmVkIGludCB4ZHBfcmVzLCB4ZHBfeG1pdCA9IDA7
-CiAJYm9vbCBmYWlsdXJlID0gZmFsc2U7CiAJc3RydWN0IHNrX2J1ZmYgKnNrYjsKIAlzdHJ1Y3Qg
-eGRwX2J1ZmYgeGRwOwogCiAJeGRwLnJ4cSA9ICZyeF9yaW5nLT54ZHBfcnhxOworCXhkcC5mcmFt
-ZV9zeiA9IHhza191bWVtX3hkcF9mcmFtZV9zeih1bWVtKTsKIAogCXdoaWxlIChsaWtlbHkodG90
-YWxfcnhfcGFja2V0cyA8ICh1bnNpZ25lZCBpbnQpYnVkZ2V0KSkgewogCQlzdHJ1Y3QgaTQwZV9y
-eF9idWZmZXIgKmJpOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
-L2ljZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfeHNrLmMKaW5k
-ZXggODI3OWRiMTVlODcwLi4yM2U1NTE1ZDQ1MjcgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2ljZS9pY2VfeHNrLmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaWNlL2ljZV94c2suYwpAQCAtODQwLDExICs4NDAsMTMgQEAgaW50IGljZV9jbGVhbl9yeF9p
-cnFfemMoc3RydWN0IGljZV9yaW5nICpyeF9yaW5nLCBpbnQgYnVkZ2V0KQogewogCXVuc2lnbmVk
-IGludCB0b3RhbF9yeF9ieXRlcyA9IDAsIHRvdGFsX3J4X3BhY2tldHMgPSAwOwogCXUxNiBjbGVh
-bmVkX2NvdW50ID0gSUNFX0RFU0NfVU5VU0VEKHJ4X3JpbmcpOworCXN0cnVjdCB4ZHBfdW1lbSAq
-dW1lbSA9IHJ4X3JpbmctPnhza191bWVtOwogCXVuc2lnbmVkIGludCB4ZHBfeG1pdCA9IDA7CiAJ
-Ym9vbCBmYWlsdXJlID0gZmFsc2U7CiAJc3RydWN0IHhkcF9idWZmIHhkcDsKIAogCXhkcC5yeHEg
-PSAmcnhfcmluZy0+eGRwX3J4cTsKKwl4ZHAuZnJhbWVfc3ogPSB4c2tfdW1lbV94ZHBfZnJhbWVf
-c3oodW1lbSk7CiAKIAl3aGlsZSAobGlrZWx5KHRvdGFsX3J4X3BhY2tldHMgPCAodW5zaWduZWQg
-aW50KWJ1ZGdldCkpIHsKIAkJdW5pb24gaWNlXzMyYl9yeF9mbGV4X2Rlc2MgKnJ4X2Rlc2M7CmRp
-ZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYyBi
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jCmluZGV4IDc0YjU0
-MGViYjNkYy4uYTY1NmVlOWExZmFlIDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9peGdiZS9peGdiZV94c2suYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-eGdiZS9peGdiZV94c2suYwpAQCAtNDMxLDEyICs0MzEsMTQgQEAgaW50IGl4Z2JlX2NsZWFuX3J4
-X2lycV96YyhzdHJ1Y3QgaXhnYmVfcV92ZWN0b3IgKnFfdmVjdG9yLAogCXVuc2lnbmVkIGludCB0
-b3RhbF9yeF9ieXRlcyA9IDAsIHRvdGFsX3J4X3BhY2tldHMgPSAwOwogCXN0cnVjdCBpeGdiZV9h
-ZGFwdGVyICphZGFwdGVyID0gcV92ZWN0b3ItPmFkYXB0ZXI7CiAJdTE2IGNsZWFuZWRfY291bnQg
-PSBpeGdiZV9kZXNjX3VudXNlZChyeF9yaW5nKTsKKwlzdHJ1Y3QgeGRwX3VtZW0gKnVtZW0gPSBy
-eF9yaW5nLT54c2tfdW1lbTsKIAl1bnNpZ25lZCBpbnQgeGRwX3JlcywgeGRwX3htaXQgPSAwOwog
-CWJvb2wgZmFpbHVyZSA9IGZhbHNlOwogCXN0cnVjdCBza19idWZmICpza2I7CiAJc3RydWN0IHhk
-cF9idWZmIHhkcDsKIAogCXhkcC5yeHEgPSAmcnhfcmluZy0+eGRwX3J4cTsKKwl4ZHAuZnJhbWVf
-c3ogPSB4c2tfdW1lbV94ZHBfZnJhbWVfc3oodW1lbSk7CiAKIAl3aGlsZSAobGlrZWx5KHRvdGFs
-X3J4X3BhY2tldHMgPCBidWRnZXQpKSB7CiAJCXVuaW9uIGl4Z2JlX2Fkdl9yeF9kZXNjICpyeF9k
-ZXNjOwpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9uZXQveGRwX3NvY2suaCBiL2luY2x1ZGUvbmV0L3hk
-cF9zb2NrLmgKaW5kZXggZTg2ZWM0OGVmNjI3Li4xY2QxZWMzY2VhOTcgMTAwNjQ0Ci0tLSBhL2lu
-Y2x1ZGUvbmV0L3hkcF9zb2NrLmgKKysrIGIvaW5jbHVkZS9uZXQveGRwX3NvY2suaApAQCAtMjM3
-LDYgKzIzNywxMiBAQCBzdGF0aWMgaW5saW5lIHU2NCB4c2tfdW1lbV9hZGp1c3Rfb2Zmc2V0KHN0
-cnVjdCB4ZHBfdW1lbSAqdW1lbSwgdTY0IGFkZHJlc3MsCiAJZWxzZQogCQlyZXR1cm4gYWRkcmVz
-cyArIG9mZnNldDsKIH0KKworc3RhdGljIGlubGluZSB1MzIgeHNrX3VtZW1feGRwX2ZyYW1lX3N6
-KHN0cnVjdCB4ZHBfdW1lbSAqdW1lbSkKK3sKKwlyZXR1cm4gdW1lbS0+Y2h1bmtfc2l6ZV9ub2hy
-ICsgdW1lbS0+aGVhZHJvb207Cit9CisKICNlbHNlCiBzdGF0aWMgaW5saW5lIGludCB4c2tfZ2Vu
-ZXJpY19yY3Yoc3RydWN0IHhkcF9zb2NrICp4cywgc3RydWN0IHhkcF9idWZmICp4ZHApCiB7CkBA
-IC0zNjcsNiArMzczLDExIEBAIHN0YXRpYyBpbmxpbmUgdTY0IHhza191bWVtX2FkanVzdF9vZmZz
-ZXQoc3RydWN0IHhkcF91bWVtICp1bWVtLCB1NjQgaGFuZGxlLAogCXJldHVybiAwOwogfQogCitz
-dGF0aWMgaW5saW5lIHUzMiB4c2tfdW1lbV94ZHBfZnJhbWVfc3ooc3RydWN0IHhkcF91bWVtICp1
-bWVtKQoreworCXJldHVybiAwOworfQorCiBzdGF0aWMgaW5saW5lIGludCBfX3hza19tYXBfcmVk
-aXJlY3Qoc3RydWN0IHhkcF9zb2NrICp4cywgc3RydWN0IHhkcF9idWZmICp4ZHApCiB7CiAJcmV0
-dXJuIC1FT1BOT1RTVVBQOwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9z
-dW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwt
-d2lyZWQtbGFuCg==
+--===============1587019501268576803==
+Content-Type: multipart/alternative; boundary="0000000000005866b205a486fbdb"
+
+--0000000000005866b205a486fbdb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Does the 'igb` kernel module support setting "2-Tuple filters" (aka
+`--config-ntuple`, aka RFS) on a I-210IC NIC?
+- Is this the appropriate mailing list?
+- If not, which module *should* we be using instead?
+- If so, how do we enable it in the 'igb' driver?
+
+
+*.1. Context: *
+Hey, all, we're running into a very perplexing configuration issue, while
+trying to tune our 'igb' driver, and the documentation out there is
+sparse.  All the examples we've found come up dry.  (either by throwing
+errors with our setup, or emitting nothing but opaque error messages:
+"Operation not supported"  "invalid argument")   Hopefully, someone on the
+list can point us in the right direction.
+
+We have a computer logging a high rate of ethernet packets ( 25k
+packets/sec ~70 Mb/sec);   But we're having trouble convincing the hardware
+to receive all of these packets, at a sustained rate -- specifically we're
+dropping packets while processing through the kernel layers.    We're
+currently attempting to optimize the network stack,  but we're having
+trouble setting the driver parameters... which is what this message is all
+about.
+
+*.2. Platform Summary:*
+Hardware:
+Advantech 3500
+<https://www.advantech.com/products/1-2jkd2d/ark-3500/mod_adb8f9a9-4b1b-4cf=
+5-84ba-9e135c099c43>
+CPU ($ lscpu):
+Architecture:         x86_64
+CPU family:          6
+Model:                  58
+Model name:        Intel(R) Core(TM) i7-3610QE CPU @ 2.30GHz
+NIC ($ lspci -vs 02:00.0)
+02:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network
+Connection (rev 03)
+Flags: bus master, fast devsel, latency 0, IRQ 18
+OS ($ lsb_release -a)
+Ubuntu 16.04.6 LTS
+Kernel (`uname -r`):
+4.15.0-88-lowlatency
+Kernel Module ($ modinfo igb)
+filename:
+/lib/modules/4.15.0-88-lowlatency/kernel/drivers/net/ethernet/intel/igb/igb=
+.ko
+version:        5.4.0-k
+license:        GPL
+Ethtool Version ($ ethtool --version)
+ethtool version 4.5
+
+*.3. What have we tried so far:*
+.3.a.  The NIC supports what we want to do:
+The data sheet,
+<https://www.google.com/url?sa=3Dt&rct=3Dj&q=3D&esrc=3Ds&source=3Dweb&cd=3D=
+1&cad=3Drja&uact=3D8&ved=3D2ahUKEwj_nona25DpAhWPoHIEHfvYBWcQFjAAegQIARAB&ur=
+l=3Dhttps%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fembedded%2Fprod=
+ucts%2Fnetworking%2Fi210-ethernet-controller-datasheet.html&usg=3DAOvVaw1N7=
+hqg0JJAaqXsomLAUhfB>
+in section 7.1.2.4 "2-Tuple Filters", says:
+
+> The 2-tuple filters are configured via the TTQF (See Section 8.11.3), IMI=
+R
+> (See Section 8.11.1) and
+> IMIR_EXT (See Section 8.11.2) registers as follows (per filter):
+>
+
+Am I correct in assuming these are the mechanisms the 'igb' driver is
+interfacing with?
+
+.3.b.   What is the flow table currenttly?
+
+> # ethtool --show-rxfh enp2s0
+> RX flow hash indirection table for enp2s0 with 4 RX ring(s):
+>     0:      0     0     0     0     0     0     0     0
+>     8:      0     0     0     0     0     0     0     0
+>    16:      0     0     0     0     0     0     0     0
+>    24:      0     0     0     0     0     0     0     0
+>    32:      0     0     0     0     0     0     0     0
+>    40:      0     0     1     1     1     1     1     1
+>    48:      1     1     1     1     1     1     1     1
+>    56:      1     1     1     1     1     1     1     1
+>    64:      1     1     1     1     1     1     1     1
+>    72:      1     1     1     1     1     1     1     1
+>    80:      1     1     1     1     1     2     2     2
+>    88:      2     2     2     2     2     2     2     2
+>    96:      2     2     2     2     2     2     2     2
+>   104:      2     2     2     2     2     2     2     2
+>   112:      2     2     2     2     2     2     2     2
+>   120:      2     2     2     2     2     2     2     2
+> RSS hash key:
+> Operation not supported
+>
+
+"Operation not supported" -- does this mean the NIC has RSS routing
+hard-coded? And we cannot change the hash-function?
+Or is RSS just hard-coded?
+
+
+.3.c. Current "Hash flow" settings:
+
+> # ethtool -n  enp2s0 rx-flow-hash udp4
+> UDP over IPV4 flows use these fields for computing Hash flow key:
+> IP SA
+> IP DA
+> L4 bytes 0 & 1 [TCP/UDP src port]
+> L4 bytes 2 & 3 [TCP/UDP dst port]
+>
+
+
+> # sudo ethtool -n enp2s0
+> 4 RX rings available
+> Total 0 rules
+>
+
+
+.3.d.  Enable ntuple features:
+
+> # ethtool --show-features enp2s0 | grep ntuple
+> ntuple-filters: on
+>
+
+.3.e. Add ntuple rule: Commands Tried:
+
+> # ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.43 dst-ip 0.0.0.0
+> src-port 555 dst-port 2368 action -1
+> rmgr: Cannot insert RX class rule: Invalid argument
+> # ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.43 action 1
+> rmgr: Cannot insert RX class rule: Invalid argument
+>
+# ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1
+> rmgr: Cannot insert RX class rule: Invalid argument
+> # ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1 loc 4
+> rmgr: Cannot insert RX class rule: Invalid argument
+>
+
+.3.f. More Interface info:
+
+> # ethtool -i enp2s0
+> driver: igb
+> version: 5.4.0-k
+> firmware-version: 3.16, 0x800004ad
+> expansion-rom-version:
+> bus-info: 0000:02:00.0
+> supports-statistics: yes
+> supports-test: yes
+> supports-eeprom-access: yes
+> supports-register-dump: yes
+> supports-priv-flags: yes
+>
+
+# ethtool -t enp2s0
+> The test result is PASS
+> The test extra info:
+> Register test  (offline) 0
+> Eeprom test    (offline) 0
+> Interrupt test (offline) 0
+> Loopback test  (offline) 0
+> Link test   (on/offline) 0
+>
+
+
+
+
+
+
+Daniel Williams  |  Software Engineer
+dwilliams@nextdroid.com
+
+--0000000000005866b205a486fbdb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Does the &#39;igb` kernel module support setting &quo=
+t;2-Tuple filters&quot; (aka `--config-ntuple`, aka RFS) on a I-210IC NIC?<=
+/div><div>- Is this the appropriate mailing list?</div><div>- If not, which=
+ module *should* we be using instead?<br></div><div>- If so, how do we enab=
+le it in the &#39;igb&#39; driver?<br></div><div><br></div><div><div><u>.1.=
+ Context: <br></u></div><div>Hey, all, we&#39;re running into a very perple=
+xing configuration issue, while trying to tune our &#39;igb&#39; driver, an=
+d the documentation out there is sparse.=C2=A0 All the examples we&#39;ve f=
+ound come up dry.=C2=A0 (either by throwing errors with our setup, or emitt=
+ing nothing but opaque error messages: &quot;Operation not supported&quot;=
+=C2=A0 &quot;invalid argument&quot;)=C2=A0=C2=A0 Hopefully, someone on the =
+list can point us in the right direction.<br></div><div><br></div><div>We h=
+ave a computer logging a high rate of ethernet packets ( 25k packets/sec ~7=
+0 Mb/sec);=C2=A0=C2=A0 But we&#39;re having trouble convincing the hardware=
+ to receive all of these packets, at a sustained rate -- specifically we&#3=
+9;re dropping packets while processing through the kernel layers.=C2=A0=C2=
+=A0=C2=A0 We&#39;re currently attempting to  optimize the network stack,=C2=
+=A0 but we&#39;re having trouble setting the driver parameters... which is =
+what this message is all about.<br></div></div><div><br></div><div><u>.2. P=
+latform Summary:</u><br></div><div>Hardware: <br></div><div style=3D"margin=
+-left:40px"><a href=3D"https://www.advantech.com/products/1-2jkd2d/ark-3500=
+/mod_adb8f9a9-4b1b-4cf5-84ba-9e135c099c43">Advantech 3500</a></div>CPU ($ l=
+scpu):<br><div><div style=3D"margin-left:40px">Architecture: =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 x86_64<br>CPU family: =C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 6</di=
+v><div style=3D"margin-left:40px">Model:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 58<br>Model name: =C2=A0 =C2=A0 =C2=A0=C2=A0 In=
+tel(R) Core(TM) i7-3610QE CPU @ 2.30GHz</div>NIC ($ lspci -vs 02:00.0)</div=
+><div><div style=3D"margin-left:40px">02:00.0 Ethernet controller: Intel Co=
+rporation I210 Gigabit Network Connection (rev 03)<br>	Flags: bus master, f=
+ast devsel, latency 0, IRQ 18<br></div></div><div><div><div>OS ($ lsb_relea=
+se -a)</div><div style=3D"margin-left:40px"> Ubuntu 16.04.6 LTS</div><div>K=
+ernel (`uname -r`):</div><div style=3D"margin-left:40px">4.15.0-88-lowlaten=
+cy</div><div>Kernel Module ($ modinfo igb)<br><div style=3D"margin-left:40p=
+x">filename: =C2=A0 =C2=A0 =C2=A0 /lib/modules/4.15.0-88-lowlatency/kernel/=
+drivers/net/ethernet/intel/igb/igb.ko<br>version: =C2=A0 =C2=A0 =C2=A0 =C2=
+=A05.4.0-k<br>license: =C2=A0 =C2=A0 =C2=A0 =C2=A0GPL</div>Ethtool Version =
+($ ethtool --version)<br><div style=3D"margin-left:40px">ethtool version 4.=
+5<br></div></div><div><div style=3D"margin-left:40px"><br></div></div><div>=
+</div><div><u>.3. What have we tried so far:</u></div><div>.3.a.=C2=A0 The =
+NIC supports what we want to do:=C2=A0 <br></div><div><a href=3D"https://ww=
+w.google.com/url?sa=3Dt&amp;rct=3Dj&amp;q=3D&amp;esrc=3Ds&amp;source=3Dweb&=
+amp;cd=3D1&amp;cad=3Drja&amp;uact=3D8&amp;ved=3D2ahUKEwj_nona25DpAhWPoHIEHf=
+vYBWcQFjAAegQIARAB&amp;url=3Dhttps%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2F=
+us%2Fen%2Fembedded%2Fproducts%2Fnetworking%2Fi210-ethernet-controller-datas=
+heet.html&amp;usg=3DAOvVaw1N7hqg0JJAaqXsomLAUhfB">The data sheet,</a> in se=
+ction 7.1.2.4 &quot;2-Tuple Filters&quot;, says: <br></div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex"><div>The 2-tuple filters are configured v=
+ia the TTQF (See Section 8.11.3), IMIR (See Section 8.11.1) and<br>IMIR_EXT=
+ (See Section 8.11.2) registers as follows (per filter):</div></blockquote>=
+<div><br></div><div>Am I correct in assuming these are the mechanisms the &=
+#39;igb&#39; driver is interfacing with? <br></div><div><br></div><div>.3.b=
+. =C2=A0 What is the flow table currenttly? <br></div><blockquote class=3D"=
+gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
+4,204,204);padding-left:1ex"><div># ethtool --show-rxfh enp2s0<br>RX flow h=
+ash indirection table for enp2s0 with 4 RX ring(s):<br>=C2=A0 =C2=A0 0: =C2=
+=A0 =C2=A0 =C2=A00 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =
+=C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0<br>=C2=A0 =C2=A0 8=
+: =C2=A0 =C2=A0 =C2=A00 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=
+=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0<br>=C2=A0 =C2=
+=A016: =C2=A0 =C2=A0 =C2=A00 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 =
+0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0<br>=C2=A0=
+ =C2=A024: =C2=A0 =C2=A0 =C2=A00 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=
+=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0<br>=
+=C2=A0 =C2=A032: =C2=A0 =C2=A0 =C2=A00 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=
+=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 =
+0<br>=C2=A0 =C2=A040: =C2=A0 =C2=A0 =C2=A00 =C2=A0 =C2=A0 0 =C2=A0 =C2=A0 1=
+ =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=
+=A0 1<br>=C2=A0 =C2=A048: =C2=A0 =C2=A0 =C2=A01 =C2=A0 =C2=A0 1 =C2=A0 =C2=
+=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=
+=A0 =C2=A0 1<br>=C2=A0 =C2=A056: =C2=A0 =C2=A0 =C2=A01 =C2=A0 =C2=A0 1 =C2=
+=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 =
+1 =C2=A0 =C2=A0 1<br>=C2=A0 =C2=A064: =C2=A0 =C2=A0 =C2=A01 =C2=A0 =C2=A0 1=
+ =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=
+=A0 1 =C2=A0 =C2=A0 1<br>=C2=A0 =C2=A072: =C2=A0 =C2=A0 =C2=A01 =C2=A0 =C2=
+=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=
+=A0 =C2=A0 1 =C2=A0 =C2=A0 1<br>=C2=A0 =C2=A080: =C2=A0 =C2=A0 =C2=A01 =C2=
+=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 1 =C2=A0 =C2=A0 =
+2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2<br>=C2=A0 =C2=A088: =C2=A0 =C2=A0 =C2=A02=
+ =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=
+=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2<br>=C2=A0 =C2=A096: =C2=A0 =C2=A0 =C2=
+=A02 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0=
+ =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2<br>=C2=A0 104: =C2=A0 =C2=A0 =C2=
+=A02 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0=
+ =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2<br>=C2=A0 112: =C2=A0 =C2=A0 =C2=
+=A02 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0=
+ =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2<br>=C2=A0 120: =C2=A0 =C2=A0 =C2=
+=A02 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0=
+ =C2=A0 2 =C2=A0 =C2=A0 2 =C2=A0 =C2=A0 2<br>RSS hash key:<br>Operation not=
+ supported<br></div></blockquote><div style=3D"margin-left:40px"><br></div>=
+<div style=3D"margin-left:40px"></div><div style=3D"margin-left:40px">&quot=
+;Operation not supported&quot; -- does this mean the NIC has RSS routing ha=
+rd-coded? And we cannot change the hash-function?<br></div><div style=3D"ma=
+rgin-left:40px">Or is RSS just hard-coded?</div><div style=3D"margin-left:4=
+0px"><br></div><div style=3D"margin-left:40px"><br></div><div>.3.c. Current=
+  &quot;Hash flow&quot; settings:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex"><div># ethtool -n =C2=A0enp2s0 rx-flow-hash udp4<br>UDP o=
+ver IPV4 flows use these fields for computing Hash flow key:<br>IP SA<br>IP=
+ DA<br>L4 bytes 0 &amp; 1 [TCP/UDP src port]<br>L4 bytes 2 &amp; 3 [TCP/UDP=
+ dst port]</div></blockquote><div>=C2=A0</div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div> # sudo ethtool -n enp2s0<br>4 RX rings available=
+<br>Total 0 rules<br></div></blockquote><div><br></div><div><br></div><div>=
+.3.d.=C2=A0 Enable ntuple features:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex"><div># ethtool --show-features enp2s0 | grep ntuple<br>=
+ntuple-filters: on<br> </div></blockquote><div><br></div><div>.3.e. Add ntu=
+ple rule: Commands Tried:</div><div></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex"><div># ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.4=
+3 dst-ip 0.0.0.0 src-port 555 dst-port 2368 action -1<br>rmgr: Cannot inser=
+t RX class rule: Invalid argument<br># ethtool -U enp2s0 flow-type udp4 src=
+-ip 192.168.3.43 action 1<br>rmgr: Cannot insert RX class rule: Invalid arg=
+ument<br></div></blockquote><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x"><div># ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1<br>r=
+mgr: Cannot insert RX class rule: Invalid argument<br># ethtool -U enp2s0 f=
+low-type ip4 src-ip 192.168.3.43 action 1 loc 4<br>rmgr: Cannot insert RX c=
+lass rule: Invalid argument <br></div></blockquote><div><br></div><div>.3.f=
+. More Interface info:</div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
+x"><div># ethtool -i enp2s0<br>driver: igb<br>version: 5.4.0-k<br>firmware-=
+version: 3.16, 0x800004ad<br>expansion-rom-version: <br>bus-info: 0000:02:0=
+0.0<br>supports-statistics: yes<br>supports-test: yes<br>supports-eeprom-ac=
+cess: yes<br>supports-register-dump: yes<br>supports-priv-flags: yes</div><=
+/blockquote><div><br></div><blockquote class=3D"gmail_quote" style=3D"margi=
+n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
+"><div># ethtool -t enp2s0<br>The test result is PASS<br>The test extra inf=
+o:<br>Register test =C2=A0(offline)	 0<br>Eeprom test =C2=A0 =C2=A0(offline=
+)	 0<br>Interrupt test (offline)	 0<br>Loopback test =C2=A0(offline)	 0<br>=
+Link test =C2=A0 (on/offline)	 0<br></div></blockquote><div><br></div><div>=
+<br></div><div><br></div><div><br></div><div><br></div><div><br></div><div>=
+<div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signatur=
+e"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div d=
+ir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr=
+"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div>Daniel Williams=C2=A0 |=
+=C2=A0 Software Engineer</div><div><div><div><div><a href=3D"mailto:dwillia=
+ms@nextdroid.com" target=3D"_blank">dwilliams@nextdroid.com</a></div><div><=
+/div></div></div><img src=3D"https://lh6.googleusercontent.com/JjJzZ9yHCmcd=
+J_Z55X6d_P4c4iAt8saFm3bl62bYU5o0Y5h3F00lPa903F4tSbhL8G_FRep1Af7KNKXxXN-RBvP=
+4e7zum9fjfNsaYRsdJZy8dhefio-Xa_4jddPiP41M6O7ASZKB0CmT_BwRiQ" width=3D"200" =
+height=3D"56"><br></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div></div></div></div></div><div><br></d=
+iv><div><br></div><div><br></div></div></div></div>
+
+--0000000000005866b205a486fbdb--
+
+--===============1587019501268576803==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============1587019501268576803==--
