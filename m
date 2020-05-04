@@ -2,73 +2,55 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85AFB1C27EF
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 May 2020 21:08:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C91581C32E8
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 May 2020 08:29:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D82D4883F0;
-	Sat,  2 May 2020 19:08:36 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 800E2887D4;
+	Mon,  4 May 2020 06:29:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id goXIP60VG3Dz; Sat,  2 May 2020 19:08:36 +0000 (UTC)
+	with ESMTP id qvB+5RJNnAdI; Mon,  4 May 2020 06:29:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3A8CA883AE;
-	Sat,  2 May 2020 19:08:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by hemlock.osuosl.org (Postfix) with ESMTP id 77F5B88731;
+	Mon,  4 May 2020 06:29:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5EFB71BF3BE
- for <intel-wired-lan@osuosl.org>; Sat,  2 May 2020 19:08:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D79661BF425
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2020 06:29:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5AC7C86957
- for <intel-wired-lan@osuosl.org>; Sat,  2 May 2020 19:08:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D2F62876AD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2020 06:29:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R1F1Mb3ZNsJ1 for <intel-wired-lan@osuosl.org>;
- Sat,  2 May 2020 19:08:33 +0000 (UTC)
+ with ESMTP id OM7TsqYEYlyi for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 May 2020 06:29:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f182.google.com (mail-il1-f182.google.com
- [209.85.166.182])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6850D8689C
- for <intel-wired-lan@osuosl.org>; Sat,  2 May 2020 19:08:33 +0000 (UTC)
-Received: by mail-il1-f182.google.com with SMTP id t12so7445052ile.9
- for <intel-wired-lan@osuosl.org>; Sat, 02 May 2020 12:08:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3ZYMHysR0oi0cPOvz+Jdd3QfjHbQMymdjCr+/o0N/T4=;
- b=r3oZZOkXsUuR7YnRuuKVzN9/HPakZV+sy3sHqojho96HMOjobungziFjaqIA4OJTUX
- KjOoutVeDUQBVOCHzfQht3FYj4eLCf//9eoypjGIiX7XGA9iUp7t9vw5X55JJXov3XRC
- aJYqZVlqti3MHjxmm5nIyAHqbLS1uGmn0JyR53qEp8cdtdeRwaQhwjRtg9+S7rBhx0g9
- tbWeCuHUVhwMjZCRZc9x0P01rsMG5e3fKwU1kbqGZ3/vtf7VGQiR1cCmyV56y6/0uqck
- 4Lw0lFdkWZSXm3y5CVR/rNS+ejBw2Ys/stXCIpkHB/53YJ991OSmXQcUrQgJ5DA8UmsW
- ZHLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3ZYMHysR0oi0cPOvz+Jdd3QfjHbQMymdjCr+/o0N/T4=;
- b=Yq/qCIMFzY93HHKKdIug9k+X3CUC7t2kx1oecEe6aAwPML0aWCcupFbxshidickAxe
- CGezzQv7HG2j9Qv2gcDT0kxylPtbHAGV8vtGZtB0/tPxIasr0i//MMtzBYDIRv4XFOQH
- FACjSwndbcY/8P3YtRClWyjUqMcpXyHboPIAKXrlzYfX1vmbsSXY0rTmPBTzfeZeqfXd
- 5vj+Elj7KcvXUAAyAIFP7qiVH9Jbr3OuiQPbItePMI/JncnXEf2msiHYz7p+2jU6cfk5
- SjY5Y1N+kkcNfUI/yW/1ZJ+SYphfqtv6gmt1kjGHZp6PU8W49e3SpMNIARhTl8xaySjK
- xORQ==
-X-Gm-Message-State: AGi0PubYz8AaunSsZ2xPEN8vhxsoKTWe1ztgK1MRdetZ/yh4w8Li9tAE
- leJrPEZqV67WeUht2UUneT87YRe6+nZ7TyVPOX77ck0UJ7M=
-X-Google-Smtp-Source: APiQypIZ4dCPho/3p1JEfMZNAtlcOwZkqThOBcUBOINIGvZS9UsZJk2TX2Y9kWqZRCMZwj8SMa5+ISm6g1U8pIOeJEs=
-X-Received: by 2002:a92:3dd5:: with SMTP id k82mr9504052ilf.237.1588446512531; 
- Sat, 02 May 2020 12:08:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200421133745.GA1557688@shell-202.tara.dn.lalufu.net>
- <20200502175541.GB7062@faith.camperquake.de>
-In-Reply-To: <20200502175541.GB7062@faith.camperquake.de>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Sat, 2 May 2020 12:08:21 -0700
-Message-ID: <CAKgT0Uf8+sTsc0HCmxvpjYNKpOivV3z0N36zmHJiYzWXtjMTtA@mail.gmail.com>
-To: Ralf Ertzinger <ralf@camperquake.de>
-Subject: Re: [Intel-wired-lan] i350 not coming out of D3 when link should be
- reestablished
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id A201C8680B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2020 06:29:26 +0000 (UTC)
+IronPort-SDR: qCmWFuEmSU9vdxkSif34fP1HRzbyg2HtUSmOrx4OX1OR9oquDpOzwoExboxCUmOSrl5Edl3CU/
+ VJ0OzfeYQngQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 May 2020 23:29:26 -0700
+IronPort-SDR: 0aKdA9v1sheEJJliJuf7X8SWvQQebcfuwW6ONFMlb5XFmcoFmBuS/77Rvr+Zmz3XVP+RYnJLp3
+ drNBz3CJPBgg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,351,1583222400"; d="scan'208";a="283805137"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by fmsmga004.fm.intel.com with ESMTP; 03 May 2020 23:29:25 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  4 May 2020 09:29:25 +0300
+Message-Id: <20200504062925.18819-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove unused descriptor's
+ flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,33 +63,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, May 2, 2020 at 10:55 AM Ralf Ertzinger <ralf@camperquake.de> wrote:
->
-> Hi,
->
-> On Tue, Apr 21, 2020 at 01:37:45PM +0000, Ralf Ertzinger wrote:
->
-> > I have a Supermicro board (M11SDV-4C-LN4F) which has one (or four? not
-> > sure) i350 network cards, breaking out into four 1GB RJ45 ports:
->
-> is this the right mailing list for these sort of issues? If not, where
-> should I bring this up?
+Enable Tidv register, Report Packet Sent, Report Status and
+Ethernet CRC flags not in use.
+This patch comes to clean up these flags.
 
-This is the right list
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_defines.h | 4 ----
+ 1 file changed, 4 deletions(-)
 
-As far as the behavior I am fairly certain it is a bug. I suspect
-there are some functions that aren't correctly taking the power saving
-features into account and as a result they aren't working correctly.
-Unfortunately I don't know how much testing takes place for the igb
-parts with run time power management enabled.
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 95de1eb515cb..aa1d012b3e2a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -265,13 +265,9 @@
+ #define IGC_TXD_POPTS_IXSM	0x01       /* Insert IP checksum */
+ #define IGC_TXD_POPTS_TXSM	0x02       /* Insert TCP/UDP checksum */
+ #define IGC_TXD_CMD_EOP		0x01000000 /* End of Packet */
+-#define IGC_TXD_CMD_IFCS	0x02000000 /* Insert FCS (Ethernet CRC) */
+ #define IGC_TXD_CMD_IC		0x04000000 /* Insert Checksum */
+-#define IGC_TXD_CMD_RS		0x08000000 /* Report Status */
+-#define IGC_TXD_CMD_RPS		0x10000000 /* Report Packet Sent */
+ #define IGC_TXD_CMD_DEXT	0x20000000 /* Desc extension (0 = legacy) */
+ #define IGC_TXD_CMD_VLE		0x40000000 /* Add VLAN tag */
+-#define IGC_TXD_CMD_IDE		0x80000000 /* Enable Tidv register */
+ #define IGC_TXD_STAT_DD		0x00000001 /* Descriptor Done */
+ #define IGC_TXD_STAT_EC		0x00000002 /* Excess Collisions */
+ #define IGC_TXD_STAT_LC		0x00000004 /* Late Collisions */
+-- 
+2.11.0
 
-- Alex
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
