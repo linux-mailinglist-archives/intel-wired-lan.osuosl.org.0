@@ -1,81 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CB251C386D
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 May 2020 13:38:51 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D20218699E;
-	Mon,  4 May 2020 11:38:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IjaTQl_N678O; Mon,  4 May 2020 11:38:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 76E3D869B7;
-	Mon,  4 May 2020 11:38:47 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 521A41BF356
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2020 11:38:45 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F6291C3C64
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 May 2020 16:08:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4B7CF22DE3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2020 11:38:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C1128229D4;
+	Mon,  4 May 2020 13:58:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nP3AG2EKPPWe; Mon,  4 May 2020 13:58:52 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 6D56C23026;
+	Mon,  4 May 2020 13:58:48 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 07BAF1BF41E
+ for <intel-wired-lan@osuosl.org>; Mon,  4 May 2020 13:58:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id F388622BCC
+ for <intel-wired-lan@osuosl.org>; Mon,  4 May 2020 13:58:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FCTXXvmwuQlA for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 May 2020 11:38:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 5221222EE6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2020 11:38:37 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id o18so3095658pgg.8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 04 May 2020 04:38:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=xJiERueZdR8AIL+W94ibTBxul8R+TyiF09HDqYKZujA=;
- b=it+oK3FsbY0PFe+9NW1Z6NpJtBrRrcteApRsdDYUeIwNnrrQo1BfeeEIuUWkFRl6zz
- v/YFEA11YDKQSQ+de0dBz7b+FIsC/TpNUWAoFRa7HsJF1ZdM82VqFO1IVXnMM/pdxZtN
- zXjSwUeeH6SffXd6YWCMmZSvIm1L+XasYJlp0732Wb2LwKDXMFc955oEmWvUK9YxRjfE
- sxANOzH48XF/MdQBtomaVZoPlaRMMk/NI++JtyttiI2cNC4+cI5sXToNhM1N3fJCpARz
- bEkduwNppPW/BUErU3B6Cm2Cc2MPvV93FWP+zPqCsf44VsylLNg4tg6OVgxRvW41SeUn
- 0GXA==
+ with ESMTP id KpdvlPnMzj4p for <intel-wired-lan@osuosl.org>;
+ Mon,  4 May 2020 13:58:44 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com
+ [209.85.128.45])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2D2F9229D4
+ for <intel-wired-lan@osuosl.org>; Mon,  4 May 2020 13:58:44 +0000 (UTC)
+Received: by mail-wm1-f45.google.com with SMTP id g12so9149897wmh.3
+ for <intel-wired-lan@osuosl.org>; Mon, 04 May 2020 06:58:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nextdroid-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jC0mn+PIxpLBz7zLv84foTGuPG/RqdESr8vYdsbez6c=;
+ b=ROKrO9Xn7tZD+gg42Yi9GgcZ+62+s7eb8g9OmjtS1GbPITFELcucgaQBNIAf34iGUB
+ WJMd36SZuHEcHV926SNOUM/DBegNXXubGfg0S4l8YmthSwr9+ag6o3RzrKva+V6kQt0x
+ bSEGDbx4RUyHf89Ym1EhQMc5mAwaFpmlEa+nYv7QmUbaJpWGU0cJ6Fng4qgXHAVpdw84
+ +/kGVbSTRm7h7+BwzpypJFBpuQu7ExQuIo2KLM3XSI7hVBtl3Bsbpn9b9cN5TJSvsh0A
+ uymQcjpEF5YsJqT9cMB/kQeCiuqNu+0iWsrIOC6yDAygyf33Xlb/bSRsY1/klnvZOBhQ
+ 1aiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=xJiERueZdR8AIL+W94ibTBxul8R+TyiF09HDqYKZujA=;
- b=m+qlT1R9wEIMBlyKuHyMBD9I8gi4AqACApEJ0KLTSfepLetabnm916WfBrAyNa/S6Y
- I4PXc7n7H7dRkX6Qa2X03l3iByjwQGDbj610ojWFgjCOHphDZ5OguaoHSVsKNIT747c3
- QX08Dl+OZ8sVOogaLDG6DcbKaDT7R9jVePClNaPn5VBE73LrAaYlqKFG+++65bLs8KPW
- at/a0DATgqR+lo2meTkj5C3iP3nk9LzHH6ojZXyhTJ1VlA8vpkO9h8IASg2w5iK9DTfE
- rTd6nlFhR3/f0bJfLwOef323XY9Ynr/bJQFRou/T/KHBTsCvadQKGGukYu8AzBRa1uok
- GNSA==
-X-Gm-Message-State: AGi0PubRRP19zmqH1ZqTtPgIdcS2kpMWGcVkg95cU+sHAYs85G6p0bn7
- RN3BwMBurtkA/lI7Nvhwo4w=
-X-Google-Smtp-Source: APiQypLwGWwtel3AD3eM1AdGi0y+ZzCEsY+/Rf3y9fh1WH39CXXGRi8dOeNw7KH4u5hX5Rj/068OnA==
-X-Received: by 2002:a62:7656:: with SMTP id r83mr16774716pfc.71.1588592316681; 
- Mon, 04 May 2020 04:38:36 -0700 (PDT)
-Received: from btopel-mobl.ger.intel.com ([192.55.55.41])
- by smtp.gmail.com with ESMTPSA id x185sm8650789pfx.155.2020.05.04.04.38.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2020 04:38:35 -0700 (PDT)
-From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
-To: ast@kernel.org, daniel@iogearbox.net, davem@davemloft.net, kuba@kernel.org,
- hawk@kernel.org, john.fastabend@gmail.com, netdev@vger.kernel.org,
- bpf@vger.kernel.org, magnus.karlsson@intel.com, jonathan.lemon@gmail.com
-Date: Mon,  4 May 2020 13:37:11 +0200
-Message-Id: <20200504113716.7930-10-bjorn.topel@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200504113716.7930-1-bjorn.topel@gmail.com>
-References: <20200504113716.7930-1-bjorn.topel@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jC0mn+PIxpLBz7zLv84foTGuPG/RqdESr8vYdsbez6c=;
+ b=bFSV/X331n2bxFoHpVjkQXe1WxDAHjG/R4Lg8ScPArf+5O42yVgDMM0doLqQUBINry
+ a4kUNrWlPFcB9rPz0zoLPF+6iKxzTLqzW+AeIkTkLPtQE+Har52gQEcp0Pnc4jGKXoyv
+ yOsl8d3u4npmmVEvl3I2SB+hImvifJ5D8K6z8R4ZGucyoU5g7SUjr5Yfb9juJ17N7xkK
+ RclFjLSDJ/SD2Gpk/Ets0vI88tB4r+P/i+RFaa14MVKTEAnyT8sYUM1JEyZW+X076bGJ
+ 0EbIziJ2jzKncf7PdjDULHeh+SIhE4h9dVdqmAwVAswv6BeZtMkLM5+o8b9TQFcE2Qp4
+ w5sg==
+X-Gm-Message-State: AGi0PuZVHZpgYFV+6S5Z4v1d2uXL6SQLd8I6LnkV6PH5A8AimEhy0pCK
+ cF5NTEE8bYO/rF4bDwBFJtAAfD0rX+kRF7DSzmo9Bw==
+X-Google-Smtp-Source: APiQypJBQuAs0p0ZgIAcvfmoyncwh06k2AzTajCyJ5lWd2++3Y4Ez8reTVIQBoUt2L73J55oMYojcNfkl4wObl7Qt7E=
+X-Received: by 2002:a7b:cb17:: with SMTP id u23mr14729208wmj.130.1588600722340; 
+ Mon, 04 May 2020 06:58:42 -0700 (PDT)
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [RFC PATCH bpf-next 09/13] ixgbe,
- xsk: migrate to new MEM_TYPE_XSK_BUFF_POOL
+References: <CAGrNP8nfqAZnEoOBsrxrsvszw7T5pdKHG4mt6fVcKB6iigV_BA@mail.gmail.com>
+ <87zhaswn5t.fsf@intel.com>
+In-Reply-To: <87zhaswn5t.fsf@intel.com>
+From: Dan Williams <dwilliams@nextdroid.com>
+Date: Mon, 4 May 2020 09:58:31 -0400
+Message-ID: <CAGrNP8=qr3_ZPL7c4oWz0L6hzLSSHjh3iWa52VsUTmJjfUqxdw@mail.gmail.com>
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Subject: Re: [Intel-wired-lan] Does the 'igb` kernel module support setting
+ 2-Tuple filters (aka `--config-ntuple`) on a i210 NIC?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,315 +82,688 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maximmi@mellanox.com,
- =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@intel.com>,
- maciej.fijalkowski@intel.com, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Daniel Gandhi <dgandhi@nextdroid.com>, intel-wired-lan@osuosl.org,
+ Nick Rizzo <nrizzo@nextdroid.com>
+Content-Type: multipart/mixed; boundary="===============0693165018321576774=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJvbTogQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgoKUmVtb3ZlIE1FTV9U
-WVBFX1pFUk9fQ09QWSBpbiBmYXZvciBvZiB0aGUgbmV3IE1FTV9UWVBFX1hTS19CVUZGX1BPT0wK
-QVBJcy4KCkNjOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZwpTaWduZWQtb2ZmLWJ5
-OiBCasO2cm4gVMO2cGVsIDxiam9ybi50b3BlbEBpbnRlbC5jb20+Ci0tLQogZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmUuaCAgICAgIHwgICA5ICstCiBkcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMgfCAgMTUgKy0KIC4uLi9ldGhlcm5ldC9p
-bnRlbC9peGdiZS9peGdiZV90eHJ4X2NvbW1vbi5oICB8ICAgMiArLQogZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMgIHwgMzA1ICsrKy0tLS0tLS0tLS0tLS0tLQog
-NCBmaWxlcyBjaGFuZ2VkLCA2MiBpbnNlcnRpb25zKCspLCAyNjkgZGVsZXRpb25zKC0pCgpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmUuaCBiL2RyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlLmgKaW5kZXggMjgzM2U0ZjA0MWNlLi41
-ZGRmYzgzYTFlNDYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
-L2l4Z2JlLmgKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmUuaApA
-QCAtMjI0LDE3ICsyMjQsMTcgQEAgc3RydWN0IGl4Z2JlX3R4X2J1ZmZlciB7CiB9OwogCiBzdHJ1
-Y3QgaXhnYmVfcnhfYnVmZmVyIHsKLQlzdHJ1Y3Qgc2tfYnVmZiAqc2tiOwotCWRtYV9hZGRyX3Qg
-ZG1hOwogCXVuaW9uIHsKIAkJc3RydWN0IHsKKwkJCXN0cnVjdCBza19idWZmICpza2I7CisJCQlk
-bWFfYWRkcl90IGRtYTsKIAkJCXN0cnVjdCBwYWdlICpwYWdlOwogCQkJX191MzIgcGFnZV9vZmZz
-ZXQ7CiAJCQlfX3UxNiBwYWdlY250X2JpYXM7CiAJCX07CiAJCXN0cnVjdCB7Ci0JCQl2b2lkICph
-ZGRyOwotCQkJdTY0IGhhbmRsZTsKKwkJCWJvb2wgZGlzY2FyZDsKKwkJCXN0cnVjdCB4ZHBfYnVm
-ZiAqeGRwOwogCQl9OwogCX07CiB9OwpAQCAtMzUxLDcgKzM1MSw2IEBAIHN0cnVjdCBpeGdiZV9y
-aW5nIHsKIAl9OwogCXN0cnVjdCB4ZHBfcnhxX2luZm8geGRwX3J4cTsKIAlzdHJ1Y3QgeGRwX3Vt
-ZW0gKnhza191bWVtOwotCXN0cnVjdCB6ZXJvX2NvcHlfYWxsb2NhdG9yIHpjYTsgLyogWkMgYWxs
-b2NhdG9yIGFuY2hvciAqLwogCXUxNiByaW5nX2lkeDsJCS8qIHtyeCx0eCx4ZHB9X3JpbmcgYmFj
-ayByZWZlcmVuY2UgaWR4ICovCiAJdTE2IHJ4X2J1Zl9sZW47CiB9IF9fX19jYWNoZWxpbmVfaW50
-ZXJub2RlYWxpZ25lZF9pbl9zbXA7CmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9peGdiZS9peGdiZV9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdi
-ZS9peGdiZV9tYWluLmMKaW5kZXggNzE4OTMxZDk1MWJjLi5kYTdiODA0MjkwMWYgMTAwNjQ0Ci0t
-LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYworKysgYi9k
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMKQEAgLTM1LDcgKzM1
-LDcgQEAKICNpbmNsdWRlIDxuZXQvdGNfYWN0L3RjX21pcnJlZC5oPgogI2luY2x1ZGUgPG5ldC92
-eGxhbi5oPgogI2luY2x1ZGUgPG5ldC9tcGxzLmg+Ci0jaW5jbHVkZSA8bmV0L3hkcF9zb2NrLmg+
-CisjaW5jbHVkZSA8bmV0L3hkcF9zb2NrX2Rydi5oPgogI2luY2x1ZGUgPG5ldC94ZnJtLmg+CiAK
-ICNpbmNsdWRlICJpeGdiZS5oIgpAQCAtMzcyNiw4ICszNzI2LDcgQEAgc3RhdGljIHZvaWQgaXhn
-YmVfY29uZmlndXJlX3NycmN0bChzdHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRlciwKIAogCS8q
-IGNvbmZpZ3VyZSB0aGUgcGFja2V0IGJ1ZmZlciBsZW5ndGggKi8KIAlpZiAocnhfcmluZy0+eHNr
-X3VtZW0pIHsKLQkJdTMyIHhza19idWZfbGVuID0gcnhfcmluZy0+eHNrX3VtZW0tPmNodW5rX3Np
-emVfbm9ociAtCi0JCQkJICBYRFBfUEFDS0VUX0hFQURST09NOworCQl1MzIgeHNrX2J1Zl9sZW4g
-PSB4c2tfdW1lbV9nZXRfcnhfZnJhbWVfc2l6ZShyeF9yaW5nLT54c2tfdW1lbSk7CiAKIAkJLyog
-SWYgdGhlIE1BQyBzdXBwb3J0IHNldHRpbmcgUlhEQ1RMLlJMUE1MLCB0aGUKIAkJICogU1JSQ1RM
-W25dLkJTSVpFUEtUIGlzIHNldCB0byBQQUdFX1NJWkUgYW5kCkBAIC00MDc0LDExICs0MDczLDEw
-IEBAIHZvaWQgaXhnYmVfY29uZmlndXJlX3J4X3Jpbmcoc3RydWN0IGl4Z2JlX2FkYXB0ZXIgKmFk
-YXB0ZXIsCiAJeGRwX3J4cV9pbmZvX3VucmVnX21lbV9tb2RlbCgmcmluZy0+eGRwX3J4cSk7CiAJ
-cmluZy0+eHNrX3VtZW0gPSBpeGdiZV94c2tfdW1lbShhZGFwdGVyLCByaW5nKTsKIAlpZiAocmlu
-Zy0+eHNrX3VtZW0pIHsKLQkJcmluZy0+emNhLmZyZWUgPSBpeGdiZV96Y2FfZnJlZTsKIAkJV0FS
-Tl9PTih4ZHBfcnhxX2luZm9fcmVnX21lbV9tb2RlbCgmcmluZy0+eGRwX3J4cSwKLQkJCQkJCSAg
-IE1FTV9UWVBFX1pFUk9fQ09QWSwKLQkJCQkJCSAgICZyaW5nLT56Y2EpKTsKLQorCQkJCQkJICAg
-TUVNX1RZUEVfWFNLX0JVRkZfUE9PTCwKKwkJCQkJCSAgIE5VTEwpKTsKKwkJeHNrX2J1ZmZfc2V0
-X3J4cV9pbmZvKHJpbmctPnhza191bWVtLCAmcmluZy0+eGRwX3J4cSk7CiAJfSBlbHNlIHsKIAkJ
-V0FSTl9PTih4ZHBfcnhxX2luZm9fcmVnX21lbV9tb2RlbCgmcmluZy0+eGRwX3J4cSwKIAkJCQkJ
-CSAgIE1FTV9UWVBFX1BBR0VfU0hBUkVELCBOVUxMKSk7CkBAIC00MTM0LDggKzQxMzIsNyBAQCB2
-b2lkIGl4Z2JlX2NvbmZpZ3VyZV9yeF9yaW5nKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVy
-LAogCX0KIAogCWlmIChyaW5nLT54c2tfdW1lbSAmJiBody0+bWFjLnR5cGUgIT0gaXhnYmVfbWFj
-XzgyNTk5RUIpIHsKLQkJdTMyIHhza19idWZfbGVuID0gcmluZy0+eHNrX3VtZW0tPmNodW5rX3Np
-emVfbm9ociAtCi0JCQkJICBYRFBfUEFDS0VUX0hFQURST09NOworCQl1MzIgeHNrX2J1Zl9sZW4g
-PSB4c2tfdW1lbV9nZXRfcnhfZnJhbWVfc2l6ZShyaW5nLT54c2tfdW1lbSk7CiAKIAkJcnhkY3Rs
-ICY9IH4oSVhHQkVfUlhEQ1RMX1JMUE1MTUFTSyB8CiAJCQkgICAgSVhHQkVfUlhEQ1RMX1JMUE1M
-X0VOKTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2Jl
-X3R4cnhfY29tbW9uLmggYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV90
-eHJ4X2NvbW1vbi5oCmluZGV4IDZkMDE3MDBiNDZiYy4uNzg4N2FlNGFhZjRmIDEwMDY0NAotLS0g
-YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV90eHJ4X2NvbW1vbi5oCisr
-KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3R4cnhfY29tbW9uLmgK
-QEAgLTM1LDcgKzM1LDcgQEAgaW50IGl4Z2JlX3hza191bWVtX3NldHVwKHN0cnVjdCBpeGdiZV9h
-ZGFwdGVyICphZGFwdGVyLCBzdHJ1Y3QgeGRwX3VtZW0gKnVtZW0sCiAKIHZvaWQgaXhnYmVfemNh
-X2ZyZWUoc3RydWN0IHplcm9fY29weV9hbGxvY2F0b3IgKmFsbG9jLCB1bnNpZ25lZCBsb25nIGhh
-bmRsZSk7CiAKLXZvaWQgaXhnYmVfYWxsb2NfcnhfYnVmZmVyc196YyhzdHJ1Y3QgaXhnYmVfcmlu
-ZyAqcnhfcmluZywgdTE2IGNsZWFuZWRfY291bnQpOworYm9vbCBpeGdiZV9hbGxvY19yeF9idWZm
-ZXJzX3pjKHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLCB1MTYgY2xlYW5lZF9jb3VudCk7CiBp
-bnQgaXhnYmVfY2xlYW5fcnhfaXJxX3pjKHN0cnVjdCBpeGdiZV9xX3ZlY3RvciAqcV92ZWN0b3Is
-CiAJCQkgIHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLAogCQkJICBjb25zdCBpbnQgYnVkZ2V0
-KTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hz
-ay5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMKaW5kZXgg
-NWI2ZWRiZDhhNGVkLi4xMmY1ZGMzZmU3NmUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVy
-bmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2l4Z2JlL2l4Z2JlX3hzay5jCkBAIC0yMCw1NCArMjAsMTEgQEAgc3RydWN0IHhkcF91bWVt
-ICppeGdiZV94c2tfdW1lbShzdHJ1Y3QgaXhnYmVfYWRhcHRlciAqYWRhcHRlciwKIAlyZXR1cm4g
-eGRwX2dldF91bWVtX2Zyb21fcWlkKGFkYXB0ZXItPm5ldGRldiwgcWlkKTsKIH0KIAotc3RhdGlj
-IGludCBpeGdiZV94c2tfdW1lbV9kbWFfbWFwKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVy
-LAotCQkJCSAgc3RydWN0IHhkcF91bWVtICp1bWVtKQotewotCXN0cnVjdCBkZXZpY2UgKmRldiA9
-ICZhZGFwdGVyLT5wZGV2LT5kZXY7Ci0JdW5zaWduZWQgaW50IGksIGo7Ci0JZG1hX2FkZHJfdCBk
-bWE7Ci0KLQlmb3IgKGkgPSAwOyBpIDwgdW1lbS0+bnBnczsgaSsrKSB7Ci0JCWRtYSA9IGRtYV9t
-YXBfcGFnZV9hdHRycyhkZXYsIHVtZW0tPnBnc1tpXSwgMCwgUEFHRV9TSVpFLAotCQkJCQkgRE1B
-X0JJRElSRUNUSU9OQUwsIElYR0JFX1JYX0RNQV9BVFRSKTsKLQkJaWYgKGRtYV9tYXBwaW5nX2Vy
-cm9yKGRldiwgZG1hKSkKLQkJCWdvdG8gb3V0X3VubWFwOwotCi0JCXVtZW0tPnBhZ2VzW2ldLmRt
-YSA9IGRtYTsKLQl9Ci0KLQlyZXR1cm4gMDsKLQotb3V0X3VubWFwOgotCWZvciAoaiA9IDA7IGog
-PCBpOyBqKyspIHsKLQkJZG1hX3VubWFwX3BhZ2VfYXR0cnMoZGV2LCB1bWVtLT5wYWdlc1tpXS5k
-bWEsIFBBR0VfU0laRSwKLQkJCQkgICAgIERNQV9CSURJUkVDVElPTkFMLCBJWEdCRV9SWF9ETUFf
-QVRUUik7Ci0JCXVtZW0tPnBhZ2VzW2ldLmRtYSA9IDA7Ci0JfQotCi0JcmV0dXJuIC0xOwotfQot
-Ci1zdGF0aWMgdm9pZCBpeGdiZV94c2tfdW1lbV9kbWFfdW5tYXAoc3RydWN0IGl4Z2JlX2FkYXB0
-ZXIgKmFkYXB0ZXIsCi0JCQkJICAgICBzdHJ1Y3QgeGRwX3VtZW0gKnVtZW0pCi17Ci0Jc3RydWN0
-IGRldmljZSAqZGV2ID0gJmFkYXB0ZXItPnBkZXYtPmRldjsKLQl1bnNpZ25lZCBpbnQgaTsKLQot
-CWZvciAoaSA9IDA7IGkgPCB1bWVtLT5ucGdzOyBpKyspIHsKLQkJZG1hX3VubWFwX3BhZ2VfYXR0
-cnMoZGV2LCB1bWVtLT5wYWdlc1tpXS5kbWEsIFBBR0VfU0laRSwKLQkJCQkgICAgIERNQV9CSURJ
-UkVDVElPTkFMLCBJWEdCRV9SWF9ETUFfQVRUUik7Ci0KLQkJdW1lbS0+cGFnZXNbaV0uZG1hID0g
-MDsKLQl9Ci19Ci0KIHN0YXRpYyBpbnQgaXhnYmVfeHNrX3VtZW1fZW5hYmxlKHN0cnVjdCBpeGdi
-ZV9hZGFwdGVyICphZGFwdGVyLAogCQkJCSBzdHJ1Y3QgeGRwX3VtZW0gKnVtZW0sCiAJCQkJIHUx
-NiBxaWQpCiB7CiAJc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiA9IGFkYXB0ZXItPm5ldGRldjsK
-LQlzdHJ1Y3QgeGRwX3VtZW1fZnFfcmV1c2UgKnJldXNlcTsKIAlib29sIGlmX3J1bm5pbmc7CiAJ
-aW50IGVycjsKIApAQCAtNzgsMTMgKzM1LDcgQEAgc3RhdGljIGludCBpeGdiZV94c2tfdW1lbV9l
-bmFibGUoc3RydWN0IGl4Z2JlX2FkYXB0ZXIgKmFkYXB0ZXIsCiAJICAgIHFpZCA+PSBuZXRkZXYt
-PnJlYWxfbnVtX3R4X3F1ZXVlcykKIAkJcmV0dXJuIC1FSU5WQUw7CiAKLQlyZXVzZXEgPSB4c2tf
-cmV1c2VxX3ByZXBhcmUoYWRhcHRlci0+cnhfcmluZ1swXS0+Y291bnQpOwotCWlmICghcmV1c2Vx
-KQotCQlyZXR1cm4gLUVOT01FTTsKLQotCXhza19yZXVzZXFfZnJlZSh4c2tfcmV1c2VxX3N3YXAo
-dW1lbSwgcmV1c2VxKSk7Ci0KLQllcnIgPSBpeGdiZV94c2tfdW1lbV9kbWFfbWFwKGFkYXB0ZXIs
-IHVtZW0pOworCWVyciA9IHhza19idWZmX2RtYV9tYXAodW1lbSwgJmFkYXB0ZXItPnBkZXYtPmRl
-diwgSVhHQkVfUlhfRE1BX0FUVFIpOwogCWlmIChlcnIpCiAJCXJldHVybiBlcnI7CiAKQEAgLTEy
-NCw3ICs3NSw3IEBAIHN0YXRpYyBpbnQgaXhnYmVfeHNrX3VtZW1fZGlzYWJsZShzdHJ1Y3QgaXhn
-YmVfYWRhcHRlciAqYWRhcHRlciwgdTE2IHFpZCkKIAkJaXhnYmVfdHhyeF9yaW5nX2Rpc2FibGUo
-YWRhcHRlciwgcWlkKTsKIAogCWNsZWFyX2JpdChxaWQsIGFkYXB0ZXItPmFmX3hkcF96Y19xcHMp
-OwotCWl4Z2JlX3hza191bWVtX2RtYV91bm1hcChhZGFwdGVyLCB1bWVtKTsKKwl4c2tfYnVmZl9k
-bWFfdW5tYXAodW1lbSwgSVhHQkVfUlhfRE1BX0FUVFIpOwogCiAJaWYgKGlmX3J1bm5pbmcpCiAJ
-CWl4Z2JlX3R4cnhfcmluZ19lbmFibGUoYWRhcHRlciwgcWlkKTsKQEAgLTE0MywxOSArOTQsMTQg
-QEAgc3RhdGljIGludCBpeGdiZV9ydW5feGRwX3pjKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFw
-dGVyLAogCQkJICAgIHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLAogCQkJICAgIHN0cnVjdCB4
-ZHBfYnVmZiAqeGRwKQogewotCXN0cnVjdCB4ZHBfdW1lbSAqdW1lbSA9IHJ4X3JpbmctPnhza191
-bWVtOwogCWludCBlcnIsIHJlc3VsdCA9IElYR0JFX1hEUF9QQVNTOwogCXN0cnVjdCBicGZfcHJv
-ZyAqeGRwX3Byb2c7CiAJc3RydWN0IHhkcF9mcmFtZSAqeGRwZjsKLQl1NjQgb2Zmc2V0OwogCXUz
-MiBhY3Q7CiAKIAlyY3VfcmVhZF9sb2NrKCk7CiAJeGRwX3Byb2cgPSBSRUFEX09OQ0Uocnhfcmlu
-Zy0+eGRwX3Byb2cpOwogCWFjdCA9IGJwZl9wcm9nX3J1bl94ZHAoeGRwX3Byb2csIHhkcCk7Ci0J
-b2Zmc2V0ID0geGRwLT5kYXRhIC0geGRwLT5kYXRhX2hhcmRfc3RhcnQ7Ci0KLQl4ZHAtPmhhbmRs
-ZSA9IHhza191bWVtX2FkanVzdF9vZmZzZXQodW1lbSwgeGRwLT5oYW5kbGUsIG9mZnNldCk7CiAK
-IAlzd2l0Y2ggKGFjdCkgewogCWNhc2UgWERQX1BBU1M6CkBAIC0xODYsMTQwICsxMzIsMTYgQEAg
-c3RhdGljIGludCBpeGdiZV9ydW5feGRwX3pjKHN0cnVjdCBpeGdiZV9hZGFwdGVyICphZGFwdGVy
-LAogCXJldHVybiByZXN1bHQ7CiB9CiAKLXN0YXRpYyBzdHJ1Y3QKLWl4Z2JlX3J4X2J1ZmZlciAq
-aXhnYmVfZ2V0X3J4X2J1ZmZlcl96YyhzdHJ1Y3QgaXhnYmVfcmluZyAqcnhfcmluZywKLQkJCQkJ
-dW5zaWduZWQgaW50IHNpemUpCi17Ci0Jc3RydWN0IGl4Z2JlX3J4X2J1ZmZlciAqYmk7Ci0KLQli
-aSA9ICZyeF9yaW5nLT5yeF9idWZmZXJfaW5mb1tyeF9yaW5nLT5uZXh0X3RvX2NsZWFuXTsKLQot
-CS8qIHdlIGFyZSByZXVzaW5nIHNvIHN5bmMgdGhpcyBidWZmZXIgZm9yIENQVSB1c2UgKi8KLQlk
-bWFfc3luY19zaW5nbGVfcmFuZ2VfZm9yX2NwdShyeF9yaW5nLT5kZXYsCi0JCQkJICAgICAgYmkt
-PmRtYSwgMCwKLQkJCQkgICAgICBzaXplLAotCQkJCSAgICAgIERNQV9CSURJUkVDVElPTkFMKTsK
-LQotCXJldHVybiBiaTsKLX0KLQotc3RhdGljIHZvaWQgaXhnYmVfcmV1c2VfcnhfYnVmZmVyX3pj
-KHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLAotCQkJCSAgICAgc3RydWN0IGl4Z2JlX3J4X2J1
-ZmZlciAqb2JpKQotewotCXUxNiBudGEgPSByeF9yaW5nLT5uZXh0X3RvX2FsbG9jOwotCXN0cnVj
-dCBpeGdiZV9yeF9idWZmZXIgKm5iaTsKLQotCW5iaSA9ICZyeF9yaW5nLT5yeF9idWZmZXJfaW5m
-b1tyeF9yaW5nLT5uZXh0X3RvX2FsbG9jXTsKLQkvKiB1cGRhdGUsIGFuZCBzdG9yZSBuZXh0IHRv
-IGFsbG9jICovCi0JbnRhKys7Ci0JcnhfcmluZy0+bmV4dF90b19hbGxvYyA9IChudGEgPCByeF9y
-aW5nLT5jb3VudCkgPyBudGEgOiAwOwotCi0JLyogdHJhbnNmZXIgcGFnZSBmcm9tIG9sZCBidWZm
-ZXIgdG8gbmV3IGJ1ZmZlciAqLwotCW5iaS0+ZG1hID0gb2JpLT5kbWE7Ci0JbmJpLT5hZGRyID0g
-b2JpLT5hZGRyOwotCW5iaS0+aGFuZGxlID0gb2JpLT5oYW5kbGU7Ci0KLQlvYmktPmFkZHIgPSBO
-VUxMOwotCW9iaS0+c2tiID0gTlVMTDsKLX0KLQotdm9pZCBpeGdiZV96Y2FfZnJlZShzdHJ1Y3Qg
-emVyb19jb3B5X2FsbG9jYXRvciAqYWxsb2MsIHVuc2lnbmVkIGxvbmcgaGFuZGxlKQotewotCXN0
-cnVjdCBpeGdiZV9yeF9idWZmZXIgKmJpOwotCXN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nOwot
-CXU2NCBociwgbWFzazsKLQl1MTYgbnRhOwotCi0JcnhfcmluZyA9IGNvbnRhaW5lcl9vZihhbGxv
-Yywgc3RydWN0IGl4Z2JlX3JpbmcsIHpjYSk7Ci0JaHIgPSByeF9yaW5nLT54c2tfdW1lbS0+aGVh
-ZHJvb20gKyBYRFBfUEFDS0VUX0hFQURST09NOwotCW1hc2sgPSByeF9yaW5nLT54c2tfdW1lbS0+
-Y2h1bmtfbWFzazsKLQotCW50YSA9IHJ4X3JpbmctPm5leHRfdG9fYWxsb2M7Ci0JYmkgPSByeF9y
-aW5nLT5yeF9idWZmZXJfaW5mbzsKLQotCW50YSsrOwotCXJ4X3JpbmctPm5leHRfdG9fYWxsb2Mg
-PSAobnRhIDwgcnhfcmluZy0+Y291bnQpID8gbnRhIDogMDsKLQotCWhhbmRsZSAmPSBtYXNrOwot
-Ci0JYmktPmRtYSA9IHhkcF91bWVtX2dldF9kbWEocnhfcmluZy0+eHNrX3VtZW0sIGhhbmRsZSk7
-Ci0JYmktPmRtYSArPSBocjsKLQotCWJpLT5hZGRyID0geGRwX3VtZW1fZ2V0X2RhdGEocnhfcmlu
-Zy0+eHNrX3VtZW0sIGhhbmRsZSk7Ci0JYmktPmFkZHIgKz0gaHI7Ci0KLQliaS0+aGFuZGxlID0g
-eHNrX3VtZW1fYWRqdXN0X29mZnNldChyeF9yaW5nLT54c2tfdW1lbSwgKHU2NCloYW5kbGUsCi0J
-CQkJCSAgICByeF9yaW5nLT54c2tfdW1lbS0+aGVhZHJvb20pOwotfQotCi1zdGF0aWMgYm9vbCBp
-eGdiZV9hbGxvY19idWZmZXJfemMoc3RydWN0IGl4Z2JlX3JpbmcgKnJ4X3JpbmcsCi0JCQkJICBz
-dHJ1Y3QgaXhnYmVfcnhfYnVmZmVyICpiaSkKLXsKLQlzdHJ1Y3QgeGRwX3VtZW0gKnVtZW0gPSBy
-eF9yaW5nLT54c2tfdW1lbTsKLQl2b2lkICphZGRyID0gYmktPmFkZHI7Ci0JdTY0IGhhbmRsZSwg
-aHI7Ci0KLQlpZiAoYWRkcikKLQkJcmV0dXJuIHRydWU7Ci0KLQlpZiAoIXhza191bWVtX3BlZWtf
-YWRkcih1bWVtLCAmaGFuZGxlKSkgewotCQlyeF9yaW5nLT5yeF9zdGF0cy5hbGxvY19yeF9wYWdl
-X2ZhaWxlZCsrOwotCQlyZXR1cm4gZmFsc2U7Ci0JfQotCi0JaHIgPSB1bWVtLT5oZWFkcm9vbSAr
-IFhEUF9QQUNLRVRfSEVBRFJPT007Ci0KLQliaS0+ZG1hID0geGRwX3VtZW1fZ2V0X2RtYSh1bWVt
-LCBoYW5kbGUpOwotCWJpLT5kbWEgKz0gaHI7Ci0KLQliaS0+YWRkciA9IHhkcF91bWVtX2dldF9k
-YXRhKHVtZW0sIGhhbmRsZSk7Ci0JYmktPmFkZHIgKz0gaHI7Ci0KLQliaS0+aGFuZGxlID0geHNr
-X3VtZW1fYWRqdXN0X29mZnNldCh1bWVtLCBoYW5kbGUsIHVtZW0tPmhlYWRyb29tKTsKLQotCXhz
-a191bWVtX3JlbGVhc2VfYWRkcih1bWVtKTsKLQlyZXR1cm4gdHJ1ZTsKLX0KLQotc3RhdGljIGJv
-b2wgaXhnYmVfYWxsb2NfYnVmZmVyX3Nsb3dfemMoc3RydWN0IGl4Z2JlX3JpbmcgKnJ4X3Jpbmcs
-Ci0JCQkJICAgICAgIHN0cnVjdCBpeGdiZV9yeF9idWZmZXIgKmJpKQotewotCXN0cnVjdCB4ZHBf
-dW1lbSAqdW1lbSA9IHJ4X3JpbmctPnhza191bWVtOwotCXU2NCBoYW5kbGUsIGhyOwotCi0JaWYg
-KCF4c2tfdW1lbV9wZWVrX2FkZHJfcnEodW1lbSwgJmhhbmRsZSkpIHsKLQkJcnhfcmluZy0+cnhf
-c3RhdHMuYWxsb2NfcnhfcGFnZV9mYWlsZWQrKzsKLQkJcmV0dXJuIGZhbHNlOwotCX0KLQotCWhh
-bmRsZSAmPSByeF9yaW5nLT54c2tfdW1lbS0+Y2h1bmtfbWFzazsKLQotCWhyID0gdW1lbS0+aGVh
-ZHJvb20gKyBYRFBfUEFDS0VUX0hFQURST09NOwotCi0JYmktPmRtYSA9IHhkcF91bWVtX2dldF9k
-bWEodW1lbSwgaGFuZGxlKTsKLQliaS0+ZG1hICs9IGhyOwotCi0JYmktPmFkZHIgPSB4ZHBfdW1l
-bV9nZXRfZGF0YSh1bWVtLCBoYW5kbGUpOwotCWJpLT5hZGRyICs9IGhyOwotCi0JYmktPmhhbmRs
-ZSA9IHhza191bWVtX2FkanVzdF9vZmZzZXQodW1lbSwgaGFuZGxlLCB1bWVtLT5oZWFkcm9vbSk7
-Ci0KLQl4c2tfdW1lbV9yZWxlYXNlX2FkZHJfcnEodW1lbSk7Ci0JcmV0dXJuIHRydWU7Ci19Ci0K
-LXN0YXRpYyBfX2Fsd2F5c19pbmxpbmUgYm9vbAotX19peGdiZV9hbGxvY19yeF9idWZmZXJzX3pj
-KHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLCB1MTYgY2xlYW5lZF9jb3VudCwKLQkJCSAgICBi
-b29sIGFsbG9jKHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLAotCQkJCSAgICAgICBzdHJ1Y3Qg
-aXhnYmVfcnhfYnVmZmVyICpiaSkpCitib29sIGl4Z2JlX2FsbG9jX3J4X2J1ZmZlcnNfemMoc3Ry
-dWN0IGl4Z2JlX3JpbmcgKnJ4X3JpbmcsIHUxNiBjb3VudCkKIHsKIAl1bmlvbiBpeGdiZV9hZHZf
-cnhfZGVzYyAqcnhfZGVzYzsKIAlzdHJ1Y3QgaXhnYmVfcnhfYnVmZmVyICpiaTsKIAl1MTYgaSA9
-IHJ4X3JpbmctPm5leHRfdG9fdXNlOworCWRtYV9hZGRyX3QgZG1hOwogCWJvb2wgb2sgPSB0cnVl
-OwogCiAJLyogbm90aGluZyB0byBkbyAqLwotCWlmICghY2xlYW5lZF9jb3VudCkKKwlpZiAoIWNv
-dW50KQogCQlyZXR1cm4gdHJ1ZTsKIAogCXJ4X2Rlc2MgPSBJWEdCRV9SWF9ERVNDKHJ4X3Jpbmcs
-IGkpOwpAQCAtMzI3LDIxICsxNDksMTggQEAgX19peGdiZV9hbGxvY19yeF9idWZmZXJzX3pjKHN0
-cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLCB1MTYgY2xlYW5lZF9jb3VudCwKIAlpIC09IHJ4X3Jp
-bmctPmNvdW50OwogCiAJZG8gewotCQlpZiAoIWFsbG9jKHJ4X3JpbmcsIGJpKSkgeworCQliaS0+
-eGRwID0geHNrX2J1ZmZfYWxsb2MocnhfcmluZy0+eHNrX3VtZW0pOworCQlpZiAoIWJpLT54ZHAp
-IHsKIAkJCW9rID0gZmFsc2U7CiAJCQlicmVhazsKIAkJfQogCi0JCS8qIHN5bmMgdGhlIGJ1ZmZl
-ciBmb3IgdXNlIGJ5IHRoZSBkZXZpY2UgKi8KLQkJZG1hX3N5bmNfc2luZ2xlX3JhbmdlX2Zvcl9k
-ZXZpY2UocnhfcmluZy0+ZGV2LCBiaS0+ZG1hLAotCQkJCQkJIGJpLT5wYWdlX29mZnNldCwKLQkJ
-CQkJCSByeF9yaW5nLT5yeF9idWZfbGVuLAotCQkJCQkJIERNQV9CSURJUkVDVElPTkFMKTsKKwkJ
-ZG1hID0geHNrX2J1ZmZfeGRwX2dldF9kbWEoYmktPnhkcCk7CiAKIAkJLyogUmVmcmVzaCB0aGUg
-ZGVzYyBldmVuIGlmIGJ1ZmZlcl9hZGRycyBkaWRuJ3QgY2hhbmdlCiAJCSAqIGJlY2F1c2UgZWFj
-aCB3cml0ZS1iYWNrIGVyYXNlcyB0aGlzIGluZm8uCiAJCSAqLwotCQlyeF9kZXNjLT5yZWFkLnBr
-dF9hZGRyID0gY3B1X3RvX2xlNjQoYmktPmRtYSk7CisJCXJ4X2Rlc2MtPnJlYWQucGt0X2FkZHIg
-PSBjcHVfdG9fbGU2NChkbWEpOwogCiAJCXJ4X2Rlc2MrKzsKIAkJYmkrKzsKQEAgLTM1NSwxNyAr
-MTc0LDE0IEBAIF9faXhnYmVfYWxsb2NfcnhfYnVmZmVyc196YyhzdHJ1Y3QgaXhnYmVfcmluZyAq
-cnhfcmluZywgdTE2IGNsZWFuZWRfY291bnQsCiAJCS8qIGNsZWFyIHRoZSBsZW5ndGggZm9yIHRo
-ZSBuZXh0X3RvX3VzZSBkZXNjcmlwdG9yICovCiAJCXJ4X2Rlc2MtPndiLnVwcGVyLmxlbmd0aCA9
-IDA7CiAKLQkJY2xlYW5lZF9jb3VudC0tOwotCX0gd2hpbGUgKGNsZWFuZWRfY291bnQpOworCQlj
-b3VudC0tOworCX0gd2hpbGUgKGNvdW50KTsKIAogCWkgKz0gcnhfcmluZy0+Y291bnQ7CiAKIAlp
-ZiAocnhfcmluZy0+bmV4dF90b191c2UgIT0gaSkgewogCQlyeF9yaW5nLT5uZXh0X3RvX3VzZSA9
-IGk7CiAKLQkJLyogdXBkYXRlIG5leHQgdG8gYWxsb2Mgc2luY2Ugd2UgaGF2ZSBmaWxsZWQgdGhl
-IHJpbmcgKi8KLQkJcnhfcmluZy0+bmV4dF90b19hbGxvYyA9IGk7Ci0KIAkJLyogRm9yY2UgbWVt
-b3J5IHdyaXRlcyB0byBjb21wbGV0ZSBiZWZvcmUgbGV0dGluZyBoL3cKIAkJICoga25vdyB0aGVy
-ZSBhcmUgbmV3IGRlc2NyaXB0b3JzIHRvIGZldGNoLiAgKE9ubHkKIAkJICogYXBwbGljYWJsZSBm
-b3Igd2Vhay1vcmRlcmVkIG1lbW9yeSBtb2RlbCBhcmNocywKQEAgLTM3OCw0MCArMTk0LDI3IEBA
-IF9faXhnYmVfYWxsb2NfcnhfYnVmZmVyc196YyhzdHJ1Y3QgaXhnYmVfcmluZyAqcnhfcmluZywg
-dTE2IGNsZWFuZWRfY291bnQsCiAJcmV0dXJuIG9rOwogfQogCi12b2lkIGl4Z2JlX2FsbG9jX3J4
-X2J1ZmZlcnNfemMoc3RydWN0IGl4Z2JlX3JpbmcgKnJ4X3JpbmcsIHUxNiBjb3VudCkKLXsKLQlf
-X2l4Z2JlX2FsbG9jX3J4X2J1ZmZlcnNfemMocnhfcmluZywgY291bnQsCi0JCQkJICAgIGl4Z2Jl
-X2FsbG9jX2J1ZmZlcl9zbG93X3pjKTsKLX0KLQotc3RhdGljIGJvb2wgaXhnYmVfYWxsb2Nfcnhf
-YnVmZmVyc19mYXN0X3pjKHN0cnVjdCBpeGdiZV9yaW5nICpyeF9yaW5nLAotCQkJCQkgICB1MTYg
-Y291bnQpCi17Ci0JcmV0dXJuIF9faXhnYmVfYWxsb2NfcnhfYnVmZmVyc196YyhyeF9yaW5nLCBj
-b3VudCwKLQkJCQkJICAgaXhnYmVfYWxsb2NfYnVmZmVyX3pjKTsKLX0KLQogc3RhdGljIHN0cnVj
-dCBza19idWZmICppeGdiZV9jb25zdHJ1Y3Rfc2tiX3pjKHN0cnVjdCBpeGdiZV9yaW5nICpyeF9y
-aW5nLAotCQkJCQkgICAgICBzdHJ1Y3QgaXhnYmVfcnhfYnVmZmVyICpiaSwKLQkJCQkJICAgICAg
-c3RydWN0IHhkcF9idWZmICp4ZHApCisJCQkJCSAgICAgIHN0cnVjdCBpeGdiZV9yeF9idWZmZXIg
-KmJpKQogewotCXVuc2lnbmVkIGludCBtZXRhc2l6ZSA9IHhkcC0+ZGF0YSAtIHhkcC0+ZGF0YV9t
-ZXRhOwotCXVuc2lnbmVkIGludCBkYXRhc2l6ZSA9IHhkcC0+ZGF0YV9lbmQgLSB4ZHAtPmRhdGE7
-CisJdW5zaWduZWQgaW50IG1ldGFzaXplID0gYmktPnhkcC0+ZGF0YSAtIGJpLT54ZHAtPmRhdGFf
-bWV0YTsKKwl1bnNpZ25lZCBpbnQgZGF0YXNpemUgPSBiaS0+eGRwLT5kYXRhX2VuZCAtIGJpLT54
-ZHAtPmRhdGE7CiAJc3RydWN0IHNrX2J1ZmYgKnNrYjsKIAogCS8qIGFsbG9jYXRlIGEgc2tiIHRv
-IHN0b3JlIHRoZSBmcmFncyAqLwogCXNrYiA9IF9fbmFwaV9hbGxvY19za2IoJnJ4X3JpbmctPnFf
-dmVjdG9yLT5uYXBpLAotCQkJICAgICAgIHhkcC0+ZGF0YV9lbmQgLSB4ZHAtPmRhdGFfaGFyZF9z
-dGFydCwKKwkJCSAgICAgICBiaS0+eGRwLT5kYXRhX2VuZCAtIGJpLT54ZHAtPmRhdGFfaGFyZF9z
-dGFydCwKIAkJCSAgICAgICBHRlBfQVRPTUlDIHwgX19HRlBfTk9XQVJOKTsKIAlpZiAodW5saWtl
-bHkoIXNrYikpCiAJCXJldHVybiBOVUxMOwogCi0Jc2tiX3Jlc2VydmUoc2tiLCB4ZHAtPmRhdGEg
-LSB4ZHAtPmRhdGFfaGFyZF9zdGFydCk7Ci0JbWVtY3B5KF9fc2tiX3B1dChza2IsIGRhdGFzaXpl
-KSwgeGRwLT5kYXRhLCBkYXRhc2l6ZSk7CisJc2tiX3Jlc2VydmUoc2tiLCBiaS0+eGRwLT5kYXRh
-IC0gYmktPnhkcC0+ZGF0YV9oYXJkX3N0YXJ0KTsKKwltZW1jcHkoX19za2JfcHV0KHNrYiwgZGF0
-YXNpemUpLCBiaS0+eGRwLT5kYXRhLCBkYXRhc2l6ZSk7CiAJaWYgKG1ldGFzaXplKQogCQlza2Jf
-bWV0YWRhdGFfc2V0KHNrYiwgbWV0YXNpemUpOwogCi0JaXhnYmVfcmV1c2VfcnhfYnVmZmVyX3pj
-KHJ4X3JpbmcsIGJpKTsKKwl4c2tfYnVmZl9mcmVlKGJpLT54ZHApOworCWJpLT54ZHAgPSBOVUxM
-OwogCXJldHVybiBza2I7CiB9CiAKQEAgLTQzNCw5ICsyMzcsNiBAQCBpbnQgaXhnYmVfY2xlYW5f
-cnhfaXJxX3pjKHN0cnVjdCBpeGdiZV9xX3ZlY3RvciAqcV92ZWN0b3IsCiAJdW5zaWduZWQgaW50
-IHhkcF9yZXMsIHhkcF94bWl0ID0gMDsKIAlib29sIGZhaWx1cmUgPSBmYWxzZTsKIAlzdHJ1Y3Qg
-c2tfYnVmZiAqc2tiOwotCXN0cnVjdCB4ZHBfYnVmZiB4ZHA7Ci0KLQl4ZHAucnhxID0gJnJ4X3Jp
-bmctPnhkcF9yeHE7CiAKIAl3aGlsZSAobGlrZWx5KHRvdGFsX3J4X3BhY2tldHMgPCBidWRnZXQp
-KSB7CiAJCXVuaW9uIGl4Z2JlX2Fkdl9yeF9kZXNjICpyeF9kZXNjOwpAQCAtNDQ2LDggKzI0Niw4
-IEBAIGludCBpeGdiZV9jbGVhbl9yeF9pcnFfemMoc3RydWN0IGl4Z2JlX3FfdmVjdG9yICpxX3Zl
-Y3RvciwKIAkJLyogcmV0dXJuIHNvbWUgYnVmZmVycyB0byBoYXJkd2FyZSwgb25lIGF0IGEgdGlt
-ZSBpcyB0b28gc2xvdyAqLwogCQlpZiAoY2xlYW5lZF9jb3VudCA+PSBJWEdCRV9SWF9CVUZGRVJf
-V1JJVEUpIHsKIAkJCWZhaWx1cmUgPSBmYWlsdXJlIHx8Ci0JCQkJICAhaXhnYmVfYWxsb2Nfcnhf
-YnVmZmVyc19mYXN0X3pjKHJ4X3JpbmcsCi0JCQkJCQkJCSBjbGVhbmVkX2NvdW50KTsKKwkJCQkg
-ICFpeGdiZV9hbGxvY19yeF9idWZmZXJzX3pjKHJ4X3JpbmcsCisJCQkJCQkJICAgICBjbGVhbmVk
-X2NvdW50KTsKIAkJCWNsZWFuZWRfY291bnQgPSAwOwogCQl9CiAKQEAgLTQ2Miw0MiArMjYyLDQw
-IEBAIGludCBpeGdiZV9jbGVhbl9yeF9pcnFfemMoc3RydWN0IGl4Z2JlX3FfdmVjdG9yICpxX3Zl
-Y3RvciwKIAkJICovCiAJCWRtYV9ybWIoKTsKIAotCQliaSA9IGl4Z2JlX2dldF9yeF9idWZmZXJf
-emMocnhfcmluZywgc2l6ZSk7CisJCWJpID0gJnJ4X3JpbmctPnJ4X2J1ZmZlcl9pbmZvW3J4X3Jp
-bmctPm5leHRfdG9fY2xlYW5dOwogCiAJCWlmICh1bmxpa2VseSghaXhnYmVfdGVzdF9zdGF0ZXJy
-KHJ4X2Rlc2MsCiAJCQkJCQkgSVhHQkVfUlhEX1NUQVRfRU9QKSkpIHsKIAkJCXN0cnVjdCBpeGdi
-ZV9yeF9idWZmZXIgKm5leHRfYmk7CiAKLQkJCWl4Z2JlX3JldXNlX3J4X2J1ZmZlcl96YyhyeF9y
-aW5nLCBiaSk7CisJCQl4c2tfYnVmZl9mcmVlKGJpLT54ZHApOworCQkJYmktPnhkcCA9IE5VTEw7
-CiAJCQlpeGdiZV9pbmNfbnRjKHJ4X3JpbmcpOwogCQkJbmV4dF9iaSA9CiAJCQkgICAgICAgJnJ4
-X3JpbmctPnJ4X2J1ZmZlcl9pbmZvW3J4X3JpbmctPm5leHRfdG9fY2xlYW5dOwotCQkJbmV4dF9i
-aS0+c2tiID0gRVJSX1BUUigtRUlOVkFMKTsKKwkJCW5leHRfYmktPmRpc2NhcmQgPSB0cnVlOwog
-CQkJY29udGludWU7CiAJCX0KIAotCQlpZiAodW5saWtlbHkoYmktPnNrYikpIHsKLQkJCWl4Z2Jl
-X3JldXNlX3J4X2J1ZmZlcl96YyhyeF9yaW5nLCBiaSk7CisJCWlmICh1bmxpa2VseShiaS0+ZGlz
-Y2FyZCkpIHsKKwkJCXhza19idWZmX2ZyZWUoYmktPnhkcCk7CisJCQliaS0+eGRwID0gTlVMTDsK
-KwkJCWJpLT5kaXNjYXJkID0gZmFsc2U7CiAJCQlpeGdiZV9pbmNfbnRjKHJ4X3JpbmcpOwogCQkJ
-Y29udGludWU7CiAJCX0KIAotCQl4ZHAuZGF0YSA9IGJpLT5hZGRyOwotCQl4ZHAuZGF0YV9tZXRh
-ID0geGRwLmRhdGE7Ci0JCXhkcC5kYXRhX2hhcmRfc3RhcnQgPSB4ZHAuZGF0YSAtIFhEUF9QQUNL
-RVRfSEVBRFJPT007Ci0JCXhkcC5kYXRhX2VuZCA9IHhkcC5kYXRhICsgc2l6ZTsKLQkJeGRwLmhh
-bmRsZSA9IGJpLT5oYW5kbGU7Ci0KLQkJeGRwX3JlcyA9IGl4Z2JlX3J1bl94ZHBfemMoYWRhcHRl
-ciwgcnhfcmluZywgJnhkcCk7CisJCWJpLT54ZHAtPmRhdGFfZW5kID0gYmktPnhkcC0+ZGF0YV9l
-bmQgKyBzaXplOworCQl4c2tfYnVmZl9kbWFfc3luY19mb3JfY3B1KGJpLT54ZHApOworCQl4ZHBf
-cmVzID0gaXhnYmVfcnVuX3hkcF96YyhhZGFwdGVyLCByeF9yaW5nLCBiaS0+eGRwKTsKIAogCQlp
-ZiAoeGRwX3JlcykgewotCQkJaWYgKHhkcF9yZXMgJiAoSVhHQkVfWERQX1RYIHwgSVhHQkVfWERQ
-X1JFRElSKSkgeworCQkJaWYgKHhkcF9yZXMgJiAoSVhHQkVfWERQX1RYIHwgSVhHQkVfWERQX1JF
-RElSKSkKIAkJCQl4ZHBfeG1pdCB8PSB4ZHBfcmVzOwotCQkJCWJpLT5hZGRyID0gTlVMTDsKLQkJ
-CQliaS0+c2tiID0gTlVMTDsKLQkJCX0gZWxzZSB7Ci0JCQkJaXhnYmVfcmV1c2VfcnhfYnVmZmVy
-X3pjKHJ4X3JpbmcsIGJpKTsKLQkJCX0KKwkJCWVsc2UKKwkJCQl4c2tfYnVmZl9mcmVlKGJpLT54
-ZHApOworCisJCQliaS0+eGRwID0gTlVMTDsKIAkJCXRvdGFsX3J4X3BhY2tldHMrKzsKIAkJCXRv
-dGFsX3J4X2J5dGVzICs9IHNpemU7CiAKQEAgLTUwNyw3ICszMDUsNyBAQCBpbnQgaXhnYmVfY2xl
-YW5fcnhfaXJxX3pjKHN0cnVjdCBpeGdiZV9xX3ZlY3RvciAqcV92ZWN0b3IsCiAJCX0KIAogCQkv
-KiBYRFBfUEFTUyBwYXRoICovCi0JCXNrYiA9IGl4Z2JlX2NvbnN0cnVjdF9za2JfemMocnhfcmlu
-ZywgYmksICZ4ZHApOworCQlza2IgPSBpeGdiZV9jb25zdHJ1Y3Rfc2tiX3pjKHJ4X3JpbmcsIGJp
-KTsKIAkJaWYgKCFza2IpIHsKIAkJCXJ4X3JpbmctPnJ4X3N0YXRzLmFsbG9jX3J4X2J1ZmZfZmFp
-bGVkKys7CiAJCQlicmVhazsKQEAgLTU1OSwxNyArMzU3LDE3IEBAIGludCBpeGdiZV9jbGVhbl9y
-eF9pcnFfemMoc3RydWN0IGl4Z2JlX3FfdmVjdG9yICpxX3ZlY3RvciwKIAogdm9pZCBpeGdiZV94
-c2tfY2xlYW5fcnhfcmluZyhzdHJ1Y3QgaXhnYmVfcmluZyAqcnhfcmluZykKIHsKLQl1MTYgaSA9
-IHJ4X3JpbmctPm5leHRfdG9fY2xlYW47Ci0Jc3RydWN0IGl4Z2JlX3J4X2J1ZmZlciAqYmkgPSAm
-cnhfcmluZy0+cnhfYnVmZmVyX2luZm9baV07CisJc3RydWN0IGl4Z2JlX3J4X2J1ZmZlciAqYmk7
-CisJdTE2IGk7CiAKLQl3aGlsZSAoaSAhPSByeF9yaW5nLT5uZXh0X3RvX2FsbG9jKSB7Ci0JCXhz
-a191bWVtX2ZxX3JldXNlKHJ4X3JpbmctPnhza191bWVtLCBiaS0+aGFuZGxlKTsKLQkJaSsrOwot
-CQliaSsrOwotCQlpZiAoaSA9PSByeF9yaW5nLT5jb3VudCkgewotCQkJaSA9IDA7Ci0JCQliaSA9
-IHJ4X3JpbmctPnJ4X2J1ZmZlcl9pbmZvOwotCQl9CisJZm9yIChpID0gMDsgaSA8IHJ4X3Jpbmct
-PmNvdW50OyBpKyspIHsKKwkJYmkgPSAmcnhfcmluZy0+cnhfYnVmZmVyX2luZm9baV07CisKKwkJ
-aWYgKCFiaS0+eGRwKQorCQkJY29udGludWU7CisKKwkJeHNrX2J1ZmZfZnJlZShiaS0+eGRwKTsK
-KwkJYmktPnhkcCA9IE5VTEw7CiAJfQogfQogCkBAIC01OTIsMTAgKzM5MCw5IEBAIHN0YXRpYyBi
-b29sIGl4Z2JlX3htaXRfemMoc3RydWN0IGl4Z2JlX3JpbmcgKnhkcF9yaW5nLCB1bnNpZ25lZCBp
-bnQgYnVkZ2V0KQogCQlpZiAoIXhza191bWVtX2NvbnN1bWVfdHgoeGRwX3JpbmctPnhza191bWVt
-LCAmZGVzYykpCiAJCQlicmVhazsKIAotCQlkbWEgPSB4ZHBfdW1lbV9nZXRfZG1hKHhkcF9yaW5n
-LT54c2tfdW1lbSwgZGVzYy5hZGRyKTsKLQotCQlkbWFfc3luY19zaW5nbGVfZm9yX2RldmljZSh4
-ZHBfcmluZy0+ZGV2LCBkbWEsIGRlc2MubGVuLAotCQkJCQkgICBETUFfQklESVJFQ1RJT05BTCk7
-CisJCWRtYSA9IHhza19idWZmX3Jhd19nZXRfZG1hKHhkcF9yaW5nLT54c2tfdW1lbSwgZGVzYy5h
-ZGRyKTsKKwkJeHNrX2J1ZmZfcmF3X2RtYV9zeW5jX2Zvcl9kZXZpY2UoeGRwX3JpbmctPnhza191
-bWVtLCBkbWEsCisJCQkJCQkgZGVzYy5sZW4pOwogCiAJCXR4X2JpID0gJnhkcF9yaW5nLT50eF9i
-dWZmZXJfaW5mb1t4ZHBfcmluZy0+bmV4dF90b191c2VdOwogCQl0eF9iaS0+Ynl0ZWNvdW50ID0g
-ZGVzYy5sZW47Ci0tIAoyLjI1LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFu
-QG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50
-ZWwtd2lyZWQtbGFuCg==
+--===============0693165018321576774==
+Content-Type: multipart/alternative; boundary="000000000000bed09605a4d2ed84"
+
+--000000000000bed09605a4d2ed84
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+>
+> > We have a computer logging a high rate of ethernet packets ( 25k
+>> > packets/sec ~70 Mb/sec);   But we're having trouble convincing the
+>> hardware
+>> > to receive all of these packets, at a sustained rate -- specifically
+>> we're
+>> > dropping packets while processing through the kernel layers.    We're
+>> > currently attempting to optimize the network stack,  but we're having
+>> > trouble setting the driver parameters... which is what this message is
+>> all
+>> > about.
+>>
+>
+> That's weird. That packet rate is not *that* high, the Linux kernel
+> should be able to handle that fine.
+
+
+> Can you give more details of the workload you are running?
+>
+
+Okay, in more detail: we have two groups of incoming streams:  (for the
+minimum setup to cause a problem)
+- 4x Camera Streams  each transmits a 3.2mb image every .1 s, split into
+jumbo frames (mtu is set to the full 9000)
+- Constant stream of data from a Lidar at 18k packets / sec.  Each packet
+is 1206 bytes long.
+- Both streams continue steady-state, indefinitely (we have verified
+behavior out to 4 hours so far)
+
+We receive all of these over ethernet, and routed to a single network port
+on a single NIC.   The driver is the 'igb' kernel module, as supplied from
+ubuntu.
+The OS is Ubuntu 16.04 LTS with a 4.15.0-88-lowlatency kernel.
+
+----
+Biggest Problem:
+
+Over time decay of packet processing.
+
+We've been working on this for a couple of weeks; when the processes start
+we're logging the full data rate (~24kpps) but over time, something slows
+down, and our logging rate shrinks.
+(on the order of 20 packets / second / minute, consistently falling over
+hours. ... after the first hour, we've lost 500 pps, after the second hour,
+1kpps... etc.)
+
+Our user-land process simply isn't seeing the full count of packets -- we
+have debug code that reads it from the OS, and then immediately drops the
+buffer on the floor.  Generally, we see drops in netstat, but not in the
+driver. (i.e. from `ethtool -S | grep rx_*`)
+So, our tentative guess is that we want to tune some parameters, somewhere
+in the kernel or network driver to help out the kernel.    Ideas welcome,
+of course :)
+
+( We are *also* dropping from the ring buffer, when both the lidar stream
+and a camera stream are assigned to the same queue, but that looks like a
+releated but separate issue)
+
+Things we've tried / checked:
+- irq alignment -- they're already reasonable set
+- cpu assignment (via `taskset`)
+- change processor task scheduling / priority (no effect)
+
+Ideas:
+- what is the default hash algorithm?  if we can't change it, maybe we can
+work around it?
+- is there any other way to set the queue settings on this network card?
+Debug tool?  Rebuilding the kernel module with custom settings?
+- Our hardware also has an 82579 NIC as well -- would you guys recommend we
+use that NIC, instead?
+- Do other network cards / chipsets have better support under linux?
+Particularly when tuning input queues?
+
+
+Daniel Williams  |  Software Engineer
+dwilliams@nextdroid.com
+
+
+
+On Thu, Apr 30, 2020 at 7:48 PM Vinicius Costa Gomes <
+vinicius.gomes@intel.com> wrote:
+
+> Dan Williams <dwilliams@nextdroid.com> writes:
+>
+> > Does the 'igb` kernel module support setting "2-Tuple filters" (aka
+> > `--config-ntuple`, aka RFS) on a I-210IC NIC?
+> > - Is this the appropriate mailing list?
+> > - If not, which module *should* we be using instead?
+> > - If so, how do we enable it in the 'igb' driver?
+> >
+> >
+> > *.1. Context: *
+> > Hey, all, we're running into a very perplexing configuration issue, whi=
+le
+> > trying to tune our 'igb' driver, and the documentation out there is
+> > sparse.  All the examples we've found come up dry.  (either by throwing
+> > errors with our setup, or emitting nothing but opaque error messages:
+> > "Operation not supported"  "invalid argument")   Hopefully, someone on
+> the
+> > list can point us in the right direction.
+> >
+> > We have a computer logging a high rate of ethernet packets ( 25k
+> > packets/sec ~70 Mb/sec);   But we're having trouble convincing the
+> hardware
+> > to receive all of these packets, at a sustained rate -- specifically
+> we're
+> > dropping packets while processing through the kernel layers.    We're
+> > currently attempting to optimize the network stack,  but we're having
+> > trouble setting the driver parameters... which is what this message is
+> all
+> > about.
+>
+> That's weird. That packet rate is not *that* high, the Linux kernel
+> should be able to handle that fine.
+>
+> Can you give more details of the workload you are running?
+>
+> >
+> > *.2. Platform Summary:*
+> > Hardware:
+> > Advantech 3500
+> > <
+> https://www.advantech.com/products/1-2jkd2d/ark-3500/mod_adb8f9a9-4b1b-4c=
+f5-84ba-9e135c099c43
+> >
+> > CPU ($ lscpu):
+> > Architecture:         x86_64
+> > CPU family:          6
+> > Model:                  58
+> > Model name:        Intel(R) Core(TM) i7-3610QE CPU @ 2.30GHz
+> > NIC ($ lspci -vs 02:00.0)
+> > 02:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network
+> > Connection (rev 03)
+> > Flags: bus master, fast devsel, latency 0, IRQ 18
+> > OS ($ lsb_release -a)
+> > Ubuntu 16.04.6 LTS
+> > Kernel (`uname -r`):
+> > 4.15.0-88-lowlatency
+> > Kernel Module ($ modinfo igb)
+> > filename:
+> >
+> /lib/modules/4.15.0-88-lowlatency/kernel/drivers/net/ethernet/intel/igb/i=
+gb.ko
+> > version:        5.4.0-k
+> > license:        GPL
+> > Ethtool Version ($ ethtool --version)
+> > ethtool version 4.5
+>
+> There had been a lot of improvements in the network stack in the last 4
+> years, trying with a recent kernel, if possible, would be useful to know
+> if the issue you are seeing persists.
+>
+> >
+> > *.3. What have we tried so far:*
+> > .3.a.  The NIC supports what we want to do:
+> > The data sheet,
+> > <
+> https://www.google.com/url?sa=3Dt&rct=3Dj&q=3D&esrc=3Ds&source=3Dweb&cd=
+=3D1&cad=3Drja&uact=3D8&ved=3D2ahUKEwj_nona25DpAhWPoHIEHfvYBWcQFjAAegQIARAB=
+&url=3Dhttps%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fembedded%2Fp=
+roducts%2Fnetworking%2Fi210-ethernet-controller-datasheet.html&usg=3DAOvVaw=
+1N7hqg0JJAaqXsomLAUhfB
+> >
+> > in section 7.1.2.4 "2-Tuple Filters", says:
+> >
+> >> The 2-tuple filters are configured via the TTQF (See Section 8.11.3),
+> IMIR
+> >> (See Section 8.11.1) and
+> >> IMIR_EXT (See Section 8.11.2) registers as follows (per filter):
+> >>
+>
+> The problem is that the NIC supports the 2-tuple filters, but support
+> for using them in Linux was never added.
+>
+> >
+> > Am I correct in assuming these are the mechanisms the 'igb' driver is
+> > interfacing with?
+>
+> You are right.
+>
+> >
+> > .3.b.   What is the flow table currenttly?
+> >
+> >> # ethtool --show-rxfh enp2s0
+> >> RX flow hash indirection table for enp2s0 with 4 RX ring(s):
+> >>     0:      0     0     0     0     0     0     0     0
+> >>     8:      0     0     0     0     0     0     0     0
+> >>    16:      0     0     0     0     0     0     0     0
+> >>    24:      0     0     0     0     0     0     0     0
+> >>    32:      0     0     0     0     0     0     0     0
+> >>    40:      0     0     1     1     1     1     1     1
+> >>    48:      1     1     1     1     1     1     1     1
+> >>    56:      1     1     1     1     1     1     1     1
+> >>    64:      1     1     1     1     1     1     1     1
+> >>    72:      1     1     1     1     1     1     1     1
+> >>    80:      1     1     1     1     1     2     2     2
+> >>    88:      2     2     2     2     2     2     2     2
+> >>    96:      2     2     2     2     2     2     2     2
+> >>   104:      2     2     2     2     2     2     2     2
+> >>   112:      2     2     2     2     2     2     2     2
+> >>   120:      2     2     2     2     2     2     2     2
+> >> RSS hash key:
+> >> Operation not supported
+> >>
+> >
+> > "Operation not supported" -- does this mean the NIC has RSS routing
+> > hard-coded? And we cannot change the hash-function?
+> > Or is RSS just hard-coded?
+>
+> IIRC the function and hash key cannot be changed, the only thing that
+> can be changed is the indirection table, i.e. assigning different
+> "target" queues to different hash values.
+>
+> >
+> >
+> > .3.c. Current "Hash flow" settings:
+> >
+> >> # ethtool -n  enp2s0 rx-flow-hash udp4
+> >> UDP over IPV4 flows use these fields for computing Hash flow key:
+> >> IP SA
+> >> IP DA
+> >> L4 bytes 0 & 1 [TCP/UDP src port]
+> >> L4 bytes 2 & 3 [TCP/UDP dst port]
+> >>
+> >
+> >
+> >> # sudo ethtool -n enp2s0
+> >> 4 RX rings available
+> >> Total 0 rules
+> >>
+> >
+> >
+> > .3.d.  Enable ntuple features:
+> >
+> >> # ethtool --show-features enp2s0 | grep ntuple
+> >> ntuple-filters: on
+> >>
+> >
+> > .3.e. Add ntuple rule: Commands Tried:
+> >
+> >> # ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.43 dst-ip 0.0.0.0
+> >> src-port 555 dst-port 2368 action -1
+> >> rmgr: Cannot insert RX class rule: Invalid argument
+> >> # ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.43 action 1
+> >> rmgr: Cannot insert RX class rule: Invalid argument
+> >>
+> > # ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1
+> >> rmgr: Cannot insert RX class rule: Invalid argument
+> >> # ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1 loc 4
+> >> rmgr: Cannot insert RX class rule: Invalid argument
+> >>
+>
+> Right now, only filters for ethernet addresses, ethtype, VLAN ID and PCP
+> are implemented. I agree that returning -EINVAL is not helpful.
+>
+> >
+> > .3.f. More Interface info:
+> >
+> >> # ethtool -i enp2s0
+> >> driver: igb
+> >> version: 5.4.0-k
+> >> firmware-version: 3.16, 0x800004ad
+> >> expansion-rom-version:
+> >> bus-info: 0000:02:00.0
+> >> supports-statistics: yes
+> >> supports-test: yes
+> >> supports-eeprom-access: yes
+> >> supports-register-dump: yes
+> >> supports-priv-flags: yes
+> >>
+> >
+> > # ethtool -t enp2s0
+> >> The test result is PASS
+> >> The test extra info:
+> >> Register test  (offline) 0
+> >> Eeprom test    (offline) 0
+> >> Interrupt test (offline) 0
+> >> Loopback test  (offline) 0
+> >> Link test   (on/offline) 0
+> >>
+> >
+> >
+> >
+> >
+> >
+> >
+> > Daniel Williams  |  Software Engineer
+> > dwilliams@nextdroid.com
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+>
+> --
+> Vinicius
+>
+
+--000000000000bed09605a4d2ed84
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
+0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex"><span class=3D"gmail-im">&gt; We =
+have a computer logging a high rate of ethernet packets ( 25k</span><br><sp=
+an class=3D"gmail-im">
+&gt; packets/sec ~70 Mb/sec);=C2=A0 =C2=A0But we&#39;re having trouble conv=
+incing the hardware</span><br><span class=3D"gmail-im">
+&gt; to receive all of these packets, at a sustained rate -- specifically w=
+e&#39;re</span><br><span class=3D"gmail-im">
+&gt; dropping packets while processing through the kernel layers.=C2=A0 =C2=
+=A0 We&#39;re</span><br><span class=3D"gmail-im">
+&gt; currently attempting to optimize the network stack,=C2=A0 but we&#39;r=
+e having</span><br><span class=3D"gmail-im">
+&gt; trouble setting the driver parameters... which is what this message is=
+ all</span><br><span class=3D"gmail-im">
+&gt; about.</span><br></blockquote><span class=3D"gmail-im">
+</span><br><span class=3D"gmail-im"></span>
+That&#39;s weird. That packet rate is not *that* high, the Linux kernel<br>
+should be able to handle that fine. </blockquote><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex"><br></blockquote><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">Can you give more details of the workload you are running? =
+<br></blockquote><div><br></div><div>Okay, in more detail: we have two grou=
+ps of incoming streams:=C2=A0 (for the minimum setup to cause a problem)</d=
+iv><div>- 4x Camera Streams=C2=A0 each transmits a 3.2mb image every .1 s, =
+split into jumbo  frames (mtu is set to the full 9000)<br></div><div>- Cons=
+tant stream of data from a Lidar at 18k packets / sec.=C2=A0 Each packet is=
+ 1206 bytes long. <br></div><div>- Both streams continue steady-state, inde=
+finitely (we have verified behavior out to 4 hours so far)<br></div><div><b=
+r></div><div>We receive all of these over ethernet, and routed to a single =
+network port on a single NIC.=C2=A0=C2=A0 The driver is the &#39;igb&#39; k=
+ernel module, as supplied from ubuntu.</div><div>The OS is Ubuntu 16.04 LTS=
+ with a <span class=3D"gmail-im">4.15.0-88-lowlatency kernel.<br></span></d=
+iv><div><span class=3D"gmail-im"><br></span></div><div><span class=3D"gmail=
+-im">----</span></div><div><span class=3D"gmail-im">Biggest Problem:</span>=
+</div><div><span class=3D"gmail-im"><br></span></div><div><span class=3D"gm=
+ail-im">Over time decay of packet processing.<br></span></div><div><span cl=
+ass=3D"gmail-im"><br></span></div><div><span class=3D"gmail-im">We&#39;ve b=
+een working on this for a couple of weeks; when the processes start we&#39;=
+re logging the full data rate (~24kpps) but over time, something slows down=
+, and our logging rate shrinks. <br></span></div><div><span class=3D"gmail-=
+im">(on the order of 20 packets / second / minute, consistently falling ove=
+r hours. ... after the first hour, we&#39;ve lost 500 pps, after the second=
+ hour, 1kpps... etc.)<br></span></div>
+<div></div><div><br></div><div>Our user-land process simply isn&#39;t seein=
+g the full count of packets -- we have debug code that reads it from the OS=
+, and then immediately drops the buffer on the floor.=C2=A0 Generally, we s=
+ee drops in netstat, but not in the driver. (i.e. from `ethtool -S | grep r=
+x_*`)</div><div>So, our tentative guess is that we want to tune some parame=
+ters, somewhere in the kernel or network driver to help out the kernel.=C2=
+=A0=C2=A0=C2=A0 Ideas welcome, of course :)<br></div><div></div><div><div><=
+br></div><div>( We are *also* dropping from the ring buffer, when both the =
+lidar stream and a camera stream are assigned to the same queue, but that l=
+ooks like a releated but separate issue)<br></div><div></div><div><br></div=
+><div>Things we&#39;ve tried / checked:</div><div>- irq alignment -- they&#=
+39;re already reasonable set</div><div>- cpu assignment (via `taskset`)</di=
+v><div>- change processor task scheduling / priority (no effect)<br></div><=
+/div><div></div><div></div><div><br></div><div>Ideas:<br></div><div>- what =
+is the default hash algorithm?=C2=A0 if we can&#39;t change it, maybe we ca=
+n work around it?<br></div><div>- is there any other way to set the queue s=
+ettings on this network card?=C2=A0=C2=A0 Debug tool?=C2=A0 Rebuilding the =
+kernel module with custom settings?</div><div></div><div>- Our hardware als=
+o has an 82579 NIC as well -- would you guys recommend we use that NIC, ins=
+tead?</div><div>- Do other network cards / chipsets have better support und=
+er linux?=C2=A0 Particularly when tuning input queues?<br></div><div></div>=
+<div><br></div><div><br></div><div></div>
+<div><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_sig=
+nature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><=
+div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=
+=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div>Daniel Williams=
+=C2=A0 |=C2=A0 Software Engineer</div><div><div><div><div><a href=3D"mailto=
+:dwilliams@nextdroid.com" target=3D"_blank">dwilliams@nextdroid.com</a></di=
+v><div></div></div></div><img src=3D"https://lh6.googleusercontent.com/JjJz=
+Z9yHCmcdJ_Z55X6d_P4c4iAt8saFm3bl62bYU5o0Y5h3F00lPa903F4tSbhL8G_FRep1Af7KNKX=
+xXN-RBvP4e7zum9fjfNsaYRsdJZy8dhefio-Xa_4jddPiP41M6O7ASZKB0CmT_BwRiQ" width=
+=3D"200" height=3D"56"><br></div></div></div></div></div></div></div></div>=
+</div></div></div></div></div></div></div></div></div></div></div></div><br=
+></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr"=
+>On Thu, Apr 30, 2020 at 7:48 PM Vinicius Costa Gomes &lt;<a href=3D"mailto=
+:vinicius.gomes@intel.com">vinicius.gomes@intel.com</a>&gt; wrote:<br></div=
+><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
+-left:1px solid rgb(204,204,204);padding-left:1ex">Dan Williams &lt;<a href=
+=3D"mailto:dwilliams@nextdroid.com" target=3D"_blank">dwilliams@nextdroid.c=
+om</a>&gt; writes:<br>
+<br>
+&gt; Does the &#39;igb` kernel module support setting &quot;2-Tuple filters=
+&quot; (aka<br>
+&gt; `--config-ntuple`, aka RFS) on a I-210IC NIC?<br>
+&gt; - Is this the appropriate mailing list?<br>
+&gt; - If not, which module *should* we be using instead?<br>
+&gt; - If so, how do we enable it in the &#39;igb&#39; driver?<br>
+&gt;<br>
+&gt;<br>
+&gt; *.1. Context: *<br>
+&gt; Hey, all, we&#39;re running into a very perplexing configuration issue=
+, while<br>
+&gt; trying to tune our &#39;igb&#39; driver, and the documentation out the=
+re is<br>
+&gt; sparse.=C2=A0 All the examples we&#39;ve found come up dry.=C2=A0 (eit=
+her by throwing<br>
+&gt; errors with our setup, or emitting nothing but opaque error messages:<=
+br>
+&gt; &quot;Operation not supported&quot;=C2=A0 &quot;invalid argument&quot;=
+)=C2=A0 =C2=A0Hopefully, someone on the<br>
+&gt; list can point us in the right direction.<br>
+&gt;<br>
+&gt; We have a computer logging a high rate of ethernet packets ( 25k<br>
+&gt; packets/sec ~70 Mb/sec);=C2=A0 =C2=A0But we&#39;re having trouble conv=
+incing the hardware<br>
+&gt; to receive all of these packets, at a sustained rate -- specifically w=
+e&#39;re<br>
+&gt; dropping packets while processing through the kernel layers.=C2=A0 =C2=
+=A0 We&#39;re<br>
+&gt; currently attempting to optimize the network stack,=C2=A0 but we&#39;r=
+e having<br>
+&gt; trouble setting the driver parameters... which is what this message is=
+ all<br>
+&gt; about.<br>
+<br>
+That&#39;s weird. That packet rate is not *that* high, the Linux kernel<br>
+should be able to handle that fine.<br>
+<br>
+Can you give more details of the workload you are running?<br>
+<br>
+&gt;<br>
+&gt; *.2. Platform Summary:*<br>
+&gt; Hardware:<br>
+&gt; Advantech 3500<br>
+&gt; &lt;<a href=3D"https://www.advantech.com/products/1-2jkd2d/ark-3500/mo=
+d_adb8f9a9-4b1b-4cf5-84ba-9e135c099c43" rel=3D"noreferrer" target=3D"_blank=
+">https://www.advantech.com/products/1-2jkd2d/ark-3500/mod_adb8f9a9-4b1b-4c=
+f5-84ba-9e135c099c43</a>&gt;<br>
+&gt; CPU ($ lscpu):<br>
+&gt; Architecture:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0x86_64<br>
+&gt; CPU family:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 6<br>
+&gt; Model:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 5=
+8<br>
+&gt; Model name:=C2=A0 =C2=A0 =C2=A0 =C2=A0 Intel(R) Core(TM) i7-3610QE CPU=
+ @ 2.30GHz<br>
+&gt; NIC ($ lspci -vs 02:00.0)<br>
+&gt; 02:00.0 Ethernet controller: Intel Corporation I210 Gigabit Network<br=
+>
+&gt; Connection (rev 03)<br>
+&gt; Flags: bus master, fast devsel, latency 0, IRQ 18<br>
+&gt; OS ($ lsb_release -a)<br>
+&gt; Ubuntu 16.04.6 LTS<br>
+&gt; Kernel (`uname -r`):<br>
+&gt; 4.15.0-88-lowlatency<br>
+&gt; Kernel Module ($ modinfo igb)<br>
+&gt; filename:<br>
+&gt; /lib/modules/4.15.0-88-lowlatency/kernel/drivers/net/ethernet/intel/ig=
+b/igb.ko<br>
+&gt; version:=C2=A0 =C2=A0 =C2=A0 =C2=A0 5.4.0-k<br>
+&gt; license:=C2=A0 =C2=A0 =C2=A0 =C2=A0 GPL<br>
+&gt; Ethtool Version ($ ethtool --version)<br>
+&gt; ethtool version 4.5<br>
+<br>
+There had been a lot of improvements in the network stack in the last 4<br>
+years, trying with a recent kernel, if possible, would be useful to know<br=
+>
+if the issue you are seeing persists.<br>
+<br>
+&gt;<br>
+&gt; *.3. What have we tried so far:*<br>
+&gt; .3.a.=C2=A0 The NIC supports what we want to do:<br>
+&gt; The data sheet,<br>
+&gt; &lt;<a href=3D"https://www.google.com/url?sa=3Dt&amp;rct=3Dj&amp;q=3D&=
+amp;esrc=3Ds&amp;source=3Dweb&amp;cd=3D1&amp;cad=3Drja&amp;uact=3D8&amp;ved=
+=3D2ahUKEwj_nona25DpAhWPoHIEHfvYBWcQFjAAegQIARAB&amp;url=3Dhttps%3A%2F%2Fww=
+w.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fembedded%2Fproducts%2Fnetworking%2F=
+i210-ethernet-controller-datasheet.html&amp;usg=3DAOvVaw1N7hqg0JJAaqXsomLAU=
+hfB" rel=3D"noreferrer" target=3D"_blank">https://www.google.com/url?sa=3Dt=
+&amp;rct=3Dj&amp;q=3D&amp;esrc=3Ds&amp;source=3Dweb&amp;cd=3D1&amp;cad=3Drj=
+a&amp;uact=3D8&amp;ved=3D2ahUKEwj_nona25DpAhWPoHIEHfvYBWcQFjAAegQIARAB&amp;=
+url=3Dhttps%3A%2F%2Fwww.intel.com%2Fcontent%2Fwww%2Fus%2Fen%2Fembedded%2Fpr=
+oducts%2Fnetworking%2Fi210-ethernet-controller-datasheet.html&amp;usg=3DAOv=
+Vaw1N7hqg0JJAaqXsomLAUhfB</a>&gt;<br>
+&gt; in section 7.1.2.4 &quot;2-Tuple Filters&quot;, says:<br>
+&gt;<br>
+&gt;&gt; The 2-tuple filters are configured via the TTQF (See Section 8.11.=
+3), IMIR<br>
+&gt;&gt; (See Section 8.11.1) and<br>
+&gt;&gt; IMIR_EXT (See Section 8.11.2) registers as follows (per filter):<b=
+r>
+&gt;&gt;<br>
+<br>
+The problem is that the NIC supports the 2-tuple filters, but support<br>
+for using them in Linux was never added.<br>
+<br>
+&gt;<br>
+&gt; Am I correct in assuming these are the mechanisms the &#39;igb&#39; dr=
+iver is<br>
+&gt; interfacing with?<br>
+<br>
+You are right.<br>
+<br>
+&gt;<br>
+&gt; .3.b.=C2=A0 =C2=A0What is the flow table currenttly?<br>
+&gt;<br>
+&gt;&gt; # ethtool --show-rxfh enp2s0<br>
+&gt;&gt; RX flow hash indirection table for enp2s0 with 4 RX ring(s):<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A00:=C2=A0 =C2=A0 =C2=A0 0=C2=A0 =C2=A0 =C2=A00=
+=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=
+=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A08:=C2=A0 =C2=A0 =C2=A0 0=C2=A0 =C2=A0 =C2=A00=
+=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=
+=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00<br>
+&gt;&gt;=C2=A0 =C2=A0 16:=C2=A0 =C2=A0 =C2=A0 0=C2=A0 =C2=A0 =C2=A00=C2=A0 =
+=C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=
+=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00<br>
+&gt;&gt;=C2=A0 =C2=A0 24:=C2=A0 =C2=A0 =C2=A0 0=C2=A0 =C2=A0 =C2=A00=C2=A0 =
+=C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=
+=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00<br>
+&gt;&gt;=C2=A0 =C2=A0 32:=C2=A0 =C2=A0 =C2=A0 0=C2=A0 =C2=A0 =C2=A00=C2=A0 =
+=C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=
+=A00=C2=A0 =C2=A0 =C2=A00=C2=A0 =C2=A0 =C2=A00<br>
+&gt;&gt;=C2=A0 =C2=A0 40:=C2=A0 =C2=A0 =C2=A0 0=C2=A0 =C2=A0 =C2=A00=C2=A0 =
+=C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=
+=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01<br>
+&gt;&gt;=C2=A0 =C2=A0 48:=C2=A0 =C2=A0 =C2=A0 1=C2=A0 =C2=A0 =C2=A01=C2=A0 =
+=C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=
+=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01<br>
+&gt;&gt;=C2=A0 =C2=A0 56:=C2=A0 =C2=A0 =C2=A0 1=C2=A0 =C2=A0 =C2=A01=C2=A0 =
+=C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=
+=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01<br>
+&gt;&gt;=C2=A0 =C2=A0 64:=C2=A0 =C2=A0 =C2=A0 1=C2=A0 =C2=A0 =C2=A01=C2=A0 =
+=C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=
+=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01<br>
+&gt;&gt;=C2=A0 =C2=A0 72:=C2=A0 =C2=A0 =C2=A0 1=C2=A0 =C2=A0 =C2=A01=C2=A0 =
+=C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=
+=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01<br>
+&gt;&gt;=C2=A0 =C2=A0 80:=C2=A0 =C2=A0 =C2=A0 1=C2=A0 =C2=A0 =C2=A01=C2=A0 =
+=C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=A01=C2=A0 =C2=A0 =C2=
+=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02<br>
+&gt;&gt;=C2=A0 =C2=A0 88:=C2=A0 =C2=A0 =C2=A0 2=C2=A0 =C2=A0 =C2=A02=C2=A0 =
+=C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=
+=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02<br>
+&gt;&gt;=C2=A0 =C2=A0 96:=C2=A0 =C2=A0 =C2=A0 2=C2=A0 =C2=A0 =C2=A02=C2=A0 =
+=C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=
+=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02<br>
+&gt;&gt;=C2=A0 =C2=A0104:=C2=A0 =C2=A0 =C2=A0 2=C2=A0 =C2=A0 =C2=A02=C2=A0 =
+=C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=
+=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02<br>
+&gt;&gt;=C2=A0 =C2=A0112:=C2=A0 =C2=A0 =C2=A0 2=C2=A0 =C2=A0 =C2=A02=C2=A0 =
+=C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=
+=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02<br>
+&gt;&gt;=C2=A0 =C2=A0120:=C2=A0 =C2=A0 =C2=A0 2=C2=A0 =C2=A0 =C2=A02=C2=A0 =
+=C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=
+=A02=C2=A0 =C2=A0 =C2=A02=C2=A0 =C2=A0 =C2=A02<br>
+&gt;&gt; RSS hash key:<br>
+&gt;&gt; Operation not supported<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt; &quot;Operation not supported&quot; -- does this mean the NIC has RSS =
+routing<br>
+&gt; hard-coded? And we cannot change the hash-function?<br>
+&gt; Or is RSS just hard-coded?<br>
+<br>
+IIRC the function and hash key cannot be changed, the only thing that<br>
+can be changed is the indirection table, i.e. assigning different<br>
+&quot;target&quot; queues to different hash values.<br>
+<br>
+&gt;<br>
+&gt;<br>
+&gt; .3.c. Current &quot;Hash flow&quot; settings:<br>
+&gt;<br>
+&gt;&gt; # ethtool -n=C2=A0 enp2s0 rx-flow-hash udp4<br>
+&gt;&gt; UDP over IPV4 flows use these fields for computing Hash flow key:<=
+br>
+&gt;&gt; IP SA<br>
+&gt;&gt; IP DA<br>
+&gt;&gt; L4 bytes 0 &amp; 1 [TCP/UDP src port]<br>
+&gt;&gt; L4 bytes 2 &amp; 3 [TCP/UDP dst port]<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt;&gt; # sudo ethtool -n enp2s0<br>
+&gt;&gt; 4 RX rings available<br>
+&gt;&gt; Total 0 rules<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; .3.d.=C2=A0 Enable ntuple features:<br>
+&gt;<br>
+&gt;&gt; # ethtool --show-features enp2s0 | grep ntuple<br>
+&gt;&gt; ntuple-filters: on<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt; .3.e. Add ntuple rule: Commands Tried:<br>
+&gt;<br>
+&gt;&gt; # ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.43 dst-ip 0.0.=
+0.0<br>
+&gt;&gt; src-port 555 dst-port 2368 action -1<br>
+&gt;&gt; rmgr: Cannot insert RX class rule: Invalid argument<br>
+&gt;&gt; # ethtool -U enp2s0 flow-type udp4 src-ip 192.168.3.43 action 1<br=
+>
+&gt;&gt; rmgr: Cannot insert RX class rule: Invalid argument<br>
+&gt;&gt;<br>
+&gt; # ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1<br>
+&gt;&gt; rmgr: Cannot insert RX class rule: Invalid argument<br>
+&gt;&gt; # ethtool -U enp2s0 flow-type ip4 src-ip 192.168.3.43 action 1 loc=
+ 4<br>
+&gt;&gt; rmgr: Cannot insert RX class rule: Invalid argument<br>
+&gt;&gt;<br>
+<br>
+Right now, only filters for ethernet addresses, ethtype, VLAN ID and PCP<br=
+>
+are implemented. I agree that returning -EINVAL is not helpful.<br>
+<br>
+&gt;<br>
+&gt; .3.f. More Interface info:<br>
+&gt;<br>
+&gt;&gt; # ethtool -i enp2s0<br>
+&gt;&gt; driver: igb<br>
+&gt;&gt; version: 5.4.0-k<br>
+&gt;&gt; firmware-version: 3.16, 0x800004ad<br>
+&gt;&gt; expansion-rom-version:<br>
+&gt;&gt; bus-info: 0000:02:00.0<br>
+&gt;&gt; supports-statistics: yes<br>
+&gt;&gt; supports-test: yes<br>
+&gt;&gt; supports-eeprom-access: yes<br>
+&gt;&gt; supports-register-dump: yes<br>
+&gt;&gt; supports-priv-flags: yes<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt; # ethtool -t enp2s0<br>
+&gt;&gt; The test result is PASS<br>
+&gt;&gt; The test extra info:<br>
+&gt;&gt; Register test=C2=A0 (offline) 0<br>
+&gt;&gt; Eeprom test=C2=A0 =C2=A0 (offline) 0<br>
+&gt;&gt; Interrupt test (offline) 0<br>
+&gt;&gt; Loopback test=C2=A0 (offline) 0<br>
+&gt;&gt; Link test=C2=A0 =C2=A0(on/offline) 0<br>
+&gt;&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; Daniel Williams=C2=A0 |=C2=A0 Software Engineer<br>
+&gt; <a href=3D"mailto:dwilliams@nextdroid.com" target=3D"_blank">dwilliams=
+@nextdroid.com</a><br>
+&gt; _______________________________________________<br>
+&gt; Intel-wired-lan mailing list<br>
+&gt; <a href=3D"mailto:Intel-wired-lan@osuosl.org" target=3D"_blank">Intel-=
+wired-lan@osuosl.org</a><br>
+&gt; <a href=3D"https://lists.osuosl.org/mailman/listinfo/intel-wired-lan" =
+rel=3D"noreferrer" target=3D"_blank">https://lists.osuosl.org/mailman/listi=
+nfo/intel-wired-lan</a><br>
+<br>
+-- <br>
+Vinicius<br>
+</blockquote></div>
+
+--000000000000bed09605a4d2ed84--
+
+--===============0693165018321576774==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============0693165018321576774==--
