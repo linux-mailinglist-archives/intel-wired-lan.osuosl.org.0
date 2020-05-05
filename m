@@ -1,57 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0CE21C6434
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 May 2020 00:55:46 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 211751C6436
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 May 2020 00:59:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6886287789;
-	Tue,  5 May 2020 22:55:45 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2863220512;
+	Tue,  5 May 2020 22:59:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k4VipvB8dNQ0; Tue,  5 May 2020 22:55:45 +0000 (UTC)
+	with ESMTP id AYHYzsTKgU+x; Tue,  5 May 2020 22:59:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BFE5C8789A;
-	Tue,  5 May 2020 22:55:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 157AD204E9;
+	Tue,  5 May 2020 22:59:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4883B1BF479
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 May 2020 22:55:42 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A70841BF21A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 May 2020 22:59:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4232B869EC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 May 2020 22:55:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 99A4A8869B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 May 2020 22:59:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HQfoZcfDQRxc for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 May 2020 22:55:41 +0000 (UTC)
+ with ESMTP id EUS2NwxNEJj8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 May 2020 22:59:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1B43387789
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 May 2020 22:55:41 +0000 (UTC)
-IronPort-SDR: GLor9loKdjVAMihWDE6d9B9L7U4KLETyxQAT55vKmEeNqRIoBAgCxcjVB13LdO6fhZ/Tslp2R2
- LeFuZcGXerqQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 May 2020 15:55:40 -0700
-IronPort-SDR: lG7nkmaHhl0JuAas84aYiQHl1LEATlA3U0cAFVTj1U5A9zymMmSX/OLxgch8K5GXudQUPupOrw
- QN7I3kdFCWJg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,357,1583222400"; d="scan'208";a="295994766"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.33])
- by orsmga008.jf.intel.com with ESMTP; 05 May 2020 15:55:40 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue,  5 May 2020 15:55:37 -0700
-Message-Id: <20200505225537.3318391-1-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.25.2
+Received: from us-smtp-1.mimecast.com (us-smtp-2.mimecast.com [205.139.110.61])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A219C8869A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 May 2020 22:59:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1588719559;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vLmdw3LXI4CtXnPp/sh022YqaVJWK6SleAWQvTfde7A=;
+ b=OS0M6mAb3fQQeGBkMEgcBgKq+mrglQAn4+t+4QfT26j45EXN11A0mhkFv7toOFl30csyF8
+ 86Z501B+vSVCwQUpEQXFo51vvxI4uu7wENlhIHuq0DdsRmZ9pAzj74g/yywGAtrFQzFJQM
+ 9+qasUh/HZpbTqsEtNHKiRJIcOYyYg4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-20-B6M9_wFJNq6Ytglhin6_Vg-1; Tue, 05 May 2020 18:59:15 -0400
+X-MC-Unique: B6M9_wFJNq6Ytglhin6_Vg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 389A1835B8B;
+ Tue,  5 May 2020 22:59:13 +0000 (UTC)
+Received: from hp-dl360pgen8-07.khw2.lab.eng.bos.redhat.com
+ (hp-dl360pgen8-07.khw2.lab.eng.bos.redhat.com [10.16.210.135])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 592885D9C5;
+ Tue,  5 May 2020 22:59:11 +0000 (UTC)
+From: Jarod Wilson <jarod@redhat.com>
+To: linux-kernel@vger.kernel.org
+Date: Tue,  5 May 2020 18:58:35 -0400
+Message-Id: <20200505225838.59505-1-jarod@redhat.com>
+In-Reply-To: <20200504145943.8841-1-jarod@redhat.com>
+References: <20200504145943.8841-1-jarod@redhat.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next] ice: report netlist version in
- .info_get
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Subject: [Intel-wired-lan] [RFC PATCH net-next v2 0/3] bonding: support
+ hardware crypto offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,269 +77,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Steffen Klassert <steffen.klassert@secunet.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Jay Vosburgh <j.vosburgh@gmail.com>,
+ Veaceslav Falico <vfalico@gmail.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, Andy Gospodarek <andy@greyhouse.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The flash memory for the ice hardware contains a block of information
-used for link management called the Netlist module.
+This is an initial "proof of concept" functional implementation for doing
+pass-through of hardware encryption from bonding device to capable slaves.
+This was tested using an ixgbe-driven Intel x520 NIC with libreswan and a
+transport mode connection, on top of an active-backup bond, using netperf
+and downing an interface during. Failover takes a moment, but does work,
+and overall performance is right on par with offload when running on a
+bare interface.
 
-As this essentially represents another section of firmware, add its
-version information to the output of the driver's .info_get handler.
+Caveats: this is ONLY enabled for active-backup, because I'm not sure
+how one would manage multiple offload handles for different devices all
+running at the same time in the same xfrm, and it relies on some minor
+changes to both the xfrm code and slave device driver code to get things
+to behave, and I don't have immediate access to any other hardware that
+could function similarly to update driver code accordingly.
 
-This includes both a version and the first few bytes of a hash of the
-module contents.
+I'm hoping folks with more of an idea about xfrm have some thoughts on
+ways to make this cleaner, and possibly support more bonding modes, but
+I'm reasonably happy I've made it this far. :)
 
-  fw.netlist -> the version information extracted from the netlist module
-  fw.netlist.build-> first 4 bytes of the hash of the contents, similar
-                     to fw.mgmt.build
+v2: fix build with CONFIG_XFRM_OFFLOAD disabled and rebase on latest
+    net-next tree bonding changes
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- Documentation/networking/devlink/ice.rst      | 11 +++
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 27 ++++++
- drivers/net/ethernet/intel/ice/ice_devlink.c  | 23 +++++
- drivers/net/ethernet/intel/ice/ice_nvm.c      | 86 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_type.h     | 11 +++
- 5 files changed, 158 insertions(+)
+CC: Jay Vosburgh <j.vosburgh@gmail.com>
+CC: Veaceslav Falico <vfalico@gmail.com>
+CC: Andy Gospodarek <andy@greyhouse.net>
+CC: "David S. Miller" <davem@davemloft.net>
+CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+CC: Jakub Kicinski <kuba@kernel.org>
+CC: Steffen Klassert <steffen.klassert@secunet.com>
+CC: Herbert Xu <herbert@gondor.apana.org.au>
+CC: netdev@vger.kernel.org
+CC: intel-wired-lan@lists.osuosl.org
 
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 5b58fc4e1268..b7c1c3602b1c 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -69,6 +69,17 @@ The ``ice`` driver reports the following versions
-       - The version of the DDP package that is active in the device. Note
-         that both the name (as reported by ``fw.app.name``) and version are
-         required to uniquely identify the package.
-+    * - ``fw.netlist``
-+      - running
-+      - 1.1.2000-6.7.0
-+      - The version of the netlist module. This module defines the device's
-+        Ethernet capabilities and default settings, and is used by the
-+        management firmware as part of managing link and device
-+        connectivity.
-+    * - ``fw.netlist.build``
-+      - running
-+      - 0xee16ced7
-+      - The first 4 bytes of the hash of the netlist module contents.
- 
- Regions
- =======
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index a1066c4bf40d..214c8f1c699f 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1265,6 +1265,33 @@ struct ice_aqc_nvm_checksum {
- 	u8 rsvd2[12];
- };
- 
-+/* The result of netlist NVM read comes in a TLV format. The actual data
-+ * (netlist header) starts from word offset 1 (byte 2). The FW strips
-+ * out the type field from the TLV header so all the netlist fields
-+ * should adjust their offset value by 1 word (2 bytes) in order to map
-+ * their correct location.
-+ */
-+#define ICE_AQC_NVM_LINK_TOPO_NETLIST_MOD_ID		0x11B
-+#define ICE_AQC_NVM_LINK_TOPO_NETLIST_LEN_OFFSET	1
-+#define ICE_AQC_NVM_LINK_TOPO_NETLIST_LEN		2 /* In bytes */
-+#define ICE_AQC_NVM_NETLIST_NODE_COUNT_OFFSET		2
-+#define ICE_AQC_NVM_NETLIST_NODE_COUNT_LEN		2 /* In bytes */
-+#define ICE_AQC_NVM_NETLIST_NODE_COUNT_M		ICE_M(0x3FF, 0)
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_START_OFFSET		5
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_LEN			0x30 /* In words */
-+
-+/* netlist ID block field offsets (word offsets) */
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_MAJOR_VER_LOW	2
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_MAJOR_VER_HIGH	3
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_MINOR_VER_LOW	4
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_MINOR_VER_HIGH	5
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_TYPE_LOW		6
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_TYPE_HIGH		7
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_REV_LOW		8
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_REV_HIGH		9
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_SHA_HASH		0xA
-+#define ICE_AQC_NVM_NETLIST_ID_BLK_CUST_VER		0x2F
-+
- /**
-  * Send to PF command (indirect 0x0801) ID is only used by PF
-  *
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index c6833944b90a..a73d06e06b5d 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -105,6 +105,27 @@ static int ice_info_ddp_pkg_version(struct ice_pf *pf, char *buf, size_t len)
- 	return 0;
- }
- 
-+static int ice_info_netlist_ver(struct ice_pf *pf, char *buf, size_t len)
-+{
-+	struct ice_netlist_ver_info *netlist = &pf->hw.netlist_ver;
-+
-+	/* The netlist version fields are BCD formatted */
-+	snprintf(buf, len, "%x.%x.%x-%x.%x.%x", netlist->major, netlist->minor,
-+		 netlist->type >> 16, netlist->type & 0xFFFF, netlist->rev,
-+		 netlist->cust_ver);
-+
-+	return 0;
-+}
-+
-+static int ice_info_netlist_build(struct ice_pf *pf, char *buf, size_t len)
-+{
-+	struct ice_netlist_ver_info *netlist = &pf->hw.netlist_ver;
-+
-+	snprintf(buf, len, "0x%08x", netlist->hash);
-+
-+	return 0;
-+}
-+
- #define fixed(key, getter) { ICE_VERSION_FIXED, key, getter }
- #define running(key, getter) { ICE_VERSION_RUNNING, key, getter }
- 
-@@ -128,6 +149,8 @@ static const struct ice_devlink_version {
- 	running(DEVLINK_INFO_VERSION_GENERIC_FW_BUNDLE_ID, ice_info_eetrack),
- 	running("fw.app.name", ice_info_ddp_pkg_name),
- 	running(DEVLINK_INFO_VERSION_GENERIC_FW_APP, ice_info_ddp_pkg_version),
-+	running("fw.netlist", ice_info_netlist_ver),
-+	running("fw.netlist.build", ice_info_netlist_build),
- };
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 8beb675d676b..7c2a06892bbb 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -366,6 +366,87 @@ static enum ice_status ice_get_orom_ver_info(struct ice_hw *hw)
- 	return 0;
- }
- 
-+/**
-+ * ice_get_netlist_ver_info
-+ * @hw: pointer to the HW struct
-+ *
-+ * Get the netlist version information
-+ */
-+static enum ice_status ice_get_netlist_ver_info(struct ice_hw *hw)
-+{
-+	struct ice_netlist_ver_info *ver = &hw->netlist_ver;
-+	enum ice_status ret;
-+	u32 id_blk_start;
-+	__le16 raw_data;
-+	u16 data, i;
-+	u16 *buff;
-+
-+	ret = ice_acquire_nvm(hw, ICE_RES_READ);
-+	if (ret)
-+		return ret;
-+	buff = kcalloc(ICE_AQC_NVM_NETLIST_ID_BLK_LEN, sizeof(*buff),
-+		       GFP_KERNEL);
-+	if (!buff) {
-+		ret = ICE_ERR_NO_MEMORY;
-+		goto exit_no_mem;
-+	}
-+
-+	/* read module length */
-+	ret = ice_aq_read_nvm(hw, ICE_AQC_NVM_LINK_TOPO_NETLIST_MOD_ID,
-+			      ICE_AQC_NVM_LINK_TOPO_NETLIST_LEN_OFFSET * 2,
-+			      ICE_AQC_NVM_LINK_TOPO_NETLIST_LEN, &raw_data,
-+			      false, false, NULL);
-+	if (ret)
-+		goto exit_error;
-+
-+	data = le16_to_cpu(raw_data);
-+	/* exit if length is = 0 */
-+	if (!data)
-+		goto exit_error;
-+
-+	/* read node count */
-+	ret = ice_aq_read_nvm(hw, ICE_AQC_NVM_LINK_TOPO_NETLIST_MOD_ID,
-+			      ICE_AQC_NVM_NETLIST_NODE_COUNT_OFFSET * 2,
-+			      ICE_AQC_NVM_NETLIST_NODE_COUNT_LEN, &raw_data,
-+			      false, false, NULL);
-+	if (ret)
-+		goto exit_error;
-+	data = le16_to_cpu(raw_data) & ICE_AQC_NVM_NETLIST_NODE_COUNT_M;
-+
-+	/* netlist ID block starts from offset 4 + node count * 2 */
-+	id_blk_start = ICE_AQC_NVM_NETLIST_ID_BLK_START_OFFSET + data * 2;
-+
-+	/* read the entire netlist ID block */
-+	ret = ice_aq_read_nvm(hw, ICE_AQC_NVM_LINK_TOPO_NETLIST_MOD_ID,
-+			      id_blk_start * 2,
-+			      ICE_AQC_NVM_NETLIST_ID_BLK_LEN * 2, buff, false,
-+			      false, NULL);
-+	if (ret)
-+		goto exit_error;
-+
-+	for (i = 0; i < ICE_AQC_NVM_NETLIST_ID_BLK_LEN; i++)
-+		buff[i] = le16_to_cpu(((__force __le16 *)buff)[i]);
-+
-+	ver->major = (buff[ICE_AQC_NVM_NETLIST_ID_BLK_MAJOR_VER_HIGH] << 16) |
-+		buff[ICE_AQC_NVM_NETLIST_ID_BLK_MAJOR_VER_LOW];
-+	ver->minor = (buff[ICE_AQC_NVM_NETLIST_ID_BLK_MINOR_VER_HIGH] << 16) |
-+		buff[ICE_AQC_NVM_NETLIST_ID_BLK_MINOR_VER_LOW];
-+	ver->type = (buff[ICE_AQC_NVM_NETLIST_ID_BLK_TYPE_HIGH] << 16) |
-+		buff[ICE_AQC_NVM_NETLIST_ID_BLK_TYPE_LOW];
-+	ver->rev = (buff[ICE_AQC_NVM_NETLIST_ID_BLK_REV_HIGH] << 16) |
-+		buff[ICE_AQC_NVM_NETLIST_ID_BLK_REV_LOW];
-+	ver->cust_ver = buff[ICE_AQC_NVM_NETLIST_ID_BLK_CUST_VER];
-+	/* Read the left most 4 bytes of SHA */
-+	ver->hash = buff[ICE_AQC_NVM_NETLIST_ID_BLK_SHA_HASH + 15] << 16 |
-+		buff[ICE_AQC_NVM_NETLIST_ID_BLK_SHA_HASH + 14];
-+
-+exit_error:
-+	kfree(buff);
-+exit_no_mem:
-+	ice_release_nvm(hw);
-+	return ret;
-+}
-+
- /**
-  * ice_discover_flash_size - Discover the available flash size.
-  * @hw: pointer to the HW struct
-@@ -515,6 +596,11 @@ enum ice_status ice_init_nvm(struct ice_hw *hw)
- 		return status;
- 	}
- 
-+	/* read the netlist version information */
-+	status = ice_get_netlist_ver_info(hw);
-+	if (status)
-+		ice_debug(hw, ICE_DBG_INIT, "Failed to read netlist info.\n");
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 4ceb2db42999..40ac93d24e97 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -261,6 +261,16 @@ struct ice_nvm_info {
- 
- #define ICE_NVM_VER_LEN	32
- 
-+/* netlist version information */
-+struct ice_netlist_ver_info {
-+	u32 major;			/* major high/low */
-+	u32 minor;			/* minor high/low */
-+	u32 type;			/* type high/low */
-+	u32 rev;			/* revision high/low */
-+	u32 hash;			/* SHA-1 hash word */
-+	u16 cust_ver;			/* customer version */
-+};
-+
- /* Max number of port to queue branches w.r.t topology */
- #define ICE_MAX_TRAFFIC_CLASS 8
- #define ICE_TXSCHED_MAX_BRANCHES ICE_MAX_TRAFFIC_CLASS
-@@ -510,6 +520,7 @@ struct ice_hw {
- 	struct ice_nvm_info nvm;
- 	struct ice_hw_dev_caps dev_caps;	/* device capabilities */
- 	struct ice_hw_func_caps func_caps;	/* function capabilities */
-+	struct ice_netlist_ver_info netlist_ver; /* netlist version info */
- 
- 	struct ice_switch_info *switch_info;	/* switch filter lists */
- 
+Jarod Wilson (3):
+  xfrm: bail early on slave pass over skb
+  ixgbe_ipsec: become aware of when running as a bonding slave
+  bonding: support hardware encryption offload to slaves
+
+ drivers/net/bonding/bond_main.c               | 111 +++++++++++++++++-
+ .../net/ethernet/intel/ixgbe/ixgbe_ipsec.c    |  39 ++++--
+ include/net/bonding.h                         |   3 +
+ include/net/xfrm.h                            |   1 +
+ net/xfrm/xfrm_device.c                        |  34 +++---
+ 5 files changed, 160 insertions(+), 28 deletions(-)
+
 -- 
-2.25.2
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
