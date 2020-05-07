@@ -1,49 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8AAF1C8E3F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 May 2020 16:21:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2085F1C973D
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 May 2020 19:14:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D65787410;
-	Thu,  7 May 2020 14:21:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 85E6889619;
+	Thu,  7 May 2020 17:14:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r1PQa6wMMWR5; Thu,  7 May 2020 14:21:30 +0000 (UTC)
+	with ESMTP id XHcrkXzGlxuw; Thu,  7 May 2020 17:14:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 68A7487409;
-	Thu,  7 May 2020 14:21:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D40B08961F;
+	Thu,  7 May 2020 17:14:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CC7101BF34B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 14:21:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F32F1BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 17:14:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C661B88564
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 14:21:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 279648821C
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 17:14:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lns7xO9uJtc8 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 May 2020 14:21:25 +0000 (UTC)
+ with ESMTP id lTJbu+e4QF1R for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 May 2020 17:14:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BF51C8855D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 14:21:25 +0000 (UTC)
-Received: from 61-220-137-37.hinet-ip.hinet.net ([61.220.137.37]
- helo=localhost) by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>)
- id 1jWhOn-00036d-BO; Thu, 07 May 2020 14:21:17 +0000
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-To: jeffrey.t.kirsher@intel.com
-Date: Thu,  7 May 2020 22:21:07 +0800
-Message-Id: <20200507142108.13090-1-kai.heng.feng@canonical.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH] e1000e: Disable TSO for buffer overrun
- workaround
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C892A87657
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 17:14:09 +0000 (UTC)
+IronPort-SDR: 4mJWDnTaZqHunYcivZm3YJk+TNEPNSXTSk1Bk4ylTHH5XPb5qddyv5PlJ1FpjtasAn2Fj0p8O7
+ TLPZK78t1znA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2020 10:14:08 -0700
+IronPort-SDR: u1YtYqtSHDHoAkROu7cVcz/77wgd4MHWh9AGIiEvSDjIboa3EudiA7pDi4V8ZqL0xVcF2zV9pz
+ EmhTCNPjvZhg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,364,1583222400"; d="scan'208";a="435365762"
+Received: from ccdlinuxdev08.iil.intel.com ([143.185.160.195])
+ by orsmga005.jf.intel.com with ESMTP; 07 May 2020 10:14:07 -0700
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  7 May 2020 20:14:06 +0300
+Message-Id: <20200507171406.6883-1-vitaly.lifshits@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1] e1000e: disable s0ix entry and exit
+ flows for ME systems
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,49 +63,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- Kai-Heng Feng <kai.heng.feng@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Dima Ruinskiy <dima.ruinskiy@intel.com>,
- "David S. Miller" <davem@davemloft.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit b10effb92e27 ("e1000e: fix buffer overrun while the I219 is
-processing DMA transactions") imposes roughly 30% performance penalty.
+Since ME systems do not support SLP_S0 in S0ix state, and S0ix entry
+and exit flows may cause errors on them it is best to avoid using
+e1000e_s0ix_entry_flow and e1000e_s0ix_exit_flow functions.
 
-The commit log states that "Disabling TSO eliminates performance loss
-for TCP traffic without a noticeable impact on CPU performance", so
-let's disable TSO by default to regain the loss.
+This was done by creating a struct of all devices that comes with ME
+and by checking if the current device has ME.
 
-Fixes: b10effb92e27 ("e1000e: fix buffer overrun while the I219 is processing DMA transactions")
-BugLink: https://bugs.launchpad.net/bugs/1802691
-Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/ethernet/intel/e1000e/netdev.c | 45 ++++++++++++++++++++++++++++--
+ 1 file changed, 43 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 177c6da80c57..9b5509149578 100644
+index e0b074820b47..57af6b81d79d 100644
 --- a/drivers/net/ethernet/intel/e1000e/netdev.c
 +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -5294,6 +5294,10 @@ static void e1000_watchdog_task(struct work_struct *work)
- 					/* oops */
- 					break;
- 				}
-+				if (hw->mac.type == e1000_pch_spt) {
-+					netdev->features &= ~NETIF_F_TSO;
-+					netdev->features &= ~NETIF_F_TSO6;
-+				}
- 			}
+@@ -107,6 +107,45 @@ static const struct e1000_reg_info e1000_reg_info_tbl[] = {
+ 	{0, NULL}
+ };
  
- 			/* enable transmits in the hardware, need to do this
++struct e1000e_me_supported {
++	u16 device_id;		/* supported device ID */
++};
++
++static const struct e1000e_me_supported me_supported[] = {
++	{E1000_DEV_ID_PCH_LPT_I217_LM},
++	{E1000_DEV_ID_PCH_LPTLP_I218_LM},
++	{E1000_DEV_ID_PCH_I218_LM2},
++	{E1000_DEV_ID_PCH_I218_LM3},
++	{E1000_DEV_ID_PCH_SPT_I219_LM},
++	{E1000_DEV_ID_PCH_SPT_I219_LM2},
++	{E1000_DEV_ID_PCH_LBG_I219_LM3},
++	{E1000_DEV_ID_PCH_SPT_I219_LM4},
++	{E1000_DEV_ID_PCH_SPT_I219_LM5},
++	{E1000_DEV_ID_PCH_CNP_I219_LM6},
++	{E1000_DEV_ID_PCH_CNP_I219_LM7},
++	{E1000_DEV_ID_PCH_ICP_I219_LM8},
++	{E1000_DEV_ID_PCH_ICP_I219_LM9},
++	{E1000_DEV_ID_PCH_CMP_I219_LM10},
++	{E1000_DEV_ID_PCH_CMP_I219_LM11},
++	{E1000_DEV_ID_PCH_CMP_I219_LM12},
++	{E1000_DEV_ID_PCH_TGP_I219_LM13},
++	{E1000_DEV_ID_PCH_TGP_I219_LM14},
++	{E1000_DEV_ID_PCH_TGP_I219_LM15},
++	{0}
++};
++
++static bool e1000e_check_me(u16 device_id)
++{
++	struct e1000e_me_supported *id;
++
++	for (id = (struct e1000e_me_supported *)me_supported;
++	     id->device_id; id++)
++		if (device_id == id->device_id)
++			return true;
++
++	return false;
++}
++
+ /**
+  * __ew32_prepare - prepare to write to MAC CSR register on certain parts
+  * @hw: pointer to the HW structure
+@@ -6912,7 +6951,8 @@ static int e1000e_pm_suspend(struct device *dev)
+ 		e1000e_pm_thaw(dev);
+ 
+ 	/* Introduce S0ix implementation */
+-	if (hw->mac.type >= e1000_pch_cnp)
++	if (hw->mac.type >= e1000_pch_cnp &&
++	    !e1000e_check_me(hw->adapter->pdev->device))
+ 		e1000e_s0ix_entry_flow(adapter);
+ 
+ 	return rc;
+@@ -6927,7 +6967,8 @@ static int e1000e_pm_resume(struct device *dev)
+ 	int rc;
+ 
+ 	/* Introduce S0ix implementation */
+-	if (hw->mac.type >= e1000_pch_cnp)
++	if (hw->mac.type >= e1000_pch_cnp &&
++	    !e1000e_check_me(hw->adapter->pdev->device))
+ 		e1000e_s0ix_exit_flow(adapter);
+ 
+ 	rc = __e1000_resume(pdev);
 -- 
-2.17.1
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
