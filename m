@@ -2,59 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F70E1C8B78
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 May 2020 14:54:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10BFA1C8DB2
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 May 2020 16:10:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 17FE785D4B;
-	Thu,  7 May 2020 12:54:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BAD36873D6;
+	Thu,  7 May 2020 14:10:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KkFbttAL6SAy; Thu,  7 May 2020 12:54:36 +0000 (UTC)
+	with ESMTP id Rv4J0cmMU3mR; Thu,  7 May 2020 14:10:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 44D3185EBB;
-	Thu,  7 May 2020 12:54:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7967C873E9;
+	Thu,  7 May 2020 14:10:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6C8CA1BF4E5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 12:54:34 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6A4711BF34B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 14:10:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 685C588374
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 12:54:34 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 6454C873A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 14:10:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rre76ca94yK7 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 May 2020 12:54:33 +0000 (UTC)
+ with ESMTP id W2YzOpOFIzNZ for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 May 2020 14:10:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EB8488829E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 12:54:32 +0000 (UTC)
-IronPort-SDR: 7CLZsy/+u/EIvBD6l5oXTmszZvItt+J9tbZkv7+npGzp8Z6ilGGy71mp01VYLHZHzkFqahkrpi
- I3NpLoXA8r8g==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 37F9884F58
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 14:10:04 +0000 (UTC)
+IronPort-SDR: dMC3rwpS+F7xk5xhNv1bPJ7u/WXeoWm2reX7bDXdwbgP5euN5FOnBCC0Hw6HxNdtkorXkLriL6
+ ZYKPEE9uHqvg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2020 05:54:32 -0700
-IronPort-SDR: vnZjzBYzr6NHUE124lvYEZvZjKSrxfwe/ZIZ1RVAFWFYki45Mwt4BuzQLE8eCok1tii2dzJLRv
- gXNSnDXUcd4g==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2020 07:10:03 -0700
+IronPort-SDR: SCXrQSSZ7rt+9sa+8U01FNcJQBQ8lZ+Q69g/OHXMAN+Y6Lm7i3hJ2Rp6ualNMmgGeHrbk1zYzB
+ t77XEUAd7aXQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,363,1583222400"; d="scan'208";a="295714706"
+X-IronPort-AV: E=Sophos;i="5.73,363,1583222400"; d="scan'208";a="249296300"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 07 May 2020 05:54:31 -0700
+ by orsmga007.jf.intel.com with ESMTP; 07 May 2020 07:10:02 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jWg2o-0004ld-Pr; Thu, 07 May 2020 20:54:30 +0800
-Date: Thu, 07 May 2020 20:54:23 +0800
+ id 1jWhDt-000I8C-Kg; Thu, 07 May 2020 22:10:01 +0800
+Date: Thu, 07 May 2020 22:09:53 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5eb404ff.E37x5c+k9U6S49uY%lkp@intel.com>
+Message-ID: <5eb416b1.TiYDaFWy46hMuLDY%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS
- f0d15e3c67a0e5e609c16964f20e75d95320eb2c
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 405fe1a071f68fa0242c327e59429d1260b5edc3
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,12 +72,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
-branch HEAD: f0d15e3c67a0e5e609c16964f20e75d95320eb2c  i40e: Register a virtbus device to provide RDMA
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 405fe1a071f68fa0242c327e59429d1260b5edc3  i40e: Make i40e_shutdown_adminq() return void
 
-elapsed time: 948m
+elapsed time: 794m
 
-configs tested: 86
+configs tested: 95
 configs skipped: 1
 
 The following configs have been built successfully.
@@ -93,26 +93,21 @@ arm64                            allmodconfig
 arm64                             allnoconfig
 sparc                            allyesconfig
 m68k                             allyesconfig
-ia64                             allyesconfig
 s390                             allmodconfig
 i386                              allnoconfig
-h8300                            allmodconfig
-csky                             allyesconfig
 nios2                               defconfig
 um                                  defconfig
 nds32                             allnoconfig
-openrisc                            defconfig
 mips                              allnoconfig
-powerpc                             defconfig
+h8300                            allmodconfig
 nios2                            allyesconfig
 alpha                               defconfig
 parisc                           allyesconfig
-um                                allnoconfig
 alpha                            allyesconfig
 m68k                              allnoconfig
 riscv                               defconfig
-openrisc                         allyesconfig
-um                               allmodconfig
+csky                             allyesconfig
+openrisc                            defconfig
 nds32                               defconfig
 microblaze                       allyesconfig
 csky                                defconfig
@@ -122,11 +117,13 @@ i386                             allyesconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                              allnoconfig
+ia64                             allyesconfig
 m68k                             allmodconfig
 m68k                           sun3_defconfig
 m68k                                defconfig
 c6x                              allyesconfig
 c6x                               allnoconfig
+openrisc                         allyesconfig
 xtensa                           allyesconfig
 h8300                            allyesconfig
 xtensa                              defconfig
@@ -138,18 +135,28 @@ microblaze                        allnoconfig
 mips                             allyesconfig
 mips                             allmodconfig
 parisc                            allnoconfig
-parisc                           allmodconfig
 parisc                              defconfig
+parisc                           allmodconfig
+powerpc                             defconfig
 powerpc                          allyesconfig
 powerpc                          rhel-kconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
-x86_64               randconfig-a004-20200507
-x86_64               randconfig-a006-20200507
-x86_64               randconfig-a002-20200507
+i386                 randconfig-a005-20200507
+i386                 randconfig-a004-20200507
 i386                 randconfig-a001-20200507
 i386                 randconfig-a002-20200507
 i386                 randconfig-a003-20200507
+i386                 randconfig-a006-20200507
+i386                 randconfig-a012-20200507
+i386                 randconfig-a016-20200507
+i386                 randconfig-a014-20200507
+i386                 randconfig-a011-20200507
+i386                 randconfig-a015-20200507
+i386                 randconfig-a013-20200507
+x86_64               randconfig-a004-20200507
+x86_64               randconfig-a006-20200507
+x86_64               randconfig-a002-20200507
 riscv                            allyesconfig
 riscv                             allnoconfig
 riscv                            allmodconfig
@@ -157,10 +164,12 @@ s390                             allyesconfig
 s390                              allnoconfig
 s390                                defconfig
 sparc                               defconfig
-sparc64                             defconfig
 sparc64                           allnoconfig
 sparc64                          allyesconfig
 sparc64                          allmodconfig
+sparc64                             defconfig
+um                               allmodconfig
+um                                allnoconfig
 um                               allyesconfig
 x86_64                                   rhel
 x86_64                               rhel-7.6
