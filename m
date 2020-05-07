@@ -1,73 +1,48 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD42B1C7F6A
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 May 2020 02:51:23 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 521498883D;
-	Thu,  7 May 2020 00:51:22 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id plI1YOBrPoIz; Thu,  7 May 2020 00:51:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B403A88880;
-	Thu,  7 May 2020 00:51:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E9E861BF3F0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 00:51:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B01241C827B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 May 2020 08:27:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DFD0B876F9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 00:51:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2C81188058;
+	Thu,  7 May 2020 06:27:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3hzXUthBaN7m; Thu,  7 May 2020 06:27:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2DCDF87FEC;
+	Thu,  7 May 2020 06:27:23 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E80001BF41D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 06:27:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id DB1B720780
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 06:27:21 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rnWKyrbPFI+6 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 May 2020 00:51:19 +0000 (UTC)
+ with ESMTP id XRv4rhD0k1Xi for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 May 2020 06:27:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id F2DC687678
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 00:51:18 +0000 (UTC)
-IronPort-SDR: KegkGA/XtM8dYlAs6N1WdSLw5POCGiipQKc8Y1OneqK8JAJXDdgnEYkCLOZ+7FDAGxIFzswmu7
- 9o6Dn5LuI2bg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 May 2020 17:51:18 -0700
-IronPort-SDR: I4Z52cp2qylLuLNRjjCP9KqTe9cmDW2wjSh0woPGMMkBMBMg8MOb3u7JmqdCi8Pkz5g3weg85B
- nnJJTVolaEVQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,361,1583222400"; d="scan'208";a="260362665"
-Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
- by orsmga003.jf.intel.com with ESMTP; 06 May 2020 17:51:18 -0700
-Received: from orsmsx112.amr.corp.intel.com ([169.254.3.248]) by
- ORSMSX106.amr.corp.intel.com ([169.254.1.150]) with mapi id 14.03.0439.000;
- Wed, 6 May 2020 17:51:18 -0700
-From: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
-To: David Miller <davem@davemloft.net>, "yanaijie@huawei.com"
- <yanaijie@huawei.com>
-Thread-Topic: [PATCH net-next] i40e: Make i40e_shutdown_adminq() return void
-Thread-Index: AQHWI25tmvA42/9KCUuzJLtjmKxV26icAdWA///KUoA=
-Date: Thu, 7 May 2020 00:51:16 +0000
-Message-ID: <61CC2BC414934749BD9F5BF3D5D940449868CF1C@ORSMSX112.amr.corp.intel.com>
-References: <20200506061835.19662-1-yanaijie@huawei.com>
- <20200506.140239.2129195871879981516.davem@davemloft.net>
-In-Reply-To: <20200506.140239.2129195871879981516.davem@davemloft.net>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: Make
- i40e_shutdown_adminq() return void
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id A134B2076E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2020 06:27:20 +0000 (UTC)
+Received: from 61-220-137-37.hinet-ip.hinet.net ([61.220.137.37]
+ helo=localhost) by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>)
+ id 1jWZyi-0000tF-64; Thu, 07 May 2020 06:25:52 +0000
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+To: jeffrey.t.kirsher@intel.com
+Date: Thu,  7 May 2020 14:25:45 +0800
+Message-Id: <20200507062545.15461-1-kai.heng.feng@canonical.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH] e1000e: Warn if disabling ULP failed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,40 +55,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Azarewicz,
- Piotr" <piotr.azarewicz@intel.com>
+Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ Kai-Heng Feng <kai.heng.feng@canonical.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ open list <linux-kernel@vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: David Miller <davem@davemloft.net>
-> Sent: Wednesday, May 6, 2020 14:03
-> To: yanaijie@huawei.com
-> Cc: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; Azarewicz, Piotr
-> <piotr.azarewicz@intel.com>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org; linux-kernel@vger.kernel.org
-> Subject: Re: [PATCH net-next] i40e: Make i40e_shutdown_adminq() return void
-> 
-> From: Jason Yan <yanaijie@huawei.com>
-> Date: Wed, 6 May 2020 14:18:35 +0800
-> 
-> > Fix the following coccicheck warning:
-> >
-> > drivers/net/ethernet/intel/i40e/i40e_adminq.c:699:13-21: Unneeded
-> > variable: "ret_code". Return "0" on line 710
-> >
-> > Signed-off-by: Jason Yan <yanaijie@huawei.com>
-> 
-> Jeff, please pick this up.
-> 
-> Thank you.
-[Kirsher, Jeffrey T] 
+The hardware may stop working if driver failed to disable ULP mode.
 
-Yep already added it to my queue, thanks.
+Take the return value of e1000_disable_ulp_lpt_lp() into account, and
+pass up the error if it fails.
+
+Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+---
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index 15f6c0a4dc63..9cbd2d6c7da4 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -300,7 +300,11 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
+ 	 * so forcibly disable it.
+ 	 */
+ 	hw->dev_spec.ich8lan.ulp_state = e1000_ulp_state_unknown;
+-	e1000_disable_ulp_lpt_lp(hw, true);
++	ret_val = e1000_disable_ulp_lpt_lp(hw, true);
++	if (ret_val) {
++		e_warn("Failed to disable ULP\n");
++		goto out;
++	}
+ 
+ 	ret_val = hw->phy.ops.acquire(hw);
+ 	if (ret_val) {
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
