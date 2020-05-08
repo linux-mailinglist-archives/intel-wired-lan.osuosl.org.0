@@ -1,56 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6782B1C9FC1
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 May 2020 02:43:45 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 605441C9FC9
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 May 2020 02:44:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 221DD87886;
-	Fri,  8 May 2020 00:43:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0AEBF21503;
+	Fri,  8 May 2020 00:44:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t0gdMy-fFskO; Fri,  8 May 2020 00:43:39 +0000 (UTC)
+	with ESMTP id d+9yJUUuhy7D; Fri,  8 May 2020 00:43:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2768787EBE;
-	Fri,  8 May 2020 00:43:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0F032204A8;
+	Fri,  8 May 2020 00:43:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 380961BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2020 00:43:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 948A31BF2C4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2020 00:43:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 350C787EAF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2020 00:43:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 91A72878C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2020 00:43:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TdkUUpFlwH69 for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id JjosAm1DQmMC for <intel-wired-lan@lists.osuosl.org>;
  Fri,  8 May 2020 00:43:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 112E687871
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5D7AF87886
  for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2020 00:43:34 +0000 (UTC)
-IronPort-SDR: fJu+tAazZVHUBG2O3U8AFMUimyItEdHVp1/1NUWKZ/j/eIBmIA6xdPKgJ0WxO5gn25wENjojva
- BJogdLytjrEg==
+IronPort-SDR: RCXNF+LinJ6l4EHzC/H2Q8fjjGkCw9M5/js4YCWG6YoUD9EHVgcIOfuNL9rGniT3DUs8+K/Bdo
+ EwzZkEi0ej4g==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  07 May 2020 17:43:33 -0700
-IronPort-SDR: fn5BJcGfQGVTIXER7JHiTfua4LECKERmOth0v4uHiFtlNL4mMd0EziRrDxrlC73LlxlgowxfZM
- nLvWdLBYGUIg==
+IronPort-SDR: NF2PigbkkzCreM3/kJ8pZvWlAA9TDz7Dohdda7LJEkHnjYxazDbFlmB6pdqPKRxcCOh1ZCFE8E
+ FVzxkdBR/gqQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,365,1583222400"; d="scan'208";a="249468766"
+X-IronPort-AV: E=Sophos;i="5.73,365,1583222400"; d="scan'208";a="249468767"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by orsmga007.jf.intel.com with ESMTP; 07 May 2020 17:43:33 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  7 May 2020 17:40:59 -0700
-Message-Id: <20200508004113.39725-1-anthony.l.nguyen@intel.com>
+Date: Thu,  7 May 2020 17:41:00 -0700
+Message-Id: <20200508004113.39725-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200508004113.39725-1-anthony.l.nguyen@intel.com>
+References: <20200508004113.39725-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S41 01/15] ice: Add VF promiscuous support
+Subject: [Intel-wired-lan] [PATCH S41 02/15] ice: Don't reset and rebuild
+ for Tx timeout on PFC enabled queue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,336 +71,176 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+From: Avinash JD <avinash.dayanand@intel.com>
 
-Implement promiscuous support for VF VSIs. Behaviour of promiscuous support
-is based on VF trust as well as the, introduced, vf-true-promisc flag.
+When there's a Tx timeout for a queue which belongs to a PFC enabled TC,
+then it's not because the queue is hung but because PFC is in action.
 
-A trusted VF with vf-true-promisc disabled will be the default VSI, which
-means that all traffic without a matching destination MAC address in the
-device's internal switch will be forwarded to this VF VSI.
+In PFC, peer sends a pause frame for a specified period of time when its
+buffer threshold is exceeded (due to congestion). Netdev on the other
+hand checks if ACK is received within a specified time for a TX packet, if
+not, it'll invoke the tx_timeout routine.
 
-A trusted VF with vf-true-promisc enabled will go into "true promiscuous
-mode". This amounts to the VF receiving all ingress and egress traffic
-that hits the device's internal switch.
-
-An untrusted VF will only receive traffic destined for that VF.
-
-The vf-true-promisc-support flag cannot be toggled while any VF is in
-promiscuous mode. This flag should be set prior to loading the iavf driver
-or spawning VF(s).
-
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Signed-off-by: Avinash JD <avinash.dayanand@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |   1 +
- drivers/net/ethernet/intel/ice/ice_ethtool.c  |  12 +
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 206 +++++++++++++++++-
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   6 +
- 4 files changed, 223 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 58 ++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.h | 23 ++++++++
+ drivers/net/ethernet/intel/ice/ice_main.c    | 10 ++++
+ drivers/net/ethernet/intel/ice/ice_type.h    |  2 +
+ 4 files changed, 93 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index f4f23a0a9b89..2dcbb60060f1 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -351,6 +351,7 @@ enum ice_pf_flags {
- 	ICE_FLAG_FW_LLDP_AGENT,
- 	ICE_FLAG_ETHTOOL_CTXT,		/* set when ethtool holds RTNL lock */
- 	ICE_FLAG_LEGACY_RX,
-+	ICE_FLAG_VF_TRUE_PROMISC_ENA,
- 	ICE_FLAG_MDD_AUTO_RESET_VF,
- 	ICE_PF_FLAGS_NBITS		/* must be last */
- };
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 593fb37bd59e..66d0bcc51ad9 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -157,6 +157,8 @@ struct ice_priv_flag {
- static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
- 	ICE_PRIV_FLAG("link-down-on-close", ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA),
- 	ICE_PRIV_FLAG("fw-lldp-agent", ICE_FLAG_FW_LLDP_AGENT),
-+	ICE_PRIV_FLAG("vf-true-promisc-support",
-+		      ICE_FLAG_VF_TRUE_PROMISC_ENA),
- 	ICE_PRIV_FLAG("mdd-auto-reset-vf", ICE_FLAG_MDD_AUTO_RESET_VF),
- 	ICE_PRIV_FLAG("legacy-rx", ICE_FLAG_LEGACY_RX),
- };
-@@ -1308,6 +1310,16 @@ static int ice_set_priv_flags(struct net_device *netdev, u32 flags)
- 		ice_down(vsi);
- 		ice_up(vsi);
- 	}
-+	/* don't allow modification of this flag when a single VF is in
-+	 * promiscuous mode because it's not supported
-+	 */
-+	if (test_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, change_flags) &&
-+	    ice_is_any_vf_in_promisc(pf)) {
-+		dev_err(dev, "Changing vf-true-promisc-support flag while VF(s) are in promiscuous mode not supported\n");
-+		/* toggle bit back to previous state */
-+		change_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, pf->flags);
-+		ret = -EAGAIN;
-+	}
- 	clear_bit(ICE_FLAG_ETHTOOL_CTXT, pf->flags);
- 	return ret;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index c4f8be0c0b24..d91bd72eebdc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -62,6 +62,64 @@ u8 ice_dcb_get_ena_tc(struct ice_dcbx_cfg *dcbcfg)
+ 	return ena_tc;
  }
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 1aac440f199b..8a909b9df342 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -34,6 +34,37 @@ static int ice_check_vf_init(struct ice_pf *pf, struct ice_vf *vf)
+ 
++/**
++ * ice_is_pfc_causing_hung_q
++ * @pf: pointer to PF structure
++ * @txqueue: Tx queue which is supposedly hung queue
++ *
++ * find if PFC is causing the hung queue, if yes return true else false
++ */
++bool ice_is_pfc_causing_hung_q(struct ice_pf *pf, unsigned int txqueue)
++{
++	u8 num_tcs = 0, i, tc, up_mapped_tc, up_in_tc = 0;
++	u64 ref_prio_xoff[ICE_MAX_UP];
++	struct ice_vsi *vsi;
++	u32 up2tc;
++
++	vsi = ice_get_main_vsi(pf);
++	if (!vsi)
++		return false;
++
++	ice_for_each_traffic_class(i)
++		if (vsi->tc_cfg.ena_tc & BIT(i))
++			num_tcs++;
++
++	/* first find out the TC to which the hung queue belongs to */
++	for (tc = 0; tc < num_tcs - 1; tc++)
++		if (ice_find_q_in_range(vsi->tc_cfg.tc_info[tc].qoffset,
++					vsi->tc_cfg.tc_info[tc + 1].qoffset,
++					txqueue))
++			break;
++
++	/* Build a bit map of all UPs associated to the suspect hung queue TC,
++	 * so that we check for its counter increment.
++	 */
++	up2tc = rd32(&pf->hw, PRTDCB_TUP2TC);
++	for (i = 0; i < ICE_MAX_UP; i++) {
++		up_mapped_tc = (up2tc >> (i * 3)) & 0x7;
++		if (up_mapped_tc == tc)
++			up_in_tc |= BIT(i);
++	}
++
++	/* Now that we figured out that hung queue is PFC enabled, still the
++	 * Tx timeout can be legitimate. So to make sure Tx timeout is
++	 * absolutely caused by PFC storm, check if the counters are
++	 * incrementing.
++	 */
++	for (i = 0; i < ICE_MAX_UP; i++)
++		if (up_in_tc & BIT(i))
++			ref_prio_xoff[i] = pf->stats.priority_xoff_rx[i];
++
++	ice_update_dcb_stats(pf);
++
++	for (i = 0; i < ICE_MAX_UP; i++)
++		if (up_in_tc & BIT(i))
++			if (pf->stats.priority_xoff_rx[i] > ref_prio_xoff[i])
++				return true;
++
++	return false;
++}
++
+ /**
+  * ice_dcb_get_mode - gets the DCB mode
+  * @port_info: pointer to port info structure
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
+index 11457b6ba145..a7a5d9833a93 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
+@@ -17,6 +17,8 @@
+ void ice_dcb_rebuild(struct ice_pf *pf);
+ u8 ice_dcb_get_ena_tc(struct ice_dcbx_cfg *dcbcfg);
+ u8 ice_dcb_get_num_tc(struct ice_dcbx_cfg *dcbcfg);
++void ice_vsi_set_dcb_tc_cfg(struct ice_vsi *vsi);
++bool ice_is_pfc_causing_hung_q(struct ice_pf *pf, unsigned int txqueue);
+ u8 ice_dcb_get_tc(struct ice_vsi *vsi, int queue_index);
+ int
+ ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked);
+@@ -34,6 +36,20 @@ void
+ ice_dcb_process_lldp_set_mib_change(struct ice_pf *pf,
+ 				    struct ice_rq_event_info *event);
+ void ice_vsi_cfg_netdev_tc(struct ice_vsi *vsi, u8 ena_tc);
++
++/**
++ * ice_find_q_in_range
++ * @low: start of queue range for a TC i.e. offset of TC
++ * @high: start of queue for next TC
++ * @tx_q: hung_queue/tx_queue
++ *
++ * finds if queue 'tx_q' falls between the two offsets of any given TC
++ */
++static inline bool ice_find_q_in_range(u16 low, u16 high, unsigned int tx_q)
++{
++	return (tx_q >= low) && (tx_q < high);
++}
++
+ static inline void
+ ice_set_cgd_num(struct ice_tlan_ctx *tlan_ctx, struct ice_ring *ring)
+ {
+@@ -81,6 +97,13 @@ ice_tx_prepare_vlan_flags_dcb(struct ice_ring __always_unused *tx_ring,
  	return 0;
  }
  
-+/**
-+ * ice_err_to_virt_err - translate errors for VF return code
-+ * @ice_err: error return code
-+ */
-+static enum virtchnl_status_code ice_err_to_virt_err(enum ice_status ice_err)
-+{
-+	switch (ice_err) {
-+	case ICE_SUCCESS:
-+		return VIRTCHNL_STATUS_SUCCESS;
-+	case ICE_ERR_BAD_PTR:
-+	case ICE_ERR_INVAL_SIZE:
-+	case ICE_ERR_DEVICE_NOT_SUPPORTED:
-+	case ICE_ERR_PARAM:
-+	case ICE_ERR_CFG:
-+		return VIRTCHNL_STATUS_ERR_PARAM;
-+	case ICE_ERR_NO_MEMORY:
-+		return VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+	case ICE_ERR_NOT_READY:
-+	case ICE_ERR_RESET_FAILED:
-+	case ICE_ERR_FW_API_VER:
-+	case ICE_ERR_AQ_ERROR:
-+	case ICE_ERR_AQ_TIMEOUT:
-+	case ICE_ERR_AQ_FULL:
-+	case ICE_ERR_AQ_NO_WORK:
-+	case ICE_ERR_AQ_EMPTY:
-+		return VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
-+	default:
-+		return VIRTCHNL_STATUS_ERR_NOT_SUPPORTED;
-+	}
-+}
-+
- /**
-  * ice_vc_vf_broadcast - Broadcast a message to all VFs on PF
-  * @pf: pointer to the PF structure
-@@ -2034,6 +2065,173 @@ int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena)
- 	return ret;
- }
- 
-+/**
-+ * ice_is_any_vf_in_promisc - check if any VF(s) are in promiscuous mode
-+ * @pf: PF structure for accessing VF(s)
-+ *
-+ * Return false if no VF(s) are in unicast and/or multicast promiscuous mode,
-+ * else return true
-+ */
-+bool ice_is_any_vf_in_promisc(struct ice_pf *pf)
-+{
-+	int vf_idx;
-+
-+	ice_for_each_vf(pf, vf_idx) {
-+		struct ice_vf *vf = &pf->vf[vf_idx];
-+
-+		/* found a VF that has promiscuous mode configured */
-+		if (test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
-+		    test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states))
-+			return true;
-+	}
-+
-+	return false;
-+}
-+
-+/**
-+ * ice_vc_cfg_promiscuous_mode_msg
-+ * @vf: pointer to the VF info
-+ * @msg: pointer to the msg buffer
-+ *
-+ * called from the VF to configure VF VSIs promiscuous mode
-+ */
-+static int ice_vc_cfg_promiscuous_mode_msg(struct ice_vf *vf, u8 *msg)
-+{
-+	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	struct virtchnl_promisc_info *info =
-+	    (struct virtchnl_promisc_info *)msg;
-+	struct ice_pf *pf = vf->pf;
-+	struct ice_vsi *vsi;
-+	struct device *dev;
-+	bool rm_promisc;
-+	int ret = 0;
-+
-+	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
-+	if (!ice_vc_isvalid_vsi_id(vf, info->vsi_id)) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
-+	vsi = pf->vsi[vf->lan_vsi_idx];
-+	if (!vsi) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto error_param;
-+	}
-+
-+	dev = ice_pf_to_dev(pf);
-+	if (!test_bit(ICE_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps)) {
-+		dev_err(dev, "Unprivileged VF %d is attempting to configure promiscuous mode\n",
-+			vf->vf_id);
-+		/* Leave v_ret alone, lie to the VF on purpose. */
-+		goto error_param;
-+	}
-+
-+	rm_promisc = !(info->flags & FLAG_VF_UNICAST_PROMISC) &&
-+		!(info->flags & FLAG_VF_MULTICAST_PROMISC);
-+
-+	if (vsi->num_vlan || vf->port_vlan_info) {
-+		struct ice_vsi *pf_vsi = ice_get_main_vsi(pf);
-+		struct net_device *pf_netdev;
-+
-+		if (!pf_vsi) {
-+			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+			goto error_param;
-+		}
-+
-+		pf_netdev = pf_vsi->netdev;
-+
-+		ret = ice_set_vf_spoofchk(pf_netdev, vf->vf_id, rm_promisc);
-+		if (ret) {
-+			dev_err(dev, "Failed to update spoofchk to %s for VF %d VSI %d when setting promiscuous mode\n",
-+				rm_promisc ? "ON" : "OFF", vf->vf_id,
-+				vsi->vsi_num);
-+			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		}
-+
-+		ret = ice_cfg_vlan_pruning(vsi, true, !rm_promisc);
-+		if (ret) {
-+			dev_err(dev, "Failed to configure VLAN pruning in promiscuous mode\n");
-+			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+			goto error_param;
-+		}
-+	}
-+
-+	if (!test_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, pf->flags)) {
-+		bool set_dflt_vsi = !!(info->flags & FLAG_VF_UNICAST_PROMISC);
-+
-+		if (set_dflt_vsi && !ice_is_dflt_vsi_in_use(pf->first_sw))
-+			/* only attempt to set the default forwarding VSI if
-+			 * it's not currently set
-+			 */
-+			ret = ice_set_dflt_vsi(pf->first_sw, vsi);
-+		else if (!set_dflt_vsi &&
-+			 ice_is_vsi_dflt_vsi(pf->first_sw, vsi))
-+			/* only attempt to free the default forwarding VSI if we
-+			 * are the owner
-+			 */
-+			ret = ice_clear_dflt_vsi(pf->first_sw);
-+
-+		if (ret) {
-+			dev_err(dev, "%sable VF %d as the default VSI failed, error %d\n",
-+				set_dflt_vsi ? "en" : "dis", vf->vf_id, ret);
-+			v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
-+			goto error_param;
-+		}
-+	} else {
-+		enum ice_status status;
-+		u8 promisc_m;
-+
-+		if (info->flags & FLAG_VF_UNICAST_PROMISC) {
-+			if (vf->port_vlan_info || vsi->num_vlan)
-+				promisc_m = ICE_UCAST_VLAN_PROMISC_BITS;
-+			else
-+				promisc_m = ICE_UCAST_PROMISC_BITS;
-+		} else if (info->flags & FLAG_VF_MULTICAST_PROMISC) {
-+			if (vf->port_vlan_info || vsi->num_vlan)
-+				promisc_m = ICE_MCAST_VLAN_PROMISC_BITS;
-+			else
-+				promisc_m = ICE_MCAST_PROMISC_BITS;
-+		} else {
-+			if (vf->port_vlan_info || vsi->num_vlan)
-+				promisc_m = ICE_UCAST_VLAN_PROMISC_BITS;
-+			else
-+				promisc_m = ICE_UCAST_PROMISC_BITS;
-+		}
-+
-+		/* Configure multicast/unicast with or without VLAN promiscuous
-+		 * mode
-+		 */
-+		status = ice_vf_set_vsi_promisc(vf, vsi, promisc_m, rm_promisc);
-+		if (status) {
-+			dev_err(dev, "%sable Tx/Rx filter promiscuous mode on VF-%d failed, error: %d\n",
-+				rm_promisc ? "dis" : "en", vf->vf_id, status);
-+			v_ret = ice_err_to_virt_err(status);
-+			goto error_param;
-+		} else {
-+			dev_dbg(dev, "%sable Tx/Rx filter promiscuous mode on VF-%d succeeded\n",
-+				rm_promisc ? "dis" : "en", vf->vf_id);
-+		}
-+	}
-+
-+	if (info->flags & FLAG_VF_MULTICAST_PROMISC)
-+		set_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states);
-+	else
-+		clear_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states);
-+
-+	if (info->flags & FLAG_VF_UNICAST_PROMISC)
-+		set_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states);
-+	else
-+		clear_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states);
-+
-+error_param:
-+	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
-+				     v_ret, NULL, 0);
-+}
-+
- /**
-  * ice_vc_get_stats_msg
-  * @vf: pointer to the VF info
-@@ -2966,8 +3164,9 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
- 		goto error_param;
- 	}
- 
--	if (test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
--	    test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states))
-+	if ((test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
-+	     test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states)) &&
-+	    test_bit(ICE_FLAG_VF_TRUE_PROMISC_ENA, pf->flags))
- 		vlan_promisc = true;
- 
- 	if (add_v) {
-@@ -3322,6 +3521,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	case VIRTCHNL_OP_GET_STATS:
- 		err = ice_vc_get_stats_msg(vf, msg);
- 		break;
-+	case VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE:
-+		err = ice_vc_cfg_promiscuous_mode_msg(vf, msg);
-+		break;
- 	case VIRTCHNL_OP_ADD_VLAN:
- 		err = ice_vc_add_vlan_msg(vf, msg);
- 		break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 3f9464269bd2..f7fd1188efa4 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -128,6 +128,7 @@ void ice_set_vf_state_qs_dis(struct ice_vf *vf);
- int
- ice_get_vf_stats(struct net_device *netdev, int vf_id,
- 		 struct ifla_vf_stats *vf_stats);
-+bool ice_is_any_vf_in_promisc(struct ice_pf *pf);
- void
- ice_vf_lan_overflow_event(struct ice_pf *pf, struct ice_rq_event_info *event);
- void ice_print_vfs_mdd_events(struct ice_pf *pf);
-@@ -219,5 +220,10 @@ ice_get_vf_stats(struct net_device __always_unused *netdev,
- {
- 	return -EOPNOTSUPP;
- }
-+
-+static inline bool ice_is_any_vf_in_promisc(struct ice_pf __always_unused *pf)
++static inline bool
++ice_is_pfc_causing_hung_q(struct ice_pf __always_unused *pf,
++			  unsigned int __always_unused txqueue)
 +{
 +	return false;
 +}
- #endif /* CONFIG_PCI_IOV */
- #endif /* _ICE_VIRTCHNL_PF_H_ */
++
+ #define ice_update_dcb_stats(pf) do {} while (0)
+ #define ice_pf_dcb_recfg(pf) do {} while (0)
+ #define ice_vsi_cfg_dcb_rings(vsi) do {} while (0)
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 3d143e8c5112..2128238a0f6d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5201,6 +5201,16 @@ static void ice_tx_timeout(struct net_device *netdev, unsigned int txqueue)
+ 
+ 	pf->tx_timeout_count++;
+ 
++	/* Check if PFC is enabled for the TC to which the queue belongs
++	 * to. If yes then Tx timeout is not caused by a hung queue, no
++	 * need to reset and rebuild
++	 */
++	if (ice_is_pfc_causing_hung_q(pf, txqueue)) {
++		dev_info(ice_pf_to_dev(pf), "Fake Tx hang detected on queue %u, timeout caused by PFC storm\n",
++			 txqueue);
++		return;
++	}
++
+ 	/* now that we have an index, find the tx_ring struct */
+ 	for (i = 0; i < vsi->num_txq; i++)
+ 		if (vsi->tx_rings[i] && vsi->tx_rings[i]->desc)
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 40ac93d24e97..5abfd01113ed 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -611,6 +611,8 @@ struct ice_eth_stats {
+ 	u64 tx_errors;			/* tepc */
+ };
+ 
++#define ICE_MAX_UP	8
++
+ /* Statistics collected by the MAC */
+ struct ice_hw_port_stats {
+ 	/* eth stats collected by the port */
 -- 
 2.20.1
 
