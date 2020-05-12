@@ -2,59 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2FDE1CFC3E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 May 2020 19:33:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2DCF1CFC49
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 May 2020 19:36:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6A53E20417;
-	Tue, 12 May 2020 17:33:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6C7582661B;
+	Tue, 12 May 2020 17:36:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0fWR6p9L-TXL; Tue, 12 May 2020 17:33:40 +0000 (UTC)
+	with ESMTP id zk63vHJBwNVX; Tue, 12 May 2020 17:36:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DAA6420C45;
-	Tue, 12 May 2020 17:33:37 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id BCEB624D41;
+	Tue, 12 May 2020 17:36:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C39E11BF41B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 17:33:29 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B3D041BF23F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 17:36:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BF6FD894AF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 17:33:29 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9673620BF9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 17:36:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nhz6wNtT+vUP for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 May 2020 17:33:29 +0000 (UTC)
+ with ESMTP id Er7gdN++x3qE for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 May 2020 17:36:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DC68E894A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 17:33:28 +0000 (UTC)
-IronPort-SDR: qVJNO43fmBTptL9w4+036wzRzHB4ugahgPFKuGOW2nAy4bsk4yAJwO2Hw9mUNJzHbZfWmyxXWJ
- vCHtoLdcxbCA==
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7A4FB20417
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 17:36:03 +0000 (UTC)
+IronPort-SDR: OHprHnbGF96GwTFWzU81XNzR6jb+iYxGilhJbKvOuTeP5TDZYXbElW9nyz70K3rFqOJxrLx15O
+ xEvZ0aLr+ieQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 10:33:28 -0700
-IronPort-SDR: FwagGtkHsJq83DzEB8w0mYeY1G8z16bJH4UBRKtqxDL2evuUvA+tWsegWA9un0zikDbBP3hGWS
- qtTL3cdINsqQ==
-X-IronPort-AV: E=Sophos;i="5.73,384,1583222400"; d="scan'208";a="437181055"
-Received: from ksengupt-mobl1.amr.corp.intel.com (HELO localhost)
- ([10.254.97.57])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 10:33:27 -0700
-MIME-Version: 1.0
-In-Reply-To: <20200429214306.71046-1-andre.guedes@intel.com>
-References: <20200429214306.71046-1-andre.guedes@intel.com>
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 May 2020 10:36:03 -0700
+IronPort-SDR: wlo8OeF/fYYVpCqp57OAMQcLjXfIKGovxfJg4jHE5PpAOVQHOphq8w8GRvXhpPyYnqj8yLC7Bc
+ u6D2Q8fJwiVg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,384,1583222400"; d="scan'208";a="298094585"
+Received: from ksengupt-mobl1.amr.corp.intel.com ([10.254.97.57])
+ by orsmga008.jf.intel.com with ESMTP; 12 May 2020 10:36:02 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 May 2020 10:33:27 -0700
-Message-ID: <158930480743.38976.12790388485955040034@ksengupt-mobl1.amr.corp.intel.com>
-User-Agent: alot/0.9
-Subject: Re: [Intel-wired-lan] [RFC PATCH] igc: Reject NFC rules with
- multiple matches
+Date: Tue, 12 May 2020 10:35:52 -0700
+Message-Id: <20200512173553.39460-1-andre.guedes@intel.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH 1/2] igc: Reject NFC rules with multiple
+ matches
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,54 +69,63 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> The way rx queue assignment based on mac address, ethetype and vlan
-> priority filtering operates in I225 doesn't allow us to properly support
-> NFC rules with multiple matches.
-> 
-> Consider the following example which assigns to queue 2 frames matching
-> the address MACADDR *and* ethertype ETYPE.
-> 
-> $ ethtool -N eth0 flow-type ether dst <MACADDR> proto <ETYPE> queue 2
-> 
-> When such rule is applied, we have 2 unwanted behaviors:
-> 
->     1) Any frame matching MACADDR will be assigned to queue 2. It
->        doesn't matter the ETYPE value.
-> 
->     2) Any accepted frame that has ethertype equals to ETYPE, no matter
->        the mac address, will be assigned to queue 2 as well.
-> 
-> While we could fix 1) by not enabling queue assignment on the MAC
-> address filter, 2) would still happen.
-> 
-> In current code, multiple-match filters are accepted by the driver, even
-> though it doesn't support them properly. This patch adds a check for
-> multiple-match rules in igc_ethtool_is_nfc_rule_valid() so they are
-> rejected.
-> 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-> ---
-> Hi folks,
-> 
-> This patch was originally included in the series "igc: Fixes to NFC support
-> code", but since it changes the way the driver interacts with user space, I
-> decided to sent it separately as RFC to collect your opinions.
-> 
-> The patch description gives a detailed explanation about the issue. The bottom
-> line is: Current code silently accepts a configuration that is not supported.
-> This patch changes the driver so EOPNOTSUPP is returned instead of success.
-> 
-> What I'd like to get your feedback on is:
-> 
-> Is this considered an user-kernel break? If so, what would be the best way to
-> move forward. Keep accepting the configuration but warn user via log message
-> about not supporting it?
+The way rx queue assignment based on mac address, ethetype and vlan
+priority filtering operates in I225 doesn't allow us to properly support
+NFC rules with multiple matches.
 
-I'm assuming this is not considered a user-kernel break since I could spot at
-least one similar change in igb driver (b4a38d4276e1). I'll rebase and send
-this as PATCH.
+Consider the following example which assigns to queue 2 frames matching
+the address MACADDR *and* ethertype ETYPE.
 
-- Andre
+$ ethtool -N eth0 flow-type ether dst <MACADDR> proto <ETYPE> queue 2
+
+When such rule is applied, we have 2 unwanted behaviors:
+
+    1) Any frame matching MACADDR will be assigned to queue 2. It
+       doesn't matter the ETYPE value.
+
+    2) Any accepted frame that has ethertype equals to ETYPE, no matter
+       the mac address, will be assigned to queue 2 as well.
+
+In current code, multiple-match filters are accepted by the driver, even
+though it doesn't support them properly. This patch adds a check for
+multiple-match rules in igc_ethtool_is_nfc_rule_valid() so they are
+rejected.
+
+Signed-off-by: Andre Guedes <andre.guedes@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 247d0f5c4eb8..2214a5d3a259 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1222,8 +1222,8 @@ static void igc_ethtool_init_nfc_rule(struct igc_nfc_rule *rule,
+  * @adapter: Pointer to adapter.
+  * @rule: Rule under evaluation.
+  *
+- * Rules with both destination and source MAC addresses are considered invalid
+- * since the driver doesn't support them.
++ * The driver doesn't support rules with multiple matches so if more than
++ * one bit in filter flags is set, @rule is considered invalid.
+  *
+  * Also, if there is already another rule with the same filter in a different
+  * location, @rule is considered invalid.
+@@ -1244,9 +1244,8 @@ static int igc_ethtool_check_nfc_rule(struct igc_adapter *adapter,
+ 		return -EINVAL;
+ 	}
+ 
+-	if (flags & IGC_FILTER_FLAG_DST_MAC_ADDR &&
+-	    flags & IGC_FILTER_FLAG_SRC_MAC_ADDR) {
+-		netdev_dbg(dev, "Filters with both dst and src are not supported");
++	if (flags & (flags - 1)) {
++		netdev_dbg(dev, "Rule with multiple matches not supported");
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-- 
+2.26.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
