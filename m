@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 328DB1CFF7D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 May 2020 22:39:39 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B19191CEC6A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 May 2020 07:24:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id A64CB26428;
-	Tue, 12 May 2020 20:39:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 64F4986C32;
+	Tue, 12 May 2020 05:24:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yDW7GmJAbMp9; Tue, 12 May 2020 20:39:36 +0000 (UTC)
+	with ESMTP id 36zMn5C0GIpJ; Tue, 12 May 2020 05:24:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id AB746261DB;
-	Tue, 12 May 2020 20:39:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 34A5186C2B;
+	Tue, 12 May 2020 05:24:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 915381BF31C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 04:44:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3FF7E1BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 05:24:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8C34488466
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 04:44:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3BB2786C22
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 05:24:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EqCgYybN2BjF for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 May 2020 04:44:13 +0000 (UTC)
+ with ESMTP id FvGHYID48elk for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 May 2020 05:24:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mo-csw.securemx.jp (mo-csw1516.securemx.jp [210.130.202.155])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CF7C98843A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 04:44:12 +0000 (UTC)
-Received: by mo-csw.securemx.jp (mx-mo-csw1516) id 04C4i5Jc015176;
- Tue, 12 May 2020 13:44:05 +0900
-X-Iguazu-Qid: 34trJzXMW4Zrve7CWg
-X-Iguazu-QSIG: v=2; s=0; t=1589258645; q=34trJzXMW4Zrve7CWg;
- m=Yw9vRq7HtTeBSs7yyuQQOX8SwRDmXNQJ75QIYgWJHeo=
-Received: from imx2.toshiba.co.jp (imx2.toshiba.co.jp [106.186.93.51])
- by relay.securemx.jp (mx-mr1510) id 04C4i3A3033009;
- Tue, 12 May 2020 13:44:04 +0900
-Received: from enc01.localdomain ([106.186.93.100])
- by imx2.toshiba.co.jp  with ESMTP id 04C4i3I6023533;
- Tue, 12 May 2020 13:44:03 +0900 (JST)
-Received: from hop001.toshiba.co.jp ([133.199.164.63])
- by enc01.localdomain  with ESMTP id 04C4i39S023080;
- Tue, 12 May 2020 13:44:03 +0900
-From: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
-To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 May 2020 13:43:47 +0900
-X-TSB-HOP: ON
-Message-Id: <20200512044347.3810257-1-punit1.agrawal@toshiba.co.jp>
-X-Mailer: git-send-email 2.26.2
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4518586C20
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 May 2020 05:24:19 +0000 (UTC)
+IronPort-SDR: nIIboGaGeCUtKmOgwy1Mb8qIEsxotmSJ4kstHmoxEusdoSIGk1rb7Ew3FGEcE1aKyJVCM3JbyB
+ FIHGrhgF7lqA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 May 2020 22:24:18 -0700
+IronPort-SDR: lUoFd3P6V5Goj2vMq/6KL3sQY8ZsiblLU75BlESnm0PNFDqN8ug8ENtI6PhQfCzQwFl3K1tFkv
+ P41E3Y9mBr0g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,382,1583222400"; d="scan'208";a="280002845"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 11 May 2020 22:24:17 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jYNOq-0003xJ-EI; Tue, 12 May 2020 13:24:16 +0800
+Date: Tue, 12 May 2020 13:24:05 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5eba32f5.UO3v6HHTGpzCBsoX%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 12 May 2020 20:39:33 +0000
-Subject: [Intel-wired-lan] [RFC] e1000e: Relax condition to trigger reset
- for ME workaround
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD SUCCESS
+ 9b53afbafe731bf17d3353c8b2619a0479833836
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,85 +67,130 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: daniel.sangorrin@toshiba.co.jp, linux-kernel@vger.kernel.org,
- Punit Agrawal <punit1.agrawal@toshiba.co.jp>,
- "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It's an error if the value of the RX/TX tail descriptor does not match
-what was written. The error condition is true regardless the duration
-of the interference from ME. But the code only performs the reset if
-E1000_ICH_FWSM_PCIM2PCI_COUNT (2000) iterations of 50us delay have
-transpired. The extra condition can lead to inconsistency between the
-state of hardware as expected by the driver.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 9b53afbafe731bf17d3353c8b2619a0479833836  ASoC: SOF: ops: Add new op for client registration
 
-Fix this by dropping the check for number of delay iterations.
+elapsed time: 490m
 
-Signed-off-by: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
-Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Cc: "David S. Miller" <davem@davemloft.net>
-Cc: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
+configs tested: 104
+configs skipped: 1
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+sparc                            allyesconfig
+m68k                             allyesconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a005-20200511
+x86_64               randconfig-a003-20200511
+x86_64               randconfig-a006-20200511
+x86_64               randconfig-a004-20200511
+x86_64               randconfig-a001-20200511
+x86_64               randconfig-a002-20200511
+i386                 randconfig-a006-20200511
+i386                 randconfig-a005-20200511
+i386                 randconfig-a003-20200511
+i386                 randconfig-a001-20200511
+i386                 randconfig-a004-20200511
+i386                 randconfig-a002-20200511
+i386                 randconfig-a006-20200512
+i386                 randconfig-a005-20200512
+i386                 randconfig-a003-20200512
+i386                 randconfig-a001-20200512
+i386                 randconfig-a004-20200512
+i386                 randconfig-a002-20200512
+i386                 randconfig-a012-20200512
+i386                 randconfig-a016-20200512
+i386                 randconfig-a014-20200512
+i386                 randconfig-a011-20200512
+i386                 randconfig-a013-20200512
+i386                 randconfig-a015-20200512
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+x86_64                              defconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
 ---
-Hi,
-
-The issue was noticed through code inspection while backporting the
-workaround for TDT corruption. Sending it out as an RFC as I am not
-familiar with the hardware internals of the e1000e.
-
-Another unresolved question is the inherent racy nature of the
-workaround - the ME could block access again after releasing the
-device (i.e., BIT(E1000_ICH_FWSM_PCIM2PCI) clear) but before the
-driver performs the write. Has this not been a problem?
-
-Any feedback on the patch or the more information on the issues
-appreciated.
-
-Thanks,
-Punit
-
- drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 177c6da80c57..5ed4d7ed35b3 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -607,11 +607,11 @@ static void e1000e_update_rdt_wa(struct e1000_ring *rx_ring, unsigned int i)
- {
- 	struct e1000_adapter *adapter = rx_ring->adapter;
- 	struct e1000_hw *hw = &adapter->hw;
--	s32 ret_val = __ew32_prepare(hw);
- 
-+	__ew32_prepare(hw);
- 	writel(i, rx_ring->tail);
- 
--	if (unlikely(!ret_val && (i != readl(rx_ring->tail)))) {
-+	if (unlikely(i != readl(rx_ring->tail))) {
- 		u32 rctl = er32(RCTL);
- 
- 		ew32(RCTL, rctl & ~E1000_RCTL_EN);
-@@ -624,11 +624,11 @@ static void e1000e_update_tdt_wa(struct e1000_ring *tx_ring, unsigned int i)
- {
- 	struct e1000_adapter *adapter = tx_ring->adapter;
- 	struct e1000_hw *hw = &adapter->hw;
--	s32 ret_val = __ew32_prepare(hw);
- 
-+	__ew32_prepare(hw);
- 	writel(i, tx_ring->tail);
- 
--	if (unlikely(!ret_val && (i != readl(tx_ring->tail)))) {
-+	if (unlikely(i != readl(tx_ring->tail))) {
- 		u32 tctl = er32(TCTL);
- 
- 		ew32(TCTL, tctl & ~E1000_TCTL_EN);
--- 
-2.26.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
