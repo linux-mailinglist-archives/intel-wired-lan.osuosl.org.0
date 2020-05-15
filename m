@@ -2,70 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD4571D33C1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 May 2020 16:57:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56F841D4345
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 May 2020 03:58:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 78EA6891A0;
-	Thu, 14 May 2020 14:57:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 07A8B89906;
+	Fri, 15 May 2020 01:58:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AOvwqzrncYUe; Thu, 14 May 2020 14:57:54 +0000 (UTC)
+	with ESMTP id W3D5ifnAFF-i; Fri, 15 May 2020 01:58:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DBA7589152;
-	Thu, 14 May 2020 14:57:49 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B898889925;
+	Fri, 15 May 2020 01:58:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 85AB21BF3D6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 May 2020 14:57:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 74B151BF57B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 01:58:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7D128228E2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 May 2020 14:57:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6E50A88C37
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 01:58:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Thvx62x43BVZ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 May 2020 14:57:43 +0000 (UTC)
+ with ESMTP id 8qsi46CAejEI for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 May 2020 01:58:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by silver.osuosl.org (Postfix) with ESMTPS id 3234322721
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 May 2020 14:57:43 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id s10so2450977iog.7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 May 2020 07:57:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sSOzS9/AwTJ/dUTM+b9jQevKw/QMNrwD3wxfgOBQCVk=;
- b=d+PTljg/UHKuu0OaaGc6wDa0hdswTZVUjo8NTAq2GNPSb0jWT2ZesIJZY6B/wQuy9l
- lB5YQtnLySMHKSZihqN8mHpdDsiEKGf6VfV+XqYGH0PcktlN1Jz5xVRP8LdoQ0RhI/XG
- Ljptu5mIAecQ7r1zEeurGgKENieMm7S2Ul+HeReNESjkYtzTsWGvR2ZwaoD61icXqIkR
- YJ+vAFD8+230wwcTbUZpNgS/8Ipc/2Y4gpiTO94/+qolg2p67lqqifWkbeDNUELbmWaK
- UfawE1pK+e4/MWuYZfh1BiJke/eOmv652x7VsFi7LKGNqZ7aimL4NgcltRZlfIf2jUig
- I3TA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sSOzS9/AwTJ/dUTM+b9jQevKw/QMNrwD3wxfgOBQCVk=;
- b=i8SW3eh949gTU4KFLej4sCPDuRKV6dUL+QczaiQb1tjOYx6Ho41X0WzYnryz6ThSPV
- i3nAGdKDEuS57xngly89H4NAi1Ze7+0bIbk5lHl5b29Eh8T3for/XosvkAjaVDpIFqr7
- 9fIC6KD3AKVBuIf2nqmYkSYq0CfxWSHL61nJQLMyi3QnSXTddurtz9lQnILME7f4GD0u
- YKn8JixUI7Kgmz306RCHpRVjLqhCPYKA+9oIHFjbqCWM0O611un5FrwW888UJOSc5g1R
- 3rZV4fbFnLRDukn0eBsloD7IZugTCcgtcGelr6uonwN5Q9FoIN9oUz/2qUwzEjLoliWR
- WVRA==
-X-Gm-Message-State: AGi0Pua7Dbsz6oPmzXgKV3oT04h2q90M1vWxJj63av0taVLcasOOKdLt
- dFiVHb1GFLcUARJsiyNAcnOC20Km+5RiooRdRsg=
-X-Google-Smtp-Source: APiQypJZXnVIye3UpmOXWT60F5NfoSWVF+2sMzyyXKujoTDAt0Cd5tD07ZzXAygotdJdnqelz4KNMkw1rN4ZHYsRy7c=
-X-Received: by 2002:a02:9103:: with SMTP id a3mr4719820jag.87.1589468262207;
- Thu, 14 May 2020 07:57:42 -0700 (PDT)
-MIME-Version: 1.0
+Received: from mo-csw.securemx.jp (mo-csw1514.securemx.jp [210.130.202.153])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5AFE388C35
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 01:58:01 +0000 (UTC)
+Received: by mo-csw.securemx.jp (mx-mo-csw1514) id 04F1vpEE019955;
+ Fri, 15 May 2020 10:57:51 +0900
+X-Iguazu-Qid: 34trWq5axJpfcHTLpk
+X-Iguazu-QSIG: v=2; s=0; t=1589507870; q=34trWq5axJpfcHTLpk;
+ m=w5eBYxUhChjcH2wqSnG8reWK/fF+ZPfw05MuqPGwb3Q=
+Received: from imx12.toshiba.co.jp (imx12.toshiba.co.jp [61.202.160.132])
+ by relay.securemx.jp (mx-mr1513) id 04F1vmF5022340;
+ Fri, 15 May 2020 10:57:49 +0900
+Received: from enc02.toshiba.co.jp ([61.202.160.51])
+ by imx12.toshiba.co.jp  with ESMTP id 04F1vm6H012841;
+ Fri, 15 May 2020 10:57:48 +0900 (JST)
+Received: from hop101.toshiba.co.jp ([133.199.85.107])
+ by enc02.toshiba.co.jp  with ESMTP id 04F1vmkV011077;
+ Fri, 15 May 2020 10:57:48 +0900
+From: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+To: Alexander Duyck <alexander.duyck@gmail.com>
 References: <20200512044347.3810257-1-punit1.agrawal@toshiba.co.jp>
-In-Reply-To: <20200512044347.3810257-1-punit1.agrawal@toshiba.co.jp>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Thu, 14 May 2020 07:57:31 -0700
-Message-ID: <CAKgT0Uf86d8wnAMSLO4hn4+mfCH5fP4e8OsAYknE0m3Y7in9gw@mail.gmail.com>
-To: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+ <CAKgT0Uf86d8wnAMSLO4hn4+mfCH5fP4e8OsAYknE0m3Y7in9gw@mail.gmail.com>
+Date: Fri, 15 May 2020 10:57:47 +0900
+In-Reply-To: <CAKgT0Uf86d8wnAMSLO4hn4+mfCH5fP4e8OsAYknE0m3Y7in9gw@mail.gmail.com>
+ (Alexander Duyck's message of "Thu, 14 May 2020 07:57:31 -0700")
+X-TSB-HOP: ON
+Message-ID: <87v9kym02s.fsf@kokedama.swc.toshiba.co.jp>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [RFC] e1000e: Relax condition to trigger
  reset for ME workaround
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -89,87 +79,91 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 11, 2020 at 9:45 PM Punit Agrawal
-<punit1.agrawal@toshiba.co.jp> wrote:
->
-> It's an error if the value of the RX/TX tail descriptor does not match
-> what was written. The error condition is true regardless the duration
-> of the interference from ME. But the code only performs the reset if
-> E1000_ICH_FWSM_PCIM2PCI_COUNT (2000) iterations of 50us delay have
-> transpired. The extra condition can lead to inconsistency between the
-> state of hardware as expected by the driver.
->
-> Fix this by dropping the check for number of delay iterations.
->
-> Signed-off-by: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
-> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
-> Hi,
->
-> The issue was noticed through code inspection while backporting the
-> workaround for TDT corruption. Sending it out as an RFC as I am not
-> familiar with the hardware internals of the e1000e.
->
-> Another unresolved question is the inherent racy nature of the
-> workaround - the ME could block access again after releasing the
-> device (i.e., BIT(E1000_ICH_FWSM_PCIM2PCI) clear) but before the
-> driver performs the write. Has this not been a problem?
->
-> Any feedback on the patch or the more information on the issues
-> appreciated.
->
-> Thanks,
-> Punit
->
->  drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 177c6da80c57..5ed4d7ed35b3 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -607,11 +607,11 @@ static void e1000e_update_rdt_wa(struct e1000_ring *rx_ring, unsigned int i)
->  {
->         struct e1000_adapter *adapter = rx_ring->adapter;
->         struct e1000_hw *hw = &adapter->hw;
-> -       s32 ret_val = __ew32_prepare(hw);
->
-> +       __ew32_prepare(hw);
->         writel(i, rx_ring->tail);
->
-> -       if (unlikely(!ret_val && (i != readl(rx_ring->tail)))) {
-> +       if (unlikely(i != readl(rx_ring->tail))) {
->                 u32 rctl = er32(RCTL);
->
->                 ew32(RCTL, rctl & ~E1000_RCTL_EN);
-> @@ -624,11 +624,11 @@ static void e1000e_update_tdt_wa(struct e1000_ring *tx_ring, unsigned int i)
->  {
->         struct e1000_adapter *adapter = tx_ring->adapter;
->         struct e1000_hw *hw = &adapter->hw;
-> -       s32 ret_val = __ew32_prepare(hw);
->
-> +       __ew32_prepare(hw);
->         writel(i, tx_ring->tail);
->
-> -       if (unlikely(!ret_val && (i != readl(tx_ring->tail)))) {
-> +       if (unlikely(i != readl(tx_ring->tail))) {
->                 u32 tctl = er32(TCTL);
->
->                 ew32(TCTL, tctl & ~E1000_TCTL_EN);
+Alexander Duyck <alexander.duyck@gmail.com> writes:
 
-You are eliminating the timeout check in favor of just verifying if
-the write succeeded or not. Seems pretty straight forward to me.
+> On Mon, May 11, 2020 at 9:45 PM Punit Agrawal
+> <punit1.agrawal@toshiba.co.jp> wrote:
+>>
+>> It's an error if the value of the RX/TX tail descriptor does not match
+>> what was written. The error condition is true regardless the duration
+>> of the interference from ME. But the code only performs the reset if
+>> E1000_ICH_FWSM_PCIM2PCI_COUNT (2000) iterations of 50us delay have
+>> transpired. The extra condition can lead to inconsistency between the
+>> state of hardware as expected by the driver.
+>>
+>> Fix this by dropping the check for number of delay iterations.
+>>
+>> Signed-off-by: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+>> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+>> Cc: "David S. Miller" <davem@davemloft.net>
+>> Cc: intel-wired-lan@lists.osuosl.org
+>> Cc: netdev@vger.kernel.org
+>> Cc: linux-kernel@vger.kernel.org
+>> ---
+>> Hi,
+>>
+>> The issue was noticed through code inspection while backporting the
+>> workaround for TDT corruption. Sending it out as an RFC as I am not
+>> familiar with the hardware internals of the e1000e.
+>>
+>> Another unresolved question is the inherent racy nature of the
+>> workaround - the ME could block access again after releasing the
+>> device (i.e., BIT(E1000_ICH_FWSM_PCIM2PCI) clear) but before the
+>> driver performs the write. Has this not been a problem?
+>>
+>> Any feedback on the patch or the more information on the issues
+>> appreciated.
+>>
+>> Thanks,
+>> Punit
+>>
+>>  drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
+>>  1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+>> index 177c6da80c57..5ed4d7ed35b3 100644
+>> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+>> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+>> @@ -607,11 +607,11 @@ static void e1000e_update_rdt_wa(struct e1000_ring *rx_ring, unsigned int i)
+>>  {
+>>         struct e1000_adapter *adapter = rx_ring->adapter;
+>>         struct e1000_hw *hw = &adapter->hw;
+>> -       s32 ret_val = __ew32_prepare(hw);
+>>
+>> +       __ew32_prepare(hw);
+>>         writel(i, rx_ring->tail);
+>>
+>> -       if (unlikely(!ret_val && (i != readl(rx_ring->tail)))) {
+>> +       if (unlikely(i != readl(rx_ring->tail))) {
+>>                 u32 rctl = er32(RCTL);
+>>
+>>                 ew32(RCTL, rctl & ~E1000_RCTL_EN);
+>> @@ -624,11 +624,11 @@ static void e1000e_update_tdt_wa(struct e1000_ring *tx_ring, unsigned int i)
+>>  {
+>>         struct e1000_adapter *adapter = tx_ring->adapter;
+>>         struct e1000_hw *hw = &adapter->hw;
+>> -       s32 ret_val = __ew32_prepare(hw);
+>>
+>> +       __ew32_prepare(hw);
+>>         writel(i, tx_ring->tail);
+>>
+>> -       if (unlikely(!ret_val && (i != readl(tx_ring->tail)))) {
+>> +       if (unlikely(i != readl(tx_ring->tail))) {
+>>                 u32 tctl = er32(TCTL);
+>>
+>>                 ew32(TCTL, tctl & ~E1000_TCTL_EN);
+>
+> You are eliminating the timeout check in favor of just verifying if
+> the write succeeded or not. Seems pretty straight forward to me.
+>
+> One other change you may consider making would be to drop the return
+> value from __ew32_prepare since it doesn't appear to be used anywhere,
+> make the function static, and maybe get rid of the prototype in
+> e1000.h.
+>
+> Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
 
-One other change you may consider making would be to drop the return
-value from __ew32_prepare since it doesn't appear to be used anywhere,
-make the function static, and maybe get rid of the prototype in
-e1000.h.
-
-Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
+Thanks! I will send out an update dropping the return and the prototype.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
