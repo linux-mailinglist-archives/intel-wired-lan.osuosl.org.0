@@ -2,59 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D4671D52D2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 May 2020 17:02:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AD6141D52D4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 May 2020 17:02:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 426A187DE8;
-	Fri, 15 May 2020 15:02:14 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B7B7987D60;
+	Fri, 15 May 2020 15:02:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jXq6o72KJ8lN; Fri, 15 May 2020 15:02:09 +0000 (UTC)
+	with ESMTP id Wf4dhRdkrp3t; Fri, 15 May 2020 15:02:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B024B87D8A;
-	Fri, 15 May 2020 15:02:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5183287DE1;
+	Fri, 15 May 2020 15:02:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4B5601BF27C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 15:02:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 708C71BF9C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 15:02:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4605288C75
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 15:02:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 495952E8E6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 15:02:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3jEdiw9ul-Ky for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 May 2020 15:02:01 +0000 (UTC)
+ with ESMTP id uxE9BXuvSmYs for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 May 2020 15:02:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A84A688467
+ by silver.osuosl.org (Postfix) with ESMTPS id C759B2E4F6
  for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 15:02:01 +0000 (UTC)
-IronPort-SDR: VFDqe+ei0lLXrxpcgYnZkTWjLQTsGaFV/PzPqhlaIS4GXXIYRXwCjJaJcnroy2bbImRF757o/5
- uVhbYKymGqNQ==
+IronPort-SDR: OkTZ5Mehgx4w3JX0KCnMo4ksSf4RHp3oheymIrXDyrvB4p6xZAbdHeBDfpPdqcEVwjSKuPA8jr
+ PyUi3Cd2ZY2w==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  15 May 2020 08:02:00 -0700
-IronPort-SDR: o+vtTbE/I7gb2s3mZWVCfIt8YNvVvHVTs1Z65v0x+T1FyYujk4J1fLrlYiUREhHiYHsoXnq2hj
- 8xOf3ZsopY1Q==
+IronPort-SDR: VhAO2hEkd9O8URsvkmGPp0/NG53rsSxeYDW2haIHqiuzU31/kh98HtY6c6sx9FX5SRDki7mPEd
+ 0+dffajt+oCQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,395,1583222400"; d="scan'208";a="438339703"
+X-IronPort-AV: E=Sophos;i="5.73,395,1583222400"; d="scan'208";a="438339706"
 Received: from alicemic-1.jf.intel.com ([10.166.17.62])
  by orsmga005.jf.intel.com with ESMTP; 15 May 2020 08:02:00 -0700
 From: Alice Michael <alice.michael@intel.com>
 To: alice.michael@intel.com,
 	intel-wired-lan@lists.osuosl.org
-Date: Thu, 14 May 2020 23:34:59 -0700
-Message-Id: <20200515063500.48301-14-alice.michael@intel.com>
+Date: Thu, 14 May 2020 23:35:00 -0700
+Message-Id: <20200515063500.48301-15-alice.michael@intel.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200515063500.48301-1-alice.michael@intel.com>
 References: <20200515063500.48301-1-alice.michael@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [iecm/idpf V1 13/14] iecm: Add iecm to the kernel
- build system
+Subject: [Intel-wired-lan] [iecm/idpf V1 14/14] idpf: Introduce idpf driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,11 +73,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This introduces iecm as a module to the kernel, and adds
-relevant documentation.
+From: Alan Brady <alan.brady@intel.com>
 
-Signed-off-by: Alice Michael <alice.michael@intel.com>
+Utilizes the Intel Ethernet Common Module and provides
+a device specific implementation for data plane devices.
+
 Signed-off-by: Alan Brady <Alan.Brady@intel.com>
+Signed-off-by: Alice Michael <alice.michael@intel.com>
 Signed-off-by: Phani Burra <phani.r.burra@intel.com>
 Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
 Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
@@ -87,178 +88,476 @@ Reviewed-by: Donald Skidmore <donald.c.skidmore@intel.com>
 Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 ---
- .../networking/device_drivers/intel/iecm.rst  | 93 +++++++++++++++++++
- MAINTAINERS                                   |  1 +
- drivers/net/ethernet/intel/Kconfig            |  7 ++
- drivers/net/ethernet/intel/Makefile           |  1 +
- drivers/net/ethernet/intel/iecm/Makefile      | 21 +++++
- 5 files changed, 123 insertions(+)
- create mode 100644 Documentation/networking/device_drivers/intel/iecm.rst
- create mode 100644 drivers/net/ethernet/intel/iecm/Makefile
+ .../networking/device_drivers/intel/idpf.rst  |  47 ++++++
+ MAINTAINERS                                   |   1 +
+ drivers/net/ethernet/intel/Kconfig            |   8 +
+ drivers/net/ethernet/intel/Makefile           |   1 +
+ drivers/net/ethernet/intel/idpf/Makefile      |  14 ++
+ drivers/net/ethernet/intel/idpf/idpf_dev.h    |  17 ++
+ drivers/net/ethernet/intel/idpf/idpf_devids.h |  10 ++
+ drivers/net/ethernet/intel/idpf/idpf_main.c   | 139 ++++++++++++++++
+ drivers/net/ethernet/intel/idpf/idpf_reg.c    | 152 ++++++++++++++++++
+ 9 files changed, 389 insertions(+)
+ create mode 100644 Documentation/networking/device_drivers/intel/idpf.rst
+ create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_reg.c
 
-diff --git a/Documentation/networking/device_drivers/intel/iecm.rst b/Documentation/networking/device_drivers/intel/iecm.rst
+diff --git a/Documentation/networking/device_drivers/intel/idpf.rst b/Documentation/networking/device_drivers/intel/idpf.rst
 new file mode 100644
-index 000000000000..4a7340b5c080
+index 000000000000..973fa9613428
 --- /dev/null
-+++ b/Documentation/networking/device_drivers/intel/iecm.rst
-@@ -0,0 +1,93 @@
++++ b/Documentation/networking/device_drivers/intel/idpf.rst
+@@ -0,0 +1,47 @@
 +.. SPDX-License-Identifier: GPL-2.0
 +
-+========================
-+Intel Ethernet Common Module
-+========================
++==================================================================
++Linux Base Driver for the Intel(R) Smart Network Adapter Family Series
++==================================================================
 +
-+The Intel Ethernet Common Module is meant to serve as an abstraction layer
-+between device specific implementation details and common net device driver
-+flows. This library provides several function hooks which allow a device driver
-+to specify register addresses, control queue communications, and other device
-+specific functionality.  Some functions are required to be implemented while
-+others have a default implementation that is used when none is supplied by the
-+device driver.  Doing this, a device driver can be written to take advantage
-+of existing code while also giving the flexibility to implement device specific
-+features.
++Intel idpf Linux driver.
++Copyright(c) 2020 Intel Corporation.
 +
-+The common use case for this library is for a network device driver that wants
-+specify its own device specific details but also leverage the more common
-+code flows found in network device drivers.
++Contents
++========
 +
-+Sections in this document:
-+	Entry Point
-+	Exit Point
-+	Register Operations API
-+	Virtchnl Operations API
++- Enabling the driver
++- Support
 +
-+Entry Point
-+~~~~~~~~~~~
-+The primary entry point to the library is the iecm_probe function.  Prior to
-+calling this, device drivers must have allocated an iecm_adapter struct and
-+initialized it with the required API functions.  The adapter struct, along with
-+the pci_dev struct and the pci_device_id struct, is provided to iecm_probe
-+which finalizes device initialization and prepares the device for open.
++The driver in this release supports Intel's Smart Network Adapter Family Series
++of products. For more information, visit Intel's support page at
++https://support.intel.com.
 +
-+The iecm_dev_ops struct within the iecm_adapter struct is the primary vehicle
-+for passing information from device drivers to the common module.  A dependent
-+module must define and assign a reg_ops_init function which will assign the
-+respective function pointers to initialize register values (see iecm_reg_ops
-+struct).  These are required to be provided by the dependent device driver as
-+no suitable default can be assumed for register addresses.
++Enabling the driver
++===================
++The driver is enabled via the standard kernel configuration system,
++using the make command::
 +
-+The vc_ops_init function pointer and the related iecm_virtchnl_ops struct are
-+optional and should only be necessary for device drivers which use a different
-+method/timing for communicating across a mailbox to the hardware.  Within iecm
-+is a default interface provided in the case where one is not provided by the
-+device driver.
++  make oldconfig/menuconfig/etc.
 +
-+Exit Point
-+~~~~~~~~~~
-+When the device driver is being prepared to be removed through the pci_driver
-+remove callback, it is required for the device driver to call iecm_remove with
-+the pci_dev struct provided.  This is required to ensure all resources are
-+properly freed and returned to the operating system.
++The driver is located in the menu structure at:
 +
-+Register Operations API
-+~~~~~~~~~~~~~~~~~~~~~~~
-+iecm_reg_ops contains three different function pointers relating to intializing
-+registers for the specific net device using the library.
++  -> Device Drivers
++    -> Network device support (NETDEVICES [=y])
++      -> Ethernet driver support
++        -> Intel devices
++          -> Intel(R) Smart Network Adapter Family Series Support
 +
-+ctlq_reg_init relates specifically to setting up registers related to control
-+queue/mailbox communications.  Registers that should be defined include: head,
-+tail, len, bah, bal, len_mask, len_ena_mask, and head_mask.
++Support
++=======
++For general information, go to the Intel support website at:
 +
-+vportq_reg_init relates to setting up queue registers.  The tail registers to
-+be assigned to the iecm_queue struct for each RX/TX queue.
++https://www.intel.com/support/
 +
-+intr_reg_init relates to any registers needed to setup interrupts.  These
-+include registers needed to enable the interrupt and change ITR settings.
++or the Intel Wired Networking project hosted by Sourceforge at:
 +
-+If the initialization function finds that one or more required function
-+pointers were not provided, an error will be issued and the device will be
-+inoperable.
++https://sourceforge.net/projects/e1000
 +
-+
-+Virtchnl Operations API
-+~~~~~~~~~~~~~~~~~~~~~~~
-+The virtchnl is a conduit between driver and hardware that allows device
-+drivers to send and receive control messages to/from hardware.  This is
-+optional to be specified as there is a general interface that can be assumed
-+when using this library.  However, if a device deviates in some way to
-+communicate across the mailbox correctly, this interface is provided to allow
-+that.
-+
-+If vc_ops_init is set in the dev_ops field of the iecm_adapter struct, then it
-+is assumed the device driver is using providing it's own interface to do
-+virtchnl communications.  While providing vc_ops_init is optional, if it is
-+provided, it is required that the device driver provide function pointers for
-+those functions in vc_ops, with expection for the enable_vport, disable_vport,
-+and destroy_vport functions which may not be required for all devices.
-+
-+If the initialization function finds that vc_ops_init was defined but one or
-+more required function pointers were not provided, an error will be issued and
-+the device will be inoperable.
++If an issue is identified with the released source code on a supported kernel
++with a supported adapter, email the specific information related to the issue
++to e1000-devel@lists.sf.net.
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 3032ce1ce774..b0a4b2b2f75f 100644
+index b0a4b2b2f75f..f247298626df 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
 @@ -8546,6 +8546,7 @@ F:	Documentation/networking/device_drivers/intel/fm10k.rst
  F:	Documentation/networking/device_drivers/intel/i40e.rst
  F:	Documentation/networking/device_drivers/intel/iavf.rst
  F:	Documentation/networking/device_drivers/intel/ice.rst
-+F:	Documentation/networking/device_drivers/intel/iecm.rst
++F:	Documentation/networking/device_drivers/intel/idpf.rst
+ F:	Documentation/networking/device_drivers/intel/iecm.rst
  F:	Documentation/networking/device_drivers/intel/igb.rst
  F:	Documentation/networking/device_drivers/intel/igbvf.rst
- F:	Documentation/networking/device_drivers/intel/ixgb.rst
 diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 7a61e9d5e36e..9b5d413e6831 100644
+index 9b5d413e6831..f5a371435b4d 100644
 --- a/drivers/net/ethernet/intel/Kconfig
 +++ b/drivers/net/ethernet/intel/Kconfig
-@@ -344,4 +344,11 @@ config IGC
- 	  To compile this driver as a module, choose M here. The module
- 	  will be called igc.
- 
-+config IECM
-+	tristate "Intel(R) Ethernet Common Module Support"
+@@ -351,4 +351,12 @@ config IECM
+ 	---help---
+ 	 To compile this driver as a module, choose M here. The module
+ 	 will be called iecm.  MSI-X interrupt support is required
++
++config IDPF
++	tristate "Intel(R) Data Plane Function Support"
 +	default n
 +	depends on PCI
 +	---help---
 +	 To compile this driver as a module, choose M here. The module
-+	 will be called iecm.  MSI-X interrupt support is required
++	 will be called idpf.
  endif # NET_VENDOR_INTEL
 diff --git a/drivers/net/ethernet/intel/Makefile b/drivers/net/ethernet/intel/Makefile
-index 3075290063f6..c9eba9cc5087 100644
+index c9eba9cc5087..3786c2269f3d 100644
 --- a/drivers/net/ethernet/intel/Makefile
 +++ b/drivers/net/ethernet/intel/Makefile
-@@ -16,3 +16,4 @@ obj-$(CONFIG_IXGB) += ixgb/
- obj-$(CONFIG_IAVF) += iavf/
+@@ -17,3 +17,4 @@ obj-$(CONFIG_IAVF) += iavf/
  obj-$(CONFIG_FM10K) += fm10k/
  obj-$(CONFIG_ICE) += ice/
-+obj-$(CONFIG_IECM) += iecm/
-diff --git a/drivers/net/ethernet/intel/iecm/Makefile b/drivers/net/ethernet/intel/iecm/Makefile
+ obj-$(CONFIG_IECM) += iecm/
++obj-$(CONFIG_IDPF) += idpf/
+diff --git a/drivers/net/ethernet/intel/idpf/Makefile b/drivers/net/ethernet/intel/idpf/Makefile
 new file mode 100644
-index 000000000000..0d36ce707a15
+index 000000000000..cf59bd22fa83
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/iecm/Makefile
-@@ -0,0 +1,21 @@
++++ b/drivers/net/ethernet/intel/idpf/Makefile
+@@ -0,0 +1,14 @@
 +# SPDX-License-Identifier: GPL-2.0-only
 +# Copyright (C) 2020 Intel Corporation
 +
 +#
-+# Makefile for the Intel(R) Ethernet Common Module
++# Makefile for the Intel(R) Data Plane Function Linux Driver
 +#
 +
-+ccflags-y += -I$(srctree)/drivers/net/ethernet/intel/include
++obj-$(CONFIG_IDPF) += idpf.o
 +
-+obj-$(CONFIG_IECM) += iecm.o
++ccflags-y += -I${src}/../include -I${src}
 +
-+iecm-y := \
-+	iecm_lib.o \
-+	iecm_virtchnl.o \
-+	iecm_txrx.o \
-+	iecm_singleq_txrx.o \
-+	iecm_ethtool.o \
-+	iecm_controlq.o \
-+	iecm_osdep.o \
-+	iecm_controlq_setup.o \
-+	iecm_main.o
++idpf-y := \
++	idpf_main.o \
++	idpf_reg.o
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_dev.h b/drivers/net/ethernet/intel/idpf/idpf_dev.h
+new file mode 100644
+index 000000000000..fc66580f4126
+--- /dev/null
++++ b/drivers/net/ethernet/intel/idpf/idpf_dev.h
+@@ -0,0 +1,17 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright (C) 2020 Intel Corporation */
++
++#ifndef _IDPF_DEV_H_
++#define _IDPF_DEV_H_
++
++#include "iecm.h"
++
++void idpf_intr_reg_init(struct iecm_vport *vport);
++void idpf_mb_intr_reg_init(struct iecm_adapter *adapter);
++void idpf_reset_reg_init(struct iecm_reset_reg *reset_reg);
++void idpf_trigger_reset(struct iecm_adapter *adapter,
++			enum iecm_flags trig_cause);
++void idpf_vportq_reg_init(struct iecm_vport *vport);
++void idpf_ctlq_reg_init(struct iecm_ctlq_create_info *cq);
++
++#endif /* _IDPF_DEV_H_ */
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_devids.h b/drivers/net/ethernet/intel/idpf/idpf_devids.h
+new file mode 100644
+index 000000000000..ee373a04cb20
+--- /dev/null
++++ b/drivers/net/ethernet/intel/idpf/idpf_devids.h
+@@ -0,0 +1,10 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright (C) 2020 Intel Corporation */
++
++#ifndef _IDPF_DEVIDS_H_
++#define _IDPF_DEVIDS_H_
++
++/* Device IDs */
++#define IDPF_DEV_ID_PF			0x1452
++
++#endif /* _IDPF_DEVIDS_H_ */
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
+new file mode 100644
+index 000000000000..8573c25114f4
+--- /dev/null
++++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
+@@ -0,0 +1,139 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright (C) 2020 Intel Corporation */
++
++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
++
++#include <linux/version.h>
++
++#include "idpf_dev.h"
++#include "idpf_devids.h"
++
++#define DRV_SUMMARY	"Intel(R) Data Plane Function Linux Driver"
++static const char idpf_driver_string[] = DRV_SUMMARY;
++static const char idpf_copyright[] = "Copyright (c) 2020, Intel Corporation.";
++
++MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
++MODULE_DESCRIPTION(DRV_SUMMARY);
++MODULE_LICENSE("GPL v2");
++
++static int debug = -1;
++module_param(debug, int, 0644);
++#ifndef CONFIG_DYNAMIC_DEBUG
++MODULE_PARM_DESC(debug, "netif level (0=none,...,16=all), hw debug_mask (0x8XXXXXXX)");
++#else
++MODULE_PARM_DESC(debug, "netif level (0=none,...,16=all)");
++#endif /* !CONFIG_DYNAMIC_DEBUG */
++
++/**
++ * idpf_reg_ops_init - Initialize register API function pointers
++ * @adapter: Driver specific private structure
++ */
++static void idpf_reg_ops_init(struct iecm_adapter *adapter)
++{
++	adapter->dev_ops.reg_ops.ctlq_reg_init = idpf_ctlq_reg_init;
++	adapter->dev_ops.reg_ops.vportq_reg_init = idpf_vportq_reg_init;
++	adapter->dev_ops.reg_ops.intr_reg_init = idpf_intr_reg_init;
++	adapter->dev_ops.reg_ops.mb_intr_reg_init = idpf_mb_intr_reg_init;
++	adapter->dev_ops.reg_ops.reset_reg_init = idpf_reset_reg_init;
++	adapter->dev_ops.reg_ops.trigger_reset = idpf_trigger_reset;
++}
++
++/**
++ * idpf_probe - Device initialization routine
++ * @pdev: PCI device information struct
++ * @ent: entry in idpf_pci_tbl
++ *
++ * Returns 0 on success, negative on failure
++ */
++int idpf_probe(struct pci_dev *pdev,
++	       const struct pci_device_id __always_unused *ent)
++{
++	struct iecm_adapter *adapter = NULL;
++	int err;
++
++	err = pcim_enable_device(pdev);
++	if (err)
++		return err;
++
++	adapter = kzalloc(sizeof(*adapter), GFP_KERNEL);
++	if (!adapter)
++		return -ENOMEM;
++
++	adapter->dev_ops.reg_ops_init = idpf_reg_ops_init;
++
++	err = iecm_probe(pdev, ent, adapter);
++	if (err)
++		kfree(adapter);
++
++	return err;
++}
++
++/**
++ * idpf_remove - Device removal routine
++ * @pdev: PCI device information struct
++ */
++static void idpf_remove(struct pci_dev *pdev)
++{
++	struct iecm_adapter *adapter = pci_get_drvdata(pdev);
++
++	iecm_remove(pdev);
++	kfree(adapter);
++}
++
++/* idpf_pci_tbl - PCI Dev idpf ID Table
++ *
++ * Wildcard entries (PCI_ANY_ID) should come last
++ * Last entry must be all 0s
++ *
++ * { Vendor ID, Deviecm ID, SubVendor ID, SubDevice ID,
++ *   Class, Class Mask, private data (not used) }
++ */
++static const struct pci_device_id idpf_pci_tbl[] = {
++	{ PCI_VDEVICE(INTEL, IDPF_DEV_ID_PF), 0 },
++	/* required last entry */
++	{ 0, }
++};
++MODULE_DEVICE_TABLE(pci, idpf_pci_tbl);
++
++static struct pci_driver idpf_driver = {
++	.name = KBUILD_MODNAME,
++	.id_table = idpf_pci_tbl,
++	.probe = idpf_probe,
++	.remove = idpf_remove,
++	.shutdown = iecm_shutdown,
++};
++
++/**
++ * idpf_module_init - Driver registration routine
++ *
++ * idpf_module_init is the first routine called when the driver is
++ * loaded. All it does is register with the PCI subsystem.
++ */
++static int __init idpf_module_init(void)
++{
++	int status;
++
++	pr_info("%s - version %d\n", idpf_driver_string, LINUX_VERSION_CODE);
++	pr_info("%s\n", idpf_copyright);
++
++	status = pci_register_driver(&idpf_driver);
++	if (status) {
++		pr_err("failed to register pci driver, err %d\n", status);
++	}
++
++	return status;
++}
++module_init(idpf_module_init);
++
++/**
++ * idpf_module_exit - Driver exit cleanup routine
++ *
++ * idpf_module_exit is called just before the driver is removed
++ * from memory.
++ */
++static void __exit idpf_module_exit(void)
++{
++	pci_unregister_driver(&idpf_driver);
++	pr_info("module unloaded\n");
++}
++module_exit(idpf_module_exit);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_reg.c b/drivers/net/ethernet/intel/idpf/idpf_reg.c
+new file mode 100644
+index 000000000000..3bbe57f58b92
+--- /dev/null
++++ b/drivers/net/ethernet/intel/idpf/idpf_reg.c
+@@ -0,0 +1,152 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright (C) 2020 Intel Corporation */
++
++#include "idpf_dev.h"
++#include "iecm_lan_pf_regs.h"
++
++/**
++ * idpf_ctlq_reg_init - initialize default mailbox registers
++ * @cq: pointer to the array of create control queues
++ */
++void idpf_ctlq_reg_init(struct iecm_ctlq_create_info *cq)
++{
++	int i;
++
++#define NUM_Q 2
++	for (i = 0; i < NUM_Q; i++) {
++		struct iecm_ctlq_create_info *ccq = cq + i;
++
++		switch (ccq->type) {
++		case IECM_CTLQ_TYPE_MAILBOX_TX:
++			/* set head and tail registers in our local struct */
++			ccq->reg.head = PF_FW_ATQH;
++			ccq->reg.tail = PF_FW_ATQT;
++			ccq->reg.len = PF_FW_ATQLEN;
++			ccq->reg.bah = PF_FW_ATQBAH;
++			ccq->reg.bal = PF_FW_ATQBAL;
++			ccq->reg.len_mask = PF_FW_ATQLEN_ATQLEN_M;
++			ccq->reg.len_ena_mask = PF_FW_ATQLEN_ATQENABLE_M;
++			ccq->reg.head_mask = PF_FW_ATQH_ATQH_M;
++			break;
++		case IECM_CTLQ_TYPE_MAILBOX_RX:
++			/* set head and tail registers in our local struct */
++			ccq->reg.head = PF_FW_ARQH;
++			ccq->reg.tail = PF_FW_ARQT;
++			ccq->reg.len = PF_FW_ARQLEN;
++			ccq->reg.bah = PF_FW_ARQBAH;
++			ccq->reg.bal = PF_FW_ARQBAL;
++			ccq->reg.len_mask = PF_FW_ARQLEN_ARQLEN_M;
++			ccq->reg.len_ena_mask = PF_FW_ARQLEN_ARQENABLE_M;
++			ccq->reg.head_mask = PF_FW_ARQH_ARQH_M;
++			break;
++		default:
++			break;
++		}
++	}
++}
++
++/**
++ * idpf_vportq_reg_init - Initialize tail registers
++ * @vport: virtual port structure
++ */
++void idpf_vportq_reg_init(struct iecm_vport *vport)
++{
++	struct iecm_hw *hw = &vport->adapter->hw;
++	struct iecm_queue *q;
++	int i, j;
++
++	for (i = 0; i < vport->num_txq_grp; i++) {
++		int num_txq = vport->txq_grps[i].num_txq;
++
++		for (j = 0; j < num_txq; j++) {
++			q = &vport->txq_grps[i].txqs[j];
++			q->tail = hw->hw_addr + PF_QTX_COMM_DBELL(q->q_id);
++		}
++	}
++
++	for (i = 0; i < vport->num_rxq_grp; i++) {
++		struct iecm_rxq_group *rxq_grp = &vport->rxq_grps[i];
++		int num_rxq;
++
++		if (iecm_is_queue_model_split(vport->rxq_model)) {
++			for (j = 0; j < IECM_BUFQS_PER_RXQ_SET; j++) {
++				q = &rxq_grp->splitq.bufq_sets[j].bufq;
++				q->tail = hw->hw_addr +
++					  PF_QRX_BUFFQ_TAIL(q->q_id);
++			}
++
++			num_rxq = rxq_grp->splitq.num_rxq_sets;
++		} else {
++			num_rxq = rxq_grp->singleq.num_rxq;
++		}
++
++		for (j = 0; j < num_rxq; j++) {
++			if (iecm_is_queue_model_split(vport->rxq_model))
++				q = &rxq_grp->splitq.rxq_sets[j].rxq;
++			else
++				q = &rxq_grp->singleq.rxqs[j];
++			q->tail = hw->hw_addr + PF_QRX_TAIL(q->q_id);
++		}
++	}
++}
++
++/**
++ * idpf_mb_intr_reg_init - Initialize mailbox interrupt register
++ * @adapter: adapter structure
++ */
++void idpf_mb_intr_reg_init(struct iecm_adapter *adapter)
++{
++	struct iecm_intr_reg *intr = &adapter->mb_vector.intr_reg;
++	int vidx;
++
++	vidx = adapter->mb_vector.v_idx;
++	intr->dyn_ctl = PF_GLINT_DYN_CTL(vidx);
++	intr->dyn_ctl_intena_m = PF_GLINT_DYN_CTL_INTENA_M;
++	intr->dyn_ctl_itridx_m = 0x3 << PF_GLINT_DYN_CTL_ITR_INDX_S;
++}
++
++/**
++ * idpf_intr_reg_init - Initialize interrupt registers
++ * @vport: virtual port structure
++ */
++void idpf_intr_reg_init(struct iecm_vport *vport)
++{
++	int q_idx;
++
++	for (q_idx = 0; q_idx < vport->num_q_vectors; q_idx++) {
++		struct iecm_q_vector *q_vector = &vport->q_vectors[q_idx];
++		struct iecm_intr_reg *intr = &q_vector->intr_reg;
++		u32 vidx = q_vector->v_idx;
++
++		intr->dyn_ctl = PF_GLINT_DYN_CTL(vidx);
++		intr->dyn_ctl_clrpba_m = PF_GLINT_DYN_CTL_CLEARPBA_M;
++		intr->dyn_ctl_intena_m = PF_GLINT_DYN_CTL_INTENA_M;
++		intr->dyn_ctl_itridx_s = PF_GLINT_DYN_CTL_ITR_INDX_S;
++		intr->dyn_ctl_intrvl_s = PF_GLINT_DYN_CTL_INTERVAL_S;
++		intr->itr = PF_GLINT_ITR(VIRTCHNL_ITR_IDX_0, vidx);
++	}
++}
++
++/**
++ * idpf_reset_reg_init - Initialize reset registers
++ * @reset_reg: struct to be filled in with reset registers
++ */
++void idpf_reset_reg_init(struct iecm_reset_reg *reset_reg)
++{
++	reset_reg->rstat = PFGEN_RSTAT;
++	reset_reg->rstat_m = PFGEN_RSTAT_PFR_STATE_M;
++}
++
++/**
++ * idpf_trigger_reset - trigger reset
++ * @adapter: Driver specific private structure
++ * @trig_cause: Reason to trigger a reset
++ */
++void idpf_trigger_reset(struct iecm_adapter *adapter,
++			enum iecm_flags trig_cause)
++{
++	u32 reset_reg;
++
++	reset_reg = rd32(&adapter->hw, PFGEN_CTRL);
++	wr32(&adapter->hw, PFGEN_CTRL, (reset_reg | PFGEN_CTRL_PFSWR));
++}
 -- 
 2.21.0
 
