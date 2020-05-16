@@ -1,129 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 227161D5A51
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 May 2020 21:48:54 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81B5D1D5D3A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:39:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C722689943;
-	Fri, 15 May 2020 19:48:52 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 19E1787740;
+	Sat, 16 May 2020 00:39:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nvhM4tbYJAou; Fri, 15 May 2020 19:48:48 +0000 (UTC)
+	with ESMTP id SVfUdXFfzPNt; Sat, 16 May 2020 00:39:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8E61289BAF;
-	Fri, 15 May 2020 19:48:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2A40087848;
+	Sat, 16 May 2020 00:39:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 872911BF3FF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 19:48:47 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B95E41BF2B9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:39:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8399A89915
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 19:48:47 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B65FF877FA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:39:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WgXZByvI615G for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 May 2020 19:48:43 +0000 (UTC)
+ with ESMTP id r0WUct3Lkc6v for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 May 2020 00:39:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DC77F89946
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 May 2020 19:48:42 +0000 (UTC)
-IronPort-SDR: xYwH11DUya7tyRFQCrdBy1bGlUdel5Oy9A8Yo/Hpyx/FlgNnSXMHFEExqPS+KWH73US9uMeg01
- YKMfiH3ffQhg==
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1CAE58771C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:39:19 +0000 (UTC)
+IronPort-SDR: iXuTeTYUYxZGm6n9TtApVFy5ar7+ZC0jEXNFtAA9m9XAUV1Vfw+ZolikmpYloHV83BTmHfYP9E
+ CZvkH7lDU5QA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2020 12:48:42 -0700
-IronPort-SDR: HbsaWojFUuT13MYd2hPuj1dm0JBMvNU+SxO3zZ2201FVt+0DmD3KH3YxPWDIsi6LKnN0kqnM6a
- xMuWM82Ox7UA==
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2020 17:39:18 -0700
+IronPort-SDR: pF0UbtCL2PdDTzGpimqpGd5ZnCR9DYQjRDcY/y9TXxwWPu+M6dR30wNY/xJM9ZfAPJBDzwFTE2
+ lmjYR8sWrt+g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,396,1583222400"; d="scan'208";a="266708889"
-Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
- by orsmga006.jf.intel.com with ESMTP; 15 May 2020 12:48:42 -0700
-Received: from orsmsx156.amr.corp.intel.com (10.22.240.22) by
- ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 15 May 2020 12:48:42 -0700
-Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
- ORSMSX156.amr.corp.intel.com (10.22.240.22) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 15 May 2020 12:48:41 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.176)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 15 May 2020 12:48:41 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IS0kJr7kD7B6wsl6QArksv6zziKK1VKQ+vq5Fa6bndVRiuE0AKpvtDRg9kqbW4VMWCMCziPIGeUpunhci73HIGkUTKEXeKq1sIwW5vYM729rzBSDdnktByjT9hFYvb7MrjZF6aod4btN418RWrMBaS6NebeENCX2tTRDi7YCWvvuWAfPbxZ9qU00XFynz0s3TUYHC6VM01w4c9HEXmLx24llSKnAt5aSGiFb8Hr9FNz3qDdBuVFjbP2cz5I6x4kbjwmCtU8kTJWKbcgbO6x5XgxCGnz939ZfdK1IVhJmXTnxIPpKBy1CFeFvR2cJyVXmtk7yjpAL2HwaaYlmTgnCJQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CyCWTVnnZ/0Iipi4tO4vO00zRDzmwQr6QhX7Yz9prFY=;
- b=YD5ifthF6iYWmTr4hl91Kwiwrj38Zis+r5Bzfj7w86ZxK3tFS9sukNNOQYtAUeTVeQfDW2fo1cLW6uEWqjG8Nf2v2ig5+a66aCKj0IHfnMKaxpCG27Owu6Y1I4OW/Y87yWgdFpxb9gXWPbGn5eqv+c7NczdmhHHe5kPVOWFDsVZZObofudJfip/l2xWzCSVRmu0r1tJ4WR0ETMcnM/eM0iJ3ix1kYJiHKr+HpqR3OM/8uinFuJBI+XwOiPLaOGZHkohx08E5u00iZMtPT6J6DJHOI0vqs64VrnLkrHy+WYv127PnCXbjFIMebfT9FYyFOHZnUr/+pPUPRCOkxFVQTQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CyCWTVnnZ/0Iipi4tO4vO00zRDzmwQr6QhX7Yz9prFY=;
- b=LKIt7nz6l5gfsIAhwwTDV3QmqI+WqGK8ArnPznAreEBc4hiuNpcDCnDZ5rmXEg92te0aG3FuNcH7hK83TAmfeXWfZKV6kct+6YLyizFRjJ2iMHC32HgHNbuyEEXKgivnDHk8x+oIS1yzm0us9vplSJMSBqLWHSiuNzGfVCd4a3s=
-Received: from DM5PR11MB1659.namprd11.prod.outlook.com (2603:10b6:4:6::20) by
- DM5PR11MB1691.namprd11.prod.outlook.com (2603:10b6:3:b::20) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3000.25; Fri, 15 May 2020 19:48:40 +0000
-Received: from DM5PR11MB1659.namprd11.prod.outlook.com
- ([fe80::b01b:8cfb:1248:ea66]) by DM5PR11MB1659.namprd11.prod.outlook.com
- ([fe80::b01b:8cfb:1248:ea66%9]) with mapi id 15.20.3000.022; Fri, 15 May 2020
- 19:48:40 +0000
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S41 15/15] ice: Rename build_ctob to
- ice_build_ctob
-Thread-Index: AQHWJNHOLdZbR7afM02k82MboMgY3KipmfOw
-Date: Fri, 15 May 2020 19:48:40 +0000
-Message-ID: <DM5PR11MB16595BCE1233A739C55C29698CBD0@DM5PR11MB1659.namprd11.prod.outlook.com>
-References: <20200508004113.39725-1-anthony.l.nguyen@intel.com>
- <20200508004113.39725-15-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200508004113.39725-15-anthony.l.nguyen@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.2.0.6
-authentication-results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
-x-originating-ip: [134.134.136.199]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 90cf92ab-6f7a-44b4-4f25-08d7f908f7d0
-x-ms-traffictypediagnostic: DM5PR11MB1691:
-x-microsoft-antispam-prvs: <DM5PR11MB169162657C4E928667D600408CBD0@DM5PR11MB1691.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2089;
-x-forefront-prvs: 04041A2886
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: /kzUXCM7qy0DMxJ2o3AX5HhNBxiLJ0R/kfg5UPxvwwGO37P9FWd4J/x+PqCrR1vYAZoXxUvbkoBLgHVoOWPCPo/7ZlGHoD+H5gVsV7wh5qSENq5qLxfjbJFzL7K/lQGbm+heHF7ZldpbbbsfNpV5n+UqWudSK1INq1G965L9VjseI71iZ33JdaJn+tiF+X7wDSvh1GbRbcW5nLxNkl8Ub9BQ5oc6gfNvb2BEUGsfXJR94bJDNSNgB7nNT359A60+81RzK/RiKqawkGeFSq73SXB+t6/h/Wp54fMEqpAoCUO+pAQvkn+3dglCDIiKs0vgV6tPJhAFSRGUX4dcC1sKqfjk5GfD4xs3/+3CAA5Dw0BL2hO5tPZwExduyKooT4Hd1Sa+IDRFq/9LpF09CBj/Ak0iXZZZyUcXYfOgll0oITvuaYGPPfzNm/oS4ySP2yAY
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR11MB1659.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(39860400002)(376002)(346002)(366004)(396003)(136003)(86362001)(55016002)(33656002)(9686003)(2906002)(71200400001)(52536014)(316002)(8936002)(6506007)(8676002)(478600001)(5660300002)(66556008)(66446008)(53546011)(26005)(66476007)(7696005)(66946007)(64756008)(76116006)(6916009)(4744005)(186003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: F8xjwny5PF60oAyY8HtlLSWxOaCRKvoxc1O1+Xv0d9y1R+rJ3o2xzebH02QS0hAX488ijdUlQWW2d/K5Plv/hhzw0QTIZ0Lh/Uvt/t02Bev1MKt/CRRjy9pyXtpIH2CURMF+FHkCvxQT9Fa3FUSAGBrwnBH3YcojjtTxdBuAicE82Se3FItZ22dKZWx+qtbLowO/8KKcxNIk29r3/pEt1JTdjdhp4/B6wiWjvazbPPOVwxR1hecP3FG646yfk81EDbd7mxVMqLoyR1rzx52z/6/GH7dK+6vAFQ1o8hkdQ1+l3XQ/TB0ZqG61xvSnYtHNiRB0CGc5NIGz8nfakXbKL0fyBPM5ILnVS53DEmyv9l5FdVEGmbHe3GG8zfkArXjuMMZuzlOCWhne15aHwogthkHzFi/rxlkwkSTzg47xi9S06IcHhCB1AZrkON1FC5UMGer23989sjLabnO/JiP7jLYh5MgmiHS8hF/qRpT2FXXg4Zzbwr/zUKRftE4VOids
-x-ms-exchange-transport-forked: True
+X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="307560856"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
+ by FMSMGA003.fm.intel.com with ESMTP; 15 May 2020 17:39:18 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 15 May 2020 17:36:30 -0700
+Message-Id: <20200516003644.4658-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 90cf92ab-6f7a-44b4-4f25-08d7f908f7d0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 May 2020 19:48:40.7303 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0AjnbGYMSX2umhuSHsWqKvQwa+eWYxldNqVTYrLvogvCZ63dOg4zdeHOyVvynmvf2UidTk31Pf2rxk1svAApDynmq0sGQYVt+8cWy7Qydrg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1691
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S41 15/15] ice: Rename build_ctob to
- ice_build_ctob
+Subject: [Intel-wired-lan] [PATCH S43 01/15] ice: Call ice_aq_set_mac_cfg
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,27 +68,203 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: Thursday, May 7, 2020 5:41 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S41 15/15] ice: Rename build_ctob to
-> ice_build_ctob
-> 
-> To make the function easier to identify as being part of the ice driver,
-> prepend ice to the function name.
-> 
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_txrx.c     | 11 ++++++-----
->  drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  4 ++--
-> drivers/net/ethernet/intel/ice/ice_txrx_lib.h |  2 +-
->  drivers/net/ethernet/intel/ice/ice_xsk.c      |  4 ++--
->  4 files changed, 11 insertions(+), 10 deletions(-)
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+As per the specification, the driver needs to call set_mac_cfg
+(opcode 0x0603) to be able to exercise jumbo frames. Call the
+function during initialization and the post reset rebuild flow.
 
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 21 ++++++
+ drivers/net/ethernet/intel/ice/ice_common.c   | 69 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h   |  2 +
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |  5 ++
+ drivers/net/ethernet/intel/ice/ice_main.c     |  6 ++
+ 5 files changed, 103 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 745f58a86a1d..1586f24f26fb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1069,6 +1069,25 @@ struct ice_aqc_set_phy_cfg_data {
+ 	u8 rsvd1;
+ };
+ 
++/* Set MAC Config command data structure (direct 0x0603) */
++struct ice_aqc_set_mac_cfg {
++	__le16 max_frame_size;
++	u8 params;
++#define ICE_AQ_SET_MAC_PACE_S		3
++#define ICE_AQ_SET_MAC_PACE_M		(0xF << ICE_AQ_SET_MAC_PACE_S)
++#define ICE_AQ_SET_MAC_PACE_TYPE_M	BIT(7)
++#define ICE_AQ_SET_MAC_PACE_TYPE_RATE	0
++#define ICE_AQ_SET_MAC_PACE_TYPE_FIXED	ICE_AQ_SET_MAC_PACE_TYPE_M
++	u8 tx_tmr_priority;
++	__le16 tx_tmr_value;
++	__le16 fc_refresh_threshold;
++	u8 drop_opts;
++#define ICE_AQ_SET_MAC_AUTO_DROP_MASK		BIT(0)
++#define ICE_AQ_SET_MAC_AUTO_DROP_NONE		0
++#define ICE_AQ_SET_MAC_AUTO_DROP_BLOCKING_PKTS	BIT(0)
++	u8 reserved[7];
++};
++
+ /* Restart AN command data structure (direct 0x0605)
+  * Also used for response, with only the lport_num field present.
+  */
+@@ -1806,6 +1825,7 @@ struct ice_aq_desc {
+ 		struct ice_aqc_download_pkg download_pkg;
+ 		struct ice_aqc_set_mac_lb set_mac_lb;
+ 		struct ice_aqc_alloc_free_res_cmd sw_res_ctrl;
++		struct ice_aqc_set_mac_cfg set_mac_cfg;
+ 		struct ice_aqc_set_event_mask set_event_mask;
+ 		struct ice_aqc_get_link_status get_link_status;
+ 		struct ice_aqc_event_lan_overflow lan_overflow;
+@@ -1902,6 +1922,7 @@ enum ice_adminq_opc {
+ 	/* PHY commands */
+ 	ice_aqc_opc_get_phy_caps			= 0x0600,
+ 	ice_aqc_opc_set_phy_cfg				= 0x0601,
++	ice_aqc_opc_set_mac_cfg				= 0x0603,
+ 	ice_aqc_opc_restart_an				= 0x0605,
+ 	ice_aqc_opc_get_link_status			= 0x0607,
+ 	ice_aqc_opc_set_event_mask			= 0x0613,
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index aa3cad00a78a..06beae93176e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -315,6 +315,71 @@ ice_aq_get_link_info(struct ice_port_info *pi, bool ena_lse,
+ 	return 0;
+ }
+ 
++/**
++ * ice_fill_tx_timer_and_fc_thresh
++ * @hw: pointer to the HW struct
++ * @cmd: pointer to MAC cfg structure
++ *
++ * Add Tx timer and FC refresh threshold info to Set MAC Config AQ command
++ * descriptor
++ */
++static void
++ice_fill_tx_timer_and_fc_thresh(struct ice_hw *hw,
++				struct ice_aqc_set_mac_cfg *cmd)
++{
++	u16 fc_thres_val, tx_timer_val;
++	u32 val;
++
++	/* We read back the transmit timer and FC threshold value of
++	 * LFC. Thus, we will use index =
++	 * PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_MAX_INDEX.
++	 *
++	 * Also, because we are operating on transmit timer and FC
++	 * threshold of LFC, we don't turn on any bit in tx_tmr_priority
++	 */
++#define IDX_OF_LFC PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_MAX_INDEX
++
++	/* Retrieve the transmit timer */
++	val = rd32(hw, PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA(IDX_OF_LFC));
++	tx_timer_val = val &
++		PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_HSEC_CTL_TX_PAUSE_QUANTA_M;
++	cmd->tx_tmr_value = cpu_to_le16(tx_timer_val);
++
++	/* Retrieve the FC threshold */
++	val = rd32(hw, PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER(IDX_OF_LFC));
++	fc_thres_val = val & PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_M;
++
++	cmd->fc_refresh_threshold = cpu_to_le16(fc_thres_val);
++}
++
++/**
++ * ice_aq_set_mac_cfg
++ * @hw: pointer to the HW struct
++ * @max_frame_size: Maximum Frame Size to be supported
++ * @cd: pointer to command details structure or NULL
++ *
++ * Set MAC configuration (0x0603)
++ */
++enum ice_status
++ice_aq_set_mac_cfg(struct ice_hw *hw, u16 max_frame_size, struct ice_sq_cd *cd)
++{
++	struct ice_aqc_set_mac_cfg *cmd;
++	struct ice_aq_desc desc;
++
++	cmd = &desc.params.set_mac_cfg;
++
++	if (max_frame_size == 0)
++		return ICE_ERR_PARAM;
++
++	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_set_mac_cfg);
++
++	cmd->max_frame_size = cpu_to_le16(max_frame_size);
++
++	ice_fill_tx_timer_and_fc_thresh(hw, cmd);
++
++	return ice_aq_send_cmd(hw, &desc, NULL, 0, cd);
++}
++
+ /**
+  * ice_init_fltr_mgmt_struct - initializes filter management list and locks
+  * @hw: pointer to the HW struct
+@@ -745,6 +810,10 @@ enum ice_status ice_init_hw(struct ice_hw *hw)
+ 	status = ice_aq_manage_mac_read(hw, mac_buf, mac_buf_len, NULL);
+ 	devm_kfree(ice_hw_to_dev(hw), mac_buf);
+ 
++	if (status)
++		goto err_unroll_fltr_mgmt_struct;
++	/* enable jumbo frame support at MAC level */
++	status = ice_aq_set_mac_cfg(hw, ICE_AQ_SET_MAC_FRAME_SIZE_MAX, NULL);
+ 	if (status)
+ 		goto err_unroll_fltr_mgmt_struct;
+ 	/* Obtain counter base index which would be used by flow director */
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index db63fd6b5608..9bac3e46da33 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -108,6 +108,8 @@ enum ice_status
+ ice_aq_set_link_restart_an(struct ice_port_info *pi, bool ena_link,
+ 			   struct ice_sq_cd *cd);
+ enum ice_status
++ice_aq_set_mac_cfg(struct ice_hw *hw, u16 max_frame_size, struct ice_sq_cd *cd);
++enum ice_status
+ ice_aq_get_link_info(struct ice_port_info *pi, bool ena_lse,
+ 		     struct ice_link_status *link, struct ice_sq_cd *cd);
+ enum ice_status
+diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+index 30c28a4bcf2f..16ec9bebf4b4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
++++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+@@ -219,6 +219,11 @@
+ #define VPLAN_TX_QBASE_VFNUMQ_M			ICE_M(0xFF, 16)
+ #define VPLAN_TXQ_MAPENA(_VF)			(0x00073800 + ((_VF) * 4))
+ #define VPLAN_TXQ_MAPENA_TX_ENA_M		BIT(0)
++#define PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA(_i)	(0x001E36E0 + ((_i) * 32))
++#define PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_MAX_INDEX 8
++#define PRTMAC_HSEC_CTL_TX_PAUSE_QUANTA_HSEC_CTL_TX_PAUSE_QUANTA_M ICE_M(0xFFFF, 0)
++#define PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER(_i) (0x001E3800 + ((_i) * 32))
++#define PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_M ICE_M(0xFFFF, 0)
+ #define GL_MDCK_TX_TDPU				0x00049348
+ #define GL_MDCK_TX_TDPU_RCU_ANTISPOOF_ITR_DIS_M BIT(1)
+ #define GL_MDET_RX				0x00294C00
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index f738e3046fb5..6af21510c694 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4963,6 +4963,12 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 		goto err_init_ctrlq;
+ 	}
+ 
++	ret = ice_aq_set_mac_cfg(hw, ICE_AQ_SET_MAC_FRAME_SIZE_MAX, NULL);
++	if (ret) {
++		dev_err(dev, "set_mac_cfg failed %s\n", ice_stat_str(ret));
++		goto err_init_ctrlq;
++	}
++
+ 	err = ice_sched_init_port(hw->port_info);
+ 	if (err)
+ 		goto err_sched_init_port;
+-- 
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
