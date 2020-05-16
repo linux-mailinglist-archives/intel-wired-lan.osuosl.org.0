@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B84001D5D7A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:57:51 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE41D1D5D76
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:57:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 460C3227FF;
-	Sat, 16 May 2020 00:57:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 70B9789A27;
+	Sat, 16 May 2020 00:57:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yhSRNR7JpnV0; Sat, 16 May 2020 00:57:49 +0000 (UTC)
+	with ESMTP id ls4-+nTl4CfF; Sat, 16 May 2020 00:57:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id EC02722795;
-	Sat, 16 May 2020 00:57:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ECDC189744;
+	Sat, 16 May 2020 00:57:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4A8C51BF9CC
+ by ash.osuosl.org (Postfix) with ESMTP id 1BC661BF9C6
  for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:57:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 46BF3204BE
+ by silver.osuosl.org (Postfix) with ESMTP id 12572204BE
  for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:57:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id baDzHHrjT1sB for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id R2+uOC-pIlWW for <intel-wired-lan@lists.osuosl.org>;
  Sat, 16 May 2020 00:57:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id E3C2A22731
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:57:41 +0000 (UTC)
-IronPort-SDR: doX47zDKx1D7/pQ0R66vX5kuQLfs0PqjUwwEfsXgwQY+zUYeSVnxMWRtLrLJBg99Pml1vFnt3s
- 28Rh8HRPWPjA==
+ by silver.osuosl.org (Postfix) with ESMTPS id 213F522795
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:57:42 +0000 (UTC)
+IronPort-SDR: LUYbCNgTw47bGqOH5JoxGzipjx5ac2B40SNV6P/dShVdsKqu18Ist5Z+wWNGDmOzCYs74IMzls
+ RSZZQ5/Cnbvw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  15 May 2020 17:57:40 -0700
-IronPort-SDR: jeN8P/eMWnw7H6Xp1lEPuHZLIk4wDS++gv8sll4dzD1tJPkqa+iVocmPgcHW6w6mz8jBWMCZI4
- Mk/7eh11hu1w==
+IronPort-SDR: HAkvzDznQ5pDcpY9HJLB4a/Rq+nGMcC6qxpUUC+83NuQI6uVfIopZ0AZpT6IGTo43ZzzUAabGz
+ eJvDgp1/6XVg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="464922698"
+X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="464922701"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by fmsmga005.fm.intel.com with ESMTP; 15 May 2020 17:57:40 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 15 May 2020 17:55:00 -0700
-Message-Id: <20200516005506.5113-3-anthony.l.nguyen@intel.com>
+Date: Fri, 15 May 2020 17:55:01 -0700
+Message-Id: <20200516005506.5113-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200516005506.5113-1-anthony.l.nguyen@intel.com>
 References: <20200516005506.5113-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S46 3/9] ice: Fix inability to set
- channels when down
+Subject: [Intel-wired-lan] [PATCH S46 4/9] ice: Allow VF to request reset as
+ soon as it's initialized
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,41 +71,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+From: Brett Creeley <brett.creeley@intel.com>
 
-Currently the driver prevents a user from doing
-modprobe ice
-ethtool -L eth0 combined 5
-ip link set eth0 up
+A VF driver has the ability to request reset via VIRTCHNL_OP_RESET_VF.
+This is a required step in VF driver load. Currently, the PF is only
+allowing a VF to request reset using this method after the VF has
+already communicated resources via VIRTCHNL_OP_GET_VF_RESOURCES.
+However, this is incorrect because the VF can request reset before
+requesting resources. Fix this by allowing the VF to request a reset
+once it has been initialized.
 
-The ethtool command fails, because the driver is checking to see if the
-interface is down before allowing the get_channels to proceed (even for
-a set_channels).
-
-Remove this check and allow the user to configure the interface
-before bringing it up, which is a much better usability case.
-
-Fixes: 87324e747fde ("ice: Implement ethtool ops for channels")
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 4 ----
- 1 file changed, 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index fd1849155d85..68c38004a088 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3189,10 +3189,6 @@ ice_get_channels(struct net_device *dev, struct ethtool_channels *ch)
- 	struct ice_vsi *vsi = np->vsi;
- 	struct ice_pf *pf = vsi->back;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index 0ca614fa97bb..48ab7d89729e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -1989,7 +1989,7 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+  */
+ static void ice_vc_reset_vf_msg(struct ice_vf *vf)
+ {
+-	if (test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
++	if (test_bit(ICE_VF_STATE_INIT, vf->vf_states))
+ 		ice_reset_vf(vf, false);
+ }
  
--	/* check to see if VSI is active */
--	if (test_bit(__ICE_DOWN, vsi->state))
--		return;
--
- 	/* report maximum channels */
- 	ch->max_rx = ice_get_max_rxq(pf);
- 	ch->max_tx = ice_get_max_txq(pf);
 -- 
 2.20.1
 
