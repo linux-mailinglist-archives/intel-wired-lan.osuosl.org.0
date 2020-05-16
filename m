@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0AC41D5D6C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:54:11 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA9F51D5D6A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:54:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 74AF988017;
-	Sat, 16 May 2020 00:54:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B25B22622;
+	Sat, 16 May 2020 00:54:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UdnmaWIfOuAr; Sat, 16 May 2020 00:54:09 +0000 (UTC)
+	with ESMTP id NIy0HIlj2877; Sat, 16 May 2020 00:54:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E22FC881FE;
-	Sat, 16 May 2020 00:54:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5CEA422795;
+	Sat, 16 May 2020 00:54:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5EDAE1BF9C6
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:54:00 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7893B1BF9C6
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:53:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 5B7C087F7D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:54:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 70AD222622
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:53:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id thzaNlsoOTme for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 May 2020 00:53:55 +0000 (UTC)
+ with ESMTP id mFwy84r070Ll for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 May 2020 00:53:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BEB5888017
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:53:55 +0000 (UTC)
-IronPort-SDR: 5tMGkivW2nMBnsl978e/Qjzjx8b4Orko9P844UmwbA4C2mWVvD190JG8BLLKbj8tQWxCRjOF5r
- ygEk8UDYPMkA==
+ by silver.osuosl.org (Postfix) with ESMTPS id 88405204BE
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:53:56 +0000 (UTC)
+IronPort-SDR: 8CHlcOYIwJiWjo6EWtTLQJrhnPZCw7GX96pqHHwuzkCrt70Pjle0F4tXaFhA3eFb+IOv4rnISR
+ i87yNdE3kb9A==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  15 May 2020 17:53:54 -0700
-IronPort-SDR: 3SbeT/wF1bKNbcT/kI7OTZOjcoomF9jxx4cVo1ly5G0RFrcoMRxgc2n1npqTugJGe2xjoqACdN
- Yc94lkjdf0/Q==
+IronPort-SDR: FCXmfdWucHMFYRIvtiiAl9peArbrnCRNrbsbMr3JM4Qn0YnPULIWhAAVhtJ+elPLZ2zWUILcxp
+ ulQ3N9tUR37w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="263360539"
+X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="263360540"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by orsmga003.jf.intel.com with ESMTP; 15 May 2020 17:53:54 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 15 May 2020 17:51:09 -0700
-Message-Id: <20200516005121.4963-3-anthony.l.nguyen@intel.com>
+Date: Fri, 15 May 2020 17:51:10 -0700
+Message-Id: <20200516005121.4963-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200516005121.4963-1-anthony.l.nguyen@intel.com>
 References: <20200516005121.4963-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S45 03/15] ice: Add helper function for
- clearing VPGEN_VFRTRIG
+Subject: [Intel-wired-lan] [PATCH S45 04/15] ice: Separate VF VSI
+ initialization/creation from reset flow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,74 +73,156 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Brett Creeley <brett.creeley@intel.com>
 
-Create a helper function for clearing VPGEN_VFRTRIG as this needs to be
-done on reset to notify the VF that we are done resetting it. Also, it
-needs to be done on SR-IOV initialization/creation in case it was left
-in a bad state after SR-IOV teardown.
+Currently the same flow is used for VF VSI initialization/creation and VF
+VSI reset. This makes the initialization/creation flow unnecessarily
+complicated. Fix this by separating the initialization/creation of the
+VF VSI from the reset flow.
 
 Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 31 ++++++++++++-------
- 1 file changed, 20 insertions(+), 11 deletions(-)
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 110 +++++++++++++++++-
+ 1 file changed, 106 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 5d6f23cf0c1f..18fe4cfe4443 100644
+index 18fe4cfe4443..5b9f01f1f65b 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -961,6 +961,21 @@ static int ice_set_per_vf_res(struct ice_pf *pf)
- 	return 0;
+@@ -1375,6 +1375,99 @@ static void ice_vc_notify_vf_reset(struct ice_vf *vf)
+ 			      NULL);
  }
  
 +/**
-+ * ice_clear_vf_reset_trigger - enable VF to access hardware
-+ * @vf: VF to enabled hardware access for
++ * ice_init_vf_vsi_res - initialize/setup VF VSI resources
++ * @vf: VF to initialize/setup the VSI for
++ *
++ * This function creates a VSI for the VF, adds a VLAN 0 filter, and sets up the
++ * VF VSI's broadcast filter and is only used during initial VF creation.
 + */
-+static void ice_clear_vf_reset_trigger(struct ice_vf *vf)
++static int ice_init_vf_vsi_res(struct ice_vf *vf)
 +{
-+	struct ice_hw *hw = &vf->pf->hw;
-+	u32 reg;
++	struct ice_pf *pf = vf->pf;
++	u8 broadcast[ETH_ALEN];
++	enum ice_status status;
++	struct ice_vsi *vsi;
++	struct device *dev;
++	int err;
 +
-+	reg = rd32(hw, VPGEN_VFRTRIG(vf->vf_id));
-+	reg &= ~VPGEN_VFRTRIG_VFSWR_M;
-+	wr32(hw, VPGEN_VFRTRIG(vf->vf_id), reg);
++	vf->first_vector_idx = ice_calc_vf_first_vector_idx(pf, vf);
++
++	dev = ice_pf_to_dev(pf);
++	vsi = ice_vf_vsi_setup(pf, pf->hw.port_info, vf->vf_id);
++	if (!vsi) {
++		dev_err(dev, "Failed to create VF VSI\n");
++		return -ENOMEM;
++	}
++
++	vf->lan_vsi_idx = vsi->idx;
++	vf->lan_vsi_num = vsi->vsi_num;
++
++	err = ice_vsi_add_vlan(vsi, 0, ICE_FWD_TO_VSI);
++	if (err) {
++		dev_warn(dev, "Failed to add VLAN 0 filter for VF %d\n",
++			 vf->vf_id);
++		goto release_vsi;
++	}
++
++	eth_broadcast_addr(broadcast);
++	status = ice_fltr_add_mac(vsi, broadcast, ICE_FWD_TO_VSI);
++	if (status) {
++		dev_err(dev, "Failed to add broadcast MAC filter for VF %d, status %s\n",
++			vf->vf_id, ice_stat_str(status));
++		err = ice_status_to_errno(status);
++		goto release_vsi;
++	}
++
++	vf->num_mac = 1;
++
++	return 0;
++
++release_vsi:
++	ice_vsi_release(vsi);
++	return err;
++}
++
++/**
++ * ice_start_vfs - start VFs so they are ready to be used by SR-IOV
++ * @pf: PF the VFs are associated with
++ */
++static int ice_start_vfs(struct ice_pf *pf)
++{
++	struct ice_hw *hw = &pf->hw;
++	int retval, i;
++
++	ice_for_each_vf(pf, i) {
++		struct ice_vf *vf = &pf->vf[i];
++
++		ice_clear_vf_reset_trigger(vf);
++
++		retval = ice_init_vf_vsi_res(vf);
++		if (retval) {
++			dev_err(ice_pf_to_dev(pf), "Failed to initialize VSI resources for VF %d, error %d\n",
++				vf->vf_id, retval);
++			goto teardown;
++		}
++
++		set_bit(ICE_VF_STATE_INIT, vf->vf_states);
++		ice_ena_vf_mappings(vf);
++		wr32(hw, VFGEN_RSTAT(vf->vf_id), VIRTCHNL_VFR_VFACTIVE);
++	}
++
 +	ice_flush(hw);
++	return 0;
++
++teardown:
++	for (i = i - 1; i >= 0; i--) {
++		struct ice_vf *vf = &pf->vf[i];
++
++		ice_dis_vf_mappings(vf);
++		ice_vsi_release(pf->vsi[vf->lan_vsi_idx]);
++	}
++
++	return retval;
 +}
 +
  /**
-  * ice_cleanup_and_realloc_vf - Clean up VF and reallocate resources after reset
-  * @vf: pointer to the VF structure
-@@ -974,26 +989,20 @@ static void ice_cleanup_and_realloc_vf(struct ice_vf *vf)
- {
- 	struct ice_pf *pf = vf->pf;
- 	struct ice_hw *hw;
--	u32 reg;
+  * ice_alloc_vfs - Allocate and set up VFs resources
+  * @pf: pointer to the PF structure
+@@ -1407,6 +1500,13 @@ static int ice_alloc_vfs(struct ice_pf *pf, u16 num_alloc_vfs)
+ 	pf->vf = vfs;
+ 	pf->num_alloc_vfs = num_alloc_vfs;
  
- 	hw = &pf->hw;
++	if (ice_set_per_vf_res(pf)) {
++		dev_err(dev, "Not enough resources for %d VFs, try with fewer number of VFs\n",
++			num_alloc_vfs);
++		ret = -ENOSPC;
++		goto err_unroll_sriov;
++	}
++
+ 	/* apply default profile */
+ 	ice_for_each_vf(pf, i) {
+ 		vfs[i].pf = pf;
+@@ -1416,15 +1516,17 @@ static int ice_alloc_vfs(struct ice_pf *pf, u16 num_alloc_vfs)
+ 		/* assign default capabilities */
+ 		set_bit(ICE_VIRTCHNL_VF_CAP_L2, &vfs[i].vf_caps);
+ 		vfs[i].spoofchk = true;
++		vfs[i].num_vf_qs = pf->num_qps_per_vf;
+ 	}
  
--	/* PF software completes the flow by notifying VF that reset flow is
--	 * completed. This is done by enabling hardware by clearing the reset
--	 * bit in the VPGEN_VFRTRIG reg and setting VFR_STATE in the VFGEN_RSTAT
--	 * register to VFR completed (done at the end of this function)
--	 * By doing this we allow HW to access VF memory at any point. If we
--	 * did it any sooner, HW could access memory while it was being freed
--	 * in ice_free_vf_res(), causing an IOMMU fault.
-+	/* Allow HW to access VF memory after calling
-+	 * ice_clear_vf_reset_trigger(). If we did it any sooner, HW could
-+	 * access memory while it was being freed in ice_free_vf_res(), causing
-+	 * an IOMMU fault.
- 	 *
- 	 * On the other hand, this needs to be done ASAP, because the VF driver
- 	 * is waiting for this to happen and may report a timeout. It's
- 	 * harmless, but it gets logged into Guest OS kernel log, so best avoid
- 	 * it.
- 	 */
--	reg = rd32(hw, VPGEN_VFRTRIG(vf->vf_id));
--	reg &= ~VPGEN_VFRTRIG_VFSWR_M;
--	wr32(hw, VPGEN_VFRTRIG(vf->vf_id), reg);
-+	ice_clear_vf_reset_trigger(vf);
+-	/* VF resources get allocated with initialization */
+-	if (!ice_config_res_vfs(pf)) {
+-		ret = -EIO;
++	if (ice_start_vfs(pf)) {
++		dev_err(dev, "Failed to start VF(s)\n");
++		ret = -EAGAIN;
+ 		goto err_unroll_sriov;
+ 	}
  
- 	/* reallocate VF resources to finish resetting the VSI state */
- 	if (!ice_alloc_vf_res(vf)) {
+-	return ret;
++	clear_bit(__ICE_VF_DIS, pf->state);
++	return 0;
+ 
+ err_unroll_sriov:
+ 	pf->vf = NULL;
 -- 
 2.20.1
 
