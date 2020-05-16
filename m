@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A9CB1D5D59
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:45:12 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D17651D5D55
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 May 2020 02:45:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F177C227FF;
-	Sat, 16 May 2020 00:45:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r8EPu-C60e3j; Sat, 16 May 2020 00:45:09 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id BA02C2281E;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A20B8811E;
 	Sat, 16 May 2020 00:45:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id v2rjkpCi-BbV; Sat, 16 May 2020 00:45:06 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AF52887F8B;
+	Sat, 16 May 2020 00:45:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7B8BE1BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:45:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EC1741BF2B9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:45:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7784087F8B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:45:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E8EEB87F93
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:45:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9L-bj8yJIqgO for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 May 2020 00:45:01 +0000 (UTC)
+ with ESMTP id smwtjZONep3R for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 May 2020 00:45:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id B37FD87F74
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E61EB88017
  for <intel-wired-lan@lists.osuosl.org>; Sat, 16 May 2020 00:45:01 +0000 (UTC)
-IronPort-SDR: QHWmtJlUqo9zlGUxIivYr+BZg9ZLTjT9dzEyj5lg+XoKx/yM6hhAVqjCcgWlURc5yXugxuUDH+
- 0srabNUNv3Yw==
+IronPort-SDR: Bh5dxLTsicSZjITRsbRskykwgTkuw0S6EINW5YZyFmk+ZAs0b02Yhh2B/Sl9mnprWYqYbWKUcx
+ qCNqalUcUIow==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  15 May 2020 17:45:00 -0700
-IronPort-SDR: 38o8kJnqPjTzObT4szv3F51AtwzqrBcYTFTt8fsGq9Q5SDDrCUkEGodyvIGwxhqC/9pPjkQT6L
- SxzaGUck7vzA==
+IronPort-SDR: eUxxIpm3j3mJw9GT/B8bqAfizEvAOIOWGkWUT1ALen4d7/PSZB5gfQAy9PQ00cvL55KBjJLHft
+ L74OIG2XB2lA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="287960353"
+X-IronPort-AV: E=Sophos;i="5.73,397,1583222400"; d="scan'208";a="287960355"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by fmsmga004.fm.intel.com with ESMTP; 15 May 2020 17:45:00 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 15 May 2020 17:42:22 -0700
-Message-Id: <20200516004226.4795-10-anthony.l.nguyen@intel.com>
+Date: Fri, 15 May 2020 17:42:23 -0700
+Message-Id: <20200516004226.4795-11-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200516004226.4795-1-anthony.l.nguyen@intel.com>
 References: <20200516004226.4795-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S44 10/14] ice: Poll for reset completion
- when DDP load fails
+Subject: [Intel-wired-lan] [PATCH S44 11/14] ice: cleanup VSI context
+ initialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,31 +71,29 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
 
-There are certain cases where the DDP load fails and the FW issues a
-core reset. For these cases, wait for reset to complete before
-proceeding with reset of the driver init.
+Remove an unnecessary copy of vsi->info into ctxt->info in ice_vsi_init.
+This line is essentially a no-op because ice_set_dflt_vsi_ctx performs
+a memset to clear the info from the context structure.
 
-Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_lib.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index fcd5c53202d9..1853dca3f364 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3111,6 +3111,9 @@ ice_log_pkg_init(struct ice_hw *hw, enum ice_status *status)
- 		case ICE_AQ_RC_EBADMAN:
- 		case ICE_AQ_RC_EBADBUF:
- 			dev_err(dev, "An error occurred on the device while loading the DDP package.  The device will be reset.\n");
-+			/* poll for reset to complete */
-+			if (ice_check_reset(hw))
-+				dev_err(dev, "Error resetting device. Please reload the driver\n");
- 			return;
- 		default:
- 			break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 9bee0d947651..7ab7408b3a05 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -949,7 +949,6 @@ static int ice_vsi_init(struct ice_vsi *vsi, bool init_vsi)
+ 	if (!ctxt)
+ 		return -ENOMEM;
+ 
+-	ctxt->info = vsi->info;
+ 	switch (vsi->type) {
+ 	case ICE_VSI_CTRL:
+ 	case ICE_VSI_LB:
 -- 
 2.20.1
 
