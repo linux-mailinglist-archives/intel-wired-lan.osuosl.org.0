@@ -1,59 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11AA21D9D15
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 18:43:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B0E081D9D30
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 18:51:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B3C2487DE4;
-	Tue, 19 May 2020 16:43:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 65CA084E23;
+	Tue, 19 May 2020 16:51:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6Qkte9mYF9YI; Tue, 19 May 2020 16:43:31 +0000 (UTC)
+	with ESMTP id gFwk-cDS4JCE; Tue, 19 May 2020 16:51:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5F74287E25;
-	Tue, 19 May 2020 16:43:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 42D8686CD4;
+	Tue, 19 May 2020 16:51:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C58941BF3A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:43:29 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 84A741BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:51:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id BE81187872
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:43:29 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 75A0C8884C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:51:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fVfQUkGvGhRh for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 May 2020 16:43:28 +0000 (UTC)
+ with ESMTP id gwIw2VaXJNYC for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 May 2020 16:51:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BAA8E8793F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:43:28 +0000 (UTC)
-IronPort-SDR: uV28HNY9NcIvjeCjAr6mekvQov3NO52h3NYyMMrYb6+FBGKR0mFuzToUq4D58R/wW55NrIX1EO
- t2SFFPFodDvA==
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1378688844
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:51:10 +0000 (UTC)
+IronPort-SDR: cfuw4GBXw1SiqYbmc60hPxyjScVofoKSJ1kLvZdeubOTK5QktIrVtb+3Y7MbF87SNlfvN1UemT
+ jLgAsk+r4TSw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2020 09:43:28 -0700
-IronPort-SDR: +FjcqJDHR9R/Re7HZp4dpz/9ikQyuz/ivoU0Gz9SJLda9voOJwIOIrIrnSEjBElu6sfgAx3xKC
- AdGvDuvCf8ZA==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2020 09:51:09 -0700
+IronPort-SDR: iMwZcd/NrmSJyU//xnOFNXOuZK6l/tlBFp8aoSueDoVbaMcdNEfurOmIJRvWHrP05cF1MvLh/4
+ AFKMH3fofhBw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="466192281"
-Received: from stputhen-mobl1.amr.corp.intel.com (HELO ellie) ([10.209.5.127])
- by fmsmga006.fm.intel.com with ESMTP; 19 May 2020 09:43:27 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Po Liu <po.liu@nxp.com>, Michal Kubecek <mkubecek@suse.cz>,
- "netdev\@vger.kernel.org" <netdev@vger.kernel.org>
-In-Reply-To: <VE1PR04MB6496D0B1507969D8474F78FC92B90@VE1PR04MB6496.eurprd04.prod.outlook.com>
-References: <VE1PR04MB6496D0B1507969D8474F78FC92B90@VE1PR04MB6496.eurprd04.prod.outlook.com>
-Date: Tue, 19 May 2020 09:43:27 -0700
-Message-ID: <87lflnooy8.fsf@intel.com>
+X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="343194685"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga001.jf.intel.com with ESMTP; 19 May 2020 09:51:07 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jb5SN-0003OU-29; Wed, 20 May 2020 00:51:07 +0800
+Date: Wed, 20 May 2020 00:49:50 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ec40e2e.klS+ELQvHWl7NI6k%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next-queue RFC 0/4] ethtool: Add support for
- frame preemption
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
+ 7c7dd63d321082aff5fb170d27beab8a756e3434
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,66 +67,475 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Jose.Abreu@synopsys.com" <Jose.Abreu@synopsys.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- "m-karicheri2@ti.com" <m-karicheri2@ti.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-UG8gTGl1IDxwby5saXVAbnhwLmNvbT4gd3JpdGVzOgoKPiBIaSBWaW5pY2l1cywKPgo+PiAtLS0t
-LU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQo+PiBGcm9tOiBWaW5pY2l1cyBDb3N0YSBHb21lcyA8dmlu
-aWNpdXMuZ29tZXNAaW50ZWwuY29tPgo+PiBTZW50OiAyMDIw5bm0NeaciDE55pelIDM6MzQKPj4g
-VG86IE1pY2hhbCBLdWJlY2VrIDxta3ViZWNla0BzdXNlLmN6PjsgbmV0ZGV2QHZnZXIua2VybmVs
-Lm9yZwo+PiBDYzogaW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc7IGplZmZyZXkudC5r
-aXJzaGVyQGludGVsLmNvbTsgVmxhZGltaXIKPj4gT2x0ZWFuIDx2bGFkaW1pci5vbHRlYW5Abnhw
-LmNvbT47IFBvIExpdSA8cG8ubGl1QG54cC5jb20+OyBtLQo+PiBrYXJpY2hlcmkyQHRpLmNvbTsg
-Sm9zZS5BYnJldUBzeW5vcHN5cy5jb20KPj4gU3ViamVjdDogUmU6IFtuZXh0LXF1ZXVlIFJGQyAw
-LzRdIGV0aHRvb2w6IEFkZCBzdXBwb3J0IGZvciBmcmFtZQo+PiBwcmVlbXB0aW9uCj4+IAo+PiBI
-aSwKPj4gCj4+IE1pY2hhbCBLdWJlY2VrIDxta3ViZWNla0BzdXNlLmN6PiB3cml0ZXM6Cj4+IAo+
-PiA+IE9uIEZyaSwgTWF5IDE1LCAyMDIwIGF0IDA2OjI5OjQ0UE0gLTA3MDAsIFZpbmljaXVzIENv
-c3RhIEdvbWVzIHdyb3RlOgo+PiA+PiBIaSwKPj4gPj4KPj4gPj4gVGhpcyBzZXJpZXMgYWRkcyBz
-dXBwb3J0IGZvciBjb25maWd1cmluZyBmcmFtZSBwcmVlbXB0aW9uLCBhcyBkZWZpbmVkCj4+ID4+
-IGJ5IElFRUUgODAyLjFRLTIwMTggKHByZXZpb3VzbHkgSUVFRSA4MDIuMVFidSkgYW5kIElFRUUg
-ODAyLjNici4KPj4gPj4KPj4gPj4gRnJhbWUgcHJlZW1wdGlvbiBhbGxvd3MgYSBwYWNrZXQgZnJv
-bSBhIGhpZ2hlciBwcmlvcml0eSBxdWV1ZSBtYXJrZWQKPj4gPj4gYXMgImV4cHJlc3MiIHRvIHBy
-ZWVtcHQgYSBwYWNrZXQgZnJvbSBsb3dlciBwcmlvcml0eSBxdWV1ZSBtYXJrZWQgYXMKPj4gPj4g
-InByZWVtcHRpYmxlIi4gVGhlIGlkZWEgaXMgdGhhdCB0aGlzIGNhbiBoZWxwIHJlZHVjZSB0aGUg
-bGF0ZW5jeSBmb3IKPj4gPj4gaGlnaGVyIHByaW9yaXR5IHRyYWZmaWMuCj4+ID4+Cj4+ID4+IFBy
-ZXZpb3VzbHksIHRoZSBwcm9wb3NlZCBpbnRlcmZhY2UgZm9yIGNvbmZpZ3VyaW5nIHRoZXNlIGZl
-YXR1cmVzIHdhcwo+PiA+PiB1c2luZyB0aGUgcWRpc2MgbGF5ZXIuIEJ1dCBhcyB0aGlzIGlzIHZl
-cnkgaGFyZHdhcmUgZGVwZW5kZW50IGFuZCBhbGwKPj4gPj4gdGhhdCBxZGlzYyBkaWQgd2FzIHBh
-c3MgdGhlIGluZm9ybWF0aW9uIHRvIHRoZSBkcml2ZXIsIGl0IG1ha2VzIHNlbnNlCj4+ID4+IHRv
-IGhhdmUgdGhpcyBpbiBldGh0b29sLgo+PiA+Pgo+PiA+PiBPbmUgZXhhbXBsZSwgZm9yIHJldHJp
-ZXZpbmcgYW5kIHNldHRpbmcgdGhlIGNvbmZpZ3VyYXRpb246Cj4+ID4+Cj4+ID4+ICQgZXRodG9v
-bCAkIHN1ZG8gLi9ldGh0b29sIC0tc2hvdy1mcmFtZS1wcmVlbXB0aW9uIGVucDNzMCBGcmFtZQo+
-PiA+PiBwcmVlbXB0aW9uIHNldHRpbmdzIGZvciBlbnAzczA6Cj4+ID4+ICAgICAgc3VwcG9ydDog
-c3VwcG9ydGVkCj4+ID4KPj4gPiBJTUhPIHdlIGRvbid0IG5lZWQgYSBzcGVjaWFsIGJvb2wgZm9y
-IHRoaXMuIElJVUMgdGhpcyBpcyBub3QgYSBzdGF0ZQo+PiA+IGZsYWcgdGhhdCB3b3VsZCBjaGFu
-Z2UgdmFsdWUgZm9yIGEgcGFydGljdWxhciBkZXZpY2U7IGVpdGhlciB0aGUKPj4gPiBkZXZpY2Ug
-c3VwcG9ydHMgdGhlIGZlYXR1cmUgb3IgaXQgZG9lcyBub3QuIElmIGl0IGRvZXMgbm90LCB0aGUK
-Pj4gPiBldGh0b29sX29wcyBjYWxsYmFja3Mgd291bGQgcmV0dXJuIC1FT1BOT1RTVVBQIChvciB3
-b3VsZCBub3QgZXZlbgo+PiA+IGV4aXN0IGlmIHRoZSBkcml2ZXIgaGFzIG5vIHN1cHBvcnQpIGFu
-ZCBldGh0b29sIHdvdWxkIHNheSBzby4KPj4gCj4+IChJIGtub3cgdGhhdCB0aGUgY29tbWVudHMg
-YmVsb3cgb25seSBhcHBseSBpZiAiZXRodG9vbC13YXkiIGlzIHdoYXQncwo+PiBkZWNpZGVkKQo+
-PiAKPj4gQ29vbC4gV2lsbCByZW1vdmUgdGhlIHN1cHBvcnRlZCBiaXQuCj4KPiBTaGFsbCBpdCBt
-b3ZlIHRvIHRoZSBsaW5rX2tzZXR0aW5ncyBmaXhlZCBzdXBwb3J0ZWQgbGlzdD8gU28gY2FuIGJl
-Cj4gY2hlY2tlZCBieSB0aGUgZXRodG9vbCAtayBjb21tYW5kLiBJIHVuZGVyc3RhbmQgdGhhdCB0
-aGUgaHcgZmVhdHVyZXMKPiBhcmUgZW5jb3VyYWdlZCBsaXN0aW5nIGluIHRoZSBrc2V0dGluZ3Mu
-CgpIYXZpbmcgaXQgaW4gbGlua19rc2V0dGluZ3MgbWlnaHQgbWFrZSBzZW5zZSwgdXNpbmcgc29t
-ZXRoaW5nIGxpa2UKImZyYW1lLXByZWVtcHRpb246IG9mZiBbZml4ZWRdIiB0byBtZWFuICJub3Qg
-c3VwcG9ydGVkIiBzb3VuZHMgbmljZS4KCj4gVGhlIHR3byBNQUNzIHNob3VsZCBhbGwgYmUgaW5p
-dGlhbGl6ZWQgYXQgZHJpdmVyIHNpemUuIEFuZCBhbGwgZnJhbWUgcXVldWVzIHNob3VsZCBhc3Np
-Z25lZCB0byB0aGUgZXhwcmVzcyBNQUMgYnkgZGVmYXVsdC4gVGhhdCBsb29rcyBhcyBub3JtYWwg
-bW9kZSBjYWxsZWQgcHJlZW1wdGlvbiBkaXNhYmxlLgo+IEFueSBmcmFtZSBxdWV1ZXMgYXNzaWdu
-ZWQgcGFzcyBwcmVlbXB0YWJsZSBNQUMgY291bGQgYmUgY2FsbGVkCj4gcHJlZW1wdGlvbiBlbmFi
-bGUuCgpJZiB5b3UgbWVhbiB0byBoYXZlIGZyYW1lLXByZWVtcHRpb24gZW5hYmxlZCBieSBkZWZh
-dWx0LCBJIHRoaW5rIGl0CnNob3VsZCBiZSBhIHBlci1kcml2ZXIgZGVjaXNpb24sIGFuZCBwcm9i
-YWJseSBkaXNhYmxlZCBieSBkZWZhdWx0LCBhdApsZWFzdCBpbiB0aGUgYmVnaW5pbmc6IGZyYW1l
-IHByZWVtcHRpb24gbWlnaHQgaW50ZXJhY3QgYmFkbHkgd2l0aCBvdGhlcgpmZWF0dXJlcywganVt
-Ym8gZnJhbWVzIGFuZCBFRUUgY29tZSB0byBtaW5kLgoKCkNoZWVycywKLS0KVmluaWNpdXMKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQt
-bGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3Rz
-Lm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 7c7dd63d321082aff5fb170d27beab8a756e3434  idpf: Introduce idpf driver
+
+Error/Warning in current branch:
+
+cc1: warning: drivers/net/ethernet/intel/idpf/../include: No such file or directory [-Wmissing-include-dirs]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:104:6: warning: no previous prototype for 'iecm_get_mb_vec_id' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:122:5: warning: no previous prototype for 'iecm_mb_intr_init' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:140:6: warning: no previous prototype for 'iecm_intr_distribute' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:417:5: warning: no previous prototype for 'iecm_vport_rel' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:49:13: warning: no previous prototype for 'iecm_mb_intr_clean' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:63:6: warning: no previous prototype for 'iecm_mb_irq_enable' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:748:6: warning: no previous prototype for 'iecm_deinit_task' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_lib.c:77:5: warning: no previous prototype for 'iecm_mb_intr_req_irq' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:115:6: warning: no previous prototype for 'iecm_tx_desc_rel' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:136:6: warning: no previous prototype for 'iecm_tx_desc_rel_all' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:312:6: warning: no previous prototype for 'iecm_rx_buf_rel_all' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:341:6: warning: no previous prototype for 'iecm_rx_desc_rel' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:3565:5: warning: no previous prototype for 'iecm_vport_splitq_napi_poll' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:3603:6: warning: no previous prototype for 'iecm_vport_intr_map_vector_to_qs' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:3715:5: warning: no previous prototype for 'iecm_vport_intr_alloc' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:371:6: warning: no previous prototype for 'iecm_rx_desc_rel_all' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:486:6: warning: no previous prototype for 'iecm_rx_hdr_buf_hw_alloc' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:84:6: warning: no previous prototype for 'iecm_tx_buf_rel_all' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_virtchnl.c:12:6: warning: no previous prototype for 'iecm_recv_event_msg' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/iecm/iecm_virtchnl.c:61:1: warning: no previous prototype for 'iecm_mb_clean' [-Wmissing-prototypes]
+drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2271:15: error: redefinition of 'truesize'
+sound/soc/sof/intel/apl.c:167:1: error: type defaults to 'int' in declaration of 'MODULE_IMPORT_NS' [-Werror=implicit-int]
+sound/soc/sof/intel/cnl.c:444:1: error: type defaults to 'int' in declaration of 'MODULE_IMPORT_NS' [-Werror=implicit-int]
+
+Error/Warning ids grouped by kconfigs:
+
+recent_errors
+|-- alpha-allmodconfig
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- alpha-allyesconfig
+|   |-- cc1:warning:drivers-net-ethernet-intel-idpf-..-include:No-such-file-or-directory
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- arm-allmodconfig
+|   |-- cc1:warning:drivers-net-ethernet-intel-idpf-..-include:No-such-file-or-directory
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- arm-allyesconfig
+|   |-- cc1:warning:drivers-net-ethernet-intel-idpf-..-include:No-such-file-or-directory
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- i386-allmodconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   `-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|-- i386-allyesconfig
+|   |-- cc1:warning:drivers-net-ethernet-intel-idpf-..-include:No-such-file-or-directory
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   `-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|-- ia64-allmodconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- ia64-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- mips-allmodconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- mips-allyesconfig
+|   |-- cc1:warning:drivers-net-ethernet-intel-idpf-..-include:No-such-file-or-directory
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- parisc-allmodconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- parisc-allyesconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- powerpc-allmodconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- powerpc-allyesconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- powerpc-defconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- powerpc-ppc64_defconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- riscv-allmodconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- riscv-allyesconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- s390-allmodconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- s390-allyesconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- sparc-allmodconfig
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- sparc-allyesconfig
+|   |-- cc1:warning:drivers-net-ethernet-intel-idpf-..-include:No-such-file-or-directory
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- sparc64-allmodconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- sparc64-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|-- x86_64-allmodconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   `-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|-- x86_64-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_deinit_task
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_get_mb_vec_id
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_intr_distribute
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_clean
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_init
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_intr_req_irq
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_mb_irq_enable
+|   |-- drivers-net-ethernet-intel-iecm-iecm_lib.c:warning:no-previous-prototype-for-iecm_vport_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_rx_hdr_buf_hw_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_buf_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_tx_desc_rel_all
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_alloc
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_intr_map_vector_to_qs
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:warning:no-previous-prototype-for-iecm_vport_splitq_napi_poll
+|   |-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_mb_clean
+|   `-- drivers-net-ethernet-intel-iecm-iecm_virtchnl.c:warning:no-previous-prototype-for-iecm_recv_event_msg
+|-- xtensa-allmodconfig
+|   |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+|   `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+`-- xtensa-allyesconfig
+    |-- sound-soc-sof-intel-apl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+    `-- sound-soc-sof-intel-cnl.c:error:type-defaults-to-int-in-declaration-of-MODULE_IMPORT_NS
+
+elapsed time: 694m
+
+configs tested: 115
+configs skipped: 3
+
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+sparc                            allyesconfig
+mips                             allyesconfig
+m68k                             allyesconfig
+m68k                          hp300_defconfig
+arc                      axs103_smp_defconfig
+nds32                             allnoconfig
+alpha                               defconfig
+xtensa                           alldefconfig
+powerpc                      chrp32_defconfig
+sh                          polaris_defconfig
+powerpc                       ppc64_defconfig
+openrisc                         allyesconfig
+sh                          urquell_defconfig
+xtensa                    xip_kc705_defconfig
+um                           x86_64_defconfig
+mips                       markeins_defconfig
+sh                            titan_defconfig
+sh                           se7751_defconfig
+arm                       netwinder_defconfig
+mips                          ath25_defconfig
+nds32                            alldefconfig
+sh                        sh7785lcr_defconfig
+m68k                          multi_defconfig
+powerpc                           allnoconfig
+i386                              allnoconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+nds32                               defconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                             defconfig
+i386                 randconfig-a006-20200519
+i386                 randconfig-a005-20200519
+i386                 randconfig-a001-20200519
+i386                 randconfig-a003-20200519
+i386                 randconfig-a004-20200519
+i386                 randconfig-a002-20200519
+i386                 randconfig-a012-20200519
+i386                 randconfig-a014-20200519
+i386                 randconfig-a016-20200519
+i386                 randconfig-a011-20200519
+i386                 randconfig-a015-20200519
+i386                 randconfig-a013-20200519
+x86_64               randconfig-a003-20200519
+x86_64               randconfig-a005-20200519
+x86_64               randconfig-a004-20200519
+x86_64               randconfig-a006-20200519
+x86_64               randconfig-a002-20200519
+x86_64               randconfig-a001-20200519
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+x86_64                              defconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allmodconfig
+um                               allyesconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
