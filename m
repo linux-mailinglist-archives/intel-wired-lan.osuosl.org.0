@@ -1,55 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D04E1D99FE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 16:36:43 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 10D5C1D9A72
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 16:54:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B7C332268D;
-	Tue, 19 May 2020 14:36:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A0B1786D78;
+	Tue, 19 May 2020 14:54:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CEfdmDZsHq6x; Tue, 19 May 2020 14:36:41 +0000 (UTC)
+	with ESMTP id r14ZEAWA6e31; Tue, 19 May 2020 14:54:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 121D722844;
-	Tue, 19 May 2020 14:36:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6F8EC86DD6;
+	Tue, 19 May 2020 14:54:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B10A71BF46D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 14:36:37 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F100D1BF46D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 14:53:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2F88D84ADE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 14:36:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EB6D385F53
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 14:53:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4HHokBv+B2MD for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 May 2020 14:36:36 +0000 (UTC)
+ with ESMTP id Y3tQW-qgqjoq for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 May 2020 14:53:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B0D7A8834C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 14:36:35 +0000 (UTC)
-IronPort-SDR: u5sXKqIoGjrK/k1QECnjTyHmK86QoQY2e6zuCdlh2DGP+/R/+DQJQPD6FG0xzAzYV59FwErHEz
- CIrouu8o+/Tw==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2020 07:36:35 -0700
-IronPort-SDR: j2y8RGE7QiHYp3n+svPB6QScRrDDCakWo3kuJw/upnBHWb6mRekzcdH0sxO/1KPE0DuGoG44RB
- ZhPVk4hE4whw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="300120482"
-Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
- by orsmga008.jf.intel.com with ESMTP; 19 May 2020 07:36:34 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 19 May 2020 17:36:34 +0300
-Message-Id: <20200519143634.12765-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove symbol error counter
+Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com [198.47.19.141])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 1C6F6810B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 14:53:49 +0000 (UTC)
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04JErjRj129496;
+ Tue, 19 May 2020 09:53:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1589900025;
+ bh=Xp+6mRG+txeiaoUM/vnEKlmryO/oJiJW2WfO1OB1hXk=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=IQFtqNmiW9FQxRieiH0ZXdTwjv13TPVC0+o/0MH8Bz9chOV07zz9RIK4emPXDdgGD
+ 5pefySVpNc5MgTc8Y7IERePvDBaFPykUmGvGoTgcpt0anKwnzt0GcSH7igRqv9vNVs
+ VMO0xc2w6qizWdm6wMENJScEDyYURF1gDK/oPQKY=
+Received: from DLEE115.ent.ti.com (dlee115.ent.ti.com [157.170.170.26])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04JErjB5082138
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 19 May 2020 09:53:45 -0500
+Received: from DLEE103.ent.ti.com (157.170.170.33) by DLEE115.ent.ti.com
+ (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Tue, 19
+ May 2020 09:53:44 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE103.ent.ti.com
+ (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Tue, 19 May 2020 09:53:45 -0500
+Received: from [10.250.74.234] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04JErhip050463;
+ Tue, 19 May 2020 09:53:43 -0500
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+References: <20200516012948.3173993-1-vinicius.gomes@intel.com>
+From: Murali Karicheri <m-karicheri2@ti.com>
+Message-ID: <b33e582f-e0e6-467a-636a-674322108855@ti.com>
+Date: Tue, 19 May 2020 10:53:42 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
+MIME-Version: 1.0
+In-Reply-To: <20200516012948.3173993-1-vinicius.gomes@intel.com>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Subject: Re: [Intel-wired-lan] [next-queue RFC 0/4] ethtool: Add support for
+ frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,62 +82,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Jose.Abreu@synopsys.com, netdev@vger.kernel.org, po.liu@nxp.com,
+ vladimir.oltean@nxp.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Accordance to the i225 datasheet symbol error counter does not
-applicable to the i225 device.
-This patch comes to clean up this counter.
+Hi Vinicius,
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_mac.c  | 1 -
- drivers/net/ethernet/intel/igc/igc_main.c | 1 -
- drivers/net/ethernet/intel/igc/igc_regs.h | 1 -
- 3 files changed, 3 deletions(-)
+On 5/15/20 9:29 PM, Vinicius Costa Gomes wrote:
+> Hi,
+> 
+> This series adds support for configuring frame preemption, as defined
+> by IEEE 802.1Q-2018 (previously IEEE 802.1Qbu) and IEEE 802.3br.
+> 
+> Frame preemption allows a packet from a higher priority queue marked
+> as "express" to preempt a packet from lower priority queue marked as
+> "preemptible". The idea is that this can help reduce the latency for
+> higher priority traffic.
+> 
+> Previously, the proposed interface for configuring these features was
+> using the qdisc layer. But as this is very hardware dependent and all
+> that qdisc did was pass the information to the driver, it makes sense
+> to have this in ethtool.
+> 
+> One example, for retrieving and setting the configuration:
+> 
+> $ ethtool $ sudo ./ethtool --show-frame-preemption enp3s0
+> Frame preemption settings for enp3s0:
+> 	support: supported
+> 	active: active
+> 	supported queues: 0xf
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
-index 89445ab02a98..9de70a24cb9e 100644
---- a/drivers/net/ethernet/intel/igc/igc_mac.c
-+++ b/drivers/net/ethernet/intel/igc/igc_mac.c
-@@ -235,7 +235,6 @@ s32 igc_force_mac_fc(struct igc_hw *hw)
- void igc_clear_hw_cntrs_base(struct igc_hw *hw)
- {
- 	rd32(IGC_CRCERRS);
--	rd32(IGC_SYMERRS);
- 	rd32(IGC_MPC);
- 	rd32(IGC_SCC);
- 	rd32(IGC_ECOL);
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 26dc437fa9da..aac004944f99 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -3706,7 +3706,6 @@ void igc_update_stats(struct igc_adapter *adapter)
- 	adapter->stats.prc511 += rd32(IGC_PRC511);
- 	adapter->stats.prc1023 += rd32(IGC_PRC1023);
- 	adapter->stats.prc1522 += rd32(IGC_PRC1522);
--	adapter->stats.symerrs += rd32(IGC_SYMERRS);
- 	adapter->stats.sec += rd32(IGC_SEC);
- 
- 	mpc = rd32(IGC_MPC);
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 9970242d0d75..f50a7bf6a793 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -127,7 +127,6 @@
- /* Statistics Register Descriptions */
- #define IGC_CRCERRS	0x04000  /* CRC Error Count - R/clr */
- #define IGC_ALGNERRC	0x04004  /* Alignment Error Count - R/clr */
--#define IGC_SYMERRS	0x04008  /* Symbol Error Count - R/clr */
- #define IGC_RXERRC	0x0400C  /* Receive Error Count - R/clr */
- #define IGC_MPC		0x04010  /* Missed Packet Count - R/clr */
- #define IGC_SCC		0x04014  /* Single Collision Count - R/clr */
+I assume this is will be in sync with ethtool -L output which indicates
+how many tx h/w queues present? I mean if there are 8 h/w queues,
+supported queues will show 0xff.
+
+> 	supported queues: 0xe
+ From the command below, it appears this is the preemptible queue mask.
+bit 0  is Q0, bit 1 Q1 and so forth. Right? In that case isn't it more
+clear to display
+         preemptible queues : 0xef
+
+In the above Q7 is express queue and Q6-Q0 are preemptible.
+
+Also there is a handshake called verify that happens which initiated
+by the h/w to check the capability of peer. It looks like
+not all vendor's hardware supports it and good to have it displayed
+something like
+
+         Verify supported/{not supported}
+
+If Verify is supported, FPE is enabled only if it succeeds. So may be
+good to show a status of Verify if it is supported something like
+         Verify success/Failed
+
+> 	minimum fragment size: 68
+> 
+> 
+> $ ethtool --set-frame-preemption enp3s0 fp on min-frag-size 68 preemptible-queues-mask 0xe
+> 
+> This is a RFC because I wanted to have feedback on some points:
+> 
+>    - The parameters added are enough for the hardware I have, is it
+>      enough in general?
+
+As described above, it would be good to add an optional parameter for
+verify
+
+ethtool --set-frame-preemption enp3s0 fp on min-frag-size 68 
+preemptible-queues-mask 0xe verify on
+
+> 
+>    - even with the ethtool via netlink effort, I chose to keep the
+>      ioctl() way, in case someone wants to backport this to an older
+>      kernel, is there a problem with this?
+> 
+>    - Some space for bikeshedding the names and location (for example,
+>      does it make sense for these settings to be per-queue?), as I am
+>      not quite happy with them, one example, is the use of preemptible
+>      vs. preemptable;
+> 
+> 
+> About the patches, should be quite straightforward:
+> 
+> Patch 1, adds the ETHTOOL_GFP and ETHOOL_SFP commands and the
+> associated data structures;
+> 
+> Patch 2, adds the ETHTOOL_MSG_PREEMPT_GET and ETHTOOL_MSG_PREEMPT_SET
+> netlink messages and the associated attributes;
+> 
+> Patch 3, is the example implementation for the igc driver, the catch
+> here is that frame preemption in igc is dependent on the TSN "mode"
+> being enabled;
+> 
+> Patch 4, adds some registers that helped during implementation.
+> 
+> Another thing is that because igc is still under development, to avoid
+> conflicts, I think it might be easier for the PATCH version of this
+> series to go through Jeff Kirsher's tree.
+> 
+> Vinicius Costa Gomes (4):
+>    ethtool: Add support for configuring frame preemption
+>    ethtool: Add support for configuring frame preemption via netlink
+>    igc: Add support for configuring frame preemption
+>    igc: Add support for exposing frame preemption stats registers
+> 
+>   drivers/net/ethernet/intel/igc/igc.h         |   3 +
+>   drivers/net/ethernet/intel/igc/igc_defines.h |   6 +
+>   drivers/net/ethernet/intel/igc/igc_ethtool.c |  77 ++++++++
+>   drivers/net/ethernet/intel/igc/igc_regs.h    |  10 +
+>   drivers/net/ethernet/intel/igc/igc_tsn.c     |  46 ++++-
+>   include/linux/ethtool.h                      |   6 +
+>   include/uapi/linux/ethtool.h                 |  25 +++
+>   include/uapi/linux/ethtool_netlink.h         |  19 ++
+>   net/ethtool/Makefile                         |   3 +-
+>   net/ethtool/ioctl.c                          |  36 ++++
+>   net/ethtool/netlink.c                        |  15 ++
+>   net/ethtool/netlink.h                        |   2 +
+>   net/ethtool/preempt.c                        | 181 +++++++++++++++++++
+>   13 files changed, 423 insertions(+), 6 deletions(-)
+>   create mode 100644 net/ethtool/preempt.c
+> 
+
 -- 
-2.11.0
-
+Murali Karicheri
+Texas Instruments
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
