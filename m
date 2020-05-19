@@ -1,69 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71F441DA0E3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 21:19:40 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E221F1D9CE3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 18:34:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2A26C86DF4;
-	Tue, 19 May 2020 19:19:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9F66587C30;
+	Tue, 19 May 2020 16:34:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8AXoXVQ02SUQ; Tue, 19 May 2020 19:19:38 +0000 (UTC)
+	with ESMTP id osj7L71PWv9V; Tue, 19 May 2020 16:34:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C7E1586E00;
-	Tue, 19 May 2020 19:19:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B27F387834;
+	Tue, 19 May 2020 16:34:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CC8C81BF28D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:20:15 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 278AF1BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:34:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C72AB887C7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:20:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 232BD8683C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:34:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pPY6c5JeMn1Z for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 May 2020 16:20:14 +0000 (UTC)
+ with ESMTP id 984oqkg1bqpa for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 May 2020 16:34:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9B4AE887B3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:20:14 +0000 (UTC)
-IronPort-SDR: QlhUNY2i6JIkI9JkKHc93UzNiuQ89vm3ccDjTG5MyOi/TiwbJ+BVyqwC/odw7HJBlID3sYdlaD
- FIuiNcTMjQrA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2020 09:20:14 -0700
-IronPort-SDR: eirhOS9d5jbEnEJW7qcNvSY8CvMw3KNxz3F3nzI3oNMNIvzXku6lZAwphlIZ54DxxvP2rce+z7
- 4XKPKDRag0ig==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="439672455"
-Received: from shochwel-mobl.ger.corp.intel.com (HELO
- btopel-mobl.ger.intel.com) ([10.252.38.72])
- by orsmga005.jf.intel.com with ESMTP; 19 May 2020 09:20:10 -0700
-To: kbuild test robot <lkp@intel.com>, =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?=
- <bjorn.topel@gmail.com>, ast@kernel.org, daniel@iogearbox.net,
- davem@davemloft.net, kuba@kernel.org, hawk@kernel.org,
- john.fastabend@gmail.com, netdev@vger.kernel.org, bpf@vger.kernel.org,
- magnus.karlsson@intel.com, jonathan.lemon@gmail.com,
- jeffrey.t.kirsher@intel.com
-References: <20200519085724.294949-8-bjorn.topel@gmail.com>
- <202005192351.j1H08VpV%lkp@intel.com>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>
-Message-ID: <c81b36a0-11dd-4b7f-fad8-85f31dced58c@intel.com>
-Date: Tue, 19 May 2020 18:20:09 +0200
+Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com [198.47.23.249])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7CE9887787
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 16:34:43 +0000 (UTC)
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+ by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04JGYVRH038062;
+ Tue, 19 May 2020 11:34:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1589906071;
+ bh=/vOqGrqZKFEISSBDGaUAsu38PgJE2S0bQf4x+D43qGc=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=oS7HJU0w57Y720J+uVw+hhQwcf/pxqv8iCO/mP9lSKjM36MRjDOetWPjdDb3g/hdu
+ 06kGAQurGlp1gRWxO57EWDghp+AY0YFHPH/YpXAdOSBcXElnrnmAYTGPuUaKMwbWRO
+ 0MsSt57DwYXSIFSRibut8/AH29BH2AeD83ikwlfk=
+Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
+ by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04JGYVK3122996
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 19 May 2020 11:34:31 -0500
+Received: from DLEE103.ent.ti.com (157.170.170.33) by DLEE104.ent.ti.com
+ (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Tue, 19
+ May 2020 11:34:31 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE103.ent.ti.com
+ (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Tue, 19 May 2020 11:34:31 -0500
+Received: from [10.250.74.234] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04JGYUrS115717;
+ Tue, 19 May 2020 11:34:30 -0500
+To: Vinicius Costa Gomes <vinicius.gomes@intel.com>, Jakub Kicinski
+ <kuba@kernel.org>
+References: <20200516012948.3173993-1-vinicius.gomes@intel.com>
+ <20200516.133739.285740119627243211.davem@davemloft.net>
+ <CA+h21hoNW_++QHRob+NbWC2k7y7sFec3kotSjTL6s8eZGGT+2Q@mail.gmail.com>
+ <20200516.151932.575795129235955389.davem@davemloft.net>
+ <87wo59oyhr.fsf@intel.com>
+ <20200518135613.379f6a63@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <87h7wcq4nx.fsf@intel.com>
+From: Murali Karicheri <m-karicheri2@ti.com>
+Message-ID: <29959a1a-fc45-6870-fa11-311866b51aa0@ti.com>
+Date: Tue, 19 May 2020 12:34:30 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <202005192351.j1H08VpV%lkp@intel.com>
+In-Reply-To: <87h7wcq4nx.fsf@intel.com>
 Content-Language: en-US
-X-Mailman-Approved-At: Tue, 19 May 2020 19:19:37 +0000
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 07/15] i40e: separate
- kernel allocated rx_bi rings from AF_XDP rings
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+Subject: Re: [Intel-wired-lan] [next-queue RFC 0/4] ethtool: Add support for
+ frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,65 +88,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maximmi@mellanox.com, maciej.fijalkowski@intel.com, kbuild-all@lists.01.org,
- intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
+Cc: Jose.Abreu@synopsys.com, vladimir.oltean@nxp.com, po.liu@nxp.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, olteanv@gmail.com,
+ David Miller <davem@davemloft.net>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2020-05-19 17:18, kbuild test robot wrote:
-> Hi "Bj=F6rn,
-> =
-
-> I love your patch! Perhaps something to improve:
-> =
-
-> [auto build test WARNING on bpf-next/master]
-> [also build test WARNING on jkirsher-next-queue/dev-queue next-20200518]
-> [cannot apply to bpf/master linus/master v5.7-rc6]
-> [if your patch is applied to the wrong git tree, please drop us a note to=
- help
-> improve the system. BTW, we also suggest to use '--base' option to specif=
-y the
-> base tree in git format-patch, please see https://stackoverflow.com/a/374=
-06982]
-> =
-
-> url:    https://github.com/0day-ci/linux/commits/Bj-rn-T-pel/Introduce-AF=
-_XDP-buffer-allocation-API/20200519-203122
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git =
-master
-> config: riscv-allyesconfig (attached as .config)
-> compiler: riscv64-linux-gcc (GCC) 9.3.0
-> reproduce:
->          wget https://raw.githubusercontent.com/intel/lkp-tests/master/sb=
-in/make.cross -O ~/bin/make.cross
->          chmod +x ~/bin/make.cross
->          # save the attached .config to linux build tree
->          COMPILER_INSTALL_PATH=3D$HOME/0day COMPILER=3Dgcc-9.3.0 make.cro=
-ss ARCH=3Driscv
-> =
-
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kbuild test robot <lkp@intel.com>
-> =
-
-> All warnings (new ones prefixed by >>, old ones prefixed by <<):
-> =
-
->>> drivers/net/ethernet/intel/i40e/i40e_txrx.c:531:6: warning: no previous=
- prototype for 'i40e_fd_handle_status' [-Wmissing-prototypes]
-> 531 | void i40e_fd_handle_status(struct i40e_ring *rx_ring, u64 qword0_ra=
-w,
-> |      ^~~~~~~~~~~~~~~~~~~~~
->
-
-Yes, this could indeed be made static. Hmm, I wonder why I didn't get
-that warning on my x86-64 build!? I'll spin a v4 (or do a follow-up?).
 
 
-Bj=F6rn
+On 5/18/20 6:06 PM, Vinicius Costa Gomes wrote:
+> Hi,
+> 
+> Jakub Kicinski <kuba@kernel.org> writes:
+>>
+>> Please take a look at the example from the cover letter:
+>>
+>> $ ethtool $ sudo ./ethtool --show-frame-preemption
+>> enp3s0 Frame preemption settings for enp3s0:
+>> 	support: supported
+>> 	active: active
+>> 	supported queues: 0xf
+>> 	supported queues: 0xe
+>> 	minimum fragment size: 68
+>>
+>> Reading this I have no idea what 0xe is. I have to go and query TC API
+>> to see what priorities and queues that will be. Which IMHO is a strong
+>> argument that this information belongs there in the first place.
+> 
+> That was the (only?) strong argument in favor of having frame preemption
+> in the TC side when this was last discussed.
+> 
+> We can have a hybrid solution, we can move the express/preemptible per
+> queue map to mqprio/taprio/whatever. And have the more specific
+> configuration knobs, minimum fragment size, etc, in ethtool.
+
+Isn't this a pure h/w feature? FPE is implemented at L2 and involves
+fragments that are only seen by h/w and never at Linux network core
+unlike IP fragments and is transparent to network stack. However it
+enhances priority handling at h/w to the next level by pre-empting 
+existing lower priority traffic to give way to express queue traffic
+and improve latency. So everything happens in h/w. So ethtool makes
+perfect sense here as it is a queue configuration. I agree with Vinicius
+and Vladmir to support this in ethtool instead of TC.
+
+Murali
+> 
+> What do you think?
+> 
+> 
+> Cheers,
+> 
+
+-- 
+Murali Karicheri
+Texas Instruments
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
