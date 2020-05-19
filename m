@@ -2,75 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D18F71D9B18
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 17:27:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CCE81D9B4F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2020 17:32:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8F0EA8805D;
-	Tue, 19 May 2020 15:27:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5BC5188081;
+	Tue, 19 May 2020 15:32:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c6UrHdq8tRgi; Tue, 19 May 2020 15:27:25 +0000 (UTC)
+	with ESMTP id gDS1kfvfLUFG; Tue, 19 May 2020 15:32:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DDD0A8808D;
-	Tue, 19 May 2020 15:27:24 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5D07188680;
+	Tue, 19 May 2020 15:32:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F2FC21BF3E3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 15:27:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 15CE11BF3E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 15:32:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EE7AF88076
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 15:27:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0614B228F1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 15:32:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TLdz+j6+wIwk for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 May 2020 15:27:23 +0000 (UTC)
+ with ESMTP id XjDkbJ1E7ZOv for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 May 2020 15:32:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com [198.47.23.249])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 121A88805D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 15:27:23 +0000 (UTC)
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
- by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04JFRKOY021784;
- Tue, 19 May 2020 10:27:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1589902040;
- bh=NqIe7jHq8bbuyG2WT7Q26CjYiKLu0TNTJ+StXWZ3tN4=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=Y8cQSiPCAV7qeg8yxjaIfhlt7liecclFzpHOkzkqcCR5ajz1WQFJBavB07o9W6M83
- vpmuSz0GLRuq/17exdIjpzSVzfut6ayrNIXb7YXbW8RSctCgO7g4NrHduFSteP9BUc
- V3WzHwgHduHAm7XLnSI1iwvcmLnRYai8zjrUVwh0=
-Received: from DFLE109.ent.ti.com (dfle109.ent.ti.com [10.64.6.30])
- by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04JFRKOk000571
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Tue, 19 May 2020 10:27:20 -0500
-Received: from DFLE113.ent.ti.com (10.64.6.34) by DFLE109.ent.ti.com
- (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Tue, 19
- May 2020 10:27:19 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE113.ent.ti.com
- (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Tue, 19 May 2020 10:27:19 -0500
-Received: from [10.250.74.234] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04JFRHPm112034;
- Tue, 19 May 2020 10:27:18 -0500
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by silver.osuosl.org (Postfix) with ESMTPS id D4EA3220C4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2020 15:32:41 +0000 (UTC)
+IronPort-SDR: jEBkkYtoUlC+bnwHvLV+uxm2IHA8wcFssK57B6Q00YOlNS8vt6oPWBaDOAXWTxZPvRfEkVVxuY
+ G/mYpL6fqqXg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2020 08:32:41 -0700
+IronPort-SDR: /D8eAVIdFAdKR2ZCtY+BpIV7wTp3ROMhUFbR0tChvaBGec4BDg2JXDjaXjdhNNtswao3uiQm2d
+ eZOPASOl7pog==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,410,1583222400"; d="scan'208";a="466165188"
+Received: from stputhen-mobl1.amr.corp.intel.com (HELO ellie) ([10.209.5.127])
+ by fmsmga006.fm.intel.com with ESMTP; 19 May 2020 08:32:40 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Murali Karicheri <m-karicheri2@ti.com>, intel-wired-lan@lists.osuosl.org
+In-Reply-To: <b33e582f-e0e6-467a-636a-674322108855@ti.com>
 References: <20200516012948.3173993-1-vinicius.gomes@intel.com>
- <20200516012948.3173993-2-vinicius.gomes@intel.com>
-From: Murali Karicheri <m-karicheri2@ti.com>
-Message-ID: <3d9351d6-4a04-5bd3-69a4-c30275373804@ti.com>
-Date: Tue, 19 May 2020 11:27:17 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ <b33e582f-e0e6-467a-636a-674322108855@ti.com>
+Date: Tue, 19 May 2020 08:32:40 -0700
+Message-ID: <87v9ksndnr.fsf@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20200516012948.3173993-2-vinicius.gomes@intel.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-Subject: Re: [Intel-wired-lan] [next-queue RFC 1/4] ethtool: Add support for
- configuring frame preemption
+Subject: Re: [Intel-wired-lan] [next-queue RFC 0/4] ethtool: Add support for
+ frame preemption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,171 +68,74 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Jose.Abreu@synopsys.com, netdev@vger.kernel.org, po.liu@nxp.com,
  vladimir.oltean@nxp.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vinicius,
+Murali Karicheri <m-karicheri2@ti.com> writes:
 
-On 5/15/20 9:29 PM, Vinicius Costa Gomes wrote:
-> Frame preemption (described in IEEE 802.3br-2016) defines the concept
-> of preemptible and express queues. It allows traffic from express
-> queues to "interrupt" traffic from preemptible queues, which are
-> "resumed" after the express traffic has finished transmitting.
-> 
-> Frame preemption can only be used when both the local device and the
-> link partner support it.
-> 
-> A new ethtool command was added to support the configuration
-> parameters.
-> 
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> ---
->   include/linux/ethtool.h      |  6 ++++++
->   include/uapi/linux/ethtool.h | 25 +++++++++++++++++++++++++
->   net/ethtool/ioctl.c          | 36 ++++++++++++++++++++++++++++++++++++
->   3 files changed, 67 insertions(+)
-> 
-> diff --git a/include/linux/ethtool.h b/include/linux/ethtool.h
-> index a23b26e..e4a6710 100644
-> --- a/include/linux/ethtool.h
-> +++ b/include/linux/ethtool.h
-> @@ -360,6 +360,8 @@ bool ethtool_convert_link_mode_to_legacy_u32(u32 *legacy_u32,
->    * @get_ethtool_phy_stats: Return extended statistics about the PHY device.
->    *	This is only useful if the device maintains PHY statistics and
->    *	cannot use the standard PHY library helpers.
-> + * @get_preempt: Get the network device Frame Preemption parameters.
-> + * @set_preempt: Set the network device Frame Preemption parameters.
->    *
->    * All operations are optional (i.e. the function pointer may be set
->    * to %NULL) and callers must take this into account.  Callers must
-> @@ -454,6 +456,10 @@ struct ethtool_ops {
->   				      struct ethtool_fecparam *);
->   	int	(*set_fecparam)(struct net_device *,
->   				      struct ethtool_fecparam *);
-> +	int	(*get_preempt)(struct net_device *,
-> +			       struct ethtool_fp *);
-> +	int	(*set_preempt)(struct net_device *,
-> +			       struct ethtool_fp *);
->   	void	(*get_ethtool_phy_stats)(struct net_device *,
->   					 struct ethtool_stats *, u64 *);
+>> $ ethtool $ sudo ./ethtool --show-frame-preemption enp3s0
+>> Frame preemption settings for enp3s0:
+>> 	support: supported
+>> 	active: active
+>> 	supported queues: 0xf
+>
+> I assume this is will be in sync with ethtool -L output which indicates
+> how many tx h/w queues present? I mean if there are 8 h/w queues,
+> supported queues will show 0xff.
 
-I understand this series for IET Preemption. But want to see if we can
-also add EST parameter, queueMaxSDU, that is also configurable.
+In this approach, the driver builds these bitmasks, so it's responsible
+to keep it consistent with the rest of the stuff that's exposed in
+ethtool.
 
-This is defined as up to 8 entries of queueMaxSDU (unsigned int) defined
-in 12.29.1.1,12.29.1.1.1 of 802.1Q 2018 edition. May be
-set_queue_max_sdu() with per traffic class queue value as an array
-of __u16 values?
+>
+>> 	supported queues: 0xe
+>  From the command below, it appears this is the preemptible queue mask.
+> bit 0  is Q0, bit 1 Q1 and so forth. Right? In that case isn't it more
+> clear to display
+>          preemptible queues : 0xef
+>
+> In the above Q7 is express queue and Q6-Q0 are preemptible.
+
+In my case, the controller I have here only has 4 queues, and Queue 0 is
+the highest priority one, and it's marked as express.
+
+>
+> Also there is a handshake called verify that happens which initiated
+> by the h/w to check the capability of peer. It looks like
+> not all vendor's hardware supports it and good to have it displayed
+> something like
+>
+>          Verify supported/{not supported}
+>
+> If Verify is supported, FPE is enabled only if it succeeds. So may be
+> good to show a status of Verify if it is supported something like
+>          Verify success/Failed
+>
+>> 	minimum fragment size: 68
+>> 
+>> 
+>> $ ethtool --set-frame-preemption enp3s0 fp on min-frag-size 68 preemptible-queues-mask 0xe
+>> 
+>> This is a RFC because I wanted to have feedback on some points:
+>> 
+>>    - The parameters added are enough for the hardware I have, is it
+>>      enough in general?
+>
+> As described above, it would be good to add an optional parameter for
+> verify
+>
+> ethtool --set-frame-preemption enp3s0 fp on min-frag-size 68 
+> preemptible-queues-mask 0xe verify on
+>
+
+The hardware I have do not support this, but this makes sense.
 
 
->   };
-> diff --git a/include/uapi/linux/ethtool.h b/include/uapi/linux/ethtool.h
-> index f4662b3..d63f9f8 100644
-> --- a/include/uapi/linux/ethtool.h
-> +++ b/include/uapi/linux/ethtool.h
-> @@ -369,6 +369,28 @@ struct ethtool_eee {
->   	__u32	reserved[2];
->   };
->   
-> +/**
-> + * struct ethtool_fp - Frame Preemption information
-> + * @cmd: ETHTOOL_{G,S}FP
-> + * @fp_supported: If frame preemption is supported.
-> + * @fp_enabled: If frame preemption should be advertised to the link partner
-> + *	as enabled.
-> + * @supported_queues_mask: Bitmask indicating which queues support being
-> + *	configured as preemptible (bit 0 -> queue 0, bit N -> queue N).
-> + * @preemptible_queues_mask: Bitmask indicating which queues are
-> + *	configured as preemptible (bit 0 -> queue 0, bit N -> queue N).
-> + * @min_frag_size: Minimum size for all non-final fragment size.
-> + */
-> +struct ethtool_fp {
-> +	__u32	cmd;
-> +	__u8	fp_supported;
-> +	__u8	fp_enabled;
-
-Could we add verify_supported and verify_enabled?
-
-> +	__u32	supported_queues_mask;
-> +	__u32	preemptible_queues_mask;
-> +	__u32	min_frag_size;
-> +	__u32	reserved[2];
-> +};
-> +
->   /**
->    * struct ethtool_modinfo - plugin module eeprom information
->    * @cmd: %ETHTOOL_GMODULEINFO
-> @@ -1441,6 +1463,9 @@ enum ethtool_fec_config_bits {
->   #define ETHTOOL_GFECPARAM	0x00000050 /* Get FEC settings */
->   #define ETHTOOL_SFECPARAM	0x00000051 /* Set FEC settings */
->   
-> +#define ETHTOOL_GFP		0x00000052 /* Get Frame Preemption settings */
-> +#define ETHTOOL_SFP		0x00000053 /* Set Frame Preemption settings */
-> +
->   /* compatibility with older code */
->   #define SPARC_ETH_GSET		ETHTOOL_GSET
->   #define SPARC_ETH_SSET		ETHTOOL_SSET
-> diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
-> index 52102ab..e15ad5c 100644
-> --- a/net/ethtool/ioctl.c
-> +++ b/net/ethtool/ioctl.c
-> @@ -2531,6 +2531,36 @@ static int ethtool_set_fecparam(struct net_device *dev, void __user *useraddr)
->   	return dev->ethtool_ops->set_fecparam(dev, &fecparam);
->   }
->   
-> +static int ethtool_get_preempt(struct net_device *dev, void __user *useraddr)
-> +{
-> +	struct ethtool_fp fpparam = { .cmd = ETHTOOL_GFP };
-> +	int rc;
-> +
-> +	if (!dev->ethtool_ops->get_preempt)
-> +		return -EOPNOTSUPP;
-> +
-> +	rc = dev->ethtool_ops->get_preempt(dev, &fpparam);
-> +	if (rc)
-> +		return rc;
-> +
-> +	if (copy_to_user(useraddr, &fpparam, sizeof(fpparam)))
-> +		return -EFAULT;
-> +	return 0;
-> +}
-> +
-> +static int ethtool_set_preempt(struct net_device *dev, void __user *useraddr)
-> +{
-> +	struct ethtool_fp fpparam;
-> +
-> +	if (!dev->ethtool_ops->set_preempt)
-> +		return -EOPNOTSUPP;
-> +
-> +	if (copy_from_user(&fpparam, useraddr, sizeof(fpparam)))
-> +		return -EFAULT;
-> +
-> +	return dev->ethtool_ops->set_preempt(dev, &fpparam);
-> +}
-> +
->   /* The main entry point in this file.  Called from net/core/dev_ioctl.c */
->   
->   int dev_ethtool(struct net *net, struct ifreq *ifr)
-> @@ -2810,6 +2840,12 @@ int dev_ethtool(struct net *net, struct ifreq *ifr)
->   	case ETHTOOL_SFECPARAM:
->   		rc = ethtool_set_fecparam(dev, useraddr);
->   		break;
-> +	case ETHTOOL_GFP:
-> +		rc = ethtool_get_preempt(dev, useraddr);
-> +		break;
-> +	case ETHTOOL_SFP:
-> +		rc = ethtool_set_preempt(dev, useraddr);
-> +		break;
->   	default:
->   		rc = -EOPNOTSUPP;
->   	}
-> 
-
+Cheers,
 -- 
-Murali Karicheri
-Texas Instruments
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
