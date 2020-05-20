@@ -1,80 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9ECA41DBE1E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 May 2020 21:38:55 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 140241DB4B0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 May 2020 15:13:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5A8C68832F;
-	Wed, 20 May 2020 19:38:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AB0618873F;
+	Wed, 20 May 2020 13:13:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WwpTmCS-pbH6; Wed, 20 May 2020 19:38:51 +0000 (UTC)
+	with ESMTP id KRw8uFBsspn9; Wed, 20 May 2020 13:13:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CC9A08830E;
-	Wed, 20 May 2020 19:38:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0B73B8830D;
+	Wed, 20 May 2020 13:13:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E421D1BF31E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 12:52:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 62E6F1BF477
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 13:13:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9B6942044B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 12:52:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5BD2D24214
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 13:13:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ptoITQIWxZe0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 May 2020 12:52:34 +0000 (UTC)
+ with ESMTP id F6+UhiT6l6dh for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 May 2020 13:13:05 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from esa5.microchip.iphmx.com (esa5.microchip.iphmx.com
- [216.71.150.166])
- by silver.osuosl.org (Postfix) with ESMTPS id 7256120409
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 12:52:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1589979154; x=1621515154;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=Pmrtx5eXqbCxI6dGo1e/Adh6TjwHWVWJoZlKDTB14lY=;
- b=JypEm3ttTACHI28s6GWVUQZc0Lt+Lf5PidZtxV1zV+dU4ew4zj1e6cCZ
- gS8vBUrrhbWxhXD85anFUbK428E8xlswZqxRd50Cl+2bNT5tdBBTYgboe
- Jklc7djSkRfkHoKlhRZJ7WodsHSATUOx08Aef71RAGZ9iKbaBtEn8nuXo
- LOFf3dya7F4MhtnniNxasuQAB5GYp7kx75cua20Ry7coLTXJb5jlrq4U9
- S4uKiUPDa66rZKCzJCzXofDBe9tD2hVEHYELEm8wPJSYPil5epiLoIT50
- ba/vEtgU/6w8KkwpMtdw5815W3+/8w/5w8Gwn1BmJVXroambG6KzFn6We g==;
-IronPort-SDR: 3q/NpLbeOzsh8aoH7SJjOMpaA5WaQxNVLFey39YBgI57Y4mXWDtzJO1uzyJlOamUXxJ0ZFmIZQ
- vWZz7ewPjQQVyDquzdadzj1gfcKMavDFoZXm53TFuRq+h9s537CSgUBnvuWaTM8pFEfRRV5hVM
- bBCAZi60WJfWER5Lv/sLLFAM8RGUQrGdiN7XOJSnByVNWYJn2uu9V71HQZBL6ldtyWIvWjXlxC
- 3Kw4NvW+tRIO+zHMh9Bw/mkxhKJmAXlFI8S3/sEbe3vDZAtlYaUv1m3v4J/qs0QDqpCsLJ6oni
- 2Bk=
-X-IronPort-AV: E=Sophos;i="5.73,414,1583218800"; d="scan'208";a="76490592"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 20 May 2020 05:52:33 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 20 May 2020 05:52:33 -0700
-Received: from localhost (10.10.115.15) by chn-vm-ex02.mchp-main.com
- (10.10.85.144) with Microsoft SMTP Server id 15.1.1713.5 via Frontend
- Transport; Wed, 20 May 2020 05:52:33 -0700
-Date: Wed, 20 May 2020 14:52:32 +0200
-From: Joergen Andreasen <joergen.andreasen@microchip.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20200520125232.s3zrmlnesqjilcf6@soft-dev16>
-References: <20200516012948.3173993-1-vinicius.gomes@intel.com>
- <158992799425.36166.17850279656312622646@twxiong-mobl.amr.corp.intel.com>
- <87y2pnmr83.fsf@intel.com>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id C637D204C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 13:13:05 +0000 (UTC)
+IronPort-SDR: xwWl/GjihBD5r1lhmKnT49T+hQc5YVtgDM1JEc6kBMKY6uXgTfbTsuXd/8l3QmtW/enqh+8NnA
+ SEGUl0wEAd4A==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 May 2020 06:13:04 -0700
+IronPort-SDR: Iz9vG9aqYpxf/8dlRp4is12i5IZCX/ciMdOfpOaj0IF2KYwnwngmKf7dZRkFmzpz4JpFYWygDV
+ 7ZIxWexuHdBg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,414,1583222400"; d="scan'208";a="253601060"
+Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 20 May 2020 06:13:04 -0700
+Received: from kbuild by lkp-server01 with local (Exim 4.89)
+ (envelope-from <lkp@intel.com>)
+ id 1jbOWt-000Eok-CK; Wed, 20 May 2020 21:13:03 +0800
+Date: Wed, 20 May 2020 21:12:45 +0800
+From: kbuild test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ec52ccd.X1LJcAMRAa+O6447%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87y2pnmr83.fsf@intel.com>
-User-Agent: NeoMutt/20171215
-X-Mailman-Approved-At: Wed, 20 May 2020 19:38:45 +0000
-Subject: Re: [Intel-wired-lan] [next-queue RFC 0/4] ethtool: Add support for
- frame preemption
+Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS
+ abd0316ac02e1c29c3876fa1c6231949cd7ae14d
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,73 +67,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jose.Abreu@synopsys.com, Andre Guedes <andre.guedes@intel.com>,
- netdev@vger.kernel.org, po.liu@nxp.com, m-karicheri2@ti.com,
- intel-wired-lan@lists.osuosl.org, vladimir.oltean@nxp.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The 05/19/2020 16:37, Vinicius Costa Gomes wrote:
-> 
-> Andre Guedes <andre.guedes@intel.com> writes:
-> 
-> > Hi,
-> >
-> > Quoting Vinicius Costa Gomes (2020-05-15 18:29:44)
-> >> One example, for retrieving and setting the configuration:
-> >>
-> >> $ ethtool $ sudo ./ethtool --show-frame-preemption enp3s0
-> >> Frame preemption settings for enp3s0:
-> >>         support: supported
-> >>         active: active
-> >
-> > IIUC the code in patch 2, 'active' is the actual configuration knob that
-> > enables or disables the FP functionality on the NIC.
-> >
-> > That sounded a bit confusing to me since the spec uses the term 'active' to
-> > indicate FP is currently enabled at both ends, and it is a read-only
-> > information (see 12.30.1.4 from IEEE 802.1Q-2018). Maybe if we called this
-> > 'enabled' it would be more clear.
-> 
-> Good point. Will rename this to "enabled".
-> 
-> >
-> >>         supported queues: 0xf
-> >>         supported queues: 0xe
-> >>         minimum fragment size: 68
-> >
-> > I'm assuming this is the configuration knob for the minimal non-final fragment
-> > defined in 802.3br.
-> >
-> > My understanding from the specs is that this value must be a multiple from 64
-> > and cannot assume arbitrary values like shown here. See 99.4.7.3 from IEEE
-> > 802.3 and Note 1 in S.2 from IEEE 802.1Q. In the previous discussion about FP,
-> > we had this as a multiplier factor, not absolute value.
-> 
-> I thought that exposing this as "(1 + N)*64" (with 0 <= N <= 3) that it
-> was more related to what's exposed via LLDP than the actual capabilities
-> of the hardware. And for the hardware I have actually the values
-> supported are: (1 + N)*64 + 4 (for N = 0, 1, 2, 3).
-> 
-> So I thought I was better to let the driver decide what values are
-> acceptable.
-> 
-> This is a good question for people working with other hardware.
-> 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
+branch HEAD: abd0316ac02e1c29c3876fa1c6231949cd7ae14d  ASoC: SOF: ops: Add new op for client registration
 
-I think it's most intuitive to use the values for AddFragSize as described in
-802.3br (N = 0, 1, 2, 3).
-You will anyway have to use one of these values when you want to expose the
-requirements of your receiver through LLDP.
+elapsed time: 563m
 
-> 
-> --
-> Vinicius
+configs tested: 107
+configs skipped: 3
 
--- 
-Joergen Andreasen, Microchip
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+m68k                             allyesconfig
+arm                         lpc18xx_defconfig
+arm                        keystone_defconfig
+arm                          exynos_defconfig
+arm                       spear13xx_defconfig
+sh                  sh7785lcr_32bit_defconfig
+sh                           se7722_defconfig
+arm                         ebsa110_defconfig
+sh                             espt_defconfig
+x86_64                           alldefconfig
+mips                           ip22_defconfig
+h8300                       h8s-sim_defconfig
+m68k                       m5208evb_defconfig
+sh                         ecovec24_defconfig
+sh                           se7721_defconfig
+mips                   sb1250_swarm_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20200519
+i386                 randconfig-a005-20200519
+i386                 randconfig-a001-20200519
+i386                 randconfig-a003-20200519
+i386                 randconfig-a004-20200519
+i386                 randconfig-a002-20200519
+x86_64               randconfig-a003-20200519
+x86_64               randconfig-a005-20200519
+x86_64               randconfig-a004-20200519
+x86_64               randconfig-a006-20200519
+x86_64               randconfig-a002-20200519
+x86_64               randconfig-a001-20200519
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+x86_64                              defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
