@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B32201DA650
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 May 2020 02:17:11 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 412DD87F8B;
-	Wed, 20 May 2020 00:17:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 83se0lhNCmS2; Wed, 20 May 2020 00:17:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id ECDFC88106;
-	Wed, 20 May 2020 00:17:04 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8F9B21BF97D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 00:17:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F01A71DA659
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 May 2020 02:19:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 72DE1232F2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 00:17:01 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C978323355;
+	Wed, 20 May 2020 00:19:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wRly08QYX9Ux; Wed, 20 May 2020 00:19:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 800CB232F2;
+	Wed, 20 May 2020 00:19:20 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 16D681BF97D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 00:19:18 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 129A086D3C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 00:19:18 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NKAJP-rmL4-b for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 May 2020 00:17:00 +0000 (UTC)
+ with ESMTP id zsPVIdjHF7Dy for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 May 2020 00:19:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id C149F230E6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 00:17:00 +0000 (UTC)
-IronPort-SDR: fVu8vsOWT8xcudXvIKV/OHg02iPLGTSw8Gy1xj6bfKwv7QeJhJLUoqsAXtqm44FR4djH9XazjU
- CuCbDPvUrYHg==
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 6F4A8865AB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 May 2020 00:19:17 +0000 (UTC)
+IronPort-SDR: svDd9ATPxzkNwXuCdEaHub2qtrPPhbJ6/enKgpiiKTYlaBPLijTZdx9t8lqIxxQS+xcjz7pyLe
+ HLFbTefJL/sA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2020 17:17:00 -0700
-IronPort-SDR: tDczYb4urn1m3K6lbww4ize0yQ7jOeLAHbsTLIG29Fb3i8EyfYaBax+042WoF2nsZVctfwjxlA
- mviwqpZcVdng==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,411,1583222400"; d="scan'208";a="466180334"
-Received: from ssaleem-mobl.amr.corp.intel.com ([10.209.18.5])
- by fmsmga005.fm.intel.com with ESMTP; 19 May 2020 17:16:59 -0700
-From: Shiraz Saleem <shiraz.saleem@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 19 May 2020 19:16:13 -0500
-Message-Id: <20200520001613.475-17-shiraz.saleem@intel.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200520001613.475-1-shiraz.saleem@intel.com>
-References: <20200520001613.475-1-shiraz.saleem@intel.com>
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2020 17:19:16 -0700
+IronPort-SDR: JhtDlSLQ9Q4U7IIGRNsPdQL96zsKQWKtzPjzfOFn39gaK4ahueczxxL7j3yCmIo5tCyD9bsCaa
+ a9hOWukx2pUQ==
+X-IronPort-AV: E=Sophos;i="5.73,411,1583222400"; d="scan'208";a="411823587"
+Received: from twxiong-mobl.amr.corp.intel.com (HELO localhost)
+ ([10.254.97.160])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2020 17:19:16 -0700
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH RFC v6 16/16] RDMA/irdma: Update
- MAINTAINERS file
+In-Reply-To: <20200519101644.8246-1-sasha.neftin@intel.com>
+References: <20200519101644.8246-1-sasha.neftin@intel.com>
+From: Andre Guedes <andre.guedes@intel.com>
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+Date: Tue, 19 May 2020 17:19:15 -0700
+Message-ID: <158993395587.38317.17024118281100869909@twxiong-mobl.amr.corp.intel.com>
+User-Agent: alot/0.9
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Add initial EEE support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,42 +66,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shiraz Saleem <shiraz.saleem@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add maintainer entry for irdma driver.
+Hi Sasha,
 
-Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
-Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
----
- MAINTAINERS | 8 ++++++++
- 1 file changed, 8 insertions(+)
+> +static int igc_ethtool_get_eee(struct net_device *netdev,
+> +                              struct ethtool_eee *edata)
+> +{
+> +       struct igc_adapter *adapter = netdev_priv(netdev);
+> +       struct igc_hw *hw = &adapter->hw;
+> +       u32 eeer;
+> +
+> +       if (!hw->dev_spec._base.eee_disable)
+> +               edata->advertised =
+> +                       mmd_eee_adv_to_ethtool_adv_t(adapter->eee_advert);
+> +
+> +       *edata = adapter->eee;
+> +       edata->supported = (SUPPORTED_Autoneg);
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index bdfbed1..73386fd 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -8749,6 +8749,14 @@ L:	linux-pm@vger.kernel.org
- S:	Supported
- F:	drivers/cpufreq/intel_pstate.c
- 
-+INTEL ETHERNET PROTOCL DRIVER FOR RDMA
-+M:	Mustafa Ismail <mustafa.ismail@intel.com>
-+M:	Shiraz Saleem <shiraz.saleem@intel.com>
-+L:	linux-rdma@vger.kernel.org
-+S:	Supported
-+F:	drivers/infiniband/hw/irdma/
-+F:	include/uapi/rdma/irdma-abi.h
-+
- INTEL SPEED SELECT TECHNOLOGY
- M:	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>
- L:	platform-driver-x86@vger.kernel.org
--- 
-1.8.3.1
+Nitpicking: The surrounding parentheses here looks pointless.
 
+> +       netdev_info(netdev,
+> +                   "Supported EEE link modes: 100baseT/Full, 1000baseT/Full, 2500baseT/Full");
+
+Although the '\n' is automatically added to this message, from the discussion
+in [1], the preference is that we keep putting it at the end of our logging
+messages.
+
+This comment applies to all other log messages in this patch.
+
+> +static int igc_ethtool_set_eee(struct net_device *netdev,
+> +                              struct ethtool_eee *edata)
+> +{
+> +       struct igc_adapter *adapter = netdev_priv(netdev);
+> +       struct igc_hw *hw = &adapter->hw;
+> +       struct ethtool_eee eee_curr;
+> +       s32 ret_val;
+> +
+> +       if (hw->phy.media_type != igc_media_type_copper)
+> +               return -EOPNOTSUPP;
+
+It looks 'igc_media_type_copper' is the only media_type supported by the
+driver, at least up till now. I'm wondering if we could get rid of it and
+simplify the code.
+
+> +
+> +       memset(&eee_curr, 0, sizeof(struct ethtool_eee));
+> +
+> +       ret_val = igc_ethtool_get_eee(netdev, &eee_curr);
+> +       if (ret_val)
+> +               return ret_val;
+> +
+> +       if (eee_curr.eee_enabled) {
+> +               if (eee_curr.tx_lpi_enabled != edata->tx_lpi_enabled) {
+> +                       netdev_err(netdev,
+> +                                  "Setting EEE tx-lpi is not supported");
+> +                       return -EINVAL;
+> +               }
+> +
+> +               /* Tx LPI timer is not implemented currently */
+> +               if (edata->tx_lpi_timer) {
+> +                       netdev_err(netdev,
+> +                                  "Setting EEE Tx LPI timer is not supported");
+> +                       return -EINVAL;
+> +               }
+> +
+
+It seems we have an empty line here by mistake.
+
+> +       } else if (!edata->eee_enabled) {
+> +               netdev_err(netdev,
+> +                          "Setting EEE options are not supported with EEE disabled");
+> +               return -EINVAL;
+> +       }
+> +
+> +       adapter->eee_advert = ethtool_adv_to_mmd_eee_adv_t(edata->advertised);
+> +       if (hw->dev_spec._base.eee_disable != !edata->eee_enabled) {
+
+In every occurrence of _base.eee_disable we use the '!' operator like in the
+line above. I think the code would be more readable if we inverted the logic
+and had _base.eee_enable instead.
+
+> +s32 igc_set_eee_i225(struct igc_hw *hw, bool adv2p5G, bool adv1G,
+> +                    bool adv100M)
+> +{
+> +       u32 ipcnfg, eeer;
+> +
+> +       if (hw->mac.type != igc_i225 ||
+> +           hw->phy.media_type != igc_media_type_copper)
+
+The same comment I made above about checking for 'igc_media_type_copper'
+applies here too.
+
+It looks 'igc_i225' is the only hw->mac.type supported by the driver, at least
+up till now. I'm wondering if we could get rid of it and simplify the code.
+
+Regards,
+
+Andre
+
+[1] https://lore.kernel.org/netdev/20200421.153221.2089591404052111123.davem@davemloft.net/
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
