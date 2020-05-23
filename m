@@ -1,134 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C8B11DF060
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 May 2020 22:10:14 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D1491DF565
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 May 2020 09:08:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DA61988AA6;
-	Fri, 22 May 2020 20:10:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A162488544;
+	Sat, 23 May 2020 07:08:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 799pMb2upKVt; Fri, 22 May 2020 20:10:12 +0000 (UTC)
+	with ESMTP id hVPuFgnwFdXm; Sat, 23 May 2020 07:08:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 71A6F88AF5;
-	Fri, 22 May 2020 20:10:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D2C46884FB;
+	Sat, 23 May 2020 07:08:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 761431BF9C1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2020 20:10:09 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D448E1BF288
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 May 2020 07:08:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3A67B87A0D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2020 20:09:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CFB2088223
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 May 2020 07:08:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ONhnWJJpkcO7 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 May 2020 20:09:38 +0000 (UTC)
+ with ESMTP id rTI8q54p2VET for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 23 May 2020 07:08:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 566F7879FD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2020 20:09:30 +0000 (UTC)
-IronPort-SDR: EWSlNS65zDQMllImUSCzTS21rMjAlgZcNbMyqOcnVhsGayWJOTtaroBv6ZKf3Mp4/ozV9hwa0m
- yyZeHC03pYDg==
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0CF1A87F84
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 May 2020 07:08:04 +0000 (UTC)
+IronPort-SDR: sLz3e4JjBevPyFEoAHWG7aXybCNYzbKRwTqXZlTzqcALsyglC68JrjRKHn1mSnd/rhU2HTOSz6
+ 5RBLVJHEdVRA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2020 13:09:29 -0700
-IronPort-SDR: fJjg487bXRNPjOhM1Cxro/IrtYL1HZ9mnGOlupsW6/RYTU/aee3XWmYptzGYhQo8wZUtBYpOEU
- xiojLkK8N7LA==
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 May 2020 00:08:03 -0700
+IronPort-SDR: 6kb9deolbQ0U9aoTnCXPDqCLaEzElO2FBdxZOKB6V33lACN3UUysq57lcvZFdfZF6fi90NsIGP
+ KRc0ny5meSwg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,422,1583222400"; d="scan'208";a="283505932"
-Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
- by orsmga002.jf.intel.com with ESMTP; 22 May 2020 13:09:30 -0700
-Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
- ORSMSX104.amr.corp.intel.com (10.22.225.131) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 22 May 2020 13:09:28 -0700
-Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 22 May 2020 13:09:28 -0700
-Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
- orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Fri, 22 May 2020 13:09:28 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 22 May 2020 13:09:28 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fq7vcy8pDngRlPerR4vVeMbuv9eVjgJYs/OWq4L9K0qaItF70FKcJGFh4zr6xGR2vUNuPZqhB1UASJSjlPvwlvYEYDWKQ9spFD9T48RPQfcLZyiqXpwyGqD8BMSGWuqaiwELC/SkbGuiyYkPlXzg6k3i63ZFK0WHwXAfjPVlmK7Aiz8SpPqsbxt1kaUSq+KlH+JQ5UPQ+aCSsqt1yekcD1H2KXhlIVExsLr2Kp0SkFjiZIrSqaWi2K7DAQ3y3fjs87WAH9VSovko4zpzxdaCe2wLeHi+VIIla8qsQsjBUMQ76Qj1IAtuFcQe6vlGXf1SPJCUfX6OKG8tP1hpaTw2Ew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=znFRlG/1ul+ghJWHIhkPeHrNuA5kk7LJrvFTBfPJWaM=;
- b=fDrqP2n4j2Tkq3B+7YJ6K83fZBg50zGpqPXTBDzGPtNQiIrtifsk2Hhwy/WY3TzxRj05VaswZMQf4Qsk20n52hHlHj6M2hf1RcK/bcZnS8tYyJ+U+fmf+Wt9vCTo8oGBt8iFDTLybbJ2dGuv7NqLQ7lm8+TJEPBw5P3DzYwIfis7aiHGoZU+7KstxY83wHCWvmva4MNwjaoOA3H7p0R2fe1EgSmoyn0NFbdPYJ2zjwg6DPzGyyjwnS34vM72hCvnNANeJjgq8cSLCL+iWcUhFXg4qK/Dp4ZlZTTwGSBDk14yyfjxKcVZF8k8dsdnG9qt7T9ckY8S1GboVMXvkFb6pg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=znFRlG/1ul+ghJWHIhkPeHrNuA5kk7LJrvFTBfPJWaM=;
- b=e+qv6NZFnM6mb5wWe3cJVyLF65LurZ37MzmuDV6F69wPvwtlOuTfrjLJv6IkyQSZb7B9gMyDSIlsfXhgVBJ4hbx5yYYJmkZhufxd8/5tnKL4qo6i7TE3bmBfkbP2NldrhKUR3ZiJKgnF9M1qa5CYnDoOaXd5c8zVFhKqYQZ9w9c=
-Received: from DM5PR11MB1659.namprd11.prod.outlook.com (2603:10b6:4:6::20) by
- DM5PR11MB1242.namprd11.prod.outlook.com (2603:10b6:3:14::8) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3021.27; Fri, 22 May 2020 20:09:26 +0000
-Received: from DM5PR11MB1659.namprd11.prod.outlook.com
- ([fe80::b01b:8cfb:1248:ea66]) by DM5PR11MB1659.namprd11.prod.outlook.com
- ([fe80::b01b:8cfb:1248:ea66%9]) with mapi id 15.20.3021.027; Fri, 22 May 2020
- 20:09:26 +0000
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S43 15/15] ice: Add more Rx errors to
- netdev's rx_error counter
-Thread-Index: AQHWKxqEtwOv+juCKUuDmOyM/V/X86i0k34Q
-Date: Fri, 22 May 2020 20:09:26 +0000
-Message-ID: <DM5PR11MB16594A1E37F062DAA051101B8CB40@DM5PR11MB1659.namprd11.prod.outlook.com>
-References: <20200516003644.4658-1-anthony.l.nguyen@intel.com>
- <20200516003644.4658-15-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200516003644.4658-15-anthony.l.nguyen@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.2.0.6
-authentication-results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
-x-originating-ip: [192.55.52.201]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c33c0a66-a856-4888-48ee-08d7fe8c074b
-x-ms-traffictypediagnostic: DM5PR11MB1242:
-x-microsoft-antispam-prvs: <DM5PR11MB1242081E5FB5D8C626F591AF8CB40@DM5PR11MB1242.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 04111BAC64
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: suEFstW253bkI7ilQSJCoBD+evywogv7ukbTDaFnAqy6FvFaRXaShNHI8Hc9+aucWauDXLtCVgjxWOHTtHThVaVVAwl/0un6fnurw5WHFK6/CCAUcHwjGX7WNQgZnv5G0H6E9Jwop0MnSkSGd/T5lXZIDgJERFWX0mbWNqwWH/IP22GP8jDp7PVdShDKIWFp/Zlrdn5UHBKQx0ePpElVgHDxDSrpiFORgL6nnxPsB+YsbRPSwNTkU79g/ERhCldpbhFBhSsN6wUX3hk/40Lvk6MzSDfbxcLoLt9vUePDQ2+ThVDLdXuS7La+XdHeS8GG
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR11MB1659.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(346002)(396003)(136003)(366004)(39860400002)(376002)(7696005)(71200400001)(8676002)(64756008)(66476007)(66556008)(6916009)(53546011)(86362001)(66946007)(66446008)(52536014)(5660300002)(186003)(76116006)(2906002)(6506007)(26005)(478600001)(4744005)(316002)(9686003)(33656002)(8936002)(55016002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: sWucBOC65JxTpiFY5jaQ+k2mH25i7VDoBfmRQ5NHJITC2RJDwATfxwFe7W2mlOWtZ/139BRzsZx4twfLt9AoAdWiBmWKXSHVVQVR922Ey6f9SbzKusOn+Tw663CMBLBfe9cZfd5o+UHMJ3Epe9QTFE1aGqYpOApcEXojaZMvWhjrzBcsUHI/PGmG9z3wf+0frBKKNi+9VK3IiF2eRGn3X/zRJyNWjDsVTvgGedl5zRVupFBa2e/O3PNnGBp15vZzwAyb1rlCVpuIJ+XvsbJe0hzXI+5P0uz1Sd3cFUZOOT7iRHmS4Tb1d/gu7bv8F9vPfB4LBMJL6MB3AQGGJJEb0itutMdM1k1+MtGFZCm5Zs4NTE6gyJwwn9S0ldohVSIhdbFEyxc6lCtgFHcYnVa6cQ8AQKF/E1ueKHdhzeYMwTHZ0e380tc4BvyG6Ovt3KMf+uzkMb6Uu0eq0JE+ezz4tqB9CtGvefcnOYFkMy4XBKYY+8YjsLcUHRALXvYv3OzA
-x-ms-exchange-transport-forked: True
+X-IronPort-AV: E=Sophos;i="5.73,424,1583222400"; d="scan'208";a="283618911"
+Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.86])
+ by orsmga002.jf.intel.com with ESMTP; 23 May 2020 00:08:02 -0700
+From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+To: jesse.brandeburg@intel.com, alexander.h.duyck@intel.com,
+ alexander.h.duyck@linux.intel.com
+Date: Sat, 23 May 2020 00:07:50 -0700
+Message-Id: <20200523070750.3972397-1-jeffrey.t.kirsher@intel.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: c33c0a66-a856-4888-48ee-08d7fe8c074b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 May 2020 20:09:26.6425 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3B4ghl52yCm5/A2VaCyYLwX4TOShwbwMAFeBF6cbBib94IukSLXo0UxX+1iOBqRfERY+OAjbArowTDrY0gGhN19w8BDxoQNONuf5puv0sCI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1242
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S43 15/15] ice: Add more Rx errors to
- netdev's rx_error counter
+Subject: [Intel-wired-lan] [net-next v4 01/12] Implementation of Virtual Bus
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,33 +64,545 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: Friday, May 15, 2020 5:37 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S43 15/15] ice: Add more Rx errors to
-> netdev's rx_error counter
-> 
-> From: Brett Creeley <brett.creeley@intel.com>
-> 
-> Currently we are only including illegal_bytes and rx_crc_errors in the PF
-> netdev's rx_error counter. There are many more causes of Rx errors that the
-> device supports and reports via Ethtool. Accumulate all Rx errors in the PF
-> netdev's rx_error counter.
-> 
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
+From: Dave Ertman <david.m.ertman@intel.com>
 
+This is the initial implementation of the Virtual Bus,
+virtbus_device and virtbus_driver.  The virtual bus is
+a software based bus intended to support registering
+virtbus_devices and virtbus_drivers and provide matching
+between them and probing of the registered drivers.
+
+The bus will support probe/remove shutdown and
+suspend/resume callbacks.
+
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Signed-off-by: Kiran Patil <kiran.patil@intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+---
 
+Jesse/Alex,
+
+I am sending the latest virtbus patch to you, as respected Linux
+community members, and Greg KH is wanting additional SOB's by respected
+Intel developers.  Please feel free to share with other developers as
+needed.  Greg's focus was on the documentation changes, which he feels
+does not properly reflect or convey how the interface works.  I have
+also sent this latest version to patchworks so that you can respond to
+IWL with your comments.
+
+Thanks,
+Jeff
+
+ Documentation/driver-api/index.rst       |   1 +
+ Documentation/driver-api/virtual_bus.rst |  93 ++++++++++
+ drivers/bus/Kconfig                      |  10 ++
+ drivers/bus/Makefile                     |   2 +
+ drivers/bus/virtual_bus.c                | 215 +++++++++++++++++++++++
+ include/linux/mod_devicetable.h          |   8 +
+ include/linux/virtual_bus.h              |  62 +++++++
+ scripts/mod/devicetable-offsets.c        |   3 +
+ scripts/mod/file2alias.c                 |   7 +
+ 9 files changed, 401 insertions(+)
+ create mode 100644 Documentation/driver-api/virtual_bus.rst
+ create mode 100644 drivers/bus/virtual_bus.c
+ create mode 100644 include/linux/virtual_bus.h
+
+diff --git a/Documentation/driver-api/index.rst b/Documentation/driver-api/index.rst
+index d4e78cb3ef4d..4e628a6b8408 100644
+--- a/Documentation/driver-api/index.rst
++++ b/Documentation/driver-api/index.rst
+@@ -101,6 +101,7 @@ available subsections can be seen below.
+    sync_file
+    vfio-mediated-device
+    vfio
++   virtual_bus
+    xilinx/index
+    xillybus
+    zorro
+diff --git a/Documentation/driver-api/virtual_bus.rst b/Documentation/driver-api/virtual_bus.rst
+new file mode 100644
+index 000000000000..c01fb2f079d5
+--- /dev/null
++++ b/Documentation/driver-api/virtual_bus.rst
+@@ -0,0 +1,93 @@
++===============================
++Virtual Bus Devices and Drivers
++===============================
++
++See <linux/virtual_bus.h> for the models for virtbus_device and virtbus_driver.
++
++This bus is meant to be a minimalist software-based bus used for
++connecting devices (that may not physically exist) to be able to
++communicate with each other.
++
++
++Memory Allocation Lifespan and Model
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++
++The memory for a virtbus_device or virtbus_driver needs to be
++allocated before registering them on the virtual bus.
++
++The memory for the virtual_device is expected to remain viable until the
++device's mandatory .release() callback which is invoked when the device
++is unregistered by calling virtbus_unregister_device().
++
++Memory associated with a virtbus_driver is expected to remain viable
++until the driver's .remove() or .shutdown() callbacks are invoked
++during module insertion or removal.
++
++Device Enumeration
++~~~~~~~~~~~~~~~~~~
++
++The virtbus device is enumerated when it is attached to the bus. The
++device is assigned a unique ID that will be appended to its name
++making it unique.  If two virtbus_devices both named "foo" are
++registered onto the bus, they will have a sub-device names of "foo.x"
++and "foo.y" where x and y are unique integers.
++
++Common Usage and Structure Design
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++
++The virtbus_device and virtbus_driver need to have a common header
++file.
++
++In the common header file outside of the virtual_bus infrastructure,
++define struct virtbus_object:
++
++.. code-block:: c
++
++        struct virtbus_object {
++                virtbus_device vdev;
++                struct my_private_struct *my_stuff;
++        }
++
++When the virtbus_device vdev is passed to the virtbus_driver's probe
++callback, it can then get access to the struct my_stuff.
++
++An example of the driver encapsulation:
++
++.. code-block:: c
++
++	struct custom_driver {
++		struct virtbus_driver virtbus_drv;
++		const struct custom_driver_ops ops;
++	}
++
++An example of this usage would be :
++
++.. code-block:: c
++
++	struct custom_driver custom_drv = {
++		.virtbus_drv = {
++			.driver = {
++				.name = "sof-ipc-test-virtbus-drv",
++			},
++			.id_table = custom_virtbus_id_table,
++			.probe = custom_probe,
++			.remove = custom_remove,
++			.shutdown = custom_shutdown,
++		},
++		.ops = custom_ops,
++	};
++
++Mandatory Elements
++~~~~~~~~~~~~~~~~~~
++
++virtbus_device:
++
++- .release() callback must not be NULL and is expected to perform memory cleanup.
++- .match_name must be populated to be able to match with a driver
++
++virtbus_driver:
++
++- .probe() callback must not be NULL
++- .remove() callback must not be NULL
++- .shutdown() callback must not be NULL
++- .id_table must not be NULL, used to perform matching
+diff --git a/drivers/bus/Kconfig b/drivers/bus/Kconfig
+index 6d4e4497b59b..00553c78510c 100644
+--- a/drivers/bus/Kconfig
++++ b/drivers/bus/Kconfig
+@@ -203,4 +203,14 @@ config DA8XX_MSTPRI
+ source "drivers/bus/fsl-mc/Kconfig"
+ source "drivers/bus/mhi/Kconfig"
+ 
++config VIRTUAL_BUS
++       tristate "Software based Virtual Bus"
++       help
++         Provides a software bus for virtbus_devices to be added to it
++         and virtbus_drivers to be registered on it.  It matches driver
++         and device based on id and calls the driver's probe routine.
++         One example is the irdma driver needing to connect with various
++         PCI LAN drivers to request resources (queues) to be able to perform
++         its function.
++
+ endmenu
+diff --git a/drivers/bus/Makefile b/drivers/bus/Makefile
+index 05f32cd694a4..d30828a4768c 100644
+--- a/drivers/bus/Makefile
++++ b/drivers/bus/Makefile
+@@ -37,3 +37,5 @@ obj-$(CONFIG_DA8XX_MSTPRI)	+= da8xx-mstpri.o
+ 
+ # MHI
+ obj-$(CONFIG_MHI_BUS)		+= mhi/
++
++obj-$(CONFIG_VIRTUAL_BUS)	+= virtual_bus.o
+diff --git a/drivers/bus/virtual_bus.c b/drivers/bus/virtual_bus.c
+new file mode 100644
+index 000000000000..b70023d5b58a
+--- /dev/null
++++ b/drivers/bus/virtual_bus.c
+@@ -0,0 +1,215 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * virtual_bus.c - lightweight software based bus for virtual devices
++ *
++ * Copyright (c) 2019-2020 Intel Corporation
++ *
++ * Please see Documentation/driver-api/virtual_bus.rst for
++ * more information
++ */
++
++#include <linux/string.h>
++#include <linux/virtual_bus.h>
++#include <linux/of_irq.h>
++#include <linux/module.h>
++#include <linux/init.h>
++#include <linux/pm_runtime.h>
++#include <linux/pm_domain.h>
++#include <linux/acpi.h>
++#include <linux/device.h>
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("Virtual Bus");
++MODULE_AUTHOR("David Ertman <david.m.ertman@intel.com>");
++MODULE_AUTHOR("Kiran Patil <kiran.patil@intel.com>");
++
++static DEFINE_IDA(virtbus_dev_ida);
++#define VIRTBUS_INVALID_ID	0xFFFFFFFF
++
++static const
++struct virtbus_dev_id *virtbus_match_id(const struct virtbus_dev_id *id,
++					struct virtbus_device *vdev)
++{
++	while (id->name[0]) {
++		if (!strcmp(vdev->match_name, id->name))
++			return id;
++		id++;
++	}
++	return NULL;
++}
++
++static int virtbus_match(struct device *dev, struct device_driver *drv)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(drv);
++	struct virtbus_device *vdev = to_virtbus_dev(dev);
++
++	return virtbus_match_id(vdrv->id_table, vdev) != NULL;
++}
++
++static int virtbus_uevent(struct device *dev, struct kobj_uevent_env *env)
++{
++	struct virtbus_device *vdev = to_virtbus_dev(dev);
++
++	if (add_uevent_var(env, "MODALIAS=%s%s", "virtbus:", vdev->match_name))
++		return -ENOMEM;
++
++	return 0;
++}
++
++static const struct dev_pm_ops virtbus_dev_pm_ops = {
++	SET_RUNTIME_PM_OPS(pm_generic_runtime_suspend,
++			   pm_generic_runtime_resume, NULL)
++#ifdef CONFIG_PM_SLEEP
++	SET_SYSTEM_SLEEP_PM_OPS(pm_generic_suspend, pm_generic_resume)
++#endif
++};
++
++struct bus_type virtual_bus_type = {
++	.name = "virtbus",
++	.match = virtbus_match,
++	.uevent = virtbus_uevent,
++	.pm = &virtbus_dev_pm_ops,
++};
++
++/**
++ * virtbus_release_device - Destroy a virtbus device
++ * @_dev: device to release
++ */
++static void virtbus_release_device(struct device *_dev)
++{
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++	u32 ida = vdev->id;
++
++	vdev->release(vdev);
++	if (ida != VIRTBUS_INVALID_ID)
++		ida_simple_remove(&virtbus_dev_ida, ida);
++}
++
++/**
++ * virtbus_register_device - add a virtual bus device
++ * @vdev: virtual bus device to add
++ */
++int virtbus_register_device(struct virtbus_device *vdev)
++{
++	int ret;
++
++	if (WARN_ON(!vdev->release))
++		return -EINVAL;
++
++	/* All error paths out of this function after the device_initialize
++	 * must perform a put_device() so that the .release() callback is
++	 * called for an error condition.
++	 */
++	device_initialize(&vdev->dev);
++
++	vdev->dev.bus = &virtual_bus_type;
++	vdev->dev.release = virtbus_release_device;
++
++	/* All device IDs are automatically allocated */
++	ret = ida_simple_get(&virtbus_dev_ida, 0, 0, GFP_KERNEL);
++
++	if (ret < 0) {
++		vdev->id = VIRTBUS_INVALID_ID;
++		dev_err(&vdev->dev, "get IDA idx for virtbus device failed!\n");
++		goto device_add_err;
++	}
++
++	vdev->id = ret;
++
++	ret = dev_set_name(&vdev->dev, "%s.%d", vdev->match_name, vdev->id);
++	if (ret) {
++		dev_err(&vdev->dev, "dev_set_name failed for device\n");
++		goto device_add_err;
++	}
++
++	dev_dbg(&vdev->dev, "Registering virtbus device '%s'\n",
++		dev_name(&vdev->dev));
++
++	ret = device_add(&vdev->dev);
++	if (ret)
++		goto device_add_err;
++
++	return 0;
++
++device_add_err:
++	dev_err(&vdev->dev, "Add device to virtbus failed!: %d\n", ret);
++	put_device(&vdev->dev);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(virtbus_register_device);
++
++static int virtbus_probe_driver(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++	int ret;
++
++	ret = dev_pm_domain_attach(_dev, true);
++	if (ret) {
++		dev_warn(_dev, "Failed to attach to PM Domain : %d\n", ret);
++		return ret;
++	}
++
++	ret = vdrv->probe(vdev);
++	if (ret) {
++		dev_err(&vdev->dev, "Probe returned error\n");
++		dev_pm_domain_detach(_dev, true);
++	}
++
++	return ret;
++}
++
++static int virtbus_remove_driver(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++	int ret = 0;
++
++	ret = vdrv->remove(vdev);
++	dev_pm_domain_detach(_dev, true);
++
++	return ret;
++}
++
++static void virtbus_shutdown_driver(struct device *_dev)
++{
++	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
++	struct virtbus_device *vdev = to_virtbus_dev(_dev);
++
++	vdrv->shutdown(vdev);
++}
++
++/**
++ * __virtbus_register_driver - register a driver for virtual bus devices
++ * @vdrv: virtbus_driver structure
++ * @owner: owning module/driver
++ */
++int __virtbus_register_driver(struct virtbus_driver *vdrv, struct module *owner)
++{
++	if (!vdrv->probe || !vdrv->remove || !vdrv->shutdown || !vdrv->id_table)
++		return -EINVAL;
++
++	vdrv->driver.owner = owner;
++	vdrv->driver.bus = &virtual_bus_type;
++	vdrv->driver.probe = virtbus_probe_driver;
++	vdrv->driver.remove = virtbus_remove_driver;
++	vdrv->driver.shutdown = virtbus_shutdown_driver;
++
++	return driver_register(&vdrv->driver);
++}
++EXPORT_SYMBOL_GPL(__virtbus_register_driver);
++
++static int __init virtual_bus_init(void)
++{
++	return bus_register(&virtual_bus_type);
++}
++
++static void __exit virtual_bus_exit(void)
++{
++	bus_unregister(&virtual_bus_type);
++	ida_destroy(&virtbus_dev_ida);
++}
++
++module_init(virtual_bus_init);
++module_exit(virtual_bus_exit);
+diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+index 4c2ddd0941a7..60bcfe75fb94 100644
+--- a/include/linux/mod_devicetable.h
++++ b/include/linux/mod_devicetable.h
+@@ -832,4 +832,12 @@ struct mhi_device_id {
+ 	kernel_ulong_t driver_data;
+ };
+ 
++#define VIRTBUS_NAME_SIZE 20
++#define VIRTBUS_MODULE_PREFIX "virtbus:"
++
++struct virtbus_dev_id {
++	char name[VIRTBUS_NAME_SIZE];
++	kernel_ulong_t driver_data;
++};
++
+ #endif /* LINUX_MOD_DEVICETABLE_H */
+diff --git a/include/linux/virtual_bus.h b/include/linux/virtual_bus.h
+new file mode 100644
+index 000000000000..4872fd5a9218
+--- /dev/null
++++ b/include/linux/virtual_bus.h
+@@ -0,0 +1,62 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * virtual_bus.h - lightweight software bus
++ *
++ * Copyright (c) 2019-2020 Intel Corporation
++ *
++ * Please see Documentation/driver-api/virtual_bus.rst for more information
++ */
++
++#ifndef _VIRTUAL_BUS_H_
++#define _VIRTUAL_BUS_H_
++
++#include <linux/device.h>
++
++struct virtbus_device {
++	struct device dev;
++	const char *match_name;
++	void (*release)(struct virtbus_device *);
++	u32 id;
++};
++
++struct virtbus_driver {
++	int (*probe)(struct virtbus_device *);
++	int (*remove)(struct virtbus_device *);
++	void (*shutdown)(struct virtbus_device *);
++	int (*suspend)(struct virtbus_device *, pm_message_t);
++	int (*resume)(struct virtbus_device *);
++	struct device_driver driver;
++	const struct virtbus_dev_id *id_table;
++};
++
++static inline
++struct virtbus_device *to_virtbus_dev(struct device *dev)
++{
++	return container_of(dev, struct virtbus_device, dev);
++}
++
++static inline
++struct virtbus_driver *to_virtbus_drv(struct device_driver *drv)
++{
++	return container_of(drv, struct virtbus_driver, driver);
++}
++
++int virtbus_register_device(struct virtbus_device *vdev);
++
++int
++__virtbus_register_driver(struct virtbus_driver *vdrv, struct module *owner);
++
++#define virtbus_register_driver(vdrv) \
++	__virtbus_register_driver(vdrv, THIS_MODULE)
++
++static inline void virtbus_unregister_device(struct virtbus_device *vdev)
++{
++	device_unregister(&vdev->dev);
++}
++
++static inline void virtbus_unregister_driver(struct virtbus_driver *vdrv)
++{
++	driver_unregister(&vdrv->driver);
++}
++
++#endif /* _VIRTUAL_BUS_H_ */
+diff --git a/scripts/mod/devicetable-offsets.c b/scripts/mod/devicetable-offsets.c
+index 010be8ba2116..0c8e0e3a7c84 100644
+--- a/scripts/mod/devicetable-offsets.c
++++ b/scripts/mod/devicetable-offsets.c
+@@ -241,5 +241,8 @@ int main(void)
+ 	DEVID(mhi_device_id);
+ 	DEVID_FIELD(mhi_device_id, chan);
+ 
++	DEVID(virtbus_dev_id);
++	DEVID_FIELD(virtbus_dev_id, name);
++
+ 	return 0;
+ }
+diff --git a/scripts/mod/file2alias.c b/scripts/mod/file2alias.c
+index 02d5d79da284..7d78fa3fba34 100644
+--- a/scripts/mod/file2alias.c
++++ b/scripts/mod/file2alias.c
+@@ -1358,7 +1358,13 @@ static int do_mhi_entry(const char *filename, void *symval, char *alias)
+ {
+ 	DEF_FIELD_ADDR(symval, mhi_device_id, chan);
+ 	sprintf(alias, MHI_DEVICE_MODALIAS_FMT, *chan);
++	return 1;
++}
+ 
++static int do_virtbus_entry(const char *filename, void *symval, char *alias)
++{
++	DEF_FIELD_ADDR(symval, virtbus_dev_id, name);
++	sprintf(alias, VIRTBUS_MODULE_PREFIX "%s", *name);
+ 	return 1;
+ }
+ 
+@@ -1436,6 +1442,7 @@ static const struct devtable devtable[] = {
+ 	{"tee", SIZE_tee_client_device_id, do_tee_entry},
+ 	{"wmi", SIZE_wmi_device_id, do_wmi_entry},
+ 	{"mhi", SIZE_mhi_device_id, do_mhi_entry},
++	{"virtbus", SIZE_virtbus_dev_id, do_virtbus_entry},
+ };
+ 
+ /* Create MODULE_ALIAS() statements.
+-- 
+2.26.2
 
 _______________________________________________
 Intel-wired-lan mailing list
