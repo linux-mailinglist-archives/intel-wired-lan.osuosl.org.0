@@ -2,56 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5CA91E2038
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2020 12:56:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F0211E2E5C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2020 21:28:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 415A08511C;
-	Tue, 26 May 2020 10:56:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D4AC38692F;
+	Tue, 26 May 2020 19:28:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xLUIGKgWgZ6x; Tue, 26 May 2020 10:56:23 +0000 (UTC)
+	with ESMTP id BdBycs3ouIej; Tue, 26 May 2020 19:28:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D5D528508E;
-	Tue, 26 May 2020 10:56:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D125C86938;
+	Tue, 26 May 2020 19:28:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 134E01BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2020 10:56:21 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 78FF81BF577
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 May 2020 09:09:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0DB7320395
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2020 10:56:21 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 73A96885D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 May 2020 09:09:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IhdQTcXeaTYJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2020 10:56:19 +0000 (UTC)
+ with ESMTP id T0namOsUNAve for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 23 May 2020 09:09:48 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id B082020334
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2020 10:56:19 +0000 (UTC)
-IronPort-SDR: SaoBbqA8S7eltX0eUcAIUOjt7ZCQlzahXRUCDFWo+xHD5rhb4ThqIXSim665eVOPaBKuurJwal
- fIYY+2yipCjA==
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 76D61885D8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 May 2020 09:09:48 +0000 (UTC)
+IronPort-SDR: uBhe/hr/5uyINL88LH/57hyMLlfC6OS54msPmqpo0/83yOAswwNx5xwndG8kUzDD0IgAcnbzI/
+ IY74L8B/pOrw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2020 03:56:18 -0700
-IronPort-SDR: znp0/VeN6q/NtAEPtVv99zt2Gow34SI5TGku718XUGxAnPLuyEfkCdwQy2qwXA8QRZNndlZAch
- yC2K7uOcBi0A==
+ 23 May 2020 02:09:46 -0700
+IronPort-SDR: aJaaLrQ5tW18n/MyrFwL71eEqJgr683s9sxfyr6RhmFtCrX9vqtgj6KUo/N1dL93LgKmU/2ixg
+ Ca/79gnlWSRA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,437,1583222400"; d="scan'208";a="468311668"
-Received: from pkwapuli-mobl.ger.corp.intel.com (HELO
- pkwapuli-vbox.igk.intel.com) ([10.213.10.179])
- by fmsmga006.fm.intel.com with ESMTP; 26 May 2020 03:56:17 -0700
-From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 26 May 2020 12:56:15 +0200
-Message-Id: <20200526105615.3315-1-piotr.kwapulinski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH] i40e: detect and log info about
- pre-recovery mode
+X-IronPort-AV: E=Sophos;i="5.73,425,1583222400"; d="scan'208";a="467435870"
+Received: from chenyu-office.sh.intel.com ([10.239.158.173])
+ by fmsmga005.fm.intel.com with ESMTP; 23 May 2020 02:09:43 -0700
+Date: Sat, 23 May 2020 17:09:50 +0800
+From: Chen Yu <yu.c.chen@intel.com>
+To: Michal Kubecek <mkubecek@suse.cz>
+Message-ID: <20200523090950.GA20370@chenyu-office.sh.intel.com>
+References: <cover.1590081982.git.yu.c.chen@intel.com>
+ <725bad2f3ce7f7b7f1667d53b6527dc059f9e419.1590081982.git.yu.c.chen@intel.com>
+ <20200521192342.GE8771@lion.mk-sys.cz>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200521192342.GE8771@lion.mk-sys.cz>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Mailman-Approved-At: Tue, 26 May 2020 19:28:53 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] e1000e: Make WOL info in ethtool
+ consistent with device wake up ability
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,156 +70,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-MIME-Version: 1.0
+Cc: Len Brown <len.brown@intel.com>, Auke Kok <auke-jan.h.kok@intel.com>,
+ "Shevchenko, Andriy" <andriy.shevchenko@intel.com>,
+ Jeff Garzik <jeff@garzik.org>, netdev@vger.kernel.org,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
+ Stable@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Detect and log information about pre-recovery mode when firmware
-transitions to a recovery mode.
-When a firmware transitions to a recovery mode it stores a number
-of unexpected EMP resets in one of its registers. The number of EMP
-resets ranging from 0x21 to 0x2A indicates that FW transitions
-to recovery mode. Use these values to emit log entry about transition
-process. Previously the pre-recovery mode may not have been detected
-and there was no log entry when NIC was in pre-recovery mode.
+Hi Michal,
+Thanks for reviewing,
+and sorry for late reply.
+On Thu, May 21, 2020 at 09:23:42PM +0200, Michal Kubecek wrote:
+> On Fri, May 22, 2020 at 01:59:13AM +0800, Chen Yu wrote:
+> > Currently the ethtool shows that WOL(Wake On Lan) is enabled
+> > even if the device wakeup ability has been disabled via sysfs:
+> >   cat /sys/devices/pci0000:00/0000:00:1f.6/power/wakeup
+> >    disabled
+> > 
+> >   ethtool eno1
+> >   ...
+> >   Wake-on: g
+> > 
+> > Fix this in ethtool to check if the user has explicitly disabled the
+> > wake up ability for this device.
+> 
+> Wouldn't this lead to rather unexpected and inconsistent behaviour when
+> the wakeup is disabled? As you don't touch the set_wol handler, I assume
+> it will still allow setting enabled modes as usual so that you get e.g.
+> 
+>   ethtool -s eth0 wol g   # no error or warning, returns 0
+>   ethtool eth0            # reports no modes enabled
+> 
+> The first command would set the enabled wol modes but that would be
+> hidden from user and even the netlink notification would claim something
+> different. Another exampe (with kernel and ethtool >= 5.6):
+> 
+>   ethtool -s eth0 wol g
+>   ethtool -s eth0 wol +m
+> 
+> resulting in "mg" if device wakeup is enabled but "m" when it's disabled
+> (but the latter would be hidden from user and only revealed when you
+> enable the device wakeup).
+> 
+I've tested ethtool v5.6 on top of kernel v5.7-rc6, it looks like
+the scenario you described will not happen as it will not allow
+the user to enable the wol options with device wakeup disabled,
+not sure if I missed something:
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 74 +++++++++++++------
- .../net/ethernet/intel/i40e/i40e_register.h   |  2 +
- 2 files changed, 53 insertions(+), 23 deletions(-)
+/sys/devices/pci0000:00/0000:00:1f.6/power# echo disabled > wakeup
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 2a037ec..ef9630b 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -14557,28 +14557,17 @@ void i40e_set_fec_in_flags(u8 fec_cfg, u32 *flags)
-  **/
- static bool i40e_check_recovery_mode(struct i40e_pf *pf)
- {
--	u32 val = rd32(&pf->hw, I40E_GL_FWSTS) & I40E_GL_FWSTS_FWS1B_MASK;
--	bool is_recovery_mode = false;
--
--	if (pf->hw.mac.type == I40E_MAC_XL710)
--		is_recovery_mode =
--		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK ||
--		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK ||
--		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_TRANSITION_MASK ||
--		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_NVM_MASK;
--	if (pf->hw.mac.type == I40E_MAC_X722)
--		is_recovery_mode =
--		val == I40E_X722_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK ||
--		val == I40E_X722_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK;
--	if (is_recovery_mode) {
--		dev_notice(&pf->pdev->dev, "Firmware recovery mode detected. Limiting functionality.\n");
--		dev_notice(&pf->pdev->dev, "Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
-+	u32 val = rd32(&pf->hw, I40E_GL_FWSTS);
-+
-+	if (val & I40E_GL_FWSTS_FWS1B_MASK) {
-+		dev_crit(&pf->pdev->dev, "Firmware recovery mode detected. Limiting functionality.\n");
-+		dev_crit(&pf->pdev->dev, "Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
- 		set_bit(__I40E_RECOVERY_MODE, pf->state);
- 
- 		return true;
- 	}
--	if (test_and_clear_bit(__I40E_RECOVERY_MODE, pf->state))
--		dev_info(&pf->pdev->dev, "Reinitializing in normal mode with full functionality.\n");
-+	if (test_bit(__I40E_RECOVERY_MODE, pf->state))
-+		dev_info(&pf->pdev->dev, "Please do Power-On Reset to initialize adapter in normal mode with full functionality.\n");
- 
- 	return false;
- }
-@@ -14614,7 +14603,7 @@ static i40e_status i40e_pf_loop_reset(struct i40e_pf *pf)
- 
- 	for (cnt = 0; cnt < MAX_CNT; ++cnt) {
- 		ret = i40e_pf_reset(hw);
--		if (!ret)
-+		if (ret == I40E_SUCCESS)
- 			break;
- 		msleep(MSECS);
- 	}
-@@ -14628,6 +14617,47 @@ static i40e_status i40e_pf_loop_reset(struct i40e_pf *pf)
- 	return ret;
- }
- 
-+/**
-+ * i40e_check_fw_empr - check if FW issued unexpected EMP Reset
-+ * @pf: board private structure
-+ *
-+ * Check FW registers to determine if FW issued unexpected EMP Reset.
-+ * Every time when unexpected EMP Reset occurs the FW increments
-+ * a counter of unexpected EMP Resets. When the counter reaches 10
-+ * the FW should enter the Recovery mode
-+ *
-+ * Returns true if FW issued unexpected EMP Reset
-+ **/
-+static inline bool i40e_check_fw_empr(struct i40e_pf *pf)
-+{
-+	const u32 fw_sts = rd32(&pf->hw, I40E_GL_FWSTS) &
-+			   I40E_GL_FWSTS_FWS1B_MASK;
-+	return (fw_sts > I40E_GL_FWSTS_FWS1B_EMPR_0) &&
-+	       (fw_sts <= I40E_GL_FWSTS_FWS1B_EMPR_10);
-+}
-+
-+/**
-+ * i40e_handle_resets - handle EMP resets and PF resets
-+ * @pf: board private structure
-+ *
-+ * Handle both EMP resets and PF resets and conclude whether there are
-+ * any issues regarding these resets. If there are any issues then
-+ * generate log entry.
-+ *
-+ * Return 0 if NIC is healthy or negative value when there are issues
-+ * with resets
-+ **/
-+static inline i40e_status i40e_handle_resets(struct i40e_pf *pf)
-+{
-+	const i40e_status pfr = i40e_pf_loop_reset(pf);
-+	const bool is_empr = i40e_check_fw_empr(pf);
-+
-+	if (is_empr || pfr != I40E_SUCCESS)
-+		dev_crit(&pf->pdev->dev, "Entering recovery mode due to repeated FW resets. This may take several minutes. Refer to the Intel(R) Ethernet Adapters and Devices User Guide.\n");
-+
-+	return is_empr ? I40E_ERR_RESET_FAILED : pfr;
-+}
-+
- /**
-  * i40e_init_recovery_mode - initialize subsystems needed in recovery mode
-  * @pf: board private structure
-@@ -14864,11 +14894,9 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_pf_reset;
- 	}
- 
--	err = i40e_pf_loop_reset(pf);
--	if (err) {
--		dev_info(&pdev->dev, "Initial pf_reset failed: %d\n", err);
-+	err = i40e_handle_resets(pf);
-+	if (err)
- 		goto err_pf_reset;
--	}
- 
- 	i40e_check_recovery_mode(pf);
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
-index d35d690..32cc874 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_register.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
-@@ -363,6 +363,8 @@
- #define I40E_GL_FWSTS_FWRI_MASK I40E_MASK(0x1, I40E_GL_FWSTS_FWRI_SHIFT)
- #define I40E_GL_FWSTS_FWS1B_SHIFT 16
- #define I40E_GL_FWSTS_FWS1B_MASK I40E_MASK(0xFF, I40E_GL_FWSTS_FWS1B_SHIFT)
-+#define I40E_GL_FWSTS_FWS1B_EMPR_0 I40E_MASK(0x20, I40E_GL_FWSTS_FWS1B_SHIFT)
-+#define I40E_GL_FWSTS_FWS1B_EMPR_10 I40E_MASK(0x2A, I40E_GL_FWSTS_FWS1B_SHIFT)
- #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK I40E_MASK(0x30, I40E_GL_FWSTS_FWS1B_SHIFT)
- #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK I40E_MASK(0x31, I40E_GL_FWSTS_FWS1B_SHIFT)
- #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_TRANSITION_MASK I40E_MASK(0x32, I40E_GL_FWSTS_FWS1B_SHIFT)
--- 
-2.17.1
+ethtool -s eno1 wol g
+netlink error: cannot enable unsupported WoL mode (offset 36)
+netlink error: Invalid argument
 
+I've not digged into the code too much, but according to
+ethhl_set_wol(), it will first get the current wol options
+via dev->ethtool_ops->get_wol(), and both the wolopts and
+wol.supported are 0 when device wake up are disabled. Then
+ethnl_update_bitset32 might manipulate on wolopts and
+make it non-zero each is controdict with the precondition that
+no opts should be enabled due to 0 wol.supported.
+> This is a general problem discussed recently for EEE and pause
+> autonegotiation: if setting A can be effectively used only when B is
+> enabled, should we hide actual setting of A from userspace when B is
+> disabled or even reset the value of A whenever B gets toggled or rather
+> allow setting A and B independently? AFAICS the consensus seemed to be
+> that A should be allowed to be set and queried independently of the
+> value of B.
+
+But then there would be an inconsistence between A and B. I was thinking
+if there's a way to align them in kernel space and  maintain the difference in user space?
+
+Thanks,
+Chenyu
+> 
+> Michal
+> 
+> > Fixes: 6ff68026f475 ("e1000e: Use device_set_wakeup_enable")
+> > Reported-by: Len Brown <len.brown@intel.com>
+> > Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> > Cc: <Stable@vger.kernel.org>
+> > Signed-off-by: Chen Yu <yu.c.chen@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/e1000e/ethtool.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> > index 1d47e2503072..0cccd823ff24 100644
+> > --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
+> > +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> > @@ -1891,7 +1891,7 @@ static void e1000_get_wol(struct net_device *netdev,
+> >  	wol->wolopts = 0;
+> >  
+> >  	if (!(adapter->flags & FLAG_HAS_WOL) ||
+> > -	    !device_can_wakeup(&adapter->pdev->dev))
+> > +	    !device_may_wakeup(&adapter->pdev->dev))
+> >  		return;
+> >  
+> >  	wol->supported = WAKE_UCAST | WAKE_MCAST |
+> > -- 
+> > 2.17.1
+> > 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
