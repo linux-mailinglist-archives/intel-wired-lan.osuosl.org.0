@@ -2,65 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 626B01E2E49
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2020 21:28:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B04201E2E55
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2020 21:28:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id B169B2375C;
-	Tue, 26 May 2020 19:28:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 45B4C23491;
+	Tue, 26 May 2020 19:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HByHdFsziESp; Tue, 26 May 2020 19:28:35 +0000 (UTC)
+	with ESMTP id nmtBkA+D7i+V; Tue, 26 May 2020 19:28:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 85D8623424;
-	Tue, 26 May 2020 19:28:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1C2BC22CC7;
+	Tue, 26 May 2020 19:28:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BF75C1BF42C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 07:36:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5BE941BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 08:07:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B87B786E77
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 07:36:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4AEA5877DC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 08:07:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qJaCtz+vEmGa for <intel-wired-lan@lists.osuosl.org>;
- Sun, 24 May 2020 07:36:07 +0000 (UTC)
+ with ESMTP id iG9s5W3AOFus for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 24 May 2020 08:07:23 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BBEF186E6E
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 07:36:07 +0000 (UTC)
-IronPort-SDR: 7O3ViqwA+K7Q+S7KIKhnt/C1UYKWD/b/NOQsJa90vxZwDtpCy1F8EAayMt3KOZ7SZ0/A/688SA
- K+7pk+hlR2EA==
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 9287887784
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 08:07:23 +0000 (UTC)
+IronPort-SDR: tfi63YFj7AzjM1CbYrAR5hGyZeqQpkDwR8eXbBp7LLrVZHaA4lTwjnjyWQQz+rTErr/7Vq9mpH
+ TTz4ZXnlJ4OQ==
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 May 2020 00:36:06 -0700
-IronPort-SDR: eVNwdIhI9JRp3OLUnDiG3QT/H6bIng4vcZW4HtQKzWa6KjMXoQnWNRHFPwPn2Fv5cE8iEFUiDx
- ucvw+ndmCe6Q==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 May 2020 01:07:22 -0700
+IronPort-SDR: jm2oUPUkrQQS3z37TdIk8ao9rCceJOKnAPHUsH1RPKLI1s9LAChlLAigcbTxDxCRd0fZmevufF
+ qeo4R/FfYwrg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.73,428,1583222400"; 
- d="gz'50?scan'50,208,50";a="301112384"
+ d="gz'50?scan'50,208,50";a="254801201"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 24 May 2020 00:36:03 -0700
+ by orsmga007.jf.intel.com with ESMTP; 24 May 2020 01:07:19 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jclAw-0007ZV-6s; Sun, 24 May 2020 15:36:02 +0800
-Date: Sun, 24 May 2020 15:35:37 +0800
+ id 1jclfD-0006uj-2X; Sun, 24 May 2020 16:07:19 +0800
+Date: Sun, 24 May 2020 16:07:05 +0800
 From: kbuild test robot <lkp@intel.com>
-To: Dave Ertman <david.m.ertman@intel.com>
-Message-ID: <202005241529.6IwOFdiv%lkp@intel.com>
+To: Jesper Dangaard Brouer <brouer@redhat.com>
+Message-ID: <202005241602.TlnvanY4%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="45Z9DzgjV8m4Oswq"
+Content-Type: multipart/mixed; boundary="y0ulUmNC+osPPQO6"
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-Mailman-Approved-At: Tue, 26 May 2020 19:28:28 +0000
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 9/99]
- drivers/net/ethernet/intel/ice/ice_common.c:1770:7: warning: this statement
- may fall through
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 19/99]
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c:234:6: error: redefinition of
+ 'i40e_alloc_rx_buffers_zc'
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,268 +78,337 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---45Z9DzgjV8m4Oswq
+--y0ulUmNC+osPPQO6
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
 head:   5950d1e508b225372208a78339e6434adf129852
-commit: 71c1f807aa1ff02f44b51234fb57c1b6f0eea872 [9/99] ice: Create and register virtual bus for RDMA
+commit: b530c4dd1d0830c45139e65808038373cc54ebc8 [19/99] i40e: trivial fixup of comments in i40e_xsk.c
 config: i386-allyesconfig (attached as .config)
 compiler: gcc-7 (Ubuntu 7.5.0-6ubuntu2) 7.5.0
 reproduce (this is a W=1 build):
-        git checkout 71c1f807aa1ff02f44b51234fb57c1b6f0eea872
+        git checkout b530c4dd1d0830c45139e65808038373cc54ebc8
         # save the attached .config to linux build tree
         make ARCH=i386 
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kbuild test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>, old ones prefixed by <<):
+All error/warnings (new ones prefixed by >>, old ones prefixed by <<):
 
-drivers/net/ethernet/intel/ice/ice_common.c: In function 'ice_parse_caps':
->> drivers/net/ethernet/intel/ice/ice_common.c:1770:7: warning: this statement may fall through [-Wimplicit-fallthrough=]
-if (func_p) {
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:234:6: error: redefinition of 'i40e_alloc_rx_buffers_zc'
+bool i40e_alloc_rx_buffers_zc(struct i40e_ring *rx_ring, u16 count)
+^~~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:183:6: note: previous definition of 'i40e_alloc_rx_buffers_zc' was here
+bool i40e_alloc_rx_buffers_zc(struct i40e_ring *rx_ring, u16 count)
+^~~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c: In function 'i40e_alloc_rx_buffers_zc':
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:236:9: error: implicit declaration of function '__i40e_alloc_rx_buffers_zc'; did you mean 'i40e_alloc_rx_buffers_zc'? [-Werror=implicit-function-declaration]
+return __i40e_alloc_rx_buffers_zc(rx_ring, count,
+^~~~~~~~~~~~~~~~~~~~~~~~~~
+i40e_alloc_rx_buffers_zc
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:237:8: error: 'i40e_alloc_buffer_slow_zc' undeclared (first use in this function); did you mean 'i40e_alloc_rx_buffers_zc'?
+i40e_alloc_buffer_slow_zc);
+^~~~~~~~~~~~~~~~~~~~~~~~~
+i40e_alloc_rx_buffers_zc
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:237:8: note: each undeclared identifier is reported only once for each function it appears in
+drivers/net/ethernet/intel/i40e/i40e_xsk.c: In function 'i40e_alloc_rx_buffers_fast_zc':
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:253:8: error: 'i40e_alloc_buffer_zc' undeclared (first use in this function); did you mean 'i40e_alloc_rx_buffers_zc'?
+i40e_alloc_buffer_zc);
+^~~~~~~~~~~~~~~~~~~~
+i40e_alloc_rx_buffers_zc
+drivers/net/ethernet/intel/i40e/i40e_xsk.c: In function 'i40e_reuse_rx_buffer_zc':
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:302:8: error: 'struct i40e_rx_buffer' has no member named 'addr'
+new_bi->addr = old_bi->addr;
+^~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:302:23: error: 'struct i40e_rx_buffer' has no member named 'addr'
+new_bi->addr = old_bi->addr;
+^~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:303:8: error: 'struct i40e_rx_buffer' has no member named 'handle'
+new_bi->handle = old_bi->handle;
+^~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:303:25: error: 'struct i40e_rx_buffer' has no member named 'handle'
+new_bi->handle = old_bi->handle;
+^~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:305:8: error: 'struct i40e_rx_buffer' has no member named 'addr'
+old_bi->addr = NULL;
+^~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c: At top level:
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:313:6: warning: no previous prototype for 'i40e_zca_free' [-Wmissing-prototypes]
+void i40e_zca_free(struct zero_copy_allocator *alloc, unsigned long handle)
+^~~~~~~~~~~~~
+In file included from include/linux/export.h:43:0,
+from include/linux/linkage.h:7,
+from include/linux/kernel.h:8,
+from include/linux/list.h:9,
+from include/linux/timer.h:5,
+from include/linux/netdevice.h:24,
+from include/trace/events/xdp.h:8,
+from include/linux/bpf_trace.h:5,
+from drivers/net/ethernet/intel/i40e/i40e_xsk.c:4:
+drivers/net/ethernet/intel/i40e/i40e_xsk.c: In function 'i40e_zca_free':
+>> include/linux/kernel.h:994:32: error: dereferencing pointer to incomplete type 'struct zero_copy_allocator'
+BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)->member) &&                                    ^~~~~~
+include/linux/compiler.h:330:9: note: in definition of macro '__compiletime_assert'
+if (!(condition))                 ^~~~~~~~~
+include/linux/compiler.h:350:2: note: in expansion of macro '_compiletime_assert'
+_compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+^~~~~~~~~~~~~~~~~~~
+include/linux/build_bug.h:39:37: note: in expansion of macro 'compiletime_assert'
+#define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
+^~~~~~~~~~~~~~~~~~
+include/linux/kernel.h:994:2: note: in expansion of macro 'BUILD_BUG_ON_MSG'
+BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)->member) &&      ^~~~~~~~~~~~~~~~
+include/linux/kernel.h:994:20: note: in expansion of macro '__same_type'
+BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)->member) &&                        ^~~~~~~~~~~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:320:12: note: in expansion of macro 'container_of'
+rx_ring = container_of(alloc, struct i40e_ring, zca);
+^~~~~~~~~~~~
+>> include/linux/kernel.h:994:51: error: 'struct i40e_ring' has no member named 'zca'
+BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)->member) &&                                                       ^
+include/linux/compiler.h:330:9: note: in definition of macro '__compiletime_assert'
+if (!(condition))                 ^~~~~~~~~
+include/linux/compiler.h:350:2: note: in expansion of macro '_compiletime_assert'
+_compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+^~~~~~~~~~~~~~~~~~~
+include/linux/build_bug.h:39:37: note: in expansion of macro 'compiletime_assert'
+#define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
+^~~~~~~~~~~~~~~~~~
+include/linux/kernel.h:994:2: note: in expansion of macro 'BUILD_BUG_ON_MSG'
+BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)->member) &&      ^~~~~~~~~~~~~~~~
+include/linux/kernel.h:994:20: note: in expansion of macro '__same_type'
+BUILD_BUG_ON_MSG(!__same_type(*(ptr), ((type *)0)->member) &&                        ^~~~~~~~~~~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:320:12: note: in expansion of macro 'container_of'
+rx_ring = container_of(alloc, struct i40e_ring, zca);
+^~~~~~~~~~~~
+In file included from <command-line>:0:0:
+>> include/linux/compiler_types.h:129:35: error: 'struct i40e_ring' has no member named 'zca'
+#define __compiler_offsetof(a, b) __builtin_offsetof(a, b)
 ^
-drivers/net/ethernet/intel/ice/ice_common.c:1788:3: note: here
-case ICE_AQC_CAPS_IWARP:
-^~~~
+include/linux/stddef.h:17:32: note: in expansion of macro '__compiler_offsetof'
+#define offsetof(TYPE, MEMBER) __compiler_offsetof(TYPE, MEMBER)
+^~~~~~~~~~~~~~~~~~~
+include/linux/kernel.h:997:21: note: in expansion of macro 'offsetof'
+((type *)(__mptr - offsetof(type, member))); })
+^~~~~~~~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:320:12: note: in expansion of macro 'container_of'
+rx_ring = container_of(alloc, struct i40e_ring, zca);
+^~~~~~~~~~~~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:322:28: error: 'struct xdp_umem' has no member named 'chunk_mask'; did you mean 'chunk_size'?
+mask = rx_ring->xsk_umem->chunk_mask;
+^~~~~~~~~~
+chunk_size
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:332:12: error: implicit declaration of function 'xdp_umem_get_dma'; did you mean 'xp_raw_get_dma'? [-Werror=implicit-function-declaration]
+bi->dma = xdp_umem_get_dma(rx_ring->xsk_umem, handle);
+^~~~~~~~~~~~~~~~
+xp_raw_get_dma
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:335:4: error: 'struct i40e_rx_buffer' has no member named 'addr'
+bi->addr = xdp_umem_get_data(rx_ring->xsk_umem, handle);
+^~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:335:13: error: implicit declaration of function 'xdp_umem_get_data'; did you mean 'xp_raw_get_data'? [-Werror=implicit-function-declaration]
+bi->addr = xdp_umem_get_data(rx_ring->xsk_umem, handle);
+^~~~~~~~~~~~~~~~~
+xp_raw_get_data
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:336:4: error: 'struct i40e_rx_buffer' has no member named 'addr'
+bi->addr += hr;
+^~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:338:4: error: 'struct i40e_rx_buffer' has no member named 'handle'
+bi->handle = xsk_umem_adjust_offset(rx_ring->xsk_umem, (u64)handle,
+^~
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:338:15: error: implicit declaration of function 'xsk_umem_adjust_offset'; did you mean 'vmem_altmap_offset'? [-Werror=implicit-function-declaration]
+bi->handle = xsk_umem_adjust_offset(rx_ring->xsk_umem, (u64)handle,
+^~~~~~~~~~~~~~~~~~~~~~
+vmem_altmap_offset
+drivers/net/ethernet/intel/i40e/i40e_xsk.c: In function 'i40e_alloc_rx_buffers_zc':
+>> drivers/net/ethernet/intel/i40e/i40e_xsk.c:238:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+^
+At top level:
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:290:13: warning: 'i40e_reuse_rx_buffer_zc' defined but not used [-Wunused-function]
+static void i40e_reuse_rx_buffer_zc(struct i40e_ring *rx_ring,
+^~~~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:266:31: warning: 'i40e_get_rx_buffer_zc' defined but not used [-Wunused-function]
+static struct i40e_rx_buffer *i40e_get_rx_buffer_zc(struct i40e_ring *rx_ring,
+^~~~~~~~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/i40e/i40e_xsk.c:250:13: warning: 'i40e_alloc_rx_buffers_fast_zc' defined but not used [-Wunused-function]
+static bool i40e_alloc_rx_buffers_fast_zc(struct i40e_ring *rx_ring, u16 count)
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
 
-vim +1770 drivers/net/ethernet/intel/ice/ice_common.c
+vim +/i40e_alloc_rx_buffers_zc +234 drivers/net/ethernet/intel/i40e/i40e_xsk.c
 
-995c90f2de819b Anirudh Venkataramanan 2018-10-26  1613  
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1614  /**
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1615   * ice_parse_caps - parse function/device capabilities
-f9867df6d96593 Anirudh Venkataramanan 2019-02-19  1616   * @hw: pointer to the HW struct
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1617   * @buf: pointer to a buffer containing function/device capability records
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1618   * @cap_count: number of capability records in the list
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1619   * @opc: type of capabilities list to parse
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1620   *
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1621   * Helper function to parse function(0x000a)/device(0x000b) capabilities list.
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1622   */
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1623  static void
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1624  ice_parse_caps(struct ice_hw *hw, void *buf, u32 cap_count,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1625  	       enum ice_adminq_opc opc)
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1626  {
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1627  	struct ice_aqc_list_caps_elem *cap_resp;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1628  	struct ice_hw_func_caps *func_p = NULL;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1629  	struct ice_hw_dev_caps *dev_p = NULL;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1630  	struct ice_hw_common_caps *caps;
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1631  	char const *prefix;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1632  	u32 i;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1633  
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1634  	if (!buf)
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1635  		return;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1636  
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1637  	cap_resp = (struct ice_aqc_list_caps_elem *)buf;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1638  
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1639  	if (opc == ice_aqc_opc_list_dev_caps) {
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1640  		dev_p = &hw->dev_caps;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1641  		caps = &dev_p->common_cap;
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1642  		prefix = "dev cap";
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1643  	} else if (opc == ice_aqc_opc_list_func_caps) {
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1644  		func_p = &hw->func_caps;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1645  		caps = &func_p->common_cap;
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1646  		prefix = "func cap";
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1647  	} else {
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1648  		ice_debug(hw, ICE_DBG_INIT, "wrong opcode\n");
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1649  		return;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1650  	}
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1651  
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1652  	for (i = 0; caps && i < cap_count; i++, cap_resp++) {
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1653  		u32 logical_id = le32_to_cpu(cap_resp->logical_id);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1654  		u32 phys_id = le32_to_cpu(cap_resp->phys_id);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1655  		u32 number = le32_to_cpu(cap_resp->number);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1656  		u16 cap = le16_to_cpu(cap_resp->cap);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1657  
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1658  		switch (cap) {
-995c90f2de819b Anirudh Venkataramanan 2018-10-26  1659  		case ICE_AQC_CAPS_VALID_FUNCTIONS:
-995c90f2de819b Anirudh Venkataramanan 2018-10-26  1660  			caps->valid_functions = number;
-995c90f2de819b Anirudh Venkataramanan 2018-10-26  1661  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1662  				  "%s: valid_functions (bitmap) = %d\n", prefix,
-995c90f2de819b Anirudh Venkataramanan 2018-10-26  1663  				  caps->valid_functions);
-eae1bbb2a4519a Bruce Allan            2019-11-08  1664  
-eae1bbb2a4519a Bruce Allan            2019-11-08  1665  			/* store func count for resource management purposes */
-eae1bbb2a4519a Bruce Allan            2019-11-08  1666  			if (dev_p)
-eae1bbb2a4519a Bruce Allan            2019-11-08  1667  				dev_p->num_funcs = hweight32(number);
-995c90f2de819b Anirudh Venkataramanan 2018-10-26  1668  			break;
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1669  		case ICE_AQC_CAPS_SRIOV:
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1670  			caps->sr_iov_1_1 = (number == 1);
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1671  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1672  				  "%s: sr_iov_1_1 = %d\n", prefix,
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1673  				  caps->sr_iov_1_1);
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1674  			break;
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1675  		case ICE_AQC_CAPS_VF:
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1676  			if (dev_p) {
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1677  				dev_p->num_vfs_exposed = number;
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1678  				ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1679  					  "%s: num_vfs_exposed = %d\n", prefix,
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1680  					  dev_p->num_vfs_exposed);
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1681  			} else if (func_p) {
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1682  				func_p->num_allocd_vfs = number;
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1683  				func_p->vf_base_id = logical_id;
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1684  				ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1685  					  "%s: num_allocd_vfs = %d\n", prefix,
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1686  					  func_p->num_allocd_vfs);
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1687  				ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1688  					  "%s: vf_base_id = %d\n", prefix,
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1689  					  func_p->vf_base_id);
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1690  			}
-75d2b253026b8b Anirudh Venkataramanan 2018-09-19  1691  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1692  		case ICE_AQC_CAPS_VSI:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1693  			if (dev_p) {
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1694  				dev_p->num_vsi_allocd_to_host = number;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1695  				ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1696  					  "%s: num_vsi_allocd_to_host = %d\n",
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1697  					  prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1698  					  dev_p->num_vsi_allocd_to_host);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1699  			} else if (func_p) {
-7a1f7111754020 Brett Creeley          2019-02-08  1700  				func_p->guar_num_vsi =
-7a1f7111754020 Brett Creeley          2019-02-08  1701  					ice_get_num_per_func(hw, ICE_MAX_VSI);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1702  				ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1703  					  "%s: guar_num_vsi (fw) = %d\n",
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1704  					  prefix, number);
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1705  				ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1706  					  "%s: guar_num_vsi = %d\n",
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1707  					  prefix, func_p->guar_num_vsi);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1708  			}
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1709  			break;
-a257f188b72bf0 Usha Ketineni          2019-08-08  1710  		case ICE_AQC_CAPS_DCB:
-a257f188b72bf0 Usha Ketineni          2019-08-08  1711  			caps->dcb = (number == 1);
-a257f188b72bf0 Usha Ketineni          2019-08-08  1712  			caps->active_tc_bitmap = logical_id;
-a257f188b72bf0 Usha Ketineni          2019-08-08  1713  			caps->maxtc = phys_id;
-a257f188b72bf0 Usha Ketineni          2019-08-08  1714  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1715  				  "%s: dcb = %d\n", prefix, caps->dcb);
-a257f188b72bf0 Usha Ketineni          2019-08-08  1716  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1717  				  "%s: active_tc_bitmap = %d\n", prefix,
-a257f188b72bf0 Usha Ketineni          2019-08-08  1718  				  caps->active_tc_bitmap);
-a257f188b72bf0 Usha Ketineni          2019-08-08  1719  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1720  				  "%s: maxtc = %d\n", prefix, caps->maxtc);
-a257f188b72bf0 Usha Ketineni          2019-08-08  1721  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1722  		case ICE_AQC_CAPS_RSS:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1723  			caps->rss_table_size = number;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1724  			caps->rss_table_entry_width = logical_id;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1725  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1726  				  "%s: rss_table_size = %d\n", prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1727  				  caps->rss_table_size);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1728  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1729  				  "%s: rss_table_entry_width = %d\n", prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1730  				  caps->rss_table_entry_width);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1731  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1732  		case ICE_AQC_CAPS_RXQS:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1733  			caps->num_rxq = number;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1734  			caps->rxq_first_id = phys_id;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1735  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1736  				  "%s: num_rxq = %d\n", prefix,
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1737  				  caps->num_rxq);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1738  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1739  				  "%s: rxq_first_id = %d\n", prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1740  				  caps->rxq_first_id);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1741  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1742  		case ICE_AQC_CAPS_TXQS:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1743  			caps->num_txq = number;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1744  			caps->txq_first_id = phys_id;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1745  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1746  				  "%s: num_txq = %d\n", prefix,
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1747  				  caps->num_txq);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1748  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1749  				  "%s: txq_first_id = %d\n", prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1750  				  caps->txq_first_id);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1751  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1752  		case ICE_AQC_CAPS_MSIX:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1753  			caps->num_msix_vectors = number;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1754  			caps->msix_vector_first_id = phys_id;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1755  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1756  				  "%s: num_msix_vectors = %d\n", prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1757  				  caps->num_msix_vectors);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1758  			ice_debug(hw, ICE_DBG_INIT,
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1759  				  "%s: msix_vector_first_id = %d\n", prefix,
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1760  				  caps->msix_vector_first_id);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1761  			break;
-148beb61203125 Henry Tieman           2020-05-11  1762  		case ICE_AQC_CAPS_FD:
-148beb61203125 Henry Tieman           2020-05-11  1763  			if (dev_p) {
-148beb61203125 Henry Tieman           2020-05-11  1764  				dev_p->num_flow_director_fltr = number;
-148beb61203125 Henry Tieman           2020-05-11  1765  				ice_debug(hw, ICE_DBG_INIT,
-148beb61203125 Henry Tieman           2020-05-11  1766  					  "%s: num_flow_director_fltr = %d\n",
-148beb61203125 Henry Tieman           2020-05-11  1767  					  prefix,
-148beb61203125 Henry Tieman           2020-05-11  1768  					  dev_p->num_flow_director_fltr);
-148beb61203125 Henry Tieman           2020-05-11  1769  			}
-148beb61203125 Henry Tieman           2020-05-11 @1770  			if (func_p) {
-148beb61203125 Henry Tieman           2020-05-11  1771  				u32 reg_val, val;
-148beb61203125 Henry Tieman           2020-05-11  1772  
-148beb61203125 Henry Tieman           2020-05-11  1773  				reg_val = rd32(hw, GLQF_FD_SIZE);
-148beb61203125 Henry Tieman           2020-05-11  1774  				val = (reg_val & GLQF_FD_SIZE_FD_GSIZE_M) >>
-148beb61203125 Henry Tieman           2020-05-11  1775  				      GLQF_FD_SIZE_FD_GSIZE_S;
-148beb61203125 Henry Tieman           2020-05-11  1776  				func_p->fd_fltr_guar =
-148beb61203125 Henry Tieman           2020-05-11  1777  				      ice_get_num_per_func(hw, val);
-148beb61203125 Henry Tieman           2020-05-11  1778  				val = (reg_val & GLQF_FD_SIZE_FD_BSIZE_M) >>
-148beb61203125 Henry Tieman           2020-05-11  1779  				      GLQF_FD_SIZE_FD_BSIZE_S;
-148beb61203125 Henry Tieman           2020-05-11  1780  				func_p->fd_fltr_best_effort = val;
-148beb61203125 Henry Tieman           2020-05-11  1781  				ice_debug(hw, ICE_DBG_INIT,
-148beb61203125 Henry Tieman           2020-05-11  1782  					  "%s: fd_fltr_guar = %d\n",
-148beb61203125 Henry Tieman           2020-05-11  1783  					  prefix, func_p->fd_fltr_guar);
-148beb61203125 Henry Tieman           2020-05-11  1784  				ice_debug(hw, ICE_DBG_INIT,
-148beb61203125 Henry Tieman           2020-05-11  1785  					  "%s: fd_fltr_best_effort = %d\n",
-148beb61203125 Henry Tieman           2020-05-11  1786  					  prefix, func_p->fd_fltr_best_effort);
-148beb61203125 Henry Tieman           2020-05-11  1787  			}
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1788  		case ICE_AQC_CAPS_IWARP:
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1789  			caps->iwarp = (number == 1);
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1790  			ice_debug(hw, ICE_DBG_INIT,
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1791  				  "%s: iwarp = %d\n", prefix, caps->iwarp);
-148beb61203125 Henry Tieman           2020-05-11  1792  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1793  		case ICE_AQC_CAPS_MAX_MTU:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1794  			caps->max_mtu = number;
-5c875c1af8dc69 Anirudh Venkataramanan 2019-09-03  1795  			ice_debug(hw, ICE_DBG_INIT, "%s: max_mtu = %d\n",
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1796  				  prefix, caps->max_mtu);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1797  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1798  		default:
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1799  			ice_debug(hw, ICE_DBG_INIT,
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1800  				  "%s: unknown capability[%d]: 0x%x\n", prefix,
-a84db52569ddef Anirudh Venkataramanan 2019-04-16  1801  				  i, cap);
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1802  			break;
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1803  		}
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1804  	}
-9164f761c99493 Bruce Allan            2019-11-08  1805  
-9164f761c99493 Bruce Allan            2019-11-08  1806  	/* Re-calculate capabilities that are dependent on the number of
-9164f761c99493 Bruce Allan            2019-11-08  1807  	 * physical ports; i.e. some features are not supported or function
-9164f761c99493 Bruce Allan            2019-11-08  1808  	 * differently on devices with more than 4 ports.
-9164f761c99493 Bruce Allan            2019-11-08  1809  	 */
-9164f761c99493 Bruce Allan            2019-11-08  1810  	if (hw->dev_caps.num_funcs > 4) {
-9164f761c99493 Bruce Allan            2019-11-08  1811  		/* Max 4 TCs per port */
-9164f761c99493 Bruce Allan            2019-11-08  1812  		caps->maxtc = 4;
-9164f761c99493 Bruce Allan            2019-11-08  1813  		ice_debug(hw, ICE_DBG_INIT,
-9164f761c99493 Bruce Allan            2019-11-08  1814  			  "%s: maxtc = %d (based on #ports)\n", prefix,
-9164f761c99493 Bruce Allan            2019-11-08  1815  			  caps->maxtc);
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1816  		if (caps->iwarp) {
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1817  			ice_debug(hw, ICE_DBG_INIT, "%s: forcing RDMA off\n",
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1818  				  prefix);
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1819  			caps->iwarp = 0;
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1820  		}
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1821  
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1822  		/* print message only when processing device capabilities */
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1823  		if (dev_p)
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1824  			dev_info(ice_hw_to_dev(hw),
-71c1f807aa1ff0 Dave Ertman            2020-05-04  1825  				 "RDMA functionality is not available with the current device configuration.\n");
-9164f761c99493 Bruce Allan            2019-11-08  1826  	}
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1827  }
-9c20346b6309e2 Anirudh Venkataramanan 2018-03-20  1828  
-
-:::::: The code at line 1770 was first introduced by commit
-:::::: 148beb612031255156d68b342170140524afb36e ice: Initialize Flow Director resources
-
-:::::: TO: Henry Tieman <henry.w.tieman@intel.com>
-:::::: CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+   182	
+ > 183	bool i40e_alloc_rx_buffers_zc(struct i40e_ring *rx_ring, u16 count)
+   184	{
+   185		u16 ntu = rx_ring->next_to_use;
+   186		union i40e_rx_desc *rx_desc;
+   187		struct xdp_buff **bi, *xdp;
+   188		dma_addr_t dma;
+   189		bool ok = true;
+   190	
+   191		rx_desc = I40E_RX_DESC(rx_ring, ntu);
+   192		bi = i40e_rx_bi(rx_ring, ntu);
+   193		do {
+   194			xdp = xsk_buff_alloc(rx_ring->xsk_umem);
+   195			if (!xdp) {
+   196				ok = false;
+   197				goto no_buffers;
+   198			}
+   199			*bi = xdp;
+   200			dma = xsk_buff_xdp_get_dma(xdp);
+   201			rx_desc->read.pkt_addr = cpu_to_le64(dma);
+   202			rx_desc->read.hdr_addr = 0;
+   203	
+   204			rx_desc++;
+   205			bi++;
+   206			ntu++;
+   207	
+   208			if (unlikely(ntu == rx_ring->count)) {
+   209				rx_desc = I40E_RX_DESC(rx_ring, 0);
+   210				bi = i40e_rx_bi(rx_ring, 0);
+   211				ntu = 0;
+   212			}
+   213	
+   214			count--;
+   215		} while (count);
+   216	
+   217	no_buffers:
+   218		if (rx_ring->next_to_use != ntu)
+   219			i40e_release_rx_desc(rx_ring, ntu);
+   220	
+   221		return ok;
+   222	}
+   223	
+   224	/**
+   225	 * i40e_alloc_rx_buffers_zc - Allocates a number of Rx buffers
+   226	 * @rx_ring: Rx ring
+   227	 * @count: The number of buffers to allocate
+   228	 *
+   229	 * This function allocates a number of Rx buffers from the reuse queue
+   230	 * or fill ring and places them on the Rx ring.
+   231	 *
+   232	 * Returns true for a successful allocation, false otherwise
+   233	 **/
+ > 234	bool i40e_alloc_rx_buffers_zc(struct i40e_ring *rx_ring, u16 count)
+   235	{
+ > 236		return __i40e_alloc_rx_buffers_zc(rx_ring, count,
+ > 237						  i40e_alloc_buffer_slow_zc);
+ > 238	}
+   239	
+   240	/**
+   241	 * i40e_alloc_rx_buffers_fast_zc - Allocates a number of Rx buffers
+   242	 * @rx_ring: Rx ring
+   243	 * @count: The number of buffers to allocate
+   244	 *
+   245	 * This function allocates a number of Rx buffers from the fill ring
+   246	 * or the internal recycle mechanism and places them on the Rx ring.
+   247	 *
+   248	 * Returns true for a successful allocation, false otherwise
+   249	 **/
+   250	static bool i40e_alloc_rx_buffers_fast_zc(struct i40e_ring *rx_ring, u16 count)
+   251	{
+   252		return __i40e_alloc_rx_buffers_zc(rx_ring, count,
+ > 253						  i40e_alloc_buffer_zc);
+   254	}
+   255	
+   256	/**
+   257	 * i40e_get_rx_buffer_zc - Return the current Rx buffer
+   258	 * @rx_ring: Rx ring
+   259	 * @size: The size of the rx buffer (read from descriptor)
+   260	 *
+   261	 * This function returns the current, received Rx buffer, and also
+   262	 * does DMA synchronization.  the Rx ring.
+   263	 *
+   264	 * Returns the received Rx buffer
+   265	 **/
+   266	static struct i40e_rx_buffer *i40e_get_rx_buffer_zc(struct i40e_ring *rx_ring,
+   267							    const unsigned int size)
+   268	{
+   269		struct i40e_rx_buffer *bi;
+   270	
+   271		bi = &rx_ring->rx_bi[rx_ring->next_to_clean];
+   272	
+   273		/* we are reusing so sync this buffer for CPU use */
+   274		dma_sync_single_range_for_cpu(rx_ring->dev,
+   275					      bi->dma, 0,
+   276					      size,
+   277					      DMA_BIDIRECTIONAL);
+   278	
+   279		return bi;
+   280	}
+   281	
+   282	/**
+   283	 * i40e_reuse_rx_buffer_zc - Recycle an Rx buffer
+   284	 * @rx_ring: Rx ring
+   285	 * @old_bi: The Rx buffer to recycle
+   286	 *
+   287	 * This function recycles a finished Rx buffer, and places it on the
+   288	 * recycle queue (next_to_alloc).
+   289	 **/
+   290	static void i40e_reuse_rx_buffer_zc(struct i40e_ring *rx_ring,
+   291					    struct i40e_rx_buffer *old_bi)
+   292	{
+   293		struct i40e_rx_buffer *new_bi = &rx_ring->rx_bi[rx_ring->next_to_alloc];
+   294		u16 nta = rx_ring->next_to_alloc;
+   295	
+   296		/* update, and store next to alloc */
+   297		nta++;
+   298		rx_ring->next_to_alloc = (nta < rx_ring->count) ? nta : 0;
+   299	
+   300		/* transfer page from old buffer to new buffer */
+   301		new_bi->dma = old_bi->dma;
+ > 302		new_bi->addr = old_bi->addr;
+ > 303		new_bi->handle = old_bi->handle;
+   304	
+   305		old_bi->addr = NULL;
+   306	}
+   307	
+   308	/**
+   309	 * i40e_zca_free - Free callback for MEM_TYPE_ZERO_COPY allocations
+   310	 * @alloc: Zero-copy allocator
+   311	 * @handle: Buffer handle
+   312	 **/
+ > 313	void i40e_zca_free(struct zero_copy_allocator *alloc, unsigned long handle)
+   314	{
+   315		struct i40e_rx_buffer *bi;
+   316		struct i40e_ring *rx_ring;
+   317		u64 hr, mask;
+   318		u16 nta;
+   319	
+ > 320		rx_ring = container_of(alloc, struct i40e_ring, zca);
+   321		hr = rx_ring->xsk_umem->headroom + XDP_PACKET_HEADROOM;
+ > 322		mask = rx_ring->xsk_umem->chunk_mask;
+   323	
+   324		nta = rx_ring->next_to_alloc;
+   325		bi = &rx_ring->rx_bi[nta];
+   326	
+   327		nta++;
+   328		rx_ring->next_to_alloc = (nta < rx_ring->count) ? nta : 0;
+   329	
+   330		handle &= mask;
+   331	
+ > 332		bi->dma = xdp_umem_get_dma(rx_ring->xsk_umem, handle);
+   333		bi->dma += hr;
+   334	
+ > 335		bi->addr = xdp_umem_get_data(rx_ring->xsk_umem, handle);
+ > 336		bi->addr += hr;
+   337	
+ > 338		bi->handle = xsk_umem_adjust_offset(rx_ring->xsk_umem, (u64)handle,
+   339						    rx_ring->xsk_umem->headroom);
+   340	}
+   341	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---45Z9DzgjV8m4Oswq
+--y0ulUmNC+osPPQO6
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICKAfyl4AAy5jb25maWcAlDzJkty2knd/RYV9sQ/2612KmdABJEEWXARBA2B1lS6Mdqsk
+H4sICHEpyl4AAy5jb25maWcAlDzJkty2knd/RYV9sQ/2612KmdABJEEWXARBA2B1lS6Mdqsk
 d4zUrenlPevvJxMgiwkQbHkcDknMxJrIHYn66YefVuzl+eHLzfPd7c3nz99Wnw73h8eb58OH
 1ce7z4f/XhVq1Si74oWwv0Hj+u7+5e9/3Z2/vVpd/vbmt5NfH28vV5vD4/3h8yp/uP949+kF
 et893P/w0w/w/08A/PIVBnr8r9Wn29tf36x+7v58uX9+Wb357RJ6X724r7Nf/Df0yFVTiqrP
@@ -1684,7 +1753,7 @@ EKpMsiRS5M5cmYKd7QPPCmCYvLEs8PV1Xh2doGprtH56e0Tez1GgLaryfnqiPYGlnxoFXj9R
 aHT6t7hgaFt5SrC611nL+QhUnlCV6T+v3CbJAguyL2j4h9ClEOzgpANOPVIs45v2+3iySRfL
 NjOOAsDrvb6GmbVtRSVdtE+u0I6nJf4gQJ1YqhCn6HAn8+vEbJb+D61VPUzJowQA
 
---45Z9DzgjV8m4Oswq
+--y0ulUmNC+osPPQO6
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1695,4 +1764,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---45Z9DzgjV8m4Oswq--
+--y0ulUmNC+osPPQO6--
