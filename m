@@ -1,63 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96A051E0672
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 May 2020 07:42:09 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06B9B1E113A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 May 2020 17:02:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 430C720402;
-	Mon, 25 May 2020 05:42:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A521E87D3D;
+	Mon, 25 May 2020 15:02:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0IGQaxfnvfDS; Mon, 25 May 2020 05:42:07 +0000 (UTC)
+	with ESMTP id blNB7Qt4AJWD; Mon, 25 May 2020 15:02:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id C3AF7203FD;
-	Mon, 25 May 2020 05:42:05 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1B63487D6E;
+	Mon, 25 May 2020 15:02:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BDF1E1BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 05:42:04 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A7C71BF2A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 15:02:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B99048684A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 05:42:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 0CEEE2038A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 15:02:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qLwmYrgBpJD5 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 May 2020 05:42:03 +0000 (UTC)
+ with ESMTP id 5W5l2YZnCq4j for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 May 2020 15:02:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 988CE86838
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 05:42:03 +0000 (UTC)
-IronPort-SDR: ejAw1kTooBOkJmMjeK7OyxSXQ4SK/SjHGRzCQYt7KC5JbTJ1HaJd7p1QhhNYGWQDai1/1SHd1Y
- 67uWMa/wOQow==
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by silver.osuosl.org (Postfix) with ESMTPS id B59741FEBF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 15:02:50 +0000 (UTC)
+IronPort-SDR: 0l1EPKiRy+Bd4lErfMe54HUFaGZiRqK6DIXvzvMOeUKBr06nDWdMSpyUSQdNk5sq/fhfRhyhOP
+ 2333uKziVthA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 May 2020 22:42:02 -0700
-IronPort-SDR: wPFFV04TywTTYa5beoW4GIVLEixQ1HsRPAR0M3pTXwcfDlsL8LSNv36tgRfXsmk5bBA3HKdWcr
- qbmIfFPAPuWw==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 May 2020 08:02:49 -0700
+IronPort-SDR: zWJweMVeQVgp652aJISMh1RaetbQne//awtOwNFQ3l1d1Up6eRVbzXg5b2qsp2TJNTeisQ5V4T
+ moevHjW5Wofg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,432,1583222400"; d="scan'208";a="413405474"
-Received: from sneftin-mobl1.ger.corp.intel.com (HELO [10.214.251.54])
- ([10.214.251.54])
- by orsmga004.jf.intel.com with ESMTP; 24 May 2020 22:41:59 -0700
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
-References: <20200521052753.GB12456@shao2-debian>
- <5A1631F8-259E-4897-BE52-0F5DB406E44F@canonical.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <99f5e417-c369-26a9-3b61-5552d9ba8c35@intel.com>
-Date: Mon, 25 May 2020 08:41:58 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
-MIME-Version: 1.0
-In-Reply-To: <5A1631F8-259E-4897-BE52-0F5DB406E44F@canonical.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [e1000e] e86e383f28: suspend-stress.fail
+X-IronPort-AV: E=Sophos;i="5.73,433,1583222400"; d="scan'208";a="344908011"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by orsmga001.jf.intel.com with ESMTP; 25 May 2020 08:02:48 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 25 May 2020 18:02:48 +0300
+Message-Id: <20200525150248.37783-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v3 1/1] igc: Add initial EEE support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,111 +62,351 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kernel test robot <rong.a.chen@intel.com>, "Efrati,
- Nir" <nir.efrati@intel.com>, lkp@lists.01.org, Zhang Rui <rui.zhang@intel.com>,
- "Avivi, Amir" <amir.avivi@intel.com>, mpearson@lenovo.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 5/23/2020 15:20, Kai-Heng Feng wrote:
-> [+Cc intel-wired-lan]
-> 
->> On May 21, 2020, at 13:27, kernel test robot <rong.a.chen@intel.com> wrote:
->>
->> Greeting,
->>
->> FYI, we noticed the following commit (built with gcc-7):
->>
->> commit: e86e383f2854234129c66e90f84ac2c74b2b1828 ("e1000e: Warn if disabling ULP failed")
->> https://git.kernel.org/cgit/linux/kernel/git/jkirsher/next-queue.git dev-queue
-> 
-> kern  :warn  : [  240.884667] e1000e 0000:00:19.0 eth0: Failed to disable ULP
-> kern  :info  : [  241.896122] asix 2-3:1.0 eth1: link up, 100Mbps, full-duplex, lpa 0xC1E1
-> kern  :err   : [  242.269348] e1000e 0000:00:19.0 eth0: Hardware Error
-> kern  :info  : [  242.772702] e1000e 0000:00:19.0: pci_pm_resume+0x0/0x80 returned 0 after 2985422 usecs
-> 
-> So the patch does catch issues previously ignored.
-> 
-> I wonder what's the next move, maybe increase the ULP timeout again?
-> 
-Kai-Heng, you can't simple increase ULP timeout. Why ME required more 
-time? We need to find ME expert and understand why FWSM (firmware 
-semaphore, bit 10 ULP_CFG_DN) indication take too much time. I wonder if 
-this indication work as properly. Please, try to understand. All 
-delay/timeout approach not acceptable.
+IEEE802.3az-2010 Energy Efficient Ethernet has been
+approved as standard (September 2010) and the driver
+can enable and disable it via ethtool.
+Disable the feature by default on parts which support it.
+Add enable/disable eee options.
+tx-lpi, tx-timer and advertise not supported yet.
 
-Also, we communicated: : Intel vPro (vPro CPU + Corporate ME FW) system 
-(i.e. I219LM system) is NOT POR to support Linux
+v1-v2:
+Rid of inverted logic and replace eee_disable boolean with
+eee_enable in device specification.
+Address community comments.
 
-> Kai-Heng
-> 
->>
->> in testcase: suspend-stress
->> with following parameters:
->>
->> 	mode: mem
->> 	iterations: 10
->>
->>
->>
->> on test machine: 4 threads Broadwell with 8G memory
->>
->> caused below changes (please refer to attached dmesg/kmsg for entire log/backtrace):
->>
->>
->>
->>
->> If you fix the issue, kindly add following tag
->> Reported-by: kernel test robot <rong.a.chen@intel.com>
->>
->> SUSPEND RESUME TEST STARTED
->> Suspend to mem 1/10:
->> /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-1/10 -O /dev/null
->> Done
->> Sleep for 10 seconds
->> Suspend to mem 2/10:
->> /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-2/10 -O /dev/null
->> Done
->> Sleep for 10 seconds
->> Suspend to mem 3/10:
->> /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-3/10 -O /dev/null
->> Done
->> Sleep for 10 seconds
->> Suspend to mem 4/10:
->> /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-4/10 -O /dev/null
->> Done
->> Sleep for 10 seconds
->> Suspend to mem 5/10:
->> /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-5/10 -O /dev/null
->> Done
->> Sleep for 10 seconds
->> Suspend to mem 6/10:
->> /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-8 http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-6/10 -O /dev/null
->> Failed
->>
->>
->>
->> To reproduce:
->>
->>         git clone https://github.com/intel/lkp-tests.git
->>         cd lkp-tests
->>         bin/lkp install job.yaml  # job file is attached in this email
->>         bin/lkp run     job.yaml
->>
->>
->>
->> Thanks,
->> Rong Chen
->>
->> <config-5.7.0-rc4-01618-ge86e383f28542><job-script.txt><kmsg.xz><suspend-stress.txt><job.yaml>
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-> 
+v2-v3:
+Remove pointless ret_val from _set_eee method
+Minor comment fix
+
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h         |  4 ++
+ drivers/net/ethernet/intel/igc/igc_defines.h | 10 +++
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 97 ++++++++++++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_hw.h      |  1 +
+ drivers/net/ethernet/intel/igc/igc_i225.c    | 57 ++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_i225.h    |  2 +
+ drivers/net/ethernet/intel/igc/igc_main.c    | 16 +++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    |  5 ++
+ 8 files changed, 192 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 5dbc5a156626..ce3ca6d4a6de 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -117,6 +117,9 @@ struct igc_ring {
+ struct igc_adapter {
+ 	struct net_device *netdev;
+ 
++	struct ethtool_eee eee;
++	u16 eee_advert;
++
+ 	unsigned long state;
+ 	unsigned int flags;
+ 	unsigned int num_q_vectors;
+@@ -256,6 +259,7 @@ extern char igc_driver_version[];
+ #define IGC_FLAG_MEDIA_RESET		BIT(10)
+ #define IGC_FLAG_MAS_ENABLE		BIT(12)
+ #define IGC_FLAG_HAS_MSIX		BIT(13)
++#define IGC_FLAG_EEE			BIT(14)
+ #define IGC_FLAG_VLAN_PROMISC		BIT(15)
+ #define IGC_FLAG_RX_LEGACY		BIT(16)
+ #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 80b664e64465..a7baadc49d84 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -512,4 +512,14 @@
+ /* Maximum size of the MTA register table in all supported adapters */
+ #define MAX_MTA_REG			128
+ 
++/* EEE defines */
++#define IGC_IPCNFG_EEE_2_5G_AN		0x00000010 /* IPCNFG EEE Ena 2.5G AN */
++#define IGC_IPCNFG_EEE_1G_AN		0x00000008 /* IPCNFG EEE Ena 1G AN */
++#define IGC_IPCNFG_EEE_100M_AN		0x00000004 /* IPCNFG EEE Ena 100M AN */
++#define IGC_EEER_EEE_NEG		0x20000000 /* EEE capability nego */
++#define IGC_EEER_TX_LPI_EN		0x00010000 /* EEER Tx LPI Enable */
++#define IGC_EEER_RX_LPI_EN		0x00020000 /* EEER Rx LPI Enable */
++#define IGC_EEER_LPI_FC			0x00040000 /* EEER Ena on Flow Cntrl */
++#define IGC_EEE_SU_LPI_CLK_STP		0x00800000 /* EEE LPI Clock Stop */
++
+ #endif /* _IGC_DEFINES_H_ */
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 2214a5d3a259..2093921cf00a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -4,6 +4,7 @@
+ /* ethtool support for igc */
+ #include <linux/if_vlan.h>
+ #include <linux/pm_runtime.h>
++#include <linux/mdio.h>
+ 
+ #include "igc.h"
+ #include "igc_diag.h"
+@@ -1549,6 +1550,100 @@ static int igc_ethtool_set_priv_flags(struct net_device *netdev, u32 priv_flags)
+ 	return 0;
+ }
+ 
++static int igc_ethtool_get_eee(struct net_device *netdev,
++			       struct ethtool_eee *edata)
++{
++	struct igc_adapter *adapter = netdev_priv(netdev);
++	struct igc_hw *hw = &adapter->hw;
++	u32 eeer;
++
++	if (hw->dev_spec._base.eee_enable)
++		edata->advertised =
++			mmd_eee_adv_to_ethtool_adv_t(adapter->eee_advert);
++
++	*edata = adapter->eee;
++	edata->supported = SUPPORTED_Autoneg;
++	netdev_info(netdev,
++		    "Supported EEE link modes: 100baseT/Full, 1000baseT/Full, 2500baseT/Full\n");
++
++	eeer = rd32(IGC_EEER);
++
++	/* EEE status on negotiated link */
++	if (eeer & IGC_EEER_EEE_NEG)
++		edata->eee_active = true;
++
++	if (eeer & IGC_EEER_TX_LPI_EN)
++		edata->tx_lpi_enabled = true;
++
++	edata->eee_enabled = hw->dev_spec._base.eee_enable;
++
++	edata->advertised = SUPPORTED_Autoneg;
++	edata->lp_advertised = SUPPORTED_Autoneg;
++
++	/* Report correct negotiated EEE status for devices that
++	 * wrongly report EEE at half-duplex
++	 */
++	if (adapter->link_duplex == HALF_DUPLEX) {
++		edata->eee_enabled = false;
++		edata->eee_active = false;
++		edata->tx_lpi_enabled = false;
++		edata->advertised &= ~edata->advertised;
++	}
++
++	return 0;
++}
++
++static int igc_ethtool_set_eee(struct net_device *netdev,
++			       struct ethtool_eee *edata)
++{
++	struct igc_adapter *adapter = netdev_priv(netdev);
++	struct igc_hw *hw = &adapter->hw;
++	struct ethtool_eee eee_curr;
++	s32 ret_val;
++
++	memset(&eee_curr, 0, sizeof(struct ethtool_eee));
++
++	ret_val = igc_ethtool_get_eee(netdev, &eee_curr);
++	if (ret_val) {
++		netdev_err(netdev,
++			   "Problem setting EEE advertisement options\n");
++		return -EINVAL;
++	}
++
++	if (eee_curr.eee_enabled) {
++		if (eee_curr.tx_lpi_enabled != edata->tx_lpi_enabled) {
++			netdev_err(netdev,
++				   "Setting EEE tx-lpi is not supported\n");
++			return -EINVAL;
++		}
++
++		/* Tx LPI timer is not implemented currently */
++		if (edata->tx_lpi_timer) {
++			netdev_err(netdev,
++				   "Setting EEE Tx LPI timer is not supported\n");
++			return -EINVAL;
++		}
++	} else if (!edata->eee_enabled) {
++		netdev_err(netdev,
++			   "Setting EEE options are not supported with EEE disabled\n");
++		return -EINVAL;
++	}
++
++	adapter->eee_advert = ethtool_adv_to_mmd_eee_adv_t(edata->advertised);
++	if (hw->dev_spec._base.eee_enable != edata->eee_enabled) {
++		hw->dev_spec._base.eee_enable = edata->eee_enabled;
++		adapter->flags |= IGC_FLAG_EEE;
++
++		/* reset link */
++		if (netif_running(netdev))
++			igc_reinit_locked(adapter);
++		else
++			igc_reset(adapter);
++	}
++
++	return 0;
++}
++
+ static int igc_ethtool_begin(struct net_device *netdev)
+ {
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+@@ -1830,6 +1925,8 @@ static const struct ethtool_ops igc_ethtool_ops = {
+ 	.set_channels		= igc_ethtool_set_channels,
+ 	.get_priv_flags		= igc_ethtool_get_priv_flags,
+ 	.set_priv_flags		= igc_ethtool_set_priv_flags,
++	.get_eee                = igc_ethtool_get_eee,
++	.set_eee                = igc_ethtool_set_eee,
+ 	.begin			= igc_ethtool_begin,
+ 	.complete		= igc_ethtool_complete,
+ 	.get_link_ksettings	= igc_ethtool_get_link_ksettings,
+diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
+index af34ae310327..2ab7d9fab6af 100644
+--- a/drivers/net/ethernet/intel/igc/igc_hw.h
++++ b/drivers/net/ethernet/intel/igc/igc_hw.h
+@@ -191,6 +191,7 @@ struct igc_fc_info {
+ 
+ struct igc_dev_spec_base {
+ 	bool clear_semaphore_once;
++	bool eee_enable;
+ };
+ 
+ struct igc_hw {
+diff --git a/drivers/net/ethernet/intel/igc/igc_i225.c b/drivers/net/ethernet/intel/igc/igc_i225.c
+index c25f555aaf82..37babff1a90e 100644
+--- a/drivers/net/ethernet/intel/igc/igc_i225.c
++++ b/drivers/net/ethernet/intel/igc/igc_i225.c
+@@ -488,3 +488,60 @@ s32 igc_init_nvm_params_i225(struct igc_hw *hw)
+ 	}
+ 	return 0;
+ }
++
++/**
++ *  igc_set_eee_i225 - Enable/disable EEE support
++ *  @hw: pointer to the HW structure
++ *  @adv2p5G: boolean flag enabling 2.5G EEE advertisement
++ *  @adv1G: boolean flag enabling 1G EEE advertisement
++ *  @adv100M: boolean flag enabling 100M EEE advertisement
++ *
++ *  Enable/disable EEE based on setting in dev_spec structure.
++ *
++ **/
++s32 igc_set_eee_i225(struct igc_hw *hw, bool adv2p5G, bool adv1G,
++		     bool adv100M)
++{
++	u32 ipcnfg, eeer;
++
++	ipcnfg = rd32(IGC_IPCNFG);
++	eeer = rd32(IGC_EEER);
++
++	/* enable or disable per user setting */
++	if (hw->dev_spec._base.eee_enable) {
++		u32 eee_su = rd32(IGC_EEE_SU);
++
++		if (adv100M)
++			ipcnfg |= IGC_IPCNFG_EEE_100M_AN;
++		else
++			ipcnfg &= ~IGC_IPCNFG_EEE_100M_AN;
++
++		if (adv1G)
++			ipcnfg |= IGC_IPCNFG_EEE_1G_AN;
++		else
++			ipcnfg &= ~IGC_IPCNFG_EEE_1G_AN;
++
++		if (adv2p5G)
++			ipcnfg |= IGC_IPCNFG_EEE_2_5G_AN;
++		else
++			ipcnfg &= ~IGC_IPCNFG_EEE_2_5G_AN;
++
++		eeer |= (IGC_EEER_TX_LPI_EN | IGC_EEER_RX_LPI_EN |
++			IGC_EEER_LPI_FC);
++
++		/* This bit should not be set in normal operation. */
++		if (eee_su & IGC_EEE_SU_LPI_CLK_STP)
++			hw_dbg("LPI Clock Stop Bit should not be set!\n");
++	} else {
++		ipcnfg &= ~(IGC_IPCNFG_EEE_2_5G_AN | IGC_IPCNFG_EEE_1G_AN |
++			IGC_IPCNFG_EEE_100M_AN);
++		eeer &= ~(IGC_EEER_TX_LPI_EN | IGC_EEER_RX_LPI_EN |
++			IGC_EEER_LPI_FC);
++	}
++	wr32(IGC_IPCNFG, ipcnfg);
++	wr32(IGC_EEER, eeer);
++	rd32(IGC_IPCNFG);
++	rd32(IGC_EEER);
++
++	return IGC_SUCCESS;
++}
+diff --git a/drivers/net/ethernet/intel/igc/igc_i225.h b/drivers/net/ethernet/intel/igc/igc_i225.h
+index 7b66e1f9c0e6..04759e076a9e 100644
+--- a/drivers/net/ethernet/intel/igc/igc_i225.h
++++ b/drivers/net/ethernet/intel/igc/igc_i225.h
+@@ -9,5 +9,7 @@ void igc_release_swfw_sync_i225(struct igc_hw *hw, u16 mask);
+ 
+ s32 igc_init_nvm_params_i225(struct igc_hw *hw);
+ bool igc_get_flash_presence_i225(struct igc_hw *hw);
++s32 igc_set_eee_i225(struct igc_hw *hw, bool adv2p5G, bool adv1G,
++		     bool adv100M);
+ 
+ #endif
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index c4df7129f930..338582f61709 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -105,6 +105,9 @@ void igc_reset(struct igc_adapter *adapter)
+ 	if (hw->mac.ops.init_hw(hw))
+ 		netdev_err(dev, "Error on hardware initialization");
+ 
++	/* Re-establish EEE setting */
++	igc_set_eee_i225(hw, true, true, true);
++
+ 	if (!netif_running(adapter->netdev))
+ 		igc_power_down_link(adapter);
+ 
+@@ -4259,6 +4262,15 @@ static void igc_watchdog_task(struct work_struct *work)
+ 				    (ctrl & IGC_CTRL_RFCE) ?  "RX" :
+ 				    (ctrl & IGC_CTRL_TFCE) ?  "TX" : "None");
+ 
++			/* disable EEE if enabled */
++			if ((adapter->flags & IGC_FLAG_EEE) &&
++			    adapter->link_duplex == HALF_DUPLEX) {
++				netdev_info(netdev,
++					    "EEE Disabled: unsupported at half duplex. Re-enable using ethtool when at full duplex\n");
++				adapter->hw.dev_spec._base.eee_enable = false;
++				adapter->flags &= ~IGC_FLAG_EEE;
++			}
++
+ 			/* check if SmartSpeed worked */
+ 			igc_check_downshift(hw);
+ 			if (phy->speed_downgraded)
+@@ -5190,6 +5202,10 @@ static int igc_probe(struct pci_dev *pdev,
+ 	netdev_info(netdev, "MAC: %pM", netdev->dev_addr);
+ 
+ 	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
++	/* Disable EEE for internal PHY devices */
++	hw->dev_spec._base.eee_enable = false;
++	adapter->flags &= ~IGC_FLAG_EEE;
++	igc_set_eee_i225(hw, false, false, false);
+ 
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index 7f999cfc9b39..9970242d0d75 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -249,6 +249,11 @@
+ /* Wake Up packet memory */
+ #define IGC_WUPM_REG(_i)	(0x05A00 + ((_i) * 4))
+ 
++/* Energy Efficient Ethernet "EEE" registers */
++#define IGC_EEER	0x0E30 /* Energy Efficient Ethernet "EEE"*/
++#define IGC_IPCNFG	0x0E38 /* Internal PHY Configuration */
++#define IGC_EEE_SU	0x0E34 /* EEE Setup */
++
+ /* forward declaration */
+ struct igc_hw;
+ u32 igc_rd32(struct igc_hw *hw, u32 reg);
+-- 
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
