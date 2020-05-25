@@ -1,57 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93AFB1E2E5E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2020 21:28:58 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B39A81E2E56
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2020 21:28:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 36E44230BD;
-	Tue, 26 May 2020 19:28:57 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 75B0186936;
+	Tue, 26 May 2020 19:28:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CT+f8Elgg2B4; Tue, 26 May 2020 19:28:57 +0000 (UTC)
+	with ESMTP id 7ZwTv3RASrTs; Tue, 26 May 2020 19:28:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 5488223335;
-	Tue, 26 May 2020 19:28:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 840D88693D;
+	Tue, 26 May 2020 19:28:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 11AC71BF33F
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 21:07:03 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D3A061BF384
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 12:28:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0707386E2A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 21:07:03 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CE6FD85FA4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 12:28:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S1la5bsLHpA9 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 24 May 2020 21:07:02 +0000 (UTC)
+ with ESMTP id 2sDXIfASXB_n for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 May 2020 12:28:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D9D7386E1F
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 May 2020 21:07:01 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 8046FAD85;
- Sun, 24 May 2020 21:07:01 +0000 (UTC)
-Received: by lion.mk-sys.cz (Postfix, from userid 1000)
- id 8F7E2604C8; Sun, 24 May 2020 23:06:53 +0200 (CEST)
-Date: Sun, 24 May 2020 23:06:53 +0200
-From: Michal Kubecek <mkubecek@suse.cz>
-To: Chen Yu <yu.c.chen@intel.com>
-Message-ID: <20200524210653.2bzmotjbsknm6zhn@lion.mk-sys.cz>
-References: <cover.1590081982.git.yu.c.chen@intel.com>
- <725bad2f3ce7f7b7f1667d53b6527dc059f9e419.1590081982.git.yu.c.chen@intel.com>
- <20200521192342.GE8771@lion.mk-sys.cz>
- <20200523090950.GA20370@chenyu-office.sh.intel.com>
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
+ [209.85.215.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2DF0E85F5C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 12:28:07 +0000 (UTC)
+Received: by mail-pg1-f196.google.com with SMTP id p21so8614055pgm.13
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 May 2020 05:28:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+E+o+aNk0CHjmIBkGKHgmosMQQyVO/7BF9hxr8UpXao=;
+ b=gbHF0I8l8bVjcUzFdEYW48thV0WucozZhYw8JGmAmLv4MFXm2Fo/2sG9J+9swMgfJB
+ H8BvwFudl25lv3J9Vmr4L1PuMaOjt6AVEnwVJFQQ3ojsKBPtbvLyh9Nv3KtvpEo/63LX
+ UOatZ58ylsIBXCED3SJtycPD+z5Q6GWuuweu12iBZAOfBPtEPrqgmzQDRDTMtpeRyznV
+ SrlXp+Z8rDnWUcbHCeY0tWOpLRBboBWQHzfJJf5YuBHRtM8LfPJC1lkajYImz3bNIHUw
+ eV/JTX6Vx0pwj6HSA9f2yrrYhAxX7HNhMuZXiWlTh3kZQqBCR9zyY4fLlEEFksTgqyfO
+ XsxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+E+o+aNk0CHjmIBkGKHgmosMQQyVO/7BF9hxr8UpXao=;
+ b=WNu2jitGBbvI7TAcGwNtHDFy2Upx3iKazGBlz2Y/f5RrFyGmkFW9YlKyK/lXNfPlmp
+ kCz0c1N4owENLiV5E/E1KullWzoaZIGxenTD/L2+BLvlzpTo2Kntr5oWRAvZP4tyZH4/
+ f0Uge993Oc7KuSyGruSKh3MB85XTt/ZDZdoDz09gjcggO3Vr0e42Kol2HhYBqYTDITzj
+ 6Mk6YwtF0lYKX9XL3VM6iuoDXJgS5CktRj2kcTCkU952Kb9UDRNmdwYzPCD2u1PrZZkD
+ Ko027Ne3jLpbN0I5sAvNg14E3gY78mmdxv2RPbDSDqQ4L+jTmtAIsHaV5srAKevezCNM
+ 0RRg==
+X-Gm-Message-State: AOAM533l9H37qT51sMmp5TJpJT3MQyrj+fvLxbwhvemBBRaOOkg5+nFu
+ e9gL37vOleTB2m8A7aS3c3E=
+X-Google-Smtp-Source: ABdhPJwTEJ27OYACa1+AlYAvcPMWB9JsfTWTgmrQEgc6lVISLR09tt4cnP0umhCR/NNEkHAOniSX1Q==
+X-Received: by 2002:a05:6a00:150c:: with SMTP id
+ q12mr16628282pfu.270.1590409686633; 
+ Mon, 25 May 2020 05:28:06 -0700 (PDT)
+Received: from varodek.iballbatonwifi.com ([103.105.152.209])
+ by smtp.gmail.com with ESMTPSA id r21sm12635055pjo.2.2020.05.25.05.28.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 May 2020 05:28:05 -0700 (PDT)
+From: Vaibhav Gupta <vaibhavgupta40@gmail.com>
+To: Vaibhav Gupta <vaibhav.varodek@gmail.com>,
+ Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ bjorn@helgaas.com, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, rjw@rjwysocki.net
+Date: Mon, 25 May 2020 17:57:10 +0530
+Message-Id: <20200525122710.25064-1-vaibhavgupta40@gmail.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200523090950.GA20370@chenyu-office.sh.intel.com>
-User-Agent: NeoMutt/20180716
-X-Mailman-Approved-At: Tue, 26 May 2020 19:28:52 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] e1000e: Make WOL info in ethtool
- consistent with device wake up ability
+X-Mailman-Approved-At: Tue, 26 May 2020 19:28:43 +0000
+Subject: [Intel-wired-lan] [PATCH v2] e1000: use generic power management
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,112 +88,150 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Len Brown <len.brown@intel.com>, Auke Kok <auke-jan.h.kok@intel.com>,
- "Shevchenko, Andriy" <andriy.shevchenko@intel.com>,
- Jeff Garzik <jeff@garzik.org>, netdev@vger.kernel.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, linux-kernel@vger.kernel.org,
- Stable@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: Vaibhav Gupta <vaibhavgupta40@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ skhan@linuxfoundation.org, linux-kernel-mentees@lists.linuxfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, May 23, 2020 at 05:09:50PM +0800, Chen Yu wrote:
-> Hi Michal,
-> Thanks for reviewing,
-> and sorry for late reply.
-> On Thu, May 21, 2020 at 09:23:42PM +0200, Michal Kubecek wrote:
-> > On Fri, May 22, 2020 at 01:59:13AM +0800, Chen Yu wrote:
-> > > Currently the ethtool shows that WOL(Wake On Lan) is enabled
-> > > even if the device wakeup ability has been disabled via sysfs:
-> > >   cat /sys/devices/pci0000:00/0000:00:1f.6/power/wakeup
-> > >    disabled
-> > > 
-> > >   ethtool eno1
-> > >   ...
-> > >   Wake-on: g
-> > > 
-> > > Fix this in ethtool to check if the user has explicitly disabled the
-> > > wake up ability for this device.
-> > 
-> > Wouldn't this lead to rather unexpected and inconsistent behaviour when
-> > the wakeup is disabled? As you don't touch the set_wol handler, I assume
-> > it will still allow setting enabled modes as usual so that you get e.g.
-> > 
-> >   ethtool -s eth0 wol g   # no error or warning, returns 0
-> >   ethtool eth0            # reports no modes enabled
-> > 
-> > The first command would set the enabled wol modes but that would be
-> > hidden from user and even the netlink notification would claim something
-> > different. Another exampe (with kernel and ethtool >= 5.6):
-> > 
-> >   ethtool -s eth0 wol g
-> >   ethtool -s eth0 wol +m
-> > 
-> > resulting in "mg" if device wakeup is enabled but "m" when it's disabled
-> > (but the latter would be hidden from user and only revealed when you
-> > enable the device wakeup).
-> > 
-> I've tested ethtool v5.6 on top of kernel v5.7-rc6, it looks like
-> the scenario you described will not happen as it will not allow
-> the user to enable the wol options with device wakeup disabled,
-> not sure if I missed something:
-> 
-> /sys/devices/pci0000:00/0000:00:1f.6/power# echo disabled > wakeup
-> 
-> ethtool -s eno1 wol g
-> netlink error: cannot enable unsupported WoL mode (offset 36)
-> netlink error: Invalid argument
-> 
-> I've not digged into the code too much, but according to
-> ethhl_set_wol(), it will first get the current wol options
-> via dev->ethtool_ops->get_wol(), and both the wolopts and
-> wol.supported are 0 when device wake up are disabled. Then
-> ethnl_update_bitset32 might manipulate on wolopts and
-> make it non-zero each is controdict with the precondition that
-> no opts should be enabled due to 0 wol.supported.
+compile-tested only
 
-You are right, I didn't realize that you report 0 even for supported WoL
-modes. However, this feels even more wrong from my point of view as then
-even the list of supported WoL modes would be hidden from user when the
-sysfs switch is off.
+With legacy PM hooks, it was the responsibility of a driver to manage PCI
+states and also the device's power state. The generic approach is to let PCI
+core handle the work.
 
-Also, AFAICS "ethtool -s <dev> wol d" would be still allowed but the
-behaviour would differ between ioctl and netlink code path: netlink
-would identify the operation as no-op and do nothing. But ioctl does not
-check new value against old one so that it would call your set_wol()
-handler which would set the (hidden) set of enabled WoL modes to empty
-which would mean WoL would stay disabled even after enabling the wakeup
-via sysctl. In other words, you would allow disabling all WoL modes
-(via ioctl) but not setting them to anything else.
+e1000_suspend() calls __e1000_shutdown() to perform intermediate tasks.
+__e1000_shutdown() modifies the value of "wake" (device should be wakeup
+enabled or not), responsible for controlling the flow of legacy PM.
 
-> > This is a general problem discussed recently for EEE and pause
-> > autonegotiation: if setting A can be effectively used only when B is
-> > enabled, should we hide actual setting of A from userspace when B is
-> > disabled or even reset the value of A whenever B gets toggled or rather
-> > allow setting A and B independently? AFAICS the consensus seemed to be
-> > that A should be allowed to be set and queried independently of the
-> > value of B.
-> 
-> But then there would be an inconsistence between A and B. I was
-> thinking if there's a way to align them in kernel space and  maintain
-> the difference in user space?
+Since, PCI core has no idea about the value of "wake", new code for generic
+PM may produce unexpected results. Thus, use "device_set_wakeup_enable()"
+to wakeup-enable the device accordingly.
 
-I'm not sure what exactly you mean by maintaining the difference in
-userspace but there are many situations like this and we usually do not
-block the ability to query or set A when the "main switch" is off.
-For example, you can add IPv4/6 addresses to an interface when it is
-down, even if you cannot receive or transmit packets with these
-addresses. Or you can set up netlilter rules in FORWARDING chain
-independently of the global ip_forward sysctl which can block all
-IPv4 forwarding.
+Signed-off-by: Vaibhav Gupta <vaibhavgupta40@gmail.com>
+---
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 49 +++++--------------
+ 1 file changed, 13 insertions(+), 36 deletions(-)
 
-Moreover, if we really wanted to report no supported and enabled WoL
-modes when device wakeup is disabled, it should be done for all network
-devices, not only in one driver.
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 0d51cbc88028..011509709b3f 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -151,10 +151,8 @@ static int e1000_vlan_rx_kill_vid(struct net_device *netdev,
+ 				  __be16 proto, u16 vid);
+ static void e1000_restore_vlan(struct e1000_adapter *adapter);
+ 
+-#ifdef CONFIG_PM
+-static int e1000_suspend(struct pci_dev *pdev, pm_message_t state);
+-static int e1000_resume(struct pci_dev *pdev);
+-#endif
++static int __maybe_unused e1000_suspend(struct device *dev);
++static int __maybe_unused e1000_resume(struct device *dev);
+ static void e1000_shutdown(struct pci_dev *pdev);
+ 
+ #ifdef CONFIG_NET_POLL_CONTROLLER
+@@ -179,16 +177,16 @@ static const struct pci_error_handlers e1000_err_handler = {
+ 	.resume = e1000_io_resume,
+ };
+ 
++static SIMPLE_DEV_PM_OPS(e1000_pm_ops, e1000_suspend, e1000_resume);
++
+ static struct pci_driver e1000_driver = {
+ 	.name     = e1000_driver_name,
+ 	.id_table = e1000_pci_tbl,
+ 	.probe    = e1000_probe,
+ 	.remove   = e1000_remove,
+-#ifdef CONFIG_PM
+-	/* Power Management Hooks */
+-	.suspend  = e1000_suspend,
+-	.resume   = e1000_resume,
+-#endif
++	.driver = {
++		.pm = &e1000_pm_ops,
++	},
+ 	.shutdown = e1000_shutdown,
+ 	.err_handler = &e1000_err_handler
+ };
+@@ -5048,9 +5046,6 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool *enable_wake)
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u32 ctrl, ctrl_ext, rctl, status;
+ 	u32 wufc = adapter->wol;
+-#ifdef CONFIG_PM
+-	int retval = 0;
+-#endif
+ 
+ 	netif_device_detach(netdev);
+ 
+@@ -5064,12 +5059,6 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool *enable_wake)
+ 		e1000_down(adapter);
+ 	}
+ 
+-#ifdef CONFIG_PM
+-	retval = pci_save_state(pdev);
+-	if (retval)
+-		return retval;
+-#endif
+-
+ 	status = er32(STATUS);
+ 	if (status & E1000_STATUS_LU)
+ 		wufc &= ~E1000_WUFC_LNKC;
+@@ -5130,37 +5119,26 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool *enable_wake)
+ 	return 0;
+ }
+ 
+-#ifdef CONFIG_PM
+-static int e1000_suspend(struct pci_dev *pdev, pm_message_t state)
++static int __maybe_unused e1000_suspend(struct device *dev)
+ {
+ 	int retval;
++	struct pci_dev *pdev = to_pci_dev(dev);
+ 	bool wake;
+ 
+ 	retval = __e1000_shutdown(pdev, &wake);
+-	if (retval)
+-		return retval;
+-
+-	if (wake) {
+-		pci_prepare_to_sleep(pdev);
+-	} else {
+-		pci_wake_from_d3(pdev, false);
+-		pci_set_power_state(pdev, PCI_D3hot);
+-	}
++	device_set_wakeup_enable(dev, wake);
+ 
+-	return 0;
++	return retval;
+ }
+ 
+-static int e1000_resume(struct pci_dev *pdev)
++static int __maybe_unused e1000_resume(struct device *dev)
+ {
++	struct pci_dev *pdev = to_pci_dev(dev);
+ 	struct net_device *netdev = pci_get_drvdata(pdev);
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u32 err;
+ 
+-	pci_set_power_state(pdev, PCI_D0);
+-	pci_restore_state(pdev);
+-	pci_save_state(pdev);
+-
+ 	if (adapter->need_ioport)
+ 		err = pci_enable_device(pdev);
+ 	else
+@@ -5197,7 +5175,6 @@ static int e1000_resume(struct pci_dev *pdev)
+ 
+ 	return 0;
+ }
+-#endif
+ 
+ static void e1000_shutdown(struct pci_dev *pdev)
+ {
+-- 
+2.26.2
 
-Michal
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
