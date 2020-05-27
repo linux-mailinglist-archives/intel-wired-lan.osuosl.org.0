@@ -1,56 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 940871E4F9C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2020 22:51:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3BC5F20033;
-	Wed, 27 May 2020 20:51:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BGsopDFn1gzm; Wed, 27 May 2020 20:51:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id F1350203E8;
-	Wed, 27 May 2020 20:51:39 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C20851BF591
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2020 20:51:37 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B2B01E4FDE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2020 23:12:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id BD6E4855CE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2020 20:51:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C82AC86EDE;
+	Wed, 27 May 2020 21:12:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0ktGwNtV5S7s; Wed, 27 May 2020 21:12:10 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 740F686ED0;
+	Wed, 27 May 2020 21:12:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 053A51BF40A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2020 21:12:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id EFB5B88A41
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2020 21:12:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5YAQ3zSTiCnH for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 May 2020 20:51:36 +0000 (UTC)
+ with ESMTP id 1QjHsXEFj2r7 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 May 2020 21:12:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 74C8184065
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2020 20:51:36 +0000 (UTC)
-IronPort-SDR: KiZYNhhy5QQibdDd65Fj/tfl8RVp1bnUtaEhINZrw/Cr8HLgK0aAOW5CSi0bQp7LPjduPaRc+g
- FNoPOaPagLTQ==
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E059688A43
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2020 21:12:06 +0000 (UTC)
+IronPort-SDR: M2M7KTsNcpKK3U+20V1kshYqVTEn5A4WMw3ZQ/KW2PCsEyPwAv23jLsYXL+oFoTeIXHxJj/5DJ
+ PGh0KfDlQnuw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 May 2020 13:51:35 -0700
-IronPort-SDR: K1HRgx1pdQh07uh3TSjaI9qYoZrQFYQAoiAk9+ooaU6lukfMIj4JpzUROcZSRJb10LzBNbV+sh
- bnmrQxWFYCvA==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2020 14:12:06 -0700
+IronPort-SDR: RmSDxme5mrmZzP2wIyduuYCJs+a5K8t/YthLy1j5QlInMpZBCKU+cCsYZct1+uprsXFuso+V4w
+ gs+fCKAe/BcQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,442,1583222400"; d="scan'208";a="291736303"
+X-IronPort-AV: E=Sophos;i="5.73,442,1583222400"; d="scan'208";a="442678515"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.86])
- by fmsmga004.fm.intel.com with ESMTP; 27 May 2020 13:51:35 -0700
+ by orsmga005.jf.intel.com with ESMTP; 27 May 2020 14:12:05 -0700
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 27 May 2020 13:51:32 -0700
-Message-Id: <20200527205132.152659-1-jeffrey.t.kirsher@intel.com>
+Date: Wed, 27 May 2020 14:12:04 -0700
+Message-Id: <20200527211204.234642-1-jeffrey.t.kirsher@intel.com>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next-queue v4] igc: Add initial EEE support
+Subject: [Intel-wired-lan] [next-queue v2] i40e: detect and log info about
+ pre-recovery mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,354 +64,148 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andre Guedes <andre.guedes@intel.com>
+Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sasha Neftin <sasha.neftin@intel.com>
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 
-IEEE802.3az-2010 Energy Efficient Ethernet has been
-approved as standard (September 2010) and the driver
-can enable and disable it via ethtool.
-Disable the feature by default on parts which support it.
-Add enable/disable eee options.
-tx-lpi, tx-timer and advertise not supported yet.
+Detect and log information about pre-recovery mode when firmware
+transitions to a recovery mode.
+When a firmware transitions to a recovery mode it stores a number
+of unexpected EMP resets in one of its registers. The number of EMP
+resets ranging from 0x21 to 0x2A indicates that FW transitions
+to recovery mode. Use these values to emit log entry about transition
+process. Previously the pre-recovery mode may not have been detected
+and there was no log entry when NIC was in pre-recovery mode.
 
-v2:
-Rid of inverted logic and replace eee_disable boolean with
-eee_enable in device specification.
-Address community comments.
-
-v3:
-Remove pointless ret_val from _set_eee method
-Minor comment fix
-
-v4:
-Fixed conflicts when applying to next-queue tree
-
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
-Reviewed-by: Andre Guedes <andre.guedes@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  4 +
- drivers/net/ethernet/intel/igc/igc_defines.h | 10 ++
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 97 ++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_hw.h      |  1 +
- drivers/net/ethernet/intel/igc/igc_i225.c    | 56 +++++++++++
- drivers/net/ethernet/intel/igc/igc_i225.h    |  2 +
- drivers/net/ethernet/intel/igc/igc_main.c    | 16 ++++
- drivers/net/ethernet/intel/igc/igc_regs.h    |  5 +
- 8 files changed, 191 insertions(+)
+v2: Fixed conflicts when trying to apply to next-queue tree
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 5dbc5a156626..ce3ca6d4a6de 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -117,6 +117,9 @@ struct igc_ring {
- struct igc_adapter {
- 	struct net_device *netdev;
- 
-+	struct ethtool_eee eee;
-+	u16 eee_advert;
-+
- 	unsigned long state;
- 	unsigned int flags;
- 	unsigned int num_q_vectors;
-@@ -256,6 +259,7 @@ extern char igc_driver_version[];
- #define IGC_FLAG_MEDIA_RESET		BIT(10)
- #define IGC_FLAG_MAS_ENABLE		BIT(12)
- #define IGC_FLAG_HAS_MSIX		BIT(13)
-+#define IGC_FLAG_EEE			BIT(14)
- #define IGC_FLAG_VLAN_PROMISC		BIT(15)
- #define IGC_FLAG_RX_LEGACY		BIT(16)
- #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 80b664e64465..a7baadc49d84 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -512,4 +512,14 @@
- /* Maximum size of the MTA register table in all supported adapters */
- #define MAX_MTA_REG			128
- 
-+/* EEE defines */
-+#define IGC_IPCNFG_EEE_2_5G_AN		0x00000010 /* IPCNFG EEE Ena 2.5G AN */
-+#define IGC_IPCNFG_EEE_1G_AN		0x00000008 /* IPCNFG EEE Ena 1G AN */
-+#define IGC_IPCNFG_EEE_100M_AN		0x00000004 /* IPCNFG EEE Ena 100M AN */
-+#define IGC_EEER_EEE_NEG		0x20000000 /* EEE capability nego */
-+#define IGC_EEER_TX_LPI_EN		0x00010000 /* EEER Tx LPI Enable */
-+#define IGC_EEER_RX_LPI_EN		0x00020000 /* EEER Rx LPI Enable */
-+#define IGC_EEER_LPI_FC			0x00040000 /* EEER Ena on Flow Cntrl */
-+#define IGC_EEE_SU_LPI_CLK_STP		0x00800000 /* EEE LPI Clock Stop */
-+
- #endif /* _IGC_DEFINES_H_ */
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index a938ec8db681..75c127fc766b 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -4,6 +4,7 @@
- /* ethtool support for igc */
- #include <linux/if_vlan.h>
- #include <linux/pm_runtime.h>
-+#include <linux/mdio.h>
- 
- #include "igc.h"
- #include "igc_diag.h"
-@@ -1549,6 +1550,100 @@ static int igc_ethtool_set_priv_flags(struct net_device *netdev, u32 priv_flags)
- 	return 0;
- }
- 
-+static int igc_ethtool_get_eee(struct net_device *netdev,
-+			       struct ethtool_eee *edata)
-+{
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 eeer;
-+
-+	if (hw->dev_spec._base.eee_enable)
-+		edata->advertised =
-+			mmd_eee_adv_to_ethtool_adv_t(adapter->eee_advert);
-+
-+	*edata = adapter->eee;
-+	edata->supported = SUPPORTED_Autoneg;
-+	netdev_info(netdev,
-+		    "Supported EEE link modes: 100baseT/Full, 1000baseT/Full, 2500baseT/Full\n");
-+
-+	eeer = rd32(IGC_EEER);
-+
-+	/* EEE status on negotiated link */
-+	if (eeer & IGC_EEER_EEE_NEG)
-+		edata->eee_active = true;
-+
-+	if (eeer & IGC_EEER_TX_LPI_EN)
-+		edata->tx_lpi_enabled = true;
-+
-+	edata->eee_enabled = hw->dev_spec._base.eee_enable;
-+
-+	edata->advertised = SUPPORTED_Autoneg;
-+	edata->lp_advertised = SUPPORTED_Autoneg;
-+
-+	/* Report correct negotiated EEE status for devices that
-+	 * wrongly report EEE at half-duplex
-+	 */
-+	if (adapter->link_duplex == HALF_DUPLEX) {
-+		edata->eee_enabled = false;
-+		edata->eee_active = false;
-+		edata->tx_lpi_enabled = false;
-+		edata->advertised &= ~edata->advertised;
-+	}
-+
-+	return 0;
-+}
-+
-+static int igc_ethtool_set_eee(struct net_device *netdev,
-+			       struct ethtool_eee *edata)
-+{
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	struct igc_hw *hw = &adapter->hw;
-+	struct ethtool_eee eee_curr;
-+	s32 ret_val;
-+
-+	memset(&eee_curr, 0, sizeof(struct ethtool_eee));
-+
-+	ret_val = igc_ethtool_get_eee(netdev, &eee_curr);
-+	if (ret_val) {
-+		netdev_err(netdev,
-+			   "Problem setting EEE advertisement options\n");
-+		return -EINVAL;
-+	}
-+
-+	if (eee_curr.eee_enabled) {
-+		if (eee_curr.tx_lpi_enabled != edata->tx_lpi_enabled) {
-+			netdev_err(netdev,
-+				   "Setting EEE tx-lpi is not supported\n");
-+			return -EINVAL;
-+		}
-+
-+		/* Tx LPI timer is not implemented currently */
-+		if (edata->tx_lpi_timer) {
-+			netdev_err(netdev,
-+				   "Setting EEE Tx LPI timer is not supported\n");
-+			return -EINVAL;
-+		}
-+	} else if (!edata->eee_enabled) {
-+		netdev_err(netdev,
-+			   "Setting EEE options are not supported with EEE disabled\n");
-+		return -EINVAL;
-+	}
-+
-+	adapter->eee_advert = ethtool_adv_to_mmd_eee_adv_t(edata->advertised);
-+	if (hw->dev_spec._base.eee_enable != edata->eee_enabled) {
-+		hw->dev_spec._base.eee_enable = edata->eee_enabled;
-+		adapter->flags |= IGC_FLAG_EEE;
-+
-+		/* reset link */
-+		if (netif_running(netdev))
-+			igc_reinit_locked(adapter);
-+		else
-+			igc_reset(adapter);
-+	}
-+
-+	return 0;
-+}
-+
- static int igc_ethtool_begin(struct net_device *netdev)
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 72 +++++++++++++------
+ .../net/ethernet/intel/i40e/i40e_register.h   |  2 +
+ 2 files changed, 52 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 5c21b7bafd8a..fe53cda1a187 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -14562,28 +14562,17 @@ void i40e_set_fec_in_flags(u8 fec_cfg, u32 *flags)
+  **/
+ static bool i40e_check_recovery_mode(struct i40e_pf *pf)
  {
- 	struct igc_adapter *adapter = netdev_priv(netdev);
-@@ -1830,6 +1925,8 @@ static const struct ethtool_ops igc_ethtool_ops = {
- 	.set_channels		= igc_ethtool_set_channels,
- 	.get_priv_flags		= igc_ethtool_get_priv_flags,
- 	.set_priv_flags		= igc_ethtool_set_priv_flags,
-+	.get_eee		= igc_ethtool_get_eee,
-+	.set_eee		= igc_ethtool_set_eee,
- 	.begin			= igc_ethtool_begin,
- 	.complete		= igc_ethtool_complete,
- 	.get_link_ksettings	= igc_ethtool_get_link_ksettings,
-diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
-index af34ae310327..2ab7d9fab6af 100644
---- a/drivers/net/ethernet/intel/igc/igc_hw.h
-+++ b/drivers/net/ethernet/intel/igc/igc_hw.h
-@@ -191,6 +191,7 @@ struct igc_fc_info {
+-	u32 val = rd32(&pf->hw, I40E_GL_FWSTS) & I40E_GL_FWSTS_FWS1B_MASK;
+-	bool is_recovery_mode = false;
+-
+-	if (pf->hw.mac.type == I40E_MAC_XL710)
+-		is_recovery_mode =
+-		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK ||
+-		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK ||
+-		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_TRANSITION_MASK ||
+-		val == I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_NVM_MASK;
+-	if (pf->hw.mac.type == I40E_MAC_X722)
+-		is_recovery_mode =
+-		val == I40E_X722_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK ||
+-		val == I40E_X722_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK;
+-	if (is_recovery_mode) {
+-		dev_notice(&pf->pdev->dev, "Firmware recovery mode detected. Limiting functionality.\n");
+-		dev_notice(&pf->pdev->dev, "Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
++	u32 val = rd32(&pf->hw, I40E_GL_FWSTS);
++
++	if (val & I40E_GL_FWSTS_FWS1B_MASK) {
++		dev_crit(&pf->pdev->dev, "Firmware recovery mode detected. Limiting functionality.\n");
++		dev_crit(&pf->pdev->dev, "Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
+ 		set_bit(__I40E_RECOVERY_MODE, pf->state);
  
- struct igc_dev_spec_base {
- 	bool clear_semaphore_once;
-+	bool eee_enable;
- };
- 
- struct igc_hw {
-diff --git a/drivers/net/ethernet/intel/igc/igc_i225.c b/drivers/net/ethernet/intel/igc/igc_i225.c
-index c25f555aaf82..c67bfbe92074 100644
---- a/drivers/net/ethernet/intel/igc/igc_i225.c
-+++ b/drivers/net/ethernet/intel/igc/igc_i225.c
-@@ -488,3 +488,59 @@ s32 igc_init_nvm_params_i225(struct igc_hw *hw)
+ 		return true;
  	}
- 	return 0;
+-	if (test_and_clear_bit(__I40E_RECOVERY_MODE, pf->state))
+-		dev_info(&pf->pdev->dev, "Reinitializing in normal mode with full functionality.\n");
++	if (test_bit(__I40E_RECOVERY_MODE, pf->state))
++		dev_info(&pf->pdev->dev, "Please do Power-On Reset to initialize adapter in normal mode with full functionality.\n");
+ 
+ 	return false;
  }
+@@ -14631,6 +14620,47 @@ static i40e_status i40e_pf_loop_reset(struct i40e_pf *pf)
+ 	return ret;
+ }
+ 
++/**
++ * i40e_check_fw_empr - check if FW issued unexpected EMP Reset
++ * @pf: board private structure
++ *
++ * Check FW registers to determine if FW issued unexpected EMP Reset.
++ * Every time when unexpected EMP Reset occurs the FW increments
++ * a counter of unexpected EMP Resets. When the counter reaches 10
++ * the FW should enter the Recovery mode
++ *
++ * Returns true if FW issued unexpected EMP Reset
++ **/
++static inline bool i40e_check_fw_empr(struct i40e_pf *pf)
++{
++	const u32 fw_sts = rd32(&pf->hw, I40E_GL_FWSTS) &
++			   I40E_GL_FWSTS_FWS1B_MASK;
++	return (fw_sts > I40E_GL_FWSTS_FWS1B_EMPR_0) &&
++	       (fw_sts <= I40E_GL_FWSTS_FWS1B_EMPR_10);
++}
 +
 +/**
-+ *  igc_set_eee_i225 - Enable/disable EEE support
-+ *  @hw: pointer to the HW structure
-+ *  @adv2p5G: boolean flag enabling 2.5G EEE advertisement
-+ *  @adv1G: boolean flag enabling 1G EEE advertisement
-+ *  @adv100M: boolean flag enabling 100M EEE advertisement
++ * i40e_handle_resets - handle EMP resets and PF resets
++ * @pf: board private structure
 + *
-+ *  Enable/disable EEE based on setting in dev_spec structure.
++ * Handle both EMP resets and PF resets and conclude whether there are
++ * any issues regarding these resets. If there are any issues then
++ * generate log entry.
++ *
++ * Return 0 if NIC is healthy or negative value when there are issues
++ * with resets
 + **/
-+s32 igc_set_eee_i225(struct igc_hw *hw, bool adv2p5G, bool adv1G,
-+		     bool adv100M)
++static inline i40e_status i40e_handle_resets(struct i40e_pf *pf)
 +{
-+	u32 ipcnfg, eeer;
++	const i40e_status pfr = i40e_pf_loop_reset(pf);
++	const bool is_empr = i40e_check_fw_empr(pf);
 +
-+	ipcnfg = rd32(IGC_IPCNFG);
-+	eeer = rd32(IGC_EEER);
++	if (is_empr || pfr != I40E_SUCCESS)
++		dev_crit(&pf->pdev->dev, "Entering recovery mode due to repeated FW resets. This may take several minutes. Refer to the Intel(R) Ethernet Adapters and Devices User Guide.\n");
 +
-+	/* enable or disable per user setting */
-+	if (hw->dev_spec._base.eee_enable) {
-+		u32 eee_su = rd32(IGC_EEE_SU);
-+
-+		if (adv100M)
-+			ipcnfg |= IGC_IPCNFG_EEE_100M_AN;
-+		else
-+			ipcnfg &= ~IGC_IPCNFG_EEE_100M_AN;
-+
-+		if (adv1G)
-+			ipcnfg |= IGC_IPCNFG_EEE_1G_AN;
-+		else
-+			ipcnfg &= ~IGC_IPCNFG_EEE_1G_AN;
-+
-+		if (adv2p5G)
-+			ipcnfg |= IGC_IPCNFG_EEE_2_5G_AN;
-+		else
-+			ipcnfg &= ~IGC_IPCNFG_EEE_2_5G_AN;
-+
-+		eeer |= (IGC_EEER_TX_LPI_EN | IGC_EEER_RX_LPI_EN |
-+			IGC_EEER_LPI_FC);
-+
-+		/* This bit should not be set in normal operation. */
-+		if (eee_su & IGC_EEE_SU_LPI_CLK_STP)
-+			hw_dbg("LPI Clock Stop Bit should not be set!\n");
-+	} else {
-+		ipcnfg &= ~(IGC_IPCNFG_EEE_2_5G_AN | IGC_IPCNFG_EEE_1G_AN |
-+			IGC_IPCNFG_EEE_100M_AN);
-+		eeer &= ~(IGC_EEER_TX_LPI_EN | IGC_EEER_RX_LPI_EN |
-+			IGC_EEER_LPI_FC);
-+	}
-+	wr32(IGC_IPCNFG, ipcnfg);
-+	wr32(IGC_EEER, eeer);
-+	rd32(IGC_IPCNFG);
-+	rd32(IGC_EEER);
-+
-+	return IGC_SUCCESS;
++	return is_empr ? I40E_ERR_RESET_FAILED : pfr;
 +}
-diff --git a/drivers/net/ethernet/intel/igc/igc_i225.h b/drivers/net/ethernet/intel/igc/igc_i225.h
-index 7b66e1f9c0e6..04759e076a9e 100644
---- a/drivers/net/ethernet/intel/igc/igc_i225.h
-+++ b/drivers/net/ethernet/intel/igc/igc_i225.h
-@@ -9,5 +9,7 @@ void igc_release_swfw_sync_i225(struct igc_hw *hw, u16 mask);
- 
- s32 igc_init_nvm_params_i225(struct igc_hw *hw);
- bool igc_get_flash_presence_i225(struct igc_hw *hw);
-+s32 igc_set_eee_i225(struct igc_hw *hw, bool adv2p5G, bool adv1G,
-+		     bool adv100M);
- 
- #endif
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 4a7a9b00e60f..26f5ce23e255 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -105,6 +105,9 @@ void igc_reset(struct igc_adapter *adapter)
- 	if (hw->mac.ops.init_hw(hw))
- 		netdev_err(dev, "Error on hardware initialization\n");
- 
-+	/* Re-establish EEE setting */
-+	igc_set_eee_i225(hw, true, true, true);
 +
- 	if (!netif_running(adapter->netdev))
- 		igc_power_down_link(adapter);
+ /**
+  * i40e_init_recovery_mode - initialize subsystems needed in recovery mode
+  * @pf: board private structure
+@@ -14867,11 +14897,9 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		goto err_pf_reset;
+ 	}
  
-@@ -4259,6 +4262,15 @@ static void igc_watchdog_task(struct work_struct *work)
- 				    (ctrl & IGC_CTRL_RFCE) ?  "RX" :
- 				    (ctrl & IGC_CTRL_TFCE) ?  "TX" : "None");
+-	err = i40e_pf_loop_reset(pf);
+-	if (err) {
+-		dev_info(&pdev->dev, "Initial pf_reset failed: %d\n", err);
++	err = i40e_handle_resets(pf);
++	if (err)
+ 		goto err_pf_reset;
+-	}
  
-+			/* disable EEE if enabled */
-+			if ((adapter->flags & IGC_FLAG_EEE) &&
-+			    adapter->link_duplex == HALF_DUPLEX) {
-+				netdev_info(netdev,
-+					    "EEE Disabled: unsupported at half duplex. Re-enable using ethtool when at full duplex\n");
-+				adapter->hw.dev_spec._base.eee_enable = false;
-+				adapter->flags &= ~IGC_FLAG_EEE;
-+			}
-+
- 			/* check if SmartSpeed worked */
- 			igc_check_downshift(hw);
- 			if (phy->speed_downgraded)
-@@ -5190,6 +5202,10 @@ static int igc_probe(struct pci_dev *pdev,
- 	netdev_info(netdev, "MAC: %pM\n", netdev->dev_addr);
+ 	i40e_check_recovery_mode(pf);
  
- 	dev_pm_set_driver_flags(&pdev->dev, DPM_FLAG_NEVER_SKIP);
-+	/* Disable EEE for internal PHY devices */
-+	hw->dev_spec._base.eee_enable = false;
-+	adapter->flags &= ~IGC_FLAG_EEE;
-+	igc_set_eee_i225(hw, false, false, false);
- 
- 	pm_runtime_put_noidle(&pdev->dev);
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 7ac3b611708c..5a4873dddcbf 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -249,6 +249,11 @@
- /* Wake Up packet memory */
- #define IGC_WUPM_REG(_i)	(0x05A00 + ((_i) * 4))
- 
-+/* Energy Efficient Ethernet "EEE" registers */
-+#define IGC_EEER	0x0E30 /* Energy Efficient Ethernet "EEE"*/
-+#define IGC_IPCNFG	0x0E38 /* Internal PHY Configuration */
-+#define IGC_EEE_SU	0x0E34 /* EEE Setup */
-+
- /* forward declaration */
- struct igc_hw;
- u32 igc_rd32(struct igc_hw *hw, u32 reg);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index d9c8ff6a47d3..8b9a12393a50 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -43,6 +43,8 @@
+ #define I40E_GL_FWSTS 0x00083048 /* Reset: POR */
+ #define I40E_GL_FWSTS_FWS1B_SHIFT 16
+ #define I40E_GL_FWSTS_FWS1B_MASK I40E_MASK(0xFF, I40E_GL_FWSTS_FWS1B_SHIFT)
++#define I40E_GL_FWSTS_FWS1B_EMPR_0 I40E_MASK(0x20, I40E_GL_FWSTS_FWS1B_SHIFT)
++#define I40E_GL_FWSTS_FWS1B_EMPR_10 I40E_MASK(0x2A, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_CORER_MASK I40E_MASK(0x30, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_GLOBR_MASK I40E_MASK(0x31, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_XL710_GL_FWSTS_FWS1B_REC_MOD_TRANSITION_MASK I40E_MASK(0x32, I40E_GL_FWSTS_FWS1B_SHIFT)
 -- 
 2.26.2
 
