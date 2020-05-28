@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B68FF1E6B61
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4DE51E6B60
 	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 21:43:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 68E81872CC;
+	by silver.osuosl.org (Postfix) with ESMTP id 5EC2E2154E;
 	Thu, 28 May 2020 19:43:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RiwwyMx4Nx0t; Thu, 28 May 2020 19:43:55 +0000 (UTC)
+	with ESMTP id y0zlSwcXfH0x; Thu, 28 May 2020 19:43:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DF0A8872D3;
-	Thu, 28 May 2020 19:43:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5EE9F25B92;
+	Thu, 28 May 2020 19:43:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D29E71BF2B5
- for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:46 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2EE5C1BF9B9
+ for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id CE35E87251
- for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:46 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 28BAF881BF
+ for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M2rlmC_BzCsq for <intel-wired-lan@osuosl.org>;
+ with ESMTP id P1OLOYFb0-kx for <intel-wired-lan@osuosl.org>;
  Thu, 28 May 2020 19:43:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 5F777872CE
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 747418803D
  for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:44 +0000 (UTC)
-IronPort-SDR: U+3hkFX81t+WFw6xBGSkzzf169o1JoWWuw+3BxO32Jv+kq/GvrHLHo9cnobYcXuSABNA4E2QTp
- p1RT+cDl9gYQ==
+IronPort-SDR: l3GJWPpeVnJUzP7t0sJGzTpPdIJ382RlDBtSTVp7qbEGT1jNz8GNRmd3KQjyYnKzZXd9X3BSvn
+ P7nWcNB53f4w==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  28 May 2020 12:43:44 -0700
-IronPort-SDR: o8euWbqxW8sJRpxYFqn2l6D9OwMIX2BrrXsPfeLHmi8LYu0yEZVGpcf3R0gce1iJfhwZgUrX7z
- YgI+kLLxX5YQ==
+IronPort-SDR: DskAaoyAlc/60i7OAH1fwkDS8fYCFx3tema4r/H0/frswNXtl9mhg4qdqZuaAhmqcSDS/TCvuW
+ PDi43AUOS6pQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="302585275"
+X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="302585278"
 Received: from jkoshman-mobl.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.251.154.131])
- by fmsmga002.fm.intel.com with ESMTP; 28 May 2020 12:43:43 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 28 May 2020 12:43:44 -0700
 From: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Thu, 28 May 2020 12:43:38 -0700
-Message-Id: <20200528194342.3495-11-ranjani.sridharan@linux.intel.com>
+Date: Thu, 28 May 2020 12:43:39 -0700
+Message-Id: <20200528194342.3495-12-ranjani.sridharan@linux.intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200528194342.3495-1-ranjani.sridharan@linux.intel.com>
 References: <20200528194342.3495-1-ranjani.sridharan@linux.intel.com>
-Subject: [Intel-wired-lan] [PATCH 10/14] virtual-bus: reorder header includes
+Subject: [Intel-wired-lan] [PATCH 11/14] virtual-bus: remove filename from
+ header
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,36 +76,34 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 Signed-off-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 ---
- drivers/bus/virtual_bus.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ drivers/bus/virtual_bus.c   | 2 +-
+ include/linux/virtual_bus.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/bus/virtual_bus.c b/drivers/bus/virtual_bus.c
-index 27db2d3463a3..613445640cd0 100644
+index 613445640cd0..64d7e588fe7d 100644
 --- a/drivers/bus/virtual_bus.c
 +++ b/drivers/bus/virtual_bus.c
-@@ -8,15 +8,15 @@
-  * more information
-  */
- 
--#include <linux/string.h>
--#include <linux/virtual_bus.h>
--#include <linux/of_irq.h>
--#include <linux/module.h>
--#include <linux/init.h>
--#include <linux/pm_runtime.h>
--#include <linux/pm_domain.h>
- #include <linux/acpi.h>
- #include <linux/device.h>
-+#include <linux/init.h>
-+#include <linux/module.h>
-+#include <linux/of_irq.h>
-+#include <linux/pm_domain.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/string.h>
-+#include <linux/virtual_bus.h>
- 
- static DEFINE_IDA(virtbus_dev_ida);
- 
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * virtual_bus.c - lightweight software based bus for virtual devices
++ * Lightweight software based bus for virtual devices
+  *
+  * Copyright (c) 2019-2020 Intel Corporation
+  *
+diff --git a/include/linux/virtual_bus.h b/include/linux/virtual_bus.h
+index aeac7144b220..a34e060ded56 100644
+--- a/include/linux/virtual_bus.h
++++ b/include/linux/virtual_bus.h
+@@ -1,6 +1,6 @@
+ /* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+- * virtual_bus.h - lightweight software bus
++ * Lightweight software bus
+  *
+  * Copyright (c) 2019-2020 Intel Corporation
+  *
 -- 
 2.17.1
 
