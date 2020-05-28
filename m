@@ -2,58 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 838811E6B59
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 21:43:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F7661E6B5F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 21:43:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E28748833D;
-	Thu, 28 May 2020 19:43:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3A6BA8831B;
+	Thu, 28 May 2020 19:43:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3d2nvoi1VOJp; Thu, 28 May 2020 19:43:48 +0000 (UTC)
+	with ESMTP id FkeQ+0bc2P4x; Thu, 28 May 2020 19:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1D9B38832F;
-	Thu, 28 May 2020 19:43:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7B26E881BF;
+	Thu, 28 May 2020 19:43:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D453C1BF2B5
- for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B5091BF2B5
+ for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D0EC587267
- for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:44 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 281FD87251
+ for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aL9No-fNKwG1 for <intel-wired-lan@osuosl.org>;
+ with ESMTP id PDE32yEqHn0q for <intel-wired-lan@osuosl.org>;
  Thu, 28 May 2020 19:43:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2343E8729F
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 3E136872C7
  for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:44 +0000 (UTC)
-IronPort-SDR: UQRlzs1UYUkfkuzrkkp9q1ipj868N4Ih2AgS0Wn6NDOpR5YfeyXa5dsgVXPkSMC0A3KgukQA6g
- QR3idhHZb/lw==
+IronPort-SDR: BnbL2adnXnVKaO0uinuzoe3t5z+JbYbMBWa53fAr3+KZsxE2Lb9sXZEImgfUSD2YpWDUzZqNur
+ cGSQ2yA42aRQ==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  28 May 2020 12:43:43 -0700
-IronPort-SDR: STMmSJ0N59FrAj3ddtMUXAbrc5w3lYlWr0glsoqgzz24ZRE9j43+7Mo2MkADX3aJmz55w6gOcZ
- 06n8hk0k8inQ==
+IronPort-SDR: ZNyMaovCLhCz3VyKuRxeGugjm9iIVJApClU0/W7Lz7yTZvWrsHROSqqHWuQgmFW/KeQKjT5nfF
+ 2aQxhPTYnFNw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="302585267"
+X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="302585271"
 Received: from jkoshman-mobl.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.251.154.131])
  by fmsmga002.fm.intel.com with ESMTP; 28 May 2020 12:43:43 -0700
 From: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Thu, 28 May 2020 12:43:36 -0700
-Message-Id: <20200528194342.3495-9-ranjani.sridharan@linux.intel.com>
+Date: Thu, 28 May 2020 12:43:37 -0700
+Message-Id: <20200528194342.3495-10-ranjani.sridharan@linux.intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200528194342.3495-1-ranjani.sridharan@linux.intel.com>
 References: <20200528194342.3495-1-ranjani.sridharan@linux.intel.com>
-Subject: [Intel-wired-lan] [PATCH 08/14] virtual-bus: remove superfluous
- assignment
+Subject: [Intel-wired-lan] [PATCH 09/14] virtual-bus: fix return value for
+ match function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,18 +80,18 @@ Signed-off-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/bus/virtual_bus.c b/drivers/bus/virtual_bus.c
-index 519b578a347f..2b0007932517 100644
+index 2b0007932517..27db2d3463a3 100644
 --- a/drivers/bus/virtual_bus.c
 +++ b/drivers/bus/virtual_bus.c
-@@ -153,7 +153,7 @@ static int virtbus_remove_driver(struct device *_dev)
- {
- 	struct virtbus_driver *vdrv = to_virtbus_drv(_dev->driver);
- 	struct virtbus_device *vdev = to_virtbus_dev(_dev);
--	int ret = 0;
-+	int ret;
+@@ -37,7 +37,7 @@ static int virtbus_match(struct device *dev, struct device_driver *drv)
+ 	struct virtbus_driver *vdrv = to_virtbus_drv(drv);
+ 	struct virtbus_device *vdev = to_virtbus_dev(dev);
  
- 	ret = vdrv->remove(vdev);
- 	dev_pm_domain_detach(_dev, true);
+-	return virtbus_match_id(vdrv->id_table, vdev) != NULL;
++	return !!virtbus_match_id(vdrv->id_table, vdev);
+ }
+ 
+ static int virtbus_uevent(struct device *dev, struct kobj_uevent_env *env)
 -- 
 2.17.1
 
