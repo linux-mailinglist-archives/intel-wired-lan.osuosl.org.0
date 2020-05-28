@@ -2,58 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED3B81E6B5C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 21:43:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E0731E6B63
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 21:43:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 926E48921A;
-	Thu, 28 May 2020 19:43:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1EA7889230;
+	Thu, 28 May 2020 19:43:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yRii7zuFNSEB; Thu, 28 May 2020 19:43:53 +0000 (UTC)
+	with ESMTP id N55TSsbKWoXy; Thu, 28 May 2020 19:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6B79789197;
+	by hemlock.osuosl.org (Postfix) with ESMTP id C635F89212;
 	Thu, 28 May 2020 19:43:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@osuosl.org
 Delivered-To: intel-wired-lan@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CDAD61BF9B9
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D78E81BF2B5
  for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C918E8803D
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D40AB8729F
  for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xtNWYyJFM0i3 for <intel-wired-lan@osuosl.org>;
- Thu, 28 May 2020 19:43:44 +0000 (UTC)
+ with ESMTP id ralZnAlU6s1N for <intel-wired-lan@osuosl.org>;
+ Thu, 28 May 2020 19:43:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9BFBF8819D
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E552087267
  for <intel-wired-lan@osuosl.org>; Thu, 28 May 2020 19:43:44 +0000 (UTC)
-IronPort-SDR: 0NESE8pUe0WRbp+AoevSeoZO5rNdnHpbBel1Uty2wK4zJaBXXxuim3D7XIoRkaenBFMPcd//wO
- mtNPvDi01f6g==
+IronPort-SDR: p3qAQDnSBeIQ1HA3v5GovK//EYlJvHAMXTYDyZd0iBnEUSE0esV72GupL9z9e7fvIKj8zyIoT6
+ fgI6SpozNK7w==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  28 May 2020 12:43:44 -0700
-IronPort-SDR: cef37uIOJJavIlJj+BdT8m+wOOffXXhWQ0ruyftcvkEp67Sh3cB1XQfYJsWUk9/aRpRG+Kfl9R
- kwDOhySw7CMA==
+IronPort-SDR: A6kPXvwtOFRH4vH91VXn3TqXCYI06OggWzKbEhxICTP53fAmVejWI1jIgg4MSO3dQ0xCu/OlKo
+ ujsAC/RbaWmA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="302585286"
+X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="302585291"
 Received: from jkoshman-mobl.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.251.154.131])
  by fmsmga002.fm.intel.com with ESMTP; 28 May 2020 12:43:44 -0700
 From: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 To: intel-wired-lan@osuosl.org
-Date: Thu, 28 May 2020 12:43:41 -0700
-Message-Id: <20200528194342.3495-14-ranjani.sridharan@linux.intel.com>
+Date: Thu, 28 May 2020 12:43:42 -0700
+Message-Id: <20200528194342.3495-15-ranjani.sridharan@linux.intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200528194342.3495-1-ranjani.sridharan@linux.intel.com>
 References: <20200528194342.3495-1-ranjani.sridharan@linux.intel.com>
-Subject: [Intel-wired-lan] [PATCH 13/14] ASoC: SOF: Create client driver for
- IPC test
+Subject: [Intel-wired-lan] [PATCH 14/14] ASoC: SOF: ops: Add new op for
+ client registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,423 +74,330 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Create an SOF client driver for IPC flood test. This
-driver is used to set up the debugfs entries and the
-read/write ops for initiating the IPC flood test that
-would be used to measure the min/max/avg response times
-for sending IPCs to the DSP.
+Add a new op for registering clients. The clients to be
+registered depend on the DSP capabilities and the ACPI/DT
+information. For now, we only add 2 IPC test clients that
+will be used for run tandem IPC flood tests for all Intel
+platforms.
+
+For ACPI platforms, change the Kconfig to select
+SND_SOC_SOF_PROBE_WORK_QUEUE to allow the virtbus driver
+to probe when the client is registered.
 
 Signed-off-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
 Signed-off-by: Fred Oh <fred.oh@linux.intel.com>
 Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
 ---
- sound/soc/sof/Kconfig               |  10 +
- sound/soc/sof/Makefile              |   6 +-
- sound/soc/sof/sof-ipc-test-client.c | 348 ++++++++++++++++++++++++++++
- 3 files changed, 363 insertions(+), 1 deletion(-)
- create mode 100644 sound/soc/sof/sof-ipc-test-client.c
+ sound/soc/sof/core.c        |  8 ++++++++
+ sound/soc/sof/intel/Kconfig |  1 +
+ sound/soc/sof/intel/apl.c   | 19 +++++++++++++++++++
+ sound/soc/sof/intel/bdw.c   | 19 +++++++++++++++++++
+ sound/soc/sof/intel/byt.c   | 22 ++++++++++++++++++++++
+ sound/soc/sof/intel/cnl.c   | 19 +++++++++++++++++++
+ sound/soc/sof/ops.h         | 20 ++++++++++++++++++++
+ sound/soc/sof/sof-priv.h    |  3 +++
+ 8 files changed, 111 insertions(+)
 
-diff --git a/sound/soc/sof/Kconfig b/sound/soc/sof/Kconfig
-index 664af8cbacea..9cc76951cfc6 100644
---- a/sound/soc/sof/Kconfig
-+++ b/sound/soc/sof/Kconfig
-@@ -190,6 +190,16 @@ config SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST
- 	  Say Y if you want to enable IPC flood test.
- 	  If unsure, select "N".
+diff --git a/sound/soc/sof/core.c b/sound/soc/sof/core.c
+index 3a7ea7be70fa..ce7d87c8f34c 100644
+--- a/sound/soc/sof/core.c
++++ b/sound/soc/sof/core.c
+@@ -246,6 +246,12 @@ static int sof_probe_continue(struct snd_sof_dev *sdev)
+ 	if (plat_data->sof_probe_complete)
+ 		plat_data->sof_probe_complete(sdev->dev);
  
-+config SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST_CLIENT
-+	tristate "SOF enable IPC flood test client"
-+	depends on SND_SOC_SOF_CLIENT
-+	help
-+	  This option enables a separate client device for IPC flood test
-+	  which can be used to flood the DSP with test IPCs and gather stats
-+	  about response times.
-+	  Say Y if you want to enable IPC flood test.
-+	  If unsure, select "N".
-+
- config SND_SOC_SOF_DEBUG_RETAIN_DSP_CONTEXT
- 	bool "SOF retain DSP context on any FW exceptions"
- 	help
-diff --git a/sound/soc/sof/Makefile b/sound/soc/sof/Makefile
-index 35d6803caf38..bff97ff421b1 100644
---- a/sound/soc/sof/Makefile
-+++ b/sound/soc/sof/Makefile
-@@ -9,16 +9,20 @@ snd-sof-pci-objs := sof-pci-dev.o
- snd-sof-acpi-objs := sof-acpi-dev.o
- snd-sof-of-objs := sof-of-dev.o
- 
-+snd-sof-ipc-test-objs := sof-ipc-test-client.o
-+
- snd-sof-nocodec-objs := nocodec.o
- 
-+
- obj-$(CONFIG_SND_SOC_SOF) += snd-sof.o
- obj-$(CONFIG_SND_SOC_SOF_NOCODEC) += snd-sof-nocodec.o
- 
--
- obj-$(CONFIG_SND_SOC_SOF_ACPI) += snd-sof-acpi.o
- obj-$(CONFIG_SND_SOC_SOF_OF) += snd-sof-of.o
- obj-$(CONFIG_SND_SOC_SOF_PCI) += snd-sof-pci.o
- 
-+obj-$(CONFIG_SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST_CLIENT) += snd-sof-ipc-test.o
-+
- obj-$(CONFIG_SND_SOC_SOF_INTEL_TOPLEVEL) += intel/
- obj-$(CONFIG_SND_SOC_SOF_IMX_TOPLEVEL) += imx/
- obj-$(CONFIG_SND_SOC_SOF_XTENSA) += xtensa/
-diff --git a/sound/soc/sof/sof-ipc-test-client.c b/sound/soc/sof/sof-ipc-test-client.c
-new file mode 100644
-index 000000000000..3b757ba504aa
---- /dev/null
-+++ b/sound/soc/sof/sof-ipc-test-client.c
-@@ -0,0 +1,348 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright(c) 2020 Intel Corporation. All rights reserved.
-+//
-+// Author: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
-+//
-+
-+#include <linux/completion.h>
-+#include <linux/debugfs.h>
-+#include <linux/ktime.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/slab.h>
-+#include <linux/uaccess.h>
-+#include <linux/virtual_bus.h>
-+#include <sound/sof/header.h>
-+#include "sof-client.h"
-+
-+#define MAX_IPC_FLOOD_DURATION_MS 1000
-+#define MAX_IPC_FLOOD_COUNT 10000
-+#define IPC_FLOOD_TEST_RESULT_LEN 512
-+#define SOF_IPC_CLIENT_SUSPEND_DELAY_MS 3000
-+
-+struct sof_ipc_client_data {
-+	struct dentry *dfs_root;
-+	char *buf;
-+};
-+
-+/* helper function to perform the flood test */
-+static int sof_debug_ipc_flood_test(struct sof_client_dev *cdev,
-+				    bool flood_duration_test,
-+				    unsigned long ipc_duration_ms,
-+				    unsigned long ipc_count)
-+{
-+	struct sof_ipc_client_data *ipc_client_data = cdev->data;
-+	struct device *dev = &cdev->vdev.dev;
-+	struct sof_ipc_cmd_hdr hdr;
-+	struct sof_ipc_reply reply;
-+	u64 min_response_time = U64_MAX;
-+	u64 avg_response_time = 0;
-+	u64 max_response_time = 0;
-+	ktime_t cur = ktime_get();
-+	ktime_t test_end;
-+	int i = 0;
-+	int ret = 0;
-+
-+	/* configure test IPC */
-+	hdr.cmd = SOF_IPC_GLB_TEST_MSG | SOF_IPC_TEST_IPC_FLOOD;
-+	hdr.size = sizeof(hdr);
-+
-+	/* set test end time for duration flood test */
-+	test_end = ktime_get_ns() + ipc_duration_ms * NSEC_PER_MSEC;
-+
-+	/* send test IPC's */
-+	for (i = 0;
-+	     flood_duration_test ? ktime_to_ns(cur) < test_end : i < ipc_count;
-+	     i++) {
-+		ktime_t start;
-+		u64 ipc_response_time;
-+
-+		start = ktime_get();
-+		ret = sof_client_ipc_tx_message(cdev, hdr.cmd,
-+						&hdr, hdr.size, &reply,
-+						sizeof(reply));
-+		if (ret < 0)
-+			break;
-+		cur = ktime_get();
-+
-+		/* compute min and max response times */
-+		ipc_response_time = ktime_to_ns(ktime_sub(cur, start));
-+		min_response_time = min(min_response_time, ipc_response_time);
-+		max_response_time = max(max_response_time, ipc_response_time);
-+
-+		/* sum up response times */
-+		avg_response_time += ipc_response_time;
-+	}
-+
-+	if (ret < 0)
-+		dev_err(dev, "error: ipc flood test failed at %d iterations\n",
-+			i);
-+
-+	/* return if the first IPC fails */
-+	if (!i)
-+		return ret;
-+
-+	/* compute average response time */
-+	DIV_ROUND_CLOSEST(avg_response_time, i);
-+
-+	/* clear previous test output */
-+	memset(ipc_client_data->buf, 0, IPC_FLOOD_TEST_RESULT_LEN);
-+
-+	if (flood_duration_test) {
-+		dev_dbg(dev, "IPC Flood test duration: %lums\n",
-+			ipc_duration_ms);
-+		snprintf(ipc_client_data->buf, IPC_FLOOD_TEST_RESULT_LEN,
-+			 "IPC Flood test duration: %lums\n", ipc_duration_ms);
-+	}
-+
-+	dev_dbg(dev,
-+		"IPC Flood count: %d, Avg response time: %lluns\n",
-+		i, avg_response_time);
-+	dev_dbg(dev, "Max response time: %lluns\n",
-+		max_response_time);
-+	dev_dbg(dev, "Min response time: %lluns\n",
-+		min_response_time);
-+
-+	/* format output string and save test results */
-+	snprintf(ipc_client_data->buf + strlen(ipc_client_data->buf),
-+		 IPC_FLOOD_TEST_RESULT_LEN - strlen(ipc_client_data->buf),
-+		 "IPC Flood count: %d\nAvg response time: %lluns\n",
-+		 i, avg_response_time);
-+
-+	snprintf(ipc_client_data->buf + strlen(ipc_client_data->buf),
-+		 IPC_FLOOD_TEST_RESULT_LEN - strlen(ipc_client_data->buf),
-+		 "Max response time: %lluns\nMin response time: %lluns\n",
-+		 max_response_time, min_response_time);
-+
-+	return ret;
-+}
-+
-+/*
-+ * Writing to the debugfs entry initiates the IPC flood test based on
-+ * the IPC count or the duration specified by the user.
-+ */
-+static ssize_t sof_ipc_dfsentry_write(struct file *file,
-+				      const char __user *buffer,
-+				      size_t count, loff_t *ppos)
-+{
-+	struct dentry *dentry = file->f_path.dentry;
-+	struct sof_client_dev *cdev = file->private_data;
-+	struct device *dev = &cdev->vdev.dev;
-+	unsigned long ipc_duration_ms = 0;
-+	bool flood_duration_test;
-+	unsigned long ipc_count = 0;
-+	char *string;
-+	size_t size;
-+	int err;
-+	int ret;
-+
-+	string = kzalloc(count, GFP_KERNEL);
-+	if (!string)
-+		return -ENOMEM;
-+
-+	size = simple_write_to_buffer(string, count, ppos, buffer, count);
-+
-+	flood_duration_test = !strcmp(dentry->d_name.name,
-+				      "ipc_flood_duration_ms");
-+
-+	/* set test completion criterion */
-+	ret = flood_duration_test ? kstrtoul(string, 0, &ipc_duration_ms) :
-+			kstrtoul(string, 0, &ipc_count);
-+	if (ret < 0)
-+		goto out;
-+
-+	/* limit max duration/ipc count for flood test */
-+	if (flood_duration_test) {
-+		if (!ipc_duration_ms) {
-+			ret = size;
-+			goto out;
-+		}
-+
-+		ipc_duration_ms = min_t(unsigned long, ipc_duration_ms,
-+					MAX_IPC_FLOOD_DURATION_MS);
-+	} else {
-+		if (!ipc_count) {
-+			ret = size;
-+			goto out;
-+		}
-+
-+		ipc_count = min_t(unsigned long, ipc_count,
-+				  MAX_IPC_FLOOD_COUNT);
-+	}
-+
-+	ret = pm_runtime_get_sync(dev);
-+	if (ret < 0) {
-+		dev_err_ratelimited(dev,
-+				    "error: debugfs write failed to resume %d\n",
-+				    ret);
-+		pm_runtime_put_noidle(dev);
-+		goto out;
-+	}
-+
-+	/* flood test */
-+	ret = sof_debug_ipc_flood_test(cdev, flood_duration_test,
-+				       ipc_duration_ms, ipc_count);
-+
-+	pm_runtime_mark_last_busy(dev);
-+	err = pm_runtime_put_autosuspend(dev);
-+	if (err < 0)
-+		dev_err_ratelimited(dev,
-+				    "error: debugfs write failed to idle %d\n",
-+				    err);
-+
-+	/* return size if test is successful */
-+	if (ret >= 0)
-+		ret = size;
-+out:
-+	kfree(string);
-+	return ret;
-+}
-+
-+/* return the result of the last IPC flood test */
-+static ssize_t sof_ipc_dfsentry_read(struct file *file, char __user *buffer,
-+				     size_t count, loff_t *ppos)
-+{
-+	struct sof_client_dev *cdev = file->private_data;
-+	struct sof_ipc_client_data *ipc_client_data = cdev->data;
-+	size_t size_ret;
-+
-+	if (*ppos)
-+		return 0;
-+
-+	/* return results of the last IPC test */
-+	count = strlen(ipc_client_data->buf);
-+	size_ret = copy_to_user(buffer, ipc_client_data->buf, count);
-+	if (size_ret)
-+		return -EFAULT;
-+
-+	*ppos += count;
-+	return count;
-+}
-+
-+static const struct file_operations sof_ipc_dfs_fops = {
-+	.open = simple_open,
-+	.read = sof_ipc_dfsentry_read,
-+	.llseek = default_llseek,
-+	.write = sof_ipc_dfsentry_write,
-+};
-+
-+/*
-+ * The IPC test client creates a couple of debugfs entries that will be used
-+ * flood tests. Users can write to these entries to execute the IPC flood test
-+ * by specifying either the number of IPCs to flood the DSP with or the duration
-+ * (in ms) for which the DSP should be flooded with test IPCs. At the
-+ * end of each test, the average, min and max response times are reported back.
-+ * The results of the last flood test can be accessed by reading the debugfs
-+ * entries.
-+ */
-+static int sof_ipc_test_probe(struct virtbus_device *vdev)
-+{
-+	struct sof_client_dev *cdev = virtbus_dev_to_sof_client_dev(vdev);
-+	struct sof_ipc_client_data *ipc_client_data;
-+
 +	/*
-+	 * The virtbus device has a usage count of 0 even before runtime PM
-+	 * is enabled. So, increment the usage count to let the device
-+	 * suspend after probe is complete.
++	 * Register client devices. This can fail but errors cannot be
++	 * propagated.
 +	 */
-+	pm_runtime_get_noresume(&vdev->dev);
++	snd_sof_register_clients(sdev);
 +
-+	/* allocate memory for client data */
-+	ipc_client_data = devm_kzalloc(&vdev->dev, sizeof(*ipc_client_data),
-+				       GFP_KERNEL);
-+	if (!ipc_client_data)
-+		return -ENOMEM;
-+
-+	ipc_client_data->buf = devm_kzalloc(&vdev->dev,
-+					    IPC_FLOOD_TEST_RESULT_LEN,
-+					    GFP_KERNEL);
-+	if (!ipc_client_data->buf)
-+		return -ENOMEM;
-+
-+	cdev->data = ipc_client_data;
-+
-+	/* create debugfs root folder with device name under parent SOF dir */
-+	ipc_client_data->dfs_root =
-+		debugfs_create_dir(dev_name(&vdev->dev),
-+				   sof_client_get_debugfs_root(cdev));
-+
-+	/* create read-write ipc_flood_count debugfs entry */
-+	debugfs_create_file("ipc_flood_count", 0644, ipc_client_data->dfs_root,
-+			    cdev, &sof_ipc_dfs_fops);
-+
-+	/* create read-write ipc_flood_duration_ms debugfs entry */
-+	debugfs_create_file("ipc_flood_duration_ms", 0644,
-+			    ipc_client_data->dfs_root,
-+			    cdev, &sof_ipc_dfs_fops);
-+
-+	/* enable runtime PM */
-+	pm_runtime_set_autosuspend_delay(&vdev->dev,
-+					 SOF_IPC_CLIENT_SUSPEND_DELAY_MS);
-+	pm_runtime_use_autosuspend(&vdev->dev);
-+	pm_runtime_set_active(&vdev->dev);
-+	pm_runtime_enable(&vdev->dev);
-+	pm_runtime_mark_last_busy(&vdev->dev);
-+	pm_runtime_put_autosuspend(&vdev->dev);
-+
-+	/* connect client dev with SOF core */
-+	cdev->connect(vdev);
-+
-+	return 0;
-+}
-+
-+static int sof_ipc_test_cleanup(struct virtbus_device *vdev)
-+{
-+	struct sof_client_dev *cdev = virtbus_dev_to_sof_client_dev(vdev);
-+	struct sof_ipc_client_data *ipc_client_data = cdev->data;
-+
-+	pm_runtime_disable(&vdev->dev);
-+
-+	/* disconnect client dev from SOF core */
-+	cdev->disconnect(vdev);
-+
-+	debugfs_remove_recursive(ipc_client_data->dfs_root);
-+
-+	return 0;
-+}
-+
-+static int sof_ipc_test_remove(struct virtbus_device *vdev)
-+{
-+	return sof_ipc_test_cleanup(vdev);
-+}
-+
-+static void sof_ipc_test_shutdown(struct virtbus_device *vdev)
-+{
-+	sof_ipc_test_cleanup(vdev);
-+}
-+
-+static const struct virtbus_device_id sof_ipc_virtbus_id_table[] = {
-+	{.name = "sof-ipc-test"},
-+	{ },
-+};
-+MODULE_DEVICE_TABLE(virtbus, sof_ipc_virtbus_id_table);
-+
-+/*
-+ * No need for driver pm_ops as the generic pm callbacks in the virtual bus
-+ * type are enough to ensure that the parent SOF device resumes to bring
-+ * the DSP back to D0.
-+ */
-+static struct sof_client_drv sof_ipc_test_client_drv = {
-+	.name = "sof-ipc-test-client-drv",
-+	.virtbus_drv = {
-+		.driver = {
-+			.name = "sof-ipc-test-virtbus-drv",
-+		},
-+		.id_table = sof_ipc_virtbus_id_table,
-+		.probe = sof_ipc_test_probe,
-+		.remove = sof_ipc_test_remove,
-+		.shutdown = sof_ipc_test_shutdown,
-+	},
-+};
-+
-+module_sof_client_driver(sof_ipc_test_client_drv);
-+
-+MODULE_DESCRIPTION("SOF IPC Test Client Driver");
-+MODULE_LICENSE("GPL v2");
+ 	return 0;
+ 
+ fw_trace_err:
+@@ -356,6 +362,7 @@ int snd_sof_device_remove(struct device *dev)
+ 		cancel_work_sync(&sdev->probe_work);
+ 
+ 	if (sdev->fw_state > SOF_FW_BOOT_NOT_STARTED) {
++		snd_sof_unregister_clients(sdev);
+ 		snd_sof_fw_unload(sdev);
+ 		snd_sof_ipc_free(sdev);
+ 		snd_sof_free_debug(sdev);
+@@ -389,4 +396,5 @@ EXPORT_SYMBOL(snd_sof_device_remove);
+ MODULE_AUTHOR("Liam Girdwood");
+ MODULE_DESCRIPTION("Sound Open Firmware (SOF) Core");
+ MODULE_LICENSE("Dual BSD/GPL");
 +MODULE_IMPORT_NS(SND_SOC_SOF_CLIENT);
+ MODULE_ALIAS("platform:sof-audio");
+diff --git a/sound/soc/sof/intel/Kconfig b/sound/soc/sof/intel/Kconfig
+index 9b3c01072dd8..46e3a17b9bc6 100644
+--- a/sound/soc/sof/intel/Kconfig
++++ b/sound/soc/sof/intel/Kconfig
+@@ -13,6 +13,7 @@ config SND_SOC_SOF_INTEL_ACPI
+ 	def_tristate SND_SOC_SOF_ACPI
+ 	select SND_SOC_SOF_BAYTRAIL  if SND_SOC_SOF_BAYTRAIL_SUPPORT
+ 	select SND_SOC_SOF_BROADWELL if SND_SOC_SOF_BROADWELL_SUPPORT
++	select SND_SOC_SOF_PROBE_WORK_QUEUE if SND_SOC_SOF_CLIENT
+ 	help
+ 	  This option is not user-selectable but automagically handled by
+ 	  'select' statements at a higher level
+diff --git a/sound/soc/sof/intel/apl.c b/sound/soc/sof/intel/apl.c
+index 9e29d4fd393a..d6f42794f0b7 100644
+--- a/sound/soc/sof/intel/apl.c
++++ b/sound/soc/sof/intel/apl.c
+@@ -18,6 +18,7 @@
+ #include "../sof-priv.h"
+ #include "hda.h"
+ #include "../sof-audio.h"
++#include "../sof-client.h"
+ 
+ static const struct snd_sof_debugfs_map apl_dsp_debugfs[] = {
+ 	{"hda", HDA_DSP_HDA_BAR, 0, 0x4000, SOF_DEBUGFS_ACCESS_ALWAYS},
+@@ -25,6 +26,20 @@ static const struct snd_sof_debugfs_map apl_dsp_debugfs[] = {
+ 	{"dsp", HDA_DSP_BAR,  0, 0x10000, SOF_DEBUGFS_ACCESS_ALWAYS},
+ };
+ 
++static void apl_register_clients(struct snd_sof_dev *sdev)
++{
++#if IS_ENABLED(CONFIG_SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST_CLIENT)
++	/*
++	 * Register 2 IPC clients to facilitate tandem flood test.
++	 * The device name below is appended with the device ID assigned
++	 * automatically when the virtbus device is registered making
++	 * them unique.
++	 */
++	sof_client_dev_register(sdev, "sof-ipc-test");
++	sof_client_dev_register(sdev, "sof-ipc-test");
++#endif
++}
++
+ /* apollolake ops */
+ const struct snd_sof_dsp_ops sof_apl_ops = {
+ 	/* probe and remove */
+@@ -101,6 +116,9 @@ const struct snd_sof_dsp_ops sof_apl_ops = {
+ 	.trace_release = hda_dsp_trace_release,
+ 	.trace_trigger = hda_dsp_trace_trigger,
+ 
++	/* client register */
++	.register_clients = apl_register_clients,
++
+ 	/* DAI drivers */
+ 	.drv		= skl_dai,
+ 	.num_drv	= SOF_SKL_NUM_DAIS,
+@@ -140,3 +158,4 @@ const struct sof_intel_dsp_desc apl_chip_info = {
+ 	.ssp_base_offset = APL_SSP_BASE_OFFSET,
+ };
+ EXPORT_SYMBOL_NS(apl_chip_info, SND_SOC_SOF_INTEL_HDA_COMMON);
++MODULE_IMPORT_NS(SND_SOC_SOF_CLIENT);
+diff --git a/sound/soc/sof/intel/bdw.c b/sound/soc/sof/intel/bdw.c
+index 99fd0bd7276e..1909c93fecba 100644
+--- a/sound/soc/sof/intel/bdw.c
++++ b/sound/soc/sof/intel/bdw.c
+@@ -18,6 +18,7 @@
+ #include "../ops.h"
+ #include "shim.h"
+ #include "../sof-audio.h"
++#include "../sof-client.h"
+ 
+ /* BARs */
+ #define BDW_DSP_BAR 0
+@@ -563,6 +564,20 @@ static void bdw_set_mach_params(const struct snd_soc_acpi_mach *mach,
+ 	mach_params->platform = dev_name(dev);
+ }
+ 
++static void bdw_register_clients(struct snd_sof_dev *sdev)
++{
++#if IS_ENABLED(CONFIG_SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST_CLIENT)
++	/*
++	 * Register 2 IPC clients to facilitate tandem flood test.
++	 * The device name below is appended with the device ID assigned
++	 * automatically when the virtbus device is registered making
++	 * them unique.
++	 */
++	sof_client_dev_register(sdev, "sof-ipc-test");
++	sof_client_dev_register(sdev, "sof-ipc-test");
++#endif
++}
++
+ /* Broadwell DAIs */
+ static struct snd_soc_dai_driver bdw_dai[] = {
+ {
+@@ -638,6 +653,9 @@ const struct snd_sof_dsp_ops sof_bdw_ops = {
+ 	/*Firmware loading */
+ 	.load_firmware	= snd_sof_load_firmware_memcpy,
+ 
++	/* client register */
++	.register_clients = bdw_register_clients,
++
+ 	/* DAI drivers */
+ 	.drv = bdw_dai,
+ 	.num_drv = ARRAY_SIZE(bdw_dai),
+@@ -662,3 +680,4 @@ EXPORT_SYMBOL_NS(bdw_chip_info, SND_SOC_SOF_BROADWELL);
+ MODULE_LICENSE("Dual BSD/GPL");
+ MODULE_IMPORT_NS(SND_SOC_SOF_INTEL_HIFI_EP_IPC);
+ MODULE_IMPORT_NS(SND_SOC_SOF_XTENSA);
++MODULE_IMPORT_NS(SND_SOC_SOF_CLIENT);
+diff --git a/sound/soc/sof/intel/byt.c b/sound/soc/sof/intel/byt.c
+index e6ba8382b1de..e70fd96f3045 100644
+--- a/sound/soc/sof/intel/byt.c
++++ b/sound/soc/sof/intel/byt.c
+@@ -19,6 +19,7 @@
+ #include "shim.h"
+ #include "../sof-audio.h"
+ #include "../../intel/common/soc-intel-quirks.h"
++#include "../sof-client.h"
+ 
+ /* DSP memories */
+ #define IRAM_OFFSET		0x0C0000
+@@ -821,6 +822,20 @@ static int byt_acpi_probe(struct snd_sof_dev *sdev)
+ 	return ret;
+ }
+ 
++static void byt_register_clients(struct snd_sof_dev *sdev)
++{
++#if IS_ENABLED(CONFIG_SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST_CLIENT)
++	/*
++	 * Register 2 IPC clients to facilitate tandem flood test.
++	 * The device name below is appended with the device ID assigned
++	 * automatically when the virtbus device is registered making
++	 * them unique.
++	 */
++	sof_client_dev_register(sdev, "sof-ipc-test");
++	sof_client_dev_register(sdev, "sof-ipc-test");
++#endif
++}
++
+ /* baytrail ops */
+ const struct snd_sof_dsp_ops sof_byt_ops = {
+ 	/* device init */
+@@ -879,6 +894,9 @@ const struct snd_sof_dsp_ops sof_byt_ops = {
+ 	.suspend = byt_suspend,
+ 	.resume = byt_resume,
+ 
++	/* client register */
++	.register_clients = byt_register_clients,
++
+ 	/* DAI drivers */
+ 	.drv = byt_dai,
+ 	.num_drv = 3, /* we have only 3 SSPs on byt*/
+@@ -958,6 +976,9 @@ const struct snd_sof_dsp_ops sof_cht_ops = {
+ 	.suspend = byt_suspend,
+ 	.resume = byt_resume,
+ 
++	/* client register */
++	.register_clients = byt_register_clients,
++
+ 	/* DAI drivers */
+ 	.drv = byt_dai,
+ 	/* all 6 SSPs may be available for cherrytrail */
+@@ -985,3 +1006,4 @@ EXPORT_SYMBOL_NS(cht_chip_info, SND_SOC_SOF_BAYTRAIL);
+ MODULE_LICENSE("Dual BSD/GPL");
+ MODULE_IMPORT_NS(SND_SOC_SOF_INTEL_HIFI_EP_IPC);
+ MODULE_IMPORT_NS(SND_SOC_SOF_XTENSA);
++MODULE_IMPORT_NS(SND_SOC_SOF_CLIENT);
+diff --git a/sound/soc/sof/intel/cnl.c b/sound/soc/sof/intel/cnl.c
+index 16db0f50d139..322764b6f9b4 100644
+--- a/sound/soc/sof/intel/cnl.c
++++ b/sound/soc/sof/intel/cnl.c
+@@ -19,6 +19,7 @@
+ #include "hda.h"
+ #include "hda-ipc.h"
+ #include "../sof-audio.h"
++#include "../sof-client.h"
+ 
+ static const struct snd_sof_debugfs_map cnl_dsp_debugfs[] = {
+ 	{"hda", HDA_DSP_HDA_BAR, 0, 0x4000, SOF_DEBUGFS_ACCESS_ALWAYS},
+@@ -231,6 +232,20 @@ static void cnl_ipc_dump(struct snd_sof_dev *sdev)
+ 		hipcida, hipctdr, hipcctl);
+ }
+ 
++static void cnl_register_clients(struct snd_sof_dev *sdev)
++{
++#if IS_ENABLED(CONFIG_SND_SOC_SOF_DEBUG_IPC_FLOOD_TEST_CLIENT)
++	/*
++	 * Register 2 IPC clients to facilitate tandem flood test.
++	 * The device name below is appended with the device ID assigned
++	 * automatically when the virtbus device is registered making
++	 * them unique.
++	 */
++	sof_client_dev_register(sdev, "sof-ipc-test");
++	sof_client_dev_register(sdev, "sof-ipc-test");
++#endif
++}
++
+ /* cannonlake ops */
+ const struct snd_sof_dsp_ops sof_cnl_ops = {
+ 	/* probe and remove */
+@@ -307,6 +322,9 @@ const struct snd_sof_dsp_ops sof_cnl_ops = {
+ 	.trace_release = hda_dsp_trace_release,
+ 	.trace_trigger = hda_dsp_trace_trigger,
+ 
++	/* client register */
++	.register_clients = cnl_register_clients,
++
+ 	/* DAI drivers */
+ 	.drv		= skl_dai,
+ 	.num_drv	= SOF_SKL_NUM_DAIS,
+@@ -417,3 +435,4 @@ const struct sof_intel_dsp_desc jsl_chip_info = {
+ 	.ssp_base_offset = CNL_SSP_BASE_OFFSET,
+ };
+ EXPORT_SYMBOL_NS(jsl_chip_info, SND_SOC_SOF_INTEL_HDA_COMMON);
++MODULE_IMPORT_NS(SND_SOC_SOF_CLIENT);
+diff --git a/sound/soc/sof/ops.h b/sound/soc/sof/ops.h
+index b21632f5511a..6fa8b6736dce 100644
+--- a/sound/soc/sof/ops.h
++++ b/sound/soc/sof/ops.h
+@@ -14,9 +14,12 @@
+ #include <linux/device.h>
+ #include <linux/interrupt.h>
+ #include <linux/kernel.h>
++#include <linux/list.h>
++#include <linux/mutex.h>
+ #include <linux/types.h>
+ #include <sound/pcm.h>
+ #include "sof-priv.h"
++#include "sof-client.h"
+ 
+ #define sof_ops(sdev) \
+ 	((sdev)->pdata->desc->ops)
+@@ -470,6 +473,23 @@ snd_sof_set_mach_params(const struct snd_soc_acpi_mach *mach,
+ 		sof_ops(sdev)->set_mach_params(mach, dev);
+ }
+ 
++static inline void
++snd_sof_register_clients(struct snd_sof_dev *sdev)
++{
++	if (sof_ops(sdev) && sof_ops(sdev)->register_clients)
++		sof_ops(sdev)->register_clients(sdev);
++}
++
++static inline void
++snd_sof_unregister_clients(struct snd_sof_dev *sdev)
++{
++	struct sof_client_dev *cdev, *_cdev;
++
++	/* unregister client devices */
++	list_for_each_entry_safe(cdev, _cdev, &sdev->client_list, list)
++		sof_client_dev_unregister(cdev);
++}
++
+ static inline const struct snd_sof_dsp_ops
+ *sof_get_ops(const struct sof_dev_desc *d,
+ 	     const struct sof_ops_table mach_ops[], int asize)
+diff --git a/sound/soc/sof/sof-priv.h b/sound/soc/sof/sof-priv.h
+index 2233370a0339..932eea7d441e 100644
+--- a/sound/soc/sof/sof-priv.h
++++ b/sound/soc/sof/sof-priv.h
+@@ -252,6 +252,9 @@ struct snd_sof_dsp_ops {
+ 	void (*set_mach_params)(const struct snd_soc_acpi_mach *mach,
+ 				struct device *dev); /* optional */
+ 
++	/* client ops */
++	void (*register_clients)(struct snd_sof_dev *sdev); /* optional */
++
+ 	/* DAI ops */
+ 	struct snd_soc_dai_driver *drv;
+ 	int num_drv;
 -- 
 2.17.1
 
