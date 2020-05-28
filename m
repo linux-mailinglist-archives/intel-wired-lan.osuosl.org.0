@@ -2,91 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB63B1E6DE4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 23:42:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DEDA1E6DE5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2020 23:42:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9073A20414;
-	Thu, 28 May 2020 21:42:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 04FD721543;
+	Thu, 28 May 2020 21:42:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SSMcOJcGYakS; Thu, 28 May 2020 21:42:00 +0000 (UTC)
+	with ESMTP id 9bktKXnVPC6j; Thu, 28 May 2020 21:42:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DCD1821514;
-	Thu, 28 May 2020 21:41:58 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6083021517;
+	Thu, 28 May 2020 21:42:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 959961BF39A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2020 21:41:57 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DDB101BF39A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2020 21:42:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 91EB386CF8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2020 21:41:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D939E89157
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2020 21:42:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SSrPhWkPtDPN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 May 2020 21:41:56 +0000 (UTC)
+ with ESMTP id SaWjHuCYfc12 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 May 2020 21:42:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7022E86CF6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2020 21:41:56 +0000 (UTC)
-IronPort-SDR: 9QIbVm8fkXx7HbPF+JhZLUr+9PeG68vQKODC5ZUcmlN+VfzeuYdh9Nz4mi2pn0GYtgVvhXvC7W
- qd1Gi1f5A5jw==
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1DDE888F8C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2020 21:42:31 +0000 (UTC)
+IronPort-SDR: r97jXo67cOGfBmkomCJDNe3DQuw19bWHGU+EQefTYl8ioXwSXTmMfsgG1w/trDckJ+W4dyYxap
+ q6upk2KEgFZw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 May 2020 14:41:55 -0700
-IronPort-SDR: X0KVuC9d2XbbZiX1kb9u9OZztxNLtBbJLJfUhcHVNjzqcPasRQZk8X5Xnr7LQRRGzEnQVkexKP
- uTLXyZh/1EDw==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 May 2020 14:42:30 -0700
+IronPort-SDR: m66ZYz3CXf9JDZIaxodBaKdrHcFcZZui0iBhj+aHNRX3gbUgU5UCMzoLSF/ssXrBOs4s4WKKbE
+ z6TZQoVGEGPA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="255912633"
-Received: from orsmsx110.amr.corp.intel.com ([10.22.240.8])
- by fmsmga007.fm.intel.com with ESMTP; 28 May 2020 14:41:55 -0700
-Received: from orsmsx123.amr.corp.intel.com (10.22.240.116) by
- ORSMSX110.amr.corp.intel.com (10.22.240.8) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 28 May 2020 14:41:54 -0700
-Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
- ORSMSX123.amr.corp.intel.com (10.22.240.116) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 28 May 2020 14:41:53 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 28 May 2020 14:41:53 -0700
+X-IronPort-AV: E=Sophos;i="5.73,446,1583222400"; d="scan'208";a="256302618"
+Received: from orsmsx107.amr.corp.intel.com ([10.22.240.5])
+ by orsmga007.jf.intel.com with ESMTP; 28 May 2020 14:42:29 -0700
+Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
+ ORSMSX107.amr.corp.intel.com (10.22.240.5) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 28 May 2020 14:42:29 -0700
+Received: from ORSEDG002.ED.cps.intel.com (10.7.248.5) by
+ ORSMSX153.amr.corp.intel.com (10.22.226.247) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 28 May 2020 14:42:29 -0700
+Received: from NAM02-BL2-obe.outbound.protection.outlook.com (104.47.38.59) by
+ edgegateway.intel.com (134.134.137.101) with Microsoft SMTP Server
+ (TLS) id 14.3.439.0; Thu, 28 May 2020 14:42:29 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eQad5uMvjGV3WyZ6k6cFNPCAhI2t5J8HvT2TFEsnsIWbdghkRZcAfDA1XGvTi5wbspr8NmkHOR7DMAiQ6teh1Eqm6t/9oyMknS2LurHAjks8wfw8thKEGpr5Lrr296nWyKf0JvZEcrDPNN899A7AKvYWo0/MRrQDfBy5h3iDfYrxwQHDIQP5EsOqr/gyeYan01Iq5iKxUCVRH7aF/3rH45RYkrzm+MYBfcjcZLNwawr6Jmu1W/lBv430ZujytIsxvlDla6czf1hoqO7+4BBvgr9yC9mV7iP/ay33DYOk4DhAM/xip3ye/qlIQ8+QobCB06Blr/bdmCFJJ1cTGgIiXQ==
+ b=Pc0uGt6zEdAppbYFTqP8JW85DEyug3OT++q9C1iAFcWBrja+I5cRo8bRKzvv/AxvUQQEZDxXGFtUi2b8gzT3q8LoNXnvaQFroUnu6FbuhHpHgC15BkB44eY6+9dNcymIJ93SxpcBgTmJH15yHKBCBnEqgRgeT55V1PctvZpQjs6uxP5dXP16BI2gegRzexvJTcgeO1m05ZXwX2p6MBHLFSPaSwp7P/m1dA++ooPOHz0/Ntz+w9UbnyH3tZ8xq6xfN9UkNmYFM5HD4UxVEmoP63RXUMnjtR9iLmcuD1m+TAIT1Ot1J+IF7fo5h0+lY8BB3w8Z8eo19xqJu4tcwx4bmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1DCqo3ahz6E0yOsNNW0QBVol0oh5gQ+nzCg4H8a7TnI=;
- b=lao1koSO+YOz6mH8khHM9RpexlpvdYcjoXam8jdBDEXmeOsM7EEo8jETyIVMzA1QLTIUYEakH/3sQ8GjjjMi14AhUCIo5rGfk7R+1OlHwCXfwWEFsvqolDjzZqQIzHof3AIb4l/umlYcQ21HUEKT6YHGepVWBFPid6Y4NHkbeGmBcK7XDIZ+5hkzoeRFTvnqBD1HO47uBVQ18kMF3yTN6NAcWsF499fEUF8mFlRCxHO0Ub4ob9wHDXN4eg64+MNlNmj64KFmRPzl+euXCn7M5CU5Q3SHUR5PhjJ8W84Qu4Gwpaf/zDHAN6SlzBZGnW9/FF2tnCnI7otPGOvnPTZF5A==
+ bh=B4tiZGRrEPQcagTRJUMMSnNWItqyfZ4WaAyaTB9E62Q=;
+ b=JEXTHlRE3lJgricoGG9M105hwUz9HWympbkKgRQoy7rhwlJnDfaZYjT2utMgFxVJ608MVKTtYOpiGgERsoWdQ/qGuMFzLwQsLGW14eB6Q909UFudMZ6vRhc3NOWpCbYREEj0i+9gxBPWZ+Q9cl0q4Flu+Ex7XnRzsq1YPiq69f24Phd2kH9SDPcHAE+M4gKzAeoQwYhAWSXjJ+Okx9dSacNsdENw03MnUSzEZ2h8aruODj+ErAc/ErmGkBQ/vARTNznhHFV9LJE1xskx55a9wtvv0eXGeG2rThd6E7x2Q0ekjFbaqljz/oq5tD0343aN74ukksbe2t0ZzKkM+b1kag==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1DCqo3ahz6E0yOsNNW0QBVol0oh5gQ+nzCg4H8a7TnI=;
- b=miGpQs5DCGWaR1VAxgMI7G0g+pJnZh9DbNlJ8dbTKrYlay2erJZMVCZxI5Q65aBSs0NI115KzUut8vPRQ0NHpVYj6Kxlqa4zthUNPBTcjTBFGHv8/ZV/si8VmHYtFX4ktBWWcS7tC1IRN2iF8K7aRak7bxqp2mp+0VGhxrLevOI=
+ bh=B4tiZGRrEPQcagTRJUMMSnNWItqyfZ4WaAyaTB9E62Q=;
+ b=oLR+Qw7LpgFZMiGc189AiwPfg0hadpFK41n0cNZD7YwHc1+4boeXVZgLrSmaO8OqVJngcjG9evgGBSQ/X72q+C909S5KrPzJVjyGsLe166WqeOxwJNKkOSFCWFmYlGcKKYb6soS9kuLQu2QKrrXWBcp6k3X2BZJPYo7Miy/vrfc=
 Received: from DM5PR11MB1659.namprd11.prod.outlook.com (2603:10b6:4:6::20) by
  DM5PR11MB2043.namprd11.prod.outlook.com (2603:10b6:3:e::21) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3045.19; Thu, 28 May 2020 21:41:52 +0000
+ 15.20.3045.19; Thu, 28 May 2020 21:42:27 +0000
 Received: from DM5PR11MB1659.namprd11.prod.outlook.com
  ([fe80::b01b:8cfb:1248:ea66]) by DM5PR11MB1659.namprd11.prod.outlook.com
  ([fe80::b01b:8cfb:1248:ea66%9]) with mapi id 15.20.3045.018; Thu, 28 May 2020
- 21:41:52 +0000
+ 21:42:27 +0000
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S45 08/15] ice: remove VM/VF disable
- command on CORER/GLOBR reset
-Thread-Index: AQHWKxyR3of7oT4Q3E2nGZGjOauie6i+G06g
-Date: Thu, 28 May 2020 21:41:52 +0000
-Message-ID: <DM5PR11MB1659BD2D73E16656283AE91C8C8E0@DM5PR11MB1659.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH S45 09/15] ice: Refactor VF reset
+Thread-Index: AQHWKxyV5y3xJ9wMkkGX5SxkEaBxvai+G2zg
+Date: Thu, 28 May 2020 21:42:27 +0000
+Message-ID: <DM5PR11MB1659ABC7CC3973AE2C65CC3E8C8E0@DM5PR11MB1659.namprd11.prod.outlook.com>
 References: <20200516005121.4963-1-anthony.l.nguyen@intel.com>
- <20200516005121.4963-8-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200516005121.4963-8-anthony.l.nguyen@intel.com>
+ <20200516005121.4963-9-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200516005121.4963-9-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -98,32 +97,31 @@ authentication-results: lists.osuosl.org; dkim=none (message not signed)
  header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
 x-originating-ip: [192.55.52.219]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 3b7c5463-ad29-4f25-095c-08d8034fef2a
+x-ms-office365-filtering-correlation-id: 4b2af23a-942d-43cf-2e7d-08d80350045f
 x-ms-traffictypediagnostic: DM5PR11MB2043:
-x-microsoft-antispam-prvs: <DM5PR11MB2043837E1E31786A513A3F8B8C8E0@DM5PR11MB2043.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:3044;
+x-microsoft-antispam-prvs: <DM5PR11MB204379045A5262511867A53B8C8E0@DM5PR11MB2043.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-forefront-prvs: 0417A3FFD2
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: sTQ4klpCk60bSNTfzv64ls6yWmpCCW2HTsBHScY+80V2IhFah8A4InMcooi1iGO2ISUqi/FmaHE2OYqYkZdvO4Q228PUklWejkcv+qjU0eKxgSte9gTGd9TbMkJNVAJWYnwgKatQ3fSQKbNPnFyY23TdsKK6SZXA8RqNsngvHOapitub951g3TSrPg5K86Tm+OsPRaDyLBiiCdu+TsmfOr7CFD2ZRSE2zbcFHD1z8XxyGT3kvP8gb0ZgzJIzFlEATqqvsJ63rhlRVAC3ju3eVV49MMVu87dQigF+LQ8De2BshshVkY++o8LzTB2IYoY9
+x-microsoft-antispam-message-info: oyDV80nIx7zo6munPeiGv7RHHEO+v5Hiyf0YeRJByqayqStxYRicCgZonJ8VqSv/DxnnP+ZskcnFkm83Vj+HgvHXLR2KbN8HRhc/5/+HgNM1oCAzZdPBM5XncmNvEKQOPk9LWu39XiFzLgrYX77ia4fsDtehGTTUyGt5R0Fuuri/eifYQjKRnoH0WREBsrC4ZZpMRshiMQuurHLjA/vF5I5/Eal80eCA5WAgEgiGQVjiwTq646bYGxlZfg6NILvwmxBJlBPTO8bVCbf1Nhz2cajeG3dn5L+QDpoNDdfnWb4H/E0rbnuZnMNztvlMTdXp
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM5PR11MB1659.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(39860400002)(376002)(366004)(346002)(136003)(396003)(66946007)(66556008)(64756008)(66446008)(71200400001)(66476007)(2906002)(33656002)(316002)(86362001)(52536014)(6916009)(83380400001)(4744005)(55016002)(9686003)(76116006)(26005)(186003)(8936002)(7696005)(8676002)(6506007)(5660300002)(53546011)(478600001);
+ SFS:(39860400002)(376002)(366004)(346002)(136003)(396003)(66946007)(66556008)(64756008)(66446008)(71200400001)(66476007)(2906002)(33656002)(316002)(86362001)(52536014)(6916009)(83380400001)(55016002)(9686003)(76116006)(26005)(186003)(8936002)(7696005)(8676002)(6506007)(5660300002)(53546011)(478600001);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: bmdJAwlGuG3Ox1Uf8/SCT1Kez3wKPoZmMZ6yPK4/uXgxlyWshoHwgtevqC6v4MnvCQPOXv+swlzFU5bBW3ZZ8A6vcD1v23wGlXVNFsrSqrgy48Aj0S01fnSMdqiHWZ6qT/QVIVyQyJkeMJ20xyA0LVoKVIa+/rKWLqVFQ6Hupp03zMfav4JfNlz3AKjs5Ax0Jp05dbx+Z629YMTK59RZiLnugHCziqhTjotC0S+we+ODApGzg/Z2x4oOEpb0hbHUnIojGFUYgIr2sFRW4DWrUD0Mr+OShO3aUz3wHXlaIsQm0YPZ3qVtPZS4r7joQi++QFrOSYRoBS5OreekyLFpWjntMVDrH+IlkhvksemDFLeHMLT2qSy3xgMWyH8ovjEf4d+tfwc3gNYVMTlELh61GND6jiVM3I05Kfhkc5zp14RnWnPZXiCS7hMSi9qEFpr4GsSbaW8tfxsWb6BeXDoq4DDYi8Ss5sIvocyWxnEQF4Y=
+x-ms-exchange-antispam-messagedata: 6XdlbUBLPODr8obJ3WMhrqzRJmdRwyAlr53KrMz6giZbFOLtbLpbo9JjTIJUWmDF8rUutJiPx6tEG2w9nA75UycbbxoKa373hfs0GQWoq3macOaWPBpjmnQFw9FJZVNDLT5JspAt1NjN/r/v3NU6rnOJruhZX1TeTHh8y6NZrZzDH8wpwmuKnaeQYJCXA5srpM2C+ZOj5saUak+5Mr1WavP7uWNyVusOfAB11wLFLkdJhdsrXLNMIxcboVfUTMGqtmFHO8js9XoGhvBck0anQkSA3eAADI7V7mJoIeVs8rZyu/rvmLIcZ9H016qWyfmRlNzGfPrY3O5dnEHvwo4O31/xXzVmA0aa1zETi0ftPieiXIJ7aCBWiLYNiboTpkdeItiCao/6gCZMOBlc+zasF8rtSJEcU0khqLPZ8M4VbLbA3eTuWmCS7jbCabCYGfSIHnAl/GJC195LaZdy6p4/xFog41oSb8G9p9ZbC1C9iPk=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b7c5463-ad29-4f25-095c-08d8034fef2a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 May 2020 21:41:52.1474 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4b2af23a-942d-43cf-2e7d-08d80350045f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 May 2020 21:42:27.7009 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: o+fluRhKrjCvet/FHtUxJTpxAGknw4sYXGjsz3cQx+E4cGX8RXP5APHvsY6wU/C9o1DX2EskPR4YRmo958hQHHYcg/TT7IG0BHpOnEIQMB8=
+X-MS-Exchange-CrossTenant-userprincipalname: YkSFVntKsS9hrgw3VfKtw24AI/ZAwr3BT2moXP1zZjZSqxZi2n5mFFnaYwutWVM+7AHc+4hdVMXddgrg7oVQEOQ+VK8Ol3D5zT4hifBYIpE=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB2043
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S45 08/15] ice: remove VM/VF disable
- command on CORER/GLOBR reset
+Subject: Re: [Intel-wired-lan] [PATCH S45 09/15] ice: Refactor VF reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,18 +144,49 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Tony Nguyen
 > Sent: Friday, May 15, 2020 5:51 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S45 08/15] ice: remove VM/VF disable
-> command on CORER/GLOBR reset
+> Subject: [Intel-wired-lan] [PATCH S45 09/15] ice: Refactor VF reset
 > 
-> From: Paul Greenwalt <paul.greenwalt@intel.com>
+> From: Brett Creeley <brett.creeley@intel.com>
 > 
-> Remove VM/VF disable AQC (opcode 0x0C31) when resetting all VFs.
-> This is not required for CORER/GLOBR reset.
+> Currently VF VSI are being reset twice during a PFR or greater. This is causing
+> reset, specifically resetting all VFs, to take too long. This is causing various
+> issues with VF drivers not being able to gracefully handle the VF reset
+> timeout. Fix this by refactoring how VF reset is handled for the case
+> mentioned previously and for the VFR/VFLR case.
 > 
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> The refactor was done by doing the following:
+> 
+> 1. Removing the call to ice_vsi_rebuild_by_type for
+>    ICE_VSI_VF VSI, which was causing the initial VSI rebuild.
+> 
+> 2. Adding functions for pre/post VSI rebuild functions that can be called
+>    in both the reset all VFs case and reset individual VF case.
+> 
+> 3. Adding VSI rebuild functions that are specific for the reset all VFs
+>    case and adding functions that are specific for the reset individual
+>    VF case.
+> 
+> 4. Calling the pre-rebuild function, then the specific VSI rebuild
+>    function based on the reset type, and then calling the post-rebuild
+>    function to handle VF resets.
+> 
+> This patch series makes some assumptions about how VSI are handling by
+> FW during reset:
+> 
+> 1. During a PFR or greater all VSI in FW will be cleared.
+> 2. During a VFR/VFLR the VSI rebuild responsibility is in the hands of
+>    the PF software.
+> 3. There is code in the ice_reset_all_vfs() case to amortize operations
+>    if possible. This was left intact.
+> 4. PF software should not be replaying VSI based filters that were added
+>    other than host configured, PF software configured, or the VF's
+>    default/LAA MAC. This is the VF drivers job after it has been reset.
+> 
+> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 11 -----------
->  1 file changed, 11 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_main.c     |  12 +-
+>  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 304 +++++++-----------
+>  2 files changed, 130 insertions(+), 186 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
