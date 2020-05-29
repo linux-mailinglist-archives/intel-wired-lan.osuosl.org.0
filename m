@@ -1,57 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A83A1E8909
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 May 2020 22:42:30 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AB351E89A0
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 May 2020 23:10:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 337FA2624B;
-	Fri, 29 May 2020 20:42:29 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 26D2F88543;
+	Fri, 29 May 2020 21:10:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G1jL6hlqlSQP; Fri, 29 May 2020 20:42:28 +0000 (UTC)
+	with ESMTP id CYYrtLMV8MgB; Fri, 29 May 2020 21:10:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 09C8126244;
-	Fri, 29 May 2020 20:42:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 91454883D6;
+	Fri, 29 May 2020 21:10:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 01B6E1BF346
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 May 2020 20:42:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 476BA1BF863
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 May 2020 21:10:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id F1CFE875C0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 May 2020 20:42:24 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 7AA891FFFE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 May 2020 21:10:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FKaPuuqr_lrG for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 May 2020 20:42:24 +0000 (UTC)
+ with ESMTP id wqX0l+GS-cdj for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 May 2020 21:10:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F16FA874E3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 May 2020 20:42:23 +0000 (UTC)
-IronPort-SDR: 48T/hzX8LFg/CQkEZGv8wnJfjsfIn65rum4xgcB5atsEEVWT6zGy6JDp1MC1+4/LJHM3aV5EP/
- ovcsthmXY+cQ==
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id 50CA422621
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 May 2020 21:10:42 +0000 (UTC)
+IronPort-SDR: X/qcMLKoVJ4TVdcHHLZ4xMjIl8ZUjCJXuNMtd8X1rw0ZxmyaW+QuekfxmcgvUnseD2EN2NiIU/
+ 1LX82Y4qbY8Q==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 May 2020 13:42:23 -0700
-IronPort-SDR: 2KbhTGk5YPUnJFXwuzEx1yX/QCZz61fri5hoH2NVX+EPEypfC+K7HHgmgcDmqOuE3mV3rEUcXK
- QCgydVfaEuKw==
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 May 2020 14:10:41 -0700
+IronPort-SDR: FQatgYaPQBZ7jUOfQ1e9wLojtPOa97ubmfhwdbaC7QgR2qrUUnyqX9YP5nqjyTyqsEVwP9gbyO
+ GGxFXBUFIXHQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,450,1583222400"; d="scan'208";a="443527987"
+X-IronPort-AV: E=Sophos;i="5.73,450,1583222400"; d="scan'208";a="311371037"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.86])
- by orsmga005.jf.intel.com with ESMTP; 29 May 2020 13:42:23 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 29 May 2020 14:10:41 -0700
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 29 May 2020 13:42:20 -0700
-Message-Id: <20200529204220.1528522-1-jeffrey.t.kirsher@intel.com>
+Date: Fri, 29 May 2020 14:10:39 -0700
+Message-Id: <20200529211039.1673605-1-jeffrey.t.kirsher@intel.com>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next-queue] i40e: Remove scheduling while atomic
- possibility
+Subject: [Intel-wired-lan] [next-queue v2] i40e: Remove scheduling while
+ atomic possibility
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,11 +80,13 @@ while atomic.
 Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
+v2: fixed trailing whitespace
+
  .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 222 +++++++++++-------
  1 file changed, 135 insertions(+), 87 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 56b9e445732b..15de9f8f4314 100644
+index 56b9e445732b..539fdb5f4c50 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
 @@ -1107,6 +1107,11 @@ static int i40e_quiesce_vf_pci(struct i40e_vf *vf)
@@ -269,7 +271,7 @@ index 56b9e445732b..15de9f8f4314 100644
 + * @vl: List of VLANs - apply filter for given VLANs
 + * @num_vlans: Number of elements in @vl
 + **/
-+static inline i40e_status 
++static inline i40e_status
 +i40e_set_vsi_promisc(struct i40e_vf *vf, u16 seid, bool multi_enable,
 +		     bool unicast_enable, s16 *vl, int num_vlans)
 +{
