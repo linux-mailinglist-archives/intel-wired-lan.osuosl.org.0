@@ -1,99 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 850361EA82E
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Jun 2020 19:09:34 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 877BC1EA84C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Jun 2020 19:16:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id BF14386200;
-	Mon,  1 Jun 2020 17:09:32 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 34C5A86DAB;
+	Mon,  1 Jun 2020 17:16:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R0hOsTlEELJb; Mon,  1 Jun 2020 17:09:29 +0000 (UTC)
+	with ESMTP id jaOMSKdXZRQV; Mon,  1 Jun 2020 17:16:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 89D6B861DD;
-	Mon,  1 Jun 2020 17:09:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 630F186DB3;
+	Mon,  1 Jun 2020 17:16:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 54D1B1BF3F6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jun 2020 17:09:13 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F2901BF3F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jun 2020 17:15:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4C8CA204ED
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jun 2020 17:09:13 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 9A58A86DAB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jun 2020 17:15:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yOT7n2eIOsSB for <intel-wired-lan@lists.osuosl.org>;
- Mon,  1 Jun 2020 17:09:06 +0000 (UTC)
+ with ESMTP id vDkX5FVsVjGt for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  1 Jun 2020 17:15:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id EC103204FA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jun 2020 17:09:02 +0000 (UTC)
-IronPort-SDR: nSVSaz+BWfCDGXL80t4nS8SXA74VfaXp4DHo+e6PFffdalfE4zz5Bqa5mbT0jHTID1s12MABJg
- nnem7doIxwNQ==
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 58DDF86D95
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jun 2020 17:15:57 +0000 (UTC)
+IronPort-SDR: +f5LvDi41xbs1FeqS3x3tugJKDVMXsocToeTsxPxhXWZ3iGDOvVb3uN3fw77D6JHEf8QlC5Gie
+ t3B8keb8U63A==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2020 10:09:02 -0700
-IronPort-SDR: 11fZNckbhcIwPy2PyJQlwhMJuwfq6Q+ujnO8QcKBbjqkKZO+3taq2Mg97uN2H2ReJ54T34sRq5
- RwIXWepNppRQ==
+ 01 Jun 2020 10:15:57 -0700
+IronPort-SDR: Ol31ksGljC2T45LbXWx0HqwUAuzGNF73ka9vg2eGVT/+kdJYbhPYisQEfAPM3Z/LC37h/qQQYf
+ kHmxGq2PZMJA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,461,1583222400"; d="scan'208";a="377469467"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga001.fm.intel.com with ESMTP; 01 Jun 2020 10:09:02 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 1 Jun 2020 10:09:01 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 1 Jun 2020 10:09:01 -0700
-Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Mon, 1 Jun 2020 10:09:01 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.175)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 1 Jun 2020 10:08:59 -0700
+X-IronPort-AV: E=Sophos;i="5.73,461,1583222400"; d="scan'208";a="377471369"
+Received: from fmsmsx108.amr.corp.intel.com ([10.18.124.206])
+ by fmsmga001.fm.intel.com with ESMTP; 01 Jun 2020 10:15:57 -0700
+Received: from fmsmsx115.amr.corp.intel.com (10.18.116.19) by
+ FMSMSX108.amr.corp.intel.com (10.18.124.206) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 1 Jun 2020 10:15:56 -0700
+Received: from FMSEDG001.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx115.amr.corp.intel.com (10.18.116.19) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 1 Jun 2020 10:15:56 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Mon, 1 Jun 2020 10:15:56 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mp3N5n7xD1f7npysst0FYUJrDBooSiZebdZiEfPBFtM1IDqRTQeCYDpmlvFzAcJWHDCeN2DEI1K+HpNpX2AO+8F0dN8krBUkMHU6DnbVSuY6uGWCAVHw5hwAiN8G3c2OsKnR9ldzIe3GPuwzTWgB1Nwk+X8q264jCc5gsv26OvqnpP3vCugYrHxjmWbNUN3LDNHVF6CbYgoQX6mveGU9DxPw22J8ns1wlbDF0oVFT4J01Zs1O/pp5Kl+twVD2MukoG5UWHUmTBZB+esBuarb91RMyDsaXJ7jtU9V6AXYXnx5oTWZH7uN+lUR7LVpsKnv/7V+pgr4o0k3JwxVGuFJCQ==
+ b=hs85d6/2GgdO9aceq+ZWnzXvFiL9YuQA44qD1ZZNYh6gornDbuKZ7WKDhl+nI3DYwnG/FEE6sZPA7bgvrnyf84j8w6uxzvueXzFXH/K7IhtY6EQLXAw5iCLB21xgy4WZv9Q/AdwYSV07LtD4ETUStGwGm5945bPWLUme5oHsXY+6i36Jqzzz+2LlZ/cTFsmmOsE9hplETIPcnSQLQoenxjM+kBF+hd6q9I8LwH1EqlQQDqOFGW7ZPjOeXromiENbtTRJaeRB0vwlruyPw+FSzeYdj2P+uvUXbQBk1QfiYZeyZCTQiScEfzkzQ6R3MdhxhD6qaJ71uCY4WSi8KPn9bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=446CGZjuMjEvJht67pQJl9QMTwN13TvQaq/zqc2q1oI=;
- b=FCDonl86K/sMWOfOjcQhVJ1RKOhRdC7jU/cCsa9Y0/bpYKvXVxMSRcjj9rOPzh35hMoJD+r63hTG0uvJ/mw4+3kGplLkShV40VHNGvXaBGWuXNYlXcSPt6xGIx2+SYVd71GnCuRkkJmlKzOxqST04odtfXxgvFD2o0wHzzuMZ+6OJl4OfkqkOQG1HeRu0LJWrlIJiYA/RiXYVBUQSb4E16BMD9HE+R/Mog/vrdO7+geLpl8uSUxVaGb5Cu6EJeWBNY6crEWNV94xvnLIyzeW5/EW33c0CaV5O38bxMiR+TXLEdnEDAqjiTwKNfqMgbtLtRNJz/TYyTVtxFZQ+kmrDw==
+ bh=tOg4SW89id6jfB2TpQaEEBvs3U5YdDKUsRaYvMnT3zI=;
+ b=f6seQKywK/TVwoJyKcRoT/Zy8aN1H7Op9zgT8wmYPdurog0aYI9Obprxd9yjkGI9OKNukIqCM5SKisEuImzOii/XV6vCOJ+W1qJcnCkqfHl4eODJaSrUbFRLIHSRk82gqaEnhmOOcN/MX6tMq80Zpk0CmAEBc1Z+47VGoocFFalwesSTUoD2QUpggRHvEIfFlI+rpweW7zPlNcls/BdXyt7/gg9Q1qC9mWZPGUuoVzvxEVlIYpUjMCWpl2wao0N1qaIODntww0VgbDYQjbHE9T4CSFudD43YScxyhFFJWEBunxlnqVAQJuTecKNwhYNgyD0mq5XcIPuSqr3i0woDrw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=446CGZjuMjEvJht67pQJl9QMTwN13TvQaq/zqc2q1oI=;
- b=ffhFiLckHl91kHtY57CA8m7ukXq5Dp3r5Rp++oPHjEYhAKDlDxKeXfHn9uDhtKho9AXRFIQ/xD2vWmIesTDMsRYOiDCFJ9tjKyEjrRBV8WtIfgEXZ+E9R8h/xzvlkVXXZDxya41juBgNlt54V6jWzRkl9TNh3qFriUWWk41i1bQ=
+ bh=tOg4SW89id6jfB2TpQaEEBvs3U5YdDKUsRaYvMnT3zI=;
+ b=dngL0sHOFyLi+DsQ2zS3noCm4dL6qoTGndUBJdZKDG/GQsKP3XYAX2+Qt5fK3TzBWA9Cj+ZPUQeZdC/acV4Pw1ss8udZGlw3oe21LvwiRgi+iaTUvg7LO0GchcRsyEvIfzfAEwQUpGG10bMe65YQV9e1tNDQzURyYs+qaKXKKiY=
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB3754.namprd11.prod.outlook.com (2603:10b6:5:146::13) with
+ DM6PR11MB2665.namprd11.prod.outlook.com (2603:10b6:5:c3::12) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3045.19; Mon, 1 Jun 2020 17:08:55 +0000
+ 15.20.3045.21; Mon, 1 Jun 2020 17:15:54 +0000
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::40b:5b49:b17d:d875]) by DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::40b:5b49:b17d:d875%7]) with mapi id 15.20.3045.022; Mon, 1 Jun 2020
- 17:08:55 +0000
+ 17:15:54 +0000
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Arnd Bergmann <arnd@arndb.de>, "Kirsher, Jeffrey T"
- <jeffrey.t.kirsher@intel.com>, "David S. Miller" <davem@davemloft.net>,
- "Jakub Kicinski" <kuba@kernel.org>, "Lifshits, Vitaly"
- <vitaly.lifshits@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] [net-next] e1000e: fix unused-function
- warning
-Thread-Index: AQHWNC13H1Zf9GItw0SQd/zLJBeAQqjEBgcA
-Date: Mon, 1 Jun 2020 17:08:55 +0000
-Message-ID: <DM6PR11MB28902EB65134561890C52CB6BC8A0@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200527134716.948148-1-arnd@arndb.de>
-In-Reply-To: <20200527134716.948148-1-arnd@arndb.de>
+To: Vaibhav Gupta <vaibhavgupta40@gmail.com>, Vaibhav Gupta
+ <vaibhav.varodek@gmail.com>, Bjorn Helgaas <helgaas@kernel.org>, "Bjorn
+ Helgaas" <bhelgaas@google.com>, "bjorn@helgaas.com" <bjorn@helgaas.com>,
+ "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, "David S. Miller"
+ <davem@davemloft.net>, "rjw@rjwysocki.net" <rjw@rjwysocki.net>
+Thread-Topic: [PATCH v2] e1000: use generic power management
+Thread-Index: AQHWMpACfuNJXM4xZEOoI3KQroDhiajEC3yA
+Date: Mon, 1 Jun 2020 17:15:54 +0000
+Message-ID: <DM6PR11MB2890EDBB6B1BE7705DF2AB3CBC8A0@DM6PR11MB2890.namprd11.prod.outlook.com>
+References: <20200525122710.25064-1-vaibhavgupta40@gmail.com>
+In-Reply-To: <20200525122710.25064-1-vaibhavgupta40@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -101,37 +96,36 @@ X-MS-TNEF-Correlator:
 dlp-version: 11.2.0.6
 dlp-product: dlpe-windows
 dlp-reaction: no-action
-authentication-results: arndb.de; dkim=none (message not signed)
- header.d=none;arndb.de; dmarc=none action=none header.from=intel.com;
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [134.134.136.211]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ccc88b76-1442-4a57-72c2-08d8064e7770
-x-ms-traffictypediagnostic: DM6PR11MB3754:
+x-ms-office365-filtering-correlation-id: e473eea9-2cd4-44e8-3ba3-08d8064f7170
+x-ms-traffictypediagnostic: DM6PR11MB2665:
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB3754FD6E5CF9DD2EF340EFF0BC8A0@DM6PR11MB3754.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1303;
+x-microsoft-antispam-prvs: <DM6PR11MB26652521079B868D90C35147BC8A0@DM6PR11MB2665.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
 x-forefront-prvs: 0421BF7135
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: xvnkm2cwiECf/kQoxIfnE+RNig7Ingnh17ARiqCi5DRBOQnCaMegZz9JEI7Rom1fv8tlesn86WGyHFUAFdNIOTzyFkZnfUh0NOIlX/9NMOEyHQhfoQyXjWIakwkCDCHVSNcAFNWysaVZPdFkMXK4Zu9pLG7tlajbcZudkBHD0DDur06fuspa1O1vTjs57g6EguNqi1FdRipA+uWfk2YK0D/5iRyAAGeiovpUonINlx9aSgd1pVPxLEn2BVnXRGJhwD1BTIBL4xZVFo/C8wcwWwsq57uePvpb/TC4uD6GA6eksGX6UEm2f/N25XOx2k4mZrHg3AY9rjABXuBjqCiCng==
+x-microsoft-antispam-message-info: y7Ps0vss2q3Ak6+a5IvfWyGG4xQfUsYCM5DnMPfNpGWD4SO+j5qkO38PSTp5jjKEUGbFzMo/7DQb8l/RdXQZkOdXdp0Nq7pDinpjZN/EOFgvu3SZq55pDvbTwJ8I0nf4MvBd/RNlZtlAh+A9KP3w6/r/hU97uGtLh3pzn3UGm8KjRGxxp7EdFA4dAgHhZX5FsT2gCslZeAbEE9OB0MgK0vSAAj1ZfeZf6gsg10LxUKBK+pxuAsqTVQf1Oj3q3+kp2+9C8hdQLXnLKW484XbnqFlgoxxIf56vd1eq3ZUvclMUnCElPoWAEi1bs8TG8s/GmuBQk+eLvkZEmaCWfaQ1bgBRQT72/oyijfzo3k4J+jwMSYoAPBlpsvK/ArPHMShp
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(396003)(136003)(366004)(376002)(39860400002)(346002)(316002)(9686003)(33656002)(186003)(2906002)(110136005)(8676002)(71200400001)(8936002)(55016002)(54906003)(7696005)(478600001)(53546011)(6506007)(76116006)(52536014)(83380400001)(5660300002)(6636002)(64756008)(66476007)(66556008)(66446008)(26005)(4326008)(86362001)(66946007);
+ SFS:(346002)(376002)(396003)(136003)(366004)(39860400002)(8676002)(8936002)(110136005)(54906003)(52536014)(316002)(66476007)(66556008)(66946007)(76116006)(66446008)(86362001)(2906002)(4326008)(64756008)(55016002)(83380400001)(5660300002)(71200400001)(7696005)(26005)(7416002)(186003)(33656002)(478600001)(9686003)(53546011)(6506007)(41533002);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: 7aZbXF8fN8s/wBKqZ/QA1g8nBngMQuRgGeQ84zrlp2Npmru3bRDyasK2NUROMQuahqZJd0//OA5gr07P9bE7kLdcD8xIGqbBlYQTh2wzRGdy9C16hOiNm7VEv5F5enCAqu5S0VhuhVvZYl1c4taL29TrIgOeCxhNBlc9XyNDXo/rkgGunHzSb1Qpyz5J8QfAowZlAYF43b0Vl0F4fjy3RFi47kV3h/F9e5qZ1RvEtypdpHZqNiD4JynxOM1Wg9ywU943gJNlyrIaPXd7oIeZxsOMpEWQlXw24AXww6BDMtnBn9rTSsl0u98eYBr2synwhyKg55giPaX/+JiAEgtDH1HJv7nNpvdOE3lSE16aPY5XSWyzLddP/mPhjfqIhEKNbd1vZ4zzm8UjScGkQvU4C1QGjlJrzYeJR2SDX3OxjX+Gsy/wJkDi46ZLqTECTO3glLHtpFrIzmW3O/M9ET5kMh9r4J+SEn03dTknK9xExk5QPw3fqAfIdVxyjH5l2Iq0
+x-ms-exchange-antispam-messagedata: CbXUKrY2tn+6foegBe3eoldyTTVeqwg79t2RhwWF6VzOYrDr8UMg2sAcmsIoeWwieZKk1o7QmF/iMoGy/1U1faIhV49kqjvlij4g/aZZXPF/UH8nR2YVQjf2PchOyvW4MWHFpJvAn81K80jOBHzfu1+oNqXvVWrZ2S1lNgs8vdo8k1bBlN2ISKLUTxjcMvB53stmdtBz6/DFGMqeMD3Q5Xr2Su7OulJQNtzsTojUbpp/Wsj82zMcWwIno/EhwhDw7BfE2Q9rXLVMCTeC88LL5MIqJ2q8L+zdApuYcxqMENl/cgWFNLQzl+3SNzYNRx0DAPfcv8RqD961kEFDOvlMeIyLd27fGsBzO4Ao3TJzbdDwaEYCsGXRtKVcnl4uJTZ5ANfjgSjIkGnvK1d7f3YWYoKAI1IxiGZWfbPYFxa/5WVHRhH56Ss9zSK/xjO9YUCK7ywwupLpXu5VV88S4y+HZW/W7FuxX5va1gYvDCx7BEZwbs+g3tWloVlgkZWD0HN4
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: ccc88b76-1442-4a57-72c2-08d8064e7770
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2020 17:08:55.2509 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e473eea9-2cd4-44e8-3ba3-08d8064f7170
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jun 2020 17:15:54.7469 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: LpiQjor599mMk8Pcsl+jUAESEDZDPZ0P9C7bDrA4ZPZfiUbWXuBjWiD4//ShdQKsY3GYij0NtAgnN2vcgBEWjg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3754
+X-MS-Exchange-CrossTenant-userprincipalname: /hsdyx7jfr0DW2g6pN7/DWAp0CGnJK+n45y3jrIsaX8cTaHqbW8gckAFQuSmXy1KlhX0zHv8YuqAnfG10c8/oQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB2665
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] [net-next] e1000e: fix
- unused-function warning
+Subject: Re: [Intel-wired-lan] [PATCH v2] e1000: use generic power management
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,48 +138,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Konstantin Khlebnikov <khlebnikov@yandex-team.ru>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Wysocki,
- Rafael J" <rafael.j.wysocki@intel.com>,
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Alexander Duyck <alexander.h.duyck@linux.intel.com>
+ "skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
+ "linux-kernel-mentees@lists.linuxfoundation.org"
+ <linux-kernel-mentees@lists.linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Arnd
-> Bergmann
-> Sent: Wednesday, May 27, 2020 6:47 AM
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David S. Miller
-> <davem@davemloft.net>; Jakub Kicinski <kuba@kernel.org>; Lifshits, Vitaly
-> <vitaly.lifshits@intel.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>; Konstantin Khlebnikov
-> <khlebnikov@yandex-team.ru>; netdev@vger.kernel.org; Wysocki, Rafael J
-> <rafael.j.wysocki@intel.com>; linux-kernel@vger.kernel.org; intel-wired-
-> lan@lists.osuosl.org; Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> Subject: [Intel-wired-lan] [PATCH] [net-next] e1000e: fix unused-function
-> warning
+> From: Vaibhav Gupta <vaibhavgupta40@gmail.com>
+> Sent: Monday, May 25, 2020 5:27 AM
+> To: Vaibhav Gupta <vaibhav.varodek@gmail.com>; Bjorn Helgaas
+> <helgaas@kernel.org>; Bjorn Helgaas <bhelgaas@google.com>;
+> bjorn@helgaas.com; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David S.
+> Miller <davem@davemloft.net>; rjw@rjwysocki.net
+> Cc: Vaibhav Gupta <vaibhavgupta40@gmail.com>; Brandeburg, Jesse
+> <jesse.brandeburg@intel.com>; intel-wired-lan@lists.osuosl.org;
+> netdev@vger.kernel.org; linux-kernel@vger.kernel.org; linux-kernel-
+> mentees@lists.linuxfoundation.org; skhan@linuxfoundation.org
+> Subject: [PATCH v2] e1000: use generic power management
 > 
-> The CONFIG_PM_SLEEP #ifdef checks in this file are inconsistent,
-> leading to a warning about sometimes unused function:
+> compile-tested only
 > 
-> drivers/net/ethernet/intel/e1000e/netdev.c:137:13: error: unused function
-> 'e1000e_check_me' [-Werror,-Wunused-function]
+> With legacy PM hooks, it was the responsibility of a driver to manage PCI
+> states and also the device's power state. The generic approach is to let PCI
+> core handle the work.
 > 
-> Rather than adding more #ifdefs, just remove them completely
-> and mark the PM functions as __maybe_unused to let the compiler
-> work it out on it own.
+> e1000_suspend() calls __e1000_shutdown() to perform intermediate tasks.
+> __e1000_shutdown() modifies the value of "wake" (device should be wakeup
+> enabled or not), responsible for controlling the flow of legacy PM.
 > 
-> Fixes: e086ba2fccda ("e1000e: disable s0ix entry and exit flows for ME systems")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> Since, PCI core has no idea about the value of "wake", new code for generic
+> PM may produce unexpected results. Thus, use "device_set_wakeup_enable()"
+> to wakeup-enable the device accordingly.
+> 
+> Signed-off-by: Vaibhav Gupta <vaibhavgupta40@gmail.com>
 > ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 16 +++++-----------
->  1 file changed, 5 insertions(+), 11 deletions(-)
-> 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+>  drivers/net/ethernet/intel/e1000/e1000_main.c | 49 +++++--------------
+>  1 file changed, 13 insertions(+), 36 deletions(-)
 
+I don't have many old PCI systems that handle power management properly before adding this patch.  However, the few ones that do continue to do so with the older e1000 parts I still have around.  So a small sample, but at least confirmed on _some_ real hardware
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
