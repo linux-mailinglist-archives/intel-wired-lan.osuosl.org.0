@@ -1,65 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 918BC1EB89F
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jun 2020 11:34:51 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18ACF1EBA5B
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jun 2020 13:27:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 31B962078B;
-	Tue,  2 Jun 2020 09:34:50 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AD672847EB;
+	Tue,  2 Jun 2020 11:27:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L7kVzSyXumPn; Tue,  2 Jun 2020 11:27:10 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0929684922;
+	Tue,  2 Jun 2020 11:27:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 47F4B1BF276
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2020 11:27:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 373D9204D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2020 11:27:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h+-8Li9W3YPH; Tue,  2 Jun 2020 09:34:40 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 936BB226A2;
-	Tue,  2 Jun 2020 09:34:39 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 91C001BF27C
- for <intel-wired-lan@osuosl.org>; Tue,  2 Jun 2020 09:34:36 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8C8CC88330
- for <intel-wired-lan@osuosl.org>; Tue,  2 Jun 2020 09:34:36 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0sukljT3tPrT for <intel-wired-lan@osuosl.org>;
- Tue,  2 Jun 2020 09:34:35 +0000 (UTC)
+ with ESMTP id bxpN0eiuK5xc for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jun 2020 11:27:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mo-csw.securemx.jp (mo-csw1116.securemx.jp [210.130.202.158])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B25DA8833F
- for <intel-wired-lan@osuosl.org>; Tue,  2 Jun 2020 09:34:34 +0000 (UTC)
-Received: by mo-csw.securemx.jp (mx-mo-csw1116) id 0529YRFV032281;
- Tue, 2 Jun 2020 18:34:28 +0900
-X-Iguazu-Qid: 2wHHbNmoGrVD5BjUjy
-X-Iguazu-QSIG: v=2; s=0; t=1591090467; q=2wHHbNmoGrVD5BjUjy;
- m=fGRN8cn4/IOkrwM6DExYEVgmltT7yxB7gW2NkJIsq9c=
-Received: from imx2.toshiba.co.jp (imx2.toshiba.co.jp [106.186.93.51])
- by relay.securemx.jp (mx-mr1112) id 0529YQGa028570;
- Tue, 2 Jun 2020 18:34:27 +0900
-Received: from enc01.localdomain ([106.186.93.100])
- by imx2.toshiba.co.jp  with ESMTP id 0529YQsR012900;
- Tue, 2 Jun 2020 18:34:26 +0900 (JST)
-Received: from hop001.toshiba.co.jp ([133.199.164.63])
- by enc01.localdomain  with ESMTP id 0529YQEO014942;
- Tue, 2 Jun 2020 18:34:26 +0900
-From: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
-To: "Avivi\, Amir" <amir.avivi@intel.com>
-References: <mailman.9577.1590117676.59095.intel-wired-lan@osuosl.org>
- <7cdf1300-973e-6950-8146-d0481661b98b@intel.com>
-Date: Tue, 02 Jun 2020 18:34:25 +0900
-In-Reply-To: <7cdf1300-973e-6950-8146-d0481661b98b@intel.com> (Amir Avivi's
- message of "Tue, 2 Jun 2020 10:13:00 +0300")
-X-TSB-HOP: ON
-Message-ID: <87367d7qvy.fsf@kokedama.swc.toshiba.co.jp>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+Received: from mail-wr1-f65.google.com (mail-wr1-f65.google.com
+ [209.85.221.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id E371B20367
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2020 11:27:07 +0000 (UTC)
+Received: by mail-wr1-f65.google.com with SMTP id t18so3016591wru.6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 02 Jun 2020 04:27:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=3Fvjz5nBs/wCPZQr4wyZqYWxZlG2zuno0ejPtDD3mqU=;
+ b=ctgK7uh3jB8lao2PJrtxn1AgQt7DY3C9KKjwPEMP2Xld3UXepVhpOf/Q62b5pJwWcw
+ 4xE7xu6YoXVDIR0VkU1CWdx+owZXci96PLl0MKlZhuAAbNmdc/TXme2y7BeqwOMNLbiq
+ ErPDweuzXSEIjhHR7n5o8Jy3v8FtfXyrvKvHJ+iAtGHOecUpth6PFG5ISAKf6SmB10D/
+ V3q6x8scgl4hWVTb7bGbV+Cu+dgicXXbsaPD+AeJvMrtZcbBloFtnnmYMszHJ1bj5PQA
+ RXb2gEnRHyL+h9FNmcL+CJC+wBtUxkQzTcfvGewvjf0Y6xV3fmBS8QlLwQQufrFKI/5C
+ IWuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=3Fvjz5nBs/wCPZQr4wyZqYWxZlG2zuno0ejPtDD3mqU=;
+ b=jpCmGevb8z8qPGEbyGfD5CX3cRZm62Jr5XM2gsODSnozz8SJmVMC85ApcDRvMUIom/
+ Ia1a/sXfb84KPmmqGohIuTDaDkViBtjnDYltTuI49qolkV1Lor5APr3ZQELkPpfJGPEn
+ aFvNsFuv6NIO/SVvszr5RivcPiLAem0JW12Eox8O6bZEssAm2qpaVsaewXccOZaVE13f
+ SIvzTE1LblP3nnTC2oYuVIB4zsjnrmy9dg6zRtgeeypMOcXn+g0yCVPW/Y090XHdd2G/
+ 7AJTWTK7I1cOdwbx/UCxzYp28S/QDPoVoBB5xkgrvnguv6Mr0+t8DefxIWm5kv+Aqu8l
+ zkPg==
+X-Gm-Message-State: AOAM531KJrBH73vPBqTilJaZ/+sVEIbnkxzkTedv8Gf9vSYTGwUUr5RF
+ cdNCMcbKjVCClGsP/i+LOAbuWlp/tSO5tA3oXtQ=
+X-Google-Smtp-Source: ABdhPJwdEnHroVV2FiwYU0FGgqX8cmpzRgjiDdPOUkntb86drOV2W4P2ZkFWMlv2sB1PM4Gz5YyVYxaBo3cRqMT02Lc=
+X-Received: by 2002:adf:e90b:: with SMTP id f11mr25491527wrm.248.1591097226370; 
+ Tue, 02 Jun 2020 04:27:06 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] Intel-wired-lan Digest, Vol 268, Issue 43,
- Replay to message number 6,
- Test hints request for e1000e: Relax condition to trigger reset for ME
- workaround patch
+References: <1591089148-959-1-git-send-email-lirongqing@baidu.com>
+In-Reply-To: <1591089148-959-1-git-send-email-lirongqing@baidu.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Tue, 2 Jun 2020 13:26:55 +0200
+Message-ID: <CAJ+HfNjXh882Dc2N9qpYDGhEuTed9Vp36RuHSXnBMmWXfV9iHg@mail.gmail.com>
+To: Li RongQing <lirongqing@baidu.com>, 
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Netdev <netdev@vger.kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: fix wrong index in
+ i40e_xsk_umem_dma_map
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,91 +83,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: bpf <bpf@vger.kernel.org>, "Karlsson, Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Amir,
-
-"Avivi, Amir" <amir.avivi@intel.com> writes:
-
-[...]
-
-> Subject: [PATCH] e1000e: Relax condition to trigger reset for ME workaround
->
-> It's an error if the value of the RX/TX tail descriptor does not match
-> what was written. The error condition is true regardless the duration
-> of the interference from ME. But the driver only performs the reset if
-> E1000_ICH_FWSM_PCIM2PCI_COUNT (2000) iterations of 50us delay have
-> transpired. The extra condition can lead to inconsistency between the
-> state of hardware as expected by the driver.
->
-> Fix this by dropping the check for number of delay iterations.
->
-> While at it, also make __ew32_prepare() static as it's not used
-> anywhere else.
->
-> Signed-off-by: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
-> Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
-> Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> ---
-> Hi Jeff,
->
-> If there are no further comments please consider merging the patch.
->
-> Also, should it be marked for backport to stable?
->
-> Thanks,
-> Punit
->
-> RFC[0] -> v1:
-> * Dropped return value for __ew32_prepare() as it's not used
-> * Made __ew32_prepare() static
-> * Added tags
->
-> [0] https://lkml.org/lkml/2020/5/12/02
->
->  drivers/net/ethernet/intel/e1000e/e1000.h  |  1 -
->  drivers/net/ethernet/intel/e1000e/netdev.c | 12 +++++-------
->  2 files changed, 5 insertions(+), 8 deletions(-)
->
-> Tested-by: Aaron Brown <aaron.f.brown@intel.com>
->
-> Thanks for taking the patch for a spin.
->
-> Jeff, let me know if you're okay to apply the tag or want me to send a
-> new version.
->
-> Hi Punit,
-> This patch appears to be effecting some legacy code effecting old
-> hardware.
-
-Indeed. The problem under investigation was reported on a machine
-released ~2012 I think.
-
-> We tried applying it but we could not get the driver to run the
-> changed code lines.
-> Please provide some test hints(What platforms did
-> you check it on?  What tests did you run?) regarding this patch.
-
-As mentioned in the original posting[0], the patch was based on code
-investigation.
-
-A backported version of the patch is running on a really old kernel
-(2.6.x) and we haven't found any way to speed up reproduction - it takes
-O(weeks) to hit the issue in the test environment.
-
-[0] https://lkml.org/lkml/2020/5/12/20
-
-[...]
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gVHVlLCAyIEp1biAyMDIwIGF0IDExOjIwLCBMaSBSb25nUWluZyA8bGlyb25ncWluZ0BiYWlk
+dS5jb20+IHdyb3RlOgo+CgpMaSwgdGhhbmtzIGZvciB0aGUgcGF0Y2ghIEdvb2QgY2F0Y2ghCgpQ
+bGVhc2UgYWRkIGEgcHJvcGVyIGRlc2NyaXB0aW9uIGZvciB0aGUgcGF0Y2guIFRoZSBmaXggc2hv
+dWxkIGJlIGFkZGVkCnRvIHRoZSBzdGFibGUgYnJhbmNoZXMgKDUuNyBhbmQgZWFybGllcikuIE5v
+dGUgdGhhdCB0aGlzIGNvZGUgd2FzCnJlY2VudGx5IHJlbW92ZWQgaW4gZmF2b3Igb2YgdGhlIG5l
+dyBBRl9YRFAgYnVmZmVyIGFsbG9jYXRpb24gc2NoZW1lLgoKCkJqw7ZybgoKPiBGaXhlczogMGE3
+MTQxODZkM2MwICIoaTQwZTogYWRkIEFGX1hEUCB6ZXJvLWNvcHkgUnggc3VwcG9ydCkiCj4gU2ln
+bmVkLW9mZi1ieTogTGkgUm9uZ1FpbmcgPGxpcm9uZ3FpbmdAYmFpZHUuY29tPgo+IC0tLQo+ICBk
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMgfCA0ICsrLS0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMgYi9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMKPiBpbmRleCAwYjdkMjkxOTJiMmMu
+LmM5MjY0MzgxMThlYSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+NDBlL2k0MGVfeHNrLmMKPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0
+MGVfeHNrLmMKPiBAQCAtMzcsOSArMzcsOSBAQCBzdGF0aWMgaW50IGk0MGVfeHNrX3VtZW1fZG1h
+X21hcChzdHJ1Y3QgaTQwZV92c2kgKnZzaSwgc3RydWN0IHhkcF91bWVtICp1bWVtKQo+Cj4gIG91
+dF91bm1hcDoKPiAgICAgICAgIGZvciAoaiA9IDA7IGogPCBpOyBqKyspIHsKPiAtICAgICAgICAg
+ICAgICAgZG1hX3VubWFwX3BhZ2VfYXR0cnMoZGV2LCB1bWVtLT5wYWdlc1tpXS5kbWEsIFBBR0Vf
+U0laRSwKPiArICAgICAgICAgICAgICAgZG1hX3VubWFwX3BhZ2VfYXR0cnMoZGV2LCB1bWVtLT5w
+YWdlc1tqXS5kbWEsIFBBR0VfU0laRSwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgRE1BX0JJRElSRUNUSU9OQUwsIEk0MEVfUlhfRE1BX0FUVFIpOwo+IC0gICAgICAgICAg
+ICAgICB1bWVtLT5wYWdlc1tpXS5kbWEgPSAwOwo+ICsgICAgICAgICAgICAgICB1bWVtLT5wYWdl
+c1tqXS5kbWEgPSAwOwo+ICAgICAgICAgfQo+Cj4gICAgICAgICByZXR1cm4gLTE7Cj4gLS0KPiAy
+LjE2LjIKPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJ
+bnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0
+dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
