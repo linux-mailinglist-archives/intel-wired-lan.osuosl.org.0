@@ -1,55 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB9211EE35F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jun 2020 13:25:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4849187C55;
-	Thu,  4 Jun 2020 11:25:23 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TMP6gWBSCUHq; Thu,  4 Jun 2020 11:25:23 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 79FAC87C5B;
-	Thu,  4 Jun 2020 11:25:22 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C33F61BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 11:25:20 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FB231EE58E
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jun 2020 15:44:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id BCC3688778
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 11:25:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AE749888F5;
+	Thu,  4 Jun 2020 13:44:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s3WsDuCs709a; Thu,  4 Jun 2020 13:44:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9EBE0888FD;
+	Thu,  4 Jun 2020 13:44:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A3C41BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 13:44:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 5575986F78
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 13:44:23 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I7mAGciUc3LU for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Jun 2020 11:25:18 +0000 (UTC)
+ with ESMTP id yLwNm--hjv46 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Jun 2020 13:44:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A11C788754
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 11:25:18 +0000 (UTC)
-IronPort-SDR: hoYHrteZzZRRzBHSGTb6nHD5UyPVpi/zxrP7d3eYdgCoIyTf42h3Scdyeek+ZyDx6B132xeOiv
- bqqObMw5am3w==
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B130D86F55
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 13:44:22 +0000 (UTC)
+IronPort-SDR: 465loPxh+Z4DaGwcVKbW8Vh3Kc966J325DCZVpyuneuD8r+MRnTiJ1ak894CHi/jVpbfxwA+S6
+ GUI986CK23tg==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2020 04:25:17 -0700
-IronPort-SDR: dFrgID1VTvNy8lbfcTChWAovM1qqXJI+v697cXiDMuXUdfhev1doFKxIQc06ZYSQwZ/2OEXWvH
- d7Z5iCsA612Q==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2020 06:44:22 -0700
+IronPort-SDR: /jKASw8nHZqH516inHDGWjXSQsHk63yk70LV0A8oxL46fBHknu0ex/0cnDOT0ofQAyWumEWpbq
+ pLRGq2TsjsSQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,472,1583222400"; d="scan'208";a="471387948"
-Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
- by fmsmga006.fm.intel.com with ESMTP; 04 Jun 2020 04:25:17 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  4 Jun 2020 14:25:16 +0300
-Message-Id: <20200604112516.44949-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Add LPI counters
+X-IronPort-AV: E=Sophos;i="5.73,472,1583222400"; d="scan'208";a="445507912"
+Received: from lkp-server02.sh.intel.com (HELO 6de3076d9aaa) ([10.239.97.151])
+ by orsmga005.jf.intel.com with ESMTP; 04 Jun 2020 06:44:20 -0700
+Received: from kbuild by 6de3076d9aaa with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jgqAN-000012-H3; Thu, 04 Jun 2020 13:44:19 +0000
+Date: Thu, 04 Jun 2020 21:43:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ed8fa82.OmyOS4bI85BwMP0n%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
+ 1ce658b95bf35a2d655bef40caa780543ec2a319
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,52 +67,131 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add EEE TX LPI and EEE RX LPI counters. A EEE TX LPI event
-occurs when the transmitter enters EEE (IEEE 802.3az) LPI
-state. A EEE RX LPI event ocuurs when the receiver detect
-link partner entry into EEE(IEEE 802.3az) LPI state.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 1ce658b95bf35a2d655bef40caa780543ec2a319  ethernet/intel: Convert fallthrough code comments
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+Error/Warning in current branch:
+
+drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2269:15: error: redefinition of 'truesize'
+
+Error/Warning ids grouped by kconfigs:
+
+recent_errors
+`-- powerpc-defconfig
+    `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+
+elapsed time: 486m
+
+configs tested: 98
+configs skipped: 1
+
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         hackkit_defconfig
+sh                         apsh4a3a_defconfig
+arm                            mmp2_defconfig
+arm                        neponset_defconfig
+arm                         orion5x_defconfig
+arm                       aspeed_g4_defconfig
+sh                          r7780mp_defconfig
+riscv                            allyesconfig
+mips                        bcm47xx_defconfig
+arm                           tegra_defconfig
+mips                           ci20_defconfig
+arm                         ebsa110_defconfig
+arm                          moxart_defconfig
+arm                     eseries_pxa_defconfig
+arm                           stm32_defconfig
+arm                     am200epdkit_defconfig
+powerpc                    gamecube_defconfig
+nios2                            alldefconfig
+arm                              zx_defconfig
+microblaze                    nommu_defconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                              allnoconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                                allnoconfig
+um                                  defconfig
+um                               allmodconfig
+um                               allyesconfig
+x86_64                                   rhel
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+x86_64                                  kexec
+
 ---
- drivers/net/ethernet/intel/igc/igc_mac.c  | 2 ++
- drivers/net/ethernet/intel/igc/igc_regs.h | 2 ++
- 2 files changed, 4 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
-index bc077f230f17..f3f7717b6233 100644
---- a/drivers/net/ethernet/intel/igc/igc_mac.c
-+++ b/drivers/net/ethernet/intel/igc/igc_mac.c
-@@ -307,6 +307,8 @@ void igc_clear_hw_cntrs_base(struct igc_hw *hw)
- 	rd32(IGC_ICRXDMTC);
- 
- 	rd32(IGC_RPTHC);
-+	rd32(IGC_TLPIC);
-+	rd32(IGC_RLPIC);
- 	rd32(IGC_HGPTC);
- 	rd32(IGC_HGORCL);
- 	rd32(IGC_HGORCH);
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index d53f49833db5..eb3e8e70501d 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -188,6 +188,8 @@
- #define IGC_ICTXQEC	0x04118  /* Interrupt Cause Tx Queue Empty Count */
- #define IGC_ICTXQMTC	0x0411C  /* Interrupt Cause Tx Queue Min Thresh Count */
- #define IGC_RPTHC	0x04104  /* Rx Packets To Host */
-+#define IGC_TLPIC	0x04148  /* EEE Tx LPI Count */
-+#define IGC_RLPIC	0x0414C  /* EEE Rx LPI Count */
- #define IGC_HGPTC	0x04118  /* Host Good Packets Tx Count */
- #define IGC_RXDMTC	0x04120  /* Rx Descriptor Minimum Threshold Count */
- #define IGC_HGORCL	0x04128  /* Host Good Octets Received Count Low */
--- 
-2.11.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
