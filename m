@@ -1,65 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26D6C1EDB9A
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jun 2020 05:22:53 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A9891EDC19
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jun 2020 06:10:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B3DE286D94;
-	Thu,  4 Jun 2020 03:22:51 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 53DF423307;
+	Thu,  4 Jun 2020 04:10:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NaxskaxkfCv8; Thu,  4 Jun 2020 03:22:51 +0000 (UTC)
+	with ESMTP id of8o26uxvlHZ; Thu,  4 Jun 2020 04:10:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C33BC86DA6;
-	Thu,  4 Jun 2020 03:22:50 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 823C52268D;
+	Thu,  4 Jun 2020 04:10:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5DCB81BF96B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 03:22:49 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 519BC1BF390
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 04:10:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 58537886DA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 03:22:49 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4BEF922246
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 04:10:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6AU704Qcw0As for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Jun 2020 03:22:48 +0000 (UTC)
-X-Greylist: delayed 07:02:09 by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0206.hostedemail.com
- [216.40.44.206])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7ADEC886AD
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 03:22:48 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave01.hostedemail.com (Postfix) with ESMTP id 1A1D71801E384
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 03:15:57 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay06.hostedemail.com (Postfix) with ESMTP id B1C8218224D82;
- Thu,  4 Jun 2020 03:15:54 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:968:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1537:1560:1593:1594:1711:1714:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3622:3865:3867:3868:3872:4321:5007:10004:10400:10848:11232:11658:11914:12297:12740:12760:12895:13069:13311:13357:13439:14659:21080:21433:21451:21627:30012:30054:30055:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: trick31_1c06b4a26d94
-X-Filterd-Recvd-Size: 1028
-Received: from XPS-9350.home (unknown [47.151.136.130])
- (Authenticated sender: joe@perches.com)
- by omf19.hostedemail.com (Postfix) with ESMTPA;
- Thu,  4 Jun 2020 03:15:54 +0000 (UTC)
-Message-ID: <d74c63e48bbc2f437f7d7aad1c0064dac2a47203.camel@perches.com>
-From: Joe Perches <joe@perches.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>, 
- intel-wired-lan@lists.osuosl.org
-Date: Wed, 03 Jun 2020 20:15:52 -0700
-In-Reply-To: <20200604030726.1573257-1-jeffrey.t.kirsher@intel.com>
+ with ESMTP id dTjZcyimbPAF for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Jun 2020 04:10:50 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by silver.osuosl.org (Postfix) with ESMTPS id 28D8A20445
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 04:10:50 +0000 (UTC)
+IronPort-SDR: 0Htt9P8CRsPVKUvp60LlZiTHwSLFt01GdML3qYnF/HEtkuEDLiRazUYhr30Fp06xlZ71rZ/zLK
+ 6tHGaQVHK7QA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Jun 2020 21:10:48 -0700
+IronPort-SDR: 5u0YGIEkZ3jpz7gYTZjPBKv1cCkJ8H1KvzJuDsuydFSfM155vkRfbgcPTXsnqFbzksn8yfn7hu
+ 1xZp9gSJISnQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,471,1583222400"; d="scan'208";a="294199496"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by fmsmga004.fm.intel.com with ESMTP; 03 Jun 2020 21:10:48 -0700
+Received: from orsmsx121.amr.corp.intel.com (10.22.225.226) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 3 Jun 2020 21:10:48 -0700
+Received: from orsmsx112.amr.corp.intel.com ([169.254.3.61]) by
+ ORSMSX121.amr.corp.intel.com ([169.254.10.222]) with mapi id 14.03.0439.000;
+ Wed, 3 Jun 2020 21:10:48 -0700
+From: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
+To: Joe Perches <joe@perches.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [next-queue v2] ethernet/intel: Convert fallthrough code comments
+Thread-Index: AQHWOh1KzdbqCEvLvU2cRiqQs3r2t6jIPgUA//+ZVnA=
+Date: Thu, 4 Jun 2020 04:10:47 +0000
+Message-ID: <61CC2BC414934749BD9F5BF3D5D94044986E9384@ORSMSX112.amr.corp.intel.com>
 References: <20200604030726.1573257-1-jeffrey.t.kirsher@intel.com>
-User-Agent: Evolution 3.36.2-0ubuntu1 
+ <d74c63e48bbc2f437f7d7aad1c0064dac2a47203.camel@perches.com>
+In-Reply-To: <d74c63e48bbc2f437f7d7aad1c0064dac2a47203.camel@perches.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-version: 11.2.0.6
+dlp-reaction: no-action
+x-originating-ip: [10.22.254.138]
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [next-queue v2] ethernet/intel: Convert
  fallthrough code comments
@@ -80,13 +88,25 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 2020-06-03 at 20:07 -0700, Jeff Kirsher wrote:
-> Convert all the remaining 'fall through" code comments to the newer
-> 'fallthough;' keyword.
+> -----Original Message-----
+> From: Joe Perches <joe@perches.com>
+> Sent: Wednesday, June 3, 2020 20:16
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Subject: Re: [next-queue v2] ethernet/intel: Convert fallthrough code comments
+> 
+> On Wed, 2020-06-03 at 20:07 -0700, Jeff Kirsher wrote:
+> > Convert all the remaining 'fall through" code comments to the newer
+> > 'fallthough;' keyword.
+> 
+> Maybe write it was scripted and
+[Kirsher, Jeffrey T] 
 
-Maybe write it was scripted and
+Partially scripted, I used your script, but when I did a manual search for ' fall' or ' Fall', I found a few more hits.
+But I have no issues with updating the patch description to add your suggestions.  Thanks again for the initial script and patch.
 
-v2: removed unnecessary fallthrough; after break;
+> 
+> v2: removed unnecessary fallthrough; after break;
 
 _______________________________________________
 Intel-wired-lan mailing list
