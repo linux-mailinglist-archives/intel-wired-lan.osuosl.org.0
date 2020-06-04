@@ -2,65 +2,54 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B57F01EDCA6
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jun 2020 07:13:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BB9211EE35F
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jun 2020 13:25:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 32AE28813C;
-	Thu,  4 Jun 2020 05:13:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4849187C55;
+	Thu,  4 Jun 2020 11:25:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uqh1Tw3kZPZg; Thu,  4 Jun 2020 05:13:37 +0000 (UTC)
+	with ESMTP id TMP6gWBSCUHq; Thu,  4 Jun 2020 11:25:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4C8ED88129;
-	Thu,  4 Jun 2020 05:13:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 79FAC87C5B;
+	Thu,  4 Jun 2020 11:25:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9CDB21BF853
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 05:13:34 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C33F61BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 11:25:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7F1002261A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 05:13:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BCC3688778
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 11:25:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TdbhIAakJB-Y for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Jun 2020 05:13:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0207.hostedemail.com
- [216.40.44.207])
- by silver.osuosl.org (Postfix) with ESMTPS id 74FC6220E5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 05:13:33 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay07.hostedemail.com (Postfix) with ESMTP id 26882181D341E;
- Thu,  4 Jun 2020 05:13:32 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:973:982:988:989:1260:1277:1311:1313:1314:1345:1359:1381:1437:1515:1516:1518:1534:1540:1593:1594:1711:1730:1747:1777:1792:2110:2393:2551:2553:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3867:3868:3872:3873:4321:5007:7576:7904:9545:10004:10400:10848:11232:11658:11914:12043:12050:12297:12740:12760:12895:13069:13095:13311:13357:13436:13439:14181:14659:14721:21080:21433:21451:21627:30012:30054:30055:30063:30064:30090:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: front38_3c1723a26d94
-X-Filterd-Recvd-Size: 1805
-Received: from XPS-9350.home (unknown [47.151.136.130])
- (Authenticated sender: joe@perches.com)
- by omf01.hostedemail.com (Postfix) with ESMTPA;
- Thu,  4 Jun 2020 05:13:31 +0000 (UTC)
-Message-ID: <d85393e8e5676ffd808923f00bb1396309781e7a.camel@perches.com>
-From: Joe Perches <joe@perches.com>
-To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Date: Wed, 03 Jun 2020 22:13:30 -0700
-In-Reply-To: <61CC2BC414934749BD9F5BF3D5D94044986E9384@ORSMSX112.amr.corp.intel.com>
-References: <20200604030726.1573257-1-jeffrey.t.kirsher@intel.com>
- <d74c63e48bbc2f437f7d7aad1c0064dac2a47203.camel@perches.com>
- <61CC2BC414934749BD9F5BF3D5D94044986E9384@ORSMSX112.amr.corp.intel.com>
-User-Agent: Evolution 3.36.2-0ubuntu1 
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [next-queue v2] ethernet/intel: Convert
- fallthrough code comments
+ with ESMTP id I7mAGciUc3LU for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Jun 2020 11:25:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A11C788754
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2020 11:25:18 +0000 (UTC)
+IronPort-SDR: hoYHrteZzZRRzBHSGTb6nHD5UyPVpi/zxrP7d3eYdgCoIyTf42h3Scdyeek+ZyDx6B132xeOiv
+ bqqObMw5am3w==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jun 2020 04:25:17 -0700
+IronPort-SDR: dFrgID1VTvNy8lbfcTChWAovM1qqXJI+v697cXiDMuXUdfhev1doFKxIQc06ZYSQwZ/2OEXWvH
+ d7Z5iCsA612Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,472,1583222400"; d="scan'208";a="471387948"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by fmsmga006.fm.intel.com with ESMTP; 04 Jun 2020 04:25:17 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  4 Jun 2020 14:25:16 +0300
+Message-Id: <20200604112516.44949-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Add LPI counters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,35 +62,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 2020-06-04 at 04:10 +0000, Kirsher, Jeffrey T wrote:
-> > -----Original Message-----
-> > From: Joe Perches <joe@perches.com>
-> > Sent: Wednesday, June 3, 2020 20:16
-> > To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
-> > lan@lists.osuosl.org
-> > Subject: Re: [next-queue v2] ethernet/intel: Convert fallthrough code comments
-> > 
-> > On Wed, 2020-06-03 at 20:07 -0700, Jeff Kirsher wrote:
-> > > Convert all the remaining 'fall through" code comments to the newer
-> > > 'fallthough;' keyword.
-> > 
-> > Maybe write it was scripted and
-> [Kirsher, Jeffrey T] 
-> 
-> Partially scripted, I used your script, but when I did a manual search for ' fall' or ' Fall', I found a few more hits.
+Add EEE TX LPI and EEE RX LPI counters. A EEE TX LPI event
+occurs when the transmitter enters EEE (IEEE 802.3az) LPI
+state. A EEE RX LPI event ocuurs when the receiver detect
+link partner entry into EEE(IEEE 802.3az) LPI state.
 
-Oh, nice.
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_mac.c  | 2 ++
+ drivers/net/ethernet/intel/igc/igc_regs.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-It's a brainless script.
-Good thing you used yours too.
-
-cheers, Joe
-
+diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
+index bc077f230f17..f3f7717b6233 100644
+--- a/drivers/net/ethernet/intel/igc/igc_mac.c
++++ b/drivers/net/ethernet/intel/igc/igc_mac.c
+@@ -307,6 +307,8 @@ void igc_clear_hw_cntrs_base(struct igc_hw *hw)
+ 	rd32(IGC_ICRXDMTC);
+ 
+ 	rd32(IGC_RPTHC);
++	rd32(IGC_TLPIC);
++	rd32(IGC_RLPIC);
+ 	rd32(IGC_HGPTC);
+ 	rd32(IGC_HGORCL);
+ 	rd32(IGC_HGORCH);
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index d53f49833db5..eb3e8e70501d 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -188,6 +188,8 @@
+ #define IGC_ICTXQEC	0x04118  /* Interrupt Cause Tx Queue Empty Count */
+ #define IGC_ICTXQMTC	0x0411C  /* Interrupt Cause Tx Queue Min Thresh Count */
+ #define IGC_RPTHC	0x04104  /* Rx Packets To Host */
++#define IGC_TLPIC	0x04148  /* EEE Tx LPI Count */
++#define IGC_RLPIC	0x0414C  /* EEE Rx LPI Count */
+ #define IGC_HGPTC	0x04118  /* Host Good Packets Tx Count */
+ #define IGC_RXDMTC	0x04120  /* Rx Descriptor Minimum Threshold Count */
+ #define IGC_HGORCL	0x04128  /* Host Good Octets Received Count Low */
+-- 
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
