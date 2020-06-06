@@ -1,71 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BBDD1F2175
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jun 2020 23:25:42 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 250B620C92;
-	Mon,  8 Jun 2020 21:25:41 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hbYZ1AJ2WcJJ; Mon,  8 Jun 2020 21:25:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B6F13221C6;
-	Mon,  8 Jun 2020 21:25:39 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 578D91BF30A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2020 11:19:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A8A6C1F2174
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jun 2020 23:25:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 533FC883B1
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2020 11:19:03 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 54FB686FBB;
+	Mon,  8 Jun 2020 21:25:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i9pzTny5NEyR; Mon,  8 Jun 2020 21:25:11 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 443EC86E53;
+	Mon,  8 Jun 2020 21:25:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D95E1BF477
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jun 2020 20:01:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 38E788618D
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jun 2020 20:01:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V6nEMyUGoBAG for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Jun 2020 11:19:00 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f196.google.com (mail-qk1-f196.google.com
- [209.85.222.196])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9023B8143A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2020 11:19:00 +0000 (UTC)
-Received: by mail-qk1-f196.google.com with SMTP id v79so9196326qkb.10
- for <intel-wired-lan@lists.osuosl.org>; Fri, 05 Jun 2020 04:19:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:from:date:message-id:subject:to;
- bh=xKdIBK6vh4VrwRo6cjMZDF/++YitYxEh+O1ta8sFAX4=;
- b=J/5nO8J8aaJCA1OnfhlDWFWOO0giSgmnxwbUiwQi3BJLrGDhnZjG4OL+dx03rlhet3
- wEmGnXRe+JToSrrbUe+LVLxJfyPQ1N8FXK/arFqWGrV+vt/qkn9EJM++81aijnNsCzz8
- s6CRAIjvVEaz1jiz/BhTyka+rZUOplNEvohthX35NLIatoRPxh0AM9ufyc3htFeK4n+Q
- Q5wdPJ2H08JRWP8PR+l5WB2JmMdAVgG3WRbnPpcR2IGQtQaRYGjmfDUu35tGu7myR63h
- lBGu9SdDu0wH6LGAN/pOIgbIxmFZj8PxnggQPWmioglEEnaxfWudSjSlK4pBeiXQDh1Y
- CIHw==
+ with ESMTP id OYnlKI-Q2LtA for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  6 Jun 2020 20:01:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f194.google.com (mail-qk1-f194.google.com
+ [209.85.222.194])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 7C37B86153
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jun 2020 20:01:29 +0000 (UTC)
+Received: by mail-qk1-f194.google.com with SMTP id c14so13391974qka.11
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 06 Jun 2020 13:01:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+Pq6RzQqJCNvdcxNmu8B5Dj+UAbb2+P92x9klLCwkTg=;
+ b=snyxI1RFz4ks9PuyfJj3AxurO0chMruanXZ4FnuGVI+PtJ8+px+72zjIAOr27ekn0D
+ XraBfMx3R5YFIXc+cr9zw/rejrQL8CWlZ0zjvmMv4l4UWQay4UWiUC0IlVINrxGJKUDE
+ VFuKWUUtwEetvUMSTSW6J/SBJGIgCMxpuZ6vMAETDsC2fT9gY+G0B2gwP76MwCRxhRvh
+ /8XNqPoimET0t01e5gPHwEi95jaPxlulGpbcGkM/IK0mG/CGlfX7o+uaapqaUCoEvchF
+ 4no8e2CQFkig7qtwEXrh0zgYaVsVXM1Ahiu7llTifsB69tg6rTxIcI5y0N6FZOBfXnKE
+ pLyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=xKdIBK6vh4VrwRo6cjMZDF/++YitYxEh+O1ta8sFAX4=;
- b=neiq7Sh1zEpuRPHq+m9zJr/wCiF+h0SCB1ixzjcDDxBGmzoAbAit/x5xKFqS9a5PPw
- UvXl1RhG+uG5XBQpwdxFAROmjMOKui08AU9AlAj/LSLBV6H5d+P24pxe71GcR3MhyHjR
- ko81MxKi+rOaKeBsFiKfMgWo2UveiL5zFOkmWJxacjFBEysnfGlIFWkrazR7ebxmDuGs
- 3do+0PUuQ48EabAXdSvZ4uLRL/uUTS015viQedcCtGxJSqvIEn8gF1jzsI7xyI0RPiXU
- Jc/yFcxNMak0i97W1BRkTlGhoYgIhLctJ0GDEKQrbkgXzcPfYhem+WtHSemzZEI3LCRk
- F3xw==
-X-Gm-Message-State: AOAM5339gap+bNoqwG4/KTln3EwlbU6pj+rV48bzWx4lG589mFJJIqB9
- NT9Rp6QWgQJEW042c8iqAmC9ewGCdfxurD9mXOI=
-X-Google-Smtp-Source: ABdhPJz/A8QiAlYMGPMyHDI/afZkGU7/ekTUJK8zlwR/wWh1AqC4BotbO4+uB+zikL/nBNrzygmIEAWFOTo7OtIPxJw=
-X-Received: by 2002:a37:a789:: with SMTP id q131mr8956849qke.19.1591355939499; 
- Fri, 05 Jun 2020 04:18:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+Pq6RzQqJCNvdcxNmu8B5Dj+UAbb2+P92x9klLCwkTg=;
+ b=gNz2cdccv9Bb2d2PgdBxD2bB1tLR7Z6TrK5cVGCwmlz3PM2jwepArtwKanTXQ8l9oF
+ Ya7qRecH31z5RmhGoz6J/CowgknPQFJ3SRI86rDZVVI5Bs82LGFFKIZ5EvZW0LWl+gJm
+ /2CmB5dZBXPBz8nZ/+nbZf+qA9x9z+iPqQzxqYwSaUgYS7L5LIRH56zRlhkZWUYqEn9O
+ st4wKKvtWEjOH4lAXpOS0sCEXjOS5ru789c0XJ36aYCvafTpxyTGSdTmAwnoSLj+mATg
+ LCDTfTdx93YqEnLd6q2VAyOkfa4GEv3rVPS9sdVO6pW92qQdQ5G9YWx6TppsWug9PXpL
+ Fh0Q==
+X-Gm-Message-State: AOAM531wvQlJNeOHI5u7Jzasdddfbt4W7l7I8Z+7Urbxfg1PxgJGgkqt
+ k1KwfJtBTGvwXBMdQxUd+JlDZg==
+X-Google-Smtp-Source: ABdhPJxaj9ZWumNwHhmlL7/HI4iCEPKtVDD/DQlVN8Qr2cveSXoE+w30VfvYEcyRHG62uRqGgA9R8Q==
+X-Received: by 2002:a37:4595:: with SMTP id
+ s143mr16482248qka.449.1591473688461; 
+ Sat, 06 Jun 2020 13:01:28 -0700 (PDT)
+Received: from ovpn-112-93.phx2.redhat.com
+ (pool-71-184-117-43.bstnma.fios.verizon.net. [71.184.117.43])
+ by smtp.gmail.com with ESMTPSA id e1sm3170960qto.51.2020.06.06.13.01.26
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 06 Jun 2020 13:01:27 -0700 (PDT)
+From: Qian Cai <cai@lca.pw>
+To: jeffrey.t.kirsher@intel.com
+Date: Sat,  6 Jun 2020 16:01:16 -0400
+Message-Id: <20200606200116.1398-1-cai@lca.pw>
+X-Mailer: git-send-email 2.21.0 (Apple Git-122.2)
 MIME-Version: 1.0
-From: "Alexander E. Patrakov" <patrakov@gmail.com>
-Date: Fri, 5 Jun 2020 16:18:48 +0500
-Message-ID: <CAN_LGv1uTo2MNso8nT0adWXJ_wGbX5VoiNn9xKoJDR1q04g6FQ@mail.gmail.com>
-To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, 
- Alexander Duyck <aduyck@mirantis.com>
-X-Mailman-Approved-At: Mon, 08 Jun 2020 21:25:38 +0000
-Subject: [Intel-wired-lan] VLAN-aware bridge and i40e driver problem
+X-Mailman-Approved-At: Mon, 08 Jun 2020 21:25:08 +0000
+Subject: [Intel-wired-lan] [PATCH] i40e: silence an UBSAN false positive
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,92 +86,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Qian Cai <cai@lca.pw>,
+ intel-wired-lan@lists.osuosl.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello,
+virtchnl_rss_lut.lut is used for the RSS lookup table, but in
+i40e_vc_config_rss_lut(), it is indexed by subscript results in a false
+positive.
 
-We have some new servers with this kind of dual-port 40GbE network
-cards, supported by the in-tree i40e driver:
+ UBSAN: array-index-out-of-bounds in drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c:2983:15
+ index 1 is out of range for type 'u8 [1]'
+ CPU: 34 PID: 871 Comm: kworker/34:2 Not tainted 5.7.0-next-20200605+ #5
+ Hardware name: HPE ProLiant DL385 Gen10/ProLiant DL385 Gen10, BIOS A40 03/09/2018
+ Workqueue: i40e i40e_service_task [i40e]
+ Call Trace:
+  dump_stack+0xa7/0xea
+  ubsan_epilogue+0x9/0x45
+  __ubsan_handle_out_of_bounds+0x6f/0x80
+  i40e_vc_process_vf_msg+0x457c/0x4660 [i40e]
+  i40e_service_task+0x96c/0x1ab0 [i40e]
+  process_one_work+0x57d/0xbd0
+  worker_thread+0x63/0x5b0
+  kthread+0x20c/0x230
+  ret_from_fork+0x22/0x30
 
-21:00.0 Ethernet controller [0200]: Intel Corporation Ethernet
-Controller XL710 for 40GbE QSFP+ [8086:1583] (rev 02)
-21:00.1 Ethernet controller [0200]: Intel Corporation Ethernet
-Controller XL710 for 40GbE QSFP+ [8086:1583] (rev 02)
+Fixes: d510497b8397 ("i40e: add input validation for virtchnl handlers")
+Signed-off-by: Qian Cai <cai@lca.pw>
+---
+ drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-On each server, the two network ports (exposed as enp33s0f0 and
-enp33s0f1) are used as slaves of the "bond0" interface, which is
-itself used as a port of a vlan-aware bridge (vmbr0). There are tap
-interfaces for KVM virtual machines that are also in this bridge, and
-assigned to different VLANs as needed. The bond0 interface carries all
-VLANs, and is essentially used as a "trunk port".
-
-This is Proxmox (a Debian-based system), so the VLANs are added to the
-bond0 interface at boot time via the /etc/network/if-up.d/bridgevlan
-script, which runs essentially this:
-
-    port=bond0
-    bridge vlan add dev $port vid 2-4094
-
-And here is why this behaves badly.
-
-The "bridge" command does send the whole "add vids" request as a
-single netlink message, so there are no inefficiencies at this step.
-Then, the bond driver attempts to pass down the VLAN filter down to
-the underlying hardware (i.e. to the i40e driver), and that's where
-things go downhill.
-
-Apparently the driver attempts to add the VIDs to the hardware filter
-one-by-one. And then, after adding 256 VIDs, it hits the hardware
-limit and complains:
-
-    i40e 0000:21:00.0: Error I40E_AQ_RC_ENOSPC, forcing overflow
-promiscuous on PF
-
-And then goes on to process the next VID, also noticing that it is
-beyond the hardware limit, and so on. Result: 3839 lines of log spam
-from each network port, and more than 1 minute spent fighting with the
-hardware (i.e. slow boot). After that, VLAN filtering and dispatching
-of packets to VMs are done in software, and done correctly.
-
-In this setup, the hardware VLAN filtering capability of the card is
-useless, because there is actually nothing to filter out from the
-wire. However, the slow boot and the log spam annoy sysadmins here. It
-would have been better if the i40e driver somehow saw beforehand that
-the whole VLAN filtering request is beyond the abilities of the
-hardware, and did not attempt to add, fruitlessly, the VID entries
-one-by-one. After all, on other servers, with "Mellanox Technologies
-MT27700 Family [ConnectX-4] [15b3:1013]" (mlx5_core driver), it takes
-less than 1 second to add these VLANs to bond0. Is it because the
-Mellanox card is somehow better, or is it just a gross inefficiency of
-the i40e driver? Could anyone familiar with the card please try to fix
-the i40e driver?
-
-I have tried to force the VLAN filtering in software, via ethtool:
-
-    ethtool -K enp33s0f0 rx-vlan-filter off
-
-But it doesn't work, because (since at least commit
-b0fe3306432796c8f7adbede8ccd479bb7b53d0a, which adds it to
-netdev->features but not netdev->hw_features) this is not a
-user-changeable option on i40e. Question to the driver maintainers:
-why is it so?
-
-P.S. We have finally found and adopted this workaround:
-
-    ethtool -K bond0 rx-vlan-filter off
-
-...and things work reasonably well: fast boot, no log spam, okay-ish
-performance (14.5 Gbps per CPU core).
-
-P.P.S. I suspect that it would have been better to use macvlan instead
-of the VLAN-aware bridge, but for legacy reasons we can't do that.
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 56b9e445732b..d5a959d91ba9 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2971,6 +2971,7 @@ static int i40e_vc_config_rss_lut(struct i40e_vf *vf, u8 *msg)
+ 	struct i40e_vsi *vsi = NULL;
+ 	i40e_status aq_ret = 0;
+ 	u16 i;
++	u8 *lut = vrl->lut;
+ 
+ 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states) ||
+ 	    !i40e_vc_isvalid_vsi_id(vf, vrl->vsi_id) ||
+@@ -2980,13 +2981,13 @@ static int i40e_vc_config_rss_lut(struct i40e_vf *vf, u8 *msg)
+ 	}
+ 
+ 	for (i = 0; i < vrl->lut_entries; i++)
+-		if (vrl->lut[i] >= vf->num_queue_pairs) {
++		if (lut[i] >= vf->num_queue_pairs) {
+ 			aq_ret = I40E_ERR_PARAM;
+ 			goto err;
+ 		}
+ 
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+-	aq_ret = i40e_config_rss(vsi, NULL, vrl->lut, I40E_VF_HLUT_ARRAY_SIZE);
++	aq_ret = i40e_config_rss(vsi, NULL, lut, I40E_VF_HLUT_ARRAY_SIZE);
+ 	/* send the response to the VF */
+ err:
+ 	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT,
 -- 
-Alexander E. Patrakov
-CV: http://pc.cd/PLz7
+2.21.0 (Apple Git-122.2)
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
