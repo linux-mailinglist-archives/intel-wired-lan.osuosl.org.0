@@ -1,59 +1,56 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4F4D1EFE92
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Jun 2020 19:12:24 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 41A341F0A8E
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  7 Jun 2020 10:51:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B0CB85E8C;
-	Fri,  5 Jun 2020 17:12:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 762A781BDC;
+	Sun,  7 Jun 2020 08:51:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BcIyJdJ4nuoY; Fri,  5 Jun 2020 17:12:22 +0000 (UTC)
+	with ESMTP id 62nzNeA8rKKw; Sun,  7 Jun 2020 08:51:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8147787199;
-	Fri,  5 Jun 2020 17:12:22 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E578987ED9;
+	Sun,  7 Jun 2020 08:51:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D13C61BF30B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2020 17:12:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 889301BF377
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2020 08:51:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id BC79B20371
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2020 17:12:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 804A086969
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2020 08:51:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mntGxE75LoZy for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Jun 2020 17:12:16 +0000 (UTC)
+ with ESMTP id QKmbMGiNB6KJ for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  7 Jun 2020 08:51:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 16633228B0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2020 17:12:16 +0000 (UTC)
-IronPort-SDR: 4MSQdDhgvwX3DGEhFONFUA59MgHED6uND272CDi7qMegcgr2P3My+G0xs+RHzeSNLAq7qQnkYO
- gOj6W1LnknjQ==
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2854486959
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2020 08:51:30 +0000 (UTC)
+IronPort-SDR: cJYn7IdJEyvcfdAQPCGmakzdGtEdptjkZlm0TbSGKJBu6waC9mYTnYHGx+S/SKTtCxVKeqD3xc
+ 4zp+uIBljsZA==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2020 10:12:15 -0700
-IronPort-SDR: SC5kS4EgB/rVaKsX0jt9OCwxGFwLuBRmvFB6wn9f4t9h98vaDUyBDZIrHLF2Pty1HIX7cbsVSw
- lc1HvRw7+Wgg==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2020 01:51:27 -0700
+IronPort-SDR: ehv5ARXcWd1PksiZLrwhwtWsmgPXXsZ9o+PYQdVcsVLAzdhSILJ4lRRQ65qpjeLfE4WSpklQP4
+ 7ii6B0s4DrkQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,477,1583222400"; d="scan'208";a="273530624"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
- by orsmga006.jf.intel.com with ESMTP; 05 Jun 2020 10:12:14 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.73,483,1583222400"; d="scan'208";a="348878449"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by orsmga001.jf.intel.com with ESMTP; 07 Jun 2020 01:51:26 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  5 Jun 2020 10:09:46 -0700
-Message-Id: <20200605170946.23494-4-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200605170946.23494-1-anthony.l.nguyen@intel.com>
-References: <20200605170946.23494-1-anthony.l.nguyen@intel.com>
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 4/4] iavf: increase reset complete wait
- time
+Date: Sun,  7 Jun 2020 11:51:27 +0300
+Message-Id: <20200607085127.29281-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove TCP segmentation TX
+ fail counter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,102 +63,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul Greenwalt <paul.greenwalt@intel.com>
+TCP segmentation TX context fail counter is not
+applicable for i225 devices.
+This patch comes to clean up this counter.
 
-With an increased number of VFs, it's possible to encounter the following
-issue during reset.
-
-    iavf b8d4:00:02.0: Hardware reset detected
-    iavf b8d4:00:02.0: Reset never finished (0)
-    iavf b8d4:00:02.0: Reset task did not complete, VF disabled
-
-Increase the reset complete wait count to allow for 128 VFs to complete
-reset.
-
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf.h      |  4 ++++
- drivers/net/ethernet/intel/iavf/iavf_main.c | 12 +++++-------
- 2 files changed, 9 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_mac.c  | 1 -
+ drivers/net/ethernet/intel/igc/igc_main.c | 1 -
+ drivers/net/ethernet/intel/igc/igc_regs.h | 1 -
+ 3 files changed, 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 56cd1a39a4b5..8a65525a7c0d 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -219,6 +219,10 @@ struct iavf_cloud_filter {
- 	bool add;		/* filter needs to be added */
- };
+diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
+index f3f7717b6233..9a5e44ef45f4 100644
+--- a/drivers/net/ethernet/intel/igc/igc_mac.c
++++ b/drivers/net/ethernet/intel/igc/igc_mac.c
+@@ -289,7 +289,6 @@ void igc_clear_hw_cntrs_base(struct igc_hw *hw)
+ 	rd32(IGC_TNCRS);
+ 	rd32(IGC_HTDPMC);
+ 	rd32(IGC_TSCTC);
+-	rd32(IGC_TSCTFC);
  
-+#define IAVF_RESET_WAIT_MS 10
-+#define IAVF_RESET_WAIT_DETECTED_COUNT 500
-+#define IAVF_RESET_WAIT_COMPLETE_COUNT 2000
-+
- /* board specific private data structure */
- struct iavf_adapter {
- 	struct work_struct reset_task;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 3f3c6260c5df..78bd9e3df3ac 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -2035,8 +2035,6 @@ static void iavf_disable_vf(struct iavf_adapter *adapter)
- 	dev_info(&adapter->pdev->dev, "Reset task did not complete, VF disabled\n");
- }
+ 	rd32(IGC_MGTPRC);
+ 	rd32(IGC_MGTPDC);
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index b92e7e20ce78..5d70751e8ab3 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3740,7 +3740,6 @@ void igc_update_stats(struct igc_adapter *adapter)
+ 	adapter->stats.algnerrc += rd32(IGC_ALGNERRC);
  
--#define IAVF_RESET_WAIT_MS 10
--#define IAVF_RESET_WAIT_COUNT 500
- /**
-  * iavf_reset_task - Call-back task to handle hardware reset
-  * @work: pointer to work_struct
-@@ -2090,20 +2088,20 @@ static void iavf_reset_task(struct work_struct *work)
- 	adapter->flags |= IAVF_FLAG_RESET_PENDING;
+ 	adapter->stats.tsctc += rd32(IGC_TSCTC);
+-	adapter->stats.tsctfc += rd32(IGC_TSCTFC);
  
- 	/* poll until we see the reset actually happen */
--	for (i = 0; i < IAVF_RESET_WAIT_COUNT; i++) {
-+	for (i = 0; i < IAVF_RESET_WAIT_DETECTED_COUNT; i++) {
- 		reg_val = rd32(hw, IAVF_VF_ARQLEN1) &
- 			  IAVF_VF_ARQLEN1_ARQENABLE_MASK;
- 		if (!reg_val)
- 			break;
- 		usleep_range(5000, 10000);
- 	}
--	if (i == IAVF_RESET_WAIT_COUNT) {
-+	if (i == IAVF_RESET_WAIT_DETECTED_COUNT) {
- 		dev_info(&adapter->pdev->dev, "Never saw reset\n");
- 		goto continue_reset; /* act like the reset happened */
- 	}
- 
- 	/* wait until the reset is complete and the PF is responding to us */
--	for (i = 0; i < IAVF_RESET_WAIT_COUNT; i++) {
-+	for (i = 0; i < IAVF_RESET_WAIT_COMPLETE_COUNT; i++) {
- 		/* sleep first to make sure a minimum wait time is met */
- 		msleep(IAVF_RESET_WAIT_MS);
- 
-@@ -2115,7 +2113,7 @@ static void iavf_reset_task(struct work_struct *work)
- 
- 	pci_set_master(adapter->pdev);
- 
--	if (i == IAVF_RESET_WAIT_COUNT) {
-+	if (i == IAVF_RESET_WAIT_COMPLETE_COUNT) {
- 		dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
- 			reg_val);
- 		iavf_disable_vf(adapter);
-@@ -3418,7 +3416,7 @@ static int iavf_check_reset_complete(struct iavf_hw *hw)
- 	u32 rstat;
- 	int i;
- 
--	for (i = 0; i < 100; i++) {
-+	for (i = 0; i < IAVF_RESET_WAIT_COMPLETE_COUNT; i++) {
- 		rstat = rd32(hw, IAVF_VFGEN_RSTAT) &
- 			     IAVF_VFGEN_RSTAT_VFR_STATE_MASK;
- 		if ((rstat == VIRTCHNL_VFR_VFACTIVE) ||
+ 	adapter->stats.iac += rd32(IGC_IAC);
+ 	adapter->stats.icrxoc += rd32(IGC_ICRXOC);
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index eb3e8e70501d..1c46cec5a799 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -181,7 +181,6 @@
+ #define IGC_MPTC	0x040F0  /* Multicast Packets Tx Count - R/clr */
+ #define IGC_BPTC	0x040F4  /* Broadcast Packets Tx Count - R/clr */
+ #define IGC_TSCTC	0x040F8  /* TCP Segmentation Context Tx - R/clr */
+-#define IGC_TSCTFC	0x040FC  /* TCP Segmentation Context Tx Fail - R/clr */
+ #define IGC_IAC		0x04100  /* Interrupt Assertion Count */
+ #define IGC_ICTXPTC	0x0410C  /* Interrupt Cause Tx Pkt Timer Expire Count */
+ #define IGC_ICTXATC	0x04110  /* Interrupt Cause Tx Abs Timer Expire Count */
 -- 
-2.20.1
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
