@@ -2,61 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17B201F241A
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 01:20:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 730991F2421
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 01:20:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C163186943;
-	Mon,  8 Jun 2020 23:20:02 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 325A784CE6;
+	Mon,  8 Jun 2020 23:20:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0Rc3m0KuRLee; Mon,  8 Jun 2020 23:20:02 +0000 (UTC)
+	with ESMTP id CrvylKoCx1s6; Mon,  8 Jun 2020 23:20:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D6F358698F;
-	Mon,  8 Jun 2020 23:20:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EB2F084F9F;
+	Mon,  8 Jun 2020 23:20:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 965161BF381
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:19:57 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 63D0D1BF381
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:20:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 92B6F87FE3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:19:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 57D8920367
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:20:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kpaxPweE-+uB for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Jun 2020 23:19:57 +0000 (UTC)
+ with ESMTP id DhBSX2D1-L4c for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Jun 2020 23:20:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0BC9A87C9C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:19:57 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id A06BF20133
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:20:24 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F12C120823;
- Mon,  8 Jun 2020 23:19:55 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8F9042089D;
+ Mon,  8 Jun 2020 23:20:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591658396;
- bh=QdiF7mgvWlf2SQq24qBVEy93LHtjIwVli09p1uRnJk0=;
+ s=default; t=1591658424;
+ bh=nuRbWw5Kchm3ShfLDintiliZPeou6jAUSjOoxaq8Y2A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=NIWFBvFrdrYIWOPlZX3QZnTdIEunaUDJB4S4fmnQiK8beljRbUsjbZ/6agpBlYsDI
- lqFSOhEx8age8VoUIrDO0DTStyqNFN2MAAz9bcfqyDf4HdX7FQqrq+ldFQKmtF1IzB
- w8KfJRWK3vtvfRcxZ4iBrb+xZZ2B4K9RDdSk9T9M=
+ b=CDftZJXTZfP1ikd9xCSdQpu0ZlcO1SJ1fsuPDjGBgas9mwk6PPIGAFsMqnPzTd02g
+ LJrh8a+ie2ixaCgbZOuu0JXf7xsl4lqSFALzTNBxKKZ4ymqfmv8JKBq7hpO9qi+L4z
+ qPVg+YedNpqyRH9JRt+MDU445oKqlsYU/0IGPqf0=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Mon,  8 Jun 2020 19:16:46 -0400
-Message-Id: <20200608231848.3366970-53-sashal@kernel.org>
+Date: Mon,  8 Jun 2020 19:17:03 -0400
+Message-Id: <20200608231848.3366970-70-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200608231848.3366970-1-sashal@kernel.org>
 References: <20200608231848.3366970-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 053/175] ice: Fix for memory
- leaks and modify ICE_FREE_CQ_BUFS
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 070/175] e1000: Distribute
+ switch variables for initialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,130 +69,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Surabhi Boob <surabhi.boob@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sasha Levin <sashal@kernel.org>, Kees Cook <keescook@chromium.org>,
+ netdev@vger.kernel.org, clang-built-linux@googlegroups.com,
+ intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Surabhi Boob <surabhi.boob@intel.com>
-
-[ Upstream commit 68d270783742783f96e89ef92ac24ab3c7fb1d31 ]
-
-Handle memory leaks during control queue initialization and
-buffer allocation failures. The macro ICE_FREE_CQ_BUFS is modified to
-re-use for this fix.
-
-Signed-off-by: Surabhi Boob <surabhi.boob@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/ethernet/intel/ice/ice_controlq.c | 49 +++++++++++--------
- 1 file changed, 28 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
-index c68709c7ef81..2e9c97bad3c3 100644
---- a/drivers/net/ethernet/intel/ice/ice_controlq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
-@@ -199,7 +199,9 @@ ice_alloc_rq_bufs(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- 		cq->rq.r.rq_bi[i].pa = 0;
- 		cq->rq.r.rq_bi[i].size = 0;
- 	}
-+	cq->rq.r.rq_bi = NULL;
- 	devm_kfree(ice_hw_to_dev(hw), cq->rq.dma_head);
-+	cq->rq.dma_head = NULL;
- 
- 	return ICE_ERR_NO_MEMORY;
- }
-@@ -245,7 +247,9 @@ ice_alloc_sq_bufs(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- 		cq->sq.r.sq_bi[i].pa = 0;
- 		cq->sq.r.sq_bi[i].size = 0;
- 	}
-+	cq->sq.r.sq_bi = NULL;
- 	devm_kfree(ice_hw_to_dev(hw), cq->sq.dma_head);
-+	cq->sq.dma_head = NULL;
- 
- 	return ICE_ERR_NO_MEMORY;
- }
-@@ -304,6 +308,28 @@ ice_cfg_rq_regs(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- 	return 0;
- }
- 
-+#define ICE_FREE_CQ_BUFS(hw, qi, ring)					\
-+do {									\
-+	int i;								\
-+	/* free descriptors */						\
-+	if ((qi)->ring.r.ring##_bi)					\
-+		for (i = 0; i < (qi)->num_##ring##_entries; i++)	\
-+			if ((qi)->ring.r.ring##_bi[i].pa) {		\
-+				dmam_free_coherent(ice_hw_to_dev(hw),	\
-+					(qi)->ring.r.ring##_bi[i].size,	\
-+					(qi)->ring.r.ring##_bi[i].va,	\
-+					(qi)->ring.r.ring##_bi[i].pa);	\
-+					(qi)->ring.r.ring##_bi[i].va = NULL;\
-+					(qi)->ring.r.ring##_bi[i].pa = 0;\
-+					(qi)->ring.r.ring##_bi[i].size = 0;\
-+		}							\
-+	/* free the buffer info list */					\
-+	if ((qi)->ring.cmd_buf)						\
-+		devm_kfree(ice_hw_to_dev(hw), (qi)->ring.cmd_buf);	\
-+	/* free DMA head */						\
-+	devm_kfree(ice_hw_to_dev(hw), (qi)->ring.dma_head);		\
-+} while (0)
-+
- /**
-  * ice_init_sq - main initialization routine for Control ATQ
-  * @hw: pointer to the hardware structure
-@@ -357,6 +383,7 @@ static enum ice_status ice_init_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- 	goto init_ctrlq_exit;
- 
- init_ctrlq_free_rings:
-+	ICE_FREE_CQ_BUFS(hw, cq, sq);
- 	ice_free_cq_ring(hw, &cq->sq);
- 
- init_ctrlq_exit:
-@@ -416,33 +443,13 @@ static enum ice_status ice_init_rq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- 	goto init_ctrlq_exit;
- 
- init_ctrlq_free_rings:
-+	ICE_FREE_CQ_BUFS(hw, cq, rq);
- 	ice_free_cq_ring(hw, &cq->rq);
- 
- init_ctrlq_exit:
- 	return ret_code;
- }
- 
--#define ICE_FREE_CQ_BUFS(hw, qi, ring)					\
--do {									\
--	int i;								\
--	/* free descriptors */						\
--	for (i = 0; i < (qi)->num_##ring##_entries; i++)		\
--		if ((qi)->ring.r.ring##_bi[i].pa) {			\
--			dmam_free_coherent(ice_hw_to_dev(hw),		\
--					   (qi)->ring.r.ring##_bi[i].size,\
--					   (qi)->ring.r.ring##_bi[i].va,\
--					   (qi)->ring.r.ring##_bi[i].pa);\
--			(qi)->ring.r.ring##_bi[i].va = NULL;		\
--			(qi)->ring.r.ring##_bi[i].pa = 0;		\
--			(qi)->ring.r.ring##_bi[i].size = 0;		\
--		}							\
--	/* free the buffer info list */					\
--	if ((qi)->ring.cmd_buf)						\
--		devm_kfree(ice_hw_to_dev(hw), (qi)->ring.cmd_buf);	\
--	/* free DMA head */						\
--	devm_kfree(ice_hw_to_dev(hw), (qi)->ring.dma_head);		\
--} while (0)
--
- /**
-  * ice_shutdown_sq - shutdown the Control ATQ
-  * @hw: pointer to the hardware structure
--- 
-2.25.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RnJvbTogS2VlcyBDb29rIDxrZWVzY29va0BjaHJvbWl1bS5vcmc+CgpbIFVwc3RyZWFtIGNvbW1p
+dCBhMzRjN2Y1MTU2NjU0ZWJhZjdlYWFjZTEwMjkzOGJlN2ZmNzAzNmNiIF0KClZhcmlhYmxlcyBk
+ZWNsYXJlZCBpbiBhIHN3aXRjaCBzdGF0ZW1lbnQgYmVmb3JlIGFueSBjYXNlIHN0YXRlbWVudHMK
+Y2Fubm90IGJlIGF1dG9tYXRpY2FsbHkgaW5pdGlhbGl6ZWQgd2l0aCBjb21waWxlciBpbnN0cnVt
+ZW50YXRpb24gKGFzCnRoZXkgYXJlIG5vdCBwYXJ0IG9mIGFueSBleGVjdXRpb24gZmxvdykuIFdp
+dGggR0NDJ3MgcHJvcG9zZWQgYXV0b21hdGljCnN0YWNrIHZhcmlhYmxlIGluaXRpYWxpemF0aW9u
+IGZlYXR1cmUsIHRoaXMgdHJpZ2dlcnMgYSB3YXJuaW5nIChhbmQgdGhleQpkb24ndCBnZXQgaW5p
+dGlhbGl6ZWQpLiBDbGFuZydzIGF1dG9tYXRpYyBzdGFjayB2YXJpYWJsZSBpbml0aWFsaXphdGlv
+bgoodmlhIENPTkZJR19JTklUX1NUQUNLX0FMTD15KSBkb2Vzbid0IHRocm93IGEgd2FybmluZywg
+YnV0IGl0IGFsc28KZG9lc24ndCBpbml0aWFsaXplIHN1Y2ggdmFyaWFibGVzWzFdLiBOb3RlIHRo
+YXQgdGhlc2Ugd2FybmluZ3MgKG9yIHNpbGVudApza2lwcGluZykgaGFwcGVuIGJlZm9yZSB0aGUg
+ZGVhZC1zdG9yZSBlbGltaW5hdGlvbiBvcHRpbWl6YXRpb24gcGhhc2UsCnNvIGV2ZW4gd2hlbiB0
+aGUgYXV0b21hdGljIGluaXRpYWxpemF0aW9ucyBhcmUgbGF0ZXIgZWxpZGVkIGluIGZhdm9yIG9m
+CmRpcmVjdCBpbml0aWFsaXphdGlvbnMsIHRoZSB3YXJuaW5ncyByZW1haW4uCgpUbyBhdm9pZCB0
+aGVzZSBwcm9ibGVtcywgbW92ZSBzdWNoIHZhcmlhYmxlcyBpbnRvIHRoZSAiY2FzZSIgd2hlcmUK
+dGhleSdyZSB1c2VkIG9yIGxpZnQgdGhlbSB1cCBpbnRvIHRoZSBtYWluIGZ1bmN0aW9uIGJvZHku
+Cgpkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMC9lMTAwMF9tYWluLmM6IEluIGZ1bmN0
+aW9uIOKAmGUxMDAwX3htaXRfZnJhbWXigJk6CmRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2Ux
+MDAwL2UxMDAwX21haW4uYzozMTQzOjE4OiB3YXJuaW5nOiBzdGF0ZW1lbnQgd2lsbCBuZXZlciBi
+ZSBleGVjdXRlZCBbLVdzd2l0Y2gtdW5yZWFjaGFibGVdCiAzMTQzIHwgICAgIHVuc2lnbmVkIGlu
+dCBwdWxsX3NpemU7CiAgICAgIHwgICAgICAgICAgICAgICAgICBefn5+fn5+fn4KClsxXSBodHRw
+czovL2J1Z3MubGx2bS5vcmcvc2hvd19idWcuY2dpP2lkPTQ0OTE2CgpTaWduZWQtb2ZmLWJ5OiBL
+ZWVzIENvb2sgPGtlZXNjb29rQGNocm9taXVtLm9yZz4KVGVzdGVkLWJ5OiBBYXJvbiBCcm93biA8
+YWFyb24uZi5icm93bkBpbnRlbC5jb20+ClNpZ25lZC1vZmYtYnk6IEplZmYgS2lyc2hlciA8amVm
+ZnJleS50LmtpcnNoZXJAaW50ZWwuY29tPgpTaWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2Fz
+aGFsQGtlcm5lbC5vcmc+Ci0tLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDAvZTEw
+MDBfbWFpbi5jIHwgNCArKystCiAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAxIGRl
+bGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDAv
+ZTEwMDBfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDAvZTEwMDBfbWFp
+bi5jCmluZGV4IDg2NDkzZmVhNTZlNC4uZjkzZWQ3MDcwOWM2IDEwMDY0NAotLS0gYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMC9lMTAwMF9tYWluLmMKKysrIGIvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvZTEwMDAvZTEwMDBfbWFpbi5jCkBAIC0zMTQwLDggKzMxNDAsOSBAQCBz
+dGF0aWMgbmV0ZGV2X3R4X3QgZTEwMDBfeG1pdF9mcmFtZShzdHJ1Y3Qgc2tfYnVmZiAqc2tiLAog
+CQloZHJfbGVuID0gc2tiX3RyYW5zcG9ydF9vZmZzZXQoc2tiKSArIHRjcF9oZHJsZW4oc2tiKTsK
+IAkJaWYgKHNrYi0+ZGF0YV9sZW4gJiYgaGRyX2xlbiA9PSBsZW4pIHsKIAkJCXN3aXRjaCAoaHct
+Pm1hY190eXBlKSB7CisJCQljYXNlIGUxMDAwXzgyNTQ0OiB7CiAJCQkJdW5zaWduZWQgaW50IHB1
+bGxfc2l6ZTsKLQkJCWNhc2UgZTEwMDBfODI1NDQ6CisKIAkJCQkvKiBNYWtlIHN1cmUgd2UgaGF2
+ZSByb29tIHRvIGNob3Agb2ZmIDQgYnl0ZXMsCiAJCQkJICogYW5kIHRoYXQgdGhlIGVuZCBhbGln
+bm1lbnQgd2lsbCB3b3JrIG91dCB0bwogCQkJCSAqIHRoaXMgaGFyZHdhcmUncyByZXF1aXJlbWVu
+dHMKQEAgLTMxNjIsNiArMzE2Myw3IEBAIHN0YXRpYyBuZXRkZXZfdHhfdCBlMTAwMF94bWl0X2Zy
+YW1lKHN0cnVjdCBza19idWZmICpza2IsCiAJCQkJfQogCQkJCWxlbiA9IHNrYl9oZWFkbGVuKHNr
+Yik7CiAJCQkJYnJlYWs7CisJCQl9CiAJCQlkZWZhdWx0OgogCQkJCS8qIGRvIG5vdGhpbmcgKi8K
+IAkJCQlicmVhazsKLS0gCjIuMjUuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1s
+YW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9p
+bnRlbC13aXJlZC1sYW4K
