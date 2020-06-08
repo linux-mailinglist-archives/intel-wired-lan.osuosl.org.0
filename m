@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A32D1F220E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 01:06:28 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B53F71F222E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 01:07:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 116FA860C6;
-	Mon,  8 Jun 2020 23:06:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6354888400;
+	Mon,  8 Jun 2020 23:07:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pU6PxFNEpckP; Mon,  8 Jun 2020 23:06:26 +0000 (UTC)
+	with ESMTP id fR8lDq2B-tct; Mon,  8 Jun 2020 23:07:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 076AB85D68;
-	Mon,  8 Jun 2020 23:06:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D3F7A883DC;
+	Mon,  8 Jun 2020 23:07:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F2EE51BF381
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:06:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AB85B1BF980
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:07:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D846922767
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:06:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A70A1204FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:07:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J2oapQDBJLVS for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Jun 2020 23:06:21 +0000 (UTC)
+ with ESMTP id r4VHRtvwyv8p for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Jun 2020 23:07:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id 17245204FB
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:06:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id 2102C21509
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:07:09 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1628E2076A;
- Mon,  8 Jun 2020 23:06:20 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 150E620823;
+ Mon,  8 Jun 2020 23:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1591657580;
- bh=BL5eAXPRlC1IBRiuQcN180O4CGnUQWKkqqkqjGc2e78=;
+ s=default; t=1591657629;
+ bh=r2ZD/z74CHUpWNLziOf1yJLE0NiqYpuEhktxmoHnFwk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=QrQ/jl+8BmC9KzK7tx4QXEj5RT5haS7ZFaWIQOW+fhDuVBZHPdvVV2Pnq2R6TEGp9
- P1KR8DCyQvxqsL1URqbFQ9UHLDGfoonRr1pUmEnegW0acXxnCpEPzMYy+KaTftL5JH
- jzJ2s+FMQVTREHOOEZWZa01BnSEFD4q0sq29ZLeY=
+ b=atsd5W3fOooIvGAn7Ii+ey0UKWoK/4lMyzkazsdqqTUV7NxofNf2QRzjhqu6MQ5ea
+ yppIJV5DEG9yd2R5dQE2ojqX0eGi2AqgLjXd45dx8VmLNF5re61l9R2lRBVny26TeC
+ gFI0y2zFjAG87yNfwgQx0j6WV/pBUIflUsFN/k3k=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Mon,  8 Jun 2020 19:01:43 -0400
-Message-Id: <20200608230607.3361041-10-sashal@kernel.org>
+Date: Mon,  8 Jun 2020 19:02:21 -0400
+Message-Id: <20200608230607.3361041-48-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200608230607.3361041-1-sashal@kernel.org>
 References: <20200608230607.3361041-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.7 010/274] igc: Fix default MAC
- address filter override
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.7 048/274] ixgbe: Fix XDP
+ redirect on archs with PAGE_SIZE above 4K
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,51 +69,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Andre Guedes <andre.guedes@intel.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
+ Alexei Starovoitov <ast@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Jesper Dangaard Brouer <brouer@redhat.com>, bpf@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Andre Guedes <andre.guedes@intel.com>
+From: Jesper Dangaard Brouer <brouer@redhat.com>
 
-[ Upstream commit ac9156b27564a089ec52f526bfcb59f61c34e7c6 ]
+[ Upstream commit 88eb0ee17b2ece64fcf6689a4557a5c2e7a89c4b ]
 
-This patch fixes a bug when the user adds the first MAC address filter
-via ethtool NFC mechanism.
+The ixgbe driver have another memory model when compiled on archs with
+PAGE_SIZE above 4096 bytes. In this mode it doesn't split the page in
+two halves, but instead increment rx_buffer->page_offset by truesize of
+packet (which include headroom and tailroom for skb_shared_info).
 
-When the first MAC address filter is added, it overwrites the default
-MAC address filter configured at RAL[0] and RAH[0]. As consequence,
-frames addressed to the interface MAC address are not sent to host
-anymore.
+This is done correctly in ixgbe_build_skb(), but in ixgbe_rx_buffer_flip
+which is currently only called on XDP_TX and XDP_REDIRECT, it forgets
+to add the tailroom for skb_shared_info. This breaks XDP_REDIRECT, for
+veth and cpumap.  Fix by adding size of skb_shared_info tailroom.
 
-This patch fixes the bug by calling igc_set_default_mac_filter() during
-adapter init so the position 0 of adapter->mac_table[] is assigned to
-the default MAC address.
+Maintainers notice: This fix have been queued to Jeff.
 
-Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
-Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Fixes: 6453073987ba ("ixgbe: add initial support for xdp redirect")
+Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
+Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Link: https://lore.kernel.org/bpf/158945344946.97035.17031588499266605743.stgit@firesoul
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 69fa1ce1f927..c7020ff2f490 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2325,7 +2325,9 @@ static void igc_configure(struct igc_adapter *adapter)
- 	igc_setup_mrqc(adapter);
- 	igc_setup_rctl(adapter);
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 718931d951bc..ea6834bae04c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -2254,7 +2254,8 @@ static void ixgbe_rx_buffer_flip(struct ixgbe_ring *rx_ring,
+ 	rx_buffer->page_offset ^= truesize;
+ #else
+ 	unsigned int truesize = ring_uses_build_skb(rx_ring) ?
+-				SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) :
++				SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) +
++				SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
+ 				SKB_DATA_ALIGN(size);
  
-+	igc_set_default_mac_filter(adapter);
- 	igc_nfc_filter_restore(adapter);
-+
- 	igc_configure_tx(adapter);
- 	igc_configure_rx(adapter);
- 
+ 	rx_buffer->page_offset += truesize;
 -- 
 2.25.1
 
