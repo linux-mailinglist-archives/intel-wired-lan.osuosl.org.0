@@ -1,77 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E03611F2418
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 01:20:02 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48DA31F248D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 01:23:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8914A87C9C;
-	Mon,  8 Jun 2020 23:20:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 02886877B3;
+	Mon,  8 Jun 2020 23:23:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2fQ1GzaHg9RP; Mon,  8 Jun 2020 23:20:01 +0000 (UTC)
+	with ESMTP id sBonMBJgEbLN; Mon,  8 Jun 2020 23:23:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1E0B588390;
-	Mon,  8 Jun 2020 23:20:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 75D24877D1;
+	Mon,  8 Jun 2020 23:23:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D28F61BF381
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:19:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 42C821BF381
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:23:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CEC5287FE3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:19:55 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3EA7188081
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:23:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ToYHKOmfJeoU for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Jun 2020 23:19:55 +0000 (UTC)
+ with ESMTP id CdB8wRKamJU3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Jun 2020 23:22:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 33C1787C9C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:19:55 +0000 (UTC)
-IronPort-SDR: /L20pDQenRkV1kxqvzpGp73XawqlLcDd+VL8VZ2573oOUy9b5kfG2Ddz3d3W1ZLHblxHy45Yjh
- CRP9VL2lqnXQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jun 2020 16:19:54 -0700
-IronPort-SDR: ENcRDvxUx7SzWNEGKKuiD3pr/Woir79+F7RleZPBqtMTkMpEdslW/os06eoMu3V3xFXJZd3mY1
- Ey5a/Gi+Y+aQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,489,1583222400"; d="scan'208";a="314035243"
-Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
- by FMSMGA003.fm.intel.com with ESMTP; 08 Jun 2020 16:19:54 -0700
-Received: from orsmsx123.amr.corp.intel.com (10.22.240.116) by
- ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Mon, 8 Jun 2020 16:19:53 -0700
-Received: from orsmsx112.amr.corp.intel.com ([169.254.3.61]) by
- ORSMSX123.amr.corp.intel.com ([169.254.1.123]) with mapi id 14.03.0439.000;
- Mon, 8 Jun 2020 16:19:53 -0700
-From: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
-To: Jarod Wilson <jarod@redhat.com>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>
-Thread-Topic: [PATCH net-next 2/4] ixgbe_ipsec: become aware of when running
- as a bonding slave
-Thread-Index: AQHWPdf3oUXiI5zht0y9X20eYPVjDajPWp2w
-Date: Mon, 8 Jun 2020 23:19:52 +0000
-Message-ID: <61CC2BC414934749BD9F5BF3D5D94044986EFB8B@ORSMSX112.amr.corp.intel.com>
-References: <20200608210058.37352-1-jarod@redhat.com>
- <20200608210058.37352-3-jarod@redhat.com>
-In-Reply-To: <20200608210058.37352-3-jarod@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.140]
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8992787E19
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jun 2020 23:22:57 +0000 (UTC)
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7631D2087E;
+ Mon,  8 Jun 2020 23:22:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1591658577;
+ bh=N751oS8NC36Y0dt+fAPASAJvAAoD3/nSM5jly+El1lA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=O7nD4nQxrnUy3AmHrns2tiPIOLRXOyZoygNREr6+e83XwmT1kZ4t3WYVkPwxPfpWt
+ UqSINfZ/PYYZD0n7YSd93kP06rbE2vHVbISiQuRISKzYnDHvcrnFEazoLrDsV5eUSt
+ keaNF33EEqbFj6T/gya3SKupFZmajkfHRwSW+aLs=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Date: Mon,  8 Jun 2020 19:21:07 -0400
+Message-Id: <20200608232238.3368589-15-sashal@kernel.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200608232238.3368589-1-sashal@kernel.org>
+References: <20200608232238.3368589-1-sashal@kernel.org>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/4] ixgbe_ipsec: become
- aware of when running as a bonding slave
+X-stable: review
+X-Patchwork-Hint: Ignore
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 4.19 015/106] ixgbe: Fix XDP
+ redirect on archs with PAGE_SIZE above 4K
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,53 +69,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Steffen Klassert <steffen.klassert@secunet.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Jay Vosburgh <j.vosburgh@gmail.com>,
- Veaceslav Falico <vfalico@gmail.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "David S. Miller" <davem@davemloft.net>, Andy Gospodarek <andy@greyhouse.net>
+Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
+ Alexei Starovoitov <ast@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Jesper Dangaard Brouer <brouer@redhat.com>, bpf@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Jarod Wilson <jarod@redhat.com>
-> Sent: Monday, June 8, 2020 14:01
-> To: linux-kernel@vger.kernel.org
-> Cc: Jarod Wilson <jarod@redhat.com>; Jay Vosburgh
-> <j.vosburgh@gmail.com>; Veaceslav Falico <vfalico@gmail.com>; Andy
-> Gospodarek <andy@greyhouse.net>; David S. Miller <davem@davemloft.net>;
-> Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; Jakub Kicinski
-> <kuba@kernel.org>; Steffen Klassert <steffen.klassert@secunet.com>;
-> Herbert Xu <herbert@gondor.apana.org.au>; netdev@vger.kernel.org; intel-
-> wired-lan@lists.osuosl.org
-> Subject: [PATCH net-next 2/4] ixgbe_ipsec: become aware of when running as
-> a bonding slave
-> 
-> Slave devices in a bond doing hardware encryption also need to be aware that
-> they're slaves, so we operate on the slave instead of the bonding master to do
-> the actual hardware encryption offload bits.
-> 
-> CC: Jay Vosburgh <j.vosburgh@gmail.com>
-> CC: Veaceslav Falico <vfalico@gmail.com>
-> CC: Andy Gospodarek <andy@greyhouse.net>
-> CC: "David S. Miller" <davem@davemloft.net>
-> CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-> CC: Jakub Kicinski <kuba@kernel.org>
-> CC: Steffen Klassert <steffen.klassert@secunet.com>
-> CC: Herbert Xu <herbert@gondor.apana.org.au>
-> CC: netdev@vger.kernel.org
-> CC: intel-wired-lan@lists.osuosl.org
-> Signed-off-by: Jarod Wilson <jarod@redhat.com> 
+From: Jesper Dangaard Brouer <brouer@redhat.com>
 
-Acked-by: Jeff Kirsher <Jeffrey.t.kirsher@intel.com>
+[ Upstream commit 88eb0ee17b2ece64fcf6689a4557a5c2e7a89c4b ]
 
-> ---
->  .../net/ethernet/intel/ixgbe/ixgbe_ipsec.c    | 39 +++++++++++++++----
->  1 file changed, 31 insertions(+), 8 deletions(-)
+The ixgbe driver have another memory model when compiled on archs with
+PAGE_SIZE above 4096 bytes. In this mode it doesn't split the page in
+two halves, but instead increment rx_buffer->page_offset by truesize of
+packet (which include headroom and tailroom for skb_shared_info).
+
+This is done correctly in ixgbe_build_skb(), but in ixgbe_rx_buffer_flip
+which is currently only called on XDP_TX and XDP_REDIRECT, it forgets
+to add the tailroom for skb_shared_info. This breaks XDP_REDIRECT, for
+veth and cpumap.  Fix by adding size of skb_shared_info tailroom.
+
+Maintainers notice: This fix have been queued to Jeff.
+
+Fixes: 6453073987ba ("ixgbe: add initial support for xdp redirect")
+Signed-off-by: Jesper Dangaard Brouer <brouer@redhat.com>
+Signed-off-by: Alexei Starovoitov <ast@kernel.org>
+Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+Link: https://lore.kernel.org/bpf/158945344946.97035.17031588499266605743.stgit@firesoul
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 8177276500f5..7d723b70fcf6 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -2258,7 +2258,8 @@ static void ixgbe_rx_buffer_flip(struct ixgbe_ring *rx_ring,
+ 	rx_buffer->page_offset ^= truesize;
+ #else
+ 	unsigned int truesize = ring_uses_build_skb(rx_ring) ?
+-				SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) :
++				SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) +
++				SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
+ 				SKB_DATA_ALIGN(size);
+ 
+ 	rx_buffer->page_offset += truesize;
+-- 
+2.25.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
