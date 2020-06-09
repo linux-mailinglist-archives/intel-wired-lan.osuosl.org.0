@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0BB31F3CCE
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 15:40:57 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F65A1F3CD0
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jun 2020 15:41:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4DE9620468;
-	Tue,  9 Jun 2020 13:40:56 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D003187648;
+	Tue,  9 Jun 2020 13:40:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zDUFTBUjxzb4; Tue,  9 Jun 2020 13:40:54 +0000 (UTC)
+	with ESMTP id iLA23Q+7lIGK; Tue,  9 Jun 2020 13:40:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B0EEA2226B;
-	Tue,  9 Jun 2020 13:40:53 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1830E867C5;
+	Tue,  9 Jun 2020 13:40:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 60ABA1BF5AA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jun 2020 13:40:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AB7101BF5AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jun 2020 13:40:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5CA9320468
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jun 2020 13:40:51 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A3C2C22812
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jun 2020 13:40:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gfEWhFEyPs2g for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 Jun 2020 13:40:50 +0000 (UTC)
+ with ESMTP id Epj3vYuzXxG8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 Jun 2020 13:40:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id 726EE20378
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jun 2020 13:40:50 +0000 (UTC)
-IronPort-SDR: OvWCwcIBpr8qk0dsciVV83WswZ4jHzFqDNpcfPgeuU7P5pgIxpVzJz2wViCH9g1B+FjEi2hab1
- Snq3zWH2CPQA==
+ by silver.osuosl.org (Postfix) with ESMTPS id 273D820468
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jun 2020 13:40:53 +0000 (UTC)
+IronPort-SDR: kq5fnCEd/7br1Dvpf7mbWS5gj6J1DnCwY3ejBV848VXskFCPJR5MIYGIS1mvmolVwwwkNeUFMb
+ 8cmc6rP62ixw==
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jun 2020 06:40:49 -0700
-IronPort-SDR: ECVqyDBtTLe+m4htIZcsDLANRgIAyAN6h2NxYDwRiGAwljoEWYmcT36CjszigxgqFE9SSwqVs0
- Cv7OHMzLnxew==
+ 09 Jun 2020 06:40:52 -0700
+IronPort-SDR: mpyT7sZhMKlrLlo0YzHV3LqvTaMfSV/lMAZxvBsqN/vdYSjm1gfC6tcrcAYOXXdBrgo7cfNh8y
+ 58XQCT5fgyuQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,492,1583222400"; d="scan'208";a="295837449"
+X-IronPort-AV: E=Sophos;i="5.73,492,1583222400"; d="scan'208";a="295837460"
 Received: from silpixa00399839.ir.intel.com (HELO localhost.localdomain)
  ([10.237.222.8])
- by fmsmga004.fm.intel.com with ESMTP; 09 Jun 2020 06:40:48 -0700
+ by fmsmga004.fm.intel.com with ESMTP; 09 Jun 2020 06:40:51 -0700
 From: Ciara Loftus <ciara.loftus@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  9 Jun 2020 13:19:44 +0000
-Message-Id: <20200609131945.18373-2-ciara.loftus@intel.com>
+Date: Tue,  9 Jun 2020 13:19:45 +0000
+Message-Id: <20200609131945.18373-3-ciara.loftus@intel.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200609131945.18373-1-ciara.loftus@intel.com>
 References: <20200609131945.18373-1-ciara.loftus@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net 2/3] i40e: protect ring accesses with
- READ- and WRITE_ONCE
+Subject: [Intel-wired-lan] [PATCH net 3/3] ice: protect ring accesses with
+ WRITE_ONCE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,101 +73,70 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-READ_ONCE should be used when reading rings prior to accessing the
-statistics pointer. Introduce this as well as the corresponding WRITE_ONCE
-usage when allocating and freeing the rings, to ensure protected access.
+The READ_ONCE macro is used when reading rings prior to accessing the
+statistics pointer. The corresponding WRITE_ONCE usage when allocating and
+freeing the rings to ensure protected access was not in place. Introduce
+this.
 
 Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 29 ++++++++++++++-------
- 1 file changed, 19 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c  | 8 ++++----
+ drivers/net/ethernet/intel/ice/ice_main.c | 2 +-
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 5d807c8004f8..56ecd6c3f236 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -439,11 +439,15 @@ static void i40e_get_netdev_stats_struct(struct net_device *netdev,
- 		i40e_get_netdev_stats_struct_tx(ring, stats);
- 
- 		if (i40e_enabled_xdp_vsi(vsi)) {
--			ring++;
-+			ring = READ_ONCE(vsi->xdp_rings[i]);
-+			if (!ring)
-+				continue;
- 			i40e_get_netdev_stats_struct_tx(ring, stats);
- 		}
- 
--		ring++;
-+		ring = READ_ONCE(vsi->rx_rings[i]);
-+		if (!ring)
-+			continue;
- 		do {
- 			start   = u64_stats_fetch_begin_irq(&ring->syncp);
- 			packets = ring->stats.packets;
-@@ -787,6 +791,8 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
- 	for (q = 0; q < vsi->num_queue_pairs; q++) {
- 		/* locate Tx ring */
- 		p = READ_ONCE(vsi->tx_rings[q]);
-+		if (!p)
-+			continue;
- 
- 		do {
- 			start = u64_stats_fetch_begin_irq(&p->syncp);
-@@ -800,8 +806,11 @@ static void i40e_update_vsi_stats(struct i40e_vsi *vsi)
- 		tx_linearize += p->tx_stats.tx_linearize;
- 		tx_force_wb += p->tx_stats.tx_force_wb;
- 
--		/* Rx queue is part of the same block as Tx queue */
--		p = &p[1];
-+		/* locate Rx ring */
-+		p = READ_ONCE(vsi->rx_rings[q]);
-+		if (!p)
-+			continue;
-+
- 		do {
- 			start = u64_stats_fetch_begin_irq(&p->syncp);
- 			packets = p->stats.packets;
-@@ -10824,10 +10833,10 @@ static void i40e_vsi_clear_rings(struct i40e_vsi *vsi)
- 	if (vsi->tx_rings && vsi->tx_rings[0]) {
- 		for (i = 0; i < vsi->alloc_queue_pairs; i++) {
- 			kfree_rcu(vsi->tx_rings[i], rcu);
--			vsi->tx_rings[i] = NULL;
--			vsi->rx_rings[i] = NULL;
-+			WRITE_ONCE(vsi->tx_rings[i], NULL);
-+			WRITE_ONCE(vsi->rx_rings[i], NULL);
- 			if (vsi->xdp_rings)
--				vsi->xdp_rings[i] = NULL;
-+				WRITE_ONCE(vsi->xdp_rings[i], NULL);
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 28b46cc9f5cb..2e3a39cea2c0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1194,7 +1194,7 @@ static void ice_vsi_clear_rings(struct ice_vsi *vsi)
+ 		for (i = 0; i < vsi->alloc_txq; i++) {
+ 			if (vsi->tx_rings[i]) {
+ 				kfree_rcu(vsi->tx_rings[i], rcu);
+-				vsi->tx_rings[i] = NULL;
++				WRITE_ONCE(vsi->tx_rings[i], NULL);
+ 			}
  		}
  	}
- }
-@@ -10861,7 +10870,7 @@ static int i40e_alloc_rings(struct i40e_vsi *vsi)
- 		if (vsi->back->hw_features & I40E_HW_WB_ON_ITR_CAPABLE)
- 			ring->flags = I40E_TXR_FLAGS_WB_ON_ITR;
- 		ring->itr_setting = pf->tx_itr_default;
--		vsi->tx_rings[i] = ring++;
-+		WRITE_ONCE(vsi->tx_rings[i], ring++);
+@@ -1202,7 +1202,7 @@ static void ice_vsi_clear_rings(struct ice_vsi *vsi)
+ 		for (i = 0; i < vsi->alloc_rxq; i++) {
+ 			if (vsi->rx_rings[i]) {
+ 				kfree_rcu(vsi->rx_rings[i], rcu);
+-				vsi->rx_rings[i] = NULL;
++				WRITE_ONCE(vsi->rx_rings[i], NULL);
+ 			}
+ 		}
+ 	}
+@@ -1235,7 +1235,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
+ 		ring->vsi = vsi;
+ 		ring->dev = dev;
+ 		ring->count = vsi->num_tx_desc;
+-		vsi->tx_rings[i] = ring;
++		WRITE_ONCE(vsi->tx_rings[i], ring);
+ 	}
  
- 		if (!i40e_enabled_xdp_vsi(vsi))
- 			goto setup_rx;
-@@ -10879,7 +10888,7 @@ static int i40e_alloc_rings(struct i40e_vsi *vsi)
- 			ring->flags = I40E_TXR_FLAGS_WB_ON_ITR;
- 		set_ring_xdp(ring);
- 		ring->itr_setting = pf->tx_itr_default;
--		vsi->xdp_rings[i] = ring++;
-+		WRITE_ONCE(vsi->xdp_rings[i], ring++);
- 
- setup_rx:
- 		ring->queue_index = i;
-@@ -10892,7 +10901,7 @@ static int i40e_alloc_rings(struct i40e_vsi *vsi)
- 		ring->size = 0;
- 		ring->dcb_tc = 0;
- 		ring->itr_setting = pf->rx_itr_default;
+ 	/* Allocate Rx rings */
+@@ -1254,7 +1254,7 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
+ 		ring->netdev = vsi->netdev;
+ 		ring->dev = dev;
+ 		ring->count = vsi->num_rx_desc;
 -		vsi->rx_rings[i] = ring;
 +		WRITE_ONCE(vsi->rx_rings[i], ring);
  	}
  
  	return 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 082825e3cb39..4cbd49c87568 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1702,7 +1702,7 @@ static int ice_xdp_alloc_setup_rings(struct ice_vsi *vsi)
+ 		xdp_ring->netdev = NULL;
+ 		xdp_ring->dev = dev;
+ 		xdp_ring->count = vsi->num_tx_desc;
+-		vsi->xdp_rings[i] = xdp_ring;
++		WRITE_ONCE(vsi->xdp_rings[i], xdp_ring);
+ 		if (ice_setup_tx_ring(xdp_ring))
+ 			goto free_xdp_rings;
+ 		ice_set_ring_xdp(xdp_ring);
 -- 
 2.17.1
 
