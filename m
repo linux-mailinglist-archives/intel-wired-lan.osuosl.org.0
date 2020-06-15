@@ -1,76 +1,134 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0ACDB1FA0EE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2020 22:06:29 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 296DB1FA0ED
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2020 22:06:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9B0E824FFE;
-	Mon, 15 Jun 2020 20:06:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C5B0388F65;
+	Mon, 15 Jun 2020 20:06:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id umc1K3JTN9Ms; Mon, 15 Jun 2020 20:06:26 +0000 (UTC)
+	with ESMTP id lYwreXHhYDmb; Mon, 15 Jun 2020 20:06:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 3576825028;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8C218884AA;
 	Mon, 15 Jun 2020 20:06:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F17C1BF3FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2020 18:40:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 847151BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2020 18:51:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5A2C088093
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2020 18:40:37 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7D7B387A79
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2020 18:51:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wvWNNHnLb9SK for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jun 2020 18:40:36 +0000 (UTC)
+ with ESMTP id DZvNuQYa1ioW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jun 2020 18:51:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [207.211.31.120])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 8610187FBE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2020 18:40:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1592246435;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3LdVapGy9WTsAkwpfNEzCTfQe3Pij8/lM5ySXZsHExs=;
- b=Qdmw/PJxLK31/rKmKgWbE5yAY+4i+gsfVEBtEc5ToE9B/FlegLfNgeLIEfjWVedKb+Y3z+
- Ycm1/NjjL9Q+v0I8qj/IlOhBg48Vph4+42maRH5yobUN7AM1PVkzEfbgROmMIUaUwRj4yL
- DHGm6MQRL2VNnBptPlwJW/1yX6HdQV8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-513-n3G_ZfGUONug8wkjJytxqA-1; Mon, 15 Jun 2020 14:40:12 -0400
-X-MC-Unique: n3G_ZfGUONug8wkjJytxqA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E5F43184D144;
- Mon, 15 Jun 2020 18:40:06 +0000 (UTC)
-Received: from llong.remote.csb (ovpn-117-41.rdu2.redhat.com [10.10.117.41])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3972B5D9CC;
- Mon, 15 Jun 2020 18:40:00 +0000 (UTC)
-To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-2-longman@redhat.com> <20200615180753.GJ4151@kadam>
-From: Waiman Long <longman@redhat.com>
-Organization: Red Hat
-Message-ID: <9d084be2-29a3-7757-9386-20dbaeb5fc24@redhat.com>
-Date: Mon, 15 Jun 2020 14:39:59 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
-MIME-Version: 1.0
-In-Reply-To: <20200615180753.GJ4151@kadam>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7D23D87A6B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2020 18:51:31 +0000 (UTC)
+IronPort-SDR: 0dYBADuKniJN8t75N+nBIYgxVvuetGAgAWABi3oBd8mQvsuwUXUNQibcJM3ZY9o5edLoizNUwx
+ aZpb/ITMpxag==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jun 2020 11:51:30 -0700
+IronPort-SDR: 6SFypKTBpRlY7Mnr1WCg9THktGjkywNwtBYqVdwfHUCMYJuTX/fawFASI/Q7gbeaDJ7k+7FhcE
+ 2eYIc6limDzg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,515,1583222400"; d="scan'208";a="276655726"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by orsmga006.jf.intel.com with ESMTP; 15 Jun 2020 11:51:30 -0700
+Received: from fmsmsx151.amr.corp.intel.com (10.18.125.4) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 15 Jun 2020 11:51:30 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ FMSMSX151.amr.corp.intel.com (10.18.125.4) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Mon, 15 Jun 2020 11:51:29 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.174)
+ by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Mon, 15 Jun 2020 11:51:30 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SS2UDZ7SCAun7JD7uRnx0bl0LZpKqJVhQwyH+J9JNm5bfAmcHaTGR2uMGzNszTCbzzr5/GP57zZgF+3rrVfYHek6D0xQXyABbpm+7XM9ZtmTKsbaUMkhXK95T4M7myiNLNlN3TycvoeVSARo/3Uf+rRz73GLXq8AxbuaY31ppHJLqwI0nVQWv3i0UcvdN3zZrxY19bqfJCW9OuruqNn7QFWXuD7KGGenh230nB3u4g0liBW3yuqJj5k/g++MlWXruww/4Qni9X+vTcboTTQ+HaSBCS0h0qgitNe5QB0wJkQWt+FVkd7bnpYz8kVksAriI5loAh5nO+frERBtauliig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=53Y4VcnXqRVfpwwnPW0aKgctY9ofS8Dj5G6b9L33igs=;
+ b=CX4U7QYweAfknHt5a9lnlPZvmi/pE4K1E2Mkg8JiwNpOm1xGXHmqOjPZX72YUrm3xd6gr6409XV8f8NCMhu8fKpXmTrX+VDpn8eVbH3zxBfj8POY9eWQ9L+MvhqAxfYdvvei53uD23ozZ/LQei0KprCxc7E9iX+xNQ9ho8kYsTTL93l2w//0NyBWOgMcuh4cYxq7Y1SQUJLTC3UXvrk1G7qn7cqCpytPzA+oWhOuqMZ7zx5PlHb788UciPQzI+oZZiTANquyk+RAIY4Kr9Z46oO7e7OksTgwP+QSJnC/MNJS2y/fHVmmQ1gDGcS4nzQiEggPZY/0VlCDFbczCvsXKw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=53Y4VcnXqRVfpwwnPW0aKgctY9ofS8Dj5G6b9L33igs=;
+ b=M/xWvYjCFsBbpK1b/axA2mq+vMR+TT8zngC+6Yf9b70S79McBSHURxZn3SB7n5UPl6QanbvJYpJNsH8EdO3k6Jp5LXIyXwXFgO0owzErYP4M+PlhIRQDxnsJzB3omQa3A421ZZs1xQT+Kkc+JcvVkq33l6qhSKvcWeqVzWvg1Og=
+Received: from SN6PR11MB2896.namprd11.prod.outlook.com (2603:10b6:805:d9::20)
+ by SN6PR11MB3504.namprd11.prod.outlook.com (2603:10b6:805:d0::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3088.27; Mon, 15 Jun
+ 2020 18:51:27 +0000
+Received: from SN6PR11MB2896.namprd11.prod.outlook.com
+ ([fe80::ecf9:3d9e:8c8:75b0]) by SN6PR11MB2896.namprd11.prod.outlook.com
+ ([fe80::ecf9:3d9e:8c8:75b0%3]) with mapi id 15.20.3088.028; Mon, 15 Jun 2020
+ 18:51:27 +0000
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: "Chen, Yu C" <yu.c.chen@intel.com>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>, "David S. Miller" <davem@davemloft.net>,
+ "Jakub Kicinski" <kuba@kernel.org>, "Kok, Auke-jan H"
+ <auke-jan.h.kok@intel.com>, Jeff Garzik <jeff@garzik.org>
+Thread-Topic: [PATCH 1/2] e1000e: Do not wake up the system via WOL if device
+ wakeup is disabled
+Thread-Index: AQHWL5mc0ngXWRQgFUqdbYRE2QINUKjaLL7A
+Date: Mon, 15 Jun 2020 18:51:27 +0000
+Message-ID: <SN6PR11MB2896298A90B37CEA0DC5A750BC9C0@SN6PR11MB2896.namprd11.prod.outlook.com>
+References: <cover.1590081982.git.yu.c.chen@intel.com>
+ <9f7ede2e2e8152704258fc11ba3755ae93f50741.1590081982.git.yu.c.chen@intel.com>
+In-Reply-To: <9f7ede2e2e8152704258fc11ba3755ae93f50741.1590081982.git.yu.c.chen@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.2.0.6
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [134.134.136.215]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 3f487dd3-b252-4d3c-0a7d-08d8115d1c39
+x-ms-traffictypediagnostic: SN6PR11MB3504:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SN6PR11MB3504E67536F56BD7964191E6BC9C0@SN6PR11MB3504.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4125;
+x-forefront-prvs: 04359FAD81
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 1Ntxyetejkr8go7fqnto0H7OOluDbODAsL19Tq3cV5gp5jcSOK4sXCKmf7htbb9lCa+etwtBGzUv8jAr7rKwVh4G8Xf23fG8Vc9vjW7yBDhofJGreIS9nMbB5eqOj6fVv+E3apAStXD7UsreFeELDjTpc1o9nb+2uoenvsZaGC983WU6dTQo3f+CXnAZmbzG8mbqoDc0TQ2+x4zyJq+glFhZcFPwMoaLH1hJ3/ABJ0DrlkXdyBnxMum+St39EvwhluN/jaEGJBIcLx8gJmZ7nZXWCfFf/fGOeTQTaWM/HU0R1Kl0wKGGfCiRYZ7O0yJ83OadILpSby2xALSgHn01hA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB2896.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(136003)(346002)(376002)(396003)(39860400002)(366004)(53546011)(33656002)(8676002)(7696005)(6506007)(86362001)(186003)(478600001)(4326008)(5660300002)(55016002)(8936002)(9686003)(54906003)(110136005)(71200400001)(316002)(64756008)(66446008)(26005)(52536014)(83380400001)(66476007)(66556008)(2906002)(76116006)(66946007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: OjVeSFxJCtLCgntLMn1jTYp2OPXl5qbOV5fQLAhz/D0EzRLzm45OMPkhcBScWkSehGPP05XvAPaZc2iOlY/de972xgLTx82S7EM1szVli4fA02MynijRHxNmgrdGey2kfkT6u9TFKPl2Kpioatx0LYRyJlK9r30cykpYaQf0M9kZ6n2KQEMc0XohzX6w4Y86wHlspiU1k9AJJco8B6fiWgp2JhAZKHWAfeMhw+fT2B+WgG8LaRevyb3ZytN7dJMZJolLCrZUOLm/Y7RXa/bQmaOohv/SgEi/cAXBXdvPOkSQq0LYBpGF9caG9SlDnrLuv59FIzMURtDM3DwgxX3mppnl3iaWoPP5fDXSB9WUaIAnKX6cbFGkS3nKACs51nG9O+Duz0GmMcGd9aFNpMFK848E2GPDScO3PrcPcRcqlCSmq7I3GwKmszdwA01pgDP3C80M57ePCDmyGfU9AHvG/jxA5TE/YJWE0JrRjqFwTXXy5bFiD6wrjeean69eAi3W
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3f487dd3-b252-4d3c-0a7d-08d8115d1c39
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2020 18:51:27.4229 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jPSJTVL3a2YaaB3poOIsnXyLFBA7g/uPfgPUkbVph+WajP/t9XOxP96SViQJq8XJC6u/EkvZzlCQjB8qmaBKeg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3504
+X-OriginatorOrg: intel.com
 X-Mailman-Approved-At: Mon, 15 Jun 2020 20:06:23 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] mm,
- treewide: Rename kzfree() to kfree_sensitive()
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] e1000e: Do not wake up the system
+ via WOL if device wakeup is disabled
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,84 +141,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-cifs@vger.kernel.org, linux-wireless@vger.kernel.org,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- virtualization@lists.linux-foundation.org, David Howells <dhowells@redhat.com>,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
- kasan-dev@googlegroups.com, cocci@systeme.lip6.fr, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- James Morris <jmorris@namei.org>, Matthew Wilcox <willy@infradead.org>,
- linux-stm32@st-md-mailman.stormreply.com, intel-wired-lan@lists.osuosl.org,
- David Rientjes <rientjes@google.com>, "Serge E. Hallyn" <serge@hallyn.com>,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-fscrypt@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-btrfs@vger.kernel.org, linux-integrity@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-nfs@vger.kernel.org,
- Linus Torvalds <torvalds@linux-foundation.org>,
- samba-technical@lists.samba.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
- keyrings@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- linux-crypto@vger.kernel.org, netdev@vger.kernel.org,
- Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>,
- linux-wpan@vger.kernel.org, wireguard@lists.zx2c4.com,
- linux-ppp@vger.kernel.org
+Cc: "Brown, Len" <len.brown@intel.com>, "Shevchenko,
+ Andriy" <andriy.shevchenko@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "Stable@vger.kernel.org" <Stable@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Chen,
+ Yu C" <yu.c.chen@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 6/15/20 2:07 PM, Dan Carpenter wrote:
-> On Mon, Apr 13, 2020 at 05:15:49PM -0400, Waiman Long wrote:
->> diff --git a/mm/slab_common.c b/mm/slab_common.c
->> index 23c7500eea7d..c08bc7eb20bd 100644
->> --- a/mm/slab_common.c
->> +++ b/mm/slab_common.c
->> @@ -1707,17 +1707,17 @@ void *krealloc(const void *p, size_t new_size, gfp_t flags)
->>   EXPORT_SYMBOL(krealloc);
->>   
->>   /**
->> - * kzfree - like kfree but zero memory
->> + * kfree_sensitive - Clear sensitive information in memory before freeing
->>    * @p: object to free memory of
->>    *
->>    * The memory of the object @p points to is zeroed before freed.
->> - * If @p is %NULL, kzfree() does nothing.
->> + * If @p is %NULL, kfree_sensitive() does nothing.
->>    *
->>    * Note: this function zeroes the whole allocated buffer which can be a good
->>    * deal bigger than the requested buffer size passed to kmalloc(). So be
->>    * careful when using this function in performance sensitive code.
->>    */
->> -void kzfree(const void *p)
->> +void kfree_sensitive(const void *p)
->>   {
->>   	size_t ks;
->>   	void *mem = (void *)p;
->> @@ -1725,10 +1725,10 @@ void kzfree(const void *p)
->>   	if (unlikely(ZERO_OR_NULL_PTR(mem)))
->>   		return;
->>   	ks = ksize(mem);
->> -	memset(mem, 0, ks);
->> +	memzero_explicit(mem, ks);
->          ^^^^^^^^^^^^^^^^^^^^^^^^^
-> This is an unrelated bug fix.  It really needs to be pulled into a
-> separate patch by itself and back ported to stable kernels.
->
->>   	kfree(mem);
->>   }
->> -EXPORT_SYMBOL(kzfree);
->> +EXPORT_SYMBOL(kfree_sensitive);
->>   
->>   /**
->>    * ksize - get the actual amount of memory allocated for a given object
-> regards,
-> dan carpenter
->
-Thanks for the suggestion. I will break it out and post a version soon.
+> From: Chen Yu <yu.c.chen@intel.com>
+> Sent: Thursday, May 21, 2020 10:59 AM
+> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; David S. Miller
+> <davem@davemloft.net>; Jakub Kicinski <kuba@kernel.org>; Kok, Auke-jan H
+> <auke-jan.h.kok@intel.com>; Jeff Garzik <jeff@garzik.org>
+> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
+> kernel@vger.kernel.org; Brown, Len <len.brown@intel.com>; Rafael J. Wysocki
+> <rjw@rjwysocki.net>; Shevchenko, Andriy <andriy.shevchenko@intel.com>;
+> Neftin, Sasha <sasha.neftin@intel.com>; Lifshits, Vitaly
+> <vitaly.lifshits@intel.com>; Chen, Yu C <yu.c.chen@intel.com>;
+> Stable@vger.kernel.org
+> Subject: [PATCH 1/2] e1000e: Do not wake up the system via WOL if device
+> wakeup is disabled
+> 
+> Currently the system will be woken up via WOL(Wake On Lan) even if the
+> device wakeup ability has been disabled via sysfs:
+>  cat /sys/devices/pci0000:00/0000:00:1f.6/power/wakeup
+>  disabled
+> 
+> The system should not be woken up if the user has explicitly
+> disabled the wake up ability for this device.
+> 
+> This patch clears the WOL ability of this network device if the
+> user has disabled the wake up ability in sysfs.
+> 
+> Fixes: bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver")
+> Reported-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Cc: <Stable@vger.kernel.org>
+> Signed-off-by: Chen Yu <yu.c.chen@intel.com>
+> ---
+>  drivers/net/ethernet/intel/e1000e/netdev.c | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 
-Cheers,
-Longman
 
 _______________________________________________
 Intel-wired-lan mailing list
