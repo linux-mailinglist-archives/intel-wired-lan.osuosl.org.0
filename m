@@ -2,55 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66DE91FCCF5
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2020 14:01:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E72141FD1F6
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2020 18:29:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 193208953C;
-	Wed, 17 Jun 2020 12:01:51 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7E32088804;
+	Wed, 17 Jun 2020 16:28:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fXsTPQhHRoIk; Wed, 17 Jun 2020 12:01:50 +0000 (UTC)
+	with ESMTP id 3xPwnWEhHyur; Wed, 17 Jun 2020 16:28:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6DE4A8951D;
-	Wed, 17 Jun 2020 12:01:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CDA4688856;
+	Wed, 17 Jun 2020 16:28:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6AB281BF377
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 12:01:48 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2C2651BF5A3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 16:28:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 601622038F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 12:01:48 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 24B2188305
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 16:28:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4lYzDDtvbj+s for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Jun 2020 12:01:47 +0000 (UTC)
+ with ESMTP id RrB5xLynPOLm for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Jun 2020 16:28:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id 6F61820380
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 12:01:47 +0000 (UTC)
-IronPort-SDR: XMALMDFU+3rh1Iyn+Z+xx0lllZW9pPkx1V2j1SA5deFKfVsU1sqwlGeVSRIOeJqxe4GJaAZ/cR
- l82qDYgQv/oA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jun 2020 05:01:32 -0700
-IronPort-SDR: SCgxTR+MAcPPwEYb108VNFh82hgbFhZjRVmwafW2KREx8V3vrHINFNJDx2dI+DHhqPiGMpeFD1
- qT+gwkoCG9og==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,522,1583222400"; d="scan'208";a="317510303"
-Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
- by FMSMGA003.fm.intel.com with ESMTP; 17 Jun 2020 05:01:31 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 17 Jun 2020 15:01:31 +0300
-Message-Id: <20200617120131.21277-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove checking media type
- during MAC initialization
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 0B86287DB0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 16:28:56 +0000 (UTC)
+Received: from kicinski-fedora-PC1C0HJN (unknown [163.114.132.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8ABDF208D5;
+ Wed, 17 Jun 2020 16:28:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1592411335;
+ bh=1H0CTWgSc5IHvLsUQzrRHh4kgeEBc5Pmj5ZbDHaTDAs=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=bG7XIEDR98xPTo6lRgqTpTUlXgdz0HlW1l4RSR8QVd0hgd9XqFG1AuMrOYBsa7gEP
+ JSRlw6wkXiHht4VFpjafiHea/ZsYrZjPtMdZOrhtPVoqbq8hxy8fnprYf4i/I2Xa12
+ f5TNhsJ9hXK5pvRC5EtGbl3YNZtwwa9MQoDjv+Xc=
+Date: Wed, 17 Jun 2020 09:28:54 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Aaron Ma <aaron.ma@canonical.com>
+Message-ID: <20200617092854.7be16376@kicinski-fedora-PC1C0HJN>
+In-Reply-To: <20200617111249.20855-1-aaron.ma@canonical.com>
+References: <20200616100512.22512-1-aaron.ma@canonical.com>
+ <20200617111249.20855-1-aaron.ma@canonical.com>
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [v2][PATCH] e1000e: continue to init phy even
+ when failed to disable ULP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,50 +65,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kai.heng.feng@canonical.com, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-i225 device support only copper mode.
-There is no point to check media type in the
-igc_config_fc_after_link_up() method.
+On Wed, 17 Jun 2020 19:12:48 +0800 Aaron Ma wrote:
+> After commit: e086ba2fccd ("e1000e: disable s0ix entry and exit flows
+>  for ME systems").
+> ThinkPad P14s always failed to disable ULP by ME.
+> commit: 0c80cdbf33 ("e1000e: Warn if disabling ULP failed")
+> break out of init phy:
+> 
+> error log:
+> [   42.364753] e1000e 0000:00:1f.6 enp0s31f6: Failed to disable ULP
+> [   42.524626] e1000e 0000:00:1f.6 enp0s31f6: PHY Wakeup cause - Unicast Packet
+> [   42.822476] e1000e 0000:00:1f.6 enp0s31f6: Hardware Error
+> 
+> When disable s0ix, E1000_FWSM_ULP_CFG_DONE will never be 1.
+> If continue to init phy like before, it can work as before.
+> iperf test result good too.
+> 
+> Fixes: 0c80cdbf33 ("e1000e: Warn if disabling ULP failed")
+> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
 
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/igc/igc_mac.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
-index 9a5e44ef45f4..b47e7b0a6398 100644
---- a/drivers/net/ethernet/intel/igc/igc_mac.c
-+++ b/drivers/net/ethernet/intel/igc/igc_mac.c
-@@ -468,10 +468,8 @@ s32 igc_config_fc_after_link_up(struct igc_hw *hw)
- 	 * so we had to force link.  In this case, we need to force the
- 	 * configuration of the MAC to match the "fc" parameter.
- 	 */
--	if (mac->autoneg_failed) {
--		if (hw->phy.media_type == igc_media_type_copper)
--			ret_val = igc_force_mac_fc(hw);
--	}
-+	if (mac->autoneg_failed)
-+		ret_val = igc_force_mac_fc(hw);
- 
- 	if (ret_val) {
- 		hw_dbg("Error forcing flow control settings\n");
-@@ -483,7 +481,7 @@ s32 igc_config_fc_after_link_up(struct igc_hw *hw)
- 	 * has completed, and if so, how the PHY and link partner has
- 	 * flow control configured.
- 	 */
--	if (hw->phy.media_type == igc_media_type_copper && mac->autoneg) {
-+	if (mac->autoneg) {
- 		/* Read the MII Status Register and check to see if AutoNeg
- 		 * has completed.  We read this twice because this reg has
- 		 * some "sticky" (latched) bits.
--- 
-2.11.0
-
+Fixes tag: Fixes: 0c80cdbf33 ("e1000e: Warn if disabling ULP failed")
+Has these problem(s):
+	- SHA1 should be at least 12 digits long
+	  Can be fixed by setting core.abbrev to 12 (or more) or (for git v2.11
+	  or later) just making sure it is not set (or set to "auto").
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
