@@ -1,55 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 670231FCBE9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2020 13:13:11 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59D131FCC3F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2020 13:27:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DBC9E87A28;
-	Wed, 17 Jun 2020 11:13:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B822F221FF;
+	Wed, 17 Jun 2020 11:27:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ELM87PVpERm9; Wed, 17 Jun 2020 11:13:09 +0000 (UTC)
+	with ESMTP id j67-8rjr8Lat; Wed, 17 Jun 2020 11:27:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 59BB687293;
-	Wed, 17 Jun 2020 11:13:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 09E64226FF;
+	Wed, 17 Jun 2020 11:27:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 85E851BF3A1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 11:13:07 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A4D001BF3A1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 11:27:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 801BE886C2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 11:13:07 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A040E87A30
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 11:27:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BKi06IK70VUU for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Jun 2020 11:13:06 +0000 (UTC)
+ with ESMTP id WOgjcNeNNJ7w for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Jun 2020 11:27:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4E79A886D8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 11:13:05 +0000 (UTC)
-Received: from [114.249.250.117] (helo=localhost.localdomain)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <aaron.ma@canonical.com>)
- id 1jlW01-0006g5-Cg; Wed, 17 Jun 2020 11:12:58 +0000
-From: Aaron Ma <aaron.ma@canonical.com>
-To: jeffrey.t.kirsher@intel.com, davem@davemloft.net, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, vitaly.lifshits@intel.com,
- kai.heng.feng@canonical.com, sasha.neftin@intel.com
-Date: Wed, 17 Jun 2020 19:12:48 +0800
-Message-Id: <20200617111249.20855-1-aaron.ma@canonical.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200616100512.22512-1-aaron.ma@canonical.com>
-References: <20200616100512.22512-1-aaron.ma@canonical.com>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 79F9087A5F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2020 11:27:04 +0000 (UTC)
+IronPort-SDR: GaVzkTBGG5BU63k+6oNKAgj/IvfHaeS1zihJcgweIBv8I7IBkmFf8bSfSmAbyxygGqn8eVf1Yy
+ hA6kpgwqFbMw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jun 2020 04:27:03 -0700
+IronPort-SDR: hSMpsk/pLXKSG06UMuGQKhHzgYJHHKVI2I2nUslR9pQVoK2St/VnqFSdBJlFfqSIY0c7nO+VFu
+ mUOjATXGH5yw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,522,1583222400"; d="scan'208";a="450214763"
+Received: from lkp-server02.sh.intel.com (HELO acd172f646ee) ([10.239.97.151])
+ by orsmga005.jf.intel.com with ESMTP; 17 Jun 2020 04:27:02 -0700
+Received: from kbuild by acd172f646ee with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jlWDd-00002O-RQ; Wed, 17 Jun 2020 11:27:01 +0000
+Date: Wed, 17 Jun 2020 19:26:31 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ee9fde7.dFyM4CBIMnpaw9oo%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [v2][PATCH] e1000e: continue to init phy even
- when failed to disable ULP
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ 8c37258160cd593243cb251b6b44d9b396e59078
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,42 +72,139 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After commit: e086ba2fccd ("e1000e: disable s0ix entry and exit flows
- for ME systems").
-ThinkPad P14s always failed to disable ULP by ME.
-commit: 0c80cdbf33 ("e1000e: Warn if disabling ULP failed")
-break out of init phy:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 8c37258160cd593243cb251b6b44d9b396e59078  i40e: fix crash when Rx descriptor count is changed
 
-error log:
-[   42.364753] e1000e 0000:00:1f.6 enp0s31f6: Failed to disable ULP
-[   42.524626] e1000e 0000:00:1f.6 enp0s31f6: PHY Wakeup cause - Unicast Packet
-[   42.822476] e1000e 0000:00:1f.6 enp0s31f6: Hardware Error
+elapsed time: 724m
 
-When disable s0ix, E1000_FWSM_ULP_CFG_DONE will never be 1.
-If continue to init phy like before, it can work as before.
-iperf test result good too.
+configs tested: 118
+configs skipped: 5
 
-Fixes: 0c80cdbf33 ("e1000e: Warn if disabling ULP failed")
-Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+sh                                  defconfig
+xtensa                    xip_kc705_defconfig
+powerpc                      mgcoge_defconfig
+c6x                        evmc6678_defconfig
+arc                           tb10x_defconfig
+powerpc                      pasemi_defconfig
+mips                         bigsur_defconfig
+arm                       cns3420vb_defconfig
+xtensa                              defconfig
+sh                          urquell_defconfig
+mips                           mtx1_defconfig
+mips                       capcella_defconfig
+mips                  mips_paravirt_defconfig
+mips                      pistachio_defconfig
+mips                   sb1250_swarm_defconfig
+mips                           ip28_defconfig
+mips                           ip27_defconfig
+arm                       netwinder_defconfig
+sh                           se7721_defconfig
+m68k                          hp300_defconfig
+powerpc                    mvme5100_defconfig
+sh                          r7785rp_defconfig
+arm                        magician_defconfig
+arm                         ebsa110_defconfig
+powerpc                     mpc512x_defconfig
+sh                        sh7757lcr_defconfig
+arm                           sunxi_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a006-20200615
+i386                 randconfig-a002-20200615
+i386                 randconfig-a001-20200615
+i386                 randconfig-a004-20200615
+i386                 randconfig-a005-20200615
+i386                 randconfig-a003-20200615
+i386                 randconfig-a015-20200617
+i386                 randconfig-a011-20200617
+i386                 randconfig-a014-20200617
+i386                 randconfig-a016-20200617
+i386                 randconfig-a013-20200617
+i386                 randconfig-a012-20200617
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+
 ---
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index f999cca37a8a..be7475c5529d 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -303,7 +303,6 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 	ret_val = e1000_disable_ulp_lpt_lp(hw, true);
- 	if (ret_val) {
- 		e_warn("Failed to disable ULP\n");
--		goto out;
- 	}
- 
- 	ret_val = hw->phy.ops.acquire(hw);
--- 
-2.26.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
