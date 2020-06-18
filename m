@@ -1,62 +1,130 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D4CB1FFB57
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jun 2020 20:54:44 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FE6D1FFBF5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jun 2020 21:46:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 79F2A8973D;
-	Thu, 18 Jun 2020 18:54:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CE7B088A9A;
+	Thu, 18 Jun 2020 19:46:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MDtITjx3ILgR; Thu, 18 Jun 2020 18:54:42 +0000 (UTC)
+	with ESMTP id JR41s86GMdmu; Thu, 18 Jun 2020 19:46:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 90F8A89738;
-	Thu, 18 Jun 2020 18:54:41 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D5AAE88A8F;
+	Thu, 18 Jun 2020 19:46:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1F6171BF40B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 18:54:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AF60D1BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 19:46:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0C51C265BB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 18:54:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id A99F088618
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 19:46:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XG0MGlBUiSOk for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Jun 2020 18:54:38 +0000 (UTC)
+ with ESMTP id TJ8e-HVDR1wr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Jun 2020 19:46:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 72A6D204D4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 18:54:38 +0000 (UTC)
-IronPort-SDR: w1D4eIWaoCBcfOLR7gAW35nfZbGhvgKFHQd1PdbkPHNOMVY80O8AmLcia8wI3H5chU5viC2xaX
- 0wzJPKWUEQjw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9656"; a="142628803"
-X-IronPort-AV: E=Sophos;i="5.75,252,1589266800"; d="scan'208";a="142628803"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C9A3A8847B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 19:46:12 +0000 (UTC)
+IronPort-SDR: WZF9qBB2FrS9ikiHR5Ws34E8V/VeaoRvSPnQRgltQQnvNrJ21uLemr/g2ZWSPKqPvvIdkNoErE
+ ZgjimEMEEswQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9656"; a="207941753"
+X-IronPort-AV: E=Sophos;i="5.75,252,1589266800"; d="scan'208";a="207941753"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2020 11:54:37 -0700
-IronPort-SDR: HmkzNxFJu02fDDKk3t7sOqO+Hf30/cIhHKCdLbFJBI6HyIPI3CA6TtThcoOEywY/vj36tgwdi5
- 4V2qn4TDk+kw==
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2020 12:46:12 -0700
+IronPort-SDR: Mo4UdZovO5rJjZ/7dXa935BgbUvDKjzjyDo2urnw5H1yR9zgUTa/ZIddV/e2Fb4lFU2+xKEGlv
+ mmhNS0EqdIJQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,252,1589266800"; d="scan'208";a="383609895"
-Received: from lkp-server02.sh.intel.com (HELO 5ce11009e457) ([10.239.97.151])
- by fmsmga001.fm.intel.com with ESMTP; 18 Jun 2020 11:54:36 -0700
-Received: from kbuild by 5ce11009e457 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jlzgJ-0000NU-LN; Thu, 18 Jun 2020 18:54:35 +0000
-Date: Fri, 19 Jun 2020 02:54:18 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5eebb85a.4obzV6VXEyf20w8H%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.75,252,1589266800"; d="scan'208";a="383623013"
+Received: from fmsmsx106.amr.corp.intel.com ([10.18.124.204])
+ by fmsmga001.fm.intel.com with ESMTP; 18 Jun 2020 12:46:12 -0700
+Received: from fmsmsx101.amr.corp.intel.com (10.18.124.199) by
+ FMSMSX106.amr.corp.intel.com (10.18.124.204) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 18 Jun 2020 12:46:11 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ fmsmsx101.amr.corp.intel.com (10.18.124.199) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 18 Jun 2020 12:46:11 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.177)
+ by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Thu, 18 Jun 2020 12:46:11 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=X8+EBwsQLcbPyXUu6LHO0/Kwu2PDfHNJEgrXNtmY6HJiYMCK/f8g1IaXAniwA7btXOU2XF0pxg71j8H7JTWFl1KibGZneD8RTiW7okHMZSqBt4P7nojJlhr7gUWxRausD2AU+T5HCOyd5HAYEj5NRW/RwrN9aJsWGatlwrFxNQxuZALC6boZTb/1aWasLFnzdwMCHYy9/IlP1rCW704K0kGV9mqof0FQZRdAaa9950ifWw2C4gVgmXO5J0Z2bJ7ERaDN4n243xsS6G6pPH6H5kRbFrHkenEeZMHi4vJF/mBeiAyR6Qbl/AZdJRuFny1uG1ThryCNMAogNLctbzxkMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=25pK3uf3c7e5KiD0dLlJjlHi/zKPev+ClCIgXIkbopk=;
+ b=Gj1nrPKlhMfj+1WqI+B+xdvGM0t3l5iNmAav01qTj5vdPNhYvAqPSKeq5+BvXLvfcHNRN959WEzjbKsHfnn3i39mub94w6DeXFXYhAJcVR3D/RGe3i8BufzltJAZq70I4GXZFLwpacnSh97KMaWSWdvqktsEVxMLagtmA0MOx+79TTGqPanX7nMZ4qCp7L1u+psHPXozoKnXcwnTXvQan2jzb6q331pdy+HJC4sLdFJs8yfZ1OXkUAfOVpcj1z41r7dDJZA/zRGwg0BjNOkvYnP7cVk+fW7XU7VXgoyKOi9umcKOio3rSOGQaUjQok70QPh1GJ+sFYdcsOpjx6tIfA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=25pK3uf3c7e5KiD0dLlJjlHi/zKPev+ClCIgXIkbopk=;
+ b=I1OCDOBxpQSWuD4jTPWgnTLlVOZwj2wVUIsG1CW7k3wj1iDUVecWq9+RCz/vPhNNCwvpr4zxPDjUA7xkpJPaolwitRIP1f55Xxj4QRl3v4zDuiV42j8ETlwKKMYXwz8KuF/ozlrX54g0kNLcRRHYWfacfXNbVYEB4kTytxdSyuA=
+Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
+ (2603:10b6:405:51::10) by BN7PR11MB2563.namprd11.prod.outlook.com
+ (2603:10b6:406:b0::33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3109.22; Thu, 18 Jun
+ 2020 19:46:10 +0000
+Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
+ ([fe80::c908:e244:e85:3362]) by BN6PR1101MB2145.namprd11.prod.outlook.com
+ ([fe80::c908:e244:e85:3362%9]) with mapi id 15.20.3109.021; Thu, 18 Jun 2020
+ 19:46:09 +0000
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net] i40e: fix crash when Rx descriptor
+ count is changed
+Thread-Index: AQHWQK9XAgivUUSSI0CW3i0lwPBrwaje0KtA
+Date: Thu, 18 Jun 2020 19:46:09 +0000
+Message-ID: <BN6PR1101MB2145F6C2A5F5B5458B41845A8C9B0@BN6PR1101MB2145.namprd11.prod.outlook.com>
+References: <20200612114731.144630-1-bjorn.topel@gmail.com>
+In-Reply-To: <20200612114731.144630-1-bjorn.topel@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.2.0.6
+authentication-results: lists.osuosl.org; dkim=none (message not signed)
+ header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
+x-originating-ip: [134.134.136.196]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: cf1c457a-a55a-4f93-bb8e-08d813c03fe6
+x-ms-traffictypediagnostic: BN7PR11MB2563:
+x-microsoft-antispam-prvs: <BN7PR11MB256392B87B97ACB9EEF38B898C9B0@BN7PR11MB2563.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2043;
+x-forefront-prvs: 0438F90F17
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: HkOseYOOU20eAm+7tmkaHufXlpPHqZijIi3ZvWw/zzq6GhybYMbUeOThekun6kDuGGPPBWgfFMUNCnjC3QMUz8xCxEaU3hypJbNuGP/8uE1/2cUt9PwBCErzYf+o1HHSs+9lsBuR/bw7NBgKJFf0gtSoGExYMCDlcrLun9QzWLVArow/Tl9KDPLDSrWBEBTTH4HnlykaF0bNE7Uetf4WmaNngsg7NAluGBAFQrza5zHC6RergzxIdljarufKXRAt/AagLApD3L6WR/LbQKIu6rmpUQnXs7LZR0v2C/QqER2PgjFfPvjitvirPIJZxSuPCwCEQyZoWwvri6kdlsuCrQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(366004)(136003)(376002)(396003)(346002)(39860400002)(71200400001)(5660300002)(54906003)(316002)(83380400001)(4326008)(9686003)(55016002)(8676002)(8936002)(478600001)(2906002)(66946007)(186003)(66476007)(66556008)(6916009)(86362001)(26005)(53546011)(6506007)(7696005)(76116006)(64756008)(66446008)(33656002)(52536014);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: AsAlBKZsmxvy4H2Dpmc/NPhN+ISCeUsqbJe20JgOXCuL4N/gcQ5P2mnUYXeSH9+AYj0uclgBKfb0hy6BKN2ka4CyueCLuDLacHcvEiHPGTlK7BHu+oPnpTxYokuyw7XQ3nUkZDF7Ki/Km/Lpg+sk3mx1WzHwplfCbcXoAO7n6H657a/epTGCQCxpSlV3sDl3JqAVceJEtLFWKDZg5tLxHu4k2u74FmQwSGrW30ChHs5G4HNTZfKF4ucVzLhHRHG8wUY0E7KgDHHFg8pM12inn+lBiyk1qOCDNO/j/WZD/7kUjNi8J1XPC9pNyMvdERxDbPJ2HSDb4Rrr+5PWwmIrqdLhZEmp25ujTikuraYMjseibfpYgObdLTfAg8UwFCBCb9w9aGq+r4MQoDY2Mrt+2VmyJM+X0jK3KbBynx1L2/h0r/qVF5N07qC24o3VTsSGm7A4MdNhS3Z58HueFg1FIP15dRgHUpla7Q785gC+5iyWcsVPvZ1i+PDV4pN5clNT
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- d05833bb02c743e0f21207d817d9109948d8d4f1
+X-MS-Exchange-CrossTenant-Network-Message-Id: cf1c457a-a55a-4f93-bb8e-08d813c03fe6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Jun 2020 19:46:09.8620 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wH0BRInWuO+9YljCgCcJW6iT/JHfUQguSnz97gcS6BNDU7k6np3H8vf/q5bbBIzsYRj+UpgOQEaEq72l+DTYX8fK9wBlJzHuBMvLYACFl6E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2563
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: fix crash when Rx
+ descriptor count is changed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,160 +137,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: d05833bb02c743e0f21207d817d9109948d8d4f1  e1000e: continue to init phy even when failed to disable ULP
-
-Error/Warning in current branch:
-
-include/linux/avf/virtchnl.h:1090:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rss_hash' is not an integer constant
-include/linux/avf/virtchnl.h:175:36: warning: division by zero [-Wdiv-by-zero]
-include/linux/avf/virtchnl.h:809:1: note: in expansion of macro 'VIRTCHNL_CHECK_STRUCT_LEN'
-include/linux/avf/virtchnl.h:809:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_get_capabilities' is not an integer constant
-include/linux/avf/virtchnl.h:891:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_txq_info_v2' is not an integer constant
-include/linux/avf/virtchnl.h:907:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_tx_queues' is not an integer constant
-include/linux/avf/virtchnl.h:937:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rxq_info_v2' is not an integer constant
-include/linux/avf/virtchnl.h:952:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_rx_queues' is not an integer constant
-
-Error/Warning ids grouped by kconfigs:
-
-recent_errors
-|-- arc-allyesconfig
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:note:in-expansion-of-macro-VIRTCHNL_CHECK_STRUCT_LEN
-|   `-- include-linux-avf-virtchnl.h:warning:division-by-zero
-|-- i386-allyesconfig
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:note:in-expansion-of-macro-VIRTCHNL_CHECK_STRUCT_LEN
-|   `-- include-linux-avf-virtchnl.h:warning:division-by-zero
-`-- i386-debian-10.3
-    |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
-    |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
-    |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
-    |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
-    |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
-    |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
-    |-- include-linux-avf-virtchnl.h:note:in-expansion-of-macro-VIRTCHNL_CHECK_STRUCT_LEN
-    `-- include-linux-avf-virtchnl.h:warning:division-by-zero
-
-elapsed time: 723m
-
-configs tested: 94
-configs skipped: 3
-
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-nds32                            alldefconfig
-mips                         tb0287_defconfig
-arm                       mainstone_defconfig
-arm                          collie_defconfig
-mips                        nlm_xlp_defconfig
-powerpc                      chrp32_defconfig
-sh                           se7722_defconfig
-s390                              allnoconfig
-arm                        mvebu_v7_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-i386                 randconfig-a011-20200618
-i386                 randconfig-a015-20200618
-i386                 randconfig-a014-20200618
-i386                 randconfig-a013-20200618
-i386                 randconfig-a016-20200618
-i386                 randconfig-a012-20200618
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBJbnRlbC13aXJlZC1sYW4gPGlu
+dGVsLXdpcmVkLWxhbi1ib3VuY2VzQG9zdW9zbC5vcmc+IE9uIEJlaGFsZiBPZg0KPiBCasO2cm4g
+VMO2cGVsDQo+IFNlbnQ6IEZyaWRheSwgSnVuZSAxMiwgMjAyMCA0OjQ4IEFNDQo+IFRvOiBpbnRl
+bC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZw0KPiBDYzogbmV0ZGV2QHZnZXIua2VybmVsLm9y
+ZzsgYnBmQHZnZXIua2VybmVsLm9yZzsgVG9wZWwsIEJqb3JuDQo+IDxiam9ybi50b3BlbEBpbnRl
+bC5jb20+OyBLYXJsc3NvbiwgTWFnbnVzIDxtYWdudXMua2FybHNzb25AaW50ZWwuY29tPg0KPiBT
+dWJqZWN0OiBbSW50ZWwtd2lyZWQtbGFuXSBbUEFUQ0ggbmV0XSBpNDBlOiBmaXggY3Jhc2ggd2hl
+biBSeCBkZXNjcmlwdG9yDQo+IGNvdW50IGlzIGNoYW5nZWQNCj4gDQo+IEZyb206IEJqw7ZybiBU
+w7ZwZWwgPGJqb3JuLnRvcGVsQGludGVsLmNvbT4NCj4gDQo+IFdoZW4gdGhlIEFGX1hEUCBidWZm
+ZXIgYWxsb2NhdG9yIHdhcyBpbnRyb2R1Y2VkLCB0aGUgUnggU1cgcmluZyAicnhfYmkiDQo+IGFs
+bG9jYXRpb24gd2FzIG1vdmVkIGZyb20gaTQwZV9zZXR1cF9yeF9kZXNjcmlwdG9ycygpIGZ1bmN0
+aW9uLCBhbmQgd2FzDQo+IGluc3RlYWQgZG9uZSBpbiB0aGUgaTQwZV9jb25maWd1cmVfcnhfcmlu
+ZygpIGZ1bmN0aW9uLg0KPiANCj4gVGhpcyBicm9rZSB0aGUgZXRodG9vbCBzZXRfcmluZ3BhcmFt
+KCkgaG9vayBmb3IgY2hhbmdpbmcgdGhlIFJ4IGRlc2NyaXB0b3INCj4gY291bnQsIHdoaWNoIHdh
+cyByZWx5aW5nIG9uIGk0MGVfc2V0dXBfcnhfZGVzY3JpcHRvcnMoKSB0byBoYW5kbGUgdGhlDQo+
+IGFsbG9jdGlvbi4NCj4gDQo+IEZpeCB0aGlzIGJ5IGFkZGluZyBhbiBleHBsaWNpdCBpNDBlX2Fs
+bG9jX3J4X2JpKCkgY2FsbCB0byBpNDBlX3NldF9yaW5ncGFyYW0oKS4NCj4gDQo+IEZpeGVzOiBi
+ZTEyMjJiNTg1ZmQgKCJpNDBlOiBTZXBhcmF0ZSBrZXJuZWwgYWxsb2NhdGVkIHJ4X2JpIHJpbmdz
+IGZyb20NCj4gQUZfWERQIHJpbmdzIikNCj4gU2lnbmVkLW9mZi1ieTogQmrDtnJuIFTDtnBlbCA8
+Ympvcm4udG9wZWxAaW50ZWwuY29tPg0KPiAtLS0NCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
+dGVsL2k0MGUvaTQwZV9ldGh0b29sLmMgfCAzICsrKw0KPiAgMSBmaWxlIGNoYW5nZWQsIDMgaW5z
+ZXJ0aW9ucygrKQ0KDQpUZXN0ZWQtYnk6IEFuZHJldyBCb3dlcnMgPGFuZHJld3guYm93ZXJzQGlu
+dGVsLmNvbT4NCg0KDQoNCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9z
+bC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2ly
+ZWQtbGFuCg==
