@@ -1,53 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9186F1FF47B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jun 2020 16:16:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C8F51FF98C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jun 2020 18:46:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6E3602051A;
-	Thu, 18 Jun 2020 14:16:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1F180884D2;
+	Thu, 18 Jun 2020 16:46:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mQMz5tQrbSR4; Thu, 18 Jun 2020 14:16:32 +0000 (UTC)
+	with ESMTP id DHj8SuHoVeJc; Thu, 18 Jun 2020 16:46:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0B59B204E3;
-	Thu, 18 Jun 2020 14:16:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 72BD1884F4;
+	Thu, 18 Jun 2020 16:46:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5C6E21BF371
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 14:16:28 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 28AD31BF2F4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 16:46:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 56F9F8851C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 14:16:28 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1B93E884DA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 16:46:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NNhGWORfzMQ3 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Jun 2020 14:16:27 +0000 (UTC)
+ with ESMTP id 9D4Rmc2g+4io for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Jun 2020 16:46:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 1156A88507
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 14:16:26 +0000 (UTC)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id CD63D63B92EC7A708921;
- Thu, 18 Jun 2020 22:16:22 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 18 Jun 2020 22:16:14 +0800
-From: Wei Yongjun <weiyongjun1@huawei.com>
-To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski
- <kuba@kernel.org>
-Date: Thu, 18 Jun 2020 14:19:53 +0000
-Message-ID: <20200618141953.29674-1-weiyongjun1@huawei.com>
-X-Mailer: git-send-email 2.20.1
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1FD46884D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 16:46:50 +0000 (UTC)
+IronPort-SDR: M8i2ooz1T5E1eXZOEUFdv+zIggmpQzNJnVZNTuZSG8+LhZEtM5ydJRmipDNmEG6De7RoZyexpF
+ MqUyYN83XE0A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9656"; a="131047003"
+X-IronPort-AV: E=Sophos;i="5.75,251,1589266800"; d="scan'208";a="131047003"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2020 09:46:49 -0700
+IronPort-SDR: YPg+0UlidcbUQ1ng75wqQ7llZzV/+9Dge9AIaAsFIftGH3xNXAPBx3IwLTGaFd1BI3f55+412Q
+ P48/ITAhVIrw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,251,1589266800"; d="scan'208";a="309884900"
+Received: from lkp-server02.sh.intel.com (HELO 5ce11009e457) ([10.239.97.151])
+ by fmsmga002.fm.intel.com with ESMTP; 18 Jun 2020 09:46:48 -0700
+Received: from kbuild by 5ce11009e457 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jlxgd-0000K2-Gn; Thu, 18 Jun 2020 16:46:47 +0000
+Date: Fri, 19 Jun 2020 00:45:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5eeb9a40.8Hw6gTozHzGjacQP%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
-Subject: [Intel-wired-lan] [PATCH] iavf: fix error return code in
- iavf_init_get_resources()
+Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS WITH
+ WARNING 2c89ef0b849b5d1bdba9bcc93a70f52c4752bc23
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,41 +69,198 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
- Wei Yongjun <weiyongjun1@huawei.com>, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix to return negative error code -ENOMEM from the error handling
-case instead of 0, as done elsewhere in this function.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
+branch HEAD: 2c89ef0b849b5d1bdba9bcc93a70f52c4752bc23  idpf: Introduce idpf driver
 
-Fixes: b66c7bc1cd4d ("iavf: Refactor init state machine")
-Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+Warning in current branch:
+
+drivers/net/ethernet/intel/idpf/idpf_main.c:46:5: warning: no previous prototype for 'idpf_probe' [-Wmissing-prototypes]
+
+Warning ids grouped by kconfigs:
+
+recent_errors
+|-- alpha-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arc-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm64-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm64-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- i386-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- i386-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- ia64-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- ia64-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- mips-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- mips-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- parisc-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- parisc-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- powerpc-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- powerpc-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- riscv-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- riscv-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- s390-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- s390-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- sparc-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- sparc64-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- sparc64-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- x86_64-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+`-- xtensa-allyesconfig
+    `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+
+elapsed time: 723m
+
+configs tested: 117
+configs skipped: 3
+
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+nds32                            alldefconfig
+mips                         tb0287_defconfig
+arm                       mainstone_defconfig
+arm                          collie_defconfig
+mips                        nlm_xlp_defconfig
+sh                          polaris_defconfig
+arm                         bcm2835_defconfig
+ia64                                defconfig
+parisc                generic-64bit_defconfig
+arm                       spear13xx_defconfig
+arc                          axs103_defconfig
+arm                         lubbock_defconfig
+arm                      footbridge_defconfig
+arm                          tango4_defconfig
+arm                           tegra_defconfig
+arm                        neponset_defconfig
+arc                        nsimosci_defconfig
+powerpc                      chrp32_defconfig
+sh                           se7722_defconfig
+s390                              allnoconfig
+arm                        mvebu_v7_defconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                              allnoconfig
+ia64                             allmodconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a001-20200618
+x86_64               randconfig-a003-20200618
+x86_64               randconfig-a006-20200618
+x86_64               randconfig-a002-20200618
+x86_64               randconfig-a005-20200618
+x86_64               randconfig-a004-20200618
+i386                 randconfig-a002-20200618
+i386                 randconfig-a006-20200618
+i386                 randconfig-a001-20200618
+i386                 randconfig-a004-20200618
+i386                 randconfig-a005-20200618
+i386                 randconfig-a003-20200618
+i386                 randconfig-a011-20200618
+i386                 randconfig-a015-20200618
+i386                 randconfig-a014-20200618
+i386                 randconfig-a013-20200618
+i386                 randconfig-a016-20200618
+i386                 randconfig-a012-20200618
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index fa82768e5eda..bc83e2d99944 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1863,8 +1863,10 @@ static int iavf_init_get_resources(struct iavf_adapter *adapter)
- 
- 	adapter->rss_key = kzalloc(adapter->rss_key_size, GFP_KERNEL);
- 	adapter->rss_lut = kzalloc(adapter->rss_lut_size, GFP_KERNEL);
--	if (!adapter->rss_key || !adapter->rss_lut)
-+	if (!adapter->rss_key || !adapter->rss_lut) {
-+		err = -ENOMEM;
- 		goto err_mem;
-+	}
- 	if (RSS_AQ(adapter))
- 		adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_RSS;
- 	else
-
-
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
