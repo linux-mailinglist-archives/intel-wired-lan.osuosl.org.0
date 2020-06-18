@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBDEE1FDC06
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jun 2020 03:16:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B0031FDCCF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jun 2020 03:22:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A068887820;
-	Thu, 18 Jun 2020 01:16:25 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 072608803B;
+	Thu, 18 Jun 2020 01:22:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AfCv6IrDqQ8U; Thu, 18 Jun 2020 01:16:25 +0000 (UTC)
+	with ESMTP id l3ldjv5HLkOn; Thu, 18 Jun 2020 01:22:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id AA57D878B3;
-	Thu, 18 Jun 2020 01:16:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 93D8587FC1;
+	Thu, 18 Jun 2020 01:22:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7E6FB1BF31F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 01:16:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 39DEB1BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 01:22:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 77DFF86C8F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 01:16:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 18B7C203A8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 01:22:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y4ztr2PzjV_m for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Jun 2020 01:16:22 +0000 (UTC)
+ with ESMTP id 0KwHVy6gks7j for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Jun 2020 01:22:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 7254586C11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 01:16:22 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTPS id A54D420382
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jun 2020 01:22:14 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4068121D90;
- Thu, 18 Jun 2020 01:16:21 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 76F99221E8;
+ Thu, 18 Jun 2020 01:22:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592442982;
- bh=m3spOTw+kmDFB65Ok2W1/wicyM0rx4bi5oyYMnMJfE8=;
+ s=default; t=1592443334;
+ bh=2rm5RcYbUb/j6LaDywUbdw/y6eC+GKGN8Q/dRzVkim8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ENJi0yALlXuVTx9tk/5SVyoJ1/dk1StVrcGuCtLValTrHK4QPWW7OLw9YO2UzzogP
- Z86FpaqrTi6Ixd7VGZhUt9QVYyQdlhCyIiS8bqqa2wAaBn3l+TLl+GqP0Z/XA+aoTV
- K6bXg0lkTpeBpTGhLAKFi9eq0yLwDF8+FRE7JqXI=
+ b=MqZY1KYfdcCzInD7remNRO8OF1m/U0neQBi5RrB4fuxiFuuG2+HLliQAvljtSaGFw
+ CmUGZZi3+JhClnD2BX8VBYmrpVLH0qi5zsKFDSgeA0//1G/7V2HrGO/v2cbkOVmv8k
+ Azw2dX7XBji0BP89V8Uwh388+UV+Pju55LUnd3a0=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Wed, 17 Jun 2020 21:08:00 -0400
-Message-Id: <20200618010805.600873-383-sashal@kernel.org>
+Date: Wed, 17 Jun 2020 21:16:30 -0400
+Message-Id: <20200618011631.604574-265-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200618010805.600873-1-sashal@kernel.org>
-References: <20200618010805.600873-1-sashal@kernel.org>
+In-Reply-To: <20200618011631.604574-1-sashal@kernel.org>
+References: <20200618011631.604574-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.7 383/388] iavf: fix speed
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.4 265/266] iavf: fix speed
  reporting over virtchnl
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -120,7 +120,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  4 files changed, 120 insertions(+), 21 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index bcd11b4b29df..2d4ce6fdba1a 100644
+index bd1b1ed323f4..6b9117a350fa 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf.h
 +++ b/drivers/net/ethernet/intel/iavf/iavf.h
 @@ -87,6 +87,10 @@ struct iavf_vsi {
@@ -159,7 +159,7 @@ index bcd11b4b29df..2d4ce6fdba1a 100644
  	struct virtchnl_vsi_resource *vsi_res; /* our LAN VSI */
  	struct virtchnl_version_info pf_version;
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 2c39d46b6138..40a3fc7c5ea5 100644
+index dad3eec8ccd8..758bef02a2a8 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
 @@ -278,7 +278,18 @@ static int iavf_get_link_ksettings(struct net_device *netdev,
@@ -191,7 +191,7 @@ index 2c39d46b6138..40a3fc7c5ea5 100644
  	return 0;
  }
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 2050649848ba..a21ae74bcd1b 100644
+index 8e16be960e96..bacc5fb7eba2 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
 @@ -1756,17 +1756,17 @@ static int iavf_init_get_resources(struct iavf_adapter *adapter)
@@ -253,7 +253,7 @@ index 2050649848ba..a21ae74bcd1b 100644
  		dev_err(&adapter->pdev->dev,
  			"Invalid tx rate specified\n");
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index d58374c2c33d..ca79bec4ebd9 100644
+index 1ab9cb339acb..9655318803b7 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
 @@ -139,7 +139,8 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
@@ -266,7 +266,7 @@ index d58374c2c33d..ca79bec4ebd9 100644
  
  	adapter->current_op = VIRTCHNL_OP_GET_VF_RESOURCES;
  	adapter->aq_required &= ~IAVF_FLAG_AQ_GET_CONFIG;
-@@ -891,6 +892,8 @@ void iavf_disable_vlan_stripping(struct iavf_adapter *adapter)
+@@ -918,6 +919,8 @@ void iavf_disable_vlan_stripping(struct iavf_adapter *adapter)
  	iavf_send_pf_msg(adapter, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING, NULL, 0);
  }
  
@@ -275,7 +275,7 @@ index d58374c2c33d..ca79bec4ebd9 100644
  /**
   * iavf_print_link_message - print link up or down
   * @adapter: adapter structure
-@@ -900,37 +903,99 @@ void iavf_disable_vlan_stripping(struct iavf_adapter *adapter)
+@@ -927,37 +930,99 @@ void iavf_disable_vlan_stripping(struct iavf_adapter *adapter)
  static void iavf_print_link_message(struct iavf_adapter *adapter)
  {
  	struct net_device *netdev = adapter->netdev;
@@ -383,7 +383,7 @@ index d58374c2c33d..ca79bec4ebd9 100644
  }
  
  /**
-@@ -1160,12 +1225,11 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+@@ -1187,12 +1252,11 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
  	if (v_opcode == VIRTCHNL_OP_EVENT) {
  		struct virtchnl_pf_event *vpe =
  			(struct virtchnl_pf_event *)msg;
