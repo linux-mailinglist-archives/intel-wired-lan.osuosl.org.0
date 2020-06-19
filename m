@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A61E200184
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jun 2020 07:06:41 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36700200185
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jun 2020 07:06:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DF34089705;
-	Fri, 19 Jun 2020 05:06:39 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C3BB786F52;
+	Fri, 19 Jun 2020 05:06:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r40gXUsqFpmo; Fri, 19 Jun 2020 05:06:37 +0000 (UTC)
+	with ESMTP id lnAtTX-yBAyU; Fri, 19 Jun 2020 05:06:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8A0B688550;
-	Fri, 19 Jun 2020 05:06:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D065486F42;
+	Fri, 19 Jun 2020 05:06:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 10C001BF86B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jun 2020 05:06:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A110A1BF86B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jun 2020 05:06:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0D99B88304
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jun 2020 05:06:36 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9DB3688575
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jun 2020 05:06:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2Tr9p7fLewXK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 19 Jun 2020 05:06:35 +0000 (UTC)
+ with ESMTP id qQbAaMq9r3Ld for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Jun 2020 05:06:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 028A388313
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jun 2020 05:06:34 +0000 (UTC)
-IronPort-SDR: c9tHzCUTnDVhUk5SvLyzCZsMkVbDskyOlc1SYBME6/u8c6QYxOKvahiYN6sZ/xb++N/Oq1Izlh
- 9wqMFa4hWYIQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9656"; a="141909051"
-X-IronPort-AV: E=Sophos;i="5.75,253,1589266800"; d="scan'208";a="141909051"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9A14488313
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jun 2020 05:06:36 +0000 (UTC)
+IronPort-SDR: QZ1UQDCOs+AU+W26pn2BBm/h/DdweVmzmOGWr81MrJSClMRAfu64xTf2dW5EJhpV2jte2rDPP3
+ g60P6zju/1zQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9656"; a="141909053"
+X-IronPort-AV: E=Sophos;i="5.75,253,1589266800"; d="scan'208";a="141909053"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2020 22:06:34 -0700
-IronPort-SDR: 1D7PJZSEtefWOn1L9XDGok4CaXSdR2ziU/per9sgcWuxkfOG8hJle4fCAeO342/vwM1arkSSoH
- xG++XelLIaIw==
+ 18 Jun 2020 22:06:36 -0700
+IronPort-SDR: zyQFmmmRZA6xVZl3xe0Ll9Fm1i7q8lrn5HmAzCKJrtGk9AHU6W8GAvte+WxnhAJ+QAr4Q1mNC5
+ e2aY2lWbtlDA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,253,1589266800"; d="scan'208";a="477504989"
+X-IronPort-AV: E=Sophos;i="5.75,253,1589266800"; d="scan'208";a="477504994"
 Received: from npg-dpdk-haiyue-1.sh.intel.com ([10.67.119.213])
- by fmsmga005.fm.intel.com with ESMTP; 18 Jun 2020 22:06:33 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 18 Jun 2020 22:06:35 -0700
 From: Haiyue Wang <haiyue.wang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 19 Jun 2020 12:57:07 +0800
-Message-Id: <20200619045711.16055-2-haiyue.wang@intel.com>
+Date: Fri, 19 Jun 2020 12:57:08 +0800
+Message-Id: <20200619045711.16055-3-haiyue.wang@intel.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200619045711.16055-1-haiyue.wang@intel.com>
 References: <20200619045711.16055-1-haiyue.wang@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH v1 1/5] ice: add the virtchnl handler for
- AdminQ command
+Subject: [Intel-wired-lan] [PATCH v1 2/5] ice: add DCF cap negotiation and
+ state machine
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,348 +68,375 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Xiaoyun Li <xiaoyun.li@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The DCF (Device Config Function) is a named trust VF (alway with ID 0,
-single entity per PF port) that can act as a sole controlling entity to
-exercise advance functionality such as adding switch rules for the rest
-of VFs.
+The trust VF0 needs to negotiate the DCF capability firstly. Then the PF
+driver may allow this VF to enter into DCF "ON" state if various checks
+are passed. In DCF "ON" state, the VF0 can send the AdminQ command to do
+advanced switch rules creation for other VFs.
 
-To achieve this approach, this VF is permitted to send some basic AdminQ
-commands to the PF through virtual channel (mailbox), then the PF driver
-sends these commands to the firmware, and returns the response to the VF
-again through virtual channel.
+If one of the VFs resets, its hardware VSI number may be changed, so the
+VF0 will enter into the DCF "BUSY" state immediately to avoid adding the
+wrong rule. After the reset is done, the DCF state is changed to "PAUSE"
+mode, and a DCF_VSI_MAP_UPDATE event will be sent to the VF0. This event
+notifies the VF0 to restart negotiating the DCF capability again.
 
-The AdminQ command from DCF is split into two parts: one is the AdminQ
-descriptor, the other is the buffer (the descriptor has BUF flag set).
-These two parts should be sent in order, so that the PF can handle them
-correctly.
+Also the VF0 can exits the DCF service gracefully by issuing the virtual
+channel command OP_DCF_DISABLE.
 
+The system administrator can disable the DCF service by changing the
+trust mode to untrusted.
+
+Signed-off-by: Xiaoyun Li <xiaoyun.li@intel.com>
 Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- drivers/net/ethernet/intel/ice/Makefile       |   2 +-
- drivers/net/ethernet/intel/ice/ice.h          |   2 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   6 +
- drivers/net/ethernet/intel/ice/ice_dcf.c      |  49 +++++++
- drivers/net/ethernet/intel/ice/ice_dcf.h      |  20 +++
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 130 ++++++++++++++++++
- .../net/ethernet/intel/ice/ice_virtchnl_pf.h  |   1 +
- include/linux/avf/virtchnl.h                  |  10 ++
- 8 files changed, 219 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_dcf.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_dcf.h
+ drivers/net/ethernet/intel/ice/ice_dcf.c      | 86 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_dcf.h      | 29 +++++++
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 85 +++++++++++++++++-
+ include/linux/avf/virtchnl.h                  |  9 ++
+ 4 files changed, 208 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 980bbcc64b4b..eb83b5fe11c3 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -24,7 +24,7 @@ ice-y := ice_main.o	\
- 	 ice_flow.o	\
- 	 ice_devlink.o	\
- 	 ice_ethtool.o
--ice-$(CONFIG_PCI_IOV) += ice_virtchnl_pf.o ice_sriov.o
-+ice-$(CONFIG_PCI_IOV) += ice_virtchnl_pf.o ice_sriov.o ice_dcf.o
- ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
- ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
- ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 7486d010a619..a6e419a3f547 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -435,6 +435,8 @@ struct ice_pf {
- 	u32 tx_timeout_recovery_level;
- 	char int_name[ICE_INT_NAME_STR_LEN];
- 	u32 sw_int_count;
-+
-+	struct ice_dcf dcf;
- };
- 
- struct ice_netdev_priv {
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 92f82f2a8af4..90d679ef7502 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1868,6 +1868,12 @@ enum ice_adminq_opc {
- 	ice_aqc_opc_update_vsi				= 0x0211,
- 	ice_aqc_opc_free_vsi				= 0x0213,
- 
-+	/* recipe commands */
-+	ice_aqc_opc_add_recipe				= 0x0290,
-+	ice_aqc_opc_recipe_to_profile			= 0x0291,
-+	ice_aqc_opc_get_recipe				= 0x0292,
-+	ice_aqc_opc_get_recipe_to_profile		= 0x0293,
-+
- 	/* switch rules population commands */
- 	ice_aqc_opc_add_sw_rules			= 0x02A0,
- 	ice_aqc_opc_update_sw_rules			= 0x02A1,
 diff --git a/drivers/net/ethernet/intel/ice/ice_dcf.c b/drivers/net/ethernet/intel/ice/ice_dcf.c
-new file mode 100644
-index 000000000000..cbe60a0cb2d2
---- /dev/null
+index cbe60a0cb2d2..41e03bc800f4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_dcf.c
-@@ -0,0 +1,49 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (C) 2018-2020, Intel Corporation. */
-+
-+#include "ice.h"
-+
-+static const enum ice_adminq_opc aqc_permitted_tbl[] = {
-+	/* Generic Firmware Admin commands */
-+	ice_aqc_opc_get_ver,
-+	ice_aqc_opc_req_res,
-+	ice_aqc_opc_release_res,
-+	ice_aqc_opc_list_func_caps,
-+	ice_aqc_opc_list_dev_caps,
-+
-+	/* Package Configuration Admin Commands */
-+	ice_aqc_opc_update_pkg,
-+	ice_aqc_opc_get_pkg_info_list,
-+
-+	/* PHY commands */
-+	ice_aqc_opc_get_phy_caps,
-+	ice_aqc_opc_get_link_status,
-+
-+	/* Switch Block */
-+	ice_aqc_opc_get_sw_cfg,
-+	ice_aqc_opc_alloc_res,
-+	ice_aqc_opc_free_res,
-+	ice_aqc_opc_add_recipe,
-+	ice_aqc_opc_recipe_to_profile,
-+	ice_aqc_opc_get_recipe,
-+	ice_aqc_opc_get_recipe_to_profile,
-+	ice_aqc_opc_add_sw_rules,
-+	ice_aqc_opc_update_sw_rules,
-+	ice_aqc_opc_remove_sw_rules,
-+};
+@@ -47,3 +47,89 @@ bool ice_dcf_aq_cmd_permitted(struct ice_aq_desc *desc)
+ 
+ 	return false;
+ }
 +
 +/**
-+ * ice_dcf_aq_cmd_permitted - validate the AdminQ command permitted or not
-+ * @desc: descriptor describing the command
++ * ice_check_dcf_allowed - check if DCF is allowed based on various checks
++ * @vf: pointer to the VF to check
 + */
-+bool ice_dcf_aq_cmd_permitted(struct ice_aq_desc *desc)
++bool ice_check_dcf_allowed(struct ice_vf *vf)
 +{
-+	u16 opc = le16_to_cpu(desc->opcode);
-+	unsigned int i;
++	struct ice_pf *pf = vf->pf;
++	struct device *dev;
 +
-+	for (i = 0; i < ARRAY_SIZE(aqc_permitted_tbl); i++)
-+		if (opc == aqc_permitted_tbl[i])
-+			return true;
++	dev = ice_pf_to_dev(pf);
 +
-+	return false;
++	if (vf->vf_id != ICE_DCF_VFID) {
++		dev_err(dev, "VF %d requested DCF capability, but only VF %d is allowed to request DCF capability\n",
++			vf->vf_id, ICE_DCF_VFID);
++		return false;
++	}
++
++	if (!vf->trusted) {
++		dev_err(dev, "VF needs to be trusted to configure DCF capability\n");
++		return false;
++	}
++
++	return true;
++}
++
++/**
++ * ice_is_dcf_enabled - Check the DCF enabled status of the associated PF
++ * @pf: PF instance
++ */
++bool ice_is_dcf_enabled(struct ice_pf *pf)
++{
++	return !!pf->dcf.vf;
++}
++
++/**
++ * ice_vf_is_dcf - helper to check if the assigned VF is a DCF
++ * @vf: the assigned VF to be checked
++ */
++bool ice_is_vf_dcf(struct ice_vf *vf)
++{
++	return vf == vf->pf->dcf.vf;
++}
++
++/**
++ * ice_dcf_get_state - Get DCF state of the associated PF
++ * @pf: PF instance
++ */
++enum ice_dcf_state ice_dcf_get_state(struct ice_pf *pf)
++{
++	return pf->dcf.vf ? pf->dcf.state : ICE_DCF_STATE_OFF;
++}
++
++/**
++ * ice_dcf_state_str - convert DCF state code to a string
++ * @state: the DCF state code to convert
++ */
++static const char *ice_dcf_state_str(enum ice_dcf_state state)
++{
++	switch (state) {
++	case ICE_DCF_STATE_OFF:
++		return "ICE_DCF_STATE_OFF";
++	case ICE_DCF_STATE_ON:
++		return "ICE_DCF_STATE_ON";
++	case ICE_DCF_STATE_BUSY:
++		return "ICE_DCF_STATE_BUSY";
++	case ICE_DCF_STATE_PAUSE:
++		return "ICE_DCF_STATE_PAUSE";
++	}
++
++	return "ICE_DCF_STATE_UNKNOWN";
++}
++
++/**
++ * ice_dcf_set_state - Set DCF state for the associated PF
++ * @pf: PF instance
++ * @state: new DCF state
++ */
++void ice_dcf_set_state(struct ice_pf *pf, enum ice_dcf_state state)
++{
++	dev_dbg(ice_pf_to_dev(pf), "DCF state is changing from %s to %s\n",
++		ice_dcf_state_str(pf->dcf.state),
++		ice_dcf_state_str(state));
++
++	pf->dcf.state = state;
 +}
 diff --git a/drivers/net/ethernet/intel/ice/ice_dcf.h b/drivers/net/ethernet/intel/ice/ice_dcf.h
-new file mode 100644
-index 000000000000..9edb2d5d9d8f
---- /dev/null
+index 9edb2d5d9d8f..a3ee11d6cce7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcf.h
 +++ b/drivers/net/ethernet/intel/ice/ice_dcf.h
-@@ -0,0 +1,20 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (C) 2018-2020, Intel Corporation. */
+@@ -4,7 +4,26 @@
+ #ifndef _ICE_DCF_H_
+ #define _ICE_DCF_H_
+ 
++struct ice_vf;
++struct ice_pf;
 +
-+#ifndef _ICE_DCF_H_
-+#define _ICE_DCF_H_
-+
-+struct ice_dcf {
-+	/* Handle the AdminQ command between the DCF (Device Config Function)
-+	 * and the firmware.
-+	 */
-+#define ICE_DCF_AQ_DESC_TIMEOUT	(HZ / 10)
-+	struct ice_aq_desc aq_desc;
-+	u8 aq_desc_received;
-+	unsigned long aq_desc_expires;
++#define ICE_DCF_VFID			0
++/* DCF mode states */
++enum ice_dcf_state {
++	/* DCF mode is fully off */
++	ICE_DCF_STATE_OFF = 0,
++	/* Process is live, acquired capability to send DCF CMD */
++	ICE_DCF_STATE_ON,
++	/* Kernel is busy, deny DCF CMD */
++	ICE_DCF_STATE_BUSY,
++	/* Kernel is ready for Process to Re-establish, deny DCF CMD */
++	ICE_DCF_STATE_PAUSE,
 +};
 +
-+#ifdef CONFIG_PCI_IOV
-+bool ice_dcf_aq_cmd_permitted(struct ice_aq_desc *desc);
-+#endif /* CONFIG_PCI_IOV */
-+#endif /* _ICE_DCF_H_ */
+ struct ice_dcf {
++	struct ice_vf *vf;
++	enum ice_dcf_state state;
++
+ 	/* Handle the AdminQ command between the DCF (Device Config Function)
+ 	 * and the firmware.
+ 	 */
+@@ -16,5 +35,15 @@ struct ice_dcf {
+ 
+ #ifdef CONFIG_PCI_IOV
+ bool ice_dcf_aq_cmd_permitted(struct ice_aq_desc *desc);
++bool ice_check_dcf_allowed(struct ice_vf *vf);
++bool ice_is_dcf_enabled(struct ice_pf *pf);
++bool ice_is_vf_dcf(struct ice_vf *vf);
++enum ice_dcf_state ice_dcf_get_state(struct ice_pf *pf);
++void ice_dcf_set_state(struct ice_pf *pf, enum ice_dcf_state state);
++#else
++static inline bool ice_is_dcf_enabled(struct ice_pf __always_unused *pf)
++{
++	return false;
++}
+ #endif /* CONFIG_PCI_IOV */
+ #endif /* _ICE_DCF_H_ */
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index a368a89b25f3..ca0d4dd5953c 100644
+index ca0d4dd5953c..622b16efae0b 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -3651,6 +3651,130 @@ static int ice_vf_init_vlan_stripping(struct ice_vf *vf)
- 		return ice_vsi_manage_vlan_stripping(vsi, false);
+@@ -360,6 +360,11 @@ void ice_free_vfs(struct ice_pf *pf)
+ 	else
+ 		dev_warn(dev, "VFs are assigned - not disabling SR-IOV\n");
+ 
++	if (ice_dcf_get_state(pf) != ICE_DCF_STATE_OFF) {
++		ice_dcf_set_state(pf, ICE_DCF_STATE_OFF);
++		pf->dcf.vf = NULL;
++	}
++
+ 	/* Avoid wait time by stopping all VFs at the same time */
+ 	ice_for_each_vf(pf, i)
+ 		if (test_bit(ICE_VF_STATE_QS_ENA, pf->vf[i].vf_states))
+@@ -1285,6 +1290,9 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 	set_bit(ICE_VF_STATE_DIS, vf->vf_states);
+ 	ice_trigger_vf_reset(vf, is_vflr, false);
+ 
++	if (ice_dcf_get_state(pf) == ICE_DCF_STATE_ON)
++		ice_dcf_set_state(pf, ICE_DCF_STATE_BUSY);
++
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 
+ 	if (test_bit(ICE_VF_STATE_QS_ENA, vf->vf_states))
+@@ -1340,6 +1348,21 @@ bool ice_reset_vf(struct ice_vf *vf, bool is_vflr)
+ 	ice_vf_rebuild_vsi_with_release(vf);
+ 	ice_vf_post_vsi_rebuild(vf);
+ 
++	if (ice_dcf_get_state(pf) == ICE_DCF_STATE_BUSY) {
++		struct virtchnl_pf_event pfe = { 0 };
++
++		ice_dcf_set_state(pf, ICE_DCF_STATE_PAUSE);
++
++		pfe.event = VIRTCHNL_EVENT_DCF_VSI_MAP_UPDATE;
++		pfe.event_data.vf_vsi_map.vf_id = vf->vf_id;
++		pfe.event_data.vf_vsi_map.vsi_id = vf->lan_vsi_num;
++
++		ice_aq_send_msg_to_vf(&pf->hw, ICE_DCF_VFID,
++				      VIRTCHNL_OP_EVENT,
++				      VIRTCHNL_STATUS_SUCCESS,
++				      (u8 *)&pfe, sizeof(pfe), NULL);
++	}
++
+ 	return true;
+ }
+ 
+@@ -1977,6 +2000,24 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+ 	if (vf->driver_caps & VIRTCHNL_VF_CAP_ADV_LINK_SPEED)
+ 		vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
+ 
++	/* Negotiate DCF capability. */
++	if (vf->driver_caps & VIRTCHNL_VF_CAP_DCF) {
++		if (!ice_check_dcf_allowed(vf)) {
++			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++			goto err;
++		}
++		vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_DCF;
++		pf->dcf.vf = vf;
++		ice_dcf_set_state(pf, ICE_DCF_STATE_ON);
++		dev_info(ice_pf_to_dev(pf), "Grant request for DCF functionality to VF%d\n",
++			 ICE_DCF_VFID);
++	} else if (ice_is_vf_dcf(vf) &&
++		   ice_dcf_get_state(pf) != ICE_DCF_STATE_OFF) {
++		ice_dcf_set_state(pf, ICE_DCF_STATE_OFF);
++		pf->dcf.vf = NULL;
++		ice_reset_vf(vf, false);
++	}
++
+ 	vfres->num_vsis = 1;
+ 	/* Tx and Rx queue are equal for VF */
+ 	vfres->num_queue_pairs = vsi->num_txq;
+@@ -3726,6 +3767,9 @@ static int ice_vc_dcf_cmd_desc_msg(struct ice_vf *vf, u8 *msg, u16 len)
+ 	struct ice_aq_desc *aq_desc = (struct ice_aq_desc *)msg;
+ 	struct ice_pf *pf = vf->pf;
+ 
++	if (!ice_is_vf_dcf(vf) || ice_dcf_get_state(pf) != ICE_DCF_STATE_ON)
++		goto err;
++
+ 	if (len != sizeof(*aq_desc) || !ice_dcf_aq_cmd_permitted(aq_desc)) {
+ 		/* In case to avoid the VIRTCHNL_OP_DCF_CMD_DESC message with
+ 		 * the ICE_AQ_FLAG_BUF set followed by another bad message
+@@ -3763,7 +3807,8 @@ static int ice_vc_dcf_cmd_buff_msg(struct ice_vf *vf, u8 *msg, u16 len)
+ {
+ 	struct ice_pf *pf = vf->pf;
+ 
+-	if (!len || !pf->dcf.aq_desc_received ||
++	if (!ice_is_vf_dcf(vf) || ice_dcf_get_state(pf) != ICE_DCF_STATE_ON ||
++	    !len || !pf->dcf.aq_desc_received ||
+ 	    time_is_before_jiffies(pf->dcf.aq_desc_expires))
+ 		goto err;
+ 
+@@ -3775,6 +3820,34 @@ static int ice_vc_dcf_cmd_buff_msg(struct ice_vf *vf, u8 *msg, u16 len)
+ 				     VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
  }
  
 +/**
-+ * ice_dcf_handle_aq_cmd - handle the AdminQ command from DCF to FW
-+ * @vf: pointer to the VF info
-+ * @aq_desc: the AdminQ command descriptor
-+ * @aq_buf: the AdminQ command buffer if aq_buf_size is non-zero
-+ * @aq_buf_size: the AdminQ command buffer size
-+ *
-+ * The VF splits the AdminQ command into two parts: one is the descriptor of
-+ * AdminQ command, the other is the buffer of AdminQ command (the descriptor
-+ * has BUF flag set). When both of them are received by PF, this function will
-+ * forward them to firmware once to get the AdminQ's response. And also, the
-+ * filled descriptor and buffer of the response will be sent back to VF one by
-+ * one through the virtchnl.
++ * ice_vc_dis_dcf_cap - disable DCF capability for the VF
++ * @vf: pointer to the VF
 + */
-+static int
-+ice_dcf_handle_aq_cmd(struct ice_vf *vf, struct ice_aq_desc *aq_desc,
-+		      u8 *aq_buf, u16 aq_buf_size)
++static int ice_vc_dis_dcf_cap(struct ice_vf *vf)
 +{
 +	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	struct ice_pf *pf = vf->pf;
-+	enum virtchnl_ops v_op;
-+	enum ice_status aq_ret;
-+	u16 v_msg_len = 0;
-+	u8 *v_msg = NULL;
-+	int ret;
 +
-+	pf->dcf.aq_desc_received = false;
-+
-+	if ((aq_buf && !aq_buf_size) || (!aq_buf && aq_buf_size))
-+		return -EINVAL;
-+
-+	aq_ret = ice_aq_send_cmd(&pf->hw, aq_desc, aq_buf, aq_buf_size, NULL);
-+	/* It needs to send back the AQ response message if ICE_ERR_AQ_ERROR
-+	 * returns, some AdminQ handlers will use the error code filled by FW
-+	 * to do exception handling.
-+	 */
-+	if (aq_ret && aq_ret != ICE_ERR_AQ_ERROR) {
-+		v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
-+		v_op = VIRTCHNL_OP_DCF_CMD_DESC;
++	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
++		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
 +		goto err;
 +	}
 +
-+	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DCF_CMD_DESC, v_ret,
-+				    (u8 *)aq_desc, sizeof(*aq_desc));
-+	/* Bail out so we don't send the VIRTCHNL_OP_DCF_CMD_BUFF message
-+	 * below if failure happens or no AdminQ command buffer.
-+	 */
-+	if (ret || !aq_buf_size)
-+		return ret;
-+
-+	v_op = VIRTCHNL_OP_DCF_CMD_BUFF;
-+	v_msg_len = le16_to_cpu(aq_desc->datalen);
-+
-+	/* buffer is not updated if data length exceeds buffer size */
-+	if (v_msg_len > aq_buf_size)
-+		v_msg_len = 0;
-+	else if (v_msg_len)
-+		v_msg = aq_buf;
-+
-+	/* send the response back to the VF */
-+err:
-+	return ice_vc_send_msg_to_vf(vf, v_op, v_ret, v_msg, v_msg_len);
-+}
-+
-+/**
-+ * ice_vc_dcf_cmd_desc_msg - handle the DCF AdminQ command descriptor
-+ * @vf: pointer to the VF info
-+ * @msg: pointer to the msg buffer which holds the command descriptor
-+ * @len: length of the message
-+ */
-+static int ice_vc_dcf_cmd_desc_msg(struct ice_vf *vf, u8 *msg, u16 len)
-+{
-+	struct ice_aq_desc *aq_desc = (struct ice_aq_desc *)msg;
-+	struct ice_pf *pf = vf->pf;
-+
-+	if (len != sizeof(*aq_desc) || !ice_dcf_aq_cmd_permitted(aq_desc)) {
-+		/* In case to avoid the VIRTCHNL_OP_DCF_CMD_DESC message with
-+		 * the ICE_AQ_FLAG_BUF set followed by another bad message
-+		 * VIRTCHNL_OP_DCF_CMD_DESC.
-+		 */
-+		pf->dcf.aq_desc_received = false;
++	if (!ice_is_vf_dcf(vf)) {
++		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
 +		goto err;
 +	}
 +
-+	/* The AdminQ descriptor needs to be stored for use when the followed
-+	 * VIRTCHNL_OP_DCF_CMD_BUFF is received.
-+	 */
-+	if (aq_desc->flags & cpu_to_le16(ICE_AQ_FLAG_BUF)) {
-+		pf->dcf.aq_desc = *aq_desc;
-+		pf->dcf.aq_desc_received = true;
-+		pf->dcf.aq_desc_expires = jiffies + ICE_DCF_AQ_DESC_TIMEOUT;
-+		return 0;
++	if (vf->driver_caps & VIRTCHNL_VF_CAP_DCF) {
++		vf->driver_caps &= ~VIRTCHNL_VF_CAP_DCF;
++		ice_dcf_set_state(vf->pf, ICE_DCF_STATE_OFF);
++		vf->pf->dcf.vf = NULL;
 +	}
-+
-+	return ice_dcf_handle_aq_cmd(vf, aq_desc, NULL, 0);
-+
-+	/* send the response back to the VF */
 +err:
-+	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DCF_CMD_DESC,
-+				     VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
-+}
-+
-+/**
-+ * ice_vc_dcf_cmd_buff_msg - handle the DCF AdminQ command buffer
-+ * @vf: pointer to the VF info
-+ * @msg: pointer to the msg buffer which holds the command buffer
-+ * @len: length of the message
-+ */
-+static int ice_vc_dcf_cmd_buff_msg(struct ice_vf *vf, u8 *msg, u16 len)
-+{
-+	struct ice_pf *pf = vf->pf;
-+
-+	if (!len || !pf->dcf.aq_desc_received ||
-+	    time_is_before_jiffies(pf->dcf.aq_desc_expires))
-+		goto err;
-+
-+	return ice_dcf_handle_aq_cmd(vf, &pf->dcf.aq_desc, msg, len);
-+
-+	/* send the response back to the VF */
-+err:
-+	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DCF_CMD_BUFF,
-+				     VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
++	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DCF_DISABLE,
++				     v_ret, NULL, 0);
 +}
 +
  /**
   * ice_vc_process_vf_msg - Process request from VF
   * @pf: pointer to the PF structure
-@@ -3761,6 +3885,12 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	case VIRTCHNL_OP_DISABLE_VLAN_STRIPPING:
- 		err = ice_vc_dis_vlan_stripping(vf);
+@@ -3891,6 +3964,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 	case VIRTCHNL_OP_DCF_CMD_BUFF:
+ 		err = ice_vc_dcf_cmd_buff_msg(vf, msg, msglen);
  		break;
-+	case VIRTCHNL_OP_DCF_CMD_DESC:
-+		err = ice_vc_dcf_cmd_desc_msg(vf, msg, msglen);
-+		break;
-+	case VIRTCHNL_OP_DCF_CMD_BUFF:
-+		err = ice_vc_dcf_cmd_buff_msg(vf, msg, msglen);
++	case VIRTCHNL_OP_DCF_DISABLE:
++		err = ice_vc_dis_dcf_cap(vf);
 +		break;
  	case VIRTCHNL_OP_UNKNOWN:
  	default:
  		dev_err(dev, "Unsupported opcode %d from VF %d\n", v_opcode,
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 67aa9110fdd1..4a257415f6a5 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -4,6 +4,7 @@
- #ifndef _ICE_VIRTCHNL_PF_H_
- #define _ICE_VIRTCHNL_PF_H_
- #include "ice.h"
-+#include "ice_dcf.h"
+@@ -4067,6 +4143,13 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
+ 	if (trusted == vf->trusted)
+ 		return 0;
  
- /* Restrict number of MAC Addr and VLAN that non-trusted VF can programmed */
- #define ICE_MAX_VLAN_PER_VF		8
++	if (ice_is_vf_dcf(vf) && !trusted &&
++	    ice_dcf_get_state(pf) != ICE_DCF_STATE_OFF) {
++		ice_dcf_set_state(pf, ICE_DCF_STATE_OFF);
++		pf->dcf.vf = NULL;
++		vf->driver_caps &= ~VIRTCHNL_VF_CAP_DCF;
++	}
++
+ 	vf->trusted = trusted;
+ 	ice_vc_reset_vf(vf);
+ 	dev_info(ice_pf_to_dev(pf), "VF %u is now %strusted\n",
 diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
-index a13690c3cc94..fa9a3a047dd4 100644
+index fa9a3a047dd4..e219cafabccd 100644
 --- a/include/linux/avf/virtchnl.h
 +++ b/include/linux/avf/virtchnl.h
-@@ -136,6 +136,9 @@ enum virtchnl_ops {
- 	VIRTCHNL_OP_DISABLE_CHANNELS = 31,
- 	VIRTCHNL_OP_ADD_CLOUD_FILTER = 32,
- 	VIRTCHNL_OP_DEL_CLOUD_FILTER = 33,
-+	/* opcode 34, 35, 36, 37 and 38 are reserved */
-+	VIRTCHNL_OP_DCF_CMD_DESC = 39,
-+	VIRTCHNL_OP_DCF_CMD_BUFF = 40,
+@@ -139,6 +139,7 @@ enum virtchnl_ops {
+ 	/* opcode 34, 35, 36, 37 and 38 are reserved */
+ 	VIRTCHNL_OP_DCF_CMD_DESC = 39,
+ 	VIRTCHNL_OP_DCF_CMD_BUFF = 40,
++	VIRTCHNL_OP_DCF_DISABLE = 41,
  	/* New major set of opcodes introduced and so leaving room for
  	 * old misc opcodes to be added in future. Also these opcodes may only
  	 * be used if both the PF and VF have successfully negotiated the
-@@ -1262,6 +1265,13 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
- 	case VIRTCHNL_OP_DEL_CLOUD_FILTER:
- 		valid_len = sizeof(struct virtchnl_filter);
+@@ -278,6 +279,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
+ #define VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM		0X00200000
+ #define VIRTCHNL_VF_OFFLOAD_RX_ENCAP_CSUM	0X00400000
+ #define VIRTCHNL_VF_OFFLOAD_ADQ			0X00800000
++#define VIRTCHNL_VF_CAP_DCF			0X40000000
+ 
+ /* Define below the capability flags that are not offloads */
+ #define VIRTCHNL_VF_CAP_ADV_LINK_SPEED		0x00000080
+@@ -635,6 +637,7 @@ enum virtchnl_event_codes {
+ 	VIRTCHNL_EVENT_LINK_CHANGE,
+ 	VIRTCHNL_EVENT_RESET_IMPENDING,
+ 	VIRTCHNL_EVENT_PF_DRIVER_CLOSE,
++	VIRTCHNL_EVENT_DCF_VSI_MAP_UPDATE,
+ };
+ 
+ #define PF_EVENT_SEVERITY_INFO		0
+@@ -661,6 +664,10 @@ struct virtchnl_pf_event {
+ 			u8 link_status;
+ 			u8 pad[3];
+ 		} link_event_adv;
++		struct {
++			u16 vf_id;
++			u16 vsi_id;
++		} vf_vsi_map;
+ 	} event_data;
+ 
+ 	int severity;
+@@ -1272,6 +1279,8 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
+ 		 */
+ 		valid_len = msglen;
  		break;
-+	case VIRTCHNL_OP_DCF_CMD_DESC:
-+	case VIRTCHNL_OP_DCF_CMD_BUFF:
-+		/* These two opcodes are specific to handle the AdminQ command,
-+		 * so the validation needs to be done in PF's context.
-+		 */
-+		valid_len = msglen;
++	case VIRTCHNL_OP_DCF_DISABLE:
 +		break;
  	case VIRTCHNL_OP_GET_CAPS:
  		valid_len = sizeof(struct virtchnl_get_capabilities);
