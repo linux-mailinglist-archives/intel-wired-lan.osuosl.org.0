@@ -1,72 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56F7B203CF2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4436203CF1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 06E8B204EE;
-	Mon, 22 Jun 2020 16:47:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 838C5893D0;
+	Mon, 22 Jun 2020 16:47:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P3aog58TynfR; Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
+	with ESMTP id YNyFdU3WA3hK; Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 288B020768;
-	Mon, 22 Jun 2020 16:47:27 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B403D89411;
+	Mon, 22 Jun 2020 16:47:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D5F551BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:07:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C54CC1BF3C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D28F6885FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:07:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C144A885FB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2iM5+XOHmEcu for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jun 2020 10:07:52 +0000 (UTC)
+ with ESMTP id hc4oFjR5p6p9 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jun 2020 10:08:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E4362885DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:07:51 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id r15so15112801wmh.5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:07:51 -0700 (PDT)
+Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
+ [209.85.128.68])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 3FEE9885DC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:48 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id g10so14277448wmh.4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:08:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=nZJ9RrYkX//UjOI/5YYylQYoHuaDDR4YnVJY1VbZiK8=;
- b=W5twYeDFovUtibE54WQz/oY7xyAdsth+BrFOY/mwsKgJPsn0I8IXyw+KxwKQF1ccxI
- 0Vt4K58MBHihtcBcsAbduhBD/mpp6DDwwRtQDMg4DPDarSks61h5JkloiQmN5VvS0yn1
- 0MSYq3+hFxyViGeyscqGmPromya4jk9KRI0GNLYt2z3RxhbOM4E3fY3KBk6qoCm79iXc
- 3Hv1vs4zZ9h7EGmVIUsjsu72HT6azkCzrdmgJHG4VQQEoPysFHsyyrj5e60fdxVZexdD
- trJKHKTrt9CadDNiF6JYZkjIDKxYSRiSUtH8aF77wU6jWNuYEqz2A6dAA/jnuyrnG/K6
- JkAQ==
+ bh=okWA8PmH0C2v2F1PxoaaMH4dinGpC6QBNEa7DW2Zh+g=;
+ b=0NIB4N040OCOlLgg1O0x3F3JvByO2McpYkbxqJlqEN6Uq58x4AMdQ+vmj+3LegiabQ
+ Qi5h6Dcv3VNEw+1qhAS9iL+Ip15A313D+S5s7uJcHHRwosRSi7RgslmsGIt0O228NVDo
+ PoTwoUyuwGRep31ekyLWFFUPoZ/TiBca0eNIeHgmWQ1XaehWYL72IoRRCRAZdx1cSaJ3
+ OlWtHwtJz9u+WM0ep6ON0EkIZ8Sve2lyWWwlIAcWWWiut3v+6NKMu8uaSloirjUY3JBr
+ 9Z8QSzo7FQnOxk4qsBB/iDIcaICDzSEM/QDfagcUetqaFwncNnOOvWoj+ek6OenujuR7
+ /TRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nZJ9RrYkX//UjOI/5YYylQYoHuaDDR4YnVJY1VbZiK8=;
- b=Ij7jWn3GA14TDSXQ3Z05zbRK4lrhLSL19VKuPJqSqazp+8lPbd0pfvCqPLUbiswN4p
- ObXntbhSqyAQD4GyOItd9JHQtPciFA2vKIacKAweTPnNAdZJSfDB5YYrRVJ9VIeHD3Yw
- MOAKKPHWrJ+ZofTVjVZfCwqAE2R8FWc9J4tNXugFafHoV8ki3hGHhuCqhjXMfxk+5z5t
- NgQMX7KKL++8KYIj/n67Ke9D/HdMSOZPhByrw9iEGh/xVmzw0fSQAHaHJeBXdnokLc0w
- HqqJuhwa84YIK49tW5BUc+Fr6KADETb0Wau79qUB/D/I7kcd3ZUj1Nkcdz70SfwV85z6
- dmDA==
-X-Gm-Message-State: AOAM5303PVCcgyNb00iF1yVA0VEWxPOmL9RuqgYElbRfpt1sNt4jM+8G
- 1MVzvWD/hBRwjeEFkUYFm84ct4JVJx4=
-X-Google-Smtp-Source: ABdhPJz3Tx9rRuWOQsVP67dBEA0GfJ//6KQ3oIcn8+cDfu01dOKFVefKNNRcSbP+61lUU38AkDnLJw==
-X-Received: by 2002:a05:600c:2dc1:: with SMTP id
- e1mr5037577wmh.108.1592820068560; 
- Mon, 22 Jun 2020 03:01:08 -0700 (PDT)
+ bh=okWA8PmH0C2v2F1PxoaaMH4dinGpC6QBNEa7DW2Zh+g=;
+ b=GW+6Lduot9ts8jt8seDoaSmWnDU0FnFHjVJ8xVR73lvB6+o6lo8+qx+kamhxfkBsNS
+ fg8KXIQubwKfBT1B+v/PderHcX2ZFIIGve2vWQduW7/IlHm3R/+EFrbLgfMufKEOSxfc
+ RxHeWv2v5OEnbYQ7ihlTAn+sP3x/SolAqQtaeHND9ZpGhQeS0qUUuvFIt69kNvIbslSm
+ itd9LQQZGjY1i+9p5YaTRltMBulsYCyhvKliwenaCy1So4YmSQ3A2UdfsrK5XKpsaqWP
+ nUrAt2AGMwsKwBFbCdmMuC8I1s7r4Qmm/tqzMZUdSMemx8T88DkAxQKPrM8ln8MHChjp
+ vL4A==
+X-Gm-Message-State: AOAM531CbTSuouG80FqqhfP7RmxIwRIkxRzo+FRw3Bi8X/8Vns5zupUT
+ jeV7eHuIFgurJmVC7fcHPruLP0M/0+E=
+X-Google-Smtp-Source: ABdhPJwS5xS9WKkHvow7dKsFvCMdQtYLfCBeItKxhFKFlwRPqAUaAjn5C3o1Oi23Aq0D8zU5tG1vjg==
+X-Received: by 2002:a1c:804c:: with SMTP id b73mr698464wmd.59.1592820070021;
+ Mon, 22 Jun 2020 03:01:10 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.07
+ by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jun 2020 03:01:08 -0700 (PDT)
+ Mon, 22 Jun 2020 03:01:09 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Jonathan Corbet <corbet@lwn.net>,
  Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
@@ -79,15 +78,15 @@ To: Jonathan Corbet <corbet@lwn.net>,
  Florian Fainelli <f.fainelli@gmail.com>,
  Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>,
  Frank Rowand <frowand.list@gmail.com>
-Date: Mon, 22 Jun 2020 12:00:47 +0200
-Message-Id: <20200622100056.10151-3-brgl@bgdev.pl>
+Date: Mon, 22 Jun 2020 12:00:48 +0200
+Message-Id: <20200622100056.10151-4-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200622100056.10151-1-brgl@bgdev.pl>
 References: <20200622100056.10151-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 22 Jun 2020 16:47:24 +0000
-Subject: [Intel-wired-lan] [PATCH 02/11] net: ethernet: ixgbe: don't call
- devm_mdiobus_free()
+Subject: [Intel-wired-lan] [PATCH 03/11] net: devres: relax
+ devm_register_netdev()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,55 +114,59 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-The idea behind devres is that the release callbacks are called if
-probe fails. As we now check the return value of ixgbe_mii_bus_init(),
-we can drop the call devm_mdiobus_free() in error path as the release
-callback will be called automatically.
+This devres helper registers a release callback that only unregisters
+the net_device. It works perfectly fine with netdev structs that are
+not managed on their own. There's no reason to check this - drop the
+warning.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+ net/devres.c | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-index 2fb97967961c..7980d7265e10 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-@@ -905,7 +905,6 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
- 	struct pci_dev *pdev = adapter->pdev;
- 	struct device *dev = &adapter->netdev->dev;
- 	struct mii_bus *bus;
--	int err = -ENODEV;
- 
- 	bus = devm_mdiobus_alloc(dev);
- 	if (!bus)
-@@ -923,7 +922,7 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
- 	case IXGBE_DEV_ID_X550EM_A_1G_T:
- 	case IXGBE_DEV_ID_X550EM_A_1G_T_L:
- 		if (!ixgbe_x550em_a_has_mii(hw))
--			goto ixgbe_no_mii_bus;
-+			return -ENODEV;
- 		bus->read = &ixgbe_x550em_a_mii_bus_read;
- 		bus->write = &ixgbe_x550em_a_mii_bus_write;
- 		break;
-@@ -948,15 +947,8 @@ s32 ixgbe_mii_bus_init(struct ixgbe_hw *hw)
- 	 */
- 	hw->phy.mdio.mode_support = MDIO_SUPPORTS_C45 | MDIO_SUPPORTS_C22;
- 
--	err = mdiobus_register(bus);
--	if (!err) {
--		adapter->mii_bus = bus;
--		return 0;
--	}
--
--ixgbe_no_mii_bus:
--	devm_mdiobus_free(dev, bus);
--	return err;
-+	adapter->mii_bus = bus;
-+	return mdiobus_register(bus);
+diff --git a/net/devres.c b/net/devres.c
+index 57a6a88d11f6..1583ccb207c0 100644
+--- a/net/devres.c
++++ b/net/devres.c
+@@ -46,14 +46,6 @@ static void devm_netdev_release(struct device *dev, void *this)
+ 	unregister_netdev(res->ndev);
  }
  
+-static int netdev_devres_match(struct device *dev, void *this, void *match_data)
+-{
+-	struct net_device_devres *res = this;
+-	struct net_device *ndev = match_data;
+-
+-	return ndev == res->ndev;
+-}
+-
  /**
+  *	devm_register_netdev - resource managed variant of register_netdev()
+  *	@dev: managing device for this netdev - usually the parent device
+@@ -61,22 +53,13 @@ static int netdev_devres_match(struct device *dev, void *this, void *match_data)
+  *
+  *	This is a devres variant of register_netdev() for which the unregister
+  *	function will be call automatically when the managing device is
+- *	detached. Note: the net_device used must also be resource managed by
+- *	the same struct device.
++ *	detached.
+  */
+ int devm_register_netdev(struct device *dev, struct net_device *ndev)
+ {
+ 	struct net_device_devres *dr;
+ 	int ret;
+ 
+-	/* struct net_device must itself be managed. For now a managed netdev
+-	 * can only be allocated by devm_alloc_etherdev_mqs() so the check is
+-	 * straightforward.
+-	 */
+-	if (WARN_ON(!devres_find(dev, devm_free_netdev,
+-				 netdev_devres_match, ndev)))
+-		return -EINVAL;
+-
+ 	dr = devres_alloc(devm_netdev_release, sizeof(*dr), GFP_KERNEL);
+ 	if (!dr)
+ 		return -ENOMEM;
 -- 
 2.26.1
 
