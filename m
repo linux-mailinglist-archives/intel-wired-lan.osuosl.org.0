@@ -1,58 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33D302042D4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 23:45:52 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC8012043C0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jun 2020 00:39:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B441787252;
-	Mon, 22 Jun 2020 21:45:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9E7D788889;
+	Mon, 22 Jun 2020 22:39:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A23Z1_pX8tRQ; Mon, 22 Jun 2020 21:45:50 +0000 (UTC)
+	with ESMTP id u73K3Fz6jY-U; Mon, 22 Jun 2020 22:39:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1E7DF87483;
-	Mon, 22 Jun 2020 21:45:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4591888C7E;
+	Mon, 22 Jun 2020 22:39:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 34AE71BF488
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 21:45:49 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EB0FF1BF958
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 22:39:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 302A887239
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 21:45:49 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E668C88905
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 22:39:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vIvGO03PmdXy for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jun 2020 21:45:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C94938722F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 21:45:48 +0000 (UTC)
-Received: from kicinski-fedora-PC1C0HJN (unknown [163.114.132.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 72E6D2075A;
- Mon, 22 Jun 2020 21:45:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1592862348;
- bh=/iDamTs9vjIgEUlpWcMEymikJ1C267Z2pP/3s/Qz5nU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=eysYIJSx90LttU7dgNlebd4Wk8a+HaDDgcpEDdPZTGxaHhZ9sxBAJQ+2qpzwCFxMu
- ZUWv0P5jVeNwEfiWuWNt7P0+JnVoBNy+Cv09/tH8M4fCsrgzmNtMIXBFuHNvA+xWVK
- x6QhczrBiCnlJhHoEuWIYC3oz/UMG3V4qO0QGeSg=
-Date: Mon, 22 Jun 2020 14:45:46 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Ciara Loftus <ciara.loftus@intel.com>
-Message-ID: <20200622144546.04da25d6@kicinski-fedora-PC1C0HJN>
-In-Reply-To: <20200622124624.18847-3-ciara.loftus@intel.com>
-References: <20200622124624.18847-1-ciara.loftus@intel.com>
- <20200622124624.18847-3-ciara.loftus@intel.com>
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/3] i40e: introduce new dump
- desc xdp command
+ with ESMTP id K1Xb0qBlYF07 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jun 2020 22:39:16 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 4006C88889
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 22:39:16 +0000 (UTC)
+Received: from localhost (unknown [IPv6:2601:601:9f00:477::3d5])
+ (using TLSv1 with cipher AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: davem-davemloft)
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id 001211296A2B3;
+ Mon, 22 Jun 2020 15:39:13 -0700 (PDT)
+Date: Mon, 22 Jun 2020 15:39:13 -0700 (PDT)
+Message-Id: <20200622.153913.2174708105885098663.davem@davemloft.net>
+To: jarod@redhat.com
+From: David Miller <davem@davemloft.net>
+In-Reply-To: <20200619143155.20726-1-jarod@redhat.com>
+References: <20200619143155.20726-1-jarod@redhat.com>
+X-Mailer: Mew version 6.8 on Emacs 26.3
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
+ (shards.monkeyblade.net [149.20.54.216]);
+ Mon, 22 Jun 2020 15:39:14 -0700 (PDT)
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 0/4] bonding: initial
+ support for hardware crypto offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,23 +62,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- magnus.karlsson@intel.com
+Cc: steffen.klassert@secunet.com, herbert@gondor.apana.org.au,
+ j.vosburgh@gmail.com, linux-kernel@vger.kernel.org, vfalico@gmail.com,
+ netdev@vger.kernel.org, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ andy@greyhouse.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 22 Jun 2020 12:46:24 +0000 Ciara Loftus wrote:
-> Interfaces already exist for dumping rx and tx descriptor information.
-> Introduce another for doing the same for xdp descriptors.
+From: Jarod Wilson <jarod@redhat.com>
+Date: Fri, 19 Jun 2020 10:31:51 -0400
+
+> This is an initial functional implementation for doing pass-through of
+> hardware encryption from bonding device to capable slaves, in active-backup
+> bond setups. This was developed and tested using ixgbe-driven Intel x520
+> interfaces with libreswan and a transport mode connection, primarily using
+> netperf, with assorted connection failures forced during transmission. The
+> failover works quite well in my testing, and overall performance is right
+> on par with offload when running on a bare interface, no bond involved.
 > 
-> Signed-off-by: Ciara Loftus <ciara.loftus@intel.com>
+> Caveats: this is ONLY enabled for active-backup, because I'm not sure
+> how one would manage multiple offload handles for different devices all
+> running at the same time in the same xfrm, and it relies on some minor
+> changes to both the xfrm code and slave device driver code to get things
+> to behave, and I don't have immediate access to any other hardware that
+> could function similarly, but the NIC driver changes are minimal and
+> straight-forward enough that I've included what I think ought to be
+> enough for mlx5 devices too.
+> 
+> v2: reordered patches, switched (back) to using CONFIG_XFRM_OFFLOAD
+> to wrap the code additions and wrapped overlooked additions.
+> v3: rebase w/net-next open, add proper cc list to cover letter
 
-Please make sure things build cleanly with W=1 C=1
-
-drivers/net/ethernet/intel/i40e/i40e_debugfs.c:543: warning: Function parameter or member 'type' not described in 'i40e_dbg_dump_desc'
-drivers/net/ethernet/intel/i40e/i40e_debugfs.c:543: warning: Excess function parameter 'ring_type' description in 'i40e_dbg_dump_desc'
+Series applied, thanks.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
