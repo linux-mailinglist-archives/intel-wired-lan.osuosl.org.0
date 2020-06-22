@@ -1,92 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D3A1203CED
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:29 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83243203E5A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 19:50:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 131F586241;
-	Mon, 22 Jun 2020 16:47:28 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2B65E204D9;
+	Mon, 22 Jun 2020 17:50:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7BD0iaFWN5cl; Mon, 22 Jun 2020 16:47:27 +0000 (UTC)
+	with ESMTP id h-Ul7fMhwfgd; Mon, 22 Jun 2020 17:50:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 76812862E4;
-	Mon, 22 Jun 2020 16:47:27 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id EB5852639A;
+	Mon, 22 Jun 2020 17:50:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B60E1BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7CA111BF332
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 17:50:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1A9DF21F6F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 6BD20204E7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 17:50:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id A1JnFRZ7uVCR for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jun 2020 10:08:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f65.google.com (mail-wm1-f65.google.com
- [209.85.128.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 35C2120784
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:05 +0000 (UTC)
-Received: by mail-wm1-f65.google.com with SMTP id l17so14298511wmj.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:08:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=7pEL+pOqyLTkwaRij99JSBZiVqVmOtzJ61ge9c76alE=;
- b=eaQDTmoIva7YgqUT7n4mmFYcgVR8tYbiSv+EsIHLIkQIJviMpTReLXYVtvFOol2q0e
- LdphqNn3acWhpQSuesmQgbP86SDv2CFnYiE9kY21eMu86QB0XYrJByJRId49gHAlMstK
- B4PEF9TayTWp8MPD7056GMzylW6Q4ubJ6zSD88ao0ofMVT8s1OPaucGSs+G1NKXCU30e
- StG0ZCrSCfsoa1hh3rlMOqh0cMq2OsJKG43o3A8mXuwgeMr2MQBldeFEmmaxo9KTVZVr
- OFBWf0C3jGOzn1RbJXOwkVbboUkef6zzBQaj44aHFBunXxesBGFG26tktECmHQNvp0dY
- 2sXg==
+ with ESMTP id v6rxE7s9YtIE for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jun 2020 17:50:12 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wr1-f66.google.com (mail-wr1-f66.google.com
+ [209.85.221.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id 52474204D9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 17:50:12 +0000 (UTC)
+Received: by mail-wr1-f66.google.com with SMTP id b6so17563150wrs.11
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:50:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=MytJQNHwUuIHQCvUrb2QWgEFAej7FCrWKZnvsJ2APNQ=;
+ b=WS+XpUllS+nNl1CgqRAztFtTPE4HVBBwSK5Urp+wj/rOiXNQIenwwAXrmgkUm6Ch+M
+ k+INI8JhTW3ZzGJnKKIHD3VScU/MB/ZR5CfGOkEQl+yUdI1i+C01hA6Z0Q6MVhSs1dR6
+ 1D2c3hhDaPMbflWovD1Efr8lTKyOzpSWepHtvex7Ntc2W7q6EjOWSNxfLxsWKLPF3f3R
+ H3GrcPtC77U8NmUol7wsqhvndwPnuuIgYy+auMURRUwl2gabokj8r84tqGNTB5ln2m11
+ odBTnqahWhn4Z4gLMERAd3igVDJP9hwOpGtBysix64sXDbmd3CcYYD3+eLWyDkYn0Z3z
+ n9eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=7pEL+pOqyLTkwaRij99JSBZiVqVmOtzJ61ge9c76alE=;
- b=pDVOp7z1wuKDFwnwUQ0msuR25xJDSEQd924HWtYWTq6hlC/hRO8Wx3H1HXo7geCbB9
- M2rvdBhLNS19zIfYfEh6hPA1o1DGXw3srlkqG5nburSwgptjIzAepJoKFTDj01gdNa/C
- 5RSB3EYp2nkzrL3VxQvVg7hMbfth9p54fr8llDs/F48VgEmvhCIGPWsZQU0UFpM98XYB
- huGrCk3VKKD16B5571ssKH/HSCB3EWWR2D6mhFnCLTk3IAFTxS2+aRoSQsjNhqx9D0lq
- Tc+Hil2sNdVXTYZXvnh2XNCysZjD29T/2L6kFqhDXMW/QTL+cPBEkms8itr20ePVMCBg
- 6dbg==
-X-Gm-Message-State: AOAM533aLNNsFyIMXhwnLQpDKqlDMlouYltp5GvCuLRs1udAQFGYXGKq
- AgBv8GUJTnYiOVRLLgJw8wnWuvvP7Zg=
-X-Google-Smtp-Source: ABdhPJzbn3QUtTBkSaHKKRlQD+NAcxXoZjCO6pjuNjVVzgSeYV529/r6h+a5y21qbFYnMCH6f96pIg==
-X-Received: by 2002:a1c:804c:: with SMTP id b73mr699546wmd.59.1592820083830;
- Mon, 22 Jun 2020 03:01:23 -0700 (PDT)
-Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
- [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jun 2020 03:01:23 -0700 (PDT)
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-To: Jonathan Corbet <corbet@lwn.net>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Realtek linux nic maintainers <nic_swsd@realtek.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>,
- Frank Rowand <frowand.list@gmail.com>
-Date: Mon, 22 Jun 2020 12:00:56 +0200
-Message-Id: <20200622100056.10151-12-brgl@bgdev.pl>
-X-Mailer: git-send-email 2.26.1
-In-Reply-To: <20200622100056.10151-1-brgl@bgdev.pl>
-References: <20200622100056.10151-1-brgl@bgdev.pl>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=MytJQNHwUuIHQCvUrb2QWgEFAej7FCrWKZnvsJ2APNQ=;
+ b=j+MkNiCl8ymPk8Rw6U3I+sfhk+eqNCquRiV2f3jIh9mYb97YI2FVFr5/BwEPlWSdH/
+ GuZU9owrHiPaqvIVoah9l3NbLDyxkZV3fGDkrK1zRQt7RRSh213YS8dT6hIhfYCa1Wt0
+ 2Ekw1XtZlkjpJg+AmutMrzIGFq+dvAizKNlnPIACU+chhoctRZ8BF+js4p/M7lq6kje1
+ 38A3QkCeha4U+Jp3eop3hSVp9MehNcA/Av8oP+nWQ5Y2tDpZ25vhIHELgqHw+jO1h1Z/
+ mnMiSlZSzoI4hPB158L69DHAAIhJOqnFrCH5FcV0ETgl01nI2EnOoVRSjTP8WwmrDxYo
+ ZiqQ==
+X-Gm-Message-State: AOAM530kTxBD8Mcmp01rPyDBqHp+SDcSRkxMFfoa4LcbWtrBqob7z0vN
+ +ZPXc1nS/U6XvnXcmQ+UMzQpXQ254JilIpmOcR8=
+X-Google-Smtp-Source: ABdhPJxJF4aqt3bCkQIuqNAhRhk1Q0qBBeXN+OUYz+j7E9zklXx7aeRoKxzPfM4AG/TE7F9z0YfZC8qiWeR7ZRCy2rw=
+X-Received: by 2002:a5d:504b:: with SMTP id h11mr13249465wrt.160.1592848210651; 
+ Mon, 22 Jun 2020 10:50:10 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 22 Jun 2020 16:47:24 +0000
-Subject: [Intel-wired-lan] [PATCH 11/11] net: ethernet: mtk-star-emac: use
- devm_of_mdiobus_register()
+References: <20200622090824.41cff8a3@hermes.lan>
+ <CAJ+HfNhhpZoeoZC5gS93Lbc5GvDUO9m0RrKNFU=kU0v+AXe=ig@mail.gmail.com>
+In-Reply-To: <CAJ+HfNhhpZoeoZC5gS93Lbc5GvDUO9m0RrKNFU=kU0v+AXe=ig@mail.gmail.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Mon, 22 Jun 2020 19:49:59 +0200
+Message-ID: <CAJ+HfNgG4dBTf7Ei2CmuedQLnv-nOqpf4Nuep+FB9Oxob+zhdA@mail.gmail.com>
+To: Stephen Hemminger <stephen@networkplumber.org>, 
+ "Karlsson, Magnus" <magnus.karlsson@intel.com>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, 
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Subject: Re: [Intel-wired-lan] Fw: [Bug 208275] New: kernel hang
+ occasionally while running the sample of xdpsock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,70 +85,25 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Stephane Le Provost <stephane.leprovost@mediatek.com>,
- linux-doc@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Fabien Parent <fparent@baylibre.com>,
- linux-mediatek@lists.infradead.org,
- Andrew Perepech <andrew.perepech@mediatek.com>,
- Pedro Tsai <pedro.tsai@mediatek.com>, intel-wired-lan@lists.osuosl.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Song Liu <songliubraving@fb.com>, Daniel Borkmann <daniel@iogearbox.net>,
+ Alexei Starovoitov <ast@kernel.org>, KP Singh <kpsingh@chromium.org>,
+ Yonghong Song <yhs@fb.com>, bpf <bpf@vger.kernel.org>,
+ Andrii Nakryiko <andriin@fb.com>, Martin KaFai Lau <kafai@fb.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-
-Shrink the code by using the managed variant of of_mdiobus_register().
-
-Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
----
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 13 +------------
- 1 file changed, 1 insertion(+), 12 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index 3e765bdcf9e1..13250553263b 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1389,7 +1389,7 @@ static int mtk_star_mdio_init(struct net_device *ndev)
- 	priv->mii->write = mtk_star_mdio_write;
- 	priv->mii->priv = priv;
- 
--	ret = of_mdiobus_register(priv->mii, mdio_node);
-+	ret = devm_of_mdiobus_register(dev, priv->mii, mdio_node);
- 
- out_put_node:
- 	of_node_put(mdio_node);
-@@ -1441,13 +1441,6 @@ static void mtk_star_clk_disable_unprepare(void *data)
- 	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
- }
- 
--static void mtk_star_mdiobus_unregister(void *data)
--{
--	struct mtk_star_priv *priv = data;
--
--	mdiobus_unregister(priv->mii);
--}
--
- static int mtk_star_probe(struct platform_device *pdev)
- {
- 	struct device_node *of_node;
-@@ -1549,10 +1542,6 @@ static int mtk_star_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	ret = devm_add_action_or_reset(dev, mtk_star_mdiobus_unregister, priv);
--	if (ret)
--		return ret;
--
- 	ret = eth_platform_get_mac_address(dev, ndev->dev_addr);
- 	if (ret || !is_valid_ether_addr(ndev->dev_addr))
- 		eth_hw_addr_random(ndev);
--- 
-2.26.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gTW9uLCAyMiBKdW4gMjAyMCBhdCAxOTo0NiwgQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxA
+Z21haWwuY29tPiB3cm90ZToKPgo+IE9uIE1vbiwgMjIgSnVuIDIwMjAgYXQgMTg6MDgsIFN0ZXBo
+ZW4gSGVtbWluZ2VyCj4gPHN0ZXBoZW5AbmV0d29ya3BsdW1iZXIub3JnPiB3cm90ZToKPiA+Cj4g
+Pgo+ID4KPiA+IEJlZ2luIGZvcndhcmRlZCBtZXNzYWdlOgo+ID4KPiA+IERhdGU6IE1vbiwgMjIg
+SnVuIDIwMjAgMTA6MTM6NTIgKzAwMDAKPiA+IEZyb206IGJ1Z3ppbGxhLWRhZW1vbkBidWd6aWxs
+YS5rZXJuZWwub3JnCj4gPiBUbzogc3RlcGhlbkBuZXR3b3JrcGx1bWJlci5vcmcKPiA+IFN1Ympl
+Y3Q6IFtCdWcgMjA4Mjc1XSBOZXc6IGtlcm5lbCBoYW5nIG9jY2FzaW9uYWxseSB3aGlsZSBydW5u
+aW5nIHRoZSBzYW1wbGUgb2YgeGRwc29jawo+ID4KPgo+IFRoYW5rcyBmb3IgZm9yd2FyZGluZywg
+U3RlcGhlbi4KPgo+IEknbGwgaGF2ZSBhIGxvb2shCj4KCkludGVsIGl4Z2JlIHNwbGF0LiBBZGRp
+bmcgaW50ZWwtd2lyZWQtbGFuIHRvIFRvOi4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJl
+ZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9pbnRlbC13aXJlZC1sYW4K
