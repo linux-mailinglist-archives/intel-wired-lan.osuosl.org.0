@@ -1,71 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63DE6203CF0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:31 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A04F0203CF7
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D21B988683;
-	Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 38D0B89426;
+	Mon, 22 Jun 2020 16:47:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Olgyj+2WNe+8; Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
+	with ESMTP id a9qVUMlyMOrf; Mon, 22 Jun 2020 16:47:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6D3508869F;
-	Mon, 22 Jun 2020 16:47:28 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C8248941D;
+	Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3AE931BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6D94F1BF3C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:09:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 3681786371
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:39 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 69E6485FDE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:09:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KsofFNaDPF4q for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jun 2020 10:08:38 +0000 (UTC)
+ with ESMTP id PGMroQAB_3lz for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jun 2020 10:09:45 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
  [209.85.128.68])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 8B2518458C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:38 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id l17so14299954wmj.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:08:38 -0700 (PDT)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C2245863E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:09:26 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id y20so15120529wmi.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:09:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vANIsXo74NzXiDIyR10LVPoVvN0SF3cCppVREngNaSg=;
- b=xtlQ6vt2ftcI+XabUk5dlYEY+EoWH8nR8xcQ0FineEvTFIyHxwdZru/XNV/dfPCuwH
- p+2SV3EvOLiwS1nhvc60TsvMW4YNirrfN8g/xcNwpKisI/ZQhpTItmGFfFpSHrXsGu+S
- b7MvvTAW41tXqhs9scOYapiZqZ36Pfyhf81lebKF4vMaR5ghYo5mQz1TbDxar4ISYJoU
- r97GfAQhf4HMDRDYdamUBfw7XB2G5c/8Yd3xQBk2wd2NRH8kL2poxNolBqJT2m6c+bYv
- ZbtsK6uSEB72jNc60WhrddXbm/mQa5m5tZApNrkGL3PmfTcjFpfrBr+Em/UQj5iDvDis
- u71g==
+ bh=SA+ksrlspcBtk66ickfbWi5/X69plQETLqM+T7sqDOM=;
+ b=hPCSBYPijk+oW7o3W3ojF3NAaYsD4JrRPsGlfOOBzQ4ThECSIaaifu8iSYPR7zbUAx
+ giQ4sowH3znExtSO3S964zh5IyteuZGXmP9B2ZvExrbuG0lv3RnqMa0dbDx7oKT3Cruf
+ ntFtCt/KtwVdleh2QZcz+vD9bEurGJjeVbuXPkyeyA87kxRvFoIssYR99lkRq25sp0Dy
+ 8ME3z0/l/PLLTultbtzKIRLt1ie8TS/eRQs7WOUniJkv9YG+Ya35j/vswWIOOkBzSz+Z
+ KPipplT5rhQD8Nb/E1vu5Mffd1y2DmSUKnz0Ux1Df2rzIAqZgpQCiOI37E2WBb24Fa9I
+ KUIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vANIsXo74NzXiDIyR10LVPoVvN0SF3cCppVREngNaSg=;
- b=XMYBesVmwc6Bdq7PfyXGehy6sv29GO5QGOxkAPtGRY86n6zdIPdnHj1izFCcZhOIrl
- GjAd1vpfXxv/oz/+eI8ila6SbhbcG9mWARFr6GeDzh4N6kt0YQ29cfQ87S1MNkky28wp
- z6P5yLLg0j2k9xPbd/OJ6UWmOc+gV9qCB9WiP3BWyo2TmblxpGYVSkc7jqyss+TVX8dx
- KfQ9vZtyMTilgyPLwczP2rmI526tJO+iDY1TXrtlwHjEEEZhwrqDctlPuvBHXJUzU7f1
- TD1iF5ERR7yLViHk5vs7WW3Hy5YL5K6gOB0cjUVXuiKGA9fbP1oiRhKG7rGRq7HdO29Z
- 6HKg==
-X-Gm-Message-State: AOAM530ctyYjKkSsf+j4iJfzDCBzcV2wrlNptVf8MU/f7X8hKXrRnG1b
- bAy2JfKpckhxBFjM8USI687EOe3oIew=
-X-Google-Smtp-Source: ABdhPJzUHixuKfQa4u9XvxcXJoOatBovm5nA4dkuN9R2ixW6hpip+ioKdNDg9ycFUOAJ0KD49goWaA==
-X-Received: by 2002:a1c:c1:: with SMTP id 184mr17443884wma.74.1592820073899;
- Mon, 22 Jun 2020 03:01:13 -0700 (PDT)
+ bh=SA+ksrlspcBtk66ickfbWi5/X69plQETLqM+T7sqDOM=;
+ b=snNEcRPHKosDhxpTqRkmSl0KO87Eq68ZkasbG0Xx7jfwbCm1j6Ze0+101OJLbgPkRd
+ 0P4W975oAdeiWsQayDDmitUDAeoIJuYV1bfPgD2iOpR6BjDsOjbjtRvWGmkXMcaJLtZS
+ aALQjmqCTrf1kKjXBqTqA+Ba3n0TcTQP6hC4yXG52JpSCFyHEX9qbW74yUCAJYiZstjh
+ Tvn07NkvFsYNjrLTq2VgyT2YoD3gqGKZgiyZ9UXwwG7LE2vv0rXVIfcBCMtEO1QRfntr
+ khxBScUfZbBxo2vRLwkSqvGyisS95B21tp3qcZNMQVjPeqBONxlxSXehrO5zEkEJWPzf
+ vYuA==
+X-Gm-Message-State: AOAM5325AA91pyKgVZt3meV8+6wPTJp7ady+ome5REf8+BAGhbesip5A
+ emLrHbq0sqELhetQIkclN5EL9aXxtNw=
+X-Google-Smtp-Source: ABdhPJwWuhZqPJe1EH2uJKbIx2fxGg7cPQA+kFKd21eTb++TacoGNccIXkK+VSOvahqdHB0+R/2MHw==
+X-Received: by 2002:a1c:bc55:: with SMTP id m82mr10040949wmf.92.1592820075474; 
+ Mon, 22 Jun 2020 03:01:15 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.11
+ by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jun 2020 03:01:12 -0700 (PDT)
+ Mon, 22 Jun 2020 03:01:14 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Jonathan Corbet <corbet@lwn.net>,
  Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
@@ -78,15 +78,15 @@ To: Jonathan Corbet <corbet@lwn.net>,
  Florian Fainelli <f.fainelli@gmail.com>,
  Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>,
  Frank Rowand <frowand.list@gmail.com>
-Date: Mon, 22 Jun 2020 12:00:50 +0200
-Message-Id: <20200622100056.10151-6-brgl@bgdev.pl>
+Date: Mon, 22 Jun 2020 12:00:51 +0200
+Message-Id: <20200622100056.10151-7-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200622100056.10151-1-brgl@bgdev.pl>
 References: <20200622100056.10151-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 22 Jun 2020 16:47:24 +0000
-Subject: [Intel-wired-lan] [PATCH 05/11] Documentation: devres: add missing
- mdio helper
+Subject: [Intel-wired-lan] [PATCH 06/11] phy: un-inline
+ devm_mdiobus_register()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,26 +114,82 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-We have a devres variant of mdiobus_register() but it's not listed in
-devres.rst. Add it under other mdio devm functions.
+Functions should only be static inline if they're very short. This
+devres helper is already over 10 lines and it will grow soon as we'll
+be improving upon its approach. Pull it into mdio_devres.c.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- Documentation/driver-api/driver-model/devres.rst | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/phy/Makefile      |  2 +-
+ drivers/net/phy/mdio_devres.c | 18 ++++++++++++++++++
+ include/linux/phy.h           | 15 ++-------------
+ 3 files changed, 21 insertions(+), 14 deletions(-)
+ create mode 100644 drivers/net/phy/mdio_devres.c
 
-diff --git a/Documentation/driver-api/driver-model/devres.rst b/Documentation/driver-api/driver-model/devres.rst
-index e0b58c392e4f..5463fc8a60c1 100644
---- a/Documentation/driver-api/driver-model/devres.rst
-+++ b/Documentation/driver-api/driver-model/devres.rst
-@@ -343,6 +343,7 @@ MDIO
-   devm_mdiobus_alloc()
-   devm_mdiobus_alloc_size()
-   devm_mdiobus_free()
-+  devm_mdiobus_register()
+diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
+index dc9e53b511d6..896afdcac437 100644
+--- a/drivers/net/phy/Makefile
++++ b/drivers/net/phy/Makefile
+@@ -3,7 +3,7 @@
  
- MEM
-   devm_free_pages()
+ libphy-y			:= phy.o phy-c45.o phy-core.o phy_device.o \
+ 				   linkmode.o
+-mdio-bus-y			+= mdio_bus.o mdio_device.o
++mdio-bus-y			+= mdio_bus.o mdio_device.o mdio_devres.o
+ 
+ ifdef CONFIG_MDIO_DEVICE
+ obj-y				+= mdio-boardinfo.o
+diff --git a/drivers/net/phy/mdio_devres.c b/drivers/net/phy/mdio_devres.c
+new file mode 100644
+index 000000000000..f0b4b6cfe5e3
+--- /dev/null
++++ b/drivers/net/phy/mdio_devres.c
+@@ -0,0 +1,18 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++#include <linux/phy.h>
++
++int __devm_mdiobus_register(struct mii_bus *bus, struct module *owner)
++{
++	int ret;
++
++	if (!bus->is_managed)
++		return -EPERM;
++
++	ret = __mdiobus_register(bus, owner);
++	if (!ret)
++		bus->is_managed_registered = 1;
++
++	return ret;
++}
++EXPORT_SYMBOL(__devm_mdiobus_register);
+diff --git a/include/linux/phy.h b/include/linux/phy.h
+index 8c05d0fb5c00..62149945c5b3 100644
+--- a/include/linux/phy.h
++++ b/include/linux/phy.h
+@@ -313,20 +313,9 @@ static inline struct mii_bus *mdiobus_alloc(void)
+ }
+ 
+ int __mdiobus_register(struct mii_bus *bus, struct module *owner);
++int __devm_mdiobus_register(struct mii_bus *bus, struct module *owner);
+ #define mdiobus_register(bus) __mdiobus_register(bus, THIS_MODULE)
+-static inline int devm_mdiobus_register(struct mii_bus *bus)
+-{
+-	int ret;
+-
+-	if (!bus->is_managed)
+-		return -EPERM;
+-
+-	ret = mdiobus_register(bus);
+-	if (!ret)
+-		bus->is_managed_registered = 1;
+-
+-	return ret;
+-}
++#define devm_mdiobus_register(bus) __devm_mdiobus_register(bus, THIS_MODULE)
+ 
+ void mdiobus_unregister(struct mii_bus *bus);
+ void mdiobus_free(struct mii_bus *bus);
 -- 
 2.26.1
 
