@@ -1,71 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4436203CF1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:31 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08186203CF9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2020 18:47:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 838C5893D0;
-	Mon, 22 Jun 2020 16:47:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B194A88671;
+	Mon, 22 Jun 2020 16:47:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YNyFdU3WA3hK; Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
+	with ESMTP id kioiarIhMRr6; Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B403D89411;
-	Mon, 22 Jun 2020 16:47:28 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 054F08871E;
+	Mon, 22 Jun 2020 16:47:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C54CC1BF3C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 959AA1BF3C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:09:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C144A885FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 911DD88575
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:09:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hc4oFjR5p6p9 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jun 2020 10:08:48 +0000 (UTC)
+ with ESMTP id FATcHLiWiNUS for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jun 2020 10:09:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
 Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
  [209.85.128.68])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3FEE9885DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:08:48 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id g10so14277448wmh.4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:08:48 -0700 (PDT)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DC87D8815E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 10:09:33 +0000 (UTC)
+Received: by mail-wm1-f68.google.com with SMTP id t194so15111367wmt.4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2020 03:09:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=okWA8PmH0C2v2F1PxoaaMH4dinGpC6QBNEa7DW2Zh+g=;
- b=0NIB4N040OCOlLgg1O0x3F3JvByO2McpYkbxqJlqEN6Uq58x4AMdQ+vmj+3LegiabQ
- Qi5h6Dcv3VNEw+1qhAS9iL+Ip15A313D+S5s7uJcHHRwosRSi7RgslmsGIt0O228NVDo
- PoTwoUyuwGRep31ekyLWFFUPoZ/TiBca0eNIeHgmWQ1XaehWYL72IoRRCRAZdx1cSaJ3
- OlWtHwtJz9u+WM0ep6ON0EkIZ8Sve2lyWWwlIAcWWWiut3v+6NKMu8uaSloirjUY3JBr
- 9Z8QSzo7FQnOxk4qsBB/iDIcaICDzSEM/QDfagcUetqaFwncNnOOvWoj+ek6OenujuR7
- /TRQ==
+ bh=A+lImr9HJg7an5aR2kWVhsrz0bguXORdrvazpSsfAy4=;
+ b=Tsq60zSlQyklW6ikiOvVha9m8MSQkGcpaji1GbS6xFPATyiJUUq3JKJyfCAyoxgehy
+ 6CzmzBfAhfYC+JJ7E2jJttBs8SlhgR8oo9tMY8qH0H5uA72QFI9xKDo+9n217Y4MWcDI
+ iIpqF19hJetEL+xliD5MhEvVcUjPcnrYARK0a04t2IuYk/3fmnQix3PKNa1StSQ2Ywir
+ OsASWBCKRjtVl/oQTuUFv5MYvUju1kmBOyveg54l6ZkSpLRCgEJ7CT/LJK7QfCebpVVu
+ Mj4niG7n9b0pf3hzpGxkqMvGlvJ+MWwIDdWWPh8rjVNo3Yy750rQCUi4Ar9S11Dn+wof
+ slIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=okWA8PmH0C2v2F1PxoaaMH4dinGpC6QBNEa7DW2Zh+g=;
- b=GW+6Lduot9ts8jt8seDoaSmWnDU0FnFHjVJ8xVR73lvB6+o6lo8+qx+kamhxfkBsNS
- fg8KXIQubwKfBT1B+v/PderHcX2ZFIIGve2vWQduW7/IlHm3R/+EFrbLgfMufKEOSxfc
- RxHeWv2v5OEnbYQ7ihlTAn+sP3x/SolAqQtaeHND9ZpGhQeS0qUUuvFIt69kNvIbslSm
- itd9LQQZGjY1i+9p5YaTRltMBulsYCyhvKliwenaCy1So4YmSQ3A2UdfsrK5XKpsaqWP
- nUrAt2AGMwsKwBFbCdmMuC8I1s7r4Qmm/tqzMZUdSMemx8T88DkAxQKPrM8ln8MHChjp
- vL4A==
-X-Gm-Message-State: AOAM531CbTSuouG80FqqhfP7RmxIwRIkxRzo+FRw3Bi8X/8Vns5zupUT
- jeV7eHuIFgurJmVC7fcHPruLP0M/0+E=
-X-Google-Smtp-Source: ABdhPJwS5xS9WKkHvow7dKsFvCMdQtYLfCBeItKxhFKFlwRPqAUaAjn5C3o1Oi23Aq0D8zU5tG1vjg==
-X-Received: by 2002:a1c:804c:: with SMTP id b73mr698464wmd.59.1592820070021;
- Mon, 22 Jun 2020 03:01:10 -0700 (PDT)
+ bh=A+lImr9HJg7an5aR2kWVhsrz0bguXORdrvazpSsfAy4=;
+ b=PuoR7rDOT+YhjRLxoepkZP7XcbOIaeCVzP9yAYwIpTqEy5z0DIPZ8RvAh3CO2qGUyL
+ dvyzw37vNtWqK304Lz/PXRb/HzE/8QAZ3IhBkN0+fX/ko+UPOueQwCRw3dUf3GlOKmTH
+ XTwGeCpGaN+csRzF0PC2W6JlHnzzjr7vdxHPlIZU6D8X+SKJgysV2OgLaFScpbCGFCGa
+ x0XYhCNBgCAstDw7WyM+BOTUnKBvBbRMnX+yyFFWrJ55viX3kMukzh5myC8ZVjxO8ms6
+ u/nYoVL28iQ0yRT138h1+jJZkppOiHf5bCEYROlYD3LO4IG6qkwXrDB5ovNQRBuyqk4+
+ YAJQ==
+X-Gm-Message-State: AOAM532wcsIYDucpbiFIPoyh/ULCYK+rhw8ho0tYepJdSoywJiBBiuyM
+ qaPPEElmnaG3c2kr2iXX5iLe0ci5jPA=
+X-Google-Smtp-Source: ABdhPJz+xi3uc649226XqSHmo+O8gA+/80J/5T5A137PMAF2MXQi5PymwGW6I5MXBKX7A322evi/xw==
+X-Received: by 2002:a1c:3bc2:: with SMTP id i185mr17995739wma.33.1592820071777; 
+ Mon, 22 Jun 2020 03:01:11 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.08
+ by smtp.gmail.com with ESMTPSA id x205sm16822187wmx.21.2020.06.22.03.01.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jun 2020 03:01:09 -0700 (PDT)
+ Mon, 22 Jun 2020 03:01:11 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Jonathan Corbet <corbet@lwn.net>,
  Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
@@ -78,15 +78,15 @@ To: Jonathan Corbet <corbet@lwn.net>,
  Florian Fainelli <f.fainelli@gmail.com>,
  Russell King <linux@armlinux.org.uk>, Rob Herring <robh+dt@kernel.org>,
  Frank Rowand <frowand.list@gmail.com>
-Date: Mon, 22 Jun 2020 12:00:48 +0200
-Message-Id: <20200622100056.10151-4-brgl@bgdev.pl>
+Date: Mon, 22 Jun 2020 12:00:49 +0200
+Message-Id: <20200622100056.10151-5-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.26.1
 In-Reply-To: <20200622100056.10151-1-brgl@bgdev.pl>
 References: <20200622100056.10151-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 22 Jun 2020 16:47:24 +0000
-Subject: [Intel-wired-lan] [PATCH 03/11] net: devres: relax
- devm_register_netdev()
+Subject: [Intel-wired-lan] [PATCH 04/11] net: devres: rename the release
+ callback of devm_register_netdev()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,59 +114,36 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-This devres helper registers a release callback that only unregisters
-the net_device. It works perfectly fine with netdev structs that are
-not managed on their own. There's no reason to check this - drop the
-warning.
+Make it an explicit counterpart to devm_register_netdev() just like we
+do with devm_free_netdev() for better clarity.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- net/devres.c | 19 +------------------
- 1 file changed, 1 insertion(+), 18 deletions(-)
+ net/devres.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/net/devres.c b/net/devres.c
-index 57a6a88d11f6..1583ccb207c0 100644
+index 1583ccb207c0..d7aa92243844 100644
 --- a/net/devres.c
 +++ b/net/devres.c
-@@ -46,14 +46,6 @@ static void devm_netdev_release(struct device *dev, void *this)
- 	unregister_netdev(res->ndev);
+@@ -39,7 +39,7 @@ struct net_device *devm_alloc_etherdev_mqs(struct device *dev, int sizeof_priv,
  }
+ EXPORT_SYMBOL(devm_alloc_etherdev_mqs);
  
--static int netdev_devres_match(struct device *dev, void *this, void *match_data)
--{
--	struct net_device_devres *res = this;
--	struct net_device *ndev = match_data;
--
--	return ndev == res->ndev;
--}
--
- /**
-  *	devm_register_netdev - resource managed variant of register_netdev()
-  *	@dev: managing device for this netdev - usually the parent device
-@@ -61,22 +53,13 @@ static int netdev_devres_match(struct device *dev, void *this, void *match_data)
-  *
-  *	This is a devres variant of register_netdev() for which the unregister
-  *	function will be call automatically when the managing device is
-- *	detached. Note: the net_device used must also be resource managed by
-- *	the same struct device.
-+ *	detached.
-  */
- int devm_register_netdev(struct device *dev, struct net_device *ndev)
+-static void devm_netdev_release(struct device *dev, void *this)
++static void devm_unregister_netdev(struct device *dev, void *this)
  {
+ 	struct net_device_devres *res = this;
+ 
+@@ -60,7 +60,7 @@ int devm_register_netdev(struct device *dev, struct net_device *ndev)
  	struct net_device_devres *dr;
  	int ret;
  
--	/* struct net_device must itself be managed. For now a managed netdev
--	 * can only be allocated by devm_alloc_etherdev_mqs() so the check is
--	 * straightforward.
--	 */
--	if (WARN_ON(!devres_find(dev, devm_free_netdev,
--				 netdev_devres_match, ndev)))
--		return -EINVAL;
--
- 	dr = devres_alloc(devm_netdev_release, sizeof(*dr), GFP_KERNEL);
+-	dr = devres_alloc(devm_netdev_release, sizeof(*dr), GFP_KERNEL);
++	dr = devres_alloc(devm_unregister_netdev, sizeof(*dr), GFP_KERNEL);
  	if (!dr)
  		return -ENOMEM;
+ 
 -- 
 2.26.1
 
