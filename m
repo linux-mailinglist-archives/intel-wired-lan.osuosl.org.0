@@ -1,78 +1,120 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C5C2205C11
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jun 2020 21:46:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A944205C10
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jun 2020 21:46:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C65882E2F8;
-	Tue, 23 Jun 2020 19:46:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EE04688639;
+	Tue, 23 Jun 2020 19:46:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HDzI1SUwDvKc; Tue, 23 Jun 2020 19:46:17 +0000 (UTC)
+	with ESMTP id vI-91PHGApj2; Tue, 23 Jun 2020 19:46:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0058F2E2EA;
-	Tue, 23 Jun 2020 19:46:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5DDB18859D;
+	Tue, 23 Jun 2020 19:46:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 945FD1BF294
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 09:18:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B350F1BF41F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 17:12:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8FA6F86AEC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 09:18:55 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AE36C85F8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 17:12:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xkqWSqsUC4uZ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jun 2020 09:18:52 +0000 (UTC)
-X-Greylist: delayed 00:06:16 by SQLgrey-1.7.6
-Received: from mail-il1-f196.google.com (mail-il1-f196.google.com
- [209.85.166.196])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CA8C986ACE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 09:18:52 +0000 (UTC)
-Received: by mail-il1-f196.google.com with SMTP id w9so4680503ilk.13
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 02:18:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ArED5WuE5vKbhzC135CloJUx+24YnwYK5ybAFszEdN0=;
- b=ASFYFZLD4aP93JKRZIyA6O0H0NHUXDOOfNLHL/aMSsgdBZOsNnH3zT0gCrhdXgK8nW
- UZDPqMRx5OCS70CZy1VvFgEANzq+vvMA9DkFdMTApsspNXbeKXUaS0QTHNEblOzMxoul
- g+FdxpIqYFHTabKh1lUt2b2iybw5OvjuO7k6R7CoBft0DpYj3dsf39s5Kb0DNOOT3s9j
- LDJTxdGAiwclMZ69BAQmr1FOsIRembCoClHnAnDybsAeZz+xxw/3EHmpT7OuiHsH1krE
- eW/Q5gK2odDWFp6exLEKTP21ly+TvdRk4LNDDTmrHXsHbiKlZMNfOBHZCPU9i8aDsbAT
- xxew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ArED5WuE5vKbhzC135CloJUx+24YnwYK5ybAFszEdN0=;
- b=uDrpATFjevlB8XzL3oKdBp/UIUd6Rjwt0wumIqBbYtUZ1l5k/mAIYM4gbojPhcqAKg
- 4/t6IUFzGgjPiBYqZO26r0LQGB1K8ol1xIlh20sWzFubg2QCmJIiuYF2/daHR2iUCQRi
- GUnnhrJMZqbERBO8QB3tmUJ7EDi9U+nc5Amm58n5T3D+3CW+6W8eYv4bKcY2+WypR/X1
- HqyXEDmbKnNJ2wKt44OczQHHdaLRuhqB6nfOmj57r38kXVp3kgMjZUIqIa3QhsuuulBN
- Q3z9np8m0VIIIk2jWMHI4YELUpzFoqpHbnzwMy7wQg1IOe99oBFuWiaKncwbFi9ISaGs
- M2XQ==
-X-Gm-Message-State: AOAM533QpF5qVIJGLun76fAUAFz5ryNMIT586LhwTrQ0AgICslgyo/wp
- WAKEbKPiKzHx5nWVT31H68t97SgfmR+TC9yQK9l8BcJ7
-X-Google-Smtp-Source: ABdhPJxU72/5mqONl5oZETdKCZkVmtw1I/YvVqqrx1X4F9E+xx1C98ZJHbHv94J5cjJ0DUueC4XDcam6w5sx7T2+tmk=
-X-Received: by 2002:a92:c509:: with SMTP id r9mr21034414ilg.189.1592903555407; 
- Tue, 23 Jun 2020 02:12:35 -0700 (PDT)
+ with ESMTP id 8dDfwi69ukEY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jun 2020 17:12:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2079.outbound.protection.outlook.com [40.107.21.79])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 9A10B85F87
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2020 17:12:25 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hakgffZJY4+x08mR1OfSu6oW02F+JAfnTEla2A7fB9Nz03o7kXGPZs0eE2noC93tALc2kE9cUlNp4c8CXetoZ8jBNYHgm9BDp0tq/QRXSC5BSMrCo4+bWlZVHycgmtGmrcvuIoXeCsSAdH+uLZpxSVdJNV0vAinQZ/UBYGUTNilQjpoKZS9dy1YdwFu+XIiBaeKno5eWG1puT8TkNiN4nVYWbmG4QjLan/PlOyvRWZ3CU6DOFNZt0oqpXLN5wEjgNmu2rh5YHKhWGxFsyoYhgKRepHjBCnIThF5XYxWWwfkEY2rLCSqNekPbTK1bQsLtGPQWTQ1KwR6xmSD3FyuSgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pz++yekS0cTzj0OUi6Bjo+9r9h2hLcPjKZ8PRRq/Cv8=;
+ b=VY1hwNi/sFxFWvza7xdJRbqZtgd/WiELnpkmqM8KtdKkDiuznr5glEV+xmd5IbZAtPC4s3r9t++RHe47ZeuQcb+bkHOyxqbOW+5C/k62U0bb6mYzemgrH7yqs4ZQ3/vnOVaSUIagAXYnQbrdzeJtcuM6JXPjhanpQ7X2gNbNLGmW+DcXPS0Ftjt/WBdgG7gc6d8pPKdMpeXrh1g93DoquHO/P30lQjIVN/Pr82eAqxmBg1est3h+h+FWhow3dwFqZapyC3oBqJDpQBkns8H3uxO7RILte81M64mbUDljOaXdnEDTv5bkFnqY5HZe2hPcQm3vW9qaJJhgzgLKzryT6g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mellanox.com; dmarc=pass action=none header.from=mellanox.com;
+ dkim=pass header.d=mellanox.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Mellanox.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pz++yekS0cTzj0OUi6Bjo+9r9h2hLcPjKZ8PRRq/Cv8=;
+ b=cbhyDGaKeOf9GXeppqwwcyItQpvXHGHWLLMkmz647XAK8OldDTyiWDIKfQaR8qzv2iQa3E1NNLX0ZDXL/ouaHQj1E3mSQiIuPn+TCg0/xzvKf2MV2VoVwD3xdngVGiXWNj7/gLT2OYaiCIcqqpKdThDuwljknYXT2dYC2cWoRPs=
+Authentication-Results: lists.osuosl.org; dkim=none (message not signed)
+ header.d=none;lists.osuosl.org; dmarc=none action=none
+ header.from=mellanox.com;
+Received: from AM6PR05MB4933.eurprd05.prod.outlook.com (2603:10a6:20b:a::20)
+ by AM6PR05MB4358.eurprd05.prod.outlook.com (2603:10a6:209:3f::33) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3109.24; Tue, 23 Jun
+ 2020 16:57:11 +0000
+Received: from AM6PR05MB4933.eurprd05.prod.outlook.com
+ ([fe80::d85c:64e7:699:b5ff]) by AM6PR05MB4933.eurprd05.prod.outlook.com
+ ([fe80::d85c:64e7:699:b5ff%6]) with mapi id 15.20.3109.027; Tue, 23 Jun 2020
+ 16:57:11 +0000
+To: Raed Salem <raeds@mellanox.com>, Jarod Wilson <jarod@redhat.com>,
+ Jay Vosburgh <j.vosburgh@gmail.com>, Veaceslav Falico <vfalico@gmail.com>,
+ Andy Gospodarek <andy@greyhouse.net>, "David S. Miller"
+ <davem@davemloft.net>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Steffen Klassert <steffen.klassert@secunet.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+References: <20200619143155.20726-1-jarod@redhat.com>
+ <20200619143155.20726-5-jarod@redhat.com>
+ <AM0PR05MB5250242D3F80160817117F60C4940@AM0PR05MB5250.eurprd05.prod.outlook.com>
+From: Huy Nguyen <huyn@mellanox.com>
+Message-ID: <b6c69a4b-3db7-b840-085d-883b6775865f@mellanox.com>
+Date: Tue, 23 Jun 2020 11:57:03 -0500
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
+In-Reply-To: <AM0PR05MB5250242D3F80160817117F60C4940@AM0PR05MB5250.eurprd05.prod.outlook.com>
+Content-Language: en-US
+X-ClientProxiedBy: DM6PR14CA0037.namprd14.prod.outlook.com
+ (2603:10b6:5:18f::14) To AM6PR05MB4933.eurprd05.prod.outlook.com
+ (2603:10a6:20b:a::20)
 MIME-Version: 1.0
-References: <20200622100056.10151-1-brgl@bgdev.pl>
- <20200622100056.10151-4-brgl@bgdev.pl>
- <20200622154943.02782b5a@kicinski-fedora-PC1C0HJN>
-In-Reply-To: <20200622154943.02782b5a@kicinski-fedora-PC1C0HJN>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Tue, 23 Jun 2020 11:12:24 +0200
-Message-ID: <CAMRc=MfF1RbQCJ62QhscFLu1HKYRc9M-2SMep1_vTJ2xhKjLAA@mail.gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.1.44] (72.179.1.249) by
+ DM6PR14CA0037.namprd14.prod.outlook.com (2603:10b6:5:18f::14) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3109.22 via Frontend Transport; Tue, 23 Jun 2020 16:57:09 +0000
+X-Originating-IP: [72.179.1.249]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: ddce06c3-67fa-41aa-a446-08d8179678c9
+X-MS-TrafficTypeDiagnostic: AM6PR05MB4358:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <AM6PR05MB435813CBDF814E5EA8C25BE1AF940@AM6PR05MB4358.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1728;
+X-Forefront-PRVS: 04433051BF
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: pnCVtuIDeeJ6mYGnXud+YubVsW0csFAuvBO0B6GaFHfp+aOH8/X/WDnclGik9WikfMtgV7lFfGrvdQQvhADaND3iYPG1gEO6INSzQm36lnKFq9bx3CtEMYcFUVK++1oa+wZRHAeaMc83ggOikJh6aQlrjNyykTp7jYfs0v2fDzrF7uCfV9Sw674033AZhv2qOSkvtiljtrWDRFqG63g2RmxbYFaR5x4ADsP0Y0574J1Kh3BQiEllVWsFY+8yz/DALocNGVbLNBuVv6vMLgRAf4lyn76CZg5Oe1F5FiJjMxGhHV8jqdnVsSf9dnlNzmVM4dkVLcM3hpxwZYmYShuXUH6APNe/6puy6OcprzpgELBUx82a+2vZjQLbkQQMUw1Bs3MOdgTRBemdHv9PX0O1aw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM6PR05MB4933.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(376002)(396003)(366004)(136003)(39850400004)(346002)(66476007)(66556008)(66946007)(5660300002)(478600001)(558084003)(6666004)(6486002)(186003)(26005)(52116002)(86362001)(16576012)(110136005)(36756003)(316002)(16526019)(7416002)(31686004)(2616005)(31696002)(8936002)(8676002)(956004)(2906002)(921003)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData: R2neVrm0JitOHtMzu97D0gArrCjfeaVrdoXgmCmhcSl3uKSiAfN+R3gtvkHS32+C9fC+njKYzAmqQ4WJopHwxlwEYzkb+YmLi4usaX9VeFJ+1baUmsvAYx/P/rYtIlgUYjUnue9sxgvdWJVqcwCwpXz3ZYlojnyu3b2hC5MYCC936DIygX/BvM8h3sE86jdTLpBX3LoGfuwNXSc5XCfc/+Sncqrq/HxT+NWJn9VG9+QJqdN2QeYKFhT+AG5u0TFBvQtyG9BPjT6tNiQ8+fCxQA891uxgimKbtWls4ch6z+/w+02AJ/+yXbUgP2D0T71NyFnDsup4vqHIkSRF+lnEUjq8n9DKBYfLkvWZNX4FHiLKL/vPsnTak8KWUdaYPOtbheEhqIKkSfIuukW0SlbeCTrr86D4l1wCYInRv0rKGsC5ngygwB03Uqkf8wGzn9VPK54AGk4c75AK7Qtn30xATVMhwy1AC81jTlcC03d3wK4=
+X-OriginatorOrg: Mellanox.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ddce06c3-67fa-41aa-a446-08d8179678c9
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jun 2020 16:57:11.3898 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: a652971c-7d2e-4d9b-a6a4-d149256f461b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zWvSwhX1vHgQuMU0mKZzn38RgQnw/GlHrAjXsTadix7t0cStm2KhWMb2QxWBAztfporUhE8qu8JFByaCoEYoAg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR05MB4358
 X-Mailman-Approved-At: Tue, 23 Jun 2020 19:46:14 +0000
-Subject: Re: [Intel-wired-lan] [PATCH 03/11] net: devres: relax
- devm_register_netdev()
+Subject: Re: [Intel-wired-lan] FW: [PATCH net-next v3 4/4] bonding: support
+ hardware encryption offload to slaves
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,53 +127,16 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, linux-doc <linux-doc@vger.kernel.org>,
- Fabien Parent <fparent@baylibre.com>, Frank Rowand <frowand.list@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
- Russell King <linux@armlinux.org.uk>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- intel-wired-lan@lists.osuosl.org, Mark Lee <Mark-MC.Lee@mediatek.com>,
- devicetree <devicetree@vger.kernel.org>,
- Stephane Le Provost <stephane.leprovost@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- netdev <netdev@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Andrew Perepech <andrew.perepech@mediatek.com>,
- Pedro Tsai <pedro.tsai@mediatek.com>, "David S . Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-d3QuLCAyMyBjemUgMjAyMCBvIDAwOjQ5IEpha3ViIEtpY2luc2tpIDxrdWJhQGtlcm5lbC5vcmc+
-IG5hcGlzYcWCKGEpOgo+Cj4gT24gTW9uLCAyMiBKdW4gMjAyMCAxMjowMDo0OCArMDIwMCBCYXJ0
-b3N6IEdvbGFzemV3c2tpIHdyb3RlOgo+ID4gRnJvbTogQmFydG9zeiBHb2xhc3pld3NraSA8Ymdv
-bGFzemV3c2tpQGJheWxpYnJlLmNvbT4KPiA+Cj4gPiBUaGlzIGRldnJlcyBoZWxwZXIgcmVnaXN0
-ZXJzIGEgcmVsZWFzZSBjYWxsYmFjayB0aGF0IG9ubHkgdW5yZWdpc3RlcnMKPiA+IHRoZSBuZXRf
-ZGV2aWNlLiBJdCB3b3JrcyBwZXJmZWN0bHkgZmluZSB3aXRoIG5ldGRldiBzdHJ1Y3RzIHRoYXQg
-YXJlCj4gPiBub3QgbWFuYWdlZCBvbiB0aGVpciBvd24uIFRoZXJlJ3Mgbm8gcmVhc29uIHRvIGNo
-ZWNrIHRoaXMgLSBkcm9wIHRoZQo+ID4gd2FybmluZy4KPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBC
-YXJ0b3N6IEdvbGFzemV3c2tpIDxiZ29sYXN6ZXdza2lAYmF5bGlicmUuY29tPgo+Cj4gSSB0aGlu
-ayB0aGUgcmVhc29uaW5nIGZvciB0aGlzIHN1Z2dlc3Rpb24gd2FzIHRvIGNhdGNoIHBvc3NpYmxl
-IFVBRgo+IGVycm9ycy4gVGhlIG5ldGRldiBkb2Vzbid0IG5lY2Vzc2FyaWx5IGhhcyB0byBiZSBm
-cm9tIGRldm1fYWxsb2NfKgo+IGJ1dCBpdCBoYXMgdG8gYmUgcGFydCBvZiBkZXZtLWVkIG1lbW9y
-eSBvciBtZW1vcnkgd2hpY2ggaXMgZnJlZWQKPiBhZnRlciBkcml2ZXIncyByZW1vdmUgY2FsbGJh
-Y2suCj4KClllcyBJIHVuZGVyc3RhbmQgdGhhdCBVQUYgd2FzIHRoZSBjb25jZXJuIGhlcmUsIGJ1
-dCB0aGlzIGxpbWl0YXRpb24gaXMKdW5uZWNlc3NhcnkuIEluIGl0cyBjdXJyZW50IGZvcm0gZGV2
-bV9yZWdpc3Rlcl9uZXRkZXYoKSBvbmx5IHdvcmtzIGZvcgpzdHJ1Y3QgbmV0X2RldmljZSBhbGxv
-Y2F0ZWQgd2l0aCBkZXZtX2FsbG9jX2V0aGVyZGV2KCkuIE1lYW53aGlsZQpjYWxsaW5nIGFsbG9j
-X25ldGRldigpICh3aGljaCBkb2Vzbid0IGhhdmUgaXRzIGRldm0gY291bnRlcnBhcnQgeWV0IC0K
-SSBtYXkgbG9vayBpbnRvIGl0IHNob3J0bHkpLCB0aGVuIHJlZ2lzdGVyaW5nIGEgZGV2bSBhY3Rp
-b24gd2l0aApkZXZtX2FkZF9hY3Rpb25fb3JfcmVzZXQoKSB3aGljaCB3b3VsZCBmcmVlIHRoaXMg
-bWVtb3J5IGlzIGEgcGVyZmVjdGx5CmZpbmUgdXNlIGNhc2UuIFRoaXMgcGF0Y2ggd291bGQgbWFr
-ZSBpdCBwb3NzaWJsZS4KCj4gQXJlIHRoZXJlIGNhc2VzIGluIHByYWN0aWNlIHdoZXJlIHlvdSd2
-ZSBzZWVuIHRoZSBuZXRkZXYgbm90IGJlaW5nCj4gZGV2bSBhbGxvY2F0ZWQ/CgpBcyBJIHNhaWQg
-YWJvdmUgLSBhbGxvY19uZXRkZXYoKSB1c2VkIGJ5IHdpcmVsZXNzLCBjYW4sIHVzYiBldGMuCmRy
-aXZlcnMgZG9lc24ndCBoYXZlIGEgZGV2cmVzIHZhcmlhbnQuCgpCYXJ0b3N6Cl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWls
-aW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wu
-b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+> +#ifdef CONFIG_XFRM_OFFLOAD
+> +	struct xfrm_state *xs;
+We must support more than one SA right?
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
