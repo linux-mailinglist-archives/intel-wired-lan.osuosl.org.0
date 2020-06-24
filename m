@@ -1,66 +1,134 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A5D5206955
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jun 2020 03:08:49 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82BC120695F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jun 2020 03:16:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE7B787899;
-	Wed, 24 Jun 2020 01:08:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 28B0689076;
+	Wed, 24 Jun 2020 01:16:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e-X-VJpZZWRG; Wed, 24 Jun 2020 01:08:47 +0000 (UTC)
+	with ESMTP id aQy7jDSlB8JF; Wed, 24 Jun 2020 01:16:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 655718788E;
-	Wed, 24 Jun 2020 01:08:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9C71789128;
+	Wed, 24 Jun 2020 01:16:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1575F1BF477
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 01:08:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5F2D71BF477
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 01:16:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0DB7C888B0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 01:08:44 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5B0C789076
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 01:16:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5Mo7AG-T2ugC for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jun 2020 01:08:41 +0000 (UTC)
+ with ESMTP id UpodPctwr6Q2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jun 2020 01:16:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2B7D788898
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 01:08:41 +0000 (UTC)
-IronPort-SDR: p7ZpYodXVAIurcfzACzZYfxMcYkRwuvmAvlNApyxT17tS55gdP67qnadvKlXx2mTkSmpSAJrNX
- 7+YG+vMGZyIw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9661"; a="209460555"
-X-IronPort-AV: E=Sophos;i="5.75,273,1589266800"; d="scan'208";a="209460555"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 558F888F8C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 01:16:02 +0000 (UTC)
+IronPort-SDR: 6II3IVYAiIOg9d4Nhtink6ah810wuJlGhFyPezOHVkMoP6yghA85d8U8HSP6/NbT/bWog2ClHj
+ kyx28+PJoIUg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9661"; a="123955767"
+X-IronPort-AV: E=Sophos;i="5.75,273,1589266800"; d="scan'208";a="123955767"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2020 18:08:40 -0700
-IronPort-SDR: KicaQaAcZNLeoe+8RQsRt6+XcJk3bxsDN20PC0wvNpcO1z2r1NA4d/43q5JOICQsynV651H4uZ
- uCADq783NYVg==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Jun 2020 18:16:01 -0700
+IronPort-SDR: pg7LvISqeJbkS6TO9HkEcH4I32DFxIWEaG6Nr5Qumb+kNY68m1wPniW1U0sdY9dByHsaFf3252
+ dUztm3tavZNA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,273,1589266800"; d="scan'208";a="288874659"
-Received: from samudral-mobl.amr.corp.intel.com (HELO [10.251.139.150])
- ([10.251.139.150])
- by orsmga007.jf.intel.com with ESMTP; 23 Jun 2020 18:08:39 -0700
-To: Magnus Karlsson <magnus.karlsson@intel.com>, bjorn.topel@intel.com,
- intel-wired-lan@lists.osuosl.org, jeffrey.t.kirsher@intel.com
-References: <1592905458-850-1-git-send-email-magnus.karlsson@intel.com>
- <1592905458-850-2-git-send-email-magnus.karlsson@intel.com>
-From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
-Message-ID: <8cf93eaa-9c0d-3b5c-e9e2-1d95dd2fd1d8@intel.com>
-Date: Tue, 23 Jun 2020 18:08:37 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <1592905458-850-2-git-send-email-magnus.karlsson@intel.com>
+X-IronPort-AV: E=Sophos;i="5.75,273,1589266800"; d="scan'208";a="423207602"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by orsmga004.jf.intel.com with ESMTP; 23 Jun 2020 18:16:01 -0700
+Received: from fmsmsx101.amr.corp.intel.com (10.18.124.199) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 23 Jun 2020 18:16:01 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ fmsmsx101.amr.corp.intel.com (10.18.124.199) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 23 Jun 2020 18:16:01 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
+ edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server
+ (TLS) id 14.3.439.0; Tue, 23 Jun 2020 18:16:01 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=X75PB6NIqWrqJ/wWV+4odcGf8fQ24/y4SYGzf7B50GWiVQmwrFzO3zLBeBe9ZOy+r+LWIduR/NZxZaFlje2+XSc+XSfnJ8XMjnBToyUWXGO09fMPJ9WVAjHVtdF15gfFc0Msk6Rbcfqcyd7sBFZAYC+h8yBEKUuH9y/P2MvkpHxfJW8AjkMOTBST6LDNTK5EkWQPQiWIO71IZE9cmNBB8hjyS33ORcM7z/IdVql95PNkuRRns1hVYMbtZlT7oRlTP4WvdsabKfKbO08hIlkL8S9sJ9n5lKZvRQroRI/xDHYNv1zi6JXICSJP5FJpJDG033xkGzAADqQ0MbdEH4NpVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lFfNMRye9FTbddQal3xjIBDXat8U8VzvllYtcWooMQ4=;
+ b=GcMwCYhKiRz4HrItUpqwly3dsSwwe7McvgvM1Z7Wy1hydYxv+qnqcNfOv22BT4aBEovHnDqjlb3TzL7TJerp+o0DL08iwxmegx9zdq6C7MryvRBCsxr5XJM9V0pvjxEGP9/lA0dOWGCx7GUXGNrInSZByXu26fgILx1E2DFQpOrq1S/Qer00WXWsW8G4efJuJFYv+OZeMPBz5++AoBS3c0C7C9ngZury8rnLUoAkjwXsahfOokHFUVUOi8D9l5EJ5NMDX39EJcfuYqDbcWb75DGqlokq8B6KM92sxe/q6K7NtNn+nqinDXaPgBoa/w21DTnFCHn6ALsZgPUcS3P7/A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lFfNMRye9FTbddQal3xjIBDXat8U8VzvllYtcWooMQ4=;
+ b=Ahy+Zjgm7rhGKHNLv96Gf9VZdYIrOF9dBenIMRcrOPucdl/WRMWVbOSBJ6zO/6JhXi1Xpjhvvx22f/YYHEiED5MSBRokYnhy0/G+PdmVdSBeOka8nbkTLdabAtwE2wt5TsUblI+g+amHI2eWvyE3Xj40YyLYBqxpWbrn5DHdz7M=
+Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
+ DM6PR11MB3499.namprd11.prod.outlook.com (2603:10b6:5:61::24) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3131.20; Wed, 24 Jun 2020 01:15:59 +0000
+Received: from DM6PR11MB2890.namprd11.prod.outlook.com
+ ([fe80::65c2:9ac9:2c52:82bd]) by DM6PR11MB2890.namprd11.prod.outlook.com
+ ([fe80::65c2:9ac9:2c52:82bd%6]) with mapi id 15.20.3109.027; Wed, 24 Jun 2020
+ 01:15:59 +0000
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: "Neftin, Sasha" <sasha.neftin@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove TCP segmentation TX
+ fail counter
+Thread-Index: AQHWPKjlruhgUDIgcUS5iWfNvEsWfajnD6aQ
+Date: Wed, 24 Jun 2020 01:15:59 +0000
+Message-ID: <DM6PR11MB2890FCA0CC2C4D5BB701DB3ABC950@DM6PR11MB2890.namprd11.prod.outlook.com>
+References: <20200607085127.29281-1-sasha.neftin@intel.com>
+In-Reply-To: <20200607085127.29281-1-sasha.neftin@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/3] i40e: optimize AF_XDP
- Tx completion path
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.2.0.6
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [192.55.52.199]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 12b2fc42-0041-449c-a342-08d817dc2756
+x-ms-traffictypediagnostic: DM6PR11MB3499:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DM6PR11MB3499B1917DCA90D77CA7CBB5BC950@DM6PR11MB3499.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:88;
+x-forefront-prvs: 0444EB1997
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: qvlEYOYskrD1JkZ6a+PcHPYDvrGkoJaOpp1wfJI7VQGqF3mjDaTww9NFbG37TUtOR1zPqp/Dm/pTKlqsh5xeo+1Q35hDz/uqhf57G79MM3DOjitIOspS51tVHQYG7dlNjrSk9p+hBiauRj0mo6Yyv4dlhkHrw2IKazvEv/6XXLLlOisOi126ld5DAvDBdugDSEaJdMFNZZNq2GLgzLAJcC5r2wEOiDZMPzrN4O6tVIrxQQ9/zV2aUBwIVTtreEFF/2Of/wLrgLm3lSWgY+RkH+T0aUNbkn96o4hpdpEZ0Jc4dvXfXbgv5w0wf/eJee19DB8LckVOV6R+ykIVHA49J03ohMPB7gWoV1pYZlDQUdiaMLQf3+WOSE7RSnzShWW31Kp+QiTPG5p11q1oRf+YWg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(39860400002)(366004)(396003)(376002)(346002)(136003)(5660300002)(110136005)(53546011)(966005)(6506007)(33656002)(71200400001)(7696005)(9686003)(2906002)(55016002)(478600001)(8936002)(66946007)(52536014)(86362001)(76116006)(8676002)(186003)(26005)(316002)(66476007)(64756008)(66556008)(83380400001)(66446008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: rNfIw/DwwLVnF51INGpN3ffI2Jen7N/ZlTOh9v7P0jXK2JQ8EVF0Dnp0SeNjLft9cphZp/BbrkpN6v1ARjAv6dp31Ynxvoh8G0/M+cqMHHzG51v6fe6R0t8IL4OC+x2Pj0UKk5un9czRge8j613L2zBwtjsa0rlIwZqF9iSUkWRjZIwtvhdTF07SWXdSito8LYquHSxlPz0KXZvnftl7FOjYOfqYPy1zBTsmGnzAOsARuaRk0iPzXds50yFjXuLCeDQFJJ8W2ApvZuZkaAfNocYgWJCoMwCWkriA8713ZnPLmqFTjTSmKMrsMCcsSZ19LAhRWmW9VN6T8V3CElScNiy4l82s2zxIpInJyZAMC+eMlay75n2606K9Eu1Zlyw3ME+n7LT9TH7JSHHlmgSEQa9xfAiNrl3EtD6Vq39djkg+DEDvJ60czmexJry5EJ6s0bS46hjhadzY4rmULbjo2AL3pWP21+UJgJ4KgEXGZ8w=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 12b2fc42-0041-449c-a342-08d817dc2756
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2020 01:15:59.2328 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: IjxsSP5mF7GmcXv11JpO+SpUMxMsGZF6ITNc2+zipIyhIBt4gTFBrn0AhFpxqhP+r+Fc80yZBKxls05j+xHhjA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3499
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove TCP segmentation
+ TX fail counter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,209 +141,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciejromanfijalkowski@gmail.com, maciej.fijalkowski@intel.com,
- netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-
-On 6/23/2020 2:44 AM, Magnus Karlsson wrote:
-> Improve the performance of the AF_XDP zero-copy Tx completion
-> path. When there are no XDP buffers being sent using XDP_TX or
-> XDP_REDIRECT, we do not have go through the SW ring to clean up any
-> entries since the AF_XDP path does not use these. In these cases, just
-> fast forward the next-to-use counter and skip going through the SW
-> ring. The limit on the maximum number of entries to complete is also
-> removed since the algorithm is now O(1). To simplify the code path, the
-> maximum number of entries to complete for the XDP path is therefore
-> also increased from 256 to 512 (the default number of Tx HW
-> descriptors). This should be fine since the completion in the XDP path
-> is faster than in the SKB path that has 256 as the maximum number.
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Sasha Neftin
+> Sent: Sunday, June 7, 2020 1:51 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Remove TCP segmentation TX
+> fail counter
 > 
-> This patch provides around 4% throughput improvement for the l2fwd
-> application in xdpsock on my machine.
+> TCP segmentation TX context fail counter is not
+> applicable for i225 devices.
+> This patch comes to clean up this counter.
+
+
+With this patch include I am seeing what appears to be the removed counter when I look at ethtool stats.
+----
+u1322:[0]/usr/src/kernels/next-queue> ethtool -S eth1|grep seg
+     tx_tcp_seg_good: 857
+     tx_tcp_seg_failed: 0
+u1322:[0]/usr/src/kernels/next-queue>
+----
+
+Does something need to be done to strip the counter display?  Or am I just looking at a similar counter.
+
 > 
-> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
-
-Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 > ---
->   drivers/net/ethernet/intel/i40e/i40e_txrx.c |  3 +-
->   drivers/net/ethernet/intel/i40e/i40e_txrx.h |  1 +
->   drivers/net/ethernet/intel/i40e/i40e_xsk.c  | 43 +++++++++++++++--------------
->   drivers/net/ethernet/intel/i40e/i40e_xsk.h  |  3 +-
->   4 files changed, 27 insertions(+), 23 deletions(-)
+>  drivers/net/ethernet/intel/igc/igc_mac.c  | 1 -
+>  drivers/net/ethernet/intel/igc/igc_main.c | 1 -
+>  drivers/net/ethernet/intel/igc/igc_regs.h | 1 -
+>  3 files changed, 3 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> index f9555c8..9334abd 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> @@ -2580,7 +2580,7 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
->   	 */
->   	i40e_for_each_ring(ring, q_vector->tx) {
->   		bool wd = ring->xsk_umem ?
-> -			  i40e_clean_xdp_tx_irq(vsi, ring, budget) :
-> +			  i40e_clean_xdp_tx_irq(vsi, ring) :
->   			  i40e_clean_tx_irq(vsi, ring, budget);
->   
->   		if (!wd) {
-> @@ -3538,6 +3538,7 @@ static int i40e_xmit_xdp_ring(struct xdp_frame *xdpf,
->   	 */
->   	smp_wmb();
->   
-> +	xdp_ring->xdp_tx_active++;
->   	i++;
->   	if (i == xdp_ring->count)
->   		i = 0;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> index 5c25597..c16fcd9 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> @@ -371,6 +371,7 @@ struct i40e_ring {
->   	/* used in interrupt processing */
->   	u16 next_to_use;
->   	u16 next_to_clean;
-> +	u16 xdp_tx_active;
->   
->   	u8 atr_sample_rate;
->   	u8 atr_count;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> index 7276580..86635f5 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> @@ -378,6 +378,7 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
->    **/
->   static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->   {
-> +	unsigned int sent_frames = 0, total_bytes = 0;
->   	struct i40e_tx_desc *tx_desc = NULL;
->   	struct i40e_tx_buffer *tx_bi;
->   	bool work_done = true;
-> @@ -408,6 +409,9 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->   				   | I40E_TX_DESC_CMD_EOP,
->   				   0, desc.len, 0);
->   
-> +		sent_frames++;
-> +		total_bytes += tx_bi->bytecount;
-> +
->   		xdp_ring->next_to_use++;
->   		if (xdp_ring->next_to_use == xdp_ring->count)
->   			xdp_ring->next_to_use = 0;
-> @@ -420,6 +424,7 @@ static bool i40e_xmit_zc(struct i40e_ring *xdp_ring, unsigned int budget)
->   		i40e_xdp_ring_update_tail(xdp_ring);
->   
->   		xsk_umem_consume_tx_done(xdp_ring->xsk_umem);
-> +		i40e_update_tx_stats(xdp_ring, sent_frames, total_bytes);
->   	}
->   
->   	return !!budget && work_done;
-> @@ -434,6 +439,7 @@ static void i40e_clean_xdp_tx_buffer(struct i40e_ring *tx_ring,
->   				     struct i40e_tx_buffer *tx_bi)
->   {
->   	xdp_return_frame(tx_bi->xdpf);
-> +	tx_ring->xdp_tx_active--;
->   	dma_unmap_single(tx_ring->dev,
->   			 dma_unmap_addr(tx_bi, dma),
->   			 dma_unmap_len(tx_bi, len), DMA_TO_DEVICE);
-> @@ -447,27 +453,25 @@ static void i40e_clean_xdp_tx_buffer(struct i40e_ring *tx_ring,
->    *
->    * Returns true if cleanup/tranmission is done.
->    **/
-> -bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
-> -			   struct i40e_ring *tx_ring, int napi_budget)
-> +bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring)
->   {
-> -	unsigned int ntc, total_bytes = 0, budget = vsi->work_limit;
-> -	u32 i, completed_frames, frames_ready, xsk_frames = 0;
-> +	unsigned int ntc, budget = vsi->work_limit;
->   	struct xdp_umem *umem = tx_ring->xsk_umem;
-> +	u32 i, completed_frames, xsk_frames = 0;
->   	u32 head_idx = i40e_get_head(tx_ring);
-> -	bool work_done = true, xmit_done;
->   	struct i40e_tx_buffer *tx_bi;
-> +	bool xmit_done;
->   
->   	if (head_idx < tx_ring->next_to_clean)
->   		head_idx += tx_ring->count;
-> -	frames_ready = head_idx - tx_ring->next_to_clean;
-> +	completed_frames = head_idx - tx_ring->next_to_clean;
->   
-> -	if (frames_ready == 0) {
-> +	if (completed_frames == 0)
->   		goto out_xmit;
-> -	} else if (frames_ready > budget) {
-> -		completed_frames = budget;
-> -		work_done = false;
-> -	} else {
-> -		completed_frames = frames_ready;
-> +
-> +	if (likely(!tx_ring->xdp_tx_active)) {
-> +		xsk_frames = completed_frames;
-> +		goto skip;
->   	}
->   
->   	ntc = tx_ring->next_to_clean;
-> @@ -475,18 +479,18 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
->   	for (i = 0; i < completed_frames; i++) {
->   		tx_bi = &tx_ring->tx_bi[ntc];
->   
-> -		if (tx_bi->xdpf)
-> +		if (tx_bi->xdpf) {
->   			i40e_clean_xdp_tx_buffer(tx_ring, tx_bi);
-> -		else
-> +			tx_bi->xdpf = NULL;
-> +		} else {
->   			xsk_frames++;
-> -
-> -		tx_bi->xdpf = NULL;
-> -		total_bytes += tx_bi->bytecount;
-> +		}
->   
->   		if (++ntc >= tx_ring->count)
->   			ntc = 0;
->   	}
->   
-> +skip:
->   	tx_ring->next_to_clean += completed_frames;
->   	if (unlikely(tx_ring->next_to_clean >= tx_ring->count))
->   		tx_ring->next_to_clean -= tx_ring->count;
-> @@ -494,8 +498,7 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
->   	if (xsk_frames)
->   		xsk_umem_complete_tx(umem, xsk_frames);
->   
-> -	i40e_arm_wb(tx_ring, vsi, budget);
-> -	i40e_update_tx_stats(tx_ring, completed_frames, total_bytes);
-> +	i40e_arm_wb(tx_ring, vsi, completed_frames);
->   
->   out_xmit:
->   	if (xsk_umem_uses_need_wakeup(tx_ring->xsk_umem))
-> @@ -503,7 +506,7 @@ bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
->   
->   	xmit_done = i40e_xmit_zc(tx_ring, budget);
->   
-> -	return work_done && xmit_done;
-> +	return xmit_done;
->   }
->   
->   /**
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.h b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
-> index ea919a7d..c524c14 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.h
-> @@ -15,8 +15,7 @@ int i40e_xsk_umem_setup(struct i40e_vsi *vsi, struct xdp_umem *umem,
->   bool i40e_alloc_rx_buffers_zc(struct i40e_ring *rx_ring, u16 cleaned_count);
->   int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget);
->   
-> -bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi,
-> -			   struct i40e_ring *tx_ring, int napi_budget);
-> +bool i40e_clean_xdp_tx_irq(struct i40e_vsi *vsi, struct i40e_ring *tx_ring);
->   int i40e_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
->   int i40e_alloc_rx_bi_zc(struct i40e_ring *rx_ring);
->   void i40e_clear_rx_bi_zc(struct i40e_ring *rx_ring);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c
+> b/drivers/net/ethernet/intel/igc/igc_mac.c
+> index f3f7717b6233..9a5e44ef45f4 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_mac.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_mac.c
+> @@ -289,7 +289,6 @@ void igc_clear_hw_cntrs_base(struct igc_hw *hw)
+>  	rd32(IGC_TNCRS);
+>  	rd32(IGC_HTDPMC);
+>  	rd32(IGC_TSCTC);
+> -	rd32(IGC_TSCTFC);
 > 
+>  	rd32(IGC_MGTPRC);
+>  	rd32(IGC_MGTPDC);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
+> b/drivers/net/ethernet/intel/igc/igc_main.c
+> index b92e7e20ce78..5d70751e8ab3 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -3740,7 +3740,6 @@ void igc_update_stats(struct igc_adapter
+> *adapter)
+>  	adapter->stats.algnerrc += rd32(IGC_ALGNERRC);
+> 
+>  	adapter->stats.tsctc += rd32(IGC_TSCTC);
+> -	adapter->stats.tsctfc += rd32(IGC_TSCTFC);
+> 
+>  	adapter->stats.iac += rd32(IGC_IAC);
+>  	adapter->stats.icrxoc += rd32(IGC_ICRXOC);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h
+> b/drivers/net/ethernet/intel/igc/igc_regs.h
+> index eb3e8e70501d..1c46cec5a799 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_regs.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+> @@ -181,7 +181,6 @@
+>  #define IGC_MPTC	0x040F0  /* Multicast Packets Tx Count - R/clr */
+>  #define IGC_BPTC	0x040F4  /* Broadcast Packets Tx Count - R/clr */
+>  #define IGC_TSCTC	0x040F8  /* TCP Segmentation Context Tx - R/clr */
+> -#define IGC_TSCTFC	0x040FC  /* TCP Segmentation Context Tx Fail - R/clr
+> */
+>  #define IGC_IAC		0x04100  /* Interrupt Assertion Count */
+>  #define IGC_ICTXPTC	0x0410C  /* Interrupt Cause Tx Pkt Timer Expire
+> Count */
+>  #define IGC_ICTXATC	0x04110  /* Interrupt Cause Tx Abs Timer Expire
+> Count */
+> --
+> 2.11.0
+> 
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
