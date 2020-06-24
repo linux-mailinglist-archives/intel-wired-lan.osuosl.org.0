@@ -1,134 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 101FE206E28
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jun 2020 09:48:23 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A44D20727D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jun 2020 13:48:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BA87E88248;
-	Wed, 24 Jun 2020 07:48:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F1F221FD90;
+	Wed, 24 Jun 2020 11:48:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YUDOFYpT7xWu; Wed, 24 Jun 2020 07:48:21 +0000 (UTC)
+	with ESMTP id Mx1-Ki8mOJxK; Wed, 24 Jun 2020 11:48:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1267988378;
-	Wed, 24 Jun 2020 07:48:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6236A2014B;
+	Wed, 24 Jun 2020 11:48:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AABD41BF861
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 07:48:19 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 652571BF599
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 11:48:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A686D88263
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 07:48:19 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 568DD1FEBF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 11:48:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3BMdViB-L5QS for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jun 2020 07:48:18 +0000 (UTC)
+ with ESMTP id lg6dHloVmmYC for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jun 2020 11:48:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B08E088248
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 07:48:18 +0000 (UTC)
-IronPort-SDR: Y2K1lRTlBY54J5llkkwEevTp8p7OHi7VIJ74MANBqyJ+KquDxxemw4Vg1zposeht0tSJ5zHJBT
- LgGOTUuqpZFw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9661"; a="209535027"
-X-IronPort-AV: E=Sophos;i="5.75,274,1589266800"; d="scan'208";a="209535027"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 944441FD90
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jun 2020 11:48:19 +0000 (UTC)
+IronPort-SDR: FB2atBPShmZgb3Cxmv24XKlhYxGLCm+qS99lYdZtM5eQHHunj9PFf2vShDtRUXGO5Whz+CaKkU
+ 0kYvnzI5cMhQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9661"; a="144448470"
+X-IronPort-AV: E=Sophos;i="5.75,275,1589266800"; d="scan'208";a="144448470"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2020 00:48:18 -0700
-IronPort-SDR: Up3SjjConUJG7ZSaF9pdL66imjMu5d8oLp898QUiKoWkbWvaEYOudCMgk7Sb6FuLYUtX39vuy3
- Hq2fyFbU8L6A==
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2020 04:48:18 -0700
+IronPort-SDR: Hq91l18WKqUWniQEfnG64zKlgPw7gZZKhkctVtwoCf0CrZaqtocV8Gt+3ahV+q50GixwhLIYHF
+ JgV5M2madnWA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,274,1589266800"; d="scan'208";a="279391846"
-Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
- by orsmga006.jf.intel.com with ESMTP; 24 Jun 2020 00:48:17 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 24 Jun 2020 00:47:25 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 24 Jun 2020 00:47:25 -0700
-Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Wed, 24 Jun 2020 00:47:25 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.174)
- by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Wed, 24 Jun 2020 00:47:24 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=g3InsCMiwMQWl8JeGrreLpIGqvTDeFW1q18xP2m4FqhwVDHLrXhkjnGjHlHJ/jOnmssM728ikKvtUUxAMRHNyZ7VqHM/wHImEV1cruNxa7Ds11jwy5p4/qMbs2nSBj1bWlIyBVOapA3DGSW3L6ef5SiaKabFVonD8XZN40t8TkB91lexiJAkTIjyGsyxXqbL2MTcFDVfWhO8gKcLpMRGG2fW729+hKz1NA45f8PZyzyrP3UGmj0E2RgGAUPj8KYHFWbqd+X+X3NBCBDJcmPNTpuXQv8mqymrU93b7fTj4WOoidH9PAIx8p7irSzRW7x1hxp6medQrGVgMgSdSOg0qg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iot4naHe99S5kGacFpk525UMoVSD93NPwNqW9wDfzI0=;
- b=VcRofzXg55BYfiRmdRHyZviCalFXOfm6HZwR17J3vKTMdlXCSRFGVRbAXFa5PXvXlB3uqpKLTcPwe6FXgomHMsIycMMo7mLiCzQrog/bBYF3+Il/t2kwn2MCD5dxOavFOAivga0dbZLl2WhkYzuh9H/kX7JQvIW54Wqz7wKFB+TckY6Of/mEb8rKEvFvemwAbqVVPXPH6KVVTJCta2SbPmJiX0t8PoHadMmuEjGilFZUxOKzAuC5Js3Nm1VeAuq/rv2fhDzMFGqFW4tVS98xECOqic55UduTozgcwVTgjcdf2WHfG3ViEUE31HnJ17wYxnZcJwtKi+J8Ry+GJbN0AQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=iot4naHe99S5kGacFpk525UMoVSD93NPwNqW9wDfzI0=;
- b=eAV0Gm+tbfZ6qTjlZLzbxMZcqBMv3d66XLC5df0Wg3vcNMGh+De3HkZ9NIGBPnT7V9DrOqAVszMevpGPVaGFTGuZ+KV+NC9NsYBGPKFAA2soYpbYyiHCsBph5iQmnp1txlPq06xoxX39NT4OPci6QGhVsPvPl7e9SFIu5dnW/TI=
-Received: from DM6PR11MB3900.namprd11.prod.outlook.com (2603:10b6:5:19a::26)
- by DM5PR11MB1452.namprd11.prod.outlook.com (2603:10b6:4:9::7) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3109.23; Wed, 24 Jun 2020 07:47:23 +0000
-Received: from DM6PR11MB3900.namprd11.prod.outlook.com
- ([fe80::3dc9:b760:b900:437e]) by DM6PR11MB3900.namprd11.prod.outlook.com
- ([fe80::3dc9:b760:b900:437e%6]) with mapi id 15.20.3131.020; Wed, 24 Jun 2020
- 07:47:23 +0000
-From: "Lu, Nannan" <nannan.lu@intel.com>
-To: "Wang, Haiyue" <haiyue.wang@intel.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v4 5/5] ice: add switch rule management
- for DCF
-Thread-Index: AQHWSfqzRGcMNP1o6k2bnRaj1AIVOKjnYqAA
-Date: Wed, 24 Jun 2020 07:47:23 +0000
-Message-ID: <DM6PR11MB39006FE59904CC7D562A9013F8950@DM6PR11MB3900.namprd11.prod.outlook.com>
-References: <20200619045711.16055-1-haiyue.wang@intel.com>
- <20200624072939.9363-1-haiyue.wang@intel.com>
- <20200624072939.9363-6-haiyue.wang@intel.com>
-In-Reply-To: <20200624072939.9363-6-haiyue.wang@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [192.102.204.38]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 3ac90bb7-3a62-4e0f-76d8-08d81812d50f
-x-ms-traffictypediagnostic: DM5PR11MB1452:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM5PR11MB1452AE4B99297CDC358671E0F8950@DM5PR11MB1452.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0444EB1997
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 3tLwNUXLPoa8Er9EshVQrQsGZUruhwMlJDtE2xaq6haZYta+01IhHu7zh9q82VUCqTUAOdyZrfaGYjtvcam4Aut2fD+9JEzAjGCxgmy7OK+RP/8iLptN5Ioy7qn65uI4tqK9c2+0LDaWFaUBn/UC67hA6R+nKaE4PELGL+13+O1z2vPDzX5Invvi1q5qohbvv7soin+PUxPJh8YBV32yE7TXfE/DZMXy5/5JFMq5bQuEg/Ndi9AG+XLInUGIyqkpwD+p+ittmzkVb1GxseBiA6BIQpNGNfMR2s1ktvfrdM8d9bX2h1mvfP3+2DKQlEsAVyPlyaiPYuamgxc9fPsRrOLOny+U1gEV+JEQi2tfQWWtdGP7mJ11iRo8cN5jg7qVF+nReHbfQsAJ5CLapMVAHA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3900.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(136003)(376002)(346002)(396003)(39860400002)(366004)(83380400001)(7696005)(186003)(26005)(66946007)(107886003)(55016002)(8676002)(33656002)(6506007)(8936002)(966005)(53546011)(4326008)(9686003)(86362001)(5660300002)(76116006)(54906003)(64756008)(52536014)(2906002)(66476007)(66556008)(66446008)(478600001)(110136005)(316002)(71200400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: Dk94Bq6oP+8fo0ZS5MkWq/OmXJ4plXDOEdYaCG4o60d2UsHNse+GuCjsjEGdFjIPAUaf3JfQC6EtRpolpi1fsdNA7a9dyNV0S17ZFxzPzU2QshkPUYclDYsMEbdGJeC3gvNb7yf/EY9CpClS/mqZkP4kWGb1TQn9hYRi7DyPmPb+2KXXSVG4pKOrUVvtiJ2u4OoBDlW8cN1NiKbeXOEkmlgP9g2VB6Q2PHRzl5tt3je5zxawUi4tqaKZdWTRCSuucZT2UPxydlaE6aGPBDrofY79p2ek9aimUxuwwKe1Ukovb46gvZpnqWyNwYGJ1QapwbzTcey1q332evZ/mVy/VhkU9WOGdsPH7Xd8RGtn6oMncMFChJX2fGtMa8Qbq+OKwB6nElWNFN9vxr9Tr8kLsSjazjKIAoeGStpC7jI8avQxLax0RpdQa/CDRYss6DM38Xvx8MKblgK8EZZYBFKXZCdVfI+RSKdA1t+Xy1j0Qi85dEsTJh6PoTgwDVIFzPcX
+X-IronPort-AV: E=Sophos;i="5.75,275,1589266800"; d="scan'208";a="301596124"
+Received: from lkp-server01.sh.intel.com (HELO 538b5e3c8319) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 24 Jun 2020 04:48:17 -0700
+Received: from kbuild by 538b5e3c8319 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jo3t3-0000tr-73; Wed, 24 Jun 2020 11:48:17 +0000
+Date: Wed, 24 Jun 2020 19:47:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5ef33d45.OVaf1YXQI4zfDM20%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3ac90bb7-3a62-4e0f-76d8-08d81812d50f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2020 07:47:23.4864 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: l3EtHyL/l8DttkRjAavJxR0y7HT0SKean6HiW9Iv4G+zXhBz3ihRIXmuchvBI53DvuqCencFDw+dqwAxRUOD0A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1452
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v4 5/5] ice: add switch rule
- management for DCF
+Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD REGRESSION
+ a9ce8ef80a26ae6dabd0a77dac5de045072d81d6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,63 +69,183 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Zhang, Xiao" <xiao.zhang@intel.com>, "Xing,
- Beilei" <beilei.xing@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Haiyue Wang
-> Sent: Wednesday, June 24, 2020 3:30 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Zhang, Xiao <xiao.zhang@intel.com>; Xing, Beilei <beilei.xing@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v4 5/5] ice: add switch rule management for
-> DCF
-> 
-> The PF shall track all the outstanding switch filters (filter IDs to be
-> precise) added by the DCF.
-> 
-> Upon a VF reset event, the PF shall clear all outstanding switch filters for the
-> given VF. Upon completion of either VF or PF reset, the PF shall skip replay of
-> filters that were added by the DCF. The PF shall however continue to replay the
-> filters that were not added by DCF for the VF(s).
-> 
-> If the trust mode of the DCF is taken away without the DCF gracefully
-> relinquishing the DCF functionality (by way appropriate virtchnl message
-> exchanges), then the PF shall remove all switch filters that were added by the
-> DCF. The PF shall transition back from DCF mode to regular mode, the VF shall
-> be treated as any other untrusted VF, and the PF will reset the VF.
-> 
-> If a designated DCF requests AVF functionality from the same VF (VF-ID) without
-> the DCF gracefully relinquishing the DCF functionality first (by way appropriate
-> virtchnl message exchanges), the PF shall remove all the switch filters that were
-> added by the DCF.
-> 
-> Signed-off-by: Xiao Zhang <xiao.zhang@intel.com>
-> Signed-off-by: Beilei Xing <beilei.xing@intel.com>
-> Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_dcf.c      | 713 ++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_dcf.h      |  41 +
->  drivers/net/ethernet/intel/ice/ice_switch.c   |  27 +-
->  drivers/net/ethernet/intel/ice/ice_switch.h   |  37 +-
->  drivers/net/ethernet/intel/ice/ice_type.h     |   9 +
->  .../net/ethernet/intel/ice/ice_virtchnl_pf.c  |  40 +
->  6 files changed, 834 insertions(+), 33 deletions(-)
-> 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
+branch HEAD: a9ce8ef80a26ae6dabd0a77dac5de045072d81d6  idpf: Introduce idpf driver
 
-Tested-by: Nannan Lu <nannan.lu@intel.com>
+Error/Warning in current branch:
 
-> --
-> 2.27.0
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+drivers/net/ethernet/intel/idpf/idpf_main.c:46:5: warning: no previous prototype for 'idpf_probe' [-Wmissing-prototypes]
+include/linux/avf/virtchnl.h:1090:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rss_hash' is not an integer constant
+include/linux/avf/virtchnl.h:809:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_get_capabilities' is not an integer constant
+include/linux/avf/virtchnl.h:891:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_txq_info_v2' is not an integer constant
+include/linux/avf/virtchnl.h:907:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_tx_queues' is not an integer constant
+include/linux/avf/virtchnl.h:937:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rxq_info_v2' is not an integer constant
+include/linux/avf/virtchnl.h:952:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_rx_queues' is not an integer constant
+
+Error/Warning ids grouped by kconfigs:
+
+recent_errors
+|-- alpha-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arc-allyesconfig
+|   |-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
+|   `-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
+|-- arm-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm64-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- arm64-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- i386-allyesconfig
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
+|   `-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
+|-- i386-debian-10.3
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
+|   `-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
+|-- microblaze-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- mips-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- mips-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- riscv-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- riscv-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- s390-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- s390-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- sparc-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- sparc64-allmodconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+|-- sparc64-allyesconfig
+|   `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+`-- xtensa-allyesconfig
+    `-- drivers-net-ethernet-intel-idpf-idpf_main.c:warning:no-previous-prototype-for-idpf_probe
+
+elapsed time: 722m
+
+configs tested: 92
+configs skipped: 2
+
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+powerpc                      mgcoge_defconfig
+sh                ecovec24-romimage_defconfig
+arm                        mvebu_v7_defconfig
+arm                        multi_v5_defconfig
+h8300                       h8s-sim_defconfig
+powerpc                          allyesconfig
+s390                              allnoconfig
+mips                        qi_lb60_defconfig
+i386                              allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                              debian-10.3
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+c6x                               allnoconfig
+openrisc                         allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a002-20200624
+i386                 randconfig-a006-20200624
+i386                 randconfig-a003-20200624
+i386                 randconfig-a001-20200624
+i386                 randconfig-a005-20200624
+i386                 randconfig-a004-20200624
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+um                               allmodconfig
+um                                allnoconfig
+um                               allyesconfig
+um                                  defconfig
+x86_64                               rhel-7.6
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                         rhel-7.2-clear
+x86_64                                    lkp
+x86_64                              fedora-25
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
