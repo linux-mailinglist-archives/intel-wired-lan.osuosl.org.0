@@ -2,102 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6EB8A20A765
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jun 2020 23:25:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E61BD20A888
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jun 2020 01:01:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E9E47882AC;
-	Thu, 25 Jun 2020 21:25:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 886A787D99;
+	Thu, 25 Jun 2020 23:01:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QZpeXIa1uHA6; Thu, 25 Jun 2020 21:25:36 +0000 (UTC)
+	with ESMTP id Nd3kWP5zplyK; Thu, 25 Jun 2020 23:01:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 120D8882C7;
-	Thu, 25 Jun 2020 21:25:33 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5F63587DB3;
+	Thu, 25 Jun 2020 23:01:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CC02A1BF599
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jun 2020 21:25:31 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DB4B51BF337
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jun 2020 23:01:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C6A29882AC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jun 2020 21:25:31 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D203F88396
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jun 2020 23:01:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EK6IaJNg-NJA for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jun 2020 21:25:29 +0000 (UTC)
-X-Greylist: delayed 05:35:08 by SQLgrey-1.7.6
-Received: from EUR01-HE1-obe.outbound.protection.outlook.com
- (mail-eopbgr130090.outbound.protection.outlook.com [40.107.13.90])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9D06B87FC3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jun 2020 21:25:28 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=PTVtz64cb+zXF0+pqqanGqh7w8pN+PzYRUaaGq0/NQdXv0AhiFa4pwKrDOdt6nOGPFXGlF7JmZDtrnVsY5mhqFzzDaZTOxzShgOCodKvqkNP6ETfpW+0uqvHDF/zJfOBEIeDmgxAYBIugboqPDcgWfDHtLQDnE6DVoq0oQ5t8RF3E7ELVSHTsAMwgsRISUBkLEa5342XsyHSP8H91ycLK995QMNEP96G2dpQfIRYWDmebxTBKzbPcMORdhECXVw/Zxlkw8JaGbOqUegNJDaFPMI51kgDYxw077TxdgrR9/TbZFpJkPGAH3m57ceoHRt0K1UGt7HsTIWimVJG4us9+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a/do91rKnCxl1MzExuDN4UhcI0IDWVy1qJj1MFx1bvY=;
- b=IdQlrRaKqsxP/L5BqIAedFhV25at7ZQSJd3AZtsYiwLkmDeKqEIQ3TONsQmBcuqQcJV4ajnZrB0NT66Shm0t49WHVgIOByhD4u1/h4nch5yxIopcl8vg9/vxWeWKAOSOOgT5nKOKaJ/z6pijd6C336NVmxsizmcB+3OIK9RzjdF4eTjHdwpdZWhnU2lHO3qYcmETuq1BA/UCL1iKK1noebe/53X/AnkZ8BtcX9HnT46Bjasl2BarMwfeyOwpP5ASUzIQBcaz2144wjnJgrsv9dW/CyrBeqflXeP2x35/fbAWXPAnAXte0Yu5JHhlE8u0Bg2I9dCc3ct9o+7v1VL6/w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=voleatech.de; dmarc=pass action=none header.from=voleatech.de;
- dkim=pass header.d=voleatech.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=voleatech.de;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a/do91rKnCxl1MzExuDN4UhcI0IDWVy1qJj1MFx1bvY=;
- b=Efmz1CHiC1va4+mBE4Yg/cSHoVBQ9V2bruKWDbtBZ+W0twuWklomNF0P68GKu0xkBGGsUpbPu3jc6cbmlI/4aATkdyv4EUCdt6o0y4IxhXXWPc28YRUb2MzyY7WKymheLkvRvXuJE+IdXLlEvGliIVX/BCss7cgpE0UB5GQ2YVQ=
-Authentication-Results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none;lists.osuosl.org; dmarc=none action=none
- header.from=voleatech.de;
-Received: from AM4PR0501MB2785.eurprd05.prod.outlook.com
- (2603:10a6:200:5d::11) by AM4PR0501MB2195.eurprd05.prod.outlook.com
- (2603:10a6:200:47::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3109.21; Thu, 25 Jun
- 2020 15:50:16 +0000
-Received: from AM4PR0501MB2785.eurprd05.prod.outlook.com
- ([fe80::39a1:e237:5fef:6f39]) by AM4PR0501MB2785.eurprd05.prod.outlook.com
- ([fe80::39a1:e237:5fef:6f39%11]) with mapi id 15.20.3109.027; Thu, 25 Jun
- 2020 15:50:16 +0000
-Date: Thu, 25 Jun 2020 17:50:14 +0200
-From: Sven Auhagen <sven.auhagen@voleatech.de>
-To: intel-wired-lan@lists.osuosl.org
-Message-ID: <20200625155014.6zwfoqqyhsvwu2gc@SvensMacBookAir.sven.lan>
-Content-Disposition: inline
-X-ClientProxiedBy: AM0PR02CA0015.eurprd02.prod.outlook.com
- (2603:10a6:208:3e::28) To AM4PR0501MB2785.eurprd05.prod.outlook.com
- (2603:10a6:200:5d::11)
+ with ESMTP id B9LVVosE+g5t for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Jun 2020 23:01:43 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1DC3B8838F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jun 2020 23:01:43 +0000 (UTC)
+IronPort-SDR: E9JmtGNiGzpFJT/2acCHowg2gggldz2aHpL9QCcC1Eh+xP4mKZEvg0sBi/2zsROorbRZAZI9pN
+ VmQ1Sgyr2Xow==
+X-IronPort-AV: E=McAfee;i="6000,8403,9663"; a="144199201"
+X-IronPort-AV: E=Sophos;i="5.75,280,1589266800"; 
+ d="gz'50?scan'50,208,50";a="144199201"
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jun 2020 16:01:42 -0700
+IronPort-SDR: VEFEmF5sbYguVjWrVBPnyCM7HpJoNhXb511Bwpnv+4A1MaK0/MNX0Of7oo53a6h/ge6B/OVkaL
+ WQ32Jbpasyug==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,280,1589266800"; 
+ d="gz'50?scan'50,208,50";a="265480003"
+Received: from lkp-server01.sh.intel.com (HELO 538b5e3c8319) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 25 Jun 2020 16:01:29 -0700
+Received: from kbuild by 538b5e3c8319 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1joas4-0001rB-IM; Thu, 25 Jun 2020 23:01:28 +0000
+Date: Fri, 26 Jun 2020 07:00:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sven Auhagen <sven.auhagen@voleatech.de>, intel-wired-lan@lists.osuosl.org
+Message-ID: <202006260609.pvrBZeWn%lkp@intel.com>
+References: <20200625155014.6zwfoqqyhsvwu2gc@SvensMacBookAir.sven.lan>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from SvensMacBookAir.sven.lan (149.172.153.214) by
- AM0PR02CA0015.eurprd02.prod.outlook.com (2603:10a6:208:3e::28) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3131.21 via Frontend Transport; Thu, 25 Jun 2020 15:50:15 +0000
-X-Originating-IP: [149.172.153.214]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: a80e7d6c-7468-4e87-9fe2-08d8191f73f7
-X-MS-TrafficTypeDiagnostic: AM4PR0501MB2195:
-X-Microsoft-Antispam-PRVS: <AM4PR0501MB21957515B9FFA1166A160387EF920@AM4PR0501MB2195.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1303;
-X-Forefront-PRVS: 0445A82F82
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: wmdl7X2MERSHCdF/MAOPEGB7n00kkEwyYmXmRP7//rUn5EaopYcMdw6g0q8nzF70VZY8M45wuR7LCnvtjFWxKu4DHcrLMcSQ1BxxXtYETJ1j5NrCTlZkwrHKFWIcX/wR5Iy6QQTY8NGNC5DbEveP0LHai7ggGoWAZDiANEi9mhSPu733Z6ay7pIqnkNnoZVGMqE1BWEa2dSAuV0j48LXp0LUnhOPflD+jZleFUeFP0z2iJZ5AaSQlUntw35FL4Wjt412tU+qMwHMB0eTRTXAE0bk0jq0ofYllQYa5Bh64dTQlqTBlkWMdDPObCoahZNUKx220H1tlu4Q4sfZzf/FYkftg68D4oK+pyX0e/CnJDkJRgOwXeAwwRfk1XZZzdru
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM4PR0501MB2785.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(366004)(376002)(346002)(396003)(136003)(39830400003)(52116002)(7696005)(5660300002)(316002)(8936002)(44832011)(508600001)(55016002)(30864003)(83380400001)(1076003)(8676002)(9686003)(66946007)(66476007)(26005)(6916009)(186003)(2906002)(86362001)(66556008)(6506007)(956004)(16526019)(309714004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: ZN28nDC0gqNedRCXKsNwvwJVYe0eKEuses3gYadN0e5kENoNNq/qfTLP63985jq6LccQ4x1uRqvTR6KdoU5lQjF52/E9YbFWuSTe2lIMazLg2QHmYoKnA2U5tv1IVC5+6cQZStjluE0onYe/07vkmOQqrhCwYABo/Mv4FXxOz0jsUDuIJ/wp1PEUd3Au7bJwy/WhmNuzyUga9/eMFZzOPxTQRNzUdww8JvSRRfzPUO/SMXwSunob07R6SXXK58ZPNjKlaSROxe4sfnbYIDePkU2k7T6/jNDx9/CvAmFUOmqulhjtbzdtLiYiEe81gtLDAJXilI5IfrWUdjH1Sha7hywnM6yDiapAyjGr/pR4mqQybTptT7J79pwYlj6Ni8r3tAdbyvlhivfnNOoVEt1+nN/25BVS7skyh08IDbsiEjt804LO2sPIJyfGMt8GERc7ZE3N+hSCrwOfyzSDD4AKRmesdakPZ6dOOrYAvTL/stvTOwIuNZuQx61lbiYru+u7
-X-OriginatorOrg: voleatech.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: a80e7d6c-7468-4e87-9fe2-08d8191f73f7
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Jun 2020 15:50:16.0770 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b82a99f6-7981-4a72-9534-4d35298f847b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: TA0pVsGRLnNICdJI0vdqwZnd4VpSuKPmxwhPztnbPabQXOyvvtv79FQKoe+MhwxAjObl+vD9UxsOvUOPY7hAOsVNHyGR/jDx8L3aMKlqHhQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM4PR0501MB2195
-Subject: [Intel-wired-lan] [PATCH 1/1] igb: add XDP support
+Content-Type: multipart/mixed; boundary="r5Pyd7+fXNt84Ff3"
+Content-Disposition: inline
+In-Reply-To: <20200625155014.6zwfoqqyhsvwu2gc@SvensMacBookAir.sven.lan>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Subject: Re: [Intel-wired-lan] [PATCH 1/1] igb: add XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,995 +75,407 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: kbuild-all@lists.01.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add XDP support to the IGB driver.
-The implementation follows the IXGBE XDP implementation
-closely and I used the following patches as basis:
 
-1. commit 924708081629 ("ixgbe: add XDP support for pass and drop actions")
-2. commit 33fdc82f0883 ("ixgbe: add support for XDP_TX action")
-3. commit ed93a3987128 ("ixgbe: tweak page counting for XDP_REDIRECT")
+--r5Pyd7+fXNt84Ff3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Due to the hardware constraints of the devices using the
-IGB driver we must share the TX queues with XDP which
-means locking the TX queue also for non XDP cases.
-This comes with a small penalty ~5% in my tests.
+Hi Sven,
 
-I ran tests on an older device to get better numbers.
-Test machine:
+Thank you for the patch! Perhaps something to improve:
 
-Intel(R) Atom(TM) CPU C2338 @ 1.74GHz (2 Cores)
-2x Intel I211
+[auto build test WARNING on v5.8-rc2]
+[also build test WARNING on next-20200625]
+[cannot apply to jkirsher-next-queue/dev-queue]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use  as documented in
+https://git-scm.com/docs/git-format-patch]
 
-Routing Original Driver Network Stack: 382 Kpps
-Routing XDP Driver Network Stack: 364 Kpps
+url:    https://github.com/0day-ci/linux/commits/Sven-Auhagen/igb-add-XDP-support/20200626-052800
+base:    48778464bb7d346b47157d21ffde2af6b2d39110
+config: mips-ip27_defconfig (attached as .config)
+compiler: mips64-linux-gcc (GCC) 9.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # save the attached .config to linux build tree
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross ARCH=mips 
 
-Routing XDP Redirect (xdp_fwd_kern): 1.48 Mpps
-XDP Drop: 1.48 Mpps
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-Using XDP we can achieve line rate forwarding even on
-on older Intel Atom CPU.
+All warnings (new ones prefixed by >>):
 
-Signed-off-by: Sven Auhagen <sven.auhagen@voleatech.de>
+>> drivers/net/ethernet/intel/igb/igb_main.c:2896:6: warning: no previous prototype for 'igb_xdp_ring_update_tail' [-Wmissing-prototypes]
+    2896 | void igb_xdp_ring_update_tail(struct igb_ring *ring)
+         |      ^~~~~~~~~~~~~~~~~~~~~~~~
+
+vim +/igb_xdp_ring_update_tail +2896 drivers/net/ethernet/intel/igb/igb_main.c
+
+  2895	
+> 2896	void igb_xdp_ring_update_tail(struct igb_ring *ring)
+  2897	{
+  2898		/* Force memory writes to complete before letting h/w know there
+  2899		 * are new descriptors to fetch.
+  2900		 */
+  2901		wmb();
+  2902		writel(ring->next_to_use, ring->tail);
+  2903	}
+  2904	
+
 ---
- drivers/net/ethernet/intel/igb/igb.h         |  87 +++-
- drivers/net/ethernet/intel/igb/igb_ethtool.c |   8 +-
- drivers/net/ethernet/intel/igb/igb_main.c    | 471 +++++++++++++++++--
- 3 files changed, 515 insertions(+), 51 deletions(-)
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---- a/drivers/net/ethernet/intel/igb/igb.h
-+++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -19,6 +19,8 @@
- #include <linux/pci.h>
- #include <linux/mdio.h>
- 
-+#include <net/xdp.h>
-+
- struct igb_adapter;
- 
- #define E1000_PCS_CFG_IGN_SD	1
-@@ -79,6 +81,12 @@
- #define IGB_I210_RX_LATENCY_100		2213
- #define IGB_I210_RX_LATENCY_1000	448
- 
-+/* XDP */
-+#define IGB_XDP_PASS		0
-+#define IGB_XDP_CONSUMED	BIT(0)
-+#define IGB_XDP_TX		BIT(1)
-+#define IGB_XDP_REDIR		BIT(2)
-+
- struct vf_data_storage {
- 	unsigned char vf_mac_addresses[ETH_ALEN];
- 	u16 vf_mc_hashes[IGB_MAX_VF_MC_ENTRIES];
-@@ -132,17 +140,62 @@
- 
- /* Supported Rx Buffer Sizes */
- #define IGB_RXBUFFER_256	256
-+#define IGB_RXBUFFER_1536	1536
- #define IGB_RXBUFFER_2048	2048
- #define IGB_RXBUFFER_3072	3072
- #define IGB_RX_HDR_LEN		IGB_RXBUFFER_256
- #define IGB_TS_HDR_LEN		16
- 
--#define IGB_SKB_PAD		(NET_SKB_PAD + NET_IP_ALIGN)
-+/* Attempt to maximize the headroom available for incoming frames.  We
-+ * use a 2K buffer for receives and need 1536/1534 to store the data for
-+ * the frame.  This leaves us with 512 bytes of room.  From that we need
-+ * to deduct the space needed for the shared info and the padding needed
-+ * to IP align the frame.
-+ *
-+ * Note: For cache line sizes 256 or larger this value is going to end
-+ *	 up negative.  In these cases we should fall back to the 3K
-+ *	 buffers.
-+ */
- #if (PAGE_SIZE < 8192)
--#define IGB_MAX_FRAME_BUILD_SKB \
--	(SKB_WITH_OVERHEAD(IGB_RXBUFFER_2048) - IGB_SKB_PAD - IGB_TS_HDR_LEN)
-+#define IGB_MAX_2K_FRAME_BUILD_SKB (IGB_RXBUFFER_1536 - NET_IP_ALIGN)
-+#define IGB_2K_TOO_SMALL_WITH_PADDING \
-+((NET_SKB_PAD + IGB_RXBUFFER_1536) > SKB_WITH_OVERHEAD(IGB_RXBUFFER_2048))
-+
-+static inline int igb_compute_pad(int rx_buf_len)
-+{
-+	int page_size, pad_size;
-+
-+	page_size = ALIGN(rx_buf_len, PAGE_SIZE / 2);
-+	pad_size = SKB_WITH_OVERHEAD(page_size) - rx_buf_len;
-+
-+	return pad_size;
-+}
-+
-+static inline int igb_skb_pad(void)
-+{
-+	int rx_buf_len;
-+
-+	/* If a 2K buffer cannot handle a standard Ethernet frame then
-+	 * optimize padding for a 3K buffer instead of a 1.5K buffer.
-+	 *
-+	 * For a 3K buffer we need to add enough padding to allow for
-+	 * tailroom due to NET_IP_ALIGN possibly shifting us out of
-+	 * cache-line alignment.
-+	 */
-+	if (IGB_2K_TOO_SMALL_WITH_PADDING)
-+		rx_buf_len = IGB_RXBUFFER_3072 + SKB_DATA_ALIGN(NET_IP_ALIGN);
-+	else
-+		rx_buf_len = IGB_RXBUFFER_1536;
-+
-+	/* if needed make room for NET_IP_ALIGN */
-+	rx_buf_len -= NET_IP_ALIGN;
-+
-+	return igb_compute_pad(rx_buf_len);
-+}
-+
-+#define IGB_SKB_PAD	igb_skb_pad()
- #else
--#define IGB_MAX_FRAME_BUILD_SKB (IGB_RXBUFFER_2048 - IGB_TS_HDR_LEN)
-+#define IGB_SKB_PAD	(NET_SKB_PAD + NET_IP_ALIGN)
- #endif
- 
- /* How many Rx Buffers do we bundle into one write to the hardware ? */
-@@ -194,13 +247,22 @@
- #define IGB_SFF_ADDRESSING_MODE		0x4
- #define IGB_SFF_8472_UNSUP		0x00
- 
-+enum igb_tx_buf_type {
-+	IGB_TYPE_SKB = 0,
-+	IGB_TYPE_XDP,
-+};
-+
- /* wrapper around a pointer to a socket buffer,
-  * so a DMA handle can be stored along with the buffer
-  */
- struct igb_tx_buffer {
- 	union e1000_adv_tx_desc *next_to_watch;
- 	unsigned long time_stamp;
--	struct sk_buff *skb;
-+	enum igb_tx_buf_type type;
-+	union {
-+		struct sk_buff *skb;
-+		struct xdp_frame *xdpf;
-+	};
- 	unsigned int bytecount;
- 	u16 gso_segs;
- 	__be16 protocol;
-@@ -248,6 +310,7 @@
- struct igb_ring {
- 	struct igb_q_vector *q_vector;	/* backlink to q_vector */
- 	struct net_device *netdev;	/* back pointer to net_device */
-+	struct bpf_prog *xdp_prog;
- 	struct device *dev;		/* device pointer for dma mapping */
- 	union {				/* array of buffer info structs */
- 		struct igb_tx_buffer *tx_buffer_info;
-@@ -288,6 +351,9 @@
- 			struct u64_stats_sync rx_syncp;
- 		};
- 	};
-+	/* lock for TX */
-+	spinlock_t tx_lock;
-+	struct xdp_rxq_info xdp_rxq;
- } ____cacheline_internodealigned_in_smp;
- 
- struct igb_q_vector {
-@@ -339,7 +405,7 @@
- 		return IGB_RXBUFFER_3072;
- 
- 	if (ring_uses_build_skb(ring))
--		return IGB_MAX_FRAME_BUILD_SKB + IGB_TS_HDR_LEN;
-+		return IGB_MAX_2K_FRAME_BUILD_SKB;
- #endif
- 	return IGB_RXBUFFER_2048;
- }
-@@ -467,6 +533,7 @@
- 	unsigned long active_vlans[BITS_TO_LONGS(VLAN_N_VID)];
- 
- 	struct net_device *netdev;
-+	struct bpf_prog *xdp_prog;
- 
- 	unsigned long state;
- 	unsigned int flags;
-@@ -644,6 +711,9 @@
- extern char igb_driver_name[];
- extern char igb_driver_version[];
- 
-+int igb_xmit_xdp_ring(struct igb_adapter *adapter,
-+		      struct igb_ring *ring,
-+		      struct xdp_frame *xdpf);
- int igb_open(struct net_device *netdev);
- int igb_close(struct net_device *netdev);
- int igb_up(struct igb_adapter *);
-@@ -654,7 +724,7 @@
- void igb_write_rss_indir_tbl(struct igb_adapter *);
- int igb_set_spd_dplx(struct igb_adapter *, u32, u8);
- int igb_setup_tx_resources(struct igb_ring *);
--int igb_setup_rx_resources(struct igb_ring *);
-+int igb_setup_rx_resources(struct igb_ring *, struct igb_adapter *);
- void igb_free_tx_resources(struct igb_ring *);
- void igb_free_rx_resources(struct igb_ring *);
- void igb_configure_tx_ring(struct igb_adapter *, struct igb_ring *);
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -962,8 +962,12 @@
- 			memcpy(&temp_ring[i], adapter->rx_ring[i],
- 			       sizeof(struct igb_ring));
- 
-+			/* Clear copied XDP RX-queue info */
-+			memset(&temp_ring[i].xdp_rxq, 0,
-+			       sizeof(temp_ring[i].xdp_rxq));
-+
- 			temp_ring[i].count = new_rx_count;
--			err = igb_setup_rx_resources(&temp_ring[i]);
-+			err = igb_setup_rx_resources(&temp_ring[i], adapter);
- 			if (err) {
- 				while (i) {
- 					i--;
-@@ -1578,7 +1582,7 @@
- 	rx_ring->netdev = adapter->netdev;
- 	rx_ring->reg_idx = adapter->vfs_allocated_count;
- 
--	if (igb_setup_rx_resources(rx_ring)) {
-+	if (igb_setup_rx_resources(rx_ring, adapter)) {
- 		ret_val = 3;
- 		goto err_nomem;
- 	}
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -30,6 +30,8 @@
- #include <linux/if_ether.h>
- #include <linux/aer.h>
- #include <linux/prefetch.h>
-+#include <linux/bpf.h>
-+#include <linux/bpf_trace.h>
- #include <linux/pm_runtime.h>
- #include <linux/etherdevice.h>
- #ifdef CONFIG_IGB_DCA
-@@ -2834,6 +2836,147 @@
- 	}
- }
- 
-+static int igb_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
-+{
-+	int i, frame_size = dev->mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
-+	struct igb_adapter *adapter = netdev_priv(dev);
-+	struct bpf_prog *old_prog;
-+	bool running = netif_running(dev);
-+	bool need_reset;
-+
-+	/* verify igb ring attributes are sufficient for XDP */
-+	for (i = 0; i < adapter->num_rx_queues; i++) {
-+		struct igb_ring *ring = adapter->rx_ring[i];
-+
-+		if (frame_size > igb_rx_bufsz(ring))
-+			return -EINVAL;
-+	}
-+
-+	old_prog = xchg(&adapter->xdp_prog, prog);
-+	need_reset = (!!prog != !!old_prog);
-+
-+	/* device is up and bpf is added/removed, must setup the RX queues */
-+	if (need_reset && running) {
-+		igb_close(dev);
-+	} else {
-+		for (i = 0; i < adapter->num_rx_queues; i++)
-+			(void)xchg(&adapter->rx_ring[i]->xdp_prog,
-+			    adapter->xdp_prog);
-+	}
-+
-+	if (old_prog)
-+		bpf_prog_put(old_prog);
-+
-+	/* bpf is just replaced, RXQ and MTU are already setup */
-+	if (!need_reset)
-+		return 0;
-+
-+	if (running)
-+		igb_open(dev);
-+
-+	return 0;
-+}
-+
-+static int igb_xdp(struct net_device *dev, struct netdev_bpf *xdp)
-+{
-+	struct igb_adapter *adapter = netdev_priv(dev);
-+
-+	switch (xdp->command) {
-+	case XDP_SETUP_PROG:
-+		return igb_xdp_setup(dev, xdp->prog);
-+	case XDP_QUERY_PROG:
-+		xdp->prog_id = adapter->xdp_prog ?
-+			adapter->xdp_prog->aux->id : 0;
-+		return 0;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+void igb_xdp_ring_update_tail(struct igb_ring *ring)
-+{
-+	/* Force memory writes to complete before letting h/w know there
-+	 * are new descriptors to fetch.
-+	 */
-+	wmb();
-+	writel(ring->next_to_use, ring->tail);
-+}
-+
-+static inline struct igb_ring *igb_xdp_tx_queue_mapping(struct igb_adapter *adapter)
-+{
-+	unsigned int r_idx = smp_processor_id();
-+
-+	if (r_idx >= adapter->num_tx_queues)
-+		r_idx = r_idx % adapter->num_tx_queues;
-+
-+	return adapter->tx_ring[r_idx];
-+}
-+
-+static int igb_xdp_xmit_back(struct igb_adapter *adapter, struct xdp_buff *xdp)
-+{
-+	struct igb_ring *tx_ring;
-+	struct xdp_frame *xdpf = xdp_convert_buff_to_frame(xdp);
-+	u32 ret;
-+
-+	if (unlikely(!xdpf))
-+		return IGB_XDP_CONSUMED;
-+
-+	/* During program transitions its possible adapter->xdp_prog is assigned
-+	 * but ring has not been configured yet. In this case simply abort xmit.
-+	 */
-+	tx_ring = adapter->xdp_prog ? igb_xdp_tx_queue_mapping(adapter) : NULL;
-+	if (unlikely(!tx_ring))
-+		return -ENXIO;
-+
-+	spin_lock(&tx_ring->tx_lock);
-+	ret = igb_xmit_xdp_ring(adapter, tx_ring, xdpf);
-+	spin_unlock(&tx_ring->tx_lock);
-+
-+	return ret;
-+}
-+
-+static int igb_xdp_xmit(struct net_device *dev, int n,
-+			struct xdp_frame **frames, u32 flags)
-+{
-+	struct igb_adapter *adapter = netdev_priv(dev);
-+	struct igb_ring *tx_ring;
-+	int drops = 0;
-+	int i;
-+
-+	if (unlikely(test_bit(__IGB_DOWN, &adapter->state)))
-+		return -ENETDOWN;
-+
-+	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
-+		return -EINVAL;
-+
-+	/* During program transitions its possible adapter->xdp_prog is assigned
-+	 * but ring has not been configured yet. In this case simply abort xmit.
-+	 */
-+	tx_ring = adapter->xdp_prog ? igb_xdp_tx_queue_mapping(adapter) : NULL;
-+	if (unlikely(!tx_ring))
-+		return -ENXIO;
-+
-+	spin_lock(&tx_ring->tx_lock);
-+
-+	for (i = 0; i < n; i++) {
-+		struct xdp_frame *xdpf = frames[i];
-+		int err;
-+
-+		err = igb_xmit_xdp_ring(adapter, tx_ring, xdpf);
-+		if (err != IGB_XDP_TX) {
-+			xdp_return_frame_rx_napi(xdpf);
-+			drops++;
-+		}
-+	}
-+
-+	spin_unlock(&tx_ring->tx_lock);
-+
-+	if (unlikely(flags & XDP_XMIT_FLUSH))
-+		igb_xdp_ring_update_tail(tx_ring);
-+
-+	return n - drops;
-+}
-+
- static const struct net_device_ops igb_netdev_ops = {
- 	.ndo_open		= igb_open,
- 	.ndo_stop		= igb_close,
-@@ -2858,6 +3001,8 @@
- 	.ndo_fdb_add		= igb_ndo_fdb_add,
- 	.ndo_features_check	= igb_features_check,
- 	.ndo_setup_tc		= igb_setup_tc,
-+	.ndo_bpf		= igb_xdp,
-+	.ndo_xdp_xmit		= igb_xdp_xmit,
- };
- 
- /**
-@@ -4060,6 +4205,8 @@
- 	tx_ring->next_to_use = 0;
- 	tx_ring->next_to_clean = 0;
- 
-+	spin_lock_init(&tx_ring->tx_lock);
-+
- 	return 0;
- 
- err:
-@@ -4186,7 +4333,7 @@
-  *
-  *  Returns 0 on success, negative on failure
-  **/
--int igb_setup_rx_resources(struct igb_ring *rx_ring)
-+int igb_setup_rx_resources(struct igb_ring *rx_ring, struct igb_adapter *adapter)
- {
- 	struct device *dev = rx_ring->dev;
- 	int size;
-@@ -4210,6 +4357,13 @@
- 	rx_ring->next_to_clean = 0;
- 	rx_ring->next_to_use = 0;
- 
-+	rx_ring->xdp_prog = adapter->xdp_prog;
-+
-+	/* XDP RX-queue info */
-+	if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
-+			     rx_ring->queue_index) < 0)
-+		goto err;
-+
- 	return 0;
- 
- err:
-@@ -4232,7 +4386,7 @@
- 	int i, err = 0;
- 
- 	for (i = 0; i < adapter->num_rx_queues; i++) {
--		err = igb_setup_rx_resources(adapter->rx_ring[i]);
-+		err = igb_setup_rx_resources(adapter->rx_ring[i], adapter);
- 		if (err) {
- 			dev_err(&pdev->dev,
- 				"Allocation for Rx Queue %u failed\n", i);
-@@ -4514,6 +4668,10 @@
- 	int reg_idx = ring->reg_idx;
- 	u32 rxdctl = 0;
- 
-+	xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
-+	WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
-+					   MEM_TYPE_PAGE_SHARED, NULL));
-+
- 	/* disable the queue */
- 	wr32(E1000_RXDCTL(reg_idx), 0);
- 
-@@ -4565,7 +4723,7 @@
- 	set_ring_build_skb_enabled(rx_ring);
- 
- #if (PAGE_SIZE < 8192)
--	if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
-+	if (adapter->max_frame_size <= IGB_MAX_2K_FRAME_BUILD_SKB)
- 		return;
- 
- 	set_ring_uses_large_buffer(rx_ring);
-@@ -4718,6 +4876,8 @@
- {
- 	igb_clean_rx_ring(rx_ring);
- 
-+	rx_ring->xdp_prog = NULL;
-+	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
- 	vfree(rx_ring->rx_buffer_info);
- 	rx_ring->rx_buffer_info = NULL;
- 
-@@ -5063,8 +5223,8 @@
- 
- #if (PAGE_SIZE < 8192)
- 	if (!adapter->vfs_allocated_count) {
--		if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
--			rlpml = IGB_MAX_FRAME_BUILD_SKB;
-+		if (adapter->max_frame_size <= IGB_MAX_2K_FRAME_BUILD_SKB)
-+			rlpml = IGB_MAX_2K_FRAME_BUILD_SKB;
- 	}
- #endif
- 	wr32(E1000_RLPML, rlpml);
-@@ -5086,8 +5246,8 @@
- 	/* enable Rx jumbo frames, restrict as needed to support build_skb */
- 	vmolr &= ~E1000_VMOLR_RLPML_MASK;
- #if (PAGE_SIZE < 8192)
--	if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
--		vmolr |= IGB_MAX_FRAME_BUILD_SKB;
-+	if (adapter->max_frame_size <= IGB_MAX_2K_FRAME_BUILD_SKB)
-+		vmolr |= IGB_MAX_2K_FRAME_BUILD_SKB;
- 	else
- #endif
- 		vmolr |= MAX_JUMBO_FRAME_SIZE;
-@@ -6087,6 +6247,80 @@
- 	return -1;
- }
- 
-+int igb_xmit_xdp_ring(struct igb_adapter *adapter,
-+		      struct igb_ring *tx_ring,
-+		      struct xdp_frame *xdpf)
-+{
-+	struct igb_tx_buffer *tx_buffer;
-+	union e1000_adv_tx_desc *tx_desc;
-+	u32 len, cmd_type, olinfo_status;
-+	dma_addr_t dma;
-+	u16 i;
-+
-+	len = xdpf->len;
-+
-+	if (unlikely(!igb_desc_unused(tx_ring)))
-+		return IGB_XDP_CONSUMED;
-+
-+	dma = dma_map_single(tx_ring->dev, xdpf->data, len, DMA_TO_DEVICE);
-+	if (dma_mapping_error(tx_ring->dev, dma))
-+		return IGB_XDP_CONSUMED;
-+
-+	/* record the location of the first descriptor for this packet */
-+	tx_buffer = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-+	tx_buffer->bytecount = len;
-+	tx_buffer->gso_segs = 1;
-+	tx_buffer->protocol = 0;
-+
-+	i = tx_ring->next_to_use;
-+	tx_desc = IGB_TX_DESC(tx_ring, i);
-+
-+	dma_unmap_len_set(tx_buffer, len, len);
-+	dma_unmap_addr_set(tx_buffer, dma, dma);
-+	tx_buffer->type = IGB_TYPE_XDP;
-+	tx_buffer->xdpf = xdpf;
-+
-+	tx_desc->read.buffer_addr = cpu_to_le64(dma);
-+
-+	/* put descriptor type bits */
-+	cmd_type = E1000_ADVTXD_DTYP_DATA |
-+		       E1000_ADVTXD_DCMD_DEXT |
-+		       E1000_ADVTXD_DCMD_IFCS;
-+	cmd_type |= len | IGB_TXD_DCMD;
-+	tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-+
-+	olinfo_status = cpu_to_le32(len << E1000_ADVTXD_PAYLEN_SHIFT);
-+	/* 82575 requires a unique index per ring */
-+	if (test_bit(IGB_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
-+		olinfo_status |= tx_ring->reg_idx << 4;
-+
-+	tx_desc->read.olinfo_status = olinfo_status;
-+
-+	netdev_tx_sent_queue(txring_txq(tx_ring), tx_buffer->bytecount);
-+
-+	/* set the timestamp */
-+	tx_buffer->time_stamp = jiffies;
-+
-+	/* Avoid any potential race with xdp_xmit and cleanup */
-+	smp_wmb();
-+
-+	/* set next_to_watch value indicating a packet is present */
-+	i++;
-+	if (i == tx_ring->count)
-+		i = 0;
-+
-+	tx_buffer->next_to_watch = tx_desc;
-+	tx_ring->next_to_use = i;
-+
-+	/* Make sure there is space in the ring for the next send. */
-+	igb_maybe_stop_tx(tx_ring, DESC_NEEDED);
-+
-+	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more())
-+		writel(i, tx_ring->tail);
-+
-+	return IGB_XDP_TX;
-+}
-+
- netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 				struct igb_ring *tx_ring)
- {
-@@ -6098,6 +6332,8 @@
- 	__be16 protocol = vlan_get_protocol(skb);
- 	u8 hdr_len = 0;
- 
-+	spin_lock_bh(&tx_ring->tx_lock);
-+
- 	/* need: 1 descriptor per page * PAGE_SIZE/IGB_MAX_DATA_PER_TXD,
- 	 *       + 1 desc for skb_headlen/IGB_MAX_DATA_PER_TXD,
- 	 *       + 2 desc gap to keep tail from touching head,
-@@ -6110,11 +6346,13 @@
- 
- 	if (igb_maybe_stop_tx(tx_ring, count + 3)) {
- 		/* this is a hard error */
-+		spin_unlock_bh(&tx_ring->tx_lock);
- 		return NETDEV_TX_BUSY;
- 	}
- 
- 	/* record the location of the first descriptor for this packet */
- 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-+	first->type = IGB_TYPE_SKB;
- 	first->skb = skb;
- 	first->bytecount = skb->len;
- 	first->gso_segs = 1;
-@@ -6155,6 +6393,8 @@
- 	if (igb_tx_map(tx_ring, first, hdr_len))
- 		goto cleanup_tx_tstamp;
- 
-+	spin_unlock_bh(&tx_ring->tx_lock);
-+
- 	return NETDEV_TX_OK;
- 
- out_drop:
-@@ -6171,6 +6411,8 @@
- 		clear_bit_unlock(__IGB_PTP_TX_IN_PROGRESS, &adapter->state);
- 	}
- 
-+	spin_unlock_bh(&tx_ring->tx_lock);
-+
- 	return NETDEV_TX_OK;
- }
- 
-@@ -6257,6 +6499,21 @@
- 	struct igb_adapter *adapter = netdev_priv(netdev);
- 	int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
- 
-+	if (adapter->xdp_prog) {
-+		int new_frame_size = new_mtu + ETH_HLEN + ETH_FCS_LEN +
-+				     VLAN_HLEN;
-+		int i;
-+
-+		for (i = 0; i < adapter->num_rx_queues; i++) {
-+			struct igb_ring *ring = adapter->rx_ring[i];
-+
-+			if (new_frame_size > igb_rx_bufsz(ring)) {
-+				netdev_warn(adapter->netdev, "Requested MTU size is not supported with XDP\n");
-+				return -EINVAL;
-+			}
-+		}
-+	}
-+
- 	/* adjust max frame to be at least the size of a standard frame */
- 	if (max_frame < (ETH_FRAME_LEN + ETH_FCS_LEN))
- 		max_frame = ETH_FRAME_LEN + ETH_FCS_LEN;
-@@ -7784,6 +8041,8 @@
- 	if (test_bit(__IGB_DOWN, &adapter->state))
- 		return true;
- 
-+	spin_lock(&tx_ring->tx_lock);
-+
- 	tx_buffer = &tx_ring->tx_buffer_info[i];
- 	tx_desc = IGB_TX_DESC(tx_ring, i);
- 	i -= tx_ring->count;
-@@ -7810,7 +8069,10 @@
- 		total_packets += tx_buffer->gso_segs;
- 
- 		/* free the skb */
--		napi_consume_skb(tx_buffer->skb, napi_budget);
-+		if (tx_buffer->type == IGB_TYPE_XDP)
-+			xdp_return_frame(tx_buffer->xdpf);
-+		else
-+			napi_consume_skb(tx_buffer->skb, napi_budget);
- 
- 		/* unmap skb header data */
- 		dma_unmap_single(tx_ring->dev,
-@@ -7863,6 +8125,9 @@
- 				  total_packets, total_bytes);
- 	i += tx_ring->count;
- 	tx_ring->next_to_clean = i;
-+
-+	spin_unlock(&tx_ring->tx_lock);
-+
- 	u64_stats_update_begin(&tx_ring->tx_syncp);
- 	tx_ring->tx_stats.bytes += total_bytes;
- 	tx_ring->tx_stats.packets += total_packets;
-@@ -7994,8 +8259,8 @@
- 	 * the pagecnt_bias and page count so that we fully restock the
- 	 * number of references the driver holds.
- 	 */
--	if (unlikely(!pagecnt_bias)) {
--		page_ref_add(page, USHRT_MAX);
-+	if (unlikely(pagecnt_bias == 1)) {
-+		page_ref_add(page, USHRT_MAX - 1);
- 		rx_buffer->pagecnt_bias = USHRT_MAX;
- 	}
- 
-@@ -8034,22 +8299,23 @@
- 
- static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
- 					 struct igb_rx_buffer *rx_buffer,
--					 union e1000_adv_rx_desc *rx_desc,
--					 unsigned int size)
-+					 struct xdp_buff *xdp,
-+					 union e1000_adv_rx_desc *rx_desc)
- {
--	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset;
-+	unsigned int size = xdp->data_end - xdp->data;
- #if (PAGE_SIZE < 8192)
- 	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
- #else
--	unsigned int truesize = SKB_DATA_ALIGN(size);
-+	unsigned int truesize = SKB_DATA_ALIGN(xdp->data_end -
-+					       xdp->data_hard_start);
- #endif
- 	unsigned int headlen;
- 	struct sk_buff *skb;
- 
- 	/* prefetch first cache line of first page */
--	prefetch(va);
-+	prefetch(xdp->data);
- #if L1_CACHE_BYTES < 128
--	prefetch(va + L1_CACHE_BYTES);
-+	prefetch(xdp->data + L1_CACHE_BYTES);
- #endif
- 
- 	/* allocate a skb to store the frags */
-@@ -8058,24 +8324,24 @@
- 		return NULL;
- 
- 	if (unlikely(igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP))) {
--		igb_ptp_rx_pktstamp(rx_ring->q_vector, va, skb);
--		va += IGB_TS_HDR_LEN;
-+		igb_ptp_rx_pktstamp(rx_ring->q_vector, xdp->data, skb);
-+		xdp->data += IGB_TS_HDR_LEN;
- 		size -= IGB_TS_HDR_LEN;
- 	}
- 
- 	/* Determine available headroom for copy */
- 	headlen = size;
- 	if (headlen > IGB_RX_HDR_LEN)
--		headlen = eth_get_headlen(skb->dev, va, IGB_RX_HDR_LEN);
-+		headlen = eth_get_headlen(skb->dev, xdp->data, IGB_RX_HDR_LEN);
- 
- 	/* align pull length to size of long to optimize memcpy performance */
--	memcpy(__skb_put(skb, headlen), va, ALIGN(headlen, sizeof(long)));
-+	memcpy(__skb_put(skb, headlen), xdp->data, ALIGN(headlen, sizeof(long)));
- 
- 	/* update all of the pointers */
- 	size -= headlen;
- 	if (size) {
- 		skb_add_rx_frag(skb, 0, rx_buffer->page,
--				(va + headlen) - page_address(rx_buffer->page),
-+				(xdp->data + headlen) - page_address(rx_buffer->page),
- 				size, truesize);
- #if (PAGE_SIZE < 8192)
- 		rx_buffer->page_offset ^= truesize;
-@@ -8091,32 +8357,32 @@
- 
- static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
- 				     struct igb_rx_buffer *rx_buffer,
--				     union e1000_adv_rx_desc *rx_desc,
--				     unsigned int size)
-+				     struct xdp_buff *xdp,
-+				     union e1000_adv_rx_desc *rx_desc)
- {
--	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset;
- #if (PAGE_SIZE < 8192)
- 	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
- #else
- 	unsigned int truesize = SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) +
--				SKB_DATA_ALIGN(IGB_SKB_PAD + size);
-+				SKB_DATA_ALIGN(xdp->data_end -
-+					       xdp->data_hard_start);
- #endif
- 	struct sk_buff *skb;
- 
- 	/* prefetch first cache line of first page */
--	prefetch(va);
-+	prefetch(xdp->data_meta);
- #if L1_CACHE_BYTES < 128
--	prefetch(va + L1_CACHE_BYTES);
-+	prefetch(xdp->data_meta + L1_CACHE_BYTES);
- #endif
- 
- 	/* build an skb around the page buffer */
--	skb = build_skb(va - IGB_SKB_PAD, truesize);
-+	skb = build_skb(xdp->data_hard_start, truesize);
- 	if (unlikely(!skb))
- 		return NULL;
- 
- 	/* update pointers within the skb to store the data */
--	skb_reserve(skb, IGB_SKB_PAD);
--	__skb_put(skb, size);
-+	skb_reserve(skb, xdp->data - xdp->data_hard_start);
-+	__skb_put(skb, xdp->data_end - xdp->data);
- 
- 	/* pull timestamp out of packet data */
- 	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-@@ -8134,6 +8400,79 @@
- 	return skb;
- }
- 
-+static struct sk_buff *igb_run_xdp(struct igb_adapter *adapter,
-+				   struct igb_ring *rx_ring,
-+				   struct xdp_buff *xdp)
-+{
-+	int err, result = IGB_XDP_PASS;
-+	struct bpf_prog *xdp_prog;
-+	u32 act;
-+
-+	rcu_read_lock();
-+	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
-+
-+	if (!xdp_prog)
-+		goto xdp_out;
-+
-+	prefetchw(xdp->data_hard_start); /* xdp_frame write */
-+
-+	act = bpf_prog_run_xdp(xdp_prog, xdp);
-+	switch (act) {
-+	case XDP_PASS:
-+		break;
-+	case XDP_TX:
-+		result = igb_xdp_xmit_back(adapter, xdp);
-+		break;
-+	case XDP_REDIRECT:
-+		err = xdp_do_redirect(adapter->netdev, xdp, xdp_prog);
-+		if (!err)
-+			result = IGB_XDP_REDIR;
-+		else
-+			result = IGB_XDP_CONSUMED;
-+		break;
-+	default:
-+		bpf_warn_invalid_xdp_action(act);
-+		/* fallthrough */
-+	case XDP_ABORTED:
-+		trace_xdp_exception(rx_ring->netdev, xdp_prog, act);
-+		/* fallthrough -- handle aborts by dropping packet */
-+	case XDP_DROP:
-+		result = IGB_XDP_CONSUMED;
-+		break;
-+	}
-+xdp_out:
-+	rcu_read_unlock();
-+	return ERR_PTR(-result);
-+}
-+
-+static unsigned int igb_rx_frame_truesize(struct igb_ring *rx_ring,
-+					  unsigned int size)
-+{
-+	unsigned int truesize;
-+
-+#if (PAGE_SIZE < 8192)
-+	truesize = igb_rx_pg_size(rx_ring) / 2; /* Must be power-of-2 */
-+#else
-+	truesize = ring_uses_build_skb(rx_ring) ?
-+		SKB_DATA_ALIGN(IGB_SKB_PAD + size) +
-+		SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
-+		SKB_DATA_ALIGN(size);
-+#endif
-+	return truesize;
-+}
-+
-+static void igb_rx_buffer_flip(struct igb_ring *rx_ring,
-+			       struct igb_rx_buffer *rx_buffer,
-+			       unsigned int size)
-+{
-+	unsigned int truesize = igb_rx_frame_truesize(rx_ring, size);
-+#if (PAGE_SIZE < 8192)
-+	rx_buffer->page_offset ^= truesize;
-+#else
-+	rx_buffer->page_offset += truesize;
-+#endif
-+}
-+
- static inline void igb_rx_checksum(struct igb_ring *ring,
- 				   union e1000_adv_rx_desc *rx_desc,
- 				   struct sk_buff *skb)
-@@ -8230,6 +8569,10 @@
- 				union e1000_adv_rx_desc *rx_desc,
- 				struct sk_buff *skb)
- {
-+	/* XDP packets use error pointer so abort at this point */
-+	if (IS_ERR(skb))
-+		return true;
-+
- 	if (unlikely((igb_test_staterr(rx_desc,
- 				       E1000_RXDEXT_ERR_FRAME_ERR_MASK)))) {
- 		struct net_device *netdev = rx_ring->netdev;
-@@ -8288,6 +8631,11 @@
- 	skb->protocol = eth_type_trans(skb, rx_ring->netdev);
- }
- 
-+static inline unsigned int igb_rx_offset(struct igb_ring *rx_ring)
-+{
-+	return ring_uses_build_skb(rx_ring) ? IGB_SKB_PAD : 0;
-+}
-+
- static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
- 					       const unsigned int size)
- {
-@@ -8332,9 +8680,19 @@
- static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- {
- 	struct igb_ring *rx_ring = q_vector->rx.ring;
-+	struct igb_adapter *adapter = q_vector->adapter;
- 	struct sk_buff *skb = rx_ring->skb;
- 	unsigned int total_bytes = 0, total_packets = 0;
-+	unsigned int xdp_xmit = 0;
- 	u16 cleaned_count = igb_desc_unused(rx_ring);
-+	struct xdp_buff xdp;
-+
-+	xdp.rxq = &rx_ring->xdp_rxq;
-+
-+	/* Frame size depend on rx_ring setup when PAGE_SIZE=4K */
-+#if (PAGE_SIZE < 8192)
-+	xdp.frame_sz = igb_rx_frame_truesize(rx_ring, 0);
-+#endif
- 
- 	while (likely(total_packets < budget)) {
- 		union e1000_adv_rx_desc *rx_desc;
-@@ -8361,13 +8719,38 @@
- 		rx_buffer = igb_get_rx_buffer(rx_ring, size);
- 
- 		/* retrieve a buffer from the ring */
--		if (skb)
-+		if (!skb) {
-+			xdp.data = page_address(rx_buffer->page) +
-+				   rx_buffer->page_offset;
-+			xdp.data_meta = xdp.data;
-+			xdp.data_hard_start = xdp.data -
-+					      igb_rx_offset(rx_ring);
-+			xdp.data_end = xdp.data + size;
-+#if (PAGE_SIZE > 4096)
-+			/* At larger PAGE_SIZE, frame_sz depend on len size */
-+			xdp.frame_sz = igb_rx_frame_truesize(rx_ring, size);
-+#endif
-+			skb = igb_run_xdp(adapter, rx_ring, &xdp);
-+		}
-+
-+		if (IS_ERR(skb)) {
-+			unsigned int xdp_res = -PTR_ERR(skb);
-+
-+			if (xdp_res & (IGB_XDP_TX | IGB_XDP_REDIR)) {
-+				xdp_xmit |= xdp_res;
-+				igb_rx_buffer_flip(rx_ring, rx_buffer, size);
-+			} else {
-+				rx_buffer->pagecnt_bias++;
-+			}
-+			total_packets++;
-+			total_bytes += size;
-+		} else if (skb)
- 			igb_add_rx_frag(rx_ring, rx_buffer, skb, size);
- 		else if (ring_uses_build_skb(rx_ring))
--			skb = igb_build_skb(rx_ring, rx_buffer, rx_desc, size);
-+			skb = igb_build_skb(rx_ring, rx_buffer, &xdp, rx_desc);
- 		else
- 			skb = igb_construct_skb(rx_ring, rx_buffer,
--						rx_desc, size);
-+						&xdp, rx_desc);
- 
- 		/* exit if we failed to retrieve a buffer */
- 		if (!skb) {
-@@ -8407,6 +8790,15 @@
- 	/* place incomplete frames back on ring for completion */
- 	rx_ring->skb = skb;
- 
-+	if (xdp_xmit & IGB_XDP_REDIR)
-+		xdp_do_flush_map();
-+
-+	if (xdp_xmit & IGB_XDP_TX) {
-+		struct igb_ring *tx_ring = igb_xdp_tx_queue_mapping(adapter);
-+
-+		igb_xdp_ring_update_tail(tx_ring);
-+	}
-+
- 	u64_stats_update_begin(&rx_ring->rx_syncp);
- 	rx_ring->rx_stats.packets += total_packets;
- 	rx_ring->rx_stats.bytes += total_bytes;
-@@ -8420,11 +8812,6 @@
- 	return total_packets;
- }
- 
--static inline unsigned int igb_rx_offset(struct igb_ring *rx_ring)
--{
--	return ring_uses_build_skb(rx_ring) ? IGB_SKB_PAD : 0;
--}
--
- static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
- 				  struct igb_rx_buffer *bi)
- {
-@@ -8461,7 +8848,8 @@
- 	bi->dma = dma;
- 	bi->page = page;
- 	bi->page_offset = igb_rx_offset(rx_ring);
--	bi->pagecnt_bias = 1;
-+	page_ref_add(page, USHRT_MAX - 1);
-+	bi->pagecnt_bias = USHRT_MAX;
- 
- 	return true;
- }
--- 
-2.20.1
+--r5Pyd7+fXNt84Ff3
+Content-Type: application/gzip
+Content-Disposition: attachment; filename=".config.gz"
+Content-Transfer-Encoding: base64
+
+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
+ykotQHoWAQA=
+
+--r5Pyd7+fXNt84Ff3
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--r5Pyd7+fXNt84Ff3--
