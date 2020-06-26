@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8611320AAA0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jun 2020 05:16:43 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1732220ABA8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jun 2020 07:02:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 1883387FFF;
-	Fri, 26 Jun 2020 03:16:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8B7602010E;
+	Fri, 26 Jun 2020 05:02:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gwshct4uGpHu; Fri, 26 Jun 2020 03:16:41 +0000 (UTC)
+	with ESMTP id a6NU8FABYFxX; Fri, 26 Jun 2020 05:02:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9DF1788007;
-	Fri, 26 Jun 2020 03:16:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 025EB2042D;
+	Fri, 26 Jun 2020 05:02:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1D3801BF9BD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jun 2020 03:16:38 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B13F41BF5A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jun 2020 05:02:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1659285EA8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jun 2020 03:16:38 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AC77C8567A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jun 2020 05:02:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ED7va+uFpUEE for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jun 2020 03:16:35 +0000 (UTC)
+ with ESMTP id ybxk6rkPirII for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jun 2020 05:02:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B2AD885D26
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jun 2020 03:16:35 +0000 (UTC)
-IronPort-SDR: EXZ0iOSfggP98yOJtcwIa03MFh+uMre2HA9Ga98jucJEdRxCyj1xnujEFw98JqNcgfDo6I2dm7
- injfk6sVPHXA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9663"; a="124822655"
-X-IronPort-AV: E=Sophos;i="5.75,282,1589266800"; d="scan'208";a="124822655"
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 938AD855F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jun 2020 05:02:32 +0000 (UTC)
+IronPort-SDR: +s69QTKO9e1qD/FKc42+GDtT8UHXHLWoBtOm94kTNZIFoCvrIv1V5MjkcvzSD5NGYqU8T4BcK+
+ r4F50LjVdSPQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9663"; a="144285968"
+X-IronPort-AV: E=Sophos;i="5.75,282,1589266800"; d="scan'208";a="144285968"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jun 2020 20:16:35 -0700
-IronPort-SDR: KqsR467V1QGOmHb2MlJMmhBo5QJGikPEuQpJUjEKnGrp5ZFXyC4HcFxcwUiY/ImnDnKJ1nE3fu
- +iSMqVfH6Etg==
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Jun 2020 22:02:31 -0700
+IronPort-SDR: rX0B9N+mrnclwJJvJgyIs9l1A4QnqT/wOefc5oltasUQqMUF+eEpmUp+4wlNj1eABQUNrwkLh3
+ 710z/Y1r8B6Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,282,1589266800"; d="scan'208";a="265522589"
+X-IronPort-AV: E=Sophos;i="5.75,282,1589266800"; d="scan'208";a="280046808"
 Received: from jtkirshe-desk1.jf.intel.com ([134.134.177.86])
- by fmsmga008.fm.intel.com with ESMTP; 25 Jun 2020 20:16:35 -0700
+ by orsmga006.jf.intel.com with ESMTP; 25 Jun 2020 22:02:31 -0700
 From: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 25 Jun 2020 20:16:33 -0700
-Message-Id: <20200626031633.1217160-1-jeffrey.t.kirsher@intel.com>
+Date: Thu, 25 Jun 2020 22:02:28 -0700
+Message-Id: <20200626050228.1287009-1-jeffrey.t.kirsher@intel.com>
 X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [next-queue v2] igb: add XDP support
+Subject: [Intel-wired-lan] [next-queue] ixgbe: Add ethtool support to enable
+ 2.5 and 5.0 Gbps support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,1003 +66,388 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Arthur F Mclean <arthur.f.mclean@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sven Auhagen <sven.auhagen@voleatech.de>
+Update the ixgbe ethtool interface to support 2.5 and 5 GbE support by
+updated the getting and setting advertised and supported speed modes.
 
-Add XDP support to the IGB driver.
-The implementation follows the IXGBE XDP implementation
-closely and I used the following patches as basis:
-
-1. commit 924708081629 ("ixgbe: add XDP support for pass and drop actions")
-2. commit 33fdc82f0883 ("ixgbe: add support for XDP_TX action")
-3. commit ed93a3987128 ("ixgbe: tweak page counting for XDP_REDIRECT")
-
-Due to the hardware constraints of the devices using the
-IGB driver we must share the TX queues with XDP which
-means locking the TX queue also for non XDP cases.
-This comes with a small penalty ~5% in my tests.
-
-I ran tests on an older device to get better numbers.
-Test machine:
-
-Intel(R) Atom(TM) CPU C2338 @ 1.74GHz (2 Cores)
-2x Intel I211
-
-Routing Original Driver Network Stack: 382 Kpps
-Routing XDP Driver Network Stack: 364 Kpps
-
-Routing XDP Redirect (xdp_fwd_kern): 1.48 Mpps
-XDP Drop: 1.48 Mpps
-
-Using XDP we can achieve line rate forwarding even on
-on older Intel Atom CPU.
-
-Signed-off-by: Sven Auhagen <sven.auhagen@voleatech.de>
-Reported-by: kernel test robot <lkp@intel.com>
+CC: Arthur F Mclean <arthur.f.mclean@intel.com>
+CC: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 ---
-v2: original did not apply to my dev-queue branch, so fixed the
-    conflicts in the patch
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 234 ++++++++++++------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   2 +
+ 2 files changed, 155 insertions(+), 81 deletions(-)
 
- drivers/net/ethernet/intel/igb/igb.h         |  84 +++-
- drivers/net/ethernet/intel/igb/igb_ethtool.c |   8 +-
- drivers/net/ethernet/intel/igb/igb_main.c    | 466 +++++++++++++++++--
- 3 files changed, 510 insertions(+), 48 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-index 2f015b60a995..3d518cc35880 100644
---- a/drivers/net/ethernet/intel/igb/igb.h
-+++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -19,6 +19,8 @@
- #include <linux/pci.h>
- #include <linux/mdio.h>
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 8ae2c8c2f6a1..c4e4aa33c91d 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -149,28 +149,6 @@ static const char ixgbe_priv_flags_strings[][ETH_GSTRING_LEN] = {
  
-+#include <net/xdp.h>
-+
- struct igb_adapter;
+ #define ixgbe_isbackplane(type) ((type) == ixgbe_media_type_backplane)
  
- #define E1000_PCS_CFG_IGN_SD	1
-@@ -79,6 +81,12 @@ struct igb_adapter;
- #define IGB_I210_RX_LATENCY_100		2213
- #define IGB_I210_RX_LATENCY_1000	448
- 
-+/* XDP */
-+#define IGB_XDP_PASS		0
-+#define IGB_XDP_CONSUMED	BIT(0)
-+#define IGB_XDP_TX		BIT(1)
-+#define IGB_XDP_REDIR		BIT(2)
-+
- struct vf_data_storage {
- 	unsigned char vf_mac_addresses[ETH_ALEN];
- 	u16 vf_mc_hashes[IGB_MAX_VF_MC_ENTRIES];
-@@ -132,17 +140,62 @@ struct vf_mac_filter {
- 
- /* Supported Rx Buffer Sizes */
- #define IGB_RXBUFFER_256	256
-+#define IGB_RXBUFFER_1536	1536
- #define IGB_RXBUFFER_2048	2048
- #define IGB_RXBUFFER_3072	3072
- #define IGB_RX_HDR_LEN		IGB_RXBUFFER_256
- #define IGB_TS_HDR_LEN		16
- 
--#define IGB_SKB_PAD		(NET_SKB_PAD + NET_IP_ALIGN)
-+/* Attempt to maximize the headroom available for incoming frames.  We
-+ * use a 2K buffer for receives and need 1536/1534 to store the data for
-+ * the frame.  This leaves us with 512 bytes of room.  From that we need
-+ * to deduct the space needed for the shared info and the padding needed
-+ * to IP align the frame.
-+ *
-+ * Note: For cache line sizes 256 or larger this value is going to end
-+ *	 up negative.  In these cases we should fall back to the 3K
-+ *	 buffers.
-+ */
- #if (PAGE_SIZE < 8192)
--#define IGB_MAX_FRAME_BUILD_SKB \
--	(SKB_WITH_OVERHEAD(IGB_RXBUFFER_2048) - IGB_SKB_PAD - IGB_TS_HDR_LEN)
-+#define IGB_MAX_2K_FRAME_BUILD_SKB (IGB_RXBUFFER_1536 - NET_IP_ALIGN)
-+#define IGB_2K_TOO_SMALL_WITH_PADDING \
-+((NET_SKB_PAD + IGB_RXBUFFER_1536) > SKB_WITH_OVERHEAD(IGB_RXBUFFER_2048))
-+
-+static inline int igb_compute_pad(int rx_buf_len)
-+{
-+	int page_size, pad_size;
-+
-+	page_size = ALIGN(rx_buf_len, PAGE_SIZE / 2);
-+	pad_size = SKB_WITH_OVERHEAD(page_size) - rx_buf_len;
-+
-+	return pad_size;
-+}
-+
-+static inline int igb_skb_pad(void)
-+{
-+	int rx_buf_len;
-+
-+	/* If a 2K buffer cannot handle a standard Ethernet frame then
-+	 * optimize padding for a 3K buffer instead of a 1.5K buffer.
-+	 *
-+	 * For a 3K buffer we need to add enough padding to allow for
-+	 * tailroom due to NET_IP_ALIGN possibly shifting us out of
-+	 * cache-line alignment.
-+	 */
-+	if (IGB_2K_TOO_SMALL_WITH_PADDING)
-+		rx_buf_len = IGB_RXBUFFER_3072 + SKB_DATA_ALIGN(NET_IP_ALIGN);
-+	else
-+		rx_buf_len = IGB_RXBUFFER_1536;
-+
-+	/* if needed make room for NET_IP_ALIGN */
-+	rx_buf_len -= NET_IP_ALIGN;
-+
-+	return igb_compute_pad(rx_buf_len);
-+}
-+
-+#define IGB_SKB_PAD	igb_skb_pad()
- #else
--#define IGB_MAX_FRAME_BUILD_SKB (IGB_RXBUFFER_2048 - IGB_TS_HDR_LEN)
-+#define IGB_SKB_PAD	(NET_SKB_PAD + NET_IP_ALIGN)
- #endif
- 
- /* How many Rx Buffers do we bundle into one write to the hardware ? */
-@@ -194,13 +247,22 @@ enum igb_tx_flags {
- #define IGB_SFF_ADDRESSING_MODE		0x4
- #define IGB_SFF_8472_UNSUP		0x00
- 
-+enum igb_tx_buf_type {
-+	IGB_TYPE_SKB = 0,
-+	IGB_TYPE_XDP,
-+};
-+
- /* wrapper around a pointer to a socket buffer,
-  * so a DMA handle can be stored along with the buffer
-  */
- struct igb_tx_buffer {
- 	union e1000_adv_tx_desc *next_to_watch;
- 	unsigned long time_stamp;
--	struct sk_buff *skb;
-+	enum igb_tx_buf_type type;
-+	union {
-+		struct sk_buff *skb;
-+		struct xdp_frame *xdpf;
-+	};
- 	unsigned int bytecount;
- 	u16 gso_segs;
- 	__be16 protocol;
-@@ -248,6 +310,7 @@ struct igb_ring_container {
- struct igb_ring {
- 	struct igb_q_vector *q_vector;	/* backlink to q_vector */
- 	struct net_device *netdev;	/* back pointer to net_device */
-+	struct bpf_prog *xdp_prog;
- 	struct device *dev;		/* device pointer for dma mapping */
- 	union {				/* array of buffer info structs */
- 		struct igb_tx_buffer *tx_buffer_info;
-@@ -288,6 +351,9 @@ struct igb_ring {
- 			struct u64_stats_sync rx_syncp;
- 		};
- 	};
-+	/* lock for TX */
-+	spinlock_t tx_lock;
-+	struct xdp_rxq_info xdp_rxq;
- } ____cacheline_internodealigned_in_smp;
- 
- struct igb_q_vector {
-@@ -339,7 +405,7 @@ static inline unsigned int igb_rx_bufsz(struct igb_ring *ring)
- 		return IGB_RXBUFFER_3072;
- 
- 	if (ring_uses_build_skb(ring))
--		return IGB_MAX_FRAME_BUILD_SKB + IGB_TS_HDR_LEN;
-+		return IGB_MAX_2K_FRAME_BUILD_SKB;
- #endif
- 	return IGB_RXBUFFER_2048;
- }
-@@ -467,6 +533,7 @@ struct igb_adapter {
- 	unsigned long active_vlans[BITS_TO_LONGS(VLAN_N_VID)];
- 
- 	struct net_device *netdev;
-+	struct bpf_prog *xdp_prog;
- 
- 	unsigned long state;
- 	unsigned int flags;
-@@ -643,6 +710,9 @@ enum igb_boards {
- 
- extern char igb_driver_name[];
- 
-+int igb_xmit_xdp_ring(struct igb_adapter *adapter,
-+		      struct igb_ring *ring,
-+		      struct xdp_frame *xdpf);
- int igb_open(struct net_device *netdev);
- int igb_close(struct net_device *netdev);
- int igb_up(struct igb_adapter *);
-@@ -653,7 +723,7 @@ int igb_reinit_queues(struct igb_adapter *);
- void igb_write_rss_indir_tbl(struct igb_adapter *);
- int igb_set_spd_dplx(struct igb_adapter *, u32, u8);
- int igb_setup_tx_resources(struct igb_ring *);
--int igb_setup_rx_resources(struct igb_ring *);
-+int igb_setup_rx_resources(struct igb_ring *, struct igb_adapter *);
- void igb_free_tx_resources(struct igb_ring *);
- void igb_free_rx_resources(struct igb_ring *);
- void igb_configure_tx_ring(struct igb_adapter *, struct igb_ring *);
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index c2cf414d126b..66c3086ed475 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -961,8 +961,12 @@ static int igb_set_ringparam(struct net_device *netdev,
- 			memcpy(&temp_ring[i], adapter->rx_ring[i],
- 			       sizeof(struct igb_ring));
- 
-+			/* Clear copied XDP RX-queue info */
-+			memset(&temp_ring[i].xdp_rxq, 0,
-+			       sizeof(temp_ring[i].xdp_rxq));
-+
- 			temp_ring[i].count = new_rx_count;
--			err = igb_setup_rx_resources(&temp_ring[i]);
-+			err = igb_setup_rx_resources(&temp_ring[i], adapter);
- 			if (err) {
- 				while (i) {
- 					i--;
-@@ -1577,7 +1581,7 @@ static int igb_setup_desc_rings(struct igb_adapter *adapter)
- 	rx_ring->netdev = adapter->netdev;
- 	rx_ring->reg_idx = adapter->vfs_allocated_count;
- 
--	if (igb_setup_rx_resources(rx_ring)) {
-+	if (igb_setup_rx_resources(rx_ring, adapter)) {
- 		ret_val = 3;
- 		goto err_nomem;
- 	}
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index ae8d64324619..e003245effae 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -30,6 +30,8 @@
- #include <linux/if_ether.h>
- #include <linux/aer.h>
- #include <linux/prefetch.h>
-+#include <linux/bpf.h>
-+#include <linux/bpf_trace.h>
- #include <linux/pm_runtime.h>
- #include <linux/etherdevice.h>
- #ifdef CONFIG_IGB_DCA
-@@ -2825,6 +2827,147 @@ static int igb_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 	}
- }
- 
-+static int igb_xdp_setup(struct net_device *dev, struct bpf_prog *prog)
-+{
-+	int i, frame_size = dev->mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
-+	struct igb_adapter *adapter = netdev_priv(dev);
-+	struct bpf_prog *old_prog;
-+	bool running = netif_running(dev);
-+	bool need_reset;
-+
-+	/* verify igb ring attributes are sufficient for XDP */
-+	for (i = 0; i < adapter->num_rx_queues; i++) {
-+		struct igb_ring *ring = adapter->rx_ring[i];
-+
-+		if (frame_size > igb_rx_bufsz(ring))
-+			return -EINVAL;
-+	}
-+
-+	old_prog = xchg(&adapter->xdp_prog, prog);
-+	need_reset = (!!prog != !!old_prog);
-+
-+	/* device is up and bpf is added/removed, must setup the RX queues */
-+	if (need_reset && running) {
-+		igb_close(dev);
-+	} else {
-+		for (i = 0; i < adapter->num_rx_queues; i++)
-+			(void)xchg(&adapter->rx_ring[i]->xdp_prog,
-+			    adapter->xdp_prog);
-+	}
-+
-+	if (old_prog)
-+		bpf_prog_put(old_prog);
-+
-+	/* bpf is just replaced, RXQ and MTU are already setup */
-+	if (!need_reset)
-+		return 0;
-+
-+	if (running)
-+		igb_open(dev);
-+
-+	return 0;
-+}
-+
-+static int igb_xdp(struct net_device *dev, struct netdev_bpf *xdp)
-+{
-+	struct igb_adapter *adapter = netdev_priv(dev);
-+
-+	switch (xdp->command) {
-+	case XDP_SETUP_PROG:
-+		return igb_xdp_setup(dev, xdp->prog);
-+	case XDP_QUERY_PROG:
-+		xdp->prog_id = adapter->xdp_prog ?
-+			adapter->xdp_prog->aux->id : 0;
-+		return 0;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+void igb_xdp_ring_update_tail(struct igb_ring *ring)
-+{
-+	/* Force memory writes to complete before letting h/w know there
-+	 * are new descriptors to fetch.
-+	 */
-+	wmb();
-+	writel(ring->next_to_use, ring->tail);
-+}
-+
-+static inline struct igb_ring *igb_xdp_tx_queue_mapping(struct igb_adapter *adapter)
-+{
-+	unsigned int r_idx = smp_processor_id();
-+
-+	if (r_idx >= adapter->num_tx_queues)
-+		r_idx = r_idx % adapter->num_tx_queues;
-+
-+	return adapter->tx_ring[r_idx];
-+}
-+
-+static int igb_xdp_xmit_back(struct igb_adapter *adapter, struct xdp_buff *xdp)
-+{
-+	struct igb_ring *tx_ring;
-+	struct xdp_frame *xdpf = xdp_convert_buff_to_frame(xdp);
-+	u32 ret;
-+
-+	if (unlikely(!xdpf))
-+		return IGB_XDP_CONSUMED;
-+
-+	/* During program transitions its possible adapter->xdp_prog is assigned
-+	 * but ring has not been configured yet. In this case simply abort xmit.
-+	 */
-+	tx_ring = adapter->xdp_prog ? igb_xdp_tx_queue_mapping(adapter) : NULL;
-+	if (unlikely(!tx_ring))
-+		return -ENXIO;
-+
-+	spin_lock(&tx_ring->tx_lock);
-+	ret = igb_xmit_xdp_ring(adapter, tx_ring, xdpf);
-+	spin_unlock(&tx_ring->tx_lock);
-+
-+	return ret;
-+}
-+
-+static int igb_xdp_xmit(struct net_device *dev, int n,
-+			struct xdp_frame **frames, u32 flags)
-+{
-+	struct igb_adapter *adapter = netdev_priv(dev);
-+	struct igb_ring *tx_ring;
-+	int drops = 0;
-+	int i;
-+
-+	if (unlikely(test_bit(__IGB_DOWN, &adapter->state)))
-+		return -ENETDOWN;
-+
-+	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
-+		return -EINVAL;
-+
-+	/* During program transitions its possible adapter->xdp_prog is assigned
-+	 * but ring has not been configured yet. In this case simply abort xmit.
-+	 */
-+	tx_ring = adapter->xdp_prog ? igb_xdp_tx_queue_mapping(adapter) : NULL;
-+	if (unlikely(!tx_ring))
-+		return -ENXIO;
-+
-+	spin_lock(&tx_ring->tx_lock);
-+
-+	for (i = 0; i < n; i++) {
-+		struct xdp_frame *xdpf = frames[i];
-+		int err;
-+
-+		err = igb_xmit_xdp_ring(adapter, tx_ring, xdpf);
-+		if (err != IGB_XDP_TX) {
-+			xdp_return_frame_rx_napi(xdpf);
-+			drops++;
-+		}
-+	}
-+
-+	spin_unlock(&tx_ring->tx_lock);
-+
-+	if (unlikely(flags & XDP_XMIT_FLUSH))
-+		igb_xdp_ring_update_tail(tx_ring);
-+
-+	return n - drops;
-+}
-+
- static const struct net_device_ops igb_netdev_ops = {
- 	.ndo_open		= igb_open,
- 	.ndo_stop		= igb_close,
-@@ -2849,6 +2992,8 @@ static const struct net_device_ops igb_netdev_ops = {
- 	.ndo_fdb_add		= igb_ndo_fdb_add,
- 	.ndo_features_check	= igb_features_check,
- 	.ndo_setup_tc		= igb_setup_tc,
-+	.ndo_bpf		= igb_xdp,
-+	.ndo_xdp_xmit		= igb_xdp_xmit,
- };
- 
- /**
-@@ -4051,6 +4196,8 @@ int igb_setup_tx_resources(struct igb_ring *tx_ring)
- 	tx_ring->next_to_use = 0;
- 	tx_ring->next_to_clean = 0;
- 
-+	spin_lock_init(&tx_ring->tx_lock);
-+
- 	return 0;
- 
- err:
-@@ -4177,7 +4324,7 @@ static void igb_configure_tx(struct igb_adapter *adapter)
-  *
-  *  Returns 0 on success, negative on failure
-  **/
--int igb_setup_rx_resources(struct igb_ring *rx_ring)
-+int igb_setup_rx_resources(struct igb_ring *rx_ring, struct igb_adapter *adapter)
- {
- 	struct device *dev = rx_ring->dev;
- 	int size;
-@@ -4201,6 +4348,13 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
- 	rx_ring->next_to_clean = 0;
- 	rx_ring->next_to_use = 0;
- 
-+	rx_ring->xdp_prog = adapter->xdp_prog;
-+
-+	/* XDP RX-queue info */
-+	if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
-+			     rx_ring->queue_index) < 0)
-+		goto err;
-+
- 	return 0;
- 
- err:
-@@ -4223,7 +4377,7 @@ static int igb_setup_all_rx_resources(struct igb_adapter *adapter)
- 	int i, err = 0;
- 
- 	for (i = 0; i < adapter->num_rx_queues; i++) {
--		err = igb_setup_rx_resources(adapter->rx_ring[i]);
-+		err = igb_setup_rx_resources(adapter->rx_ring[i], adapter);
- 		if (err) {
- 			dev_err(&pdev->dev,
- 				"Allocation for Rx Queue %u failed\n", i);
-@@ -4505,6 +4659,10 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
- 	int reg_idx = ring->reg_idx;
- 	u32 rxdctl = 0;
- 
-+	xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
-+	WARN_ON(xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
-+					   MEM_TYPE_PAGE_SHARED, NULL));
-+
- 	/* disable the queue */
- 	wr32(E1000_RXDCTL(reg_idx), 0);
- 
-@@ -4556,7 +4714,7 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
- 	set_ring_build_skb_enabled(rx_ring);
- 
- #if (PAGE_SIZE < 8192)
--	if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
-+	if (adapter->max_frame_size <= IGB_MAX_2K_FRAME_BUILD_SKB)
- 		return;
- 
- 	set_ring_uses_large_buffer(rx_ring);
-@@ -4709,6 +4867,8 @@ void igb_free_rx_resources(struct igb_ring *rx_ring)
- {
- 	igb_clean_rx_ring(rx_ring);
- 
-+	rx_ring->xdp_prog = NULL;
-+	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
- 	vfree(rx_ring->rx_buffer_info);
- 	rx_ring->rx_buffer_info = NULL;
- 
-@@ -5054,8 +5214,8 @@ static void igb_set_rx_mode(struct net_device *netdev)
- 
- #if (PAGE_SIZE < 8192)
- 	if (!adapter->vfs_allocated_count) {
--		if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
--			rlpml = IGB_MAX_FRAME_BUILD_SKB;
-+		if (adapter->max_frame_size <= IGB_MAX_2K_FRAME_BUILD_SKB)
-+			rlpml = IGB_MAX_2K_FRAME_BUILD_SKB;
- 	}
- #endif
- 	wr32(E1000_RLPML, rlpml);
-@@ -5077,8 +5237,8 @@ static void igb_set_rx_mode(struct net_device *netdev)
- 	/* enable Rx jumbo frames, restrict as needed to support build_skb */
- 	vmolr &= ~E1000_VMOLR_RLPML_MASK;
- #if (PAGE_SIZE < 8192)
--	if (adapter->max_frame_size <= IGB_MAX_FRAME_BUILD_SKB)
--		vmolr |= IGB_MAX_FRAME_BUILD_SKB;
-+	if (adapter->max_frame_size <= IGB_MAX_2K_FRAME_BUILD_SKB)
-+		vmolr |= IGB_MAX_2K_FRAME_BUILD_SKB;
- 	else
- #endif
- 		vmolr |= MAX_JUMBO_FRAME_SIZE;
-@@ -6078,6 +6238,80 @@ static int igb_tx_map(struct igb_ring *tx_ring,
- 	return -1;
- }
- 
-+int igb_xmit_xdp_ring(struct igb_adapter *adapter,
-+		      struct igb_ring *tx_ring,
-+		      struct xdp_frame *xdpf)
-+{
-+	struct igb_tx_buffer *tx_buffer;
-+	union e1000_adv_tx_desc *tx_desc;
-+	u32 len, cmd_type, olinfo_status;
-+	dma_addr_t dma;
-+	u16 i;
-+
-+	len = xdpf->len;
-+
-+	if (unlikely(!igb_desc_unused(tx_ring)))
-+		return IGB_XDP_CONSUMED;
-+
-+	dma = dma_map_single(tx_ring->dev, xdpf->data, len, DMA_TO_DEVICE);
-+	if (dma_mapping_error(tx_ring->dev, dma))
-+		return IGB_XDP_CONSUMED;
-+
-+	/* record the location of the first descriptor for this packet */
-+	tx_buffer = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-+	tx_buffer->bytecount = len;
-+	tx_buffer->gso_segs = 1;
-+	tx_buffer->protocol = 0;
-+
-+	i = tx_ring->next_to_use;
-+	tx_desc = IGB_TX_DESC(tx_ring, i);
-+
-+	dma_unmap_len_set(tx_buffer, len, len);
-+	dma_unmap_addr_set(tx_buffer, dma, dma);
-+	tx_buffer->type = IGB_TYPE_XDP;
-+	tx_buffer->xdpf = xdpf;
-+
-+	tx_desc->read.buffer_addr = cpu_to_le64(dma);
-+
-+	/* put descriptor type bits */
-+	cmd_type = E1000_ADVTXD_DTYP_DATA |
-+		   E1000_ADVTXD_DCMD_DEXT |
-+		   E1000_ADVTXD_DCMD_IFCS;
-+	cmd_type |= len | IGB_TXD_DCMD;
-+	tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-+
-+	olinfo_status = cpu_to_le32(len << E1000_ADVTXD_PAYLEN_SHIFT);
-+	/* 82575 requires a unique index per ring */
-+	if (test_bit(IGB_RING_FLAG_TX_CTX_IDX, &tx_ring->flags))
-+		olinfo_status |= tx_ring->reg_idx << 4;
-+
-+	tx_desc->read.olinfo_status = olinfo_status;
-+
-+	netdev_tx_sent_queue(txring_txq(tx_ring), tx_buffer->bytecount);
-+
-+	/* set the timestamp */
-+	tx_buffer->time_stamp = jiffies;
-+
-+	/* Avoid any potential race with xdp_xmit and cleanup */
-+	smp_wmb();
-+
-+	/* set next_to_watch value indicating a packet is present */
-+	i++;
-+	if (i == tx_ring->count)
-+		i = 0;
-+
-+	tx_buffer->next_to_watch = tx_desc;
-+	tx_ring->next_to_use = i;
-+
-+	/* Make sure there is space in the ring for the next send. */
-+	igb_maybe_stop_tx(tx_ring, DESC_NEEDED);
-+
-+	if (netif_xmit_stopped(txring_txq(tx_ring)) || !netdev_xmit_more())
-+		writel(i, tx_ring->tail);
-+
-+	return IGB_XDP_TX;
-+}
-+
- netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 				struct igb_ring *tx_ring)
- {
-@@ -6089,6 +6323,8 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 	__be16 protocol = vlan_get_protocol(skb);
- 	u8 hdr_len = 0;
- 
-+	spin_lock_bh(&tx_ring->tx_lock);
-+
- 	/* need: 1 descriptor per page * PAGE_SIZE/IGB_MAX_DATA_PER_TXD,
- 	 *       + 1 desc for skb_headlen/IGB_MAX_DATA_PER_TXD,
- 	 *       + 2 desc gap to keep tail from touching head,
-@@ -6101,11 +6337,13 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 
- 	if (igb_maybe_stop_tx(tx_ring, count + 3)) {
- 		/* this is a hard error */
-+		spin_unlock_bh(&tx_ring->tx_lock);
- 		return NETDEV_TX_BUSY;
- 	}
- 
- 	/* record the location of the first descriptor for this packet */
- 	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-+	first->type = IGB_TYPE_SKB;
- 	first->skb = skb;
- 	first->bytecount = skb->len;
- 	first->gso_segs = 1;
-@@ -6146,6 +6384,8 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 	if (igb_tx_map(tx_ring, first, hdr_len))
- 		goto cleanup_tx_tstamp;
- 
-+	spin_unlock_bh(&tx_ring->tx_lock);
-+
- 	return NETDEV_TX_OK;
- 
- out_drop:
-@@ -6162,6 +6402,8 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
- 		clear_bit_unlock(__IGB_PTP_TX_IN_PROGRESS, &adapter->state);
- 	}
- 
-+	spin_unlock_bh(&tx_ring->tx_lock);
-+
- 	return NETDEV_TX_OK;
- }
- 
-@@ -6248,6 +6490,21 @@ static int igb_change_mtu(struct net_device *netdev, int new_mtu)
- 	struct igb_adapter *adapter = netdev_priv(netdev);
- 	int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
- 
-+	if (adapter->xdp_prog) {
-+		int new_frame_size = new_mtu + ETH_HLEN + ETH_FCS_LEN +
-+				     VLAN_HLEN;
-+		int i;
-+
-+		for (i = 0; i < adapter->num_rx_queues; i++) {
-+			struct igb_ring *ring = adapter->rx_ring[i];
-+
-+			if (new_frame_size > igb_rx_bufsz(ring)) {
-+				netdev_warn(adapter->netdev, "Requested MTU size is not supported with XDP\n");
-+				return -EINVAL;
-+			}
-+		}
-+	}
-+
- 	/* adjust max frame to be at least the size of a standard frame */
- 	if (max_frame < (ETH_FRAME_LEN + ETH_FCS_LEN))
- 		max_frame = ETH_FRAME_LEN + ETH_FCS_LEN;
-@@ -7775,6 +8032,8 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 	if (test_bit(__IGB_DOWN, &adapter->state))
- 		return true;
- 
-+	spin_lock(&tx_ring->tx_lock);
-+
- 	tx_buffer = &tx_ring->tx_buffer_info[i];
- 	tx_desc = IGB_TX_DESC(tx_ring, i);
- 	i -= tx_ring->count;
-@@ -7801,7 +8060,10 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 		total_packets += tx_buffer->gso_segs;
- 
- 		/* free the skb */
--		napi_consume_skb(tx_buffer->skb, napi_budget);
-+		if (tx_buffer->type == IGB_TYPE_XDP)
-+			xdp_return_frame(tx_buffer->xdpf);
-+		else
-+			napi_consume_skb(tx_buffer->skb, napi_budget);
- 
- 		/* unmap skb header data */
- 		dma_unmap_single(tx_ring->dev,
-@@ -7854,6 +8116,9 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
- 				  total_packets, total_bytes);
- 	i += tx_ring->count;
- 	tx_ring->next_to_clean = i;
-+
-+	spin_unlock(&tx_ring->tx_lock);
-+
- 	u64_stats_update_begin(&tx_ring->tx_syncp);
- 	tx_ring->tx_stats.bytes += total_bytes;
- 	tx_ring->tx_stats.packets += total_packets;
-@@ -7985,8 +8250,8 @@ static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer)
- 	 * the pagecnt_bias and page count so that we fully restock the
- 	 * number of references the driver holds.
- 	 */
--	if (unlikely(!pagecnt_bias)) {
--		page_ref_add(page, USHRT_MAX);
-+	if (unlikely(pagecnt_bias == 1)) {
-+		page_ref_add(page, USHRT_MAX - 1);
- 		rx_buffer->pagecnt_bias = USHRT_MAX;
- 	}
- 
-@@ -8025,22 +8290,23 @@ static void igb_add_rx_frag(struct igb_ring *rx_ring,
- 
- static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
- 					 struct igb_rx_buffer *rx_buffer,
--					 union e1000_adv_rx_desc *rx_desc,
--					 unsigned int size)
-+					 struct xdp_buff *xdp,
-+					 union e1000_adv_rx_desc *rx_desc)
- {
--	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset;
-+	unsigned int size = xdp->data_end - xdp->data;
- #if (PAGE_SIZE < 8192)
- 	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
- #else
--	unsigned int truesize = SKB_DATA_ALIGN(size);
-+	unsigned int truesize = SKB_DATA_ALIGN(xdp->data_end -
-+					       xdp->data_hard_start);
- #endif
- 	unsigned int headlen;
- 	struct sk_buff *skb;
- 
- 	/* prefetch first cache line of first page */
--	prefetch(va);
-+	prefetch(xdp->data);
- #if L1_CACHE_BYTES < 128
--	prefetch(va + L1_CACHE_BYTES);
-+	prefetch(xdp->data + L1_CACHE_BYTES);
- #endif
- 
- 	/* allocate a skb to store the frags */
-@@ -8049,24 +8315,24 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
- 		return NULL;
- 
- 	if (unlikely(igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP))) {
--		igb_ptp_rx_pktstamp(rx_ring->q_vector, va, skb);
--		va += IGB_TS_HDR_LEN;
-+		igb_ptp_rx_pktstamp(rx_ring->q_vector, xdp->data, skb);
-+		xdp->data += IGB_TS_HDR_LEN;
- 		size -= IGB_TS_HDR_LEN;
- 	}
- 
- 	/* Determine available headroom for copy */
- 	headlen = size;
- 	if (headlen > IGB_RX_HDR_LEN)
--		headlen = eth_get_headlen(skb->dev, va, IGB_RX_HDR_LEN);
-+		headlen = eth_get_headlen(skb->dev, xdp->data, IGB_RX_HDR_LEN);
- 
- 	/* align pull length to size of long to optimize memcpy performance */
--	memcpy(__skb_put(skb, headlen), va, ALIGN(headlen, sizeof(long)));
-+	memcpy(__skb_put(skb, headlen), xdp->data, ALIGN(headlen, sizeof(long)));
- 
- 	/* update all of the pointers */
- 	size -= headlen;
- 	if (size) {
- 		skb_add_rx_frag(skb, 0, rx_buffer->page,
--				(va + headlen) - page_address(rx_buffer->page),
-+				(xdp->data + headlen) - page_address(rx_buffer->page),
- 				size, truesize);
- #if (PAGE_SIZE < 8192)
- 		rx_buffer->page_offset ^= truesize;
-@@ -8082,32 +8348,32 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
- 
- static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
- 				     struct igb_rx_buffer *rx_buffer,
--				     union e1000_adv_rx_desc *rx_desc,
--				     unsigned int size)
-+				     struct xdp_buff *xdp,
-+				     union e1000_adv_rx_desc *rx_desc)
- {
--	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset;
- #if (PAGE_SIZE < 8192)
- 	unsigned int truesize = igb_rx_pg_size(rx_ring) / 2;
- #else
- 	unsigned int truesize = SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) +
--				SKB_DATA_ALIGN(IGB_SKB_PAD + size);
-+				SKB_DATA_ALIGN(xdp->data_end -
-+					       xdp->data_hard_start);
- #endif
- 	struct sk_buff *skb;
- 
- 	/* prefetch first cache line of first page */
--	prefetch(va);
-+	prefetch(xdp->data_meta);
- #if L1_CACHE_BYTES < 128
--	prefetch(va + L1_CACHE_BYTES);
-+	prefetch(xdp->data_meta + L1_CACHE_BYTES);
- #endif
- 
- 	/* build an skb around the page buffer */
--	skb = build_skb(va - IGB_SKB_PAD, truesize);
-+	skb = build_skb(xdp->data_hard_start, truesize);
- 	if (unlikely(!skb))
- 		return NULL;
- 
- 	/* update pointers within the skb to store the data */
--	skb_reserve(skb, IGB_SKB_PAD);
--	__skb_put(skb, size);
-+	skb_reserve(skb, xdp->data - xdp->data_hard_start);
-+	__skb_put(skb, xdp->data_end - xdp->data);
- 
- 	/* pull timestamp out of packet data */
- 	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-@@ -8125,6 +8391,79 @@ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
- 	return skb;
- }
- 
-+static struct sk_buff *igb_run_xdp(struct igb_adapter *adapter,
-+				   struct igb_ring *rx_ring,
-+				   struct xdp_buff *xdp)
-+{
-+	int err, result = IGB_XDP_PASS;
-+	struct bpf_prog *xdp_prog;
-+	u32 act;
-+
-+	rcu_read_lock();
-+	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
-+
-+	if (!xdp_prog)
-+		goto xdp_out;
-+
-+	prefetchw(xdp->data_hard_start); /* xdp_frame write */
-+
-+	act = bpf_prog_run_xdp(xdp_prog, xdp);
-+	switch (act) {
-+	case XDP_PASS:
-+		break;
-+	case XDP_TX:
-+		result = igb_xdp_xmit_back(adapter, xdp);
-+		break;
-+	case XDP_REDIRECT:
-+		err = xdp_do_redirect(adapter->netdev, xdp, xdp_prog);
-+		if (!err)
-+			result = IGB_XDP_REDIR;
-+		else
-+			result = IGB_XDP_CONSUMED;
-+		break;
-+	default:
-+		bpf_warn_invalid_xdp_action(act);
-+		/* fallthrough */
-+	case XDP_ABORTED:
-+		trace_xdp_exception(rx_ring->netdev, xdp_prog, act);
-+		/* fallthrough -- handle aborts by dropping packet */
-+	case XDP_DROP:
-+		result = IGB_XDP_CONSUMED;
-+		break;
-+	}
-+xdp_out:
-+	rcu_read_unlock();
-+	return ERR_PTR(-result);
-+}
-+
-+static unsigned int igb_rx_frame_truesize(struct igb_ring *rx_ring,
-+					  unsigned int size)
-+{
-+	unsigned int truesize;
-+
-+#if (PAGE_SIZE < 8192)
-+	truesize = igb_rx_pg_size(rx_ring) / 2; /* Must be power-of-2 */
-+#else
-+	truesize = ring_uses_build_skb(rx_ring) ?
-+		SKB_DATA_ALIGN(IGB_SKB_PAD + size) +
-+		SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
-+		SKB_DATA_ALIGN(size);
-+#endif
-+	return truesize;
-+}
-+
-+static void igb_rx_buffer_flip(struct igb_ring *rx_ring,
-+			       struct igb_rx_buffer *rx_buffer,
-+			       unsigned int size)
-+{
-+	unsigned int truesize = igb_rx_frame_truesize(rx_ring, size);
-+#if (PAGE_SIZE < 8192)
-+	rx_buffer->page_offset ^= truesize;
-+#else
-+	rx_buffer->page_offset += truesize;
-+#endif
-+}
-+
- static inline void igb_rx_checksum(struct igb_ring *ring,
- 				   union e1000_adv_rx_desc *rx_desc,
- 				   struct sk_buff *skb)
-@@ -8221,6 +8560,10 @@ static bool igb_cleanup_headers(struct igb_ring *rx_ring,
- 				union e1000_adv_rx_desc *rx_desc,
- 				struct sk_buff *skb)
- {
-+	/* XDP packets use error pointer so abort at this point */
-+	if (IS_ERR(skb))
-+		return true;
-+
- 	if (unlikely((igb_test_staterr(rx_desc,
- 				       E1000_RXDEXT_ERR_FRAME_ERR_MASK)))) {
- 		struct net_device *netdev = rx_ring->netdev;
-@@ -8279,6 +8622,11 @@ static void igb_process_skb_fields(struct igb_ring *rx_ring,
- 	skb->protocol = eth_type_trans(skb, rx_ring->netdev);
- }
- 
-+static inline unsigned int igb_rx_offset(struct igb_ring *rx_ring)
-+{
-+	return ring_uses_build_skb(rx_ring) ? IGB_SKB_PAD : 0;
-+}
-+
- static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
- 					       const unsigned int size)
- {
-@@ -8323,9 +8671,19 @@ static void igb_put_rx_buffer(struct igb_ring *rx_ring,
- static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- {
- 	struct igb_ring *rx_ring = q_vector->rx.ring;
-+	struct igb_adapter *adapter = q_vector->adapter;
- 	struct sk_buff *skb = rx_ring->skb;
- 	unsigned int total_bytes = 0, total_packets = 0;
-+	unsigned int xdp_xmit = 0;
- 	u16 cleaned_count = igb_desc_unused(rx_ring);
-+	struct xdp_buff xdp;
-+
-+	xdp.rxq = &rx_ring->xdp_rxq;
-+
-+	/* Frame size depend on rx_ring setup when PAGE_SIZE=4K */
-+#if (PAGE_SIZE < 8192)
-+	xdp.frame_sz = igb_rx_frame_truesize(rx_ring, 0);
-+#endif
- 
- 	while (likely(total_packets < budget)) {
- 		union e1000_adv_rx_desc *rx_desc;
-@@ -8352,13 +8710,38 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- 		rx_buffer = igb_get_rx_buffer(rx_ring, size);
- 
- 		/* retrieve a buffer from the ring */
--		if (skb)
-+		if (!skb) {
-+			xdp.data = page_address(rx_buffer->page) +
-+				   rx_buffer->page_offset;
-+			xdp.data_meta = xdp.data;
-+			xdp.data_hard_start = xdp.data -
-+					      igb_rx_offset(rx_ring);
-+			xdp.data_end = xdp.data + size;
-+#if (PAGE_SIZE > 4096)
-+			/* At larger PAGE_SIZE, frame_sz depend on len size */
-+			xdp.frame_sz = igb_rx_frame_truesize(rx_ring, size);
-+#endif
-+			skb = igb_run_xdp(adapter, rx_ring, &xdp);
-+		}
-+
-+		if (IS_ERR(skb)) {
-+			unsigned int xdp_res = -PTR_ERR(skb);
-+
-+			if (xdp_res & (IGB_XDP_TX | IGB_XDP_REDIR)) {
-+				xdp_xmit |= xdp_res;
-+				igb_rx_buffer_flip(rx_ring, rx_buffer, size);
-+			} else {
-+				rx_buffer->pagecnt_bias++;
-+			}
-+			total_packets++;
-+			total_bytes += size;
-+		} else if (skb)
- 			igb_add_rx_frag(rx_ring, rx_buffer, skb, size);
- 		else if (ring_uses_build_skb(rx_ring))
--			skb = igb_build_skb(rx_ring, rx_buffer, rx_desc, size);
-+			skb = igb_build_skb(rx_ring, rx_buffer, &xdp, rx_desc);
- 		else
- 			skb = igb_construct_skb(rx_ring, rx_buffer,
--						rx_desc, size);
-+						&xdp, rx_desc);
- 
- 		/* exit if we failed to retrieve a buffer */
- 		if (!skb) {
-@@ -8398,6 +8781,15 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- 	/* place incomplete frames back on ring for completion */
- 	rx_ring->skb = skb;
- 
-+	if (xdp_xmit & IGB_XDP_REDIR)
-+		xdp_do_flush_map();
-+
-+	if (xdp_xmit & IGB_XDP_TX) {
-+		struct igb_ring *tx_ring = igb_xdp_tx_queue_mapping(adapter);
-+
-+		igb_xdp_ring_update_tail(tx_ring);
-+	}
-+
- 	u64_stats_update_begin(&rx_ring->rx_syncp);
- 	rx_ring->rx_stats.packets += total_packets;
- 	rx_ring->rx_stats.bytes += total_bytes;
-@@ -8411,11 +8803,6 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
- 	return total_packets;
- }
- 
--static inline unsigned int igb_rx_offset(struct igb_ring *rx_ring)
+-static u32 ixgbe_get_supported_10gtypes(struct ixgbe_hw *hw)
 -{
--	return ring_uses_build_skb(rx_ring) ? IGB_SKB_PAD : 0;
+-	if (!ixgbe_isbackplane(hw->phy.media_type))
+-		return SUPPORTED_10000baseT_Full;
+-
+-	switch (hw->device_id) {
+-	case IXGBE_DEV_ID_82598:
+-	case IXGBE_DEV_ID_82599_KX4:
+-	case IXGBE_DEV_ID_82599_KX4_MEZZ:
+-	case IXGBE_DEV_ID_X550EM_X_KX4:
+-		return SUPPORTED_10000baseKX4_Full;
+-	case IXGBE_DEV_ID_82598_BX:
+-	case IXGBE_DEV_ID_82599_KR:
+-	case IXGBE_DEV_ID_X550EM_X_KR:
+-	case IXGBE_DEV_ID_X550EM_X_XFI:
+-		return SUPPORTED_10000baseKR_Full;
+-	default:
+-		return SUPPORTED_10000baseKX4_Full |
+-		       SUPPORTED_10000baseKR_Full;
+-	}
 -}
 -
- static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
- 				  struct igb_rx_buffer *bi)
+ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 				    struct ethtool_link_ksettings *cmd)
  {
-@@ -8452,7 +8839,8 @@ static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
- 	bi->dma = dma;
- 	bi->page = page;
- 	bi->page_offset = igb_rx_offset(rx_ring);
--	bi->pagecnt_bias = 1;
-+	page_ref_add(page, USHRT_MAX - 1);
-+	bi->pagecnt_bias = USHRT_MAX;
+@@ -178,55 +156,131 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 	struct ixgbe_hw *hw = &adapter->hw;
+ 	ixgbe_link_speed supported_link;
+ 	bool autoneg = false;
+-	u32 supported, advertising;
  
- 	return true;
+-	ethtool_convert_link_mode_to_legacy_u32(&supported,
+-						cmd->link_modes.supported);
++	ethtool_link_ksettings_zero_link_mode(cmd, supported);
++	ethtool_link_ksettings_zero_link_mode(cmd, advertising);
+ 
+ 	hw->mac.ops.get_link_capabilities(hw, &supported_link, &autoneg);
+-
+ 	/* set the supported link speeds */
+-	if (supported_link & IXGBE_LINK_SPEED_10GB_FULL)
+-		supported |= ixgbe_get_supported_10gtypes(hw);
+-	if (supported_link & IXGBE_LINK_SPEED_1GB_FULL)
+-		supported |= (ixgbe_isbackplane(hw->phy.media_type)) ?
+-				   SUPPORTED_1000baseKX_Full :
+-				   SUPPORTED_1000baseT_Full;
+-	if (supported_link & IXGBE_LINK_SPEED_100_FULL)
+-		supported |= SUPPORTED_100baseT_Full;
+-	if (supported_link & IXGBE_LINK_SPEED_10_FULL)
+-		supported |= SUPPORTED_10baseT_Full;
+-
+-	/* default advertised speed if phy.autoneg_advertised isn't set */
+-	advertising = supported;
++	if (supported_link & IXGBE_LINK_SPEED_10GB_FULL) {
++		if (ixgbe_isbackplane(hw->phy.media_type)) {
++			switch (hw->device_id) {
++			case IXGBE_DEV_ID_82598:
++			case IXGBE_DEV_ID_82599_KX4:
++			case IXGBE_DEV_ID_82599_KX4_MEZZ:
++			case IXGBE_DEV_ID_X550EM_X_KX4:
++				ethtool_link_ksettings_add_link_mode
++					(cmd, supported, 10000baseKX4_Full);
++				ethtool_link_ksettings_add_link_mode
++					(cmd, advertising, 10000baseKX4_Full);
++				break;
++			case IXGBE_DEV_ID_82598_BX:
++			case IXGBE_DEV_ID_82599_KR:
++			case IXGBE_DEV_ID_X550EM_X_KR:
++			case IXGBE_DEV_ID_X550EM_X_XFI:
++				ethtool_link_ksettings_add_link_mode
++					(cmd, supported, 10000baseKR_Full);
++				ethtool_link_ksettings_add_link_mode
++					(cmd, advertising, 10000baseKR_Full);
++				break;
++			default:
++				ethtool_link_ksettings_add_link_mode
++					(cmd, supported, 10000baseKX4_Full);
++				ethtool_link_ksettings_add_link_mode
++					(cmd, advertising, 10000baseKX4_Full);
++				ethtool_link_ksettings_add_link_mode
++					(cmd, supported, 10000baseKR_Full);
++				ethtool_link_ksettings_add_link_mode
++					(cmd, advertising, 10000baseKR_Full);
++				break;
++			}
++		} else {
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     10000baseT_Full);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     10000baseT_Full);
++		}
++	}
++	if (supported_link & IXGBE_LINK_SPEED_5GB_FULL)
++		ethtool_link_ksettings_add_link_mode(cmd, supported,
++						     5000baseT_Full);
++	if (supported_link & IXGBE_LINK_SPEED_2_5GB_FULL)
++		ethtool_link_ksettings_add_link_mode(cmd, supported,
++						     2500baseT_Full);
++	if (supported_link & IXGBE_LINK_SPEED_1GB_FULL) {
++		if (ixgbe_isbackplane(hw->phy.media_type)) {
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     1000baseKX_Full);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     1000baseKX_Full);
++		} else {
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     1000baseT_Full);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     1000baseT_Full);
++		}
++	}
++	if (supported_link & IXGBE_LINK_SPEED_100_FULL) {
++		ethtool_link_ksettings_add_link_mode(cmd, supported,
++						     100baseT_Full);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising,
++						     100baseT_Full);
++	}
++	if (supported_link & IXGBE_LINK_SPEED_10_FULL) {
++		ethtool_link_ksettings_add_link_mode(cmd, supported,
++						     10baseT_Full);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising,
++						     10baseT_Full);
++	}
++
+ 	/* set the advertised speeds */
+ 	if (hw->phy.autoneg_advertised) {
+-		advertising = 0;
++		ethtool_link_ksettings_zero_link_mode(cmd, advertising);
+ 		if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_10_FULL)
+-			advertising |= ADVERTISED_10baseT_Full;
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     10baseT_Full);
+ 		if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_100_FULL)
+-			advertising |= ADVERTISED_100baseT_Full;
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     100baseT_Full);
+ 		if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_10GB_FULL)
+-			advertising |= supported & ADVRTSD_MSK_10G;
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     10000baseT_Full);
+ 		if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_1GB_FULL) {
+-			if (supported & SUPPORTED_1000baseKX_Full)
+-				advertising |= ADVERTISED_1000baseKX_Full;
++			if (ethtool_link_ksettings_test_link_mode(cmd,
++							       supported,
++							       1000baseKX_Full))
++				ethtool_link_ksettings_add_link_mode(cmd,
++							       advertising,
++							       1000baseKX_Full);
+ 			else
+-				advertising |= ADVERTISED_1000baseT_Full;
++				ethtool_link_ksettings_add_link_mode(cmd,
++							       advertising,
++							       1000baseT_Full);
++		}
++		if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_5GB_FULL) {
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     5000baseT_Full);
++		}
++		if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_2_5GB_FULL) {
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     2500baseT_Full);
+ 		}
+ 	} else {
+ 		if (hw->phy.multispeed_fiber && !autoneg) {
+ 			if (supported_link & IXGBE_LINK_SPEED_10GB_FULL)
+-				advertising = ADVERTISED_10000baseT_Full;
++				ethtool_link_ksettings_add_link_mode(cmd,
++							       advertising,
++							       10000baseT_Full);
+ 		}
+ 	}
+ 
+ 	if (autoneg) {
+-		supported |= SUPPORTED_Autoneg;
+-		advertising |= ADVERTISED_Autoneg;
++		ethtool_link_ksettings_add_link_mode(cmd, supported, Autoneg);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, Autoneg);
+ 		cmd->base.autoneg = AUTONEG_ENABLE;
+-	} else
++	} else {
+ 		cmd->base.autoneg = AUTONEG_DISABLE;
++	}
+ 
+ 	/* Determine the remaining settings based on the PHY type. */
+ 	switch (adapter->hw.phy.type) {
+@@ -235,13 +289,13 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 	case ixgbe_phy_x550em_ext_t:
+ 	case ixgbe_phy_fw:
+ 	case ixgbe_phy_cu_unknown:
+-		supported |= SUPPORTED_TP;
+-		advertising |= ADVERTISED_TP;
++		ethtool_link_ksettings_add_link_mode(cmd, supported, TP);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, TP);
+ 		cmd->base.port = PORT_TP;
+ 		break;
+ 	case ixgbe_phy_qt:
+-		supported |= SUPPORTED_FIBRE;
+-		advertising |= ADVERTISED_FIBRE;
++		ethtool_link_ksettings_add_link_mode(cmd, supported, FIBRE);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, FIBRE);
+ 		cmd->base.port = PORT_FIBRE;
+ 		break;
+ 	case ixgbe_phy_nl:
+@@ -255,13 +309,15 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 	case ixgbe_phy_qsfp_active_unknown:
+ 	case ixgbe_phy_qsfp_intel:
+ 	case ixgbe_phy_qsfp_unknown:
+-		/* SFP+ devices, further checking needed */
+ 		switch (adapter->hw.phy.sfp_type) {
++		/* SFP+ devices, further checking needed */
+ 		case ixgbe_sfp_type_da_cu:
+ 		case ixgbe_sfp_type_da_cu_core0:
+ 		case ixgbe_sfp_type_da_cu_core1:
+-			supported |= SUPPORTED_FIBRE;
+-			advertising |= ADVERTISED_FIBRE;
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     FIBRE);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     FIBRE);
+ 			cmd->base.port = PORT_DA;
+ 			break;
+ 		case ixgbe_sfp_type_sr:
+@@ -272,61 +328,72 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 		case ixgbe_sfp_type_1g_sx_core1:
+ 		case ixgbe_sfp_type_1g_lx_core0:
+ 		case ixgbe_sfp_type_1g_lx_core1:
+-			supported |= SUPPORTED_FIBRE;
+-			advertising |= ADVERTISED_FIBRE;
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     FIBRE);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     FIBRE);
+ 			cmd->base.port = PORT_FIBRE;
+ 			break;
+ 		case ixgbe_sfp_type_not_present:
+-			supported |= SUPPORTED_FIBRE;
+-			advertising |= ADVERTISED_FIBRE;
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     FIBRE);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     FIBRE);
+ 			cmd->base.port = PORT_NONE;
+ 			break;
+ 		case ixgbe_sfp_type_1g_cu_core0:
+ 		case ixgbe_sfp_type_1g_cu_core1:
+-			supported |= SUPPORTED_TP;
+-			advertising |= ADVERTISED_TP;
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     TP);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     TP);
+ 			cmd->base.port = PORT_TP;
+ 			break;
+ 		case ixgbe_sfp_type_unknown:
+ 		default:
+-			supported |= SUPPORTED_FIBRE;
+-			advertising |= ADVERTISED_FIBRE;
++			ethtool_link_ksettings_add_link_mode(cmd, supported,
++							     FIBRE);
++			ethtool_link_ksettings_add_link_mode(cmd, advertising,
++							     FIBRE);
+ 			cmd->base.port = PORT_OTHER;
+ 			break;
+ 		}
+ 		break;
+ 	case ixgbe_phy_xaui:
+-		supported |= SUPPORTED_FIBRE;
+-		advertising |= ADVERTISED_FIBRE;
++		ethtool_link_ksettings_add_link_mode(cmd, supported, FIBRE);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, FIBRE);
+ 		cmd->base.port = PORT_NONE;
+ 		break;
+ 	case ixgbe_phy_unknown:
+ 	case ixgbe_phy_generic:
+ 	case ixgbe_phy_sfp_unsupported:
+ 	default:
+-		supported |= SUPPORTED_FIBRE;
+-		advertising |= ADVERTISED_FIBRE;
++		ethtool_link_ksettings_add_link_mode(cmd, supported, FIBRE);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, FIBRE);
+ 		cmd->base.port = PORT_OTHER;
+ 		break;
+ 	}
+ 
+ 	/* Indicate pause support */
+-	supported |= SUPPORTED_Pause;
++	ethtool_link_ksettings_add_link_mode(cmd, supported, Pause);
+ 
+ 	switch (hw->fc.requested_mode) {
+ 	case ixgbe_fc_full:
+-		advertising |= ADVERTISED_Pause;
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, Pause);
+ 		break;
+ 	case ixgbe_fc_rx_pause:
+-		advertising |= ADVERTISED_Pause |
+-				     ADVERTISED_Asym_Pause;
++		ethtool_link_ksettings_add_link_mode(cmd, advertising, Pause);
++		ethtool_link_ksettings_add_link_mode(cmd, advertising,
++						     Asym_Pause);
+ 		break;
+ 	case ixgbe_fc_tx_pause:
+-		advertising |= ADVERTISED_Asym_Pause;
++		ethtool_link_ksettings_add_link_mode(cmd, advertising,
++						     Asym_Pause);
+ 		break;
+ 	default:
+-		advertising &= ~(ADVERTISED_Pause |
+-				       ADVERTISED_Asym_Pause);
++		ethtool_link_ksettings_del_link_mode(cmd, advertising, Pause);
++		ethtool_link_ksettings_del_link_mode(cmd, advertising,
++						     Asym_Pause);
+ 	}
+ 
+ 	if (netif_carrier_ok(netdev)) {
+@@ -358,11 +425,6 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 		cmd->base.duplex = DUPLEX_UNKNOWN;
+ 	}
+ 
+-	ethtool_convert_legacy_u32_to_link_mode(cmd->link_modes.supported,
+-						supported);
+-	ethtool_convert_legacy_u32_to_link_mode(cmd->link_modes.advertising,
+-						advertising);
+-
+ 	return 0;
  }
+ 
+@@ -402,6 +464,16 @@ static int ixgbe_set_link_ksettings(struct net_device *netdev,
+ 		if (advertising & ADVERTISED_10000baseT_Full)
+ 			advertised |= IXGBE_LINK_SPEED_10GB_FULL;
+ 
++		if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++							  5000baseT_Full))
++			advertised |= IXGBE_LINK_SPEED_5GB_FULL;
++
++		if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++							  2500baseT_Full))
++			advertised |= IXGBE_LINK_SPEED_2_5GB_FULL;
++
++		if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++							  1000baseT_Full))
+ 		if (advertising & ADVERTISED_1000baseT_Full)
+ 			advertised |= IXGBE_LINK_SPEED_1GB_FULL;
+ 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 7515ed825fe2..0c7d208d9ab0 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -5512,6 +5512,8 @@ static int ixgbe_non_sfp_link_config(struct ixgbe_hw *hw)
+ 	if (ret)
+ 		return ret;
+ 
++	speed &= ~(IXGBE_LINK_SPEED_5GB_FULL | IXGBE_LINK_SPEED_2_5GB_FULL);
++
+ 	if (hw->mac.ops.setup_link)
+ 		ret = hw->mac.ops.setup_link(hw, speed, link_up);
+ 
 -- 
 2.26.2
 
