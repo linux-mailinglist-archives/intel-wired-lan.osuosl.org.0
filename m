@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C152720C54A
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 28 Jun 2020 03:56:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6809020C551
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 28 Jun 2020 04:03:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 786C688072;
-	Sun, 28 Jun 2020 01:56:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EC5F886EB7;
+	Sun, 28 Jun 2020 02:03:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YacDuATmkJNG; Sun, 28 Jun 2020 01:56:33 +0000 (UTC)
+	with ESMTP id NYM116xFEN6h; Sun, 28 Jun 2020 02:03:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id AED2E8815B;
-	Sun, 28 Jun 2020 01:56:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 89F9786F9C;
+	Sun, 28 Jun 2020 02:03:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 927B11BF40F
- for <intel-wired-lan@lists.osuosl.org>; Sun, 28 Jun 2020 01:56:30 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E99641BF40F
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 28 Jun 2020 02:03:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 72221204B5
- for <intel-wired-lan@lists.osuosl.org>; Sun, 28 Jun 2020 01:56:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id DDAD786EB7
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 28 Jun 2020 02:03:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QnbVZcAGTqQg for <intel-wired-lan@lists.osuosl.org>;
- Sun, 28 Jun 2020 01:56:28 +0000 (UTC)
+ with ESMTP id 83J3P1RjBjj1 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 28 Jun 2020 02:03:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 245C3204B3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 28 Jun 2020 01:56:27 +0000 (UTC)
-IronPort-SDR: TMVlbXpmmTYklBUEy/6mb2SdqUUQ9aWhRFWj7E72hbkQh4mlzffI2QeyMK9vmz4GgSa8sR7eKg
- GhFMw6EHdw9w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9665"; a="210836029"
-X-IronPort-AV: E=Sophos;i="5.75,289,1589266800"; d="scan'208";a="210836029"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D8A3686E10
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 28 Jun 2020 02:03:29 +0000 (UTC)
+IronPort-SDR: elxWgv5jn5HLmVrUTGrvPhpInchriKJp+tPm9uZP3f/0eZlVEZOpUZGQ4Yar4bSypJRsKLKZnk
+ gUmrqVyFUuxQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9665"; a="134078338"
+X-IronPort-AV: E=Sophos;i="5.75,289,1589266800"; d="scan'208";a="134078338"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jun 2020 18:56:26 -0700
-IronPort-SDR: jffnGACmIfza+krBWPFB+XAKaLxovSTEpBtmUQ9ngbyeeClpldl7lnH6ljchQ4APTO3p/qbft3
- g3ROe1rJQXWw==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2020 19:03:28 -0700
+IronPort-SDR: VpUqNFdtMP61KREI4ljSgXfR3WuCBuK1fZfcwZlZXXmKNftqEnZAFHFU64kudK/jjD9KWR2aiZ
+ Za2zCcmWtMGg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,289,1589266800"; d="scan'208";a="280515341"
+X-IronPort-AV: E=Sophos;i="5.75,289,1589266800"; d="scan'208";a="309822606"
 Received: from lkp-server01.sh.intel.com (HELO 538b5e3c8319) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 27 Jun 2020 18:56:25 -0700
+ by orsmga007.jf.intel.com with ESMTP; 27 Jun 2020 19:03:27 -0700
 Received: from kbuild by 538b5e3c8319 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1jpMYT-00033b-6d; Sun, 28 Jun 2020 01:56:25 +0000
-Date: Sun, 28 Jun 2020 09:56:13 +0800
+ id 1jpMfG-00033k-JX; Sun, 28 Jun 2020 02:03:26 +0000
+Date: Sun, 28 Jun 2020 10:02:36 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5ef7f8bd.QhumbmwXYP9ClWzS%lkp@intel.com>
+Message-ID: <5ef7fa3c.uyiQ+sXfjkN6I5N+%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
- 1a363920811df08c82373993c3df461dae60b10c
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
+ b072950db9f903b6ce6b5cf02a173ca59f6b7035
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,99 +74,105 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
-branch HEAD: 1a363920811df08c82373993c3df461dae60b10c  ice: Fix a couple off by one bugs
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: b072950db9f903b6ce6b5cf02a173ca59f6b7035  ixgbe: Add ethtool support to enable 2.5 and 5.0 Gbps support
 
-elapsed time: 1614m
+Error/Warning in current branch:
 
-configs tested: 135
-configs skipped: 7
+drivers/net/ethernet/intel/iecm/iecm_txrx.c:2508:28: error: 'last_offset' undeclared (first use in this function); did you mean 'page_offset'?
+drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2269:15: error: redefinition of 'truesize'
+include/linux/avf/virtchnl.h:1090:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rss_hash' is not an integer constant
+include/linux/avf/virtchnl.h:175:36: warning: division by zero [-Wdiv-by-zero]
+include/linux/avf/virtchnl.h:809:1: note: in expansion of macro 'VIRTCHNL_CHECK_STRUCT_LEN'
+include/linux/avf/virtchnl.h:809:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_get_capabilities' is not an integer constant
+include/linux/avf/virtchnl.h:891:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_txq_info_v2' is not an integer constant
+include/linux/avf/virtchnl.h:907:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_tx_queues' is not an integer constant
+include/linux/avf/virtchnl.h:937:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rxq_info_v2' is not an integer constant
+include/linux/avf/virtchnl.h:952:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_rx_queues' is not an integer constant
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Error/Warning ids grouped by kconfigs:
 
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
+recent_errors
+|-- alpha-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- arc-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+|   |-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:note:in-expansion-of-macro-VIRTCHNL_CHECK_STRUCT_LEN
+|   `-- include-linux-avf-virtchnl.h:warning:division-by-zero
+|-- i386-allmodconfig
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
+|   |-- include-linux-avf-virtchnl.h:note:in-expansion-of-macro-VIRTCHNL_CHECK_STRUCT_LEN
+|   `-- include-linux-avf-virtchnl.h:warning:division-by-zero
+|-- ia64-allmodconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- ia64-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- mips-loongson3_defconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- sparc-allyesconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- sparc64-allmodconfig
+|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+`-- sparc64-allyesconfig
+    |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
+    `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+
+elapsed time: 1634m
+
+configs tested: 91
+configs skipped: 2
+
 arm64                            allyesconfig
 arm64                               defconfig
 arm64                            allmodconfig
 arm64                             allnoconfig
-powerpc                      chrp32_defconfig
-arc                 nsimosci_hs_smp_defconfig
-arm64                            alldefconfig
-sh                          sdk7786_defconfig
-m68k                          sun3x_defconfig
+arm                               allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
 arc                     haps_hs_smp_defconfig
 powerpc                          g5_defconfig
 mips                        jmr3927_defconfig
-s390                             allyesconfig
-sh                           se7751_defconfig
-arm                       imx_v6_v7_defconfig
-arm                            xcep_defconfig
-arm                      pxa255-idp_defconfig
-arm                          tango4_defconfig
-nios2                               defconfig
-m68k                       m5475evb_defconfig
-arc                         haps_hs_defconfig
-h8300                               defconfig
-arm                         cm_x300_defconfig
-sh                         microdev_defconfig
-m68k                             allmodconfig
-powerpc                       ppc64_defconfig
-h8300                            allyesconfig
-arm                            lart_defconfig
-m68k                          atari_defconfig
-arm                        mini2440_defconfig
-arm                          pxa168_defconfig
-arc                                 defconfig
-arm                             pxa_defconfig
-arm                         lpc18xx_defconfig
-mips                           ip27_defconfig
-arm                     eseries_pxa_defconfig
-mips                      loongson3_defconfig
-m68k                             alldefconfig
-nios2                         10m50_defconfig
-mips                     decstation_defconfig
-arm                       versatile_defconfig
-mips                          ath25_defconfig
-mips                        nlm_xlp_defconfig
-sparc                            allyesconfig
-arm                       netwinder_defconfig
-mips                    maltaup_xpa_defconfig
-powerpc                    gamecube_defconfig
-ia64                                defconfig
 h8300                       h8s-sim_defconfig
 sh                          landisk_defconfig
 sh                          kfr2r09_defconfig
 mips                  maltasmvp_eva_defconfig
 sh                         apsh4a3a_defconfig
 openrisc                    or1ksim_defconfig
-arm                         axm55xx_defconfig
-ia64                              allnoconfig
-mips                      pistachio_defconfig
-arm                          ixp4xx_defconfig
-arm                       spear13xx_defconfig
 parisc                            allnoconfig
-mips                           jazz_defconfig
-x86_64                           alldefconfig
-arm                         s3c2410_defconfig
-powerpc                     mpc512x_defconfig
-openrisc                 simple_smp_defconfig
-sh                           cayman_defconfig
-arm                         bcm2835_defconfig
-sh                  sh7785lcr_32bit_defconfig
+arm                            lart_defconfig
+mips                      loongson3_defconfig
 i386                              allnoconfig
 i386                             allyesconfig
 i386                                defconfig
 i386                              debian-10.3
 ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
 ia64                             allyesconfig
+m68k                             allmodconfig
 m68k                              allnoconfig
 m68k                           sun3_defconfig
 m68k                                defconfig
 m68k                             allyesconfig
+nios2                               defconfig
 nios2                            allyesconfig
 openrisc                            defconfig
 c6x                              allyesconfig
@@ -179,8 +185,10 @@ csky                                defconfig
 alpha                               defconfig
 alpha                            allyesconfig
 xtensa                           allyesconfig
+h8300                            allyesconfig
 h8300                            allmodconfig
 xtensa                              defconfig
+arc                                 defconfig
 arc                              allyesconfig
 sh                               allmodconfig
 sh                                allnoconfig
@@ -200,9 +208,11 @@ riscv                            allyesconfig
 riscv                             allnoconfig
 riscv                               defconfig
 riscv                            allmodconfig
+s390                             allyesconfig
 s390                              allnoconfig
 s390                             allmodconfig
 s390                                defconfig
+sparc                            allyesconfig
 sparc                               defconfig
 sparc64                             defconfig
 sparc64                           allnoconfig
@@ -210,8 +220,8 @@ sparc64                          allyesconfig
 sparc64                          allmodconfig
 um                               allmodconfig
 um                                allnoconfig
-um                                  defconfig
 um                               allyesconfig
+um                                  defconfig
 x86_64                               rhel-7.6
 x86_64                    rhel-7.6-kselftests
 x86_64                               rhel-8.3
