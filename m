@@ -2,60 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DE6F20DD1E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Jun 2020 23:27:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1954B20EA0D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2020 02:16:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AD9C12047B;
-	Mon, 29 Jun 2020 21:27:31 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B632F204C4;
+	Tue, 30 Jun 2020 00:16:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yNHNXNPrndQI; Mon, 29 Jun 2020 21:27:31 +0000 (UTC)
+	with ESMTP id q2WffrcZoEyW; Tue, 30 Jun 2020 00:16:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CCA20204A8;
-	Mon, 29 Jun 2020 21:27:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B8B0420498;
+	Tue, 30 Jun 2020 00:16:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 08A7D1BF28A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jun 2020 21:24:40 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B98011BF2CD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2020 00:16:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id F1CF089063
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jun 2020 21:24:39 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A9F492046B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2020 00:16:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oXSQsKNteZHp for <intel-wired-lan@lists.osuosl.org>;
- Mon, 29 Jun 2020 21:24:37 +0000 (UTC)
-X-Greylist: delayed 00:06:33 by SQLgrey-1.7.6
-Received: from smtp.aristanetworks.com (mx.aristanetworks.com [162.210.129.12])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D5B8A88D94
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jun 2020 21:24:37 +0000 (UTC)
-Received: from us180.sjc.aristanetworks.com (us180.sjc.aristanetworks.com
- [172.25.230.4])
- by smtp.aristanetworks.com (Postfix) with ESMTP id DB96540186E;
- Mon, 29 Jun 2020 14:18:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arista.com;
- s=Arista-A; t=1593465481;
- bh=6rzpagTEz/0c76jqpV4RCeaagtLY9blrBtt6YCEHTrw=;
- h=Date:To:Subject:From:From;
- b=T7f3fBEHpUZytdu2dNWE4IOyY2k7FnzrY+o/OenHEBt9S58mhUR6c/sbUsE90U9um
- 63HFFog4ODYUbrqhwyMkQ343mLRQk+Czh8yoTjh+Pm4O/tpDpKx1PT5w0q3r/QyAGr
- PRGBqfHrx/7eQB71w/KdbZrJZxIr5UEq0GjbQ3HrBZw1K2F0Y7AaHSuAJ6ig3TLcg8
- 3RNjXFcd9utZlJ6YFi3eUfn/ZX64DNvg+C6tvNfESlrjJjI6SFLQJWFKnw+HEH4hQR
- r0evEFRhEBprt3Jv6Zxm+wdSvOgEYxn+fHauuuUYP52erWnuWY0rL1ObWwXLXZka/8
- DrkZaIFaGJmGA==
-Received: by us180.sjc.aristanetworks.com (Postfix, from userid 10189)
- id C3D7095C0900; Mon, 29 Jun 2020 14:18:01 -0700 (PDT)
-Date: Mon, 29 Jun 2020 14:18:01 -0700
-To: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net,
- jeffrey.t.kirsher@intel.com, fruggeri@arista.com
-User-Agent: Heirloom mailx 12.5 7/5/10
-Message-Id: <20200629211801.C3D7095C0900@us180.sjc.aristanetworks.com>
-From: fruggeri@arista.com (Francesco Ruggeri)
-X-Mailman-Approved-At: Mon, 29 Jun 2020 21:27:29 +0000
-Subject: [Intel-wired-lan] [PATCH] igb: reinit_locked() should be called
+ with ESMTP id wxndel3gYxYW for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jun 2020 00:16:14 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id D7BA5203FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2020 00:16:14 +0000 (UTC)
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
+ [163.114.132.4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6EA4420780;
+ Tue, 30 Jun 2020 00:16:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1593476174;
+ bh=YEvv5diFUttT1gpPIdbEXdjcPTFEm+AiupFO+TUtfH4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=XPXqq8DUdenZiS+DwJWNxHyP0PHSj5hz3BKC9AFazNswmFWU7b1djg3mXyCO/Jjy2
+ cXWQivbSaTX2pfpK+vBr4skTWvNFQE8h++g5/b0OyHVCUWuBOrDSbWaVQabpOQ7shf
+ z6d9vvOY40vIWl5AHdqhZq7XbdUDZ5SF3tXb7iiA=
+Date: Mon, 29 Jun 2020 17:16:12 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: fruggeri@arista.com (Francesco Ruggeri)
+Message-ID: <20200629171612.49efbdaa@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20200629211801.C3D7095C0900@us180.sjc.aristanetworks.com>
+References: <20200629211801.C3D7095C0900@us180.sjc.aristanetworks.com>
+MIME-Version: 1.0
+Subject: Re: [Intel-wired-lan] [PATCH] igb: reinit_locked() should be called
  with rtnl_lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -69,57 +65,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We observed a panic in igb_reset_task caused by this race condition
-when doing a reboot -f:
+On Mon, 29 Jun 2020 14:18:01 -0700 Francesco Ruggeri wrote:
+> We observed a panic in igb_reset_task caused by this race condition
+> when doing a reboot -f:
+> 
+> 	kworker			reboot -f
+> 
+> 	igb_reset_task
+> 	igb_reinit_locked
+> 	igb_down
+> 	napi_synchronize
+> 				__igb_shutdown
+> 				igb_clear_interrupt_scheme
+> 				igb_free_q_vectors
+> 				igb_free_q_vector
+> 				adapter->q_vector[v_idx] = NULL;
+> 	napi_disable
+> 	Panics trying to access
+> 	adapter->q_vector[v_idx].napi_state
+> 
+> This commit applies to igb the same changes that were applied to ixgbe
+> in commit 8f4c5c9fb87a ("ixgbe: reinit_locked() should be called with
+> rtnl_lock") and commit 88adce4ea8f9 ("ixgbe: fix possible race in
+> reset subtask").
+> 
+> Signed-off-by: Francesco Ruggeri <fruggeri@arista.com>
 
-	kworker			reboot -f
+Thanks for the patch..
 
-	igb_reset_task
-	igb_reinit_locked
-	igb_down
-	napi_synchronize
-				__igb_shutdown
-				igb_clear_interrupt_scheme
-				igb_free_q_vectors
-				igb_free_q_vector
-				adapter->q_vector[v_idx] = NULL;
-	napi_disable
-	Panics trying to access
-	adapter->q_vector[v_idx].napi_state
+Would you mind adding a fixes tag here? Probably:
 
-This commit applies to igb the same changes that were applied to ixgbe
-in commit 8f4c5c9fb87a ("ixgbe: reinit_locked() should be called with
-rtnl_lock") and commit 88adce4ea8f9 ("ixgbe: fix possible race in
-reset subtask").
+Fixes: 9d5c824399de ("igb: PCI-Express 82575 Gigabit Ethernet driver")
 
-Signed-off-by: Francesco Ruggeri <fruggeri@arista.com>
----
- drivers/net/ethernet/intel/igb/igb_main.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 8bb3db2cbd41..b79a78e102f3 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -6224,9 +6224,11 @@ static void igb_reset_task(struct work_struct *work)
- 	struct igb_adapter *adapter;
- 	adapter = container_of(work, struct igb_adapter, reset_task);
- 
-+	rtnl_lock();
- 	igb_dump(adapter);
- 	netdev_err(adapter->netdev, "Reset adapter\n");
- 	igb_reinit_locked(adapter);
-+	rtnl_unlock();
- }
- 
- /**
-
+And as a matter of fact it looks like e1000e and e1000 have the same
+bug :/ Would you mind checking all Intel driver producing matches for
+all the affected ones?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
