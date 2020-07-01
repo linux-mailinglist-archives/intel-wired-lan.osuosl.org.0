@@ -2,95 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3949A21118E
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jul 2020 19:05:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 79047211170
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jul 2020 19:01:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E302F8AD29;
-	Wed,  1 Jul 2020 17:05:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 35B408AD43;
+	Wed,  1 Jul 2020 17:01:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GmLwtZJ5E0rj; Wed,  1 Jul 2020 17:05:48 +0000 (UTC)
+	with ESMTP id 2YuJN1cCHiLt; Wed,  1 Jul 2020 17:01:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6896F8AD2E;
-	Wed,  1 Jul 2020 17:05:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id C51AA8AD45;
+	Wed,  1 Jul 2020 17:01:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B9CF81BF834
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 17:05:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3CD741BF868
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 17:01:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id B2EF88AD2A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 17:05:46 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3706A8AD43
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 17:01:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9arU443K9Zaz for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jul 2020 17:05:46 +0000 (UTC)
+ with ESMTP id yopvLF0byVSi for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jul 2020 17:01:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DA4DC8AD29
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 17:05:45 +0000 (UTC)
-IronPort-SDR: lOeBaUlj9vcGiruSYBlZneur56QubQ15McoiURzvULX34LsgATDjLOlHsxT7zeGiGkkEgGCcio
- EnMiN0iVKP/A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9669"; a="134102338"
-X-IronPort-AV: E=Sophos;i="5.75,301,1589266800"; d="scan'208";a="134102338"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 093068AD3F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 17:00:59 +0000 (UTC)
+IronPort-SDR: PWz4YNt3i01ve90IYbVzoenjeu+5z1lyp/nxnBbTGCHFBkB18blNCA/Dio3O82aa+JgofFt7gt
+ PUKXNVu4apbw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9669"; a="126733065"
+X-IronPort-AV: E=Sophos;i="5.75,301,1589266800"; d="scan'208";a="126733065"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2020 10:05:45 -0700
-IronPort-SDR: op1p91vP7Aji6w6cG4g8NXGlTt9ntr2dQj7oNlPw8l5K462ki+VM/9VjEUAaMCDoKgllWmtSqQ
- M6crB717YNWQ==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2020 10:00:58 -0700
+IronPort-SDR: xhVYjrbZPSnoeQl3xSaKiAfWK3XrBkg25CLVmF6ZOkyKxvBHVcjwd9+nHiVC5AV9y/a42DXhrl
+ Q0jTDaisft4w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,301,1589266800"; d="scan'208";a="277837013"
-Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
- by orsmga003.jf.intel.com with ESMTP; 01 Jul 2020 10:05:45 -0700
-Received: from fmsmsx125.amr.corp.intel.com (10.18.125.40) by
- fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 1 Jul 2020 10:00:09 -0700
-Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
- FMSMSX125.amr.corp.intel.com (10.18.125.40) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Wed, 1 Jul 2020 09:59:54 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.176)
- by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Wed, 1 Jul 2020 09:59:50 -0700
+X-IronPort-AV: E=Sophos;i="5.75,301,1589266800"; d="scan'208";a="455171721"
+Received: from fmsmsx606.amr.corp.intel.com ([10.18.126.86])
+ by orsmga005.jf.intel.com with ESMTP; 01 Jul 2020 10:00:56 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx606.amr.corp.intel.com (10.18.126.86) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 1 Jul 2020 10:00:55 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 1 Jul 2020 10:00:54 -0700
+Received: from FMSEDG001.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
+ via Frontend Transport; Wed, 1 Jul 2020 10:00:54 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.101)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Wed, 1 Jul 2020 10:00:52 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lnmj9RQHd+I5oFX1Y8Jk2C/3fLxyrIngJHbpOoMxi+kDJjU9HBuo75SaHfVT+nogHXK4YlKhjVbxfGgMy1zEVlwPiFOaHVWsHQ6t6VTexV3odFgE2t2RiyZ9CF/7ssUFTVKj3Xi6cAdj16Hk1uPCxt/9EV2Uv8pShfIlFv9nOUpRLwxjcWlxeTxdnia3l7Lgy4z1p+6gdp1bjUHM137Z4h1HniO91Mal914DB0kOxX5P79BAJYFC0kIPNgP+lkmbeFD5/og1dkYnwRAh714DVXaxrq879TnaKZ6Lcm6udTojZU35Lof+J/dnV14AJw1Nl1atEpAI1+w/Vu9NmNzZSw==
+ b=fdvdsWUYOBbKOUqSRgmWoZxi/nYrnmAtFJsg8IwS8qYLeOvAwwoTqVFeGFMz8CN1QlMMAey70wDgZQ13SNG2vZ+pLEdisEhB1TtmCH3VeXW4qnR4pnV52di5fF1YkRjBCCF+CG8hf8KBVES8Vgiprd4xcAnNnnUzSGjidQmH7jrqh0e1YWKAI9pYt+tNFQEQrOIpt/LiLauM9pXescl/opw8/2qtwjyU2k8iN1WWRosCn3mG8IXFuvGrlaGG6PPCILXlPqjyRblI/tZ23hp1CUyCKJIxUqFiHNThFDPn9/8bufdUCE/weyit6hycP/4v6Wshtwgt1ZQc0iCEYl/kfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7wgyQvCo9YQbnney/gruQnzj4O2i5NZ4oDOKsDRuzyA=;
- b=W2RVLVxYZ7l8zMUSByLvUtDo8Hx0J6Za9bHnJ3PtQQErY/WMK4zQcRzUSDs069p5CX0cZ6sO7U/9wh940ao8EFFNfA7GiXpZJY8myrHlEj1QPFH0xExwhYlZxivBj+Yyj5kgjkfabZGPO96mZexvJsY3nFzodZt/HnG6lJ0+s4nQggU4RqdO6+2e57DMWLvwRJK2FUKZdRhwOKwmt4P5dwVbAzGp2RqkL1ShBSVgl8NbDYnGR7PGZnO1Uk4E9dvD+DgLntTnp+ZvYqf4dh1x8nxualCl3VTcq8Vnjm7TvFKYZmtK/XCARin+8ZJWNDsQvY1Dcfbxe20Uiuw9YJCb+g==
+ bh=dt1KaI7anAoMTKWbBHedMdO/QS3rxOlKNogm4AueNYA=;
+ b=EAxJMJujy5tN0G4eaOsFxhXvw2285/xDd7U7obgaR5T6dXqdMo8eLpc4TYcYIpB3iFKiw8o1IAS6c0v4x3EgkCxvzu1grWch8CMHAVbu/9BWDG42FdFZeUfGZCCgLponTM4FQfvdYVPH08O8vbFgaelhQp14W4sBf8EQcj87OaAhT02dPs6rL3EXjL/wPoE6i2KPFdP0WgPuSWhJt2f48uUueH0O5zxl/7Wb9+RqvQ1ga6O/0estlHPBG1arExe2v6N91+xfSAzwrZaU6fHRhUCFVJhS8Zc75DTHZp2ZHz4dt319dEltVQiDgcwrHfBEyHA+1YmUyswFUYoIsdVZ/Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7wgyQvCo9YQbnney/gruQnzj4O2i5NZ4oDOKsDRuzyA=;
- b=rQqQTutmIo4/BpxTqIs0/F2zIEUtcweG+Z9tjoMmA2Q1niajssFw1VBzft/boH6rlnRB6Ov71vJaAyWfFctNOlrAP9/d+NY5I9julWvk4PH4oKJXJW+8jMlQafrG6UK9zreqaX4msa7xNKUvt3Fui76DuOiDg0At7L0QjovNY7Q=
+ bh=dt1KaI7anAoMTKWbBHedMdO/QS3rxOlKNogm4AueNYA=;
+ b=bfF9o22M2wxOw4+uWvYSw0Kvv3prDYtaMYtMsjV6gw/rKm+8UNsMQ/2xFFSLcQfsqcs0z4MNAxXvospfctkM0xuNoYsUGFtMYLG3AK0NJy9YI6DgKoaSpC99pd4D4iOnxYMdiedjtjh6wGZAJi43gv3SktPdkMSDWU+aWfuEifs=
 Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
  (2603:10b6:405:51::10) by BN8PR11MB3698.namprd11.prod.outlook.com
  (2603:10b6:408:8a::18) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3131.21; Wed, 1 Jul
- 2020 16:59:48 +0000
+ 2020 17:00:50 +0000
 Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
  ([fe80::c908:e244:e85:3362]) by BN6PR1101MB2145.namprd11.prod.outlook.com
  ([fe80::c908:e244:e85:3362%9]) with mapi id 15.20.3131.028; Wed, 1 Jul 2020
- 16:59:48 +0000
+ 17:00:50 +0000
 From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
 To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v1 1/5] iavf: use generic power
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v1 3/5] ixgbe: use generic power
  management
-Thread-Index: AQHWTfgrmiUZ62k5Tk23/CCLp/c1+qjy9eDg
-Date: Wed, 1 Jul 2020 16:59:47 +0000
-Message-ID: <BN6PR1101MB21456FB6DC435BF22390B8478C6C0@BN6PR1101MB2145.namprd11.prod.outlook.com>
+Thread-Index: AQHWTfghDdkZR8QavUuIabTpLzpIvajy9ihA
+Date: Wed, 1 Jul 2020 17:00:50 +0000
+Message-ID: <BN6PR1101MB2145F17248D73BF3C751F99E8C6C0@BN6PR1101MB2145.namprd11.prod.outlook.com>
 References: <20200629092943.227910-1-vaibhavgupta40@gmail.com>
- <20200629092943.227910-2-vaibhavgupta40@gmail.com>
-In-Reply-To: <20200629092943.227910-2-vaibhavgupta40@gmail.com>
+ <20200629092943.227910-4-vaibhavgupta40@gmail.com>
+In-Reply-To: <20200629092943.227910-4-vaibhavgupta40@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -102,33 +108,33 @@ authentication-results: vger.kernel.org; dkim=none (message not signed)
  header.d=none;vger.kernel.org; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [192.55.52.219]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e3251fbc-685a-4ac6-5ce1-08d81de02999
+x-ms-office365-filtering-correlation-id: 9aa84633-f54f-40d6-803f-08d81de04ec7
 x-ms-traffictypediagnostic: BN8PR11MB3698:
-x-microsoft-antispam-prvs: <BN8PR11MB36985E4F6343EBCCED0412E38C6C0@BN8PR11MB3698.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1360;
+x-microsoft-antispam-prvs: <BN8PR11MB369862D14CF41B65CE0D585C8C6C0@BN8PR11MB3698.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:3826;
 x-forefront-prvs: 04519BA941
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: uwtzu3URZ5Wi83TcRFO1FBKGd9rTRcEJrkSOYncBYxCGQNVC3L7RKx0K0HlR/c1gp2Bz+7rBHoGsr4ziULP+FoRbEVTPS7irjuC6aKUVNaO5EFuZIGS2Z8lkJna3dOCmVDRZ0/jGDKYZgT9/54bke//GGBbNMHDHmdo8oRNUsYfDy5ltrCLVcxLqMLmw+a4N2c1637GTw8mOklM0rQyf2aUC4dxdiDApxg9rujdplrfhmMnrG/ZeP7rkqFCg++gqESBc0HKtjWzjlSasr1rS0DxV/R/cCrBPMnkDeiMqc2XrkU355roOXv12b8rV/X+LrgB6hgrTnq8REuBDLs4TFgB2zS5433dGfQQtmTUU5BOMmx0ZFRRa7y4A8m78ZvCt
+x-microsoft-antispam-message-info: 2PmyiLixWkx37JP7foTpy3Y3NjQWesatj9cjkOaPmTBllwGU335VYYLLr1o7JS6fSy/alIEr6fXKvc8sO/FpufFDVkBcP7Th9noR83a3pDAYQI3z3wuIyzgx1HDKZrg+hB9jV4ZRPDd5x0UM4dVjZiw/cPWstnTypjAYdMXVLxZlnnYncjfputNS5BzxFxv1cXSgIUzdFJiFGk7gMiicRiqJ3ufFU4aVESQPHVwoKPute6glhhXquYPPfYcoxBZKSSfsj3VwTgq6pQ342pdfGjMBmyf9W7B/yi53DkHM2vo4BgXoYb1aLpneHDfV3ObFQGNsVLm8E8csU5hlNu0yZpr50rZbq5YLfaGJtESFoOKJZFeeEswEsu7fm+MLM1aK
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(136003)(39860400002)(366004)(376002)(396003)(346002)(2906002)(55016002)(9686003)(8676002)(86362001)(52536014)(33656002)(478600001)(26005)(5660300002)(186003)(6506007)(316002)(8936002)(66446008)(7696005)(66556008)(76116006)(66946007)(53546011)(64756008)(110136005)(66476007)(71200400001)(83380400001)(41533002);
+ SFS:(4636009)(39860400002)(346002)(396003)(366004)(376002)(136003)(316002)(8936002)(6506007)(26005)(5660300002)(186003)(110136005)(64756008)(83380400001)(66476007)(71200400001)(7696005)(66556008)(76116006)(66446008)(53546011)(66946007)(55016002)(2906002)(478600001)(33656002)(9686003)(8676002)(52536014)(86362001)(41533002);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: uODgLvqRtQXeGm10s3BVl0yV5QmM1JYr9DhHiWJ6jWVAu9iMfgIcm/uBhvjbE02HA+ckqLgYOGLJ/ftRV3kJy5v9y0DNMVSaJRMvSFMDh8uetHw9m6dyNMMVw70qWNybSvtH3yzXjTp6Yy4pkSqmrz1npAy9j/N1b/yJVJ22FKHhqS4vhmMQVhzelC5G9OqUMqXWSUwGfnbnA437xcy7E4lfm7zSrsBkXFvEZLFMiy/4R6JvWb/zKeF9XB0hv8ioercA+vy8BM8hny4XLmTcrlgiHyhh2cSH6TLBs2QMHNzCUUPa+/npXYaQiECsv6RhoUR5xeTJRbspIPUVUOh1XCcf2wyeEASaXjzATfS8S4889L6mO8hMYoK3LtfzJODPea9LfFkYjJBNEunKtuVnJbVT6cGRXNxRZnLWn3xenz6I95ZfMawxyrQyOraOkK7dZvbWkzMtV333bs8x68l5MKKnwXBjPEVwrvwM7L8wK7c=
+x-ms-exchange-antispam-messagedata: rT/52W+0ZYu3qLGCvyOWeVrN8JeDw9dHRdRnj3xAzEhfm4z+XXmC9EhrP4t72LvF7muStkJrRZVMxnSH5xqslcLHQpFeDrGPbNn6VURdTkE7ia7poTHddbZUGCyB28x88yE1j6fppN1M0l3P+aTiioXlkjWCLs6EsY6RiEhmoHR85Mc0ewI7XU8s9Rk+jEZLF22/qtVPkXl/OQMRfswPi3U35GCKBJCOHyHGeiEZjZKfwyr/kCkGfJ6CrOhqos3FUfKT1ujNyjnvAKF1qAhpuYAJCtPTAolO1p3LHe2VdP7J/2FQR4vYsScXUlZHQfsalm10pNpavo1lKyBuxlpBAid7xf452ApxEgBu7qSbU50g3WqJUacpbUk/0NqqU85FWfMCDKJXoR+cJrACioYgCPfrDsXYuYAENFgQdaKMCpW3rqiJinlcDkwz0SGkX/DNS38EIrhdo9ISW64wUZ2TVU56gtxkuOQHSyQFHH1JzAE=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: BN6PR1101MB2145.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e3251fbc-685a-4ac6-5ce1-08d81de02999
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2020 16:59:47.9142 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9aa84633-f54f-40d6-803f-08d81de04ec7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Jul 2020 17:00:50.2823 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: R6jF0UhxuEvld2OLRguGqIx+RVyb9q6+84SY15DYXhgoIkocefl9mgQthwjkqPnuA0dl0Kk8Qgs/iqjnT1ndG55jqMf2gELbGOH32Jf2MFg=
+X-MS-Exchange-CrossTenant-userprincipalname: Rkp33QzfelOYMgdlnMRbksGSTStX5V2iuKWusZqbJCB+QKnVuMSGK3Ss4rxS2EioiddlJpjA5MqTow9AZpuHKujPR3XKRS+Dchr9i1bm+Xc=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR11MB3698
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/5] iavf: use generic power
+Subject: Re: [Intel-wired-lan] [PATCH v1 3/5] ixgbe: use generic power
  management
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -160,24 +166,28 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > linux-kernel@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
 > skhan@linuxfoundation.org; linux-kernel-
 > mentees@lists.linuxfoundation.org
-> Subject: [Intel-wired-lan] [PATCH v1 1/5] iavf: use generic power
+> Subject: [Intel-wired-lan] [PATCH v1 3/5] ixgbe: use generic power
 > management
 > 
-> With the support of generic PM callbacks, drivers no longer need to use
-> legacy .suspend() and .resume() in which they had to maintain PCI states
-> changes and device's power state themselves. The required operations are
-> done by PCI core.
+> With legacy PM hooks, it was the responsibility of a driver to manage PCI
+> states and also the device's power state. The generic approach is to let PCI
+> core handle the work.
 > 
-> PCI drivers are not expected to invoke PCI helper functions like
-> pci_save/restore_state(), pci_enable/disable_device(),
-> pci_set_power_state(), etc. Their tasks are completed by PCI core itself.
+> ixgbe_suspend() calls __ixgbe_shutdown() to perform intermediate tasks.
+> __ixgbe_shutdown() modifies the value of "wake" (device should be
+> wakeup enabled or not), responsible for controlling the flow of legacy PM.
+> 
+> Since, PCI core has no idea about the value of "wake", new code for generic
+> PM may produce unexpected results. Thus, use
+> "device_set_wakeup_enable()"
+> to wakeup-enable the device accordingly.
 > 
 > Compile-tested only.
 > 
 > Signed-off-by: Vaibhav Gupta <vaibhavgupta40@gmail.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 45 ++++++---------------
->  1 file changed, 12 insertions(+), 33 deletions(-)
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 61 +++++--------------
+>  1 file changed, 15 insertions(+), 46 deletions(-)
 
 Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
 
