@@ -1,76 +1,46 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05151210197
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jul 2020 03:37:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id B312888AA9;
-	Wed,  1 Jul 2020 01:37:44 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ge3I-m8Ad9Vz; Wed,  1 Jul 2020 01:37:44 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4376088A9D;
-	Wed,  1 Jul 2020 01:37:44 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 682521BF34E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 01:37:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14F54210750
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  1 Jul 2020 11:03:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3C5F2241A8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 01:37:42 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 940623023B;
+	Wed,  1 Jul 2020 09:03:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ejh8loy5Vyao; Wed,  1 Jul 2020 09:03:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id E8C7B301CF;
+	Wed,  1 Jul 2020 09:03:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D1C571BF361
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 09:03:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id CD9138AC25
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 09:03:39 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wgrxe86zHJaX for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jul 2020 01:37:41 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 842282413D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 01:37:40 +0000 (UTC)
-IronPort-SDR: E/FH/HR9bcdxrLZ3gkhmH9YVZTqI3x4maRHoZhI2nNGq0cp6tBuKLuI34RnSU39UH2Sw2cmvbA
- /jQICgacYMtg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9668"; a="211496819"
-X-IronPort-AV: E=Sophos;i="5.75,298,1589266800"; d="scan'208";a="211496819"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jun 2020 18:37:39 -0700
-IronPort-SDR: FOJdSSvScAe75If4MbAG6v6N7rHXGbSuz6DnceNDVl62rpQjZfMjteVk5kpb/KhnRSZzSVdD8G
- fHpFOeUPX5fg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,298,1589266800"; d="scan'208";a="454819319"
-Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
- by orsmga005.jf.intel.com with ESMTP; 30 Jun 2020 18:37:39 -0700
-Received: from orsmsx112.amr.corp.intel.com ([169.254.3.199]) by
- ORSMSX109.amr.corp.intel.com ([169.254.11.7]) with mapi id 14.03.0439.000;
- Tue, 30 Jun 2020 18:37:39 -0700
-From: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
-To: Francesco Ruggeri <fruggeri@arista.com>, Jakub Kicinski <kuba@kernel.org>, 
- David Miller <davem@davemloft.net>
-Thread-Topic: [PATCH] igb: reinit_locked() should be called with rtnl_lock
-Thread-Index: AQHWTlrL81g79hVuZ0aaoDgUuhrbt6jwv/UAgABMxoCAAOZwIA==
-Date: Wed, 1 Jul 2020 01:37:39 +0000
-Message-ID: <61CC2BC414934749BD9F5BF3D5D940449874358A@ORSMSX112.amr.corp.intel.com>
-References: <20200629211801.C3D7095C0900@us180.sjc.aristanetworks.com>
- <20200629171612.49efbdaa@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <CA+HUmGjHQPUh1frfy5E28Om9WTVr0W+UQVDsm99beC_mbTeMog@mail.gmail.com>
-In-Reply-To: <CA+HUmGjHQPUh1frfy5E28Om9WTVr0W+UQVDsm99beC_mbTeMog@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.139]
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH] igb: reinit_locked() should be called
- with rtnl_lock
+ with ESMTP id T10fTQLAXHGG for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jul 2020 09:03:33 +0000 (UTC)
+X-Greylist: delayed 00:08:37 by SQLgrey-1.7.6
+Received: from tc-sys-mailedm01.tc.baidu.com (mx57.baidu.com [61.135.168.57])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 551D88AC24
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2020 09:03:32 +0000 (UTC)
+Received: from localhost (cp01-cos-dev01.cp01.baidu.com [10.92.119.46])
+ by tc-sys-mailedm01.tc.baidu.com (Postfix) with ESMTP id 8DBA52040061;
+ Wed,  1 Jul 2020 16:54:53 +0800 (CST)
+From: Li RongQing <lirongqing@baidu.com>
+To: jeffrey.t.kirsher@intel.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+Date: Wed,  1 Jul 2020 16:54:53 +0800
+Message-Id: <1593593693-31299-1-git-send-email-lirongqing@baidu.com>
+X-Mailer: git-send-email 1.7.1
+Subject: [Intel-wired-lan] [PATCH] i40e: not compute affinity_mask for IRQ
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,42 +53,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Francesco Ruggeri <fruggeri@arista.com>
-> Sent: Monday, June 29, 2020 21:51
-> To: Jakub Kicinski <kuba@kernel.org>
-> Cc: open list <linux-kernel@vger.kernel.org>; netdev
-> <netdev@vger.kernel.org>; intel-wired-lan@lists.osuosl.org; David Miller
-> <davem@davemloft.net>; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> Subject: Re: [PATCH] igb: reinit_locked() should be called with rtnl_lock
-> 
-> > Would you mind adding a fixes tag here? Probably:
-> >
-> > Fixes: 9d5c824399de ("igb: PCI-Express 82575 Gigabit Ethernet driver")
-> 
-> That seems to be the commit that introduced the driver in 2.6.25.
-> I am not familiar with the history of the driver to tell if this was a day 1
-> problem or if it became an issue later.
-> 
-> >
-> > And as a matter of fact it looks like e1000e and e1000 have the same
-> > bug :/ Would you mind checking all Intel driver producing matches for
-> > all the affected ones?
-> 
-> Do you mean identify all Intel drivers that may have the same issue?
-> 
+After commit 759dc4a7e605 ("i40e: initialize our affinity_mask
+based on cpu_possible_mask"), NAPI IRQ affinity_mask is bind to
+all possible cpus, not a fixed cpu
 
-Do not worry about the other Intel drivers, I have our developers looking at each of our drivers for the locking issue.
+Signed-off-by: Li RongQing <lirongqing@baidu.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
-@David Miller - I am picking up this patch
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 5d807c8004f8..a63548cb022d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -11156,11 +11156,10 @@ static int i40e_init_msix(struct i40e_pf *pf)
+  * i40e_vsi_alloc_q_vector - Allocate memory for a single interrupt vector
+  * @vsi: the VSI being configured
+  * @v_idx: index of the vector in the vsi struct
+- * @cpu: cpu to be used on affinity_mask
+  *
+  * We allocate one q_vector.  If allocation fails we return -ENOMEM.
+  **/
+-static int i40e_vsi_alloc_q_vector(struct i40e_vsi *vsi, int v_idx, int cpu)
++static int i40e_vsi_alloc_q_vector(struct i40e_vsi *vsi, int v_idx)
+ {
+ 	struct i40e_q_vector *q_vector;
+ 
+@@ -11193,7 +11192,7 @@ static int i40e_vsi_alloc_q_vector(struct i40e_vsi *vsi, int v_idx, int cpu)
+ static int i40e_vsi_alloc_q_vectors(struct i40e_vsi *vsi)
+ {
+ 	struct i40e_pf *pf = vsi->back;
+-	int err, v_idx, num_q_vectors, current_cpu;
++	int err, v_idx, num_q_vectors;
+ 
+ 	/* if not MSIX, give the one vector only to the LAN VSI */
+ 	if (pf->flags & I40E_FLAG_MSIX_ENABLED)
+@@ -11203,15 +11202,10 @@ static int i40e_vsi_alloc_q_vectors(struct i40e_vsi *vsi)
+ 	else
+ 		return -EINVAL;
+ 
+-	current_cpu = cpumask_first(cpu_online_mask);
+-
+ 	for (v_idx = 0; v_idx < num_q_vectors; v_idx++) {
+-		err = i40e_vsi_alloc_q_vector(vsi, v_idx, current_cpu);
++		err = i40e_vsi_alloc_q_vector(vsi, v_idx);
+ 		if (err)
+ 			goto err_out;
+-		current_cpu = cpumask_next(current_cpu, cpu_online_mask);
+-		if (unlikely(current_cpu >= nr_cpu_ids))
+-			current_cpu = cpumask_first(cpu_online_mask);
+ 	}
+ 
+ 	return 0;
+-- 
+2.16.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
