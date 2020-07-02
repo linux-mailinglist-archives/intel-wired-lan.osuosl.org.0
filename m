@@ -1,62 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD89C211C1C
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jul 2020 08:44:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B0A7211FFA
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jul 2020 11:33:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6D20A890CE;
-	Thu,  2 Jul 2020 06:44:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EA3EC8AD35;
+	Thu,  2 Jul 2020 09:33:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xmwTldfyKV6I; Thu,  2 Jul 2020 06:44:50 +0000 (UTC)
+	with ESMTP id YzAiBg+A3XXS; Thu,  2 Jul 2020 09:33:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A5A14890E2;
-	Thu,  2 Jul 2020 06:44:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 536F38B226;
+	Thu,  2 Jul 2020 09:33:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ACB521BF5F5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 06:44:49 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 87A041BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 09:33:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A860E890CA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 06:44:49 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8046D8AD35
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 09:33:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vRzu1_HrqCYE for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jul 2020 06:44:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 9DB718906C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 06:44:43 +0000 (UTC)
-IronPort-SDR: GzjJyzBP50+HBpAWOZ7sDEoS227xkd7vpvn+364azEvzPlOj7bNuc2y0ys+Z53CE0GtMgKL8C/
- /y7I0EkamOaQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9669"; a="144968225"
-X-IronPort-AV: E=Sophos;i="5.75,303,1589266800"; d="scan'208";a="144968225"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2020 23:44:28 -0700
-IronPort-SDR: bd6r0haSClq8xPRiaScY0I1RH0ZuL1yFDO6+mO5vJ+B4ujIVoMI6Elx7iQTHHR28yaWawqe3VY
- CCJA03oN/Paw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,303,1589266800"; d="scan'208";a="425846656"
-Received: from lkp-server01.sh.intel.com (HELO 28879958b202) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 01 Jul 2020 23:44:27 -0700
-Received: from kbuild by 28879958b202 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jqsxO-0003Wd-PP; Thu, 02 Jul 2020 06:44:26 +0000
-Date: Thu, 02 Jul 2020 14:42:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5efd81f3.ylOhCAdc50ru1e5z%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id TSdm32yfGKjA for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jul 2020 09:33:32 +0000 (UTC)
+X-Greylist: delayed 00:15:31 by SQLgrey-1.7.6
+Received: from baidu.com (mx24.baidu.com [111.206.215.185])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 80FE98AA5A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 09:33:32 +0000 (UTC)
+Received: from BC-Mail-Ex31.internal.baidu.com (unknown [172.31.51.25])
+ by Forcepoint Email with ESMTPS id 3FF1C43E5E54EA49FDFD;
+ Thu,  2 Jul 2020 17:17:56 +0800 (CST)
+Received: from BJHW-Mail-Ex13.internal.baidu.com (10.127.64.36) by
+ BC-Mail-Ex31.internal.baidu.com (172.31.51.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1979.3; Thu, 2 Jul 2020 17:17:55 +0800
+Received: from BJHW-Mail-Ex13.internal.baidu.com ([100.100.100.36]) by
+ BJHW-Mail-Ex13.internal.baidu.com ([100.100.100.36]) with mapi id
+ 15.01.1979.003; Thu, 2 Jul 2020 17:17:49 +0800
+From: "Li,Rongqing" <lirongqing@baidu.com>
+To: intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>, "Karlsson, Magnus"
+ <magnus.karlsson@intel.com>, Netdev <netdev@vger.kernel.org>
+Thread-Topic: [bug ?] i40e_rx_buffer_flip should not be called for redirected
+ xsk copy mode
+Thread-Index: AdZQR0EbXNQd8xyJRvWOWMhzMsvatQ==
+Date: Thu, 2 Jul 2020 09:17:49 +0000
+Message-ID: <2863b548da1d4c369bbd9d6ceb337a24@baidu.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [172.22.197.240]
+x-baidu-bdmsfe-datecheck: 1_BC-Mail-Ex31_2020-07-02 17:17:56:033
+x-baidu-bdmsfe-viruscheck: BC-Mail-Ex31_GRAY_Inside_WithoutAtta_2020-07-02
+ 17:17:56:033
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- 42370146f5f6512c6f5a1b9e2683629e7db73ea1
+Subject: [Intel-wired-lan] [bug ?] i40e_rx_buffer_flip should not be called
+ for redirected xsk copy mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,132 +73,137 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7704065982542879960=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 42370146f5f6512c6f5a1b9e2683629e7db73ea1  igc: Remove ledctl_ fields from the mac_info structure
+--===============7704065982542879960==
+Content-Language: zh-CN
+Content-Type: multipart/alternative;
+	boundary="_000_2863b548da1d4c369bbd9d6ceb337a24baiducom_"
 
-Error/Warning in current branch:
+--_000_2863b548da1d4c369bbd9d6ceb337a24baiducom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2269:15: error: redefinition of 'truesize'
+Hi:
 
-Error/Warning ids grouped by kconfigs:
+i40e_rx_buffer_flip to xsk copy mode can lead to data corruption, like the =
+following flow:
 
-recent_errors
-|-- alpha-allyesconfig
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- ia64-allmodconfig
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- ia64-allyesconfig
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-`-- powerpc-defconfig
-    `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+1. first skb is not for xsk, and forwarded to another device or socket queu=
+e
+2. seconds skb is for xsk, copy data to xsk memory, and page of skb->data i=
+s released
+3. rx_buff is reusable since only first skb is in it, but i40e_rx_buffer_fl=
+ip will make that page_offset is set to first skb data
+4. then reuse rx buffer, first skb which still is living will be corrupted.
 
-elapsed time: 722m
+-Li RongQing
 
-configs tested: 92
-configs skipped: 1
 
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-sh                               j2_defconfig
-sh                             espt_defconfig
-x86_64                           alldefconfig
-arm                          exynos_defconfig
-arc                     nsimosci_hs_defconfig
-arc                          axs103_defconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-i386                              allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a011-20200701
-i386                 randconfig-a015-20200701
-i386                 randconfig-a014-20200701
-i386                 randconfig-a016-20200701
-i386                 randconfig-a012-20200701
-i386                 randconfig-a013-20200701
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-um                               allmodconfig
-um                                allnoconfig
-um                               allyesconfig
-um                                  defconfig
-x86_64                               rhel-7.6
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
-x86_64                                   rhel
-x86_64                         rhel-7.2-clear
-x86_64                                    lkp
-x86_64                              fedora-25
+--_000_2863b548da1d4c369bbd9d6ceb337a24baiducom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	font-size:10.5pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	font-family:"Calibri",sans-serif;}
+/* Page Definitions */
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"ZH-CN" link=3D"#0563C1" vlink=3D"#954F72" style=3D"text-justi=
+fy-trim:punctuation">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span lang=3D"EN-US">Hi:<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">i40e_rx_buffer_flip to xsk copy=
+ mode can lead to data corruption, like the following flow:<o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">&nbsp;&nbsp;&nbsp; <o:p></o:p><=
+/span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">1. first skb is not for xsk, an=
+d forwarded to another device or socket queue<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">2. seconds skb is for xsk, copy=
+ data to xsk memory, and page of skb-&gt;data is released<o:p></o:p></span>=
+</p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">3. rx_buff is reusable since on=
+ly first skb is in it, but i40e_rx_buffer_flip will make that page_offset i=
+s set to first skb data&nbsp;
+<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">4. then reuse rx buffer, first =
+skb which still is living will be corrupted.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US">-Li RongQing<o:p></o:p></span><=
+/p>
+<p class=3D"MsoNormal"><span lang=3D"EN-US"><o:p>&nbsp;</o:p></span></p>
+</div>
+</body>
+</html>
+
+--_000_2863b548da1d4c369bbd9d6ceb337a24baiducom_--
+
+--===============7704065982542879960==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============7704065982542879960==--
