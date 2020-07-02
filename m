@@ -1,76 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8AEF212D96
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jul 2020 22:05:37 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C3FC2212DC9
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jul 2020 22:20:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5FDB2896C1;
-	Thu,  2 Jul 2020 20:05:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A948F204F1;
+	Thu,  2 Jul 2020 20:20:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TX+5qIqodoMo; Thu,  2 Jul 2020 20:05:36 +0000 (UTC)
+	with ESMTP id XxB1CgzOWhzF; Thu,  2 Jul 2020 20:20:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id CC709896BE;
-	Thu,  2 Jul 2020 20:05:35 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 93387204FC;
+	Thu,  2 Jul 2020 20:20:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4F0D81BF397
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 20:05:34 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0A7901BF397
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 20:20:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4947887906
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 20:05:34 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 05E1688CE7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 20:20:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id id9WawrWnigM for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jul 2020 20:05:33 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id A49C5878FE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 20:05:33 +0000 (UTC)
-IronPort-SDR: L5DBB+tp/qt3dyKTL/rpnjNxCcU5z3EzBH2doGoShm1y0mqgi0eO9K6Jy2QGJU30W91Nq8xV/X
- MQf6R5V3B74g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9670"; a="212047366"
-X-IronPort-AV: E=Sophos;i="5.75,305,1589266800"; d="scan'208";a="212047366"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2020 13:05:32 -0700
-IronPort-SDR: Q/gMPJiB6RjmXVuXgFEPbhUuLmyUUtjMCNwUQ7XfBya73W9GOueOE2SPvpa4bXF+cDwKsCTH60
- 7srsWZ0HJW3Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,305,1589266800"; d="scan'208";a="455640157"
-Received: from orsmsx109.amr.corp.intel.com ([10.22.240.7])
- by orsmga005.jf.intel.com with ESMTP; 02 Jul 2020 13:05:32 -0700
-Received: from orsmsx112.amr.corp.intel.com ([169.254.3.199]) by
- ORSMSX109.amr.corp.intel.com ([169.254.11.7]) with mapi id 14.03.0439.000;
- Thu, 2 Jul 2020 13:05:32 -0700
-From: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
-To: Francesco Ruggeri <fruggeri@arista.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>
-Thread-Topic: [PATCH] igb: reinit_locked() should be called with rtnl_lock
-Thread-Index: AQHWTlrL81g79hVuZ0aaoDgUuhrbt6jwv/UAgABMxoCAAOZwIIADNT2A//+SuOA=
-Date: Thu, 2 Jul 2020 20:05:31 +0000
-Message-ID: <61CC2BC414934749BD9F5BF3D5D9404498748B57@ORSMSX112.amr.corp.intel.com>
+ with ESMTP id lBgwnILVWwNV for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jul 2020 20:20:30 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qk1-f195.google.com (mail-qk1-f195.google.com
+ [209.85.222.195])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5DA9488CE2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2020 20:20:30 +0000 (UTC)
+Received: by mail-qk1-f195.google.com with SMTP id c139so26865385qkg.12
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 02 Jul 2020 13:20:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=arista.com; s=googlenew;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Dg7b2Gpb1xwhbPPAs3f/5zlrWsmCaI8VPFPJDIO7oCs=;
+ b=LpHBpy/61tYHcbDhOlQTjymqaKpK8J7rjMk4O+FxTS5NK5wsajUBEDiNHJEIxDNrmb
+ A/vjKlla5gFM9d87viW/fHklmhK1tz+CtGJjuLrOgKm1ZEF2DF0uohGaSUa3Od6uFgwF
+ IwHbe9Uqjfw7uPuVBoh6o2uO3A9wCt0Y8mEwBxwU9GfTM8E8u1sUqDN/34Q6gUmbE6EE
+ ziMKMEkt0n4svSAzY7929lErAeLqCQMYa4VIMUTzg5NGv46LiX8uJXvBZ8rB8C3++1H4
+ P9iDLw5QIGqyZfad3TJGYKL8vyWL6exkLjaf4NXLoRBjSGaOQyIA7Z8ANbrxEJFmW8s1
+ EKsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Dg7b2Gpb1xwhbPPAs3f/5zlrWsmCaI8VPFPJDIO7oCs=;
+ b=Mw/7NZI7c8y54+vx8EthhFi0FThhSUeLK8hRRaMqcsrDTyerqeK9t6ml6GHh5q6Nvw
+ nLct1VTRub8lMAuFLwoFy+mcAkfGesEUIpCO/Lu1ySnrPPedRuvOa+kZgRFAaO3h4D/f
+ Thkt3KxybJieWe1rbHdoUChQercRHYnpq84KAvkk01Y8PLiW818lKkq2Xo4Njoj7WAPI
+ 5U3Ijwl2bXtMKku0CAyCKw7Mwo9HjMe6y17juK68LA80ALZxSY/OYJ42ehBxso9l+umT
+ hJp0pUQZSMJCmx5kH8z9K0b0OST9QmA/Rg5d3Y2UdSVCSwPC4etOY63cAxzcML/PsmmG
+ zN8g==
+X-Gm-Message-State: AOAM5300mEdBKkurc0DFoPz0a1NmKU7sq5T7KpcuHsrRTXFPvlgAFe3O
+ rw/kEs3MXC0EiFsJqyJDyQOxHj8K62n6aK/z71U5pQ==
+X-Google-Smtp-Source: ABdhPJzESDQ4tCGpwJuT9gwjDr5sMmtLBgj+5Xday1tr8AbXF/DNxfrO2eOsGxU2iUNCm4NFuhVI4oXEJD/1BRXoKqY=
+X-Received: by 2002:a37:a5cc:: with SMTP id
+ o195mr32699648qke.326.1593721229404; 
+ Thu, 02 Jul 2020 13:20:29 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200629211801.C3D7095C0900@us180.sjc.aristanetworks.com>
  <20200629171612.49efbdaa@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
  <CA+HUmGjHQPUh1frfy5E28Om9WTVr0W+UQVDsm99beC_mbTeMog@mail.gmail.com>
  <61CC2BC414934749BD9F5BF3D5D940449874358A@ORSMSX112.amr.corp.intel.com>
  <CA+HUmGhfxYY5QiwF8_UYbp0TY-k3u+cTYZDSqV1s=SUFnGCn8g@mail.gmail.com>
-In-Reply-To: <CA+HUmGhfxYY5QiwF8_UYbp0TY-k3u+cTYZDSqV1s=SUFnGCn8g@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-version: 11.2.0.6
-dlp-reaction: no-action
-x-originating-ip: [10.22.254.138]
-MIME-Version: 1.0
+ <61CC2BC414934749BD9F5BF3D5D9404498748B57@ORSMSX112.amr.corp.intel.com>
+In-Reply-To: <61CC2BC414934749BD9F5BF3D5D9404498748B57@ORSMSX112.amr.corp.intel.com>
+From: Francesco Ruggeri <fruggeri@arista.com>
+Date: Thu, 2 Jul 2020 13:20:18 -0700
+Message-ID: <CA+HUmGi6D8Ci5fk7vyengJN4qOEH6zz18Kw6B9Us-Kav-78oAg@mail.gmail.com>
+To: "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
 Subject: Re: [Intel-wired-lan] [PATCH] igb: reinit_locked() should be called
  with rtnl_lock
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -85,60 +87,21 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub Kicinski <kuba@kernel.org>, netdev <netdev@vger.kernel.org>,
+Cc: netdev <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- David Miller <davem@davemloft.net>, open list <linux-kernel@vger.kernel.org>
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Francesco Ruggeri <fruggeri@arista.com>
-> Sent: Thursday, July 2, 2020 12:35
-> To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
-> Cc: Jakub Kicinski <kuba@kernel.org>; David Miller <davem@davemloft.net>;
-> open list <linux-kernel@vger.kernel.org>; netdev <netdev@vger.kernel.org>;
-> intel-wired-lan@lists.osuosl.org
-> Subject: Re: [PATCH] igb: reinit_locked() should be called with rtnl_lock
-> 
-> > Do not worry about the other Intel drivers, I have our developers looking at
-> each of our drivers for the locking issue.
-> >
-> > @David Miller - I am picking up this patch
-> 
-> There seems to be a second race, independent from the original one, that
-> results in a divide error:
-> 
-> kworker         reboot -f       tx packet
-> 
-> igb_reset_task
->                 __igb_shutdown
->                 rtnl_lock()
->                 ...
->                 igb_clear_interrupt_scheme
->                 igb_free_q_vectors
->                 adapter->num_tx_queues = 0
->                 ...
->                 rtnl_unlock()
-> rtnl_lock()
-> igb_reinit_locked
-> igb_down
-> igb_up
-> netif_tx_start_all_queues
->                                 dev_hard_start_xmit
->                                 igb_xmit_frame
->                                 igb_tx_queue_mapping
->                                 Panics on
->                                 r_idx % adapter->num_tx_queues
-> 
-> Using in igb_reset_task a logic similar to the one in ixgbe_reset_subtask (bailing
-> if __IGB_DOWN or __IGB_RESETTING is set) seems to avoid the panic.
-> That logic was first introduced in ixgbe as part of commit 2f90b8657ec ('ixgbe:
-> this patch adds support for DCB to the kernel and ixgbe driver').
-> Both fixes seem to be needed.
+>
+> So will you be sending a v2 of your patch to include the second fix?
 
-So will you be sending a v2 of your patch to include the second fix?
+Yes, I am working on it. Just to confirm, v2 should include both fixes, right?
+
+Thanks,
+Francesco
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
