@@ -2,62 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0D9321871B
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jul 2020 14:23:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1480C218EAD
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jul 2020 19:47:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9B0998654E;
-	Wed,  8 Jul 2020 12:23:03 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 79D1F87D79;
+	Wed,  8 Jul 2020 17:46:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zos8HOJkPIyl; Wed,  8 Jul 2020 12:23:03 +0000 (UTC)
+	with ESMTP id UkclL1o1zt-9; Wed,  8 Jul 2020 17:46:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B24E0868D3;
-	Wed,  8 Jul 2020 12:23:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 9FF2287D7C;
+	Wed,  8 Jul 2020 17:46:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 90FF01BF276
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 12:23:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8B7831BF35B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 17:46:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 88F9788A65
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 12:23:00 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 84FE788D6B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 17:46:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5t2weg9b9fbd for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jul 2020 12:22:59 +0000 (UTC)
+ with ESMTP id irrhasnM3eTW for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jul 2020 17:46:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C193F888F8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 12:22:59 +0000 (UTC)
-IronPort-SDR: couSW4f0fnXv5NQb+meraZq5/GK6bdEJztMjCib3eJSPUZGCgU61ikX788Mh0rkjOx2D6ZSHy2
- CM/WxPSNQCag==
-X-IronPort-AV: E=McAfee;i="6000,8403,9675"; a="165856284"
-X-IronPort-AV: E=Sophos;i="5.75,327,1589266800"; d="scan'208";a="165856284"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2020 05:22:59 -0700
-IronPort-SDR: krV80ZIai1AC2z8fE80XLrbJN26S+qH081J5pu1S1AHXR5nnxJkMy8cRC1tYjxIfJaMYIxlQ8u
- K+qfdzR0d8Zg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,327,1589266800"; d="scan'208";a="483407464"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.254.156.2])
- ([10.254.156.2])
- by fmsmga006.fm.intel.com with ESMTP; 08 Jul 2020 05:22:58 -0700
-To: dan.carpenter@oracle.com
-References: <20200708114751.GA11509@mwanda>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <ee80dbd3-0042-0c1f-de92-9df65e376ee0@intel.com>
-Date: Wed, 8 Jul 2020 15:22:57 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [207.211.31.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D291B88C51
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 17:46:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594230411;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Os4K120anUXrDwQjbfDJHVlMkw60r/Vo+SDW/vSPhzg=;
+ b=gJ9bHysiBrxyubPvh41PuxfrMm1ZoTQRqoKzrt7N5pAEGbMXHKlsz0b5kDdMumVG3wv5/7
+ ZkVHMA86P7HuCZtzLMXCtoMK8glmNuCDiZifIyTuRapOFt1jm31SNTYaP51jcTJ8bAOn1H
+ K8joj191jRi2sRCdcEkulMFMe4MH1xo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-139-xdu2Hyo9OcK0JA85iGKAOg-1; Wed, 08 Jul 2020 13:46:49 -0400
+X-MC-Unique: xdu2Hyo9OcK0JA85iGKAOg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6F7B988C799;
+ Wed,  8 Jul 2020 17:46:47 +0000 (UTC)
+Received: from hp-dl360pgen8-07.khw2.lab.eng.bos.redhat.com
+ (hp-dl360pgen8-07.khw2.lab.eng.bos.redhat.com [10.16.210.135])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0391C5C1B2;
+ Wed,  8 Jul 2020 17:46:42 +0000 (UTC)
+From: Jarod Wilson <jarod@redhat.com>
+To: linux-kernel@vger.kernel.org
+Date: Wed,  8 Jul 2020 13:46:31 -0400
+Message-Id: <20200708174631.15286-1-jarod@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200708114751.GA11509@mwanda>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [bug report] igc: Add initial LTR support
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Subject: [Intel-wired-lan] [PATCH net-next] bonding: deal with xfrm state in
+ all modes and add more error-checking
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,101 +75,131 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: Steffen Klassert <steffen.klassert@secunet.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, Jay Vosburgh <j.vosburgh@gmail.com>,
+ Saeed Mahameed <saeedm@mellanox.com>, Veaceslav Falico <vfalico@gmail.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Huy Nguyen <huyn@mellanox.com>, intel-wired-lan@lists.osuosl.org,
+ "David S. Miller" <davem@davemloft.net>, Andy Gospodarek <andy@greyhouse.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/8/2020 14:47, dan.carpenter@oracle.com wrote:
-> Hello Sasha Neftin,
-> 
-> The patch 707abf069548: "igc: Add initial LTR support" from Jun 2,
-> 2020, leads to the following static checker warning:
-> 
-> 	drivers/net/ethernet/intel/igc/igc_mac.c:424 igc_check_for_copper_link()
-> 	error: uninitialized symbol 'link'.
-> 
-> drivers/net/ethernet/intel/igc/igc_mac.c
->     363  s32 igc_check_for_copper_link(struct igc_hw *hw)
->     364  {
->     365          struct igc_mac_info *mac = &hw->mac;
->     366          s32 ret_val;
->     367          bool link;
->                  ^^^^^^^^^
-I will release patch to fix this static checker warning.
-> 
->     368
->     369          /* We only want to go out to the PHY registers to see if Auto-Neg
->     370           * has completed and/or if our link status has changed.  The
->     371           * get_link_status flag is set upon receiving a Link Status
->     372           * Change or Rx Sequence Error interrupt.
->     373           */
->     374          if (!mac->get_link_status) {
->     375                  ret_val = 0;
->     376                  goto out;
->                          ^^^^^^^^
-> 
->     377          }
->     378
->     379          /* First we want to see if the MII Status Register reports
->     380           * link.  If so, then we want to get the current speed/duplex
->     381           * of the PHY.
->     382           */
->     383          ret_val = igc_phy_has_link(hw, 1, 0, &link);
->     384          if (ret_val)
->     385                  goto out;
->     386
->     387          if (!link)
->     388                  goto out; /* No link detected */
->     389
->     390          mac->get_link_status = false;
->     391
->     392          /* Check if there was DownShift, must be checked
->     393           * immediately after link-up
->     394           */
->     395          igc_check_downshift(hw);
->     396
->     397          /* If we are forcing speed/duplex, then we simply return since
->     398           * we have already determined whether we have link or not.
->     399           */
->     400          if (!mac->autoneg) {
->     401                  ret_val = -IGC_ERR_CONFIG;
->     402                  goto out;
->     403          }
->     404
->     405          /* Auto-Neg is enabled.  Auto Speed Detection takes care
->     406           * of MAC speed/duplex configuration.  So we only need to
->     407           * configure Collision Distance in the MAC.
->     408           */
->     409          igc_config_collision_dist(hw);
->     410
->     411          /* Configure Flow Control now that Auto-Neg has completed.
->     412           * First, we need to restore the desired flow control
->     413           * settings because we may have had to re-autoneg with a
->     414           * different link partner.
->     415           */
->     416          ret_val = igc_config_fc_after_link_up(hw);
->     417          if (ret_val)
->     418                  hw_dbg("Error configuring flow control\n");
->     419
->     420  out:
->     421          /* Now that we are aware of our link settings, we can set the LTR
->     422           * thresholds.
->     423           */
->     424          ret_val = igc_set_ltr_i225(hw, link);
->                                                 ^^^^
-> Uninitialized.
-> 
->     425
->     426          return ret_val;
->     427  }
-> 
-> regards,
-> dan carpenter
-> 
-Thanks Dan for point us on this problem. This patch discover legacy code 
-problem. I will process another patch to fix that.
+It's possible that device removal happens when the bond is in non-AB mode,
+and addition happens in AB mode, so bond_ipsec_del_sa() never gets called,
+which leaves security associations in an odd state if bond_ipsec_add_sa()
+then gets called after switching the bond into AB. Just call add and
+delete universally for all modes to keep things consistent.
+
+However, it's also possible that this code gets called when the system is
+shutting down, and the xfrm subsystem has already been disconnected from
+the bond device, so we need to do some error-checking and bail, lest we
+hit a null ptr deref.
+
+Fixes: a3b658cfb664 ("bonding: allow xfrm offload setup post-module-load")
+CC: Huy Nguyen <huyn@mellanox.com>
+CC: Saeed Mahameed <saeedm@mellanox.com>
+CC: Jay Vosburgh <j.vosburgh@gmail.com>
+CC: Veaceslav Falico <vfalico@gmail.com>
+CC: Andy Gospodarek <andy@greyhouse.net>
+CC: "David S. Miller" <davem@davemloft.net>
+CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+CC: Jakub Kicinski <kuba@kernel.org>
+CC: Steffen Klassert <steffen.klassert@secunet.com>
+CC: Herbert Xu <herbert@gondor.apana.org.au>
+CC: netdev@vger.kernel.org
+CC: intel-wired-lan@lists.osuosl.org
+Signed-off-by: Jarod Wilson <jarod@redhat.com>
+---
+ drivers/net/bonding/bond_main.c | 39 +++++++++++++++++++++------------
+ 1 file changed, 25 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
+index 2adf6ce20a38..f886d97c4359 100644
+--- a/drivers/net/bonding/bond_main.c
++++ b/drivers/net/bonding/bond_main.c
+@@ -383,9 +383,14 @@ static int bond_vlan_rx_kill_vid(struct net_device *bond_dev,
+ static int bond_ipsec_add_sa(struct xfrm_state *xs)
+ {
+ 	struct net_device *bond_dev = xs->xso.dev;
+-	struct bonding *bond = netdev_priv(bond_dev);
+-	struct slave *slave = rtnl_dereference(bond->curr_active_slave);
++	struct bonding *bond;
++	struct slave *slave;
+ 
++	if (!bond_dev)
++		return -EINVAL;
++
++	bond = netdev_priv(bond_dev);
++	slave = rtnl_dereference(bond->curr_active_slave);
+ 	xs->xso.real_dev = slave->dev;
+ 	bond->xs = xs;
+ 
+@@ -405,8 +410,14 @@ static int bond_ipsec_add_sa(struct xfrm_state *xs)
+ static void bond_ipsec_del_sa(struct xfrm_state *xs)
+ {
+ 	struct net_device *bond_dev = xs->xso.dev;
+-	struct bonding *bond = netdev_priv(bond_dev);
+-	struct slave *slave = rtnl_dereference(bond->curr_active_slave);
++	struct bonding *bond;
++	struct slave *slave;
++
++	if (!bond_dev)
++		return;
++
++	bond = netdev_priv(bond_dev);
++	slave = rtnl_dereference(bond->curr_active_slave);
+ 
+ 	if (!slave)
+ 		return;
+@@ -960,12 +971,12 @@ void bond_change_active_slave(struct bonding *bond, struct slave *new_active)
+ 	if (old_active == new_active)
+ 		return;
+ 
+-	if (new_active) {
+ #ifdef CONFIG_XFRM_OFFLOAD
+-		if ((BOND_MODE(bond) == BOND_MODE_ACTIVEBACKUP) && bond->xs)
+-			bond_ipsec_del_sa(bond->xs);
++	if (old_active && bond->xs)
++		bond_ipsec_del_sa(bond->xs);
+ #endif /* CONFIG_XFRM_OFFLOAD */
+ 
++	if (new_active) {
+ 		new_active->last_link_up = jiffies;
+ 
+ 		if (new_active->link == BOND_LINK_BACK) {
+@@ -1028,13 +1039,6 @@ void bond_change_active_slave(struct bonding *bond, struct slave *new_active)
+ 					bond_should_notify_peers(bond);
+ 			}
+ 
+-#ifdef CONFIG_XFRM_OFFLOAD
+-			if (old_active && bond->xs) {
+-				xfrm_dev_state_flush(dev_net(bond->dev), bond->dev, true);
+-				bond_ipsec_add_sa(bond->xs);
+-			}
+-#endif /* CONFIG_XFRM_OFFLOAD */
+-
+ 			call_netdevice_notifiers(NETDEV_BONDING_FAILOVER, bond->dev);
+ 			if (should_notify_peers) {
+ 				bond->send_peer_notif--;
+@@ -1044,6 +1048,13 @@ void bond_change_active_slave(struct bonding *bond, struct slave *new_active)
+ 		}
+ 	}
+ 
++#ifdef CONFIG_XFRM_OFFLOAD
++	if (new_active && bond->xs) {
++		xfrm_dev_state_flush(dev_net(bond->dev), bond->dev, true);
++		bond_ipsec_add_sa(bond->xs);
++	}
++#endif /* CONFIG_XFRM_OFFLOAD */
++
+ 	/* resend IGMP joins since active slave has changed or
+ 	 * all were sent on curr_active_slave.
+ 	 * resend only if bond is brought up with the affected
+-- 
+2.20.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
