@@ -1,57 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43823217FFB
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jul 2020 08:53:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B91921807A
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jul 2020 09:09:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id F103F2037E;
-	Wed,  8 Jul 2020 06:53:19 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EFFC7894E1;
+	Wed,  8 Jul 2020 07:09:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RiZlA7xwziNM; Wed,  8 Jul 2020 06:53:19 +0000 (UTC)
+	with ESMTP id Vs9HzEn50C+1; Wed,  8 Jul 2020 07:09:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D1313241A8;
-	Wed,  8 Jul 2020 06:53:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id F3DD489505;
+	Wed,  8 Jul 2020 07:09:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E7B691BF865
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0A5DA1BF5F4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 07:09:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id E122E85F67
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 03F6586B33
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 07:09:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 70IHojGQdxuB for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
+ with ESMTP id JQSE36ADrh7q for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jul 2020 07:09:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 11FB385EC2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
-IronPort-SDR: QLZPw/gO9AdTrn2LeQspoPNAaM47KE6YEF9N2TTitpJyyWhj2FaIFoaq+dlDWskIBRLFfr9WOr
- 3Olt2gz4dSQA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9675"; a="232610639"
-X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="232610639"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1B98586F8D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 07:09:05 +0000 (UTC)
+IronPort-SDR: KFD0d0JuYTG6Nyn/V/O+Zu39HF7cR9YJcJYfYC3NQLBj1A4yErpABAcejk3A2hTWQsn9FTLlC/
+ drQELVa9fZiA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9675"; a="212694606"
+X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="212694606"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jul 2020 23:53:15 -0700
-IronPort-SDR: /eYe5d9UjkdLSeeSWgqn6DvGfIpe9coZIWw3e0keoBg0GDBZ1UkbwH6GbwgkYYgsb+uDb6YSGV
- zcphXW6GC+mQ==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jul 2020 00:08:59 -0700
+IronPort-SDR: 67lLR0/uFblFpZ61h+g+8VqXyM/E272JYuqOVKg9pCHuYUHPu6s1+qnnnhGapcSlHNiUyWQ0S4
+ q/sw9hKAi3HQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="388734369"
+X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="427741447"
 Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
- by fmsmga001.fm.intel.com with ESMTP; 07 Jul 2020 23:53:14 -0700
+ by orsmga004.jf.intel.com with ESMTP; 08 Jul 2020 00:08:58 -0700
 From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  8 Jul 2020 09:53:14 +0300
-Message-Id: <20200708065314.27514-1-sasha.neftin@intel.com>
+Date: Wed,  8 Jul 2020 10:08:58 +0300
+Message-Id: <20200708070858.6424-1-sasha.neftin@intel.com>
 X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Clean up the _hw_stats
+Subject: [Intel-wired-lan] [PATCH v2 1/1] igc: Clean up the _hw_stats
  structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -72,24 +72,27 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 Remove icrxptc, icrxatc, ictxptc, ictxatc, ictxqec, ictxqmtc,
-icrxdmtc and icrxoc fields from the _hw_stats structure.
-Accordance to the i225 device specification these fields not
-in use.
+icrxdmtc, icrxoc, cbrdpc, cbrmpc and htcbdpc fields from
+the _hw_stats structure. Accordance to the i225 device
+specification these fields not in use.
 This patch come to clean up the driver code.
+
+v1 -> v2:
+minor complete
 
 Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_hw.h   | 8 --------
- drivers/net/ethernet/intel/igc/igc_mac.c  | 3 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 2 --
- drivers/net/ethernet/intel/igc/igc_regs.h | 2 --
- 4 files changed, 15 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_hw.h   | 12 ------------
+ drivers/net/ethernet/intel/igc/igc_mac.c  |  3 ---
+ drivers/net/ethernet/intel/igc/igc_main.c |  2 --
+ drivers/net/ethernet/intel/igc/igc_regs.h |  2 --
+ 4 files changed, 19 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
-index 24412a6c2289..79e05b8c551e 100644
+index 24412a6c2289..b9fe51b91c47 100644
 --- a/drivers/net/ethernet/intel/igc/igc_hw.h
 +++ b/drivers/net/ethernet/intel/igc/igc_hw.h
-@@ -268,14 +268,6 @@ struct igc_hw_stats {
+@@ -268,21 +268,9 @@ struct igc_hw_stats {
  	u64 tsctc;
  	u64 tsctfc;
  	u64 iac;
@@ -101,9 +104,16 @@ index 24412a6c2289..79e05b8c551e 100644
 -	u64 ictxqmtc;
 -	u64 icrxdmtc;
 -	u64 icrxoc;
- 	u64 cbtmpc;
+-	u64 cbtmpc;
  	u64 htdpmc;
- 	u64 cbrdpc;
+-	u64 cbrdpc;
+-	u64 cbrmpc;
+ 	u64 rpthc;
+ 	u64 hgptc;
+-	u64 htcbdpc;
+ 	u64 hgorc;
+ 	u64 hgotc;
+ 	u64 lenerrs;
 diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
 index 02bbb8ac4f68..674b8ad21fea 100644
 --- a/drivers/net/ethernet/intel/igc/igc_mac.c
