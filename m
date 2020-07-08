@@ -1,60 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABCA8217D37
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jul 2020 04:47:13 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43823217FFB
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jul 2020 08:53:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 27E6388527;
-	Wed,  8 Jul 2020 02:46:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F103F2037E;
+	Wed,  8 Jul 2020 06:53:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HNlGZl-rwnpc; Wed,  8 Jul 2020 02:46:57 +0000 (UTC)
+	with ESMTP id RiZlA7xwziNM; Wed,  8 Jul 2020 06:53:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9E428883F9;
-	Wed,  8 Jul 2020 02:46:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D1313241A8;
+	Wed,  8 Jul 2020 06:53:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0671B1BF867
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 02:46:53 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E7B691BF865
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5B2E587D9F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 02:46:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id E122E85F67
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VCd+w1-woUYn for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jul 2020 02:46:31 +0000 (UTC)
+ with ESMTP id 70IHojGQdxuB for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 4165381E93
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 02:46:31 +0000 (UTC)
-IronPort-SDR: gPCMYr6RBrCGNNsmeWmJ8MTKW2W7EXNsktSCu4xTLS8CVZP7EcyKf4gts+fdUVDNk8MdMN22de
- BoKcPOgY60RQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9675"; a="209260581"
-X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="209260581"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 11FB385EC2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 06:53:16 +0000 (UTC)
+IronPort-SDR: QLZPw/gO9AdTrn2LeQspoPNAaM47KE6YEF9N2TTitpJyyWhj2FaIFoaq+dlDWskIBRLFfr9WOr
+ 3Olt2gz4dSQA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9675"; a="232610639"
+X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="232610639"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jul 2020 19:46:31 -0700
-IronPort-SDR: R6P9yxfW0fgsNDR7tO8l4PRIpA0orRkkCcJEA6kEnv4e/+6/2g+84JM7A01WQHQ5wDS+p1Seh6
- jjYK1+hEp5UQ==
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jul 2020 23:53:15 -0700
+IronPort-SDR: /eYe5d9UjkdLSeeSWgqn6DvGfIpe9coZIWw3e0keoBg0GDBZ1UkbwH6GbwgkYYgsb+uDb6YSGV
+ zcphXW6GC+mQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="279806156"
-Received: from dpdk51.sh.intel.com ([10.67.111.82])
- by orsmga003.jf.intel.com with ESMTP; 07 Jul 2020 19:46:29 -0700
-From: Qi Zhang <qi.z.zhang@intel.com>
+X-IronPort-AV: E=Sophos;i="5.75,326,1589266800"; d="scan'208";a="388734369"
+Received: from ccdlinuxdev09.iil.intel.com ([143.185.160.241])
+ by fmsmga001.fm.intel.com with ESMTP; 07 Jul 2020 23:53:14 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  8 Jul 2020 10:50:06 +0800
-Message-Id: <20200708025006.44071-17-qi.z.zhang@intel.com>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20200708025006.44071-1-qi.z.zhang@intel.com>
-References: <20200708025006.44071-1-qi.z.zhang@intel.com>
-Subject: [Intel-wired-lan] [PATCH S48 v4 16/16] ice: Check FDIR program
- status for AVF
+Date: Wed,  8 Jul 2020 09:53:14 +0300
+Message-Id: <20200708065314.27514-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.11.0
+Subject: [Intel-wired-lan] [PATCH v1 1/1] igc: Clean up the _hw_stats
+ structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,755 +65,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: qi.z.zhang@intel.com
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Enables returning FDIR completion status by checking the
-ctrl_vsi rx queue descriptor value.
+Remove icrxptc, icrxatc, ictxptc, ictxatc, ictxqec, ictxqmtc,
+icrxdmtc and icrxoc fields from the _hw_stats structure.
+Accordance to the i225 device specification these fields not
+in use.
+This patch come to clean up the driver code.
 
-To enable returning FDIR completion status from ctrl_vsi rx queue,
-COMP_Queue and COMP_Report of FDIR filter programming descriptor
-needs to be properly configed. After program request sent to ctrl_vsi
-tx queue, ctrl_vsi rx queue interrupt will be triggered and
-completion status will be retrurned.
-
-Driver will first issue request in ice_vc_fdir_add_fltr(), then
-pass FDIR context to the background task in interrupt service routine
-ice_vc_fdir_irq_handler() and finally deal with them in
-ice_flush_fdir_ctx(). ice_flush_fdir_ctx() will check the descriptor's
-value, fdir context, and then send back virtual channel message to VF
-by calling ice_vc_add_fdir_fltr_post(). An additional timer will be
-setup in case of hardware interrupt timeout.
-
-Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h               |   1 +
- drivers/net/ethernet/intel/ice/ice_hw_autogen.h    |   3 +
- drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h     |  20 +
- drivers/net/ethernet/intel/ice/ice_main.c          |   2 +
- drivers/net/ethernet/intel/ice/ice_txrx.c          |   5 +
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 494 ++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h |  27 +-
- 7 files changed, 536 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_hw.h   | 8 --------
+ drivers/net/ethernet/intel/igc/igc_mac.c  | 3 ---
+ drivers/net/ethernet/intel/igc/igc_main.c | 2 --
+ drivers/net/ethernet/intel/igc/igc_regs.h | 2 --
+ 4 files changed, 15 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index f3b8b694b0a0..84f75041520f 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -224,6 +224,7 @@ enum ice_state {
- 	__ICE_OICR_INTR_DIS,		/* Global OICR interrupt disabled */
- 	__ICE_MDD_VF_PRINT_PENDING,	/* set when MDD event handle */
- 	__ICE_VF_RESETS_DISABLED,	/* disable resets during ice_remove */
-+	__ICE_FD_VF_FLUSH_CTX,		/* set at FD Rx IRQ or timeout */
- 	__ICE_STATE_NBITS		/* must be last */
- };
+diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
+index 24412a6c2289..79e05b8c551e 100644
+--- a/drivers/net/ethernet/intel/igc/igc_hw.h
++++ b/drivers/net/ethernet/intel/igc/igc_hw.h
+@@ -268,14 +268,6 @@ struct igc_hw_stats {
+ 	u64 tsctc;
+ 	u64 tsctfc;
+ 	u64 iac;
+-	u64 icrxptc;
+-	u64 icrxatc;
+-	u64 ictxptc;
+-	u64 ictxatc;
+-	u64 ictxqec;
+-	u64 ictxqmtc;
+-	u64 icrxdmtc;
+-	u64 icrxoc;
+ 	u64 cbtmpc;
+ 	u64 htdpmc;
+ 	u64 cbrdpc;
+diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
+index 02bbb8ac4f68..674b8ad21fea 100644
+--- a/drivers/net/ethernet/intel/igc/igc_mac.c
++++ b/drivers/net/ethernet/intel/igc/igc_mac.c
+@@ -296,9 +296,6 @@ void igc_clear_hw_cntrs_base(struct igc_hw *hw)
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 07a9b70c2751..a9163471dbc0 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -384,6 +384,9 @@
- #define VSIQF_FD_CNT(_VSI)			(0x00464000 + ((_VSI) * 4))
- #define VSIQF_FD_CNT_FD_GCNT_S			0
- #define VSIQF_FD_CNT_FD_GCNT_M			ICE_M(0x3FFF, 0)
-+#define VSIQF_FD_CNT_FD_BCNT_S                  16
-+#define VSIQF_FD_CNT_FD_BCNT_M                  ICE_M(0x3FFF, 16)
-+#define VSIQF_FD_SIZE(_VSI)                     (0x00462000 + ((_VSI) * 4))
- #define VSIQF_HKEY_MAX_INDEX			12
- #define VSIQF_HLUT_MAX_INDEX			15
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index 1382c498e1f0..eee4726a393c 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -140,6 +140,26 @@ struct ice_fltr_desc {
- 			(0xFFFFFFFFULL << ICE_FXD_FLTR_QW1_FDID_S)
- #define ICE_FXD_FLTR_QW1_FDID_ZERO	0x0ULL
+ 	rd32(IGC_IAC);
  
-+/* definition for FD filter programming status descriptor WB format */
-+#define ICE_FXD_FLTR_WB_QW1_DD_S	0
-+#define ICE_FXD_FLTR_WB_QW1_DD_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_DD_S)
-+#define ICE_FXD_FLTR_WB_QW1_DD_YES	0x1ULL
-+
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ID_S	1
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ID_M	\
-+				(0x3ULL << ICE_FXD_FLTR_WB_QW1_PROG_ID_S)
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ADD	0x0ULL
-+#define ICE_FXD_FLTR_WB_QW1_PROG_DEL	0x1ULL
-+
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_S	4
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_S)
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_YES	0x1ULL
-+
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S	5
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M	\
-+				(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S)
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES	0x1ULL
-+
- struct ice_rx_ptype_decoded {
- 	u32 ptype:10;
- 	u32 known:1;
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 8afd33bdd637..c0b5f7f83d67 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1481,6 +1481,7 @@ static void ice_service_task(struct work_struct *work)
- 	ice_process_vflr_event(pf);
- 	ice_clean_mailboxq_subtask(pf);
- 	ice_sync_arfs_fltrs(pf);
-+	ice_flush_fdir_ctx(pf);
- 	/* Clear __ICE_SERVICE_SCHED flag to allow scheduling next event */
- 	ice_service_task_complete(pf);
- 
-@@ -1492,6 +1493,7 @@ static void ice_service_task(struct work_struct *work)
- 	    test_bit(__ICE_MDD_EVENT_PENDING, pf->state) ||
- 	    test_bit(__ICE_VFLR_EVENT_PENDING, pf->state) ||
- 	    test_bit(__ICE_MAILBOXQ_EVENT_PENDING, pf->state) ||
-+	    test_bit(__ICE_FD_VF_FLUSH_CTX, pf->state) ||
- 	    test_bit(__ICE_ADMINQ_EVENT_PENDING, pf->state))
- 		mod_timer(&pf->serv_tmr, jiffies);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index abdb137c8bb7..0aaed92f807f 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1128,6 +1128,11 @@ int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		dma_rmb();
- 
- 		if (rx_desc->wb.rxdid == FDIR_DESC_RXDID || !rx_ring->netdev) {
-+			struct ice_vsi *ctrl_vsi = rx_ring->vsi;
-+
-+			if (rx_desc->wb.rxdid == FDIR_DESC_RXDID &&
-+			    ctrl_vsi->vf_id != ICE_INVAL_VFID)
-+				ice_vc_fdir_irq_handler(ctrl_vsi, rx_desc);
- 			ice_put_rx_buf(rx_ring, NULL);
- 			cleaned_count++;
- 			continue;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-index d917b0f1741c..e4faa5f5d147 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-@@ -45,6 +45,7 @@ struct virtchnl_fdir_fltr_conf {
- 	struct ice_fdir_fltr input;
- 	enum ice_fdir_tunnel_type ttype;
- 	u64 inset_flag;
-+	u32 flow_id;
- };
- 
- static enum virtchnl_proto_hdr_type vc_pattern_ether[] = {
-@@ -1486,7 +1487,7 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
- 	}
- 
- 	input->dest_vsi = vsi->idx;
--	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW_FAIL;
-+	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW;
- 
- 	ctrl_vsi = pf->vsi[vf->ctrl_vsi_idx];
- 	if (!ctrl_vsi) {
-@@ -1519,6 +1520,455 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
- }
- 
- /**
-+ * ice_vf_fdir_timer - FDIR program waiting timer interrupt handler
-+ * @t: pointer to timer_list
-+ */
-+static void ice_vf_fdir_timer(struct timer_list *t)
-+{
-+	struct ice_vf_fdir_ctx *ctx_irq = from_timer(ctx_irq, t, rx_tmr);
-+	struct ice_vf_fdir_ctx *ctx_done;
-+	struct ice_vf_fdir *fdir;
-+	unsigned long flags;
-+	struct ice_vf *vf;
-+	struct ice_pf *pf;
-+
-+	fdir = container_of(ctx_irq, struct ice_vf_fdir, ctx_irq);
-+	vf = container_of(fdir, struct ice_vf, fdir);
-+	ctx_done = &fdir->ctx_done;
-+	pf = vf->pf;
-+	spin_lock_irqsave(&fdir->ctx_lock, flags);
-+	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+		WARN_ON_ONCE(1);
-+		return;
-+	}
-+
-+	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+
-+	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
-+	ctx_done->conf = ctx_irq->conf;
-+	ctx_done->stat = ICE_FDIR_CTX_TIMEOUT;
-+	ctx_done->v_opcode = ctx_irq->v_opcode;
-+	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+
-+	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
-+	ice_service_task_schedule(pf);
-+}
-+
-+/**
-+ * ice_vc_fdir_irq_handler - ctrl_vsi Rx queue interrupt handler
-+ * @ctrl_vsi: pointer to a VF's CTRL VSI
-+ * @rx_desc: pointer to FDIR Rx queue descriptor
-+ */
-+void
-+ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
-+			union ice_32b_rx_flex_desc *rx_desc)
-+{
-+	struct ice_pf *pf = ctrl_vsi->back;
-+	struct ice_vf_fdir_ctx *ctx_done;
-+	struct ice_vf_fdir_ctx *ctx_irq;
-+	struct ice_vf_fdir *fdir;
-+	unsigned long flags;
-+	struct device *dev;
-+	struct ice_vf *vf;
-+	int ret;
-+
-+	vf = &pf->vf[ctrl_vsi->vf_id];
-+
-+	fdir = &vf->fdir;
-+	ctx_done = &fdir->ctx_done;
-+	ctx_irq = &fdir->ctx_irq;
-+	dev = ice_pf_to_dev(pf);
-+	spin_lock_irqsave(&fdir->ctx_lock, flags);
-+	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+		WARN_ON_ONCE(1);
-+		return;
-+	}
-+
-+	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+
-+	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
-+	ctx_done->conf = ctx_irq->conf;
-+	ctx_done->stat = ICE_FDIR_CTX_IRQ;
-+	ctx_done->v_opcode = ctx_irq->v_opcode;
-+	memcpy(&ctx_done->rx_desc, rx_desc, sizeof(*rx_desc));
-+	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+
-+	ret = del_timer(&ctx_irq->rx_tmr);
-+	if (!ret)
-+		dev_err(dev, "VF %d: Unexpected inactive timer!\n", vf->vf_id);
-+
-+	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
-+	ice_service_task_schedule(pf);
-+}
-+
-+/**
-+ * ice_vf_fdir_dump_info - dump FDIR information for diagnosis
-+ * @vf: pointer to the VF info
-+ */
-+static void ice_vf_fdir_dump_info(struct ice_vf *vf)
-+{
-+	struct ice_vsi *vf_vsi;
-+	u32 fd_size, fd_cnt;
-+	struct device *dev;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	u16 vsi_num;
-+
-+	pf = vf->pf;
-+	hw = &pf->hw;
-+	dev = ice_pf_to_dev(pf);
-+	vf_vsi = pf->vsi[vf->lan_vsi_idx];
-+	vsi_num = ice_get_hw_vsi_num(hw, vf_vsi->idx);
-+
-+	fd_size = rd32(hw, VSIQF_FD_SIZE(vsi_num));
-+	fd_cnt = rd32(hw, VSIQF_FD_CNT(vsi_num));
-+	dev_dbg(dev, "VF %d: space allocated: guar:0x%x, be:0x%x, space consumed: guar:0x%x, be:0x%x",
-+		vf->vf_id,
-+		(fd_size & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
-+		(fd_size & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S,
-+		(fd_cnt & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
-+		(fd_cnt & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S);
-+}
-+
-+/**
-+ * ice_vf_verify_rx_desc - verify received FDIR programming status descriptor
-+ * @vf: pointer to the VF info
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vf_verify_rx_desc(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+		      enum virtchnl_fdir_prgm_status *status)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	u32 stat_err, error, prog_id;
-+	int ret;
-+
-+	stat_err = le16_to_cpu(ctx->rx_desc.wb.status_error0);
-+	if (((stat_err & ICE_FXD_FLTR_WB_QW1_DD_M) >>
-+	    ICE_FXD_FLTR_WB_QW1_DD_S) != ICE_FXD_FLTR_WB_QW1_DD_YES) {
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_err(dev, "VF %d: Desc Done not set\n", vf->vf_id);
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	prog_id = (stat_err & ICE_FXD_FLTR_WB_QW1_PROG_ID_M) >>
-+		ICE_FXD_FLTR_WB_QW1_PROG_ID_S;
-+	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD &&
-+	    ctx->v_opcode != VIRTCHNL_OP_ADD_FDIR_FILTER) {
-+		dev_err(dev, "VF %d: Desc show add, but ctx not",
-+			vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_DEL &&
-+	    ctx->v_opcode != VIRTCHNL_OP_DEL_FDIR_FILTER) {
-+		dev_err(dev, "VF %d: Desc show del, but ctx not",
-+			vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_M) >>
-+		ICE_FXD_FLTR_WB_QW1_FAIL_S;
-+	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_YES) {
-+		if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD) {
-+			dev_err(dev, "VF %d, Failed to add FDIR rule due to no space in the table",
-+				vf->vf_id);
-+			*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		} else {
-+			dev_err(dev, "VF %d, Failed to remove FDIR rule, attempt to remove non-existent entry",
-+				vf->vf_id);
-+			*status = VIRTCHNL_FDIR_FAILURE_RULE_NONEXIST;
-+		}
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M) >>
-+		ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S;
-+	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES) {
-+		dev_err(dev, "VF %d: Profile matching error", vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	*status = VIRTCHNL_FDIR_SUCCESS;
-+
-+	return 0;
-+
-+err_exit:
-+	ice_vf_fdir_dump_info(vf);
-+	return ret;
-+}
-+
-+/**
-+ * ice_vc_add_fdir_fltr_post
-+ * @vf: pointer to the VF structure
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ * @success: true implies success, false implies failure
-+ *
-+ * Post process for flow director add command. If success, then do post process
-+ * and send back success msg by virtchnl. Otherwise, do context reversion and
-+ * send back failure msg by virtchnl.
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+			  enum virtchnl_fdir_prgm_status status,
-+			  bool success)
-+{
-+	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	enum virtchnl_status_code v_ret;
-+	struct virtchnl_fdir_add *resp;
-+	int ret, len, is_tun;
-+
-+	v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	len = sizeof(*resp);
-+	resp = kzalloc(len, GFP_KERNEL);
-+	if (!resp) {
-+		len = 0;
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
-+		goto err_exit;
-+	}
-+
-+	if (!success)
-+		goto err_exit;
-+
-+	is_tun = 0;
-+	resp->status = status;
-+	resp->flow_id = conf->flow_id;
-+	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+
-+	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-+		vf->vf_id, conf->flow_id,
-+		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
-+		"add" : "del");
-+	return ret;
-+
-+err_exit:
-+	if (resp)
-+		resp->status = status;
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
-+	devm_kfree(dev, conf);
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+	return ret;
-+}
-+
-+/**
-+ * ice_vc_del_fdir_fltr_post
-+ * @vf: pointer to the VF structure
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ * @success: true implies success, false implies failure
-+ *
-+ * Post process for flow director del command. If success, then do post process
-+ * and send back success msg by virtchnl. Otherwise, do context reversion and
-+ * send back failure msg by virtchnl.
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+			  enum virtchnl_fdir_prgm_status status,
-+			  bool success)
-+{
-+	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	enum virtchnl_status_code v_ret;
-+	struct virtchnl_fdir_del *resp;
-+	int ret, len, is_tun;
-+
-+	v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	len = sizeof(*resp);
-+	resp = kzalloc(len, GFP_KERNEL);
-+	if (!resp) {
-+		len = 0;
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
-+		goto err_exit;
-+	}
-+
-+	if (!success)
-+		goto err_exit;
-+
-+	is_tun = 0;
-+	resp->status = status;
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
-+	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+
-+	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-+		vf->vf_id, conf->flow_id,
-+		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
-+		"add" : "del");
-+	devm_kfree(dev, conf);
-+	return ret;
-+
-+err_exit:
-+	if (resp)
-+		resp->status = status;
-+	if (success)
-+		devm_kfree(dev, conf);
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+	return ret;
-+}
-+
-+/**
-+ * ice_flush_fdir_ctx
-+ * @pf: pointer to the PF structure
-+ *
-+ * Flush all the pending event on ctx_done list and process them.
-+ */
-+void ice_flush_fdir_ctx(struct ice_pf *pf)
-+{
-+	int i;
-+
-+	if (!test_and_clear_bit(__ICE_FD_VF_FLUSH_CTX, pf->state))
-+		return;
-+
-+	ice_for_each_vf(pf, i) {
-+		struct device *dev = ice_pf_to_dev(pf);
-+		enum virtchnl_fdir_prgm_status status;
-+		struct ice_vf *vf = &pf->vf[i];
-+		struct ice_vf_fdir_ctx *ctx;
-+		unsigned long flags;
-+		int ret;
-+
-+		if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
-+			continue;
-+
-+		if (vf->ctrl_vsi_idx == ICE_NO_VSI)
-+			continue;
-+
-+		ctx = &vf->fdir.ctx_done;
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		if (!(ctx->flags & ICE_VF_FDIR_CTX_VALID)) {
-+			spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+			continue;
-+		}
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+
-+		WARN_ON(ctx->stat == ICE_FDIR_CTX_READY);
-+		if (ctx->stat == ICE_FDIR_CTX_TIMEOUT) {
-+			status = VIRTCHNL_FDIR_FAILURE_RULE_TIMEOUT;
-+			dev_err(dev, "VF %d: ctrl_vsi irq timeout\n",
-+				vf->vf_id);
-+			goto err_exit;
-+		}
-+
-+		ret = ice_vf_verify_rx_desc(vf, ctx, &status);
-+		if (ret)
-+			goto err_exit;
-+
-+		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
-+			ice_vc_add_fdir_fltr_post(vf, ctx, status, true);
-+		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
-+			ice_vc_del_fdir_fltr_post(vf, ctx, status, true);
-+		else
-+			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
-+
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+		continue;
-+err_exit:
-+		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
-+			ice_vc_add_fdir_fltr_post(vf, ctx, status, false);
-+		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
-+			ice_vc_del_fdir_fltr_post(vf, ctx, status, false);
-+		else
-+			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
-+
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+	}
-+}
-+
-+/**
-+ * ice_vc_fdir_set_irq_ctx - set FDIR context info for later irq handler
-+ * @vf: pointer to the VF structure
-+ * @conf: FDIR configuration for each filter
-+ * @v_opcode: virtual channel operation code
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_fdir_set_irq_ctx(struct ice_vf *vf, struct virtchnl_fdir_fltr_conf *conf,
-+			enum virtchnl_ops v_opcode)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	struct ice_vf_fdir_ctx *ctx;
-+	unsigned long flags;
-+
-+	ctx = &vf->fdir.ctx_irq;
-+	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+	if ((vf->fdir.ctx_irq.flags & ICE_VF_FDIR_CTX_VALID) ||
-+	    (vf->fdir.ctx_done.flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+		dev_dbg(dev, "VF %d: Last request is still in progress\n",
-+			vf->vf_id);
-+		return -EBUSY;
-+	}
-+	ctx->flags |= ICE_VF_FDIR_CTX_VALID;
-+	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+
-+	ctx->conf = conf;
-+	ctx->v_opcode = v_opcode;
-+	ctx->stat = ICE_FDIR_CTX_READY;
-+	timer_setup(&ctx->rx_tmr, ice_vf_fdir_timer, 0);
-+
-+	mod_timer(&ctx->rx_tmr,
-+		  round_jiffies(msecs_to_jiffies(10) + jiffies));
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_vc_fdir_clear_irq_ctx - clear FDIR context info for irq handler
-+ * @vf: pointer to the VF structure
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static void ice_vc_fdir_clear_irq_ctx(struct ice_vf *vf)
-+{
-+	struct ice_vf_fdir_ctx *ctx = &vf->fdir.ctx_irq;
-+	unsigned long flags;
-+
-+	del_timer(&ctx->rx_tmr);
-+	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+	ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+}
-+
-+/**
-  * ice_vc_add_fdir_fltr - add a FDIR filter for VF by the msg buffer
-  * @vf: pointer to the VF info
-  * @msg: pointer to the msg buffer
-@@ -1604,7 +2054,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_free_conf;
- 	}
- 
--	ret = ice_vc_fdir_insert_entry(vf, conf, &stat->flow_id);
-+	ret = ice_vc_fdir_insert_entry(vf, conf, &conf->flow_id);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-@@ -1612,6 +2062,14 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_free_conf;
- 	}
- 
-+	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_ADD_FDIR_FILTER);
-+	if (ret) {
-+		v_ret = VIRTCHNL_STATUS_SUCCESS;
-+		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
-+		goto err_free_conf;
-+	}
-+
- 	ret = ice_vc_fdir_write_fltr(vf, conf, true, is_tun);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
-@@ -1621,18 +2079,13 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_rem_entry;
- 	}
- 
--	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
+-	rd32(IGC_ICTXPTC);
+-	rd32(IGC_ICTXATC);
 -
--	v_ret = VIRTCHNL_STATUS_SUCCESS;
--	stat->status = VIRTCHNL_FDIR_SUCCESS;
- exit:
--	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
--				    (u8 *)stat, len);
- 	kfree(stat);
- 	return ret;
+ 	rd32(IGC_RPTHC);
+ 	rd32(IGC_TLPIC);
+ 	rd32(IGC_RLPIC);
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index db3cbb5de128..ab5b302d6655 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3731,8 +3731,6 @@ void igc_update_stats(struct igc_adapter *adapter)
+ 	adapter->stats.tsctc += rd32(IGC_TSCTC);
  
- err_rem_entry:
--	ice_vc_fdir_remove_entry(vf, conf, stat->flow_id);
-+	ice_vc_fdir_clear_irq_ctx(vf);
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
- err_free_conf:
- 	devm_kfree(dev, conf);
- err_exit:
-@@ -1696,22 +2149,29 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_exit;
- 	}
+ 	adapter->stats.iac += rd32(IGC_IAC);
+-	adapter->stats.ictxptc += rd32(IGC_ICTXPTC);
+-	adapter->stats.ictxatc += rd32(IGC_ICTXATC);
  
-+	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_DEL_FDIR_FILTER);
-+	if (ret) {
-+		v_ret = VIRTCHNL_STATUS_SUCCESS;
-+		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
-+		goto err_exit;
-+	}
-+
- 	ret = ice_vc_fdir_write_fltr(vf, conf, false, is_tun);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
- 		dev_err(dev, "VF %d: writing FDIR rule failed, ret:%d\n",
- 			vf->vf_id, ret);
--		goto err_exit;
-+		goto err_del_tmr;
- 	}
- 
--	ice_vc_fdir_remove_entry(vf, conf, fltr->flow_id);
--	devm_kfree(dev, conf);
--	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-+	kfree(stat);
- 
--	v_ret = VIRTCHNL_STATUS_SUCCESS;
--	stat->status = VIRTCHNL_FDIR_SUCCESS;
-+	return ret;
- 
-+err_del_tmr:
-+	ice_vc_fdir_clear_irq_ctx(vf);
- err_exit:
- 	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
- 				    (u8 *)stat, len);
-@@ -1729,6 +2189,10 @@ void ice_vf_fdir_init(struct ice_vf *vf)
- 
- 	idr_init(&fdir->fdir_rule_idr);
- 	INIT_LIST_HEAD(&fdir->fdir_rule_list);
-+
-+	spin_lock_init(&fdir->ctx_lock);
-+	fdir->ctx_irq.flags = 0;
-+	fdir->ctx_done.flags = 0;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-index 676de402475e..53b78e866381 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-@@ -5,6 +5,24 @@
- #define _ICE_VIRTCHNL_FDIR_H_
- 
- struct ice_vf;
-+struct ice_pf;
-+
-+enum ice_fdir_ctx_stat {
-+	ICE_FDIR_CTX_READY,
-+	ICE_FDIR_CTX_IRQ,
-+	ICE_FDIR_CTX_TIMEOUT,
-+};
-+
-+struct ice_vf_fdir_ctx {
-+	struct timer_list rx_tmr;
-+	enum virtchnl_ops v_opcode;
-+	enum ice_fdir_ctx_stat stat;
-+	union ice_32b_rx_flex_desc rx_desc;
-+#define ICE_VF_FDIR_CTX_VALID		BIT(0)
-+	u32 flags;
-+
-+	void *conf;
-+};
- 
- /* VF FDIR information structure */
- struct ice_vf_fdir {
-@@ -14,11 +32,18 @@ struct ice_vf_fdir {
- 
- 	struct idr fdir_rule_idr;
- 	struct list_head fdir_rule_list;
-+
-+	spinlock_t ctx_lock; /* protects FDIR context info */
-+	struct ice_vf_fdir_ctx ctx_irq;
-+	struct ice_vf_fdir_ctx ctx_done;
- };
- 
- int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg);
- int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg);
- void ice_vf_fdir_init(struct ice_vf *vf);
- void ice_vf_fdir_exit(struct ice_vf *vf);
--
-+void
-+ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
-+			union ice_32b_rx_flex_desc *rx_desc);
-+void ice_flush_fdir_ctx(struct ice_pf *pf);
- #endif /* _ICE_VIRTCHNL_FDIR_H_ */
+ 	/* Fill out the OS statistics structure */
+ 	net_stats->multicast = adapter->stats.mprc;
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index 5ff3316717c7..b52dd9d737e8 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -172,8 +172,6 @@
+ #define IGC_BPTC	0x040F4  /* Broadcast Packets Tx Count - R/clr */
+ #define IGC_TSCTC	0x040F8  /* TCP Segmentation Context Tx - R/clr */
+ #define IGC_IAC		0x04100  /* Interrupt Assertion Count */
+-#define IGC_ICTXPTC	0x0410C  /* Interrupt Cause Tx Pkt Timer Expire Count */
+-#define IGC_ICTXATC	0x04110  /* Interrupt Cause Tx Abs Timer Expire Count */
+ #define IGC_RPTHC	0x04104  /* Rx Packets To Host */
+ #define IGC_TLPIC	0x04148  /* EEE Tx LPI Count */
+ #define IGC_RLPIC	0x0414C  /* EEE Rx LPI Count */
 -- 
-2.13.6
+2.11.0
 
 _______________________________________________
 Intel-wired-lan mailing list
