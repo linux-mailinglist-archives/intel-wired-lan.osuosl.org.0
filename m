@@ -1,61 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 240FC21948F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jul 2020 01:48:19 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3254C21969F
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jul 2020 05:29:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id CA5A588DFA;
-	Wed,  8 Jul 2020 23:48:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F40F20526;
+	Thu,  9 Jul 2020 03:29:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y9IAwIBfLBCd; Wed,  8 Jul 2020 23:48:17 +0000 (UTC)
+	with ESMTP id QKXieA1s+69q; Thu,  9 Jul 2020 03:29:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2D67E88E0D;
-	Wed,  8 Jul 2020 23:48:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A573F204F0;
+	Thu,  9 Jul 2020 03:29:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5B5EA1BF592
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 23:48:15 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 996781BF326
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jul 2020 03:29:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 571BB88DFA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 23:48:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 9454288724
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jul 2020 03:29:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KpjxUK3Bg-9x for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jul 2020 23:48:14 +0000 (UTC)
+ with ESMTP id 5vIuZ4rmfdfD for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Jul 2020 03:29:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B7A4F88DF3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jul 2020 23:48:14 +0000 (UTC)
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
- [163.114.132.5])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 49F3D20720;
- Wed,  8 Jul 2020 23:48:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1594252094;
- bh=19UO96FB6A26kj4urfzwCUGYyyXLV9ts4L5kQP4qUs0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=MATxVHoguBUq7R9Yd80Ooopp/CjcJuQi3hIYsAVTONFysanJd4UX0sDhlRYVjajIR
- yrESSW7ZxisbtgUFc12Xadhmdg0uRvzWKygtop+71XWer6XRg+7+bOitaJJRj2N43G
- TSLmayAE7B4IBG5872/B/dpTmLX8N80NWjj6Weo0=
-Date: Wed, 8 Jul 2020 16:48:12 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Message-ID: <20200708164812.384ae8ea@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <eca3253391dd34a267e607dbd847d6878bc3a6fe.camel@intel.com>
-References: <20200619045711.16055-1-haiyue.wang@intel.com>
- <20200701012557.40234-1-haiyue.wang@intel.com>
- <20200701012557.40234-6-haiyue.wang@intel.com>
- <eca3253391dd34a267e607dbd847d6878bc3a6fe.camel@intel.com>
-MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [net-next,
- v7 5/5] ice: add switch rule management for DCF
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6470988723
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jul 2020 03:29:01 +0000 (UTC)
+IronPort-SDR: i92CXXZCEWC9FU0csJGjNAohq9ER1GNPyhjVzr2nYp/iHElpO2VzYVsQwzQVINW2Lt2GyFBdqS
+ FAPvR2GXThyg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9676"; a="128001825"
+X-IronPort-AV: E=Sophos;i="5.75,330,1589266800"; d="scan'208";a="128001825"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jul 2020 20:28:59 -0700
+IronPort-SDR: 9I+QttWvsFDAuxyx0G2hSQyYKx3psIvbCSLRNMnCZ4XJ0YgleP0LRijL6BXYEKYnFCi4YiDwUP
+ AKZ0aXwYj0wQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,330,1589266800"; d="scan'208";a="483634694"
+Received: from lcao2-mobl.ccr.corp.intel.com (HELO
+ xni5-mobl5.ccr.corp.intel.com) ([10.255.30.177])
+ by fmsmga006.fm.intel.com with ESMTP; 08 Jul 2020 20:28:58 -0700
+Message-ID: <beb3f80787357f8bcd72817afea775816ae3fd0f.camel@intel.com>
+From: Zhang Rui <rui.zhang@intel.com>
+To: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date: Thu, 09 Jul 2020 11:28:57 +0800
+In-Reply-To: <01DBC003-008F-470C-A228-029F34631305@canonical.com>
+References: <20200521052753.GB12456@shao2-debian>
+ <5A1631F8-259E-4897-BE52-0F5DB406E44F@canonical.com>
+ <489156ef4d028d210ec03b7b02413e000fec2eaf.camel@intel.com>
+ <01DBC003-008F-470C-A228-029F34631305@canonical.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.1 
+Mime-Version: 1.0
+Subject: Re: [Intel-wired-lan] [e1000e] e86e383f28: suspend-stress.fail
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,46 +71,176 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Zhang,
- Xiao" <xiao.zhang@intel.com>, "Xing, Beilei" <beilei.xing@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Len Brown <len.brown@intel.com>, Linux PM list <linux-pm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>, lkp@lists.01.org,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ kernel test robot <rong.a.chen@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 8 Jul 2020 22:55:21 +0000 Nguyen, Anthony L wrote:
-> > @@ -490,7 +476,7 @@ ice_aq_alloc_free_vsi_list(struct ice_hw *hw, u16
-> > *vsi_list_id,
-> >   *
-> >   * Add(0x02a0)/Update(0x02a1)/Remove(0x02a2) switch rules commands
-> > to firmware
-> >   */
-> > -static enum ice_status
-> > +enum ice_status
-> >  ice_aq_sw_rules(struct ice_hw *hw, void *rule_list, u16
-> > rule_list_sz,
-> >  		u8 num_rules, enum ice_adminq_opc opc, struct ice_sq_cd
-> > *cd)
-> >  {  
+On Thu, 2020-07-02 at 21:12 +0800, Kai-Heng Feng wrote:
+> > On Jul 2, 2020, at 20:20, Zhang Rui <rui.zhang@intel.com> wrote:
+> > 
+> > Hi, all,
+> > 
+> > This patch has been shipped in 5.8-rc1 with its upstream commit id
+> > 0c80cdbf3320. And we observed big drop of suspend quality.
+> > 
+> > Previously, we have run into this "e1000e Hardware Error" issue,
+> > occasionally. But now, on a NUC I have, system suspend-to-mem fails
+> > within 10 suspend  cycles in most cases, but won't work again until
+> > a reboot.
+> > https://bugzilla.kernel.org/show_bug.cgi?id=205015
+> > 
+> > IMO, this is a regression, and we need to find a way to fix it.
 > 
-> Hi Dave, Jakub,
-> 
-> This feature is only built when CONFIG_PCI_IOV is set. We end up with
-> this namespace issue using defconfig when checked against namespace.pl
-> since CONFIG_PCI_IOV is not enabled.
-> 	Externally defined symbols with no external references
->           ice_switch.o
->             ice_aq_sw_rules
-> 
-> From a previous patch, neither of you liked the use of CONFIG_ to
-> control static-ness. I wanted to check that you are ok with the
-> namespace issue or if you have a preferred method to resolve this
-> issue. I appreciate your feedback.
+> Should be fixed by 
+> https://lore.kernel.org/lkml/20200618065453.12140-1-aaron.ma@canonical.com/
 
-IMHO that should be fine. I'd only trust namespace.pl on a all*config
-kernel, if at all.
+With the patch on top of clean 5.8-rc3, suspend-resume always success,
+although I can see "Failed to disable ULP" in dmesg for almost half of
+the resumes.
+
+thanks,
+rui
+
+> 
+> Kai-Heng
+> 
+> > 
+> > thanks,
+> > rui
+> > 
+> > 
+> > On Sat, 2020-05-23 at 20:20 +0800, Kai-Heng Feng wrote:
+> > > [+Cc intel-wired-lan]
+> > > 
+> > > > On May 21, 2020, at 13:27, kernel test robot <
+> > > > rong.a.chen@intel.com
+> > > > > wrote:
+> > > > 
+> > > > Greeting,
+> > > > 
+> > > > FYI, we noticed the following commit (built with gcc-7):
+> > > > 
+> > > > commit: e86e383f2854234129c66e90f84ac2c74b2b1828 ("e1000e: Warn
+> > > > if
+> > > > disabling ULP failed")
+> > > > 
+> > 
+> > 
+https://git.kernel.org/cgit/linux/kernel/git/jkirsher/next-queue.git
+> > > > dev-queue
+> > > 
+> > > kern  :warn  : [  240.884667] e1000e 0000:00:19.0 eth0: Failed to
+> > > disable ULP
+> > > kern  :info  : [  241.896122] asix 2-3:1.0 eth1: link up,
+> > > 100Mbps,
+> > > full-duplex, lpa 0xC1E1
+> > > kern  :err   : [  242.269348] e1000e 0000:00:19.0 eth0: Hardware
+> > > Error
+> > > kern  :info  : [  242.772702] e1000e 0000:00:19.0:
+> > > pci_pm_resume+0x0/0x80 returned 0 after 2985422 usecs
+> > > 
+> > > So the patch does catch issues previously ignored.
+> > > 
+> > > I wonder what's the next move, maybe increase the ULP timeout
+> > > again?
+> > > 
+> > > Kai-Heng
+> > > 
+> > > > in testcase: suspend-stress
+> > > > with following parameters:
+> > > > 
+> > > > 	mode: mem
+> > > > 	iterations: 10
+> > > > 
+> > > > 
+> > > > 
+> > > > on test machine: 4 threads Broadwell with 8G memory
+> > > > 
+> > > > caused below changes (please refer to attached dmesg/kmsg for
+> > > > entire log/backtrace):
+> > > > 
+> > > > 
+> > > > 
+> > > > 
+> > > > If you fix the issue, kindly add following tag
+> > > > Reported-by: kernel test robot <rong.a.chen@intel.com>
+> > > > 
+> > > > SUSPEND RESUME TEST STARTED
+> > > > Suspend to mem 1/10:
+> > > > /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-
+> > > > 8 
+> > > > 
+http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-1/10
+> > > > -O /dev/null
+> > > > Done
+> > > > Sleep for 10 seconds
+> > > > Suspend to mem 2/10:
+> > > > /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-
+> > > > 8 
+> > > > 
+http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-2/10
+> > > > -O /dev/null
+> > > > Done
+> > > > Sleep for 10 seconds
+> > > > Suspend to mem 3/10:
+> > > > /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-
+> > > > 8 
+> > > > 
+http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-3/10
+> > > > -O /dev/null
+> > > > Done
+> > > > Sleep for 10 seconds
+> > > > Suspend to mem 4/10:
+> > > > /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-
+> > > > 8 
+> > > > 
+http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-4/10
+> > > > -O /dev/null
+> > > > Done
+> > > > Sleep for 10 seconds
+> > > > Suspend to mem 5/10:
+> > > > /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-
+> > > > 8 
+> > > > 
+http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-5/10
+> > > > -O /dev/null
+> > > > Done
+> > > > Sleep for 10 seconds
+> > > > Suspend to mem 6/10:
+> > > > /usr/bin/wget -q --timeout=1800 --tries=1 --local-encoding=UTF-
+> > > > 8 
+> > > > 
+http://inn:80/~lkp/cgi-bin/lkp-jobfile-append-var?job_file=/lkp/jobs/scheduled/lkp-bdw-nuc1/suspend-stress-10-mem-debian-x86_64-20180403.cgz-e86e383f2854234129c66e90f84ac2c74b2b1828-20200517-66267-13fgkna-8.yaml&job_state=suspending-6/10
+> > > > -O /dev/null
+> > > > Failed
+> > > > 
+> > > > 
+> > > > 
+> > > > To reproduce:
+> > > > 
+> > > >       git clone https://github.com/intel/lkp-tests.git
+> > > >       cd lkp-tests
+> > > >       bin/lkp install job.yaml  # job file is attached in this
+> > > > email
+> > > >       bin/lkp run     job.yaml
+> > > > 
+> > > > 
+> > > > 
+> > > > Thanks,
+> > > > Rong Chen
+> > > > 
+> > > > <config-5.7.0-rc4-01618-ge86e383f28542><job-
+> > > > script.txt><kmsg.xz><suspend-stress.txt><job.yaml>
+> > > 
+> > > 
+> 
+> 
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
