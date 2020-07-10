@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D55C21ACDD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2020 04:04:25 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39A1E21ACDC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2020 04:04:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 243302E16B;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1FE98864A;
 	Fri, 10 Jul 2020 02:04:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7jFoo7f5J0U2; Fri, 10 Jul 2020 02:04:21 +0000 (UTC)
+	with ESMTP id 4tmdC4f3Kegg; Fri, 10 Jul 2020 02:04:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 84F622E13E;
-	Fri, 10 Jul 2020 02:04:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0E6D888634;
+	Fri, 10 Jul 2020 02:04:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EF8991BF3D9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 02:04:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4BDDA1BF3D9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 02:04:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id DEF282051E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 02:04:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3EF4B2051E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 02:04:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uALMDjuxJX9L for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Jul 2020 02:04:15 +0000 (UTC)
+ with ESMTP id 7Aqj5wYEOqV1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Jul 2020 02:04:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by silver.osuosl.org (Postfix) with ESMTPS id 8A9F42E0E4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 02:04:15 +0000 (UTC)
-IronPort-SDR: udDBu2MczNJA1pDeTBclIPkOQlTK2+nwW7TKU0OEpeoiPJFzXfVgcftpV15lFfsjWcdfEGs8nV
- 3x4E4jdSF8gQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9677"; a="145630630"
-X-IronPort-AV: E=Sophos;i="5.75,334,1589266800"; d="scan'208";a="145630630"
+ by silver.osuosl.org (Postfix) with ESMTPS id ECF5A2E0DF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 02:04:16 +0000 (UTC)
+IronPort-SDR: oPw7NxBP+qwTMjFL2HrAn0mgsK/RkDlt5c001dlyKUq5V1qHAolRAubh/M/ip7KB8KB1u8PO/Z
+ sCYjZOq1Smww==
+X-IronPort-AV: E=McAfee;i="6000,8403,9677"; a="145630632"
+X-IronPort-AV: E=Sophos;i="5.75,334,1589266800"; d="scan'208";a="145630632"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jul 2020 19:04:15 -0700
-IronPort-SDR: HchRPFDiBhHxfMTC+hk52KGHP/GqHWW1bUXt0gFWLdgPZBdpe/TrEG+5NxVn7teOUqI2g3ii+R
- DeXd9HuLDkjg==
+ 09 Jul 2020 19:04:16 -0700
+IronPort-SDR: rYE09V4G9hheiMkRrVNg2QAfq0DyhdyIJ2zNPdTUdgDUPiHLk2SRQHODJGCmyJtuZvJYaEcdof
+ bl/3WWwmJuOw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,334,1589266800"; d="scan'208";a="484015002"
+X-IronPort-AV: E=Sophos;i="5.75,334,1589266800"; d="scan'208";a="484015015"
 Received: from npg-dpdk-haiyue-1.sh.intel.com ([10.67.119.213])
- by fmsmga006.fm.intel.com with ESMTP; 09 Jul 2020 19:04:14 -0700
+ by fmsmga006.fm.intel.com with ESMTP; 09 Jul 2020 19:04:15 -0700
 From: Haiyue Wang <haiyue.wang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 10 Jul 2020 09:54:19 +0800
-Message-Id: <20200710015421.92122-4-haiyue.wang@intel.com>
+Date: Fri, 10 Jul 2020 09:54:20 +0800
+Message-Id: <20200710015421.92122-5-haiyue.wang@intel.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20200710015421.92122-1-haiyue.wang@intel.com>
 References: <20200619045711.16055-1-haiyue.wang@intel.com>
  <20200710015421.92122-1-haiyue.wang@intel.com>
 MIME-Version: 1.0
 Subject: [Intel-wired-lan] [net-next,
- v8 3/5] ice: support to get the VSI mapping
+ v8 4/5] ice: enable DDP package info querying
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,42 +69,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Beilei Xing <beilei.xing@intel.com>
+Cc: Ting Xu <ting.xu@intel.com>, Leyi Rong <leyi.rong@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The DCF needs the mapping information of the VF ID to logical hardware
-VSI ID, so that it can create the switch flow rules for other VFs.
+Since the firmware doesn't support reading the DDP package data that PF
+is using. The DCF has to find the PF's DDP package file directly.
 
-Signed-off-by: Beilei Xing <beilei.xing@intel.com>
+For searching the right DDP package that the PF uses, the DCF needs the
+DDP package characteristic information such as the PF's device serial
+number which is used to find the package loading path, and the exact DDP
+track ID, package name, version.
+
+Only with the matched DDP package, the DCF can get the right metadata to
+create switch rules etc.
+
+Signed-off-by: Leyi Rong <leyi.rong@intel.com>
+Signed-off-by: Ting Xu <ting.xu@intel.com>
 Signed-off-by: Haiyue Wang <haiyue.wang@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 61 +++++++++++++++++++
- include/linux/avf/virtchnl.h                  | 21 +++++++
- 2 files changed, 82 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_dcf.h      |  6 +++
+ drivers/net/ethernet/intel/ice/ice_main.c     |  2 +
+ .../net/ethernet/intel/ice/ice_virtchnl_pf.c  | 52 +++++++++++++++++++
+ include/linux/avf/virtchnl.h                  | 23 ++++++++
+ 4 files changed, 83 insertions(+)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcf.h b/drivers/net/ethernet/intel/ice/ice_dcf.h
+index 1dabcca6f753..1ca228f89a19 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcf.h
++++ b/drivers/net/ethernet/intel/ice/ice_dcf.h
+@@ -32,6 +32,12 @@ struct ice_dcf {
+ 	struct ice_aq_desc aq_desc;
+ 	u8 aq_desc_received;
+ 	unsigned long aq_desc_expires;
++
++	/* Save the current Device Serial Number when searching the package
++	 * path for later query.
++	 */
++#define ICE_DSN_NUM_LEN 8
++	u8 dsn[ICE_DSN_NUM_LEN];
+ };
+ 
+ #ifdef CONFIG_PCI_IOV
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index a1cef089201a..983b5e21b436 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3243,6 +3243,8 @@ static char *ice_get_opt_fw_name(struct ice_pf *pf)
+ 	snprintf(opt_fw_filename, NAME_MAX, "%sice-%016llx.pkg",
+ 		 ICE_DDP_PKG_PATH, dsn);
+ 
++	memcpy(pf->dcf.dsn, &dsn, sizeof(pf->dcf.dsn));
++
+ 	return opt_fw_filename;
+ }
+ 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 622b16efae0b..2584c3f199e3 100644
+index 2584c3f199e3..919f1cec784e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -3848,6 +3848,64 @@ static int ice_vc_dis_dcf_cap(struct ice_vf *vf)
- 				     v_ret, NULL, 0);
+@@ -3906,6 +3906,55 @@ static int ice_vc_dcf_get_vsi_map(struct ice_vf *vf)
+ 	return ret;
  }
  
 +/**
-+ * ice_vc_dcf_get_vsi_map - get VSI mapping table
-+ * @vf: pointer to the VF info
++ * ice_vc_dcf_query_pkg_info - query DDP package info from PF
++ * @vf: pointer to VF info
++ *
++ * Called from VF to query DDP package information loaded in PF,
++ * including track ID, package name, version and device serial
++ * number.
 + */
-+static int ice_vc_dcf_get_vsi_map(struct ice_vf *vf)
++static int ice_vc_dcf_query_pkg_info(struct ice_vf *vf)
 +{
 +	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	struct virtchnl_dcf_vsi_map *vsi_map = NULL;
++	struct virtchnl_pkg_info *pkg_info = NULL;
++	struct ice_hw *hw = &vf->pf->hw;
 +	struct ice_pf *pf = vf->pf;
-+	struct ice_vsi *pf_vsi;
-+	u16 len = 0;
-+	int vf_id;
++	int len = 0;
 +	int ret;
 +
 +	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
@@ -117,96 +161,86 @@ index 622b16efae0b..2584c3f199e3 100644
 +		goto err;
 +	}
 +
-+	len = struct_size(vsi_map, vf_vsi, pf->num_alloc_vfs - 1);
-+	vsi_map = kzalloc(len, GFP_KERNEL);
-+	if (!vsi_map) {
++	len = sizeof(struct virtchnl_pkg_info);
++	pkg_info = kzalloc(len, GFP_KERNEL);
++	if (!pkg_info) {
 +		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
 +		len = 0;
 +		goto err;
 +	}
 +
-+	pf_vsi = ice_get_main_vsi(pf);
-+	if (!pf_vsi) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		len = 0;
-+		goto err;
-+	}
-+
-+	vsi_map->pf_vsi = pf_vsi->vsi_num;
-+	vsi_map->num_vfs = pf->num_alloc_vfs;
-+
-+	ice_for_each_vf(pf, vf_id) {
-+		struct ice_vf *tmp_vf = &pf->vf[vf_id];
-+
-+		if (!ice_is_vf_disabled(tmp_vf) &&
-+		    test_bit(ICE_VF_STATE_INIT, tmp_vf->vf_states))
-+			vsi_map->vf_vsi[vf_id] = tmp_vf->lan_vsi_num |
-+				VIRTCHNL_DCF_VF_VSI_VALID;
-+	}
++	pkg_info->track_id = hw->active_track_id;
++	memcpy(&pkg_info->pkg_ver, &hw->active_pkg_ver,
++	       sizeof(pkg_info->pkg_ver));
++	memcpy(pkg_info->pkg_name, hw->active_pkg_name,
++	       sizeof(pkg_info->pkg_name));
++	memcpy(pkg_info->dsn, pf->dcf.dsn, sizeof(pkg_info->dsn));
 +
 +err:
-+	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DCF_GET_VSI_MAP, v_ret,
-+				    (u8 *)vsi_map, len);
-+	kfree(vsi_map);
++	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DCF_GET_PKG_INFO,
++				    v_ret, (u8 *)pkg_info, len);
++	kfree(pkg_info);
 +	return ret;
 +}
 +
  /**
   * ice_vc_process_vf_msg - Process request from VF
   * @pf: pointer to the PF structure
-@@ -3967,6 +4025,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	case VIRTCHNL_OP_DCF_DISABLE:
- 		err = ice_vc_dis_dcf_cap(vf);
+@@ -4028,6 +4077,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
+ 	case VIRTCHNL_OP_DCF_GET_VSI_MAP:
+ 		err = ice_vc_dcf_get_vsi_map(vf);
  		break;
-+	case VIRTCHNL_OP_DCF_GET_VSI_MAP:
-+		err = ice_vc_dcf_get_vsi_map(vf);
++	case VIRTCHNL_OP_DCF_GET_PKG_INFO:
++		err = ice_vc_dcf_query_pkg_info(vf);
 +		break;
  	case VIRTCHNL_OP_UNKNOWN:
  	default:
  		dev_err(dev, "Unsupported opcode %d from VF %d\n", v_opcode,
 diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
-index e219cafabccd..ef07cff40662 100644
+index ef07cff40662..b14ff350469b 100644
 --- a/include/linux/avf/virtchnl.h
 +++ b/include/linux/avf/virtchnl.h
-@@ -140,6 +140,7 @@ enum virtchnl_ops {
- 	VIRTCHNL_OP_DCF_CMD_DESC = 39,
+@@ -141,6 +141,7 @@ enum virtchnl_ops {
  	VIRTCHNL_OP_DCF_CMD_BUFF = 40,
  	VIRTCHNL_OP_DCF_DISABLE = 41,
-+	VIRTCHNL_OP_DCF_GET_VSI_MAP = 42,
+ 	VIRTCHNL_OP_DCF_GET_VSI_MAP = 42,
++	VIRTCHNL_OP_DCF_GET_PKG_INFO = 43,
  	/* New major set of opcodes introduced and so leaving room for
  	 * old misc opcodes to be added in future. Also these opcodes may only
  	 * be used if both the PF and VF have successfully negotiated the
-@@ -627,6 +628,25 @@ struct virtchnl_filter {
+@@ -647,6 +648,27 @@ struct virtchnl_dcf_vsi_map {
  
- VIRTCHNL_CHECK_STRUCT_LEN(272, virtchnl_filter);
+ VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_dcf_vsi_map);
  
-+/* VIRTCHNL_OP_DCF_GET_VSI_MAP
-+ * VF sends this message to get VSI mapping table.
-+ * PF responds with an indirect message containing VF's
-+ * HW VSI IDs.
-+ * The index of vf_vsi array is the logical VF ID, the
-+ * value of vf_vsi array is the VF's HW VSI ID with its
-+ * valid configuration.
-+ */
-+struct virtchnl_dcf_vsi_map {
-+	u16 pf_vsi;	/* PF's HW VSI ID */
-+	u16 num_vfs;	/* The actual number of VFs allocated */
-+#define VIRTCHNL_DCF_VF_VSI_ID_S	0
-+#define VIRTCHNL_DCF_VF_VSI_ID_M	(0xFFF << VIRTCHNL_DCF_VF_VSI_ID_S)
-+#define VIRTCHNL_DCF_VF_VSI_VALID	BIT(15)
-+	u16 vf_vsi[1];
++#define PKG_NAME_SIZE	32
++#define DSN_SIZE	8
++
++struct pkg_version {
++	u8 major;
++	u8 minor;
++	u8 update;
++	u8 draft;
 +};
 +
-+VIRTCHNL_CHECK_STRUCT_LEN(6, virtchnl_dcf_vsi_map);
++VIRTCHNL_CHECK_STRUCT_LEN(4, pkg_version);
++
++struct virtchnl_pkg_info {
++	struct pkg_version pkg_ver;
++	u32 track_id;
++	char pkg_name[PKG_NAME_SIZE];
++	u8 dsn[DSN_SIZE];
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(48, virtchnl_pkg_info);
 +
  /* VIRTCHNL_OP_EVENT
   * PF sends this message to inform the VF driver of events that may affect it.
   * No direct response is expected from the VF, though it may generate other
-@@ -1280,6 +1300,7 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
- 		valid_len = msglen;
+@@ -1301,6 +1323,7 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
  		break;
  	case VIRTCHNL_OP_DCF_DISABLE:
-+	case VIRTCHNL_OP_DCF_GET_VSI_MAP:
+ 	case VIRTCHNL_OP_DCF_GET_VSI_MAP:
++	case VIRTCHNL_OP_DCF_GET_PKG_INFO:
  		break;
  	case VIRTCHNL_OP_GET_CAPS:
  		valid_len = sizeof(struct virtchnl_get_capabilities);
