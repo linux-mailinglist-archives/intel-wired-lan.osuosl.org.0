@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E02A321AC56
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5232E21AC55
 	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2020 03:03:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 99A5B891C8;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0FCF2872EA;
 	Fri, 10 Jul 2020 01:03:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AqPKQ7ALBJfO; Fri, 10 Jul 2020 01:03:26 +0000 (UTC)
+	with ESMTP id qgFO0x-C9EJv; Fri, 10 Jul 2020 01:03:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A6E598903A;
-	Fri, 10 Jul 2020 01:03:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0B2EB873FA;
+	Fri, 10 Jul 2020 01:03:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CD0E71BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:03:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5FA571BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:03:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C5393891ED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:03:17 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 56595890D7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:03:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 60hQMk1ZMoTT for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Jul 2020 01:03:10 +0000 (UTC)
+ with ESMTP id CKYhuqdzJrjE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Jul 2020 01:03:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id D8F0D8903A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:03:05 +0000 (UTC)
-IronPort-SDR: y34dESwRJL2Cvk05cjW7+4FO+q5qilh+0vYaEWzlWtloZwHOpbSIdr+H6Ps0VjvsyMIHB28YCx
- JH0dQx0oTETw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9677"; a="209663023"
-X-IronPort-AV: E=Sophos;i="5.75,332,1589266800"; d="scan'208";a="209663023"
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 7474189639
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:03:07 +0000 (UTC)
+IronPort-SDR: IMqe3Sr0en+XZTEbv73K880MIsiKgDrCW3fo3fc00knSe5wPtYfazzT9VJMQYJzOryzpyCn7Ne
+ mNju7JMSVyZg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9677"; a="209663026"
+X-IronPort-AV: E=Sophos;i="5.75,332,1589266800"; d="scan'208";a="209663026"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jul 2020 18:03:05 -0700
-IronPort-SDR: 2HOYJ7DPBZqYbkCdiJJgefzjOgOV5akTpOTpsONb5x1Yk2VHcI4rh1VZeF/Vghn4a1g5gArtEl
- 6jJNFPNHqAqw==
+ 09 Jul 2020 18:03:07 -0700
+IronPort-SDR: OeYKr1/laGTdK04imNJfWO1Nd9rK2QkPutQg1E4sf1sQEA1Zln+ZdUzszwbHbpxVcdi0sfD/wr
+ ++sqgSWenCIQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,332,1589266800"; d="scan'208";a="458118985"
+X-IronPort-AV: E=Sophos;i="5.75,332,1589266800"; d="scan'208";a="458118994"
 Received: from dpdk51.sh.intel.com ([10.67.111.82])
- by orsmga005.jf.intel.com with ESMTP; 09 Jul 2020 18:03:04 -0700
+ by orsmga005.jf.intel.com with ESMTP; 09 Jul 2020 18:03:05 -0700
 From: Qi Zhang <qi.z.zhang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 10 Jul 2020 09:06:43 +0800
-Message-Id: <20200710010644.33817-16-qi.z.zhang@intel.com>
+Date: Fri, 10 Jul 2020 09:06:44 +0800
+Message-Id: <20200710010644.33817-17-qi.z.zhang@intel.com>
 X-Mailer: git-send-email 2.13.6
 In-Reply-To: <20200710010644.33817-1-qi.z.zhang@intel.com>
 References: <20200710010644.33817-1-qi.z.zhang@intel.com>
-Subject: [Intel-wired-lan] [PATCH S48 v5 15/16] ice: Add more FDIR filter
- type for AVF
+Subject: [Intel-wired-lan] [PATCH S48 v5 16/16] ice: Check FDIR program
+ status for AVF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,438 +74,746 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-FDIR for AVF can forward
-- L2TPV3 packets by matching session id.
-- IPSEC ESP packets by matching security parameter index.
-- IPSEC AH packets by matching security parameter index.
-- NAT_T ESP packets by matching security parameter index.
-- Any PFCP session packets(s field is 1).
+Enables returning FDIR completion status by checking the
+ctrl_vsi Rx queue descriptor value.
+
+To enable returning FDIR completion status from ctrl_vsi Rx queue,
+COMP_Queue and COMP_Report of FDIR filter programming descriptor
+needs to be properly configured. After program request sent to ctrl_vsi
+Tx queue, ctrl_vsi Rx queue interrupt will be triggered and
+completion status will be returned.
+
+Driver will first issue request in ice_vc_fdir_add_fltr(), then
+pass FDIR context to the background task in interrupt service routine
+ice_vc_fdir_irq_handler() and finally deal with them in
+ice_flush_fdir_ctx(). ice_flush_fdir_ctx() will check the descriptor's
+value, fdir context, and then send back virtual channel message to VF
+by calling ice_vc_add_fdir_fltr_post(). An additional timer will be
+setup in case of hardware interrupt timeout.
 
 Signed-off-by: Yahui Cao <yahui.cao@intel.com>
 Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_fdir.h          |   7 +
- drivers/net/ethernet/intel/ice/ice_type.h          |  13 +
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 280 +++++++++++++++++++--
- 3 files changed, 282 insertions(+), 18 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h               |   1 +
+ drivers/net/ethernet/intel/ice/ice_hw_autogen.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h     |  20 +
+ drivers/net/ethernet/intel/ice/ice_main.c          |   2 +
+ drivers/net/ethernet/intel/ice/ice_txrx.c          |   5 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 494 ++++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h |  27 +-
+ 7 files changed, 536 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.h b/drivers/net/ethernet/intel/ice/ice_fdir.h
-index 9943c2b0f474..320f19cd748f 100644
---- a/drivers/net/ethernet/intel/ice/ice_fdir.h
-+++ b/drivers/net/ethernet/intel/ice/ice_fdir.h
-@@ -124,6 +124,10 @@ struct ice_fdir_udp_gtp {
- 	u8 next_ext;
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index f5e1ebbcdff4..f0c58e3f46a1 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -224,6 +224,7 @@ enum ice_state {
+ 	__ICE_OICR_INTR_DIS,		/* Global OICR interrupt disabled */
+ 	__ICE_MDD_VF_PRINT_PENDING,	/* set when MDD event handle */
+ 	__ICE_VF_RESETS_DISABLED,	/* disable resets during ice_remove */
++	__ICE_FD_VF_FLUSH_CTX,		/* set at FD Rx IRQ or timeout */
+ 	__ICE_STATE_NBITS		/* must be last */
  };
  
-+struct ice_fdir_l2tpv3 {
-+	__be32 session_id;
-+};
-+
- struct ice_fdir_extra {
- 	u8 dst_mac[ETH_ALEN];	/* dest MAC address */
- 	__be16 ether_type;      /* for NON_IP_L2 */
-@@ -144,6 +148,9 @@ struct ice_fdir_fltr {
- 	struct ice_fdir_udp_gtp gtpu_data;
- 	struct ice_fdir_udp_gtp gtpu_mask;
+diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+index 07a9b70c2751..a9163471dbc0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
++++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+@@ -384,6 +384,9 @@
+ #define VSIQF_FD_CNT(_VSI)			(0x00464000 + ((_VSI) * 4))
+ #define VSIQF_FD_CNT_FD_GCNT_S			0
+ #define VSIQF_FD_CNT_FD_GCNT_M			ICE_M(0x3FFF, 0)
++#define VSIQF_FD_CNT_FD_BCNT_S                  16
++#define VSIQF_FD_CNT_FD_BCNT_M                  ICE_M(0x3FFF, 16)
++#define VSIQF_FD_SIZE(_VSI)                     (0x00462000 + ((_VSI) * 4))
+ #define VSIQF_HKEY_MAX_INDEX			12
+ #define VSIQF_HLUT_MAX_INDEX			15
+ #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
+diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
+index 1382c498e1f0..eee4726a393c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
++++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
+@@ -140,6 +140,26 @@ struct ice_fltr_desc {
+ 			(0xFFFFFFFFULL << ICE_FXD_FLTR_QW1_FDID_S)
+ #define ICE_FXD_FLTR_QW1_FDID_ZERO	0x0ULL
  
-+	struct ice_fdir_l2tpv3 l2tpv3_data;
-+	struct ice_fdir_l2tpv3 l2tpv3_mask;
++/* definition for FD filter programming status descriptor WB format */
++#define ICE_FXD_FLTR_WB_QW1_DD_S	0
++#define ICE_FXD_FLTR_WB_QW1_DD_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_DD_S)
++#define ICE_FXD_FLTR_WB_QW1_DD_YES	0x1ULL
 +
- 	struct ice_fdir_extra ext_data;
- 	struct ice_fdir_extra ext_mask;
++#define ICE_FXD_FLTR_WB_QW1_PROG_ID_S	1
++#define ICE_FXD_FLTR_WB_QW1_PROG_ID_M	\
++				(0x3ULL << ICE_FXD_FLTR_WB_QW1_PROG_ID_S)
++#define ICE_FXD_FLTR_WB_QW1_PROG_ADD	0x0ULL
++#define ICE_FXD_FLTR_WB_QW1_PROG_DEL	0x1ULL
++
++#define ICE_FXD_FLTR_WB_QW1_FAIL_S	4
++#define ICE_FXD_FLTR_WB_QW1_FAIL_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_S)
++#define ICE_FXD_FLTR_WB_QW1_FAIL_YES	0x1ULL
++
++#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S	5
++#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M	\
++				(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S)
++#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES	0x1ULL
++
+ struct ice_rx_ptype_decoded {
+ 	u32 ptype:10;
+ 	u32 known:1;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 8afd33bdd637..c0b5f7f83d67 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1481,6 +1481,7 @@ static void ice_service_task(struct work_struct *work)
+ 	ice_process_vflr_event(pf);
+ 	ice_clean_mailboxq_subtask(pf);
+ 	ice_sync_arfs_fltrs(pf);
++	ice_flush_fdir_ctx(pf);
+ 	/* Clear __ICE_SERVICE_SCHED flag to allow scheduling next event */
+ 	ice_service_task_complete(pf);
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 0df159a1619a..1aaa06c01a55 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -174,6 +174,19 @@ enum ice_fltr_ptype {
- 	ICE_FLTR_PTYPE_NONF_IPV4_GTPU_IPV4_TCP,
- 	ICE_FLTR_PTYPE_NONF_IPV4_GTPU_IPV4_ICMP,
- 	ICE_FLTR_PTYPE_NONF_IPV4_GTPU_IPV4_OTHER,
-+	ICE_FLTR_PTYPE_NONF_IPV6_GTPU_IPV6_OTHER,
-+	ICE_FLTR_PTYPE_NONF_IPV4_L2TPV3,
-+	ICE_FLTR_PTYPE_NONF_IPV6_L2TPV3,
-+	ICE_FLTR_PTYPE_NONF_IPV4_ESP,
-+	ICE_FLTR_PTYPE_NONF_IPV6_ESP,
-+	ICE_FLTR_PTYPE_NONF_IPV4_AH,
-+	ICE_FLTR_PTYPE_NONF_IPV6_AH,
-+	ICE_FLTR_PTYPE_NONF_IPV4_NAT_T_ESP,
-+	ICE_FLTR_PTYPE_NONF_IPV6_NAT_T_ESP,
-+	ICE_FLTR_PTYPE_NONF_IPV4_PFCP_NODE,
-+	ICE_FLTR_PTYPE_NONF_IPV4_PFCP_SESSION,
-+	ICE_FLTR_PTYPE_NONF_IPV6_PFCP_NODE,
-+	ICE_FLTR_PTYPE_NONF_IPV6_PFCP_SESSION,
- 	ICE_FLTR_PTYPE_NON_IP_L2,
- 	ICE_FLTR_PTYPE_FRAG_IPV4,
- 	ICE_FLTR_PTYPE_NONF_IPV6_UDP,
+@@ -1492,6 +1493,7 @@ static void ice_service_task(struct work_struct *work)
+ 	    test_bit(__ICE_MDD_EVENT_PENDING, pf->state) ||
+ 	    test_bit(__ICE_VFLR_EVENT_PENDING, pf->state) ||
+ 	    test_bit(__ICE_MAILBOXQ_EVENT_PENDING, pf->state) ||
++	    test_bit(__ICE_FD_VF_FLUSH_CTX, pf->state) ||
+ 	    test_bit(__ICE_ADMINQ_EVENT_PENDING, pf->state))
+ 		mod_timer(&pf->serv_tmr, jiffies);
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index abdb137c8bb7..0aaed92f807f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1128,6 +1128,11 @@ int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
+ 		dma_rmb();
+ 
+ 		if (rx_desc->wb.rxdid == FDIR_DESC_RXDID || !rx_ring->netdev) {
++			struct ice_vsi *ctrl_vsi = rx_ring->vsi;
++
++			if (rx_desc->wb.rxdid == FDIR_DESC_RXDID &&
++			    ctrl_vsi->vf_id != ICE_INVAL_VFID)
++				ice_vc_fdir_irq_handler(ctrl_vsi, rx_desc);
+ 			ice_put_rx_buf(rx_ring, NULL);
+ 			cleaned_count++;
+ 			continue;
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-index 2cc0ed23c778..4e08e7ec4ebc 100644
+index 4e08e7ec4ebc..ac14a4b16ab2 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-@@ -26,6 +26,14 @@
- #define GTPU_TEID_OFFSET 4
- #define GTPU_EH_QFI_OFFSET 1
- #define GTPU_EH_QFI_MASK 0x3F
-+#define PFCP_S_OFFSET 0
-+#define PFCP_S_MASK 0x1
-+#define PFCP_PORT_NR 8805
-+
-+#define FDIR_INSET_FLAG_ESP_S 0
-+#define FDIR_INSET_FLAG_ESP_M BIT_ULL(FDIR_INSET_FLAG_ESP_S)
-+#define FDIR_INSET_FLAG_ESP_UDP BIT_ULL(FDIR_INSET_FLAG_ESP_S)
-+#define FDIR_INSET_FLAG_ESP_IPSEC (0ULL << FDIR_INSET_FLAG_ESP_S)
- 
- enum ice_fdir_tunnel_type {
- 	ICE_FDIR_TUNNEL_TYPE_NONE = 0,
-@@ -36,6 +44,7 @@ enum ice_fdir_tunnel_type {
- struct virtchnl_fdir_fltr_conf {
+@@ -45,6 +45,7 @@ struct virtchnl_fdir_fltr_conf {
  	struct ice_fdir_fltr input;
  	enum ice_fdir_tunnel_type ttype;
-+	u64 inset_flag;
+ 	u64 inset_flag;
++	u32 flow_id;
  };
  
  static enum virtchnl_proto_hdr_type vc_pattern_ether[] = {
-@@ -114,6 +123,80 @@ static enum virtchnl_proto_hdr_type vc_pattern_ipv4_gtpu_eh[] = {
- 	VIRTCHNL_PROTO_HDR_NONE,
- };
+@@ -1486,7 +1487,7 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
+ 	}
  
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv4_l2tpv3[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV4,
-+	VIRTCHNL_PROTO_HDR_L2TPV3,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv6_l2tpv3[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV6,
-+	VIRTCHNL_PROTO_HDR_L2TPV3,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv4_esp[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV4,
-+	VIRTCHNL_PROTO_HDR_ESP,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv6_esp[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV6,
-+	VIRTCHNL_PROTO_HDR_ESP,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv4_ah[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV4,
-+	VIRTCHNL_PROTO_HDR_AH,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv6_ah[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV6,
-+	VIRTCHNL_PROTO_HDR_AH,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv4_nat_t_esp[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV4,
-+	VIRTCHNL_PROTO_HDR_UDP,
-+	VIRTCHNL_PROTO_HDR_ESP,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv6_nat_t_esp[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV6,
-+	VIRTCHNL_PROTO_HDR_UDP,
-+	VIRTCHNL_PROTO_HDR_ESP,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv4_pfcp[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV4,
-+	VIRTCHNL_PROTO_HDR_UDP,
-+	VIRTCHNL_PROTO_HDR_PFCP,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
-+static enum virtchnl_proto_hdr_type vc_pattern_ipv6_pfcp[] = {
-+	VIRTCHNL_PROTO_HDR_ETH,
-+	VIRTCHNL_PROTO_HDR_IPV6,
-+	VIRTCHNL_PROTO_HDR_UDP,
-+	VIRTCHNL_PROTO_HDR_PFCP,
-+	VIRTCHNL_PROTO_HDR_NONE,
-+};
-+
- struct virtchnl_fdir_pattern_match_item {
- 	enum virtchnl_proto_hdr_type *list;
- 	u64 input_set;
-@@ -143,32 +226,52 @@ static const struct virtchnl_fdir_pattern_match_item vc_fdir_pattern_comms[] = {
- 	{vc_pattern_ether,                    0,         NULL},
- 	{vc_pattern_ipv4_gtpu,                0,         NULL},
- 	{vc_pattern_ipv4_gtpu_eh,             0,         NULL},
-+	{vc_pattern_ipv4_l2tpv3,              0,         NULL},
-+	{vc_pattern_ipv6_l2tpv3,              0,         NULL},
-+	{vc_pattern_ipv4_esp,                 0,         NULL},
-+	{vc_pattern_ipv6_esp,                 0,         NULL},
-+	{vc_pattern_ipv4_ah,                  0,         NULL},
-+	{vc_pattern_ipv6_ah,                  0,         NULL},
-+	{vc_pattern_ipv4_nat_t_esp,           0,         NULL},
-+	{vc_pattern_ipv6_nat_t_esp,           0,         NULL},
-+	{vc_pattern_ipv4_pfcp,                0,         NULL},
-+	{vc_pattern_ipv6_pfcp,                0,         NULL},
- };
+ 	input->dest_vsi = vsi->idx;
+-	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW_FAIL;
++	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW;
  
- struct virtchnl_fdir_inset_map {
- 	enum virtchnl_proto_hdr_field field;
- 	enum ice_flow_field fld;
-+	u64 flag;
-+	u64 mask;
- };
- 
- static const struct virtchnl_fdir_inset_map fdir_inset_map[] = {
--	{VIRTCHNL_PROTO_HDR_IPV4_SRC, ICE_FLOW_FIELD_IDX_IPV4_SA},
--	{VIRTCHNL_PROTO_HDR_IPV4_DST, ICE_FLOW_FIELD_IDX_IPV4_DA},
--	{VIRTCHNL_PROTO_HDR_IPV4_DSCP, ICE_FLOW_FIELD_IDX_IPV4_DSCP},
--	{VIRTCHNL_PROTO_HDR_IPV4_TTL, ICE_FLOW_FIELD_IDX_IPV4_TTL},
--	{VIRTCHNL_PROTO_HDR_IPV4_PROT, ICE_FLOW_FIELD_IDX_IPV4_PROT},
--	{VIRTCHNL_PROTO_HDR_IPV6_SRC, ICE_FLOW_FIELD_IDX_IPV6_SA},
--	{VIRTCHNL_PROTO_HDR_IPV6_DST, ICE_FLOW_FIELD_IDX_IPV6_DA},
--	{VIRTCHNL_PROTO_HDR_IPV6_TC, ICE_FLOW_FIELD_IDX_IPV6_DSCP},
--	{VIRTCHNL_PROTO_HDR_IPV6_HOP_LIMIT, ICE_FLOW_FIELD_IDX_IPV6_TTL},
--	{VIRTCHNL_PROTO_HDR_IPV6_PROT, ICE_FLOW_FIELD_IDX_IPV6_PROT},
--	{VIRTCHNL_PROTO_HDR_UDP_SRC_PORT, ICE_FLOW_FIELD_IDX_UDP_SRC_PORT},
--	{VIRTCHNL_PROTO_HDR_UDP_DST_PORT, ICE_FLOW_FIELD_IDX_UDP_DST_PORT},
--	{VIRTCHNL_PROTO_HDR_TCP_SRC_PORT, ICE_FLOW_FIELD_IDX_TCP_SRC_PORT},
--	{VIRTCHNL_PROTO_HDR_TCP_DST_PORT, ICE_FLOW_FIELD_IDX_TCP_DST_PORT},
--	{VIRTCHNL_PROTO_HDR_SCTP_SRC_PORT, ICE_FLOW_FIELD_IDX_SCTP_SRC_PORT},
--	{VIRTCHNL_PROTO_HDR_SCTP_DST_PORT, ICE_FLOW_FIELD_IDX_SCTP_DST_PORT},
--	{VIRTCHNL_PROTO_HDR_GTPU_IP_TEID, ICE_FLOW_FIELD_IDX_GTPU_IP_TEID},
--	{VIRTCHNL_PROTO_HDR_GTPU_EH_QFI, ICE_FLOW_FIELD_IDX_GTPU_EH_QFI},
-+	{VIRTCHNL_PROTO_HDR_ETH_ETHERTYPE, ICE_FLOW_FIELD_IDX_ETH_TYPE, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV4_SRC, ICE_FLOW_FIELD_IDX_IPV4_SA, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV4_DST, ICE_FLOW_FIELD_IDX_IPV4_DA, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV4_DSCP, ICE_FLOW_FIELD_IDX_IPV4_DSCP, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV4_TTL, ICE_FLOW_FIELD_IDX_IPV4_TTL, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV4_PROT, ICE_FLOW_FIELD_IDX_IPV4_PROT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV6_SRC, ICE_FLOW_FIELD_IDX_IPV6_SA, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV6_DST, ICE_FLOW_FIELD_IDX_IPV6_DA, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV6_TC, ICE_FLOW_FIELD_IDX_IPV6_DSCP, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV6_HOP_LIMIT, ICE_FLOW_FIELD_IDX_IPV6_TTL, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_IPV6_PROT, ICE_FLOW_FIELD_IDX_IPV6_PROT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_UDP_SRC_PORT, ICE_FLOW_FIELD_IDX_UDP_SRC_PORT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_UDP_DST_PORT, ICE_FLOW_FIELD_IDX_UDP_DST_PORT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_TCP_SRC_PORT, ICE_FLOW_FIELD_IDX_TCP_SRC_PORT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_TCP_DST_PORT, ICE_FLOW_FIELD_IDX_TCP_DST_PORT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_SCTP_SRC_PORT, ICE_FLOW_FIELD_IDX_SCTP_SRC_PORT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_SCTP_DST_PORT, ICE_FLOW_FIELD_IDX_SCTP_DST_PORT, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_GTPU_IP_TEID, ICE_FLOW_FIELD_IDX_GTPU_IP_TEID, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_GTPU_EH_QFI, ICE_FLOW_FIELD_IDX_GTPU_EH_QFI, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_ESP_SPI, ICE_FLOW_FIELD_IDX_ESP_SPI,
-+		FDIR_INSET_FLAG_ESP_IPSEC, FDIR_INSET_FLAG_ESP_M},
-+	{VIRTCHNL_PROTO_HDR_ESP_SPI, ICE_FLOW_FIELD_IDX_NAT_T_ESP_SPI,
-+		FDIR_INSET_FLAG_ESP_UDP, FDIR_INSET_FLAG_ESP_M},
-+	{VIRTCHNL_PROTO_HDR_AH_SPI, ICE_FLOW_FIELD_IDX_AH_SPI, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_L2TPV3_SESS_ID, ICE_FLOW_FIELD_IDX_L2TPV3_SESS_ID, 0, 0},
-+	{VIRTCHNL_PROTO_HDR_PFCP_S_FIELD, ICE_FLOW_FIELD_IDX_UDP_DST_PORT, 0, 0},
- };
+ 	ctrl_vsi = pf->vsi[vf->ctrl_vsi_idx];
+ 	if (!ctrl_vsi) {
+@@ -1519,6 +1520,455 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
+ }
  
  /**
-@@ -345,6 +448,11 @@ ice_vc_fdir_parse_flow_fld(struct virtchnl_proto_hdr *proto_hdr,
- 	for (i = 0; (i < ARRAY_SIZE(fdir_inset_map)) &&
- 	     VIRTCHNL_GET_PROTO_HDR_FIELD(&hdr); i++)
- 		if (VIRTCHNL_TEST_PROTO_HDR(&hdr, fdir_inset_map[i].field)) {
-+			if (fdir_inset_map[i].mask &&
-+			    ((fdir_inset_map[i].mask & conf->inset_flag)
-+			    != fdir_inset_map[i].flag))
-+				continue;
++ * ice_vf_fdir_timer - FDIR program waiting timer interrupt handler
++ * @t: pointer to timer_list
++ */
++static void ice_vf_fdir_timer(struct timer_list *t)
++{
++	struct ice_vf_fdir_ctx *ctx_irq = from_timer(ctx_irq, t, rx_tmr);
++	struct ice_vf_fdir_ctx *ctx_done;
++	struct ice_vf_fdir *fdir;
++	unsigned long flags;
++	struct ice_vf *vf;
++	struct ice_pf *pf;
 +
- 			fld[*fld_cnt] = fdir_inset_map[i].fld;
- 			*fld_cnt += 1;
- 			if (*fld_cnt >= ICE_FLOW_FIELD_IDX_MAX)
-@@ -425,6 +533,36 @@ ice_vc_fdir_set_flow_hdr(struct ice_vf *vf,
- 	case ICE_FLTR_PTYPE_NON_IP_L2:
- 		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_ETH_NON_IP);
- 		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV4_L2TPV3:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_L2TPV3 |
-+				  ICE_FLOW_SEG_HDR_IPV4 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV4_ESP:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_ESP |
-+				  ICE_FLOW_SEG_HDR_IPV4 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV4_AH:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_AH |
-+				  ICE_FLOW_SEG_HDR_IPV4 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV4_NAT_T_ESP:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_NAT_T_ESP |
-+				  ICE_FLOW_SEG_HDR_IPV4 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV4_PFCP_NODE:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_PFCP_NODE |
-+				  ICE_FLOW_SEG_HDR_IPV4 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV4_PFCP_SESSION:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_PFCP_SESSION |
-+				  ICE_FLOW_SEG_HDR_IPV4 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
- 	case ICE_FLTR_PTYPE_NONF_IPV4_OTHER:
- 		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_IPV4 |
- 				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-@@ -463,6 +601,36 @@ ice_vc_fdir_set_flow_hdr(struct ice_vf *vf,
- 				  ICE_FLOW_SEG_HDR_IPV4 |
- 				  ICE_FLOW_SEG_HDR_IPV_OTHER);
- 		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV6_L2TPV3:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_L2TPV3 |
-+				  ICE_FLOW_SEG_HDR_IPV6 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV6_ESP:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_ESP |
-+				  ICE_FLOW_SEG_HDR_IPV6 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV6_AH:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_AH |
-+				  ICE_FLOW_SEG_HDR_IPV6 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV6_NAT_T_ESP:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_NAT_T_ESP |
-+				  ICE_FLOW_SEG_HDR_IPV6 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV6_PFCP_NODE:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_PFCP_NODE |
-+				  ICE_FLOW_SEG_HDR_IPV6 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
-+	case ICE_FLTR_PTYPE_NONF_IPV6_PFCP_SESSION:
-+		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_PFCP_SESSION |
-+				  ICE_FLOW_SEG_HDR_IPV6 |
-+				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-+		break;
- 	case ICE_FLTR_PTYPE_NONF_IPV6_OTHER:
- 		ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_IPV6 |
- 				  ICE_FLOW_SEG_HDR_IPV_OTHER);
-@@ -849,12 +1017,15 @@ ice_vc_fdir_parse_pattern(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
++	fdir = container_of(ctx_irq, struct ice_vf_fdir, ctx_irq);
++	vf = container_of(fdir, struct ice_vf, fdir);
++	ctx_done = &fdir->ctx_done;
++	pf = vf->pf;
++	spin_lock_irqsave(&fdir->ctx_lock, flags);
++	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
++		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
++		WARN_ON_ONCE(1);
++		return;
++	}
++
++	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
++
++	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
++	ctx_done->conf = ctx_irq->conf;
++	ctx_done->stat = ICE_FDIR_CTX_TIMEOUT;
++	ctx_done->v_opcode = ctx_irq->v_opcode;
++	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
++
++	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
++	ice_service_task_schedule(pf);
++}
++
++/**
++ * ice_vc_fdir_irq_handler - ctrl_vsi Rx queue interrupt handler
++ * @ctrl_vsi: pointer to a VF's CTRL VSI
++ * @rx_desc: pointer to FDIR Rx queue descriptor
++ */
++void
++ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
++			union ice_32b_rx_flex_desc *rx_desc)
++{
++	struct ice_pf *pf = ctrl_vsi->back;
++	struct ice_vf_fdir_ctx *ctx_done;
++	struct ice_vf_fdir_ctx *ctx_irq;
++	struct ice_vf_fdir *fdir;
++	unsigned long flags;
++	struct device *dev;
++	struct ice_vf *vf;
++	int ret;
++
++	vf = &pf->vf[ctrl_vsi->vf_id];
++
++	fdir = &vf->fdir;
++	ctx_done = &fdir->ctx_done;
++	ctx_irq = &fdir->ctx_irq;
++	dev = ice_pf_to_dev(pf);
++	spin_lock_irqsave(&fdir->ctx_lock, flags);
++	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
++		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
++		WARN_ON_ONCE(1);
++		return;
++	}
++
++	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
++
++	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
++	ctx_done->conf = ctx_irq->conf;
++	ctx_done->stat = ICE_FDIR_CTX_IRQ;
++	ctx_done->v_opcode = ctx_irq->v_opcode;
++	memcpy(&ctx_done->rx_desc, rx_desc, sizeof(*rx_desc));
++	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
++
++	ret = del_timer(&ctx_irq->rx_tmr);
++	if (!ret)
++		dev_err(dev, "VF %d: Unexpected inactive timer!\n", vf->vf_id);
++
++	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
++	ice_service_task_schedule(pf);
++}
++
++/**
++ * ice_vf_fdir_dump_info - dump FDIR information for diagnosis
++ * @vf: pointer to the VF info
++ */
++static void ice_vf_fdir_dump_info(struct ice_vf *vf)
++{
++	struct ice_vsi *vf_vsi;
++	u32 fd_size, fd_cnt;
++	struct device *dev;
++	struct ice_pf *pf;
++	struct ice_hw *hw;
++	u16 vsi_num;
++
++	pf = vf->pf;
++	hw = &pf->hw;
++	dev = ice_pf_to_dev(pf);
++	vf_vsi = pf->vsi[vf->lan_vsi_idx];
++	vsi_num = ice_get_hw_vsi_num(hw, vf_vsi->idx);
++
++	fd_size = rd32(hw, VSIQF_FD_SIZE(vsi_num));
++	fd_cnt = rd32(hw, VSIQF_FD_CNT(vsi_num));
++	dev_dbg(dev, "VF %d: space allocated: guar:0x%x, be:0x%x, space consumed: guar:0x%x, be:0x%x",
++		vf->vf_id,
++		(fd_size & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
++		(fd_size & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S,
++		(fd_cnt & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
++		(fd_cnt & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S);
++}
++
++/**
++ * ice_vf_verify_rx_desc - verify received FDIR programming status descriptor
++ * @vf: pointer to the VF info
++ * @ctx: FDIR context info for post processing
++ * @status: virtchnl FDIR program status
++ *
++ * Return: 0 on success, and other on error.
++ */
++static int
++ice_vf_verify_rx_desc(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
++		      enum virtchnl_fdir_prgm_status *status)
++{
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	u32 stat_err, error, prog_id;
++	int ret;
++
++	stat_err = le16_to_cpu(ctx->rx_desc.wb.status_error0);
++	if (((stat_err & ICE_FXD_FLTR_WB_QW1_DD_M) >>
++	    ICE_FXD_FLTR_WB_QW1_DD_S) != ICE_FXD_FLTR_WB_QW1_DD_YES) {
++		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
++		dev_err(dev, "VF %d: Desc Done not set\n", vf->vf_id);
++		ret = -EINVAL;
++		goto err_exit;
++	}
++
++	prog_id = (stat_err & ICE_FXD_FLTR_WB_QW1_PROG_ID_M) >>
++		ICE_FXD_FLTR_WB_QW1_PROG_ID_S;
++	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD &&
++	    ctx->v_opcode != VIRTCHNL_OP_ADD_FDIR_FILTER) {
++		dev_err(dev, "VF %d: Desc show add, but ctx not",
++			vf->vf_id);
++		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
++		ret = -EINVAL;
++		goto err_exit;
++	}
++
++	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_DEL &&
++	    ctx->v_opcode != VIRTCHNL_OP_DEL_FDIR_FILTER) {
++		dev_err(dev, "VF %d: Desc show del, but ctx not",
++			vf->vf_id);
++		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
++		ret = -EINVAL;
++		goto err_exit;
++	}
++
++	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_M) >>
++		ICE_FXD_FLTR_WB_QW1_FAIL_S;
++	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_YES) {
++		if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD) {
++			dev_err(dev, "VF %d, Failed to add FDIR rule due to no space in the table",
++				vf->vf_id);
++			*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
++		} else {
++			dev_err(dev, "VF %d, Failed to remove FDIR rule, attempt to remove non-existent entry",
++				vf->vf_id);
++			*status = VIRTCHNL_FDIR_FAILURE_RULE_NONEXIST;
++		}
++		ret = -EINVAL;
++		goto err_exit;
++	}
++
++	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M) >>
++		ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S;
++	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES) {
++		dev_err(dev, "VF %d: Profile matching error", vf->vf_id);
++		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
++		ret = -EINVAL;
++		goto err_exit;
++	}
++
++	*status = VIRTCHNL_FDIR_SUCCESS;
++
++	return 0;
++
++err_exit:
++	ice_vf_fdir_dump_info(vf);
++	return ret;
++}
++
++/**
++ * ice_vc_add_fdir_fltr_post
++ * @vf: pointer to the VF structure
++ * @ctx: FDIR context info for post processing
++ * @status: virtchnl FDIR program status
++ * @success: true implies success, false implies failure
++ *
++ * Post process for flow director add command. If success, then do post process
++ * and send back success msg by virtchnl. Otherwise, do context reversion and
++ * send back failure msg by virtchnl.
++ *
++ * Return: 0 on success, and other on error.
++ */
++static int
++ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
++			  enum virtchnl_fdir_prgm_status status,
++			  bool success)
++{
++	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	enum virtchnl_status_code v_ret;
++	struct virtchnl_fdir_add *resp;
++	int ret, len, is_tun;
++
++	v_ret = VIRTCHNL_STATUS_SUCCESS;
++	len = sizeof(*resp);
++	resp = kzalloc(len, GFP_KERNEL);
++	if (!resp) {
++		len = 0;
++		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
++		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
++		goto err_exit;
++	}
++
++	if (!success)
++		goto err_exit;
++
++	is_tun = 0;
++	resp->status = status;
++	resp->flow_id = conf->flow_id;
++	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
++
++	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
++				    (u8 *)resp, len);
++	kfree(resp);
++
++	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
++		vf->vf_id, conf->flow_id,
++		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
++		"add" : "del");
++	return ret;
++
++err_exit:
++	if (resp)
++		resp->status = status;
++	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
++	devm_kfree(dev, conf);
++
++	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
++				    (u8 *)resp, len);
++	kfree(resp);
++	return ret;
++}
++
++/**
++ * ice_vc_del_fdir_fltr_post
++ * @vf: pointer to the VF structure
++ * @ctx: FDIR context info for post processing
++ * @status: virtchnl FDIR program status
++ * @success: true implies success, false implies failure
++ *
++ * Post process for flow director del command. If success, then do post process
++ * and send back success msg by virtchnl. Otherwise, do context reversion and
++ * send back failure msg by virtchnl.
++ *
++ * Return: 0 on success, and other on error.
++ */
++static int
++ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
++			  enum virtchnl_fdir_prgm_status status,
++			  bool success)
++{
++	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	enum virtchnl_status_code v_ret;
++	struct virtchnl_fdir_del *resp;
++	int ret, len, is_tun;
++
++	v_ret = VIRTCHNL_STATUS_SUCCESS;
++	len = sizeof(*resp);
++	resp = kzalloc(len, GFP_KERNEL);
++	if (!resp) {
++		len = 0;
++		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
++		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
++		goto err_exit;
++	}
++
++	if (!success)
++		goto err_exit;
++
++	is_tun = 0;
++	resp->status = status;
++	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
++	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
++
++	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
++				    (u8 *)resp, len);
++	kfree(resp);
++
++	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
++		vf->vf_id, conf->flow_id,
++		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
++		"add" : "del");
++	devm_kfree(dev, conf);
++	return ret;
++
++err_exit:
++	if (resp)
++		resp->status = status;
++	if (success)
++		devm_kfree(dev, conf);
++
++	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
++				    (u8 *)resp, len);
++	kfree(resp);
++	return ret;
++}
++
++/**
++ * ice_flush_fdir_ctx
++ * @pf: pointer to the PF structure
++ *
++ * Flush all the pending event on ctx_done list and process them.
++ */
++void ice_flush_fdir_ctx(struct ice_pf *pf)
++{
++	int i;
++
++	if (!test_and_clear_bit(__ICE_FD_VF_FLUSH_CTX, pf->state))
++		return;
++
++	ice_for_each_vf(pf, i) {
++		struct device *dev = ice_pf_to_dev(pf);
++		enum virtchnl_fdir_prgm_status status;
++		struct ice_vf *vf = &pf->vf[i];
++		struct ice_vf_fdir_ctx *ctx;
++		unsigned long flags;
++		int ret;
++
++		if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
++			continue;
++
++		if (vf->ctrl_vsi_idx == ICE_NO_VSI)
++			continue;
++
++		ctx = &vf->fdir.ctx_done;
++		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
++		if (!(ctx->flags & ICE_VF_FDIR_CTX_VALID)) {
++			spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++			continue;
++		}
++		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++
++		WARN_ON(ctx->stat == ICE_FDIR_CTX_READY);
++		if (ctx->stat == ICE_FDIR_CTX_TIMEOUT) {
++			status = VIRTCHNL_FDIR_FAILURE_RULE_TIMEOUT;
++			dev_err(dev, "VF %d: ctrl_vsi irq timeout\n",
++				vf->vf_id);
++			goto err_exit;
++		}
++
++		ret = ice_vf_verify_rx_desc(vf, ctx, &status);
++		if (ret)
++			goto err_exit;
++
++		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
++			ice_vc_add_fdir_fltr_post(vf, ctx, status, true);
++		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
++			ice_vc_del_fdir_fltr_post(vf, ctx, status, true);
++		else
++			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
++
++		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
++		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
++		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++		continue;
++err_exit:
++		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
++			ice_vc_add_fdir_fltr_post(vf, ctx, status, false);
++		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
++			ice_vc_del_fdir_fltr_post(vf, ctx, status, false);
++		else
++			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
++
++		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
++		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
++		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++	}
++}
++
++/**
++ * ice_vc_fdir_set_irq_ctx - set FDIR context info for later irq handler
++ * @vf: pointer to the VF structure
++ * @conf: FDIR configuration for each filter
++ * @v_opcode: virtual channel operation code
++ *
++ * Return: 0 on success, and other on error.
++ */
++static int
++ice_vc_fdir_set_irq_ctx(struct ice_vf *vf, struct virtchnl_fdir_fltr_conf *conf,
++			enum virtchnl_ops v_opcode)
++{
++	struct device *dev = ice_pf_to_dev(vf->pf);
++	struct ice_vf_fdir_ctx *ctx;
++	unsigned long flags;
++
++	ctx = &vf->fdir.ctx_irq;
++	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
++	if ((vf->fdir.ctx_irq.flags & ICE_VF_FDIR_CTX_VALID) ||
++	    (vf->fdir.ctx_done.flags & ICE_VF_FDIR_CTX_VALID)) {
++		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++		dev_dbg(dev, "VF %d: Last request is still in progress\n",
++			vf->vf_id);
++		return -EBUSY;
++	}
++	ctx->flags |= ICE_VF_FDIR_CTX_VALID;
++	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++
++	ctx->conf = conf;
++	ctx->v_opcode = v_opcode;
++	ctx->stat = ICE_FDIR_CTX_READY;
++	timer_setup(&ctx->rx_tmr, ice_vf_fdir_timer, 0);
++
++	mod_timer(&ctx->rx_tmr,
++		  round_jiffies(msecs_to_jiffies(10) + jiffies));
++
++	return 0;
++}
++
++/**
++ * ice_vc_fdir_clear_irq_ctx - clear FDIR context info for irq handler
++ * @vf: pointer to the VF structure
++ *
++ * Return: 0 on success, and other on error.
++ */
++static void ice_vc_fdir_clear_irq_ctx(struct ice_vf *vf)
++{
++	struct ice_vf_fdir_ctx *ctx = &vf->fdir.ctx_irq;
++	unsigned long flags;
++
++	del_timer(&ctx->rx_tmr);
++	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
++	ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
++	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
++}
++
++/**
+  * ice_vc_add_fdir_fltr - add a FDIR filter for VF by the msg buffer
+  * @vf: pointer to the VF info
+  * @msg: pointer to the msg buffer
+@@ -1604,7 +2054,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 		goto err_free_conf;
+ 	}
  
- 	for (i = 0; i < proto->count; i++) {
- 		struct virtchnl_proto_hdr *hdr = &proto->proto_hdr[i];
-+		struct ip_esp_hdr *esph;
-+		struct ip_auth_hdr *ah;
- 		struct sctphdr *sctph;
- 		struct ipv6hdr *ip6h;
- 		struct udphdr *udph;
- 		struct tcphdr *tcph;
- 		struct ethhdr *eth;
- 		struct iphdr *iph;
-+		u8 s_field;
- 		u8 *rawh;
+-	ret = ice_vc_fdir_insert_entry(vf, conf, &stat->flow_id);
++	ret = ice_vc_fdir_insert_entry(vf, conf, &conf->flow_id);
+ 	if (ret) {
+ 		v_ret = VIRTCHNL_STATUS_SUCCESS;
+ 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
+@@ -1612,6 +2062,14 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 		goto err_free_conf;
+ 	}
  
- 		switch (hdr->type) {
-@@ -948,6 +1119,75 @@ ice_vc_fdir_parse_pattern(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
- 				}
- 			}
- 			break;
-+		case VIRTCHNL_PROTO_HDR_L2TPV3:
-+			if (l3 == VIRTCHNL_PROTO_HDR_IPV4)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_L2TPV3;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV6)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV6_L2TPV3;
++	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_ADD_FDIR_FILTER);
++	if (ret) {
++		v_ret = VIRTCHNL_STATUS_SUCCESS;
++		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
++		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
++		goto err_free_conf;
++	}
 +
-+			if (hdr->field_selector)
-+				input->l2tpv3_data.session_id = *((__be32 *)hdr->buffer);
-+			break;
-+		case VIRTCHNL_PROTO_HDR_ESP:
-+			esph = (struct ip_esp_hdr *)hdr->buffer;
-+			if (l3 == VIRTCHNL_PROTO_HDR_IPV4 &&
-+			    l4 == VIRTCHNL_PROTO_HDR_UDP)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_NAT_T_ESP;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV6 &&
-+				 l4 == VIRTCHNL_PROTO_HDR_UDP)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV6_NAT_T_ESP;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV4 &&
-+				 l4 == VIRTCHNL_PROTO_HDR_NONE)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_ESP;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV6 &&
-+				 l4 == VIRTCHNL_PROTO_HDR_NONE)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV6_ESP;
+ 	ret = ice_vc_fdir_write_fltr(vf, conf, true, is_tun);
+ 	if (ret) {
+ 		v_ret = VIRTCHNL_STATUS_SUCCESS;
+@@ -1621,18 +2079,13 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 		goto err_rem_entry;
+ 	}
+ 
+-	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
+-
+-	v_ret = VIRTCHNL_STATUS_SUCCESS;
+-	stat->status = VIRTCHNL_FDIR_SUCCESS;
+ exit:
+-	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
+-				    (u8 *)stat, len);
+ 	kfree(stat);
+ 	return ret;
+ 
+ err_rem_entry:
+-	ice_vc_fdir_remove_entry(vf, conf, stat->flow_id);
++	ice_vc_fdir_clear_irq_ctx(vf);
++	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
+ err_free_conf:
+ 	devm_kfree(dev, conf);
+ err_exit:
+@@ -1696,22 +2149,29 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 		goto err_exit;
+ 	}
+ 
++	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_DEL_FDIR_FILTER);
++	if (ret) {
++		v_ret = VIRTCHNL_STATUS_SUCCESS;
++		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
++		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
++		goto err_exit;
++	}
 +
-+			if (l4 == VIRTCHNL_PROTO_HDR_UDP)
-+				conf->inset_flag |= FDIR_INSET_FLAG_ESP_UDP;
-+			else
-+				conf->inset_flag |= FDIR_INSET_FLAG_ESP_IPSEC;
+ 	ret = ice_vc_fdir_write_fltr(vf, conf, false, is_tun);
+ 	if (ret) {
+ 		v_ret = VIRTCHNL_STATUS_SUCCESS;
+ 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
+ 		dev_err(dev, "VF %d: writing FDIR rule failed, ret:%d\n",
+ 			vf->vf_id, ret);
+-		goto err_exit;
++		goto err_del_tmr;
+ 	}
+ 
+-	ice_vc_fdir_remove_entry(vf, conf, fltr->flow_id);
+-	devm_kfree(dev, conf);
+-	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
++	kfree(stat);
+ 
+-	v_ret = VIRTCHNL_STATUS_SUCCESS;
+-	stat->status = VIRTCHNL_FDIR_SUCCESS;
++	return ret;
+ 
++err_del_tmr:
++	ice_vc_fdir_clear_irq_ctx(vf);
+ err_exit:
+ 	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
+ 				    (u8 *)stat, len);
+@@ -1729,6 +2189,10 @@ void ice_vf_fdir_init(struct ice_vf *vf)
+ 
+ 	idr_init(&fdir->fdir_rule_idr);
+ 	INIT_LIST_HEAD(&fdir->fdir_rule_list);
 +
-+			if (hdr->field_selector) {
-+				if (l3 == VIRTCHNL_PROTO_HDR_IPV4)
-+					input->ip.v4.sec_parm_idx = esph->spi;
-+				else if (l3 == VIRTCHNL_PROTO_HDR_IPV6)
-+					input->ip.v6.sec_parm_idx = esph->spi;
-+			}
-+			break;
-+		case VIRTCHNL_PROTO_HDR_AH:
-+			ah = (struct ip_auth_hdr *)hdr->buffer;
-+			if (l3 == VIRTCHNL_PROTO_HDR_IPV4)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_AH;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV6)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV6_AH;
++	spin_lock_init(&fdir->ctx_lock);
++	fdir->ctx_irq.flags = 0;
++	fdir->ctx_done.flags = 0;
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
+index 676de402475e..53b78e866381 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
+@@ -5,6 +5,24 @@
+ #define _ICE_VIRTCHNL_FDIR_H_
+ 
+ struct ice_vf;
++struct ice_pf;
 +
-+			if (hdr->field_selector) {
-+				if (l3 == VIRTCHNL_PROTO_HDR_IPV4)
-+					input->ip.v4.sec_parm_idx = ah->spi;
-+				else if (l3 == VIRTCHNL_PROTO_HDR_IPV6)
-+					input->ip.v6.sec_parm_idx = ah->spi;
-+			}
-+			break;
-+		case VIRTCHNL_PROTO_HDR_PFCP:
-+			rawh = (u8 *)hdr->buffer;
-+			s_field = (rawh[0] >> PFCP_S_OFFSET) & PFCP_S_MASK;
-+			if (l3 == VIRTCHNL_PROTO_HDR_IPV4 && s_field == 0)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_PFCP_NODE;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV4 && s_field == 1)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_PFCP_SESSION;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV6 && s_field == 0)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV6_PFCP_NODE;
-+			else if (l3 == VIRTCHNL_PROTO_HDR_IPV6 && s_field == 1)
-+				input->flow_type = ICE_FLTR_PTYPE_NONF_IPV6_PFCP_SESSION;
++enum ice_fdir_ctx_stat {
++	ICE_FDIR_CTX_READY,
++	ICE_FDIR_CTX_IRQ,
++	ICE_FDIR_CTX_TIMEOUT,
++};
 +
-+			if (hdr->field_selector) {
-+				if (l3 == VIRTCHNL_PROTO_HDR_IPV4)
-+					input->ip.v4.dst_port = cpu_to_be16(PFCP_PORT_NR);
-+				else if (l3 == VIRTCHNL_PROTO_HDR_IPV6)
-+					input->ip.v6.dst_port = cpu_to_be16(PFCP_PORT_NR);
-+			}
-+			break;
- 		case VIRTCHNL_PROTO_HDR_GTPU_IP:
- 			rawh = (u8 *)hdr->buffer;
- 			input->flow_type = ICE_FLTR_PTYPE_NONF_IPV4_GTPU_IPV4_OTHER;
-@@ -1100,6 +1340,10 @@ ice_vc_fdir_comp_rules(struct virtchnl_fdir_fltr_conf *conf_a,
- 		return false;
- 	if (memcmp(&a->gtpu_mask, &b->gtpu_mask, sizeof(a->gtpu_mask)))
- 		return false;
-+	if (memcmp(&a->l2tpv3_data, &b->l2tpv3_data, sizeof(a->l2tpv3_data)))
-+		return false;
-+	if (memcmp(&a->l2tpv3_mask, &b->l2tpv3_mask, sizeof(a->l2tpv3_mask)))
-+		return false;
- 	if (memcmp(&a->ext_data, &b->ext_data, sizeof(a->ext_data)))
- 		return false;
- 	if (memcmp(&a->ext_mask, &b->ext_mask, sizeof(a->ext_mask)))
++struct ice_vf_fdir_ctx {
++	struct timer_list rx_tmr;
++	enum virtchnl_ops v_opcode;
++	enum ice_fdir_ctx_stat stat;
++	union ice_32b_rx_flex_desc rx_desc;
++#define ICE_VF_FDIR_CTX_VALID		BIT(0)
++	u32 flags;
++
++	void *conf;
++};
+ 
+ /* VF FDIR information structure */
+ struct ice_vf_fdir {
+@@ -14,11 +32,18 @@ struct ice_vf_fdir {
+ 
+ 	struct idr fdir_rule_idr;
+ 	struct list_head fdir_rule_list;
++
++	spinlock_t ctx_lock; /* protects FDIR context info */
++	struct ice_vf_fdir_ctx ctx_irq;
++	struct ice_vf_fdir_ctx ctx_done;
+ };
+ 
+ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg);
+ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg);
+ void ice_vf_fdir_init(struct ice_vf *vf);
+ void ice_vf_fdir_exit(struct ice_vf *vf);
+-
++void
++ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
++			union ice_32b_rx_flex_desc *rx_desc);
++void ice_flush_fdir_ctx(struct ice_pf *pf);
+ #endif /* _ICE_VIRTCHNL_FDIR_H_ */
 -- 
 2.13.6
 
