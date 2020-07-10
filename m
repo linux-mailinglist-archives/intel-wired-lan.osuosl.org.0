@@ -2,59 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2BC421A4A2
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jul 2020 18:20:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7558221AC4C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2020 03:03:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 536052CD6D;
-	Thu,  9 Jul 2020 16:20:32 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D5E2B2D403;
+	Fri, 10 Jul 2020 01:02:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2elZPVgXm0V2; Thu,  9 Jul 2020 16:20:31 +0000 (UTC)
+	with ESMTP id 1zxttbBBmYxs; Fri, 10 Jul 2020 01:02:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CDEDA2CB8B;
-	Thu,  9 Jul 2020 16:20:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 4EE192DDCE;
+	Fri, 10 Jul 2020 01:02:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AA2E71BF9AF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jul 2020 16:20:19 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D0BAD1BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:02:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A6813228F1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jul 2020 16:20:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C8CB689168
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:02:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ns9TIwAhNQ-A for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jul 2020 16:20:15 +0000 (UTC)
+ with ESMTP id S3vpRKWACwAs for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Jul 2020 01:02:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by silver.osuosl.org (Postfix) with ESMTPS id D03AD2C885
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jul 2020 16:20:14 +0000 (UTC)
-IronPort-SDR: Ic8G/p4PLpm24ZdJ4vdas09Cwdh+1OkBgMm/A3ReItl2pJaQtFpQ8lsvz+dgQI9xlFFiXDBa7D
- g6SFpqUAGAVg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9677"; a="136252763"
-X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="136252763"
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 93C00880B2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 01:02:46 +0000 (UTC)
+IronPort-SDR: mqHKAGUxuxtuNzCIZvI1ZQuFDAo3ITAIUtPa9+pXyh4dxCrv+vgKb7Qkt8qJq9P9YsaH7Ktmey
+ vOuXK0ti5olA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9677"; a="209662981"
+X-IronPort-AV: E=Sophos;i="5.75,332,1589266800"; d="scan'208";a="209662981"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jul 2020 09:20:11 -0700
-IronPort-SDR: xG+xS3tH5oXpDvt3ldkCTcFY0YFSMeledSFPsd26leXzGIG4oqtmb9TnmKOAo2CKTVHbGofU5n
- /u1VHkUjlw7w==
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jul 2020 18:02:45 -0700
+IronPort-SDR: Go9IjX5hdF+v0QYBKLghQm5F14QBa+dxngg3ovVC92gQRt3hxYbsJqxfaeg2Zx59O+1O3UH3GD
+ GIxy/TKCBIgA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,331,1589266800"; d="scan'208";a="280352074"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
- by orsmga003.jf.intel.com with ESMTP; 09 Jul 2020 09:20:07 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
+X-IronPort-AV: E=Sophos;i="5.75,332,1589266800"; d="scan'208";a="458118841"
+Received: from dpdk51.sh.intel.com ([10.67.111.82])
+ by orsmga005.jf.intel.com with ESMTP; 09 Jul 2020 18:02:44 -0700
+From: Qi Zhang <qi.z.zhang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  9 Jul 2020 09:16:14 -0700
-Message-Id: <20200709161614.61098-15-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200709161614.61098-1-anthony.l.nguyen@intel.com>
-References: <20200709161614.61098-1-anthony.l.nguyen@intel.com>
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S49 15/15] ice: add 1G SGMII PHY type
+Date: Fri, 10 Jul 2020 09:06:28 +0800
+Message-Id: <20200710010644.33817-1-qi.z.zhang@intel.com>
+X-Mailer: git-send-email 2.13.6
+Subject: [Intel-wired-lan] [PATCH S48 v5 00/16] Support Advanced AVF features
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,95 +64,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: qi.z.zhang@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+The patchset add the backend code for below new advanced AVF features:
+1. Flexible Description selection to offload metadata
+2. FDIR filter rule adding / deleting.
+3. Per flow configurable inputset RSS
+besides support regular l3/l4 5 tuple inputset for FDIR and RSS, the
+patchset
+added more protocol support which include GTP-U, L2TPv3, PFCF, ESP,
+AH...
 
-There isn't a case for 1G SGMII in ice_get_media_type() so add
-the handling for it.
+v5:
+- fix couple checkpatch warnings.
+- rollback to for_each_set_bit in PATCH v4 03/16.
 
-Also handle the special case where some direct attach
-cables may report that they support 1G SGMII, but
-that is erroneous since SGMII is supposed to be a
-backplane media type (between a MAC and a PHY). If
-the driver doesn't handle this special case then a
-user could see the 'Port' in ethtool change from
-'Direct attach Copper' to 'Backplane' when they have
-forced the speed to 1G, but the cable hasn't changed.
+v4:
+- fix coding style by removing unnecessary code wrap.
+- decouple PATCH v2 10/14 that enable FDIR for VF into 3 patches:
+  1) PATCH 10/16 focus on virtual channel message handle.
+  2) PATCH 11/16 focus on pattern action parser.
+  3) Enable new FDIR actions that only support VF.
 
-Lastly, change ice_aq_get_phy_caps() to save the
-module_type info if the function was called with
-ICE_AQC_REPORT_TOPO_CAP. This call uses the media
-information to populate the module_type. If no
-media is present then the values in module_type
-will be 0.
+v3:
+- fix couple coding style issue and typo
+- use devm alloc/free for cross function memory
+- squash patch 11/16 , 12/16 into 10/16.
 
-Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_adminq_cmd.h |  1 +
- drivers/net/ethernet/intel/ice/ice_common.c     | 17 ++++++++++++++---
- 2 files changed, 15 insertions(+), 3 deletions(-)
+v2:
+- fix typo in commit log.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 528a17e57ea8..d1640ff2aea9 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -993,6 +993,7 @@ struct ice_aqc_get_phy_caps_data {
- 	u8 module_type[ICE_MODULE_TYPE_TOTAL_BYTE];
- #define ICE_AQC_MOD_TYPE_BYTE0_SFP_PLUS			0xA0
- #define ICE_AQC_MOD_TYPE_BYTE0_QSFP_PLUS		0x80
-+#define ICE_AQC_MOD_TYPE_IDENT				1
- #define ICE_AQC_MOD_TYPE_BYTE1_SFP_PLUS_CU_PASSIVE	BIT(0)
- #define ICE_AQC_MOD_TYPE_BYTE1_SFP_PLUS_CU_ACTIVE	BIT(1)
- #define ICE_AQC_MOD_TYPE_BYTE1_10G_BASE_SR		BIT(4)
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 8b45e64398f9..4579939073c3 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -194,6 +194,8 @@ ice_aq_get_phy_caps(struct ice_port_info *pi, bool qual_mods, u8 report_mode,
- 	if (!status && report_mode == ICE_AQC_REPORT_TOPO_CAP) {
- 		pi->phy.phy_type_low = le64_to_cpu(pcaps->phy_type_low);
- 		pi->phy.phy_type_high = le64_to_cpu(pcaps->phy_type_high);
-+		memcpy(pi->phy.link_info.module_type, &pcaps->module_type,
-+		       sizeof(pi->phy.link_info.module_type));
- 	}
- 
- 	return status;
-@@ -266,6 +268,18 @@ static enum ice_media_type ice_get_media_type(struct ice_port_info *pi)
- 		return ICE_MEDIA_UNKNOWN;
- 
- 	if (hw_link_info->phy_type_low) {
-+		/* 1G SGMII is a special case where some DA cable PHYs
-+		 * may show this as an option when it really shouldn't
-+		 * be since SGMII is meant to be between a MAC and a PHY
-+		 * in a backplane. Try to detect this case and handle it
-+		 */
-+		if (hw_link_info->phy_type_low == ICE_PHY_TYPE_LOW_1G_SGMII &&
-+		    (hw_link_info->module_type[ICE_AQC_MOD_TYPE_IDENT] ==
-+		    ICE_AQC_MOD_TYPE_BYTE1_SFP_PLUS_CU_ACTIVE ||
-+		    hw_link_info->module_type[ICE_AQC_MOD_TYPE_IDENT] ==
-+		    ICE_AQC_MOD_TYPE_BYTE1_SFP_PLUS_CU_PASSIVE))
-+			return ICE_MEDIA_DA;
-+
- 		switch (hw_link_info->phy_type_low) {
- 		case ICE_PHY_TYPE_LOW_1000BASE_SX:
- 		case ICE_PHY_TYPE_LOW_1000BASE_LX:
-@@ -2647,9 +2661,6 @@ enum ice_status ice_update_link_info(struct ice_port_info *pi)
- 
- 		status = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_TOPO_CAP,
- 					     pcaps, NULL);
--		if (!status)
--			memcpy(li->module_type, &pcaps->module_type,
--			       sizeof(li->module_type));
- 
- 		devm_kfree(ice_hw_to_dev(hw), pcaps);
- 	}
+Qi Zhang (16):
+  ice: Enable flexible descriptor RXDID querying and configuration
+  ice: Add more basic protocol support for flow filter
+  ice: Support non word aligned input set field
+  ice: Add more advanced protocol support in flow filter
+  ice: Support to separate GTP-U uplink and downlink
+  ice: Enhanced IPv4 and IPv6 flow filter
+  ice: Enable RSS Configure for AVF
+  ice: Support RSS configure removal for AVF
+  ice: Add support for per VF ctrl VSI enabling
+  ice: Support FDIR configure for AVF
+  ice: Add FDIR pattern action parser for VF
+  ice: Add new actions support for VF FDIR
+  ice: Add non-IP Layer2 protocol FDIR filter for AVF
+  ice: Add GTPU FDIR filter for AVF
+  ice: Add more FDIR filter type for AVF
+  ice: Check FDIR program status for AVF
+
+ drivers/net/ethernet/intel/ice/Makefile            |    2 +-
+ drivers/net/ethernet/intel/ice/ice.h               |    6 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c  |    4 +
+ drivers/net/ethernet/intel/ice/ice_fdir.c          |   29 +-
+ drivers/net/ethernet/intel/ice/ice_fdir.h          |   39 +
+ drivers/net/ethernet/intel/ice/ice_flex_pipe.c     |  521 ++++-
+ drivers/net/ethernet/intel/ice/ice_flex_pipe.h     |    3 +-
+ drivers/net/ethernet/intel/ice/ice_flex_type.h     |   78 +
+ drivers/net/ethernet/intel/ice/ice_flow.c          |  867 +++++++-
+ drivers/net/ethernet/intel/ice/ice_flow.h          |  168 +-
+ drivers/net/ethernet/intel/ice/ice_hw_autogen.h    |   22 +
+ drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h     |   22 +
+ drivers/net/ethernet/intel/ice/ice_lib.c           |   64 +-
+ drivers/net/ethernet/intel/ice/ice_main.c          |   11 +-
+ drivers/net/ethernet/intel/ice/ice_protocol_type.h |   10 +
+ drivers/net/ethernet/intel/ice/ice_txrx.c          |    5 +
+ drivers/net/ethernet/intel/ice/ice_type.h          |   18 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 2208 ++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h |   49 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c   |  654 +++++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h   |   11 +
+ include/linux/avf/virtchnl.h                       |  323 ++-
+ 22 files changed, 5038 insertions(+), 76 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
+
 -- 
-2.20.1
+2.13.6
 
 _______________________________________________
 Intel-wired-lan mailing list
