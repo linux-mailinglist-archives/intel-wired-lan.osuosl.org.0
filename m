@@ -1,137 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE64121BF40
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2020 23:31:05 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DCC3421C7B6
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 12 Jul 2020 08:26:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8B71C89E87;
-	Fri, 10 Jul 2020 21:31:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5D7C28799D;
+	Sun, 12 Jul 2020 06:26:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DGmrd-mk98Iq; Fri, 10 Jul 2020 21:31:04 +0000 (UTC)
+	with ESMTP id ativTcXNZRUv; Sun, 12 Jul 2020 06:26:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 32EB489E8C;
-	Fri, 10 Jul 2020 21:31:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D7283879DD;
+	Sun, 12 Jul 2020 06:26:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B44D31BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 21:31:02 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 006951BF25F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Jul 2020 10:15:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D08618836D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 21:30:56 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D2202203BE
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Jul 2020 10:15:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E67PrX4qH-xZ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Jul 2020 21:30:53 +0000 (UTC)
+ with ESMTP id jrbdo+L+B818 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 11 Jul 2020 10:15:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 9FBCE88328
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2020 21:30:53 +0000 (UTC)
-IronPort-SDR: /Obx+jZQDc8IB1TC/1RPHEhTdg354g8Br1ThVj/3oBqOonm7B2J+HIIXo+jE/nfI4GkT7Sy7sR
- uH5PZEFb+BpA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9678"; a="147414708"
-X-IronPort-AV: E=Sophos;i="5.75,336,1589266800"; d="scan'208";a="147414708"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2020 14:30:53 -0700
-IronPort-SDR: qvn5maSISFxW7xwbODSnpum49ysNFEmStuE1U2A2cqtjDowCrb7u1TAoUPawdCTkI9YJhPMgNA
- Egt350QipuFw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,336,1589266800"; d="scan'208";a="324812909"
-Received: from orsmsx105.amr.corp.intel.com ([10.22.225.132])
- by orsmga007.jf.intel.com with ESMTP; 10 Jul 2020 14:30:53 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX105.amr.corp.intel.com (10.22.225.132) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 10 Jul 2020 14:30:52 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 10 Jul 2020 14:30:52 -0700
-Received: from ORSEDG002.ED.cps.intel.com (10.7.248.5) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Fri, 10 Jul 2020 14:30:52 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.107)
- by edgegateway.intel.com (134.134.137.101) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 10 Jul 2020 14:30:48 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=fQ52HP8xw/1iFOOwbjI++KVAahJFnELLnN6p3BLJJqG+7LOs4ntCzm3ykshn9htHnVXIFBDi4ToM/hgbiWCy1Q157DBRP/qa8PdYwYhM1vWF5VfiRQ4JrEX4yK3WtpmOAl1DJTsNeCs8u4Ah0m+FRJyE2SYX6En+akWhshR8fSL3Gkfzo5LQ9O2J7gomIgTGVU59z4J6iGLIou72v7qrpM2UGntDXNod80cTcgjsFe4FXmPIiC277S7CcLL6p3vSp83Y9yR745BQ1ZpfNyuepMK2tg73dO+HbSzP6B9OSow6lA4+OIfIqWZHLXB8zAOQttlF1D2uejtBvlR+QCq4Wg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vbt9nm/CK4QCgeuLdHmODYCP4FltmyB+j2VIHzjdFHs=;
- b=jrFklZh7BSXIiJh+NBz0oBQNYhlamC2THf6ZVz0S35rKQ+C4rQtBkilH2Xio4U2PvkFa2OcBwsS+rOb3rOanEQuAuubTKfHma02ZUr6/qTpB5ngTyxZ3ypiGDxwDAdPYK/y5wWD/UNO9RYfWTGxo6rEQDpcsH8lRSOOCWaHHVfAgGJAFU18mh1NKWwLEGEwvlAeLUQVeOXpWPNj4VKyHp8AynO75uJQKb0Sjy1VKJawnlDBu9b5RYgKiLZs2Btu7oUAL71stzY3VrzmgG7ca/lmDfIT7A3osF0D06w1FiQ4QcFxLl7O50ddksVouenLUOlTNsbRB1al6a4MS7gD7mQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vbt9nm/CK4QCgeuLdHmODYCP4FltmyB+j2VIHzjdFHs=;
- b=ah9RYYJuAMd0Zhwb3XP7+VmjmX4qTsxqOP02rbaCcxQ/M18ZwxumX53VEteoEORxrpFOn+S42wRoDuW1lt8WthVG0gkvjRWbCbbqXd3AdXKyZH1IVJ1hQ/gRGyEux0MMLmnWN1fKJGGCFGD6aqvd3XkLxSt1xLCpQIme0hPo6Rw=
-Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
- (2603:10b6:405:51::10) by BN8PR11MB3604.namprd11.prod.outlook.com
- (2603:10b6:408:83::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.20; Fri, 10 Jul
- 2020 21:30:47 +0000
-Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
- ([fe80::6cc1:1382:c39c:18e3]) by BN6PR1101MB2145.namprd11.prod.outlook.com
- ([fe80::6cc1:1382:c39c:18e3%9]) with mapi id 15.20.3174.022; Fri, 10 Jul 2020
- 21:30:47 +0000
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S48 v5 02/16] ice: Add more basic
- protocol support for flow filter
-Thread-Index: AQHWVlXjMLPjVMePSkOa0TpsBnjPHKkBVgPg
-Date: Fri, 10 Jul 2020 21:30:47 +0000
-Message-ID: <BN6PR1101MB21453C3B02D4B25F0E12C0978C650@BN6PR1101MB2145.namprd11.prod.outlook.com>
-References: <20200710010644.33817-1-qi.z.zhang@intel.com>
- <20200710010644.33817-3-qi.z.zhang@intel.com>
-In-Reply-To: <20200710010644.33817-3-qi.z.zhang@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.2.0.6
-authentication-results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
-x-originating-ip: [71.59.183.208]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: bc1c3407-be3d-4a75-a3ef-08d8251882f0
-x-ms-traffictypediagnostic: BN8PR11MB3604:
-x-microsoft-antispam-prvs: <BN8PR11MB3604AD929B957EC3D9F78F718C650@BN8PR11MB3604.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1775;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: onZtSJE+GREM4LceVSv5B4QIrfVesvpeD6/wyKnwn9VOdpFQjBESg82mgsKuk86kHZVsOcTWc42BvIt+lfaK+mfU+QtWZvCwEunOwKrlcnyPl14tCCtftGVT5ldIQkEDVBMuoZqPfnVxcNBVrhY5wb/ep/2qCbYbzedJtRVk5RuQErBJQx5TAEva1v1eThbG4EGOIDvK4Ov9GGZ5VxFgdAnVbeiqpqZqY77QD5xLtWFW7FUycoSQr9SDGb1ma9S5zaa2iD4BR8q0Qtq0wZ3fdPq/7aAHsYccRDzD7NFVxU2nJ2P1LAKntoTHp25BjMIPGg02ajPBvCJ/Ezr8Z4QhZA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(39860400002)(136003)(346002)(376002)(366004)(396003)(186003)(7696005)(33656002)(6916009)(71200400001)(5660300002)(83380400001)(52536014)(53546011)(9686003)(55016002)(64756008)(66446008)(4744005)(26005)(6506007)(478600001)(66476007)(66946007)(66556008)(2906002)(316002)(8936002)(86362001)(8676002)(76116006);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: C+r8uS84A5aP8fBSH2gXUGmGCSsSRO4d3ZQ3QI0z/EFRx6SyNocDgGvi/WW9tkmX9hvxH+MnX9W1fhzUAGusxhT9HInYZZVLJYHOpD80bNrwmQHEwEZW+BFezVShgeedcoSeS/tXiqR5S75c0CW0axXt46SgNNk+WJaqrqlu30wvFuTQi39/GOmpGXoBfW0YgLmVdt/WEWS7DLXuyjkZwc2Tp3EzyntRH5nvZVC3LukXm35yZp31wGTaSYRgsf4GF8vj0F4iIMXI9A5agsTcPMkM6YQ3K5WbtRMjP6jSx2fYYW+4kYazaCCxk+h9LFJGe1VC1t5Ce5eZJeHURmEryvOR7fhAA6T7tp5791TreDUJp8BVAtFKwX36kQ7fcbTDJNkNO4QmsFmrSMtRlLawmfeiQ4qJ4f6DyRVbOTs8ikxZ7EGn5TyNHtcUUmHTNFSpTX4zO0uj8ixzGmKMvjhz07D3CD9lfADcmEn3C3AE18b1EAVqlv+05J5koCyqNb3h
-x-ms-exchange-transport-forked: True
-MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN6PR1101MB2145.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bc1c3407-be3d-4a75-a3ef-08d8251882f0
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jul 2020 21:30:47.6997 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kV1v2hsSQWvc7qAcTdGEV75zw41kFgbx97Fwx8zvVcLNYocQBxMIlMftwe/yjvp1NKW7gaVR7n6ox6j/qWwunJwAW6ycr/ABdKoqSFiapNI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR11MB3604
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S48 v5 02/16] ice: Add more basic
- protocol support for flow filter
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by silver.osuosl.org (Postfix) with ESMTPS id B3E81203B5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Jul 2020 10:15:41 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id z3so3636675pfn.12
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Jul 2020 03:15:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=x3C6PMVhuvXtoXBSzqymZGfXBgxlxLggJJneWvRkdNw=;
+ b=uFwIBWtHcdT5LPhz8ZsV6qOtlEx4QP6RgZOTiWfnfCeG4UR46A+dBccmFHXfoPdA3U
+ mp41jbiuuCBUjmC1SMSrIxsDWW3WVqk81qxgpU3CXvp3R1LCtFKCUzCXyPNjT3UuNFx5
+ 9UmBfMFM9mLJewRmv308K5n9GxaYg+rE7DBNg1Thlo/l5rYcMFOngjXoZ8TveDervhkr
+ 8NWHVrKQD+7mObD6CPSB9FVjGhk7wTdl4thdoFD5OMeI9EYNg0i8FkJFN4jVBgEyIqmP
+ 2mCTOJwKaLzqbexhoVTFjTyWRX82tpKXzeGXdlgTgD/1Avjejre5s9x9MmrqE5s98E7P
+ RwcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=x3C6PMVhuvXtoXBSzqymZGfXBgxlxLggJJneWvRkdNw=;
+ b=OSPqA9ZkZsZyjMjOq6yWuINjfAWShYY3/Ss9TndjIfERLxw1FGv4NpEIFVnBptUPIV
+ 4av7GxIbaa+VSCt5l5RTP6FWS6N9KyXU8UGKTdShLQhyQYAnb80NAZSj4xbEI2vorxcF
+ 8ZM6kTQxo2TC+xXDuUV94QyJhOqoH1c6J2PLN+TMKlxgPsjivFn6iGgnbDwBvwmAPkCU
+ wKCvjq9tcjr/VAg+Fr7lOIozfIyaV3YUWwzGuhC0otDmgJZFwhJOXKunWXw66nLGP2s/
+ z1BLRiA6f9plrVJ0mBU/X/+WqmfDMUElMOtuaY3WGR6VDqWEkS1YAwfIA9nADds2dQwW
+ XCFA==
+X-Gm-Message-State: AOAM532A/Zpgdj9DBDdDTf/dygVer78px6oxxJjzlNR2JJhH8GLyaFcM
+ zkSiqGjmlFerQm03GQTtMEw=
+X-Google-Smtp-Source: ABdhPJz6wxc7+Aw9vVBZ4PotiljrxEwcbKTMrWEo9sYGuff4Yy/ZcR4fD5p2MNExoxc9qUHAmdqX9g==
+X-Received: by 2002:a62:2b96:: with SMTP id
+ r144mr66273549pfr.272.1594462541246; 
+ Sat, 11 Jul 2020 03:15:41 -0700 (PDT)
+Received: from devel-ng-exporter-249.localdomain ([45.32.120.100])
+ by smtp.gmail.com with ESMTPSA id x9sm7883575pgr.57.2020.07.11.03.15.26
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 11 Jul 2020 03:15:40 -0700 (PDT)
+From: Yahui Chen <goodluckwillcomesoon@gmail.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+Date: Sat, 11 Jul 2020 18:10:38 +0800
+Message-Id: <1594462239-19596-1-git-send-email-goodluckwillcomesoon@gmail.com>
+X-Mailer: git-send-email 1.8.3.1
+X-Mailman-Approved-At: Sun, 12 Jul 2020 06:26:03 +0000
+Subject: [Intel-wired-lan] [PATCH] xsk: ixgbe: solve the soft interrupt 100%
+ CPU usage when xdp rx traffic congestion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,34 +90,230 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Yahui Chen <goodluckwillcomesoon@gmail.com>, steven.zou@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Qi
-> Zhang
-> Sent: Thursday, July 9, 2020 6:07 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Zhang, Qi Z <qi.z.zhang@intel.com>
-> Subject: [Intel-wired-lan] [PATCH S48 v5 02/16] ice: Add more basic protocol
-> support for flow filter
-> 
-> Add more protocol and field support for flow filter include:
-> ETH, VLAN, ICMP, ARP and TCP flag.
-> 
-> Signed-off-by: Kevin Scott <kevin.c.scott@intel.com>
-> Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_flow.c          | 181
-> ++++++++++++++++++++-
->  drivers/net/ethernet/intel/ice/ice_flow.h          |  20 +++
->  drivers/net/ethernet/intel/ice/ice_protocol_type.h |   6 +
->  3 files changed, 201 insertions(+), 6 deletions(-)
+If the user mode APP of drv-mode xsk does not process packets fast enough,
+the packet receiving speed is lower than the flow rate. For example, the
+flow rate is 1Mpps, and the APP processing speed is 10Kpss only, this will
+cause a series of problems:
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+1. If the APP doesn't use wakeup mechanism, in other world, the
+`XDP_UMEM_USES_NEED_WAKEUP` flag is not set. Then the CPU usage of the
+soft interrupt corresponding to the network card queue using xsk has
+always been 100%. The reason is that the APP is slow to receive packets,
+the packet desc can not return to the fill queue in time, resulting in
+`ixgbe_alloc_rx_buffers_zc` fail to obtain the desc, so
+`ixgbe_clean_rx_irq_zc` returns 64, which further causes its corresponding
+NAPI to be always running status, so the CPU has been busy performing soft
+interrupts.
 
+2. If the wakeup mechanism is used, that is, use the
+`XDP_UMEM_USES_NEED_WAKEUP` flag. This method takes advantage of the
+interrupt delay function of ixgbe skillfully, thus solving the problem
+that the si CPU is always 100%. However, it will cause other problems.
+The port-level flow control will be triggered on 82599, and the pause
+frame will be sent to the upstream sender. This will affect the other
+packet receiving queues of the network card, resulting in the packet
+receiving rate of all queues dropping to 10Kpps.
+
+This situation can be understood as rx traffic congestion. The reason of
+congestion is that XSK queue cannot get DMA address in time, so packet
+cannot be delivered to the host memory which result in packets congestion
+happening on the hardware FIFO. If the number of packets exceeds the FIFO
+waterline, the network card will send pause frames.
+
+This patch design another way. When the queue corresponding to xsk is
+initializing, a piece of DMA memory, named congestion memory, is applied
+for traffic congestion. If failing to obtain the desc from the fill queue,
+point the xsk ring packet DMA address to the congestion memory. Let the
+network card hardware DMA the packet to the congetion memory, and the APP
+will not receive packet from the congestion memory. This way can solve the
+two problems mentioned above. However, the wakeup mechanism should also be
+retained. When the network card has only one queue, the wakeup mechanism
+will have advantages.
+
+TODO:
+Apply this modification to all drivers that support xsk drv mode
+
+Signed-off-by: Yahui Chen <goodluckwillcomesoon@gmail.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h     |  3 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 61 ++++++++++++++++++++++++----
+ 2 files changed, 56 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index 5ddfc83..33601c1 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -351,6 +351,9 @@ struct ixgbe_ring {
+ 	};
+ 	struct xdp_rxq_info xdp_rxq;
+ 	struct xdp_umem *xsk_umem;
++#define XDP_CONGESTION_MEM_SIZE	(4096)
++	void *congestion_addr;		/* address of buffer when traffic congestion */
++	dma_addr_t congestion_dma;	/* dma address of packet when traffic congestion */
+ 	u16 ring_idx;		/* {rx,tx,xdp}_ring back reference idx */
+ 	u16 rx_buf_len;
+ } ____cacheline_internodealigned_in_smp;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index be9d2a8..f4a8237 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -27,6 +27,8 @@ static int ixgbe_xsk_umem_enable(struct ixgbe_adapter *adapter,
+ 	struct net_device *netdev = adapter->netdev;
+ 	bool if_running;
+ 	int err;
++	int size = XDP_CONGESTION_MEM_SIZE;
++	struct ixgbe_ring *rx_ring;
+ 
+ 	if (qid >= adapter->num_rx_queues)
+ 		return -EINVAL;
+@@ -49,6 +51,21 @@ static int ixgbe_xsk_umem_enable(struct ixgbe_adapter *adapter,
+ 
+ 	if (if_running) {
+ 		ixgbe_txrx_ring_enable(adapter, qid);
++		rx_ring->congestion_addr = kmalloc(size, GFP_DMA | GFP_KERNEL);
++		if (!rx_ring->congestion_addr) {
++			rx_ring->congestion_addr = kmalloc(size, GFP_DMA | GFP_KERNEL);
++			if (!rx_ring->congestion_addr)
++				return -ENOMEM;
++		}
++		rx_ring = adapter->rx_ring[qid];
++		rx_ring->congestion_dma = dma_map_single(rx_ring->dev, rx_ring->congestion_addr,
++							 size,
++							 DMA_FROM_DEVICE);
++		/* sync the buffer for use by the device */
++		dma_sync_single_range_for_device(rx_ring->dev, rx_ring->congestion_dma,
++						 0,
++						 size,
++						 DMA_FROM_DEVICE);
+ 
+ 		/* Kick start the NAPI context so that receiving will start */
+ 		err = ixgbe_xsk_wakeup(adapter->netdev, qid, XDP_WAKEUP_RX);
+@@ -63,6 +80,8 @@ static int ixgbe_xsk_umem_disable(struct ixgbe_adapter *adapter, u16 qid)
+ {
+ 	struct xdp_umem *umem;
+ 	bool if_running;
++	int size = XDP_CONGESTION_MEM_SIZE;
++	struct ixgbe_ring *rx_ring;
+ 
+ 	umem = xdp_get_umem_from_qid(adapter->netdev, qid);
+ 	if (!umem)
+@@ -71,9 +90,18 @@ static int ixgbe_xsk_umem_disable(struct ixgbe_adapter *adapter, u16 qid)
+ 	if_running = netif_running(adapter->netdev) &&
+ 		     ixgbe_enabled_xdp_adapter(adapter);
+ 
+-	if (if_running)
++	if (if_running) {
+ 		ixgbe_txrx_ring_disable(adapter, qid);
+ 
++		rx_ring = adapter->rx_ring[qid];
++		dma_sync_single_range_for_cpu(rx_ring->dev, rx_ring->congestion_dma,
++					      0,
++					      size,
++					      DMA_FROM_DEVICE);
++		dma_unmap_single(rx_ring->dev, rx_ring->congestion_addr, size, DMA_FROM_DEVICE);
++		kfree(rx_ring->congestion_addr);
++	}
++
+ 	clear_bit(qid, adapter->af_xdp_zc_qps);
+ 	xsk_buff_dma_unmap(umem, IXGBE_RX_DMA_ATTR);
+ 
+@@ -152,10 +180,12 @@ bool ixgbe_alloc_rx_buffers_zc(struct ixgbe_ring *rx_ring, u16 count)
+ 		bi->xdp = xsk_buff_alloc(rx_ring->xsk_umem);
+ 		if (!bi->xdp) {
+ 			ok = false;
+-			break;
++			/* rx traffic congestion, we do not use umem DMA address */
++			dma = rx_ring->congestion_dma;
++		} else {
++			dma = xsk_buff_xdp_get_dma(bi->xdp);
+ 		}
+ 
+-		dma = xsk_buff_xdp_get_dma(bi->xdp);
+ 
+ 		/* Refresh the desc even if buffer_addrs didn't change
+ 		 * because each write-back erases this info.
+@@ -231,14 +261,15 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 			  struct ixgbe_ring *rx_ring,
+ 			  const int budget)
+ {
+-	unsigned int total_rx_bytes = 0, total_rx_packets = 0;
++	unsigned int total_rx_bytes = 0, total_rx_packets = 0,
++			handled_bytes = 0, handled_packets = 0;
+ 	struct ixgbe_adapter *adapter = q_vector->adapter;
+ 	u16 cleaned_count = ixgbe_desc_unused(rx_ring);
+ 	unsigned int xdp_res, xdp_xmit = 0;
+ 	bool failure = false;
+ 	struct sk_buff *skb;
+ 
+-	while (likely(total_rx_packets < budget)) {
++	while (likely(handled_packets < budget)) {
+ 		union ixgbe_adv_rx_desc *rx_desc;
+ 		struct ixgbe_rx_buffer *bi;
+ 		unsigned int size;
+@@ -263,6 +294,16 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 		dma_rmb();
+ 
+ 		bi = &rx_ring->rx_buffer_info[rx_ring->next_to_clean];
++		/* rx traffic congestion, ignore this packet */
++		if (unlikely(!bi->xdp)) {
++			handled_packets++;
++			handled_bytes += size;
++
++			cleaned_count++;
++			ixgbe_inc_ntc(rx_ring);
++			continue;
++		}
++
+ 
+ 		if (unlikely(!ixgbe_test_staterr(rx_desc,
+ 						 IXGBE_RXD_STAT_EOP))) {
+@@ -296,6 +337,8 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 				xsk_buff_free(bi->xdp);
+ 
+ 			bi->xdp = NULL;
++			handled_packets++;
++			handled_bytes += size;
+ 			total_rx_packets++;
+ 			total_rx_bytes += size;
+ 
+@@ -317,6 +360,8 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 		if (eth_skb_pad(skb))
+ 			continue;
+ 
++		handled_packets++;
++		handled_bytes += size;
+ 		total_rx_bytes += skb->len;
+ 		total_rx_packets++;
+ 
+@@ -341,8 +386,8 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 	rx_ring->stats.packets += total_rx_packets;
+ 	rx_ring->stats.bytes += total_rx_bytes;
+ 	u64_stats_update_end(&rx_ring->syncp);
+-	q_vector->rx.total_packets += total_rx_packets;
+-	q_vector->rx.total_bytes += total_rx_bytes;
++	q_vector->rx.total_packets += handled_packets;
++	q_vector->rx.total_bytes += handled_bytes;
+ 
+ 	if (xsk_umem_uses_need_wakeup(rx_ring->xsk_umem)) {
+ 		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
+@@ -352,7 +397,7 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 
+ 		return (int)total_rx_packets;
+ 	}
+-	return failure ? budget : (int)total_rx_packets;
++	return (int)handled_packets;
+ }
+ 
+ void ixgbe_xsk_clean_rx_ring(struct ixgbe_ring *rx_ring)
+-- 
+1.8.3.1
 
 _______________________________________________
 Intel-wired-lan mailing list
