@@ -1,105 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F22CE21D249
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Jul 2020 10:56:47 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B0A5687466;
-	Mon, 13 Jul 2020 08:56:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RM00QeLGUAT2; Mon, 13 Jul 2020 08:56:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E080F874FE;
-	Mon, 13 Jul 2020 08:56:42 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0F7121BF27C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Jul 2020 08:56:41 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A075321D2AB
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Jul 2020 11:20:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E9BA521579
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Jul 2020 08:56:40 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2461C2264C;
+	Mon, 13 Jul 2020 09:20:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TLJkcKFTmyb1; Mon, 13 Jul 2020 09:20:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 51FE322773;
+	Mon, 13 Jul 2020 09:20:08 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BFECE1BF410
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Jul 2020 09:20:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id B6874894C1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Jul 2020 09:20:05 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a27UYhFNRNpB for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Jul 2020 08:56:37 +0000 (UTC)
+ with ESMTP id NmA3RulEBzn6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Jul 2020 09:20:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from EUR05-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur05on2125.outbound.protection.outlook.com [40.107.21.125])
- by silver.osuosl.org (Postfix) with ESMTPS id 4420B20023
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Jul 2020 08:56:36 +0000 (UTC)
+Received: from EUR02-AM5-obe.outbound.protection.outlook.com
+ (mail-eopbgr00118.outbound.protection.outlook.com [40.107.0.118])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id C58E089428
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Jul 2020 09:20:02 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HF32Fq3vrc9xb/FvDkrgDvYikUPSxMl/47Hakv2OxmcXue5LAl36y+mb/z95hLmfF6j1vi1ezHmvm3tGCb/nTKgyL0HNGOq5qj/R5rq0254CL7dVCLCAOFTBTa/hTUf6r5l+cSLwPLezJBMONGkhsYS8TpB8k8nhzcDCOrOwwv98Y+4urLc6tyW8F2Vi43wfODL3P72/NJ25jIOs1hdpSR9cRQoqhHCWjCCtiP6zIAZfY/a9PjgKLktIsSszBVc/fFG/R79SO4ysAQf7cwXUn1R2GDH0g+Hk1G98s1Hl3+N+vlkzpLm3lJxRIweMWmmHL+vGOFZMaeyIaEfgl8/3hQ==
+ b=JayMjaFjYbqDO5E05U/Eo4i9tvdC2TRb4mbjnYfdfhoO2Hm8noWiYA1N7NH3ADcSTnz0UY0x/FC2uOaCqacjOFVe6OxYHWLEQT1rWb7CjFYLSb6fcKhxjxGZDbzdmEN/vYVcZqebRl9w+WgIGPvGN4WqkhrArvhHISRdv2+Tee4PCAkPK4fVhlTEgVkTt38/sNPTeM2C3jTZv5RsOTHgefyZCDLRBU3arNUb1SipJPlFEzyifhBCMa5qH1tTAJOtn+906vQu+SYsUT0svEE1PwdBlAWCXOOcr+bW2mLC/ltPODdDnnLCLEAMJ0GX3p3hPm3pRSqgg8R9rL33qqITsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ur34yy/XgP/36vjWSbu8KdOTAdEKd9PR7RQZNACVbl0=;
- b=CEpHYPBT6dy2K8E5F1/aPGHEuKFogpN+29bctjIs/JjrAdHFFkwfmJKRbvA+FAKtojM/aXRvlZkxVRpIZWgQb77wcjmraThj4hotUGFIe93glVKHmjZLWEx6CpETqr/IAdJ7xpNhgsT+WjvL2Ch/IlJitb3BnLyHuNbix61ogzCyCUHwlYVlNH2XcG1uQ9nyuqtC7FQJWdRG4ap10V2n72K1OZCLW2wvwcQfDDbBBiI8uOI/jh9XTRiGQSQjcug0EP7ASiHCZry0Ehp+syAqePWqvZP89r9V0Be4KoaLH223vt6XEFQQhvyF0ZVbXH9t8ykXnrFHWstb+h6UFTP5Lg==
+ bh=DL5L0bSxg0mOKzRdRydVFFklZj4p5/4jhvcthXJoLQo=;
+ b=XiHypdgvrjK2xG9VBLkMSL1ue+PplJZFDqhpOPT0IZFPY4bXk0KbATVV1TX9qHzL3Ds9ZScCbqiAYDdXH1j5zm9ipEiNQdij4Nr4kOqfbuqgmDlrv989siG7do+d7HcibbKbi/oiWLRBn96+8yTqa7monfEsCde1ivq2jB8uLUM7YPPGkgl/cj5fZQCTRhwi1wsAbR3NKAUH9XVCz6eBwsFrMAbv92IkB6duQsWVfkIKOEXcE2FguGlebuw29eybEdxfXEA+A1x0GKxl1ZRG11VDOibtQYh58APCHxstdzcQgEjl8OqpuYNDHqr//GDdD9mL2nYkPyQ+fxX1lcSNfA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=voleatech.de; dmarc=pass action=none header.from=voleatech.de;
  dkim=pass header.d=voleatech.de; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=voleatech.de;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ur34yy/XgP/36vjWSbu8KdOTAdEKd9PR7RQZNACVbl0=;
- b=TWJfXyqsIn2ffE3lIK2x06JG8Vj7HqGt7BE4thLSH5LrZK9F8rm7nnhqCxMWlCjXsR4hmPKQMy/zoEMjSF4TZLi36aUXcMYpoNFLunoqluNdicmEAhBAhM9DaUig49G0nGLH+k4MLjaJ2E9qmxmttCABcMB0lUUa3Qc9ridGOSo=
+ bh=DL5L0bSxg0mOKzRdRydVFFklZj4p5/4jhvcthXJoLQo=;
+ b=hclJLEMnY88S2nMrQXiqOYsh+1QjfdeWt5JQSkcx0ZMC+bzcpA5dwyYCDH9C+I0fO71Mt6P9iKN7yRP9ySynWpKJR2T+8s54qec4WTmg+oS31WsDB5cdB7UbJ1hCnleac6ma6AFnfDrWzJOvn7iDC80VCLlpCZXpXJv29pkusyw=
 Authentication-Results: vger.kernel.org; dkim=none (message not signed)
  header.d=none;vger.kernel.org; dmarc=none action=none
  header.from=voleatech.de;
 Received: from AM4PR0501MB2785.eurprd05.prod.outlook.com
- (2603:10a6:200:5d::11) by AM0PR05MB5922.eurprd05.prod.outlook.com
- (2603:10a6:208:12d::14) with Microsoft SMTP Server (version=TLS1_2,
+ (2603:10a6:200:5d::11) by AM4PR0501MB2609.eurprd05.prod.outlook.com
+ (2603:10a6:200:67::10) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.22; Mon, 13 Jul
- 2020 08:56:31 +0000
+ 2020 09:05:50 +0000
 Received: from AM4PR0501MB2785.eurprd05.prod.outlook.com
  ([fe80::39a1:e237:5fef:6f39]) by AM4PR0501MB2785.eurprd05.prod.outlook.com
  ([fe80::39a1:e237:5fef:6f39%11]) with mapi id 15.20.3174.025; Mon, 13 Jul
- 2020 08:56:31 +0000
-Date: Mon, 13 Jul 2020 10:56:30 +0200
+ 2020 09:05:50 +0000
+Date: Mon, 13 Jul 2020 11:05:49 +0200
 From: Sven Auhagen <sven.auhagen@voleatech.de>
 To: netdev@vger.kernel.org
-Message-ID: <20200713085630.rr5i5e27batwup4p@SvensMacbookPro.hq.voleatech.com>
+Message-ID: <20200713090549.b7dive4cmtm4o7dq@SvensMacbookPro.hq.voleatech.com>
 Content-Disposition: inline
-X-ClientProxiedBy: AM4PR0501CA0052.eurprd05.prod.outlook.com
- (2603:10a6:200:68::20) To AM4PR0501MB2785.eurprd05.prod.outlook.com
+X-ClientProxiedBy: AM0PR04CA0076.eurprd04.prod.outlook.com
+ (2603:10a6:208:be::17) To AM4PR0501MB2785.eurprd05.prod.outlook.com
  (2603:10a6:200:5d::11)
 MIME-Version: 1.0
 X-MS-Exchange-MessageSentRepresentingType: 1
 Received: from SvensMacbookPro.hq.voleatech.com (37.24.174.42) by
- AM4PR0501CA0052.eurprd05.prod.outlook.com (2603:10a6:200:68::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.22 via Frontend
- Transport; Mon, 13 Jul 2020 08:56:31 +0000
+ AM0PR04CA0076.eurprd04.prod.outlook.com (2603:10a6:208:be::17) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3174.20 via Frontend Transport; Mon, 13 Jul 2020 09:05:50 +0000
 X-Originating-IP: [37.24.174.42]
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 03d24174-8999-4961-7c60-08d8270aa345
-X-MS-TrafficTypeDiagnostic: AM0PR05MB5922:
-X-Microsoft-Antispam-PRVS: <AM0PR05MB5922FEB21B3156399F25A148EF600@AM0PR05MB5922.eurprd05.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: 692b4058-16d9-422d-1290-08d8270bf074
+X-MS-TrafficTypeDiagnostic: AM4PR0501MB2609:
+X-Microsoft-Antispam-PRVS: <AM4PR0501MB26096FB83D4A6AAE8A5AF25BEF600@AM4PR0501MB2609.eurprd05.prod.outlook.com>
 X-MS-Oob-TLC-OOBClassifiers: OLM:1824;
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 57BDy+xrhA/dFt/JHKZAGyyyMY1MZSoSoNeK2tzh87RSuy0guvtqIXc+bXT6S1NJD3i9C+tXt9v8hXEl7Apan7yPSEiM9B7mZFyRBwCT1JCNTlEz7QQDsmDkWu085fkjs7gZEaIaRBOhWRnV2lASeG7bXlTKx6BrTHjVv69ye3XOxb6z9azk2tq0iqCv1wE/Wkb1tjkQ2D/+49ZyofSW61eR3aUZ7sA+KfpWHrZtaW3YzXJ+hf2eUvwfdwxC7IFPantkltbsrrBn7O1X7/xl5nRcjNOgsYGZojy/WEsDsv5J2z4rwCsKWKvEs0pdGGkiOvrUx5diJicQJJM8QsvhQqW2oEMmFV7KCqGDhA8kyFgNodJ4oohDy7bIX+c84ZKg
+X-Microsoft-Antispam-Message-Info: g+ADUxKxvJ8IjEf/a8chf4xKlfix0Zfbjt2q9K5UqvGZhEfTJT6r+RUHkahNXW1Ig1fCv9OhtDPxpeKWi+youbESndCwdC9i8dzSzqtxVYjgXzIOedg6Dz6u7gsw7B63jhJTiF0dhTZn/VQZ/1RMOWmkHQ28AA3sLv6KtFH+jxWHxW3jtEZfo1IEeJ43XyoCwc8ppRmzclYWfG3ASOcFm0dcXogIcxF+gyJrepRA/mR+ohfkaFtnJgBCGkDBpTydUyanNdgJxeWn5YCcYP+vXL2opR6J3hH5wRKHbMyHKRU+OsqCfS1NwORiPc3N0MBm0XBl//rNRR/qHNFNadyJvXb1LaftGscd3l1sx1zxpl/rkEg28D+1OaciJmd81ROv
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:AM4PR0501MB2785.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(136003)(396003)(346002)(39830400003)(366004)(376002)(83380400001)(9686003)(30864003)(2906002)(44832011)(1076003)(8936002)(6916009)(6506007)(55016002)(316002)(86362001)(8676002)(5660300002)(956004)(66476007)(508600001)(4326008)(16526019)(186003)(66946007)(7696005)(52116002)(26005)(66556008)(309714004);
+ SFS:(4636009)(39830400003)(346002)(396003)(366004)(376002)(136003)(66556008)(66946007)(66476007)(2906002)(6916009)(316002)(9686003)(4326008)(55016002)(83380400001)(1076003)(956004)(44832011)(30864003)(5660300002)(52116002)(8676002)(8936002)(86362001)(7696005)(186003)(16526019)(6506007)(508600001)(26005)(309714004);
  DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: c1IMETrzqKq/thspKieKVqJXQV0JaVWSWsjvVz67WivECS71dZT6xnLeQmdmTVl3TF7YgF09vqrmN97R1rXC5lcOFQfP4/Te3PAGKlsgs5w30ugo16U5Nur143YqveByixFjWyWAdrhTF45PstcVa0rDCalgXI9DveHp3o7gxHn7nU9ViNmeBu3Gzm4cssD7Yhx2j33WqnVxKMoRgMIFp+gVwKTjjnwiT3W1b0iuad2jx4G3TNHaLHGSSUAe86EBODvJh9K/WjAbIBUY7zTol/ow3N4TG3ZJCCnIsfermWhn/aQmGTxPCPxjmCGQjHOMpXBFgpJdbpvgYw3zeveWDZgh6LNhHbbwA+jgTDV42YpnuBExHSAF7gQ/aKksUbHuJ5/KtLw1dX1lH5mnTJeUKrhgZpCEc6oSJ4sUVWTdotYSbePRJws2boKJB1bF7OyIRf4ANMwmIZQU4SlufeJaTusQpOch2Da+4BMGwRhQUuQ=
+X-MS-Exchange-AntiSpam-MessageData: EER5990VemvFlM9YjEN+daHCF3HE7aSPLdqFsSL/LkJ8jzOCxHsrSZyCaR1xh0InaeedIaglW/AT3fNnIFgDPq7uMVI6OBhxLKt2SnaBq9tcASn+y5u+YU39eLnspp2s+vZlx2pz+LWWk+PNNRxST8bu+Zi5D5ooSe+peajhjHYQluv4bY2rzmKwzdkRiT/+SSWA7ZLIpJLsdsrcNuNDoPE1ZI6kbfF9bJHKgN39xIeeULs3aNvP64ULYpkZykcRQASkppEhCpwLXsKqobjhIszHXauQcBJfnImXeYZIjeNBv30V06h5IPUpEvivO+Ozn8DTqUBaif8Balu/EbwOfV/q/wc2eeOM64qhOyLQ1BopbUtDy6+fhVQcSVl1zH/IunFPz2cu9H5fJA9flWK/FWE3i5k4wOtmxp2ZZPBFy8QW70tEtTxdi078GJ6BJ6Bo4y+xiDfVSucD1NYexxocmoH87CHYJXdGhhMya5MHk70=
 X-OriginatorOrg: voleatech.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 03d24174-8999-4961-7c60-08d8270aa345
+X-MS-Exchange-CrossTenant-Network-Message-Id: 692b4058-16d9-422d-1290-08d8270bf074
 X-MS-Exchange-CrossTenant-AuthSource: AM4PR0501MB2785.eurprd05.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2020 08:56:31.7510 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jul 2020 09:05:50.7106 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: b82a99f6-7981-4a72-9534-4d35298f847b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 44j2ZkofVFflxMQsOtjrzykkKFNKIGtgSJwImTkcW6kLJ1CuMjjMOMVVsdci7YsWLRryujSU1FHyJDu3M+DHXkbPaTHZ3kBRgYLi19c+11s=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB5922
-Subject: [Intel-wired-lan] [PATCH 1/1 v4] igb: add XDP support
+X-MS-Exchange-CrossTenant-UserPrincipalName: fnXLYVGZPDLso3HjkhKHDV4yUE1U8eZzt2ZEHWc5oj/6oUFbdsRJoJcIgfPB0WUI4JRt/reQAqha+1x+3urLaTFCcJo+Oii92L+yXrg4RI0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM4PR0501MB2609
+Subject: [Intel-wired-lan] [PATCH 1/1 v5] igb: add XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,7 +145,9 @@ on older Intel Atom CPU.
 
 Signed-off-by: Sven Auhagen <sven.auhagen@voleatech.de>
 ---
-v4: 
+v5: resubmission with function names in patch
+
+v4:
 * use HARD_TX_LOCK in XDP xmit
 * do not pass adapter to igb_setup_rx_resources
 * account for timestamp in frame size
@@ -156,11 +157,13 @@ v3: igb_xdp_ring_update_tail should be static
 v2: original did not apply to my dev-queue branch, so fixed the
     conflicts in the patch
 
- drivers/net/ethernet/intel/igb/igb.h         |  87 +++-
- drivers/net/ethernet/intel/igb/igb_ethtool.c |   8 +-
- drivers/net/ethernet/intel/igb/igb_main.c    | 471 +++++++++++++++++--
- 3 files changed, 515 insertions(+), 51 deletions(-)
+ drivers/net/ethernet/intel/igb/igb.h         |  81 +++-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c |   4 +
+ drivers/net/ethernet/intel/igb/igb_main.c    | 444 +++++++++++++++++--
+ 3 files changed, 491 insertions(+), 38 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+index 0c9282e2aaec..ce814a560129 100644
 --- a/drivers/net/ethernet/intel/igb/igb.h
 +++ b/drivers/net/ethernet/intel/igb/igb.h
 @@ -19,6 +19,8 @@
@@ -172,7 +175,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  struct igb_adapter;
  
  #define E1000_PCS_CFG_IGN_SD	1
-@@ -79,6 +81,12 @@
+@@ -79,6 +81,12 @@ struct igb_adapter;
  #define IGB_I210_RX_LATENCY_100		2213
  #define IGB_I210_RX_LATENCY_1000	448
  
@@ -185,7 +188,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  struct vf_data_storage {
  	unsigned char vf_mac_addresses[ETH_ALEN];
  	u16 vf_mc_hashes[IGB_MAX_VF_MC_ENTRIES];
-@@ -132,17 +140,63 @@
+@@ -132,17 +140,63 @@ struct vf_mac_filter {
  
  /* Supported Rx Buffer Sizes */
  #define IGB_RXBUFFER_256	256
@@ -253,7 +256,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  #endif
  
  /* How many Rx Buffers do we bundle into one write to the hardware ? */
-@@ -194,13 +248,22 @@
+@@ -194,13 +248,22 @@ enum igb_tx_flags {
  #define IGB_SFF_ADDRESSING_MODE		0x4
  #define IGB_SFF_8472_UNSUP		0x00
  
@@ -277,7 +280,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	unsigned int bytecount;
  	u16 gso_segs;
  	__be16 protocol;
-@@ -248,6 +311,7 @@
+@@ -248,6 +311,7 @@ struct igb_ring_container {
  struct igb_ring {
  	struct igb_q_vector *q_vector;	/* backlink to q_vector */
  	struct net_device *netdev;	/* back pointer to net_device */
@@ -285,7 +288,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	struct device *dev;		/* device pointer for dma mapping */
  	union {				/* array of buffer info structs */
  		struct igb_tx_buffer *tx_buffer_info;
-@@ -288,6 +352,7 @@
+@@ -288,6 +352,7 @@ struct igb_ring {
  			struct u64_stats_sync rx_syncp;
  		};
  	};
@@ -293,7 +296,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  } ____cacheline_internodealigned_in_smp;
  
  struct igb_q_vector {
-@@ -339,7 +404,7 @@
+@@ -339,7 +404,7 @@ static inline unsigned int igb_rx_bufsz(struct igb_ring *ring)
  		return IGB_RXBUFFER_3072;
  
  	if (ring_uses_build_skb(ring))
@@ -302,7 +305,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  #endif
  	return IGB_RXBUFFER_2048;
  }
-@@ -467,6 +532,7 @@
+@@ -467,6 +532,7 @@ struct igb_adapter {
  	unsigned long active_vlans[BITS_TO_LONGS(VLAN_N_VID)];
  
  	struct net_device *netdev;
@@ -310,7 +313,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  
  	unsigned long state;
  	unsigned int flags;
-@@ -644,6 +710,9 @@
+@@ -644,6 +710,9 @@ enum igb_boards {
  extern char igb_driver_name[];
  extern char igb_driver_version[];
  
@@ -320,9 +323,11 @@ v2: original did not apply to my dev-queue branch, so fixed the
  int igb_open(struct net_device *netdev);
  int igb_close(struct net_device *netdev);
  int igb_up(struct igb_adapter *);
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 2cd003c5ad43..eaa712a6d859 100644
 --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
 +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -962,6 +962,10 @@
+@@ -962,6 +962,10 @@ static int igb_set_ringparam(struct net_device *netdev,
  			memcpy(&temp_ring[i], adapter->rx_ring[i],
  			       sizeof(struct igb_ring));
  
@@ -333,6 +338,8 @@ v2: original did not apply to my dev-queue branch, so fixed the
  			temp_ring[i].count = new_rx_count;
  			err = igb_setup_rx_resources(&temp_ring[i]);
  			if (err) {
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 8bb3db2cbd41..ee33f19843a8 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
 @@ -30,6 +30,8 @@
@@ -344,7 +351,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  #include <linux/pm_runtime.h>
  #include <linux/etherdevice.h>
  #ifdef CONFIG_IGB_DCA
-@@ -2834,6 +2836,153 @@
+@@ -2834,6 +2836,153 @@ static int igb_setup_tc(struct net_device *dev, enum tc_setup_type type,
  	}
  }
  
@@ -498,7 +505,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  static const struct net_device_ops igb_netdev_ops = {
  	.ndo_open		= igb_open,
  	.ndo_stop		= igb_close,
-@@ -2858,6 +3007,8 @@
+@@ -2858,6 +3007,8 @@ static const struct net_device_ops igb_netdev_ops = {
  	.ndo_fdb_add		= igb_ndo_fdb_add,
  	.ndo_features_check	= igb_features_check,
  	.ndo_setup_tc		= igb_setup_tc,
@@ -507,7 +514,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  };
  
  /**
-@@ -4188,6 +4339,7 @@
+@@ -4188,6 +4339,7 @@ static void igb_configure_tx(struct igb_adapter *adapter)
   **/
  int igb_setup_rx_resources(struct igb_ring *rx_ring)
  {
@@ -515,7 +522,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	struct device *dev = rx_ring->dev;
  	int size;
  
-@@ -4210,6 +4362,13 @@
+@@ -4210,6 +4362,13 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
  	rx_ring->next_to_clean = 0;
  	rx_ring->next_to_use = 0;
  
@@ -529,7 +536,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	return 0;
  
  err:
-@@ -4514,6 +4673,10 @@
+@@ -4514,6 +4673,10 @@ void igb_configure_rx_ring(struct igb_adapter *adapter,
  	int reg_idx = ring->reg_idx;
  	u32 rxdctl = 0;
  
@@ -540,7 +547,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	/* disable the queue */
  	wr32(E1000_RXDCTL(reg_idx), 0);
  
-@@ -4718,6 +4881,8 @@
+@@ -4718,6 +4881,8 @@ void igb_free_rx_resources(struct igb_ring *rx_ring)
  {
  	igb_clean_rx_ring(rx_ring);
  
@@ -549,7 +556,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	vfree(rx_ring->rx_buffer_info);
  	rx_ring->rx_buffer_info = NULL;
  
-@@ -6087,6 +6252,80 @@
+@@ -6087,6 +6252,80 @@ static int igb_tx_map(struct igb_ring *tx_ring,
  	return -1;
  }
  
@@ -630,7 +637,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
  				struct igb_ring *tx_ring)
  {
-@@ -6115,6 +6354,7 @@
+@@ -6115,6 +6354,7 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
  
  	/* record the location of the first descriptor for this packet */
  	first = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
@@ -638,7 +645,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	first->skb = skb;
  	first->bytecount = skb->len;
  	first->gso_segs = 1;
-@@ -6257,6 +6497,19 @@
+@@ -6257,6 +6497,19 @@ static int igb_change_mtu(struct net_device *netdev, int new_mtu)
  	struct igb_adapter *adapter = netdev_priv(netdev);
  	int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
  
@@ -658,7 +665,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	/* adjust max frame to be at least the size of a standard frame */
  	if (max_frame < (ETH_FRAME_LEN + ETH_FCS_LEN))
  		max_frame = ETH_FRAME_LEN + ETH_FCS_LEN;
-@@ -7810,7 +8063,10 @@
+@@ -7810,7 +8063,10 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
  		total_packets += tx_buffer->gso_segs;
  
  		/* free the skb */
@@ -670,7 +677,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  
  		/* unmap skb header data */
  		dma_unmap_single(tx_ring->dev,
-@@ -7863,6 +8119,7 @@
+@@ -7863,6 +8119,7 @@ static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_budget)
  				  total_packets, total_bytes);
  	i += tx_ring->count;
  	tx_ring->next_to_clean = i;
@@ -678,7 +685,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	u64_stats_update_begin(&tx_ring->tx_syncp);
  	tx_ring->tx_stats.bytes += total_bytes;
  	tx_ring->tx_stats.packets += total_packets;
-@@ -7994,8 +8251,8 @@
+@@ -7994,8 +8251,8 @@ static bool igb_can_reuse_rx_page(struct igb_rx_buffer *rx_buffer)
  	 * the pagecnt_bias and page count so that we fully restock the
  	 * number of references the driver holds.
  	 */
@@ -689,7 +696,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  		rx_buffer->pagecnt_bias = USHRT_MAX;
  	}
  
-@@ -8034,22 +8291,23 @@
+@@ -8034,22 +8291,23 @@ static void igb_add_rx_frag(struct igb_ring *rx_ring,
  
  static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
  					 struct igb_rx_buffer *rx_buffer,
@@ -719,7 +726,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  #endif
  
  	/* allocate a skb to store the frags */
-@@ -8058,24 +8316,24 @@
+@@ -8058,24 +8316,24 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
  		return NULL;
  
  	if (unlikely(igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP))) {
@@ -749,7 +756,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  				size, truesize);
  #if (PAGE_SIZE < 8192)
  		rx_buffer->page_offset ^= truesize;
-@@ -8091,32 +8349,32 @@
+@@ -8091,32 +8349,32 @@ static struct sk_buff *igb_construct_skb(struct igb_ring *rx_ring,
  
  static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
  				     struct igb_rx_buffer *rx_buffer,
@@ -791,7 +798,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  
  	/* pull timestamp out of packet data */
  	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
-@@ -8134,6 +8392,79 @@
+@@ -8134,6 +8392,79 @@ static struct sk_buff *igb_build_skb(struct igb_ring *rx_ring,
  	return skb;
  }
  
@@ -871,7 +878,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  static inline void igb_rx_checksum(struct igb_ring *ring,
  				   union e1000_adv_rx_desc *rx_desc,
  				   struct sk_buff *skb)
-@@ -8230,6 +8561,10 @@
+@@ -8230,6 +8561,10 @@ static bool igb_cleanup_headers(struct igb_ring *rx_ring,
  				union e1000_adv_rx_desc *rx_desc,
  				struct sk_buff *skb)
  {
@@ -882,7 +889,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	if (unlikely((igb_test_staterr(rx_desc,
  				       E1000_RXDEXT_ERR_FRAME_ERR_MASK)))) {
  		struct net_device *netdev = rx_ring->netdev;
-@@ -8288,6 +8623,11 @@
+@@ -8288,6 +8623,11 @@ static void igb_process_skb_fields(struct igb_ring *rx_ring,
  	skb->protocol = eth_type_trans(skb, rx_ring->netdev);
  }
  
@@ -894,7 +901,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  static struct igb_rx_buffer *igb_get_rx_buffer(struct igb_ring *rx_ring,
  					       const unsigned int size)
  {
-@@ -8332,9 +8672,19 @@
+@@ -8332,9 +8672,19 @@ static void igb_put_rx_buffer(struct igb_ring *rx_ring,
  static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
  {
  	struct igb_ring *rx_ring = q_vector->rx.ring;
@@ -914,7 +921,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  
  	while (likely(total_packets < budget)) {
  		union e1000_adv_rx_desc *rx_desc;
-@@ -8361,13 +8711,38 @@
+@@ -8361,13 +8711,38 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
  		rx_buffer = igb_get_rx_buffer(rx_ring, size);
  
  		/* retrieve a buffer from the ring */
@@ -956,7 +963,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  
  		/* exit if we failed to retrieve a buffer */
  		if (!skb) {
-@@ -8407,6 +8782,15 @@
+@@ -8407,6 +8782,15 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
  	/* place incomplete frames back on ring for completion */
  	rx_ring->skb = skb;
  
@@ -972,7 +979,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  	u64_stats_update_begin(&rx_ring->rx_syncp);
  	rx_ring->rx_stats.packets += total_packets;
  	rx_ring->rx_stats.bytes += total_bytes;
-@@ -8420,11 +8804,6 @@
+@@ -8420,11 +8804,6 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
  	return total_packets;
  }
  
@@ -984,7 +991,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
  				  struct igb_rx_buffer *bi)
  {
-@@ -8461,7 +8840,8 @@
+@@ -8461,7 +8840,8 @@ static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
  	bi->dma = dma;
  	bi->page = page;
  	bi->page_offset = igb_rx_offset(rx_ring);
@@ -996,6 +1003,7 @@ v2: original did not apply to my dev-queue branch, so fixed the
  }
 -- 
 2.20.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
