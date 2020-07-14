@@ -1,78 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CD7721FD9B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2020 21:42:42 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A67A22200A3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jul 2020 00:31:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B1BD789DE9;
-	Tue, 14 Jul 2020 19:42:40 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1EF55822B4;
+	Tue, 14 Jul 2020 22:31:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nIqcQD5xrpSr; Tue, 14 Jul 2020 19:42:38 +0000 (UTC)
+	with ESMTP id Qt1BgweMiAat; Tue, 14 Jul 2020 22:31:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8A04889DEE;
-	Tue, 14 Jul 2020 19:42:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5C86B81F3B;
+	Tue, 14 Jul 2020 22:31:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 58FD71BF3B0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:27 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3DB551BF33B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 22:31:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AC26A87BB4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:26 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 33BFB20762
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 22:31:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qnjR4MvapDDm for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jul 2020 19:42:26 +0000 (UTC)
+ with ESMTP id ZDQr7zUoeVoM for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jul 2020 22:31:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
- [209.85.215.195])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 51DD087BA9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:26 +0000 (UTC)
-Received: by mail-pg1-f195.google.com with SMTP id o13so8056491pgf.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 12:42:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=PQoiTk/94i+cEQXK8JsAB0AkTjYJXwZwOn4dJ+xwUDg=;
- b=AXt6kevxd3MbkPZ1VCvIa7CWEeXW1Hnzu9JlVFfg+1OzvgzUAs4ASun5mkK+0k500o
- 54P7OkAxIMaeRNbb/vjw0CL+AutZpp0r7vyr5oyUq4ShbS2sVv/2A0MWOOff+TCUY+GK
- pKhZ2JjaGSpeJShOUUlm56WAoCdzjQg0SPcnrkLVptvoSMr5T1Sf0HXgY2zsFwfsPWm7
- 8xSYOIfbXa2kgyKX++hsK8Zo0qwamVWWPEzJ9ZaztPc5qb4phTanBGehRlouMu37JdT2
- E1mOz3JeXHs6zZyqFIEezDNeKtT8bcUCsxRPjyv/6wcz6xCO27uD+xryOUOnbqiuvk3/
- s5Fg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition:user-agent;
- bh=PQoiTk/94i+cEQXK8JsAB0AkTjYJXwZwOn4dJ+xwUDg=;
- b=d99u1bU8la9wDA+vV8WNOL6iEzizG7xW6aqF7PLXFaqJSBYRRO1EJ7zvBRYcsIvPdM
- qsn62V2gFzWURWdTUt+Y6NfjiDqfP0bVQVmY91z6vQtdhEEWDmV9TP9IeGW4/FuIud+t
- ofofxwJErXV+FrMHVpyOFXplayXxrw0UF0nCegYQ+iYw3cWVuFW/UZNrNNX+MFh7MhOh
- 3ma26zpz6HT/iFyiSEOO+REQiUhET5mvTFFFVpvkcARSQfHFCHtlJCz8qXeLhAPYBcbN
- vUArrRvEe30yzVzZhbW1oF4kHKOKrgf+u4F7MbwPUN110zbvulFmznZbWNn5GHLBaHhg
- Tlzg==
-X-Gm-Message-State: AOAM5316ntKtDUPhzUYa9bY8PhQSAYLNr+PpCpfpawvvhJYr4dpOc/hD
- PATWEZ0WCpspySxnkmU3EAdfi13onI9q9g==
-X-Google-Smtp-Source: ABdhPJwAec0PSq8vCkDHhMwK5e+77YkqFKNDRznTfSIalx/Ujpnz4QHpwP48pufGGWmOeeKFrr9t7g==
-X-Received: by 2002:a05:6a00:f:: with SMTP id
- h15mr5547490pfk.193.1594755745915; 
- Tue, 14 Jul 2020 12:42:25 -0700 (PDT)
-Received: from blackclown ([103.88.82.145])
- by smtp.gmail.com with ESMTPSA id g6sm10805pfr.129.2020.07.14.12.42.23
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 14 Jul 2020 12:42:25 -0700 (PDT)
-Date: Wed, 15 Jul 2020 01:12:13 +0530
-From: Suraj Upadhyay <usuraj35@gmail.com>
-To: jeffrey.t.kirsher@intel.com, davem@davemloft.net, kuba@kernel.org
-Message-ID: <20200714194212.GA21612@blackclown>
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3B1B620506
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 22:31:27 +0000 (UTC)
+IronPort-SDR: V6atTgURYY/Y7LVGuY+x32VPFjjx/AEqjXG62w8WZiJq9N75OPnQSAeK+4djsPbYaqLqHrtF1n
+ VCn/crN3iDoA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9682"; a="128600693"
+X-IronPort-AV: E=Sophos;i="5.75,353,1589266800"; d="scan'208";a="128600693"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jul 2020 15:31:26 -0700
+IronPort-SDR: EZU6/wqIdDsP5ZAQJc+MxL/C1xtsLdYZEfSsroOmKQ1cMdH1XqSjfyDPyJyYQos46XEC745+3L
+ 1oyyDibHrPbg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,353,1589266800"; d="scan'208";a="270120781"
+Received: from alicemic-1.jf.intel.com ([10.166.17.62])
+ by fmsmga008.fm.intel.com with ESMTP; 14 Jul 2020 15:31:26 -0700
+From: Alice Michael <alice.michael@intel.com>
+To: alice.michael@intel.com,
+	intel-wired-lan@lists.osuosl.org
+Date: Tue, 14 Jul 2020 07:03:20 -0700
+Message-Id: <20200714140334.23696-1-alice.michael@intel.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Mailman-Approved-At: Tue, 14 Jul 2020 19:42:37 +0000
-Subject: [Intel-wired-lan] [PATCH 4/4] ixgbe/ixgbe_ethtool.c: Remove
- unnecessary usages of memset.
+Subject: [Intel-wired-lan] [next-queue,v4, 00/14]
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,84 +66,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============0558642458736464157=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+This series introduces both the Intel Ethernet Common Module and the 
+Intel Data Plane Function.  The patches also incorporate extended 
+features and functionality added in the virtchnl.h file.
+ 
+The format of the series flow is to add the data set, then introduce 
+function stubs and finally introduce pieces in large cohesive subjects or
+functionality. This is to allow for more in depth understanding and review
+of the bigger picture as the series is reviewed.
+ 
+Currently this is common layer (iecm) is initially only being used by 
+only the idpf driver (PF driver for SmartNIC).  However, the plan is 
+to eventually switch our iavf driver along with future drivers to use 
+this common module.  The hope is to better enable code sharing going 
+forward as well as support other developers writing drivers for our 
+hardware
 
---===============0558642458736464157==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="WIyZ46R2i8wDzkSu"
-Content-Disposition: inline
+V3 -- Addresses comments from the original series.  This inncludes removing
+      the iecm_ctlq_err in iecm_ctlq_api.h, the private flags and duplicated
+      checks, and cleaning up the clamps in iecm_ethtool.c.  We also added
+      the supported_coalesce_params flags in iecm_ethtool.c.  Finally, we
+      got the headers cleaned up and addressed mismatching types from calls
+      to cpu_to_le to match the types (this fixes C=2 W=1 errors that were
+      reported).
 
+V4 -- Missed static in idpf_main.c on idpf_probe
 
---WIyZ46R2i8wDzkSu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+V5 -- updated location of documentation, refactored soft reset path to take
+      memory allocation into account, refactored ethtool stats to not use
+      VA_ARGS, *greatly* reduced use of iecm_status enum, aligned use of
+      periods in debug statements, refactored to reduce line indentats.
 
-Replace memsets of 1 byte with simple assignment.
-Issue found with checkpatch.pl
+Alan Brady (1):
+  idpf: Introduce idpf driver
+ 
+Alice Michael (14):
+  virtchnl: Extend AVF ops
+  iecm: Add framework set of header files
+  iecm: Add TX/RX header files
+  iecm: Common module introduction and function stubs
+  iecm: Add basic netdevice functionality
+  iecm: Implement mailbox functionality
+  iecm: Implement virtchnl commands
+  iecm: Implement vector allocation
+  iecm: Init and allocate vport
+  iecm: Deinit vport
+  iecm: Add splitq TX/RX
+  iecm: Add singleq TX/RX
+  iecm: Add ethtool
+  iecm: Add iecm to the kernel build system
 
-Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../networking/device_drivers/intel/idpf.rst  |   47 +
+ .../networking/device_drivers/intel/iecm.rst  |   93 +
+ MAINTAINERS                                   |    3 +
+ drivers/net/ethernet/intel/Kconfig            |   15 +
+ drivers/net/ethernet/intel/Makefile           |    2 +
+ drivers/net/ethernet/intel/idpf/Makefile      |   12 +
+ drivers/net/ethernet/intel/idpf/idpf_dev.h    |   17 +
+ drivers/net/ethernet/intel/idpf/idpf_devids.h |   10 +
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  136 +
+ drivers/net/ethernet/intel/idpf/idpf_reg.c    |  152 +
+ drivers/net/ethernet/intel/iecm/Makefile      |   19 +
+ .../net/ethernet/intel/iecm/iecm_controlq.c   |  669 +++
+ .../ethernet/intel/iecm/iecm_controlq_setup.c |  177 +
+ .../net/ethernet/intel/iecm/iecm_ethtool.c    | 1064 +++++
+ drivers/net/ethernet/intel/iecm/iecm_lib.c    | 1093 +++++
+ drivers/net/ethernet/intel/iecm/iecm_main.c   |   50 +
+ drivers/net/ethernet/intel/iecm/iecm_osdep.c  |   28 +
+ .../ethernet/intel/iecm/iecm_singleq_txrx.c   |  892 ++++
+ drivers/net/ethernet/intel/iecm/iecm_txrx.c   | 3961 +++++++++++++++++
+ .../net/ethernet/intel/iecm/iecm_virtchnl.c   | 2262 ++++++++++
+ include/linux/net/intel/iecm.h                |  433 ++
+ include/linux/net/intel/iecm_alloc.h          |   29 +
+ include/linux/net/intel/iecm_controlq.h       |   95 +
+ include/linux/net/intel/iecm_controlq_api.h   |  188 +
+ include/linux/net/intel/iecm_lan_pf_regs.h    |  120 +
+ include/linux/net/intel/iecm_lan_txrx.h       |  636 +++
+ include/linux/net/intel/iecm_osdep.h          |   24 +
+ include/linux/net/intel/iecm_txrx.h           |  581 +++
+ include/linux/net/intel/iecm_type.h           |   47 +
+ 29 files changed, 12855 insertions(+)
+ create mode 100644 Documentation/networking/device_drivers/intel/idpf.rst
+ create mode 100644 Documentation/networking/device_drivers/intel/iecm.rst
+ create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_reg.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/Makefile
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_controlq.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_controlq_setup.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_ethtool.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_lib.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_main.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_osdep.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+ create mode 100644 include/linux/net/intel/iecm.h
+ create mode 100644 include/linux/net/intel/iecm_alloc.h
+ create mode 100644 include/linux/net/intel/iecm_controlq.h
+ create mode 100644 include/linux/net/intel/iecm_controlq_api.h
+ create mode 100644 include/linux/net/intel/iecm_lan_pf_regs.h
+ create mode 100644 include/linux/net/intel/iecm_lan_txrx.h
+ create mode 100644 include/linux/net/intel/iecm_osdep.h
+ create mode 100644 include/linux/net/intel/iecm_txrx.h
+ create mode 100644 include/linux/net/intel/iecm_type.h
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net=
-/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 6725d892336e..71ec908266a6 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -1951,8 +1951,8 @@ static void ixgbe_create_lbtest_frame(struct sk_buff =
-*skb,
- 	memset(skb->data, 0xFF, frame_size);
- 	frame_size >>=3D 1;
- 	memset(&skb->data[frame_size], 0xAA, frame_size / 2 - 1);
--	memset(&skb->data[frame_size + 10], 0xBE, 1);
--	memset(&skb->data[frame_size + 12], 0xAF, 1);
-+	skb->data[frame_size + 10] =3D 0xBE;
-+	skb->data[frame_size + 12] =3D 0xAF;
- }
-=20
- static bool ixgbe_check_lbtest_frame(struct ixgbe_rx_buffer *rx_buffer,
---=20
-2.17.1
-
-
---WIyZ46R2i8wDzkSu
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8OCpQACgkQ+gRsbIfe
-747X5hAAmO9wn96MNt3fhAqcRyBhBhOvp01FWsT+wzrwjc+1bw4lkhROTDcrOjpf
-1efjH5SijYmhpe5WwtmmW82lLLBf8Dz1P3z50LDW/P/Y4LJBJa401d+iUubw8VNI
-an0hcZ7RqJuxO9P4LI1HT+xa7OlI5nZB1bYEPToeQRdbutLXZg7KmIP/mlMYK76i
-2e4cj0oVCkKtYcsPTK6tMCAmWFhR58uxoiS5OVIqz2r6kyISMplwF0rzv3uUbz8Q
-hUBh3dtQfoAENaSTlvcWCb8Bpdgp/DoaQOPgRD97nxbWmaX+byg9elyzElMjtvKv
-6oU5D9FuDSnO4Z+qciTkajLE+hq2rBpN44WA55DDBcT2q7wbaVtfu18+GJQyUhqb
-4PBKeGLLnVORKGhbEtofmDV1mSt+GjvW60YIkaJlF084Our7850xWdqO7jpd5Wtc
-jfGQph7TTC7Myqk6xi7foWRe7kuTZNuProC7DFN9z6idow/q9+PVrO2YKEI8pDwi
-xj6g3DLurusKneJR1wMFv4T1iU7/Aafc5q90xwSGAku7/W155CO7LR6OkA6Tv/Wg
-AcFMBtKyTrUL+1q0zb3eg36DjpH2Tr7T40mtyK5XPo31Bv4PIx8Q1XjLXbCFaDtD
-pST0Sam3+M5Ng88ktcGITfbvLzHQ6bNJhGbDstTbW/tqCRZ9peg=
-=mpgA
------END PGP SIGNATURE-----
-
---WIyZ46R2i8wDzkSu--
-
---===============0558642458736464157==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+2.21.0
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0558642458736464157==--
