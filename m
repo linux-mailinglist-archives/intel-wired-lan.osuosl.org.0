@@ -1,76 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D173C21FD99
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2020 21:42:32 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CD7721FD9B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2020 21:42:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 870368988D;
-	Tue, 14 Jul 2020 19:42:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id B1BD789DE9;
+	Tue, 14 Jul 2020 19:42:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XmJFF0vx9B1J; Tue, 14 Jul 2020 19:42:31 +0000 (UTC)
+	with ESMTP id nIqcQD5xrpSr; Tue, 14 Jul 2020 19:42:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 244D6898A2;
-	Tue, 14 Jul 2020 19:42:31 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8A04889DEE;
+	Tue, 14 Jul 2020 19:42:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D1AAA1BF3B0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:00 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 58FD71BF3B0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CB5FD89883
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:00 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AC26A87BB4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7q8bOSp3mEq1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jul 2020 19:42:00 +0000 (UTC)
+ with ESMTP id qnjR4MvapDDm for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jul 2020 19:42:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com
- [209.85.215.196])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 771D68987D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:00 +0000 (UTC)
-Received: by mail-pg1-f196.google.com with SMTP id d4so8047576pgk.4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 12:42:00 -0700 (PDT)
+Received: from mail-pg1-f195.google.com (mail-pg1-f195.google.com
+ [209.85.215.195])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 51DD087BA9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 19:42:26 +0000 (UTC)
+Received: by mail-pg1-f195.google.com with SMTP id o13so8056491pgf.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2020 12:42:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:mime-version:content-disposition
- :user-agent; bh=U6wnNdQGYzjTM+8H6Cnp8bIF9ECNSsdex0J9VIEDN8k=;
- b=WEBXB6igBdu6ROj5Tdt64QJhL9xOAqNkJGXW4MpgsabaGHtlIGrooBXTq2dhm+LkN8
- s5ZXTb3KBqo7i+kWvyGCtH390hxDCSYK4tJfuN9GR5b8UOq1qxOE5tclLpgxfiRt/jLN
- fexCwCWqOc/97/UfokXolHj9N/jgDWsCahnzPR8tURwoHDXh9BG6AModtiVlIrhpnm6P
- UlRVg3weGUgWq4TV8OZArK7KTH22VzL8415ELf9x7TATwVBhKRUPQtEHuekmIEqztx5R
- LMTt528AWoPrcr3bBZzx70w+ZsP+2l8Bx3omLxio+wt2l/IqwUdd86x+AKeqxbihbTmr
- gXIw==
+ :user-agent; bh=PQoiTk/94i+cEQXK8JsAB0AkTjYJXwZwOn4dJ+xwUDg=;
+ b=AXt6kevxd3MbkPZ1VCvIa7CWEeXW1Hnzu9JlVFfg+1OzvgzUAs4ASun5mkK+0k500o
+ 54P7OkAxIMaeRNbb/vjw0CL+AutZpp0r7vyr5oyUq4ShbS2sVv/2A0MWOOff+TCUY+GK
+ pKhZ2JjaGSpeJShOUUlm56WAoCdzjQg0SPcnrkLVptvoSMr5T1Sf0HXgY2zsFwfsPWm7
+ 8xSYOIfbXa2kgyKX++hsK8Zo0qwamVWWPEzJ9ZaztPc5qb4phTanBGehRlouMu37JdT2
+ E1mOz3JeXHs6zZyqFIEezDNeKtT8bcUCsxRPjyv/6wcz6xCO27uD+xryOUOnbqiuvk3/
+ s5Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
- bh=U6wnNdQGYzjTM+8H6Cnp8bIF9ECNSsdex0J9VIEDN8k=;
- b=Vr5NDyseNitj5l+feGDFe+vTU6xYuK+ezlJutk9x7ScBbKMtowegsbxa5DfCMNHhQw
- whp/cIyrTvTf6FuX6AeWFBkqERh7r5QkEkN9Fn/H9cSRX9Yjdlqo4FNapJc1rGrTcQUJ
- tUVlidP2ZcENpwoyfwIB86Hi1gg1c0PkqNyMwSWBs8nzs9/KtnjclX2bbBAspbYM5xQN
- zRmgpTZ9GejPmipjMLrkxdqgNP7MgGnUHw7V1aDovUroR8eJdgwehAnMRIGBd+dsNg8h
- yW8YwspAjUrA0M5dCoq3pSjFvHiVcTzdQyxo7+jH03DG/YAfpHPbJjZiM38FlIVWan7M
- Hsiw==
-X-Gm-Message-State: AOAM530pD3tKAg+wLlaTlX65PVTYQTmg2AGLcI2ecDS9slHi8xJK88Ho
- BY06Dq/LSgGfyi9DE6EQ0B0=
-X-Google-Smtp-Source: ABdhPJybSvB/F9GjQ0jmE43Re8wHuZG9KV1oJjCCUTGugBHRSsDGybtJm4nzTYbu5nOAY0VAf9qYGQ==
-X-Received: by 2002:a62:8f50:: with SMTP id n77mr5343854pfd.259.1594755720063; 
- Tue, 14 Jul 2020 12:42:00 -0700 (PDT)
+ bh=PQoiTk/94i+cEQXK8JsAB0AkTjYJXwZwOn4dJ+xwUDg=;
+ b=d99u1bU8la9wDA+vV8WNOL6iEzizG7xW6aqF7PLXFaqJSBYRRO1EJ7zvBRYcsIvPdM
+ qsn62V2gFzWURWdTUt+Y6NfjiDqfP0bVQVmY91z6vQtdhEEWDmV9TP9IeGW4/FuIud+t
+ ofofxwJErXV+FrMHVpyOFXplayXxrw0UF0nCegYQ+iYw3cWVuFW/UZNrNNX+MFh7MhOh
+ 3ma26zpz6HT/iFyiSEOO+REQiUhET5mvTFFFVpvkcARSQfHFCHtlJCz8qXeLhAPYBcbN
+ vUArrRvEe30yzVzZhbW1oF4kHKOKrgf+u4F7MbwPUN110zbvulFmznZbWNn5GHLBaHhg
+ Tlzg==
+X-Gm-Message-State: AOAM5316ntKtDUPhzUYa9bY8PhQSAYLNr+PpCpfpawvvhJYr4dpOc/hD
+ PATWEZ0WCpspySxnkmU3EAdfi13onI9q9g==
+X-Google-Smtp-Source: ABdhPJwAec0PSq8vCkDHhMwK5e+77YkqFKNDRznTfSIalx/Ujpnz4QHpwP48pufGGWmOeeKFrr9t7g==
+X-Received: by 2002:a05:6a00:f:: with SMTP id
+ h15mr5547490pfk.193.1594755745915; 
+ Tue, 14 Jul 2020 12:42:25 -0700 (PDT)
 Received: from blackclown ([103.88.82.145])
- by smtp.gmail.com with ESMTPSA id z1sm16815171pgk.89.2020.07.14.12.41.57
+ by smtp.gmail.com with ESMTPSA id g6sm10805pfr.129.2020.07.14.12.42.23
  (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Tue, 14 Jul 2020 12:41:59 -0700 (PDT)
-Date: Wed, 15 Jul 2020 01:11:47 +0530
+ Tue, 14 Jul 2020 12:42:25 -0700 (PDT)
+Date: Wed, 15 Jul 2020 01:12:13 +0530
 From: Suraj Upadhyay <usuraj35@gmail.com>
 To: jeffrey.t.kirsher@intel.com, davem@davemloft.net, kuba@kernel.org
-Message-ID: <20200714194147.GA21537@blackclown>
+Message-ID: <20200714194212.GA21612@blackclown>
 MIME-Version: 1.0
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Mailman-Approved-At: Tue, 14 Jul 2020 19:42:28 +0000
-Subject: [Intel-wired-lan] [PATCH 3/4] igb/igb_ethtool.c : Remove
+X-Mailman-Approved-At: Tue, 14 Jul 2020 19:42:37 +0000
+Subject: [Intel-wired-lan] [PATCH 4/4] ixgbe/ixgbe_ethtool.c: Remove
  unnecessary usages of memset.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -86,18 +87,18 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============8503896710148124824=="
+Content-Type: multipart/mixed; boundary="===============0558642458736464157=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---===============8503896710148124824==
+--===============0558642458736464157==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="NzB8fVQJ5HfG6fxh"
+	protocol="application/pgp-signature"; boundary="WIyZ46R2i8wDzkSu"
 Content-Disposition: inline
 
 
---NzB8fVQJ5HfG6fxh
+--WIyZ46R2i8wDzkSu
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -107,53 +108,53 @@ Issue found with checkpatch.pl
 
 Signed-off-by: Suraj Upadhyay <usuraj35@gmail.com>
 ---
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/eth=
-ernet/intel/igb/igb_ethtool.c
-index c2cf414d126b..6e8231c1ddf0 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -1782,8 +1782,8 @@ static void igb_create_lbtest_frame(struct sk_buff *s=
-kb,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net=
+/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 6725d892336e..71ec908266a6 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -1951,8 +1951,8 @@ static void ixgbe_create_lbtest_frame(struct sk_buff =
+*skb,
  	memset(skb->data, 0xFF, frame_size);
- 	frame_size /=3D 2;
- 	memset(&skb->data[frame_size], 0xAA, frame_size - 1);
+ 	frame_size >>=3D 1;
+ 	memset(&skb->data[frame_size], 0xAA, frame_size / 2 - 1);
 -	memset(&skb->data[frame_size + 10], 0xBE, 1);
 -	memset(&skb->data[frame_size + 12], 0xAF, 1);
 +	skb->data[frame_size + 10] =3D 0xBE;
 +	skb->data[frame_size + 12] =3D 0xAF;
  }
 =20
- static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+ static bool ixgbe_check_lbtest_frame(struct ixgbe_rx_buffer *rx_buffer,
 --=20
 2.17.1
 
 
---NzB8fVQJ5HfG6fxh
+--WIyZ46R2i8wDzkSu
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8OCnsACgkQ+gRsbIfe
-7475jQ/5AdsAUEVRQdc0hTq29NBB9KUt2H2J6niOmK0ZE2cvKvt2rxRQ76d4r6pt
-rWTD6v4FckiDuyoazjH5tZUlIVxVCFoybnpsS4a0aq6rQZyjZXKpTVwCwQH1tqDf
-QxojbKNVKORdyI/u3x7hsxSKdKALPVQVYpUvNKGE2hSIm2+/jWIjXnyPlyCBmZOn
-VesYzQ1PA2rPDccWHCXp3ijtGOXXqEu+hDOZbmzgtn8yc2KPSmb0zutbObL2Nl/m
-OYTLUtDzNOMGeksmqzX+4EZ2ZrwaZ397zqGuKdxDKHKup5LWVf0qLaWWIYZiLdhD
-mzWAbSWOKzVd6jOn/e2WKKin1TTN0wC4qgN84XXkyfrSE3ufpGAQsW2zhfgqA8jD
-XPPfu+SHRXuqLhYApiNuhZh3ePOQjmcwCZ9TA7/YOMLrgIRNpwqRDY0PeFpWjjr3
-OUbsPnCrRx3w1JkmslRaFwSE98wGDTmWZovT5bf6jdkl5i0xyHtXNWF4d/gg3Sre
-0+EFSerViO1nMFW/w1qizuuSgwJBP0jFSxoM6RAl28gTH+Bj3g9TKC9YO49RM41G
-tO1GrK/JksnXEkjQf3Orjv4hdqB7efDfYKG8kha6wchPfIbNM/N9yEenvZjUi9PN
-NIw2hW64PEoYg4CDPDHISme5YPt4j20Sb3XhWU+lzUCvaNFY1+k=
-=cAMq
+iQIzBAABCgAdFiEE7AbCa0kOsMJ4cx0j+gRsbIfe744FAl8OCpQACgkQ+gRsbIfe
+747X5hAAmO9wn96MNt3fhAqcRyBhBhOvp01FWsT+wzrwjc+1bw4lkhROTDcrOjpf
+1efjH5SijYmhpe5WwtmmW82lLLBf8Dz1P3z50LDW/P/Y4LJBJa401d+iUubw8VNI
+an0hcZ7RqJuxO9P4LI1HT+xa7OlI5nZB1bYEPToeQRdbutLXZg7KmIP/mlMYK76i
+2e4cj0oVCkKtYcsPTK6tMCAmWFhR58uxoiS5OVIqz2r6kyISMplwF0rzv3uUbz8Q
+hUBh3dtQfoAENaSTlvcWCb8Bpdgp/DoaQOPgRD97nxbWmaX+byg9elyzElMjtvKv
+6oU5D9FuDSnO4Z+qciTkajLE+hq2rBpN44WA55DDBcT2q7wbaVtfu18+GJQyUhqb
+4PBKeGLLnVORKGhbEtofmDV1mSt+GjvW60YIkaJlF084Our7850xWdqO7jpd5Wtc
+jfGQph7TTC7Myqk6xi7foWRe7kuTZNuProC7DFN9z6idow/q9+PVrO2YKEI8pDwi
+xj6g3DLurusKneJR1wMFv4T1iU7/Aafc5q90xwSGAku7/W155CO7LR6OkA6Tv/Wg
+AcFMBtKyTrUL+1q0zb3eg36DjpH2Tr7T40mtyK5XPo31Bv4PIx8Q1XjLXbCFaDtD
+pST0Sam3+M5Ng88ktcGITfbvLzHQ6bNJhGbDstTbW/tqCRZ9peg=
+=mpgA
 -----END PGP SIGNATURE-----
 
---NzB8fVQJ5HfG6fxh--
+--WIyZ46R2i8wDzkSu--
 
---===============8503896710148124824==
+--===============0558642458736464157==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -164,4 +165,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============8503896710148124824==--
+--===============0558642458736464157==--
