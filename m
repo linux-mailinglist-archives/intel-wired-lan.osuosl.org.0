@@ -1,62 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13169221107
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jul 2020 17:30:59 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B3CDD896D0;
-	Wed, 15 Jul 2020 15:30:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UPkbxBYcW789; Wed, 15 Jul 2020 15:30:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5572E896BD;
-	Wed, 15 Jul 2020 15:30:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 26F181BF349
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 15:30:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F4852215F3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jul 2020 22:20:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1B71F8B55B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 15:30:55 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 285D48B762;
+	Wed, 15 Jul 2020 20:20:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id SataJxFv07dU; Wed, 15 Jul 2020 20:20:21 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id A05DF8B739;
+	Wed, 15 Jul 2020 20:20:20 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 77ABC1BF3EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 20:20:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 70438887CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 20:20:19 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kc3inygdrQI0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Jul 2020 15:30:52 +0000 (UTC)
+ with ESMTP id LLqXja0IMdW6 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Jul 2020 20:20:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4492B8B54F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 15:30:52 +0000 (UTC)
-IronPort-SDR: n7BXI9dcBHfP9iQDOkXq6fbxV9Fjkj66e+rJJL67cHHrUN+OWh6ctz+KjqLI3ka6g/pxHMsMtk
- 5VMYTNdF2V1g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9683"; a="147176057"
-X-IronPort-AV: E=Sophos;i="5.75,355,1589266800"; d="scan'208";a="147176057"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4BE87887B9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 20:20:18 +0000 (UTC)
+IronPort-SDR: 59KKFCe437NHsDAhJs43pw/xmvrHcI5UqVMun+ll3ubJQqBClb9FDtb93ksRcQESt5Etl2xui+
+ UFVaGAIitqFg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9683"; a="146773136"
+X-IronPort-AV: E=Sophos;i="5.75,356,1589266800"; d="scan'208";a="146773136"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2020 08:30:33 -0700
-IronPort-SDR: ya2TWOW4XXgyMroLXE1260fzYbT0fFexRXV6YvL4cMoqukHm3x4O0wza4KTCSkfrZX6+8lYPiM
- +QsBDoiwJiTg==
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2020 13:20:16 -0700
+IronPort-SDR: 01zLXkEqd4hP+y6BwWTSOVoRtXoPj98uiisO5x7Ro4pKL8tVQDyJy25r3ti/vR/w85QtiXB0Qb
+ vMiMGSeeCwQw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,355,1589266800"; d="scan'208";a="316733807"
-Received: from lkp-server01.sh.intel.com (HELO e5b4d2dd85a6) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 15 Jul 2020 08:30:32 -0700
-Received: from kbuild by e5b4d2dd85a6 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jvjMd-00000e-OX; Wed, 15 Jul 2020 15:30:31 +0000
-Date: Wed, 15 Jul 2020 23:29:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5f0f20bc.3YNFyVPKesdIqprV%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.75,356,1589266800"; d="scan'208";a="485852643"
+Received: from alicemic-1.jf.intel.com ([10.166.17.62])
+ by fmsmga006.fm.intel.com with ESMTP; 15 Jul 2020 13:20:16 -0700
+From: Alice Michael <alice.michael@intel.com>
+To: alice.michael@intel.com,
+	intel-wired-lan@lists.osuosl.org
+Date: Wed, 15 Jul 2020 04:52:10 -0700
+Message-Id: <20200715115224.63154-1-alice.michael@intel.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
- 0499ed813d995f0a1b97e5e59ff7fd864d8ffb62
+Subject: [Intel-wired-lan] [next-queue,V6, 00/14]
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,182 +71,120 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
-branch HEAD: 0499ed813d995f0a1b97e5e59ff7fd864d8ffb62  idpf: Introduce idpf driver
+This series introduces both the Intel Ethernet Common Module and the 
+Intel Data Plane Function.  The patches also incorporate extended 
+features and functionality added in the virtchnl.h file.
+ 
+The format of the series flow is to add the data set, then introduce 
+function stubs and finally introduce pieces in large cohesive subjects or
+functionality. This is to allow for more in depth understanding and review
+of the bigger picture as the series is reviewed.
+ 
+Currently this is common layer (iecm) is initially only being used by 
+only the idpf driver (PF driver for SmartNIC).  However, the plan is 
+to eventually switch our iavf driver along with future drivers to use 
+this common module.  The hope is to better enable code sharing going 
+forward as well as support other developers writing drivers for our 
+hardware
 
-Error/Warning in current branch:
+V3 -- Addresses comments from the original series.  This inncludes removing
+      the iecm_ctlq_err in iecm_ctlq_api.h, the private flags and duplicated
+      checks, and cleaning up the clamps in iecm_ethtool.c.  We also added
+      the supported_coalesce_params flags in iecm_ethtool.c.  Finally, we
+      got the headers cleaned up and addressed mismatching types from calls
+      to cpu_to_le to match the types (this fixes C=2 W=1 errors that were
+      reported).
 
-drivers/net/ethernet/intel/iecm/iecm_txrx.c:2462:28: error: 'last_offset' undeclared (first use in this function); did you mean 'page_offset'?
-drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2269:15: error: redefinition of 'truesize'
-include/linux/avf/virtchnl.h:1153:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_get_capabilities' is not an integer constant
-include/linux/avf/virtchnl.h:1235:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_txq_info_v2' is not an integer constant
-include/linux/avf/virtchnl.h:1251:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_tx_queues' is not an integer constant
-include/linux/avf/virtchnl.h:1281:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rxq_info_v2' is not an integer constant
-include/linux/avf/virtchnl.h:1296:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_config_rx_queues' is not an integer constant
-include/linux/avf/virtchnl.h:1434:31: error: enumerator value for 'virtchnl_static_assert_virtchnl_rss_hash' is not an integer constant
+V4 -- Missed static in idpf_main.c on idpf_probe
 
-Error/Warning ids grouped by kconfigs:
+V5 -- updated location of documentation, refactored soft reset path to take
+      memory allocation into account, refactored ethtool stats to not use
+      VA_ARGS, *greatly* reduced use of iecm_status enum, aligned use of
+      periods in debug statements, refactored to reduce line indentats.
 
-recent_errors
-|-- alpha-allyesconfig
-|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- alpha-randconfig-s031-20200714
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- i386-allmodconfig
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
-|   `-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
-|-- i386-allyesconfig
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
-|   `-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
-|-- i386-debian-10.3
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_rx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_config_tx_queues-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_get_capabilities-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rss_hash-is-not-an-integer-constant
-|   |-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_rxq_info_v2-is-not-an-integer-constant
-|   `-- include-linux-avf-virtchnl.h:error:enumerator-value-for-virtchnl_static_assert_virtchnl_txq_info_v2-is-not-an-integer-constant
-|-- ia64-allyesconfig
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- ia64-randconfig-r034-20200714
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- powerpc-defconfig
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- sparc-allyesconfig
-|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-|-- sparc64-allmodconfig
-|   |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
-|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
-`-- sparc64-allyesconfig
-    |-- drivers-net-ethernet-intel-iecm-iecm_txrx.c:error:last_offset-undeclared-(first-use-in-this-function)
-    `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+V6 -- Missing local variable put into iecm_rx_can_reuse_page, and cleaned
+      up spacing issue that no longer triggers checkpatch due to Linus'
+      recent patch for column spacing.
 
-elapsed time: 810m
+Alan Brady (1):
+  idpf: Introduce idpf driver
+ 
+Alice Michael (14):
+  virtchnl: Extend AVF ops
+  iecm: Add framework set of header files
+  iecm: Add TX/RX header files
+  iecm: Common module introduction and function stubs
+  iecm: Add basic netdevice functionality
+  iecm: Implement mailbox functionality
+  iecm: Implement virtchnl commands
+  iecm: Implement vector allocation
+  iecm: Init and allocate vport
+  iecm: Deinit vport
+  iecm: Add splitq TX/RX
+  iecm: Add singleq TX/RX
+  iecm: Add ethtool
+  iecm: Add iecm to the kernel build system
 
-configs tested: 108
-configs skipped: 12
+ .../networking/device_drivers/intel/idpf.rst  |   47 +
+ .../networking/device_drivers/intel/iecm.rst  |   93 +
+ MAINTAINERS                                   |    3 +
+ drivers/net/ethernet/intel/Kconfig            |   15 +
+ drivers/net/ethernet/intel/Makefile           |    2 +
+ drivers/net/ethernet/intel/idpf/Makefile      |   12 +
+ drivers/net/ethernet/intel/idpf/idpf_dev.h    |   17 +
+ drivers/net/ethernet/intel/idpf/idpf_devids.h |   10 +
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  136 +
+ drivers/net/ethernet/intel/idpf/idpf_reg.c    |  152 +
+ drivers/net/ethernet/intel/iecm/Makefile      |   19 +
+ .../net/ethernet/intel/iecm/iecm_controlq.c   |  669 +++
+ .../ethernet/intel/iecm/iecm_controlq_setup.c |  177 +
+ .../net/ethernet/intel/iecm/iecm_ethtool.c    | 1064 +++++
+ drivers/net/ethernet/intel/iecm/iecm_lib.c    | 1093 +++++
+ drivers/net/ethernet/intel/iecm/iecm_main.c   |   50 +
+ drivers/net/ethernet/intel/iecm/iecm_osdep.c  |   28 +
+ .../ethernet/intel/iecm/iecm_singleq_txrx.c   |  892 ++++
+ drivers/net/ethernet/intel/iecm/iecm_txrx.c   | 3961 +++++++++++++++++
+ .../net/ethernet/intel/iecm/iecm_virtchnl.c   | 2262 ++++++++++
+ include/linux/net/intel/iecm.h                |  433 ++
+ include/linux/net/intel/iecm_alloc.h          |   29 +
+ include/linux/net/intel/iecm_controlq.h       |   95 +
+ include/linux/net/intel/iecm_controlq_api.h   |  188 +
+ include/linux/net/intel/iecm_lan_pf_regs.h    |  120 +
+ include/linux/net/intel/iecm_lan_txrx.h       |  636 +++
+ include/linux/net/intel/iecm_osdep.h          |   24 +
+ include/linux/net/intel/iecm_txrx.h           |  581 +++
+ include/linux/net/intel/iecm_type.h           |   47 +
+ 29 files changed, 12855 insertions(+)
+ create mode 100644 Documentation/networking/device_drivers/intel/idpf.rst
+ create mode 100644 Documentation/networking/device_drivers/intel/iecm.rst
+ create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_reg.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/Makefile
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_controlq.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_controlq_setup.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_ethtool.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_lib.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_main.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_osdep.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+ create mode 100644 include/linux/net/intel/iecm.h
+ create mode 100644 include/linux/net/intel/iecm_alloc.h
+ create mode 100644 include/linux/net/intel/iecm_controlq.h
+ create mode 100644 include/linux/net/intel/iecm_controlq_api.h
+ create mode 100644 include/linux/net/intel/iecm_lan_pf_regs.h
+ create mode 100644 include/linux/net/intel/iecm_lan_txrx.h
+ create mode 100644 include/linux/net/intel/iecm_osdep.h
+ create mode 100644 include/linux/net/intel/iecm_txrx.h
+ create mode 100644 include/linux/net/intel/iecm_type.h
 
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-h8300                     edosk2674_defconfig
-sh                          polaris_defconfig
-mips                           xway_defconfig
-xtensa                          iss_defconfig
-powerpc                      pmac32_defconfig
-mips                      maltaaprp_defconfig
-sh                           se7206_defconfig
-mips                malta_qemu_32r6_defconfig
-sparc64                             defconfig
-mips                      pistachio_defconfig
-powerpc                       maple_defconfig
-arm                          badge4_defconfig
-microblaze                          defconfig
-xtensa                generic_kc705_defconfig
-mips                           ip27_defconfig
-mips                  mips_paravirt_defconfig
-c6x                        evmc6474_defconfig
-powerpc                      pasemi_defconfig
-m68k                         amcore_defconfig
-sh                        dreamcast_defconfig
-openrisc                         alldefconfig
-m68k                        m5407c3_defconfig
-arm                          ep93xx_defconfig
-powerpc                             defconfig
-ia64                              allnoconfig
-arm                          pxa168_defconfig
-sh                        sh7785lcr_defconfig
-m68k                          multi_defconfig
-mips                      fuloong2e_defconfig
-sh                          r7780mp_defconfig
-ia64                                defconfig
-powerpc                      ppc6xx_defconfig
-i386                              allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a016-20200715
-i386                 randconfig-a011-20200715
-i386                 randconfig-a015-20200715
-i386                 randconfig-a012-20200715
-i386                 randconfig-a013-20200715
-i386                 randconfig-a014-20200715
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-x86_64                                   rhel
-x86_64                                    lkp
-x86_64                              fedora-25
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
+-- 
+2.21.0
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
