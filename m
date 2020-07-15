@@ -1,72 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 664222216BC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jul 2020 23:02:42 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 139278AF11;
-	Wed, 15 Jul 2020 21:02:41 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id miZDwL32G-LP; Wed, 15 Jul 2020 21:02:40 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 514908B09F;
-	Wed, 15 Jul 2020 21:02:40 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 03F4E1BF40F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 21:02:39 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B84D52216D4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Jul 2020 23:12:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id F38FB8AD61
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 21:02:38 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 762DA8ADFC;
+	Wed, 15 Jul 2020 21:12:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MMQX-3M4zDcD; Wed, 15 Jul 2020 21:12:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id CDC138AE03;
+	Wed, 15 Jul 2020 21:12:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CA3C81BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 21:12:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id B43B52042E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 21:12:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m+rXBfA9Q63D for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Jul 2020 21:02:38 +0000 (UTC)
+ with ESMTP id Eff3uDB98Hwd for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Jul 2020 21:12:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f173.google.com (mail-qk1-f173.google.com
- [209.85.222.173])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5358A8AD5B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 21:02:38 +0000 (UTC)
-Received: by mail-qk1-f173.google.com with SMTP id j80so3311978qke.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 14:02:38 -0700 (PDT)
+Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
+ [209.85.160.193])
+ by silver.osuosl.org (Postfix) with ESMTPS id 76AA32035D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 21:12:36 +0000 (UTC)
+Received: by mail-qt1-f193.google.com with SMTP id w27so3006509qtb.7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Jul 2020 14:12:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HcfXxbBjcw3eikcKaHhGf3FP9CedzkXPE03UeYpW8LE=;
- b=Wj6l20fjxQ8R+Vhf46pRwzbxVVX119XU+nBT6IRaazceCrTvuJpV2vJ0NCXg0fotL7
- KEWSqi8NKfGw6BO1k1CVvGt6Jfm/wd0ox4+pP1ZLgxf6lH8N5dDB9A5U1FqBfCtjrDXr
- dRZSW4c0T8ySzNWcQXs+Eu27/nO47dhTYmghp4Q/JYusXec2L5nSKf7/VaWyit+eoaxk
- 9sc1C59U9KffNkW0cE9xniNeVnYQXpvo/R+MNpingIEv2BGgBvLqXhyIk99+yy9T6OHy
- mF+uwuHW8QHsBNqqz4BArrqbiOMOZBKadrKLs/UdePy/R3F6SVjBv92NrDF/pUKO1eoM
- jjxA==
+ :cc; bh=Ugnd0TD/Wl8NWEtJPlvFS8k7ARKLAYTngfNEZV+I5ag=;
+ b=e3md1I053z8dnwg5KFnxqhvQ1WiUUnbJdwyDyZIkB2AgxHabMHn9dj0iSMqQg56+P2
+ mV1ri6BWkqC2e4y2J5NPsaVGqrDXgj6Aeu2xB9FfOHqI5+yQqydngRTc2Q6pB6GyvvpE
+ yeQQsT05Rhpkb01fGLIANje8GJRc+QqxqQ4efrCDCXMj5+iq5azSyrje59WfAUxqJ9UV
+ 4dIM27bq6SU7UCXFlaE5pGYz5MwrxdT2tU17y0Jxemwgc3n18SLyX5Tcke7fjGbJw4xb
+ tHSobEE92h7ttBbDSd8phFYTr1QPJFPHpNHCbibHIH8laQEFUj+VZTAn+aOCdi7jXC/G
+ hwnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HcfXxbBjcw3eikcKaHhGf3FP9CedzkXPE03UeYpW8LE=;
- b=Eto+kCaesNVZq6yS3qyfF+XURY0vogXMKvKK9xQFRX8eY5dxsU90VuUfLlV5YpAto+
- 4uSOjHz4P2/xk4fG0UKoZ9YsxtJ4rMEGWimD9/ApvBnzP8HVmEec6Z8n5BmBswBxTdMt
- bQevP6Q89KUmFXf8K3JQKnrlqwYuCgcGEpgMMysA1Oe5+cgCbJRBfaT1D68dvb4q2zkn
- /tV6UlVI+d9ZfFgvM3vNm0Dgege9N0wWkw3CA6GFwceBCxtDbUpglTok32HPxMhnaaES
- dTXL5NegP4xX6AL728qga7bLjs1+gJNoG/h7RnNzlkIaHaUSR7XrV0xq6u/kmIJDKX69
- KE/w==
-X-Gm-Message-State: AOAM531/dal6hSZggr6DH9oGqhTR0mgEBZDiTBozYOV7T2rnoMigRlQp
- oPFZDGg1Cfyk8j8PENxC5TkLqyro4uhi2AHti+Q=
-X-Google-Smtp-Source: ABdhPJzJEdgRD7OM7T75wCnwDyWz3IR/qibDggVnEsd5Dnnuh8oDLjBshSOYOf9PIPRHNPLdx3A2TwDhu02UUd3XJ7M=
-X-Received: by 2002:a37:6449:: with SMTP id y70mr951760qkb.435.1594846957080; 
- Wed, 15 Jul 2020 14:02:37 -0700 (PDT)
+ bh=Ugnd0TD/Wl8NWEtJPlvFS8k7ARKLAYTngfNEZV+I5ag=;
+ b=CI5g/jcjXCzmS9JaSo1HV+R5UjIaIBM6t/I6FxzpWFo0QpXVm6wiEXE9G9G8z9rbCB
+ vkmTVoc84AXyHuocMIFsqRRn7ml/7MfXF+IUyP24dEvtOcQNb3OvD8vU499q4sM9DAwN
+ 2v/42iQN+w8EIqcp83EE7eXnkbxUXYsTfY9OnRHrR/L4YUu9W9LbKuJMaSlf5PzsRAsP
+ mTm3dEk4r3iIJsmeVeYUEEQiiZhIKLOCROQxGFJj0qqacw/R+wU4jD9PsRsRh9xctyCR
+ AcIaigMyQUsIt42wCiATBM8OUpuguSXYJ62i3vFq7/ak473K2OIHAZE9qNjzGzKBmjD4
+ wy9g==
+X-Gm-Message-State: AOAM5300PZ/Z5D7daPI3ORe9Pw2FhAUQ16upHTno1/hAik7Gb0etK2SP
+ 3jVvJxF5YNl14us+7iYra+O87awuxx9UUn6kVFc=
+X-Google-Smtp-Source: ABdhPJzaG2j3u5HOq/5VT7IEEeRrfIHhN5avB0/42NLmHg5ZXy/jW2SUd+/bfNiLVKPX9lyEfrDq0boR0FEuzfQdY3Y=
+X-Received: by 2002:ac8:346c:: with SMTP id v41mr1917214qtb.262.1594847555211; 
+ Wed, 15 Jul 2020 14:12:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
  <CAA85sZua6Q8UR7TfCGO0bV=VU0gKtqj-8o_mqH38RpKrwYZGtg@mail.gmail.com>
  <20200715133136.5f63360c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20200715133136.5f63360c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAA85sZu09Z4gydJ8rAO_Ey0zqx-8Lg28=fBJ=FxFnp6cetNd3g@mail.gmail.com>
+In-Reply-To: <CAA85sZu09Z4gydJ8rAO_Ey0zqx-8Lg28=fBJ=FxFnp6cetNd3g@mail.gmail.com>
 From: Ian Kumlien <ian.kumlien@gmail.com>
-Date: Wed, 15 Jul 2020 23:02:26 +0200
-Message-ID: <CAA85sZu09Z4gydJ8rAO_Ey0zqx-8Lg28=fBJ=FxFnp6cetNd3g@mail.gmail.com>
+Date: Wed, 15 Jul 2020 23:12:23 +0200
+Message-ID: <CAA85sZtjCW2Yg+tXPgYyoFA5BKAVZC8kVKG=6SiR64c8ur8UcQ@mail.gmail.com>
 To: Jakub Kicinski <kuba@kernel.org>
 Subject: Re: [Intel-wired-lan] NAT performance issue 944mbit -> ~40mbit
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -88,43 +89,48 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jul 15, 2020 at 10:31 PM Jakub Kicinski <kuba@kernel.org> wrote:
-> On Wed, 15 Jul 2020 22:05:58 +0200 Ian Kumlien wrote:
-> > After a  lot of debugging it turns out that the bug is in igb...
+On Wed, Jul 15, 2020 at 11:02 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> On Wed, Jul 15, 2020 at 10:31 PM Jakub Kicinski <kuba@kernel.org> wrote:
+> > On Wed, 15 Jul 2020 22:05:58 +0200 Ian Kumlien wrote:
+> > > After a  lot of debugging it turns out that the bug is in igb...
+> > >
+> > > driver: igb
+> > > version: 5.6.0-k
+> > > firmware-version:  0. 6-1
+> > >
+> > > 03:00.0 Ethernet controller: Intel Corporation I211 Gigabit Network
+> > > Connection (rev 03)
 > >
-> > driver: igb
-> > version: 5.6.0-k
-> > firmware-version:  0. 6-1
+> > Unclear to me what you're actually reporting. Is this a regression
+> > after a kernel upgrade? Compared to no NAT?
+>
+> It only happens on "internet links"
+>
+> Lets say that A is client with ibg driver, B is a firewall running NAT
+> with ixgbe drivers, C is another local node with igb and
+> D is a remote node with a bridge backed by a bnx2 interface.
+>
+> A -> B -> C is ok (B and C is on the same switch)
+>
+> A -> B -> D -- 32-40mbit
+>
+> B -> D 944 mbit
+> C -> D 944 mbit
+>
+> A' -> D ~933 mbit (A with realtek nic -- also link is not idle atm)
+
+This should of course be A' -> B -> D
+
+Sorry, I've been scratching my head for about a week...
+
+> Can it be a timing issue? this is on a AMD Ryzen 9 system - I have
+> tcpdumps but i doubt that they'll help...
+>
+> > > It's interesting that it only seems to happen on longer links... Any clues?
 > >
-> > 03:00.0 Ethernet controller: Intel Corporation I211 Gigabit Network
-> > Connection (rev 03)
+> > Links as in with longer cables?
 >
-> Unclear to me what you're actually reporting. Is this a regression
-> after a kernel upgrade? Compared to no NAT?
-
-It only happens on "internet links"
-
-Lets say that A is client with ibg driver, B is a firewall running NAT
-with ixgbe drivers, C is another local node with igb and
-D is a remote node with a bridge backed by a bnx2 interface.
-
-A -> B -> C is ok (B and C is on the same switch)
-
-A -> B -> D -- 32-40mbit
-
-B -> D 944 mbit
-C -> D 944 mbit
-
-A' -> D ~933 mbit (A with realtek nic -- also link is not idle atm)
-
-Can it be a timing issue? this is on a AMD Ryzen 9 system - I have
-tcpdumps but i doubt that they'll help...
-
-> > It's interesting that it only seems to happen on longer links... Any clues?
->
-> Links as in with longer cables?
-
-Longer links, as in more hops and unknown (in this case Juniper) switches/boxes
+> Longer links, as in more hops and unknown (in this case Juniper) switches/boxes
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
