@@ -1,60 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 156DB222408
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 15:36:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97B572226B2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 17:18:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id AE52523280;
-	Thu, 16 Jul 2020 13:36:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5411387093;
+	Thu, 16 Jul 2020 15:18:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WZRI56Il9I-s; Thu, 16 Jul 2020 13:36:14 +0000 (UTC)
+	with ESMTP id o0ZzPBVK2dJL; Thu, 16 Jul 2020 15:18:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 0DA48220DD;
-	Thu, 16 Jul 2020 13:36:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4BC04871C6;
+	Thu, 16 Jul 2020 15:18:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 40BA61BF3EE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:36:03 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 58F791BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 15:18:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3D17C8A689
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:36:03 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 53FB08B2EF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 15:18:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dR4BievlZtT1 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jul 2020 13:36:01 +0000 (UTC)
+ with ESMTP id eFIB6O6LAP-f for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jul 2020 15:18:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1B0D38A641
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:36:01 +0000 (UTC)
-IronPort-SDR: BQ7K0s+5GVnpAgAYOEgyOBlgJI1DXH32eN35maYJr7AyUqF528iKl4RB5+aev5M19xYHz97h4I
- 82NU+UMBcBsg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9683"; a="147366350"
-X-IronPort-AV: E=Sophos;i="5.75,359,1589266800"; d="scan'208";a="147366350"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2020 06:36:00 -0700
-IronPort-SDR: k0e98b3RUCzKgEMOy7sdMZrARy2m1lAGJYNnbOwQC/28eZGSfQv/fTZKKL6SpptjftR5KVsaOW
- xBm9mBP75V5g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,359,1589266800"; d="scan'208";a="460474477"
-Received: from dpdk51.sh.intel.com ([10.67.111.82])
- by orsmga005.jf.intel.com with ESMTP; 16 Jul 2020 06:35:59 -0700
-From: Qi Zhang <qi.z.zhang@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 16 Jul 2020 21:39:38 +0800
-Message-Id: <20200716133938.46921-17-qi.z.zhang@intel.com>
-X-Mailer: git-send-email 2.13.6
-In-Reply-To: <20200716133938.46921-1-qi.z.zhang@intel.com>
-References: <20200716133938.46921-1-qi.z.zhang@intel.com>
-Subject: [Intel-wired-lan] [PATCH S48 v6 16/16] ice: Check FDIR program
- status for AVF
+Received: from mail-io1-f66.google.com (mail-io1-f66.google.com
+ [209.85.166.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 20DB08B2EB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 15:18:38 +0000 (UTC)
+Received: by mail-io1-f66.google.com with SMTP id v8so6411034iox.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 08:18:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RyzY+5gEQGDrSvX3N3AxXjoBLxNOYeuEahQ6XTa2j2Y=;
+ b=HXvT4DFg0q/Zu/VGCJFCzF/oF5IsWEU3Iw/E9q56jldFJ6V/zErWVG55s0BwMWjuTM
+ xwJlXmQxdBEthRKgs5kObUkGKIYPXtCmnJ+oDTlE1J+DJWLQamKEjmKmIxRYMEFSkPj5
+ IcpHpw/O9gdif8ho9bHgyQhc72fJ38lQSm/QAa45Q7UDaA3xyRIVeQjoatgUH0UmG2IF
+ la4kbZ9yOgxDEI5wqlIGuY68wfmfal9eO86LzYB0zD6UHZoOpm/n8p6hz2hmpylfG2uB
+ HemugcNY+bsfpNKRvn7kczv/Lsdg7EciH0zcI/INBhJahOqSUsgONDikXZdFBGsc9vvW
+ 1IFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RyzY+5gEQGDrSvX3N3AxXjoBLxNOYeuEahQ6XTa2j2Y=;
+ b=HNFFr6YwlxZTFbLjAO0nCth184JKXIVUqEOMbM5Z7I1Q+zUkHMRfF4ZC0Agvg/+9q0
+ lAEHx4g8FQqtZyC2uee05+VJ0s+WnwbS8XbT13XOq5mNmLhvvn2KU57MpfJO1MlUvGC8
+ X9oKdA3eP852Xeoj0JJPMzM+kfQ+UOHh+SjbkIRPvJajNo9VP6cGfxJ0+Thdvj5KpJ5V
+ S+FBfiP7fJrjEHyPGD3ggsn7oh/OB263k9GotJJhPbEN+iGVk/ly7nHrVtbBL/cplYUL
+ ZMtY8kZKB6kKccmJAWnhLR9PHZcMfZHp+avH/D5IZu7VFXS0y5PaQRgxW068i8dCZ91F
+ PY6Q==
+X-Gm-Message-State: AOAM533uctnXZEw8fi9XmSoq7nhG1FX5RiqQhZ6ggScsNHUWZO2ZphDN
+ tUiXqLLaB9iIXRq2wPZxJbFLN8rirGpdiiBtH98=
+X-Google-Smtp-Source: ABdhPJwb4/2iMxBR2F5IBNjLXi0zHs/YHHnlvrs71CslMo+on9U+s9a8Qygkh8a13psvIUbH5JMpzAXCqPUkntZSdkw=
+X-Received: by 2002:a02:c888:: with SMTP id m8mr5448028jao.114.1594912716772; 
+ Thu, 16 Jul 2020 08:18:36 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
+ <CAA85sZua6Q8UR7TfCGO0bV=VU0gKtqj-8o_mqH38RpKrwYZGtg@mail.gmail.com>
+ <20200715133136.5f63360c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAA85sZu09Z4gydJ8rAO_Ey0zqx-8Lg28=fBJ=FxFnp6cetNd3g@mail.gmail.com>
+ <CAA85sZtjCW2Yg+tXPgYyoFA5BKAVZC8kVKG=6SiR64c8ur8UcQ@mail.gmail.com>
+ <20200715144017.47d06941@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAA85sZvnytPzpia_ROnkmJoZC8n4vUsrwTQh2UBs6u6g2Fgqxw@mail.gmail.com>
+ <CAKgT0UdwsmE=ygE2KObzM0z-0KgrPcr59JZzVk41F6-iqsSL+Q@mail.gmail.com>
+ <CAA85sZturDN7uOHMDhUnntM43PHjop=TNDb4qvEA2L=jdRa1MA@mail.gmail.com>
+ <CAKgT0Uf42EhnM+zPSb-oL1R8hmo0vEdssGztptbkWKoHXS7ygw@mail.gmail.com>
+ <CAA85sZtHNkocj840i0ohMVekh0B4byuojU02UunK_bR+LB1WiQ@mail.gmail.com>
+In-Reply-To: <CAA85sZtHNkocj840i0ohMVekh0B4byuojU02UunK_bR+LB1WiQ@mail.gmail.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Thu, 16 Jul 2020 08:18:25 -0700
+Message-ID: <CAKgT0UdDjabvShwDv0qiume=Q2RKGkm3JhPMZ+f8v5yO37ZLxA@mail.gmail.com>
+To: Ian Kumlien <ian.kumlien@gmail.com>
+Subject: Re: [Intel-wired-lan] NAT performance issue 944mbit -> ~40mbit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,756 +89,520 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: qi.z.zhang@intel.com
-MIME-Version: 1.0
+Cc: Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Linux Kernel Network Developers <netdev@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Enables returning FDIR completion status by checking the
-ctrl_vsi Rx queue descriptor value.
+On Wed, Jul 15, 2020 at 5:00 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+>
+> On Thu, Jul 16, 2020 at 1:42 AM Alexander Duyck
+> <alexander.duyck@gmail.com> wrote:
+> > On Wed, Jul 15, 2020 at 3:51 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > On Thu, Jul 16, 2020 at 12:32 AM Alexander Duyck
+> > > <alexander.duyck@gmail.com> wrote:
+> > > > On Wed, Jul 15, 2020 at 3:00 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > > > On Wed, Jul 15, 2020 at 11:40 PM Jakub Kicinski <kuba@kernel.org> wrote:
+> > > > > > On Wed, 15 Jul 2020 23:12:23 +0200 Ian Kumlien wrote:
+> > > > > > > On Wed, Jul 15, 2020 at 11:02 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > > > > > > On Wed, Jul 15, 2020 at 10:31 PM Jakub Kicinski <kuba@kernel.org> wrote:
+> > > > > > > > > On Wed, 15 Jul 2020 22:05:58 +0200 Ian Kumlien wrote:
+> > > > > > > > > > After a  lot of debugging it turns out that the bug is in igb...
+> > > > > > > > > >
+> > > > > > > > > > driver: igb
+> > > > > > > > > > version: 5.6.0-k
+> > > > > > > > > > firmware-version:  0. 6-1
+> > > > > > > > > >
+> > > > > > > > > > 03:00.0 Ethernet controller: Intel Corporation I211 Gigabit Network
+> > > > > > > > > > Connection (rev 03)
+> > > > > > > > >
+> > > > > > > > > Unclear to me what you're actually reporting. Is this a regression
+> > > > > > > > > after a kernel upgrade? Compared to no NAT?
+> > > > > > > >
+> > > > > > > > It only happens on "internet links"
+> > > > > > > >
+> > > > > > > > Lets say that A is client with ibg driver, B is a firewall running NAT
+> > > > > > > > with ixgbe drivers, C is another local node with igb and
+> > > > > > > > D is a remote node with a bridge backed by a bnx2 interface.
+> > > > > > > >
+> > > > > > > > A -> B -> C is ok (B and C is on the same switch)
+> > > > > > > >
+> > > > > > > > A -> B -> D -- 32-40mbit
+> > > > > > > >
+> > > > > > > > B -> D 944 mbit
+> > > > > > > > C -> D 944 mbit
+> > > > > > > >
+> > > > > > > > A' -> D ~933 mbit (A with realtek nic -- also link is not idle atm)
+> > > > > > >
+> > > > > > > This should of course be A' -> B -> D
+> > > > > > >
+> > > > > > > Sorry, I've been scratching my head for about a week...
+> > > > > >
+> > > > > > Hm, only thing that comes to mind if A' works reliably and A doesn't is
+> > > > > > that A has somehow broken TCP offloads. Could you try disabling things
+> > > > > > via ethtool -K and see if those settings make a difference?
+> > > > >
+> > > > > It's a bit hard since it works like this, turned tso off:
+> > > > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > > > > [  5]   0.00-1.00   sec   108 MBytes   902 Mbits/sec    0    783 KBytes
+> > > > > [  5]   1.00-2.00   sec   110 MBytes   923 Mbits/sec   31    812 KBytes
+> > > > > [  5]   2.00-3.00   sec   111 MBytes   933 Mbits/sec   92    772 KBytes
+> > > > > [  5]   3.00-4.00   sec   110 MBytes   923 Mbits/sec    0    834 KBytes
+> > > > > [  5]   4.00-5.00   sec   111 MBytes   933 Mbits/sec   60    823 KBytes
+> > > > > [  5]   5.00-6.00   sec   110 MBytes   923 Mbits/sec   31    789 KBytes
+> > > > > [  5]   6.00-7.00   sec   111 MBytes   933 Mbits/sec    0    786 KBytes
+> > > > > [  5]   7.00-8.00   sec   110 MBytes   923 Mbits/sec    0    761 KBytes
+> > > > > [  5]   8.00-9.00   sec   110 MBytes   923 Mbits/sec    0    772 KBytes
+> > > > > [  5]   9.00-10.00  sec   109 MBytes   912 Mbits/sec    0    868 KBytes
+> > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > > > [ ID] Interval           Transfer     Bitrate         Retr
+> > > > > [  5]   0.00-10.00  sec  1.07 GBytes   923 Mbits/sec  214             sender
+> > > > > [  5]   0.00-10.00  sec  1.07 GBytes   920 Mbits/sec                  receiver
+> > > > >
+> > > > > Continued running tests:
+> > > > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > > > > [  5]   0.00-1.00   sec  5.82 MBytes  48.8 Mbits/sec    0   82.0 KBytes
+> > > > > [  5]   1.00-2.00   sec  4.97 MBytes  41.7 Mbits/sec    0    130 KBytes
+> > > > > [  5]   2.00-3.00   sec  5.28 MBytes  44.3 Mbits/sec    0   99.0 KBytes
+> > > > > [  5]   3.00-4.00   sec  5.28 MBytes  44.3 Mbits/sec    0    105 KBytes
+> > > > > [  5]   4.00-5.00   sec  5.28 MBytes  44.3 Mbits/sec    0    122 KBytes
+> > > > > [  5]   5.00-6.00   sec  5.28 MBytes  44.3 Mbits/sec    0   82.0 KBytes
+> > > > > [  5]   6.00-7.00   sec  5.28 MBytes  44.3 Mbits/sec    0   79.2 KBytes
+> > > > > [  5]   7.00-8.00   sec  5.28 MBytes  44.3 Mbits/sec    0    110 KBytes
+> > > > > [  5]   8.00-9.00   sec  5.28 MBytes  44.3 Mbits/sec    0    156 KBytes
+> > > > > [  5]   9.00-10.00  sec  5.28 MBytes  44.3 Mbits/sec    0   87.7 KBytes
+> > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > > > [ ID] Interval           Transfer     Bitrate         Retr
+> > > > > [  5]   0.00-10.00  sec  53.0 MBytes  44.5 Mbits/sec    0             sender
+> > > > > [  5]   0.00-10.00  sec  52.5 MBytes  44.1 Mbits/sec                  receiver
+> > > > >
+> > > > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > > > > [  5]   0.00-1.00   sec  7.08 MBytes  59.4 Mbits/sec    0    156 KBytes
+> > > > > [  5]   1.00-2.00   sec  5.97 MBytes  50.0 Mbits/sec    0    110 KBytes
+> > > > > [  5]   2.00-3.00   sec  4.97 MBytes  41.7 Mbits/sec    0    124 KBytes
+> > > > > [  5]   3.00-4.00   sec  5.47 MBytes  45.9 Mbits/sec    0   96.2 KBytes
+> > > > > [  5]   4.00-5.00   sec  5.47 MBytes  45.9 Mbits/sec    0    158 KBytes
+> > > > > [  5]   5.00-6.00   sec  4.97 MBytes  41.7 Mbits/sec    0   70.7 KBytes
+> > > > > [  5]   6.00-7.00   sec  5.47 MBytes  45.9 Mbits/sec    0    113 KBytes
+> > > > > [  5]   7.00-8.00   sec  5.47 MBytes  45.9 Mbits/sec    0   96.2 KBytes
+> > > > > [  5]   8.00-9.00   sec  4.97 MBytes  41.7 Mbits/sec    0   84.8 KBytes
+> > > > > [  5]   9.00-10.00  sec  5.47 MBytes  45.9 Mbits/sec    0    116 KBytes
+> > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > > > [ ID] Interval           Transfer     Bitrate         Retr
+> > > > > [  5]   0.00-10.00  sec  55.3 MBytes  46.4 Mbits/sec    0             sender
+> > > > > [  5]   0.00-10.00  sec  53.9 MBytes  45.2 Mbits/sec                  receiver
+> > > > >
+> > > > > And the low bandwidth continues with:
+> > > > > ethtool -k enp3s0 |grep ": on"
+> > > > > rx-vlan-offload: on
+> > > > > tx-vlan-offload: on [requested off]
+> > > > > highdma: on [fixed]
+> > > > > rx-vlan-filter: on [fixed]
+> > > > > tx-gre-segmentation: on
+> > > > > tx-gre-csum-segmentation: on
+> > > > > tx-ipxip4-segmentation: on
+> > > > > tx-ipxip6-segmentation: on
+> > > > > tx-udp_tnl-segmentation: on
+> > > > > tx-udp_tnl-csum-segmentation: on
+> > > > > tx-gso-partial: on
+> > > > > tx-udp-segmentation: on
+> > > > > hw-tc-offload: on
+> > > > >
+> > > > > Can't quite find how to turn those off since they aren't listed in
+> > > > > ethtool (since the text is not what you use to enable/disable)
+> > > >
+> > > > To disable them you would just repeat the same string in the display
+> > > > string. So it should just be "ethtool -K enp3s0 tx-gso-partial off"
+> > > > and that would turn off a large chunk of them as all the encapsulated
+> > > > support requires gso partial support.
+> > >
+> > >  ethtool -k enp3s0 |grep ": on"
+> > > highdma: on [fixed]
+> > > rx-vlan-filter: on [fixed]
+> > > ---
+> > > And then back to back:
+> > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > > [  5]   0.00-1.00   sec  4.91 MBytes  41.2 Mbits/sec    0   45.2 KBytes
+> > > [  5]   1.00-2.00   sec  4.47 MBytes  37.5 Mbits/sec    0   52.3 KBytes
+> > > [  5]   2.00-3.00   sec  4.47 MBytes  37.5 Mbits/sec    0   42.4 KBytes
+> > > [  5]   3.00-4.00   sec  4.47 MBytes  37.5 Mbits/sec    0    141 KBytes
+> > > [  5]   4.00-5.00   sec   111 MBytes   928 Mbits/sec   63    764 KBytes
+> > > [  5]   5.00-6.00   sec  86.2 MBytes   724 Mbits/sec    0    744 KBytes
+> > > [  5]   6.00-7.00   sec  98.8 MBytes   828 Mbits/sec   61    769 KBytes
+> > > [  5]   7.00-8.00   sec   110 MBytes   923 Mbits/sec    0    749 KBytes
+> > > [  5]   8.00-9.00   sec   110 MBytes   923 Mbits/sec    0    741 KBytes
+> > > [  5]   9.00-10.00  sec   110 MBytes   923 Mbits/sec   31    761 KBytes
+> > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > [ ID] Interval           Transfer     Bitrate         Retr
+> > > [  5]   0.00-10.00  sec   644 MBytes   540 Mbits/sec  155             sender
+> > > [  5]   0.00-10.01  sec   641 MBytes   537 Mbits/sec                  receiver
+> > >
+> > > and we're back at the not working bit:
+> > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > > [  5]   0.00-1.00   sec  4.84 MBytes  40.6 Mbits/sec    0   42.4 KBytes
+> > > [  5]   1.00-2.00   sec  4.60 MBytes  38.6 Mbits/sec    0   42.4 KBytes
+> > > [  5]   2.00-3.00   sec  4.23 MBytes  35.4 Mbits/sec    0   42.4 KBytes
+> > > [  5]   3.00-4.00   sec  4.47 MBytes  37.5 Mbits/sec    0   67.9 KBytes
+> > > [  5]   4.00-5.00   sec  4.47 MBytes  37.5 Mbits/sec    0   42.4 KBytes
+> > > [  5]   5.00-6.00   sec  4.23 MBytes  35.4 Mbits/sec    0   42.4 KBytes
+> > > [  5]   6.00-7.00   sec  4.23 MBytes  35.4 Mbits/sec    0   42.4 KBytes
+> > > [  5]   7.00-8.00   sec  4.47 MBytes  37.5 Mbits/sec    0   67.9 KBytes
+> > > [  5]   8.00-9.00   sec  4.47 MBytes  37.5 Mbits/sec    0   53.7 KBytes
+> > > [  5]   9.00-10.00  sec  4.47 MBytes  37.5 Mbits/sec    0   79.2 KBytes
+> > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > [ ID] Interval           Transfer     Bitrate         Retr
+> > > [  5]   0.00-10.00  sec  44.5 MBytes  37.3 Mbits/sec    0             sender
+> > > [  5]   0.00-10.00  sec  43.9 MBytes  36.8 Mbits/sec                  receiver
+> > >
+> > > > > I was hoping that you'd have a clue of something that might introduce
+> > > > > a regression - ie specific patches to try to revert
+> > > > >
+> > > > > Btw, the same issue applies to udp as werll
+> > > > >
+> > > > > [ ID] Interval           Transfer     Bitrate         Total Datagrams
+> > > > > [  5]   0.00-1.00   sec  6.77 MBytes  56.8 Mbits/sec  4900
+> > > > > [  5]   1.00-2.00   sec  4.27 MBytes  35.8 Mbits/sec  3089
+> > > > > [  5]   2.00-3.00   sec  4.20 MBytes  35.2 Mbits/sec  3041
+> > > > > [  5]   3.00-4.00   sec  4.30 MBytes  36.1 Mbits/sec  3116
+> > > > > [  5]   4.00-5.00   sec  4.24 MBytes  35.6 Mbits/sec  3070
+> > > > > [  5]   5.00-6.00   sec  4.21 MBytes  35.3 Mbits/sec  3047
+> > > > > [  5]   6.00-7.00   sec  4.29 MBytes  36.0 Mbits/sec  3110
+> > > > > [  5]   7.00-8.00   sec  4.28 MBytes  35.9 Mbits/sec  3097
+> > > > > [  5]   8.00-9.00   sec  4.25 MBytes  35.6 Mbits/sec  3075
+> > > > > [  5]   9.00-10.00  sec  4.20 MBytes  35.2 Mbits/sec  3039
+> > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > > > [ ID] Interval           Transfer     Bitrate         Jitter
+> > > > > Lost/Total Datagrams
+> > > > > [  5]   0.00-10.00  sec  45.0 MBytes  37.7 Mbits/sec  0.000 ms
+> > > > > 0/32584 (0%)  sender
+> > > > > [  5]   0.00-10.00  sec  45.0 MBytes  37.7 Mbits/sec  0.037 ms
+> > > > > 0/32573 (0%)  receiver
+> > > > >
+> > > > > vs:
+> > > > >
+> > > > > [ ID] Interval           Transfer     Bitrate         Total Datagrams
+> > > > > [  5]   0.00-1.00   sec   114 MBytes   954 Mbits/sec  82342
+> > > > > [  5]   1.00-2.00   sec   114 MBytes   955 Mbits/sec  82439
+> > > > > [  5]   2.00-3.00   sec   114 MBytes   956 Mbits/sec  82507
+> > > > > [  5]   3.00-4.00   sec   114 MBytes   955 Mbits/sec  82432
+> > > > > [  5]   4.00-5.00   sec   114 MBytes   956 Mbits/sec  82535
+> > > > > [  5]   5.00-6.00   sec   114 MBytes   953 Mbits/sec  82240
+> > > > > [  5]   6.00-7.00   sec   114 MBytes   956 Mbits/sec  82512
+> > > > > [  5]   7.00-8.00   sec   114 MBytes   956 Mbits/sec  82503
+> > > > > [  5]   8.00-9.00   sec   114 MBytes   956 Mbits/sec  82532
+> > > > > [  5]   9.00-10.00  sec   114 MBytes   956 Mbits/sec  82488
+> > > > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > > > [ ID] Interval           Transfer     Bitrate         Jitter
+> > > > > Lost/Total Datagrams
+> > > > > [  5]   0.00-10.00  sec  1.11 GBytes   955 Mbits/sec  0.000 ms
+> > > > > 0/824530 (0%)  sender
+> > > > > [  5]   0.00-10.01  sec  1.11 GBytes   949 Mbits/sec  0.014 ms
+> > > > > 4756/824530 (0.58%)  receiver
+> > > >
+> > > > The fact that it is impacting UDP seems odd. I wonder if we don't have
+> > > > a qdisc somewhere that is misbehaving and throttling the Tx. Either
+> > > > that or I wonder if we are getting spammed with flow control frames.
+> > >
+> > > it sometimes works, it looks like the cwindow just isn't increased -
+> > > that's where i started...
+> > >
+> > > Example:
+> > > [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> > > [  5]   0.00-1.00   sec  4.86 MBytes  40.8 Mbits/sec    0   50.9 KBytes
+> > > [  5]   1.00-2.00   sec  4.66 MBytes  39.1 Mbits/sec    0   65.0 KBytes
+> > > [  5]   2.00-3.00   sec  4.29 MBytes  36.0 Mbits/sec    0   42.4 KBytes
+> > > [  5]   3.00-4.00   sec  4.66 MBytes  39.1 Mbits/sec    0   42.4 KBytes
+> > > [  5]   4.00-5.00   sec  23.1 MBytes   194 Mbits/sec    0   1.07 MBytes
+> > > [  5]   5.00-6.00   sec   110 MBytes   923 Mbits/sec    0    761 KBytes
+> > > [  5]   6.00-7.00   sec  98.8 MBytes   828 Mbits/sec   60    806 KBytes
+> > > [  5]   7.00-8.00   sec  82.5 MBytes   692 Mbits/sec    0    812 KBytes
+> > > [  5]   8.00-9.00   sec   110 MBytes   923 Mbits/sec   92    761 KBytes
+> > > [  5]   9.00-10.00  sec   111 MBytes   933 Mbits/sec    0    755 KBytes
+> > > - - - - - - - - - - - - - - - - - - - - - - - - -
+> > > [ ID] Interval           Transfer     Bitrate         Retr
+> > > [  5]   0.00-10.00  sec   554 MBytes   465 Mbits/sec  152             sender
+> > > [  5]   0.00-10.00  sec   550 MBytes   461 Mbits/sec                  receiver
+> > >
+> > > > It would be useful to include the output of just calling "ethtool
+> > > > enp3s0" on the interface to verify the speed, "ethtool -a enp3s0" to
+> > > > verify flow control settings, and "ethtool -S enp3s0 | grep -v :\ 0"
+> > > > to output the statistics and dump anything that isn't zero.
+> > >
+> > > ethtool enp3s0
+> > > Settings for enp3s0:
+> > > Supported ports: [ TP ]
+> > > Supported link modes:   10baseT/Half 10baseT/Full
+> > >                         100baseT/Half 100baseT/Full
+> > >                         1000baseT/Full
+> > > Supported pause frame use: Symmetric
+> > > Supports auto-negotiation: Yes
+> > > Supported FEC modes: Not reported
+> > > Advertised link modes:  10baseT/Half 10baseT/Full
+> > >                         100baseT/Half 100baseT/Full
+> > >                         1000baseT/Full
+> > > Advertised pause frame use: Symmetric
+> > > Advertised auto-negotiation: Yes
+> > > Advertised FEC modes: Not reported
+> > > Speed: 1000Mb/s
+> > > Duplex: Full
+> > > Auto-negotiation: on
+> > > Port: Twisted Pair
+> > > PHYAD: 1
+> > > Transceiver: internal
+> > > MDI-X: off (auto)
+> > > Supports Wake-on: pumbg
+> > > Wake-on: g
+> > >         Current message level: 0x00000007 (7)
+> > >                                drv probe link
+> > > Link detected: yes
+> > > ---
+> > > ethtool -a enp3s0
+> > > Pause parameters for enp3s0:
+> > > Autonegotiate: on
+> > > RX: on
+> > > TX: off
+> > > ---
+> > > ethtool -S enp3s0 |grep  -v :\ 0
+> > > NIC statistics:
+> > >      rx_packets: 15920618
+> > >      tx_packets: 17846725
+> > >      rx_bytes: 15676264423
+> > >      tx_bytes: 19925010639
+> > >      rx_broadcast: 119553
+> > >      tx_broadcast: 497
+> > >      rx_multicast: 330193
+> > >      tx_multicast: 18190
+> > >      multicast: 330193
+> > >      rx_missed_errors: 270102
+> > >      rx_long_length_errors: 6
+> > >      tx_tcp_seg_good: 1342561
+> > >      rx_long_byte_count: 15676264423
+> > >      rx_errors: 6
+> > >      rx_length_errors: 6
+> > >      rx_fifo_errors: 270102
+> > >      tx_queue_0_packets: 7651168
+> > >      tx_queue_0_bytes: 7823281566
+> > >      tx_queue_0_restart: 4920
+> > >      tx_queue_1_packets: 10195557
+> > >      tx_queue_1_bytes: 12027522118
+> > >      tx_queue_1_restart: 12718
+> > >      rx_queue_0_packets: 15920618
+> > >      rx_queue_0_bytes: 15612581951
+> > >      rx_queue_0_csum_err: 76
+> > > (I've only run two runs since i reenabled the interface)
+> >
+> > So I am seeing three things here.
+> >
+> > The rx_long_length_errors are usually due to an MTU mismatch. Do you
+> > have something on the network that is using jumbo frames, or is the
+> > MTU on the NIC set to something smaller than what is supported on the
+> > network?
+>
+> I'm using jumbo frames on the local network, internet side is the
+> normal 1500 bytes mtu though
+>
+> > You are getting rx_missed_errors, that would seem to imply that the
+> > DMA is not able to keep up. We may want to try disabling the L1 to see
+> > if we get any boost from doing that.
+>
+> It used to work, I don't do benchmarks all the time and sometimes the first
+> benchmarks turn out fine... so it's hard to say when this started happening...
+>
+> It could also be related to a bios upgrade, but I'm pretty sure I did
+> successful benchmarks after that...
+>
+> How do I disable the l1? just echo 0 >
+> /sys/bus/pci/drivers/igb/0000\:03\:00.0/link/l1_aspm ?
+>
+> > The last bit is that queue 0 is seeing packets with bad checksums. You
+> > might want to run some tests and see where the bad checksums are
+> > coming from. If they are being detected from a specific NIC such as
+> > the ixgbe in your example it might point to some sort of checksum
+> > error being created as a result of the NAT translation.
+>
+> But that should also affect A' and the A -> B -> C case, which it doesn't...
+>
+> It only seems to happen with higher rtt (6 hops, sub 3 ms in this case
+> but still high enough somehow)
+>
+> > > ---
+> > >
+> > > > > lspci -s 03:00.0  -vvv
+> > > > > 03:00.0 Ethernet controller: Intel Corporation I211 Gigabit Network
+> > > > > Connection (rev 03)
+> > > > > Subsystem: ASUSTeK Computer Inc. I211 Gigabit Network Connection
+> > > > > Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr-
+> > > > > Stepping- SERR- FastB2B- DisINTx+
+> > > > > Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort-
+> > > > > <TAbort- <MAbort- >SERR- <PERR- INTx-
+> > > > > Latency: 0
+> > > > > Interrupt: pin A routed to IRQ 57
+> > > > > IOMMU group: 20
+> > > > > Region 0: Memory at fc900000 (32-bit, non-prefetchable) [size=128K]
+> > > > > Region 2: I/O ports at e000 [size=32]
+> > > > > Region 3: Memory at fc920000 (32-bit, non-prefetchable) [size=16K]
+> > > > > Capabilities: [40] Power Management version 3
+> > > > > Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA PME(D0+,D1-,D2-,D3hot+,D3cold+)
+> > > > > Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1 PME-
+> > > > > Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+> > > > > Address: 0000000000000000  Data: 0000
+> > > > > Masking: 00000000  Pending: 00000000
+> > > > > Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
+> > > > > Vector table: BAR=3 offset=00000000
+> > > > > PBA: BAR=3 offset=00002000
+> > > > > Capabilities: [a0] Express (v2) Endpoint, MSI 00
+> > > > > DevCap: MaxPayload 512 bytes, PhantFunc 0, Latency L0s <512ns, L1 <64us
+> > > > > ExtTag- AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0.000W
+> > > > > DevCtl: CorrErr+ NonFatalErr+ FatalErr+ UnsupReq+
+> > > > > RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+ FLReset-
+> > > > > MaxPayload 128 bytes, MaxReadReq 512 bytes
+> > > > > DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr+ TransPend-
+> > > > > LnkCap: Port #3, Speed 2.5GT/s, Width x1, ASPM L0s L1, Exit Latency
+> > > > > L0s <2us, L1 <16us
+> > > > > ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+> > > > > LnkCtl: ASPM L1 Enabled; RCB 64 bytes, Disabled- CommClk+
+> > > > > ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+> > > > > LnkSta: Speed 2.5GT/s (ok), Width x1 (ok)
+> > > > > TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+> > > >
+> > > > PCIe wise the connection is going to be pretty tight in terms of
+> > > > bandwidth. It looks like we have 2.5GT/s with only a single lane of
+> > > > PCIe. In addition we are running with ASPM enabled so that means that
+> > > > if we don't have enough traffic we are shutting off the one PCIe lane
+> > > > we have so if we are getting bursty traffic that can get ugly.
+> > >
+> > > Humm... is there a way to force disable ASPM in sysfs?
+> >
+> > Actually the easiest way to do this is to just use setpci.
+> >
+> > You should be able to dump the word containing the setting via:
+> > # setpci -s 3:00.0 0xB0.w
+> > 0042
+> > # setpci -s 3:00.0 0xB0.w=0040
+> >
+> > Basically what you do is clear the lower 3 bits of the value so in
+> > this case that means replacing the 2 with a 0 based on the output of
+> > the first command.
+>
+> Well... I'll be damned... I used to force enable ASPM... this must be
+> related to the change in PCIe bus ASPM
+> Perhaps disable ASPM if there is only one link?
 
-To enable returning FDIR completion status from ctrl_vsi Rx queue,
-COMP_Queue and COMP_Report of FDIR filter programming descriptor
-needs to be properly configured. After program request sent to ctrl_vsi
-Tx queue, ctrl_vsi Rx queue interrupt will be triggered and
-completion status will be returned.
+Is there any specific reason why you are enabling ASPM? Is this system
+a laptop where you are trying to conserve power when on battery? If
+not disabling it probably won't hurt things too much since the power
+consumption for a 2.5GT/s link operating in a width of one shouldn't
+bee too high. Otherwise you are likely going to end up paying the
+price for getting the interface out of L1 when the traffic goes idle
+so you are going to see flows that get bursty paying a heavy penalty
+when they start dropping packets.
 
-Driver will first issue request in ice_vc_fdir_add_fltr(), then
-pass FDIR context to the background task in interrupt service routine
-ice_vc_fdir_irq_handler() and finally deal with them in
-ice_flush_fdir_ctx(). ice_flush_fdir_ctx() will check the descriptor's
-value, fdir context, and then send back virtual channel message to VF
-by calling ice_vc_add_fdir_fltr_post(). An additional timer will be
-setup in case of hardware interrupt timeout.
+It is also possible this could be something that changed with the
+physical PCIe link. Basically L1 works by powering down the link when
+idle, and then powering it back up when there is activity. The problem
+is bringing it back up can sometimes be a challenge when the physical
+link starts to go faulty. I know I have seen that in some cases it can
+even result in the device falling off of the PCIe bus if the link
+training fails.
 
-Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h               |   1 +
- drivers/net/ethernet/intel/ice/ice_hw_autogen.h    |   3 +
- drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h     |  20 +
- drivers/net/ethernet/intel/ice/ice_main.c          |   2 +
- drivers/net/ethernet/intel/ice/ice_txrx.c          |   5 +
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 494 ++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h |  27 +-
- 7 files changed, 536 insertions(+), 16 deletions(-)
+> [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> [  5]   0.00-1.00   sec   113 MBytes   950 Mbits/sec   31    710 KBytes
+> [  5]   1.00-2.00   sec   110 MBytes   923 Mbits/sec  135    626 KBytes
+> [  5]   2.00-3.00   sec   112 MBytes   944 Mbits/sec   18    713 KBytes
+> [  5]   3.00-4.00   sec   111 MBytes   933 Mbits/sec    0    798 KBytes
+> [  5]   4.00-5.00   sec   111 MBytes   933 Mbits/sec    0    721 KBytes
+> [  5]   5.00-6.00   sec   112 MBytes   944 Mbits/sec   31    800 KBytes
+> [  5]   6.00-7.00   sec   111 MBytes   933 Mbits/sec    0    730 KBytes
+> [  5]   7.00-8.00   sec   111 MBytes   933 Mbits/sec   19    730 KBytes
+> [  5]   8.00-9.00   sec   111 MBytes   933 Mbits/sec    0    701 KBytes
+> [  5]   9.00-10.00  sec   112 MBytes   944 Mbits/sec   12    701 KBytes
+> - - - - - - - - - - - - - - - - - - - - - - - - -
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  1.09 GBytes   937 Mbits/sec  246             sender
+> [  5]   0.00-10.01  sec  1.09 GBytes   933 Mbits/sec                  receiver
+>
+> [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> [  5]   0.00-1.00   sec   114 MBytes   956 Mbits/sec    0    749 KBytes
+> [  5]   1.00-2.00   sec   111 MBytes   933 Mbits/sec   30    766 KBytes
+> [  5]   2.00-3.00   sec   112 MBytes   944 Mbits/sec    7    749 KBytes
+> [  5]   3.00-4.00   sec   111 MBytes   933 Mbits/sec   11    707 KBytes
+> [  5]   4.00-5.00   sec   111 MBytes   933 Mbits/sec    2    699 KBytes
+> [  5]   5.00-6.00   sec   111 MBytes   933 Mbits/sec    8    699 KBytes
+> [  5]   6.00-7.00   sec   112 MBytes   944 Mbits/sec    1    953 KBytes
+> [  5]   7.00-8.00   sec   111 MBytes   933 Mbits/sec    0    701 KBytes
+> [  5]   8.00-9.00   sec   111 MBytes   933 Mbits/sec   26    707 KBytes
+> [  5]   9.00-10.00  sec   112 MBytes   944 Mbits/sec    2   1.07 MBytes
+> - - - - - - - - - - - - - - - - - - - - - - - - -
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  1.09 GBytes   939 Mbits/sec   87             sender
+> [  5]   0.00-10.00  sec  1.09 GBytes   934 Mbits/sec                  receiver
+>
+> [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> [  5]   0.00-1.00   sec   114 MBytes   953 Mbits/sec   16    908 KBytes
+> [  5]   1.00-2.00   sec   112 MBytes   944 Mbits/sec    0    693 KBytes
+> [  5]   2.00-3.00   sec   111 MBytes   933 Mbits/sec    0    713 KBytes
+> [  5]   3.00-4.00   sec   111 MBytes   933 Mbits/sec    0    687 KBytes
+> [  5]   4.00-5.00   sec   112 MBytes   944 Mbits/sec   15    687 KBytes
+> [  5]   5.00-6.00   sec   111 MBytes   933 Mbits/sec    2    888 KBytes
+> [  5]   6.00-7.00   sec   111 MBytes   933 Mbits/sec   17    696 KBytes
+> [  5]   7.00-8.00   sec   111 MBytes   933 Mbits/sec    0    758 KBytes
+> [  5]   8.00-9.00   sec   111 MBytes   933 Mbits/sec   31    749 KBytes
+> [  5]   9.00-10.00  sec   112 MBytes   944 Mbits/sec    0    792 KBytes
+> - - - - - - - - - - - - - - - - - - - - - - - - -
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  1.09 GBytes   938 Mbits/sec   81             sender
+> [  5]   0.00-10.00  sec  1.09 GBytes   934 Mbits/sec                  receiver
+>
+> [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+> [  5]   0.00-1.00   sec   114 MBytes   956 Mbits/sec    0    747 KBytes
+> [  5]   1.00-2.00   sec   111 MBytes   933 Mbits/sec    0    744 KBytes
+> [  5]   2.00-3.00   sec   112 MBytes   944 Mbits/sec   12   1.18 MBytes
+> [  5]   3.00-4.00   sec   111 MBytes   933 Mbits/sec    2    699 KBytes
+> [  5]   4.00-5.00   sec   111 MBytes   933 Mbits/sec   28    699 KBytes
+> [  5]   5.00-6.00   sec   112 MBytes   944 Mbits/sec    0    684 KBytes
+> [  5]   6.00-7.00   sec   111 MBytes   933 Mbits/sec    0    741 KBytes
+> [  5]   7.00-8.00   sec   111 MBytes   933 Mbits/sec    3    687 KBytes
+> [  5]   8.00-9.00   sec   111 MBytes   933 Mbits/sec   22    699 KBytes
+> [  5]   9.00-10.00  sec   111 MBytes   933 Mbits/sec   11    707 KBytes
+> - - - - - - - - - - - - - - - - - - - - - - - - -
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  1.09 GBytes   938 Mbits/sec   78             sender
+> [  5]   0.00-10.01  sec  1.09 GBytes   934 Mbits/sec                  receiver
+> ---
+>
+> ethtool -S enp3s0 |grep -v ": 0"
+> NIC statistics:
+>      rx_packets: 16303520
+>      tx_packets: 21602840
+>      rx_bytes: 15711958157
+>      tx_bytes: 25599009212
+>      rx_broadcast: 122212
+>      tx_broadcast: 530
+>      rx_multicast: 333489
+>      tx_multicast: 18446
+>      multicast: 333489
+>      rx_missed_errors: 270143
+>      rx_long_length_errors: 6
+>      tx_tcp_seg_good: 1342561
+>      rx_long_byte_count: 15711958157
+>      rx_errors: 6
+>      rx_length_errors: 6
+>      rx_fifo_errors: 270143
+>      tx_queue_0_packets: 8963830
+>      tx_queue_0_bytes: 9803196683
+>      tx_queue_0_restart: 4920
+>      tx_queue_1_packets: 12639010
+>      tx_queue_1_bytes: 15706576814
+>      tx_queue_1_restart: 12718
+>      rx_queue_0_packets: 16303520
+>      rx_queue_0_bytes: 15646744077
+>      rx_queue_0_csum_err: 76
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 72abeb2e4f00..26a4da97f97a 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -224,6 +224,7 @@ enum ice_state {
- 	__ICE_OICR_INTR_DIS,		/* Global OICR interrupt disabled */
- 	__ICE_MDD_VF_PRINT_PENDING,	/* set when MDD event handle */
- 	__ICE_VF_RESETS_DISABLED,	/* disable resets during ice_remove */
-+	__ICE_FD_VF_FLUSH_CTX,		/* set at FD Rx IRQ or timeout */
- 	__ICE_STATE_NBITS		/* must be last */
- };
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 6d99f72ef07e..b0fb98ce92a8 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -384,6 +384,9 @@
- #define VSIQF_FD_CNT(_VSI)			(0x00464000 + ((_VSI) * 4))
- #define VSIQF_FD_CNT_FD_GCNT_S			0
- #define VSIQF_FD_CNT_FD_GCNT_M			ICE_M(0x3FFF, 0)
-+#define VSIQF_FD_CNT_FD_BCNT_S                  16
-+#define VSIQF_FD_CNT_FD_BCNT_M                  ICE_M(0x3FFF, 16)
-+#define VSIQF_FD_SIZE(_VSI)                     (0x00462000 + ((_VSI) * 4))
- #define VSIQF_HKEY_MAX_INDEX			12
- #define VSIQF_HLUT_MAX_INDEX			15
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index 1382c498e1f0..eee4726a393c 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -140,6 +140,26 @@ struct ice_fltr_desc {
- 			(0xFFFFFFFFULL << ICE_FXD_FLTR_QW1_FDID_S)
- #define ICE_FXD_FLTR_QW1_FDID_ZERO	0x0ULL
- 
-+/* definition for FD filter programming status descriptor WB format */
-+#define ICE_FXD_FLTR_WB_QW1_DD_S	0
-+#define ICE_FXD_FLTR_WB_QW1_DD_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_DD_S)
-+#define ICE_FXD_FLTR_WB_QW1_DD_YES	0x1ULL
-+
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ID_S	1
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ID_M	\
-+				(0x3ULL << ICE_FXD_FLTR_WB_QW1_PROG_ID_S)
-+#define ICE_FXD_FLTR_WB_QW1_PROG_ADD	0x0ULL
-+#define ICE_FXD_FLTR_WB_QW1_PROG_DEL	0x1ULL
-+
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_S	4
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_M	(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_S)
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_YES	0x1ULL
-+
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S	5
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M	\
-+				(0x1ULL << ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S)
-+#define ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES	0x1ULL
-+
- struct ice_rx_ptype_decoded {
- 	u32 ptype:10;
- 	u32 known:1;
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 3d57e2e8b179..ea761076c3f4 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1481,6 +1481,7 @@ static void ice_service_task(struct work_struct *work)
- 	ice_process_vflr_event(pf);
- 	ice_clean_mailboxq_subtask(pf);
- 	ice_sync_arfs_fltrs(pf);
-+	ice_flush_fdir_ctx(pf);
- 	/* Clear __ICE_SERVICE_SCHED flag to allow scheduling next event */
- 	ice_service_task_complete(pf);
- 
-@@ -1492,6 +1493,7 @@ static void ice_service_task(struct work_struct *work)
- 	    test_bit(__ICE_MDD_EVENT_PENDING, pf->state) ||
- 	    test_bit(__ICE_VFLR_EVENT_PENDING, pf->state) ||
- 	    test_bit(__ICE_MAILBOXQ_EVENT_PENDING, pf->state) ||
-+	    test_bit(__ICE_FD_VF_FLUSH_CTX, pf->state) ||
- 	    test_bit(__ICE_ADMINQ_EVENT_PENDING, pf->state))
- 		mod_timer(&pf->serv_tmr, jiffies);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index abdb137c8bb7..0aaed92f807f 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1128,6 +1128,11 @@ int ice_clean_rx_irq(struct ice_ring *rx_ring, int budget)
- 		dma_rmb();
- 
- 		if (rx_desc->wb.rxdid == FDIR_DESC_RXDID || !rx_ring->netdev) {
-+			struct ice_vsi *ctrl_vsi = rx_ring->vsi;
-+
-+			if (rx_desc->wb.rxdid == FDIR_DESC_RXDID &&
-+			    ctrl_vsi->vf_id != ICE_INVAL_VFID)
-+				ice_vc_fdir_irq_handler(ctrl_vsi, rx_desc);
- 			ice_put_rx_buf(rx_ring, NULL);
- 			cleaned_count++;
- 			continue;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-index 4e08e7ec4ebc..ac14a4b16ab2 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-@@ -45,6 +45,7 @@ struct virtchnl_fdir_fltr_conf {
- 	struct ice_fdir_fltr input;
- 	enum ice_fdir_tunnel_type ttype;
- 	u64 inset_flag;
-+	u32 flow_id;
- };
- 
- static enum virtchnl_proto_hdr_type vc_pattern_ether[] = {
-@@ -1486,7 +1487,7 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
- 	}
- 
- 	input->dest_vsi = vsi->idx;
--	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW_FAIL;
-+	input->comp_report = ICE_FXD_FLTR_QW0_COMP_REPORT_SW;
- 
- 	ctrl_vsi = pf->vsi[vf->ctrl_vsi_idx];
- 	if (!ctrl_vsi) {
-@@ -1519,6 +1520,455 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
- }
- 
- /**
-+ * ice_vf_fdir_timer - FDIR program waiting timer interrupt handler
-+ * @t: pointer to timer_list
-+ */
-+static void ice_vf_fdir_timer(struct timer_list *t)
-+{
-+	struct ice_vf_fdir_ctx *ctx_irq = from_timer(ctx_irq, t, rx_tmr);
-+	struct ice_vf_fdir_ctx *ctx_done;
-+	struct ice_vf_fdir *fdir;
-+	unsigned long flags;
-+	struct ice_vf *vf;
-+	struct ice_pf *pf;
-+
-+	fdir = container_of(ctx_irq, struct ice_vf_fdir, ctx_irq);
-+	vf = container_of(fdir, struct ice_vf, fdir);
-+	ctx_done = &fdir->ctx_done;
-+	pf = vf->pf;
-+	spin_lock_irqsave(&fdir->ctx_lock, flags);
-+	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+		WARN_ON_ONCE(1);
-+		return;
-+	}
-+
-+	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+
-+	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
-+	ctx_done->conf = ctx_irq->conf;
-+	ctx_done->stat = ICE_FDIR_CTX_TIMEOUT;
-+	ctx_done->v_opcode = ctx_irq->v_opcode;
-+	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+
-+	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
-+	ice_service_task_schedule(pf);
-+}
-+
-+/**
-+ * ice_vc_fdir_irq_handler - ctrl_vsi Rx queue interrupt handler
-+ * @ctrl_vsi: pointer to a VF's CTRL VSI
-+ * @rx_desc: pointer to FDIR Rx queue descriptor
-+ */
-+void
-+ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
-+			union ice_32b_rx_flex_desc *rx_desc)
-+{
-+	struct ice_pf *pf = ctrl_vsi->back;
-+	struct ice_vf_fdir_ctx *ctx_done;
-+	struct ice_vf_fdir_ctx *ctx_irq;
-+	struct ice_vf_fdir *fdir;
-+	unsigned long flags;
-+	struct device *dev;
-+	struct ice_vf *vf;
-+	int ret;
-+
-+	vf = &pf->vf[ctrl_vsi->vf_id];
-+
-+	fdir = &vf->fdir;
-+	ctx_done = &fdir->ctx_done;
-+	ctx_irq = &fdir->ctx_irq;
-+	dev = ice_pf_to_dev(pf);
-+	spin_lock_irqsave(&fdir->ctx_lock, flags);
-+	if (!(ctx_irq->flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+		WARN_ON_ONCE(1);
-+		return;
-+	}
-+
-+	ctx_irq->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+
-+	ctx_done->flags |= ICE_VF_FDIR_CTX_VALID;
-+	ctx_done->conf = ctx_irq->conf;
-+	ctx_done->stat = ICE_FDIR_CTX_IRQ;
-+	ctx_done->v_opcode = ctx_irq->v_opcode;
-+	memcpy(&ctx_done->rx_desc, rx_desc, sizeof(*rx_desc));
-+	spin_unlock_irqrestore(&fdir->ctx_lock, flags);
-+
-+	ret = del_timer(&ctx_irq->rx_tmr);
-+	if (!ret)
-+		dev_err(dev, "VF %d: Unexpected inactive timer!\n", vf->vf_id);
-+
-+	set_bit(__ICE_FD_VF_FLUSH_CTX, pf->state);
-+	ice_service_task_schedule(pf);
-+}
-+
-+/**
-+ * ice_vf_fdir_dump_info - dump FDIR information for diagnosis
-+ * @vf: pointer to the VF info
-+ */
-+static void ice_vf_fdir_dump_info(struct ice_vf *vf)
-+{
-+	struct ice_vsi *vf_vsi;
-+	u32 fd_size, fd_cnt;
-+	struct device *dev;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	u16 vsi_num;
-+
-+	pf = vf->pf;
-+	hw = &pf->hw;
-+	dev = ice_pf_to_dev(pf);
-+	vf_vsi = pf->vsi[vf->lan_vsi_idx];
-+	vsi_num = ice_get_hw_vsi_num(hw, vf_vsi->idx);
-+
-+	fd_size = rd32(hw, VSIQF_FD_SIZE(vsi_num));
-+	fd_cnt = rd32(hw, VSIQF_FD_CNT(vsi_num));
-+	dev_dbg(dev, "VF %d: space allocated: guar:0x%x, be:0x%x, space consumed: guar:0x%x, be:0x%x",
-+		vf->vf_id,
-+		(fd_size & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
-+		(fd_size & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S,
-+		(fd_cnt & VSIQF_FD_CNT_FD_GCNT_M) >> VSIQF_FD_CNT_FD_GCNT_S,
-+		(fd_cnt & VSIQF_FD_CNT_FD_BCNT_M) >> VSIQF_FD_CNT_FD_BCNT_S);
-+}
-+
-+/**
-+ * ice_vf_verify_rx_desc - verify received FDIR programming status descriptor
-+ * @vf: pointer to the VF info
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vf_verify_rx_desc(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+		      enum virtchnl_fdir_prgm_status *status)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	u32 stat_err, error, prog_id;
-+	int ret;
-+
-+	stat_err = le16_to_cpu(ctx->rx_desc.wb.status_error0);
-+	if (((stat_err & ICE_FXD_FLTR_WB_QW1_DD_M) >>
-+	    ICE_FXD_FLTR_WB_QW1_DD_S) != ICE_FXD_FLTR_WB_QW1_DD_YES) {
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_err(dev, "VF %d: Desc Done not set\n", vf->vf_id);
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	prog_id = (stat_err & ICE_FXD_FLTR_WB_QW1_PROG_ID_M) >>
-+		ICE_FXD_FLTR_WB_QW1_PROG_ID_S;
-+	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD &&
-+	    ctx->v_opcode != VIRTCHNL_OP_ADD_FDIR_FILTER) {
-+		dev_err(dev, "VF %d: Desc show add, but ctx not",
-+			vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_DEL &&
-+	    ctx->v_opcode != VIRTCHNL_OP_DEL_FDIR_FILTER) {
-+		dev_err(dev, "VF %d: Desc show del, but ctx not",
-+			vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_M) >>
-+		ICE_FXD_FLTR_WB_QW1_FAIL_S;
-+	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_YES) {
-+		if (prog_id == ICE_FXD_FLTR_WB_QW1_PROG_ADD) {
-+			dev_err(dev, "VF %d, Failed to add FDIR rule due to no space in the table",
-+				vf->vf_id);
-+			*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		} else {
-+			dev_err(dev, "VF %d, Failed to remove FDIR rule, attempt to remove non-existent entry",
-+				vf->vf_id);
-+			*status = VIRTCHNL_FDIR_FAILURE_RULE_NONEXIST;
-+		}
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	error = (stat_err & ICE_FXD_FLTR_WB_QW1_FAIL_PROF_M) >>
-+		ICE_FXD_FLTR_WB_QW1_FAIL_PROF_S;
-+	if (error == ICE_FXD_FLTR_WB_QW1_FAIL_PROF_YES) {
-+		dev_err(dev, "VF %d: Profile matching error", vf->vf_id);
-+		*status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		ret = -EINVAL;
-+		goto err_exit;
-+	}
-+
-+	*status = VIRTCHNL_FDIR_SUCCESS;
-+
-+	return 0;
-+
-+err_exit:
-+	ice_vf_fdir_dump_info(vf);
-+	return ret;
-+}
-+
-+/**
-+ * ice_vc_add_fdir_fltr_post
-+ * @vf: pointer to the VF structure
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ * @success: true implies success, false implies failure
-+ *
-+ * Post process for flow director add command. If success, then do post process
-+ * and send back success msg by virtchnl. Otherwise, do context reversion and
-+ * send back failure msg by virtchnl.
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+			  enum virtchnl_fdir_prgm_status status,
-+			  bool success)
-+{
-+	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	enum virtchnl_status_code v_ret;
-+	struct virtchnl_fdir_add *resp;
-+	int ret, len, is_tun;
-+
-+	v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	len = sizeof(*resp);
-+	resp = kzalloc(len, GFP_KERNEL);
-+	if (!resp) {
-+		len = 0;
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
-+		goto err_exit;
-+	}
-+
-+	if (!success)
-+		goto err_exit;
-+
-+	is_tun = 0;
-+	resp->status = status;
-+	resp->flow_id = conf->flow_id;
-+	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+
-+	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-+		vf->vf_id, conf->flow_id,
-+		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
-+		"add" : "del");
-+	return ret;
-+
-+err_exit:
-+	if (resp)
-+		resp->status = status;
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
-+	devm_kfree(dev, conf);
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+	return ret;
-+}
-+
-+/**
-+ * ice_vc_del_fdir_fltr_post
-+ * @vf: pointer to the VF structure
-+ * @ctx: FDIR context info for post processing
-+ * @status: virtchnl FDIR program status
-+ * @success: true implies success, false implies failure
-+ *
-+ * Post process for flow director del command. If success, then do post process
-+ * and send back success msg by virtchnl. Otherwise, do context reversion and
-+ * send back failure msg by virtchnl.
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
-+			  enum virtchnl_fdir_prgm_status status,
-+			  bool success)
-+{
-+	struct virtchnl_fdir_fltr_conf *conf = ctx->conf;
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	enum virtchnl_status_code v_ret;
-+	struct virtchnl_fdir_del *resp;
-+	int ret, len, is_tun;
-+
-+	v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	len = sizeof(*resp);
-+	resp = kzalloc(len, GFP_KERNEL);
-+	if (!resp) {
-+		len = 0;
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		dev_dbg(dev, "VF %d: Alloc resp buf fail", vf->vf_id);
-+		goto err_exit;
-+	}
-+
-+	if (!success)
-+		goto err_exit;
-+
-+	is_tun = 0;
-+	resp->status = status;
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
-+	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+
-+	dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-+		vf->vf_id, conf->flow_id,
-+		(ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER) ?
-+		"add" : "del");
-+	devm_kfree(dev, conf);
-+	return ret;
-+
-+err_exit:
-+	if (resp)
-+		resp->status = status;
-+	if (success)
-+		devm_kfree(dev, conf);
-+
-+	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-+				    (u8 *)resp, len);
-+	kfree(resp);
-+	return ret;
-+}
-+
-+/**
-+ * ice_flush_fdir_ctx
-+ * @pf: pointer to the PF structure
-+ *
-+ * Flush all the pending event on ctx_done list and process them.
-+ */
-+void ice_flush_fdir_ctx(struct ice_pf *pf)
-+{
-+	int i;
-+
-+	if (!test_and_clear_bit(__ICE_FD_VF_FLUSH_CTX, pf->state))
-+		return;
-+
-+	ice_for_each_vf(pf, i) {
-+		struct device *dev = ice_pf_to_dev(pf);
-+		enum virtchnl_fdir_prgm_status status;
-+		struct ice_vf *vf = &pf->vf[i];
-+		struct ice_vf_fdir_ctx *ctx;
-+		unsigned long flags;
-+		int ret;
-+
-+		if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
-+			continue;
-+
-+		if (vf->ctrl_vsi_idx == ICE_NO_VSI)
-+			continue;
-+
-+		ctx = &vf->fdir.ctx_done;
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		if (!(ctx->flags & ICE_VF_FDIR_CTX_VALID)) {
-+			spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+			continue;
-+		}
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+
-+		WARN_ON(ctx->stat == ICE_FDIR_CTX_READY);
-+		if (ctx->stat == ICE_FDIR_CTX_TIMEOUT) {
-+			status = VIRTCHNL_FDIR_FAILURE_RULE_TIMEOUT;
-+			dev_err(dev, "VF %d: ctrl_vsi irq timeout\n",
-+				vf->vf_id);
-+			goto err_exit;
-+		}
-+
-+		ret = ice_vf_verify_rx_desc(vf, ctx, &status);
-+		if (ret)
-+			goto err_exit;
-+
-+		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
-+			ice_vc_add_fdir_fltr_post(vf, ctx, status, true);
-+		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
-+			ice_vc_del_fdir_fltr_post(vf, ctx, status, true);
-+		else
-+			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
-+
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+		continue;
-+err_exit:
-+		if (ctx->v_opcode == VIRTCHNL_OP_ADD_FDIR_FILTER)
-+			ice_vc_add_fdir_fltr_post(vf, ctx, status, false);
-+		else if (ctx->v_opcode == VIRTCHNL_OP_DEL_FDIR_FILTER)
-+			ice_vc_del_fdir_fltr_post(vf, ctx, status, false);
-+		else
-+			dev_err(dev, "VF %d: Unsupported opcode\n", vf->vf_id);
-+
-+		spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+		ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+	}
-+}
-+
-+/**
-+ * ice_vc_fdir_set_irq_ctx - set FDIR context info for later irq handler
-+ * @vf: pointer to the VF structure
-+ * @conf: FDIR configuration for each filter
-+ * @v_opcode: virtual channel operation code
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static int
-+ice_vc_fdir_set_irq_ctx(struct ice_vf *vf, struct virtchnl_fdir_fltr_conf *conf,
-+			enum virtchnl_ops v_opcode)
-+{
-+	struct device *dev = ice_pf_to_dev(vf->pf);
-+	struct ice_vf_fdir_ctx *ctx;
-+	unsigned long flags;
-+
-+	ctx = &vf->fdir.ctx_irq;
-+	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+	if ((vf->fdir.ctx_irq.flags & ICE_VF_FDIR_CTX_VALID) ||
-+	    (vf->fdir.ctx_done.flags & ICE_VF_FDIR_CTX_VALID)) {
-+		spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+		dev_dbg(dev, "VF %d: Last request is still in progress\n",
-+			vf->vf_id);
-+		return -EBUSY;
-+	}
-+	ctx->flags |= ICE_VF_FDIR_CTX_VALID;
-+	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+
-+	ctx->conf = conf;
-+	ctx->v_opcode = v_opcode;
-+	ctx->stat = ICE_FDIR_CTX_READY;
-+	timer_setup(&ctx->rx_tmr, ice_vf_fdir_timer, 0);
-+
-+	mod_timer(&ctx->rx_tmr,
-+		  round_jiffies(msecs_to_jiffies(10) + jiffies));
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_vc_fdir_clear_irq_ctx - clear FDIR context info for irq handler
-+ * @vf: pointer to the VF structure
-+ *
-+ * Return: 0 on success, and other on error.
-+ */
-+static void ice_vc_fdir_clear_irq_ctx(struct ice_vf *vf)
-+{
-+	struct ice_vf_fdir_ctx *ctx = &vf->fdir.ctx_irq;
-+	unsigned long flags;
-+
-+	del_timer(&ctx->rx_tmr);
-+	spin_lock_irqsave(&vf->fdir.ctx_lock, flags);
-+	ctx->flags &= ~ICE_VF_FDIR_CTX_VALID;
-+	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
-+}
-+
-+/**
-  * ice_vc_add_fdir_fltr - add a FDIR filter for VF by the msg buffer
-  * @vf: pointer to the VF info
-  * @msg: pointer to the msg buffer
-@@ -1604,7 +2054,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_free_conf;
- 	}
- 
--	ret = ice_vc_fdir_insert_entry(vf, conf, &stat->flow_id);
-+	ret = ice_vc_fdir_insert_entry(vf, conf, &conf->flow_id);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-@@ -1612,6 +2062,14 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_free_conf;
- 	}
- 
-+	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_ADD_FDIR_FILTER);
-+	if (ret) {
-+		v_ret = VIRTCHNL_STATUS_SUCCESS;
-+		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
-+		goto err_free_conf;
-+	}
-+
- 	ret = ice_vc_fdir_write_fltr(vf, conf, true, is_tun);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
-@@ -1621,18 +2079,13 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_rem_entry;
- 	}
- 
--	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
--
--	v_ret = VIRTCHNL_STATUS_SUCCESS;
--	stat->status = VIRTCHNL_FDIR_SUCCESS;
- exit:
--	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
--				    (u8 *)stat, len);
- 	kfree(stat);
- 	return ret;
- 
- err_rem_entry:
--	ice_vc_fdir_remove_entry(vf, conf, stat->flow_id);
-+	ice_vc_fdir_clear_irq_ctx(vf);
-+	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
- err_free_conf:
- 	devm_kfree(dev, conf);
- err_exit:
-@@ -1696,22 +2149,29 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
- 		goto err_exit;
- 	}
- 
-+	ret = ice_vc_fdir_set_irq_ctx(vf, conf, VIRTCHNL_OP_DEL_FDIR_FILTER);
-+	if (ret) {
-+		v_ret = VIRTCHNL_STATUS_SUCCESS;
-+		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
-+		dev_dbg(dev, "VF %d: set FDIR context failed\n", vf->vf_id);
-+		goto err_exit;
-+	}
-+
- 	ret = ice_vc_fdir_write_fltr(vf, conf, false, is_tun);
- 	if (ret) {
- 		v_ret = VIRTCHNL_STATUS_SUCCESS;
- 		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
- 		dev_err(dev, "VF %d: writing FDIR rule failed, ret:%d\n",
- 			vf->vf_id, ret);
--		goto err_exit;
-+		goto err_del_tmr;
- 	}
- 
--	ice_vc_fdir_remove_entry(vf, conf, fltr->flow_id);
--	devm_kfree(dev, conf);
--	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-+	kfree(stat);
- 
--	v_ret = VIRTCHNL_STATUS_SUCCESS;
--	stat->status = VIRTCHNL_FDIR_SUCCESS;
-+	return ret;
- 
-+err_del_tmr:
-+	ice_vc_fdir_clear_irq_ctx(vf);
- err_exit:
- 	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
- 				    (u8 *)stat, len);
-@@ -1729,6 +2189,10 @@ void ice_vf_fdir_init(struct ice_vf *vf)
- 
- 	idr_init(&fdir->fdir_rule_idr);
- 	INIT_LIST_HEAD(&fdir->fdir_rule_list);
-+
-+	spin_lock_init(&fdir->ctx_lock);
-+	fdir->ctx_irq.flags = 0;
-+	fdir->ctx_done.flags = 0;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-index 676de402475e..53b78e866381 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
-@@ -5,6 +5,24 @@
- #define _ICE_VIRTCHNL_FDIR_H_
- 
- struct ice_vf;
-+struct ice_pf;
-+
-+enum ice_fdir_ctx_stat {
-+	ICE_FDIR_CTX_READY,
-+	ICE_FDIR_CTX_IRQ,
-+	ICE_FDIR_CTX_TIMEOUT,
-+};
-+
-+struct ice_vf_fdir_ctx {
-+	struct timer_list rx_tmr;
-+	enum virtchnl_ops v_opcode;
-+	enum ice_fdir_ctx_stat stat;
-+	union ice_32b_rx_flex_desc rx_desc;
-+#define ICE_VF_FDIR_CTX_VALID		BIT(0)
-+	u32 flags;
-+
-+	void *conf;
-+};
- 
- /* VF FDIR information structure */
- struct ice_vf_fdir {
-@@ -14,11 +32,18 @@ struct ice_vf_fdir {
- 
- 	struct idr fdir_rule_idr;
- 	struct list_head fdir_rule_list;
-+
-+	spinlock_t ctx_lock; /* protects FDIR context info */
-+	struct ice_vf_fdir_ctx ctx_irq;
-+	struct ice_vf_fdir_ctx ctx_done;
- };
- 
- int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg);
- int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg);
- void ice_vf_fdir_init(struct ice_vf *vf);
- void ice_vf_fdir_exit(struct ice_vf *vf);
--
-+void
-+ice_vc_fdir_irq_handler(struct ice_vsi *ctrl_vsi,
-+			union ice_32b_rx_flex_desc *rx_desc);
-+void ice_flush_fdir_ctx(struct ice_pf *pf);
- #endif /* _ICE_VIRTCHNL_FDIR_H_ */
--- 
-2.13.6
-
+Okay, so this result still has the same length and checksum errors,
+were you resetting the system/statistics between runs?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
