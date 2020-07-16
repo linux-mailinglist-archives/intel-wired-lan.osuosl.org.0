@@ -1,132 +1,138 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61691222A68
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 19:50:12 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 767C4222AA4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 20:09:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 19B9D87AC5;
-	Thu, 16 Jul 2020 17:50:11 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2B260203E0;
+	Thu, 16 Jul 2020 18:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lR9SR+73FTHQ; Thu, 16 Jul 2020 17:50:10 +0000 (UTC)
+	with ESMTP id ONW0IOmNGsAd; Thu, 16 Jul 2020 18:09:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 43A9E87CB6;
-	Thu, 16 Jul 2020 17:50:10 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A6849203FB;
+	Thu, 16 Jul 2020 18:08:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A26AD1BF841
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 17:50:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B4BED1BF2F1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 18:08:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9CACE89A90
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 17:50:08 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id ABFB98AA22
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 18:08:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qteUDIHHpKTQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jul 2020 17:50:07 +0000 (UTC)
+ with ESMTP id wuem4nHhS524 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jul 2020 18:08:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1C197894C0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 17:50:07 +0000 (UTC)
-IronPort-SDR: QRtRIuZt6T4+HYe/RrrzOg7LB1xBzHUxwnnLPsFDfVnrJKJbVzxJKbUyna8Yxkb4VjSTIqP0W8
- 2FVB3GeDv0mA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9684"; a="136910537"
-X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="136910537"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id CCA5D8AA1E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 18:08:56 +0000 (UTC)
+IronPort-SDR: mCylNe9H4+fBMUo1xDrkBU2RKMRJ1oBf3osBS+T/7IBKXnmu24APQ+SKTl/l37ReVhFfjNI3G1
+ 99R2Mpjj5DzA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9684"; a="149448257"
+X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="149448257"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2020 10:50:06 -0700
-IronPort-SDR: +rOjHH5qZJHC4jh5PjKDc2iMXbGpg2kNNdWMJ4M4JIJVpzeFqriTzEOtQDesQ926BKOly9ihsY
- a62JPooqf51g==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2020 11:08:55 -0700
+IronPort-SDR: IXXFJUo241OZVD8g/E/Liv8jr4vModYC9OPH5hUpOPhBf50Ev1Tu3b+hJhfRZSUssWL2Wq7eMs
+ pT7cycbSD4vw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="326593978"
-Received: from orsmsx101.amr.corp.intel.com ([10.22.225.128])
- by orsmga007.jf.intel.com with ESMTP; 16 Jul 2020 10:50:06 -0700
-Received: from orsmsx154.amr.corp.intel.com (10.22.226.12) by
- ORSMSX101.amr.corp.intel.com (10.22.225.128) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 16 Jul 2020 10:50:06 -0700
-Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
- ORSMSX154.amr.corp.intel.com (10.22.226.12) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 16 Jul 2020 10:50:05 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.171)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Thu, 16 Jul 2020 10:50:05 -0700
+X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="361115682"
+Received: from orsmsx106.amr.corp.intel.com ([10.22.225.133])
+ by orsmga001.jf.intel.com with ESMTP; 16 Jul 2020 11:08:54 -0700
+Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
+ ORSMSX106.amr.corp.intel.com (10.22.225.133) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 16 Jul 2020 11:08:54 -0700
+Received: from ORSEDG002.ED.cps.intel.com (10.7.248.5) by
+ ORSMSX153.amr.corp.intel.com (10.22.226.247) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 16 Jul 2020 11:08:54 -0700
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.168)
+ by edgegateway.intel.com (134.134.137.101) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 16 Jul 2020 11:08:54 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ENY1D4oXkpRrier6teSZ9EWXrrLzfl/QYfs6/GDFCFI1iw7X2Ttv1CbuTfy3yui+mt6isGIYJvHDe7HCJARcHpW7DEUXkci8mZH7rQRuy/cQrojFm53PYr0wq/blfDLz85xpMSFED1zj24GMnTvrrmKtwnKIqCisCxhkMA284UDDHHfNpwt7ddai+o+5DNxMxOGghLsxwSp7D5S6lqpRsFXrUqwuhL3FdyoYXJw6fFwluosbKrm+xDkxNw3Gg5YVHclxHB4QWnNzuasBpZfxKl+LP8MMHujLE8EbdpyrSaERrTKy/B/x4ehJZMCpH053jz3mnXvp7XxiwW5tVemO1Q==
+ b=lE2Io6+x1nFB4VgH2UgSKVXOStGbNzf3JH3mtFwNFnn5wECYqt5EMfsmrkctQ/TJJzFlmzxuxNW283hIjfHRPSu18m47+dsqc9JRLOCcy+Kl0tY1NB32rQyoU4zo6tKynzNMXgJpm0RLCW3BObUrPbPrwNAH13PxK7DZU3oOH+pAQEHbKcKLPgnoI3p3AdYlMx3VjCUKdOUp889mT2WQBJhB+y3V6o0u8ML2seKxk04TGhiyTwDcll2Fpg7EB6IXay7jjCE2KpNe35co7Zu7iMJH8fjD5cq+oMpzFnEMyIpRUZZg5BjajiUFxfoswflwnHerASVY+hkM/ajQ0oh/3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+64/t7hEsgei0w0H4A4UUkDCZgieJJnxQvgqt9iBxmQ=;
- b=V/xlU+GD2jW22Aj0b0ARr8Z/5xvH9RzH0ff/6ssCjEKiq+6Sfjn8Gk3zOEXm6q/moeJ33roDTBuxGgltBrShRdh+168xuN5ev45wh4w3+r4CXMMGfzFu42W5cWhTtGDj853gCqufgAE50fFptebvuWhTsT+RjKPF+IprrvpCBSKd9PBNf1g5z7+wepOeKBR5W2qYnJ/OV5oG05OQd780HSqS0iBYFHfgNntA7fJYmyL3rZyp0cW4mSjxNUw4s6baZ/2iCjEytysC7xVysVbOOhzeYV4hqzk+mluSTZgNQW6lgLSIHGF2bDowIP1FaW4bZxVug3Z8YQ+Yc2way5N6EA==
+ bh=EzD18s+ZsdrWm+pWD1PhrS8r1axsewygjcTmNw1PV9c=;
+ b=TBptBzwR0/SgPM7Fa0DETDpWhMvINc+FozNcqq/JoXTSRPgNVxQ0/ODbI7HXwdCPnpnLO+pwOEAvC8hEYWXwTQ1f8FUrfZfunQW49odf+VV7VhR5My5ICpQWg2A8947d3wIibFVqZhjhNtm9QGPe3CQ0akLt+agKUeboXLQbJ9SvTp+Pt+kKr6oy8mOfV0+ZS8v4IEmEc3jljeQwmKhoSTclrE9294OCFWfaOz2CmA6FPeLoDbleVJdTS+QPiuMmyuS8hd/9Yejhx+mHw/nbyV/j0buOJYHVpvA0mc3KMr6301ZVLMIX1eRO+E/ocoVahI0C6YQ5p9w/CwAr6M7JFw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+64/t7hEsgei0w0H4A4UUkDCZgieJJnxQvgqt9iBxmQ=;
- b=zfSTMVnO3SOm7FTeuzT3TRmmbXxpE7v3FAOhgo4NyyZErWKRgrdqA3xFGbRcSm6VG4ohJHFapfiBUez38oFjsz32Kljbfh3iy4DL5bVKFoOwc+/hEZzp/vsBK5U/nDOY/BPkOtFTxhfGVjIgQm/2EUZglkzoB+PnhshW+ir0TNE=
-Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
- (2603:10b6:405:51::10) by BN6PR11MB1459.namprd11.prod.outlook.com
- (2603:10b6:405:a::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.20; Thu, 16 Jul
- 2020 17:50:04 +0000
-Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
- ([fe80::6cc1:1382:c39c:18e3]) by BN6PR1101MB2145.namprd11.prod.outlook.com
- ([fe80::6cc1:1382:c39c:18e3%9]) with mapi id 15.20.3195.018; Thu, 16 Jul 2020
- 17:50:04 +0000
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH S50 09/15] ice: distribute Tx queues
- evenly
-Thread-Index: AQHWWVg/K3dYmi56BUi6ugpSDT1wrKkKgE3Q
-Date: Thu, 16 Jul 2020 17:50:04 +0000
-Message-ID: <BN6PR1101MB21450B9DAFEE1DC1B8EB7DB38C7F0@BN6PR1101MB2145.namprd11.prod.outlook.com>
-References: <20200713205318.32425-1-anthony.l.nguyen@intel.com>
- <20200713205318.32425-9-anthony.l.nguyen@intel.com>
-In-Reply-To: <20200713205318.32425-9-anthony.l.nguyen@intel.com>
+ bh=EzD18s+ZsdrWm+pWD1PhrS8r1axsewygjcTmNw1PV9c=;
+ b=YBM9UiG4njNCnsvK5gasW10bgAQqsUu/oIY+Zu9nbksG3ygz4GYsF4o1+vaPvxPSThLRoM+UmRMJE61wP/niSTbjWESeKQxG37Xj1naHYn1UlYFN09acCAB2v63aff4mrPfJIcoPUESgcYEaNPifwsCvV4u1oy1fuOZqZaA/U50=
+Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
+ DM6PR11MB4219.namprd11.prod.outlook.com (2603:10b6:5:14e::18) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3195.17; Thu, 16 Jul 2020 18:08:52 +0000
+Received: from DM6PR11MB2890.namprd11.prod.outlook.com
+ ([fe80::65c2:9ac9:2c52:82bd]) by DM6PR11MB2890.namprd11.prod.outlook.com
+ ([fe80::65c2:9ac9:2c52:82bd%6]) with mapi id 15.20.3174.026; Thu, 16 Jul 2020
+ 18:08:52 +0000
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: Vaibhav Gupta <vaibhavgupta40@gmail.com>, Bjorn Helgaas
+ <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ "bjorn@helgaas.com" <bjorn@helgaas.com>, Vaibhav Gupta
+ <vaibhav.varodek@gmail.com>, "David S. Miller" <davem@davemloft.net>, "Jakub
+ Kicinski" <kuba@kernel.org>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v1 2/5] igbvf: netdev: use generic
+ power management
+Thread-Index: AQHWTfgyxYgsGJtzC0qSOWKZgsoK6akKnDTA
+Date: Thu, 16 Jul 2020 18:08:52 +0000
+Message-ID: <DM6PR11MB28906BCEB8DF7B0F7B6C7B1ABC7F0@DM6PR11MB2890.namprd11.prod.outlook.com>
+References: <20200629092943.227910-1-vaibhavgupta40@gmail.com>
+ <20200629092943.227910-3-vaibhavgupta40@gmail.com>
+In-Reply-To: <20200629092943.227910-3-vaibhavgupta40@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
+dlp-version: 11.2.0.6
 dlp-product: dlpe-windows
 dlp-reaction: no-action
-dlp-version: 11.2.0.6
-authentication-results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
-x-originating-ip: [71.59.183.208]
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [97.120.173.209]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5a768ff1-8b6d-47b8-f6e2-08d829b0ab9b
-x-ms-traffictypediagnostic: BN6PR11MB1459:
-x-microsoft-antispam-prvs: <BN6PR11MB14591EA0C76AF4BC1ADEDB7E8C7F0@BN6PR11MB1459.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-ms-office365-filtering-correlation-id: 5b825bc3-a85e-4e23-8c8b-08d829b34c33
+x-ms-traffictypediagnostic: DM6PR11MB4219:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DM6PR11MB421925E367B5A121BF0134EABC7F0@DM6PR11MB4219.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4714;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 521NI16/r6IXBCwRS5px1xYXlgw8Nsk0DVTaWETzFphdZlsAieAP+WVz+h0vJKZnsElOy+8G5aHd4b9mh6CvamQnrxEKIaEYvfdTUmPAylQ/raNCip8Tv0aOOAKehCjKMbLzR9grdp5HDkoJ3BkKluxYbZbWMvSjeY0Rzb9yZIl+t+o+1g7pdlyv/jguXIijVl0e1u4kMtkxuzSJUuax8wUhmJlY+N2gn0pPpdBNoevG402aenJvKK7lOqschBPZQSZS+2ZWd4gNgAeumosWE3PR0WFAl3TerBN1u8zr6Ptjt3z2Jh7c8nY6db9+TsPs
+x-microsoft-antispam-message-info: 11cR+52uG+vbebAK+XnFi6ErxsKPKNG3i8TK2UHr64/xiQBjdovtimwuGKYu8w3LIKR//c6ie5BPAJ+FjOls3UWnGhxyDHtXkl/fXTcvrj77EGWuR2KfVbHsg4iEmKoXoWvKz/MrD2qSdvChIoEhODGuj4eWmzxpS0mqg5z6X+6/CUpK0pmBfUfMBTAT/msfWj9lDBw/0JdctkmV7Zhl9ss+SqjSH57LwMZWv2vuqXWlogf3tEgY1AuW5p/TU9QR+zhdyAmN86kiA6V+gA6eOWfYBvH+tZ0SnK5V2BqZoZ2Zjn3UW+v+HHMWBDIx1qFSDe1/6RAttLeNI6dcMN2ujGYAsIDZRpwtGkDp0LSbGRr6ZL8wiV6L0j9KCSQDh+NV
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(39860400002)(136003)(366004)(376002)(396003)(346002)(26005)(7696005)(9686003)(55016002)(53546011)(316002)(71200400001)(2906002)(8936002)(8676002)(66476007)(5660300002)(64756008)(6916009)(66556008)(6506007)(186003)(83380400001)(86362001)(76116006)(66446008)(66946007)(33656002)(478600001)(52536014);
+ SFS:(4636009)(39860400002)(376002)(366004)(346002)(396003)(136003)(186003)(76116006)(54906003)(110136005)(66946007)(5660300002)(86362001)(66556008)(66446008)(7416002)(26005)(8676002)(64756008)(66476007)(6636002)(6506007)(7696005)(9686003)(71200400001)(2906002)(8936002)(83380400001)(478600001)(55016002)(4326008)(53546011)(52536014)(316002)(33656002)(41533002);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: OuF7LmGryudtZ5H1/E4BxK9WeqvHp5GqcZrpiX+TRqxp6YT3efttnSufN3BhDTuYWUw+ETqgmdWeQhIXPylXLX+C7gOBEMVFaOErOy2ofAlHNzFEZUEf5UO1D8B/qiZGLnNSwVS/jgRtu4pEIb9mtcuVrvRmh/51veX1/g91tqJOzXSlAQPF1XeE/SK3rLZbrRJrYJQkDEHbjJxGotsQYkIbc8CIrmhlzfC1VOCyjJN3ZMx0k6elDEQzT+CPXliumRk+7eAmfSQVRCvjWXR8COf2lu/exatQsM1abptmiJ9XwOdQlE1q7jJ18rUoiKlpo4nPPFzopdMADcxCpcTGDcCnu0HaGAx5P5nF2G9qqlcfkRwpDuY/EiSfGi0i0Im64hNDJX1j0G3c2vOH+KjTRxiwjKh916rBvJEme2jR1k8E5ToAjSctpD7oJrN+llSOAxJhJLHNIKmzjBsb2CxG+/IM7OjhzQqE5KlPE2F9uJ6ujT5KKhK9Zhw9y2XS8a4f
-x-ms-exchange-transport-forked: True
+x-ms-exchange-antispam-messagedata: vB2iAR3Z31xjFUdLUH6U9D/v3LvXuI6Z+iD4peumQQlVE9rcTXSdT4fQs15Yhpcf3+PlgNJimVg88FOECFyQqbO5ssHrIzFdoN5c/Bjtl49VVp02ofUBHiox2AwywQkLnkRXC6OBu4mt2U7/0eF8CfOMGhmZFcYCEfjMVFcHpes4/fEa/gOCFgrM4jt6gLb/QA/3jwGG3rS63kX2mSaErT2RkjhMx1Lk169XGvrg057ZPiJ/WWNuSrvwb1obAo13nrLbCgBl0MdYD6Lm0UmvraLrOin2XDnXVMfxC558yl5RtzTwJXLfU28dzL0Pkew0ZUmeR8poihGV8yaz5uTF3A6sCjsL6roEfqxVI6iBZDekDbczR7BvNttJcvnItxc10p/TWBQDuty/HDOmwnrX4llyT4TWRKo/5p3iRmmjB8TmyTkd4r+qV6LHszyPXoVnL0tHUgwimI0S8lHX5fLlzzCIW41jSD7JrenopYQk2LiTcaF+cifBdys8EUsbs46t
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN6PR1101MB2145.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5a768ff1-8b6d-47b8-f6e2-08d829b0ab9b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2020 17:50:04.2783 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5b825bc3-a85e-4e23-8c8b-08d829b34c33
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2020 18:08:52.5447 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: wpxxqJUH09a7mRC6z5OnQ1erRw5k6MPpYUrM9FxPm4TL7beVE6kefSl5+WIONuHLmvUbjrRuHec83dqeW9qxa9QWGru4hcIF8W4NWz42JY4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1459
+X-MS-Exchange-CrossTenant-userprincipalname: ICKNNgUad/tM836gZgRFoQzrDa+la21fyN3QzWjMZyydGoz2EhG1WRYFyMiO/LaxpOWDpp5tx+acRhT5RA2zEQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4219
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH S50 09/15] ice: distribute Tx queues
- evenly
+Subject: Re: [Intel-wired-lan] [PATCH v1 2/5] igbvf: netdev: use generic
+ power management
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,44 +145,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-kernel-mentees@lists.linuxfoundation.org"
+ <linux-kernel-mentees@lists.linuxfoundation.org>,
+ "skhan@linuxfoundation.org" <skhan@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Tony Nguyen
-> Sent: Monday, July 13, 2020 1:53 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH S50 09/15] ice: distribute Tx queues evenly
+> Vaibhav Gupta
+> Sent: Monday, June 29, 2020 2:30 AM
+> To: Bjorn Helgaas <helgaas@kernel.org>; Bjorn Helgaas
+> <bhelgaas@google.com>; bjorn@helgaas.com; Vaibhav Gupta
+> <vaibhav.varodek@gmail.com>; David S. Miller <davem@davemloft.net>;
+> Jakub Kicinski <kuba@kernel.org>; Kirsher, Jeffrey T
+> <jeffrey.t.kirsher@intel.com>
+> Cc: Vaibhav Gupta <vaibhavgupta40@gmail.com>; netdev@vger.kernel.org;
+> linux-kernel@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
+> skhan@linuxfoundation.org; linux-kernel-mentees@lists.linuxfoundation.org
+> Subject: [Intel-wired-lan] [PATCH v1 2/5] igbvf: netdev: use generic power
+> management
 > 
-> From: Victor Raj <victor.raj@intel.com>
+> Remove legacy PM callbacks and use generic operations. With legacy code,
+> drivers were responsible for handling PCI PM operations like
+> pci_save_state(). In generic code, all these hre andled by PCI core.
 > 
-> Distribute the Tx queues evenly across all queue groups. This will help the
-> queues to get more equal sharing among the queues when all are in use.
+> The generic suspend() and resume() are called at the same point the legacy
+> ones were called. Thus, it does not affect the normal functioning of the
+> driver.
 > 
-> In the previous algorithm, the next queue group node will be picked up only
-> after the previous one filled with max children.
-> For example: if VSI is configured with 9 queues, the first 8 queues will be
-> assigned to queue group 1 and the 9th queue will be assigned to queue
-> group 2.
+> __maybe_unused attribute is used with .resume() but not with .suspend(), as
+> .suspend() is calleb by .shutdown().
 > 
-> The 2 queue groups split the bandwidth between them equally (50:50).
-> The first queue group node will share the 50% bandwidth with all of its
-> children (8 queues). And the second queue group node will share the entire
-> 50% bandwidth with its only children.
+> Compile-tested only.
 > 
-> The new algorithm will fix this issue.
-> 
-> Signed-off-by: Victor Raj <victor.raj@intel.com>
+> Signed-off-by: Vaibhav Gupta <vaibhavgupta40@gmail.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_sched.c | 55 ++++++++++++++++++++--
->  1 file changed, 51 insertions(+), 4 deletions(-)
+>  drivers/net/ethernet/intel/igbvf/netdev.c | 37 +++++------------------
+>  1 file changed, 8 insertions(+), 29 deletions(-)
+> 
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
-
-
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
