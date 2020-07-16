@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7513E2223F8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 15:35:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03EC12223F9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 15:35:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1512888ED7;
-	Thu, 16 Jul 2020 13:35:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AC30A8A693;
+	Thu, 16 Jul 2020 13:35:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9pLIbcmqdA0E; Thu, 16 Jul 2020 13:35:46 +0000 (UTC)
+	with ESMTP id 9hZ+xlKBpTJf; Thu, 16 Jul 2020 13:35:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2890988EEB;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 99BD18A689;
 	Thu, 16 Jul 2020 13:35:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0811D1BF3EE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:35:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C15981BF3EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:35:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 0356C8A477
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:35:41 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id BBFD08A641
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:35:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KDdYg+HpFjFF for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jul 2020 13:35:40 +0000 (UTC)
+ with ESMTP id AFztSUuCnhcr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jul 2020 13:35:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 01A6D8A679
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:35:39 +0000 (UTC)
-IronPort-SDR: MR1zmQkpX7/0MswKu7Z0HqaN5vZIUc3yScP75Sd4/sJTRWY36mKLJBPTxVfzoTyeJg2fuUiItC
- hPR8q0KiZwow==
-X-IronPort-AV: E=McAfee;i="6000,8403,9683"; a="147366303"
-X-IronPort-AV: E=Sophos;i="5.75,359,1589266800"; d="scan'208";a="147366303"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 602838A477
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 13:35:41 +0000 (UTC)
+IronPort-SDR: zJHHw0boQC+7vw/snofWTfLeZkz1QL7WdshzKqUImLFV1QIMoL1wHUw79VrBgxOBx3FhA4ralA
+ y6f98YYf175Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9683"; a="147366304"
+X-IronPort-AV: E=Sophos;i="5.75,359,1589266800"; d="scan'208";a="147366304"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2020 06:35:39 -0700
-IronPort-SDR: hTee8VK6GMRGM001e30EmRLfCMpuGbs2vlLOJQcTPtE68sBcka+9CCcIi3oVzW7Wr1PJCFxlqd
- 4x8YCropSOQQ==
+ 16 Jul 2020 06:35:41 -0700
+IronPort-SDR: 7NjzLgo0i+5+bfyKkyr6/ublne3I/6a/GDZKoD6T1/IYmgscIpfEGZ5GPO+vNCrL0hPKjj5X1z
+ HUyV2wqVj8zg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,359,1589266800"; d="scan'208";a="460474264"
+X-IronPort-AV: E=Sophos;i="5.75,359,1589266800"; d="scan'208";a="460474278"
 Received: from dpdk51.sh.intel.com ([10.67.111.82])
- by orsmga005.jf.intel.com with ESMTP; 16 Jul 2020 06:35:38 -0700
+ by orsmga005.jf.intel.com with ESMTP; 16 Jul 2020 06:35:39 -0700
 From: Qi Zhang <qi.z.zhang@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 16 Jul 2020 21:39:23 +0800
-Message-Id: <20200716133938.46921-2-qi.z.zhang@intel.com>
+Date: Thu, 16 Jul 2020 21:39:24 +0800
+Message-Id: <20200716133938.46921-3-qi.z.zhang@intel.com>
 X-Mailer: git-send-email 2.13.6
 In-Reply-To: <20200716133938.46921-1-qi.z.zhang@intel.com>
 References: <20200716133938.46921-1-qi.z.zhang@intel.com>
-Subject: [Intel-wired-lan] [PATCH S48 v6 01/16] ice: Enable flexible
- descriptor RXDID querying and configuration
+Subject: [Intel-wired-lan] [PATCH S48 v6 02/16] ice: Add more basic protocol
+ support for flow filter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,258 +74,497 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support to allow VF to query flexible descriptor RXDIDs supported
-by DDP package and configure Rx queues with selected RXDID for IAVF.
+Add more protocol and field support for flow filter include:
+ETH, VLAN, ICMP, ARP and TCP flag.
 
-Signed-off-by: Xu Ting <ting.xu@intel.com>
+Signed-off-by: Kevin Scott <kevin.c.scott@intel.com>
 Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h             |   1 +
- drivers/net/ethernet/intel/ice/ice_hw_autogen.h  |   3 +
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 108 ++++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h |   3 +
- include/linux/avf/virtchnl.h                     |  17 +++-
- 5 files changed, 129 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_fdir.c          |  20 +++
+ drivers/net/ethernet/intel/ice/ice_fdir.h          |   1 +
+ drivers/net/ethernet/intel/ice/ice_flow.c          | 181 ++++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_flow.h          |  20 +++
+ drivers/net/ethernet/intel/ice/ice_protocol_type.h |   6 +
+ 5 files changed, 222 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 7486d010a619..4ac88cfed6d3 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -435,6 +435,7 @@ struct ice_pf {
- 	u32 tx_timeout_recovery_level;
- 	char int_name[ICE_INT_NAME_STR_LEN];
- 	u32 sw_int_count;
-+	u64 supported_rxdids; /* bitmap for supported RXDID */
- };
- 
- struct ice_netdev_priv {
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 1086c9f778b4..bb1cc372ee95 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -60,6 +60,9 @@
- #define PRTDCB_TUP2TC				0x001D26C0 /* Reset Source: CORER */
- #define GL_PREEXT_L2_PMASK0(_i)			(0x0020F0FC + ((_i) * 4))
- #define GL_PREEXT_L2_PMASK1(_i)			(0x0020F108 + ((_i) * 4))
-+#define GLFLXP_RXDID_FLAGS(_i, _j)		(0x0045D000 + ((_i) * 4 + (_j) * 256))
-+#define GLFLXP_RXDID_FLAGS_FLEXIFLAG_4N_S	0
-+#define GLFLXP_RXDID_FLAGS_FLEXIFLAG_4N_M	ICE_M(0x3F, 0)
- #define GLFLXP_RXDID_FLX_WRD_0(_i)		(0x0045c800 + ((_i) * 4))
- #define GLFLXP_RXDID_FLX_WRD_0_PROT_MDID_S	0
- #define GLFLXP_RXDID_FLX_WRD_0_PROT_MDID_M	ICE_M(0xFF, 0)
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-index 16a2f2526ccc..61abaff0100b 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
-@@ -1956,6 +1956,9 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 			vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_REG;
- 	}
- 
-+	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC)
-+		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC;
-+
- 	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2)
- 		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2;
- 
-@@ -3006,8 +3009,50 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
- 	vsi->tc_cfg.tc_info[0].qcount_tx = num_txq;
- 	vsi->tc_cfg.tc_info[0].qcount_rx = num_rxq;
- 
--	if (ice_vsi_cfg_lan_txqs(vsi) || ice_vsi_cfg_rxqs(vsi))
-+	if (ice_vsi_cfg_lan_txqs(vsi) || ice_vsi_cfg_rxqs(vsi)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
-+		goto error_param;
-+	}
-+
-+	/* VF Rx queue RXDID configuration */
-+	for (i = 0; i < qci->num_queue_pairs; i++) {
-+		struct ice_hw *hw;
-+		u16 queue_id;
-+		u32 rxdid;
-+		u16 pf_q;
-+
-+		qpi = &qci->qpair[i];
-+
-+		/* start queue_id with whatever is specified and update
-+		 * as needed
-+		 */
-+		queue_id = qpi->rxq.queue_id;
-+		if (queue_id >= vsi->alloc_rxq) {
-+			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+			goto error_param;
-+		}
-+
-+		pf_q = vsi->rxq_map[queue_id];
-+
-+		rxdid = qpi->rxq.rxdid;
-+		hw = &vsi->back->hw;
-+
-+		/* If Rx flex desc is supported, select RXDID for Rx queues.
-+		 * Otherwise, use legacy 32byte descriptor format.
-+		 * Legacy 16byte descriptor is not supported. If this RXDID
-+		 * is selected, return error.
-+		 */
-+		if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC) {
-+			if (!(BIT(rxdid) & pf->supported_rxdids)) {
-+				v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+				goto error_param;
-+			}
-+		} else {
-+			rxdid = ICE_RXDID_LEGACY_1;
-+		}
-+
-+		ice_write_qrxflxp_cntxt(hw, pf_q, rxdid, 0x03);
-+	}
- 
- error_param:
- 	/* send the response to the VF */
-@@ -3626,6 +3671,64 @@ static int ice_vc_dis_vlan_stripping(struct ice_vf *vf)
+diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.c b/drivers/net/ethernet/intel/ice/ice_fdir.c
+index 6834df14332f..810c81c33286 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_fdir.c
+@@ -493,6 +493,16 @@ static void ice_pkt_insert_u32(u8 *pkt, int offset, __be32 data)
  }
  
  /**
-+ * ice_vc_query_rxdid - query RXDID supported by DDP package
-+ * @vf: pointer to VF info
-+ *
-+ * Called from VF to query a bitmap of supported flexible
-+ * descriptor RXDIDs of a DDP package.
++ * ice_pkt_insert_mac_addr - insert a MAC addr into a memory buffer.
++ * @pkt: packet buffer
++ * @addr: MAC address to convert and insert into pkt at offset
 + */
-+static int ice_vc_query_rxdid(struct ice_vf *vf)
++static void ice_pkt_insert_mac_addr(u8 *pkt, u8 *addr)
 +{
-+	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-+	struct virtchnl_supported_rxdids *rxdid = NULL;
-+	struct ice_hw *hw = &vf->pf->hw;
-+	struct ice_pf *pf = vf->pf;
-+	int len = 0;
-+	int ret, i;
-+	u32 regval;
-+
-+	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto err;
-+	}
-+
-+	if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC)) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto err;
-+	}
-+
-+	len = sizeof(struct virtchnl_supported_rxdids);
-+	rxdid = kzalloc(len, GFP_KERNEL);
-+	if (!rxdid) {
-+		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-+		len = 0;
-+		goto err;
-+	}
-+
-+	/* RXDIDs supported by DDP package can be read from the register
-+	 * to get the supported RXDID bitmap. But the legacy 32byte RXDID
-+	 * is not listed in DDP package, add it in the bitmap manually.
-+	 * Legacy 16byte descriptor is not supported.
-+	 */
-+	rxdid->supported_rxdids |= BIT(ICE_RXDID_LEGACY_1);
-+
-+	for (i = ICE_RXDID_FLEX_NIC; i < ICE_FLEX_DESC_RXDID_MAX_NUM; i++) {
-+		regval = rd32(hw, GLFLXP_RXDID_FLAGS(i, 0));
-+		if ((regval >> GLFLXP_RXDID_FLAGS_FLEXIFLAG_4N_S)
-+			& GLFLXP_RXDID_FLAGS_FLEXIFLAG_4N_M)
-+			rxdid->supported_rxdids |= BIT(i);
-+	}
-+
-+	pf->supported_rxdids = rxdid->supported_rxdids;
-+
-+err:
-+	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
-+				    v_ret, (u8 *)rxdid, len);
-+	kfree(rxdid);
-+	return ret;
++	ether_addr_copy(pkt, addr);
 +}
 +
 +/**
-  * ice_vf_init_vlan_stripping - enable/disable VLAN stripping on initialization
-  * @vf: VF to enable/disable VLAN stripping for on initialization
+  * ice_fdir_get_gen_prgm_pkt - generate a training packet
+  * @hw: pointer to the hardware structure
+  * @input: flow director filter data structure
+@@ -580,6 +590,7 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				   input->ip.v4.dst_ip);
+ 		ice_pkt_insert_u16(loc, ICE_IPV4_TCP_SRC_PORT_OFFSET,
+ 				   input->ip.v4.dst_port);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		if (frag)
+ 			loc[20] = ICE_FDIR_IPV4_PKT_FLAG_DF;
+ 		break;
+@@ -592,6 +603,9 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				   input->ip.v4.dst_ip);
+ 		ice_pkt_insert_u16(loc, ICE_IPV4_UDP_SRC_PORT_OFFSET,
+ 				   input->ip.v4.dst_port);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
++		ice_pkt_insert_mac_addr(loc + ETH_ALEN,
++					input->ext_data.src_mac);
+ 		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV4_SCTP:
+ 		ice_pkt_insert_u32(loc, ICE_IPV4_DST_ADDR_OFFSET,
+@@ -602,6 +616,7 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				   input->ip.v4.dst_ip);
+ 		ice_pkt_insert_u16(loc, ICE_IPV4_SCTP_SRC_PORT_OFFSET,
+ 				   input->ip.v4.dst_port);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV4_OTHER:
+ 		ice_pkt_insert_u32(loc, ICE_IPV4_DST_ADDR_OFFSET,
+@@ -609,6 +624,7 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 		ice_pkt_insert_u32(loc, ICE_IPV4_SRC_ADDR_OFFSET,
+ 				   input->ip.v4.dst_ip);
+ 		ice_pkt_insert_u16(loc, ICE_IPV4_PROTO_OFFSET, 0);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV6_TCP:
+ 		ice_pkt_insert_ipv6_addr(loc, ICE_IPV6_DST_ADDR_OFFSET,
+@@ -619,6 +635,7 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				   input->ip.v6.src_port);
+ 		ice_pkt_insert_u16(loc, ICE_IPV6_TCP_SRC_PORT_OFFSET,
+ 				   input->ip.v6.dst_port);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV6_UDP:
+ 		ice_pkt_insert_ipv6_addr(loc, ICE_IPV6_DST_ADDR_OFFSET,
+@@ -629,6 +646,7 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				   input->ip.v6.src_port);
+ 		ice_pkt_insert_u16(loc, ICE_IPV6_UDP_SRC_PORT_OFFSET,
+ 				   input->ip.v6.dst_port);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV6_SCTP:
+ 		ice_pkt_insert_ipv6_addr(loc, ICE_IPV6_DST_ADDR_OFFSET,
+@@ -639,12 +657,14 @@ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 				   input->ip.v6.src_port);
+ 		ice_pkt_insert_u16(loc, ICE_IPV6_SCTP_SRC_PORT_OFFSET,
+ 				   input->ip.v6.dst_port);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
+ 	case ICE_FLTR_PTYPE_NONF_IPV6_OTHER:
+ 		ice_pkt_insert_ipv6_addr(loc, ICE_IPV6_DST_ADDR_OFFSET,
+ 					 input->ip.v6.src_ip);
+ 		ice_pkt_insert_ipv6_addr(loc, ICE_IPV6_SRC_ADDR_OFFSET,
+ 					 input->ip.v6.dst_ip);
++		ice_pkt_insert_mac_addr(loc, input->ext_data.dst_mac);
+ 		break;
+ 	default:
+ 		return ICE_ERR_PARAM;
+diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.h b/drivers/net/ethernet/intel/ice/ice_fdir.h
+index 1c587766daab..31623545ebae 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fdir.h
++++ b/drivers/net/ethernet/intel/ice/ice_fdir.h
+@@ -103,6 +103,7 @@ struct ice_fdir_v6 {
+ 
+ struct ice_fdir_extra {
+ 	u8 dst_mac[ETH_ALEN];	/* dest MAC address */
++	u8 src_mac[ETH_ALEN];	/* src MAC address */
+ 	u32 usr_def[2];		/* user data */
+ 	__be16 vlan_type;	/* VLAN ethertype */
+ 	__be16 vlan_tag;	/* VLAN tag info */
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index d74e5290677f..07baeb2ddca7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -20,6 +20,17 @@ struct ice_flow_field_info {
+ /* Table containing properties of supported protocol header fields */
+ static const
+ struct ice_flow_field_info ice_flds_info[ICE_FLOW_FIELD_IDX_MAX] = {
++	/* Ether */
++	/* ICE_FLOW_FIELD_IDX_ETH_DA */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ETH, 0, ETH_ALEN),
++	/* ICE_FLOW_FIELD_IDX_ETH_SA */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ETH, ETH_ALEN, ETH_ALEN),
++	/* ICE_FLOW_FIELD_IDX_S_VLAN */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_VLAN, 12, sizeof(__be16)),
++	/* ICE_FLOW_FIELD_IDX_C_VLAN */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_VLAN, 14, sizeof(__be16)),
++	/* ICE_FLOW_FIELD_IDX_ETH_TYPE */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ETH, 0, sizeof(__be16)),
+ 	/* IPv4 / IPv6 */
+ 	/* ICE_FLOW_FIELD_IDX_IPV4_SA */
+ 	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_IPV4, 12, sizeof(struct in_addr)),
+@@ -42,6 +53,24 @@ struct ice_flow_field_info ice_flds_info[ICE_FLOW_FIELD_IDX_MAX] = {
+ 	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_SCTP, 0, sizeof(__be16)),
+ 	/* ICE_FLOW_FIELD_IDX_SCTP_DST_PORT */
+ 	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_SCTP, 2, sizeof(__be16)),
++	/* ICE_FLOW_FIELD_IDX_TCP_FLAGS */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_TCP, 13, 1),
++	/* ARP */
++	/* ICE_FLOW_FIELD_IDX_ARP_SIP */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ARP, 14, sizeof(struct in_addr)),
++	/* ICE_FLOW_FIELD_IDX_ARP_DIP */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ARP, 24, sizeof(struct in_addr)),
++	/* ICE_FLOW_FIELD_IDX_ARP_SHA */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ARP, 8, ETH_ALEN),
++	/* ICE_FLOW_FIELD_IDX_ARP_DHA */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ARP, 18, ETH_ALEN),
++	/* ICE_FLOW_FIELD_IDX_ARP_OP */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ARP, 6, sizeof(__be16)),
++	/* ICMP */
++	/* ICE_FLOW_FIELD_IDX_ICMP_TYPE */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ICMP, 0, 1),
++	/* ICE_FLOW_FIELD_IDX_ICMP_CODE */
++	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_ICMP, 1, 1),
+ 	/* GRE */
+ 	/* ICE_FLOW_FIELD_IDX_GRE_KEYID */
+ 	ICE_FLOW_FLD_INFO(ICE_FLOW_SEG_HDR_GRE, 12,
+@@ -50,8 +79,32 @@ struct ice_flow_field_info ice_flds_info[ICE_FLOW_FIELD_IDX_MAX] = {
+ 
+ /* Bitmaps indicating relevant packet types for a particular protocol header
   *
-@@ -3756,6 +3859,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	case VIRTCHNL_OP_DEL_VLAN:
- 		err = ice_vc_remove_vlan_msg(vf, msg);
- 		break;
-+	case VIRTCHNL_OP_GET_SUPPORTED_RXDIDS:
-+		err = ice_vc_query_rxdid(vf);
-+		break;
- 	case VIRTCHNL_OP_ENABLE_VLAN_STRIPPING:
- 		err = ice_vc_ena_vlan_stripping(vf);
- 		break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-index 67aa9110fdd1..ca33263bfbf0 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.h
-@@ -39,6 +39,9 @@
- #define ice_for_each_vf(pf, i) \
- 	for ((i) = 0; (i) < (pf)->num_alloc_vfs; (i)++)
- 
-+/* Max number of flexible descriptor rxdid */
-+#define ICE_FLEX_DESC_RXDID_MAX_NUM 64
-+
- /* Specific VF states */
- enum ice_vf_states {
- 	ICE_VF_STATE_INIT = 0,		/* PF is initializing VF */
-diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
-index 40bad71865ea..4e77fbf07916 100644
---- a/include/linux/avf/virtchnl.h
-+++ b/include/linux/avf/virtchnl.h
-@@ -136,6 +136,8 @@ enum virtchnl_ops {
- 	VIRTCHNL_OP_DISABLE_CHANNELS = 31,
- 	VIRTCHNL_OP_ADD_CLOUD_FILTER = 32,
- 	VIRTCHNL_OP_DEL_CLOUD_FILTER = 33,
-+	/* opcode 34 - 43 are reserved */
-+	VIRTCHNL_OP_GET_SUPPORTED_RXDIDS = 44,
- };
- 
- /* These macros are used to generate compilation errors if a structure/union
-@@ -247,6 +249,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
- #define VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM		0X00200000
- #define VIRTCHNL_VF_OFFLOAD_RX_ENCAP_CSUM	0X00400000
- #define VIRTCHNL_VF_OFFLOAD_ADQ			0X00800000
-+#define VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC	0X04000000
- 
- /* Define below the capability flags that are not offloads */
- #define VIRTCHNL_VF_CAP_ADV_LINK_SPEED		0x00000080
-@@ -302,10 +305,12 @@ struct virtchnl_rxq_info {
- 	u16 splithdr_enabled; /* deprecated with AVF 1.0 */
- 	u32 databuffer_size;
- 	u32 max_pkt_size;
--	u32 pad1;
-+	u8  pad1;
-+	u8  rxdid;
-+	u8  pad2[2];
- 	u64 dma_ring_addr;
- 	enum virtchnl_rx_hsplit rx_split_pos; /* deprecated with AVF 1.0 */
--	u32 pad2;
-+	u32 pad3;
- };
- 
- VIRTCHNL_CHECK_STRUCT_LEN(40, virtchnl_rxq_info);
-@@ -579,6 +584,12 @@ struct virtchnl_filter {
- 
- VIRTCHNL_CHECK_STRUCT_LEN(272, virtchnl_filter);
- 
-+struct virtchnl_supported_rxdids {
-+	u64 supported_rxdids;
+- * Packet types for packets with an Outer/First/Single IPv4 header
++ * Packet types for packets with an Outer/First/Single MAC header
+  */
++static const u32 ice_ptypes_mac_ofos[] = {
++	0xFDC00846, 0xBFBF7F7E, 0xF70001DF, 0xFEFDFDFB,
++	0x0000077E, 0x00000000, 0x00000000, 0x00000000,
++	0x00400000, 0x03FFF000, 0x7FFFFFE0, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
 +};
 +
-+VIRTCHNL_CHECK_STRUCT_LEN(8, virtchnl_supported_rxdids);
++/* Packet types for packets with an Innermost/Last MAC VLAN header */
++static const u32 ice_ptypes_macvlan_il[] = {
++	0x00000000, 0xBC000000, 0x000001DF, 0xF0000000,
++	0x0000077E, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
 +
- /* VIRTCHNL_OP_EVENT
-  * PF sends this message to inform the VF driver of events that may affect it.
-  * No direct response is expected from the VF, though it may generate other
-@@ -828,6 +839,8 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
- 	case VIRTCHNL_OP_DEL_CLOUD_FILTER:
- 		valid_len = sizeof(struct virtchnl_filter);
- 		break;
-+	case VIRTCHNL_OP_GET_SUPPORTED_RXDIDS:
++/* Packet types for packets with an Outer/First/Single IPv4 header */
+ static const u32 ice_ptypes_ipv4_ofos[] = {
+ 	0x1DC00000, 0x04000800, 0x00000000, 0x00000000,
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+@@ -99,6 +152,18 @@ static const u32 ice_ptypes_ipv6_il[] = {
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ };
+ 
++/* Packet types for packets with an Outermost/First ARP header */
++static const u32 ice_ptypes_arp_of[] = {
++	0x00000800, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
+ /* UDP Packet types for non-tunneled packets or tunneled
+  * packets with inner UDP.
+  */
+@@ -134,6 +199,29 @@ static const u32 ice_ptypes_sctp_il[] = {
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
++/* Packet types for packets with an Outermost/First ICMP header */
++static const u32 ice_ptypes_icmp_of[] = {
++	0x10000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
++/* Packet types for packets with an Innermost/Last ICMP header */
++static const u32 ice_ptypes_icmp_il[] = {
++	0x00000000, 0x02040408, 0x40000102, 0x08101020,
++	0x00000408, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x42108000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ };
+ 
+@@ -149,6 +237,18 @@ static const u32 ice_ptypes_gre_of[] = {
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ };
+ 
++/* Packet types for packets with an Innermost/Last MAC header */
++static const u32 ice_ptypes_mac_il[] = {
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
+ /* Manage parameters and info. used during the creation of a flow profile */
+ struct ice_flow_prof_params {
+ 	enum ice_block blk;
+@@ -164,9 +264,11 @@ struct ice_flow_prof_params {
+ };
+ 
+ #define ICE_FLOW_SEG_HDRS_L3_MASK	\
+-	(ICE_FLOW_SEG_HDR_IPV4 | ICE_FLOW_SEG_HDR_IPV6)
++	(ICE_FLOW_SEG_HDR_IPV4 | ICE_FLOW_SEG_HDR_IPV6 | \
++	 ICE_FLOW_SEG_HDR_ARP)
+ #define ICE_FLOW_SEG_HDRS_L4_MASK	\
+-	(ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_UDP | ICE_FLOW_SEG_HDR_SCTP)
++	(ICE_FLOW_SEG_HDR_ICMP | ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_UDP | \
++	 ICE_FLOW_SEG_HDR_SCTP)
+ 
+ /**
+  * ice_flow_val_hdrs - validates packet segments for valid protocol headers
+@@ -195,8 +297,11 @@ ice_flow_val_hdrs(struct ice_flow_seg_info *segs, u8 segs_cnt)
+ 
+ /* Sizes of fixed known protocol headers without header options */
+ #define ICE_FLOW_PROT_HDR_SZ_MAC	14
++#define ICE_FLOW_PROT_HDR_SZ_MAC_VLAN	(ICE_FLOW_PROT_HDR_SZ_MAC + 2)
+ #define ICE_FLOW_PROT_HDR_SZ_IPV4	20
+ #define ICE_FLOW_PROT_HDR_SZ_IPV6	40
++#define ICE_FLOW_PROT_HDR_SZ_ARP	28
++#define ICE_FLOW_PROT_HDR_SZ_ICMP	8
+ #define ICE_FLOW_PROT_HDR_SZ_TCP	20
+ #define ICE_FLOW_PROT_HDR_SZ_UDP	8
+ #define ICE_FLOW_PROT_HDR_SZ_SCTP	12
+@@ -208,16 +313,27 @@ ice_flow_val_hdrs(struct ice_flow_seg_info *segs, u8 segs_cnt)
+  */
+ static u16 ice_flow_calc_seg_sz(struct ice_flow_prof_params *params, u8 seg)
+ {
+-	u16 sz = ICE_FLOW_PROT_HDR_SZ_MAC;
++	u16 sz;
++
++	/* L2 headers */
++	sz = (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_VLAN) ?
++		ICE_FLOW_PROT_HDR_SZ_MAC_VLAN : ICE_FLOW_PROT_HDR_SZ_MAC;
+ 
+ 	/* L3 headers */
+ 	if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_IPV4)
+ 		sz += ICE_FLOW_PROT_HDR_SZ_IPV4;
+ 	else if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_IPV6)
+ 		sz += ICE_FLOW_PROT_HDR_SZ_IPV6;
++	else if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_ARP)
++		sz += ICE_FLOW_PROT_HDR_SZ_ARP;
++	else if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDRS_L4_MASK)
++		/* A L3 header is required if L4 is specified */
++		return 0;
+ 
+ 	/* L4 headers */
+-	if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_TCP)
++	if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_ICMP)
++		sz += ICE_FLOW_PROT_HDR_SZ_ICMP;
++	else if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_TCP)
+ 		sz += ICE_FLOW_PROT_HDR_SZ_TCP;
+ 	else if (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_UDP)
+ 		sz += ICE_FLOW_PROT_HDR_SZ_UDP;
+@@ -250,6 +366,25 @@ ice_flow_proc_seg_hdrs(struct ice_flow_prof_params *params)
+ 
+ 		hdrs = prof->segs[i].hdrs;
+ 
++		if (hdrs & ICE_FLOW_SEG_HDR_ETH) {
++			src = !i ? (const unsigned long *)ice_ptypes_mac_ofos :
++				(const unsigned long *)ice_ptypes_mac_il;
++			bitmap_and(params->ptypes, params->ptypes, src,
++				   ICE_FLOW_PTYPE_MAX);
++		}
++
++		if (i && hdrs & ICE_FLOW_SEG_HDR_VLAN) {
++			src = (const unsigned long *)ice_ptypes_macvlan_il;
++			bitmap_and(params->ptypes, params->ptypes, src,
++				   ICE_FLOW_PTYPE_MAX);
++		}
++
++		if (!i && hdrs & ICE_FLOW_SEG_HDR_ARP) {
++			bitmap_and(params->ptypes, params->ptypes,
++				   (const unsigned long *)ice_ptypes_arp_of,
++				   ICE_FLOW_PTYPE_MAX);
++		}
++
+ 		if (hdrs & ICE_FLOW_SEG_HDR_IPV4) {
+ 			src = !i ? (const unsigned long *)ice_ptypes_ipv4_ofos :
+ 				(const unsigned long *)ice_ptypes_ipv4_il;
+@@ -274,6 +409,13 @@ ice_flow_proc_seg_hdrs(struct ice_flow_prof_params *params)
+ 			src = (const unsigned long *)ice_ptypes_sctp_il;
+ 			bitmap_and(params->ptypes, params->ptypes, src,
+ 				   ICE_FLOW_PTYPE_MAX);
++		}
++
++		if (hdrs & ICE_FLOW_SEG_HDR_ICMP) {
++			src = !i ? (const unsigned long *)ice_ptypes_icmp_of :
++				(const unsigned long *)ice_ptypes_icmp_il;
++			bitmap_and(params->ptypes, params->ptypes, src,
++				   ICE_FLOW_PTYPE_MAX);
+ 		} else if (hdrs & ICE_FLOW_SEG_HDR_GRE) {
+ 			if (!i) {
+ 				src = (const unsigned long *)ice_ptypes_gre_of;
+@@ -310,6 +452,15 @@ ice_flow_xtract_fld(struct ice_hw *hw, struct ice_flow_prof_params *params,
+ 	flds = params->prof->segs[seg].fields;
+ 
+ 	switch (fld) {
++	case ICE_FLOW_FIELD_IDX_ETH_DA:
++	case ICE_FLOW_FIELD_IDX_ETH_SA:
++	case ICE_FLOW_FIELD_IDX_S_VLAN:
++	case ICE_FLOW_FIELD_IDX_C_VLAN:
++		prot_id = seg == 0 ? ICE_PROT_MAC_OF_OR_S : ICE_PROT_MAC_IL;
 +		break;
- 	/* These are always errors coming from the VF. */
- 	case VIRTCHNL_OP_EVENT:
- 	case VIRTCHNL_OP_UNKNOWN:
++	case ICE_FLOW_FIELD_IDX_ETH_TYPE:
++		prot_id = seg == 0 ? ICE_PROT_ETYPE_OL : ICE_PROT_ETYPE_IL;
++		break;
+ 	case ICE_FLOW_FIELD_IDX_IPV4_SA:
+ 	case ICE_FLOW_FIELD_IDX_IPV4_DA:
+ 		prot_id = seg == 0 ? ICE_PROT_IPV4_OF_OR_S : ICE_PROT_IPV4_IL;
+@@ -320,6 +471,7 @@ ice_flow_xtract_fld(struct ice_hw *hw, struct ice_flow_prof_params *params,
+ 		break;
+ 	case ICE_FLOW_FIELD_IDX_TCP_SRC_PORT:
+ 	case ICE_FLOW_FIELD_IDX_TCP_DST_PORT:
++	case ICE_FLOW_FIELD_IDX_TCP_FLAGS:
+ 		prot_id = ICE_PROT_TCP_IL;
+ 		break;
+ 	case ICE_FLOW_FIELD_IDX_UDP_SRC_PORT:
+@@ -330,6 +482,19 @@ ice_flow_xtract_fld(struct ice_hw *hw, struct ice_flow_prof_params *params,
+ 	case ICE_FLOW_FIELD_IDX_SCTP_DST_PORT:
+ 		prot_id = ICE_PROT_SCTP_IL;
+ 		break;
++	case ICE_FLOW_FIELD_IDX_ARP_SIP:
++	case ICE_FLOW_FIELD_IDX_ARP_DIP:
++	case ICE_FLOW_FIELD_IDX_ARP_SHA:
++	case ICE_FLOW_FIELD_IDX_ARP_DHA:
++	case ICE_FLOW_FIELD_IDX_ARP_OP:
++		prot_id = ICE_PROT_ARP_OF;
++		break;
++	case ICE_FLOW_FIELD_IDX_ICMP_TYPE:
++	case ICE_FLOW_FIELD_IDX_ICMP_CODE:
++		/* ICMP type and code share the same extraction seq. entry */
++		prot_id = (params->prof->segs[seg].hdrs & ICE_FLOW_SEG_HDR_IPV4) ?
++				ICE_PROT_ICMP_IL : ICE_PROT_ICMPV6_IL;
++		break;
+ 	case ICE_FLOW_FIELD_IDX_GRE_KEYID:
+ 		prot_id = ICE_PROT_GRE_OF;
+ 		break;
+@@ -1093,6 +1258,9 @@ ice_flow_add_fld_raw(struct ice_flow_seg_info *seg, u16 off, u8 len,
+ 	seg->raws_cnt++;
+ }
+ 
++#define ICE_FLOW_RSS_SEG_HDR_L2_MASKS \
++	(ICE_FLOW_SEG_HDR_ETH | ICE_FLOW_SEG_HDR_VLAN)
++
+ #define ICE_FLOW_RSS_SEG_HDR_L3_MASKS \
+ 	(ICE_FLOW_SEG_HDR_IPV4 | ICE_FLOW_SEG_HDR_IPV6)
+ 
+@@ -1100,7 +1268,8 @@ ice_flow_add_fld_raw(struct ice_flow_seg_info *seg, u16 off, u8 len,
+ 	(ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_UDP | ICE_FLOW_SEG_HDR_SCTP)
+ 
+ #define ICE_FLOW_RSS_SEG_HDR_VAL_MASKS \
+-	(ICE_FLOW_RSS_SEG_HDR_L3_MASKS | \
++	(ICE_FLOW_RSS_SEG_HDR_L2_MASKS | \
++	 ICE_FLOW_RSS_SEG_HDR_L3_MASKS | \
+ 	 ICE_FLOW_RSS_SEG_HDR_L4_MASKS)
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+index 3913da2116d2..234f8f5c99cf 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.h
++++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+@@ -38,8 +38,12 @@
+  */
+ enum ice_flow_seg_hdr {
+ 	ICE_FLOW_SEG_HDR_NONE		= 0x00000000,
++	ICE_FLOW_SEG_HDR_ETH		= 0x00000001,
++	ICE_FLOW_SEG_HDR_VLAN		= 0x00000002,
+ 	ICE_FLOW_SEG_HDR_IPV4		= 0x00000004,
+ 	ICE_FLOW_SEG_HDR_IPV6		= 0x00000008,
++	ICE_FLOW_SEG_HDR_ARP		= 0x00000010,
++	ICE_FLOW_SEG_HDR_ICMP		= 0x00000020,
+ 	ICE_FLOW_SEG_HDR_TCP		= 0x00000040,
+ 	ICE_FLOW_SEG_HDR_UDP		= 0x00000080,
+ 	ICE_FLOW_SEG_HDR_SCTP		= 0x00000100,
+@@ -47,6 +51,12 @@ enum ice_flow_seg_hdr {
+ };
+ 
+ enum ice_flow_field {
++	/* L2 */
++	ICE_FLOW_FIELD_IDX_ETH_DA,
++	ICE_FLOW_FIELD_IDX_ETH_SA,
++	ICE_FLOW_FIELD_IDX_S_VLAN,
++	ICE_FLOW_FIELD_IDX_C_VLAN,
++	ICE_FLOW_FIELD_IDX_ETH_TYPE,
+ 	/* L3 */
+ 	ICE_FLOW_FIELD_IDX_IPV4_SA,
+ 	ICE_FLOW_FIELD_IDX_IPV4_DA,
+@@ -59,6 +69,16 @@ enum ice_flow_field {
+ 	ICE_FLOW_FIELD_IDX_UDP_DST_PORT,
+ 	ICE_FLOW_FIELD_IDX_SCTP_SRC_PORT,
+ 	ICE_FLOW_FIELD_IDX_SCTP_DST_PORT,
++	ICE_FLOW_FIELD_IDX_TCP_FLAGS,
++	/* ARP */
++	ICE_FLOW_FIELD_IDX_ARP_SIP,
++	ICE_FLOW_FIELD_IDX_ARP_DIP,
++	ICE_FLOW_FIELD_IDX_ARP_SHA,
++	ICE_FLOW_FIELD_IDX_ARP_DHA,
++	ICE_FLOW_FIELD_IDX_ARP_OP,
++	/* ICMP */
++	ICE_FLOW_FIELD_IDX_ICMP_TYPE,
++	ICE_FLOW_FIELD_IDX_ICMP_CODE,
+ 	/* GRE */
+ 	ICE_FLOW_FIELD_IDX_GRE_KEYID,
+ 	/* The total number of enums must not exceed 64 */
+diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
+index 7f4c1ec1eff2..fac5f15a692c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
+@@ -13,6 +13,9 @@
+ enum ice_prot_id {
+ 	ICE_PROT_ID_INVAL	= 0,
+ 	ICE_PROT_MAC_OF_OR_S	= 1,
++	ICE_PROT_MAC_IL		= 4,
++	ICE_PROT_ETYPE_OL	= 9,
++	ICE_PROT_ETYPE_IL	= 10,
+ 	ICE_PROT_IPV4_OF_OR_S	= 32,
+ 	ICE_PROT_IPV4_IL	= 33,
+ 	ICE_PROT_IPV6_OF_OR_S	= 40,
+@@ -22,6 +25,9 @@ enum ice_prot_id {
+ 	ICE_PROT_UDP_IL_OR_S	= 53,
+ 	ICE_PROT_GRE_OF		= 64,
+ 	ICE_PROT_SCTP_IL	= 96,
++	ICE_PROT_ICMP_IL	= 98,
++	ICE_PROT_ICMPV6_IL	= 100,
++	ICE_PROT_ARP_OF		= 118,
+ 	ICE_PROT_META_ID	= 255, /* when offset == metadata */
+ 	ICE_PROT_INVALID	= 255  /* when offset == ICE_FV_OFFSET_INVAL */
+ };
 -- 
 2.13.6
 
