@@ -2,64 +2,133 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57F05222847
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 18:29:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9736D222A53
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Jul 2020 19:46:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D97FB87238;
-	Thu, 16 Jul 2020 16:29:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 51F10870C4;
+	Thu, 16 Jul 2020 17:46:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LMjNiwntpQGN; Thu, 16 Jul 2020 16:29:18 +0000 (UTC)
+	with ESMTP id SCSPx8nVyn7F; Thu, 16 Jul 2020 17:46:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 1811587251;
-	Thu, 16 Jul 2020 16:29:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id AF13E87317;
+	Thu, 16 Jul 2020 17:46:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A18271BF311
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 16:29:15 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4EC081BF841
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 17:46:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9194326D8E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 16:29:15 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 4A43789BC8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 17:46:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 19CXQ8INFI+H for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Jul 2020 16:29:14 +0000 (UTC)
+ with ESMTP id s1UeC8cYxsrz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Jul 2020 17:45:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 1F5A626A49
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 16:29:14 +0000 (UTC)
-IronPort-SDR: Sk3kK0/Iyy3Mq8b5vsTdYjBbogYjVZNqcCfRn8Z43WBJZcde+eOtzsbiFWEIKhbEyO+8sCM8fe
- 1EUCwH73Uk8w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9684"; a="149414564"
-X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="149414564"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 11C1C8AE06
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Jul 2020 17:45:58 +0000 (UTC)
+IronPort-SDR: mLkEKcc2Y6uzyotiIDhh+mrNUZAxgjgl32DwD97anuLzGa9zo8k9vHBjzSyxmM0oI3NvO8Ji81
+ BdHWfIzvNTAA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9684"; a="214183684"
+X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="214183684"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2020 09:29:07 -0700
-IronPort-SDR: jVayiEFqbp2750im/htz5hT5AFKhoNCXs9RNDhLQ0oKLziiHP1ztfXWKy4FWsWUDyjU51Mt+qx
- /r4ub4vJDnLg==
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2020 10:45:57 -0700
+IronPort-SDR: Xgucv9Rb2/ETSdKxxlxpLw5JR4G/fnU2OCGadocHRM+DIvwarUGnVIYYASCDjaDYkvIsMAVRqr
+ Vw8WJFQ0LuBw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="326574290"
-Received: from hmehl-mobl2.ger.corp.intel.com (HELO [10.254.156.209])
- ([10.254.156.209])
- by orsmga007.jf.intel.com with ESMTP; 16 Jul 2020 09:29:04 -0700
-To: Nathan Chancellor <natechancellor@gmail.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <20200716044934.152364-1-natechancellor@gmail.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <cdfec63a-e51f-e1a6-aa60-6ca949338306@intel.com>
-Date: Thu, 16 Jul 2020 19:29:03 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20200716044934.152364-1-natechancellor@gmail.com>
+X-IronPort-AV: E=Sophos;i="5.75,360,1589266800"; d="scan'208";a="269315431"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmsmga007.fm.intel.com with ESMTP; 16 Jul 2020 10:45:56 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Thu, 16 Jul 2020 10:45:56 -0700
+Received: from ORSEDG002.ED.cps.intel.com (10.7.248.5) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
+ via Frontend Transport; Thu, 16 Jul 2020 10:45:56 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
+ by edgegateway.intel.com (134.134.137.101) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Thu, 16 Jul 2020 10:45:54 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=U4SCxgR+X/v6jQEchuF5e7HDj/ZH6zI+2Vh0r0Nq52YR+HzUyC6ClAX7oRFaPvCajQvdqt8Pk8tGo77PyHHa1vG5XRIqhEcrPFxm/xCfKwDaM0MWiqA5MUbc/APL236+Nc9iiSc82At697LSvGRTynkBICrbpA4IJuBryFGIZjN8xd3Beb3GnMAlR6wBrTT80m9+YfApaejYKm0Ru90fwoFBNUqONe2lMGa9lUGXRD025pwis1R9kwTBu0rUo4ggL0ohVlBA5zRyuBALYDmPiaxlxtzP1GfXiXSN/4n2NAyo8xuaH5+/cWNqmCRIrWs1uZ72xDrbIC+jjqNCwvPDiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YdmwFpMukmqnhUCQfVgKnTRbFMdRfypu8nKwhwhYivM=;
+ b=NjytJRl6x9KmUGZfOYMSGCq7uzIYPkRUEd8M0jvvzhPuXQYrteBTmKuTAMTQYGYs+cbAB8LKAxZL261L3IIP34JiBAh2LFuLB4E/PIZW4MAM1IA8I8NEkktsPvroq0Z3irZ9yHi2sG2i3KTvJp9kz90jgm0jHwvoiIzNxDoVA8RHUZo5xK9DrGfTJSHtbwQK2dg1xVlgBU33mSQxYTLemLVERUwR+9P1bt5yHpzYjqfuYTOCfBW4EbCU3ht7ST3yGLknuHrQtchzJvgby2L/HYv1kJFe0Yci9KpztLR4tbKeIaD4E2cGmTZzTb/OtUieFxG5QobhAV2iTJP++FsEyw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YdmwFpMukmqnhUCQfVgKnTRbFMdRfypu8nKwhwhYivM=;
+ b=jZLtljqvBioRHOKZI7vexn1jXxLn5r4IwwvMpcyltDu22x1WWEwhV+SpjgFPwyJfBQQhPGBdzvGmyNLMaXyVdVmOFn1BftmG1FXJoHgqreexRy7TFcBK0wuGXomiOpeQED1nsZXubA/M/78r7cCCBVCHxlKyh7DoUyhj0i01Ims=
+Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
+ (2603:10b6:405:51::10) by BN6PR11MB1268.namprd11.prod.outlook.com
+ (2603:10b6:404:47::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.23; Thu, 16 Jul
+ 2020 17:45:51 +0000
+Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
+ ([fe80::6cc1:1382:c39c:18e3]) by BN6PR1101MB2145.namprd11.prod.outlook.com
+ ([fe80::6cc1:1382:c39c:18e3%9]) with mapi id 15.20.3195.018; Thu, 16 Jul 2020
+ 17:45:51 +0000
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH S50 05/15] ice: return correct error
+ code from ice_aq_sw_rules
+Thread-Index: AQHWWVg4n2C8xFFkek+L+21iQuLfk6kKfx8Q
+Date: Thu, 16 Jul 2020 17:45:51 +0000
+Message-ID: <BN6PR1101MB21452BF5A905E918F70F34C38C7F0@BN6PR1101MB2145.namprd11.prod.outlook.com>
+References: <20200713205318.32425-1-anthony.l.nguyen@intel.com>
+ <20200713205318.32425-5-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200713205318.32425-5-anthony.l.nguyen@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igc: Do not use link uninitialized in
- igc_check_for_copper_link
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.2.0.6
+authentication-results: lists.osuosl.org; dkim=none (message not signed)
+ header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
+x-originating-ip: [71.59.183.208]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: cf97abe6-3bbe-4dba-9f2d-08d829b01515
+x-ms-traffictypediagnostic: BN6PR11MB1268:
+x-microsoft-antispam-prvs: <BN6PR11MB1268123D38F3F61E7B9B76878C7F0@BN6PR11MB1268.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2201;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 3Ge/8oQfaxbHeKZ9LHh3o4kvhIikb49LY8swv12hsjS6riE30FxV0oyBsPLpnAf1hAtt93N7/mWaGI4kyqpVeKM5Y6/7P94h+i2nNnOieSfCgBUIo5I3pgUS6lGlG9zUWRruBLyJL6ikyNdt7qGtn8qB5EIuW1Yh9hFdiR4HFJGsV0GMaYUHZigmteufJEQLiUVBlosP9uHuMU68PNjOZkqlm8iBSY0+IDbEP43sf318sRfqf8VMJmwSB2mgWu+1jzuZz02cTp0QnjVtiEFTsxbRr9vC+SIC8l5q4xLJUJRO4JKlVlJCXVm11OoBvQFS
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(346002)(396003)(136003)(39860400002)(376002)(366004)(8936002)(316002)(83380400001)(66476007)(66946007)(66556008)(478600001)(7696005)(186003)(64756008)(71200400001)(86362001)(52536014)(8676002)(66446008)(6506007)(5660300002)(26005)(76116006)(33656002)(53546011)(9686003)(6916009)(2906002)(55016002)(4744005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: ebRkYCl4l8Ci/ZWOe/ionGpBf6KLIQpG50Fsdl03LQO/zNF3MAJCz4ZjNMezW9G9CcB5rru391ZSF0Eu2hOLEPkRB5zFkI2cmKi6qDtLVKlvHX5OXHjSgY34Uxx9o+2Bon+HxZ6H9Bzr9jwaJ4+xEF5Jbkr26lppqSOgD7rUII7hPvnpLfNXtdL1eiZ3Fj9e+a4ORJ+aR30oQqOt3Y0asX3cYjtbkmDBIeFwt0uJ5ogChW0OqY8s9nfN60grMGCvyE/SMmX4npO7E5vLsq2Z3Pe2D2p+6/pmdYOMhVDmGgiBR12eXxlHfZ/Ci9XQtdBQggEBqI5iyjllyzKUuhZZdVOlYyjeR7SM2CJUjlE4I7ta5bjeQ4cA8pWMl9wFzYUUUfIph/S05WtD16EOnhe3gnmhx1BiFGm1nTT0zua3sI/cLPoENc+Kbjd6sT0s8gRXhkNVv3P1ZstQ7WZ5l8tonUGdMUE2NBxyBW0P9ShvVVY=
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN6PR1101MB2145.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cf97abe6-3bbe-4dba-9f2d-08d829b01515
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Jul 2020 17:45:51.6207 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: LuFC47Qu6Xvj9zVLfza7F12ttPsKX1jsZ8rKaf7BeQueoaOvLNMwLCsE2qMbooX87F2tnnxGIl137Yu9RhFP1c3W+OJcUIbeB9RWexKgRgo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1268
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH S50 05/15] ice: return correct error
+ code from ice_aq_sw_rules
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,76 +141,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/16/2020 07:49, Nathan Chancellor wrote:
-> Clang warns:
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Tony Nguyen
+> Sent: Monday, July 13, 2020 1:53 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH S50 05/15] ice: return correct error code
+> from ice_aq_sw_rules
 > 
-Hello Nathan,
-Thanks for tracking our code.Please, look at 
-https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20200709073416.14126-1-sasha.neftin@intel.com/ 
-- I hope this patch already address this Clang warns - please, let me know.
-> drivers/net/ethernet/intel/igc/igc_mac.c:374:6: warning: variable 'link'
-> is used uninitialized whenever 'if' condition is true
-> [-Wsometimes-uninitialized]
->          if (!mac->get_link_status) {
->              ^~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igc/igc_mac.c:424:33: note: uninitialized use
-> occurs here
->          ret_val = igc_set_ltr_i225(hw, link);
->                                         ^~~~
-> drivers/net/ethernet/intel/igc/igc_mac.c:374:2: note: remove the 'if' if
-> its condition is always false
->          if (!mac->get_link_status) {
->          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igc/igc_mac.c:367:11: note: initialize the
-> variable 'link' to silence this warning
->          bool link;
->                   ^
->                    = 0
-> 1 warning generated.
+> From: Kiran Patil <kiran.patil@intel.com>
 > 
-> It is not wrong, link is only uninitialized after this through
-> igc_phy_has_link. Presumably, if we skip the majority of this function
-> when get_link_status is false, we should skip calling igc_set_ltr_i225
-> as well. Just directly return 0 in this case, rather than bothering with
-> adding another label or initializing link in the if statement.
+> Return ICE_ERR_DOES_NOT_EXIST return code if admin command error code
+> is ICE_AQ_RC_ENOENT (not exist). ice_aq_sw_rules is used when switch rule
+> is getting added/deleted/updated. In case of delete/update switch rule,
+> admin command can return ICE_AQ_RC_ENOENT error code if such rule does
+> not exist, hence return ICE_ERR_DOES_NOT_EXIST error code from
+> ice_aq_sw_rule, so that caller of this function can decide how to handle
+> ICE_ERR_DOES_NOT_EXIST.
 > 
-> Fixes: 707abf069548 ("igc: Add initial LTR support")
-> Link: https://github.com/ClangBuiltLinux/linux/issues/1095
-> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+> Signed-off-by: Kiran Patil <kiran.patil@intel.com>
 > ---
->   drivers/net/ethernet/intel/igc/igc_mac.c | 6 ++----
->   1 file changed, 2 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
-> index b47e7b0a6398..26e3c56a4a8b 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_mac.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_mac.c
-> @@ -371,10 +371,8 @@ s32 igc_check_for_copper_link(struct igc_hw *hw)
->   	 * get_link_status flag is set upon receiving a Link Status
->   	 * Change or Rx Sequence Error interrupt.
->   	 */
-> -	if (!mac->get_link_status) {
-> -		ret_val = 0;
-> -		goto out;
-> -	}
-> +	if (!mac->get_link_status)
-> +		return 0;
->   
->   	/* First we want to see if the MII Status Register reports
->   	 * link.  If so, then we want to get the current speed/duplex
-> 
-> base-commit: ca0e494af5edb59002665bf12871e94b4163a257
-> 
-Thanks,
-Sasha
+>  drivers/net/ethernet/intel/ice/ice_switch.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
