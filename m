@@ -1,66 +1,50 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD7B0224FCD
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 19 Jul 2020 07:34:21 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 820EF87D73;
-	Sun, 19 Jul 2020 05:34:20 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QqVyPMrebecw; Sun, 19 Jul 2020 05:34:20 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E36AD87D65;
-	Sun, 19 Jul 2020 05:34:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 54C771BF4E6
- for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jul 2020 05:34:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 080B82254D5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jul 2020 02:10:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 4EB8F849BE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jul 2020 05:34:18 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A804C85AE9;
+	Mon, 20 Jul 2020 00:10:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Kyh5-1TD8u5U; Mon, 20 Jul 2020 00:10:54 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B3CE485A78;
+	Mon, 20 Jul 2020 00:10:53 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1DB851BF3DD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 00:10:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 16E3186388
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 00:10:52 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id upPLCQcK7byz for <intel-wired-lan@lists.osuosl.org>;
- Sun, 19 Jul 2020 05:34:17 +0000 (UTC)
+ with ESMTP id y1ydeORtQnyj for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Jul 2020 00:10:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id D7877849A3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 19 Jul 2020 05:34:16 +0000 (UTC)
-IronPort-SDR: qn5vk642TDZSwyOTDWLOXmcYdJ1C9zESXPg8qbhwwYGgs0nZjO+yUzJ3UWjiyoZzOXIIsEbvhr
- T4ag5hgo9gMg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9686"; a="149774357"
-X-IronPort-AV: E=Sophos;i="5.75,369,1589266800"; d="scan'208";a="149774357"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jul 2020 22:34:16 -0700
-IronPort-SDR: FXW1Ac7iCitpqkwhFvTSn54O81Pc62W1bjCaB9G8zwy97xDiluuZbiRJb2PRtHwllONbbVj6kR
- IbZFJPomRm6g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,369,1589266800"; d="scan'208";a="269858023"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.249.88.79])
- ([10.249.88.79])
- by fmsmga007.fm.intel.com with ESMTP; 18 Jul 2020 22:34:13 -0700
-To: Nathan Chancellor <natechancellor@gmail.com>
-References: <20200716044934.152364-1-natechancellor@gmail.com>
- <cdfec63a-e51f-e1a6-aa60-6ca949338306@intel.com>
- <20200717021235.GA4098394@ubuntu-n2-xlarge-x86>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <96131050-57e4-934a-3d9a-a285f234e633@intel.com>
-Date: Sun, 19 Jul 2020 08:34:12 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E5DAA86272
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 00:10:49 +0000 (UTC)
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 5F651AF5B;
+ Mon, 20 Jul 2020 00:10:53 +0000 (UTC)
+Received: by lion.mk-sys.cz (Postfix, from userid 1000)
+ id 046B960743; Mon, 20 Jul 2020 02:10:47 +0200 (CEST)
+Date: Mon, 20 Jul 2020 02:10:46 +0200
+From: Michal Kubecek <mkubecek@suse.cz>
+To: Andre Guedes <andre.guedes@intel.com>
+Message-ID: <20200720001046.g7y3p7wrua5qz6i2@lion.mk-sys.cz>
+References: <20200707234800.39119-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20200717021235.GA4098394@ubuntu-n2-xlarge-x86>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] igc: Do not use link uninitialized in
- igc_check_for_copper_link
+In-Reply-To: <20200707234800.39119-1-andre.guedes@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH ethtool 0/4] Add support for IGC driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,90 +57,91 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- clang-built-linux@googlegroups.com, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Content-Type: multipart/mixed; boundary="===============6302199446691093537=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/17/2020 05:12, Nathan Chancellor wrote:
-> On Thu, Jul 16, 2020 at 07:29:03PM +0300, Neftin, Sasha wrote:
->> On 7/16/2020 07:49, Nathan Chancellor wrote:
->>> Clang warns:
->>>
->> Hello Nathan,
->> Thanks for tracking our code.Please, look at https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20200709073416.14126-1-sasha.neftin@intel.com/
->> - I hope this patch already address this Clang warns - please, let me know.
-> 
-> I have not explicitly tested it but it seems obvious that it will. Let's
-> go with that.
-> 
-Good Nathan, let's go with my 
-https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20200709073416.14126-1-sasha.neftin@intel.com/ 
-and let me know if warning still generated.
-Thanks,
-Sasha
+
+--===============6302199446691093537==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ej7tdyo6eki5dxpl"
+Content-Disposition: inline
+
+
+--ej7tdyo6eki5dxpl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Jul 07, 2020 at 04:47:56PM -0700, Andre Guedes wrote:
+> Hi all,
+>=20
+> This patch series adds support for parsing registers dumped by the IGC dr=
+iver.
+> For now, the following registers are parsed:
+>=20
+> 	* Receive Address Low (RAL)
+> 	* Receive Address High (RAH)
+> 	* Receive Control (RCTL)
+> 	* VLAN Priority Queue Filter (VLANPQF)
+> 	* EType Queue Filter (ETQF)
+>=20
+> More registers should be parsed as we need/enable them.
+>=20
 > Cheers,
-> Nathan
-> 
->>> drivers/net/ethernet/intel/igc/igc_mac.c:374:6: warning: variable 'link'
->>> is used uninitialized whenever 'if' condition is true
->>> [-Wsometimes-uninitialized]
->>>           if (!mac->get_link_status) {
->>>               ^~~~~~~~~~~~~~~~~~~~~
->>> drivers/net/ethernet/intel/igc/igc_mac.c:424:33: note: uninitialized use
->>> occurs here
->>>           ret_val = igc_set_ltr_i225(hw, link);
->>>                                          ^~~~
->>> drivers/net/ethernet/intel/igc/igc_mac.c:374:2: note: remove the 'if' if
->>> its condition is always false
->>>           if (!mac->get_link_status) {
->>>           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>> drivers/net/ethernet/intel/igc/igc_mac.c:367:11: note: initialize the
->>> variable 'link' to silence this warning
->>>           bool link;
->>>                    ^
->>>                     = 0
->>> 1 warning generated.
->>>
->>> It is not wrong, link is only uninitialized after this through
->>> igc_phy_has_link. Presumably, if we skip the majority of this function
->>> when get_link_status is false, we should skip calling igc_set_ltr_i225
->>> as well. Just directly return 0 in this case, rather than bothering with
->>> adding another label or initializing link in the if statement.
->>>
->>> Fixes: 707abf069548 ("igc: Add initial LTR support")
->>> Link: https://github.com/ClangBuiltLinux/linux/issues/1095
->>> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
->>> ---
->>>    drivers/net/ethernet/intel/igc/igc_mac.c | 6 ++----
->>>    1 file changed, 2 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
->>> index b47e7b0a6398..26e3c56a4a8b 100644
->>> --- a/drivers/net/ethernet/intel/igc/igc_mac.c
->>> +++ b/drivers/net/ethernet/intel/igc/igc_mac.c
->>> @@ -371,10 +371,8 @@ s32 igc_check_for_copper_link(struct igc_hw *hw)
->>>    	 * get_link_status flag is set upon receiving a Link Status
->>>    	 * Change or Rx Sequence Error interrupt.
->>>    	 */
->>> -	if (!mac->get_link_status) {
->>> -		ret_val = 0;
->>> -		goto out;
->>> -	}
->>> +	if (!mac->get_link_status)
->>> +		return 0;
->>>    	/* First we want to see if the MII Status Register reports
->>>    	 * link.  If so, then we want to get the current speed/duplex
->>>
->>> base-commit: ca0e494af5edb59002665bf12871e94b4163a257
->>>
->> Thanks,
->> Sasha
+> Andre
+
+Series merged. But please consider making the output consistent with
+other Intel drivers which use lowercase keywords for values (e.g.
+"enabled") and "yes"/"no" for bool values (rather than "True" / "False").
+
+Michal
+
+>=20
+> Andre Guedes (4):
+>   Add IGC driver support
+>   igc: Parse RCTL register fields
+>   igc: Parse VLANPQF register fields
+>   igc: Parse ETQF registers
+>=20
+>  Makefile.am |   3 +-
+>  ethtool.c   |   1 +
+>  igc.c       | 283 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+>  internal.h  |   3 +
+>  4 files changed, 289 insertions(+), 1 deletion(-)
+>  create mode 100644 igc.c
+>=20
+> --=20
+> 2.26.2
+>=20
+
+--ej7tdyo6eki5dxpl
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEWN3j3bieVmp26mKO538sG/LRdpUFAl8U4PsACgkQ538sG/LR
+dpXm9QgAq72fYscACYbNgLvt5loeQmo308467Y/f74rgitTYOHpomU6d+mK2ipkt
+dO8k6vbPnFJSQET6VhS/HSP/FyYcvvhLe36yoai9CKdPrFxoe5SIDA6N347b5vaD
+CHzOr48YgA+Ja63JQ7GtNQ1XouElw0htGLHrqTp6VFTq7vUx5TgcitoOzO9bZN4m
+v1TiHVqw/rexWVn8EEWMUpNTviVmAyiAsktume3iW81JncrPiZNgyH//gsFLAd0u
+g73Wg3hsP9uhkuXrcXeQWGZp8DZaT47PfYajbtsQYrba43nL3t2Yi5giYAHvZgUC
+oWOaGXiNylF3ZsvYDi0rDIUqsXwNBQ==
+=tfbV
+-----END PGP SIGNATURE-----
+
+--ej7tdyo6eki5dxpl--
+
+--===============6302199446691093537==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============6302199446691093537==--
