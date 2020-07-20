@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53DBF226191
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jul 2020 16:06:06 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16EC0226192
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Jul 2020 16:06:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0EC07876A6;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FC6088170;
 	Mon, 20 Jul 2020 14:06:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id euGiJ9PDTsQV; Mon, 20 Jul 2020 14:06:04 +0000 (UTC)
+	with ESMTP id uhuOqQVnwWGd; Mon, 20 Jul 2020 14:06:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1984A87688;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6CF4F88164;
 	Mon, 20 Jul 2020 14:06:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1F4FC1BF5E0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 08:25:08 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 007281BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 08:26:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 11806204B0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 08:25:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id ED1BB85DF6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 08:26:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wgMrc9iGgwMM for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Jul 2020 08:25:06 +0000 (UTC)
+ with ESMTP id 0RnXPm3HXfrq for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Jul 2020 08:26:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by silver.osuosl.org (Postfix) with ESMTPS id 6C99820C45
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 08:25:06 +0000 (UTC)
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 6B24CB213EBCD4C9FABF;
- Mon, 20 Jul 2020 16:25:02 +0800 (CST)
-Received: from huawei.com (10.175.101.6) by DGGEMS401-HUB.china.huawei.com
- (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Jul 2020
- 16:24:52 +0800
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CB91A85DD1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Jul 2020 08:26:36 +0000 (UTC)
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 00BE0729A02F365A998C;
+ Mon, 20 Jul 2020 16:26:33 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Mon, 20 Jul 2020
+ 16:26:25 +0800
 From: linmiaohe <linmiaohe@huawei.com>
 To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>, <kuba@kernel.org>
-Date: Mon, 20 Jul 2020 16:27:41 +0800
-Message-ID: <1595233661-13699-1-git-send-email-linmiaohe@huawei.com>
+Date: Mon, 20 Jul 2020 16:29:14 +0800
+Message-ID: <1595233754-13765-1-git-send-email-linmiaohe@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
 X-Originating-IP: [10.175.101.6]
 X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Mon, 20 Jul 2020 14:06:02 +0000
-Subject: [Intel-wired-lan] [PATCH] ixgbe: use eth_zero_addr() to clear mac
+Subject: [Intel-wired-lan] [PATCH] igb: use eth_zero_addr() to clear mac
  address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -73,22 +73,31 @@ Use eth_zero_addr() to clear mac address insetad of memset().
 
 Signed-off-by: Miaohe Lin <linmiaohe@huawei.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igb/igb_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-index d05a5690e66b..6e9097a0a36f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-@@ -783,7 +783,7 @@ static int ixgbe_set_vf_mac(struct ixgbe_adapter *adapter,
- 		memcpy(adapter->vfinfo[vf].vf_mac_addresses, mac_addr,
- 		       ETH_ALEN);
- 	else
--		memset(adapter->vfinfo[vf].vf_mac_addresses, 0, ETH_ALEN);
-+		eth_zero_addr(adapter->vfinfo[vf].vf_mac_addresses);
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 8bb3db2cbd41..adedd98f1e3e 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -7168,7 +7168,7 @@ static void igb_flush_mac_table(struct igb_adapter *adapter)
  
- 	return retval;
- }
+ 	for (i = 0; i < hw->mac.rar_entry_count; i++) {
+ 		adapter->mac_table[i].state &= ~IGB_MAC_STATE_IN_USE;
+-		memset(adapter->mac_table[i].addr, 0, ETH_ALEN);
++		eth_zero_addr(adapter->mac_table[i].addr);
+ 		adapter->mac_table[i].queue = 0;
+ 		igb_rar_set_index(adapter, i);
+ 	}
+@@ -7317,7 +7317,7 @@ static int igb_del_mac_filter_flags(struct igb_adapter *adapter,
+ 		} else {
+ 			adapter->mac_table[i].state = 0;
+ 			adapter->mac_table[i].queue = 0;
+-			memset(adapter->mac_table[i].addr, 0, ETH_ALEN);
++			eth_zero_addr(adapter->mac_table[i].addr);
+ 		}
+ 
+ 		igb_rar_set_index(adapter, i);
 -- 
 2.19.1
 
