@@ -1,59 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43C69228D98
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jul 2020 03:27:38 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EF0F228E37
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Jul 2020 04:33:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EEFF484A0F;
-	Wed, 22 Jul 2020 01:27:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AEDEA203BA;
+	Wed, 22 Jul 2020 02:33:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LKFMjIC5zV13; Wed, 22 Jul 2020 01:27:35 +0000 (UTC)
+	with ESMTP id MSEqOaGs0XPH; Wed, 22 Jul 2020 02:33:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5B1D884A33;
-	Wed, 22 Jul 2020 01:27:34 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7289E203B9;
+	Wed, 22 Jul 2020 02:33:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B57811BF406
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jul 2020 01:27:32 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B21051BF48D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jul 2020 02:33:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id AB2E088319
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jul 2020 01:27:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 92AF1203BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jul 2020 02:33:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8GPo8YEmj9zg for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Jul 2020 01:27:28 +0000 (UTC)
+ with ESMTP id j4366PJHdDpN for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Jul 2020 02:33:12 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id B306588213
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jul 2020 01:27:27 +0000 (UTC)
-Received: from kicinski-fedora-PC1C0HJN.thefacebook.com (unknown
- [163.114.132.7])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 45D9E207CD;
- Wed, 22 Jul 2020 01:27:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1595381247;
- bh=YeRwrVEJaqJN+qrRriseQKC1gJs/+tDRZvwiBj+pqWg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=0OKg4Jcky16U+Y9oOJ47Q4/ya28Wbj60aSf236it2/f/HyX09AIgI1O5mq5MWlXu2
- ycQzYStKyKMjZRe0vUpfWaNiOHezzHbfnKaC+3bukl7cx4wVEcYtua+f97tUmc84D0
- AuhWQBP9zexH0ch4sNAbP9i61Yq5QmRdRD9WS3iM=
-From: Jakub Kicinski <kuba@kernel.org>
-To: davem@davemloft.net
-Date: Tue, 21 Jul 2020 18:27:16 -0700
-Message-Id: <20200722012716.2814777-8-kuba@kernel.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200722012716.2814777-1-kuba@kernel.org>
-References: <20200722012716.2814777-1-kuba@kernel.org>
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id C4C042279E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Jul 2020 02:33:11 +0000 (UTC)
+IronPort-SDR: 0YGAIVlM5c+5DKsKfJzYYFNB3cKWDXbbl4T9m576GT5F2sHBrahSQ7aE63ZQ+crGtd0PUTQ3NL
+ DzgdIR/K5DNw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9689"; a="148198451"
+X-IronPort-AV: E=Sophos;i="5.75,381,1589266800"; d="scan'208";a="148198451"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jul 2020 19:33:11 -0700
+IronPort-SDR: Je0YCRrZFJIuU2qwT5myqKCO341ssZi4/sbtukdIXaFnpj/AkBH0XyqaUOKJg2Ho9bgV2ZfIXp
+ QxOVj3IJzuzw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,381,1589266800"; d="scan'208";a="284074136"
+Received: from lkp-server02.sh.intel.com (HELO 7dd7ac9fbea4) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 21 Jul 2020 19:33:09 -0700
+Received: from kbuild by 7dd7ac9fbea4 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1jy4ZB-0000K5-Aw; Wed, 22 Jul 2020 02:33:09 +0000
+Date: Wed, 22 Jul 2020 10:32:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f17a526.mNzrYScAjvT1IqMw%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 7/7] ice: convert to new
- udp_tunnel infrastructure
+Subject: [Intel-wired-lan] [jkirsher-next-queue:200GbE] BUILD SUCCESS
+ d0bd59215c59721d6506c3084e70f5d4d673af01
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,595 +69,120 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Convert ice to the new infra, use share port tables.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  200GbE
+branch HEAD: d0bd59215c59721d6506c3084e70f5d4d673af01  idpf: Introduce idpf driver
 
-Leave a tiny bit more error checking in place than usual,
-because this driver really does quite a bit of magic.
+elapsed time: 1546m
 
-We need to calculate the number of VxLAN and GENEVE entries
-the firmware has reserved.
+configs tested: 94
+configs skipped: 2
 
-Thanks to the conversion the driver will no longer sleep in
-an atomic section.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+arm64                            allyesconfig
+arm64                               defconfig
+arm64                            allmodconfig
+arm64                             allnoconfig
+arm                                 defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                               allnoconfig
+arm                         shannon_defconfig
+powerpc                       ppc64_defconfig
+arm                      footbridge_defconfig
+s390                             alldefconfig
+c6x                               allnoconfig
+arm                         s3c6400_defconfig
+mips                       rbtx49xx_defconfig
+arm                            u300_defconfig
+ia64                             alldefconfig
+i386                                defconfig
+i386                              debian-10.3
+i386                              allnoconfig
+i386                             allyesconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                              allnoconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                              allnoconfig
+m68k                           sun3_defconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nios2                            allyesconfig
+openrisc                            defconfig
+c6x                              allyesconfig
+openrisc                         allyesconfig
+nds32                               defconfig
+nds32                             allnoconfig
+csky                             allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+h8300                            allmodconfig
+xtensa                              defconfig
+arc                                 defconfig
+arc                              allyesconfig
+sh                               allmodconfig
+sh                                allnoconfig
+microblaze                        allnoconfig
+mips                             allyesconfig
+mips                              allnoconfig
+mips                             allmodconfig
+parisc                            allnoconfig
+parisc                              defconfig
+parisc                           allyesconfig
+parisc                           allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          rhel-kconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a001-20200719
+i386                 randconfig-a006-20200719
+i386                 randconfig-a002-20200719
+i386                 randconfig-a005-20200719
+i386                 randconfig-a003-20200719
+i386                 randconfig-a004-20200719
+i386                 randconfig-a015-20200719
+i386                 randconfig-a011-20200719
+i386                 randconfig-a016-20200719
+i386                 randconfig-a012-20200719
+i386                 randconfig-a013-20200719
+i386                 randconfig-a014-20200719
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+s390                             allyesconfig
+s390                              allnoconfig
+s390                             allmodconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+sparc64                             defconfig
+sparc64                           allnoconfig
+sparc64                          allyesconfig
+sparc64                          allmodconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+x86_64                                   rhel
+x86_64                                    lkp
+x86_64                              fedora-25
+
 ---
- .../net/ethernet/intel/ice/ice_flex_pipe.c    | 228 ++++++++----------
- .../net/ethernet/intel/ice/ice_flex_pipe.h    |   8 +-
- .../net/ethernet/intel/ice/ice_flex_type.h    |   5 +-
- drivers/net/ethernet/intel/ice/ice_main.c     |  97 +++-----
- drivers/net/ethernet/intel/ice/ice_type.h     |   3 +
- 5 files changed, 135 insertions(+), 206 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-index a60c5b2a0aed..cdb95289fb03 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-@@ -489,8 +489,6 @@ static void ice_init_pkg_hints(struct ice_hw *hw, struct ice_seg *ice_seg)
- 			if ((label_name[len] - '0') == hw->pf_id) {
- 				hw->tnl.tbl[hw->tnl.count].type = tnls[i].type;
- 				hw->tnl.tbl[hw->tnl.count].valid = false;
--				hw->tnl.tbl[hw->tnl.count].in_use = false;
--				hw->tnl.tbl[hw->tnl.count].marked = false;
- 				hw->tnl.tbl[hw->tnl.count].boost_addr = val;
- 				hw->tnl.tbl[hw->tnl.count].port = 0;
- 				hw->tnl.count++;
-@@ -505,8 +503,11 @@ static void ice_init_pkg_hints(struct ice_hw *hw, struct ice_seg *ice_seg)
- 	for (i = 0; i < hw->tnl.count; i++) {
- 		ice_find_boost_entry(ice_seg, hw->tnl.tbl[i].boost_addr,
- 				     &hw->tnl.tbl[i].boost_entry);
--		if (hw->tnl.tbl[i].boost_entry)
-+		if (hw->tnl.tbl[i].boost_entry) {
- 			hw->tnl.tbl[i].valid = true;
-+			if (hw->tnl.tbl[i].type < __TNL_TYPE_CNT)
-+				hw->tnl.valid_count[hw->tnl.tbl[i].type]++;
-+		}
- 	}
- }
- 
-@@ -1626,101 +1627,59 @@ static struct ice_buf *ice_pkg_buf(struct ice_buf_build *bld)
- }
- 
- /**
-- * ice_tunnel_port_in_use_hlpr - helper function to determine tunnel usage
-+ * ice_get_open_tunnel_port - retrieve an open tunnel port
-  * @hw: pointer to the HW structure
-- * @port: port to search for
-- * @index: optionally returns index
-- *
-- * Returns whether a port is already in use as a tunnel, and optionally its
-- * index
-+ * @port: returns open port
-  */
--static bool ice_tunnel_port_in_use_hlpr(struct ice_hw *hw, u16 port, u16 *index)
-+bool
-+ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port)
- {
-+	bool res = false;
- 	u16 i;
- 
-+	mutex_lock(&hw->tnl_lock);
-+
- 	for (i = 0; i < hw->tnl.count && i < ICE_TUNNEL_MAX_ENTRIES; i++)
--		if (hw->tnl.tbl[i].in_use && hw->tnl.tbl[i].port == port) {
--			if (index)
--				*index = i;
--			return true;
-+		if (hw->tnl.tbl[i].valid && hw->tnl.tbl[i].port) {
-+			*port = hw->tnl.tbl[i].port;
-+			res = true;
-+			break;
- 		}
- 
--	return false;
--}
--
--/**
-- * ice_tunnel_port_in_use
-- * @hw: pointer to the HW structure
-- * @port: port to search for
-- * @index: optionally returns index
-- *
-- * Returns whether a port is already in use as a tunnel, and optionally its
-- * index
-- */
--bool ice_tunnel_port_in_use(struct ice_hw *hw, u16 port, u16 *index)
--{
--	bool res;
--
--	mutex_lock(&hw->tnl_lock);
--	res = ice_tunnel_port_in_use_hlpr(hw, port, index);
- 	mutex_unlock(&hw->tnl_lock);
- 
- 	return res;
- }
- 
- /**
-- * ice_find_free_tunnel_entry
-+ * ice_tunnel_idx_to_entry - convert linear index to the sparse one
-  * @hw: pointer to the HW structure
-- * @type: tunnel type
-- * @index: optionally returns index
-+ * @type: type of tunnel
-+ * @idx: linear index
-  *
-- * Returns whether there is a free tunnel entry, and optionally its index
-- */
--static bool
--ice_find_free_tunnel_entry(struct ice_hw *hw, enum ice_tunnel_type type,
--			   u16 *index)
--{
--	u16 i;
--
--	for (i = 0; i < hw->tnl.count && i < ICE_TUNNEL_MAX_ENTRIES; i++)
--		if (hw->tnl.tbl[i].valid && !hw->tnl.tbl[i].in_use &&
--		    hw->tnl.tbl[i].type == type) {
--			if (index)
--				*index = i;
--			return true;
--		}
--
--	return false;
--}
--
--/**
-- * ice_get_open_tunnel_port - retrieve an open tunnel port
-- * @hw: pointer to the HW structure
-- * @port: returns open port
-+ * Stack assumes we have 2 linear tables with indexes [0, count_valid),
-+ * but really the port table may be sprase, and types are mixed, so convert
-+ * the stack index into the device index.
-  */
--bool
--ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port)
-+static u16 ice_tunnel_idx_to_entry(struct ice_hw *hw, enum ice_tunnel_type type,
-+				   u16 idx)
- {
--	bool res = false;
- 	u16 i;
- 
--	mutex_lock(&hw->tnl_lock);
--
- 	for (i = 0; i < hw->tnl.count && i < ICE_TUNNEL_MAX_ENTRIES; i++)
--		if (hw->tnl.tbl[i].valid && hw->tnl.tbl[i].in_use) {
--			*port = hw->tnl.tbl[i].port;
--			res = true;
--			break;
--		}
--
--	mutex_unlock(&hw->tnl_lock);
-+		if (hw->tnl.tbl[i].valid &&
-+		    hw->tnl.tbl[i].type == type &&
-+		    idx--)
-+			return i;
- 
--	return res;
-+	WARN_ON_ONCE(1);
-+	return 0;
- }
- 
- /**
-  * ice_create_tunnel
-  * @hw: pointer to the HW structure
-+ * @index: device table entry
-  * @type: type of tunnel
-  * @port: port of tunnel to create
-  *
-@@ -1728,27 +1687,16 @@ ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port)
-  * creating a package buffer with the tunnel info and issuing an update package
-  * command.
-  */
--enum ice_status
--ice_create_tunnel(struct ice_hw *hw, enum ice_tunnel_type type, u16 port)
-+static enum ice_status
-+ice_create_tunnel(struct ice_hw *hw, u16 index,
-+		  enum ice_tunnel_type type, u16 port)
- {
- 	struct ice_boost_tcam_section *sect_rx, *sect_tx;
- 	enum ice_status status = ICE_ERR_MAX_LIMIT;
- 	struct ice_buf_build *bld;
--	u16 index;
- 
- 	mutex_lock(&hw->tnl_lock);
- 
--	if (ice_tunnel_port_in_use_hlpr(hw, port, &index)) {
--		hw->tnl.tbl[index].ref++;
--		status = 0;
--		goto ice_create_tunnel_end;
--	}
--
--	if (!ice_find_free_tunnel_entry(hw, type, &index)) {
--		status = ICE_ERR_OUT_OF_RANGE;
--		goto ice_create_tunnel_end;
--	}
--
- 	bld = ice_pkg_buf_alloc(hw);
- 	if (!bld) {
- 		status = ICE_ERR_NO_MEMORY;
-@@ -1787,11 +1735,8 @@ ice_create_tunnel(struct ice_hw *hw, enum ice_tunnel_type type, u16 port)
- 	memcpy(sect_tx->tcam, sect_rx->tcam, sizeof(*sect_tx->tcam));
- 
- 	status = ice_update_pkg(hw, ice_pkg_buf(bld), 1);
--	if (!status) {
-+	if (!status)
- 		hw->tnl.tbl[index].port = port;
--		hw->tnl.tbl[index].in_use = true;
--		hw->tnl.tbl[index].ref = 1;
--	}
- 
- ice_create_tunnel_err:
- 	ice_pkg_buf_free(hw, bld);
-@@ -1805,46 +1750,31 @@ ice_create_tunnel(struct ice_hw *hw, enum ice_tunnel_type type, u16 port)
- /**
-  * ice_destroy_tunnel
-  * @hw: pointer to the HW structure
-+ * @index: device table entry
-+ * @type: type of tunnel
-  * @port: port of tunnel to destroy (ignored if the all parameter is true)
-- * @all: flag that states to destroy all tunnels
-  *
-  * Destroys a tunnel or all tunnels by creating an update package buffer
-  * targeting the specific updates requested and then performing an update
-  * package.
-  */
--enum ice_status ice_destroy_tunnel(struct ice_hw *hw, u16 port, bool all)
-+static enum ice_status
-+ice_destroy_tunnel(struct ice_hw *hw, u16 index, enum ice_tunnel_type type,
-+		   u16 port)
- {
- 	struct ice_boost_tcam_section *sect_rx, *sect_tx;
- 	enum ice_status status = ICE_ERR_MAX_LIMIT;
- 	struct ice_buf_build *bld;
--	u16 count = 0;
--	u16 index;
--	u16 size;
--	u16 i;
- 
- 	mutex_lock(&hw->tnl_lock);
- 
--	if (!all && ice_tunnel_port_in_use_hlpr(hw, port, &index))
--		if (hw->tnl.tbl[index].ref > 1) {
--			hw->tnl.tbl[index].ref--;
--			status = 0;
--			goto ice_destroy_tunnel_end;
--		}
--
--	/* determine count */
--	for (i = 0; i < hw->tnl.count && i < ICE_TUNNEL_MAX_ENTRIES; i++)
--		if (hw->tnl.tbl[i].valid && hw->tnl.tbl[i].in_use &&
--		    (all || hw->tnl.tbl[i].port == port))
--			count++;
--
--	if (!count) {
--		status = ICE_ERR_PARAM;
-+	if (WARN_ON(!hw->tnl.tbl[index].valid ||
-+		    hw->tnl.tbl[index].type != type ||
-+		    hw->tnl.tbl[index].port != port)) {
-+		status = ICE_ERR_OUT_OF_RANGE;
- 		goto ice_destroy_tunnel_end;
- 	}
- 
--	/* size of section - there is at least one entry */
--	size = struct_size(sect_rx, tcam, count);
--
- 	bld = ice_pkg_buf_alloc(hw);
- 	if (!bld) {
- 		status = ICE_ERR_NO_MEMORY;
-@@ -1856,13 +1786,13 @@ enum ice_status ice_destroy_tunnel(struct ice_hw *hw, u16 port, bool all)
- 		goto ice_destroy_tunnel_err;
- 
- 	sect_rx = ice_pkg_buf_alloc_section(bld, ICE_SID_RXPARSER_BOOST_TCAM,
--					    size);
-+					    struct_size(sect_rx, tcam, 1));
- 	if (!sect_rx)
- 		goto ice_destroy_tunnel_err;
- 	sect_rx->count = cpu_to_le16(1);
- 
- 	sect_tx = ice_pkg_buf_alloc_section(bld, ICE_SID_TXPARSER_BOOST_TCAM,
--					    size);
-+					    struct_size(sect_tx, tcam, 1));
- 	if (!sect_tx)
- 		goto ice_destroy_tunnel_err;
- 	sect_tx->count = cpu_to_le16(1);
-@@ -1870,26 +1800,14 @@ enum ice_status ice_destroy_tunnel(struct ice_hw *hw, u16 port, bool all)
- 	/* copy original boost entry to update package buffer, one copy to Rx
- 	 * section, another copy to the Tx section
- 	 */
--	for (i = 0; i < hw->tnl.count && i < ICE_TUNNEL_MAX_ENTRIES; i++)
--		if (hw->tnl.tbl[i].valid && hw->tnl.tbl[i].in_use &&
--		    (all || hw->tnl.tbl[i].port == port)) {
--			memcpy(sect_rx->tcam + i, hw->tnl.tbl[i].boost_entry,
--			       sizeof(*sect_rx->tcam));
--			memcpy(sect_tx->tcam + i, hw->tnl.tbl[i].boost_entry,
--			       sizeof(*sect_tx->tcam));
--			hw->tnl.tbl[i].marked = true;
--		}
-+	memcpy(sect_rx->tcam, hw->tnl.tbl[index].boost_entry,
-+	       sizeof(*sect_rx->tcam));
-+	memcpy(sect_tx->tcam, hw->tnl.tbl[index].boost_entry,
-+	       sizeof(*sect_tx->tcam));
- 
- 	status = ice_update_pkg(hw, ice_pkg_buf(bld), 1);
- 	if (!status)
--		for (i = 0; i < hw->tnl.count &&
--		     i < ICE_TUNNEL_MAX_ENTRIES; i++)
--			if (hw->tnl.tbl[i].marked) {
--				hw->tnl.tbl[i].ref = 0;
--				hw->tnl.tbl[i].port = 0;
--				hw->tnl.tbl[i].in_use = false;
--				hw->tnl.tbl[i].marked = false;
--			}
-+		hw->tnl.tbl[index].port = 0;
- 
- ice_destroy_tunnel_err:
- 	ice_pkg_buf_free(hw, bld);
-@@ -1900,6 +1818,52 @@ enum ice_status ice_destroy_tunnel(struct ice_hw *hw, u16 port, bool all)
- 	return status;
- }
- 
-+int ice_udp_tunnel_set_port(struct net_device *netdev, unsigned int table,
-+			    unsigned int idx, struct udp_tunnel_info *ti)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_tunnel_type tnl_type;
-+	enum ice_status status;
-+	u16 index;
-+
-+	tnl_type = ti->type == UDP_TUNNEL_TYPE_VXLAN ? TNL_VXLAN : TNL_GENEVE;
-+	index = ice_tunnel_idx_to_entry(&pf->hw, idx, tnl_type);
-+
-+	status = ice_create_tunnel(&pf->hw, index, tnl_type, ntohs(ti->port));
-+	if (status) {
-+		netdev_err(netdev, "Error adding UDP tunnel - %s\n",
-+			   ice_stat_str(status));
-+		return -EIO;
-+	}
-+
-+	udp_tunnel_nic_set_port_priv(netdev, table, idx, index);
-+	return 0;
-+}
-+
-+int ice_udp_tunnel_unset_port(struct net_device *netdev, unsigned int table,
-+			      unsigned int idx, struct udp_tunnel_info *ti)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
-+	struct ice_pf *pf = vsi->back;
-+	enum ice_tunnel_type tnl_type;
-+	enum ice_status status;
-+
-+	tnl_type = ti->type == UDP_TUNNEL_TYPE_VXLAN ? TNL_VXLAN : TNL_GENEVE;
-+
-+	status = ice_destroy_tunnel(&pf->hw, ti->hw_priv, tnl_type,
-+				    ntohs(ti->port));
-+	if (status) {
-+		netdev_err(netdev, "Error removing UDP tunnel - %s\n",
-+			   ice_stat_str(status));
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
- /* PTG Management */
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-index a18c87d9d9b1..20deddb807c5 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-@@ -20,10 +20,10 @@
- 
- bool
- ice_get_open_tunnel_port(struct ice_hw *hw, u16 *port);
--enum ice_status
--ice_create_tunnel(struct ice_hw *hw, enum ice_tunnel_type type, u16 port);
--enum ice_status ice_destroy_tunnel(struct ice_hw *hw, u16 port, bool all);
--bool ice_tunnel_port_in_use(struct ice_hw *hw, u16 port, u16 *index);
-+int ice_udp_tunnel_set_port(struct net_device *netdev, unsigned int table,
-+			    unsigned int idx, struct udp_tunnel_info *ti);
-+int ice_udp_tunnel_unset_port(struct net_device *netdev, unsigned int table,
-+			      unsigned int idx, struct udp_tunnel_info *ti);
- 
- enum ice_status
- ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_type.h b/drivers/net/ethernet/intel/ice/ice_flex_type.h
-index c1c99a267a98..24063c1351b2 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_type.h
-@@ -298,6 +298,7 @@ struct ice_pkg_enum {
- enum ice_tunnel_type {
- 	TNL_VXLAN = 0,
- 	TNL_GENEVE,
-+	__TNL_TYPE_CNT,
- 	TNL_LAST = 0xFF,
- 	TNL_ALL = 0xFF,
- };
-@@ -311,11 +312,8 @@ struct ice_tunnel_entry {
- 	enum ice_tunnel_type type;
- 	u16 boost_addr;
- 	u16 port;
--	u16 ref;
- 	struct ice_boost_tcam_entry *boost_entry;
- 	u8 valid;
--	u8 in_use;
--	u8 marked;
- };
- 
- #define ICE_TUNNEL_MAX_ENTRIES	16
-@@ -323,6 +321,7 @@ struct ice_tunnel_entry {
- struct ice_tunnel_table {
- 	struct ice_tunnel_entry tbl[ICE_TUNNEL_MAX_ENTRIES];
- 	u16 count;
-+	u16 valid_count[__TNL_TYPE_CNT];
- };
- 
- struct ice_pkg_es {
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a1cef089201a..95490b0d7ed7 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -2301,6 +2301,7 @@ static void ice_set_ops(struct net_device *netdev)
- 	}
- 
- 	netdev->netdev_ops = &ice_netdev_ops;
-+	netdev->udp_tunnel_nic_info = &pf->hw.udp_tunnel_nic;
- 	ice_set_ethtool_ops(netdev);
- }
- 
-@@ -3300,7 +3301,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	struct device *dev = &pdev->dev;
- 	struct ice_pf *pf;
- 	struct ice_hw *hw;
--	int err;
-+	int i, err;
- 
- 	/* this driver uses devres, see
- 	 * Documentation/driver-api/driver-model/devres.rst
-@@ -3395,11 +3396,37 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 
- 	ice_devlink_init_regions(pf);
- 
-+	pf->hw.udp_tunnel_nic.set_port = ice_udp_tunnel_set_port;
-+	pf->hw.udp_tunnel_nic.unset_port = ice_udp_tunnel_unset_port;
-+	pf->hw.udp_tunnel_nic.flags = UDP_TUNNEL_NIC_INFO_MAY_SLEEP;
-+	pf->hw.udp_tunnel_nic.shared = &pf->hw.udp_tunnel_shared;
-+	i = 0;
-+	if (pf->hw.tnl.valid_count[TNL_VXLAN]) {
-+		pf->hw.udp_tunnel_nic.tables[i].n_entries =
-+			pf->hw.tnl.valid_count[TNL_VXLAN];
-+		pf->hw.udp_tunnel_nic.tables[i].tunnel_types =
-+			UDP_TUNNEL_TYPE_VXLAN;
-+		i++;
-+	}
-+	if (pf->hw.tnl.valid_count[TNL_GENEVE]) {
-+		pf->hw.udp_tunnel_nic.tables[i].n_entries =
-+			pf->hw.tnl.valid_count[TNL_GENEVE];
-+		pf->hw.udp_tunnel_nic.tables[i].tunnel_types =
-+			UDP_TUNNEL_TYPE_GENEVE;
-+		i++;
-+	}
-+
- 	pf->num_alloc_vsi = hw->func_caps.guar_num_vsi;
- 	if (!pf->num_alloc_vsi) {
- 		err = -EIO;
- 		goto err_init_pf_unroll;
- 	}
-+	if (pf->num_alloc_vsi > UDP_TUNNEL_NIC_MAX_SHARING_DEVICES) {
-+		dev_warn(&pf->pdev->dev,
-+			 "limiting the VSI count due to UDP tunnel limitation %d > %d\n",
-+			 pf->num_alloc_vsi, UDP_TUNNEL_NIC_MAX_SHARING_DEVICES);
-+		pf->num_alloc_vsi = UDP_TUNNEL_NIC_MAX_SHARING_DEVICES;
-+	}
- 
- 	pf->vsi = devm_kcalloc(dev, pf->num_alloc_vsi, sizeof(*pf->vsi),
- 			       GFP_KERNEL);
-@@ -5553,70 +5580,6 @@ static void ice_tx_timeout(struct net_device *netdev, unsigned int txqueue)
- 	pf->tx_timeout_recovery_level++;
- }
- 
--/**
-- * ice_udp_tunnel_add - Get notifications about UDP tunnel ports that come up
-- * @netdev: This physical port's netdev
-- * @ti: Tunnel endpoint information
-- */
--static void
--ice_udp_tunnel_add(struct net_device *netdev, struct udp_tunnel_info *ti)
--{
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
--	struct ice_pf *pf = vsi->back;
--	enum ice_tunnel_type tnl_type;
--	u16 port = ntohs(ti->port);
--	enum ice_status status;
--
--	switch (ti->type) {
--	case UDP_TUNNEL_TYPE_VXLAN:
--		tnl_type = TNL_VXLAN;
--		break;
--	case UDP_TUNNEL_TYPE_GENEVE:
--		tnl_type = TNL_GENEVE;
--		break;
--	default:
--		netdev_err(netdev, "Unknown tunnel type\n");
--		return;
--	}
--
--	status = ice_create_tunnel(&pf->hw, tnl_type, port);
--	if (status == ICE_ERR_OUT_OF_RANGE)
--		netdev_info(netdev, "Max tunneled UDP ports reached, port %d not added\n",
--			    port);
--	else if (status)
--		netdev_err(netdev, "Error adding UDP tunnel - %s\n",
--			   ice_stat_str(status));
--}
--
--/**
-- * ice_udp_tunnel_del - Get notifications about UDP tunnel ports that go away
-- * @netdev: This physical port's netdev
-- * @ti: Tunnel endpoint information
-- */
--static void
--ice_udp_tunnel_del(struct net_device *netdev, struct udp_tunnel_info *ti)
--{
--	struct ice_netdev_priv *np = netdev_priv(netdev);
--	struct ice_vsi *vsi = np->vsi;
--	struct ice_pf *pf = vsi->back;
--	u16 port = ntohs(ti->port);
--	enum ice_status status;
--	bool retval;
--
--	retval = ice_tunnel_port_in_use(&pf->hw, port, NULL);
--	if (!retval) {
--		netdev_info(netdev, "port %d not found in UDP tunnels list\n",
--			    port);
--		return;
--	}
--
--	status = ice_destroy_tunnel(&pf->hw, port, false);
--	if (status)
--		netdev_err(netdev, "error deleting port %d from UDP tunnels list\n",
--			   port);
--}
--
- /**
-  * ice_open - Called when a network interface becomes active
-  * @netdev: network interface device structure
-@@ -5799,6 +5762,6 @@ static const struct net_device_ops ice_netdev_ops = {
- 	.ndo_bpf = ice_xdp,
- 	.ndo_xdp_xmit = ice_xdp_xmit,
- 	.ndo_xsk_wakeup = ice_xsk_wakeup,
--	.ndo_udp_tunnel_add = ice_udp_tunnel_add,
--	.ndo_udp_tunnel_del = ice_udp_tunnel_del,
-+	.ndo_udp_tunnel_add = udp_tunnel_nic_add_port,
-+	.ndo_udp_tunnel_del = udp_tunnel_nic_del_port,
- };
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index c1ad8622e65c..5fb27937ba3d 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -622,6 +622,9 @@ struct ice_hw {
- 	struct mutex tnl_lock;
- 	struct ice_tunnel_table tnl;
- 
-+	struct udp_tunnel_nic_shared udp_tunnel_shared;
-+	struct udp_tunnel_nic_info udp_tunnel_nic;
-+
- 	/* HW block tables */
- 	struct ice_blk_info blk[ICE_BLK_COUNT];
- 	struct mutex fl_profs_locks[ICE_BLK_COUNT];	/* lock fltr profiles */
--- 
-2.26.2
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
