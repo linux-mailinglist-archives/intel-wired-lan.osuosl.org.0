@@ -1,132 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B933322CDF5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jul 2020 20:44:20 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6567022D17D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jul 2020 23:51:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 38D2A25048;
-	Fri, 24 Jul 2020 18:44:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F16FA88B39;
+	Fri, 24 Jul 2020 21:51:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3inwe5HbBcE4; Fri, 24 Jul 2020 18:44:18 +0000 (UTC)
+	with ESMTP id uWRI12lYle4w; Fri, 24 Jul 2020 21:51:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id B260224FAC;
-	Fri, 24 Jul 2020 18:44:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9779388B28;
+	Fri, 24 Jul 2020 21:51:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C93BB1BF3C4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 18:44:12 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 997F11BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 21:51:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id B0BCC24F92
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 18:44:12 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 8F93087286
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 21:51:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ITSGy2nvdZhT for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Jul 2020 18:44:11 +0000 (UTC)
+ with ESMTP id dMGR1pJI7tEz for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Jul 2020 21:51:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 1A42724F8D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 18:44:11 +0000 (UTC)
-IronPort-SDR: u5OshExRUYo8uMgYhUc1SX4L9xDRzRMUOBSVeA7m7O/MbJqFKnxOmHWb5PXQ6zStOVCnuSP/Pc
- +npz2h4y/Y5w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9692"; a="150755097"
-X-IronPort-AV: E=Sophos;i="5.75,391,1589266800"; d="scan'208";a="150755097"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2020 11:43:59 -0700
-IronPort-SDR: EHoXna6PGJdPQDt/v9ihChGJbNK+YwFL64Q6Rz5TbDUu97Y1Dy+sR/st3HdBDWivo9EfA9zGC5
- hP4AcM6e02iw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,391,1589266800"; d="scan'208";a="272653634"
-Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
- by fmsmga008.fm.intel.com with ESMTP; 24 Jul 2020 11:43:59 -0700
-Received: from orsmsx153.amr.corp.intel.com (10.22.226.247) by
- ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 24 Jul 2020 11:43:58 -0700
-Received: from ORSEDG002.ED.cps.intel.com (10.7.248.5) by
- ORSMSX153.amr.corp.intel.com (10.22.226.247) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 24 Jul 2020 11:43:58 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.171)
- by edgegateway.intel.com (134.134.137.101) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Fri, 24 Jul 2020 11:43:58 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ohb+UHMxpWkMitolfiWkcXB0BUXdfoDmF2dhSDXJH6/PggOyQ2GC6zM5hk8ReioJMXVELGSOF2fZqLZuPWoKd/5KNnRfAnUhAk1Baqa+Ty0BKnPXLQnQcBWcYUYkHAnXr+6ecv550ihzbxNmP/tzsxkEDY9QOloOkcRVOWOaSNfXslMNocgluKhFKkzQumzu6ufUPGU2OL2lRzzE8IOAj+eOOui2Om4XOxSyaDr7X5K4ubIIkQmipxUI5dBP/mU7WVoVckmCyjAIA7ACJdIhyVIaqVZ3EnkQBV4VJkLL6PkjxUMwz7akEHAPF03WMhVZyrErR3vN+KQHgmXlt9aWYw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Vh9wRr5Yos32FAvvSoScRrxBANV+3f4toASs7T1m5fA=;
- b=KwXwwMHPmoBLH9H8hcIbJki/pX5nU/WE2Kk5sj8Qkb9xzGwqyKXD1Elt11FahvuNU7dM8Q+27vsXeulh3zX10fbKza9geDBg9deNtCr+kw9WHULH7adCFf3HNaWNlKZmlbExICc16gjQMOdQEWoLtcsdShNYFRmUAgXEheknimAbgdljDFGUSIwvwE/4d18U3pL4T/nPNTm1A5aN0xVu9CG0sodKcwCR4C7QYgmz2/H3WOL+qGZjkVBkSAVkuzynRBQvG9k43Gy5+5U9K7eeuhRQo9CHoQfBqYiW6+3M4v+ME6bY9CYqtl3DceE5JjQHcMCq0rUe9HBtprzu8j7spQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Vh9wRr5Yos32FAvvSoScRrxBANV+3f4toASs7T1m5fA=;
- b=PWLO/QxfN/tPyoFtRiI4/XopUET3JEVWSnQVYvSWn22rENZyqoLJaDEgrET/OtFOXx1Vx5wJvFnT2BXsu2kHHPxWFvaEHOmHDxsjq/LHkqKsAtBiG6b8jG7e0LxQQwEq1z92Vz72BidtKltE1oU1x06KgtzsVnQq3Z7U6OrAli4=
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
- by SN6PR11MB3472.namprd11.prod.outlook.com (2603:10b6:805:bd::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3216.24; Fri, 24 Jul
- 2020 18:43:57 +0000
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::bda3:d65a:f390:f875]) by SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::bda3:d65a:f390:f875%7]) with mapi id 15.20.3216.020; Fri, 24 Jul 2020
- 18:43:57 +0000
-From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] i40e: add support for PTP external
- synchronization clock
-Thread-Index: AQHWW2us0pwkjCkJzECfuprR1hlt16kMav4AgAqEDgCAAC7iAA==
-Date: Fri, 24 Jul 2020 18:43:56 +0000
-Message-ID: <7ac0ad76dc62435842368f6628b1c37a14463ab5.camel@intel.com>
-References: <20200716122107.13703-1-piotr.kwapulinski@intel.com>
- <1ad46857df3e932b2e28256a62f7ad32ae03da23.camel@intel.com>
- <MN2PR11MB3565063DFB45A14ED9C8452EF3770@MN2PR11MB3565.namprd11.prod.outlook.com>
-In-Reply-To: <MN2PR11MB3565063DFB45A14ED9C8452EF3770@MN2PR11MB3565.namprd11.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: lists.osuosl.org; dkim=none (message not signed)
- header.d=none; lists.osuosl.org; dmarc=none action=none header.from=intel.com; 
-x-originating-ip: [134.134.136.215]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 850b7880-a1d4-4ef4-8371-08d8300185cb
-x-ms-traffictypediagnostic: SN6PR11MB3472:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SN6PR11MB3472A96AF7AABBB05408E1A1C6770@SN6PR11MB3472.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4303;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: rLTPjsOpm6SDXk5NmliGDxRC3p4zdMsKWFTTN6EhlCcxP5NCodqolGaSekumahXDaVsdpomtitBnxkLjt1CavaS7fC454lbe1oOQwXq/1GlLoj0sPQlZmYNImdGxShjXkv4pvM15wZG9YBwiIMfjeQazzE4iN0KMw9fhWLQMBGJLdZMVwVEbjQX0TkyoiMspcCQRWlExJ7oRnz29M0UpFELREz4QnNx1YUct+O1iHXCb56ovCM4uIb1s3I8cvaZNtBnOzMvRRMEWijIvNIi8jt+JKb/rlP22TNKZkGHLa5zmVbGSQFHAcAKjw2krsK4M3hZ7L3MEQUfADCfjM10UHwHyNvxoUkOsI9KrJ0SwDgRh23aasfRFmKP7L2pJ3iTh9QKpAhpeQEaJ7/dxR39hPg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(396003)(346002)(366004)(39860400002)(136003)(376002)(8676002)(316002)(2616005)(5660300002)(8936002)(2906002)(71200400001)(36756003)(186003)(86362001)(6636002)(91956017)(76116006)(66946007)(66556008)(66446008)(66476007)(64756008)(6486002)(110136005)(966005)(478600001)(53546011)(6506007)(6512007)(26005)(83380400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: WpMe5OMrOOU9N0liVO3tJGy0I85XvWIhjTPKUg3/YAQGolwUaAvsPbPLDRt1AUjjXniy0tIQQmgDQcxZvCn+aEyfWFc1g7zK4vQ+a7qtGQtWd3vlrUoLJJDHEDqTC3blep7PfD7zDSoRu5vs74vErgV6CKdZpnsm7DCj39znj8y6AyhynlLkC3njuOXe2b7uzdyLvKvQQutLVPqx6FUP0xV79R3jM/QmCLtAlmToFbJbvUjadroOWG9VA7IoXbqU8kkYlXwpjS+PBC0W1n64V8d6DT/0E74OVd/gySf3jSm+3F+kBZGLMUM4tFkvwSeu1sTl7btJoWH+UpZSF1DTEm5vQUTT9PwqL5uTj6lEJVR/UO85uxiJ228R14VRF+gh8ipJ22tY0Sn0hvD3GAEkof9thtPwAIvjXB3NfI3N40H9SHTWwV5KwUtrULz5P79hTpUMBdlYjVze2HTXSweOjUXWotxd8DpNb1yL8V/v1VYAdxOkg1YZwnrTaOGXWsRk
-Content-ID: <271939A3A1AB6A4BAA9254D49F69C6F8@namprd11.prod.outlook.com>
+Received: from mail-io1-f49.google.com (mail-io1-f49.google.com
+ [209.85.166.49])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 45F318688A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 21:51:09 +0000 (UTC)
+Received: by mail-io1-f49.google.com with SMTP id i4so11260238iov.11
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 14:51:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=Rsx3dY+nrBUVoFbZEMrzCDYQd2XISia/K3/j9HqR8mI=;
+ b=RhiHNAgHgbmF6HhgT8WRV+Im5420N3BK1uObIAxL0j7edbxhx1AuBAu9zAh4L8cSfa
+ YuOHO0f+3pB12sKJ0NDyKZnY9UQTKHwDBGPg5IoB2PUuXWVLT5Kr6XebEeEziq349pF7
+ qpxn5Nf21yK0av1O70Cp0RQ00vKxtKPHVwHHKJypj6UiaNs1ryr2n/7RZEArMqEAGr61
+ PWyTbd26HwZCQUUpo4QwrUTH5z00k8dRosq8KNa3STprdwMg5X0GfFtq97B2vo5+xOT6
+ ZslBgxRCxeT2AfOejGRse29LV4aSEhHLTd8tTrsO+mnLoDTnNP94oCBct6SH52PEiqVc
+ To4g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=Rsx3dY+nrBUVoFbZEMrzCDYQd2XISia/K3/j9HqR8mI=;
+ b=KIt2tndTymXEYkI4FqP/jH7CATz5qR+kXaxqEp4TMdP8DryIl7eBW5Kl2PsF88XF65
+ enpnW3eosQLa7b8e199avUW/alFP3oyXS8giZ+/7WLCb+vGHM834LBuIb4dqdB4WmLkG
+ qwZmCErJuFrByA0YnHh913i3TGL/bM8OgpPsp7G+py+V9CesQpw7ftxZrQfIeMMlbolv
+ ANn9wQs10uR5oghVLqrR+NnjIgdd9cVnR3I4pUvARAm2iwLL6JEdPfKX7iZAt7yxfWqv
+ D+rgU6hdDq9BUei8hh3kBnfNOrJXRXFnww1hY3wM9dfjRBp3KITUxahueqEYJwXLUKH7
+ BerQ==
+X-Gm-Message-State: AOAM532G7iPIX1lKRkIXLPDpoyaF7Bdkz+tbhp/Pwbz6WYwCOKBt0SJq
+ bH72VeZNog5/vGPVrBUkyR3oifK0LQul8ym9ExQ=
+X-Google-Smtp-Source: ABdhPJwAZd5funO0dVbHyzUztiR8Svl7z0Nu8UwTiyuCf5dEyGeRMlnZLxK+S0XTI9Z/kqvNgY6+TK7W82PpqCub7Ks=
+X-Received: by 2002:a5d:8d04:: with SMTP id p4mr12527071ioj.187.1595627468372; 
+ Fri, 24 Jul 2020 14:51:08 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 850b7880-a1d4-4ef4-8371-08d8300185cb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jul 2020 18:43:56.9363 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +orPFrPpNFOi9q1s6Jk+caRY/z+LGmVzQlpQzTwme6MtnEcpdSB7PaDpHmki/Y76Hv79yDzClQXSNROYldvoafQO3WOVP41JtByrjtnv0uo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3472
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: add support for PTP external
- synchronization clock
+References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
+ <CAA85sZua6Q8UR7TfCGO0bV=VU0gKtqj-8o_mqH38RpKrwYZGtg@mail.gmail.com>
+ <20200715133136.5f63360c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAA85sZu09Z4gydJ8rAO_Ey0zqx-8Lg28=fBJ=FxFnp6cetNd3g@mail.gmail.com>
+ <CAA85sZtjCW2Yg+tXPgYyoFA5BKAVZC8kVKG=6SiR64c8ur8UcQ@mail.gmail.com>
+ <20200715144017.47d06941@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAA85sZvnytPzpia_ROnkmJoZC8n4vUsrwTQh2UBs6u6g2Fgqxw@mail.gmail.com>
+ <CAKgT0UdwsmE=ygE2KObzM0z-0KgrPcr59JZzVk41F6-iqsSL+Q@mail.gmail.com>
+ <CAA85sZturDN7uOHMDhUnntM43PHjop=TNDb4qvEA2L=jdRa1MA@mail.gmail.com>
+ <CAKgT0Uf42EhnM+zPSb-oL1R8hmo0vEdssGztptbkWKoHXS7ygw@mail.gmail.com>
+ <CAA85sZtHNkocj840i0ohMVekh0B4byuojU02UunK_bR+LB1WiQ@mail.gmail.com>
+ <CAKgT0UdDjabvShwDv0qiume=Q2RKGkm3JhPMZ+f8v5yO37ZLxA@mail.gmail.com>
+ <CAA85sZt6B+rG8pUfRoNVOH=VqHn=rT-+2kHpFDzW+eBwvODxJA@mail.gmail.com>
+ <CAKgT0UfhMjZ6kZSkfpEVHBbQ+4eHQqWRbXk5Sm4nLQD6sSrj0A@mail.gmail.com>
+ <CAA85sZs5D_ReOhsEv1SVbE5D8q77utNBZ=Uv34PVof9gHs9QWw@mail.gmail.com>
+ <CAA85sZvi4x1zc_21a6zPJw0rELOY=RCV4W7Fi4fvcSXfy-6m4g@mail.gmail.com>
+ <CAA85sZvMjcRnuECtFBDKKAG3q2MGeytsxPx8RR-M4hSxruj5Vw@mail.gmail.com>
+ <CAKgT0UfcPfNJCP=nT59t4RRwL3T8cQ5dnXeEgW1QXBG24fo-Cg@mail.gmail.com>
+ <CAA85sZsEG_SCC4GLb8xaUsESrzZyAwF0qmse6sJ=e1QkK9DVsQ@mail.gmail.com>
+ <CAKgT0UcY4FwAFf0BXv7vc_5ram7YkFXda78PWkdEFgMLsitvWA@mail.gmail.com>
+ <CAA85sZs_PSsyZhvdKBCoAGxoZvaQFhQ6j7qoA7y8ffjs2RqEGw@mail.gmail.com>
+In-Reply-To: <CAA85sZs_PSsyZhvdKBCoAGxoZvaQFhQ6j7qoA7y8ffjs2RqEGw@mail.gmail.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Fri, 24 Jul 2020 14:50:57 -0700
+Message-ID: <CAKgT0UeL4kcV4eO-3f-xTMzO5Lc+jNjeOya3=nA21wyrkv37FA@mail.gmail.com>
+To: Ian Kumlien <ian.kumlien@gmail.com>, 
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Subject: Re: [Intel-wired-lan] NAT performance issue 944mbit -> ~40mbit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,37 +105,248 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 2020-07-24 at 15:56 +0000, Kwapulinski, Piotr wrote:
-> > From: Nguyen, Anthony L <anthony.l.nguyen@intel.com> 
-> > Sent: Saturday, July 18, 2020 1:21 AM
-> > To: intel-wired-lan@lists.osuosl.org; Kwapulinski, Piotr <
-> > piotr.kwapulinski@intel.com>
-> > Subject: Re: [Intel-wired-lan] [PATCH] i40e: add support for PTP
-> > external synchronization clock
-> > > On Thu, 2020-07-16 at 14:21 +0200, Piotr Kwapulinski wrote:
-> > > Add support for external synchronization clock via GPIOs.
-> > > 1PPS signals are handled via the dedicated 3 GPIOs: SDP3_2,
-> > > SDP3_3 and GPIO_4.
-> > > Previously it was not possible to use the external PTP
-> > > synchronization 
-> > > clock.
-> > > 
-> > > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> > > Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com
+On Fri, Jul 24, 2020 at 2:14 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+>
+> On Fri, Jul 24, 2020 at 10:45 PM Alexander Duyck
+> <alexander.duyck@gmail.com> wrote:
+> >
+> > On Fri, Jul 24, 2020 at 12:23 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > >
+> > > On Fri, Jul 24, 2020 at 4:57 PM Alexander Duyck
+> > > <alexander.duyck@gmail.com> wrote:
 > > > >
-> > > Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-> > 
-> > This doesn't apply, can you update to one that applies to dev-
-> > queue.
-> 
-> This patch is prepared against Dave's net-next tree v5.8-rc4 (most
-> recent)
-> 
-This patch should be prepared against the Intel Wired LAN next-queue,
-dev-queue branch.
+> > > > On Fri, Jul 24, 2020 at 5:33 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > > >
+> > > > > On Fri, Jul 24, 2020 at 2:01 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > > > >
+> > > > > > On Fri, Jul 17, 2020 at 3:45 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > > >
+> > > > > [--8<--]
+> > > > >
+> > > > > > As a side note, would something like this fix it - not even compile tested
+> > > > > >
+> > > > > >
+> > > > > > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > > > b/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > > > index 8bb3db2cbd41..1a7240aae85c 100644
+> > > > > > --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > > > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> > > > > > @@ -3396,6 +3396,13 @@ static int igb_probe(struct pci_dev *pdev,
+> > > > > > const struct pci_device_id *ent)
+> > > > > >                           "Width x2" :
+> > > > > >                           (hw->bus.width == e1000_bus_width_pcie_x1) ?
+> > > > > >                           "Width x1" : "unknown"), netdev->dev_addr);
+> > > > > > +               /* quirk */
+> > > > > > +#ifdef CONFIG_PCIEASPM
+> > > > > > +               if (hw->bus.width == e1000_bus_width_pcie_x1) {
+> > > > > > +                       /* single lane pcie causes problems with ASPM */
+> > > > > > +                       pdev->pcie_link_state->aspm_enabled = 0;
+> > > > > > +               }
+> > > > > > +#endif
+> > > > > >         }
+> > > > > >
+> > > > > >         if ((hw->mac.type >= e1000_i210 ||
+> > > > > >
+> > > > > > I don't know where the right place to put a quirk would be...
+> > > > >
+> > > > > Ok so that was a real brainfart... turns out that there is a lack of
+> > > > > good ways to get to that but it was more intended to
+> > > > > know where the quirk should go...
+> > > > >
+> > > > > Due to the lack of api:s i started wondering if this will apply to
+> > > > > more devices than just network cards - potentially we could
+> > > > > be a little bit more selective and only not enable it in one direction but...
+> > > > >
+> > > > > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+> > > > > index b17e5ffd31b1..96a3c6837124 100644
+> > > > > --- a/drivers/pci/pcie/aspm.c
+> > > > > +++ b/drivers/pci/pcie/aspm.c
+> > > > > @@ -584,15 +584,16 @@ static void pcie_aspm_cap_init(struct
+> > > > > pcie_link_state *link, int blacklist)
+> > > > >          * given link unless components on both sides of the link each
+> > > > >          * support L0s.
+> > > > >          */
+> > > > > -       if (dwreg.support & upreg.support & PCIE_LINK_STATE_L0S)
+> > > > > -               link->aspm_support |= ASPM_STATE_L0S;
+> > > > > -       if (dwreg.enabled & PCIE_LINK_STATE_L0S)
+> > > > > -               link->aspm_enabled |= ASPM_STATE_L0S_UP;
+> > > > > -       if (upreg.enabled & PCIE_LINK_STATE_L0S)
+> > > > > -               link->aspm_enabled |= ASPM_STATE_L0S_DW;
+> > > > > -       link->latency_up.l0s = calc_l0s_latency(upreg.latency_encoding_l0s);
+> > > > > -       link->latency_dw.l0s = calc_l0s_latency(dwreg.latency_encoding_l0s);
+> > > > > -
+> > > > > +       if (pcie_get_width_cap(child) != PCIE_LNK_X1) {
+> > > > > +               if (dwreg.support & upreg.support & PCIE_LINK_STATE_L0S)
+> > > > > +                       link->aspm_support |= ASPM_STATE_L0S;
+> > > > > +               if (dwreg.enabled & PCIE_LINK_STATE_L0S)
+> > > > > +                       link->aspm_enabled |= ASPM_STATE_L0S_UP;
+> > > > > +               if (upreg.enabled & PCIE_LINK_STATE_L0S)
+> > > > > +                       link->aspm_enabled |= ASPM_STATE_L0S_DW;
+> > > > > +               link->latency_up.l0s =
+> > > > > calc_l0s_latency(upreg.latency_encoding_l0s);
+> > > > > +               link->latency_dw.l0s =
+> > > > > calc_l0s_latency(dwreg.latency_encoding_l0s);
+> > > > > +       }
+> > > > >
+> > > > > this time it's compile tested...
+> > > > >
+> > > > > It could also be  if (pcie_get_width_cap(child) > PCIE_LNK_X1) {
+> > > > >
+> > > > > I assume that ASPM is not enabled for: PCIE_LNK_WIDTH_RESRV ;)
+> > > >
+> > > > This is probably a bit too broad of a scope to be used generically
+> > > > since this will disable ASPM for all devices that have a x1 link
+> > > > width.
+> > >
+> > > I agree, but also, the change to enable aspm on the controllers was
+> > > quite recent so it could be a general
+> > > issue that a lot of people could be suffering from... I haven't seen
+> > > any reports though...
+> >
+> > The problem is your layout is very likely specific. It may effect
+> > others with a similar layout, but for example I have the same
+> > controller in one of my systems and I have not been having any issues.
+> >
+> > > But otoh worst case would be a minor revert in power usage ;)
+> > >
+> > > > It might make more sense to look at something such as
+> > > > e1000e_disable_aspm as an example of how to approach this.
+> > >
+> > > Oh, my grepping completely failed to dig up this, thanks!
+> >
+> > https://elixir.bootlin.com/linux/latest/source/drivers/net/ethernet/intel/e1000e/netdev.c#L6743
+> >
+> > > > As far as what triggers it we would need to get more details about the
+> > > > setup. I'd be curious if we have an "lspci -vvv" for the system
+> > > > available. The assumption is that the ASPM exit latency is high on
+> > > > this system and that in turn is causing the bandwidth issues as you
+> > > > start entering L1. If I am not mistaken the device should advertise
+> > > > about 16us for the exit latency. I'd be curious if we have a device
+> > > > somewhere between the NIC and the root port that might be increasing
+> > > > the delay in exiting L1, and then if we could identify that we could
+> > > > add a PCIe quirk for that.
+> > >
+> > > We only disabled the L0s afair, but from e1000e_disable_aspm - "can't
+> > > have L1 without L0s"
+> > > so perhaps they are disabled as well...
+> >
+> > Not sure where you got that from. It looks like with your system the
+> > L0s is disabled and you only have support for L1.
+>
+> First of all, sorry, I accidentally dropped the mailinglist :(
+>
+> And the comment I quoted was from the e1000e_disable_aspm:
+>         switch (state) {
+>         case PCIE_LINK_STATE_L0S:
+>         case PCIE_LINK_STATE_L0S | PCIE_LINK_STATE_L1:
+>                 aspm_dis_mask |= PCI_EXP_LNKCTL_ASPM_L0S;
+>                 /* fall-through - can't have L1 without L0s */
+>        <====
+>         case PCIE_LINK_STATE_L1:
+>                 aspm_dis_mask |= PCI_EXP_LNKCTL_ASPM_L1;
+>                 break;
+>         default:
+>                 return;
+>         }
+> ----
+>
+> > >
+> > > And:
+> > > lspci -t
+> > > -[0000:00]-+-00.0
+> > >            +-00.2
+> > >            +-01.0
+> > >            +-01.2-[01-07]----00.0-[02-07]--+-03.0-[03]----00.0
+> >
+> > I think I now know what patch broke things for you. It is most likely
+> > this one that enabled ASPM on devices behind bridges:
+> > https://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git/commit/?h=next&id=66ff14e59e8a30690755b08bc3042359703fb07a
+>
+> Ah, yes, correct
+>
+> > My advice would be to revert that patch and see if it resolves the
+> > issue for you.
+>
+> Could do that yes =)
+>
+> I'm mainly looking for a more generic solution...
 
-https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-
-queue.git/
+That would be the generic solution. The patch has obviously broken
+things so we need to address the issues. The immediate solution is to
+revert it, but the more correct solution may be to do something like
+add an allowlist for the cases where enabling ASPM will not harm
+system performance.
+
+> > Device 3:00.0 is your i211 gigabit network controller. Notice you have
+> > a bridge between it and the root complex. This can be problematic as I
+> > believe the main reason for the code that was removed in the patch is
+> > that wakeups can end up being serialized if all of the links are down
+> > or you could end up with one of the other devices on the bridge
+> > utilizing the PCIe link an reducing the total throughput, especially
+> > if you have the link to the root complex also taking part in power
+> > management. Starting at the root complex it looks like you have the
+> > link between the bridge and the PCIe switch. It is running L1 enabled
+> > with a 32us time for it to reestablish link according to the root
+> > complex side (00:01.2->1:00.0). The next link is the switch to the
+> > i211 which is 2:03.0 -> 3:00.0. The interesting bit here is that the
+> > bridge says it only needs 32us while the NIC is saying it will need
+> > 64us. That upper bound is already a pretty significant value, however
+> > you have two links to contend with so in reality you are looking at
+> > something like 96us to bring up both links if they are brought up
+> > serially.
+>
+> hummm... Interesting... I have never managed to parse that lspci thing
+> properly...
+
+Actually I parsed it a bit incorrectly too.
+
+The i211 lists that it only supports up to 64us maximum delay in L1
+wakeup latency. The switch is advertising 32us delay to come out of L1
+on both the upstream and downstream ports. As such the link would be
+considered marginal with L1 enabled and so it should be disabled.
+
+> It is also interesting that the realtek card seems to be on the same link then?
+> With ASPM disabled, I wonder if that is due to the setpci command or
+> if it was disabled before..
+> (playing with setpci makes no difference but it might require a reboot.. )
+
+Are you using the same command you were using for the i211? Did you
+make sure to update the offset since the PCIe configuration block
+starts at a different offset? Also you probably need to make sure to
+only try to update function 0 of the device since I suspect the other
+functions won't have any effect.
+
+> > When you consider that you are using a Gigabit Ethernet connection
+> > that is moving data at roughly 1000 bits per microsecond, or 125 bytes
+> > per microsecond. At that rate we should have roughly 270us worth of
+> > packets we can buffer before we are forced to start dropping packets
+> > assuming the device is configured with a default 34K Rx buffer. As
+> > such I am not entirely sure ASPM is the only issue we have here. I
+> > assume you may also have CPU C states enabled as well? By any chance
+> > do you have C6 or deeper sleep states enabled on the system? If so
+> > that might be what is pushing us into the issues that you were seeing.
+> > Basically we are seeing something that is causing the PCIe to stall
+> > for over 270us. My thought is that it is likely a number of factors
+> > where we have too many devices sleeping and as a result the total
+> > wakeup latency is likely 300us or more resulting in dropped packets.
+>
+> It seems like I only have C2 as max...
+>
+> grep . /sys/devices/system/cpu/cpu0/cpuidle/state*/name
+> /sys/devices/system/cpu/cpu0/cpuidle/state0/name:POLL
+> /sys/devices/system/cpu/cpu0/cpuidle/state1/name:C1
+> /sys/devices/system/cpu/cpu0/cpuidle/state2/name:C2
+>
+> Anyway, we should bring this back to the mailing list
+
+That's fine. I assumed you didn't want to post the lspci to the
+mailing list as it might bounce for being too large.
+
+So a generic solution for this would be to have a function that would
+scan the PCIe bus and determine the total L1 and L0s exit latency. If
+a device advertises an acceptable ASPM power state exit latency and we
+have met or exceeded that we should be disabling that ASPM feature for
+the device.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
