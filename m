@@ -2,61 +2,47 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A50322B7EF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jul 2020 22:42:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BACE22C2AA
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Jul 2020 11:58:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A37778890E;
-	Thu, 23 Jul 2020 20:42:06 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A7F8C87FD9;
+	Fri, 24 Jul 2020 09:58:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WeqmIRR4Wf0o; Thu, 23 Jul 2020 20:42:06 +0000 (UTC)
+	with ESMTP id na9MZV23sbjH; Fri, 24 Jul 2020 09:58:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A955F888EE;
-	Thu, 23 Jul 2020 20:42:05 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 934E28832B;
+	Fri, 24 Jul 2020 09:58:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D41A1BF2BF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jul 2020 20:42:04 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E45001BF855
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 09:58:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D348522BCC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jul 2020 20:42:03 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id D3D4D88809
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 09:58:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eb9yHDJYtDlr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Jul 2020 20:42:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by silver.osuosl.org (Postfix) with ESMTPS id B409E22B7A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jul 2020 20:42:02 +0000 (UTC)
-IronPort-SDR: 6ZveiURQa/g3UH+zpn/oQqJ/wzJpoIzIxiBID6Hypsf1SZAyS4KWdOb5sbc9jT760CrowsJ8z4
- CWmm+IKkIL2Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9691"; a="235496847"
-X-IronPort-AV: E=Sophos;i="5.75,388,1589266800"; d="scan'208";a="235496847"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2020 13:42:01 -0700
-IronPort-SDR: 683zR1qK+ZitQGPuZjbQ1qFND3crgMEAQEBHshrrxFuQgYoLtu2iEWjpsdqAIMFzYxF2XE2EK+
- fWWo8LleuQhQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,388,1589266800"; d="scan'208";a="462990166"
-Received: from lkp-server01.sh.intel.com (HELO bd1a4a62506a) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 23 Jul 2020 13:42:00 -0700
-Received: from kbuild by bd1a4a62506a with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1jyi2R-0000bv-JH; Thu, 23 Jul 2020 20:41:59 +0000
-Date: Fri, 24 Jul 2020 04:41:27 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5f19f5f7.vXClfKFpCcIJWfam%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
- 74bab51604f283958b933450e3bc2820e82c9683
+ with ESMTP id 4a4rqNVTGNLZ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Jul 2020 09:58:02 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from tc-sys-mailedm02.tc.baidu.com (mx137-tc.baidu.com
+ [61.135.168.137])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 435E588804
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 09:58:02 +0000 (UTC)
+Received: from localhost (cp01-cos-dev01.cp01.baidu.com [10.92.119.46])
+ by tc-sys-mailedm02.tc.baidu.com (Postfix) with ESMTP id A624F11C0059;
+ Fri, 24 Jul 2020 17:57:59 +0800 (CST)
+From: Li RongQing <lirongqing@baidu.com>
+To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ magnus.karlsson@intel.com
+Date: Fri, 24 Jul 2020 17:57:58 +0800
+Message-Id: <1595584679-30652-1-git-send-email-lirongqing@baidu.com>
+X-Mailer: git-send-email 1.7.1
+Subject: [Intel-wired-lan] [PATCH 1/2] xdp/i40e/ixgbe: not flip rx buffer
+ for copy mode xdp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,100 +55,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
-branch HEAD: 74bab51604f283958b933450e3bc2820e82c9683  igc: Fix static checker warning
+i40e/ixgbe_rx_buffer_flip in copy mode xdp can lead to data
+corruption, like the following flow:
 
-elapsed time: 1563m
+   1. first skb is not for xsk, and forwarded to another device
+      or socket queue
+   2. seconds skb is for xsk, copy data to xsk memory, and page
+      of skb->data is released
+   3. rx_buff is reusable since only first skb is in it, but
+      *_rx_buffer_flip will make that page_offset is set to
+      first skb data
+   4. then reuse rx buffer, first skb which still is living
+      will be corrupted.
 
-configs tested: 74
-configs skipped: 1
+so not flip rx buffer for copy mode xdp
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm64                            allyesconfig
-arm64                               defconfig
-arm64                            allmodconfig
-arm64                             allnoconfig
-arm                                 defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-arm                               allnoconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                              debian-10.3
-i386                              allnoconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                              allnoconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                              allnoconfig
-m68k                           sun3_defconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nios2                            allyesconfig
-openrisc                            defconfig
-c6x                              allyesconfig
-c6x                               allnoconfig
-openrisc                         allyesconfig
-nds32                               defconfig
-nds32                             allnoconfig
-csky                             allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-h8300                            allmodconfig
-xtensa                              defconfig
-arc                                 defconfig
-arc                              allyesconfig
-sh                               allmodconfig
-sh                                allnoconfig
-microblaze                        allnoconfig
-mips                             allyesconfig
-mips                              allnoconfig
-mips                             allmodconfig
-parisc                            allnoconfig
-parisc                              defconfig
-parisc                           allyesconfig
-parisc                           allmodconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          rhel-kconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-s390                             allyesconfig
-s390                              allnoconfig
-s390                             allmodconfig
-s390                                defconfig
-sparc                            allyesconfig
-sparc                               defconfig
-sparc64                             defconfig
-sparc64                           allnoconfig
-sparc64                          allyesconfig
-sparc64                          allmodconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                               rhel-8.3
-x86_64                                  kexec
-x86_64                                   rhel
-x86_64                                    lkp
-x86_64                              fedora-25
-
+Fixes: c497176cb2e4 ("xsk: add Rx receive functions and poll support")
+Signed-off-by: Li RongQing <lirongqing@baidu.com>
+Signed-off-by: Dongsheng Rong <rongdongsheng@baidu.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  5 ++++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  5 ++++-
+ include/linux/filter.h                        | 11 +++++++++++
+ 3 files changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index b3836092c327..a8cea62fdbf5 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -2394,7 +2394,10 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget)
+ 
+ 			if (xdp_res & (I40E_XDP_TX | I40E_XDP_REDIR)) {
+ 				xdp_xmit |= xdp_res;
+-				i40e_rx_buffer_flip(rx_ring, rx_buffer, size);
++
++				if (xdp.rxq->mem.type == MEM_TYPE_XSK_BUFF_POOL ||
++				    xdp_get_map_type_no_direct() != BPF_MAP_TYPE_XSKMAP)
++					i40e_rx_buffer_flip(rx_ring, rx_buffer, size);
+ 			} else {
+ 				rx_buffer->pagecnt_bias++;
+ 			}
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index a8bf941c5c29..e5607ad7ac4f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -2351,7 +2351,10 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
+ 
+ 			if (xdp_res & (IXGBE_XDP_TX | IXGBE_XDP_REDIR)) {
+ 				xdp_xmit |= xdp_res;
+-				ixgbe_rx_buffer_flip(rx_ring, rx_buffer, size);
++
++				if (xdp.rxq->mem.type == MEM_TYPE_XSK_BUFF_POOL ||
++				    xdp_get_map_type_no_direct() != BPF_MAP_TYPE_XSKMAP)
++					ixgbe_rx_buffer_flip(rx_ring, rx_buffer, size);
+ 			} else {
+ 				rx_buffer->pagecnt_bias++;
+ 			}
+diff --git a/include/linux/filter.h b/include/linux/filter.h
+index 259377723603..3b3103814693 100644
+--- a/include/linux/filter.h
++++ b/include/linux/filter.h
+@@ -919,6 +919,17 @@ static inline void xdp_clear_return_frame_no_direct(void)
+ 	ri->kern_flags &= ~BPF_RI_F_RF_NO_DIRECT;
+ }
+ 
++static inline enum bpf_map_type xdp_get_map_type_no_direct(void)
++{
++	struct bpf_redirect_info *ri = this_cpu_ptr(&bpf_redirect_info);
++	struct bpf_map *map = READ_ONCE(ri->map);
++
++	if (map)
++		return map->map_type;
++	else
++		return BPF_MAP_TYPE_UNSPEC;
++}
++
+ static inline int xdp_ok_fwd_dev(const struct net_device *fwd,
+ 				 unsigned int pktlen)
+ {
+-- 
+2.16.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
