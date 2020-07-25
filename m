@@ -2,63 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4E3D22D31F
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Jul 2020 02:13:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E299E22D360
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Jul 2020 02:45:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7B8BD251AE;
-	Sat, 25 Jul 2020 00:13:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 99EBD2047E;
+	Sat, 25 Jul 2020 00:45:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Vp4KWz0ciRGG; Sat, 25 Jul 2020 00:13:20 +0000 (UTC)
+	with ESMTP id alaf6lG1g03k; Sat, 25 Jul 2020 00:45:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 25404250F6;
-	Sat, 25 Jul 2020 00:13:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 164EE20522;
+	Sat, 25 Jul 2020 00:45:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BE4181BF59D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 00:13:15 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 79CF51BF59D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 00:45:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9074387221
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 00:13:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 708E58945D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 00:45:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9OkbeFqxveYA for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Jul 2020 00:13:14 +0000 (UTC)
+ with ESMTP id 1iVce--ByGTn for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Jul 2020 00:45:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qt1-f193.google.com (mail-qt1-f193.google.com
- [209.85.160.193])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 5D96087C12
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 00:13:14 +0000 (UTC)
-Received: by mail-qt1-f193.google.com with SMTP id t23so5073590qto.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 17:13:14 -0700 (PDT)
+Received: from mail-il1-f179.google.com (mail-il1-f179.google.com
+ [209.85.166.179])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 33D568945A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 00:45:40 +0000 (UTC)
+Received: by mail-il1-f179.google.com with SMTP id i138so2761918ild.9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Jul 2020 17:45:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7pMM3R6M1V1/GoTlRw3Up2h84muojNE6wJFJ7gJLE/w=;
- b=GRC+sPbQxW/d+59KwAM7Wzz+PJB0rjqDFaf3b1zmy73V5KqL+6G3wcAZdBTq60UTPO
- dnHfYxb/54DzVLP37A4PcUTFJjQJEE2RyW3xCFQkLTeCT3fQJCXSauLZLvQpjRCRTUOD
- wlhw2QVetoEd5GvgrHWRa0L3s1AwuuMqE0QjNbQv21D3Lps86Sd0/8VAC94GCN4aOJLH
- 94MDYjqdifjgo2zv5XmJ6tK87MJUIX61js7tqMhxlp9x+aDvBgEGPlRqf7kQb0RhgAe3
- nLdC1Kuo5UDMH7ksy7ywTfbA9sPG8wImXgieKyJC9S6dnOh5i1I/PFNv83l8KfvJhloQ
- fShA==
+ :cc; bh=VzshrydQWVrJF1qcxStlfO4rv2XjLKyFT7X2GCvmoSU=;
+ b=mtZdDOGxswU40N7A+hEqEVDX+uwkgd5oeWH5W1mwCZW0dqQj3PX5zZqYuzfy5iVeu2
+ q/7JwrhMnyUbl35mclhFaP6XH5WS1RHLZa1yEykkRCBDbZj8R4FVs2Wxxy/IxkiZive1
+ TUSrJsZb7tOd4cyEnlFHwBnnsAH0egL0MA0DFBhhk4lwwJUgEweYmP1rcRRuJNntsZ5Z
+ DUzcMiuW96vgqCfbXNu9qmntTJLESG5XWcYUtHUaZgwi91sRnQVjksGTG5tf/yNIkilL
+ F56Qo9lk3K9GrqL6xsb1dOIzpl6Y4RV4tuciymHk84cH2dC6GGmM7L6HFxppm07Es0hz
+ halA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7pMM3R6M1V1/GoTlRw3Up2h84muojNE6wJFJ7gJLE/w=;
- b=Pf8eI+mZ2uwN8H+4jjZ11AkIwz917FbTWGR2gvh5njGJccFILKnT6Cy31fAnEK/BQu
- ZdT1b4jakNvivkIr/tCfldwuzgMGJOkEAXDcxu9ZV7Txy4KhDbQyb3RhBxtgaXjkcUf3
- G2POxohQMEGxfmSwquDrQgqj6hr1/bbU4ocksLD9uxPnNQIF7YPHICsPFxt28SrszIkY
- li5lp23z2jyF/oLnD9/U1myAJGJBWO5+OYfSU4C7kI0dukiArawqVLV0BwR22n1aent0
- TagI+CoeYzLrSlpf7li5Q/daA9k9784SKwt0XrC0C9TDQaaNZbgIZoAAVJbwVoHlxg5w
- /hPw==
-X-Gm-Message-State: AOAM5320MGEo2Wk98O99FtcJ0D0DGRicOYvV7TWnqrmEOmrwBCluZxyZ
- uyZ44u3ZpJgpKWl+Nyz2254NajIdL2h5N6GMZrg=
-X-Google-Smtp-Source: ABdhPJxsTJvOQ6mg/FclwDwQw4avQ7dN9njxA5VT2Yztqrp5d3v0hc6diW9GBNjjWoksBmqKziVlf6KWYlFwGySujd8=
-X-Received: by 2002:ac8:5416:: with SMTP id b22mr4015671qtq.45.1595635993131; 
- Fri, 24 Jul 2020 17:13:13 -0700 (PDT)
+ bh=VzshrydQWVrJF1qcxStlfO4rv2XjLKyFT7X2GCvmoSU=;
+ b=ugHJkCH64LfOxX3D9tOCPtucv9JuBmXbqJQZf3EpfXU0P5GUP+oydWCgIEkN73qjOb
+ femqpXCetP/ALicdws3CkjscEit6TM5swhrCS04MqsWJT5KG5kROFtYShyda/KWV/wrO
+ F2m9JDKn3a9cE8qJ/TCmJJBRKwPXXLl7UCCgFlsdAfFZ4s3SdruM3fsJTdT+R2P1f0TP
+ NdL3H2VBlKBnblrHRif3zRzLjugHcRrl3R4dnXaH/TaFvd0a7oZupVybcvMtfmMwrzZj
+ BDnvEjATV5+LwzMLALoJ0OVZkTXPJv6ijjwwVbATf5nk1vYy3JvHJFyGm2YmXuS1DjFF
+ Et6w==
+X-Gm-Message-State: AOAM532NJpb9xpkdlsx/YwFu5CSg+FR+gnCrAX7cvL9IOmP80eOjorqb
+ kbzI0DDGX/nA5Sy8BDihTvcmRo+TUdKXqSN23OE=
+X-Google-Smtp-Source: ABdhPJzNC5Op/VA77nCrgfgrk4qVEwiMJRLBqv2jOMiACQTlnQpFuO0RaE+UUIB6MdL/twK8f/lvBLoBg623HoafhaE=
+X-Received: by 2002:a92:1b12:: with SMTP id b18mr2758694ilb.42.1595637939034; 
+ Fri, 24 Jul 2020 17:45:39 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
  <CAA85sZua6Q8UR7TfCGO0bV=VU0gKtqj-8o_mqH38RpKrwYZGtg@mail.gmail.com>
@@ -86,10 +86,10 @@ References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
  <CAA85sZvTrmKhmoW6xASgOcZqPhLMkgy_LyfzvkGcqURUuvVxcg@mail.gmail.com>
  <CAA85sZvtct5qzNMAcO=jjcfuFPJ4dVfyUDzyXdqAmNDdoLUXuA@mail.gmail.com>
 In-Reply-To: <CAA85sZvtct5qzNMAcO=jjcfuFPJ4dVfyUDzyXdqAmNDdoLUXuA@mail.gmail.com>
-From: Ian Kumlien <ian.kumlien@gmail.com>
-Date: Sat, 25 Jul 2020 02:13:01 +0200
-Message-ID: <CAA85sZsRboyebNzFL1MHWq2i-R7wyqh-93kmhu9c-A4qHKk3Aw@mail.gmail.com>
-To: Alexander Duyck <alexander.duyck@gmail.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Fri, 24 Jul 2020 17:45:27 -0700
+Message-ID: <CAKgT0UdanNRN_KFkUjjpkiMPfi1ktjeD1ejiqnU_rU-0wJVn5A@mail.gmail.com>
+To: Ian Kumlien <ian.kumlien@gmail.com>
 Subject: Re: [Intel-wired-lan] NAT performance issue 944mbit -> ~40mbit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -109,7 +109,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Jul 25, 2020 at 1:08 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+On Fri, Jul 24, 2020 at 4:08 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
 >
 > On Sat, Jul 25, 2020 at 12:49 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
 > >
@@ -249,73 +249,80 @@ On Sat, Jul 25, 2020 at 1:08 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
 > > a.up + b.dw + b.up + c.dw
 > >
 > > for a (root?) to go through b (bridge/switch?) to c (device)
->
+
+Actually I think it is max(a.dw, b.up) + max(b.dw, a.up). Basically
+what you want is the maximum time to bring the link up so technically
+you only have 2 links so you just have to add up the maximum time to
+create each link.
+
 > Also, we only disabled L0, which isn't counted as a total at all, it
 > only checks each side.
->
+
+Not sure what you mean here. L0 is the link fully powered on. The two
+link states we have to worry about are L0s and L1 as those involve
+various states of power-down. The L1 latency is the nasty one as that
+basically involves fully powering down the link and requires time for
+the link to be reestablished.
+
 > Since pcie is serial and judging from your previous statements I
 > assume that the max statement is a bug.
 > I also assume that l0 counts, and should be dealt with the same way
 > and it should also be cumulative...
->
+
+That latency check looks like it would be for a single link. Not each
+link in the chain.
+
 > The question becomes, is this latency from root? or is it "one step"?
->
+
+Actually the function is doing both. I had to reread the spec.
+Basically the switch is supposed to start trying to bring up the other
+links as soon as it detects that we are trying to bring up the link.
+In theory this is only supposed to add about 1us. So in theory the
+total bring-up time should be 33us.
+
 > Also they add one microsecond but that looks like it should be
 > parent.l0.up + link.l0.dw latency values
->
+
+Yes, the 1us is the value I reference above. Basically the assumption
+is that as soon as one link starts retraining it should start working
+on the other ones so the serialization penalty is only supposed to be
+1us.
+
 > So are my assumptions correct that the serial nature means that all
 > latenies stack?
 >
 > l0 is done first, so latency is actually l0 + l1 as max latency? (per side)
 
-Found some intel documentation "PCI Express compiler v6.1 User Guide" and it
-does seem like the l0 and l1 latencies are cumulative...
+I don't think the L0s latency needs to be added if that is what you
+are asking. Basically you either go from L0s->L0 or L1->L0. There is
+no jumping between L0s and L1.
 
-So it looks like we should have something like:
-        while (link) {
-                /* Check L0s latency, this is cumulative from the root */
-                if (link->aspm_capable & ASPM_STATE_L0S) {
-                        /* Check downstream direction L0s latency */
-                        if (link->aspm_capable & ASPM_STATE_L0S_DW)
-                                l0_switch_latency += link->latency_dw.l0s;
-                        /* Add upstream direction L0s parent latency */
-                        if (link->parent && link->parent->aspm_capable
-& ASPM_STATE_L0S_UP)
-                                l0_switch_latency +=
-link->parent->latency_up.l0s;
+Something still isn't adding up with all this as the latency shouldn't
+be enough to trigger buffer overruns. I wonder if we don't have
+something that is misreporting the actual L1 wakeup latency. One thing
+that I notice is that the link between the root complex and the PCIe
+switch seems to have some sort of electrical issue. If you look at the
+section from the upstream side of the switch:
+LnkCap: Port #0, Speed 16GT/s, Width x8, ASPM L1, Exit Latency L1 <32us
+ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+LnkCtl: ASPM L1 Enabled; Disabled- CommClk+
+ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+LnkSta: Speed 16GT/s (ok), Width x4 (downgraded)
+TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
 
-                        /* Clear ASPM L0 since the latency is too high */
-                        if (l0_switch_latency > acceptable->l0s)
-
-endpoint->bus->self->link_state->aspm_capable &= ~ASPM_STATE_L0S
-                }
-
-                latency = link->latency_up.l1 + link->latency_dw.l1;
-                if (link->aspm_capable & ASPM_STATE_L1) {
-                        l1_switch_latency += link->latency_dw.l1;
-                        if (link->parent && link->parent->aspm_capable
-& ASPM_STATE_L1)
-                                l1_switch_latency +=
-link->parent->latency.up.l1;
-
-                        /* Clear ASPM L1 since the latency is too high */
-                        /* FIXME: should l0 latency be used here? */
-                        if (l1_switch_latency + l0_switch_latency >
-acceptable->l1)
-
-endpoint->bus->self->link_state->aspm_capable &= ~ASPM_STATE_L1
-                        /* FIXME: is this still required? */
-                        l1_switch_latency += 1000;
-                }
-
-                link = link->parent;
----
-
-I don't know if i got downstream/upstream right though... But as you
-can see there are a few questions...
-An additional question is if it's enough to only clear endpoints or if
-i should walk the path... (it does feel like endpoints would be good
-enough)
+One thing that catches my eye is that it is only linked at x4 when
+both sides are listing themselves as x8. Do you know if this has ever
+linked at x8 or has it always been x4? With this being a Gen 4 x8
+connection it would normally take a little while to establish a link,
+but with it having to fail down to a x4 that would add extra time and
+likely push it out of the expected exit latency. Also I notice that
+there are mentions of lane errors in the config, however I suspect
+those are Gen 4 features that I am not familiar with so I don't know
+if those are normal. It might be interesting to reboot and see if the
+link goes back to a x8 and if the lane errors clear at some point. If
+it does then we might want to disable ASPM on the upstream port of the
+switch since I have seen ASPM cause link downgrades and that may be
+what is occurring here.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
