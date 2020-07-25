@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8793B22D968
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Jul 2020 20:53:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DE9D22D96B
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Jul 2020 20:56:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0FE20883A4;
-	Sat, 25 Jul 2020 18:53:08 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D846787DD4;
+	Sat, 25 Jul 2020 18:56:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E3mGtU5GgMFU; Sat, 25 Jul 2020 18:53:06 +0000 (UTC)
+	with ESMTP id 1BihlIlqYvDN; Sat, 25 Jul 2020 18:56:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 40CD388363;
-	Sat, 25 Jul 2020 18:53:06 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 7BD7987ECD;
+	Sat, 25 Jul 2020 18:56:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2FBBC1BF5DA
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 18:53:04 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BB9351BF5DA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 18:56:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 26A268834D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 18:53:04 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B6E79869BF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 18:56:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wjNMbpkyTJAo for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Jul 2020 18:53:02 +0000 (UTC)
+ with ESMTP id P31HXmbGMsOe for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Jul 2020 18:56:39 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-qk1-f169.google.com (mail-qk1-f169.google.com
- [209.85.222.169])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A74E788320
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 18:53:02 +0000 (UTC)
-Received: by mail-qk1-f169.google.com with SMTP id l23so11848902qkk.0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 11:53:02 -0700 (PDT)
+Received: from mail-qk1-f176.google.com (mail-qk1-f176.google.com
+ [209.85.222.176])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A159E86995
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 18:56:39 +0000 (UTC)
+Received: by mail-qk1-f176.google.com with SMTP id x69so11843247qkb.1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jul 2020 11:56:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=T28+47YtgdOMHX3qUjUkOGjNuQu12VneujTQ3z01B70=;
- b=qPdbxJ1aao99DfKqj/DALzCG50TOvMraVDavfo1s/HIhcbqEJsUy/V4TavYWuV6dtO
- +locy1FoDJ6UTrOLrmzsjNgxOGSyTiEJKadwQUIC6pd3L4I3595htP9hlxS3XVcMWqUw
- xIP8xToXacI3B+iNYWkUFpbuwa8jsN5RO6M97VYpZUqzgzqc5S4M6ngFvtP0b/fymZY4
- 90CZGDEcySfnyXBfWRlXMLL0/unzJ+ZaRZSsyTiOhhCmnv49/iqmisr7AyJnZ1HvuVmi
- KNLv8aW8usCeHCaMSOdCzYDDjEPuryypMMnB3Yyji6TcYGXwoR8Tayc4+s0mtvMtFcD4
- 8UAA==
+ :cc; bh=XG/BY/hQ+6aWUG2wton6vvSGdrv15X0LZ22WhRvJNG4=;
+ b=syPUH6mg4uhL686NrkMevWBSI3Ofuw91i+q+RI8AAflCer38ir7KIPPCV32I5H/FAm
+ Qwc/eMMF6UoWllEsYrOR3dRj4BgNPO3FSKYaHuZCpjcFy+cJrvgQ5hocLKolz5HY9xh8
+ s/ObQ6c3WMyVyAYf+i0MeNLeZuyDKmYB80mzeJmuQchIjpm57bnmx2DZbTnxsgrdCejH
+ DK0vZ+PMgfqAnoleOm9zB+apiE4qhGGS+Mo1o+ivJg0wFUHXvgbsKltCuR7lKwS3ygVM
+ 8EI6qquykB3SpTDKXik5qPvav7Umf9H4il0S82Fpm9nTmSPO0EEnYHSMekYZTMR36Zh7
+ bJPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=T28+47YtgdOMHX3qUjUkOGjNuQu12VneujTQ3z01B70=;
- b=WI6XHv20/1g+aekr4SRNfkB4IFKWuWvEuoVtSYRJrjxETf+0F0A4rgp4ULgBDNhGXj
- Q+on2D1nwC52Goytf0qOM0/rDOuF5uiK95UacBe/N+UvW8zEMX+67aeC0mmFFtTVUzxj
- CmjIrTze3xFYgMQhmFEuDiIFig7o9VN/RXhOzRyZkzpdE3mN0kS4AB+zN5T6Pxsvxji9
- C43ZsPRJF6tv3f9i3JeQDi9ng7ydiJ9WRXVMOxB5vgkDuhGc4HLj43AcmcUnXGgZZlak
- xqgGtov8WOXMzFnGqriATzob5mKYg8PZ4A9d2YeEp7ymP8FTFDG3O/rp7UawYsOBW9mf
- Hrkg==
-X-Gm-Message-State: AOAM531a3+tfBBL/ZEStO94AgOoBlitQI/ZMeW4CTAs2QssAQu4HJuL0
- cr9yfte4hOIFQmaxXa+rRwrlFnxdOec1Fyqqp+Y=
-X-Google-Smtp-Source: ABdhPJyXE4JlW9vR9mOBPOk22MQYPHVL1TOeU+B0uGiKAQN+2Qjzx4VnPr8hrAVUb/efqgA17WKkAKLd1GV3+tZEYhw=
-X-Received: by 2002:a37:8283:: with SMTP id
- e125mr16027572qkd.175.1595703181088; 
- Sat, 25 Jul 2020 11:53:01 -0700 (PDT)
+ bh=XG/BY/hQ+6aWUG2wton6vvSGdrv15X0LZ22WhRvJNG4=;
+ b=ofRUp38s8Tn1I3f0JTxnPPejeVVE2xxLYaxCB2uHOmSxi7pOkVANI8m2CK2bbXCoOk
+ GvVxkSRCwG8W+VjSpRLuhv1W8GmKrDzQwMpngJWGMEcLA6A+KzUh7RBSmhDx0VeLLz2l
+ Pxi5+A5xPRgF89v7IXW6uFpfGXEP40tb3zFzmihfZAJmotm86vkt0puYwgfTeovF4QZF
+ etVEYKiG+qY4QMJV22pZBpw/kgAhaPKV0Yof0YzJMZyExAHedC8VPMRONJ0K6BSvV4Ko
+ 9kgkHa7iU/deSxpsJ7Vv4/BaEOcqbum3WMcI4o762Ad36yeaZlc4BUjvfkTs1lg6Y8Zg
+ 7DKQ==
+X-Gm-Message-State: AOAM5325mwfRxrONCx+KSSZku1zhVVEE5d3djaNV541Wpce0uyIGpLyF
+ QUO1f2imXz2E/uPfNyjTiv3ybkI7umyTuH0AFmziTERC
+X-Google-Smtp-Source: ABdhPJx48Ykl8LQfHuvr4Ck441TV+DYSQ5UKalOJSuxbq238nYX+7jF21tRVLen02F9QUKf/LFo6zeYYJxCh7BUBCOs=
+X-Received: by 2002:a37:8fc6:: with SMTP id
+ r189mr15755984qkd.159.1595703398469; 
+ Sat, 25 Jul 2020 11:56:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
  <CAA85sZua6Q8UR7TfCGO0bV=VU0gKtqj-8o_mqH38RpKrwYZGtg@mail.gmail.com>
@@ -88,11 +88,12 @@ References: <CAA85sZvKNXCo5bB5a6kKmsOUAiw+_daAVaSYqNW6QbSBJ0TcyQ@mail.gmail.com>
  <CAA85sZvtct5qzNMAcO=jjcfuFPJ4dVfyUDzyXdqAmNDdoLUXuA@mail.gmail.com>
  <CAKgT0UdanNRN_KFkUjjpkiMPfi1ktjeD1ejiqnU_rU-0wJVn5A@mail.gmail.com>
  <CAA85sZu0B2DybQuQD2uJO6r7HXkGFbAxV8VoG4qxE681yMwmfg@mail.gmail.com>
- <CAKgT0Ufe42pPZCBQPMt61MSJzJBZGS=a_bfouqhezGAb1UXP6g@mail.gmail.com>
-In-Reply-To: <CAKgT0Ufe42pPZCBQPMt61MSJzJBZGS=a_bfouqhezGAb1UXP6g@mail.gmail.com>
+ <CAA85sZtm8W8NHhQ-vg1HQzAyUE6hdjkO4c5M7BEbgZwC_DUsSw@mail.gmail.com>
+ <CAKgT0Ue0JEmn2zN7yenohow8KhsX6jVfG4X0+Gt+p0uJijoTzA@mail.gmail.com>
+In-Reply-To: <CAKgT0Ue0JEmn2zN7yenohow8KhsX6jVfG4X0+Gt+p0uJijoTzA@mail.gmail.com>
 From: Ian Kumlien <ian.kumlien@gmail.com>
-Date: Sat, 25 Jul 2020 20:52:49 +0200
-Message-ID: <CAA85sZtiPQnWbxDDtKbW4YeikVzYHH2iBd6Vjo+DROMazX3D-Q@mail.gmail.com>
+Date: Sat, 25 Jul 2020 20:56:27 +0200
+Message-ID: <CAA85sZsk0N_G=w+qFxuOwD=C+BQxy1Nh1ZD4ud+gwzO_gu5H6Q@mail.gmail.com>
 To: Alexander Duyck <alexander.duyck@gmail.com>
 Subject: Re: [Intel-wired-lan] NAT performance issue 944mbit -> ~40mbit
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -113,273 +114,138 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Jul 25, 2020 at 7:30 PM Alexander Duyck
+On Sat, Jul 25, 2020 at 7:43 PM Alexander Duyck
 <alexander.duyck@gmail.com> wrote:
 >
-> On Fri, Jul 24, 2020 at 6:03 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> On Sat, Jul 25, 2020 at 6:53 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
 > >
-> > On Sat, Jul 25, 2020 at 2:45 AM Alexander Duyck
-> > <alexander.duyck@gmail.com> wrote:
+> > On Sat, Jul 25, 2020 at 3:03 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> > > On Sat, Jul 25, 2020 at 2:45 AM Alexander Duyck
+> > > <alexander.duyck@gmail.com> wrote:
+> > > > On Fri, Jul 24, 2020 at 4:08 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> >
+> > [--8<--]
+> >
+> > > > Actually I think it is max(a.dw, b.up) + max(b.dw, a.up). Basically
+> > > > what you want is the maximum time to bring the link up so technically
+> > > > you only have 2 links so you just have to add up the maximum time to
+> > > > create each link.
 > > >
-> > > On Fri, Jul 24, 2020 at 4:08 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
-> > > >
-> > > > On Sat, Jul 25, 2020 at 12:49 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
-> > > > >
-> > > > > On Sat, Jul 25, 2020 at 12:41 AM Ian Kumlien <ian.kumlien@gmail.com> wrote:
-> > > > > >
-> > > > > > On Fri, Jul 24, 2020 at 11:51 PM Alexander Duyck
-> > > > > > <alexander.duyck@gmail.com> wrote:
-> > > > > > >
-> > > > > > > On Fri, Jul 24, 2020 at 2:14 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
-> > > >
-> > > > [--8<--]
-> > > >
-> > > > > > > > > >
-> > > > > > > > > > And:
-> > > > > > > > > > lspci -t
-> > > > > > > > > > -[0000:00]-+-00.0
-> > > > > > > > > >            +-00.2
-> > > > > > > > > >            +-01.0
-> > > > > > > > > >            +-01.2-[01-07]----00.0-[02-07]--+-03.0-[03]----00.0
-> > > > > > > > >
-> > > > > > > > > I think I now know what patch broke things for you. It is most likely
-> > > > > > > > > this one that enabled ASPM on devices behind bridges:
-> > > > > > > > > https://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci.git/commit/?h=next&id=66ff14e59e8a30690755b08bc3042359703fb07a
-> > > > > > > >
-> > > > > > > > Ah, yes, correct
-> > > > > > > >
-> > > > > > > > > My advice would be to revert that patch and see if it resolves the
-> > > > > > > > > issue for you.
-> > > > > > > >
-> > > > > > > > Could do that yes =)
-> > > > > > > >
-> > > > > > > > I'm mainly looking for a more generic solution...
-> > > > > > >
-> > > > > > > That would be the generic solution. The patch has obviously broken
-> > > > > > > things so we need to address the issues. The immediate solution is to
-> > > > > > > revert it, but the more correct solution may be to do something like
-> > > > > > > add an allowlist for the cases where enabling ASPM will not harm
-> > > > > > > system performance.
-> > > > > >
-> > > > > > more like a generic solution like the one you mention below where we
-> > > > > > get the best of both worlds... =)
-> > > > > >
-> > > > > > > > > Device 3:00.0 is your i211 gigabit network controller. Notice you have
-> > > > > > > > > a bridge between it and the root complex. This can be problematic as I
-> > > > > > > > > believe the main reason for the code that was removed in the patch is
-> > > > > > > > > that wakeups can end up being serialized if all of the links are down
-> > > > > > > > > or you could end up with one of the other devices on the bridge
-> > > > > > > > > utilizing the PCIe link an reducing the total throughput, especially
-> > > > > > > > > if you have the link to the root complex also taking part in power
-> > > > > > > > > management. Starting at the root complex it looks like you have the
-> > > > > > > > > link between the bridge and the PCIe switch. It is running L1 enabled
-> > > > > > > > > with a 32us time for it to reestablish link according to the root
-> > > > > > > > > complex side (00:01.2->1:00.0). The next link is the switch to the
-> > > > > > > > > i211 which is 2:03.0 -> 3:00.0. The interesting bit here is that the
-> > > > > > > > > bridge says it only needs 32us while the NIC is saying it will need
-> > > > > > > > > 64us. That upper bound is already a pretty significant value, however
-> > > > > > > > > you have two links to contend with so in reality you are looking at
-> > > > > > > > > something like 96us to bring up both links if they are brought up
-> > > > > > > > > serially.
-> > > > > > > >
-> > > > > > > > hummm... Interesting... I have never managed to parse that lspci thing
-> > > > > > > > properly...
-> > > > > > >
-> > > > > > > Actually I parsed it a bit incorrectly too.
-> > > > > > >
-> > > > > > > The i211 lists that it only supports up to 64us maximum delay in L1
-> > > > > > > wakeup latency. The switch is advertising 32us delay to come out of L1
-> > > > > > > on both the upstream and downstream ports. As such the link would be
-> > > > > > > considered marginal with L1 enabled and so it should be disabled.
-> > > > > > >
-> > > > > > > > It is also interesting that the realtek card seems to be on the same link then?
-> > > > > > > > With ASPM disabled, I wonder if that is due to the setpci command or
-> > > > > > > > if it was disabled before..
-> > > > > > > > (playing with setpci makes no difference but it might require a reboot.. )
-> > > > > > >
-> > > > > > > Are you using the same command you were using for the i211? Did you
-> > > > > > > make sure to update the offset since the PCIe configuration block
-> > > > > > > starts at a different offset? Also you probably need to make sure to
-> > > > > > > only try to update function 0 of the device since I suspect the other
-> > > > > > > functions won't have any effect.
-> > > > > >
-> > > > > > Ah, no, i only toggled the i211 to see if that's what caused the ASPM
-> > > > > > to be disabled...
-> > > > > >
-> > > > > > But it seems it isn't -- will have to reboot to verify though
-> > > > > >
-> > > > > > > > > When you consider that you are using a Gigabit Ethernet connection
-> > > > > > > > > that is moving data at roughly 1000 bits per microsecond, or 125 bytes
-> > > > > > > > > per microsecond. At that rate we should have roughly 270us worth of
-> > > > > > > > > packets we can buffer before we are forced to start dropping packets
-> > > > > > > > > assuming the device is configured with a default 34K Rx buffer. As
-> > > > > > > > > such I am not entirely sure ASPM is the only issue we have here. I
-> > > > > > > > > assume you may also have CPU C states enabled as well? By any chance
-> > > > > > > > > do you have C6 or deeper sleep states enabled on the system? If so
-> > > > > > > > > that might be what is pushing us into the issues that you were seeing.
-> > > > > > > > > Basically we are seeing something that is causing the PCIe to stall
-> > > > > > > > > for over 270us. My thought is that it is likely a number of factors
-> > > > > > > > > where we have too many devices sleeping and as a result the total
-> > > > > > > > > wakeup latency is likely 300us or more resulting in dropped packets.
-> > > > > > > >
-> > > > > > > > It seems like I only have C2 as max...
-> > > > > > > >
-> > > > > > > > grep . /sys/devices/system/cpu/cpu0/cpuidle/state*/name
-> > > > > > > > /sys/devices/system/cpu/cpu0/cpuidle/state0/name:POLL
-> > > > > > > > /sys/devices/system/cpu/cpu0/cpuidle/state1/name:C1
-> > > > > > > > /sys/devices/system/cpu/cpu0/cpuidle/state2/name:C2
-> > > > > > > >
-> > > > > > > > Anyway, we should bring this back to the mailing list
-> > > > > > >
-> > > > > > > That's fine. I assumed you didn't want to post the lspci to the
-> > > > > > > mailing list as it might bounce for being too large.
-> > > > > >
-> > > > > > Good thinking, but it was actually a slip :/
-> > > > > >
-> > > > > > > So a generic solution for this would be to have a function that would
-> > > > > > > scan the PCIe bus and determine the total L1 and L0s exit latency. If
-> > > > > > > a device advertises an acceptable ASPM power state exit latency and we
-> > > > > > > have met or exceeded that we should be disabling that ASPM feature for
-> > > > > > > the device.
-> > > > > >
-> > > > > > Yeah, since I'm on vacation I'll actually see if I can look in to that!
-> > > > > > (I mean, I'm not that used to these kinds of things but if my messing
-> > > > > > around inspires someone
-> > > > > > or if noone else is working on it, then... what the hey ;) )
-> > > > >
-> > > > > Uhm... so, in the function that determines latency they only do MAX
-> > > > >
-> > > > > Ie:
-> > > > > static void pcie_aspm_check_latency(struct pci_dev *endpoint)
-> > > > > {
-> > > > > ...
-> > > > >                 latency = max_t(u32, link->latency_up.l1, link->latency_dw.l1);
-> > > > > ---
-> > > > >
-> > > > > I just want to see if I'm understanding you right, is it correct that
-> > > > > the latency should be:
-> > > > > a.up + b.dw + b.up + c.dw
-> > > > >
-> > > > > for a (root?) to go through b (bridge/switch?) to c (device)
+> > > Ah so it's not cumulative per link, only max value on one, got it!
 > > >
-> > > Actually I think it is max(a.dw, b.up) + max(b.dw, a.up). Basically
-> > > what you want is the maximum time to bring the link up so technically
-> > > you only have 2 links so you just have to add up the maximum time to
-> > > create each link.
-> >
-> > Ah so it's not cumulative per link, only max value on one, got it!
-> >
-> > > > Also, we only disabled L0, which isn't counted as a total at all, it
-> > > > only checks each side.
+> > > > > Also, we only disabled L0, which isn't counted as a total at all, it
+> > > > > only checks each side.
+> > > >
+> > > > Not sure what you mean here. L0 is the link fully powered on. The two
+> > > > link states we have to worry about are L0s and L1 as those involve
+> > > > various states of power-down. The L1 latency is the nasty one as that
+> > > > basically involves fully powering down the link and requires time for
+> > > > the link to be reestablished.
 > > >
-> > > Not sure what you mean here. L0 is the link fully powered on. The two
-> > > link states we have to worry about are L0s and L1 as those involve
-> > > various states of power-down. The L1 latency is the nasty one as that
-> > > basically involves fully powering down the link and requires time for
-> > > the link to be reestablished.
+> > > we basically did the &= ~ASPM_STATE_L0S - is the S indicative of something?
+> > >
+> > > > > Since pcie is serial and judging from your previous statements I
+> > > > > assume that the max statement is a bug.
+> > > > > I also assume that l0 counts, and should be dealt with the same way
+> > > > > and it should also be cumulative...
+> > > >
+> > > > That latency check looks like it would be for a single link. Not each
+> > > > link in the chain.
+> > >
+> > > Yes, it checks each link in the chain, which is incorrect, it's actually the
+> > > cumulative latency that is important... Well... according to what I have
+> > > been able to gather from various documents anyway ;)
+> > >
+> > > > > The question becomes, is this latency from root? or is it "one step"?
+> > > >
+> > > > Actually the function is doing both. I had to reread the spec.
+> > > > Basically the switch is supposed to start trying to bring up the other
+> > > > links as soon as it detects that we are trying to bring up the link.
+> > > > In theory this is only supposed to add about 1us. So in theory the
+> > > > total bring-up time should be 33us.
+> > >
+> > > Ah ok, thanks, that answers another question in the chain ;)
 > >
-> > we basically did the &= ~ASPM_STATE_L0S - is the S indicative of something?
+> > So, then this is what should be done:
+> > diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
+> > index b17e5ffd31b1..2b8f7ea7f7bc 100644
+> > --- a/drivers/pci/pcie/aspm.c
+> > +++ b/drivers/pci/pcie/aspm.c
+> > @@ -434,7 +434,7 @@ static void pcie_get_aspm_reg(struct pci_dev *pdev,
+> >
+> >  static void pcie_aspm_check_latency(struct pci_dev *endpoint)
+> >  {
+> > -       u32 latency, l1_switch_latency = 0;
+> > +       u32 latency, l1_max_latency = 0, l1_switch_latency = 0;
+> >         struct aspm_latency *acceptable;
+> >         struct pcie_link_state *link;
+> >
+> > @@ -470,8 +470,9 @@ static void pcie_aspm_check_latency(struct pci_dev
+> > *endpoint)
+> >                  * substate latencies (and hence do not do any check).
+> >                  */
+> >                 latency = max_t(u32, link->latency_up.l1, link->latency_dw.l1);
+> > +               l1_max_latency = max_t(u32, latency, l1_max_latency)
+> >                 if ((link->aspm_capable & ASPM_STATE_L1) &&
+> > -                   (latency + l1_switch_latency > acceptable->l1))
+> > +                   (l1_max_latency + l1_switch_latency > acceptable->l1))
+> >                         link->aspm_capable &= ~ASPM_STATE_L1;
+> >                 l1_switch_latency += 1000;
+> > ---
 >
-> So the command I gave you was basically clearing both the L1 and L0S
-> states. It disabled ASPM entirely. However it looks like only L1 is
-> supported on your platform.
+> This makes sense to me. You might want to submit it to the linux-pci
+> mailing list.
 
-Ah ok, perhaps i missed that somewhere, it looked like L0s was off by
-L1 was still on
+Will after trying it and adding the missing ';'
 
-> > > > Since pcie is serial and judging from your previous statements I
-> > > > assume that the max statement is a bug.
-> > > > I also assume that l0 counts, and should be dealt with the same way
-> > > > and it should also be cumulative...
-> > >
-> > > That latency check looks like it would be for a single link. Not each
-> > > link in the chain.
-> >
-> > Yes, it checks each link in the chain, which is incorrect, it's actually the
-> > cumulative latency that is important... Well... according to what I have
-> > been able to gather from various documents anyway ;)
+> > for l1 latency... I do however find it odd that you don't disable it
+> > on the endpoint but on the
+> > potential bridge/switch/root you're on - shouldn't the disable be on
+> > endpoint->bus->self->link_state?
 >
-> Right. We would need to determine the latency of the entire chain. So
-> that would effectively be the max for any one link plus 1us for every
-> switch it has to pass through.
+> I think the idea is that we want to leave the leaves of the root
+> complex with ASPM enabled and disable it as we approach the trunk as
+> it is more likely that we are going to see more frequent wakeups as we
+> approach the root complex, or at least that would be my theory anyway.
+> Basically the closer you get to the root complex the more likely you
+> are to have more devices making use of the path so the more likely it
+> is to have to stay on anyway.
 
-Which the patch i did actually does, =)
+Well since we walk from endpoint to root complex, it's actually more
+likely that we disable the root complex...
 
-Gonna test it soon to see if it handles my case
+since max_latency + hops will be the largest number there
 
-> > > > The question becomes, is this latency from root? or is it "one step"?
-> > >
-> > > Actually the function is doing both. I had to reread the spec.
-> > > Basically the switch is supposed to start trying to bring up the other
-> > > links as soon as it detects that we are trying to bring up the link.
-> > > In theory this is only supposed to add about 1us. So in theory the
-> > > total bring-up time should be 33us.
+> > Anyway, this should handle any latency bumps... and could be done
+> > differently reusing latency and:
+> > latency = max_t(u32, latency, max_t(u32, link->latency_up.l1,
+> > link->latency_dw.l1));
 > >
-> > Ah ok, thanks, that answers another question in the chain ;)
+> > but kept it this way for legibility...
 > >
-> > > > Also they add one microsecond but that looks like it should be
-> > > > parent.l0.up + link.l0.dw latency values
-> > >
-> > > Yes, the 1us is the value I reference above. Basically the assumption
-> > > is that as soon as one link starts retraining it should start working
-> > > on the other ones so the serialization penalty is only supposed to be
-> > > 1us.
-> >
-> > AH!
-> >
-> > > > So are my assumptions correct that the serial nature means that all
-> > > > latenies stack?
-> > > >
-> > > > l0 is done first, so latency is actually l0 + l1 as max latency? (per side)
-> > >
-> > > I don't think the L0s latency needs to be added if that is what you
-> > > are asking. Basically you either go from L0s->L0 or L1->L0. There is
-> > > no jumping between L0s and L1.
-> >
-> > Ok!
-> >
-> > > Something still isn't adding up with all this as the latency shouldn't
-> > > be enough to trigger buffer overruns. I wonder if we don't have
-> > > something that is misreporting the actual L1 wakeup latency. One thing
-> > > that I notice is that the link between the root complex and the PCIe
-> > > switch seems to have some sort of electrical issue. If you look at the
-> > > section from the upstream side of the switch:
-> > > LnkCap: Port #0, Speed 16GT/s, Width x8, ASPM L1, Exit Latency L1 <32us
-> > > ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
-> > > LnkCtl: ASPM L1 Enabled; Disabled- CommClk+
-> > > ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
-> > > LnkSta: Speed 16GT/s (ok), Width x4 (downgraded)
-> > > TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
-> > >
-> > > One thing that catches my eye is that it is only linked at x4 when
-> > > both sides are listing themselves as x8. Do you know if this has ever
-> > > linked at x8 or has it always been x4? With this being a Gen 4 x8
-> > > connection it would normally take a little while to establish a link,
-> > > but with it having to fail down to a x4 that would add extra time and
-> > > likely push it out of the expected exit latency. Also I notice that
-> > > there are mentions of lane errors in the config, however I suspect
-> > > those are Gen 4 features that I am not familiar with so I don't know
-> > > if those are normal. It might be interesting to reboot and see if the
-> > > link goes back to a x8 and if the lane errors clear at some point. If
-> > > it does then we might want to disable ASPM on the upstream port of the
-> > > switch since I have seen ASPM cause link downgrades and that may be
-> > > what is occurring here.
-> >
-> > Humm... And that would mean disabling ASPM completely to test?
+> > But for L0 -- been looking at it and I wonder... from what I can see
+> > it's cumulative for the link, but L0S seems
+> > different and is perhaps not quite the same...
 >
-> Maybe. Right after boot there is a good likelihood that the link will
-> be the most healthy, so it is likely to still be x8 if that is the
-> true width of the link. If we are seeing it degrade over time that
-> would be a sign that maybe we should disable L1 on the link between
-> the switch and the root complex instead of messing with the NICs.
+> You have mentioned L0 several times now and I wonder what you are
+> referring to. L0 is the fully powered on state. That is the state we
+> are trying to get back to. L0s and L1 are the lower power states that
+> we have to get out of with L1 being a much more complicated state to
+> get out of as we shut down the clocks and link if I recall and have to
+> reestablish both before we can resume operation.
 
-I doubt it, I suspect that the chip can do more but it's just not there...
+Yeah, trying to understand it all...
 
-Just like f.ex:
-LnkSta: Speed 8GT/s (ok), Width x8 (downgraded)
-TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+Reading about L0 says that the latency covers the whole chain, but i
+don't know if there is a
+case for L0s that I'm missing since it seems hard to get informastion
+about it and how it works
 
-PCIEv3 x16 card in a x8 slot
+Basically, is the L0s check correct? or should it be changed? Should
+it respect the limitations set forth for L0?
+or is it completely different?
+
+I'm really thankful for all the information you've been providing :)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
