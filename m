@@ -1,101 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8652B231409
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jul 2020 22:36:04 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67600231410
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Jul 2020 22:38:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DD19E87B69;
-	Tue, 28 Jul 2020 20:36:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 03F178823A;
+	Tue, 28 Jul 2020 20:38:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XIRQvEtbgodJ; Tue, 28 Jul 2020 20:36:01 +0000 (UTC)
+	with ESMTP id 5XkXARhwJVJD; Tue, 28 Jul 2020 20:38:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4517E87C88;
-	Tue, 28 Jul 2020 20:36:01 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1428F88223;
+	Tue, 28 Jul 2020 20:38:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 48AB21BF5A8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jul 2020 20:35:59 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 23EC01BF5A8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jul 2020 20:38:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A94D21526
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jul 2020 20:35:59 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 137F7881DA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jul 2020 20:38:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QxMN8eNFW5WQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Jul 2020 20:35:57 +0000 (UTC)
+ with ESMTP id Zhsl8XDad4il for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Jul 2020 20:38:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id 6B9DE204F1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jul 2020 20:35:57 +0000 (UTC)
-IronPort-SDR: QZU+yTH5YTsCqDPH4NQTR4sgHbg0tXqZSyBgjFHFi0KRqY37iqpYhO4rUuVikr4BBmvxrR6Y8h
- j08Zbu3bDvlg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="151292210"
-X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="151292210"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2286F88215
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Jul 2020 20:38:49 +0000 (UTC)
+IronPort-SDR: TclN1dbIPzzEJfug0Hy0aaKftaeBYouAw9nk7iLDgs/ZWPAyv4mkYKl2xH6ElaKPbG9ndQtUX3
+ 0JT/lR5h5tCw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="236180259"
+X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="236180259"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2020 13:35:56 -0700
-IronPort-SDR: miVU2I0McXErxbxijod2t2SN2xn3F3lgq+8cASjW/oF5LcnlQ0DQUBwiwTOI+FgVowb1QRWzQD
- /vCancc/U8XA==
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Jul 2020 13:38:47 -0700
+IronPort-SDR: n5Kxk3KTjFf+arkBjDAdDi0GOlemXS45JYSaWRModxtYnj3AiWkUqlwQQUgvM/ySGUMxCw+KAw
+ Vc+94dSnMtVw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="303987489"
-Received: from orsmsx102.amr.corp.intel.com ([10.22.225.129])
- by orsmga002.jf.intel.com with ESMTP; 28 Jul 2020 13:35:56 -0700
-Received: from orsmsx112.amr.corp.intel.com (10.22.240.13) by
- ORSMSX102.amr.corp.intel.com (10.22.225.129) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 28 Jul 2020 13:35:56 -0700
-Received: from ORSEDG002.ED.cps.intel.com (10.7.248.5) by
- ORSMSX112.amr.corp.intel.com (10.22.240.13) with Microsoft SMTP Server (TLS)
- id 14.3.439.0; Tue, 28 Jul 2020 13:35:55 -0700
-Received: from NAM04-CO1-obe.outbound.protection.outlook.com (104.47.45.52) by
- edgegateway.intel.com (134.134.137.101) with Microsoft SMTP Server
- (TLS) id 14.3.439.0; Tue, 28 Jul 2020 13:35:16 -0700
+X-IronPort-AV: E=Sophos;i="5.75,407,1589266800"; d="scan'208";a="286287882"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga003.jf.intel.com with ESMTP; 28 Jul 2020 13:38:47 -0700
+Received: from ORSEDG001.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX103.amr.corp.intel.com (10.22.225.130) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 28 Jul 2020 13:38:46 -0700
+Received: from NAM04-CO1-obe.outbound.protection.outlook.com (104.47.45.56) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (TLS) id 14.3.439.0; Tue, 28 Jul 2020 13:38:07 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SzKUPqFwJ8a8AueIpsUAJzwA9I548Mh/TnbpbhkHuOY9nHE0WJ92i0QVLkUbWgj9toq+lM3ST28r6YqYH/zUbbdU80sqjnnIbz1Gg9ixHKlTa8sd4EscKrlxm/1r43XQKYEAq2CePnT4sMbSSLeat1Mci4PzlDWXmTIjj/EFwur1XKKsBdSix73ROxdhmGYDLf4PObuvBItWYSSCW33q0NQWY2K50KIX9VpnQyhoFjrLlnj/UBD4Yfd+eXXnG/Ierv5bW8FBGg1mdy31W+MlRgzmfWgQZrjTLX7s4/uWl0zooufjk3Fwouy0TFx1mb8OgRtEXHQOuP7YSKcDBlPqNQ==
+ b=h5EX1ueZbUX0xshb+jUm48sAIeRRJR3VA2jTJUf3sJnDpvSrl/HQgVIsf2jkMP3RFi7rPl7I0iq85/kfZ9xKwcnA/WLg6ifdseGc5o1etuY1QooQKnmteHsCaiWKfGaWztsVAHd64hs9xlJV2ZdjgLMuNg+fZyfKMGVQmDxDUME3xfyrB4tHkXUpxaQ0D0R7y+3b/VqgcaT3NULyG5oLSqf0frksTydagJDFvDcPz0i9sTZimQzFuZXiwrtkQxUr566sh8ay819SQJTdMpxsriz9IyKvX+bB4jfVE8kSj2A8G9bzxD2qPgoSC68CtQtBBXIb40GGpsUQqjLmdjm/1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E/PEPHlRkJL8f9+OL6/7qfINXyFq5hrww+zQ8CmF2J0=;
- b=nESm6AE/76uoYCCXJQrt1xifBKZ9Aq4B8odHKKWA8lY6XPZNm1Lfi1dk85W7K5nPgb+3Qx7ibGU6KKWn0Zlr2Y46KsA0MVdDvFLXkPzDtOJo1FnM3lQpOZ16J9sPLV4ZCVL+bhxDoGCuRNhQg6Lz2GsC3+ZhFZ0itVV0wenx8WIfWDGzH7iNBpnTW04nlcZj26CdzOOI5HZPn44djkB4SzuX9v/0qIgR9GaSKwveR5Oiz+k2NmtP6DLT9+cgWh0YQMO1hch/z7J2erSC1fIa/4tukWWsZHDkYnTjLeoBW3VOtL+31S5+hQ8x6eOtq1HzkhNMYRAKVwf/hCOjUoHj0g==
+ bh=PKn/dNVdFHMCkMxw+n1e+bX07077nJw6AQ70ek6bjdc=;
+ b=Hxhm9zMXSZUyUuPrMcq9OKZaJteAlOWFjXbxyM6Y5wXJ5xtkS+tlBsoIZw7qlujyJHg8ZQS2RFOPW+gwOmLBj0qz0gbBIwUx/4lcMz15uZ7UKpll1UfLhY2JG24d5kSICelPzMr0yVUDxf76Qmb++jxVxFoaS7wPBsOls+O7s7gF23cktXtj8NLMhhU157obPr0UZocl3d/NTvq1xvz+yA4fOvLkbULzdu9uat7dwyifxfpw1wia69wHH2P/qB89YyrSb+6kZMfx+laHPSllKQ0e7JH8YxyoPgll/UjESQwn0dSvLRcABUvNzkRaOQ/RPJIyfheoebABJydGNMDZdg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E/PEPHlRkJL8f9+OL6/7qfINXyFq5hrww+zQ8CmF2J0=;
- b=iRf8hh9mHstb2r+b52dNec8mR1YL1ZzlvE4ZydWJQCukfBZqtm5YTp2koqMbS6mvlytG1kzO9rhZ/ZyxwKT3EJ9mW929aetB6lFN+rwhaqvP1AJ0O10Z9qAnemSkm8dURnP+jmc4jlXaMwSEknArnuMVUoMANbNSCfoAAAgBQQU=
+ bh=PKn/dNVdFHMCkMxw+n1e+bX07077nJw6AQ70ek6bjdc=;
+ b=rG4yc56k0zzKekv23mgFdKjmhE3SzsQD5oVHhX9OwnULUR2ElY0eoNiDQtKmAngAWsMeWjdhV8LSa1wN7zGYkwMCnFNRFHlhKIDHEM1kVo6JtDItyW7NE3Zrl+7wPICbi5qMCzPo1itHirByb6/ZQCcUNrKQXjnsbNlOm+lKqxg=
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
  DM6PR11MB4377.namprd11.prod.outlook.com (2603:10b6:5:1dc::15) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3216.23; Tue, 28 Jul 2020 20:34:41 +0000
+ 15.20.3216.23; Tue, 28 Jul 2020 20:37:36 +0000
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::65c2:9ac9:2c52:82bd]) by DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::65c2:9ac9:2c52:82bd%6]) with mapi id 15.20.3216.033; Tue, 28 Jul 2020
- 20:34:41 +0000
+ 20:37:36 +0000
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Aaron Ma <aaron.ma@canonical.com>, "kuba@kernel.org" <kuba@kernel.org>,
- "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>, "davem@davemloft.net"
- <davem@davemloft.net>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "Lifshits, Vitaly"
- <vitaly.lifshits@intel.com>, "kai.heng.feng@canonical.com"
- <kai.heng.feng@canonical.com>, "Neftin, Sasha" <sasha.neftin@intel.com>
-Thread-Topic: [Intel-wired-lan] [v4][PATCH] e1000e: continue to init phy even
- when failed to disable ULP
-Thread-Index: AQHWQ8XCGt1Zf2BsuE6OIRiqVZ8UlKjd8zCAgD/B2cA=
-Date: Tue, 28 Jul 2020 20:34:41 +0000
-Message-ID: <DM6PR11MB2890F94DA893CE56A5D8A3EABC730@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200616100512.22512-1-aaron.ma@canonical.com>
- <20200618065453.12140-1-aaron.ma@canonical.com>
-In-Reply-To: <20200618065453.12140-1-aaron.ma@canonical.com>
+To: Francesco Ruggeri <fruggeri@arista.com>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "kuba@kernel.org" <kuba@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH v2] igb: reinit_locked() should be
+ called with rtnl_lock
+Thread-Index: AQHWUMGiXDSOO3SbG0KRyfqBaSbfrKkdnC3Q
+Date: Tue, 28 Jul 2020 20:37:36 +0000
+Message-ID: <DM6PR11MB28903B2C52C7DE21578C17B4BC730@DM6PR11MB2890.namprd11.prod.outlook.com>
+References: <20200702223906.42B6C95C0494@us180.sjc.aristanetworks.com>
+In-Reply-To: <20200702223906.42B6C95C0494@us180.sjc.aristanetworks.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -103,38 +97,38 @@ X-MS-TNEF-Correlator:
 dlp-version: 11.5.1.3
 dlp-product: dlpe-windows
 dlp-reaction: no-action
-authentication-results: canonical.com; dkim=none (message not signed)
- header.d=none;canonical.com; dmarc=none action=none header.from=intel.com;
+authentication-results: arista.com; dkim=none (message not signed)
+ header.d=none;arista.com; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [97.120.173.209]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 02e08b5c-3ae4-49cd-4571-08d83335a816
+x-ms-office365-filtering-correlation-id: a02842b5-b90e-48f4-2420-08d833360ff9
 x-ms-traffictypediagnostic: DM6PR11MB4377:
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB4377A25AA28F2F88E56BCC26BC730@DM6PR11MB4377.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1060;
+x-microsoft-antispam-prvs: <DM6PR11MB4377103F6E5D32673998B0D8BC730@DM6PR11MB4377.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:792;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 78Vjw68GzTOx40YipGL5QoSHDmDc4WuxKaWMsMBc987tuW55AOPowIjVgXQRZGUw+rUrpQ+O9r/9+0o1xZpAk3+b0UnLhKf8BpxTdu9OZo/JTdoLfabPVx6LXmWheHc71w43hfHT6shVUkJlixL9hZJb325t+etSnGmkpt0vdhdlx9tzWIT+LFuxXG+HRJfAfR3zHcNLESO08DuMWd6DV84qn9WclGzjcZMVY5TkVL0IMqsHO9qYWUPEept0N+eQQS0Y7YBTFfSSbmX/X+zrgly2vgpKODMFOVgFwEF1TGp3DpOq4V7rPyOsH/VMDHgOcSYXmhbrHU3JlE0NhD9xkyxrDrUW3B1a8yZCEowEvlsKPNfLj07VrOJBuvv9se64
+x-microsoft-antispam-message-info: CE6+6DAOzQ3GEwnTsHJDEjp4TDKYvdPIxw5jajXBtdQe78t6eTfUwaBUftiSm/pZ/8K0w5nXG7TwvZp+sH0lxtui/ir45ZYLTZM0L4PgtOi69CiVgJT3/iRt9XoDR6S+vuw4hO8DIcyR5+EUBit1yEToN8AHHd2zuFGsd1rRvE24/H1eQTDbuKAX9Mn7DWNiSIHJa5I3PTuaJ/EeafDJdVRTOe6d7Zt3X0k+Fnc1rttec/awlMgVbyI18R9AOoh+qYscSQTen4KKIiNX13nxcwcfR4Ic1AZrru0lXJDhDMNkq5Hshc/k5EjpJRXEo7Sq
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(39860400002)(346002)(376002)(366004)(396003)(136003)(66556008)(66476007)(66946007)(71200400001)(83380400001)(478600001)(66446008)(26005)(64756008)(186003)(53546011)(5660300002)(33656002)(55016002)(7696005)(76116006)(8936002)(86362001)(6636002)(8676002)(9686003)(316002)(110136005)(6506007)(2906002)(52536014)(921003);
+ SFS:(4636009)(39860400002)(346002)(376002)(366004)(396003)(136003)(66556008)(66476007)(66946007)(71200400001)(83380400001)(478600001)(66446008)(26005)(64756008)(186003)(53546011)(5660300002)(33656002)(55016002)(7696005)(76116006)(8936002)(86362001)(6636002)(8676002)(9686003)(316002)(110136005)(6506007)(2906002)(52536014);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: e+ZDUsnjC5LzwXp69n+FBPzEWCreMobQ3OtAVRJoC3GpSzgy1weP36AY+PdzhjvDpiROzWV12ReWGxDwTdCv0qttvCoXuhA91rAqQMLIKSrjMpJN4aFBlWqrjmwwd+evh3y4WDSs/fFbNMfO07c6wjk0zkZEAzUVumLYy9hpTUgjFrJggIyitFncdutTjombrflns50uW9/vxZX6tzHf7AtdYREbUDXWru6QTf+vfyO7CKeehecvHpCDZl5jy98TlxEuV0fRBD4/DAPUVe3As+Lah+y/iAqB1O8yX9v/UwFlVwjjkfLapMrFkWou5t7S8huaOUIzyO7iRoswvmesfB2v23plGn+7nXSGX/CVbEgaPfqAo8C3sOoX5Jy295xLzYoReqDJKe4ea+ld8vafwNt9QLgFNtN9wN8hZAR9Qtscqj3GuF3ggoPhll32bnaIHqWHpgFWtSa7Gk79qdrwG1+mLPLnEhGXF6pLtBUfpmcOX8wi7GnK/yHPJxmFtZOf
+x-ms-exchange-antispam-messagedata: bMWwM1wu7StROu2JAPffLtlrmsv725a/i81g9p4EDPuvsbXCjJQzGCD4HwvWOrnppOTAv8WuMbmZVaKjGlp/qz3nDQ3my6eccANqzDD+S9F/woV3J3VgS6zqMVgF45f13M8a6nppiqMjbLipozyTTVvLHXgECFBFNZaHILKo+FrSrc/AAUJjJ9oWsG0MEjqY3mgzLgcA+DHsGaxAjxBunfM2aF3qt3IV2DzupfL0lYkUILWM4h1NqSNWPq15UiSqU/C6W5rCgeHODrbXlVLnzBt2hnHi4Z5jWvOUFrNi+5Ea+mY+hRvUx0ma3OJUOnE6FK9w/D48+leNne4W0hjHbnVn88kR472gGxtKSzg52m8SUOL0+Erue6MH/blPTEakTRV0c+JGO2cT6ucbPyzPmaoB06ZvMmyMgUA/0k7YTYMZAHy58e3SbGUC2W/tAAzLJe2P2xLazkLRHyPn4K0deFbKeNpjHzUwsLsNYG4VTTLakjow6nJq1D54f41PSMIs
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 02e08b5c-3ae4-49cd-4571-08d83335a816
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jul 2020 20:34:41.8440 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a02842b5-b90e-48f4-2420-08d833360ff9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Jul 2020 20:37:36.1402 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: J9RVJEfLV/xiYohTy1pBzxzx+n/6XZw4u7PjwJgsaU0iJIfqbvf784Dy0ionNWL/hW5SWT0uWgKPxu3K2kZYEA==
+X-MS-Exchange-CrossTenant-userprincipalname: DK6nVgWnkFB90OFc8RrkKp6MwoM5neakvRTIvaZ2qsvf1hbaV3z6fIlsLFMFgKS2JvnYdaQHyA7nVmpwvvmQEA==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4377
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [v4][PATCH] e1000e: continue to init phy even
- when failed to disable ULP
+Subject: Re: [Intel-wired-lan] [PATCH v2] igb: reinit_locked() should be
+ called with rtnl_lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,39 +147,70 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Aaron Ma
-> Sent: Wednesday, June 17, 2020 11:55 PM
-> To: kuba@kernel.org; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>;
-> davem@davemloft.net; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Lifshits, Vitaly
-> <vitaly.lifshits@intel.com>; kai.heng.feng@canonical.com; Neftin, Sasha
-> <sasha.neftin@intel.com>
-> Subject: [Intel-wired-lan] [v4][PATCH] e1000e: continue to init phy even when
-> failed to disable ULP
+> Francesco Ruggeri
+> Sent: Thursday, July 2, 2020 3:39 PM
+> To: linux-kernel@vger.kernel.org; netdev@vger.kernel.org; intel-wired-
+> lan@lists.osuosl.org; kuba@kernel.org; davem@davemloft.net; Kirsher, Jeffrey
+> T <jeffrey.t.kirsher@intel.com>; fruggeri@arista.com
+> Subject: [Intel-wired-lan] [PATCH v2] igb: reinit_locked() should be called with
+> rtnl_lock
 > 
-> After 'commit e086ba2fccda4 ("e1000e: disable s0ix entry and exit flows
->  for ME systems")',
-> ThinkPad P14s always failed to disable ULP by ME.
-> 'commit 0c80cdbf3320 ("e1000e: Warn if disabling ULP failed")'
-> break out of init phy:
+> We observed two panics involving races with igb_reset_task.
+> The first panic is caused by this race condition:
 > 
-> error log:
-> [   42.364753] e1000e 0000:00:1f.6 enp0s31f6: Failed to disable ULP
-> [   42.524626] e1000e 0000:00:1f.6 enp0s31f6: PHY Wakeup cause - Unicast
-> Packet
-> [   42.822476] e1000e 0000:00:1f.6 enp0s31f6: Hardware Error
+> 	kworker			reboot -f
 > 
-> When disable s0ix, E1000_FWSM_ULP_CFG_DONE will never be 1.
-> If continue to init phy like before, it can work as before.
-> iperf test result good too.
+> 	igb_reset_task
+> 	igb_reinit_locked
+> 	igb_down
+> 	napi_synchronize
+> 				__igb_shutdown
+> 				igb_clear_interrupt_scheme
+> 				igb_free_q_vectors
+> 				igb_free_q_vector
+> 				adapter->q_vector[v_idx] = NULL;
+> 	napi_disable
+> 	Panics trying to access
+> 	adapter->q_vector[v_idx].napi_state
 > 
-> Fixes: 0c80cdbf3320 ("e1000e: Warn if disabling ULP failed")
-> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
+> The second panic (a divide error) is caused by this race:
+> 
+> kworker		reboot -f	tx packet
+> 
+> igb_reset_task
+> 		__igb_shutdown
+> 		rtnl_lock()
+> 		...
+> 		igb_clear_interrupt_scheme
+> 		igb_free_q_vectors
+> 		adapter->num_tx_queues = 0
+> 		...
+> 		rtnl_unlock()
+> rtnl_lock()
+> igb_reinit_locked
+> igb_down
+> igb_up
+> netif_tx_start_all_queues
+> 				dev_hard_start_xmit
+> 				igb_xmit_frame
+> 				igb_tx_queue_mapping
+> 				Panics on
+> 				r_idx % adapter->num_tx_queues
+> 
+> This commit applies to igb_reset_task the same changes that
+> were applied to ixgbe in commit 2f90b8657ec9 ("ixgbe: this patch
+> adds support for DCB to the kernel and ixgbe driver"),
+> commit 8f4c5c9fb87a ("ixgbe: reinit_locked() should be called with
+> rtnl_lock") and commit 88adce4ea8f9 ("ixgbe: fix possible race in
+> reset subtask").
+> 
+> v2: add fix for second race condition above.
+> 
+> Signed-off-by: Francesco Ruggeri <fruggeri@arista.com>
+> 
 > ---
->  drivers/net/ethernet/intel/e1000e/ich8lan.c | 1 -
->  1 file changed, 1 deletion(-)
-
-I never did find a system that triggered the initial problem, but from a compatibility with the set of systems I do have working...
+>  drivers/net/ethernet/intel/igb/igb_main.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
