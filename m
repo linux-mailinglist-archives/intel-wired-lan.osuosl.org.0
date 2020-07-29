@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A35F2317EB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Jul 2020 05:01:21 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FB3C23192C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Jul 2020 07:39:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 03A492002E;
-	Wed, 29 Jul 2020 03:01:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D12E887E19;
+	Wed, 29 Jul 2020 05:39:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aYflmSj5D9LJ; Wed, 29 Jul 2020 03:01:19 +0000 (UTC)
+	with ESMTP id bphR78L51qNt; Wed, 29 Jul 2020 05:39:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E28ED20458;
-	Wed, 29 Jul 2020 03:01:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 93D0287E13;
+	Wed, 29 Jul 2020 05:39:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 32F5B1BF5DB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jul 2020 03:01:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 481DC1BF37F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jul 2020 05:39:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 2EBE686974
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jul 2020 03:01:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 437EC87DDE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jul 2020 05:39:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yjUOboeWXj2U for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Jul 2020 03:01:17 +0000 (UTC)
+ with ESMTP id g64x8WpCANke for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Jul 2020 05:39:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 126D08686D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jul 2020 03:01:17 +0000 (UTC)
-IronPort-SDR: e1O9RBL2Qz65cBcXUC0IoFYavk4TaKyHlmk50sUKDTW4Omjc9S3e2SPuld70JedtMfSFgTUOod
- ZEHe1LQam0xQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="130909081"
-X-IronPort-AV: E=Sophos;i="5.75,408,1589266800"; d="scan'208";a="130909081"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 768D387DB1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Jul 2020 05:39:49 +0000 (UTC)
+IronPort-SDR: 5CSlobZ+k8hH08yMz7Y/amAiCicGai+7qe3tJu4MiZRWZ5aZr7bXY0AraIjsGgovf3ZxEMZgja
+ qfgSbLVYZQWw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9696"; a="130919407"
+X-IronPort-AV: E=Sophos;i="5.75,409,1589266800"; d="scan'208";a="130919407"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2020 20:01:16 -0700
-IronPort-SDR: 6FV1rPz11WG0H1ZcF6hzmmpTSMLzuNZc7nrx7Vf/3+D2MgamDPzin3tiBcLYnqEoZw45vd7qRx
- pJnu6IKGyWJg==
+ 28 Jul 2020 22:39:48 -0700
+IronPort-SDR: l/4SJozIJGBetb96jQzF+WzezF4C1eGkYjwu3QzqgML94FMUiG3BiTiM91BV5/5yciKZOcf94U
+ IPV62qTPpXNA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,408,1589266800"; d="scan'208";a="304083234"
-Received: from lkp-server01.sh.intel.com (HELO d27eb53fc52b) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 28 Jul 2020 20:01:15 -0700
-Received: from kbuild by d27eb53fc52b with local (Exim 4.92)
+X-IronPort-AV: E=Sophos;i="5.75,409,1589266800"; d="scan'208";a="320644795"
+Received: from lkp-server02.sh.intel.com (HELO 3c949f219f8b) ([10.239.97.151])
+ by orsmga008.jf.intel.com with ESMTP; 28 Jul 2020 22:39:47 -0700
+Received: from kbuild by 3c949f219f8b with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1k0cLC-0001CB-8R; Wed, 29 Jul 2020 03:01:14 +0000
-Date: Wed, 29 Jul 2020 11:00:45 +0800
+ id 1k0eoc-00003M-SQ; Wed, 29 Jul 2020 05:39:46 +0000
+Date: Wed, 29 Jul 2020 13:38:48 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5f20e65d.yMH9e3lrJXJOHCw4%lkp@intel.com>
+Message-ID: <5f210b68.EJe6mLxEoy3dWqo4%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
- 360d749e0c8e689414d9a583102a59f795a6892d
+Subject: [Intel-wired-lan] [jkirsher-next-queue:40GbE] BUILD SUCCESS
+ 126d27286b7e62bb2b4ac31dd2357394b5007a4e
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,13 +74,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
-branch HEAD: 360d749e0c8e689414d9a583102a59f795a6892d  igc: Fix static checker warning
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  40GbE
+branch HEAD: 126d27286b7e62bb2b4ac31dd2357394b5007a4e  i40e, xsk: move buffer allocation out of the Rx processing loop
 
-elapsed time: 1688m
+elapsed time: 725m
 
-configs tested: 48
-configs skipped: 1
+configs tested: 79
+configs skipped: 4
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
@@ -90,6 +90,19 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
+arm                            qcom_defconfig
+powerpc                      ep88xc_defconfig
+mips                  decstation_64_defconfig
+xtensa                           alldefconfig
+mips                          ath79_defconfig
+arm                     davinci_all_defconfig
+nios2                            alldefconfig
+arm                         vf610m4_defconfig
+m68k                            mac_defconfig
+sh                          lboxre2_defconfig
+arm                          prima2_defconfig
+arm                      footbridge_defconfig
+mips                        nlm_xlr_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
@@ -119,10 +132,28 @@ sparc                               defconfig
 i386                                defconfig
 mips                             allyesconfig
 mips                             allmodconfig
-powerpc                             defconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
+powerpc                             defconfig
+i386                 randconfig-a003-20200728
+i386                 randconfig-a004-20200728
+i386                 randconfig-a005-20200728
+i386                 randconfig-a002-20200728
+i386                 randconfig-a006-20200728
+i386                 randconfig-a001-20200728
+x86_64               randconfig-a014-20200728
+x86_64               randconfig-a012-20200728
+x86_64               randconfig-a015-20200728
+x86_64               randconfig-a016-20200728
+x86_64               randconfig-a013-20200728
+x86_64               randconfig-a011-20200728
+i386                 randconfig-a016-20200728
+i386                 randconfig-a012-20200728
+i386                 randconfig-a013-20200728
+i386                 randconfig-a014-20200728
+i386                 randconfig-a011-20200728
+i386                 randconfig-a015-20200728
 riscv                            allyesconfig
 riscv                             allnoconfig
 riscv                               defconfig
