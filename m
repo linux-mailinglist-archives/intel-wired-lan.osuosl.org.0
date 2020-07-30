@@ -2,61 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F9DF233623
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jul 2020 17:59:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBBBE233646
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jul 2020 18:05:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 4F46E204CC;
-	Thu, 30 Jul 2020 15:59:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7ED63204DE;
+	Thu, 30 Jul 2020 16:05:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h+q2jRGdm6hF; Thu, 30 Jul 2020 15:59:00 +0000 (UTC)
+	with ESMTP id I4lrl+CJjhcm; Thu, 30 Jul 2020 16:05:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7B4992049F;
-	Thu, 30 Jul 2020 15:58:57 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 92721204FD;
+	Thu, 30 Jul 2020 16:05:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 89E7B1BF3F6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 15:58:55 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C4C701BF3E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 16:05:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 839848836A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 15:58:55 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AD29C204F7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 16:05:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T8nPR585CQJu for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Jul 2020 15:58:54 +0000 (UTC)
+ with ESMTP id VhQJ9VhmEL1u for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Jul 2020 16:05:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DA9B388355
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 15:58:54 +0000 (UTC)
-IronPort-SDR: XZs2zSOXrWzH1XUBguiXENVMxC+/RSrvLpJ6DeXgyZgF4Zzgk5WtCN+VI4GSUr+j8YHrnJGQZD
- z1KYPcSejRxQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9698"; a="150807107"
-X-IronPort-AV: E=Sophos;i="5.75,415,1589266800"; d="scan'208";a="150807107"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 985F6204DE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 16:05:07 +0000 (UTC)
+IronPort-SDR: YNhIlAj42DZIon3XEo8CN3fdHpAl6UfNSyX88tHdKN7tL/CnkmiJzXj3Z1+gIE4l8j9S/RY7NO
+ yQus1K4Pn5rg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9698"; a="151600984"
+X-IronPort-AV: E=Sophos;i="5.75,415,1589266800"; d="scan'208";a="151600984"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2020 08:58:54 -0700
-IronPort-SDR: rOBr1gDT22USQ71QSNbc/zLZhN9QvctGoOQcTV+AWH9ZskKluHxjnYmucs8A7cwsC3A7hdq+E+
- qjlo/fMCGL9g==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jul 2020 09:04:57 -0700
+IronPort-SDR: niPKoRCWIoj+kB+cB5TglIw9kSBHKDHW3oOmv1LBykkWTSNtqETq+AUzGIE5kTpslkFDnQ7N7X
+ yU+7MeAm99xw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,414,1589266800"; d="scan'208";a="290923091"
-Received: from lkp-server02.sh.intel.com (HELO d4d86dd808e0) ([10.239.97.151])
- by orsmga006.jf.intel.com with ESMTP; 30 Jul 2020 08:58:52 -0700
-Received: from kbuild by d4d86dd808e0 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1k1AxH-00009J-GZ; Thu, 30 Jul 2020 15:58:51 +0000
-Date: Thu, 30 Jul 2020 23:58:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5f22ee2a.6/Wcwcw58MMTRpKg%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+X-IronPort-AV: E=Sophos;i="5.75,415,1589266800"; d="scan'208";a="330788039"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga007.jf.intel.com with ESMTP; 30 Jul 2020 09:04:52 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id 1BF4C119; Thu, 30 Jul 2020 19:04:51 +0300 (EEST)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ Jacob Keller <jacob.e.keller@intel.com>
+Date: Thu, 30 Jul 2020 19:04:51 +0300
+Message-Id: <20200730160451.40810-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:100GbE] BUILD SUCCESS
- 6221595fc5fd55a457d0439a381c388d967f2011
+Subject: [Intel-wired-lan] [PATCH v1] ice: devlink: use %*phD to print small
+ buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,92 +71,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  100GbE
-branch HEAD: 6221595fc5fd55a457d0439a381c388d967f2011  ice: fix unused parameter warning
+Use %*phD format to print small buffer as hex string.
 
-elapsed time: 1398m
-
-configs tested: 66
-configs skipped: 1
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-nds32                             allnoconfig
-c6x                              allyesconfig
-arc                              allyesconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                           allnoconfig
-powerpc                             defconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-x86_64               randconfig-a001-20200730
-x86_64               randconfig-a004-20200730
-x86_64               randconfig-a002-20200730
-x86_64               randconfig-a006-20200730
-x86_64               randconfig-a003-20200730
-x86_64               randconfig-a005-20200730
-i386                 randconfig-a005-20200730
-i386                 randconfig-a004-20200730
-i386                 randconfig-a006-20200730
-i386                 randconfig-a002-20200730
-i386                 randconfig-a001-20200730
-i386                 randconfig-a003-20200730
-i386                 randconfig-a016-20200730
-i386                 randconfig-a012-20200730
-i386                 randconfig-a014-20200730
-i386                 randconfig-a015-20200730
-i386                 randconfig-a011-20200730
-i386                 randconfig-a013-20200730
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                            allmodconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index dbbd8b6f9d1a..a9105ad5b983 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -13,9 +13,7 @@ static int ice_info_get_dsn(struct ice_pf *pf, char *buf, size_t len)
+ 	/* Copy the DSN into an array in Big Endian format */
+ 	put_unaligned_be64(pci_get_dsn(pf->pdev), dsn);
+ 
+-	snprintf(buf, len, "%02x-%02x-%02x-%02x-%02x-%02x-%02x-%02x",
+-		 dsn[0], dsn[1], dsn[2], dsn[3],
+-		 dsn[4], dsn[5], dsn[6], dsn[7]);
++	snprintf(buf, len, "%8phD", dsn);
+ 
+ 	return 0;
+ }
+-- 
+2.27.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
