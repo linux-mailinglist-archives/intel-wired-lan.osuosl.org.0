@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E798E2328B3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jul 2020 02:24:02 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 76A448843B;
-	Thu, 30 Jul 2020 00:24:01 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e6xkAd5BsYOL; Thu, 30 Jul 2020 00:24:01 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4E0CC88419;
-	Thu, 30 Jul 2020 00:24:00 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5D9611BF9B9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 00:23:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F9D72328B5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jul 2020 02:24:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4FB0D22846
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 00:23:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 2626F24CEB;
+	Thu, 30 Jul 2020 00:24:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id S-3ziuzb0WLM; Thu, 30 Jul 2020 00:24:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id EA9B324F78;
+	Thu, 30 Jul 2020 00:23:59 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 48EC01BF9B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 00:23:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 41DDB877E7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 00:23:54 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jtm3Rtp-DaGL for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Jul 2020 00:23:51 +0000 (UTC)
+ with ESMTP id kkY5FmamWW2E for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Jul 2020 00:23:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by silver.osuosl.org (Postfix) with ESMTPS id 45D8024C8E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 00:23:51 +0000 (UTC)
-IronPort-SDR: RRUAltbjzbRCNf/mBxi0+8BYhQabi4WqtF1MN3mxG+Go0tMKqU3q9OKykPUWnLLi6Xn2129DzQ
- iBotOGtss9tA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9697"; a="216004461"
-X-IronPort-AV: E=Sophos;i="5.75,412,1589266800"; d="scan'208";a="216004461"
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 804AB87916
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jul 2020 00:23:52 +0000 (UTC)
+IronPort-SDR: wgvQqAMp4jDwlv3mEQofERYh/9LcNU1YKCwt5SIKe8MbHEAmC7YCwY+hJ3Ng3wQH5l4KL1D43U
+ hLV/lanXYekA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9697"; a="216004470"
+X-IronPort-AV: E=Sophos;i="5.75,412,1589266800"; d="scan'208";a="216004470"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  29 Jul 2020 17:23:50 -0700
-IronPort-SDR: WjY9omEM17lq4SW4jvQB4UB70+4GhP3XjYo5HUp2jgSxkfsEk6eVfKmH+91Elny3mNK4mlOnM0
- 8+XO7eVdADew==
+IronPort-SDR: fyTCWxhRW2UEqprv5OXj/nWMmfEwOIu2EjQeFrVHGSThdQmh0U1UWAyygVXHEvjdAU0XgiLtBQ
+ zNjri0jmTf8g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,412,1589266800"; d="scan'208";a="320908829"
+X-IronPort-AV: E=Sophos;i="5.75,412,1589266800"; d="scan'208";a="320908830"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by orsmga008.jf.intel.com with ESMTP; 29 Jul 2020 17:23:50 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 29 Jul 2020 17:19:20 -0700
-Message-Id: <20200730001922.52568-11-anthony.l.nguyen@intel.com>
+Date: Wed, 29 Jul 2020 17:19:21 -0700
+Message-Id: <20200730001922.52568-12-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200730001922.52568-1-anthony.l.nguyen@intel.com>
 References: <20200730001922.52568-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH S51 11/13] ice: update PTYPE lookup table
+Subject: [Intel-wired-lan] [PATCH S51 12/13] ice: adjust profile id map locks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,346 +72,233 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Update the PTYPE lookup table to reflect values that can be set by the
-hardware.
+From: Victor Raj <victor.raj@intel.com>
 
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+The profile id map lock should be held till the caller completes
+all references of that profile entries.
+
+The current code releases the lock right after the match search.
+This caused a driver issue when the profile map entries were
+referenced after it was freed in other thread after the lock was
+released earlier.
+
+Signed-off-by: Victor Raj <victor.raj@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_lan_tx_rx.h    | 314 ++++++++++++++++++
- 1 file changed, 314 insertions(+)
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    | 90 +++++++++----------
+ 1 file changed, 45 insertions(+), 45 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index 14dfbbc1b2cf..4ec24c3e813f 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -601,6 +601,7 @@ struct ice_tlan_ctx {
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+index d8ada9675650..7ae4df0901c3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+@@ -3880,16 +3880,16 @@ ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
+ }
  
- /* shorter macros makes the table fit but are terse */
- #define ICE_RX_PTYPE_NOF		ICE_RX_PTYPE_NOT_FRAG
-+#define ICE_RX_PTYPE_FRG		ICE_RX_PTYPE_FRAG
+ /**
+- * ice_search_prof_id_low - Search for a profile tracking ID low level
++ * ice_search_prof_id - Search for a profile tracking ID
+  * @hw: pointer to the HW struct
+  * @blk: hardware block
+  * @id: profile tracking ID
+  *
+- * This will search for a profile tracking ID which was previously added. This
+- * version assumes that the caller has already acquired the prof map lock.
++ * This will search for a profile tracking ID which was previously added.
++ * The profile map lock should be held before calling this function.
+  */
+ static struct ice_prof_map *
+-ice_search_prof_id_low(struct ice_hw *hw, enum ice_block blk, u64 id)
++ice_search_prof_id(struct ice_hw *hw, enum ice_block blk, u64 id)
+ {
+ 	struct ice_prof_map *entry = NULL;
+ 	struct ice_prof_map *map;
+@@ -3903,26 +3903,6 @@ ice_search_prof_id_low(struct ice_hw *hw, enum ice_block blk, u64 id)
+ 	return entry;
+ }
  
- /* Lookup table mapping the HW PTYPE to the bit field for decoding */
- static const struct ice_rx_ptype_decoded ice_ptype_lkup[] = {
-@@ -608,6 +609,319 @@ static const struct ice_rx_ptype_decoded ice_ptype_lkup[] = {
- 	ICE_PTT_UNUSED_ENTRY(0),
- 	ICE_PTT(1, L2, NONE, NOF, NONE, NONE, NOF, NONE, PAY2),
- 	ICE_PTT(2, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
-+	ICE_PTT_UNUSED_ENTRY(3),
-+	ICE_PTT_UNUSED_ENTRY(4),
-+	ICE_PTT_UNUSED_ENTRY(5),
-+	ICE_PTT(6, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
-+	ICE_PTT(7, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
-+	ICE_PTT_UNUSED_ENTRY(8),
-+	ICE_PTT_UNUSED_ENTRY(9),
-+	ICE_PTT(10, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
-+	ICE_PTT(11, L2, NONE, NOF, NONE, NONE, NOF, NONE, NONE),
-+	ICE_PTT_UNUSED_ENTRY(12),
-+	ICE_PTT_UNUSED_ENTRY(13),
-+	ICE_PTT_UNUSED_ENTRY(14),
-+	ICE_PTT_UNUSED_ENTRY(15),
-+	ICE_PTT_UNUSED_ENTRY(16),
-+	ICE_PTT_UNUSED_ENTRY(17),
-+	ICE_PTT_UNUSED_ENTRY(18),
-+	ICE_PTT_UNUSED_ENTRY(19),
-+	ICE_PTT_UNUSED_ENTRY(20),
-+	ICE_PTT_UNUSED_ENTRY(21),
-+
-+	/* Non Tunneled IPv4 */
-+	ICE_PTT(22, IP, IPV4, FRG, NONE, NONE, NOF, NONE, PAY3),
-+	ICE_PTT(23, IP, IPV4, NOF, NONE, NONE, NOF, NONE, PAY3),
-+	ICE_PTT(24, IP, IPV4, NOF, NONE, NONE, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(25),
-+	ICE_PTT(26, IP, IPV4, NOF, NONE, NONE, NOF, TCP,  PAY4),
-+	ICE_PTT(27, IP, IPV4, NOF, NONE, NONE, NOF, SCTP, PAY4),
-+	ICE_PTT(28, IP, IPV4, NOF, NONE, NONE, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> IPv4 */
-+	ICE_PTT(29, IP, IPV4, NOF, IP_IP, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(30, IP, IPV4, NOF, IP_IP, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(31, IP, IPV4, NOF, IP_IP, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(32),
-+	ICE_PTT(33, IP, IPV4, NOF, IP_IP, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(34, IP, IPV4, NOF, IP_IP, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(35, IP, IPV4, NOF, IP_IP, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> IPv6 */
-+	ICE_PTT(36, IP, IPV4, NOF, IP_IP, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(37, IP, IPV4, NOF, IP_IP, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(38, IP, IPV4, NOF, IP_IP, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(39),
-+	ICE_PTT(40, IP, IPV4, NOF, IP_IP, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(41, IP, IPV4, NOF, IP_IP, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(42, IP, IPV4, NOF, IP_IP, IPV6, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> GRE/NAT */
-+	ICE_PTT(43, IP, IPV4, NOF, IP_GRENAT, NONE, NOF, NONE, PAY3),
-+
-+	/* IPv4 --> GRE/NAT --> IPv4 */
-+	ICE_PTT(44, IP, IPV4, NOF, IP_GRENAT, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(45, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(46, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(47),
-+	ICE_PTT(48, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(49, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(50, IP, IPV4, NOF, IP_GRENAT, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> GRE/NAT --> IPv6 */
-+	ICE_PTT(51, IP, IPV4, NOF, IP_GRENAT, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(52, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(53, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(54),
-+	ICE_PTT(55, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(56, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(57, IP, IPV4, NOF, IP_GRENAT, IPV6, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> GRE/NAT --> MAC */
-+	ICE_PTT(58, IP, IPV4, NOF, IP_GRENAT_MAC, NONE, NOF, NONE, PAY3),
-+
-+	/* IPv4 --> GRE/NAT --> MAC --> IPv4 */
-+	ICE_PTT(59, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(60, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(61, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(62),
-+	ICE_PTT(63, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(64, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(65, IP, IPV4, NOF, IP_GRENAT_MAC, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> GRE/NAT -> MAC --> IPv6 */
-+	ICE_PTT(66, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(67, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(68, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(69),
-+	ICE_PTT(70, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(71, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(72, IP, IPV4, NOF, IP_GRENAT_MAC, IPV6, NOF, ICMP, PAY4),
-+
-+	/* IPv4 --> GRE/NAT --> MAC/VLAN */
-+	ICE_PTT(73, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, NONE, NOF, NONE, PAY3),
-+
-+	/* IPv4 ---> GRE/NAT -> MAC/VLAN --> IPv4 */
-+	ICE_PTT(74, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(75, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(76, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(77),
-+	ICE_PTT(78, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(79, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(80, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv4 -> GRE/NAT -> MAC/VLAN --> IPv6 */
-+	ICE_PTT(81, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(82, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(83, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(84),
-+	ICE_PTT(85, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(86, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(87, IP, IPV4, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, ICMP, PAY4),
-+
-+	/* Non Tunneled IPv6 */
-+	ICE_PTT(88, IP, IPV6, FRG, NONE, NONE, NOF, NONE, PAY3),
-+	ICE_PTT(89, IP, IPV6, NOF, NONE, NONE, NOF, NONE, PAY3),
-+	ICE_PTT(90, IP, IPV6, NOF, NONE, NONE, NOF, UDP,  PAY3),
-+	ICE_PTT_UNUSED_ENTRY(91),
-+	ICE_PTT(92, IP, IPV6, NOF, NONE, NONE, NOF, TCP,  PAY4),
-+	ICE_PTT(93, IP, IPV6, NOF, NONE, NONE, NOF, SCTP, PAY4),
-+	ICE_PTT(94, IP, IPV6, NOF, NONE, NONE, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> IPv4 */
-+	ICE_PTT(95, IP, IPV6, NOF, IP_IP, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(96, IP, IPV6, NOF, IP_IP, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(97, IP, IPV6, NOF, IP_IP, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(98),
-+	ICE_PTT(99, IP, IPV6, NOF, IP_IP, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(100, IP, IPV6, NOF, IP_IP, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(101, IP, IPV6, NOF, IP_IP, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> IPv6 */
-+	ICE_PTT(102, IP, IPV6, NOF, IP_IP, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(103, IP, IPV6, NOF, IP_IP, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(104, IP, IPV6, NOF, IP_IP, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(105),
-+	ICE_PTT(106, IP, IPV6, NOF, IP_IP, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(107, IP, IPV6, NOF, IP_IP, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(108, IP, IPV6, NOF, IP_IP, IPV6, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> GRE/NAT */
-+	ICE_PTT(109, IP, IPV6, NOF, IP_GRENAT, NONE, NOF, NONE, PAY3),
-+
-+	/* IPv6 --> GRE/NAT -> IPv4 */
-+	ICE_PTT(110, IP, IPV6, NOF, IP_GRENAT, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(111, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(112, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(113),
-+	ICE_PTT(114, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(115, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(116, IP, IPV6, NOF, IP_GRENAT, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> GRE/NAT -> IPv6 */
-+	ICE_PTT(117, IP, IPV6, NOF, IP_GRENAT, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(118, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(119, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(120),
-+	ICE_PTT(121, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(122, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(123, IP, IPV6, NOF, IP_GRENAT, IPV6, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> GRE/NAT -> MAC */
-+	ICE_PTT(124, IP, IPV6, NOF, IP_GRENAT_MAC, NONE, NOF, NONE, PAY3),
-+
-+	/* IPv6 --> GRE/NAT -> MAC -> IPv4 */
-+	ICE_PTT(125, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(126, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(127, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(128),
-+	ICE_PTT(129, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(130, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(131, IP, IPV6, NOF, IP_GRENAT_MAC, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> GRE/NAT -> MAC -> IPv6 */
-+	ICE_PTT(132, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(133, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(134, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(135),
-+	ICE_PTT(136, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(137, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(138, IP, IPV6, NOF, IP_GRENAT_MAC, IPV6, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> GRE/NAT -> MAC/VLAN */
-+	ICE_PTT(139, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, NONE, NOF, NONE, PAY3),
-+
-+	/* IPv6 --> GRE/NAT -> MAC/VLAN --> IPv4 */
-+	ICE_PTT(140, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, FRG, NONE, PAY3),
-+	ICE_PTT(141, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, NONE, PAY3),
-+	ICE_PTT(142, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(143),
-+	ICE_PTT(144, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, TCP,  PAY4),
-+	ICE_PTT(145, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, SCTP, PAY4),
-+	ICE_PTT(146, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV4, NOF, ICMP, PAY4),
-+
-+	/* IPv6 --> GRE/NAT -> MAC/VLAN --> IPv6 */
-+	ICE_PTT(147, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, FRG, NONE, PAY3),
-+	ICE_PTT(148, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, NONE, PAY3),
-+	ICE_PTT(149, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, UDP,  PAY4),
-+	ICE_PTT_UNUSED_ENTRY(150),
-+	ICE_PTT(151, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, TCP,  PAY4),
-+	ICE_PTT(152, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, SCTP, PAY4),
-+	ICE_PTT(153, IP, IPV6, NOF, IP_GRENAT_MAC_VLAN, IPV6, NOF, ICMP, PAY4),
-+
-+	/* unused entries */
-+	ICE_PTT_UNUSED_ENTRY(154),
-+	ICE_PTT_UNUSED_ENTRY(155),
-+	ICE_PTT_UNUSED_ENTRY(156),
-+	ICE_PTT_UNUSED_ENTRY(157),
-+	ICE_PTT_UNUSED_ENTRY(158),
-+	ICE_PTT_UNUSED_ENTRY(159),
-+
-+	ICE_PTT_UNUSED_ENTRY(160),
-+	ICE_PTT_UNUSED_ENTRY(161),
-+	ICE_PTT_UNUSED_ENTRY(162),
-+	ICE_PTT_UNUSED_ENTRY(163),
-+	ICE_PTT_UNUSED_ENTRY(164),
-+	ICE_PTT_UNUSED_ENTRY(165),
-+	ICE_PTT_UNUSED_ENTRY(166),
-+	ICE_PTT_UNUSED_ENTRY(167),
-+	ICE_PTT_UNUSED_ENTRY(168),
-+	ICE_PTT_UNUSED_ENTRY(169),
-+
-+	ICE_PTT_UNUSED_ENTRY(170),
-+	ICE_PTT_UNUSED_ENTRY(171),
-+	ICE_PTT_UNUSED_ENTRY(172),
-+	ICE_PTT_UNUSED_ENTRY(173),
-+	ICE_PTT_UNUSED_ENTRY(174),
-+	ICE_PTT_UNUSED_ENTRY(175),
-+	ICE_PTT_UNUSED_ENTRY(176),
-+	ICE_PTT_UNUSED_ENTRY(177),
-+	ICE_PTT_UNUSED_ENTRY(178),
-+	ICE_PTT_UNUSED_ENTRY(179),
-+
-+	ICE_PTT_UNUSED_ENTRY(180),
-+	ICE_PTT_UNUSED_ENTRY(181),
-+	ICE_PTT_UNUSED_ENTRY(182),
-+	ICE_PTT_UNUSED_ENTRY(183),
-+	ICE_PTT_UNUSED_ENTRY(184),
-+	ICE_PTT_UNUSED_ENTRY(185),
-+	ICE_PTT_UNUSED_ENTRY(186),
-+	ICE_PTT_UNUSED_ENTRY(187),
-+	ICE_PTT_UNUSED_ENTRY(188),
-+	ICE_PTT_UNUSED_ENTRY(189),
-+
-+	ICE_PTT_UNUSED_ENTRY(190),
-+	ICE_PTT_UNUSED_ENTRY(191),
-+	ICE_PTT_UNUSED_ENTRY(192),
-+	ICE_PTT_UNUSED_ENTRY(193),
-+	ICE_PTT_UNUSED_ENTRY(194),
-+	ICE_PTT_UNUSED_ENTRY(195),
-+	ICE_PTT_UNUSED_ENTRY(196),
-+	ICE_PTT_UNUSED_ENTRY(197),
-+	ICE_PTT_UNUSED_ENTRY(198),
-+	ICE_PTT_UNUSED_ENTRY(199),
-+
-+	ICE_PTT_UNUSED_ENTRY(200),
-+	ICE_PTT_UNUSED_ENTRY(201),
-+	ICE_PTT_UNUSED_ENTRY(202),
-+	ICE_PTT_UNUSED_ENTRY(203),
-+	ICE_PTT_UNUSED_ENTRY(204),
-+	ICE_PTT_UNUSED_ENTRY(205),
-+	ICE_PTT_UNUSED_ENTRY(206),
-+	ICE_PTT_UNUSED_ENTRY(207),
-+	ICE_PTT_UNUSED_ENTRY(208),
-+	ICE_PTT_UNUSED_ENTRY(209),
-+
-+	ICE_PTT_UNUSED_ENTRY(210),
-+	ICE_PTT_UNUSED_ENTRY(211),
-+	ICE_PTT_UNUSED_ENTRY(212),
-+	ICE_PTT_UNUSED_ENTRY(213),
-+	ICE_PTT_UNUSED_ENTRY(214),
-+	ICE_PTT_UNUSED_ENTRY(215),
-+	ICE_PTT_UNUSED_ENTRY(216),
-+	ICE_PTT_UNUSED_ENTRY(217),
-+	ICE_PTT_UNUSED_ENTRY(218),
-+	ICE_PTT_UNUSED_ENTRY(219),
-+
-+	ICE_PTT_UNUSED_ENTRY(220),
-+	ICE_PTT_UNUSED_ENTRY(221),
-+	ICE_PTT_UNUSED_ENTRY(222),
-+	ICE_PTT_UNUSED_ENTRY(223),
-+	ICE_PTT_UNUSED_ENTRY(224),
-+	ICE_PTT_UNUSED_ENTRY(225),
-+	ICE_PTT_UNUSED_ENTRY(226),
-+	ICE_PTT_UNUSED_ENTRY(227),
-+	ICE_PTT_UNUSED_ENTRY(228),
-+	ICE_PTT_UNUSED_ENTRY(229),
-+
-+	ICE_PTT_UNUSED_ENTRY(230),
-+	ICE_PTT_UNUSED_ENTRY(231),
-+	ICE_PTT_UNUSED_ENTRY(232),
-+	ICE_PTT_UNUSED_ENTRY(233),
-+	ICE_PTT_UNUSED_ENTRY(234),
-+	ICE_PTT_UNUSED_ENTRY(235),
-+	ICE_PTT_UNUSED_ENTRY(236),
-+	ICE_PTT_UNUSED_ENTRY(237),
-+	ICE_PTT_UNUSED_ENTRY(238),
-+	ICE_PTT_UNUSED_ENTRY(239),
-+
-+	ICE_PTT_UNUSED_ENTRY(240),
-+	ICE_PTT_UNUSED_ENTRY(241),
-+	ICE_PTT_UNUSED_ENTRY(242),
-+	ICE_PTT_UNUSED_ENTRY(243),
-+	ICE_PTT_UNUSED_ENTRY(244),
-+	ICE_PTT_UNUSED_ENTRY(245),
-+	ICE_PTT_UNUSED_ENTRY(246),
-+	ICE_PTT_UNUSED_ENTRY(247),
-+	ICE_PTT_UNUSED_ENTRY(248),
-+	ICE_PTT_UNUSED_ENTRY(249),
-+
-+	ICE_PTT_UNUSED_ENTRY(250),
-+	ICE_PTT_UNUSED_ENTRY(251),
-+	ICE_PTT_UNUSED_ENTRY(252),
-+	ICE_PTT_UNUSED_ENTRY(253),
-+	ICE_PTT_UNUSED_ENTRY(254),
-+	ICE_PTT_UNUSED_ENTRY(255),
- };
+-/**
+- * ice_search_prof_id - Search for a profile tracking ID
+- * @hw: pointer to the HW struct
+- * @blk: hardware block
+- * @id: profile tracking ID
+- *
+- * This will search for a profile tracking ID which was previously added.
+- */
+-static struct ice_prof_map *
+-ice_search_prof_id(struct ice_hw *hw, enum ice_block blk, u64 id)
+-{
+-	struct ice_prof_map *entry;
+-
+-	mutex_lock(&hw->blk[blk].es.prof_map_lock);
+-	entry = ice_search_prof_id_low(hw, blk, id);
+-	mutex_unlock(&hw->blk[blk].es.prof_map_lock);
+-
+-	return entry;
+-}
+-
+ /**
+  * ice_vsig_prof_id_count - count profiles in a VSIG
+  * @hw: pointer to the HW struct
+@@ -4139,7 +4119,7 @@ enum ice_status ice_rem_prof(struct ice_hw *hw, enum ice_block blk, u64 id)
  
- static inline struct ice_rx_ptype_decoded ice_decode_rx_desc_ptype(u16 ptype)
+ 	mutex_lock(&hw->blk[blk].es.prof_map_lock);
+ 
+-	pmap = ice_search_prof_id_low(hw, blk, id);
++	pmap = ice_search_prof_id(hw, blk, id);
+ 	if (!pmap) {
+ 		status = ICE_ERR_DOES_NOT_EXIST;
+ 		goto err_ice_rem_prof;
+@@ -4172,22 +4152,28 @@ static enum ice_status
+ ice_get_prof(struct ice_hw *hw, enum ice_block blk, u64 hdl,
+ 	     struct list_head *chg)
+ {
++	enum ice_status status = 0;
+ 	struct ice_prof_map *map;
+ 	struct ice_chs_chg *p;
+ 	u16 i;
+ 
++	mutex_lock(&hw->blk[blk].es.prof_map_lock);
+ 	/* Get the details on the profile specified by the handle ID */
+ 	map = ice_search_prof_id(hw, blk, hdl);
+-	if (!map)
+-		return ICE_ERR_DOES_NOT_EXIST;
++	if (!map) {
++		status = ICE_ERR_DOES_NOT_EXIST;
++		goto err_ice_get_prof;
++	}
+ 
+ 	for (i = 0; i < map->ptg_cnt; i++)
+ 		if (!hw->blk[blk].es.written[map->prof_id]) {
+ 			/* add ES to change list */
+ 			p = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*p),
+ 					 GFP_KERNEL);
+-			if (!p)
++			if (!p) {
++				status = ICE_ERR_NO_MEMORY;
+ 				goto err_ice_get_prof;
++			}
+ 
+ 			p->type = ICE_PTG_ES_ADD;
+ 			p->ptype = 0;
+@@ -4202,11 +4188,10 @@ ice_get_prof(struct ice_hw *hw, enum ice_block blk, u64 hdl,
+ 			list_add(&p->list_entry, chg);
+ 		}
+ 
+-	return 0;
+-
+ err_ice_get_prof:
++	mutex_unlock(&hw->blk[blk].es.prof_map_lock);
+ 	/* let caller clean up the change list */
+-	return ICE_ERR_NO_MEMORY;
++	return status;
+ }
+ 
+ /**
+@@ -4260,17 +4245,23 @@ static enum ice_status
+ ice_add_prof_to_lst(struct ice_hw *hw, enum ice_block blk,
+ 		    struct list_head *lst, u64 hdl)
+ {
++	enum ice_status status = 0;
+ 	struct ice_prof_map *map;
+ 	struct ice_vsig_prof *p;
+ 	u16 i;
+ 
++	mutex_lock(&hw->blk[blk].es.prof_map_lock);
+ 	map = ice_search_prof_id(hw, blk, hdl);
+-	if (!map)
+-		return ICE_ERR_DOES_NOT_EXIST;
++	if (!map) {
++		status = ICE_ERR_DOES_NOT_EXIST;
++		goto err_ice_add_prof_to_lst;
++	}
+ 
+ 	p = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*p), GFP_KERNEL);
+-	if (!p)
+-		return ICE_ERR_NO_MEMORY;
++	if (!p) {
++		status = ICE_ERR_NO_MEMORY;
++		goto err_ice_add_prof_to_lst;
++	}
+ 
+ 	p->profile_cookie = map->profile_cookie;
+ 	p->prof_id = map->prof_id;
+@@ -4284,7 +4275,9 @@ ice_add_prof_to_lst(struct ice_hw *hw, enum ice_block blk,
+ 
+ 	list_add(&p->list, lst);
+ 
+-	return 0;
++err_ice_add_prof_to_lst:
++	mutex_unlock(&hw->blk[blk].es.prof_map_lock);
++	return status;
+ }
+ 
+ /**
+@@ -4502,16 +4495,12 @@ ice_add_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsig, u64 hdl,
+ 	u8 vl_msk[ICE_TCAM_KEY_VAL_SZ] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+ 	u8 dc_msk[ICE_TCAM_KEY_VAL_SZ] = { 0xFF, 0xFF, 0x00, 0x00, 0x00 };
+ 	u8 nm_msk[ICE_TCAM_KEY_VAL_SZ] = { 0x00, 0x00, 0x00, 0x00, 0x00 };
++	enum ice_status status = 0;
+ 	struct ice_prof_map *map;
+ 	struct ice_vsig_prof *t;
+ 	struct ice_chs_chg *p;
+ 	u16 vsig_idx, i;
+ 
+-	/* Get the details on the profile specified by the handle ID */
+-	map = ice_search_prof_id(hw, blk, hdl);
+-	if (!map)
+-		return ICE_ERR_DOES_NOT_EXIST;
+-
+ 	/* Error, if this VSIG already has this profile */
+ 	if (ice_has_prof_vsig(hw, blk, vsig, hdl))
+ 		return ICE_ERR_ALREADY_EXISTS;
+@@ -4521,19 +4510,28 @@ ice_add_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsig, u64 hdl,
+ 	if (!t)
+ 		return ICE_ERR_NO_MEMORY;
+ 
++	mutex_lock(&hw->blk[blk].es.prof_map_lock);
++	/* Get the details on the profile specified by the handle ID */
++	map = ice_search_prof_id(hw, blk, hdl);
++	if (!map) {
++		status = ICE_ERR_DOES_NOT_EXIST;
++		goto err_ice_add_prof_id_vsig;
++	}
++
+ 	t->profile_cookie = map->profile_cookie;
+ 	t->prof_id = map->prof_id;
+ 	t->tcam_count = map->ptg_cnt;
+ 
+ 	/* create TCAM entries */
+ 	for (i = 0; i < map->ptg_cnt; i++) {
+-		enum ice_status status;
+ 		u16 tcam_idx;
+ 
+ 		/* add TCAM to change list */
+ 		p = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*p), GFP_KERNEL);
+-		if (!p)
++		if (!p) {
++			status = ICE_ERR_NO_MEMORY;
+ 			goto err_ice_add_prof_id_vsig;
++		}
+ 
+ 		/* allocate the TCAM entry index */
+ 		status = ice_alloc_tcam_ent(hw, blk, &tcam_idx);
+@@ -4577,12 +4575,14 @@ ice_add_prof_id_vsig(struct ice_hw *hw, enum ice_block blk, u16 vsig, u64 hdl,
+ 		list_add(&t->list,
+ 			 &hw->blk[blk].xlt2.vsig_tbl[vsig_idx].prop_lst);
+ 
+-	return 0;
++	mutex_unlock(&hw->blk[blk].es.prof_map_lock);
++	return status;
+ 
+ err_ice_add_prof_id_vsig:
++	mutex_unlock(&hw->blk[blk].es.prof_map_lock);
+ 	/* let caller clean up the change list */
+ 	devm_kfree(ice_hw_to_dev(hw), t);
+-	return ICE_ERR_NO_MEMORY;
++	return status;
+ }
+ 
+ /**
 -- 
 2.20.1
 
