@@ -1,46 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 254A7234421
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jul 2020 12:38:11 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 65F99234779
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jul 2020 16:11:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8A48A86549;
-	Fri, 31 Jul 2020 10:38:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E1D2A88658;
+	Fri, 31 Jul 2020 14:11:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zf84VG6CAIJC; Fri, 31 Jul 2020 10:38:09 +0000 (UTC)
+	with ESMTP id 12xdxNotntrD; Fri, 31 Jul 2020 14:11:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id ACBF68665E;
-	Fri, 31 Jul 2020 10:38:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id F0E6487942;
+	Fri, 31 Jul 2020 14:11:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D58C1BF2A4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jul 2020 10:38:06 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 55E9E1BF2A4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jul 2020 10:07:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6D88F865DB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jul 2020 10:38:06 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 4244C2050B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jul 2020 10:07:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 66xCLwBgG-45 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Jul 2020 10:38:00 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from tc-sys-mailedm01.tc.baidu.com (mx58.baidu.com [61.135.168.58])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 29A0886549
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jul 2020 10:38:00 +0000 (UTC)
-Received: from localhost (cp01-cos-dev01.cp01.baidu.com [10.92.119.46])
- by tc-sys-mailedm01.tc.baidu.com (Postfix) with ESMTP id 043B12040041;
- Fri, 31 Jul 2020 18:37:55 +0800 (CST)
-From: Li RongQing <lirongqing@baidu.com>
-To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- andrewx.bowers@intel.com, anthony.l.nguyen@intel.com
-Date: Fri, 31 Jul 2020 18:37:54 +0800
-Message-Id: <1596191874-27757-1-git-send-email-lirongqing@baidu.com>
-X-Mailer: git-send-email 1.7.1
-Subject: [Intel-wired-lan] [PATCH][v2] i40e: optimise prefetch page refcount
+ with ESMTP id 85W45zNc5a4V for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Jul 2020 10:07:46 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by silver.osuosl.org (Postfix) with ESMTPS id 2755920504
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jul 2020 10:07:45 +0000 (UTC)
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5E835F3008764DD2A782;
+ Fri, 31 Jul 2020 18:07:42 +0800 (CST)
+Received: from [127.0.0.1] (10.174.179.238) by DGGEMS402-HUB.china.huawei.com
+ (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0;
+ Fri, 31 Jul 2020 18:07:38 +0800
+From: Bixuan Cui <cuibixuan@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>
+References: <20200731105721.18511-1-cuibixuan@huawei.com>
+Message-ID: <5af7c5af-c45d-2174-de89-8b89eddb4f4d@huawei.com>
+Date: Fri, 31 Jul 2020 18:07:37 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <20200731105721.18511-1-cuibixuan@huawei.com>
+Content-Language: en-US
+X-Originating-IP: [10.174.179.238]
+X-CFilter-Loop: Reflected
+X-Mailman-Approved-At: Fri, 31 Jul 2020 14:11:44 +0000
+Subject: [Intel-wired-lan] [PATCH -next v2] net: ice: Fix pointer cast
+ warnings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,63 +64,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, linux-next@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-refcount of rx_buffer page will be added here originally, so prefetchw
-is needed, but after commit 1793668c3b8c ("i40e/i40evf: Update code to
- better handle incrementing page count"), and refcount is not added
-everytime, so change prefetchw as prefetch,
+pointers should be casted to unsigned long to avoid
+-Wpointer-to-int-cast warnings:
 
-now it mainly services page_address(), but which accesses struct page
-only when WANT_PAGE_VIRTUAL or HASHED_PAGE_VIRTUAL is defined otherwise
-it returns address based on offset, so we prefetch it conditionally
+drivers/net/ethernet/intel/ice/ice_flow.h:197:33: warning:
+    cast from pointer to integer of different size
+drivers/net/ethernet/intel/ice/ice_flow.h:198:32: warning:
+    cast to pointer from integer of different size
 
-Jakub suggested to define prefetch_page_address in a common header
-
-Suggested-by: Jakub Kicinski <kuba@kernel.org>
-Signed-off-by: Li RongQing <lirongqing@baidu.com>
+Signed-off-by: Bixuan Cui <cuibixuan@huawei.com>
 ---
-diff with v1: create a common function prefetch_page_address
+v2->v1: add fix:
+ ice_flow.h:198:32: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+ #define ICE_FLOW_ENTRY_PTR(h) ((struct ice_flow_entry *)(h))
 
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 2 +-
- include/linux/prefetch.h                    | 7 +++++++
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_flow.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 62f5b2d35f63..5f9fe55bb66d 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1953,7 +1953,7 @@ static struct i40e_rx_buffer *i40e_get_rx_buffer(struct i40e_ring *rx_ring,
- 	struct i40e_rx_buffer *rx_buffer;
- 
- 	rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
--	prefetchw(rx_buffer->page);
-+	prefetch_page_address(rx_buffer->page);
- 
- 	/* we are reusing so sync this buffer for CPU use */
- 	dma_sync_single_range_for_cpu(rx_ring->dev,
-diff --git a/include/linux/prefetch.h b/include/linux/prefetch.h
-index 13eafebf3549..1e0283982dd3 100644
---- a/include/linux/prefetch.h
-+++ b/include/linux/prefetch.h
-@@ -62,4 +62,11 @@ static inline void prefetch_range(void *addr, size_t len)
- #endif
- }
- 
-+static inline void prefetch_page_address(struct page *page)
-+{
-+#if defined(WANT_PAGE_VIRTUAL) || defined(HASHED_PAGE_VIRTUAL)
-+	prefetch(page);
-+#endif
-+}
-+
- #endif
--- 
-2.16.2
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+index 3913da2116d2..829f90b1e998 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.h
++++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+@@ -194,8 +194,8 @@ struct ice_flow_entry {
+ 	u16 entry_sz;
+ };
+
+-#define ICE_FLOW_ENTRY_HNDL(e)	((u64)e)
+-#define ICE_FLOW_ENTRY_PTR(h)	((struct ice_flow_entry *)(h))
++#define ICE_FLOW_ENTRY_HNDL(e)	((u64)(uintptr_t)e)
++#define ICE_FLOW_ENTRY_PTR(h)	((struct ice_flow_entry *)(uintptr_t)(h))
+
+ struct ice_flow_prof {
+ 	struct list_head l_entry;
+--
+2.17.1
+
+
+.
+
 
 _______________________________________________
 Intel-wired-lan mailing list
