@@ -1,63 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3B22923BF1D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Aug 2020 19:51:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2500023C10E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Aug 2020 22:58:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E7E3887F92;
-	Tue,  4 Aug 2020 17:51:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id D02C78766D;
+	Tue,  4 Aug 2020 20:58:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qq77yXOChuZ3; Tue,  4 Aug 2020 17:51:37 +0000 (UTC)
+	with ESMTP id AfBRGZIyporJ; Tue,  4 Aug 2020 20:58:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4191C87F79;
-	Tue,  4 Aug 2020 17:51:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 03EE987680;
+	Tue,  4 Aug 2020 20:58:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D3DB61BF361
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 17:51:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5CDC11BF20D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 20:58:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C80DA87C0C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 17:51:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 55A1484713
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 20:58:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hVkbNSjVqEj0 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Aug 2020 17:51:35 +0000 (UTC)
+ with ESMTP id vMrBk8xwQ7q9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Aug 2020 20:58:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0D5C185AC7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 17:51:34 +0000 (UTC)
-IronPort-SDR: YEVmWs4PvnTDzUfbeBegpD5YkHSviEcxMd6VlwFDEE9IThRiAi3n04R1bnK3R5ndtM0FfSlN4O
- g8r+mVSlblcQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9703"; a="140285241"
-X-IronPort-AV: E=Sophos;i="5.75,434,1589266800"; d="scan'208";a="140285241"
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2D8D7845DC
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 20:58:46 +0000 (UTC)
+IronPort-SDR: u8E+s7pk8PuBSH5DjHbAiIXz2BuE9bMfdf6fb/p4odRKqib8ZCg0bj2oOojPKB6y/NzCJ5nHDy
+ 58izzB0Cl1CA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9703"; a="132492287"
+X-IronPort-AV: E=Sophos;i="5.75,435,1589266800"; d="scan'208";a="132492287"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2020 10:51:34 -0700
-IronPort-SDR: 9Jd5hbfwWfjKPa+Jp12sWu+aPgAD2NeWGhvnXc6p3xqpcozxns6kOjGBoJ9DrvulJ0CuqujJzR
- jlgZ6oDf6+xw==
-X-IronPort-AV: E=Sophos;i="5.75,434,1589266800"; d="scan'208";a="315446637"
-Received: from emcbride-mobl1.amr.corp.intel.com (HELO localhost)
- ([10.209.98.225])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2020 10:51:33 -0700
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Aug 2020 13:58:45 -0700
+IronPort-SDR: rri2YYa+P9CbfvwjOR/xwMf6PhNlBVYqE6fhG4Yv06JjRX9YD1XPz9WujT6yPXFvPaTOVNpV1h
+ mgCcCv+J23Rg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,435,1589266800"; d="scan'208";a="467219737"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga005.jf.intel.com with ESMTP; 04 Aug 2020 13:58:45 -0700
+Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 4 Aug 2020 13:58:44 -0700
+Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
+ fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
+ via Frontend Transport; Tue, 4 Aug 2020 13:58:44 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
+ by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Tue, 4 Aug 2020 13:58:44 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WDHIuDgMLQQYsVa24ObdW77WmCb+Y5TQJ4jypsPcOjrqVmY6cfOmzLGThzgPwWTe2U7+sdSRQ4GgjqqBuYdpE9R5xCY/l3r/robojk8dDJPQrHlz8JqaCMWUqqvXahzplKHJMrOhJivipONyGeXvCqdhTK/z5qeYnCxRENSpn6to7EPnMpdMom6pPDYQ8S8vGpsAxz5Bc5PUqm84F3JZ+CaT5R7gc37pEdZXBoXFWbVAyA/jvFL+q2BTEgNrJjhsiMjXOIX1CbZRLSd6fRkypOpOszau3ZMqwitax8Bl9ilnWlU4tTe1SF1YEoAuFxoyBgnVZjKAAtKVWFpPY9PPjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EK1hLSvQNbx3Fuh1ZwLnTyWVFvT7ZppujTh404NhyuA=;
+ b=Xsd03fGHC97t95lMAAjJldAMUBDU5aoWgLsFXLsYoUaS5vGiw7JcUeDF6n7u0mNKZ/z+GwlK56RYd4XP7kUCE7uJ+JO8cZ67XWex1tgqigtldAuHLpTGs/3CqGq/WSqWG/oUgi2iKrmvxB7sfWov7FkpzuLf5uu5BPzmixrfAfPcTAQj3g/2O8YF1KziW1XwgqMbA+yyceJHh8wUTcVUtGNQZWyCnYUsQpZBz59ybElHYABMfjtGRkVnV07kGcsRC568jI9pZRNL3Yza38XJmssn6dGIIkpALIA/seMd+waLALOV+0qbMN/rJI/I6u3p8ysjjwEHU5/Gf1aaUneUmQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EK1hLSvQNbx3Fuh1ZwLnTyWVFvT7ZppujTh404NhyuA=;
+ b=Rbc75IYiSlWoLSvn9rY4mbz/qiraxa10NjxWPpaTL21cVOPRbjfXlMgchDGJ6BpDy4m3vxltr0QV4dZJfc6xMIHtEZ0kXd252yWzQ3iliYQd9vhf7R3pfZmO40Q+TJyYVtEqiY7s/lYOgumoVaPNbV1knG87tY4HUT1Y2GDpUxE=
+Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
+ (2603:10b6:405:51::10) by BN6PR11MB1537.namprd11.prod.outlook.com
+ (2603:10b6:405:c::18) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.16; Tue, 4 Aug
+ 2020 20:58:43 +0000
+Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
+ ([fe80::3c1b:6500:3edf:eaf0]) by BN6PR1101MB2145.namprd11.prod.outlook.com
+ ([fe80::3c1b:6500:3edf:eaf0%12]) with mapi id 15.20.3261.015; Tue, 4 Aug 2020
+ 20:58:42 +0000
+From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH][v2] i40e: optimise prefetch page refcount
+Thread-Index: AQHWZybApSeEI6IAT0W07Fq+PwlK26kodalg
+Date: Tue, 4 Aug 2020 20:58:42 +0000
+Message-ID: <BN6PR1101MB2145FBEC323CA803DD7F1DF78C4A0@BN6PR1101MB2145.namprd11.prod.outlook.com>
+References: <1596191874-27757-1-git-send-email-lirongqing@baidu.com>
+In-Reply-To: <1596191874-27757-1-git-send-email-lirongqing@baidu.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+authentication-results: vger.kernel.org; dkim=none (message not signed)
+ header.d=none;vger.kernel.org; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [71.59.183.208]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 1c05de87-973c-43eb-4476-08d838b92bc5
+x-ms-traffictypediagnostic: BN6PR11MB1537:
+x-microsoft-antispam-prvs: <BN6PR11MB1537B05CCB197430B4D3013F8C4A0@BN6PR11MB1537.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:317;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: uPckcbHpp1coEG5tTdQ4cUhn8BXi8V+TqzxMHUE5kSbC7U1Y895XP77Ierkv2Rc03o8sTHizUZDGETGeBX2yaPRbrih1owoK+f3eRKy/zc7GTU8jRD9s98dZ3oV845Rg5yfOsn8Mf1rLDH97Oax8HNQ4qjHJJ9gDHL9cG5xuMoSfbgBHFAdwT4zlYaHszLEPKw620iqSKR8RA9ngDjoNPfbVrepfrpy0pEjtQ5qeafsk3/nBIfF0moq7dl+92+Z0M9fnLWE9b8mFcktAsLuMWTzTEoNOu+LPs5KycOW+X1nY2zM3+VCb3NhBIU8xkNnS
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(39860400002)(366004)(346002)(396003)(376002)(136003)(33656002)(83380400001)(64756008)(66556008)(66476007)(71200400001)(66446008)(8676002)(8936002)(76116006)(2906002)(66946007)(9686003)(478600001)(55016002)(52536014)(186003)(5660300002)(26005)(316002)(110136005)(53546011)(7696005)(6506007)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: buR8XmtbZZVod4TXsPF47twBNroH3Y5PE5St+PrHJdcDi+YmVTnPBkrqeHq7pkxwdE1HUbEI2EnmOfYzGjlKr5DCHmN7ZBGfOrQJV/XSw/y5mp/rhzrYsVWjE+ax01km8LHjsIBhmF+DNbnA1CQIZtK9/Yt/tOZ5El0GbYNnjHTewH8TnVzSyn+U0T0hdhDC2vsiRfEmLEX7ArVxY1x/fmRF8ZZPGXanVGoloWS6OMuXKiSsbD3o0lJY/Wdigx0YaMQFu0dkxt0sT1LwoTMe6r9+dd/AyVl1QVafhGQUEOrUCiNmbyoHHZr6q4fa5nmIveMKtH8hU60nFHnpu/SflCQ+jhWMkuW9VVH/nTbwYY4DZGEniMJkKxMqsxuOanXkEpu/dgl1XwEGoOvvKAALrCnQZIWkj+cjmElcK11REqDjy/+pCTnTmpu3wf2b2kaFB2MtPztBVW7g8pMM4LhX4sEO5aFFIkXwx+vaOUzKt+AtlslzDj++U5XU6yPLLECIZf9UCYQ5ydH+G4S0fGytBf/mveW9nb9BDed4JT0Qhrv8wEbeCYw1hBjWfunBL8d0qzswMiSMiQa1KPw7us96ce7VlgRZ6aJNASP6pwI0vl02WTkwxHXsIKrDVjwM4LI5IpXpxtaDL9JON2T7Pcuwbg==
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-In-Reply-To: <20200803183207.817588-1-vinicius.gomes@intel.com>
-References: <20200803183207.817588-1-vinicius.gomes@intel.com>
-From: Andre Guedes <andre.guedes@intel.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Date: Tue, 04 Aug 2020 10:51:30 -0700
-Message-ID: <159656349099.62699.10691780346692711576@patankar-mobl2.amr.corp.intel.com>
-User-Agent: alot/0.9
-Subject: Re: [Intel-wired-lan] [net-queue PATCH v1] igc: Fix PTP
- initialization
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN6PR1101MB2145.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1c05de87-973c-43eb-4476-08d838b92bc5
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Aug 2020 20:58:42.4789 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wkj+1Z2xoa2cLu7YsPZNWoMPGuAIN9gwghvkAhBcO58OjO9b4/XIcm0YDnrgEbiL+eeBunitb/alZx3WUZXjpuLPJ64VwicJIOP/cW95Ppk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1537
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH][v2] i40e: optimise prefetch page
+ refcount
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,68 +145,37 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Right now, igc_ptp_reset() is called from igc_reset(), which is called
-> from igc_probe() before igc_ptp_init() has a chance to run. It is
-> detected as an attempt to use an spinlook without registering its key
-> first. See log below.
+> -----Original Message-----
+> From: Li RongQing <lirongqing@baidu.com>
+> Sent: Friday, July 31, 2020 3:38 AM
+> To: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
+> kuba@kernel.org; Bowers, AndrewX <andrewx.bowers@intel.com>;
+> Nguyen, Anthony L <anthony.l.nguyen@intel.com>
+> Subject: [PATCH][v2] i40e: optimise prefetch page refcount
 > 
-> To avoid this problem, simplify the initialization: igc_ptp_init() is
-> only called from igc_probe(), and igc_ptp_reset() is only called from
-> igc_reset().
+> refcount of rx_buffer page will be added here originally, so prefetchw is
+> needed, but after commit 1793668c3b8c ("i40e/i40evf: Update code to
+> better handle incrementing page count"), and refcount is not added
+> everytime, so change prefetchw as prefetch,
 > 
-> [    2.736332] INFO: trying to register non-static key.
-> [    2.736902] input: HDA Intel PCH Front Headphone as /devices/pci0000:00/0000:00:1f.3/sound/card0/input10
-> [    2.737513] the code is fine but needs lockdep annotation.
-> [    2.737513] turning off the locking correctness validator.
-> [    2.737515] CPU: 8 PID: 239 Comm: systemd-udevd Tainted: G            E     5.8.0-rc7+ #13
-> [    2.737515] Hardware name: Gigabyte Technology Co., Ltd. Z390 AORUS ULTRA/Z390 AORUS ULTRA-CF, BIOS F7 03/14/2019
-> [    2.737516] Call Trace:
-> [    2.737521]  dump_stack+0x78/0xa0
-> [    2.737524]  register_lock_class+0x6b1/0x6f0
-> [    2.737526]  ? lockdep_hardirqs_on_prepare+0xca/0x160
-> [    2.739177]  ? _raw_spin_unlock_irq+0x24/0x50
-> [    2.739179]  ? trace_hardirqs_on+0x1c/0xf0
-> [    2.740820]  __lock_acquire+0x56/0x1ff0
-> [    2.740823]  ? __schedule+0x30c/0x970
-> [    2.740825]  lock_acquire+0x97/0x3e0
-> [    2.740830]  ? igc_ptp_reset+0x35/0xf0 [igc]
-> [    2.740833]  ? schedule_hrtimeout_range_clock+0xb7/0x120
-> [    2.742507]  _raw_spin_lock_irqsave+0x3a/0x50
-> [    2.742512]  ? igc_ptp_reset+0x35/0xf0 [igc]
-> [    2.742515]  igc_ptp_reset+0x35/0xf0 [igc]
-> [    2.742519]  igc_reset+0x96/0xd0 [igc]
-> [    2.744148]  igc_probe+0x68f/0x7d0 [igc]
-> [    2.745796]  local_pci_probe+0x3d/0x70
-> [    2.745799]  pci_device_probe+0xd1/0x190
-> [    2.745802]  really_probe+0x15a/0x3f0
-> [    2.759936]  driver_probe_device+0xe1/0x150
-> [    2.759937]  device_driver_attach+0xa8/0xb0
-> [    2.761786]  __driver_attach+0x89/0x150
-> [    2.761786]  ? device_driver_attach+0xb0/0xb0
-> [    2.761787]  ? device_driver_attach+0xb0/0xb0
-> [    2.761788]  bus_for_each_dev+0x66/0x90
-> [    2.765012]  bus_add_driver+0x12e/0x1f0
-> [    2.765716]  driver_register+0x8b/0xe0
-> [    2.766418]  ? 0xffffffffc0230000
-> [    2.767119]  do_one_initcall+0x5a/0x310
-> [    2.767826]  ? kmem_cache_alloc_trace+0xe9/0x200
-> [    2.768528]  do_init_module+0x5c/0x260
-> [    2.769206]  __do_sys_finit_module+0x93/0xe0
-> [    2.770048]  do_syscall_64+0x46/0xa0
-> [    2.770716]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
-> [    2.771396] RIP: 0033:0x7f83534589e0
-> [    2.772073] Code: 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa 2e 2e 2e 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 80 24 0d 00 f7 d8 64 89 01 48
-> [    2.772074] RSP: 002b:00007ffd31d0ed18 EFLAGS: 00000246 ORIG_RAX: 0000000000000139
-> [    2.774854] RAX: ffffffffffffffda RBX: 000055d52816aba0 RCX: 00007f83534589e0
-> [    2.774855] RDX: 0000000000000000 RSI: 00007f83535b982f RDI: 0000000000000006
-> [    2.774855] RBP: 00007ffd31d0ed60 R08: 0000000000000000 R09: 00007ffd31d0ed30
-> [    2.774856] R10: 0000000000000006 R11: 0000000000000246 R12: 0000000000000000
-> [    2.774856] R13: 0000000000020000 R14: 00007f83535b982f R15: 000055d527f5e120
+> now it mainly services page_address(), but which accesses struct page only
+> when WANT_PAGE_VIRTUAL or HASHED_PAGE_VIRTUAL is defined
+> otherwise it returns address based on offset, so we prefetch it conditionally
 > 
-> Fixes: 5f2958052c58 ("igc: Add basic skeleton for PTP")
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Jakub suggested to define prefetch_page_address in a common header
+> 
+> Suggested-by: Jakub Kicinski <kuba@kernel.org>
+> Signed-off-by: Li RongQing <lirongqing@baidu.com>
+> ---
+> diff with v1: create a common function prefetch_page_address
+> 
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 2 +-
+>  include/linux/prefetch.h                    | 7 +++++++
+>  2 files changed, 8 insertions(+), 1 deletion(-)
 
-Reviewed-by: Andre Guedes <andre.guedes@intel.com>
+Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
