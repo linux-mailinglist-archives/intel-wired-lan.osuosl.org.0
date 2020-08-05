@@ -2,132 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2500023C10E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Aug 2020 22:58:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED07023C2A8
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Aug 2020 02:43:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id D02C78766D;
-	Tue,  4 Aug 2020 20:58:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7DC6587701;
+	Wed,  5 Aug 2020 00:43:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AfBRGZIyporJ; Tue,  4 Aug 2020 20:58:49 +0000 (UTC)
+	with ESMTP id ObMb79isz+HZ; Wed,  5 Aug 2020 00:43:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 03EE987680;
-	Tue,  4 Aug 2020 20:58:49 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5CDC11BF20D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 20:58:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E275787711;
+	Wed,  5 Aug 2020 00:43:08 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2DB061BF9AD
+ for <intel-wired-lan@osuosl.org>; Wed,  5 Aug 2020 00:43:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 55A1484713
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 20:58:47 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1D5A7204FE
+ for <intel-wired-lan@osuosl.org>; Wed,  5 Aug 2020 00:43:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vMrBk8xwQ7q9 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Aug 2020 20:58:46 +0000 (UTC)
+ with ESMTP id mpP2k6+tw4sO for <intel-wired-lan@osuosl.org>;
+ Wed,  5 Aug 2020 00:43:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2D8D7845DC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Aug 2020 20:58:46 +0000 (UTC)
-IronPort-SDR: u8E+s7pk8PuBSH5DjHbAiIXz2BuE9bMfdf6fb/p4odRKqib8ZCg0bj2oOojPKB6y/NzCJ5nHDy
- 58izzB0Cl1CA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9703"; a="132492287"
-X-IronPort-AV: E=Sophos;i="5.75,435,1589266800"; d="scan'208";a="132492287"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2020 13:58:45 -0700
-IronPort-SDR: rri2YYa+P9CbfvwjOR/xwMf6PhNlBVYqE6fhG4Yv06JjRX9YD1XPz9WujT6yPXFvPaTOVNpV1h
- mgCcCv+J23Rg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,435,1589266800"; d="scan'208";a="467219737"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga005.jf.intel.com with ESMTP; 04 Aug 2020 13:58:45 -0700
-Received: from fmsmsx607.amr.corp.intel.com (10.18.126.87) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 4 Aug 2020 13:58:44 -0700
-Received: from FMSEDG002.ED.cps.intel.com (10.1.192.134) by
- fmsmsx607.amr.corp.intel.com (10.18.126.87) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
- via Frontend Transport; Tue, 4 Aug 2020 13:58:44 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
- by edgegateway.intel.com (192.55.55.69) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Tue, 4 Aug 2020 13:58:44 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WDHIuDgMLQQYsVa24ObdW77WmCb+Y5TQJ4jypsPcOjrqVmY6cfOmzLGThzgPwWTe2U7+sdSRQ4GgjqqBuYdpE9R5xCY/l3r/robojk8dDJPQrHlz8JqaCMWUqqvXahzplKHJMrOhJivipONyGeXvCqdhTK/z5qeYnCxRENSpn6to7EPnMpdMom6pPDYQ8S8vGpsAxz5Bc5PUqm84F3JZ+CaT5R7gc37pEdZXBoXFWbVAyA/jvFL+q2BTEgNrJjhsiMjXOIX1CbZRLSd6fRkypOpOszau3ZMqwitax8Bl9ilnWlU4tTe1SF1YEoAuFxoyBgnVZjKAAtKVWFpPY9PPjA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EK1hLSvQNbx3Fuh1ZwLnTyWVFvT7ZppujTh404NhyuA=;
- b=Xsd03fGHC97t95lMAAjJldAMUBDU5aoWgLsFXLsYoUaS5vGiw7JcUeDF6n7u0mNKZ/z+GwlK56RYd4XP7kUCE7uJ+JO8cZ67XWex1tgqigtldAuHLpTGs/3CqGq/WSqWG/oUgi2iKrmvxB7sfWov7FkpzuLf5uu5BPzmixrfAfPcTAQj3g/2O8YF1KziW1XwgqMbA+yyceJHh8wUTcVUtGNQZWyCnYUsQpZBz59ybElHYABMfjtGRkVnV07kGcsRC568jI9pZRNL3Yza38XJmssn6dGIIkpALIA/seMd+waLALOV+0qbMN/rJI/I6u3p8ysjjwEHU5/Gf1aaUneUmQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EK1hLSvQNbx3Fuh1ZwLnTyWVFvT7ZppujTh404NhyuA=;
- b=Rbc75IYiSlWoLSvn9rY4mbz/qiraxa10NjxWPpaTL21cVOPRbjfXlMgchDGJ6BpDy4m3vxltr0QV4dZJfc6xMIHtEZ0kXd252yWzQ3iliYQd9vhf7R3pfZmO40Q+TJyYVtEqiY7s/lYOgumoVaPNbV1knG87tY4HUT1Y2GDpUxE=
-Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
- (2603:10b6:405:51::10) by BN6PR11MB1537.namprd11.prod.outlook.com
- (2603:10b6:405:c::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.16; Tue, 4 Aug
- 2020 20:58:43 +0000
-Received: from BN6PR1101MB2145.namprd11.prod.outlook.com
- ([fe80::3c1b:6500:3edf:eaf0]) by BN6PR1101MB2145.namprd11.prod.outlook.com
- ([fe80::3c1b:6500:3edf:eaf0%12]) with mapi id 15.20.3261.015; Tue, 4 Aug 2020
- 20:58:42 +0000
-From: "Bowers, AndrewX" <andrewx.bowers@intel.com>
-To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH][v2] i40e: optimise prefetch page refcount
-Thread-Index: AQHWZybApSeEI6IAT0W07Fq+PwlK26kodalg
-Date: Tue, 4 Aug 2020 20:58:42 +0000
-Message-ID: <BN6PR1101MB2145FBEC323CA803DD7F1DF78C4A0@BN6PR1101MB2145.namprd11.prod.outlook.com>
-References: <1596191874-27757-1-git-send-email-lirongqing@baidu.com>
-In-Reply-To: <1596191874-27757-1-git-send-email-lirongqing@baidu.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.5.1.3
-authentication-results: vger.kernel.org; dkim=none (message not signed)
- header.d=none;vger.kernel.org; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [71.59.183.208]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1c05de87-973c-43eb-4476-08d838b92bc5
-x-ms-traffictypediagnostic: BN6PR11MB1537:
-x-microsoft-antispam-prvs: <BN6PR11MB1537B05CCB197430B4D3013F8C4A0@BN6PR11MB1537.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:317;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: uPckcbHpp1coEG5tTdQ4cUhn8BXi8V+TqzxMHUE5kSbC7U1Y895XP77Ierkv2Rc03o8sTHizUZDGETGeBX2yaPRbrih1owoK+f3eRKy/zc7GTU8jRD9s98dZ3oV845Rg5yfOsn8Mf1rLDH97Oax8HNQ4qjHJJ9gDHL9cG5xuMoSfbgBHFAdwT4zlYaHszLEPKw620iqSKR8RA9ngDjoNPfbVrepfrpy0pEjtQ5qeafsk3/nBIfF0moq7dl+92+Z0M9fnLWE9b8mFcktAsLuMWTzTEoNOu+LPs5KycOW+X1nY2zM3+VCb3NhBIU8xkNnS
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN6PR1101MB2145.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(39860400002)(366004)(346002)(396003)(376002)(136003)(33656002)(83380400001)(64756008)(66556008)(66476007)(71200400001)(66446008)(8676002)(8936002)(76116006)(2906002)(66946007)(9686003)(478600001)(55016002)(52536014)(186003)(5660300002)(26005)(316002)(110136005)(53546011)(7696005)(6506007)(86362001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: buR8XmtbZZVod4TXsPF47twBNroH3Y5PE5St+PrHJdcDi+YmVTnPBkrqeHq7pkxwdE1HUbEI2EnmOfYzGjlKr5DCHmN7ZBGfOrQJV/XSw/y5mp/rhzrYsVWjE+ax01km8LHjsIBhmF+DNbnA1CQIZtK9/Yt/tOZ5El0GbYNnjHTewH8TnVzSyn+U0T0hdhDC2vsiRfEmLEX7ArVxY1x/fmRF8ZZPGXanVGoloWS6OMuXKiSsbD3o0lJY/Wdigx0YaMQFu0dkxt0sT1LwoTMe6r9+dd/AyVl1QVafhGQUEOrUCiNmbyoHHZr6q4fa5nmIveMKtH8hU60nFHnpu/SflCQ+jhWMkuW9VVH/nTbwYY4DZGEniMJkKxMqsxuOanXkEpu/dgl1XwEGoOvvKAALrCnQZIWkj+cjmElcK11REqDjy/+pCTnTmpu3wf2b2kaFB2MtPztBVW7g8pMM4LhX4sEO5aFFIkXwx+vaOUzKt+AtlslzDj++U5XU6yPLLECIZf9UCYQ5ydH+G4S0fGytBf/mveW9nb9BDed4JT0Qhrv8wEbeCYw1hBjWfunBL8d0qzswMiSMiQa1KPw7us96ce7VlgRZ6aJNASP6pwI0vl02WTkwxHXsIKrDVjwM4LI5IpXpxtaDL9JON2T7Pcuwbg==
-x-ms-exchange-transport-forked: True
+Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com
+ [209.85.210.44])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4C30B204EE
+ for <intel-wired-lan@osuosl.org>; Wed,  5 Aug 2020 00:43:06 +0000 (UTC)
+Received: by mail-ot1-f44.google.com with SMTP id e11so7833760otk.4
+ for <intel-wired-lan@osuosl.org>; Tue, 04 Aug 2020 17:43:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=jiq/FRUMitwB0sPT2GeScwBBpz7JOy5N/cjfMqySzkM=;
+ b=m9mn5BEmM79qfmUIP3ZsAkFQyAPG6Jfq88/CTlMBt8Htj+2ZAX1VY77cuq0BQyPWy4
+ z/fj+iKoIBXmPxrFapgJkf+XC5kBorzJmOqhc/cGuTb/FM1vCSkUX76+O1+7cnyAAkHk
+ nnsR3X+lSe2L8zIKVoXg536zfPWgz8hMq5x+fdSid0zbSXfa3g4jt7/l5DtMTblNOj/I
+ RpHGmY+cEdqXdhWm33qV4ue4NCuKwv1joiwdJwSrBG0dxkgGtqNJIAZCv6Hw5FA6HYHE
+ loIHbd0ODDrf3cOJyGXfIq0daE5XpkGmx379XCqOBWOrZgZiO5/5mjy9cc7t4kXrZwRL
+ W9FA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=jiq/FRUMitwB0sPT2GeScwBBpz7JOy5N/cjfMqySzkM=;
+ b=mgkh1wALMADEICewl137IKEzMdmH6fqqvWdejh0++89Gh1bNnq9tTfdBwlxwYXaS0F
+ TPfIsOAQmiHLnZcstpeCp5gaV1nlON59NT31JnRzJVwKRZd2UYLJyEGhXprcr5ZteaJo
+ 2jk7Y/MUIXEriTLn8BuSuaCDur9OpN8lRnYZ2o/X28zbr0Qr/zgPTnk34FsOcAxoAmr0
+ z4KvV4V6VOPF6sxMRCweOloxsw0NUxmBqjNlQDp2WGBJ2lZti1RM3Af5m/MoDe5RMGdO
+ KJEPkzLEOgs17uxulzCSmOD0Bdty/hMC0zdvkgTxp+QZtCGCVtE+S1VQzmjLlYteuFDF
+ KKoA==
+X-Gm-Message-State: AOAM533zfDr0aykmTHy9A6RFH4ep+4N0OPoiVD/4N8Mqb5v8DG20w4au
+ 2clLZaFgv/4HMPrwYkmxTsnG2ruvchTG96TqepNbIx05
+X-Google-Smtp-Source: ABdhPJxAAnIQDXP4z5BEwij15Z+c1TV9r4feL/m0mwe4YUwvzajjfAE/SFPVM+wpF13E3J/axlq9kYeWr4c6v6nqnm8=
+X-Received: by 2002:a9d:5d2:: with SMTP id 76mr605572otd.55.1596588185339;
+ Tue, 04 Aug 2020 17:43:05 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BN6PR1101MB2145.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1c05de87-973c-43eb-4476-08d838b92bc5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Aug 2020 20:58:42.4789 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: wkj+1Z2xoa2cLu7YsPZNWoMPGuAIN9gwghvkAhBcO58OjO9b4/XIcm0YDnrgEbiL+eeBunitb/alZx3WUZXjpuLPJ64VwicJIOP/cW95Ppk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR11MB1537
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH][v2] i40e: optimise prefetch page
- refcount
+From: Yaroslav Isakov <yaroslav.isakov@gmail.com>
+Date: Wed, 5 Aug 2020 02:42:54 +0200
+Message-ID: <CADS+iDVjpGVQifg+RtNEQKJw4ePe6+ViUpto8U1v0Xv1HwN2-Q@mail.gmail.com>
+To: intel-wired-lan@osuosl.org
+Subject: [Intel-wired-lan] Deep package C-states cannot be reached on e1000e
+ after resume from suspend
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,42 +77,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Li RongQing <lirongqing@baidu.com>
-> Sent: Friday, July 31, 2020 3:38 AM
-> To: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org;
-> kuba@kernel.org; Bowers, AndrewX <andrewx.bowers@intel.com>;
-> Nguyen, Anthony L <anthony.l.nguyen@intel.com>
-> Subject: [PATCH][v2] i40e: optimise prefetch page refcount
-> 
-> refcount of rx_buffer page will be added here originally, so prefetchw is
-> needed, but after commit 1793668c3b8c ("i40e/i40evf: Update code to
-> better handle incrementing page count"), and refcount is not added
-> everytime, so change prefetchw as prefetch,
-> 
-> now it mainly services page_address(), but which accesses struct page only
-> when WANT_PAGE_VIRTUAL or HASHED_PAGE_VIRTUAL is defined
-> otherwise it returns address based on offset, so we prefetch it conditionally
-> 
-> Jakub suggested to define prefetch_page_address in a common header
-> 
-> Suggested-by: Jakub Kicinski <kuba@kernel.org>
-> Signed-off-by: Li RongQing <lirongqing@baidu.com>
-> ---
-> diff with v1: create a common function prefetch_page_address
-> 
->  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 2 +-
->  include/linux/prefetch.h                    | 7 +++++++
->  2 files changed, 8 insertions(+), 1 deletion(-)
+Hello! I've found that my laptop (T460s) cannot reach Package C-states
+deeper than PC2. After some research, I've found that unplugging cable
+from my laptop and plugging it back fixes that, until the laptop is
+suspended. After resume, this problem returns, but unplugging and
+plugging fix it again.
+I'm using kernel 5.8.0, but I've seen the same behavior on previous
+kernel as well.
 
-Tested-by: Andrew Bowers <andrewx.bowers@intel.com>
+Here is a lspci -n -vv excerpt:
+00:1f.6 0200: 8086:156f (rev 21)
+    Subsystem: 17aa:2233
+    Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
+ParErr- Stepping- SERR- FastB2B- DisINTx+
+    Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort-
+<TAbort- <MAbort- >SERR- <PERR- INTx-
+    Latency: 0
+    Interrupt: pin A routed to IRQ 129
+    Region 0: Memory at e1100000 (32-bit, non-prefetchable) [size=128K]
+    Capabilities: [c8] Power Management version 3
+        Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA
+PME(D0+,D1-,D2-,D3hot+,D3cold+)
+        Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1 PME-
+    Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+        Address: 00000000fee002f8  Data: 0000
+    Capabilities: [e0] PCI Advanced Features
+        AFCap: TP+ FLR+
+        AFCtrl: FLR-
+        AFStatus: TP-
+    Kernel driver in use: e1000e
+    Kernel modules: e1000e
 
-
+/sys/bus/pci/devices/0000:00:1f.6/power/control = on (I've changed it
+to auto, but no change in behavoir)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
