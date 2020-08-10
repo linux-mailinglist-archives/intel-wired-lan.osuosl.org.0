@@ -1,58 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFA9824121B
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 922A524121A
 	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Aug 2020 23:08:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5EAAA879AE;
-	Mon, 10 Aug 2020 21:08:46 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZKjN5xIULicr; Mon, 10 Aug 2020 21:08:46 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4F99C87884;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C9BAF858B5;
 	Mon, 10 Aug 2020 21:08:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lsW-8062x5fx; Mon, 10 Aug 2020 21:08:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EE8ED85A58;
+	Mon, 10 Aug 2020 21:08:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DAB761BF23C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 21:08:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D487F1BF977
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 21:08:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id D663787D80
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 21:08:42 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CEBE687D80
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 21:08:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 98pN327Nq9Tt for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Aug 2020 21:08:40 +0000 (UTC)
+ with ESMTP id UJn4XELaP4s8 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Aug 2020 21:08:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by hemlock.osuosl.org (Postfix) with ESMTPS id D70F087D41
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 21:08:40 +0000 (UTC)
-IronPort-SDR: FkuHzzTHbusLe3L3TzovRKh0aNGeiuZkn9YAJrW0BhpDE+Wr4Z7ut88BWRaKTI/Q9nN4xYU6gz
- aDaFb8/IxvcQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="171663420"
-X-IronPort-AV: E=Sophos;i="5.75,458,1589266800"; d="scan'208";a="171663420"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 0A3D687D86
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 21:08:41 +0000 (UTC)
+IronPort-SDR: JpjKy8SD8iE7GKs5VOFxNQXkOxA2SuBZSFQVnOCaaAaTG1Ri844Wprnnqef1GUN2sJst16A1jF
+ IqXKpQroreFA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="171663421"
+X-IronPort-AV: E=Sophos;i="5.75,458,1589266800"; d="scan'208";a="171663421"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga007.jf.intel.com ([10.7.209.58])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  10 Aug 2020 14:08:40 -0700
-IronPort-SDR: KakKGx1ZP9LS8MIeQg7E9e0onrzwPVxnux++dXiQJfjVwVWSjmnt6TV9E/xNXyhP07cNqy7dnf
- UrYdWFtETLqw==
+IronPort-SDR: 8GOcTjTemrX8V16Ue5VtwsfS5SQXQLm172D/o8XmAEIOoQzZTF3u0kLmCgrGEurR1mdHkVfpSp
+ QsEjJRB8Kz1g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.75,458,1589266800"; d="scan'208";a="334361398"
+X-IronPort-AV: E=Sophos;i="5.75,458,1589266800"; d="scan'208";a="334361402"
 Received: from cjjeffrx-ti2.amr.corp.intel.com ([10.209.119.14])
- by orsmga007.jf.intel.com with ESMTP; 10 Aug 2020 14:08:39 -0700
+ by orsmga007.jf.intel.com with ESMTP; 10 Aug 2020 14:08:40 -0700
 From: Andre Guedes <andre.guedes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 10 Aug 2020 14:08:30 -0700
-Message-Id: <20200810210832.34699-1-andre.guedes@intel.com>
+Date: Mon, 10 Aug 2020 14:08:31 -0700
+Message-Id: <20200810210832.34699-2-andre.guedes@intel.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200810210832.34699-1-andre.guedes@intel.com>
+References: <20200810210832.34699-1-andre.guedes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH 1/3] igc: Clean RX descriptor error flags
+Subject: [Intel-wired-lan] [PATCH 2/3] igc: Check descriptor's DD bit in
+ igc_clean_rx_irq()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,70 +73,80 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-I225 advanced receive descriptor doesn't have the following extend error
-bits: CE, SE, SEQ, CXE. In addition to that, the bit TCPE is called L4E
-in the datasheet.
+I225 advanced receive descriptor provides the Descriptor Done (DD) bit
+which indicates hardware is done with that receive descriptor and
+software should handle it.
 
-This patch cleans up the code accordingly, and gets rid of the macro
-IGC_RXDEXT_ERR_FRAME_ERR_MASK since it doesn't make much sense anymore.
+This patch fixes igc_clean_rx_irq() so we check that bit to determine if
+we are done handling incoming packets instead of checking the packet
+length information. It also gets rid of rx_desc->wb.upper.length
+assignments spread through the code required to make the previous
+approach to work.
 
 Signed-off-by: Andre Guedes <andre.guedes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_defines.h | 14 +-------------
- drivers/net/ethernet/intel/igc/igc_main.c    |  5 ++---
- 2 files changed, 3 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
+ drivers/net/ethernet/intel/igc/igc_main.c    | 14 ++++++++------
+ 2 files changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 28885be15ee8..21695476b8a5 100644
+index 21695476b8a5..43a7c7944804 100644
 --- a/drivers/net/ethernet/intel/igc/igc_defines.h
 +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -324,22 +324,10 @@
- /* Advanced Receive Descriptor bit definitions */
- #define IGC_RXDADV_STAT_TSIP	0x08000 /* timestamp in packet */
+@@ -316,6 +316,7 @@
+ #define IGC_SRRCTL_TIMER0SEL(timer)	(((timer) & 0x3) << 17)
  
--#define IGC_RXDEXT_STATERR_CE		0x01000000
--#define IGC_RXDEXT_STATERR_SE		0x02000000
--#define IGC_RXDEXT_STATERR_SEQ		0x04000000
--#define IGC_RXDEXT_STATERR_CXE		0x10000000
--#define IGC_RXDEXT_STATERR_TCPE		0x20000000
-+#define IGC_RXDEXT_STATERR_L4E		0x20000000
- #define IGC_RXDEXT_STATERR_IPE		0x40000000
- #define IGC_RXDEXT_STATERR_RXE		0x80000000
- 
--/* Same mask, but for extended and packet split descriptors */
--#define IGC_RXDEXT_ERR_FRAME_ERR_MASK ( \
--	IGC_RXDEXT_STATERR_CE  |	\
--	IGC_RXDEXT_STATERR_SE  |	\
--	IGC_RXDEXT_STATERR_SEQ |	\
--	IGC_RXDEXT_STATERR_CXE |	\
--	IGC_RXDEXT_STATERR_RXE)
--
- #define IGC_MRQC_RSS_FIELD_IPV4_TCP	0x00010000
- #define IGC_MRQC_RSS_FIELD_IPV4		0x00020000
- #define IGC_MRQC_RSS_FIELD_IPV6_TCP_EX	0x00040000
+ /* Receive Descriptor bit definitions */
++#define IGC_RXD_STAT_DD		0x01	/* Descriptor Done */
+ #define IGC_RXD_STAT_EOP	0x02	/* End of Packet */
+ #define IGC_RXD_STAT_IXSM	0x04	/* Ignore checksum */
+ #define IGC_RXD_STAT_UDPCS	0x10	/* UDP xsum calculated */
 diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index b303d05e0870..298f408519f4 100644
+index 298f408519f4..0c481dc906ad 100644
 --- a/drivers/net/ethernet/intel/igc/igc_main.c
 +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -1437,7 +1437,7 @@ static void igc_rx_checksum(struct igc_ring *ring,
+@@ -551,7 +551,6 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
  
- 	/* TCP/UDP checksum error bit is set */
- 	if (igc_test_staterr(rx_desc,
--			     IGC_RXDEXT_STATERR_TCPE |
-+			     IGC_RXDEXT_STATERR_L4E |
- 			     IGC_RXDEXT_STATERR_IPE)) {
- 		/* work around errata with sctp packets where the TCPE aka
- 		 * L4E bit is set incorrectly on 64 byte (60 byte w/o crc)
-@@ -1752,8 +1752,7 @@ static bool igc_cleanup_headers(struct igc_ring *rx_ring,
- 				union igc_adv_rx_desc *rx_desc,
- 				struct sk_buff *skb)
- {
--	if (unlikely((igc_test_staterr(rx_desc,
--				       IGC_RXDEXT_ERR_FRAME_ERR_MASK)))) {
-+	if (unlikely(igc_test_staterr(rx_desc, IGC_RXDEXT_STATERR_RXE))) {
- 		struct net_device *netdev = rx_ring->netdev;
+ 	/* initialize Rx descriptor 0 */
+ 	rx_desc = IGC_RX_DESC(ring, 0);
+-	rx_desc->wb.upper.length = 0;
  
- 		if (!(netdev->features & NETIF_F_RXALL)) {
+ 	/* enable receive descriptor fetching */
+ 	rxdctl |= IGC_RXDCTL_QUEUE_ENABLE;
+@@ -1880,9 +1879,6 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
+ 			i -= rx_ring->count;
+ 		}
+ 
+-		/* clear the length for the next_to_use descriptor */
+-		rx_desc->wb.upper.length = 0;
+-
+ 		cleaned_count--;
+ 	} while (cleaned_count);
+ 
+@@ -1924,8 +1920,12 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 		}
+ 
+ 		rx_desc = IGC_RX_DESC(rx_ring, rx_ring->next_to_clean);
+-		size = le16_to_cpu(rx_desc->wb.upper.length);
+-		if (!size)
++
++		/* If we reached a descriptor with 'Descriptor Done' bit not
++		 * set, it means we have handled all descriptors owned by
++		 * software already so we should prematurely break the loop.
++		 */
++		if (!igc_test_staterr(rx_desc, IGC_RXD_STAT_DD))
+ 			break;
+ 
+ 		/* This memory barrier is needed to keep us from reading
+@@ -1934,6 +1934,8 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+ 		 */
+ 		dma_rmb();
+ 
++		size = le16_to_cpu(rx_desc->wb.upper.length);
++
+ 		rx_buffer = igc_get_rx_buffer(rx_ring, size);
+ 
+ 		/* retrieve a buffer from the ring */
 -- 
 2.26.2
 
