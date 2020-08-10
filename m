@@ -2,67 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB52624100B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Aug 2020 21:27:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0636D2411A8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Aug 2020 22:24:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7351C87C17;
-	Mon, 10 Aug 2020 19:27:23 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 005FB87ACB;
+	Mon, 10 Aug 2020 20:24:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KuF+pNl-UE3X; Mon, 10 Aug 2020 19:27:23 +0000 (UTC)
+	with ESMTP id 8I51GIQfElDQ; Mon, 10 Aug 2020 20:24:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8D4F787D05;
-	Mon, 10 Aug 2020 19:27:20 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E5B6B87A72;
+	Mon, 10 Aug 2020 20:23:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E0E581BF27A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 19:27:18 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 19B7B1BF3B5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 20:23:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id C6699203FC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 19:27:18 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 08BE287A77
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 20:23:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l8hl9YYZbEYE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Aug 2020 19:27:17 +0000 (UTC)
+ with ESMTP id NzZP4Yhx9cu6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Aug 2020 20:23:57 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 4DAA1203D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 19:27:17 +0000 (UTC)
-IronPort-SDR: Kz88NKU+GMyqYbh+5lXP4A0q3bf/0X7bSLc4oDvij4vlrNFWGF0lqUI0CtG4T/u9uj8/rqChLH
- 82tdTd38OILA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="133666482"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A4C8A87A72
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 20:23:57 +0000 (UTC)
+IronPort-SDR: VgascAfz5NqkCXads9HkVd5a7uqcAFMkBStYJ7echzjg4qqPnWJVW7uPtbKFPCvILk3GyXI5oA
+ z/rfW167E0HQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="133156001"
 X-IronPort-AV: E=Sophos;i="5.75,458,1589266800"; 
- d="gz'50?scan'50,208,50";a="133666482"
+ d="gz'50?scan'50,208,50";a="133156001"
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Aug 2020 12:27:16 -0700
-IronPort-SDR: cxMWyU8IEO4uMyooPJUIwf7tIGGcChoC/Izin5f7Vnai7YBKpAXHSb5WpXw+OJAhu4tZncQvgu
- t96LR32/OnTA==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Aug 2020 13:23:56 -0700
+IronPort-SDR: RKSKTYo86B/gg6GwUYo8VLmK9AQSol/wRNTs1ijYJLbAx72ghUtfQUHHIVu46OnfiDQ651azGe
+ SJb8A7Y8bPyQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.75,458,1589266800"; 
- d="gz'50?scan'50,208,50";a="326608267"
+ d="gz'50?scan'50,208,50";a="438819785"
 Received: from lkp-server01.sh.intel.com (HELO 71729f5ca340) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 10 Aug 2020 12:27:13 -0700
+ by orsmga004.jf.intel.com with ESMTP; 10 Aug 2020 13:23:53 -0700
 Received: from kbuild by 71729f5ca340 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1k5DRw-00009t-PJ; Mon, 10 Aug 2020 19:27:12 +0000
-Date: Tue, 11 Aug 2020 03:26:20 +0800
+ id 1k5EKm-0000Bp-La; Mon, 10 Aug 2020 20:23:52 +0000
+Date: Tue, 11 Aug 2020 04:23:05 +0800
 From: kernel test robot <lkp@intel.com>
-To: Jesper Dangaard Brouer <brouer@redhat.com>
-Message-ID: <202008110318.5Yla7AOX%lkp@intel.com>
+To: Li RongQing <lirongqing@baidu.com>
+Message-ID: <202008110403.RnGoxSxG%lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="EeQfGwPcQSOJBaQU"
+Content-Type: multipart/mixed; boundary="opJtzjQTFsWo+cga"
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
-Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 4/33]
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2269:15: error: redefinition
- of 'truesize'
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue 8/33]
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c:1956:33: error: passing
+ argument 1 of 'prefetch_page_address' from incompatible pointer type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,19 +80,19 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
---EeQfGwPcQSOJBaQU
+--opJtzjQTFsWo+cga
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git dev-queue
 head:   5cf0cbb14925b7131baa959b35a2267d6bbb6651
-commit: b9b2990dfe8754cb52443a4cfe8c8f7faf6f1cb6 [4/33] ixgbe: fix XDP redirect on archs with PAGE_SIZE above 4K
+commit: c2b9f24be5de6d9737de68d2d75ae3bc81f9b7db [8/33] i40e: optimise prefetch page refcount
 config: alpha-allyesconfig (attached as .config)
 compiler: alpha-linux-gcc (GCC) 9.3.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        git checkout b9b2990dfe8754cb52443a4cfe8c8f7faf6f1cb6
+        git checkout c2b9f24be5de6d9737de68d2d75ae3bc81f9b7db
         # save the attached .config to linux build tree
         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-9.3.0 make.cross ARCH=alpha 
 
@@ -101,45 +101,65 @@ Reported-by: kernel test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
-   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c: In function 'ixgbe_rx_buffer_flip':
->> drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2269:15: error: redefinition of 'truesize'
-    2269 |  unsigned int truesize = ring_uses_build_skb(rx_ring) ?
-         |               ^~~~~~~~
-   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2265:15: note: previous definition of 'truesize' was here
-    2265 |  unsigned int truesize = ixgbe_rx_frame_truesize(rx_ring, size);
-         |               ^~~~~~~~
+   In file included from drivers/net/ethernet/intel/i40e/i40e_txrx.c:4:
+   include/linux/prefetch.h:65:49: warning: 'struct page' declared inside parameter list will not be visible outside of this definition or declaration
+      65 | static inline void prefetch_page_address(struct page *page)
+         |                                                 ^~~~
+   drivers/net/ethernet/intel/i40e/i40e_txrx.c: In function 'i40e_get_rx_buffer':
+>> drivers/net/ethernet/intel/i40e/i40e_txrx.c:1956:33: error: passing argument 1 of 'prefetch_page_address' from incompatible pointer type [-Werror=incompatible-pointer-types]
+    1956 |  prefetch_page_address(rx_buffer->page);
+         |                        ~~~~~~~~~^~~~~~
+         |                                 |
+         |                                 struct page *
+   In file included from drivers/net/ethernet/intel/i40e/i40e_txrx.c:4:
+   include/linux/prefetch.h:65:55: note: expected 'struct page *' but argument is of type 'struct page *'
+      65 | static inline void prefetch_page_address(struct page *page)
+         |                                          ~~~~~~~~~~~~~^~~~
+   cc1: some warnings being treated as errors
 
-vim +/truesize +2269 drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+vim +/prefetch_page_address +1956 drivers/net/ethernet/intel/i40e/i40e_txrx.c
 
-  2260	
-  2261	static void ixgbe_rx_buffer_flip(struct ixgbe_ring *rx_ring,
-  2262					 struct ixgbe_rx_buffer *rx_buffer,
-  2263					 unsigned int size)
-  2264	{
-  2265		unsigned int truesize = ixgbe_rx_frame_truesize(rx_ring, size);
-  2266	#if (PAGE_SIZE < 8192)
-  2267		rx_buffer->page_offset ^= truesize;
-  2268	#else
-> 2269		unsigned int truesize = ring_uses_build_skb(rx_ring) ?
-  2270					SKB_DATA_ALIGN(IXGBE_SKB_PAD + size) +
-  2271					SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) :
-  2272					SKB_DATA_ALIGN(size);
-  2273	
-  2274		rx_buffer->page_offset += truesize;
-  2275	#endif
-  2276	}
-  2277	
+  1941	
+  1942	/**
+  1943	 * i40e_get_rx_buffer - Fetch Rx buffer and synchronize data for use
+  1944	 * @rx_ring: rx descriptor ring to transact packets on
+  1945	 * @size: size of buffer to add to skb
+  1946	 *
+  1947	 * This function will pull an Rx buffer from the ring and synchronize it
+  1948	 * for use by the CPU.
+  1949	 */
+  1950	static struct i40e_rx_buffer *i40e_get_rx_buffer(struct i40e_ring *rx_ring,
+  1951							 const unsigned int size)
+  1952	{
+  1953		struct i40e_rx_buffer *rx_buffer;
+  1954	
+  1955		rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
+> 1956		prefetch_page_address(rx_buffer->page);
+  1957	
+  1958		/* we are reusing so sync this buffer for CPU use */
+  1959		dma_sync_single_range_for_cpu(rx_ring->dev,
+  1960					      rx_buffer->dma,
+  1961					      rx_buffer->page_offset,
+  1962					      size,
+  1963					      DMA_FROM_DEVICE);
+  1964	
+  1965		/* We have pulled a buffer for use, so decrement pagecnt_bias */
+  1966		rx_buffer->pagecnt_bias--;
+  1967	
+  1968		return rx_buffer;
+  1969	}
+  1970	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---EeQfGwPcQSOJBaQU
+--opJtzjQTFsWo+cga
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICMeVMV8AAy5jb25maWcAlFxLd9s4st73r9BJNjOLzvgV3fS9xwuQBCm0SIIBQMnyhkdx
+H4sICKSlMV8AAy5jb25maWcAlFxLd9s4st73r9BJNjOLzvgV3fS9xwuQBCm0SIIBQMnyhkdx
 lMSnHTvHlmcm8+tvFfjCi1Qmm5hfFUCgUKgXQL397e2CvB6fvu+P93f7h4efi6+Hx8Pz/nj4
 vPhy/3D4v0XCFyVXC5ow9Q6Y8/vH13//Y//w49t+8f7dh3dni/Xh+fHwsIifHr/cf32FpvdP
 j7+9/S3mZcqyJo6bDRWS8bJR9EZdv9FNf3/Abn7/ene3+FsWx39f/PHu8t3ZG6MRkw0Qrn/2
@@ -1351,7 +1371,7 @@ RewmVZuUXU9bhRiPLyxtV6UqXftAUHaa8PKsf1uFmr4fthLIVayg6a8TZ1TNcFHOCtT9N//E
 bZz6AsJ3QS40vOxdcULYZowaW2hM3SDmKABSKzu5LhivoZprbaqdKaf/+Cgm9Sp0NIeT5P8B
 0AZBpvczBAA=
 
---EeQfGwPcQSOJBaQU
+--opJtzjQTFsWo+cga
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1362,4 +1382,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---EeQfGwPcQSOJBaQU--
+--opJtzjQTFsWo+cga--
