@@ -2,75 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 043A8241F81
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Aug 2020 20:02:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 09C40241F83
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Aug 2020 20:05:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 79F9B22E1C;
-	Tue, 11 Aug 2020 18:02:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AB0A222CB0;
+	Tue, 11 Aug 2020 18:05:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PzI2M9Rj2tSw; Tue, 11 Aug 2020 18:02:51 +0000 (UTC)
+	with ESMTP id a9EzTGvHmMAw; Tue, 11 Aug 2020 18:05:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 341A522DC7;
-	Tue, 11 Aug 2020 18:02:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 79BF622DC7;
+	Tue, 11 Aug 2020 18:05:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E13D91BF371
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 18:02:45 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2A3551BF36C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 18:05:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DC9E98648E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 18:02:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 05A6A22D55
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 18:05:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vcGohPVOJeoa for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Aug 2020 18:02:45 +0000 (UTC)
+ with ESMTP id deKDPUuFyM4D for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Aug 2020 18:05:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-io1-f67.google.com (mail-io1-f67.google.com
- [209.85.166.67])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 0A4C286451
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 18:02:45 +0000 (UTC)
-Received: by mail-io1-f67.google.com with SMTP id q75so13788216iod.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 11:02:45 -0700 (PDT)
+Received: from mail-il1-f195.google.com (mail-il1-f195.google.com
+ [209.85.166.195])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6E05F22CB0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 18:05:04 +0000 (UTC)
+Received: by mail-il1-f195.google.com with SMTP id t4so11555754iln.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 11:05:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r0GFW7fbOmx/3sScKg1iiq6G3LumiTGDzgK882xQK+U=;
- b=mDu1mRTtlIK++qmYAJGip+y01dtaA89V+7KmyANjEpUJ+IjduzxOGnDto2Q7mQj7ME
- fx0WR58CD980byFm9P9YwOiONDtDVyuPYv+ynbzLY1p4PrM7ET4XmTradEBtimSBxP0q
- Mj97qLp5XVNTIpJY4UDMHzVZ6/g5x2sXEiehTvF5yG5lC5CWQdyxnxr4yVYazmeJjwgv
- BEBiWvLf+c+/6O1sI3MpD1jb3piZR9dabGjKVB6omudb0qhMJ+NGfw70Pk7SmzNN7xjb
- Mu9QheaiRHkj2pnXVbUrTN9/xUGkYr3uXoofSTRvz7aASfrVy0HAzYhxjy4okz7j4419
- JQLA==
+ :cc; bh=eTwYMr3hhqRfmNz/C5cT5HdKgTycOzLoU1Gtq+qfRDg=;
+ b=lRqbiEx5dAwVHaored4M8Sg1uaWK8kJj9sihGlwJXPJHdwskmB5EbxDOb5j+ulX2kp
+ L+KgyJrXIOrzL3P4Zru0ljTF5ibWHhxeUe6QI8wCi+zivAnlpqa8leTj7lCHXxYlf3Tw
+ 7kJnY5/R7ZN2xGp02Y6ATLl0vsxOdiJTrn8eV0gz99jTwjJH5B/Fcsadk1jANNhw39Hn
+ riuyokabYhEMOOdg1Xq/CAP5ZtNARyLAUDg3KLPti8IMWaz++n5NC2wtgHVSTJddyZg9
+ NT7JICq0JLsoBoSBfkE4zY+YrsYWaTLNXLxJHwy4VJ34bg40t46fSdlGTE16VZxGNDoM
+ +taA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=r0GFW7fbOmx/3sScKg1iiq6G3LumiTGDzgK882xQK+U=;
- b=i+ncYdGEwftDh1II7GsKAcc2/TB9mPKXGqOnWR0iCIzF+TBDiGeXxFZQqQC9kmyEjQ
- wsvQT1b0Tqk50GaOiJQIqQ1FVe96Aolp1a/PXH8sbb5WnyRV2Yrq2ZYFa7soiYL0Lgzi
- QZw46HxQvQIdV7EWm/qmSYtWKM09lU2/3/8Y3ac2fIz1dM1BJy3e+wZyaEcxLeTxSTaO
- a/dLd6WzigAd3N/linkNJ95X7t4Iw0yun5mq56wEi3M8aIxzuXbR0XkvSI7+n35iVlp8
- Sd7iiBE5YSEDB9SdDWpbPL9SmZGKgG3l2g0ibTZiXb2vnAj/YwM00tU208RuaF6lEIym
- O9jg==
-X-Gm-Message-State: AOAM5307ObRbdxXoYSri7N3C+vmL46B5ask6hdxeWKUzqFUeD8JyOkuC
- ue76ul39+c6bkhOnm3uk5j6n2ibDXPnZTsthiSgAdTjS
-X-Google-Smtp-Source: ABdhPJyPhxup23lTzv+1v93qzXH8Vs25VCrQvb2Sv0MYThjowJIjtMxycxDOG7EXcFPdy1mhHhH2ELq9nP0h7m2ncPk=
-X-Received: by 2002:a02:8384:: with SMTP id z4mr27598894jag.121.1597168963955; 
- Tue, 11 Aug 2020 11:02:43 -0700 (PDT)
+ bh=eTwYMr3hhqRfmNz/C5cT5HdKgTycOzLoU1Gtq+qfRDg=;
+ b=pVZUMmhFZb6GEzlhbKCO+tDivYqdlHyUCXtFk4HcfPi7hgEAfLROl4OpP6GMV5Ya/7
+ wp0gsqOKPXxYh/Kvh6dJiGbjZZsWCi1QLbhlZ3I8PUcD+qvI5PqB/ipLWlMxYzIS5u2a
+ hM58xSTQj/Jc2E7uKcqy/qc9MJSWa6602DbtXaYquEXS1/bfbuPytJh2KBTMsncyXCqc
+ mcfZTdb1YQ+p1fECIKoqree/88O2b4pmdtuqRylT2GH4RT7XiitZczeNioK+NJ22GwGo
+ M2l9dZySwppl3eIkZrdsqvrKZ1/DJ5LaoKDplKZaqu6pZ2S3P1IRK2i1RV0x/5PJgvTu
+ H+Hw==
+X-Gm-Message-State: AOAM532E8GKZL0qtFmEumPiaDGVcMrGGisOTzZu9H9CPj4ccVumeQ70W
+ 4ftIe6JxwIUT3A5erHpjp1Nalt/cRtc9nJm0nnWqMgka
+X-Google-Smtp-Source: ABdhPJx8j0KNJU9v1eDUUVfhNxMWuYISBgSrNOwLyiODAfIoo/ylTDXHkQ2gW/+15VwziWgPX9lSvu78o0Ve/ELe2iQ=
+X-Received: by 2002:a92:d646:: with SMTP id x6mr2001309ilp.237.1597169103475; 
+ Tue, 11 Aug 2020 11:05:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200810210832.34699-1-andre.guedes@intel.com>
- <20200810210832.34699-2-andre.guedes@intel.com>
- <CAKgT0Uf-nQ105jbAK-Ag0M=mn254YJX=A7DJ9PMWZFPAFunNUg@mail.gmail.com>
- <159716519786.40621.1181546461816516018@awandler-mobl.amr.corp.intel.com>
-In-Reply-To: <159716519786.40621.1181546461816516018@awandler-mobl.amr.corp.intel.com>
+ <20200810210832.34699-3-andre.guedes@intel.com>
+ <CAKgT0UdvyU+xkESA5HaqS2acbXQMJDUGdchRM2J6QExEcjiSkQ@mail.gmail.com>
+ <159710652891.38166.5470520112400402456@gwclark-mobl2.amr.corp.intel.com>
+ <CAKgT0UfujXBhZX8WeM_YrtZyCxZpP10zfARH6x4HdmjLbaFJvw@mail.gmail.com>
+ <159716520324.40621.12578308745578598418@awandler-mobl.amr.corp.intel.com>
+In-Reply-To: <159716520324.40621.12578308745578598418@awandler-mobl.amr.corp.intel.com>
 From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 11 Aug 2020 11:02:32 -0700
-Message-ID: <CAKgT0Uc1zs95OT6doaXo_cXHieAoimeBRhBczM-0cJg4-4Td-g@mail.gmail.com>
+Date: Tue, 11 Aug 2020 11:04:52 -0700
+Message-ID: <CAKgT0UfDs1VUo3zkgC_5m=ZTD_gTWaVEm5GuCqjxhw99agjjkg@mail.gmail.com>
 To: Andre Guedes <andre.guedes@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH 2/3] igc: Check descriptor's DD bit in
- igc_clean_rx_irq()
+Subject: Re: [Intel-wired-lan] [PATCH 3/3] igc: Fix SRRCTL register setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,99 +92,62 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On Tue, Aug 11, 2020 at 10:00 AM Andre Guedes <andre.guedes@intel.com> wrote:
 >
-> Hi Alexander,
->
-> Quoting Alexander Duyck (2020-08-10 18:25:12)
-> > > --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> > > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> > > @@ -551,7 +551,6 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
+> Quoting Alexander Duyck (2020-08-10 18:41:41)
+> > On Mon, Aug 10, 2020 at 5:42 PM Andre Guedes <andre.guedes@intel.com> wrote:
 > > >
-> > >         /* initialize Rx descriptor 0 */
-> > >         rx_desc = IGC_RX_DESC(ring, 0);
-> > > -       rx_desc->wb.upper.length = 0;
+> > > Quoting Alexander Duyck (2020-08-10 15:56:31)
+> > > > > @@ -1869,6 +1866,7 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
+> > > > >                  * because each write-back erases this info.
+> > > > >                  */
+> > > > >                 rx_desc->read.pkt_addr = cpu_to_le64(bi->dma + bi->page_offset);
+> > > > > +               rx_desc->read.hdr_addr = 0;
+> > > > >
+> > > > >                 rx_desc++;
+> > > > >                 bi++;
+> > > >
+> > > > If you are going to do this it would be better to replace the line
+> > > > that is setting the length to zero instead of just adding this line.
+> > > > That way you can avoid having to rewrite it. I only had bothered with
+> > > > clearing the length field as it was a 32b field, however if you are
+> > > > wanting to flush the full 64b then I would recommend doing it there
+> > > > rather than here.
 > > >
-> > >         /* enable receive descriptor fetching */
-> > >         rxdctl |= IGC_RXDCTL_QUEUE_ENABLE;
+> > > Just to make sure I'm on the same page, do you mean to move this line to
+> > > patch 2/3, right?
 > >
-> > This is initializing the ring for the first descriptor to 0. Without
-> > this line you break the driver. Without this you need to memset the
-> > entire descriptor ring to 0.
-> >
-> > > @@ -1880,9 +1879,6 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
-> > >                         i -= rx_ring->count;
-> > >                 }
-> > >
-> > > -               /* clear the length for the next_to_use descriptor */
-> > > -               rx_desc->wb.upper.length = 0;
-> > > -
-> > >                 cleaned_count--;
-> > >         } while (cleaned_count);
-> > >
-> >
-> > Same here. Without doing this you can potentially hang as you need to
-> > make sure the status bits are cleared before releasing a descriptor to
-> > the device.
+> > No, I hadn't had a chance to take a look at patch 2 yet. I think patch
+> > 2 is ill advised as the patch is currently broken, and even if done
+> > correctly you don't get any benefit out of it that I can see. From
+> > what I can tell this patch was likely covering up some of the errors
+> > introduced in patch 2. Now that I see this in conjunction with patch 2
+> > I would say you should probably just drop patch 2 and this one as well
+> > since they aren't adding any real value other than removing a
+> > redundant write which was just there to keep this mostly in sync with
+> > how we did it for ixgbe.
 >
-> Yes, after your first comment on patch 3/3 I realized this was bogus. Moving
-> the 'read.hdr_addr = 0' to this patch should fix it. That's why I thought you
-> were suggesting that.
+> What about not setting BSIZEHEADER bits since 'one buffer descriptor' option
+> is used in SRRCTL?
+
+Does it cause some sort of problem to be populating it? If not I would
+say leave it. It isn't too different from just populating the field
+with 0 and should have no effect since the field is unused when in one
+buffer mode.
+
+> > The reason the driver path was coded the way it is in order to get
+> > away from having to clear the entire descriptor after processing it
+> > and to avoid having to explicitly track next_to_use and next_to_clean.
+> > Instead we leave the descriptor as mostly read-only until we
+> > reallocate the buffer and give it back to the device. All we have to
+> > do is clear the length field of the next_to_use descriptor when we are
+> > done allocating so that we do not overrun the descriptors when
+> > cleaning. It makes it much easier to debug when the descriptors are
+> > left in place as long as possible since we can then come back and look
+> > at the memory and generally I have found performance is improved as we
+> > are not having to dirty cachelines prematurely.
 >
-> > > @@ -1924,8 +1920,12 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
-> > >                 }
-> > >
-> > >                 rx_desc = IGC_RX_DESC(rx_ring, rx_ring->next_to_clean);
-> > > -               size = le16_to_cpu(rx_desc->wb.upper.length);
-> > > -               if (!size)
-> > > +
-> > > +               /* If we reached a descriptor with 'Descriptor Done' bit not
-> > > +                * set, it means we have handled all descriptors owned by
-> > > +                * software already so we should prematurely break the loop.
-> > > +                */
-> > > +               if (!igc_test_staterr(rx_desc, IGC_RXD_STAT_DD))
-> > >                         break;
-> > >
-> > >                 /* This memory barrier is needed to keep us from reading
-> >
-> > Why add an extra check when you don't need to? This doesn't make
-> > sense. The DD bit tells you that the descriptor was written back but
-> > you can do the same thing by reading the size field.
+> Thanks for the context.
 >
-> I was using i40e and ice drivers as reference. If I'm reading it correctly,
-> they check the DD bit first (or similar) and then read the length information.
-> I don't see a strong reason besides making the code a bit more readable.
-
-The i40e driver does the same thing as igb and ixgbe. The ice driver
-doesn't but in the case of that driver the pkt_len field resides in
-the first qword which is the same as the pkt_addr so they overlap and
-the same approach cannot be used.
-
-> > > @@ -1934,6 +1934,8 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
-> > >                  */
-> > >                 dma_rmb();
-> > >
-> > > +               size = le16_to_cpu(rx_desc->wb.upper.length);
-> > > +
-> > >                 rx_buffer = igc_get_rx_buffer(rx_ring, size);
-> > >
-> > >                 /* retrieve a buffer from the ring */
-> >
-> > This should be fine since the dma_rmb() will prevent the reads from
-> > being reordered. However it is really redundant. For a bit of history
-> > the reason for reading the size as the first field is because
-> > previously we had bugs on PowerPC where the length field was being
-> > read first, and then the DD bit. As such if the length is 0 before the
-> > writeback, and non-zero after then you can spare yourself some cycles
-> > by reading the size first and if it is non-zero then you know the
-> > descriptor has valid data to be read.
->
-> Thanks for the history context.
-
-No problem, just glad I saw this before it went too far down the path
-of undoing the work that was done in the past.
-
-Thanks.
-
-- Alex
+> - Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
