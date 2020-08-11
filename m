@@ -1,64 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6443241EC6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Aug 2020 19:00:08 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74D1C241EC8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Aug 2020 19:00:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 66AC48623E;
-	Tue, 11 Aug 2020 17:00:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0779622926;
+	Tue, 11 Aug 2020 17:00:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VvhThQdn3Ncf; Tue, 11 Aug 2020 17:00:06 +0000 (UTC)
+	with ESMTP id AA92r5F3Xael; Tue, 11 Aug 2020 17:00:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B44098616A;
-	Tue, 11 Aug 2020 17:00:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9AC1E22920;
+	Tue, 11 Aug 2020 17:00:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 822EB1BF2F4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 17:00:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9E0BF1BF2F4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 17:00:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 7278E22920
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 17:00:04 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 912A5228EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 17:00:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6I3V0Xd7c0OC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Aug 2020 17:00:02 +0000 (UTC)
+ with ESMTP id tmYcXGw4hxpy for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Aug 2020 17:00:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by silver.osuosl.org (Postfix) with ESMTPS id D308A228EF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 17:00:01 +0000 (UTC)
-IronPort-SDR: vIRwrgdBk7CV6Z2bJfFkeueAKZoSIddPInjK30o/GMtYj5vq3KKokOX9HWZ/CPZydd58Fhkwtk
- gTzA2PjJPXyw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9710"; a="215293942"
-X-IronPort-AV: E=Sophos;i="5.76,301,1592895600"; d="scan'208";a="215293942"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by silver.osuosl.org (Postfix) with ESMTPS id AECFD22CD4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 17:00:08 +0000 (UTC)
+IronPort-SDR: 5w4qRT6jowRmGr2NLXsX2EPLvhLcLdp4hsjsuz7mGPv515a7vaz+HMDFxIWsODgt4eI2jdj1UD
+ 3Nu2vWQ4ObpQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9710"; a="154899799"
+X-IronPort-AV: E=Sophos;i="5.76,301,1592895600"; d="scan'208";a="154899799"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2020 09:59:59 -0700
-IronPort-SDR: C/0P4JSEplIf9n4QPPJhvy8rFOS4rBhBtO6Iv/AZn9TCJC+TvxkKJLI9KlqH+W3nPd4ODCMev9
- GXtnhzZCInAw==
-X-IronPort-AV: E=Sophos;i="5.76,301,1592895600"; d="scan'208";a="294775353"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2020 10:00:05 -0700
+IronPort-SDR: sVlbaLFiaQj0BOZrdg9PrmBySgboM3BRsrP3I2v4C1bxq5cJfLxCqeJQJ7O4CFQp31gCGcAhrF
+ iwlSNlz25W7w==
+X-IronPort-AV: E=Sophos;i="5.76,301,1592895600"; d="scan'208";a="290747834"
 Received: from awandler-mobl.amr.corp.intel.com (HELO localhost)
  ([10.212.14.217])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2020 09:59:59 -0700
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2020 10:00:04 -0700
 MIME-Version: 1.0
-In-Reply-To: <CAKgT0Uf-nQ105jbAK-Ag0M=mn254YJX=A7DJ9PMWZFPAFunNUg@mail.gmail.com>
+In-Reply-To: <CAKgT0UfujXBhZX8WeM_YrtZyCxZpP10zfARH6x4HdmjLbaFJvw@mail.gmail.com>
 References: <20200810210832.34699-1-andre.guedes@intel.com>
- <20200810210832.34699-2-andre.guedes@intel.com>
- <CAKgT0Uf-nQ105jbAK-Ag0M=mn254YJX=A7DJ9PMWZFPAFunNUg@mail.gmail.com>
+ <20200810210832.34699-3-andre.guedes@intel.com>
+ <CAKgT0UdvyU+xkESA5HaqS2acbXQMJDUGdchRM2J6QExEcjiSkQ@mail.gmail.com>
+ <159710652891.38166.5470520112400402456@gwclark-mobl2.amr.corp.intel.com>
+ <CAKgT0UfujXBhZX8WeM_YrtZyCxZpP10zfARH6x4HdmjLbaFJvw@mail.gmail.com>
 From: Andre Guedes <andre.guedes@intel.com>
 To: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 11 Aug 2020 09:59:57 -0700
-Message-ID: <159716519786.40621.1181546461816516018@awandler-mobl.amr.corp.intel.com>
+Date: Tue, 11 Aug 2020 10:00:03 -0700
+Message-ID: <159716520324.40621.12578308745578598418@awandler-mobl.amr.corp.intel.com>
 User-Agent: alot/0.9
-Subject: Re: [Intel-wired-lan] [PATCH 2/3] igc: Check descriptor's DD bit in
- igc_clean_rx_irq()
+Subject: Re: [Intel-wired-lan] [PATCH 3/3] igc: Fix SRRCTL register setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,90 +78,57 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Alexander,
-
-Quoting Alexander Duyck (2020-08-10 18:25:12)
-> > --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> > @@ -551,7 +551,6 @@ static void igc_configure_rx_ring(struct igc_adapter *adapter,
+Quoting Alexander Duyck (2020-08-10 18:41:41)
+> On Mon, Aug 10, 2020 at 5:42 PM Andre Guedes <andre.guedes@intel.com> wrote:
 > >
-> >         /* initialize Rx descriptor 0 */
-> >         rx_desc = IGC_RX_DESC(ring, 0);
-> > -       rx_desc->wb.upper.length = 0;
+> > Quoting Alexander Duyck (2020-08-10 15:56:31)
+> > > > @@ -1869,6 +1866,7 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
+> > > >                  * because each write-back erases this info.
+> > > >                  */
+> > > >                 rx_desc->read.pkt_addr = cpu_to_le64(bi->dma + bi->page_offset);
+> > > > +               rx_desc->read.hdr_addr = 0;
+> > > >
+> > > >                 rx_desc++;
+> > > >                 bi++;
+> > >
+> > > If you are going to do this it would be better to replace the line
+> > > that is setting the length to zero instead of just adding this line.
+> > > That way you can avoid having to rewrite it. I only had bothered with
+> > > clearing the length field as it was a 32b field, however if you are
+> > > wanting to flush the full 64b then I would recommend doing it there
+> > > rather than here.
 > >
-> >         /* enable receive descriptor fetching */
-> >         rxdctl |= IGC_RXDCTL_QUEUE_ENABLE;
+> > Just to make sure I'm on the same page, do you mean to move this line to
+> > patch 2/3, right?
 > 
-> This is initializing the ring for the first descriptor to 0. Without
-> this line you break the driver. Without this you need to memset the
-> entire descriptor ring to 0.
-> 
-> > @@ -1880,9 +1879,6 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
-> >                         i -= rx_ring->count;
-> >                 }
-> >
-> > -               /* clear the length for the next_to_use descriptor */
-> > -               rx_desc->wb.upper.length = 0;
-> > -
-> >                 cleaned_count--;
-> >         } while (cleaned_count);
-> >
-> 
-> Same here. Without doing this you can potentially hang as you need to
-> make sure the status bits are cleared before releasing a descriptor to
-> the device.
+> No, I hadn't had a chance to take a look at patch 2 yet. I think patch
+> 2 is ill advised as the patch is currently broken, and even if done
+> correctly you don't get any benefit out of it that I can see. From
+> what I can tell this patch was likely covering up some of the errors
+> introduced in patch 2. Now that I see this in conjunction with patch 2
+> I would say you should probably just drop patch 2 and this one as well
+> since they aren't adding any real value other than removing a
+> redundant write which was just there to keep this mostly in sync with
+> how we did it for ixgbe.
 
-Yes, after your first comment on patch 3/3 I realized this was bogus. Moving
-the 'read.hdr_addr = 0' to this patch should fix it. That's why I thought you
-were suggesting that.
+What about not setting BSIZEHEADER bits since 'one buffer descriptor' option
+is used in SRRCTL?
 
-> > @@ -1924,8 +1920,12 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
-> >                 }
-> >
-> >                 rx_desc = IGC_RX_DESC(rx_ring, rx_ring->next_to_clean);
-> > -               size = le16_to_cpu(rx_desc->wb.upper.length);
-> > -               if (!size)
-> > +
-> > +               /* If we reached a descriptor with 'Descriptor Done' bit not
-> > +                * set, it means we have handled all descriptors owned by
-> > +                * software already so we should prematurely break the loop.
-> > +                */
-> > +               if (!igc_test_staterr(rx_desc, IGC_RXD_STAT_DD))
-> >                         break;
-> >
-> >                 /* This memory barrier is needed to keep us from reading
-> 
-> Why add an extra check when you don't need to? This doesn't make
-> sense. The DD bit tells you that the descriptor was written back but
-> you can do the same thing by reading the size field.
+> The reason the driver path was coded the way it is in order to get
+> away from having to clear the entire descriptor after processing it
+> and to avoid having to explicitly track next_to_use and next_to_clean.
+> Instead we leave the descriptor as mostly read-only until we
+> reallocate the buffer and give it back to the device. All we have to
+> do is clear the length field of the next_to_use descriptor when we are
+> done allocating so that we do not overrun the descriptors when
+> cleaning. It makes it much easier to debug when the descriptors are
+> left in place as long as possible since we can then come back and look
+> at the memory and generally I have found performance is improved as we
+> are not having to dirty cachelines prematurely.
 
-I was using i40e and ice drivers as reference. If I'm reading it correctly,
-they check the DD bit first (or similar) and then read the length information.
-I don't see a strong reason besides making the code a bit more readable.
+Thanks for the context.
 
-> > @@ -1934,6 +1934,8 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
-> >                  */
-> >                 dma_rmb();
-> >
-> > +               size = le16_to_cpu(rx_desc->wb.upper.length);
-> > +
-> >                 rx_buffer = igc_get_rx_buffer(rx_ring, size);
-> >
-> >                 /* retrieve a buffer from the ring */
-> 
-> This should be fine since the dma_rmb() will prevent the reads from
-> being reordered. However it is really redundant. For a bit of history
-> the reason for reading the size as the first field is because
-> previously we had bugs on PowerPC where the length field was being
-> read first, and then the DD bit. As such if the length is 0 before the
-> writeback, and non-zero after then you can spare yourself some cycles
-> by reading the size first and if it is non-zero then you know the
-> descriptor has valid data to be read.
-
-Thanks for the history context.
-
-Cheers,
-Andre
+- Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
