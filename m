@@ -1,75 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C67E24149C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Aug 2020 03:42:01 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD0F0241A0C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Aug 2020 13:00:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E627487C0C;
-	Tue, 11 Aug 2020 01:41:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3BBBD876FD;
+	Tue, 11 Aug 2020 11:00:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UsajoiU61Cnt; Tue, 11 Aug 2020 01:41:59 +0000 (UTC)
+	with ESMTP id SsChC76qRONi; Tue, 11 Aug 2020 11:00:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6DE5787C2C;
-	Tue, 11 Aug 2020 01:41:59 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 40F2F876CC;
+	Tue, 11 Aug 2020 11:00:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E57861BF275
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 01:41:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 31C101BF277
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 11:00:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E0BE387C0C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 01:41:57 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 27E6987B41
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 11:00:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a4J6PKH2aAwf for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Aug 2020 01:41:53 +0000 (UTC)
+ with ESMTP id r9yZ6RI7ZdRs for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Aug 2020 11:00:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-il1-f194.google.com (mail-il1-f194.google.com
- [209.85.166.194])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5A5C087BFF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 01:41:53 +0000 (UTC)
-Received: by mail-il1-f194.google.com with SMTP id c16so9249048ils.8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Aug 2020 18:41:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=bdz7KqaxG4gBr7XJwGlEh5PYVnA8IJA0bb/kRLqRQ7A=;
- b=UWjDcf9GTfr3XpuryqGBA7p1r1PT89RrzHpZmlzGFIYf6/uTtpUJQz6F+KJzkJFbX5
- 3IK0jTRrzVhiu0Ycwtnv44UnXrS6ptO+g7bPPSl9sLwM+hpyHBE1Ve+em/SFafJfO0GO
- JpUxRrFkuXtoK4mvyR/RyhVBr8Z7AueORC4d0XEX9SNEJ6rfCj4MfFgI4BY6oJniXslI
- 8HFQ+uHWi2kHnTlFDqpJzqEEVUtJyMMNzLGjAIvu9Zf778fWl3i6Rh5yVVPEXIv/Lwve
- Jlguvc1KvjZq9BpjldoPtQXm5bsEpilV+BsZW5M/brnv/8835stAAquBZPjS2k2wzBpx
- iHXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=bdz7KqaxG4gBr7XJwGlEh5PYVnA8IJA0bb/kRLqRQ7A=;
- b=EM0jXFN4qFJlt7/kvUfRwGwUi9TpXgzWYKWx6gbg60s4fEXE6O3BPDgXCsQlEnQy7L
- FCDl99JQZ7Vg4gjrffxCahmNmV2H87RI5d9bcI/2/KyimoOEZkA8LppJj4Y3dTBhwE0W
- x4XXCwk7ZR9iiKol41D/RNKN/qhqMUCU9n1qV6isOPu7dO6wiCFK4l57w8cDfSST88wx
- A450Uky14euUGRsdxhpzPZFbYNyAd1CyiE7FIE7Gq+zMGzfi+9wTzl3Cx4SDIL3cvLGM
- 1kQyXzcLh3oRu1TZZoCcOnjlHwWPvQaGFm4zpsTZCzcNa8ICVjq7Sy8RpW4VT1mF2AUR
- PXXA==
-X-Gm-Message-State: AOAM5311qCktsxSj8Vd1iEhKKBQzbS4TmXpWAh+rsJfpDrAfjCrtjjCV
- g0TvllwXgSr4E+CxcSFBOoTzttgBBzbtRzTzEHpLTsed5Pg=
-X-Google-Smtp-Source: ABdhPJxvw+DlEoA4pCUAWQijI2CWD7CdUc3NfRY503gFihVcNA8HoE8wtlersFBbwUTyB6ffXJ8iREk6S56+BxDidPA=
-X-Received: by 2002:a92:1a4c:: with SMTP id z12mr10828973ill.95.1597110112463; 
- Mon, 10 Aug 2020 18:41:52 -0700 (PDT)
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id EB47D87A5A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Aug 2020 11:00:40 +0000 (UTC)
+IronPort-SDR: YzlT18u1Q12jIrXpQtCI4AxpbzMxsxKEFsUbnb37OSG0a787bCK6McwXUZ7KLDi2ipKo0BmKLQ
+ 6czq4Ciq+YLQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9709"; a="218045275"
+X-IronPort-AV: E=Sophos;i="5.75,461,1589266800"; d="scan'208";a="218045275"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2020 04:00:38 -0700
+IronPort-SDR: e+Gi5BfWPNSE2pVVXTdc2qBqzSXMGq20/RoGsdk88SbSufpifO+vQ8YEhcD2vVpsfDTAfRYM2U
+ Wp7QpVfiE0tg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,461,1589266800"; d="scan'208";a="439008193"
+Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
+ by orsmga004.jf.intel.com with ESMTP; 11 Aug 2020 04:00:37 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 11 Aug 2020 10:56:49 +0000
+Message-Id: <20200811105649.13359-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.26.0
 MIME-Version: 1.0
-References: <20200810210832.34699-1-andre.guedes@intel.com>
- <20200810210832.34699-3-andre.guedes@intel.com>
- <CAKgT0UdvyU+xkESA5HaqS2acbXQMJDUGdchRM2J6QExEcjiSkQ@mail.gmail.com>
- <159710652891.38166.5470520112400402456@gwclark-mobl2.amr.corp.intel.com>
-In-Reply-To: <159710652891.38166.5470520112400402456@gwclark-mobl2.amr.corp.intel.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Mon, 10 Aug 2020 18:41:41 -0700
-Message-ID: <CAKgT0UfujXBhZX8WeM_YrtZyCxZpP10zfARH6x4HdmjLbaFJvw@mail.gmail.com>
-To: Andre Guedes <andre.guedes@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH 3/3] igc: Fix SRRCTL register setup
+Subject: [Intel-wired-lan] [PATCH] i40e: Fix crash during removing i40e
+ driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,55 +66,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Aug 10, 2020 at 5:42 PM Andre Guedes <andre.guedes@intel.com> wrote:
->
-> Quoting Alexander Duyck (2020-08-10 15:56:31)
-> > > @@ -1869,6 +1866,7 @@ static void igc_alloc_rx_buffers(struct igc_ring *rx_ring, u16 cleaned_count)
-> > >                  * because each write-back erases this info.
-> > >                  */
-> > >                 rx_desc->read.pkt_addr = cpu_to_le64(bi->dma + bi->page_offset);
-> > > +               rx_desc->read.hdr_addr = 0;
-> > >
-> > >                 rx_desc++;
-> > >                 bi++;
-> >
-> > If you are going to do this it would be better to replace the line
-> > that is setting the length to zero instead of just adding this line.
-> > That way you can avoid having to rewrite it. I only had bothered with
-> > clearing the length field as it was a 32b field, however if you are
-> > wanting to flush the full 64b then I would recommend doing it there
-> > rather than here.
->
-> Just to make sure I'm on the same page, do you mean to move this line to
-> patch 2/3, right?
+From: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
 
-No, I hadn't had a chance to take a look at patch 2 yet. I think patch
-2 is ill advised as the patch is currently broken, and even if done
-correctly you don't get any benefit out of it that I can see. From
-what I can tell this patch was likely covering up some of the errors
-introduced in patch 2. Now that I see this in conjunction with patch 2
-I would say you should probably just drop patch 2 and this one as well
-since they aren't adding any real value other than removing a
-redundant write which was just there to keep this mostly in sync with
-how we did it for ixgbe.
+Fix the reason of crashing system by add waiting time to finish reset
+recovery process before starting remove driver procedure.
+Now vsi is releasing if vsi is not in reset recovery mode.
+Without this fix it was possible to start remove driver if other
+processing command need reset recovery procedure which resulted in
+null pointer dereference. Vsi used by the ethtool process has been
+cleared by remove driver process.
 
-The reason the driver path was coded the way it is in order to get
-away from having to clear the entire descriptor after processing it
-and to avoid having to explicitly track next_to_use and next_to_clean.
-Instead we leave the descriptor as mostly read-only until we
-reallocate the buffer and give it back to the device. All we have to
-do is clear the length field of the next_to_use descriptor when we are
-done allocating so that we do not overrun the descriptors when
-cleaning. It makes it much easier to debug when the descriptors are
-left in place as long as possible since we can then come back and look
-at the memory and generally I have found performance is improved as we
-are not having to dirty cachelines prematurely.
+[ 6731.508665] BUG: kernel NULL pointer dereference, address: 0000000000000000
+[ 6731.508668] #PF: supervisor read access in kernel mode
+[ 6731.508670] #PF: error_code(0x0000) - not-present page
+[ 6731.508671] PGD 0 P4D 0
+[ 6731.508674] Oops: 0000 [#1] SMP PTI
+[ 6731.508679] Hardware name: Intel Corporation S2600WT2R/S2600WT2R, BIOS SE5C610.86B.01.01.0021.032120170601 03/21/2017
+[ 6731.508694] RIP: 0010:i40e_down+0x252/0x310 [i40e]
+[ 6731.508696] Code: c7 78 de fa c0 e8 61 02 3a c1 66 83 bb f6 0c 00 00 00 0f 84 bf 00 00 00 45 31 e4 45 31 ff eb 03 41 89 c7 48 8b 83 98 0c 00 00 <4a> 8b 3c 20 e8 a5 79 02 00 48 83 bb d0 0c 00 00 00 74 10 48 8b 83
+[ 6731.508698] RSP: 0018:ffffb75ac7b3faf0 EFLAGS: 00010246
+[ 6731.508700] RAX: 0000000000000000 RBX: ffff9c9874bd5000 RCX: 0000000000000007
+[ 6731.508701] RDX: 0000000000000000 RSI: 0000000000000096 RDI: ffff9c987f4d9780
+[ 6731.508703] RBP: ffffb75ac7b3fb30 R08: 0000000000005b60 R09: 0000000000000004
+[ 6731.508704] R10: ffffb75ac64fbd90 R11: 0000000000000001 R12: 0000000000000000
+[ 6731.508706] R13: ffff9c97a08e0000 R14: ffff9c97a08e0a68 R15: 0000000000000000
+[ 6731.508708] FS:  00007f2617cd2740(0000) GS:ffff9c987f4c0000(0000) knlGS:0000000000000000
+[ 6731.508710] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 6731.508711] CR2: 0000000000000000 CR3: 0000001e765c4006 CR4: 00000000003606e0
+[ 6731.508713] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 6731.508714] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[ 6731.508715] Call Trace:
+[ 6731.508734]  i40e_vsi_close+0x84/0x90 [i40e]
+[ 6731.508742]  i40e_quiesce_vsi.part.98+0x3c/0x40 [i40e]
+[ 6731.508749]  i40e_pf_quiesce_all_vsi+0x55/0x60 [i40e]
+[ 6731.508757]  i40e_prep_for_reset+0x59/0x130 [i40e]
+[ 6731.508765]  i40e_reconfig_rss_queues+0x5a/0x120 [i40e]
+[ 6731.508774]  i40e_set_channels+0xda/0x170 [i40e]
+[ 6731.508778]  ethtool_set_channels+0xe9/0x150
+[ 6731.508781]  dev_ethtool+0x1b94/0x2920
+[ 6731.508805]  dev_ioctl+0xc2/0x590
+[ 6731.508811]  sock_do_ioctl+0xae/0x150
+[ 6731.508813]  sock_ioctl+0x34f/0x3c0
+[ 6731.508821]  ksys_ioctl+0x98/0xb0
+[ 6731.508828]  __x64_sys_ioctl+0x1a/0x20
+[ 6731.508831]  do_syscall_64+0x57/0x1c0
+[ 6731.508835]  entry_SYSCALL_64_after_hwframe+0x44/0xa9
+
+Fixes: 4b8164467b85 ("Add common function for finding VSI by type")
+
+Signed-off-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index ca8624f..55a46a5 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -15479,6 +15479,9 @@ static void i40e_remove(struct pci_dev *pdev)
+ 	i40e_write_rx_ctl(hw, I40E_PFQF_HENA(0), 0);
+ 	i40e_write_rx_ctl(hw, I40E_PFQF_HENA(1), 0);
+ 
++	while (test_bit(__I40E_RESET_RECOVERY_PENDING, pf->state))
++		usleep_range(1000, 2000);
++
+ 	/* no more scheduling of any task */
+ 	set_bit(__I40E_SUSPENDED, pf->state);
+ 	set_bit(__I40E_DOWN, pf->state);
+-- 
+2.26.0
+
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
