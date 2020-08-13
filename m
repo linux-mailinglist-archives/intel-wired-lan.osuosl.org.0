@@ -1,69 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB0E72433A3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Aug 2020 07:33:49 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A2002435FC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Aug 2020 10:34:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5C5F787E76;
-	Thu, 13 Aug 2020 05:33:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 38D5F22775;
+	Thu, 13 Aug 2020 08:34:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jgHhOgsol6cz; Thu, 13 Aug 2020 05:33:48 +0000 (UTC)
+	with ESMTP id BVC-MgAU5Z4Q; Thu, 13 Aug 2020 08:34:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0DE2A87E8F;
-	Thu, 13 Aug 2020 05:33:47 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D728721548;
+	Thu, 13 Aug 2020 08:34:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D62B91BF86D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 05:33:44 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C67471BF414
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 08:34:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D11CA8484F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 05:33:44 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 41B5B864D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 08:34:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7IZOeV0Z3v3x for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Aug 2020 05:33:43 +0000 (UTC)
-X-Greylist: delayed 00:05:13 by SQLgrey-1.7.6
-Received: from mout.kundenserver.de (mout.kundenserver.de [212.227.126.131])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3FCEE848A5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 05:33:43 +0000 (UTC)
-Received: from [192.168.0.48] ([217.24.225.235]) by mrelayeu.kundenserver.de
- (mreue012 [212.227.15.167]) with ESMTPSA (Nemesis) id
- 1MA4ja-1k04A53B4U-00BYAn; Thu, 13 Aug 2020 07:28:11 +0200
-To: Jakub Kicinski <kuba@kernel.org>
-References: <20200812143950.11675-1-sassmann@kpanic.de>
- <20200812104628.340a073a@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-From: Stefan Assmann <sassmann@kpanic.de>
-Message-ID: <282db652-e9a7-d7be-1f9d-9434c11323d4@kpanic.de>
-Date: Thu, 13 Aug 2020 07:28:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20200812104628.340a073a@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Content-Language: en-US
-X-Provags-ID: V03:K1:0AN9FO5BzAlQft0r3CQlN/YuAV8tUhrMf03DbcSTVncgzgVcbIO
- pzlI7by81gYk5b+8izTS50j9TzI/eb4TyWuSf2Q3fd7M1DYWpH6NCnDL5kDJgJclxOVDVQs
- 5yloOECMlm1Zg/ObGfChfFNwQc8RpNaA+byji2EIJ0H5qzBB0OupJwfHgSJQqYjAzgAS+7y
- 1fTmvMWdx7W2+8/mzctqQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:u1W/k5C0gDA=:oVGur+eBucsJa/8RHlSJ7O
- vFlQVl6AZoKk2rIB9+UPrnt4OKcsJFhi0SFrxRHQrGUmUvaZB9zcJI0BpTkBfm64bdLlabRQE
- lwjyGBK00Vw8kgzbPRkDVxfuBRhIca7HDT9VzBHVRPF4VDnCRwlpNJf8hLSmCa9Oa8aYIYp4I
- MHObllZeeRK1ZT5tnL+w3FJ8jUApW5L3YpETNH/+eeg/lJG7xNKEOlh5ddXyjGWkgBH/7yHSz
- 1fykNW+oZEI7Ka0eaf66828jWie+RT1NgYU1m5oYAW6C+2IEnT7nT4kbUrVgtUSbeO7GGS7SF
- +pgQ6HfQsS/mjIlBYMfeUX7z5UAFYpRX2pr4AEfbKEEdjfbEuCzDVDqf3APD1tARpJGRXLv5z
- ionvXgmF1x2Ia4Jp/QPMOl58JkAIOdBiY4LV6I+pAj6yD+XjxbFYabY3oLPwEeNnMs6MuEol0
- an/bT4B28wI8FuKxG3kkTAEqHqfNBOHD/DXf0uI/dhdqT2hZ7IqoPtv+3B0PK3nVk8HZZmOdo
- sy6t3uXtaU8MS9HKqWGOHQRExlnqd6x8iMp7Yp2VVESyaXI63a0RnrjiZ6H47ls0gWQ2kI0pf
- RXZ15eNzVsVAAi1BQ69fbF8kGnRmKdTPhCJdlFFsCZoYtYrUBWpy/NRTsKK/Ml3VU691bY8Dz
- /xd2nxuXGH+dNh/wTmNJcQiFIdGMrQ516C57A3aPX64x4PV7TQre2Ta+c2d06GqZUd6MrUVOv
- fJKapbPwAA2usyJ3AFkH0KrJZDPZpq+f5Siwg0Y+zb2EpmJTt7MsG0u4Yfc11VHAy5WZH5YIi
- C6qlsgWISoZ55LYyYUQUPO/dg38YqaYZLOfnWYiEgo2+2OxWjuKBUY0Ueg9n5y1BY44FKaC
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: fix uninitialized variable in
- i40e_set_vsi_promisc
+ with ESMTP id nGEyPk5MwGcK for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Aug 2020 08:34:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2130586294
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 08:34:11 +0000 (UTC)
+IronPort-SDR: fo3iRtwWwBS+uXB2hqrJxTHOEun0tWCIW7nb5IX+F/wt1vnHqAp2NDNVjZ7xUVCajTYcUG3cPV
+ A0bfVk/fTJWQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9711"; a="218518994"
+X-IronPort-AV: E=Sophos;i="5.76,307,1592895600"; d="scan'208";a="218518994"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2020 01:34:10 -0700
+IronPort-SDR: BEDPyiY5Xney56yGCSZUS+smWrxRlBIPPXClkcA7/d+uBSKCkZzwPjluyTvGA7b9JGWcnNiM1k
+ kOj2K52tFqzA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,307,1592895600"; d="scan'208";a="295359278"
+Received: from ccdlinuxdev12.iil.intel.com ([143.185.161.198])
+ by orsmga006.jf.intel.com with ESMTP; 13 Aug 2020 01:34:09 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 13 Aug 2020 11:34:06 +0300
+Message-Id: <20200813083406.2857904-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.18.4
+Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Add support for Meteor Lake
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,27 +64,175 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- davem@davemloft.net
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTIuMDguMjAgMTk6NDYsIEpha3ViIEtpY2luc2tpIHdyb3RlOgo+IE9uIFdlZCwgMTIgQXVn
-IDIwMjAgMTY6Mzk6NTAgKzAyMDAgU3RlZmFuIEFzc21hbm4gd3JvdGU6Cj4+IGRyaXZlcnMvbmV0
-L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5jOiBJbiBmdW5jdGlvbiDigJhp
-NDBlX3NldF92c2lfcHJvbWlzY+KAmToKPj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQw
-ZS9pNDBlX3ZpcnRjaG5sX3BmLmM6MTE3NjoxNDogZXJyb3I6IOKAmGFxX3JldOKAmSBtYXkgYmUg
-dXNlZCB1bmluaXRpYWxpemVkIGluIHRoaXMgZnVuY3Rpb24gWy1XZXJyb3I9bWF5YmUtdW5pbml0
-aWFsaXplZF0KPj4gICBpNDBlX3N0YXR1cyBhcV9yZXQ7Cj4gCj4gV2hhdCdzIHlvdXIgY29tcGls
-ZXI/IEkgZG9uJ3Qgc2VlIGl0IG9uIEdDQyAxMC4xLgoKZ2NjIHZlcnNpb24gOC4zLjEgMjAxOTEx
-MjEgKFJlZCBIYXQgOC4zLjEtNSkgKEdDQykKCj4+IEluIGNhc2UgdGhlIGNvZGUgaW5zaWRlIHRo
-ZSBpZiBzdGF0ZW1lbnQgYW5kIHRoZSBmb3IgbG9vcCBkb2VzIG5vdCBnZXQKPj4gZXhlY3V0ZWQg
-YXFfcmV0IHdpbGwgYmUgdW5pbml0aWFsaXplZCB3aGVuIHRoZSB2YXJpYWJsZSBnZXRzIHJldHVy
-bmVkIGF0Cj4+IHRoZSBlbmQgb2YgdGhlIGZ1bmN0aW9uLgo+IAo+IEkgdGhpbmsgaXQnZCBiZSBh
-IGJldHRlciBmaXggdG8gbWFrZSBudW1fdmxhbnMgdW5zaWduZWQuCgpBZ3JlZWQsIEknbGwgc2Vu
-ZCBhIHYyIHBhdGNoIGxhdGVyLgpUaGFua3MgZm9yIHRoZSByZXZpZXcgSmFrdWIhCgogIFN0ZWZh
-bgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13
-aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8v
-bGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Add devices ID's for the next LOM generations that will be
+available on the next Intel Client platform (Meteor Lake)
+This patch provides the initial support for these devices
+
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/ethtool.c | 2 ++
+ drivers/net/ethernet/intel/e1000e/hw.h      | 5 +++++
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 7 +++++++
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 6 ++++++
+ drivers/net/ethernet/intel/e1000e/ptp.c     | 1 +
+ 5 files changed, 21 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+index 64f684dc6c7a..e570de91a09b 100644
+--- a/drivers/net/ethernet/intel/e1000e/ethtool.c
++++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+@@ -895,6 +895,7 @@ static int e1000_reg_test(struct e1000_adapter *adapter, u64 *data)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		mask |= BIT(18);
+ 		break;
+ 	default:
+@@ -1560,6 +1561,7 @@ static void e1000_loopback_cleanup(struct e1000_adapter *adapter)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		fext_nvm11 = er32(FEXTNVM11);
+ 		fext_nvm11 &= ~E1000_FEXTNVM11_DISABLE_MULR_FIX;
+ 		ew32(FEXTNVM11, fext_nvm11);
+diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
+index b1447221669e..69a2329ea463 100644
+--- a/drivers/net/ethernet/intel/e1000e/hw.h
++++ b/drivers/net/ethernet/intel/e1000e/hw.h
+@@ -102,6 +102,10 @@ struct e1000_hw;
+ #define E1000_DEV_ID_PCH_ADP_I219_V16		0x1A1F
+ #define E1000_DEV_ID_PCH_ADP_I219_LM17		0x1A1C
+ #define E1000_DEV_ID_PCH_ADP_I219_V17		0x1A1D
++#define E1000_DEV_ID_PCH_MTP_I219_LM18		0x550A
++#define E1000_DEV_ID_PCH_MTP_I219_V18		0x550B
++#define E1000_DEV_ID_PCH_MTP_I219_LM19		0x550C
++#define E1000_DEV_ID_PCH_MTP_I219_V19		0x550D
+ 
+ #define E1000_REVISION_4	4
+ 
+@@ -127,6 +131,7 @@ enum e1000_mac_type {
+ 	e1000_pch_cnp,
+ 	e1000_pch_tgp,
+ 	e1000_pch_adp,
++	e1000_pch_mtp,
+ };
+ 
+ enum e1000_media_type {
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index 3956a0cdd989..1fa1436032b5 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -321,6 +321,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		if (e1000_phy_is_accessible_pchlan(hw))
+ 			break;
+ 
+@@ -465,6 +466,7 @@ static s32 e1000_init_phy_params_pchlan(struct e1000_hw *hw)
+ 		case e1000_pch_cnp:
+ 		case e1000_pch_tgp:
+ 		case e1000_pch_adp:
++		case e1000_pch_mtp:
+ 			/* In case the PHY needs to be in mdio slow mode,
+ 			 * set slow mode and try to get the PHY id again.
+ 			 */
+@@ -709,6 +711,7 @@ static s32 e1000_init_mac_params_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 	case e1000_pchlan:
+ 		/* check management mode */
+ 		mac->ops.check_mng_mode = e1000_check_mng_mode_pchlan;
+@@ -1649,6 +1652,7 @@ static s32 e1000_get_variants_ich8lan(struct e1000_adapter *adapter)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		rc = e1000_init_phy_params_pchlan(hw);
+ 		break;
+ 	default:
+@@ -2103,6 +2107,7 @@ static s32 e1000_sw_lcd_config_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		sw_cfg_mask = E1000_FEXTNVM_SW_CONFIG_ICH8M;
+ 		break;
+ 	default:
+@@ -3142,6 +3147,7 @@ static s32 e1000_valid_nvm_bank_detect_ich8lan(struct e1000_hw *hw, u32 *bank)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		bank1_offset = nvm->flash_bank_size;
+ 		act_offset = E1000_ICH_NVM_SIG_WORD;
+ 
+@@ -4087,6 +4093,7 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		word = NVM_COMPAT;
+ 		valid_csum_mask = NVM_COMPAT_VALID_CSUM;
+ 		break;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 63dde3bcf5bc..ee6a5f0cb16c 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3570,6 +3570,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		if (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI) {
+ 			/* Stable 24MHz frequency */
+ 			incperiod = INCPERIOD_24MHZ;
+@@ -4082,6 +4083,7 @@ void e1000e_reset(struct e1000_adapter *adapter)
+ 		fallthrough;
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		fc->refresh_time = 0xFFFF;
+ 		fc->pause_time = 0xFFFF;
+ 
+@@ -7854,6 +7856,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V16), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM17), board_pch_cnp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V17), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM18), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V18), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM19), board_pch_cnp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V19), board_pch_cnp },
+ 
+ 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
+ };
+diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
+index 34b988d70488..b0c7a0cff98d 100644
+--- a/drivers/net/ethernet/intel/e1000e/ptp.c
++++ b/drivers/net/ethernet/intel/e1000e/ptp.c
+@@ -297,6 +297,7 @@ void e1000e_ptp_init(struct e1000_adapter *adapter)
+ 	case e1000_pch_cnp:
+ 	case e1000_pch_tgp:
+ 	case e1000_pch_adp:
++	case e1000_pch_mtp:
+ 		if ((hw->mac.type < e1000_pch_lpt) ||
+ 		    (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI)) {
+ 			adapter->ptp_clock_info.max_adj = 24000000 - 1;
+-- 
+2.11.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
