@@ -1,57 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A2002435FC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Aug 2020 10:34:35 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EE61243952
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Aug 2020 13:27:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 38D5F22775;
-	Thu, 13 Aug 2020 08:34:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AF9F7884A6;
+	Thu, 13 Aug 2020 11:27:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BVC-MgAU5Z4Q; Thu, 13 Aug 2020 08:34:32 +0000 (UTC)
+	with ESMTP id ArCJdNG5zb+n; Thu, 13 Aug 2020 11:27:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D728721548;
-	Thu, 13 Aug 2020 08:34:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1A64F88330;
+	Thu, 13 Aug 2020 11:27:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C67471BF414
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 08:34:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 717D61BF867
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 11:27:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 41B5B864D2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 08:34:12 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 6A14D88295
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 11:27:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nGEyPk5MwGcK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Aug 2020 08:34:11 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2130586294
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 08:34:11 +0000 (UTC)
-IronPort-SDR: fo3iRtwWwBS+uXB2hqrJxTHOEun0tWCIW7nb5IX+F/wt1vnHqAp2NDNVjZ7xUVCajTYcUG3cPV
- A0bfVk/fTJWQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9711"; a="218518994"
-X-IronPort-AV: E=Sophos;i="5.76,307,1592895600"; d="scan'208";a="218518994"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2020 01:34:10 -0700
-IronPort-SDR: BEDPyiY5Xney56yGCSZUS+smWrxRlBIPPXClkcA7/d+uBSKCkZzwPjluyTvGA7b9JGWcnNiM1k
- kOj2K52tFqzA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,307,1592895600"; d="scan'208";a="295359278"
-Received: from ccdlinuxdev12.iil.intel.com ([143.185.161.198])
- by orsmga006.jf.intel.com with ESMTP; 13 Aug 2020 01:34:09 -0700
-From: Sasha Neftin <sasha.neftin@intel.com>
+ with ESMTP id tERFJwePbGvB for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Aug 2020 11:27:06 +0000 (UTC)
+X-Greylist: delayed 20:46:47 by SQLgrey-1.7.6
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
+ [205.139.110.120])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4A1CB88279
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Aug 2020 11:27:06 +0000 (UTC)
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-164-UcCwiyjsM8iIhg0LfJrpeA-1; Thu, 13 Aug 2020 07:27:02 -0400
+X-MC-Unique: UcCwiyjsM8iIhg0LfJrpeA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5960A1007461;
+ Thu, 13 Aug 2020 11:27:01 +0000 (UTC)
+Received: from p50.redhat.com (ovpn-113-45.ams2.redhat.com [10.36.113.45])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B9A2B5C1A3;
+ Thu, 13 Aug 2020 11:26:59 +0000 (UTC)
+From: Stefan Assmann <sassmann@kpanic.de>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 13 Aug 2020 11:34:06 +0300
-Message-Id: <20200813083406.2857904-1-sasha.neftin@intel.com>
-X-Mailer: git-send-email 2.18.4
-Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: Add support for Meteor Lake
+Date: Thu, 13 Aug 2020 13:26:38 +0200
+Message-Id: <20200813112638.12699-1-sassmann@kpanic.de>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sassmann@kpanic.de
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: kpanic.de
+Subject: [Intel-wired-lan] [PATCH v2] i40e: fix return of uninitialized
+ aq_ret in i40e_set_vsi_promisc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,175 +69,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, sassmann@kpanic.de, kuba@kernel.org,
+ davem@davemloft.net
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add devices ID's for the next LOM generations that will be
-available on the next Intel Client platform (Meteor Lake)
-This patch provides the initial support for these devices
-
-Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
----
- drivers/net/ethernet/intel/e1000e/ethtool.c | 2 ++
- drivers/net/ethernet/intel/e1000e/hw.h      | 5 +++++
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 7 +++++++
- drivers/net/ethernet/intel/e1000e/netdev.c  | 6 ++++++
- drivers/net/ethernet/intel/e1000e/ptp.c     | 1 +
- 5 files changed, 21 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index 64f684dc6c7a..e570de91a09b 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -895,6 +895,7 @@ static int e1000_reg_test(struct e1000_adapter *adapter, u64 *data)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		mask |= BIT(18);
- 		break;
- 	default:
-@@ -1560,6 +1561,7 @@ static void e1000_loopback_cleanup(struct e1000_adapter *adapter)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		fext_nvm11 = er32(FEXTNVM11);
- 		fext_nvm11 &= ~E1000_FEXTNVM11_DISABLE_MULR_FIX;
- 		ew32(FEXTNVM11, fext_nvm11);
-diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
-index b1447221669e..69a2329ea463 100644
---- a/drivers/net/ethernet/intel/e1000e/hw.h
-+++ b/drivers/net/ethernet/intel/e1000e/hw.h
-@@ -102,6 +102,10 @@ struct e1000_hw;
- #define E1000_DEV_ID_PCH_ADP_I219_V16		0x1A1F
- #define E1000_DEV_ID_PCH_ADP_I219_LM17		0x1A1C
- #define E1000_DEV_ID_PCH_ADP_I219_V17		0x1A1D
-+#define E1000_DEV_ID_PCH_MTP_I219_LM18		0x550A
-+#define E1000_DEV_ID_PCH_MTP_I219_V18		0x550B
-+#define E1000_DEV_ID_PCH_MTP_I219_LM19		0x550C
-+#define E1000_DEV_ID_PCH_MTP_I219_V19		0x550D
- 
- #define E1000_REVISION_4	4
- 
-@@ -127,6 +131,7 @@ enum e1000_mac_type {
- 	e1000_pch_cnp,
- 	e1000_pch_tgp,
- 	e1000_pch_adp,
-+	e1000_pch_mtp,
- };
- 
- enum e1000_media_type {
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 3956a0cdd989..1fa1436032b5 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -321,6 +321,7 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		if (e1000_phy_is_accessible_pchlan(hw))
- 			break;
- 
-@@ -465,6 +466,7 @@ static s32 e1000_init_phy_params_pchlan(struct e1000_hw *hw)
- 		case e1000_pch_cnp:
- 		case e1000_pch_tgp:
- 		case e1000_pch_adp:
-+		case e1000_pch_mtp:
- 			/* In case the PHY needs to be in mdio slow mode,
- 			 * set slow mode and try to get the PHY id again.
- 			 */
-@@ -709,6 +711,7 @@ static s32 e1000_init_mac_params_ich8lan(struct e1000_hw *hw)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 	case e1000_pchlan:
- 		/* check management mode */
- 		mac->ops.check_mng_mode = e1000_check_mng_mode_pchlan;
-@@ -1649,6 +1652,7 @@ static s32 e1000_get_variants_ich8lan(struct e1000_adapter *adapter)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		rc = e1000_init_phy_params_pchlan(hw);
- 		break;
- 	default:
-@@ -2103,6 +2107,7 @@ static s32 e1000_sw_lcd_config_ich8lan(struct e1000_hw *hw)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		sw_cfg_mask = E1000_FEXTNVM_SW_CONFIG_ICH8M;
- 		break;
- 	default:
-@@ -3142,6 +3147,7 @@ static s32 e1000_valid_nvm_bank_detect_ich8lan(struct e1000_hw *hw, u32 *bank)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		bank1_offset = nvm->flash_bank_size;
- 		act_offset = E1000_ICH_NVM_SIG_WORD;
- 
-@@ -4087,6 +4093,7 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		word = NVM_COMPAT;
- 		valid_csum_mask = NVM_COMPAT_VALID_CSUM;
- 		break;
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 63dde3bcf5bc..ee6a5f0cb16c 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -3570,6 +3570,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		if (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI) {
- 			/* Stable 24MHz frequency */
- 			incperiod = INCPERIOD_24MHZ;
-@@ -4082,6 +4083,7 @@ void e1000e_reset(struct e1000_adapter *adapter)
- 		fallthrough;
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		fc->refresh_time = 0xFFFF;
- 		fc->pause_time = 0xFFFF;
- 
-@@ -7854,6 +7856,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V16), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM17), board_pch_cnp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V17), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM18), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V18), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM19), board_pch_cnp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V19), board_pch_cnp },
- 
- 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
- };
-diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
-index 34b988d70488..b0c7a0cff98d 100644
---- a/drivers/net/ethernet/intel/e1000e/ptp.c
-+++ b/drivers/net/ethernet/intel/e1000e/ptp.c
-@@ -297,6 +297,7 @@ void e1000e_ptp_init(struct e1000_adapter *adapter)
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
-+	case e1000_pch_mtp:
- 		if ((hw->mac.type < e1000_pch_lpt) ||
- 		    (er32(TSYNCRXCTL) & E1000_TSYNCRXCTL_SYSCFI)) {
- 			adapter->ptp_clock_info.max_adj = 24000000 - 1;
--- 
-2.11.0
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3ZpcnRjaG5sX3BmLmM6IEluIGZ1
+bmN0aW9uIOKAmGk0MGVfc2V0X3ZzaV9wcm9taXNj4oCZOgpkcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pNDBlL2k0MGVfdmlydGNobmxfcGYuYzoxMTc2OjE0OiBlcnJvcjog4oCYYXFfcmV04oCZ
+IG1heSBiZSB1c2VkIHVuaW5pdGlhbGl6ZWQgaW4gdGhpcyBmdW5jdGlvbiBbLVdlcnJvcj1tYXli
+ZS11bmluaXRpYWxpemVkXQogIGk0MGVfc3RhdHVzIGFxX3JldDsKCkluIGNhc2UgdGhlIGNvZGUg
+aW5zaWRlIHRoZSBpZiBzdGF0ZW1lbnQgYW5kIHRoZSBmb3IgbG9vcCBkb2VzIG5vdCBnZXQKZXhl
+Y3V0ZWQgYXFfcmV0IHdpbGwgYmUgdW5pbml0aWFsaXplZCB3aGVuIHRoZSB2YXJpYWJsZSBnZXRz
+IHJldHVybmVkIGF0CnRoZSBlbmQgb2YgdGhlIGZ1bmN0aW9uLgoKQXZvaWQgdGhpcyBieSBjaGFu
+Z2luZyBudW1fdmxhbnMgZnJvbSBpbnQgdG8gdTE2LCBzbyBhcV9yZXQgYWx3YXlzIGdldHMKc2V0
+LiBNYWtpbmcgdGhpcyBjaGFuZ2UgaW4gYWRkaXRpb25hbCBwbGFjZXMgYXMgbnVtX3ZsYW5zIHNo
+b3VsZCBuZXZlcgpiZSBuZWdhdGl2ZS4KCkZpeGVzOiAzN2QzMThkNzgwNWYgKCJpNDBlOiBSZW1v
+dmUgc2NoZWR1bGluZyB3aGlsZSBhdG9taWMgcG9zc2liaWxpdHkiKQpTaWduZWQtb2ZmLWJ5OiBT
+dGVmYW4gQXNzbWFubiA8c2Fzc21hbm5Aa3BhbmljLmRlPgotLS0KIGRyaXZlcnMvbmV0L2V0aGVy
+bmV0L2ludGVsL2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5jIHwgOCArKysrLS0tLQogMSBmaWxlIGNo
+YW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdmlydGNobmxfcGYuYyBiL2RyaXZlcnMv
+bmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV92aXJ0Y2hubF9wZi5jCmluZGV4IDhlMTMzZDY1
+NDViZC4uOTBlZjgxMGNiYTk3IDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pNDBlL2k0MGVfdmlydGNobmxfcGYuYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pNDBlL2k0MGVfdmlydGNobmxfcGYuYwpAQCAtMTExNSw3ICsxMTE1LDcgQEAgc3RhdGljIGlu
+dCBpNDBlX3F1aWVzY2VfdmZfcGNpKHN0cnVjdCBpNDBlX3ZmICp2ZikKIHN0YXRpYyBpbnQgaTQw
+ZV9nZXRudW1fdmZfdnNpX3ZsYW5fZmlsdGVycyhzdHJ1Y3QgaTQwZV92c2kgKnZzaSkKIHsKIAlz
+dHJ1Y3QgaTQwZV9tYWNfZmlsdGVyICpmOwotCWludCBudW1fdmxhbnMgPSAwLCBia3Q7CisJdTE2
+IG51bV92bGFucyA9IDAsIGJrdDsKIAogCWhhc2hfZm9yX2VhY2godnNpLT5tYWNfZmlsdGVyX2hh
+c2gsIGJrdCwgZiwgaGxpc3QpIHsKIAkJaWYgKGYtPnZsYW4gPj0gMCAmJiBmLT52bGFuIDw9IEk0
+MEVfTUFYX1ZMQU5JRCkKQEAgLTExMzQsNyArMTEzNCw3IEBAIHN0YXRpYyBpbnQgaTQwZV9nZXRu
+dW1fdmZfdnNpX3ZsYW5fZmlsdGVycyhzdHJ1Y3QgaTQwZV92c2kgKnZzaSkKICAqCiAgKiBDYWxs
+ZWQgdG8gZ2V0IG51bWJlciBvZiBWTEFOcyBhbmQgVkxBTiBsaXN0IHByZXNlbnQgaW4gbWFjX2Zp
+bHRlcl9oYXNoLgogICoqLwotc3RhdGljIHZvaWQgaTQwZV9nZXRfdmxhbl9saXN0X3N5bmMoc3Ry
+dWN0IGk0MGVfdnNpICp2c2ksIGludCAqbnVtX3ZsYW5zLAorc3RhdGljIHZvaWQgaTQwZV9nZXRf
+dmxhbl9saXN0X3N5bmMoc3RydWN0IGk0MGVfdnNpICp2c2ksIHUxNiAqbnVtX3ZsYW5zLAogCQkJ
+CQkgICBzMTYgKip2bGFuX2xpc3QpCiB7CiAJc3RydWN0IGk0MGVfbWFjX2ZpbHRlciAqZjsKQEAg
+LTExNjksNyArMTE2OSw3IEBAIHN0YXRpYyB2b2lkIGk0MGVfZ2V0X3ZsYW5fbGlzdF9zeW5jKHN0
+cnVjdCBpNDBlX3ZzaSAqdnNpLCBpbnQgKm51bV92bGFucywKICAqKi8KIHN0YXRpYyBpNDBlX3N0
+YXR1cwogaTQwZV9zZXRfdnNpX3Byb21pc2Moc3RydWN0IGk0MGVfdmYgKnZmLCB1MTYgc2VpZCwg
+Ym9vbCBtdWx0aV9lbmFibGUsCi0JCSAgICAgYm9vbCB1bmljYXN0X2VuYWJsZSwgczE2ICp2bCwg
+aW50IG51bV92bGFucykKKwkJICAgICBib29sIHVuaWNhc3RfZW5hYmxlLCBzMTYgKnZsLCB1MTYg
+bnVtX3ZsYW5zKQogewogCXN0cnVjdCBpNDBlX3BmICpwZiA9IHZmLT5wZjsKIAlzdHJ1Y3QgaTQw
+ZV9odyAqaHcgPSAmcGYtPmh3OwpAQCAtMTI1OCw3ICsxMjU4LDcgQEAgc3RhdGljIGk0MGVfc3Rh
+dHVzIGk0MGVfY29uZmlnX3ZmX3Byb21pc2N1b3VzX21vZGUoc3RydWN0IGk0MGVfdmYgKnZmLAog
+CWk0MGVfc3RhdHVzIGFxX3JldCA9IEk0MEVfU1VDQ0VTUzsKIAlzdHJ1Y3QgaTQwZV9wZiAqcGYg
+PSB2Zi0+cGY7CiAJc3RydWN0IGk0MGVfdnNpICp2c2k7Ci0JaW50IG51bV92bGFuczsKKwl1MTYg
+bnVtX3ZsYW5zOwogCXMxNiAqdmw7CiAKIAl2c2kgPSBpNDBlX2ZpbmRfdnNpX2Zyb21faWQocGYs
+IHZzaV9pZCk7Ci0tIAoyLjI2LjIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFu
+QG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50
+ZWwtd2lyZWQtbGFuCg==
