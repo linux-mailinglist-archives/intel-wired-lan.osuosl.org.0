@@ -1,60 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B576124917D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Aug 2020 01:41:31 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6177B249180
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Aug 2020 01:41:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4194086CD7;
-	Tue, 18 Aug 2020 23:41:30 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0561F20794;
+	Tue, 18 Aug 2020 23:41:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dn26r0gSu-La; Tue, 18 Aug 2020 23:41:30 +0000 (UTC)
+	with ESMTP id pK7u4SFE8H0x; Tue, 18 Aug 2020 23:41:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6556A86CE1;
-	Tue, 18 Aug 2020 23:41:29 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 11BF4207A1;
+	Tue, 18 Aug 2020 23:41:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CC72C1BF5B5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 301B21BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C6F9F8709D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2C52386FC3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iQjK4Y1ykqDR for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id vtbv21Km4148 for <intel-wired-lan@lists.osuosl.org>;
  Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 19488855EA
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 49E6A8666D
  for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
-IronPort-SDR: 4ZUQt30FQHBJ8sdRC7MHCz0s5ZoX/TgH/Y9KmxM66qpI1Q2At/GYNRGisqDXvvr1x2/r832ILj
- jB2JLRKOUyQQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="216546508"
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="216546508"
+IronPort-SDR: i+vkqnAhRx48NP7APrRLKlLZ/S2Vsg8KhzOSNpljjO8+nSDfuteDNZ7p7CTdBs/Se4OyGi3jcq
+ vu/7hxqJB6gg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="216546510"
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="216546510"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Aug 2020 16:41:26 -0700
-IronPort-SDR: pkUYE4Xao0sAQbv1hQspf02tKa46m8yiKj8gF0R4Cp0ozAI4OkZpcg3bU4eobPe4VF8Ck6Jl5r
- cUz8r2SLrCYg==
+IronPort-SDR: 9xobGMnE0LTOmlWDDVGazeZ8bk2TP1urtTPazV0YuBcZW/8tAoSBk7i4rhAp3InYDzniMqgcSP
+ jwI7VyTxfJUA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="371059518"
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="371059521"
 Received: from jrperren-desk4.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.212.63.39])
- by orsmga001.jf.intel.com with ESMTP; 18 Aug 2020 16:41:25 -0700
+ by orsmga001.jf.intel.com with ESMTP; 18 Aug 2020 16:41:26 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Aug 2020 16:40:01 -0700
-Message-Id: <20200818234002.3057510-1-vinicius.gomes@intel.com>
+Date: Tue, 18 Aug 2020 16:40:02 -0700
+Message-Id: <20200818234002.3057510-2-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200818234002.3057510-1-vinicius.gomes@intel.com>
+References: <20200818234002.3057510-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v2 1/2] igc: Fix wrong timestamp
- latency numbers
+Subject: [Intel-wired-lan] [PATCH net v2 2/2] igc: Fix not considering the
+ TX delay for timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,49 +78,56 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 Changes from v1:
   - Added Fixes tag
 
-The previous timestamping latency numbers were obtained by
-interpolating the i210 numbers with the i225 crystal clock value. That
-calculation was wrong.
+When timestamping a packet there's a delay between the start of the
+packet and the point where the hardware actually captures the
+timestamp. This difference needs to be considered if we want accurate
+timestamps.
 
-Use the correct values from real measurements.
+This was done on the RX side, but not on the TX side.
 
-Fixes: 81b055205e8b ("igc: Add support for RX timestamping")
+Fixes: 2c344ae24501 ("igc: Add support for TX timestamping")
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h | 20 ++++++++------------
- 1 file changed, 8 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 3070dfdb7eb4..2d566f3c827b 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -299,18 +299,14 @@ extern char igc_driver_name[];
- #define IGC_RX_HDR_LEN			IGC_RXBUFFER_256
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 36c999250fcc..6a9b5102aa55 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -364,6 +364,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
+ 	struct sk_buff *skb = adapter->ptp_tx_skb;
+ 	struct skb_shared_hwtstamps shhwtstamps;
+ 	struct igc_hw *hw = &adapter->hw;
++	int adjust = 0;
+ 	u64 regval;
  
- /* Transmit and receive latency (for PTP timestamps) */
--/* FIXME: These values were estimated using the ones that i225 has as
-- * basis, they seem to provide good numbers with ptp4l/phc2sys, but we
-- * need to confirm them.
-- */
--#define IGC_I225_TX_LATENCY_10		9542
--#define IGC_I225_TX_LATENCY_100		1024
--#define IGC_I225_TX_LATENCY_1000	178
--#define IGC_I225_TX_LATENCY_2500	64
--#define IGC_I225_RX_LATENCY_10		20662
--#define IGC_I225_RX_LATENCY_100		2213
--#define IGC_I225_RX_LATENCY_1000	448
--#define IGC_I225_RX_LATENCY_2500	160
-+#define IGC_I225_TX_LATENCY_10		240
-+#define IGC_I225_TX_LATENCY_100		58
-+#define IGC_I225_TX_LATENCY_1000	80
-+#define IGC_I225_TX_LATENCY_2500	1325
-+#define IGC_I225_RX_LATENCY_10		6450
-+#define IGC_I225_RX_LATENCY_100		185
-+#define IGC_I225_RX_LATENCY_1000	300
-+#define IGC_I225_RX_LATENCY_2500	1485
+ 	if (WARN_ON_ONCE(!skb))
+@@ -373,6 +374,24 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
+ 	regval |= (u64)rd32(IGC_TXSTMPH) << 32;
+ 	igc_ptp_systim_to_hwtstamp(adapter, &shhwtstamps, regval);
  
- /* RX and TX descriptor control thresholds.
-  * PTHRESH - MAC will consider prefetch if it has fewer than this number of
++	switch (adapter->link_speed) {
++	case SPEED_10:
++		adjust = IGC_I225_TX_LATENCY_10;
++		break;
++	case SPEED_100:
++		adjust = IGC_I225_TX_LATENCY_100;
++		break;
++	case SPEED_1000:
++		adjust = IGC_I225_TX_LATENCY_1000;
++		break;
++	case SPEED_2500:
++		adjust = IGC_I225_TX_LATENCY_2500;
++		break;
++	}
++
++	shhwtstamps.hwtstamp =
++		ktime_add_ns(shhwtstamps.hwtstamp, adjust);
++
+ 	/* Clear the lock early before calling skb_tstamp_tx so that
+ 	 * applications are not woken up before the lock bit is clear. We use
+ 	 * a copy of the skb pointer to ensure other threads can't change it
 -- 
 2.28.0
 
