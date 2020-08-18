@@ -1,63 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E773B249035
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Aug 2020 23:37:10 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24BCB249061
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Aug 2020 23:53:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id A13CC87A9C;
-	Tue, 18 Aug 2020 21:37:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 60E5E86BDB;
+	Tue, 18 Aug 2020 21:53:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2WCCN0qt8J2x; Tue, 18 Aug 2020 21:37:09 +0000 (UTC)
+	with ESMTP id p326iucz98Hp; Tue, 18 Aug 2020 21:53:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 130DA87A6B;
-	Tue, 18 Aug 2020 21:37:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 06E5E85AE0;
+	Tue, 18 Aug 2020 21:53:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 837861BF973
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 21:37:07 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B7D7D1BF973
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 21:53:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7EDA785B18
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 21:37:07 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id B05E087AEE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 21:53:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rPqo_XgP2C4D for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Aug 2020 21:37:06 +0000 (UTC)
+ with ESMTP id 21Ng+Wu08+qi for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Aug 2020 21:53:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3942C85B04
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 21:37:06 +0000 (UTC)
-IronPort-SDR: SUn/iJ9g0cWdlR0cMTg5ijAHXcmf1xiXlERqi4MmNMUgR/RNFBWdDpBz3+9xeD4LpOqwIYZTxR
- rbd5d1c1maug==
-X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="142828438"
-X-IronPort-AV: E=Sophos;i="5.76,328,1592895600"; d="scan'208";a="142828438"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7428B87AAE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 21:53:43 +0000 (UTC)
+IronPort-SDR: XNvGIZ5yVv8X6bj3CPZLXndNb35BkrI2YEKkAAJApwd4LAhRrWFjF0eqHaeQnWwJQSyahiN7G2
+ cYUt0Q4jJCUg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="154980619"
+X-IronPort-AV: E=Sophos;i="5.76,328,1592895600"; d="scan'208";a="154980619"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Aug 2020 14:37:04 -0700
-IronPort-SDR: PN4ruum4/TbLiKDUNjXukv3EJacHMw6vY28PJYBGB2S+VfjnleHOoWIHzCRLCB2eRENUm5CElx
- 55SWF3Gxu8cQ==
-X-IronPort-AV: E=Sophos;i="5.76,328,1592895600"; d="scan'208";a="320240512"
-Received: from jbrandeb-mobl3.amr.corp.intel.com (HELO localhost)
- ([10.212.158.55])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Aug 2020 14:37:03 -0700
-Date: Tue, 18 Aug 2020 14:37:02 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20200818143702.00002850@intel.com>
-In-Reply-To: <20200817231231.2971207-2-vinicius.gomes@intel.com>
-References: <20200817231231.2971207-1-vinicius.gomes@intel.com>
- <20200817231231.2971207-2-vinicius.gomes@intel.com>
-X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2020 14:53:42 -0700
+IronPort-SDR: 6+WcjjKNcgz7GxiM9PeHS8tM2FnAsWBF9whuFRCMQ54V0c0XPtN8JpTTfnKPDT6IQjl5s7of7O
+ 5xAUUqDy+WVQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,328,1592895600"; d="scan'208";a="471982375"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
+ by orsmga005.jf.intel.com with ESMTP; 18 Aug 2020 14:53:42 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 18 Aug 2020 14:49:00 -0700
+Message-Id: <20200818214900.35776-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] igc: Fix not considering the TX
- delay for timestamps
+Subject: [Intel-wired-lan] [PATCH v3] ice: remove repeated words
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,24 +65,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andre.guedes@intel.com, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Vinicius Costa Gomes wrote:
+From: Bruce Allan <bruce.w.allan@intel.com>
 
-> When timestamping a packet there's a delay between the start of the
-> packet and the point where the hardware actually captures the
-> timestamp. This difference needs to be considered if we want accurate
-> timestamps.
-> 
-> This was done on the RX side, but not on the TX side.
-> 
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+A new test in checkpatch detects repeated words; cleanup all pre-existing
+occurrences of those now.
 
-Please see my responses to the other patch.
+Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+Co-developed-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+v3:
+- Resolve checkpatch warning on ordering of Co-developed-by and Signed-off-by
+v2:
+- Add Co-developed-by
+---
+ drivers/net/ethernet/intel/ice/ice_flex_pipe.c   | 2 +-
+ drivers/net/ethernet/intel/ice/ice_flow.c        | 4 ++--
+ drivers/net/ethernet/intel/ice/ice_main.c        | 2 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+index ac448d223e9a..9095b4d274ad 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
++++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+@@ -4876,7 +4876,7 @@ ice_rem_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl)
+ 
+ 			if (last_profile) {
+ 				/* If there are no profiles left for this VSIG,
+-				 * then simply remove the the VSIG.
++				 * then simply remove the VSIG.
+ 				 */
+ 				status = ice_rem_vsig(hw, blk, vsig, &chg);
+ 				if (status)
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index fe677621dd51..45fa3d9e3af2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -385,7 +385,7 @@ ice_flow_xtract_fld(struct ice_hw *hw, struct ice_flow_prof_params *params,
+  * ice_flow_xtract_raws - Create extract sequence entries for raw bytes
+  * @hw: pointer to the HW struct
+  * @params: information about the flow to be processed
+- * @seg: index of packet segment whose raw fields are to be be extracted
++ * @seg: index of packet segment whose raw fields are to be extracted
+  */
+ static enum ice_status
+ ice_flow_xtract_raws(struct ice_hw *hw, struct ice_flow_prof_params *params,
+@@ -999,7 +999,7 @@ enum ice_status ice_flow_rem_entry(struct ice_hw *hw, enum ice_block blk,
+  *
+  * This helper function stores information of a field being matched, including
+  * the type of the field and the locations of the value to match, the mask, and
+- * and the upper-bound value in the start of the input buffer for a flow entry.
++ * the upper-bound value in the start of the input buffer for a flow entry.
+  * This function should only be used for fixed-size data structures.
+  *
+  * This function also opportunistically determines the protocol headers to be
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 4d79e5c1d6e6..6b6e982e2658 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2417,7 +2417,7 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi)
+ 	int i, v_idx;
+ 
+ 	/* q_vectors are freed in reset path so there's no point in detaching
+-	 * rings; in case of rebuild being triggered not from reset reset bits
++	 * rings; in case of rebuild being triggered not from reset bits
+ 	 * in pf->state won't be set, so additionally check first q_vector
+ 	 * against NULL
+ 	 */
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+index bce35ba997a8..c8b2705a8aed 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c
+@@ -872,7 +872,7 @@ static int ice_get_max_valid_res_idx(struct ice_res_tracker *res)
+  * always be caught by ice_set_per_vf_res().
+  *
+  * Return 0 on success, and -EINVAL when there are not enough MSIX vectors in
+- * in the PF's space available for SR-IOV.
++ * the PF's space available for SR-IOV.
+  */
+ static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
+ {
+-- 
+2.20.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
