@@ -1,47 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3FAD247EFD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Aug 2020 09:08:11 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 541682486A8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Aug 2020 16:05:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 798548757C;
-	Tue, 18 Aug 2020 07:08:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6998585DB1;
+	Tue, 18 Aug 2020 14:05:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JffHk61Duvhk; Tue, 18 Aug 2020 07:08:10 +0000 (UTC)
+	with ESMTP id lx5zPhJPV1eQ; Tue, 18 Aug 2020 14:05:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 871778754B;
-	Tue, 18 Aug 2020 07:08:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2CEF385E14;
+	Tue, 18 Aug 2020 14:04:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AF90C1BF2CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 07:08:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E24FD1BF3D0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 14:04:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A9FB385C28
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 07:08:07 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id DD7F885DB1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 14:04:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ueoML4MxGpRq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Aug 2020 07:08:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from tc-sys-mailedm02.tc.baidu.com (mx141-tc.baidu.com
- [61.135.168.141])
- by whitealder.osuosl.org (Postfix) with ESMTP id 56D1E84F5A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 07:08:01 +0000 (UTC)
-Received: from localhost (cp01-cos-dev01.cp01.baidu.com [10.92.119.46])
- by tc-sys-mailedm02.tc.baidu.com (Postfix) with ESMTP id B9A2611C005B;
- Tue, 18 Aug 2020 15:07:57 +0800 (CST)
-From: Li RongQing <lirongqing@baidu.com>
-To: netdev@vger.kernel.org,
-	intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Aug 2020 15:07:57 +0800
-Message-Id: <1597734477-27859-1-git-send-email-lirongqing@baidu.com>
-X-Mailer: git-send-email 1.7.1
-Subject: [Intel-wired-lan] [PATCH][v3] i40e: optimise prefetch page refcount
+ with ESMTP id H5sb1l-IIu2a for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Aug 2020 14:04:57 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id DE41A85C88
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 14:04:56 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id f18so15455154wmc.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 07:04:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=6x1Ak2P3rV0lY04CxHSGtOsvo0mLh15m+1LZrs0+dgI=;
+ b=aiKEvHMqkueSWM03yfT17ZRgLqjY2GdNq8EoKA3Sd6Bk5TE9LVFEPPqSgwg5H9IeZ8
+ pP02JXt0qzGw//wJAa/ZJd0oE89Bye8xofEc7UrTauDtg4t3oFTRVekkcJRuYaWEAIZ6
+ NZvug9L+YfJCvhnzqxT99Kf3Tky9mRIxhKNHJlU+bbmbVc5F7hoqKna3h7513ORDuTBD
+ sVerRDRfMxezHwwVq1PoV+v6LjYnSCHl4fu12HP99KdWQVKAZw3geEtE95+OOIr5ZnaJ
+ HF0EvwijMDu+ZaHHYncZGHgO+ZaKZp1wBH8gAm7aanVmHF+k8OF0c/vCoKcuVo2Q+4zN
+ 5Gmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=6x1Ak2P3rV0lY04CxHSGtOsvo0mLh15m+1LZrs0+dgI=;
+ b=qdo4qKBpidGgoFm2xJajZQp9rAHZ7QcSGcHdk2NEKLDoktAkeQKvVRqcSLSkHtNs8m
+ tZkrT6ahtTJitqu+Thby4WvOgOZgbekTXgFVe9HYiQ8zm9TqSHX5RWg/Bt5GQ+SkN1Mw
+ bjWTrs44pIkB8Hn6eb60Hj6HXitHMIw3febcZpmNSu73wuo3Em+qzwb+9D4o/RDlJoSZ
+ QWA8IKag7pTKLxfYZ1617pY7absqArb36NUaNCONbIBLjalPftzcOyamfnAxHqOHwWQV
+ YweT9g2LfcEnzZfOOfARUmep9GblbbanOwReOEagHLzXFAiIMIFAePD9flAo6CjWZXqI
+ qUYA==
+X-Gm-Message-State: AOAM533ocoP6tRfApl8qREmSYZDkRWKqP61TGqmhqn7xtRylaXWdVrKd
+ 5GrqrKRBJlnCNl1SkAEKEINIFh+oresIBxZ8xFI=
+X-Google-Smtp-Source: ABdhPJyVEkaR2gT8OnMJWFLL+UQECo20ochAdHklbD8V2jvT8bdtXvpJ4NDdcX90QarezriwZAu5a/eI4F9N3sfxge0=
+X-Received: by 2002:a1c:3b89:: with SMTP id i131mr133157wma.30.1597759495288; 
+ Tue, 18 Aug 2020 07:04:55 -0700 (PDT)
+MIME-Version: 1.0
+References: <1594967062-20674-1-git-send-email-lirongqing@baidu.com>
+In-Reply-To: <1594967062-20674-1-git-send-email-lirongqing@baidu.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
+Date: Tue, 18 Aug 2020 16:04:43 +0200
+Message-ID: <CAJ+HfNi2B+2KYP9A7yCfFUhfUBd=sFPeuGbNZMjhNSdq3GEpMg@mail.gmail.com>
+To: Li RongQing <lirongqing@baidu.com>
+Subject: Re: [Intel-wired-lan] [PATCH 0/2] intel/xdp fixes for fliping rx
+ buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,74 +81,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Netdev <netdev@vger.kernel.org>, Maciej <maciej.machnikowski@intel.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, bpf <bpf@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-refcount of rx_buffer page will be added here originally, so prefetchw
-is needed, but after commit 1793668c3b8c ("i40e/i40evf: Update code to
- better handle incrementing page count"), and refcount is not added
-everytime, so change prefetchw as prefetch,
-
-now it mainly services page_address(), but which accesses struct page
-only when WANT_PAGE_VIRTUAL or HASHED_PAGE_VIRTUAL is defined otherwise
-it returns address based on offset, so we prefetch it conditionally
-
-Jakub suggested to define prefetch_page_address in a common header
-
-Reported-by: kernel test robot <lkp@intel.com>
-Suggested-by: Jakub Kicinski <kuba@kernel.org>
-Signed-off-by: Li RongQing <lirongqing@baidu.com>
----
-diff with v2: fix a build warning -Wvisibility 
-diff with v1: create a common function prefetch_page_address
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 2 +-
- include/linux/prefetch.h                    | 8 ++++++++
- 2 files changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 62f5b2d35f63..5f9fe55bb66d 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1953,7 +1953,7 @@ static struct i40e_rx_buffer *i40e_get_rx_buffer(struct i40e_ring *rx_ring,
- 	struct i40e_rx_buffer *rx_buffer;
- 
- 	rx_buffer = i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
--	prefetchw(rx_buffer->page);
-+	prefetch_page_address(rx_buffer->page);
- 
- 	/* we are reusing so sync this buffer for CPU use */
- 	dma_sync_single_range_for_cpu(rx_ring->dev,
-diff --git a/include/linux/prefetch.h b/include/linux/prefetch.h
-index 13eafebf3549..b83a3f944f28 100644
---- a/include/linux/prefetch.h
-+++ b/include/linux/prefetch.h
-@@ -15,6 +15,7 @@
- #include <asm/processor.h>
- #include <asm/cache.h>
- 
-+struct page;
- /*
- 	prefetch(x) attempts to pre-emptively get the memory pointed to
- 	by address "x" into the CPU L1 cache. 
-@@ -62,4 +63,11 @@ static inline void prefetch_range(void *addr, size_t len)
- #endif
- }
- 
-+static inline void prefetch_page_address(struct page *page)
-+{
-+#if defined(WANT_PAGE_VIRTUAL) || defined(HASHED_PAGE_VIRTUAL)
-+	prefetch(page);
-+#endif
-+}
-+
- #endif
--- 
-2.16.2
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gRnJpLCAxNyBKdWwgMjAyMCBhdCAwODoyNCwgTGkgUm9uZ1FpbmcgPGxpcm9uZ3FpbmdAYmFp
+ZHUuY29tPiB3cm90ZToKPgo+IFRoaXMgZml4ZXMgaWNlL2k0MGUvaXhnYmUvaXhnYmV2Zl9yeF9i
+dWZmZXJfZmxpcCBpbgo+IGNvcHkgbW9kZSB4ZHAgdGhhdCBjYW4gbGVhZCB0byBkYXRhIGNvcnJ1
+cHRpb24uCj4KPiBJIHNwbGl0IHR3byBwYXRjaGVzLCBzaW5jZSBpNDBlL3hnYmUvaXhnYmV2ZiBz
+dXBwb3J0cyB4c2sKPiByZWNlaXZpbmcgZnJvbSA0LjE4LCBwdXQgdGhlaXIgZml4ZXMgaW4gYSBw
+YXRjaAo+CgpMaSwgc29ycnkgZm9yIHRoZSBsb29vbmcgbGF0ZW5jeS4gSSB0b29rIGEgbG9vb25n
+IHZhY2F0aW9uLiA6LVAKClRoYW5rcyBmb3IgdGFraW5nIGEgbG9vayBhdCB0aGlzLCBidXQgSSBi
+ZWxpZXZlIHRoaXMgaXMgbm90IGEgYnVnLgoKVGhlIEludGVsIEV0aGVybmV0IGRyaXZlcnMgKG9i
+dmlvdXNseSBub24temVyb2NvcHkgQUZfWERQIC0tICJnb29kIG9sJwpYRFAiKSB1c2UgYSBwYWdl
+IHJldXNlIGFsZ29yaXRobS4KCkJhc2ljIGlkZWEgaXMgdGhhdCBhIHBhZ2UgaXMgYWxsb2NhdGVk
+IGZyb20gdGhlIHBhZ2UgYWxsb2NhdG9yCihpNDBlX2FsbG9jX21hcHBlZF9wYWdlKCkpLiBUaGUg
+cmVmY291bnQgaXMgaW5jcmVhc2VkIHRvClVTSFJUX01BWC4gVGhlIHBhZ2UgaXMgc3BsaXQgaW50
+byB0d28gY2h1bmtzIChzaW1wbGlmaWVkKS4gSWYgdGhlcmUncwpvbmUgdXNlciBvZiB0aGUgcGFn
+ZSwgdGhlIHBhZ2UgY2FuIGJlIHJldXNlZCAoZmxpcHBlZCkuIElmIG5vdCwgYSBuZXcKcGFnZSBu
+ZWVkcyB0byBiZSBhbGxvY2F0ZWQgKHdpdGggdGhlIGxhcmdlIHJlZmNvdW50KS4KClNvLCB0aGUg
+aWRlYSBpcyB0aGF0IHVzdWFsbHkgdGhlIHBhZ2UgY2FuIGJlIHJldXNlZCAoZmxpcHBlZCksIGFu
+ZCB0aGUKcGFnZSBvbmx5IG5lZWRzIHRvIGJlICJwdXQiIG5vdCAiZ2V0IiBzaW5jZSB0aGUgcmVm
+Y291bnQgd2FzIGluaXRhbGx5CmJ1bXBlZCB0byBhIGxhcmdlIHZhbHVlLgoKQWxsIGZyYW1lcyAo
+ZXhjZXB0IFhEUF9EUk9QIHdoaWNoIGNhbiBiZSByZXVzZWQgZGlyZWN0bHkpICJkaWUiIHZpYQpw
+YWdlX2ZyYWdfZnJlZSgpIHdoaWNoIGRlY3JlYXNlcyB0aGUgcGFnZSByZWZjb3VudCwgYW5kIGZy
+ZWVzIHRoZSBwYWdlCmlmIHRoZSByZWZjb3VudCBpcyB6ZXJvLgoKTGV0J3MgdGFrZSBzb21lIHNj
+ZW5hcmlvcyBhcyBleGFtcGxlczoKCjEuIEEgZnJhbWUgaXMgcmVjZWl2ZWQgaW4gInZhbmlsbGEi
+IFhEUCAoTUVNX1RZUEVfUEFHRV9TSEFSRUQpLCBhbmQKICAgdGhlIFhEUCBwcm9ncmFtIHZlcmRp
+Y3QgaXMgWERQX1RYLiBUaGUgZnJhbWUgd2lsbCBiZSBwbGFjZWQgb24gdGhlCiAgIEhXIFR4IHJp
+bmcsIGFuZCBmcmVlZCogKGFzeW5jKSBpbiBpNDBlX2NsZWFuX3R4X2lycToKICAgICAgICAvKiBm
+cmVlIHRoZSBza2IvWERQIGRhdGEgKi8KICAgICAgICBpZiAocmluZ19pc194ZHAodHhfcmluZykp
+CiAgICAgICAgICAgIHhkcF9yZXR1cm5fZnJhbWUodHhfYnVmLT54ZHBmKTsgLy8gY2FsbHMgcGFn
+ZV9mcmFnX2ZyZWUoKQoKMi4gQSBmcmFtZSBpcyBwYXNzZWQgdG8gdGhlIHN0YWNrLCBldmVudHVh
+bGx5IGl0J3MgZnJlZWQqIHZpYQogICBza2JfZnJlZV9mcmFnKCkuCgozLiBBIGZyYW1lIGlzIHBh
+c3NlZCB0byBhbiBBRl9YRFAgc29ja2V0LiBUaGUgZGF0YSBpcyBjb3BpZWQgdG8gdGhlCiAgIHNv
+Y2tldCBkYXRhIGFyZWEsIGFuZCB0aGUgZnJhbWUgaXMgZGlyZWN0bHkgZnJlZWQqLgoKTm90IHRo
+ZSAqIGJ5IHRoZSBmcmVlZC4gQWN0dWFsbHkgZnJlZWluZyBoZXJlIG1lYW5zIGNhbGxpbmcKcGFn
+ZV9mcmFnX2ZyZWUoKSwgd2hpY2ggbWVhbnMgZGVjcmVhc2luZyB0aGUgcmVmY291bnQuIFRoZSBw
+YWdlIHJldXNlCmFsZ29yaXRobSBtYWtlcyBzdXJlIHRoYXQgdGhlIGJ1ZmZlcnMgYXJlIG5vdCBz
+dGFsZS4KClRoZSBvbmx5IGRpZmZlcmVuY2UgZnJvbSBYRFBfVFggYW5kIFhEUF9ESVJFQ1QgdG8g
+ZGV2L2NwdW1hcHMsCmNvbXBhcmVkIHRvIEFGX1hEUCBzb2NrZXRzIGlzIHRoYXQgdGhlIGxhdHRl
+ciBjYWxscyBwYWdlX2ZyYWdfZnJlZSgpCmRpcmVjdGx5LCB3aGVyZWFzIHRoZSBvdGhlciBkb2Vz
+IGl0IGFzeW5jaHJvbm91cyBmcm9tIHRoZSBUeCBjbGVhbiB1cApwaGFzZS4KCkxldCBtZSBrbm93
+IGlmIGl0J3Mgc3RpbGwgbm90IGNsZWFyLCBidXQgdGhlIGJvdHRvbSBsaW5lIGlzIHRoYXQgbm9u
+ZQpvZiB0aGVzZSBwYXRjaGVzIGFyZSBuZWVkZWQuCgoKVGhhbmtzIQpCasO2cm4KCgo+IExpIFJv
+bmdRaW5nICgyKToKPiAgIHhkcDogaTQwZTogaXhnYmU6IGl4Z2JldmY6IG5vdCBmbGlwIHJ4IGJ1
+ZmZlciBmb3IgY29weSBtb2RlIHhkcAo+ICAgaWNlL3hkcDogbm90IGFkanVzdCByeCBidWZmZXIg
+Zm9yIGNvcHkgbW9kZSB4ZHAKPgo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0
+MGVfdHhyeC5jICAgICAgIHwgNSArKysrLQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+Y2UvaWNlX3R4cnguYyAgICAgICAgIHwgNSArKysrLQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9peGdiZS9peGdiZV9tYWluLmMgICAgIHwgNSArKysrLQo+ICBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9peGdiZXZmL2l4Z2JldmZfbWFpbi5jIHwgNSArKysrLQo+ICBpbmNsdWRlL25l
+dC94ZHAuaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgMyArKysKPiAgbmV0L3hk
+cC94c2suYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IDQgKysrLQo+ICA2
+IGZpbGVzIGNoYW5nZWQsIDIyIGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0pCj4KPiAtLQo+
+IDIuMTYuMgo+Cj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50ZWwtd2lyZWQtbGFuQG9zdW9z
+bC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13
+aXJlZC1sYW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+SW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpo
+dHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
