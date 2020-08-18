@@ -2,60 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77E06249139
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Aug 2020 00:52:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B576124917D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Aug 2020 01:41:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1D61886CF9;
-	Tue, 18 Aug 2020 22:52:36 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4194086CD7;
+	Tue, 18 Aug 2020 23:41:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y3S2himSRp9D; Tue, 18 Aug 2020 22:52:36 +0000 (UTC)
+	with ESMTP id dn26r0gSu-La; Tue, 18 Aug 2020 23:41:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7CCDD86C7E;
-	Tue, 18 Aug 2020 22:52:35 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6556A86CE1;
+	Tue, 18 Aug 2020 23:41:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 89EE91BF3F4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 22:52:34 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CC72C1BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 82CA085BDF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 22:52:34 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id C6F9F8709D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0L_D_-hLQScF for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Aug 2020 22:52:33 +0000 (UTC)
+ with ESMTP id iQjK4Y1ykqDR for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 6250E85BB5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 22:52:33 +0000 (UTC)
-IronPort-SDR: tPGGvxSPJnviBo5N7Q9sBt/eZzUhpnjScSBTsCSNPgiWZILXhYVkVzZkk+vJBpub9hnLWs2r4N
- YIpS1w7XY8sQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="216542180"
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="216542180"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 19488855EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
+IronPort-SDR: 4ZUQt30FQHBJ8sdRC7MHCz0s5ZoX/TgH/Y9KmxM66qpI1Q2At/GYNRGisqDXvvr1x2/r832ILj
+ jB2JLRKOUyQQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="216546508"
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="216546508"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Aug 2020 15:52:32 -0700
-IronPort-SDR: Slo5R7AJ3dHKcitWvSee5guQMoxPrIOIFCo7bGeELvlTUy9NRwpiHxzhriYlfmf+wEohpI450j
- 0x0HZmSH3Nwg==
+ 18 Aug 2020 16:41:26 -0700
+IronPort-SDR: pkUYE4Xao0sAQbv1hQspf02tKa46m8yiKj8gF0R4Cp0ozAI4OkZpcg3bU4eobPe4VF8Ck6Jl5r
+ cUz8r2SLrCYg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="497020551"
-Received: from jrperren-desk4.amr.corp.intel.com (HELO ellie) ([10.212.63.39])
- by fmsmga006.fm.intel.com with ESMTP; 18 Aug 2020 15:52:32 -0700
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="371059518"
+Received: from jrperren-desk4.amr.corp.intel.com (HELO localhost.localdomain)
+ ([10.212.63.39])
+ by orsmga001.jf.intel.com with ESMTP; 18 Aug 2020 16:41:25 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-In-Reply-To: <20200818143615.00000f16@intel.com>
-References: <20200817231231.2971207-1-vinicius.gomes@intel.com>
- <20200818143615.00000f16@intel.com>
-Date: Tue, 18 Aug 2020 15:52:31 -0700
-Message-ID: <87h7szr2hc.fsf@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 18 Aug 2020 16:40:01 -0700
+Message-Id: <20200818234002.3057510-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] igc: Fix wrong timestamp latency
- numbers
+Subject: [Intel-wired-lan] [PATCH net v2 1/2] igc: Fix wrong timestamp
+ latency numbers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,42 +67,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andre.guedes@intel.com, intel-wired-lan@lists.osuosl.org
+Cc: andre.guedes@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Jesse Brandeburg <jesse.brandeburg@intel.com> writes:
+Changes from v1:
+  - Added Fixes tag
 
-> Vinicius Costa Gomes wrote:
->
->> The previous timestamping latency numbers were obtained by
->> interpolating the i210 numbers with the i225 crystal clock value. That
->> calculation was wrong.
->> 
->> Use the correct values from real measurements.
->> 
->> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->
-> Is this targeted at net or net-next, and because it is a fix I
-> recommend you have subject
-> [PATCH net 1/2]
+The previous timestamping latency numbers were obtained by
+interpolating the i210 numbers with the i225 crystal clock value. That
+calculation was wrong.
 
-Oh, sorry about that. I used the wrong 'git format-patch' line.
+Use the correct values from real measurements.
 
->
-> and you should include a "Fixes:" tag since this driver has been
-> released in previous kernels.
+Fixes: 81b055205e8b ("igc: Add support for RX timestamping")
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc.h | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
-Yes. This should have been directed to 'net-queue', thanks for noticing.
-
-Will send a v2.
-
-
-Cheers,
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 3070dfdb7eb4..2d566f3c827b 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -299,18 +299,14 @@ extern char igc_driver_name[];
+ #define IGC_RX_HDR_LEN			IGC_RXBUFFER_256
+ 
+ /* Transmit and receive latency (for PTP timestamps) */
+-/* FIXME: These values were estimated using the ones that i225 has as
+- * basis, they seem to provide good numbers with ptp4l/phc2sys, but we
+- * need to confirm them.
+- */
+-#define IGC_I225_TX_LATENCY_10		9542
+-#define IGC_I225_TX_LATENCY_100		1024
+-#define IGC_I225_TX_LATENCY_1000	178
+-#define IGC_I225_TX_LATENCY_2500	64
+-#define IGC_I225_RX_LATENCY_10		20662
+-#define IGC_I225_RX_LATENCY_100		2213
+-#define IGC_I225_RX_LATENCY_1000	448
+-#define IGC_I225_RX_LATENCY_2500	160
++#define IGC_I225_TX_LATENCY_10		240
++#define IGC_I225_TX_LATENCY_100		58
++#define IGC_I225_TX_LATENCY_1000	80
++#define IGC_I225_TX_LATENCY_2500	1325
++#define IGC_I225_RX_LATENCY_10		6450
++#define IGC_I225_RX_LATENCY_100		185
++#define IGC_I225_RX_LATENCY_1000	300
++#define IGC_I225_RX_LATENCY_2500	1485
+ 
+ /* RX and TX descriptor control thresholds.
+  * PTHRESH - MAC will consider prefetch if it has fewer than this number of
 -- 
-Vinicius
+2.28.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
