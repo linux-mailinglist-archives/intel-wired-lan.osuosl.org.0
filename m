@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6177B249180
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Aug 2020 01:41:38 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 890842491EF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Aug 2020 02:48:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0561F20794;
-	Tue, 18 Aug 2020 23:41:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E163786420;
+	Wed, 19 Aug 2020 00:48:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pK7u4SFE8H0x; Tue, 18 Aug 2020 23:41:32 +0000 (UTC)
+	with ESMTP id 2yQPYHZLC4rX; Wed, 19 Aug 2020 00:48:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 11BF4207A1;
-	Tue, 18 Aug 2020 23:41:30 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7AA9F86439;
+	Wed, 19 Aug 2020 00:48:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 301B21BF5B5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:28 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 04E481BF989
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Aug 2020 00:48:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2C52386FC3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E1BDA20468
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Aug 2020 00:48:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vtbv21Km4148 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
+ with ESMTP id y2Xkqb4qWfqT for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Aug 2020 00:48:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 49E6A8666D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Aug 2020 23:41:27 +0000 (UTC)
-IronPort-SDR: i+vkqnAhRx48NP7APrRLKlLZ/S2Vsg8KhzOSNpljjO8+nSDfuteDNZ7p7CTdBs/Se4OyGi3jcq
- vu/7hxqJB6gg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="216546510"
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="216546510"
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by silver.osuosl.org (Postfix) with ESMTPS id 33C85203DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Aug 2020 00:48:05 +0000 (UTC)
+IronPort-SDR: RRRR4ELtoq72W9I4GcGeQ9kQEC4mU9HXp3Dh84UIn7MwsPTWLbWDdOZjgx0ZNG4zkBPRW4ko/P
+ A/473WUZn5Sg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9717"; a="154995650"
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="154995650"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Aug 2020 16:41:26 -0700
-IronPort-SDR: 9xobGMnE0LTOmlWDDVGazeZ8bk2TP1urtTPazV0YuBcZW/8tAoSBk7i4rhAp3InYDzniMqgcSP
- jwI7VyTxfJUA==
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2020 17:48:05 -0700
+IronPort-SDR: ZB5KKtgWJgtjGi40Ju9X1/ZVpfDk9p0G1+F2NSFBepboN9l+IXH/4ZDnE/9Lh09vM+RLFXFf6B
+ Qw4omDgSrzEQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="371059521"
-Received: from jrperren-desk4.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.212.63.39])
- by orsmga001.jf.intel.com with ESMTP; 18 Aug 2020 16:41:26 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Aug 2020 16:40:02 -0700
-Message-Id: <20200818234002.3057510-2-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200818234002.3057510-1-vinicius.gomes@intel.com>
-References: <20200818234002.3057510-1-vinicius.gomes@intel.com>
+X-IronPort-AV: E=Sophos;i="5.76,329,1592895600"; d="scan'208";a="371073420"
+Received: from lkp-server02.sh.intel.com (HELO 2f0d8b563e65) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 18 Aug 2020 17:48:04 -0700
+Received: from kbuild by 2f0d8b563e65 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1k8CGp-0001Uv-Er; Wed, 19 Aug 2020 00:48:03 +0000
+Date: Wed, 19 Aug 2020 08:47:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f3c76b0.F3gKaWuCXbOrs58q%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net v2 2/2] igc: Fix not considering the
- TX delay for timestamps
+Subject: [Intel-wired-lan] [jkirsher-net-queue:40GbE] BUILD SUCCESS
+ 5b6d4a7f20b09c47ca598760f6dafd554af8b6d5
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,68 +69,221 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andre.guedes@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Changes from v1:
-  - Added Fixes tag
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  40GbE
+branch HEAD: 5b6d4a7f20b09c47ca598760f6dafd554af8b6d5  i40e: Fix crash during removing i40e driver
 
-When timestamping a packet there's a delay between the start of the
-packet and the point where the hardware actually captures the
-timestamp. This difference needs to be considered if we want accurate
-timestamps.
+elapsed time: 4217m
 
-This was done on the RX side, but not on the TX side.
+configs tested: 195
+configs skipped: 21
 
-Fixes: 2c344ae24501 ("igc: Add support for TX timestamping")
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+nds32                            alldefconfig
+powerpc                     pq2fads_defconfig
+sh                        edosk7705_defconfig
+sh                           se7705_defconfig
+mips                malta_qemu_32r6_defconfig
+mips                          malta_defconfig
+arm                          ep93xx_defconfig
+arm                         lpc32xx_defconfig
+sh                        apsh4ad0a_defconfig
+arm                            hisi_defconfig
+ia64                             allyesconfig
+riscv                    nommu_k210_defconfig
+powerpc                       holly_defconfig
+arm                          collie_defconfig
+m68k                        stmark2_defconfig
+powerpc                         ps3_defconfig
+h8300                     edosk2674_defconfig
+sh                          urquell_defconfig
+ia64                        generic_defconfig
+ia64                          tiger_defconfig
+csky                                defconfig
+sh                        edosk7760_defconfig
+sh                           se7712_defconfig
+arm                         s5pv210_defconfig
+arm                        mvebu_v7_defconfig
+um                           x86_64_defconfig
+sh                           se7724_defconfig
+sh                               allmodconfig
+mips                           rs90_defconfig
+powerpc                      ppc64e_defconfig
+sh                         ecovec24_defconfig
+sh                          r7780mp_defconfig
+arm                           omap1_defconfig
+powerpc                    gamecube_defconfig
+m68k                          amiga_defconfig
+ia64                             alldefconfig
+powerpc                    adder875_defconfig
+nds32                             allnoconfig
+mips                          rb532_defconfig
+powerpc                     mpc83xx_defconfig
+mips                      malta_kvm_defconfig
+sparc                            alldefconfig
+mips                       capcella_defconfig
+powerpc                      ppc6xx_defconfig
+arm                             mxs_defconfig
+mips                        omega2p_defconfig
+mips                       rbtx49xx_defconfig
+mips                         cobalt_defconfig
+mips                malta_kvm_guest_defconfig
+arm                          pcm027_defconfig
+ia64                            zx1_defconfig
+mips                         mpc30x_defconfig
+alpha                               defconfig
+arm                           tegra_defconfig
+arm                         s3c2410_defconfig
+m68k                          hp300_defconfig
+arm                        clps711x_defconfig
+mips                      pic32mzda_defconfig
+mips                      maltasmvp_defconfig
+arm                           sunxi_defconfig
+riscv                    nommu_virt_defconfig
+powerpc                      pmac32_defconfig
+arm                      footbridge_defconfig
+mips                        nlm_xlr_defconfig
+microblaze                      mmu_defconfig
+arm                        oxnas_v6_defconfig
+arm                       aspeed_g4_defconfig
+mips                          ath79_defconfig
+sh                               j2_defconfig
+sh                             espt_defconfig
+h8300                    h8300h-sim_defconfig
+mips                  decstation_64_defconfig
+powerpc                      pasemi_defconfig
+m68k                       m5475evb_defconfig
+arc                        nsim_700_defconfig
+arm                          pxa168_defconfig
+sh                        sh7785lcr_defconfig
+arm                          imote2_defconfig
+sh                          kfr2r09_defconfig
+sh                          sdk7786_defconfig
+arm                           spitz_defconfig
+powerpc                        cell_defconfig
+powerpc                      ppc44x_defconfig
+powerpc                     powernv_defconfig
+arm                           h3600_defconfig
+mips                          rm200_defconfig
+arc                        nsimosci_defconfig
+m68k                       m5208evb_defconfig
+arm                   milbeaut_m10v_defconfig
+c6x                        evmc6472_defconfig
+sh                           sh2007_defconfig
+mips                        nlm_xlp_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20200817
+x86_64               randconfig-a001-20200817
+x86_64               randconfig-a005-20200817
+x86_64               randconfig-a003-20200817
+x86_64               randconfig-a002-20200817
+x86_64               randconfig-a004-20200817
+i386                 randconfig-a005-20200816
+i386                 randconfig-a001-20200816
+i386                 randconfig-a002-20200816
+i386                 randconfig-a003-20200816
+i386                 randconfig-a006-20200816
+i386                 randconfig-a004-20200816
+i386                 randconfig-a005-20200817
+i386                 randconfig-a001-20200817
+i386                 randconfig-a002-20200817
+i386                 randconfig-a003-20200817
+i386                 randconfig-a006-20200817
+i386                 randconfig-a004-20200817
+i386                 randconfig-a005-20200818
+i386                 randconfig-a002-20200818
+i386                 randconfig-a001-20200818
+i386                 randconfig-a006-20200818
+i386                 randconfig-a003-20200818
+i386                 randconfig-a004-20200818
+x86_64               randconfig-a013-20200818
+x86_64               randconfig-a016-20200818
+x86_64               randconfig-a012-20200818
+x86_64               randconfig-a011-20200818
+x86_64               randconfig-a014-20200818
+x86_64               randconfig-a015-20200818
+x86_64               randconfig-a013-20200816
+x86_64               randconfig-a012-20200816
+x86_64               randconfig-a016-20200816
+x86_64               randconfig-a011-20200816
+x86_64               randconfig-a014-20200816
+x86_64               randconfig-a015-20200816
+i386                 randconfig-a016-20200817
+i386                 randconfig-a011-20200817
+i386                 randconfig-a013-20200817
+i386                 randconfig-a015-20200817
+i386                 randconfig-a014-20200817
+i386                 randconfig-a012-20200817
+i386                 randconfig-a016-20200818
+i386                 randconfig-a011-20200818
+i386                 randconfig-a015-20200818
+i386                 randconfig-a013-20200818
+i386                 randconfig-a012-20200818
+i386                 randconfig-a014-20200818
+i386                 randconfig-a016-20200816
+i386                 randconfig-a011-20200816
+i386                 randconfig-a013-20200816
+i386                 randconfig-a015-20200816
+i386                 randconfig-a014-20200816
+i386                 randconfig-a012-20200816
+x86_64               randconfig-a006-20200819
+x86_64               randconfig-a001-20200819
+x86_64               randconfig-a003-20200819
+x86_64               randconfig-a005-20200819
+x86_64               randconfig-a004-20200819
+x86_64               randconfig-a002-20200819
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
 ---
- drivers/net/ethernet/intel/igc/igc_ptp.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 36c999250fcc..6a9b5102aa55 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -364,6 +364,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
- 	struct sk_buff *skb = adapter->ptp_tx_skb;
- 	struct skb_shared_hwtstamps shhwtstamps;
- 	struct igc_hw *hw = &adapter->hw;
-+	int adjust = 0;
- 	u64 regval;
- 
- 	if (WARN_ON_ONCE(!skb))
-@@ -373,6 +374,24 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
- 	regval |= (u64)rd32(IGC_TXSTMPH) << 32;
- 	igc_ptp_systim_to_hwtstamp(adapter, &shhwtstamps, regval);
- 
-+	switch (adapter->link_speed) {
-+	case SPEED_10:
-+		adjust = IGC_I225_TX_LATENCY_10;
-+		break;
-+	case SPEED_100:
-+		adjust = IGC_I225_TX_LATENCY_100;
-+		break;
-+	case SPEED_1000:
-+		adjust = IGC_I225_TX_LATENCY_1000;
-+		break;
-+	case SPEED_2500:
-+		adjust = IGC_I225_TX_LATENCY_2500;
-+		break;
-+	}
-+
-+	shhwtstamps.hwtstamp =
-+		ktime_add_ns(shhwtstamps.hwtstamp, adjust);
-+
- 	/* Clear the lock early before calling skb_tstamp_tx so that
- 	 * applications are not woken up before the lock bit is clear. We use
- 	 * a copy of the skb pointer to ensure other threads can't change it
--- 
-2.28.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
