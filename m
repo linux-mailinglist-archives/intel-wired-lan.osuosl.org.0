@@ -1,62 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73CF424C3D3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Aug 2020 18:57:09 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFE6624C50A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Aug 2020 20:04:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id F0634869D7;
-	Thu, 20 Aug 2020 16:57:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CABF6204E5;
+	Thu, 20 Aug 2020 18:04:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8uszoSsaJN_i; Thu, 20 Aug 2020 16:57:07 +0000 (UTC)
+	with ESMTP id C74t3WaGDjHr; Thu, 20 Aug 2020 18:04:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 171B8869D9;
-	Thu, 20 Aug 2020 16:57:07 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9AF912049F;
+	Thu, 20 Aug 2020 18:04:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7E5461BF355
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Aug 2020 16:57:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6551F1BF3C3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Aug 2020 18:04:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 76ECC869C0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Aug 2020 16:57:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 60BD786880
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Aug 2020 18:04:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9Md0snOKFGZY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Aug 2020 16:57:04 +0000 (UTC)
+ with ESMTP id kU3QJFJjkBtd for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Aug 2020 18:04:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 89B24869AC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Aug 2020 16:57:04 +0000 (UTC)
-IronPort-SDR: kuHbukSeiDUFX2VA4fdnFsaJI2QUVR99UE/drb3Q0OttUbMgJlkKLe4238EZ5KoSvDxQ+wI7zH
- KclaIbuIuNGQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9718"; a="143152358"
-X-IronPort-AV: E=Sophos;i="5.76,333,1592895600"; d="scan'208";a="143152358"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 5CD9886957
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Aug 2020 18:04:07 +0000 (UTC)
+IronPort-SDR: Oc1kO3HhSYVOC6faZFFx8drL99a2iC6wsLCyW+HZpvjyLUL0HV2HcTNeGwodlXkEHLyVhGYZXQ
+ XMWQJQKU96PQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9718"; a="134902521"
+X-IronPort-AV: E=Sophos;i="5.76,334,1592895600"; d="scan'208";a="134902521"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2020 09:57:03 -0700
-IronPort-SDR: SpP52+PYmcCRug9mKPMauRqpa/+6bVTp0UbJXDXI+SH1r31Fuado2jXXguhRUVQPAgklb6yl74
- Vs8oBgYUQLxg==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Aug 2020 11:04:06 -0700
+IronPort-SDR: QBEEtp/ORGQ8hbu/QbvIr0FXCEYJg4qAdw/JeQ/dOkxn5UGZxWCnSA8VLdcoL5Zl8jh4tzjyTf
+ onKXlkqDKWyw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,333,1592895600"; d="scan'208";a="498214383"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga005.fm.intel.com with ESMTP; 20 Aug 2020 09:57:00 -0700
-Date: Thu, 20 Aug 2020 18:51:21 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@gmail.com>
-Message-ID: <20200820165121.GA9731@ranger.igk.intel.com>
+X-IronPort-AV: E=Sophos;i="5.76,334,1592895600"; d="scan'208";a="371671063"
+Received: from mkorak-mobl.ger.corp.intel.com (HELO btopel-mobl.ger.intel.com)
+ ([10.252.52.12])
+ by orsmga001.jf.intel.com with ESMTP; 20 Aug 2020 11:04:04 -0700
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
 References: <1594967062-20674-1-git-send-email-lirongqing@baidu.com>
  <CAJ+HfNi2B+2KYP9A7yCfFUhfUBd=sFPeuGbNZMjhNSdq3GEpMg@mail.gmail.com>
  <CAJ+HfNjybUeN9v6N-pnupi32088PL+ZXu8CKWGWmowOaH4nmOw@mail.gmail.com>
+ <20200820165121.GA9731@ranger.igk.intel.com>
+From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>
+Message-ID: <4a78ace0-e84e-786f-127d-a3ab7d2a7c3f@intel.com>
+Date: Thu, 20 Aug 2020 20:04:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAJ+HfNjybUeN9v6N-pnupi32088PL+ZXu8CKWGWmowOaH4nmOw@mail.gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20200820165121.GA9731@ranger.igk.intel.com>
+Content-Language: en-US
 Subject: Re: [Intel-wired-lan] [PATCH 0/2] intel/xdp fixes for fliping rx
  buffer
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -74,123 +78,57 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: Netdev <netdev@vger.kernel.org>, Maciej <maciej.machnikowski@intel.com>,
  Li RongQing <lirongqing@baidu.com>,
  intel-wired-lan <intel-wired-lan@lists.osuosl.org>, bpf <bpf@vger.kernel.org>,
- =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ "Karlsson, Magnus" <magnus.karlsson@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Aug 20, 2020 at 05:13:16PM +0200, Bj=F6rn T=F6pel wrote:
-> On Tue, 18 Aug 2020 at 16:04, Bj=F6rn T=F6pel <bjorn.topel@gmail.com> wro=
-te:
-> >
-> > On Fri, 17 Jul 2020 at 08:24, Li RongQing <lirongqing@baidu.com> wrote:
-> > >
-> > > This fixes ice/i40e/ixgbe/ixgbevf_rx_buffer_flip in
-> > > copy mode xdp that can lead to data corruption.
-> > >
-> > > I split two patches, since i40e/xgbe/ixgbevf supports xsk
-> > > receiving from 4.18, put their fixes in a patch
-> > >
-> >
-> > Li, sorry for the looong latency. I took a looong vacation. :-P
-> >
-> > Thanks for taking a look at this, but I believe this is not a bug.
-> >
-> =
-
-> Ok, dug a bit more into this. I had an offlist discussion with Li, and
-> there are two places (AFAIK) where Li experience a BUG() in
-> tcp_collapse():
-> =
-
->             BUG_ON(offset < 0);
-> and
->                 if (skb_copy_bits(skb, offset, skb_put(nskb, size), size))
->                     BUG();
-> =
-
-> (Li, please correct me if I'm wrong.)
-> =
-
-> I still claim that the page-flipping mechanism is correct, but I found
-> some weirdness in the build_skb() call.
-> =
-
-> In drivers/net/ethernet/intel/i40e/i40e_txrx.c, build_skb() is invoked as:
->     skb =3D build_skb(xdp->data_hard_start, truesize);
-> =
-
-> For the setup Li has truesize is 2048 (half a page), but the
-> rx_buf_len is 1536. In the driver a packet is layed out as:
-> =
-
-> | padding 192 | packet data 1536 | skb shared info 320 |
-> =
-
-> build_skb() assumes that the second argument (frag_size) is max packet
-> size + SKB_DATA_ALIGN(sizeof(struct skb_shared_info)). In other words,
-> frag_size should not include the padding (192 above). In build_skb(),
-
-Not sure I am buying that reasoning. It assumes the padding + packet_data
-and we use skb_reserve() to tell the skb about the padding.
-
-__build_skb_around() subtracts sizeof(struct skb_shared_info) from size
-that we are providing, so now we are with padding + packet_data.
-Then it is used to calculate the skb->end.
-
-Back to i40e_build_skb(), we use the skb_reserve() to advance the
-skb->data and skb->tail so that they point to packet_data. Finally
-__skb_put() will move the skb->tail to the end of packet_data.
-
-Wouldn't your approach disallow having the headroom at all in the linear
-part of skb?
-
-> frag_size is used to compute the skb truesize and skb end. i40e passes
-
-IMHO skb->end is correct. For skb->truesize I would assume that the
-headroom should also be taken into account for tracking how many bytes a
-particular skb consumes, no?
-
-> a too large buffer, and can therefore potentially corrupt the skb, and
-> maybe this is the reason for tcp_collapse() splatting.
-> =
-
-> Li, could you test if you get the splat with this patch:
-> =
-
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> index 3e5c566ceb01..acfb4ad9b506 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-> @@ -2065,7 +2065,8 @@ static struct sk_buff *i40e_build_skb(struct
-> i40e_ring *rx_ring,
->  {
->      unsigned int metasize =3D xdp->data - xdp->data_meta;
->  #if (PAGE_SIZE < 8192)
-> -    unsigned int truesize =3D i40e_rx_pg_size(rx_ring) / 2;
-> +    unsigned int truesize =3D rx_ring->rx_buf_len +
-> +                SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
-
-This will actually break the page flipping scheme. We need a separate
-variable for that and use the old truesize to bump the page_offset.
-
->  #else
->      unsigned int truesize =3D SKB_DATA_ALIGN(sizeof(struct skb_shared_in=
-fo)) +
->                  SKB_DATA_ALIGN(xdp->data_end -
-> =
-
-> I'll have a look in the other Intel drivers, and see if there are
-> similar issues. I'll cook a patch.
-> =
-
-> =
-
-> Bj=F6rn
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMjAyMC0wOC0yMCAxODo1MSwgTWFjaWVqIEZpamFsa293c2tpIHdyb3RlOgo+IE9uIFRodSwg
+QXVnIDIwLCAyMDIwIGF0IDA1OjEzOjE2UE0gKzAyMDAsIEJqw7ZybiBUw7ZwZWwgd3JvdGU6Cj4+
+IE9uIFR1ZSwgMTggQXVnIDIwMjAgYXQgMTY6MDQsIEJqw7ZybiBUw7ZwZWwgPGJqb3JuLnRvcGVs
+QGdtYWlsLmNvbT4gd3JvdGU6Cj4+Pgo+Pj4gT24gRnJpLCAxNyBKdWwgMjAyMCBhdCAwODoyNCwg
+TGkgUm9uZ1FpbmcgPGxpcm9uZ3FpbmdAYmFpZHUuY29tPiB3cm90ZToKPj4+Pgo+Pj4+IFRoaXMg
+Zml4ZXMgaWNlL2k0MGUvaXhnYmUvaXhnYmV2Zl9yeF9idWZmZXJfZmxpcCBpbgo+Pj4+IGNvcHkg
+bW9kZSB4ZHAgdGhhdCBjYW4gbGVhZCB0byBkYXRhIGNvcnJ1cHRpb24uCj4+Pj4KPj4+PiBJIHNw
+bGl0IHR3byBwYXRjaGVzLCBzaW5jZSBpNDBlL3hnYmUvaXhnYmV2ZiBzdXBwb3J0cyB4c2sKPj4+
+PiByZWNlaXZpbmcgZnJvbSA0LjE4LCBwdXQgdGhlaXIgZml4ZXMgaW4gYSBwYXRjaAo+Pj4+Cj4+
+Pgo+Pj4gTGksIHNvcnJ5IGZvciB0aGUgbG9vb25nIGxhdGVuY3kuIEkgdG9vayBhIGxvb29uZyB2
+YWNhdGlvbi4gOi1QCj4+Pgo+Pj4gVGhhbmtzIGZvciB0YWtpbmcgYSBsb29rIGF0IHRoaXMsIGJ1
+dCBJIGJlbGlldmUgdGhpcyBpcyBub3QgYSBidWcuCj4+Pgo+Pgo+PiBPaywgZHVnIGEgYml0IG1v
+cmUgaW50byB0aGlzLiBJIGhhZCBhbiBvZmZsaXN0IGRpc2N1c3Npb24gd2l0aCBMaSwgYW5kCj4+
+IHRoZXJlIGFyZSB0d28gcGxhY2VzIChBRkFJSykgd2hlcmUgTGkgZXhwZXJpZW5jZSBhIEJVRygp
+IGluCj4+IHRjcF9jb2xsYXBzZSgpOgo+Pgo+PiAgICAgICAgICAgICAgQlVHX09OKG9mZnNldCA8
+IDApOwo+PiBhbmQKPj4gICAgICAgICAgICAgICAgICBpZiAoc2tiX2NvcHlfYml0cyhza2IsIG9m
+ZnNldCwgc2tiX3B1dChuc2tiLCBzaXplKSwgc2l6ZSkpCj4+ICAgICAgICAgICAgICAgICAgICAg
+IEJVRygpOwo+Pgo+PiAoTGksIHBsZWFzZSBjb3JyZWN0IG1lIGlmIEknbSB3cm9uZy4pCj4+Cj4+
+IEkgc3RpbGwgY2xhaW0gdGhhdCB0aGUgcGFnZS1mbGlwcGluZyBtZWNoYW5pc20gaXMgY29ycmVj
+dCwgYnV0IEkgZm91bmQKPj4gc29tZSB3ZWlyZG5lc3MgaW4gdGhlIGJ1aWxkX3NrYigpIGNhbGwu
+Cj4+Cj4+IEluIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV90eHJ4LmMsIGJ1
+aWxkX3NrYigpIGlzIGludm9rZWQgYXM6Cj4+ICAgICAgc2tiID0gYnVpbGRfc2tiKHhkcC0+ZGF0
+YV9oYXJkX3N0YXJ0LCB0cnVlc2l6ZSk7Cj4+Cj4+IEZvciB0aGUgc2V0dXAgTGkgaGFzIHRydWVz
+aXplIGlzIDIwNDggKGhhbGYgYSBwYWdlKSwgYnV0IHRoZQo+PiByeF9idWZfbGVuIGlzIDE1MzYu
+IEluIHRoZSBkcml2ZXIgYSBwYWNrZXQgaXMgbGF5ZWQgb3V0IGFzOgo+Pgo+PiB8IHBhZGRpbmcg
+MTkyIHwgcGFja2V0IGRhdGEgMTUzNiB8IHNrYiBzaGFyZWQgaW5mbyAzMjAgfAo+Pgo+PiBidWls
+ZF9za2IoKSBhc3N1bWVzIHRoYXQgdGhlIHNlY29uZCBhcmd1bWVudCAoZnJhZ19zaXplKSBpcyBt
+YXggcGFja2V0Cj4+IHNpemUgKyBTS0JfREFUQV9BTElHTihzaXplb2Yoc3RydWN0IHNrYl9zaGFy
+ZWRfaW5mbykpLiBJbiBvdGhlciB3b3JkcywKPj4gZnJhZ19zaXplIHNob3VsZCBub3QgaW5jbHVk
+ZSB0aGUgcGFkZGluZyAoMTkyIGFib3ZlKS4gSW4gYnVpbGRfc2tiKCksCj4gCj4gTm90IHN1cmUg
+SSBhbSBidXlpbmcgdGhhdCByZWFzb25pbmcuIEl0IGFzc3VtZXMgdGhlIHBhZGRpbmcgKyBwYWNr
+ZXRfZGF0YQo+IGFuZCB3ZSB1c2Ugc2tiX3Jlc2VydmUoKSB0byB0ZWxsIHRoZSBza2IgYWJvdXQg
+dGhlIHBhZGRpbmcuCj4gCj4gX19idWlsZF9za2JfYXJvdW5kKCkgc3VidHJhY3RzIHNpemVvZihz
+dHJ1Y3Qgc2tiX3NoYXJlZF9pbmZvKSBmcm9tIHNpemUKPiB0aGF0IHdlIGFyZSBwcm92aWRpbmcs
+IHNvIG5vdyB3ZSBhcmUgd2l0aCBwYWRkaW5nICsgcGFja2V0X2RhdGEuCj4gVGhlbiBpdCBpcyB1
+c2VkIHRvIGNhbGN1bGF0ZSB0aGUgc2tiLT5lbmQuCj4gCj4gQmFjayB0byBpNDBlX2J1aWxkX3Nr
+YigpLCB3ZSB1c2UgdGhlIHNrYl9yZXNlcnZlKCkgdG8gYWR2YW5jZSB0aGUKPiBza2ItPmRhdGEg
+YW5kIHNrYi0+dGFpbCBzbyB0aGF0IHRoZXkgcG9pbnQgdG8gcGFja2V0X2RhdGEuIEZpbmFsbHkK
+PiBfX3NrYl9wdXQoKSB3aWxsIG1vdmUgdGhlIHNrYi0+dGFpbCB0byB0aGUgZW5kIG9mIHBhY2tl
+dF9kYXRhLgo+IAo+IFdvdWxkbid0IHlvdXIgYXBwcm9hY2ggZGlzYWxsb3cgaGF2aW5nIHRoZSBo
+ZWFkcm9vbSBhdCBhbGwgaW4gdGhlIGxpbmVhcgo+IHBhcnQgb2Ygc2tiPwo+CgpNZWEgY3VscGEu
+CgpZb3UncmUgcGVyZmVjdGx5IHJpZ2h0LCBhbmQgSSdtIGFsbCB3cm9uZy4gVGhhbmtzIGZvciBz
+b3J0aW5nIHRoYXQgb3V0LiAKeGRwLT5kYXRhX2hhcmRfc3RhcnQgbWVzc2VkIHVwIG15IG5ldXJv
+bnMgKGlmIGFueSBvbmUgc2hvdWxkIGFzaykuCgoqY2xpbWJpbmcgYmFjayBpbnRvIHRoZSBjYXZl
+KgoKClNvcnJ5IGZvciB0aGUgbWFpbCBub2lzZSwKQmrDtnJuCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
+SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
+YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
