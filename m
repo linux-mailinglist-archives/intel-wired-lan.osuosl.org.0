@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2F402502C2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Aug 2020 18:36:02 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 412532502E0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Aug 2020 18:37:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 560792077C;
-	Mon, 24 Aug 2020 16:36:01 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F236285F54;
+	Mon, 24 Aug 2020 16:37:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QedyqWAxF58S; Mon, 24 Aug 2020 16:36:01 +0000 (UTC)
+	with ESMTP id SF5PreikVqhJ; Mon, 24 Aug 2020 16:37:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id E7FC820798;
-	Mon, 24 Aug 2020 16:35:58 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2C59E85F68;
+	Mon, 24 Aug 2020 16:37:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A95EF1BF34C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Aug 2020 16:35:56 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 65F961BF34C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Aug 2020 16:37:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9EC0B20780
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Aug 2020 16:35:56 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 611DE876F7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Aug 2020 16:37:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MyDuwN1cWiNc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Aug 2020 16:35:55 +0000 (UTC)
+ with ESMTP id Wqg-SMFfixPv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Aug 2020 16:37:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by silver.osuosl.org (Postfix) with ESMTPS id C815A2077C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Aug 2020 16:35:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D52DF876E4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Aug 2020 16:37:19 +0000 (UTC)
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6E44E22D07;
- Mon, 24 Aug 2020 16:35:54 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 983DB22D08;
+ Mon, 24 Aug 2020 16:37:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598286955;
+ s=default; t=1598287039;
  bh=6v8rcxjk5E46zO64zz2NpKgHnlGR5IMJkXeHxdpH0BU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jv3uO6/qNyAP/QSdpLnPhVCsuKLlrohgBkje9EgiPWTnTMASEANceQ00KEChujFMv
- ube4eOx0LC3o8fuyQlSi6Qp3OfTIp2/pTxAVaJgDunI+Ljt0GdfnZgt7/CW4E0Va3N
- GZWrkqNQHs06s51iN2tffFvyaAQmD/khp1YEGphM=
+ b=SBPJvsoRNRrR4FJ535hSSVsMnhtxul4W4uRmxCoInXUpzJlJntrDzdx6AEHjUP3nj
+ zSnpfEyBK2FG1SVe/LRza2qVZnPKkxMvZ3IUiDEemfjaQt9JOXlaADIgjsW+NAxCf7
+ amA2oEmp8vOujv8WwEf9ige46M1bF+Ry1YDxuYJg=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Mon, 24 Aug 2020 12:34:38 -0400
-Message-Id: <20200824163504.605538-38-sashal@kernel.org>
+Date: Mon, 24 Aug 2020 12:36:12 -0400
+Message-Id: <20200824163634.606093-33-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200824163504.605538-1-sashal@kernel.org>
-References: <20200824163504.605538-1-sashal@kernel.org>
+In-Reply-To: <20200824163634.606093-1-sashal@kernel.org>
+References: <20200824163634.606093-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.8 38/63] scsi: fcoe: Fix I/O
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 5.7 33/54] scsi: fcoe: Fix I/O
  path allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
