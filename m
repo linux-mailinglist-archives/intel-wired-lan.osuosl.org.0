@@ -1,65 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9242A2517BA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Aug 2020 13:36:07 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E280A2517BC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Aug 2020 13:36:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 40CDC88093;
-	Tue, 25 Aug 2020 11:36:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id CC2E7204A9;
+	Tue, 25 Aug 2020 11:36:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H+SEhGByuk4O; Tue, 25 Aug 2020 11:36:05 +0000 (UTC)
+	with ESMTP id kL16rYdUjpxd; Tue, 25 Aug 2020 11:36:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0BEA787F5F;
-	Tue, 25 Aug 2020 11:36:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 8AF39204DF;
+	Tue, 25 Aug 2020 11:36:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0D6AE1BF48D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 11:36:03 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 678931BF48D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 11:36:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 067C98691A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 11:36:03 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 63261204B3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 11:36:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dfdbFx14JcNE for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Aug 2020 11:36:01 +0000 (UTC)
+ with ESMTP id YacqoHLUtamy for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Aug 2020 11:36:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 89F9F86918
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 11:36:01 +0000 (UTC)
-IronPort-SDR: N+kg0SawKbVCsNW6MWkxqKdKpXPFAh9A0tLCegy75BSmpJwANM66hZ1tUS7AQCNZRk4lhveJTc
- Ulp4U7XMoRqw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9723"; a="143863632"
-X-IronPort-AV: E=Sophos;i="5.76,352,1592895600"; d="scan'208";a="143863632"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Aug 2020 04:36:00 -0700
-IronPort-SDR: JcfeAB+IY6BHvoLpUvmza9UT4NsM7eb3BOD25a9XPyxXKQuPbW+Ai8PkjSp0tidLhmWxCIgUGd
- FfnecQjUfEPg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,352,1592895600"; d="scan'208";a="294966479"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by orsmga003.jf.intel.com with ESMTP; 25 Aug 2020 04:35:58 -0700
-Date: Tue, 25 Aug 2020 13:29:53 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: =?iso-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn.topel@intel.com>
-Message-ID: <20200825112953.GB38865@ranger.igk.intel.com>
-References: <20200825091629.12949-1-bjorn.topel@gmail.com>
- <20200825091629.12949-2-bjorn.topel@gmail.com>
- <20200825111336.GA38865@ranger.igk.intel.com>
- <256ab09e-1cea-c8ab-9589-b0c5809bdea7@intel.com>
+Received: from mail-pj1-f66.google.com (mail-pj1-f66.google.com
+ [209.85.216.66])
+ by silver.osuosl.org (Postfix) with ESMTPS id A82F8204A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 11:36:13 +0000 (UTC)
+Received: by mail-pj1-f66.google.com with SMTP id q1so1103222pjd.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Aug 2020 04:36:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=G5TWazzzMgjC9Slh4n6C2utp132vqwOdTyqnBKUdMpI=;
+ b=aA1xYLITkGAScs4a36jGJoqczNTRUpXBf8l/paUBl3mDrZiVkmbdVZ9JXPsoqzzApa
+ KBcDqNMM34uEWH524uRt5CnUJOWsM+yCohXl4GJfy9WO8o5x9+oA3pafSxYSewzMrpTB
+ gX0Nfm9cIAH9HOFhKuyvKzmIzubCu8hgkQoheStAJ6NlzKCdULx8tA6bjfECWRBWore5
+ tYe4cDPurSEU2tAnfo+VTFpLCObr4gXxBKgyfKWCARN/HeEXyg3PPZaFSLWkMI5xmVyY
+ 0Vu5E4T65scLOem0nF/1auSnfy9rc7/6aoDi3krbd3RBTQRLhUTJMSBUgU/o8ChUHVl7
+ zJ1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=G5TWazzzMgjC9Slh4n6C2utp132vqwOdTyqnBKUdMpI=;
+ b=ZC/OqDkscHJpoocEusOR5Q05Pe9rt39SHI5N9KogZ8E/4rXKl1ugg3vlHfMb/M2U2b
+ 9VH51+NQu+XNI9ili7tzbli7KDN+wM6Fl02DdUE8mlztAJyc5Rrn+XSj75KSLFLmL4Xf
+ N/kspeVMPjHKX5vrDeaMRVQvgsi2if/qf1zvBhmpodFW3Q0cJY9A4m4PGXVGMyjVaLik
+ bOqsFTd+r9a6NMvfOBA5zNzDqRG4N60kW9A79SXAI0G6wrMvyNyDi4/QbpEP2XnBfMqv
+ J/7SyxaCnhS/ATaQxZHgwsVF6yhK3KTWd5oDrz5aGm/bppGvdDorEflt07g2n7lT96bU
+ MYkA==
+X-Gm-Message-State: AOAM531oATXUPpTBjXxPLdSrJR6zUjfavSzTaQiozsPqyW3NAQsmi61S
+ xL3/jrBF3ZnlkwD7x2pSaHscqQNL+Rt1Iw==
+X-Google-Smtp-Source: ABdhPJzQDPQApDpR0aE4b/lgD3iBQmB+PwT/twzUE45OQ8F7EVRGMnmWWmDM73jv1oTqKpi452tzSg==
+X-Received: by 2002:a17:90b:b18:: with SMTP id
+ bf24mr1134056pjb.223.1598355372921; 
+ Tue, 25 Aug 2020 04:36:12 -0700 (PDT)
+Received: from btopel-mobl.ger.intel.com ([192.55.54.40])
+ by smtp.gmail.com with ESMTPSA id e7sm12699937pgn.64.2020.08.25.04.36.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2020 04:36:12 -0700 (PDT)
+From: =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@gmail.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 25 Aug 2020 13:35:53 +0200
+Message-Id: <20200825113556.18342-1-bjorn.topel@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <256ab09e-1cea-c8ab-9589-b0c5809bdea7@intel.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH net 1/3] i40e: avoid premature Rx
- buffer reuse
+Subject: [Intel-wired-lan] [PATCH net-next v2 0/3] i40e driver performance
+ tweaks for AF_XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,128 +85,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.machnikowski@intel.com, lirongqing@baidu.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- magnus.karlsson@intel.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: bpf@vger.kernel.org, kuba@kernel.org, magnus.karlsson@intel.com,
+ netdev@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 25, 2020 at 01:25:16PM +0200, Bj=F6rn T=F6pel wrote:
-> On 2020-08-25 13:13, Maciej Fijalkowski wrote:
-> > On Tue, Aug 25, 2020 at 11:16:27AM +0200, Bj=F6rn T=F6pel wrote:
-> [...]
-> > >   	struct i40e_rx_buffer *rx_buffer;
-> > >   	rx_buffer =3D i40e_rx_bi(rx_ring, rx_ring->next_to_clean);
-> > > +	*rx_buffer_pgcnt =3D i40e_rx_buffer_page_count(rx_buffer);
-> > =
-
-> > What i previously meant was:
-> > =
-
-> > #if (PAGE_SIZE < 8192)
-> > 	*rx_buffer_pgcnt =3D page_count(rx_buffer->page);
-> > #endif
-> > =
-
-> > and see below
-> > =
-
-> =
-
-> Right...
-> =
-
-> > >   	prefetchw(rx_buffer->page);
-> > >   	/* we are reusing so sync this buffer for CPU use */
-> > > @@ -2112,9 +2124,10 @@ static struct sk_buff *i40e_build_skb(struct i=
-40e_ring *rx_ring,
-> > >    * either recycle the buffer or unmap it and free the associated re=
-sources.
-> > >    */
-> > >   static void i40e_put_rx_buffer(struct i40e_ring *rx_ring,
-> > > -			       struct i40e_rx_buffer *rx_buffer)
-> > > +			       struct i40e_rx_buffer *rx_buffer,
-> > > +			       int rx_buffer_pgcnt)
-> > >   {
-> > > -	if (i40e_can_reuse_rx_page(rx_buffer)) {
-> > > +	if (i40e_can_reuse_rx_page(rx_buffer, rx_buffer_pgcnt)) {
-> > >   		/* hand second half of page back to the ring */
-> > >   		i40e_reuse_rx_page(rx_ring, rx_buffer);
-> > >   	} else {
-> > > @@ -2319,6 +2332,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *=
-rx_ring, int budget)
-> > >   	unsigned int xdp_xmit =3D 0;
-> > >   	bool failure =3D false;
-> > >   	struct xdp_buff xdp;
-> > > +	int rx_buffer_pgcnt;
-> > =
-
-> > you could move scope this variable only for the
-> > =
-
-> > while (likely(total_rx_packets < (unsigned int)budget))
-> > =
-
-> > loop and init this to 0. then you could drop the helper function you've
-> > added. and BTW the page_count is not being used for big pages but i agr=
-ee
-> > that it's better to have it set to 0.
-> > =
-
-> =
-
-> ...but isn't it a bit nasty with an output parameter that relies on the t=
-hat
-> the input was set to zero. I guess it's a matter of taste, but I find that
-> more error prone.
-> =
-
-> Let me know if you have strong feelings about this, and I'll respin (but I
-> rather not!).
-
-Up to you. No strong feelings, i just think that i40e_rx_buffer_page_count
-is not needed. But if you want to keep it, then i was usually asking
-people to provide the doxygen descriptions for newly introduced
-functions... :P
-
-but scoping it still makes sense to me, static analysis tools would agree
-with me I guess.
-
-> =
-
-> =
-
-> Bj=F6rn
-> =
-
-> =
-
-> > >   #if (PAGE_SIZE < 8192)
-> > >   	xdp.frame_sz =3D i40e_rx_frame_truesize(rx_ring, 0);
-> > > @@ -2370,7 +2384,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *=
-rx_ring, int budget)
-> > >   			break;
-> > >   		i40e_trace(clean_rx_irq, rx_ring, rx_desc, skb);
-> > > -		rx_buffer =3D i40e_get_rx_buffer(rx_ring, size);
-> > > +		rx_buffer =3D i40e_get_rx_buffer(rx_ring, size, &rx_buffer_pgcnt);
-> > >   		/* retrieve a buffer from the ring */
-> > >   		if (!skb) {
-> > > @@ -2413,7 +2427,7 @@ static int i40e_clean_rx_irq(struct i40e_ring *=
-rx_ring, int budget)
-> > >   			break;
-> > >   		}
-> > > -		i40e_put_rx_buffer(rx_ring, rx_buffer);
-> > > +		i40e_put_rx_buffer(rx_ring, rx_buffer, rx_buffer_pgcnt);
-> > >   		cleaned_count++;
-> > >   		if (i40e_is_non_eop(rx_ring, rx_desc, skb))
-> > > -- =
-
-> > > 2.25.1
-> > > =
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhpcyBzZXJpZXMgY29udGFpbnMgdGhyZWUgcGF0Y2hlcyB3b3J0aCBvZiBkcml2ZXIgdHdlYWtz
+IGZvciB0aGUgaTQwZQpBRl9YRFAgUnggcGF0aCwgdGhhdCBpbiB0b3RhbCBpbXByb3ZlcyB0aGUg
+UnggcGVyZm9ybWFuY2UgKHJ4X2Ryb3AgNjRCCnBhY2tldHMtcGVyLXNlY29uZCkgd2l0aCA5JS4K
+ClBsZWFzZSByZWZlciB0byB0aGUgaW5kaXZpZHVhbCBjb21taXRzIGZvciBtb3JlIGRldGFpbHMu
+Cgp2MS0+djI6IFJlbW92ZWQgdGhlIG5hcGkgYnVkZ2V0IGluY3JlYXNlIHBhdGNoIFsxXS4gSW5z
+dGVhZCwgdGhhdCB3aWxsCiAgICAgICAgYmUgc2VudCBvdXQgYXMgYSBtb3JlIGdlbmVyaWMgc2Vy
+aWVzIHRoYXQgYWRkcmVzc2VzIGFsbCBBRl9YRFAKICAgICAgICB6ZXJvLWNvcHkgY2FwYWJsZSBk
+cml2ZXJzLCBhcyBzdWdnZXN0ZWQgYnkgSmFrdWIuIFsyXQoKQ2hlZXJzLApCasO2cm4KClsxXSBo
+dHRwczovL2xvcmUua2VybmVsLm9yZy9uZXRkZXYvMjAyMDA3MDIxNTM3MzAuNTc1NzM4LTQtYmpv
+cm4udG9wZWxAZ21haWwuY29tLwpbMl0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbmV0ZGV2LzIw
+MjAwNzI4MTMxNjUzLjNiOTAzMzZiQGtpY2luc2tpLWZlZG9yYS1wYzFjMGhqbi5kaGNwLnRoZWZh
+Y2Vib29rLmNvbS8KCgpCasO2cm4gVMO2cGVsICgzKToKICBpNDBlLCB4c2s6IHJlbW92ZSBIVyBk
+ZXNjcmlwdG9yIHByZWZldGNoIGluIEFGX1hEUCBwYXRoCiAgaTQwZTogdXNlIDE2QiBIVyBkZXNj
+cmlwdG9ycyBpbnN0ZWFkIG9mIDMyQgogIGk0MGUsIHhzazogbW92ZSBidWZmZXIgYWxsb2NhdGlv
+biBvdXQgb2YgdGhlIFJ4IHByb2Nlc3NpbmcgbG9vcAoKIGRyaXZlcnMvbmV0L2V0aGVybmV0L2lu
+dGVsL2k0MGUvaTQwZS5oICAgICAgICB8ICAyICstCiAuLi4vbmV0L2V0aGVybmV0L2ludGVsL2k0
+MGUvaTQwZV9kZWJ1Z2ZzLmMgICAgfCAxMCArKysrLS0tLQogZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaTQwZS9pNDBlX21haW4uYyAgIHwgIDQgKystLQogZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaTQwZS9pNDBlX3RyYWNlLmggIHwgIDYgKystLS0KIGRyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2k0MGUvaTQwZV90eHJ4LmMgICB8IDE5ICsrKysrKysrKysrKy0tLQogZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguaCAgIHwgIDIgKy0KIC4uLi9ldGhlcm5l
+dC9pbnRlbC9pNDBlL2k0MGVfdHhyeF9jb21tb24uaCAgICB8IDEzIC0tLS0tLS0tLS0KIGRyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV90eXBlLmggICB8ICA1ICsrKy0KIGRyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyAgICB8IDI0ICsrKysrKysrKysr
+Ky0tLS0tLS0KIDkgZmlsZXMgY2hhbmdlZCwgNDcgaW5zZXJ0aW9ucygrKSwgMzggZGVsZXRpb25z
+KC0pCgoKYmFzZS1jb21taXQ6IDA3OWY5MjFlOWY0ZDM5OTI5NjhhMmZjNWRjM2FmMGEzNTQwODUz
+Y2MKLS0gCjIuMjUuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3Ns
+Lm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJl
+ZC1sYW4K
