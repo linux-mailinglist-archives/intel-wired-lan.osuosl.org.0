@@ -1,102 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70D2F253AA0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Aug 2020 01:23:00 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0072253ABB
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Aug 2020 01:48:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2601F86227;
-	Wed, 26 Aug 2020 23:22:59 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CE9D588400;
+	Wed, 26 Aug 2020 23:48:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3iwOtckTc5OS; Wed, 26 Aug 2020 23:22:58 +0000 (UTC)
+	with ESMTP id U1zmamAVxWr2; Wed, 26 Aug 2020 23:48:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D35B986C31;
-	Wed, 26 Aug 2020 23:22:57 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 47A05883F8;
+	Wed, 26 Aug 2020 23:48:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C2E871BF5F6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:22:55 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B1CA81BF5F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:48:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id B88468636D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:22:55 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id AAB64883F8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:48:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S6zuc27OIkMI for <intel-wired-lan@lists.osuosl.org>;
- Wed, 26 Aug 2020 23:22:54 +0000 (UTC)
+ with ESMTP id vhv+ea-66q0B for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 Aug 2020 23:48:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id C9B7B86227
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:22:54 +0000 (UTC)
-IronPort-SDR: uwE2iyFlpnp4kvL4nfbIQ6YcB6/Tce3pUyX1gEH94QFpSdE5xq7iuGdKec2Dn/Wv4je3KsZWUY
- 53UAAslq8K2Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="220650438"
-X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="220650438"
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D0BDD88400
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:48:19 +0000 (UTC)
+IronPort-SDR: S2+pPzqb+Tny5EsmKnA2vSCXEnBUhjNr4vx1HdAPC/sz2XMmvG3Dgln3NIFnVkOQdCjZIeFXuW
+ AOqk5dLUahnw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="174450453"
+X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="174450453"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2020 16:22:53 -0700
-IronPort-SDR: LjqgnZc9gOOkPIWkF0dTPmzM/f9Rj1gNeuzXuCenCZNVMIOni5W66sTxvoXgwiFupFyfZJozyw
- 51vQE3nFXP2w==
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Aug 2020 16:48:18 -0700
+IronPort-SDR: ZgZCWs0adWyR7NkkWxkUnfxQYMoU4+7eGXbvGvOZP1+pcsar+rCZHkpIzuo5oG8Ly1lDY8wWUo
+ 3redxFdTEdkA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="474958861"
-Received: from fmsmsx603-2.cps.intel.com (HELO fmsmsx603.amr.corp.intel.com)
- ([10.18.84.213])
- by orsmga005.jf.intel.com with ESMTP; 26 Aug 2020 16:22:53 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="323389527"
+Received: from orsmsx601-2.jf.intel.com (HELO ORSMSX601.amr.corp.intel.com)
+ ([10.22.229.81])
+ by fmsmga004.fm.intel.com with ESMTP; 26 Aug 2020 16:48:18 -0700
+Received: from orsmsx609.amr.corp.intel.com (10.22.229.22) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 26 Aug 2020 16:22:47 -0700
-Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Wed, 26 Aug 2020 16:22:47 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ 15.1.1713.5; Wed, 26 Aug 2020 16:48:07 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx609.amr.corp.intel.com (10.22.229.22) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Wed, 26 Aug 2020 16:22:47 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.104)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ via Frontend Transport; Wed, 26 Aug 2020 16:48:07 -0700
+Received: from NAM04-BN3-obe.outbound.protection.outlook.com (104.47.46.54) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Wed, 26 Aug 2020 16:22:46 -0700
+ 15.1.1713.5; Wed, 26 Aug 2020 16:48:07 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=CsrV8fq9IoukQLkcmHaxi+cGG+j+m2n1vkExnzMI7Ia+oTErqRDhAoF+p0YAy2VH4wQDsyYkfWspF20Jl2HoFIqDr4oT15kavoY8DmxFjtyVSIDrBE3dzwe0c/TU0LBlveN2XH6Tf8AHB3OB7T93zeAyN3RojmbESG5raNF0EVf64h9i6duftKO0ms3Ut7N9fEFdysCo/DvczF8kAuOWEGH+/ps3nEv6wgLTEyqlojWTltzeKxXGt3Mxn5r3zPo0TGW9REPsOnaVklvmuReRVhMZ/6h/f/zVAFs1d0QsPt0NNMTtXFvTQGwL1m5sDAtXrXpDtO3ovBfVH/gaSRV5kQ==
+ b=LLMViu5e8zyMaU0fUpeUU93yZIpYURYYQKtNij9Nt4Y7zTtahn0V6ShuT2oLiNDjfBR2Ay8wS+d2P2ZY/OJLAPL4NEWN39cVny7NwhWWHqJqAZB+PlMnNnAVYFngivz0XwZZEVgllKOqvndCiUUF15ahlDNMO8GevplGiDrCU+pBFDb0h2Rr7KWZuxmFA5EdUQYkvdYncpoEBulCQQiWV56LN8A7g7/3xX+1w5bceglBneFT//lVo9sODBkAODm/tH1LLQtP3EyHmmhfW84Daft0hbHZyvnydRjqdrr8KtnVN0wZPMQ5N4MYCxwxQ7oRBj8uxUhSOZo9BPnMqkTFjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ThBuHltBsYETsbJ72EnPtMyLam3tMCAL1VlNbVz0CNk=;
- b=kamCl6S2cmYzJ4x/DECmKTqDaEy1scYuB8IaGBM3v+2xJ3ziKMClCkeCA5xcEuuWeeVrsqRXgiQj+vmiczInmZDJUvNiZyQ3nWfPErFo3Fd51nnSvuMFGPNQ+GJGPM2Hs7dknvQG0G3IG+d9/9TG3wGVnrLdF9HFlTjn0zucBfGm/V1qNqpJsAvxVfnU+Qkh4pG//6tkhvW+0oW96Lw6U3p0VvV7wwIO576+uxXuZcfgiFyVWQ3QKVvbQe8YzvlqZ0uFg8kpWQlwlPfsUCseOp6qOzLX3YvyfQ6YvJP2qhB4A3XZvnntnt0R5+u6/cL5V2Q6Bk+DgPoMp74u/0zrFA==
+ bh=02ua2DPyoPe/8V2z5I+AEkBi1Kt7CUNzKjpcbjQnO5w=;
+ b=QEVSl+rCT44eVErT394XAc7avO3iBX3TzAMHFZH2hcDDZZ5UIu6eLW3fx1YRk2A7OQYBDJUXDMLvuQs8yB8rqrQ9gj/u98/os0olgJJI3oKq1OjmA63aj2ZmVTDypdRgrctUaY2kmd1EgY50DKAv/UoA6jC/TXfHT6KDbhm07SqRP8OW0wMXdYGqwwAp6Bp3JwvOu/zgTI4W/vOnwXldy5eUOqnv2/S4BsZ4Z2OpTEZxkPRoiY858FBGxqq+1HbOy9qzsOaswaAcDMuHERjmHhC6NdsOvKS5jp4fWrNhFn8Uh+J6nwweTA8l9KYrnbf8+TsNq+PaWHjGGFykTILjlw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ThBuHltBsYETsbJ72EnPtMyLam3tMCAL1VlNbVz0CNk=;
- b=OaXgyV6rwbYxC/KW62daGlS0wQFdzedGERJukGpNjsOYknlPnYCoaKN+H2UrBwnZ9O7ury4p8ZJNQ4PxRzXDd38dC8kNB2ZtL2LQHk8FKL2vbTYMqGd8pCk+cn22hf9fPxjh8cUZ3w9FJQtxkYmbpFA9x/HADSpemyGeeEjoERQ=
+ bh=02ua2DPyoPe/8V2z5I+AEkBi1Kt7CUNzKjpcbjQnO5w=;
+ b=x0kaKEZ8sdCQZv4r2qsF/XZdwVDrBrAUzlfQa8fnkipi4ihwhfx31jdqdoEVZVd9NFZzpTwisssQ63a/t6hktM8saTb0Tm4J2qGCr6AiMq/KqERn+MgmlZVGyrLnsdkife3OeZlrdAqaevz/BjE5kzPEDt7677LAZVbMOifjp7E=
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM5PR11MB1945.namprd11.prod.outlook.com (2603:10b6:3:10b::15) with
+ DM5PR1101MB2073.namprd11.prod.outlook.com (2603:10b6:4:52::21) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3305.26; Wed, 26 Aug 2020 23:22:44 +0000
+ 15.20.3305.26; Wed, 26 Aug 2020 23:48:05 +0000
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::25c4:e65e:4d75:f45f]) by DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::25c4:e65e:4d75:f45f%7]) with mapi id 15.20.3305.031; Wed, 26 Aug 2020
- 23:22:44 +0000
+ 23:48:05 +0000
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Bixuan Cui <cuibixuan@huawei.com>, "davem@davemloft.net"
- <davem@davemloft.net>, "kuba@kernel.org" <kuba@kernel.org>
-Thread-Topic: [PATCH -next v2] net: ice: Fix pointer cast warnings
-Thread-Index: AQHWZyJ26lJRO5/MSU2ficxGgSvS46lLMVSQ
-Date: Wed, 26 Aug 2020 23:22:44 +0000
-Message-ID: <DM6PR11MB289004F11B8936F7C421A863BC540@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200731105721.18511-1-cuibixuan@huawei.com>
- <5af7c5af-c45d-2174-de89-8b89eddb4f4d@huawei.com>
-In-Reply-To: <5af7c5af-c45d-2174-de89-8b89eddb4f4d@huawei.com>
+To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v3] ice: remove repeated words
+Thread-Index: AQHWdaoZQXZzAXYu+0iXqH5pHJhBValLGziQ
+Date: Wed, 26 Aug 2020 23:48:05 +0000
+Message-ID: <DM6PR11MB2890BEE1E4C99C6EAD674F0ABC540@DM6PR11MB2890.namprd11.prod.outlook.com>
+References: <20200818214900.35776-1-anthony.l.nguyen@intel.com>
+In-Reply-To: <20200818214900.35776-1-anthony.l.nguyen@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -104,37 +99,35 @@ X-MS-TNEF-Correlator:
 dlp-version: 11.5.1.3
 dlp-product: dlpe-windows
 dlp-reaction: no-action
-authentication-results: huawei.com; dkim=none (message not signed)
- header.d=none;huawei.com; dmarc=none action=none header.from=intel.com;
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [97.120.215.99]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7dbc2e83-e446-49f1-986d-08d84a16eff7
-x-ms-traffictypediagnostic: DM5PR11MB1945:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-office365-filtering-correlation-id: 33ed8441-2e86-4b3a-bfb3-08d84a1a7a96
+x-ms-traffictypediagnostic: DM5PR1101MB2073:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM5PR11MB1945F5708111E262C6BCE255BC540@DM5PR11MB1945.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:22;
+x-microsoft-antispam-prvs: <DM5PR1101MB20738D90A20F520D286D5B8ABC540@DM5PR1101MB2073.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:792;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: BXKqwwhu3AOdNQMMd5AGn7vQ4YbHjoY3Ro5F3bnk5dZf4yT1IdZek8EJw3+UyQ7V1BWrJHMcyU/27MwtkAMliP0vHWQbpCC+z8uumrTxh8QC4a7gIzlSHi8hOSiUkZ/ReSIHjX3GV/ou0Xnfx84/0j9Ovfxcy66f+0GsvO9ZjZkLKts3QyZzQt7FAqyblPoKMXQguLU8CwtxUOfSiAVC5VjcOui8Ly2VefRjbOJqI8M8IHRb9W7+DW5HBG2og0GiA0cmjQsJgltEqK+SR9SBu/ShimZBa63CZ2hLMSzRseapOGEbxs7QRF3k6dqb8LAMxQ3+t6ryjEbpzkTHH9GzeQ==
+x-microsoft-antispam-message-info: a6ih2vM06uuWKGaSmgh1rL6OvYQNPb0kn5EFMUXBPm4w8+qgVw6MCRTE4RO0bgGfXHal4x3paWjizVcTyTB7RkWrfDxdbfmM8IOPQLfBHOORv+V/LO9SSep90LJNHEuvKpbnFpgV5OBfI9GXPvcvJ8R4dWCxuT5ZH9h5d7U7zPTDeISUO6PIdW3TWfjwg5CC8F0svbj9ohPX3eh7iPZobTmrMfM4hgM50OVE7JURWGN/48h3a9fgxFPfHIOZm8YJ1ZmQyu82eDj1bbkHqo6GgB15jiOxH5OdEwowSstnmSWhJWQl4SI3YkeV8HtSZ72P
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(39860400002)(376002)(346002)(136003)(396003)(52536014)(66556008)(64756008)(186003)(7696005)(4744005)(26005)(66476007)(33656002)(5660300002)(478600001)(9686003)(316002)(110136005)(55016002)(8676002)(4326008)(8936002)(54906003)(53546011)(76116006)(6506007)(83380400001)(66446008)(66946007)(2906002)(71200400001)(86362001);
+ SFS:(4636009)(396003)(366004)(136003)(376002)(39860400002)(346002)(86362001)(66476007)(66556008)(64756008)(7696005)(71200400001)(33656002)(53546011)(83380400001)(316002)(26005)(186003)(66446008)(110136005)(6506007)(76116006)(8676002)(9686003)(5660300002)(478600001)(2906002)(8936002)(55016002)(4744005)(52536014)(66946007);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: yCKR+8mRC40fWKf+N42h6V/rrRyc3GE5Gd4JNCalxmCePA9n7WzhPDaqQa5wz0qwfPNwIBVdmmmSenw1ds6goU/JpdWSIVJ48MGVFF/8mLNKXpK735ZaqJ+/Ahrrn2eaNTV1+/zK+8sdMt8J1gottg73QWqHff6xOEuy3EJBh5zddCZ42s4CKu820oQgNUQKNEAR7E6GZKIuaDtfzrIi69tH2EcnFzsPYjor6rPEHwh1oFS/vsUMMwgVccKDb+53gWoV+22jriTSz0wwwZJvzbbTUYOm+YdC4jk85RSb3R01WlMX1BwAF+GAE9kKrWFq+k9cUBExmvEz/6V8hcywnr66/s+fLqa15E5m3W7CRF8TtXz1xDB+gq86GC6miobLueoyY1YPiC/LvrspgxneEeXrRT4RXbbG7VBsRtjrutNIsEHUxBKQNzVT+462Xggf344y6eIanFGvZImzCteVK/Y3xyCqMA06HFiuChHeOVv3Oq2b6q/nb3FEX1n2qSeu1AR+MyIoxrhbxndyVqHaXvp0T+ojY5eTus5oqXgAy1U0Jos8w6P5SshOJVWEDBXNXFa4uzkb3Y7Nnu8U+z49JDvfy0vSF6M4txGXz0v4CT3t9I7128IqUsvFUeIs82axhV4bw2y+uYNmhNME0nAceg==
+x-ms-exchange-antispam-messagedata: qt0SICimlGcVGN44fJwA4+b3CtSi7bR/sZpGKdN7v+V3cQROiakvkLsvEPMj91NWk25LQVbViicMKya/SajdUNSfcNROWrkeOQewiv4J2mqvSum872bSnE74QKk3i3Wzb53Co5POsTKDV5QFdG9NnwB4nTHE4fRKw0bziJ9E0mOcyUau2AVI/qQoOnv7InGxZE8a2zOQ/JsmhxEiqOuiMMZU1BFgi4DP0ag9jomWibDvkjz2Jn6s1OGLp/FB03oNKskhOksYqrXQ6lbGk8n8j0zQes8EOF5Em47H9YH9UIvEzTPvKYaeosYbQ5Bmwmuge6hH+qWZjLhp5z+I8q9+W5lKpaeLkfvl7Q1KlDtQi4jswsrgPJNEvH9JbQAt1ueMUtiE/+ugWlTPeHcEiZ/rSHkNRp2FUJ+OmzeoRRunF1A8iOIKiosWb6wfGO2qIYfTOL8jF4OKdIP4+QFOGI0OmIDiDj7w2G5OPQOIsWXodw+Wz0tmpk+X3lhubNLx+I24TTZfjYurU44uSR0khyAgO4YpKGlU07eMfuKnNMLVhgbiujk6SYLp6v6GChQqbSbPlX9DnOn66p0CMFPCsPqcohhPZCzc2mWEfD8krFYxlhXU3xqsjjhxdjlazN0Xmpo0FD3nekVocpMhrybytubGOg==
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7dbc2e83-e446-49f1-986d-08d84a16eff7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Aug 2020 23:22:44.8222 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 33ed8441-2e86-4b3a-bfb3-08d84a1a7a96
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Aug 2020 23:48:05.8530 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2mGlDa7GKra2dkpNFqxUTGWJZ8p43ugYEJHzqnmYMiZVsvWs0ja+ha9bpABlx8Gfg11I30n0gcwQsrTA/iszog==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1945
+X-MS-Exchange-CrossTenant-userprincipalname: ocK38uhmZ4uUrwwgqsIHPQpOqhGzvXtDCoL9Fkj3J5v7eqYCPQTWG11x3N2kN6q2dTs5B0TZyM4IuTkmINmQ0Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR1101MB2073
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH -next v2] net: ice: Fix pointer cast
- warnings
+Subject: Re: [Intel-wired-lan] [PATCH v3] ice: remove repeated words
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,39 +140,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-next@vger.kernel.org" <linux-next@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Bixuan Cui <cuibixuan@huawei.com>
-> Sent: Friday, July 31, 2020 3:08 AM
-> To: davem@davemloft.net; kuba@kernel.org
-> Cc: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
-> lan@lists.osuosl.org; netdev@vger.kernel.org; linux-next@vger.kernel.org
-> Subject: [PATCH -next v2] net: ice: Fix pointer cast warnings
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Tony
+> Nguyen
+> Sent: Tuesday, August 18, 2020 2:49 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Subject: [Intel-wired-lan] [PATCH v3] ice: remove repeated words
 > 
-> pointers should be casted to unsigned long to avoid
-> -Wpointer-to-int-cast warnings:
+> From: Bruce Allan <bruce.w.allan@intel.com>
 > 
-> drivers/net/ethernet/intel/ice/ice_flow.h:197:33: warning:
->     cast from pointer to integer of different size
-> drivers/net/ethernet/intel/ice/ice_flow.h:198:32: warning:
->     cast to pointer from integer of different size
+> A new test in checkpatch detects repeated words; cleanup all pre-existing
+> occurrences of those now.
 > 
-> Signed-off-by: Bixuan Cui <cuibixuan@huawei.com>
+> Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
+> Co-developed-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 > ---
-> v2->v1: add fix:
->  ice_flow.h:198:32: warning: cast to pointer from integer of different size [-
-> Wint-to-pointer-cast]
->  #define ICE_FLOW_ENTRY_PTR(h) ((struct ice_flow_entry *)(h))
+> v3:
+> - Resolve checkpatch warning on ordering of Co-developed-by and Signed-off-
+> by
+> v2:
+> - Add Co-developed-by
+> ---
+>  drivers/net/ethernet/intel/ice/ice_flex_pipe.c   | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_flow.c        | 4 ++--
+>  drivers/net/ethernet/intel/ice/ice_main.c        | 2 +-
+>  drivers/net/ethernet/intel/ice/ice_virtchnl_pf.c | 2 +-
+>  4 files changed, 5 insertions(+), 5 deletions(-)
 > 
->  drivers/net/ethernet/intel/ice/ice_flow.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
 Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
