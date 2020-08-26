@@ -1,61 +1,140 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57528253A7E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Aug 2020 00:57:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DD54E88012;
-	Wed, 26 Aug 2020 22:57:28 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iJGGy9e6BHnd; Wed, 26 Aug 2020 22:57:28 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C692D88162;
-	Wed, 26 Aug 2020 22:57:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B302E1BF2FE
- for <intel-wired-lan@osuosl.org>; Wed, 26 Aug 2020 22:57:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 70D2F253AA0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Aug 2020 01:23:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id AF8D786ACE
- for <intel-wired-lan@osuosl.org>; Wed, 26 Aug 2020 22:57:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2601F86227;
+	Wed, 26 Aug 2020 23:22:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3iwOtckTc5OS; Wed, 26 Aug 2020 23:22:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D35B986C31;
+	Wed, 26 Aug 2020 23:22:57 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C2E871BF5F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:22:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id B88468636D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:22:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DIu91BnDKPsU for <intel-wired-lan@osuosl.org>;
- Wed, 26 Aug 2020 22:57:21 +0000 (UTC)
+ with ESMTP id S6zuc27OIkMI for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 Aug 2020 23:22:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id CCBFE86C2B
- for <intel-wired-lan@osuosl.org>; Wed, 26 Aug 2020 22:57:21 +0000 (UTC)
-IronPort-SDR: mGw6keBBh5uQmP3Y5Pkp6ocbThPtRPjJwdJr0PzSwVQUx9ZUtNLkJq/ZCaxyFqBpXTpy5o15n9
- 35yCEMBxE+pA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="217944159"
-X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="217944159"
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C9B7B86227
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Aug 2020 23:22:54 +0000 (UTC)
+IronPort-SDR: uwE2iyFlpnp4kvL4nfbIQ6YcB6/Tce3pUyX1gEH94QFpSdE5xq7iuGdKec2Dn/Wv4je3KsZWUY
+ 53UAAslq8K2Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="220650438"
+X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="220650438"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2020 15:57:20 -0700
-IronPort-SDR: lQFj5MnG89gmshpPHcMBkOLcgjmbBq2reDyjFEoAFL2/++QyQrYyVkItBQH9yHO/QYtpo59jgK
- +KSKKTsMlxmQ==
-X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="313033426"
-Received: from jbrandeb-desk.jf.intel.com ([10.166.244.152])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2020 15:57:20 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Wed, 26 Aug 2020 15:56:52 -0700
-Message-Id: <20200826225652.2043221-2-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.25.4
-In-Reply-To: <20200826225652.2043221-1-jesse.brandeburg@intel.com>
-References: <20200826225652.2043221-1-jesse.brandeburg@intel.com>
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Aug 2020 16:22:53 -0700
+IronPort-SDR: LjqgnZc9gOOkPIWkF0dTPmzM/f9Rj1gNeuzXuCenCZNVMIOni5W66sTxvoXgwiFupFyfZJozyw
+ 51vQE3nFXP2w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,357,1592895600"; d="scan'208";a="474958861"
+Received: from fmsmsx603-2.cps.intel.com (HELO fmsmsx603.amr.corp.intel.com)
+ ([10.18.84.213])
+ by orsmga005.jf.intel.com with ESMTP; 26 Aug 2020 16:22:53 -0700
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 26 Aug 2020 16:22:47 -0700
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 26 Aug 2020 16:22:47 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Wed, 26 Aug 2020 16:22:47 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.104)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.1713.5; Wed, 26 Aug 2020 16:22:46 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CsrV8fq9IoukQLkcmHaxi+cGG+j+m2n1vkExnzMI7Ia+oTErqRDhAoF+p0YAy2VH4wQDsyYkfWspF20Jl2HoFIqDr4oT15kavoY8DmxFjtyVSIDrBE3dzwe0c/TU0LBlveN2XH6Tf8AHB3OB7T93zeAyN3RojmbESG5raNF0EVf64h9i6duftKO0ms3Ut7N9fEFdysCo/DvczF8kAuOWEGH+/ps3nEv6wgLTEyqlojWTltzeKxXGt3Mxn5r3zPo0TGW9REPsOnaVklvmuReRVhMZ/6h/f/zVAFs1d0QsPt0NNMTtXFvTQGwL1m5sDAtXrXpDtO3ovBfVH/gaSRV5kQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ThBuHltBsYETsbJ72EnPtMyLam3tMCAL1VlNbVz0CNk=;
+ b=kamCl6S2cmYzJ4x/DECmKTqDaEy1scYuB8IaGBM3v+2xJ3ziKMClCkeCA5xcEuuWeeVrsqRXgiQj+vmiczInmZDJUvNiZyQ3nWfPErFo3Fd51nnSvuMFGPNQ+GJGPM2Hs7dknvQG0G3IG+d9/9TG3wGVnrLdF9HFlTjn0zucBfGm/V1qNqpJsAvxVfnU+Qkh4pG//6tkhvW+0oW96Lw6U3p0VvV7wwIO576+uxXuZcfgiFyVWQ3QKVvbQe8YzvlqZ0uFg8kpWQlwlPfsUCseOp6qOzLX3YvyfQ6YvJP2qhB4A3XZvnntnt0R5+u6/cL5V2Q6Bk+DgPoMp74u/0zrFA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ThBuHltBsYETsbJ72EnPtMyLam3tMCAL1VlNbVz0CNk=;
+ b=OaXgyV6rwbYxC/KW62daGlS0wQFdzedGERJukGpNjsOYknlPnYCoaKN+H2UrBwnZ9O7ury4p8ZJNQ4PxRzXDd38dC8kNB2ZtL2LQHk8FKL2vbTYMqGd8pCk+cn22hf9fPxjh8cUZ3w9FJQtxkYmbpFA9x/HADSpemyGeeEjoERQ=
+Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
+ DM5PR11MB1945.namprd11.prod.outlook.com (2603:10b6:3:10b::15) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3305.26; Wed, 26 Aug 2020 23:22:44 +0000
+Received: from DM6PR11MB2890.namprd11.prod.outlook.com
+ ([fe80::25c4:e65e:4d75:f45f]) by DM6PR11MB2890.namprd11.prod.outlook.com
+ ([fe80::25c4:e65e:4d75:f45f%7]) with mapi id 15.20.3305.031; Wed, 26 Aug 2020
+ 23:22:44 +0000
+From: "Brown, Aaron F" <aaron.f.brown@intel.com>
+To: Bixuan Cui <cuibixuan@huawei.com>, "davem@davemloft.net"
+ <davem@davemloft.net>, "kuba@kernel.org" <kuba@kernel.org>
+Thread-Topic: [PATCH -next v2] net: ice: Fix pointer cast warnings
+Thread-Index: AQHWZyJ26lJRO5/MSU2ficxGgSvS46lLMVSQ
+Date: Wed, 26 Aug 2020 23:22:44 +0000
+Message-ID: <DM6PR11MB289004F11B8936F7C421A863BC540@DM6PR11MB2890.namprd11.prod.outlook.com>
+References: <20200731105721.18511-1-cuibixuan@huawei.com>
+ <5af7c5af-c45d-2174-de89-8b89eddb4f4d@huawei.com>
+In-Reply-To: <5af7c5af-c45d-2174-de89-8b89eddb4f4d@huawei.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.5.1.3
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+authentication-results: huawei.com; dkim=none (message not signed)
+ header.d=none;huawei.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [97.120.215.99]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7dbc2e83-e446-49f1-986d-08d84a16eff7
+x-ms-traffictypediagnostic: DM5PR11MB1945:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DM5PR11MB1945F5708111E262C6BCE255BC540@DM5PR11MB1945.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:22;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: BXKqwwhu3AOdNQMMd5AGn7vQ4YbHjoY3Ro5F3bnk5dZf4yT1IdZek8EJw3+UyQ7V1BWrJHMcyU/27MwtkAMliP0vHWQbpCC+z8uumrTxh8QC4a7gIzlSHi8hOSiUkZ/ReSIHjX3GV/ou0Xnfx84/0j9Ovfxcy66f+0GsvO9ZjZkLKts3QyZzQt7FAqyblPoKMXQguLU8CwtxUOfSiAVC5VjcOui8Ly2VefRjbOJqI8M8IHRb9W7+DW5HBG2og0GiA0cmjQsJgltEqK+SR9SBu/ShimZBa63CZ2hLMSzRseapOGEbxs7QRF3k6dqb8LAMxQ3+t6ryjEbpzkTHH9GzeQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(39860400002)(376002)(346002)(136003)(396003)(52536014)(66556008)(64756008)(186003)(7696005)(4744005)(26005)(66476007)(33656002)(5660300002)(478600001)(9686003)(316002)(110136005)(55016002)(8676002)(4326008)(8936002)(54906003)(53546011)(76116006)(6506007)(83380400001)(66446008)(66946007)(2906002)(71200400001)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: yCKR+8mRC40fWKf+N42h6V/rrRyc3GE5Gd4JNCalxmCePA9n7WzhPDaqQa5wz0qwfPNwIBVdmmmSenw1ds6goU/JpdWSIVJ48MGVFF/8mLNKXpK735ZaqJ+/Ahrrn2eaNTV1+/zK+8sdMt8J1gottg73QWqHff6xOEuy3EJBh5zddCZ42s4CKu820oQgNUQKNEAR7E6GZKIuaDtfzrIi69tH2EcnFzsPYjor6rPEHwh1oFS/vsUMMwgVccKDb+53gWoV+22jriTSz0wwwZJvzbbTUYOm+YdC4jk85RSb3R01WlMX1BwAF+GAE9kKrWFq+k9cUBExmvEz/6V8hcywnr66/s+fLqa15E5m3W7CRF8TtXz1xDB+gq86GC6miobLueoyY1YPiC/LvrspgxneEeXrRT4RXbbG7VBsRtjrutNIsEHUxBKQNzVT+462Xggf344y6eIanFGvZImzCteVK/Y3xyCqMA06HFiuChHeOVv3Oq2b6q/nb3FEX1n2qSeu1AR+MyIoxrhbxndyVqHaXvp0T+ojY5eTus5oqXgAy1U0Jos8w6P5SshOJVWEDBXNXFa4uzkb3Y7Nnu8U+z49JDvfy0vSF6M4txGXz0v4CT3t9I7128IqUsvFUeIs82axhV4bw2y+uYNmhNME0nAceg==
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH net-next v1 2/2] i40e: clean up W=1
- warnings in i40e
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7dbc2e83-e446-49f1-986d-08d84a16eff7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Aug 2020 23:22:44.8222 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2mGlDa7GKra2dkpNFqxUTGWJZ8p43ugYEJHzqnmYMiZVsvWs0ja+ha9bpABlx8Gfg11I30n0gcwQsrTA/iszog==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1945
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH -next v2] net: ice: Fix pointer cast
+ warnings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,231 +147,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-next@vger.kernel.org" <linux-next@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Inspired by Lee Jones, this elminates the remaining W=1 warnings in i40e.
+> From: Bixuan Cui <cuibixuan@huawei.com>
+> Sent: Friday, July 31, 2020 3:08 AM
+> To: davem@davemloft.net; kuba@kernel.org
+> Cc: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
+> lan@lists.osuosl.org; netdev@vger.kernel.org; linux-next@vger.kernel.org
+> Subject: [PATCH -next v2] net: ice: Fix pointer cast warnings
+> 
+> pointers should be casted to unsigned long to avoid
+> -Wpointer-to-int-cast warnings:
+> 
+> drivers/net/ethernet/intel/ice/ice_flow.h:197:33: warning:
+>     cast from pointer to integer of different size
+> drivers/net/ethernet/intel/ice/ice_flow.h:198:32: warning:
+>     cast to pointer from integer of different size
+> 
+> Signed-off-by: Bixuan Cui <cuibixuan@huawei.com>
+> ---
+> v2->v1: add fix:
+>  ice_flow.h:198:32: warning: cast to pointer from integer of different size [-
+> Wint-to-pointer-cast]
+>  #define ICE_FLOW_ENTRY_PTR(h) ((struct ice_flow_entry *)(h))
+> 
+>  drivers/net/ethernet/intel/ice/ice_flow.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_client.c   |  2 --
- drivers/net/ethernet/intel/i40e/i40e_common.c   |  4 ++--
- drivers/net/ethernet/intel/i40e/i40e_main.c     | 17 ++++++++++-------
- drivers/net/ethernet/intel/i40e/i40e_ptp.c      |  1 -
- drivers/net/ethernet/intel/i40e/i40e_txrx.c     |  7 ++++---
- .../net/ethernet/intel/i40e/i40e_virtchnl_pf.c  |  9 +++++----
- 6 files changed, 21 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_client.c b/drivers/net/ethernet/intel/i40e/i40e_client.c
-index befd3018183f..a2dba32383f6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_client.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_client.c
-@@ -278,8 +278,6 @@ void i40e_client_update_msix_info(struct i40e_pf *pf)
- /**
-  * i40e_client_add_instance - add a client instance struct to the instance list
-  * @pf: pointer to the board struct
-- * @client: pointer to a client struct in the client list.
-- * @existing: if there was already an existing instance
-  *
-  **/
- static void i40e_client_add_instance(struct i40e_pf *pf)
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index afad5e9f80e0..eb9627cb70d7 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -3747,9 +3747,7 @@ i40e_status i40e_aq_stop_lldp(struct i40e_hw *hw, bool shutdown_agent,
- /**
-  * i40e_aq_start_lldp
-  * @hw: pointer to the hw struct
-- * @buff: buffer for result
-  * @persist: True if start of LLDP should be persistent across power cycles
-- * @buff_size: buffer size
-  * @cmd_details: pointer to command details structure or NULL
-  *
-  * Start the embedded LLDP Agent on all ports.
-@@ -5376,6 +5374,7 @@ static void i40e_mdio_if_number_selection(struct i40e_hw *hw, bool set_mdio,
-  * @hw: pointer to the hw struct
-  * @phy_select: select which phy should be accessed
-  * @dev_addr: PHY device address
-+ * @page_change: flag to indicate if phy page should be updated
-  * @set_mdio: use MDIO I/F number specified by mdio_num
-  * @mdio_num: MDIO I/F number
-  * @reg_addr: PHY register address
-@@ -5420,6 +5419,7 @@ enum i40e_status_code i40e_aq_set_phy_register_ext(struct i40e_hw *hw,
-  * @hw: pointer to the hw struct
-  * @phy_select: select which phy should be accessed
-  * @dev_addr: PHY device address
-+ * @page_change: flag to indicate if phy page should be updated
-  * @set_mdio: use MDIO I/F number specified by mdio_num
-  * @mdio_num: MDIO I/F number
-  * @reg_addr: PHY register address
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index cc4d7c03bdd5..c2ba3285cc56 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -287,6 +287,7 @@ void i40e_service_event_schedule(struct i40e_pf *pf)
- /**
-  * i40e_tx_timeout - Respond to a Tx Hang
-  * @netdev: network interface device structure
-+ * @txqueue: queue number timing out
-  *
-  * If any port has noticed a Tx timeout, it is likely that the whole
-  * device is munged, not just the one netdev port, so go for the full
-@@ -1609,6 +1610,8 @@ static int i40e_set_mac(struct net_device *netdev, void *p)
-  * i40e_config_rss_aq - Prepare for RSS using AQ commands
-  * @vsi: vsi structure
-  * @seed: RSS hash seed
-+ * @lut: pointer to lookup table of lut_size
-+ * @lut_size: size of the lookup table
-  **/
- static int i40e_config_rss_aq(struct i40e_vsi *vsi, const u8 *seed,
- 			      u8 *lut, u16 lut_size)
-@@ -5814,7 +5817,6 @@ static int i40e_vsi_reconfig_rss(struct i40e_vsi *vsi, u16 rss_size)
- /**
-  * i40e_channel_setup_queue_map - Setup a channel queue map
-  * @pf: ptr to PF device
-- * @vsi: the VSI being setup
-  * @ctxt: VSI context structure
-  * @ch: ptr to channel structure
-  *
-@@ -6057,8 +6059,7 @@ static inline int i40e_setup_hw_channel(struct i40e_pf *pf,
- /**
-  * i40e_setup_channel - setup new channel using uplink element
-  * @pf: ptr to PF device
-- * @type: type of channel to be created (VMDq2/VF)
-- * @uplink_seid: underlying HW switching element (VEB) ID
-+ * @vsi: pointer to the VSI to set up the channel within
-  * @ch: ptr to channel structure
-  *
-  * Setup new channel (VSI) based on specified type (VMDq2/VF)
-@@ -7779,7 +7780,7 @@ int i40e_add_del_cloud_filter_big_buf(struct i40e_vsi *vsi,
- /**
-  * i40e_parse_cls_flower - Parse tc flower filters provided by kernel
-  * @vsi: Pointer to VSI
-- * @cls_flower: Pointer to struct flow_cls_offload
-+ * @f: Pointer to struct flow_cls_offload
-  * @filter: Pointer to cloud filter structure
-  *
-  **/
-@@ -8160,8 +8161,8 @@ static int i40e_delete_clsflower(struct i40e_vsi *vsi,
- 
- /**
-  * i40e_setup_tc_cls_flower - flower classifier offloads
-- * @netdev: net device to configure
-- * @type_data: offload data
-+ * @np: net device to configure
-+ * @cls_flower: offload data
-  **/
- static int i40e_setup_tc_cls_flower(struct i40e_netdev_priv *np,
- 				    struct flow_cls_offload *cls_flower)
-@@ -9585,6 +9586,7 @@ static int i40e_reconstitute_veb(struct i40e_veb *veb)
- /**
-  * i40e_get_capabilities - get info about the HW
-  * @pf: the PF struct
-+ * @list_type: AQ capability to be queried
-  **/
- static int i40e_get_capabilities(struct i40e_pf *pf,
- 				 enum i40e_admin_queue_opc list_type)
-@@ -10546,7 +10548,7 @@ static void i40e_service_task(struct work_struct *work)
- 
- /**
-  * i40e_service_timer - timer callback
-- * @data: pointer to PF struct
-+ * @t: timer list pointer
-  **/
- static void i40e_service_timer(struct timer_list *t)
- {
-@@ -12373,6 +12375,7 @@ static int i40e_get_phys_port_id(struct net_device *netdev,
-  * @addr: the MAC address entry being added
-  * @vid: VLAN ID
-  * @flags: instructions from stack about fdb operation
-+ * @extack: netlink extended ack, unused currently
-  */
- static int i40e_ndo_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- 			    struct net_device *dev,
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ptp.c b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
-index ff7b19c6bc73..7a879614ca55 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
-@@ -259,7 +259,6 @@ static u32 i40e_ptp_get_rx_events(struct i40e_pf *pf)
- /**
-  * i40e_ptp_rx_hang - Detect error case when Rx timestamp registers are hung
-  * @pf: The PF private data structure
-- * @vsi: The VSI with the rings relevant to 1588
-  *
-  * This watchdog task is scheduled to detect error case where hardware has
-  * dropped an Rx packet that was timestamped when the ring is full. The
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 2fb6dddf9106..5eb70bde964f 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -1755,7 +1755,6 @@ static inline void i40e_rx_hash(struct i40e_ring *ring,
-  * @rx_ring: rx descriptor ring packet is being transacted on
-  * @rx_desc: pointer to the EOP Rx descriptor
-  * @skb: pointer to current skb being populated
-- * @rx_ptype: the packet type decoded by hardware
-  *
-  * This function checks the ring, descriptor, and packet information in
-  * order to populate the hash, checksum, VLAN, protocol, and
-@@ -3518,7 +3517,7 @@ static inline int i40e_tx_map(struct i40e_ring *tx_ring, struct sk_buff *skb,
- 
- /**
-  * i40e_xmit_xdp_ring - transmits an XDP buffer to an XDP Tx ring
-- * @xdp: data to transmit
-+ * @xdpf: data to transmit
-  * @xdp_ring: XDP Tx ring
-  **/
- static int i40e_xmit_xdp_ring(struct xdp_frame *xdpf,
-@@ -3713,7 +3712,9 @@ netdev_tx_t i40e_lan_xmit_frame(struct sk_buff *skb, struct net_device *netdev)
- /**
-  * i40e_xdp_xmit - Implements ndo_xdp_xmit
-  * @dev: netdev
-- * @xdp: XDP buffer
-+ * @n: number of frames
-+ * @frames: array of XDP buffer pointers
-+ * @flags: XDP extra info
-  *
-  * Returns number of frames successfully sent. Frames that fail are
-  * free'ed via XDP return API.
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 8e133d6545bd..f32a907b4419 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2234,7 +2234,8 @@ static int i40e_vc_config_queues_msg(struct i40e_vf *vf, u8 *msg)
- }
- 
- /**
-- * i40e_validate_queue_map
-+ * i40e_validate_queue_map - check queue map is valid
-+ * @vf: the VF structure pointer
-  * @vsi_id: vsi id
-  * @queuemap: Tx or Rx queue map
-  *
-@@ -3150,8 +3151,8 @@ static int i40e_vc_disable_vlan_stripping(struct i40e_vf *vf, u8 *msg)
- 
- /**
-  * i40e_validate_cloud_filter
-- * @mask: mask for TC filter
-- * @data: data for TC filter
-+ * @vf: pointer to VF structure
-+ * @tc_filter: pointer to filter requested
-  *
-  * This function validates cloud filter programmed as TC filter for ADq
-  **/
-@@ -3284,7 +3285,7 @@ static int i40e_validate_cloud_filter(struct i40e_vf *vf,
- /**
-  * i40e_find_vsi_from_seid - searches for the vsi with the given seid
-  * @vf: pointer to the VF info
-- * @seid - seid of the vsi it is searching for
-+ * @seid: seid of the vsi it is searching for
-  **/
- static struct i40e_vsi *i40e_find_vsi_from_seid(struct i40e_vf *vf, u16 seid)
- {
--- 
-2.25.4
-
+Tested-by: Aaron Brown <aaron.f.brown@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
