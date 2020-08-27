@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22D74254545
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Aug 2020 14:48:04 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 680582546CD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Aug 2020 16:29:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 787A0203BD;
-	Thu, 27 Aug 2020 12:48:02 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id EC4E287FD8;
+	Thu, 27 Aug 2020 14:29:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IBTDMtsxSW6x; Thu, 27 Aug 2020 12:48:01 +0000 (UTC)
+	with ESMTP id Lh8f3CDeIm-1; Thu, 27 Aug 2020 14:29:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id D4731203D2;
-	Thu, 27 Aug 2020 12:47:58 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6D96588400;
+	Thu, 27 Aug 2020 14:29:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D51061BF48C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Aug 2020 12:47:56 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E7A301BF354
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Aug 2020 14:29:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D0966860C5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Aug 2020 12:47:56 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E339088166
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Aug 2020 14:29:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gMhlaWlYZNoK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Aug 2020 12:47:56 +0000 (UTC)
+ with ESMTP id J9WqquhHvDKZ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Aug 2020 14:29:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DC8D585A60
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Aug 2020 12:47:55 +0000 (UTC)
-IronPort-SDR: x4qfVAKCrnYIDWoV3zLxrjpmDfl0Wd/xTJCHW5/skTDBTb5eY1+NfoTNfp9z57EPVm63JNN4Cx
- UNUYVm1V4ZPw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="157497702"
-X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="157497702"
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1ACE587FD8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Aug 2020 14:29:41 +0000 (UTC)
+IronPort-SDR: G8XK37+IodV7lClBzzwvF7pHcQqGgtGBIqDYfF8swv2agUWqD/aOFcXiM0A1tQDLCN3QbljEXG
+ TTBUMnD4OOrQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="154046247"
+X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="154046247"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2020 05:47:55 -0700
-IronPort-SDR: 5w1gtDPqdnZoUJkJAWcof7L7fT0GDzc/cCokaBs90JszrcFrBYs+u+5SCjNQp3HrxX6CBuG8Kp
- aEdD9DW5bobA==
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2020 07:29:40 -0700
+IronPort-SDR: 1r7rL4fLkMrowDw1hnafoooIG57Vwc6JTLJjMD08Dd7tugg9pTgaDabuHX3SPJaaE/KWn5R37h
+ UqccynFdB2mg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="299833188"
+X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="332197612"
 Received: from lkp-server01.sh.intel.com (HELO 4f455964fc6c) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 27 Aug 2020 05:47:54 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 27 Aug 2020 07:29:39 -0700
 Received: from kbuild by 4f455964fc6c with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1kBHJp-00024l-DV; Thu, 27 Aug 2020 12:47:53 +0000
-Date: Thu, 27 Aug 2020 20:47:23 +0800
+ id 1kBIuI-00027D-QS; Thu, 27 Aug 2020 14:29:38 +0000
+Date: Thu, 27 Aug 2020 22:29:11 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5f47ab5b.ip8ma4rt2gk1E5lf%lkp@intel.com>
+Message-ID: <5f47c337.g2xa43ie6dyOFhSK%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
- e9ee6f30a4688a20adb3ff64acb67f8e51b7c28d
+Subject: [Intel-wired-lan] [jkirsher-next-queue:dev-queue] BUILD REGRESSION
+ 509471e4f554483e54e11bd54c5a2eb4bff4a608
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,49 +74,101 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
-branch HEAD: e9ee6f30a4688a20adb3ff64acb67f8e51b7c28d  ice: add additional debug logging for firmware update
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  dev-queue
+branch HEAD: 509471e4f554483e54e11bd54c5a2eb4bff4a608  i40e: clean up W=1 warnings in i40e
 
-elapsed time: 720m
+Error/Warning in current branch:
 
-configs tested: 111
-configs skipped: 5
+drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:2273:15: error: redefinition of 'truesize'
+net/ipv4/udp_tunnel_nic.c:849:6-10: ERROR: invalid reference to the index variable of the iterator on line 846
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- alpha-allyesconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- arc-allyesconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- ia64-allmodconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- ia64-allyesconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+|-- m68k-randconfig-c004-20200826
+|   `-- net-ipv4-udp_tunnel_nic.c:ERROR:invalid-reference-to-the-index-variable-of-the-iterator-on-line
+|-- powerpc-defconfig
+|   `-- drivers-net-ethernet-intel-ixgbe-ixgbe_main.c:error:redefinition-of-truesize
+`-- s390-randconfig-c003-20200826
+    `-- net-ipv4-udp_tunnel_nic.c:ERROR:invalid-reference-to-the-index-variable-of-the-iterator-on-line
+
+elapsed time: 722m
+
+configs tested: 142
+configs skipped: 8
 
 arm                                 defconfig
 arm64                            allyesconfig
 arm64                               defconfig
 arm                              allyesconfig
 arm                              allmodconfig
-powerpc                         ps3_defconfig
-arm                             rpc_defconfig
+mips                        workpad_defconfig
+mips                        maltaup_defconfig
+sh                   rts7751r2dplus_defconfig
+arm                        oxnas_v6_defconfig
+sh                        edosk7705_defconfig
+arm                            zeus_defconfig
+m68k                            q40_defconfig
+arm                              zx_defconfig
+mips                        jmr3927_defconfig
+sh                        sh7757lcr_defconfig
 mips                      malta_kvm_defconfig
 mips                           jazz_defconfig
 arm                        multi_v5_defconfig
-sh                           se7724_defconfig
-arm                        neponset_defconfig
-arc                     nsimosci_hs_defconfig
-powerpc                     mpc5200_defconfig
-arm                      pxa255-idp_defconfig
-mips                           ip22_defconfig
-arm                          pxa3xx_defconfig
+riscv                            allmodconfig
+m68k                         apollo_defconfig
+sh                ecovec24-romimage_defconfig
+sh                        apsh4ad0a_defconfig
+arm                       spear13xx_defconfig
+arm                        trizeps4_defconfig
+ia64                          tiger_defconfig
+mips                         cobalt_defconfig
+mips                          ath25_defconfig
+sh                           se7722_defconfig
+sh                   sh7770_generic_defconfig
+mips                         tb0226_defconfig
+powerpc                     skiroot_defconfig
+nds32                            alldefconfig
+h8300                     edosk2674_defconfig
+arm                         at91_dt_defconfig
+arm                        shmobile_defconfig
+mips                         rt305x_defconfig
+xtensa                generic_kc705_defconfig
+ia64                        generic_defconfig
+x86_64                           alldefconfig
 sh                             sh03_defconfig
-mips                 decstation_r4k_defconfig
-sh                          polaris_defconfig
-arm                             mxs_defconfig
-mips                            ar7_defconfig
-arm                       multi_v4t_defconfig
+sh                        edosk7760_defconfig
+sh                           sh2007_defconfig
+powerpc                 mpc8272_ads_defconfig
+arm                         lubbock_defconfig
+powerpc                  storcenter_defconfig
+ia64                      gensparse_defconfig
+arm                           viper_defconfig
+sh                          urquell_defconfig
+sh                         microdev_defconfig
+sh                           se7712_defconfig
+arm                        magician_defconfig
+mips                           rs90_defconfig
+arm                          exynos_defconfig
+sh                            shmin_defconfig
 mips                  cavium_octeon_defconfig
 nios2                         10m50_defconfig
 arm                            mmp2_defconfig
 m68k                       m5275evb_defconfig
 arm                         palmz72_defconfig
 m68k                           sun3_defconfig
-nios2                            alldefconfig
-c6x                        evmc6678_defconfig
-sh                             shx3_defconfig
+sh                          sdk7786_defconfig
+mips                       rbtx49xx_defconfig
+sh                  sh7785lcr_32bit_defconfig
+arm                         orion5x_defconfig
 ia64                             allmodconfig
 ia64                                defconfig
 ia64                             allyesconfig
@@ -150,6 +202,12 @@ powerpc                             defconfig
 powerpc                          allyesconfig
 powerpc                          allmodconfig
 powerpc                           allnoconfig
+x86_64               randconfig-a003-20200827
+x86_64               randconfig-a002-20200827
+x86_64               randconfig-a001-20200827
+x86_64               randconfig-a005-20200827
+x86_64               randconfig-a006-20200827
+x86_64               randconfig-a004-20200827
 i386                 randconfig-a002-20200826
 i386                 randconfig-a004-20200826
 i386                 randconfig-a003-20200826
@@ -168,28 +226,21 @@ x86_64               randconfig-a012-20200826
 x86_64               randconfig-a014-20200826
 x86_64               randconfig-a011-20200826
 x86_64               randconfig-a013-20200826
-i386                 randconfig-a013-20200827
-i386                 randconfig-a012-20200827
-i386                 randconfig-a011-20200827
-i386                 randconfig-a016-20200827
-i386                 randconfig-a015-20200827
-i386                 randconfig-a014-20200827
 i386                 randconfig-a013-20200826
 i386                 randconfig-a012-20200826
 i386                 randconfig-a011-20200826
 i386                 randconfig-a016-20200826
 i386                 randconfig-a015-20200826
 i386                 randconfig-a014-20200826
-x86_64               randconfig-a003-20200827
-x86_64               randconfig-a002-20200827
-x86_64               randconfig-a001-20200827
-x86_64               randconfig-a005-20200827
-x86_64               randconfig-a006-20200827
-x86_64               randconfig-a004-20200827
+i386                 randconfig-a013-20200827
+i386                 randconfig-a012-20200827
+i386                 randconfig-a011-20200827
+i386                 randconfig-a016-20200827
+i386                 randconfig-a015-20200827
+i386                 randconfig-a014-20200827
 riscv                            allyesconfig
 riscv                             allnoconfig
 riscv                               defconfig
-riscv                            allmodconfig
 x86_64                                   rhel
 x86_64                           allyesconfig
 x86_64                    rhel-7.6-kselftests
