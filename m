@@ -1,49 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52AD1255E44
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Aug 2020 17:56:25 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C368D256F2C
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Aug 2020 17:38:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E767120378;
-	Fri, 28 Aug 2020 15:56:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7FE3885B68;
+	Sun, 30 Aug 2020 15:38:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xpyd0wFtOV2I; Fri, 28 Aug 2020 15:56:23 +0000 (UTC)
+	with ESMTP id pK5JmeFf60UD; Sun, 30 Aug 2020 15:38:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DEAD022E3F;
-	Fri, 28 Aug 2020 15:56:21 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3BFCA85B71;
+	Sun, 30 Aug 2020 15:38:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 11DAD1BF3C4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Aug 2020 15:56:20 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B0111BF5AC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Aug 2020 05:45:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 0A86E22920
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Aug 2020 15:56:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 5B603878B3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Aug 2020 05:45:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SP6svYVqwsHW for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Aug 2020 15:56:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
- [129.97.134.17])
- by silver.osuosl.org (Postfix) with ESMTPS id C3F4020378
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Aug 2020 15:56:17 +0000 (UTC)
-Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
- id 4D92B46052C; Fri, 28 Aug 2020 11:56:16 -0400 (EDT)
-Date: Fri, 28 Aug 2020 11:56:16 -0400
-To: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Message-ID: <20200828155616.3sd2ivrml2gpcvod@csclub.uwaterloo.ca>
-References: <20200827183039.hrfnb63cxq3pmv4z@csclub.uwaterloo.ca>
+ with ESMTP id FJOow+8UtDyh for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 30 Aug 2020 05:45:44 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6E44C87860
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Aug 2020 05:45:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598766342;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ZTIyDWwB1xP2mlWOHAKgKgz8364nJ/gpT2y8y73sUK8=;
+ b=EAHkbTWuEFMIfrl0E+5BVUCa9oKKwHpNvU5bBew11ROKIS92zjEJU6yqmOckHlaTrIbnjA
+ gWuIREfZNIsbMb3ou3ubFgEuo6apOc6EN3nvf112ibmjIDxhUAJloT6HU5XkhP02bf0nFJ
+ lxBisOQhtrGlMjzKBK8kMgTlSUlVfCw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-122-Lxj-a1CiO726VBx_g6LU9w-1; Sun, 30 Aug 2020 01:45:38 -0400
+X-MC-Unique: Lxj-a1CiO726VBx_g6LU9w-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28625189E61D;
+ Sun, 30 Aug 2020 05:45:37 +0000 (UTC)
+Received: from wolverine.usersys.redhat.com (unknown [10.35.206.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2952A80DF2;
+ Sun, 30 Aug 2020 05:45:33 +0000 (UTC)
+From: Gal Hammer <ghammer@redhat.com>
+To: linux-kernel@vger.kernel.org
+Date: Sun, 30 Aug 2020 08:45:29 +0300
+Message-Id: <20200830054529.3980-1-ghammer@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200827183039.hrfnb63cxq3pmv4z@csclub.uwaterloo.ca>
-User-Agent: NeoMutt/20170113 (1.7.2)
-From: lsorense@csclub.uwaterloo.ca (Lennart Sorensen)
-Subject: Re: [Intel-wired-lan] VRRP not working on i40e X722 S2600WFT
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mailman-Approved-At: Sun, 30 Aug 2020 15:38:50 +0000
+Subject: [Intel-wired-lan] [PATCH] igb: read PBA number from flash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,48 +74,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: Marcel Apfelbaum <mapfelba@redhat.com>, Gal Hammer <ghammer@redhat.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Aug 27, 2020 at 02:30:39PM -0400, Lennart Sorensen wrote:
-> I have hit a new problem with the X722 chipset (Intel R1304WFT server).
-> VRRP simply does not work.
-> 
-> When keepalived registers a vmac interface, and starts transmitting
-> multicast packets with the vrp message, it never receives those packets
-> from the peers, so all nodes think they are the master.  tcpdump shows
-> transmits, but no receives.  If I stop keepalived, which deletes the
-> vmac interface, then I start to receive the multicast packets from the
-> other nodes.  Even in promisc mode, tcpdump can't see those packets.
-> 
-> So it seems the hardware is dropping all packets with a source mac that
-> matches the source mac of the vmac interface, even when the destination
-> is a multicast address that was subcribed to.  This is clearly not
-> proper behaviour.
-> 
-> I tried a stock 5.8 kernel to check if a driver update helped, and updated
-> the nvm firware to the latest 4.10 (which appears to be over a year old),
-> and nothing changes the behaviour at all.
-> 
-> Seems other people have hit this problem too:
-> http://mails.dpdk.org/archives/users/2018-May/003128.html
-> 
-> Unless someone has a way to fix this, we will have to change away from
-> this hardware very quickly.  The IPsec NAT RSS defect we could tolerate
-> although didn't like, while this is just unworkable.
-> 
-> Quite frustrated by this.  Intel network hardware was always great,
-> how did the X722 make it out in this state.
+Fixed flash presence check for 82576 controllers so the part
+number string is read and displayed correctly.
 
-Another case with the same problem on an X710:
+Signed-off-by: Gal Hammer <ghammer@redhat.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-https://www.talkend.net/post/13256.html
-
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index d9c3a6b169f9..245e62b0a97e 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -3388,7 +3388,9 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 			  "Width x1" : "unknown"), netdev->dev_addr);
+ 	}
+ 
+-	if ((hw->mac.type >= e1000_i210 ||
++	if ((hw->mac.type == e1000_82576 &&
++	     rd32(E1000_EECD) & E1000_EECD_PRES) ||
++	    (hw->mac.type >= e1000_i210 ||
+ 	     igb_get_flash_presence_i210(hw))) {
+ 		ret_val = igb_read_part_string(hw, part_str,
+ 					       E1000_PBANUM_LENGTH);
 -- 
-Len Sorensen
+2.26.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
