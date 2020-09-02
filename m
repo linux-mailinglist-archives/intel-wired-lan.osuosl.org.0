@@ -1,61 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF94625B076
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 17:59:05 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 80B2125B073
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 17:59:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 697628726F;
-	Wed,  2 Sep 2020 15:59:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 33F42868CC;
+	Wed,  2 Sep 2020 15:59:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zAj73lRXprbe; Wed,  2 Sep 2020 15:59:04 +0000 (UTC)
+	with ESMTP id Z3nVs5EjoJfc; Wed,  2 Sep 2020 15:59:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 017ED87280;
-	Wed,  2 Sep 2020 15:59:04 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 447AF868E5;
+	Wed,  2 Sep 2020 15:59:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D56311BF489
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 961011BF983
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CE6502033D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 92E522033D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id otpGBq4XP6DQ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Sep 2020 15:58:56 +0000 (UTC)
+ with ESMTP id cBwS7+qMll2N for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Sep 2020 15:58:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id E8F8B2266C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:55 +0000 (UTC)
-IronPort-SDR: gwH+CAc8lcH9fWM4j2FPAbFYCqNXN3B3Vo2gazAMbUQhLMf2FtE6LDTcOEjJByhJRR67OM/U0n
- Lp7lDopHIx7w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="158409182"
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="158409182"
+ by silver.osuosl.org (Postfix) with ESMTPS id 3C94322875
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:56 +0000 (UTC)
+IronPort-SDR: rvJLecE5l6HZTT8SePsa+LtBkx62BBozbMrbSnKeKeqNLVi7tJ5FgWz2tG2yOtshwOpNB/iwKB
+ VXCH08CAv+0A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="158409183"
+X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="158409183"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Sep 2020 08:58:54 -0700
-IronPort-SDR: B6lYKXWdDOZZWx7YXe0M5biF+rw8wAesBrKG1F5i8iqXs1RkBhZMe+jW3Rn7zS2vpseY+VBPDQ
- pntsorGznaXg==
+IronPort-SDR: t50YSQTyb4VbvoFGRnBNIgnlPKoyBBY1mcAhW+3HViqp7pZloDDKlGk1GM5qJ6WE8sQJHRA4Q8
+ xrkWDumMF6rg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="301882259"
+X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="301882261"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by orsmga006.jf.intel.com with ESMTP; 02 Sep 2020 08:58:54 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  2 Sep 2020 08:53:46 -0700
-Message-Id: <20200902155347.16972-5-anthony.l.nguyen@intel.com>
+Date: Wed,  2 Sep 2020 08:53:47 -0700
+Message-Id: <20200902155347.16972-6-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
 References: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net 5/6] ice: fix memory leak if
- register_netdev_fails
+Subject: [Intel-wired-lan] [net 6/6] ice: fix memory leak in ice_vsi_setup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,113 +74,59 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jacob Keller <jacob.e.keller@intel.com>
 
-The ice_setup_pf_sw function can cause a memory leak if register_netdev
-fails, due to accidentally failing to free the VSI rings. Fix the memory
-leak by using ice_vsi_release, ensuring we actually go through the full
-teardown process.
+During ice_vsi_setup, if ice_cfg_vsi_lan fails, it does not properly
+release memory associated with the VSI rings. If we had used devres
+allocations for the rings, this would be ok. However, we use kzalloc and
+kfree_rcu for these ring structures.
 
-This should be safe even if the netdevice is not registered because we
-will have set the netdev pointer to NULL, ensuring ice_vsi_release won't
-call unregister_netdev.
+Using the correct label to cleanup the rings during ice_vsi_setup
+highlights an issue in the ice_vsi_clear_rings function: it can leave
+behind stale ring pointers in the q_vectors structure.
 
-An alternative fix would be moving management of the PF VSI netdev into
-the main VSI setup code. This is complicated and likely requires
-significant refactor in how we manage VSIs
+When releasing rings, we must also ensure that no q_vector associated
+with the VSI will point to this ring again. To resolve this, loop over
+all q_vectors and release their ring mapping. Because we are about to
+free all rings, no q_vector should remain pointing to any of the rings
+in this VSI.
 
-Fixes: 3a858ba392c3 ("ice: Add support for VSI allocation and deallocation")
+Fixes: 5513b920a4f7 ("ice: Update Tx scheduler tree for VSI multi-Tx queue support")
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c  |  6 +++---
- drivers/net/ethernet/intel/ice/ice_lib.h  |  6 ------
- drivers/net/ethernet/intel/ice/ice_main.c | 13 +++----------
- 3 files changed, 6 insertions(+), 19 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lib.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index f2682776f8c8..65cc78279501 100644
+index 65cc78279501..ebbb8f54871c 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -246,7 +246,7 @@ static int ice_get_free_slot(void *array, int size, int curr)
-  * ice_vsi_delete - delete a VSI from the switch
-  * @vsi: pointer to VSI being removed
-  */
--void ice_vsi_delete(struct ice_vsi *vsi)
-+static void ice_vsi_delete(struct ice_vsi *vsi)
+@@ -1196,6 +1196,18 @@ static void ice_vsi_clear_rings(struct ice_vsi *vsi)
  {
- 	struct ice_pf *pf = vsi->back;
- 	struct ice_vsi_ctx *ctxt;
-@@ -313,7 +313,7 @@ static void ice_vsi_free_arrays(struct ice_vsi *vsi)
-  *
-  * Returns 0 on success, negative on failure
-  */
--int ice_vsi_clear(struct ice_vsi *vsi)
-+static int ice_vsi_clear(struct ice_vsi *vsi)
- {
- 	struct ice_pf *pf = NULL;
- 	struct device *dev;
-@@ -563,7 +563,7 @@ static int ice_vsi_get_qs(struct ice_vsi *vsi)
-  * ice_vsi_put_qs - Release queues from VSI to PF
-  * @vsi: the VSI that is going to release queues
-  */
--void ice_vsi_put_qs(struct ice_vsi *vsi)
-+static void ice_vsi_put_qs(struct ice_vsi *vsi)
- {
- 	struct ice_pf *pf = vsi->back;
  	int i;
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index 981f3a156c24..3da17895a2b1 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -45,10 +45,6 @@ int ice_cfg_vlan_pruning(struct ice_vsi *vsi, bool ena, bool vlan_promisc);
  
- void ice_cfg_sw_lldp(struct ice_vsi *vsi, bool tx, bool create);
- 
--void ice_vsi_delete(struct ice_vsi *vsi);
--
--int ice_vsi_clear(struct ice_vsi *vsi);
--
- #ifdef CONFIG_DCB
- int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc);
- #endif /* CONFIG_DCB */
-@@ -79,8 +75,6 @@ bool ice_is_reset_in_progress(unsigned long *state);
- void
- ice_write_qrxflxp_cntxt(struct ice_hw *hw, u16 pf_q, u32 rxdid, u32 prio);
- 
--void ice_vsi_put_qs(struct ice_vsi *vsi);
--
- void ice_vsi_dis_irq(struct ice_vsi *vsi);
- 
- void ice_vsi_free_irq(struct ice_vsi *vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index ebec34d23865..d148bb71f290 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3178,10 +3178,8 @@ static int ice_setup_pf_sw(struct ice_pf *pf)
- 		return -EBUSY;
- 
- 	vsi = ice_pf_vsi_setup(pf, pf->hw.port_info);
--	if (!vsi) {
--		status = -ENOMEM;
--		goto unroll_vsi_setup;
--	}
-+	if (!vsi)
-+		return -ENOMEM;
- 
- 	status = ice_cfg_netdev(vsi);
++	/* Avoid stale references by clearing map from vector to ring */
++	if (vsi->q_vectors) {
++		ice_for_each_q_vector(vsi, i) {
++			struct ice_q_vector *q_vector = vsi->q_vectors[i];
++
++			if (q_vector) {
++				q_vector->tx.ring = NULL;
++				q_vector->rx.ring = NULL;
++			}
++		}
++	}
++
+ 	if (vsi->tx_rings) {
+ 		for (i = 0; i < vsi->alloc_txq; i++) {
+ 			if (vsi->tx_rings[i]) {
+@@ -2291,7 +2303,7 @@ ice_vsi_setup(struct ice_pf *pf, struct ice_port_info *pi,
  	if (status) {
-@@ -3228,12 +3226,7 @@ static int ice_setup_pf_sw(struct ice_pf *pf)
+ 		dev_err(dev, "VSI %d failed lan queue config, error %s\n",
+ 			vsi->vsi_num, ice_stat_str(status));
+-		goto unroll_vector_base;
++		goto unroll_clear_rings;
  	}
  
- unroll_vsi_setup:
--	if (vsi) {
--		ice_vsi_free_q_vectors(vsi);
--		ice_vsi_delete(vsi);
--		ice_vsi_put_qs(vsi);
--		ice_vsi_clear(vsi);
--	}
-+	ice_vsi_release(vsi);
- 	return status;
- }
- 
+ 	/* Add switch rule to drop all Tx Flow Control Frames, of look up
 -- 
 2.20.1
 
