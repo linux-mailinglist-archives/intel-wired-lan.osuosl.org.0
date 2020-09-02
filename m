@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D23BE25B070
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 17:59:01 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 003DB25B074
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 17:59:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7B9B68727D;
-	Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id AB27C20349;
+	Wed,  2 Sep 2020 15:59:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eFcgfRjA4oeN; Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+	with ESMTP id 1EKQvnFcNrCX; Wed,  2 Sep 2020 15:59:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC04B87278;
-	Wed,  2 Sep 2020 15:58:59 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D31F52266C;
+	Wed,  2 Sep 2020 15:59:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3CABE1BF489
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 70DFE1BF489
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 2BEFC228A0
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:58 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 68B1F2033D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oCEvGEjgyGxe for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id n6izQU0NvWDJ for <intel-wired-lan@lists.osuosl.org>;
  Wed,  2 Sep 2020 15:58:55 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 328392033D
+ by silver.osuosl.org (Postfix) with ESMTPS id 6833B20349
  for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:55 +0000 (UTC)
-IronPort-SDR: dsdq3CQekgk9+p7K/3WXwwrjnI8t38QJXzjNPv2CaE2MLy1wt1vcB1ALFcxWtSxJbu2pJOYPXn
- JUVSKIF8+5Qw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="158409181"
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="158409181"
+IronPort-SDR: rKIWjfCMo/hCrej0PjTdWjBR1lofmWJelRqow72cbPULI6//NOsK7yPGn5QWXI12oS0JcLoBhF
+ Zdw5rxuewcfg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="158409180"
+X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="158409180"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Sep 2020 08:58:54 -0700
-IronPort-SDR: Y/k8GGfESwB8zF2VRc1Jj28d6/vixfcLVV3oJdyVs4DLoDayQGhQh8L/mRappoWkP3YGTjSL+f
- TdC5eOiqWdRw==
+IronPort-SDR: JmRXv5TKIj/8hfFhTye2IB3dt+LgAkwVT/nSrnVaOnLmaFNhqRogj4zzIu3s4ZEfRqWnsEOpQF
+ zhvVxM4llprw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="301882257"
+X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="301882258"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by orsmga006.jf.intel.com with ESMTP; 02 Sep 2020 08:58:54 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  2 Sep 2020 08:53:44 -0700
-Message-Id: <20200902155347.16972-3-anthony.l.nguyen@intel.com>
+Date: Wed,  2 Sep 2020 08:53:45 -0700
+Message-Id: <20200902155347.16972-4-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
 References: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net 3/6] ice: report correct max number of TCs
+Subject: [Intel-wired-lan] [net 4/6] ice: Fix call trace on suspend
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,35 +72,30 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dave Ertman <david.m.ertman@intel.com>
+From: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 
-In the driver currently, we are reporting max number of TCs
-to the DCBNL callback as a kernel define set to 8.  This is
-preventing userspace applications performing DCBx to correctly
-down map the TCs from requested to actual values.
+It appears that the ice_suspend flow is missing a call to pci_save_state
+and this is triggering the message "State of device not saved by
+ice_suspend" and a call trace. Fix it.
 
-Report the actual max TC value to userspace from the capability
-struct.
-
-Fixes: b94b013eb626 ("ice: Implement DCBNL support")
-Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+Fixes: 769c500dcc1e ("ice: Add advanced power mgmt for WoL")
+Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb_nl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-index 87f91b750d59..842d44b63480 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-@@ -136,7 +136,7 @@ ice_dcbnl_getnumtcs(struct net_device *dev, int __always_unused tcid, u8 *num)
- 	if (!test_bit(ICE_FLAG_DCB_CAPABLE, pf->flags))
- 		return -EINVAL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index c623cdf29d6b..ebec34d23865 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4531,6 +4531,7 @@ static int __maybe_unused ice_suspend(struct device *dev)
+ 	}
+ 	ice_clear_interrupt_scheme(pf);
  
--	*num = IEEE_8021QAZ_MAX_TCS;
-+	*num = pf->hw.func_caps.common_cap.maxtc;
++	pci_save_state(pdev);
+ 	pci_wake_from_d3(pdev, pf->wol_ena);
+ 	pci_set_power_state(pdev, PCI_D3hot);
  	return 0;
- }
- 
 -- 
 2.20.1
 
