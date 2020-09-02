@@ -1,58 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E01C325AB7F
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 14:55:09 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5157925AC45
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 15:47:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7B67586644;
-	Wed,  2 Sep 2020 12:55:08 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0EEDD8683C;
+	Wed,  2 Sep 2020 13:47:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7Xuo41-xF1qW; Wed,  2 Sep 2020 12:55:08 +0000 (UTC)
+	with ESMTP id RTXlNK-oghZl; Wed,  2 Sep 2020 13:47:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A474886670;
-	Wed,  2 Sep 2020 12:55:07 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 56FEE867F6;
+	Wed,  2 Sep 2020 13:47:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 50F841BF356
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 12:55:06 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 67EA71BF303
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 13:47:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 44B7220414
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 12:55:06 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 62E76867F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 13:47:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TjXlbkkzSiFi for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Sep 2020 12:55:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id 2471E20411
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 12:55:05 +0000 (UTC)
-IronPort-SDR: 9MxK7uG+DcLyW+KC3igN9rcw3YA0u9KCvCc3LwRDBKpHJXhE93vMKg5f6sKteFmBq/F06Ah5B2
- 1H1lhlsFGLXg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9731"; a="175426818"
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="175426818"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2020 05:55:04 -0700
-IronPort-SDR: TCg+8oILROZiXb8ETcH3Fssdc9VfF6GYIDwceCAvvgmUfHiKPdpjQuF5IXO21ZVXn/zgHzv+fp
- 8vbMdLyCYBtA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="375526546"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga001.jf.intel.com with ESMTP; 02 Sep 2020 05:55:03 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  2 Sep 2020 12:54:59 +0000
-Message-Id: <20200902125459.30641-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH] iavf-linux: Fix incorrect adapter get in
- iavf_resume
+ with ESMTP id QUvQvFfztmnw for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Sep 2020 13:47:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
+ [129.97.134.17])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 64E5C84FB2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 13:47:37 +0000 (UTC)
+Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
+ id E12B2460FF9; Wed,  2 Sep 2020 09:47:34 -0400 (EDT)
+Date: Wed, 2 Sep 2020 09:47:34 -0400
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <20200902134734.fvtyn5tbhpyssrbq@csclub.uwaterloo.ca>
+References: <20200827183039.hrfnb63cxq3pmv4z@csclub.uwaterloo.ca>
+ <20200828155616.3sd2ivrml2gpcvod@csclub.uwaterloo.ca>
+ <20200831103512.00001fab@intel.com>
+ <20200901013519.rfmavd4763gdzw4r@csclub.uwaterloo.ca>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200901013519.rfmavd4763gdzw4r@csclub.uwaterloo.ca>
+User-Agent: NeoMutt/20170113 (1.7.2)
+From: lsorense@csclub.uwaterloo.ca (Lennart Sorensen)
+Subject: Re: [Intel-wired-lan] VRRP not working on i40e X722 S2600WFT
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,51 +59,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
+On Mon, Aug 31, 2020 at 09:35:19PM -0400,  wrote:
+> On Mon, Aug 31, 2020 at 10:35:12AM -0700, Jesse Brandeburg wrote:
+> > Thanks for the report Lennart, I understand your frustration, as this
+> > should probably work without user configuration.
+> > 
+> > However, please give this command a try:
+> > ethtool --set-priv-flags ethX disable-source-pruning on
+> 
+> Hmm, our 4.9 kernel is just a touch too old to support that.  And yes
+> that really should not require a flag to be set, given the card has no
+> reason to ever do that pruning.  There is no justification you could
+> have for doing it in the first place.
 
-When calling iavf_resume there was a crash because wrong
-function was used to get iavf_adapter and net_device pointers.
-Changed how iavf_resume is getting iavf_adapter and net_device
-pointers from pci_dev.
+So backporting the patch that enabled that flag does allow it to work.
+Of course there isn't a particularly good place to put an ethtool command
+in the boot up to make sure it runs before vrrp is started.  This has to
+be the default. I know I wasted about a week trying things to get this to
+work, and clearly lots of other people have wasted a ton of time on this
+"feature" too (calling it a feature is clearly wrong, it is a bug).
 
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+By default the NIC should work as expected.  Any weird questionable
+optimizations have to be turned on by the user explicitly when they
+understand the consequences.  I can't find any use case documented
+anywhere for this bug, I can only find things it has broken (like
+apparently arp monitoring on bonding, and vrrp).
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index d870343cf..cf539db79 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -3806,8 +3806,8 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
- static int __maybe_unused iavf_resume(struct device *dev_d)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev_d);
--	struct iavf_adapter *adapter = pci_get_drvdata(pdev);
--	struct net_device *netdev = adapter->netdev;
-+	struct net_device *netdev = pci_get_drvdata(pdev);
-+	struct iavf_adapter *adapter = netdev_priv(netdev);
- 	u32 err;
- 
- 	pci_set_master(pdev);
+So who should make the patch to change this to be the default?  Clearly
+the current behaviour is harming and confusing more people than could
+possibly be impacted by changing the current default setting for the flag
+(in fact I would just about be willing to bet there are no people that
+want the current behaviour.  After all no other NIC does this, so clearly
+there is no need for it to be done).
+
 -- 
-2.17.1
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
-
+Len Sorensen
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
