@@ -1,59 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D70A25B075
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 17:59:05 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5681525B072
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Sep 2020 17:59:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D30B386A88;
-	Wed,  2 Sep 2020 15:59:03 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pk1SU9LDcaTS; Wed,  2 Sep 2020 15:59:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C57686A63;
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0B64F869C1;
 	Wed,  2 Sep 2020 15:59:02 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MLNztdasq4pB; Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5372D869A3;
+	Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0635A1BF489
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D6DB41BF489
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 032652033D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:59:00 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D061E2033D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Dugf6enpHzoI for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Sep 2020 15:58:55 +0000 (UTC)
+ with ESMTP id OfBA4EpGAlmo for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Sep 2020 15:58:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by silver.osuosl.org (Postfix) with ESMTPS id 9AD8620794
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:55 +0000 (UTC)
-IronPort-SDR: pVjkLlaj85USOdAo0Zi6XiWliIAGG8tvki9SL/1mWZweadli+BwajS5s48FPoevFQeUXuEk1w1
- 4bfBKYU7um7Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="158409178"
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="158409178"
+ by silver.osuosl.org (Postfix) with ESMTPS id 2A4512286C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 15:58:56 +0000 (UTC)
+IronPort-SDR: I6vuduOZG/e/vkdeli+/45m8x5ZAjzP2QRmHR0+cbCd3U1JLLq4HnTFgCvbzWAEIx0qByoZNHe
+ sP27IpHp6MIw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="158409179"
+X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="158409179"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Sep 2020 08:58:54 -0700
-IronPort-SDR: 3KryzJ+ZEbSG0XjzqojIthSV5U3Mi610uqs/p+s702hervTFqW7dcdvT4BMa+HczSefPj8eDXB
- NkBCLSSzafyg==
+IronPort-SDR: 9WzvfZN7ydPCcwBQxz0o9gqWtODauweJYPRHMEewwwngL2QeCb/TtUwIgutgLQGRm99/g/Q9u9
+ 2b8N/kNdYaPQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="301882255"
+X-IronPort-AV: E=Sophos;i="5.76,383,1592895600"; d="scan'208";a="301882256"
 Received: from unknown (HELO localhost.jf.intel.com) ([10.166.241.65])
  by orsmga006.jf.intel.com with ESMTP; 02 Sep 2020 08:58:54 -0700
 From: Tony Nguyen <anthony.l.nguyen@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  2 Sep 2020 08:53:42 -0700
-Message-Id: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
+Date: Wed,  2 Sep 2020 08:53:43 -0700
+Message-Id: <20200902155347.16972-2-anthony.l.nguyen@intel.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
+References: <20200902155347.16972-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [net 1/6] ice: preserve NVM capabilities in safe
- mode
+Subject: [Intel-wired-lan] [net 2/6] ice: fix adding IP4 IP6 Flow Director
+ rules
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,110 +73,105 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+From: Dan Nowlin <dan.nowlin@intel.com>
 
-If the driver initializes in safe mode, it will call
-ice_set_safe_mode_caps. This results in clearing the capabilities
-structures, in order to set them up for operating in safe mode, ensuring
-many features are disabled.
+A subsequent addition of an IP4 or IP6 rule after other rules would
+overwrite any existing TCAM entries of related L4 protocols(ex: tcp4 or
+udp6). This was due to the mask including too many TCAM entries. Add new
+packet type masks with bits properly excluded so rules are not overwritten.
 
-This has a side effect of also clearing the capability bits that relate
-to NVM update. The result is that the device driver will not indicate
-support for unified update, even if the firmware is capable.
-
-Fix this by adding the relevant capability fields to the list of values
-we preserve. To simplify the code, use a common_cap structure instead of
-a handful of local variables. To reduce some duplication of the
-capability name, introduce a couple of macros used to restore the
-capabilities values from the cached copy.
-
-Fixes: de9b277ee032 ("ice: Add support for unified NVM update flow capability")
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Fixes: 31ad4e4ee1e4 ("ice: Allocate flow profile")
+Signed-off-by: Dan Nowlin <dan.nowlin@intel.com>
+Signed-off-by: Henry Tieman <henry.w.tieman@intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c | 49 ++++++++++++---------
- 1 file changed, 27 insertions(+), 22 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_flow.c | 62 ++++++++++++++++++++++-
+ 1 file changed, 61 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 34abfcea9858..7db5fd977367 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -2288,26 +2288,28 @@ void ice_set_safe_mode_caps(struct ice_hw *hw)
- {
- 	struct ice_hw_func_caps *func_caps = &hw->func_caps;
- 	struct ice_hw_dev_caps *dev_caps = &hw->dev_caps;
--	u32 valid_func, rxq_first_id, txq_first_id;
--	u32 msix_vector_first_id, max_mtu;
-+	struct ice_hw_common_caps cached_caps;
- 	u32 num_funcs;
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index fe677621dd51..26fa2c915ac6 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -99,6 +99,54 @@ static const u32 ice_ptypes_ipv6_il[] = {
+ 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+ };
  
- 	/* cache some func_caps values that should be restored after memset */
--	valid_func = func_caps->common_cap.valid_functions;
--	txq_first_id = func_caps->common_cap.txq_first_id;
--	rxq_first_id = func_caps->common_cap.rxq_first_id;
--	msix_vector_first_id = func_caps->common_cap.msix_vector_first_id;
--	max_mtu = func_caps->common_cap.max_mtu;
-+	cached_caps = func_caps->common_cap;
- 
- 	/* unset func capabilities */
- 	memset(func_caps, 0, sizeof(*func_caps));
- 
-+#define ICE_RESTORE_FUNC_CAP(name) \
-+	func_caps->common_cap.name = cached_caps.name
++/* Packet types for packets with an Outer/First/Single IPv4 header - no L4 */
++static const u32 ice_ipv4_ofos_no_l4[] = {
++	0x10C00000, 0x04000800, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
 +
- 	/* restore cached values */
--	func_caps->common_cap.valid_functions = valid_func;
--	func_caps->common_cap.txq_first_id = txq_first_id;
--	func_caps->common_cap.rxq_first_id = rxq_first_id;
--	func_caps->common_cap.msix_vector_first_id = msix_vector_first_id;
--	func_caps->common_cap.max_mtu = max_mtu;
-+	ICE_RESTORE_FUNC_CAP(valid_functions);
-+	ICE_RESTORE_FUNC_CAP(txq_first_id);
-+	ICE_RESTORE_FUNC_CAP(rxq_first_id);
-+	ICE_RESTORE_FUNC_CAP(msix_vector_first_id);
-+	ICE_RESTORE_FUNC_CAP(max_mtu);
-+	ICE_RESTORE_FUNC_CAP(nvm_unified_update);
-+	ICE_RESTORE_FUNC_CAP(nvm_update_pending_nvm);
-+	ICE_RESTORE_FUNC_CAP(nvm_update_pending_orom);
-+	ICE_RESTORE_FUNC_CAP(nvm_update_pending_netlist);
- 
- 	/* one Tx and one Rx queue in safe mode */
- 	func_caps->common_cap.num_rxq = 1;
-@@ -2318,22 +2320,25 @@ void ice_set_safe_mode_caps(struct ice_hw *hw)
- 	func_caps->guar_num_vsi = 1;
- 
- 	/* cache some dev_caps values that should be restored after memset */
--	valid_func = dev_caps->common_cap.valid_functions;
--	txq_first_id = dev_caps->common_cap.txq_first_id;
--	rxq_first_id = dev_caps->common_cap.rxq_first_id;
--	msix_vector_first_id = dev_caps->common_cap.msix_vector_first_id;
--	max_mtu = dev_caps->common_cap.max_mtu;
-+	cached_caps = dev_caps->common_cap;
- 	num_funcs = dev_caps->num_funcs;
- 
- 	/* unset dev capabilities */
- 	memset(dev_caps, 0, sizeof(*dev_caps));
- 
-+#define ICE_RESTORE_DEV_CAP(name) \
-+	dev_caps->common_cap.name = cached_caps.name
++/* Packet types for packets with an Innermost/Last IPv4 header - no L4 */
++static const u32 ice_ipv4_il_no_l4[] = {
++	0x60000000, 0x18043008, 0x80000002, 0x6010c021,
++	0x00000008, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
 +
- 	/* restore cached values */
--	dev_caps->common_cap.valid_functions = valid_func;
--	dev_caps->common_cap.txq_first_id = txq_first_id;
--	dev_caps->common_cap.rxq_first_id = rxq_first_id;
--	dev_caps->common_cap.msix_vector_first_id = msix_vector_first_id;
--	dev_caps->common_cap.max_mtu = max_mtu;
-+	ICE_RESTORE_DEV_CAP(valid_functions);
-+	ICE_RESTORE_DEV_CAP(txq_first_id);
-+	ICE_RESTORE_DEV_CAP(rxq_first_id);
-+	ICE_RESTORE_DEV_CAP(msix_vector_first_id);
-+	ICE_RESTORE_DEV_CAP(max_mtu);
-+	ICE_RESTORE_DEV_CAP(nvm_unified_update);
-+	ICE_RESTORE_DEV_CAP(nvm_update_pending_nvm);
-+	ICE_RESTORE_DEV_CAP(nvm_update_pending_orom);
-+	ICE_RESTORE_DEV_CAP(nvm_update_pending_netlist);
- 	dev_caps->num_funcs = num_funcs;
++/* Packet types for packets with an Outer/First/Single IPv6 header - no L4 */
++static const u32 ice_ipv6_ofos_no_l4[] = {
++	0x00000000, 0x00000000, 0x43000000, 0x10002000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
++/* Packet types for packets with an Innermost/Last IPv6 header - no L4 */
++static const u32 ice_ipv6_il_no_l4[] = {
++	0x00000000, 0x02180430, 0x0000010c, 0x086010c0,
++	0x00000430, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++	0x00000000, 0x00000000, 0x00000000, 0x00000000,
++};
++
+ /* UDP Packet types for non-tunneled packets or tunneled
+  * packets with inner UDP.
+  */
+@@ -250,11 +298,23 @@ ice_flow_proc_seg_hdrs(struct ice_flow_prof_params *params)
  
- 	/* one Tx and one Rx queue per function in safe mode */
+ 		hdrs = prof->segs[i].hdrs;
+ 
+-		if (hdrs & ICE_FLOW_SEG_HDR_IPV4) {
++		if ((hdrs & ICE_FLOW_SEG_HDR_IPV4) &&
++		    !(hdrs & ICE_FLOW_SEG_HDRS_L4_MASK)) {
++			src = !i ? (const unsigned long *)ice_ipv4_ofos_no_l4 :
++				(const unsigned long *)ice_ipv4_il_no_l4;
++			bitmap_and(params->ptypes, params->ptypes, src,
++				   ICE_FLOW_PTYPE_MAX);
++		} else if (hdrs & ICE_FLOW_SEG_HDR_IPV4) {
+ 			src = !i ? (const unsigned long *)ice_ptypes_ipv4_ofos :
+ 				(const unsigned long *)ice_ptypes_ipv4_il;
+ 			bitmap_and(params->ptypes, params->ptypes, src,
+ 				   ICE_FLOW_PTYPE_MAX);
++		} else if ((hdrs & ICE_FLOW_SEG_HDR_IPV6) &&
++			   !(hdrs & ICE_FLOW_SEG_HDRS_L4_MASK)) {
++			src = !i ? (const unsigned long *)ice_ipv6_ofos_no_l4 :
++				(const unsigned long *)ice_ipv6_il_no_l4;
++			bitmap_and(params->ptypes, params->ptypes, src,
++				   ICE_FLOW_PTYPE_MAX);
+ 		} else if (hdrs & ICE_FLOW_SEG_HDR_IPV6) {
+ 			src = !i ? (const unsigned long *)ice_ptypes_ipv6_ofos :
+ 				(const unsigned long *)ice_ptypes_ipv6_il;
 -- 
 2.20.1
 
