@@ -1,60 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A12325B75F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Sep 2020 01:37:11 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9926125B760
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Sep 2020 01:37:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0040A872E1;
-	Wed,  2 Sep 2020 23:37:10 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4B42486AB0;
+	Wed,  2 Sep 2020 23:37:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VqqEQuPJZ8Cz; Wed,  2 Sep 2020 23:37:09 +0000 (UTC)
+	with ESMTP id 7SyrcemrLKYV; Wed,  2 Sep 2020 23:37:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 7C96787323;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D06F886ACB;
 	Wed,  2 Sep 2020 23:37:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 537481BF410
+ by ash.osuosl.org (Postfix) with ESMTP id 96B1C1BF410
  for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 23:37:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 4BA8187318
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8B7AA872E1
  for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 23:37:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jYWpl1xqhHah for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id rvpjxOzBu9pV for <intel-wired-lan@lists.osuosl.org>;
  Wed,  2 Sep 2020 23:37:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 67EDB872E1
+ by hemlock.osuosl.org (Postfix) with ESMTPS id ACFD3872E3
  for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 23:37:06 +0000 (UTC)
-IronPort-SDR: K9mPFVJdZlrG9xvKPPRu019uaFX/ys63uzZsLbr8i/xolXvg7znoiFlCQ9XGQH2oXqvpAZ0WTc
- mKXNLYvEAMpQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="145186763"
-X-IronPort-AV: E=Sophos;i="5.76,384,1592895600"; d="scan'208";a="145186763"
+IronPort-SDR: SNGlqY2w2Wjz/nxW5vREgen+2P3KNvMsaKWZ5kUQ3nerRt3M/ruFNEZQbGkd14bQryswJ8PjBI
+ L0MyZzhtaRHQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="145186764"
+X-IronPort-AV: E=Sophos;i="5.76,384,1592895600"; d="scan'208";a="145186764"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  02 Sep 2020 16:37:05 -0700
-IronPort-SDR: ycSEUlrtAu/TrGDaLTTnby1CL+i/x16kINYgYdKNiv4QDvZxyQhm4rK0lOFZ6qKSEaYQ/XT0bM
- VdPgQitlJ6GA==
+IronPort-SDR: lvfqxx5ITTwIQDhwLufwYVgWHY8btXjNkVmCWilXCbcxVGrAsuu0gA9fRsPjTWqSnlfC96mHCw
+ tR1lpPDQnVfQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,384,1592895600"; d="scan'208";a="405312965"
+X-IronPort-AV: E=Sophos;i="5.76,384,1592895600"; d="scan'208";a="405312970"
 Received: from shwethas-mobl.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.209.109.56])
  by fmsmga001.fm.intel.com with ESMTP; 02 Sep 2020 16:37:05 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  2 Sep 2020 16:36:56 -0700
-Message-Id: <20200902233657.4051914-1-vinicius.gomes@intel.com>
+Date: Wed,  2 Sep 2020 16:36:57 -0700
+Message-Id: <20200902233657.4051914-2-vinicius.gomes@intel.com>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200902233657.4051914-1-vinicius.gomes@intel.com>
+References: <20200902233657.4051914-1-vinicius.gomes@intel.com>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v1 1/2] igc: Export a way to
- read the PTP timer
+Subject: [Intel-wired-lan] [PATCH next-queue v1 2/2] igc: Reject schedules
+ with a base_time in the future
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,62 +75,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The next patch will need a way to retrieve the current timestamp from
-the NIC's PTP clock.
+When we set the BASET registers of i225 with a base_time in the
+future, i225 will "hold" all packets until that base_time is reached,
+causing a lot of TX Hangs.
 
-The 'i225' suffix is removed, if anything model specific is needed,
-those specifics should be hidden by this function.
+As this behaviour seems contrary to the expectations of the IEEE
+802.1Q standard (section 8.6.9, specially 8.6.9.4.5), let's start by
+rejecting these types of schedules. If this is too limiting, we can
+for example, setup a timer to configure the BASET registers closer to
+the start time, only blocking the packets for a "short" while.
 
 Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h     | 1 +
- drivers/net/ethernet/intel/igc/igc_ptp.c | 7 +++----
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 25 +++++++++++++++++++++--
+ 1 file changed, 23 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 2e5720d34a16..35baae900c1f 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -550,6 +550,7 @@ void igc_ptp_rx_pktstamp(struct igc_q_vector *q_vector, void *va,
- int igc_ptp_set_ts_config(struct net_device *netdev, struct ifreq *ifr);
- int igc_ptp_get_ts_config(struct net_device *netdev, struct ifreq *ifr);
- void igc_ptp_tx_hang(struct igc_adapter *adapter);
-+void igc_ptp_read(struct igc_adapter *adapter, struct timespec64 *ts);
- 
- #define igc_rx_pg_size(_ring) (PAGE_SIZE << igc_rx_pg_order(_ring))
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 344bb67018f1..927af8ae2bef 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -17,8 +17,7 @@
- #define IGC_PTP_TX_TIMEOUT		(HZ * 15)
- 
- /* SYSTIM read access for I225 */
--static void igc_ptp_read_i225(struct igc_adapter *adapter,
--			      struct timespec64 *ts)
-+void igc_ptp_read(struct igc_adapter *adapter, struct timespec64 *ts)
- {
- 	struct igc_hw *hw = &adapter->hw;
- 	u32 sec, nsec;
-@@ -75,7 +74,7 @@ static int igc_ptp_adjtime_i225(struct ptp_clock_info *ptp, s64 delta)
- 
- 	spin_lock_irqsave(&igc->tmreg_lock, flags);
- 
--	igc_ptp_read_i225(igc, &now);
-+	igc_ptp_read(igc, &now);
- 	now = timespec64_add(now, then);
- 	igc_ptp_write_i225(igc, (const struct timespec64 *)&now);
- 
-@@ -517,7 +516,7 @@ void igc_ptp_init(struct igc_adapter *adapter)
- 
- static void igc_ptp_time_save(struct igc_adapter *adapter)
- {
--	igc_ptp_read_i225(adapter, &adapter->prev_ptp_time);
-+	igc_ptp_read(adapter, &adapter->prev_ptp_time);
- 	adapter->ptp_reset_start = ktime_get();
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 2cdf83e213b3..fd569cfa414f 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -4705,14 +4705,35 @@ static int igc_save_launchtime_params(struct igc_adapter *adapter, int queue,
+ 	return 0;
  }
  
+-static bool validate_schedule(const struct tc_taprio_qopt_offload *qopt)
++static bool is_base_time_past(ktime_t base_time, const struct timespec64 *now)
++{
++	struct timespec64 b;
++
++	b = ktime_to_timespec64(base_time);
++
++	return timespec64_compare(now, &b) > 0;
++}
++
++static bool validate_schedule(struct igc_adapter *adapter,
++			      const struct tc_taprio_qopt_offload *qopt)
+ {
+ 	int queue_uses[IGC_MAX_TX_QUEUES] = { };
++	struct timespec64 now;
+ 	size_t n;
+ 
+ 	if (qopt->cycle_time_extension)
+ 		return false;
+ 
++	igc_ptp_read(adapter, &now);
++
++	/* If we program the controller's BASET registers with a time
++	 * in the future, it will hold all the packets until that
++	 * time, causing a lot of TX Hangs, so to avoid that, we
++	 * reject schedules that would start in the future.
++	 */
++	if (!is_base_time_past(qopt->base_time, &now))
++		return false;
++
+ 	for (n = 0; n < qopt->num_entries; n++) {
+ 		const struct tc_taprio_sched_entry *e;
+ 		int i;
+@@ -4767,7 +4788,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
+ 	if (adapter->base_time)
+ 		return -EALREADY;
+ 
+-	if (!validate_schedule(qopt))
++	if (!validate_schedule(adapter, qopt))
+ 		return -EINVAL;
+ 
+ 	adapter->cycle_time = qopt->cycle_time;
 -- 
 2.28.0
 
