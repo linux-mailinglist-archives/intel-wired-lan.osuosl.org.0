@@ -1,62 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9926125B760
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Sep 2020 01:37:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 4B42486AB0;
-	Wed,  2 Sep 2020 23:37:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7SyrcemrLKYV; Wed,  2 Sep 2020 23:37:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D06F886ACB;
-	Wed,  2 Sep 2020 23:37:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 96B1C1BF410
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 23:37:07 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9887425BDFC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Sep 2020 11:00:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 8B7AA872E1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 23:37:07 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B1A7487379;
+	Thu,  3 Sep 2020 08:59:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4KxyM41e5Ug0; Thu,  3 Sep 2020 08:59:59 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id BCE2C87375;
+	Thu,  3 Sep 2020 08:59:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7B1101BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Sep 2020 08:59:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 76AB186BBB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Sep 2020 08:59:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rvpjxOzBu9pV for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Sep 2020 23:37:06 +0000 (UTC)
+ with ESMTP id H4Zh3_ul2qSb for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Sep 2020 08:59:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id ACFD3872E3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Sep 2020 23:37:06 +0000 (UTC)
-IronPort-SDR: SNGlqY2w2Wjz/nxW5vREgen+2P3KNvMsaKWZ5kUQ3nerRt3M/ruFNEZQbGkd14bQryswJ8PjBI
- L0MyZzhtaRHQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="145186764"
-X-IronPort-AV: E=Sophos;i="5.76,384,1592895600"; d="scan'208";a="145186764"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id C7C7186BAE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Sep 2020 08:59:56 +0000 (UTC)
+IronPort-SDR: GDc4pljyui33eHRDkrRLwqG2Dpt6cqPwWvaECljV/wIljPahdyLaop/8ntbLqbJbD+PrkUpLRl
+ rtr1Bxhh/xbw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9732"; a="154943668"
+X-IronPort-AV: E=Sophos;i="5.76,386,1592895600"; d="scan'208";a="154943668"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Sep 2020 16:37:05 -0700
-IronPort-SDR: lvfqxx5ITTwIQDhwLufwYVgWHY8btXjNkVmCWilXCbcxVGrAsuu0gA9fRsPjTWqSnlfC96mHCw
- tR1lpPDQnVfQ==
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Sep 2020 01:59:56 -0700
+IronPort-SDR: aKiXKknJw43+/qhjPTiBFHfQFsyPcwDHFwcku/F0AZsX7tMVy6bAsnmcFn1Fgzdjf9JG2GMkeX
+ 11UHbkn2xHdw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,384,1592895600"; d="scan'208";a="405312970"
-Received: from shwethas-mobl.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.209.109.56])
- by fmsmga001.fm.intel.com with ESMTP; 02 Sep 2020 16:37:05 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  2 Sep 2020 16:36:57 -0700
-Message-Id: <20200902233657.4051914-2-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200902233657.4051914-1-vinicius.gomes@intel.com>
-References: <20200902233657.4051914-1-vinicius.gomes@intel.com>
+X-IronPort-AV: E=Sophos;i="5.76,386,1592895600"; d="scan'208";a="282608004"
+Received: from lkp-server01.sh.intel.com (HELO f1af165c0d27) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 03 Sep 2020 01:59:55 -0700
+Received: from kbuild by f1af165c0d27 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kDl62-00006b-TX; Thu, 03 Sep 2020 08:59:54 +0000
+Date: Thu, 03 Sep 2020 16:59:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f50b077.tMEeBLKhtdIecxqC%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH next-queue v1 2/2] igc: Reject schedules
- with a base_time in the future
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ 32e863fb15e8bb03b4b42d6c821fcc41c43e2a8c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,80 +69,181 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andre.guedes@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When we set the BASET registers of i225 with a base_time in the
-future, i225 will "hold" all packets until that base_time is reached,
-causing a lot of TX Hangs.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 32e863fb15e8bb03b4b42d6c821fcc41c43e2a8c  iavf: clean up W=1 warnings in iavf
 
-As this behaviour seems contrary to the expectations of the IEEE
-802.1Q standard (section 8.6.9, specially 8.6.9.4.5), let's start by
-rejecting these types of schedules. If this is too limiting, we can
-for example, setup a timer to configure the BASET registers closer to
-the start time, only blocking the packets for a "short" while.
+elapsed time: 722m
 
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+configs tested: 152
+configs skipped: 14
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+mips                         rt305x_defconfig
+nios2                            alldefconfig
+sh                          polaris_defconfig
+arm                          gemini_defconfig
+arc                        nsim_700_defconfig
+arm                              zx_defconfig
+microblaze                          defconfig
+mips                        vocore2_defconfig
+mips                      maltasmvp_defconfig
+powerpc                      ppc44x_defconfig
+m68k                            q40_defconfig
+m68k                       m5475evb_defconfig
+mips                 pnx8335_stb225_defconfig
+mips                             allyesconfig
+arm                          badge4_defconfig
+arm                            zeus_defconfig
+um                             i386_defconfig
+mips                         mpc30x_defconfig
+c6x                        evmc6474_defconfig
+arm                      jornada720_defconfig
+arm                       imx_v4_v5_defconfig
+sh                           se7712_defconfig
+mips                          rb532_defconfig
+sh                            hp6xx_defconfig
+arm                           h5000_defconfig
+arm                           sunxi_defconfig
+sh                           se7721_defconfig
+arm                        shmobile_defconfig
+arm                           omap1_defconfig
+mips                  decstation_64_defconfig
+arc                      axs103_smp_defconfig
+arc                              alldefconfig
+sh                      rts7751r2d1_defconfig
+arm                        mvebu_v5_defconfig
+arm                         nhk8815_defconfig
+powerpc                      tqm8xx_defconfig
+mips                           gcw0_defconfig
+arm                          moxart_defconfig
+powerpc                    adder875_defconfig
+mips                           ip28_defconfig
+openrisc                         alldefconfig
+arm                          iop32x_defconfig
+sh                        sh7785lcr_defconfig
+i386                             allyesconfig
+arm                             mxs_defconfig
+sh                   sh7770_generic_defconfig
+mips                      loongson3_defconfig
+mips                        workpad_defconfig
+c6x                        evmc6457_defconfig
+mips                          rm200_defconfig
+h8300                            alldefconfig
+mips                     cu1830-neo_defconfig
+mips                        omega2p_defconfig
+mips                        nlm_xlp_defconfig
+sh                           se7724_defconfig
+arm                         mv78xx0_defconfig
+microblaze                      mmu_defconfig
+riscv                          rv32_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20200903
+x86_64               randconfig-a006-20200903
+x86_64               randconfig-a003-20200903
+x86_64               randconfig-a005-20200903
+x86_64               randconfig-a001-20200903
+x86_64               randconfig-a002-20200903
+i386                 randconfig-a004-20200902
+i386                 randconfig-a005-20200902
+i386                 randconfig-a006-20200902
+i386                 randconfig-a002-20200902
+i386                 randconfig-a001-20200902
+i386                 randconfig-a003-20200902
+i386                 randconfig-a004-20200903
+i386                 randconfig-a005-20200903
+i386                 randconfig-a006-20200903
+i386                 randconfig-a002-20200903
+i386                 randconfig-a001-20200903
+i386                 randconfig-a003-20200903
+x86_64               randconfig-a013-20200902
+x86_64               randconfig-a016-20200902
+x86_64               randconfig-a011-20200902
+x86_64               randconfig-a012-20200902
+x86_64               randconfig-a015-20200902
+x86_64               randconfig-a014-20200902
+i386                 randconfig-a016-20200902
+i386                 randconfig-a015-20200902
+i386                 randconfig-a011-20200902
+i386                 randconfig-a013-20200902
+i386                 randconfig-a014-20200902
+i386                 randconfig-a012-20200902
+i386                 randconfig-a016-20200903
+i386                 randconfig-a015-20200903
+i386                 randconfig-a011-20200903
+i386                 randconfig-a013-20200903
+i386                 randconfig-a014-20200903
+i386                 randconfig-a012-20200903
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a004-20200902
+x86_64               randconfig-a006-20200902
+x86_64               randconfig-a003-20200902
+x86_64               randconfig-a005-20200902
+x86_64               randconfig-a001-20200902
+x86_64               randconfig-a002-20200902
+x86_64               randconfig-a013-20200903
+x86_64               randconfig-a016-20200903
+x86_64               randconfig-a011-20200903
+x86_64               randconfig-a012-20200903
+x86_64               randconfig-a015-20200903
+x86_64               randconfig-a014-20200903
+
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 25 +++++++++++++++++++++--
- 1 file changed, 23 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 2cdf83e213b3..fd569cfa414f 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -4705,14 +4705,35 @@ static int igc_save_launchtime_params(struct igc_adapter *adapter, int queue,
- 	return 0;
- }
- 
--static bool validate_schedule(const struct tc_taprio_qopt_offload *qopt)
-+static bool is_base_time_past(ktime_t base_time, const struct timespec64 *now)
-+{
-+	struct timespec64 b;
-+
-+	b = ktime_to_timespec64(base_time);
-+
-+	return timespec64_compare(now, &b) > 0;
-+}
-+
-+static bool validate_schedule(struct igc_adapter *adapter,
-+			      const struct tc_taprio_qopt_offload *qopt)
- {
- 	int queue_uses[IGC_MAX_TX_QUEUES] = { };
-+	struct timespec64 now;
- 	size_t n;
- 
- 	if (qopt->cycle_time_extension)
- 		return false;
- 
-+	igc_ptp_read(adapter, &now);
-+
-+	/* If we program the controller's BASET registers with a time
-+	 * in the future, it will hold all the packets until that
-+	 * time, causing a lot of TX Hangs, so to avoid that, we
-+	 * reject schedules that would start in the future.
-+	 */
-+	if (!is_base_time_past(qopt->base_time, &now))
-+		return false;
-+
- 	for (n = 0; n < qopt->num_entries; n++) {
- 		const struct tc_taprio_sched_entry *e;
- 		int i;
-@@ -4767,7 +4788,7 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 	if (adapter->base_time)
- 		return -EALREADY;
- 
--	if (!validate_schedule(qopt))
-+	if (!validate_schedule(adapter, qopt))
- 		return -EINVAL;
- 
- 	adapter->cycle_time = qopt->cycle_time;
--- 
-2.28.0
-
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
