@@ -1,61 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B149025D282
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Sep 2020 09:36:08 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id C30402E196;
-	Fri,  4 Sep 2020 07:36:05 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ETNTv-KNzYQs; Fri,  4 Sep 2020 07:36:05 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 095322E197;
-	Fri,  4 Sep 2020 07:36:02 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ACEDC1BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Sep 2020 07:35:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE31225D5B2
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Sep 2020 12:09:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id A7C2986E57
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Sep 2020 07:35:59 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 436D386DF1;
+	Fri,  4 Sep 2020 10:09:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8ltHsBLTMtNe; Fri,  4 Sep 2020 10:09:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 623CA86CC5;
+	Fri,  4 Sep 2020 10:09:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D9D01BF3BC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Sep 2020 10:09:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 193D787518
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Sep 2020 10:09:04 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tInEWLK8UDEA for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Sep 2020 07:35:58 +0000 (UTC)
+ with ESMTP id bmQOaAu9CnxX for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Sep 2020 10:09:03 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com
- [207.211.31.81])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 2CCBB86C24
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Sep 2020 07:35:58 +0000 (UTC)
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-425-8I2tKuALN4GdHpuv0fjZjQ-1; Fri, 04 Sep 2020 03:35:55 -0400
-X-MC-Unique: 8I2tKuALN4GdHpuv0fjZjQ-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A0137801AEE;
- Fri,  4 Sep 2020 07:35:53 +0000 (UTC)
-Received: from carbon (unknown [10.40.208.42])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0224A18B59;
- Fri,  4 Sep 2020 07:35:43 +0000 (UTC)
-Date: Fri, 4 Sep 2020 09:35:42 +0200
-From: Jesper Dangaard Brouer <brouer@redhat.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Message-ID: <20200904093542.4dc43682@carbon>
-In-Reply-To: <05822dfe200c5d581d6a6cad89c1b63bb7a1c566.1599165031.git.lorenzo@kernel.org>
-References: <cover.1599165031.git.lorenzo@kernel.org>
- <05822dfe200c5d581d6a6cad89c1b63bb7a1c566.1599165031.git.lorenzo@kernel.org>
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3B1B9870BB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Sep 2020 10:09:03 +0000 (UTC)
+IronPort-SDR: QXMmD/Dwi7kxpuC1QBdYHTY/vCK/LSCcC+27U8jvR79yfU3fF/YgB0GLCfU60fbHvtB2z33CXC
+ Zj6Ce3noGpSA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9733"; a="221930755"
+X-IronPort-AV: E=Sophos;i="5.76,389,1592895600"; d="scan'208";a="221930755"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Sep 2020 03:08:48 -0700
+IronPort-SDR: qyE71pnwsOKQ3OSylOV4twiN9wylIBJBLJCL/1JKwrJOdjN3oi66soHpb/3ozRuH4YSRs5UtdG
+ DF06bCgNO7Eg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,389,1592895600"; d="scan'208";a="503452722"
+Received: from lkp-server02.sh.intel.com (HELO c089623da072) ([10.239.97.151])
+ by fmsmga005.fm.intel.com with ESMTP; 04 Sep 2020 03:08:47 -0700
+Received: from kbuild by c089623da072 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kE8eE-00003J-Dw; Fri, 04 Sep 2020 10:08:46 +0000
+Date: Fri, 04 Sep 2020 18:07:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f5211fc.XCH9mSiyCkZOWlOg%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 2/9] xdp: initialize
- xdp_buff mb bit to 0 in all XDP drivers
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ e20782119081ef4d1f5ce800f7ba8a890204cf7e
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,44 +69,126 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shayagr@amazon.com, daniel@iogearbox.net, netdev@vger.kernel.org,
- ast@kernel.org, lorenzo.bianconi@redhat.com,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>, brouer@redhat.com,
- sameehj@amazon.com, kuba@kernel.org, bpf@vger.kernel.org, davem@davemloft.net,
- echaudro@redhat.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu,  3 Sep 2020 22:58:46 +0200
-Lorenzo Bianconi <lorenzo@kernel.org> wrote:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: e20782119081ef4d1f5ce800f7ba8a890204cf7e  ixgbe: clean up W=1 warnings in ixgbe
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index 0b675c34ce49..20c8fd3cd4a3 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -2298,6 +2298,7 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
->  #if (PAGE_SIZE < 8192)
->  	xdp.frame_sz = ixgbe_rx_frame_truesize(rx_ring, 0);
->  #endif
-> +	xdp.mb = 0;
->  
->  	while (likely(total_rx_packets < budget)) {
->  		union ixgbe_adv_rx_desc *rx_desc;
+elapsed time: 720m
 
-In this ixgbe driver you are smart and init the xdp.mb bit outside the
-(like xdp.frame_sz, when frame_sz is constant).   This is a nice
-optimization, but the driver developer that adds XDP multi-buffer
-support must remember to reset it.  The patch itself is okay, it is
-just something to keep in-mind when reviewing/changing drivers.
+configs tested: 97
+configs skipped: 3
 
--- 
-Best regards,
-  Jesper Dangaard Brouer
-  MSc.CS, Principal Kernel Engineer at Red Hat
-  LinkedIn: http://www.linkedin.com/in/brouer
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+sh                          rsk7203_defconfig
+m68k                            q40_defconfig
+arm                           sama5_defconfig
+mips                     cu1000-neo_defconfig
+sh                   sh7770_generic_defconfig
+powerpc                mpc7448_hpc2_defconfig
+xtensa                generic_kc705_defconfig
+mips                      fuloong2e_defconfig
+mips                            ar7_defconfig
+arm                         lpc32xx_defconfig
+powerpc                        cell_defconfig
+openrisc                         alldefconfig
+powerpc                      ep88xc_defconfig
+arm                           viper_defconfig
+um                            kunit_defconfig
+powerpc                         ps3_defconfig
+powerpc                    mvme5100_defconfig
+sh                           se7780_defconfig
+ia64                             allmodconfig
+mips                         bigsur_defconfig
+arm                         lubbock_defconfig
+arm                            hisi_defconfig
+arm                    vt8500_v6_v7_defconfig
+arm                  colibri_pxa300_defconfig
+mips                        workpad_defconfig
+alpha                            alldefconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                             defconfig
+i386                 randconfig-a004-20200904
+i386                 randconfig-a005-20200904
+i386                 randconfig-a006-20200904
+i386                 randconfig-a002-20200904
+i386                 randconfig-a003-20200904
+i386                 randconfig-a001-20200904
+i386                 randconfig-a016-20200903
+i386                 randconfig-a015-20200903
+i386                 randconfig-a011-20200903
+i386                 randconfig-a013-20200903
+i386                 randconfig-a014-20200903
+i386                 randconfig-a012-20200903
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a004-20200902
+x86_64               randconfig-a006-20200902
+x86_64               randconfig-a003-20200902
+x86_64               randconfig-a005-20200902
+x86_64               randconfig-a001-20200902
+x86_64               randconfig-a002-20200902
+x86_64               randconfig-a013-20200903
+x86_64               randconfig-a016-20200903
+x86_64               randconfig-a011-20200903
+x86_64               randconfig-a012-20200903
+x86_64               randconfig-a015-20200903
+x86_64               randconfig-a014-20200903
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
