@@ -2,87 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4123826133E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Sep 2020 17:13:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34B1A261485
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Sep 2020 18:25:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7136627A6E;
-	Tue,  8 Sep 2020 15:13:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D99D72E0EE;
+	Tue,  8 Sep 2020 16:25:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K7ZD0z3UqeBK; Tue,  8 Sep 2020 15:13:29 +0000 (UTC)
+	with ESMTP id 9iGYQF6vGUQ7; Tue,  8 Sep 2020 16:25:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4FDC32E11E;
-	Tue,  8 Sep 2020 15:12:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1D7A92E0F2;
+	Tue,  8 Sep 2020 16:25:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 243471BF5AE
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Sep 2020 15:12:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2434D1BF419
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Sep 2020 16:23:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 1F6DC872F6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Sep 2020 15:12:20 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 1A2D6872EE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Sep 2020 16:23:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YpcSr6vOc5nS for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Sep 2020 15:12:19 +0000 (UTC)
+ with ESMTP id uu7YiRdL3kEq for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Sep 2020 16:23:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
- [209.85.128.66])
- by hemlock.osuosl.org (Postfix) with ESMTPS id A63A1872E9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Sep 2020 15:12:18 +0000 (UTC)
-Received: by mail-wm1-f66.google.com with SMTP id k18so2412168wmj.5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Sep 2020 08:12:18 -0700 (PDT)
+Received: from mail-qt1-f194.google.com (mail-qt1-f194.google.com
+ [209.85.160.194])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6968F82124
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Sep 2020 16:23:19 +0000 (UTC)
+Received: by mail-qt1-f194.google.com with SMTP id t20so12353692qtr.8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 08 Sep 2020 09:23:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mFqUHNa2HKeprNbMY5P0sIdymvWv+BxfsBb5YUnjXv4=;
- b=T3SnR/rgkfKF8JRAYgqSzsQ2FSthg6eGluOCQVeSHEiQ44Xda5SBVdTFR1NvwXL4lv
- wehgyPzjlWSKmA053McW3e0tOPnEpl6hTmWcAcvCbGudI8btTji2qL5R2hr/ah8r0ZJT
- cof21kjiZ9VvBC9FBcVlFX8QZUVNcMEjvqzyWMxRAQJxNLTAmVo7TVuYHCDZD2luoyNs
- z14G8RUSn1iQe9g5op1FC9j6bO7gliaKUZXWavKUx9Ix7vgnRIt2hRlJdO0wM/Hs7iM2
- uvL0GTB9aaJIbC8SsX/J+IdUk6nc73oV4yW8m4XchE5B43OVaoGUWsamylTDEyFAlpLK
- WK6g==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=K5Evq+uTbM4yLIZD5njkPq4LQ+o2UWYUAtT6x7n9zzY=;
+ b=b8XlRhZM0nQYdZDtTmmJqoRSSCLrq5Tf1z6fz22S7BgxJx7oiBUDvz8CG8BVD03LGJ
+ /Hqpko9dlT/YILpdP7W81LAHXAsYE7VD69DbJEjcfSbnt7/dJSukr+Q4XcEsM1xdRW8k
+ 6SQ+7dbUdg72bZISIzIPBTTgklLK6CM60qsi/XIxt/0J63b3U0hYGs6n9VDgiuWoljLk
+ wqNTj7y994lcrXpz+r/X1x/I6pZo8Q6yl6ePVF+FolPbXjcZZUPdtvmIGt49Pm5n6o68
+ EI28Qr3lAckzbqLxuWfLF8YM9nAR+JmSpvBO+1XVFB7uX02Wzlqhoc58PmhiOrH8w7HM
+ yGNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=mFqUHNa2HKeprNbMY5P0sIdymvWv+BxfsBb5YUnjXv4=;
- b=cXxqi9S4G552Wcaq4QOpYosn2Fo0h+sQGNtCtMTB4+2zq4TxkqqoDR38PJi+pkOS9l
- TIbw3LR5nZHO8C7YV+WNJc1IzLiKPKRg4sRpi1BWT8xszn708TnsHV+La42e3UUyb4Zp
- zi1KM1HD4EZ+A/iQRA16hGH04GsYIcjYBYAZyP/AvylNRt2W2uopL8N/CQ/vv957n9xV
- yyx3jWNlvip5GCCTpo7IuNbVwT2ZLQxsqiiVVvj7Xtwu7cyE0wQg3uGbUueZRhFqXodJ
- ZFzc7OEtF7Xvy8doyRFbJiWcO4XjZwcB3pXEDwOXmYwaOxihkWjgKMwFGpnvf/EzivHT
- FUeA==
-X-Gm-Message-State: AOAM5335bCL/iXTc5FtUbF05iJ2DtqPutL4YbECFe7Xft8xk1ermgP0K
- pWA6WoEg8rsaeA5UqSgtrVPluHiU23c=
-X-Google-Smtp-Source: ABdhPJz8C3DbOYdaaFlhkfHPQYMbaGPmVa8FfTBshBFyULdVGQlp6upXGBrSYh3C9rLfzINlYBclrw==
-X-Received: by 2002:a7b:cf30:: with SMTP id m16mr54831wmg.0.1599577936612;
- Tue, 08 Sep 2020 08:12:16 -0700 (PDT)
-Received: from [192.168.8.147] ([37.171.26.134])
- by smtp.gmail.com with ESMTPSA id p9sm31578930wma.42.2020.09.08.08.12.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Sep 2020 08:12:16 -0700 (PDT)
-To: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
- Eric Dumazet <eric.dumazet@gmail.com>, =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?=
- <bjorn.topel@gmail.com>, ast@kernel.org, daniel@iogearbox.net,
- netdev@vger.kernel.org, bpf@vger.kernel.org
-References: <20200907150217.30888-1-bjorn.topel@gmail.com>
- <20200907150217.30888-5-bjorn.topel@gmail.com>
- <6bbf1793-d2be-b724-eec4-65546d4cbc9c@gmail.com>
- <c5dac6d2-e2aa-05a4-2606-7db0687dd12b@intel.com>
-From: Eric Dumazet <eric.dumazet@gmail.com>
-Message-ID: <b17dcc6e-cb48-9c90-f233-a178b23f9004@gmail.com>
-Date: Tue, 8 Sep 2020 17:12:10 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ bh=K5Evq+uTbM4yLIZD5njkPq4LQ+o2UWYUAtT6x7n9zzY=;
+ b=aH3pbv0jGN7DvZoE3Xo948FAa/gS+eBm9VEvaIRcDeDQkOoI4BHEdz73hQoitIqBPR
+ fsJIvCipzpmB2XHyblH/9Mhle7YFgO6KmFTRByIVdb7nxKXTdnSkL7CLIebf4Lrz081H
+ ZEVW0x0fueiIsAIJD8PQGjrJl+6gXNI80PBvPug74nM5QSJWIt+IFmkcGNypTPwX+REX
+ eqNR8RdU1KkMKbTbl/IPr/Bf0VqbJKLwZKtYFlUrOnQqKi0kkEwMhDGemdWz95pNKIyG
+ d6xuKJTgbDAokLHUcDNLhU+/TZ9XakmnoOBB3z8VUDYSYpUAG8pQwGOjuQr6utEKhfGj
+ FGzQ==
+X-Gm-Message-State: AOAM530m3CORReCOeMO/IBR5Iys1LJolsI/NjwZxd67tpTeXfCDSZVrG
+ weJ8sPMV75Jt3EiRK836v9U=
+X-Google-Smtp-Source: ABdhPJzZAn3gEyTZN6G+TEQsP9eRJ97UWpa7Yi39ANb1CJ8Jzcek+peqEBJX2lfkWIxVJHp9CNGryw==
+X-Received: by 2002:ac8:66da:: with SMTP id m26mr880116qtp.111.1599582198312; 
+ Tue, 08 Sep 2020 09:23:18 -0700 (PDT)
+Received: from tong-desktop.local ([2601:5c0:c100:b9d:393c:836a:3c13:11a6])
+ by smtp.googlemail.com with ESMTPSA id p205sm13879596qke.2.2020.09.08.09.23.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Sep 2020 09:23:17 -0700 (PDT)
+From: Tong Zhang <ztong0001@gmail.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Tue,  8 Sep 2020 12:22:31 -0400
+Message-Id: <20200908162231.4592-1-ztong0001@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <c5dac6d2-e2aa-05a4-2606-7db0687dd12b@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next 4/4] ixgbe,
- xsk: use XSK_NAPI_WEIGHT as NAPI poll budget
+X-Mailman-Approved-At: Tue, 08 Sep 2020 16:25:03 +0000
+Subject: [Intel-wired-lan] [PATCH] e1000: do not panic on malformed rx_desc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,52 +87,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
- magnus.karlsson@intel.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: ztong0001@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CgpPbiA5LzgvMjAgMTo0OSBQTSwgQmrDtnJuIFTDtnBlbCB3cm90ZToKPiBPbiAyMDIwLTA5LTA4
-IDExOjQ1LCBFcmljIER1bWF6ZXQgd3JvdGU6Cj4+Cj4+Cj4+IE9uIDkvNy8yMCA1OjAyIFBNLCBC
-asO2cm4gVMO2cGVsIHdyb3RlOgo+Pj4gRnJvbTogQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxA
-aW50ZWwuY29tPgo+Pj4KPj4+IFN0YXJ0IHVzaW5nIFhTS19OQVBJX1dFSUdIVCBhcyBOQVBJIHBv
-bGwgYnVkZ2V0IGZvciB0aGUgQUZfWERQIFJ4Cj4+PiB6ZXJvLWNvcHkgcGF0aC4KPj4+Cj4+PiBT
-aWduZWQtb2ZmLWJ5OiBCasO2cm4gVMO2cGVsIDxiam9ybi50b3BlbEBpbnRlbC5jb20+Cj4+PiAt
-LS0KPj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jIHwg
-MiArLQo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0p
-Cj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4
-Z2JlX3hzay5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMK
-Pj4+IGluZGV4IDM3NzE4NTdjZjg4Ny4uZjMyYzFiYTBkMjM3IDEwMDY0NAo+Pj4gLS0tIGEvZHJp
-dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeHNrLmMKPj4+ICsrKyBiL2RyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jCj4+PiBAQCAtMjM5LDcgKzIz
-OSw3IEBAIGludCBpeGdiZV9jbGVhbl9yeF9pcnFfemMoc3RydWN0IGl4Z2JlX3FfdmVjdG9yICpx
-X3ZlY3RvciwKPj4+IMKgwqDCoMKgwqAgYm9vbCBmYWlsdXJlID0gZmFsc2U7Cj4+PiDCoMKgwqDC
-oMKgIHN0cnVjdCBza19idWZmICpza2I7Cj4+PiDCoCAtwqDCoMKgIHdoaWxlIChsaWtlbHkodG90
-YWxfcnhfcGFja2V0cyA8IGJ1ZGdldCkpIHsKPj4+ICvCoMKgwqAgd2hpbGUgKGxpa2VseSh0b3Rh
-bF9yeF9wYWNrZXRzIDwgWFNLX05BUElfV0VJR0hUKSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKg
-IHVuaW9uIGl4Z2JlX2Fkdl9yeF9kZXNjICpyeF9kZXNjOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKg
-IHN0cnVjdCBpeGdiZV9yeF9idWZmZXIgKmJpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHVuc2ln
-bmVkIGludCBzaXplCj4+Cj4+IFRoaXMgaXMgYSB2aW9sYXRpb24gb2YgTkFQSSBBUEkuIElYR0JF
-IGlzIGFscmVhZHkgZGl2ZXJnaW5nIGEgYml0IGZyb20gYmVzdCBwcmFjdGljZXMuCj4+Cj4gCj4g
-VGhhbmtzIGZvciBoYXZpbmcgYSBsb29rLCBFcmljISBCeSBkaXZlcmdpbmcgZnJvbSBiZXN0IHBy
-YWN0aWNlcywgZG8KPiB5b3UgbWVhbiB0aGF0IG11bHRpcGxlIHF1ZXVlcyBzaGFyZSBvbmUgTkFQ
-SSBjb250ZXh0LCBhbmQgdGhlIGJ1ZGdldAo+IGlzIHNwbGl0IG92ZXIgdGhlIHF1ZXVlcyAoc2F5
-LCA0IHF1ZXVlcywgNjQvNCBwZXIgcXVldWUpLCBvciB0aGF0IFR4Cj4gc2ltcGx5IGlnbm9yZXMg
-dGhlIGJ1ZGdldD8gT3IgYm90aD8KCkZvciBpbnN0YW5jZSwgaGF2aW5nIGl4Z2JlX3BvbGwoKSBk
-b2luZyA6CgpyZXR1cm4gbWluKHdvcmtfZG9uZSwgYnVkZ2V0IC0gMSk7CgppcyBxdWl0ZSBpbnRl
-cmVzdGluZy4gSXQgY291bGQgaGlkZSBidWdzIGxpa2UgOgoKSSBnb3QgYSBidWRnZXQgb2YgNCwg
-YW5kIHByb2Nlc3NlZCA5OTk5IHBhY2tldHMgYmVjYXVzZSBteSBtYXRocyBoYXZlIGEgYnVnLApi
-dXQgbWFrZSBzdXJlIHRvIHByZXRlbmQgd2UgcHJvY2Vzc2VkIDMgcGFja2V0cy4uLgoKCj4gCj4+
-IFRoZXJlIGFyZSByZWFzb25zIHdlIHdhbnQgdG8gY29udHJvbCB0aGUgYnVkZ2V0IGZyb20gY2Fs
-bGVycywKPj4gaWYgeW91IHdhbnQgYmlnZ2VyIGJ1ZGdldCBqdXN0IGluY3JlYXNlIGl0IGluc3Rl
-YWQgb2YgdXNpbmcgeW91ciBvd24gPwo+Pgo+PiBJIHdvdWxkIHJhdGhlciB1c2UgYSBnZW5lcmlj
-IHBhdGNoLgo+Pgo+IAo+IEhtbSwgc28gYSBjb25maWd1cmFibGUgTkFQSSBidWRnZXQgZm9yLCBz
-YXksIHRoZSBBRl9YRFAgZW5hYmxlZAo+IHF1ZXVlcy9OQVBJcz8gQW0gSSByZWFkaW5nIHRoYXQg
-Y29ycmVjdD8gKE5vdGUgdGhhdCB0aGlzIGlzICpvbmx5KiBmb3IKPiB0aGUgQUZfWERQIGVuYWJs
-ZWQgcXVldWVzLikKPiAKPiBJJ2xsIHRyeSB0byByZXdvcmsgdGhpcyB0byBzb21ldGhpbmcgbW9y
-ZSBwYWxhdGFibGUuCj4gCj4gCj4gVGhhbmtzLAo+IEJqw7Zybgo+IAo+Cl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5n
-IGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3Jn
-L21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+length may be corrupted in rx_desc and lead to panic, so check the
+sanity before passing it to skb_put
+
+[  167.667701] skbuff: skb_over_panic: text:ffffffffb1e32cc1 len:60224 put:60224 head:ffff888055ac5000 data:ffff888055ac5040 tail:0xeb80 end:0x6c0 dev:e
+th0
+[  167.668429] ------------[ cut here ]------------
+[  167.668661] kernel BUG at net/core/skbuff.c:109!
+[  167.668910] invalid opcode: 0000 [#1] SMP DEBUG_PAGEALLOC KASAN PTI
+[  167.669220] CPU: 1 PID: 170 Comm: sd-resolve Tainted: G        W         5.8.0+ #1
+[  167.670161] RIP: 0010:skb_panic+0xc4/0xc6
+[  167.670363] Code: 89 f0 48 c7 c7 60 f2 de b2 55 48 8b 74 24 18 4d 89 f9 56 48 8b 54 24 18 4c 89 e6 52 48 8b 44 24 18 4c 89 ea 50 e8 31 c5 2a ff <0f>
+0b 4c 8b 64 24 18 e8 f1 b4 48 ff 48 c7 c1 00 fc de b2 44 89 ee
+[  167.671272] RSP: 0018:ffff88806d109c68 EFLAGS: 00010286
+[  167.671527] RAX: 000000000000008c RBX: ffff888065e9af40 RCX: 0000000000000000
+[  167.671878] RDX: 1ffff1100da24c91 RSI: 0000000000000008 RDI: ffffed100da21380
+[  167.672227] RBP: ffff88806bde4000 R08: 000000000000008c R09: ffffed100da25cfb
+[  167.672583] R10: ffff88806d12e7d7 R11: ffffed100da25cfa R12: ffffffffb2defc40
+[  167.672931] R13: ffffffffb1e32cc1 R14: 000000000000eb40 R15: ffff888055ac5000
+[  167.673286] FS:  00007fc5f5375700(0000) GS:ffff88806d100000(0000) knlGS:0000000000000000
+[  167.673681] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  167.673973] CR2: 0000000000cb3008 CR3: 0000000063d36000 CR4: 00000000000006e0
+[  167.674330] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[  167.674677] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+[  167.675035] Call Trace:
+[  167.675168]  <IRQ>
+[  167.675315]  ? e1000_clean_rx_irq+0x311/0x630
+[  167.687459]  skb_put.cold+0x1f/0x1f
+[  167.687637]  e1000_clean_rx_irq+0x311/0x630
+[  167.687852]  e1000e_poll+0x19a/0x4d0
+[  167.688038]  ? e1000_watchdog_task+0x9d0/0x9d0
+[  167.688262]  ? credit_entropy_bits.constprop.0+0x6f/0x1c0
+[  167.688527]  net_rx_action+0x26e/0x650
+
+Signed-off-by: Tong Zhang <ztong0001@gmail.com>
+---
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 1e6ec081fd9d..29e2ecb0358a 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -4441,8 +4441,13 @@ static bool e1000_clean_rx_irq(struct e1000_adapter *adapter,
+ 			 */
+ 			length -= 4;
+ 
+-		if (buffer_info->rxbuf.data == NULL)
++		if (buffer_info->rxbuf.data == NULL)  {
++			/* check length sanity */
++			if (skb->tail + length > skb->end) {
++				length = skb->end - skb->tail;
++			}
+ 			skb_put(skb, length);
++		}
+ 		else /* copybreak skb */
+ 			skb_trim(skb, length);
+ 
+-- 
+2.25.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
