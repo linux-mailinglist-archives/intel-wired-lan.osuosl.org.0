@@ -1,74 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 154B9262F66
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 15:56:26 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38D77262F75
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 16:05:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6E2CE8705B;
-	Wed,  9 Sep 2020 13:56:24 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DD191872D0;
+	Wed,  9 Sep 2020 14:05:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pDfYeKau2LQJ; Wed,  9 Sep 2020 13:56:24 +0000 (UTC)
+	with ESMTP id k-d3ybkqteAh; Wed,  9 Sep 2020 14:05:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A4E7B8705C;
-	Wed,  9 Sep 2020 13:56:23 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C5245872D5;
+	Wed,  9 Sep 2020 14:05:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DC5F71BF3E3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 13:56:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 416A61BF5A3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:49:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9E3AF203D1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 13:56:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id EC04C2E150
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:49:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x+HgC1z0jlmJ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Sep 2020 13:56:20 +0000 (UTC)
+ with ESMTP id j5cMIj37yPx5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Sep 2020 08:49:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f68.google.com (mail-wm1-f68.google.com
- [209.85.128.68])
- by silver.osuosl.org (Postfix) with ESMTPS id 5E9FA2034F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 13:56:20 +0000 (UTC)
-Received: by mail-wm1-f68.google.com with SMTP id s13so2368602wmh.4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 09 Sep 2020 06:56:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=zLNjrf+RPSwU1achccfvQ6mA3Vt8oX8oHZ1Kj6a2hGk=;
- b=usexzns/FdygjeeyD2H7JASXGevgz8/+lKR+qdtsI192xsGYNdFvZgHJ/PKpcExCik
- xIIauuaYdSnaT8/O47RLMXqHOXyxod/RlGP5LYh5aC4lcx3udWZOSt0cpu001jTOSHYn
- g/ZHFKsxFHk9Cx+VesNHspeu3vNqgK+oeqWjkJalLFHaQFjQmLyloimQ9pvW8rf0SJ5G
- tCT3VC9A4Oj90pL1q8Qz3qZrWC8Tfee3teWzs72M8ovMo2/bouCqlrVhc19yTN4FJcjn
- b9RBCUCMyyughrDnElSyHPBIV9Osn2+mxwXWozbTlWAa1slI2qJSMQB+/OBmgmU4d8+Q
- 7eQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=zLNjrf+RPSwU1achccfvQ6mA3Vt8oX8oHZ1Kj6a2hGk=;
- b=p2b3CkqG+0o1Qv6KPRr/9fadcquXF4e37LKTpKj+Bt8ZS+valmggGnTBCvxGC2/Eh4
- J9EQzRWIxrSq6Sxx/q7yr8icMNyEPgiXfBMzqUEJrpLkX0hw4Led+U9A36ajYzm5jn/E
- soNuSeew5Wnbe/RMMzOtf+d4EIo4xLWr515LX/XbliV2fPGgKFZ+RAiohrT/rMmibtsA
- k48lxdUPsTYbOVCO/FguOitwXLz7AInQ88wDzpmxjtU5AkPkwtok5UV1MXHtzYdhK8mG
- B3KUGkRXt3Do8QQvuWypP4H8SC1l9g1iAliK82VsahhWARFTFNXTz7IIXO2TEtk5ABij
- muPA==
-X-Gm-Message-State: AOAM531PGoqaUE9As+ifN3Wt9fd9GoloEQKpM22D0NRBmKGZp6yEg1IY
- mWSrHILLh8mtcHsDyrUXIcpzr3pdwRS8yw7GnLQ=
-X-Google-Smtp-Source: ABdhPJzGzvvUUCMWwLzes7DVwhtv0V5dcoTY8yggjcHhhYxt9rhX0EcFoZnLr3Ldx9+/ykRGBGbFh8wwxAZk0dKRATw=
-X-Received: by 2002:a7b:c4d3:: with SMTP id g19mr3826168wmk.165.1599659778699; 
- Wed, 09 Sep 2020 06:56:18 -0700 (PDT)
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by silver.osuosl.org (Postfix) with ESMTPS id 65E512E13F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:49:24 +0000 (UTC)
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 4A5E4A72608B428739F2;
+ Wed,  9 Sep 2020 16:49:19 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.58) by
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 9 Sep 2020 16:49:09 +0800
+From: Wei Xu <xuwei5@hisilicon.com>
+To: <netdev@vger.kernel.org>
+Date: Wed, 9 Sep 2020 16:45:33 +0800
+Message-ID: <1599641134-204167-1-git-send-email-xuwei5@hisilicon.com>
+X-Mailer: git-send-email 2.8.1
 MIME-Version: 1.0
-References: <20200908123440.11278-1-marekx.majtyka@intel.com>
-In-Reply-To: <20200908123440.11278-1-marekx.majtyka@intel.com>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@gmail.com>
-Date: Wed, 9 Sep 2020 15:56:07 +0200
-Message-ID: <CAJ+HfNgysVCeBhkq+joCkMVrwnaOLaWZeo+fSo-S7w9U_ozNdQ@mail.gmail.com>
-To: Marek Majtyka <alardam@gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: remove redundant
- assigment
+X-Originating-IP: [10.69.192.58]
+X-CFilter-Loop: Reflected
+X-Mailman-Approved-At: Wed, 09 Sep 2020 14:05:07 +0000
+Subject: [Intel-wired-lan] [net-next] net: i40e: Use the ARRAY_SIZE macro
+ for aq_to_posix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,42 +60,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- maciejromanfijalkowski@gmain.com, Netdev <netdev@vger.kernel.org>,
- Marek Majtyka <marekx.majtyka@intel.com>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
- Magnus" <magnus.karlsson@intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: salil.mehta@huawei.com, jinying@hisilicon.com, tangkunshan@huawei.com,
+ huangdaode@hisilicon.com, john.garry@huawei.com, linux-kernel@vger.kernel.org,
+ linuxarm@huawei.com, shameerali.kolothum.thodi@huawei.com,
+ zhangyi.ac@huawei.com, intel-wired-lan@lists.osuosl.org, xuwei5@hisilicon.com,
+ jonathan.cameron@huawei.com, Jakub Kicinski <kuba@kernel.org>,
+ liguozhu@hisilicon.com, davem@davemloft.net, shiju.jose@huawei.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVHVlLCA4IFNlcCAyMDIwIGF0IDE1OjUzLCBNYXJlayBNYWp0eWthIDxhbGFyZGFtQGdtYWls
-LmNvbT4gd3JvdGU6Cj4KPiBSZW1vdmUgYSByZWR1bmRhbnQgYXNzaWdtZW50IG9mIHRoZSBzb2Z0
-d2FyZSByaW5nIHBvaW50ZXIgaW4gdGhlIGk0MGUKPiBkcml2ZXIuIFRoZSB2YXJpYWJsZSBpcyBh
-c3NpZ25lZCB0d2ljZSB3aXRoIG5vIHVzZSBpbiBiZXR3ZWVuLCBzbyBqdXN0Cj4gZ2V0IHJpZCBv
-ZiB0aGUgZmlyc3Qgb2NjdXJyZW5jZS4KPgo+IEZpeGVzOiAzYjRmMGI2NmMyYjMgKCJpNDBlLCB4
-c2s6IE1pZ3JhdGUgdG8gbmV3IE1FTV9UWVBFX1hTS19CVUZGX1BPT0wiKQo+IFNpZ25lZC1vZmYt
-Ynk6IE1hcmVrIE1hanR5a2EgPG1hcmVreC5tYWp0eWthQGludGVsLmNvbT4KCk5pY2UhCgpBY2tl
-ZC1ieTogQmrDtnJuIFTDtnBlbCA8Ympvcm4udG9wZWxAaW50ZWwuY29tPgoKSG1tLCB0aGlzIGNv
-dWxkIGFjdHVhbGx5IGdvIHRvIHRoZSBuZXQgdHJlZS4KCgpCasO2cm4KCj4gLS0tCj4gIGRyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYyB8IDEgLQo+ICAxIGZpbGUgY2hh
-bmdlZCwgMSBkZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2k0MGUvaTQwZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUv
-aTQwZV94c2suYwo+IGluZGV4IDJhMTE1M2Q4OTU3Yi4uODY2MWY0NjFmNjIwIDEwMDY0NAo+IC0t
-LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwo+ICsrKyBiL2Ry
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2suYwo+IEBAIC0zMDYsNyArMzA2
-LDYgQEAgaW50IGk0MGVfY2xlYW5fcnhfaXJxX3pjKHN0cnVjdCBpNDBlX3JpbmcgKnJ4X3Jpbmcs
-IGludCBidWRnZXQpCj4gICAgICAgICAgICAgICAgICAgICAgICAgY29udGludWU7Cj4gICAgICAg
-ICAgICAgICAgIH0KPgo+IC0gICAgICAgICAgICAgICBiaSA9IGk0MGVfcnhfYmkocnhfcmluZywg
-cnhfcmluZy0+bmV4dF90b19jbGVhbik7Cj4gICAgICAgICAgICAgICAgIHNpemUgPSAocXdvcmQg
-JiBJNDBFX1JYRF9RVzFfTEVOR1RIX1BCVUZfTUFTSykgPj4KPiAgICAgICAgICAgICAgICAgICAg
-ICAgIEk0MEVfUlhEX1FXMV9MRU5HVEhfUEJVRl9TSElGVDsKPiAgICAgICAgICAgICAgICAgaWYg
-KCFzaXplKQo+IC0tCj4gMi4yMC4xCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwo+IEludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKPiBJbnRlbC13
-aXJlZC1sYW5Ab3N1b3NsLm9yZwo+IGh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2ludGVsLXdpcmVkLWxhbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
-bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
-dGVsLXdpcmVkLWxhbgo=
+Use the ARRAY_SIZE macro to calculate the size of an array.
+This code was detected with the help of Coccinelle.
+
+Signed-off-by: Wei Xu <xuwei5@hisilicon.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_adminq.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq.h b/drivers/net/ethernet/intel/i40e/i40e_adminq.h
+index edec3df..11c5fca 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_adminq.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_adminq.h
+@@ -120,7 +120,7 @@ static inline int i40e_aq_rc_to_posix(int aq_ret, int aq_rc)
+ 	if (aq_ret == I40E_ERR_ADMIN_QUEUE_TIMEOUT)
+ 		return -EAGAIN;
+ 
+-	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
++	if (!((u32)aq_rc < ARRAY_SIZE(aq_to_posix)))
+ 		return -ERANGE;
+ 
+ 	return aq_to_posix[aq_rc];
+-- 
+2.8.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
