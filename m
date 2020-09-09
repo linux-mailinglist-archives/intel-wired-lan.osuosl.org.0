@@ -2,61 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63D7D262A25
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 10:22:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBF07262CF6
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 12:22:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1AC5E86BF8;
-	Wed,  9 Sep 2020 08:22:50 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 58B0C87143;
+	Wed,  9 Sep 2020 10:22:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D9+5Je9O47kT; Wed,  9 Sep 2020 08:22:49 +0000 (UTC)
+	with ESMTP id C9HvRYQkNrNB; Wed,  9 Sep 2020 10:22:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F1B1386D6E;
-	Wed,  9 Sep 2020 08:22:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9772987148;
+	Wed,  9 Sep 2020 10:22:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5A0A41BF5A3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:22:47 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 38AFA1BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 10:22:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5433B87475
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:22:47 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3130087065
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 10:22:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JUwFQo81JTpH for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Sep 2020 08:22:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com
- [205.139.110.120])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 63ABB87471
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:22:46 +0000 (UTC)
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-580-fBFSYcAiPF-74OjipI43Wg-1; Wed, 09 Sep 2020 04:22:42 -0400
-X-MC-Unique: fBFSYcAiPF-74OjipI43Wg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0F955801AE9;
- Wed,  9 Sep 2020 08:22:41 +0000 (UTC)
-Received: from p50.redhat.com (ovpn-113-171.ams2.redhat.com [10.36.113.171])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 918E810013D0;
- Wed,  9 Sep 2020 08:22:39 +0000 (UTC)
-From: Stefan Assmann <sassmann@kpanic.de>
+ with ESMTP id cWlZD1O28ixr for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Sep 2020 10:22:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4F7FD8705C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 10:22:05 +0000 (UTC)
+IronPort-SDR: OcC29gVg4fgwxKICZeAWXL2hxtQW8YBDakoisjjTivewhOD0l4lyzSJNaSrgx/p0r5h+Z/yjt8
+ JcHbERl/gbBw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="138344837"
+X-IronPort-AV: E=Sophos;i="5.76,409,1592895600"; d="scan'208";a="138344837"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2020 03:22:04 -0700
+IronPort-SDR: 9leVjR8M6qnukXML+HcSl73opL4CQMXWQXGGoBr/HI8mVzhMjZtfuWArpWSnk8VTQaeCap+3Nx
+ WcFqJPGimZiQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,409,1592895600"; d="scan'208";a="504690958"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by fmsmga006.fm.intel.com with ESMTP; 09 Sep 2020 03:21:52 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  9 Sep 2020 10:22:12 +0200
-Message-Id: <20200909082212.67583-1-sassmann@kpanic.de>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sassmann@kpanic.de
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: kpanic.de
-Subject: [Intel-wired-lan] [PATCH] i40e: report correct VF link speed when
- link state is set to enable
+Date: Wed,  9 Sep 2020 10:21:26 +0000
+Message-Id: <20200909102126.14171-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH] i40e: Add EEE status getting&setting
+ implementation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,69 +65,192 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, sassmann@kpanic.de
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When the virtual link state was set to "enable" ethtool would report
-link speed as 40000Mb/s regardless of the underlying device.
-Report the correct link speed.
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-Example from a XXV710 NIC.
-Before:
-$ ip link set ens3f0 vf 0 state auto
-$  ethtool enp8s2 | grep Speed
-        Speed: 25000Mb/s
-$ ip link set ens3f0 vf 0 state enable
-$ ethtool enp8s2 | grep Speed
-        Speed: 40000Mb/s
-After:
-$ ip link set ens3f0 vf 0 state auto
-$  ethtool enp8s2 | grep Speed
-        Speed: 25000Mb/s
-$ ip link set ens3f0 vf 0 state enable
-$ ethtool enp8s2 | grep Speed
-        Speed: 25000Mb/s
+This patch implements EEE /*Energy Efficient Ethernet*/ status
+getting&setting.
+The i40e_get_eee() requesting PHY eee capabilities from firmware.
+The i40e_set_eee() function requests PHY eee capabilities
+from firmware and sets PHY eee advertising to full abilities or 0
+depending whether eee is to be enabled or disabled.
 
-Signed-off-by: Stefan Assmann <sassmann@kpanic.de>
+
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Reviewed-by: Grzegorz Siwik <grzegorz.siwik@intel.com>
+Verified-by: Mateusz Palczewski <mateusz.placzewski@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 123 +++++++++++++++++-
+ .../net/ethernet/intel/i40e/i40e_register.h   |   2 +
+ 2 files changed, 123 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 8e133d6545bd..9c4b166f3346 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -63,7 +63,7 @@ static void i40e_vc_notify_vf_link_state(struct i40e_vf *vf)
- 	} else if (vf->link_forced) {
- 		pfe.event_data.link_event.link_status = vf->link_up;
- 		pfe.event_data.link_event.link_speed =
--			(vf->link_up ? VIRTCHNL_LINK_SPEED_40GB : 0);
-+			(vf->link_up ? i40e_virtchnl_link_speed(ls->link_speed) : 0);
- 	} else {
- 		pfe.event_data.link_event.link_status =
- 			ls->link_info & I40E_AQ_LINK_UP;
-@@ -4404,6 +4404,7 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index e353c64..9079bec 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -5435,12 +5435,131 @@ static int i40e_get_module_eeprom(struct net_device *netdev,
+ 
+ static int i40e_get_eee(struct net_device *netdev, struct ethtool_eee *edata)
  {
- 	struct i40e_netdev_priv *np = netdev_priv(netdev);
- 	struct i40e_pf *pf = np->vsi->back;
-+	struct i40e_link_status *ls = &pf->hw.phy.link_info;
- 	struct virtchnl_pf_event pfe;
- 	struct i40e_hw *hw = &pf->hw;
- 	struct i40e_vf *vf;
-@@ -4441,7 +4442,7 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
- 		vf->link_forced = true;
- 		vf->link_up = true;
- 		pfe.event_data.link_event.link_status = true;
--		pfe.event_data.link_event.link_speed = VIRTCHNL_LINK_SPEED_40GB;
-+		pfe.event_data.link_event.link_speed = i40e_virtchnl_link_speed(ls->link_speed);
- 		break;
- 	case IFLA_VF_LINK_STATE_DISABLE:
- 		vf->link_forced = true;
+-	return -EOPNOTSUPP;
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_aq_get_phy_abilities_resp phy_cfg;
++	enum i40e_status_code status = 0;
++	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
++	struct i40e_hw *hw = &pf->hw;
++
++	/* Get initial PHY capabilities */
++	status = i40e_aq_get_phy_capabilities(hw, false, true, &phy_cfg, NULL);
++	if (status)
++		return -EAGAIN;
++
++	/* Check whether NIC configuration is compatible with Energy Efficient
++	 * Ethernet (EEE) mode.
++	 */
++	if (phy_cfg.eee_capability == 0)
++		return -EOPNOTSUPP;
++
++	edata->supported = SUPPORTED_Autoneg;
++	edata->lp_advertised = edata->supported;
++
++	/* Get current configuration */
++	status = i40e_aq_get_phy_capabilities(hw, false, false, &phy_cfg, NULL);
++	if (status)
++		return -EAGAIN;
++
++	edata->advertised = phy_cfg.eee_capability ? SUPPORTED_Autoneg : 0U;
++	edata->eee_enabled = !!edata->advertised;
++	edata->tx_lpi_enabled = pf->stats.tx_lpi_status;
++
++	edata->eee_active = pf->stats.tx_lpi_status && pf->stats.rx_lpi_status;
++
++	return 0;
++}
++
++static int i40e_is_eee_param_supported(struct net_device *netdev,
++				       struct ethtool_eee *edata)
++{
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
++	struct i40e_ethtool_not_used {
++		u32 value;
++		const char *name;
++	} param[] = {
++		{edata->advertised & ~SUPPORTED_Autoneg, "advertise"},
++		{edata->tx_lpi_timer, "tx-timer"},
++		{edata->tx_lpi_enabled != pf->stats.tx_lpi_status, "tx-lpi"}
++	};
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(param); i++) {
++		if (param[i].value) {
++			netdev_info(netdev,
++				    "EEE setting %s not supported\n",
++				    param[i].name);
++			return -EOPNOTSUPP;
++		}
++	}
++
++	return 0;
+ }
+ 
+ static int i40e_set_eee(struct net_device *netdev, struct ethtool_eee *edata)
+ {
+-	return -EOPNOTSUPP;
++	struct i40e_netdev_priv *np = netdev_priv(netdev);
++	struct i40e_aq_get_phy_abilities_resp abilities;
++	enum i40e_status_code status = I40E_SUCCESS;
++	struct i40e_aq_set_phy_config config;
++	struct i40e_vsi *vsi = np->vsi;
++	struct i40e_pf *pf = vsi->back;
++	struct i40e_hw *hw = &pf->hw;
++	__le16 eee_capability;
++
++	/* Deny parameters we don't support */
++	if (i40e_is_eee_param_supported(netdev, edata))
++		return -EOPNOTSUPP;
++
++	/* Get initial PHY capabilities */
++	status = i40e_aq_get_phy_capabilities(hw, false, true, &abilities,
++					      NULL);
++	if (status)
++		return -EAGAIN;
++
++	/* Check whether NIC configuration is compatible with Energy Efficient
++	 * Ethernet (EEE) mode.
++	 */
++	if (abilities.eee_capability == 0)
++		return -EOPNOTSUPP;
++
++	/* Cache initial EEE capability */
++	eee_capability = abilities.eee_capability;
++
++	/* Get current PHY configuration */
++	status = i40e_aq_get_phy_capabilities(hw, false, false, &abilities,
++					      NULL);
++	if (status)
++		return -EAGAIN;
++
++	/* Cache current PHY configuration */
++	config.phy_type = abilities.phy_type;
++	config.phy_type_ext = abilities.phy_type_ext;
++	config.link_speed = abilities.link_speed;
++	config.abilities = abilities.abilities |
++			   I40E_AQ_PHY_ENABLE_ATOMIC_LINK;
++	config.eeer = abilities.eeer_val;
++	config.low_power_ctrl = abilities.d3_lpan;
++	config.fec_config = abilities.fec_cfg_curr_mod_ext_info &
++			    I40E_AQ_PHY_FEC_CONFIG_MASK;
++
++	/* Set desired EEE state */
++	if (edata->eee_enabled) {
++		config.eee_capability = eee_capability;
++		config.eeer |= I40E_PRTPM_EEER_TX_LPI_EN_MASK;
++	} else {
++		config.eee_capability = 0;
++		config.eeer &= ~I40E_PRTPM_EEER_TX_LPI_EN_MASK;
++	}
++
++	/* Apply modified PHY configuration */
++	status = i40e_aq_set_phy_config(hw, &config, NULL);
++	if (status)
++		return -EAGAIN;
++
++	return 0;
+ }
+ 
+ static const struct ethtool_ops i40e_ethtool_recovery_mode_ops = {
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index e97cc76..8d5c65b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -405,6 +405,8 @@
+ #define I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_RX_LPI_STATUS_SHIFT)
+ #define I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_SHIFT 31
+ #define I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_MASK I40E_MASK(0x1, I40E_PRTPM_EEE_STAT_TX_LPI_STATUS_SHIFT)
++#define I40E_PRTPM_EEER_TX_LPI_EN_SHIFT 16
++#define I40E_PRTPM_EEER_TX_LPI_EN_MASK  I40E_MASK(0x1, I40E_PRTPM_EEER_TX_LPI_EN_SHIFT)
+ #define I40E_PRTPM_RLPIC 0x001E43A0 /* Reset: GLOBR */
+ #define I40E_PRTPM_TLPIC 0x001E43C0 /* Reset: GLOBR */
+ #define I40E_GLQF_FDCNT_0 0x00269BAC /* Reset: CORER */
 -- 
-2.26.2
+2.17.1
+
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
 
 _______________________________________________
 Intel-wired-lan mailing list
