@@ -1,65 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DE6D262F76
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 16:05:14 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BA842630B4
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 17:38:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 6B15D875FB;
-	Wed,  9 Sep 2020 14:05:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0CB0885DC1;
+	Wed,  9 Sep 2020 15:38:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0wX6cvPZk03A; Wed,  9 Sep 2020 14:05:12 +0000 (UTC)
+	with ESMTP id GG8Ql1cbLXb5; Wed,  9 Sep 2020 15:38:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9D32F87636;
-	Wed,  9 Sep 2020 14:05:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6020F85F11;
+	Wed,  9 Sep 2020 15:38:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 15D661BF419
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 09:38:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4BEE21BF487
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 15:37:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 112B3848A5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 09:38:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 476DF86C40
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 15:37:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fuGir76R_q_O for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Sep 2020 09:38:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0024.hostedemail.com
- [216.40.44.24])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3AF34848A0
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 09:38:44 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay05.hostedemail.com (Postfix) with ESMTP id 1FF631800175A;
- Wed,  9 Sep 2020 09:38:42 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1541:1593:1594:1711:1730:1747:1777:1792:2393:2559:2562:2828:3138:3139:3140:3141:3142:3352:3622:3865:3866:3867:3868:3872:3873:4321:5007:6742:8603:10004:10400:11026:11232:11473:11657:11658:11914:12043:12296:12297:12438:12740:12760:12895:13069:13311:13357:13439:14659:14721:21080:21524:21611:21627:21990:30012:30054:30055:30056:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: alarm97_080d766270dc
-X-Filterd-Recvd-Size: 2383
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf15.hostedemail.com (Postfix) with ESMTPA;
- Wed,  9 Sep 2020 09:38:39 +0000 (UTC)
-Message-ID: <b75ac349af07ac363585ac72cba724e2fcf0c954.camel@perches.com>
-From: Joe Perches <joe@perches.com>
-To: Wei Xu <xuwei5@hisilicon.com>, netdev@vger.kernel.org
-Date: Wed, 09 Sep 2020 02:38:38 -0700
-In-Reply-To: <2530c5c8a596b7edd7e2273cffc3b76ac4b437c7.camel@perches.com>
-References: <1599641471-204919-1-git-send-email-xuwei5@hisilicon.com>
- <2530c5c8a596b7edd7e2273cffc3b76ac4b437c7.camel@perches.com>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id wuQkVgrKohMt for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Sep 2020 15:37:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 01BCD86C3B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 15:37:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599665849;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EuXDHvuAdSkUYMH4iVJeihKuXi2neB1nlUOzoXyEoh8=;
+ b=fpuUpccl4CRay10/Jp1jhBa6OB7yuOZs3xW2h04Y9osVvtGqbWBADRT+78g6QXhv/zYVmF
+ C3Ol7bxf8pvlCy0PoWA183Z+VqhH8N9SafH8n4ci9lM36BhgWIlR41dKc4vyVuIMsU5s8I
+ F7qYQqJAVN6Apg1ELe5hOtVz5pq30LY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-18-zNQccg6MPpSbu914gkb6BQ-1; Wed, 09 Sep 2020 11:37:26 -0400
+X-MC-Unique: zNQccg6MPpSbu914gkb6BQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7EAA11DDFD;
+ Wed,  9 Sep 2020 15:37:24 +0000 (UTC)
+Received: from carbon (unknown [10.40.208.42])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 85ECA19C78;
+ Wed,  9 Sep 2020 15:37:16 +0000 (UTC)
+Date: Wed, 9 Sep 2020 17:37:14 +0200
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: Maxim Mikityanskiy <maximmi@nvidia.com>
+Message-ID: <20200909173714.25a3ce43@carbon>
+In-Reply-To: <11f663ec-5ea7-926c-370d-0b67d3052583@nvidia.com>
+References: <20200904135332.60259-1-bjorn.topel@gmail.com>
+ <0257f769-0f43-a5b7-176d-7c5ff8eaac3a@intel.com>
+ <11f663ec-5ea7-926c-370d-0b67d3052583@nvidia.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 09 Sep 2020 14:05:07 +0000
-Subject: Re: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE
- macro for aq_to_posix
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Mailman-Approved-At: Wed, 09 Sep 2020 15:38:46 +0000
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next 0/6] xsk: exit NAPI loop when
+ AF_XDP Rx ring is full
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,47 +80,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: salil.mehta@huawei.com, jinying@hisilicon.com, tangkunshan@huawei.com,
- john.garry@huawei.com, linuxarm@huawei.com,
- shameerali.kolothum.thodi@huawei.com, zhangyi.ac@huawei.com,
- intel-wired-lan@lists.osuosl.org, huangdaode@hisilicon.com,
- jonathan.cameron@huawei.com, Jakub Kicinski <kuba@kernel.org>,
- liguozhu@hisilicon.com, davem@davemloft.net, linux-kernel@vger.kernel.org,
- shiju.jose@huawei.com
+Cc: Maxim Mikityanskiy <maximmi@mellanox.com>, hawk@kernel.org,
+ daniel@iogearbox.net, brouer@redhat.com, ast@kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, kuba@kernel.org,
+ bpf@vger.kernel.org, =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>,
+ davem@davemloft.net, magnus.karlsson@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 2020-09-09 at 02:33 -0700, Joe Perches wrote:
-> On Wed, 2020-09-09 at 16:51 +0800, Wei Xu wrote:
-> > Use the ARRAY_SIZE macro to calculate the size of an array.
-> > This code was detected with the help of Coccinelle.
-> []
-> > diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-> []
-> > @@ -120,7 +120,7 @@ static inline int iavf_aq_rc_to_posix(int aq_ret, int aq_rc)
-> >  	if (aq_ret == IAVF_ERR_ADMIN_QUEUE_TIMEOUT)
-> >  		return -EAGAIN;
-> >  
-> > -	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
-> > +	if (!((u32)aq_rc < ARRAY_SIZE(aq_to_posix)))
-> >  		return -ERANGE;
-> 
-> If you want to use a cast,
-> 
-> 	if ((u32)aq_rc >= ARRAY_SIZE(aq_to_posix))
-> 		return -ERANGE;
-> 
-> would be a more common and simpler style, though
-> perhaps testing ac_rc < 0 would be more intelligible.
-> 
-> 	if (ac_rc < 0 || ac_rq >= ARRAY_SIZE(aq_to_posix))
+On Tue, 8 Sep 2020 13:32:01 +0300
+Maxim Mikityanskiy <maximmi@nvidia.com> wrote:
 
-(hah, I typed aq_rc wrong both times, so maybe it's not _that_
- much better...)
+>  From the driver API perspective, I would prefer to see a simpler API if 
+> possible. The current API exposes things that the driver shouldn't know 
+> (BPF map type), and requires XSK-specific handling. It would be better 
+> if some specific error code returned from xdp_do_redirect was reserved 
+> to mean "exit NAPI early if you support it". This way we wouldn't need 
+> two new helpers, two xdp_do_redirect functions, and this approach would 
+> be extensible to other non-XSK use cases without further changes in the 
+> driver, and also the logic to opt-in the feature could be put inside the 
+> kernel.
 
-	if (aq_rc < 0 || aq_rc >= ARRAY_SIZE(aq_to_posix))
+I agree.
+
+-- 
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
 
 _______________________________________________
 Intel-wired-lan mailing list
