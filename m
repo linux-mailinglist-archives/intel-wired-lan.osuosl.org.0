@@ -1,52 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38D77262F75
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 16:05:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DD191872D0;
-	Wed,  9 Sep 2020 14:05:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id k-d3ybkqteAh; Wed,  9 Sep 2020 14:05:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C5245872D5;
-	Wed,  9 Sep 2020 14:05:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 416A61BF5A3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:49:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D4CF2262F78
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Sep 2020 16:05:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id EC04C2E150
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:49:25 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 5F9EE2E1DA;
+	Wed,  9 Sep 2020 14:05:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iZZspKBAXyOb; Wed,  9 Sep 2020 14:05:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id A59BE2E1C6;
+	Wed,  9 Sep 2020 14:05:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8409F1BF5A3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:55:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7CD4486F97
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:55:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j5cMIj37yPx5 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Sep 2020 08:49:24 +0000 (UTC)
+ with ESMTP id vLb91t1CqPs0 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Sep 2020 08:54:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by silver.osuosl.org (Postfix) with ESMTPS id 65E512E13F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:49:24 +0000 (UTC)
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 4A5E4A72608B428739F2;
- Wed,  9 Sep 2020 16:49:19 +0800 (CST)
+Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 16BB886FA5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Sep 2020 08:54:58 +0000 (UTC)
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id CABAE1E26E649B123902;
+ Wed,  9 Sep 2020 16:54:55 +0800 (CST)
 Received: from localhost.localdomain (10.69.192.58) by
- DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 9 Sep 2020 16:49:09 +0800
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 9 Sep 2020 16:54:45 +0800
 From: Wei Xu <xuwei5@hisilicon.com>
 To: <netdev@vger.kernel.org>
-Date: Wed, 9 Sep 2020 16:45:33 +0800
-Message-ID: <1599641134-204167-1-git-send-email-xuwei5@hisilicon.com>
+Date: Wed, 9 Sep 2020 16:51:11 +0800
+Message-ID: <1599641471-204919-1-git-send-email-xuwei5@hisilicon.com>
 X-Mailer: git-send-email 2.8.1
 MIME-Version: 1.0
 X-Originating-IP: [10.69.192.58]
 X-CFilter-Loop: Reflected
 X-Mailman-Approved-At: Wed, 09 Sep 2020 14:05:07 +0000
-Subject: [Intel-wired-lan] [net-next] net: i40e: Use the ARRAY_SIZE macro
+Subject: [Intel-wired-lan] [net-next] net: iavf: Use the ARRAY_SIZE macro
  for aq_to_posix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -76,15 +76,15 @@ This code was detected with the help of Coccinelle.
 
 Signed-off-by: Wei Xu <xuwei5@hisilicon.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_adminq.h | 2 +-
+ drivers/net/ethernet/intel/iavf/iavf_adminq.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq.h b/drivers/net/ethernet/intel/i40e/i40e_adminq.h
-index edec3df..11c5fca 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_adminq.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_adminq.h
-@@ -120,7 +120,7 @@ static inline int i40e_aq_rc_to_posix(int aq_ret, int aq_rc)
- 	if (aq_ret == I40E_ERR_ADMIN_QUEUE_TIMEOUT)
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+index baf2fe2..eead12c 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
++++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+@@ -120,7 +120,7 @@ static inline int iavf_aq_rc_to_posix(int aq_ret, int aq_rc)
+ 	if (aq_ret == IAVF_ERR_ADMIN_QUEUE_TIMEOUT)
  		return -EAGAIN;
  
 -	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
