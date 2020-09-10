@@ -1,63 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C21DB263F99
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Sep 2020 10:23:10 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C5CB2645A6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Sep 2020 14:04:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5CC2F86F16;
-	Thu, 10 Sep 2020 08:23:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 360992E19F;
+	Thu, 10 Sep 2020 12:04:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VvUnjBwmJWlM; Thu, 10 Sep 2020 08:23:08 +0000 (UTC)
+	with ESMTP id QlTwBoEypje5; Thu, 10 Sep 2020 12:04:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7C75F86F27;
-	Thu, 10 Sep 2020 08:23:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 666441BF38C
- for <intel-wired-lan@osuosl.org>; Thu, 10 Sep 2020 08:23:06 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D6A5B2E1AF;
+	Thu, 10 Sep 2020 12:04:11 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DABB41BF408
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 12:04:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 605DF8753A
- for <intel-wired-lan@osuosl.org>; Thu, 10 Sep 2020 08:23:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CF46A876B9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 12:04:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VwO-95iOWNdZ for <intel-wired-lan@osuosl.org>;
- Thu, 10 Sep 2020 08:23:05 +0000 (UTC)
+ with ESMTP id 63XjdyAh4TQ6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Sep 2020 12:04:09 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by whitealder.osuosl.org (Postfix) with ESMTPS id AD5BD87534
- for <intel-wired-lan@osuosl.org>; Thu, 10 Sep 2020 08:23:05 +0000 (UTC)
-IronPort-SDR: XrhDb415p6EZbfEECDrq4wjx5Is8jrjE9ytuGtgQiF3H91rfdqlWnENlrw+kQDnL2tNWwy8ZTY
- 5nwLz+3EK2lA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="176551863"
-X-IronPort-AV: E=Sophos;i="5.76,412,1592895600"; d="scan'208";a="176551863"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 17CAC876B3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 12:04:09 +0000 (UTC)
+IronPort-SDR: Rmp5bBOPpEQ3UW1sWsy+iljPQbOrTvXSur5Ci5/Dt4p4k+wEvMLc0J/S/8l9IiyI0qumeKTbEo
+ 7iP8lY4AYuZQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="159466855"
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="159466855"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 01:23:05 -0700
-IronPort-SDR: 3BVzk9IYjt21ClSLHiotPckpsKADyw3qMTXiBtJm2/2p1GnyKpCVeP+hmLB+nZ0EwSkKvdV4PO
- Bx3DQ2XkAbtg==
-X-IronPort-AV: E=Sophos;i="5.76,412,1592895600"; d="scan'208";a="480801922"
-Received: from unknown (HELO [10.185.169.39]) ([10.185.169.39])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2020 01:23:03 -0700
-To: intel-wired-lan@osuosl.org
-References: <20200908162330.4681-1-ztong0001@gmail.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <d8c2fdeb-0ae1-5633-7cef-61607fb22d39@intel.com>
-Date: Thu, 10 Sep 2020 11:22:56 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 05:04:07 -0700
+IronPort-SDR: FplRLSrih4+6cT5fNCjg6tEnp0S80PdDhiTSOTRGYz/HfjJdwI8kQYqGVMZ0N/lOoX4q6/lOwL
+ aQD8JpYq5vMQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="304859935"
+Received: from lkp-server01.sh.intel.com (HELO 12ff3cf3f2e9) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 10 Sep 2020 05:04:04 -0700
+Received: from kbuild by 12ff3cf3f2e9 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kGLJ5-0000r6-D5; Thu, 10 Sep 2020 12:04:03 +0000
+Date: Thu, 10 Sep 2020 20:03:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f5a15fc.59dFN14r76Fx5BJq%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20200908162330.4681-1-ztong0001@gmail.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: do not panic on malformed
- rx_desc
+Subject: [Intel-wired-lan] [jkirsher-net-queue:40GbE] BUILD SUCCESS
+ 4406e977a4a1e997818b6d77c3218ef8d15b2abf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,65 +69,150 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 9/8/2020 19:23, Tong Zhang wrote:
-> length may be corrupted in rx_desc and lead to panic, so check the
-> sanity before passing it to skb_put
-> 
-Tong, what is scenario caused to skb panic? How it is happen on your 
-system? Can you please share the test hint and your setup with us?
-> [  103.840572] skbuff: skb_over_panic: text:ffffffff8f432cc1 len:61585 put:61585 head:ffff88805642b800 data:ffff88805642b840 tail:0xf0d1 end:0x6c0 dev:e
-> th0
-> [  103.841283] ------------[ cut here ]------------
-> [  103.841515] kernel BUG at net/core/skbuff.c:109!
-> [  103.841749] invalid opcode: 0000 [#1] SMP DEBUG_PAGEALLOC KASAN PTI
-> [  103.842063] CPU: 1 PID: 276 Comm: ping Tainted: G        W         5.8.0+ #4
-> [  103.842857] RIP: 0010:skb_panic+0xc4/0xc6
-> [  103.843022] Code: 89 f0 48 c7 c7 60 f2 3e 90 55 48 8b 74 24 18 4d 89 f9 56 48 8b 54 24 18 4c 89 e6 52 48 8b 44 24 18 4c 89 ea 50 e8 01 c5 2a ff <0f>
-> 0b 4c 8b 64 24 18 e8 c1 b4 48 ff 48 c7 c1 e0 fc 3e 90 44 89 ee
-> [  103.843766] RSP: 0018:ffff88806d109c58 EFLAGS: 00010282
-> [  103.843976] RAX: 000000000000008c RBX: ffff8880683407c0 RCX: 0000000000000000
-> [  103.844262] RDX: 1ffff1100da24c91 RSI: 0000000000000008 RDI: ffffed100da2137e
-> [  103.844548] RBP: ffff88806bdcc000 R08: 000000000000008c R09: ffffed100da25cfb
-> [  103.844834] R10: ffff88806d12e7d7 R11: ffffed100da25cfa R12: ffffffff903efd20
-> [  103.845123] R13: ffffffff8f432cc1 R14: 000000000000f091 R15: ffff88805642b800
-> [  103.845410] FS:  00007efcd06852c0(0000) GS:ffff88806d100000(0000) knlGS:0000000000000000
-> [  103.845734] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  103.845966] CR2: 00007efccf94f8dc CR3: 0000000064810000 CR4: 00000000000006e0
-> [  103.846254] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-> [  103.846539] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-> [  103.846823] Call Trace:
-> [  103.846925]  <IRQ>
-> [  103.847013]  ? e1000_clean_rx_irq+0x311/0x630
-> [  103.847190]  skb_put.cold+0x2b/0x4d
-> [  103.847334]  e1000_clean_rx_irq+0x311/0x630
-> 
-> Signed-off-by: Tong Zhang <ztong0001@gmail.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++++
->   1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 664e8ccc88d2..f12bd00b2dbf 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -1047,6 +1047,10 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
->   			}
->   			/* else just continue with the old one */
->   		}
-> +		/* check length sanity */
-> +		if (skb->tail + length > skb->end) {
-> +			length = skb->end - skb->tail;
-> +		}
->   		/* end copybreak code */
->   		skb_put(skb, length);
->   
-> 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  40GbE
+branch HEAD: 4406e977a4a1e997818b6d77c3218ef8d15b2abf  igc: Fix not considering the TX delay for timestamps
 
+elapsed time: 721m
+
+configs tested: 121
+configs skipped: 12
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+powerpc                     powernv_defconfig
+powerpc                      mgcoge_defconfig
+arm                        neponset_defconfig
+m68k                        stmark2_defconfig
+mips                           ip27_defconfig
+arm                          collie_defconfig
+arm                         lpc18xx_defconfig
+mips                           jazz_defconfig
+m68k                       m5249evb_defconfig
+parisc                generic-32bit_defconfig
+arm                         assabet_defconfig
+arm                            dove_defconfig
+arm                         ebsa110_defconfig
+arc                        vdk_hs38_defconfig
+arm                            lart_defconfig
+powerpc                          allmodconfig
+arm                         cm_x300_defconfig
+sh                ecovec24-romimage_defconfig
+csky                                defconfig
+i386                                defconfig
+sh                          polaris_defconfig
+m68k                        mvme16x_defconfig
+c6x                              allyesconfig
+openrisc                 simple_smp_defconfig
+arm                        clps711x_defconfig
+openrisc                         alldefconfig
+sh                           se7750_defconfig
+arm                         hackkit_defconfig
+arm                          gemini_defconfig
+sh                         microdev_defconfig
+arm                          ixp4xx_defconfig
+sparc                       sparc32_defconfig
+mips                      loongson3_defconfig
+mips                  maltasmvp_eva_defconfig
+alpha                               defconfig
+sh                              ul2_defconfig
+powerpc                        cell_defconfig
+m68k                          multi_defconfig
+arm                         nhk8815_defconfig
+sh                           se7206_defconfig
+xtensa                    xip_kc705_defconfig
+mips                          rb532_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                             defconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20200910
+x86_64               randconfig-a006-20200910
+x86_64               randconfig-a003-20200910
+x86_64               randconfig-a002-20200910
+x86_64               randconfig-a005-20200910
+x86_64               randconfig-a001-20200910
+i386                 randconfig-a004-20200909
+i386                 randconfig-a005-20200909
+i386                 randconfig-a006-20200909
+i386                 randconfig-a002-20200909
+i386                 randconfig-a001-20200909
+i386                 randconfig-a003-20200909
+i386                 randconfig-a004-20200910
+i386                 randconfig-a006-20200910
+i386                 randconfig-a001-20200910
+i386                 randconfig-a003-20200910
+i386                 randconfig-a002-20200910
+i386                 randconfig-a005-20200910
+x86_64               randconfig-a004-20200909
+x86_64               randconfig-a006-20200909
+x86_64               randconfig-a003-20200909
+x86_64               randconfig-a001-20200909
+x86_64               randconfig-a005-20200909
+x86_64               randconfig-a002-20200909
+i386                 randconfig-a016-20200909
+i386                 randconfig-a015-20200909
+i386                 randconfig-a011-20200909
+i386                 randconfig-a013-20200909
+i386                 randconfig-a014-20200909
+i386                 randconfig-a012-20200909
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a013-20200909
+x86_64               randconfig-a016-20200909
+x86_64               randconfig-a011-20200909
+x86_64               randconfig-a012-20200909
+x86_64               randconfig-a015-20200909
+x86_64               randconfig-a014-20200909
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
