@@ -1,84 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50E7E2653C3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Sep 2020 23:40:33 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 767C62653BE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Sep 2020 23:40:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DEB6F20426;
-	Thu, 10 Sep 2020 21:40:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 343F4877BF;
+	Thu, 10 Sep 2020 21:40:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MKKGcSjDnzCn; Thu, 10 Sep 2020 21:40:31 +0000 (UTC)
+	with ESMTP id Y5PugbUHjHBk; Thu, 10 Sep 2020 21:40:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9E06E2083F;
-	Thu, 10 Sep 2020 21:40:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 89145877AA;
+	Thu, 10 Sep 2020 21:40:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3CFD71BF584
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 10:16:40 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 462D71BF584
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 10:36:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 23CAF20516
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 10:16:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 39E71875B8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 10:36:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sAlhJ3wPma9x for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Sep 2020 10:16:39 +0000 (UTC)
+ with ESMTP id FjrCyC4Nrof6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Sep 2020 10:36:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com
- [209.85.128.67])
- by silver.osuosl.org (Postfix) with ESMTPS id AF43227230
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 10:16:38 +0000 (UTC)
-Received: by mail-wm1-f67.google.com with SMTP id a65so5045777wme.5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 03:16:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=DqY3ytm1lW24L4dBr5ZhfVe1Kl4JG7b6aElJixa0DtQ=;
- b=TyMbFj/CCKS/yEhzmJyx0SXASPCumWs129eaMWwliNPHoe9nGlJZk2Tsw17ABtL/mL
- mWke72l5dRMmrFg9ieYmDr1jVfXiMwSmIMEMsNuXAYrMDmbRSlu2SEhpSFeukLVe3cg9
- +5O+wBu+Jx7JfEyF9JNwdrWebHIVozT6N0VTqxSNEjrIsLOZ3R3dejl3APk21PLF2Oj8
- +Kb8ACZuKGttnfzoDexc2yloyF3/YUcCQzcDsr90PZvO0KOXZEocClY8eSC4NnFPV4xO
- lvhsU6vpfnm+pvKWrckJN/8r5bLtL/kaV4lfgkeSIGRnLzVQeQ+BBL7u23nOrwhO07G+
- JHEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DqY3ytm1lW24L4dBr5ZhfVe1Kl4JG7b6aElJixa0DtQ=;
- b=HdbX54WwrrAERPcuW1rH3V/hAxisvCxKQKKiH86jIcXxPs13JI5SNEy0+UMMDJfTSB
- Zf5SIP7jJZQz0KrhhukRZ+GFcE6TG5HGGee7IDUl/YgdPZM3JHz7+iLRGbYvoVh4Caos
- z5sJFdQ6ykDLrFYbywOTjs4EUKwHWhLLd/BtJD8iJVzi7rrMDd9V63homKcrOy5Sj/Ud
- iEwCKa7woMNYVMJx/LlA3qgosuRxvie1vzZsDLw/+R/GVndh7k3RnCEs8o4HLeoLNC2v
- DYEXgq92fr0vTyBqkm+pDWvZn1Ql9lpPJg4eZ3DKZKBC45PSjXmCoUCozLLBLkRrOMwT
- fcqQ==
-X-Gm-Message-State: AOAM531Ih5waLmhgevuTEeJFvk8pE7Pq6QBtf21nrK1u3KuotQVxugPt
- THFqG//qnaXsP2AqVfbBwzQ=
-X-Google-Smtp-Source: ABdhPJxz+CTfYBRsr9wPZ8ehDJQEmTq++yYJr4Xo0s0U0R6hQKoUpOmBLcC8LM7TIOPThVoU3WYKbg==
-X-Received: by 2002:a1c:234b:: with SMTP id j72mr7837172wmj.153.1599732997083; 
- Thu, 10 Sep 2020 03:16:37 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.113.201])
- by smtp.gmail.com with ESMTPSA id a127sm2936155wmh.34.2020.09.10.03.16.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Sep 2020 03:16:36 -0700 (PDT)
-To: Joe Perches <joe@perches.com>, LKML <linux-kernel@vger.kernel.org>,
- Jiri Kosina <trivial@kernel.org>
-References: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <81d852d4-115f-c6c6-ef80-17c47ec4849a@gmail.com>
-Date: Thu, 10 Sep 2020 12:16:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-Content-Language: en-US
-X-Mailman-Approved-At: Thu, 10 Sep 2020 21:40:28 +0000
-Subject: Re: [Intel-wired-lan] [trivial PATCH] treewide: Convert switch/case
- fallthrough; to break; 
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 5E78B875B7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 10:36:27 +0000 (UTC)
+IronPort-SDR: qAllU33b3QGO18A2zwQ287ozSykn3CHQU8W8WNKZfC1Kq1cxtcGNU4KHf1CPjczSlvQFgQpvtV
+ LpnDxaM74OOg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9739"; a="157786444"
+X-IronPort-AV: E=Sophos;i="5.76,412,1592895600"; d="scan'208";a="157786444"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 03:36:26 -0700
+IronPort-SDR: 4muCETl1mfC0Y80TIvRl5THnxjwyacp35fOIXUoBg9fGWKFgo0gkLUa+xRFsOPKkyTHwXVAzA+
+ pdmx60k/F3bQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,412,1592895600"; d="scan'208";a="449551422"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.19.171])
+ by orsmga004.jf.intel.com with ESMTP; 10 Sep 2020 03:36:25 -0700
+From: Karen Sornek <karen.sornek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 10 Sep 2020 12:36:19 +0200
+Message-Id: <20200910103619.10467-1-karen.sornek@intel.com>
+X-Mailer: git-send-email 2.18.4
+X-Mailman-Approved-At: Thu, 10 Sep 2020 21:40:08 +0000
+Subject: [Intel-wired-lan] [PATCH] igbvf: Refactor traces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,69 +65,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, oss-drivers@netronome.com,
- nouveau@lists.freedesktop.org, alsa-devel <alsa-devel@alsa-project.org>,
- dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, linux-mtd@lists.infradead.org,
- linux-i2c@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-afs@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, dccp@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-atm-general@lists.sourceforge.net,
- kvmarm@lists.cs.columbia.edu, coreteam@netfilter.org,
- intel-wired-lan@lists.osuosl.org, linux-serial@vger.kernel.org,
- linux-input@vger.kernel.org, linux-mmc@vger.kernel.org,
- Kees Cook <kees.cook@canonical.com>, linux-media@vger.kernel.org,
- linux-pm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-nvme@lists.infradead.org,
- storagedev@microchip.com, ceph-devel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Nick Desaulniers <ndesaulniers@google.com>, linux-nfs@vger.kernel.org,
- linux-parisc@vger.kernel.org, netdev@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-sctp@vger.kernel.org, iommu@lists.linux-foundation.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- bpf@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
+Cc: Karen Sornek <karen.sornek@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Refactoring "PF still resetting" and changing "Failed
+ to add vlan id" to "Vlan id is not added"
+messages because previous version looked like a bug
+- it informed about changes that worked as
+designed but might confuse users
 
+Signed-off-by: Karen Sornek <karen.sornek@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+ drivers/net/ethernet/intel/igbvf/netdev.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On 09/09/2020 22:06, Joe Perches wrote:
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
-> index 09f931d4598c..778be26d329f 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/dma.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/dma.c
-> @@ -193,11 +193,11 @@ static void mt7601u_complete_rx(struct urb *urb)
->   	case -ESHUTDOWN:
->   	case -ENOENT:
->   		return;
-> +	case 0:
-> +		break;
->   	default:
->   		dev_err_ratelimited(dev->dev, "rx urb failed: %d\n",
->   				    urb->status);
-> -		fallthrough;
-> -	case 0:
->   		break;
->   	}
->   
-> @@ -238,11 +238,11 @@ static void mt7601u_complete_tx(struct urb *urb)
->   	case -ESHUTDOWN:
->   	case -ENOENT:
->   		return;
-> +	case 0:
-> +		break;
->   	default:
->   		dev_err_ratelimited(dev->dev, "tx urb failed: %d\n",
->   				    urb->status);
-> -		fallthrough;
-> -	case 0:
->   		break;
->   	}
+diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+index 19269f5..9c6fd8d 100644
+--- a/drivers/net/ethernet/intel/igbvf/netdev.c
++++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+@@ -1230,7 +1230,7 @@ static int igbvf_vlan_rx_add_vid(struct net_device *netdev,
+ 	spin_lock_bh(&hw->mbx_lock);
+ 
+ 	if (hw->mac.ops.set_vfta(hw, vid, true)) {
+-		dev_err(&adapter->pdev->dev, "Failed to add vlan id %d\n", vid);
++		dev_warn(&adapter->pdev->dev, "Vlan id %d\n is not added", vid);
+ 		spin_unlock_bh(&hw->mbx_lock);
+ 		return -EINVAL;
+ 	}
+@@ -1514,7 +1514,7 @@ static void igbvf_reset(struct igbvf_adapter *adapter)
+ 
+ 	/* Allow time for pending master requests to run */
+ 	if (mac->ops.reset_hw(hw))
+-		dev_err(&adapter->pdev->dev, "PF still resetting\n");
++		dev_warn(&adapter->pdev->dev, "PF still resetting\n");
+ 
+ 	mac->ops.init_hw(hw);
+ 
+-- 
+2.18.1
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
