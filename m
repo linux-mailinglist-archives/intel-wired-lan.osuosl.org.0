@@ -1,47 +1,47 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B83DC2653E5
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B42B2653E3
 	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Sep 2020 23:42:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EC11D877D3;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D79B887184;
 	Thu, 10 Sep 2020 21:42:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E-RIa7ktcL3y; Thu, 10 Sep 2020 21:42:11 +0000 (UTC)
+	with ESMTP id f8bVR1Er_JAg; Thu, 10 Sep 2020 21:42:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 492F987694;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 974ED871B5;
 	Thu, 10 Sep 2020 21:42:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 26E9C1BF33C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:14:45 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 30AFE1BF33C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:15:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 1FFEC87623
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:14:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1D24C20485
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:15:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XAxu4xzbF3Ih for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Sep 2020 15:14:44 +0000 (UTC)
+ with ESMTP id hMAG3oJ+B5xJ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Sep 2020 15:15:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 34C248761B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:14:43 +0000 (UTC)
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id AACB954E49DA2BF4E598;
- Thu, 10 Sep 2020 23:14:41 +0800 (CST)
-Received: from huawei.com (10.175.113.133) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Thu, 10 Sep 2020
- 23:14:36 +0800
+ by silver.osuosl.org (Postfix) with ESMTPS id 1417620796
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:15:10 +0000 (UTC)
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 064309BB00F9D5C28E88;
+ Thu, 10 Sep 2020 23:14:50 +0800 (CST)
+Received: from huawei.com (10.175.113.133) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Thu, 10 Sep 2020
+ 23:14:45 +0800
 From: Wang Hai <wanghai38@huawei.com>
 To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>, <kuba@kernel.org>,
  <intel-wired-lan@lists.osuosl.org>
-Date: Thu, 10 Sep 2020 23:11:55 +0800
-Message-ID: <20200910151155.35995-1-wanghai38@huawei.com>
+Date: Thu, 10 Sep 2020 23:12:04 +0800
+Message-ID: <20200910151204.36198-1-wanghai38@huawei.com>
 X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
 X-Originating-IP: [10.175.113.133]
