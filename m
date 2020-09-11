@@ -1,89 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC80E267662
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Sep 2020 01:11:38 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 550B126767A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Sep 2020 01:18:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8378384E1C;
-	Fri, 11 Sep 2020 23:11:37 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E73308761F;
+	Fri, 11 Sep 2020 23:18:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EFWgqWrxdmpJ; Fri, 11 Sep 2020 23:11:37 +0000 (UTC)
+	with ESMTP id LvnhY6sP23Rv; Fri, 11 Sep 2020 23:18:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 86E5A86F9A;
-	Fri, 11 Sep 2020 23:11:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 301521BF41B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 23:11:35 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8585B8764E;
+	Fri, 11 Sep 2020 23:18:13 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A8881BF41B
+ for <intel-wired-lan@osuosl.org>; Fri, 11 Sep 2020 23:18:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 294E287B98
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 23:11:35 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 146072045A
+ for <intel-wired-lan@osuosl.org>; Fri, 11 Sep 2020 23:18:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3RT50WzngKmt for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Sep 2020 23:11:34 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from dispatch1-us1.ppe-hosted.com (dispatch1-us1.ppe-hosted.com
- [148.163.129.52])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 7D1D587B90
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 23:11:34 +0000 (UTC)
-Received: from mx1-us1.ppe-hosted.com (unknown [10.7.65.60])
- by dispatch1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
- EBFD46006F; Fri, 11 Sep 2020 23:11:33 +0000 (UTC)
-Received: from us4-mdac16-4.ut7.mdlocal (unknown [10.7.65.72])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id EABA42009A; 
- Fri, 11 Sep 2020 23:11:33 +0000 (UTC)
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mx1-us1.ppe-hosted.com (unknown [10.7.66.41])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 6CCB11C004F;
- Fri, 11 Sep 2020 23:11:33 +0000 (UTC)
-Received: from webmail.solarflare.com (uk.solarflare.com [193.34.186.16])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 1D81C4C006C;
- Fri, 11 Sep 2020 23:11:33 +0000 (UTC)
-Received: from [10.17.20.203] (10.17.20.203) by ukex01.SolarFlarecom.com
- (10.17.10.4) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Sat, 12 Sep
- 2020 00:11:23 +0100
-To: Jakub Kicinski <kuba@kernel.org>
+ with ESMTP id nplWeLEatP9I for <intel-wired-lan@osuosl.org>;
+ Fri, 11 Sep 2020 23:18:11 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1CEBA20445
+ for <intel-wired-lan@osuosl.org>; Fri, 11 Sep 2020 23:18:11 +0000 (UTC)
+IronPort-SDR: HckSR1FT+BXjQC67O3eCJ0R/B2cOggjZVHaxSntXglAfCNQnhEIb60r1Iza1/1mjU2kQMd/goU
+ KJsNaR+U5E8w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9741"; a="220425548"
+X-IronPort-AV: E=Sophos;i="5.76,418,1592895600"; d="scan'208";a="220425548"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2020 16:18:08 -0700
+IronPort-SDR: WIsa3fvHn/ApD0/yQ59PwzJnXljNN0ltNZ5OO0kMh9bANot8lg7VTByNMp8Qdqdcb+rm7UBaGo
+ x0W3OCHrWzUA==
+X-IronPort-AV: E=Sophos;i="5.76,418,1592895600"; d="scan'208";a="285793799"
+Received: from jbrandeb-mobl3.amr.corp.intel.com (HELO localhost)
+ ([10.209.99.126])
+ by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2020 16:18:07 -0700
+Date: Fri, 11 Sep 2020 16:18:05 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <20200911161805.00005aa1@intel.com>
+In-Reply-To: <e1cf9542-4e3b-a666-7861-47b069b3a606@intel.com>
 References: <20200911012337.14015-1-jesse.brandeburg@intel.com>
- <20200911012337.14015-12-jesse.brandeburg@intel.com>
- <227d2fe4-ddf8-89c9-b80b-142674c2cca0@solarflare.com>
- <20200911144207.00005619@intel.com>
- <e2e637ae-8cda-c9a4-91ce-93dbd475fc0c@solarflare.com>
- <20200911152642.62923ba2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-From: Edward Cree <ecree@solarflare.com>
-Message-ID: <115bce2a-daaa-a7c5-3c48-44ce345ea008@solarflare.com>
-Date: Sat, 12 Sep 2020 00:11:20 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ <20200911012337.14015-7-jesse.brandeburg@intel.com>
+ <e1cf9542-4e3b-a666-7861-47b069b3a606@intel.com>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-In-Reply-To: <20200911152642.62923ba2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Content-Language: en-GB
-X-Originating-IP: [10.17.20.203]
-X-ClientProxiedBy: ocex03.SolarFlarecom.com (10.20.40.36) To
- ukex01.SolarFlarecom.com (10.17.10.4)
-X-TM-AS-Product-Ver: SMEX-12.5.0.1300-8.6.1012-25660.003
-X-TM-AS-Result: No-3.124500-8.000000-10
-X-TMASE-MatchedRID: QW5G6BKkLTrmLzc6AOD8DfHkpkyUphL9CiTOKJLx+V5emWwoCXDj9cH4
- sOUTLtl6Zcz/Uu/FtYO7XIAWdEYuS+SWo/6D9AOphJWD2TZy7hEGchEhVwJY344iwAQuovtY4Bu
- rlNbLTrdr2m2LeKGQIJJw2WJhPKcIE29kWrNuieAZSUX8zcPGn34JYJwdJw4T4PdcWsl+C/M5aN
- wEkGdqbSIHx0QmSwcpHJXbPWdbF9o8gnzDlk9Fs6IBnfMCFBiC9ewculJK3jgcNByoSo036SXi8
- Z7hCx0ohUJOGGla76DhJSQgZSPD5L9ZdlL8eonaC24oEZ6SpSmb4wHqRpnaDjoYZD113WgYjjng
- rjCQrJKuLUuaCnCg1BjXHq4CgwmGGAcz2d+peXNwB1XVgJ6lsgvvGaBTAdaAljNIcAh3F+MN2bS
- n7NZCvofMZMegLDIeGU0pKnas+RbnCJftFZkZizYJYNFU00e7N+XOQZygrvY=
-X-TM-AS-User-Approved-Sender: Yes
-X-TM-AS-User-Blocked-Sender: No
-X-TMASE-Result: 10--3.124500-8.000000
-X-TMASE-Version: SMEX-12.5.0.1300-8.6.1012-25660.003
-X-MDID: 1599865893-2XPgwhGQ0_rs
-Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v1 11/11]
- drivers/net/ethernet: clean up mis-targeted comments
+Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v1 06/11]
+ drivers/net/ethernet: clean up unused assignments
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,38 +71,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: intel-wired-lan@osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTEvMDkvMjAyMCAyMzoyNiwgSmFrdWIgS2ljaW5za2kgd3JvdGU6Cj4gIlRvb2xjaGFpbiIg
-c291bmRzIGEgbGl0dGxlIGdyYW5kIGluIHRoaXMgY29udGV4dCwgdGhlIHNjcmlwdCB0aGF0Cj4g
-cGFyc2VzIGtkb2MgZG9lcyBiYXNpYyByZWdleHBzIHRvIGNvbnZlcnQgdGhlIHN0YW5kYXJkIGtl
-cm5lbCBtYWNyb3M6Cj4gLi4uCj4gSURLIGlmIHdlIGNhbiBleHBlY3QgaXQgdG8gdW5kZXJzdGFu
-ZCByYW5kb20gZHJpdmVyJ3MgbWFjcm9zLi4KSSB3YXNuJ3Qgc3VnZ2VzdGluZyBpdCBzaG91bGQg
-X3VuZGVyc3RhbmRfIHRoaXMgbWFjcm8sIGp1c3RyZWNvZ25pc2UKwqB3aGVuIHNvbWV0aGluZyBf
-aXNfIGEgbWFjcm8gaXQgZG9lc24ndCB1bmRlcnN0YW5kLCBhbmQgcmVmcmFpbiBmcm9tCsKgd2Fy
-bmluZyBhYm91dCBpdCBpbiB0aGF0IGNhc2UuCkJ1dCBJIGRvbid0IGtub3cgaG93IGhhcmQgdGhh
-dCB3b3VsZCBiZSB0byBhY2hpZXZlIOKAlCBub3QgYmVpbmcgZmx1ZW50CsKgaW4gUGVybCwgc2Ny
-aXB0cy9rZXJuZWwtZG9jIGlzIG1vc3RseSBsaW5lIG5vaXNlIHRvIG1lLsKgIE15IGJlc3QKwqBn
-dWVzcyBpcyB0aGF0IG9uIHNlZWluZyAnREVDTEFSRV9BX1RISU5HKG5hbWUsIGFyZ3VtZW50KTsn
-IGl0IHJlYWRzCsKgaXQgYXMgdGhvdWdoIGl0IHdlcmUgJ0RFQ0xBUkVfQV9USElORyBuYW1lLCBh
-cmd1bWVudDsnLCBtaXN0YWtpbmcKwqB0aGUgbWFjcm8gbmFtZSBmb3IgYSB0eXBlLgpJIHRoaW5r
-IHRoZSBvbmx5IHdheSBub24tbWFjcm8gZGVjbGFyYXRpb25zIGNhbiBsZWdpdGltYXRlbHkgY29u
-dGFpbgrCoHBhcmVucyBpcyBpbiBmdW5jdGlvbiBwb2ludGVyIHR5cGVzLCBpbiB3aGljaCBjYXNl
-IHRoZSBjb250ZW50cyBvZgrCoHRoZSBwYXJlbnMgYXJlIHBhcnQgb2YgdGhlIHR5cGUgYW5kIG5v
-dCBkZWNsYXJlZCBpZGVudGlmaWVycy7CoCBTbwrCoHNob3VsZG4ndCBrZXJuZWwtZG9jIGlnbm9y
-ZSBhbnl0aGluZyB3aXRoaW4gcGFyZW5zPwo+IFRoaXMgaXMgdGhlIG9ubHkgdXNlIG9mIF9NQ0RJ
-X0RFQ0xBUkVfQlVGKCkgaW4gdGhlIHRyZWUKV2VsbCwgZXhjZXB0IGZvciBtY2RpLmgncwrCoMKg
-wqAgI2RlZmluZSBNQ0RJX0RFQ0xBUkVfQlVGKF9uYW1lLCBfbGVuKSBfTUNESV9ERUNMQVJFX0JV
-RihfbmFtZSwgX2xlbikgPSB7e3swfX19Cj4gLCBob3cgYWJvdXQgY29udmVydGluZyB0aGUgZGVj
-bGFyYXRpb24gdG86Cj4KPiAjZGVjbGFyZSBfTUNESV9CVUZfTEVOKF9sZW4pICAgRElWX1JPVU5E
-X1VQKF9sZW4sIDQpCj4KPiAJZWZ4X2R3b3JkX3QgdHhidWZbX01DRElfQlVGX0xFTihNQ19DTURf
-UFRQX0lOX1RSQU5TTUlUX0xFTk1BWCldOwo+Cj4gV291bGQgdGhhdCB3b3JrPwpUaGF0IGNvdWxk
-IHdvcmssIHllcy7CoCBUaG91Z2gsIHByb2JhYmx5IGxvc2UgdGhlIGxlYWRpbmcgdW5kZXJzY29y
-ZQrCoGluIHRoYXQgY2FzZS4KCi1lZApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
-bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
-dGVsLXdpcmVkLWxhbgo=
+Jacob Keller wrote:
+ 		err = -EBUSY;
+> > diff --git a/drivers/net/ethernet/cavium/liquidio/lio_main.c b/drivers/net/ethernet/cavium/liquidio/lio_main.c
+> > index 8e0ed01e7f03..737ae69eec6e 100644
+> > --- a/drivers/net/ethernet/cavium/liquidio/lio_main.c
+> > +++ b/drivers/net/ethernet/cavium/liquidio/lio_main.c
+> > @@ -1,4 +1,4 @@
+> > -/**********************************************************************
+> > +/*
+> 
+> I suspect this was meant to go into the kdoc patch instead?
+
+Actually it shouldn't be there at all, but it's fixed, thanks!
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
