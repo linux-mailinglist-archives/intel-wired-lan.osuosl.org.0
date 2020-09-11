@@ -1,62 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D2782675D9
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Sep 2020 00:26:49 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C5FB267610
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Sep 2020 00:43:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9E75087BA3;
-	Fri, 11 Sep 2020 22:26:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 0E1378791E;
+	Fri, 11 Sep 2020 22:43:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u-CCvvO6yIQU; Fri, 11 Sep 2020 22:26:47 +0000 (UTC)
+	with ESMTP id l04emnFpxXfw; Fri, 11 Sep 2020 22:43:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9AA7587B83;
-	Fri, 11 Sep 2020 22:26:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2BDFA87922;
+	Fri, 11 Sep 2020 22:43:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 319961BF29F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 22:26:45 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B47D1BF29F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 22:43:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 2D19987614
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 22:26:45 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 429E02E257
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 22:43:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3w6snbSxaSwQ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Sep 2020 22:26:44 +0000 (UTC)
+ with ESMTP id q0-x6RLfuDBD for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Sep 2020 22:43:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id BF22187603
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 22:26:44 +0000 (UTC)
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
- [163.114.132.4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id F3F6B221EB;
- Fri, 11 Sep 2020 22:26:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599863204;
- bh=yOjknxlLcen/3xo7dj7u4vMkZ5aWaIFXMK+QrZqbCEk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=cbCOLmwosXUMuyrw0XT+WYM3nGbltR1pWRqrkmLqrxVpdJvzWc/RLHFCvmoq3t0Vq
- DTQ+0hjEFfp3zmLRKIkKBMHLG8cDFHOFKROwQLFHqQM+cnk1HT6AfhAj8Giu08gvDK
- tlhn2F/F2sQ1jFpYr3MTR3Gx5cgxmk3sLaOb4Hd8=
-Date: Fri, 11 Sep 2020 15:26:42 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Edward Cree <ecree@solarflare.com>
-Message-ID: <20200911152642.62923ba2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <e2e637ae-8cda-c9a4-91ce-93dbd475fc0c@solarflare.com>
+Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
+ [209.85.218.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0BCA22E22C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 22:43:18 +0000 (UTC)
+Received: by mail-ej1-f68.google.com with SMTP id lo4so15690868ejb.8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 15:43:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=ZNQmt+qWe5O7Whc9bnO+zubN0KQNBY4WACuOCEZNtkQ=;
+ b=NPImKUG4AUEX3R5iNZrWPnnpVxI6ZbMdtrsoQffb6ZwEfh5HEjUkL4TXA3TFk1Pk0V
+ /8GSiHsL1t4x0yckwUxI43c22lF8FoX5tVCBOcMvCiFJE50J6xbeKqMvDAxmE2K/5f2Q
+ QWrKXqk3d8Gqm/5MoHUbaQgVEKuYWZGEjN8Rs2R/4EgdpPhLgm0JXQbrqp/FVWUYj8Qy
+ ux701au4hY1V88B1EvtId30txFU6IlMHXAfe7X6pncdsJ90tA0k2AJhWSaJLeOrR5Px2
+ HhDw6bljzGR5j2ufF+uAvRnZlaAEtKOABZ3SDMmb+wR5DPuwSmarCjkYhn4bZ5ivqFe8
+ bM/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ZNQmt+qWe5O7Whc9bnO+zubN0KQNBY4WACuOCEZNtkQ=;
+ b=d8osjV/3xoti1JvyL6zFs5PYd7y22bt/bLrNfPdjAoEXk2bTgqMyJJ93KioA0nrCTG
+ 3lB0HjPROE2/dCy3z+woPgN0YZWfqry0wW23ld5KHawkefdthUSpxVQ10P9FWL3rI+nR
+ 3CdK3g2bzK9e633tek+fdqc8hwALO5e1YWrWMPzrls/mFbaHycg63bTqePypYm5Nxtoz
+ De+WyT5qAj4gi0NhKCXMRMoVa41rUoB4mL+ntNzr6Eakgtsd+WoUSmMqV5Cmh3nT4qCU
+ azDUPzOzqV7vFiqKU+hPmaI+XssgLO4ak+l+rTNu7xbihatOGI2h5l8NQ11JsJ1IqFGX
+ 7qzg==
+X-Gm-Message-State: AOAM532fRcO1tyRhi3SyliVM+Ywayq2tN9oqVzHRxA9AN1e094mMuOaX
+ ZzuWDYahlHpg6PrexATc5Zc=
+X-Google-Smtp-Source: ABdhPJzEjuRP8upj+KrYkRi8qs65lW73sh1bTE/IC8vd81JVAOT1o0zGsDvlMPv5k/io0t/XASK0+Q==
+X-Received: by 2002:a17:906:a101:: with SMTP id
+ t1mr3987339ejy.203.1599864196358; 
+ Fri, 11 Sep 2020 15:43:16 -0700 (PDT)
+Received: from skbuf ([188.25.217.212])
+ by smtp.gmail.com with ESMTPSA id b6sm2794410eds.46.2020.09.11.15.43.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Sep 2020 15:43:15 -0700 (PDT)
+Date: Sat, 12 Sep 2020 01:43:13 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <20200911224313.qxhhcu2jlizxbyvr@skbuf>
 References: <20200911012337.14015-1-jesse.brandeburg@intel.com>
- <20200911012337.14015-12-jesse.brandeburg@intel.com>
- <227d2fe4-ddf8-89c9-b80b-142674c2cca0@solarflare.com>
- <20200911144207.00005619@intel.com>
- <e2e637ae-8cda-c9a4-91ce-93dbd475fc0c@solarflare.com>
+ <20200911075515.6d81066b@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20200911120005.00000178@intel.com>
+ <20200911131238.1069129c@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20200911143405.00004085@intel.com>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v1 11/11]
- drivers/net/ethernet: clean up mis-targeted comments
+Content-Disposition: inline
+In-Reply-To: <20200911143405.00004085@intel.com>
+Subject: Re: [Intel-wired-lan] [RFC PATCH net-next v1 00/11] make
+ drivers/net/ethernet W=1 clean
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,46 +91,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gRnJpLCAxMSBTZXAgMjAyMCAyMjo1NTo1NCArMDEwMCBFZHdhcmQgQ3JlZSB3cm90ZToKPiBP
-biAxMS8wOS8yMDIwIDIyOjQyLCBKZXNzZSBCcmFuZGVidXJnIHdyb3RlOgo+ID4gVGhhbmtzIEVk
-LCBJIHRoaW5rIEkgbWlnaHQganVzdCByZW1vdmUgdGhlIC8qKiBvbiB0aGF0IGZ1bmN0aW9uIHRo
-ZW4KPiA+IChyZW1vdmluZyBpdCBmcm9tIGtkb2MgcHJvY2Vzc2luZykgIAo+IEkgZHVubm8sIHRo
-YXQgbWVhbnMKPiBhKSBrZXJuZWxkb2Mgd29uJ3QgZ2VuZXJhdGUgaHRtbCBmb3IgdGhpcyBzdHJ1
-Y3QKPiBiKSBuZXcgYWRkaXRpb25zIHRvIHRoZSBzdHJ1Y3Qgd2l0aG91dCBjb3JyZXNwb25kaW5n
-IGtlcm5lbGRvYyB3b24ndAo+IMKgwqAgZ2VuZXJhdGUgd2FybmluZ3MKPiDCoGJvdGggb2Ygd2hp
-Y2ggYXJlIG5vdCBpZGVhbCBvdXRjb21lcy4KPiBJIHJlYWxpc2UgdGhlcmUncyB2YWx1ZSBpbiBo
-YXZpbmcgdG90YWxseSB3YXJuaW5nLWNsZWFuIGNvZGUsIGJ1dCBpbgo+IMKgdGhpcyBjYXNlIEkg
-dGhpbmsgdGhpcyBvbmUgd2FybmluZywgZXZlbiB0aG91Z2ggaXQncyBpbmRpY2F0aW5nIGEKPiDC
-oHRvb2xjaGFpbiBwcm9ibGVtIHJhdGhlciB0aGFuIGEgY29kZWJhc2UgcHJvYmxlbSwgc2hvdWxk
-IGJldHRlciBzdGF5Cj4gwqAoaWYgb25seSB0byBwdXQgcHJlc3N1cmUgb24gdGhlIHRvb2xjaGFp
-biB0byBmaXggaXQpLgo+IE90aGVyd2lzZSwgd2hlbiBhbmQgaWYgdGhlIHRvb2xjaGFpbiBpcyBm
-aXhlZCwgd2hhdCdzIHRoZSBjaGFuY2Ugd2UnbGwKPiDCoHJlbWVtYmVyIHRvIHB1dCB0aGUgLyoq
-IGJhY2s/Cj4gCj4gVGhhdCdzIGp1c3QgbXkgb3BpbmlvbiwgdGhvdWdoOyBJIHdvbid0IGJsb2Nr
-IHBhdGNoZXMgdGhhdCBkaXNhZ3JlZS4KCiJUb29sY2hhaW4iIHNvdW5kcyBhIGxpdHRsZSBncmFu
-ZCBpbiB0aGlzIGNvbnRleHQsIHRoZSBzY3JpcHQgdGhhdApwYXJzZXMga2RvYyBkb2VzIGJhc2lj
-IHJlZ2V4cHMgdG8gY29udmVydCB0aGUgc3RhbmRhcmQga2VybmVsIG1hY3JvczoKCgkjIHJlcGxh
-Y2UgREVDTEFSRV9CSVRNQVAKCSRtZW1iZXJzID1+IHMvX19FVEhUT09MX0RFQ0xBUkVfTElOS19N
-T0RFX01BU0tccypcKChbXlwpXSspXCkvREVDTEFSRV9CSVRNQVAoJDEsIF9fRVRIVE9PTF9MSU5L
-X01PREVfTUFTS19OQklUUykvZ29zOwoJJG1lbWJlcnMgPX4gcy9ERUNMQVJFX0JJVE1BUFxzKlwo
-KFteLCldKyksXHMqKFteLCldKylcKS91bnNpZ25lZCBsb25nICQxXFtCSVRTX1RPX0xPTkdTKCQy
-KVxdL2dvczsKCSMgcmVwbGFjZSBERUNMQVJFX0hBU0hUQUJMRQoJJG1lbWJlcnMgPX4gcy9ERUNM
-QVJFX0hBU0hUQUJMRVxzKlwoKFteLCldKyksXHMqKFteLCldKylcKS91bnNpZ25lZCBsb25nICQx
-XFsxIDw8ICgoJDIpIC0gMSlcXS9nb3M7CgkjIHJlcGxhY2UgREVDTEFSRV9LRklGTwoJJG1lbWJl
-cnMgPX4gcy9ERUNMQVJFX0tGSUZPXHMqXCgoW14sKV0rKSxccyooW14sKV0rKSxccyooW14sKV0r
-KVwpLyQyIFwqJDEvZ29zOwoJIyByZXBsYWNlIERFQ0xBUkVfS0ZJRk9fUFRSCgkkbWVtYmVycyA9
-fiBzL0RFQ0xBUkVfS0ZJRk9fUFRSXHMqXCgoW14sKV0rKSxccyooW14sKV0rKVwpLyQyIFwqJDEv
-Z29zOwoKSURLIGlmIHdlIGNhbiBleHBlY3QgaXQgdG8gdW5kZXJzdGFuZCByYW5kb20gZHJpdmVy
-J3MgbWFjcm9zLi4KCgpUaGlzIGlzIHRoZSBvbmx5IHVzZSBvZiBfTUNESV9ERUNMQVJFX0JVRigp
-IGluIHRoZSB0cmVlLCBob3cgYWJvdXQKY29udmVydGluZyB0aGUgZGVjbGFyYXRpb24gdG86Cgoj
-ZGVjbGFyZSBfTUNESV9CVUZfTEVOKF9sZW4pICAgRElWX1JPVU5EX1VQKF9sZW4sIDQpCgoJZWZ4
-X2R3b3JkX3QgdHhidWZbX01DRElfQlVGX0xFTihNQ19DTURfUFRQX0lOX1RSQU5TTUlUX0xFTk1B
-WCldOwoKV291bGQgdGhhdCB3b3JrPwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
-bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
-dGVsLXdpcmVkLWxhbgo=
+On Fri, Sep 11, 2020 at 02:34:05PM -0700, Jesse Brandeburg wrote:
+> Here is a list of driver files with sparse warnings from C=1, maybe we
+> can encourage some others to help me fix them?
+
+I can take care of drivers/net/ethernet/freescale, thanks for the effort
+so far! I'll try to send a patch tomorrow.
+
+-Vladimir
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
