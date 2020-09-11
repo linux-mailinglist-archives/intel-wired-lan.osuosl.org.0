@@ -1,54 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B42B2653E3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Sep 2020 23:42:13 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D79B887184;
-	Thu, 10 Sep 2020 21:42:11 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f8bVR1Er_JAg; Thu, 10 Sep 2020 21:42:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 974ED871B5;
-	Thu, 10 Sep 2020 21:42:10 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 30AFE1BF33C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:15:15 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34BE3265629
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Sep 2020 02:49:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 1D24C20485
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:15:15 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B57542094B;
+	Fri, 11 Sep 2020 00:49:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JgSDROBwZroi; Fri, 11 Sep 2020 00:49:33 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 060A12E1D5;
+	Fri, 11 Sep 2020 00:49:32 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8AB821BF9B9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 00:49:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 8337087776
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 00:49:30 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hMAG3oJ+B5xJ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Sep 2020 15:15:14 +0000 (UTC)
+ with ESMTP id V3Vg3sp-b2gC for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Sep 2020 00:49:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by silver.osuosl.org (Postfix) with ESMTPS id 1417620796
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Sep 2020 15:15:10 +0000 (UTC)
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 064309BB00F9D5C28E88;
- Thu, 10 Sep 2020 23:14:50 +0800 (CST)
-Received: from huawei.com (10.175.113.133) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Thu, 10 Sep 2020
- 23:14:45 +0800
-From: Wang Hai <wanghai38@huawei.com>
-To: <jeffrey.t.kirsher@intel.com>, <davem@davemloft.net>, <kuba@kernel.org>,
- <intel-wired-lan@lists.osuosl.org>
-Date: Thu, 10 Sep 2020 23:12:04 +0800
-Message-ID: <20200910151204.36198-1-wanghai38@huawei.com>
-X-Mailer: git-send-email 2.17.1
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 3FFFA87773
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 00:49:29 +0000 (UTC)
+IronPort-SDR: o58m5PeXeiCQiGBeVEiyVvmQqbfBaCA4cqcuzdRj6HbRXBDeG66qMP4JUJs9dfhBjkvJPXYlzK
+ Tk4EvWTh/mCQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9740"; a="157947765"
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="157947765"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 17:49:28 -0700
+IronPort-SDR: xWqMXWZuXTZtbYgAP7S4J7Fz1oIf3SOG+wKboK9U3OB0suep9m4UNgyXAe1uRwaFazczbvMqVF
+ H4VL4rKTE+3w==
+X-IronPort-AV: E=Sophos;i="5.76,413,1592895600"; d="scan'208";a="329563965"
+Received: from jbrandeb-mobl3.amr.corp.intel.com (HELO localhost)
+ ([10.209.96.73])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2020 17:49:27 -0700
+Date: Thu, 10 Sep 2020 17:49:26 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: Wang Hai <wanghai38@huawei.com>
+Message-ID: <20200910174926.00004f0e@intel.com>
+In-Reply-To: <20200910150934.34605-1-wanghai38@huawei.com>
+References: <20200910150934.34605-1-wanghai38@huawei.com>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.133]
-X-CFilter-Loop: Reflected
-X-Mailman-Approved-At: Thu, 10 Sep 2020 21:42:05 +0000
-Subject: [Intel-wired-lan] [PATCH net-next] igb: Fix some kernel-doc
- warnings in e1000_82575.c
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/3] Fix some kernel-doc
+ warnings for i40e
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,57 +69,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fixes the following W=1 kernel build warning(s):
+Wang Hai wrote:
 
-drivers/net/ethernet/intel/igb/e1000_82575.c:2563: warning: Excess function parameter 'addr' description in '__igb_access_emi_reg'
-drivers/net/ethernet/intel/igb/e1000_82575.c:2599: warning: Excess function parameter 'adv100m' description in 'igb_set_eee_i350'
-drivers/net/ethernet/intel/igb/e1000_82575.c:2655: warning: Excess function parameter 'adv100m' description in 'igb_set_eee_i354'
+> Wang Hai (3):
+>   i40e: Fix some kernel-doc warnings in i40e_client.c
+>   i40e: Fix some kernel-doc warnings in i40e_common.c
+>   i40e: Fix a kernel-doc warning in i40e_ptp.c
+> 
+>  drivers/net/ethernet/intel/i40e/i40e_client.c | 2 --
+>  drivers/net/ethernet/intel/i40e/i40e_common.c | 2 --
+>  drivers/net/ethernet/intel/i40e/i40e_ptp.c    | 1 -
+>  3 files changed, 5 deletions(-)
+> 
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Wang Hai <wanghai38@huawei.com>
----
- drivers/net/ethernet/intel/igb/e1000_82575.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/e1000_82575.c b/drivers/net/ethernet/intel/igb/e1000_82575.c
-index a32391e82762..50863fd87d53 100644
---- a/drivers/net/ethernet/intel/igb/e1000_82575.c
-+++ b/drivers/net/ethernet/intel/igb/e1000_82575.c
-@@ -2554,7 +2554,7 @@ static s32 igb_update_nvm_checksum_i350(struct e1000_hw *hw)
- /**
-  *  __igb_access_emi_reg - Read/write EMI register
-  *  @hw: pointer to the HW structure
-- *  @addr: EMI address to program
-+ *  @address: EMI address to program
-  *  @data: pointer to value to read/write from/to the EMI address
-  *  @read: boolean flag to indicate read or write
-  **/
-@@ -2590,7 +2590,7 @@ s32 igb_read_emi_reg(struct e1000_hw *hw, u16 addr, u16 *data)
-  *  igb_set_eee_i350 - Enable/disable EEE support
-  *  @hw: pointer to the HW structure
-  *  @adv1G: boolean flag enabling 1G EEE advertisement
-- *  @adv100m: boolean flag enabling 100M EEE advertisement
-+ *  @adv100M: boolean flag enabling 100M EEE advertisement
-  *
-  *  Enable/disable EEE based on setting in dev_spec structure.
-  *
-@@ -2646,7 +2646,7 @@ s32 igb_set_eee_i350(struct e1000_hw *hw, bool adv1G, bool adv100M)
-  *  igb_set_eee_i354 - Enable/disable EEE support
-  *  @hw: pointer to the HW structure
-  *  @adv1G: boolean flag enabling 1G EEE advertisement
-- *  @adv100m: boolean flag enabling 100M EEE advertisement
-+ *  @adv100M: boolean flag enabling 100M EEE advertisement
-  *
-  *  Enable/disable EEE legacy mode based on setting in dev_spec structure.
-  *
--- 
-2.17.1
+Please see my patchset [1]: I've already fixed all of these and many
+others.
+
+In fact, before you continue, I have a whole set done making the entire
+drivers/net/ethernet directory compile cleanly with W=1, that I'm about
+to send, but they depend on [1]
+
+[1]
+https://patchwork.ozlabs.org/project/intel-wired-lan/list/?series=&submitter=189&state=&q=&archive=&delegate=
 
 _______________________________________________
 Intel-wired-lan mailing list
