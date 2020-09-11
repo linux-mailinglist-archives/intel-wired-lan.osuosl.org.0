@@ -1,70 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A12B266807
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Sep 2020 20:05:23 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C5C8266806
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Sep 2020 20:05:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 23D2F8793A;
-	Fri, 11 Sep 2020 18:05:21 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A155F87613;
+	Fri, 11 Sep 2020 18:05:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id D4nBqV+pbFpK; Fri, 11 Sep 2020 18:05:20 +0000 (UTC)
+	with ESMTP id Ua7-tBIQ3MIq; Fri, 11 Sep 2020 18:05:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 282EE8792A;
-	Fri, 11 Sep 2020 18:05:20 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4D2518761F;
+	Fri, 11 Sep 2020 18:05:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9DABD1BF3CA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 17:15:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 30EF01BF37A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 18:05:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 970F18790D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 17:15:54 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2C26987932
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 18:05:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x45NAl+3-fyw for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Sep 2020 17:15:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from smtprelay.hostedemail.com (smtprelay0136.hostedemail.com
- [216.40.44.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 9F90D87904
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 17:15:53 +0000 (UTC)
-Received: from smtprelay.hostedemail.com (10.5.19.251.rfc1918.com
- [10.5.19.251])
- by smtpgrave08.hostedemail.com (Postfix) with ESMTP id 76A3F18012C26
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 04:19:45 +0000 (UTC)
-Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
- [216.40.38.60])
- by smtprelay03.hostedemail.com (Postfix) with ESMTP id 12942837F24A;
- Fri, 11 Sep 2020 04:19:43 +0000 (UTC)
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Spam-Summary: 2, 0, 0, , d41d8cd98f00b204, joe@perches.com, ,
- RULES_HIT:41:355:379:599:800:960:973:988:989:1260:1277:1311:1313:1314:1345:1359:1437:1515:1516:1518:1534:1542:1593:1594:1711:1730:1747:1777:1792:2198:2199:2393:2559:2562:2828:3138:3139:3140:3141:3142:3354:3622:3865:3866:3867:3868:3870:3871:3872:3874:4321:5007:6742:6743:10004:10400:10848:11026:11232:11473:11657:11658:11914:12043:12297:12438:12555:12740:12760:12895:13153:13161:13228:13229:13439:14096:14097:14181:14659:14721:21080:21433:21627:30054:30070:30091,
- 0, RBL:none, CacheIP:none, Bayesian:0.5, 0.5, 0.5, Netcheck:none,
- DomainCache:0, MSF:not bulk, SPF:, MSBL:0, DNSBL:none, Custom_rules:0:0:0,
- LFtime:1, LUA_SUMMARY:none
-X-HE-Tag: seat91_4d0f80d270eb
-X-Filterd-Recvd-Size: 4376
-Received: from XPS-9350.home (unknown [47.151.133.149])
- (Authenticated sender: joe@perches.com)
- by omf19.hostedemail.com (Postfix) with ESMTPA;
- Fri, 11 Sep 2020 04:19:36 +0000 (UTC)
-Message-ID: <f4ad706519917d493a0af32ea2da8565227cc74a.camel@perches.com>
-From: Joe Perches <joe@perches.com>
-To: Robin Murphy <robin.murphy@arm.com>, LKML
- <linux-kernel@vger.kernel.org>,  Jiri Kosina <trivial@kernel.org>
-Date: Thu, 10 Sep 2020 21:19:35 -0700
-In-Reply-To: <9372456a-8dcf-2735-57a4-e126aa5df3a6@arm.com>
-References: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
- <9372456a-8dcf-2735-57a4-e126aa5df3a6@arm.com>
-User-Agent: Evolution 3.36.4-0ubuntu1 
+ with ESMTP id AZ29gZNnmkx1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Sep 2020 18:05:05 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 12EE98792A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 18:05:04 +0000 (UTC)
+IronPort-SDR: q3xFhI5+OgeP+svshy+0kUqjE2whRepZlifTT5fpd0aCivaJWyvn27l8QUNdEOrddYoR0yUSTu
+ gjGZj77VxGrg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9741"; a="176884817"
+X-IronPort-AV: E=Sophos;i="5.76,416,1592895600"; d="scan'208";a="176884817"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2020 11:05:01 -0700
+IronPort-SDR: 75JO/gto9d2IvKP5VvmNRy9qZOP6j78AsTyeO9Je13tV2Ktf4Rh6IjshhaBDmw9RlD1bUROHU+
+ 9W+SGeR6gXJw==
+X-IronPort-AV: E=Sophos;i="5.76,416,1592895600"; d="scan'208";a="505577976"
+Received: from samudral-mobl.amr.corp.intel.com (HELO [10.209.42.76])
+ ([10.209.42.76])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2020 11:05:00 -0700
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Magnus Karlsson <magnus.karlsson@gmail.com>
+References: <1599826106-19020-1-git-send-email-magnus.karlsson@gmail.com>
+ <20200911120519.GA9758@ranger.igk.intel.com>
+ <CAJ8uoz3ctVoANjiO_nQ38YA-JoB0nQH1B4W01AZFw3iCyCC_+w@mail.gmail.com>
+ <20200911131027.GA2052@ranger.igk.intel.com>
+From: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
+Message-ID: <b28b4e93-50c2-6183-90ea-8d33902e8f21@intel.com>
+Date: Fri, 11 Sep 2020 11:04:49 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-X-Mailman-Approved-At: Fri, 11 Sep 2020 18:05:17 +0000
-Subject: Re: [Intel-wired-lan] [trivial PATCH] treewide: Convert switch/case
- fallthrough; to break; 
+In-Reply-To: <20200911131027.GA2052@ranger.igk.intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: allow VMDQs to be used
+ with AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,91 +75,85 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, oss-drivers@netronome.com,
- nouveau@lists.freedesktop.org, alsa-devel <alsa-devel@alsa-project.org>,
- dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, linux-mtd@lists.infradead.org,
- linux-i2c@vger.kernel.org, sparclinux@vger.kernel.org,
- Will Deacon <will@kernel.org>, linux-afs@lists.infradead.org,
- linux-rtc@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-scsi@vger.kernel.org, dccp@vger.kernel.org, linux-rdma@vger.kernel.org,
- linux-atm-general@lists.sourceforge.net, kvmarm@lists.cs.columbia.edu,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- linux-serial@vger.kernel.org, linux-input@vger.kernel.org,
- linux-mmc@vger.kernel.org, Kees Cook <kees.cook@canonical.com>,
- linux-media@vger.kernel.org, linux-pm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-nvme@lists.infradead.org, storagedev@microchip.com,
- ceph-devel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Nick Desaulniers <ndesaulniers@google.com>, linux-nfs@vger.kernel.org,
- linux-parisc@vger.kernel.org, netdev@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-sctp@vger.kernel.org, iommu@lists.linux-foundation.org,
- netfilter-devel@vger.kernel.org, linux-crypto@vger.kernel.org,
- bpf@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
+ Network Development <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 2020-09-10 at 15:21 +0100, Robin Murphy wrote:
-> On 2020-09-09 21:06, Joe Perches wrote:
-> > fallthrough to a separate case/default label break; isn't very readable.
-> > 
-> > Convert pseudo-keyword fallthrough; statements to a simple break; when
-> > the next label is case or default and the only statement in the next
-> > label block is break;
-> > 
-> > Found using:
-> > 
-> > $ grep-2.5.4 -rP --include=*.[ch] -n "fallthrough;(\s*(case\s+\w+|default)\s*:\s*){1,7}break;" *
-> > 
-> > Miscellanea:
-> > 
-> > o Move or coalesce a couple label blocks above a default: block.
-> > 
-> > Signed-off-by: Joe Perches <joe@perches.com>
-> > ---
-> > 
-> > Compiled allyesconfig x86-64 only.
-> > A few files for other arches were not compiled.
-> > 
+
+
+On 9/11/2020 6:10 AM, Maciej Fijalkowski wrote:
+> On Fri, Sep 11, 2020 at 02:29:50PM +0200, Magnus Karlsson wrote:
+>> On Fri, Sep 11, 2020 at 2:11 PM Maciej Fijalkowski
+>> <maciej.fijalkowski@intel.com> wrote:
+>>>
+>>> On Fri, Sep 11, 2020 at 02:08:26PM +0200, Magnus Karlsson wrote:
+>>>> From: Magnus Karlsson <magnus.karlsson@intel.com>
+>>>>
+>>>> Allow VMDQs to be used with AF_XDP sockets in zero-copy mode. For some
+>>>> reason, we only allowed main VSIs to be used with zero-copy, but
+>>>> there is now reason to not allow VMDQs also.
+>>>
+>>> You meant 'to allow' I suppose. And what reason? :)
+>>
+>> Yes, sorry. Should be "not to allow". I was too trigger happy ;-).
+>>
+>> I have gotten requests from users that they want to use VMDQs in
+>> conjunction with containers. Basically small slices of the i40e
+>> portioned out as netdevs. Do you see any problems with using a VMDQ
+>> iwth zero-copy?
+
+Today VMDQ VSIs are used when a macvlan interface is created on top of a 
+i40e PF with l2-fwd-offload on. But i don't think we can create an 
+AF_XDP zerocopy socket on top of a macvlan netdev as it doesn't support 
+ndo_bpf or ndo_xdp_xxx apis or expose hw queues directly.
+
+We need to expose VMDQ VSI as a native netdev that can expose its own 
+queues and support ndo_ ops in order to enable AF_XDP zerocopy on a 
+VMDQ. We talked about this approach at the recent netdev conference to 
+expose VMDQ VSI as a subdevice with its own netdev.
+
+https://netdevconf.info/0x14/session.html?talk-hardware-acceleration-of-container-networking-interfaces
+
 > 
-> [...]
-> > diff --git a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> > index c192544e874b..743db1abec40 100644
-> > --- a/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> > +++ b/drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c
-> > @@ -3777,7 +3777,7 @@ static int arm_smmu_device_hw_probe(struct arm_smmu_device *smmu)
-> >   	switch (FIELD_GET(IDR0_TTF, reg)) {
-> >   	case IDR0_TTF_AARCH32_64:
-> >   		smmu->ias = 40;
-> > -		fallthrough;
-> > +		break;
-> >   	case IDR0_TTF_AARCH64:
-> >   		break;
-> >   	default:
+> No, I only meant to provide the actual reason (what you wrote above) in
+> the commit message.
 > 
-> I have to say I don't really agree with the readability argument for 
-> this one - a fallthrough is semantically correct here, since the first 
-> case is a superset of the second. It just happens that anything we would 
-> do for the common subset is implicitly assumed (there are other 
-> potential cases we simply haven't added support for at the moment), thus 
-> the second case is currently empty.
-> This change actively obfuscates that distinction.
-
-Then perhaps comments should be added to usefully
-describe the mechanisms.
-
-	case IDR0_TTF_AARCH32_64:
-		smmu->ias = 40;
-		fallthrough;	/* and still do the 64 bit processing */
-	case IDR0_TTF_AARCH64:
-		/* Nothing specific yet */
-		break;
-
-> Robin.
-
+>>
+>> /Magnus
+>>
+>>>>
+>>>> Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+>>>> ---
+>>>>   drivers/net/ethernet/intel/i40e/i40e_xsk.c | 2 +-
+>>>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+>>>> index 2a1153d..ebe15ca 100644
+>>>> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+>>>> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+>>>> @@ -45,7 +45,7 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
+>>>>        bool if_running;
+>>>>        int err;
+>>>>
+>>>> -     if (vsi->type != I40E_VSI_MAIN)
+>>>> +     if (!(vsi->type == I40E_VSI_MAIN || vsi->type == I40E_VSI_VMDQ2))
+>>>>                return -EINVAL;
+>>>>
+>>>>        if (qid >= vsi->num_queue_pairs)
+>>>> --
+>>>> 2.7.4
+>>>>
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
