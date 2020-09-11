@@ -1,75 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56C7E265F3A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Sep 2020 14:08:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CCEA5265F8E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Sep 2020 14:30:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0C19387491;
-	Fri, 11 Sep 2020 12:08:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 857F887896;
+	Fri, 11 Sep 2020 12:30:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VjkarUHSgJiG; Fri, 11 Sep 2020 12:08:44 +0000 (UTC)
+	with ESMTP id b4kOojosYzDE; Fri, 11 Sep 2020 12:30:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 58A2687852;
-	Fri, 11 Sep 2020 12:08:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 2E85187895;
+	Fri, 11 Sep 2020 12:30:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 468901BF35D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 12:08:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C02191BF35D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 12:30:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4079686ADB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 12:08:40 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id B9E8487890
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 12:30:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fCSOgTnkxhRj for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Sep 2020 12:08:39 +0000 (UTC)
+ with ESMTP id DJDNv-YRkJPR for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Sep 2020 12:30:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f65.google.com (mail-pj1-f65.google.com
- [209.85.216.65])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EE5C886865
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 12:08:38 +0000 (UTC)
-Received: by mail-pj1-f65.google.com with SMTP id jw11so1614891pjb.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 05:08:38 -0700 (PDT)
+Received: from mail-pf1-f194.google.com (mail-pf1-f194.google.com
+ [209.85.210.194])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id ADA9487864
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 12:30:01 +0000 (UTC)
+Received: by mail-pf1-f194.google.com with SMTP id o68so7352012pfg.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Sep 2020 05:30:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=TqSpkfkr+tMBwaFyw5XAodcnlGsbsIbSn3rKcAsTlj4=;
- b=mOJfnuHGe/MCToZH9wkaVfhM5iXwRb17dVqfFWfoVBYqa6TM6qXYurdkH8Vqe1S8nx
- FY6Ka0JvVKwKFH4H0kcM0GvYZJGzk/eIZb6s2ScwN+CnszfaONVg+2wc6bK+R7Y7JKp5
- TL5+RDKQK/HLc5bsMXfJ8zgBMTJLA5uTmLu7WU9dsD/fpmGmuj+rG3XtRv2vUGY4pb3C
- iJPmPOnzFHd1Q//1DUdsQLhgZ5F93VGEyvaoj7CXi7RYAC9cfAE9nRV2bNJ8fBYt0rjn
- n5PbDnqOJx4bbwKsdJf2ygE5gb2ev2x+45ARg4KGW4NR1Ix26slAzd6TUoK0OF2+xnOA
- YsWw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=XbxwP9miORo2DKwSEZ5JCDhcOwdDMNbjt2KRy+7eBzM=;
+ b=sxxXMyvLvBAPEMoIJ8QSKstOUEiBA7O41mtGLBLcawP4cPlQspzBE7xSaP1XfP2/F0
+ GYAd+j3gc4ebjMb1Kf9ORadNiTYZokAYW1syP4A2tS6KWnlj37Liluhycsj8DoQsV+3l
+ 1bYKSpvfA1Z3Ivo9BaiSLrBvPUimSOEAs9gWmU6+nOKmZox9TjtYlvydCrUPSmRrplGW
+ GE+OS4/Xiq6t1TuZq4VT3ZWVaGD7m+E1f8BBQSj8rP+JFNyE5Y9dLJgGpkGzbETQJJ8F
+ nn2eBPZdUjUwrmnQ6/vR/MR4Y00Ix8qOhK4NJOHGEr0UbsvCuz3kRE7ALK6AcQw3iH0V
+ Hc9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=TqSpkfkr+tMBwaFyw5XAodcnlGsbsIbSn3rKcAsTlj4=;
- b=Y0MSrH3ONDBWZoJVnHm03g5le9dA4jHN5oZesDhtlkPDDTkvGN+B4nEvev84O3EM2r
- lImlQRQPfoHCDuQSbpPjeHVQBEj+rdBWG5LtxnHlaIq6lVwULVqgi5F+ZXyXwSRgr+u8
- SyXf5cXyJRc0VxHzM4qUSB2/znWHYzIFThMrhVCA4naSt6XI+QlCbJfSuiiYgYaxQiqN
- LWhrLl4RJmPh8mQATtv9zV3YeTbDYQA3zybJQV1XM5mF19H+jQBtVnFhnnD/YjrvRSyM
- qEx87fZTt2Zt8XFfilUyqzgDLmDquQ4GEFMczK6xxPFn5OLh7AAyvpgUl3zf1N57s1yY
- hqng==
-X-Gm-Message-State: AOAM532cM11xxE8Dn9cXqNfUMwqU3ANFcGfjPwA9AA+Lgyi3mklSLNvL
- K8vHWkyK2llL7yHiAjdbZqQ=
-X-Google-Smtp-Source: ABdhPJxU6Hzk/eEPghef+A/tc7PbZOHogU9xSD8f9jKwHoQAvo8+jcBdodG/eCLN/NWXKsTH3X1QDw==
-X-Received: by 2002:a17:90b:70e:: with SMTP id
- s14mr2105179pjz.206.1599826118580; 
- Fri, 11 Sep 2020 05:08:38 -0700 (PDT)
-Received: from VM.ger.corp.intel.com ([192.55.54.40])
- by smtp.gmail.com with ESMTPSA id a3sm2239279pfl.213.2020.09.11.05.08.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 11 Sep 2020 05:08:37 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=XbxwP9miORo2DKwSEZ5JCDhcOwdDMNbjt2KRy+7eBzM=;
+ b=YLv+S1Q2oEQMBaIzOmMI3aaLg4NuDfYhBX4tVflOU5k9Nre/UmYwACI8mKpeJhwuaQ
+ n6B5jZ7+X8cyxENcTTj/hnZ9/IVMBj8LGpXK0BPQku3ruaiWDBQ+2xvih3MC4/eikNm3
+ mwJvY5LEQZM2GrcRqEy0ZsWGt1eGhYlDEMmn7EtAZxs6FQOf2hANZkRD/jgpF0uMMi8g
+ naxkzQNeKH0ivi0S9OjXi2+kQ5nz9c6pQ2SLvQsWjVBGn5jKCf/Ao1/mlTdNqmLpxAad
+ i4yvoi172OYUfDpiw+HLKohrH3dqllFR5Jq5UeO0lAtWe1Y8iJIKz9Vyld0JNATfnr5+
+ 6o2A==
+X-Gm-Message-State: AOAM530Fp4GmaTk5PyhFO+l0OMdgiUDvad3nRErya7twrZ7E8qEUxfvB
+ oFSxuJusGhO3M3q8JJMTFaHHid4+BQ2XmFz2F6o=
+X-Google-Smtp-Source: ABdhPJycbi9144tCuWpJOm/DbHyimB+o7+twCZ4RlJMolGb2fwNpW/CpCjKpTViUWqAmg562BYyME7hhfh04qAplFEs=
+X-Received: by 2002:a05:6a00:15c1:b029:13e:d13d:a04d with SMTP id
+ o1-20020a056a0015c1b029013ed13da04dmr1869316pfu.19.1599827401252; Fri, 11 Sep
+ 2020 05:30:01 -0700 (PDT)
+MIME-Version: 1.0
+References: <1599826106-19020-1-git-send-email-magnus.karlsson@gmail.com>
+ <20200911120519.GA9758@ranger.igk.intel.com>
+In-Reply-To: <20200911120519.GA9758@ranger.igk.intel.com>
 From: Magnus Karlsson <magnus.karlsson@gmail.com>
-To: magnus.karlsson@intel.com, bjorn.topel@intel.com,
- intel-wired-lan@lists.osuosl.org, jeffrey.t.kirsher@intel.com
-Date: Fri, 11 Sep 2020 14:08:26 +0200
-Message-Id: <1599826106-19020-1-git-send-email-magnus.karlsson@gmail.com>
-X-Mailer: git-send-email 2.7.4
-Subject: [Intel-wired-lan] [PATCH net-next] i40e: allow VMDQs to be used
+Date: Fri, 11 Sep 2020 14:29:50 +0200
+Message-ID: <CAJ8uoz3ctVoANjiO_nQ38YA-JoB0nQH1B4W01AZFw3iCyCC_+w@mail.gmail.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: allow VMDQs to be used
  with AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -83,41 +82,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, maciej.fijalkowski@intel.com,
- maciejromanfijalkowski@gmail.com
-MIME-Version: 1.0
+Cc: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
+ Network Development <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Magnus Karlsson <magnus.karlsson@intel.com>
+On Fri, Sep 11, 2020 at 2:11 PM Maciej Fijalkowski
+<maciej.fijalkowski@intel.com> wrote:
+>
+> On Fri, Sep 11, 2020 at 02:08:26PM +0200, Magnus Karlsson wrote:
+> > From: Magnus Karlsson <magnus.karlsson@intel.com>
+> >
+> > Allow VMDQs to be used with AF_XDP sockets in zero-copy mode. For some
+> > reason, we only allowed main VSIs to be used with zero-copy, but
+> > there is now reason to not allow VMDQs also.
+>
+> You meant 'to allow' I suppose. And what reason? :)
 
-Allow VMDQs to be used with AF_XDP sockets in zero-copy mode. For some
-reason, we only allowed main VSIs to be used with zero-copy, but
-there is now reason to not allow VMDQs also.
+Yes, sorry. Should be "not to allow". I was too trigger happy ;-).
 
-Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I have gotten requests from users that they want to use VMDQs in
+conjunction with containers. Basically small slices of the i40e
+portioned out as netdevs. Do you see any problems with using a VMDQ
+iwth zero-copy?
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index 2a1153d..ebe15ca 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -45,7 +45,7 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
- 	bool if_running;
- 	int err;
- 
--	if (vsi->type != I40E_VSI_MAIN)
-+	if (!(vsi->type == I40E_VSI_MAIN || vsi->type == I40E_VSI_VMDQ2))
- 		return -EINVAL;
- 
- 	if (qid >= vsi->num_queue_pairs)
--- 
-2.7.4
+/Magnus
 
+> >
+> > Signed-off-by: Magnus Karlsson <magnus.karlsson@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > index 2a1153d..ebe15ca 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > @@ -45,7 +45,7 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
+> >       bool if_running;
+> >       int err;
+> >
+> > -     if (vsi->type != I40E_VSI_MAIN)
+> > +     if (!(vsi->type == I40E_VSI_MAIN || vsi->type == I40E_VSI_VMDQ2))
+> >               return -EINVAL;
+> >
+> >       if (qid >= vsi->num_queue_pairs)
+> > --
+> > 2.7.4
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
