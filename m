@@ -2,57 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF3A6268933
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Sep 2020 12:24:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B66E826904A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Sep 2020 17:42:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 655A98108C;
-	Mon, 14 Sep 2020 10:24:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E5687867D7;
+	Mon, 14 Sep 2020 15:42:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KB0573jmytkW; Mon, 14 Sep 2020 10:24:17 +0000 (UTC)
+	with ESMTP id SB75lWFmsCej; Mon, 14 Sep 2020 15:42:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 86439869A2;
-	Mon, 14 Sep 2020 10:24:16 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C89D71BF3BB
- for <intel-wired-lan@osuosl.org>; Mon, 14 Sep 2020 10:24:14 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C291F867CC;
+	Mon, 14 Sep 2020 15:42:54 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 372431BF389
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 15:42:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id C447985B09
- for <intel-wired-lan@osuosl.org>; Mon, 14 Sep 2020 10:24:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2934D8704B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 15:42:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fvALhDndtzLi for <intel-wired-lan@osuosl.org>;
- Mon, 14 Sep 2020 10:24:14 +0000 (UTC)
+ with ESMTP id ThOnw-o44sXJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Sep 2020 15:42:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1E71D85B04
- for <intel-wired-lan@osuosl.org>; Mon, 14 Sep 2020 10:24:14 +0000 (UTC)
-IronPort-SDR: 0qu+zahpsP3bmsVqi4WSMkJx7FS5JhFvdIIIj0fN/S+v81t5IgvT9PE/EtSTDGgxIFdFCLr897
- J26kSpZSui6w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9743"; a="146747227"
-X-IronPort-AV: E=Sophos;i="5.76,425,1592895600"; d="scan'208";a="146747227"
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 7F44A87249
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 15:42:50 +0000 (UTC)
+IronPort-SDR: jRC8UgLcNDCCIWwqlS0w0fki4BA7pavI7wX2ZymImHwBjbhgWRQsb13Fd2VNB/7vKDcsb46ZKx
+ vXNWrlTRnqxA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9744"; a="138604406"
+X-IronPort-AV: E=Sophos;i="5.76,426,1592895600"; d="scan'208";a="138604406"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Sep 2020 03:24:13 -0700
-IronPort-SDR: EzOxqNdEKOq+UMaLjQ9qJmvvAE+/Cv3PIgg7Gt0FgUueyPoZKOmOj8svpeCDbNbbwWbGbiiNho
- oO1a/LNeq1SA==
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Sep 2020 08:42:49 -0700
+IronPort-SDR: H2SC6oU2ZBtd8Gc/qanV4a41i8H2pPCkIV4gl9JxqNe6E2EcIfJ0fPE6mYl1UARxGMPRhKTlvp
+ uvgvTYCDbBmw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,425,1592895600"; d="scan'208";a="408818472"
-Received: from ccdlinuxdev08.iil.intel.com ([143.185.160.195])
- by fmsmga001.fm.intel.com with ESMTP; 14 Sep 2020 03:24:12 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Mon, 14 Sep 2020 13:24:09 +0300
-Message-Id: <20200914102409.6464-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.11.0
-Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow
- S0i3.2 subset entry
+X-IronPort-AV: E=Sophos;i="5.76,426,1592895600"; d="scan'208";a="450924284"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
+ by orsmga004.jf.intel.com with ESMTP; 14 Sep 2020 08:42:48 -0700
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 14 Sep 2020 08:37:14 -0700
+Message-Id: <20200914153720.48498-1-anthony.l.nguyen@intel.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [PATCH S52 1/7] ice: cleanup stack hog
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,59 +65,112 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Changed a configuration in the flows to align with
-architecture requirements to achieve S0i3.2 substate.
+From: Bruce Allan <bruce.w.allan@intel.com>
 
-Also fixed a typo in the previous patch- e1000e: fix S0ix flows for
-cable connected case (632fbd5eb5b).
+In ice_flow_add_prof_sync(), struct ice_flow_prof_params has recently
+grown in size hogging stack space when allocated there.  Hogging stack
+space should be avoided.  Change allocation to be on the heap when needed.
 
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_flow.c | 44 +++++++++++++----------
+ 1 file changed, 26 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index a77d39723d8d..2f224478a0c3 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6479,13 +6479,13 @@ static void e1000e_s0ix_entry_flow(struct e1000_adapter *adapter)
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index eadc85aee389..2a92071bd7d1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -708,37 +708,42 @@ ice_flow_add_prof_sync(struct ice_hw *hw, enum ice_block blk,
+ 		       struct ice_flow_seg_info *segs, u8 segs_cnt,
+ 		       struct ice_flow_prof **prof)
+ {
+-	struct ice_flow_prof_params params;
++	struct ice_flow_prof_params *params;
+ 	enum ice_status status;
+ 	u8 i;
  
- 	/* Ungate PGCB clock */
- 	mac_data = er32(FEXTNVM9);
--	mac_data |= BIT(28);
-+	mac_data &= ~BIT(28);
- 	ew32(FEXTNVM9, mac_data);
+ 	if (!prof)
+ 		return ICE_ERR_BAD_PTR;
  
- 	/* Enable K1 off to enable mPHY Power Gating */
- 	mac_data = er32(FEXTNVM6);
- 	mac_data |= BIT(31);
--	ew32(FEXTNVM12, mac_data);
-+	ew32(FEXTNVM6, mac_data);
+-	memset(&params, 0, sizeof(params));
+-	params.prof = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*params.prof),
+-				   GFP_KERNEL);
+-	if (!params.prof)
++	params = kzalloc(sizeof(*params), GFP_KERNEL);
++	if (!params)
+ 		return ICE_ERR_NO_MEMORY;
  
- 	/* Enable mPHY power gating for any link and speed */
- 	mac_data = er32(FEXTNVM8);
-@@ -6529,11 +6529,11 @@ static void e1000e_s0ix_exit_flow(struct e1000_adapter *adapter)
- 	/* Disable K1 off */
- 	mac_data = er32(FEXTNVM6);
- 	mac_data &= ~BIT(31);
--	ew32(FEXTNVM12, mac_data);
-+	ew32(FEXTNVM6, mac_data);
++	params->prof = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*params->prof),
++				    GFP_KERNEL);
++	if (!params->prof) {
++		status = ICE_ERR_NO_MEMORY;
++		goto free_params;
++	}
++
+ 	/* initialize extraction sequence to all invalid (0xff) */
+ 	for (i = 0; i < ICE_MAX_FV_WORDS; i++) {
+-		params.es[i].prot_id = ICE_PROT_INVALID;
+-		params.es[i].off = ICE_FV_OFFSET_INVAL;
++		params->es[i].prot_id = ICE_PROT_INVALID;
++		params->es[i].off = ICE_FV_OFFSET_INVAL;
+ 	}
  
- 	/* Disable Ungate PGCB clock */
- 	mac_data = er32(FEXTNVM9);
--	mac_data &= ~BIT(28);
-+	mac_data |= BIT(28);
- 	ew32(FEXTNVM9, mac_data);
+-	params.blk = blk;
+-	params.prof->id = prof_id;
+-	params.prof->dir = dir;
+-	params.prof->segs_cnt = segs_cnt;
++	params->blk = blk;
++	params->prof->id = prof_id;
++	params->prof->dir = dir;
++	params->prof->segs_cnt = segs_cnt;
  
- 	/* Cancel not waking from dynamic
+ 	/* Make a copy of the segments that need to be persistent in the flow
+ 	 * profile instance
+ 	 */
+ 	for (i = 0; i < segs_cnt; i++)
+-		memcpy(&params.prof->segs[i], &segs[i], sizeof(*segs));
++		memcpy(&params->prof->segs[i], &segs[i], sizeof(*segs));
+ 
+-	status = ice_flow_proc_segs(hw, &params);
++	status = ice_flow_proc_segs(hw, params);
+ 	if (status) {
+ 		ice_debug(hw, ICE_DBG_FLOW,
+ 			  "Error processing a flow's packet segments\n");
+@@ -746,19 +751,22 @@ ice_flow_add_prof_sync(struct ice_hw *hw, enum ice_block blk,
+ 	}
+ 
+ 	/* Add a HW profile for this flow profile */
+-	status = ice_add_prof(hw, blk, prof_id, (u8 *)params.ptypes, params.es);
++	status = ice_add_prof(hw, blk, prof_id, (u8 *)params->ptypes,
++			      params->es);
+ 	if (status) {
+ 		ice_debug(hw, ICE_DBG_FLOW, "Error adding a HW flow profile\n");
+ 		goto out;
+ 	}
+ 
+-	INIT_LIST_HEAD(&params.prof->entries);
+-	mutex_init(&params.prof->entries_lock);
+-	*prof = params.prof;
++	INIT_LIST_HEAD(&params->prof->entries);
++	mutex_init(&params->prof->entries_lock);
++	*prof = params->prof;
+ 
+ out:
+ 	if (status)
+-		devm_kfree(ice_hw_to_dev(hw), params.prof);
++		devm_kfree(ice_hw_to_dev(hw), params->prof);
++free_params:
++	kfree(params);
+ 
+ 	return status;
+ }
 -- 
-2.11.0
+2.20.1
 
 _______________________________________________
 Intel-wired-lan mailing list
