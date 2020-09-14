@@ -1,53 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B82D26861F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Sep 2020 09:35:45 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38312268901
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Sep 2020 12:11:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3D3FD85AE9;
-	Mon, 14 Sep 2020 07:35:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8CE2A8698B;
+	Mon, 14 Sep 2020 10:11:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ves0nWsy2vpk; Mon, 14 Sep 2020 07:35:43 +0000 (UTC)
+	with ESMTP id i7jGVB0Yb9Iz; Mon, 14 Sep 2020 10:11:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CBFE58545B;
-	Mon, 14 Sep 2020 07:35:42 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id CD3868694B;
+	Mon, 14 Sep 2020 10:11:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5F60C1BF29D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 07:35:41 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B483C1BF3BB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 10:11:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 53E482010C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 07:35:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id AF3BA85C52
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 10:11:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6i+o7cUXp9t5 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Sep 2020 07:35:39 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by silver.osuosl.org (Postfix) with ESMTPS id 3DA1720027
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 07:35:39 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5af04b.dynamic.kabel-deutschland.de
- [95.90.240.75])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 199CE20645E93;
- Mon, 14 Sep 2020 09:35:36 +0200 (CEST)
-To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20191010101539.37043-1-sasha.neftin@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <b97d6390-2226-ef51-d87b-736aa6e7189a@molgen.mpg.de>
-Date: Mon, 14 Sep 2020 09:35:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ with ESMTP id He3oI_6Z1h_E for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Sep 2020 10:11:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-pf1-f196.google.com (mail-pf1-f196.google.com
+ [209.85.210.196])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 0AB58859D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 10:11:01 +0000 (UTC)
+Received: by mail-pf1-f196.google.com with SMTP id b124so12188949pfg.13
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Sep 2020 03:11:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CcIK7JhnkbSO1lEJrhfie3yPWToQk+GRSxeB40Z4jYA=;
+ b=dKFwHbMoItahTu8u/+Q8vhjORQMv0KHOMW9jgTla8pIUw/YyOYArRTgnpT+dBj0Wg4
+ FxCE8/cGqUdP4OgB7PQUIBiA/P/uEY/ev8mZyk6jCSDGm/yGTwClzwH6ayoXQqya0xGv
+ vrb37X7CiTIb5rmdnoLObPnTllT0xbvWTsymjqS1TcnCLNrrWSnUOWSTHvAiyyoS9iXq
+ eleUhW9elApmcgEi4yZiI21/oSnyBeJY/wvZy9Q5R/yq4kPDHtheJ8sUcXE4rzNBewo8
+ FnzTjPq3Ey2cBfbaRkppHwL+cbYkrRZ/zS8Qm41Pm7vORc2DMICG9E178RmaF+/xxd3W
+ A67A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CcIK7JhnkbSO1lEJrhfie3yPWToQk+GRSxeB40Z4jYA=;
+ b=dvbExSTYIyRgGEfaoSu8+9UtvFEelmT13+OLzOv1fOL6jlHWFV3NmrRa9BCulNBXU8
+ hHeMZoeoFwJroV8wMcVdQZVf0gdRdAqzYEyRkKzArHmzD0HofwgCnQtxO1E00fgMMxM+
+ iOUHz6pCGKdCCycIAHflchx+a8mG3ezAhQ/ZE5QwnzAnFpQG+jHYdUkhBU3EPBR+c/He
+ zRxCO8SaRy0fgiciJp+c0NYEv7CsgF4ccm4Jq5A2bEU1Ouf3uHsFrTc9K77g7fcZHfi7
+ XDqBdklko7db+UpqgfLJmgBDyghTv6cJJkzXpcdsjbIoF0JtdOmAwLoPnj+bpC1geUlk
+ FMpw==
+X-Gm-Message-State: AOAM532RTD/h+lBzl6akc4vsYnKgrw2GaD9PiBRORP4m7Yc4AGKtRtWv
+ hu2LzY6D8T3mqxVph1k1ZhIjW+q32XWgbkY97Fo=
+X-Google-Smtp-Source: ABdhPJzsbTCmFGP4VOI24LCpiaeUiMiOVRPcHyoDA8Gu0DlEq5mk4niGE0WkVOFw9qI6NKowaT+N86Hss7yRS8l0+vk=
+X-Received: by 2002:a63:29c7:: with SMTP id
+ p190mr10389274pgp.292.1600078260569; 
+ Mon, 14 Sep 2020 03:11:00 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20191010101539.37043-1-sasha.neftin@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: Add support for Comet Lake
+References: <1599826106-19020-1-git-send-email-magnus.karlsson@gmail.com>
+ <20200911120519.GA9758@ranger.igk.intel.com>
+ <CAJ8uoz3ctVoANjiO_nQ38YA-JoB0nQH1B4W01AZFw3iCyCC_+w@mail.gmail.com>
+ <20200911131027.GA2052@ranger.igk.intel.com>
+ <b28b4e93-50c2-6183-90ea-8d33902e8f21@intel.com>
+ <CAKgT0UcXLi5fK3UiOpfPKu6FxJh1tH4r+_ZjCNsH=cEqHztOOg@mail.gmail.com>
+In-Reply-To: <CAKgT0UcXLi5fK3UiOpfPKu6FxJh1tH4r+_ZjCNsH=cEqHztOOg@mail.gmail.com>
+From: Magnus Karlsson <magnus.karlsson@gmail.com>
+Date: Mon, 14 Sep 2020 12:10:49 +0200
+Message-ID: <CAJ8uoz2vV4b8EXwdcU7WBxsY0bnM=Lk_b789w0Ki7+8CWRk6fA@mail.gmail.com>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: allow VMDQs to be used
+ with AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,60 +86,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Maciej Fijalkowski <maciejromanfijalkowski@gmail.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ Network Development <netdev@vger.kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBTYXNoYSwgZGVhciBKZWZmLAoKCkFtIDEwLjEwLjE5IHVtIDEyOjE1IHNjaHJpZWIgU2Fz
-aGEgTmVmdGluOgo+IEFkZCBkZXZpY2VzIElEJ3MgZm9yIHRoZSBuZXh0IExPTSBnZW5lcmF0aW9u
-cyB0aGF0IHdpbGwgYmUKPiBhdmFpbGFibGUgb24gdGhlIG5leHQgSW50ZWwgQ2xpZW50IHBsYXRm
-b3JtIChDb21ldCBMYWtlKQo+IFRoaXMgcGF0Y2ggcHJvdmlkZXMgdGhlIGluaXRpYWwgc3VwcG9y
-dCBmb3IgdGhlc2UgZGV2aWNlcwo+IAo+IFNpZ25lZC1vZmYtYnk6IFNhc2hhIE5lZnRpbiA8c2Fz
-aGEubmVmdGluQGludGVsLmNvbT4KPiAtLS0KPiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
-L2UxMDAwZS9ody5oICAgICB8IDYgKysrKysrCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9lMTAwMGUvbmV0ZGV2LmMgfCA2ICsrKysrKwo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAxMiBpbnNl
-cnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2Ux
-MDAwZS9ody5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL2h3LmgKPiBpbmRl
-eCBlZmY3NWJkOGE4ZjAuLjExZmRjMjdmYWE4MiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9l
-dGhlcm5ldC9pbnRlbC9lMTAwMGUvaHcuaAo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2UxMDAwZS9ody5oCj4gQEAgLTg2LDYgKzg2LDEyIEBAIHN0cnVjdCBlMTAwMF9odzsKPiAg
-ICNkZWZpbmUgRTEwMDBfREVWX0lEX1BDSF9JQ1BfSTIxOV9WOAkJMHgxNUUwCj4gICAjZGVmaW5l
-IEUxMDAwX0RFVl9JRF9QQ0hfSUNQX0kyMTlfTE05CQkweDE1RTEKPiAgICNkZWZpbmUgRTEwMDBf
-REVWX0lEX1BDSF9JQ1BfSTIxOV9WOQkJMHgxNUUyCj4gKyNkZWZpbmUgRTEwMDBfREVWX0lEX1BD
-SF9DTVBfSTIxOV9MTTEwCQkweDBENEUKPiArI2RlZmluZSBFMTAwMF9ERVZfSURfUENIX0NNUF9J
-MjE5X1YxMAkJMHgwRDRGCj4gKyNkZWZpbmUgRTEwMDBfREVWX0lEX1BDSF9DTVBfSTIxOV9MTTEx
-CQkweDBENEMKPiArI2RlZmluZSBFMTAwMF9ERVZfSURfUENIX0NNUF9JMjE5X1YxMQkJMHgwRDRE
-Cj4gKyNkZWZpbmUgRTEwMDBfREVWX0lEX1BDSF9DTVBfSTIxOV9MTTEyCQkweDBENTMKPiArI2Rl
-ZmluZSBFMTAwMF9ERVZfSURfUENIX0NNUF9JMjE5X1YxMgkJMHgwRDU1Cj4gICAKPiAgICNkZWZp
-bmUgRTEwMDBfUkVWSVNJT05fNAk0Cj4gICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-ZTEwMDBlL25ldGRldi5jCj4gaW5kZXggY2M0MzYzZTY3MDcyLi4yZGVkZWVkNzRjZDQgMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gKysr
-IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gQEAgLTc3NTMs
-NiArNzc1MywxMiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHBjaV9kZXZpY2VfaWQgZTEwMDBfcGNp
-X3RibFtdID0gewo+ICAgCXsgUENJX1ZERVZJQ0UoSU5URUwsIEUxMDAwX0RFVl9JRF9QQ0hfSUNQ
-X0kyMTlfVjgpLCBib2FyZF9wY2hfY25wIH0sCj4gICAJeyBQQ0lfVkRFVklDRShJTlRFTCwgRTEw
-MDBfREVWX0lEX1BDSF9JQ1BfSTIxOV9MTTkpLCBib2FyZF9wY2hfY25wIH0sCj4gICAJeyBQQ0lf
-VkRFVklDRShJTlRFTCwgRTEwMDBfREVWX0lEX1BDSF9JQ1BfSTIxOV9WOSksIGJvYXJkX3BjaF9j
-bnAgfSwKPiArCXsgUENJX1ZERVZJQ0UoSU5URUwsIEUxMDAwX0RFVl9JRF9QQ0hfQ01QX0kyMTlf
-TE0xMCksIGJvYXJkX3BjaF9jbnAgfSwKPiArCXsgUENJX1ZERVZJQ0UoSU5URUwsIEUxMDAwX0RF
-Vl9JRF9QQ0hfQ01QX0kyMTlfVjEwKSwgYm9hcmRfcGNoX2NucCB9LAo+ICsJeyBQQ0lfVkRFVklD
-RShJTlRFTCwgRTEwMDBfREVWX0lEX1BDSF9DTVBfSTIxOV9MTTExKSwgYm9hcmRfcGNoX2NucCB9
-LAo+ICsJeyBQQ0lfVkRFVklDRShJTlRFTCwgRTEwMDBfREVWX0lEX1BDSF9DTVBfSTIxOV9WMTEp
-LCBib2FyZF9wY2hfY25wIH0sCj4gKwl7IFBDSV9WREVWSUNFKElOVEVMLCBFMTAwMF9ERVZfSURf
-UENIX0NNUF9JMjE5X0xNMTIpLCBib2FyZF9wY2hfc3B0IH0sCj4gKwl7IFBDSV9WREVWSUNFKElO
-VEVMLCBFMTAwMF9ERVZfSURfUENIX0NNUF9JMjE5X1YxMiksIGJvYXJkX3BjaF9zcHQgfSwKPiAg
-IAo+ICAgCXsgMCwgMCwgMCwgMCwgMCwgMCwgMCB9CS8qIHRlcm1pbmF0ZSBsaXN0ICovCj4gICB9
-OwoKVGhpcyBsYW5kZWQgaW4gTGludXggNS41LCBhbmQgd2Ugd291bGQgcmVhbGx5IGxpa2UgdG8g
-c2VlIGl0IGluIHRoZSA1LjQgCnN0YWJsZSBzZXJpZXMuIEFzIGl04oCZcyBqdXN0IGFkZGluZyBu
-ZXcgUENJIGRldmljZSBjb2RlcywgdGhpcyBzb3VuZHMgCmVhc2lseSBkb2FibGUuCgpXaGF0IGlz
-IHRoZSBwcm9jZXNzIG9mIGdldHRpbmcgaXQgaW50byB0aGUgc3RhYmxlIHNlcmllcz8gSSByZW1l
-bWJlciB0aGUgCm5ldCBzdWJzeXN0ZW0gaGF2aW5nIGEgZGlmZmVyZW50IHByb2Nlc3MgdGhhbiBq
-dXN0IGFkZGluZyBgQ0M6IApzdGFibGVAdmdlci5rZXJuZWwub3JnYCwgd2hpY2ggaXMgdG9vIGxh
-dGUgZm9yIHRoaXMgYW55d2F5LCBhcyBpdOKAmXMgCmFscmVhZHkgaW4gTGludXPigJkgbWFzdGVy
-IGJyYW5jaC4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwt
-d2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlz
-dGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+On Fri, Sep 11, 2020 at 8:42 PM Alexander Duyck
+<alexander.duyck@gmail.com> wrote:
+>
+> On Fri, Sep 11, 2020 at 11:05 AM Samudrala, Sridhar
+> <sridhar.samudrala@intel.com> wrote:
+> >
+> >
+> >
+> > On 9/11/2020 6:10 AM, Maciej Fijalkowski wrote:
+> > > On Fri, Sep 11, 2020 at 02:29:50PM +0200, Magnus Karlsson wrote:
+> > >> On Fri, Sep 11, 2020 at 2:11 PM Maciej Fijalkowski
+> > >> <maciej.fijalkowski@intel.com> wrote:
+> > >>>
+> > >>> On Fri, Sep 11, 2020 at 02:08:26PM +0200, Magnus Karlsson wrote:
+> > >>>> From: Magnus Karlsson <magnus.karlsson@intel.com>
+> > >>>>
+> > >>>> Allow VMDQs to be used with AF_XDP sockets in zero-copy mode. For some
+> > >>>> reason, we only allowed main VSIs to be used with zero-copy, but
+> > >>>> there is now reason to not allow VMDQs also.
+> > >>>
+> > >>> You meant 'to allow' I suppose. And what reason? :)
+> > >>
+> > >> Yes, sorry. Should be "not to allow". I was too trigger happy ;-).
+> > >>
+> > >> I have gotten requests from users that they want to use VMDQs in
+> > >> conjunction with containers. Basically small slices of the i40e
+> > >> portioned out as netdevs. Do you see any problems with using a VMDQ
+> > >> iwth zero-copy?
+> >
+> > Today VMDQ VSIs are used when a macvlan interface is created on top of a
+> > i40e PF with l2-fwd-offload on. But i don't think we can create an
+> > AF_XDP zerocopy socket on top of a macvlan netdev as it doesn't support
+> > ndo_bpf or ndo_xdp_xxx apis or expose hw queues directly.
+> >
+> > We need to expose VMDQ VSI as a native netdev that can expose its own
+> > queues and support ndo_ ops in order to enable AF_XDP zerocopy on a
+> > VMDQ. We talked about this approach at the recent netdev conference to
+> > expose VMDQ VSI as a subdevice with its own netdev.
+> >
+> > https://netdevconf.info/0x14/session.html?talk-hardware-acceleration-of-container-networking-interfaces
+>
+> I still hold the opinion that macvlan is still the best way to go
+> about addressing most of these needs. The problem with doing isolation
+> as separate netdevs is the fact that east/west traffic starts to
+> essentially swamp the PCIe bus on the device as you have to deal with
+> broadcast/multicast replication and east/west traffic. Leaving that
+> replication and east/west traffic up to software to handle while
+> allowing the unicast traffic to be directed is the best way to go in
+> my opinion.
+>
+> The problem with just spawning netdevs is that each vendor can do it
+> differently and what you get varies in functionality. If anything we
+> would need to come up with a standardized interface to define what
+> features can be used and exposed. That was one of the motivations
+> behind using macvlan. So if anything it seems like it might make more
+> sense to look at extending the macvlan interface to enable offloading
+> additional features to the lower level device.
+
+Agree with this completely. This patch was not intended to "solve" the
+container interface problem. This solution does not scale, is
+proprietary, etc, etc. It just uses something, VMDQs,  that was put in
+the i40e driver a long time ago. Do not know the history behind it,
+but I am sure that Alex and Sridhar do. Anyway, what I believe you and
+Jakub are saying is that this is just extending something that we all
+know is a dead end, or in other words, putting lipstick on a pig ;-).
+
+Please drop the patch.
+
+> With that said I am not certain VMDq is even the right kind of
+> interface to use for containers. I would be more interested in
+> something like what we did in fm10k for macvlan offload where we used
+> resource tags to identify traffic that belonged to a given interface
+> and just dedicated that to it rather than queues and interrupts. The
+> problem with dedicating queues and interrupts is that those are a
+> limited resource so scaling will become an issue when you get to any
+> decent count of containers.
+>
+> - Alex
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
