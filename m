@@ -1,50 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1735E26AECE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Sep 2020 22:44:17 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C0DB26AF0E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Sep 2020 23:01:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 9D25420107;
-	Tue, 15 Sep 2020 20:44:15 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id AF0008728A;
+	Tue, 15 Sep 2020 21:01:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BZ8UwVEV+qBw; Tue, 15 Sep 2020 20:44:15 +0000 (UTC)
+	with ESMTP id 55tgKHoKdsYJ; Tue, 15 Sep 2020 21:01:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 6623E22882;
-	Tue, 15 Sep 2020 20:44:12 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 5871787288;
+	Tue, 15 Sep 2020 21:01:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 50A6A1BF292
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 20:44:10 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 47AE01BF2AF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 21:01:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4BFF986B15
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 20:44:10 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 386B220016
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 21:01:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qeW+CGEwdb-k for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Sep 2020 20:44:09 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 3C8D686AE6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 20:44:09 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1kIHnz-00Eomd-BX; Tue, 15 Sep 2020 22:43:59 +0200
-Date: Tue, 15 Sep 2020 22:43:59 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Saeed Mahameed <saeed@kernel.org>
-Message-ID: <20200915204359.GF3526428@lunn.ch>
+ with ESMTP id AMHg3wYsjSSJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Sep 2020 21:01:02 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9BD5D22882
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 21:01:02 +0000 (UTC)
+IronPort-SDR: 8mmEsJb/Ot5OC/BUmOynqboD+T7viJbF6wxOBwIAK2ukfa1z7sTSOPww0p/DZ0+dWnNwD13W2H
+ IdggNIw0VHCA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9745"; a="156770056"
+X-IronPort-AV: E=Sophos;i="5.76,430,1592895600"; d="scan'208";a="156770056"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Sep 2020 14:01:01 -0700
+IronPort-SDR: I/XBhBVhiQRmdXFSW8IHhwqdaQGXrJha0whNjIJTr9uaqsnI+mKGIgXYd1vV4bDA/IKhVmdK4K
+ cWHvFrIrNatQ==
+X-IronPort-AV: E=Sophos;i="5.76,430,1592895600"; d="scan'208";a="506907383"
+Received: from jbrandeb-mobl3.amr.corp.intel.com (HELO localhost)
+ ([10.212.118.172])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Sep 2020 14:01:00 -0700
+Date: Tue, 15 Sep 2020 14:00:58 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: David Miller <davem@davemloft.net>
+Message-ID: <20200915140058.00007553@intel.com>
+In-Reply-To: <20200915.133156.1580615428345209072.davem@davemloft.net>
 References: <20200915014455.1232507-1-jesse.brandeburg@intel.com>
- <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
- <20200915140326.GG3485708@lunn.ch>
- <734f0c4595a18ab136263b6e5c97e7f48a93abe1.camel@kernel.org>
+ <20200915.133156.1580615428345209072.davem@davemloft.net>
+X-Mailer: Claws Mail 3.12.0 (GTK+ 2.24.28; i686-w64-mingw32)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <734f0c4595a18ab136263b6e5c97e7f48a93abe1.camel@kernel.org>
 Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/10] make
  drivers/net/ethernet W=1 clean
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -65,82 +76,18 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Yes we can have our own gcc options in the Makfile regardless of what
-> you put in W command line argument.
+David Miller wrote:
+> Jesse, in all of these patches, I want to see the warning you are
+> fixing in the commit message.
 > 
-> Example:
-> 
-> KBUILD_CFLAGS += -Wextra -Wunused -Wno-unused-parameter
-> KBUILD_CFLAGS += -Wmissing-declarations
-> KBUILD_CFLAGS += -Wmissing-format-attribute
-> KBUILD_CFLAGS += -Wmissing-prototypes
-> KBUILD_CFLAGS += -Wold-style-definition
-> KBUILD_CFLAGS += -Wmissing-include-dirs
+> Especially for the sh_eth.c one because I have no idea what the
+> compiler is actually warning about just by reading your commit
+> message and patch on it's own.
 
-How about something like this, so we get whatever W=1 means.
+Ok, I'll respin with those added for the compiler warning fixes in
+particular, and some simplified descriptions of the classes of kdoc
+warnings.
 
-    Andrew
-
-diff --git a/drivers/net/Makefile b/drivers/net/Makefile
-index 72e18d505d1a..d4e125831d1c 100644
---- a/drivers/net/Makefile
-+++ b/drivers/net/Makefile
-@@ -3,6 +3,9 @@
- # Makefile for the Linux network device drivers.
- #
- 
-+# Enable W=1 by default
-+subdir-ccflags-y := $(KBUILD_CFLAGS_WARN1)
-+
- #
- # Networking Core Drivers
- #
-diff --git a/scripts/Makefile.extrawarn b/scripts/Makefile.extrawarn
-index 95e4cdb94fe9..bf0de3502849 100644
---- a/scripts/Makefile.extrawarn
-+++ b/scripts/Makefile.extrawarn
-@@ -20,23 +20,26 @@ export KBUILD_EXTRA_WARN
- #
- # W=1 - warnings which may be relevant and do not occur too often
- #
--ifneq ($(findstring 1, $(KBUILD_EXTRA_WARN)),)
--
--KBUILD_CFLAGS += -Wextra -Wunused -Wno-unused-parameter
--KBUILD_CFLAGS += -Wmissing-declarations
--KBUILD_CFLAGS += -Wmissing-format-attribute
--KBUILD_CFLAGS += -Wmissing-prototypes
--KBUILD_CFLAGS += -Wold-style-definition
--KBUILD_CFLAGS += -Wmissing-include-dirs
--KBUILD_CFLAGS += $(call cc-option, -Wunused-but-set-variable)
--KBUILD_CFLAGS += $(call cc-option, -Wunused-const-variable)
--KBUILD_CFLAGS += $(call cc-option, -Wpacked-not-aligned)
--KBUILD_CFLAGS += $(call cc-option, -Wstringop-truncation)
-+KBUILD_CFLAGS_WARN1 += -Wextra -Wunused -Wno-unused-parameter
-+KBUILD_CFLAGS_WARN1 += -Wmissing-declarations
-+KBUILD_CFLAGS_WARN1 += -Wmissing-format-attribute
-+KBUILD_CFLAGS_WARN1 += -Wmissing-prototypes
-+KBUILD_CFLAGS_WARN1 += -Wold-style-definition
-+KBUILD_CFLAGS_WARN1 += -Wmissing-include-dirs
-+KBUILD_CFLAGS_WARN1 += $(call cc-option, -Wunused-but-set-variable)
-+KBUILD_CFLAGS_WARN1 += $(call cc-option, -Wunused-const-variable)
-+KBUILD_CFLAGS_WARN1 += $(call cc-option, -Wpacked-not-aligned)
-+KBUILD_CFLAGS_WARN1 += $(call cc-option, -Wstringop-truncation)
- # The following turn off the warnings enabled by -Wextra
--KBUILD_CFLAGS += -Wno-missing-field-initializers
--KBUILD_CFLAGS += -Wno-sign-compare
--KBUILD_CFLAGS += -Wno-type-limits
-+KBUILD_CFLAGS_WARN1 += -Wno-missing-field-initializers
-+KBUILD_CFLAGS_WARN1 += -Wno-sign-compare
-+KBUILD_CFLAGS_WARN1 += -Wno-type-limits
-+
-+export KBUILD_CFLAGS_WARN1
-+
-+ifneq ($(findstring 1, $(KBUILD_EXTRA_WARN)),)
- 
-+KBUILD_CFLAGS += $(KBUILD_CFLAGS_WARN1)
- KBUILD_CPPFLAGS += -DKBUILD_EXTRA_WARN1
- 
- else
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
