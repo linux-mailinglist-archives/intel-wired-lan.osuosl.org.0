@@ -1,54 +1,50 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C7E1526A6AD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Sep 2020 16:02:07 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3B64E85802;
-	Tue, 15 Sep 2020 14:02:06 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RgmS+szw1oGk; Tue, 15 Sep 2020 14:02:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 97BC3856C8;
-	Tue, 15 Sep 2020 14:02:02 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 50CEB1BF28B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 09:19:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F9FF26A6B7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Sep 2020 16:03:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3FF8320778
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 09:19:44 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 6AF862153D;
+	Tue, 15 Sep 2020 14:03:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xejanfXGWHY6; Tue, 15 Sep 2020 14:03:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id DB115204B0;
+	Tue, 15 Sep 2020 14:03:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E4081BF32C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 14:03:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hemlock.osuosl.org (Postfix) with ESMTP id 3D33786F12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 14:03:37 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xt+KMq74jkvW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Sep 2020 09:19:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from relay3-d.mail.gandi.net (relay3-d.mail.gandi.net
- [217.70.183.195])
- by silver.osuosl.org (Postfix) with ESMTPS id 4452E20513
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 09:19:41 +0000 (UTC)
-X-Originating-IP: 91.224.148.103
-Received: from xps13 (unknown [91.224.148.103])
- (Authenticated sender: miquel.raynal@bootlin.com)
- by relay3-d.mail.gandi.net (Postfix) with ESMTPSA id A7B9F60004;
- Tue, 15 Sep 2020 09:19:26 +0000 (UTC)
-Date: Tue, 15 Sep 2020 11:19:25 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Joe Perches <joe@perches.com>
-Message-ID: <20200915111925.475dd3f1@xps13>
-In-Reply-To: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-References: <e6387578c75736d61b2fe70d9783d91329a97eb4.camel@perches.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ with ESMTP id YxX-bX6PdbN5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Sep 2020 14:03:36 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B69E586EC8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 14:03:35 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
+ (envelope-from <andrew@lunn.ch>)
+ id 1kIBYM-00Em7H-BY; Tue, 15 Sep 2020 16:03:26 +0200
+Date: Tue, 15 Sep 2020 16:03:26 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Saeed Mahameed <saeed@kernel.org>
+Message-ID: <20200915140326.GG3485708@lunn.ch>
+References: <20200915014455.1232507-1-jesse.brandeburg@intel.com>
+ <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Tue, 15 Sep 2020 14:01:56 +0000
-Subject: Re: [Intel-wired-lan] [trivial PATCH] treewide: Convert switch/case
- fallthrough; to break; 
+Content-Disposition: inline
+In-Reply-To: <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/10] make
+ drivers/net/ethernet W=1 clean
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,37 +57,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-fbdev@vger.kernel.org, oss-drivers@netronome.com,
- nouveau@lists.freedesktop.org, alsa-devel <alsa-devel@alsa-project.org>,
- dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org,
- linux-ide@vger.kernel.org, dm-devel@redhat.com, linux-mtd@lists.infradead.org,
- linux-i2c@vger.kernel.org, sparclinux@vger.kernel.org,
- linux-afs@lists.infradead.org, linux-rtc@vger.kernel.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, dccp@vger.kernel.org,
- linux-rdma@vger.kernel.org, linux-atm-general@lists.sourceforge.net,
- iommu@lists.linux-foundation.org, kvmarm@lists.cs.columbia.edu,
- coreteam@netfilter.org, intel-wired-lan@lists.osuosl.org,
- linux-serial@vger.kernel.org, linux-input@vger.kernel.org,
- linux-mmc@vger.kernel.org, Kees Cook <kees.cook@canonical.com>,
- linux-media@vger.kernel.org, linux-pm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-nvme@lists.infradead.org, storagedev@microchip.com,
- ceph-devel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Nick Desaulniers <ndesaulniers@google.com>, linux-nfs@vger.kernel.org,
- Jiri Kosina <trivial@kernel.org>, linux-parisc@vger.kernel.org,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
- linux-sctp@vger.kernel.org, netfilter-devel@vger.kernel.org,
- linux-crypto@vger.kernel.org, bpf@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SGkgSm9lLAoKRm9yIE1URDoKCj4gIGRyaXZlcnMvbXRkL25hbmQvcmF3L25hbmRzaW0uYyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAyICstCgpSZXZpZXdlZC1ieTogTWlxdWVsIFJheW5h
-bCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KCgpUaGFua3MsCk1pcXXDqGwKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1h
-aWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9z
-bC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Mon, Sep 14, 2020 at 09:24:28PM -0700, Saeed Mahameed wrote:
+> On Mon, 2020-09-14 at 18:44 -0700, Jesse Brandeburg wrote:
+> > After applying the patches below, the drivers/net/ethernet
+> > directory can be built as modules with W=1 with no warnings (so
+> > far on x64_64 arch only!).
+> > As Jakub pointed out, there is much more work to do to clean up
+> > C=1, but that will be another series of changes.
+> > 
+> > This series removes 1,283 warnings and hopefully allows the
+> > ethernet directory to move forward from here without more
+> > warnings being added. There is only one objtool warning now.
+> > 
+> > Some of these patches are already sent to Intel Wired Lan, but
+> > the rest of the series titled drivers/net/ethernet affects other
+> > drivers. The changes are all pretty straightforward.
+> > 
+> > As part of testing this series I realized that I have ~1,500 more
+> > kdoc warnings to fix due to being in other arch or not compiled
+> > with my x86_64 .config. Feel free to run
+> > $ 'git ls-files *.[ch] | grep drivers/net/ethernet | xargs
+> > scripts/kernel-doc -none'
+> > to see the remaining issues.
+> > 
+> 
+> Reviewed-by: Saeed Mahameed <saeedm@nvidia.com>
+> 
+> Hi Jesse, 
+> What was the criteria to select which drivers to enable in your .config
+> ?
+> 
+> I think we need some automation here and have a well known .config that
+> enables as many drivers as we can for static + compilation testing,
+> otherwise we are going to need to repeat this patch every 2-3 months.
+
+Hi Saeed
+
+I would prefer we just enable W=1 by default for everything under
+driver/net. Maybe there is something we can set in
+driver/net/Makefile?
+
+	    Andrew
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
