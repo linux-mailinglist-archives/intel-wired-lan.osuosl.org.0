@@ -1,48 +1,57 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F9FF26A6B7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Sep 2020 16:03:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D1B826A935
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Sep 2020 17:58:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6AF862153D;
-	Tue, 15 Sep 2020 14:03:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BB5F9868BC;
+	Tue, 15 Sep 2020 15:58:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xejanfXGWHY6; Tue, 15 Sep 2020 14:03:40 +0000 (UTC)
+	with ESMTP id YuW9hCVx8rgJ; Tue, 15 Sep 2020 15:58:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DB115204B0;
-	Tue, 15 Sep 2020 14:03:39 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 1222D868CA;
+	Tue, 15 Sep 2020 15:58:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4E4081BF32C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 14:03:37 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 400FE1BF86C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 15:58:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 3D33786F12
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 14:03:37 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 38A4986449
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 15:58:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YxX-bX6PdbN5 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Sep 2020 14:03:36 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B69E586EC8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 14:03:35 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1kIBYM-00Em7H-BY; Tue, 15 Sep 2020 16:03:26 +0200
-Date: Tue, 15 Sep 2020 16:03:26 +0200
-From: Andrew Lunn <andrew@lunn.ch>
+ with ESMTP id zTrR6Dp8gzrr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Sep 2020 15:58:03 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id DE53D8638E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 15:58:03 +0000 (UTC)
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
+ [163.114.132.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1BDE6206B7;
+ Tue, 15 Sep 2020 15:58:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600185483;
+ bh=+HMSv9EJEU9r90uLwbq9RCqS1JjJ75MwUi2oubnP9go=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=TX+VUGTdBqo7VmUC4KngVKqU3tbJFYRJKwUztePzhOVu6WSxmPLjVK1U1+ywWuh+D
+ LEOxzCaAGffF/j3SR67jSXFqJpP271WzCdWVu6peEmnyq3tTF+hAjzcC80yEXTrK5w
+ B6gmjCOdq9UdASu8mPw4xPF1drrDOnMQIXB9d+Io=
+Date: Tue, 15 Sep 2020 08:58:01 -0700
+From: Jakub Kicinski <kuba@kernel.org>
 To: Saeed Mahameed <saeed@kernel.org>
-Message-ID: <20200915140326.GG3485708@lunn.ch>
+Message-ID: <20200915085801.475e32f2@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
 References: <20200915014455.1232507-1-jesse.brandeburg@intel.com>
  <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
 Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/10] make
  drivers/net/ethernet W=1 clean
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -63,47 +72,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Sep 14, 2020 at 09:24:28PM -0700, Saeed Mahameed wrote:
-> On Mon, 2020-09-14 at 18:44 -0700, Jesse Brandeburg wrote:
-> > After applying the patches below, the drivers/net/ethernet
-> > directory can be built as modules with W=1 with no warnings (so
-> > far on x64_64 arch only!).
-> > As Jakub pointed out, there is much more work to do to clean up
-> > C=1, but that will be another series of changes.
-> > 
-> > This series removes 1,283 warnings and hopefully allows the
-> > ethernet directory to move forward from here without more
-> > warnings being added. There is only one objtool warning now.
-> > 
-> > Some of these patches are already sent to Intel Wired Lan, but
-> > the rest of the series titled drivers/net/ethernet affects other
-> > drivers. The changes are all pretty straightforward.
-> > 
-> > As part of testing this series I realized that I have ~1,500 more
-> > kdoc warnings to fix due to being in other arch or not compiled
-> > with my x86_64 .config. Feel free to run
-> > $ 'git ls-files *.[ch] | grep drivers/net/ethernet | xargs
-> > scripts/kernel-doc -none'
-> > to see the remaining issues.
-> > 
-> 
-> Reviewed-by: Saeed Mahameed <saeedm@nvidia.com>
-> 
-> Hi Jesse, 
-> What was the criteria to select which drivers to enable in your .config
-> ?
-> 
-> I think we need some automation here and have a well known .config that
-> enables as many drivers as we can for static + compilation testing,
-> otherwise we are going to need to repeat this patch every 2-3 months.
+On Mon, 14 Sep 2020 21:24:28 -0700 Saeed Mahameed wrote:
+> I know Jakub and Dave do some compilation testing before merging but i
+> don't know how much driver coverage they have and if they use a
+> specific .config or they just manually create one on demand..
 
-Hi Saeed
+allmodconfig, it should be able to catch everything that builds on x86
+and for a given GCC version.
 
-I would prefer we just enable W=1 by default for everything under
-driver/net. Maybe there is something we can set in
-driver/net/Makefile?
-
-	    Andrew
+The other advantage of this series is that we won't have to apply a
+thousand single-warning fixes.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
