@@ -2,56 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E026B26B1E9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 00:37:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61E7726BB2E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 05:58:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 526A7228E3;
-	Tue, 15 Sep 2020 22:37:36 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id F1D8120109;
+	Wed, 16 Sep 2020 03:58:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R4z26UbkFzUH; Tue, 15 Sep 2020 22:37:35 +0000 (UTC)
+	with ESMTP id oFcqBJwBDsHe; Wed, 16 Sep 2020 03:58:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id CAB1D22D10;
-	Tue, 15 Sep 2020 22:37:33 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id D691823100;
+	Wed, 16 Sep 2020 03:58:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0A2911BF57C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 22:37:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C934E1BF958
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 03:58:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 037A6228E3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 22:37:32 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id AA3C720109
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 03:58:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YzudzBDGDoyJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Sep 2020 22:37:30 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
- by silver.osuosl.org (Postfix) with ESMTPS id E2296204D9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Sep 2020 22:37:30 +0000 (UTC)
-Received: from localhost (unknown [IPv6:2601:601:9f00:477::3d5])
- (using TLSv1 with cipher AES256-SHA (256/256 bits))
- (Client did not present a certificate)
- (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id 0236113757C27;
- Tue, 15 Sep 2020 15:20:41 -0700 (PDT)
-Date: Tue, 15 Sep 2020 15:37:28 -0700 (PDT)
-Message-Id: <20200915.153728.107358987807075865.davem@davemloft.net>
-To: saeed@kernel.org
-From: David Miller <davem@davemloft.net>
-In-Reply-To: <734f0c4595a18ab136263b6e5c97e7f48a93abe1.camel@kernel.org>
-References: <a28498acdf87f11e81d3282d63f18dbe1a3d5329.camel@kernel.org>
- <20200915140326.GG3485708@lunn.ch>
- <734f0c4595a18ab136263b6e5c97e7f48a93abe1.camel@kernel.org>
-X-Mailer: Mew version 6.8 on Emacs 27.1
-Mime-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
- (shards.monkeyblade.net [2620:137:e000::1:9]);
- Tue, 15 Sep 2020 15:20:42 -0700 (PDT)
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 00/10] make
- drivers/net/ethernet W=1 clean
+ with ESMTP id ReN2ceRrP-7b for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Sep 2020 03:58:12 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by silver.osuosl.org (Postfix) with ESMTPS id 3F03E20011
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 03:58:12 +0000 (UTC)
+IronPort-SDR: WGSrqQ04dUsf7Ik+0OrWxJ4vVsZD2k3vYmHuV7O0E8skZg/c7+XhVexEA/h83TIrYK7X+bjY1F
+ mwtmKqfmV3yg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9745"; a="139407794"
+X-IronPort-AV: E=Sophos;i="5.76,431,1592895600"; d="scan'208";a="139407794"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Sep 2020 20:58:11 -0700
+IronPort-SDR: Al5rJnRi5oC1z3/EZ3wzykyrv4VWgu66ZDa3wF7Aks1VU3KIWVmFulPlalCXc6+a2lye0lyCee
+ G4ZSr+tNEyhQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,431,1592895600"; d="scan'208";a="331506494"
+Received: from lkp-server01.sh.intel.com (HELO 96654786cb26) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 15 Sep 2020 20:58:10 -0700
+Received: from kbuild by 96654786cb26 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kIOaA-0000Pc-7P; Wed, 16 Sep 2020 03:58:10 +0000
+Date: Wed, 16 Sep 2020 11:57:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f618d2d.nuaDjuIA9W0MNrnk%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
+MIME-Version: 1.0
+Subject: [Intel-wired-lan] [jkirsher-net-queue:dev-queue] BUILD SUCCESS
+ 328aa5de705abf505970ac01741f03b821cdf031
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,26 +69,153 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Saeed Mahameed <saeed@kernel.org>
-Date: Tue, 15 Sep 2020 13:03:03 -0700
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  dev-queue
+branch HEAD: 328aa5de705abf505970ac01741f03b821cdf031  i40e: Fix flow for IPv6 next header (extension header)
 
-> On Tue, 2020-09-15 at 16:03 +0200, Andrew Lunn wrote:
->> I would prefer we just enable W=1 by default for everything under
->> driver/net. Maybe there is something we can set in
->> driver/net/Makefile?
->> 
-> 
-> 
-> Yes we can have our own gcc options in the Makfile regardless of what
-> you put in W command line argument.
+elapsed time: 1925m
 
-I definitely would like to see W=1 in drivers/net/Makefile eventually.
+configs tested: 124
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+m68k                         amcore_defconfig
+mips                    maltaup_xpa_defconfig
+mips                       rbtx49xx_defconfig
+powerpc                   currituck_defconfig
+riscv                          rv32_defconfig
+arm                         shannon_defconfig
+powerpc                      pcm030_defconfig
+parisc                generic-64bit_defconfig
+sh                        dreamcast_defconfig
+arm                            mps2_defconfig
+powerpc                        fsp2_defconfig
+arc                             nps_defconfig
+mips                        nlm_xlp_defconfig
+powerpc                 mpc85xx_cds_defconfig
+arm                    vt8500_v6_v7_defconfig
+powerpc                      mgcoge_defconfig
+ia64                                defconfig
+mips                        bcm47xx_defconfig
+arc                        nsimosci_defconfig
+arm                       imx_v4_v5_defconfig
+arc                     haps_hs_smp_defconfig
+x86_64                           allyesconfig
+arm                             rpc_defconfig
+powerpc                     sbc8548_defconfig
+arm                          imote2_defconfig
+m68k                          hp300_defconfig
+powerpc                      obs600_defconfig
+riscv                            alldefconfig
+arm                        multi_v5_defconfig
+arm                           omap1_defconfig
+powerpc                         wii_defconfig
+arm                       multi_v4t_defconfig
+sh                          r7780mp_defconfig
+arm                       aspeed_g5_defconfig
+sparc                       sparc64_defconfig
+powerpc                     tqm8560_defconfig
+riscv                            allmodconfig
+arm                        spear3xx_defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                                defconfig
+m68k                             allmodconfig
+m68k                             allyesconfig
+nios2                               defconfig
+nds32                             allnoconfig
+c6x                              allyesconfig
+arc                              allyesconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nios2                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a004-20200914
+x86_64               randconfig-a006-20200914
+x86_64               randconfig-a003-20200914
+x86_64               randconfig-a002-20200914
+x86_64               randconfig-a001-20200914
+x86_64               randconfig-a005-20200914
+i386                 randconfig-a004-20200913
+i386                 randconfig-a006-20200913
+i386                 randconfig-a003-20200913
+i386                 randconfig-a001-20200913
+i386                 randconfig-a002-20200913
+i386                 randconfig-a005-20200913
+i386                 randconfig-a004-20200914
+i386                 randconfig-a006-20200914
+i386                 randconfig-a001-20200914
+i386                 randconfig-a003-20200914
+i386                 randconfig-a002-20200914
+i386                 randconfig-a005-20200914
+x86_64               randconfig-a014-20200913
+x86_64               randconfig-a011-20200913
+x86_64               randconfig-a012-20200913
+x86_64               randconfig-a016-20200913
+x86_64               randconfig-a015-20200913
+x86_64               randconfig-a013-20200913
+i386                 randconfig-a015-20200914
+i386                 randconfig-a014-20200914
+i386                 randconfig-a011-20200914
+i386                 randconfig-a013-20200914
+i386                 randconfig-a016-20200914
+i386                 randconfig-a012-20200914
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+x86_64                                   rhel
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a006-20200913
+x86_64               randconfig-a004-20200913
+x86_64               randconfig-a003-20200913
+x86_64               randconfig-a002-20200913
+x86_64               randconfig-a005-20200913
+x86_64               randconfig-a001-20200913
+x86_64               randconfig-a014-20200914
+x86_64               randconfig-a011-20200914
+x86_64               randconfig-a016-20200914
+x86_64               randconfig-a012-20200914
+x86_64               randconfig-a015-20200914
+x86_64               randconfig-a013-20200914
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
