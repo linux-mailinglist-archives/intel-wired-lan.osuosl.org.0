@@ -1,58 +1,53 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B98726BE98
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 09:57:55 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A18D026C1E6
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 12:52:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 210E1228EA;
-	Wed, 16 Sep 2020 07:57:54 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 2DC04868C8;
+	Wed, 16 Sep 2020 10:52:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WN4VwewijFgp; Wed, 16 Sep 2020 07:57:53 +0000 (UTC)
+	with ESMTP id xd4TCSq4-6hr; Wed, 16 Sep 2020 10:52:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id DA892271D6;
-	Wed, 16 Sep 2020 07:57:36 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E75C3868D3;
+	Wed, 16 Sep 2020 10:52:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3342B1BF37C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 07:57:35 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3B13D1BF393
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 10:52:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 22247232FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 07:57:35 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 3401B868CB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 10:52:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uYzpBie8YEI9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Sep 2020 07:57:32 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id D2090228EA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 07:57:31 +0000 (UTC)
-IronPort-SDR: F/jEfKcCcrtlmQEyNV7Mf+1/WGwF3gWFrkRcU1jbzgAKkKUTHB9vmNyQXSzGQgmuQzXLmia+7e
- VT5LIePEjrEQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9745"; a="177493434"
-X-IronPort-AV: E=Sophos;i="5.76,432,1592895600"; d="scan'208";a="177493434"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Sep 2020 00:57:31 -0700
-IronPort-SDR: m0eycB1jtZJtJn6K1uv5mRZeDnyKJ7PYeFUfrLo+NfGCkrXcQiWa/lZ39NEXmiUGe18hAwlWvh
- 3S4CZDYqidLw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,432,1592895600"; d="scan'208";a="507913941"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by fmsmga005.fm.intel.com with ESMTP; 16 Sep 2020 00:57:29 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 16 Sep 2020 07:57:16 +0000
-Message-Id: <20200916075716.13665-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v1] i40e: Add flow director support
- for IPv6
+ with ESMTP id WmkhA3mRcqxg for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Sep 2020 10:52:46 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CF702868C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 10:52:45 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id ECC2520225BDB;
+ Wed, 16 Sep 2020 12:52:42 +0200 (CEST)
+To: Mateusz Palczewski <mateusz.palczewski@intel.com>
+References: <20200916075716.13665-1-mateusz.palczewski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <e4052fcd-1dda-9c7e-4069-bb48d9949ee9@molgen.mpg.de>
+Date: Wed, 16 Sep 2020 12:52:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
+MIME-Version: 1.0
+In-Reply-To: <20200916075716.13665-1-mateusz.palczewski@intel.com>
+Content-Language: en-US
+Subject: Re: [Intel-wired-lan] [PATCH net v1] i40e: Add flow director
+ support for IPv6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,1104 +60,697 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
-
-Flow director for IPv6 is not supported.
-Implementation of support for IPv6 flow director. Added handlers for
-addition of TCP6, UDP6, SCTP6, IPv6. Refactored legacy code to make
-it more generic. Added packet templates for TCP6, UDP6, SCTP6, IPv6.
-Added handling of IPv6 source and destination address for flow
-director. Improved argument passing for source and destination port
-in TCP6, UDP6 and SCTP6. Added handling of ethtool -n for IPv6, TCP6,
-UDP6, SCTP6. Used correct bit flag regarding FLEXOFF field of flow
-director data descriptor.
-Without this patch, there would be no support for flow director on
-IPv6, TCP6, UDP6, SCTP6.
-
-v2: Fixed sparse warnings
- >> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:4117:50: sparse: sparse: incorrect type in initializer (different base types) @@     expected restricted __be32 @@     got unsigned int @@
- >> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:4117:50: sparse:     expected restricted __be32
- >> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:4117:50: sparse:     got unsigned int
-Reported-by: kernel test robot <lkp@intel.com>
-Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e.h        |   9 +-
- .../net/ethernet/intel/i40e/i40e_ethtool.c    | 211 +++++++++-
- drivers/net/ethernet/intel/i40e/i40e_main.c   |  79 +++-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 371 +++++++++++++-----
- 4 files changed, 551 insertions(+), 119 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index ada0e93..54054fc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -209,10 +209,12 @@ struct i40e_fdir_filter {
- 	struct hlist_node fdir_node;
- 	/* filter ipnut set */
- 	u8 flow_type;
--	u8 ip4_proto;
-+	u8 ipl4_proto;
- 	/* TX packet view of src and dst */
- 	__be32 dst_ip;
- 	__be32 src_ip;
-+	__be32 dst_ip6[4];
-+	__be32 src_ip6[4];
- 	__be16 src_port;
- 	__be16 dst_port;
- 	__be32 sctp_v_tag;
-@@ -470,6 +472,11 @@ struct i40e_pf {
- 	u16 fd_sctp4_filter_cnt;
- 	u16 fd_ip4_filter_cnt;
- 
-+	u16 fd_tcp6_filter_cnt;
-+	u16 fd_udp6_filter_cnt;
-+	u16 fd_sctp6_filter_cnt;
-+	u16 fd_ip6_filter_cnt;
-+
- 	/* Flexible filter table values that need to be programmed into
- 	 * hardware, which expects L3 and L4 to be programmed separately. We
- 	 * need to ensure that the values are in ascended order and don't have
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index a31ed23..661ba51 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -3229,13 +3229,30 @@ static int i40e_get_ethtool_fdir_entry(struct i40e_pf *pf,
- 		fsp->m_u.usr_ip4_spec.proto = 0;
- 	}
- 
--	/* Reverse the src and dest notion, since the HW views them from
--	 * Tx perspective where as the user expects it from Rx filter view.
--	 */
--	fsp->h_u.tcp_ip4_spec.psrc = rule->dst_port;
--	fsp->h_u.tcp_ip4_spec.pdst = rule->src_port;
--	fsp->h_u.tcp_ip4_spec.ip4src = rule->dst_ip;
--	fsp->h_u.tcp_ip4_spec.ip4dst = rule->src_ip;
-+	if (fsp->flow_type == IPV6_USER_FLOW ||
-+	    fsp->flow_type == UDP_V6_FLOW ||
-+	    fsp->flow_type == TCP_V6_FLOW ||
-+	    fsp->flow_type == SCTP_V6_FLOW) {
-+		/* Reverse the src and dest notion, since the HW views them
-+		 * from Tx perspective where as the user expects it from
-+		 * Rx filter view.
-+		 */
-+		fsp->h_u.tcp_ip6_spec.psrc = rule->dst_port;
-+		fsp->h_u.tcp_ip6_spec.pdst = rule->src_port;
-+		memcpy(fsp->h_u.tcp_ip6_spec.ip6dst, rule->src_ip6,
-+		       sizeof(__be32) * 4);
-+		memcpy(fsp->h_u.tcp_ip6_spec.ip6src, rule->dst_ip6,
-+		       sizeof(__be32) * 4);
-+	} else {
-+		/* Reverse the src and dest notion, since the HW views them
-+		 * from Tx perspective where as the user expects it from
-+		 * Rx filter view.
-+		 */
-+		fsp->h_u.tcp_ip4_spec.psrc = rule->dst_port;
-+		fsp->h_u.tcp_ip4_spec.pdst = rule->src_port;
-+		fsp->h_u.tcp_ip4_spec.ip4src = rule->dst_ip;
-+		fsp->h_u.tcp_ip4_spec.ip4dst = rule->src_ip;
-+	}
- 
- 	switch (rule->flow_type) {
- 	case SCTP_V4_FLOW:
-@@ -3247,9 +3264,21 @@ static int i40e_get_ethtool_fdir_entry(struct i40e_pf *pf,
- 	case UDP_V4_FLOW:
- 		index = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
- 		break;
-+	case SCTP_V6_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_SCTP;
-+		break;
-+	case TCP_V6_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
-+		break;
-+	case UDP_V6_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
-+		break;
- 	case IP_USER_FLOW:
- 		index = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
- 		break;
-+	case IPV6_USER_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_OTHER;
-+		break;
- 	default:
- 		/* If we have stored a filter with a flow type not listed here
- 		 * it is almost certainly a driver bug. WARN(), and then
-@@ -3265,6 +3294,20 @@ static int i40e_get_ethtool_fdir_entry(struct i40e_pf *pf,
- 	input_set = i40e_read_fd_input_set(pf, index);
- 
- no_input_set:
-+	if (input_set & I40E_L3_V6_SRC_MASK) {
-+		fsp->m_u.tcp_ip6_spec.ip6src[0] = htonl(0xFFFFFFFF);
-+		fsp->m_u.tcp_ip6_spec.ip6src[1] = htonl(0xFFFFFFFF);
-+		fsp->m_u.tcp_ip6_spec.ip6src[2] = htonl(0xFFFFFFFF);
-+		fsp->m_u.tcp_ip6_spec.ip6src[3] = htonl(0xFFFFFFFF);
-+	}
-+
-+	if (input_set & I40E_L3_V6_DST_MASK) {
-+		fsp->m_u.tcp_ip6_spec.ip6dst[0] = htonl(0xFFFFFFFF);
-+		fsp->m_u.tcp_ip6_spec.ip6dst[1] = htonl(0xFFFFFFFF);
-+		fsp->m_u.tcp_ip6_spec.ip6dst[2] = htonl(0xFFFFFFFF);
-+		fsp->m_u.tcp_ip6_spec.ip6dst[3] = htonl(0xFFFFFFFF);
-+	}
-+
- 	if (input_set & I40E_L3_SRC_MASK)
- 		fsp->m_u.tcp_ip4_spec.ip4src = htonl(0xFFFFFFFF);
- 
-@@ -3928,6 +3971,14 @@ static const char *i40e_flow_str(struct ethtool_rx_flow_spec *fsp)
- 		return "sctp4";
- 	case IP_USER_FLOW:
- 		return "ip4";
-+	case TCP_V6_FLOW:
-+		return "tcp6";
-+	case UDP_V6_FLOW:
-+		return "udp6";
-+	case SCTP_V6_FLOW:
-+		return "sctp6";
-+	case IPV6_USER_FLOW:
-+		return "ip6";
- 	default:
- 		return "unknown";
- 	}
-@@ -4063,9 +4114,14 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
- 				     struct ethtool_rx_flow_spec *fsp,
- 				     struct i40e_rx_flow_userdef *userdef)
- {
--	struct i40e_pf *pf = vsi->back;
-+	static const __be32 ipv6_full_mask[4] = {cpu_to_be32(0xffffffff),
-+		cpu_to_be32(0xffffffff), cpu_to_be32(0xffffffff),
-+		cpu_to_be32(0xffffffff)};
-+	struct ethtool_tcpip6_spec *tcp_ip6_spec;
-+	struct ethtool_usrip6_spec *usr_ip6_spec;
- 	struct ethtool_tcpip4_spec *tcp_ip4_spec;
- 	struct ethtool_usrip4_spec *usr_ip4_spec;
-+	struct i40e_pf *pf = vsi->back;
- 	u64 current_mask, new_mask;
- 	bool new_flex_offset = false;
- 	bool flex_l3 = false;
-@@ -4087,11 +4143,28 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
- 		index = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
- 		fdir_filter_count = &pf->fd_udp4_filter_cnt;
- 		break;
-+	case SCTP_V6_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_SCTP;
-+		fdir_filter_count = &pf->fd_sctp6_filter_cnt;
-+		break;
-+	case TCP_V6_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
-+		fdir_filter_count = &pf->fd_tcp6_filter_cnt;
-+		break;
-+	case UDP_V6_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
-+		fdir_filter_count = &pf->fd_udp6_filter_cnt;
-+		break;
- 	case IP_USER_FLOW:
- 		index = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
- 		fdir_filter_count = &pf->fd_ip4_filter_cnt;
- 		flex_l3 = true;
- 		break;
-+	case IPV6_USER_FLOW:
-+		index = I40E_FILTER_PCTYPE_NONF_IPV6_OTHER;
-+		fdir_filter_count = &pf->fd_ip6_filter_cnt;
-+		flex_l3 = true;
-+		break;
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-@@ -4154,6 +4227,53 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
- 			return -EOPNOTSUPP;
- 
- 		break;
-+	case SCTP_V6_FLOW:
-+		new_mask &= ~I40E_VERIFY_TAG_MASK;
-+		fallthrough;
-+	case TCP_V6_FLOW:
-+	case UDP_V6_FLOW:
-+		tcp_ip6_spec = &fsp->m_u.tcp_ip6_spec;
-+
-+		/* Check if user provided IPv6 source address. */
-+		if (ipv6_addr_equal((struct in6_addr *)&tcp_ip6_spec->ip6src,
-+				    (struct in6_addr *)&ipv6_full_mask))
-+			new_mask |= I40E_L3_V6_SRC_MASK;
-+		else if (ipv6_addr_any((struct in6_addr *)
-+				       &tcp_ip6_spec->ip6src))
-+			new_mask &= ~I40E_L3_V6_SRC_MASK;
-+		else
-+			return -EOPNOTSUPP;
-+
-+		/* Check if user provided destination address. */
-+		if (ipv6_addr_equal((struct in6_addr *)&tcp_ip6_spec->ip6dst,
-+				    (struct in6_addr *)&ipv6_full_mask))
-+			new_mask |= I40E_L3_V6_DST_MASK;
-+		else if (ipv6_addr_any((struct in6_addr *)
-+				       &tcp_ip6_spec->ip6src))
-+			new_mask &= ~I40E_L3_V6_DST_MASK;
-+		else
-+			return -EOPNOTSUPP;
-+
-+		/* L4 source port */
-+		if (tcp_ip6_spec->psrc == htons(0xFFFF))
-+			new_mask |= I40E_L4_SRC_MASK;
-+		else if (!tcp_ip6_spec->psrc)
-+			new_mask &= ~I40E_L4_SRC_MASK;
-+		else
-+			return -EOPNOTSUPP;
-+
-+		/* L4 destination port */
-+		if (tcp_ip6_spec->pdst == htons(0xFFFF))
-+			new_mask |= I40E_L4_DST_MASK;
-+		else if (!tcp_ip6_spec->pdst)
-+			new_mask &= ~I40E_L4_DST_MASK;
-+		else
-+			return -EOPNOTSUPP;
-+
-+		/* Filtering on Traffic Classes is not supported. */
-+		if (tcp_ip6_spec->tclass)
-+			return -EOPNOTSUPP;
-+		break;
- 	case IP_USER_FLOW:
- 		usr_ip4_spec = &fsp->m_u.usr_ip4_spec;
- 
-@@ -4193,6 +4313,45 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
- 		if (usr_ip4_spec->proto)
- 			return -EINVAL;
- 
-+		break;
-+	case IPV6_USER_FLOW:
-+		usr_ip6_spec = &fsp->m_u.usr_ip6_spec;
-+
-+		/* Check if user provided IPv6 source address. */
-+		if (ipv6_addr_equal((struct in6_addr *)&usr_ip6_spec->ip6src,
-+				    (struct in6_addr *)&ipv6_full_mask))
-+			new_mask |= I40E_L3_V6_SRC_MASK;
-+		else if (ipv6_addr_any((struct in6_addr *)
-+				       &usr_ip6_spec->ip6src))
-+			new_mask &= ~I40E_L3_V6_SRC_MASK;
-+		else
-+			return -EOPNOTSUPP;
-+
-+		/* Check if user provided destination address. */
-+		if (ipv6_addr_equal((struct in6_addr *)&usr_ip6_spec->ip6dst,
-+				    (struct in6_addr *)&ipv6_full_mask))
-+			new_mask |= I40E_L3_V6_DST_MASK;
-+		else if (ipv6_addr_any((struct in6_addr *)
-+				       &usr_ip6_spec->ip6src))
-+			new_mask &= ~I40E_L3_V6_DST_MASK;
-+		else
-+			return -EOPNOTSUPP;
-+
-+		if (usr_ip6_spec->l4_4_bytes == htonl(0xFFFFFFFF))
-+			new_mask |= I40E_L4_SRC_MASK | I40E_L4_DST_MASK;
-+		else if (!usr_ip6_spec->l4_4_bytes)
-+			new_mask &= ~(I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
-+		else
-+			return -EOPNOTSUPP;
-+
-+		/* Filtering on Traffic class is not supported. */
-+		if (usr_ip6_spec->tclass)
-+			return -EOPNOTSUPP;
-+
-+		/* Filtering on L4 protocol is not supported */
-+		if (usr_ip6_spec->l4_proto)
-+			return -EINVAL;
-+
- 		break;
- 	default:
- 		return -EOPNOTSUPP;
-@@ -4377,7 +4536,7 @@ static bool i40e_match_fdir_filter(struct i40e_fdir_filter *a,
- 	    a->dst_port != b->dst_port ||
- 	    a->src_port != b->src_port ||
- 	    a->flow_type != b->flow_type ||
--	    a->ip4_proto != b->ip4_proto)
-+	    a->ipl4_proto != b->ipl4_proto)
- 		return false;
- 
- 	return true;
-@@ -4535,15 +4694,33 @@ static int i40e_add_fdir_ethtool(struct i40e_vsi *vsi,
- 	input->dst_ip = fsp->h_u.tcp_ip4_spec.ip4src;
- 	input->src_ip = fsp->h_u.tcp_ip4_spec.ip4dst;
- 	input->flow_type = fsp->flow_type & ~FLOW_EXT;
--	input->ip4_proto = fsp->h_u.usr_ip4_spec.proto;
- 
--	/* Reverse the src and dest notion, since the HW expects them to be from
--	 * Tx perspective where as the input from user is from Rx filter view.
--	 */
--	input->dst_port = fsp->h_u.tcp_ip4_spec.psrc;
--	input->src_port = fsp->h_u.tcp_ip4_spec.pdst;
--	input->dst_ip = fsp->h_u.tcp_ip4_spec.ip4src;
--	input->src_ip = fsp->h_u.tcp_ip4_spec.ip4dst;
-+	if (input->flow_type == IPV6_USER_FLOW ||
-+	    input->flow_type == UDP_V6_FLOW ||
-+	    input->flow_type == TCP_V6_FLOW ||
-+	    input->flow_type == SCTP_V6_FLOW) {
-+		/* Reverse the src and dest notion, since the HW expects them
-+		 * to be from Tx perspective where as the input from user is
-+		 * from Rx filter view.
-+		 */
-+		input->ipl4_proto = fsp->h_u.usr_ip6_spec.l4_proto;
-+		input->dst_port = fsp->h_u.tcp_ip6_spec.psrc;
-+		input->src_port = fsp->h_u.tcp_ip6_spec.pdst;
-+		memcpy(input->dst_ip6, fsp->h_u.ah_ip6_spec.ip6src,
-+		       sizeof(__be32) * 4);
-+		memcpy(input->src_ip6, fsp->h_u.ah_ip6_spec.ip6dst,
-+		       sizeof(__be32) * 4);
-+	} else {
-+		/* Reverse the src and dest notion, since the HW expects them
-+		 * to be from Tx perspective where as the input from user is
-+		 * from Rx filter view.
-+		 */
-+		input->ipl4_proto = fsp->h_u.usr_ip4_spec.proto;
-+		input->dst_port = fsp->h_u.tcp_ip4_spec.psrc;
-+		input->src_port = fsp->h_u.tcp_ip4_spec.pdst;
-+		input->dst_ip = fsp->h_u.tcp_ip4_spec.ip4src;
-+		input->src_ip = fsp->h_u.tcp_ip4_spec.ip4dst;
-+	}
- 
- 	if (userdef.flex_filter) {
- 		input->flex_filter = true;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index ca8624f..74d7723 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -3489,6 +3489,24 @@ static void i40e_set_vsi_rx_mode(struct i40e_vsi *vsi)
- 		i40e_set_rx_mode(vsi->netdev);
- }
- 
-+/**
-+ * i40e_reset_fdir_filter_cnt - Reset flow director filter counters
-+ * @pf: Pointer to the targeted PF
-+ *
-+ * Set all flow director counters to 0.
-+ */
-+static void i40e_reset_fdir_filter_cnt(struct i40e_pf *pf)
-+{
-+	pf->fd_tcp4_filter_cnt = 0;
-+	pf->fd_udp4_filter_cnt = 0;
-+	pf->fd_sctp4_filter_cnt = 0;
-+	pf->fd_ip4_filter_cnt = 0;
-+	pf->fd_tcp6_filter_cnt = 0;
-+	pf->fd_udp6_filter_cnt = 0;
-+	pf->fd_sctp6_filter_cnt = 0;
-+	pf->fd_ip6_filter_cnt = 0;
-+}
-+
- /**
-  * i40e_fdir_filter_restore - Restore the Sideband Flow Director filters
-  * @vsi: Pointer to the targeted VSI
-@@ -3506,10 +3524,7 @@ static void i40e_fdir_filter_restore(struct i40e_vsi *vsi)
- 		return;
- 
- 	/* Reset FDir counters as we're replaying all existing filters */
--	pf->fd_tcp4_filter_cnt = 0;
--	pf->fd_udp4_filter_cnt = 0;
--	pf->fd_sctp4_filter_cnt = 0;
--	pf->fd_ip4_filter_cnt = 0;
-+	i40e_reset_fdir_filter_cnt(pf);
- 
- 	hlist_for_each_entry_safe(filter, node,
- 				  &pf->fdir_filter_list, fdir_node) {
-@@ -8391,32 +8406,51 @@ static void i40e_fdir_filter_exit(struct i40e_pf *pf)
- 	INIT_LIST_HEAD(&pf->l4_flex_pit_list);
- 
- 	pf->fdir_pf_active_filters = 0;
--	pf->fd_tcp4_filter_cnt = 0;
--	pf->fd_udp4_filter_cnt = 0;
--	pf->fd_sctp4_filter_cnt = 0;
--	pf->fd_ip4_filter_cnt = 0;
-+	i40e_reset_fdir_filter_cnt(pf);
- 
- 	/* Reprogram the default input set for TCP/IPv4 */
- 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_TCP,
- 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK |
- 				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
- 
-+	/* Reprogram the default input set for TCP/IPv6 */
-+	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_TCP,
-+				I40E_L3_V6_SRC_MASK | I40E_L3_V6_DST_MASK |
-+				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
-+
- 	/* Reprogram the default input set for UDP/IPv4 */
- 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_UDP,
- 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK |
- 				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
- 
-+	/* Reprogram the default input set for UDP/IPv6 */
-+	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_UDP,
-+				I40E_L3_V6_SRC_MASK | I40E_L3_V6_DST_MASK |
-+				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
-+
- 	/* Reprogram the default input set for SCTP/IPv4 */
- 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_SCTP,
- 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK |
- 				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
- 
-+	/* Reprogram the default input set for SCTP/IPv6 */
-+	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_SCTP,
-+				I40E_L3_V6_SRC_MASK | I40E_L3_V6_DST_MASK |
-+				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
-+
- 	/* Reprogram the default input set for Other/IPv4 */
- 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_OTHER,
- 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
- 
- 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_FRAG_IPV4,
- 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
-+
-+	/* Reprogram the default input set for Other/IPv6 */
-+	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_OTHER,
-+				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
-+
-+	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_FRAG_IPV6,
-+				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
- }
- 
- /**
-@@ -8875,8 +8909,17 @@ static void i40e_delete_invalid_filter(struct i40e_pf *pf,
- 	case SCTP_V4_FLOW:
- 		pf->fd_sctp4_filter_cnt--;
- 		break;
-+	case TCP_V6_FLOW:
-+		pf->fd_tcp6_filter_cnt--;
-+		break;
-+	case UDP_V6_FLOW:
-+		pf->fd_udp6_filter_cnt--;
-+		break;
-+	case SCTP_V6_FLOW:
-+		pf->fd_udp6_filter_cnt--;
-+		break;
- 	case IP_USER_FLOW:
--		switch (filter->ip4_proto) {
-+		switch (filter->ipl4_proto) {
- 		case IPPROTO_TCP:
- 			pf->fd_tcp4_filter_cnt--;
- 			break;
-@@ -8891,6 +8934,22 @@ static void i40e_delete_invalid_filter(struct i40e_pf *pf,
- 			break;
- 		}
- 		break;
-+	case IPV6_USER_FLOW:
-+		switch (filter->ipl4_proto) {
-+		case IPPROTO_TCP:
-+			pf->fd_tcp6_filter_cnt--;
-+			break;
-+		case IPPROTO_UDP:
-+			pf->fd_udp6_filter_cnt--;
-+			break;
-+		case IPPROTO_SCTP:
-+			pf->fd_sctp6_filter_cnt--;
-+			break;
-+		case IPPROTO_IP:
-+			pf->fd_ip6_filter_cnt--;
-+			break;
-+		}
-+		break;
- 	}
- 
- 	/* Remove the filter from the list and free memory */
-@@ -8924,7 +8983,7 @@ void i40e_fdir_check_and_reenable(struct i40e_pf *pf)
- 	 * rules active.
- 	 */
- 	if ((fcnt_prog < (fcnt_avail - I40E_FDIR_BUFFER_HEAD_ROOM_FOR_ATR)) &&
--	    (pf->fd_tcp4_filter_cnt == 0))
-+	    pf->fd_tcp4_filter_cnt == 0 && pf->fd_tcp6_filter_cnt == 0)
- 		i40e_reenable_fdir_atr(pf);
- 
- 	/* if hw had a problem adding a filter, delete it */
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 2fb6ddd..c1ba4f0 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -42,9 +42,6 @@ static void i40e_fdir(struct i40e_ring *tx_ring,
- 	flex_ptype |= I40E_TXD_FLTR_QW0_PCTYPE_MASK &
- 		      (fdata->pctype << I40E_TXD_FLTR_QW0_PCTYPE_SHIFT);
- 
--	flex_ptype |= I40E_TXD_FLTR_QW0_PCTYPE_MASK &
--		      (fdata->flex_offset << I40E_TXD_FLTR_QW0_FLEXOFF_SHIFT);
--
- 	/* Use LAN VSI Id if not programmed by user */
- 	flex_ptype |= I40E_TXD_FLTR_QW0_DEST_VSI_MASK &
- 		      ((u32)(fdata->dest_vsi ? : pf->vsi[pf->lan_vsi]->id) <<
-@@ -160,52 +157,83 @@ static int i40e_program_fdir_filter(struct i40e_fdir_filter *fdir_data,
- 	return -1;
- }
- 
--#define IP_HEADER_OFFSET 14
--#define I40E_UDPIP_DUMMY_PACKET_LEN 42
-+#define IP_HEADER_OFFSET		14
-+#define I40E_UDPIP_DUMMY_PACKET_LEN	42
-+#define I40E_UDPIP6_DUMMY_PACKET_LEN	62
- /**
-- * i40e_add_del_fdir_udpv4 - Add/Remove UDPv4 filters
-+ * i40e_add_del_fdir_udp - Add/Remove UDP filters
-  * @vsi: pointer to the targeted VSI
-  * @fd_data: the flow director data required for the FDir descriptor
-  * @add: true adds a filter, false removes it
-+ * @ipv4: true is v4, false is v6
-  *
-  * Returns 0 if the filters were successfully added or removed
-  **/
--static int i40e_add_del_fdir_udpv4(struct i40e_vsi *vsi,
--				   struct i40e_fdir_filter *fd_data,
--				   bool add)
-+static int i40e_add_del_fdir_udp(struct i40e_vsi *vsi,
-+				 struct i40e_fdir_filter *fd_data,
-+				 bool add,
-+				 bool ipv4)
- {
- 	struct i40e_pf *pf = vsi->back;
-+	struct ipv6hdr *ipv6;
- 	struct udphdr *udp;
- 	struct iphdr *ip;
- 	u8 *raw_packet;
- 	int ret;
--	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
--		0x45, 0, 0, 0x1c, 0, 0, 0x40, 0, 0x40, 0x11, 0, 0, 0, 0, 0, 0,
--		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-+	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
-+		0, 0x45, 0, 0, 0x1c, 0, 0, 0x40, 0, 0x40, 0x11, 0, 0, 0, 0, 0,
-+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-+	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
-+		0xdd, 0x60, 0, 0, 0, 0, 0, 0x11, 0,
-+		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		/*udp header*/
-+		0, 0, 0, 0, 0, 0, 0, 0};
- 
- 	raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
- 	if (!raw_packet)
- 		return -ENOMEM;
--	memcpy(raw_packet, packet, I40E_UDPIP_DUMMY_PACKET_LEN);
-+	if (ipv4) {
-+		memcpy(raw_packet, packet_ipv4, I40E_UDPIP_DUMMY_PACKET_LEN);
- 
--	ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
--	udp = (struct udphdr *)(raw_packet + IP_HEADER_OFFSET
--	      + sizeof(struct iphdr));
-+		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
-+		udp = (struct udphdr *)(raw_packet + IP_HEADER_OFFSET
-+		      + sizeof(struct iphdr));
- 
--	ip->daddr = fd_data->dst_ip;
-+		ip->daddr = fd_data->dst_ip;
-+		ip->saddr = fd_data->src_ip;
-+	} else {
-+		memcpy(raw_packet, packet_ipv6, I40E_UDPIP6_DUMMY_PACKET_LEN);
-+		ipv6 = (struct ipv6hdr *)(raw_packet + IP_HEADER_OFFSET);
-+		udp = (struct udphdr *)(raw_packet + IP_HEADER_OFFSET
-+		      + sizeof(struct ipv6hdr));
-+
-+		memcpy(ipv6->saddr.in6_u.u6_addr32,
-+		       fd_data->src_ip6, sizeof(__be32) * 4);
-+		memcpy(ipv6->daddr.in6_u.u6_addr32,
-+		       fd_data->dst_ip6, sizeof(__be32) * 4);
-+	}
- 	udp->dest = fd_data->dst_port;
--	ip->saddr = fd_data->src_ip;
- 	udp->source = fd_data->src_port;
- 
- 	if (fd_data->flex_filter) {
--		u8 *payload = raw_packet + I40E_UDPIP_DUMMY_PACKET_LEN;
-+		u8 *payload;
- 		__be16 pattern = fd_data->flex_word;
- 		u16 off = fd_data->flex_offset;
- 
-+		if (ipv4)
-+			payload = raw_packet + I40E_UDPIP_DUMMY_PACKET_LEN;
-+		else
-+			payload = raw_packet + I40E_UDPIP6_DUMMY_PACKET_LEN;
-+
- 		*((__force __be16 *)(payload + off)) = pattern;
- 	}
- 
--	fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
-+	if (ipv4)
-+		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
-+	else
-+		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
-+
- 	ret = i40e_program_fdir_filter(fd_data, raw_packet, pf, add);
- 	if (ret) {
- 		dev_info(&pf->pdev->dev,
-@@ -225,61 +253,104 @@ static int i40e_add_del_fdir_udpv4(struct i40e_vsi *vsi,
- 				 fd_data->pctype, fd_data->fd_id);
- 	}
- 
--	if (add)
--		pf->fd_udp4_filter_cnt++;
--	else
--		pf->fd_udp4_filter_cnt--;
-+	if (add) {
-+		if (ipv4)
-+			pf->fd_udp4_filter_cnt++;
-+		else
-+			pf->fd_udp6_filter_cnt++;
-+	} else {
-+		if (ipv4)
-+			pf->fd_udp4_filter_cnt--;
-+		else
-+			pf->fd_udp6_filter_cnt--;
-+	}
- 
- 	return 0;
- }
- 
--#define I40E_TCPIP_DUMMY_PACKET_LEN 54
-+#define I40E_TCPIP_DUMMY_PACKET_LEN	54
-+#define I40E_TCPIP6_DUMMY_PACKET_LEN	74
- /**
-- * i40e_add_del_fdir_tcpv4 - Add/Remove TCPv4 filters
-+ * i40e_add_del_fdir_tcp - Add/Remove TCPv4 filters
-  * @vsi: pointer to the targeted VSI
-  * @fd_data: the flow director data required for the FDir descriptor
-  * @add: true adds a filter, false removes it
-+ * @ipv4: true is v4, false is v6
-  *
-  * Returns 0 if the filters were successfully added or removed
-  **/
--static int i40e_add_del_fdir_tcpv4(struct i40e_vsi *vsi,
--				   struct i40e_fdir_filter *fd_data,
--				   bool add)
-+static int i40e_add_del_fdir_tcp(struct i40e_vsi *vsi,
-+				 struct i40e_fdir_filter *fd_data,
-+				 bool add,
-+				 bool ipv4)
- {
- 	struct i40e_pf *pf = vsi->back;
-+	struct ipv6hdr *ipv6;
- 	struct tcphdr *tcp;
- 	struct iphdr *ip;
- 	u8 *raw_packet;
- 	int ret;
- 	/* Dummy packet */
--	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
--		0x45, 0, 0, 0x28, 0, 0, 0x40, 0, 0x40, 0x6, 0, 0, 0, 0, 0, 0,
--		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0x11,
-+	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
-+		0, 0x45, 0, 0, 0x28, 0, 0, 0x40, 0, 0x40, 0x6, 0, 0, 0, 0, 0,
-+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x50, 0x11,
-+		0x0, 0x72, 0, 0, 0, 0};
-+	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
-+		0xdd, 0x60, 0, 0, 0, 0, 0, 0x6, 0,
-+		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x50, 0x11,
- 		0x0, 0x72, 0, 0, 0, 0};
- 
- 	raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
- 	if (!raw_packet)
- 		return -ENOMEM;
--	memcpy(raw_packet, packet, I40E_TCPIP_DUMMY_PACKET_LEN);
-+	if (ipv4) {
-+		memcpy(raw_packet, packet_ipv4, I40E_TCPIP_DUMMY_PACKET_LEN);
-+
-+		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
-+		tcp = (struct tcphdr *)(raw_packet + IP_HEADER_OFFSET
-+		      + sizeof(struct iphdr));
-+
-+		ip->daddr = fd_data->dst_ip;
-+		ip->saddr = fd_data->src_ip;
-+	} else {
-+		memcpy(raw_packet, packet_ipv6, I40E_TCPIP6_DUMMY_PACKET_LEN);
-+
-+		tcp = (struct tcphdr *)(raw_packet + IP_HEADER_OFFSET
-+		      + sizeof(struct ipv6hdr));
-+		ipv6 = (struct ipv6hdr *)(raw_packet + IP_HEADER_OFFSET);
-+
-+		memcpy(ipv6->saddr.in6_u.u6_addr32,
-+		       fd_data->src_ip6, sizeof(__be32) * 4);
-+		memcpy(ipv6->daddr.in6_u.u6_addr32,
-+		       fd_data->dst_ip6, sizeof(__be32) * 4);
-+	}
- 
- 	ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
- 	tcp = (struct tcphdr *)(raw_packet + IP_HEADER_OFFSET
- 	      + sizeof(struct iphdr));
- 
--	ip->daddr = fd_data->dst_ip;
- 	tcp->dest = fd_data->dst_port;
--	ip->saddr = fd_data->src_ip;
- 	tcp->source = fd_data->src_port;
- 
- 	if (fd_data->flex_filter) {
--		u8 *payload = raw_packet + I40E_TCPIP_DUMMY_PACKET_LEN;
-+		u8 *payload;
- 		__be16 pattern = fd_data->flex_word;
- 		u16 off = fd_data->flex_offset;
- 
-+		if (ipv4)
-+			payload = raw_packet + I40E_TCPIP_DUMMY_PACKET_LEN;
-+		else
-+			payload = raw_packet + I40E_TCPIP6_DUMMY_PACKET_LEN;
-+
- 		*((__force __be16 *)(payload + off)) = pattern;
- 	}
- 
--	fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_TCP;
-+	if (ipv4)
-+		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_TCP;
-+	else
-+		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
- 	ret = i40e_program_fdir_filter(fd_data, raw_packet, pf, add);
- 	if (ret) {
- 		dev_info(&pf->pdev->dev,
-@@ -299,65 +370,102 @@ static int i40e_add_del_fdir_tcpv4(struct i40e_vsi *vsi,
- 	}
- 
- 	if (add) {
--		pf->fd_tcp4_filter_cnt++;
-+		if (ipv4)
-+			pf->fd_tcp4_filter_cnt++;
-+		else
-+			pf->fd_tcp6_filter_cnt++;
- 		if ((pf->flags & I40E_FLAG_FD_ATR_ENABLED) &&
- 		    I40E_DEBUG_FD & pf->hw.debug_mask)
- 			dev_info(&pf->pdev->dev, "Forcing ATR off, sideband rules for TCP/IPv4 flow being applied\n");
- 		set_bit(__I40E_FD_ATR_AUTO_DISABLED, pf->state);
- 	} else {
--		pf->fd_tcp4_filter_cnt--;
-+		if (ipv4)
-+			pf->fd_tcp4_filter_cnt--;
-+		else
-+			pf->fd_tcp6_filter_cnt--;
- 	}
- 
- 	return 0;
- }
- 
--#define I40E_SCTPIP_DUMMY_PACKET_LEN 46
-+#define I40E_SCTPIP_DUMMY_PACKET_LEN	46
-+#define I40E_SCTPIP6_DUMMY_PACKET_LEN	66
- /**
-- * i40e_add_del_fdir_sctpv4 - Add/Remove SCTPv4 Flow Director filters for
-+ * i40e_add_del_fdir_sctp - Add/Remove SCTPv4 Flow Director filters for
-  * a specific flow spec
-  * @vsi: pointer to the targeted VSI
-  * @fd_data: the flow director data required for the FDir descriptor
-  * @add: true adds a filter, false removes it
-+ * @ipv4: true is v4, false is v6
-  *
-  * Returns 0 if the filters were successfully added or removed
-  **/
--static int i40e_add_del_fdir_sctpv4(struct i40e_vsi *vsi,
--				    struct i40e_fdir_filter *fd_data,
--				    bool add)
-+static int i40e_add_del_fdir_sctp(struct i40e_vsi *vsi,
-+				  struct i40e_fdir_filter *fd_data,
-+				  bool add,
-+				  bool ipv4)
- {
- 	struct i40e_pf *pf = vsi->back;
-+	struct ipv6hdr *ipv6;
- 	struct sctphdr *sctp;
- 	struct iphdr *ip;
- 	u8 *raw_packet;
- 	int ret;
--	/* Dummy packet */
--	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
--		0x45, 0, 0, 0x20, 0, 0, 0x40, 0, 0x40, 0x84, 0, 0, 0, 0, 0, 0,
--		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
--
-+	/* Dummy packets */
-+	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
-+		0, 0x45, 0, 0, 0x20, 0, 0, 0x40, 0, 0x40, 0x84, 0, 0, 0, 0, 0,
-+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-+
-+	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
-+		0xdd, 0x60, 0, 0, 0, 0, 0, 0x84, 0,
-+		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
- 	raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
- 	if (!raw_packet)
- 		return -ENOMEM;
--	memcpy(raw_packet, packet, I40E_SCTPIP_DUMMY_PACKET_LEN);
-+	if (ipv4) {
-+		memcpy(raw_packet, packet_ipv4, I40E_SCTPIP_DUMMY_PACKET_LEN);
- 
--	ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
--	sctp = (struct sctphdr *)(raw_packet + IP_HEADER_OFFSET
--	      + sizeof(struct iphdr));
-+		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
-+		sctp = (struct sctphdr *)(raw_packet + IP_HEADER_OFFSET
-+		       + sizeof(struct iphdr));
-+
-+		ip->daddr = fd_data->dst_ip;
-+		ip->saddr = fd_data->src_ip;
-+	} else {
-+		memcpy(raw_packet, packet_ipv6, I40E_SCTPIP6_DUMMY_PACKET_LEN);
-+
-+		ipv6 = (struct ipv6hdr *)(raw_packet + IP_HEADER_OFFSET);
-+		sctp = (struct sctphdr *)(raw_packet + IP_HEADER_OFFSET
-+		       + sizeof(struct ipv6hdr));
-+
-+		memcpy(ipv6->saddr.in6_u.u6_addr32,
-+		       fd_data->src_ip6, sizeof(__be32) * 4);
-+		memcpy(ipv6->saddr.in6_u.u6_addr32,
-+		       fd_data->src_ip6, sizeof(__be32) * 4);
-+	}
- 
--	ip->daddr = fd_data->dst_ip;
- 	sctp->dest = fd_data->dst_port;
--	ip->saddr = fd_data->src_ip;
- 	sctp->source = fd_data->src_port;
- 
- 	if (fd_data->flex_filter) {
--		u8 *payload = raw_packet + I40E_SCTPIP_DUMMY_PACKET_LEN;
-+		u8 *payload;
- 		__be16 pattern = fd_data->flex_word;
- 		u16 off = fd_data->flex_offset;
- 
-+		if (ipv4)
-+			payload = raw_packet + I40E_SCTPIP_DUMMY_PACKET_LEN;
-+		else
-+			payload = raw_packet + I40E_SCTPIP6_DUMMY_PACKET_LEN;
- 		*((__force __be16 *)(payload + off)) = pattern;
- 	}
- 
--	fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_SCTP;
-+	if (ipv4)
-+		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_SCTP;
-+	else
-+		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV6_SCTP;
-+
- 	ret = i40e_program_fdir_filter(fd_data, raw_packet, pf, add);
- 	if (ret) {
- 		dev_info(&pf->pdev->dev,
-@@ -377,54 +485,97 @@ static int i40e_add_del_fdir_sctpv4(struct i40e_vsi *vsi,
- 				 fd_data->pctype, fd_data->fd_id);
- 	}
- 
--	if (add)
--		pf->fd_sctp4_filter_cnt++;
--	else
--		pf->fd_sctp4_filter_cnt--;
-+	if (add) {
-+		if (ipv4)
-+			pf->fd_sctp4_filter_cnt++;
-+		else
-+			pf->fd_sctp6_filter_cnt++;
-+	} else {
-+		if (ipv4)
-+			pf->fd_sctp4_filter_cnt--;
-+		else
-+			pf->fd_sctp6_filter_cnt--;
-+	}
- 
- 	return 0;
- }
- 
--#define I40E_IP_DUMMY_PACKET_LEN 34
-+#define I40E_IP_DUMMY_PACKET_LEN	34
-+#define I40E_IP6_DUMMY_PACKET_LEN	54
- /**
-- * i40e_add_del_fdir_ipv4 - Add/Remove IPv4 Flow Director filters for
-+ * i40e_add_del_fdir_ip - Add/Remove IPv4 Flow Director filters for
-  * a specific flow spec
-  * @vsi: pointer to the targeted VSI
-  * @fd_data: the flow director data required for the FDir descriptor
-  * @add: true adds a filter, false removes it
-+ * @ipv4: true is v4, false is v6
-  *
-  * Returns 0 if the filters were successfully added or removed
-  **/
--static int i40e_add_del_fdir_ipv4(struct i40e_vsi *vsi,
--				  struct i40e_fdir_filter *fd_data,
--				  bool add)
-+static int i40e_add_del_fdir_ip(struct i40e_vsi *vsi,
-+				struct i40e_fdir_filter *fd_data,
-+				bool add,
-+				bool ipv4)
- {
- 	struct i40e_pf *pf = vsi->back;
-+	struct ipv6hdr *ipv6;
- 	struct iphdr *ip;
- 	u8 *raw_packet;
-+	int iter_start;
-+	int iter_end;
- 	int ret;
- 	int i;
--	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
--		0x45, 0, 0, 0x14, 0, 0, 0x40, 0, 0x40, 0x10, 0, 0, 0, 0, 0, 0,
--		0, 0, 0, 0};
-+	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
-+		0, 0x45, 0, 0, 0x14, 0, 0, 0x40, 0, 0x40, 0x10, 0, 0, 0, 0, 0,
-+		0, 0, 0, 0, 0};
-+	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
-+		0xdd, 0x60, 0, 0, 0, 0, 0, 0, 0,
-+		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-+		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-+
-+	if (ipv4) {
-+		iter_start = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
-+		iter_end = I40E_FILTER_PCTYPE_FRAG_IPV4;
-+	} else {
-+		iter_start = I40E_FILTER_PCTYPE_NONF_IPV6_OTHER;
-+		iter_end = I40E_FILTER_PCTYPE_FRAG_IPV6;
-+	}
- 
--	for (i = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
--	     i <= I40E_FILTER_PCTYPE_FRAG_IPV4;	i++) {
-+	for (i = iter_start; i <= iter_end; i++) {
- 		raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
- 		if (!raw_packet)
- 			return -ENOMEM;
--		memcpy(raw_packet, packet, I40E_IP_DUMMY_PACKET_LEN);
--		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
--
--		ip->saddr = fd_data->src_ip;
--		ip->daddr = fd_data->dst_ip;
--		ip->protocol = 0;
-+		if (ipv4) {
-+			memcpy(raw_packet, packet_ipv4,
-+			       I40E_IP_DUMMY_PACKET_LEN);
-+			ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
-+
-+			ip->saddr = fd_data->src_ip;
-+			ip->daddr = fd_data->dst_ip;
-+			ip->protocol = IPPROTO_IP;
-+		} else {
-+			memcpy(raw_packet, packet_ipv6,
-+			       I40E_IP6_DUMMY_PACKET_LEN);
-+			ipv6 = (struct ipv6hdr *)(raw_packet +
-+						  IP_HEADER_OFFSET);
-+			memcpy(ipv6->saddr.in6_u.u6_addr32,
-+			       fd_data->src_ip6, sizeof(__be32) * 4);
-+			memcpy(ipv6->daddr.in6_u.u6_addr32,
-+			       fd_data->dst_ip6, sizeof(__be32) * 4);
-+
-+			ipv6->nexthdr = IPPROTO_NONE;
-+		}
- 
- 		if (fd_data->flex_filter) {
--			u8 *payload = raw_packet + I40E_IP_DUMMY_PACKET_LEN;
-+			u8 *payload;
- 			__be16 pattern = fd_data->flex_word;
- 			u16 off = fd_data->flex_offset;
- 
-+			if (ipv4)
-+				payload = raw_packet + I40E_IP_DUMMY_PACKET_LEN;
-+			else
-+				payload = raw_packet +
-+					  I40E_IP6_DUMMY_PACKET_LEN;
- 			*((__force __be16 *)(payload + off)) = pattern;
- 		}
- 
-@@ -451,10 +602,17 @@ static int i40e_add_del_fdir_ipv4(struct i40e_vsi *vsi,
- 		}
- 	}
- 
--	if (add)
--		pf->fd_ip4_filter_cnt++;
--	else
--		pf->fd_ip4_filter_cnt--;
-+	if (add) {
-+		if (ipv4)
-+			pf->fd_ip4_filter_cnt++;
-+		else
-+			pf->fd_ip6_filter_cnt++;
-+	} else {
-+		if (ipv4)
-+			pf->fd_ip4_filter_cnt--;
-+		else
-+			pf->fd_ip6_filter_cnt--;
-+	}
- 
- 	return 0;
- }
-@@ -469,37 +627,68 @@ static int i40e_add_del_fdir_ipv4(struct i40e_vsi *vsi,
- int i40e_add_del_fdir(struct i40e_vsi *vsi,
- 		      struct i40e_fdir_filter *input, bool add)
- {
-+	enum ip_ver { ipv6 = 0, ipv4 = 1 };
- 	struct i40e_pf *pf = vsi->back;
- 	int ret;
- 
- 	switch (input->flow_type & ~FLOW_EXT) {
- 	case TCP_V4_FLOW:
--		ret = i40e_add_del_fdir_tcpv4(vsi, input, add);
-+		ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv4);
- 		break;
- 	case UDP_V4_FLOW:
--		ret = i40e_add_del_fdir_udpv4(vsi, input, add);
-+		ret = i40e_add_del_fdir_udp(vsi, input, add, ipv4);
- 		break;
- 	case SCTP_V4_FLOW:
--		ret = i40e_add_del_fdir_sctpv4(vsi, input, add);
-+		ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv4);
-+		break;
-+	case TCP_V6_FLOW:
-+		ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv6);
-+		break;
-+	case UDP_V6_FLOW:
-+		ret = i40e_add_del_fdir_udp(vsi, input, add, ipv6);
-+		break;
-+	case SCTP_V6_FLOW:
-+		ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv6);
- 		break;
- 	case IP_USER_FLOW:
--		switch (input->ip4_proto) {
-+		switch (input->ipl4_proto) {
- 		case IPPROTO_TCP:
--			ret = i40e_add_del_fdir_tcpv4(vsi, input, add);
-+			ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv4);
- 			break;
- 		case IPPROTO_UDP:
--			ret = i40e_add_del_fdir_udpv4(vsi, input, add);
-+			ret = i40e_add_del_fdir_udp(vsi, input, add, ipv4);
- 			break;
- 		case IPPROTO_SCTP:
--			ret = i40e_add_del_fdir_sctpv4(vsi, input, add);
-+			ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv4);
- 			break;
- 		case IPPROTO_IP:
--			ret = i40e_add_del_fdir_ipv4(vsi, input, add);
-+			ret = i40e_add_del_fdir_ip(vsi, input, add, ipv4);
- 			break;
- 		default:
- 			/* We cannot support masking based on protocol */
- 			dev_info(&pf->pdev->dev, "Unsupported IPv4 protocol 0x%02x\n",
--				 input->ip4_proto);
-+				 input->ipl4_proto);
-+			return -EINVAL;
-+		}
-+		break;
-+	case IPV6_USER_FLOW:
-+		switch (input->ipl4_proto) {
-+		case IPPROTO_TCP:
-+			ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv6);
-+			break;
-+		case IPPROTO_UDP:
-+			ret = i40e_add_del_fdir_udp(vsi, input, add, ipv6);
-+			break;
-+		case IPPROTO_SCTP:
-+			ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv6);
-+			break;
-+		case IPPROTO_IP:
-+			ret = i40e_add_del_fdir_ip(vsi, input, add, ipv6);
-+			break;
-+		default:
-+			/* We cannot support masking based on protocol */
-+			dev_info(&pf->pdev->dev, "Unsupported IPv6 protocol 0x%02x\n",
-+				 input->ipl4_proto);
- 			return -EINVAL;
- 		}
- 		break;
--- 
-2.17.1
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBNYXRldXN6LAoKClRoYW5rIHlvdSBmb3IgdGhlIGl0ZXJhdGlvbi4gVGhlIHRhZyBpbiB0
+aGUgZW1haWwgc3ViamVjdCBzaG91bGQgCnByb2JhYmx5IHNheSAqdjIqLgoKQW0gMTYuMDkuMjAg
+dW0gMDk6NTcgc2NocmllYiBNYXRldXN6IFBhbGN6ZXdza2k6Cj4gRnJvbTogUHJ6ZW15c2xhdyBQ
+YXR5bm93c2tpIDxwcnplbXlzbGF3eC5wYXR5bm93c2tpQGludGVsLmNvbT4KPiAKPiBGbG93IGRp
+cmVjdG9yIGZvciBJUHY2IGlzIG5vdCBzdXBwb3J0ZWQuCj4gSW1wbGVtZW50YXRpb24gb2Ygc3Vw
+cG9ydCBmb3IgSVB2NiBmbG93IGRpcmVjdG9yLiBBZGRlZCBoYW5kbGVycyBmb3IKPiBhZGRpdGlv
+biBvZiBUQ1A2LCBVRFA2LCBTQ1RQNiwgSVB2Ni4gUmVmYWN0b3JlZCBsZWdhY3kgY29kZSB0byBt
+YWtlCj4gaXQgbW9yZSBnZW5lcmljLiBBZGRlZCBwYWNrZXQgdGVtcGxhdGVzIGZvciBUQ1A2LCBV
+RFA2LCBTQ1RQNiwgSVB2Ni4KPiBBZGRlZCBoYW5kbGluZyBvZiBJUHY2IHNvdXJjZSBhbmQgZGVz
+dGluYXRpb24gYWRkcmVzcyBmb3IgZmxvdwo+IGRpcmVjdG9yLiBJbXByb3ZlZCBhcmd1bWVudCBw
+YXNzaW5nIGZvciBzb3VyY2UgYW5kIGRlc3RpbmF0aW9uIHBvcnQKPiBpbiBUQ1A2LCBVRFA2IGFu
+ZCBTQ1RQNi4gQWRkZWQgaGFuZGxpbmcgb2YgZXRodG9vbCAtbiBmb3IgSVB2NiwgVENQNiwKPiBV
+RFA2LCBTQ1RQNi4gVXNlZCBjb3JyZWN0IGJpdCBmbGFnIHJlZ2FyZGluZyBGTEVYT0ZGIGZpZWxk
+IG9mIGZsb3cKPiBkaXJlY3RvciBkYXRhIGRlc2NyaXB0b3IuCgpUaGlzIGlzIG5vdCBlYXNpbHkg
+cmVhZGFibGUuIENvdWxkIHlvdSBwbGVhc2UgYWRkIGFuIGVtcHR5IGxpbmUgYmV0d2VlbiAKcGFy
+YWdyYXBocywgYW5kIGlmIHlvdSBlbnVtZXJhdGUgdGhlIGFjdGlvbnMsIGZvcm1hdCBpdCBhcyBh
+IApsaXN0L2VudW1lcmF0aW9uLiAoQWxzbyBpdOKAmWQgYmUgZ3JlYXQgdG8gdXNlIHByZXNlbnQg
+dGVuc2UgKGltcGVyYXRpdmUgCm1vb2QpIGluIHN1bW1hcmllcy4pCgo+IFdpdGhvdXQgdGhpcyBw
+YXRjaCwgdGhlcmUgd291bGQgYmUgbm8gc3VwcG9ydCBmb3IgZmxvdyBkaXJlY3RvciBvbgo+IElQ
+djYsIFRDUDYsIFVEUDYsIFNDVFA2LgoKVGVzdGVkIGhvdz8KCldoYXQgZGF0YXNoZWV0IHdhcyB1
+c2VkPwoKPiB2MjogRml4ZWQgc3BhcnNlIHdhcm5pbmdzCj4gICA+PiBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pNDBlL2k0MGVfZXRodG9vbC5jOjQxMTc6NTA6IHNwYXJzZTogc3BhcnNlOiBp
+bmNvcnJlY3QgdHlwZSBpbiBpbml0aWFsaXplciAoZGlmZmVyZW50IGJhc2UgdHlwZXMpIEBAICAg
+ICBleHBlY3RlZCByZXN0cmljdGVkIF9fYmUzMiBAQCAgICAgZ290IHVuc2lnbmVkIGludCBAQAo+
+ICAgPj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2V0aHRvb2wuYzo0MTE3
+OjUwOiBzcGFyc2U6ICAgICBleHBlY3RlZCByZXN0cmljdGVkIF9fYmUzMgo+ICAgPj4gZHJpdmVy
+cy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2V0aHRvb2wuYzo0MTE3OjUwOiBzcGFyc2U6
+ICAgICBnb3QgdW5zaWduZWQgaW50Cj4gUmVwb3J0ZWQtYnk6IGtlcm5lbCB0ZXN0IHJvYm90IDxs
+a3BAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFByemVteXNsYXcgUGF0eW5vd3NraSA8cHJ6
+ZW15c2xhd3gucGF0eW5vd3NraUBpbnRlbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pNDBlL2k0MGUuaCAgICAgICAgfCAgIDkgKy0KPiAgIC4uLi9uZXQvZXRoZXJu
+ZXQvaW50ZWwvaTQwZS9pNDBlX2V0aHRvb2wuYyAgICB8IDIxMSArKysrKysrKystCj4gICBkcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jICAgfCAgNzkgKysrLQo+ICAg
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguYyAgIHwgMzcxICsrKysr
+KysrKysrKystLS0tLQo+ICAgNCBmaWxlcyBjaGFuZ2VkLCA1NTEgaW5zZXJ0aW9ucygrKSwgMTE5
+IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pNDBlL2k0MGUuaCBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZS5oCj4g
+aW5kZXggYWRhMGU5My4uNTQwNTRmYyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pNDBlL2k0MGUuaAo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0
+MGUvaTQwZS5oCj4gQEAgLTIwOSwxMCArMjA5LDEyIEBAIHN0cnVjdCBpNDBlX2ZkaXJfZmlsdGVy
+IHsKPiAgIAlzdHJ1Y3QgaGxpc3Rfbm9kZSBmZGlyX25vZGU7Cj4gICAJLyogZmlsdGVyIGlwbnV0
+IHNldCAqLwo+ICAgCXU4IGZsb3dfdHlwZTsKPiAtCXU4IGlwNF9wcm90bzsKPiArCXU4IGlwbDRf
+cHJvdG87Cj4gICAJLyogVFggcGFja2V0IHZpZXcgb2Ygc3JjIGFuZCBkc3QgKi8KPiAgIAlfX2Jl
+MzIgZHN0X2lwOwo+ICAgCV9fYmUzMiBzcmNfaXA7Cj4gKwlfX2JlMzIgZHN0X2lwNls0XTsKPiAr
+CV9fYmUzMiBzcmNfaXA2WzRdOwo+ICAgCV9fYmUxNiBzcmNfcG9ydDsKPiAgIAlfX2JlMTYgZHN0
+X3BvcnQ7Cj4gICAJX19iZTMyIHNjdHBfdl90YWc7Cj4gQEAgLTQ3MCw2ICs0NzIsMTEgQEAgc3Ry
+dWN0IGk0MGVfcGYgewo+ICAgCXUxNiBmZF9zY3RwNF9maWx0ZXJfY250Owo+ICAgCXUxNiBmZF9p
+cDRfZmlsdGVyX2NudDsKPiAgIAo+ICsJdTE2IGZkX3RjcDZfZmlsdGVyX2NudDsKPiArCXUxNiBm
+ZF91ZHA2X2ZpbHRlcl9jbnQ7Cj4gKwl1MTYgZmRfc2N0cDZfZmlsdGVyX2NudDsKPiArCXUxNiBm
+ZF9pcDZfZmlsdGVyX2NudDsKPiArCj4gICAJLyogRmxleGlibGUgZmlsdGVyIHRhYmxlIHZhbHVl
+cyB0aGF0IG5lZWQgdG8gYmUgcHJvZ3JhbW1lZCBpbnRvCj4gICAJICogaGFyZHdhcmUsIHdoaWNo
+IGV4cGVjdHMgTDMgYW5kIEw0IHRvIGJlIHByb2dyYW1tZWQgc2VwYXJhdGVseS4gV2UKPiAgIAkg
+KiBuZWVkIHRvIGVuc3VyZSB0aGF0IHRoZSB2YWx1ZXMgYXJlIGluIGFzY2VuZGVkIG9yZGVyIGFu
+ZCBkb24ndCBoYXZlCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0
+MGUvaTQwZV9ldGh0b29sLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVf
+ZXRodG9vbC5jCj4gaW5kZXggYTMxZWQyMy4uNjYxYmE1MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfZXRodG9vbC5jCj4gKysrIGIvZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2V0aHRvb2wuYwo+IEBAIC0zMjI5LDEzICszMjI5
+LDMwIEBAIHN0YXRpYyBpbnQgaTQwZV9nZXRfZXRodG9vbF9mZGlyX2VudHJ5KHN0cnVjdCBpNDBl
+X3BmICpwZiwKPiAgIAkJZnNwLT5tX3UudXNyX2lwNF9zcGVjLnByb3RvID0gMDsKPiAgIAl9Cj4g
+ICAKPiAtCS8qIFJldmVyc2UgdGhlIHNyYyBhbmQgZGVzdCBub3Rpb24sIHNpbmNlIHRoZSBIVyB2
+aWV3cyB0aGVtIGZyb20KPiAtCSAqIFR4IHBlcnNwZWN0aXZlIHdoZXJlIGFzIHRoZSB1c2VyIGV4
+cGVjdHMgaXQgZnJvbSBSeCBmaWx0ZXIgdmlldy4KPiAtCSAqLwo+IC0JZnNwLT5oX3UudGNwX2lw
+NF9zcGVjLnBzcmMgPSBydWxlLT5kc3RfcG9ydDsKPiAtCWZzcC0+aF91LnRjcF9pcDRfc3BlYy5w
+ZHN0ID0gcnVsZS0+c3JjX3BvcnQ7Cj4gLQlmc3AtPmhfdS50Y3BfaXA0X3NwZWMuaXA0c3JjID0g
+cnVsZS0+ZHN0X2lwOwo+IC0JZnNwLT5oX3UudGNwX2lwNF9zcGVjLmlwNGRzdCA9IHJ1bGUtPnNy
+Y19pcDsKPiArCWlmIChmc3AtPmZsb3dfdHlwZSA9PSBJUFY2X1VTRVJfRkxPVyB8fAo+ICsJICAg
+IGZzcC0+Zmxvd190eXBlID09IFVEUF9WNl9GTE9XIHx8Cj4gKwkgICAgZnNwLT5mbG93X3R5cGUg
+PT0gVENQX1Y2X0ZMT1cgfHwKPiArCSAgICBmc3AtPmZsb3dfdHlwZSA9PSBTQ1RQX1Y2X0ZMT1cp
+IHsKPiArCQkvKiBSZXZlcnNlIHRoZSBzcmMgYW5kIGRlc3Qgbm90aW9uLCBzaW5jZSB0aGUgSFcg
+dmlld3MgdGhlbQo+ICsJCSAqIGZyb20gVHggcGVyc3BlY3RpdmUgd2hlcmUgYXMgdGhlIHVzZXIg
+ZXhwZWN0cyBpdCBmcm9tCj4gKwkJICogUnggZmlsdGVyIHZpZXcuCj4gKwkJICovCj4gKwkJZnNw
+LT5oX3UudGNwX2lwNl9zcGVjLnBzcmMgPSBydWxlLT5kc3RfcG9ydDsKPiArCQlmc3AtPmhfdS50
+Y3BfaXA2X3NwZWMucGRzdCA9IHJ1bGUtPnNyY19wb3J0Owo+ICsJCW1lbWNweShmc3AtPmhfdS50
+Y3BfaXA2X3NwZWMuaXA2ZHN0LCBydWxlLT5zcmNfaXA2LAo+ICsJCSAgICAgICBzaXplb2YoX19i
+ZTMyKSAqIDQpOwo+ICsJCW1lbWNweShmc3AtPmhfdS50Y3BfaXA2X3NwZWMuaXA2c3JjLCBydWxl
+LT5kc3RfaXA2LAo+ICsJCSAgICAgICBzaXplb2YoX19iZTMyKSAqIDQpOwo+ICsJfSBlbHNlIHsK
+PiArCQkvKiBSZXZlcnNlIHRoZSBzcmMgYW5kIGRlc3Qgbm90aW9uLCBzaW5jZSB0aGUgSFcgdmll
+d3MgdGhlbQo+ICsJCSAqIGZyb20gVHggcGVyc3BlY3RpdmUgd2hlcmUgYXMgdGhlIHVzZXIgZXhw
+ZWN0cyBpdCBmcm9tCj4gKwkJICogUnggZmlsdGVyIHZpZXcuCj4gKwkJICovCj4gKwkJZnNwLT5o
+X3UudGNwX2lwNF9zcGVjLnBzcmMgPSBydWxlLT5kc3RfcG9ydDsKPiArCQlmc3AtPmhfdS50Y3Bf
+aXA0X3NwZWMucGRzdCA9IHJ1bGUtPnNyY19wb3J0Owo+ICsJCWZzcC0+aF91LnRjcF9pcDRfc3Bl
+Yy5pcDRzcmMgPSBydWxlLT5kc3RfaXA7Cj4gKwkJZnNwLT5oX3UudGNwX2lwNF9zcGVjLmlwNGRz
+dCA9IHJ1bGUtPnNyY19pcDsKPiArCX0KPiAgIAo+ICAgCXN3aXRjaCAocnVsZS0+Zmxvd190eXBl
+KSB7Cj4gICAJY2FzZSBTQ1RQX1Y0X0ZMT1c6Cj4gQEAgLTMyNDcsOSArMzI2NCwyMSBAQCBzdGF0
+aWMgaW50IGk0MGVfZ2V0X2V0aHRvb2xfZmRpcl9lbnRyeShzdHJ1Y3QgaTQwZV9wZiAqcGYsCj4g
+ICAJY2FzZSBVRFBfVjRfRkxPVzoKPiAgIAkJaW5kZXggPSBJNDBFX0ZJTFRFUl9QQ1RZUEVfTk9O
+Rl9JUFY0X1VEUDsKPiAgIAkJYnJlYWs7Cj4gKwljYXNlIFNDVFBfVjZfRkxPVzoKPiArCQlpbmRl
+eCA9IEk0MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQVjZfU0NUUDsKPiArCQlicmVhazsKPiArCWNh
+c2UgVENQX1Y2X0ZMT1c6Cj4gKwkJaW5kZXggPSBJNDBFX0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY2
+X1RDUDsKPiArCQlicmVhazsKPiArCWNhc2UgVURQX1Y2X0ZMT1c6Cj4gKwkJaW5kZXggPSBJNDBF
+X0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY2X1VEUDsKPiArCQlicmVhazsKPiAgIAljYXNlIElQX1VT
+RVJfRkxPVzoKPiAgIAkJaW5kZXggPSBJNDBFX0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY0X09USEVS
+Owo+ICAgCQlicmVhazsKPiArCWNhc2UgSVBWNl9VU0VSX0ZMT1c6Cj4gKwkJaW5kZXggPSBJNDBF
+X0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY2X09USEVSOwo+ICsJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6
+Cj4gICAJCS8qIElmIHdlIGhhdmUgc3RvcmVkIGEgZmlsdGVyIHdpdGggYSBmbG93IHR5cGUgbm90
+IGxpc3RlZCBoZXJlCj4gICAJCSAqIGl0IGlzIGFsbW9zdCBjZXJ0YWlubHkgYSBkcml2ZXIgYnVn
+LiBXQVJOKCksIGFuZCB0aGVuCj4gQEAgLTMyNjUsNiArMzI5NCwyMCBAQCBzdGF0aWMgaW50IGk0
+MGVfZ2V0X2V0aHRvb2xfZmRpcl9lbnRyeShzdHJ1Y3QgaTQwZV9wZiAqcGYsCj4gICAJaW5wdXRf
+c2V0ID0gaTQwZV9yZWFkX2ZkX2lucHV0X3NldChwZiwgaW5kZXgpOwo+ICAgCj4gICBub19pbnB1
+dF9zZXQ6Cj4gKwlpZiAoaW5wdXRfc2V0ICYgSTQwRV9MM19WNl9TUkNfTUFTSykgewo+ICsJCWZz
+cC0+bV91LnRjcF9pcDZfc3BlYy5pcDZzcmNbMF0gPSBodG9ubCgweEZGRkZGRkZGKTsKPiArCQlm
+c3AtPm1fdS50Y3BfaXA2X3NwZWMuaXA2c3JjWzFdID0gaHRvbmwoMHhGRkZGRkZGRik7Cj4gKwkJ
+ZnNwLT5tX3UudGNwX2lwNl9zcGVjLmlwNnNyY1syXSA9IGh0b25sKDB4RkZGRkZGRkYpOwo+ICsJ
+CWZzcC0+bV91LnRjcF9pcDZfc3BlYy5pcDZzcmNbM10gPSBodG9ubCgweEZGRkZGRkZGKTsKPiAr
+CX0KPiArCj4gKwlpZiAoaW5wdXRfc2V0ICYgSTQwRV9MM19WNl9EU1RfTUFTSykgewo+ICsJCWZz
+cC0+bV91LnRjcF9pcDZfc3BlYy5pcDZkc3RbMF0gPSBodG9ubCgweEZGRkZGRkZGKTsKPiArCQlm
+c3AtPm1fdS50Y3BfaXA2X3NwZWMuaXA2ZHN0WzFdID0gaHRvbmwoMHhGRkZGRkZGRik7Cj4gKwkJ
+ZnNwLT5tX3UudGNwX2lwNl9zcGVjLmlwNmRzdFsyXSA9IGh0b25sKDB4RkZGRkZGRkYpOwo+ICsJ
+CWZzcC0+bV91LnRjcF9pcDZfc3BlYy5pcDZkc3RbM10gPSBodG9ubCgweEZGRkZGRkZGKTsKPiAr
+CX0KPiArCj4gICAJaWYgKGlucHV0X3NldCAmIEk0MEVfTDNfU1JDX01BU0spCj4gICAJCWZzcC0+
+bV91LnRjcF9pcDRfc3BlYy5pcDRzcmMgPSBodG9ubCgweEZGRkZGRkZGKTsKPiAgIAo+IEBAIC0z
+OTI4LDYgKzM5NzEsMTQgQEAgc3RhdGljIGNvbnN0IGNoYXIgKmk0MGVfZmxvd19zdHIoc3RydWN0
+IGV0aHRvb2xfcnhfZmxvd19zcGVjICpmc3ApCj4gICAJCXJldHVybiAic2N0cDQiOwo+ICAgCWNh
+c2UgSVBfVVNFUl9GTE9XOgo+ICAgCQlyZXR1cm4gImlwNCI7Cj4gKwljYXNlIFRDUF9WNl9GTE9X
+Ogo+ICsJCXJldHVybiAidGNwNiI7Cj4gKwljYXNlIFVEUF9WNl9GTE9XOgo+ICsJCXJldHVybiAi
+dWRwNiI7Cj4gKwljYXNlIFNDVFBfVjZfRkxPVzoKPiArCQlyZXR1cm4gInNjdHA2IjsKPiArCWNh
+c2UgSVBWNl9VU0VSX0ZMT1c6Cj4gKwkJcmV0dXJuICJpcDYiOwo+ICAgCWRlZmF1bHQ6Cj4gICAJ
+CXJldHVybiAidW5rbm93biI7Cj4gICAJfQo+IEBAIC00MDYzLDkgKzQxMTQsMTQgQEAgc3RhdGlj
+IGludCBpNDBlX2NoZWNrX2ZkaXJfaW5wdXRfc2V0KHN0cnVjdCBpNDBlX3ZzaSAqdnNpLAo+ICAg
+CQkJCSAgICAgc3RydWN0IGV0aHRvb2xfcnhfZmxvd19zcGVjICpmc3AsCj4gICAJCQkJICAgICBz
+dHJ1Y3QgaTQwZV9yeF9mbG93X3VzZXJkZWYgKnVzZXJkZWYpCj4gICB7Cj4gLQlzdHJ1Y3QgaTQw
+ZV9wZiAqcGYgPSB2c2ktPmJhY2s7Cj4gKwlzdGF0aWMgY29uc3QgX19iZTMyIGlwdjZfZnVsbF9t
+YXNrWzRdID0ge2NwdV90b19iZTMyKDB4ZmZmZmZmZmYpLAo+ICsJCWNwdV90b19iZTMyKDB4ZmZm
+ZmZmZmYpLCBjcHVfdG9fYmUzMigweGZmZmZmZmZmKSwKPiArCQljcHVfdG9fYmUzMigweGZmZmZm
+ZmZmKX07Cj4gKwlzdHJ1Y3QgZXRodG9vbF90Y3BpcDZfc3BlYyAqdGNwX2lwNl9zcGVjOwo+ICsJ
+c3RydWN0IGV0aHRvb2xfdXNyaXA2X3NwZWMgKnVzcl9pcDZfc3BlYzsKPiAgIAlzdHJ1Y3QgZXRo
+dG9vbF90Y3BpcDRfc3BlYyAqdGNwX2lwNF9zcGVjOwo+ICAgCXN0cnVjdCBldGh0b29sX3Vzcmlw
+NF9zcGVjICp1c3JfaXA0X3NwZWM7Cj4gKwlzdHJ1Y3QgaTQwZV9wZiAqcGYgPSB2c2ktPmJhY2s7
+Cj4gICAJdTY0IGN1cnJlbnRfbWFzaywgbmV3X21hc2s7Cj4gICAJYm9vbCBuZXdfZmxleF9vZmZz
+ZXQgPSBmYWxzZTsKPiAgIAlib29sIGZsZXhfbDMgPSBmYWxzZTsKPiBAQCAtNDA4NywxMSArNDE0
+MywyOCBAQCBzdGF0aWMgaW50IGk0MGVfY2hlY2tfZmRpcl9pbnB1dF9zZXQoc3RydWN0IGk0MGVf
+dnNpICp2c2ksCj4gICAJCWluZGV4ID0gSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNF9VRFA7
+Cj4gICAJCWZkaXJfZmlsdGVyX2NvdW50ID0gJnBmLT5mZF91ZHA0X2ZpbHRlcl9jbnQ7Cj4gICAJ
+CWJyZWFrOwo+ICsJY2FzZSBTQ1RQX1Y2X0ZMT1c6Cj4gKwkJaW5kZXggPSBJNDBFX0ZJTFRFUl9Q
+Q1RZUEVfTk9ORl9JUFY2X1NDVFA7Cj4gKwkJZmRpcl9maWx0ZXJfY291bnQgPSAmcGYtPmZkX3Nj
+dHA2X2ZpbHRlcl9jbnQ7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFRDUF9WNl9GTE9XOgo+ICsJCWlu
+ZGV4ID0gSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNl9UQ1A7Cj4gKwkJZmRpcl9maWx0ZXJf
+Y291bnQgPSAmcGYtPmZkX3RjcDZfZmlsdGVyX2NudDsKPiArCQlicmVhazsKPiArCWNhc2UgVURQ
+X1Y2X0ZMT1c6Cj4gKwkJaW5kZXggPSBJNDBFX0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY2X1VEUDsK
+PiArCQlmZGlyX2ZpbHRlcl9jb3VudCA9ICZwZi0+ZmRfdWRwNl9maWx0ZXJfY250Owo+ICsJCWJy
+ZWFrOwo+ICAgCWNhc2UgSVBfVVNFUl9GTE9XOgo+ICAgCQlpbmRleCA9IEk0MEVfRklMVEVSX1BD
+VFlQRV9OT05GX0lQVjRfT1RIRVI7Cj4gICAJCWZkaXJfZmlsdGVyX2NvdW50ID0gJnBmLT5mZF9p
+cDRfZmlsdGVyX2NudDsKPiAgIAkJZmxleF9sMyA9IHRydWU7Cj4gICAJCWJyZWFrOwo+ICsJY2Fz
+ZSBJUFY2X1VTRVJfRkxPVzoKPiArCQlpbmRleCA9IEk0MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQ
+VjZfT1RIRVI7Cj4gKwkJZmRpcl9maWx0ZXJfY291bnQgPSAmcGYtPmZkX2lwNl9maWx0ZXJfY250
+Owo+ICsJCWZsZXhfbDMgPSB0cnVlOwo+ICsJCWJyZWFrOwo+ICAgCWRlZmF1bHQ6Cj4gICAJCXJl
+dHVybiAtRU9QTk9UU1VQUDsKPiAgIAl9Cj4gQEAgLTQxNTQsNiArNDIyNyw1MyBAQCBzdGF0aWMg
+aW50IGk0MGVfY2hlY2tfZmRpcl9pbnB1dF9zZXQoc3RydWN0IGk0MGVfdnNpICp2c2ksCj4gICAJ
+CQlyZXR1cm4gLUVPUE5PVFNVUFA7Cj4gICAKPiAgIAkJYnJlYWs7Cj4gKwljYXNlIFNDVFBfVjZf
+RkxPVzoKPiArCQluZXdfbWFzayAmPSB+STQwRV9WRVJJRllfVEFHX01BU0s7Cj4gKwkJZmFsbHRo
+cm91Z2g7Cj4gKwljYXNlIFRDUF9WNl9GTE9XOgo+ICsJY2FzZSBVRFBfVjZfRkxPVzoKPiArCQl0
+Y3BfaXA2X3NwZWMgPSAmZnNwLT5tX3UudGNwX2lwNl9zcGVjOwo+ICsKPiArCQkvKiBDaGVjayBp
+ZiB1c2VyIHByb3ZpZGVkIElQdjYgc291cmNlIGFkZHJlc3MuICovCj4gKwkJaWYgKGlwdjZfYWRk
+cl9lcXVhbCgoc3RydWN0IGluNl9hZGRyICopJnRjcF9pcDZfc3BlYy0+aXA2c3JjLAo+ICsJCQkJ
+ICAgIChzdHJ1Y3QgaW42X2FkZHIgKikmaXB2Nl9mdWxsX21hc2spKQo+ICsJCQluZXdfbWFzayB8
+PSBJNDBFX0wzX1Y2X1NSQ19NQVNLOwo+ICsJCWVsc2UgaWYgKGlwdjZfYWRkcl9hbnkoKHN0cnVj
+dCBpbjZfYWRkciAqKQo+ICsJCQkJICAgICAgICZ0Y3BfaXA2X3NwZWMtPmlwNnNyYykpCj4gKwkJ
+CW5ld19tYXNrICY9IH5JNDBFX0wzX1Y2X1NSQ19NQVNLOwo+ICsJCWVsc2UKPiArCQkJcmV0dXJu
+IC1FT1BOT1RTVVBQOwo+ICsKPiArCQkvKiBDaGVjayBpZiB1c2VyIHByb3ZpZGVkIGRlc3RpbmF0
+aW9uIGFkZHJlc3MuICovCj4gKwkJaWYgKGlwdjZfYWRkcl9lcXVhbCgoc3RydWN0IGluNl9hZGRy
+ICopJnRjcF9pcDZfc3BlYy0+aXA2ZHN0LAo+ICsJCQkJICAgIChzdHJ1Y3QgaW42X2FkZHIgKikm
+aXB2Nl9mdWxsX21hc2spKQo+ICsJCQluZXdfbWFzayB8PSBJNDBFX0wzX1Y2X0RTVF9NQVNLOwo+
+ICsJCWVsc2UgaWYgKGlwdjZfYWRkcl9hbnkoKHN0cnVjdCBpbjZfYWRkciAqKQo+ICsJCQkJICAg
+ICAgICZ0Y3BfaXA2X3NwZWMtPmlwNnNyYykpCj4gKwkJCW5ld19tYXNrICY9IH5JNDBFX0wzX1Y2
+X0RTVF9NQVNLOwo+ICsJCWVsc2UKPiArCQkJcmV0dXJuIC1FT1BOT1RTVVBQOwo+ICsKPiArCQkv
+KiBMNCBzb3VyY2UgcG9ydCAqLwo+ICsJCWlmICh0Y3BfaXA2X3NwZWMtPnBzcmMgPT0gaHRvbnMo
+MHhGRkZGKSkKPiArCQkJbmV3X21hc2sgfD0gSTQwRV9MNF9TUkNfTUFTSzsKPiArCQllbHNlIGlm
+ICghdGNwX2lwNl9zcGVjLT5wc3JjKQo+ICsJCQluZXdfbWFzayAmPSB+STQwRV9MNF9TUkNfTUFT
+SzsKPiArCQllbHNlCj4gKwkJCXJldHVybiAtRU9QTk9UU1VQUDsKPiArCj4gKwkJLyogTDQgZGVz
+dGluYXRpb24gcG9ydCAqLwo+ICsJCWlmICh0Y3BfaXA2X3NwZWMtPnBkc3QgPT0gaHRvbnMoMHhG
+RkZGKSkKPiArCQkJbmV3X21hc2sgfD0gSTQwRV9MNF9EU1RfTUFTSzsKPiArCQllbHNlIGlmICgh
+dGNwX2lwNl9zcGVjLT5wZHN0KQo+ICsJCQluZXdfbWFzayAmPSB+STQwRV9MNF9EU1RfTUFTSzsK
+PiArCQllbHNlCj4gKwkJCXJldHVybiAtRU9QTk9UU1VQUDsKPiArCj4gKwkJLyogRmlsdGVyaW5n
+IG9uIFRyYWZmaWMgQ2xhc3NlcyBpcyBub3Qgc3VwcG9ydGVkLiAqLwo+ICsJCWlmICh0Y3BfaXA2
+X3NwZWMtPnRjbGFzcykKPiArCQkJcmV0dXJuIC1FT1BOT1RTVVBQOwo+ICsJCWJyZWFrOwo+ICAg
+CWNhc2UgSVBfVVNFUl9GTE9XOgo+ICAgCQl1c3JfaXA0X3NwZWMgPSAmZnNwLT5tX3UudXNyX2lw
+NF9zcGVjOwo+ICAgCj4gQEAgLTQxOTMsNiArNDMxMyw0NSBAQCBzdGF0aWMgaW50IGk0MGVfY2hl
+Y2tfZmRpcl9pbnB1dF9zZXQoc3RydWN0IGk0MGVfdnNpICp2c2ksCj4gICAJCWlmICh1c3JfaXA0
+X3NwZWMtPnByb3RvKQo+ICAgCQkJcmV0dXJuIC1FSU5WQUw7Cj4gICAKPiArCQlicmVhazsKPiAr
+CWNhc2UgSVBWNl9VU0VSX0ZMT1c6Cj4gKwkJdXNyX2lwNl9zcGVjID0gJmZzcC0+bV91LnVzcl9p
+cDZfc3BlYzsKPiArCj4gKwkJLyogQ2hlY2sgaWYgdXNlciBwcm92aWRlZCBJUHY2IHNvdXJjZSBh
+ZGRyZXNzLiAqLwo+ICsJCWlmIChpcHY2X2FkZHJfZXF1YWwoKHN0cnVjdCBpbjZfYWRkciAqKSZ1
+c3JfaXA2X3NwZWMtPmlwNnNyYywKPiArCQkJCSAgICAoc3RydWN0IGluNl9hZGRyICopJmlwdjZf
+ZnVsbF9tYXNrKSkKPiArCQkJbmV3X21hc2sgfD0gSTQwRV9MM19WNl9TUkNfTUFTSzsKPiArCQll
+bHNlIGlmIChpcHY2X2FkZHJfYW55KChzdHJ1Y3QgaW42X2FkZHIgKikKPiArCQkJCSAgICAgICAm
+dXNyX2lwNl9zcGVjLT5pcDZzcmMpKQo+ICsJCQluZXdfbWFzayAmPSB+STQwRV9MM19WNl9TUkNf
+TUFTSzsKPiArCQllbHNlCj4gKwkJCXJldHVybiAtRU9QTk9UU1VQUDsKPiArCj4gKwkJLyogQ2hl
+Y2sgaWYgdXNlciBwcm92aWRlZCBkZXN0aW5hdGlvbiBhZGRyZXNzLiAqLwo+ICsJCWlmIChpcHY2
+X2FkZHJfZXF1YWwoKHN0cnVjdCBpbjZfYWRkciAqKSZ1c3JfaXA2X3NwZWMtPmlwNmRzdCwKPiAr
+CQkJCSAgICAoc3RydWN0IGluNl9hZGRyICopJmlwdjZfZnVsbF9tYXNrKSkKPiArCQkJbmV3X21h
+c2sgfD0gSTQwRV9MM19WNl9EU1RfTUFTSzsKPiArCQllbHNlIGlmIChpcHY2X2FkZHJfYW55KChz
+dHJ1Y3QgaW42X2FkZHIgKikKPiArCQkJCSAgICAgICAmdXNyX2lwNl9zcGVjLT5pcDZzcmMpKQo+
+ICsJCQluZXdfbWFzayAmPSB+STQwRV9MM19WNl9EU1RfTUFTSzsKPiArCQllbHNlCj4gKwkJCXJl
+dHVybiAtRU9QTk9UU1VQUDsKPiArCj4gKwkJaWYgKHVzcl9pcDZfc3BlYy0+bDRfNF9ieXRlcyA9
+PSBodG9ubCgweEZGRkZGRkZGKSkKPiArCQkJbmV3X21hc2sgfD0gSTQwRV9MNF9TUkNfTUFTSyB8
+IEk0MEVfTDRfRFNUX01BU0s7Cj4gKwkJZWxzZSBpZiAoIXVzcl9pcDZfc3BlYy0+bDRfNF9ieXRl
+cykKPiArCQkJbmV3X21hc2sgJj0gfihJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9EU1RfTUFT
+Syk7Cj4gKwkJZWxzZQo+ICsJCQlyZXR1cm4gLUVPUE5PVFNVUFA7Cj4gKwo+ICsJCS8qIEZpbHRl
+cmluZyBvbiBUcmFmZmljIGNsYXNzIGlzIG5vdCBzdXBwb3J0ZWQuICovCj4gKwkJaWYgKHVzcl9p
+cDZfc3BlYy0+dGNsYXNzKQo+ICsJCQlyZXR1cm4gLUVPUE5PVFNVUFA7Cj4gKwo+ICsJCS8qIEZp
+bHRlcmluZyBvbiBMNCBwcm90b2NvbCBpcyBub3Qgc3VwcG9ydGVkICovCj4gKwkJaWYgKHVzcl9p
+cDZfc3BlYy0+bDRfcHJvdG8pCj4gKwkJCXJldHVybiAtRUlOVkFMOwo+ICsKPiAgIAkJYnJlYWs7
+Cj4gICAJZGVmYXVsdDoKPiAgIAkJcmV0dXJuIC1FT1BOT1RTVVBQOwo+IEBAIC00Mzc3LDcgKzQ1
+MzYsNyBAQCBzdGF0aWMgYm9vbCBpNDBlX21hdGNoX2ZkaXJfZmlsdGVyKHN0cnVjdCBpNDBlX2Zk
+aXJfZmlsdGVyICphLAo+ICAgCSAgICBhLT5kc3RfcG9ydCAhPSBiLT5kc3RfcG9ydCB8fAo+ICAg
+CSAgICBhLT5zcmNfcG9ydCAhPSBiLT5zcmNfcG9ydCB8fAo+ICAgCSAgICBhLT5mbG93X3R5cGUg
+IT0gYi0+Zmxvd190eXBlIHx8Cj4gLQkgICAgYS0+aXA0X3Byb3RvICE9IGItPmlwNF9wcm90bykK
+PiArCSAgICBhLT5pcGw0X3Byb3RvICE9IGItPmlwbDRfcHJvdG8pCj4gICAJCXJldHVybiBmYWxz
+ZTsKPiAgIAo+ICAgCXJldHVybiB0cnVlOwo+IEBAIC00NTM1LDE1ICs0Njk0LDMzIEBAIHN0YXRp
+YyBpbnQgaTQwZV9hZGRfZmRpcl9ldGh0b29sKHN0cnVjdCBpNDBlX3ZzaSAqdnNpLAo+ICAgCWlu
+cHV0LT5kc3RfaXAgPSBmc3AtPmhfdS50Y3BfaXA0X3NwZWMuaXA0c3JjOwo+ICAgCWlucHV0LT5z
+cmNfaXAgPSBmc3AtPmhfdS50Y3BfaXA0X3NwZWMuaXA0ZHN0Owo+ICAgCWlucHV0LT5mbG93X3R5
+cGUgPSBmc3AtPmZsb3dfdHlwZSAmIH5GTE9XX0VYVDsKPiAtCWlucHV0LT5pcDRfcHJvdG8gPSBm
+c3AtPmhfdS51c3JfaXA0X3NwZWMucHJvdG87Cj4gICAKPiAtCS8qIFJldmVyc2UgdGhlIHNyYyBh
+bmQgZGVzdCBub3Rpb24sIHNpbmNlIHRoZSBIVyBleHBlY3RzIHRoZW0gdG8gYmUgZnJvbQo+IC0J
+ICogVHggcGVyc3BlY3RpdmUgd2hlcmUgYXMgdGhlIGlucHV0IGZyb20gdXNlciBpcyBmcm9tIFJ4
+IGZpbHRlciB2aWV3Lgo+IC0JICovCj4gLQlpbnB1dC0+ZHN0X3BvcnQgPSBmc3AtPmhfdS50Y3Bf
+aXA0X3NwZWMucHNyYzsKPiAtCWlucHV0LT5zcmNfcG9ydCA9IGZzcC0+aF91LnRjcF9pcDRfc3Bl
+Yy5wZHN0Owo+IC0JaW5wdXQtPmRzdF9pcCA9IGZzcC0+aF91LnRjcF9pcDRfc3BlYy5pcDRzcmM7
+Cj4gLQlpbnB1dC0+c3JjX2lwID0gZnNwLT5oX3UudGNwX2lwNF9zcGVjLmlwNGRzdDsKPiArCWlm
+IChpbnB1dC0+Zmxvd190eXBlID09IElQVjZfVVNFUl9GTE9XIHx8Cj4gKwkgICAgaW5wdXQtPmZs
+b3dfdHlwZSA9PSBVRFBfVjZfRkxPVyB8fAo+ICsJICAgIGlucHV0LT5mbG93X3R5cGUgPT0gVENQ
+X1Y2X0ZMT1cgfHwKPiArCSAgICBpbnB1dC0+Zmxvd190eXBlID09IFNDVFBfVjZfRkxPVykgewo+
+ICsJCS8qIFJldmVyc2UgdGhlIHNyYyBhbmQgZGVzdCBub3Rpb24sIHNpbmNlIHRoZSBIVyBleHBl
+Y3RzIHRoZW0KPiArCQkgKiB0byBiZSBmcm9tIFR4IHBlcnNwZWN0aXZlIHdoZXJlIGFzIHRoZSBp
+bnB1dCBmcm9tIHVzZXIgaXMKPiArCQkgKiBmcm9tIFJ4IGZpbHRlciB2aWV3Lgo+ICsJCSAqLwo+
+ICsJCWlucHV0LT5pcGw0X3Byb3RvID0gZnNwLT5oX3UudXNyX2lwNl9zcGVjLmw0X3Byb3RvOwo+
+ICsJCWlucHV0LT5kc3RfcG9ydCA9IGZzcC0+aF91LnRjcF9pcDZfc3BlYy5wc3JjOwo+ICsJCWlu
+cHV0LT5zcmNfcG9ydCA9IGZzcC0+aF91LnRjcF9pcDZfc3BlYy5wZHN0Owo+ICsJCW1lbWNweShp
+bnB1dC0+ZHN0X2lwNiwgZnNwLT5oX3UuYWhfaXA2X3NwZWMuaXA2c3JjLAo+ICsJCSAgICAgICBz
+aXplb2YoX19iZTMyKSAqIDQpOwo+ICsJCW1lbWNweShpbnB1dC0+c3JjX2lwNiwgZnNwLT5oX3Uu
+YWhfaXA2X3NwZWMuaXA2ZHN0LAo+ICsJCSAgICAgICBzaXplb2YoX19iZTMyKSAqIDQpOwo+ICsJ
+fSBlbHNlIHsKPiArCQkvKiBSZXZlcnNlIHRoZSBzcmMgYW5kIGRlc3Qgbm90aW9uLCBzaW5jZSB0
+aGUgSFcgZXhwZWN0cyB0aGVtCj4gKwkJICogdG8gYmUgZnJvbSBUeCBwZXJzcGVjdGl2ZSB3aGVy
+ZSBhcyB0aGUgaW5wdXQgZnJvbSB1c2VyIGlzCj4gKwkJICogZnJvbSBSeCBmaWx0ZXIgdmlldy4K
+PiArCQkgKi8KPiArCQlpbnB1dC0+aXBsNF9wcm90byA9IGZzcC0+aF91LnVzcl9pcDRfc3BlYy5w
+cm90bzsKPiArCQlpbnB1dC0+ZHN0X3BvcnQgPSBmc3AtPmhfdS50Y3BfaXA0X3NwZWMucHNyYzsK
+PiArCQlpbnB1dC0+c3JjX3BvcnQgPSBmc3AtPmhfdS50Y3BfaXA0X3NwZWMucGRzdDsKPiArCQlp
+bnB1dC0+ZHN0X2lwID0gZnNwLT5oX3UudGNwX2lwNF9zcGVjLmlwNHNyYzsKPiArCQlpbnB1dC0+
+c3JjX2lwID0gZnNwLT5oX3UudGNwX2lwNF9zcGVjLmlwNGRzdDsKPiArCX0KPiAgIAo+ICAgCWlm
+ICh1c2VyZGVmLmZsZXhfZmlsdGVyKSB7Cj4gICAJCWlucHV0LT5mbGV4X2ZpbHRlciA9IHRydWU7
+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9tYWlu
+LmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jCj4gaW5kZXgg
+Y2E4NjI0Zi4uNzRkNzcyMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pNDBlL2k0MGVfbWFpbi5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQw
+ZS9pNDBlX21haW4uYwo+IEBAIC0zNDg5LDYgKzM0ODksMjQgQEAgc3RhdGljIHZvaWQgaTQwZV9z
+ZXRfdnNpX3J4X21vZGUoc3RydWN0IGk0MGVfdnNpICp2c2kpCj4gICAJCWk0MGVfc2V0X3J4X21v
+ZGUodnNpLT5uZXRkZXYpOwo+ICAgfQo+ICAgCj4gKy8qKgo+ICsgKiBpNDBlX3Jlc2V0X2ZkaXJf
+ZmlsdGVyX2NudCAtIFJlc2V0IGZsb3cgZGlyZWN0b3IgZmlsdGVyIGNvdW50ZXJzCj4gKyAqIEBw
+ZjogUG9pbnRlciB0byB0aGUgdGFyZ2V0ZWQgUEYKPiArICoKPiArICogU2V0IGFsbCBmbG93IGRp
+cmVjdG9yIGNvdW50ZXJzIHRvIDAuCgpBcmVu4oCZdCBzdGF0aWMgdmFyaWFibGVzIGluaXRpYWxp
+emVkIHRvIDAgWzFdPwoKCktpbmQgcmVnYXJkcywKClBhdWwKCgpbMV06IGh0dHBzOi8vd3d3Lmdl
+ZWtzZm9yZ2Vla3Mub3JnL3N0YXRpYy12YXJpYWJsZXMtaW4tYy8KCj4gKyAqLwo+ICtzdGF0aWMg
+dm9pZCBpNDBlX3Jlc2V0X2ZkaXJfZmlsdGVyX2NudChzdHJ1Y3QgaTQwZV9wZiAqcGYpCj4gK3sK
+PiArCXBmLT5mZF90Y3A0X2ZpbHRlcl9jbnQgPSAwOwo+ICsJcGYtPmZkX3VkcDRfZmlsdGVyX2Nu
+dCA9IDA7Cj4gKwlwZi0+ZmRfc2N0cDRfZmlsdGVyX2NudCA9IDA7Cj4gKwlwZi0+ZmRfaXA0X2Zp
+bHRlcl9jbnQgPSAwOwo+ICsJcGYtPmZkX3RjcDZfZmlsdGVyX2NudCA9IDA7Cj4gKwlwZi0+ZmRf
+dWRwNl9maWx0ZXJfY250ID0gMDsKPiArCXBmLT5mZF9zY3RwNl9maWx0ZXJfY250ID0gMDsKPiAr
+CXBmLT5mZF9pcDZfZmlsdGVyX2NudCA9IDA7Cj4gK30KPiArCj4gICAvKioKPiAgICAqIGk0MGVf
+ZmRpcl9maWx0ZXJfcmVzdG9yZSAtIFJlc3RvcmUgdGhlIFNpZGViYW5kIEZsb3cgRGlyZWN0b3Ig
+ZmlsdGVycwo+ICAgICogQHZzaTogUG9pbnRlciB0byB0aGUgdGFyZ2V0ZWQgVlNJCj4gQEAgLTM1
+MDYsMTAgKzM1MjQsNyBAQCBzdGF0aWMgdm9pZCBpNDBlX2ZkaXJfZmlsdGVyX3Jlc3RvcmUoc3Ry
+dWN0IGk0MGVfdnNpICp2c2kpCj4gICAJCXJldHVybjsKPiAgIAo+ICAgCS8qIFJlc2V0IEZEaXIg
+Y291bnRlcnMgYXMgd2UncmUgcmVwbGF5aW5nIGFsbCBleGlzdGluZyBmaWx0ZXJzICovCj4gLQlw
+Zi0+ZmRfdGNwNF9maWx0ZXJfY250ID0gMDsKPiAtCXBmLT5mZF91ZHA0X2ZpbHRlcl9jbnQgPSAw
+Owo+IC0JcGYtPmZkX3NjdHA0X2ZpbHRlcl9jbnQgPSAwOwo+IC0JcGYtPmZkX2lwNF9maWx0ZXJf
+Y250ID0gMDsKPiArCWk0MGVfcmVzZXRfZmRpcl9maWx0ZXJfY250KHBmKTsKPiAgIAo+ICAgCWhs
+aXN0X2Zvcl9lYWNoX2VudHJ5X3NhZmUoZmlsdGVyLCBub2RlLAo+ICAgCQkJCSAgJnBmLT5mZGly
+X2ZpbHRlcl9saXN0LCBmZGlyX25vZGUpIHsKPiBAQCAtODM5MSwzMiArODQwNiw1MSBAQCBzdGF0
+aWMgdm9pZCBpNDBlX2ZkaXJfZmlsdGVyX2V4aXQoc3RydWN0IGk0MGVfcGYgKnBmKQo+ICAgCUlO
+SVRfTElTVF9IRUFEKCZwZi0+bDRfZmxleF9waXRfbGlzdCk7Cj4gICAKPiAgIAlwZi0+ZmRpcl9w
+Zl9hY3RpdmVfZmlsdGVycyA9IDA7Cj4gLQlwZi0+ZmRfdGNwNF9maWx0ZXJfY250ID0gMDsKPiAt
+CXBmLT5mZF91ZHA0X2ZpbHRlcl9jbnQgPSAwOwo+IC0JcGYtPmZkX3NjdHA0X2ZpbHRlcl9jbnQg
+PSAwOwo+IC0JcGYtPmZkX2lwNF9maWx0ZXJfY250ID0gMDsKPiArCWk0MGVfcmVzZXRfZmRpcl9m
+aWx0ZXJfY250KHBmKTsKPiAgIAo+ICAgCS8qIFJlcHJvZ3JhbSB0aGUgZGVmYXVsdCBpbnB1dCBz
+ZXQgZm9yIFRDUC9JUHY0ICovCj4gICAJaTQwZV93cml0ZV9mZF9pbnB1dF9zZXQocGYsIEk0MEVf
+RklMVEVSX1BDVFlQRV9OT05GX0lQVjRfVENQLAo+ICAgCQkJCUk0MEVfTDNfU1JDX01BU0sgfCBJ
+NDBFX0wzX0RTVF9NQVNLIHwKPiAgIAkJCQlJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9EU1Rf
+TUFTSyk7Cj4gICAKPiArCS8qIFJlcHJvZ3JhbSB0aGUgZGVmYXVsdCBpbnB1dCBzZXQgZm9yIFRD
+UC9JUHY2ICovCj4gKwlpNDBlX3dyaXRlX2ZkX2lucHV0X3NldChwZiwgSTQwRV9GSUxURVJfUENU
+WVBFX05PTkZfSVBWNl9UQ1AsCj4gKwkJCQlJNDBFX0wzX1Y2X1NSQ19NQVNLIHwgSTQwRV9MM19W
+Nl9EU1RfTUFTSyB8Cj4gKwkJCQlJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9EU1RfTUFTSyk7
+Cj4gKwo+ICAgCS8qIFJlcHJvZ3JhbSB0aGUgZGVmYXVsdCBpbnB1dCBzZXQgZm9yIFVEUC9JUHY0
+ICovCj4gICAJaTQwZV93cml0ZV9mZF9pbnB1dF9zZXQocGYsIEk0MEVfRklMVEVSX1BDVFlQRV9O
+T05GX0lQVjRfVURQLAo+ICAgCQkJCUk0MEVfTDNfU1JDX01BU0sgfCBJNDBFX0wzX0RTVF9NQVNL
+IHwKPiAgIAkJCQlJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9EU1RfTUFTSyk7Cj4gICAKPiAr
+CS8qIFJlcHJvZ3JhbSB0aGUgZGVmYXVsdCBpbnB1dCBzZXQgZm9yIFVEUC9JUHY2ICovCj4gKwlp
+NDBlX3dyaXRlX2ZkX2lucHV0X3NldChwZiwgSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNl9V
+RFAsCj4gKwkJCQlJNDBFX0wzX1Y2X1NSQ19NQVNLIHwgSTQwRV9MM19WNl9EU1RfTUFTSyB8Cj4g
+KwkJCQlJNDBFX0w0X1NSQ19NQVNLIHwgSTQwRV9MNF9EU1RfTUFTSyk7Cj4gKwo+ICAgCS8qIFJl
+cHJvZ3JhbSB0aGUgZGVmYXVsdCBpbnB1dCBzZXQgZm9yIFNDVFAvSVB2NCAqLwo+ICAgCWk0MGVf
+d3JpdGVfZmRfaW5wdXRfc2V0KHBmLCBJNDBFX0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY0X1NDVFAs
+Cj4gICAJCQkJSTQwRV9MM19TUkNfTUFTSyB8IEk0MEVfTDNfRFNUX01BU0sgfAo+ICAgCQkJCUk0
+MEVfTDRfU1JDX01BU0sgfCBJNDBFX0w0X0RTVF9NQVNLKTsKPiAgIAo+ICsJLyogUmVwcm9ncmFt
+IHRoZSBkZWZhdWx0IGlucHV0IHNldCBmb3IgU0NUUC9JUHY2ICovCj4gKwlpNDBlX3dyaXRlX2Zk
+X2lucHV0X3NldChwZiwgSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNl9TQ1RQLAo+ICsJCQkJ
+STQwRV9MM19WNl9TUkNfTUFTSyB8IEk0MEVfTDNfVjZfRFNUX01BU0sgfAo+ICsJCQkJSTQwRV9M
+NF9TUkNfTUFTSyB8IEk0MEVfTDRfRFNUX01BU0spOwo+ICsKPiAgIAkvKiBSZXByb2dyYW0gdGhl
+IGRlZmF1bHQgaW5wdXQgc2V0IGZvciBPdGhlci9JUHY0ICovCj4gICAJaTQwZV93cml0ZV9mZF9p
+bnB1dF9zZXQocGYsIEk0MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQVjRfT1RIRVIsCj4gICAJCQkJ
+STQwRV9MM19TUkNfTUFTSyB8IEk0MEVfTDNfRFNUX01BU0spOwo+ICAgCj4gICAJaTQwZV93cml0
+ZV9mZF9pbnB1dF9zZXQocGYsIEk0MEVfRklMVEVSX1BDVFlQRV9GUkFHX0lQVjQsCj4gICAJCQkJ
+STQwRV9MM19TUkNfTUFTSyB8IEk0MEVfTDNfRFNUX01BU0spOwo+ICsKPiArCS8qIFJlcHJvZ3Jh
+bSB0aGUgZGVmYXVsdCBpbnB1dCBzZXQgZm9yIE90aGVyL0lQdjYgKi8KPiArCWk0MGVfd3JpdGVf
+ZmRfaW5wdXRfc2V0KHBmLCBJNDBFX0ZJTFRFUl9QQ1RZUEVfTk9ORl9JUFY2X09USEVSLAo+ICsJ
+CQkJSTQwRV9MM19TUkNfTUFTSyB8IEk0MEVfTDNfRFNUX01BU0spOwo+ICsKPiArCWk0MGVfd3Jp
+dGVfZmRfaW5wdXRfc2V0KHBmLCBJNDBFX0ZJTFRFUl9QQ1RZUEVfRlJBR19JUFY2LAo+ICsJCQkJ
+STQwRV9MM19TUkNfTUFTSyB8IEk0MEVfTDNfRFNUX01BU0spOwo+ICAgfQo+ICAgCj4gICAvKioK
+PiBAQCAtODg3NSw4ICs4OTA5LDE3IEBAIHN0YXRpYyB2b2lkIGk0MGVfZGVsZXRlX2ludmFsaWRf
+ZmlsdGVyKHN0cnVjdCBpNDBlX3BmICpwZiwKPiAgIAljYXNlIFNDVFBfVjRfRkxPVzoKPiAgIAkJ
+cGYtPmZkX3NjdHA0X2ZpbHRlcl9jbnQtLTsKPiAgIAkJYnJlYWs7Cj4gKwljYXNlIFRDUF9WNl9G
+TE9XOgo+ICsJCXBmLT5mZF90Y3A2X2ZpbHRlcl9jbnQtLTsKPiArCQlicmVhazsKPiArCWNhc2Ug
+VURQX1Y2X0ZMT1c6Cj4gKwkJcGYtPmZkX3VkcDZfZmlsdGVyX2NudC0tOwo+ICsJCWJyZWFrOwo+
+ICsJY2FzZSBTQ1RQX1Y2X0ZMT1c6Cj4gKwkJcGYtPmZkX3VkcDZfZmlsdGVyX2NudC0tOwo+ICsJ
+CWJyZWFrOwo+ICAgCWNhc2UgSVBfVVNFUl9GTE9XOgo+IC0JCXN3aXRjaCAoZmlsdGVyLT5pcDRf
+cHJvdG8pIHsKPiArCQlzd2l0Y2ggKGZpbHRlci0+aXBsNF9wcm90bykgewo+ICAgCQljYXNlIElQ
+UFJPVE9fVENQOgo+ICAgCQkJcGYtPmZkX3RjcDRfZmlsdGVyX2NudC0tOwo+ICAgCQkJYnJlYWs7
+Cj4gQEAgLTg4OTEsNiArODkzNCwyMiBAQCBzdGF0aWMgdm9pZCBpNDBlX2RlbGV0ZV9pbnZhbGlk
+X2ZpbHRlcihzdHJ1Y3QgaTQwZV9wZiAqcGYsCj4gICAJCQlicmVhazsKPiAgIAkJfQo+ICAgCQli
+cmVhazsKPiArCWNhc2UgSVBWNl9VU0VSX0ZMT1c6Cj4gKwkJc3dpdGNoIChmaWx0ZXItPmlwbDRf
+cHJvdG8pIHsKPiArCQljYXNlIElQUFJPVE9fVENQOgo+ICsJCQlwZi0+ZmRfdGNwNl9maWx0ZXJf
+Y250LS07Cj4gKwkJCWJyZWFrOwo+ICsJCWNhc2UgSVBQUk9UT19VRFA6Cj4gKwkJCXBmLT5mZF91
+ZHA2X2ZpbHRlcl9jbnQtLTsKPiArCQkJYnJlYWs7Cj4gKwkJY2FzZSBJUFBST1RPX1NDVFA6Cj4g
+KwkJCXBmLT5mZF9zY3RwNl9maWx0ZXJfY250LS07Cj4gKwkJCWJyZWFrOwo+ICsJCWNhc2UgSVBQ
+Uk9UT19JUDoKPiArCQkJcGYtPmZkX2lwNl9maWx0ZXJfY250LS07Cj4gKwkJCWJyZWFrOwo+ICsJ
+CX0KPiArCQlicmVhazsKPiAgIAl9Cj4gICAKPiAgIAkvKiBSZW1vdmUgdGhlIGZpbHRlciBmcm9t
+IHRoZSBsaXN0IGFuZCBmcmVlIG1lbW9yeSAqLwo+IEBAIC04OTI0LDcgKzg5ODMsNyBAQCB2b2lk
+IGk0MGVfZmRpcl9jaGVja19hbmRfcmVlbmFibGUoc3RydWN0IGk0MGVfcGYgKnBmKQo+ICAgCSAq
+IHJ1bGVzIGFjdGl2ZS4KPiAgIAkgKi8KPiAgIAlpZiAoKGZjbnRfcHJvZyA8IChmY250X2F2YWls
+IC0gSTQwRV9GRElSX0JVRkZFUl9IRUFEX1JPT01fRk9SX0FUUikpICYmCj4gLQkgICAgKHBmLT5m
+ZF90Y3A0X2ZpbHRlcl9jbnQgPT0gMCkpCj4gKwkgICAgcGYtPmZkX3RjcDRfZmlsdGVyX2NudCA9
+PSAwICYmIHBmLT5mZF90Y3A2X2ZpbHRlcl9jbnQgPT0gMCkKPiAgIAkJaTQwZV9yZWVuYWJsZV9m
+ZGlyX2F0cihwZik7Cj4gICAKPiAgIAkvKiBpZiBodyBoYWQgYSBwcm9ibGVtIGFkZGluZyBhIGZp
+bHRlciwgZGVsZXRlIGl0ICovCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
+dGVsL2k0MGUvaTQwZV90eHJ4LmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0
+MGVfdHhyeC5jCj4gaW5kZXggMmZiNmRkZC4uYzFiYTRmMCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdHhyeC5jCj4gKysrIGIvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cnguYwo+IEBAIC00Miw5ICs0Miw2IEBAIHN0YXRp
+YyB2b2lkIGk0MGVfZmRpcihzdHJ1Y3QgaTQwZV9yaW5nICp0eF9yaW5nLAo+ICAgCWZsZXhfcHR5
+cGUgfD0gSTQwRV9UWERfRkxUUl9RVzBfUENUWVBFX01BU0sgJgo+ICAgCQkgICAgICAoZmRhdGEt
+PnBjdHlwZSA8PCBJNDBFX1RYRF9GTFRSX1FXMF9QQ1RZUEVfU0hJRlQpOwo+ICAgCj4gLQlmbGV4
+X3B0eXBlIHw9IEk0MEVfVFhEX0ZMVFJfUVcwX1BDVFlQRV9NQVNLICYKPiAtCQkgICAgICAoZmRh
+dGEtPmZsZXhfb2Zmc2V0IDw8IEk0MEVfVFhEX0ZMVFJfUVcwX0ZMRVhPRkZfU0hJRlQpOwo+IC0K
+PiAgIAkvKiBVc2UgTEFOIFZTSSBJZCBpZiBub3QgcHJvZ3JhbW1lZCBieSB1c2VyICovCj4gICAJ
+ZmxleF9wdHlwZSB8PSBJNDBFX1RYRF9GTFRSX1FXMF9ERVNUX1ZTSV9NQVNLICYKPiAgIAkJICAg
+ICAgKCh1MzIpKGZkYXRhLT5kZXN0X3ZzaSA/IDogcGYtPnZzaVtwZi0+bGFuX3ZzaV0tPmlkKSA8
+PAo+IEBAIC0xNjAsNTIgKzE1Nyw4MyBAQCBzdGF0aWMgaW50IGk0MGVfcHJvZ3JhbV9mZGlyX2Zp
+bHRlcihzdHJ1Y3QgaTQwZV9mZGlyX2ZpbHRlciAqZmRpcl9kYXRhLAo+ICAgCXJldHVybiAtMTsK
+PiAgIH0KPiAgIAo+IC0jZGVmaW5lIElQX0hFQURFUl9PRkZTRVQgMTQKPiAtI2RlZmluZSBJNDBF
+X1VEUElQX0RVTU1ZX1BBQ0tFVF9MRU4gNDIKPiArI2RlZmluZSBJUF9IRUFERVJfT0ZGU0VUCQkx
+NAo+ICsjZGVmaW5lIEk0MEVfVURQSVBfRFVNTVlfUEFDS0VUX0xFTgk0Mgo+ICsjZGVmaW5lIEk0
+MEVfVURQSVA2X0RVTU1ZX1BBQ0tFVF9MRU4JNjIKPiAgIC8qKgo+IC0gKiBpNDBlX2FkZF9kZWxf
+ZmRpcl91ZHB2NCAtIEFkZC9SZW1vdmUgVURQdjQgZmlsdGVycwo+ICsgKiBpNDBlX2FkZF9kZWxf
+ZmRpcl91ZHAgLSBBZGQvUmVtb3ZlIFVEUCBmaWx0ZXJzCj4gICAgKiBAdnNpOiBwb2ludGVyIHRv
+IHRoZSB0YXJnZXRlZCBWU0kKPiAgICAqIEBmZF9kYXRhOiB0aGUgZmxvdyBkaXJlY3RvciBkYXRh
+IHJlcXVpcmVkIGZvciB0aGUgRkRpciBkZXNjcmlwdG9yCj4gICAgKiBAYWRkOiB0cnVlIGFkZHMg
+YSBmaWx0ZXIsIGZhbHNlIHJlbW92ZXMgaXQKPiArICogQGlwdjQ6IHRydWUgaXMgdjQsIGZhbHNl
+IGlzIHY2Cj4gICAgKgo+ICAgICogUmV0dXJucyAwIGlmIHRoZSBmaWx0ZXJzIHdlcmUgc3VjY2Vz
+c2Z1bGx5IGFkZGVkIG9yIHJlbW92ZWQKPiAgICAqKi8KPiAtc3RhdGljIGludCBpNDBlX2FkZF9k
+ZWxfZmRpcl91ZHB2NChzdHJ1Y3QgaTQwZV92c2kgKnZzaSwKPiAtCQkJCSAgIHN0cnVjdCBpNDBl
+X2ZkaXJfZmlsdGVyICpmZF9kYXRhLAo+IC0JCQkJICAgYm9vbCBhZGQpCj4gK3N0YXRpYyBpbnQg
+aTQwZV9hZGRfZGVsX2ZkaXJfdWRwKHN0cnVjdCBpNDBlX3ZzaSAqdnNpLAo+ICsJCQkJIHN0cnVj
+dCBpNDBlX2ZkaXJfZmlsdGVyICpmZF9kYXRhLAo+ICsJCQkJIGJvb2wgYWRkLAo+ICsJCQkJIGJv
+b2wgaXB2NCkKPiAgIHsKPiAgIAlzdHJ1Y3QgaTQwZV9wZiAqcGYgPSB2c2ktPmJhY2s7Cj4gKwlz
+dHJ1Y3QgaXB2NmhkciAqaXB2NjsKPiAgIAlzdHJ1Y3QgdWRwaGRyICp1ZHA7Cj4gICAJc3RydWN0
+IGlwaGRyICppcDsKPiAgIAl1OCAqcmF3X3BhY2tldDsKPiAgIAlpbnQgcmV0Owo+IC0Jc3RhdGlj
+IGNoYXIgcGFja2V0W10gPSB7MCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMHgw
+OCwgMCwKPiAtCQkweDQ1LCAwLCAwLCAweDFjLCAwLCAwLCAweDQwLCAwLCAweDQwLCAweDExLCAw
+LCAwLCAwLCAwLCAwLCAwLAo+IC0JCTAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB9
+Owo+ICsJc3RhdGljIGNoYXIgcGFja2V0X2lwdjRbXSA9IHswLCAwLCAwLCAwLCAwLCAwLCAwLCAw
+LCAwLCAwLCAwLCAwLCAweDA4LAo+ICsJCTAsIDB4NDUsIDAsIDAsIDB4MWMsIDAsIDAsIDB4NDAs
+IDAsIDB4NDAsIDB4MTEsIDAsIDAsIDAsIDAsIDAsCj4gKwkJMCwgMCwgMCwgMCwgMCwgMCwgMCwg
+MCwgMCwgMCwgMCwgMCwgMH07Cj4gKwlzdGF0aWMgY2hhciBwYWNrZXRfaXB2NltdID0gezAsIDAs
+IDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB4ODYsCj4gKwkJMHhkZCwgMHg2MCwgMCwg
+MCwgMCwgMCwgMCwgMHgxMSwgMCwKPiArCQkvKnNyYyBhZGRyZXNzKi8wLCAwLCAwLCAwLCAwLCAw
+LCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLAo+ICsJCS8qZHN0IGFkZHJlc3MqLzAsIDAs
+IDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsCj4gKwkJLyp1ZHAgaGVh
+ZGVyKi8KPiArCQkwLCAwLCAwLCAwLCAwLCAwLCAwLCAwfTsKPiAgIAo+ICAgCXJhd19wYWNrZXQg
+PSBremFsbG9jKEk0MEVfRkRJUl9NQVhfUkFXX1BBQ0tFVF9TSVpFLCBHRlBfS0VSTkVMKTsKPiAg
+IAlpZiAoIXJhd19wYWNrZXQpCj4gICAJCXJldHVybiAtRU5PTUVNOwo+IC0JbWVtY3B5KHJhd19w
+YWNrZXQsIHBhY2tldCwgSTQwRV9VRFBJUF9EVU1NWV9QQUNLRVRfTEVOKTsKPiArCWlmIChpcHY0
+KSB7Cj4gKwkJbWVtY3B5KHJhd19wYWNrZXQsIHBhY2tldF9pcHY0LCBJNDBFX1VEUElQX0RVTU1Z
+X1BBQ0tFVF9MRU4pOwo+ICAgCj4gLQlpcCA9IChzdHJ1Y3QgaXBoZHIgKikocmF3X3BhY2tldCAr
+IElQX0hFQURFUl9PRkZTRVQpOwo+IC0JdWRwID0gKHN0cnVjdCB1ZHBoZHIgKikocmF3X3BhY2tl
+dCArIElQX0hFQURFUl9PRkZTRVQKPiAtCSAgICAgICsgc2l6ZW9mKHN0cnVjdCBpcGhkcikpOwo+
+ICsJCWlwID0gKHN0cnVjdCBpcGhkciAqKShyYXdfcGFja2V0ICsgSVBfSEVBREVSX09GRlNFVCk7
+Cj4gKwkJdWRwID0gKHN0cnVjdCB1ZHBoZHIgKikocmF3X3BhY2tldCArIElQX0hFQURFUl9PRkZT
+RVQKPiArCQkgICAgICArIHNpemVvZihzdHJ1Y3QgaXBoZHIpKTsKPiAgIAo+IC0JaXAtPmRhZGRy
+ID0gZmRfZGF0YS0+ZHN0X2lwOwo+ICsJCWlwLT5kYWRkciA9IGZkX2RhdGEtPmRzdF9pcDsKPiAr
+CQlpcC0+c2FkZHIgPSBmZF9kYXRhLT5zcmNfaXA7Cj4gKwl9IGVsc2Ugewo+ICsJCW1lbWNweShy
+YXdfcGFja2V0LCBwYWNrZXRfaXB2NiwgSTQwRV9VRFBJUDZfRFVNTVlfUEFDS0VUX0xFTik7Cj4g
+KwkJaXB2NiA9IChzdHJ1Y3QgaXB2NmhkciAqKShyYXdfcGFja2V0ICsgSVBfSEVBREVSX09GRlNF
+VCk7Cj4gKwkJdWRwID0gKHN0cnVjdCB1ZHBoZHIgKikocmF3X3BhY2tldCArIElQX0hFQURFUl9P
+RkZTRVQKPiArCQkgICAgICArIHNpemVvZihzdHJ1Y3QgaXB2NmhkcikpOwo+ICsKPiArCQltZW1j
+cHkoaXB2Ni0+c2FkZHIuaW42X3UudTZfYWRkcjMyLAo+ICsJCSAgICAgICBmZF9kYXRhLT5zcmNf
+aXA2LCBzaXplb2YoX19iZTMyKSAqIDQpOwo+ICsJCW1lbWNweShpcHY2LT5kYWRkci5pbjZfdS51
+Nl9hZGRyMzIsCj4gKwkJICAgICAgIGZkX2RhdGEtPmRzdF9pcDYsIHNpemVvZihfX2JlMzIpICog
+NCk7Cj4gKwl9Cj4gICAJdWRwLT5kZXN0ID0gZmRfZGF0YS0+ZHN0X3BvcnQ7Cj4gLQlpcC0+c2Fk
+ZHIgPSBmZF9kYXRhLT5zcmNfaXA7Cj4gICAJdWRwLT5zb3VyY2UgPSBmZF9kYXRhLT5zcmNfcG9y
+dDsKPiAgIAo+ICAgCWlmIChmZF9kYXRhLT5mbGV4X2ZpbHRlcikgewo+IC0JCXU4ICpwYXlsb2Fk
+ID0gcmF3X3BhY2tldCArIEk0MEVfVURQSVBfRFVNTVlfUEFDS0VUX0xFTjsKPiArCQl1OCAqcGF5
+bG9hZDsKPiAgIAkJX19iZTE2IHBhdHRlcm4gPSBmZF9kYXRhLT5mbGV4X3dvcmQ7Cj4gICAJCXUx
+NiBvZmYgPSBmZF9kYXRhLT5mbGV4X29mZnNldDsKPiAgIAo+ICsJCWlmIChpcHY0KQo+ICsJCQlw
+YXlsb2FkID0gcmF3X3BhY2tldCArIEk0MEVfVURQSVBfRFVNTVlfUEFDS0VUX0xFTjsKPiArCQll
+bHNlCj4gKwkJCXBheWxvYWQgPSByYXdfcGFja2V0ICsgSTQwRV9VRFBJUDZfRFVNTVlfUEFDS0VU
+X0xFTjsKPiArCj4gICAJCSooKF9fZm9yY2UgX19iZTE2ICopKHBheWxvYWQgKyBvZmYpKSA9IHBh
+dHRlcm47Cj4gICAJfQo+ICAgCj4gLQlmZF9kYXRhLT5wY3R5cGUgPSBJNDBFX0ZJTFRFUl9QQ1RZ
+UEVfTk9ORl9JUFY0X1VEUDsKPiArCWlmIChpcHY0KQo+ICsJCWZkX2RhdGEtPnBjdHlwZSA9IEk0
+MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQVjRfVURQOwo+ICsJZWxzZQo+ICsJCWZkX2RhdGEtPnBj
+dHlwZSA9IEk0MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQVjZfVURQOwo+ICsKPiAgIAlyZXQgPSBp
+NDBlX3Byb2dyYW1fZmRpcl9maWx0ZXIoZmRfZGF0YSwgcmF3X3BhY2tldCwgcGYsIGFkZCk7Cj4g
+ICAJaWYgKHJldCkgewo+ICAgCQlkZXZfaW5mbygmcGYtPnBkZXYtPmRldiwKPiBAQCAtMjI1LDYx
+ICsyNTMsMTA0IEBAIHN0YXRpYyBpbnQgaTQwZV9hZGRfZGVsX2ZkaXJfdWRwdjQoc3RydWN0IGk0
+MGVfdnNpICp2c2ksCj4gICAJCQkJIGZkX2RhdGEtPnBjdHlwZSwgZmRfZGF0YS0+ZmRfaWQpOwo+
+ICAgCX0KPiAgIAo+IC0JaWYgKGFkZCkKPiAtCQlwZi0+ZmRfdWRwNF9maWx0ZXJfY250Kys7Cj4g
+LQllbHNlCj4gLQkJcGYtPmZkX3VkcDRfZmlsdGVyX2NudC0tOwo+ICsJaWYgKGFkZCkgewo+ICsJ
+CWlmIChpcHY0KQo+ICsJCQlwZi0+ZmRfdWRwNF9maWx0ZXJfY250Kys7Cj4gKwkJZWxzZQo+ICsJ
+CQlwZi0+ZmRfdWRwNl9maWx0ZXJfY250Kys7Cj4gKwl9IGVsc2Ugewo+ICsJCWlmIChpcHY0KQo+
+ICsJCQlwZi0+ZmRfdWRwNF9maWx0ZXJfY250LS07Cj4gKwkJZWxzZQo+ICsJCQlwZi0+ZmRfdWRw
+Nl9maWx0ZXJfY250LS07Cj4gKwl9Cj4gICAKPiAgIAlyZXR1cm4gMDsKPiAgIH0KPiAgIAo+IC0j
+ZGVmaW5lIEk0MEVfVENQSVBfRFVNTVlfUEFDS0VUX0xFTiA1NAo+ICsjZGVmaW5lIEk0MEVfVENQ
+SVBfRFVNTVlfUEFDS0VUX0xFTgk1NAo+ICsjZGVmaW5lIEk0MEVfVENQSVA2X0RVTU1ZX1BBQ0tF
+VF9MRU4JNzQKPiAgIC8qKgo+IC0gKiBpNDBlX2FkZF9kZWxfZmRpcl90Y3B2NCAtIEFkZC9SZW1v
+dmUgVENQdjQgZmlsdGVycwo+ICsgKiBpNDBlX2FkZF9kZWxfZmRpcl90Y3AgLSBBZGQvUmVtb3Zl
+IFRDUHY0IGZpbHRlcnMKPiAgICAqIEB2c2k6IHBvaW50ZXIgdG8gdGhlIHRhcmdldGVkIFZTSQo+
+ICAgICogQGZkX2RhdGE6IHRoZSBmbG93IGRpcmVjdG9yIGRhdGEgcmVxdWlyZWQgZm9yIHRoZSBG
+RGlyIGRlc2NyaXB0b3IKPiAgICAqIEBhZGQ6IHRydWUgYWRkcyBhIGZpbHRlciwgZmFsc2UgcmVt
+b3ZlcyBpdAo+ICsgKiBAaXB2NDogdHJ1ZSBpcyB2NCwgZmFsc2UgaXMgdjYKPiAgICAqCj4gICAg
+KiBSZXR1cm5zIDAgaWYgdGhlIGZpbHRlcnMgd2VyZSBzdWNjZXNzZnVsbHkgYWRkZWQgb3IgcmVt
+b3ZlZAo+ICAgICoqLwo+IC1zdGF0aWMgaW50IGk0MGVfYWRkX2RlbF9mZGlyX3RjcHY0KHN0cnVj
+dCBpNDBlX3ZzaSAqdnNpLAo+IC0JCQkJICAgc3RydWN0IGk0MGVfZmRpcl9maWx0ZXIgKmZkX2Rh
+dGEsCj4gLQkJCQkgICBib29sIGFkZCkKPiArc3RhdGljIGludCBpNDBlX2FkZF9kZWxfZmRpcl90
+Y3Aoc3RydWN0IGk0MGVfdnNpICp2c2ksCj4gKwkJCQkgc3RydWN0IGk0MGVfZmRpcl9maWx0ZXIg
+KmZkX2RhdGEsCj4gKwkJCQkgYm9vbCBhZGQsCj4gKwkJCQkgYm9vbCBpcHY0KQo+ICAgewo+ICAg
+CXN0cnVjdCBpNDBlX3BmICpwZiA9IHZzaS0+YmFjazsKPiArCXN0cnVjdCBpcHY2aGRyICppcHY2
+Owo+ICAgCXN0cnVjdCB0Y3BoZHIgKnRjcDsKPiAgIAlzdHJ1Y3QgaXBoZHIgKmlwOwo+ICAgCXU4
+ICpyYXdfcGFja2V0Owo+ICAgCWludCByZXQ7Cj4gICAJLyogRHVtbXkgcGFja2V0ICovCj4gLQlz
+dGF0aWMgY2hhciBwYWNrZXRbXSA9IHswLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAw
+LCAweDA4LCAwLAo+IC0JCTB4NDUsIDAsIDAsIDB4MjgsIDAsIDAsIDB4NDAsIDAsIDB4NDAsIDB4
+NiwgMCwgMCwgMCwgMCwgMCwgMCwKPiAtCQkwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAw
+LCAwLCAwLCAwLCAwLCAwLCAweDgwLCAweDExLAo+ICsJc3RhdGljIGNoYXIgcGFja2V0X2lwdjRb
+XSA9IHswLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAweDA4LAo+ICsJCTAsIDB4
+NDUsIDAsIDAsIDB4MjgsIDAsIDAsIDB4NDAsIDAsIDB4NDAsIDB4NiwgMCwgMCwgMCwgMCwgMCwK
+PiArCQkwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAw
+eDUwLCAweDExLAo+ICsJCTB4MCwgMHg3MiwgMCwgMCwgMCwgMH07Cj4gKwlzdGF0aWMgY2hhciBw
+YWNrZXRfaXB2NltdID0gezAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB4ODYs
+Cj4gKwkJMHhkZCwgMHg2MCwgMCwgMCwgMCwgMCwgMCwgMHg2LCAwLAo+ICsJCS8qc3JjIGFkZHJl
+c3MqLzAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsCj4gKwkJ
+Lypkc3QgYWRkcmVzcyovMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwg
+MCwgMCwKPiArCQkwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAweDUwLCAweDEx
+LAo+ICAgCQkweDAsIDB4NzIsIDAsIDAsIDAsIDB9Owo+ICAgCj4gICAJcmF3X3BhY2tldCA9IGt6
+YWxsb2MoSTQwRV9GRElSX01BWF9SQVdfUEFDS0VUX1NJWkUsIEdGUF9LRVJORUwpOwo+ICAgCWlm
+ICghcmF3X3BhY2tldCkKPiAgIAkJcmV0dXJuIC1FTk9NRU07Cj4gLQltZW1jcHkocmF3X3BhY2tl
+dCwgcGFja2V0LCBJNDBFX1RDUElQX0RVTU1ZX1BBQ0tFVF9MRU4pOwo+ICsJaWYgKGlwdjQpIHsK
+PiArCQltZW1jcHkocmF3X3BhY2tldCwgcGFja2V0X2lwdjQsIEk0MEVfVENQSVBfRFVNTVlfUEFD
+S0VUX0xFTik7Cj4gKwo+ICsJCWlwID0gKHN0cnVjdCBpcGhkciAqKShyYXdfcGFja2V0ICsgSVBf
+SEVBREVSX09GRlNFVCk7Cj4gKwkJdGNwID0gKHN0cnVjdCB0Y3BoZHIgKikocmF3X3BhY2tldCAr
+IElQX0hFQURFUl9PRkZTRVQKPiArCQkgICAgICArIHNpemVvZihzdHJ1Y3QgaXBoZHIpKTsKPiAr
+Cj4gKwkJaXAtPmRhZGRyID0gZmRfZGF0YS0+ZHN0X2lwOwo+ICsJCWlwLT5zYWRkciA9IGZkX2Rh
+dGEtPnNyY19pcDsKPiArCX0gZWxzZSB7Cj4gKwkJbWVtY3B5KHJhd19wYWNrZXQsIHBhY2tldF9p
+cHY2LCBJNDBFX1RDUElQNl9EVU1NWV9QQUNLRVRfTEVOKTsKPiArCj4gKwkJdGNwID0gKHN0cnVj
+dCB0Y3BoZHIgKikocmF3X3BhY2tldCArIElQX0hFQURFUl9PRkZTRVQKPiArCQkgICAgICArIHNp
+emVvZihzdHJ1Y3QgaXB2NmhkcikpOwo+ICsJCWlwdjYgPSAoc3RydWN0IGlwdjZoZHIgKikocmF3
+X3BhY2tldCArIElQX0hFQURFUl9PRkZTRVQpOwo+ICsKPiArCQltZW1jcHkoaXB2Ni0+c2FkZHIu
+aW42X3UudTZfYWRkcjMyLAo+ICsJCSAgICAgICBmZF9kYXRhLT5zcmNfaXA2LCBzaXplb2YoX19i
+ZTMyKSAqIDQpOwo+ICsJCW1lbWNweShpcHY2LT5kYWRkci5pbjZfdS51Nl9hZGRyMzIsCj4gKwkJ
+ICAgICAgIGZkX2RhdGEtPmRzdF9pcDYsIHNpemVvZihfX2JlMzIpICogNCk7Cj4gKwl9Cj4gICAK
+PiAgIAlpcCA9IChzdHJ1Y3QgaXBoZHIgKikocmF3X3BhY2tldCArIElQX0hFQURFUl9PRkZTRVQp
+Owo+ICAgCXRjcCA9IChzdHJ1Y3QgdGNwaGRyICopKHJhd19wYWNrZXQgKyBJUF9IRUFERVJfT0ZG
+U0VUCj4gICAJICAgICAgKyBzaXplb2Yoc3RydWN0IGlwaGRyKSk7Cj4gICAKPiAtCWlwLT5kYWRk
+ciA9IGZkX2RhdGEtPmRzdF9pcDsKPiAgIAl0Y3AtPmRlc3QgPSBmZF9kYXRhLT5kc3RfcG9ydDsK
+PiAtCWlwLT5zYWRkciA9IGZkX2RhdGEtPnNyY19pcDsKPiAgIAl0Y3AtPnNvdXJjZSA9IGZkX2Rh
+dGEtPnNyY19wb3J0Owo+ICAgCj4gICAJaWYgKGZkX2RhdGEtPmZsZXhfZmlsdGVyKSB7Cj4gLQkJ
+dTggKnBheWxvYWQgPSByYXdfcGFja2V0ICsgSTQwRV9UQ1BJUF9EVU1NWV9QQUNLRVRfTEVOOwo+
+ICsJCXU4ICpwYXlsb2FkOwo+ICAgCQlfX2JlMTYgcGF0dGVybiA9IGZkX2RhdGEtPmZsZXhfd29y
+ZDsKPiAgIAkJdTE2IG9mZiA9IGZkX2RhdGEtPmZsZXhfb2Zmc2V0Owo+ICAgCj4gKwkJaWYgKGlw
+djQpCj4gKwkJCXBheWxvYWQgPSByYXdfcGFja2V0ICsgSTQwRV9UQ1BJUF9EVU1NWV9QQUNLRVRf
+TEVOOwo+ICsJCWVsc2UKPiArCQkJcGF5bG9hZCA9IHJhd19wYWNrZXQgKyBJNDBFX1RDUElQNl9E
+VU1NWV9QQUNLRVRfTEVOOwo+ICsKPiAgIAkJKigoX19mb3JjZSBfX2JlMTYgKikocGF5bG9hZCAr
+IG9mZikpID0gcGF0dGVybjsKPiAgIAl9Cj4gICAKPiAtCWZkX2RhdGEtPnBjdHlwZSA9IEk0MEVf
+RklMVEVSX1BDVFlQRV9OT05GX0lQVjRfVENQOwo+ICsJaWYgKGlwdjQpCj4gKwkJZmRfZGF0YS0+
+cGN0eXBlID0gSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNF9UQ1A7Cj4gKwllbHNlCj4gKwkJ
+ZmRfZGF0YS0+cGN0eXBlID0gSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNl9UQ1A7Cj4gICAJ
+cmV0ID0gaTQwZV9wcm9ncmFtX2ZkaXJfZmlsdGVyKGZkX2RhdGEsIHJhd19wYWNrZXQsIHBmLCBh
+ZGQpOwo+ICAgCWlmIChyZXQpIHsKPiAgIAkJZGV2X2luZm8oJnBmLT5wZGV2LT5kZXYsCj4gQEAg
+LTI5OSw2NSArMzcwLDEwMiBAQCBzdGF0aWMgaW50IGk0MGVfYWRkX2RlbF9mZGlyX3RjcHY0KHN0
+cnVjdCBpNDBlX3ZzaSAqdnNpLAo+ICAgCX0KPiAgIAo+ICAgCWlmIChhZGQpIHsKPiAtCQlwZi0+
+ZmRfdGNwNF9maWx0ZXJfY250Kys7Cj4gKwkJaWYgKGlwdjQpCj4gKwkJCXBmLT5mZF90Y3A0X2Zp
+bHRlcl9jbnQrKzsKPiArCQllbHNlCj4gKwkJCXBmLT5mZF90Y3A2X2ZpbHRlcl9jbnQrKzsKPiAg
+IAkJaWYgKChwZi0+ZmxhZ3MgJiBJNDBFX0ZMQUdfRkRfQVRSX0VOQUJMRUQpICYmCj4gICAJCSAg
+ICBJNDBFX0RFQlVHX0ZEICYgcGYtPmh3LmRlYnVnX21hc2spCj4gICAJCQlkZXZfaW5mbygmcGYt
+PnBkZXYtPmRldiwgIkZvcmNpbmcgQVRSIG9mZiwgc2lkZWJhbmQgcnVsZXMgZm9yIFRDUC9JUHY0
+IGZsb3cgYmVpbmcgYXBwbGllZFxuIik7Cj4gICAJCXNldF9iaXQoX19JNDBFX0ZEX0FUUl9BVVRP
+X0RJU0FCTEVELCBwZi0+c3RhdGUpOwo+ICAgCX0gZWxzZSB7Cj4gLQkJcGYtPmZkX3RjcDRfZmls
+dGVyX2NudC0tOwo+ICsJCWlmIChpcHY0KQo+ICsJCQlwZi0+ZmRfdGNwNF9maWx0ZXJfY250LS07
+Cj4gKwkJZWxzZQo+ICsJCQlwZi0+ZmRfdGNwNl9maWx0ZXJfY250LS07Cj4gICAJfQo+ICAgCj4g
+ICAJcmV0dXJuIDA7Cj4gICB9Cj4gICAKPiAtI2RlZmluZSBJNDBFX1NDVFBJUF9EVU1NWV9QQUNL
+RVRfTEVOIDQ2Cj4gKyNkZWZpbmUgSTQwRV9TQ1RQSVBfRFVNTVlfUEFDS0VUX0xFTgk0Ngo+ICsj
+ZGVmaW5lIEk0MEVfU0NUUElQNl9EVU1NWV9QQUNLRVRfTEVOCTY2Cj4gICAvKioKPiAtICogaTQw
+ZV9hZGRfZGVsX2ZkaXJfc2N0cHY0IC0gQWRkL1JlbW92ZSBTQ1RQdjQgRmxvdyBEaXJlY3RvciBm
+aWx0ZXJzIGZvcgo+ICsgKiBpNDBlX2FkZF9kZWxfZmRpcl9zY3RwIC0gQWRkL1JlbW92ZSBTQ1RQ
+djQgRmxvdyBEaXJlY3RvciBmaWx0ZXJzIGZvcgo+ICAgICogYSBzcGVjaWZpYyBmbG93IHNwZWMK
+PiAgICAqIEB2c2k6IHBvaW50ZXIgdG8gdGhlIHRhcmdldGVkIFZTSQo+ICAgICogQGZkX2RhdGE6
+IHRoZSBmbG93IGRpcmVjdG9yIGRhdGEgcmVxdWlyZWQgZm9yIHRoZSBGRGlyIGRlc2NyaXB0b3IK
+PiAgICAqIEBhZGQ6IHRydWUgYWRkcyBhIGZpbHRlciwgZmFsc2UgcmVtb3ZlcyBpdAo+ICsgKiBA
+aXB2NDogdHJ1ZSBpcyB2NCwgZmFsc2UgaXMgdjYKPiAgICAqCj4gICAgKiBSZXR1cm5zIDAgaWYg
+dGhlIGZpbHRlcnMgd2VyZSBzdWNjZXNzZnVsbHkgYWRkZWQgb3IgcmVtb3ZlZAo+ICAgICoqLwo+
+IC1zdGF0aWMgaW50IGk0MGVfYWRkX2RlbF9mZGlyX3NjdHB2NChzdHJ1Y3QgaTQwZV92c2kgKnZz
+aSwKPiAtCQkJCSAgICBzdHJ1Y3QgaTQwZV9mZGlyX2ZpbHRlciAqZmRfZGF0YSwKPiAtCQkJCSAg
+ICBib29sIGFkZCkKPiArc3RhdGljIGludCBpNDBlX2FkZF9kZWxfZmRpcl9zY3RwKHN0cnVjdCBp
+NDBlX3ZzaSAqdnNpLAo+ICsJCQkJICBzdHJ1Y3QgaTQwZV9mZGlyX2ZpbHRlciAqZmRfZGF0YSwK
+PiArCQkJCSAgYm9vbCBhZGQsCj4gKwkJCQkgIGJvb2wgaXB2NCkKPiAgIHsKPiAgIAlzdHJ1Y3Qg
+aTQwZV9wZiAqcGYgPSB2c2ktPmJhY2s7Cj4gKwlzdHJ1Y3QgaXB2NmhkciAqaXB2NjsKPiAgIAlz
+dHJ1Y3Qgc2N0cGhkciAqc2N0cDsKPiAgIAlzdHJ1Y3QgaXBoZHIgKmlwOwo+ICAgCXU4ICpyYXdf
+cGFja2V0Owo+ICAgCWludCByZXQ7Cj4gLQkvKiBEdW1teSBwYWNrZXQgKi8KPiAtCXN0YXRpYyBj
+aGFyIHBhY2tldFtdID0gezAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB4MDgs
+IDAsCj4gLQkJMHg0NSwgMCwgMCwgMHgyMCwgMCwgMCwgMHg0MCwgMCwgMHg0MCwgMHg4NCwgMCwg
+MCwgMCwgMCwgMCwgMCwKPiAtCQkwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAw
+LCAwLCAwLCAwfTsKPiAtCj4gKwkvKiBEdW1teSBwYWNrZXRzICovCj4gKwlzdGF0aWMgY2hhciBw
+YWNrZXRfaXB2NFtdID0gezAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB4MDgs
+Cj4gKwkJMCwgMHg0NSwgMCwgMCwgMHgyMCwgMCwgMCwgMHg0MCwgMCwgMHg0MCwgMHg4NCwgMCwg
+MCwgMCwgMCwgMCwKPiArCQkwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAw
+LCAwLCAwLCAwfTsKPiArCj4gKwlzdGF0aWMgY2hhciBwYWNrZXRfaXB2NltdID0gezAsIDAsIDAs
+IDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB4ODYsCj4gKwkJMHhkZCwgMHg2MCwgMCwgMCwg
+MCwgMCwgMCwgMHg4NCwgMCwKPiArCQkvKnNyYyBhZGRyZXNzKi8wLCAwLCAwLCAwLCAwLCAwLCAw
+LCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLAo+ICsJCS8qZHN0IGFkZHJlc3MqLzAsIDAsIDAs
+IDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsCj4gKwkJMCwgMCwgMCwgMCwg
+MCwgMCwgMCwgMCwgMCwgMCwgMCwgMH07Cj4gICAJcmF3X3BhY2tldCA9IGt6YWxsb2MoSTQwRV9G
+RElSX01BWF9SQVdfUEFDS0VUX1NJWkUsIEdGUF9LRVJORUwpOwo+ICAgCWlmICghcmF3X3BhY2tl
+dCkKPiAgIAkJcmV0dXJuIC1FTk9NRU07Cj4gLQltZW1jcHkocmF3X3BhY2tldCwgcGFja2V0LCBJ
+NDBFX1NDVFBJUF9EVU1NWV9QQUNLRVRfTEVOKTsKPiArCWlmIChpcHY0KSB7Cj4gKwkJbWVtY3B5
+KHJhd19wYWNrZXQsIHBhY2tldF9pcHY0LCBJNDBFX1NDVFBJUF9EVU1NWV9QQUNLRVRfTEVOKTsK
+PiAgIAo+IC0JaXAgPSAoc3RydWN0IGlwaGRyICopKHJhd19wYWNrZXQgKyBJUF9IRUFERVJfT0ZG
+U0VUKTsKPiAtCXNjdHAgPSAoc3RydWN0IHNjdHBoZHIgKikocmF3X3BhY2tldCArIElQX0hFQURF
+Ul9PRkZTRVQKPiAtCSAgICAgICsgc2l6ZW9mKHN0cnVjdCBpcGhkcikpOwo+ICsJCWlwID0gKHN0
+cnVjdCBpcGhkciAqKShyYXdfcGFja2V0ICsgSVBfSEVBREVSX09GRlNFVCk7Cj4gKwkJc2N0cCA9
+IChzdHJ1Y3Qgc2N0cGhkciAqKShyYXdfcGFja2V0ICsgSVBfSEVBREVSX09GRlNFVAo+ICsJCSAg
+ICAgICArIHNpemVvZihzdHJ1Y3QgaXBoZHIpKTsKPiArCj4gKwkJaXAtPmRhZGRyID0gZmRfZGF0
+YS0+ZHN0X2lwOwo+ICsJCWlwLT5zYWRkciA9IGZkX2RhdGEtPnNyY19pcDsKPiArCX0gZWxzZSB7
+Cj4gKwkJbWVtY3B5KHJhd19wYWNrZXQsIHBhY2tldF9pcHY2LCBJNDBFX1NDVFBJUDZfRFVNTVlf
+UEFDS0VUX0xFTik7Cj4gKwo+ICsJCWlwdjYgPSAoc3RydWN0IGlwdjZoZHIgKikocmF3X3BhY2tl
+dCArIElQX0hFQURFUl9PRkZTRVQpOwo+ICsJCXNjdHAgPSAoc3RydWN0IHNjdHBoZHIgKikocmF3
+X3BhY2tldCArIElQX0hFQURFUl9PRkZTRVQKPiArCQkgICAgICAgKyBzaXplb2Yoc3RydWN0IGlw
+djZoZHIpKTsKPiArCj4gKwkJbWVtY3B5KGlwdjYtPnNhZGRyLmluNl91LnU2X2FkZHIzMiwKPiAr
+CQkgICAgICAgZmRfZGF0YS0+c3JjX2lwNiwgc2l6ZW9mKF9fYmUzMikgKiA0KTsKPiArCQltZW1j
+cHkoaXB2Ni0+c2FkZHIuaW42X3UudTZfYWRkcjMyLAo+ICsJCSAgICAgICBmZF9kYXRhLT5zcmNf
+aXA2LCBzaXplb2YoX19iZTMyKSAqIDQpOwo+ICsJfQo+ICAgCj4gLQlpcC0+ZGFkZHIgPSBmZF9k
+YXRhLT5kc3RfaXA7Cj4gICAJc2N0cC0+ZGVzdCA9IGZkX2RhdGEtPmRzdF9wb3J0Owo+IC0JaXAt
+PnNhZGRyID0gZmRfZGF0YS0+c3JjX2lwOwo+ICAgCXNjdHAtPnNvdXJjZSA9IGZkX2RhdGEtPnNy
+Y19wb3J0Owo+ICAgCj4gICAJaWYgKGZkX2RhdGEtPmZsZXhfZmlsdGVyKSB7Cj4gLQkJdTggKnBh
+eWxvYWQgPSByYXdfcGFja2V0ICsgSTQwRV9TQ1RQSVBfRFVNTVlfUEFDS0VUX0xFTjsKPiArCQl1
+OCAqcGF5bG9hZDsKPiAgIAkJX19iZTE2IHBhdHRlcm4gPSBmZF9kYXRhLT5mbGV4X3dvcmQ7Cj4g
+ICAJCXUxNiBvZmYgPSBmZF9kYXRhLT5mbGV4X29mZnNldDsKPiAgIAo+ICsJCWlmIChpcHY0KQo+
+ICsJCQlwYXlsb2FkID0gcmF3X3BhY2tldCArIEk0MEVfU0NUUElQX0RVTU1ZX1BBQ0tFVF9MRU47
+Cj4gKwkJZWxzZQo+ICsJCQlwYXlsb2FkID0gcmF3X3BhY2tldCArIEk0MEVfU0NUUElQNl9EVU1N
+WV9QQUNLRVRfTEVOOwo+ICAgCQkqKChfX2ZvcmNlIF9fYmUxNiAqKShwYXlsb2FkICsgb2ZmKSkg
+PSBwYXR0ZXJuOwo+ICAgCX0KPiAgIAo+IC0JZmRfZGF0YS0+cGN0eXBlID0gSTQwRV9GSUxURVJf
+UENUWVBFX05PTkZfSVBWNF9TQ1RQOwo+ICsJaWYgKGlwdjQpCj4gKwkJZmRfZGF0YS0+cGN0eXBl
+ID0gSTQwRV9GSUxURVJfUENUWVBFX05PTkZfSVBWNF9TQ1RQOwo+ICsJZWxzZQo+ICsJCWZkX2Rh
+dGEtPnBjdHlwZSA9IEk0MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQVjZfU0NUUDsKPiArCj4gICAJ
+cmV0ID0gaTQwZV9wcm9ncmFtX2ZkaXJfZmlsdGVyKGZkX2RhdGEsIHJhd19wYWNrZXQsIHBmLCBh
+ZGQpOwo+ICAgCWlmIChyZXQpIHsKPiAgIAkJZGV2X2luZm8oJnBmLT5wZGV2LT5kZXYsCj4gQEAg
+LTM3Nyw1NCArNDg1LDk3IEBAIHN0YXRpYyBpbnQgaTQwZV9hZGRfZGVsX2ZkaXJfc2N0cHY0KHN0
+cnVjdCBpNDBlX3ZzaSAqdnNpLAo+ICAgCQkJCSBmZF9kYXRhLT5wY3R5cGUsIGZkX2RhdGEtPmZk
+X2lkKTsKPiAgIAl9Cj4gICAKPiAtCWlmIChhZGQpCj4gLQkJcGYtPmZkX3NjdHA0X2ZpbHRlcl9j
+bnQrKzsKPiAtCWVsc2UKPiAtCQlwZi0+ZmRfc2N0cDRfZmlsdGVyX2NudC0tOwo+ICsJaWYgKGFk
+ZCkgewo+ICsJCWlmIChpcHY0KQo+ICsJCQlwZi0+ZmRfc2N0cDRfZmlsdGVyX2NudCsrOwo+ICsJ
+CWVsc2UKPiArCQkJcGYtPmZkX3NjdHA2X2ZpbHRlcl9jbnQrKzsKPiArCX0gZWxzZSB7Cj4gKwkJ
+aWYgKGlwdjQpCj4gKwkJCXBmLT5mZF9zY3RwNF9maWx0ZXJfY250LS07Cj4gKwkJZWxzZQo+ICsJ
+CQlwZi0+ZmRfc2N0cDZfZmlsdGVyX2NudC0tOwo+ICsJfQo+ICAgCj4gICAJcmV0dXJuIDA7Cj4g
+ICB9Cj4gICAKPiAtI2RlZmluZSBJNDBFX0lQX0RVTU1ZX1BBQ0tFVF9MRU4gMzQKPiArI2RlZmlu
+ZSBJNDBFX0lQX0RVTU1ZX1BBQ0tFVF9MRU4JMzQKPiArI2RlZmluZSBJNDBFX0lQNl9EVU1NWV9Q
+QUNLRVRfTEVOCTU0Cj4gICAvKioKPiAtICogaTQwZV9hZGRfZGVsX2ZkaXJfaXB2NCAtIEFkZC9S
+ZW1vdmUgSVB2NCBGbG93IERpcmVjdG9yIGZpbHRlcnMgZm9yCj4gKyAqIGk0MGVfYWRkX2RlbF9m
+ZGlyX2lwIC0gQWRkL1JlbW92ZSBJUHY0IEZsb3cgRGlyZWN0b3IgZmlsdGVycyBmb3IKPiAgICAq
+IGEgc3BlY2lmaWMgZmxvdyBzcGVjCj4gICAgKiBAdnNpOiBwb2ludGVyIHRvIHRoZSB0YXJnZXRl
+ZCBWU0kKPiAgICAqIEBmZF9kYXRhOiB0aGUgZmxvdyBkaXJlY3RvciBkYXRhIHJlcXVpcmVkIGZv
+ciB0aGUgRkRpciBkZXNjcmlwdG9yCj4gICAgKiBAYWRkOiB0cnVlIGFkZHMgYSBmaWx0ZXIsIGZh
+bHNlIHJlbW92ZXMgaXQKPiArICogQGlwdjQ6IHRydWUgaXMgdjQsIGZhbHNlIGlzIHY2Cj4gICAg
+Kgo+ICAgICogUmV0dXJucyAwIGlmIHRoZSBmaWx0ZXJzIHdlcmUgc3VjY2Vzc2Z1bGx5IGFkZGVk
+IG9yIHJlbW92ZWQKPiAgICAqKi8KPiAtc3RhdGljIGludCBpNDBlX2FkZF9kZWxfZmRpcl9pcHY0
+KHN0cnVjdCBpNDBlX3ZzaSAqdnNpLAo+IC0JCQkJICBzdHJ1Y3QgaTQwZV9mZGlyX2ZpbHRlciAq
+ZmRfZGF0YSwKPiAtCQkJCSAgYm9vbCBhZGQpCj4gK3N0YXRpYyBpbnQgaTQwZV9hZGRfZGVsX2Zk
+aXJfaXAoc3RydWN0IGk0MGVfdnNpICp2c2ksCj4gKwkJCQlzdHJ1Y3QgaTQwZV9mZGlyX2ZpbHRl
+ciAqZmRfZGF0YSwKPiArCQkJCWJvb2wgYWRkLAo+ICsJCQkJYm9vbCBpcHY0KQo+ICAgewo+ICAg
+CXN0cnVjdCBpNDBlX3BmICpwZiA9IHZzaS0+YmFjazsKPiArCXN0cnVjdCBpcHY2aGRyICppcHY2
+Owo+ICAgCXN0cnVjdCBpcGhkciAqaXA7Cj4gICAJdTggKnJhd19wYWNrZXQ7Cj4gKwlpbnQgaXRl
+cl9zdGFydDsKPiArCWludCBpdGVyX2VuZDsKPiAgIAlpbnQgcmV0Owo+ICAgCWludCBpOwo+IC0J
+c3RhdGljIGNoYXIgcGFja2V0W10gPSB7MCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwg
+MCwgMHgwOCwgMCwKPiAtCQkweDQ1LCAwLCAwLCAweDE0LCAwLCAwLCAweDQwLCAwLCAweDQwLCAw
+eDEwLCAwLCAwLCAwLCAwLCAwLCAwLAo+IC0JCTAsIDAsIDAsIDB9Owo+ICsJc3RhdGljIGNoYXIg
+cGFja2V0X2lwdjRbXSA9IHswLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAweDA4
+LAo+ICsJCTAsIDB4NDUsIDAsIDAsIDB4MTQsIDAsIDAsIDB4NDAsIDAsIDB4NDAsIDB4MTAsIDAs
+IDAsIDAsIDAsIDAsCj4gKwkJMCwgMCwgMCwgMCwgMH07Cj4gKwlzdGF0aWMgY2hhciBwYWNrZXRf
+aXB2NltdID0gezAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB4ODYsCj4gKwkJ
+MHhkZCwgMHg2MCwgMCwgMCwgMCwgMCwgMCwgMCwgMCwKPiArCQkvKnNyYyBhZGRyZXNzKi8wLCAw
+LCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLCAwLAo+ICsJCS8qZHN0IGFk
+ZHJlc3MqLzAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDAsIDB9Owo+
+ICsKPiArCWlmIChpcHY0KSB7Cj4gKwkJaXRlcl9zdGFydCA9IEk0MEVfRklMVEVSX1BDVFlQRV9O
+T05GX0lQVjRfT1RIRVI7Cj4gKwkJaXRlcl9lbmQgPSBJNDBFX0ZJTFRFUl9QQ1RZUEVfRlJBR19J
+UFY0Owo+ICsJfSBlbHNlIHsKPiArCQlpdGVyX3N0YXJ0ID0gSTQwRV9GSUxURVJfUENUWVBFX05P
+TkZfSVBWNl9PVEhFUjsKPiArCQlpdGVyX2VuZCA9IEk0MEVfRklMVEVSX1BDVFlQRV9GUkFHX0lQ
+VjY7Cj4gKwl9Cj4gICAKPiAtCWZvciAoaSA9IEk0MEVfRklMVEVSX1BDVFlQRV9OT05GX0lQVjRf
+T1RIRVI7Cj4gLQkgICAgIGkgPD0gSTQwRV9GSUxURVJfUENUWVBFX0ZSQUdfSVBWNDsJaSsrKSB7
+Cj4gKwlmb3IgKGkgPSBpdGVyX3N0YXJ0OyBpIDw9IGl0ZXJfZW5kOyBpKyspIHsKPiAgIAkJcmF3
+X3BhY2tldCA9IGt6YWxsb2MoSTQwRV9GRElSX01BWF9SQVdfUEFDS0VUX1NJWkUsIEdGUF9LRVJO
+RUwpOwo+ICAgCQlpZiAoIXJhd19wYWNrZXQpCj4gICAJCQlyZXR1cm4gLUVOT01FTTsKPiAtCQlt
+ZW1jcHkocmF3X3BhY2tldCwgcGFja2V0LCBJNDBFX0lQX0RVTU1ZX1BBQ0tFVF9MRU4pOwo+IC0J
+CWlwID0gKHN0cnVjdCBpcGhkciAqKShyYXdfcGFja2V0ICsgSVBfSEVBREVSX09GRlNFVCk7Cj4g
+LQo+IC0JCWlwLT5zYWRkciA9IGZkX2RhdGEtPnNyY19pcDsKPiAtCQlpcC0+ZGFkZHIgPSBmZF9k
+YXRhLT5kc3RfaXA7Cj4gLQkJaXAtPnByb3RvY29sID0gMDsKPiArCQlpZiAoaXB2NCkgewo+ICsJ
+CQltZW1jcHkocmF3X3BhY2tldCwgcGFja2V0X2lwdjQsCj4gKwkJCSAgICAgICBJNDBFX0lQX0RV
+TU1ZX1BBQ0tFVF9MRU4pOwo+ICsJCQlpcCA9IChzdHJ1Y3QgaXBoZHIgKikocmF3X3BhY2tldCAr
+IElQX0hFQURFUl9PRkZTRVQpOwo+ICsKPiArCQkJaXAtPnNhZGRyID0gZmRfZGF0YS0+c3JjX2lw
+Owo+ICsJCQlpcC0+ZGFkZHIgPSBmZF9kYXRhLT5kc3RfaXA7Cj4gKwkJCWlwLT5wcm90b2NvbCA9
+IElQUFJPVE9fSVA7Cj4gKwkJfSBlbHNlIHsKPiArCQkJbWVtY3B5KHJhd19wYWNrZXQsIHBhY2tl
+dF9pcHY2LAo+ICsJCQkgICAgICAgSTQwRV9JUDZfRFVNTVlfUEFDS0VUX0xFTik7Cj4gKwkJCWlw
+djYgPSAoc3RydWN0IGlwdjZoZHIgKikocmF3X3BhY2tldCArCj4gKwkJCQkJCSAgSVBfSEVBREVS
+X09GRlNFVCk7Cj4gKwkJCW1lbWNweShpcHY2LT5zYWRkci5pbjZfdS51Nl9hZGRyMzIsCj4gKwkJ
+CSAgICAgICBmZF9kYXRhLT5zcmNfaXA2LCBzaXplb2YoX19iZTMyKSAqIDQpOwo+ICsJCQltZW1j
+cHkoaXB2Ni0+ZGFkZHIuaW42X3UudTZfYWRkcjMyLAo+ICsJCQkgICAgICAgZmRfZGF0YS0+ZHN0
+X2lwNiwgc2l6ZW9mKF9fYmUzMikgKiA0KTsKPiArCj4gKwkJCWlwdjYtPm5leHRoZHIgPSBJUFBS
+T1RPX05PTkU7Cj4gKwkJfQo+ICAgCj4gICAJCWlmIChmZF9kYXRhLT5mbGV4X2ZpbHRlcikgewo+
+IC0JCQl1OCAqcGF5bG9hZCA9IHJhd19wYWNrZXQgKyBJNDBFX0lQX0RVTU1ZX1BBQ0tFVF9MRU47
+Cj4gKwkJCXU4ICpwYXlsb2FkOwo+ICAgCQkJX19iZTE2IHBhdHRlcm4gPSBmZF9kYXRhLT5mbGV4
+X3dvcmQ7Cj4gICAJCQl1MTYgb2ZmID0gZmRfZGF0YS0+ZmxleF9vZmZzZXQ7Cj4gICAKPiArCQkJ
+aWYgKGlwdjQpCj4gKwkJCQlwYXlsb2FkID0gcmF3X3BhY2tldCArIEk0MEVfSVBfRFVNTVlfUEFD
+S0VUX0xFTjsKPiArCQkJZWxzZQo+ICsJCQkJcGF5bG9hZCA9IHJhd19wYWNrZXQgKwo+ICsJCQkJ
+CSAgSTQwRV9JUDZfRFVNTVlfUEFDS0VUX0xFTjsKPiAgIAkJCSooKF9fZm9yY2UgX19iZTE2ICop
+KHBheWxvYWQgKyBvZmYpKSA9IHBhdHRlcm47Cj4gICAJCX0KPiAgIAo+IEBAIC00NTEsMTAgKzYw
+MiwxNyBAQCBzdGF0aWMgaW50IGk0MGVfYWRkX2RlbF9mZGlyX2lwdjQoc3RydWN0IGk0MGVfdnNp
+ICp2c2ksCj4gICAJCX0KPiAgIAl9Cj4gICAKPiAtCWlmIChhZGQpCj4gLQkJcGYtPmZkX2lwNF9m
+aWx0ZXJfY250Kys7Cj4gLQllbHNlCj4gLQkJcGYtPmZkX2lwNF9maWx0ZXJfY250LS07Cj4gKwlp
+ZiAoYWRkKSB7Cj4gKwkJaWYgKGlwdjQpCj4gKwkJCXBmLT5mZF9pcDRfZmlsdGVyX2NudCsrOwo+
+ICsJCWVsc2UKPiArCQkJcGYtPmZkX2lwNl9maWx0ZXJfY250Kys7Cj4gKwl9IGVsc2Ugewo+ICsJ
+CWlmIChpcHY0KQo+ICsJCQlwZi0+ZmRfaXA0X2ZpbHRlcl9jbnQtLTsKPiArCQllbHNlCj4gKwkJ
+CXBmLT5mZF9pcDZfZmlsdGVyX2NudC0tOwo+ICsJfQo+ICAgCj4gICAJcmV0dXJuIDA7Cj4gICB9
+Cj4gQEAgLTQ2OSwzNyArNjI3LDY4IEBAIHN0YXRpYyBpbnQgaTQwZV9hZGRfZGVsX2ZkaXJfaXB2
+NChzdHJ1Y3QgaTQwZV92c2kgKnZzaSwKPiAgIGludCBpNDBlX2FkZF9kZWxfZmRpcihzdHJ1Y3Qg
+aTQwZV92c2kgKnZzaSwKPiAgIAkJICAgICAgc3RydWN0IGk0MGVfZmRpcl9maWx0ZXIgKmlucHV0
+LCBib29sIGFkZCkKPiAgIHsKPiArCWVudW0gaXBfdmVyIHsgaXB2NiA9IDAsIGlwdjQgPSAxIH07
+Cj4gICAJc3RydWN0IGk0MGVfcGYgKnBmID0gdnNpLT5iYWNrOwo+ICAgCWludCByZXQ7Cj4gICAK
+PiAgIAlzd2l0Y2ggKGlucHV0LT5mbG93X3R5cGUgJiB+RkxPV19FWFQpIHsKPiAgIAljYXNlIFRD
+UF9WNF9GTE9XOgo+IC0JCXJldCA9IGk0MGVfYWRkX2RlbF9mZGlyX3RjcHY0KHZzaSwgaW5wdXQs
+IGFkZCk7Cj4gKwkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfdGNwKHZzaSwgaW5wdXQsIGFkZCwg
+aXB2NCk7Cj4gICAJCWJyZWFrOwo+ICAgCWNhc2UgVURQX1Y0X0ZMT1c6Cj4gLQkJcmV0ID0gaTQw
+ZV9hZGRfZGVsX2ZkaXJfdWRwdjQodnNpLCBpbnB1dCwgYWRkKTsKPiArCQlyZXQgPSBpNDBlX2Fk
+ZF9kZWxfZmRpcl91ZHAodnNpLCBpbnB1dCwgYWRkLCBpcHY0KTsKPiAgIAkJYnJlYWs7Cj4gICAJ
+Y2FzZSBTQ1RQX1Y0X0ZMT1c6Cj4gLQkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfc2N0cHY0KHZz
+aSwgaW5wdXQsIGFkZCk7Cj4gKwkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfc2N0cCh2c2ksIGlu
+cHV0LCBhZGQsIGlwdjQpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBUQ1BfVjZfRkxPVzoKPiArCQly
+ZXQgPSBpNDBlX2FkZF9kZWxfZmRpcl90Y3AodnNpLCBpbnB1dCwgYWRkLCBpcHY2KTsKPiArCQli
+cmVhazsKPiArCWNhc2UgVURQX1Y2X0ZMT1c6Cj4gKwkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJf
+dWRwKHZzaSwgaW5wdXQsIGFkZCwgaXB2Nik7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNDVFBfVjZf
+RkxPVzoKPiArCQlyZXQgPSBpNDBlX2FkZF9kZWxfZmRpcl9zY3RwKHZzaSwgaW5wdXQsIGFkZCwg
+aXB2Nik7Cj4gICAJCWJyZWFrOwo+ICAgCWNhc2UgSVBfVVNFUl9GTE9XOgo+IC0JCXN3aXRjaCAo
+aW5wdXQtPmlwNF9wcm90bykgewo+ICsJCXN3aXRjaCAoaW5wdXQtPmlwbDRfcHJvdG8pIHsKPiAg
+IAkJY2FzZSBJUFBST1RPX1RDUDoKPiAtCQkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfdGNwdjQo
+dnNpLCBpbnB1dCwgYWRkKTsKPiArCQkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfdGNwKHZzaSwg
+aW5wdXQsIGFkZCwgaXB2NCk7Cj4gICAJCQlicmVhazsKPiAgIAkJY2FzZSBJUFBST1RPX1VEUDoK
+PiAtCQkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfdWRwdjQodnNpLCBpbnB1dCwgYWRkKTsKPiAr
+CQkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfdWRwKHZzaSwgaW5wdXQsIGFkZCwgaXB2NCk7Cj4g
+ICAJCQlicmVhazsKPiAgIAkJY2FzZSBJUFBST1RPX1NDVFA6Cj4gLQkJCXJldCA9IGk0MGVfYWRk
+X2RlbF9mZGlyX3NjdHB2NCh2c2ksIGlucHV0LCBhZGQpOwo+ICsJCQlyZXQgPSBpNDBlX2FkZF9k
+ZWxfZmRpcl9zY3RwKHZzaSwgaW5wdXQsIGFkZCwgaXB2NCk7Cj4gICAJCQlicmVhazsKPiAgIAkJ
+Y2FzZSBJUFBST1RPX0lQOgo+IC0JCQlyZXQgPSBpNDBlX2FkZF9kZWxfZmRpcl9pcHY0KHZzaSwg
+aW5wdXQsIGFkZCk7Cj4gKwkJCXJldCA9IGk0MGVfYWRkX2RlbF9mZGlyX2lwKHZzaSwgaW5wdXQs
+IGFkZCwgaXB2NCk7Cj4gICAJCQlicmVhazsKPiAgIAkJZGVmYXVsdDoKPiAgIAkJCS8qIFdlIGNh
+bm5vdCBzdXBwb3J0IG1hc2tpbmcgYmFzZWQgb24gcHJvdG9jb2wgKi8KPiAgIAkJCWRldl9pbmZv
+KCZwZi0+cGRldi0+ZGV2LCAiVW5zdXBwb3J0ZWQgSVB2NCBwcm90b2NvbCAweCUwMnhcbiIsCj4g
+LQkJCQkgaW5wdXQtPmlwNF9wcm90byk7Cj4gKwkJCQkgaW5wdXQtPmlwbDRfcHJvdG8pOwo+ICsJ
+CQlyZXR1cm4gLUVJTlZBTDsKPiArCQl9Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIElQVjZfVVNFUl9G
+TE9XOgo+ICsJCXN3aXRjaCAoaW5wdXQtPmlwbDRfcHJvdG8pIHsKPiArCQljYXNlIElQUFJPVE9f
+VENQOgo+ICsJCQlyZXQgPSBpNDBlX2FkZF9kZWxfZmRpcl90Y3AodnNpLCBpbnB1dCwgYWRkLCBp
+cHY2KTsKPiArCQkJYnJlYWs7Cj4gKwkJY2FzZSBJUFBST1RPX1VEUDoKPiArCQkJcmV0ID0gaTQw
+ZV9hZGRfZGVsX2ZkaXJfdWRwKHZzaSwgaW5wdXQsIGFkZCwgaXB2Nik7Cj4gKwkJCWJyZWFrOwo+
+ICsJCWNhc2UgSVBQUk9UT19TQ1RQOgo+ICsJCQlyZXQgPSBpNDBlX2FkZF9kZWxfZmRpcl9zY3Rw
+KHZzaSwgaW5wdXQsIGFkZCwgaXB2Nik7Cj4gKwkJCWJyZWFrOwo+ICsJCWNhc2UgSVBQUk9UT19J
+UDoKPiArCQkJcmV0ID0gaTQwZV9hZGRfZGVsX2ZkaXJfaXAodnNpLCBpbnB1dCwgYWRkLCBpcHY2
+KTsKPiArCQkJYnJlYWs7Cj4gKwkJZGVmYXVsdDoKPiArCQkJLyogV2UgY2Fubm90IHN1cHBvcnQg
+bWFza2luZyBiYXNlZCBvbiBwcm90b2NvbCAqLwo+ICsJCQlkZXZfaW5mbygmcGYtPnBkZXYtPmRl
+diwgIlVuc3VwcG9ydGVkIElQdjYgcHJvdG9jb2wgMHglMDJ4XG4iLAo+ICsJCQkJIGlucHV0LT5p
+cGw0X3Byb3RvKTsKPiAgIAkJCXJldHVybiAtRUlOVkFMOwo+ICAgCQl9Cj4gICAJCWJyZWFrOwo+
+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwt
+d2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczov
+L2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
