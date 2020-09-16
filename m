@@ -2,61 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67CE826BCC3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 08:22:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B98726BE98
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 09:57:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E2A9323730;
-	Wed, 16 Sep 2020 06:22:22 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 210E1228EA;
+	Wed, 16 Sep 2020 07:57:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eHmJhCpyBgRK; Wed, 16 Sep 2020 06:22:22 +0000 (UTC)
+	with ESMTP id WN4VwewijFgp; Wed, 16 Sep 2020 07:57:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 51D63271D6;
-	Wed, 16 Sep 2020 06:22:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DA892271D6;
+	Wed, 16 Sep 2020 07:57:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 286C91BF866
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 06:22:16 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3342B1BF37C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 07:57:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2320086372
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 06:22:16 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 22247232FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 07:57:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S3z9+tQIJfsw for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Sep 2020 06:22:15 +0000 (UTC)
+ with ESMTP id uYzpBie8YEI9 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Sep 2020 07:57:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 5752086370
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 06:22:15 +0000 (UTC)
-IronPort-SDR: 9Ut6qces078LRS3gA1BLFaMaWRkIpf/YxTl5e3a8P2QNYpNjzw+J3z0i+x0kvsDwIyHy0/xwwd
- ehKQ5oO33djg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9745"; a="139420650"
-X-IronPort-AV: E=Sophos;i="5.76,431,1592895600"; d="scan'208";a="139420650"
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by silver.osuosl.org (Postfix) with ESMTPS id D2090228EA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 07:57:31 +0000 (UTC)
+IronPort-SDR: F/jEfKcCcrtlmQEyNV7Mf+1/WGwF3gWFrkRcU1jbzgAKkKUTHB9vmNyQXSzGQgmuQzXLmia+7e
+ VT5LIePEjrEQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9745"; a="177493434"
+X-IronPort-AV: E=Sophos;i="5.76,432,1592895600"; d="scan'208";a="177493434"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Sep 2020 23:22:14 -0700
-IronPort-SDR: MHQKQkuqBFikFoOiKYbBY2kxUdDqesiXcIJ95SZDbILxZc58WCW/wF83EXQoZ2KJvotXctvivs
- FjsL2toYMsAw==
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Sep 2020 00:57:31 -0700
+IronPort-SDR: m0eycB1jtZJtJn6K1uv5mRZeDnyKJ7PYeFUfrLo+NfGCkrXcQiWa/lZ39NEXmiUGe18hAwlWvh
+ 3S4CZDYqidLw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,431,1592895600"; d="scan'208";a="380060568"
-Received: from lkp-server01.sh.intel.com (HELO 96654786cb26) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 15 Sep 2020 23:22:13 -0700
-Received: from kbuild by 96654786cb26 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1kIQpY-0000Ty-Q0; Wed, 16 Sep 2020 06:22:12 +0000
-Date: Wed, 16 Sep 2020 14:21:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <5f61aeea.xRxB8gbaFc+tjOKz%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
-MIME-Version: 1.0
-Subject: [Intel-wired-lan] [jkirsher-next-queue:40GbE] BUILD SUCCESS
- 8cbf74149903382cf422c653d4ee8fb2f44e3ec8
+X-IronPort-AV: E=Sophos;i="5.76,432,1592895600"; d="scan'208";a="507913941"
+Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
+ by fmsmga005.fm.intel.com with ESMTP; 16 Sep 2020 00:57:29 -0700
+From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 16 Sep 2020 07:57:16 +0000
+Message-Id: <20200916075716.13665-1-mateusz.palczewski@intel.com>
+X-Mailer: git-send-email 2.17.1
+Subject: [Intel-wired-lan] [PATCH net v1] i40e: Add flow director support
+ for IPv6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,239 +65,1103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  40GbE
-branch HEAD: 8cbf74149903382cf422c653d4ee8fb2f44e3ec8  i40e, xsk: move buffer allocation out of the Rx processing loop
+From: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 
-elapsed time: 1985m
+Flow director for IPv6 is not supported.
+Implementation of support for IPv6 flow director. Added handlers for
+addition of TCP6, UDP6, SCTP6, IPv6. Refactored legacy code to make
+it more generic. Added packet templates for TCP6, UDP6, SCTP6, IPv6.
+Added handling of IPv6 source and destination address for flow
+director. Improved argument passing for source and destination port
+in TCP6, UDP6 and SCTP6. Added handling of ethtool -n for IPv6, TCP6,
+UDP6, SCTP6. Used correct bit flag regarding FLEXOFF field of flow
+director data descriptor.
+Without this patch, there would be no support for flow director on
+IPv6, TCP6, UDP6, SCTP6.
 
-configs tested: 210
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-mips                         rt305x_defconfig
-arm                           corgi_defconfig
-sparc64                             defconfig
-powerpc                      ppc6xx_defconfig
-powerpc                      walnut_defconfig
-c6x                         dsk6455_defconfig
-powerpc                 canyonlands_defconfig
-sh                               j2_defconfig
-arm                          ixp4xx_defconfig
-xtensa                              defconfig
-mips                         cobalt_defconfig
-sh                          r7780mp_defconfig
-powerpc                    mvme5100_defconfig
-um                             i386_defconfig
-arc                            hsdk_defconfig
-powerpc                    gamecube_defconfig
-powerpc                 mpc836x_mds_defconfig
-arm                         socfpga_defconfig
-sh                          r7785rp_defconfig
-s390                             alldefconfig
-mips                        nlm_xlp_defconfig
-microblaze                    nommu_defconfig
-sh                           se7780_defconfig
-arm                         shannon_defconfig
-powerpc                      pcm030_defconfig
-parisc                generic-64bit_defconfig
-sh                        dreamcast_defconfig
-arm                            mps2_defconfig
-i386                             alldefconfig
-powerpc                     tqm5200_defconfig
-m68k                        m5407c3_defconfig
-powerpc                       holly_defconfig
-mips                      maltaaprp_defconfig
-arm                    vt8500_v6_v7_defconfig
-powerpc                      mgcoge_defconfig
-mips                        bcm47xx_defconfig
-arc                        nsimosci_defconfig
-ia64                                defconfig
-arm                         ebsa110_defconfig
-arm                          gemini_defconfig
-arc                           tb10x_defconfig
-powerpc                     tqm8560_defconfig
-m68k                          hp300_defconfig
-powerpc                      obs600_defconfig
-riscv                            alldefconfig
-arm                        multi_v5_defconfig
-powerpc                     tqm8541_defconfig
-arm                         hackkit_defconfig
-nds32                             allnoconfig
-arm                             ezx_defconfig
-xtensa                    xip_kc705_defconfig
-arm                        spear6xx_defconfig
-mips                           jazz_defconfig
-powerpc                     rainier_defconfig
-powerpc                      ppc64e_defconfig
-arm                         lpc18xx_defconfig
-mips                     loongson1c_defconfig
-sh                   secureedge5410_defconfig
-mips                  decstation_64_defconfig
-powerpc                     powernv_defconfig
-powerpc                 mpc832x_mds_defconfig
-arm                          pcm027_defconfig
-powerpc                       eiger_defconfig
-arm                      integrator_defconfig
-powerpc                 mpc834x_mds_defconfig
-powerpc                      tqm8xx_defconfig
-powerpc                      katmai_defconfig
-sh                        apsh4ad0a_defconfig
-powerpc                         wii_defconfig
-arm                          exynos_defconfig
-ia64                         bigsur_defconfig
-arm                       aspeed_g5_defconfig
-sparc                       sparc64_defconfig
-riscv                            allmodconfig
-arm                        spear3xx_defconfig
-mips                malta_kvm_guest_defconfig
-sh                           se7751_defconfig
-sh                   sh7770_generic_defconfig
-ia64                            zx1_defconfig
-powerpc                 mpc8315_rdb_defconfig
-powerpc                  iss476-smp_defconfig
-mips                         tb0219_defconfig
-arm                        mini2440_defconfig
-arm                          lpd270_defconfig
-mips                   sb1250_swarm_defconfig
-powerpc                     tqm8540_defconfig
-powerpc                     kmeter1_defconfig
-arm                          simpad_defconfig
-ia64                             allmodconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-c6x                              allyesconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-nios2                            allyesconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                                defconfig
-parisc                           allyesconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a006-20200916
-x86_64               randconfig-a004-20200916
-x86_64               randconfig-a003-20200916
-x86_64               randconfig-a002-20200916
-x86_64               randconfig-a001-20200916
-x86_64               randconfig-a005-20200916
-x86_64               randconfig-a004-20200914
-x86_64               randconfig-a006-20200914
-x86_64               randconfig-a003-20200914
-x86_64               randconfig-a002-20200914
-x86_64               randconfig-a001-20200914
-x86_64               randconfig-a005-20200914
-i386                 randconfig-a004-20200913
-i386                 randconfig-a006-20200913
-i386                 randconfig-a003-20200913
-i386                 randconfig-a001-20200913
-i386                 randconfig-a002-20200913
-i386                 randconfig-a005-20200913
-i386                 randconfig-a004-20200916
-i386                 randconfig-a006-20200916
-i386                 randconfig-a003-20200916
-i386                 randconfig-a001-20200916
-i386                 randconfig-a002-20200916
-i386                 randconfig-a005-20200916
-i386                 randconfig-a004-20200914
-i386                 randconfig-a006-20200914
-i386                 randconfig-a001-20200914
-i386                 randconfig-a003-20200914
-i386                 randconfig-a002-20200914
-i386                 randconfig-a005-20200914
-x86_64               randconfig-a014-20200913
-x86_64               randconfig-a011-20200913
-x86_64               randconfig-a012-20200913
-x86_64               randconfig-a016-20200913
-x86_64               randconfig-a015-20200913
-x86_64               randconfig-a013-20200913
-i386                 randconfig-a015-20200915
-i386                 randconfig-a014-20200915
-i386                 randconfig-a011-20200915
-i386                 randconfig-a013-20200915
-i386                 randconfig-a016-20200915
-i386                 randconfig-a012-20200915
-i386                 randconfig-a015-20200913
-i386                 randconfig-a014-20200913
-i386                 randconfig-a011-20200913
-i386                 randconfig-a013-20200913
-i386                 randconfig-a016-20200913
-i386                 randconfig-a012-20200913
-i386                 randconfig-a015-20200914
-i386                 randconfig-a014-20200914
-i386                 randconfig-a011-20200914
-i386                 randconfig-a013-20200914
-i386                 randconfig-a016-20200914
-i386                 randconfig-a012-20200914
-i386                 randconfig-a015-20200916
-i386                 randconfig-a014-20200916
-i386                 randconfig-a011-20200916
-i386                 randconfig-a013-20200916
-i386                 randconfig-a016-20200916
-i386                 randconfig-a012-20200916
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-x86_64                                   rhel
-x86_64                           allyesconfig
-x86_64                    rhel-7.6-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                                  kexec
-
-clang tested configs:
-x86_64               randconfig-a006-20200913
-x86_64               randconfig-a004-20200913
-x86_64               randconfig-a003-20200913
-x86_64               randconfig-a002-20200913
-x86_64               randconfig-a005-20200913
-x86_64               randconfig-a001-20200913
-x86_64               randconfig-a014-20200916
-x86_64               randconfig-a011-20200916
-x86_64               randconfig-a016-20200916
-x86_64               randconfig-a012-20200916
-x86_64               randconfig-a015-20200916
-x86_64               randconfig-a013-20200916
-x86_64               randconfig-a014-20200914
-x86_64               randconfig-a011-20200914
-x86_64               randconfig-a016-20200914
-x86_64               randconfig-a012-20200914
-x86_64               randconfig-a015-20200914
-x86_64               randconfig-a013-20200914
-
+v2: Fixed sparse warnings
+ >> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:4117:50: sparse: sparse: incorrect type in initializer (different base types) @@     expected restricted __be32 @@     got unsigned int @@
+ >> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:4117:50: sparse:     expected restricted __be32
+ >> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:4117:50: sparse:     got unsigned int
+Reported-by: kernel test robot <lkp@intel.com>
+Signed-off-by: Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ drivers/net/ethernet/intel/i40e/i40e.h        |   9 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 211 +++++++++-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  79 +++-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 371 +++++++++++++-----
+ 4 files changed, 551 insertions(+), 119 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index ada0e93..54054fc 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -209,10 +209,12 @@ struct i40e_fdir_filter {
+ 	struct hlist_node fdir_node;
+ 	/* filter ipnut set */
+ 	u8 flow_type;
+-	u8 ip4_proto;
++	u8 ipl4_proto;
+ 	/* TX packet view of src and dst */
+ 	__be32 dst_ip;
+ 	__be32 src_ip;
++	__be32 dst_ip6[4];
++	__be32 src_ip6[4];
+ 	__be16 src_port;
+ 	__be16 dst_port;
+ 	__be32 sctp_v_tag;
+@@ -470,6 +472,11 @@ struct i40e_pf {
+ 	u16 fd_sctp4_filter_cnt;
+ 	u16 fd_ip4_filter_cnt;
+ 
++	u16 fd_tcp6_filter_cnt;
++	u16 fd_udp6_filter_cnt;
++	u16 fd_sctp6_filter_cnt;
++	u16 fd_ip6_filter_cnt;
++
+ 	/* Flexible filter table values that need to be programmed into
+ 	 * hardware, which expects L3 and L4 to be programmed separately. We
+ 	 * need to ensure that the values are in ascended order and don't have
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index a31ed23..661ba51 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -3229,13 +3229,30 @@ static int i40e_get_ethtool_fdir_entry(struct i40e_pf *pf,
+ 		fsp->m_u.usr_ip4_spec.proto = 0;
+ 	}
+ 
+-	/* Reverse the src and dest notion, since the HW views them from
+-	 * Tx perspective where as the user expects it from Rx filter view.
+-	 */
+-	fsp->h_u.tcp_ip4_spec.psrc = rule->dst_port;
+-	fsp->h_u.tcp_ip4_spec.pdst = rule->src_port;
+-	fsp->h_u.tcp_ip4_spec.ip4src = rule->dst_ip;
+-	fsp->h_u.tcp_ip4_spec.ip4dst = rule->src_ip;
++	if (fsp->flow_type == IPV6_USER_FLOW ||
++	    fsp->flow_type == UDP_V6_FLOW ||
++	    fsp->flow_type == TCP_V6_FLOW ||
++	    fsp->flow_type == SCTP_V6_FLOW) {
++		/* Reverse the src and dest notion, since the HW views them
++		 * from Tx perspective where as the user expects it from
++		 * Rx filter view.
++		 */
++		fsp->h_u.tcp_ip6_spec.psrc = rule->dst_port;
++		fsp->h_u.tcp_ip6_spec.pdst = rule->src_port;
++		memcpy(fsp->h_u.tcp_ip6_spec.ip6dst, rule->src_ip6,
++		       sizeof(__be32) * 4);
++		memcpy(fsp->h_u.tcp_ip6_spec.ip6src, rule->dst_ip6,
++		       sizeof(__be32) * 4);
++	} else {
++		/* Reverse the src and dest notion, since the HW views them
++		 * from Tx perspective where as the user expects it from
++		 * Rx filter view.
++		 */
++		fsp->h_u.tcp_ip4_spec.psrc = rule->dst_port;
++		fsp->h_u.tcp_ip4_spec.pdst = rule->src_port;
++		fsp->h_u.tcp_ip4_spec.ip4src = rule->dst_ip;
++		fsp->h_u.tcp_ip4_spec.ip4dst = rule->src_ip;
++	}
+ 
+ 	switch (rule->flow_type) {
+ 	case SCTP_V4_FLOW:
+@@ -3247,9 +3264,21 @@ static int i40e_get_ethtool_fdir_entry(struct i40e_pf *pf,
+ 	case UDP_V4_FLOW:
+ 		index = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
+ 		break;
++	case SCTP_V6_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_SCTP;
++		break;
++	case TCP_V6_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
++		break;
++	case UDP_V6_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
++		break;
+ 	case IP_USER_FLOW:
+ 		index = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
+ 		break;
++	case IPV6_USER_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_OTHER;
++		break;
+ 	default:
+ 		/* If we have stored a filter with a flow type not listed here
+ 		 * it is almost certainly a driver bug. WARN(), and then
+@@ -3265,6 +3294,20 @@ static int i40e_get_ethtool_fdir_entry(struct i40e_pf *pf,
+ 	input_set = i40e_read_fd_input_set(pf, index);
+ 
+ no_input_set:
++	if (input_set & I40E_L3_V6_SRC_MASK) {
++		fsp->m_u.tcp_ip6_spec.ip6src[0] = htonl(0xFFFFFFFF);
++		fsp->m_u.tcp_ip6_spec.ip6src[1] = htonl(0xFFFFFFFF);
++		fsp->m_u.tcp_ip6_spec.ip6src[2] = htonl(0xFFFFFFFF);
++		fsp->m_u.tcp_ip6_spec.ip6src[3] = htonl(0xFFFFFFFF);
++	}
++
++	if (input_set & I40E_L3_V6_DST_MASK) {
++		fsp->m_u.tcp_ip6_spec.ip6dst[0] = htonl(0xFFFFFFFF);
++		fsp->m_u.tcp_ip6_spec.ip6dst[1] = htonl(0xFFFFFFFF);
++		fsp->m_u.tcp_ip6_spec.ip6dst[2] = htonl(0xFFFFFFFF);
++		fsp->m_u.tcp_ip6_spec.ip6dst[3] = htonl(0xFFFFFFFF);
++	}
++
+ 	if (input_set & I40E_L3_SRC_MASK)
+ 		fsp->m_u.tcp_ip4_spec.ip4src = htonl(0xFFFFFFFF);
+ 
+@@ -3928,6 +3971,14 @@ static const char *i40e_flow_str(struct ethtool_rx_flow_spec *fsp)
+ 		return "sctp4";
+ 	case IP_USER_FLOW:
+ 		return "ip4";
++	case TCP_V6_FLOW:
++		return "tcp6";
++	case UDP_V6_FLOW:
++		return "udp6";
++	case SCTP_V6_FLOW:
++		return "sctp6";
++	case IPV6_USER_FLOW:
++		return "ip6";
+ 	default:
+ 		return "unknown";
+ 	}
+@@ -4063,9 +4114,14 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
+ 				     struct ethtool_rx_flow_spec *fsp,
+ 				     struct i40e_rx_flow_userdef *userdef)
+ {
+-	struct i40e_pf *pf = vsi->back;
++	static const __be32 ipv6_full_mask[4] = {cpu_to_be32(0xffffffff),
++		cpu_to_be32(0xffffffff), cpu_to_be32(0xffffffff),
++		cpu_to_be32(0xffffffff)};
++	struct ethtool_tcpip6_spec *tcp_ip6_spec;
++	struct ethtool_usrip6_spec *usr_ip6_spec;
+ 	struct ethtool_tcpip4_spec *tcp_ip4_spec;
+ 	struct ethtool_usrip4_spec *usr_ip4_spec;
++	struct i40e_pf *pf = vsi->back;
+ 	u64 current_mask, new_mask;
+ 	bool new_flex_offset = false;
+ 	bool flex_l3 = false;
+@@ -4087,11 +4143,28 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
+ 		index = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
+ 		fdir_filter_count = &pf->fd_udp4_filter_cnt;
+ 		break;
++	case SCTP_V6_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_SCTP;
++		fdir_filter_count = &pf->fd_sctp6_filter_cnt;
++		break;
++	case TCP_V6_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
++		fdir_filter_count = &pf->fd_tcp6_filter_cnt;
++		break;
++	case UDP_V6_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
++		fdir_filter_count = &pf->fd_udp6_filter_cnt;
++		break;
+ 	case IP_USER_FLOW:
+ 		index = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
+ 		fdir_filter_count = &pf->fd_ip4_filter_cnt;
+ 		flex_l3 = true;
+ 		break;
++	case IPV6_USER_FLOW:
++		index = I40E_FILTER_PCTYPE_NONF_IPV6_OTHER;
++		fdir_filter_count = &pf->fd_ip6_filter_cnt;
++		flex_l3 = true;
++		break;
+ 	default:
+ 		return -EOPNOTSUPP;
+ 	}
+@@ -4154,6 +4227,53 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
+ 			return -EOPNOTSUPP;
+ 
+ 		break;
++	case SCTP_V6_FLOW:
++		new_mask &= ~I40E_VERIFY_TAG_MASK;
++		fallthrough;
++	case TCP_V6_FLOW:
++	case UDP_V6_FLOW:
++		tcp_ip6_spec = &fsp->m_u.tcp_ip6_spec;
++
++		/* Check if user provided IPv6 source address. */
++		if (ipv6_addr_equal((struct in6_addr *)&tcp_ip6_spec->ip6src,
++				    (struct in6_addr *)&ipv6_full_mask))
++			new_mask |= I40E_L3_V6_SRC_MASK;
++		else if (ipv6_addr_any((struct in6_addr *)
++				       &tcp_ip6_spec->ip6src))
++			new_mask &= ~I40E_L3_V6_SRC_MASK;
++		else
++			return -EOPNOTSUPP;
++
++		/* Check if user provided destination address. */
++		if (ipv6_addr_equal((struct in6_addr *)&tcp_ip6_spec->ip6dst,
++				    (struct in6_addr *)&ipv6_full_mask))
++			new_mask |= I40E_L3_V6_DST_MASK;
++		else if (ipv6_addr_any((struct in6_addr *)
++				       &tcp_ip6_spec->ip6src))
++			new_mask &= ~I40E_L3_V6_DST_MASK;
++		else
++			return -EOPNOTSUPP;
++
++		/* L4 source port */
++		if (tcp_ip6_spec->psrc == htons(0xFFFF))
++			new_mask |= I40E_L4_SRC_MASK;
++		else if (!tcp_ip6_spec->psrc)
++			new_mask &= ~I40E_L4_SRC_MASK;
++		else
++			return -EOPNOTSUPP;
++
++		/* L4 destination port */
++		if (tcp_ip6_spec->pdst == htons(0xFFFF))
++			new_mask |= I40E_L4_DST_MASK;
++		else if (!tcp_ip6_spec->pdst)
++			new_mask &= ~I40E_L4_DST_MASK;
++		else
++			return -EOPNOTSUPP;
++
++		/* Filtering on Traffic Classes is not supported. */
++		if (tcp_ip6_spec->tclass)
++			return -EOPNOTSUPP;
++		break;
+ 	case IP_USER_FLOW:
+ 		usr_ip4_spec = &fsp->m_u.usr_ip4_spec;
+ 
+@@ -4193,6 +4313,45 @@ static int i40e_check_fdir_input_set(struct i40e_vsi *vsi,
+ 		if (usr_ip4_spec->proto)
+ 			return -EINVAL;
+ 
++		break;
++	case IPV6_USER_FLOW:
++		usr_ip6_spec = &fsp->m_u.usr_ip6_spec;
++
++		/* Check if user provided IPv6 source address. */
++		if (ipv6_addr_equal((struct in6_addr *)&usr_ip6_spec->ip6src,
++				    (struct in6_addr *)&ipv6_full_mask))
++			new_mask |= I40E_L3_V6_SRC_MASK;
++		else if (ipv6_addr_any((struct in6_addr *)
++				       &usr_ip6_spec->ip6src))
++			new_mask &= ~I40E_L3_V6_SRC_MASK;
++		else
++			return -EOPNOTSUPP;
++
++		/* Check if user provided destination address. */
++		if (ipv6_addr_equal((struct in6_addr *)&usr_ip6_spec->ip6dst,
++				    (struct in6_addr *)&ipv6_full_mask))
++			new_mask |= I40E_L3_V6_DST_MASK;
++		else if (ipv6_addr_any((struct in6_addr *)
++				       &usr_ip6_spec->ip6src))
++			new_mask &= ~I40E_L3_V6_DST_MASK;
++		else
++			return -EOPNOTSUPP;
++
++		if (usr_ip6_spec->l4_4_bytes == htonl(0xFFFFFFFF))
++			new_mask |= I40E_L4_SRC_MASK | I40E_L4_DST_MASK;
++		else if (!usr_ip6_spec->l4_4_bytes)
++			new_mask &= ~(I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
++		else
++			return -EOPNOTSUPP;
++
++		/* Filtering on Traffic class is not supported. */
++		if (usr_ip6_spec->tclass)
++			return -EOPNOTSUPP;
++
++		/* Filtering on L4 protocol is not supported */
++		if (usr_ip6_spec->l4_proto)
++			return -EINVAL;
++
+ 		break;
+ 	default:
+ 		return -EOPNOTSUPP;
+@@ -4377,7 +4536,7 @@ static bool i40e_match_fdir_filter(struct i40e_fdir_filter *a,
+ 	    a->dst_port != b->dst_port ||
+ 	    a->src_port != b->src_port ||
+ 	    a->flow_type != b->flow_type ||
+-	    a->ip4_proto != b->ip4_proto)
++	    a->ipl4_proto != b->ipl4_proto)
+ 		return false;
+ 
+ 	return true;
+@@ -4535,15 +4694,33 @@ static int i40e_add_fdir_ethtool(struct i40e_vsi *vsi,
+ 	input->dst_ip = fsp->h_u.tcp_ip4_spec.ip4src;
+ 	input->src_ip = fsp->h_u.tcp_ip4_spec.ip4dst;
+ 	input->flow_type = fsp->flow_type & ~FLOW_EXT;
+-	input->ip4_proto = fsp->h_u.usr_ip4_spec.proto;
+ 
+-	/* Reverse the src and dest notion, since the HW expects them to be from
+-	 * Tx perspective where as the input from user is from Rx filter view.
+-	 */
+-	input->dst_port = fsp->h_u.tcp_ip4_spec.psrc;
+-	input->src_port = fsp->h_u.tcp_ip4_spec.pdst;
+-	input->dst_ip = fsp->h_u.tcp_ip4_spec.ip4src;
+-	input->src_ip = fsp->h_u.tcp_ip4_spec.ip4dst;
++	if (input->flow_type == IPV6_USER_FLOW ||
++	    input->flow_type == UDP_V6_FLOW ||
++	    input->flow_type == TCP_V6_FLOW ||
++	    input->flow_type == SCTP_V6_FLOW) {
++		/* Reverse the src and dest notion, since the HW expects them
++		 * to be from Tx perspective where as the input from user is
++		 * from Rx filter view.
++		 */
++		input->ipl4_proto = fsp->h_u.usr_ip6_spec.l4_proto;
++		input->dst_port = fsp->h_u.tcp_ip6_spec.psrc;
++		input->src_port = fsp->h_u.tcp_ip6_spec.pdst;
++		memcpy(input->dst_ip6, fsp->h_u.ah_ip6_spec.ip6src,
++		       sizeof(__be32) * 4);
++		memcpy(input->src_ip6, fsp->h_u.ah_ip6_spec.ip6dst,
++		       sizeof(__be32) * 4);
++	} else {
++		/* Reverse the src and dest notion, since the HW expects them
++		 * to be from Tx perspective where as the input from user is
++		 * from Rx filter view.
++		 */
++		input->ipl4_proto = fsp->h_u.usr_ip4_spec.proto;
++		input->dst_port = fsp->h_u.tcp_ip4_spec.psrc;
++		input->src_port = fsp->h_u.tcp_ip4_spec.pdst;
++		input->dst_ip = fsp->h_u.tcp_ip4_spec.ip4src;
++		input->src_ip = fsp->h_u.tcp_ip4_spec.ip4dst;
++	}
+ 
+ 	if (userdef.flex_filter) {
+ 		input->flex_filter = true;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index ca8624f..74d7723 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3489,6 +3489,24 @@ static void i40e_set_vsi_rx_mode(struct i40e_vsi *vsi)
+ 		i40e_set_rx_mode(vsi->netdev);
+ }
+ 
++/**
++ * i40e_reset_fdir_filter_cnt - Reset flow director filter counters
++ * @pf: Pointer to the targeted PF
++ *
++ * Set all flow director counters to 0.
++ */
++static void i40e_reset_fdir_filter_cnt(struct i40e_pf *pf)
++{
++	pf->fd_tcp4_filter_cnt = 0;
++	pf->fd_udp4_filter_cnt = 0;
++	pf->fd_sctp4_filter_cnt = 0;
++	pf->fd_ip4_filter_cnt = 0;
++	pf->fd_tcp6_filter_cnt = 0;
++	pf->fd_udp6_filter_cnt = 0;
++	pf->fd_sctp6_filter_cnt = 0;
++	pf->fd_ip6_filter_cnt = 0;
++}
++
+ /**
+  * i40e_fdir_filter_restore - Restore the Sideband Flow Director filters
+  * @vsi: Pointer to the targeted VSI
+@@ -3506,10 +3524,7 @@ static void i40e_fdir_filter_restore(struct i40e_vsi *vsi)
+ 		return;
+ 
+ 	/* Reset FDir counters as we're replaying all existing filters */
+-	pf->fd_tcp4_filter_cnt = 0;
+-	pf->fd_udp4_filter_cnt = 0;
+-	pf->fd_sctp4_filter_cnt = 0;
+-	pf->fd_ip4_filter_cnt = 0;
++	i40e_reset_fdir_filter_cnt(pf);
+ 
+ 	hlist_for_each_entry_safe(filter, node,
+ 				  &pf->fdir_filter_list, fdir_node) {
+@@ -8391,32 +8406,51 @@ static void i40e_fdir_filter_exit(struct i40e_pf *pf)
+ 	INIT_LIST_HEAD(&pf->l4_flex_pit_list);
+ 
+ 	pf->fdir_pf_active_filters = 0;
+-	pf->fd_tcp4_filter_cnt = 0;
+-	pf->fd_udp4_filter_cnt = 0;
+-	pf->fd_sctp4_filter_cnt = 0;
+-	pf->fd_ip4_filter_cnt = 0;
++	i40e_reset_fdir_filter_cnt(pf);
+ 
+ 	/* Reprogram the default input set for TCP/IPv4 */
+ 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_TCP,
+ 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK |
+ 				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
+ 
++	/* Reprogram the default input set for TCP/IPv6 */
++	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_TCP,
++				I40E_L3_V6_SRC_MASK | I40E_L3_V6_DST_MASK |
++				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
++
+ 	/* Reprogram the default input set for UDP/IPv4 */
+ 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_UDP,
+ 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK |
+ 				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
+ 
++	/* Reprogram the default input set for UDP/IPv6 */
++	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_UDP,
++				I40E_L3_V6_SRC_MASK | I40E_L3_V6_DST_MASK |
++				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
++
+ 	/* Reprogram the default input set for SCTP/IPv4 */
+ 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_SCTP,
+ 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK |
+ 				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
+ 
++	/* Reprogram the default input set for SCTP/IPv6 */
++	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_SCTP,
++				I40E_L3_V6_SRC_MASK | I40E_L3_V6_DST_MASK |
++				I40E_L4_SRC_MASK | I40E_L4_DST_MASK);
++
+ 	/* Reprogram the default input set for Other/IPv4 */
+ 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV4_OTHER,
+ 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
+ 
+ 	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_FRAG_IPV4,
+ 				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
++
++	/* Reprogram the default input set for Other/IPv6 */
++	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_NONF_IPV6_OTHER,
++				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
++
++	i40e_write_fd_input_set(pf, I40E_FILTER_PCTYPE_FRAG_IPV6,
++				I40E_L3_SRC_MASK | I40E_L3_DST_MASK);
+ }
+ 
+ /**
+@@ -8875,8 +8909,17 @@ static void i40e_delete_invalid_filter(struct i40e_pf *pf,
+ 	case SCTP_V4_FLOW:
+ 		pf->fd_sctp4_filter_cnt--;
+ 		break;
++	case TCP_V6_FLOW:
++		pf->fd_tcp6_filter_cnt--;
++		break;
++	case UDP_V6_FLOW:
++		pf->fd_udp6_filter_cnt--;
++		break;
++	case SCTP_V6_FLOW:
++		pf->fd_udp6_filter_cnt--;
++		break;
+ 	case IP_USER_FLOW:
+-		switch (filter->ip4_proto) {
++		switch (filter->ipl4_proto) {
+ 		case IPPROTO_TCP:
+ 			pf->fd_tcp4_filter_cnt--;
+ 			break;
+@@ -8891,6 +8934,22 @@ static void i40e_delete_invalid_filter(struct i40e_pf *pf,
+ 			break;
+ 		}
+ 		break;
++	case IPV6_USER_FLOW:
++		switch (filter->ipl4_proto) {
++		case IPPROTO_TCP:
++			pf->fd_tcp6_filter_cnt--;
++			break;
++		case IPPROTO_UDP:
++			pf->fd_udp6_filter_cnt--;
++			break;
++		case IPPROTO_SCTP:
++			pf->fd_sctp6_filter_cnt--;
++			break;
++		case IPPROTO_IP:
++			pf->fd_ip6_filter_cnt--;
++			break;
++		}
++		break;
+ 	}
+ 
+ 	/* Remove the filter from the list and free memory */
+@@ -8924,7 +8983,7 @@ void i40e_fdir_check_and_reenable(struct i40e_pf *pf)
+ 	 * rules active.
+ 	 */
+ 	if ((fcnt_prog < (fcnt_avail - I40E_FDIR_BUFFER_HEAD_ROOM_FOR_ATR)) &&
+-	    (pf->fd_tcp4_filter_cnt == 0))
++	    pf->fd_tcp4_filter_cnt == 0 && pf->fd_tcp6_filter_cnt == 0)
+ 		i40e_reenable_fdir_atr(pf);
+ 
+ 	/* if hw had a problem adding a filter, delete it */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 2fb6ddd..c1ba4f0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -42,9 +42,6 @@ static void i40e_fdir(struct i40e_ring *tx_ring,
+ 	flex_ptype |= I40E_TXD_FLTR_QW0_PCTYPE_MASK &
+ 		      (fdata->pctype << I40E_TXD_FLTR_QW0_PCTYPE_SHIFT);
+ 
+-	flex_ptype |= I40E_TXD_FLTR_QW0_PCTYPE_MASK &
+-		      (fdata->flex_offset << I40E_TXD_FLTR_QW0_FLEXOFF_SHIFT);
+-
+ 	/* Use LAN VSI Id if not programmed by user */
+ 	flex_ptype |= I40E_TXD_FLTR_QW0_DEST_VSI_MASK &
+ 		      ((u32)(fdata->dest_vsi ? : pf->vsi[pf->lan_vsi]->id) <<
+@@ -160,52 +157,83 @@ static int i40e_program_fdir_filter(struct i40e_fdir_filter *fdir_data,
+ 	return -1;
+ }
+ 
+-#define IP_HEADER_OFFSET 14
+-#define I40E_UDPIP_DUMMY_PACKET_LEN 42
++#define IP_HEADER_OFFSET		14
++#define I40E_UDPIP_DUMMY_PACKET_LEN	42
++#define I40E_UDPIP6_DUMMY_PACKET_LEN	62
+ /**
+- * i40e_add_del_fdir_udpv4 - Add/Remove UDPv4 filters
++ * i40e_add_del_fdir_udp - Add/Remove UDP filters
+  * @vsi: pointer to the targeted VSI
+  * @fd_data: the flow director data required for the FDir descriptor
+  * @add: true adds a filter, false removes it
++ * @ipv4: true is v4, false is v6
+  *
+  * Returns 0 if the filters were successfully added or removed
+  **/
+-static int i40e_add_del_fdir_udpv4(struct i40e_vsi *vsi,
+-				   struct i40e_fdir_filter *fd_data,
+-				   bool add)
++static int i40e_add_del_fdir_udp(struct i40e_vsi *vsi,
++				 struct i40e_fdir_filter *fd_data,
++				 bool add,
++				 bool ipv4)
+ {
+ 	struct i40e_pf *pf = vsi->back;
++	struct ipv6hdr *ipv6;
+ 	struct udphdr *udp;
+ 	struct iphdr *ip;
+ 	u8 *raw_packet;
+ 	int ret;
+-	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
+-		0x45, 0, 0, 0x1c, 0, 0, 0x40, 0, 0x40, 0x11, 0, 0, 0, 0, 0, 0,
+-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
++	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
++		0, 0x45, 0, 0, 0x1c, 0, 0, 0x40, 0, 0x40, 0x11, 0, 0, 0, 0, 0,
++		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
++	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
++		0xdd, 0x60, 0, 0, 0, 0, 0, 0x11, 0,
++		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		/*udp header*/
++		0, 0, 0, 0, 0, 0, 0, 0};
+ 
+ 	raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
+ 	if (!raw_packet)
+ 		return -ENOMEM;
+-	memcpy(raw_packet, packet, I40E_UDPIP_DUMMY_PACKET_LEN);
++	if (ipv4) {
++		memcpy(raw_packet, packet_ipv4, I40E_UDPIP_DUMMY_PACKET_LEN);
+ 
+-	ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
+-	udp = (struct udphdr *)(raw_packet + IP_HEADER_OFFSET
+-	      + sizeof(struct iphdr));
++		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
++		udp = (struct udphdr *)(raw_packet + IP_HEADER_OFFSET
++		      + sizeof(struct iphdr));
+ 
+-	ip->daddr = fd_data->dst_ip;
++		ip->daddr = fd_data->dst_ip;
++		ip->saddr = fd_data->src_ip;
++	} else {
++		memcpy(raw_packet, packet_ipv6, I40E_UDPIP6_DUMMY_PACKET_LEN);
++		ipv6 = (struct ipv6hdr *)(raw_packet + IP_HEADER_OFFSET);
++		udp = (struct udphdr *)(raw_packet + IP_HEADER_OFFSET
++		      + sizeof(struct ipv6hdr));
++
++		memcpy(ipv6->saddr.in6_u.u6_addr32,
++		       fd_data->src_ip6, sizeof(__be32) * 4);
++		memcpy(ipv6->daddr.in6_u.u6_addr32,
++		       fd_data->dst_ip6, sizeof(__be32) * 4);
++	}
+ 	udp->dest = fd_data->dst_port;
+-	ip->saddr = fd_data->src_ip;
+ 	udp->source = fd_data->src_port;
+ 
+ 	if (fd_data->flex_filter) {
+-		u8 *payload = raw_packet + I40E_UDPIP_DUMMY_PACKET_LEN;
++		u8 *payload;
+ 		__be16 pattern = fd_data->flex_word;
+ 		u16 off = fd_data->flex_offset;
+ 
++		if (ipv4)
++			payload = raw_packet + I40E_UDPIP_DUMMY_PACKET_LEN;
++		else
++			payload = raw_packet + I40E_UDPIP6_DUMMY_PACKET_LEN;
++
+ 		*((__force __be16 *)(payload + off)) = pattern;
+ 	}
+ 
+-	fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
++	if (ipv4)
++		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_UDP;
++	else
++		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV6_UDP;
++
+ 	ret = i40e_program_fdir_filter(fd_data, raw_packet, pf, add);
+ 	if (ret) {
+ 		dev_info(&pf->pdev->dev,
+@@ -225,61 +253,104 @@ static int i40e_add_del_fdir_udpv4(struct i40e_vsi *vsi,
+ 				 fd_data->pctype, fd_data->fd_id);
+ 	}
+ 
+-	if (add)
+-		pf->fd_udp4_filter_cnt++;
+-	else
+-		pf->fd_udp4_filter_cnt--;
++	if (add) {
++		if (ipv4)
++			pf->fd_udp4_filter_cnt++;
++		else
++			pf->fd_udp6_filter_cnt++;
++	} else {
++		if (ipv4)
++			pf->fd_udp4_filter_cnt--;
++		else
++			pf->fd_udp6_filter_cnt--;
++	}
+ 
+ 	return 0;
+ }
+ 
+-#define I40E_TCPIP_DUMMY_PACKET_LEN 54
++#define I40E_TCPIP_DUMMY_PACKET_LEN	54
++#define I40E_TCPIP6_DUMMY_PACKET_LEN	74
+ /**
+- * i40e_add_del_fdir_tcpv4 - Add/Remove TCPv4 filters
++ * i40e_add_del_fdir_tcp - Add/Remove TCPv4 filters
+  * @vsi: pointer to the targeted VSI
+  * @fd_data: the flow director data required for the FDir descriptor
+  * @add: true adds a filter, false removes it
++ * @ipv4: true is v4, false is v6
+  *
+  * Returns 0 if the filters were successfully added or removed
+  **/
+-static int i40e_add_del_fdir_tcpv4(struct i40e_vsi *vsi,
+-				   struct i40e_fdir_filter *fd_data,
+-				   bool add)
++static int i40e_add_del_fdir_tcp(struct i40e_vsi *vsi,
++				 struct i40e_fdir_filter *fd_data,
++				 bool add,
++				 bool ipv4)
+ {
+ 	struct i40e_pf *pf = vsi->back;
++	struct ipv6hdr *ipv6;
+ 	struct tcphdr *tcp;
+ 	struct iphdr *ip;
+ 	u8 *raw_packet;
+ 	int ret;
+ 	/* Dummy packet */
+-	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
+-		0x45, 0, 0, 0x28, 0, 0, 0x40, 0, 0x40, 0x6, 0, 0, 0, 0, 0, 0,
+-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x80, 0x11,
++	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
++		0, 0x45, 0, 0, 0x28, 0, 0, 0x40, 0, 0x40, 0x6, 0, 0, 0, 0, 0,
++		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x50, 0x11,
++		0x0, 0x72, 0, 0, 0, 0};
++	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
++		0xdd, 0x60, 0, 0, 0, 0, 0, 0x6, 0,
++		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x50, 0x11,
+ 		0x0, 0x72, 0, 0, 0, 0};
+ 
+ 	raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
+ 	if (!raw_packet)
+ 		return -ENOMEM;
+-	memcpy(raw_packet, packet, I40E_TCPIP_DUMMY_PACKET_LEN);
++	if (ipv4) {
++		memcpy(raw_packet, packet_ipv4, I40E_TCPIP_DUMMY_PACKET_LEN);
++
++		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
++		tcp = (struct tcphdr *)(raw_packet + IP_HEADER_OFFSET
++		      + sizeof(struct iphdr));
++
++		ip->daddr = fd_data->dst_ip;
++		ip->saddr = fd_data->src_ip;
++	} else {
++		memcpy(raw_packet, packet_ipv6, I40E_TCPIP6_DUMMY_PACKET_LEN);
++
++		tcp = (struct tcphdr *)(raw_packet + IP_HEADER_OFFSET
++		      + sizeof(struct ipv6hdr));
++		ipv6 = (struct ipv6hdr *)(raw_packet + IP_HEADER_OFFSET);
++
++		memcpy(ipv6->saddr.in6_u.u6_addr32,
++		       fd_data->src_ip6, sizeof(__be32) * 4);
++		memcpy(ipv6->daddr.in6_u.u6_addr32,
++		       fd_data->dst_ip6, sizeof(__be32) * 4);
++	}
+ 
+ 	ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
+ 	tcp = (struct tcphdr *)(raw_packet + IP_HEADER_OFFSET
+ 	      + sizeof(struct iphdr));
+ 
+-	ip->daddr = fd_data->dst_ip;
+ 	tcp->dest = fd_data->dst_port;
+-	ip->saddr = fd_data->src_ip;
+ 	tcp->source = fd_data->src_port;
+ 
+ 	if (fd_data->flex_filter) {
+-		u8 *payload = raw_packet + I40E_TCPIP_DUMMY_PACKET_LEN;
++		u8 *payload;
+ 		__be16 pattern = fd_data->flex_word;
+ 		u16 off = fd_data->flex_offset;
+ 
++		if (ipv4)
++			payload = raw_packet + I40E_TCPIP_DUMMY_PACKET_LEN;
++		else
++			payload = raw_packet + I40E_TCPIP6_DUMMY_PACKET_LEN;
++
+ 		*((__force __be16 *)(payload + off)) = pattern;
+ 	}
+ 
+-	fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_TCP;
++	if (ipv4)
++		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_TCP;
++	else
++		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV6_TCP;
+ 	ret = i40e_program_fdir_filter(fd_data, raw_packet, pf, add);
+ 	if (ret) {
+ 		dev_info(&pf->pdev->dev,
+@@ -299,65 +370,102 @@ static int i40e_add_del_fdir_tcpv4(struct i40e_vsi *vsi,
+ 	}
+ 
+ 	if (add) {
+-		pf->fd_tcp4_filter_cnt++;
++		if (ipv4)
++			pf->fd_tcp4_filter_cnt++;
++		else
++			pf->fd_tcp6_filter_cnt++;
+ 		if ((pf->flags & I40E_FLAG_FD_ATR_ENABLED) &&
+ 		    I40E_DEBUG_FD & pf->hw.debug_mask)
+ 			dev_info(&pf->pdev->dev, "Forcing ATR off, sideband rules for TCP/IPv4 flow being applied\n");
+ 		set_bit(__I40E_FD_ATR_AUTO_DISABLED, pf->state);
+ 	} else {
+-		pf->fd_tcp4_filter_cnt--;
++		if (ipv4)
++			pf->fd_tcp4_filter_cnt--;
++		else
++			pf->fd_tcp6_filter_cnt--;
+ 	}
+ 
+ 	return 0;
+ }
+ 
+-#define I40E_SCTPIP_DUMMY_PACKET_LEN 46
++#define I40E_SCTPIP_DUMMY_PACKET_LEN	46
++#define I40E_SCTPIP6_DUMMY_PACKET_LEN	66
+ /**
+- * i40e_add_del_fdir_sctpv4 - Add/Remove SCTPv4 Flow Director filters for
++ * i40e_add_del_fdir_sctp - Add/Remove SCTPv4 Flow Director filters for
+  * a specific flow spec
+  * @vsi: pointer to the targeted VSI
+  * @fd_data: the flow director data required for the FDir descriptor
+  * @add: true adds a filter, false removes it
++ * @ipv4: true is v4, false is v6
+  *
+  * Returns 0 if the filters were successfully added or removed
+  **/
+-static int i40e_add_del_fdir_sctpv4(struct i40e_vsi *vsi,
+-				    struct i40e_fdir_filter *fd_data,
+-				    bool add)
++static int i40e_add_del_fdir_sctp(struct i40e_vsi *vsi,
++				  struct i40e_fdir_filter *fd_data,
++				  bool add,
++				  bool ipv4)
+ {
+ 	struct i40e_pf *pf = vsi->back;
++	struct ipv6hdr *ipv6;
+ 	struct sctphdr *sctp;
+ 	struct iphdr *ip;
+ 	u8 *raw_packet;
+ 	int ret;
+-	/* Dummy packet */
+-	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
+-		0x45, 0, 0, 0x20, 0, 0, 0x40, 0, 0x40, 0x84, 0, 0, 0, 0, 0, 0,
+-		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+-
++	/* Dummy packets */
++	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
++		0, 0x45, 0, 0, 0x20, 0, 0, 0x40, 0, 0x40, 0x84, 0, 0, 0, 0, 0,
++		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
++
++	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
++		0xdd, 0x60, 0, 0, 0, 0, 0, 0x84, 0,
++		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+ 	raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
+ 	if (!raw_packet)
+ 		return -ENOMEM;
+-	memcpy(raw_packet, packet, I40E_SCTPIP_DUMMY_PACKET_LEN);
++	if (ipv4) {
++		memcpy(raw_packet, packet_ipv4, I40E_SCTPIP_DUMMY_PACKET_LEN);
+ 
+-	ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
+-	sctp = (struct sctphdr *)(raw_packet + IP_HEADER_OFFSET
+-	      + sizeof(struct iphdr));
++		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
++		sctp = (struct sctphdr *)(raw_packet + IP_HEADER_OFFSET
++		       + sizeof(struct iphdr));
++
++		ip->daddr = fd_data->dst_ip;
++		ip->saddr = fd_data->src_ip;
++	} else {
++		memcpy(raw_packet, packet_ipv6, I40E_SCTPIP6_DUMMY_PACKET_LEN);
++
++		ipv6 = (struct ipv6hdr *)(raw_packet + IP_HEADER_OFFSET);
++		sctp = (struct sctphdr *)(raw_packet + IP_HEADER_OFFSET
++		       + sizeof(struct ipv6hdr));
++
++		memcpy(ipv6->saddr.in6_u.u6_addr32,
++		       fd_data->src_ip6, sizeof(__be32) * 4);
++		memcpy(ipv6->saddr.in6_u.u6_addr32,
++		       fd_data->src_ip6, sizeof(__be32) * 4);
++	}
+ 
+-	ip->daddr = fd_data->dst_ip;
+ 	sctp->dest = fd_data->dst_port;
+-	ip->saddr = fd_data->src_ip;
+ 	sctp->source = fd_data->src_port;
+ 
+ 	if (fd_data->flex_filter) {
+-		u8 *payload = raw_packet + I40E_SCTPIP_DUMMY_PACKET_LEN;
++		u8 *payload;
+ 		__be16 pattern = fd_data->flex_word;
+ 		u16 off = fd_data->flex_offset;
+ 
++		if (ipv4)
++			payload = raw_packet + I40E_SCTPIP_DUMMY_PACKET_LEN;
++		else
++			payload = raw_packet + I40E_SCTPIP6_DUMMY_PACKET_LEN;
+ 		*((__force __be16 *)(payload + off)) = pattern;
+ 	}
+ 
+-	fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_SCTP;
++	if (ipv4)
++		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV4_SCTP;
++	else
++		fd_data->pctype = I40E_FILTER_PCTYPE_NONF_IPV6_SCTP;
++
+ 	ret = i40e_program_fdir_filter(fd_data, raw_packet, pf, add);
+ 	if (ret) {
+ 		dev_info(&pf->pdev->dev,
+@@ -377,54 +485,97 @@ static int i40e_add_del_fdir_sctpv4(struct i40e_vsi *vsi,
+ 				 fd_data->pctype, fd_data->fd_id);
+ 	}
+ 
+-	if (add)
+-		pf->fd_sctp4_filter_cnt++;
+-	else
+-		pf->fd_sctp4_filter_cnt--;
++	if (add) {
++		if (ipv4)
++			pf->fd_sctp4_filter_cnt++;
++		else
++			pf->fd_sctp6_filter_cnt++;
++	} else {
++		if (ipv4)
++			pf->fd_sctp4_filter_cnt--;
++		else
++			pf->fd_sctp6_filter_cnt--;
++	}
+ 
+ 	return 0;
+ }
+ 
+-#define I40E_IP_DUMMY_PACKET_LEN 34
++#define I40E_IP_DUMMY_PACKET_LEN	34
++#define I40E_IP6_DUMMY_PACKET_LEN	54
+ /**
+- * i40e_add_del_fdir_ipv4 - Add/Remove IPv4 Flow Director filters for
++ * i40e_add_del_fdir_ip - Add/Remove IPv4 Flow Director filters for
+  * a specific flow spec
+  * @vsi: pointer to the targeted VSI
+  * @fd_data: the flow director data required for the FDir descriptor
+  * @add: true adds a filter, false removes it
++ * @ipv4: true is v4, false is v6
+  *
+  * Returns 0 if the filters were successfully added or removed
+  **/
+-static int i40e_add_del_fdir_ipv4(struct i40e_vsi *vsi,
+-				  struct i40e_fdir_filter *fd_data,
+-				  bool add)
++static int i40e_add_del_fdir_ip(struct i40e_vsi *vsi,
++				struct i40e_fdir_filter *fd_data,
++				bool add,
++				bool ipv4)
+ {
+ 	struct i40e_pf *pf = vsi->back;
++	struct ipv6hdr *ipv6;
+ 	struct iphdr *ip;
+ 	u8 *raw_packet;
++	int iter_start;
++	int iter_end;
+ 	int ret;
+ 	int i;
+-	static char packet[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08, 0,
+-		0x45, 0, 0, 0x14, 0, 0, 0x40, 0, 0x40, 0x10, 0, 0, 0, 0, 0, 0,
+-		0, 0, 0, 0};
++	static char packet_ipv4[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x08,
++		0, 0x45, 0, 0, 0x14, 0, 0, 0x40, 0, 0x40, 0x10, 0, 0, 0, 0, 0,
++		0, 0, 0, 0, 0};
++	static char packet_ipv6[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0x86,
++		0xdd, 0x60, 0, 0, 0, 0, 0, 0, 0,
++		/*src address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
++		/*dst address*/0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
++
++	if (ipv4) {
++		iter_start = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
++		iter_end = I40E_FILTER_PCTYPE_FRAG_IPV4;
++	} else {
++		iter_start = I40E_FILTER_PCTYPE_NONF_IPV6_OTHER;
++		iter_end = I40E_FILTER_PCTYPE_FRAG_IPV6;
++	}
+ 
+-	for (i = I40E_FILTER_PCTYPE_NONF_IPV4_OTHER;
+-	     i <= I40E_FILTER_PCTYPE_FRAG_IPV4;	i++) {
++	for (i = iter_start; i <= iter_end; i++) {
+ 		raw_packet = kzalloc(I40E_FDIR_MAX_RAW_PACKET_SIZE, GFP_KERNEL);
+ 		if (!raw_packet)
+ 			return -ENOMEM;
+-		memcpy(raw_packet, packet, I40E_IP_DUMMY_PACKET_LEN);
+-		ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
+-
+-		ip->saddr = fd_data->src_ip;
+-		ip->daddr = fd_data->dst_ip;
+-		ip->protocol = 0;
++		if (ipv4) {
++			memcpy(raw_packet, packet_ipv4,
++			       I40E_IP_DUMMY_PACKET_LEN);
++			ip = (struct iphdr *)(raw_packet + IP_HEADER_OFFSET);
++
++			ip->saddr = fd_data->src_ip;
++			ip->daddr = fd_data->dst_ip;
++			ip->protocol = IPPROTO_IP;
++		} else {
++			memcpy(raw_packet, packet_ipv6,
++			       I40E_IP6_DUMMY_PACKET_LEN);
++			ipv6 = (struct ipv6hdr *)(raw_packet +
++						  IP_HEADER_OFFSET);
++			memcpy(ipv6->saddr.in6_u.u6_addr32,
++			       fd_data->src_ip6, sizeof(__be32) * 4);
++			memcpy(ipv6->daddr.in6_u.u6_addr32,
++			       fd_data->dst_ip6, sizeof(__be32) * 4);
++
++			ipv6->nexthdr = IPPROTO_NONE;
++		}
+ 
+ 		if (fd_data->flex_filter) {
+-			u8 *payload = raw_packet + I40E_IP_DUMMY_PACKET_LEN;
++			u8 *payload;
+ 			__be16 pattern = fd_data->flex_word;
+ 			u16 off = fd_data->flex_offset;
+ 
++			if (ipv4)
++				payload = raw_packet + I40E_IP_DUMMY_PACKET_LEN;
++			else
++				payload = raw_packet +
++					  I40E_IP6_DUMMY_PACKET_LEN;
+ 			*((__force __be16 *)(payload + off)) = pattern;
+ 		}
+ 
+@@ -451,10 +602,17 @@ static int i40e_add_del_fdir_ipv4(struct i40e_vsi *vsi,
+ 		}
+ 	}
+ 
+-	if (add)
+-		pf->fd_ip4_filter_cnt++;
+-	else
+-		pf->fd_ip4_filter_cnt--;
++	if (add) {
++		if (ipv4)
++			pf->fd_ip4_filter_cnt++;
++		else
++			pf->fd_ip6_filter_cnt++;
++	} else {
++		if (ipv4)
++			pf->fd_ip4_filter_cnt--;
++		else
++			pf->fd_ip6_filter_cnt--;
++	}
+ 
+ 	return 0;
+ }
+@@ -469,37 +627,68 @@ static int i40e_add_del_fdir_ipv4(struct i40e_vsi *vsi,
+ int i40e_add_del_fdir(struct i40e_vsi *vsi,
+ 		      struct i40e_fdir_filter *input, bool add)
+ {
++	enum ip_ver { ipv6 = 0, ipv4 = 1 };
+ 	struct i40e_pf *pf = vsi->back;
+ 	int ret;
+ 
+ 	switch (input->flow_type & ~FLOW_EXT) {
+ 	case TCP_V4_FLOW:
+-		ret = i40e_add_del_fdir_tcpv4(vsi, input, add);
++		ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv4);
+ 		break;
+ 	case UDP_V4_FLOW:
+-		ret = i40e_add_del_fdir_udpv4(vsi, input, add);
++		ret = i40e_add_del_fdir_udp(vsi, input, add, ipv4);
+ 		break;
+ 	case SCTP_V4_FLOW:
+-		ret = i40e_add_del_fdir_sctpv4(vsi, input, add);
++		ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv4);
++		break;
++	case TCP_V6_FLOW:
++		ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv6);
++		break;
++	case UDP_V6_FLOW:
++		ret = i40e_add_del_fdir_udp(vsi, input, add, ipv6);
++		break;
++	case SCTP_V6_FLOW:
++		ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv6);
+ 		break;
+ 	case IP_USER_FLOW:
+-		switch (input->ip4_proto) {
++		switch (input->ipl4_proto) {
+ 		case IPPROTO_TCP:
+-			ret = i40e_add_del_fdir_tcpv4(vsi, input, add);
++			ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv4);
+ 			break;
+ 		case IPPROTO_UDP:
+-			ret = i40e_add_del_fdir_udpv4(vsi, input, add);
++			ret = i40e_add_del_fdir_udp(vsi, input, add, ipv4);
+ 			break;
+ 		case IPPROTO_SCTP:
+-			ret = i40e_add_del_fdir_sctpv4(vsi, input, add);
++			ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv4);
+ 			break;
+ 		case IPPROTO_IP:
+-			ret = i40e_add_del_fdir_ipv4(vsi, input, add);
++			ret = i40e_add_del_fdir_ip(vsi, input, add, ipv4);
+ 			break;
+ 		default:
+ 			/* We cannot support masking based on protocol */
+ 			dev_info(&pf->pdev->dev, "Unsupported IPv4 protocol 0x%02x\n",
+-				 input->ip4_proto);
++				 input->ipl4_proto);
++			return -EINVAL;
++		}
++		break;
++	case IPV6_USER_FLOW:
++		switch (input->ipl4_proto) {
++		case IPPROTO_TCP:
++			ret = i40e_add_del_fdir_tcp(vsi, input, add, ipv6);
++			break;
++		case IPPROTO_UDP:
++			ret = i40e_add_del_fdir_udp(vsi, input, add, ipv6);
++			break;
++		case IPPROTO_SCTP:
++			ret = i40e_add_del_fdir_sctp(vsi, input, add, ipv6);
++			break;
++		case IPPROTO_IP:
++			ret = i40e_add_del_fdir_ip(vsi, input, add, ipv6);
++			break;
++		default:
++			/* We cannot support masking based on protocol */
++			dev_info(&pf->pdev->dev, "Unsupported IPv6 protocol 0x%02x\n",
++				 input->ipl4_proto);
+ 			return -EINVAL;
+ 		}
+ 		break;
+-- 
+2.17.1
+
+---------------------------------------------------------------------
+Intel Technology Poland sp. z o.o.
+ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
+Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
+This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
+ 
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
