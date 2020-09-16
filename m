@@ -1,65 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 062C326C485
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 17:49:13 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 315D826CCFE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Sep 2020 22:52:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 86176869F5;
-	Wed, 16 Sep 2020 15:49:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id C7C6087720;
+	Wed, 16 Sep 2020 20:52:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i5tr7_PuLXIQ; Wed, 16 Sep 2020 15:49:11 +0000 (UTC)
+	with ESMTP id jWHxxi36dW1Z; Wed, 16 Sep 2020 20:52:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id CE88286A42;
-	Wed, 16 Sep 2020 15:49:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 0E0A587728;
+	Wed, 16 Sep 2020 20:52:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E5CC71BF977
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 15:49:08 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A3B51BF855
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 20:50:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id D6116275A5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 15:49:08 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 14D1687720
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 20:50:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cLx7hxE7cc6p for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Sep 2020 15:49:07 +0000 (UTC)
+ with ESMTP id 4+B0NjKe8s4j for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Sep 2020 20:50:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 756A12750D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 15:49:07 +0000 (UTC)
-IronPort-SDR: YtT9qie5Eep3yCzOKTQ1ci7VMjacw57VK2/TGxn0O8ucoVcot/A7fHQI/3Ah2WTNCSDCc5kAY5
- TyENLN8fzi2Q==
-X-IronPort-AV: E=McAfee;i="6000,8403,9746"; a="139507442"
-X-IronPort-AV: E=Sophos;i="5.76,433,1592895600"; d="scan'208";a="139507442"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Sep 2020 08:49:06 -0700
-IronPort-SDR: zmPQAMpH5jtg2AZ1GH/TDjJJvGwUpdjEGuumwxOLOSnmgavkpuvZ3guz7OZUTaXYZh5si8FdVF
- aLUHqXu4ab5g==
-X-IronPort-AV: E=Sophos;i="5.76,433,1592895600"; d="scan'208";a="483358293"
-Received: from annatere-mobl.ger.corp.intel.com (HELO
- btopel-mobl.ger.intel.com) ([10.252.62.158])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Sep 2020 08:49:04 -0700
-To: Dan Carpenter <dan.carpenter@oracle.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <20200916143228.GA764370@mwanda>
-From: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn.topel@intel.com>
-Message-ID: <850c79f4-de8a-1132-0e37-facbc09e4dfb@intel.com>
-Date: Wed, 16 Sep 2020 17:49:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+Received: from mail-wm1-f66.google.com (mail-wm1-f66.google.com
+ [209.85.128.66])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id D5D0C8771E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 20:50:13 +0000 (UTC)
+Received: by mail-wm1-f66.google.com with SMTP id y15so4410725wmi.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Sep 2020 13:50:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TVdlmRRpxaOmJp0wpVVEjEPcXY/5kO+TQCDCCLVJ6hg=;
+ b=G7Qd/LcqX6GnUw4HwAETsZJC3kfYWCGoq88416Zk1MSfG7rWo/v7qEKxRG+cTU4wPW
+ CqFZDKDK3+BvEwALubLpQ2zYb8mJnl5Jo2e/2k4YRx2EB1d1sAx1K12STM9pjqpyEad9
+ RppDA3yh5l5I9VaDWylWdso3bnBfYWcoYHdf79CnqWojt9u71DuQQ8gsW+Gps7y4XxjY
+ u+NocKWfdGXAm+mhCAvVTtVE3Fytl//yoSvXDta0rCzv6rUvNqtzfZbxieHdeK/KN0xC
+ hhBVcitoo/1hOeeUN2YxtPHIYcBWjuYEADSNFm2Z1kF89SzbJN89YON3HQSc2Hd7hJ0Q
+ SB0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TVdlmRRpxaOmJp0wpVVEjEPcXY/5kO+TQCDCCLVJ6hg=;
+ b=rXwPRLQ1yCiLq5W9ly8mvnvlgSiT1ADfuJo0DsRQvbGtyOf+M3Xt4dACD+2OKqbagS
+ tbZ7nkes5Gt8UZ0n2byLhuUy5EGQL3+3viTGT0Zfg/W+4uAjHHghGsZQZyX6LiQk88Cl
+ BxtfCJaw6E2D7MORwldXsp06LDqHhiOeyuY1ovuKpCm5HnH1nvlDQllPzF2hXGlI+M5e
+ aXDuX3tEGQ6kfQbMc65DiJ8LfHz5W7t7Mnz8R7JywI6DdTwnsNYuoh+lAkuRFA7mM01B
+ SetNHWwxPuEqO/ItPjflZsBxp2p7Pe5UuKZpBVIGpiUFuxHGvWRmJrypd0n3RyJ2AvbH
+ 49KQ==
+X-Gm-Message-State: AOAM531r2ojNrPKWcfCsHAISIsThJpD/HBJFfUEnrpKgEfg7Q4s4Bk2O
+ 8n+yGHZ7p5N9jifbAPU+aCk=
+X-Google-Smtp-Source: ABdhPJxRPEz6cLPrGaaD3Q9jTaxwljb6VA9QWbvZQVPXsnVMm7Zkyqz9HkM8Q8wHaWQKhjFcp6Jivg==
+X-Received: by 2002:a05:600c:2109:: with SMTP id
+ u9mr6167718wml.147.1600289411985; 
+ Wed, 16 Sep 2020 13:50:11 -0700 (PDT)
+Received: from localhost.localdomain
+ (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
+ by smtp.gmail.com with ESMTPSA id z7sm34879619wrw.93.2020.09.16.13.50.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Sep 2020 13:50:11 -0700 (PDT)
+From: Alex Dewar <alex.dewar90@gmail.com>
+To: 
+Date: Wed, 16 Sep 2020 21:49:42 +0100
+Message-Id: <20200916204943.41017-1-alex.dewar90@gmail.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <20200916143228.GA764370@mwanda>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] i40e,
- xsk: uninitialized variable in i40e_clean_rx_irq_zc()
+X-Mailman-Approved-At: Wed, 16 Sep 2020 20:52:19 +0000
+Subject: [Intel-wired-lan] [PATCH] i40e: Fix use of uninitialized variable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,32 +86,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Alex Dewar <alex.dewar90@gmail.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>,
+ =?UTF-8?q?Bj=C3=B6rn=20T=C3=B6pel?= <bjorn.topel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMjAyMC0wOS0xNiAxNjozMiwgRGFuIENhcnBlbnRlciB3cm90ZToKPiBUaGUgImZhaWx1cmUi
-IHZhcmlhYmxlIGlzIHVzZWQgd2l0aG91dCBiZWluZyBpbml0aWFsaXplZC4gIEl0IHNob3VsZCBi
-ZQo+IHNldCB0byBmYWxzZS4KPiAKPiBGaXhlczogOGNiZjc0MTQ5OTAzICgiaTQwZSwgeHNrOiBt
-b3ZlIGJ1ZmZlciBhbGxvY2F0aW9uIG91dCBvZiB0aGUgUnggcHJvY2Vzc2luZyBsb29wIikKPiBT
-aWduZWQtb2ZmLWJ5OiBEYW4gQ2FycGVudGVyIDxkYW4uY2FycGVudGVyQG9yYWNsZS5jb20+CgpU
-aGFua3MgRGFuIQoKQWNrZWQtYnk6IEJqw7ZybiBUw7ZwZWwgPGJqb3JuLnRvcGVsQGludGVsLmNv
-bT4KCj4gLS0tCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMg
-fCAyICstCj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hz
-ay5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCj4gaW5kZXgg
-NmFjZWRlMGFjZGNhLi41NjdmZDY3ZTkwMGUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRo
-ZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaTQwZS9pNDBlX3hzay5jCj4gQEAgLTI4MSw4ICsyODEsOCBAQCBpbnQgaTQwZV9jbGVh
-bl9yeF9pcnFfemMoc3RydWN0IGk0MGVfcmluZyAqcnhfcmluZywgaW50IGJ1ZGdldCkKPiAgIAl1
-bnNpZ25lZCBpbnQgdG90YWxfcnhfYnl0ZXMgPSAwLCB0b3RhbF9yeF9wYWNrZXRzID0gMDsKPiAg
-IAl1MTYgY2xlYW5lZF9jb3VudCA9IEk0MEVfREVTQ19VTlVTRUQocnhfcmluZyk7Cj4gICAJdW5z
-aWduZWQgaW50IHhkcF9yZXMsIHhkcF94bWl0ID0gMDsKPiArCWJvb2wgZmFpbHVyZSA9IGZhbHNl
-Owo+ICAgCXN0cnVjdCBza19idWZmICpza2I7Cj4gLQlib29sIGZhaWx1cmU7Cj4gICAKPiAgIAl3
-aGlsZSAobGlrZWx5KHRvdGFsX3J4X3BhY2tldHMgPCAodW5zaWduZWQgaW50KWJ1ZGdldCkpIHsK
-PiAgIAkJdW5pb24gaTQwZV9yeF9kZXNjICpyeF9kZXNjOwo+IApfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0
-CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+In i40e_clean_rx_irq_zc(), the variable failure is only set when a
+condition is met, but then its value is used unconditionally. Fix this.
+
+Addresses-Coverity: 1496986 ("Uninitialized value")
+Fixes: 8cbf74149903 ("i40e, xsk: move buffer allocation out of the Rx processing loop")
+Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 6acede0acdca..18c05d23e15e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -364,8 +364,8 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
+ 		napi_gro_receive(&rx_ring->q_vector->napi, skb);
+ 	}
+ 
+-	if (cleaned_count >= I40E_RX_BUFFER_WRITE)
+-		failure = !i40e_alloc_rx_buffers_zc(rx_ring, cleaned_count);
++	failure = (cleaned_count >= I40E_RX_BUFFER_WRITE) &&
++		  !i40e_alloc_rx_buffers_zc(rx_ring, cleaned_count);
+ 
+ 	i40e_finalize_xdp_rx(rx_ring, xdp_xmit);
+ 	i40e_update_rx_stats(rx_ring, total_rx_bytes, total_rx_packets);
+-- 
+2.28.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
