@@ -1,132 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8361A26E72E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Sep 2020 23:11:46 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 127C526E9D6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Sep 2020 02:16:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 38CC0876B6;
-	Thu, 17 Sep 2020 21:11:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9732A8750F;
+	Fri, 18 Sep 2020 00:16:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 41-t4pwnySxh; Thu, 17 Sep 2020 21:11:45 +0000 (UTC)
+	with ESMTP id 9NKIIzI1vtrh; Fri, 18 Sep 2020 00:16:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C160A876D1;
-	Thu, 17 Sep 2020 21:11:44 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 35689874D4;
+	Fri, 18 Sep 2020 00:16:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CB0C81BF35E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Sep 2020 21:11:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A0CFB1BF9B4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 00:16:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id C6555876B6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Sep 2020 21:11:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9C7118713D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 00:16:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 12VRnVhWUClH for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Sep 2020 21:11:42 +0000 (UTC)
+ with ESMTP id x6UCaWgRQ8VP for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Sep 2020 00:16:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 1E490876AC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Sep 2020 21:11:42 +0000 (UTC)
-IronPort-SDR: wGCZpyiAFxgk81RKb8zusM5qITOUgzlXKTHRdSfp7PI/USYz9H4t6STjrS8EYShkTj4zUemu4S
- mCQhvS+c8hLw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="139299238"
-X-IronPort-AV: E=Sophos;i="5.77,272,1596524400"; d="scan'208";a="139299238"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 27F9D86FC3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 00:16:17 +0000 (UTC)
+IronPort-SDR: n/NAi0p9Q4g2KnUIwSLfp+sU2pUFbdJpeq4Yk3T8InDMK19ybwJkPxxPAMkEn7qBn1CgoONPql
+ TOgRaAP2wD9Q==
+X-IronPort-AV: E=McAfee;i="6000,8403,9747"; a="147506302"
+X-IronPort-AV: E=Sophos;i="5.77,272,1596524400"; d="scan'208";a="147506302"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Sep 2020 14:11:36 -0700
-IronPort-SDR: SRGNh5m1nt6x3wcLWF/PABYT0Gp0QsyLVOjUxjrG8ZZZwmM8JC7RvVoMh+Ru2rXAgjGrgF+gBQ
- c43KbuFsWu8g==
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Sep 2020 17:16:14 -0700
+IronPort-SDR: Mzhpn07IggJUgYHiaHXcfQC2k1l6ztssNCZyJLW+Sae57g8PlzJA1ayIuDCazqixjY9zKus9x5
+ St0X/kfIyWdg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,272,1596524400"; d="scan'208";a="339566438"
-Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
- by fmsmga002.fm.intel.com with ESMTP; 17 Sep 2020 14:11:36 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Thu, 17 Sep 2020 14:11:35 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Thu, 17 Sep 2020 14:11:35 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Thu, 17 Sep 2020 14:11:34 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jKLhcUDbIt5egsQJzzMwoB3IDS7wQY4dUSAOqwbgJNx8E7W9yIGh9cNo2Z3QiIosR0Z++L04hQpI1Mf51BscDIKHn4WoIb3TgGg7f59VUZrycE2bRY9IvRnSudClsie+5BNcZ/swV1H+vfs2XE65QV0mX9+x8f+27/WGVK03TjumRzkUHiaNt2uM7jY9K8x7V/2A1Y7Wp5XSwOuETGdP2zjwBEQjSLqsuuRLgh6PKxCn+CFKCfTGCKiFkqrKhfm9n7uE9tWPEWMcRmHMYnY8dHGNeY/0Waiw2+nmZCLgyt0MGbS9cEYSJRBAw0TeG5YpRZE+T37KtQph9AA/kHU/Xg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZJArvnx3QfOt6lNWeckv4FsW19JAMcUnMUHaRCFR/sU=;
- b=CstlZtYnKaER/QQsGtnhZnJKZvdJf9seL/1hiAnZSjL7lGuwiu0BvUfyjUUZyWVG8Brv2k/akDFP9Je9FaD48DDE/8QxNG582dqyLbM5Vh1wIz0ArsEXykvRCmNNiEM62mEPcpszIAOLwDOtyneQf0rjuaGYIK7BGAgwVhJx85J+S8VnPOAIMnB1w1o6kdzEBWjs2bJ5YO65Us9vXgRWXlYOlT4EEpAEW+f3XlNRlTLDd+NVUHE12qOBQPmcEUyOKD7aF6fU+4WoTbcrVJRcb+zf/suY6MaDXY478JwKIRa9KDFw6GG+Tu1CEG7f6OrDa2zOwpNymq1bY6mc5mBmlQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZJArvnx3QfOt6lNWeckv4FsW19JAMcUnMUHaRCFR/sU=;
- b=UIlsamDWdLq64xPHRO9uFrTYklfMH86HkGkR9edG/qL688keSJtyknMzW/kL47x5xr5QAx1F+OUf54GViVDVqSi41LGLToFpQ05mnb4dTUIuuypbBkMngLzv430y0cmTyY7XKMzr7YYq/sKFVNC0VRMq0S1TppqmWeCLeUsPqn4=
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
- by SN6PR11MB2976.namprd11.prod.outlook.com (2603:10b6:805:d5::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3370.16; Thu, 17 Sep
- 2020 21:11:32 +0000
-Received: from SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::7147:6b91:afe3:1579]) by SN6PR11MB3229.namprd11.prod.outlook.com
- ([fe80::7147:6b91:afe3:1579%3]) with mapi id 15.20.3370.019; Thu, 17 Sep 2020
- 21:11:32 +0000
-From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-To: "alex.dewar90@gmail.com" <alex.dewar90@gmail.com>
-Thread-Topic: [PATCH] i40e: Fix use of uninitialized variable
-Thread-Index: AQHWjGsRLgMwwhuISEmenowm+AvAhaltVWSA
-Date: Thu, 17 Sep 2020 21:11:32 +0000
-Message-ID: <6aaa242f49ccd3824fe4cbb38bada7ccf9add979.camel@intel.com>
-References: <20200916204943.41017-1-alex.dewar90@gmail.com>
-In-Reply-To: <20200916204943.41017-1-alex.dewar90@gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5 (3.28.5-3.fc28) 
-authentication-results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [134.134.136.204]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 301e08fe-03b4-4698-3ffa-08d85b4e40b9
-x-ms-traffictypediagnostic: SN6PR11MB2976:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <SN6PR11MB2976CF5F7F148C0934D612A1C63E0@SN6PR11MB2976.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: cqP7M3hIafKFk19jHsgUsbWrBgbDrUHNMJxPJRK89m3kHPgdlqfzJhJnFQSn7EHX5qbHdK4sy+tz4Wh5u2r2vl8m/Ub7OFK28N5qDgXL+JMi2RSz5MVfmtK4wm67SKl9g7/Elw4Q9KDvQk4uTgOVw3vj+lOuDEJBRn46e4H3QDLtgTJS6/YZufgdiW6+qR7Qdnzl/zR2OfqHgYKXFblWlp/RKBRPJ5+gAR29u9qyRcIgHr0wh9aB5vBPmpXC2YVBhJLShRkEXDPQds4qgtWb8zihFsZeVOj+f+PBHD+0Zn9fa8a+pIjHcB1dsnWjgmIcO+CHpBn7q6741TlGcRCsoUD6YcQbsty/oO95LN8zk8fUObncmTxiFgZvWOg8NxPVnyt835wZfQUoMyJE0x3hbG2Y+Ir1e3BahJaey1+aLxaNca/KcR0saWEXITpBoNBUyzntFJ/VgmgkqMd/OiyCCA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(346002)(376002)(396003)(136003)(39860400002)(366004)(91956017)(26005)(478600001)(2616005)(2906002)(316002)(186003)(6512007)(8936002)(36756003)(6916009)(71200400001)(6486002)(54906003)(86362001)(4744005)(6506007)(107886003)(83380400001)(8676002)(4326008)(5660300002)(66446008)(66476007)(76116006)(66946007)(966005)(66556008)(64756008)(99106002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: Doe8D66bNP1kVv7gPRA0+xSLSGD7nHMjsZIhVVjCMQv63XMq9Q4xZePhov+WpQuBuAubHVl2X4K5YXGKLEB+TTXLlUClOUyVAacMTFbHJD1O2WxdLvnvJz8AWb/BOz0EuNVt2a1EVewQcmXb8U99ILJ0z+mVV5qTxbWDPFHchYNf+ZXYFaBzokqgRQShG1HTxDVXSJbW0Z7IquRVwU+oib/qzCyU50lywH5WjPcf3XL5KSgsHPRg36Iakhmr8zvXFs9KsUUlm7giIARkkBcVYHovTqdXq3AOv+nt29zAOJ5/tRMW2dx9kFKbAJ1eWMVa6x9IajS5viM6/GhAAKIU6vdfCoKOeWijnmj6KtJfmk8gApepwDyBDRYwREgDX/6b5YnWBxG36yV3h+Pe49iH8WK2MH5MnCZZTvh4dzTW9ZkUapoPQUFgcnOgwfEdS2HeMPBUV/4P5mYGWuMH6JfPixhwWq05C3PO0xoSB80TW4Y1ZY5+lg8bYte0VeUuaatKBIitNZzGUbniqJLSmAUr4LRkNSPrTS2yGR8yEZhjxGz6MU/Mow6v4MYhynbdI/20fWve5z1CrTIiTzaEjBw4Bs6Cq625dV0QPxsY1q5nruMSG1sL8DwxxYh1Trp51lxtczZCfXp1SL/D0qojK7SAXQ==
-Content-ID: <B58BBCD8D6B73949B64DB887AC86A68E@namprd11.prod.outlook.com>
+X-IronPort-AV: E=Sophos;i="5.77,272,1596524400"; d="scan'208";a="380721391"
+Received: from alicemic-1.jf.intel.com ([10.166.17.62])
+ by orsmga001.jf.intel.com with ESMTP; 17 Sep 2020 17:16:14 -0700
+From: Alice Michael <alice.michael@intel.com>
+To: alice.michael@intel.com,
+	intel-wired-lan@lists.osuosl.org
+Date: Thu, 17 Sep 2020 08:45:41 -0700
+Message-Id: <20200917154556.26094-1-alice.michael@intel.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 301e08fe-03b4-4698-3ffa-08d85b4e40b9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Sep 2020 21:11:32.3464 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ++Iqyu7I71bJzYniv1KiraVOlHKSFtcfjF4AZX8h6pegGdc+SWu5BGVex45fw49fqnJc1zwhd/oyK6flpYhLdUU0SHL2tty5rO9c/VN8k58=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2976
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: Fix use of uninitialized
- variable
+Subject: [Intel-wired-lan] [next-queue,V8, 00/15]
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,32 +66,134 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "Topel, Bjorn" <bjorn.topel@intel.com>,
- "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 2020-09-16 at 21:49 +0100, Alex Dewar wrote:
-> In i40e_clean_rx_irq_zc(), the variable failure is only set when a
-> condition is met, but then its value is used unconditionally. Fix
-> this.
-> 
-> Addresses-Coverity: 1496986 ("Uninitialized value")
-> Fixes: 8cbf74149903 ("i40e, xsk: move buffer allocation out of the Rx
-> processing loop")
-> Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
+This series introduces both the Intel Ethernet Common Module and the 
+Intel Data Plane Function.  The patches also incorporate extended 
+features and functionality added in the virtchnl.h file.
+ 
+The format of the series flow is to add the data set, then introduce 
+function stubs and finally introduce pieces in large cohesive subjects or
+functionality. This is to allow for more in depth understanding and review
+of the bigger picture as the series is reviewed.
+ 
+Currently this is common layer (iecm) is initially only being used by 
+only the idpf driver (PF driver for SmartNIC).  However, the plan is 
+to eventually switch our iavf driver along with future drivers to use 
+this common module.  The hope is to better enable code sharing going 
+forward as well as support other developers writing drivers for our 
+hardware
 
-Thanks for the patch Alex, however, Dan Carpenter has already submitted
-a patch for the same reported issue: 
-https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20200916143228.GA764370@mwanda/
+V3 -- Addresses comments from the original series.  This inncludes removing
+      the iecm_ctlq_err in iecm_ctlq_api.h, the private flags and duplicated
+      checks, and cleaning up the clamps in iecm_ethtool.c.  We also added
+      the supported_coalesce_params flags in iecm_ethtool.c.  Finally, we
+      got the headers cleaned up and addressed mismatching types from calls
+      to cpu_to_le to match the types (this fixes C=2 W=1 errors that were
+      reported).
 
-Thanks,
-Tony
+V4 -- Missed static in idpf_main.c on idpf_probe
+
+V5 -- updated location of documentation, refactored soft reset path to take
+      memory allocation into account, refactored ethtool stats to not use
+      VA_ARGS, *greatly* reduced use of iecm_status enum, aligned use of
+      periods in debug statements, refactored to reduce line indentats.
+
+V6 -- Missing local variable put into iecm_rx_can_reuse_page, and cleaned
+      up spacing issue that no longer triggers checkpatch due to Linus'
+      recent patch for column spacing.
+
+V7 -- Cleaned up some checks the core is already doing, corrected the
+      calculation for txq and rxq, Removed the fw version that had been
+      missed in preveous version, dma_wmb call directly replacing a
+      define to it, cleaned up the memory and header files that were not
+      used, and cleaning up the self defining error codes.
+V8 -- Fixed virtchnl op alignment issues, fixed ethtool get/set channels,
+      removed remaining idpf_status, removed synchronize_irq usage, removed
+      inline calls.
+
+Alan Brady (1):
+  idpf: Introduce idpf driver
+ 
+Alice Michael (14):
+  virtchnl: Extend AVF ops
+  iecm: Add framework set of header files
+  iecm: Add TX/RX header files
+  iecm: Common module introduction and function stubs
+  iecm: Add basic netdevice functionality
+  iecm: Implement mailbox functionality
+  iecm: Implement virtchnl commands
+  iecm: Implement vector allocation
+  iecm: Init and allocate vport
+  iecm: Deinit vport
+  iecm: Add splitq TX/RX
+  iecm: Add singleq TX/RX
+  iecm: Add ethtool
+  iecm: Add iecm to the kernel build system
+
+ .../networking/device_drivers/intel/idpf.rst  |   47 +
+ .../networking/device_drivers/intel/iecm.rst  |   93 +
+ MAINTAINERS                                   |    3 +
+ drivers/net/ethernet/intel/Kconfig            |   15 +
+ drivers/net/ethernet/intel/Makefile           |    2 +
+ drivers/net/ethernet/intel/idpf/Makefile      |   12 +
+ drivers/net/ethernet/intel/idpf/idpf_dev.h    |   17 +
+ drivers/net/ethernet/intel/idpf/idpf_devids.h |   10 +
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  136 +
+ drivers/net/ethernet/intel/idpf/idpf_reg.c    |  152 +
+ drivers/net/ethernet/intel/iecm/Makefile      |   19 +
+ .../net/ethernet/intel/iecm/iecm_controlq.c   |  669 +++
+ .../ethernet/intel/iecm/iecm_controlq_setup.c |  177 +
+ .../net/ethernet/intel/iecm/iecm_ethtool.c    | 1064 +++++
+ drivers/net/ethernet/intel/iecm/iecm_lib.c    | 1093 +++++
+ drivers/net/ethernet/intel/iecm/iecm_main.c   |   50 +
+ drivers/net/ethernet/intel/iecm/iecm_osdep.c  |   28 +
+ .../ethernet/intel/iecm/iecm_singleq_txrx.c   |  892 ++++
+ drivers/net/ethernet/intel/iecm/iecm_txrx.c   | 3961 +++++++++++++++++
+ .../net/ethernet/intel/iecm/iecm_virtchnl.c   | 2262 ++++++++++
+ include/linux/net/intel/iecm.h                |  433 ++
+ include/linux/net/intel/iecm_alloc.h          |   29 +
+ include/linux/net/intel/iecm_controlq.h       |   95 +
+ include/linux/net/intel/iecm_controlq_api.h   |  188 +
+ include/linux/net/intel/iecm_lan_pf_regs.h    |  120 +
+ include/linux/net/intel/iecm_lan_txrx.h       |  636 +++
+ include/linux/net/intel/iecm_osdep.h          |   24 +
+ include/linux/net/intel/iecm_txrx.h           |  581 +++
+ include/linux/net/intel/iecm_type.h           |   47 +
+ 29 files changed, 12855 insertions(+)
+ create mode 100644 Documentation/networking/device_drivers/intel/idpf.rst
+ create mode 100644 Documentation/networking/device_drivers/intel/iecm.rst
+ create mode 100644 drivers/net/ethernet/intel/idpf/Makefile
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_dev.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_devids.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_main.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_reg.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/Makefile
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_controlq.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_controlq_setup.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_ethtool.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_lib.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_main.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_osdep.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_singleq_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_txrx.c
+ create mode 100644 drivers/net/ethernet/intel/iecm/iecm_virtchnl.c
+ create mode 100644 include/linux/net/intel/iecm.h
+ create mode 100644 include/linux/net/intel/iecm_alloc.h
+ create mode 100644 include/linux/net/intel/iecm_controlq.h
+ create mode 100644 include/linux/net/intel/iecm_controlq_api.h
+ create mode 100644 include/linux/net/intel/iecm_lan_pf_regs.h
+ create mode 100644 include/linux/net/intel/iecm_lan_txrx.h
+ create mode 100644 include/linux/net/intel/iecm_osdep.h
+ create mode 100644 include/linux/net/intel/iecm_txrx.h
+ create mode 100644 include/linux/net/intel/iecm_type.h
+
+-- 
+2.21.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
