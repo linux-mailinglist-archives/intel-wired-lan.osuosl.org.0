@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 886922701C1
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Sep 2020 18:14:50 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9732270441
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Sep 2020 20:42:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2E23B8787B;
-	Fri, 18 Sep 2020 16:14:49 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4A51787AE3;
+	Fri, 18 Sep 2020 18:42:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FJgrNMivxMte; Fri, 18 Sep 2020 16:14:49 +0000 (UTC)
+	with ESMTP id j+TckR3i+oaP; Fri, 18 Sep 2020 18:42:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id C570287885;
-	Fri, 18 Sep 2020 16:14:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8C33287AEA;
+	Fri, 18 Sep 2020 18:42:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 656D51BF396
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 16:14:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5816C1BF31B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 18:42:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 60C4087A11
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 16:14:45 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 53CB987AE9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 18:42:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6guF-QxFbp87 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 18 Sep 2020 16:14:44 +0000 (UTC)
+ with ESMTP id Rju0x35K9bCl for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Sep 2020 18:42:07 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 046B287955
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 16:14:43 +0000 (UTC)
-IronPort-SDR: +jMQgBVF46/YieLNeKfZivW2JWeNWcyybg7mWHjw3zCuUaBWfEJ2rqatPAcqRKoSAhO1B/Jth4
- M5dgZvyuWCfA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9748"; a="147727338"
-X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="147727338"
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 83EE187AE3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Sep 2020 18:42:07 +0000 (UTC)
+IronPort-SDR: ATmtJTHHhlTWAvHeH96fnhCwtJWhn0xviBz0Ws7xWTuasNGucPczOP/luR81sNcKy027LetnRQ
+ uuSlES/ZT3sA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9748"; a="147758841"
+X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="147758841"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Sep 2020 09:14:41 -0700
-IronPort-SDR: MJDQHHhurlQFFeneXdUgBaj0vaIbRucneVTO44kUST3Upis9HfZmX+ytxa9tEMlsqPZIKW+D0G
- NVTtZQBrQu8w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="452808905"
-Received: from amlin-018-053.igk.intel.com ([10.102.18.53])
- by orsmga004.jf.intel.com with ESMTP; 18 Sep 2020 09:14:40 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+ 18 Sep 2020 11:41:59 -0700
+IronPort-SDR: wXvYVv8eG1aHU8+5CBNg7YpO8S6bT1/4FYZC72MW2CP+bp60H23eytrMgYrdRawhajvTvgdlNg
+ RCc3OrlRbllQ==
+X-IronPort-AV: E=Sophos;i="5.77,274,1596524400"; d="scan'208";a="339908506"
+Received: from jbrandeb-desk.jf.intel.com ([10.166.244.152])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Sep 2020 11:41:59 -0700
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 18 Sep 2020 16:09:27 +0000
-Message-Id: <20200918160927.11265-1-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.26.0
+Date: Fri, 18 Sep 2020 11:41:52 -0700
+Message-Id: <20200918184152.604967-1-jesse.brandeburg@intel.com>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] i40e: Add info trace at loading xdp
- program
+Subject: [Intel-wired-lan] [PATCH net-next v1] e1000: remove unused and
+ incorrect code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,55 +66,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-New trace indicates that the XDP program was loaded.
-The trace has a note that in case of using XDP_REDIRECT,
-number of queues on both interfaces shall be the same.
-This is required for optimal performance of XDP_REDIRECT,
-if interface used for TX has lower number of queues than
-a RX interface, the packets may be dropped (depending on
-RSS queue assignment).
+The e1000_clear_vfta function was triggering a warning in kbuild-bot
+testing. It's actually a bug but has no functional impact.
 
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+drivers/net/ethernet/intel/e1000/e1000_hw.c:4415:58: warning: Same expression in both branches of ternary operator. [duplicateExpressionTernary]
+
+Fix this warning by removing the offending code and simplifying
+the routine to do exactly what it did before, no functional
+change.
+
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 05c6d3e..85eac48 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -12643,11 +12643,14 @@ static int i40e_xdp_setup(struct i40e_vsi *vsi,
- 	/* Kick start the NAPI context if there is an AF_XDP socket open
- 	 * on that queue id. This so that receiving will start.
- 	 */
--	if (need_reset && prog)
-+	if (need_reset && prog) {
-+		dev_info(&pf->pdev->dev,
-+			 "Loading XDP program, please note: XDP_REDIRECT action requires the same number of queues on both interfaces\n");
- 		for (i = 0; i < vsi->num_queue_pairs; i++)
- 			if (vsi->xdp_rings[i]->xsk_pool)
- 				(void)i40e_xsk_wakeup(vsi->netdev, i,
- 						      XDP_WAKEUP_RX);
-+	}
+NOTE: I don't recommend this go to stable as there is no functional
+change.
+---
+ drivers/net/ethernet/intel/e1000/e1000_hw.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_hw.c b/drivers/net/ethernet/intel/e1000/e1000_hw.c
+index 2120dacfd55c..c5d702543daa 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_hw.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_hw.c
+@@ -4403,17 +4403,9 @@ void e1000_write_vfta(struct e1000_hw *hw, u32 offset, u32 value)
+ static void e1000_clear_vfta(struct e1000_hw *hw)
+ {
+ 	u32 offset;
+-	u32 vfta_value = 0;
+-	u32 vfta_offset = 0;
+-	u32 vfta_bit_in_reg = 0;
  
- 	return 0;
+ 	for (offset = 0; offset < E1000_VLAN_FILTER_TBL_SIZE; offset++) {
+-		/* If the offset we want to clear is the same offset of the
+-		 * manageability VLAN ID, then clear all bits except that of the
+-		 * manageability unit
+-		 */
+-		vfta_value = (offset == vfta_offset) ? vfta_bit_in_reg : 0;
+-		E1000_WRITE_REG_ARRAY(hw, VFTA, offset, vfta_value);
++		E1000_WRITE_REG_ARRAY(hw, VFTA, offset, 0);
+ 		E1000_WRITE_FLUSH();
+ 	}
  }
--- 
-2.26.0
 
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
+base-commit: aa042f60e4961d4bec57e3268624df1f3a6befa4
+-- 
+2.25.4
 
 _______________________________________________
 Intel-wired-lan mailing list
