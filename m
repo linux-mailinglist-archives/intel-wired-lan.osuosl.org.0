@@ -2,134 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18D35270B68
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Sep 2020 09:24:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3545270CB8
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Sep 2020 11:57:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A95CB878C7;
-	Sat, 19 Sep 2020 07:24:12 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 3E7F78784F;
+	Sat, 19 Sep 2020 09:57:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FsQ+884PasSh; Sat, 19 Sep 2020 07:24:12 +0000 (UTC)
+	with ESMTP id mkBnEnhP2PJU; Sat, 19 Sep 2020 09:57:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 1712987580;
-	Sat, 19 Sep 2020 07:24:11 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 77A008786F;
+	Sat, 19 Sep 2020 09:57:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8BB191BF293
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Sep 2020 07:24:09 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0EB1F1BF3E1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Sep 2020 09:57:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 79D7520467
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Sep 2020 07:24:09 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0BA5B86E34
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Sep 2020 09:57:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U7pmFqmbk1sd for <intel-wired-lan@lists.osuosl.org>;
- Sat, 19 Sep 2020 07:24:08 +0000 (UTC)
+ with ESMTP id wOd12uRsvgLz for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 19 Sep 2020 09:57:32 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by silver.osuosl.org (Postfix) with ESMTPS id 4E53B2051B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Sep 2020 07:24:08 +0000 (UTC)
-IronPort-SDR: QG24UpBntWRYqMdnOpYDCWMA0+o0Wv4RCI/ElEAjzmIjjANIFQQGVPKD/YtpM063amFcrKUOLn
- R/AYI+ycMODQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9748"; a="140107109"
-X-IronPort-AV: E=Sophos;i="5.77,278,1596524400"; d="scan'208";a="140107109"
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id CFFCC86E28
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Sep 2020 09:57:32 +0000 (UTC)
+IronPort-SDR: TxUsOCHwtJKKmxHmxF1iWdvLC9efX3Mownm0lrucf0N9mrAZTHpVCtPPRlo4H+6pa0HoZgm7vd
+ 24Fn5oSgLycg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9748"; a="244950044"
+X-IronPort-AV: E=Sophos;i="5.77,278,1596524400"; d="scan'208";a="244950044"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Sep 2020 00:24:02 -0700
-IronPort-SDR: uZlcLpLxgp6oL9UjKBNCQTkY+yq/SC3Rg/79A9gbihMLLND5tNRnovVxtcT7fsR52JFteI9ID8
- KMvcp5rduI8Q==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Sep 2020 02:57:31 -0700
+IronPort-SDR: Vd/qx9yqT5+0dKIdDPxoTdI328F7at4EooIs1IovfrPELZST/VRLmdNMOolFcWB/l/tIjXZ+i7
+ EzqFW1EwRwRg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,278,1596524400"; d="scan'208";a="410580016"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga001.fm.intel.com with ESMTP; 19 Sep 2020 00:24:01 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Sat, 19 Sep 2020 00:24:01 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Sat, 19 Sep 2020 00:24:01 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.104)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Sat, 19 Sep 2020 00:24:00 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Z9c6HclJvhWoZbONv8l3SWTZFzHbowDOnpaaqGb27mvOo5nh5ZmOGSGJoczDTlg06HGhFa9kSFb4pqJBNR+qlmQ5l9nvmJ7ncGGbLbeYAEsITqx/yVofbtu+I2NXmEz3kWGYoNBaZPdA4Log5Zyhxxyl+ybYhPDErpCuDp69VfVg9PVF1LjXT1roHcfkkLDsUD1KQQZINdyRbjl/3arOTqHNttzvpr5n4q7uwi0aQFFr0cUE5oCaXQ57+qy8Yfl0DU4YuY1rS1B8DPkkeRqRjvtNXXDCQzcSMECluJLWf0DLTYBPi9uul900Prgfn4Rio8j4uWYTbkq6bRYP65w6qA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uRmIFddQneAYTdjdqyyDFXUqraaNn+rhzCneTPTjakE=;
- b=HkLQ74R0FNEhmxF33TOAjms70urB1Bfw0TzpbMR5yHLpDvx5QpE7LPuufvyJBGn6FrrDsTxkRgb1kPHhwnmMtSmZD6C0pp7aXEB6DPkyLogyflI/Aa4/gIF4iZ3V2lqKVfEbf9jIFUwelce9uZ8eMNN2drMvwiqLlKRoffZUGVY3bnjxOlxsdVnHAb6lC6VuPAEKw7zlLDGZfuS+PQq8gMRq0foGrk867ua8dgoCFexy5zVmsbPfYiwGCB7Sz/ew2yz+EQB1A8Qy4e3D51sYMe1TzZGSkHd0bZKTn7o+2nBKS87sfW9KeaCcus9sOZY5VNqcPRE69KXXyNCw3u4tQA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uRmIFddQneAYTdjdqyyDFXUqraaNn+rhzCneTPTjakE=;
- b=NcHuGcar+HHl9omxMdsNPVJLGpmD83P2vvcvgO3qw2O+jrRTnhF00I7DMeBfKk81AzSMSvwxH7O/MRoCVdAR8124CjwTalnMsn6pfrP3HU3unPuHpOipHmBwiSceWrBz8k/pVSFEJABM75chj4oyXZ6JeVzi2FjzQdkA//Tcmh0=
-Received: from SN6PR11MB2896.namprd11.prod.outlook.com (2603:10b6:805:d9::20)
- by SN6PR11MB3504.namprd11.prod.outlook.com (2603:10b6:805:d0::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.15; Sat, 19 Sep
- 2020 07:23:58 +0000
-Received: from SN6PR11MB2896.namprd11.prod.outlook.com
- ([fe80::c9a8:3bb2:d3cd:a5fc]) by SN6PR11MB2896.namprd11.prod.outlook.com
- ([fe80::c9a8:3bb2:d3cd:a5fc%7]) with mapi id 15.20.3348.019; Sat, 19 Sep 2020
- 07:23:58 +0000
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Jakub Kicinski <kuba@kernel.org>, "davem@davemloft.net"
- <davem@davemloft.net>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v1 4/7] selftests: net: add a
- test for shared UDP tunnel info tables
-Thread-Index: AQHWX8dOZ4BbyTdTwkWG90FktRFZ7Klv5vUw
-Date: Sat, 19 Sep 2020 07:23:58 +0000
-Message-ID: <SN6PR11MB2896F5ACC5A59F7F330183FFBC3C0@SN6PR11MB2896.namprd11.prod.outlook.com>
-References: <20200722012716.2814777-1-kuba@kernel.org>
- <20200722012716.2814777-5-kuba@kernel.org>
-In-Reply-To: <20200722012716.2814777-5-kuba@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [97.120.208.31]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1a4df27a-b47c-4c6d-cf30-08d85c6cf9be
-x-ms-traffictypediagnostic: SN6PR11MB3504:
-x-microsoft-antispam-prvs: <SN6PR11MB3504F786B457B1FCCBDA0EBFBC3C0@SN6PR11MB3504.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: oQYftaUwGlYzfc99S194AFfB2NNgwNCdqN6c6+jnEQZStEPz41n0cSSV1LrpbtHcm6CwmsgwT9YUbSTN1SxToBjmL2/M6iO3bO2P80Ql2HwA/YeQC+Jci4KwNygxaAxEslshDhmIt2w8IFR2YtkpBelRdLsIyHSBWPA0+EWRBPiwTClpu50hg96pKjgLiyIEJU29TUqrM+VXpqYnUOJ9C4JgaKjVwCdJwPrn/XfnJ72gj0+Opg695IUCtO9R2NOqvF1Y9QhokSpMBzUt8CjO1vKQMWf0C9Ro/jjL3FAzrEnfRFkeB9/GFkGK/Zily8kK18emHV1PBhRqDDlfcTBXqw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR11MB2896.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(346002)(376002)(366004)(136003)(396003)(52536014)(71200400001)(86362001)(316002)(66556008)(54906003)(33656002)(66446008)(66476007)(6506007)(53546011)(26005)(478600001)(186003)(4326008)(55016002)(76116006)(9686003)(2906002)(8676002)(110136005)(66946007)(7696005)(83380400001)(8936002)(5660300002)(64756008);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: etmChiqd0/g2Q211gpdGAHGCJEtIqP9dS4ojSxrnjKF9Lio5BWXwCKj2iJANGcZKLAtDPPS0MihrFP21b43rk+EjJGj3c3oPlXMTRlHQM1H5sC5ze0kdDv5YFi2VnXTz3zU+CnANuaEjBCPoutgI+FowEI7AfYY966P26u4kjPzvP777cN6ylecddY5Rbo4PPmVzsEb6vw4VmoAofkCEoqVhdiLs9+gbtciy9B087Hmp9rgKDlTEJFKYBLbBt1vscGkHr+4IAwxV0kRMrt2hlxaOMtEVEI/aYsGHe0U9MQyLR+6a2Ha3I8CqTN/B8HKPfEFDwGWBKHNUohG8pFlkhMtl4BoJCdiK1uOgqmHM5xtlBuVdb+REzFe+H8EwyEQ3xKVkB/eTR5QxOqxlACHbqck9tpaZxGPmlsAVBU0WzLAZdGiAyQdGHOfxNvSuoCI4r/NSr3k6GX9rCIEeYFbxZZ2V1wWSU1fjVRFlZF8cf9nwLvcHMNiRVFOGkeBa/43fq3JnvlM+YQs/GrsRrLZBrKAIF9eneZdri8QhLOeHKysU4tyHZkELhcuvw/pQjqgBO9IfBgJfjY6bI6KpJSj8l4EbabcBWBAElQhAsZthROvNcOxDjgCDjzrWhJp6vQJA6YCREbsEuYUM4O+LsqA2ZQ==
-x-ms-exchange-transport-forked: True
+X-IronPort-AV: E=Sophos;i="5.77,278,1596524400"; d="scan'208";a="347337286"
+Received: from lkp-server01.sh.intel.com (HELO a05db971c861) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 19 Sep 2020 02:57:30 -0700
+Received: from kbuild by a05db971c861 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kJZcX-0000yR-Qm; Sat, 19 Sep 2020 09:57:29 +0000
+Date: Sat, 19 Sep 2020 17:56:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f65d5d3.B0Szd2rRvP1gOv56%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB2896.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1a4df27a-b47c-4c6d-cf30-08d85c6cf9be
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2020 07:23:58.7741 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oNPCQZIAJObRXY7hvhYfbDBp06yok5Z19/pBfdvPvAjz8jTRNZKmwanSEAtVghXQ1V2YZFGc86LCIA56Ziwc5Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB3504
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 4/7] selftests: net: add a
- test for shared UDP tunnel info tables
+Subject: [Intel-wired-lan] [jkirsher-net-queue:100GbE] BUILD SUCCESS
+ 405f4084b5b2e314d479c69f27536cda7889bd44
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,77 +69,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jakub
-> Kicinski
-> Sent: Tuesday, July 21, 2020 6:27 PM
-> To: davem@davemloft.net
-> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; Jakub Kicinski
-> <kuba@kernel.org>
-> Subject: [Intel-wired-lan] [PATCH net-next v1 4/7] selftests: net: add a test for
-> shared UDP tunnel info tables
-> 
-> Add a test run of checks validating the shared UDP tunnel port
-> tables function as we expect.
-> 
-> Signed-off-by: Jakub Kicinski <kuba@kernel.org>
-> ---
->  .../drivers/net/netdevsim/udp_tunnel_nic.sh   | 109 ++++++++++++++++++
->  1 file changed, 109 insertions(+)
-> 
-I ran into two things while running this script.
-1. The script as it exists in the git tree (Jeff Kirshers next-queue) is not executable.  I don't know if that's a patch issue or translation into the tree.  Easy enough to get around, but should probably be executable to start.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue.git  100GbE
+branch HEAD: 405f4084b5b2e314d479c69f27536cda7889bd44  ice: fix memory leak in ice_vsi_setup
 
-2. The script runs into a handful of errors,7 to be precise.  I'm not sure if they are real failures, incorrect expectations or maybe something in my kernel .config (I have been using a minimal .config and enabling modules as needed.)
+elapsed time: 723m
 
-The output I get from it is:
-----------------------------------------------------------------------------------------------------
-u1518:[0]/usr/src/kernels/next-queue> cat ~/udp_tunnel-sh-outut.txt                                                                     
-ERROR: table 0 on port 1: basic - VxLAN v4 devices
-       check_table: wrong entry 0
-       expected: port: 4789     type: 1
-       have:     port: 0        type: 0
-ERROR: table 0 on port 1: basic - VxLAN v4 devices
-       check_table: wrong entry 0
-       expected: port: 4789     type: 1
-       have:     port: 0        type: 0
-ERROR: table 0 on port 1: basic - VxLAN v6 devices
-       check_table: wrong entry 0
-       expected: port: 4789     type: 1
-       have:     port: 0        type: 0
-ERROR: table 0 on port 1: basic - VxLAN v6 devices
-       check_table: wrong entry 0
-       expected: port: 4789     type: 1
-       have:     port: 0        type: 0
-ERROR: table 0 on port 1: basic - another VxLAN v6 devices
-       check_table: wrong entry 0
-       expected: port: 4789     type: 1
-       have:     port: 0        type: 0
-ERROR: table 0 on port 1: basic - Geneve device
-       check_table: wrong entry 0
-       expected: port: 4789     type: 1
-       have:     port: 0        type: 0
-ERROR: table 1 on port 1: basic - Geneve device
-       check_table: wrong entry 0
-       expected: port: 6081     type: 2
-       have:     port: 0        type: 0
-FAILED 7/435 checks
-u1518:[0]/usr/src/kernels/next-queue>
-----------------------------------------------------------------------------------------------------
-The script sends messages to dmesg, most look to be informative "set" and "unset" messages, but I do get a handful of failed messages.  The dmesg queue was cleared before the run so only contains the udp_tunnel-sh messages:
-----------------------------------------------------------------------------------------------------
-u1518:[0]/usr/src/kernels/next-queue> dmesg|grep -i fail
-[ 8909.179462] netdevsim netdevsim386 eth4: UDP tunnel port sync failed port 10000 type vxlan: -110
-[ 8909.328763] netdevsim netdevsim386 eth4: UDP tunnel port sync failed port 20000 type geneve: -2
-[ 8909.444028] netdevsim netdevsim386 eth4: UDP tunnel port sync failed port 10000 type vxlan: -110
-[ 8909.592049] netdevsim netdevsim386 eth4: UDP tunnel port sync failed port 20000 type geneve: -2
-u1518:[0]/usr/src/kernels/next-queue>
+configs tested: 126
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+arc                    vdk_hs38_smp_defconfig
+xtensa                    smp_lx200_defconfig
+powerpc                      acadia_defconfig
+arm                        neponset_defconfig
+sh                  sh7785lcr_32bit_defconfig
+arm                          pxa910_defconfig
+riscv                    nommu_k210_defconfig
+m68k                          amiga_defconfig
+powerpc                 mpc832x_mds_defconfig
+ia64                             alldefconfig
+riscv                          rv32_defconfig
+arm                       imx_v6_v7_defconfig
+arm                             rpc_defconfig
+c6x                              allyesconfig
+arm                            u300_defconfig
+arm                       omap2plus_defconfig
+m68k                             alldefconfig
+mips                          malta_defconfig
+mips                        vocore2_defconfig
+mips                           ip28_defconfig
+m68k                       m5208evb_defconfig
+s390                             allyesconfig
+powerpc                      arches_defconfig
+xtensa                              defconfig
+arm                        spear3xx_defconfig
+nios2                         3c120_defconfig
+powerpc                      pcm030_defconfig
+sh                        sh7763rdp_defconfig
+arm                    vt8500_v6_v7_defconfig
+arm                         mv78xx0_defconfig
+arm                          badge4_defconfig
+mips                      loongson3_defconfig
+m68k                        stmark2_defconfig
+sh                           se7780_defconfig
+powerpc                     tqm5200_defconfig
+powerpc                    klondike_defconfig
+arc                         haps_hs_defconfig
+arm                          lpd270_defconfig
+arm                          simpad_defconfig
+mips                           ci20_defconfig
+arm                          moxart_defconfig
+parisc                           alldefconfig
+powerpc                 linkstation_defconfig
+mips                     decstation_defconfig
+sh                        edosk7760_defconfig
+powerpc                        cell_defconfig
+mips                        omega2p_defconfig
+arm                       versatile_defconfig
+arm                            mps2_defconfig
+powerpc                        icon_defconfig
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a004-20200917
+i386                 randconfig-a006-20200917
+i386                 randconfig-a003-20200917
+i386                 randconfig-a001-20200917
+i386                 randconfig-a002-20200917
+i386                 randconfig-a005-20200917
+x86_64               randconfig-a014-20200917
+x86_64               randconfig-a011-20200917
+x86_64               randconfig-a016-20200917
+x86_64               randconfig-a012-20200917
+x86_64               randconfig-a015-20200917
+x86_64               randconfig-a013-20200917
+i386                 randconfig-a015-20200917
+i386                 randconfig-a014-20200917
+i386                 randconfig-a011-20200917
+i386                 randconfig-a013-20200917
+i386                 randconfig-a016-20200917
+i386                 randconfig-a012-20200917
+i386                 randconfig-a015-20200918
+i386                 randconfig-a011-20200918
+i386                 randconfig-a014-20200918
+i386                 randconfig-a013-20200918
+i386                 randconfig-a012-20200918
+i386                 randconfig-a016-20200918
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a006-20200917
+x86_64               randconfig-a004-20200917
+x86_64               randconfig-a003-20200917
+x86_64               randconfig-a002-20200917
+x86_64               randconfig-a001-20200917
+x86_64               randconfig-a005-20200917
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
