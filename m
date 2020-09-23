@@ -1,50 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FB56275BFE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Sep 2020 17:37:20 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7636727603B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Sep 2020 20:44:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C24CE861C7;
-	Wed, 23 Sep 2020 15:37:18 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id E1E1087388;
+	Wed, 23 Sep 2020 18:44:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jffz__qKF6ds; Wed, 23 Sep 2020 15:37:18 +0000 (UTC)
+	with ESMTP id Wsaqty+FQjzO; Wed, 23 Sep 2020 18:44:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 39D118623E;
-	Wed, 23 Sep 2020 15:37:17 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 39EDE87340;
+	Wed, 23 Sep 2020 18:44:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D25521BF38A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 15:37:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EBDB31BF388
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id CDE268707F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 15:37:15 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id E6ADF87026
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5LpfMTOJ0rOn for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Sep 2020 15:37:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8C9A987052
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 15:37:14 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1kL6pL-00FtiO-Ej; Wed, 23 Sep 2020 17:37:03 +0200
-Date: Wed, 23 Sep 2020 17:37:03 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>
-Message-ID: <20200923153703.GC3764123@lunn.ch>
-References: <20200923074751.10527-1-kai.heng.feng@canonical.com>
- <20200923121748.GE3770354@lunn.ch>
- <F6075687-7BC4-4348-86A8-29D83B7E5AAC@canonical.com>
+ with ESMTP id N0b68KzIXJxR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Sep 2020 18:17:37 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id A39EE87024
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600885056;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=jgZKBASAdOPCe+dZxTfTeplwc7t5VMKQw5zF/QhNk4E=;
+ b=NzeLtabND9SLrJkfMUW2MIt6HIdgiVWjtXzJy8zrf8hhWkMySW+GmoesufxGxOBtG3sqAc
+ oezzCV/2Rt0AKxoU6qr84uY+nMWYWcJdc9aGJVEGc/USsKN6bMjWVJYvp2/dgfsgi+4YVm
+ Fw0fxM5F3Is81Q7OkSXry7KqPt1mC5M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-179-4bx5UWG8ObywqRpplFOaSQ-1; Wed, 23 Sep 2020 14:17:33 -0400
+X-MC-Unique: 4bx5UWG8ObywqRpplFOaSQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D42191007464;
+ Wed, 23 Sep 2020 18:17:30 +0000 (UTC)
+Received: from virtlab719.virt.lab.eng.bos.redhat.com
+ (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BF8215C1C7;
+ Wed, 23 Sep 2020 18:17:21 +0000 (UTC)
+From: Nitesh Narayan Lal <nitesh@redhat.com>
+To: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-pci@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ frederic@kernel.org, mtosatti@redhat.com, sassmann@redhat.com,
+ jesse.brandeburg@intel.com, lihong.yang@intel.com, helgaas@kernel.org,
+ nitesh@redhat.com, jeffrey.t.kirsher@intel.com, jacob.e.keller@intel.com,
+ jlelli@redhat.com, hch@infradead.org, bhelgaas@google.com,
+ mike.marciniszyn@intel.com, dennis.dalessandro@intel.com,
+ thomas.lendacky@amd.com, jerinj@marvell.com, mathias.nyman@intel.com,
+ jiri@nvidia.com, mingo@redhat.com, peterz@infradead.org,
+ juri.lelli@redhat.com, vincent.guittot@linaro.org
+Date: Wed, 23 Sep 2020 14:11:22 -0400
+Message-Id: <20200923181126.223766-1-nitesh@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <F6075687-7BC4-4348-86A8-29D83B7E5AAC@canonical.com>
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Power cycle phy on PM resume
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mailman-Approved-At: Wed, 23 Sep 2020 18:44:47 +0000
+Subject: [Intel-wired-lan] [PATCH v2 0/4] isolation: limit msix vectors
+ based on housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,137 +85,128 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 23, 2020 at 10:44:10PM +0800, Kai-Heng Feng wrote:
-> Hi Andrew,
-> 
-> > On Sep 23, 2020, at 20:17, Andrew Lunn <andrew@lunn.ch> wrote:
-> > 
-> > On Wed, Sep 23, 2020 at 03:47:51PM +0800, Kai-Heng Feng wrote:
-> >> We are seeing the following error after S3 resume:
-> >> [  704.746874] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
-> >> [  704.844232] e1000e 0000:00:1f.6 eno1: MDI Write did not complete
-> >> [  704.902817] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
-> >> [  704.903075] e1000e 0000:00:1f.6 eno1: reading PHY page 769 (or 0x6020 shifted) reg 0x17
-> >> [  704.903281] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
-> >> [  704.903486] e1000e 0000:00:1f.6 eno1: writing PHY page 769 (or 0x6020 shifted) reg 0x17
-> >> [  704.943155] e1000e 0000:00:1f.6 eno1: MDI Error
-> >> ...
-> >> [  705.108161] e1000e 0000:00:1f.6 eno1: Hardware Error
-> >> 
-> >> Since we don't know what platform firmware may do to the phy, so let's
-> >> power cycle the phy upon system resume to resolve the issue.
-> >> 
-> >> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-> >> ---
-> >> drivers/net/ethernet/intel/e1000e/netdev.c | 2 ++
-> >> 1 file changed, 2 insertions(+)
-> >> 
-> >> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> >> index 664e8ccc88d2..c2a87a408102 100644
-> >> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> >> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> >> @@ -6968,6 +6968,8 @@ static __maybe_unused int e1000e_pm_resume(struct device *dev)
-> >> 	    !e1000e_check_me(hw->adapter->pdev->device))
-> >> 		e1000e_s0ix_exit_flow(adapter);
-> >> 
-> >> +	e1000_power_down_phy(adapter);
-> >> +
-> > 
-> > static void e1000_power_down_phy(struct e1000_adapter *adapter)
-> > {
-> > 	struct e1000_hw *hw = &adapter->hw;
-> > 
-> > 	/* Power down the PHY so no link is implied when interface is down *
-> > 	 * The PHY cannot be powered down if any of the following is true *
-> > 	 * (a) WoL is enabled
-> > 	 * (b) AMT is active
-> > 	 * (c) SoL/IDER session is active
-> > 	 */
-> > 	if (!adapter->wol && hw->mac_type >= e1000_82540 &&
-> > 	   hw->media_type == e1000_media_type_copper) {
-> 
-> Looks like the the function comes from e1000, drivers/net/ethernet/intel/e1000/e1000_main.c.
-> However, this patch is for e1000e, so the function with same name is different.
-
-Ah! Sorry. Missed that. Also it is not nice there are two functions in
-the kernel with the same name.
-
-> > Could it be coming out of S3 because it just received a WoL?
-> 
-> No, the issue can be reproduced by pressing keyboard or rtcwake.
- 
-Not relevant now, since i was looking at the wrong function. But i was
-meaning the call is a NOP in the case WoL caused the wake up. So if
-the issues can also happen after WoL, your fix is not going to fix it.
-
-> > It seems unlikely that it is the MII_CR_POWER_DOWN which is helping,
-> > since that is an MDIO write itself. Do you actually know how this call
-> > to e1000_power_down_phy() fixes the issues?
-> 
-
-> I don't know from hardware's perspective, but I think the comment on
-> e1000_power_down_phy_copper() can give us some insight:
-
-And there is only one function called e1000_power_down_phy_copper()
-:-)
-
-> 
-> /**
->  * e1000_power_down_phy_copper - Restore copper link in case of PHY power down
->  * @hw: pointer to the HW structure
->  *
->  * In the case of a PHY power down to save power, or to turn off link during a
->  * driver unload, or wake on lan is not enabled, restore the link to previous
->  * settings.                       
->  **/
-> void e1000_power_down_phy_copper(struct e1000_hw *hw)
-> {
->         u16 mii_reg = 0;
-> 
->         /* The PHY will retain its settings across a power down/up cycle */
->         e1e_rphy(hw, MII_BMCR, &mii_reg);
->         mii_reg |= BMCR_PDOWN;
->         e1e_wphy(hw, MII_BMCR, mii_reg);
->         usleep_range(1000, 2000);
-> }
-
-I don't really see how this explains this:
-
-> >> [  704.746874] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
-> >> [  704.844232] e1000e 0000:00:1f.6 eno1: MDI Write did not complete
-
-https://elixir.bootlin.com/linux/latest/source/drivers/net/ethernet/intel/e1000e/phy.c#L181
-
-So first off, the comments are all cut/paste from
-e1000e_read_phy_reg_mdic(). It would be nice to s/read/write/g in that
-function.
-
-So it sets up the transaction and starts it. MDIO is a serial bus with
-no acknowledgements. You clock out around 64 bits, and hope the PHY
-receives it. The time it takes to send those 64 bits is fixed by the
-bus speed, typically 2.5MHz.
-
-So the driver polls waiting for the hardware to say the bits have been
-sent. And this is timing out. How long that takes has nothing to do
-with the PHY, or what state it is in. Powering down the PHY has no
-effect on the MDIO bus master, and how long it takes to shift those
-bits out. Which is why i don't think this patch is correct. This is
-probably an MDIO bus issue, not a PHY issue.
-
-Try dumping the value of MDIC in the good/bad case before the
-transaction starts.
-
-	 Andrew
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhpcyBpcyBhIGZvbGxvdy11cCBwb3N0aW5nIGZvciAiW1JGQyB2MSAwLzNdIGlzb2xhdGlvbjog
+bGltaXQgbXNpeCB2ZWN0b3JzCmJhc2VkIG9uIGhvdXNla2VlcGluZyBDUFVzIi4KCgpJc3N1ZQo9
+PT09PQpXaXRoIHRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIGRldmljZSBkcml2ZXJzIHdoaWxl
+IGNyZWF0aW5nIHRoZWlyIE1TSVggwqAgwqAgwqAgwqAKdmVjdG9ycyBvbmx5IHRha2UgbnVtX29u
+bGluZV9jcHVzKCkgaW50byBjb25zaWRlcmF0aW9uIHdoaWNoIHdvcmtzIHF1aXRlIHdlbGwgwqAK
+Zm9yIGEgbm9uLVJUIGVudmlyb25tZW50LCBidXQgaW4gYW4gUlQgZW52aXJvbm1lbnQgdGhhdCBo
+YXMgYSBsYXJnZSBudW1iZXIgb2YgwqAgCmlzb2xhdGVkIENQVXMgYW5kIHZlcnkgZmV3IGhvdXNl
+a2VlcGluZyBDUFVzIHRoaXMgY291bGQgbGVhZCB0byBhIHByb2JsZW0uIMKgIMKgClRoZSBwcm9i
+bGVtIHdpbGwgYmUgdHJpZ2dlcmVkIHdoZW4gc29tZXRoaW5nIGxpa2UgdHVuZWQgd2lsbCB0cnkg
+dG8gbW92ZSBhbGwgwqAgwqAKdGhlIElSUXMgZnJvbSBpc29sYXRlZCBDUFVzIHRvIHRoZSBsaW1p
+dGVkIG51bWJlciBvZiBob3VzZWtlZXBpbmcgQ1BVcyB0byDCoCDCoCDCoCAKcHJldmVudCBpbnRl
+cnJ1cHRpb25zIGZvciBhIGxhdGVuY3ktc2Vuc2l0aXZlIHdvcmtsb2FkIHRoYXQgd2lsbCBiZSBy
+dW5uaW5nIG9uIMKgIAp0aGUgaXNvbGF0ZWQgQ1BVcy4gVGhpcyBmYWlsdXJlIGlzIGNhdXNlZCBi
+ZWNhdXNlIG9mIHRoZSBwZXIgQ1BVIHZlY3RvciDCoCDCoCDCoCDCoCAKbGltaXRhdGlvbi4gwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgCgoKUHJvcG9zZWQgRml4
+Cj09PT09PT09PT09PQpJbiB0aGlzIHBhdGNoLXNldCwgdGhlIGZvbGxvd2luZyBjaGFuZ2VzIGFy
+ZSBwcm9wb3NlZDoKLSBBIGdlbmVyaWMgQVBJIGhrX251bV9vbmxpbmVfY3B1cygpIHdoaWNoIGlz
+IG1lYW50IHRvIHJldHVybiB0aGUgb25saW5lCiAgaG91c2VrZWVwaW5nIENQVXMgdGhhdCBhcmUg
+bWVhbnQgdG8gaGFuZGxlIG1hbmFnZWQgSVJRIGpvYnMuCi0gaTQwZTogU3BlY2lmaWNhbGx5IGZv
+ciB0aGUgaTQwZSBkcml2ZXIgdGhlIG51bV9vbmxpbmVfY3B1cygpIHVzZWQgaW4gCsKgIGk0MGVf
+aW5pdF9tc2l4KCkgdG8gY2FsY3VsYXRlIG51bWJlcnMgbXNpeCB2ZWN0b3JzIGlzIHJlcGxhY2Vk
+IHdpdGggdGhlIGFib3ZlCsKgIGRlZmluZWQgQVBJLiBUaGlzIGlzIGRvbmUgdG8gcmVzdHJpY3Qg
+dGhlIG51bWJlciBvZiBtc2l4IHZlY3RvcnMgZm9yIGk0MGUgaW4KICBSVCBlbnZpcm9ubWVudHMu
+Ci0gcGNpX2FsbG9jX2lycV92ZWN0b3IoKTogV2l0aCB0aGUgaGVscCBvZiBoa19udW1fb25saW5l
+X2NwdXMoKSB0aGUgbWF4X3ZlY3MKwqAgcGFzc2VkIGluIHBjaV9hbGxvY19pcnFfdmVjdG9yKCkg
+aXMgcmVzdHJpY3RlZCBvbmx5IHRvIHRoZSBvbmxpbmUKwqAgaG91c2VrZWVwaW5nIENQVXMgb25s
+eSBpbiBhbiBSVCBlbnZpcm9ubWVudC4gSG93ZXZlciwgaWYgdGhlIG1pbl92ZWNzIGV4Y2VlZHMK
+ICB0aGUgb25saW5lIGhvdXNla2VlcGluZyBDUFVzLCBtYXhfdmVjcyBpcyBsaW1pdGVkIGJhc2Vk
+IG9uIHRoZSBtaW5fdmVjcwogIGluc3RlYWQuCgoKRnV0dXJlIFdvcmsKPT09PT09PT09PT0KCi0g
+SW4gdGhlIHByZXZpb3VzIHVwc3RyZWFtIGRpc2N1c3Npb24gWzFdLCBpdCB3YXMgZGVjaWRlZCB0
+aGF0IGl0IHdvdWxkIGJlCiAgYmV0dGVyIGlmIHdlIGNhbiBoYXZlIGEgZ2VuZXJpYyBmcmFtZXdv
+cmsgdGhhdCBjYW4gYmUgY29uc3VtZWQgYnkgYWxsIHRoZQogIGRyaXZlcnMgdG8gIGZpeCB0aGlz
+IGtpbmQgb2YgaXNzdWUuIEhvd2V2ZXIsIGl0IHdpbGwgYmUgYSBsb25nIHRlcm0gd29yaywKICBh
+bmQgc2luY2UgdGhlcmUgYXJlIFJUIHdvcmtsb2FkcyB0aGF0IGFyZSBnZXR0aW5nIGltcGFjdGVk
+IGJ5IHRoZSByZXBvcnRlZAogIGlzc3VlLiBXZSBhZ3JlZWQgdXBvbiB0aGUgcHJvcG9zZWQgcGVy
+LWRldmljZSBhcHByb2FjaCBmb3Igbm93LgoKClRlc3RpbmcKPT09PT09PQpGdW5jdGlvbmFsaXR5
+OgotIFRvIHRlc3QgdGhhdCB0aGUgaXNzdWUgaXMgcmVzb2x2ZWQgd2l0aCBpNDBlIGNoYW5nZSBJ
+IGFkZGVkIGEgdHJhY2Vwb2ludArCoCBpbiBpNDBlX2luaXRfbXNpeCgpIHRvIGZpbmQgdGhlIG51
+bWJlciBvZiBDUFVzIGRlcml2ZWQgZm9yIHZlY3RvciBjcmVhdGlvbgrCoCB3aXRoIGFuZCB3aXRo
+b3V0IHR1bmVkJ3MgcmVhbHRpbWUtdmlydHVhbC1ob3N0IHByb2ZpbGUuIEFzIHBlciBleHBlY3Rh
+dGlvbgrCoCB3aXRoIHRoZSBwcm9maWxlIGFwcGxpZWQgSSB3YXMgb25seSBnZXR0aW5nIHRoZSBu
+dW1iZXIgb2YgaG91c2VrZWVwaW5nIENQVXMKwqAgYW5kIGFsbCBhdmFpbGFibGUgQ1BVcyB3aXRo
+b3V0IGl0LgogIFNpbWlsYXJseSBkaWQgYSBmZXcgbW9yZSB0ZXN0cyB3aXRoIGRpZmZlcmVudCBt
+b2RlcyBlZyB3aXRoIG9ubHkKICBub2h6X2Z1bGwsIGlzb2xjcHVzIGV0Yy4KClBlcmZvcm1hbmNl
+OgotIFRvIGFuYWx5emUgdGhlIHBlcmZvcm1hbmNlIGltcGFjdCBJIGhhdmUgdGFyZ2V0dGVkIHRo
+ZSBjaGFuZ2UgaW50cm9kdWNlZCBpbiAKwqAgcGNpX2FsbG9jX2lycV92ZWN0b3JzKCkgYW5kIGNv
+bXBhcmVkIHRoZSByZXN1bHRzIGFnYWluc3QgYSB2YW5pbGxhIGtlcm5lbArCoCAoNS45LjAtcmMz
+KSByZXN1bHRzLgoKwqAgU2V0dXAgSW5mb3JtYXRpb246CsKgICsgSSBoYWQgYSBjb3VwbGUgb2Yg
+MjQtY29yZSBtYWNoaW5lcyBjb25uZWN0ZWQgYmFjayB0byBiYWNrIHZpYSBhIGNvdXBsZSBvZgrC
+oCDCoCBtbHg1IE5JQ3MgYW5kIEkgYW5hbHl6ZWQgdGhlIGF2ZXJhZ2UgYml0cmF0ZSBmb3Igc2Vy
+dmVyLWNsaWVudCBUQ1AgYW5kIFVEUArCoCDCoCB0cmFuc21pc3Npb24gdmlhIGlwZXJmLiAKwqAg
+KyBUbyBtaW5pbWl6ZSB0aGUgQml0cmF0ZSB2YXJpYXRpb24gb2YgaXBlcmYgVENQIGFuZCBVRFAg
+c3RyZWFtIHRlc3QgSSBoYXZlCsKgIMKgIGFwcGxpZWQgdGhlIHR1bmVkJ3MgbmV0d29yay10aHJv
+dWdocHV0IHByb2ZpbGUgYW5kIGRpc2FibGVkIEhULgrCoFRlc3QgSW5mb3JtYXRpb246CsKgICsg
+Rm9yIHRoZSBlbnZpcm9ubWVudCB0aGF0IGhhZCBubyBpc29sYXRlZCBDUFVzOgrCoCDCoCBJIGhh
+dmUgdGVzdGVkIHdpdGggc2luZ2xlIHN0cmVhbSBhbmQgMjQgc3RyZWFtcyAoc2FtZSBhcyB0aGF0
+IG9mIG9ubGluZQrCoCDCoCBDUFVzKS4KwqAgKyBGb3IgdGhlIGVudmlyb25tZW50IHRoYXQgaGFk
+IDIwIGlzb2xhdGVkIENQVXM6CsKgIMKgIEkgaGF2ZSB0ZXN0ZWQgd2l0aCBzaW5nbGUgc3RyZWFt
+LCA0IHN0cmVhbXMgKHNhbWUgYXMgdGhhdCB0aGUgbnVtYmVyIG9mCsKgIMKgIGhvdXNla2VlcGlu
+ZykgYW5kIDI0IHN0cmVhbXMgKHNhbWUgYXMgdGhhdCBvZiBvbmxpbmUgQ1BVcykuCgrCoFJlc3Vs
+dHM6CsKgICMgVURQIFN0cmVhbSBUZXN0OgrCoCAgICsgVGhlcmUgd2FzIG5vIGRlZ3JhZGF0aW9u
+IG9ic2VydmVkIGluIFVEUCBzdHJlYW0gdGVzdHMgaW4gYm90aAogICAgICBlbnZpcm9ubWVudHMu
+IChXaXRoIGlzb2xhdGVkIENQVXMgYW5kIHdpdGhvdXQgaXNvbGF0ZWQgQ1BVcyBhZnRlciB0aGUK
+ICAgICAgaW50cm9kdWN0aW9uIG9mIHRoZSBwYXRjaGVzKS4KwqAgIyBUQ1AgU3RyZWFtIFRlc3Qg
+LSBObyBpc29sYXRlZCBDUFVzOgrCoCAgICsgTm8gbm90aWNlYWJsZSBkZWdyYWRhdGlvbiB3YXMg
+b2JzZXJ2ZWQuCsKgICMgVENQIFN0cmVhbSBUZXN0IC0gV2l0aCBpc29sYXRlZCBDUFVzOgrCoCAg
+ICsgTXVsdGlwbGUgU3RyZWFtICg0KSDCoC0gQXZlcmFnZSBkZWdyYWRhdGlvbiBvZiBhcm91bmQg
+NS02JQrCoCAgICsgTXVsdGlwbGUgU3RyZWFtICgyNCkgLSBBdmVyYWdlIGRlZ3JhZGF0aW9uIG9m
+IGFyb3VuZCAyLTMlCsKgICAgKyBTaW5nbGUgU3RyZWFtIMKgIMKgIMKgIMKgLSBFdmVuIG9uIGEg
+dmFuaWxsYSBrZXJuZWwgdGhlIEJpdHJhdGUgb2JzZXJ2ZWQgZm9yCiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgYSBUQ1Agc2luZ2xlIHN0cmVhbSB0ZXN0IHNlZW0gdG8gdmFyeQogICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHNpZ25pZmljYW50bHkgYWNyb3NzIGRpZmZlcmVudCBydW5z
+IChlZy4gdGhlICUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2YXJpYXRpb24gYmV0d2Vl
+biB0aGUgYmVzdCBhbmQgdGhlIHdvcnN0IGNhc2Ugb24KICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBhIHZhbmlsbGEga2VybmVsIHdhcyBhcm91bmQgOC0xMCUpLiBBIHNpbWlsYXIKICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICB2YXJpYXRpb24gd2FzIG9ic2VydmVkIHdpdGggdGhlIGtl
+cm5lbCB0aGF0CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW5jbHVkZWQgbXkgcGF0Y2hl
+cy4gTm8gYWRkaXRpb25hbCBkZWdyYWRhdGlvbgogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHdhcyBvYnNlcnZlZC4KCklmIHRoZXJlIGFyZSBhbnkgc3VnZ2VzdGlvbnMgZm9yIG1vcmUgcGVy
+Zm9ybWFuY2UgZXZhbHVhdGlvbiwgSSB3b3VsZApiZSBoYXBweSB0byBkaXNjdXNzL3BlcmZvcm0g
+dGhlbS4KCkNoYW5nZXMgZnJvbSB2MVsyXToKPT09PT09PT09PT09PT09PT09ClBhdGNoMTogwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgCi0gUmVwbGFjZWQg
+bnVtX2hvdXNrZWVlcGluZ19jcHVzKCkgd2l0aCBoa19udW1fb25saW5lX2NwdXMoKSBhbmQgc3Rh
+cnRlZCB1c2luZwogIHRoZSBjcHVtYXNrIGNvcnJlc3BvbmRpbmcgdG8gSEtfRkxBR19NQU5BR0VE
+X0lSUSB0byBkZXJpdmUgdGhlIG51bWJlciBvZgogIG9ubGluZSBob3VzZWtlZXBpbmcgQ1BVcy4g
+VGhpcyBpcyBiYXNlZCBvbiBGcmVkZXJpYyBXZWlzYmVja2VyJ3Mgc3VnZ2VzdGlvbi4gwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
+Ci0gU2luY2UgdGhlIGhrX251bV9vbmxpbmVfY3B1cygpIGlzIHNlbGYtZXhwbGFuYXRvcnksIGdv
+dCByaWQgb2YgwqAgwqAgwqAgwqAgwqAgwqAgCsKgIHRoZSBjb21tZW50IHRoYXQgd2FzIGFkZGVk
+IHByZXZpb3VzbHkuIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIApQYXRjaDI6IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKgIMKg
+IMKgIMKgIMKgIAotIEFkZGVkIGEgbmV3IHBhdGNoIHRoYXQgaXMgbWVhbnQgdG8gZW5hYmxlIG1h
+bmFnZWQgSVJRIGlzb2xhdGlvbiBmb3Igbm9oel9mdWxsCiAgQ1BVcy4gVGhpcyBpcyBiYXNlZCBv
+biBGcmVkZXJpYyBXZWlzYmVja2VyJ3Mgc3VnZ2VzdGlvbi7CoCDCoCDCoCDCoCDCoCDCoCDCoCAK
+UGF0Y2g0IChQQ0kpOiDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCDCoCAKLSBG
+b3IgY2FzZXMgd2hlcmUgdGhlIG1pbl92ZWNzIGV4Y2VlZHMgdGhlIG9ubGluZSBob3VzZWtlZXBp
+bmcgQ1BVcywgaW5zdGVhZAogIG9mIHNraXBwaW5nIG1vZGlmaWNhdGlvbiB0byBtYXhfdmVjcywg
+c3RhcnRlZCByZXN0cmljdGluZyBpdCBiYXNlZCBvbiB0aGUKICBtaW5fdmVjcy4gVGhpcyBpcyBi
+YXNlZCBvbiBhIHN1Z2dlc3Rpb24gZnJvbSBNYXJjZWxvIFRvc2F0dGkuwqAgwqAgwqAgwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAg
+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqAgwqDCoAoKWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwu
+b3JnL2xrbWwvMjAyMDA5MjIwOTU0NDAuR0E1MjE3QGxlbm9pci8KWzJdIGh0dHBzOi8vbG9yZS5r
+ZXJuZWwub3JnL2xrbWwvMjAyMDA5MDkxNTA4MTguMzEzNjk5LTEtbml0ZXNoQHJlZGhhdC5jb20v
+CgpOaXRlc2ggTmFyYXlhbiBMYWwgKDQpOgogIHNjaGVkL2lzb2xhdGlvbjogQVBJIHRvIGdldCBo
+b3VzZWtlZXBpbmcgb25saW5lIENQVXMKICBzY2hlZC9pc29sYXRpb246IEV4dGVuZCBub2h6X2Z1
+bGwgdG8gaXNvbGF0ZSBtYW5hZ2VkIElSUXMKICBpNDBlOiBsaW1pdCBtc2l4IHZlY3RvcnMgYmFz
+ZWQgb24gaG91c2VrZWVwaW5nIENQVXMKICBQQ0k6IExpbWl0IHBjaV9hbGxvY19pcnFfdmVjdG9y
+cyBhcyBwZXIgaG91c2VrZWVwaW5nIENQVXMKCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+NDBlL2k0MGVfbWFpbi5jIHwgIDMgKystCiBpbmNsdWRlL2xpbnV4L3BjaS5oICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgMTUgKysrKysrKysrKysrKysrCiBpbmNsdWRlL2xpbnV4L3NjaGVkL2lz
+b2xhdGlvbi5oICAgICAgICAgICAgIHwgMTMgKysrKysrKysrKysrKwoga2VybmVsL3NjaGVkL2lz
+b2xhdGlvbi5jICAgICAgICAgICAgICAgICAgICB8ICAyICstCiA0IGZpbGVzIGNoYW5nZWQsIDMx
+IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgotLSAKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0
+CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
