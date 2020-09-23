@@ -1,59 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB55E27603E
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9B0A27603D
 	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Sep 2020 20:44:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 659922721B;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 8C98A854DF;
 	Wed, 23 Sep 2020 18:44:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UQilJWUMsXS1; Wed, 23 Sep 2020 18:44:52 +0000 (UTC)
+	with ESMTP id N3MPLIxlKIpa; Wed, 23 Sep 2020 18:44:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 4DCBF272AB;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id F1E00862FC;
 	Wed, 23 Sep 2020 18:44:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D91B01BF388
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A3EDC1BF388
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D58CD84B60
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:41 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id A024F84B60
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p3fVsXKspLBr for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Sep 2020 18:17:41 +0000 (UTC)
+ with ESMTP id 3oQ4a6X6rFhU for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Sep 2020 18:17:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3ACCA84B01
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:41 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 696F884B01
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Sep 2020 18:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600885059;
+ s=mimecast20190719; t=1600885061;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:in-reply-to:in-reply-to:references:references;
- bh=0T1Uh3UwpP4BgdwzDRoRFpQxgh2o5L+P6husKrn72sA=;
- b=WjYsmKP965dsb/qe6+wBVkmBhLkxI6ZUkqk/jjVgnH7FZnulCSRce0uzVb12tecx6B3g+F
- +gwPuBVR2XlqkIdMK48xRaFy+U8heMthS2YFDW+3ReH0AXgL/a0PJGy64BusHvh8JGu9b3
- EhCndJXAITFfMS2LIGpq48G8RC/XM18=
+ bh=6VBjsMo44nBEzcbomAkY1iDbxWkCmiCxCVDrlCHo4bI=;
+ b=KqyzICB6CQALBbcC6DR1wRB5DzTzKv0gV7lRjAT5a/JdmflWyM9PQw9t8evjWviNEExS/l
+ gKSCU9tLZWFUQkDuvqoi3tAmabqxRgKY41CcSEkXCsgXLW0QoEnagxLZl2CvxFH4gMORgi
+ KA/PptFYvRppiPT+rMgVLH/pYiHJzmM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-107-0cfgVWp3PuyEcRa8Ao44zg-1; Wed, 23 Sep 2020 14:17:37 -0400
-X-MC-Unique: 0cfgVWp3PuyEcRa8Ao44zg-1
+ us-mta-354-JtQTr2bZPVidisWtiOzHBQ-1; Wed, 23 Sep 2020 14:17:39 -0400
+X-MC-Unique: JtQTr2bZPVidisWtiOzHBQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C5F3164094;
- Wed, 23 Sep 2020 18:17:34 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B57FB64088;
+ Wed, 23 Sep 2020 18:17:36 +0000 (UTC)
 Received: from virtlab719.virt.lab.eng.bos.redhat.com
  (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EE4DD5C1C7;
- Wed, 23 Sep 2020 18:17:32 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E051C5C1C7;
+ Wed, 23 Sep 2020 18:17:34 +0000 (UTC)
 From: Nitesh Narayan Lal <nitesh@redhat.com>
 To: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  linux-pci@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
@@ -65,14 +65,14 @@ To: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  thomas.lendacky@amd.com, jerinj@marvell.com, mathias.nyman@intel.com,
  jiri@nvidia.com, mingo@redhat.com, peterz@infradead.org,
  juri.lelli@redhat.com, vincent.guittot@linaro.org
-Date: Wed, 23 Sep 2020 14:11:24 -0400
-Message-Id: <20200923181126.223766-3-nitesh@redhat.com>
+Date: Wed, 23 Sep 2020 14:11:25 -0400
+Message-Id: <20200923181126.223766-4-nitesh@redhat.com>
 In-Reply-To: <20200923181126.223766-1-nitesh@redhat.com>
 References: <20200923181126.223766-1-nitesh@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mailman-Approved-At: Wed, 23 Sep 2020 18:44:47 +0000
-Subject: [Intel-wired-lan] [PATCH v2 2/4] sched/isolation: Extend nohz_full
- to isolate managed IRQs
+Subject: [Intel-wired-lan] [PATCH v2 3/4] i40e: limit msix vectors based on
+ housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,33 +91,46 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Extend nohz_full feature set to include isolation from managed IRQS. This
-is required specifically for setups that only uses nohz_full and still
-requires isolation for maintaining lower latency for the listed CPUs.
+In a realtime environment, it is essential to isolate unwanted IRQs from
+isolated CPUs to prevent latency overheads. Creating MSIX vectors only
+based on the online CPUs could lead to a potential issue on an RT setup
+that has several isolated CPUs but a very few housekeeping CPUs. This is
+because in these kinds of setups an attempt to move the IRQs to the limited
+housekeeping CPUs from isolated CPUs might fail due to the per CPU vector
+limit. This could eventually result in latency spikes because of the IRQs
+that we fail to move from isolated CPUs.
 
-Having this change will ensure that the kernel functions that were using
-HK_FLAG_MANAGED_IRQ to derive cpumask for pinning various jobs/IRQs do not
-enqueue anything on the CPUs listed under nohz_full.
+This patch prevents i40e to create vectors only based on online CPUs by
+using hk_num_online_cpus() instead.
 
-Suggested-by: Frederic Weisbecker <frederic@kernel.org>
 Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+Reviewed-by: Marcelo Tosatti <mtosatti@redhat.com>
+Acked-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 ---
- kernel/sched/isolation.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/kernel/sched/isolation.c b/kernel/sched/isolation.c
-index 5a6ea03f9882..9df9598a9e39 100644
---- a/kernel/sched/isolation.c
-+++ b/kernel/sched/isolation.c
-@@ -141,7 +141,7 @@ static int __init housekeeping_nohz_full_setup(char *str)
- 	unsigned int flags;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 2e433fdbf2c3..fcb6fa3707e0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -5,6 +5,7 @@
+ #include <linux/of_net.h>
+ #include <linux/pci.h>
+ #include <linux/bpf.h>
++#include <linux/sched/isolation.h>
+ #include <generated/utsrelease.h>
  
- 	flags = HK_FLAG_TICK | HK_FLAG_WQ | HK_FLAG_TIMER | HK_FLAG_RCU |
--		HK_FLAG_MISC | HK_FLAG_KTHREAD;
-+		HK_FLAG_MISC | HK_FLAG_KTHREAD | HK_FLAG_MANAGED_IRQ;
+ /* Local includes */
+@@ -11002,7 +11003,7 @@ static int i40e_init_msix(struct i40e_pf *pf)
+ 	 * will use any remaining vectors to reach as close as we can to the
+ 	 * number of online CPUs.
+ 	 */
+-	cpus = num_online_cpus();
++	cpus = hk_num_online_cpus();
+ 	pf->num_lan_msix = min_t(int, cpus, vectors_left / 2);
+ 	vectors_left -= pf->num_lan_msix;
  
- 	return housekeeping_setup(str, flags);
- }
 -- 
 2.18.2
 
