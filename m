@@ -1,62 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB62F277BA4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 00:28:13 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF640277C23
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 01:06:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 1E12220243;
-	Thu, 24 Sep 2020 22:28:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5518E86B6D;
+	Thu, 24 Sep 2020 23:06:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7vn-lKSnJPsX; Thu, 24 Sep 2020 22:28:11 +0000 (UTC)
+	with ESMTP id Qfc4z_PVFaq8; Thu, 24 Sep 2020 23:06:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9AA252033D;
-	Thu, 24 Sep 2020 22:28:09 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 28AAF86B70;
+	Thu, 24 Sep 2020 23:06:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AA14C1BF33B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Sep 2020 22:28:06 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E41D1BF23F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Sep 2020 22:59:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A0C7286C5F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Sep 2020 22:28:06 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 98F6287386
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Sep 2020 22:59:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yF7BzV4J-JdN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Sep 2020 22:28:06 +0000 (UTC)
+ with ESMTP id Np95m5VpTPxm for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Sep 2020 22:59:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 19D3586B72
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Sep 2020 22:28:06 +0000 (UTC)
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
- [163.114.132.5])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id D8E9B8735E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Sep 2020 22:59:10 +0000 (UTC)
+Received: from localhost (52.sub-72-107-123.myvzw.com [72.107.123.52])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8E88A221EB;
- Thu, 24 Sep 2020 22:28:05 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id EED182344C;
+ Thu, 24 Sep 2020 22:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600986485;
- bh=WeA89t8adCxfN/0OUGWVZYy6Au70JX/nzkj60NX0Bg8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=PQRQk2q2uj7VBO8d3tgxA7qABhEzFaVVaTNV833hvJZSw9RWyqMO4x8J1/IVUS4Hr
- Ubya5c8AsUFsAZe7Znl7Nv7DxMJqZdkIW88tQR+m7gqxFXVDV9EpFeOg4KVYC5Lrdn
- Vqtq2vUTFeyucdGFn2rJQcYFtyYH/HIX1uhp09+w=
-Date: Thu, 24 Sep 2020 15:28:03 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Message-ID: <20200924152803.00b675b4@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <808d485e3d63a2e10f1fba75c0cac968d8f844aa.camel@intel.com>
-References: <20200722012716.2814777-1-kuba@kernel.org>
- <20200722012716.2814777-5-kuba@kernel.org>
- <SN6PR11MB2896F5ACC5A59F7F330183FFBC3C0@SN6PR11MB2896.namprd11.prod.outlook.com>
- <20200921144408.19624164@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <808d485e3d63a2e10f1fba75c0cac968d8f844aa.camel@intel.com>
+ s=default; t=1600988350;
+ bh=lvsTiRX9MRyqiIaTRVynMwfGHPPFwZX9ut7maU5MkAU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=Hl/Vlvmo1E7oAa1BexBNa8RKAX9MOEA8uUVVhQxoCXhlOI/SlZGSV5PN2ycFhhB4m
+ VOcpgQfsTu2KXTYCGlNl2zxDGU0ZXDrpIWPRrFdiwfrCraM4slePzKQp87kJ/drQWz
+ R8Ou2aVDStw2jjJ5rE3uFHTuPeC/tQFVIwYwoBjc=
+Date: Thu, 24 Sep 2020 17:59:08 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Nitesh Narayan Lal <nitesh@redhat.com>
+Message-ID: <20200924225908.GA2367591@bjorn-Precision-5520>
 MIME-Version: 1.0
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1 4/7] selftests: net: add a
- test for shared UDP tunnel info tables
+Content-Disposition: inline
+In-Reply-To: <493a6fe5-f33f-85b2-6149-809f3cb4390f@redhat.com>
+X-Mailman-Approved-At: Thu, 24 Sep 2020 23:06:18 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v2 4/4] PCI: Limit
+ pci_alloc_irq_vectors as per housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,26 +65,178 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
+ jerinj@marvell.com, sassmann@redhat.com, vincent.guittot@linaro.org,
+ hch@infradead.org, mingo@redhat.com, intel-wired-lan@lists.osuosl.org,
+ thomas.lendacky@amd.com, mathias.nyman@intel.com, frederic@kernel.org,
+ jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
+ mike.marciniszyn@intel.com, netdev@vger.kernel.org,
+ dennis.dalessandro@intel.com, mtosatti@redhat.com,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 24 Sep 2020 22:25:46 +0000 Nguyen, Anthony L wrote:
-> On Mon, 2020-09-21 at 14:44 -0700, Jakub Kicinski wrote:
-> > Ah, good catch, thanks! Please adjust in your tree or I can send a
-> > follow up with other patches I still have queued.  
+On Thu, Sep 24, 2020 at 05:39:07PM -0400, Nitesh Narayan Lal wrote:
 > 
-> Hi Jakub,
+> On 9/24/20 4:45 PM, Bjorn Helgaas wrote:
+> > Possible subject:
+> >
+> >   PCI: Limit pci_alloc_irq_vectors() to housekeeping CPUs
 > 
-> It'd be great if you could adjust and resend the series. As we're still
-> working through our email server issue, I don't know if everything
-> would make it here.
+> Will switch to this.
+> 
+> > On Wed, Sep 23, 2020 at 02:11:26PM -0400, Nitesh Narayan Lal wrote:
+> >> This patch limits the pci_alloc_irq_vectors, max_vecs argument that is
+> >> passed on by the caller based on the housekeeping online CPUs (that are
+> >> meant to perform managed IRQ jobs).
+> >>
+> >> A minimum of the max_vecs passed and housekeeping online CPUs is derived
+> >> to ensure that we don't create excess vectors as that can be problematic
+> >> specifically in an RT environment. In cases where the min_vecs exceeds the
+> >> housekeeping online CPUs, max vecs is restricted based on the min_vecs
+> >> instead. The proposed change is required because for an RT environment
+> >> unwanted IRQs are moved to the housekeeping CPUs from isolated CPUs to
+> >> keep the latency overhead to a minimum. If the number of housekeeping CPUs
+> >> is significantly lower than that of the isolated CPUs we can run into
+> >> failures while moving these IRQs to housekeeping CPUs due to per CPU
+> >> vector limit.
+> > Does this capture enough of the log?
+> >
+> >   If we have isolated CPUs dedicated for use by real-time tasks, we
+> >   try to move IRQs to housekeeping CPUs to reduce overhead on the
+> >   isolated CPUs.
+> 
+> How about:
+> "
+> If we have isolated CPUs or CPUs running in nohz_full mode for the purpose
+> of real-time, we try to move IRQs to housekeeping CPUs to reduce latency
+> overhead on these real-time CPUs.
+> "
+> 
+> What do you think?
 
-No problem, I'll add Aaron's tags and resend. Thanks!
+It's OK, but from the PCI core perspective, "nohz_full mode" doesn't
+really mean anything.  I think it's a detail that should be inside the
+"housekeeping CPU" abstraction.
+
+> >   If we allocate too many IRQ vectors, moving them all to housekeeping
+> >   CPUs may exceed per-CPU vector limits.
+> >
+> >   When we have isolated CPUs, limit the number of vectors allocated by
+> >   pci_alloc_irq_vectors() to the minimum number required by the
+> >   driver, or to one per housekeeping CPU if that is larger
+> 
+> I think this is good, I can adopt this.
+> 
+> > .
+> >
+> >> Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+> >> ---
+> >>  include/linux/pci.h | 15 +++++++++++++++
+> >>  1 file changed, 15 insertions(+)
+> >>
+> >> diff --git a/include/linux/pci.h b/include/linux/pci.h
+> >> index 835530605c0d..cf9ca9410213 100644
+> >> --- a/include/linux/pci.h
+> >> +++ b/include/linux/pci.h
+> >> @@ -38,6 +38,7 @@
+> >>  #include <linux/interrupt.h>
+> >>  #include <linux/io.h>
+> >>  #include <linux/resource_ext.h>
+> >> +#include <linux/sched/isolation.h>
+> >>  #include <uapi/linux/pci.h>
+> >>  
+> >>  #include <linux/pci_ids.h>
+> >> @@ -1797,6 +1798,20 @@ static inline int
+> >>  pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs,
+> >>  		      unsigned int max_vecs, unsigned int flags)
+> >>  {
+> >> +	unsigned int hk_cpus = hk_num_online_cpus();
+> >> +
+> >> +	/*
+> >> +	 * For a real-time environment, try to be conservative and at max only
+> >> +	 * ask for the same number of vectors as there are housekeeping online
+> >> +	 * CPUs. In case, the min_vecs requested exceeds the housekeeping
+> >> +	 * online CPUs, restrict the max_vecs based on the min_vecs instead.
+> >> +	 */
+> >> +	if (hk_cpus != num_online_cpus()) {
+> >> +		if (min_vecs > hk_cpus)
+> >> +			max_vecs = min_vecs;
+> >> +		else
+> >> +			max_vecs = min_t(int, max_vecs, hk_cpus);
+> >> +	}
+> > Is the below basically the same?
+> >
+> > 	/*
+> > 	 * If we have isolated CPUs for use by real-time tasks,
+> > 	 * minimize overhead on those CPUs by moving IRQs to the
+> > 	 * remaining "housekeeping" CPUs.  Limit vector usage to keep
+> > 	 * housekeeping CPUs from running out of IRQ vectors.
+> > 	 */
+> 
+> How about the following as a comment:
+> 
+> "
+> If we have isolated CPUs or CPUs running in nohz_full mode for real-time,
+> latency overhead is minimized on those CPUs by moving the IRQ vectors to
+> the housekeeping CPUs. Limit the number of vectors to keep housekeeping
+> CPUs from running out of IRQ vectors.
+> 
+> "
+> 
+> > 	if (housekeeping_cpus < num_online_cpus()) {
+> > 		if (housekeeping_cpus < min_vecs)
+> > 			max_vecs = min_vecs;
+> > 		else if (housekeeping_cpus < max_vecs)
+> > 			max_vecs = housekeeping_cpus;
+> > 	}
+> 
+> The only reason I went with hk_cpus instead of housekeeping_cpus is because
+> at other places in the kernel I found a similar naming convention (eg.
+> hk_mask, hk_flags etc.).
+> But if housekeeping_cpus makes things more clear, I can switch to that
+> instead.
+> 
+> Although after Frederic and Peter's suggestion the previous call will change
+> to something like:
+> 
+> "
+> housekeeping_cpus = housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
+> "
+> 
+> Which should still falls in the that 80 chars per line limit.
+
+I don't really care whether it's "hk_cpus" or "housekeeping_cpus" as
+long as "housekeeping" appears in the code somewhere.  If we call
+"housekeeping_num_online_cpus()" that should be enough.
+
+> > My comment isn't quite right because this patch only limits the number
+> > of vectors; it doesn't actually *move* IRQs to the housekeeping CPUs.
+> 
+> Yeap it doesn't move IRQs to the housekeeping CPUs.
+> 
+> > I don't know where the move happens (or maybe you just avoid assigning
+> > IRQs to isolated CPUs, and I don't know how that happens either).
+> 
+> This can happen in the userspace, either manually or by some application
+> such as tuned.
+
+Some brief hint about this might be helpful.
+
+> >>  	return pci_alloc_irq_vectors_affinity(dev, min_vecs, max_vecs, flags,
+> >>  					      NULL);
+> >>  }
+> >> -- 
+> >> 2.18.2
+> >>
+> -- 
+> Thanks
+> Nitesh
+> 
+
+
 
 _______________________________________________
 Intel-wired-lan mailing list
