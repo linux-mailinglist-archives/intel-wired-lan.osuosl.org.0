@@ -1,73 +1,120 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE39C27983A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Sep 2020 12:09:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8BC1786C6D;
-	Sat, 26 Sep 2020 10:09:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 65HAX+GrZUIq; Sat, 26 Sep 2020 10:09:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B036585CD0;
-	Sat, 26 Sep 2020 10:08:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 071CD1BF5A3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Sep 2020 10:08:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A425279D89
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 27 Sep 2020 04:24:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E99A5873A5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Sep 2020 10:08:54 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id CD8BC8714C;
+	Sun, 27 Sep 2020 02:24:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jA803asVKxcB; Sun, 27 Sep 2020 02:24:09 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id 21B6A87052;
+	Sun, 27 Sep 2020 02:24:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5636F1BF5AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 21:38:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 43EC12E170
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 21:38:24 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bo3MwtLTqM29 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 26 Sep 2020 10:08:53 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from eu-smtp-delivery-151.mimecast.com
- (eu-smtp-delivery-151.mimecast.com [185.58.86.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 77DE78733D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Sep 2020 10:08:53 +0000 (UTC)
-Received: from AcuMS.aculab.com (156.67.243.126 [156.67.243.126]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- uk-mta-239-y59-RWZIOgO1ecIgUYA2Aw-1; Sat, 26 Sep 2020 11:08:48 +0100
-X-MC-Unique: y59-RWZIOgO1ecIgUYA2Aw-1
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:43c:695e:880f:8750) with Microsoft SMTP
- Server (TLS) id 15.0.1347.2; Sat, 26 Sep 2020 11:08:47 +0100
-Received: from AcuMS.Aculab.com ([fe80::43c:695e:880f:8750]) by
- AcuMS.aculab.com ([fe80::43c:695e:880f:8750%12]) with mapi id 15.00.1347.000; 
- Sat, 26 Sep 2020 11:08:47 +0100
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Andrew Lunn' <andrew@lunn.ch>
-Thread-Topic: [PATCH v2] e1000e: Increase iteration on polling MDIC ready bit
-Thread-Index: AQHWkox4cI4WCPtPmUq6IlIoeEXohal5Cn3AgAA/UYCAAWddMA==
-Date: Sat, 26 Sep 2020 10:08:47 +0000
-Message-ID: <1b4fadba2e204f6abd4ef6e02d84beed@AcuMS.aculab.com>
-References: <20200923074751.10527-1-kai.heng.feng@canonical.com>
- <20200924150958.18016-1-kai.heng.feng@canonical.com>
- <20200924155355.GC3821492@lunn.ch>
- <8A08B3A7-8368-48EC-A2DD-B5D5F3EA94C5@canonical.com>
- <2f48175dce974ea689bfd26b9fc2245a@AcuMS.aculab.com>
- <20200925132903.GB3850848@lunn.ch>
-In-Reply-To: <20200925132903.GB3850848@lunn.ch>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+ with ESMTP id nLQT5-Hu2QjX for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Sep 2020 21:38:21 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id 0954F20034
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 21:38:20 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601069899;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=gpW0sj/nM7AwMpbkqOmCDPVLocu/rnov7w2AYNtGosY=;
+ b=aIoOuHxX3XvopvWqzL1WADRiZPpeKz/LoUlmmywPeA78QRik6BOgV53W1Ln2m/x9/O/Mwv
+ EjIJh8szgNzGNED1r9dWYCA8MzVnnU7o+3h5kL96iwFH+bk9fN4UArnf2a4ls+OD14QxDP
+ /TjWQSpVg1i3Cmak8WDnaZSNA5hq2BU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-239-kd5xHqXCP4iz6dgTFozQaQ-1; Fri, 25 Sep 2020 17:38:17 -0400
+X-MC-Unique: kd5xHqXCP4iz6dgTFozQaQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C4D75805EE4;
+ Fri, 25 Sep 2020 21:38:14 +0000 (UTC)
+Received: from [10.10.114.192] (ovpn-114-192.rdu2.redhat.com [10.10.114.192])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C07D75577A;
+ Fri, 25 Sep 2020 21:38:06 +0000 (UTC)
+To: Bjorn Helgaas <helgaas@kernel.org>
+References: <20200925202307.GA2456332@bjorn-Precision-5520>
+From: Nitesh Narayan Lal <nitesh@redhat.com>
+Autocrypt: addr=nitesh@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ VujM7c/b4pps
+Organization: Red Hat Inc,
+Message-ID: <256490f0-0762-447c-a7be-0e5a6bb04fc4@redhat.com>
+Date: Fri, 25 Sep 2020 17:38:05 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20200925202307.GA2456332@bjorn-Precision-5520>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nitesh@redhat.com
 X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v2] e1000e: Increase iteration on
- polling MDIC ready bit
+X-Mimecast-Originator: redhat.com
+X-Mailman-Approved-At: Sun, 27 Sep 2020 02:24:07 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v3 4/4] PCI: Limit
+ pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,95 +127,144 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- 'Kai-Heng Feng' <kai.heng.feng@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
+ sassmann@redhat.com, vincent.guittot@linaro.org, hch@infradead.org,
+ mingo@redhat.com, intel-wired-lan@lists.osuosl.org, thomas.lendacky@amd.com,
+ lgoncalv@redhat.com, frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com,
+ bhelgaas@google.com, mike.marciniszyn@intel.com, netdev@vger.kernel.org,
+ dennis.dalessandro@intel.com, mtosatti@redhat.com,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============2686322083127693439=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Andrew Lunn
-> Sent: 25 September 2020 14:29
-> On Fri, Sep 25, 2020 at 08:50:30AM +0000, David Laight wrote:
-> > From: Kai-Heng Feng
-> > > Sent: 24 September 2020 17:04
-> > ...
-> > > > I also don't fully understand the fix. You are now looping up to 6400
-> > > > times, each with a delay of 50uS. So that is around 12800 times more
-> > > > than it actually needs to transfer the 64 bits! I've no idea how this
-> > > > hardware works, but my guess would be, something is wrong with the
-> > > > clock setup?
-> > >
-> > > It's probably caused by Intel ME. This is not something new, you can find many polling codes in
-> e1000e
-> > > driver are for ME, especially after S3 resume.
-> > >
-> > > Unless Intel is willing to open up ME, being patient and wait for a longer while is the best
-> approach
-> > > we got.
-> >
-> > There is some really broken code in the e1000e driver that affect my
-> > Ivy bridge platform were it is trying to avoid hardware bugs in
-> > the ME interface.
-> >
-> > It seems that before EVERY write to a MAC register it must check
-> > that the ME isn't using the interface - and spin until it isn't.
-> > This causes massive delays in the TX path because it includes
-> > the write that tells the MAC engine about a new packet.
-> 
-> Hi David
-> 
-> Thanks for the information. This however does not really explain the
-> issue.
-> 
-> The code busy loops waiting for the MDIO transaction to complete. If
-> read/writes to the MAC are getting blocked, that just means less
-> iterations of the loop are needed, not more, since the time to
-> complete the transaction should be fixed.
-> 
-> If ME really is to blame, it means ME is completely hijacking the
-> hardware? Stopping the clocks? Maybe doing its own MDIO transactions?
-> How can you write a PHY driver if something else is also programming
-> the PHY.
-> 
-> We don't understand what is going on here. We are just papering over
-> the cracks. The commit message should say this, that the change fixes
-> the symptoms but probably not the cause.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============2686322083127693439==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="YGhoGpiEK97LlikE5tgeBsj6NKFwnYVHR"
 
-You may not have the same broken hardware as I have...
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--YGhoGpiEK97LlikE5tgeBsj6NKFwnYVHR
+Content-Type: multipart/mixed; boundary="Df7GsTEDJLdhut9BI6tcE476jLN1S7Yy0"
 
-From what I could infer from the code and guess from the behaviour
-I got the impression that if the ME was accessing any of the MAC
-registers it was likely that writes from the kernel just got discarded.
+--Df7GsTEDJLdhut9BI6tcE476jLN1S7Yy0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
 
-I got the impression that a bug in the hardware was being worked
-around by the ME setting a status bit before and access, waiting
-a bit for the kernel to finish anything it was doing, then
-doing its access and clearing the bit.
 
-The kernel keeps having to wait for the bit to be clear.
-These delays were long; sub ms - but far longer than
-the rest of the code path for sending a packet.
-But the code didn't check/disable pre-emption or interrupts
-so the check was actually broken.
-(If I removed it completely my system wouldn't boot!)
+On 9/25/20 4:23 PM, Bjorn Helgaas wrote:
+> On Fri, Sep 25, 2020 at 02:26:54PM -0400, Nitesh Narayan Lal wrote:
+>> If we have isolated CPUs dedicated for use by real-time tasks, we try to
+>> move IRQs to housekeeping CPUs from the userspace to reduce latency
+>> overhead on the isolated CPUs.
+>>
+>> If we allocate too many IRQ vectors, moving them all to housekeeping CPU=
+s
+>> may exceed per-CPU vector limits.
+>>
+>> When we have isolated CPUs, limit the number of vectors allocated by
+>> pci_alloc_irq_vectors() to the minimum number required by the driver, or
+>> to one per housekeeping CPU if that is larger.
+>>
+>> Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+>> ---
+>>  include/linux/pci.h | 17 +++++++++++++++++
+>>  1 file changed, 17 insertions(+)
+>>
+>> diff --git a/include/linux/pci.h b/include/linux/pci.h
+>> index 835530605c0d..a7b10240b778 100644
+>> --- a/include/linux/pci.h
+>> +++ b/include/linux/pci.h
+>> @@ -38,6 +38,7 @@
+>>  #include <linux/interrupt.h>
+>>  #include <linux/io.h>
+>>  #include <linux/resource_ext.h>
+>> +#include <linux/sched/isolation.h>
+>>  #include <uapi/linux/pci.h>
+>> =20
+>>  #include <linux/pci_ids.h>
+>> @@ -1797,6 +1798,22 @@ static inline int
+>>  pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs,
+>>  =09=09      unsigned int max_vecs, unsigned int flags)
+>>  {
+>> +=09unsigned int hk_cpus;
+>> +
+>> +=09hk_cpus =3D housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
+> Add blank line here before the block comment.
+>
+>> +=09/*
+>> +=09 * If we have isolated CPUs for use by real-time tasks, to keep the
+>> +=09 * latency overhead to a minimum, device-specific IRQ vectors are mo=
+ved
+>> +=09 * to the housekeeping CPUs from the userspace by changing their
+>> +=09 * affinity mask. Limit the vector usage to keep housekeeping CPUs f=
+rom
+>> +=09 * running out of IRQ vectors.
+>> +=09 */
+>> +=09if (hk_cpus < num_online_cpus()) {
+>> +=09=09if (hk_cpus < min_vecs)
+>> +=09=09=09max_vecs =3D min_vecs;
+>> +=09=09else if (hk_cpus < max_vecs)
+>> +=09=09=09max_vecs =3D hk_cpus;
+>> +=09}
+> It seems like you'd want to do this inside
+> pci_alloc_irq_vectors_affinity() since that's an exported interface,
+> and drivers that use it will bypass the limiting you're doing here.
 
-Thing is I don't want the ME.
-I don't need the ME on that system.
-The ME might be a security hole.
-The ME breaks my system.
-But I can't disable it at all.
+Good point, few drivers directly use this.
+I took a quick look and it seems I may also have to take the pre and the
+post vectors into consideration.
 
-	David
+>>  =09return pci_alloc_irq_vectors_affinity(dev, min_vecs, max_vecs, flags=
+,
+>>  =09=09=09=09=09      NULL);
+>>  }
+>> --=20
+>> 2.18.2
+>>
+--=20
+Nitesh
 
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-Registration No: 1397386 (Wales)
+
+--Df7GsTEDJLdhut9BI6tcE476jLN1S7Yy0--
+
+--YGhoGpiEK97LlikE5tgeBsj6NKFwnYVHR
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEkXcoRVGaqvbHPuAGo4ZA3AYyozkFAl9uYz0ACgkQo4ZA3AYy
+ozkiEBAAvGh1LoOrI92FwWB9mO6IUhqq1kV5fqaTQoQVDCd9xBSPfsWT+gsFaduP
+L9udE6raj+9EpQkKdIiqcAL5Csx/8KmvNqbeY/ABw4MAlNxlcc9iBHl3dTvkAw9b
+pPeMsNnQiPPt18S/SYvkUsSVD7tb8S334qRmxQqU2RgjzIX9DZINMbXVhrzbCTkJ
+gTjsuFAIZyKjw6pHvqc51qWOr91TdMtk3kFyPKSEK5jUGuI36Gmuh38W5o6ZtPuZ
+1t9VKvcCODdQE5ehdGN10E7Z0bjDdCkNy+qV3ddgteMr1AHctofL9FbhrAkAIreP
+BZxJ9YuFkexkNbAJfUIiItFeQMJ8bEhtqz5kuGuod73HjyNsjXrYWy4sCNSizeBN
+QuoMzNgXPNkp++V6Qv1ta36A+pDM/k0A/W0yC91lPhrhJoV/nWClMayOrk2ywINv
+H8FtM+Ci0lA6NTVtwDgPVkBe06xgTEENtXQ4EnBxahmJ9DBWDh1N7f1P0J7KYMCB
+iwxdkktbb0GcVo7/9oOObfztqO/bEat0Nz3pDhJz0XbnhVHCxDeHwtaMgWO/64UJ
+f6X0MJRX9006GFx7Y2iExMzsyKypT0/+49RXOsFkLMXJidNzylG1OjZw7dtg3z5i
+Bp9SpF9tRQ3laz3BnyqBuyDbT9EBm4zaUFiQG1ZAv0KqAkAOXVs=
+=EFzi
+-----END PGP SIGNATURE-----
+
+--YGhoGpiEK97LlikE5tgeBsj6NKFwnYVHR--
+
+
+--===============2686322083127693439==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============2686322083127693439==--
+
