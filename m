@@ -2,55 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5441E277FD8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 07:16:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 33873277FF7
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 07:35:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id E2B9286D31;
-	Fri, 25 Sep 2020 05:16:46 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 9748E86CE2;
+	Fri, 25 Sep 2020 05:35:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FVph7qZ9kdjt; Fri, 25 Sep 2020 05:16:46 +0000 (UTC)
+	with ESMTP id V5NYlJbxdgci; Fri, 25 Sep 2020 05:35:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7250986D1F;
-	Fri, 25 Sep 2020 05:16:45 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id DB25A86D24;
+	Fri, 25 Sep 2020 05:35:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8248E1BF84C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 05:16:43 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 266841BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 05:35:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7D8328756B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 05:16:43 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 1C05D86CE2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 05:35:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZYW8IK+Bn6I9 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Sep 2020 05:16:42 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0AA2E87542
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 05:16:42 +0000 (UTC)
-Received: from [192.168.0.3] (ip5f5af1e7.dynamic.kabel-deutschland.de
- [95.90.241.231])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id D68B22064620A;
- Fri, 25 Sep 2020 07:16:38 +0200 (CEST)
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>
-References: <20200924150958.18016-1-kai.heng.feng@canonical.com>
- <20200924164542.19906-1-kai.heng.feng@canonical.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-Message-ID: <1497f846-40d2-ddc8-60be-ffd117ffc0b7@molgen.mpg.de>
-Date: Fri, 25 Sep 2020 07:16:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ with ESMTP id o491m1tQsWf5 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Sep 2020 05:35:30 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 31A1986CE0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 05:35:30 +0000 (UTC)
+IronPort-SDR: DvZjF4vOR4nVhwJvHuICoLljZ2cxJnW+VObGBPHl4ubW3Qb+t/VCktGd/DX8EOsikO/UuhctSc
+ +1sw96FPqjSA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9754"; a="158794292"
+X-IronPort-AV: E=Sophos;i="5.77,300,1596524400"; d="scan'208";a="158794292"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Sep 2020 22:35:29 -0700
+IronPort-SDR: 7t/OgQJpH1GQ2uYf6q5xtiJcnzrRzxhIvpkJmHwIaBafemmAipRqCO9bM5Q3I1eQk9re7HF0Gv
+ iJm4pP0fhkog==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,300,1596524400"; d="scan'208";a="310681723"
+Received: from lkp-server01.sh.intel.com (HELO bb5857c652c6) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 24 Sep 2020 22:35:28 -0700
+Received: from kbuild by bb5857c652c6 with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1kLgOF-00002m-Jg; Fri, 25 Sep 2020 05:35:27 +0000
+Date: Fri, 25 Sep 2020 13:34:31 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <5f6d8167.rXAneI9Zn04IaZYu%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-In-Reply-To: <20200924164542.19906-1-kai.heng.feng@canonical.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH v3] e1000e: Increase iteration on
- polling MDIC ready bit
+Subject: [Intel-wired-lan] [jkirsher-next-queue:1GbE] BUILD SUCCESS
+ 92465620e2348c33293eba028d1785e50ce0a922
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,60 +69,223 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBLYWktSGVuZywKCgpUaGFuayB5b3UgZm9yIHBhdGNoIHZlcnNpb24gMy4KCkFtIDI0LjA5
-LjIwIHVtIDE4OjQ1IHNjaHJpZWIgS2FpLUhlbmcgRmVuZzoKPiBXZSBhcmUgc2VlaW5nIHRoZSBm
-b2xsb3dpbmcgZXJyb3IgYWZ0ZXIgUzMgcmVzdW1lOgo+IFsgIDcwNC43NDY4NzRdIGUxMDAwZSAw
-MDAwOjAwOjFmLjYgZW5vMTogU2V0dGluZyBwYWdlIDB4NjAyMAo+IFsgIDcwNC44NDQyMzJdIGUx
-MDAwZSAwMDAwOjAwOjFmLjYgZW5vMTogTURJIFdyaXRlIGRpZCBub3QgY29tcGxldGUKPiBbICA3
-MDQuOTAyODE3XSBlMTAwMGUgMDAwMDowMDoxZi42IGVubzE6IFNldHRpbmcgcGFnZSAweDYwMjAK
-PiBbICA3MDQuOTAzMDc1XSBlMTAwMGUgMDAwMDowMDoxZi42IGVubzE6IHJlYWRpbmcgUEhZIHBh
-Z2UgNzY5IChvciAweDYwMjAgc2hpZnRlZCkgcmVnIDB4MTcKPiBbICA3MDQuOTAzMjgxXSBlMTAw
-MGUgMDAwMDowMDoxZi42IGVubzE6IFNldHRpbmcgcGFnZSAweDYwMjAKPiBbICA3MDQuOTAzNDg2
-XSBlMTAwMGUgMDAwMDowMDoxZi42IGVubzE6IHdyaXRpbmcgUEhZIHBhZ2UgNzY5IChvciAweDYw
-MjAgc2hpZnRlZCkgcmVnIDB4MTcKPiBbICA3MDQuOTQzMTU1XSBlMTAwMGUgMDAwMDowMDoxZi42
-IGVubzE6IE1ESSBFcnJvcgo+IC4uLgo+IFsgIDcwNS4xMDgxNjFdIGUxMDAwZSAwMDAwOjAwOjFm
-LjYgZW5vMTogSGFyZHdhcmUgRXJyb3IKPiAKPiBBcyBBbmRyZXcgTHVubiBwb2ludGVkIG91dCwg
-TURJTyBoYXMgbm90aGluZyB0byBkbyB3aXRoIHBoeSwgYW5kIGluZGVlZAo+IGluY3JlYXNlIHBv
-bGxpbmcgaXRlcmF0aW9uIGNhbiByZXNvbHZlIHRoZSBpc3N1ZS4KPiAKPiBUaGUgcm9vdCBjYXVz
-ZSBpcyBxdWl0ZSBsaWtlbHkgSW50ZWwgTUUsIHNpbmNlIGl0J3MgYSBibGFja2JveCB0byB0aGUK
-PiBrZXJuZWwgc28gdGhlIG9ubHkgYXBwcm9hY2ggd2UgY2FuIHRha2UgaXMgdG8gYmUgcGF0aWVu
-dCBhbmQgd2FpdAo+IGxvbmdlci4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBLYWktSGVuZyBGZW5nIDxr
-YWkuaGVuZy5mZW5nQGNhbm9uaWNhbC5jb20+Cj4gLS0tCj4gdjM6Cj4gICAtIE1vdmluZyBkZWxh
-eSB0byBlbmQgb2YgbG9vcCBkb2Vzbid0IHNhdmUgYW55dGltZSwgbW92ZSBpdCBiYWNrLgo+ICAg
-LSBQb2ludCBvdXQgdGhpcyBpcyBxdWl0ZWx5IGxpa2VseSBjYXVzZWQgYnkgSW50ZWwgTUUuCgpx
-dWlldGx5CgpZb3Ugc2VlbSB0byBoYXZlIG1pc3NlZCBteSBjb21tZW50cyByZWdhcmRpbmcgcGF0
-Y2ggdmVyc2lvbiAzLiBJdOKAmWQgYmUgCmdyZWF0IGlmIHlvdSBpbXByb3ZlZCB0aGUgY29tbWl0
-IG1lc3NhZ2Ugd2l0aCBteSBzdWdnZXN0aW9ucy4KCldpdGhvdXQga25vd2luZyB3aGF0IGhhcmR3
-YXJlIHRoaXMgaGFwcGVuZWQgb24sIG5vYm9keSwgZXZlbiBsYXRlciAKZ2V0dGluZyB0aGUgaGFy
-ZHdhcmUsIGNhbiByZXByb2R1Y2UgdGhlIHlvdXIgcmVzdWx0cy4gSWYgeW91IHNheSB0aGUgTUUg
-CmlzIGludm9sdmVkLCBwbGVhc2UgYWxzbyBkb2N1bWVudCB0aGUgTUUgZmlybXdhcmUgdmVyc2lv
-biwgd2hpY2ggaXMgdXNlZCAKaGVyZS4KCj4gdjI6Cj4gICAtIEluY3JlYXNlIHBvbGxpbmcgaXRl
-cmF0aW9uIGluc3RlYWQgb2YgcG93ZXJpbmcgZG93biB0aGUgcGh5Lgo+IAo+ICAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL3BoeS5jIHwgMiArLQo+ICAgMSBmaWxlIGNoYW5nZWQs
-IDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9waHkuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2UxMDAwZS9waHkuYwo+IGluZGV4IGUxMWM4Nzc1OTVmYi4uZTZkNGFjZDkwOTM3IDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9waHkuYwo+ICsrKyBi
-L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9waHkuYwo+IEBAIC0yMDMsNyArMjAz
-LDcgQEAgczMyIGUxMDAwZV93cml0ZV9waHlfcmVnX21kaWMoc3RydWN0IGUxMDAwX2h3ICpodywg
-dTMyIG9mZnNldCwgdTE2IGRhdGEpCj4gICAJICogSW5jcmVhc2luZyB0aGUgdGltZSBvdXQgYXMg
-dGVzdGluZyBzaG93ZWQgZmFpbHVyZXMgd2l0aAo+ICAgCSAqIHRoZSBsb3dlciB0aW1lIG91dAo+
-ICAgCSAqLwo+IC0JZm9yIChpID0gMDsgaSA8IChFMTAwMF9HRU5fUE9MTF9USU1FT1VUICogMyk7
-IGkrKykgewo+ICsJZm9yIChpID0gMDsgaSA8IChFMTAwMF9HRU5fUE9MTF9USU1FT1VUICogMTAp
-OyBpKyspIHsKPiAgIAkJdWRlbGF5KDUwKTsKPiAgIAkJbWRpYyA9IGVyMzIoTURJQyk7Cj4gICAJ
-CWlmIChtZGljICYgRTEwMDBfTURJQ19SRUFEWSkKCkluIHRoZSBQQ0kgc3Vic3lzdGVtLCBhIHdh
-cm5pbmcgaXMgc2hvd24sIHdoZW4gc29tZXRoaW5nIHRha2VzIG1vcmUgdGhlbiAKMTAwIG1zLiBB
-cyB5b3UgaW5jcmVhc2UgaXQgdG8gb3ZlciAzMjAgbXMsIGEgd2FybmluZyBzaG91bGQgYmUgcHJp
-bnRlZCAKdG8gdGFsayB0byB0aGUgZmlybXdhcmUgZm9sa3MsIHdoZW4gaXQgcGFzc2VzIDEwMCBt
-cy4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQt
-bGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8v
-aW50ZWwtd2lyZWQtbGFuCg==
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/next-queue.git  1GbE
+branch HEAD: 92465620e2348c33293eba028d1785e50ce0a922  e1000e: Add support for Meteor Lake
+
+elapsed time: 723m
+
+configs tested: 193
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+mips                  maltasmvp_eva_defconfig
+mips                    maltaup_xpa_defconfig
+xtensa                  audio_kc705_defconfig
+arm                        vexpress_defconfig
+powerpc                    gamecube_defconfig
+arm                        multi_v7_defconfig
+i386                             allyesconfig
+sh                          rsk7269_defconfig
+ia64                                defconfig
+microblaze                    nommu_defconfig
+arm                       omap2plus_defconfig
+powerpc                 mpc832x_rdb_defconfig
+sh                               j2_defconfig
+arm                       multi_v4t_defconfig
+powerpc                      tqm8xx_defconfig
+arm                         bcm2835_defconfig
+arm                           stm32_defconfig
+arm                          collie_defconfig
+mips                         cobalt_defconfig
+arm                     davinci_all_defconfig
+m68k                       m5275evb_defconfig
+powerpc                     tqm8548_defconfig
+arm                         nhk8815_defconfig
+arm                        clps711x_defconfig
+powerpc                      ppc64e_defconfig
+h8300                            alldefconfig
+arm                        trizeps4_defconfig
+powerpc                 mpc85xx_cds_defconfig
+mips                         rt305x_defconfig
+arm                       mainstone_defconfig
+powerpc64                           defconfig
+xtensa                              defconfig
+m68k                        stmark2_defconfig
+arm                            qcom_defconfig
+sh                          r7780mp_defconfig
+powerpc                       ebony_defconfig
+xtensa                    smp_lx200_defconfig
+m68k                        m5272c3_defconfig
+powerpc                   motionpro_defconfig
+sh                          kfr2r09_defconfig
+powerpc                 linkstation_defconfig
+m68k                        mvme16x_defconfig
+powerpc                     sbc8548_defconfig
+sh                             shx3_defconfig
+arm                           efm32_defconfig
+powerpc                     akebono_defconfig
+sh                         apsh4a3a_defconfig
+sh                           se7712_defconfig
+sh                        sh7757lcr_defconfig
+powerpc                    adder875_defconfig
+arc                      axs103_smp_defconfig
+m68k                          amiga_defconfig
+powerpc                mpc7448_hpc2_defconfig
+powerpc                     tqm8540_defconfig
+sh                      rts7751r2d1_defconfig
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+mips                        bcm47xx_defconfig
+mips                         tb0226_defconfig
+m68k                          hp300_defconfig
+sparc                            allyesconfig
+sparc                       sparc32_defconfig
+powerpc                 mpc837x_mds_defconfig
+arm                         hackkit_defconfig
+um                           x86_64_defconfig
+arm                       netwinder_defconfig
+arm                        keystone_defconfig
+arc                              alldefconfig
+mips                           ci20_defconfig
+xtensa                         virt_defconfig
+arc                        nsim_700_defconfig
+m68k                       bvme6000_defconfig
+arm                        cerfcube_defconfig
+sh                  sh7785lcr_32bit_defconfig
+powerpc                 mpc836x_mds_defconfig
+powerpc                     tqm8541_defconfig
+powerpc                    socrates_defconfig
+arm                         s3c6400_defconfig
+mips                        omega2p_defconfig
+h8300                               defconfig
+powerpc                      pcm030_defconfig
+h8300                    h8300h-sim_defconfig
+sh                   rts7751r2dplus_defconfig
+mips                        bcm63xx_defconfig
+arm                         axm55xx_defconfig
+sh                          polaris_defconfig
+sh                ecovec24-romimage_defconfig
+sh                          lboxre2_defconfig
+nds32                             allnoconfig
+csky                                defconfig
+xtensa                           allyesconfig
+mips                         bigsur_defconfig
+mips                     loongson1c_defconfig
+mips                        workpad_defconfig
+powerpc                     ep8248e_defconfig
+mips                       capcella_defconfig
+riscv                          rv32_defconfig
+powerpc                     ppa8548_defconfig
+x86_64                              defconfig
+ia64                             allmodconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+c6x                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+sparc                               defconfig
+i386                                defconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+i386                 randconfig-a002-20200924
+i386                 randconfig-a006-20200924
+i386                 randconfig-a003-20200924
+i386                 randconfig-a004-20200924
+i386                 randconfig-a005-20200924
+i386                 randconfig-a001-20200924
+i386                 randconfig-a002-20200923
+i386                 randconfig-a006-20200923
+i386                 randconfig-a003-20200923
+i386                 randconfig-a004-20200923
+i386                 randconfig-a005-20200923
+i386                 randconfig-a001-20200923
+x86_64               randconfig-a011-20200925
+x86_64               randconfig-a013-20200925
+x86_64               randconfig-a014-20200925
+x86_64               randconfig-a015-20200925
+x86_64               randconfig-a012-20200925
+x86_64               randconfig-a016-20200925
+x86_64               randconfig-a011-20200923
+x86_64               randconfig-a013-20200923
+x86_64               randconfig-a014-20200923
+x86_64               randconfig-a015-20200923
+x86_64               randconfig-a012-20200923
+x86_64               randconfig-a016-20200923
+i386                 randconfig-a012-20200925
+i386                 randconfig-a014-20200925
+i386                 randconfig-a016-20200925
+i386                 randconfig-a013-20200925
+i386                 randconfig-a011-20200925
+i386                 randconfig-a015-20200925
+i386                 randconfig-a012-20200923
+i386                 randconfig-a014-20200923
+i386                 randconfig-a016-20200923
+i386                 randconfig-a013-20200923
+i386                 randconfig-a011-20200923
+i386                 randconfig-a015-20200923
+i386                 randconfig-a012-20200924
+i386                 randconfig-a014-20200924
+i386                 randconfig-a016-20200924
+i386                 randconfig-a013-20200924
+i386                 randconfig-a011-20200924
+i386                 randconfig-a015-20200924
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+x86_64                                   rhel
+x86_64                           allyesconfig
+x86_64                    rhel-7.6-kselftests
+x86_64                               rhel-8.3
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a005-20200923
+x86_64               randconfig-a003-20200923
+x86_64               randconfig-a004-20200923
+x86_64               randconfig-a002-20200923
+x86_64               randconfig-a006-20200923
+x86_64               randconfig-a001-20200923
+x86_64               randconfig-a005-20200925
+x86_64               randconfig-a003-20200925
+x86_64               randconfig-a004-20200925
+x86_64               randconfig-a002-20200925
+x86_64               randconfig-a006-20200925
+x86_64               randconfig-a001-20200925
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
