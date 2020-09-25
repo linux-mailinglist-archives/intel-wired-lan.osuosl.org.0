@@ -2,116 +2,57 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3E4E279157
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 21:07:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4459279204
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 22:25:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 7DFD72E18E;
-	Fri, 25 Sep 2020 19:07:56 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 54AA82E187;
+	Fri, 25 Sep 2020 20:25:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5D+r9T09ozwB; Fri, 25 Sep 2020 19:07:50 +0000 (UTC)
+	with ESMTP id 5vvYVp8XRvd9; Fri, 25 Sep 2020 20:25:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7C24D2E184;
-	Fri, 25 Sep 2020 19:07:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0BE6B1BF25B
- for <intel-wired-lan@osuosl.org>; Fri, 25 Sep 2020 19:07:48 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id DDC8A20453;
+	Fri, 25 Sep 2020 20:25:08 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3716A1BF33F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 20:23:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id F15AF2E185
- for <intel-wired-lan@osuosl.org>; Fri, 25 Sep 2020 19:07:47 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 31D538764A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 20:23:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yoiCshUb05jF for <intel-wired-lan@osuosl.org>;
- Fri, 25 Sep 2020 19:07:46 +0000 (UTC)
-X-Greylist: delayed 00:15:02 by SQLgrey-1.7.6
-Received: from harmonic.fortimail.com (gw6018.fortimail.com [173.243.136.18])
- by silver.osuosl.org (Postfix) with ESMTPS id 506502E17B
- for <intel-wired-lan@osuosl.org>; Fri, 25 Sep 2020 19:07:46 +0000 (UTC)
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam08lp2045.outbound.protection.outlook.com [104.47.73.45])
- by harmonic.fortimail.com  with ESMTP id 08PIqg5s013487-08PIqg5u013487
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=CAFAIL);
- Fri, 25 Sep 2020 11:52:43 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jFwstit6Dz1bMMgwRK04yVHLHNtvcz+VhfVLaz+OYkGBz9wOqKLj8TIwOZQxNU28BYJHmnK2pXmlL2lVhtRTlDRUYccKXvZG3/fgNFGxfKAsWtQr+KhDYcjKfCn6KmQYONmqoK8Jd2EIzdr2Q6sXkxY3OC/VpQXUI5Spwfv1TtYBS2MvX3ojbbBwpDPcDwtkcnpMxCRNxQ5ReX0akZhh8W3tWNwGF8OrIhG1WGMyYIxKk+t1O4QRo7FKnNXnLOeES0DA3KIAnN7ckbxhCZH/WdLdnfBCCpNH5XMoPReCaET9btSIhYt+jepdX8Oav7Dh9dTCldzOpU9Kr0tMyGNOwA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Tro5QxXeRDgZXscXtCzi2T09tmy9RWkpWhOj8Yi5c2g=;
- b=mXgl2TqFw803VO8H8tbzpO1QEM1dxhYMJjPMwUw5EB+jXiGSCKpdfeCqFUwgLqJwqXXV4Dt8XDpZnbNWiHGqsTuRiulYM3bGL+5KhLtgIEI3hAiidAMZR/VOSCj561Y/7SaamqMcE9KSVubQ9eX19I2R78JlMGpD0mkH3U2c85dCHgt8jJaf41HRGOar2AlN1YlFPrjeUgKbn4IIjVw1u4yNxM6R7PUNyabWNim/Bf3fn4o28AJMPWD8x/3OO1USAA0r4UN7xa14gd6jnMY4eUjrfAkMds4Dm1KpjUgTwftrC3pZR1qicQHSDTenjFMuJebsXV0M24iLxJLtaw0LDg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=harmonicinc.com; dmarc=pass action=none
- header.from=harmonicinc.com; dkim=pass header.d=harmonicinc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=harmonicinc.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Tro5QxXeRDgZXscXtCzi2T09tmy9RWkpWhOj8Yi5c2g=;
- b=TaAp52ihE0ARL7yRYkWqpUFcTuYoVQMSV6sg+aqw+dmID0OHjvmW46FSUZ/Guw4B8qoEX7IK44+1ZNTsNIwqIrdehYsP9LdrPZwJHdx1s1IZtipd3TomMWCBFS8oKaOGs3zVm6987X4UDeMP17PbdfKycj+XsxMq0VKm2Ae8T44=
-Received: from DM5PR11MB1673.namprd11.prod.outlook.com (2603:10b6:4:c::20) by
- DM6PR11MB2812.namprd11.prod.outlook.com (2603:10b6:5:c4::24) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3412.22; Fri, 25 Sep 2020 18:52:41 +0000
-Received: from DM5PR11MB1673.namprd11.prod.outlook.com
- ([fe80::849f:ff26:2237:b497]) by DM5PR11MB1673.namprd11.prod.outlook.com
- ([fe80::849f:ff26:2237:b497%8]) with mapi id 15.20.3412.022; Fri, 25 Sep 2020
- 18:52:41 +0000
-From: Oron Peled <Oron.Peled@harmonicinc.com>
-To: Arkady Gilinsky <arkady.gilinsky@harmonicinc.com>,
- "todd.fujinaka@intel.com" <todd.fujinaka@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Thread-Topic: [EXTERNAL] RE: General question regarding i40e driver version in
- upstream kernel
-Thread-Index: AQHWkjizkKyvyPz3uU+q5myuEgZ666l4MtwggAGCx4A=
-Date: Fri, 25 Sep 2020 18:52:41 +0000
-Message-ID: <a01df73ad3031dce66f44e520ebc11b9caf592dd.camel@harmonicinc.com>
-References: <33cb749a85e28598dd19e5041d896775b58fb0e1.camel@harmonicinc.com>
- <BYAPR11MB3606ABF2B6ACCB67097C2D32EF390@BYAPR11MB3606.namprd11.prod.outlook.com>
-In-Reply-To: <BYAPR11MB3606ABF2B6ACCB67097C2D32EF390@BYAPR11MB3606.namprd11.prod.outlook.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.30.5-1.1 
-Authentication-Results: harmonic.fortimail.com;
- dkim=pass header.i=@harmonicinc.com
-authentication-results: harmonicinc.com; dkim=none (message not signed)
- header.d=none;harmonicinc.com; dmarc=none action=none
- header.from=harmonicinc.com;
-x-originating-ip: [192.115.25.214]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: bf53b905-57c3-434d-0582-08d861842e53
-x-ms-traffictypediagnostic: DM6PR11MB2812:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB2812A52317454542429F76C586360@DM6PR11MB2812.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: hgiBd8x+PNaprgYGXPer8gx7EUgPasVwJDmItmUoIrI1O4PV/TSd6JE4+LV5X2iNr6XzgoYXWZy1PuHBFidP6ktyJ9WCM7qNjmgYEBkZBnHuQ5T9lydkN4ZJ8chUWvYGhTxtsU751GvnEB9QD8B8vV9g50hu8QJwJ1FdTwQdSBb4O3w81ajrzzHpFedvITM5kO8055JuB7vcs+bCaSTSgErxPzY+uB/VTx1OU9WxJJ5I9oeM8FUuRZb8FL9hSWlepFD6YnTfCU2aQG6L8uRc61RcQfoynlwMWh3BVbz0zbHmdTNdKh0yrQ+nvfgzf+7Zdg0pDgGBsTsiv4sw+LBrRMFAUxdWE30tpEKmqOkvrwKXlhm6GcdBaAWeGjIcHzQddL5Ii2LAviOzykARFGfVX9SdCqykWuA5hJFWgalKu8iKkGrsrWMKzXKgxjm7ft8gPq9krI3HjpAtjxie8kJQDw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR11MB1673.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(376002)(136003)(346002)(396003)(39860400002)(366004)(64756008)(76116006)(66946007)(71200400001)(110136005)(2906002)(966005)(26005)(6506007)(186003)(6486002)(53546011)(166002)(5660300002)(86362001)(316002)(83380400001)(478600001)(6512007)(2616005)(66446008)(66556008)(66476007)(91956017)(36756003)(8676002)(8936002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: RIb6M9zh1gxkkx6PoBWSfJjXB+drM5hZdP5UGr88eVFvpR1aw9/Z6I0MwmDYCikgM4O0Ho5gJeKwx8TIkqyPQ4RaS/rZt5ibkkdm+ofBwi2bNP8s6TVCdRwLpKoF7CwXShlSGMLUoOsWQ76s1y6noc3DLefcx8QoHeTLdy7emmZPrUKJ2uRYCUkAlupTZ8jPnDaZGJjxqKQdBAVSDOhn2wzPkuZu+NCUpSt2IvpP59c3ipsgqeh6somsjYQ6wX4a6YxRQYKf0+cEdK+mD1WMu8GyHURRVdphsNfyN8flEskNE65SESQ4LBVG/Uc6kFgu+elIJnHP4EQF6xaFT6wtUhH5bsuVy6nXrzqmdOW6YKbjmfNaGtxSVnOYhgCCe0JUG70HdCOk9rba60SCcBfHa3eQpJwhU560ZXBJv19CrPuP9z0kjmEFgy+oMWxCYwyWJ3uqLHzWJiI3Pg0IENp2nOMF9vxuboZUR3lSY4PD1WLN5X/xSusoi9EgQMHkVgPLVbDi6ytqTLOHkgjAqZ81LB0jxkztidOoRkJaaxErtXaF/KOBR8p+/IinDptAtboAOOeUjOTyF33gVo7yzX/7Vc2q6eoq9S8TrrteqCxtpryefpRaWYCpLQ6ec8b6Lus6iNVq9Cblvag3kc8c6xCmGg==
+ with ESMTP id BcxMWH15fnxI for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Sep 2020 20:23:10 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id B07CC87649
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 20:23:10 +0000 (UTC)
+Received: from localhost (52.sub-72-107-123.myvzw.com [72.107.123.52])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id A06632086A;
+ Fri, 25 Sep 2020 20:23:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601065390;
+ bh=aAD9nZhpTjqZoeBXICyqCwtEuwV7OkIfU4T3ggIlc10=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=IP0ezM9Hn3/SEbnXK8TrCpPU7kRkkU4GntqwiLY9scgvlBhza9gfYs4fDlR+UTw5E
+ 7meYkbHytKkecaciibT3kRIDoZvHZ5bhjtn7r5lSZ6JMAEMa0Fxet1Bn5KanI+X0A2
+ EvYfgyhUyriYf30OHWamCVzv44rklq3Ah2VB2B4o=
+Date: Fri, 25 Sep 2020 15:23:07 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Nitesh Narayan Lal <nitesh@redhat.com>
+Message-ID: <20200925202307.GA2456332@bjorn-Precision-5520>
 MIME-Version: 1.0
-X-OriginatorOrg: harmonicinc.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR11MB1673.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bf53b905-57c3-434d-0582-08d861842e53
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Sep 2020 18:52:41.2515 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 19294cf8-3352-4dde-be9e-7f47b9b6b73d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0l9PPq6KMO4c6YmclMjSXbsdyvdcTKgf3uJSWUJVJV/Qq4hjraYZT9GTnKfu978kjqwWaYMVs0qlkZ2xXXFpKfJunlu6/xWd/3PsUwnG8Zw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB2812
-X-FEAS-DKIM: Valid
-Subject: Re: [Intel-wired-lan] [EXTERNAL] RE: General question regarding
- i40e driver version in upstream kernel
+Content-Disposition: inline
+In-Reply-To: <20200925182654.224004-5-nitesh@redhat.com>
+X-Mailman-Approved-At: Fri, 25 Sep 2020 20:25:07 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v3 4/4] PCI: Limit
+ pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,180 +65,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0403018431573006247=="
+Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
+ sassmann@redhat.com, vincent.guittot@linaro.org, hch@infradead.org,
+ mingo@redhat.com, intel-wired-lan@lists.osuosl.org, thomas.lendacky@amd.com,
+ lgoncalv@redhat.com, frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com,
+ bhelgaas@google.com, mike.marciniszyn@intel.com, netdev@vger.kernel.org,
+ dennis.dalessandro@intel.com, mtosatti@redhat.com,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============0403018431573006247==
-Content-Language: en-US
-Content-Type: multipart/alternative;
-	boundary="_000_a01df73ad3031dce66f44e520ebc11b9caf592ddcamelharmonicin_"
+On Fri, Sep 25, 2020 at 02:26:54PM -0400, Nitesh Narayan Lal wrote:
+> If we have isolated CPUs dedicated for use by real-time tasks, we try to
+> move IRQs to housekeeping CPUs from the userspace to reduce latency
+> overhead on the isolated CPUs.
+> 
+> If we allocate too many IRQ vectors, moving them all to housekeeping CPUs
+> may exceed per-CPU vector limits.
+> 
+> When we have isolated CPUs, limit the number of vectors allocated by
+> pci_alloc_irq_vectors() to the minimum number required by the driver, or
+> to one per housekeeping CPU if that is larger.
+> 
+> Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
+> ---
+>  include/linux/pci.h | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/include/linux/pci.h b/include/linux/pci.h
+> index 835530605c0d..a7b10240b778 100644
+> --- a/include/linux/pci.h
+> +++ b/include/linux/pci.h
+> @@ -38,6 +38,7 @@
+>  #include <linux/interrupt.h>
+>  #include <linux/io.h>
+>  #include <linux/resource_ext.h>
+> +#include <linux/sched/isolation.h>
+>  #include <uapi/linux/pci.h>
+>  
+>  #include <linux/pci_ids.h>
+> @@ -1797,6 +1798,22 @@ static inline int
+>  pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs,
+>  		      unsigned int max_vecs, unsigned int flags)
+>  {
+> +	unsigned int hk_cpus;
+> +
+> +	hk_cpus = housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
 
---_000_a01df73ad3031dce66f44e520ebc11b9caf592ddcamelharmonicin_
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Add blank line here before the block comment.
 
-SGksDQoNCkknbSBzb3JyeSwgYnV0IEkgZG9uJ3QgdW5kZXJzdGFuZCBob3cgaXQncyByZWxhdGVk
-IHRvIE9TVidzOg0KDQogICogICBUaGUgbGF0ZXN0IHJlbGVhc2VkIHVwc3RyZWFtIGtlcm5lbCBp
-cyA1LjguMTENCiAgKiAgIFlvdSBjYW4gdmVyaWZ5IGl0IHN0aWxsIGNvbnRhaW4gaTQwZSB2ZXJz
-aW9uICIyLjguMjAtayIgLS0gbGluazxodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGlu
-dXgva2VybmVsL2dpdC9zdGFibGUvbGludXguZ2l0L3RyZWUvZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaTQwZS9pNDBlX21haW4uYz9oPXY1LjguMTE+DQoNCiAgKiAgIE5hdHVyYWxseSwgdGhp
-cyBpcyB3aGF0ICJibGVlZGluZy1lZGdlIiBPU1YncyB0YWtlOg0KICAgICAqICAgRGViaWFuL3Rl
-c3RpbmcgKGJ1bGxzZXllKSB1c2UgNS44LjAgLS0gbGluazxodHRwczovL3BhY2thZ2VzLmRlYmlh
-bi5vcmcvYnVsbHNleWUvbGludXgtaW1hZ2UtNS44LjAtMi1hbWQ2NC11bnNpZ25lZD4NCg0KICAg
-ICAqICAgVWJ1bnR1L2dyb292eSB1c2UgNS44LjAgLS0gbGluazxodHRwczovL3BhY2thZ2VzLnVi
-dW50dS5jb20vZ3Jvb3Z5L2xpbnV4LWltYWdlLWdlbmVyaWM+DQoNCiAgICAgKiAgIEZlZG9yYSB1
-c2UgNS44LjExIChldmVuIGZvciB1bnJlbGVhc2VkIHlldCBGZWRvcmEtMzMpIC0tIGxpbms8aHR0
-cHM6Ly9zcmMuZmVkb3JhcHJvamVjdC5vcmcvcnBtcy9rZXJuZWw+DQoNCkFzIEFya2FkeSBjb21t
-ZW50ZWQgYmVsb3csIEludGVsIHJlY29tbWVuZHMgYSBtdWNoIG5ld2VyIGRyaXZlcjogMi4xMi42
-DQpBbGwgd2Ugd2FudGVkIHRvIGtub3cgaXMgd2h5IHRoZXJlJ3Mgc3VjaCBhIGdhcCB0byB1cHN0
-cmVhbSBrZXJuZWwgKG5vdCB3aGF0IE9TVidzIHRha2Ugb3Igbm90KQ0KDQpBbHNvLA0KDQogICog
-ICBJbiB0aGUgdXBjb21pbmcga2VybmVsIDUuOSB0aGUgdmVyc2lvbiBzdHJpbmdzIHdlcmUgcmVt
-b3ZlZCBmcm9tIHRoZSBkcml2ZXJzIC0tIGxpbms8aHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIv
-c2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L2NvbW1pdC8/aD0zNGEyYTNi
-ODNlMmM+DQogICogICBUaGlzIHdvdWxkIG5vdCBib3RoZXIgdXMgc28gbXVjaCBpZiB0aGUgbGF0
-ZXN0IHVwc3RyZWFtIGtlcm5lbCBjb250YWluZWQgdGhlIGxhdGVzdCBJbnRlbCBkcml2ZXIuDQog
-ICogICBSZWdyZXRmdWxseSB0aGlzIGlzIG5vdCB0aGUgY2FzZSwgc28gaGlkaW5nIHRoZSB2ZXJz
-aW9uIG51bWJlciBqdXN0IGFkZCB0byB0aGUgZXhpc3RpbmcgY29uZnVzaW9uLg0KDQpUaGFua3Ms
-DQoNCi0tDQpPcm9uIFBlbGVkDQoNCk9uIFRodSwgMjAyMC0wOS0yNCBhdCAxOTo1NCArMDAwMCwg
-RnVqaW5ha2EsIFRvZGQgd3JvdGU6DQpVbmZvcnR1bmF0ZWx5LCBJIHRoaW5rIHRoZSBxdWVzdGlv
-biBpcyB3aHkgdGhlIHBhdGNoZXMgaW4gdGhlIHVwc3RyZWFtIGtlcm5lbCBkb24ndCBtYWtlIGl0
-IGludG8gdGhlIE9TViBrZXJuZWwgcXVpY2tlciBhbmQgdGhhdCdzIGEgcXVlc3Rpb24gZm9yIHRo
-ZSBPU1YuIEluIHRoaXMgY2FzZSwgQ2Fub25pY2FsLg0KDQpJIGtub3cgd2UndmUgaGFkIHNvbWUg
-ZGVsYXlzIGdldHRpbmcgcGF0Y2hlcyBpbnRvIHRoZSB1cHN0cmVhbSBrZXJuZWwgYnV0IHdlJ3Jl
-IHdvcmtpbmcgb24gdGhhdC4gTW9zdCBvZiB0aGUgdGltaW5nIGlzc3VlcyBhcmUgZHVlIHRvIHJl
-bGVhc2Ugc2NoZWR1bGVzIGFuZCB2YWxpZGF0aW9uIGFzIGl0IHByb2JhYmx5IGlzIGZvciB5b3Vy
-IHByb2R1Y3RzIGFzIHdlbGwuDQoNClRvZGQgRnVqaW5ha2ENClNvZnR3YXJlIEFwcGxpY2F0aW9u
-IEVuZ2luZWVyDQpEYXRhIENlbnRlciBHcm91cA0KSW50ZWwgQ29ycG9yYXRpb24NCnRvZGQuZnVq
-aW5ha2FAaW50ZWwuY29tPG1haWx0bzp0b2RkLmZ1amluYWthQGludGVsLmNvbT4NCg0KLS0tLS1P
-cmlnaW5hbCBNZXNzYWdlLS0tLS0NCkZyb206IEludGVsLXdpcmVkLWxhbiA8aW50ZWwtd2lyZWQt
-bGFuLWJvdW5jZXNAb3N1b3NsLm9yZzxtYWlsdG86aW50ZWwtd2lyZWQtbGFuLWJvdW5jZXNAb3N1
-b3NsLm9yZz4+IE9uIEJlaGFsZiBPZiBBcmthZHkgR2lsaW5za3kNClNlbnQ6IFdlZG5lc2RheSwg
-U2VwdGVtYmVyIDIzLCAyMDIwIDExOjA1IFBNDQpUbzogaW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5v
-cmc8bWFpbHRvOmludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnPg0KQ2M6IE9yb24gUGVsZWQgPE9y
-b24uUGVsZWRAaGFybW9uaWNpbmMuY29tPG1haWx0bzpPcm9uLlBlbGVkQGhhcm1vbmljaW5jLmNv
-bT4+DQpTdWJqZWN0OiBbSW50ZWwtd2lyZWQtbGFuXSBHZW5lcmFsIHF1ZXN0aW9uIHJlZ2FyZGlu
-ZyBpNDBlIGRyaXZlciB2ZXJzaW9uIGluIHVwc3RyZWFtIGtlcm5lbA0KDQpIaSBBbGwsDQoNCkkg
-aGF2ZSBhIGdlbmVyYWwgcXVlc3Rpb24gcmVsYXRlZCB0byBpNDBlIGRyaXZlciBpbiBMaW51eCBr
-ZXJuZWwuDQpJbiBsYXRlc3QgVWJ1bnR1LTIwLjA0IHJlbGVhc2UgKEZvY2FsKSB3aXRoIGtlcm5l
-bCA1LjQuMC00Mi1nZW5lcmljIHRoZSBzdGFuZGFyZCBpNDBlIGRyaXZlciBpcyBxdWl0ZSBvbGQg
-KDIuOC4yMC1rKSwgd2hpbGUgb24gSW50ZWwgb2ZmaWNpYWwgc2l0ZSByZWNlbnRseSB3YXMgYW5u
-b3VuY2VkIG5ld2VyIGk0MGUgKDIuMTIuNikuDQpBbHNvLCB0aGUgbGF0ZXN0IHVwc3RyZWFtIGtl
-cm5lbCBpcyA1LjguMyBoYXMgdGhlIHNhbWUgKDIuOC4yMC1rKSB2ZXJzaW9uIG9mIGk0MGUgZHJp
-dmVyLg0KU2VlIGhlcmU6IGh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L2xhdGVzdC9z
-b3VyY2UvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4uYyNMMjgNCg0K
-Q291bGQsIGFueWJvZHkgZnJvbSBkcml2ZXIgbWFpbnRhaW5lcnMsIGNsYXJpZnkgd2h5IHRoZXJl
-IGlzIHN1Y2ggYSBiaWcgZ2FwIGluIHZlcnNpb25zIG9mIGk0MGUgZHJpdmVyLg0KRG8gYWxsIHRo
-ZSBkcml2ZXJzLCBmcm9tIDIuOC4yMC1rIHZlcnNpb24sIG5vdCBzdGFibGUgZW5vdWdoLCBzbyB0
-aGV5IHdlcmUgbm90IHRha2VuIGludG8ga2VybmVsIHVwc3RyZWFtPw0KDQotLQ0KQmVzdCByZWdh
-cmRzLA0KQXJrYWR5IEdpbGluc2t5DQoNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQ0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXw0KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdA0KSW50ZWwtd2lyZWQtbGFuQG9zdW9z
-bC5vcmc8bWFpbHRvOkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnPg0KaHR0cHM6Ly9saXN0cy5v
-c3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuDQo=
+> +	/*
+> +	 * If we have isolated CPUs for use by real-time tasks, to keep the
+> +	 * latency overhead to a minimum, device-specific IRQ vectors are moved
+> +	 * to the housekeeping CPUs from the userspace by changing their
+> +	 * affinity mask. Limit the vector usage to keep housekeeping CPUs from
+> +	 * running out of IRQ vectors.
+> +	 */
+> +	if (hk_cpus < num_online_cpus()) {
+> +		if (hk_cpus < min_vecs)
+> +			max_vecs = min_vecs;
+> +		else if (hk_cpus < max_vecs)
+> +			max_vecs = hk_cpus;
+> +	}
 
---_000_a01df73ad3031dce66f44e520ebc11b9caf592ddcamelharmonicin_
-Content-Type: text/html; charset="utf-8"
-Content-ID: <9AA93016806D004399F668B122888454@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: base64
+It seems like you'd want to do this inside
+pci_alloc_irq_vectors_affinity() since that's an exported interface,
+and drivers that use it will bypass the limiting you're doing here.
 
-PGh0bWw+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0i
-dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdj5IaSw8L2Rp
-dj4NCjxkaXY+PGJyPg0KPC9kaXY+DQo8ZGl2PkknbSBzb3JyeSwgYnV0IEkgZG9uJ3QgdW5kZXJz
-dGFuZCBob3cgaXQncyByZWxhdGVkIHRvIE9TVidzOjwvZGl2Pg0KPHVsPg0KPGxpPlRoZSBsYXRl
-c3QgcmVsZWFzZWQgPGI+dXBzdHJlYW08L2I+IGtlcm5lbCBpcyZuYnNwOzUuOC4xMTwvbGk+PGxp
-PllvdSBjYW4gdmVyaWZ5IGl0IHN0aWxsIGNvbnRhaW4gaTQwZSB2ZXJzaW9uICZxdW90OzIuOC4y
-MC1rJnF1b3Q7IC0tIDxhIGhyZWY9Imh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51
-eC9rZXJuZWwvZ2l0L3N0YWJsZS9saW51eC5naXQvdHJlZS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9pNDBlL2k0MGVfbWFpbi5jP2g9djUuOC4xMSI+DQpsaW5rPC9hPjwvbGk+PC91bD4NCjx1
-bD4NCjxsaT5OYXR1cmFsbHksIHRoaXMgaXMgd2hhdCAmcXVvdDtibGVlZGluZy1lZGdlJnF1b3Q7
-IE9TVidzIHRha2U6PC9saT48dWw+DQo8bGk+RGViaWFuL3Rlc3RpbmcgKGJ1bGxzZXllKSB1c2Um
-bmJzcDs1LjguMCAtLSA8YSBocmVmPSJodHRwczovL3BhY2thZ2VzLmRlYmlhbi5vcmcvYnVsbHNl
-eWUvbGludXgtaW1hZ2UtNS44LjAtMi1hbWQ2NC11bnNpZ25lZCI+DQpsaW5rPC9hPjwvbGk+PC91
-bD4NCjwvdWw+DQo8dWw+DQo8dWw+DQo8bGk+VWJ1bnR1L2dyb292eSB1c2UmbmJzcDs1LjguMCAt
-LSA8YSBocmVmPSJodHRwczovL3BhY2thZ2VzLnVidW50dS5jb20vZ3Jvb3Z5L2xpbnV4LWltYWdl
-LWdlbmVyaWMiPg0KbGluazwvYT48L2xpPjwvdWw+DQo8L3VsPg0KPHVsPg0KPHVsPg0KPGxpPkZl
-ZG9yYSB1c2UmbmJzcDs1LjguMTEmbmJzcDsoZXZlbiBmb3IgdW5yZWxlYXNlZCB5ZXQgRmVkb3Jh
-LTMzKSAtLSZuYnNwOzxhIGhyZWY9Imh0dHBzOi8vc3JjLmZlZG9yYXByb2plY3Qub3JnL3JwbXMv
-a2VybmVsIj5saW5rPC9hPjwvbGk+PC91bD4NCjwvdWw+DQo8ZGl2Pjxicj4NCjwvZGl2Pg0KPGRp
-dj5BcyBBcmthZHkgY29tbWVudGVkIGJlbG93LCBJbnRlbCByZWNvbW1lbmRzIGEgbXVjaCBuZXdl
-ciBkcml2ZXI6IDxiPjIuMTIuNjwvYj48L2Rpdj4NCjxkaXY+QWxsIHdlIHdhbnRlZCB0byBrbm93
-IGlzIDxiPndoeTwvYj4gdGhlcmUncyBzdWNoIGEgZ2FwIHRvIHVwc3RyZWFtIGtlcm5lbCAobm90
-IHdoYXQgT1NWJ3MgdGFrZSBvciBub3QpPC9kaXY+DQo8ZGl2Pjxicj4NCjwvZGl2Pg0KPGRpdj5B
-bHNvLDwvZGl2Pg0KPHVsPg0KPGxpPkluIHRoZSB1cGNvbWluZyBrZXJuZWwgNS45IHRoZSB2ZXJz
-aW9uIHN0cmluZ3Mgd2VyZSByZW1vdmVkIGZyb20gdGhlIGRyaXZlcnMgLS0NCjxhIGhyZWY9Imh0
-dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L3RvcnZhbGRzL2xp
-bnV4LmdpdC9jb21taXQvP2g9MzRhMmEzYjgzZTJjIj4NCmxpbms8L2E+PC9saT48bGk+VGhpcyB3
-b3VsZCBub3QgYm90aGVyIHVzIHNvIG11Y2ggaWYgdGhlIGxhdGVzdCB1cHN0cmVhbSBrZXJuZWwg
-Y29udGFpbmVkIHRoZSBsYXRlc3QgSW50ZWwgZHJpdmVyLjwvbGk+PGxpPlJlZ3JldGZ1bGx5IHRo
-aXMgaXMgbm90IHRoZSBjYXNlLCBzbyBoaWRpbmcgdGhlIHZlcnNpb24gbnVtYmVyIGp1c3QgYWRk
-IHRvIHRoZSBleGlzdGluZyBjb25mdXNpb24uJm5ic3A7PC9saT48L3VsPg0KPGRpdj48YnI+DQo8
-L2Rpdj4NCjxkaXY+VGhhbmtzLDwvZGl2Pg0KPGRpdj48YnI+DQo8L2Rpdj4NCjxkaXY+LS08L2Rp
-dj4NCjxkaXY+T3JvbiBQZWxlZDwvZGl2Pg0KPGRpdj48YnI+DQo8L2Rpdj4NCjxkaXY+T24gVGh1
-LCAyMDIwLTA5LTI0IGF0IDE5OjU0ICswMDAwLCBGdWppbmFrYSwgVG9kZCB3cm90ZTo8L2Rpdj4N
-CjxibG9ja3F1b3RlIHR5cGU9ImNpdGUiIGRhdGEtdXNlci13cmFwcGVkPSIiIHN0eWxlPSJtYXJn
-aW46MCAwIDAgLjhleDsgYm9yZGVyLWxlZnQ6MnB4ICM3MjlmY2Ygc29saWQ7cGFkZGluZy1sZWZ0
-OjFleCI+DQo8ZGl2PlVuZm9ydHVuYXRlbHksIEkgdGhpbmsgdGhlIHF1ZXN0aW9uIGlzIHdoeSB0
-aGUgcGF0Y2hlcyBpbiB0aGUgdXBzdHJlYW0ga2VybmVsIGRvbid0IG1ha2UgaXQgaW50byB0aGUg
-T1NWIGtlcm5lbCBxdWlja2VyIGFuZCB0aGF0J3MgYSBxdWVzdGlvbiBmb3IgdGhlIE9TVi4gSW4g
-dGhpcyBjYXNlLCBDYW5vbmljYWwuPC9kaXY+DQo8ZGl2Pjxicj4NCjwvZGl2Pg0KPGRpdj5JIGtu
-b3cgd2UndmUgaGFkIHNvbWUgZGVsYXlzIGdldHRpbmcgcGF0Y2hlcyBpbnRvIHRoZSB1cHN0cmVh
-bSBrZXJuZWwgYnV0IHdlJ3JlIHdvcmtpbmcgb24gdGhhdC4gTW9zdCBvZiB0aGUgdGltaW5nIGlz
-c3VlcyBhcmUgZHVlIHRvIHJlbGVhc2Ugc2NoZWR1bGVzIGFuZCB2YWxpZGF0aW9uIGFzIGl0IHBy
-b2JhYmx5IGlzIGZvciB5b3VyIHByb2R1Y3RzIGFzIHdlbGwuPC9kaXY+DQo8ZGl2Pjxicj4NCjwv
-ZGl2Pg0KPGRpdj5Ub2RkIEZ1amluYWthPC9kaXY+DQo8ZGl2PlNvZnR3YXJlIEFwcGxpY2F0aW9u
-IEVuZ2luZWVyPC9kaXY+DQo8ZGl2PkRhdGEgQ2VudGVyIEdyb3VwPC9kaXY+DQo8ZGl2PkludGVs
-IENvcnBvcmF0aW9uPC9kaXY+DQo8ZGl2PjxhIGhyZWY9Im1haWx0bzp0b2RkLmZ1amluYWthQGlu
-dGVsLmNvbSI+dG9kZC5mdWppbmFrYUBpbnRlbC5jb208L2E+PC9kaXY+DQo8ZGl2Pjxicj4NCjwv
-ZGl2Pg0KPGRpdj4tLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLTwvZGl2Pg0KPGRpdj5Gcm9tOiBJ
-bnRlbC13aXJlZC1sYW4gJmx0OzxhIGhyZWY9Im1haWx0bzppbnRlbC13aXJlZC1sYW4tYm91bmNl
-c0Bvc3Vvc2wub3JnIj5pbnRlbC13aXJlZC1sYW4tYm91bmNlc0Bvc3Vvc2wub3JnPC9hPiZndDsg
-T24gQmVoYWxmIE9mIEFya2FkeSBHaWxpbnNreTwvZGl2Pg0KPGRpdj5TZW50OiBXZWRuZXNkYXks
-IFNlcHRlbWJlciAyMywgMjAyMCAxMTowNSBQTTwvZGl2Pg0KPGRpdj5UbzogPGEgaHJlZj0ibWFp
-bHRvOmludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnIj5pbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9y
-ZzwvYT48L2Rpdj4NCjxkaXY+Q2M6IE9yb24gUGVsZWQgJmx0OzxhIGhyZWY9Im1haWx0bzpPcm9u
-LlBlbGVkQGhhcm1vbmljaW5jLmNvbSI+T3Jvbi5QZWxlZEBoYXJtb25pY2luYy5jb208L2E+Jmd0
-OzwvZGl2Pg0KPGRpdj5TdWJqZWN0OiBbSW50ZWwtd2lyZWQtbGFuXSBHZW5lcmFsIHF1ZXN0aW9u
-IHJlZ2FyZGluZyBpNDBlIGRyaXZlciB2ZXJzaW9uIGluIHVwc3RyZWFtIGtlcm5lbDwvZGl2Pg0K
-PGRpdj48YnI+DQo8L2Rpdj4NCjxkaXY+SGkgQWxsLDwvZGl2Pg0KPGRpdj48YnI+DQo8L2Rpdj4N
-CjxkaXY+SSBoYXZlIGEgZ2VuZXJhbCBxdWVzdGlvbiByZWxhdGVkIHRvIGk0MGUgZHJpdmVyIGlu
-IExpbnV4IGtlcm5lbC48L2Rpdj4NCjxkaXY+SW4gbGF0ZXN0IFVidW50dS0yMC4wNCByZWxlYXNl
-IChGb2NhbCkgd2l0aCBrZXJuZWwgNS40LjAtNDItZ2VuZXJpYyB0aGUgc3RhbmRhcmQgaTQwZSBk
-cml2ZXIgaXMgcXVpdGUgb2xkICgyLjguMjAtayksIHdoaWxlIG9uIEludGVsIG9mZmljaWFsIHNp
-dGUgcmVjZW50bHkgd2FzIGFubm91bmNlZCBuZXdlciBpNDBlICgyLjEyLjYpLjwvZGl2Pg0KPGRp
-dj5BbHNvLCB0aGUgbGF0ZXN0IHVwc3RyZWFtIGtlcm5lbCBpcyA1LjguMyBoYXMgdGhlIHNhbWUg
-KDIuOC4yMC1rKSB2ZXJzaW9uIG9mIGk0MGUgZHJpdmVyLjwvZGl2Pg0KPGRpdj5TZWUgaGVyZTog
-PGEgaHJlZj0iaHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5jb20vbGludXgvbGF0ZXN0L3NvdXJjZS9k
-cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jI0wyOCI+DQpodHRwczov
-L2VsaXhpci5ib290bGluLmNvbS9saW51eC9sYXRlc3Qvc291cmNlL2RyaXZlcnMvbmV0L2V0aGVy
-bmV0L2ludGVsL2k0MGUvaTQwZV9tYWluLmMjTDI4PC9hPjwvZGl2Pg0KPGRpdj48YnI+DQo8L2Rp
-dj4NCjxkaXY+Q291bGQsIGFueWJvZHkgZnJvbSBkcml2ZXIgbWFpbnRhaW5lcnMsIGNsYXJpZnkg
-d2h5IHRoZXJlIGlzIHN1Y2ggYSBiaWcgZ2FwIGluIHZlcnNpb25zIG9mIGk0MGUgZHJpdmVyLjwv
-ZGl2Pg0KPGRpdj5EbyBhbGwgdGhlIGRyaXZlcnMsIGZyb20gMi44LjIwLWsgdmVyc2lvbiwgbm90
-IHN0YWJsZSBlbm91Z2gsIHNvIHRoZXkgd2VyZSBub3QgdGFrZW4gaW50byBrZXJuZWwgdXBzdHJl
-YW0/PC9kaXY+DQo8ZGl2Pjxicj4NCjwvZGl2Pg0KPGRpdj4tLTwvZGl2Pg0KPGRpdj5CZXN0IHJl
-Z2FyZHMsPC9kaXY+DQo8ZGl2PkFya2FkeSBHaWxpbnNreTwvZGl2Pg0KPGRpdj48YnI+DQo8L2Rp
-dj4NCjxkaXY+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tPC9kaXY+
-DQo8ZGl2Pjxicj4NCjwvZGl2Pg0KPGRpdj5fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXzwvZGl2Pg0KPGRpdj5JbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0
-PC9kaXY+DQo8ZGl2PjxhIGhyZWY9Im1haWx0bzpJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZyI+
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmc8L2E+PC9kaXY+DQo8ZGl2PjxhIGhyZWY9Imh0dHBz
-Oi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbiI+aHR0
-cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuPC9h
-PjwvZGl2Pg0KPC9ibG9ja3F1b3RlPg0KPC9ib2R5Pg0KPC9odG1sPg0K
-
---_000_a01df73ad3031dce66f44e520ebc11b9caf592ddcamelharmonicin_--
-
---===============0403018431573006247==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+>  	return pci_alloc_irq_vectors_affinity(dev, min_vecs, max_vecs, flags,
+>  					      NULL);
+>  }
+> -- 
+> 2.18.2
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0403018431573006247==--
