@@ -2,52 +2,58 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6916827898C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 15:29:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D730E2790C3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Sep 2020 20:35:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EE6A686BB3;
-	Fri, 25 Sep 2020 13:29:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 84EBE86C8C;
+	Fri, 25 Sep 2020 18:35:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ud5_EfaXyIyN; Fri, 25 Sep 2020 13:29:19 +0000 (UTC)
+	with ESMTP id E20K1CP9ACZX; Fri, 25 Sep 2020 18:35:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2154786BBC;
-	Fri, 25 Sep 2020 13:29:19 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C76B686D16;
+	Fri, 25 Sep 2020 18:35:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7D5531BF616
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 13:29:17 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 50E9E1BF330
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 18:35:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 72A87874F5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 13:29:17 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 44B5B2E152
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 18:35:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aK8WnqTWbzPf for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Sep 2020 13:29:16 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 98BB287475
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 13:29:16 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1kLnmZ-00G9vu-4n; Fri, 25 Sep 2020 15:29:03 +0200
-Date: Fri, 25 Sep 2020 15:29:03 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: David Laight <David.Laight@ACULAB.COM>
-Message-ID: <20200925132903.GB3850848@lunn.ch>
-References: <20200923074751.10527-1-kai.heng.feng@canonical.com>
- <20200924150958.18016-1-kai.heng.feng@canonical.com>
- <20200924155355.GC3821492@lunn.ch>
- <8A08B3A7-8368-48EC-A2DD-B5D5F3EA94C5@canonical.com>
- <2f48175dce974ea689bfd26b9fc2245a@AcuMS.aculab.com>
+ with ESMTP id SdexJwHKx9aS for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Sep 2020 18:35:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id D5D0020497
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Sep 2020 18:35:48 +0000 (UTC)
+IronPort-SDR: q4WEliT058LXVPu6ox2HWJ412ftxuukp9gDOdqjdF8tQiJZale8i6FpMbf+JSUWCoWcCOrhCYK
+ mG3Fz9WuideQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9755"; a="223200533"
+X-IronPort-AV: E=Sophos;i="5.77,302,1596524400"; d="scan'208";a="223200533"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Sep 2020 11:35:47 -0700
+IronPort-SDR: 9bPVzhBfdBQzMwIlK9gNDUPnT41fE0kd7vAWdAx0Jn40IVrqPTABBqOFQIL6jTotAu9Dc/z4aI
+ q0oHL+Tc3Ubw==
+X-IronPort-AV: E=Sophos;i="5.77,302,1596524400"; d="scan'208";a="343705109"
+Received: from msbergin-mobl.amr.corp.intel.com (HELO localhost.localdomain)
+ ([10.212.110.90])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Sep 2020 11:35:47 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 25 Sep 2020 11:35:37 -0700
+Message-Id: <20200925183537.2635645-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2f48175dce974ea689bfd26b9fc2245a@AcuMS.aculab.com>
-Subject: Re: [Intel-wired-lan] [PATCH v2] e1000e: Increase iteration on
- polling MDIC ready bit
+Subject: [Intel-wired-lan] [PATCH net v1] igc: Fix returning wrong statistics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,61 +66,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- 'Kai-Heng Feng' <kai.heng.feng@canonical.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: andre.guedes@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Sep 25, 2020 at 08:50:30AM +0000, David Laight wrote:
-> From: Kai-Heng Feng
-> > Sent: 24 September 2020 17:04
-> ...
-> > > I also don't fully understand the fix. You are now looping up to 6400
-> > > times, each with a delay of 50uS. So that is around 12800 times more
-> > > than it actually needs to transfer the 64 bits! I've no idea how this
-> > > hardware works, but my guess would be, something is wrong with the
-> > > clock setup?
-> > 
-> > It's probably caused by Intel ME. This is not something new, you can find many polling codes in e1000e
-> > driver are for ME, especially after S3 resume.
-> > 
-> > Unless Intel is willing to open up ME, being patient and wait for a longer while is the best approach
-> > we got.
-> 
-> There is some really broken code in the e1000e driver that affect my
-> Ivy bridge platform were it is trying to avoid hardware bugs in
-> the ME interface.
-> 
-> It seems that before EVERY write to a MAC register it must check
-> that the ME isn't using the interface - and spin until it isn't.
-> This causes massive delays in the TX path because it includes
-> the write that tells the MAC engine about a new packet.
+'igc_update_stats()' was not updating 'netdev->stats', so the returned
+statistics, for example, requested by:
 
-Hi David
+$ ip -s link show dev enp3s0
 
-Thanks for the information. This however does not really explain the
-issue.
+were not being updated and were always zero.
 
-The code busy loops waiting for the MDIO transaction to complete. If
-read/writes to the MAC are getting blocked, that just means less
-iterations of the loop are needed, not more, since the time to
-complete the transaction should be fixed.
+Fix by returning a set of statistics that are actually being
+updated (adapter->stats64).
 
-If ME really is to blame, it means ME is completely hijacking the
-hardware? Stopping the clocks? Maybe doing its own MDIO transactions?
-How can you write a PHY driver if something else is also programming
-the PHY.
+Fixes: c9a11c23ceb6 ("igc: Add netdev")
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-We don't understand what is going on here. We are just papering over
-the cracks. The commit message should say this, that the change fixes
-the symptoms but probably not the cause.
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 9593aa4eea36..1358a39c34ad 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3890,21 +3890,23 @@ static int igc_change_mtu(struct net_device *netdev, int new_mtu)
+ }
+ 
+ /**
+- * igc_get_stats - Get System Network Statistics
++ * igc_get_stats64 - Get System Network Statistics
+  * @netdev: network interface device structure
++ * @stats: rtnl_link_stats64 pointer
+  *
+  * Returns the address of the device statistics structure.
+  * The statistics are updated here and also from the timer callback.
+  */
+-static struct net_device_stats *igc_get_stats(struct net_device *netdev)
++static void igc_get_stats64(struct net_device *netdev,
++			    struct rtnl_link_stats64 *stats)
+ {
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 
++	spin_lock(&adapter->stats64_lock);
+ 	if (!test_bit(__IGC_RESETTING, &adapter->state))
+ 		igc_update_stats(adapter);
+-
+-	/* only return the current stats */
+-	return &netdev->stats;
++	memcpy(stats, &adapter->stats64, sizeof(*stats));
++	spin_unlock(&adapter->stats64_lock);
+ }
+ 
+ static netdev_features_t igc_fix_features(struct net_device *netdev,
+@@ -4833,7 +4835,7 @@ static const struct net_device_ops igc_netdev_ops = {
+ 	.ndo_set_rx_mode	= igc_set_rx_mode,
+ 	.ndo_set_mac_address	= igc_set_mac,
+ 	.ndo_change_mtu		= igc_change_mtu,
+-	.ndo_get_stats		= igc_get_stats,
++	.ndo_get_stats64	= igc_get_stats64,
+ 	.ndo_fix_features	= igc_fix_features,
+ 	.ndo_set_features	= igc_set_features,
+ 	.ndo_features_check	= igc_features_check,
+-- 
+2.28.0
 
-    Andrew
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
