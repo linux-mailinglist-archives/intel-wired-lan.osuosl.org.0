@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1CDB27A5E5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:53 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AA9B27A5F2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:43:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 7DA14861A0;
-	Mon, 28 Sep 2020 03:42:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id C6E0A20427;
+	Mon, 28 Sep 2020 03:43:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GDxsa1quYlGU; Mon, 28 Sep 2020 03:42:52 +0000 (UTC)
+	with ESMTP id aP0Pqvt6ecvn; Mon, 28 Sep 2020 03:43:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 19C6686256;
+	by silver.osuosl.org (Postfix) with ESMTP id B89B820496;
 	Mon, 28 Sep 2020 03:42:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D7DF41BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BE3B31BF95E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id D42918513B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A9EC1203FB
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1nRc5U6bKPuY for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 19:57:30 +0000 (UTC)
+ with ESMTP id 4+5H0fQdy9e7 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 19:57:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 168ED85624
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:30 +0000 (UTC)
-Message-Id: <20200927194921.639274921@linutronix.de>
+ by silver.osuosl.org (Postfix) with ESMTPS id 26B60203FA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:31 +0000 (UTC)
+Message-Id: <20200927194921.746408581@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601236648;
+ s=2020; t=1601236649;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=ZLebWG85y+lfZEscB172xr+yUv6gjKFl/pP0A1z7yUY=;
- b=nhYIaX41QlWLTB0HhbCQbyoLlS7e6/PqbqIyu4P0N9B01PYahN3AMWkhj7/VDx9v60EJ7Z
- zM81SWL3RHJvyUznq5uVoiQnbu9Vv3arPTvOD5+q44KBrkngR2+su/eE7Ji9FGsD+P/aNn
- ugnJqfuVcKFk2rv2IEshDade5mSMsk3kKvWUT4Mc8pIvT/8XNfBJPvhpzmEcemwOUMZQgw
- 6mM5mrfI6CeLeftmKmhBSMg5hgJQJKuO4boQ0Fp2/xX3XRw9y3K/qCMOxhzsxIOafbx/Wc
- ec/XJFqccCGTtEXNCEOYlQups2n2IStZuOLfmfRNJBYodsj8+VbX8yCwYq0q2w==
+ bh=zmPopyS6CXMMDwaGP3m4hwd4gLG9jhR6sVM2g3xlddU=;
+ b=XTJskUJmRKV81fGPC40eYW25HtP10YSEqIh7BdkU3p6rASbqFmFBs3o6tLYpK8PIwciw2L
+ rGTgrzg1YC3UTjV3aofvi7QzmEUFvhOk4QcAJ3ouaoudqz1BiAbnCOQUY41sdKfmzwHcir
+ uquyAVj3ouMapLsuUeDXC+Hc5Sa8gmXzMWAp94KkcxVhN7bM96FSExXhSRVAwwQyz5P15N
+ Rl/2xZA34G4QfuDYTQtBqcs1M9EYiqVFfxpP20H/jDekVH04rJG0Q0uUBwS8/umOLgW06F
+ 6zZB0afQsxN2XkCZa1RyM+rl7RpOYsgYYrvUE6hkpT/cOmlN8ctBg3Cp2wjgBg==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601236648;
+ s=2020e; t=1601236649;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=ZLebWG85y+lfZEscB172xr+yUv6gjKFl/pP0A1z7yUY=;
- b=7fGheggQN+nN+jjiLG1/4PqQ5OiaQeTM6pt16LT5wSQq+5BKZ5hf08HjCYMDWAN7+LRg3K
- 3SxbEKtPPc1yuyBg==
-Date: Sun, 27 Sep 2020 21:49:04 +0200
+ bh=zmPopyS6CXMMDwaGP3m4hwd4gLG9jhR6sVM2g3xlddU=;
+ b=NjRg9v14IvY/TnpQv3H0FbtqUGHV1yBeMufj1xl5cAKmkVeDgETr51HIDD/3MGK89vNB6w
+ opgsFzlZimgwQoCQ==
+Date: Sun, 27 Sep 2020 21:49:05 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200927194846.045411263@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:39 +0000
-Subject: [Intel-wired-lan] [patch 18/35] net: vxge: Remove in_interrupt()
- conditionals
+Subject: [Intel-wired-lan] [patch 19/35] net: zd1211rw: Remove
+ ZD_ASSERT(in_interrupt())
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,13 +87,14 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
  Heiner Kallweit <hkallweit1@gmail.com>, intel-wired-lan@lists.osuosl.org,
  Jakub Kicinski <kuba@kernel.org>, Martin Habets <mhabets@solarflare.com>,
- Ulrich Kunitz <kune@deine-taler.de>, Jay Cliburn <jcliburn@gmail.com>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jay Cliburn <jcliburn@gmail.com>,
  Paul McKenney <paulmck@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>,
- Jouni Malinen <j@w1.fi>, Hante Meuleman <hante.meuleman@broadcom.com>,
+ Jouni Malinen <j@w1.fi>, Daniel Drake <dsd@gentoo.org>,
  Pascal Terjan <pterjan@google.com>,
+ Hante Meuleman <hante.meuleman@broadcom.com>,
  Linus Torvalds <torvalds@linuxfoundation.org>,
  Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
- Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
+ Ulrich Kunitz <kune@deine-taler.de>, Pensando Drivers <drivers@pensando.io>,
  Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
  Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
@@ -101,8 +102,7 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  netdev@vger.kernel.org, linux-usb@vger.kernel.org,
  linux-wireless@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ganapathi Bhat <ganapathi.bhat@nxp.com>,
- Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
+ Ganapathi Bhat <ganapathi.bhat@nxp.com>, Jon Mason <jdmason@kudzu.us>,
  Shannon Nelson <snelson@pensando.io>, Dave Miller <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Christian Benvenuti <benve@cisco.com>
@@ -113,82 +113,40 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-vxge_os_dma_malloc() and vxge_os_dma_malloc_async() are both called from
-callchains which use GFP_KERNEL allocations unconditionally or have other
-requirements to be called from fully preemptible task context..
+in_interrupt() is ill defined and does not provide what the name
+suggests. The usage especially in driver code is deprecated and
+a tree wide effort to clean up and consolidate the (ab)usage of
+in_interrupt() and related checks is happening.
 
-vxge_os_dma_malloc():
-  1)  __vxge_hw_blockpool_create() <- GFP_KERNEL
-	
-  2)  __vxge_hw_mempool_grow() <- vzalloc()
-        __vxge_hw_blockpool_malloc()
+handle_regs_int() is always invoked as part of URB callback which is either
+invoked from hard or soft interrupt context.
 
-vxge_os_dma_malloc_async():
-  1  __vxge_hw_mempool_grow() <- vzalloc()
-      __vxge_hw_blockpool_malloc()
-	__vxge_hw_blockpool_blocks_add()
-
-  2)  vxge_hw_vpath_open()	<- vzalloc()
-	__vxge_hw_blockpool_block_allocate()
-
-That means neither of these functions needs a conditional allocation mode.
-
-Remove the in_interrupt() conditional and use GFP_KERNEL.
+Remove the magic assertion.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Cc: Jon Mason <jdmason@kudzu.us>
+Cc: Daniel Drake <dsd@gentoo.org>
+Cc: Ulrich Kunitz <kune@deine-taler.de>
+Cc: Kalle Valo <kvalo@codeaurora.org>
 Cc: "David S. Miller" <davem@davemloft.net>
 Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: linux-wireless@vger.kernel.org
 Cc: netdev@vger.kernel.org
 
 ---
- drivers/net/ethernet/neterion/vxge/vxge-config.c |    9 +--------
- drivers/net/ethernet/neterion/vxge/vxge-config.h |    7 +------
- 2 files changed, 2 insertions(+), 14 deletions(-)
+ drivers/net/wireless/zydas/zd1211rw/zd_usb.c |    1 -
+ 1 file changed, 1 deletion(-)
 
---- a/drivers/net/ethernet/neterion/vxge/vxge-config.c
-+++ b/drivers/net/ethernet/neterion/vxge/vxge-config.c
-@@ -2303,16 +2303,9 @@ static void vxge_hw_blockpool_block_add(
- static inline void
- vxge_os_dma_malloc_async(struct pci_dev *pdev, void *devh, unsigned long size)
- {
--	gfp_t flags;
- 	void *vaddr;
+--- a/drivers/net/wireless/zydas/zd1211rw/zd_usb.c
++++ b/drivers/net/wireless/zydas/zd1211rw/zd_usb.c
+@@ -378,7 +378,6 @@ static inline void handle_regs_int(struc
+ 	int len;
+ 	u16 int_num;
  
--	if (in_interrupt())
--		flags = GFP_ATOMIC | GFP_DMA;
--	else
--		flags = GFP_KERNEL | GFP_DMA;
--
--	vaddr = kmalloc((size), flags);
--
-+	vaddr = kmalloc(size, GFP_KERNEL | GFP_DMA);
- 	vxge_hw_blockpool_block_add(devh, vaddr, size, pdev, pdev);
- }
+-	ZD_ASSERT(in_interrupt());
+ 	spin_lock_irqsave(&intr->lock, flags);
  
---- a/drivers/net/ethernet/neterion/vxge/vxge-config.h
-+++ b/drivers/net/ethernet/neterion/vxge/vxge-config.h
-@@ -1899,18 +1899,13 @@ static inline void *vxge_os_dma_malloc(s
- 			struct pci_dev **p_dmah,
- 			struct pci_dev **p_dma_acch)
- {
--	gfp_t flags;
- 	void *vaddr;
- 	unsigned long misaligned = 0;
- 	int realloc_flag = 0;
- 	*p_dma_acch = *p_dmah = NULL;
- 
--	if (in_interrupt())
--		flags = GFP_ATOMIC | GFP_DMA;
--	else
--		flags = GFP_KERNEL | GFP_DMA;
- realloc:
--	vaddr = kmalloc((size), flags);
-+	vaddr = kmalloc(size, GFP_KERNEL | GFP_DMA);
- 	if (vaddr == NULL)
- 		return vaddr;
- 	misaligned = (unsigned long)VXGE_ALIGN((unsigned long)vaddr,
+ 	int_num = le16_to_cpu(*(__le16 *)(urb->transfer_buffer+2));
 
 _______________________________________________
 Intel-wired-lan mailing list
