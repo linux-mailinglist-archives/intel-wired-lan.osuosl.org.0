@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A2D427A5F0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:43:15 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E72A27A5DD
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id D1A24203FC;
-	Mon, 28 Sep 2020 03:43:13 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id D27B18704F;
+	Mon, 28 Sep 2020 03:42:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8GLVdtGv2fMf; Mon, 28 Sep 2020 03:43:07 +0000 (UTC)
+	with ESMTP id fk1CWHqsc16t; Mon, 28 Sep 2020 03:42:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 33A8D2045A;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9D0B587027;
 	Mon, 28 Sep 2020 03:42:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E87FA1BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 696231BF4E3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id E401E85BD3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:22 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 650D085BD3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jYx-j5j3qDpB for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 19:57:22 +0000 (UTC)
+ with ESMTP id qbhqPC3mIRz7 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 19:57:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 324D085BCE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:22 +0000 (UTC)
-Message-Id: <20200927194921.026798214@linutronix.de>
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 67DCC85BCE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:24 +0000 (UTC)
+Message-Id: <20200927194921.137019811@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601236640;
+ s=2020; t=1601236641;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=WBk7ImKZQAt0d2wxHkRuKN0hWwG1NSVpPJF8H/yNsK4=;
- b=CcZFp0N7vlQVa6ac97Y3qUNt6v0qDmhHGAiWm+DVU26D8YTbAEQ/PkC0QC11zzMJT2P9o5
- TNnDh1BmSK0ZRYS0lSzYoN/KOgFhNKSsdWBqm3yiNse+1okDgZPIN2NXGQ9QhZ6eUqFhVm
- CSOBgqXdigZffn32Pb5n7qcEyOsJogcY3VZwiQFQbkmSNdLcTVB9k7e3PryRCOdw+h+uGT
- R76KdDe9u8HP73I4StgurzMnoiJ64RCkT/TPW9s7JKijfPp3VfsqFjJCza38Ioizb0NrB2
- r1uwtapjJCnmt0pUt8Y8PYpYUdxWnkmFR2OIxrin3wIk+KnJipjMDxPeu0UbFA==
+ bh=8s7EX2UsQWBhynqUTDd/u8Iv0n6j36sPbMtmCyDJsXY=;
+ b=lzOEqmioF//DgrijcaJYSRsf+YV01CsScdcw9tX79nttFriGA1I6hu2IkEtbuhvmNFVtEm
+ C83RACdG8DHmRN6Otr4E0ijc94wqzv5/KkGesIsSnKU9m9raro0j7Rx4W4yzzr7s9nUUxL
+ s8DcnuH9LuUX0ZQyqOrU5YY807/jTAloRukEG7CL+w/8udtzFa0IPSA0vdsFE4pDs2F1Lh
+ FnBI7fewv/INchgNbCQ/5kWUZZBBUFiTVmtyduitqW2P96GVxQAvbmQCBPBeIsgGqDstEe
+ +A/mlgwlVnexXesZzRSa5TVlhQG6vtEFGHYhUXfpbzGqC9YtNUJ2Z9WnFIk/aw==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601236640;
+ s=2020e; t=1601236641;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=WBk7ImKZQAt0d2wxHkRuKN0hWwG1NSVpPJF8H/yNsK4=;
- b=/M51OKepEW4g1TnEWDY31pJNtQW3vc0R6kqk1LfTBUqRqWuI1unbYC4XqOEuE3chioiAU/
- smitcvDvaLkIBJAA==
-Date: Sun, 27 Sep 2020 21:48:58 +0200
+ bh=8s7EX2UsQWBhynqUTDd/u8Iv0n6j36sPbMtmCyDJsXY=;
+ b=wUWF39OM0ztNTR2+gM6mKrXzVKN6S4B2BfM4TaXs0ECeVzREBTC4rxvaUxiISx1zOW+6zr
+ 65wFpaA5Hiqb5GBQ==
+Date: Sun, 27 Sep 2020 21:48:59 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200927194846.045411263@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:39 +0000
-Subject: [Intel-wired-lan] [patch 12/35] net: ionic: Remove
- WARN_ON(in_interrupt()).
+Subject: [Intel-wired-lan] [patch 13/35] net: mdiobus: Remove
+ WARN_ON_ONCE(in_interrupt())
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,25 +85,26 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Intel Linux Wireless <linuxwifi@intel.com>,
  Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
- Heiner Kallweit <hkallweit1@gmail.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Martin Habets <mhabets@solarflare.com>,
- Ulrich Kunitz <kune@deine-taler.de>, Jay Cliburn <jcliburn@gmail.com>,
- Paul McKenney <paulmck@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>,
- Jouni Malinen <j@w1.fi>, Hante Meuleman <hante.meuleman@broadcom.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Martin Habets <mhabets@solarflare.com>, Ulrich Kunitz <kune@deine-taler.de>,
+ Jay Cliburn <jcliburn@gmail.com>, Paul McKenney <paulmck@kernel.org>,
+ Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen <j@w1.fi>,
+ Hante Meuleman <hante.meuleman@broadcom.com>,
  Pascal Terjan <pterjan@google.com>,
  Linus Torvalds <torvalds@linuxfoundation.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
  Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
  Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
  Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Shannon Nelson <snelson@pensando.io>,
  Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
  netdev@vger.kernel.org, linux-usb@vger.kernel.org,
  linux-wireless@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Ganapathi Bhat <ganapathi.bhat@nxp.com>,
  Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
- Shannon Nelson <snelson@pensando.io>, Dave Miller <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Dave Miller <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Christian Benvenuti <benve@cisco.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -122,45 +123,79 @@ In this case the check covers only parts of the contexts in which these
 functions cannot be called. It fails to detect preemption or interrupt
 disabled invocations.
 
-As the functions which are invoked from ionic_adminq_post() and
-ionic_dev_cmd_wait() contain a broad variety of checks (always enabled or
-debug option dependent) which cover all invalid conditions already, there
-is no point in having inconsistent warnings in those drivers.
+As the functions which contain these warnings invoke mutex_lock() which
+contains a broad variety of checks (always enabled or debug option
+dependent) and therefore covers all invalid conditions already, there is no
+point in having inconsistent warnings in those drivers. The conditional
+return is not really valuable in practice either.
 
 Just remove them.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Cc: Shannon Nelson <snelson@pensando.io>
-Cc: Pensando Drivers <drivers@pensando.io>
+Cc: Andrew Lunn <andrew@lunn.ch>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Russell King <linux@armlinux.org.uk>
 Cc: "David S. Miller" <davem@davemloft.net>
 Cc: Jakub Kicinski <kuba@kernel.org>
 Cc: netdev@vger.kernel.org
 
 ---
- drivers/net/ethernet/pensando/ionic/ionic_main.c |    4 ----
- 1 file changed, 4 deletions(-)
+ drivers/net/phy/mdio_bus.c |   15 ---------------
+ 1 file changed, 15 deletions(-)
 
---- a/drivers/net/ethernet/pensando/ionic/ionic_main.c
-+++ b/drivers/net/ethernet/pensando/ionic/ionic_main.c
-@@ -248,8 +248,6 @@ static int ionic_adminq_post(struct ioni
- 	struct ionic_queue *adminq;
- 	int err = 0;
+--- a/drivers/net/phy/mdio_bus.c
++++ b/drivers/net/phy/mdio_bus.c
+@@ -825,9 +825,6 @@ int mdiobus_read_nested(struct mii_bus *
+ {
+ 	int retval;
  
--	WARN_ON(in_interrupt());
+-	if (WARN_ON_ONCE(in_interrupt()))
+-		return -EINVAL;
 -
- 	if (!lif->adminqcq)
- 		return -EIO;
+ 	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
+ 	retval = __mdiobus_read(bus, addr, regnum);
+ 	mutex_unlock(&bus->mdio_lock);
+@@ -850,9 +847,6 @@ int mdiobus_read(struct mii_bus *bus, in
+ {
+ 	int retval;
  
-@@ -346,8 +344,6 @@ int ionic_dev_cmd_wait(struct ionic *ion
- 	int done;
+-	if (WARN_ON_ONCE(in_interrupt()))
+-		return -EINVAL;
+-
+ 	mutex_lock(&bus->mdio_lock);
+ 	retval = __mdiobus_read(bus, addr, regnum);
+ 	mutex_unlock(&bus->mdio_lock);
+@@ -879,9 +873,6 @@ int mdiobus_write_nested(struct mii_bus
+ {
  	int err;
  
--	WARN_ON(in_interrupt());
+-	if (WARN_ON_ONCE(in_interrupt()))
+-		return -EINVAL;
 -
- 	/* Wait for dev cmd to complete, retrying if we get EAGAIN,
- 	 * but don't wait any longer than max_seconds.
- 	 */
+ 	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
+ 	err = __mdiobus_write(bus, addr, regnum, val);
+ 	mutex_unlock(&bus->mdio_lock);
+@@ -905,9 +896,6 @@ int mdiobus_write(struct mii_bus *bus, i
+ {
+ 	int err;
+ 
+-	if (WARN_ON_ONCE(in_interrupt()))
+-		return -EINVAL;
+-
+ 	mutex_lock(&bus->mdio_lock);
+ 	err = __mdiobus_write(bus, addr, regnum, val);
+ 	mutex_unlock(&bus->mdio_lock);
+@@ -929,9 +917,6 @@ int mdiobus_modify(struct mii_bus *bus,
+ {
+ 	int err;
+ 
+-	if (WARN_ON_ONCE(in_interrupt()))
+-		return -EINVAL;
+-
+ 	mutex_lock(&bus->mdio_lock);
+ 	err = __mdiobus_modify_changed(bus, addr, regnum, mask, set);
+ 	mutex_unlock(&bus->mdio_lock);
 
 _______________________________________________
 Intel-wired-lan mailing list
