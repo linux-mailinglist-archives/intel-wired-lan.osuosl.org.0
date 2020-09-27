@@ -2,63 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E72A27A5DD
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 054CB27A5DF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D27B18704F;
-	Mon, 28 Sep 2020 03:42:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 986B287047;
+	Mon, 28 Sep 2020 03:42:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fk1CWHqsc16t; Mon, 28 Sep 2020 03:42:45 +0000 (UTC)
+	with ESMTP id 1MIEFcflvJ-D; Mon, 28 Sep 2020 03:42:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9D0B587027;
-	Mon, 28 Sep 2020 03:42:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 71ADC87029;
+	Mon, 28 Sep 2020 03:42:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 696231BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B4FE1BF4E3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 650D085BD3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1D1DB203FA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qbhqPC3mIRz7 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 19:57:24 +0000 (UTC)
+ with ESMTP id Z6g0Ix6GxRip for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 19:57:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 67DCC85BCE
+ by silver.osuosl.org (Postfix) with ESMTPS id DC11120130
  for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:24 +0000 (UTC)
-Message-Id: <20200927194921.137019811@linutronix.de>
+Message-Id: <20200927194921.248795602@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601236641;
+ s=2020; t=1601236643;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=8s7EX2UsQWBhynqUTDd/u8Iv0n6j36sPbMtmCyDJsXY=;
- b=lzOEqmioF//DgrijcaJYSRsf+YV01CsScdcw9tX79nttFriGA1I6hu2IkEtbuhvmNFVtEm
- C83RACdG8DHmRN6Otr4E0ijc94wqzv5/KkGesIsSnKU9m9raro0j7Rx4W4yzzr7s9nUUxL
- s8DcnuH9LuUX0ZQyqOrU5YY807/jTAloRukEG7CL+w/8udtzFa0IPSA0vdsFE4pDs2F1Lh
- FnBI7fewv/INchgNbCQ/5kWUZZBBUFiTVmtyduitqW2P96GVxQAvbmQCBPBeIsgGqDstEe
- +A/mlgwlVnexXesZzRSa5TVlhQG6vtEFGHYhUXfpbzGqC9YtNUJ2Z9WnFIk/aw==
+ bh=Sj3WauQU8mi402/vRACel76kLJxRIV6EoAhfHNnxpZY=;
+ b=n0fgVb3Ug96wov56+pRrgznJLENd83NZztxL5cyqW/rVs62U4xh9ED8AyXKo/EjqPo+xBF
+ peEpgiPXH9pqfPTHuc8ujx6mE3CqTAmG67DnVLbNpu8RBpazQS1wh901eYwfW/W5rp9T6+
+ mQTOLfBSNd9kRiHuwpgIPESkTjF4A0NRGBVdql3pJmsnTAOFj5m6KfoyQOWe6ssNzkS7iT
+ eBAMx2FpFw/opevgcSiqx8diP/c/uxdfw1c8BkohEzqYYLzW4BgmEd0QGstEPUth1aG0Q7
+ 6fZI2on8pqr2ghE5M7Tv3ZHOD6xf+1FjO7XiKcla80cDj1W5WEtQihQWFA0ycA==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601236641;
+ s=2020e; t=1601236643;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=8s7EX2UsQWBhynqUTDd/u8Iv0n6j36sPbMtmCyDJsXY=;
- b=wUWF39OM0ztNTR2+gM6mKrXzVKN6S4B2BfM4TaXs0ECeVzREBTC4rxvaUxiISx1zOW+6zr
- 65wFpaA5Hiqb5GBQ==
-Date: Sun, 27 Sep 2020 21:48:59 +0200
+ bh=Sj3WauQU8mi402/vRACel76kLJxRIV6EoAhfHNnxpZY=;
+ b=MxuTsE5o1wR/CArNtxLqX7nQvCbFh3lkQwB/tLVdXvBcDOcBMzl1i35xwzuVQpDS6q9W1t
+ OM74ajQF8JW2zFDw==
+Date: Sun, 27 Sep 2020 21:49:00 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200927194846.045411263@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:39 +0000
-Subject: [Intel-wired-lan] [patch 13/35] net: mdiobus: Remove
- WARN_ON_ONCE(in_interrupt())
+Subject: [Intel-wired-lan] [patch 14/35] net: natsemi: Replace
+ in_interrupt() usage.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,26 +85,25 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Intel Linux Wireless <linuxwifi@intel.com>,
  Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Martin Habets <mhabets@solarflare.com>, Ulrich Kunitz <kune@deine-taler.de>,
- Jay Cliburn <jcliburn@gmail.com>, Paul McKenney <paulmck@kernel.org>,
- Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen <j@w1.fi>,
- Hante Meuleman <hante.meuleman@broadcom.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Martin Habets <mhabets@solarflare.com>,
+ Ulrich Kunitz <kune@deine-taler.de>, Jay Cliburn <jcliburn@gmail.com>,
+ Paul McKenney <paulmck@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>,
+ Jouni Malinen <j@w1.fi>, Hante Meuleman <hante.meuleman@broadcom.com>,
  Pascal Terjan <pterjan@google.com>,
  Linus Torvalds <torvalds@linuxfoundation.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
  Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
  Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
  Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
- Shannon Nelson <snelson@pensando.io>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
  netdev@vger.kernel.org, linux-usb@vger.kernel.org,
  linux-wireless@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Ganapathi Bhat <ganapathi.bhat@nxp.com>,
  Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
- Heiner Kallweit <hkallweit1@gmail.com>, Dave Miller <davem@davemloft.net>,
+ Shannon Nelson <snelson@pensando.io>, Dave Miller <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Christian Benvenuti <benve@cisco.com>
 Content-Type: text/plain; charset="us-ascii"
@@ -112,90 +111,146 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+The usage of in_interrupt() in drivers is phased out and Linus clearly
+requested that code which changes behaviour depending on context should
+either be seperated or the context be conveyed in an argument passed by the
+caller, which usually knows the context.
 
-in_interrupt() is ill defined and does not provide what the name
-suggests. The usage especially in driver code is deprecated and a tree wide
-effort to clean up and consolidate the (ab)usage of in_interrupt() and
-related checks is happening.
+sonic_quiesce() uses 'in_interrupt() || irqs_disabled()' to chose either
+udelay() or usleep_range() in the wait loop.
 
-In this case the check covers only parts of the contexts in which these
-functions cannot be called. It fails to detect preemption or interrupt
-disabled invocations.
+In all callchains leading to it the context is well defined and known.
 
-As the functions which contain these warnings invoke mutex_lock() which
-contains a broad variety of checks (always enabled or debug option
-dependent) and therefore covers all invalid conditions already, there is no
-point in having inconsistent warnings in those drivers. The conditional
-return is not really valuable in practice either.
-
-Just remove them.
+Add a 'may_sleep' argument and pass it through the various callchains
+leading to this function.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Cc: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Russell King <linux@armlinux.org.uk>
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
 Cc: "David S. Miller" <davem@davemloft.net>
 Cc: Jakub Kicinski <kuba@kernel.org>
 Cc: netdev@vger.kernel.org
 
 ---
- drivers/net/phy/mdio_bus.c |   15 ---------------
- 1 file changed, 15 deletions(-)
+ drivers/net/ethernet/natsemi/sonic.c |   24 ++++++++++++------------
+ drivers/net/ethernet/natsemi/sonic.h |    2 +-
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
---- a/drivers/net/phy/mdio_bus.c
-+++ b/drivers/net/phy/mdio_bus.c
-@@ -825,9 +825,6 @@ int mdiobus_read_nested(struct mii_bus *
- {
- 	int retval;
+--- a/drivers/net/ethernet/natsemi/sonic.c
++++ b/drivers/net/ethernet/natsemi/sonic.c
+@@ -143,7 +143,7 @@ static int sonic_open(struct net_device
+ 	/*
+ 	 * Initialize the SONIC
+ 	 */
+-	sonic_init(dev);
++	sonic_init(dev, true);
  
--	if (WARN_ON_ONCE(in_interrupt()))
--		return -EINVAL;
--
- 	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
- 	retval = __mdiobus_read(bus, addr, regnum);
- 	mutex_unlock(&bus->mdio_lock);
-@@ -850,9 +847,6 @@ int mdiobus_read(struct mii_bus *bus, in
- {
- 	int retval;
+ 	netif_start_queue(dev);
  
--	if (WARN_ON_ONCE(in_interrupt()))
--		return -EINVAL;
--
- 	mutex_lock(&bus->mdio_lock);
- 	retval = __mdiobus_read(bus, addr, regnum);
- 	mutex_unlock(&bus->mdio_lock);
-@@ -879,9 +873,6 @@ int mdiobus_write_nested(struct mii_bus
- {
- 	int err;
+@@ -153,7 +153,7 @@ static int sonic_open(struct net_device
+ }
  
--	if (WARN_ON_ONCE(in_interrupt()))
--		return -EINVAL;
--
- 	mutex_lock_nested(&bus->mdio_lock, MDIO_MUTEX_NESTED);
- 	err = __mdiobus_write(bus, addr, regnum, val);
- 	mutex_unlock(&bus->mdio_lock);
-@@ -905,9 +896,6 @@ int mdiobus_write(struct mii_bus *bus, i
+ /* Wait for the SONIC to become idle. */
+-static void sonic_quiesce(struct net_device *dev, u16 mask)
++static void sonic_quiesce(struct net_device *dev, u16 mask, bool may_sleep)
  {
- 	int err;
+ 	struct sonic_local * __maybe_unused lp = netdev_priv(dev);
+ 	int i;
+@@ -163,7 +163,7 @@ static void sonic_quiesce(struct net_dev
+ 		bits = SONIC_READ(SONIC_CMD) & mask;
+ 		if (!bits)
+ 			return;
+-		if (irqs_disabled() || in_interrupt())
++		if (!may_sleep)
+ 			udelay(20);
+ 		else
+ 			usleep_range(100, 200);
+@@ -187,7 +187,7 @@ static int sonic_close(struct net_device
+ 	 * stop the SONIC, disable interrupts
+ 	 */
+ 	SONIC_WRITE(SONIC_CMD, SONIC_CR_RXDIS);
+-	sonic_quiesce(dev, SONIC_CR_ALL);
++	sonic_quiesce(dev, SONIC_CR_ALL, true);
  
--	if (WARN_ON_ONCE(in_interrupt()))
--		return -EINVAL;
--
- 	mutex_lock(&bus->mdio_lock);
- 	err = __mdiobus_write(bus, addr, regnum, val);
- 	mutex_unlock(&bus->mdio_lock);
-@@ -929,9 +917,6 @@ int mdiobus_modify(struct mii_bus *bus,
+ 	SONIC_WRITE(SONIC_IMR, 0);
+ 	SONIC_WRITE(SONIC_ISR, 0x7fff);
+@@ -229,7 +229,7 @@ static void sonic_tx_timeout(struct net_
+ 	 * disable all interrupts before releasing DMA buffers
+ 	 */
+ 	SONIC_WRITE(SONIC_CMD, SONIC_CR_RXDIS);
+-	sonic_quiesce(dev, SONIC_CR_ALL);
++	sonic_quiesce(dev, SONIC_CR_ALL, false);
+ 
+ 	SONIC_WRITE(SONIC_IMR, 0);
+ 	SONIC_WRITE(SONIC_ISR, 0x7fff);
+@@ -246,7 +246,7 @@ static void sonic_tx_timeout(struct net_
+ 		}
+ 	}
+ 	/* Try to restart the adaptor. */
+-	sonic_init(dev);
++	sonic_init(dev, false);
+ 	lp->stats.tx_errors++;
+ 	netif_trans_update(dev); /* prevent tx timeout */
+ 	netif_wake_queue(dev);
+@@ -692,9 +692,9 @@ static void sonic_multicast_list(struct
+ 
+ 			/* LCAM and TXP commands can't be used simultaneously */
+ 			spin_lock_irqsave(&lp->lock, flags);
+-			sonic_quiesce(dev, SONIC_CR_TXP);
++			sonic_quiesce(dev, SONIC_CR_TXP, false);
+ 			SONIC_WRITE(SONIC_CMD, SONIC_CR_LCAM);
+-			sonic_quiesce(dev, SONIC_CR_LCAM);
++			sonic_quiesce(dev, SONIC_CR_LCAM, false);
+ 			spin_unlock_irqrestore(&lp->lock, flags);
+ 		}
+ 	}
+@@ -708,7 +708,7 @@ static void sonic_multicast_list(struct
+ /*
+  * Initialize the SONIC ethernet controller.
+  */
+-static int sonic_init(struct net_device *dev)
++static int sonic_init(struct net_device *dev, bool may_sleep)
  {
- 	int err;
+ 	struct sonic_local *lp = netdev_priv(dev);
+ 	int i;
+@@ -730,7 +730,7 @@ static int sonic_init(struct net_device
+ 	 */
+ 	SONIC_WRITE(SONIC_CMD, 0);
+ 	SONIC_WRITE(SONIC_CMD, SONIC_CR_RXDIS | SONIC_CR_STP);
+-	sonic_quiesce(dev, SONIC_CR_ALL);
++	sonic_quiesce(dev, SONIC_CR_ALL, may_sleep);
  
--	if (WARN_ON_ONCE(in_interrupt()))
--		return -EINVAL;
--
- 	mutex_lock(&bus->mdio_lock);
- 	err = __mdiobus_modify_changed(bus, addr, regnum, mask, set);
- 	mutex_unlock(&bus->mdio_lock);
+ 	/*
+ 	 * initialize the receive resource area
+@@ -759,7 +759,7 @@ static int sonic_init(struct net_device
+ 	netif_dbg(lp, ifup, dev, "%s: issuing RRRA command\n", __func__);
+ 
+ 	SONIC_WRITE(SONIC_CMD, SONIC_CR_RRRA);
+-	sonic_quiesce(dev, SONIC_CR_RRRA);
++	sonic_quiesce(dev, SONIC_CR_RRRA, may_sleep);
+ 
+ 	/*
+ 	 * Initialize the receive descriptors so that they
+@@ -834,7 +834,7 @@ static int sonic_init(struct net_device
+ 	 * load the CAM
+ 	 */
+ 	SONIC_WRITE(SONIC_CMD, SONIC_CR_LCAM);
+-	sonic_quiesce(dev, SONIC_CR_LCAM);
++	sonic_quiesce(dev, SONIC_CR_LCAM, may_sleep);
+ 
+ 	/*
+ 	 * enable receiver, disable loopback
+--- a/drivers/net/ethernet/natsemi/sonic.h
++++ b/drivers/net/ethernet/natsemi/sonic.h
+@@ -338,7 +338,7 @@ static void sonic_rx(struct net_device *
+ static int sonic_close(struct net_device *dev);
+ static struct net_device_stats *sonic_get_stats(struct net_device *dev);
+ static void sonic_multicast_list(struct net_device *dev);
+-static int sonic_init(struct net_device *dev);
++static int sonic_init(struct net_device *dev, bool may_sleep);
+ static void sonic_tx_timeout(struct net_device *dev, unsigned int txqueue);
+ static void sonic_msg_init(struct net_device *dev);
+ static int sonic_alloc_descriptors(struct net_device *dev);
 
 _______________________________________________
 Intel-wired-lan mailing list
