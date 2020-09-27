@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8248C27A5F4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:43:33 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C29BB27A5E1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 3A6BA2037E;
-	Mon, 28 Sep 2020 03:43:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 829B785621;
+	Mon, 28 Sep 2020 03:42:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jnBi08VCAhl1; Mon, 28 Sep 2020 03:43:21 +0000 (UTC)
+	with ESMTP id nlty8jE9ZTgR; Mon, 28 Sep 2020 03:42:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 62C96204B9;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B637E855BE;
 	Mon, 28 Sep 2020 03:42:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 383201BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:33 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C63E41BF4E3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 344EB8513B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:33 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id C19B685BDF
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zPJyrA7DZ9Fu for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 19:57:32 +0000 (UTC)
+ with ESMTP id o--NksAfAwNL for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 19:57:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 4E69E85624
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:32 +0000 (UTC)
-Message-Id: <20200927194921.839848434@linutronix.de>
+ by whitealder.osuosl.org (Postfix) with ESMTPS id A42CD85BCE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:33 +0000 (UTC)
+Message-Id: <20200927194921.948595516@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601236650;
+ s=2020; t=1601236652;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=E8BWshtU8a/PkQjFPYy93BN17JLJsGh02VUnxk0upzE=;
- b=N+JwA8r3ht2f/M3ne58BpHfK1GOt4GMqgR18UWPfudBaJBFVIMdq0c1il9j4d+HHmtwtzs
- dmqcYnudPntJFjQw+NeBhPlRkwqSgONwm1d7AhSB6RMMtlKXUSrO/zsTuOPAOq0SzUhg72
- ZYvkb2hSCYvJCyLpN5Nw1itasArreCiHk2i661yoGbLq2npjGEWG3aIJgA2yx7gcFqOoeX
- s3wVL+sMCKLksBDWA0g69AYJhaNQL0jnR8gZXl3eqiXQxdYi914TlLexu6dI2Y6U7nqN5H
- 5n1t4HiKzEK+gZC8Kb5q4zYumbZWOdMm39zvPowPfdmw12wBDSIyP1vvzR1+2g==
+ bh=oz7MMx0m+YY+xDPxolgjEAAvNxkqMEkx+5nIefnzl+w=;
+ b=U2mMxTLDbs+pJF+T4nm7E02QM81lT27a3LutujRoEa3KlVBwIPlMTtcbRkmn1MFek9xBNQ
+ 4mKAIgzgircyLYpmCNhCvwCDsQy6Gp2qyz5Q1wgf4eHYqJLI+Ln6jtJzcaFH0J5ThdprRx
+ v2lCaydlaoY4vO/cbsuI0sL/1CaeW+QZibDyD27nv/p8HOMqIQiW+UZVKgStVUd/cRS20a
+ XwYlOV9g8LAS2f6YW8dG5I9l0IQJ+mOs7duzIpIodXEFVSAylJ2pYeV5CEgAMhK11nWFZ9
+ KC6K0+vz3Ao4VRCCAkJ8YsQeKKSchAgePFTvesNEE8tn/xrKwtG1kGRSkUa5CQ==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601236650;
+ s=2020e; t=1601236652;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=E8BWshtU8a/PkQjFPYy93BN17JLJsGh02VUnxk0upzE=;
- b=4RL85lLhlslR61dMUmztot7BjIosLb2ekytQx92VaR4TQzSfM5fCdFe3L+k6GNbwDMYffR
- V1pCph8cyROkLAAQ==
-Date: Sun, 27 Sep 2020 21:49:06 +0200
+ bh=oz7MMx0m+YY+xDPxolgjEAAvNxkqMEkx+5nIefnzl+w=;
+ b=5V9NUT3adLz/9pPOxIQrrgpehdYxzsMCF6BfZjMkJGX770xc3JylD1cNtldMLWMBRqj1Fs
+ zJAPHrACZbBCfMDQ==
+Date: Sun, 27 Sep 2020 21:49:07 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200927194846.045411263@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:39 +0000
-Subject: [Intel-wired-lan] [patch 20/35] net: usb: kaweth: Replace
- kaweth_control() with usb_control_msg()
+Subject: [Intel-wired-lan] [patch 21/35] net: usb: kaweth: Remove last user
+ of kaweth_control()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,7 +89,8 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Jakub Kicinski <kuba@kernel.org>, Martin Habets <mhabets@solarflare.com>,
  Ulrich Kunitz <kune@deine-taler.de>, Jay Cliburn <jcliburn@gmail.com>,
  Paul McKenney <paulmck@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>,
- Jouni Malinen <j@w1.fi>, Hante Meuleman <hante.meuleman@broadcom.com>,
+ Jouni Malinen <j@w1.fi>, Jon Mason <jdmason@kudzu.us>,
+ Hante Meuleman <hante.meuleman@broadcom.com>,
  Pascal Terjan <pterjan@google.com>,
  Linus Torvalds <torvalds@linuxfoundation.org>,
  Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
@@ -98,11 +99,9 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Ganapathi Bhat <ganapathi.bhat@nxp.com>,
- Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, Ganapathi Bhat <ganapathi.bhat@nxp.com>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, netdev@vger.kernel.org,
  Shannon Nelson <snelson@pensando.io>, Dave Miller <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Christian Benvenuti <benve@cisco.com>
@@ -113,177 +112,267 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-kaweth_control() is almost the same as usb_control_msg() except for the
-memory allocation mode (GFP_ATOMIC vs GFP_NOIO) and the in_interrupt()
-check.
+kaweth_async_set_rx_mode() invokes kaweth_contol() and has two callers:
 
-All the invocations of kaweth_control() are within the probe function in
-fully preemtible context so there is no reason to use atomic allocations,
-GFP_NOIO which is used by usb_control_msg() is perfectly fine.
+- kaweth_open() which is invoked from preemptible context
+.
+- kaweth_start_xmit() which holds a spinlock and has bottom halfs disabled.
 
-Replace kaweth_control() invocations from probe with usb_control_msg().
+If called from kaweth_start_xmit() kaweth_async_set_rx_mode() obviously
+cannot block, which means it can't call kaweth_control(). This is detected
+with an in_interrupt() check.
+
+Replace the in_interrupt() check in kaweth_async_set_rx_mode() with an
+argument which is set true by the caller if the context is safe to sleep,
+otherwise false.
+
+Now kaweth_control() is only called from preemptible context which means
+there is no need for GFP_ATOMIC allocations anymore. Replace it with
+usb_control_msg(). Cleanup the code a bit while at it.
+
+Finally remove kaweth_control() since the last user is gone.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Cc: "David S. Miller" <davem@davemloft.net>
 Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: linux-usb@vger.kernel.org
 Cc: netdev@vger.kernel.org
 
 ---
- drivers/net/usb/kaweth.c |   93 +++++++++++++++--------------------------------
- 1 file changed, 30 insertions(+), 63 deletions(-)
+ drivers/net/usb/kaweth.c |  168 ++++-------------------------------------------
+ 1 file changed, 17 insertions(+), 151 deletions(-)
 
 --- a/drivers/net/usb/kaweth.c
 +++ b/drivers/net/usb/kaweth.c
-@@ -282,19 +282,13 @@ static int kaweth_control(struct kaweth_
+@@ -103,10 +103,6 @@ static int kaweth_probe(
+ 		const struct usb_device_id *id	/* from id_table */
+ 	);
+ static void kaweth_disconnect(struct usb_interface *intf);
+-static int kaweth_internal_control_msg(struct usb_device *usb_dev,
+-				       unsigned int pipe,
+-				       struct usb_ctrlrequest *cmd, void *data,
+-				       int len, int timeout);
+ static int kaweth_suspend(struct usb_interface *intf, pm_message_t message);
+ static int kaweth_resume(struct usb_interface *intf);
+ 
+@@ -236,48 +232,6 @@ struct kaweth_device
+ };
+ 
+ /****************************************************************
+- *     kaweth_control
+- ****************************************************************/
+-static int kaweth_control(struct kaweth_device *kaweth,
+-			  unsigned int pipe,
+-			  __u8 request,
+-			  __u8 requesttype,
+-			  __u16 value,
+-			  __u16 index,
+-			  void *data,
+-			  __u16 size,
+-			  int timeout)
+-{
+-	struct usb_ctrlrequest *dr;
+-	int retval;
+-
+-	if(in_interrupt()) {
+-		netdev_dbg(kaweth->net, "in_interrupt()\n");
+-		return -EBUSY;
+-	}
+-
+-	dr = kmalloc(sizeof(struct usb_ctrlrequest), GFP_ATOMIC);
+-	if (!dr)
+-		return -ENOMEM;
+-
+-	dr->bRequestType = requesttype;
+-	dr->bRequest = request;
+-	dr->wValue = cpu_to_le16(value);
+-	dr->wIndex = cpu_to_le16(index);
+-	dr->wLength = cpu_to_le16(size);
+-
+-	retval = kaweth_internal_control_msg(kaweth->dev,
+-					     pipe,
+-					     dr,
+-					     data,
+-					     size,
+-					     timeout);
+-
+-	kfree(dr);
+-	return retval;
+-}
+-
+-/****************************************************************
+  *     kaweth_read_configuration
   ****************************************************************/
  static int kaweth_read_configuration(struct kaweth_device *kaweth)
- {
--	int retval;
--
--	retval = kaweth_control(kaweth,
--				usb_rcvctrlpipe(kaweth->dev, 0),
-+	return usb_control_msg(kaweth->dev, usb_rcvctrlpipe(kaweth->dev, 0),
- 				KAWETH_COMMAND_GET_ETHERNET_DESC,
- 				USB_TYPE_VENDOR | USB_DIR_IN | USB_RECIP_DEVICE,
--				0,
--				0,
--				(void *)&kaweth->configuration,
-+				0, 0,
-+				&kaweth->configuration,
- 				sizeof(kaweth->configuration),
- 				KAWETH_CONTROL_TIMEOUT);
--
--	return retval;
+@@ -531,7 +485,8 @@ static int kaweth_resubmit_rx_urb(struct
+ 	return result;
  }
  
+-static void kaweth_async_set_rx_mode(struct kaweth_device *kaweth);
++static void kaweth_async_set_rx_mode(struct kaweth_device *kaweth,
++				     bool may_sleep);
+ 
  /****************************************************************
-@@ -302,21 +296,14 @@ static int kaweth_read_configuration(str
+  *     kaweth_usb_receive
+@@ -661,7 +616,7 @@ static int kaweth_open(struct net_device
+ 
+ 	netif_start_queue(net);
+ 
+-	kaweth_async_set_rx_mode(kaweth);
++	kaweth_async_set_rx_mode(kaweth, true);
+ 	return 0;
+ 
+ err_out:
+@@ -749,7 +704,7 @@ static netdev_tx_t kaweth_start_xmit(str
+ 
+ 	spin_lock_irq(&kaweth->device_lock);
+ 
+-	kaweth_async_set_rx_mode(kaweth);
++	kaweth_async_set_rx_mode(kaweth, false);
+ 	netif_stop_queue(net);
+ 	if (IS_BLOCKED(kaweth->status)) {
+ 		goto skip;
+@@ -826,36 +781,31 @@ static void kaweth_set_rx_mode(struct ne
+ /****************************************************************
+  *     kaweth_async_set_rx_mode
   ****************************************************************/
- static int kaweth_set_urb_size(struct kaweth_device *kaweth, __u16 urb_size)
+-static void kaweth_async_set_rx_mode(struct kaweth_device *kaweth)
++static void kaweth_async_set_rx_mode(struct kaweth_device *kaweth,
++				     bool may_sleep)
  {
--	int retval;
--
- 	netdev_dbg(kaweth->net, "Setting URB size to %d\n", (unsigned)urb_size);
+-	int result;
++	int ret;
+ 	__u16 packet_filter_bitmap = kaweth->packet_filter_bitmap;
  
--	retval = kaweth_control(kaweth,
--				usb_sndctrlpipe(kaweth->dev, 0),
--				KAWETH_COMMAND_SET_URB_SIZE,
--				USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
--				urb_size,
--				0,
--				(void *)&kaweth->scratch,
--				0,
--				KAWETH_CONTROL_TIMEOUT);
--
--	return retval;
-+	return usb_control_msg(kaweth->dev, usb_sndctrlpipe(kaweth->dev, 0),
-+			       KAWETH_COMMAND_SET_URB_SIZE,
-+			       USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
-+			       urb_size, 0,
-+			       &kaweth->scratch, 0,
-+			       KAWETH_CONTROL_TIMEOUT);
- }
+ 	kaweth->packet_filter_bitmap = 0;
+ 	if (packet_filter_bitmap == 0)
+ 		return;
  
- /****************************************************************
-@@ -324,21 +311,14 @@ static int kaweth_set_urb_size(struct ka
-  ****************************************************************/
- static int kaweth_set_sofs_wait(struct kaweth_device *kaweth, __u16 sofs_wait)
- {
--	int retval;
--
- 	netdev_dbg(kaweth->net, "Set SOFS wait to %d\n", (unsigned)sofs_wait);
+-	if (in_interrupt())
++	if (!may_sleep)
+ 		return;
  
--	retval = kaweth_control(kaweth,
--				usb_sndctrlpipe(kaweth->dev, 0),
--				KAWETH_COMMAND_SET_SOFS_WAIT,
--				USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
--				sofs_wait,
--				0,
--				(void *)&kaweth->scratch,
--				0,
--				KAWETH_CONTROL_TIMEOUT);
--
--	return retval;
-+	return usb_control_msg(kaweth->dev, usb_sndctrlpipe(kaweth->dev, 0),
-+			       KAWETH_COMMAND_SET_SOFS_WAIT,
-+			       USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
-+			       sofs_wait, 0,
-+			       &kaweth->scratch, 0,
-+			       KAWETH_CONTROL_TIMEOUT);
- }
- 
- /****************************************************************
-@@ -347,22 +327,15 @@ static int kaweth_set_sofs_wait(struct k
- static int kaweth_set_receive_filter(struct kaweth_device *kaweth,
- 				     __u16 receive_filter)
- {
--	int retval;
--
- 	netdev_dbg(kaweth->net, "Set receive filter to %d\n",
- 		   (unsigned)receive_filter);
- 
--	retval = kaweth_control(kaweth,
+-	result = kaweth_control(kaweth,
 -				usb_sndctrlpipe(kaweth->dev, 0),
 -				KAWETH_COMMAND_SET_PACKET_FILTER,
 -				USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
--				receive_filter,
+-				packet_filter_bitmap,
 -				0,
 -				(void *)&kaweth->scratch,
 -				0,
 -				KAWETH_CONTROL_TIMEOUT);
 -
--	return retval;
-+	return usb_control_msg(kaweth->dev, usb_sndctrlpipe(kaweth->dev, 0),
-+			       KAWETH_COMMAND_SET_PACKET_FILTER,
-+			       USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
-+			       receive_filter, 0,
-+			       &kaweth->scratch, 0,
-+			       KAWETH_CONTROL_TIMEOUT);
+-	if(result < 0) {
++	ret = usb_control_msg(kaweth->dev, usb_sndctrlpipe(kaweth->dev, 0),
++			      KAWETH_COMMAND_SET_PACKET_FILTER,
++			      USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
++			      packet_filter_bitmap, 0,
++			      &kaweth->scratch, 0,
++			      KAWETH_CONTROL_TIMEOUT);
++	if (ret < 0)
+ 		dev_err(&kaweth->intf->dev, "Failed to set Rx mode: %d\n",
+-			result);
+-	}
+-	else {
++			ret);
++	else
+ 		netdev_dbg(kaweth->net, "Set Rx mode to %d\n",
+ 			   packet_filter_bitmap);
+-	}
  }
  
  /****************************************************************
-@@ -407,14 +380,11 @@ static int kaweth_download_firmware(stru
- 		   kaweth->firmware_buf, kaweth);
- 	netdev_dbg(kaweth->net, "Firmware length: %d\n", data_len);
- 
--	return kaweth_control(kaweth,
--		              usb_sndctrlpipe(kaweth->dev, 0),
-+	return usb_control_msg(kaweth->dev, usb_sndctrlpipe(kaweth->dev, 0),
- 			      KAWETH_COMMAND_SCAN,
- 			      USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
--			      0,
--			      0,
--			      (void *)kaweth->firmware_buf,
--			      data_len,
-+			      0, 0,
-+			      kaweth->firmware_buf, data_len,
- 			      KAWETH_CONTROL_TIMEOUT);
+@@ -1163,88 +1113,4 @@ static void kaweth_disconnect(struct usb
  }
  
-@@ -433,15 +403,12 @@ static int kaweth_trigger_firmware(struc
- 	kaweth->firmware_buf[6] = 0x00;
- 	kaweth->firmware_buf[7] = 0x00;
  
--	return kaweth_control(kaweth,
--			      usb_sndctrlpipe(kaweth->dev, 0),
--			      KAWETH_COMMAND_SCAN,
--			      USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
--			      0,
--			      0,
--			      (void *)kaweth->firmware_buf,
--			      8,
--			      KAWETH_CONTROL_TIMEOUT);
-+	return usb_control_msg(kaweth->dev, usb_sndctrlpipe(kaweth->dev, 0),
-+			       KAWETH_COMMAND_SCAN,
-+			       USB_TYPE_VENDOR | USB_DIR_OUT | USB_RECIP_DEVICE,
-+			       0, 0,
-+			       (void *)kaweth->firmware_buf, 8,
-+			       KAWETH_CONTROL_TIMEOUT);
- }
- 
- /****************************************************************
+-// FIXME this completion stuff is a modified clone of
+-// an OLD version of some stuff in usb.c ...
+-struct usb_api_data {
+-	wait_queue_head_t wqh;
+-	int done;
+-};
+-
+-/*-------------------------------------------------------------------*
+- * completion handler for compatibility wrappers (sync control/bulk) *
+- *-------------------------------------------------------------------*/
+-static void usb_api_blocking_completion(struct urb *urb)
+-{
+-        struct usb_api_data *awd = (struct usb_api_data *)urb->context;
+-
+-	awd->done=1;
+-	wake_up(&awd->wqh);
+-}
+-
+-/*-------------------------------------------------------------------*
+- *                         COMPATIBILITY STUFF                       *
+- *-------------------------------------------------------------------*/
+-
+-// Starts urb and waits for completion or timeout
+-static int usb_start_wait_urb(struct urb *urb, int timeout, int* actual_length)
+-{
+-	struct usb_api_data awd;
+-        int status;
+-
+-        init_waitqueue_head(&awd.wqh);
+-        awd.done = 0;
+-
+-        urb->context = &awd;
+-        status = usb_submit_urb(urb, GFP_ATOMIC);
+-        if (status) {
+-                // something went wrong
+-                usb_free_urb(urb);
+-                return status;
+-        }
+-
+-	if (!wait_event_timeout(awd.wqh, awd.done, timeout)) {
+-                // timeout
+-                dev_warn(&urb->dev->dev, "usb_control/bulk_msg: timeout\n");
+-                usb_kill_urb(urb);  // remove urb safely
+-                status = -ETIMEDOUT;
+-        }
+-	else {
+-                status = urb->status;
+-	}
+-
+-        if (actual_length) {
+-                *actual_length = urb->actual_length;
+-	}
+-
+-        usb_free_urb(urb);
+-        return status;
+-}
+-
+-/*-------------------------------------------------------------------*/
+-// returns status (negative) or length (positive)
+-static int kaweth_internal_control_msg(struct usb_device *usb_dev,
+-				       unsigned int pipe,
+-				       struct usb_ctrlrequest *cmd, void *data,
+-				       int len, int timeout)
+-{
+-        struct urb *urb;
+-        int retv;
+-        int length = 0; /* shut up GCC */
+-
+-	urb = usb_alloc_urb(0, GFP_ATOMIC);
+-        if (!urb)
+-                return -ENOMEM;
+-
+-        usb_fill_control_urb(urb, usb_dev, pipe, (unsigned char*)cmd, data,
+-			 len, usb_api_blocking_completion, NULL);
+-
+-        retv = usb_start_wait_urb(urb, timeout, &length);
+-        if (retv < 0) {
+-                return retv;
+-	}
+-        else {
+-                return length;
+-	}
+-}
+-
+ module_usb_driver(kaweth_driver);
 
 _______________________________________________
 Intel-wired-lan mailing list
