@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E980727A5EF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:43:12 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F41D27A5D8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 99BC920377;
-	Mon, 28 Sep 2020 03:43:11 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C74BD855DF;
+	Mon, 28 Sep 2020 03:42:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6ZrWBKY34tt3; Mon, 28 Sep 2020 03:42:58 +0000 (UTC)
+	with ESMTP id WyY6Yux5Zdwx; Mon, 28 Sep 2020 03:42:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 95B48203FC;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E3A28855C6;
 	Mon, 28 Sep 2020 03:42:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EF6071BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:14 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9B5721BF95E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id EB2BB8707A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:14 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 8BCB2203FA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oX801+Q9ftUO for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 19:57:13 +0000 (UTC)
+ with ESMTP id W7d8d6RpQ5GH for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 19:57:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id AFB6D87068
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:12 +0000 (UTC)
-Message-Id: <20200927194920.214592677@linutronix.de>
+ by silver.osuosl.org (Postfix) with ESMTPS id C42BA20130
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:13 +0000 (UTC)
+Message-Id: <20200927194920.327665456@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601236630;
+ s=2020; t=1601236631;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=9orafjgYKDlDKEG62n274dWmcmLVLFnX3OlrGfMTV/Q=;
- b=vuP6S8UXSfNxWHGc7Yb2QTKmLAxUiHJyEitt9UbeznGeTfFpoA4hIKR0wXAjx9ERlKFh9W
- B3bju1K9kWHZBkDD4J7eFPdctXUZRyh96hhl3Tx1GvWD8Y/XyJWWryMdeorFYWMQDKrTL5
- kqEzzHZXGSW+yc33fKh0Hu2PgYS+NeHki6h+C1HvVyfClaaDmUPPyP0mJ9LvLSPNglIAuo
- ijVHzC9fe4+qCIeoRmB8/Z/YabntsJvY9IgF8P8zl9mXgHpPjJZSKLDCF9g88NWv4FcmbF
- /sN3MaPfnUFBZt+Ua6vxU4jIFoZjJgzrGe8Wmt35MCdWxPI91VOXLcu/jEI4vQ==
+ bh=LDyMI8Hz49Jgdl18F8Ta9e6p+YRh1dkfwAZ1XTos3j8=;
+ b=0tG2QVs6g8rkE0bRdQ8JdMu4aP/Q7FauXbgPsjH7E62PT9jMd3rMuTE30ia2tqheyomNZj
+ f0Q53jlOjvftWeF1ykrxl/rSGqHc13tFUPFffEF+5XM9/IVCCNoMxbdjdjuUJDQeSqrooh
+ Nkd5o4E5Gn17JuQgU6qoel3O9qQzfxkH3FvzJ9KTrb21Zjxj/M4A1vwhx/j+lhhqhcgFOd
+ rJghApRHbvV4oCVU8TIQ6d02sDpEeOE0t2g8CPE2Bu8OP0f+I/nVC9XKjaNAkzU2PU4xs2
+ b7gFIz/eHI7D40fN5R2Rba+BPLJq5DLsKbKtsq8wjrzZ62cKnbc+pPpd/EEj4w==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601236630;
+ s=2020e; t=1601236631;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=9orafjgYKDlDKEG62n274dWmcmLVLFnX3OlrGfMTV/Q=;
- b=LxBnZ/3kK2Kn1E01Ma+vj2UE6c25FltAkOE1MjniUMmLf0trqgyT+SHySRxbhxfte+GZQe
- x6hYcFF/6UZwDWAA==
-Date: Sun, 27 Sep 2020 21:48:50 +0200
+ bh=LDyMI8Hz49Jgdl18F8Ta9e6p+YRh1dkfwAZ1XTos3j8=;
+ b=NeihXZuinmBVQYVnFomZAN0HcKRGTntP3I3XGFPCfYihWAR3yZ30mG99h+HiZaZcvFyruj
+ L+GdfMd29fk8eJDQ==
+Date: Sun, 27 Sep 2020 21:48:51 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200927194846.045411263@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:39 +0000
-Subject: [Intel-wired-lan] [patch 04/35] net: caif: Use
- netif_rx_any_context()
+Subject: [Intel-wired-lan] [patch 05/35] net: atheros: Remove
+ WARN_ON(in_interrupt())
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,67 +111,68 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+From: Thomas Gleixner <tglx@linutronix.de>
 
-The usage of in_interrupt() in non-core code is phased out. Ideally the
-information of the calling context should be passed by the callers or the
-functions be split as appropriate.
+in_interrupt() is ill defined and does not provide what the name
+suggests. The usage especially in driver code is deprecated and a tree wide
+effort to clean up and consolidate the (ab)usage of in_interrupt() and
+related checks is happening.
 
-cfhsi_rx_desc() and cfhsi_rx_pld() use in_interrupt() to distinguish if
-they should use netif_rx() or netif_rx_ni() for receiving packets.
+In this case the check covers only parts of the contexts in which these
+functions cannot be called. It fails to detect preemption or interrupt
+disabled invocations.
 
-The attempt to consolidate the code by passing an arguemnt or by
-distangling it failed due lack of knowledge about this driver and because
-the call chains are hard to follow.
+As the functions which are invoked from at*_reinit_locked() contain a broad
+variety of checks (always enabled or debug option dependent) which cover
+all invalid conditions already, there is no point in having inconsistent
+warnings in those drivers.
 
-As a stop gap use netif_rx_any_context() which invokes the correct code path
-depending on context and confines the in_interrupt() usage to core code.
+Just remove them.
 
-Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Jay Cliburn <jcliburn@gmail.com>
+Cc: Chris Snook <chris.snook@gmail.com>
 Cc: Jakub Kicinski <kuba@kernel.org>
-Cc: Luc Van Oostenryck <luc.vanoostenryck@gmail.com>
 Cc: netdev@vger.kernel.org
----
- drivers/net/caif/caif_hsi.c |   19 ++-----------------
- 1 file changed, 2 insertions(+), 17 deletions(-)
 
---- a/drivers/net/caif/caif_hsi.c
-+++ b/drivers/net/caif/caif_hsi.c
-@@ -458,15 +458,7 @@ static int cfhsi_rx_desc(struct cfhsi_de
- 		skb_reset_mac_header(skb);
- 		skb->dev = cfhsi->ndev;
+---
+ drivers/net/ethernet/atheros/atl1c/atl1c_main.c |    1 -
+ drivers/net/ethernet/atheros/atl1e/atl1e_main.c |    2 --
+ drivers/net/ethernet/atheros/atlx/atl2.c        |    1 -
+ 3 files changed, 4 deletions(-)
+
+--- a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
++++ b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
+@@ -220,7 +220,6 @@ static void atl1c_phy_config(struct time
  
--		/*
--		 * We are in a callback handler and
--		 * unfortunately we don't know what context we're
--		 * running in.
--		 */
--		if (in_interrupt())
--			netif_rx(skb);
--		else
--			netif_rx_ni(skb);
-+		netif_rx_any_context(skb);
+ void atl1c_reinit_locked(struct atl1c_adapter *adapter)
+ {
+-	WARN_ON(in_interrupt());
+ 	atl1c_down(adapter);
+ 	atl1c_up(adapter);
+ 	clear_bit(__AT_RESETTING, &adapter->flags);
+--- a/drivers/net/ethernet/atheros/atl1e/atl1e_main.c
++++ b/drivers/net/ethernet/atheros/atl1e/atl1e_main.c
+@@ -127,8 +127,6 @@ static void atl1e_phy_config(struct time
  
- 		/* Update network statistics. */
- 		cfhsi->ndev->stats.rx_packets++;
-@@ -587,14 +579,7 @@ static int cfhsi_rx_pld(struct cfhsi_des
- 		skb_reset_mac_header(skb);
- 		skb->dev = cfhsi->ndev;
+ void atl1e_reinit_locked(struct atl1e_adapter *adapter)
+ {
+-
+-	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__AT_RESETTING, &adapter->flags))
+ 		msleep(1);
+ 	atl1e_down(adapter);
+--- a/drivers/net/ethernet/atheros/atlx/atl2.c
++++ b/drivers/net/ethernet/atheros/atlx/atl2.c
+@@ -1085,7 +1085,6 @@ static int atl2_up(struct atl2_adapter *
  
--		/*
--		 * We're called in callback from HSI
--		 * and don't know the context we're running in.
--		 */
--		if (in_interrupt())
--			netif_rx(skb);
--		else
--			netif_rx_ni(skb);
-+		netif_rx_any_context(skb);
- 
- 		/* Update network statistics. */
- 		cfhsi->ndev->stats.rx_packets++;
+ static void atl2_reinit_locked(struct atl2_adapter *adapter)
+ {
+-	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__ATL2_RESETTING, &adapter->flags))
+ 		msleep(1);
+ 	atl2_down(adapter);
 
 _______________________________________________
 Intel-wired-lan mailing list
