@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8118827A5DC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:47 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3A7A27A5EE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:43:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3394A84D49;
-	Mon, 28 Sep 2020 03:42:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 7FC632035C;
+	Mon, 28 Sep 2020 03:43:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IMh30RXZ2e5Q; Mon, 28 Sep 2020 03:42:45 +0000 (UTC)
+	with ESMTP id 9C78AKqjHT+6; Mon, 28 Sep 2020 03:43:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id B6A528618E;
-	Mon, 28 Sep 2020 03:42:43 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1736320423;
+	Mon, 28 Sep 2020 03:42:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E5F811BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:17 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 224051BF95E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id DEDC885BD3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:17 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1E89085631
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tjWQoy+egSmk for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 19:57:16 +0000 (UTC)
+ with ESMTP id xY4Yzy92CJvY for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 19:57:17 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CE86785D57
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:15 +0000 (UTC)
-Message-Id: <20200927194920.529620472@linutronix.de>
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 521738508E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 19:57:17 +0000 (UTC)
+Message-Id: <20200927194920.621578351@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601236634;
+ s=2020; t=1601236635;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=EDKBcMIgD/09FuiGSNYHhCF3jDv+nrJ0d2CEBofmw7g=;
- b=snXKYTawQUFS88tiTEow0tXsxP1tLJM9xHT4/iSNgIAGuodQmc9Qp0KQGNZNqlz9QV4M5I
- Rwhti+lRXO9IB8T3AG1+oqCZy8zEWXsIqGQUGjndLp2o/23CsbScRTMQxV1S+kh8QLeOFq
- GhrN/1KMvDQQJRY8cCanEj7G/YgGLxhd8+CicY7yErSGgVrutMDhvDA+2Le5tZEPNrhF92
- HNLfR/nf1tFFd6gkjfLx4iaWWvrDbiiNIpQNQydVKD+szuJ1u60oQehMuNWOmSJiLRtlOZ
- NjsUY5WOXonQTXiJuGxEgPxLSh81hYb/Q/qsEkT8VlOOAQCtaHM8RWF7F0a1IA==
+ bh=GmRWTTg+MNTA0DaNDIlEXevW16R3g516zjE3yhxS5XQ=;
+ b=EcGTRs6kb2RDfe2vyrf2+4PlTt9+1DxF8xx4TukwbvrjHvPN/bK00Rh9OwV+XrLtzQQiKp
+ 5YkzTiEqP+CUpeMVzxkK770Zn2LqxoGqekXuL4WpC03EEpLfqHHNc+yaATldWUENSYX8uK
+ Fpwww0Eg/kIenfNeKQFWF/4R8zudM55O/i8cF0E+53SJuBr+zlRE42pPnxnUHgpw+PpUuw
+ yxMnpHdK1H6DVKGV2jJT0QVET6zb9XNaf9xXe3Q8emDzLnwU/sRViGNhTqD5hInVKQ4bkZ
+ M6MnBlUz1M+wQzG84vC+cHQ2X8UeSNGr7HJYylvjMNB9y+F5NNaQbmd/ZsW5mA==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601236634;
+ s=2020e; t=1601236635;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=EDKBcMIgD/09FuiGSNYHhCF3jDv+nrJ0d2CEBofmw7g=;
- b=dCG7TC8ALt/lqqr+lqrqo16u3cIrM1QEOqBoykQQB7Oqrb7kPbGrYa/ghwEhg4k/GILAkS
- r43l5jfMGGMm/jDA==
-Date: Sun, 27 Sep 2020 21:48:53 +0200
+ bh=GmRWTTg+MNTA0DaNDIlEXevW16R3g516zjE3yhxS5XQ=;
+ b=hWtxjUGi2gFRAx8XtEhLw5uROxf7tPRASC/GDVwAj2gS8xyWHVw9Vv65j/9pO1/TwqLZ27
+ FQxcdeBMHBK0AYBw==
+Date: Sun, 27 Sep 2020 21:48:54 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200927194846.045411263@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:39 +0000
-Subject: [Intel-wired-lan] [patch 07/35] net: cxbg4: Remove pointless
- in_interrupt() check
+Subject: [Intel-wired-lan] [patch 08/35] net: e100: Remove in_interrupt()
+ usage and pointless GFP_ATOMIC allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,42 +111,64 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Thomas Gleixner <tglx@linutronix.de>
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-t4_sge_stop() is only ever called from task context and the in_interrupt()
-check is presumably a leftover from copying t3_sge_stop().
+e100_hw_init() invokes e100_self_test() only if in_interrupt() returns
+false as e100_self_test() uses msleep() which requires sleepable task
+context. The in_interrupt() check is incomplete because in_interrupt()
+cannot catch callers from contexts which have just preemption or interrupts
+disabled.
 
-Aside of in_interrupt() being deprecated because it's not providing what it
-claims to provide, this check would paper over illegitimate callers.
+e100_hw_init() is invoked from:
 
-The functions invoked from t4_sge_stop() contain already warnings to catch
-invocations from invalid contexts.
+  - e100_loopback_test() which clearly is sleepable task context as the
+    function uses msleep() itself.
 
-Remove it.
+  - e100_up() which clearly is sleepable task context as well because it
+    invokes e100_alloc_cbs() abd request_irq() which both require sleepable
+    task context due to GFP_KERNEL allocations and mutex_lock() operations.
 
+Remove the pointless in_interrupt() check.
+
+As a side effect of this analysis it turned out that e100_rx_alloc_list()
+which is only invoked from e100_loopback_test() and e100_up() pointlessly
+uses a GFP_ATOMIC allocation. The next invoked function e100_alloc_cbs() is
+using GFP_KERNEL already.
+
+Change the allocation mode in e100_rx_alloc_list() to GFP_KERNEL as well.
+
+Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Cc: Vishal Kulkarni <vishal@chelsio.com>
+Cc: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
 Cc: "David S. Miller" <davem@davemloft.net>
 Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org
 
-
 ---
- drivers/net/ethernet/chelsio/cxgb4/sge.c |    3 ---
- 1 file changed, 3 deletions(-)
+ drivers/net/ethernet/intel/e100.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
---- a/drivers/net/ethernet/chelsio/cxgb4/sge.c
-+++ b/drivers/net/ethernet/chelsio/cxgb4/sge.c
-@@ -4872,9 +4872,6 @@ void t4_sge_stop(struct adapter *adap)
- 	int i;
- 	struct sge *s = &adap->sge;
+--- a/drivers/net/ethernet/intel/e100.c
++++ b/drivers/net/ethernet/intel/e100.c
+@@ -1531,7 +1531,7 @@ static int e100_hw_init(struct nic *nic)
+ 	e100_hw_reset(nic);
  
--	if (in_interrupt())  /* actions below require waiting */
--		return;
--
- 	if (s->rx_timer.function)
- 		del_timer_sync(&s->rx_timer);
- 	if (s->tx_timer.function)
+ 	netif_err(nic, hw, nic->netdev, "e100_hw_init\n");
+-	if (!in_interrupt() && (err = e100_self_test(nic)))
++	if ((err = e100_self_test(nic)))
+ 		return err;
+ 
+ 	if ((err = e100_phy_init(nic)))
+@@ -2155,7 +2155,7 @@ static int e100_rx_alloc_list(struct nic
+ 	nic->rx_to_use = nic->rx_to_clean = NULL;
+ 	nic->ru_running = RU_UNINITIALIZED;
+ 
+-	if (!(nic->rxs = kcalloc(count, sizeof(struct rx), GFP_ATOMIC)))
++	if (!(nic->rxs = kcalloc(count, sizeof(struct rx), GFP_KERNEL)))
+ 		return -ENOMEM;
+ 
+ 	for (rx = nic->rxs, i = 0; i < count; rx++, i++) {
 
 _______________________________________________
 Intel-wired-lan mailing list
