@@ -2,55 +2,50 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2787927A5D5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CA7F527A5D4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 05:42:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id C8D97855BE;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 870BC85569;
 	Mon, 28 Sep 2020 03:42:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5WJQSmMhzJ9r; Mon, 28 Sep 2020 03:42:13 +0000 (UTC)
+	with ESMTP id 6JMYlkfPUtol; Mon, 28 Sep 2020 03:42:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 073368559B;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4C23F85604;
 	Mon, 28 Sep 2020 03:42:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 39A491BF40A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 20:57:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DA9891BF31D
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 23:01:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 31F268506B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 20:57:14 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D50CA854D0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 23:01:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OQKXvzsuB5WH for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Sep 2020 20:57:13 +0000 (UTC)
+ with ESMTP id O_x8G7H3nUbE for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Sep 2020 23:01:24 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from shards.monkeyblade.net (shards.monkeyblade.net [23.128.96.9])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 84CA385045
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 20:57:13 +0000 (UTC)
-Received: from localhost (unknown [IPv6:2601:601:9f00:477::3d5])
- (using TLSv1 with cipher AES256-SHA (256/256 bits))
- (Client did not present a certificate)
- (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id AF20A13BB5083;
- Sun, 27 Sep 2020 13:40:20 -0700 (PDT)
-Date: Sun, 27 Sep 2020 13:57:07 -0700 (PDT)
-Message-Id: <20200927.135707.1699954431349573308.davem@davemloft.net>
-To: tglx@linutronix.de
-From: David Miller <davem@davemloft.net>
-In-Reply-To: <20200927194846.045411263@linutronix.de>
+Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 4D0AC85187
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Sep 2020 23:01:24 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
+ (envelope-from <andrew@lunn.ch>)
+ id 1kMff2-00GSDf-Dy; Mon, 28 Sep 2020 01:00:52 +0200
+Date: Mon, 28 Sep 2020 01:00:52 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Thomas Gleixner <tglx@linutronix.de>
+Message-ID: <20200927230052.GG3889809@lunn.ch>
 References: <20200927194846.045411263@linutronix.de>
-X-Mailer: Mew version 6.8 on Emacs 27.1
-Mime-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
- (shards.monkeyblade.net [2620:137:e000::1:9]);
- Sun, 27 Sep 2020 13:40:22 -0700 (PDT)
+ <20200927194921.137019811@linutronix.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200927194921.137019811@linutronix.de>
 X-Mailman-Approved-At: Mon, 28 Sep 2020 03:42:11 +0000
-Subject: Re: [Intel-wired-lan] [patch 00/35] net: in_interrupt() cleanup and
- fixes
+Subject: Re: [Intel-wired-lan] [patch 13/35] net: mdiobus: Remove
+ WARN_ON_ONCE(in_interrupt())
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,45 +58,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, emmanuel.grumbach@intel.com, linux-doc@vger.kernel.org,
- peterz@infradead.org, chris.snook@gmail.com, bigeasy@linutronix.de,
- arend.vanspriel@broadcom.com, _govind@gmx.com, vishal@chelsio.com,
- luciano.coelho@intel.com, ecree@solarflare.com, brcm80211-dev-list@cypress.com,
- brcm80211-dev-list.pdl@broadcom.com, johannes.berg@intel.com, corbet@lwn.net,
- mchehab+huawei@kernel.org, linuxwifi@intel.com, linux@armlinux.org.uk,
- willy@infradead.org, hkallweit1@gmail.com, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, mhabets@solarflare.com, kune@deine-taler.de,
- jcliburn@gmail.com, paulmck@kernel.org, stf_xl@wp.pl,
- hante.meuleman@broadcom.com, torvalds@linuxfoundation.org,
- gregkh@linuxfoundation.org, wright.feng@cypress.com, dsd@gentoo.org,
- drivers@pensando.io, kvalo@codeaurora.org, franky.lin@broadcom.com,
- linux-net-drivers@solarflare.com, tsbogend@alpha.franken.de,
- chi-hsien.lin@cypress.com, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- stas.yakovlev@gmail.com, jdmason@kudzu.us, snelson@pensando.io,
- luc.vanoostenryck@gmail.com, benve@cisco.com
-Content-Type: text/plain; charset="iso8859-7"
-Content-Transfer-Encoding: base64
+Cc: Emmanuel Grumbach <emmanuel.grumbach@intel.com>, linux-doc@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, Chris Snook <chris.snook@gmail.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Arend van Spriel <arend.vanspriel@broadcom.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>,
+ Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>,
+ Edward Cree <ecree@solarflare.com>, libertas-dev@lists.infradead.org,
+ brcm80211-dev-list@cypress.com, brcm80211-dev-list.pdl@broadcom.com,
+ Ping-Ke Shih <pkshih@realtek.com>, Johannes Berg <johannes.berg@intel.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Intel Linux Wireless <linuxwifi@intel.com>,
+ Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Martin Habets <mhabets@solarflare.com>, Ulrich Kunitz <kune@deine-taler.de>,
+ Jay Cliburn <jcliburn@gmail.com>, Paul McKenney <paulmck@kernel.org>,
+ Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen <j@w1.fi>,
+ Hante Meuleman <hante.meuleman@broadcom.com>,
+ Pascal Terjan <pterjan@google.com>,
+ Linus Torvalds <torvalds@linuxfoundation.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
+ Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
+ Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
+ Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
+ Shannon Nelson <snelson@pensando.io>,
+ Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ Ganapathi Bhat <ganapathi.bhat@nxp.com>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
+ Heiner Kallweit <hkallweit1@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
+ Christian Benvenuti <benve@cisco.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJvbTogVGhvbWFzIEdsZWl4bmVyIDx0Z2x4QGxpbnV0cm9uaXguZGU+DQpEYXRlOiBTdW4sIDI3
-IFNlcCAyMDIwIDIxOjQ4OjQ2ICswMjAwDQoNCj4gaW4gdGhlIGRpc2N1c3Npb24gYWJvdXQgcHJl
-ZW1wdCBjb3VudCBjb25zaXN0ZW5jeSBhY2Nyb3NzIGtlcm5lbCBjb25maWd1cmF0aW9uczoNCg0K
-UGxlYXNlIHJlc3BpbiB0aGlzIGFnYWluc3QgbmV0LW5leHQsIHNvbWUgb2YgdGhlIHBhdGNoZXMg
-aW4gaGVyZSBhcmUgYWxyZWFkeQ0KaW4gbmV0LW5leHQgKHRoZSB3aXJlbGVzcyBkZWJ1ZyBtYWNy
-byBvbmUpIGFuZCBldmVuIGFmdGVyIHRoYXQgdGhlIHNlcmllcw0KZG9lc24ndCBidWlsZDoNCg0K
-ZHJpdmVycy9uZXQvZXRoZXJuZXQvY2lzY28vZW5pYy9lbmljX21haW4uYzogSW4gZnVuY3Rpb24g
-oWVuaWNfcmVzZXSiOg0KZHJpdmVycy9uZXQvZXRoZXJuZXQvY2lzY28vZW5pYy9lbmljX21haW4u
-YzoyMzE1OjI6IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBmdW5jdGlvbiChZW5pY19z
-ZXRfYXBpX3N0YXRlojsgZGlkIHlvdSBtZWFuIKFlbmljX3NldF9hcGlfYnVzeaI/IFstV2Vycm9y
-PWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQ0KIDIzMTUgfCAgZW5pY19zZXRfYXBpX3N0
-YXRlKGVuaWMsIHRydWUpOw0KICAgICAgfCAgXn5+fn5+fn5+fn5+fn5+fn5+DQogICAgICB8ICBl
-bmljX3NldF9hcGlfYnVzeQ0KQXQgdG9wIGxldmVsOg0KZHJpdmVycy9uZXQvZXRoZXJuZXQvY2lz
-Y28vZW5pYy9lbmljX21haW4uYzoyMjk4OjEzOiB3YXJuaW5nOiChZW5pY19zZXRfYXBpX2J1c3mi
-IGRlZmluZWQgYnV0IG5vdCB1c2VkIFstV3VudXNlZC1mdW5jdGlvbl0NCiAyMjk4IHwgc3RhdGlj
-IHZvaWQgZW5pY19zZXRfYXBpX2J1c3koc3RydWN0IGVuaWMgKmVuaWMsIGJvb2wgYnVzeSkNCiAg
-ICAgIHwgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn4NCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QK
-SW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxt
-YW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+On Sun, Sep 27, 2020 at 09:48:59PM +0200, Thomas Gleixner wrote:
+> From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+> 
+> in_interrupt() is ill defined and does not provide what the name
+> suggests. The usage especially in driver code is deprecated and a tree wide
+> effort to clean up and consolidate the (ab)usage of in_interrupt() and
+> related checks is happening.
+> 
+> In this case the check covers only parts of the contexts in which these
+> functions cannot be called. It fails to detect preemption or interrupt
+> disabled invocations.
+> 
+> As the functions which contain these warnings invoke mutex_lock() which
+> contains a broad variety of checks (always enabled or debug option
+> dependent) and therefore covers all invalid conditions already, there is no
+> point in having inconsistent warnings in those drivers. The conditional
+> return is not really valuable in practice either.
+> 
+> Just remove them.
+> 
+> Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+
+    Andrew
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
