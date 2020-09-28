@@ -1,79 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA6C027AF98
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 16:03:50 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13AA427AF9A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 16:03:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 139318702F;
-	Mon, 28 Sep 2020 14:03:49 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id B1F2B85751;
+	Mon, 28 Sep 2020 14:03:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IUNK7iFbjncw; Mon, 28 Sep 2020 14:03:48 +0000 (UTC)
+	with ESMTP id bmvRHirhiinL; Mon, 28 Sep 2020 14:03:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 4E78C86FF2;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id BF4D484B1F;
 	Mon, 28 Sep 2020 14:03:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 020E61BF40A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 09:34:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0EB781BF40A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 09:38:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id EED0B85431
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 09:34:28 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 0574D862DE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 09:38:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XQE-F9e5e4Tt for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Sep 2020 09:34:28 +0000 (UTC)
+ with ESMTP id pIYnH2-GH7yJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Sep 2020 09:37:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-ed1-f66.google.com (mail-ed1-f66.google.com
- [209.85.208.66])
- by whitealder.osuosl.org (Postfix) with ESMTPS id CE2628545E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 09:34:27 +0000 (UTC)
-Received: by mail-ed1-f66.google.com with SMTP id k14so563089edo.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 02:34:27 -0700 (PDT)
+Received: from mail-pf1-f193.google.com (mail-pf1-f193.google.com
+ [209.85.210.193])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 542E48545E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 09:37:59 +0000 (UTC)
+Received: by mail-pf1-f193.google.com with SMTP id o20so443137pfp.11
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 02:37:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to;
- bh=As97GaNmUAwf3bblQET3fIp7zqgI/iMTTQ+d7nJgnbc=;
- b=LcDJALvh22dbZoV/wu5X4JvF/6AShV4ATnHroAdoCdOnykWRRQtLk6b+6uwEYNj0fS
- iOvVFJCHn11puBRRYq0mnJ+Rq/55HwMvfhpj1fo9zQj9AdgWWnbKUzzPKQj4QkhLBHSS
- pSRy8UKPsrR8DMbTWzkC4OOzrghrrQx0bSfps=
+ bh=GIn+picFlLXm7Q6PuuezH/3QcF90mP9OJD6XToBr+dw=;
+ b=N+ymFZNtF/yBf0rzTHP3xV04m2owZQWoIkC99cyoHULkQBS6gwFBZa1NX4+50aQAFF
+ ONpjoI099vNOmRgj0QLrFWhkfjXzte0eC3/i0zGP5u9TB7XhtWeqqlDl7Ud40BQLzaQq
+ jbfPJjABIv3pV7XBH6nCgXL5e/jcxQsQqKug0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to;
- bh=As97GaNmUAwf3bblQET3fIp7zqgI/iMTTQ+d7nJgnbc=;
- b=PS36sy+WKIH/bya1ZNL4dYEPdCgfyc2fSQQrfhChRKES2yaWxQD+f/g3TqAq+gvXG9
- fpLLNbFAA7fm8jUv/Y0C1sm2y8Wd4mZg7Yalq7UGKf8TO34mOvf6LqQc1NL5gpUSRy0y
- yjnfJggrvo+pI8joNRmr8A8/Z2ZSkXSZse0NgYEv72cb7GodREIsS6l32xha5l3zXmaU
- mOv9x21hh136ifFoKoc2CnV4FIxbFxGlLLn/BmCFasp4mJ3N/sk6dLcETinx8ljNoP9P
- 0iawXEsUSB2f9MEui/vHsAHBDON3eMp4G5qt1g+y5dXpkVLQm8xwGBO+NP4BnKjIdbw+
- FQrA==
-X-Gm-Message-State: AOAM53253jQMnXZrrQmJD0svIZSiaD2LN7rh9dDhQnutyxZmXp8mZPn0
- Pv5lpqhyKUrT6YtoHB7pJQObaA==
-X-Google-Smtp-Source: ABdhPJwLDeJj4eSk8uCB1OX9YbqIcFxfFwM4PQfEsdndLGRL1iNd0nKdibOIpORZF7Zw/2JGQ65ojA==
-X-Received: by 2002:a50:f199:: with SMTP id x25mr645312edl.347.1601285665899; 
- Mon, 28 Sep 2020 02:34:25 -0700 (PDT)
+ bh=GIn+picFlLXm7Q6PuuezH/3QcF90mP9OJD6XToBr+dw=;
+ b=es2OZpJL3pqI4G11XHDNNX8KPHUj/sYKtAmcBvnTjdVLc1l/z+C1BG/KfLZOCPVVvx
+ RrLaGqcqU+KSJOlgcyy0GC6xs2T/duR1R5qtiApN/Rq/f1R+B3l75FSvXi+bS4D3qjy6
+ pntIFlan5ZfAab6mFXGnp1hPhVzVyYIgNg+3quc6hlOhrjUkJ9TKWuoXzdYmrN6dRtQg
+ 6hNitr1C1o/Jjiw4tT+W+RRtJTUrU8nDtefxz82Ti7+NsSHPs+U0/AH3axxvx2h9Auua
+ WLqGF40Q1R/Zl2OWexw+pXpZL+XFbJK8egW6tKMs6DyuAhR/iWHF07Io7lo5AETPeEvw
+ 37Aw==
+X-Gm-Message-State: AOAM5322Rd4cYyKh6fND+qPn+/DTlUPqJA5OBOTo++cONrfK1QYsU4dA
+ dy4wS51ps6wBr+CBJkD9fwkMZg==
+X-Google-Smtp-Source: ABdhPJyemDFL7r+2PdsUHoTKU7TMLK2rERZ9p6v5icCK3Rxv4Ba0GXXxZ0740QJWtvzp6cnN1OAshQ==
+X-Received: by 2002:a17:902:8c8b:b029:d2:42fe:370a with SMTP id
+ t11-20020a1709028c8bb02900d242fe370amr761183plo.83.1601285878755; 
+ Mon, 28 Sep 2020 02:37:58 -0700 (PDT)
 Received: from [192.168.178.129] (f140230.upc-f.chello.nl. [80.56.140.230])
- by smtp.gmail.com with ESMTPSA id t10sm635029edw.86.2020.09.28.02.34.23
+ by smtp.gmail.com with ESMTPSA id ca6sm599621pjb.53.2020.09.28.02.37.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Sep 2020 02:34:24 -0700 (PDT)
-To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+ Mon, 28 Sep 2020 02:37:57 -0700 (PDT)
+To: Ulf Hansson <ulf.hansson@linaro.org>
 References: <20200927194846.045411263@linutronix.de>
- <20200927194922.444952084@linutronix.de>
+ <20200927194922.245750969@linutronix.de>
+ <a345ad51-4db7-5e4f-3ff9-f1673c12da99@broadcom.com>
+ <CAPDyKFrC2j5S7NrtTRCBga=rttKBp-OZnsEnAEgnXj8zj11p0w@mail.gmail.com>
 From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Message-ID: <aac2b8b3-53f4-9b27-03d0-742bbe3cd81f@broadcom.com>
-Date: Mon, 28 Sep 2020 11:34:22 +0200
+Message-ID: <c0e376ac-3261-e413-0fe1-505aaa7cbea9@broadcom.com>
+Date: Mon, 28 Sep 2020 11:37:43 +0200
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200927194922.444952084@linutronix.de>
+In-Reply-To: <CAPDyKFrC2j5S7NrtTRCBga=rttKBp-OZnsEnAEgnXj8zj11p0w@mail.gmail.com>
 X-Mailman-Approved-At: Mon, 28 Sep 2020 14:03:43 +0000
-Subject: Re: [Intel-wired-lan] [patch 26/35] net: brcmfmac: Convey
- allocation mode as argument
+Subject: Re: [Intel-wired-lan] [patch 24/35] net: brcmfmac: Replace
+ in_interrupt()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,16 +90,17 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Andrew Lunn <andrew@lunn.ch>,
- Emmanuel Grumbach <emmanuel.grumbach@intel.com>, linux-doc@vger.kernel.org,
+ Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
+ Linux Documentation <linux-doc@vger.kernel.org>,
  Peter Zijlstra <peterz@infradead.org>, Chris Snook <chris.snook@gmail.com>,
  Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
  Govindarajulu Varadarajan <_govind@gmx.com>,
  Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
  Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>,
- Edward Cree <ecree@solarflare.com>, libertas-dev@lists.infradead.org,
- brcm80211-dev-list@cypress.com, Stanislaw Gruszka <stf_xl@wp.pl>,
- Ping-Ke Shih <pkshih@realtek.com>, Johannes Berg <johannes.berg@intel.com>,
- Jonathan Corbet <corbet@lwn.net>,
+ Pensando Drivers <drivers@pensando.io>, libertas-dev@lists.infradead.org,
+ brcm80211-dev-list <brcm80211-dev-list@cypress.com>,
+ Stanislaw Gruszka <stf_xl@wp.pl>, Ping-Ke Shih <pkshih@realtek.com>,
+ Johannes Berg <johannes.berg@intel.com>, Jonathan Corbet <corbet@lwn.net>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
  Heiner Kallweit <hkallweit1@gmail.com>, Martin Habets <mhabets@solarflare.com>,
@@ -107,61 +111,72 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Hante Meuleman <hante.meuleman@broadcom.com>,
  Pascal Terjan <pterjan@google.com>,
  Linus Torvalds <torvalds@linuxfoundation.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
- Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
+ Daniel Drake <dsd@gentoo.org>, Thomas Gleixner <tglx@linutronix.de>,
  Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
  brcm80211-dev-list.pdl@broadcom.com,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Xinming Hu <huxinming820@gmail.com>, netdev@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Xinming Hu <huxinming820@gmail.com>, netdev <netdev@vger.kernel.org>,
+ Linux USB List <linux-usb@vger.kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, Edward Cree <ecree@solarflare.com>,
  Ganapathi Bhat <ganapathi.bhat@nxp.com>,
  Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
  Shannon Nelson <snelson@pensando.io>, "David S. Miller" <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Christian Benvenuti <benve@cisco.com>
-Content-Type: multipart/mixed; boundary="===============4357600991112791387=="
+Content-Type: multipart/mixed; boundary="===============2166829184372899224=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============4357600991112791387==
+--===============2166829184372899224==
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="00000000000055c69f05b05c5fda"
+	boundary="0000000000000336fc05b05c6c1e"
 
---00000000000055c69f05b05c5fda
+--0000000000000336fc05b05c6c1e
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 
-On 9/27/2020 9:49 PM, Thomas Gleixner wrote:
-> From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+On 9/28/2020 11:19 AM, Ulf Hansson wrote:
+> On Mon, 28 Sep 2020 at 09:35, Arend Van Spriel
+> <arend.vanspriel@broadcom.com> wrote:
+>>
+>> + Uffe
+>>
+>> On 9/27/2020 9:49 PM, Thomas Gleixner wrote:
+>>> @@ -85,7 +85,7 @@ static void brcmf_sdiod_ib_irqhandler(st
+>>>
+>>>        brcmf_dbg(INTR, "IB intr triggered\n");
+>>>
+>>> -     brcmf_sdio_isr(sdiodev->bus);
+>>> +     brcmf_sdio_isr(sdiodev->bus, false);
+>>>    }
+>>
+>> Hi Uffe,
+>>
+>> I assume the above code is okay, but want to confirm. Is the SDIO
+>> interrupt guaranteed to be on a worker thread?
 > 
-> The usage of in_interrupt() in drivers is phased out and Linus clearly
-> requested that code which changes behaviour depending on context should
-> either be seperated or the context be conveyed in an argument passed by the
-> caller, which usually knows the context.
+> Correct.
 > 
-> brcmf_fweh_process_event() uses in_interrupt() to select the allocation
-> mode GFP_KERNEL/GFP_ATOMIC. Aside of the above reasons this check is
-> incomplete as it cannot detect contexts which just have preemption or
-> interrupts disabled.
+> As a matter of fact, the sdio irqs can be delivered through a couple
+> of different paths. The legacy (scheduled for removal), is from a
+> dedicated kthread. The more "modern" way is either from the context of
+> a threaded IRQ handler or via a workqueue.
 > 
-> All callchains leading to brcmf_fweh_process_event() can clearly identify
-> the calling context. Convey a 'gfp' argument through the callchains and let
-> the callers hand in the appropriate GFP mode.
-> 
-> This has also the advantage that any change of execution context or
-> preemption/interrupt state in these callchains will be detected by the
-> memory allocator for all GFP_KERNEL allocations.
+> However, there are also so-called out of band SDIO irqs, typically
+> routed via a separate GPIO line. This isn't managed by the MMC/SDIO
+> subsystem, but the SDIO functional driver itself.
 
-Looking at the functions changed I see overlap with patch 25/35 so maybe 
-change to gfp flag to a 'in_isr' bool. The flag can then be used for 
-dealing with netif_rx as well.
+In brcmfmac we indeed support the out-of-band interrupt. That scnenario 
+is also taken care of in this patch. Thanks for the confirmation.
 
 Regards,
 Arend
 
---00000000000055c69f05b05c5fda
+--0000000000000336fc05b05c6c1e
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -232,18 +247,18 @@ WwHVQUbAn+xLMIQpycIQFoJIGJX4MeaTSMfLNP2w7nP2uLNgIeleF284vS0XVkBXSCgIGylP4SN+
 HQYrv7fVCbtp+c7nFvP7MYICbzCCAmsCAQEwbTBdMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 YmFsU2lnbiBudi1zYTEzMDEGA1UEAxMqR2xvYmFsU2lnbiBQZXJzb25hbFNpZ24gMiBDQSAtIFNI
 QTI1NiAtIEczAgxR3m7Pj6LvQiWjJy0wDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIE
-IN1RyA+PNhsMUy9vEfg99J5e+nf5pMCYAZf+Ujb2PKIPMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0B
-BwEwHAYJKoZIhvcNAQkFMQ8XDTIwMDkyODA5MzQyNlowaQYJKoZIhvcNAQkPMVwwWjALBglghkgB
+II6F2ZZuAl/iMeY3pjVdC/b3QXE5fLkDbGWx/k63GGTzMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0B
+BwEwHAYJKoZIhvcNAQkFMQ8XDTIwMDkyODA5Mzc1OVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgB
 ZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQow
-CwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBEkEJ6e46frJBcTgPc
-USoRdvYZtn65rDvXH1aeKyTnc5dyOQ8/XpUGYRj7L4tOkUiFGuNoYXGphUTFMsI9cS1JJpx4AVIF
-e4c8mu+BVbbrOJX0JBTVdDVvBvdcN0Mlt/05XSXdy8UIW/aImSQ5oVLFriuDc0kWWH1KceqcNCPf
-sX1+8B6OrbIkkW/8GSpp8yZdeeppraxwby0dw1pyXq2B2Y8uxLcs9Hwzei85PlLg3SDpNihOXxbF
-AaGjyoMCveZuVp2InSLSG2cRrnOU5c7ZqI589TDs2L1fAuLmWa84uusbgKYgvnAl8kq6xHkoFKnB
-TTw2RakqYhyEgHpWmOIN
---00000000000055c69f05b05c5fda--
+CwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBVhIE/6keQDRkz+dzL
+7/S30na7g7HHkED4uHtTXDcFJkKXnY0MUWhEF5alkUTvuhHfXvTOtwvLvdR7Y8AqswAKg/qTO2xS
+EW92fMFDCRjsMsbeseH6L85yfzR4vE4VHptmoQwkJcBVwwW/f/uMppcfjQ/nnr6Edf54PxJobkPC
+c8BzRzldU3xkK6fLsH3TKtlUUnnaa0SqUwobHvW5lH3lEO8J1LystLYzDjL9yFegHir3h1JM2PhH
+uUhx2smH6BIqymeI1iSDUzfuTr3KPv6j9YaEBLiqfmAIXtDIFgSblYWSYHr+PQLvvOEv5A48rbcf
+FYK2YJD87ecVEmcnjvz3
+--0000000000000336fc05b05c6c1e--
 
---===============4357600991112791387==
+--===============2166829184372899224==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -254,4 +269,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============4357600991112791387==--
+--===============2166829184372899224==--
