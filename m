@@ -2,109 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7E0F27B438
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 20:14:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0608A27B4C9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 20:48:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 633B386E64;
-	Mon, 28 Sep 2020 18:14:43 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 668F08702C;
+	Mon, 28 Sep 2020 18:48:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ak0lYHw5oxpl; Mon, 28 Sep 2020 18:14:43 +0000 (UTC)
+	with ESMTP id 4sK17NjC6K4h; Mon, 28 Sep 2020 18:48:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id D6D6886FB0;
-	Mon, 28 Sep 2020 18:14:41 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 824A386FB7;
+	Mon, 28 Sep 2020 18:48:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3BAFA1BF362
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:14:40 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 504931BF362
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:21:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 3744985AB3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:14:40 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 484D286E1D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:21:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CRCvANNuktpb for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Sep 2020 18:14:38 +0000 (UTC)
-X-Greylist: delayed 01:21:35 by SQLgrey-1.7.6
-Received: from EUR05-DB8-obe.outbound.protection.outlook.com
- (mail-db8eur05on2138.outbound.protection.outlook.com [40.107.20.138])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A510685B95
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:14:37 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=b8xoEsYoBYtBM0TgwoCxi768Q2Yf0nO79ZCTDWOX4AbDnWTS9JUfFlkSe7TXtgIOUxMsH0olCgW6D46+3KQS6Lf9pW731WaSMDjkHHsyySSwe/hCEzBx+rCQhIU6kmLaDOl0yuxPUY/GyBAGT9DQgevG+3WIVF2gJxOOItt27HVBGZj6guXQrCovW7XPWkDRrtYpJu/SCMbB8V6jjJB8FoAfMP1R5AR8nq20G6IMscUweWef4u5C0OD2l0XGTUcCaz/8youDa6Mm2JOp27Ym1FBMZfiplTX/WA9IvD5dxqW34u7IxnMcGJOEIBwiVHzzl5mcgqIDxNIrZM4Za75tXg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PhXxaubb0zlt9QaPlKiTE/0vWNU82UIcbaVzyQYFqRc=;
- b=VxeGfU14+/B15m6yfsRCC8mLSXRcmjn6nWz3a0f/0X2KzEzDw2YFHU09JiyqIg3V9At6UyrU6/o9C45BefkGiltKUJchk1L7cwCyQ3Xwh0ZE2Z9vmZ/3tL2KMT3YqppgFm7k7DKfS8XEl5F6SiO6mCUZcroCb0OZeMypLj4pk0PRNVY29OCcd1E8FCshGfKj6MqGmGRP365m84ORqOmw6dFPCgsCaS7CWxXnb2NiDtLO48Xz3axuzEflHckYaqmDhGJOYOC3P/HFneLovo0VL2ubLgY3vlw74Z7m183T6gu4AJo/lHNd9OXuQPksyWLPSc5fkw50S3y31Xsf7BFrNA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=voleatech.de; dmarc=pass action=none header.from=voleatech.de;
- dkim=pass header.d=voleatech.de; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=voleatech.de;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PhXxaubb0zlt9QaPlKiTE/0vWNU82UIcbaVzyQYFqRc=;
- b=bGJ1cyqx/xZcXAGx5vCIFu9PMWNE0FhCmAc3kPmY1ZdZ/v7fwVCrVdBOqp6zDM31ylHL+WPXPtAX/9bZF0TN6FFR510k3JQ1V0o/5NFk3DI76t4E6Vs10UiYH6QjXh0EDoRelMi5se9cDdsqBy9noipx7wcpzVgPFrUanfE5kkE=
-Authentication-Results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=voleatech.de;
-Received: from AM8PR05MB7251.eurprd05.prod.outlook.com (2603:10a6:20b:1d4::23)
- by AM0PR0502MB3810.eurprd05.prod.outlook.com (2603:10a6:208:1e::32)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3412.29; Mon, 28 Sep
- 2020 18:14:35 +0000
-Received: from AM8PR05MB7251.eurprd05.prod.outlook.com
- ([fe80::94b8:d700:da06:a7c]) by AM8PR05MB7251.eurprd05.prod.outlook.com
- ([fe80::94b8:d700:da06:a7c%4]) with mapi id 15.20.3412.029; Mon, 28 Sep 2020
- 18:14:35 +0000
-Date: Mon, 28 Sep 2020 20:14:33 +0200
-From: Sven Auhagen <sven.auhagen@voleatech.de>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Message-ID: <20200928181433.v6bc5z4hza24es2c@svensmacbookair.sven.lan>
-References: <CANDGNvbX+BwA_ZUmw2rxH5FGLFsCVH33Tw3RCk3e3Qo69J+4qw@mail.gmail.com>
- <87lfh7fkqs.fsf@toke.dk>
- <CANDGNvbY=8XEJP=S3e+5V2RU6u0zjRE3YDo62bhV-Qaje=++2A@mail.gmail.com>
- <5f7f5056-d1de-737b-2d76-cd37e4a4db8e@gmail.com>
- <20200928172449.50a3e755@carbon>
- <20200928162010.wpv6ukqscuxaxtnj@svensmacbookair.sven.lan>
- <f1a1a7c89fce4ba5c78da65700e02d353bb9e5d4.camel@intel.com>
-Content-Disposition: inline
-In-Reply-To: <f1a1a7c89fce4ba5c78da65700e02d353bb9e5d4.camel@intel.com>
-X-ClientProxiedBy: AM4PR07CA0031.eurprd07.prod.outlook.com
- (2603:10a6:205:1::44) To AM8PR05MB7251.eurprd05.prod.outlook.com
- (2603:10a6:20b:1d4::23)
+ with ESMTP id EX6yBUnvXT-l for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Sep 2020 18:21:26 +0000 (UTC)
+X-Greylist: delayed 00:48:35 by SQLgrey-1.7.6
+Received: from mail-pg1-f181.google.com (mail-pg1-f181.google.com
+ [209.85.215.181])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 81E4886DEA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:21:26 +0000 (UTC)
+Received: by mail-pg1-f181.google.com with SMTP id t14so1571295pgl.10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 11:21:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-transfer-encoding:content-language;
+ bh=dXB5sy6RuZTJPqx7JJLXNWe1a908CXA07ElMJ2w7R68=;
+ b=sJXRxO3VX4I/D6OKhoVkZO/piViwl1rsupkYazfFzknNozgI8OsHjhRNoJktdix5sL
+ XUePafekvxNj5dX2ZMNgPcxdgvjKnkbGxEJHb5M7MD6jsXR24Z16f7Q8EMF5gSrpcqV3
+ 6mdJsMem+f4C7b9Iy8bk9humZkeCkuU0VDUAFi3VrIZ1AvBJykcO3j/m813G3+0PUELA
+ 8jig6g1XAuBTfOqXNacgr0soT1uIdlZZ/QhywRu6HBMy1Ncr+lfoiCUVKIuNsV2E8yzC
+ 6Etpltkq/5EZsG8x+m98hzY644sBlZD9g9rlktFFEXZxJkhYAnrqwKkSvnbtDB8ytbwH
+ WhHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=dXB5sy6RuZTJPqx7JJLXNWe1a908CXA07ElMJ2w7R68=;
+ b=G5azVIsOyGDdMP8fAKPKll4QVb+rAEXxLH6Qbe1j7c+77JnuNU13XhNpgsriifnX4W
+ bzp9L9Nq5zQx22a8lAP1KjryXQaNDWsHz3XKOJ4TNiMmvpxen8VLrpCgS3y5Bhzaq1e0
+ +O+FzySrAMzAcw8ugcUi+R9ZEBPEs8eRoL9kUXp1aqP7aVc3SpiFeKLR0CkAcFnQvaXd
+ zq7tjh52p2mHpf0ntC02e9LsCXWEjHPWpU/18t7Uvyr6PBK8wbpqEaKkRsXndgjduj3b
+ VRVb36MO8hVJfNDC/PBSsHIvPVRcj2f4XYjfASfYuwS5wDGPQXGJAxwxLH0Zd7+vg67g
+ U+sw==
+X-Gm-Message-State: AOAM531+pdVDqa9hNTrW75U1FP0B/fCsOD2B22RSxIs+i0pKJUyA+FjW
+ m6T5sUVawlFKYnJg8TmcJqWKK4qcADkJVJkD
+X-Google-Smtp-Source: ABdhPJyoyl1fomYslG+xBdkpZIhAHLVX6EHj3huo2N9gQMS+dYAudkP3ZT0Owaa2qZhTwb+CGqQqNA==
+X-Received: by 2002:a63:784:: with SMTP id 126mr121408pgh.428.1601313891289;
+ Mon, 28 Sep 2020 10:24:51 -0700 (PDT)
+Received: from Shannons-MacBook-Pro.local
+ (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
+ by smtp.gmail.com with ESMTPSA id u71sm2511314pfc.43.2020.09.28.10.24.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Sep 2020 10:24:50 -0700 (PDT)
+To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+References: <20200927194846.045411263@linutronix.de>
+ <20200927194920.918550822@linutronix.de>
+From: Shannon Nelson <snelson@pensando.io>
+Message-ID: <5e4c3201-9d90-65b1-5c13-e2381445be1d@pensando.io>
+Date: Mon, 28 Sep 2020 10:24:47 -0700
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
+ Gecko/20100101 Thunderbird/68.12.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from svensmacbookair.sven.lan (109.193.235.168) by
- AM4PR07CA0031.eurprd07.prod.outlook.com (2603:10a6:205:1::44) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3433.18 via Frontend Transport; Mon, 28 Sep 2020 18:14:34 +0000
-X-Originating-IP: [109.193.235.168]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 20c6947f-a0e7-486f-28b5-08d863da5a9c
-X-MS-TrafficTypeDiagnostic: AM0PR0502MB3810:
-X-Microsoft-Antispam-PRVS: <AM0PR0502MB38107E8D7D3C12EB0CD62B25EF350@AM0PR0502MB3810.eurprd05.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: IWUOfGJ/DIxPL9xCZu+0OhB5AQZtYwLmYz30NHLYeNWTlexa9GfqI4eBLTnvQ8Z9clR6hXyQ8ew0+77X8rULenzu74LMqBfyU9KHCOOnM1ScGqn28FR6DhCkS48Qg20qbijwnmIXdscHJOKRAT+Vz3a+9uGWOdDYuRgBVFQz8ekYRhqJuZISmeFCcudTaKLZa9INFx3BQwwXtky/RQMhgja7qQIpBPCOZgnoc++PiiVSfRc/4sT0BViDnb5nGC9Dn2X6J564/56p8310VYh1D3DIcSDTMjhGuX7JJ9y28B0aCJ4cGDUFKNplYBReARjbjL8WjzsmCL5d5jjljiNS3bUzYXl9vebleF8YUynGHcwavSycog0/gOGu6zh7/ot8/1/vVQsAl3wTnoNqnPOP0Piwnld07yaU7w3m5/rqsPVXsIkZ2sQnOVRPZVQkHIuAeHgMAQdZ83Od+aBZqozmfQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM8PR05MB7251.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(39830400003)(396003)(136003)(366004)(346002)(8936002)(66574015)(86362001)(52116002)(7696005)(1076003)(8676002)(478600001)(966005)(6916009)(16526019)(54906003)(26005)(186003)(316002)(66476007)(66556008)(956004)(45080400002)(44832011)(6506007)(53546011)(9686003)(55016002)(5660300002)(4326008)(66946007)(2906002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData: ByAgNnMeZyxsT7H/kv24RGXCFJ4Lx3oHHJBK2oTL3ql8GBFXxMpsRiglFcSFl6MEENEzou3n6MG9qRnDJy171/n8Eyt9wHb/JQwM04bTL5sm3eD+pGsGuc+FlmCxxGFEIRuJGIkysw71FfoDIBVOc4LF7C9w+xyigiQD/tDemugPrpSdRfPpEn3PwmpuJdAIw+2FurmsI1Q5UvSP0Vf5Wt4E+hT7nsOtAVMu6Oy/Nx5ym2/F0s3Om2ATNEc+jP3974Z6QTDWaZwhW7t6TCyeGHVXfSrKSUhknWFiuZat+SuajTuEwhWAY/errT/1g1cLHB81dYI8DaconKleLjTbuYZPL52uAKn213fMdgfPz7p/aLXeBlYhkrRlZn4k6I/LEt6sq/Ff8mplOyLrLjgajAsKs6au0jkLBqj/qh/VbaEvlvnHnYz88BDG+hh6AB9M4GPdWzuzYHeEXqLctPUKiDTt3wtLS34JkYg6w6YqKjWs2SH9T3QAXnA0WIpA2rDGuAWIxCzDmr2bKpHAinaA7Ba74bHiAnh+TEdObr+Xri0TSejGcHnbDxeKMyCAq3jGc3qZ92rfQwiftEBnkAVuK333PrBU4/x61UHMmFRo+E3dncVBTeeYBuVY+hUpDpQndh5FM4CZrC4yIpJawMlVMA==
-X-OriginatorOrg: voleatech.de
-X-MS-Exchange-CrossTenant-Network-Message-Id: 20c6947f-a0e7-486f-28b5-08d863da5a9c
-X-MS-Exchange-CrossTenant-AuthSource: AM8PR05MB7251.eurprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Sep 2020 18:14:34.8851 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b82a99f6-7981-4a72-9534-4d35298f847b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Yh844yw2BDdyIrjRmkzbdKfkLMJrXpia87yIeRksH1tOUzyb2xpdUfYL6wZp+65wTrfQNEousl7yyvVtypnY0dIudRrEJsKToScMZzaYo/8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR0502MB3810
-Subject: Re: [Intel-wired-lan] bpf_redirect and xdpgeneric
+In-Reply-To: <20200927194920.918550822@linutronix.de>
+Content-Language: en-US
+X-Mailman-Approved-At: Mon, 28 Sep 2020 18:48:47 +0000
+Subject: Re: [Intel-wired-lan] [patch 11/35] net: ionic: Replace
+ in_interrupt() usage.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,130 +92,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "xdp-newbies@vger.kernel.org" <xdp-newbies@vger.kernel.org>,
- "ThomasPtacek@gmail.com" <ThomasPtacek@gmail.com>,
- "toke@redhat.com" <toke@redhat.com>, "brouer@redhat.com" <brouer@redhat.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "dsahern@gmail.com" <dsahern@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Emmanuel Grumbach <emmanuel.grumbach@intel.com>, linux-doc@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, Chris Snook <chris.snook@gmail.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Arend van Spriel <arend.vanspriel@broadcom.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>,
+ Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>,
+ Edward Cree <ecree@solarflare.com>, libertas-dev@lists.infradead.org,
+ brcm80211-dev-list@cypress.com, brcm80211-dev-list.pdl@broadcom.com,
+ Ping-Ke Shih <pkshih@realtek.com>, Johannes Berg <johannes.berg@intel.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Intel Linux Wireless <linuxwifi@intel.com>,
+ Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Martin Habets <mhabets@solarflare.com>, Ulrich Kunitz <kune@deine-taler.de>,
+ Jay Cliburn <jcliburn@gmail.com>, Paul McKenney <paulmck@kernel.org>,
+ Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen <j@w1.fi>,
+ Hante Meuleman <hante.meuleman@broadcom.com>,
+ Pascal Terjan <pterjan@google.com>,
+ Linus Torvalds <torvalds@linuxfoundation.org>,
+ Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
+ Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
+ Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
+ Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ganapathi Bhat <ganapathi.bhat@nxp.com>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
+ Christian Benvenuti <benve@cisco.com>, "David S. Miller" <davem@davemloft.net>,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Sep 28, 2020 at 06:04:14PM +0000, Nguyen, Anthony L wrote:
-> On Mon, 2020-09-28 at 18:20 +0200, Sven Auhagen wrote:
-> > On Mon, Sep 28, 2020 at 05:24:49PM +0200, Jesper Dangaard Brouer
-> > wrote:
-> > > On Fri, 18 Sep 2020 14:27:45 -0600
-> > > David Ahern <dsahern@gmail.com> wrote:
-> > > 
-> > > > On 9/18/20 12:42 PM, Thomas Ptacek wrote:
-> > > > > The setup is pretty simple. There's an eno1 (igb driver), to
-> > > > > which our
-> > > > > default route points. On the same box are several VMs. There's
-> > > > > a tap
-> > > > > interface (for each VM, call it tapX). Traffic for a VM flows
-> > > > > in from
-> > > > > the Internet on eno1 and is directed to tapX; the response
-> > > > > traffic
-> > > > > flows in the other direction.
-> > > > > 
-> > > > > I'm deliberately simplifying here:
-> > > > > 
-> > > > > eno1 runs an XDP program that does some lightweight IP
-> > > > > rewriting from
-> > > > > anycast addresses to internal VM addresses on ingress. eno1's
-> > > > > XDP
-> > > > > program currently XDP_PASS's rewritten packets to the IP stack,
-> > > > > where
-> > > > > they're routed to the VM's tap. This works fine.
-> > > > > 
-> > > > > tapX runs an XDP program that does the same rewriting in
-> > > > > reverse.
-> > > > > Right now, it also XDP_PASS's packets to the stack, which also
-> > > > > works
-> > > > > --- the stack routes response traffic out eno1.
-> > > > > 
-> > > > > I'm playing with XDP_REDIRECT'ing instead of XDP_PASS'ing.
-> > > > > 
-> > > > > I have the ifindexes and MAC addresses (and those of IP
-> > > > > neighbors) in
-> > > > > a map --- a normal HASH map, not a DEVMAP. Using that map, I
-> > > > > can
-> > > > > successfully redirect traffic from tapX to arbitrary other tap
-> > > > > interfaces. What I can't do is redirect packets from tapX to
-> > > > > eno1,
-> > > > > which is what the system actually needs to do.
-> > > > >   
-> > > > 
-> > > > XDP_REDIRECT sends the packet to a devices ndo_xdp_xmit function.
-> > > > tap
-> > > > implements it hence eno1 -> tap works; igb does not meaning tap
-> > > > -> eno1
-> > > > fails.
-> > > 
-> > > There is clearly a real-life use-case for adding native-XDP support
-> > > for
-> > > igb driver.  Sven (cc) have implemented this (v6[1]), but something
-> > > is
-> > > causing this patch to not move forward, what is stalling Intel
-> > > maintainers?
-> > 
-> > The holdup is from the Intel guys.
-> > There is a v7 with the changes for Kernel 5.9 but it was only posted
-> > on
-> > the Intel list:
-> > 
-> > 
-> https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpatchwork.ozlabs.org%2Fproject%2Fintel-wired-lan%2Fpatch%2F20200902203222.185141-1-anthony.l.nguyen%40intel.com%2F&amp;data=02%7C01%7Csven.auhagen%40voleatech.de%7Ce8e80921128f4ac3edac08d863d8f03f%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637369130683150522&amp;sdata=d1BsVNZlbp7Kgh8bmzailbrR22Y61%2B6mb0VdKtK30yw%3D&amp;reserved=0
-> > 
-> > They tested it last week so it should hopefully be merged in the next
-> > window.
-> 
-> There were some email issues which prevented us from sending it out
-> sooner (after it was tested). The issue was resolved Friday, I just
-> sent the patch to netdev:
-> 
-> 
-> https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpatchwork.ozlabs.org%2Fproject%2Fnetdev%2Fpatch%2F20200928175908.318502-2-anthony.l.nguyen%40intel.com%2F&amp;data=02%7C01%7Csven.auhagen%40voleatech.de%7Ce8e80921128f4ac3edac08d863d8f03f%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637369130683160513&amp;sdata=4h1AykO8YnnPSvulMtqeKZnjJ5DFOV1ISnd3OrFCOow%3D&amp;reserved=0
-> 
-> Thanks,
-> Tony
-
-Thank you Tony!
-
-Best
-Sven
-
-> 
-> > > 
-> > > To Thomas, you could try out the patch[2] and report back if it
-> > > works
-> > > for you?  (I think it will help moving patch forward...)
-> > > 
-> > 
-> > I would be interested if it works for you as well.
-> > 
-> > Best
-> > Sven
-> > 
-> > > [1] 
-> > > https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fnetdev%2F20200902054509.23jbv5fyj3otziq2%40svensmacbookair.sven.lan%2F&amp;data=02%7C01%7Csven.auhagen%40voleatech.de%7Ce8e80921128f4ac3edac08d863d8f03f%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637369130683160513&amp;sdata=isaa7n1ZQ780i4qBS4%2FcyY2jcH8hNGpcdM1k9C%2FREBw%3D&amp;reserved=0
-> > > [2] 
-> > > https://eur03.safelinks.protection.outlook.com/?url=http%3A%2F%2Fpatchwork.ozlabs.org%2Fproject%2Fnetdev%2Fpatch%2F20200902054509.23jbv5fyj3otziq2%40svensmacbookair.sven.lan%2F&amp;data=02%7C01%7Csven.auhagen%40voleatech.de%7Ce8e80921128f4ac3edac08d863d8f03f%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637369130683160513&amp;sdata=FgceLkpqx8G456QFYfd9NtyzB0nR1Pah7xWtaYLs6ho%3D&amp;reserved=0
-> > > -- 
-> > > Best regards,
-> > >   Jesper Dangaard Brouer
-> > >   MSc.CS, Principal Kernel Engineer at Red Hat
-> > >   LinkedIn: 
-> > > https://eur03.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.linkedin.com%2Fin%2Fbrouer&amp;data=02%7C01%7Csven.auhagen%40voleatech.de%7Ce8e80921128f4ac3edac08d863d8f03f%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637369130683160513&amp;sdata=sSXuQu60fdu%2BbDMmJburEkEllprEuSXdb8n1L02FPNk%3D&amp;reserved=0
-> > > 
-> > 
-> > _______________________________________________
-> > Intel-wired-lan mailing list
-> > Intel-wired-lan@osuosl.org
-> > https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Flists.osuosl.org%2Fmailman%2Flistinfo%2Fintel-wired-lan&amp;data=02%7C01%7Csven.auhagen%40voleatech.de%7Ce8e80921128f4ac3edac08d863d8f03f%7Cb82a99f679814a7295344d35298f847b%7C0%7C0%7C637369130683160513&amp;sdata=Rgn71oeQEuNQ9jlX1bSnbcxiZnmAP3YBGM9GfbC1x94%3D&amp;reserved=0
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gOS8yNy8yMCAxMjo0OCBQTSwgVGhvbWFzIEdsZWl4bmVyIHdyb3RlOgo+IEZyb206IFNlYmFz
+dGlhbiBBbmRyemVqIFNpZXdpb3IgPGJpZ2Vhc3lAbGludXRyb25peC5kZT4KPgo+IFRoZSBpbl9p
+bnRlcnJ1cHQoKSB1c2FnZSBpbiB0aGlzIGRyaXZlciB0cmllcyB0byBmaWd1cmUgb3V0IHdoaWNo
+IGNvbnRleHQKPiBtYXkgc2xlZXAgYW5kIHdoaWNoIGNvbnRleHQgbWF5IG5vdCBzbGVlcC4gaW5f
+aW50ZXJydXB0KCkgaXMgbm90IHJlYWxseQo+IHN1aXRhYmxlIGFzIGl0IG1pc3NlcyBib3RoIHBy
+ZWVtcHRpb24gZGlzYWJsZWQgYW5kIGludGVycnVwdCBkaXNhYmxlZAo+IGludm9jYXRpb25zIGZy
+b20gdGFzayBjb250ZXh0Lgo+Cj4gQ29uZGl0aW9uYWxzIGxpa2UgdGhhdCBpbiBkcml2ZXIgY29k
+ZSBhcmUgZnJvd25lZCB1cG9uIGluIGdlbmVyYWwgYmVjYXVzZQo+IGludm9jYXRpb25zIG9mIGZ1
+bmN0aW9ucyBmcm9tIGludmFsaWQgY29udGV4dHMgbWlnaHQgbm90IGJlIGRldGVjdGVkCj4gYXMg
+dGhlIGNvbmRpdGlvbmFsIHBhcGVycyBvdmVyIGl0Lgo+Cj4gaW9uaWNfbGlmX2FkZHIoKSBjYW4g
+YmUgY2FsbGVkIGZyb206Cj4KPiAgIDEpIC0+bmRvX3NldF9yeF9tb2RlKCkgd2hpY2ggaXMgdW5k
+ZXIgbmV0aWZfYWRkcl9sb2NrX2JoKCkpIHNvIGl0IG11c3Qgbm90Cj4gICAgICBzbGVlcC4KPgo+
+ICAgMikgSW5pdCBhbmQgc2V0dXAgZnVuY3Rpb25zIHdoaWNoIGFyZSBpbiBmdWxseSBwcmVlbXB0
+aWJsZSB0YXNrIGNvbnRleHQuCj4KPiBfaW9uaWNfbGlmX3J4X21vZGUoKSBoYXMgb25seSBvbmUg
+Y2FsbCBwYXRoIHdpdGggQkggZGlzYWJsZWQuCj4KPiBpb25pY19saW5rX3N0YXR1c19jaGVja19y
+ZXF1ZXN0KCkgaGFzIHR3byBjYWxsIHBhdGhzOgo+Cj4gICAxKSBOQVBJIHdoaWNoIG9idmlvdXNs
+eSBjYW5ub3Qgc2xlZXAKPgo+ICAgMikgU2V0dXAgd2hpY2ggaXMgYWdhaW4gZnVsbHkgcHJlZW1w
+dGlibGUgdGFzayBjb250ZXh0Cj4KPiBBZGQgJ2Nhbl9zbGVlcCcgYXJndW1lbnRzIHRvIHRoZSBh
+ZmZlY3RlZCBmdW5jdGlvbnMgYW5kIGxldCB0aGUgY2FsbGVycwo+IHByb3ZpZGUgdGhlIGNvbnRl
+eHQgaW5zdGVhZCBvZiBsZXR0aW5nIHRoZSBmdW5jdGlvbnMgZGVkdWNlIGl0Lgo+Cj4gU2lnbmVk
+LW9mZi1ieTogU2ViYXN0aWFuIEFuZHJ6ZWogU2lld2lvciA8YmlnZWFzeUBsaW51dHJvbml4LmRl
+Pgo+IFNpZ25lZC1vZmYtYnk6IFRob21hcyBHbGVpeG5lciA8dGdseEBsaW51dHJvbml4LmRlPgo+
+IENjOiBTaGFubm9uIE5lbHNvbiA8c25lbHNvbkBwZW5zYW5kby5pbz4KPiBDYzogUGVuc2FuZG8g
+RHJpdmVycyA8ZHJpdmVyc0BwZW5zYW5kby5pbz4KPiBDYzogIkRhdmlkIFMuIE1pbGxlciIgPGRh
+dmVtQGRhdmVtbG9mdC5uZXQ+Cj4gQ2M6IEpha3ViIEtpY2luc2tpIDxrdWJhQGtlcm5lbC5vcmc+
+Cj4gQ2M6IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmcKCkFja2VkLWJ5OiBTaGFubm9uIE5lbHNvbiA8
+c25lbHNvbkBwZW5zYW5kby5pbz4KCj4gLS0tCj4KPiBXaGlsZSByZXZpZXdpbmcgdGhlIGNhbGxw
+YXRocywgYSBjb3VwbGUgb2YgdGhpbmdzIHdlcmUgb2JzZXJ2ZWQgd2hpY2ggY291bGQKPiBiZSBp
+bXByb3ZlZDoKPgo+IC0gaW9uaWNfbGlmX2RlZmVycmVkX3dvcmsoKSBjYW4gaXRlcmF0ZSBvdmVy
+IHRoZSBsaXN0LiBUaGVyZSBpcyBubyBuZWVkCj4gICAgdG8gc2NoZWR1bGUgdGhlIHdvcmsgaXRl
+bSBhZnRlciBlYWNoIGl0ZXJhdGlvbgoKSSB0aGluayB0aGUgb3JpZ2luYWwgd3JpdGVyJ3MgaW50
+ZW50IHdhcyB0byBhdm9pZCBtb25vcG9saXppbmcgdGhlIHdvcmsgCnRocmVhZCBmb3IgdmVyeSBs
+b25nIG9uIGFueSBvbmUgY3ljbGUsIHdpdGggdGhlIHRob3VnaHQgdGhhdCB3ZSdkIGJlIAptYWtp
+bmcgbW9yZSB1c2Ugb2YgdGhpcyB0aGFuIHdlIGN1cnJlbnRseSBhcmUuwqAgSSdsbCBhZGRyZXNz
+IHRoaXMuCgo+Cj4gLSBpb25pY19saW5rX3N0YXR1c19jaGVja19yZXF1ZXN0KCkgY291bGQgaGF2
+ZSBpb25pY19kZWZlcnJlZF93b3JrIHdpdGhpbgo+ICAgIGlvbmljX2xpZigpLiBUaGlzIHdvdWxk
+IGF2b2lkIG1lbW9yeSBhbGxvY2F0aW9uIGZyb20gTkFQSS4gTW9yZQo+ICAgIGltcG9ydGFudCwg
+b25jZSBJT05JQ19MSUZfRl9MSU5LX0NIRUNLX1JFUVVFU1RFRCBpcyBzZXQgYW5kIHRoYXQgYWxs
+b2MKPiAgICBmYWlscywgdGhlIGxpbmsgY2hlY2sgbmV2ZXIgaGFwcGVucy4KClRoYW5rcywgSSds
+bCBmaXggdXAgdGhhdCBlcnJvciBjb25kaXRpb24uCgo+Cj4gLSBpb25pY19saWZfaGFuZGxlX2Z3
+X2Rvd24oKSBzZXRzIElPTklDX0xJRl9GX0ZXX1JFU0VULiBJbnZva2VzIHRoZW4KPiAgICBpb25p
+Y19saWZfZGVpbml0KCkgd2hpY2ggb25seSBpbnZva2VzIGNhbmNlbF93b3JrX3N5bmMoKSBpZgo+
+ICAgIElPTklDX0xJRl9GX0ZXX1JFU0VUIGlzIG5vdCBzZXQuIEkgdGhpbmsgdGhlIGxvZ2ljIGlz
+IHdyb25nIGhlcmUgYXMKPiAgICB0aGUgd29yayBtdXN0IGFsd2F5cyBiZSBjYW5jbGVkLiBBbHNv
+IHRoZSBsaXN0IHdpdGggaW9uaWNfZGVmZXJyZWQKPiAgICB3b3JrIGl0ZW1zIG5lZWRzIGEgY2xl
+YW4gdXAuCgpJJ2xsIGxvb2sgYXQgdGhhdCwgdGhhbmtzLgoKc2xuCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcg
+bGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
