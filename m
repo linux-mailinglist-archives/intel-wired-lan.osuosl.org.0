@@ -1,80 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ACE8127AF95
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 16:03:48 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9498527AF9B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 16:03:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id E188987038;
-	Mon, 28 Sep 2020 14:03:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B72F92044B;
+	Mon, 28 Sep 2020 14:03:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WJHTIXE2ymyW; Mon, 28 Sep 2020 14:03:46 +0000 (UTC)
+	with ESMTP id YqEKkX9QDlzd; Mon, 28 Sep 2020 14:03:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 355F88702F;
-	Mon, 28 Sep 2020 14:03:46 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1FB902049C;
+	Mon, 28 Sep 2020 14:03:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 81DA81BF2AB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 07:43:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8B9901BF32D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 08:11:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7708686F87
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 07:43:00 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 85CA186FB8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 08:11:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TaT6Q6nuQJUa for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Sep 2020 07:42:57 +0000 (UTC)
+ with ESMTP id 6ZEK9z0D+OwY for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Sep 2020 08:11:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-oi1-f170.google.com (mail-oi1-f170.google.com
- [209.85.167.170])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 97F0A86F82
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 07:42:57 +0000 (UTC)
-Received: by mail-oi1-f170.google.com with SMTP id i17so330868oig.10
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:42:57 -0700 (PDT)
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com
+ [209.85.167.51])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 9103986FA2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 08:11:27 +0000 (UTC)
+Received: by mail-lf1-f51.google.com with SMTP id m5so188304lfp.7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 01:11:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to;
- bh=g+gcUN4M4cYkte5ycBoqZXeYwd1oEJw7L2pl0efvUi0=;
- b=E1DWAY6zd/t+LCr+JkcXzhQ3BnqjLJR9b8AEnBIkE4h5fRcYOnrKc0Zdjb6YiNsxt/
- TtF5ALAyVCx1oRgRyMYsHIVjtfspu18YHaSutvf+ejXS95oePpnPPhQ/lrFUDbV7GcrV
- BEFmpjNNjuamWHJiTDMSm1IzOl8tNv3uP5+sU=
+ h=from:to:cc:date:message-id:in-reply-to:references:user-agent
+ :subject:mime-version;
+ bh=wqQ82wSbGAP68hkeJPfnjaLD+mWrmcHVsL/0ItPvf5o=;
+ b=de5Fx9WxS3b4kUmO+G/r/+eyitjOK/y60/yBqKj0avUV4jap5k6M9WALzbQwU55Yam
+ iBqxIBHnWJhxXTyMd/M+O5MQGBc1KGGLAmklsp5ckuTI1XpL1NOhc6k9MvXdnuweZGhF
+ /GqKfCPi+S2oSAvSZKSrWAXMPJF/dxVBlb1V4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to;
- bh=g+gcUN4M4cYkte5ycBoqZXeYwd1oEJw7L2pl0efvUi0=;
- b=HXydGESWrBpIcPmvzARCHl6DHlkLaC3zcuq1lOzSGfwwsnJeWUa+DfIgMUuIQnboCK
- kqezBOTuN232fmZIYBaPebdLWLlkuWZqZbpMfgbRDex+UJbE98wTKNfMaE41EXC/m5pR
- yr+VUBIRyMjCT2zC7bxu2fQ/RdoN609YYmjli4+tvDNPv2I0ot/KPCFuUksFWzBKDxvP
- uPwe5EsdwO34ndT8xBKTDO84bNjdsdASdsvZeLCuzhe4z25Qv3kA9UUSLn1Se/etYPC7
- lPoQ9Yfcoz1mm6wNj8uffvIh02ZY5d3JYBZeXfyzJRV9fCUyAa4u2nHtktFGPSE09wBh
- gFcQ==
-X-Gm-Message-State: AOAM5315UHV1Jlm2JRXssJZtb6tF9iIuqBVhJXCi1MjE6dXxLJZWIYbd
- E9QJ8xNe18MXpnMkOJD89UhDzQTTfeRwLMqYzdc=
-X-Google-Smtp-Source: ABdhPJwkhr/Jv2wUoaW3XT3g7+qKw31jfp6VuvaWGdGaG/Ysxs7xdNZwsF8xhDilMbRs1rc40OKlpA==
-X-Received: by 2002:a17:90a:ed8e:: with SMTP id
- k14mr208261pjy.178.1601278552769; 
- Mon, 28 Sep 2020 00:35:52 -0700 (PDT)
-Received: from [192.168.1.123] ([89.146.26.173])
- by smtp.gmail.com with ESMTPSA id 141sm447397pfb.50.2020.09.28.00.35.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Sep 2020 00:35:51 -0700 (PDT)
-To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
-References: <20200927194846.045411263@linutronix.de>
- <20200927194922.245750969@linutronix.de>
+ h=x-gm-message-state:from:to:cc:date:message-id:in-reply-to
+ :references:user-agent:subject:mime-version;
+ bh=wqQ82wSbGAP68hkeJPfnjaLD+mWrmcHVsL/0ItPvf5o=;
+ b=lis4olJAIHl2qPD/3XbWG51hmysUeOyBybbF+01KWEhFd4lux0iPasUpxx59bMNqxZ
+ 23+Z4AkB1OcLux9+RbhN/NsXyezQ7r1inNm7X+T8WDLVodB9G8NKXWuFQg/YEFRzvwON
+ CjjEH1mLcMnhJgpQC8TQX44w8AtzhIMvTYUmEKdY9vC26dew4sIdNbGVQbEMklMPZecM
+ snmGBRau2ga7T0Zdzt7A/BQTxVHj6wtOU28dRsjaGxN9/7XGNJhPTlWhvc6spA30uwu/
+ XocdGwXX6wcf3XTXiLBaiSxaEsO1aWr2OQBn4qo8jsPXIO3bfnefqluOAKOzU+fm9svT
+ llOA==
+X-Gm-Message-State: AOAM531JSrovBqtsKkdbPgbVUhiNdhButBOXJFffzCn8LYfQyzKgdNJe
+ 2DYQUSyAZucpyZF1ADH9zUWe2X1zk+Xo4G3DenM=
+X-Google-Smtp-Source: ABdhPJxr0fGyEDRBYLN/uNjPkpmcZqDJXbdicXb4UjzIQb1ia6XjW9lnJK6GCzYxH7dMsAK83DWbfA==
+X-Received: by 2002:a17:906:fb8f:: with SMTP id
+ lr15mr466285ejb.25.1601280210653; 
+ Mon, 28 Sep 2020 01:03:30 -0700 (PDT)
+Received: from [100.126.98.202] ([109.37.129.13])
+ by smtp.gmail.com with ESMTPSA id s30sm385235edc.8.2020.09.28.01.03.27
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 28 Sep 2020 01:03:29 -0700 (PDT)
 From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Message-ID: <a345ad51-4db7-5e4f-3ff9-f1673c12da99@broadcom.com>
-Date: Mon, 28 Sep 2020 09:35:38 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.2.2
+To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+Date: Mon, 28 Sep 2020 10:03:25 +0200
+Message-ID: <174d3bce0c8.279b.9b12b7fc0a3841636cfb5e919b41b954@broadcom.com>
+In-Reply-To: <20200927194922.339094192@linutronix.de>
+References: <20200927194846.045411263@linutronix.de>
+ <20200927194922.339094192@linutronix.de>
+User-Agent: AquaMail/1.26.0-1689 (build: 102600004)
 MIME-Version: 1.0
-In-Reply-To: <20200927194922.245750969@linutronix.de>
 X-Mailman-Approved-At: Mon, 28 Sep 2020 14:03:43 +0000
-Subject: Re: [Intel-wired-lan] [patch 24/35] net: brcmfmac: Replace
- in_interrupt()
+Subject: Re: [Intel-wired-lan] [patch 25/35] net: brcmfmac: Use
+ netif_rx_any_context().
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,7 +86,7 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+Cc: Andrew Lunn <andrew@lunn.ch>,
  Emmanuel Grumbach <emmanuel.grumbach@intel.com>, linux-doc@vger.kernel.org,
  Peter Zijlstra <peterz@infradead.org>, Chris Snook <chris.snook@gmail.com>,
  Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
@@ -100,12 +99,11 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
  Jonathan Corbet <corbet@lwn.net>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
- Heiner Kallweit <hkallweit1@gmail.com>, Martin Habets <mhabets@solarflare.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Ulrich Kunitz <kune@deine-taler.de>,
- Jay Cliburn <jcliburn@gmail.com>, Paul McKenney <paulmck@kernel.org>,
- Intel Linux Wireless <linuxwifi@intel.com>, Jouni Malinen <j@w1.fi>,
- Hante Meuleman <hante.meuleman@broadcom.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Martin Habets <mhabets@solarflare.com>,
+ Ulrich Kunitz <kune@deine-taler.de>, Jay Cliburn <jcliburn@gmail.com>,
+ Paul McKenney <paulmck@kernel.org>, Intel Linux Wireless <linuxwifi@intel.com>,
+ Jouni Malinen <j@w1.fi>, Hante Meuleman <hante.meuleman@broadcom.com>,
  Pascal Terjan <pterjan@google.com>,
  Linus Torvalds <torvalds@linuxfoundation.org>,
  Amitkumar Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
@@ -113,47 +111,51 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
  Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
  brcm80211-dev-list.pdl@broadcom.com,
  Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Xinming Hu <huxinming820@gmail.com>, netdev@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org,
+ Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Ganapathi Bhat <ganapathi.bhat@nxp.com>,
  Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
  Shannon Nelson <snelson@pensando.io>, "David S. Miller" <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Christian Benvenuti <benve@cisco.com>
-Content-Type: multipart/mixed; boundary="===============7095579517030984242=="
+Content-Type: multipart/mixed; boundary="===============2735042212504937123=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============7095579517030984242==
+--===============2735042212504937123==
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="0000000000009d4eb205b05ad0fe"
+	boundary="00000000000079d52905b05b365d"
 
---0000000000009d4eb205b05ad0fe
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-
-+ Uffe
+--00000000000079d52905b05b365d
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 8bit
 
 On 9/27/2020 9:49 PM, Thomas Gleixner wrote:
-> @@ -85,7 +85,7 @@ static void brcmf_sdiod_ib_irqhandler(st
->   
->   	brcmf_dbg(INTR, "IB intr triggered\n");
->   
-> -	brcmf_sdio_isr(sdiodev->bus);
-> +	brcmf_sdio_isr(sdiodev->bus, false);
->   }
+> From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+>
+> The usage of in_interrupt() in non-core code is phased out. Ideally the
+> information of the calling context should be passed by the callers or the
+> functions be split as appropriate.
+>
+> brcmfmac uses in_interupt() to select the netif_rx*() variant which matches
+> the calling context. The attempt to consolidate the code by passing an
+> arguemnt or by distangling it failed due lack of knowledge about this
+> driver and because the call chains are convoluted and hard to follow.
 
-Hi Uffe,
+I think it is only for USB devices that the function can be called in
+"interrupt" context. PCIe devices call it from thread context for sure.
+The function brcmf_netif_rx() is (in)directly called by brcmf_rx_frame(), 
+which is used by SDIO and USB. Anyway, it will be a bit more work, but 
+doable. Let me see what I can come up with.
 
-I assume the above code is okay, but want to confirm. Is the SDIO 
-interrupt guaranteed to be on a worker thread?
-
-Thanks,
+Regards,
 Arend
 
---0000000000009d4eb205b05ad0fe
+
+
+--00000000000079d52905b05b365d
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -224,18 +226,18 @@ WwHVQUbAn+xLMIQpycIQFoJIGJX4MeaTSMfLNP2w7nP2uLNgIeleF284vS0XVkBXSCgIGylP4SN+
 HQYrv7fVCbtp+c7nFvP7MYICbzCCAmsCAQEwbTBdMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 YmFsU2lnbiBudi1zYTEzMDEGA1UEAxMqR2xvYmFsU2lnbiBQZXJzb25hbFNpZ24gMiBDQSAtIFNI
 QTI1NiAtIEczAgxR3m7Pj6LvQiWjJy0wDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIE
-ILiEjwKp/fe8BM8724txdum3Wz3JwK5DFdFcCRvK1U8DMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0B
-BwEwHAYJKoZIhvcNAQkFMQ8XDTIwMDkyODA3NDI1N1owaQYJKoZIhvcNAQkPMVwwWjALBglghkgB
+IKt51SX3MjMlMOZba/txDVs5Q9vR9gK+hGOoOKuHe9zVMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0B
+BwEwHAYJKoZIhvcNAQkFMQ8XDTIwMDkyODA4MTEyNlowaQYJKoZIhvcNAQkPMVwwWjALBglghkgB
 ZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQow
-CwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQCXKbWNsY48BXfnfSHo
-J6hiQpgisuSU+Q0vB/WR8+OExChTwSS1RmRljKiwK3tBtyF5HqYoTGdOcNyISgy3pChOEhNf0ROX
-GEStWmIjRfjKQ5JkODUZKvz/nk/AnlQaY2SK+Ps/qONfUMm9KE65WvyDyGk3lGs8bBMI6ZIU5oj6
-zMpuX/IO7eEvFeJ5oh+0+L00wSqqhu+arLne15Vf1rdCbEsc1s1cncVRFdUjmmQIR1xS+fjgPOqr
-ooHBYQDZRCvHRtZMzm6hyKdike4Eyk8+8yKH81XPd2/pRQaN34gtJ+AbraVxvwXVUnGq5y7b1HyB
-QOm5v5STc38sVUwjb4Ix
---0000000000009d4eb205b05ad0fe--
+CwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQCh7mR9b0sNrulRFZY7
+47ZPd6rYBoEBRU1+c1UOMTA1hMucKAX1d0lA0ZH7q+L0tcm7UbJ1t8RKHc7IqR2ooUwvNyqg9w7e
+Gfba6C8ag+xWIEYSsM5t6rqWY9JtDoNa/W4VRyVbvOQ4/ozWifTuoKtXOdDeAMJTNDSlrfXWExFh
+F2hXi5LqO4Y4oOKP/t9geLAL3Yl419nHAAge8G015cALDqWbMXFlrDqFcp2o+IdAbMz3PquySpnP
+KA6Y4adOMW/ogOiy89rvoOHPUTFXOImMFLLL/OWVOM1Vz53P1a7/Xyx0pLgPmcs2mdI/X2qH2I4x
+F3kXAKDJ3duHbWy0oJz3
+--00000000000079d52905b05b365d--
 
---===============7095579517030984242==
+--===============2735042212504937123==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -246,4 +248,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============7095579517030984242==--
+--===============2735042212504937123==--
