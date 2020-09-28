@@ -1,68 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFB2927AF9C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 16:03:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 74D69855E1;
-	Mon, 28 Sep 2020 14:03:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1H-MKcrFestJ; Mon, 28 Sep 2020 14:03:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 9E55986372;
-	Mon, 28 Sep 2020 14:03:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 829DC1BF405
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 10:25:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5092527B0E3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 17:25:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 7D97B855F6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 10:25:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 0F40A836A9;
+	Mon, 28 Sep 2020 15:25:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TtH-K8HT982p; Mon, 28 Sep 2020 15:25:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by fraxinus.osuosl.org (Postfix) with ESMTP id D2F8284C36;
+	Mon, 28 Sep 2020 15:25:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id ED4691BF2BE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 15:25:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id D8066204A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 15:25:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KewBdA3X5Iuj for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Sep 2020 10:25:06 +0000 (UTC)
+ with ESMTP id CHJ0YBEq0Mjp for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Sep 2020 15:25:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id F174A85593
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 10:25:05 +0000 (UTC)
-From: Thomas Gleixner <tglx@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601288703;
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [216.205.24.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id 7C8F620460
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 15:25:20 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601306719;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RS8aaD/teCyQjHIzfzURMvl8u+n+j/rIgE5B0tuRdqE=;
- b=gefvSazqCe4P8yXMo6E5U3J2nl9MRIsoO0COTSGGhv6CaqV3kK47f3WLpsoS162+/W9/Vc
- Wkzqk6yvWPGwPTL2eAmHgrG3XH/+ywXzrlCVryyrOnGaUtfzn4Tijwv/s1YNtCkS0vEhrG
- +4YN1IIfcrakr2TzIlS9lSPb9AyFXfZrXkhJw1HF7Pi6y5zrgk9waDEU48V9Kw+lPeZLly
- Wu1mg8ha3QHNKHUEwLgWa6tKTwRcGJLzAda1mhslxVkZ1je+KWGN3kAPZD7ly/wCWCC4CD
- OnKYpfAfsMlO2sywS2GlLfQG5j5EJ4fk8dHmS+9cCbyjOqWVrFmGedLp39lLug==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601288703;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RS8aaD/teCyQjHIzfzURMvl8u+n+j/rIgE5B0tuRdqE=;
- b=OxHd7EyfzbyMOnvuIYpsPknE9szpQG6fIVC/UtImzmuMTucnagAwUguEK0km7NFiEUZ3/L
- u706LrSyXdPBgFAg==
-To: David Miller <davem@davemloft.net>
-In-Reply-To: <20200927.135707.1699954431349573308.davem@davemloft.net>
-References: <20200927194846.045411263@linutronix.de>
- <20200927.135707.1699954431349573308.davem@davemloft.net>
-Date: Mon, 28 Sep 2020 12:25:02 +0200
-Message-ID: <87blhqkxkx.fsf@nanos.tec.linutronix.de>
+ bh=2Z3LDaOJB556mNdnYqLMmB/vOKHZUuSYoVPJERvS9AY=;
+ b=Bnkcv1jkot97kBjwFpynMBHU4lzKDgLjtClUwtxKvW1Gd0LSUhlfEMrCuCvWS58tmxqVrW
+ 7LU0rcALbW+LMjProooZ9EX7vpDawNRspbVE02slC9nfflJArYnvaH9n6ftzQwFs72Sqsi
+ UzWCmQA5KfMQc5k1OlXc1pYd2Ih2QN4=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-27-PbjdKbOMOPqHw65r-iHUTg-1; Mon, 28 Sep 2020 11:25:00 -0400
+X-MC-Unique: PbjdKbOMOPqHw65r-iHUTg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E467E1005513;
+ Mon, 28 Sep 2020 15:24:58 +0000 (UTC)
+Received: from carbon (unknown [10.36.110.30])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8FC765576E;
+ Mon, 28 Sep 2020 15:24:50 +0000 (UTC)
+Date: Mon, 28 Sep 2020 17:24:49 +0200
+From: Jesper Dangaard Brouer <brouer@redhat.com>
+To: David Ahern <dsahern@gmail.com>, Sven Auhagen
+ <sven.auhagen@voleatech.de>, Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <20200928172449.50a3e755@carbon>
+In-Reply-To: <5f7f5056-d1de-737b-2d76-cd37e4a4db8e@gmail.com>
+References: <CANDGNvbX+BwA_ZUmw2rxH5FGLFsCVH33Tw3RCk3e3Qo69J+4qw@mail.gmail.com>
+ <87lfh7fkqs.fsf@toke.dk>
+ <CANDGNvbY=8XEJP=S3e+5V2RU6u0zjRE3YDo62bhV-Qaje=++2A@mail.gmail.com>
+ <5f7f5056-d1de-737b-2d76-cd37e4a4db8e@gmail.com>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Mon, 28 Sep 2020 14:03:43 +0000
-Subject: Re: [Intel-wired-lan] [patch 00/35] net: in_interrupt() cleanup and
- fixes
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Subject: Re: [Intel-wired-lan] bpf_redirect and xdpgeneric
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,48 +82,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, emmanuel.grumbach@intel.com, linux-doc@vger.kernel.org,
- peterz@infradead.org, chris.snook@gmail.com, bigeasy@linutronix.de,
- arend.vanspriel@broadcom.com, _govind@gmx.com, vishal@chelsio.com,
- luciano.coelho@intel.com, ecree@solarflare.com, brcm80211-dev-list@cypress.com,
- brcm80211-dev-list.pdl@broadcom.com, johannes.berg@intel.com, corbet@lwn.net,
- mchehab+huawei@kernel.org, linuxwifi@intel.com, linux@armlinux.org.uk,
- willy@infradead.org, hkallweit1@gmail.com, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, mhabets@solarflare.com, kune@deine-taler.de,
- jcliburn@gmail.com, paulmck@kernel.org, stf_xl@wp.pl,
- hante.meuleman@broadcom.com, torvalds@linuxfoundation.org,
- gregkh@linuxfoundation.org, wright.feng@cypress.com, dsd@gentoo.org,
- drivers@pensando.io, kvalo@codeaurora.org, franky.lin@broadcom.com,
- linux-net-drivers@solarflare.com, tsbogend@alpha.franken.de,
- chi-hsien.lin@cypress.com, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- stas.yakovlev@gmail.com, jdmason@kudzu.us, snelson@pensando.io,
- luc.vanoostenryck@gmail.com, benve@cisco.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: xdp-newbies@vger.kernel.org,
+ Toke =?UTF-8?B?SMO4aWxhbmQt?= =?UTF-8?B?SsO4cmdlbnNlbg==?=
+ <toke@redhat.com>, ThomasPtacek@gmail.com, brouer@redhat.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gU3VuLCBTZXAgMjcgMjAyMCBhdCAxMzo1NywgRGF2aWQgTWlsbGVyIHdyb3RlOgoKPiBGcm9t
-OiBUaG9tYXMgR2xlaXhuZXIgPHRnbHhAbGludXRyb25peC5kZT4KPiBEYXRlOiBTdW4sIDI3IFNl
-cCAyMDIwIDIxOjQ4OjQ2ICswMjAwCj4KPj4gaW4gdGhlIGRpc2N1c3Npb24gYWJvdXQgcHJlZW1w
-dCBjb3VudCBjb25zaXN0ZW5jeSBhY2Nyb3NzIGtlcm5lbCBjb25maWd1cmF0aW9uczoKPgo+IFBs
-ZWFzZSByZXNwaW4gdGhpcyBhZ2FpbnN0IG5ldC1uZXh0LCBzb21lIG9mIHRoZSBwYXRjaGVzIGlu
-IGhlcmUgYXJlIGFscmVhZHkKPiBpbiBuZXQtbmV4dCAodGhlIHdpcmVsZXNzIGRlYnVnIG1hY3Jv
-IG9uZSkgYW5kIGV2ZW4gYWZ0ZXIgdGhhdCB0aGUgc2VyaWVzCj4gZG9lc24ndCBidWlsZDoKCldp
-bGwgZG8uCgo+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2Npc2NvL2VuaWMvZW5pY19tYWluLmM6IElu
-IGZ1bmN0aW9uIOKAmGVuaWNfcmVzZXTigJk6Cj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvY2lzY28v
-ZW5pYy9lbmljX21haW4uYzoyMzE1OjI6IGVycm9yOiBpbXBsaWNpdCBkZWNsYXJhdGlvbiBvZiBm
-dW5jdGlvbiDigJhlbmljX3NldF9hcGlfc3RhdGXigJk7IGRpZCB5b3UgbWVhbiDigJhlbmljX3Nl
-dF9hcGlfYnVzeeKAmT8gWy1XZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24tZGVjbGFyYXRpb25dCj4g
-IDIzMTUgfCAgZW5pY19zZXRfYXBpX3N0YXRlKGVuaWMsIHRydWUpOwo+ICAgICAgIHwgIF5+fn5+
-fn5+fn5+fn5+fn5+fgo+ICAgICAgIHwgIGVuaWNfc2V0X2FwaV9idXN5Cj4gQXQgdG9wIGxldmVs
-Ogo+IGRyaXZlcnMvbmV0L2V0aGVybmV0L2Npc2NvL2VuaWMvZW5pY19tYWluLmM6MjI5ODoxMzog
-d2FybmluZzog4oCYZW5pY19zZXRfYXBpX2J1c3nigJkgZGVmaW5lZCBidXQgbm90IHVzZWQgWy1X
-dW51c2VkLWZ1bmN0aW9uXQo+ICAyMjk4IHwgc3RhdGljIHZvaWQgZW5pY19zZXRfYXBpX2J1c3ko
-c3RydWN0IGVuaWMgKmVuaWMsIGJvb2wgYnVzeSkKPiAgICAgICB8ICAgICAgICAgICAgIF5+fn5+
-fn5+fn5+fn5+fn5+CgpEdWgsIG5vdCBzdXJlIGhvdyBJIG1hbmFnZWQgdGhhdC4gU29ycnkuIHdp
-bGwgZml4IGFuZCByZWJhc2UuCgpUaGFua3MsCgogICAgICAgIHRnbHgKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcg
-bGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+On Fri, 18 Sep 2020 14:27:45 -0600
+David Ahern <dsahern@gmail.com> wrote:
+
+> On 9/18/20 12:42 PM, Thomas Ptacek wrote:
+> > The setup is pretty simple. There's an eno1 (igb driver), to which our
+> > default route points. On the same box are several VMs. There's a tap
+> > interface (for each VM, call it tapX). Traffic for a VM flows in from
+> > the Internet on eno1 and is directed to tapX; the response traffic
+> > flows in the other direction.
+> > 
+> > I'm deliberately simplifying here:
+> > 
+> > eno1 runs an XDP program that does some lightweight IP rewriting from
+> > anycast addresses to internal VM addresses on ingress. eno1's XDP
+> > program currently XDP_PASS's rewritten packets to the IP stack, where
+> > they're routed to the VM's tap. This works fine.
+> > 
+> > tapX runs an XDP program that does the same rewriting in reverse.
+> > Right now, it also XDP_PASS's packets to the stack, which also works
+> > --- the stack routes response traffic out eno1.
+> > 
+> > I'm playing with XDP_REDIRECT'ing instead of XDP_PASS'ing.
+> > 
+> > I have the ifindexes and MAC addresses (and those of IP neighbors) in
+> > a map --- a normal HASH map, not a DEVMAP. Using that map, I can
+> > successfully redirect traffic from tapX to arbitrary other tap
+> > interfaces. What I can't do is redirect packets from tapX to eno1,
+> > which is what the system actually needs to do.
+> >   
+> 
+> XDP_REDIRECT sends the packet to a devices ndo_xdp_xmit function. tap
+> implements it hence eno1 -> tap works; igb does not meaning tap -> eno1
+> fails.
+
+There is clearly a real-life use-case for adding native-XDP support for
+igb driver.  Sven (cc) have implemented this (v6[1]), but something is
+causing this patch to not move forward, what is stalling Intel maintainers?
+
+To Thomas, you could try out the patch[2] and report back if it works
+for you?  (I think it will help moving patch forward...)
+
+[1] https://lore.kernel.org/netdev/20200902054509.23jbv5fyj3otziq2@svensmacbookair.sven.lan/
+[2] http://patchwork.ozlabs.org/project/netdev/patch/20200902054509.23jbv5fyj3otziq2@svensmacbookair.sven.lan/
+-- 
+Best regards,
+  Jesper Dangaard Brouer
+  MSc.CS, Principal Kernel Engineer at Red Hat
+  LinkedIn: http://www.linkedin.com/in/brouer
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
