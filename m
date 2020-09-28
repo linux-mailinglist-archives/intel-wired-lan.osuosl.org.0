@@ -1,73 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD75927A69C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 06:40:48 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B67027A7F5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 08:54:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 003E5860A3;
-	Mon, 28 Sep 2020 04:40:47 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 166D186FC6;
+	Mon, 28 Sep 2020 06:54:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M1JFMxMF9WeS; Mon, 28 Sep 2020 04:40:46 +0000 (UTC)
+	with ESMTP id MPnk1ut8eLBH; Mon, 28 Sep 2020 06:54:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0043D85C90;
-	Mon, 28 Sep 2020 04:40:45 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 6296286FA9;
+	Mon, 28 Sep 2020 06:54:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9DFCA1BF309
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 04:40:42 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DE1C31BF3D8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 06:54:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 005B220355
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 04:40:42 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id D95BE84E97
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 06:54:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5dEUhzQTk0UH for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Sep 2020 04:40:40 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx0b-00154904.pphosted.com (mx0b-00154904.pphosted.com
- [148.163.137.20])
- by silver.osuosl.org (Postfix) with ESMTPS id 88FD52034A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 04:40:40 +0000 (UTC)
-Received: from pps.filterd (m0170395.ppops.net [127.0.0.1])
- by mx0b-00154904.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 08S4VZCD014307
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:39 -0400
+ with ESMTP id e-QzkUgl4vMl for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Sep 2020 06:54:00 +0000 (UTC)
+X-Greylist: delayed 02:13:22 by SQLgrey-1.7.6
+Received: from mx0a-00154904.pphosted.com (mx0a-00154904.pphosted.com
+ [148.163.133.20])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id D34F084C44
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 06:54:00 +0000 (UTC)
+Received: from pps.filterd (m0170392.ppops.net [127.0.0.1])
+ by mx0a-00154904.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 08S4dsge018041
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding; s=smtpout1;
- bh=PjpbUsIvkkEsR7iBHvwZ6XcnYPvXCR37NLCWsXL5SQQ=;
- b=fIHaYrKqhfNj9/TTQZMY6IfPV22VtB4y1p+2ju3Q3THGbOmeKzjYxCw2zSmYYCRKUtD0
- 4H2HeplUY/jSPA+8MP1nfHPUJSrF68Si8bYRYq/VXbt6qG1yzuJQoOh1yf3ianVz2I8p
- fMXHhIp+Rej1iGo3ScmYXpRDBcxXdVDyFjg8i+9DJE9KiW3Y000RwyJl1k+7PQ4eHS4+
- LmJ0HMyR8E0Uvnv4Q6P1Xx4nrsBhIL8I8oVPa+6KIxezUGcnzPyO30SguRL/O+RE7bzm
- jE70Vmz9lAQ5IpZaL4yWVLkZrcaIZzXcck1JdvRsb/j27U1+uN/hIzmcpEgRNCVeo1or SA== 
+ bh=TxXwByPvQqrKog77tzisD1pIbKV2xgT5oAHWMFylCJI=;
+ b=edsD95oVViugCRJO/xqtzNI0PqYy9B+OpSQc4imVZDG9Tzza3OFZo+zaXHg4T6ePScWF
+ LpHeKEvlCyl/iIZemWgSDBM/z3S3PhS3dwAVHS/xpolhCxj2ID04f+W1CgJWpZK/e5J/
+ PCcD+K2p2CBbsHcgVv2Igw4DKQLaeXRtWBr1NK3X+uxUT0rk9IUdQ5phARR2dPuSWNkS
+ Oidz/hKiU8yfmG0RDoWphay8GcCCYp7IoD2k18fLZBWrSNQrzPe1KwwMss8Ktii1I/Gt
+ 2XuMUkW/2m+odVbdeVDA36/DNCl0vw8skrWDvAiHTa5IIT2eNNG0yAm+Y7Sqr4xOUtLi XA== 
 Received: from mx0a-00154901.pphosted.com (mx0a-00154901.pphosted.com
  [67.231.149.39])
- by mx0b-00154904.pphosted.com with ESMTP id 33t2antyt0-1
+ by mx0a-00154904.pphosted.com with ESMTP id 33t0te33pp-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:39 -0400
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:38 -0400
 Received: from pps.filterd (m0142693.ppops.net [127.0.0.1])
  by mx0a-00154901.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 08S4Zia3092938
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:38 -0400
+ 08S4ZiSL092934
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:37 -0400
 Received: from ausxippc101.us.dell.com (ausxippc101.us.dell.com
  [143.166.85.207])
- by mx0a-00154901.pphosted.com with ESMTP id 33u8s2g4xx-1
+ by mx0a-00154901.pphosted.com with ESMTP id 33u8s2g4xs-2
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK)
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:38 -0400
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 00:40:37 -0400
 X-LoopCount0: from 10.173.37.130
 X-PREM-Routing: D-Outbound
-X-IronPort-AV: E=Sophos;i="5.77,312,1596517200"; d="scan'208";a="1434187426"
+X-IronPort-AV: E=Sophos;i="5.77,312,1596517200"; d="scan'208";a="1434187425"
 From: Mario Limonciello <mario.limonciello@dell.com>
 To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
  intel-wired-lan@lists.osuosl.org
-Date: Sun, 27 Sep 2020 23:40:24 -0500
-Message-Id: <20200928044024.7595-4-mario.limonciello@dell.com>
+Date: Sun, 27 Sep 2020 23:40:23 -0500
+Message-Id: <20200928044024.7595-3-mario.limonciello@dell.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200928044024.7595-1-mario.limonciello@dell.com>
 References: <20200928044024.7595-1-mario.limonciello@dell.com>
@@ -81,12 +81,12 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  spamscore=0 lowpriorityscore=0 mlxscore=0 suspectscore=0 adultscore=0
  bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2006250000 definitions=main-2009280037
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- phishscore=0
- bulkscore=0 spamscore=0 malwarescore=0 suspectscore=0 adultscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2009280036
-Subject: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML systems
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxlogscore=999
+ adultscore=0 bulkscore=0 malwarescore=0 suspectscore=0 mlxscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2009280037
+Subject: [Intel-wired-lan] [PATCH 2/3] e1000e: Add Dell's Comet Lake systems
  into s0ix heuristics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -107,49 +107,132 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-These comet lake systems are not yet released, but have been validated
-on pre-release hardware.
-
-This is being submitted separately from released hardware in case of
-a regression between pre-release and release hardware so this commit
-can be reverted alone.
+Dell's Comet Lake Latitude and Precision systems containing i219LM are
+properly configured and should use the s0ix flows.
 
 Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
 ---
- drivers/net/ethernet/intel/e1000e/param.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ drivers/net/ethernet/intel/Kconfig        |  1 +
+ drivers/net/ethernet/intel/e1000e/param.c | 80 ++++++++++++++++++++++-
+ 2 files changed, 80 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index 5aa86318ed3e..280af47d74d2 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -58,6 +58,7 @@ config E1000
+ config E1000E
+ 	tristate "Intel(R) PRO/1000 PCI-Express Gigabit Ethernet support"
+ 	depends on PCI && (!SPARC32 || BROKEN)
++	depends on DMI
+ 	select CRC32
+ 	imply PTP_1588_CLOCK
+ 	help
 diff --git a/drivers/net/ethernet/intel/e1000e/param.c b/drivers/net/ethernet/intel/e1000e/param.c
-index 58e6718c4f75..fe3157c8aa4a 100644
+index e66b222c824b..58e6718c4f75 100644
 --- a/drivers/net/ethernet/intel/e1000e/param.c
 +++ b/drivers/net/ethernet/intel/e1000e/param.c
-@@ -273,6 +273,27 @@ static const struct dmi_system_id s0ix_supported_systems[] = {
- 			DMI_MATCH(DMI_PRODUCT_SKU, "09C4"),
- 		},
- 	},
-+	{
-+		/* Dell Notebook 0x0A40 */
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_SKU, "0A40"),
-+		},
-+	},
-+	{
-+		/* Dell Notebook 0x0A41 */
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_SKU, "0A41"),
-+		},
-+	},
-+	{
-+		/* Dell Notebook 0x0A42 */
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_SKU, "0A42"),
-+		},
-+	},
- 	{ }
+@@ -1,6 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /* Copyright(c) 1999 - 2018 Intel Corporation. */
+ 
++#include <linux/dmi.h>
+ #include <linux/netdevice.h>
+ #include <linux/module.h>
+ #include <linux/pci.h>
+@@ -201,6 +202,80 @@ static const struct e1000e_me_supported me_supported[] = {
+ 	{0}
  };
+ 
++static const struct dmi_system_id s0ix_supported_systems[] = {
++	{
++		/* Dell Latitude 5310 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "099F"),
++		},
++	},
++	{
++		/* Dell Latitude 5410 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09A0"),
++		},
++	},
++	{
++		/* Dell Latitude 5410 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09C9"),
++		},
++	},
++	{
++		/* Dell Latitude 5510 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09A1"),
++		},
++	},
++	{
++		/* Dell Precision 3550 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09A2"),
++		},
++	},
++	{
++		/* Dell Latitude 5411 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09C0"),
++		},
++	},
++	{
++		/* Dell Latitude 5511 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09C1"),
++		},
++	},
++	{
++		/* Dell Precision 3551 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09C2"),
++		},
++	},
++	{
++		/* Dell Precision 7550 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09C3"),
++		},
++	},
++	{
++		/* Dell Precision 7750 */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
++			DMI_MATCH(DMI_PRODUCT_SKU, "09C4"),
++		},
++	},
++	{ }
++};
++
+ static bool e1000e_check_me(u16 device_id)
+ {
+ 	struct e1000e_me_supported *id;
+@@ -599,8 +674,11 @@ void e1000e_check_options(struct e1000_adapter *adapter)
+ 		}
+ 
+ 		if (enabled == S0IX_HEURISTICS) {
++			/* check for allowlist of systems */
++			if (dmi_check_system(s0ix_supported_systems))
++				enabled = S0IX_FORCE_ON;
+ 			/* default to off for ME configurations */
+-			if (e1000e_check_me(hw->adapter->pdev->device))
++			else if (e1000e_check_me(hw->adapter->pdev->device))
+ 				enabled = S0IX_FORCE_OFF;
+ 		}
  
 -- 
 2.25.1
