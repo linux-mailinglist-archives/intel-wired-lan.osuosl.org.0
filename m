@@ -1,78 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A74F27B4CE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 20:48:55 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2409B27B576
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Sep 2020 21:38:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id DD21620107;
-	Mon, 28 Sep 2020 18:48:53 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 4D1C086FB7;
+	Mon, 28 Sep 2020 19:38:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yHkW8+EXYozj; Mon, 28 Sep 2020 18:48:53 +0000 (UTC)
+	with ESMTP id 8QLtHOZbVcH6; Mon, 28 Sep 2020 19:38:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 7A958204CE;
-	Mon, 28 Sep 2020 18:48:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 8E6DD86F95;
+	Mon, 28 Sep 2020 19:38:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7DD8B1BF362
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:36:25 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A6EC91BF362
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 19:03:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 73062204C9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:36:25 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id A154F86F95
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 19:03:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YI4L32DeV1Vg for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Sep 2020 18:36:23 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by silver.osuosl.org (Postfix) with ESMTPS id C5622204CE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 18:36:22 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601318181;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:in-reply-to:in-reply-to:references:references;
- bh=9oz+ynoTvhiufuVyMQ1xRlRqNWLd2L6kBLmgTWRX5ss=;
- b=Ygcw0dGRLe/e3XgOOe7GEKbOi33+SmaqafwCUcO1dA69FEVi4WDYJv6GaB8TM3UCP34hBz
- 9pqAEQf4jHS35m8znmXpPvOXUEhrpWrj7L0SSeSd6impO8FlzNh69wycCKCfriBjA4vW8i
- fXy/oBzoTgmDSJqjBgXXaYDP5cCQQaA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-498-vfI2srfRPH2G4PSp-PI-ng-1; Mon, 28 Sep 2020 14:36:16 -0400
-X-MC-Unique: vfI2srfRPH2G4PSp-PI-ng-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ with ESMTP id YskdfSHRuaQv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Sep 2020 19:03:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from dispatch1-us1.ppe-hosted.com (dispatch1-us1.ppe-hosted.com
+ [67.231.154.164])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 6663686CB6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Sep 2020 19:03:56 +0000 (UTC)
+Received: from mx1-us1.ppe-hosted.com (unknown [10.110.50.137])
+ by dispatch1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
+ 77B5C200BF; Mon, 28 Sep 2020 19:03:55 +0000 (UTC)
+Received: from us4-mdac16-58.at1.mdlocal (unknown [10.110.50.151])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 710D26009B; 
+ Mon, 28 Sep 2020 19:03:55 +0000 (UTC)
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mx1-us1.ppe-hosted.com (unknown [10.110.49.32])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id BDC04220086;
+ Mon, 28 Sep 2020 19:03:54 +0000 (UTC)
+Received: from webmail.solarflare.com (uk.solarflare.com [193.34.186.16])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C434585C732;
- Mon, 28 Sep 2020 18:36:13 +0000 (UTC)
-Received: from virtlab719.virt.lab.eng.bos.redhat.com
- (virtlab719.virt.lab.eng.bos.redhat.com [10.19.153.15])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 084E860C11;
- Mon, 28 Sep 2020 18:36:11 +0000 (UTC)
-From: Nitesh Narayan Lal <nitesh@redhat.com>
-To: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-pci@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- frederic@kernel.org, mtosatti@redhat.com, sassmann@redhat.com,
- jesse.brandeburg@intel.com, lihong.yang@intel.com, helgaas@kernel.org,
- nitesh@redhat.com, jeffrey.t.kirsher@intel.com, jacob.e.keller@intel.com,
- jlelli@redhat.com, hch@infradead.org, bhelgaas@google.com,
- mike.marciniszyn@intel.com, dennis.dalessandro@intel.com,
- thomas.lendacky@amd.com, jiri@nvidia.com, mingo@redhat.com,
- peterz@infradead.org, juri.lelli@redhat.com, vincent.guittot@linaro.org,
- lgoncalv@redhat.com
-Date: Mon, 28 Sep 2020 14:35:29 -0400
-Message-Id: <20200928183529.471328-5-nitesh@redhat.com>
-In-Reply-To: <20200928183529.471328-1-nitesh@redhat.com>
-References: <20200928183529.471328-1-nitesh@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mailman-Approved-At: Mon, 28 Sep 2020 18:48:47 +0000
-Subject: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit pci_alloc_irq_vectors()
- to housekeeping CPUs
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 46E2E28007B;
+ Mon, 28 Sep 2020 19:03:53 +0000 (UTC)
+Received: from [10.17.20.203] (10.17.20.203) by ukex01.SolarFlarecom.com
+ (10.17.10.4) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 28 Sep
+ 2020 20:03:31 +0100
+To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+References: <20200927194846.045411263@linutronix.de>
+ <20200927194921.344476620@linutronix.de>
+From: Edward Cree <ecree@solarflare.com>
+Message-ID: <168a1f9e-cba4-69a8-9b29-5c121295e960@solarflare.com>
+Date: Mon, 28 Sep 2020 20:03:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <20200927194921.344476620@linutronix.de>
+Content-Language: en-GB
+X-Originating-IP: [10.17.20.203]
+X-ClientProxiedBy: ocex03.SolarFlarecom.com (10.20.40.36) To
+ ukex01.SolarFlarecom.com (10.17.10.4)
+X-TM-AS-Product-Ver: SMEX-12.5.0.1300-8.6.1012-25674.003
+X-TM-AS-Result: No-3.392600-8.000000-10
+X-TMASE-MatchedRID: scwq2vQP8OHoSitJVour/fZvT2zYoYOwC/ExpXrHizwZwGrh4y4izL88
+ DvjRvF4AxVy/bbd+rAzlMoALbl7BxnAe/yBs2gz+SJA7ysb1rf4KJM4okvH5XoVCSVIDsC6o8FS
+ rkmy6/FJuCEgimCyJQyMYmr0rrl/pgl5Rdh8uTQGz5GTUpcs/m3Fa/hQHt1A1+S5C/08hWc0UBy
+ nKnmzE5ngVNbMoKNzVH0rosakDCyyvvxILmKK/HIMbH85DUZXyYxU/PH+vZxv6C0ePs7A07Y6HM
+ 5rqDwqtN237Af2aNF37I73RKjILsWlTLDIPbPGsLoghHcIpC2/UZWTGDxA33ihvJVwuK5sjeBCY
+ ZbP6cf5T86emsjutggfap7ehBz6Q4vn0zMfSmjYrbLOj1GuP3A+hgLflG6KEo9QjuF9BKnnfMd6
+ s6DDccQ==
+X-TM-AS-User-Approved-Sender: Yes
+X-TM-AS-User-Blocked-Sender: No
+X-TMASE-Result: 10--3.392600-8.000000
+X-TMASE-Version: SMEX-12.5.0.1300-8.6.1012-25674.003
+X-MDID: 1601319835-pcw6fPKCBDdo
+X-Mailman-Approved-At: Mon, 28 Sep 2020 19:38:22 +0000
+Subject: Re: [Intel-wired-lan] [patch 15/35] net: sfc: Replace
+ in_interrupt() usage.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,70 +93,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Emmanuel Grumbach <emmanuel.grumbach@intel.com>, linux-doc@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, Chris Snook <chris.snook@gmail.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Arend van Spriel <arend.vanspriel@broadcom.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>,
+ Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>,
+ libertas-dev@lists.infradead.org, brcm80211-dev-list@cypress.com,
+ brcm80211-dev-list.pdl@broadcom.com, Ping-Ke Shih <pkshih@realtek.com>,
+ Johannes Berg <johannes.berg@intel.com>, Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Intel
+ Linux Wireless <linuxwifi@intel.com>, Russell King <linux@armlinux.org.uk>,
+ Matthew
+ Wilcox <willy@infradead.org>, Heiner Kallweit <hkallweit1@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Martin Habets <mhabets@solarflare.com>, Ulrich Kunitz <kune@deine-taler.de>,
+ Jay Cliburn <jcliburn@gmail.com>, Paul McKenney <paulmck@kernel.org>,
+ Stanislaw Gruszka <stf_xl@wp.pl>, Jouni Malinen <j@w1.fi>, Hante
+ Meuleman <hante.meuleman@broadcom.com>, Pascal Terjan <pterjan@google.com>,
+ Linus Torvalds <torvalds@linuxfoundation.org>, Amitkumar
+ Karwar <amitkarwar@gmail.com>, Wright Feng <wright.feng@cypress.com>,
+ Daniel Drake <dsd@gentoo.org>, Pensando Drivers <drivers@pensando.io>,
+ Kalle Valo <kvalo@codeaurora.org>, Franky Lin <franky.lin@broadcom.com>,
+ Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ganapathi Bhat <ganapathi.bhat@nxp.com>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
+ Shannon
+ Nelson <snelson@pensando.io>, "David S. Miller" <davem@davemloft.net>,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
+ Christian Benvenuti <benve@cisco.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If we have isolated CPUs dedicated for use by real-time tasks, we try to
-move IRQs to housekeeping CPUs from the userspace to reduce latency
-overhead on the isolated CPUs.
-
-If we allocate too many IRQ vectors, moving them all to housekeeping CPUs
-may exceed per-CPU vector limits.
-
-When we have isolated CPUs, limit the number of vectors allocated by
-pci_alloc_irq_vectors() to the minimum number required by the driver, or
-to one per housekeeping CPU if that is larger.
-
-Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
----
- drivers/pci/msi.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
-
-diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
-index 30ae4ffda5c1..8c156867803c 100644
---- a/drivers/pci/msi.c
-+++ b/drivers/pci/msi.c
-@@ -23,6 +23,7 @@
- #include <linux/slab.h>
- #include <linux/irqdomain.h>
- #include <linux/of_irq.h>
-+#include <linux/sched/isolation.h>
- 
- #include "pci.h"
- 
-@@ -1191,8 +1192,25 @@ int pci_alloc_irq_vectors_affinity(struct pci_dev *dev, unsigned int min_vecs,
- 				   struct irq_affinity *affd)
- {
- 	struct irq_affinity msi_default_affd = {0};
-+	unsigned int hk_cpus;
- 	int nvecs = -ENOSPC;
- 
-+	hk_cpus = housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
-+
-+	/*
-+	 * If we have isolated CPUs for use by real-time tasks, to keep the
-+	 * latency overhead to a minimum, device-specific IRQ vectors are moved
-+	 * to the housekeeping CPUs from the userspace by changing their
-+	 * affinity mask. Limit the vector usage to keep housekeeping CPUs from
-+	 * running out of IRQ vectors.
-+	 */
-+	if (hk_cpus < num_online_cpus()) {
-+		if (hk_cpus < min_vecs)
-+			max_vecs = min_vecs;
-+		else if (hk_cpus < max_vecs)
-+			max_vecs = hk_cpus;
-+	}
-+
- 	if (flags & PCI_IRQ_AFFINITY) {
- 		if (!affd)
- 			affd = &msi_default_affd;
--- 
-2.18.2
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gMjcvMDkvMjAyMCAyMDo0OSwgVGhvbWFzIEdsZWl4bmVyIHdyb3RlOgo+IE5vdGUsIHRoYXQg
+dGhlIGZpeGVzIHRhZyBpcyBlbXB0eSBhcyBpdCBpcyB1bmNsZWFyIHdoaWNoIG9mIHRoZSBjb21t
+aXRzIHRvCj4gYmxhbWUuClNlZW1zIGxpa2UgaXQgc2hvdWxkIGJlCkZpeGVzOiBmMDBiZjIzMDVj
+YWIoInNmYzogZG9uJ3QgdXBkYXRlIHN0YXRzIG9uIFZGIHdoZW4gY2FsbGVkIGluIGF0b21pYyBj
+b250ZXh0IikKwqBzaW5jZSB0aGF0IGFkZHMgdGhlIGluX2ludGVycnVwdCgpIGNoZWNrIGFuZCB0
+aGUgY29kZSBjb25jZXJuZWQKwqBkb2Vzbid0IHNlZW10byBoYXZlIGNoYW5nZWQgYSBncmVhdCBk
+ZWFsIHNpbmNlLgoKQW55d2F5LCB0aGlzIGZpeCBsb29rcyBjb3JyZWN0LCBhbmQgeW91IGNhbiBo
+YXZlIG15CkFja2VkLWJ5OiBFZHdhcmQgQ3JlZSA8ZWNyZWVAc29sYXJmbGFyZS5jb20+CsKgYnV0
+IEkgdGhpbmtpdCBtaWdodCBiZSBjbGVhbmVyIHRvIGF2b2lkIGhhdmluZyB0byBoYXZlIHRoaXMg
+dW51c2VkCsKgY2FuX3NsZWVwIGFyZ3VtZW50IG9uIGFsbCB0aGUgTklDcyB0aGF0IGRvbid0IG5l
+ZWQgaXQsIGJ5IGluc3RlYWQKwqBhZGRpbmcgYW4gdXBkYXRlX3N0YXRzX2F0b21pYygpIG1lbWJl
+ciB0byBzdHJ1Y3QgZWZ4X25pY190eXBlLCB3aGljaArCoGNvdWxkIGJlIHNldCB0byB0aGUgc2Ft
+ZSBhcyB1cGRhdGVfc3RhdHMoKSBmb3IgZXZlcnl0aGluZyBleGNlcHQKwqBFRjEwIFZGcyB3aGlj
+aCB3b3VsZCBqdXN0IGRvIHRoZSBjYWxsIHRvIGVmeF91cGRhdGVfc3dfc3RhdHMoKS4KSSdsbCBz
+ZW5kIGFuIHJmYyBwYXRjaCBlbWJvZHlpbmcgdGhlIGFib3ZlIHNob3J0bHkuLi4KCi1lZApfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1s
+YW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMu
+b3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
