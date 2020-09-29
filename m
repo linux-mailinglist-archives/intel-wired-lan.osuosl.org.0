@@ -2,63 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5425F27D99A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BAE7327D99D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F34E284DCD;
-	Tue, 29 Sep 2020 21:03:19 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 71DF7847E6;
+	Tue, 29 Sep 2020 21:03:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SKI10E7HmnT3; Tue, 29 Sep 2020 21:03:19 +0000 (UTC)
+	with ESMTP id U0M2wMQUb35F; Tue, 29 Sep 2020 21:03:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id F2EF28471C;
-	Tue, 29 Sep 2020 21:03:18 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 4982C848F4;
+	Tue, 29 Sep 2020 21:03:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3CE181BF36E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:52 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 814181BF36E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 38B7285F8B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:52 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 7BEBA8683A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B8CELXxrBd9P for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Sep 2020 20:35:51 +0000 (UTC)
+ with ESMTP id Xt8NzKU3Ai95 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Sep 2020 20:35:53 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 67BA885F71
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:51 +0000 (UTC)
-Message-Id: <20200929203500.387065111@linutronix.de>
+ by whitealder.osuosl.org (Postfix) with ESMTPS id BCE7186806
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:52 +0000 (UTC)
+Message-Id: <20200929203500.481750554@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601411749;
+ s=2020; t=1601411751;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=PXfmmgnLqJrKbGfM8Rno7TyW/8sPcCBInVY2ghnpy1k=;
- b=flqsN7bhcZA5Gw8H61esyNKoIuK+eoQXrensTvj/LyVRl43ik4SPulyUAEKMp1yDYLyGDP
- D9B0Ixm9oRoH8KTg+e+7s2Fn6Lva3dPkWEMLiHhPp1IlfC19hCBf9zb6E9g71fll8PukQD
- NRJBtmyojfh7kHqy5+QkuRwvrf9C8DSIqvBSt4LzhfjLEnloUE6vyU4B1N8NUA0N3IiCs5
- VqBUHxBrHMaDhc1URd/tZkWC4I7J98XWC/UfOyCfyvEPTu8BeiYx/XnUdWjH7qPa4poY5x
- QzprHXM2q2Ybp0p/gTovJvJHX28WMo2/AYNrPo6uEcgYbnyD26FntiZnhw2FCQ==
+ bh=VICDOx2EIISDwW+YF3QvD5vk142qLSDR+atrWMc+BeY=;
+ b=SEJTx3juGKHf45RfWATRlgMaL0/Xuc0u6i/a7Ih6vrUx11xTvYfFDchUCAVKoSSJK9Y7wd
+ gapRnXXuCQkDyIrpHGKGBMwPR23Ei3pyXi4ZbiwpilW0axVivTsCnQ2Dm1hRhUkC7MYwBE
+ Jpwq+6nW8uLRQ3OVvvgf74LC1S41xzCVkmdWdBvs4gq8q6I/fwX2lJNq+fA2COHNzjcVj5
+ XHr6Mp6gAlSo23zXw0hRhC/uvvqBQQa0AX8HM9Nh2BxCbWFlvYh0pJ06fFjJlFjpTDD4JR
+ GF6prEkLvcAgRX+ajlhawyze68L8K0F1qM8g0WPol4Aoq7C8EqDCtshichIxmw==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601411749;
+ s=2020e; t=1601411751;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=PXfmmgnLqJrKbGfM8Rno7TyW/8sPcCBInVY2ghnpy1k=;
- b=oCN2qgxmVrimWJDSWDSzOU3Ho3aP5P7+Iri+NSeJMXl19XYF6nwaQsBCpQWTTc2WCbRWS6
- cY9ORhiBMg/aoFBQ==
-Date: Tue, 29 Sep 2020 22:25:18 +0200
+ bh=VICDOx2EIISDwW+YF3QvD5vk142qLSDR+atrWMc+BeY=;
+ b=BTy/4a8HncmpoDwnXDEurZSKOP5mWdJwALMMKLG/chU7a6Y2N0g2DffQlMJcSEODI7DDYP
+ CD/HFFakt7GQE8AQ==
+Date: Tue, 29 Sep 2020 22:25:19 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200929202509.673358734@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 29 Sep 2020 21:03:08 +0000
-Subject: [Intel-wired-lan] [patch V2 09/36] net: fec_mpc52xx: Replace
- in_interrupt() usage
+Subject: [Intel-wired-lan] [patch V2 10/36] net: intel: Remove
+ in_interrupt() warnings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,6 +80,7 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Govindarajulu Varadarajan <_govind@gmx.com>,
  Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>,
  Edward Cree <ecree@solarflare.com>, libertas-dev@lists.infradead.org,
+ Alexander Duyck <alexander.h.duyck@linux.intel.com>,
  brcm80211-dev-list@cypress.com, brcm80211-dev-list.pdl@broadcom.com,
  Ping-Ke Shih <pkshih@realtek.com>, Johannes Berg <johannes.berg@intel.com>,
  Jonathan Corbet <corbet@lwn.net>,
@@ -113,71 +114,129 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-The usage of in_interrupt() in drivers is phased out and Linus clearly
-requested that code which changes behaviour depending on context should
-either be seperated or the context be conveyed in an argument passed by the
-caller, which usually knows the context.
+in_interrupt() is ill defined and does not provide what the name
+suggests. The usage especially in driver code is deprecated and a tree wide
+effort to clean up and consolidate the (ab)usage of in_interrupt() and
+related checks is happening.
 
-mpc52xx_fec_stop() uses in_interrupt() to check if it is safe to sleep. All
-callers run in well defined contexts.
+In this case the checks cover only parts of the contexts in which these
+functions cannot be called. They fail to detect preemption or interrupt
+disabled invocations.
 
-Pass an argument from the callers indicating whether it is safe to sleep.
+As the functions which are invoked from the various places contain already
+a broad variety of checks (always enabled or debug option dependent) cover
+all invalid conditions already, there is no point in having inconsistent
+warnings in those drivers.
+
+Just remove them.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-
+Reviewed-by: Alexander Duyck <alexander.h.duyck@linux.intel.com>
 
 ---
- drivers/net/ethernet/freescale/fec_mpc52xx.c |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/e1000/e1000_main.c     |    1 -
+ drivers/net/ethernet/intel/fm10k/fm10k_pci.c      |    2 --
+ drivers/net/ethernet/intel/i40e/i40e_main.c       |    4 ----
+ drivers/net/ethernet/intel/ice/ice_main.c         |    1 -
+ drivers/net/ethernet/intel/igb/igb_main.c         |    1 -
+ drivers/net/ethernet/intel/igc/igc_main.c         |    1 -
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c     |    1 -
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c |    2 --
+ 8 files changed, 13 deletions(-)
 
---- a/drivers/net/ethernet/freescale/fec_mpc52xx.c
-+++ b/drivers/net/ethernet/freescale/fec_mpc52xx.c
-@@ -74,7 +74,7 @@ struct mpc52xx_fec_priv {
- static irqreturn_t mpc52xx_fec_interrupt(int, void *);
- static irqreturn_t mpc52xx_fec_rx_interrupt(int, void *);
- static irqreturn_t mpc52xx_fec_tx_interrupt(int, void *);
--static void mpc52xx_fec_stop(struct net_device *dev);
-+static void mpc52xx_fec_stop(struct net_device *dev, bool may_sleep);
- static void mpc52xx_fec_start(struct net_device *dev);
- static void mpc52xx_fec_reset(struct net_device *dev);
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -534,7 +534,6 @@ void e1000_down(struct e1000_adapter *ad
  
-@@ -283,7 +283,7 @@ static int mpc52xx_fec_close(struct net_
- 
- 	netif_stop_queue(dev);
- 
--	mpc52xx_fec_stop(dev);
-+	mpc52xx_fec_stop(dev, true);
- 
- 	mpc52xx_fec_free_rx_buffers(dev, priv->rx_dmatsk);
- 
-@@ -693,7 +693,7 @@ static void mpc52xx_fec_start(struct net
-  *
-  * stop all activity on fec and empty dma buffers
-  */
--static void mpc52xx_fec_stop(struct net_device *dev)
-+static void mpc52xx_fec_stop(struct net_device *dev, bool may_sleep)
+ void e1000_reinit_locked(struct e1000_adapter *adapter)
  {
- 	struct mpc52xx_fec_priv *priv = netdev_priv(dev);
- 	struct mpc52xx_fec __iomem *fec = priv->fec;
-@@ -706,7 +706,7 @@ static void mpc52xx_fec_stop(struct net_
- 	bcom_disable(priv->rx_dmatsk);
+-	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__E1000_RESETTING, &adapter->flags))
+ 		msleep(1);
  
- 	/* Wait for tx queue to drain, but only if we're in process context */
--	if (!in_interrupt()) {
-+	if (may_sleep) {
- 		timeout = jiffies + msecs_to_jiffies(2000);
- 		while (time_before(jiffies, timeout) &&
- 				!bcom_queue_empty(priv->tx_dmatsk))
-@@ -738,7 +738,7 @@ static void mpc52xx_fec_reset(struct net
- 	struct mpc52xx_fec_priv *priv = netdev_priv(dev);
- 	struct mpc52xx_fec __iomem *fec = priv->fec;
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
+@@ -221,8 +221,6 @@ static bool fm10k_prepare_for_reset(stru
+ {
+ 	struct net_device *netdev = interface->netdev;
  
--	mpc52xx_fec_stop(dev);
-+	mpc52xx_fec_stop(dev, false);
+-	WARN_ON(in_interrupt());
+-
+ 	/* put off any impending NetWatchDogTimeout */
+ 	netif_trans_update(netdev);
  
- 	out_be32(&fec->rfifo_status, in_be32(&fec->rfifo_status));
- 	out_be32(&fec->reset_cntrl, FEC_RESET_CNTRL_RESET_FIFO);
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -6689,7 +6689,6 @@ static void i40e_vsi_reinit_locked(struc
+ {
+ 	struct i40e_pf *pf = vsi->back;
+ 
+-	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__I40E_CONFIG_BUSY, pf->state))
+ 		usleep_range(1000, 2000);
+ 	i40e_down(vsi);
+@@ -8462,9 +8461,6 @@ void i40e_do_reset(struct i40e_pf *pf, u
+ {
+ 	u32 val;
+ 
+-	WARN_ON(in_interrupt());
+-
+-
+ 	/* do the biggest reset indicated */
+ 	if (reset_flags & BIT_ULL(__I40E_GLOBAL_RESET_REQUESTED)) {
+ 
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -486,7 +486,6 @@ static void ice_do_reset(struct ice_pf *
+ 	struct ice_hw *hw = &pf->hw;
+ 
+ 	dev_dbg(dev, "reset_type 0x%x requested\n", reset_type);
+-	WARN_ON(in_interrupt());
+ 
+ 	ice_prepare_for_reset(pf);
+ 
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -2220,7 +2220,6 @@ void igb_down(struct igb_adapter *adapte
+ 
+ void igb_reinit_locked(struct igb_adapter *adapter)
+ {
+-	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__IGB_RESETTING, &adapter->state))
+ 		usleep_range(1000, 2000);
+ 	igb_down(adapter);
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3831,7 +3831,6 @@ void igc_down(struct igc_adapter *adapte
+ 
+ void igc_reinit_locked(struct igc_adapter *adapter)
+ {
+-	WARN_ON(in_interrupt());
+ 	while (test_and_set_bit(__IGC_RESETTING, &adapter->state))
+ 		usleep_range(1000, 2000);
+ 	igc_down(adapter);
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -5677,7 +5677,6 @@ static void ixgbe_up_complete(struct ixg
+ 
+ void ixgbe_reinit_locked(struct ixgbe_adapter *adapter)
+ {
+-	WARN_ON(in_interrupt());
+ 	/* put off any impending NetWatchDogTimeout */
+ 	netif_trans_update(adapter->netdev);
+ 
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+@@ -2526,8 +2526,6 @@ void ixgbevf_down(struct ixgbevf_adapter
+ 
+ void ixgbevf_reinit_locked(struct ixgbevf_adapter *adapter)
+ {
+-	WARN_ON(in_interrupt());
+-
+ 	while (test_and_set_bit(__IXGBEVF_RESETTING, &adapter->state))
+ 		msleep(1);
+ 
 
 
 _______________________________________________
