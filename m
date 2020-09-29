@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E0CD27D9AC
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:43 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 2425D84867;
-	Tue, 29 Sep 2020 21:03:42 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 92WZKh2bNqR7; Tue, 29 Sep 2020 21:03:41 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 54B35843FA;
-	Tue, 29 Sep 2020 21:03:41 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7091D1BF36E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C5B727D9B6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:04:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 5A8DF20464
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:21 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 95AD92001F;
+	Tue, 29 Sep 2020 21:04:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lelQTpayGj5r; Tue, 29 Sep 2020 21:04:08 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id EB43A20367;
+	Tue, 29 Sep 2020 21:03:42 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 54E231BF36E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 50BA785F71
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WB5RNQqR2R4K for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Sep 2020 20:36:19 +0000 (UTC)
+ with ESMTP id utnk_cbTNQea for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Sep 2020 20:36:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by silver.osuosl.org (Postfix) with ESMTPS id 8873820454
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:19 +0000 (UTC)
-Message-Id: <20200929203502.576396860@linutronix.de>
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1770685F6C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:21 +0000 (UTC)
+Message-Id: <20200929203502.671989314@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601411777;
+ s=2020; t=1601411779;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=UnzuSiCObj+zFPVGaKyuZiIb7D6OLcNGc9ENqe1uVGQ=;
- b=vZl3shb7lESVoE5rGcsQuHjYQ/fa5cDZrNHIl7MWKprP2nDTxh+UiXoGoNhoyPOG3ZR6Ec
- OqDVY1cwYOIVHljzUvQ8ltfuwFex6OdvuWoxIWITAirpmYpSUnNRITnTlIqsdJtyQHlNNQ
- zu3a4RaAqYrIMR1hFA5FwaJbXsMDZPnv41GdNsrCiif4/iF8ti4sgby8VnR3GZepWXJruj
- cqll3nwhvohnYlRT+EtVODCfO3LpycGffxw3iQSGCE7h/aPSLN1q3sWSbw6WRD+2MGym9O
- 9XIPoHKCBg3DCg1ftunbc0jBG68xHKIFgZcYu++27bgNP9AejAvpAlyoGdlccA==
+ bh=EqxozfqBtipmIats65m831JGC3HHr4xn8GBnbPIM4zk=;
+ b=l7O2A6/QxYmQLoa0FMbzMhQqersw27HIoh3x7/QHy78RyP03udgI3rgaeFkLJcMQz2WMvF
+ ShcBAZMws+vlVzRzozY1+7TEmLsTfXgaQlJA0KJ8XhaaOtDYaYlKj9+hZMRmOfTeKJhfd/
+ ZIE7ovtbqO7c6Uqyfpzkhqb8GP8xEXtDLg33xn0MgdwqG2BILZ9cpSbChPrMpXVSpA8bbe
+ +1MLwcawS/j+m9gQzapOVOv0CCMyMGDb2x6oMxhV2ascqA8+KFM1onTgk6fBdJvrAV/7Ag
+ 4KCmGVYHXUxLVgBQyXelXbGrR5flgqEUfrMMf9FnGuvP4M/mXVVZJczPPIoBsw==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601411777;
+ s=2020e; t=1601411779;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=UnzuSiCObj+zFPVGaKyuZiIb7D6OLcNGc9ENqe1uVGQ=;
- b=pUmcG6WSjGiBJSD30L5Ts+Rw8ty5B3RFaWadF1x3qr8P3r4h5t4nPP3NVC5tKR/8VdYiTM
- BQIKbwyc6AytfhCw==
-Date: Tue, 29 Sep 2020 22:25:40 +0200
+ bh=EqxozfqBtipmIats65m831JGC3HHr4xn8GBnbPIM4zk=;
+ b=bLrHMcsXENSLn4pZdy3UNKy0dODEaFHxcqN9oeYQjwQkChw/ngIbRYJ9Di30RP42chl0hh
+ 9dPs4v2Z0pXbn+AQ==
+Date: Tue, 29 Sep 2020 22:25:41 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200929202509.673358734@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 29 Sep 2020 21:03:08 +0000
-Subject: [Intel-wired-lan] [patch V2 31/36] net: mwifiex: Use
- netif_rx_any_context().
+Subject: [Intel-wired-lan] [patch V2 32/36] net: libertas libertas_tf:
+ Remove in_interrupt() from debug macro.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,58 +113,47 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-The usage of in_interrupt() in non-core code is phased out. Ideally the
-information of the calling context should be passed by the callers or the
-functions be split as appropriate.
+The debug macro prints (INT) when in_interrupt() returns true. The value of
+this information is dubious as it does not distinguish between the various
+contexts which are covered by in_interrupt().
 
-mwifiex uses in_interupt() to select the netif_rx*() variant which matches
-the calling context. The attempt to consolidate the code by passing an
-arguemnt or by distangling it failed due lack of knowledge about this
-driver and because the call chains are hard to follow.
-
-As a stop gap use netif_rx_any_context() which invokes the correct code
-path depending on context and confines the in_interrupt() usage to core
-code.
+As the usage of in_interrupt() in drivers is phased out and the same
+information can be more precisely obtained with tracing, remove the
+in_interrupt() conditional from this debug printk.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Acked-by: Kalle Valo <kvalo@codeaurora.org>
 
 ---
- drivers/net/wireless/marvell/mwifiex/uap_txrx.c |    6 +-----
- drivers/net/wireless/marvell/mwifiex/util.c     |    6 +-----
- 2 files changed, 2 insertions(+), 10 deletions(-)
+ drivers/net/wireless/marvell/libertas/defs.h        |    3 +--
+ drivers/net/wireless/marvell/libertas_tf/deb_defs.h |    3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
 
---- a/drivers/net/wireless/marvell/mwifiex/uap_txrx.c
-+++ b/drivers/net/wireless/marvell/mwifiex/uap_txrx.c
-@@ -350,11 +350,7 @@ int mwifiex_uap_recv_packet(struct mwifi
- 		skb->truesize += (skb->len - MWIFIEX_RX_DATA_BUF_SIZE);
- 
- 	/* Forward multicast/broadcast packet to upper layer*/
--	if (in_interrupt())
--		netif_rx(skb);
--	else
--		netif_rx_ni(skb);
--
-+	netif_rx_any_context(skb);
- 	return 0;
- }
- 
---- a/drivers/net/wireless/marvell/mwifiex/util.c
-+++ b/drivers/net/wireless/marvell/mwifiex/util.c
-@@ -488,11 +488,7 @@ int mwifiex_recv_packet(struct mwifiex_p
- 	    (skb->truesize > MWIFIEX_RX_DATA_BUF_SIZE))
- 		skb->truesize += (skb->len - MWIFIEX_RX_DATA_BUF_SIZE);
- 
--	if (in_interrupt())
--		netif_rx(skb);
--	else
--		netif_rx_ni(skb);
--
-+	netif_rx_any_context(skb);
- 	return 0;
- }
- 
+--- a/drivers/net/wireless/marvell/libertas/defs.h
++++ b/drivers/net/wireless/marvell/libertas/defs.h
+@@ -50,8 +50,7 @@ extern unsigned int lbs_debug;
+ #ifdef DEBUG
+ #define LBS_DEB_LL(grp, grpnam, fmt, args...) \
+ do { if ((lbs_debug & (grp)) == (grp)) \
+-  printk(KERN_DEBUG DRV_NAME grpnam "%s: " fmt, \
+-         in_interrupt() ? " (INT)" : "", ## args); } while (0)
++  printk(KERN_DEBUG DRV_NAME grpnam ": " fmt, ## args); } while (0)
+ #else
+ #define LBS_DEB_LL(grp, grpnam, fmt, args...) do {} while (0)
+ #endif
+--- a/drivers/net/wireless/marvell/libertas_tf/deb_defs.h
++++ b/drivers/net/wireless/marvell/libertas_tf/deb_defs.h
+@@ -48,8 +48,7 @@ extern unsigned int lbtf_debug;
+ #ifdef DEBUG
+ #define LBTF_DEB_LL(grp, grpnam, fmt, args...) \
+ do { if ((lbtf_debug & (grp)) == (grp)) \
+-  printk(KERN_DEBUG DRV_NAME grpnam "%s: " fmt, \
+-         in_interrupt() ? " (INT)" : "", ## args); } while (0)
++  printk(KERN_DEBUG DRV_NAME grpnam ": " fmt, ## args); } while (0)
+ #else
+ #define LBTF_DEB_LL(grp, grpnam, fmt, args...) do {} while (0)
+ #endif
 
 
 _______________________________________________
