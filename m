@@ -1,86 +1,62 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C777627D241
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 17:13:52 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C4EA27D54C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 20:00:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 38493842C3;
-	Tue, 29 Sep 2020 15:13:51 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8B2F18677E;
+	Tue, 29 Sep 2020 18:00:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FbyuA8iQD4M3; Tue, 29 Sep 2020 15:13:50 +0000 (UTC)
+	with ESMTP id JvEiy0T95irc; Tue, 29 Sep 2020 18:00:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 22BEA85DC4;
-	Tue, 29 Sep 2020 15:13:27 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id E14178678B;
+	Tue, 29 Sep 2020 18:00:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AB66B1BF868
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 15:13:25 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0E9181BF4E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 17:47:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id A2A1087059
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 15:13:25 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id ED2842034C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 17:47:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wkMHa6BEtyiM for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Sep 2020 15:13:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 676398704B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 15:13:01 +0000 (UTC)
-Received: from mail-pg1-f199.google.com ([209.85.215.199])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>) id 1kNHJL-0005XQ-Ms
- for intel-wired-lan@lists.osuosl.org; Tue, 29 Sep 2020 15:12:59 +0000
-Received: by mail-pg1-f199.google.com with SMTP id s2so3321604pgm.18
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 08:12:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=chf6sW9f/7H17vcG0LBXg02B+gAENr3JISCPSgXJJLo=;
- b=EwMY/Tgz7QTsTYRL9vXNbVgj87B6/CYruEq06CVmBzSgjGaUptq49fcGD8YNmCdSpJ
- Xe3Ws+dRm6ZqZ31JOzIGsoMBWIu+seKCLe8kQlccDpIYuXOpk88Qckf8g8hKO+guB6V2
- JLLntcuo2akksrWQMAwbPxBP7KWHwK459+SlxIJnXFWmNmMZNwowJhTnjWXam4pB0B1w
- iI/47Bw0j3I/IdIzg8C6ojflqLyCtIu1s/lNFM4yMj020joMQGrUb2o6Gq39ks2gXM+Q
- yQAT266n92Ymywl778oPpY9rM1sbbc+ZlJyxizP3wxiCAbJ+ErErkeCjgng8o76tejjX
- EMWA==
-X-Gm-Message-State: AOAM531UpgQ7ijmKu2qc9pUdggrOc2NTDHTGbGKiU6EghmTh/bBu2Q2y
- o6ZGiDxWcstjBs0EjbBuR5m2wmhfQjzk9Ulrcdjbc68rXoVLdRBFFESQpgaXs6vmZ0hAMTz7ufg
- sUhi9rWdvgcdwRaiBepNRR4f335aEDnBYEFJO1/0WAKk76R4=
-X-Received: by 2002:a62:cd46:0:b029:150:ddeb:646b with SMTP id
- o67-20020a62cd460000b0290150ddeb646bmr4303298pfg.27.1601392378319; 
- Tue, 29 Sep 2020 08:12:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0/olQ5yxz8/5kXGaM2e+jOh6gkWSTzzcliWV4N9POlON3DttDBggKkxhU1hGl3+7ZDtOILg==
-X-Received: by 2002:a62:cd46:0:b029:150:ddeb:646b with SMTP id
- o67-20020a62cd460000b0290150ddeb646bmr4303259pfg.27.1601392377925; 
- Tue, 29 Sep 2020 08:12:57 -0700 (PDT)
-Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
- [220.133.187.190])
- by smtp.gmail.com with ESMTPSA id f4sm5595689pfa.125.2020.09.29.08.12.55
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 29 Sep 2020 08:12:57 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.4\))
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <f8bd6a07276a4289b102118a132bd793@AcuMS.aculab.com>
-Date: Tue, 29 Sep 2020 23:12:54 +0800
-Message-Id: <EF57895C-2B0D-4EE1-9A47-E3E07C04C9FB@canonical.com>
-References: <20200924164542.19906-1-kai.heng.feng@canonical.com>
- <20200928083658.8567-1-kai.heng.feng@canonical.com>
- <469c71d5-93ac-e6c7-f85c-342b0df78a45@intel.com>
- <30761C6B-28B8-4464-8615-55EF3E090E07@canonical.com>
- <345fffcd-e9f1-5881-fba1-d7313876e943@intel.com>
- <3DA721C5-F656-4085-9113-A0407CDF90FB@canonical.com>
- <f8bd6a07276a4289b102118a132bd793@AcuMS.aculab.com>
-To: David Laight <David.Laight@ACULAB.COM>
-X-Mailer: Apple Mail (2.3608.120.23.2.4)
-Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: Increase polling timeout
- on MDIC ready bit
+ with ESMTP id VtKMVPPhPAWQ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Sep 2020 17:47:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9160A20133
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 17:47:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=oCfvHV+eKDJ81YLxCB6N47LJuI+3zUrT7MS+gF7gNr4=; b=NjIGhaXrWwlKfAho6RX83T5VBG
+ 9kU191xaHfQf9xMkmFbUhsM8unnI6/Cu/ZcxCQa07jLGVfllxEv6zJQNU/QSetYE/OyO4R5J1nfJe
+ tyQEzzf82Vu/tTa++E0RflrJePy3HLzmjShO5JUtUXPNOhAuwTkJScF1wDER73o3ROFT/gajTsenI
+ 4XtDhwfOso7PtCEtkDtRszmeTq4W+xoyXI5+uhPwIQnUNCGNTfxG+kWAAPHV54h4cJDDstUqGHuct
+ noGbPWU/Gu1kVxKq4X2UWJffCQAqVupBC4HQRqYLChEr/xqJzsRedUoGgfK4sRbhoX9/Ln5Cpce+T
+ Ww2Yp2mA==;
+Received: from hch by casper.infradead.org with local (Exim 4.92.3 #3 (Red Hat
+ Linux)) id 1kNJiI-0000Hg-5T; Tue, 29 Sep 2020 17:46:54 +0000
+Date: Tue, 29 Sep 2020 18:46:54 +0100
+From: Christoph Hellwig <hch@infradead.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Message-ID: <20200929174654.GA773@infradead.org>
+References: <20200928183529.471328-5-nitesh@redhat.com>
+ <20200928215931.GA2499944@bjorn-Precision-5520>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200928215931.GA2499944@bjorn-Precision-5520>
+X-SRS-Rewrite: SMTP reverse-path rewritten from <hch@infradead.org> by
+ casper.infradead.org. See http://www.infradead.org/rpr.html
+X-Mailman-Approved-At: Tue, 29 Sep 2020 18:00:29 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
+ pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,36 +69,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
+ sassmann@redhat.com, vincent.guittot@linaro.org, hch@infradead.org,
+ mingo@redhat.com, intel-wired-lan@lists.osuosl.org, thomas.lendacky@amd.com,
+ lgoncalv@redhat.com, frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com,
+ bhelgaas@google.com, Nitesh Narayan Lal <nitesh@redhat.com>,
+ mike.marciniszyn@intel.com, netdev@vger.kernel.org,
+ dennis.dalessandro@intel.com, mtosatti@redhat.com,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Mon, Sep 28, 2020 at 04:59:31PM -0500, Bjorn Helgaas wrote:
+> [to: Christoph in case he has comments, since I think he wrote this code]
 
+I think I actually suggested this a few iterations back.
 
-> On Sep 29, 2020, at 23:11, David Laight <David.Laight@ACULAB.COM> wrote:
-> 
->> Hope we finally have proper ME support under Linux?
-> 
-> How about a way to disable it.
+> > +	hk_cpus = housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
+> > +
+> > +	/*
+> > +	 * If we have isolated CPUs for use by real-time tasks, to keep the
+> > +	 * latency overhead to a minimum, device-specific IRQ vectors are moved
+> > +	 * to the housekeeping CPUs from the userspace by changing their
+> > +	 * affinity mask. Limit the vector usage to keep housekeeping CPUs from
+> > +	 * running out of IRQ vectors.
+> > +	 */
+> > +	if (hk_cpus < num_online_cpus()) {
 
-This will do, too :)
+I woukd have moved the assignment to hk_cpus below the comment and
+just above the if, but that is really just a minor style preference.
 
-Kai-Heng
+Otherwise this looks good:
 
-> 
-> 	David
-> 
-> -
-> Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
-> Registration No: 1397386 (Wales)
-> 
-
+Acked-by: Christoph Hellwig <hch@lst.de>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
