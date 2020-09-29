@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E46727D9A6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:36 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B216D27D9A8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DB08B84E8F;
-	Tue, 29 Sep 2020 21:03:34 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 2D729870C8;
+	Tue, 29 Sep 2020 21:03:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wmTHEwCHX9+d; Tue, 29 Sep 2020 21:03:34 +0000 (UTC)
+	with ESMTP id 9r-SkwNFIi5g; Tue, 29 Sep 2020 21:03:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C9BEF805D5;
-	Tue, 29 Sep 2020 21:03:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 93B01870A6;
+	Tue, 29 Sep 2020 21:03:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 901471BF36E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:14 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 308A61BF36E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 8B50285F71
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 2C02887113
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tu0urzJqTwpF for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Sep 2020 20:36:13 +0000 (UTC)
+ with ESMTP id 9nxre9hwvkdA for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Sep 2020 20:36:14 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3487585F6C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:13 +0000 (UTC)
-Message-Id: <20200929203502.084703195@linutronix.de>
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 49C2287118
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:14 +0000 (UTC)
+Message-Id: <20200929203502.180883992@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601411771;
+ s=2020; t=1601411772;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=LrldQJQw6qypyNQybdI02NG+9/ckddJHjYgk5hlEHHQ=;
- b=W50wQ+GaNd8R4tSNqTICBdQk/2YIRsw/r76XqikWEnHF2rKl0QKsifKzK/4rpV3JddmiKx
- 5X9q0gc1DwFsx2n5C1lF6JO6j7qwcsl6yNq7fwB7V/6Q3n4KpRPYmTGSv4n00HudhtSxvI
- fjbk1EPV24IDWvSw+12gnFlG6RBnY4uxWmnrJKPSZdd09LynExhub++x0V0wIKoQTOdcTv
- vVCFtXASKKnFemHFsTagTjSzQsahMlM34laJrI1RDyJofrTl+M2kz5U+WEWJu5Fu9EURdU
- 9bxJK/Fruu0QWmbEeCkavOHYNgBbhfl4d0nmx0aubAlDJFkABGcbkXcnjeIWqA==
+ bh=hwdF1V4LMxNUL7q9z/lP9cddjWDJRZagT/G6Cdx9lrk=;
+ b=uZt/eUN8OfZhfYu4gZx4bXPXea7lornACIiuoDVJLvHk2H8Q8Zv+kZOUr87g2/UhKiST25
+ V+/5V+y0ru/ey1GSt3YtUGGFonFivlElx2HcMOpJum88Qm4oYIvstjSTEDik2AaMV8e5Io
+ J+QO3V4F0uKsEyaI4fFydfJrzfeINlStfebs97Ve8vMXpFni+74VYRi+3PTFfSf6dv3JNz
+ 7+tQKj8T0Nser9o2g7IMsgMJoxIKPBi7cfkxQC2Ymw0kgyaIKQQUdyTFBzUoebRwOyVN2y
+ 1jAndEXur5WuP/3T0J0e4fP7iBuID+fkll24K9x2fQGJYBZ1bWsjLH3RXZK3bg==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601411771;
+ s=2020e; t=1601411772;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=LrldQJQw6qypyNQybdI02NG+9/ckddJHjYgk5hlEHHQ=;
- b=aYCDVQdMR8R7kgHsLF+gsqoZURiRjoLdvdDdOUWZI6x+sX8Je6Xb+rKLwd0K1HqRODWQKz
- pZYqigkaNJN28jAA==
-Date: Tue, 29 Sep 2020 22:25:35 +0200
+ bh=hwdF1V4LMxNUL7q9z/lP9cddjWDJRZagT/G6Cdx9lrk=;
+ b=G060K35tQ0idi9JDnp6uPFJ6I678hM/pUygnucHylPIewlMqMLY0K4NAFzL375dZQcwl/H
+ fhMzYNClcuz68CDw==
+Date: Tue, 29 Sep 2020 22:25:36 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200929202509.673358734@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 29 Sep 2020 21:03:08 +0000
-Subject: [Intel-wired-lan] [patch V2 26/36] net: brcmfmac: Convey execution
- context via argument to brcmf_netif_rx()
+Subject: [Intel-wired-lan] [patch V2 27/36] net: brcmfmac: Convey allocation
+ mode as argument
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,289 +111,129 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-bcrmgf_netif_rx() uses in_interrupt to chose between netif_rx() and
-netif_rx_ni(). in_interrupt() usage in drivers is phased out.
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-Convey the execution mode via an 'inirq' argument through the various
-callchains leading to brcmf_netif_rx():
+The usage of in_interrupt() in drivers is phased out and Linus clearly
+requested that code which changes behaviour depending on context should
+either be seperated or the context be conveyed in an argument passed by the
+caller, which usually knows the context.
 
-brcmf_pcie_isr_thread()		    <- Task context
-  brcmf_proto_msgbuf_rx_trigger()
-    brcmf_msgbuf_process_rx()
-      brcmf_msgbuf_process_msgtype()
-        brcmf_msgbuf_process_rx_complete()
-	  brcmf_netif_mon_rx()
-	     brcmf_netif_rx(isirq = false)
-	  brcmf_netif_rx(isirq = false)
+brcmf_fweh_process_event() uses in_interrupt() to select the allocation
+mode GFP_KERNEL/GFP_ATOMIC. Aside of the above reasons this check is
+incomplete as it cannot detect contexts which just have preemption or
+interrupts disabled.
 
-brcmf_sdio_readframes()  <- Task context sdio_claim_host() might sleep
-  brcmf_rx_frame(isirq = false)
+All callchains leading to brcmf_fweh_process_event() can clearly identify
+the calling context. Convey a 'gfp' argument through the callchains and let
+the callers hand in the appropriate GFP mode.
 
-brcmf_sdio_rxglom()      <- Task context sdio_claim_host() might sleep
-  brcmf_rx_frame(isirq = false)
+This has also the advantage that any change of execution context or
+preemption/interrupt state in these callchains will be detected by the
+memory allocator for all GFP_KERNEL allocations.
 
-brcmf_usb_rx_complete()  <- Interrupt context
-  brcmf_rx_frame(isirq = true)
-
-brcmf_rx_frame()
-  brcmf_proto_rxreorder()
-    brcmf_proto_bcdc_rxreorder()
-      brcmf_fws_rxreorder()
-        brcmf_netif_rx()
-      brcmf_netif_rx()
-
+Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Cc: Arend van Spriel <arend.vanspriel@broadcom.com>
-Cc: Kalle Valo <kvalo@codeaurora.org>
 ---
-V2: New patch. Using an argument instead of switching to netif_rx_any_context()
+V2: Adopt to the 'inirq' changes
 ---
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcdc.c     |    4 +--
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/bus.h      |    3 +-
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c     |   16 ++++++------
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.h     |    2 -
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.c |   10 +++----
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.h |    2 -
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c   |    5 ++-
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/proto.h    |    6 ++--
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c     |    4 +--
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/usb.c      |    2 -
- 10 files changed, 29 insertions(+), 25 deletions(-)
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c   |   10 ++++++----
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c   |    8 ++------
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h   |    7 ++++---
+ drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c |    2 +-
+ 4 files changed, 13 insertions(+), 14 deletions(-)
 
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcdc.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcdc.c
-@@ -397,9 +397,9 @@ brcmf_proto_bcdc_add_tdls_peer(struct br
- }
- 
- static void brcmf_proto_bcdc_rxreorder(struct brcmf_if *ifp,
--				       struct sk_buff *skb)
-+				       struct sk_buff *skb, bool inirq)
- {
--	brcmf_fws_rxreorder(ifp, skb);
-+	brcmf_fws_rxreorder(ifp, skb, inirq);
- }
- 
- static void
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bus.h
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bus.h
-@@ -249,7 +249,8 @@ int brcmf_bus_reset(struct brcmf_bus *bu
-  */
- 
- /* Receive frame for delivery to OS.  Callee disposes of rxp. */
--void brcmf_rx_frame(struct device *dev, struct sk_buff *rxp, bool handle_event);
-+void brcmf_rx_frame(struct device *dev, struct sk_buff *rxp, bool handle_event,
-+		    bool inirq);
- /* Receive async event packet from firmware. Callee disposes of rxp. */
- void brcmf_rx_event(struct device *dev, struct sk_buff *rxp);
- 
 --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c
 +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c
-@@ -395,7 +395,7 @@ void brcmf_txflowblock_if(struct brcmf_i
- 	spin_unlock_irqrestore(&ifp->netif_stop_lock, flags);
- }
- 
--void brcmf_netif_rx(struct brcmf_if *ifp, struct sk_buff *skb)
-+void brcmf_netif_rx(struct brcmf_if *ifp, struct sk_buff *skb, bool inirq)
- {
- 	/* Most of Broadcom's firmwares send 802.11f ADD frame every time a new
- 	 * STA connects to the AP interface. This is an obsoleted standard most
-@@ -418,14 +418,15 @@ void brcmf_netif_rx(struct brcmf_if *ifp
- 	ifp->ndev->stats.rx_packets++;
- 
- 	brcmf_dbg(DATA, "rx proto=0x%X\n", ntohs(skb->protocol));
--	if (in_interrupt())
-+	if (inirq) {
- 		netif_rx(skb);
--	else
-+	} else {
- 		/* If the receive is not processed inside an ISR,
- 		 * the softirqd must be woken explicitly to service
- 		 * the NET_RX_SOFTIRQ.  This is handled by netif_rx_ni().
- 		 */
- 		netif_rx_ni(skb);
-+	}
- }
- 
- void brcmf_netif_mon_rx(struct brcmf_if *ifp, struct sk_buff *skb)
-@@ -474,7 +475,7 @@ void brcmf_netif_mon_rx(struct brcmf_if
- 	skb->pkt_type = PACKET_OTHERHOST;
- 	skb->protocol = htons(ETH_P_802_2);
- 
--	brcmf_netif_rx(ifp, skb);
-+	brcmf_netif_rx(ifp, skb, false);
- }
- 
- static int brcmf_rx_hdrpull(struct brcmf_pub *drvr, struct sk_buff *skb,
-@@ -496,7 +497,8 @@ static int brcmf_rx_hdrpull(struct brcmf
- 	return 0;
- }
- 
--void brcmf_rx_frame(struct device *dev, struct sk_buff *skb, bool handle_event)
-+void brcmf_rx_frame(struct device *dev, struct sk_buff *skb, bool handle_event,
-+		    bool inirq)
- {
- 	struct brcmf_if *ifp;
- 	struct brcmf_bus *bus_if = dev_get_drvdata(dev);
-@@ -508,14 +510,14 @@ void brcmf_rx_frame(struct device *dev,
- 		return;
- 
- 	if (brcmf_proto_is_reorder_skb(skb)) {
--		brcmf_proto_rxreorder(ifp, skb);
-+		brcmf_proto_rxreorder(ifp, skb, inirq);
+@@ -513,10 +513,12 @@ void brcmf_rx_frame(struct device *dev,
+ 		brcmf_proto_rxreorder(ifp, skb, inirq);
  	} else {
  		/* Process special event packets */
- 		if (handle_event)
- 			brcmf_fweh_process_skb(ifp->drvr, skb,
- 					       BCMILCP_SUBTYPE_VENDOR_LONG);
+-		if (handle_event)
+-			brcmf_fweh_process_skb(ifp->drvr, skb,
+-					       BCMILCP_SUBTYPE_VENDOR_LONG);
++		if (handle_event) {
++			gfp_t gfp = inirq ? GFP_ATOMIC : GFP_KERNEL;
  
--		brcmf_netif_rx(ifp, skb);
-+		brcmf_netif_rx(ifp, skb, inirq);
++			brcmf_fweh_process_skb(ifp->drvr, skb,
++					       BCMILCP_SUBTYPE_VENDOR_LONG, gfp);
++		}
+ 		brcmf_netif_rx(ifp, skb, inirq);
  	}
  }
- 
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.h
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.h
-@@ -208,7 +208,7 @@ void brcmf_remove_interface(struct brcmf
- void brcmf_txflowblock_if(struct brcmf_if *ifp,
- 			  enum brcmf_netif_stop_reason reason, bool state);
- void brcmf_txfinalize(struct brcmf_if *ifp, struct sk_buff *txp, bool success);
--void brcmf_netif_rx(struct brcmf_if *ifp, struct sk_buff *skb);
-+void brcmf_netif_rx(struct brcmf_if *ifp, struct sk_buff *skb, bool inirq);
- void brcmf_netif_mon_rx(struct brcmf_if *ifp, struct sk_buff *skb);
- void brcmf_net_detach(struct net_device *ndev, bool rtnl_locked);
- int brcmf_net_mon_attach(struct brcmf_if *ifp);
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.c
-@@ -1664,7 +1664,7 @@ static void brcmf_rxreorder_get_skb_list
- 	rfi->pend_pkts -= skb_queue_len(skb_list);
- }
- 
--void brcmf_fws_rxreorder(struct brcmf_if *ifp, struct sk_buff *pkt)
-+void brcmf_fws_rxreorder(struct brcmf_if *ifp, struct sk_buff *pkt, bool inirq)
- {
- 	struct brcmf_pub *drvr = ifp->drvr;
- 	u8 *reorder_data;
-@@ -1682,7 +1682,7 @@ void brcmf_fws_rxreorder(struct brcmf_if
- 	/* validate flags and flow id */
- 	if (flags == 0xFF) {
- 		bphy_err(drvr, "invalid flags...so ignore this packet\n");
--		brcmf_netif_rx(ifp, pkt);
-+		brcmf_netif_rx(ifp, pkt, inirq);
+@@ -532,7 +534,7 @@ void brcmf_rx_event(struct device *dev,
+ 	if (brcmf_rx_hdrpull(drvr, skb, &ifp))
  		return;
- 	}
  
-@@ -1694,7 +1694,7 @@ void brcmf_fws_rxreorder(struct brcmf_if
- 		if (rfi == NULL) {
- 			brcmf_dbg(INFO, "received flags to cleanup, but no flow (%d) yet\n",
- 				  flow_id);
--			brcmf_netif_rx(ifp, pkt);
-+			brcmf_netif_rx(ifp, pkt, inirq);
- 			return;
- 		}
- 
-@@ -1719,7 +1719,7 @@ void brcmf_fws_rxreorder(struct brcmf_if
- 		rfi = kzalloc(buf_size, GFP_ATOMIC);
- 		if (rfi == NULL) {
- 			bphy_err(drvr, "failed to alloc buffer\n");
--			brcmf_netif_rx(ifp, pkt);
-+			brcmf_netif_rx(ifp, pkt, inirq);
- 			return;
- 		}
- 
-@@ -1833,7 +1833,7 @@ void brcmf_fws_rxreorder(struct brcmf_if
- netif_rx:
- 	skb_queue_walk_safe(&reorder_list, pkt, pnext) {
- 		__skb_unlink(pkt, &reorder_list);
--		brcmf_netif_rx(ifp, pkt);
-+		brcmf_netif_rx(ifp, pkt, inirq);
- 	}
+-	brcmf_fweh_process_skb(ifp->drvr, skb, 0);
++	brcmf_fweh_process_skb(ifp->drvr, skb, 0, GFP_KERNEL);
+ 	brcmu_pkt_buf_free_skb(skb);
  }
  
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.h
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.h
-@@ -42,6 +42,6 @@ void brcmf_fws_add_interface(struct brcm
- void brcmf_fws_del_interface(struct brcmf_if *ifp);
- void brcmf_fws_bustxfail(struct brcmf_fws_info *fws, struct sk_buff *skb);
- void brcmf_fws_bus_blocked(struct brcmf_pub *drvr, bool flow_blocked);
--void brcmf_fws_rxreorder(struct brcmf_if *ifp, struct sk_buff *skb);
-+void brcmf_fws_rxreorder(struct brcmf_if *ifp, struct sk_buff *skb, bool inirq);
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c
+@@ -388,12 +388,11 @@ int brcmf_fweh_activate_events(struct br
+  */
+ void brcmf_fweh_process_event(struct brcmf_pub *drvr,
+ 			      struct brcmf_event *event_packet,
+-			      u32 packet_len)
++			      u32 packet_len, gfp_t gfp)
+ {
+ 	enum brcmf_fweh_event_code code;
+ 	struct brcmf_fweh_info *fweh = &drvr->fweh;
+ 	struct brcmf_fweh_queue_item *event;
+-	gfp_t alloc_flag = GFP_KERNEL;
+ 	void *data;
+ 	u32 datalen;
  
- #endif /* FWSIGNAL_H_ */
+@@ -412,10 +411,7 @@ void brcmf_fweh_process_event(struct brc
+ 	    datalen + sizeof(*event_packet) > packet_len)
+ 		return;
+ 
+-	if (in_interrupt())
+-		alloc_flag = GFP_ATOMIC;
+-
+-	event = kzalloc(sizeof(*event) + datalen, alloc_flag);
++	event = kzalloc(sizeof(*event) + datalen, gfp);
+ 	if (!event)
+ 		return;
+ 
+--- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h
++++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h
+@@ -319,11 +319,12 @@ void brcmf_fweh_unregister(struct brcmf_
+ int brcmf_fweh_activate_events(struct brcmf_if *ifp);
+ void brcmf_fweh_process_event(struct brcmf_pub *drvr,
+ 			      struct brcmf_event *event_packet,
+-			      u32 packet_len);
++			      u32 packet_len, gfp_t gfp);
+ void brcmf_fweh_p2pdev_setup(struct brcmf_if *ifp, bool ongoing);
+ 
+ static inline void brcmf_fweh_process_skb(struct brcmf_pub *drvr,
+-					  struct sk_buff *skb, u16 stype)
++					  struct sk_buff *skb, u16 stype,
++					  gfp_t gfp)
+ {
+ 	struct brcmf_event *event_packet;
+ 	u16 subtype, usr_stype;
+@@ -354,7 +355,7 @@ static inline void brcmf_fweh_process_sk
+ 	if (usr_stype != BCMILCP_BCM_SUBTYPE_EVENT)
+ 		return;
+ 
+-	brcmf_fweh_process_event(drvr, event_packet, skb->len + ETH_HLEN);
++	brcmf_fweh_process_event(drvr, event_packet, skb->len + ETH_HLEN, gfp);
+ }
+ 
+ #endif /* FWEH_H_ */
 --- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c
 +++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c
-@@ -536,7 +536,8 @@ static int brcmf_msgbuf_hdrpull(struct b
- 	return -ENODEV;
- }
- 
--static void brcmf_msgbuf_rxreorder(struct brcmf_if *ifp, struct sk_buff *skb)
-+static void brcmf_msgbuf_rxreorder(struct brcmf_if *ifp, struct sk_buff *skb,
-+				   bool inirq)
- {
- }
- 
-@@ -1190,7 +1191,7 @@ brcmf_msgbuf_process_rx_complete(struct
- 	}
+@@ -1129,7 +1129,7 @@ static void brcmf_msgbuf_process_event(s
  
  	skb->protocol = eth_type_trans(skb, ifp->ndev);
--	brcmf_netif_rx(ifp, skb);
-+	brcmf_netif_rx(ifp, skb, false);
- }
  
- static void brcmf_msgbuf_process_gen_status(struct brcmf_msgbuf *msgbuf,
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/proto.h
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/proto.h
-@@ -32,7 +32,7 @@ struct brcmf_proto {
- 			    u8 peer[ETH_ALEN]);
- 	void (*add_tdls_peer)(struct brcmf_pub *drvr, int ifidx,
- 			      u8 peer[ETH_ALEN]);
--	void (*rxreorder)(struct brcmf_if *ifp, struct sk_buff *skb);
-+	void (*rxreorder)(struct brcmf_if *ifp, struct sk_buff *skb, bool inirq);
- 	void (*add_if)(struct brcmf_if *ifp);
- 	void (*del_if)(struct brcmf_if *ifp);
- 	void (*reset_if)(struct brcmf_if *ifp);
-@@ -109,9 +109,9 @@ static inline bool brcmf_proto_is_reorde
- }
+-	brcmf_fweh_process_skb(ifp->drvr, skb, 0);
++	brcmf_fweh_process_skb(ifp->drvr, skb, 0, GFP_KERNEL);
  
- static inline void
--brcmf_proto_rxreorder(struct brcmf_if *ifp, struct sk_buff *skb)
-+brcmf_proto_rxreorder(struct brcmf_if *ifp, struct sk_buff *skb, bool inirq)
- {
--	ifp->drvr->proto->rxreorder(ifp, skb);
-+	ifp->drvr->proto->rxreorder(ifp, skb, inirq);
- }
- 
- static inline void
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c
-@@ -1704,7 +1704,7 @@ static u8 brcmf_sdio_rxglom(struct brcmf
- 				brcmf_rx_event(bus->sdiodev->dev, pfirst);
- 			else
- 				brcmf_rx_frame(bus->sdiodev->dev, pfirst,
--					       false);
-+					       false, false);
- 			bus->sdcnt.rxglompkts++;
- 		}
- 
-@@ -2038,7 +2038,7 @@ static uint brcmf_sdio_readframes(struct
- 			brcmf_rx_event(bus->sdiodev->dev, pkt);
- 		else
- 			brcmf_rx_frame(bus->sdiodev->dev, pkt,
--				       false);
-+				       false, false);
- 
- 		/* prepare the descriptor for the next read */
- 		rd->len = rd->len_nxtfrm << 4;
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/usb.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/usb.c
-@@ -532,7 +532,7 @@ static void brcmf_usb_rx_complete(struct
- 	if (devinfo->bus_pub.state == BRCMFMAC_USB_STATE_UP ||
- 	    devinfo->bus_pub.state == BRCMFMAC_USB_STATE_SLEEP) {
- 		skb_put(skb, urb->actual_length);
--		brcmf_rx_frame(devinfo->dev, skb, true);
-+		brcmf_rx_frame(devinfo->dev, skb, true, true);
- 		brcmf_usb_rx_refill(devinfo, req);
- 		usb_mark_last_busy(urb->dev);
- 	} else {
+ exit:
+ 	brcmu_pkt_buf_free_skb(skb);
 
 _______________________________________________
 Intel-wired-lan mailing list
