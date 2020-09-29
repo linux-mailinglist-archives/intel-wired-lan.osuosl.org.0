@@ -2,62 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 850EA27D995
+	by mail.lfdr.de (Postfix) with ESMTPS id 19C5927D994
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 35B5485FC9;
-	Tue, 29 Sep 2020 21:03:12 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 6752185FFC;
+	Tue, 29 Sep 2020 21:03:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XeYNdZmziDfI; Tue, 29 Sep 2020 21:03:09 +0000 (UTC)
+	with ESMTP id D9BG5uDjuBRX; Tue, 29 Sep 2020 21:03:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3C31B85FAD;
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 7F45085FD5;
 	Tue, 29 Sep 2020 21:03:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4917C1BF36E
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6A4C51BF989
  for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 40FCC8683A
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6267387113
  for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NgV6DVFt6gJa for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id WhCPmKWglrjR for <intel-wired-lan@lists.osuosl.org>;
  Tue, 29 Sep 2020 20:35:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 25AE586806
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 66C9587118
  for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:35:42 +0000 (UTC)
-Message-Id: <20200929202509.673358734@linutronix.de>
+Message-Id: <20200929203459.515312515@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601411738;
+ s=2020; t=1601411739;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=A9VmTcwkFTXzbdbbw121qWEfo2p4m5jmwhJ1CmJQMec=;
- b=dEktkI17Grpony7lZDKecnFEOdfjaxY0ryQd1B5sA+JU4DH7ltvZM5y90/S5ZbQN7kor0p
- nLbgJyFkDdibeBt0Ws0AFUWAwfpK6RKbtbq32hFBmipn16rznFFbSlROeQFlp+ycGanNWP
- QRMD1DrNO0zkyj7xOFwIs6S016IM/aeJPP/9HiWrKgxBMq9Sp/2CemfdS7b/xDowDOdaxh
- oUQcMLQPDEHoUThhcs+bMPyOJgTUxDiH6L6XKP3eajz21AjfzkSNNqe1W42cLHSqj4tk8o
- 0aWkLxpZPgyBQNI6QCrDgY/PPpvKnuff2Aj0OUVYn/NAyfr2M4CjSm3+dt2zUw==
+ content-transfer-encoding:content-transfer-encoding:  references:references;
+ bh=ixX5wWeAzYgeqCbxOmX1EtJ/d8bhHMpFSLlTnl3G8oc=;
+ b=rLTnlvYVJ44sP81i5crg2IdrMuAcGvR1WnDMWATS/f0fv0RR8XmXxSpbTNVrghfSgyLCB9
+ 7vY05femAXzcPxxt4YIlOmS0NJE78VJjIq9GFCX/1L6H8JXaur/EmNtEhY8tGE8kBAqwsG
+ 9ajJnRCuEPM6nBfKtFJNtfUul8IolcgLvlWkXREeiNI4DmCvKoV/DezStYuNOHxEJQcDDo
+ U2fEfjifRbL/wigBLP6EfSWnQL0tuqOtz0Z35yDlX2QuMTQWkHyUwjNZvQ6DnJgOliMIOM
+ u60HRnW1blplXHXswcA2Ee9vOFV2Jy4eF8wRw77i3z0uJ+KbPzDKG13g78y9Lw==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601411738;
+ s=2020e; t=1601411739;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=A9VmTcwkFTXzbdbbw121qWEfo2p4m5jmwhJ1CmJQMec=;
- b=pmrmwnMCbZFXDvPzt7v5jtJqkDoyPinCfkEKPf5sb51+5GYnhW1aOS8+hkZk3HEdGnrxXP
- lrF/CHb/+X9mNiBw==
-Date: Tue, 29 Sep 2020 22:25:09 +0200
+ content-transfer-encoding:content-transfer-encoding:  references:references;
+ bh=ixX5wWeAzYgeqCbxOmX1EtJ/d8bhHMpFSLlTnl3G8oc=;
+ b=wvOjnrRLLr5mL3R/GZv5MV5UXnvPGrg6RJ3yWooCRQWGteFyFBIq2hmIbxbv4SN0ex5MxU
+ JFYN02SkZqGUSyCA==
+Date: Tue, 29 Sep 2020 22:25:10 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
+References: <20200929202509.673358734@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 29 Sep 2020 21:03:08 +0000
-Subject: [Intel-wired-lan] [patch V2 00/36] net: in_interrupt() cleanup and
- fixes
+Subject: [Intel-wired-lan] [patch V2 01/36] net: enic: Cure the enic api
+ locking trainwreck
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,142 +111,147 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Folks,
+From: Thomas Gleixner <tglx@linutronix.de>
 
-in the discussion about preempt count consistency accross kernel configurations:
+enic_dev_wait() has a BUG_ON(in_interrupt()).
 
-  https://lore.kernel.org/r/20200914204209.256266093@linutronix.de/
+Chasing the callers of enic_dev_wait() revealed the gems of enic_reset()
+and enic_tx_hang_reset() which are both invoked through work queues in
+order to be able to call rtnl_lock(). So far so good.
 
-Linus clearly requested that code in drivers and libraries which changes
-behaviour based on execution context should either be split up so that
-e.g. task context invocations and BH invocations have different interfaces
-or if that's not possible the context information has to be provided by the
-caller which knows in which context it is executing.
+After locking rtnl both functions acquire enic::enic_api_lock which
+serializes against the (ab)use from infiniband. This is where the
+trainwreck starts.
 
-This includes conditional locking, allocation mode (GFP_*) decisions and
-avoidance of code paths which might sleep.
+enic::enic_api_lock is a spin_lock() which implicitly disables preemption,
+but both functions invoke a ton of functions under that lock which can
+sleep. The BUG_ON(in_interrupt()) does not trigger in that case because it
+can't detect the preempt disabled condition.
 
-In the long run, usage of 'preemptible, in_*irq etc.' should be banned from
-driver code completely.
+This clearly has never been tested with any of the mandatory debug options
+for 7+ years, which would have caught that for sure.
 
-This is the second version of the first batch of related changes. V1 can be
-found here:
+Cure it by adding a enic_api_busy member to struct enic, which is modified
+and evaluated with enic::enic_api_lock held.
 
-     https://lore.kernel.org/r/20200927194846.045411263@linutronix.de
+If enic_api_devcmd_proxy_by_index() observes enic::enic_api_busy as true,
+it drops enic::enic_api_lock and busy waits for enic::enic_api_busy to
+become false.
 
-Changes vs. V1:
+It would be smarter to wait for a completion of that busy period, but
+enic_api_devcmd_proxy_by_index() is called with other spin locks held which
+obviously can't sleep.
 
-  - Rebased to net-next
+Remove the BUG_ON(in_interrupt()) check as well because it's incomplete and
+with proper debugging enabled the problem would have been caught from the
+debug checks in schedule_timeout().
 
-  - Fixed the half done rename sillyness in the ENIC patch.
-
-  - Fixed the IONIC driver fallout.
-
-  - Picked up the SFC fix from Edward and adjusted the GFP_KERNEL change
-    accordingly.
-
-  - Addressed the review comments vs. BCRFMAC.
-
-  - Collected Reviewed/Acked-by tags as appropriate.
-
-The pile is also available from:
-
-    git://git.kernel.org/pub/scm/linux/kernel/git/tglx/devel.git net/cleanup
-
-Thanks,
-
-	tglx
+Fixes: 0b038566c0ea ("drivers/net: enic: Add an interface for USNIC to interact with firmware")
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
- Documentation/networking/caif/spi_porting.rst                   |  229 --
- b/Documentation/networking/caif/index.rst                       |    1 
- b/drivers/net/caif/Kconfig                                      |   19 
- b/drivers/net/caif/Makefile                                     |    4 
- b/drivers/net/caif/caif_hsi.c                                   |   19 
- b/drivers/net/ethernet/amd/sun3lance.c                          |   11 
- b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c               |    1 
- b/drivers/net/ethernet/atheros/atl1e/atl1e_main.c               |    2 
- b/drivers/net/ethernet/atheros/atlx/atl2.c                      |    1 
- b/drivers/net/ethernet/chelsio/cxgb3/adapter.h                  |    1 
- b/drivers/net/ethernet/chelsio/cxgb3/cxgb3_main.c               |    2 
- b/drivers/net/ethernet/chelsio/cxgb3/sge.c                      |   44 
- b/drivers/net/ethernet/chelsio/cxgb4/sge.c                      |    3 
- b/drivers/net/ethernet/cisco/enic/enic.h                        |    1 
- b/drivers/net/ethernet/cisco/enic/enic_api.c                    |    6 
- b/drivers/net/ethernet/cisco/enic/enic_main.c                   |   27 
- b/drivers/net/ethernet/freescale/fec_mpc52xx.c                  |   10 
- b/drivers/net/ethernet/intel/e100.c                             |    4 
- b/drivers/net/ethernet/intel/e1000/e1000_main.c                 |    1 
- b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c                  |    2 
- b/drivers/net/ethernet/intel/i40e/i40e_main.c                   |    4 
- b/drivers/net/ethernet/intel/ice/ice_main.c                     |    1 
- b/drivers/net/ethernet/intel/igb/igb_main.c                     |    1 
- b/drivers/net/ethernet/intel/igc/igc_main.c                     |    1 
- b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c                 |    1 
- b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c             |    2 
- b/drivers/net/ethernet/natsemi/sonic.c                          |   24 
- b/drivers/net/ethernet/natsemi/sonic.h                          |    2 
- b/drivers/net/ethernet/neterion/vxge/vxge-config.c              |    9 
- b/drivers/net/ethernet/neterion/vxge/vxge-config.h              |    7 
- b/drivers/net/ethernet/pensando/ionic/ionic_dev.c               |    2 
- b/drivers/net/ethernet/pensando/ionic/ionic_lif.c               |   64 
- b/drivers/net/ethernet/pensando/ionic/ionic_lif.h               |    2 
- b/drivers/net/ethernet/pensando/ionic/ionic_main.c              |    4 
- b/drivers/net/ethernet/sfc/ef10.c                               |   24 
- b/drivers/net/ethernet/sfc/efx_common.c                         |    2 
- b/drivers/net/ethernet/sfc/net_driver.h                         |    5 
- b/drivers/net/ethernet/sfc/nic_common.h                         |    7 
- b/drivers/net/ethernet/sun/sunbmac.c                            |   18 
- b/drivers/net/phy/mdio_bus.c                                    |   15 
- b/drivers/net/usb/kaweth.c                                      |  261 --
- b/drivers/net/usb/net1080.c                                     |    1 
- b/drivers/net/wan/lmc/lmc_debug.c                               |   18 
- b/drivers/net/wan/lmc/lmc_debug.h                               |    1 
- b/drivers/net/wan/lmc/lmc_main.c                                |  105 -
- b/drivers/net/wan/lmc/lmc_media.c                               |    4 
- b/drivers/net/wan/lmc/lmc_proto.c                               |   16 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcdc.c       |    4 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcmsdh.c     |    4 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bus.h        |    3 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c       |   26 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.h       |    2 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c       |    8 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h       |    7 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.c   |   10 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.h   |    2 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c     |    7 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/proto.h      |    6 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c       |    8 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.h       |    2 
- b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/usb.c        |    2 
- b/drivers/net/wireless/intel/ipw2x00/ipw2100.c                  |    3 
- b/drivers/net/wireless/intel/ipw2x00/ipw2200.h                  |    6 
- b/drivers/net/wireless/intel/ipw2x00/libipw.h                   |    3 
- b/drivers/net/wireless/intel/iwlegacy/common.h                  |    4 
- b/drivers/net/wireless/intel/iwlwifi/iwl-debug.c                |    5 
- b/drivers/net/wireless/intel/iwlwifi/iwl-devtrace-msg.h         |    6 
- b/drivers/net/wireless/intersil/hostap/hostap_hw.c              |   12 
- b/drivers/net/wireless/marvell/libertas/defs.h                  |    3 
- b/drivers/net/wireless/marvell/libertas/rx.c                    |   11 
- b/drivers/net/wireless/marvell/libertas_tf/deb_defs.h           |    3 
- b/drivers/net/wireless/marvell/mwifiex/uap_txrx.c               |    6 
- b/drivers/net/wireless/marvell/mwifiex/util.c                   |    6 
- b/drivers/net/wireless/realtek/rtlwifi/base.c                   |   47 
- b/drivers/net/wireless/realtek/rtlwifi/base.h                   |    3 
- b/drivers/net/wireless/realtek/rtlwifi/btcoexist/halbtcoutsrc.c |   12 
- b/drivers/net/wireless/realtek/rtlwifi/core.c                   |    6 
- b/drivers/net/wireless/realtek/rtlwifi/debug.c                  |   20 
- b/drivers/net/wireless/realtek/rtlwifi/debug.h                  |    8 
- b/drivers/net/wireless/realtek/rtlwifi/pci.c                    |    4 
- b/drivers/net/wireless/realtek/rtlwifi/ps.c                     |   27 
- b/drivers/net/wireless/realtek/rtlwifi/ps.h                     |   10 
- b/drivers/net/wireless/realtek/rtlwifi/wifi.h                   |    3 
- b/drivers/net/wireless/zydas/zd1211rw/zd_usb.c                  |    1 
- b/include/linux/netdevice.h                                     |    1 
- b/net/core/dev.c                                                |   15 
- drivers/net/caif/caif_spi.c                                     |  874 ----------
- drivers/net/caif/caif_spi_slave.c                               |  254 --
- include/net/caif/caif_spi.h                                     |  155 -
- 89 files changed, 354 insertions(+), 2234 deletions(-)
+V2: Cure tglx's last minute rename fail
+---
+ drivers/net/ethernet/cisco/enic/enic.h      |    1 +
+ drivers/net/ethernet/cisco/enic/enic_api.c  |    6 ++++++
+ drivers/net/ethernet/cisco/enic/enic_main.c |   27 +++++++++++++++++++++------
+ 3 files changed, 28 insertions(+), 6 deletions(-)
+
+--- a/drivers/net/ethernet/cisco/enic/enic.h
++++ b/drivers/net/ethernet/cisco/enic/enic.h
+@@ -169,6 +169,7 @@ struct enic {
+ 	u16 num_vfs;
+ #endif
+ 	spinlock_t enic_api_lock;
++	bool enic_api_busy;
+ 	struct enic_port_profile *pp;
+ 
+ 	/* work queue cache line section */
+--- a/drivers/net/ethernet/cisco/enic/enic_api.c
++++ b/drivers/net/ethernet/cisco/enic/enic_api.c
+@@ -34,6 +34,12 @@ int enic_api_devcmd_proxy_by_index(struc
+ 	struct vnic_dev *vdev = enic->vdev;
+ 
+ 	spin_lock(&enic->enic_api_lock);
++	while (enic->enic_api_busy) {
++		spin_unlock(&enic->enic_api_lock);
++		cpu_relax();
++		spin_lock(&enic->enic_api_lock);
++	}
++
+ 	spin_lock_bh(&enic->devcmd_lock);
+ 
+ 	vnic_dev_cmd_proxy_by_index_start(vdev, vf);
+--- a/drivers/net/ethernet/cisco/enic/enic_main.c
++++ b/drivers/net/ethernet/cisco/enic/enic_main.c
+@@ -2107,8 +2107,6 @@ static int enic_dev_wait(struct vnic_dev
+ 	int done;
+ 	int err;
+ 
+-	BUG_ON(in_interrupt());
+-
+ 	err = start(vdev, arg);
+ 	if (err)
+ 		return err;
+@@ -2297,6 +2295,13 @@ static int enic_set_rss_nic_cfg(struct e
+ 		rss_hash_bits, rss_base_cpu, rss_enable);
+ }
+ 
++static void enic_set_api_busy(struct enic *enic, bool busy)
++{
++	spin_lock(&enic->enic_api_lock);
++	enic->enic_api_busy = busy;
++	spin_unlock(&enic->enic_api_lock);
++}
++
+ static void enic_reset(struct work_struct *work)
+ {
+ 	struct enic *enic = container_of(work, struct enic, reset);
+@@ -2306,7 +2311,9 @@ static void enic_reset(struct work_struc
+ 
+ 	rtnl_lock();
+ 
+-	spin_lock(&enic->enic_api_lock);
++	/* Stop any activity from infiniband */
++	enic_set_api_busy(enic, true);
++
+ 	enic_stop(enic->netdev);
+ 	enic_dev_soft_reset(enic);
+ 	enic_reset_addr_lists(enic);
+@@ -2314,7 +2321,10 @@ static void enic_reset(struct work_struc
+ 	enic_set_rss_nic_cfg(enic);
+ 	enic_dev_set_ig_vlan_rewrite_mode(enic);
+ 	enic_open(enic->netdev);
+-	spin_unlock(&enic->enic_api_lock);
++
++	/* Allow infiniband to fiddle with the device again */
++	enic_set_api_busy(enic, false);
++
+ 	call_netdevice_notifiers(NETDEV_REBOOT, enic->netdev);
+ 
+ 	rtnl_unlock();
+@@ -2326,7 +2336,9 @@ static void enic_tx_hang_reset(struct wo
+ 
+ 	rtnl_lock();
+ 
+-	spin_lock(&enic->enic_api_lock);
++	/* Stop any activity from infiniband */
++	enic_set_api_busy(enic, true);
++
+ 	enic_dev_hang_notify(enic);
+ 	enic_stop(enic->netdev);
+ 	enic_dev_hang_reset(enic);
+@@ -2335,7 +2347,10 @@ static void enic_tx_hang_reset(struct wo
+ 	enic_set_rss_nic_cfg(enic);
+ 	enic_dev_set_ig_vlan_rewrite_mode(enic);
+ 	enic_open(enic->netdev);
+-	spin_unlock(&enic->enic_api_lock);
++
++	/* Allow infiniband to fiddle with the device again */
++	enic_set_api_busy(enic, false);
++
+ 	call_netdevice_notifiers(NETDEV_REBOOT, enic->netdev);
+ 
+ 	rtnl_unlock();
 
 _______________________________________________
 Intel-wired-lan mailing list
