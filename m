@@ -2,79 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2FC627DB61
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Sep 2020 00:05:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 84BDA27DC28
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Sep 2020 00:38:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 7550985F6E;
-	Tue, 29 Sep 2020 22:05:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3257C847BD;
+	Tue, 29 Sep 2020 22:38:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EimuVGIrIE4t; Tue, 29 Sep 2020 22:05:23 +0000 (UTC)
+	with ESMTP id YjntNnyKHXOE; Tue, 29 Sep 2020 22:38:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6A31A85F71;
-	Tue, 29 Sep 2020 22:05:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3738C84808;
+	Tue, 29 Sep 2020 22:38:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 65E1F1BF39E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 22:04:33 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A7E791BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 22:36:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 4A5B820457
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 22:04:33 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 971108667B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 22:36:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uATBrcKN0sHO for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Sep 2020 22:04:31 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com
- [209.85.216.41])
- by silver.osuosl.org (Postfix) with ESMTPS id B964620347
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 22:04:31 +0000 (UTC)
-Received: by mail-pj1-f41.google.com with SMTP id j19so2349432pjl.4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 15:04:31 -0700 (PDT)
+ with ESMTP id lOZiXl7yhl7o for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Sep 2020 22:36:52 +0000 (UTC)
+X-Greylist: delayed 00:23:39 by SQLgrey-1.7.6
+Received: from mail-vs1-f67.google.com (mail-vs1-f67.google.com
+ [209.85.217.67])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id E22F4865D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 22:36:51 +0000 (UTC)
+Received: by mail-vs1-f67.google.com with SMTP id e23so3950915vsk.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 15:36:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=broadcom.com; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to;
- bh=txToUfJ4D9I6EJTI8IQwrifCg7O/Ja7ClHI7GOKg0kE=;
- b=PFWc16StVuNjjAVEUOc12iKljOyul0yDq/NhZ5DgCBREDjXenmXjO78PEhnbpHa/o7
- FwTyzbtm+Ku2xERsXSC4/2tOeg9n8TmUJKOvwsY0GXvKz9UFtYiowMD5KmhRKt5eH4DU
- U2bsO/pwDoRy0EIG24v/4GHQKE4cf28ihc4Ak=
+ bh=F08bqWQSc1AN/xC7/BguR7pVcMi3bNJomwgEOUX7KBc=;
+ b=M08V8P9eYl7Pl44qMgeUTB3XXP+0MJnu6XYb5kQ7WcUw5VuLYypVPfg7MBxEmDGlDS
+ jV953SwRy6RF/uLL9JK66WaP5RHxSWIV6Vk5hueM3VbRZMUz+6Ex0Oonj+t6ngqQV45u
+ 9EIh4eETbwsm7U6z0A5Xy5l9wP3dr7zevvh+w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to;
- bh=txToUfJ4D9I6EJTI8IQwrifCg7O/Ja7ClHI7GOKg0kE=;
- b=jAFyLbTVlBX3r9+4nEr2NgWWGC28Br9ruQdA52uMvU93K7HG+0Pw727IKBfBlYqcSC
- H1lK1ClcuLJtGI4RX9dlwYFP1+GePNPDg276gW16VK6LbtpfdkNeVn0Z0cch9npwwMd+
- Z0vLGLp7FII1B4AcSkuMuUZH5saNywz/3M3JTeIOIXVD3HtSTbM456Y9o5Y8KrbhbZm7
- F8Csuc1QWbYuSh/nfB7xMj25R5zfRBWGhOrzSqQb/4Ga3Kg7ze0MBm13zJPZKPZ52o/C
- t29RGvgL3QenjOQRwp+cGWF4Nv6zDEZqC/1WKJR901guAZarGMhE7zUxzNDKcJc3AhwO
- sZFA==
-X-Gm-Message-State: AOAM531lvRwgFrswr8awIh1qISOM4rt67scH9Wy1hjtpcQkgC8roBCRw
- HTIez93/wNa/0s6NV7M2Zmk+lg==
-X-Google-Smtp-Source: ABdhPJxV8EYQ9JnZPsQ8dHML9HhEOBxyLiQEpEqoA3u063+yClHhtgTpIqKkckYAsWnYdNPuZLZSzw==
-X-Received: by 2002:a17:90b:80a:: with SMTP id
- bk10mr5622687pjb.53.1601417071046; 
- Tue, 29 Sep 2020 15:04:31 -0700 (PDT)
+ bh=F08bqWQSc1AN/xC7/BguR7pVcMi3bNJomwgEOUX7KBc=;
+ b=EcG//n8TkdQUVyDiY/7nLncJ1ZRfA7yTDsQUW121ZTmFEJICV9SfB0ti4TfAhAohfG
+ qgO37ItXlt6FsaIQSsR++2+FLof0CHdYwireNpbbIlwh35XEtbrYaZT26r6uGoLirYYs
+ Hpob1jzhl1tk8skKt5HkM9jmtwDeGuCXLlYRTDRyYrJsfT2DJzlE4cPwJZOhnyWg56IZ
+ KE1QBPiHyXZSeSvw0IngKrjz2hUKxRh1lXvpjQpGiFVPfEe+hT4mQp8xB8xrpFhRQsPq
+ lQHRgIF4cQqTIP8n6C4Yv9Zze8opvvuBbGTzmc6C2IFsoEWZrxsBDHIfO6oR6peqUIoy
+ fqeQ==
+X-Gm-Message-State: AOAM531TrumM0M48ogdwzUDRRA5W5mG56LkgJYhFD4uuSzAqic8Dc5NT
+ htJYoTytgki1osCW5sNHF2G5h2IajrTKnuKSzDw=
+X-Google-Smtp-Source: ABdhPJxBc5zsDsmSyhashbX/PxCC3L6VtkRhu/YMWfBpT3q96/RllS7cR/QOMPbMCXrcPBLhVgsIhQ==
+X-Received: by 2002:a17:902:fe0b:b029:d1:9bd3:6e20 with SMTP id
+ g11-20020a170902fe0bb02900d19bd36e20mr6663658plj.31.1601417263123; 
+ Tue, 29 Sep 2020 15:07:43 -0700 (PDT)
 Received: from [192.168.178.129] (f140230.upc-f.chello.nl. [80.56.140.230])
- by smtp.gmail.com with ESMTPSA id q193sm6593198pfq.127.2020.09.29.15.04.02
+ by smtp.gmail.com with ESMTPSA id h12sm6336925pfo.68.2020.09.29.15.07.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Sep 2020 15:04:30 -0700 (PDT)
+ Tue, 29 Sep 2020 15:07:42 -0700 (PDT)
 To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
 References: <20200929202509.673358734@linutronix.de>
- <20200929203502.084703195@linutronix.de>
+ <20200929203502.180883992@linutronix.de>
 From: Arend Van Spriel <arend.vanspriel@broadcom.com>
-Message-ID: <0f26e8be-bfb1-7e69-3a8d-a5ef2bf22b25@broadcom.com>
-Date: Wed, 30 Sep 2020 00:03:59 +0200
+Message-ID: <d64a84f6-2ae6-ab26-e7a7-969f45b8cfb8@broadcom.com>
+Date: Wed, 30 Sep 2020 00:07:30 +0200
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.2.2
 MIME-Version: 1.0
-In-Reply-To: <20200929203502.084703195@linutronix.de>
-X-Mailman-Approved-At: Tue, 29 Sep 2020 22:05:21 +0000
-Subject: Re: [Intel-wired-lan] [patch V2 26/36] net: brcmfmac: Convey
- execution context via argument to brcmf_netif_rx()
+In-Reply-To: <20200929203502.180883992@linutronix.de>
+X-Mailman-Approved-At: Tue, 29 Sep 2020 22:38:40 +0000
+Subject: Re: [Intel-wired-lan] [patch V2 27/36] net: brcmfmac: Convey
+ allocation mode as argument
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,73 +121,53 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  Shannon Nelson <snelson@pensando.io>, Dave Miller <davem@davemloft.net>,
  Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: multipart/mixed; boundary="===============4464754186719660304=="
+Content-Type: multipart/mixed; boundary="===============7811035005238766602=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---===============4464754186719660304==
+--===============7811035005238766602==
 Content-Type: multipart/signed; protocol="application/pkcs7-signature"; micalg=sha-256;
-	boundary="000000000000af669b05b07af787"
+	boundary="0000000000004a5c5905b07b6bcd"
 
---000000000000af669b05b07af787
+--0000000000004a5c5905b07b6bcd
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 
 On 9/29/2020 10:25 PM, Thomas Gleixner wrote:
-> bcrmgf_netif_rx() uses in_interrupt to chose between netif_rx() and
-> netif_rx_ni(). in_interrupt() usage in drivers is phased out.
+> From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 > 
-> Convey the execution mode via an 'inirq' argument through the various
-> callchains leading to brcmf_netif_rx():
+> The usage of in_interrupt() in drivers is phased out and Linus clearly
+> requested that code which changes behaviour depending on context should
+> either be seperated or the context be conveyed in an argument passed by the
+> caller, which usually knows the context.
 > 
-> brcmf_pcie_isr_thread()		    <- Task context
->    brcmf_proto_msgbuf_rx_trigger()
->      brcmf_msgbuf_process_rx()
->        brcmf_msgbuf_process_msgtype()
->          brcmf_msgbuf_process_rx_complete()
-> 	  brcmf_netif_mon_rx()
-> 	     brcmf_netif_rx(isirq = false)
-> 	  brcmf_netif_rx(isirq = false)
+> brcmf_fweh_process_event() uses in_interrupt() to select the allocation
+> mode GFP_KERNEL/GFP_ATOMIC. Aside of the above reasons this check is
+> incomplete as it cannot detect contexts which just have preemption or
+> interrupts disabled.
 > 
-> brcmf_sdio_readframes()  <- Task context sdio_claim_host() might sleep
->    brcmf_rx_frame(isirq = false)
+> All callchains leading to brcmf_fweh_process_event() can clearly identify
+> the calling context. Convey a 'gfp' argument through the callchains and let
+> the callers hand in the appropriate GFP mode.
 > 
-> brcmf_sdio_rxglom()      <- Task context sdio_claim_host() might sleep
->    brcmf_rx_frame(isirq = false)
-> 
-> brcmf_usb_rx_complete()  <- Interrupt context
->    brcmf_rx_frame(isirq = true)
-> 
-> brcmf_rx_frame()
->    brcmf_proto_rxreorder()
->      brcmf_proto_bcdc_rxreorder()
->        brcmf_fws_rxreorder()
->          brcmf_netif_rx()
->        brcmf_netif_rx()
-
-Thanks for taking the dive.
+> This has also the advantage that any change of execution context or
+> preemption/interrupt state in these callchains will be detected by the
+> memory allocator for all GFP_KERNEL allocations.
 
 Reviewed-by: Arend van Spriel <arend.vanspriel@broadcom.com>
+> Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Arend van Spriel <arend.vanspriel@broadcom.com>
-> Cc: Kalle Valo <kvalo@codeaurora.org>
 > ---
-> V2: New patch. Using an argument instead of switching to netif_rx_any_context()
+> V2: Adopt to the 'inirq' changes
 > ---
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/bcdc.c     |    4 +--
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/bus.h      |    3 +-
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c     |   16 ++++++------
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.h     |    2 -
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.c |   10 +++----
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/fwsignal.h |    2 -
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c   |    5 ++-
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/proto.h    |    6 ++--
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/sdio.c     |    4 +--
->   drivers/net/wireless/broadcom/brcm80211/brcmfmac/usb.c      |    2 -
->   10 files changed, 29 insertions(+), 25 deletions(-)
+>   drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c   |   10 ++++++----
+>   drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c   |    8 ++------
+>   drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h   |    7 ++++---
+>   drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c |    2 +-
+>   4 files changed, 13 insertions(+), 14 deletions(-)
 
---000000000000af669b05b07af787
+--0000000000004a5c5905b07b6bcd
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -258,18 +238,18 @@ WwHVQUbAn+xLMIQpycIQFoJIGJX4MeaTSMfLNP2w7nP2uLNgIeleF284vS0XVkBXSCgIGylP4SN+
 HQYrv7fVCbtp+c7nFvP7MYICbzCCAmsCAQEwbTBdMQswCQYDVQQGEwJCRTEZMBcGA1UEChMQR2xv
 YmFsU2lnbiBudi1zYTEzMDEGA1UEAxMqR2xvYmFsU2lnbiBQZXJzb25hbFNpZ24gMiBDQSAtIFNI
 QTI1NiAtIEczAgxR3m7Pj6LvQiWjJy0wDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcNAQkEMSIE
-INJ8F6w6EaA9wgPRH3Sdj0IbzO/Po40dTzz45z3/fFdhMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0B
-BwEwHAYJKoZIhvcNAQkFMQ8XDTIwMDkyOTIyMDQzMVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgB
+IIuMKD8R1d3dTMFYq0C8kaH43I3CaH55tKZnji15616RMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0B
+BwEwHAYJKoZIhvcNAQkFMQ8XDTIwMDkyOTIyMzY1MVowaQYJKoZIhvcNAQkPMVwwWjALBglghkgB
 ZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG9w0BAQow
-CwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQCK/4TQqgRRDqyjck+9
-LWboW9/YxwzH2vrmoYtwS/9rIjLv7TsUnFzyChuroz85ir9JDBGjoPakVZC01hEyUfAIncvpXJ17
-7vAzEpzNFY/fTMWyDRi6miG0c+fnHvLTTWQyrHQxUWra7jnq8yZNchT8PMsL1238IxkZ4Pzk/iK6
-FEZn24/CXQHAMf6MNRciKBlYhZ79++nfHUz56jz7wIVMyaFF4EpPmlkdiJHALV2X8nZgjKMt2NDQ
-xis2OiLPNzEa7G6iRQUCTK2XN6+jBFehUCwPsnPHU6ugMfc0s63/tvDRjq6/V9v5OUccqGTd+cfh
-GJOI1HbKrmruLU2nASsy
---000000000000af669b05b07af787--
+CwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBLrrpJTAtNXVLijiAm
+odp4/I2GNld1jW4xC5wNhmFpRoTvGzBlSkFQRbpKLeUyc4/ddfptuU9COoKW5FTor2WN0cQ+4WHg
+UukKbjbZ0N4A5+2l83lAvHKMAToumz8rgw8bPnj18NCCvI3g5Xn2up0SkIa3XRmVUZ1DAOlq0c9N
+s86dXA5/wYxtcQNaUCrfycIpN0+flfF8FzB/pWkGddHXPHc7lF5cdZlGNbKR+KBBVwIAbsKBAcc8
+WOCge5YbfImo95RT/LmqOu3YwwtrbgOAb002XlcsgQrIYfCr5Xy+yX4evHx+tp1S+9itx2oF+gbQ
+tY4TDjv1Qva+T2TjNZ1K
+--0000000000004a5c5905b07b6bcd--
 
---===============4464754186719660304==
+--===============7811035005238766602==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -280,4 +260,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============4464754186719660304==--
+--===============7811035005238766602==--
