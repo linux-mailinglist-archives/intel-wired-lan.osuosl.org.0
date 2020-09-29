@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B216D27D9A8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:39 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE5AE27D9AD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Sep 2020 23:03:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2D729870C8;
-	Tue, 29 Sep 2020 21:03:38 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6A20684789;
+	Tue, 29 Sep 2020 21:03:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9r-SkwNFIi5g; Tue, 29 Sep 2020 21:03:38 +0000 (UTC)
+	with ESMTP id 6QwMoVF7Haht; Tue, 29 Sep 2020 21:03:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 93B01870A6;
-	Tue, 29 Sep 2020 21:03:37 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A401184DCD;
+	Tue, 29 Sep 2020 21:03:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 308A61BF36E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:15 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9FC411BF36E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 2C02887113
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:15 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 9B4A485F6C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9nxre9hwvkdA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Sep 2020 20:36:14 +0000 (UTC)
+ with ESMTP id s6KU9dTyUZpX for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Sep 2020 20:36:16 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 49C2287118
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:14 +0000 (UTC)
-Message-Id: <20200929203502.180883992@linutronix.de>
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id B18D285F71
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Sep 2020 20:36:15 +0000 (UTC)
+Message-Id: <20200929203502.290194412@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1601411772;
+ s=2020; t=1601411774;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=hwdF1V4LMxNUL7q9z/lP9cddjWDJRZagT/G6Cdx9lrk=;
- b=uZt/eUN8OfZhfYu4gZx4bXPXea7lornACIiuoDVJLvHk2H8Q8Zv+kZOUr87g2/UhKiST25
- V+/5V+y0ru/ey1GSt3YtUGGFonFivlElx2HcMOpJum88Qm4oYIvstjSTEDik2AaMV8e5Io
- J+QO3V4F0uKsEyaI4fFydfJrzfeINlStfebs97Ve8vMXpFni+74VYRi+3PTFfSf6dv3JNz
- 7+tQKj8T0Nser9o2g7IMsgMJoxIKPBi7cfkxQC2Ymw0kgyaIKQQUdyTFBzUoebRwOyVN2y
- 1jAndEXur5WuP/3T0J0e4fP7iBuID+fkll24K9x2fQGJYBZ1bWsjLH3RXZK3bg==
+ bh=7Y3JxN63Q/PAehxAHjlctr5zLB/0T1XlCp5sBBJ6ers=;
+ b=oiKP0Xh0hgA+5zrGUYdekn9rQzAC4LdhldgalfF+GD+80VdiZXZKs0d75kx8FgkG4UHHVJ
+ o3rqlCb4K9+JNHIsFIL5WLeFB7ty070G/8LtX60ximHuITgnlH9wpX7tsgz3tkwi44KWwb
+ 2HCpK0W6133MFuLdi0x3bknXOXCQKj4vV33vpVcw74G548uIlqDiVhr//B8e1Y70vEooRz
+ FCokcITKwTHomIJfNuDvGD9UcFM++gfJyvxS7AqaLGGogozINtZ+NSuE0Yxm2n6PMhWcpI
+ 3xl50c76FhcB18vk4+R5AN/njwD4JesFpZCbRIwbexbhX5MIjp1gUXFbryQa9g==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1601411772;
+ s=2020e; t=1601411774;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:  references:references;
- bh=hwdF1V4LMxNUL7q9z/lP9cddjWDJRZagT/G6Cdx9lrk=;
- b=G060K35tQ0idi9JDnp6uPFJ6I678hM/pUygnucHylPIewlMqMLY0K4NAFzL375dZQcwl/H
- fhMzYNClcuz68CDw==
-Date: Tue, 29 Sep 2020 22:25:36 +0200
+ bh=7Y3JxN63Q/PAehxAHjlctr5zLB/0T1XlCp5sBBJ6ers=;
+ b=Cv7GOQA6CjaeBoQZgaP2ugJNvaDW0z8PoRHJHLEmmHHtU9PIoDOnTj0hyjRawikbMf+aw1
+ 9TZvSn3S/yPlakBw==
+Date: Tue, 29 Sep 2020 22:25:37 +0200
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 References: <20200929202509.673358734@linutronix.de>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Tue, 29 Sep 2020 21:03:08 +0000
-Subject: [Intel-wired-lan] [patch V2 27/36] net: brcmfmac: Convey allocation
- mode as argument
+Subject: [Intel-wired-lan] [patch V2 28/36] net: ipw2x00, iwlegacy,
+ iwlwifi: Remove in_interrupt() from debug macros
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,127 +113,101 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-The usage of in_interrupt() in drivers is phased out and Linus clearly
-requested that code which changes behaviour depending on context should
-either be seperated or the context be conveyed in an argument passed by the
-caller, which usually knows the context.
+The usage of in_interrupt() in non-core code is phased out.
 
-brcmf_fweh_process_event() uses in_interrupt() to select the allocation
-mode GFP_KERNEL/GFP_ATOMIC. Aside of the above reasons this check is
-incomplete as it cannot detect contexts which just have preemption or
-interrupts disabled.
+The debugging macros in these drivers use in_interrupt() to print 'I' or
+'U' depending on the return value of in_interrupt(). While 'U' is confusing
+at best and 'I' is not really describing the actual context (hard interupt,
+soft interrupt, bottom half disabled section) these debug macros originate
+from the pre ftrace kernel era and their value today is questionable. They
+probably should be removed completely.
 
-All callchains leading to brcmf_fweh_process_event() can clearly identify
-the calling context. Convey a 'gfp' argument through the callchains and let
-the callers hand in the appropriate GFP mode.
+The macros weere added initially for ipw2100 and then spreaded when the
+driver was forked.
 
-This has also the advantage that any change of execution context or
-preemption/interrupt state in these callchains will be detected by the
-memory allocator for all GFP_KERNEL allocations.
+Remove the in_interrupt() usage at least..
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
----
-V2: Adopt to the 'inirq' changes
----
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c   |   10 ++++++----
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c   |    8 ++------
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h   |    7 ++++---
- drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c |    2 +-
- 4 files changed, 13 insertions(+), 14 deletions(-)
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
 
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/core.c
-@@ -513,10 +513,12 @@ void brcmf_rx_frame(struct device *dev,
- 		brcmf_proto_rxreorder(ifp, skb, inirq);
- 	} else {
- 		/* Process special event packets */
--		if (handle_event)
--			brcmf_fweh_process_skb(ifp->drvr, skb,
--					       BCMILCP_SUBTYPE_VENDOR_LONG);
-+		if (handle_event) {
-+			gfp_t gfp = inirq ? GFP_ATOMIC : GFP_KERNEL;
+---
+ drivers/net/wireless/intel/ipw2x00/ipw2100.c   |    3 +--
+ drivers/net/wireless/intel/ipw2x00/ipw2200.h   |    6 ++----
+ drivers/net/wireless/intel/ipw2x00/libipw.h    |    3 +--
+ drivers/net/wireless/intel/iwlegacy/common.h   |    4 ++--
+ drivers/net/wireless/intel/iwlwifi/iwl-debug.c |    3 +--
+ 5 files changed, 7 insertions(+), 12 deletions(-)
+
+--- a/drivers/net/wireless/intel/ipw2x00/ipw2100.c
++++ b/drivers/net/wireless/intel/ipw2x00/ipw2100.c
+@@ -201,8 +201,7 @@ static u32 ipw2100_debug_level = IPW_DL_
+ #define IPW_DEBUG(level, message...) \
+ do { \
+ 	if (ipw2100_debug_level & (level)) { \
+-		printk(KERN_DEBUG "ipw2100: %c %s ", \
+-                       in_interrupt() ? 'I' : 'U',  __func__); \
++		printk(KERN_DEBUG "ipw2100: %s ", __func__); \
+ 		printk(message); \
+ 	} \
+ } while (0)
+--- a/drivers/net/wireless/intel/ipw2x00/ipw2200.h
++++ b/drivers/net/wireless/intel/ipw2x00/ipw2200.h
+@@ -1382,14 +1382,12 @@ BIT_ARG16(x)
  
-+			brcmf_fweh_process_skb(ifp->drvr, skb,
-+					       BCMILCP_SUBTYPE_VENDOR_LONG, gfp);
-+		}
- 		brcmf_netif_rx(ifp, skb, inirq);
- 	}
- }
-@@ -532,7 +534,7 @@ void brcmf_rx_event(struct device *dev,
- 	if (brcmf_rx_hdrpull(drvr, skb, &ifp))
- 		return;
+ #define IPW_DEBUG(level, fmt, args...) \
+ do { if (ipw_debug_level & (level)) \
+-  printk(KERN_DEBUG DRV_NAME": %c %s " fmt, \
+-         in_interrupt() ? 'I' : 'U', __func__ , ## args); } while (0)
++  printk(KERN_DEBUG DRV_NAME": %s " fmt, __func__ , ## args); } while (0)
  
--	brcmf_fweh_process_skb(ifp->drvr, skb, 0);
-+	brcmf_fweh_process_skb(ifp->drvr, skb, 0, GFP_KERNEL);
- 	brcmu_pkt_buf_free_skb(skb);
- }
+ #ifdef CONFIG_IPW2200_DEBUG
+ #define IPW_LL_DEBUG(level, fmt, args...) \
+ do { if (ipw_debug_level & (level)) \
+-  printk(KERN_DEBUG DRV_NAME": %c %s " fmt, \
+-         in_interrupt() ? 'I' : 'U', __func__ , ## args); } while (0)
++  printk(KERN_DEBUG DRV_NAME": %s " fmt, __func__ , ## args); } while (0)
+ #else
+ #define IPW_LL_DEBUG(level, fmt, args...) do {} while (0)
+ #endif				/* CONFIG_IPW2200_DEBUG */
+--- a/drivers/net/wireless/intel/ipw2x00/libipw.h
++++ b/drivers/net/wireless/intel/ipw2x00/libipw.h
+@@ -60,8 +60,7 @@
+ extern u32 libipw_debug_level;
+ #define LIBIPW_DEBUG(level, fmt, args...) \
+ do { if (libipw_debug_level & (level)) \
+-  printk(KERN_DEBUG "libipw: %c %s " fmt, \
+-         in_interrupt() ? 'I' : 'U', __func__ , ## args); } while (0)
++  printk(KERN_DEBUG "libipw: %s " fmt, __func__ , ## args); } while (0)
+ #else
+ #define LIBIPW_DEBUG(level, fmt, args...) do {} while (0)
+ #endif				/* CONFIG_LIBIPW_DEBUG */
+--- a/drivers/net/wireless/intel/iwlegacy/common.h
++++ b/drivers/net/wireless/intel/iwlegacy/common.h
+@@ -2925,8 +2925,8 @@ do {									\
+ #define IL_DBG(level, fmt, args...)					\
+ do {									\
+ 	if (il_get_debug_level(il) & level)				\
+-		dev_err(&il->hw->wiphy->dev, "%c %s " fmt,		\
+-			in_interrupt() ? 'I' : 'U', __func__ , ##args); \
++		dev_err(&il->hw->wiphy->dev, "%s " fmt, __func__,	\
++			 ##args);					\
+ } while (0)
  
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.c
-@@ -388,12 +388,11 @@ int brcmf_fweh_activate_events(struct br
-  */
- void brcmf_fweh_process_event(struct brcmf_pub *drvr,
- 			      struct brcmf_event *event_packet,
--			      u32 packet_len)
-+			      u32 packet_len, gfp_t gfp)
- {
- 	enum brcmf_fweh_event_code code;
- 	struct brcmf_fweh_info *fweh = &drvr->fweh;
- 	struct brcmf_fweh_queue_item *event;
--	gfp_t alloc_flag = GFP_KERNEL;
- 	void *data;
- 	u32 datalen;
- 
-@@ -412,10 +411,7 @@ void brcmf_fweh_process_event(struct brc
- 	    datalen + sizeof(*event_packet) > packet_len)
- 		return;
- 
--	if (in_interrupt())
--		alloc_flag = GFP_ATOMIC;
--
--	event = kzalloc(sizeof(*event) + datalen, alloc_flag);
-+	event = kzalloc(sizeof(*event) + datalen, gfp);
- 	if (!event)
- 		return;
- 
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/fweh.h
-@@ -319,11 +319,12 @@ void brcmf_fweh_unregister(struct brcmf_
- int brcmf_fweh_activate_events(struct brcmf_if *ifp);
- void brcmf_fweh_process_event(struct brcmf_pub *drvr,
- 			      struct brcmf_event *event_packet,
--			      u32 packet_len);
-+			      u32 packet_len, gfp_t gfp);
- void brcmf_fweh_p2pdev_setup(struct brcmf_if *ifp, bool ongoing);
- 
- static inline void brcmf_fweh_process_skb(struct brcmf_pub *drvr,
--					  struct sk_buff *skb, u16 stype)
-+					  struct sk_buff *skb, u16 stype,
-+					  gfp_t gfp)
- {
- 	struct brcmf_event *event_packet;
- 	u16 subtype, usr_stype;
-@@ -354,7 +355,7 @@ static inline void brcmf_fweh_process_sk
- 	if (usr_stype != BCMILCP_BCM_SUBTYPE_EVENT)
- 		return;
- 
--	brcmf_fweh_process_event(drvr, event_packet, skb->len + ETH_HLEN);
-+	brcmf_fweh_process_event(drvr, event_packet, skb->len + ETH_HLEN, gfp);
- }
- 
- #endif /* FWEH_H_ */
---- a/drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c
-+++ b/drivers/net/wireless/broadcom/brcm80211/brcmfmac/msgbuf.c
-@@ -1129,7 +1129,7 @@ static void brcmf_msgbuf_process_event(s
- 
- 	skb->protocol = eth_type_trans(skb, ifp->ndev);
- 
--	brcmf_fweh_process_skb(ifp->drvr, skb, 0);
-+	brcmf_fweh_process_skb(ifp->drvr, skb, 0, GFP_KERNEL);
- 
- exit:
- 	brcmu_pkt_buf_free_skb(skb);
+ #define il_print_hex_dump(il, level, p, len)				\
+--- a/drivers/net/wireless/intel/iwlwifi/iwl-debug.c
++++ b/drivers/net/wireless/intel/iwlwifi/iwl-debug.c
+@@ -121,8 +121,7 @@ void __iwl_dbg(struct device *dev,
+ #ifdef CONFIG_IWLWIFI_DEBUG
+ 	if (iwl_have_debug_level(level) &&
+ 	    (!limit || net_ratelimit()))
+-		dev_printk(KERN_DEBUG, dev, "%c %s %pV",
+-			   in_interrupt() ? 'I' : 'U', function, &vaf);
++		dev_printk(KERN_DEBUG, dev, "%s %pV", function, &vaf);
+ #endif
+ 	trace_iwlwifi_dbg(level, in_interrupt(), function, &vaf);
+ 	va_end(args);
+
 
 _______________________________________________
 Intel-wired-lan mailing list
