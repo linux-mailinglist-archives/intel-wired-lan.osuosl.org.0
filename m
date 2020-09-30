@@ -1,80 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A09CC27E1E2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Sep 2020 08:54:49 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id ADC2B27EA81
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Sep 2020 16:00:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 0D600871E1;
-	Wed, 30 Sep 2020 06:54:48 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 5E34C86838;
+	Wed, 30 Sep 2020 14:00:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fDIMJAN74hCC; Wed, 30 Sep 2020 06:54:47 +0000 (UTC)
+	with ESMTP id AtOD11aBk8Fw; Wed, 30 Sep 2020 14:00:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 57D3A871DE;
-	Wed, 30 Sep 2020 06:54:47 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 6D11C86769;
+	Wed, 30 Sep 2020 14:00:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A9B641BF475
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Sep 2020 06:54:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 32DF81BF475
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Sep 2020 06:22:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6C22D860EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Sep 2020 06:54:45 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 2D58A85DA5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Sep 2020 06:22:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hmsdtgJtLohu for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Sep 2020 06:54:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id DDDE6860C5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Sep 2020 06:54:43 +0000 (UTC)
-IronPort-SDR: cItfFl0rnv2gPffrKAGNOqOQm6R8yVmRd3B3H05JzeP1lLAEVDGPMj9ZkJWJkhIimPrZNQsNE3
- cWHlhj+Slvxw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9759"; a="247108748"
-X-IronPort-AV: E=Sophos;i="5.77,321,1596524400"; d="scan'208";a="247108748"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Sep 2020 23:54:42 -0700
-IronPort-SDR: Gfpdp7Y9dMlx7b+VHP8NAWeVpmdwsnI1FQZmFMYAmSi2kInT4nF7ARrT3sm3njgd5TV4+i88SB
- KVj0xEirhEsw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,321,1596524400"; d="scan'208";a="294518632"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga008.fm.intel.com with ESMTP; 29 Sep 2020 23:54:42 -0700
-Received: from hasmsx603.ger.corp.intel.com (10.184.107.143) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 29 Sep 2020 23:54:41 -0700
-Received: from [10.251.178.101] (10.184.70.1) by HASMSX603.ger.corp.intel.com
- (10.184.107.143) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Wed, 30 Sep
- 2020 09:54:39 +0300
-To: Kai-Heng Feng <kai.heng.feng@canonical.com>, "Neftin, Sasha"
- <sasha.neftin@intel.com>
-References: <20200924164542.19906-1-kai.heng.feng@canonical.com>
- <20200928083658.8567-1-kai.heng.feng@canonical.com>
- <469c71d5-93ac-e6c7-f85c-342b0df78a45@intel.com>
- <30761C6B-28B8-4464-8615-55EF3E090E07@canonical.com>
- <345fffcd-e9f1-5881-fba1-d7313876e943@intel.com>
- <3DA721C5-F656-4085-9113-A0407CDF90FB@canonical.com>
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Message-ID: <adb2f604-8c98-8799-6ed1-b8889b8cd0f6@intel.com>
-Date: Wed, 30 Sep 2020 09:54:34 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ with ESMTP id CMYOoYh1MsCn for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Sep 2020 06:22:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id E130C85534
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Sep 2020 06:22:54 +0000 (UTC)
+Received: from localhost (83-86-74-64.cable.dynamic.v4.ziggo.nl [83.86.74.64])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2E6772075A;
+ Wed, 30 Sep 2020 06:22:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601446974;
+ bh=EXxvDUn4XGcHD/Ca0uIvwF+PRWacJD69F4bcem0AxSw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=cehjbcseNzUjHSH9H/NUjRZOIUzHKfq3q9Ty7fj3LwMusdc294CGdNFS7gdzKtiiK
+ WI3Y6zw4SOZB4Y+SdZFlplaofN7HquwtrvQZ+Gb1v7JjPvLnN0MAysxbZB2TYeExGL
+ zOFWw3q77zfFM0MabdV5ksP31I3MmAp6bGMxarjQ=
+Date: Wed, 30 Sep 2020 08:22:58 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Thomas Gleixner <tglx@linutronix.de>
+Message-ID: <20200930062258.GA1471881@kroah.com>
+References: <20200929202509.673358734@linutronix.de>
+ <20200929203501.588965483@linutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <3DA721C5-F656-4085-9113-A0407CDF90FB@canonical.com>
-Content-Language: en-US
-X-Originating-IP: [10.184.70.1]
-X-ClientProxiedBy: lcsmsx601.ger.corp.intel.com (10.109.210.10) To
- HASMSX603.ger.corp.intel.com (10.184.107.143)
-Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: Increase polling timeout
- on MDIC ready bit
+Content-Disposition: inline
+In-Reply-To: <20200929203501.588965483@linutronix.de>
+X-Mailman-Approved-At: Wed, 30 Sep 2020 14:00:19 +0000
+Subject: Re: [Intel-wired-lan] [patch V2 21/36] net: usb: kaweth: Replace
+ kaweth_control() with usb_control_msg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,95 +68,64 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Andrew Lunn <andrew@lunn.ch>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+ Emmanuel Grumbach <emmanuel.grumbach@intel.com>, linux-doc@vger.kernel.org,
+ Peter Zijlstra <peterz@infradead.org>, Chris Snook <chris.snook@gmail.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Arend van Spriel <arend.vanspriel@broadcom.com>,
+ Govindarajulu Varadarajan <_govind@gmx.com>,
+ Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>,
+ Edward Cree <ecree@solarflare.com>, libertas-dev@lists.infradead.org,
+ brcm80211-dev-list@cypress.com, brcm80211-dev-list.pdl@broadcom.com,
+ Ping-Ke Shih <pkshih@realtek.com>, Johannes Berg <johannes.berg@intel.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Intel Linux Wireless <linuxwifi@intel.com>,
+ Russell King <linux@armlinux.org.uk>, Matthew Wilcox <willy@infradead.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Martin Habets <mhabets@solarflare.com>,
+ Ulrich Kunitz <kune@deine-taler.de>, Jay Cliburn <jcliburn@gmail.com>,
+ Paul McKenney <paulmck@kernel.org>, Stanislaw Gruszka <stf_xl@wp.pl>,
+ Jouni Malinen <j@w1.fi>, Hante Meuleman <hante.meuleman@broadcom.com>,
+ Pascal Terjan <pterjan@google.com>, Amitkumar Karwar <amitkarwar@gmail.com>,
+ Wright Feng <wright.feng@cypress.com>, Daniel Drake <dsd@gentoo.org>,
+ Pensando Drivers <drivers@pensando.io>, Kalle Valo <kvalo@codeaurora.org>,
+ Franky Lin <franky.lin@broadcom.com>,
+ Solarflare linux maintainers <linux-net-drivers@solarflare.com>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Chi-Hsien Lin <chi-hsien.lin@cypress.com>, Xinming Hu <huxinming820@gmail.com>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ Ganapathi Bhat <ganapathi.bhat@nxp.com>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, Jon Mason <jdmason@kudzu.us>,
+ Shannon Nelson <snelson@pensando.io>, Dave Miller <davem@davemloft.net>,
+ Luc Van Oostenryck <luc.vanoostenryck@gmail.com>,
+ Christian Benvenuti <benve@cisco.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 9/29/2020 18:08, Kai-Heng Feng wrote:
+On Tue, Sep 29, 2020 at 10:25:30PM +0200, Thomas Gleixner wrote:
+> From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+> 
+> kaweth_control() is almost the same as usb_control_msg() except for the
+> memory allocation mode (GFP_ATOMIC vs GFP_NOIO) and the in_interrupt()
+> check.
+> 
+> All the invocations of kaweth_control() are within the probe function in
+> fully preemtible context so there is no reason to use atomic allocations,
+> GFP_NOIO which is used by usb_control_msg() is perfectly fine.
+> 
+> Replace kaweth_control() invocations from probe with usb_control_msg().
+> 
+> Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 
-Hello Kai-Heng,
-> 
-> 
->> On Sep 29, 2020, at 21:46, Neftin, Sasha <sasha.neftin@intel.com> wrote:
->>
->> Hello Kai-Heng,
->> On 9/29/2020 16:31, Kai-Heng Feng wrote:
->>> Hi Sasha,
->>>> On Sep 29, 2020, at 21:08, Neftin, Sasha <sasha.neftin@intel.com> wrote:
->>>>
->>>> On 9/28/2020 11:36, Kai-Heng Feng wrote:
->>>>> We are seeing the following error after S3 resume:
->>>>> [  704.746874] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
->>>>> [  704.844232] e1000e 0000:00:1f.6 eno1: MDI Write did not complete
->>>>> [  704.902817] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
->>>>> [  704.903075] e1000e 0000:00:1f.6 eno1: reading PHY page 769 (or 0x6020 shifted) reg 0x17
->>>>> [  704.903281] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
->>>>> [  704.903486] e1000e 0000:00:1f.6 eno1: writing PHY page 769 (or 0x6020 shifted) reg 0x17
->>>>> [  704.943155] e1000e 0000:00:1f.6 eno1: MDI Error
->>>>> ...
->>>>> [  705.108161] e1000e 0000:00:1f.6 eno1: Hardware Error
->>>>> As Andrew Lunn pointed out, MDIO has nothing to do with phy, and indeed
->>>>> increase polling iteration can resolve the issue.
->>>>> This patch only papers over the symptom, as we don't really know the
->>>>> root cause of the issue. The most possible culprit is Intel ME, which
->>>>> may do its own things that conflict with software.
->>>>> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
->>>>> ---
->>>>> v4:
->>>>>   - States that this patch just papers over the symptom.
->>>>> v3:
->>>>>   - Moving delay to end of loop doesn't save anytime, move it back.
->>>>>   - Point out this is quitely likely caused by Intel ME.
->>>>> v2:
->>>>>   - Increase polling iteration instead of powering down the phy.
->>>>>   drivers/net/ethernet/intel/e1000e/phy.c | 2 +-
->>>>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>>> diff --git a/drivers/net/ethernet/intel/e1000e/phy.c b/drivers/net/ethernet/intel/e1000e/phy.c
->>>>> index e11c877595fb..e6d4acd90937 100644
->>>>> --- a/drivers/net/ethernet/intel/e1000e/phy.c
->>>>> +++ b/drivers/net/ethernet/intel/e1000e/phy.c
->>>>> @@ -203,7 +203,7 @@ s32 e1000e_write_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 data)
->>>>>   	 * Increasing the time out as testing showed failures with
->>>>>   	 * the lower time out
->>>>>   	 */
->>>>> -	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
->>>>> +	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 10); i++) {
->>>> As we discussed (many threads) - AMT/ME systems not supported on Linux as properly. I do not think increasing polling iteration will solve the problem. Rather mask it.
->>> I am aware of the status quo of no proper support on Intel ME.
->>>> I prefer you check option to disable ME vi BIOS on your system.
->>> We can't ask user to change the BIOS to accommodate Linux. So before a proper solution comes out, masking the problem is good enough for me.
->>> Until then, I'll carry it as a downstream distro patch.
->> What will you do with system that even after increasing polling time will run into HW error?
-> 
-> Hope we finally have proper ME support under Linux?
-> 
-> Kai-Heng
-> 
->>> Kai-Heng
->>>>>   		udelay(50);
->>>>>   		mdic = er32(MDIC);
->>>>>   		if (mdic & E1000_MDIC_READY)
->>>> Thanks,
->>>> Sasha
->> Thanks,
->> Sasha
-> 
+Note, the usb_control_msg_send/recv() new functions that will show up in
+5.10-rc1 will help a bit with this logic, but for what you have now,
+this is fine, nice cleanups.
 
-On which device ID/platform do you see the issue? What is the Firmware 
-version on your platform? What is the ME firmware version that you have?
-
-I am asking these questions, since I know there is supposed to be a fix 
-in the firmware to many issues that are related to ME and device 
-interoperability.
-
-Thanks,
-
-Vitaly
+Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
