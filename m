@@ -2,60 +2,59 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAA80280358
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Oct 2020 17:58:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 599FB28054A
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Oct 2020 19:32:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B3268487A;
-	Thu,  1 Oct 2020 15:58:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1408E86A33;
+	Thu,  1 Oct 2020 17:32:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cfTAee7JIdas; Thu,  1 Oct 2020 15:58:31 +0000 (UTC)
+	with ESMTP id MhdtnG0ceTZS; Thu,  1 Oct 2020 17:32:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 04A3784647;
-	Thu,  1 Oct 2020 15:58:31 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 4272786A4A;
+	Thu,  1 Oct 2020 17:32:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 82ED41BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Oct 2020 15:49:53 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 922A01BF857
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Oct 2020 17:32:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 7EB1887355
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Oct 2020 15:49:53 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 88A2786B12
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Oct 2020 17:32:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id N5-BT3kesopD for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Oct 2020 15:49:53 +0000 (UTC)
+ with ESMTP id tq-JmZnCKc80 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Oct 2020 17:32:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 0D92187353
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Oct 2020 15:49:53 +0000 (UTC)
-Received: from localhost (fla63-h02-176-172-189-251.dsl.sta.abo.bbox.fr
- [176.172.189.251])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 01DD6206A1;
- Thu,  1 Oct 2020 15:49:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1601567392;
- bh=I9y5FouUKvTPoyTvm4LqdvOV87V49w2rnF7/C7hQ7T8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=amCKXMR/jm4a7P6Md8X9oYQ65K+m8txVg4DBdv5WIX2Q5foNCTHzgYmcwCOvPHjGV
- iZlvMT436Re1gSb3IfJNe6ycIak49x41hVZUO1Ro77nJgw+U9uK3FSFOZdw72I3gmE
- 3Uz9zjtF9zSy0TKod2n1jMZ01BkhWiWE3P62uAhU=
-Date: Thu, 1 Oct 2020 17:49:49 +0200
-From: Frederic Weisbecker <frederic@kernel.org>
-To: Nitesh Narayan Lal <nitesh@redhat.com>,
- Peter Zijlstra <peterz@infradead.org>
-Message-ID: <20201001154949.GA7303@lothringen>
-References: <20200928183529.471328-1-nitesh@redhat.com>
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 8537286AFE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Oct 2020 17:32:42 +0000 (UTC)
+IronPort-SDR: vABwIBGaQUoEmfx8HDQ8si8wvln6WJRUlLk9JrE+LAMHWynodnHRTy2eaYjFRWB5RkxgbPITZy
+ rv3GC7PSgvuw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9761"; a="162870719"
+X-IronPort-AV: E=Sophos;i="5.77,324,1596524400"; d="scan'208";a="162870719"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Oct 2020 10:32:40 -0700
+IronPort-SDR: H7Ny1cU029gQ7CRFBfG61NpamH1Zds2mbe1PieRXJ+yJnjIz4Ezxkt8qEf2437XFBNoqlYPJP9
+ Tk+0eEgA9gMQ==
+X-IronPort-AV: E=Sophos;i="5.77,324,1596524400"; d="scan'208";a="514815531"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.4])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Oct 2020 10:32:40 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Anthony Nguyen <anthony.l.nguyen@intel.com>
+Date: Thu,  1 Oct 2020 10:31:40 -0700
+Message-Id: <20201001173144.712615-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.28.0.497.g54e85e7af1ac
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200928183529.471328-1-nitesh@redhat.com>
-X-Mailman-Approved-At: Thu, 01 Oct 2020 15:58:24 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v4 0/4] isolation: limit msix vectors
- to housekeeping CPUs
+Subject: [Intel-wired-lan] [intel-wired-lan 0/4] implement minimum security
+ revision
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,37 +67,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, linux-pci@vger.kernel.org, sassmann@redhat.com,
- vincent.guittot@linaro.org, hch@infradead.org, mingo@redhat.com,
- intel-wired-lan@lists.osuosl.org, helgaas@kernel.org, thomas.lendacky@amd.com,
- lgoncalv@redhat.com, jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
- mike.marciniszyn@intel.com, netdev@vger.kernel.org,
- dennis.dalessandro@intel.com, mtosatti@redhat.com,
- linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Sep 28, 2020 at 02:35:25PM -0400, Nitesh Narayan Lal wrote:
-> Nitesh Narayan Lal (4):
->   sched/isolation: API to get number of housekeeping CPUs
->   sched/isolation: Extend nohz_full to isolate managed IRQs
->   i40e: Limit msix vectors to housekeeping CPUs
->   PCI: Limit pci_alloc_irq_vectors() to housekeeping CPUs
-> 
->  drivers/net/ethernet/intel/i40e/i40e_main.c |  3 ++-
->  drivers/pci/msi.c                           | 18 ++++++++++++++++++
->  include/linux/sched/isolation.h             |  9 +++++++++
->  kernel/sched/isolation.c                    |  2 +-
->  4 files changed, 30 insertions(+), 2 deletions(-)
+The ice device has security revision fields associated with the ``fw.undi``
+and ``fw.mgmt`` sections of the flash. Additionally each of these security
+revisions has a minimum security revision device parameter.
 
-Acked-by: Frederic Weisbecker <frederic@kernel.org>
+The minimum security revision indicates the lowest security revision that
+will be loaded by the device. If the associated flash section has a lower
+security revision, the device will not load it.
 
-Peter, if you're ok with the set, I guess this should go through
-the scheduler tree?
+Implement support for displaying and updating the minimum security revision
+fields for the device as driver-specific devlink parameters.
 
-Thanks.
+Jacob Keller (4):
+  ice: create flash_info structure and separate NVM version
+  ice: cache NVM module bank information
+  ice: read security revision to ice_nvm_info and ice_orom_info
+  ice: add devlink parameters to read and write minimum security
+    revision
+
+ Documentation/networking/devlink/ice.rst      |  43 ++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  17 +
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 254 ++++++++-
+ drivers/net/ethernet/intel/ice/ice_devlink.h  |   2 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   8 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   3 +
+ drivers/net/ethernet/intel/ice/ice_nvm.c      | 532 ++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |   4 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |  91 ++-
+ 9 files changed, 888 insertions(+), 66 deletions(-)
+
+
+base-commit: f2e834694b0d92187d889172da842e27829df371
+-- 
+2.28.0.497.g54e85e7af1ac
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
