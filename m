@@ -2,68 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1371928291D
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  4 Oct 2020 07:58:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C04C283055
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Oct 2020 08:24:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 249EC84476;
-	Sun,  4 Oct 2020 05:58:55 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3452E85531;
+	Mon,  5 Oct 2020 06:24:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a5zIC1AL1TuR; Sun,  4 Oct 2020 05:58:54 +0000 (UTC)
+	with ESMTP id urwH6kLhTuEB; Mon,  5 Oct 2020 06:24:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id B9A1C841B4;
-	Sun,  4 Oct 2020 05:58:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 59DAD1BF5A4
- for <intel-wired-lan@osuosl.org>; Sun,  4 Oct 2020 05:58:48 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id EF94484376;
+	Mon,  5 Oct 2020 06:24:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F5301BF479
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 06:24:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 4FCA5846AD
- for <intel-wired-lan@osuosl.org>; Sun,  4 Oct 2020 05:58:48 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 3A55E2048B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 06:24:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7xHtWtEP7zap for <intel-wired-lan@osuosl.org>;
- Sun,  4 Oct 2020 05:58:47 +0000 (UTC)
+ with ESMTP id yNEEjIFen5Vq for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Oct 2020 06:24:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 0821D84115
- for <intel-wired-lan@osuosl.org>; Sun,  4 Oct 2020 05:58:46 +0000 (UTC)
-IronPort-SDR: Ht/4NAktAzyFfx3wrajQ5weQfnwjhn1brqwQjcGd9ak+uCiKUkAgrnR2znKZvm8OvLlugw3pnX
- oilsKzxZixQw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9763"; a="224887264"
-X-IronPort-AV: E=Sophos;i="5.77,334,1596524400"; d="scan'208";a="224887264"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Oct 2020 22:58:45 -0700
-IronPort-SDR: qeEel8W/zybHQLekuTckZo4CIbMsKIXI0brcUIZOrEvg4aj458pdKW/me409S2ZCFzffjGWBbS
- A4qQ78W1zJtg==
-X-IronPort-AV: E=Sophos;i="5.77,334,1596524400"; d="scan'208";a="518212113"
-Received: from sneftin-mobl.ger.corp.intel.com (HELO [10.251.179.145])
- ([10.251.179.145])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Oct 2020 22:58:42 -0700
-To: intel-wired-lan@osuosl.org, "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
- "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Neftin, Sasha" <sasha.neftin@intel.com>
-References: <20200908162330.4681-1-ztong0001@gmail.com>
- <d8c2fdeb-0ae1-5633-7cef-61607fb22d39@intel.com>
- <ee2f6552-aee1-a601-7d24-ed18b6c756ed@intel.com>
-From: "Neftin, Sasha" <sasha.neftin@intel.com>
-Message-ID: <2b44c5f0-4749-ca10-4d51-1ea9cc20793c@intel.com>
-Date: Sun, 4 Oct 2020 08:58:39 +0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
-MIME-Version: 1.0
-In-Reply-To: <ee2f6552-aee1-a601-7d24-ed18b6c756ed@intel.com>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: do not panic on malformed
- rx_desc
+Received: from youngberry.canonical.com (youngberry.canonical.com
+ [91.189.89.112])
+ by silver.osuosl.org (Postfix) with ESMTPS id D529F2034D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 06:24:03 +0000 (UTC)
+Received: from mail-pg1-f197.google.com ([209.85.215.197])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <kai.heng.feng@canonical.com>) id 1kPJuj-0002lq-AM
+ for intel-wired-lan@lists.osuosl.org; Mon, 05 Oct 2020 06:24:01 +0000
+Received: by mail-pg1-f197.google.com with SMTP id a37so2309817pgb.18
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 04 Oct 2020 23:24:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=On9/o/TdMtEJnMs6mNj8Zxe3/XpxeHUB6X2k3tQLabY=;
+ b=bd8+6pgTa2G5b/hSCuBVRHq8E7KTunsRarHkRfTRUMGw5RuyI39/UhQgSo6onGEyAK
+ 2h1/9yW9hi6CVpt482NEgVMt/+CaBvJWrzuxFWIBpT6TordiGuAeLfweXFSAwbsX87fk
+ aIQW4nX9ICFTCtB/SXQZm7jKzgoKtCq0ZlMvjJFgYbuuw88BR8JKaEtaJPpIJ6nj4Mzy
+ ppV+U7aB23vtscoyH9ikramV/d+y48poxAZ3jVPGDEpZqF9NnCUqmZFB8u3Hbz4TQ+Iz
+ dQcyNGzODjQFezFNMXVQttc5UIsmxKcMkcmcbp47IvDwiscv1Y5ocdLQo/rbEnqqSfpl
+ jzZw==
+X-Gm-Message-State: AOAM533fx9LxcbKIPqGL//fOJLmC+FahNxU7bx6aWkqg0oeOrGjJKSMp
+ UqW4LJ2judtb/eJMplMPgJ8iNbBOo+WGW+AIktaSdNsGcZ1x2FBuxl5d6uvIi2HDlo6f6wN7YLn
+ KAjve6MOYPwbu02kdv7FvDa9EMQWZQbeHvxlevnqrWiRl6zA=
+X-Received: by 2002:a62:1410:0:b029:13e:d13d:a129 with SMTP id
+ 16-20020a6214100000b029013ed13da129mr15524204pfu.17.1601879039865; 
+ Sun, 04 Oct 2020 23:23:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwj86RHXCI8tLUf5xVY+qSZRCtIeIlhl7QK6o6CLyjeCqdInuvdVQhRQHa/EguNW+tUS0aZJQ==
+X-Received: by 2002:a62:1410:0:b029:13e:d13d:a129 with SMTP id
+ 16-20020a6214100000b029013ed13da129mr15524146pfu.17.1601879039461; 
+ Sun, 04 Oct 2020 23:23:59 -0700 (PDT)
+Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
+ [220.133.187.190])
+ by smtp.gmail.com with ESMTPSA id z23sm10891534pfj.177.2020.10.04.23.23.57
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 04 Oct 2020 23:23:58 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.4\))
+From: Kai-Heng Feng <kai.heng.feng@canonical.com>
+In-Reply-To: <adb2f604-8c98-8799-6ed1-b8889b8cd0f6@intel.com>
+Date: Mon, 5 Oct 2020 14:23:55 +0800
+Message-Id: <D37AEA82-9BA5-4CE0-8859-F8E7054895B3@canonical.com>
+References: <20200924164542.19906-1-kai.heng.feng@canonical.com>
+ <20200928083658.8567-1-kai.heng.feng@canonical.com>
+ <469c71d5-93ac-e6c7-f85c-342b0df78a45@intel.com>
+ <30761C6B-28B8-4464-8615-55EF3E090E07@canonical.com>
+ <345fffcd-e9f1-5881-fba1-d7313876e943@intel.com>
+ <3DA721C5-F656-4085-9113-A0407CDF90FB@canonical.com>
+ <adb2f604-8c98-8799-6ed1-b8889b8cd0f6@intel.com>
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>
+X-Mailer: Apple Mail (2.3608.120.23.2.4)
+Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: Increase polling timeout
+ on MDIC ready bit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,76 +93,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gMTAvMS8yMDIwIDExOjAyLCBOZWZ0aW4sIFNhc2hhIHdyb3RlOgo+IEhlbGxvIFRvbmcsCj4g
-T24gOS8xMC8yMDIwIDExOjIyLCBOZWZ0aW4sIFNhc2hhIHdyb3RlOgo+PiBPbiA5LzgvMjAyMCAx
-OToyMywgVG9uZyBaaGFuZyB3cm90ZToKPj4+IGxlbmd0aCBtYXkgYmUgY29ycnVwdGVkIGluIHJ4
-X2Rlc2MgYW5kIGxlYWQgdG8gcGFuaWMsIHNvIGNoZWNrIHRoZQo+Pj4gc2FuaXR5IGJlZm9yZSBw
-YXNzaW5nIGl0IHRvIHNrYl9wdXQKPj4+Cj4+IFRvbmcsIHdoYXQgaXMgc2NlbmFyaW8gY2F1c2Vk
-IHRvIHNrYiBwYW5pYz8gSG93IGl0IGlzIGhhcHBlbiBvbiB5b3VyIAo+PiBzeXN0ZW0/IENhbiB5
-b3UgcGxlYXNlIHNoYXJlIHRoZSB0ZXN0IGhpbnQgYW5kIHlvdXIgc2V0dXAgd2l0aCB1cz8KPiBQ
-bGVhc2UsIHNoYXJlIHlvdXIgc2NlbmFyaW8gYW5kIHNldHVwIGRldGFpbHMgKEhXIHNldHRpbmdz
-LCBCSU9TLCAKPiBLZXJuZWwsIGV0Yy4uLikuIFdlIHdvdWxkIGxpa2UgdG8gdW5kZXJzdGFuZCBo
-b3cgZXhhY3RseSBsZW5ndGggCj4gY29ycnVwdGlvbiBpcyBoYXBwZW4uCj4gClNpbmNlIG5vIHdh
-eSB0byByZXByb2R1Y2UgdGhlIHByb2JsZW0sIEkgd291bGQgcmVjb21tZW5kIGRyb3BwaW5nIHRo
-aXMgCnBhdGNoLgo+IFRoYW5rcywKPiBTYXNoYQo+IAo+Pj4gW8KgIDEwMy44NDA1NzJdIHNrYnVm
-Zjogc2tiX292ZXJfcGFuaWM6IHRleHQ6ZmZmZmZmZmY4ZjQzMmNjMSAKPj4+IGxlbjo2MTU4NSBw
-dXQ6NjE1ODUgaGVhZDpmZmZmODg4MDU2NDJiODAwIGRhdGE6ZmZmZjg4ODA1NjQyYjg0MCAKPj4+
-IHRhaWw6MHhmMGQxIGVuZDoweDZjMCBkZXY6ZQo+Pj4gdGgwCj4+PiBbwqAgMTAzLjg0MTI4M10g
-LS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBdLS0tLS0tLS0tLS0tCj4+PiBbwqAgMTAzLjg0MTUxNV0g
-a2VybmVsIEJVRyBhdCBuZXQvY29yZS9za2J1ZmYuYzoxMDkhCj4+PiBbwqAgMTAzLjg0MTc0OV0g
-aW52YWxpZCBvcGNvZGU6IDAwMDAgWyMxXSBTTVAgREVCVUdfUEFHRUFMTE9DIEtBU0FOIFBUSQo+
-Pj4gW8KgIDEwMy44NDIwNjNdIENQVTogMSBQSUQ6IDI3NiBDb21tOiBwaW5nIFRhaW50ZWQ6IEfC
-oMKgwqDCoMKgwqDCoCBXIDUuOC4wKyAjNAo+Pj4gW8KgIDEwMy44NDI4NTddIFJJUDogMDAxMDpz
-a2JfcGFuaWMrMHhjNC8weGM2Cj4+PiBbwqAgMTAzLjg0MzAyMl0gQ29kZTogODkgZjAgNDggYzcg
-YzcgNjAgZjIgM2UgOTAgNTUgNDggOGIgNzQgMjQgMTggNGQgCj4+PiA4OSBmOSA1NiA0OCA4YiA1
-NCAyNCAxOCA0YyA4OSBlNiA1MiA0OCA4YiA0NCAyNCAxOCA0YyA4OSBlYSA1MCBlOCAwMSAKPj4+
-IGM1IDJhIGZmIDwwZj4KPj4+IDBiIDRjIDhiIDY0IDI0IDE4IGU4IGMxIGI0IDQ4IGZmIDQ4IGM3
-IGMxIGUwIGZjIDNlIDkwIDQ0IDg5IGVlCj4+PiBbwqAgMTAzLjg0Mzc2Nl0gUlNQOiAwMDE4OmZm
-ZmY4ODgwNmQxMDljNTggRUZMQUdTOiAwMDAxMDI4Mgo+Pj4gW8KgIDEwMy44NDM5NzZdIFJBWDog
-MDAwMDAwMDAwMDAwMDA4YyBSQlg6IGZmZmY4ODgwNjgzNDA3YzAgUkNYOiAKPj4+IDAwMDAwMDAw
-MDAwMDAwMDAKPj4+IFvCoCAxMDMuODQ0MjYyXSBSRFg6IDFmZmZmMTEwMGRhMjRjOTEgUlNJOiAw
-MDAwMDAwMDAwMDAwMDA4IFJESTogCj4+PiBmZmZmZWQxMDBkYTIxMzdlCj4+PiBbwqAgMTAzLjg0
-NDU0OF0gUkJQOiBmZmZmODg4MDZiZGNjMDAwIFIwODogMDAwMDAwMDAwMDAwMDA4YyBSMDk6IAo+
-Pj4gZmZmZmVkMTAwZGEyNWNmYgo+Pj4gW8KgIDEwMy44NDQ4MzRdIFIxMDogZmZmZjg4ODA2ZDEy
-ZTdkNyBSMTE6IGZmZmZlZDEwMGRhMjVjZmEgUjEyOiAKPj4+IGZmZmZmZmZmOTAzZWZkMjAKPj4+
-IFvCoCAxMDMuODQ1MTIzXSBSMTM6IGZmZmZmZmZmOGY0MzJjYzEgUjE0OiAwMDAwMDAwMDAwMDBm
-MDkxIFIxNTogCj4+PiBmZmZmODg4MDU2NDJiODAwCj4+PiBbwqAgMTAzLjg0NTQxMF0gRlM6wqAg
-MDAwMDdlZmNkMDY4NTJjMCgwMDAwKSBHUzpmZmZmODg4MDZkMTAwMDAwKDAwMDApIAo+Pj4ga25s
-R1M6MDAwMDAwMDAwMDAwMDAwMAo+Pj4gW8KgIDEwMy44NDU3MzRdIENTOsKgIDAwMTAgRFM6IDAw
-MDAgRVM6IDAwMDAgQ1IwOiAwMDAwMDAwMDgwMDUwMDMzCj4+PiBbwqAgMTAzLjg0NTk2Nl0gQ1Iy
-OiAwMDAwN2VmY2NmOTRmOGRjIENSMzogMDAwMDAwMDA2NDgxMDAwMCBDUjQ6IAo+Pj4gMDAwMDAw
-MDAwMDAwMDZlMAo+Pj4gW8KgIDEwMy44NDYyNTRdIERSMDogMDAwMDAwMDAwMDAwMDAwMCBEUjE6
-IDAwMDAwMDAwMDAwMDAwMDAgRFIyOiAKPj4+IDAwMDAwMDAwMDAwMDAwMDAKPj4+IFvCoCAxMDMu
-ODQ2NTM5XSBEUjM6IDAwMDAwMDAwMDAwMDAwMDAgRFI2OiAwMDAwMDAwMGZmZmUwZmYwIERSNzog
-Cj4+PiAwMDAwMDAwMDAwMDAwNDAwCj4+PiBbwqAgMTAzLjg0NjgyM10gQ2FsbCBUcmFjZToKPj4+
-IFvCoCAxMDMuODQ2OTI1XcKgIDxJUlE+Cj4+PiBbwqAgMTAzLjg0NzAxM13CoCA/IGUxMDAwX2Ns
-ZWFuX3J4X2lycSsweDMxMS8weDYzMAo+Pj4gW8KgIDEwMy44NDcxOTBdwqAgc2tiX3B1dC5jb2xk
-KzB4MmIvMHg0ZAo+Pj4gW8KgIDEwMy44NDczMzRdwqAgZTEwMDBfY2xlYW5fcnhfaXJxKzB4MzEx
-LzB4NjMwCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogVG9uZyBaaGFuZyA8enRvbmcwMDAxQGdtYWls
-LmNvbT4KPj4+IC0tLQo+Pj4gwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25l
-dGRldi5jIHwgNCArKysrCj4+PiDCoCAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCj4+
-Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRk
-ZXYuYyAKPj4+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4+
-PiBpbmRleCA2NjRlOGNjYzg4ZDIuLmYxMmJkMDBiMmRiZiAxMDA2NDQKPj4+IC0tLSBhL2RyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9uZXRkZXYuYwo+Pj4gKysrIGIvZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4+PiBAQCAtMTA0Nyw2ICsxMDQ3LDEw
-IEBAIHN0YXRpYyBib29sIGUxMDAwX2NsZWFuX3J4X2lycShzdHJ1Y3QgCj4+PiBlMTAwMF9yaW5n
-ICpyeF9yaW5nLCBpbnQgKndvcmtfZG9uZSwKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IH0KPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC8qIGVsc2UganVzdCBjb250aW51ZSB3
-aXRoIHRoZSBvbGQgb25lICovCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+Pj4gK8KgwqDCoMKg
-wqDCoMKgIC8qIGNoZWNrIGxlbmd0aCBzYW5pdHkgKi8KPj4+ICvCoMKgwqDCoMKgwqDCoCBpZiAo
-c2tiLT50YWlsICsgbGVuZ3RoID4gc2tiLT5lbmQpIHsKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIGxlbmd0aCA9IHNrYi0+ZW5kIC0gc2tiLT50YWlsOwo+Pj4gK8KgwqDCoMKgwqDCoMKgIH0K
-Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoCAvKiBlbmQgY29weWJyZWFrIGNvZGUgKi8KPj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoCBza2JfcHV0KHNrYiwgbGVuZ3RoKTsKPj4+Cj4+Cj4+IF9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+IEludGVsLXdpcmVkLWxhbiBt
-YWlsaW5nIGxpc3QKPj4gSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKPj4gaHR0cHM6Ly9saXN0
-cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCj4gClRoYW5rcywK
-U2FzaGEKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
-ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
-czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+Hi Vitaly,
+
+> On Sep 30, 2020, at 14:54, Vitaly Lifshits <vitaly.lifshits@intel.com> wrote:
+> 
+> On 9/29/2020 18:08, Kai-Heng Feng wrote:
+> 
+> Hello Kai-Heng,
+>>> On Sep 29, 2020, at 21:46, Neftin, Sasha <sasha.neftin@intel.com> wrote:
+>>> 
+>>> Hello Kai-Heng,
+>>> On 9/29/2020 16:31, Kai-Heng Feng wrote:
+>>>> Hi Sasha,
+>>>>> On Sep 29, 2020, at 21:08, Neftin, Sasha <sasha.neftin@intel.com> wrote:
+>>>>> 
+>>>>> On 9/28/2020 11:36, Kai-Heng Feng wrote:
+>>>>>> We are seeing the following error after S3 resume:
+>>>>>> [  704.746874] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
+>>>>>> [  704.844232] e1000e 0000:00:1f.6 eno1: MDI Write did not complete
+>>>>>> [  704.902817] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
+>>>>>> [  704.903075] e1000e 0000:00:1f.6 eno1: reading PHY page 769 (or 0x6020 shifted) reg 0x17
+>>>>>> [  704.903281] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
+>>>>>> [  704.903486] e1000e 0000:00:1f.6 eno1: writing PHY page 769 (or 0x6020 shifted) reg 0x17
+>>>>>> [  704.943155] e1000e 0000:00:1f.6 eno1: MDI Error
+>>>>>> ...
+>>>>>> [  705.108161] e1000e 0000:00:1f.6 eno1: Hardware Error
+>>>>>> As Andrew Lunn pointed out, MDIO has nothing to do with phy, and indeed
+>>>>>> increase polling iteration can resolve the issue.
+>>>>>> This patch only papers over the symptom, as we don't really know the
+>>>>>> root cause of the issue. The most possible culprit is Intel ME, which
+>>>>>> may do its own things that conflict with software.
+>>>>>> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+>>>>>> ---
+>>>>>> v4:
+>>>>>>  - States that this patch just papers over the symptom.
+>>>>>> v3:
+>>>>>>  - Moving delay to end of loop doesn't save anytime, move it back.
+>>>>>>  - Point out this is quitely likely caused by Intel ME.
+>>>>>> v2:
+>>>>>>  - Increase polling iteration instead of powering down the phy.
+>>>>>>  drivers/net/ethernet/intel/e1000e/phy.c | 2 +-
+>>>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>>>> diff --git a/drivers/net/ethernet/intel/e1000e/phy.c b/drivers/net/ethernet/intel/e1000e/phy.c
+>>>>>> index e11c877595fb..e6d4acd90937 100644
+>>>>>> --- a/drivers/net/ethernet/intel/e1000e/phy.c
+>>>>>> +++ b/drivers/net/ethernet/intel/e1000e/phy.c
+>>>>>> @@ -203,7 +203,7 @@ s32 e1000e_write_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 data)
+>>>>>>  	 * Increasing the time out as testing showed failures with
+>>>>>>  	 * the lower time out
+>>>>>>  	 */
+>>>>>> -	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
+>>>>>> +	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 10); i++) {
+>>>>> As we discussed (many threads) - AMT/ME systems not supported on Linux as properly. I do not think increasing polling iteration will solve the problem. Rather mask it.
+>>>> I am aware of the status quo of no proper support on Intel ME.
+>>>>> I prefer you check option to disable ME vi BIOS on your system.
+>>>> We can't ask user to change the BIOS to accommodate Linux. So before a proper solution comes out, masking the problem is good enough for me.
+>>>> Until then, I'll carry it as a downstream distro patch.
+>>> What will you do with system that even after increasing polling time will run into HW error?
+>> Hope we finally have proper ME support under Linux?
+>> Kai-Heng
+>>>> Kai-Heng
+>>>>>>  		udelay(50);
+>>>>>>  		mdic = er32(MDIC);
+>>>>>>  		if (mdic & E1000_MDIC_READY)
+>>>>> Thanks,
+>>>>> Sasha
+>>> Thanks,
+>>> Sasha
+> 
+> On which device ID/platform do you see the issue?
+
+HP Z4 G4 Workstation,
+00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (2) I219-LM [8086:15b7]
+
+> What is the Firmware version on your platform?
+
+BIOS version: P61 v02.59
+
+
+> What is the ME firmware version that you have?
+
+ME version: 11.11.50.1422
+ME mode: AMT disable
+
+Kai-Heng
+
+> 
+> I am asking these questions, since I know there is supposed to be a fix in the firmware to many issues that are related to ME and device interoperability.
+> 
+> Thanks,
+> 
+> Vitaly
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
