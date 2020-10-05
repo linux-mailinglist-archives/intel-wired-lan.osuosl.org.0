@@ -1,86 +1,137 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C04C283055
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Oct 2020 08:24:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3452E85531;
-	Mon,  5 Oct 2020 06:24:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id urwH6kLhTuEB; Mon,  5 Oct 2020 06:24:06 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id EF94484376;
-	Mon,  5 Oct 2020 06:24:05 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3F5301BF479
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 06:24:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B658283E48
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Oct 2020 20:28:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 3A55E2048B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 06:24:05 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 19D6E2050A;
+	Mon,  5 Oct 2020 18:28:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HDacS9DKd1NO; Mon,  5 Oct 2020 18:28:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by silver.osuosl.org (Postfix) with ESMTP id 1128020517;
+	Mon,  5 Oct 2020 18:28:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A09D51BF310
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 18:28:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by whitealder.osuosl.org (Postfix) with ESMTP id 91C20830FD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 18:28:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yNEEjIFen5Vq for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Oct 2020 06:24:04 +0000 (UTC)
+ with ESMTP id 1Tv36XRSbX-j for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Oct 2020 18:28:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from youngberry.canonical.com (youngberry.canonical.com
- [91.189.89.112])
- by silver.osuosl.org (Postfix) with ESMTPS id D529F2034D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 06:24:03 +0000 (UTC)
-Received: from mail-pg1-f197.google.com ([209.85.215.197])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <kai.heng.feng@canonical.com>) id 1kPJuj-0002lq-AM
- for intel-wired-lan@lists.osuosl.org; Mon, 05 Oct 2020 06:24:01 +0000
-Received: by mail-pg1-f197.google.com with SMTP id a37so2309817pgb.18
- for <intel-wired-lan@lists.osuosl.org>; Sun, 04 Oct 2020 23:24:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=On9/o/TdMtEJnMs6mNj8Zxe3/XpxeHUB6X2k3tQLabY=;
- b=bd8+6pgTa2G5b/hSCuBVRHq8E7KTunsRarHkRfTRUMGw5RuyI39/UhQgSo6onGEyAK
- 2h1/9yW9hi6CVpt482NEgVMt/+CaBvJWrzuxFWIBpT6TordiGuAeLfweXFSAwbsX87fk
- aIQW4nX9ICFTCtB/SXQZm7jKzgoKtCq0ZlMvjJFgYbuuw88BR8JKaEtaJPpIJ6nj4Mzy
- ppV+U7aB23vtscoyH9ikramV/d+y48poxAZ3jVPGDEpZqF9NnCUqmZFB8u3Hbz4TQ+Iz
- dQcyNGzODjQFezFNMXVQttc5UIsmxKcMkcmcbp47IvDwiscv1Y5ocdLQo/rbEnqqSfpl
- jzZw==
-X-Gm-Message-State: AOAM533fx9LxcbKIPqGL//fOJLmC+FahNxU7bx6aWkqg0oeOrGjJKSMp
- UqW4LJ2judtb/eJMplMPgJ8iNbBOo+WGW+AIktaSdNsGcZ1x2FBuxl5d6uvIi2HDlo6f6wN7YLn
- KAjve6MOYPwbu02kdv7FvDa9EMQWZQbeHvxlevnqrWiRl6zA=
-X-Received: by 2002:a62:1410:0:b029:13e:d13d:a129 with SMTP id
- 16-20020a6214100000b029013ed13da129mr15524204pfu.17.1601879039865; 
- Sun, 04 Oct 2020 23:23:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwj86RHXCI8tLUf5xVY+qSZRCtIeIlhl7QK6o6CLyjeCqdInuvdVQhRQHa/EguNW+tUS0aZJQ==
-X-Received: by 2002:a62:1410:0:b029:13e:d13d:a129 with SMTP id
- 16-20020a6214100000b029013ed13da129mr15524146pfu.17.1601879039461; 
- Sun, 04 Oct 2020 23:23:59 -0700 (PDT)
-Received: from [192.168.1.208] (220-133-187-190.HINET-IP.hinet.net.
- [220.133.187.190])
- by smtp.gmail.com with ESMTPSA id z23sm10891534pfj.177.2020.10.04.23.23.57
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 04 Oct 2020 23:23:58 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.4\))
-From: Kai-Heng Feng <kai.heng.feng@canonical.com>
-In-Reply-To: <adb2f604-8c98-8799-6ed1-b8889b8cd0f6@intel.com>
-Date: Mon, 5 Oct 2020 14:23:55 +0800
-Message-Id: <D37AEA82-9BA5-4CE0-8859-F8E7054895B3@canonical.com>
-References: <20200924164542.19906-1-kai.heng.feng@canonical.com>
- <20200928083658.8567-1-kai.heng.feng@canonical.com>
- <469c71d5-93ac-e6c7-f85c-342b0df78a45@intel.com>
- <30761C6B-28B8-4464-8615-55EF3E090E07@canonical.com>
- <345fffcd-e9f1-5881-fba1-d7313876e943@intel.com>
- <3DA721C5-F656-4085-9113-A0407CDF90FB@canonical.com>
- <adb2f604-8c98-8799-6ed1-b8889b8cd0f6@intel.com>
-To: Vitaly Lifshits <vitaly.lifshits@intel.com>
-X-Mailer: Apple Mail (2.3608.120.23.2.4)
-Subject: Re: [Intel-wired-lan] [PATCH v4] e1000e: Increase polling timeout
- on MDIC ready bit
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 905B282D8E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Oct 2020 18:28:24 +0000 (UTC)
+IronPort-SDR: gOzRZFl7Z08D1AZsVkOVrpc907AqEXI5MQZKCUQ9rZVRaN7fhw/HCXFT08+zhB69HRa4u6C5AF
+ ByWSA2PLfwqQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9765"; a="151610574"
+X-IronPort-AV: E=Sophos;i="5.77,340,1596524400"; d="scan'208";a="151610574"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP; 05 Oct 2020 11:28:12 -0700
+IronPort-SDR: fku0LEffB1jxHSeak5v11Ok3blSopDN3p34t56MZzj/yaSjRynE90/lm1RDcyMNE56Lh7NBFLk
+ aOv46JqGBKTA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,340,1596524400"; d="scan'208";a="516226373"
+Received: from fmsmsx604.amr.corp.intel.com ([10.18.126.84])
+ by fmsmga006.fm.intel.com with ESMTP; 05 Oct 2020 09:11:10 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx604.amr.corp.intel.com (10.18.126.84) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 5 Oct 2020 09:09:20 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 5 Oct 2020 09:09:19 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Mon, 5 Oct 2020 09:09:19 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.176)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.1713.5; Mon, 5 Oct 2020 09:09:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=AnY7JK3OLBTDx9wXXYYmQItYhsTqaMmKM8xS9/yzxP16T1ckE0VaAj85ypAN3SN66vBddwcn9W9hEEYkQLpAvbEBLcTFxnHFW2Sv0G/Jl4W4F4ccfd010Qz/e/G4LX2gJvUYIsFbs6V17dBbrNHM+mvhfbR08gaUq22e5rE3AVMwP96Fp7inMr2gXmqrarB7pHMIFK+JMgLYdKpp1rag6XvuqB1mbHr8MAiYcBapJjuMlkvFGCg5360DK3PbIA1qOngrkYI1jZSMXJ5t1SIu+Lat0Fy4Yi+BYVtUEt7bPqj+sWzQRA47Km0tJIANsL+DNR986MfTfHjwrOftR6u4MQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=M7IN0k/3tX60ZTZCdahgwuVMr9wJNsKerQc8pTQcZos=;
+ b=f7Du4ix3VRM9TpO7yy5YPmu3YqUc1v+RZtFzJpulT308es5Tih/AD6zk5Y5eiKswyV4HztGZetVaLPntn+EsEnJ+NYgk1xypS7CZQUA6zpWVgWuiQeBERic+sSUtYeT9h0KVMXP7mG7Nf99QVRYUdf9WXgrYRbfQbT5HjstFhUM2Z5Gx7993MCedeJYZWbHpeuZLu2IJvC78KK3t2lHkVAs/kPtlAN9ruX18aXRdYbTOp363cqKCi7+sj9diVhUd28GhgLs+8qf5LDdhYDd5fFzNDGK1QHmkbRifSWFkokhjwYEy3OYNJ2N6KMdfVzUTanng0YsoZR7pNrOc1i7yTA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=M7IN0k/3tX60ZTZCdahgwuVMr9wJNsKerQc8pTQcZos=;
+ b=cZTsnUzrGK4il1WugB9/eWSsJEElgfZBNtSLLpt7YGJdPuNGcB/8+TYRTSZy8fim52gnvACUg42FlpQTX3bmf9cmBcW9SYs0TwT+a5Nyzwe632w6b2MDQ/38Pz+F7ZnekW3IEtDC3WV+Cx3KZIUREkFbVHW6AdnAZ93sHZaoyK8=
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com (2603:10b6:805:ba::28)
+ by SN6PR11MB2845.namprd11.prod.outlook.com (2603:10b6:805:5f::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3433.36; Mon, 5 Oct
+ 2020 16:09:14 +0000
+Received: from SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::acc4:9465:7e88:506e]) by SN6PR11MB3229.namprd11.prod.outlook.com
+ ([fe80::acc4:9465:7e88:506e%7]) with mapi id 15.20.3433.038; Mon, 5 Oct 2020
+ 16:09:14 +0000
+From: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+To: "Brown, Aaron F" <aaron.f.brown@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [linux-firmware] ice: update package file to
+ 1.3.16.0
+Thread-Index: AQHWjgbNIsll//1d4kO1P7QLTedIIKl1LUOAgBQaaoA=
+Date: Mon, 5 Oct 2020 16:09:14 +0000
+Message-ID: <24d88c2b9093052aa7fe5c010542f6a51732687c.camel@intel.com>
+References: <20200918215024.87809-1-anthony.l.nguyen@intel.com>
+ <DM6PR11MB2890A6325CB4C08893503919BC3B0@DM6PR11MB2890.namprd11.prod.outlook.com>
+In-Reply-To: <DM6PR11MB2890A6325CB4C08893503919BC3B0@DM6PR11MB2890.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5 (3.28.5-3.fc28) 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [134.134.136.204]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 2548b174-f110-46b4-1d11-08d869490146
+x-ms-traffictypediagnostic: SN6PR11MB2845:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SN6PR11MB28457F09DD8AD78182B0E6AEC60C0@SN6PR11MB2845.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:4502;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: /yjxN67PGUibAuk/nH3vC1/A204pMHaB0qjrdhm8bil0jPJL6vEygd5DtRLAVvArIEyvaBq9zUvjPBienZMS/9iEelXyt8EXYh29GkTWa7GEAFt/H1GKAxNvnndcTut3CLgBJU0R8N2et58engECt/Tpv3koZaNEhcKm/fU79Aw0jvtSFms+NjE3WtwtuNvLHA+gnWi69xfdPH8yTcu6pfSlGmMjMNuzaIUDhuoMxZ7/GdE0tM6hFXpbBmXbBNu1b0D2w0q79MOE94aVXAXl/mRJXkrCB63I+6OugvqO9n6CJNKv4a/3pI2p+PKg55fBTwUiAkmzKn75sOR+jCQCry2fnabJ9L1HtxFCneEj21609Uh3hfApmnt+sD/WBuA3JLz3ITStm3xkUUNtH+/r4IeV0T97dBuqYBk5R23bYfh0Md4n+TpC9RZ0FBqUfQGBP0L99ozwzq3L5DO2B70+Ig==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3229.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(136003)(366004)(396003)(376002)(39860400002)(6486002)(8676002)(5660300002)(53546011)(6506007)(966005)(478600001)(15650500001)(36756003)(83380400001)(71200400001)(8936002)(76116006)(91956017)(2616005)(66446008)(66476007)(66946007)(83080400001)(110136005)(186003)(66556008)(64756008)(2906002)(26005)(6512007)(86362001)(316002)(99106002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: nPlcnM04GKl9b10L2Rqnilt4bn0FXiKNCnpcKHnMdV41iATlVr+27F1z9L3b1oEqJX7p9cJJOQRVscWv1WFZSN8irXcorRqHewmeYMjKHT0t/PS1SpETwQEI70zzMTkNIfPcIwfWrnPLHlU0//0D0PkaMAgkPzvbJnudx4ZURRd8gst+qt2uIiyoXIFV0zflpxVi7P2mIpMXfOD5tnyjyo0r3SZEHfBauUx6Sjw9F0xDuI3ldMa0EJFG2tlaIMhUKQRCtRS65KhAHv0nRf35U09VKqPWDb56yGI5cqqypn3BV4qHk9vpW4FdpQd8AtCrwDao2CMfoNMcv5CmUfX4/nJZlpIR0rPDTOy/pxEMdjstRHkek4tLxKbJ/gkVPjmdFm8/a0P+Asj9Q7J+K9vzQWwvm7zpzSCUpKj1NJeANTKzQhbNACKnBlQw4jEgD+NfindeKM1sTqApq4dgLV2fZs7tMerGbcmRNDGNncvkipiYSuOQtyyfYuy+GjboISeniY8QEjHAPuBL8/Fz9mGP7WxBSP+MfErpBDW7WuLaJ9jRQUsBSoMOiaKrA2o6MhXKvVcIi724aoTs3EuVhDQM6d5ZuZMHMBhUnVssXwQ1/UgepBeF2RE0Hr+DbCQdXvlxuY6zPHb9+TlF1vVd5WNShA==
+Content-ID: <1FDE9E25C9C54645AC47F3891C758798@namprd11.prod.outlook.com>
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3229.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2548b174-f110-46b4-1d11-08d869490146
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Oct 2020 16:09:14.7006 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: YeS2uLgfzaTT12jT32LdWlq7dxU5vt63j/FpoUBb/lLTcfqRUudCkycd9hCKIq5uQKW8sHhuBxC0EQYxAtcE3pB5yO4vEsBF3n9O1yNRjjY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR11MB2845
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [linux-firmware] ice: update package file to
+ 1.3.16.0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,107 +144,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vitaly,
-
-> On Sep 30, 2020, at 14:54, Vitaly Lifshits <vitaly.lifshits@intel.com> wrote:
+On Tue, 2020-09-22 at 21:09 +0000, Brown, Aaron F wrote:
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On
+> > Behalf Of
+> > Tony Nguyen
+> > Sent: Friday, September 18, 2020 2:50 PM
+> > To: intel-wired-lan@lists.osuosl.org
+> > Subject: [Intel-wired-lan] [linux-firmware] ice: update package
+> > file to 1.3.16.0
+> > 
+> > Update the package file and WHENCE entry for the ice driver to
+> > version
+> > 1.3.16.0.
+> > 
+> > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> > ---
+> >  WHENCE                                        |   4 ++--
+> >  .../ddp/{ice-1.3.4.0.pkg => ice-1.3.16.0.pkg} | Bin 577796 ->
+> > 659716 bytes
+> >  2 files changed, 2 insertions(+), 2 deletions(-)
+> >  rename intel/ice/ddp/{ice-1.3.4.0.pkg => ice-1.3.16.0.pkg} (52%)
+> > 
+> > diff --git a/WHENCE b/WHENCE
+> > index 0bdb19ca938e..8b92bd39d735 100644
+> > --- a/WHENCE
+> > +++ b/WHENCE
+> > @@ -5062,8 +5062,8 @@ Licence: Redistributable. See
+> > LICENSE.amlogic_vdec
+> > for details.
+> > 
+> >  Driver: ice - Intel(R) Ethernet Connection E800 Series
+> > 
+> > -File: intel/ice/ddp/ice-1.3.4.0.pkg
+> > -Link: intel/ice/ddp/ice.pkg -> ice-1.3.4.0.pkg
+> > +File: intel/ice/ddp/ice-1.3.16.0.pkg
+> > +Link: intel/ice/ddp/ice.pkg -> ice-1.3.16.0.pkg
 > 
-> On 9/29/2020 18:08, Kai-Heng Feng wrote:
+> I see the link being created in the patch, however I am not seeing it
+> in the file structure when I pull the kernel and check the
+> firmware/intel/ddp directory.  Everything else seems to work.  The
+> ddp package is there and a diff shows me it is the same ice-
+> 1.3.16.0.pkg we have been using internally.  A `copy-firmware
+> /lib/firmware/` command runs the script and places the new ddp
+> package in the correct directory, but no link to the file is
+> created.  The /lib/firmware directory still has a link to the old
+> firmware and that older firmware still gets loaded unless I go in and
+> move the link by hand.
 > 
-> Hello Kai-Heng,
->>> On Sep 29, 2020, at 21:46, Neftin, Sasha <sasha.neftin@intel.com> wrote:
->>> 
->>> Hello Kai-Heng,
->>> On 9/29/2020 16:31, Kai-Heng Feng wrote:
->>>> Hi Sasha,
->>>>> On Sep 29, 2020, at 21:08, Neftin, Sasha <sasha.neftin@intel.com> wrote:
->>>>> 
->>>>> On 9/28/2020 11:36, Kai-Heng Feng wrote:
->>>>>> We are seeing the following error after S3 resume:
->>>>>> [  704.746874] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
->>>>>> [  704.844232] e1000e 0000:00:1f.6 eno1: MDI Write did not complete
->>>>>> [  704.902817] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
->>>>>> [  704.903075] e1000e 0000:00:1f.6 eno1: reading PHY page 769 (or 0x6020 shifted) reg 0x17
->>>>>> [  704.903281] e1000e 0000:00:1f.6 eno1: Setting page 0x6020
->>>>>> [  704.903486] e1000e 0000:00:1f.6 eno1: writing PHY page 769 (or 0x6020 shifted) reg 0x17
->>>>>> [  704.943155] e1000e 0000:00:1f.6 eno1: MDI Error
->>>>>> ...
->>>>>> [  705.108161] e1000e 0000:00:1f.6 eno1: Hardware Error
->>>>>> As Andrew Lunn pointed out, MDIO has nothing to do with phy, and indeed
->>>>>> increase polling iteration can resolve the issue.
->>>>>> This patch only papers over the symptom, as we don't really know the
->>>>>> root cause of the issue. The most possible culprit is Intel ME, which
->>>>>> may do its own things that conflict with software.
->>>>>> Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
->>>>>> ---
->>>>>> v4:
->>>>>>  - States that this patch just papers over the symptom.
->>>>>> v3:
->>>>>>  - Moving delay to end of loop doesn't save anytime, move it back.
->>>>>>  - Point out this is quitely likely caused by Intel ME.
->>>>>> v2:
->>>>>>  - Increase polling iteration instead of powering down the phy.
->>>>>>  drivers/net/ethernet/intel/e1000e/phy.c | 2 +-
->>>>>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>>>> diff --git a/drivers/net/ethernet/intel/e1000e/phy.c b/drivers/net/ethernet/intel/e1000e/phy.c
->>>>>> index e11c877595fb..e6d4acd90937 100644
->>>>>> --- a/drivers/net/ethernet/intel/e1000e/phy.c
->>>>>> +++ b/drivers/net/ethernet/intel/e1000e/phy.c
->>>>>> @@ -203,7 +203,7 @@ s32 e1000e_write_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 data)
->>>>>>  	 * Increasing the time out as testing showed failures with
->>>>>>  	 * the lower time out
->>>>>>  	 */
->>>>>> -	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
->>>>>> +	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 10); i++) {
->>>>> As we discussed (many threads) - AMT/ME systems not supported on Linux as properly. I do not think increasing polling iteration will solve the problem. Rather mask it.
->>>> I am aware of the status quo of no proper support on Intel ME.
->>>>> I prefer you check option to disable ME vi BIOS on your system.
->>>> We can't ask user to change the BIOS to accommodate Linux. So before a proper solution comes out, masking the problem is good enough for me.
->>>> Until then, I'll carry it as a downstream distro patch.
->>> What will you do with system that even after increasing polling time will run into HW error?
->> Hope we finally have proper ME support under Linux?
->> Kai-Heng
->>>> Kai-Heng
->>>>>>  		udelay(50);
->>>>>>  		mdic = er32(MDIC);
->>>>>>  		if (mdic & E1000_MDIC_READY)
->>>>> Thanks,
->>>>> Sasha
->>> Thanks,
->>> Sasha
-> 
-> On which device ID/platform do you see the issue?
+> After moving the link to point to the new ddp package it loads and
+> functions as expected.
 
-HP Z4 G4 Workstation,
-00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (2) I219-LM [8086:15b7]
+Hi Aaron,
 
-> What is the Firmware version on your platform?
+There was a patch accepted [1] that changes the behavior to ensure the
+symlink is updated. If you rebase, you should get patch that properly
+updates the symlink.
 
-BIOS version: P61 v02.59
+Thanks,
+Tony
 
-
-> What is the ME firmware version that you have?
-
-ME version: 11.11.50.1422
-ME mode: AMT disable
-
-Kai-Heng
-
-> 
-> I am asking these questions, since I know there is supposed to be a fix in the firmware to many issues that are related to ME and device interoperability.
-> 
-> Thanks,
-> 
-> Vitaly
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-
+firmware.git/commit/?id=c1bef9e01060f157f95496f0cbd4edb7b68a3dc8
 
 _______________________________________________
 Intel-wired-lan mailing list
