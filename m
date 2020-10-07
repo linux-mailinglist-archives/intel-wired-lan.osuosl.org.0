@@ -1,99 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B497228555A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Oct 2020 02:21:34 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C16FD28555D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Oct 2020 02:22:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 3575785F7E;
-	Wed,  7 Oct 2020 00:21:33 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 66025871AF;
+	Wed,  7 Oct 2020 00:22:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n1WMoKPdlN0M; Wed,  7 Oct 2020 00:21:32 +0000 (UTC)
+	with ESMTP id 7une6DZUjp97; Wed,  7 Oct 2020 00:22:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 00E0885F8C;
-	Wed,  7 Oct 2020 00:21:32 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 88456871AA;
+	Wed,  7 Oct 2020 00:22:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 187861BF989
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Oct 2020 00:21:30 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E15F1BF989
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Oct 2020 00:22:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 133CC85F66
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Oct 2020 00:21:30 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 660B7203FE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Oct 2020 00:22:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4zs7Qj3Uafmg for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Oct 2020 00:21:29 +0000 (UTC)
+ with ESMTP id djAtWeKr5SpF for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Oct 2020 00:22:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 1D2B385F5C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Oct 2020 00:21:29 +0000 (UTC)
-IronPort-SDR: HPipL2urdPUlsu8+eAZD7Amjb9VbEv9NiEvwpjcxf00CRb6UD5R0v4oG7LJfAGIS+NDdWhssgR
- npK9l5H1BOgQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9766"; a="152528747"
-X-IronPort-AV: E=Sophos;i="5.77,344,1596524400"; d="scan'208";a="152528747"
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by silver.osuosl.org (Postfix) with ESMTPS id ED4BE20029
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Oct 2020 00:22:22 +0000 (UTC)
+IronPort-SDR: 6AbYom753yYOUv4MRizwOYKZww7mDWHyCJ7yjac+RBmri4zOpHlZ1iis/4Gex14n91SLOnwLEb
+ YLBB0ObgIS5A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9766"; a="162142876"
+X-IronPort-AV: E=Sophos;i="5.77,344,1596524400"; d="scan'208";a="162142876"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Oct 2020 17:21:28 -0700
-IronPort-SDR: MziRcaTsOKZjXZk+zmHYpVhUORH1ETDNTJoIcLW/ve4V8BgenPeonZoyrr3HwDOsTFcHbKHIy0
- KNCOhPRKyYIA==
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Oct 2020 17:22:22 -0700
+IronPort-SDR: DvCmojcT81aeIG0IliV5mIpW5yPTikQVLzX59/y8AQg0KWIfy9MN+JXWJO8NJmFW63NuveqCd6
+ l5zG8HMn64eA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,344,1596524400"; d="scan'208";a="527687277"
+X-IronPort-AV: E=Sophos;i="5.77,344,1596524400"; d="scan'208";a="527687698"
 Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga005.jf.intel.com with ESMTP; 06 Oct 2020 17:21:28 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ by orsmga005.jf.intel.com with ESMTP; 06 Oct 2020 17:22:22 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
  ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Tue, 6 Oct 2020 17:21:27 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ 15.1.1713.5; Tue, 6 Oct 2020 17:22:21 -0700
+Received: from orsmsx604.amr.corp.intel.com (10.22.229.17) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 6 Oct 2020 17:22:21 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Tue, 6 Oct 2020 17:21:27 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.105)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ via Frontend Transport; Tue, 6 Oct 2020 17:22:21 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.107)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Tue, 6 Oct 2020 17:21:27 -0700
+ 15.1.1713.5; Tue, 6 Oct 2020 17:22:20 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Xl6VLBYvebZ+96cIUQTY1TOUmOjjxqTKb8FAkViiTsLSeYwfIF12w1oLtBlcHgjte9zwzqekqC7WHAPyLtdRLFZTHUAuyS2aSijktIdlSCuyI9Qoso4cHN2qzyVGgLARG+V2tqpM+8FAPxElX7WvBI2kvfs79jBplMTLLE5G9PPXqIl0CjnIqajoNUcJT0K0t+f3qAvrZRYF7iEuL6NJUMFrURn3VUXGfNkY8EU6P2zLWjnc5UYMQGDGCtigZyu+DWr6C2xXFivNtQwqBG7JPpbALbD51HEndinNN/IuhkZ5YxekvwxeLzXHI7TsG8VUe/1IC767PhSyfxhG71GMsA==
+ b=kfDX7jVKesTFdviHnb0YVsil16ERBh3goQkXUjfEAvfw/041Zc55CpAKgKSVSGdsXvD+VMvMqG8ick+wceuRdzzSlZ8yxYdfsy+/fWnECxJ+1tNmvNkozFwtpD1WMmso0rgvSDMrcNms/GtRvYB5WZD/exO2GGaepdxSEWqU/qmOYABYnmTgfPooAsxDhc9BgTY3JzwjMpZN2crP9SB9L/Z9iuuUob36WffWsnhxT2ca6eSrd9vr1MjiqhxhO0BzAhGSF3vP6CekS+MM7dGQHjoHbtOuAx3SzaWoXvqonAGI0sdSMyhG2/ZnjzPcFJ/qFDaxaISbR6WQZxwSVQ/44w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HGwHJtAgCrFex8rSgiYzYVTwMOiq3wMelNaV3yyChJQ=;
- b=j6KMIY8K5/TKQUr19JQl1g0j80BIUJHhT1AYZCD2xsW0MVtftPgvSRyxFv0mHGzhbs06XLSOxP5cFMpnwmNptUzJB2POpYp/dOlltPHqH4kLxe4HSbltKziINYA0eMQn4q8kwpXABLh30vQyZ1RgqxogyyQbHwBiUAbdw91wskEhbXyYbksUgPitAf2xSNdZeIPaTnXrVBSRNJcRr3yPNtkxsRQWVcXMt5WW2jUTtYAbXKo9uYRY1ivqKDYiXwcNodqGzvA+F3y+1WxlMG1I4G+KieKUiYGveTtHRu0keivURvq7B/3OKCZpt26AImVNkl8tB/N7NIF3Rf2Lfhazng==
+ bh=sN/dB+APqWczAqOEUeoVL1II2Dj5UW3Pcags+ZKMbHE=;
+ b=mdGHQ1eOp4wPSNqa3X4TeBwD5tmy0qdSCg0/X7FiwDg6ALNpUdwxeZ0E5XZh1WDx7Xgo/KWMsqj/4iGuKNq/+y6IvUDMn82bFc7z7yTt+JtcrXWem41isEjosmD+G+mbDEdz/6l3RsfsmiOZouni6QiMx+8ezsdhUt7+zWCntWO9wN6ouWSAps44jjh7UbSrriiq65TuGShvfgydfFAdXypKuREmNM6QoGIlxV8o9Doh7gCpPHgV3xXHNz1J+jqSDIQPzDoyD3u9Wf8jdHe6DvwZHsEwE1ABVFN296lZgBM0Wthy3jyaY7zXClqaJ0rpHYWNezZABzy6vOSoeqMg9w==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
  s=selector2-intel-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HGwHJtAgCrFex8rSgiYzYVTwMOiq3wMelNaV3yyChJQ=;
- b=k3LbboTRoA9ZcprhzHgo9K6H6IhQt6WUrm1iZhyc0kIiTEazz+3loZa3QT5RzcVNctTw6bbtRa4lKmC6n8BoLzzbnVf6O+9pQbvMgeA2dGFghA7lep32kOIPBlBNgW/XkwrPPh4o6p4SJ6OP2fG6BgLG8CbLVJGn2Vc1jeQTfLw=
+ bh=sN/dB+APqWczAqOEUeoVL1II2Dj5UW3Pcags+ZKMbHE=;
+ b=ORHuqxI+n3LoJ3yDL8VVlPmZmztPxwvxDXxqWBjBBGBqievTRZj0jcuacKSNuc5q5d63KneXrd4hsq2oI651DZtTzf+1MVDKSgfIrjMUPEEtaA8Ny/lBodqPLt76xqIMPS5Yyqf0PeFpSzQpP8n/7ghVXDNn/xPuokAUeULxIGQ=
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
  DM6PR11MB4673.namprd11.prod.outlook.com (2603:10b6:5:2a4::18) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3433.35; Wed, 7 Oct 2020 00:21:26 +0000
+ 15.20.3433.35; Wed, 7 Oct 2020 00:21:52 +0000
 Received: from DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::bdb7:3e5f:8eec:d340]) by DM6PR11MB2890.namprd11.prod.outlook.com
  ([fe80::bdb7:3e5f:8eec:d340%7]) with mapi id 15.20.3433.045; Wed, 7 Oct 2020
- 00:21:26 +0000
+ 00:21:52 +0000
 From: "Brown, Aaron F" <aaron.f.brown@intel.com>
 To: Mario Limonciello <mario.limonciello@dell.com>, "Kirsher, Jeffrey T"
  <jeffrey.t.kirsher@intel.com>, "intel-wired-lan@lists.osuosl.org"
  <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH 2/3] e1000e: Add Dell's Comet Lake
- systems into s0ix heuristics
-Thread-Index: AQHWlWQ1Klkytgcwh0is6KJPY3WyxamLVECw
-Date: Wed, 7 Oct 2020 00:21:26 +0000
-Message-ID: <DM6PR11MB2890F9ACE2ACF01E52A1ADBDBC0A0@DM6PR11MB2890.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML systems
+ into s0ix heuristics
+Thread-Index: AQHWlVGQNCC2JTiqu0ySgmetkcxf3KmLU4DA
+Date: Wed, 7 Oct 2020 00:21:52 +0000
+Message-ID: <DM6PR11MB2890D867948806FF79EC94E0BC0A0@DM6PR11MB2890.namprd11.prod.outlook.com>
 References: <20200928044024.7595-1-mario.limonciello@dell.com>
- <20200928044024.7595-3-mario.limonciello@dell.com>
-In-Reply-To: <20200928044024.7595-3-mario.limonciello@dell.com>
+ <20200928044024.7595-4-mario.limonciello@dell.com>
+In-Reply-To: <20200928044024.7595-4-mario.limonciello@dell.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -105,33 +109,33 @@ authentication-results: dell.com; dkim=none (message not signed)
  header.d=none;dell.com; dmarc=none action=none header.from=intel.com;
 x-originating-ip: [97.120.177.49]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: b639b0da-53bd-4ac1-13f3-08d86a56ede2
+x-ms-office365-filtering-correlation-id: 757c4b99-e3c8-4d4c-55e0-08d86a56fdb2
 x-ms-traffictypediagnostic: DM6PR11MB4673:
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB467358858E1365A51B75B378BC0A0@DM6PR11MB4673.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:1468;
+x-microsoft-antispam-prvs: <DM6PR11MB4673B81E34816303167E66F5BC0A0@DM6PR11MB4673.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: B7T4w6kR3RoBFkymxry67AAjuq4MvlH9Ss1/3fk2EQzNAdD47PWd7soSmS24y34t8Ty2j5fW9R+/69qydrhEQEgk6PcIyETyOHZQYaXRNQB5ZD0fCaRbQBV7hOEuwbrcBfvmCSH0hjH3YxjXfRbfRqTzZFm2khnHSe+Cw/h4PCmRaAA84CzUoY1k4doVrVB0Q9BcniNyq2pYNpxmr7hMoAtZ8fUttuPF0PF8S0IrgffUgK4txBdjbabAgNu5Yt7mPHyINgmJTCFM0cFISvxwNS5+PZgjG6Wpa+iMW4I0nkE7hJsRTvmpSAkZyxI3cRhWPiVRvU7k1yVf14hgnX2GnX3NzJFdevX7j4r5KNnDEEOMTQ5zZ2TB+jOyLQcR97SDG6yQ8AayKqrwJNfiK53zJzoYadA55kXtqLoHkaN3/y2GbPKsHV8kgG7oag32yL7oVL3Jj/KwCc3chpZUNlR1rg==
+x-microsoft-antispam-message-info: yg3CUo33IuQpU+8V3r7yPEIIo7BficEL8YQjY9LIEsu7PPtloHtSfeCmgKU7TRNbUMgWjU/GeMzHpIhQ2wG7/hHXzysz1g3CRSlDqT+8lGknQu0yXIg2pC2v1KGUv8R/zmB92A7j+vFHCFEQDwVkVXi1ZT4qxWkLGVA5MsyS5ecBSafDgOiTNqQ8F3FmgRYo9zPmrbDdZGX1yhff9btbMgp4jia+qqfEwUo8AlXmiijfx2ZqjGBUtiGfQE2a7dMGibA72Wh740318I2TymNVoaO36U7oQ80Hfjc2QtYOENZ55wHzKPxcZBYud4RymN58e05LakwTj1CxB7H9Dgjo+cqj+d5o4Hj6GcG8FvvK9X1nrbIRFWV2Xhq48zmaKRh8QZqzVm81l4b84d83rNKdoLRWdAxq81t45zh5FNAyMJx477b1d1tcAlOhRq50XMLVcqvcPYSVtGwf+oOCT6pbYQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(4636009)(39860400002)(136003)(396003)(346002)(366004)(376002)(66946007)(478600001)(8936002)(33656002)(86362001)(4326008)(186003)(7696005)(6506007)(26005)(53546011)(83380400001)(83080400001)(966005)(316002)(54906003)(110136005)(52536014)(9686003)(55016002)(66556008)(64756008)(5660300002)(76116006)(66446008)(66476007)(8676002)(71200400001)(2906002)(32563001);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: 0lxW37MZ/LBakhQ6iEvolncDZoR4LG0NhKVaNM2ciRH1pDhf8mL+z33+AZZuO9/c4oKLQok9qcv5q5dD7c8dJyL2W/jP23bW24+OkojNYPXMh3+MQR5SOTfGaLsXiT/rfSACBfcBvNeA+DpcCVcm/j51BPyiwI3fYBuhcnBB0qnxLDTtvuXIPIO/Dl370kRzoOTtNwBQFJK8yOCFErBkQkfz7Teai731EIWuEq9C3Suw1ludVJgYuDNoWmXrcTABAbe45GM9o5IG8EgGO0Zpktr7eOYZ0V5Pxqa/dBC570uDpLjCRoEHCqJcO8cGJYh646txnZYKFAJxDsB7ctu88+Etln8K3vqlhr0AxlzzODVrCkzH4Tp9Lq2rG59zZo62WsHgpfI1W4idHOS20Eql36zpLLriU8JWD/ns5EJhBaKP1P0gBoOPuVXxdv5TyBN2WJL43hSo8P9n43cbzco1LXqey5s28Pps2GsUoX+IcwUbyubI2WuIgDVI675bXpYLmec49fE33i6hvt1YrvAMBPlDiQbTgbI1dOGvgw3RWj4L8VOE4RL2g2edZNapaC0IBSwg4s9/t6mqFTKsc4wfudlOjzefBkKC3Xxc9LGOeY4mO0ZNtMkmeiRyQtdNzt5ubFD3S0sAZRJ7385/mnnjMQ==
+x-ms-exchange-antispam-messagedata: cDmjMYnHPo0JOdf9uZQlTkPfd9JXUWphYWoTQV1BRinNCOpUR7eGAH1rco0eaBCov8AG7ECaSPOyGoOF6y/W8SL5h86OMXbhQHrRFrFKXyVARBS+uRaU1OcxAAtXvOcp12lP9lsnEAsSHL9YuVUkNo/y7xVkkvD1mmsxHdZ/lL86IOId7a0ohWSkgQPXQLOk3E3bKwLYQrZpSoEAz/3Qb2FbWOScM28LQ7zN9JOF5Tqv3TsFA8YniF9hwHDYT3PDrJeCV3niVUISkHQVYUdPiG34SG7n1xYN/RYNqBCkSlv1gvJvSFE5HfoXlTg+uoRnDYBiClgL4g4fQos8lHJm1/NP548iCRbd1G1z2gYwO8LGsIV8WH98n5ndfonBwQXr+Eq8lK/hoT5ielpeLVER/re1j7oWOzQ2slcnF+HAAyP7W2s8gJWXHBRYNLSc/YDI8kaoyWt7T6LwdUBUleWTM8ZxVV/cP4Nu+w0j/tKUWEub3mzBLMyJOuRHJk7MMlAbPdH5evxYMU3ddh9UN1+9D4XJvK7+FQXewrmROnrYOnenCG6fTXBobVeqmRkEZUEXZpmiKLlgX28aM5RUURzHXrHbIWDvNZp6WMvZz/a3S/GkCj5cLVb+eicFOAxVeb6JSxlXJ0MjUe4taWuvQAdk2A==
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b639b0da-53bd-4ac1-13f3-08d86a56ede2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Oct 2020 00:21:26.1654 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 757c4b99-e3c8-4d4c-55e0-08d86a56fdb2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Oct 2020 00:21:52.7620 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1l/9C2k4QYU4o8cWJskUEHtYiwFIm5r6NxTW+qPd7agClusi3aD4pbkVwSztQk0jSS0Q4mSPwLMbznsvlVevIg==
+X-MS-Exchange-CrossTenant-userprincipalname: 5zj3itp/rffz8vcu23G8UDuV1GrgQ/y/aOpdYLKOqliFkLhbKz9a1wo1k53r8ZdnwXthAqB9b/cVzigeFQrd5w==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4673
 X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH 2/3] e1000e: Add Dell's Comet Lake
- systems into s0ix heuristics
+Subject: Re: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML systems
+ into s0ix heuristics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,146 +161,59 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 > Sent: Sunday, September 27, 2020 9:40 PM
 > To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
 > lan@lists.osuosl.org
-> Cc: Perry.Yuan@dell.com; Yijun.Shen@dell.com; linux-kernel@vger.kernel.org;
-> Mario Limonciello <mario.limonciello@dell.com>
-> Subject: [Intel-wired-lan] [PATCH 2/3] e1000e: Add Dell's Comet Lake systems
+> Cc: Perry.Yuan@dell.com; Yijun.Shen@dell.com; linux-
+> kernel@vger.kernel.org; Mario Limonciello <mario.limonciello@dell.com>
+> Subject: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML systems
 > into s0ix heuristics
 > 
-> Dell's Comet Lake Latitude and Precision systems containing i219LM are
-> properly configured and should use the s0ix flows.
+> These comet lake systems are not yet released, but have been validated
+> on pre-release hardware.
+
+Same basic question as with 2/3 of the series, would it be possible to get someone who touched / validated the code on the pre-release hardware to provide a Tested-by: to this patch?
+
+> 
+> This is being submitted separately from released hardware in case of
+> a regression between pre-release and release hardware so this commit
+> can be reverted alone.
 > 
 > Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
 > ---
->  drivers/net/ethernet/intel/Kconfig        |  1 +
->  drivers/net/ethernet/intel/e1000e/param.c | 80 ++++++++++++++++++++++-
->  2 files changed, 80 insertions(+), 1 deletion(-)
-
-Is there anyone who touched this hardware with this patch willing to provide a Tested-by:?
-I am happy to do regression / sanity checks against other e1000e based systems, but do not have access to these devices.
-
+>  drivers/net/ethernet/intel/e1000e/param.c | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
 > 
-> diff --git a/drivers/net/ethernet/intel/Kconfig
-> b/drivers/net/ethernet/intel/Kconfig
-> index 5aa86318ed3e..280af47d74d2 100644
-> --- a/drivers/net/ethernet/intel/Kconfig
-> +++ b/drivers/net/ethernet/intel/Kconfig
-> @@ -58,6 +58,7 @@ config E1000
->  config E1000E
->  	tristate "Intel(R) PRO/1000 PCI-Express Gigabit Ethernet support"
->  	depends on PCI && (!SPARC32 || BROKEN)
-> +	depends on DMI
->  	select CRC32
->  	imply PTP_1588_CLOCK
->  	help
 > diff --git a/drivers/net/ethernet/intel/e1000e/param.c
 > b/drivers/net/ethernet/intel/e1000e/param.c
-> index e66b222c824b..58e6718c4f75 100644
+> index 58e6718c4f75..fe3157c8aa4a 100644
 > --- a/drivers/net/ethernet/intel/e1000e/param.c
 > +++ b/drivers/net/ethernet/intel/e1000e/param.c
-> @@ -1,6 +1,7 @@
->  // SPDX-License-Identifier: GPL-2.0
->  /* Copyright(c) 1999 - 2018 Intel Corporation. */
-> 
-> +#include <linux/dmi.h>
->  #include <linux/netdevice.h>
->  #include <linux/module.h>
->  #include <linux/pci.h>
-> @@ -201,6 +202,80 @@ static const struct e1000e_me_supported
-> me_supported[] = {
->  	{0}
+> @@ -273,6 +273,27 @@ static const struct dmi_system_id
+> s0ix_supported_systems[] = {
+>  			DMI_MATCH(DMI_PRODUCT_SKU, "09C4"),
+>  		},
+>  	},
+> +	{
+> +		/* Dell Notebook 0x0A40 */
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_SKU, "0A40"),
+> +		},
+> +	},
+> +	{
+> +		/* Dell Notebook 0x0A41 */
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_SKU, "0A41"),
+> +		},
+> +	},
+> +	{
+> +		/* Dell Notebook 0x0A42 */
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_SKU, "0A42"),
+> +		},
+> +	},
+>  	{ }
 >  };
-> 
-> +static const struct dmi_system_id s0ix_supported_systems[] = {
-> +	{
-> +		/* Dell Latitude 5310 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "099F"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Latitude 5410 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09A0"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Latitude 5410 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09C9"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Latitude 5510 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09A1"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Precision 3550 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09A2"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Latitude 5411 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09C0"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Latitude 5511 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09C1"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Precision 3551 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09C2"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Precision 7550 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09C3"),
-> +		},
-> +	},
-> +	{
-> +		/* Dell Precision 7750 */
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_SKU, "09C4"),
-> +		},
-> +	},
-> +	{ }
-> +};
-> +
->  static bool e1000e_check_me(u16 device_id)
->  {
->  	struct e1000e_me_supported *id;
-> @@ -599,8 +674,11 @@ void e1000e_check_options(struct e1000_adapter
-> *adapter)
->  		}
-> 
->  		if (enabled == S0IX_HEURISTICS) {
-> +			/* check for allowlist of systems */
-> +			if (dmi_check_system(s0ix_supported_systems))
-> +				enabled = S0IX_FORCE_ON;
->  			/* default to off for ME configurations */
-> -			if (e1000e_check_me(hw->adapter->pdev->device))
-> +			else if (e1000e_check_me(hw->adapter->pdev-
-> >device))
->  				enabled = S0IX_FORCE_OFF;
->  		}
 > 
 > --
 > 2.25.1
