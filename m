@@ -1,58 +1,50 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7EE4286F06
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Oct 2020 09:13:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA59C287911
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Oct 2020 17:57:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id A04A386BA5;
-	Thu,  8 Oct 2020 07:13:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9FEDD874CE;
+	Thu,  8 Oct 2020 15:57:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3MGu0XgJeaaf; Thu,  8 Oct 2020 07:13:29 +0000 (UTC)
+	with ESMTP id v1PLSSByoTyR; Thu,  8 Oct 2020 15:57:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 6C92A86BAD;
-	Thu,  8 Oct 2020 07:13:29 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B68BB874CB;
+	Thu,  8 Oct 2020 15:57:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5964A1BF2FA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 07:13:28 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B02B31BF2F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 15:57:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 5481186B88
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 07:13:28 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9C3E52E13C
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 15:57:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jG7ycw7NS1Wo for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Oct 2020 07:13:27 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by whitealder.osuosl.org (Postfix) with ESMTPS id E245C86B6B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 07:13:26 +0000 (UTC)
-IronPort-SDR: LVRr5ewRUY8LcXFsk2jIFT7u/Nek3EiLDTIH4JYSnB0dobxSaCVN0yNP0vc04vwoqsI9LLLbUp
- o+3SO135lTlA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9767"; a="165397490"
-X-IronPort-AV: E=Sophos;i="5.77,350,1596524400"; d="scan'208";a="165397490"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Oct 2020 00:13:24 -0700
-IronPort-SDR: JVmh3xWfmWIZyRCWhIlAkXluq3GfjWhbJZNEHKrgwEw/Ve7AAhoDcosghd19kXGn/QPvSGFhi/
- nurebfQssRsw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,350,1596524400"; d="scan'208";a="297855078"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by fmsmga007.fm.intel.com with ESMTP; 08 Oct 2020 00:13:23 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
+ with ESMTP id XySsPftCAdOQ for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Oct 2020 15:57:52 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mx1.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by silver.osuosl.org (Postfix) with ESMTPS id A45782E139
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 15:57:52 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 6878F206462BD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Oct 2020 17:57:49 +0200 (CEST)
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  8 Oct 2020 07:13:05 +0000
-Message-Id: <20201008071305.23277-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v1] i40e-linux: Fix removing driver
- while bare-metal VFs pass traffic
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <8ecde631-9b24-b177-749c-a5a6bddc31df@molgen.mpg.de>
+Date: Thu, 8 Oct 2020 17:57:49 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
+MIME-Version: 1.0
+Content-Language: en-US
+Subject: [Intel-wired-lan] What are management packets (rx_smbus, MGTPRC)?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,173 +57,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
- Brett Creeley <brett.creeley@intel.com>,
- Slawomir Laba <slawomirx.laba@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-
-Prevent VFs from resetting when PF driver is being unloaded:
-- introduce new pf state: __I40E_VF_RESETS_DISABLED;
-- check if pf state has __I40E_VF_RESETS_DISABLED state set,
-  if so, disable any further VFLR event notifications;
-- when i40e_remove (rmmod i40e) is called, disable any resets on
-  the VFs;
-
-Previously if there were bare-metal VFs passing traffic and PF
-driver was removed, there was a possibility of VFs triggering a Tx
-timeout right before iavf_remove. This was causing iavf_close to
-not be called because there is a check in the beginning of  iavf_remove
-that bails out early if adapter->state < IAVF_DOWN_PENDING. This
-makes it so some resources do not get cleaned up.
-
-Fixes: 6a9ddb36eeb8 ("i40e: disable IOV before freeing resources")
-Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 22 +++++++++++-----
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 26 +++++++++++--------
- 3 files changed, 31 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index c517c47..4cfaacc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -140,6 +140,7 @@ enum i40e_state_t {
- 	__I40E_CLIENT_RESET,
- 	__I40E_VIRTCHNL_OP_PENDING,
- 	__I40E_RECOVERY_MODE,
-+	__I40E_VF_RESETS_DISABLED,	/* disable resets during i40e_remove */
- 	/* This must be last as it determines the size of the BITMAP */
- 	__I40E_STATE_SIZE__,
- };
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 1e6f222..56cc5e2 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -4033,8 +4033,16 @@ static irqreturn_t i40e_intr(int irq, void *data)
- 	}
- 
- 	if (icr0 & I40E_PFINT_ICR0_VFLR_MASK) {
--		ena_mask &= ~I40E_PFINT_ICR0_ENA_VFLR_MASK;
--		set_bit(__I40E_VFLR_EVENT_PENDING, pf->state);
-+		/* disable any further VFLR event notifications */
-+		if (test_bit(__I40E_VF_RESETS_DISABLED, pf->state)) {
-+			u32 reg = rd32(hw, I40E_PFINT_ICR0_ENA);
-+
-+			reg &= ~I40E_PFINT_ICR0_VFLR_MASK;
-+			wr32(hw, I40E_PFINT_ICR0_ENA, reg);
-+		} else {
-+			ena_mask &= ~I40E_PFINT_ICR0_ENA_VFLR_MASK;
-+			set_bit(__I40E_VFLR_EVENT_PENDING, pf->state);
-+		}
- 	}
- 
- 	if (icr0 & I40E_PFINT_ICR0_GRST_MASK) {
-@@ -15386,6 +15394,11 @@ static void i40e_remove(struct pci_dev *pdev)
- 	while (test_bit(__I40E_RESET_RECOVERY_PENDING, pf->state))
- 		usleep_range(1000, 2000);
- 
-+	if (pf->flags & I40E_FLAG_SRIOV_ENABLED) {
-+		set_bit(__I40E_VF_RESETS_DISABLED, pf->state);
-+		i40e_free_vfs(pf);
-+		pf->flags &= ~I40E_FLAG_SRIOV_ENABLED;
-+	}
- 	/* no more scheduling of any task */
- 	set_bit(__I40E_SUSPENDED, pf->state);
- 	set_bit(__I40E_DOWN, pf->state);
-@@ -15412,11 +15425,6 @@ static void i40e_remove(struct pci_dev *pdev)
- 	 */
- 	i40e_notify_client_of_netdev_close(pf->vsi[pf->lan_vsi], false);
- 
--	if (pf->flags & I40E_FLAG_SRIOV_ENABLED) {
--		i40e_free_vfs(pf);
--		pf->flags &= ~I40E_FLAG_SRIOV_ENABLED;
--	}
--
- 	i40e_fdir_teardown(pf);
- 
- 	/* If there is a switch structure or any orphans, remove them.
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index b70706d..210d4f9 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -1403,7 +1403,8 @@ static void i40e_cleanup_reset_vf(struct i40e_vf *vf)
-  * @vf: pointer to the VF structure
-  * @flr: VFLR was issued or not
-  *
-- * Returns true if the VF is reset, false otherwise.
-+ * Returns true if the VF is in reset, resets successfully, or resets
-+ * are disabled and false otherwise.
-  **/
- bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
- {
-@@ -1413,11 +1414,14 @@ bool i40e_reset_vf(struct i40e_vf *vf, bool flr)
- 	u32 reg;
- 	int i;
- 
-+	if (test_bit(__I40E_VF_RESETS_DISABLED, pf->state))
-+		return true;
-+
- 	/* If the VFs have been disabled, this means something else is
- 	 * resetting the VF, so we shouldn't continue.
- 	 */
- 	if (test_and_set_bit(__I40E_VF_DISABLE, pf->state))
--		return false;
-+		return true;
- 
- 	i40e_trigger_vf_reset(vf, flr);
- 
-@@ -1581,6 +1585,15 @@ void i40e_free_vfs(struct i40e_pf *pf)
- 
- 	i40e_notify_client_of_vf_enable(pf, 0);
- 
-+	/* Disable IOV before freeing resources. This lets any VF drivers
-+	 * running in the host get themselves cleaned up before we yank
-+	 * the carpet out from underneath their feet.
-+	 */
-+	if (!pci_vfs_assigned(pf->pdev))
-+		pci_disable_sriov(pf->pdev);
-+	else
-+		dev_warn(&pf->pdev->dev, "VFs are assigned - not disabling SR-IOV\n");
-+
- 	/* Amortize wait time by stopping all VFs at the same time */
- 	for (i = 0; i < pf->num_alloc_vfs; i++) {
- 		if (test_bit(I40E_VF_STATE_INIT, &pf->vf[i].vf_states))
-@@ -1596,15 +1609,6 @@ void i40e_free_vfs(struct i40e_pf *pf)
- 		i40e_vsi_wait_queues_disabled(pf->vsi[pf->vf[i].lan_vsi_idx]);
- 	}
- 
--	/* Disable IOV before freeing resources. This lets any VF drivers
--	 * running in the host get themselves cleaned up before we yank
--	 * the carpet out from underneath their feet.
--	 */
--	if (!pci_vfs_assigned(pf->pdev))
--		pci_disable_sriov(pf->pdev);
--	else
--		dev_warn(&pf->pdev->dev, "VFs are assigned - not disabling SR-IOV\n");
--
- 	/* free up VF resources */
- 	tmp = pf->num_alloc_vfs;
- 	pf->num_alloc_vfs = 0;
--- 
-2.17.1
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBMaW51eCBmb2xrcywKCgpXZSBhcmUgdHJ5aW5nIHRvIGRlYnVnIGEgbmV0d29yayBpc3N1
+ZSwgYW5kLCB3aGlsZSBsb29raW5nIGF0IHRoZSAKbmV0d29yayBkZXZpY2Ugc3RhdGlzdGljcywg
+bm90aWNlZCBhIGhpZ2ggdmFsdWUgb2YgYHJ4X3NtYnVzYC4KCiAgICAgJCBzdWRvIGV0aHRvb2wg
+LVMgbmV0MDAKICAgICBb4oCmXQogICAgIHR4X3NtYnVzOiAwCiAgICAgcnhfc21idXM6IDU1Nzgx
+NgogICAgIGRyb3BwZWRfc21idXM6IDkKICAgICBb4oCmXQoKVGhpcyBzZWVtcyB1bnJlbGF0ZWQg
+dG8gb3VyIHByb2JsZW0sIGJ1dCB3ZSBub3RpY2VkLCB0aGF0IGFyb3VuZCAyMCAlIG9mIApvdXIg
+ZGVza3RvcHMgaGF2ZSBhIHBvc2l0aXZlIHZhbHVlLiBGcm9tIHRoZSBzb3VyY2U6CgogICAgIGRy
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwL2UxMDAwX21haW4uYzogCmFkYXB0ZXItPnN0
+YXRzLm1ncHJjICs9IGVyMzIoTUdUUFJDKTsKICAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9lMTAwMGUvZXRodG9vbC5jOiAKRTEwMDBfU1RBVCgicnhfc21idXMiLCBzdGF0cy5tZ3ByYwoK
+ICAgICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvcmVncy5oOiNkZWZpbmUgRTEw
+MDBfTUdUUFJDIAoweDA0MEI0IC8qIE1hbmFnZW1lbnQgUGFja2V0cyBSeCBDb3VudCAtIFIvY2xy
+ICoKCk91dCBvZiBjdXJpb3NpdHksIHdoYXQgYXJlIHRoZXNlIG1hbmFnZW1lbnQgcGFja2V0cz8K
+CgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoKJCBzdWRvIGV0aHRvb2wgLVMgbmV0MDAKTklDIHN0YXRp
+c3RpY3M6CiAgICAgIHJ4X3BhY2tldHM6IDk5MzAwMTUxNgogICAgICB0eF9wYWNrZXRzOiAxMzMx
+OTU2MzUwCiAgICAgIHJ4X2J5dGVzOiA5MzgxMjgwMTU5MTAKICAgICAgdHhfYnl0ZXM6IDE4NDI0
+OTI0NjcxNTQKICAgICAgcnhfYnJvYWRjYXN0OiA4NDkyOTI1NQogICAgICB0eF9icm9hZGNhc3Q6
+IDIzNzAyNgogICAgICByeF9tdWx0aWNhc3Q6IDM4NjkzNzEKICAgICAgdHhfbXVsdGljYXN0OiA0
+NzYwMgogICAgICByeF9lcnJvcnM6IDI1MAogICAgICB0eF9lcnJvcnM6IDAKICAgICAgdHhfZHJv
+cHBlZDogMAogICAgICBtdWx0aWNhc3Q6IDM4NjkzNzEKICAgICAgY29sbGlzaW9uczogMAogICAg
+ICByeF9sZW5ndGhfZXJyb3JzOiAwCiAgICAgIHJ4X292ZXJfZXJyb3JzOiAwCiAgICAgIHJ4X2Ny
+Y19lcnJvcnM6IDE4NwogICAgICByeF9mcmFtZV9lcnJvcnM6IDAKICAgICAgcnhfbm9fYnVmZmVy
+X2NvdW50OiAwCiAgICAgIHJ4X21pc3NlZF9lcnJvcnM6IDAKICAgICAgdHhfYWJvcnRlZF9lcnJv
+cnM6IDAKICAgICAgdHhfY2Fycmllcl9lcnJvcnM6IDAKICAgICAgdHhfZmlmb19lcnJvcnM6IDAK
+ICAgICAgdHhfaGVhcnRiZWF0X2Vycm9yczogMAogICAgICB0eF93aW5kb3dfZXJyb3JzOiAwCiAg
+ICAgIHR4X2Fib3J0X2xhdGVfY29sbDogMAogICAgICB0eF9kZWZlcnJlZF9vazogMAogICAgICB0
+eF9zaW5nbGVfY29sbF9vazogMAogICAgICB0eF9tdWx0aV9jb2xsX29rOiAwCiAgICAgIHR4X3Rp
+bWVvdXRfY291bnQ6IDAKICAgICAgdHhfcmVzdGFydF9xdWV1ZTogMAogICAgICByeF9sb25nX2xl
+bmd0aF9lcnJvcnM6IDAKICAgICAgcnhfc2hvcnRfbGVuZ3RoX2Vycm9yczogMAogICAgICByeF9h
+bGlnbl9lcnJvcnM6IDAKICAgICAgdHhfdGNwX3NlZ19nb29kOiAzMTQ5ODA4MwogICAgICB0eF90
+Y3Bfc2VnX2ZhaWxlZDogMAogICAgICByeF9mbG93X2NvbnRyb2xfeG9uOiAwCiAgICAgIHJ4X2Zs
+b3dfY29udHJvbF94b2ZmOiAwCiAgICAgIHR4X2Zsb3dfY29udHJvbF94b246IDAKICAgICAgdHhf
+Zmxvd19jb250cm9sX3hvZmY6IDAKICAgICAgcnhfY3N1bV9vZmZsb2FkX2dvb2Q6IDkyNzQ2MzAw
+OAogICAgICByeF9jc3VtX29mZmxvYWRfZXJyb3JzOiAzNAogICAgICByeF9oZWFkZXJfc3BsaXQ6
+IDAKICAgICAgYWxsb2NfcnhfYnVmZl9mYWlsZWQ6IDAKICAgICAgdHhfc21idXM6IDAKICAgICAg
+cnhfc21idXM6IDU1NzgxNgogICAgICBkcm9wcGVkX3NtYnVzOiA5CiAgICAgIHJ4X2RtYV9mYWls
+ZWQ6IDAKICAgICAgdHhfZG1hX2ZhaWxlZDogMAogICAgICByeF9od3RzdGFtcF9jbGVhcmVkOiAw
+CiAgICAgIHVuY29ycl9lY2NfZXJyb3JzOiAwCiAgICAgIGNvcnJfZWNjX2Vycm9yczogMAogICAg
+ICB0eF9od3RzdGFtcF90aW1lb3V0czogMAogICAgICB0eF9od3RzdGFtcF9za2lwcGVkOiAwCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVk
+LWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0
+cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
