@@ -1,135 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9342928926B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 21:51:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4982C289AC1
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 23:36:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 2AA438758C;
-	Fri,  9 Oct 2020 19:51:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id EEBB1878D0;
+	Fri,  9 Oct 2020 21:36:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VvOeMj4xPhGv; Fri,  9 Oct 2020 19:51:15 +0000 (UTC)
+	with ESMTP id 3jd0P0IHhZ2N; Fri,  9 Oct 2020 21:36:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 69FA58767A;
-	Fri,  9 Oct 2020 19:51:15 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 982A51BF2F3
- for <intel-wired-lan@osuosl.org>; Fri,  9 Oct 2020 19:51:13 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 173BD878C7;
+	Fri,  9 Oct 2020 21:36:06 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 200F21BF284
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 21:34:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9076B81D1F
- for <intel-wired-lan@osuosl.org>; Fri,  9 Oct 2020 19:51:13 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 1ADA187093
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 21:34:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wYTyiRPPtUVb for <intel-wired-lan@osuosl.org>;
- Fri,  9 Oct 2020 19:51:12 +0000 (UTC)
+ with ESMTP id B1j3r4yrSjx3 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Oct 2020 21:34:37 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by hemlock.osuosl.org (Postfix) with ESMTPS id CB1F887785
- for <intel-wired-lan@osuosl.org>; Fri,  9 Oct 2020 19:51:12 +0000 (UTC)
-IronPort-SDR: u0GM3IKRjrBrv0xU5cMHcZByVGETVjnlnzw0WXjpYTuyURs+9taauMmPZJru0tLBWt1xQJV63V
- Tew1BFh/eprQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="229714970"
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="229714970"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:51:11 -0700
-IronPort-SDR: C2jPWRmSDne9MSB0S0kANWMHHjs//seQ9/bu6xtPzyXAqfVQU6YRuU4GfPLUWRCCZhSJeyKwG8
- FNk4aur5Sv3w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="349957117"
-Received: from orsmsx604.amr.corp.intel.com ([10.22.229.17])
- by fmsmga002.fm.intel.com with ESMTP; 09 Oct 2020 12:51:11 -0700
-Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
- ORSMSX604.amr.corp.intel.com (10.22.229.17) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 9 Oct 2020 12:51:10 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Fri, 9 Oct 2020 12:51:10 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Fri, 9 Oct 2020 12:51:09 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jt+z/TypubtlhBUr1nNHKsoz0/Hm3hPfgBTe+Ogxc/vrN2j5WZbn+/QNbjPdMyIl8prLKE3ffpydGTrzgOcyeTdaB9BqgHBqGrewmdetwJBOhG36vxPaysBMvZWmDM/XMjuwoBFT8AbB4LcB3ERAprvXr3yk3fnIPK/3zM9KT8WckJt4xz+ZM9Yj+MdQ4NPYGa8d7M6ZJLaBOe+T9wr4ccXmgxLM35KqlDPXP6iuiZ7AYUdBOuzMix+KTx3LXJ+S1H40wYGjy4rJBm4ZJ4roIfMf8O1lzmwLXHnZRHz7D2cDTkvMZ59zvUyim07xhhp9jol9zmytCDbzE/6+GJBPCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TBuUmrmJ+VrbQl5c+QuA10NXWVVuOKrwOMC+t9ix7Sw=;
- b=az9zQpmIh4bzQjG4EbTWARLlgkFwax3JSuNuUp6sHgBa9NJb12s5oJN5sOkSAUoD/maGmK+if8Zx5YT5TytZXXEkr7xNwSZF1cp/0q4vHiuP0nNtDrBeBXg7zHFzZigyx16b5oM+6spcjOZXBQr5xC3kHI0IIEECq5CiJYBdnaywAuJRBCO03+PF1IdufsCn77HhowFfMmdqSNmMmE665lnT8FEQYuKOYkWfulA/qxnl8rjsvm3pt4/wklYyM/JojHPV6+8cJgtMZOWdMBpi4YWBx4iPavPBojiCTQ2CDGHosmiQAxPA4cgmeIqxR99+yNQVPvzQxVLrU6nyI0x+hA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TBuUmrmJ+VrbQl5c+QuA10NXWVVuOKrwOMC+t9ix7Sw=;
- b=ibyWeHqHfk8V9vFuSuXYwrQ8z6TXsj/Aj3Kc8LR1/YGeKXlnFdWhtz7QIJ8Y81WOU1t0k/HA3rV2yLnTWGR4O2R0Ak3McZhN5cZnvst4SXdFRjclb06UmiCuRytxrE6XbSWPQcLlqXZU4WNW4UkiJeszdlO1j/As58uDhdsFA3s=
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB3914.namprd11.prod.outlook.com (2603:10b6:5:197::24) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3455.27; Fri, 9 Oct 2020 19:51:03 +0000
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::bdb7:3e5f:8eec:d340]) by DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::bdb7:3e5f:8eec:d340%7]) with mapi id 15.20.3433.046; Fri, 9 Oct 2020
- 19:51:03 +0000
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow
- S0i3.2 subset entry
-Thread-Index: AQHWioFBA8g4O0gM20C0HwL2V7EoX6mP1edg
-Date: Fri, 9 Oct 2020 19:51:03 +0000
-Message-ID: <DM6PR11MB28907C88A5E245BE9B3543A9BC080@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200914102409.6464-1-vitaly.lifshits@intel.com>
-In-Reply-To: <20200914102409.6464-1-vitaly.lifshits@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [97.120.177.49]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 38900ced-0d98-43c3-272c-08d86c8ca7bd
-x-ms-traffictypediagnostic: DM6PR11MB3914:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB39140E8AD9273D42DBF03B9BBC080@DM6PR11MB3914.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2089;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: OegWZrC5qCbw0AGDgLX0+9q2S/0PBb6vppJadlb4yQ05wo3ID5HBmIH8BPGoRi4AakcnMaF/Kpqt7m2HDOamtjI3/ZfAT0Hy2m7RHw5qcefi0cB82rCoEojvqM9k5PvbvGuc+s6WWv2gBKWqUCKdOOWhhZpLfPDDmKiS6YHpcXLFSQ2oG5eT7uEaE8EnhCzL8S6Yi0N5xFOscDPMoMvC9ft6Jh1njXrqK7yxS7Hvfs4F9e40DViRmSNZVuAX5c4QyXxh+gIkfXUIyDEC3NFRqGSNjaazoTFJKgoUy1iPvhMv+v7gH06UMuvvX+xLV5MZYp9eca5LY003WwWptIVNZh8yoLcj2Ov9QF4s8vdtduw+1/Kc0HHS5IGQVcxM6p9y
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(39860400002)(346002)(376002)(366004)(396003)(136003)(8936002)(83380400001)(86362001)(9686003)(66556008)(71200400001)(76116006)(2906002)(64756008)(66946007)(66446008)(66476007)(478600001)(55016002)(33656002)(8676002)(5660300002)(7696005)(52536014)(316002)(110136005)(26005)(186003)(53546011)(6506007)(4744005)(32563001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: Ylu50rEfEsNF6J1eInQwDUp0eJdtPWEjMjYwf1XFdr0Sgq65wPohjouaEqwo/7+LlaoFqjBUmAbSn9+Cf/4RMpDEYwGPU1Dz+iGR7K10WRmM/anl7S2VffC3nIEOPCTqnJ8fCfkULPP7EjI7kE+UBqBDD9RvfbxgqAjEnuO7eMfdYBFrfvyrU0gyPnFoRVmHmSfuaDACprdXoqfnghK7IyCGvP4WkClDB0/azDAU+P3c9pOJDe465g9/8W/vDriSHDVoFGSuCW8wgfbNJngCF0TQCyEJd1LSWzQ9pY58gxutC3pwC1s+sCaiEED3+mfHsmzOZ4XcJ5kTrce6SSHggU+xa4KAScgVLsMW859jzzx3Gbazn74gYukJTCDWd+KCPsTRzZkZJRc8gkVvBJAhSJStZMmo7rO/xQBYTXwS1/BzIzdIVz6PZGvyzJlPd23nu9Hcib2PBkWd+EjmzaWbZJDvQiwpY0H8FXWaxUcVawv50M0ghY/WoOi8kJvk7KT4UHNlpBEiu0fvFt1Bfy5NLK2RJaSKb9cMZflVNjq7qXsntETsFA6+56qxSJAL2DUqnjmjXJWkvsuZO2LHZ8yJFmuI0Qmacfq/pSHtU9C9sTcTg7FGV5+QwM4xVMPPIFWj3ELUPOtlIO4Kw7d593IVsg==
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 8DF2686D7F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 21:34:37 +0000 (UTC)
+Received: from sol.localdomain (172-10-235-113.lightspeed.sntcca.sbcglobal.net
+ [172.10.235.113])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 44F7C21D6C;
+ Fri,  9 Oct 2020 21:34:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602279277;
+ bh=af4HYKUXjfzQEnpRkoqrLOtb/VuZgD2GaaA85DESAB8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mAKgXcy5CifgRYN2i2C2c94+Jg5oLVaoZk49jTIFxseeqdMtEOOqP5cL66hXhKNTI
+ eNSQDBkgqgAc1Wd7XIXje+joGiBVI4yatMIDb1+kpBlSLeGvwRiFFGcw+A+0IeryZM
+ wi38bfOOqpr1rBlahq6SJoGGKG4xvvKCLXOhXA9s=
+Date: Fri, 9 Oct 2020 14:34:34 -0700
+From: Eric Biggers <ebiggers@kernel.org>
+To: ira.weiny@intel.com
+Message-ID: <20201009213434.GA839@sol.localdomain>
+References: <20201009195033.3208459-1-ira.weiny@intel.com>
+ <20201009195033.3208459-23-ira.weiny@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 38900ced-0d98-43c3-272c-08d86c8ca7bd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2020 19:51:03.6408 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: EZvWubeB9FaWHPW7hN8a91toOaqjUoargR7BxitT91uyEJVQgzP4E3iK3fFdO6corgZrKu4pAh3/JzGUoqsD0w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3914
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow
- S0i3.2 subset entry
+Content-Disposition: inline
+In-Reply-To: <20201009195033.3208459-23-ira.weiny@intel.com>
+X-Mailman-Approved-At: Fri, 09 Oct 2020 21:36:05 +0000
+Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 22/58] fs/f2fs: Utilize
+ new kmap_thread()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,30 +68,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
+ linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
+ target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-kselftest@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
+ drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
+ linux-cifs@vger.kernel.org, linux-nilfs@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-nvdimm@lists.01.org,
+ linux-rdma@vger.kernel.org, x86@kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-afs@lists.infradead.org, cluster-devel@redhat.com,
+ Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ kexec@lists.infradead.org, xen-devel@lists.xenproject.org,
+ linux-ext4@vger.kernel.org, bpf@vger.kernel.org,
+ Dan Williams <dan.j.williams@intel.com>, Fenghua Yu <fenghua.yu@intel.com>,
+ intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
+ linux-um@lists.infradead.org, reiserfs-devel@vger.kernel.org,
+ linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
+ Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, ceph-devel@vger.kernel.org,
+ io-uring@vger.kernel.org, linux-cachefs@redhat.com, linux-nfs@vger.kernel.org,
+ linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, samba-technical@lists.samba.org,
+ linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ linux-erofs@lists.ozlabs.org, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Vitaly
-> Lifshits
-> Sent: Monday, September 14, 2020 3:24 AM
-> To: intel-wired-lan@osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow S0i3.2
-> subset entry
+On Fri, Oct 09, 2020 at 12:49:57PM -0700, ira.weiny@intel.com wrote:
+> From: Ira Weiny <ira.weiny@intel.com>
 > 
-> Changed a configuration in the flows to align with
-> architecture requirements to achieve S0i3.2 substate.
+> The kmap() calls in this FS are localized to a single thread.  To avoid
+> the over head of global PKRS updates use the new kmap_thread() call.
 > 
-> Also fixed a typo in the previous patch- e1000e: fix S0ix flows for
-> cable connected case (632fbd5eb5b).
-> 
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Cc: Jaegeuk Kim <jaegeuk@kernel.org>
+> Cc: Chao Yu <chao@kernel.org>
+> Signed-off-by: Ira Weiny <ira.weiny@intel.com>
 > ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
+>  fs/f2fs/f2fs.h | 8 ++++----
 >  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/fs/f2fs/f2fs.h b/fs/f2fs/f2fs.h
+> index d9e52a7f3702..ff72a45a577e 100644
+> --- a/fs/f2fs/f2fs.h
+> +++ b/fs/f2fs/f2fs.h
+> @@ -2410,12 +2410,12 @@ static inline struct page *f2fs_pagecache_get_page(
+>  
+>  static inline void f2fs_copy_page(struct page *src, struct page *dst)
+>  {
+> -	char *src_kaddr = kmap(src);
+> -	char *dst_kaddr = kmap(dst);
+> +	char *src_kaddr = kmap_thread(src);
+> +	char *dst_kaddr = kmap_thread(dst);
+>  
+>  	memcpy(dst_kaddr, src_kaddr, PAGE_SIZE);
+> -	kunmap(dst);
+> -	kunmap(src);
+> +	kunmap_thread(dst);
+> +	kunmap_thread(src);
+>  }
 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+Wouldn't it make more sense to switch cases like this to kmap_atomic()?
+The pages are only mapped to do a memcpy(), then they're immediately unmapped.
+
+- Eric
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
