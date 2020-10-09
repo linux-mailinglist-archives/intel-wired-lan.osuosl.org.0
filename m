@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D77372896E8
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:01:55 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E476F28971A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:02:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 9820D877EB;
-	Fri,  9 Oct 2020 20:01:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 26E3B2E2E1;
+	Fri,  9 Oct 2020 20:02:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HvqsP0XbAJlb; Fri,  9 Oct 2020 20:01:54 +0000 (UTC)
+	with ESMTP id 96DFAelprMoF; Fri,  9 Oct 2020 20:02:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 11EF9877ED;
-	Fri,  9 Oct 2020 20:01:54 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 52A162E303;
+	Fri,  9 Oct 2020 20:01:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0EB681BF2F3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D6EA61BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id E8EDB2E2FE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:46 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id C95EE2E2FE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CNqcvlPKXJL7 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Oct 2020 19:54:38 +0000 (UTC)
+ with ESMTP id 6bCtXk8mhwLW for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Oct 2020 19:54:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by silver.osuosl.org (Postfix) with ESMTPS id 87AB02E30F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:35 +0000 (UTC)
-IronPort-SDR: FLN0IrmLXdPw8qvdwU0M2ptxW2SRnC+XnLxDSchs0Fiyj41QRFSXuPwNOv5kNBKTUdJs4dRbBa
- Am637qkFSDvQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="164744087"
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="164744087"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by silver.osuosl.org (Postfix) with ESMTPS id CC4952E318
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:38 +0000 (UTC)
+IronPort-SDR: UdDaMfL+FTHkd9SpdEGK/IC3pG/3ayWSB5/dYr0IfkOWYwf841wQeZy1cK1LF+8dDh4AjZKzRs
+ ZyL8U2Lsl29w==
+X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="165643331"
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="165643331"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:53:35 -0700
-IronPort-SDR: 1BDjhBWRiZHjmax0H5jHPL9Ee2R7VPzFxt4XNyUZ5d5LafdvLgy40B0wtQFVU3AX2TCQgDyRso
- HhmDRI33qIDA==
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="345148602"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:53:38 -0700
+IronPort-SDR: 77OyjRxsHRqLdlwGyIEmSTWShPVNVQULX7LnGcMeG3NkwcCC4UbesWRkZ9bTTqcjV6t6jmiGf4
+ lDgqS7BTpvKw==
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="389237394"
 Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:53:34 -0700
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:53:37 -0700
 From: ira.weiny@intel.com
 To: Andrew Morton <akpm@linux-foundation.org>,
  Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>,
  Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
  Peter Zijlstra <peterz@infradead.org>
-Date: Fri,  9 Oct 2020 12:50:22 -0700
-Message-Id: <20201009195033.3208459-48-ira.weiny@intel.com>
+Date: Fri,  9 Oct 2020 12:50:23 -0700
+Message-Id: <20201009195033.3208459-49-ira.weiny@intel.com>
 X-Mailer: git-send-email 2.28.0.rc0.12.gb6a658bd00c9
 In-Reply-To: <20201009195033.3208459-1-ira.weiny@intel.com>
 References: <20201009195033.3208459-1-ira.weiny@intel.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Fri, 09 Oct 2020 20:01:20 +0000
-Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 47/58] drivers/mtd: Utilize
+Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 48/58] drivers/md: Utilize
  new kmap_thread()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -72,25 +72,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org,
- Vignesh Raghavendra <vigneshr@ti.com>, kvm@vger.kernel.org,
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
  linux-doc@vger.kernel.org, linux-mmc@vger.kernel.org,
  Dave Hansen <dave.hansen@linux.intel.com>, dri-devel@lists.freedesktop.org,
  linux-mm@kvack.org, target-devel@vger.kernel.org,
  linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
- Miquel Raynal <miquel.raynal@bootlin.com>, samba-technical@lists.samba.org,
- Ira Weiny <ira.weiny@intel.com>, ceph-devel@vger.kernel.org,
- drbd-dev@lists.linbit.com, devel@driverdev.osuosl.org,
- linux-cifs@vger.kernel.org, linux-nilfs@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-nvdimm@lists.01.org,
- linux-rdma@vger.kernel.org, Richard Weinberger <richard@nod.at>,
- x86@kernel.org, amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
+ samba-technical@lists.samba.org, Ira Weiny <ira.weiny@intel.com>,
+ ceph-devel@vger.kernel.org, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
  cluster-devel@redhat.com, linux-cachefs@redhat.com,
  intel-wired-lan@lists.osuosl.org, xen-devel@lists.xenproject.org,
- linux-ext4@vger.kernel.org, Fenghua Yu <fenghua.yu@intel.com>,
- linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
- ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
- reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-ext4@vger.kernel.org, Kent Overstreet <kent.overstreet@gmail.com>,
+ Fenghua Yu <fenghua.yu@intel.com>, linux-um@lists.infradead.org,
+ intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
+ linux-erofs@lists.ozlabs.org, reiserfs-devel@vger.kernel.org,
+ Coly Li <colyli@suse.de>, linux-block@vger.kernel.org,
  linux-bcache@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
  io-uring@vger.kernel.org, linux-nfs@vger.kernel.org,
  linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
@@ -108,54 +107,30 @@ From: Ira Weiny <ira.weiny@intel.com>
 These kmap() calls are localized to a single thread.  To avoid the over
 head of global PKRS updates use the new kmap_thread() call.
 
-Cc: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Richard Weinberger <richard@nod.at>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>
+Cc: Coly Li <colyli@suse.de> (maintainer:BCACHE (BLOCK LAYER CACHE))
+Cc: Kent Overstreet <kent.overstreet@gmail.com> (maintainer:BCACHE (BLOCK LAYER CACHE))
 Signed-off-by: Ira Weiny <ira.weiny@intel.com>
 ---
- drivers/mtd/mtd_blkdevs.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/md/bcache/request.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mtd/mtd_blkdevs.c b/drivers/mtd/mtd_blkdevs.c
-index 0c05f77f9b21..4b18998273fa 100644
---- a/drivers/mtd/mtd_blkdevs.c
-+++ b/drivers/mtd/mtd_blkdevs.c
-@@ -88,14 +88,14 @@ static blk_status_t do_blktrans_request(struct mtd_blktrans_ops *tr,
- 			return BLK_STS_IOERR;
- 		return BLK_STS_OK;
- 	case REQ_OP_READ:
--		buf = kmap(bio_page(req->bio)) + bio_offset(req->bio);
-+		buf = kmap_thread(bio_page(req->bio)) + bio_offset(req->bio);
- 		for (; nsect > 0; nsect--, block++, buf += tr->blksize) {
- 			if (tr->readsect(dev, block, buf)) {
--				kunmap(bio_page(req->bio));
-+				kunmap_thread(bio_page(req->bio));
- 				return BLK_STS_IOERR;
- 			}
- 		}
--		kunmap(bio_page(req->bio));
-+		kunmap_thread(bio_page(req->bio));
- 		rq_flush_dcache_pages(req);
- 		return BLK_STS_OK;
- 	case REQ_OP_WRITE:
-@@ -103,14 +103,14 @@ static blk_status_t do_blktrans_request(struct mtd_blktrans_ops *tr,
- 			return BLK_STS_IOERR;
+diff --git a/drivers/md/bcache/request.c b/drivers/md/bcache/request.c
+index c7cadaafa947..a4571f6d09dd 100644
+--- a/drivers/md/bcache/request.c
++++ b/drivers/md/bcache/request.c
+@@ -44,10 +44,10 @@ static void bio_csum(struct bio *bio, struct bkey *k)
+ 	uint64_t csum = 0;
  
- 		rq_flush_dcache_pages(req);
--		buf = kmap(bio_page(req->bio)) + bio_offset(req->bio);
-+		buf = kmap_thread(bio_page(req->bio)) + bio_offset(req->bio);
- 		for (; nsect > 0; nsect--, block++, buf += tr->blksize) {
- 			if (tr->writesect(dev, block, buf)) {
--				kunmap(bio_page(req->bio));
-+				kunmap_thread(bio_page(req->bio));
- 				return BLK_STS_IOERR;
- 			}
- 		}
--		kunmap(bio_page(req->bio));
-+		kunmap_thread(bio_page(req->bio));
- 		return BLK_STS_OK;
- 	default:
- 		return BLK_STS_IOERR;
+ 	bio_for_each_segment(bv, bio, iter) {
+-		void *d = kmap(bv.bv_page) + bv.bv_offset;
++		void *d = kmap_thread(bv.bv_page) + bv.bv_offset;
+ 
+ 		csum = bch_crc64_update(csum, d, bv.bv_len);
+-		kunmap(bv.bv_page);
++		kunmap_thread(bv.bv_page);
+ 	}
+ 
+ 	k->ptr[KEY_PTRS(k)] = csum & (~0ULL >> 1);
 -- 
 2.28.0.rc0.12.gb6a658bd00c9
 
