@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6BDA2896E1
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:01:51 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9C912896D4
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:01:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 69F38878D6;
-	Fri,  9 Oct 2020 20:01:50 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 85AEE87731;
+	Fri,  9 Oct 2020 20:01:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6rUytQPQRFpW; Fri,  9 Oct 2020 20:01:47 +0000 (UTC)
+	with ESMTP id 8ZJUubIpKmW6; Fri,  9 Oct 2020 20:01:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EBA59878CF;
+	by hemlock.osuosl.org (Postfix) with ESMTP id 9497D8773E;
 	Fri,  9 Oct 2020 20:01:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 34B501BF2F3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D0F4E1BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 284D0877EE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id CC5D3877E2
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MzPKOLSvsEFO for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Oct 2020 19:53:14 +0000 (UTC)
+ with ESMTP id khnoDEmw0vbI for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Oct 2020 19:53:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id DEF4D877E9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:13 +0000 (UTC)
-IronPort-SDR: eK+/Ed+TURnc1AMvq9dy6kUXa1sXL3ooMH53m6x2cayT6BbtsUNDfF6v5lupjPh5OYno2eoeXx
- Q1qJAqphAAug==
-X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="153363748"
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="153363748"
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 15C5D877DE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:53:10 +0000 (UTC)
+IronPort-SDR: 64+DiWGKj2k1hTTPRDtH7EGTJYnMRIQZHWGtGlj0/wXpsnOmwaj12jpadow+t+g6b75hZn43GJ
+ OixMmOG3TE4g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="152451091"
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="152451091"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:53:06 -0700
-IronPort-SDR: +9tLMQNrOc9ZmtQe+NKSSXZyhjRooFfxfongQijBj4blQjg4c6+fJ/ZHkl3bUeAx7HZ0qDTuwd
- uW08H1SVCXkg==
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="343972363"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:53:09 -0700
+IronPort-SDR: FciD93oXa6TN5PQF74JzeuCyRYkWBlT2lC/7ncntBELjkiuqMo1u2JSAhMViBtfJLu9YdFEYCB
+ Wo/5PMHidIaw==
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="317147397"
 Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:53:05 -0700
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:53:08 -0700
 From: ira.weiny@intel.com
 To: Andrew Morton <akpm@linux-foundation.org>,
  Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>,
  Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
  Peter Zijlstra <peterz@infradead.org>
-Date: Fri,  9 Oct 2020 12:50:13 -0700
-Message-Id: <20201009195033.3208459-39-ira.weiny@intel.com>
+Date: Fri,  9 Oct 2020 12:50:14 -0700
+Message-Id: <20201009195033.3208459-40-ira.weiny@intel.com>
 X-Mailer: git-send-email 2.28.0.rc0.12.gb6a658bd00c9
 In-Reply-To: <20201009195033.3208459-1-ira.weiny@intel.com>
 References: <20201009195033.3208459-1-ira.weiny@intel.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Fri, 09 Oct 2020 20:01:20 +0000
-Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 38/58] fs/isofs: Utilize new
+Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 39/58] fs/jffs2: Utilize new
  kmap_thread()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -108,31 +108,29 @@ global PKRS updates use the new kmap_thread() call.
 
 Signed-off-by: Ira Weiny <ira.weiny@intel.com>
 ---
- fs/isofs/compress.c | 4 ++--
+ fs/jffs2/file.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/fs/isofs/compress.c b/fs/isofs/compress.c
-index bc12ac7e2312..ddd3fd99d2e1 100644
---- a/fs/isofs/compress.c
-+++ b/fs/isofs/compress.c
-@@ -344,7 +344,7 @@ static int zisofs_readpage(struct file *file, struct page *page)
- 			pages[i] = grab_cache_page_nowait(mapping, index);
- 		if (pages[i]) {
- 			ClearPageError(pages[i]);
--			kmap(pages[i]);
-+			kmap_thread(pages[i]);
- 		}
- 	}
+diff --git a/fs/jffs2/file.c b/fs/jffs2/file.c
+index 3e6d54f9b011..14dd2b18cc16 100644
+--- a/fs/jffs2/file.c
++++ b/fs/jffs2/file.c
+@@ -287,13 +287,13 @@ static int jffs2_write_end(struct file *filp, struct address_space *mapping,
  
-@@ -356,7 +356,7 @@ static int zisofs_readpage(struct file *file, struct page *page)
- 			flush_dcache_page(pages[i]);
- 			if (i == full_page && err)
- 				SetPageError(pages[i]);
--			kunmap(pages[i]);
-+			kunmap_thread(pages[i]);
- 			unlock_page(pages[i]);
- 			if (i != full_page)
- 				put_page(pages[i]);
+ 	/* In 2.4, it was already kmapped by generic_file_write(). Doesn't
+ 	   hurt to do it again. The alternative is ifdefs, which are ugly. */
+-	kmap(pg);
++	kmap_thread(pg);
+ 
+ 	ret = jffs2_write_inode_range(c, f, ri, page_address(pg) + aligned_start,
+ 				      (pg->index << PAGE_SHIFT) + aligned_start,
+ 				      end - aligned_start, &writtenlen);
+ 
+-	kunmap(pg);
++	kunmap_thread(pg);
+ 
+ 	if (ret) {
+ 		/* There was an error writing. */
 -- 
 2.28.0.rc0.12.gb6a658bd00c9
 
