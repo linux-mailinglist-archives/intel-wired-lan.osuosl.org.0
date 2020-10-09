@@ -1,65 +1,65 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FF4C2896FF
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:02:06 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EBFA2896E6
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:01:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 0F094878C6;
-	Fri,  9 Oct 2020 20:02:05 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C8B8C871FC;
+	Fri,  9 Oct 2020 20:01:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lu8CjZLjAkQq; Fri,  9 Oct 2020 20:02:01 +0000 (UTC)
+	with ESMTP id 6N4Dk3oDxrRn; Fri,  9 Oct 2020 20:01:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 73EF7878C3;
-	Fri,  9 Oct 2020 20:01:52 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1552D871EC;
+	Fri,  9 Oct 2020 20:01:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 154A71BF2F3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:09 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B2C171BF9B9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 10975877EE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:09 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id AA769878B6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 90BFjW24ySkP for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Oct 2020 19:54:08 +0000 (UTC)
+ with ESMTP id b1k1-s-S23Ov for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Oct 2020 19:54:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 7A56B877E5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:07 +0000 (UTC)
-IronPort-SDR: /W6nKdg5ZpQL4s+XVyvxJTfAdX6l7x0uqxc1YS0ZiMHnrtTfnDT+n63E81zYwFsGqBk/UrW0P1
- R5Uz5xpuSG8w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="145397719"
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="145397719"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 21E66878A8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:54:11 +0000 (UTC)
+IronPort-SDR: A013nrkjNZWwH1AKcgsicT3wO/B54SzFtna2e+A20f0/NBy8gncs1zm+xE8Hq0bt2Q1yhGYJEy
+ O6TziuPvjUAg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="165643451"
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="165643451"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:54:07 -0700
-IronPort-SDR: src9VKOvZKZdzmhAmOplZF/CbXKWViy2IZEce2k3Dk75HVdMa01qWYEbu8ywq24hGpakhLlrfI
- iYxmJaXcxtuw==
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="519847335"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:54:10 -0700
+IronPort-SDR: LoljxrxdEbdUiebRGt6guGtjo6SPfpWGHMJuLgTgYB7BeDU8CJtiGau7DzbQyZ+Y5gpHVnCtT5
+ urTwCEpflSRg==
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="343972696"
 Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 12:54:06 -0700
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:54:09 -0700
 From: ira.weiny@intel.com
 To: Andrew Morton <akpm@linux-foundation.org>,
  Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>,
  Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
  Peter Zijlstra <peterz@infradead.org>
-Date: Fri,  9 Oct 2020 12:50:32 -0700
-Message-Id: <20201009195033.3208459-58-ira.weiny@intel.com>
+Date: Fri,  9 Oct 2020 12:50:33 -0700
+Message-Id: <20201009195033.3208459-59-ira.weiny@intel.com>
 X-Mailer: git-send-email 2.28.0.rc0.12.gb6a658bd00c9
 In-Reply-To: <20201009195033.3208459-1-ira.weiny@intel.com>
 References: <20201009195033.3208459-1-ira.weiny@intel.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Fri, 09 Oct 2020 20:01:20 +0000
-Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 57/58] nvdimm/pmem: Stray
- access protection for pmem->virt_addr
+Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 58/58] [dax|pmem]: Enable
+ stray access protection
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,45 +103,52 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Ira Weiny <ira.weiny@intel.com>
 
-The pmem driver uses a cached virtual address to access its memory
-directly.  Because the nvdimm driver is well aware of the special
-protections it has mapped memory with, we call dev_access_[en|dis]able()
-around the direct pmem->virt_addr (pmem_addr) usage instead of the
-unnecessary overhead of trying to get a page to kmap.
+Protecting against stray writes is particularly important for PMEM
+because, unlike writes to anonymous memory, writes to PMEM persists
+across a reboot.  Thus data corruption could result in permanent loss of
+data.
+
+While stray writes are more serious than reads, protection is also
+enabled for reads.  This helps to detect bugs in code which would
+incorrectly access device memory and prevents a more serious machine
+checks should those bug reads from a poison page.
+
+Enable stray access protection by setting the flag in pgmap which
+requests it.  There is no option presented to the user.  If Zone Device
+Access Protection not be supported this flag will have no affect.
 
 Signed-off-by: Ira Weiny <ira.weiny@intel.com>
 ---
- drivers/nvdimm/pmem.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/dax/device.c  | 2 ++
+ drivers/nvdimm/pmem.c | 2 ++
+ 2 files changed, 4 insertions(+)
 
+diff --git a/drivers/dax/device.c b/drivers/dax/device.c
+index 1e89513f3c59..e6fb35b4f0fb 100644
+--- a/drivers/dax/device.c
++++ b/drivers/dax/device.c
+@@ -430,6 +430,8 @@ int dev_dax_probe(struct device *dev)
+ 	}
+ 
+ 	dev_dax->pgmap.type = MEMORY_DEVICE_GENERIC;
++	dev_dax->pgmap.flags |= PGMAP_PROT_ENABLED;
++
+ 	addr = devm_memremap_pages(dev, &dev_dax->pgmap);
+ 	if (IS_ERR(addr))
+ 		return PTR_ERR(addr);
 diff --git a/drivers/nvdimm/pmem.c b/drivers/nvdimm/pmem.c
-index fab29b514372..e4dc1ae990fc 100644
+index e4dc1ae990fc..9fcd8338e23f 100644
 --- a/drivers/nvdimm/pmem.c
 +++ b/drivers/nvdimm/pmem.c
-@@ -148,7 +148,9 @@ static blk_status_t pmem_do_read(struct pmem_device *pmem,
- 	if (unlikely(is_bad_pmem(&pmem->bb, sector, len)))
- 		return BLK_STS_IOERR;
- 
-+	dev_access_enable(false);
- 	rc = read_pmem(page, page_off, pmem_addr, len);
-+	dev_access_disable(false);
- 	flush_dcache_page(page);
- 	return rc;
- }
-@@ -180,11 +182,13 @@ static blk_status_t pmem_do_write(struct pmem_device *pmem,
- 	 * after clear poison.
- 	 */
- 	flush_dcache_page(page);
-+	dev_access_enable(false);
- 	write_pmem(pmem_addr, page, page_off, len);
- 	if (unlikely(bad_pmem)) {
- 		rc = pmem_clear_poison(pmem, pmem_off, len);
- 		write_pmem(pmem_addr, page, page_off, len);
+@@ -426,6 +426,8 @@ static int pmem_attach_disk(struct device *dev,
+ 		return -EBUSY;
  	}
-+	dev_access_disable(false);
  
- 	return rc;
- }
++	pmem->pgmap.flags |= PGMAP_PROT_ENABLED;
++
+ 	q = blk_alloc_queue(dev_to_node(dev));
+ 	if (!q)
+ 		return -ENOMEM;
 -- 
 2.28.0.rc0.12.gb6a658bd00c9
 
