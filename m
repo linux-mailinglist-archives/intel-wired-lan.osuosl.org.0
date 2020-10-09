@@ -1,135 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A91BF2890C3
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 20:28:24 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E90C28969A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Oct 2020 22:01:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 47A2687735;
-	Fri,  9 Oct 2020 18:28:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 12DEA871EC;
+	Fri,  9 Oct 2020 20:01:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LR0gRdktgW+7; Fri,  9 Oct 2020 18:28:23 +0000 (UTC)
+	with ESMTP id 4uUt4fwy-DSM; Fri,  9 Oct 2020 20:01:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 56BF78770B;
-	Fri,  9 Oct 2020 18:28:22 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3A533871CF;
+	Fri,  9 Oct 2020 20:01:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B1A3E1BF27C
- for <intel-wired-lan@osuosl.org>; Fri,  9 Oct 2020 18:28:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0AE681BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:50:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id A1F302044D
- for <intel-wired-lan@osuosl.org>; Fri,  9 Oct 2020 18:28:20 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id E8DE720449
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:50:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3uiuZq8e0y5P for <intel-wired-lan@osuosl.org>;
- Fri,  9 Oct 2020 18:28:18 +0000 (UTC)
+ with ESMTP id ilqXuMF5LCoO for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Oct 2020 19:50:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by silver.osuosl.org (Postfix) with ESMTPS id C2BFC2E2A9
- for <intel-wired-lan@osuosl.org>; Fri,  9 Oct 2020 18:28:08 +0000 (UTC)
-IronPort-SDR: iJ5zsViPits3emYulXHMZK6s8N2Ky9vjWcEAySV4YohH8qlzaVVkkXzLpa2VLJA6wgSZims7je
- ozAFlcR1boQw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="165584441"
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="165584441"
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by silver.osuosl.org (Postfix) with ESMTPS id 9581720349
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Oct 2020 19:50:42 +0000 (UTC)
+IronPort-SDR: vGjAjn30dcA/+Ow/pCZOcIpLR119onlaI/Q/jvEqDgUtYZSqBB/Kql2q4A1rWgxIIn36f2kQwg
+ 9urcXX0Gidjw==
+X-IronPort-AV: E=McAfee;i="6000,8403,9769"; a="227178638"
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="227178638"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2020 11:28:06 -0700
-IronPort-SDR: PkSlLeGkMU9A+yc9dAY4MG4QcDv7lsQqJWZ+uWbTTNTTPV0y0bEEkeD7UI8c03WK3blD0669mz
- WZYR9VzEeBAA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="518778636"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga006.fm.intel.com with ESMTP; 09 Oct 2020 11:28:06 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 9 Oct 2020 11:28:06 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Fri, 9 Oct 2020 11:28:06 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.171)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Fri, 9 Oct 2020 11:28:03 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=f3IAIQu5V7fyMC6gQSIwFLCzcbYHJmYKOyaZDkiLHrEfGXVBE1lZL4Px54vZG8PjKZSpS1e0CqexjP0R963c1AHhTWMmvL8nZKOTFEpCxWJLu4oQpcpQPz5sVLjv4RBoAHqnDepCshlpXInYoHpK65Nti6sWxlnsq54nB4VBj6J8LaCpZCUB6liRkigXg8KhUIanpVwFoSwcBU5tkW7yU2eu/q1qjYFjFKUE6S5n9XvFfJuXcR0eQA8L8qfpX2rddBMvSammT8bZ1glSai5Pttid2qiNivyZL2xBorx/X+bAew7u32wWMS9EgWuY3hR9Z1o31UtHUbhq/WyTEQnx1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MDgJ/qIKFkoWDt8MK5Cmjj3/5txC0MYycGSvqCdPWZo=;
- b=fdtZh1sNyzpk76NPzU87ia5ADBGtzCtx7BhUQI3M3iZO384DuEjqGeI/HAPAnn+zaVlVcC4yrOWJAH5hlJzOwJSGS7mkeQkpNNJt1qjLt9aXHPi+2kIP64Rgasbf2Pnsa3rWgNDiCMjq1CwENHkJnBC4ZqezLdk/utHJwCJp5tcCEFpn1ypX0CqDu6fYdM/JSaS1BZDhY+TsPymMTMLQ8V1/R9pwP4jJf3FH++f2rivlHJ7Z6D+wYFrG69oAZATMQLXRHy+/qJWCxOelNnxmrr32aWBykIlSnOPFLFuhwQmnY4rw3NE4Izv301k3v/J6RnzSFYVivWAVi0aJtVfUDQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MDgJ/qIKFkoWDt8MK5Cmjj3/5txC0MYycGSvqCdPWZo=;
- b=SyWYUHvmD7whT29GJrZZTL9Xu24qobqUwFt7VbQ7G8tyuWOshkJkFJbRxipkAV4JQBwVVmuypwu7+gR6vK+XPIoUvawTiEm53vuCVxZg7V/GTZYSKEkYHDar/5GWoqrHsKtE92QK7cXPDgzwVo+JT9wo4kBc1Xs5reWHCCEAsRI=
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB3818.namprd11.prod.outlook.com (2603:10b6:5:145::22) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3455.22; Fri, 9 Oct 2020 18:27:58 +0000
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::bdb7:3e5f:8eec:d340]) by DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::bdb7:3e5f:8eec:d340%7]) with mapi id 15.20.3433.046; Fri, 9 Oct 2020
- 18:27:58 +0000
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow
- S0i3.2 subset entry
-Thread-Index: AQHWioFBA8g4O0gM20C0HwL2V7EoX6mPvqgQ
-Date: Fri, 9 Oct 2020 18:27:58 +0000
-Message-ID: <DM6PR11MB2890A96E95B134233567AB39BC080@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200914102409.6464-1-vitaly.lifshits@intel.com>
-In-Reply-To: <20200914102409.6464-1-vitaly.lifshits@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: intel.com; dkim=none (message not signed)
- header.d=none;intel.com; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [97.120.177.49]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 725f2004-52b7-4d5a-9812-08d86c810c4d
-x-ms-traffictypediagnostic: DM6PR11MB3818:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB3818EEA5DD4063AAFD43D9C2BC080@DM6PR11MB3818.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:2089;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iwJjVsuDb+tIQkcI6fH1CF9fGsgUyMzil4JOFFhPVskfSYv8c2pG8xYy92UpwhxqUegTZEd+b1KWZ1JaA9b7x5gOLnzaPA67gpWCx83otcqQ1peLimFhRBf0jpq2C6/04jr3QEUzVBkBvBX3IWAAtfXzX6HmQYpqAQCOhrTL6X9HvEAX5x6jteKW8/lpzYFKDDkXhPviEQ1U07KVJowWUiz4cwpOwGgqaQz/ncKboqxmP2cM9EeTviMyfVXzIfHlDuLSwxNH3a1zSqqaa8DZchCLaj4wcrsjJmhPXrd2Ayst8KAYdLSrxM+p/iFfD9SL7A3xnl1xQlwvq10SMBn2jzvR3psKqBNI9txiPM67PSnadU2AFLmwHF70xtbc6Yui
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(376002)(396003)(136003)(39860400002)(346002)(8936002)(8676002)(64756008)(66556008)(66476007)(66946007)(66446008)(86362001)(2906002)(5660300002)(110136005)(55016002)(316002)(478600001)(52536014)(33656002)(9686003)(26005)(186003)(4744005)(6506007)(83380400001)(71200400001)(53546011)(76116006)(7696005)(32563001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: EuDZaKChtXjVN5P2eDJWoythYS8lVVEa+rq3OFtQMDFhCZJ+q1x8ddkxfMj1XazQydSDLJtVQLLvvptU0sXk8Ry5sm5n3qKtycPBBBWwbhA3j6o8pcSy7nBbQ2hoeth03bWl6xcfAD/DcSu/LzO9Vm4P3IM1KqNCSZzsp4E67OQx1ctbm0WzTQ8L2qv1IZSbkeidrCkVQTEsbAbRbfNwc/nUXmnwbn464HVBZEhnW+2/zD0hYww1Qvi3QK7QpgL8xRcZZ+eqBiPKx2GocUBzIX9JPWqq3rvev4zu3iCqTNByfae/m4zDiU3qfDKZ3/i5hP7UPtJX9KU/K9Rhnsrazbpb4TwqvWxiePDXoiQ5iEWqBBk74wzsi8Tp/xX0Au8r0lGE/JOq3SeA4ubJt1f/q4jiHXwcT+345d2AXr1xerYdkoqfYcjkj34IpUlEn2h0P3znFP2tSH87SHSYKLBqeEAZTL7Kg6e8AmG5cJUf5AeyLnmmRGhWch4bMlV8GKdBCMvdIsYSQLv/xatxBJV8YqhZTiv9HnQUoJ9nQbQViZ8aW0D1qPPqO2bqCY6fMVVpf+FcwtCpjJi4/+SnGQFc8AArUq34/JmWkObBKryZP0rV/jJzCOhI/rdCI/aXWxFuRheXXiGMU5coGio2sHuZmQ==
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:50:41 -0700
+IronPort-SDR: wgvSBhlinBwJf2eRaqYm1d4mOPDeheaaBRmvXZpaWhx0BsPjq5MOqCRmfglsuVIrge+HvLIvQ5
+ IT741lyNdN2Q==
+X-IronPort-AV: E=Sophos;i="5.77,355,1596524400"; d="scan'208";a="419536654"
+Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
+ by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Oct 2020 12:50:41 -0700
+From: ira.weiny@intel.com
+To: Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Ingo Molnar <mingo@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
+ Peter Zijlstra <peterz@infradead.org>
+Date: Fri,  9 Oct 2020 12:49:35 -0700
+Message-Id: <20201009195033.3208459-1-ira.weiny@intel.com>
+X-Mailer: git-send-email 2.28.0.rc0.12.gb6a658bd00c9
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 725f2004-52b7-4d5a-9812-08d86c810c4d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2020 18:27:58.4318 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yPM939N7OZLpjKz2pIOfTkEiZlRfIBoDhdvATVGy31OWuiCKEysyHa492Vuss4cmEHcQyNUrqZ/p7YXee9agpQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3818
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow
- S0i3.2 subset entry
+X-Mailman-Approved-At: Fri, 09 Oct 2020 20:01:19 +0000
+Subject: [Intel-wired-lan] [PATCH RFC PKS/PMEM 00/58] PMEM: Introduce stray
+ write protection for PMEM
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,30 +70,334 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-mmc@vger.kernel.org,
+ Dave Hansen <dave.hansen@linux.intel.com>, dri-devel@lists.freedesktop.org,
+ linux-mm@kvack.org, target-devel@vger.kernel.org,
+ linux-mtd@lists.infradead.org, linux-kselftest@vger.kernel.org,
+ samba-technical@lists.samba.org, Ira Weiny <ira.weiny@intel.com>,
+ ceph-devel@vger.kernel.org, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
+ cluster-devel@redhat.com, linux-cachefs@redhat.com,
+ intel-wired-lan@lists.osuosl.org, xen-devel@lists.xenproject.org,
+ linux-ext4@vger.kernel.org, Fenghua Yu <fenghua.yu@intel.com>,
+ linux-um@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ ecryptfs@vger.kernel.org, linux-erofs@lists.ozlabs.org,
+ reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-bcache@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
+ io-uring@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
+ kexec@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-f2fs-devel@lists.sourceforge.net, linux-fsdevel@vger.kernel.org,
+ bpf@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Vitaly
-> Lifshits
-> Sent: Monday, September 14, 2020 3:24 AM
-> To: intel-wired-lan@osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v1 1/1] e1000e: fix S0ix flow to allow S0i3.2
-> subset entry
-> 
-> Changed a configuration in the flows to align with
-> architecture requirements to achieve S0i3.2 substate.
-> 
-> Also fixed a typo in the previous patch- e1000e: fix S0ix flows for
-> cable connected case (632fbd5eb5b).
-> 
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+From: Ira Weiny <ira.weiny@intel.com>
+
+Should a stray write in the kernel occur persistent memory is affected more
+than regular memory.  A write to the wrong area of memory could result in
+latent data corruption which will will persist after a reboot.  PKS provides a
+nice way to restrict access to persistent memory kernel mappings, while
+providing fast access when needed.
+
+Since the last RFC[1] this patch set has grown quite a bit.  It now depends on
+the core patches submitted separately.
+
+	https://lore.kernel.org/lkml/20201009194258.3207172-1-ira.weiny@intel.com/
+
+And contained in the git tree here:
+
+	https://github.com/weiny2/linux-kernel/tree/pks-rfc-v3
+
+However, functionally there is only 1 major change from the last RFC.
+Specifically, kmap() is most often used within a single thread in a 'map/do
+something/unmap' pattern.  In fact this is the pattern used in ~90% of the
+callers of kmap().  This pattern works very well for the pmem use case and the
+testing which was done.  However, there were another ~20-30 kmap users which do
+not follow this pattern.  Some of them seem to expect the mapping to be
+'global' while others require a detailed audit to be sure.[2][3]
+
+While we don't anticipate global mappings to pmem there is a danger in
+changing the semantics of kmap().  Effectively, this would cause an unresolved
+page fault with little to no information about why.
+
+There were a number of options considered.
+
+1) Attempt to change all the thread local kmap() calls to kmap_atomic()
+2) Introduce a flags parameter to kmap() to indicate if the mapping should be
+   global or not
+3) Change ~20-30 call sites to 'kmap_global()' to indicate that they require a
+   global mapping of the pages
+4) Change ~209 call sites to 'kmap_thread()' to indicate that the mapping is to
+   be used within that thread of execution only
+
+Option 1 is simply not feasible kmap_atomic() is not the same semantic as
+kmap() within a single tread.  Option 2 would require all of the call sites of
+kmap() to change.  Option 3 seems like a good minimal change but there is a
+danger that new code may miss the semantic change of kmap() and not get the
+behavior intended for future users.  Therefore, option #4 was chosen.
+
+To handle the global PKRS state in the most efficient manner possible.  We
+lazily override the thread specific PKRS key value only when needed because we
+anticipate PKS to not be needed will not be needed most of the time.  And even
+when it is used 90% of the time it is a thread local call.
+
+
+[1] https://lore.kernel.org/lkml/20200717072056.73134-1-ira.weiny@intel.com/
+
+[2] The following list of callers continue calling kmap() (utilizing the global
+PKRS).  It would be nice if more of them could be converted to kmap_thread()
+
+	drivers/firewire/net.c:         ptr = kmap(dev->broadcast_rcv_buffer.pages[u]);
+	drivers/gpu/drm/i915/gem/i915_gem_pages.c:              return kmap(sg_page(sgt->sgl));
+	drivers/gpu/drm/ttm/ttm_bo_util.c:              map->virtual = kmap(map->page);
+	drivers/infiniband/hw/qib/qib_user_sdma.c:      mpage = kmap(page);
+	drivers/misc/vmw_vmci/vmci_host.c:      context->notify = kmap(context->notify_page) + (uva & (PAGE_SIZE - 1));
+	drivers/misc/xilinx_sdfec.c:            addr = kmap(pages[i]);
+	drivers/mmc/host/usdhi6rol0.c:  host->pg.mapped         = kmap(host->pg.page);
+	drivers/mmc/host/usdhi6rol0.c:  host->pg.mapped = kmap(host->pg.page);
+	drivers/mmc/host/usdhi6rol0.c:  host->pg.mapped = kmap(host->pg.page);
+	drivers/nvme/target/tcp.c:              iov->iov_base = kmap(sg_page(sg)) + sg->offset + sg_offset;
+	drivers/scsi/libiscsi_tcp.c:            segment->sg_mapped = kmap(sg_page(sg));
+	drivers/target/iscsi/iscsi_target.c:            iov[i].iov_base = kmap(sg_page(sg)) + sg->offset + page_off;
+	drivers/target/target_core_transport.c:         return kmap(sg_page(sg)) + sg->offset;
+	fs/btrfs/check-integrity.c:             block_ctx->datav[i] = kmap(block_ctx->pagev[i]);
+	fs/ceph/dir.c:          cache_ctl->dentries = kmap(cache_ctl->page);
+	fs/ceph/inode.c:                ctl->dentries = kmap(ctl->page);
+	fs/erofs/zpvec.h:               kmap_atomic(ctor->curr) : kmap(ctor->curr);
+	lib/scatterlist.c:              miter->addr = kmap(miter->page) + miter->__offset;
+	net/ceph/pagelist.c:    pl->mapped_tail = kmap(page);
+	net/ceph/pagelist.c:            pl->mapped_tail = kmap(page);
+	virt/kvm/kvm_main.c:                    hva = kmap(page);
+
+[3] The following appear to follow the same pattern as ext2 which was converted
+after some code audit.  So I _think_ they too could be converted to
+k[un]map_thread().
+
+	fs/freevxfs/vxfs_subr.c|75| kmap(pp);
+	fs/jfs/jfs_metapage.c|102| kmap(page);
+	fs/jfs/jfs_metapage.c|156| kmap(page);
+	fs/minix/dir.c|72| kmap(page);
+	fs/nilfs2/dir.c|195| kmap(page);
+	fs/nilfs2/ifile.h|24| void *kaddr = kmap(ibh->b_page);
+	fs/ntfs/aops.h|78| kmap(page);
+	fs/ntfs/compress.c|574| kmap(page);
+	fs/qnx6/dir.c|32| kmap(page);
+	fs/qnx6/dir.c|58| kmap(*p = page);
+	fs/qnx6/inode.c|190| kmap(page);
+	fs/qnx6/inode.c|557| kmap(page);
+	fs/reiserfs/inode.c|2397| kmap(bh_result->b_page);
+	fs/reiserfs/xattr.c|444| kmap(page);
+	fs/sysv/dir.c|60| kmap(page);
+	fs/sysv/dir.c|262| kmap(page);
+	fs/ufs/dir.c|194| kmap(page);
+	fs/ufs/dir.c|562| kmap(page);
+
+
+Ira Weiny (58):
+  x86/pks: Add a global pkrs option
+  x86/pks/test: Add testing for global option
+  memremap: Add zone device access protection
+  kmap: Add stray access protection for device pages
+  kmap: Introduce k[un]map_thread
+  kmap: Introduce k[un]map_thread debugging
+  drivers/drbd: Utilize new kmap_thread()
+  drivers/firmware_loader: Utilize new kmap_thread()
+  drivers/gpu: Utilize new kmap_thread()
+  drivers/rdma: Utilize new kmap_thread()
+  drivers/net: Utilize new kmap_thread()
+  fs/afs: Utilize new kmap_thread()
+  fs/btrfs: Utilize new kmap_thread()
+  fs/cifs: Utilize new kmap_thread()
+  fs/ecryptfs: Utilize new kmap_thread()
+  fs/gfs2: Utilize new kmap_thread()
+  fs/nilfs2: Utilize new kmap_thread()
+  fs/hfs: Utilize new kmap_thread()
+  fs/hfsplus: Utilize new kmap_thread()
+  fs/jffs2: Utilize new kmap_thread()
+  fs/nfs: Utilize new kmap_thread()
+  fs/f2fs: Utilize new kmap_thread()
+  fs/fuse: Utilize new kmap_thread()
+  fs/freevxfs: Utilize new kmap_thread()
+  fs/reiserfs: Utilize new kmap_thread()
+  fs/zonefs: Utilize new kmap_thread()
+  fs/ubifs: Utilize new kmap_thread()
+  fs/cachefiles: Utilize new kmap_thread()
+  fs/ntfs: Utilize new kmap_thread()
+  fs/romfs: Utilize new kmap_thread()
+  fs/vboxsf: Utilize new kmap_thread()
+  fs/hostfs: Utilize new kmap_thread()
+  fs/cramfs: Utilize new kmap_thread()
+  fs/erofs: Utilize new kmap_thread()
+  fs: Utilize new kmap_thread()
+  fs/ext2: Use ext2_put_page
+  fs/ext2: Utilize new kmap_thread()
+  fs/isofs: Utilize new kmap_thread()
+  fs/jffs2: Utilize new kmap_thread()
+  net: Utilize new kmap_thread()
+  drivers/target: Utilize new kmap_thread()
+  drivers/scsi: Utilize new kmap_thread()
+  drivers/mmc: Utilize new kmap_thread()
+  drivers/xen: Utilize new kmap_thread()
+  drivers/firmware: Utilize new kmap_thread()
+  drives/staging: Utilize new kmap_thread()
+  drivers/mtd: Utilize new kmap_thread()
+  drivers/md: Utilize new kmap_thread()
+  drivers/misc: Utilize new kmap_thread()
+  drivers/android: Utilize new kmap_thread()
+  kernel: Utilize new kmap_thread()
+  mm: Utilize new kmap_thread()
+  lib: Utilize new kmap_thread()
+  powerpc: Utilize new kmap_thread()
+  samples: Utilize new kmap_thread()
+  dax: Stray access protection for dax_direct_access()
+  nvdimm/pmem: Stray access protection for pmem->virt_addr
+  [dax|pmem]: Enable stray access protection
+
+ Documentation/core-api/protection-keys.rst    |  11 +-
+ arch/powerpc/mm/mem.c                         |   4 +-
+ arch/x86/entry/common.c                       |  28 +++
+ arch/x86/include/asm/pkeys.h                  |   6 +-
+ arch/x86/include/asm/pkeys_common.h           |   8 +-
+ arch/x86/kernel/process.c                     |  74 ++++++-
+ arch/x86/mm/fault.c                           | 193 ++++++++++++++----
+ arch/x86/mm/pkeys.c                           |  88 ++++++--
+ drivers/android/binder_alloc.c                |   4 +-
+ drivers/base/firmware_loader/fallback.c       |   4 +-
+ drivers/base/firmware_loader/main.c           |   4 +-
+ drivers/block/drbd/drbd_main.c                |   4 +-
+ drivers/block/drbd/drbd_receiver.c            |  12 +-
+ drivers/dax/device.c                          |   2 +
+ drivers/dax/super.c                           |   2 +
+ drivers/firmware/efi/capsule-loader.c         |   6 +-
+ drivers/firmware/efi/capsule.c                |   4 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c       |  12 +-
+ drivers/gpu/drm/gma500/gma_display.c          |   4 +-
+ drivers/gpu/drm/gma500/mmu.c                  |  10 +-
+ drivers/gpu/drm/i915/gem/i915_gem_shmem.c     |   4 +-
+ .../drm/i915/gem/selftests/i915_gem_context.c |   4 +-
+ .../drm/i915/gem/selftests/i915_gem_mman.c    |   8 +-
+ drivers/gpu/drm/i915/gt/intel_ggtt_fencing.c  |   4 +-
+ drivers/gpu/drm/i915/gt/intel_gtt.c           |   4 +-
+ drivers/gpu/drm/i915/gt/shmem_utils.c         |   4 +-
+ drivers/gpu/drm/i915/i915_gem.c               |   8 +-
+ drivers/gpu/drm/i915/i915_gpu_error.c         |   4 +-
+ drivers/gpu/drm/i915/selftests/i915_perf.c    |   4 +-
+ drivers/gpu/drm/radeon/radeon_ttm.c           |   4 +-
+ drivers/infiniband/hw/hfi1/sdma.c             |   4 +-
+ drivers/infiniband/hw/i40iw/i40iw_cm.c        |  10 +-
+ drivers/infiniband/sw/siw/siw_qp_tx.c         |  14 +-
+ drivers/md/bcache/request.c                   |   4 +-
+ drivers/misc/vmw_vmci/vmci_queue_pair.c       |  12 +-
+ drivers/mmc/host/mmc_spi.c                    |   4 +-
+ drivers/mmc/host/sdricoh_cs.c                 |   4 +-
+ drivers/mtd/mtd_blkdevs.c                     |  12 +-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c  |   4 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |   4 +-
+ drivers/nvdimm/pmem.c                         |   6 +
+ drivers/scsi/ipr.c                            |   8 +-
+ drivers/scsi/pmcraid.c                        |   8 +-
+ drivers/staging/rts5208/rtsx_transport.c      |   4 +-
+ drivers/target/target_core_iblock.c           |   4 +-
+ drivers/target/target_core_rd.c               |   4 +-
+ drivers/target/target_core_transport.c        |   4 +-
+ drivers/xen/gntalloc.c                        |   4 +-
+ fs/afs/dir.c                                  |  16 +-
+ fs/afs/dir_edit.c                             |  16 +-
+ fs/afs/mntpt.c                                |   4 +-
+ fs/afs/write.c                                |   4 +-
+ fs/aio.c                                      |   4 +-
+ fs/binfmt_elf.c                               |   4 +-
+ fs/binfmt_elf_fdpic.c                         |   4 +-
+ fs/btrfs/check-integrity.c                    |   4 +-
+ fs/btrfs/compression.c                        |   4 +-
+ fs/btrfs/inode.c                              |  16 +-
+ fs/btrfs/lzo.c                                |  24 +--
+ fs/btrfs/raid56.c                             |  34 +--
+ fs/btrfs/reflink.c                            |   8 +-
+ fs/btrfs/send.c                               |   4 +-
+ fs/btrfs/zlib.c                               |  32 +--
+ fs/btrfs/zstd.c                               |  20 +-
+ fs/cachefiles/rdwr.c                          |   4 +-
+ fs/cifs/cifsencrypt.c                         |   6 +-
+ fs/cifs/file.c                                |  16 +-
+ fs/cifs/smb2ops.c                             |   8 +-
+ fs/cramfs/inode.c                             |  10 +-
+ fs/ecryptfs/crypto.c                          |   8 +-
+ fs/ecryptfs/read_write.c                      |   8 +-
+ fs/erofs/super.c                              |   4 +-
+ fs/erofs/xattr.c                              |   4 +-
+ fs/exec.c                                     |  10 +-
+ fs/ext2/dir.c                                 |   8 +-
+ fs/ext2/ext2.h                                |   8 +
+ fs/ext2/namei.c                               |  15 +-
+ fs/f2fs/f2fs.h                                |   8 +-
+ fs/freevxfs/vxfs_immed.c                      |   4 +-
+ fs/fuse/readdir.c                             |   4 +-
+ fs/gfs2/bmap.c                                |   4 +-
+ fs/gfs2/ops_fstype.c                          |   4 +-
+ fs/hfs/bnode.c                                |  14 +-
+ fs/hfs/btree.c                                |  20 +-
+ fs/hfsplus/bitmap.c                           |  20 +-
+ fs/hfsplus/bnode.c                            | 102 ++++-----
+ fs/hfsplus/btree.c                            |  18 +-
+ fs/hostfs/hostfs_kern.c                       |  12 +-
+ fs/io_uring.c                                 |   4 +-
+ fs/isofs/compress.c                           |   4 +-
+ fs/jffs2/file.c                               |   8 +-
+ fs/jffs2/gc.c                                 |   4 +-
+ fs/nfs/dir.c                                  |  20 +-
+ fs/nilfs2/alloc.c                             |  34 +--
+ fs/nilfs2/cpfile.c                            |   4 +-
+ fs/ntfs/aops.c                                |   4 +-
+ fs/reiserfs/journal.c                         |   4 +-
+ fs/romfs/super.c                              |   4 +-
+ fs/splice.c                                   |   4 +-
+ fs/ubifs/file.c                               |  16 +-
+ fs/vboxsf/file.c                              |  12 +-
+ fs/zonefs/super.c                             |   4 +-
+ include/linux/entry-common.h                  |   3 +
+ include/linux/highmem.h                       |  63 +++++-
+ include/linux/memremap.h                      |   1 +
+ include/linux/mm.h                            |  43 ++++
+ include/linux/pkeys.h                         |   6 +-
+ include/linux/sched.h                         |   8 +
+ include/trace/events/kmap_thread.h            |  56 +++++
+ init/init_task.c                              |   6 +
+ kernel/fork.c                                 |  18 ++
+ kernel/kexec_core.c                           |   8 +-
+ lib/Kconfig.debug                             |   8 +
+ lib/iov_iter.c                                |  12 +-
+ lib/pks/pks_test.c                            | 138 +++++++++++--
+ lib/test_bpf.c                                |   4 +-
+ lib/test_hmm.c                                |   8 +-
+ mm/Kconfig                                    |  13 ++
+ mm/debug.c                                    |  23 +++
+ mm/memory.c                                   |   8 +-
+ mm/memremap.c                                 |  90 ++++++++
+ mm/swapfile.c                                 |   4 +-
+ mm/userfaultfd.c                              |   4 +-
+ net/ceph/messenger.c                          |   4 +-
+ net/core/datagram.c                           |   4 +-
+ net/core/sock.c                               |   8 +-
+ net/ipv4/ip_output.c                          |   4 +-
+ net/sunrpc/cache.c                            |   4 +-
+ net/sunrpc/xdr.c                              |   8 +-
+ net/tls/tls_device.c                          |   4 +-
+ samples/vfio-mdev/mbochs.c                    |   4 +-
+ 131 files changed, 1284 insertions(+), 565 deletions(-)
+ create mode 100644 include/trace/events/kmap_thread.h
+
+-- 
+2.28.0.rc0.12.gb6a658bd00c9
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
