@@ -1,55 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16F8928C1C5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Oct 2020 21:55:36 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 931D128C204
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Oct 2020 22:04:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 6F90D86B7D;
-	Mon, 12 Oct 2020 19:55:34 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 51CB486151;
+	Mon, 12 Oct 2020 20:04:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iLB3O9ADHRbL; Mon, 12 Oct 2020 19:55:34 +0000 (UTC)
+	with ESMTP id zwDgiDp0yN5A; Mon, 12 Oct 2020 20:04:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 509B686B6E;
-	Mon, 12 Oct 2020 19:55:33 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 062738623F;
+	Mon, 12 Oct 2020 20:04:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EA29F1BF5DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 19:53:57 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 39E121BF5DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 20:03:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id E0CA1872D2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 19:53:57 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 2F74C86710
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 20:03:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k6YlW7q4+84r for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Oct 2020 19:53:56 +0000 (UTC)
+ with ESMTP id vPkckbFeY6sR; Mon, 12 Oct 2020 20:03:20 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B18728596F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 19:53:56 +0000 (UTC)
-IronPort-SDR: +BxeA2tWbOWHgmaY6uQY3JtvtiOnDvnHaL8gV9AkCWDyr2P0i9EECvYkf1Z6Kn9eNtp2slKo+P
- LT8Ky2f2NcBw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9772"; a="145659432"
-X-IronPort-AV: E=Sophos;i="5.77,367,1596524400"; d="scan'208";a="145659432"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2020 12:53:56 -0700
-IronPort-SDR: fkO3cV1AstS50IlWJFeIR7IMIWTUvxOVu0RxBH9tBAb2aFjzmjvlioAsa4gAQcEu3X0zxNtHVX
- KqidbmrXoAPg==
-X-IronPort-AV: E=Sophos;i="5.77,367,1596524400"; d="scan'208";a="530096227"
-Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2020 12:53:54 -0700
-Date: Mon, 12 Oct 2020 12:53:54 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Matthew Wilcox <willy@infradead.org>
-Message-ID: <20201012195354.GC2046448@iweiny-DESK2.sc.intel.com>
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id E90CE85C9A;
+ Mon, 12 Oct 2020 20:03:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=bCWIFHvT8FvIPrDMc3maof4qHUnzu6oS60i9lgfyu+w=; b=osm7lCKhtCxcgsJVmnbUIZHhMp
+ 5nvioHkxA8AhlfbRA0tXQBSBlQdovP0UNFUmlu/tYL30pdEacRnzwKeBjNLJ8YRj+D/sF4f+x4FRA
+ 68EE5VyuQPlhkPgzE4vuiuikkji/6lzFKcK2qIYtpBfSW0scT+5xZ65/me+9ijMgWVh8NM56bexcy
+ gJZd0qYjXWzdg4a2mFecVVyLa3Rwg0gTTp9KEwoseCi8fLlQXob3uBfLwA1anIPkZvUKPjVJpvK3u
+ UT+9cSbb34PGNNH3jL974SwKTCytz2qfL4ONXzbZAaSn1ZoiKQGnXIIuZa+WQOp/Awa/qjp/ly6GK
+ H6D/8XHQ==;
+Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red
+ Hat Linux)) id 1kS422-0000HA-AX; Mon, 12 Oct 2020 20:02:54 +0000
+Date: Mon, 12 Oct 2020 21:02:54 +0100
+From: Matthew Wilcox <willy@infradead.org>
+To: Ira Weiny <ira.weiny@intel.com>
+Message-ID: <20201012200254.GB20115@casper.infradead.org>
 References: <20201009195033.3208459-1-ira.weiny@intel.com>
  <20201009195033.3208459-23-ira.weiny@intel.com>
  <20201009213434.GA839@sol.localdomain>
@@ -59,11 +56,11 @@ References: <20201009195033.3208459-1-ira.weiny@intel.com>
  <20201012161946.GA858@sol.localdomain>
  <5d621db9-23d4-e140-45eb-d7fca2093d2b@intel.com>
  <20201012164438.GA20115@casper.infradead.org>
+ <20201012195354.GC2046448@iweiny-DESK2.sc.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201012164438.GA20115@casper.infradead.org>
-User-Agent: Mutt/1.11.1 (2018-12-01)
-X-Mailman-Approved-At: Mon, 12 Oct 2020 19:55:32 +0000
+In-Reply-To: <20201012195354.GC2046448@iweiny-DESK2.sc.intel.com>
+X-Mailman-Approved-At: Mon, 12 Oct 2020 20:04:29 +0000
 Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 22/58] fs/f2fs: Utilize
  new kmap_thread()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -110,41 +107,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 12, 2020 at 05:44:38PM +0100, Matthew Wilcox wrote:
-> On Mon, Oct 12, 2020 at 09:28:29AM -0700, Dave Hansen wrote:
-> > kmap_atomic() is always preferred over kmap()/kmap_thread().
-> > kmap_atomic() is _much_ more lightweight since its TLB invalidation is
-> > always CPU-local and never broadcast.
+On Mon, Oct 12, 2020 at 12:53:54PM -0700, Ira Weiny wrote:
+> On Mon, Oct 12, 2020 at 05:44:38PM +0100, Matthew Wilcox wrote:
+> > On Mon, Oct 12, 2020 at 09:28:29AM -0700, Dave Hansen wrote:
+> > > kmap_atomic() is always preferred over kmap()/kmap_thread().
+> > > kmap_atomic() is _much_ more lightweight since its TLB invalidation is
+> > > always CPU-local and never broadcast.
+> > > 
+> > > So, basically, unless you *must* sleep while the mapping is in place,
+> > > kmap_atomic() is preferred.
 > > 
-> > So, basically, unless you *must* sleep while the mapping is in place,
-> > kmap_atomic() is preferred.
+> > But kmap_atomic() disables preemption, so the _ideal_ interface would map
+> > it only locally, then on preemption make it global.  I don't even know
+> > if that _can_ be done.  But this email makes it seem like kmap_atomic()
+> > has no downsides.
 > 
-> But kmap_atomic() disables preemption, so the _ideal_ interface would map
-> it only locally, then on preemption make it global.  I don't even know
-> if that _can_ be done.  But this email makes it seem like kmap_atomic()
-> has no downsides.
+> And that is IIUC what Thomas was trying to solve.
+> 
+> Also, Linus brought up that kmap_atomic() has quirks in nesting.[1]
+> 
+> >From what I can see all of these discussions support the need to have something
+> between kmap() and kmap_atomic().
+> 
+> However, the reason behind converting call sites to kmap_thread() are different
+> between Thomas' patch set and mine.  Both require more kmap granularity.
+> However, they do so with different reasons and underlying implementations but
+> with the _same_ resulting semantics; a thread local mapping which is
+> preemptable.[2]  Therefore they each focus on changing different call sites.
+> 
+> While this patch set is huge I think it serves a valuable purpose to identify a
+> large number of call sites which are candidates for this new semantic.
 
-And that is IIUC what Thomas was trying to solve.
+Yes, I agree.  My problem with this patch-set is that it ties it to
+some Intel feature that almost nobody cares about.  Maybe we should
+care about it, but you didn't try very hard to make anyone care about
+it in the cover letter.
 
-Also, Linus brought up that kmap_atomic() has quirks in nesting.[1]
-
-From what I can see all of these discussions support the need to have something
-between kmap() and kmap_atomic().
-
-However, the reason behind converting call sites to kmap_thread() are different
-between Thomas' patch set and mine.  Both require more kmap granularity.
-However, they do so with different reasons and underlying implementations but
-with the _same_ resulting semantics; a thread local mapping which is
-preemptable.[2]  Therefore they each focus on changing different call sites.
-
-While this patch set is huge I think it serves a valuable purpose to identify a
-large number of call sites which are candidates for this new semantic.
-
-Ira
-
-[1] https://lore.kernel.org/lkml/CAHk-=wgbmwsTOKs23Z=71EBTrULoeaH2U3TNqT2atHEWvkBKdw@mail.gmail.com/
-[2] It is important to note these implementations are not incompatible with
-each other.  So I don't see yet another 'kmap_something()' being required.
+For a future patch-set, I'd like to see you just introduce the new
+API.  Then you can optimise the Intel implementation of it afterwards.
+Those patch-sets have entirely different reviewers.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
