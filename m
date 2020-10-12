@@ -1,99 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AC8D528B7BF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Oct 2020 15:46:32 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2883D28B4CE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Oct 2020 14:44:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4250786A48;
-	Mon, 12 Oct 2020 13:46:31 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B605687422;
+	Mon, 12 Oct 2020 12:44:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g55yL+DJicnF; Mon, 12 Oct 2020 13:46:29 +0000 (UTC)
+	with ESMTP id rcoEzOxWZk3D; Mon, 12 Oct 2020 12:44:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 8382C86B9D;
-	Mon, 12 Oct 2020 13:46:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1EE2B873D5;
+	Mon, 12 Oct 2020 12:44:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 858DB1BF361
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 07:40:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1790E1BF3F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 12:44:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 7D6888697B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 07:40:55 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 11F4A8687A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 12:44:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iaTtaex2HWvY for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Oct 2020 07:40:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mx2.suse.de (mx2.suse.de [195.135.220.15])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 660AF867BC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 07:40:54 +0000 (UTC)
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 3DEE1AC1D;
- Mon, 12 Oct 2020 07:40:52 +0000 (UTC)
-To: Ira Weiny <ira.weiny@intel.com>
-References: <20201009195033.3208459-1-ira.weiny@intel.com>
- <20201009195033.3208459-49-ira.weiny@intel.com>
- <c802fbf4-f67a-b205-536d-9c71b440f9c8@suse.de>
- <20201012052817.GZ2046448@iweiny-DESK2.sc.intel.com>
-From: Coly Li <colyli@suse.de>
-Autocrypt: addr=colyli@suse.de; keydata=
- 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
-Message-ID: <026a7658-6c43-6510-a8b5-32f29de7b281@suse.de>
-Date: Mon, 12 Oct 2020 15:40:27 +0800
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
- Gecko/20100101 Thunderbird/68.12.1
+ with ESMTP id Nsydb6fzRA2h for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Oct 2020 12:44:46 +0000 (UTC)
+X-Greylist: delayed 00:24:18 by SQLgrey-1.7.6
+Received: from mail-io1-f65.google.com (mail-io1-f65.google.com
+ [209.85.166.65])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2CC1D86840
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 12:44:46 +0000 (UTC)
+Received: by mail-io1-f65.google.com with SMTP id q25so3413163ioh.4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 05:44:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=codJjfFpUB7yFKdzDGxPNsE9k2tf5zO8nIAdm/LAccs=;
+ b=ejNPyHqZIGbPK8xHeo6JPxYGNzlAzWvJ3L+GcKxz30BSfNkG18irpPNJ2ihA7Tev0l
+ pLnjSe95AFAb4Ms5yh387lKw7dJU3mpzfraPwYnqiubqcsDccIUL+1/YMfO1OkwtW1gS
+ 6ezD0KCg0pSm91GHBV8I89C6kX6Op9XLljX5sZmciiYLOVnzC4hijM8AcQQrlGBxArvJ
+ pvbNQ9Wijb4PBCaUbHh9JlCHB1lEUWBH3OQ23oB/cdQ8qWwJMrGcrzwm2eM0d6Fen6/J
+ jCPxLNyUYATiBJx0OWR/OmAXCPJXm9K8upqzS3fNXKWrodkYC+ZzsPUestOFD7YNFLck
+ MvQA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=codJjfFpUB7yFKdzDGxPNsE9k2tf5zO8nIAdm/LAccs=;
+ b=qPc+V9Ton5sIuwpvPwfTCc/jReYRg+MbsU52/v8iubIMajEEi+d7Un9NDmYCf7dVSa
+ 8eFynvVa/8UwQw2kGoC42zfJcFnTbdMDBJewhAnTLW9wOdcjE16K7oLRCs3r4XtptQTH
+ pKNowA0fB3sVpmt17zEpwJZwdjqVX9zbN00eURkRsiADu7Ae9wXWsQs6OuYZE5R8aS1M
+ 1MFobi3dnLxiplLSxEJWCUbTTB65cszSW9Dh2vo275zdJ6qKrNnqSzyr4Y6FgSS/yeJE
+ LZzcEL2j8zmBdHhScK3IsLSIwTW04G7ephUuotcl7DF7l4knQD+BIGVA0eETL5ld1HPs
+ 3U1g==
+X-Gm-Message-State: AOAM5304jomQoCEAp6+vcUUCsZ34M3D3B8nEUPMJu5rnC/i5x2DxSdwQ
+ H39Ctg5dA2zm6/tztUrgZk1ES+vCE5dZxhQlmizksEzbkGQ=
+X-Google-Smtp-Source: ABdhPJzVhgjs7DEshXDI2I/lX0MRdzs4t+AubVA7E7D/6NsX+vf80BaRkSjcA4wLlIOYLXjLCnGQ4Sc6LInRamJkaeQ=
+X-Received: by 2002:a92:b610:: with SMTP id s16mr15618441ili.6.1602505226974; 
+ Mon, 12 Oct 2020 05:20:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201012052817.GZ2046448@iweiny-DESK2.sc.intel.com>
-Content-Language: en-US
-X-Mailman-Approved-At: Mon, 12 Oct 2020 13:46:23 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 48/58] drivers/md:
- Utilize new kmap_thread()
+References: <20200928071744.18253-1-brgl@bgdev.pl>
+In-Reply-To: <20200928071744.18253-1-brgl@bgdev.pl>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Mon, 12 Oct 2020 14:20:16 +0200
+Message-ID: <CAMRc=MexKweGRjF5KNg1saz7NmE+tQq=03oR3wzoMsaTcm+CAA@mail.gmail.com>
+To: Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH] net: ethernet: ixgbe: don't propagate
+ -ENODEV from ixgbe_mii_bus_init()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,80 +82,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, linux-mm@kvack.org,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, samba-technical@lists.samba.org,
- Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- ceph-devel@vger.kernel.org, amd-gfx@lists.freedesktop.org,
- io-uring@vger.kernel.org, cluster-devel@redhat.com,
- Ingo Molnar <mingo@redhat.com>, intel-wired-lan@lists.osuosl.org,
- xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
- Kent Overstreet <kent.overstreet@gmail.com>, Fenghua Yu <fenghua.yu@intel.com>,
- linux-afs@lists.infradead.org, linux-um@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, ecryptfs@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, reiserfs-devel@vger.kernel.org,
- linux-block@vger.kernel.org, linux-bcache@vger.kernel.org,
- Borislav Petkov <bp@alien8.de>, Andy Lutomirski <luto@kernel.org>,
- Dan Williams <dan.j.williams@intel.com>,
- Andrew Morton <akpm@linux-foundation.org>, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, linux-ntfs-dev@lists.sourceforge.net,
- netdev@vger.kernel.org, kexec@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- linux-fsdevel@vger.kernel.org, bpf@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Cc: netdev <netdev@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ intel-wired-lan@lists.osuosl.org, Yongxin Liu <yongxin.liu@windriver.com>,
+ "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2020/10/12 13:28, Ira Weiny wrote:
-> On Sat, Oct 10, 2020 at 10:20:34AM +0800, Coly Li wrote:
->> On 2020/10/10 03:50, ira.weiny@intel.com wrote:
->>> From: Ira Weiny <ira.weiny@intel.com>
->>>
->>> These kmap() calls are localized to a single thread.  To avoid the over
->>> head of global PKRS updates use the new kmap_thread() call.
->>>
->>
->> Hi Ira,
->>
->> There were a number of options considered.
->>
->> 1) Attempt to change all the thread local kmap() calls to kmap_atomic()
->> 2) Introduce a flags parameter to kmap() to indicate if the mapping
->> should be global or not
->> 3) Change ~20-30 call sites to 'kmap_global()' to indicate that they
->> require a global mapping of the pages
->> 4) Change ~209 call sites to 'kmap_thread()' to indicate that the
->> mapping is to be used within that thread of execution only
->>
->>
->> I copied the above information from patch 00/58 to this message. The
->> idea behind kmap_thread() is fine to me, but as you said the new api is
->> very easy to be missed in new code (even for me). I would like to be
->> supportive to option 2) introduce a flag to kmap(), then we won't forget
->> the new thread-localized kmap method, and people won't ask why a
->> _thread() function is called but no kthread created.
-> 
-> Thanks for the feedback.
-> 
-> I'm going to hold off making any changes until others weigh in.  FWIW, I kind
-> of like option 2 as well.  But there is already kmap_atomic() so it seemed like
-> kmap_XXXX() was more in line with the current API.
+On Mon, Sep 28, 2020 at 9:17 AM Bartosz Golaszewski <brgl@bgdev.pl> wrote:
+>
+> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+>
+> It's a valid use-case for ixgbe_mii_bus_init() to return -ENODEV - we
+> still want to finalize the registration of the ixgbe device. Check the
+> error code and don't bail out if err == -ENODEV.
+>
+> This fixes an issue on C3000 family of SoCs where four ixgbe devices
+> share a single MDIO bus and ixgbe_mii_bus_init() returns -ENODEV for
+> three of them but we still want to register them.
+>
+> Fixes: 09ef193fef7e ("net: ethernet: ixgbe: check the return value of ixgbe_mii_bus_init()")
+> Reported-by: Yongxin Liu <yongxin.liu@windriver.com>
+> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 2f8a4cfc5fa1..d1623af30125 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -11032,7 +11032,7 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>                         true);
+>
+>         err = ixgbe_mii_bus_init(hw);
+> -       if (err)
+> +       if (err && err != -ENODEV)
+>                 goto err_netdev;
+>
+>         return 0;
+> --
+> 2.26.1
+>
 
-I understand it now, the idea is fine to me.
+Hi!
 
-Acked-by: Coly Li <colyli@suse.de>
+Gentle ping for this patch. Who's picking up networking patches now
+that David is OoO? Should I Cc someone else?
 
-Thanks.
-
-Coly Li
+Bartosz
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
