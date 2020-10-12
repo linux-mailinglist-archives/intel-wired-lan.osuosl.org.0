@@ -1,139 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7378C28BF14
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Oct 2020 19:35:26 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E055228C15E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Oct 2020 21:20:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DE0CC86B12;
-	Mon, 12 Oct 2020 17:35:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id A28AD852E9;
+	Mon, 12 Oct 2020 19:20:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XFyeuzT0CqJo; Mon, 12 Oct 2020 17:35:24 +0000 (UTC)
+	with ESMTP id c0LdTrbMZ3Qc; Mon, 12 Oct 2020 19:20:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id EAF9886915;
-	Mon, 12 Oct 2020 17:35:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 18321854CC;
+	Mon, 12 Oct 2020 19:20:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 47D411BF3C3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 17:35:21 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6D7D41BF5DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 19:20:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 42BD386903
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 17:35:21 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 5F32C207B0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 19:20:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eDPlAuM-DI+e for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Oct 2020 17:35:20 +0000 (UTC)
+ with ESMTP id TNgSiFZO1UgX for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Oct 2020 19:20:49 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by whitealder.osuosl.org (Postfix) with ESMTPS id EF305868FE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 17:35:19 +0000 (UTC)
-IronPort-SDR: FKLhUHLeS7rdrJIjrYKT9/UIiMqRJjWz2smoA8O5djjZxnEEpGqdMrIJKG6QzdLMTkd9kdjpwB
- ccLOMcdwqU6g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9772"; a="153607700"
-X-IronPort-AV: E=Sophos;i="5.77,367,1596524400"; d="scan'208";a="153607700"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2020 10:35:18 -0700
-IronPort-SDR: DOlezl2kJxZUvEeowcSZnVz92O60VwB/kWbtBluKKrYHpmwF72WeqOXUwk75IT4CIOhYqc13jQ
- F/fGgsI6af4Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,367,1596524400"; d="scan'208";a="350823569"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmsmga002.fm.intel.com with ESMTP; 12 Oct 2020 10:35:18 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 12 Oct 2020 10:35:17 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Mon, 12 Oct 2020 10:35:17 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Mon, 12 Oct 2020 10:35:17 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.105)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.1713.5; Mon, 12 Oct 2020 10:35:14 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OH95f3CIOr6ays19FMPtO3pQFWwYQBNPKwyvn94ZPtdj9PTuJI8hjqFTrcrAk8TgSpBDXGN2ppGLCOrSMK+ILkRF7CxGJW1d9vxJxdV44CSl9SM1ff80TxuEmIcDgFhkjcOVgm330BD//xCodmKEABXnpaewp630mkSg0xphMoEGyVzCtazxebEXlM8owfMdcvqZaE1TnrhNTsok6TuRUMrCWTLpJ40xm/+9tWlFGrZJI0znv6IizNhKWllL3yyNHu0tE8w78Y78fV59p/rr81c57fX/gDdd5inT+Cv9wdwjaHMw9FiilhoMhOy+uYylSQK8+xbLdjDjBUinyWw4FQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0OXOeDR6EEHLCncaUYiZ2ceegTFOZC/jDMbFuBD5cpU=;
- b=NjfttWnfcwa/d3tJRDyqEeEDzP5faVdSbovL4Y8hv3vvuHTmTg8Y5Uyoto0yXxGauatWhuw54F8XPsKXQASu9/1qRhatpQ1jiaIJuda98xDTzOQySFpm69iYvm2Lph+L27BCRGmii26jgk0T/lu1HFaMCejUTpdvLY1tc+tqo3IrA7PlAw0XCNlyjpFKKYApGDgoVWiJRkZ1zfwH1Od5aXJ3az/vIPRvETGd3RKuKBFAKkPScnwk1XEShAOaTnKno1O7LJB21pNakvvrqSuWbjtrv2CD2koeY4inyJd+2AWRk67wj6kkejVLa8daaeAbQH67qg1a7LNS8DgYUHj1gA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
- s=selector2-intel-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0OXOeDR6EEHLCncaUYiZ2ceegTFOZC/jDMbFuBD5cpU=;
- b=hSKY82AgNmQAqIjjUq7sCWmQp5+/i8z+HiG70yalvU2lHlGcU94otn6HHFG6w8jJiDFim2YuDmRa8ctE1s8zMnSQaA7TFpBCrdpBOD5Fbocy8L079FzH3IYtnySn9cJOVMXiStvYX/ixfIHgErNlhuNzzZUfeY9609lnjNKcOTU=
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com (2603:10b6:5:63::20) by
- DM6PR11MB4628.namprd11.prod.outlook.com (2603:10b6:5:28f::16) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3455.21; Mon, 12 Oct 2020 17:35:11 +0000
-Received: from DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::2472:44fe:8b1d:4c6c]) by DM6PR11MB2890.namprd11.prod.outlook.com
- ([fe80::2472:44fe:8b1d:4c6c%5]) with mapi id 15.20.3455.029; Mon, 12 Oct 2020
- 17:35:11 +0000
-From: "Brown, Aaron F" <aaron.f.brown@intel.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, "kuba@kernel.org"
- <kuba@kernel.org>, "davem@davemloft.net" <davem@davemloft.net>, "Kirsher,
- Jeffrey T" <jeffrey.t.kirsher@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH] e100: switch from 'pci_' to 'dma_' API
-Thread-Index: AQHWXPpxrra0mqGDF0COOiJ1GQSDz6mUwFtg
-Date: Mon, 12 Oct 2020 17:35:10 +0000
-Message-ID: <DM6PR11MB289001E5538E536F0CB60A1FBC070@DM6PR11MB2890.namprd11.prod.outlook.com>
-References: <20200718115546.358240-1-christophe.jaillet@wanadoo.fr>
-In-Reply-To: <20200718115546.358240-1-christophe.jaillet@wanadoo.fr>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-version: 11.5.1.3
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-authentication-results: wanadoo.fr; dkim=none (message not signed)
- header.d=none;wanadoo.fr; dmarc=none action=none header.from=intel.com;
-x-originating-ip: [97.120.179.168]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 89829427-73f1-4e01-697e-08d86ed52ba6
-x-ms-traffictypediagnostic: DM6PR11MB4628:
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DM6PR11MB462891B071AED320AAA549C7BC070@DM6PR11MB4628.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4714;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: nsQU1QGzD6WkQ1a3hlqsiw/YB/NgLWwCzvJLp5pAI+M39eteucEJU9LlRP+OXIIhW9+demIsXLt/XGmEpua+NdOG3/mq/t1zxN8P9s8JqzdIw3/kQ1SKokq73+3bi/LBdIEEwt94ZidYnD+XJYaOimrQqnQK9bRlAZWGogdcTEhs2Vez1uAevV+xR+BhkwexcQkTx4qBt07725cy4ee1gbOoc7OymS8l3h8HlZKQvIl2ZwEvMvUaLem5qk3NcOyLl/aX4+h/Ru70dMRZwMQ0psUaGXhmvYHKRPCEYHgPBvorsYIxB4lXtZRzYJlYwjgCHe/X4dOPeBO1p0x6JMJSslPMCiQVBE/E+wTsf2Tf9KQs8kaVsEcPVR9IordHh7hrz4U7OTRSIa6BDue0PgalcBx9Qep6R1vPttpD00tLymk=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB2890.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(396003)(136003)(39860400002)(346002)(376002)(5660300002)(8676002)(966005)(9686003)(8936002)(4326008)(110136005)(86362001)(52536014)(478600001)(66946007)(66446008)(2906002)(55016002)(6636002)(64756008)(66556008)(316002)(54906003)(76116006)(66476007)(53546011)(186003)(71200400001)(33656002)(83380400001)(7696005)(26005)(6506007)(6606295002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: qZ7qstZpw2KVJcP16yPv2ff67xcdd9fcE/je66oN067p4yduLMFZmVjIxCKf6UWt9zrOy4ZQoyVXPojdqCEwqtuNJ9m1pxxb5Wgzdx+SnjU9mY2PWBbZEqDCi7meDC5bSGsdl9uxC0TEsBmNdNFpLnwiFZTZBXK2eWjGnpR/d+AwZqfLkxIz51rpoafJdd2sRfm/M+UPW3RitUxtTnh6wTyqS6tEEJMmRQUEqiTCnh4sDI5LswQPkSR0+3zwkugBJK69mt3cPJ1p/vDUWL9Vjpvu36Irc+Xh4EkybXryxQWD/am+1I6ZDqzbTB2jxNRrcQRhU2lvEcBqEGtsPGRJtKHu4jAMz8sr961J4p6zcxVJgxrb+F3W87XLuwE4OWKlUgx/PNhRmHuKEVrmkF2nsmz3UzACK6+dtl4guQnIp+xm3wy58Q+m5oJx8kS7Zp+1omoI88bXun//qHieU2dlRh92MLTLTBmAVKFCfYDCA+0Mq7Ah27nIliiJCrmdGGpUKemlZGYKO2iHpaPzGuV9+jeXfWbBQp/O615tYclBmIcmL9CXI60PeLzUn8CVfBEteJHZlsHIxFrdhHKeemYUSZ24ClcizKvbRTLP7tzYTw+v/JAt3jF//ShPxx1G2SCvnvTTj29/fja2JQcavLvqxg==
+Received: from mail-qv1-f45.google.com (mail-qv1-f45.google.com
+ [209.85.219.45])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6E7712043A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 19:20:49 +0000 (UTC)
+Received: by mail-qv1-f45.google.com with SMTP id b10so6650695qvf.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 12:20:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=TqL6gdVr7qCHO8Hdt0xG8Ty4LTjFKKq0V/Cn256+UdE=;
+ b=Y5IuuUyj6xyL7T77bbYb5OmSJvTHvaZ/FZ5hFUtfP3oO95EOTcVB2ajo+z/fP+p8DG
+ MK60E0OLj2B+6BI1UbLKsRO2UcVCEsir/erNjJ1W2spuEUrcBpmkp94EDawnApmn8A+a
+ fO7BT/Z1Bwoo2838njzVj7DFaDg/uCSZzAsp8kZuzX/JIizIkjVbJyj7AdkRRj7QUAcO
+ ONQJOSGcyd1rg/xKTPR01nXZej1nAk7bdxewxt8zamqIzoYaWCl5pGdS3AsDodCPeBLe
+ TU3OoLW2m7xOwGyj47V25F+Zg3EMEdSppmb/hPInn9BOW1DRCltTAiuQrDT+hAW85/Vf
+ A2Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=TqL6gdVr7qCHO8Hdt0xG8Ty4LTjFKKq0V/Cn256+UdE=;
+ b=mg0r3TVXhINTgnfeI2/FLtXejga2lxqUIKYEF0lsHp2c+TiOp469WRV1rkms9O7S8X
+ /F2r5ZQ99LrcjS3P/o5xkWMYEYHp7Q/aj/m9F+t65ScvA+D9bSPyD+fQOOjkP/sPiXGF
+ 0i7MxFb6UkugOj3Wz7UIB9FblxBi6BtAhJYLY0MMW6FZesHJOtjF8vqcktqWqU7PQDLU
+ NQ71ba08uwC4UBoXCZm9mKccSi6yodtsSpYlny0cGlkBDY8qs9+f2uBs5FItfSExXbRl
+ e7sByKRxhUxFPnPqHixnBYWUPBEtMSDCHqXHLcG3/Vdt0IctKMFFfkFIeqO+v+d402wB
+ mLmA==
+X-Gm-Message-State: AOAM532lVvE52ROekCR3NQ3ftP2pvUuJuwT40vwH/K2N0vkDRTvAlZhY
+ +HTEsulU6AKzkW1SU7F4W8R/RkQkA4Xi3ihrnF4=
+X-Google-Smtp-Source: ABdhPJyd+4LP+X+xKA7MFSKiv4Dkq5uhqWIy5ewo1bJOGYdpiuEBi7AhQqN610tZFH3hEnmjNxMc1vLBbYQ5GhUMw+4=
+X-Received: by 2002:a0c:9e0e:: with SMTP id p14mr25787207qve.25.1602530448089; 
+ Mon, 12 Oct 2020 12:20:48 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB2890.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 89829427-73f1-4e01-697e-08d86ed52ba6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Oct 2020 17:35:11.0531 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: G5SCO1wz6JHkr1M4A7Sga6Wp80xRc6VpDZwCNN1f12z3h8q6Rq1/1n6wPAc/k8z4J09eAxVYKwxwecPd+VhwzQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4628
-X-OriginatorOrg: intel.com
-Subject: Re: [Intel-wired-lan] [PATCH] e100: switch from 'pci_' to 'dma_' API
+From: Ian Kumlien <ian.kumlien@gmail.com>
+Date: Mon, 12 Oct 2020 21:20:37 +0200
+Message-ID: <CAA85sZv=13q8NXbjdf7+R=wu0Q5=Vj9covZ24e9Ew2DCd7S==A@mail.gmail.com>
+To: jeffrey.t.kirsher@intel.com, 
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>
+Subject: [Intel-wired-lan] ixgbe - only presenting one out of four
+ interfaces on 5.9
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,161 +78,127 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kernel-janitors@vger.kernel.org" <kernel-janitors@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Christophe JAILLET
-> Sent: Saturday, July 18, 2020 4:56 AM
-> To: kuba@kernel.org; davem@davemloft.net; Kirsher, Jeffrey T
-> <jeffrey.t.kirsher@intel.com>
-> Cc: netdev@vger.kernel.org; kernel-janitors@vger.kernel.org; Christophe
-> JAILLET <christophe.jaillet@wanadoo.fr>; intel-wired-lan@lists.osuosl.org;
-> linux-kernel@vger.kernel.org
-> Subject: [Intel-wired-lan] [PATCH] e100: switch from 'pci_' to 'dma_' API
-> 
-> The wrappers in include/linux/pci-dma-compat.h should go away.
-> 
-> The patch has been generated with the coccinelle script below and has been
-> hand modified to replace GFP_ with a correct flag.
-> It has been compile tested.
-> 
-> When memory is allocated in 'e100_alloc()', GFP_KERNEL can be used because
-> it is only called from the probe function and no lock is acquired.
-> 
-> 
-> @@
-> @@
-> -    PCI_DMA_BIDIRECTIONAL
-> +    DMA_BIDIRECTIONAL
-> 
-> @@
-> @@
-> -    PCI_DMA_TODEVICE
-> +    DMA_TO_DEVICE
-> 
-> @@
-> @@
-> -    PCI_DMA_FROMDEVICE
-> +    DMA_FROM_DEVICE
-> 
-> @@
-> @@
-> -    PCI_DMA_NONE
-> +    DMA_NONE
-> 
-> @@
-> expression e1, e2, e3;
-> @@
-> -    pci_alloc_consistent(e1, e2, e3)
-> +    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
-> 
-> @@
-> expression e1, e2, e3;
-> @@
-> -    pci_zalloc_consistent(e1, e2, e3)
-> +    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_free_consistent(e1, e2, e3, e4)
-> +    dma_free_coherent(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_map_single(e1, e2, e3, e4)
-> +    dma_map_single(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_unmap_single(e1, e2, e3, e4)
-> +    dma_unmap_single(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4, e5;
-> @@
-> -    pci_map_page(e1, e2, e3, e4, e5)
-> +    dma_map_page(&e1->dev, e2, e3, e4, e5)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_unmap_page(e1, e2, e3, e4)
-> +    dma_unmap_page(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_map_sg(e1, e2, e3, e4)
-> +    dma_map_sg(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_unmap_sg(e1, e2, e3, e4)
-> +    dma_unmap_sg(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_dma_sync_single_for_cpu(e1, e2, e3, e4)
-> +    dma_sync_single_for_cpu(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_dma_sync_single_for_device(e1, e2, e3, e4)
-> +    dma_sync_single_for_device(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_dma_sync_sg_for_cpu(e1, e2, e3, e4)
-> +    dma_sync_sg_for_cpu(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2, e3, e4;
-> @@
-> -    pci_dma_sync_sg_for_device(e1, e2, e3, e4)
-> +    dma_sync_sg_for_device(&e1->dev, e2, e3, e4)
-> 
-> @@
-> expression e1, e2;
-> @@
-> -    pci_dma_mapping_error(e1, e2)
-> +    dma_mapping_error(&e1->dev, e2)
-> 
-> @@
-> expression e1, e2;
-> @@
-> -    pci_set_dma_mask(e1, e2)
-> +    dma_set_mask(&e1->dev, e2)
-> 
-> @@
-> expression e1, e2;
-> @@
-> -    pci_set_consistent_dma_mask(e1, e2)
-> +    dma_set_coherent_mask(&e1->dev, e2)
-> 
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
-> If needed, see post from Christoph Hellwig on the kernel-janitors ML:
->    https://marc.info/?l=kernel-janitors&m=158745678307186&w=4
-> ---
->  drivers/net/ethernet/intel/e100.c | 92 ++++++++++++++++---------------
->  1 file changed, 49 insertions(+), 43 deletions(-)
-> 
-And I finally managed to get a couple functional e100 adapters up and running again.
-Tested-by: Aaron Brown <aaron.f.brown@intel.com>
+Hi,
+
+I was really surprised when i rebooted my firewall and there was
+network issues, I was even more surprised when
+only one of the four ports of my ixbe (x553) nic was available when booted.
+
+You can actually see it dmesg... And i tried some basic looking at
+changes to see if it was obvious.... but..
+
+anyway, on v5.8.14:
+dmesg |grep ixgbe
+[    1.355454] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver -
+version 5.1.0-k
+[    1.355455] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[    1.711629] ixgbe 0000:06:00.0: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    1.838170] ixgbe 0000:06:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+[    1.838173] ixgbe 0000:06:00.0: 0c:c4:7a:fa:3d:4a
+[    1.882060] ixgbe 0000:06:00.0: Intel(R) 10 Gigabit Network Connection
+[    1.882196] libphy: ixgbe-mdio: probed
+[    2.234835] ixgbe 0000:06:00.1: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    2.361374] ixgbe 0000:06:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+[    2.361377] ixgbe 0000:06:00.1: 0c:c4:7a:fa:3d:4b
+[    2.405281] ixgbe 0000:06:00.1: Intel(R) 10 Gigabit Network Connection
+[    2.757541] ixgbe 0000:07:00.0: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    2.884104] ixgbe 0000:07:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+[    2.884107] ixgbe 0000:07:00.0: 0c:c4:7a:fa:3d:4c
+[    2.928022] ixgbe 0000:07:00.0: Intel(R) 10 Gigabit Network Connection
+[    3.280728] ixgbe 0000:07:00.1: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    3.407274] ixgbe 0000:07:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+[    3.407276] ixgbe 0000:07:00.1: 0c:c4:7a:fa:3d:4d
+[    3.451155] ixgbe 0000:07:00.1: Intel(R) 10 Gigabit Network Connection
+[    4.648725] ixgbe 0000:07:00.0 eno3: renamed from eth2
+[    4.659827] ixgbe 0000:06:00.0 eno1: renamed from eth0
+[    4.674272] ixgbe 0000:07:00.1 eno4: renamed from eth3
+[    4.685838] ixgbe 0000:06:00.1 eno2: renamed from eth1
+[    6.070294] ixgbe 0000:06:00.0: registered PHC device on eno1
+[    7.178307] ixgbe 0000:07:00.0: registered PHC device on eno3
+[    7.421199] ixgbe 0000:07:00.1: registered PHC device on eno4
+[    7.662712] ixgbe 0000:06:00.1: registered PHC device on eno2
+[    9.587640] ixgbe 0000:06:00.0 eno1: NIC Link is Up 1 Gbps, Flow
+Control: RX/TX
+[   10.605594] ixgbe 0000:07:00.1 eno4: NIC Link is Up 1 Gbps, Flow
+Control: RX/TX
+[   10.754615] ixgbe 0000:07:00.0 eno3: NIC Link is Up 1 Gbps, Flow
+Control: RX/TX
+[   10.768586] ixgbe 0000:06:00.1 eno2: NIC Link is Up 1 Gbps, Flow
+Control: RX/TX
+
+on 5.9:
+dmesg |grep ixbge
+[    1.570400] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver
+[    1.570401] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[    1.928030] ixgbe 0000:06:00.0: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    2.054554] ixgbe 0000:06:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+[    2.054556] ixgbe 0000:06:00.0: 0c:c4:7a:fa:3d:4a
+[    2.098404] ixgbe 0000:06:00.0: Intel(R) 10 Gigabit Network Connection
+[    2.098541] libphy: ixgbe-mdio: probed
+[    2.453350] ixgbe 0000:06:00.1: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    2.579938] ixgbe 0000:06:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+[    2.579941] ixgbe 0000:06:00.1: 0c:c4:7a:fa:3d:4b
+[    2.623783] ixgbe 0000:06:00.1: Intel(R) 10 Gigabit Network Connection
+[    2.987339] ixgbe 0000:07:00.0: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    3.113864] ixgbe 0000:07:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+[    3.113867] ixgbe 0000:07:00.0: 0c:c4:7a:fa:3d:4c
+[    3.157635] ixgbe 0000:07:00.0: Intel(R) 10 Gigabit Network Connection
+[    3.529503] ixgbe 0000:07:00.1: Multiqueue Enabled: Rx Queue count
+= 12, Tx Queue count = 12 XDP Queue count = 0
+[    3.656041] ixgbe 0000:07:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+[    3.656043] ixgbe 0000:07:00.1: 0c:c4:7a:fa:3d:4d
+[    3.699856] ixgbe 0000:07:00.1: Intel(R) 10 Gigabit Network Connection
+[    4.646247] ixgbe 0000:06:00.0 eno1: renamed from eth0
+[    6.183074] ixgbe 0000:06:00.0: registered PHC device on eno1
+[    9.570382] ixgbe 0000:06:00.0 eno1: NIC Link is Up 1 Gbps, Flow
+Control: RX/TX
+
+lspci....
+06:00.0 Ethernet controller: Intel Corporation Ethernet Connection
+X553 1GbE (rev 11)
+06:00.1 Ethernet controller: Intel Corporation Ethernet Connection
+X553 1GbE (rev 11)
+07:00.0 Ethernet controller: Intel Corporation Ethernet Connection
+X553 1GbE (rev 11)
+07:00.1 Ethernet controller: Intel Corporation Ethernet Connection
+X553 1GbE (rev 11)
+
+ethtool -i eno1 and eno2
+driver: ixgbe
+version: 5.1.0-k
+firmware-version: 0x80000877
+expansion-rom-version:
+bus-info: 0000:06:00.0 (and 0000:06:00.1)
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+
+while eno3 and eno4 gives:
+driver: ixgbe
+version: 5.1.0-k
+firmware-version: 0x8000087c
+expansion-rom-version:
+bus-info: 0000:07:00.0 (and 0000:07:00.1)
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+supports-priv-flags: yes
+
+Any ideas?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
