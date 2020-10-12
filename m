@@ -2,57 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93ED628C50C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Oct 2020 00:59:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A871E28C54A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Oct 2020 01:32:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id E0C0023504;
-	Mon, 12 Oct 2020 22:59:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0A4C82E41E;
+	Mon, 12 Oct 2020 23:32:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Icq8fGesMv9l; Mon, 12 Oct 2020 22:59:26 +0000 (UTC)
+	with ESMTP id gAxYiacTnysu; Mon, 12 Oct 2020 23:32:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 9BB3A2E0BD;
-	Mon, 12 Oct 2020 22:59:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A90462E417;
+	Mon, 12 Oct 2020 23:32:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B4EB11BF20B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 22:59:22 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 691741BF95A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 23:31:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id 9B034274ED
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 22:59:22 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 6326A87AAE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 23:31:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4Uy+3lupPpRP for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Oct 2020 22:59:21 +0000 (UTC)
+ with ESMTP id 0aAKj7QZWr9S for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Oct 2020 23:31:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by silver.osuosl.org (Postfix) with ESMTPS id B4C7823504
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 22:59:20 +0000 (UTC)
-IronPort-SDR: yzsjtf6SVP42ksinoGWo+uTdQmp+xGfVp1T3JinJh98hIDs2+klmrJNVFwM/Bd9wE2yziRt+4C
- 842sSVLdIqEg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9772"; a="153645374"
-X-IronPort-AV: E=Sophos;i="5.77,368,1596524400"; d="scan'208";a="153645374"
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 8FEB687AAB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 23:31:29 +0000 (UTC)
+IronPort-SDR: XPRMI83QVNro6oG3lJM24k8nVWmbkYz9v8JqveTDhu7Qbe9B1k+6erVO+y4XdIJ8pkZcbko1+y
+ 9vfSAecI4Sow==
+X-IronPort-AV: E=McAfee;i="6000,8403,9772"; a="153648416"
+X-IronPort-AV: E=Sophos;i="5.77,368,1596524400"; d="scan'208";a="153648416"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2020 15:59:19 -0700
-IronPort-SDR: 3d6gYtvY73gt/XgLeiUeJa62VOeknafeh8Ed5Df7tl7aeABJPnjpndFgPFxgGbt/OvopSY+tfy
- cfrsF7e0lntw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,368,1596524400"; d="scan'208";a="329905610"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.244.129])
- by orsmga002.jf.intel.com with ESMTP; 12 Oct 2020 15:59:18 -0700
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 12 Oct 2020 15:53:26 -0700
-Message-Id: <20201012225326.15722-1-anthony.l.nguyen@intel.com>
-X-Mailer: git-send-email 2.20.1
+ 12 Oct 2020 16:31:28 -0700
+IronPort-SDR: tYujEEKuwB7pwkDEJNgfSBtOh7hwJ+YZEVhRvoIibttlBusG3o0pRElwiIGjx+C70rOitVdHyl
+ N8yvUi3stUVQ==
+X-IronPort-AV: E=Sophos;i="5.77,368,1596524400"; d="scan'208";a="313606559"
+Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Oct 2020 16:31:27 -0700
+Date: Mon, 12 Oct 2020 16:31:26 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: Matthew Wilcox <willy@infradead.org>
+Message-ID: <20201012233126.GD2046448@iweiny-DESK2.sc.intel.com>
+References: <20201009195033.3208459-23-ira.weiny@intel.com>
+ <20201009213434.GA839@sol.localdomain>
+ <20201010003954.GW20115@casper.infradead.org>
+ <20201010013036.GD1122@sol.localdomain>
+ <20201012065635.GB2046448@iweiny-DESK2.sc.intel.com>
+ <20201012161946.GA858@sol.localdomain>
+ <5d621db9-23d4-e140-45eb-d7fca2093d2b@intel.com>
+ <20201012164438.GA20115@casper.infradead.org>
+ <20201012195354.GC2046448@iweiny-DESK2.sc.intel.com>
+ <20201012200254.GB20115@casper.infradead.org>
 MIME-Version: 1.0
-Subject: [Intel-wired-lan] [PATCH] ice: remove dead code
+Content-Disposition: inline
+In-Reply-To: <20201012200254.GB20115@casper.infradead.org>
+User-Agent: Mutt/1.11.1 (2018-12-01)
+X-Mailman-Approved-At: Mon, 12 Oct 2020 23:32:52 +0000
+Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 22/58] fs/f2fs: Utilize
+ new kmap_thread()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,49 +79,102 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
+ linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
+ linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Dave Hansen <dave.hansen@intel.com>,
+ target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-kselftest@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
+ Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
+ devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
+ linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
+ Eric Biggers <ebiggers@kernel.org>, Ingo Molnar <mingo@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, kexec@lists.infradead.org,
+ xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
+ bpf@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
+ Fenghua Yu <fenghua.yu@intel.com>, intel-gfx@lists.freedesktop.org,
+ ecryptfs@vger.kernel.org, linux-um@lists.infradead.org,
+ reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-bcache@vger.kernel.org, Borislav Petkov <bp@alien8.de>,
+ Andy Lutomirski <luto@kernel.org>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ ceph-devel@vger.kernel.org, io-uring@vger.kernel.org, linux-cachefs@redhat.com,
+ linux-nfs@vger.kernel.org, linux-mm@kvack.org,
+ linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, samba-technical@lists.samba.org,
+ linux-kernel@vger.kernel.org, cluster-devel@redhat.com,
+ linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ linux-erofs@lists.ozlabs.org, linux-btrfs@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Bruce Allan <bruce.w.allan@intel.com>
+On Mon, Oct 12, 2020 at 09:02:54PM +0100, Matthew Wilcox wrote:
+> On Mon, Oct 12, 2020 at 12:53:54PM -0700, Ira Weiny wrote:
+> > On Mon, Oct 12, 2020 at 05:44:38PM +0100, Matthew Wilcox wrote:
+> > > On Mon, Oct 12, 2020 at 09:28:29AM -0700, Dave Hansen wrote:
+> > > > kmap_atomic() is always preferred over kmap()/kmap_thread().
+> > > > kmap_atomic() is _much_ more lightweight since its TLB invalidation is
+> > > > always CPU-local and never broadcast.
+> > > > 
+> > > > So, basically, unless you *must* sleep while the mapping is in place,
+> > > > kmap_atomic() is preferred.
+> > > 
+> > > But kmap_atomic() disables preemption, so the _ideal_ interface would map
+> > > it only locally, then on preemption make it global.  I don't even know
+> > > if that _can_ be done.  But this email makes it seem like kmap_atomic()
+> > > has no downsides.
+> > 
+> > And that is IIUC what Thomas was trying to solve.
+> > 
+> > Also, Linus brought up that kmap_atomic() has quirks in nesting.[1]
+> > 
+> > >From what I can see all of these discussions support the need to have something
+> > between kmap() and kmap_atomic().
+> > 
+> > However, the reason behind converting call sites to kmap_thread() are different
+> > between Thomas' patch set and mine.  Both require more kmap granularity.
+> > However, they do so with different reasons and underlying implementations but
+> > with the _same_ resulting semantics; a thread local mapping which is
+> > preemptable.[2]  Therefore they each focus on changing different call sites.
+> > 
+> > While this patch set is huge I think it serves a valuable purpose to identify a
+> > large number of call sites which are candidates for this new semantic.
+> 
+> Yes, I agree.  My problem with this patch-set is that it ties it to
+> some Intel feature that almost nobody cares about.
 
-The check for a NULL pf pointer is moot since the earlier declaration and
-assignment of struct device *dev already de-referenced the pointer.  Also,
-the only caller of ice_set_dflt_mib() already ensures pf is not NULL.
+I humbly disagree.  At this level the only thing this is tied to is the idea
+that there are additional memory protections available which can be enabled
+quickly on a per-thread basis.  PKS on Intel is but 1 implementation of that.
 
-Cc: Dave Ertman <david.m.ertman@intel.com>
-Reported-by: kernel test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+Even the kmap code only has knowledge that there is something which needs to be
+done special on a devm page.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 0e62142416b2..99c8555dd6a9 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -785,15 +785,9 @@ static void ice_set_dflt_mib(struct ice_pf *pf)
- 	u8 mib_type, *buf, *lldpmib = NULL;
- 	u16 len, typelen, offset = 0;
- 	struct ice_lldp_org_tlv *tlv;
--	struct ice_hw *hw;
-+	struct ice_hw *hw = &pf->hw;
- 	u32 ouisubtype;
- 
--	if (!pf) {
--		dev_dbg(dev, "%s NULL pf pointer\n", __func__);
--		return;
--	}
--
--	hw = &pf->hw;
- 	mib_type = SET_LOCAL_MIB_TYPE_LOCAL_MIB;
- 	lldpmib = kzalloc(ICE_LLDPDU_SIZE, GFP_KERNEL);
- 	if (!lldpmib) {
--- 
-2.20.1
+>
+> Maybe we should
+> care about it, but you didn't try very hard to make anyone care about
+> it in the cover letter.
 
+Ok my bad.  We have customers who care very much about restricting access to
+the PMEM pages to prevent bugs in the kernel from causing permanent damage to
+their data/file systems.  I'll reword the cover letter better.
+
+> 
+> For a future patch-set, I'd like to see you just introduce the new
+> API.  Then you can optimise the Intel implementation of it afterwards.
+> Those patch-sets have entirely different reviewers.
+
+I considered doing this.  But this seemed more logical because the feature is
+being driven by PMEM which is behind the kmap interface not by the users of the
+API.
+
+I can introduce a patch set with a kmap_thread() call which does nothing if
+that is more palatable but it seems wrong to me to do so.
+
+Ira
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
