@@ -1,72 +1,137 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A871E28C54A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Oct 2020 01:32:59 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 0A4C82E41E;
-	Mon, 12 Oct 2020 23:32:58 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gAxYiacTnysu; Mon, 12 Oct 2020 23:32:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id A90462E417;
-	Mon, 12 Oct 2020 23:32:54 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 691741BF95A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 23:31:30 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C956F28C8AB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Oct 2020 08:35:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 6326A87AAE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 23:31:30 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 60CA787A81;
+	Tue, 13 Oct 2020 06:35:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from hemlock.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7+Kvf+BXquLt; Tue, 13 Oct 2020 06:35:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by hemlock.osuosl.org (Postfix) with ESMTP id D30AA87A73;
+	Tue, 13 Oct 2020 06:35:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C3141BF33F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 06:35:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id 6EEF52740C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 06:35:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0aAKj7QZWr9S for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Oct 2020 23:31:29 +0000 (UTC)
+ with ESMTP id puRaczQiz3Kg for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Oct 2020 06:35:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 8FEB687AAB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Oct 2020 23:31:29 +0000 (UTC)
-IronPort-SDR: XPRMI83QVNro6oG3lJM24k8nVWmbkYz9v8JqveTDhu7Qbe9B1k+6erVO+y4XdIJ8pkZcbko1+y
- 9vfSAecI4Sow==
-X-IronPort-AV: E=McAfee;i="6000,8403,9772"; a="153648416"
-X-IronPort-AV: E=Sophos;i="5.77,368,1596524400"; d="scan'208";a="153648416"
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by silver.osuosl.org (Postfix) with ESMTPS id 1819C27404
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 06:35:06 +0000 (UTC)
+IronPort-SDR: X4x+NU282xgbic60B6dUzBe2SUh28PyHpNd+fPXDsEdpSGdatHZevrArIBbj67IhQwNTHgkMMS
+ /j6SRg7czN6g==
+X-IronPort-AV: E=McAfee;i="6000,8403,9772"; a="165970756"
+X-IronPort-AV: E=Sophos;i="5.77,369,1596524400"; d="scan'208";a="165970756"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2020 16:31:28 -0700
-IronPort-SDR: tYujEEKuwB7pwkDEJNgfSBtOh7hwJ+YZEVhRvoIibttlBusG3o0pRElwiIGjx+C70rOitVdHyl
- N8yvUi3stUVQ==
-X-IronPort-AV: E=Sophos;i="5.77,368,1596524400"; d="scan'208";a="313606559"
-Received: from iweiny-desk2.sc.intel.com (HELO localhost) ([10.3.52.147])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2020 16:31:27 -0700
-Date: Mon, 12 Oct 2020 16:31:26 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Matthew Wilcox <willy@infradead.org>
-Message-ID: <20201012233126.GD2046448@iweiny-DESK2.sc.intel.com>
-References: <20201009195033.3208459-23-ira.weiny@intel.com>
- <20201009213434.GA839@sol.localdomain>
- <20201010003954.GW20115@casper.infradead.org>
- <20201010013036.GD1122@sol.localdomain>
- <20201012065635.GB2046448@iweiny-DESK2.sc.intel.com>
- <20201012161946.GA858@sol.localdomain>
- <5d621db9-23d4-e140-45eb-d7fca2093d2b@intel.com>
- <20201012164438.GA20115@casper.infradead.org>
- <20201012195354.GC2046448@iweiny-DESK2.sc.intel.com>
- <20201012200254.GB20115@casper.infradead.org>
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Oct 2020 23:35:04 -0700
+IronPort-SDR: dOO668doPGUJ4Zju7PTW4HHWFo1QVBjyQi6uM1XnO0d1NodHopr2pRQcSDF8ijkpfxERQtpxHi
+ u3+L4X0PzIXg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,369,1596524400"; d="scan'208";a="345159190"
+Received: from fmsmsx605.amr.corp.intel.com ([10.18.126.85])
+ by fmsmga004.fm.intel.com with ESMTP; 12 Oct 2020 23:35:04 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx605.amr.corp.intel.com (10.18.126.85) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 12 Oct 2020 23:35:04 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Mon, 12 Oct 2020 23:35:04 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.173)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.1713.5; Mon, 12 Oct 2020 23:35:02 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dyP9X4yDBmhEechUNaRzyGGKjd6hxxucV/MWYImBiy2SmvyztIAkqiiT/2/u8ev40XVucp+Re09TDxKV2NJx3BLTUGE+5ZhKZlyqkl43qvS1tiQro0JPcM0IzS8pIyGqv3qQ4USXCuw4y2lVLFm6RoguAV3+yoJnJ1uuseAG7Tp34vHAssiyyxCfqUoyE3J/+OsAL7LndS08Vie45iCF5iPUD9PV07dmX9ZNiRRFx0heEXtQy6TY9uPhu3k+nqOhnkzkKmSyCH3zjLRVcGhmQRnCLUZq29M3qnSya17YTc1Z2kNQxUhc+vyM/NrhpuowelO5phZjgOQBW+G0KbVgwQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EAi1aOHQgcESmR7M0YvdXOEBiEz4xoU8KJy73aIWmh0=;
+ b=HhjMxVbhALfeNxMR37Y8GlX4sJu2cwUAw7OlaOrGBuawd3vtyeEs+nVXZBJRvKjXFkHSzjbmPKHDw+TxdZEoj8HkL24RV/FHfu3nyRDKsEiju9QHxJyduKMsQcXQWJHYehUe4dpq8feTd91mGywkLIxudG/aUs/q4x7Rox2WP6pP5Yj6b1PpM5LUe84M1lDU/tkrZH0MAfc/+nYMuwYwytxpAWMC560cZIzexQ2/K0MDAgzJVTafW/z6+UJZytoWl3y0vE9/oI1MqqNXe09XDxSyfCqtpnQS7t7SU4hw8aakmBuVOn3khtGwToAiNkzioBhHlGZxtRWs6J9lGAy2mw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=intel.onmicrosoft.com; 
+ s=selector2-intel-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EAi1aOHQgcESmR7M0YvdXOEBiEz4xoU8KJy73aIWmh0=;
+ b=kLM78Lh8hsP5fKnDEhMzUrZqaIE8XeXyc1YLR1V/jxQMnvoMIMXTcWK+EnhtLgpLuxDMFuT+35En3lY8JMThpxPbfBdGeEioCweI4S1uG0BLJIZ6xPVQlFvNFHeg+mhpMoKkyDFc0kHpiRrI891DaUhB6jlM5hYn4aa02XnfdMo=
+Received: from SN6PR11MB3008.namprd11.prod.outlook.com (2603:10b6:805:cf::18)
+ by SA2PR11MB5067.namprd11.prod.outlook.com (2603:10b6:806:111::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3455.30; Tue, 13 Oct
+ 2020 06:34:59 +0000
+Received: from SN6PR11MB3008.namprd11.prod.outlook.com
+ ([fe80::5072:297c:9cd1:48b3]) by SN6PR11MB3008.namprd11.prod.outlook.com
+ ([fe80::5072:297c:9cd1:48b3%7]) with mapi id 15.20.3455.030; Tue, 13 Oct 2020
+ 06:34:59 +0000
+From: "Kuruvinakunnel, George" <george.kuruvinakunnel@intel.com>
+To: Marek Majtyka <alardam@gmail.com>, "Karlsson, Magnus"
+ <magnus.karlsson@intel.com>, "Topel, Bjorn" <bjorn.topel@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Kirsher, Jeffrey T" <jeffrey.t.kirsher@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next] i40e: remove redundant
+ assigment
+Thread-Index: AQHWheecZ1AT+nXQY0G4US3AI+MauqmVNpBQ
+Date: Tue, 13 Oct 2020 06:34:58 +0000
+Message-ID: <SN6PR11MB30082C2927FF8287E58FF69EE2040@SN6PR11MB3008.namprd11.prod.outlook.com>
+References: <20200908123440.11278-1-marekx.majtyka@intel.com>
+In-Reply-To: <20200908123440.11278-1-marekx.majtyka@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+dlp-version: 11.5.1.3
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=intel.com;
+x-originating-ip: [106.200.10.148]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 6ecdb008-1ea7-42b3-db92-08d86f421b5c
+x-ms-traffictypediagnostic: SA2PR11MB5067:
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SA2PR11MB50675455DC84482CACF41FDEE2040@SA2PR11MB5067.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 601U2FXWoCq56qAnXmmPj4oVY17xJVkTJ5W9VQkxjS/AULhm7ds9INmbuQnBTTeMnDWwY53fGBqUrp5/TtBnkuGfqZJgcfmAfup5vekp1Y3ZU4X2FyEBlEPkcqfJUhg3ggIKqLt0BykqUKcb/VjuByKvLNgm8mrphQyqJyAUgjfa5yUsOOdDercUcClrtTu800atu0t7iJXwVEpbVT26HOJCuZLe0X9HxoWe6k7TiY3OIEU3wqJBdwwglANTLEVgM0gYUfGHK4frQ8bAE5f9lqy3ctC1t6v98OkafC4rk2xOqXPyBcIIlf5VWmPA3r0f
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR11MB3008.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(366004)(376002)(346002)(396003)(136003)(52536014)(4744005)(8936002)(5660300002)(9686003)(8676002)(71200400001)(186003)(478600001)(53546011)(4326008)(66556008)(54906003)(66476007)(2906002)(66446008)(66946007)(64756008)(33656002)(83380400001)(76116006)(55016002)(110136005)(316002)(7696005)(6506007)(26005)(86362001)(6636002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: AJ1b6ur0Kk9wLWt4fHeCSIioirMoFyDwjmy5PCjsO/Ix2kLiGJEqDpb5PmAb1bsM7awkaM5ICInmzloItEO7igwqLqI0Zc5pQUN5561Re5njOOn8jj4f5zT3+IBm1oe7vZSVT+6si8JmT4jiiep8I1nMrhdhiZhD9602u7Ev5Wfz5s0f3uf8K+8jPuckQ2U2x6AfAZcqXQ4RljWoA8C7SURjy/mLJRcbPgGIVDdKjtoTW+az6wQvT3k9vaMwrnLkBw7Gfiw2T1pF1R8BlLlHoRpwhzF3qe2d2u7gDUQ6i3TnL0lKVAvLtPTpHz6NLLQKmaeLNGLpcMU+Jd1/e5I5KVMLy65Z5XsFO6UFrALxr2cPKHuw+YWJt/sU6DACHRboGh9HYFVBVHi7qNSmKiyh+X51x51lHx+cr5YCL+ikmyntN3s9JQvomgs8Klo3TPBAY/Zca6LYzYN9SNV7hC2QQRnaefx9oZkLFdzG6+0hu0TQuSn3bYN4G8sG9a+OT4tiZnJK3ITOxZPlwL0u6KRBTzdAZU8nUJwbVletxkPcC02MvLoEAqlSvRMwKVYayM+tagHeh+oKWuLoHXRg3CsC9iqMrMLjvF2cLWLK0mPB7mcz3rfyDJrD+wTN8tpaDutKAt8oqF40Ndsy9JEoFEupeQ==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201012200254.GB20115@casper.infradead.org>
-User-Agent: Mutt/1.11.1 (2018-12-01)
-X-Mailman-Approved-At: Mon, 12 Oct 2020 23:32:52 +0000
-Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 22/58] fs/f2fs: Utilize
- new kmap_thread()
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR11MB3008.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6ecdb008-1ea7-42b3-db92-08d86f421b5c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Oct 2020 06:34:58.9131 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: DAqQOhvm0KYj6ZhvR0S1NjWB7SSFbdi9mGxCh6/FnyaHhZuXlKZR6yvDC5YlnfZXH8/adB1S9CVu5HC/AvWM4L5aB1FduNyPb9XXEU+PUh4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB5067
+X-OriginatorOrg: intel.com
+Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: remove redundant
+ assigment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,102 +144,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-aio@kvack.org, linux-efi@vger.kernel.org, kvm@vger.kernel.org,
- linux-doc@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
- linux-mmc@vger.kernel.org, Dave Hansen <dave.hansen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Dave Hansen <dave.hansen@intel.com>,
- target-devel@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-kselftest@vger.kernel.org, linux-f2fs-devel@lists.sourceforge.net,
- Thomas Gleixner <tglx@linutronix.de>, drbd-dev@lists.linbit.com,
- devel@driverdev.osuosl.org, linux-cifs@vger.kernel.org,
- linux-nilfs@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-rdma@vger.kernel.org, x86@kernel.org,
- amd-gfx@lists.freedesktop.org, linux-afs@lists.infradead.org,
- Eric Biggers <ebiggers@kernel.org>, Ingo Molnar <mingo@redhat.com>,
- intel-wired-lan@lists.osuosl.org, kexec@lists.infradead.org,
- xen-devel@lists.xenproject.org, linux-ext4@vger.kernel.org,
- bpf@vger.kernel.org, Dan Williams <dan.j.williams@intel.com>,
- Fenghua Yu <fenghua.yu@intel.com>, intel-gfx@lists.freedesktop.org,
- ecryptfs@vger.kernel.org, linux-um@lists.infradead.org,
- reiserfs-devel@vger.kernel.org, linux-block@vger.kernel.org,
- linux-bcache@vger.kernel.org, Borislav Petkov <bp@alien8.de>,
- Andy Lutomirski <luto@kernel.org>, Jaegeuk Kim <jaegeuk@kernel.org>,
- ceph-devel@vger.kernel.org, io-uring@vger.kernel.org, linux-cachefs@redhat.com,
- linux-nfs@vger.kernel.org, linux-mm@kvack.org,
- linux-ntfs-dev@lists.sourceforge.net, netdev@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, samba-technical@lists.samba.org,
- linux-kernel@vger.kernel.org, cluster-devel@redhat.com,
- linux-fsdevel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
- linux-erofs@lists.ozlabs.org, linux-btrfs@vger.kernel.org
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Fijalkowski,
+ Maciej" <maciej.fijalkowski@intel.com>, "Majtyka,
+ MarekX" <marekx.majtyka@intel.com>,
+ "maciejromanfijalkowski@gmain.com" <maciejromanfijalkowski@gmain.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 12, 2020 at 09:02:54PM +0100, Matthew Wilcox wrote:
-> On Mon, Oct 12, 2020 at 12:53:54PM -0700, Ira Weiny wrote:
-> > On Mon, Oct 12, 2020 at 05:44:38PM +0100, Matthew Wilcox wrote:
-> > > On Mon, Oct 12, 2020 at 09:28:29AM -0700, Dave Hansen wrote:
-> > > > kmap_atomic() is always preferred over kmap()/kmap_thread().
-> > > > kmap_atomic() is _much_ more lightweight since its TLB invalidation is
-> > > > always CPU-local and never broadcast.
-> > > > 
-> > > > So, basically, unless you *must* sleep while the mapping is in place,
-> > > > kmap_atomic() is preferred.
-> > > 
-> > > But kmap_atomic() disables preemption, so the _ideal_ interface would map
-> > > it only locally, then on preemption make it global.  I don't even know
-> > > if that _can_ be done.  But this email makes it seem like kmap_atomic()
-> > > has no downsides.
-> > 
-> > And that is IIUC what Thomas was trying to solve.
-> > 
-> > Also, Linus brought up that kmap_atomic() has quirks in nesting.[1]
-> > 
-> > >From what I can see all of these discussions support the need to have something
-> > between kmap() and kmap_atomic().
-> > 
-> > However, the reason behind converting call sites to kmap_thread() are different
-> > between Thomas' patch set and mine.  Both require more kmap granularity.
-> > However, they do so with different reasons and underlying implementations but
-> > with the _same_ resulting semantics; a thread local mapping which is
-> > preemptable.[2]  Therefore they each focus on changing different call sites.
-> > 
-> > While this patch set is huge I think it serves a valuable purpose to identify a
-> > large number of call sites which are candidates for this new semantic.
-> 
-> Yes, I agree.  My problem with this patch-set is that it ties it to
-> some Intel feature that almost nobody cares about.
+From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Marek Majtyka
+Sent: Tuesday, September 8, 2020 6:05 PM
+To: Karlsson, Magnus <magnus.karlsson@intel.com>; Topel, Bjorn <bjorn.topel@intel.com>; intel-wired-lan@lists.osuosl.org; Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>
+Cc: netdev@vger.kernel.org; Fijalkowski, Maciej <maciej.fijalkowski@intel.com>; Majtyka, MarekX <marekx.majtyka@intel.com>; maciejromanfijalkowski@gmain.com
+Subject: [Intel-wired-lan] [PATCH net-next] i40e: remove redundant assigment
 
-I humbly disagree.  At this level the only thing this is tied to is the idea
-that there are additional memory protections available which can be enabled
-quickly on a per-thread basis.  PKS on Intel is but 1 implementation of that.
+Remove a redundant assigment of the software ring pointer in the i40e driver. The variable is assigned twice with no use in between, so just get rid of the first occurrence.
 
-Even the kmap code only has knowledge that there is something which needs to be
-done special on a devm page.
+Fixes: 3b4f0b66c2b3 ("i40e, xsk: Migrate to new MEM_TYPE_XSK_BUFF_POOL")
+Signed-off-by: Marek Majtyka <marekx.majtyka@intel.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 1 -
+ 1 file changed, 1 deletion(-)
 
->
-> Maybe we should
-> care about it, but you didn't try very hard to make anyone care about
-> it in the cover letter.
+Tested-by: George Kuruvinakunnel <george.kuruvinakunnel@intel.com>
 
-Ok my bad.  We have customers who care very much about restricting access to
-the PMEM pages to prevent bugs in the kernel from causing permanent damage to
-their data/file systems.  I'll reword the cover letter better.
 
-> 
-> For a future patch-set, I'd like to see you just introduce the new
-> API.  Then you can optimise the Intel implementation of it afterwards.
-> Those patch-sets have entirely different reviewers.
-
-I considered doing this.  But this seemed more logical because the feature is
-being driven by PMEM which is behind the kmap interface not by the users of the
-API.
-
-I can introduce a patch set with a kmap_thread() call which does nothing if
-that is more palatable but it seems wrong to me to do so.
-
-Ira
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
