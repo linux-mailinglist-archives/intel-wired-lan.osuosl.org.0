@@ -1,59 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2749928D4AB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Oct 2020 21:38:59 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id DF78D874D2;
-	Tue, 13 Oct 2020 19:38:57 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
-	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id adeuJSIWswfk; Tue, 13 Oct 2020 19:38:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id D8B62874DD;
-	Tue, 13 Oct 2020 19:38:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 199A61BF983
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 19:37:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id F09C628D4D1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Oct 2020 21:42:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 0F17187D5A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 19:37:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id A160987D4C;
+	Tue, 13 Oct 2020 19:42:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
+	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WofJkCKh3mCo; Tue, 13 Oct 2020 19:42:44 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by whitealder.osuosl.org (Postfix) with ESMTP id 99DEE87D4B;
+	Tue, 13 Oct 2020 19:42:44 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1AE3F1BF868
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 19:41:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by silver.osuosl.org (Postfix) with ESMTP id DE2A92E194
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 19:41:51 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gvr98gLJhbpt; Tue, 13 Oct 2020 19:37:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by whitealder.osuosl.org (Postfix) with ESMTPS id BCA148709F;
- Tue, 13 Oct 2020 19:37:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=julNFvrjaFWkGS8+6W5JRZKKlBpdy19jf/hCoUdzdEM=; b=iOPFuszmnN+d5S+Ahd5uX1N4pM
- 9RF6NzOI8Sd5OvAHWw4A5T4V7HBzV5SYmEitcrT6L9uijzivpv3AAlrlQ+EeeMBwBERzfaRW96tDf
- PKzX+Sl2uCT2ULOLsIaATERkdV1cx8TAcLFUKC9PDDXh3BUb0PThsEH5DExMv1qS5B9SNDc+ifGE8
- i5adkcq3oTTGJk72Oatktad6H8mS4gZ84Snyq0JJxGsD2588n+HRQh2ps2O3qrgewJ3m2qt+GgsvN
- M0CVp3vtxwWhumjXm1Xcpjg1G/4g9JvOqlT5q+mB/7fQkjMGPjGhStjIFbjEA/fecM1aATnK3yCCv
- pha3ulKA==;
-Received: from willy by casper.infradead.org with local (Exim 4.92.3 #3 (Red
- Hat Linux)) id 1kSQ6F-000768-Gq; Tue, 13 Oct 2020 19:36:43 +0000
-Date: Tue, 13 Oct 2020 20:36:43 +0100
-From: Matthew Wilcox <willy@infradead.org>
-To: Dan Williams <dan.j.williams@intel.com>
-Message-ID: <20201013193643.GK20115@casper.infradead.org>
+ with ESMTP id SeJe9A8GzDNe for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Oct 2020 19:41:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-ej1-f68.google.com (mail-ej1-f68.google.com
+ [209.85.218.68])
+ by silver.osuosl.org (Postfix) with ESMTPS id 253412E18D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 19:41:49 +0000 (UTC)
+Received: by mail-ej1-f68.google.com with SMTP id h24so1422745ejg.9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Oct 2020 12:41:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=intel-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jlOzF1QhqikCoQxsvfJV6M6Hjgbrow9dB9uNs1AoGLE=;
+ b=kTjS5KS3nYcf/wrvTsuRt1BvzGw557kJOoPvyzYoBgiqb4b8bKtbI2/mMLiZYyRjFR
+ J9ydTuu0x47x+MEvbUBFhFH3/2QgRWgMVRtg9k6OLuYDe131Mp/cuPa30fJMGhSFjepr
+ cqBBXWNROTwzHkSN49lY/psarWhxU27El5EYWXEJaiWvhTqo66L6QK98x3Y0Yvi2nF9y
+ UTW/CUag9LBP+VfPW+1mn8JfLpPCSXoAzeg5FBjWoJMu0+7UEW9Ka5T8iigFwOd+JDvR
+ rrctnvxFOZW164mxjZq4IMmZGZxG4l2jAUbsCf6skOMzcKIRAwJ8OakZ/jL0rfexuXSd
+ 7ngQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jlOzF1QhqikCoQxsvfJV6M6Hjgbrow9dB9uNs1AoGLE=;
+ b=uc12YWT2ZONyKaaQEpZgJZUmMkCh8TshrNlZbQ0xHKBR8KKXi3I3SIFJTC1rcSRSIy
+ B55weSM4g7jnc4VjawWTI7/2mWB3aZB1aKP/AInKwj9R+tzlQwnl4DIa1FZv/aKefWR4
+ 4tk6JyxOcI1ghvmI8hSwMtdYNFEouJ+We2BigR4T6K/eEJEQS/Q1siVzg+7FOaKGKwaE
+ SiM9yr3U19qjWc/9j567bqdQDJ9jrIFsqJ7ts53fqREs5vEJXUJfWSaru+3gcUQECVTA
+ dyAktyzglfgMX1r4W61mzl7hBwRkojkhCpb12xIhKRQoBDgzDMKCtl40JCZ7B2zSZqsu
+ SUUg==
+X-Gm-Message-State: AOAM532YW0fI8mSrgcnfBeqwC6pfFFby2GcmMRlMEJ6n0mi2+iWsBA1V
+ 3tJUdD1pDlNzHmm7UArjPXQoKW9o0tDMp70OY8yPgA==
+X-Google-Smtp-Source: ABdhPJxGxhMZ7o2BYtIDXOupUr3pSHVXck0tIwC9HMZ0nIbp0pU6AQKRljKqMwVkoxmX0BYp74elTVEnpYvo3LWFH24=
+X-Received: by 2002:a17:906:7e47:: with SMTP id
+ z7mr1390518ejr.418.1602618108255; 
+ Tue, 13 Oct 2020 12:41:48 -0700 (PDT)
+MIME-Version: 1.0
 References: <20201009195033.3208459-1-ira.weiny@intel.com>
  <20201009195033.3208459-34-ira.weiny@intel.com>
  <CAPcyv4gL3jfw4d+SJGPqAD3Dp4F_K=X3domuN4ndAA1FQDGcPg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAPcyv4gL3jfw4d+SJGPqAD3Dp4F_K=X3domuN4ndAA1FQDGcPg@mail.gmail.com>
-X-Mailman-Approved-At: Tue, 13 Oct 2020 19:38:55 +0000
+ <20201013193643.GK20115@casper.infradead.org>
+In-Reply-To: <20201013193643.GK20115@casper.infradead.org>
+From: Dan Williams <dan.j.williams@intel.com>
+Date: Tue, 13 Oct 2020 12:41:36 -0700
+Message-ID: <CAPcyv4gL70FcLe8az7ezmpcZV=bG0Cka7daKWcCdmV4GoenSZw@mail.gmail.com>
+To: Matthew Wilcox <willy@infradead.org>
+X-Mailman-Approved-At: Tue, 13 Oct 2020 19:42:43 +0000
 Subject: Re: [Intel-wired-lan] [PATCH RFC PKS/PMEM 33/58] fs/cramfs: Utilize
  new kmap_thread()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -106,47 +124,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Oct 13, 2020 at 11:44:29AM -0700, Dan Williams wrote:
-> On Fri, Oct 9, 2020 at 12:52 PM <ira.weiny@intel.com> wrote:
+On Tue, Oct 13, 2020 at 12:37 PM Matthew Wilcox <willy@infradead.org> wrote:
+>
+> On Tue, Oct 13, 2020 at 11:44:29AM -0700, Dan Williams wrote:
+> > On Fri, Oct 9, 2020 at 12:52 PM <ira.weiny@intel.com> wrote:
+> > >
+> > > From: Ira Weiny <ira.weiny@intel.com>
+> > >
+> > > The kmap() calls in this FS are localized to a single thread.  To avoid
+> > > the over head of global PKRS updates use the new kmap_thread() call.
+> > >
+> > > Cc: Nicolas Pitre <nico@fluxnic.net>
+> > > Signed-off-by: Ira Weiny <ira.weiny@intel.com>
+> > > ---
+> > >  fs/cramfs/inode.c | 10 +++++-----
+> > >  1 file changed, 5 insertions(+), 5 deletions(-)
+> > >
+> > > diff --git a/fs/cramfs/inode.c b/fs/cramfs/inode.c
+> > > index 912308600d39..003c014a42ed 100644
+> > > --- a/fs/cramfs/inode.c
+> > > +++ b/fs/cramfs/inode.c
+> > > @@ -247,8 +247,8 @@ static void *cramfs_blkdev_read(struct super_block *sb, unsigned int offset,
+> > >                 struct page *page = pages[i];
+> > >
+> > >                 if (page) {
+> > > -                       memcpy(data, kmap(page), PAGE_SIZE);
+> > > -                       kunmap(page);
+> > > +                       memcpy(data, kmap_thread(page), PAGE_SIZE);
+> > > +                       kunmap_thread(page);
 > >
-> > From: Ira Weiny <ira.weiny@intel.com>
-> >
-> > The kmap() calls in this FS are localized to a single thread.  To avoid
-> > the over head of global PKRS updates use the new kmap_thread() call.
-> >
-> > Cc: Nicolas Pitre <nico@fluxnic.net>
-> > Signed-off-by: Ira Weiny <ira.weiny@intel.com>
-> > ---
-> >  fs/cramfs/inode.c | 10 +++++-----
-> >  1 file changed, 5 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/fs/cramfs/inode.c b/fs/cramfs/inode.c
-> > index 912308600d39..003c014a42ed 100644
-> > --- a/fs/cramfs/inode.c
-> > +++ b/fs/cramfs/inode.c
-> > @@ -247,8 +247,8 @@ static void *cramfs_blkdev_read(struct super_block *sb, unsigned int offset,
-> >                 struct page *page = pages[i];
-> >
-> >                 if (page) {
-> > -                       memcpy(data, kmap(page), PAGE_SIZE);
-> > -                       kunmap(page);
-> > +                       memcpy(data, kmap_thread(page), PAGE_SIZE);
-> > +                       kunmap_thread(page);
-> 
-> Why does this need a sleepable kmap? This looks like a textbook
-> kmap_atomic() use case.
+> > Why does this need a sleepable kmap? This looks like a textbook
+> > kmap_atomic() use case.
+>
+> There's a lot of code of this form.  Could we perhaps have:
+>
+> static inline void copy_to_highpage(struct page *to, void *vfrom, unsigned int size)
+> {
+>         char *vto = kmap_atomic(to);
+>
+>         memcpy(vto, vfrom, size);
+>         kunmap_atomic(vto);
+> }
+>
+> in linux/highmem.h ?
 
-There's a lot of code of this form.  Could we perhaps have:
-
-static inline void copy_to_highpage(struct page *to, void *vfrom, unsigned int size)
-{
-	char *vto = kmap_atomic(to);
-
-	memcpy(vto, vfrom, size);
-	kunmap_atomic(vto);
-}
-
-in linux/highmem.h ?
+Nice, yes, that could also replace the local ones in lib/iov_iter.c
+(memcpy_{to,from}_page())
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
