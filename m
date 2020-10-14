@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 344D628DC13
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Oct 2020 10:54:34 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4862928E2AB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Oct 2020 16:57:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DC4AC87B85;
-	Wed, 14 Oct 2020 08:54:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 632B887AC8;
+	Wed, 14 Oct 2020 14:57:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zsH2mMfm3YLS; Wed, 14 Oct 2020 08:54:32 +0000 (UTC)
+	with ESMTP id Y734RlygtHqy; Wed, 14 Oct 2020 14:57:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 02CA88763E;
-	Wed, 14 Oct 2020 08:54:32 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 5DBDB87AB1;
+	Wed, 14 Oct 2020 14:57:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 70AFF1BF285
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 08:54:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0A5C61BF286
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 14:25:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 6C2C9875FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 08:54:30 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 0602687A92
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 14:25:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HwT8xW_T3Nxn for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Oct 2020 08:54:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id AEBC0875AC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 08:54:29 +0000 (UTC)
-IronPort-SDR: XbqM3cne4taq47Yu5BpyDp7X7OLV6shZAoMYkxVnceufD1QqD7xzLICCFJXfMxiUdlZLAL30mx
- Vlvkg0wRfyQg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9773"; a="153897492"
-X-IronPort-AV: E=Sophos;i="5.77,374,1596524400"; d="scan'208";a="153897492"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Oct 2020 01:54:27 -0700
-IronPort-SDR: qbXNWq5n4bYU9DT9HjakI+az8LeJbEpXSppUnp6NNiCCtaE5kdp+3s+E7StbiXieZELMdVAwV4
- cQulYyTQnY3A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,374,1596524400"; d="scan'208";a="463808765"
-Received: from amlin-018-150.igk.intel.com ([10.102.18.150])
- by orsmga004.jf.intel.com with ESMTP; 14 Oct 2020 01:54:26 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 14 Oct 2020 08:54:09 +0000
-Message-Id: <20201014085409.13389-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.17.1
-Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix MAC address setting for
- a VF via Host/VM
+ with ESMTP id gxTdZRIuA0KK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Oct 2020 14:25:10 +0000 (UTC)
+X-Greylist: delayed 00:07:13 by SQLgrey-1.7.6
+Received: from lb3-smtp-cloud9.xs4all.net (lb3-smtp-cloud9.xs4all.net
+ [194.109.24.30])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 1E82387A91
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 14:25:09 +0000 (UTC)
+Received: from cust-69a1f852 ([IPv6:fc0c:c154:b0a8:48a5:61f4:988:bf85:2ed5])
+ by smtp-cloud9.xs4all.net with ESMTPSA
+ id ShbAkBzM84gEjShbBkMGFZ; Wed, 14 Oct 2020 16:17:54 +0200
+Date: Wed, 14 Oct 2020 16:17:48 +0200
+From: Antony Antony <antony@phenome.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20201014141748.GA4910@AntonyAntony.local>
+References: <20200828111101.GA16518@AntonyAntony.local>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200828111101.GA16518@AntonyAntony.local>
+X-CMAE-Envelope: MS4xfM7tIBMXFrSidQkeXvTSVbRD8MrWZ/VMUtOkYRfQ6SuK8JzCAEBPyN7vXSx+Q0WnsawhC1JOZScmSW/aE+TkDKn2ApbWR1KwZxc26HqHO56BPML1oyqT
+ HvM9PR/sWMeXj3lcCRx4z1eZXQ/d09YA4BF6dbiCe1LBLP23SSq8Nh3HBv/gNHId40wkzPwIUz6Mdw5glc80vZzoElBiohqaH3tFVH2SOgV95HUwbzlXltGO
+ UON4JKAj6Hj5ZXSrXnt3SxaDyQsy6YfqfadIIZPc3GtRHiRgi5I2k797vEgJpOIY5UhPejnahJMbaDEmyhAVA/YUq5MW3Qq+OcnXPqEjfe31ATaSEKqPmYtw
+ sDxtACkGcQC1xCvYCnTqvm8P+bNZ9XcNTTvJvIUU3Kla5an2yTfN0uD5RlM96HlQUkCo99kEMTADX4BKMHxZR0hazM7aTw4D/0xdYekBhz0Tu7VIf7vufTRS
+ CApweuCJ9LNxhwxc7CjG1GXJRLfCq53QurErTlG4N53kwslkmdWsGIFV/fqidrJNTlFiqR0coUh7CKSH
+X-Mailman-Approved-At: Wed, 14 Oct 2020 14:57:17 +0000
+Subject: [Intel-wired-lan] [PATCH] ixgbe: fail to create xfrm offload of
+ IPsec tunnel mode SA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,112 +65,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Slawomir Laba <slawomirx.laba@intel.com>
-MIME-Version: 1.0
+Cc: Shannon Nelson <shannon.nelson@oracle.com>, netdev@vger.kernel.org,
+ Steffen Klassert <steffen.klassert@secunet.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Slawomir Laba <slawomirx.laba@intel.com>
+Based on talks and indirect references ixgbe IPsec offlod do not
+support IPsec tunnel mode offload. It can only support IPsec transport
+mode offload. Now explicitly fail when creating non transport mode SA
+ with offload to avoid false performance expectations.
 
-Fix MAC setting flow for the PF driver.
-
-Update the unicast VF's MAC address in VF structure if it is
-a new setting in i40e_vc_add_mac_addr_msg.
-
-When unicast MAC address gets deleted, record that and
-set the new unicast MAC address that is already waiting in the filter
-list. This logic is based on the order of messages arriving to
-the PF driver.
-
-Without this change the MAC address setting was interpreted
-incorrectly in the following usecases:
-1) Print incorrect VF MAC or zero MAC
-ip link show dev $pf
-2) Don't preserve MAC between driver reload
-rmmod iavf; modprobe iavf
-3) Update VF MAC when macvlan was set
-ip link add link $vf address $mac $vf.1 type macvlan
-4) Failed to update mac address when VF was trusted
-ip link set dev $vf address $mac
-
-This includes all other configurations including above commands.
-
-Fixes: f657a6e1313b ("i40e: Fix VF driver MAC address configuration")
-Signed-off-by: Slawomir Laba <slawomirx.laba@intel.com>
+Fixes: 63a67fe229ea ("ixgbe: add ipsec offload add and remove SA")
+Signed-off-by: Antony Antony <antony@phenome.org>
 ---
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 25 +++++++++++++++++--
- 1 file changed, 23 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c | 5 +++++
+ drivers/net/ethernet/intel/ixgbevf/ipsec.c     | 5 +++++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 8e133d6..ef96f68 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2702,6 +2702,10 @@ static int i40e_vc_add_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
- 				spin_unlock_bh(&vsi->mac_filter_hash_lock);
- 				goto error_param;
- 			}
-+			if (is_valid_ether_addr(al->list[i].addr) &&
-+			    is_zero_ether_addr(vf->default_lan_addr.addr))
-+				ether_addr_copy(vf->default_lan_addr.addr,
-+						al->list[i].addr);
- 		}
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
+index eca73526ac86..54d47265a7ac 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
+@@ -575,6 +575,11 @@ static int ixgbe_ipsec_add_sa(struct xfrm_state *xs)
+ 		return -EINVAL;
  	}
- 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
-@@ -2729,6 +2733,7 @@ static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
- {
- 	struct virtchnl_ether_addr_list *al =
- 	    (struct virtchnl_ether_addr_list *)msg;
-+	bool was_unimac_deleted = false;
- 	struct i40e_pf *pf = vf->pf;
- 	struct i40e_vsi *vsi = NULL;
- 	i40e_status ret = 0;
-@@ -2748,6 +2753,8 @@ static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
- 			ret = I40E_ERR_INVALID_MAC_ADDR;
- 			goto error_param;
- 		}
-+		if (ether_addr_equal(al->list[i].addr, vf->default_lan_addr.addr))
-+			was_unimac_deleted = true;
- 	}
- 	vsi = pf->vsi[vf->lan_vsi_idx];
  
-@@ -2768,10 +2775,24 @@ static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
- 		dev_err(&pf->pdev->dev, "Unable to program VF %d MAC filters, error %d\n",
- 			vf->vf_id, ret);
- 
-+	if (vf->trusted && was_unimac_deleted) {
-+		struct i40e_mac_filter *f;
-+		struct hlist_node *h;
-+		u8 *macaddr = NULL;
-+		int bkt;
-+		/* set last unicast mac address as default */
-+		spin_lock_bh(&vsi->mac_filter_hash_lock);
-+		hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
-+			if (is_valid_ether_addr(f->macaddr))
-+				macaddr = f->macaddr;
-+		}
-+		if (macaddr)
-+			ether_addr_copy(vf->default_lan_addr.addr, macaddr);
-+		spin_unlock_bh(&vsi->mac_filter_hash_lock);
++	if (xs->props.mode != XFRM_MODE_TRANSPORT) {
++		netdev_err(dev, "Unsupported mode for ipsec offload\n");
++		return -EINVAL;
 +	}
- error_param:
- 	/* send the response to the VF */
--	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR,
--				       ret);
-+	return i40e_vc_send_resp_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR, ret);
- }
++
+ 	if (ixgbe_ipsec_check_mgmt_ip(xs)) {
+ 		netdev_err(dev, "IPsec IP addr clash with mgmt filters\n");
+ 		return -EINVAL;
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ipsec.c b/drivers/net/ethernet/intel/ixgbevf/ipsec.c
+index 5170dd9d8705..caaea2c920a6 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ipsec.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ipsec.c
+@@ -272,6 +272,11 @@ static int ixgbevf_ipsec_add_sa(struct xfrm_state *xs)
+ 		return -EINVAL;
+ 	}
  
- /**
++	if (xs->props.mode != XFRM_MODE_TRANSPORT) {
++		netdev_err(dev, "Unsupported mode for ipsec offload\n");
++		return -EINVAL;
++	}
++
+ 	if (xs->xso.flags & XFRM_OFFLOAD_INBOUND) {
+ 		struct rx_sa rsa;
+ 
 -- 
-2.17.1
-
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
+2.21.3
 
 _______________________________________________
 Intel-wired-lan mailing list
