@@ -1,70 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9374C290795
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Oct 2020 16:44:49 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 666F8290C2F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Oct 2020 21:21:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 5827888693;
-	Fri, 16 Oct 2020 14:44:48 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id 1EF0E881E9;
+	Fri, 16 Oct 2020 19:21:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4RH7zcnYlctc; Fri, 16 Oct 2020 14:44:47 +0000 (UTC)
+	with ESMTP id cIdbSHs9Lr7b; Fri, 16 Oct 2020 19:21:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E37A288937;
-	Fri, 16 Oct 2020 14:44:46 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id A98EB8837C;
+	Fri, 16 Oct 2020 19:21:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B86011BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 12:21:05 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 062FB1BF28A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 19:21:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id B38C088BC3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 12:21:05 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 01AAB889AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 19:21:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NW0+MMF7bIEV for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Oct 2020 12:21:04 +0000 (UTC)
+ with ESMTP id 6Sd8H2nIg-wW for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Oct 2020 19:21:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 37FB588BBC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 12:21:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=ZUmWjNg65V6AiFrCgaLFBLQXLIVV8qim1PDjDYaGvo4=; b=KfVXg1CGrkJBMgna6XMAK92lmy
- rZ2nMvNRNI6MsIvb7H6Ot9k6iXWvJDUsz4Nifz9deCLlH8Fc6JWNPrBEa69q20Xn8cg1w1GiS7ZD/
- SlOv8NPpdHDXcyNfo1C6pWTC+kKcZHRwprCMys5LCGK87ukyg8NEtiodChPxwTz9t1uqNL5akXq52
- OBBf6HNe1bua1XTzhReL2j3vae+lhlaZzjElMEmlD+X54wI1hd3LKbrz06HUpcZ8/iH75eyfKmOIh
- D84WSri5aJOa64SHb+vddNKk82n2Hp41rbRUdJOHsLsxQfnmR2quEjFJXw/ZMyoCbIuUL7BdNOER6
- 9Edddoxw==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTOj4-0007HQ-FF; Fri, 16 Oct 2020 12:20:50 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 93549889A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 19:21:29 +0000 (UTC)
+Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com
+ (c-67-180-217-166.hsd1.ca.comcast.net [67.180.217.166])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id DA3F13050F0;
- Fri, 16 Oct 2020 14:20:46 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id C6543203EB17E; Fri, 16 Oct 2020 14:20:46 +0200 (CEST)
-Date: Fri, 16 Oct 2020 14:20:46 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Nitesh Narayan Lal <nitesh@redhat.com>
-Message-ID: <20201016122046.GP2611@hirez.programming.kicks-ass.net>
-References: <20200928183529.471328-1-nitesh@redhat.com>
- <20200928183529.471328-5-nitesh@redhat.com>
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BD86A20EDD;
+ Fri, 16 Oct 2020 19:21:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1602876089;
+ bh=P+ivZQj1Yqwh0eMrFuoEe9IMBcx15gCBiKv4vonI4dw=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=U6ELHr8aNe6X5y8IN03MaGd83m4ZLTdJE7oEepvo0C+a6dOF7YoaLZT34mmMIC0/C
+ 2yxIK+hEYivvhyXjKi9hfh8K3GXKXXB6tQ5iuCos+oPkj1egTXOrDA+UAcaXm7Kbh5
+ jYsnFANl+CX5Sisf5Z5fXYN7iC9uI44LwoW09Ie8=
+Date: Fri, 16 Oct 2020 12:21:26 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ian Kumlien <ian.kumlien@gmail.com>
+Message-ID: <20201016122122.0a70f5a3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <CAA85sZs9wswn06hd7ien2B_fyqFM9kEWL_-vXQN-sjhqisizaQ@mail.gmail.com>
+References: <CAA85sZv=13q8NXbjdf7+R=wu0Q5=Vj9covZ24e9Ew2DCd7S==A@mail.gmail.com>
+ <CAA85sZs9wswn06hd7ien2B_fyqFM9kEWL_-vXQN-sjhqisizaQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200928183529.471328-5-nitesh@redhat.com>
-X-Mailman-Approved-At: Fri, 16 Oct 2020 14:44:44 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
- pci_alloc_irq_vectors() to housekeeping CPUs
+Subject: Re: [Intel-wired-lan] ixgbe - only presenting one out of four
+ interfaces on 5.9
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,87 +66,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, linux-pci@vger.kernel.org, sassmann@redhat.com,
- vincent.guittot@linaro.org, hch@infradead.org, mingo@redhat.com,
- intel-wired-lan@lists.osuosl.org, helgaas@kernel.org, thomas.lendacky@amd.com,
- lgoncalv@redhat.com, frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com,
- bhelgaas@google.com, mike.marciniszyn@intel.com, netdev@vger.kernel.org,
- dennis.dalessandro@intel.com, mtosatti@redhat.com,
- linux-kernel@vger.kernel.org
+Cc: Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Sep 28, 2020 at 02:35:29PM -0400, Nitesh Narayan Lal wrote:
-> If we have isolated CPUs dedicated for use by real-time tasks, we try to
-> move IRQs to housekeeping CPUs from the userspace to reduce latency
-> overhead on the isolated CPUs.
+On Fri, 16 Oct 2020 11:35:15 +0200 Ian Kumlien wrote:
+> Adding netdev, someone might have a clue of what to look at...
 > 
-> If we allocate too many IRQ vectors, moving them all to housekeeping CPUs
-> may exceed per-CPU vector limits.
-> 
-> When we have isolated CPUs, limit the number of vectors allocated by
-> pci_alloc_irq_vectors() to the minimum number required by the driver, or
-> to one per housekeeping CPU if that is larger.
-> 
-> Signed-off-by: Nitesh Narayan Lal <nitesh@redhat.com>
-> ---
->  drivers/pci/msi.c | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
-> 
-> diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
-> index 30ae4ffda5c1..8c156867803c 100644
-> --- a/drivers/pci/msi.c
-> +++ b/drivers/pci/msi.c
-> @@ -23,6 +23,7 @@
->  #include <linux/slab.h>
->  #include <linux/irqdomain.h>
->  #include <linux/of_irq.h>
-> +#include <linux/sched/isolation.h>
->  
->  #include "pci.h"
->  
-> @@ -1191,8 +1192,25 @@ int pci_alloc_irq_vectors_affinity(struct pci_dev *dev, unsigned int min_vecs,
->  				   struct irq_affinity *affd)
->  {
->  	struct irq_affinity msi_default_affd = {0};
-> +	unsigned int hk_cpus;
->  	int nvecs = -ENOSPC;
->  
-> +	hk_cpus = housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
-> +
-> +	/*
-> +	 * If we have isolated CPUs for use by real-time tasks, to keep the
-> +	 * latency overhead to a minimum, device-specific IRQ vectors are moved
-> +	 * to the housekeeping CPUs from the userspace by changing their
-> +	 * affinity mask. Limit the vector usage to keep housekeeping CPUs from
-> +	 * running out of IRQ vectors.
-> +	 */
-> +	if (hk_cpus < num_online_cpus()) {
-> +		if (hk_cpus < min_vecs)
-> +			max_vecs = min_vecs;
-> +		else if (hk_cpus < max_vecs)
-> +			max_vecs = hk_cpus;
+> On Mon, Oct 12, 2020 at 9:20 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
+> >
+> > Hi,
+> >
+> > I was really surprised when i rebooted my firewall and there was
+> > network issues, I was even more surprised when
+> > only one of the four ports of my ixbe (x553) nic was available when booted.
 
-is that:
+Just to be sure you mean that the 3 devices are not present in ip link
+show?
 
-		max_vecs = clamp(hk_cpus, min_vecs, max_vecs);
+> > You can actually see it dmesg... And i tried some basic looking at
+> > changes to see if it was obvious.... but..
 
-Also, do we really need to have that conditional on hk_cpus <
-num_online_cpus()? That is, why can't we do this unconditionally?
+Showing a full dmesg may be helpful, but looking at what you posted it
+seems like the driver gets past the point where netdev gets registered,
+so the only thing that could fail after that point AFIACT is
+mdiobus_register(). Could be some breakage in MDIO.
 
-And what are the (desired) semantics vs hotplug? Using a cpumask without
-excluding hotplug is racy.
-
-> +	}
-> +
->  	if (flags & PCI_IRQ_AFFINITY) {
->  		if (!affd)
->  			affd = &msi_default_affd;
-> -- 
-> 2.18.2
-> 
+Any chance you could fire up perf, bpftrace and install a kretprobe to
+see what mdiobus_register() returns? You can rebind the device to the
+driver through sysfs.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
