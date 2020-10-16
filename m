@@ -1,87 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4732428E68A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Oct 2020 20:38:55 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A4382901FD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Oct 2020 11:35:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DAD1887DC7;
-	Wed, 14 Oct 2020 18:38:53 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B56AE204AE;
+	Fri, 16 Oct 2020 09:35:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R0483T+vB3Ll; Wed, 14 Oct 2020 18:38:53 +0000 (UTC)
+	with ESMTP id I6xO3auQ6UJe; Fri, 16 Oct 2020 09:35:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id DFFC687E3A;
-	Wed, 14 Oct 2020 18:38:52 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 196712E3EB;
+	Fri, 16 Oct 2020 09:35:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C3E241BF40D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 18:38:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 113241BF32B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 09:35:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id AF6862E515
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 18:38:50 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 03235204AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 09:35:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TkwKl9oS83S3 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Oct 2020 18:38:50 +0000 (UTC)
-X-Greylist: delayed 00:18:41 by SQLgrey-1.7.6
-Received: from mail-oi1-f194.google.com (mail-oi1-f194.google.com
- [209.85.167.194])
- by silver.osuosl.org (Postfix) with ESMTPS id DDCB12E2B6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 18:38:49 +0000 (UTC)
-Received: by mail-oi1-f194.google.com with SMTP id 16so213077oix.9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Oct 2020 11:38:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pensando.io; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-transfer-encoding:content-language;
- bh=kfEv4awu8atL/IHfwBZVeJrgE2FzagYW1xzPmuwt4qQ=;
- b=ckMvx9f5EmMdghDDYDwX6P/p/F1NS5riGHkaDbkDdvP1VEfAk52gCyy4EWCOmfOmMZ
- QfFVL/Ee33cl7/qru6cqo4S7fdLsXiRFTAY3HCwl9nQXlECaoC88nHWgKD3P48HytQLh
- EfPLuR9Zj4IS1rIBuAeXYf53jkQX1OZZ4XGddSs+2NpQ4jck5fEF6kelE/h1ncu+ageR
- XEOdkCU4UB55MhsKfaqEChgpyDuhVSSq1mHYcO7eKaiBYIEAgrspmk3L5L79GBoZRWHd
- H4ODs0+1fHN9Pm+ie6jf3qWoj5hFVT8e4t6BIqpCYYo7nhgHjex05zN6RijTSFD7ku/F
- RJJw==
+ with ESMTP id FahSOtpR3feZ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Oct 2020 09:35:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
+Received: from mail-qv1-f47.google.com (mail-qv1-f47.google.com
+ [209.85.219.47])
+ by silver.osuosl.org (Postfix) with ESMTPS id 6305420363
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 09:35:27 +0000 (UTC)
+Received: by mail-qv1-f47.google.com with SMTP id 13so793370qvc.9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Oct 2020 02:35:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=kTL8KbBSI0PcS7UrUtEs69uV66CPRIVv/CKLzegyajI=;
+ b=JZlZclLMtR+uBeAFY9HIUeNr913zwNSPbLEYoyqZ23tLEVSsq9YVR4M9dR8aA+dFQH
+ UqvW9U987TFG4FuzSfbdlwNRwbwtZtqp2iSDvWXEwMXoLdv9E7OvBz/mdEYN9lyzb3Ke
+ xlcjENCsHFAX+SlZkRYk84RjGHYnycoY+tixuTmH0rBh9dxOarSFNb0ouLzIXNzWRRJO
+ QJ03f8aJh61B6ewPxVTKbTKBAbkcPWBJ3r79IV7ccBgY1dopk3fjOVUrpYry2fsUI6t9
+ fMmMPlpjgsVypIL81b+Ll2ZZJXDqUHYeDe7sJrtG/jnEmB2n9Av2EkU1cpRrqFb7POwI
+ 7YXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=kfEv4awu8atL/IHfwBZVeJrgE2FzagYW1xzPmuwt4qQ=;
- b=F/UbGtv4jqOBKdnNBuE6FDAj/OSZ/qGQej7sCyPVdjcLmgHf32xXoQds+U4yV3PbgJ
- VGToogvA9dwICZvJOO+yBG7ap9Qyh9g9ZCRc4JdwFeChVc1FwuCZdezIdT9J2/i4YLxv
- qKcbt43E9thYTK3bJ48RLXjVEe5CIzdAkZgeW/blHJxb1m9X6IJ+DdgvuDPCAVaqfs+R
- 9/FBOCSkefsFUshqoVnPsixSh/SAIwIg6n8uoJGftK6PoqnzrhG+BnbKE5qmN0kM+w18
- HQf7s2PkrZkqI4UzdFok4GLQ2KmWoWkpC98LsbB8AhgWoYQwTXDfIS8JF2OvQgus3gtS
- Y49g==
-X-Gm-Message-State: AOAM530A8kB/Sc1TuVrVuiMz+r7kojcmezJzcbLeFr0syhocct1tvwym
- 2w9SDKz9L/cCWvx9GjbupV8m+VndtqzVSQ==
-X-Google-Smtp-Source: ABdhPJytr0VF52B1YB5qdg+xOstSEndwbEPCKFwMbHBIKSdoz6mr52meI9PWdRlUJ6pu/A4wtWPBxw==
-X-Received: by 2002:a17:90a:5285:: with SMTP id w5mr459182pjh.62.1602699264560; 
- Wed, 14 Oct 2020 11:14:24 -0700 (PDT)
-Received: from Shannons-MacBook-Pro.local
- (static-50-53-47-17.bvtn.or.frontiernet.net. [50.53.47.17])
- by smtp.gmail.com with ESMTPSA id q123sm291252pfq.56.2020.10.14.11.14.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Oct 2020 11:14:23 -0700 (PDT)
-To: Antony Antony <antony@phenome.org>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-References: <20200828111101.GA16518@AntonyAntony.local>
- <20201014141748.GA4910@AntonyAntony.local>
-From: Shannon Nelson <snelson@pensando.io>
-Message-ID: <9ca1d11f-5dfa-1be1-6ced-b046dddd5d00@pensando.io>
-Date: Wed, 14 Oct 2020 11:14:21 -0700
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:68.0)
- Gecko/20100101 Thunderbird/68.12.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=kTL8KbBSI0PcS7UrUtEs69uV66CPRIVv/CKLzegyajI=;
+ b=KomcFhD0+qKCER1rvdgGzoctn3iDW6Zbc7pRJOWlLgt1N35v01ANCLx7bCBXugwYbO
+ ZpThob2dswNwp9AutDaxq23vVYDnxc3AxuWEoG0h1c9OqxCHLbar+yLbQJEaX5RsEC7x
+ yO19Rod4QZLJdZWt/r1VPXbGY5DPfkQF9dAqTi6SJx+iqF1ePTUr5XhmcjnQ1xXU3amJ
+ jIA03t+Gzm/GdC+Y5WjOzFOYEbcqxnwuRDp9OGVhEZZHFxGOPlyxyLIErWTWZJmK2TuO
+ OCJEtBasJoOi4/zRqoIv6rGkD5R3c8xXGv75imvKrM5nVfIUy/V1jPtjubs1LK6N/miq
+ WSFg==
+X-Gm-Message-State: AOAM532zoLBKtl/zhInslu1wF9IObbvcGojNkLXtsa8T9g77DgM1K7oV
+ QZ7ygrYN7/P8EExe128HlIcc7cF0kryYSEPg/cU=
+X-Google-Smtp-Source: ABdhPJyYkAIJ3d4kEo3kKj4YzGbkdy7mSbNbEei4GIHZrw8zOCDqaO9v1XNwdZlHSVLwY2uKHlTDQaLT180uLZ75nPI=
+X-Received: by 2002:a0c:9e0e:: with SMTP id p14mr2895900qve.25.1602840926171; 
+ Fri, 16 Oct 2020 02:35:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201014141748.GA4910@AntonyAntony.local>
-Content-Language: en-US
-Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: fail to create xfrm offload of
- IPsec tunnel mode SA
+References: <CAA85sZv=13q8NXbjdf7+R=wu0Q5=Vj9covZ24e9Ew2DCd7S==A@mail.gmail.com>
+In-Reply-To: <CAA85sZv=13q8NXbjdf7+R=wu0Q5=Vj9covZ24e9Ew2DCd7S==A@mail.gmail.com>
+From: Ian Kumlien <ian.kumlien@gmail.com>
+Date: Fri, 16 Oct 2020 11:35:15 +0200
+Message-ID: <CAA85sZs9wswn06hd7ien2B_fyqFM9kEWL_-vXQN-sjhqisizaQ@mail.gmail.com>
+To: jeffrey.t.kirsher@intel.com, 
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>, 
+ Linux Kernel Network Developers <netdev@vger.kernel.org>
+Subject: Re: [Intel-wired-lan] ixgbe - only presenting one out of four
+ interfaces on 5.9
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,63 +82,131 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Shannon Nelson <shannon.nelson@oracle.com>, netdev@vger.kernel.org,
- Steffen Klassert <steffen.klassert@secunet.com>,
- intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/14/20 7:17 AM, Antony Antony wrote:
-> Based on talks and indirect references ixgbe IPsec offlod do not
-> support IPsec tunnel mode offload. It can only support IPsec transport
-> mode offload. Now explicitly fail when creating non transport mode SA
->   with offload to avoid false performance expectations.
+Adding netdev, someone might have a clue of what to look at...
+
+On Mon, Oct 12, 2020 at 9:20 PM Ian Kumlien <ian.kumlien@gmail.com> wrote:
 >
-> Fixes: 63a67fe229ea ("ixgbe: add ipsec offload add and remove SA")
-> Signed-off-by: Antony Antony <antony@phenome.org>
-
-Acked-by: Shannon Nelson <snelson@pensando.io>
-
-> ---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c | 5 +++++
->   drivers/net/ethernet/intel/ixgbevf/ipsec.c     | 5 +++++
->   2 files changed, 10 insertions(+)
+> Hi,
 >
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
-> index eca73526ac86..54d47265a7ac 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
-> @@ -575,6 +575,11 @@ static int ixgbe_ipsec_add_sa(struct xfrm_state *xs)
->   		return -EINVAL;
->   	}
->   
-> +	if (xs->props.mode != XFRM_MODE_TRANSPORT) {
-> +		netdev_err(dev, "Unsupported mode for ipsec offload\n");
-> +		return -EINVAL;
-> +	}
-> +
->   	if (ixgbe_ipsec_check_mgmt_ip(xs)) {
->   		netdev_err(dev, "IPsec IP addr clash with mgmt filters\n");
->   		return -EINVAL;
-> diff --git a/drivers/net/ethernet/intel/ixgbevf/ipsec.c b/drivers/net/ethernet/intel/ixgbevf/ipsec.c
-> index 5170dd9d8705..caaea2c920a6 100644
-> --- a/drivers/net/ethernet/intel/ixgbevf/ipsec.c
-> +++ b/drivers/net/ethernet/intel/ixgbevf/ipsec.c
-> @@ -272,6 +272,11 @@ static int ixgbevf_ipsec_add_sa(struct xfrm_state *xs)
->   		return -EINVAL;
->   	}
->   
-> +	if (xs->props.mode != XFRM_MODE_TRANSPORT) {
-> +		netdev_err(dev, "Unsupported mode for ipsec offload\n");
-> +		return -EINVAL;
-> +	}
-> +
->   	if (xs->xso.flags & XFRM_OFFLOAD_INBOUND) {
->   		struct rx_sa rsa;
->   
-
+> I was really surprised when i rebooted my firewall and there was
+> network issues, I was even more surprised when
+> only one of the four ports of my ixbe (x553) nic was available when booted.
+>
+> You can actually see it dmesg... And i tried some basic looking at
+> changes to see if it was obvious.... but..
+>
+> anyway, on v5.8.14:
+> dmesg |grep ixgbe
+> [    1.355454] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver -
+> version 5.1.0-k
+> [    1.355455] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+> [    1.711629] ixgbe 0000:06:00.0: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    1.838170] ixgbe 0000:06:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    1.838173] ixgbe 0000:06:00.0: 0c:c4:7a:fa:3d:4a
+> [    1.882060] ixgbe 0000:06:00.0: Intel(R) 10 Gigabit Network Connection
+> [    1.882196] libphy: ixgbe-mdio: probed
+> [    2.234835] ixgbe 0000:06:00.1: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    2.361374] ixgbe 0000:06:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    2.361377] ixgbe 0000:06:00.1: 0c:c4:7a:fa:3d:4b
+> [    2.405281] ixgbe 0000:06:00.1: Intel(R) 10 Gigabit Network Connection
+> [    2.757541] ixgbe 0000:07:00.0: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    2.884104] ixgbe 0000:07:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    2.884107] ixgbe 0000:07:00.0: 0c:c4:7a:fa:3d:4c
+> [    2.928022] ixgbe 0000:07:00.0: Intel(R) 10 Gigabit Network Connection
+> [    3.280728] ixgbe 0000:07:00.1: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    3.407274] ixgbe 0000:07:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    3.407276] ixgbe 0000:07:00.1: 0c:c4:7a:fa:3d:4d
+> [    3.451155] ixgbe 0000:07:00.1: Intel(R) 10 Gigabit Network Connection
+> [    4.648725] ixgbe 0000:07:00.0 eno3: renamed from eth2
+> [    4.659827] ixgbe 0000:06:00.0 eno1: renamed from eth0
+> [    4.674272] ixgbe 0000:07:00.1 eno4: renamed from eth3
+> [    4.685838] ixgbe 0000:06:00.1 eno2: renamed from eth1
+> [    6.070294] ixgbe 0000:06:00.0: registered PHC device on eno1
+> [    7.178307] ixgbe 0000:07:00.0: registered PHC device on eno3
+> [    7.421199] ixgbe 0000:07:00.1: registered PHC device on eno4
+> [    7.662712] ixgbe 0000:06:00.1: registered PHC device on eno2
+> [    9.587640] ixgbe 0000:06:00.0 eno1: NIC Link is Up 1 Gbps, Flow
+> Control: RX/TX
+> [   10.605594] ixgbe 0000:07:00.1 eno4: NIC Link is Up 1 Gbps, Flow
+> Control: RX/TX
+> [   10.754615] ixgbe 0000:07:00.0 eno3: NIC Link is Up 1 Gbps, Flow
+> Control: RX/TX
+> [   10.768586] ixgbe 0000:06:00.1 eno2: NIC Link is Up 1 Gbps, Flow
+> Control: RX/TX
+>
+> on 5.9:
+> dmesg |grep ixbge
+> [    1.570400] ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver
+> [    1.570401] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+> [    1.928030] ixgbe 0000:06:00.0: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    2.054554] ixgbe 0000:06:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    2.054556] ixgbe 0000:06:00.0: 0c:c4:7a:fa:3d:4a
+> [    2.098404] ixgbe 0000:06:00.0: Intel(R) 10 Gigabit Network Connection
+> [    2.098541] libphy: ixgbe-mdio: probed
+> [    2.453350] ixgbe 0000:06:00.1: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    2.579938] ixgbe 0000:06:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    2.579941] ixgbe 0000:06:00.1: 0c:c4:7a:fa:3d:4b
+> [    2.623783] ixgbe 0000:06:00.1: Intel(R) 10 Gigabit Network Connection
+> [    2.987339] ixgbe 0000:07:00.0: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    3.113864] ixgbe 0000:07:00.0: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    3.113867] ixgbe 0000:07:00.0: 0c:c4:7a:fa:3d:4c
+> [    3.157635] ixgbe 0000:07:00.0: Intel(R) 10 Gigabit Network Connection
+> [    3.529503] ixgbe 0000:07:00.1: Multiqueue Enabled: Rx Queue count
+> = 12, Tx Queue count = 12 XDP Queue count = 0
+> [    3.656041] ixgbe 0000:07:00.1: MAC: 6, PHY: 27, PBA No: 030000-000
+> [    3.656043] ixgbe 0000:07:00.1: 0c:c4:7a:fa:3d:4d
+> [    3.699856] ixgbe 0000:07:00.1: Intel(R) 10 Gigabit Network Connection
+> [    4.646247] ixgbe 0000:06:00.0 eno1: renamed from eth0
+> [    6.183074] ixgbe 0000:06:00.0: registered PHC device on eno1
+> [    9.570382] ixgbe 0000:06:00.0 eno1: NIC Link is Up 1 Gbps, Flow
+> Control: RX/TX
+>
+> lspci....
+> 06:00.0 Ethernet controller: Intel Corporation Ethernet Connection
+> X553 1GbE (rev 11)
+> 06:00.1 Ethernet controller: Intel Corporation Ethernet Connection
+> X553 1GbE (rev 11)
+> 07:00.0 Ethernet controller: Intel Corporation Ethernet Connection
+> X553 1GbE (rev 11)
+> 07:00.1 Ethernet controller: Intel Corporation Ethernet Connection
+> X553 1GbE (rev 11)
+>
+> ethtool -i eno1 and eno2
+> driver: ixgbe
+> version: 5.1.0-k
+> firmware-version: 0x80000877
+> expansion-rom-version:
+> bus-info: 0000:06:00.0 (and 0000:06:00.1)
+> supports-statistics: yes
+> supports-test: yes
+> supports-eeprom-access: yes
+> supports-register-dump: yes
+>
+> while eno3 and eno4 gives:
+> driver: ixgbe
+> version: 5.1.0-k
+> firmware-version: 0x8000087c
+> expansion-rom-version:
+> bus-info: 0000:07:00.0 (and 0000:07:00.1)
+> supports-statistics: yes
+> supports-test: yes
+> supports-eeprom-access: yes
+> supports-register-dump: yes
+> supports-priv-flags: yes
+>
+> Any ideas?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
