@@ -1,78 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4A4E29205F
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 18 Oct 2020 23:59:27 +0200 (CEST)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32E93292244
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Oct 2020 07:43:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 5D51087105;
-	Sun, 18 Oct 2020 21:59:26 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id B4EE3875F6;
+	Mon, 19 Oct 2020 05:43:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oa5BtbwNdPOj; Sun, 18 Oct 2020 21:59:26 +0000 (UTC)
+	with ESMTP id KZtzVetx--h0; Mon, 19 Oct 2020 05:43:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id A57A586B18;
-	Sun, 18 Oct 2020 21:59:25 +0000 (UTC)
+	by hemlock.osuosl.org (Postfix) with ESMTP id ECCB7875F3;
+	Mon, 19 Oct 2020 05:43:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3C69B1BF568
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Oct 2020 19:18:05 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 50EA51BF5A3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 05:43:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 33FCF876E3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Oct 2020 19:18:05 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4A596875EF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 05:43:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WhUEUzLEFgRg for <intel-wired-lan@lists.osuosl.org>;
- Sun, 18 Oct 2020 19:18:03 +0000 (UTC)
+ with ESMTP id sGTvp6dQ9njC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Oct 2020 05:43:23 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.7.6
-Received: from bedivere.hansenpartnership.com (bedivere.hansenpartnership.com
- [96.44.175.130])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 2909687663
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Oct 2020 19:18:03 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by bedivere.hansenpartnership.com (Postfix) with ESMTP id 7A1D5128046A;
- Sun, 18 Oct 2020 12:18:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
- s=20151216; t=1603048682;
- bh=aTHhEGSm6DrUFNt/hKuOWL0f+WzaMvx/rc4IP5RJYRs=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=WcP5INjnqihCMCJ+2ZkHdzEWBsqi3wavZOcf0NGlcoun37UNiQ4GoZk+2AoMrr8hd
- 1s2t7Y8IzQcDUGm581+QcIuy/enpzpZm6HswhyX4zoKl9l3S5fk96frr/LU4I9kVw8
- r8s7AtR/5wOGbwEsua/QdQrVgo3j6VSqYIXYukhg=
-Received: from bedivere.hansenpartnership.com ([127.0.0.1])
- by localhost (bedivere.hansenpartnership.com [127.0.0.1]) (amavisd-new,
- port 10024)
- with ESMTP id ywWMwLsGscQI; Sun, 18 Oct 2020 12:18:02 -0700 (PDT)
-Received: from jarvis.int.hansenpartnership.com (unknown
- [IPv6:2601:600:8280:66d1::c447])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by bedivere.hansenpartnership.com (Postfix) with ESMTPSA id 340C31280456;
- Sun, 18 Oct 2020 12:18:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=hansenpartnership.com;
- s=20151216; t=1603048682;
- bh=aTHhEGSm6DrUFNt/hKuOWL0f+WzaMvx/rc4IP5RJYRs=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=WcP5INjnqihCMCJ+2ZkHdzEWBsqi3wavZOcf0NGlcoun37UNiQ4GoZk+2AoMrr8hd
- 1s2t7Y8IzQcDUGm581+QcIuy/enpzpZm6HswhyX4zoKl9l3S5fk96frr/LU4I9kVw8
- r8s7AtR/5wOGbwEsua/QdQrVgo3j6VSqYIXYukhg=
-Message-ID: <0a739bcd421a3154c2521b49779b287e6c0d08a2.camel@HansenPartnership.com>
-From: James Bottomley <James.Bottomley@HansenPartnership.com>
-To: Matthew Wilcox <willy@infradead.org>
-Date: Sun, 18 Oct 2020 12:17:59 -0700
-In-Reply-To: <20201018191618.GO20115@casper.infradead.org>
-References: <20201017160928.12698-1-trix@redhat.com>
- <20201018185943.GM20115@casper.infradead.org>
- <45efa7780c79972eae9ca9bdeb9f7edbab4f3643.camel@HansenPartnership.com>
- <20201018191618.GO20115@casper.infradead.org>
-User-Agent: Evolution 3.34.4 
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2096.outbound.protection.outlook.com [40.107.21.96])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 04387875ED
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 05:43:22 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ACGRJZRFwGkSb8Ua2ukqNn9+G4lRKCizymqcF8cAsh9k/Mlt/CSxLSCLrkMUn5dzPGfjoQrJDgs0knm2ek7zC2oeVwBw9uWU3IkR57CO73kLaWnGFvJCTF8nL6WaDa5HUkiuMBaE7ZF0jxYKc4+ugR48rwsjicXnikUcw/abLwhC6oq6VwaxDlP4AbLRZ5i6ryMoNk50cCCTLS3qXDXkzJeJE3YzxOWNeQyMHf32EqQF8h6Ioi7bbjQWVXP3efDbEoNMqeX7+nUHxTmwm8B978tJ/Olh/OWi3Bs3d3ceD95cgFDhCPA0whv6WpB2KhoRrSWZQPg6WgJN0qozWqy5Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Fn/B+6qClhlBPXAcecN6lTr+8ITwB9lPwE+1ADa8d5k=;
+ b=DxXe1IMLqukElwibKMS9lROQzjkGWocTN83C+vR1RRyddLaT2hLOfYQdp9SlSHFegScq/x1x8sBnTQ0M4U1yn3INa+0DTEEbFLfC0iNDMcN0eHxJxcgBS22N091rwakobClDXbnR6oPqGJhbBK+Hb4+20e+E0bOJQzgqVjhffWUqK4JNqqSzYHDd5rsFvmomugGozDR5+NEW/L5avZ3V+MXAhOTjr5CYGS31IIhySzozKnnnsBPv6dsHuAZK4ZdO1nzQ4PID2/xz6K0Wf80WNqAhgAqbO9nxzSdXNev6LfXcwCpKYcZyh6tEMBc0OEz1UPKKmzskPkx9WtcMhQ/f8w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=voleatech.de; dmarc=pass action=none header.from=voleatech.de;
+ dkim=pass header.d=voleatech.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=voleatech.de;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Fn/B+6qClhlBPXAcecN6lTr+8ITwB9lPwE+1ADa8d5k=;
+ b=DmgH73oXTm13UTYi3rBIKvYvPIu9SKU+RxfdFaBM+y1xsqBD7gzF9oJy5f0/dGbysBew0P1BEfPfkpD8ZxXsdBJ7X3iX1oXi6I+bJ6R2mFCLAXDDlkpWv7Y66Xhc0lmw2Biujq7NIHX8TnH7vG8zZCqASEGm2ZfhhTr5+ftWwEk=
+Authentication-Results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=voleatech.de;
+Received: from AM8PR05MB7251.eurprd05.prod.outlook.com (2603:10a6:20b:1d4::23)
+ by AM0PR05MB5364.eurprd05.prod.outlook.com (2603:10a6:208:f8::30)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.20; Mon, 19 Oct
+ 2020 05:43:12 +0000
+Received: from AM8PR05MB7251.eurprd05.prod.outlook.com
+ ([fe80::f132:2cc:34f2:5e4]) by AM8PR05MB7251.eurprd05.prod.outlook.com
+ ([fe80::f132:2cc:34f2:5e4%7]) with mapi id 15.20.3477.028; Mon, 19 Oct 2020
+ 05:43:12 +0000
+Date: Mon, 19 Oct 2020 07:43:10 +0200
+From: Sven Auhagen <sven.auhagen@voleatech.de>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <20201019054310.uwy4whq2eizvdolz@SvensMacBookAir-2.local>
+References: <20201017071238.95190-1-sven.auhagen@voleatech.de>
+ <20201018133951.GB34104@ranger.igk.intel.com>
+Content-Disposition: inline
+In-Reply-To: <20201018133951.GB34104@ranger.igk.intel.com>
+X-Originating-IP: [109.193.235.168]
+X-ClientProxiedBy: AM4PR07CA0009.eurprd07.prod.outlook.com
+ (2603:10a6:205:1::22) To AM8PR05MB7251.eurprd05.prod.outlook.com
+ (2603:10a6:20b:1d4::23)
 MIME-Version: 1.0
-X-Mailman-Approved-At: Sun, 18 Oct 2020 21:59:24 +0000
-Subject: Re: [Intel-wired-lan] [Ocfs2-devel] [RFC] treewide: cleanup
- unreachable breaks
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from SvensMacBookAir-2.local (109.193.235.168) by
+ AM4PR07CA0009.eurprd07.prod.outlook.com (2603:10a6:205:1::22) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3499.11 via Frontend Transport; Mon, 19 Oct 2020 05:43:11 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ef1ce936-b474-4c97-1074-08d873f1dda2
+X-MS-TrafficTypeDiagnostic: AM0PR05MB5364:
+X-Microsoft-Antispam-PRVS: <AM0PR05MB5364C6C1241699DC296E460BEF1E0@AM0PR05MB5364.eurprd05.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: FyxB3y8K+qMxm4W74atUYo3mfDmUPAexre3QyyifjOcMmbg9IEPwSGdjtlbwBVjGEHh+uQgTB6BhOMdkw43OzMFsvbCrJtBF5EoW5lFGZsIdIDXGj7xgfccfMFnfFCw2wijhYK7M1heL5RXu/vjCLD6ZZqGin/O2Q4N2LykifsshLv0r2dP+paGmxbOAaIRR0epWIvzFOqtpDKV1ZjE0875UXggfKMd+05FWuqd9/MNlxYRIWzzS05s1AEOVGoeppi9f76+/CjGaITpDW1I6Xgg5UdXhSi8bxDJvHUJXgA14gYVs9J5pZlMTCIH1HKRlF0p2nso45J36wnDDs4/j2A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM8PR05MB7251.eurprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(39830400003)(136003)(366004)(376002)(396003)(316002)(478600001)(6506007)(5660300002)(44832011)(956004)(26005)(86362001)(83380400001)(1076003)(66476007)(66556008)(2906002)(7696005)(52116002)(8676002)(55016002)(66946007)(16526019)(186003)(9686003)(6916009)(4326008)(8936002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: IrWW0EXIvnLb+EaoWNOei+ExqJPlm47AtDnHVTo9OAUpqkEGRRBb+nWdNTyCqMUfpFnBU7MAKoGt1+WgI5sXO56Kmv/w9hlz68uIOikpv9c0EplHs0XFJ/a252b8xYtxEzGW909oGJ8VfIX3tUpTLQVl13jGERhdxMtyURbO/ai5dYIxXHGnzlWvnXl7SnFsV3qZLI00nX0lrnelpN+FX8xD6hCqeBgocOvSaBDIYEiJ+kfvztma+IvDvKB89hhqcAQBxm864zSmc6iWg3DPAJu3x2R+TWy6v8ZQv9GBhfljNJYNoOR5JTivkOPTW5D25LmtiB6DjipgIioRQu1fawyNS4aXCpEd/qcpTvNd1tanE5i7cpH8BBx0wFEP3Ws0iXH33E8Uf2y+5jap9AgL1Y9d/3MjLAHO0ry87UYujvP2OQeVRAhaRgd4oHBasYeJTm/26yfFGMB87Jool0asJNXRwH0mQ27uF8FSJ2/mF0nLpXd1zZJjW8goWXGQWTgJrerPpFGt4NpHJOWWMiSmQ5ny0Mx2wlacAMm2s9I2CkPJlKVMfj7DvvOlL54TTFAFWlyqwyQgRLijgqRqkac6wRQoTy4kwBE+5w6cengJN5GDwKTsAt/NdWAga18q6RQiB6+D4yG5b4lTiBwsPMmIcQ==
+X-OriginatorOrg: voleatech.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: ef1ce936-b474-4c97-1074-08d873f1dda2
+X-MS-Exchange-CrossTenant-AuthSource: AM8PR05MB7251.eurprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Oct 2020 05:43:12.3648 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b82a99f6-7981-4a72-9534-4d35298f847b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: SbJtv1iO3rjMmgRpsAfoULBqruwCIQmUVSMdlYp79P3udBw8e15J7KHr2lqz45epFsFI7DrGptTZAWE7q+gCNrilIFqdv6bSHdGek9gw5AM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR05MB5364
+Subject: Re: [Intel-wired-lan] [PATCH v2 0/6] igb: xdp patches followup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,66 +112,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-iio@vger.kernel.org, trix@redhat.com,
- linux-pci@vger.kernel.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, keyrings@vger.kernel.org,
- linux-mtd@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- linux-stm32@st-md-mailman.stormreply.com, usb-storage@lists.one-eyed-alien.net,
- devel@driverdev.osuosl.org, linux-samsung-soc@vger.kernel.org,
- xen-devel@lists.xenproject.org, linux-scsi@vger.kernel.org,
- linux-nvdimm@lists.01.org, linux-pm@vger.kernel.org,
- ath10k@lists.infradead.org, linux-acpi@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, industrypack-devel@lists.sourceforge.net,
- nouveau@lists.freedesktop.org, spice-devel@lists.freedesktop.org,
- MPT-FusionLinux.pdl@broadcom.com, linux-media@vger.kernel.org,
- linux-watchdog@vger.kernel.org, linux-nfc@lists.01.org,
- linux-serial@vger.kernel.org, linux-can@vger.kernel.org,
- linux-block@vger.kernel.org, linux-gpio@vger.kernel.org,
- storagedev@microchip.com, linux-amlogic@lists.infradead.org,
- openipmi-developer@lists.sourceforge.net, platform-driver-x86@vger.kernel.org,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-edac@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-security-module@vger.kernel.org, clang-built-linux@googlegroups.com,
- patches@opensource.cirrus.com, linux-crypto@vger.kernel.org,
- linux-integrity@vger.kernel.org, ocfs2-devel@oss.oracle.com,
- linux-power@fi.rohmeurope.com
+Cc: nhorman@redhat.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, brouer@redhat.com, davem@davemloft.net,
+ sassmann@redhat.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, 2020-10-18 at 20:16 +0100, Matthew Wilcox wrote:
-> On Sun, Oct 18, 2020 at 12:13:35PM -0700, James Bottomley wrote:
-> > On Sun, 2020-10-18 at 19:59 +0100, Matthew Wilcox wrote:
-> > > On Sat, Oct 17, 2020 at 09:09:28AM -0700, trix@redhat.com wrote:
-> > > > clang has a number of useful, new warnings see
-> > > > https://urldefense.com/v3/__https://clang.llvm.org/docs/DiagnosticsReference.html__;!!GqivPVa7Brio!Krxz78O3RKcB9JBMVo_F98FupVhj_jxX60ddN6tKGEbv_cnooXc1nnBmchm-e_O9ieGnyQ$ 
-> > > 
-> > > Please get your IT department to remove that stupidity.  If you
-> > > can't, please send email from a non-Red Hat email address.
+On Sun, Oct 18, 2020 at 03:39:51PM +0200, Maciej Fijalkowski wrote:
+> On Sat, Oct 17, 2020 at 09:12:32AM +0200, sven.auhagen@voleatech.de wrote:
+> > From: Sven Auhagen <sven.auhagen@voleatech.de>
 > > 
-> > Actually, the problem is at Oracle's end somewhere in the ocfs2
-> > list ... if you could fix it, that would be great.  The usual real
-> > mailing lists didn't get this transformation
+> > This patch series addresses some of the comments that came back
+> > after the igb XDP patch was accepted.
+> > Most of it is code cleanup.
+> > The last patch contains a fix for a tx queue timeout
+> > that can occur when using xdp.
 > > 
-> > https://lore.kernel.org/bpf/20201017160928.12698-1-trix@redhat.com/
-> > 
-> > but the ocfs2 list archive did:
-> > 
-> > https://oss.oracle.com/pipermail/ocfs2-devel/2020-October/015330.html
-> > 
-> > I bet Oracle IT has put some spam filter on the list that mangles
-> > URLs this way.
+> > Signed-off-by: Sven Auhagen <sven.auhagen@voleatech.de>
 > 
-> *sigh*.  I'm sure there's a way.  I've raised it with someone who
-> should be able to fix it.
+> Sorry for not getting back at v1 discussion, I took some time off.
+> 
+> For the series:
+> Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> 
+> Couple nits:
+> - you don't need SOB line within cover letter, I suppose
+> - next time please specify the tree in the subject that you're targetting
+>   this set to land; is it net or net-next? net-next is currently closed so
+>   you probably would have to come back with this once it will be open
+>   again
+> - SOB line should be at the end of tags within commit message of patch;
+>   I'm saying 'should' because I'm not sure if it's hard requirement.
 
-As someone who works for IBM I can only say I feel your pain ...
+Thank you, I will fix that and send a v3.
 
-James
+Best
+Sven
 
-
+> 
+> > 
+> > Change from v1:
+> >     * Drop patch 5 as the igb_rx_frame_truesize won't match
+> >     * Fix typo in comment
+> >     * Add Suggested-by and Reviewed-by tags
+> >     * Add how to avoid transmit queue timeout in xdp path
+> >       is fixed in the commit message
+> > 
+> > Sven Auhagen (6):
+> >   igb: XDP xmit back fix error code
+> >   igb: take vlan double header into account
+> >   igb: XDP extack message on error
+> >   igb: skb add metasize for xdp
+> >   igb: use xdp_do_flush
+> >   igb: avoid transmit queue timeout in xdp path
+> > 
+> >  drivers/net/ethernet/intel/igb/igb.h      |  5 ++++
+> >  drivers/net/ethernet/intel/igb/igb_main.c | 32 +++++++++++++++--------
+> >  2 files changed, 26 insertions(+), 11 deletions(-)
+> > 
+> > -- 
+> > 2.20.1
+> > 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
