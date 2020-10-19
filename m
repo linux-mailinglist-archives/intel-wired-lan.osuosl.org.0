@@ -1,66 +1,52 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9151292928
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Oct 2020 16:20:08 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C94DB292938
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Oct 2020 16:24:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 686C887385;
-	Mon, 19 Oct 2020 14:20:07 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 66AD8860AD;
+	Mon, 19 Oct 2020 14:24:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EF3AwjMi0nQ2; Mon, 19 Oct 2020 14:20:07 +0000 (UTC)
+	with ESMTP id 4FclCKSj-3tR; Mon, 19 Oct 2020 14:24:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 204B787267;
-	Mon, 19 Oct 2020 14:20:06 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 23144860D5;
+	Mon, 19 Oct 2020 14:24:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3F6221BF2BA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 14:00:38 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BBDD51BF335
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 14:21:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 375508746C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 14:00:38 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id A11292DADE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 14:21:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rYsTN9rlHv2d for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Oct 2020 14:00:36 +0000 (UTC)
+ with ESMTP id O-m1ceXQHOkH for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Oct 2020 14:21:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 16DC6867F1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 14:00:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603116034;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bwyahxi85URE6wJwi5L9sObd1frPfqSbtg8aT1VkGus=;
- b=VujqTsCb7eFiOZJ4sMf1BYyRhLl3V3oBkjTvn2JNKT1z6UPjC5OLqatlLfafuIF9oWRLwH
- NPS0k3HtAn1rwEZ2TLBZUcTappEusG5q1FiQfltXgvNiKnvF/hoiGeOIaCkJIdSpk0mPhC
- NxNIsqxeg0mI9yvS+eAxP/KXx+IoVdw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-206-ueyBBMGRNu-6PNBOYI-31A-1; Mon, 19 Oct 2020 10:00:32 -0400
-X-MC-Unique: ueyBBMGRNu-6PNBOYI-31A-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4C9FA2DD40
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Oct 2020 14:21:10 +0000 (UTC)
+Received: from localhost (unknown [176.167.103.131])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8653710E218F;
- Mon, 19 Oct 2020 14:00:29 +0000 (UTC)
-Received: from fuller.cnet (ovpn-112-3.gru2.redhat.com [10.97.112.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C9C825B4B0;
- Mon, 19 Oct 2020 14:00:28 +0000 (UTC)
-Received: by fuller.cnet (Postfix, from userid 1000)
- id B10F0417F242; Mon, 19 Oct 2020 11:00:05 -0300 (-03)
-Date: Mon, 19 Oct 2020 11:00:05 -0300
-From: Marcelo Tosatti <mtosatti@redhat.com>
+ by mail.kernel.org (Postfix) with ESMTPSA id 1573D221FC;
+ Mon, 19 Oct 2020 14:21:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603117269;
+ bh=RlnJso2zV6UGQMDwIYMaQRuuJ80aQ8q0A0LxXDG7tv4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=XJywZspLTypkshdONfdoa1utoSHmWb4+d0n5Tec0P7iNGTsqWi8YJESXtd6sJfdZB
+ DpXfNpZASEUegzLyEFFoZfInWZ4/pchUsrcPmKsqRnL+4+U8jej3NAuI1pRF7L4keW
+ FeHfiG+dE2x1m44G8c7ed3iEtTmP2g7bJvecX/x0=
+Date: Mon, 19 Oct 2020 16:21:06 +0200
+From: Frederic Weisbecker <frederic@kernel.org>
 To: Peter Zijlstra <peterz@infradead.org>
-Message-ID: <20201019140005.GB17287@fuller.cnet>
+Message-ID: <20201019142106.GB34192@lothringen>
 References: <20200928183529.471328-1-nitesh@redhat.com>
  <20200928183529.471328-5-nitesh@redhat.com>
  <20201016122046.GP2611@hirez.programming.kicks-ass.net>
@@ -69,9 +55,7 @@ References: <20200928183529.471328-1-nitesh@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mailman-Approved-At: Mon, 19 Oct 2020 14:20:05 +0000
+X-Mailman-Approved-At: Mon, 19 Oct 2020 14:24:14 +0000
 Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
  pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -89,114 +73,31 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: juri.lelli@redhat.com, linux-pci@vger.kernel.org, sassmann@redhat.com,
  vincent.guittot@linaro.org, hch@infradead.org, mingo@redhat.com,
  intel-wired-lan@lists.osuosl.org, helgaas@kernel.org, thomas.lendacky@amd.com,
- lgoncalv@redhat.com, frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com,
- bhelgaas@google.com, Nitesh Narayan Lal <nitesh@redhat.com>,
- mike.marciniszyn@intel.com, netdev@vger.kernel.org,
- dennis.dalessandro@intel.com, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ lgoncalv@redhat.com, jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
+ Nitesh Narayan Lal <nitesh@redhat.com>, mike.marciniszyn@intel.com,
+ netdev@vger.kernel.org, dennis.dalessandro@intel.com, mtosatti@redhat.com,
+ linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On Mon, Oct 19, 2020 at 01:11:37PM +0200, Peter Zijlstra wrote:
-> On Sun, Oct 18, 2020 at 02:14:46PM -0400, Nitesh Narayan Lal wrote:
-> > >> +	hk_cpus =3D housekeeping_num_online_cpus(HK_FLAG_MANAGED_IRQ);
-> > >> +
-> > >> +	/*
-> > >> +	 * If we have isolated CPUs for use by real-time tasks, to keep the
-> > >> +	 * latency overhead to a minimum, device-specific IRQ vectors are =
-moved
-> > >> +	 * to the housekeeping CPUs from the userspace by changing their
-> > >> +	 * affinity mask. Limit the vector usage to keep housekeeping CPUs=
- from
-> > >> +	 * running out of IRQ vectors.
-> > >> +	 */
-> > >> +	if (hk_cpus < num_online_cpus()) {
-> > >> +		if (hk_cpus < min_vecs)
-> > >> +			max_vecs =3D min_vecs;
-> > >> +		else if (hk_cpus < max_vecs)
-> > >> +			max_vecs =3D hk_cpus;
-> > > is that:
-> > >
-> > > 		max_vecs =3D clamp(hk_cpus, min_vecs, max_vecs);
-> > =
-
-> > Yes, I think this will do.
-> > =
-
-> > >
-> > > Also, do we really need to have that conditional on hk_cpus <
-> > > num_online_cpus()? That is, why can't we do this unconditionally?
-> > =
-
-> > FWIU most of the drivers using this API already restricts the number of
-> > vectors based on the num_online_cpus, if we do it unconditionally we can
-> > unnecessary duplicate the restriction for cases where we don't have any
-> > isolated CPUs.
-> =
-
-> unnecessary isn't really a concern here, this is a slow path. What's
-> important is code clarity.
-> =
-
-> > Also, different driver seems to take different factors into considerati=
-on
-> > along with num_online_cpus while finding the max_vecs to request, for
-> > example in the case of mlx5:
-> > MLX5_CAP_GEN(dev, num_ports) * num_online_cpus() +
-> > =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 MLX5_EQ_VEC_COMP_BASE
-> > =
-
-> > Having hk_cpus < num_online_cpus() helps us ensure that we are only
-> > changing the behavior when we have isolated CPUs.
-> > =
-
-> > Does that make sense?
-> =
-
-> That seems to want to allocate N interrupts per cpu (plus some random
-> static amount, which seems weird, but whatever). This patch breaks that.
-
-On purpose. For the isolated CPUs we don't want network device =
-
-interrupts (in this context).
-
-> So I think it is important to figure out what that driver really wants
-> in the nohz_full case. If it wants to retain N interrupts per CPU, and
-> only reduce the number of CPUs, the proposed interface is wrong.
-
-It wants N interrupts per non-isolated (AKA housekeeping) CPU.
-Zero interrupts for isolated interrupts.
-
-> > > And what are the (desired) semantics vs hotplug? Using a cpumask with=
-out
+> > > And what are the (desired) semantics vs hotplug? Using a cpumask without
 > > > excluding hotplug is racy.
-> > =
-
+> > 
 > > The housekeeping_mask should still remain constant, isn't?
 > > In any case, I can double check this.
-> =
-
+> 
 > The goal is very much to have that dynamically configurable.
 
-Yes, but this patch is a fix for customer bug in the old, static on-boot =
-
-isolation CPU configuration.
-
----
-
-Discussing the dynamic configuration (not this patch!) case:
-
-Would need to enable/disable interrupts for a particular device =
-
-on a per-CPU basis. Such interface does not exist yet.
-
-Perhaps that is what you are looking for when writing "proposed interface
-is wrong" Peter? =
-
-
-
-
+Right but unfortunately we are not there before a little while. And the
+existing code in these drivers allocating vectors doesn't even take into
+account hotplug as you spotted. So I agreed to let Nitesh fix this issue
+on top of the existing code until he can look into providing some infrastructure
+for these kind of vectors allocation. The first step would be to consolidate
+similar code from other drivers, then maybe handle hotplug and later
+dynamic housekeeping.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
