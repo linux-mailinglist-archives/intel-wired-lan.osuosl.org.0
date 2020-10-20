@@ -1,74 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 376C7293DBA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Oct 2020 15:50:15 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E8469293DC8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Oct 2020 15:50:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id DBBF086CEA;
-	Tue, 20 Oct 2020 13:50:13 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 99569204BB;
+	Tue, 20 Oct 2020 13:50:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J-1OKmC+XCcS; Tue, 20 Oct 2020 13:50:13 +0000 (UTC)
+	with ESMTP id 9V3R7FjubRlV; Tue, 20 Oct 2020 13:50:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 2677586C6E;
+	by silver.osuosl.org (Postfix) with ESMTP id 9B6A52E1C5;
 	Tue, 20 Oct 2020 13:50:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7E2EE1BF3BF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Oct 2020 07:31:08 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 839721BF2AF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Oct 2020 08:48:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 594D18701E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Oct 2020 07:31:08 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id 7DBC386113
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Oct 2020 08:48:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DSGMyM-p6xgY for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Oct 2020 07:31:07 +0000 (UTC)
+ with ESMTP id OLrz7P1Fajft for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Oct 2020 08:48:40 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 01AF686EA4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Oct 2020 07:31:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=0jpAo9lbXaLZETK0hjbBwDIDeTjw7Zq4maw1xDTUWIc=; b=tQbpYEWMgnzikItrfiwfOOp1g+
- Hd3DMlLkRHGio/v1DuIL4w/ZAhR1TJaN9LYf5L9MLZ37bm77a22hC17TpTZQLpR8akbcFs+xqgZ5N
- 9P7q1PoT3Yt9VbmxA6H9h4ifUl+hXWPZd2n1Rw4RIe/iX9qAGgrNo+n7k90EQWCbdOwmll3sd5oSh
- TGTLXFWSqvLTMB0Ta413MhP6c/DZP5f8UfC2VqJ4C86Rj85LEzIuyBrGUxES/j9yVcek8fmgiaQXj
- 8kES1fOrNourzGZJ9CJhi4cPcQr0LgPKv6zmLw1n0E4SmQkhKRMS76Fyz2qeteH2DEblFpN8J3rfE
- 2VGekPFA==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUm6j-0000je-1t; Tue, 20 Oct 2020 07:30:57 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 4DF333011FE;
- Tue, 20 Oct 2020 09:30:55 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 3617E2B785033; Tue, 20 Oct 2020 09:30:55 +0200 (CEST)
-Date: Tue, 20 Oct 2020 09:30:55 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Marcelo Tosatti <mtosatti@redhat.com>
-Message-ID: <20201020073055.GY2611@hirez.programming.kicks-ass.net>
-References: <20200928183529.471328-1-nitesh@redhat.com>
- <20200928183529.471328-5-nitesh@redhat.com>
- <20201016122046.GP2611@hirez.programming.kicks-ass.net>
- <79f382a7-883d-ff42-394d-ec4ce81fed6a@redhat.com>
- <20201019111137.GL2628@hirez.programming.kicks-ass.net>
- <20201019140005.GB17287@fuller.cnet>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201019140005.GB17287@fuller.cnet>
+Received: from userp2120.oracle.com (userp2120.oracle.com [156.151.31.85])
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 2667485F56
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Oct 2020 08:48:40 +0000 (UTC)
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09K8i7rI188082;
+ Tue, 20 Oct 2020 08:48:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : message-id :
+ content-type : mime-version : subject : date : in-reply-to : cc : to :
+ references; s=corp-2020-01-29;
+ bh=UBSvDuZX45rcdCwz1yIzvCzCqfd2joSCizhea4x+Xao=;
+ b=q8gn83IPPWdFm1HT3taLhd9DUF/VTUU+yXtsd8f9nD6wriupB19ul4FsqzWGdtIZMcde
+ GW+G9oeRVHaGmJfZ8muagtVwvuWLE6AywXuhak+OXkSgdFP6EIR2H2OqKDUhR7yIW2Vz
+ zpamQMFlTWRfwdWHBA7I0p8HYGgPlEg7NOi5pNpKeOCI5/Zqu82RI3DyvlSb3YeNhNvu
+ 1nAbi2LxPOnr/RtC4QoVHdNGHfdCdQB+x9xvmqx+BqjtbEr8lrxt1aMjIali/bjhTn7W
+ dzqjxrXdOv4FjsFo2kwRKNjQX5RScYby9/qqSUitUFXIKeMy4YBvXYVTZYkhax1TMfnU 0w== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2120.oracle.com with ESMTP id 347s8msmp0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 20 Oct 2020 08:48:12 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09K8is45150623;
+ Tue, 20 Oct 2020 08:48:12 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by userp3030.oracle.com with ESMTP id 348ahw07cp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 20 Oct 2020 08:48:12 +0000
+Received: from userp3030.oracle.com (userp3030.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 09K8mAEe159753;
+ Tue, 20 Oct 2020 08:48:10 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by userp3030.oracle.com with ESMTP id 348ahw07bh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Oct 2020 08:48:10 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09K8lvTX021447;
+ Tue, 20 Oct 2020 08:47:58 GMT
+Received: from [10.175.164.120] (/10.175.164.120)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 20 Oct 2020 01:47:57 -0700
+From: John Haxby <john.haxby@oracle.com>
+Message-Id: <27A23102-A7F5-48C5-8972-48CE4C283C6E@oracle.com>
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.120.23.2.4\))
+Date: Tue, 20 Oct 2020 09:47:45 +0100
+In-Reply-To: <CAKwvOdkR_Ttfo7_JKUiZFVqr=Uh=4b05KCPCSuzwk=zaWtA2_Q@mail.gmail.com>
+To: Nick Desaulniers <ndesaulniers@google.com>
+References: <20201017160928.12698-1-trix@redhat.com>
+ <20201018054332.GB593954@kroah.com>
+ <CAKwvOdkR_Ttfo7_JKUiZFVqr=Uh=4b05KCPCSuzwk=zaWtA2_Q@mail.gmail.com>
+X-Mailer: Apple Mail (2.3608.120.23.2.4)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9779
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ suspectscore=0
+ lowpriorityscore=0 mlxlogscore=999 priorityscore=1501 spamscore=0
+ phishscore=0 clxscore=1011 bulkscore=0 impostorscore=0 adultscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010200059
 X-Mailman-Approved-At: Tue, 20 Oct 2020 13:50:11 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
- pci_alloc_irq_vectors() to housekeeping CPUs
+Subject: Re: [Intel-wired-lan] [Ocfs2-devel] [RFC] treewide: cleanup
+ unreachable breaks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,28 +101,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, linux-pci@vger.kernel.org, sassmann@redhat.com,
- vincent.guittot@linaro.org, hch@infradead.org, mingo@redhat.com,
- intel-wired-lan@lists.osuosl.org, helgaas@kernel.org, thomas.lendacky@amd.com,
- lgoncalv@redhat.com, frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com,
- bhelgaas@google.com, Nitesh Narayan Lal <nitesh@redhat.com>,
- mike.marciniszyn@intel.com, netdev@vger.kernel.org,
- dennis.dalessandro@intel.com, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: alsa-devel@alsa-project.org, linux-usb@vger.kernel.org,
+ linux-iio@vger.kernel.org, Tom Rix <trix@redhat.com>,
+ linux-pci@vger.kernel.org, dri-devel <dri-devel@lists.freedesktop.org>,
+ virtualization@lists.linux-foundation.org, keyrings@vger.kernel.org,
+ linux-mtd@lists.infradead.org, amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ linux-stm32@st-md-mailman.stormreply.com, usb-storage@lists.one-eyed-alien.net,
+ devel@driverdev.osuosl.org, linux-samsung-soc@vger.kernel.org,
+ xen-devel@lists.xenproject.org, linux-scsi@vger.kernel.org,
+ clang-built-linux <clang-built-linux@googlegroups.com>,
+ linux-pm@vger.kernel.org, ath10k@lists.infradead.org,
+ linux-acpi@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ industrypack-devel@lists.sourceforge.net, nouveau@lists.freedesktop.org,
+ spice-devel@lists.freedesktop.org, MPT-FusionLinux.pdl@broadcom.com,
+ linux-media@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ linux-nfc@lists.01.org, linux-serial@vger.kernel.org,
+ linux-can@vger.kernel.org, linux-block@vger.kernel.org,
+ linux-gpio@vger.kernel.org, storagedev@microchip.com,
+ linux-amlogic@lists.infradead.org, openipmi-developer@lists.sourceforge.net,
+ platform-driver-x86@vger.kernel.org, bpf <bpf@vger.kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-edac@vger.kernel.org,
+ Greg KH <gregkh@linuxfoundation.org>, linux-nvdimm <linux-nvdimm@lists.01.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, linux-security-module@vger.kernel.org,
+ George Burgess <gbiv@google.com>, Network Development <netdev@vger.kernel.org>,
+ "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
+ <linux-crypto@vger.kernel.org>, linux-integrity@vger.kernel.org,
+ patches@opensource.cirrus.com, ocfs2-devel@oss.oracle.com,
+ linux-power@fi.rohmeurope.com
+Content-Type: multipart/mixed; boundary="===============5189155741477131361=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 19, 2020 at 11:00:05AM -0300, Marcelo Tosatti wrote:
-> > So I think it is important to figure out what that driver really wants
-> > in the nohz_full case. If it wants to retain N interrupts per CPU, and
-> > only reduce the number of CPUs, the proposed interface is wrong.
-> 
-> It wants N interrupts per non-isolated (AKA housekeeping) CPU.
 
-Then the patch is wrong and the interface needs changing from @min_vecs,
-@max_vecs to something that expresses the N*nr_cpus relation.
+--===============5189155741477131361==
+Content-Type: multipart/signed;
+	boundary="Apple-Mail=_9F9749E9-79EA-41AB-B516-003ECE07BEE3";
+	protocol="application/pgp-signature";
+	micalg=pgp-sha256
+
+
+--Apple-Mail=_9F9749E9-79EA-41AB-B516-003ECE07BEE3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
+
+
+
+> On 19 Oct 2020, at 20:42, Nick Desaulniers <ndesaulniers@google.com> =
+wrote:
+>=20
+> We probably should add all 3 to W=3D2 builds (wrapped in cc-option).
+> I've filed https://github.com/ClangBuiltLinux/linux/issues/1180 to
+> follow up on.
+
+It looks as though the URL mangling has been fixed.   If anyone sees =
+that specific URL mangled, please let me know.
+
+jch
+
+--Apple-Mail=_9F9749E9-79EA-41AB-B516-003ECE07BEE3
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment;
+	filename=signature.asc
+Content-Type: application/pgp-signature;
+	name=signature.asc
+Content-Description: Message signed with OpenPGP
+
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - http://gpgtools.org
+
+iHUEAREIAB0WIQT+pxvb11CFWUkNSOVFC7t+lC+jyAUCX46kMQAKCRBFC7t+lC+j
+yBKiAP90JVXdPzuAwtRGkROpw1eVCo7wCaZ5nOa8Oo0sN6gC9gD/S0eGTqQhmg+n
+sXPJxPYqQsg09qmS6k/HX+AP5Oz2AMo=
+=xx66
+-----END PGP SIGNATURE-----
+
+--Apple-Mail=_9F9749E9-79EA-41AB-B516-003ECE07BEE3--
+
+--===============5189155741477131361==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============5189155741477131361==--
