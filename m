@@ -2,62 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF2252954B8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 00:17:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EBDF52955D6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 02:55:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 836348773C;
-	Wed, 21 Oct 2020 22:17:10 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 7710F869F3;
+	Thu, 22 Oct 2020 00:55:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0JiiZe4plTqB; Wed, 21 Oct 2020 22:17:10 +0000 (UTC)
+	with ESMTP id hUr9DgMKDC0e; Thu, 22 Oct 2020 00:55:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3BC1087705;
-	Wed, 21 Oct 2020 22:17:09 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 928E786A50;
+	Thu, 22 Oct 2020 00:55:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 458141BF387
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:17:07 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DA4C81BF387
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:16:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 41167876C3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:17:07 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D39DB2E236
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:16:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L9KIJDve4Nrr for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Oct 2020 22:17:06 +0000 (UTC)
+ with ESMTP id z5Y9sO2M-hHd for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Oct 2020 22:16:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by hemlock.osuosl.org (Postfix) with ESMTPS id 2916D87165
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:17:06 +0000 (UTC)
-IronPort-SDR: fuKEpBDhI99t1IUtQqC/VDgzl9qhWNmFFwsAvfcZX1h4+bbEzM3sWZ8hxZPTSQcCHNi3QKAVnl
- 7pq0m9U5WW0g==
-X-IronPort-AV: E=McAfee;i="6000,8403,9781"; a="146733069"
-X-IronPort-AV: E=Sophos;i="5.77,402,1596524400"; d="scan'208";a="146733069"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2020 15:17:05 -0700
-IronPort-SDR: 4WSg/ayMutnXAPbfBZqJUnu9NMDySucmIblXR5eU2jWFIzmmKleuqvOYYz8xDGsgJ40S8e0Ked
- 4bUUqBVnulVw==
-X-IronPort-AV: E=Sophos;i="5.77,402,1596524400"; d="scan'208";a="321165420"
-Received: from lsachorn-mobl.amr.corp.intel.com (HELO localhost)
- ([10.212.138.249])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2020 15:17:04 -0700
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by silver.osuosl.org (Postfix) with ESMTPS id BD4642E9AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 20:25:52 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1603311949;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=0ErBlktAm/VDZfe11k5xiz2G5eeFjMBryMubxpLgI90=;
+ b=lAs4GHqKsxFj2ehxfTNtvW6HA/OFk73TgWU9NNny0xClUy9lV3pa0W2oLtGILx/5+6IOaj
+ kiP+OrcbeSZswKH0PNvs6kl+cZ0yljZA20keIiuAoOoLHbuecNCk8Rk7WG952LfmSVCq5Z
+ Kkgn0blrKnDKJ0DGDhdgUUZT6JSwy1B/BeEfXU+3zCGjCO3nkdjSO4BZcPPh3twnJ3kdLz
+ vih60WESW5odQfOVoD1IRz2ZqSOjovNza8g9gJZQEB8ZfYnFLyHc3WZ0IgVDfqSAPygZyd
+ 8jx0pYbfQ9rwtnwciHVhkCutMekhR4bTANCWeuz3KyofRgJNMLsMNNPZ2JOoDA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1603311949;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=0ErBlktAm/VDZfe11k5xiz2G5eeFjMBryMubxpLgI90=;
+ b=CKysLuROojLRHKTKNJPL+SuMqZe5T2j0BnTXahqjamQZMuEe9GG6lsjkfBNsx0nVCUNULw
+ mVjXQAOmVi6sOoCg==
+To: Nitesh Narayan Lal <nitesh@redhat.com>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-pci@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, frederic@kernel.org, mtosatti@redhat.com,
+ sassmann@redhat.com, jesse.brandeburg@intel.com, lihong.yang@intel.com,
+ helgaas@kernel.org, jeffrey.t.kirsher@intel.com, jacob.e.keller@intel.com,
+ jlelli@redhat.com, hch@infradead.org, bhelgaas@google.com,
+ mike.marciniszyn@intel.com, dennis.dalessandro@intel.com,
+ thomas.lendacky@amd.com, jiri@nvidia.com, mingo@redhat.com,
+ peterz@infradead.org, juri.lelli@redhat.com, vincent.guittot@linaro.org,
+ lgoncalv@redhat.com, Jakub Kicinski <kuba@kernel.org>,
+ Dave Miller <davem@davemloft.net>
+In-Reply-To: <87lfg093fo.fsf@nanos.tec.linutronix.de>
+References: <20200928183529.471328-1-nitesh@redhat.com>
+ <20200928183529.471328-5-nitesh@redhat.com>
+ <87v9f57zjf.fsf@nanos.tec.linutronix.de>
+ <3bca9eb1-a318-1fc6-9eee-aacc0293a193@redhat.com>
+ <87lfg093fo.fsf@nanos.tec.linutronix.de>
+Date: Wed, 21 Oct 2020 22:25:48 +0200
+Message-ID: <877drj72cz.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20201021145742.GC58344@ranger.igk.intel.com>
-References: <20201009025349.4037-1-andre.guedes@intel.com>
- <20201009025349.4037-8-andre.guedes@intel.com>
- <20201021145742.GC58344@ranger.igk.intel.com>
-From: Andre Guedes <andre.guedes@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Wed, 21 Oct 2020 15:17:04 -0700
-Message-ID: <160331862448.64680.18381150586195546148@lsachorn-mobl.amr.corp.intel.com>
-User-Agent: alot/0.9.1
-Subject: Re: [Intel-wired-lan] [PATCH 7/9] igc: Add support for XDP_TX action
+X-Mailman-Approved-At: Thu, 22 Oct 2020 00:55:04 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
+ pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,102 +86,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Maciej,
+On Tue, Oct 20 2020 at 20:07, Thomas Gleixner wrote:
+> On Tue, Oct 20 2020 at 12:18, Nitesh Narayan Lal wrote:
+>> However, IMHO we would still need a logic to prevent the devices from
+>> creating excess vectors.
+>
+> Managed interrupts are preventing exactly that by pinning the interrupts
+> and queues to one or a set of CPUs, which prevents vector exhaustion on
+> CPU hotplug.
+>
+> Non-managed, yes that is and always was a problem. One of the reasons
+> why managed interrupts exist.
 
-Quoting Maciej Fijalkowski (2020-10-21 07:57:42)
-> On Thu, Oct 08, 2020 at 07:53:47PM -0700, Andre Guedes wrote:
-> > This patch adds support for XDP_TX action which enables XDP programs to
-> > transmit back receiving frames.
-> > 
-> > The main changes in igc_xdp.c are related to the transmission of the
-> > packet (e.g. select the transmission queue, prepare buffer, prepare
-> > descriptor) while the changes in igc_main.c are related to tx_buffer
-> > management and XDP resources setup required to perform the XDP_TX
-> > action.
-> > 
-> > By default, the driver uses rx buffers with 2 KB size. When XDP is
-> > enabled, it uses larger buffers so we have enough space to accommodate
-> > the headroom and tailroom required by XDP infrastructure. While the
-> > driver had already code to handle larger buffers (IGC_RING_FLAG_RX_3K_
-> > BUFFER flag), it was missing the set/clear helpers that enable/disable
-> > that feature so this patch also introduces these missing helpers.
-> 
-> Ugh. This belongs to the previous patch.
+But why is this only a problem for isolation? The very same problem
+exists vs. CPU hotplug and therefore hibernation.
 
-Hope the reply on the previous patch clarifies why this is done in this patch
-instead.
+On x86 we have at max. 204 vectors available for device interrupts per
+CPU. So assumed the only device interrupt in use is networking then any
+machine which has more than 204 network interrupts (queues, aux ...)
+active will prevent the machine from hibernation.
 
-> > +/* This function requires __netif_tx_lock is held by the caller. */
-> > +static int igc_xdp_init_tx_descriptor(struct igc_ring *ring,
-> > +                                   struct xdp_frame *xdpf)
-> > +{
-> > +     struct igc_tx_buffer *buffer;
-> > +     union igc_adv_tx_desc *desc;
-> > +     u32 cmd_type, olinfo_status;
-> > +     int err;
-> > +
-> > +     if (!igc_desc_unused(ring))
-> > +             return -EBUSY;
-> > +
-> > +     buffer = &ring->tx_buffer_info[ring->next_to_use];
-> > +     err = igc_xdp_init_tx_buffer(buffer, xdpf, ring);
-> > +     if (err)
-> > +             return err;
-> > +
-> > +     cmd_type = IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
-> > +                IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
-> > +                buffer->bytecount;
-> > +     olinfo_status = buffer->bytecount << IGC_ADVTXD_PAYLEN_SHIFT;
-> > +
-> > +     desc = IGC_TX_DESC(ring, ring->next_to_use);
-> > +     desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-> > +     desc->read.olinfo_status = cpu_to_le32(olinfo_status);
-> > +     desc->read.buffer_addr = cpu_to_le64(dma_unmap_addr(buffer, dma));
-> > +
-> > +     netdev_tx_sent_queue(txring_txq(ring), buffer->bytecount);
-> 
-> So you're letting stack know that you sent a frame but that's not what is
-> happening because you wait with bumping the tail until you are done with
-> napi rx loop.
-> 
-> this probably should be called during the tx irq cleanup.
+Aside of that it's silly to have multiple queues targeted at a single
+CPU in case of hotplug. And that's not a theoretical problem.  Some
+power management schemes shut down sockets when the utilization of a
+system is low enough, e.g. outside of working hours.
 
-I see your point, and I think calling it during tx irq cleanup should work too.
+The whole point of multi-queue is to have locality so that traffic from
+a CPU goes through the CPU local queue. What's the point of having two
+or more queues on a CPU in case of hotplug?
 
-The rationale to put it here was to keep it similar to ndo_start_xmit's flow
-i.e. the stack is notified before packets are actually transmitted by
-hardware. Also, if we do it in tx irq cleanup, we probably need to acquire
-__netif_tx_lock to ensure we don't have a race conditions with ndo_start_xmit.
-
-Let me know your thoughts here.
-
-> > +
-> > +     buffer->next_to_watch = desc;
-> > +
-> > +     ring->next_to_use = (ring->next_to_use + 1) % ring->count;
-> 
-> Please avoid modulos.
-
-Sure, I'll do it. Just out of curiosity, why modulo operation should be
-avoided?
-
-> > +void igc_xdp_unregister_rxq_info(struct igc_ring *ring)
-> > +{
-> > +     xdp_rxq_info_unreg_mem_model(&ring->xdp_rxq);
-> 
-> xdp_rxq_info_unreg will call internally the xdp_rxq_info_unreg_mem_model
-> so I think the call above is redundant.
-
-Yep, you're right, this is redundant. I'll remove it.
+The right answer to this is to utilize managed interrupts and have
+according logic in your network driver to handle CPU hotplug. When a CPU
+goes down, then the queue which is associated to that CPU is quiesced
+and the interrupt core shuts down the relevant interrupt instead of
+moving it to an online CPU (which causes the whole vector exhaustion
+problem on x86). When the CPU comes online again, then the interrupt is
+reenabled in the core and the driver reactivates the queue.
 
 Thanks,
-Andre
+
+        tglx
+
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
