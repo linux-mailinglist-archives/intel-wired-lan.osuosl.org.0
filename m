@@ -1,62 +1,151 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E142C294EB5
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Oct 2020 16:33:18 +0200 (CEST)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DF6A2952C8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Oct 2020 21:14:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 9417A86200;
-	Wed, 21 Oct 2020 14:33:17 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id BCC9C868AA;
+	Wed, 21 Oct 2020 19:14:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 13h1jYB-jFWN; Wed, 21 Oct 2020 14:33:16 +0000 (UTC)
+	with ESMTP id iAtX1+IlCuaF; Wed, 21 Oct 2020 19:14:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id E1D6F86199;
-	Wed, 21 Oct 2020 14:33:15 +0000 (UTC)
+	by whitealder.osuosl.org (Postfix) with ESMTP id 8382286884;
+	Wed, 21 Oct 2020 19:14:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8B3941BF580
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 14:33:14 +0000 (UTC)
+Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4DD761BF580
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 14:54:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id 86C5B86199
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 14:33:14 +0000 (UTC)
+ by hemlock.osuosl.org (Postfix) with ESMTP id 4651B870DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 14:54:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from hemlock.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IK6Ek1c0vVwS for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Oct 2020 14:33:13 +0000 (UTC)
+ with ESMTP id IBVk7gNS30px for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Oct 2020 14:54:35 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id 3751B861BC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 14:33:13 +0000 (UTC)
-IronPort-SDR: 74dQME1BdHoUCdYKFBbdjGPDzIZGuWyRW5mibIkhVbxyWoXhaQopFZr4jjQh3qj1Z47A0i8nZR
- nURdRExtl5zg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9780"; a="164768791"
-X-IronPort-AV: E=Sophos;i="5.77,401,1596524400"; d="scan'208";a="164768791"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2020 07:33:12 -0700
-IronPort-SDR: pX0Dcg2Ua1meKqKmMvmMLH0K40vmVU9xG5miz5ypiTaZkLE82QfIEQzV8RP2cZG/TZtk4+8T0G
- pFcGRbcrGI4Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,401,1596524400"; d="scan'208";a="522765705"
-Received: from ranger.igk.intel.com ([10.102.21.164])
- by fmsmga006.fm.intel.com with ESMTP; 21 Oct 2020 07:33:11 -0700
-Date: Wed, 21 Oct 2020 16:23:49 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Andre Guedes <andre.guedes@intel.com>
-Message-ID: <20201021142349.GB58344@ranger.igk.intel.com>
-References: <20201009025349.4037-1-andre.guedes@intel.com>
- <20201009025349.4037-7-andre.guedes@intel.com>
+Received: from mx0b-00154904.pphosted.com (mx0b-00154904.pphosted.com
+ [148.163.137.20])
+ by hemlock.osuosl.org (Postfix) with ESMTPS id 1E58287092
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 14:54:35 +0000 (UTC)
+Received: from pps.filterd (m0170398.ppops.net [127.0.0.1])
+ by mx0b-00154904.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 09LErpBI031526; Wed, 21 Oct 2020 10:54:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=dell.com;
+ h=from : to : cc :
+ subject : date : message-id : references : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=smtpout1;
+ bh=dYdXxKIV+ASindNy5D8M1IRGeG4vPwLmADmsX5xcpks=;
+ b=y/LcpYi8U8y8wrtO/Az7gL3VgeEFMKWAwJxQFhjybAp4yFdPKp8ej6Vd5a5eebrhe1Fw
+ WurjCashTubCdM13U8kYtlzXuCTMAl9ltUMCGxyK9/IeLAPJtE96l+ubx4QEWi/9KNFG
+ 5hCal/VHTmxEdklXe+0bDaMo+EbgWdr1368mPKlXs+rRdcj9EWL9e8uNZCopqMphyy7s
+ LrOHlxAWKwxigAXulKAHP7WScMgwlmcKRs8SRDJKoC8wE+GW9iVd5aPXNkGSSyOeU735
+ JCfd2LPJM1d1THcPptDw7iY8h/ULsfi+iJKg/xJYIgrK7ZLkCPxBGmeRkrNxn2OsbDBz Pw== 
+Received: from mx0b-00154901.pphosted.com (mx0b-00154901.pphosted.com
+ [67.231.157.37])
+ by mx0b-00154904.pphosted.com with ESMTP id 347uu8ebhu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 21 Oct 2020 10:54:33 -0400
+Received: from pps.filterd (m0134318.ppops.net [127.0.0.1])
+ by mx0a-00154901.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 09LEqkVD145604; Wed, 21 Oct 2020 10:54:32 -0400
+Received: from nam02-sn1-obe.outbound.protection.outlook.com
+ (mail-sn1nam02lp2058.outbound.protection.outlook.com [104.47.36.58])
+ by mx0a-00154901.pphosted.com with ESMTP id 34ag8qx5vw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 21 Oct 2020 10:54:32 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hh+Zm/wRYHQh0fVwZWYoqm8xsG2C9QOkMe+CAuOObbb39vlotPyu+rv13akSNwwtFTr9lLK1CoPid5Mwni3Av+pibb3RpvdW6KQjnXj3+DlemHlv79IChKU7LNkDW2XHHcBcuOxCUONNkw+sjusNi+jcG2aamnDNVvuCkIWSkqZFsBxwlVdYo2IIYPM/W/2FYdsQ3Ogc2NRhd2RjDjqgzlAKKoivljNeSJ6vnp5NUUyNET/SVV2/UX8te9fkxCOQSJjocAgBtzy8Or0CJ1IPiq6Vo1BhIZ981Mc53hPAU658p+IZ0EE5O2xprjjVRbzBMncCO4olDhLgtRjscGJcMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dYdXxKIV+ASindNy5D8M1IRGeG4vPwLmADmsX5xcpks=;
+ b=XeclxzWWrNP/c1H17hnyDB3SyiSsMvSrcrO3nAUqirnj9nKI9QeHAjdMN6ATq5m7Vp6vtQnoiPEjIyXq/LHVGmUJD42dS6AF5jC9SEmUZY2vQfxVS30IacQdD5raoxMlhDpatT83AwlPCuEKGIbiOEYpIH5cQDweVHoB6psW0KEiRbycEo1kaSTH9vRS8TL2iQp/YpIvgjGP+rP4DorO29dYUkxECLQZj28B4sVECj+L59T7JpKwEt6qo796VVmLYO8tu3o7tQXhWDdviTBaTBNcYXs53E9m6A2L4hZc5khF42fTszgrivkXmqpx+VKlwLA/erzjS7LIfH2C0fMb4A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=dell.com; dmarc=pass action=none header.from=dell.com;
+ dkim=pass header.d=dell.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Dell.onmicrosoft.com; 
+ s=selector1-Dell-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dYdXxKIV+ASindNy5D8M1IRGeG4vPwLmADmsX5xcpks=;
+ b=YJTGXxEOrq1Do4ysuJnYxO47qaQ0UjLhtVm7yV+So0Co9tON+utsZnlTd7dsIFwjwezjlrVLugHpINs92k6DdtEio53jF26zZYo9aVqGhmIo1Op5wtf+2O5kn3DlJ4q0XQroeuyQVkbwFlrf+IRt3N9u82cyJQnHTJ3dVD/nits=
+Received: from SJ0PR19MB4463.namprd19.prod.outlook.com (2603:10b6:a03:282::9)
+ by SJ0PR19MB4794.namprd19.prod.outlook.com (2603:10b6:a03:2e5::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.18; Wed, 21 Oct
+ 2020 14:49:31 +0000
+Received: from SJ0PR19MB4463.namprd19.prod.outlook.com
+ ([fe80::c033:4691:b4f7:5ef]) by SJ0PR19MB4463.namprd19.prod.outlook.com
+ ([fe80::c033:4691:b4f7:5ef%6]) with mapi id 15.20.3499.018; Wed, 21 Oct 2020
+ 14:49:31 +0000
+From: "Shen, Yijun" <Yijun.Shen@dell.com>
+To: "Brown, Aaron F" <aaron.f.brown@intel.com>, "Limonciello, Mario"
+ <Mario.Limonciello@dell.com>, "Kirsher, Jeffrey T"
+ <jeffrey.t.kirsher@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML systems
+ into s0ix heuristics
+Thread-Index: AQHWlVGQNCC2JTiqu0ySgmetkcxf3KmLU4DAgBb0CHA=
+Date: Wed, 21 Oct 2020 14:49:31 +0000
+Message-ID: <SJ0PR19MB4463C698A4DCCD10600A25859A1C0@SJ0PR19MB4463.namprd19.prod.outlook.com>
+References: <20200928044024.7595-1-mario.limonciello@dell.com>
+ <20200928044024.7595-4-mario.limonciello@dell.com>
+ <DM6PR11MB2890D867948806FF79EC94E0BC0A0@DM6PR11MB2890.namprd11.prod.outlook.com>
+In-Reply-To: <DM6PR11MB2890D867948806FF79EC94E0BC0A0@DM6PR11MB2890.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: intel.com; dkim=none (message not signed)
+ header.d=none;intel.com; dmarc=none action=none header.from=Dell.com;
+x-originating-ip: [101.86.22.46]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: aa8d9243-f67c-443d-cbab-08d875d08516
+x-ms-traffictypediagnostic: SJ0PR19MB4794:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <SJ0PR19MB4794509BAD0AB3140742CE5A9A1C0@SJ0PR19MB4794.namprd19.prod.outlook.com>
+x-exotenant: 2khUwGVqB6N9v58KS13ncyUmMJd8q4
+x-ms-oob-tlc-oobclassifiers: OLM:6790;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: B8CZAfCmUAjud6qsaAP0h/uNj7XxsBFmm1h5WXxNCykOZaUIiwmvBuqyaDY7VBHfj4iYouqS6TU4Sucb2qFUr7W3J/1U/2uu0SVm0ioZ/JV/6baqbQDSWaFy+yfCiZT8ru21nI2ezeV1kBfaK/9//Ks1IyOofC9LG1OS3MnYa9f5bA3O/Vse0yLwt0+KxeWvZr3PcRdFDXnj8Eppjm8zRSV8EaW4+pQk7zsKPdcr2xhXN0tMhht1srFMnQkLW2ULfD9qUQMNDSoOdssoAm9W2I6pDTJ5elG/lXyqzSjBx1CVGQnX6vtVNXPDzT72Ds/mFfcAxShudWcBR5LWUTEt7Wsu7Spbhqh2MrE0oPLy6TOU+qQ5UuOsqv0k1NFXxlHjxqOzrhwAgh/ACrt03RoVGnUJl95wzQSBES7aJBw9X7ob5vQRVZn+MdKHf8MWcMZRdtMJYJf1OZ7dRPeiiVlC6w==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR19MB4463.namprd19.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(376002)(39860400002)(346002)(366004)(396003)(6506007)(66946007)(2906002)(53546011)(110136005)(26005)(966005)(9686003)(54906003)(86362001)(478600001)(8936002)(186003)(8676002)(786003)(55016002)(33656002)(316002)(7696005)(4326008)(66446008)(66476007)(5660300002)(76116006)(71200400001)(52536014)(83380400001)(64756008)(66556008)(32563001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: 1gYzKSU344U4zyZs07Kns8trYc2dTE3pysMcA7IjrcRL4ecySY5wYr3keIXwX/+2BD5ywgAsBoeAfPf4pE3uwGC+bZ73s9827bjYC/Z6puodQ2P7zVUh829NIbn7+IGD0wS/zmOCRyzL3dE0dw9M8U50lHF6jp2rPuZRZxFw4ncUxls67dR5r8JhhdQF2KQa45TwG51Bd8dsv/iGdHj89l1h80GNqxBZPahf+U9VAOAsT+EStfXmvb+w4UVyEzjj/8StLUutLK+Vu7FOoXY7pg1MWVmNxPRSAfKSDIWo8WJGZW7Fl9t+IS8N94MTdEfSEjMjA/PJJK3ETrg2azniogCy5Hy33nyaYdn9XPszfp+oJf/WkQ4ipBtcxGVvyyLl0qr6kwjSNcdXgXSD2IFhSpt3gf/LO9dlYQRTh8lk9tFumLj72wS9qx1XRNZaIcnqwny3U0ebyvUj6PAZSHyXOeqpt57YYlw6+akDbvUODn+t464tVkSgpWzjJHhl+qtJo0VOggZ4XYVWAFa3OumuxD53hF4fPmYTMHFSn5WufVNc9unfKl8NnQxlWYrbTJdeA9n4Ayz7vOYHltayLresEUzGaZcFa1qCEEB9jmoVoNaNB1eR994495HL3qLP1WnrS1rwEAQDJKKeesi8UJc9Jw==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201009025349.4037-7-andre.guedes@intel.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-Subject: Re: [Intel-wired-lan] [PATCH 6/9] igc: Add Initial XDP support
+X-OriginatorOrg: Dell.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR19MB4463.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: aa8d9243-f67c-443d-cbab-08d875d08516
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Oct 2020 14:49:31.8171 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 945c199a-83a2-4e80-9f8c-5a91be5752dd
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: WIRClNeoq33IWh+X8fd/TIO7qJzZrgBONdaT3U0ccXJsOcuGf4rSaEEoqMKx2HMFEQMnJy+yKZCF+JWvMkSN1A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR19MB4794
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.737
+ definitions=2020-10-21_06:2020-10-20,
+ 2020-10-21 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0
+ impostorscore=0 adultscore=0 mlxlogscore=999 spamscore=0 bulkscore=0
+ mlxscore=0 priorityscore=1501 malwarescore=0 clxscore=1015 phishscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010210112
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ phishscore=0
+ mlxlogscore=999 suspectscore=0 spamscore=0 mlxscore=0 adultscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010210113
+X-Mailman-Approved-At: Wed, 21 Oct 2020 19:13:58 +0000
+Subject: Re: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML systems
+ into s0ix heuristics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,341 +158,97 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: "Yuan, Perry" <Perry.Yuan@dell.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Oct 08, 2020 at 07:53:46PM -0700, Andre Guedes wrote:
-> This patch adds the initial XDP support to the igc driver. For now,
-> only XDP_PASS, XDP_DROP, XDP_ABORT actions are supported. Upcoming
-
-s/XDP_ABORT/XDP_ABORTED
-
-> patches will add support for the remaining XDP actions.
+> -----Original Message-----
+> From: Brown, Aaron F <aaron.f.brown@intel.com>
+> Sent: Wednesday, October 7, 2020 8:22 AM
+> To: Limonciello, Mario; Kirsher, Jeffrey T; intel-wired-lan@lists.osuosl.org
+> Cc: Yuan, Perry; Shen, Yijun; linux-kernel@vger.kernel.org
+> Subject: RE: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML
+> systems into s0ix heuristics
 > 
-> XDP-specific helpers are defined in a new file, igc_xdp.c. These
-> helpers are utilized in igc_main.c to implement the ndo_bpf callback
-> and to handle XDP programs execution in igc_clean_rx_irq(). The driver
-> doesn't support XDP functionality with frames that span over multiple
-> buffers so jumbo frames are not allowed for now.
 > 
-> The approach implemented by this patch follows the approach implemented
-> in other Intel drivers as much as possible for the sake of consistency
-> across the drivers.
+> [EXTERNAL EMAIL]
 > 
-> Quick comment regarding igc_build_skb(): this patch doesn't touch it
-> because the function is never called. It seems its support is
-> incomplete/in progress. The function was added by commit 0507ef8a0372b
-> ("igc: Add transmit and receive fastpath and interrupt handlers") but
-> ring_ uses_build_skb() always return False since the IGC_RING_FLAG_RX_
-> BUILD_SKB_ENABLED isn't set anywhere in the driver code.
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Mario Limonciello
+> > Sent: Sunday, September 27, 2020 9:40 PM
+> > To: Kirsher, Jeffrey T <jeffrey.t.kirsher@intel.com>; intel-wired-
+> > lan@lists.osuosl.org
+> > Cc: Perry.Yuan@dell.com; Yijun.Shen@dell.com; linux-
+> > kernel@vger.kernel.org; Mario Limonciello <mario.limonciello@dell.com>
+> > Subject: [Intel-wired-lan] [PATCH 3/3] e1000e: Add more Dell CML
+> > systems into s0ix heuristics
+> >
+> > These comet lake systems are not yet released, but have been validated
+> > on pre-release hardware.
 > 
-> This patch has been tested with the sample app "xdp1" located in
-> samples/bpf/ dir.
+> Same basic question as with 2/3 of the series, would it be possible to get
+> someone who touched / validated the code on the pre-release hardware to
+> provide a Tested-by: to this patch?
+
+ Verified this series patches with Dell Systems.
+
+Tested-by: Yijun Shen <Yijun.shen@dell.com>
+
 > 
-> Signed-off-by: Andre Guedes <andre.guedes@intel.com>
-> ---
->  drivers/net/ethernet/intel/igc/Makefile   |  2 +-
->  drivers/net/ethernet/intel/igc/igc.h      |  2 +
->  drivers/net/ethernet/intel/igc/igc_main.c | 58 +++++++++++++++---
->  drivers/net/ethernet/intel/igc/igc_xdp.c  | 75 +++++++++++++++++++++++
->  drivers/net/ethernet/intel/igc/igc_xdp.h  | 18 ++++++
->  5 files changed, 144 insertions(+), 11 deletions(-)
->  create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.c
->  create mode 100644 drivers/net/ethernet/intel/igc/igc_xdp.h
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/Makefile b/drivers/net/ethernet/intel/igc/Makefile
-> index 1c3051db9085..95d1e8c490a4 100644
-> --- a/drivers/net/ethernet/intel/igc/Makefile
-> +++ b/drivers/net/ethernet/intel/igc/Makefile
-> @@ -8,4 +8,4 @@
->  obj-$(CONFIG_IGC) += igc.o
->  
->  igc-objs := igc_main.o igc_mac.o igc_i225.o igc_base.o igc_nvm.o igc_phy.o \
-> -igc_diag.o igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o
-> +igc_diag.o igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o igc_xdp.o
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index b9d15e6f22f6..e013ac65001b 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -217,6 +217,8 @@ struct igc_adapter {
->  	struct timecounter tc;
->  	struct timespec64 prev_ptp_time; /* Pre-reset PTP clock */
->  	ktime_t ptp_reset_start; /* Reset time in clock mono */
-> +
-> +	struct bpf_prog *xdp_prog;
->  };
->  
->  void igc_up(struct igc_adapter *adapter);
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index d026609eec4d..8cdd3a16e637 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -16,6 +16,7 @@
->  #include "igc.h"
->  #include "igc_hw.h"
->  #include "igc_tsn.h"
-> +#include "igc_xdp.h"
->  
->  #define DRV_SUMMARY	"Intel(R) 2.5G Ethernet Linux Driver"
->  
-> @@ -1592,11 +1593,11 @@ static struct sk_buff *igc_build_skb(struct igc_ring *rx_ring,
->  
->  static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
->  					 struct igc_rx_buffer *rx_buffer,
-> -					 unsigned int size, int pkt_offset,
-> +					 struct xdp_buff *xdp,
->  					 ktime_t timestamp)
->  {
-> -	void *va = page_address(rx_buffer->page) + rx_buffer->page_offset +
-> -		   pkt_offset;
-> +	void *va = xdp->data;
-> +	unsigned int size = xdp->data_end - xdp->data;
->  	unsigned int truesize = igc_get_rx_frame_truesize(rx_ring, size);
->  	unsigned int headlen;
->  	struct sk_buff *skb;
-
-RCT
-
-> @@ -1746,6 +1747,10 @@ static bool igc_cleanup_headers(struct igc_ring *rx_ring,
->  				union igc_adv_rx_desc *rx_desc,
->  				struct sk_buff *skb)
->  {
-> +	/* XDP packets use error pointer so abort at this point */
-> +	if (IS_ERR(skb))
-> +		return true;
-> +
->  	if (unlikely(igc_test_staterr(rx_desc, IGC_RXDEXT_STATERR_RXE))) {
->  		struct net_device *netdev = rx_ring->netdev;
->  
-> @@ -1911,7 +1916,9 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->  		struct igc_rx_buffer *rx_buffer;
->  		ktime_t timestamp = 0;
->  		int pkt_offset = 0;
-> +		struct xdp_buff xdp;
->  		unsigned int size;
-> +		void *pktbuf;
->  
->  		/* return some buffers to hardware, one at a time is too slow */
->  		if (cleaned_count >= IGC_RX_BUFFER_WRITE) {
-> @@ -1932,24 +1939,37 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->  
->  		rx_buffer = igc_get_rx_buffer(rx_ring, size);
->  
-> -		if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
-> -			void *pktbuf = page_address(rx_buffer->page) +
-> -				       rx_buffer->page_offset;
-> +		pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
->  
-> +		if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
->  			timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
->  							pktbuf);
->  			pkt_offset = IGC_TS_HDR_LEN;
->  			size -= IGC_TS_HDR_LEN;
->  		}
->  
-> -		/* retrieve a buffer from the ring */
-> -		if (skb)
-> +		if (!skb) {
-> +			struct igc_adapter *adapter = q_vector->adapter;
-> +
-> +			xdp.data = pktbuf + pkt_offset;
-> +			xdp.data_end = xdp.data + size;
-> +			xdp.data_hard_start = pktbuf - igc_rx_offset(rx_ring);
-
-This needs some fixing. You're saying that build_skb() can't be currently
-used which means that the headroom given for XDP will always be zero.
-
-You need to either teach igc_rx_offset to return XDP_PACKET_HEADROOM for
-case when ring is not using build_skb() or make build_skb() usable.
-
-> +			xdp_set_data_meta_invalid(&xdp);
-
-What about xdp.frame_sz?
-
-> +
-> +			skb = igc_xdp_run_prog(adapter, &xdp);
-> +		}
-> +
-> +		if (IS_ERR(skb)) {
-> +			rx_buffer->pagecnt_bias++;
-> +			total_packets++;
-> +			total_bytes += size;
-> +		} else if (skb)
->  			igc_add_rx_frag(rx_ring, rx_buffer, skb, size);
->  		else if (ring_uses_build_skb(rx_ring))
->  			skb = igc_build_skb(rx_ring, rx_buffer, rx_desc, size);
->  		else
-> -			skb = igc_construct_skb(rx_ring, rx_buffer, size,
-> -						pkt_offset, timestamp);
-> +			skb = igc_construct_skb(rx_ring, rx_buffer, &xdp,
-> +						timestamp);
->  
->  		/* exit if we failed to retrieve a buffer */
->  		if (!skb) {
-> @@ -3881,6 +3901,11 @@ static int igc_change_mtu(struct net_device *netdev, int new_mtu)
->  	int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
-
-I think I was mentioning it with igb xdp review, shouldn't we take double
-vlan header into account?
-
->  	struct igc_adapter *adapter = netdev_priv(netdev);
->  
-> +	if (igc_xdp_is_enabled(adapter) && new_mtu > ETH_DATA_LEN) {
-> +		netdev_dbg(netdev, "Jumbo frames not supported with XDP");
-> +		return -EINVAL;
-> +	}
-> +
->  	/* adjust max frame to be at least the size of a standard frame */
->  	if (max_frame < (ETH_FRAME_LEN + ETH_FCS_LEN))
->  		max_frame = ETH_FRAME_LEN + ETH_FCS_LEN;
-> @@ -4867,6 +4892,18 @@ static int igc_setup_tc(struct net_device *dev, enum tc_setup_type type,
->  	}
->  }
->  
-> +static int igc_bpf(struct net_device *dev, struct netdev_bpf *bpf)
-> +{
-> +	struct igc_adapter *adapter = netdev_priv(dev);
-> +
-> +	switch (bpf->command) {
-> +	case XDP_SETUP_PROG:
-> +		return igc_xdp_set_prog(adapter, bpf->prog, bpf->extack);
-> +	default:
-> +		return -EOPNOTSUPP;
-> +	}
-> +}
-> +
->  static const struct net_device_ops igc_netdev_ops = {
->  	.ndo_open		= igc_open,
->  	.ndo_stop		= igc_close,
-> @@ -4880,6 +4917,7 @@ static const struct net_device_ops igc_netdev_ops = {
->  	.ndo_features_check	= igc_features_check,
->  	.ndo_do_ioctl		= igc_ioctl,
->  	.ndo_setup_tc		= igc_setup_tc,
-> +	.ndo_bpf		= igc_bpf,
->  };
->  
->  /* PCIe configuration access */
-> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
-> new file mode 100644
-> index 000000000000..0085d8b85466
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
-> @@ -0,0 +1,75 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/* Copyright (c) 2020, Intel Corporation. */
-> +
-> +#include <linux/bpf_trace.h>
-> +
-> +#include "igc.h"
-> +#include "igc_xdp.h"
-> +
-> +int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
-> +		     struct netlink_ext_ack *extack)
-> +{
-> +	struct net_device *dev = adapter->netdev;
-> +	bool if_running = netif_running(dev);
-> +	struct bpf_prog *old_prog;
-> +
-> +	if (dev->mtu > ETH_DATA_LEN) {
-> +		/* For now, the driver doesn't support XDP functionality with
-> +		 * jumbo frames so we return error.
-> +		 */
-> +		NL_SET_ERR_MSG_MOD(extack, "Jumbo frames not supported");
-> +		return -EOPNOTSUPP;
-> +	}
-> +
-> +	if (if_running)
-> +		igc_close(dev);
-> +
-> +	old_prog = xchg(&adapter->xdp_prog, prog);
-> +	if (old_prog)
-> +		bpf_prog_put(old_prog);
-> +
-> +	if (if_running)
-> +		igc_open(dev);
-> +
-> +	netdev_dbg(dev, "XDP program set successfully");
-
-This can be dropped
-
-> +	return 0;
-> +}
-> +
-> +struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
-> +				 struct xdp_buff *xdp)
-> +{
-> +	struct bpf_prog *prog;
-> +	int res;
-> +	u32 act;
-> +
-> +	rcu_read_lock();
-> +
-> +	prog = READ_ONCE(adapter->xdp_prog);
-> +	if (!prog)
-> +		goto unlock;
-
-res will be uninitialized if you hit this goto.
-
-> +
-> +	act = bpf_prog_run_xdp(prog, xdp);
-> +	switch (act) {
-> +	case XDP_PASS:
-> +		res = IGC_XDP_PASS;
-> +		break;
-> +	default:
-> +		bpf_warn_invalid_xdp_action(act);
-> +		fallthrough;
-> +	case XDP_ABORTED:
-> +		trace_xdp_exception(adapter->netdev, prog, act);
-> +		fallthrough;
-> +	case XDP_DROP:
-> +		res = IGC_XDP_CONSUMED;
-> +		break;
-> +	}
-> +
-> +unlock:
-> +	rcu_read_unlock();
-> +	return ERR_PTR(-res);
-> +}
-> +
-> +bool igc_xdp_is_enabled(struct igc_adapter *adapter)
-> +{
-> +	return !!adapter->xdp_prog;
-> +}
-> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.h b/drivers/net/ethernet/intel/igc/igc_xdp.h
-> new file mode 100644
-> index 000000000000..ab36ab4d48fd
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.h
-> @@ -0,0 +1,18 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/* Copyright (c) 2020, Intel Corporation. */
-> +
-> +#ifndef _IGC_XDP_H_
-> +#define _IGC_XDP_H_
-> +
-> +#define IGC_XDP_PASS		0
-> +#define IGC_XDP_CONSUMED	BIT(0)
-> +
-> +int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
-> +		     struct netlink_ext_ack *extack);
-> +
-> +struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
-> +				 struct xdp_buff *xdp);
-> +
-> +bool igc_xdp_is_enabled(struct igc_adapter *adapter);
-> +
-> +#endif /* _IGC_XDP_H_ */
-> -- 
-> 2.26.2
-> 
-> _______________________________________________
-> Intel-wired-lan mailing list
-> Intel-wired-lan@osuosl.org
-> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+> >
+> > This is being submitted separately from released hardware in case of a
+> > regression between pre-release and release hardware so this commit can
+> > be reverted alone.
+> >
+> > Signed-off-by: Mario Limonciello <mario.limonciello@dell.com>
+> > ---
+> >  drivers/net/ethernet/intel/e1000e/param.c | 21 +++++++++++++++++++++
+> >  1 file changed, 21 insertions(+)
+> >
+> > diff --git a/drivers/net/ethernet/intel/e1000e/param.c
+> > b/drivers/net/ethernet/intel/e1000e/param.c
+> > index 58e6718c4f75..fe3157c8aa4a 100644
+> > --- a/drivers/net/ethernet/intel/e1000e/param.c
+> > +++ b/drivers/net/ethernet/intel/e1000e/param.c
+> > @@ -273,6 +273,27 @@ static const struct dmi_system_id
+> > s0ix_supported_systems[] = {
+> >  			DMI_MATCH(DMI_PRODUCT_SKU, "09C4"),
+> >  		},
+> >  	},
+> > +	{
+> > +		/* Dell Notebook 0x0A40 */
+> > +		.matches = {
+> > +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> > +			DMI_MATCH(DMI_PRODUCT_SKU, "0A40"),
+> > +		},
+> > +	},
+> > +	{
+> > +		/* Dell Notebook 0x0A41 */
+> > +		.matches = {
+> > +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> > +			DMI_MATCH(DMI_PRODUCT_SKU, "0A41"),
+> > +		},
+> > +	},
+> > +	{
+> > +		/* Dell Notebook 0x0A42 */
+> > +		.matches = {
+> > +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> > +			DMI_MATCH(DMI_PRODUCT_SKU, "0A42"),
+> > +		},
+> > +	},
+> >  	{ }
+> >  };
+> >
+> > --
+> > 2.25.1
+> >
+> > _______________________________________________
+> > Intel-wired-lan mailing list
+> > Intel-wired-lan@osuosl.org
+> > https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
