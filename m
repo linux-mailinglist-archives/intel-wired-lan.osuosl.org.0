@@ -1,135 +1,63 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12B3E2953D3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Oct 2020 23:05:30 +0200 (CEST)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 754782954B4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 00:16:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id C8EFD8769C;
-	Wed, 21 Oct 2020 21:05:28 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 3B8F386D28;
+	Wed, 21 Oct 2020 22:16:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EeXk0r+TXGfC; Wed, 21 Oct 2020 21:05:28 +0000 (UTC)
+	with ESMTP id xkhDIeYzAtgF; Wed, 21 Oct 2020 22:16:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 094CE87670;
-	Wed, 21 Oct 2020 21:05:26 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 77E8586D2A;
+	Wed, 21 Oct 2020 22:16:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B36851BF2C8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 21:04:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8C09F1BF387
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:16:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id 9934486A31
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 21:04:19 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 87FB7876F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:16:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id prV1s8YZOKgJ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Oct 2020 21:04:18 +0000 (UTC)
+ with ESMTP id EILVD-bZNNu1 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Oct 2020 22:16:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 4B0C286B00
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 21:04:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603314257;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0YUWo4bZCexSnwTeOfkLwPeIOKqXO7B7hpyZe6AULyI=;
- b=Ud+eeMrEOk+1Unfn035EGWeYFtbQ7X33LdoWx62xTjUSE+iOdSSpzSVIhv5dIwRqeRSNde
- 80wU7AnM2E+19ZqEndkZLCYIg2hPQSNLintA2b23RegGX0hrDWnAeatlepO1grq2eGX2jO
- CRN5WUD+rZ/T0E9kPXXKBM8KDE3eMow=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-251-Hc3Fxz0DPIG6xn3tdr7GgA-1; Wed, 21 Oct 2020 17:04:12 -0400
-X-MC-Unique: Hc3Fxz0DPIG6xn3tdr7GgA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 74FC9800050;
- Wed, 21 Oct 2020 21:04:09 +0000 (UTC)
-Received: from [10.10.115.73] (ovpn-115-73.rdu2.redhat.com [10.10.115.73])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 993DB5C1C7;
- Wed, 21 Oct 2020 21:04:03 +0000 (UTC)
-To: Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-pci@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, frederic@kernel.org, mtosatti@redhat.com,
- sassmann@redhat.com, jesse.brandeburg@intel.com, lihong.yang@intel.com,
- helgaas@kernel.org, jeffrey.t.kirsher@intel.com, jacob.e.keller@intel.com,
- jlelli@redhat.com, hch@infradead.org, bhelgaas@google.com,
- mike.marciniszyn@intel.com, dennis.dalessandro@intel.com,
- thomas.lendacky@amd.com, jiri@nvidia.com, mingo@redhat.com,
- peterz@infradead.org, juri.lelli@redhat.com, vincent.guittot@linaro.org,
- lgoncalv@redhat.com, Jakub Kicinski <kuba@kernel.org>,
- Dave Miller <davem@davemloft.net>
-References: <20200928183529.471328-1-nitesh@redhat.com>
- <20200928183529.471328-5-nitesh@redhat.com>
- <87v9f57zjf.fsf@nanos.tec.linutronix.de>
- <3bca9eb1-a318-1fc6-9eee-aacc0293a193@redhat.com>
- <87lfg093fo.fsf@nanos.tec.linutronix.de>
- <877drj72cz.fsf@nanos.tec.linutronix.de>
-From: Nitesh Narayan Lal <nitesh@redhat.com>
-Autocrypt: addr=nitesh@redhat.com; prefer-encrypt=mutual; keydata=
- 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
- VujM7c/b4pps
-Organization: Red Hat Inc,
-Message-ID: <9fa39be6-45ab-01a6-86b0-b077f368f4cf@redhat.com>
-Date: Wed, 21 Oct 2020 17:04:01 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id C4F13876B6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Oct 2020 22:16:36 +0000 (UTC)
+IronPort-SDR: xhWDQ31N7xL7fUJmNWoDFtn4SKdKKQmCrTJ2+SU64ZQCGbjGDDvAEW+bC5HpwxdP71dr3cv5D/
+ h/KC1VPV5wJg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9781"; a="166662847"
+X-IronPort-AV: E=Sophos;i="5.77,402,1596524400"; d="scan'208";a="166662847"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Oct 2020 15:16:36 -0700
+IronPort-SDR: +19FuBEELfnoQwihHHIccPj0mgLZ0sblKNK/ar/rbpxhZDXxB2N0LDepLLD6LsrQxTTexxJP4D
+ trj7uEg8Zk2Q==
+X-IronPort-AV: E=Sophos;i="5.77,402,1596524400"; d="scan'208";a="348493524"
+Received: from lsachorn-mobl.amr.corp.intel.com (HELO localhost)
+ ([10.212.138.249])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Oct 2020 15:16:36 -0700
 MIME-Version: 1.0
-In-Reply-To: <877drj72cz.fsf@nanos.tec.linutronix.de>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=nitesh@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-X-Mailman-Approved-At: Wed, 21 Oct 2020 21:05:24 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
- pci_alloc_irq_vectors() to housekeeping CPUs
+In-Reply-To: <20201021135005.GA58344@ranger.igk.intel.com>
+References: <20201009025349.4037-1-andre.guedes@intel.com>
+ <20201009025349.4037-2-andre.guedes@intel.com>
+ <20201021135005.GA58344@ranger.igk.intel.com>
+From: Andre Guedes <andre.guedes@intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Wed, 21 Oct 2020 15:16:35 -0700
+Message-ID: <160331859515.64680.4070714452715978307@lsachorn-mobl.amr.corp.intel.com>
+User-Agent: alot/0.9.1
+Subject: Re: [Intel-wired-lan] [PATCH 1/9] igc: Fix igc_ptp_rx_pktstamp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,141 +70,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0403667298057688873=="
+Cc: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0403667298057688873==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="19tJzs4pDB5hORMaKvDJ8V6aBKOyjfvgw"
+Hi Maciej,
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---19tJzs4pDB5hORMaKvDJ8V6aBKOyjfvgw
-Content-Type: multipart/mixed; boundary="fpjpftGGct6Kgqold4nIRFi6tHAQ5oppN"
+Quoting Maciej Fijalkowski (2020-10-21 06:50:05)
+> On Thu, Oct 08, 2020 at 07:53:41PM -0700, Andre Guedes wrote:
+> > The comment describing the timestamps layout in the packet buffer is
+> > wrong and the code is actually retrieving the timestamp in Timer 1
+> > reference instead of Timer 0. This hasn't been a big issue so far
+> > because hardware is configured to report both timestamps using Timer 0
+> > (see IGC_SRRCTL register configuration in igc_ptp_enable_rx_timestamp()
+> > helper). This patch fixes the comment and the code so we retrieve the
+> > timestamp in Timer 0 reference as expected.
+> > 
+> > This patch also takes the opportunity to get rid of the hw.mac.type check
+> > since it is not required.
+> 
+> How is this related to adding XDP support?
 
---fpjpftGGct6Kgqold4nIRFi6tHAQ5oppN
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Content-Language: en-US
+It is not directly related, however patches in this series depends on this patch
+to apply (see "igc: Refactor rx timestamp handling"). That's why I put it as the
+first patch in the series.
 
-
-On 10/21/20 4:25 PM, Thomas Gleixner wrote:
-> On Tue, Oct 20 2020 at 20:07, Thomas Gleixner wrote:
->> On Tue, Oct 20 2020 at 12:18, Nitesh Narayan Lal wrote:
->>> However, IMHO we would still need a logic to prevent the devices from
->>> creating excess vectors.
->> Managed interrupts are preventing exactly that by pinning the interrupts
->> and queues to one or a set of CPUs, which prevents vector exhaustion on
->> CPU hotplug.
->>
->> Non-managed, yes that is and always was a problem. One of the reasons
->> why managed interrupts exist.
-> But why is this only a problem for isolation? The very same problem
-> exists vs. CPU hotplug and therefore hibernation.
->
-> On x86 we have at max. 204 vectors available for device interrupts per
-> CPU. So assumed the only device interrupt in use is networking then any
-> machine which has more than 204 network interrupts (queues, aux ...)
-> active will prevent the machine from hibernation.
-
-Yes, that is indeed the case.
-
->
-> Aside of that it's silly to have multiple queues targeted at a single
-> CPU in case of hotplug. And that's not a theoretical problem.  Some
-> power management schemes shut down sockets when the utilization of a
-> system is low enough, e.g. outside of working hours.
->
-> The whole point of multi-queue is to have locality so that traffic from
-> a CPU goes through the CPU local queue. What's the point of having two
-> or more queues on a CPU in case of hotplug?
->
-> The right answer to this is to utilize managed interrupts and have
-> according logic in your network driver to handle CPU hotplug. When a CPU
-> goes down, then the queue which is associated to that CPU is quiesced
-> and the interrupt core shuts down the relevant interrupt instead of
-> moving it to an online CPU (which causes the whole vector exhaustion
-> problem on x86). When the CPU comes online again, then the interrupt is
-> reenabled in the core and the driver reactivates the queue.
-
-IIRC then i40e does have something like that where it suspends all IRQs
-before hibernation and restores them when the CPU is back online.
-
-I am not particularly sure about the other drivers.
-
-This brings me to another discussion that Peter initiated that is to
-perform the proposed restriction without any condition for all non-managed
-IRQs.
-
-Something on the lines:
-
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!pci_is_managed(dev))
-+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 max_vecs =3D clamp(hk_cpus, min_vecs, max_vecs);
-
-
-I am not particularly sure about this because I am not sure what kind of
-performance penalty this will have on the drivers in general and if
-that will be acceptable at all. Any thoughts?
-
-However, this still doesn't solve the generic problem, and an ideal solutio=
-n
-will be something that you suggested.
-
-Will it be sensible to think about having a generic API that can be
-consumed by all the drivers and that can do both the things you mentioned?
-
->
-> Thanks,
->
->         tglx
->
->
->
---=20
-Thanks
-Nitesh
-
-
---fpjpftGGct6Kgqold4nIRFi6tHAQ5oppN--
-
---19tJzs4pDB5hORMaKvDJ8V6aBKOyjfvgw
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEkXcoRVGaqvbHPuAGo4ZA3AYyozkFAl+QokEACgkQo4ZA3AYy
-ozm8/BAAw3Ss+bADPfbH0Btpugh729jC6rE1B3DjGvzYJ31x04H+qfcbMeyAMoUB
-p+JMNfMAINsS2QgwgzC5sEP825/CWCxpMsWDpjYjaxegrC+4KW/uWlRtTddYoDlU
-vjJclY7406kHZr+djsB6kiPVJPxxsYhtsgUh0bsGrOpLHj3M6q5QmwF9eRQPuJgn
-xt7IEM+xtL/0S/QiHPOMIfRbMeAouYO9eeXMRDiCHL/uADwFHz6j8MSOpwZJ9zBk
-gpS/3ly0cL8t1sU1k36OE7V+oelMzqt1DTIv/KF9/LEhPeb7+Np/R2MGWrrYDAPv
-4b8PzJCgC6uCaKQMIsqi9nciTogeTibOUKoh5PCdeRv86cDj815NqSeiRVCOaWuT
-xUGPQgrWIQzPMN4fdt7Ile6lRVv4e8wlRdgAMlBcW4gFamp97zyzcUHTZ957hOWE
-AKHWDUZizoaOPiL6hIHTGkHljv6uvVv5lv6+UlZz+fR9ArRYSZ8Y2BibBj/GRLqR
-IQD5BWjXNcq9izSNESPd6ionkxosjF8dmlP4PpZBMwwRfZ4toWLaDQvhfF7L5ODO
-aSqfFsdqSeZBDbB4zy6QpOmTraLKHly0cE4gD408BGbySJn8FoNXb7be/hNWQfJN
-F74wifFccM4/h26iT1M/EPn3R9h2y7keMrRL1p5OosZHKTRi9Bo=
-=oi9x
------END PGP SIGNATURE-----
-
---19tJzs4pDB5hORMaKvDJ8V6aBKOyjfvgw--
-
-
---===============0403667298057688873==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+- Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
---===============0403667298057688873==--
-
