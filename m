@@ -2,78 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0E6629606F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 15:53:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D52D29645E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 20:05:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 6571D2E152;
-	Thu, 22 Oct 2020 13:53:20 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 0CA6620774;
+	Thu, 22 Oct 2020 18:05:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nplF8k2qm1PY; Thu, 22 Oct 2020 13:53:18 +0000 (UTC)
+	with ESMTP id 6YKlI63ZemKs; Thu, 22 Oct 2020 18:05:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 2376A2E125;
-	Thu, 22 Oct 2020 13:53:17 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9E88520455;
+	Thu, 22 Oct 2020 18:04:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CF9371BF479
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 12:29:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 439AE1BF57B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 18:04:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id C5415872FE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 12:29:25 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 39AB286B2C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 18:04:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Tj0T2V6MXHJL for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Oct 2020 12:29:25 +0000 (UTC)
+ with ESMTP id n8vqkuDo8tQ7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Oct 2020 18:04:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [216.205.24.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id C845A86C59
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 12:29:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603369763;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=LckgkZ6IVJMsEiwSkmcuHngu8LJFXLEySIsMLY2OYag=;
- b=Af8J0dSO+MiY4UiHqEpRyDG+8wPSTjdAevd2rj56aE88BJaSzaxDahCAvplabfZeRb0mt3
- K7XlFcgixoDN8U44BHV+4u/3w4rsyXkWyVC1d5VY7x4JrlLot6O0ekBaICOnSi3Bw5XLff
- LLl19eksS33PB1nTd5bIgnhYm1lCQrY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-131--71cejwHNtG7emFfUNsmQQ-1; Thu, 22 Oct 2020 08:29:21 -0400
-X-MC-Unique: -71cejwHNtG7emFfUNsmQQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 708DE186DD3D;
- Thu, 22 Oct 2020 12:29:18 +0000 (UTC)
-Received: from fuller.cnet (ovpn-112-2.gru2.redhat.com [10.97.112.2])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2A4A05C1C7;
- Thu, 22 Oct 2020 12:29:12 +0000 (UTC)
-Received: by fuller.cnet (Postfix, from userid 1000)
- id 7F7BB41853FB; Thu, 22 Oct 2020 09:28:49 -0300 (-03)
-Date: Thu, 22 Oct 2020 09:28:49 -0300
-From: Marcelo Tosatti <mtosatti@redhat.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Message-ID: <20201022122849.GA148426@fuller.cnet>
-References: <20200928183529.471328-1-nitesh@redhat.com>
- <20200928183529.471328-5-nitesh@redhat.com>
- <87v9f57zjf.fsf@nanos.tec.linutronix.de>
- <3bca9eb1-a318-1fc6-9eee-aacc0293a193@redhat.com>
- <87lfg093fo.fsf@nanos.tec.linutronix.de>
- <877drj72cz.fsf@nanos.tec.linutronix.de>
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 2E6B986978
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 18:04:54 +0000 (UTC)
+IronPort-SDR: 1Ss14j8CHcg/IwI6MMLZ+Cbc57LLCtFM59S7Fj0gqtWvdVWIxWmXTxSTwuUu72XIcFxf4sN0BG
+ wN48E+Bj9NDA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9782"; a="229203563"
+X-IronPort-AV: E=Sophos;i="5.77,404,1596524400"; d="scan'208";a="229203563"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Oct 2020 11:04:50 -0700
+IronPort-SDR: g0ZZpdggIc6Cv45VV8j+uiCWrHWVamnpXc86YTvoKOzyQcIAA+MxjVw+qBY7sg27C49OYSM8T3
+ Ck6fDyzb832A==
+X-IronPort-AV: E=Sophos;i="5.77,404,1596524400"; d="scan'208";a="524365750"
+Received: from skottana-mobl.amr.corp.intel.com (HELO localhost)
+ ([10.212.166.52])
+ by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Oct 2020 11:04:50 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <877drj72cz.fsf@nanos.tec.linutronix.de>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mailman-Approved-At: Thu, 22 Oct 2020 13:53:13 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
- pci_alloc_irq_vectors() to housekeeping CPUs
+In-Reply-To: <20201022095310.GB61349@ranger.igk.intel.com>
+References: <20201009025349.4037-1-andre.guedes@intel.com>
+ <20201009025349.4037-7-andre.guedes@intel.com>
+ <20201021142349.GB58344@ranger.igk.intel.com>
+ <160331861110.64680.5464177597166949008@lsachorn-mobl.amr.corp.intel.com>
+ <20201022095310.GB61349@ranger.igk.intel.com>
+From: Andre Guedes <andre.guedes@intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Thu, 22 Oct 2020 11:04:49 -0700
+Message-ID: <160338988934.80318.13500288333733608305@skottana-mobl.amr.corp.intel.com>
+User-Agent: alot/0.9.1
+Subject: Re: [Intel-wired-lan] [PATCH 6/9] igc: Add Initial XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,65 +72,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
- sassmann@redhat.com, vincent.guittot@linaro.org, hch@infradead.org,
- mingo@redhat.com, intel-wired-lan@lists.osuosl.org, helgaas@kernel.org,
- thomas.lendacky@amd.com, lgoncalv@redhat.com, frederic@kernel.org,
- jlelli@redhat.com, Jakub Kicinski <kuba@kernel.org>, jiri@nvidia.com,
- bhelgaas@google.com, Nitesh Narayan Lal <nitesh@redhat.com>,
- mike.marciniszyn@intel.com, netdev@vger.kernel.org,
- dennis.dalessandro@intel.com, linux-kernel@vger.kernel.org,
- Dave Miller <davem@davemloft.net>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Oct 21, 2020 at 10:25:48PM +0200, Thomas Gleixner wrote:
-> On Tue, Oct 20 2020 at 20:07, Thomas Gleixner wrote:
-> > On Tue, Oct 20 2020 at 12:18, Nitesh Narayan Lal wrote:
-> >> However, IMHO we would still need a logic to prevent the devices from
-> >> creating excess vectors.
-> >
-> > Managed interrupts are preventing exactly that by pinning the interrupts
-> > and queues to one or a set of CPUs, which prevents vector exhaustion on
-> > CPU hotplug.
-> >
-> > Non-managed, yes that is and always was a problem. One of the reasons
-> > why managed interrupts exist.
-> 
-> But why is this only a problem for isolation? The very same problem
-> exists vs. CPU hotplug and therefore hibernation.
-> 
-> On x86 we have at max. 204 vectors available for device interrupts per
-> CPU. So assumed the only device interrupt in use is networking then any
-> machine which has more than 204 network interrupts (queues, aux ...)
-> active will prevent the machine from hibernation.
-> 
-> Aside of that it's silly to have multiple queues targeted at a single
-> CPU in case of hotplug. And that's not a theoretical problem.  Some
-> power management schemes shut down sockets when the utilization of a
-> system is low enough, e.g. outside of working hours.
+Hi Maciej,
 
-Exactly. It seems the proper way to do handle this is to disable
-individual vectors rather than moving them. And that is needed for 
-dynamic isolate / unisolate anyway...
-
-> The whole point of multi-queue is to have locality so that traffic from
-> a CPU goes through the CPU local queue. What's the point of having two
-> or more queues on a CPU in case of hotplug?
+Quoting Maciej Fijalkowski (2020-10-22 02:53:10)
+> > > > @@ -1932,24 +1939,37 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+> > > >  
+> > > >               rx_buffer = igc_get_rx_buffer(rx_ring, size);
+> > > >  
+> > > > -             if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
+> > > > -                     void *pktbuf = page_address(rx_buffer->page) +
+> > > > -                                    rx_buffer->page_offset;
+> > > > +             pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
+> > > >  
+> > > > +             if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
+> > > >                       timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
+> > > >                                                       pktbuf);
+> > > >                       pkt_offset = IGC_TS_HDR_LEN;
+> > > >                       size -= IGC_TS_HDR_LEN;
+> > > >               }
+> > > >  
+> > > > -             /* retrieve a buffer from the ring */
+> > > > -             if (skb)
+> > > > +             if (!skb) {
+> > > > +                     struct igc_adapter *adapter = q_vector->adapter;
+> > > > +
+> > > > +                     xdp.data = pktbuf + pkt_offset;
+> > > > +                     xdp.data_end = xdp.data + size;
+> > > > +                     xdp.data_hard_start = pktbuf - igc_rx_offset(rx_ring);
+> > > 
+> > > This needs some fixing. You're saying that build_skb() can't be currently
+> > > used which means that the headroom given for XDP will always be zero.
+> > > 
+> > > You need to either teach igc_rx_offset to return XDP_PACKET_HEADROOM for
+> > > case when ring is not using build_skb() or make build_skb() usable.
+> > 
+> > The xdp headroom doesn't seem to be required to support XDP_PASS, XDP_DROP and
+> > XDP_ABORTED actions, which is the goal of this patch. That was the rationale to
+> > not change igc_rx_offset() in this patch.
+> > 
+> > The igc_rx_offset() helper is updated in the next patch which adds support for
+> > XDP_TX action since it requires xdp headroom.
 > 
-> The right answer to this is to utilize managed interrupts and have
-> according logic in your network driver to handle CPU hotplug. When a CPU
-> goes down, then the queue which is associated to that CPU is quiesced
-> and the interrupt core shuts down the relevant interrupt instead of
-> moving it to an online CPU (which causes the whole vector exhaustion
-> problem on x86). When the CPU comes online again, then the interrupt is
-> reenabled in the core and the driver reactivates the queue.
+> Sorry when I wrote that I haven't looked at next patch.
+> The thing is that you can have a bpf program that will do the
+> encapsulation and return XDP_PASS for example. For encapsulation you need
+> to provide a headroom.
 
-Aha... But it would be necessary to do that from userspace (for runtime
-isolate/unisolate).
+Understood, thanks for the example. I was not aware of the encapsulation +
+XDP_PASS case. I'll fix this in the v2.
 
+> > > > @@ -3881,6 +3901,11 @@ static int igc_change_mtu(struct net_device *netdev, int new_mtu)
+> > > >       int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
+> > > 
+> > > I think I was mentioning it with igb xdp review, shouldn't we take double
+> > > vlan header into account?
+> > 
+> > Good question. It seems like we should take it into consideration when updating
+> > adapter->max_frame_size later in the igc_change_mtu(). However, note that in
+> > the code added below, we check 'new_mtu', not 'max_frame', so with or without
+> > double tagging it should do the right thing.
+> 
+> Hm yeah but I think it should be fixed anyway even without xdp being in
+> picture?
+
+Agreed. I can provide a separate patch soon.
+
+Cheers,
+Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
