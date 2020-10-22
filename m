@@ -1,72 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5CF72955D7
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 02:55:10 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B883D295C5B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 12:02:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 51A0E86935;
-	Thu, 22 Oct 2020 00:55:09 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 3A45420535;
+	Thu, 22 Oct 2020 10:02:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rLD4JuE9yd2Q; Thu, 22 Oct 2020 00:55:08 +0000 (UTC)
+	with ESMTP id 5Br69BYl9NED; Thu, 22 Oct 2020 10:02:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by fraxinus.osuosl.org (Postfix) with ESMTP id 35DB186938;
-	Thu, 22 Oct 2020 00:55:08 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 1E07120531;
+	Thu, 22 Oct 2020 10:02:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F0D6F1BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 00:27:35 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 90CD11BF834
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 10:02:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by fraxinus.osuosl.org (Postfix) with ESMTP id DC850868CC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 00:27:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id 8C626870A8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 10:02:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from fraxinus.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yNEX7_k7E_jQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Oct 2020 00:27:35 +0000 (UTC)
+ with ESMTP id onWrolv2IhZP for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Oct 2020 10:02:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by fraxinus.osuosl.org (Postfix) with ESMTPS id E8D53868BE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 00:27:34 +0000 (UTC)
-IronPort-SDR: 5UyOXBUoLprqgEekQhuQM2Dg3EijGzmKZ8ptWAfAXtL/ZXOMYGVlXbYBMPXYy2555MuY9MiAqK
- /4SDQ0N9nFsQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9781"; a="167547037"
-X-IronPort-AV: E=Sophos;i="5.77,402,1596524400"; d="scan'208";a="167547037"
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 4DD7486C90
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 10:02:43 +0000 (UTC)
+IronPort-SDR: uvPIguXb/0n97SzyDzGJrpaDNkIZBAS5IWihihmRM9W2nMlL/tpozPmYNSHD5i1VFGK6dCkFwc
+ OoXfVMtAitfg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9781"; a="167599611"
+X-IronPort-AV: E=Sophos;i="5.77,404,1596524400"; d="scan'208";a="167599611"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2020 17:27:32 -0700
-IronPort-SDR: 1Ma8nA7sjOvVStgOnzIylMyaFuV52Ohtj7fxjd8IkeVlQmA9SrnuaTHQBSN746g9c1VlsDbLrp
- zHd9Be+NoaXQ==
-X-IronPort-AV: E=Sophos;i="5.77,402,1596524400"; d="scan'208";a="359067328"
-Received: from jekeller-mobl1.amr.corp.intel.com (HELO [10.209.13.114])
- ([10.209.13.114])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2020 17:27:24 -0700
-To: Jakub Kicinski <kuba@kernel.org>, Thomas Gleixner <tglx@linutronix.de>
-References: <20200928183529.471328-1-nitesh@redhat.com>
- <20200928183529.471328-5-nitesh@redhat.com>
- <87v9f57zjf.fsf@nanos.tec.linutronix.de>
- <3bca9eb1-a318-1fc6-9eee-aacc0293a193@redhat.com>
- <87lfg093fo.fsf@nanos.tec.linutronix.de>
- <877drj72cz.fsf@nanos.tec.linutronix.de>
- <20201021170224.55aea948@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-From: Jacob Keller <jacob.e.keller@intel.com>
-Organization: Intel Corporation
-Message-ID: <a1c6cdcd-7f89-5ed3-c869-ffec05929786@intel.com>
-Date: Wed, 21 Oct 2020 17:27:21 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.2
+ 22 Oct 2020 03:02:42 -0700
+IronPort-SDR: mu9aPl0m3tfnOoZmaL8nNEDKf+/qDRel+JvtzWmRm31TxrVRA7Zuc+6RO8ToRQo8UZ6q4ggWq3
+ 7sZ+ogV3hkGg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.77,404,1596524400"; d="scan'208";a="332899828"
+Received: from ranger.igk.intel.com ([10.102.21.164])
+ by orsmga002.jf.intel.com with ESMTP; 22 Oct 2020 03:02:39 -0700
+Date: Thu, 22 Oct 2020 11:53:10 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Andre Guedes <andre.guedes@intel.com>
+Message-ID: <20201022095310.GB61349@ranger.igk.intel.com>
+References: <20201009025349.4037-1-andre.guedes@intel.com>
+ <20201009025349.4037-7-andre.guedes@intel.com>
+ <20201021142349.GB58344@ranger.igk.intel.com>
+ <160331861110.64680.5464177597166949008@lsachorn-mobl.amr.corp.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20201021170224.55aea948@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Content-Language: en-US
-X-Mailman-Approved-At: Thu, 22 Oct 2020 00:55:04 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
- pci_alloc_irq_vectors() to housekeeping CPUs
+Content-Disposition: inline
+In-Reply-To: <160331861110.64680.5464177597166949008@lsachorn-mobl.amr.corp.intel.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+Subject: Re: [Intel-wired-lan] [PATCH 6/9] igc: Add Initial XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,91 +71,142 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
- sassmann@redhat.com, vincent.guittot@linaro.org, hch@infradead.org,
- mingo@redhat.com, intel-wired-lan@lists.osuosl.org, helgaas@kernel.org,
- thomas.lendacky@amd.com, lgoncalv@redhat.com, frederic@kernel.org,
- jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
- Magnus Karlsson <magnus.karlsson@intel.com>,
- Nitesh Narayan Lal <nitesh@redhat.com>, mike.marciniszyn@intel.com,
- netdev@vger.kernel.org, dennis.dalessandro@intel.com, mtosatti@redhat.com,
- linux-kernel@vger.kernel.org, Saeed Mahameed <saeedm@nvidia.com>,
- Dave Miller <davem@davemloft.net>
+Cc: intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 10/21/2020 5:02 PM, Jakub Kicinski wrote:
-> On Wed, 21 Oct 2020 22:25:48 +0200 Thomas Gleixner wrote:
->> On Tue, Oct 20 2020 at 20:07, Thomas Gleixner wrote:
->>> On Tue, Oct 20 2020 at 12:18, Nitesh Narayan Lal wrote:  
->>>> However, IMHO we would still need a logic to prevent the devices from
->>>> creating excess vectors.  
->>>
->>> Managed interrupts are preventing exactly that by pinning the interrupts
->>> and queues to one or a set of CPUs, which prevents vector exhaustion on
->>> CPU hotplug.
->>>
->>> Non-managed, yes that is and always was a problem. One of the reasons
->>> why managed interrupts exist.  
->>
->> But why is this only a problem for isolation? The very same problem
->> exists vs. CPU hotplug and therefore hibernation.
->>
->> On x86 we have at max. 204 vectors available for device interrupts per
->> CPU. So assumed the only device interrupt in use is networking then any
->> machine which has more than 204 network interrupts (queues, aux ...)
->> active will prevent the machine from hibernation.
->>
->> Aside of that it's silly to have multiple queues targeted at a single
->> CPU in case of hotplug. And that's not a theoretical problem.  Some
->> power management schemes shut down sockets when the utilization of a
->> system is low enough, e.g. outside of working hours.
->>
->> The whole point of multi-queue is to have locality so that traffic from
->> a CPU goes through the CPU local queue. What's the point of having two
->> or more queues on a CPU in case of hotplug?
->>
->> The right answer to this is to utilize managed interrupts and have
->> according logic in your network driver to handle CPU hotplug. When a CPU
->> goes down, then the queue which is associated to that CPU is quiesced
->> and the interrupt core shuts down the relevant interrupt instead of
->> moving it to an online CPU (which causes the whole vector exhaustion
->> problem on x86). When the CPU comes online again, then the interrupt is
->> reenabled in the core and the driver reactivates the queue.
+On Wed, Oct 21, 2020 at 03:16:51PM -0700, Andre Guedes wrote:
+> Hi Maciej,
 > 
-> I think Mellanox folks made some forays into managed irqs, but I don't
-> remember/can't find the details now.
+> Thank you for your review.
 > 
-
-I remember looking into this a few years ago, and not getting very far
-either.
-
-> For networking the locality / queue per core does not always work,
-> since the incoming traffic is usually spread based on a hash. Many
-> applications perform better when network processing is done on a small
-> subset of CPUs, and application doesn't get interrupted every 100us. 
-> So we do need extra user control here.
+> Quoting Maciej Fijalkowski (2020-10-21 07:23:49)
+> > On Thu, Oct 08, 2020 at 07:53:46PM -0700, Andre Guedes wrote:
+> > > This patch adds the initial XDP support to the igc driver. For now,
+> > > only XDP_PASS, XDP_DROP, XDP_ABORT actions are supported. Upcoming
+> > 
+> > s/XDP_ABORT/XDP_ABORTED
 > 
-> We have a bit of a uAPI problem since people had grown to depend on
-> IRQ == queue == NAPI to configure their systems. "The right way" out
-> would be a proper API which allows associating queues with CPUs rather
-> than IRQs, then we can use managed IRQs and solve many other problems.
+> Good catch, I'll fix it.
 > 
-
-I think we (Intel) hit some of the same issues you mention.
-
-I know I personally would like to see something that lets a lot of the
-current driver-specific policy be moved out. I think it should be
-possible to significantly simplify the abstraction used by the drivers.
-
-> Such new API has been in the works / discussions for a while now.
+> > > @@ -1592,11 +1593,11 @@ static struct sk_buff *igc_build_skb(struct igc_ring *rx_ring,
+> > >  
+> > >  static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
+> > >                                        struct igc_rx_buffer *rx_buffer,
+> > > -                                      unsigned int size, int pkt_offset,
+> > > +                                      struct xdp_buff *xdp,
+> > >                                        ktime_t timestamp)
+> > >  {
+> > > -     void *va = page_address(rx_buffer->page) + rx_buffer->page_offset +
+> > > -                pkt_offset;
+> > > +     void *va = xdp->data;
+> > > +     unsigned int size = xdp->data_end - xdp->data;
+> > >       unsigned int truesize = igc_get_rx_frame_truesize(rx_ring, size);
+> > >       unsigned int headlen;
+> > >       struct sk_buff *skb;
+> > 
+> > RCT
 > 
-> (Magnus keep me honest here, if you disagree the queue API solves this.)
->
+> We can move 'va' declaration around, but note that 'size' is utilized to
+> calculate 'truesize' so the RCT won't be perfect still.
+
+Right, but va/size misorder was the thing that caught my attention.
+
+> 
+> > > @@ -1932,24 +1939,37 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
+> > >  
+> > >               rx_buffer = igc_get_rx_buffer(rx_ring, size);
+> > >  
+> > > -             if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
+> > > -                     void *pktbuf = page_address(rx_buffer->page) +
+> > > -                                    rx_buffer->page_offset;
+> > > +             pktbuf = page_address(rx_buffer->page) + rx_buffer->page_offset;
+> > >  
+> > > +             if (igc_test_staterr(rx_desc, IGC_RXDADV_STAT_TSIP)) {
+> > >                       timestamp = igc_ptp_rx_pktstamp(q_vector->adapter,
+> > >                                                       pktbuf);
+> > >                       pkt_offset = IGC_TS_HDR_LEN;
+> > >                       size -= IGC_TS_HDR_LEN;
+> > >               }
+> > >  
+> > > -             /* retrieve a buffer from the ring */
+> > > -             if (skb)
+> > > +             if (!skb) {
+> > > +                     struct igc_adapter *adapter = q_vector->adapter;
+> > > +
+> > > +                     xdp.data = pktbuf + pkt_offset;
+> > > +                     xdp.data_end = xdp.data + size;
+> > > +                     xdp.data_hard_start = pktbuf - igc_rx_offset(rx_ring);
+> > 
+> > This needs some fixing. You're saying that build_skb() can't be currently
+> > used which means that the headroom given for XDP will always be zero.
+> > 
+> > You need to either teach igc_rx_offset to return XDP_PACKET_HEADROOM for
+> > case when ring is not using build_skb() or make build_skb() usable.
+> 
+> The xdp headroom doesn't seem to be required to support XDP_PASS, XDP_DROP and
+> XDP_ABORTED actions, which is the goal of this patch. That was the rationale to
+> not change igc_rx_offset() in this patch.
+> 
+> The igc_rx_offset() helper is updated in the next patch which adds support for
+> XDP_TX action since it requires xdp headroom.
+
+Sorry when I wrote that I haven't looked at next patch.
+The thing is that you can have a bpf program that will do the
+encapsulation and return XDP_PASS for example. For encapsulation you need
+to provide a headroom.
+
+> 
+> > > +                     xdp_set_data_meta_invalid(&xdp);
+> > 
+> > What about xdp.frame_sz?
+> 
+> Same as above.
+> 
+> > > @@ -3881,6 +3901,11 @@ static int igc_change_mtu(struct net_device *netdev, int new_mtu)
+> > >       int max_frame = new_mtu + ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN;
+> > 
+> > I think I was mentioning it with igb xdp review, shouldn't we take double
+> > vlan header into account?
+> 
+> Good question. It seems like we should take it into consideration when updating
+> adapter->max_frame_size later in the igc_change_mtu(). However, note that in
+> the code added below, we check 'new_mtu', not 'max_frame', so with or without
+> double tagging it should do the right thing.
+
+Hm yeah but I think it should be fixed anyway even without xdp being in
+picture?
+
+> 
+> > > +     if (igc_xdp_is_enabled(adapter) && new_mtu > ETH_DATA_LEN) {
+> > > +             netdev_dbg(netdev, "Jumbo frames not supported with XDP");
+> > > +             return -EINVAL;
+> > > +     }
+> > > +
+> 
+> [...]
+> 
+> > > +struct sk_buff *igc_xdp_run_prog(struct igc_adapter *adapter,
+> > > +                              struct xdp_buff *xdp)
+> > > +{
+> > > +     struct bpf_prog *prog;
+> > > +     int res;
+> > > +     u32 act;
+> > > +
+> > > +     rcu_read_lock();
+> > > +
+> > > +     prog = READ_ONCE(adapter->xdp_prog);
+> > > +     if (!prog)
+> > > +             goto unlock;
+> > 
+> > res will be uninitialized if you hit this goto.
+> 
+> Good catch, I'll fix it.
+> 
+> Best,
+> Andre
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
