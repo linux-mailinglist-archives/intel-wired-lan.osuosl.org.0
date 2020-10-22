@@ -1,58 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EA9E295CCF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 12:40:27 +0200 (CEST)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6666529606E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Oct 2020 15:53:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 5F07487665;
-	Thu, 22 Oct 2020 10:40:26 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 11809204E0;
+	Thu, 22 Oct 2020 13:53:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pR7yzsIQ-A-S; Thu, 22 Oct 2020 10:40:26 +0000 (UTC)
+	with ESMTP id Eo5Z8c8pj28p; Thu, 22 Oct 2020 13:53:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id EE89A876BD;
-	Thu, 22 Oct 2020 10:40:24 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id 9F6FD2E0EE;
+	Thu, 22 Oct 2020 13:53:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AA5251BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 10:40:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 23A7B1BF37B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 08:28:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id A5B7386B4D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 10:40:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 1E58B20401
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 08:28:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W9kBdp-cJdEW for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Oct 2020 10:40:22 +0000 (UTC)
+ with ESMTP id VomTU9LlxqjS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Oct 2020 08:28:06 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by whitealder.osuosl.org (Postfix) with ESMTPS id 88E2886A28
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 10:40:22 +0000 (UTC)
-IronPort-SDR: faMuU0AWsN36USqUF3EDJTRno4VzccsXuitWEWo3hVfmhChkwNBOG1wWiK3acIGahq/50t8p/5
- AFz+vE42SD9w==
-X-IronPort-AV: E=McAfee;i="6000,8403,9781"; a="164013504"
-X-IronPort-AV: E=Sophos;i="5.77,404,1596524400"; d="scan'208";a="164013504"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Oct 2020 03:40:21 -0700
-IronPort-SDR: sDYUyqrhdShXMmY+1nO56kMRiJEhazcwD/766ojMUA6pUtn2//6/AhwOHS5nXzcH2TiKy2MJyT
- 6mxhGnAOvc+g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.77,404,1596524400"; d="scan'208";a="466640662"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.102.19.171])
- by orsmga004.jf.intel.com with ESMTP; 22 Oct 2020 03:40:20 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 22 Oct 2020 12:39:36 +0200
-Message-Id: <20201022103936.1586-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.18.4
-Subject: [Intel-wired-lan] [PATCH net v2] i40e: Fix Error I40E_AQ_RC_EINVAL
- when removing VFs
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by silver.osuosl.org (Postfix) with ESMTPS id 17634203CF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Oct 2020 08:28:06 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1603355282;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=GDhoWshQhIJouOHjZSfLuoOEJxu0EfOG35UztahVv2w=;
+ b=xO76q4yJbm65fuck7iz3vwSLDh5wOZfcG351wfUx99gofOUvgSSC6IgTYprLS4gBLnRyJq
+ VSjjIjZzrxdbDYcfv+h9PF1thMOBsoqAlwyz7r+lDyYa55Oo28Veei4LYZhRTmwN7vGhoE
+ U+JXgOEEC2pTJ6dW5sXTWIQ7RIbRrt+sTIEfVZI83ff4jjnMM1ZAG1sFDppIyLBO4FGM/b
+ j2N6SIj4Q2yQfTQ1B+LiKvfArtu0eOrSe7ZetBALhboJnxbE9LvBCb26SpMILSxBUVVNAL
+ 34a2qwD6nsafD8YWroyYBBt5fGeUAbfpoVs93x1D+dTgYHg1DmOAtKm0jOrZNQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1603355282;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=GDhoWshQhIJouOHjZSfLuoOEJxu0EfOG35UztahVv2w=;
+ b=XH5DF74AogSgwXx150G9wVhi90K5iIu3AqOkToxAoXmKjngRwt+o/wTS+4gj88tkTv5K0C
+ Aec6QzsbbzCWQhCw==
+To: Jakub Kicinski <kuba@kernel.org>
+In-Reply-To: <20201021170224.55aea948@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+References: <20200928183529.471328-1-nitesh@redhat.com>
+ <20200928183529.471328-5-nitesh@redhat.com>
+ <87v9f57zjf.fsf@nanos.tec.linutronix.de>
+ <3bca9eb1-a318-1fc6-9eee-aacc0293a193@redhat.com>
+ <87lfg093fo.fsf@nanos.tec.linutronix.de>
+ <877drj72cz.fsf@nanos.tec.linutronix.de>
+ <20201021170224.55aea948@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Date: Thu, 22 Oct 2020 10:28:02 +0200
+Message-ID: <874kmm7jhp.fsf@nanos.tec.linutronix.de>
+MIME-Version: 1.0
+X-Mailman-Approved-At: Thu, 22 Oct 2020 13:53:13 +0000
+Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
+ pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,110 +78,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-MIME-Version: 1.0
+Cc: juri.lelli@redhat.com, peterz@infradead.org, linux-pci@vger.kernel.org,
+ sassmann@redhat.com, vincent.guittot@linaro.org, hch@infradead.org,
+ mingo@redhat.com, intel-wired-lan@lists.osuosl.org, helgaas@kernel.org,
+ thomas.lendacky@amd.com, lgoncalv@redhat.com, frederic@kernel.org,
+ jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Nitesh Narayan Lal <nitesh@redhat.com>, mike.marciniszyn@intel.com,
+ netdev@vger.kernel.org, dennis.dalessandro@intel.com, mtosatti@redhat.com,
+ linux-kernel@vger.kernel.org, Saeed Mahameed <saeedm@nvidia.com>,
+ Dave Miller <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When removing VFs for PF added to bridge there was
-an error I40E_AQ_RC_EINVAL. It was caused by not properly
-resetting and reinitializing PF when adding/removing VFs.
-Changed how reset is performed when adding/removing VFs
-to properly reinitialize PFs VSI.
+On Wed, Oct 21 2020 at 17:02, Jakub Kicinski wrote:
+> On Wed, 21 Oct 2020 22:25:48 +0200 Thomas Gleixner wrote:
+>> The right answer to this is to utilize managed interrupts and have
+>> according logic in your network driver to handle CPU hotplug. When a CPU
+>> goes down, then the queue which is associated to that CPU is quiesced
+>> and the interrupt core shuts down the relevant interrupt instead of
+>> moving it to an online CPU (which causes the whole vector exhaustion
+>> problem on x86). When the CPU comes online again, then the interrupt is
+>> reenabled in the core and the driver reactivates the queue.
+>
+> I think Mellanox folks made some forays into managed irqs, but I don't
+> remember/can't find the details now.
+>
+> For networking the locality / queue per core does not always work,
+> since the incoming traffic is usually spread based on a hash. Many
 
-Fixes: fc60861e9b00 ("i40e: start up in VEPA mode by default")
-Signed-off-by: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>
-Reported-by: kernel test robot <lkp@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e.h             |  3 +++
- drivers/net/ethernet/intel/i40e/i40e_main.c        | 10 ++++++++++
- drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c |  4 ++--
- 3 files changed, 15 insertions(+), 2 deletions(-)
+That makes it problematic and is fundamentally different from block I/O.
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index c517c47..f1f0fe2 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -120,6 +120,7 @@ enum i40e_state_t {
- 	__I40E_RESET_INTR_RECEIVED,
- 	__I40E_REINIT_REQUESTED,
- 	__I40E_PF_RESET_REQUESTED,
-+	__I40E_PF_RESET_AND_REBUILD_REQUESTED,
- 	__I40E_CORE_RESET_REQUESTED,
- 	__I40E_GLOBAL_RESET_REQUESTED,
- 	__I40E_EMP_RESET_INTR_RECEIVED,
-@@ -145,6 +146,8 @@ enum i40e_state_t {
- };
- 
- #define I40E_PF_RESET_FLAG	BIT_ULL(__I40E_PF_RESET_REQUESTED)
-+#define I40E_PF_RESET_AND_REBUILD_FLAG	\
-+	BIT_ULL(__I40E_PF_RESET_AND_REBUILD_REQUESTED)
- 
- /* VSI state flags */
- enum i40e_vsi_state_t {
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 672dc2c..5fef34f 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -36,6 +36,8 @@ static int i40e_setup_misc_vector(struct i40e_pf *pf);
- static void i40e_determine_queue_usage(struct i40e_pf *pf);
- static int i40e_setup_pf_filter_control(struct i40e_pf *pf);
- static void i40e_prep_for_reset(struct i40e_pf *pf, bool lock_acquired);
-+static void i40e_reset_and_rebuild(struct i40e_pf *pf, bool reinit,
-+				   bool lock_acquired);
- static int i40e_reset(struct i40e_pf *pf);
- static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired);
- static int i40e_setup_misc_vector_for_recovery_mode(struct i40e_pf *pf);
-@@ -8581,6 +8583,14 @@ void i40e_do_reset(struct i40e_pf *pf, u32 reset_flags, bool lock_acquired)
- 			 "FW LLDP is disabled\n" :
- 			 "FW LLDP is enabled\n");
- 
-+	} else if (reset_flags & I40E_PF_RESET_AND_REBUILD_FLAG) {
-+		/* Request a PF Reset
-+		 *
-+		 * Resets PF and reinitializes PFs VSI.
-+		 */
-+		i40e_prep_for_reset(pf, lock_acquired);
-+		i40e_reset_and_rebuild(pf, true, lock_acquired);
-+
- 	} else if (reset_flags & BIT_ULL(__I40E_REINIT_REQUESTED)) {
- 		int v;
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 8951740..8987295 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -1776,7 +1776,7 @@ int i40e_pci_sriov_configure(struct pci_dev *pdev, int num_vfs)
- 	if (num_vfs) {
- 		if (!(pf->flags & I40E_FLAG_VEB_MODE_ENABLED)) {
- 			pf->flags |= I40E_FLAG_VEB_MODE_ENABLED;
--			i40e_do_reset_safe(pf, I40E_PF_RESET_FLAG);
-+			i40e_do_reset_safe(pf, I40E_PF_RESET_AND_REBUILD_FLAG);
- 		}
- 		ret = i40e_pci_sriov_enable(pdev, num_vfs);
- 		goto sriov_configure_out;
-@@ -1785,7 +1785,7 @@ int i40e_pci_sriov_configure(struct pci_dev *pdev, int num_vfs)
- 	if (!pci_vfs_assigned(pf->pdev)) {
- 		i40e_free_vfs(pf);
- 		pf->flags &= ~I40E_FLAG_VEB_MODE_ENABLED;
--		i40e_do_reset_safe(pf, I40E_PF_RESET_FLAG);
-+		i40e_do_reset_safe(pf, I40E_PF_RESET_AND_REBUILD_FLAG);
- 	} else {
- 		dev_warn(&pdev->dev, "Unable to free VFs because some are assigned to VMs.\n");
- 		ret = -EINVAL;
--- 
-2.18.4
+> applications perform better when network processing is done on a small
+> subset of CPUs, and application doesn't get interrupted every 100us. 
+> So we do need extra user control here.
 
----------------------------------------------------------------------
-Intel Technology Poland sp. z o.o.
-ul. Sowackiego 173 | 80-298 Gdask | Sd Rejonowy Gdask Pnoc | VII Wydzia Gospodarczy Krajowego Rejestru Sdowego - KRS 101882 | NIP 957-07-52-316 | Kapita zakadowy 200.000 PLN.
-Ta wiadomo wraz z zacznikami jest przeznaczona dla okrelonego adresata i moe zawiera informacje poufne. W razie przypadkowego otrzymania tej wiadomoci, prosimy o powiadomienie nadawcy oraz trwae jej usunicie; jakiekolwiek przegldanie lub rozpowszechnianie jest zabronione.
-This e-mail and any attachments may contain confidential material for the sole use of the intended recipient(s). If you are not the intended recipient, please contact the sender and delete all copies; any review or distribution by others is strictly prohibited.
- 
+Ok.
 
+> We have a bit of a uAPI problem since people had grown to depend on
+> IRQ == queue == NAPI to configure their systems. "The right way" out
+> would be a proper API which allows associating queues with CPUs rather
+> than IRQs, then we can use managed IRQs and solve many other problems.
+>
+> Such new API has been in the works / discussions for a while now.
+
+If there is anything which needs to be done/extended on the irq side
+please let me know.
+
+Thanks
+
+        tglx
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
