@@ -1,66 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E52562993E6
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Oct 2020 18:33:24 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A2ED29965B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Oct 2020 20:00:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 8F8AA87143;
-	Mon, 26 Oct 2020 17:33:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1DB1785B5B;
+	Mon, 26 Oct 2020 19:00:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wJO5AS4WnKhh; Mon, 26 Oct 2020 17:33:22 +0000 (UTC)
+	with ESMTP id L25ZgIxqZrG8; Mon, 26 Oct 2020 19:00:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by hemlock.osuosl.org (Postfix) with ESMTP id 3BDF78712B;
-	Mon, 26 Oct 2020 17:33:22 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 36B7985ACD;
+	Mon, 26 Oct 2020 19:00:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E010B1BF20D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 17:31:23 +0000 (UTC)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E4E801BF3AE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 19:00:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by whitealder.osuosl.org (Postfix) with ESMTP id D77238646F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 17:31:23 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id D309A2E128
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 19:00:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EmPi77IbY5TM for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Oct 2020 17:31:22 +0000 (UTC)
+ with ESMTP id YEhj66ku1al3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Oct 2020 19:00:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [63.128.21.124])
- by whitealder.osuosl.org (Postfix) with ESMTPS id A38AF86452
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 17:31:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603733481;
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by silver.osuosl.org (Postfix) with ESMTPS id BAE4C1FE49
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 19:00:43 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1603738839;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fS08d8MBtu1ip55QD9RREObehqTj3BnkBGdOU4nJc8o=;
- b=FJbkr3xdxKEHef3TDTn2R64jR0MZ5oZaWyiKpXQs/VaolmQOzy+ViqKGws54OmphUvVK3T
- JL0uS35I9gQWJ/YAMxyYXiZrpJUtkAJHv1mKGkjYJgP+yvqSpgze936/UXlg1FXvOkpYdZ
- GOClXPK46IvwAjrEqYkIz3Ja/4YdKAk=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-106-6NgAv3PkPCycQ-VxP7BvvA-1; Mon, 26 Oct 2020 13:31:17 -0400
-X-MC-Unique: 6NgAv3PkPCycQ-VxP7BvvA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AEEE0809DC0;
- Mon, 26 Oct 2020 17:31:10 +0000 (UTC)
-Received: from fuller.cnet (ovpn-112-4.gru2.redhat.com [10.97.112.4])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 230DA19D6C;
- Mon, 26 Oct 2020 17:31:03 +0000 (UTC)
-Received: by fuller.cnet (Postfix, from userid 1000)
- id 2B9B0417F242; Mon, 26 Oct 2020 14:30:12 -0300 (-03)
-Date: Mon, 26 Oct 2020 14:30:12 -0300
-From: Marcelo Tosatti <mtosatti@redhat.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Message-ID: <20201026173012.GA377978@fuller.cnet>
+ bh=9QvUMf5PqeNQlMPTahrZW6OrL4d+7Sf7dM1LOD6g9Y8=;
+ b=sABnPwPQKFh6X9EOykr/dujf0/BDYdGvouZaj0zKCcdjFh8cxYhWlV7ouzHx/9AuiAOkeG
+ W+nnFVlZuj9S6fziXQWunzPixauZqnZQ9nLrh0JuKn4b6GiiYM8MGZ/Hp12D/qpqd9gEzP
+ slpm4V3s9owptbHMS5+4tv4aJ9WAaMh2weKt7qrAKu8qPdMl5trskBHj5yfxBb40QBrKGe
+ /ySnUN5ZPONi+9PPcb8jktC0ZuQCfW5Crt2M7PWUjDfFZ7bcbb7tkpCg1/yeBTjfJrVvDM
+ 1P2ToGRRopEgY3n7+DLY+WNFdQpiTNbQ74qPaf9Rj6gCNlFiOI7v2XszgBH7ww==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1603738839;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=9QvUMf5PqeNQlMPTahrZW6OrL4d+7Sf7dM1LOD6g9Y8=;
+ b=gNKSesjquFk4p1+yIEyYQTEdbXn5nw5BA42TTDi3QdQl6il8MyloLrDdzKgZxPyLpDN/6W
+ iJvGWftarXbD6IBw==
+To: Marcelo Tosatti <mtosatti@redhat.com>
+In-Reply-To: <20201026173012.GA377978@fuller.cnet>
 References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
  <20201019140005.GB17287@fuller.cnet>
  <20201020073055.GY2611@hirez.programming.kicks-ass.net>
@@ -71,12 +63,10 @@ References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
  <20201023085826.GP2611@hirez.programming.kicks-ass.net>
  <9ee77056-ef02-8696-5b96-46007e35ab00@redhat.com>
  <87ft6464jf.fsf@nanos.tec.linutronix.de>
+ <20201026173012.GA377978@fuller.cnet>
+Date: Mon, 26 Oct 2020 20:00:39 +0100
+Message-ID: <875z6w4xt4.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87ft6464jf.fsf@nanos.tec.linutronix.de>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mailman-Approved-At: Mon, 26 Oct 2020 17:33:19 +0000
 Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
  pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -99,142 +89,57 @@ Cc: juri.lelli@redhat.com, Peter Zijlstra <peterz@infradead.org>,
  Nitesh Narayan Lal <nitesh@redhat.com>, mike.marciniszyn@intel.com,
  netdev@vger.kernel.org, dennis.dalessandro@intel.com,
  linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Oct 23, 2020 at 11:00:52PM +0200, Thomas Gleixner wrote:
-> On Fri, Oct 23 2020 at 09:10, Nitesh Narayan Lal wrote:
-> > On 10/23/20 4:58 AM, Peter Zijlstra wrote:
-> >> On Thu, Oct 22, 2020 at 01:47:14PM -0400, Nitesh Narayan Lal wrote:
-> >> So shouldn't we then fix the drivers / interface first, to get rid of
-> >> this inconsistency?
-> >>
-> > Considering we agree that excess vector is a problem that needs to be
-> > solved across all the drivers and that you are comfortable with the oth=
-er
-> > three patches in the set. If I may suggest the following:
-> >
-> > - We can pick those three patches for now, as that will atleast fix a
-> > =A0 driver that is currently impacting RT workloads. Is that a fair
-> > =A0 expectation?
-> =
+On Mon, Oct 26 2020 at 14:30, Marcelo Tosatti wrote:
+> On Fri, Oct 23, 2020 at 11:00:52PM +0200, Thomas Gleixner wrote:
+>> So without information from the driver which tells what the best number
+>> of interrupts is with a reduced number of CPUs, this cutoff will cause
+>> more problems than it solves. Regressions guaranteed.
+>
+> One might want to move from one interrupt per isolated app core
+> to zero, or vice versa. It seems that "best number of interrupts 
+> is with reduced number of CPUs" information, is therefore in userspace, 
+> not in driver...
 
-> No. Blindly reducing the maximum vectors to the number of housekeeping
-> CPUs is patently wrong. The PCI core _cannot_ just nilly willy decide
-> what the right number of interrupts for this situation is.
-> =
+How does userspace know about the driver internals? Number of management
+interrupts, optimal number of interrupts per queue?
 
-> Many of these drivers need more than queue interrupts, admin, error
-> interrupt and some operate best with seperate RX/TX interrupts per
-> queue. They all can "work" with a single PCI interrupt of course, but
-> the price you pay is performance.
-> =
+>> Managed interrupts base their interrupt allocation and spreading on
+>> information which is handed in by the individual driver and not on crude
+>> assumptions. They are not imposing restrictions on the use case.
+>> 
+>> It's perfectly fine for isolated work to save a data set to disk after
+>> computation has finished and that just works with the per-cpu I/O queue
+>> which is otherwise completely silent. 
+>
+> Userspace could only change the mask of interrupts which are not 
+> triggered by requests from the local CPU (admin, error, mgmt, etc),
+> to avoid the vector exhaustion problem.
+>
+> However, there is no explicit way for userspace to know that, as far as
+> i know.
+>
+>  130:      34845          0          0          0          0          0          0          0  IR-PCI-MSI 33554433-edge      nvme0q1
+>  131:          0      27062          0          0          0          0          0          0  IR-PCI-MSI 33554434-edge      nvme0q2
+>  132:          0          0      24393          0          0          0          0          0  IR-PCI-MSI 33554435-edge      nvme0q3
+>  133:          0          0          0      24313          0          0          0          0  IR-PCI-MSI 33554436-edge      nvme0q4
+>  134:          0          0          0          0      20608          0          0          0  IR-PCI-MSI 33554437-edge      nvme0q5
+>  135:          0          0          0          0          0      22163          0          0  IR-PCI-MSI 33554438-edge      nvme0q6
+>  136:          0          0          0          0          0          0      23020          0  IR-PCI-MSI 33554439-edge      nvme0q7
+>  137:          0          0          0          0          0          0          0      24285  IR-PCI-MSI 33554440-edge      nvme0q8
+>
+> Can that be retrieved from PCI-MSI information, or drivers
+> have to inform this?
 
-> An isolated setup, which I'm familiar with, has two housekeeping
-> CPUs. So far I restricted the number of network queues with a module
-> argument to two, which allocates two management interrupts for the
-> device and two interrupts (RX/TX) per queue, i.e. a total of six.
-> =
+The driver should use a different name for the admin queues.
 
-> Now I reduced the number of available interrupts to two according to
-> your hack, which makes it use one queue RX/TX combined and one
-> management interrupt. Guess what happens? Network performance tanks to
-> the points that it breaks a carefully crafted setup.
-> =
+Thanks,
 
-> The same applies to a device which is application specific and wants one
-> channel including an interrupt per isolated application core. Today I
-> can isolate 8 out of 12 CPUs and let the device create 8 channels and
-> set one interrupt and channel affine to each isolated CPU. With your
-> hack, I get only 4 interrupts and channels. Fail!
-
-Good point.
-
-> You cannot declare that all this is perfectly fine, just because it does
-> not matter for your particular use case.
-> =
-
-> So without information from the driver which tells what the best number
-> of interrupts is with a reduced number of CPUs, this cutoff will cause
-> more problems than it solves. Regressions guaranteed.
-
-One might want to move from one interrupt per isolated app core
-to zero, or vice versa. It seems that "best number of interrupts =
-
-is with reduced number of CPUs" information, is therefore in userspace, =
-
-not in driver...
-
-No?
-
-> Managed interrupts base their interrupt allocation and spreading on
-> information which is handed in by the individual driver and not on crude
-> assumptions. They are not imposing restrictions on the use case.
-> =
-
-> It's perfectly fine for isolated work to save a data set to disk after
-> computation has finished and that just works with the per-cpu I/O queue
-> which is otherwise completely silent. =
-
-
-Userspace could only change the mask of interrupts which are not =
-
-triggered by requests from the local CPU (admin, error, mgmt, etc),
-to avoid the vector exhaustion problem.
-
-However, there is no explicit way for userspace to know that, as far as
-i know.
-
- 130:      34845          0          0          0          0          0    =
-      0          0  IR-PCI-MSI 33554433-edge      nvme0q1
- 131:          0      27062          0          0          0          0    =
-      0          0  IR-PCI-MSI 33554434-edge      nvme0q2
- 132:          0          0      24393          0          0          0    =
-      0          0  IR-PCI-MSI 33554435-edge      nvme0q3
- 133:          0          0          0      24313          0          0    =
-      0          0  IR-PCI-MSI 33554436-edge      nvme0q4
- 134:          0          0          0          0      20608          0    =
-      0          0  IR-PCI-MSI 33554437-edge      nvme0q5
- 135:          0          0          0          0          0      22163    =
-      0          0  IR-PCI-MSI 33554438-edge      nvme0q6
- 136:          0          0          0          0          0          0    =
-  23020          0  IR-PCI-MSI 33554439-edge      nvme0q7
- 137:          0          0          0          0          0          0    =
-      0      24285  IR-PCI-MSI 33554440-edge      nvme0q8
-
-
-Can that be retrieved from PCI-MSI information, or drivers
-have to inform this? =
-
-
-> All isolated workers can do the
-> same in parallel without trampling on each other toes by competing for a
-> reduced number of queues which are affine to the housekeeper CPUs.
-> =
-
-> Unfortunately network multi-queue is substantially different from block
-> multi-queue (as I learned in this conversation), so the concept cannot
-> be applied one-to-one to networking as is. But there are certainly part
-> of it which can be reused.
-> =
-
-> This needs a lot more thought than just these crude hacks.
-> =
-
-> Especially under the aspect that there are talks about making isolation
-> runtime switchable. Are you going to rmmod/insmod the i40e network
-> driver to do so? That's going to work fine if you do that
-> reconfiguration over network...
-> =
-
-> Thanks,
-> =
-
->         tglx
-
-
+        tglx
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
