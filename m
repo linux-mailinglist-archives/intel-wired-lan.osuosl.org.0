@@ -1,58 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A28C22999D5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Oct 2020 23:46:40 +0100 (CET)
+Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D3232999DF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Oct 2020 23:49:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 4E42486382;
-	Mon, 26 Oct 2020 22:46:39 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id B4C291FE0A;
+	Mon, 26 Oct 2020 22:49:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from silver.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7gZEb+t65h8r; Mon, 26 Oct 2020 22:46:39 +0000 (UTC)
+	with ESMTP id M7Vsna4uYV4Y; Mon, 26 Oct 2020 22:49:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 3469C865FC;
-	Mon, 26 Oct 2020 22:46:38 +0000 (UTC)
+	by silver.osuosl.org (Postfix) with ESMTP id A9604200ED;
+	Mon, 26 Oct 2020 22:49:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A28841BF30F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 22:46:36 +0000 (UTC)
+Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F3FCF1BF30F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 22:49:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 9D65F86F92
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 22:46:36 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTP id EF72686382
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 22:49:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from whitealder.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8h+sbZMhd7Bg for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Oct 2020 22:46:36 +0000 (UTC)
+ with ESMTP id 3sAfByY7F4vV for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Oct 2020 22:49:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id EF06486F87
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 22:46:35 +0000 (UTC)
+ by whitealder.osuosl.org (Postfix) with ESMTPS id 31FB6865FC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 22:49:38 +0000 (UTC)
 From: Thomas Gleixner <tglx@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1603752394;
+ s=2020; t=1603752576;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=EMtaedWvWnlr8FoOiOT3OcNE6XEhbc2X12bxau6EyFI=;
- b=hEPCG2un8FH9qImCrJqicTU+VJY6N/dn8Vx214yYX5jTIIQO7JoERJ1eR3Jkhj9V4/Ti/R
- SG7as2v78lmp83DCYPgalSSV8hv90SSVnyRs71ktVW1GDHLbBgWoimuqaP+0LbfLZtPaZm
- GZcRqTA+v8cOCm1Fna4Vj5eAdy3BQOKDSRHu0faEku/nIgNErV57rBf7FKhxn8vJFITvtV
- ZI4L4fobzqX25UN2isZHvaNPI8/SvShskRbcvRyNurbf+OA5gbU02GN3XO4NZhIeUn+zjM
- dR+/CAl/QmdJ/Tc8p8/16dRiok0JXoUztki/dlYYg9SmRfnHP6EPYkUF1qoNSQ==
+ bh=ksDYXJPDBGDtncgmMUcP9mg1mza2LJA00t5oGzxZJYk=;
+ b=m7vXXWXXxHdnndNtWQzlF5Od36id+ZmbnGgo3O8KuZgIQt8AscK7UpGXMljlrFEHLNBaxA
+ YFgMa2sXy/Z8smqW8pTKT3fR27aNV9g1YXjR0uSFbgUiAyNFq7qZVyTPe+MmEYZIPU7JeY
+ CZJPzsqK7IBdoJNDIZkkZEavoNHE1En/gpdaMaVi5G7CRSXFK/awLeOWDP6FMz5fSM7lrl
+ qYHeVFPmmcBO/oIvuCQ6mLAn46sp74MiQkRAi4SPsaIWjn7MJDMCwDCCLHRtB78P/5y4jB
+ er8LHo0C+LGGSmAolm/yXPk75p7DEBvjeRLowmPokxh6NBAtwJ480e622yAp7Q==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1603752394;
+ s=2020e; t=1603752576;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=EMtaedWvWnlr8FoOiOT3OcNE6XEhbc2X12bxau6EyFI=;
- b=/0MZUIzr/yPzfalGB8dky2AgJXYoZCXz552/jb8OMkHDcMOCA4OXvbG8ORFq2uO0pVJiLx
- 3TDr0Q1bRzyGSmAw==
-To: Jakub Kicinski <kuba@kernel.org>
-In-Reply-To: <20201026151306.4af991a5@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+ bh=ksDYXJPDBGDtncgmMUcP9mg1mza2LJA00t5oGzxZJYk=;
+ b=nsEuqJwgK8MU3fHK1KrFTAEeMjqWozGRv//N4pHuy/v6G6hN3DNpuuLWxfRIk3N7f1F1Mp
+ ykp4Anes+d/b9tAg==
+To: Nitesh Narayan Lal <nitesh@redhat.com>,
+ Jacob Keller <jacob.e.keller@intel.com>, Marcelo Tosatti <mtosatti@redhat.com>
+In-Reply-To: <959997ee-f393-bab0-45c0-4144c37b9185@redhat.com>
 References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
  <20201019140005.GB17287@fuller.cnet>
  <20201020073055.GY2611@hirez.programming.kicks-ass.net>
@@ -69,9 +70,9 @@ References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
  <87v9ew3fzd.fsf@nanos.tec.linutronix.de>
  <85b5f53e-5be2-beea-269a-f70029bea298@intel.com>
  <87lffs3bd6.fsf@nanos.tec.linutronix.de>
- <20201026151306.4af991a5@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
-Date: Mon, 26 Oct 2020 23:46:34 +0100
-Message-ID: <878sbs38s5.fsf@nanos.tec.linutronix.de>
+ <959997ee-f393-bab0-45c0-4144c37b9185@redhat.com>
+Date: Mon, 26 Oct 2020 23:49:35 +0100
+Message-ID: <875z6w38n4.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
  pci_alloc_irq_vectors() to housekeeping CPUs
@@ -89,67 +90,34 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: juri.lelli@redhat.com, Peter Zijlstra <peterz@infradead.org>,
  linux-pci@vger.kernel.org, sassmann@redhat.com, vincent.guittot@linaro.org,
- hch@infradead.org, mingo@redhat.com, helgaas@kernel.org,
- intel-wired-lan@lists.osuosl.org, thomas.lendacky@amd.com, lgoncalv@redhat.com,
- frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
- Nitesh Narayan Lal <nitesh@redhat.com>, mike.marciniszyn@intel.com,
+ hch@infradead.org, mingo@redhat.com, intel-wired-lan@lists.osuosl.org,
+ helgaas@kernel.org, thomas.lendacky@amd.com, lgoncalv@redhat.com,
+ frederic@kernel.org, jlelli@redhat.com, Jakub Kicinski <kuba@kernel.org>,
+ jiri@nvidia.com, bhelgaas@google.com, mike.marciniszyn@intel.com,
  netdev@vger.kernel.org, dennis.dalessandro@intel.com,
- Marcelo Tosatti <mtosatti@redhat.com>, linux-kernel@vger.kernel.org
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 26 2020 at 15:13, Jakub Kicinski wrote:
-> On Mon, 26 Oct 2020 22:50:45 +0100 Thomas Gleixner wrote:
+On Mon, Oct 26 2020 at 18:22, Nitesh Narayan Lal wrote:
+> On 10/26/20 5:50 PM, Thomas Gleixner wrote:
 >> But I still think that for curing that isolation stuff we want at least
 >> some information from the driver. Alternative solution would be to grant
 >> the allocation of interrupts and queues and have some sysfs knob to shut
 >> down queues at runtime. If that shutdown results in releasing the queue
 >> interrupt (via free_irq()) then the vector exhaustion problem goes away.
->> 
->> Needs more thought and information (for network oblivious folks like
->> me).
 >
-> One piece of information that may be useful is that even tho the RX
-> packets may be spread semi-randomly the user space can still control
-> which queues are included in the mechanism. There is an indirection
-> table in the HW which allows to weigh queues differently, or exclude
-> selected queues from the spreading. Other mechanisms exist to filter
-> flows onto specific queues.
+> I think this is close to what I and Marcelo were discussing earlier today
+> privately.
 >
-> IOW just because a core has an queue/interrupt does not mean that
-> interrupt will ever fire, provided its excluded from RSS.
->
-> Another piece is that by default we suggest drivers allocate 8 RX
-> queues, and online_cpus TX queues. The number of queues can be
-> independently controlled via ethtool -L. Drivers which can't support
-> separate queues will default to online_cpus queue pairs, and let
-> ethtool -L only set the "combined" parameter.
->
-> There are drivers which always allocate online_cpus interrupts, 
-> and then some of them will go unused if #qs < #cpus.
+> I don't think there is currently a way to control the enablement/disablement of
+> interrupts from the userspace.
 
-Thanks for the enlightment.
-
-> My unpopular opinion is that for networking devices all the heuristics
-> we may come up with are going to be a dead end.
-
-I agree. Heuristics suck.
-
-> We need an explicit API to allow users placing queues on cores, and
-> use managed IRQs for data queues. (I'm assuming that managed IRQs will
-> let us reliably map a MSI-X vector to a core :))
-
-Yes, they allow you to do that. That will need some tweaks to theway
-they work today (coming from the strict block mq semantics). You also
-need to be aware that managed irqs have also strict semantics vs. CPU
-hotplug. If the last CPU in the managed affinity set goes down then the
-interrupt is shut down by the irq core which means that you need to
-quiesce the associated queue before that happens. When the first CPU
-comes online again the interrupt is reenabled, so the queue should be
-able to handle it or has ensured that the device does not raise one
-before it is able to do so.
+You cannot just disable the interrupt. You need to make sure that the
+associated queue is shutdown or quiesced _before_ the interrupt is shut
+down.
 
 Thanks,
 
