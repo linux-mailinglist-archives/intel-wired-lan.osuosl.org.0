@@ -1,57 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from whitealder.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E83E299A32
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Oct 2020 00:08:18 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 653CB29AC7C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Oct 2020 13:51:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by whitealder.osuosl.org (Postfix) with ESMTP id 89C0786665;
-	Mon, 26 Oct 2020 23:08:16 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 1833585D8E;
+	Tue, 27 Oct 2020 12:51:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from whitealder.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fEDgrvWzRk4f; Mon, 26 Oct 2020 23:08:16 +0000 (UTC)
+	with ESMTP id R1C4jEVpKDrJ; Tue, 27 Oct 2020 12:51:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by whitealder.osuosl.org (Postfix) with ESMTP id BB98086658;
-	Mon, 26 Oct 2020 23:08:15 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id 14B8F85D97;
+	Tue, 27 Oct 2020 12:51:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DB23F1BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 23:08:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A93E01BF2FB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 09:56:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by silver.osuosl.org (Postfix) with ESMTP id CF81B20386
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 23:08:13 +0000 (UTC)
+ by silver.osuosl.org (Postfix) with ESMTP id 9F793203EB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 09:56:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from silver.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oIeNbh9yrhZZ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Oct 2020 23:08:13 +0000 (UTC)
+ with ESMTP id iMdtD2J2j9QR for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Oct 2020 09:56:29 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by silver.osuosl.org (Postfix) with ESMTPS id E59D520381
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Oct 2020 23:08:12 +0000 (UTC)
-IronPort-SDR: F1bTGOIUVBSbNaJZZE+KjnZmEW1OOzmQobkPxUHrz48wZG53T7EsJQYPcUcTkCpuMbmaRyWYWq
- esui8fB3B0Xw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9786"; a="185731516"
-X-IronPort-AV: E=Sophos;i="5.77,421,1596524400"; d="scan'208";a="185731516"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2020 16:08:12 -0700
-IronPort-SDR: zy8W979PBVagL8i+Jv+r805cLR1FVBAasdYfpwLnnY5dMEYS9mo977q0BeEUHtu8ZSPkUShL6e
- ejjJSj2+O2cA==
-X-IronPort-AV: E=Sophos;i="5.77,421,1596524400"; d="scan'208";a="524468975"
-Received: from jekeller-mobl1.amr.corp.intel.com (HELO [10.212.215.218])
- ([10.212.215.218])
- by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2020 16:08:10 -0700
-To: Thomas Gleixner <tglx@linutronix.de>,
- Nitesh Narayan Lal <nitesh@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>
-References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
- <20201019140005.GB17287@fuller.cnet>
- <20201020073055.GY2611@hirez.programming.kicks-ass.net>
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [63.128.21.124])
+ by silver.osuosl.org (Postfix) with ESMTPS id 4193E2001F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 09:56:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603792587;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=JVIROt4xscPTv2bl+9dBZkGi/KmAAnHZ43ndwfcAS4s=;
+ b=bB+jRXhLlnKQCuJbpeOwsBh7oh+8kwGSocAoOAouv7s/xncBsWSuDeg7MNl8euVHHqFMRh
+ fUeHc8Jc2hNRpxJp6LIdOPdzTe20C8wxhRg4DFd7qt7qNoqNvqXiHIDWwBBfTfiREdxWae
+ 4Owm2sYh7m97ZKtNum85/toKt2lax90=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-410-HcgxRTMQP4aCMXK2g1pL6A-1; Tue, 27 Oct 2020 05:56:23 -0400
+X-MC-Unique: HcgxRTMQP4aCMXK2g1pL6A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 883E2100CCFD;
+ Tue, 27 Oct 2020 09:56:20 +0000 (UTC)
+Received: from fuller.cnet (ovpn-112-2.gru2.redhat.com [10.97.112.2])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5B3EC7367E;
+ Tue, 27 Oct 2020 09:55:56 +0000 (UTC)
+Received: by fuller.cnet (Postfix, from userid 1000)
+ id 00636417F242; Mon, 26 Oct 2020 16:11:07 -0300 (-03)
+Date: Mon, 26 Oct 2020 16:11:07 -0300
+From: Marcelo Tosatti <mtosatti@redhat.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Message-ID: <20201026191107.GA407524@fuller.cnet>
+References: <20201020073055.GY2611@hirez.programming.kicks-ass.net>
  <078e659e-d151-5bc2-a7dd-fe0070267cb3@redhat.com>
  <20201020134128.GT2628@hirez.programming.kicks-ass.net>
  <6736e643-d4ae-9919-9ae1-a73d5f31463e@redhat.com>
@@ -61,21 +70,12 @@ References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
  <87ft6464jf.fsf@nanos.tec.linutronix.de>
  <20201026173012.GA377978@fuller.cnet>
  <875z6w4xt4.fsf@nanos.tec.linutronix.de>
- <86f8f667-bda6-59c4-91b7-6ba2ef55e3db@intel.com>
- <87v9ew3fzd.fsf@nanos.tec.linutronix.de>
- <85b5f53e-5be2-beea-269a-f70029bea298@intel.com>
- <87lffs3bd6.fsf@nanos.tec.linutronix.de>
- <959997ee-f393-bab0-45c0-4144c37b9185@redhat.com>
- <875z6w38n4.fsf@nanos.tec.linutronix.de>
-From: Jacob Keller <jacob.e.keller@intel.com>
-Organization: Intel Corporation
-Message-ID: <586e249a-1078-9fe9-22d4-b3c1ec0a3a5e@intel.com>
-Date: Mon, 26 Oct 2020 16:08:08 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.3
 MIME-Version: 1.0
-In-Reply-To: <875z6w38n4.fsf@nanos.tec.linutronix.de>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <875z6w4xt4.fsf@nanos.tec.linutronix.de>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Mailman-Approved-At: Tue, 27 Oct 2020 12:51:36 +0000
 Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
  pci_alloc_irq_vectors() to housekeeping CPUs
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -92,10 +92,10 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: juri.lelli@redhat.com, Peter Zijlstra <peterz@infradead.org>,
  linux-pci@vger.kernel.org, sassmann@redhat.com, vincent.guittot@linaro.org,
- hch@infradead.org, mingo@redhat.com, intel-wired-lan@lists.osuosl.org,
- helgaas@kernel.org, thomas.lendacky@amd.com, lgoncalv@redhat.com,
- frederic@kernel.org, jlelli@redhat.com, Jakub Kicinski <kuba@kernel.org>,
- jiri@nvidia.com, bhelgaas@google.com, mike.marciniszyn@intel.com,
+ hch@infradead.org, mingo@redhat.com, helgaas@kernel.org,
+ intel-wired-lan@lists.osuosl.org, thomas.lendacky@amd.com, lgoncalv@redhat.com,
+ frederic@kernel.org, jlelli@redhat.com, jiri@nvidia.com, bhelgaas@google.com,
+ Nitesh Narayan Lal <nitesh@redhat.com>, mike.marciniszyn@intel.com,
  netdev@vger.kernel.org, dennis.dalessandro@intel.com,
  linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
@@ -103,37 +103,55 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 10/26/2020 3:49 PM, Thomas Gleixner wrote:
-> On Mon, Oct 26 2020 at 18:22, Nitesh Narayan Lal wrote:
->> On 10/26/20 5:50 PM, Thomas Gleixner wrote:
->>> But I still think that for curing that isolation stuff we want at least
->>> some information from the driver. Alternative solution would be to grant
->>> the allocation of interrupts and queues and have some sysfs knob to shut
->>> down queues at runtime. If that shutdown results in releasing the queue
->>> interrupt (via free_irq()) then the vector exhaustion problem goes away.
->>
->> I think this is close to what I and Marcelo were discussing earlier today
->> privately.
->>
->> I don't think there is currently a way to control the enablement/disablement of
->> interrupts from the userspace.
+On Mon, Oct 26, 2020 at 08:00:39PM +0100, Thomas Gleixner wrote:
+> On Mon, Oct 26 2020 at 14:30, Marcelo Tosatti wrote:
+> > On Fri, Oct 23, 2020 at 11:00:52PM +0200, Thomas Gleixner wrote:
+> >> So without information from the driver which tells what the best number
+> >> of interrupts is with a reduced number of CPUs, this cutoff will cause
+> >> more problems than it solves. Regressions guaranteed.
+> >
+> > One might want to move from one interrupt per isolated app core
+> > to zero, or vice versa. It seems that "best number of interrupts 
+> > is with reduced number of CPUs" information, is therefore in userspace, 
+> > not in driver...
 > 
-> You cannot just disable the interrupt. You need to make sure that the
-> associated queue is shutdown or quiesced _before_ the interrupt is shut
-> down.
+> How does userspace know about the driver internals? Number of management
+> interrupts, optimal number of interrupts per queue?
 > 
-> Thanks,
+> >> Managed interrupts base their interrupt allocation and spreading on
+> >> information which is handed in by the individual driver and not on crude
+> >> assumptions. They are not imposing restrictions on the use case.
+> >> 
+> >> It's perfectly fine for isolated work to save a data set to disk after
+> >> computation has finished and that just works with the per-cpu I/O queue
+> >> which is otherwise completely silent. 
+> >
+> > Userspace could only change the mask of interrupts which are not 
+> > triggered by requests from the local CPU (admin, error, mgmt, etc),
+> > to avoid the vector exhaustion problem.
+> >
+> > However, there is no explicit way for userspace to know that, as far as
+> > i know.
+> >
+> >  130:      34845          0          0          0          0          0          0          0  IR-PCI-MSI 33554433-edge      nvme0q1
+> >  131:          0      27062          0          0          0          0          0          0  IR-PCI-MSI 33554434-edge      nvme0q2
+> >  132:          0          0      24393          0          0          0          0          0  IR-PCI-MSI 33554435-edge      nvme0q3
+> >  133:          0          0          0      24313          0          0          0          0  IR-PCI-MSI 33554436-edge      nvme0q4
+> >  134:          0          0          0          0      20608          0          0          0  IR-PCI-MSI 33554437-edge      nvme0q5
+> >  135:          0          0          0          0          0      22163          0          0  IR-PCI-MSI 33554438-edge      nvme0q6
+> >  136:          0          0          0          0          0          0      23020          0  IR-PCI-MSI 33554439-edge      nvme0q7
+> >  137:          0          0          0          0          0          0          0      24285  IR-PCI-MSI 33554440-edge      nvme0q8
+> >
+> > Can that be retrieved from PCI-MSI information, or drivers
+> > have to inform this?
 > 
->         tglx
-> 
+> The driver should use a different name for the admin queues.
 
-Could this be handled with a callback to the driver/hw? I know Intel HW
-should support this type of quiesce/shutdown.
+Works for me.
 
-Thanks,
-Jake
+Sounds more like a heuristic which can break, so documenting this 
+as an "interface" seems appropriate.
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
