@@ -1,67 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from silver.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4945129B13A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Oct 2020 15:28:25 +0100 (CET)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 382E629B2A7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Oct 2020 15:44:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by silver.osuosl.org (Postfix) with ESMTP id 082B920134;
-	Tue, 27 Oct 2020 14:28:24 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id E1E8A855BE;
+	Tue, 27 Oct 2020 14:44:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from silver.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
 	by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 75hrcA+Dz0Sa; Tue, 27 Oct 2020 14:28:23 +0000 (UTC)
+	with ESMTP id eLj4_fCpCH2o; Tue, 27 Oct 2020 14:44:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by silver.osuosl.org (Postfix) with ESMTP id 36A3720422;
-	Tue, 27 Oct 2020 14:28:23 +0000 (UTC)
+	by fraxinus.osuosl.org (Postfix) with ESMTP id C377B85624;
+	Tue, 27 Oct 2020 14:44:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from hemlock.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6CA561BF866
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 14:28:21 +0000 (UTC)
+Received: from fraxinus.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D10501BF976
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 14:43:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by hemlock.osuosl.org (Postfix) with ESMTP id 5E230872B0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 14:28:21 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTP id CCB8C855EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 14:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from hemlock.osuosl.org ([127.0.0.1])
+Received: from fraxinus.osuosl.org ([127.0.0.1])
  by localhost (.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xUkV8fXPrc3S for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Oct 2020 14:28:20 +0000 (UTC)
+ with ESMTP id CQfDFgD8Roet for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Oct 2020 14:43:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.7.6
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by hemlock.osuosl.org (Postfix) with ESMTPS id B19D5872A5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 14:28:20 +0000 (UTC)
+ by fraxinus.osuosl.org (Postfix) with ESMTPS id 24CBD855BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Oct 2020 14:43:59 +0000 (UTC)
 From: Thomas Gleixner <tglx@linutronix.de>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1603808897;
+ s=2020; t=1603809836;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=WHVWY8Pt2cBEbxM1Jxi63g2Hj3JS0/EEW2zyuVGEPSs=;
- b=2GQa6Ul8aOkAo3AXsA0aVITxroDZkL4AtCNdgNI3SDHsv3F+SU+7ED8PqGdbAeRfy0O4TB
- icKZgLCvuhTR1kJhp3uq+KN+rs4RZzZQK7odWgDfiXaSUfApcsaWUkjSb7TZbo1M0cF8Ys
- Ilcw/2OVZ4JEar/I/4TgEHp0ss+xXlb5kZcx2dZtVHI3WmN9kpwf10tXqdk4+lTtprnWUL
- rIX41oWtJ5VehAeaG/J+tjCqxsEdrZIip7AsZUAUd8upg+lfYoD61K8xt1A4hEOq0c51ET
- IqQ2a0jkuDj9QRkf8VK5YQABRVEB4rlGLAk8h9l8jbR5vJXlX+tBNT9AgUzSLw==
+ bh=qctgPvENEAJLfDO1q5YNRd3BUpfW+QQFStcbBTc4zpc=;
+ b=XPCl5Yg1xGZbdGIwKfXbv3FBALQDzgvROfSBGRFmV7UCacEjG0QaeufIIEvbgJW7nqbzD2
+ vnBz6XrBKK3JZGx1wLfAlV9w35EhTuPCKGbRmnpfnJzrocvTJqaEdhf1SZeQmFk3FFK/hB
+ AtuUdpjvzy4urwwyaQKvogkRxe5tYfBnwhcZgilyPEFp9HGn9sOj5BUQ/UnB0BBRBjjuaT
+ 7F8urq5UdIsT2//AZ/5dOjGolnV3HEmGoHyJBaK3y2JrAuJrGEsmBwHpC7MRtrSaCQuPzB
+ 1Ls88sIVW7Fx1SGAdLygMeYISlhu92rAKCavx09rd5r5BR7n2cBsRf5dsbmGmg==
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1603808897;
+ s=2020e; t=1603809836;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=WHVWY8Pt2cBEbxM1Jxi63g2Hj3JS0/EEW2zyuVGEPSs=;
- b=iI4zzfmXqaQk8wTIlKzcoy2w3B7FkOtnUj2WNnQBCUCsHicUw1/TWMW/wUuiUSu0omFieQ
- T9rGsHQGnc8YCiBQ==
-To: Jacob Keller <jacob.e.keller@intel.com>,
- Nitesh Narayan Lal <nitesh@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>
-In-Reply-To: <586e249a-1078-9fe9-22d4-b3c1ec0a3a5e@intel.com>
-References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
- <20201019140005.GB17287@fuller.cnet>
- <20201020073055.GY2611@hirez.programming.kicks-ass.net>
- <078e659e-d151-5bc2-a7dd-fe0070267cb3@redhat.com>
- <20201020134128.GT2628@hirez.programming.kicks-ass.net>
- <6736e643-d4ae-9919-9ae1-a73d5f31463e@redhat.com>
- <260f4191-5b9f-6dc1-9f11-085533ac4f55@redhat.com>
- <20201023085826.GP2611@hirez.programming.kicks-ass.net>
+ bh=qctgPvENEAJLfDO1q5YNRd3BUpfW+QQFStcbBTc4zpc=;
+ b=SOWpoTtIdBo28YQ59UZQrIseztUo6FaAyC/yLmH/40n1JEHji3jhyfGLvO9YnTjEyLslEg
+ mcVTsLvHTdJ1/gDg==
+To: Marcelo Tosatti <mtosatti@redhat.com>,
+ Nitesh Narayan Lal <nitesh@redhat.com>
+In-Reply-To: <20201027114739.GA11336@fuller.cnet>
+References: <20201023085826.GP2611@hirez.programming.kicks-ass.net>
  <9ee77056-ef02-8696-5b96-46007e35ab00@redhat.com>
  <87ft6464jf.fsf@nanos.tec.linutronix.de>
  <20201026173012.GA377978@fuller.cnet>
@@ -71,10 +64,9 @@ References: <20201019111137.GL2628@hirez.programming.kicks-ass.net>
  <85b5f53e-5be2-beea-269a-f70029bea298@intel.com>
  <87lffs3bd6.fsf@nanos.tec.linutronix.de>
  <959997ee-f393-bab0-45c0-4144c37b9185@redhat.com>
- <875z6w38n4.fsf@nanos.tec.linutronix.de>
- <586e249a-1078-9fe9-22d4-b3c1ec0a3a5e@intel.com>
-Date: Tue, 27 Oct 2020 15:28:16 +0100
-Message-ID: <87mu07216n.fsf@nanos.tec.linutronix.de>
+ <20201027114739.GA11336@fuller.cnet>
+Date: Tue, 27 Oct 2020 15:43:56 +0100
+Message-ID: <87k0vb20gj.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
 Subject: Re: [Intel-wired-lan] [PATCH v4 4/4] PCI: Limit
  pci_alloc_irq_vectors() to housekeeping CPUs
@@ -92,8 +84,8 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: juri.lelli@redhat.com, Peter Zijlstra <peterz@infradead.org>,
  linux-pci@vger.kernel.org, sassmann@redhat.com, vincent.guittot@linaro.org,
- hch@infradead.org, mingo@redhat.com, intel-wired-lan@lists.osuosl.org,
- helgaas@kernel.org, thomas.lendacky@amd.com, lgoncalv@redhat.com,
+ hch@infradead.org, mingo@redhat.com, helgaas@kernel.org,
+ intel-wired-lan@lists.osuosl.org, thomas.lendacky@amd.com, lgoncalv@redhat.com,
  frederic@kernel.org, jlelli@redhat.com, Jakub Kicinski <kuba@kernel.org>,
  jiri@nvidia.com, bhelgaas@google.com, mike.marciniszyn@intel.com,
  netdev@vger.kernel.org, dennis.dalessandro@intel.com,
@@ -103,36 +95,43 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 26 2020 at 16:08, Jacob Keller wrote:
-> On 10/26/2020 3:49 PM, Thomas Gleixner wrote:
->> On Mon, Oct 26 2020 at 18:22, Nitesh Narayan Lal wrote:
->>> I don't think there is currently a way to control the enablement/disablement of
->>> interrupts from the userspace.
->> 
->> You cannot just disable the interrupt. You need to make sure that the
->> associated queue is shutdown or quiesced _before_ the interrupt is shut
->> down.
+On Tue, Oct 27 2020 at 08:47, Marcelo Tosatti wrote:
+> On Mon, Oct 26, 2020 at 06:22:29PM -0400, Nitesh Narayan Lal wrote:
+> However, if per-CPU interrupts are not disabled, then the (for example)
+> network device is free to include the CPU in its list of destinations.
+> Which would require one to say, configure RPS (or whatever mechanism
+> is distributing interrupts).
+
+And why is that a problem? If that's possible then you can prevent
+getting RX interrupts already today.
+
+> Hum, it would feel safer (rather than trust the #1 rule to be valid
+> in all cases) to ask the driver to disable the interrupt (after shutting
+> down queue) for that particular CPU.
 >
-> Could this be handled with a callback to the driver/hw? I know Intel HW
-> should support this type of quiesce/shutdown.
+> BTW, Thomas, software is free to configure a particular MSI-X interrupt
+> to point to any CPU:
+>
+> 10.11 MESSAGE SIGNALLED INTERRUPTS
 
-We can't have a callback from the interrupt shutdown code as you have to
-wait for the queue to drain packets in flight. Something like this
+I know how MSI works :)
 
-     mark queue as going down (no more tx queueing)
-     tell hardware not to route RX packets to it
-     consume pending RX
-     wait for already queued TX packets to be sent
+> So taking the example where computation happens while isolated and later
+> stored via block interface, aren't we restricting the usage scenarios
+> by enforcing the "per-CPU queue has interrupt pointing to owner CPU"
+> rule?
 
-Look what the block people did. They have a common multi-instance
-hotplug state and they register each context (queue) as an instance. The
-hotplug core invokes the corresponding callbacks when bringing a CPU up
-or when shutting it down.
+No. For block this is the ideal configuration (think locality) and it
+prevents vector exhaustion. If you make these interrupts freely routable
+then you bring back the vector exhaustion problem right away.
+
+Now we already established that networking has different requirements,
+so you have to come up with a different solution for it which allows to
+work for all use cases.
 
 Thanks,
 
         tglx
-
 
 _______________________________________________
 Intel-wired-lan mailing list
